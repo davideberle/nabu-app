@@ -52,7 +52,7 @@
     "Heat the grill of a barbecue or charcoal grill until hot. Grill the squid bodies and tentacles over high heat for 1–2 minutes, turning halfway through cooking, until lightly charred on all sides. Transfer to a cutting board. Cut the tentacle clusters in half crosswise and put in a serving bowl. Slice the tubes into 1⁄8in (3mm) rings, slicing through the wings as you go, and place in the bowl with the tentacles.",
     "Slice the remaining lemon in half. Put the arugula, parsley, olive oil, and juice of 1 lemon half in the bowl and toss gently with the squid. Serve with lemon wedges cut from the remaining lemon half."
   ],
-  "image": null,
+  "image": "/recipes/grilled-squid-and-arugula-salad.jpg",
   "time": {
     "total": 17
   },
@@ -60,8 +60,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish & Seafood",
-    "meal_role": "main"
+    "chapter": "Fish & Seafood"
   },
   "cuisine": "Other"
 }

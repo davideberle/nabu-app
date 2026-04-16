@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "If you are a crab fan, this is a good one. Any crabs will do. You could try the frozen imported crabs from Asian shops, but I find that the brown crabs we get here in the UK are perfect for almost any crab dish. They may not be as visually beautiful as other varieties, but I love the flavour and using crabs that are locally sourced.",
   "time": {
-    "prep": 20,
-    "cook": 25,
-    "total": 20
+    "prep": "20 MINS, PLUS PREPARING AND COOKING THE CRABS",
+    "cook": "25 MINS",
+    "total": "20 MINS, PLUS PREPARING AND COOKING THE CRABS25 MINS"
   },
   "ingredients": [
     {
@@ -98,7 +98,7 @@
     "Make sure the onions are nicely coated in the spices, then add the coconut milk, 200ml (generous ¾ cup) of water and the crabs. Bring to a simmer, cover and cook until the sauce is reduced by half. Be sure to stir regularly.",
     "Just before serving, squeeze the lime juice into the sauce and sprinkle in the chopped coriander (cilantro). Check for seasoning and add salt and black pepper if needed."
   ],
-  "image": null,
+  "image": "/recipes/sri-lankan-jaffna-crab-curry.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -106,9 +106,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
-  "cuisine": "Indian",
-  "tips": "Note: PREPARING AND COOKING THE CRABS; PREPARING AND COOKING THE CRABS25 MINS."
+  "cuisine": "Indian"
 }

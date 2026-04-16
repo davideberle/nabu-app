@@ -49,10 +49,6 @@
     {
       "item": "lemon juice",
       "amount": "3 tbsp."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -60,13 +56,7 @@
     "Place mushrooms in a bowl and cover with boiling water; let soak for 30 minutes. Drain and cut into strips.",
     "In a large bowl, combine pasta, mushrooms, crabmeat, scallions, water chestnuts, bamboo shoots, soy sauce, sweet",
     "and sour sauce, chili sauce, and oil; mix well.",
-    "Sprinkle salad with lemon juice, and serve.",
-    "(4) Caprese-style Pasta Salad",
-    "Caprese-style Pasta Salad is a luscious, chunky pasta salad that is quick to prepare with no cooking required! This",
-    "recipe uses easy-to-find ingredients and it mixes up beautifully in the bowl.",
-    "Along with being delicious, it's also full of fresh veggies like tomatoes, basil, and cucumbers that are high in",
-    "vitamins A and C.",
-    "Yield: 6"
+    "Sprinkle salad with lemon juice, and serve."
   ],
   "time": {
     "total": 35
@@ -75,8 +65,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/vermicelli-salad-with-crabmeat.jpg"
 }

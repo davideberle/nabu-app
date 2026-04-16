@@ -9,9 +9,9 @@
   "servings": "serves 8 or more as part of a multi-course meal",
   "intro": "MyLahore is a family-run restaurant chain that seems to be doing everything right. While researching for The Curry Guy Easy book, I paid their Bradford branch a visit and had a lamb curry that was about as close to perfection as it gets. The curry I tried was their lamb rogan josh, which I loved, but I was much more interested in the lamb masala curry that was used to make it. The meat was so tender and the flavour was exceptional. I asked the shift manager, Ateeq Bhatti, if I could have the recipe for the meat curry and he was happy to oblige! The recipe I received, however, was to cook about 15kg (33lb) of meat, so it was on an industrial scale, as you might expect from a successful restaurant. I’ve simplified the recipe and reduced the quantities for you here.",
   "time": {
-    "prep": 10,
-    "cook": 60,
-    "total": 70
+    "prep": "10 MINS",
+    "cook": "1 HOUR",
+    "total": "10 MINS1 HOUR"
   },
   "ingredients": [
     {
@@ -85,13 +85,12 @@
     "To finish, stir in the yoghurt, 1 tablespoon at a time. It will hardly be noticeable in the sauce, but it thickens and adds flavour to it. Season with salt and serve."
   ],
   "tips": "If you can’t find bassar, you might want to add a little more chilli powder, but I suggest adding it at the end of cooking, to taste. Bassar curry masala contains mustard oil and should always be cooked before consuming.",
-  "image": null,
+  "image": "/recipes/lamb-masala-curry.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
   "cuisine": "Indian"
 }

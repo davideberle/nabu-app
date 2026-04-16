@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "perfectly firm, packed with flavor. Almost as important, it comes already trimmed.",
+  "intro": "Here’s a secret ingredient I pick up from the freezer of a Lebanese market in London: tiny Egyptian okra,",
   "ingredients": [
     {
       "item": "olive oil",
@@ -94,8 +94,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

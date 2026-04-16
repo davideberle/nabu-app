@@ -96,13 +96,12 @@
     "Add enough chicken stock to the reserved lamb broth to measure 3 quarts. Add the tripe, lamb shank meat, chopped lamb hearts, scallions, parsley, dill, 1 tablespoon salt, and several grinds of pepper. Simmer, partially covered, until the tripe is tender, about 11/2 hours. Add the rice and simmer, partially covered, until tender, about 20 minutes.",
     "In a bowl, whisk the eggs until pale and frothy. Gradually whisk in the lemon juice, then gradually whisk in several cups of the hot broth from the pot. Return this mixture to the pot and stir it in gently so as not to disturb the foam. Do not allow the soup to boil after adding the egg mixture. Taste and adjust the seasoning, then serve immediately in warm bowls."
   ],
-  "image": null,
+  "image": "/recipes/easter-lamb-soup.jpg",
   "category": {
     "dish_type": [
       "soup"
     ],
-    "chapter": "More Than Greek Salad",
-    "meal_role": "main"
+    "chapter": "More Than Greek Salad"
   },
   "cuisine": "Greek"
 }

@@ -51,13 +51,12 @@
     "Strew the garlic slices over the baking sheets, dividing them evenly.",
     "Using your hands, toss together the pita wedges, olive oil, salt, and oregano in a large bowl. Divide the pita chips between the baking sheets. Bake for 7 minutes or so, turning once, until golden and crisp. Remove from the baking sheet, transfer to a serving bowl, and serve hot or at room temperature."
   ],
-  "image": null,
+  "image": "/recipes/homemade-pita-chips.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics",
-    "meal_role": "main"
+    "chapter": "Basics"
   },
   "cuisine": "Greek"
 }

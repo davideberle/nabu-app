@@ -61,8 +61,8 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": "",
-    "meal_role": "breakfast"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/baked-eggs-with-yogurt-and-chile.jpg"
 }

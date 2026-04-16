@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "or some sweet chutney on the side.",
+  "intro": "medium heat and fry the cakes for 5 to 8 minutes, turning once, until they are",
   "ingredients": [
     {
       "item": "small zucchini, grated (1⅓ cups/150 g)",
@@ -50,11 +50,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/yogurt-and-kaffir-lime-leaf-spread.jpg"
 }

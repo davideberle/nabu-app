@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "A rich barbecue sauce and enriched seitan make for a much-loved sandwich. Hold it over a plate and have a big bite. Now that’s good!",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 15
+    "prep": "5 minutes",
+    "cook": "10 minutes",
+    "total": "15 minutes"
   },
   "ingredients": [
     {
@@ -484,8 +484,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Soups & Stews",
-    "meal_role": "main"
+    "chapter": "Soups & Stews"
   },
   "cuisine": "Other"
 }

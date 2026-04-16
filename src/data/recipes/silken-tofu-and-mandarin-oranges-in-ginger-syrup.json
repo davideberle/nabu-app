@@ -44,7 +44,7 @@
     "Wield a metal serving spoon in a horizontal motion to scoop up large, thin pieces of the tofu, dividing them among four individual serving bowls as you go along. (It’s normal for the pieces to be irregular in shape and size.) Warm the bowls of tofu in the microwave. Fit as many in as possible and zap in 20-second intervals until slightly warmed through; this allows the tofu to display its tender richness. Whey will inevitably accumulate in the bowls; you may pour it out to prevent it from diluting the syrup, or just allow its delicate tanginess to add to the overall flavor.",
     "Divide the orange segments among the bowls and pour the syrup over the top. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/silken-tofu-and-mandarin-oranges-in-ginger-syrup.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -53,8 +53,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Sweets and Coffee",
-    "meal_role": "main"
+    "chapter": "Sweets and Coffee"
   },
   "cuisine": "Southeast Asian"
 }

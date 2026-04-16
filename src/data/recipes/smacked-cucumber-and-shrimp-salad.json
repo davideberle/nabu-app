@@ -53,13 +53,12 @@
     "Drain the cucumber in a mesh strainer, shake out excess liquid, and transfer to a large bowl. Add the dressing, and peanuts and shrimp, if desired. Taste and adjust the flavors as needed.",
     "Pile the salad into a shallow bowl and serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/smacked-cucumber-and-shrimp-salad.jpg",
   "category": {
     "dish_type": [
       "side"
     ],
-    "chapter": "Salads and Vegetable Sides",
-    "meal_role": "side"
+    "chapter": "Salads and Vegetable Sides"
   },
   "cuisine": "Southeast Asian"
 }

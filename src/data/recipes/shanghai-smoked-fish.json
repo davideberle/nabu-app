@@ -88,7 +88,7 @@
     "Remove the ginger and spring onions from the marinade. Place the fish slices on paper towels to drain. Bring the broth to the boil, then set aside.",
     "Heat the cooking oil in a wok to 350°F (180°C). Fry the fish slices in batches until crisp and golden. Remove them with chopsticks and drop into the hot flavoring broth to steep for 2–3 minutes. Fish them out and set them aside to cool. Repeat with the rest of the fish, then pile the pieces up neatly on a serving dish. Sprinkle with 2 teaspoons sesame oil and a little five-spice powder, if desired. Serve at room temperature."
   ],
-  "image": null,
+  "image": "/recipes/shanghai-smoked-fish.jpg",
   "time": {
     "total": 65
   },
@@ -96,8 +96,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers",
-    "meal_role": "main"
+    "chapter": "Appetizers"
   },
   "cuisine": "Chinese"
 }

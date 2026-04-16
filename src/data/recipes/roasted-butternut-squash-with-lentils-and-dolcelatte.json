@@ -72,11 +72,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/roasted-butternut-squash-with-lentils-and-dolcelatte.jpg"
 }

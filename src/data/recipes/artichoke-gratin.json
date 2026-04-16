@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "without sacrificing much flavor. Serve the gratin with Lettuce Salad (page 146).",
+  "intro": "I am all for frozen vegetables, especially when used for hearty, long-cooked dishes like this one. Here, in",
   "ingredients": [
     {
       "item": "frozen artichoke hearts, thawed, or about 20 medium-sized globe artichokes grated zest and juice of 4 large lemons",
@@ -81,8 +81,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/artichoke-gratin.jpg"
 }

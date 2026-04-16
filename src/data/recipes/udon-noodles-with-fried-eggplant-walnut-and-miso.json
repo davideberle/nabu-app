@@ -1,12 +1,12 @@
 {
   "id": "udon-noodles-with-fried-eggplant-walnut-and-miso",
-  "name": "Udon Noodles with Fried Eggplant, Walnut, and Miso",
+  "name": "Udon Noodles With Fried Eggplant, Walnut, And Miso",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Serve hot with a squeeze of lemon juice, or with the sauce spooned on top or",
+  "intro": "for 9 minutes, until tender but still with a bite. Drain in a fine sieve, refresh",
   "ingredients": [
     {
       "item": "green onions, white and green parts",
@@ -79,12 +79,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

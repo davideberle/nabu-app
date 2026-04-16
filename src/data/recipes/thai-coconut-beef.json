@@ -8,7 +8,7 @@
   "servings": "serves 10",
   "intro": "Love Thai food but have no time to eat outside on a weeknight due to your busy schedules? You can make a double serving of this dish – one for tonight’s dinner, and another for tomorrow’s lunch. In my opinion, it is best to use beef, but it would be just as delicious if you used chicken or pork!",
   "time": {
-    "prep": 495,
+    "prep": "8 hours 15 minutes",
     "total": 180
   },
   "ingredients": [
@@ -78,8 +78,7 @@
   "category": {
     "dish_type": [
       "main"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

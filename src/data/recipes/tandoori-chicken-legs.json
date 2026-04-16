@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "One of the things about making Indian food daily and then blogging about it is that inevitably you come across recipes you want to make all the time. Tandoori chicken legs are a family favourite and my basic recipe has changed very little over the years. Red food colouring is often added to the chicken to give it that familiar appearance, but it is being used a lot less these days – it adds no flavour and is solely there for appearance.",
   "time": {
-    "prep": 15,
-    "cook": 15,
-    "total": 15
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "15 MINS",
+    "total": "15 MINS, PLUS MARINATING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -82,14 +82,12 @@
     "When ready to cook, skewer the chicken legs onto flat skewers and heat the barbecue. Grill using the direct grilling method until the chicken is nicely charred and then turn. This is important when using skewers, as the meat needs to cook so that it expands and doesn’t move around on the skewers.",
     "If you can’t be bothered to fire up the barbecue? No worries! Preheat the oven to 200°C (400°F/Gas 6) and cook the chicken on a wire rack placed over a foil-lined oven tray for about 20 minutes, or until cooked through. To get a nice black char, you can finish the cooked chicken directly under the grill (broiler) heated to maximum temperature for a minute or so."
   ],
-  "image": null,
+  "image": "/recipes/tandoori-chicken-legs.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics & Breads",
-    "meal_role": "main"
+    "chapter": "Basics & Breads"
   },
-  "cuisine": "Indian",
-  "tips": "Note: MARINATING TIME; MARINATING TIME15 MINS."
+  "cuisine": "Indian"
 }

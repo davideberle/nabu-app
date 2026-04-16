@@ -74,11 +74,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "dessert"
-    ],
-    "chapter": "",
-    "meal_role": "dessert"
-  }
+  "image": "/recipes/fish-cake-tacos-with-mango-lime-and-cumin-yogurt.jpg"
 }

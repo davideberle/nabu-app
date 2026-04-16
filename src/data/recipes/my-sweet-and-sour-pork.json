@@ -1,6 +1,6 @@
 {
   "id": "my-sweet-and-sour-pork",
-  "name": "My Sweet and Sour Pork",
+  "name": "My Sweet And Sour Pork",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -56,11 +56,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/my-sweet-and-sour-pork.png"
 }

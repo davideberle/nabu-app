@@ -9,9 +9,9 @@
   "servings": "makes 120g (1¼ cups)",
   "intro": "Most commercial tandoori masalas taste fantastic because they are loaded with salt and tangy citric acid powder. The spices used are usually quite cheap, like ground coriander and cumin, and they are made more visually appealing with the use of red food colouring.\n\nI use a lot more spices and leave the salt and citric acid powder out. You can always add more salt to the finished dish, which gives you a lot more control over the end result. I substitute the natural tanginess of amchoor (dried mango powder) for the citric acid powder. If you would like to add red food colouring, remember that your masala will not be the bright red of commercial brands. Food colouring powder becomes redder when it is stirred into a sauce.",
   "time": {
-    "prep": 8,
-    "cook": 2,
-    "total": 10
+    "prep": "8 MINS",
+    "cook": "2 MINS",
+    "total": "8 MINS2 MINS"
   },
   "ingredients": [
     {
@@ -64,7 +64,7 @@
     "Grind to a fine powder in a spice grinder or pestle and mortar and tip into a bowl. Stir in the ground ginger, garlic powder, onion powder and amchoor.",
     "Stir in the red food colouring powder (if using). The masala will not look overly red like the commercial brands. Store in an air-tight container in a cool, dark place and use as required, within 2 months for optimal flavour."
   ],
-  "image": null,
+  "image": "/recipes/tandoori-masala.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -73,8 +73,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Accompaniments",
-    "meal_role": "main"
+    "chapter": "Accompaniments"
   },
   "cuisine": "Indian"
 }

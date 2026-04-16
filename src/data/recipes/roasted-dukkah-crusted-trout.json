@@ -9,9 +9,9 @@
   "servings": "4 to 6 servings",
   "intro": "One of the best ways to use Egyptian Dukkah is to press it into a large fillet of trout and roast it in the oven. The toasted nuts, seeds, and warm spices elevate an ordinary weeknight fish dinner into a fancy treat. I have also recently been quite taken with roasted radish. Radishes are commonly consumed in the Middle East, but only when fresh, for their crunch and peppery flavor. Roasting them is a technique I picked up here in the West that completely transforms them, mellowing their sharpness and enhancing their natural sweetness.",
   "time": {
-    "prep": 10,
-    "cook": 25,
-    "total": 35
+    "prep": "10 minutes",
+    "cook": "25 minutes",
+    "total": "10 minutes25 minutes"
   },
   "ingredients": [
     {
@@ -55,8 +55,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: 1 Hour",
-    "meal_role": "main"
+    "chapter": "Main Dishes: 1 Hour"
   },
   "cuisine": "Middle Eastern"
 }

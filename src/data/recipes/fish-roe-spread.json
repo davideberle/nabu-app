@@ -99,13 +99,12 @@
     "Place tarama in bowl and process for 1 minute.",
     "with motor running, add bread, all the olive oil, lemon juice, and onion alternately to form a creamy mixture."
   ],
-  "image": null,
+  "image": "/recipes/fish-roe-spread.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers",
-    "meal_role": "main"
+    "chapter": "Appetizers"
   },
   "cuisine": "Greek"
 }

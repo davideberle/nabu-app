@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "the salad needs it. Sprinkle with the chile flakes and serve.",
+  "intro": "dry. Add the spelt to the pan and simmer gently until al dente; spelt will take",
   "ingredients": [
     {
       "item": "small Jerusalem artichokes, peeled and thinly sliced (9 oz/250 g)",
@@ -72,12 +72,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

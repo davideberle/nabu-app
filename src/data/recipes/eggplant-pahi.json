@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "large serving platter or individual plates and serve warm, with a spoonful of",
+  "intro": "fry for 5 minutes, stirring frequently, until the onion is charred and soft. Add",
   "ingredients": [
     {
       "item": "large eggplants, halved lengthwise, each half cut into 1 by 2-inch/2.5 by 5-cm wedges (1⅔ lb/750 g)",
@@ -82,11 +82,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/eggplant-pahi.jpg"
 }

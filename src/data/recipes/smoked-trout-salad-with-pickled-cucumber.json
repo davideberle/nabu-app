@@ -60,7 +60,7 @@
     "To make the pickled cucumber, whisk the vinegar, sugar, and chile in a small bowl until combined. Add the cucumber, and toss it all together. In a separate small bowl, stir together the yogurt and mint until well mixed.",
     "Arrange the salad leaves and olives in a large bowl or on 4 individual plates. Top with the flaked trout and avocado, then season to taste. Spoon some of the pickled cucumber mixture over top, and keep the rest in a bowl to serve on the side along with the mint yogurt."
   ],
-  "image": null,
+  "image": "/recipes/smoked-trout-salad-with-pickled-cucumber.jpg",
   "time": {
     "total": 45
   },
@@ -68,8 +68,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish & Seafood",
-    "meal_role": "main"
+    "chapter": "Fish & Seafood"
   },
   "cuisine": "Other"
 }

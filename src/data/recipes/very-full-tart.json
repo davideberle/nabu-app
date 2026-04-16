@@ -86,8 +86,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "",
-    "meal_role": "dessert"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/very-full-tart.jpg"
 }

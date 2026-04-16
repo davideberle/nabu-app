@@ -9,9 +9,9 @@
   "servings": "12 servings",
   "intro": "Big, fat, and very chocolaty cookies are on the menu for today. Cake-like on the inside, they’ll satisfy your cookie cravings any day.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -827,8 +827,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Salads",
-    "meal_role": "dessert"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

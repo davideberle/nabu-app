@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "with the condiment for the Sweet Potato Cakes on page 32.",
+  "intro": "save some time, though, by leaving out a sour cream and lemon sauce from the original. If you insist, serve",
   "ingredients": [
     {
       "item": "cumin seeds",
@@ -91,8 +91,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/fava-bean-burgers.jpg"
 }

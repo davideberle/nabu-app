@@ -11,8 +11,7 @@
     "dish_type": [
       "baking"
     ],
-    "chapter": "Baking & Patisserie",
-    "meal_role": "dessert"
+    "chapter": "Baking & Patisserie"
   },
   "servings": "makes one 1-lb / 500-g loaf",
   "time": {
@@ -161,6 +160,6 @@
   "tags": {
     "dietary": []
   },
-  "image": null,
+  "image": "/recipes/sweet-and-spicy-beef-and-pork-pie.jpg",
   "cuisine": "Middle Eastern"
 }

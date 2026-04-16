@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "The preserved lemon in this extremely tasty dish brings out the full flavor of the lamb! These lamb chops can be served on a bed of couscous, with tabbouleh as a side dish. Enjoy with a wine of your choice, keeping in mind that this dish is quite spicy and has the tang of the preserved lemon. A medium white such as chardonnay or even a Mosel is preferred. A mild to sweet red wine would also be great.",
   "time": {
-    "prep": 35,
+    "prep": "35 mins",
     "total": 5
   },
   "ingredients": [
@@ -64,8 +64,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

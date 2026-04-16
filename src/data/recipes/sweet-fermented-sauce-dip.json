@@ -25,13 +25,12 @@
   "method": [
     "Boil the kettle. Heat the oil in a seasoned wok over a medium flame. Add the sweet fermented sauce and stir-fry for a minute or so until fragrant. Add ¼ cup (50ml) hot water and bring to the boil. Season with the sugar. Continue to stir until the sauce thickens to the consistency of tomato ketchup, then remove from the wok and set aside."
   ],
-  "image": null,
+  "image": "/recipes/sweet-fermented-sauce-dip.jpg",
   "category": {
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Basic Recipes",
-    "meal_role": "dessert"
+    "chapter": "Basic Recipes"
   },
   "time": {
     "prep": 20,

@@ -34,10 +34,9 @@
   "image": "/recipes/plain-congee.jpg",
   "category": {
     "dish_type": [
-      "soup"
+      "breakfast"
     ],
-    "chapter": "Rice",
-    "meal_role": "main"
+    "chapter": "Rice"
   },
   "time": {
     "prep": 15,

@@ -6,12 +6,8 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Coconut Rice with Sambal and Okra (page 230).",
+  "intro": "pulses, a spicy vegetable stew or a roasted cut of lean meat. So here’s a perfect alternative, a dish shouting",
   "ingredients": [
-    {
-      "item": "as a condiment or a side dish",
-      "amount": "6"
-    },
     {
       "item": "rice wine vinegar",
       "amount": "3 tbsp"
@@ -79,8 +75,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/cucumber-salad-with-smashed-garlic-and-ginger.jpg"
 }

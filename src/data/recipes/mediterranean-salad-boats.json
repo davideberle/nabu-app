@@ -62,7 +62,7 @@
     "Place the tomatoes, cucumber, red pepper, olives, feta, and quinoa in a large bowl and toss to combine. Place the oil, lemon juice, garlic, and oregano in a separate bowl and whisk to combine.",
     "Pour the oil mixture over the salad and toss to coat. Season to taste. Divide the salad between 4 individual plates. Top the romaine leaves with equal amounts of the mixture and serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/mediterranean-salad-boats.jpg",
   "time": {
     "total": 45
   },
@@ -71,8 +71,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

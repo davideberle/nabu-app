@@ -64,7 +64,7 @@
     "Heat the oil in a seasoned wok over a high flame. Add the pork and stir-fry until pale and just tinged with gold. Add the ginger and spring onions and stir-fry until they smell wonderful. Pour in the Shaoxing wine and let it sizzle, then add the stock and bring to the boil. Skim the liquid, then add the radish and all the other ingredients except the spring onion greens, and return to the boil. Cover the wok, turn down the heat and simmer gently for 40 minutes, stirring occasionally.",
     "To serve, remove the pork from the pot (eat it at another meal, perhaps as a topping for a bowlful of soupy noodles). Turn the heat up high to reduce the sauce. Season with a little salt if necessary. Serve with a scattering of spring onion greens."
   ],
-  "image": null,
+  "image": "/recipes/magical-radishes.jpg",
   "time": {
     "total": 40
   },
@@ -72,8 +72,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "cuisine": "Chinese"
 }

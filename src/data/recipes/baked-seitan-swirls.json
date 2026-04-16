@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "These soft, sturdy bites are perfect for dipping. They’re satisfying, with spicy seitan rolled inside. Serve these swirls with sauces of your choice. You control the heat.",
   "time": {
-    "prep": 5,
-    "cook": 15,
-    "total": 20
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -176,8 +176,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers & Snacks",
-    "meal_role": "main"
+    "chapter": "Appetizers & Snacks"
   },
   "cuisine": "Other"
 }

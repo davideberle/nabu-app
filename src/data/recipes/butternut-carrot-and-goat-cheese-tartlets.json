@@ -11,8 +11,7 @@
     "dish_type": [
       "baking"
     ],
-    "chapter": "Baking & Patisserie",
-    "meal_role": "dessert"
+    "chapter": "Baking & Patisserie"
   },
   "servings": "makes one 1-lb / 500-g loaf",
   "time": {
@@ -83,6 +82,6 @@
       "vegetarian"
     ]
   },
-  "image": null,
+  "image": "/recipes/butternut-carrot-and-goat-cheese-tartlets.jpg",
   "cuisine": "Middle Eastern"
 }

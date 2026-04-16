@@ -48,7 +48,7 @@
     "Bring a pan of water to the boil. Add the dumplings, stir once to prevent sticking, then boil for about 2 minutes, until they float to the surface. Remove with a slotted spoon, place in a bowl of cold water and set aside.",
     "Bring the stock to the boil and keep warm. Heat 1 tablespoon of the oil in a seasoned wok over a high flame, add the pork and stir-fry until just cooked. Set aside. Heat the remaining oil in the wok, add the ginger and stir-fry until it smells delicious. Add the stock and the bok choy, bring to the boil and season with salt and white pepper (remember that the dumplings are unseasoned, so the soup should be well salted). Add the dumplings and pork strips, boil to heat through, then serve."
   ],
-  "image": null,
+  "image": "/recipes/toothless-glutinous-rice-dumplings-with-pork-and-leafy-green.jpg",
   "time": {
     "total": 2
   },
@@ -56,8 +56,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Rice",
-    "meal_role": "main"
+    "chapter": "Rice"
   },
   "cuisine": "Chinese"
 }

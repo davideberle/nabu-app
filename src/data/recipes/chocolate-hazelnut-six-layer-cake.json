@@ -103,8 +103,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "image": "/recipes/chocolate-hazelnut-six-layer-cake.jpg"
 }

@@ -57,7 +57,7 @@
     "Fluff the couscous with a fork. Drizzle with the lemon juice and the remaining 1 tablespoon oil and toss until evenly coated. Transfer to a serving dish and top with the asparagus, broccolini, and fresh herbs. Serve additional Spicy Mustard Greens alongside.",
     "NOTE: For a gluten-free version, substitute 1⅓ cups quinoa for the couscous and increase the vegetable stock to 2½ cups. Follow the recipe as directed. When the stock and Spicy Mustard Greens are boiling, add the quinoa and simmer over low heat until all the liquid has been absorbed, about 15 minutes. Let sit for 5 minutes before topping with the vegetables."
   ],
-  "image": null,
+  "image": "/recipes/verdant-vegetable-couscous-with-spicy-mustard-greens.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -69,8 +69,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Grains & Legumes",
-    "meal_role": "side"
+    "chapter": "Grains & Legumes"
   },
   "cuisine": "African & Caribbean"
 }

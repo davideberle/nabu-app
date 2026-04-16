@@ -41,7 +41,7 @@
     "Turn off the heat and let the rice sit for 10 minutes. Uncover, add the coconut oil, and fluff with chopsticks or a fork to combine and to circulate the grains. Re-cover and let rest for 10 minutes, or up to 30 minutes to finish cooking. Before serving, fluff the rice again.",
     "Transfer the rice to a serving bowl or platter and let diners help themselves."
   ],
-  "image": null,
+  "image": "/recipes/vibrant-turmeric-coconut-rice.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -50,8 +50,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Rice and Noodles",
-    "meal_role": "side"
+    "chapter": "Rice and Noodles"
   },
   "cuisine": "Southeast Asian"
 }

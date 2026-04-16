@@ -9,9 +9,9 @@
   "servings": "16 squares",
   "intro": "Almonds and pepitas are two of the highest protein–packed seeds and nuts around. Combine them with even more powerhouse ingredients and you’ve got a very healthy little package.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -455,8 +455,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads",
-    "meal_role": "main"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 2",
-  "intro": "two people you’ll  need to start again with a second batch, because double quantities will be too much for",
+  "intro": "cheap, cheerful and incredibly delicious dishes from Malay, Chinese or Indian cuisines. Since everything is so",
   "ingredients": [
     {
       "item": "peanut oil",
@@ -83,8 +83,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/mee-goreng.jpg"
 }

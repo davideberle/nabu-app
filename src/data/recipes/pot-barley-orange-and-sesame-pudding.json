@@ -1,0 +1,56 @@
+{
+  "id": "pot-barley-orange-and-sesame-pudding",
+  "name": "Pot Barley, Orange, and Sesame Pudding",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "sesame seeds, a mixture of white and black or just white, toasted",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "dark muscovado sugar",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "cup/125 g pot barley, covered with cold water and soaked overnight scant 3¼ cups/750 ml whole milk",
+      "amount": "⅔"
+    },
+    {
+      "item": "vanilla bean, halved lengthwise, seeds scraped finely grated zest of ½ lemon finely grated zest of 1 orange",
+      "amount": "½"
+    },
+    {
+      "item": "tsp/10 to 20 g tahini paste salt",
+      "amount": "2 to 4"
+    },
+    {
+      "item": "medium orange, rind shaved in a single strip",
+      "amount": "1"
+    },
+    {
+      "item": "tbsp/40 g superfine sugar",
+      "amount": "3½"
+    },
+    {
+      "item": "orange blossom water",
+      "amount": "¼ tsp"
+    }
+  ],
+  "method": [
+    "Start with the orange syrup. Place the shaved strip of orange rind in a small saucepan. Add the superfine sugar and 5 tablespoons/75 ml water. Place over high heat, bring to a boil, and cook for less than 1 minute, stirring, until the sugar dissolves. Set aside to cool.",
+    "Using a small, sharp serrated knife, slice off the top and tail of the orange.",
+    "Cut down the sides of the orange, following its natural line, to remove the",
+    "skin and white pith. Over a small bowl, to capture the juice, remove the segments by slicing between the membranes. Add the segments and juice to the orange syrup in the pan along with the orange blossom water and set aside.",
+    "Put the sesame seeds in a mortar with 1 teaspoon of the muscovado sugar.",
+    "Roughly crush with a pestle and set aside.",
+    "Drain and rinse the barley. Place in a saucepan with the remaining 1 tablespoon plus ½ teaspoon muscovado sugar, the milk, vanilla bean and seeds, citrus zests, and ⅛ teaspoon salt. Place over high heat, bring to a boil, and then turn down the heat to medium-low. Simmer for 1 hour, stirring occasionally, until the barley is cooked but still has a bite. You might need to add a little bit of milk toward the end if the barley becomes very thick. Allow to cool for 5 minutes before removing the vanilla bean, spooning the pudding into bowls, and drizzling 1 teaspoon tahini over each portion. Spoon the orange segments and syrup, avoiding the rind, over the top, sprinkle with the crushed sesame seeds, and serve."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/pot-barley-orange-and-sesame-pudding.jpg"
+}

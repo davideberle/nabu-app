@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Look at the ingredients list of most Indian recipes and it’s no wonder so many people find cooking Indian food a bit daunting. This authentic Rajasthani recipe, with its list of only seven ingredients, is therefore quite unique but is in no way lacking in magnificent flavour. The meat breaks down and becomes so juicy and tender in the ghee. Be warned… this curry is really spicy. If you are not a spicy curry fan, you could use a mild paprika instead of the dried chillies and/or chilli powder.\n\nI have to admit I was rather sceptical about using so much ghee, and it might be a bit scary for some, but believe me… it is amazing. The ghee is needed as, when flavoured with the lamb, it actually becomes the sauce. Dip hot naans into the curry or spoon it over hot rice. You’re in for an incredible eating experience. Due to the amount of ghee used, stir well before serving and ensure the sauce is really hot. I like to serve this over warm rice with a twist of lime juice, kachumber salad and mint and coriander sauce.",
   "time": {
-    "prep": 10,
-    "cook": 45,
-    "total": 55
+    "prep": "10 MINS",
+    "cook": "45–60 MINS",
+    "total": "10 MINS45–60 MINS"
   },
   "ingredients": [
     {
@@ -53,8 +53,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
   "cuisine": "Indian"
 }

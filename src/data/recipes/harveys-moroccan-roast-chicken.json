@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "Paprika, fresh mint, and lemon make the best rub for this roast chicken. It roasts slowly under the foil and turns out so juicy and flavorful.",
   "time": {
-    "prep": 20,
+    "prep": "20 mins",
     "total": 130
   },
   "ingredients": [
@@ -130,8 +130,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

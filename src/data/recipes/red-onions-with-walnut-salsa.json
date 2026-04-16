@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "or at room temperature, with a spoonful of sauce on top, scattered with the",
+  "intro": "Transfer the carrots to a large serving platter or individual plates. Serve warm",
   "ingredients": [
     {
       "item": "medium red onions (1⅓ lb/600 g)",
@@ -58,11 +58,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/red-onions-with-walnut-salsa.jpg"
 }

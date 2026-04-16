@@ -59,7 +59,7 @@
     "To make the salad, place the mushrooms in a large bowl. Add the pepper flakes, and drizzle with a little of the dressing. Toss to coat. Let stand for at least 10 minutes, then add the scallions and orange segments, and gently toss to combine.",
     "When ready to serve, add the spinach and basil leaves, as well as more of the dressing. Taste, and season again, if needed. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/mixed-mushroom-and-orange-salad.jpg",
   "time": {
     "total": 45
   },
@@ -68,8 +68,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

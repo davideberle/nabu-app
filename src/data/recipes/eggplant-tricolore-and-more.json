@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "cuisine. That’s it, I’ve said it. Now feel free to substitute good old basil for the cilantro.",
+  "intro": "I hope all Italians will be able to forgive me for this – the sacrilegious use of cilantro in a very Italian dish. In",
   "ingredients": [
     {
       "item": "medium eggplants olive oil",
@@ -52,8 +52,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/eggplant-tricolore-and-more.jpg"
 }

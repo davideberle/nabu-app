@@ -49,7 +49,7 @@
   "method": [
     "Use a mortar and pestle to smash together the chile with 1 teaspoon of the lemon juice; you want to get a rough-looking paste. Transfer this to a large bowl along with all the other ingredients. Use your hands to mix everything together well so that all the flavors get massaged into the lemons. Leave in a covered bowl overnight, then transfer to a sterilized sealed jar (SEE RECIPE FOR PRESERVED LEMONS) the next day. The lemon will keep in the fridge for up to 2 weeks."
   ],
-  "image": null,
+  "image": "/recipes/quick-pickled-lemons.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -58,8 +58,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments",
-    "meal_role": "main"
+    "chapter": "Condiments"
   },
   "time": {
     "prep": 20,

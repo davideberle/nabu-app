@@ -9,9 +9,9 @@
   "servings": "serves 2–3",
   "intro": "There’s something about tomatoes and jammy shallots on toast. When tomatoes and onions are roasted and slightly charred they become smoky and create a wonderful sticky texture. This serves a few, but it is also a very good solo breakfast for one. The tomatoes keep well in the fridge and work wonderfully in a grilled cheese sandwich the next day.",
   "time": {
-    "prep": 10,
-    "cook": 25,
-    "total": 35
+    "prep": "10 MINUTESCOOK TIME: 25 MINUTES",
+    "cook": "25 MINUTES",
+    "total": "10 MINUTESCOOK TIME: 25 MINUTES25 MINUTES"
   },
   "ingredients": [
     {
@@ -95,8 +95,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Dreams",
-    "meal_role": "main"
+    "chapter": "Dreams"
   },
   "cuisine": "Caribbean"
 }

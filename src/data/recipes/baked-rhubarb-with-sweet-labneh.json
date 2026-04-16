@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "chopped pistachios and put 3 or 4 black currants on top of each friand, if you",
+  "intro": "Pour the batter into the muffin tin so that it rises two-thirds up the sides of",
   "ingredients": [
     {
       "item": "cups/800 g natural yogurt",
@@ -50,11 +50,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/baked-rhubarb-with-sweet-labneh.jpg"
 }

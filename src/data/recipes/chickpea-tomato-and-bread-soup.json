@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "can reduce or increase the amount of liquid to achieve your perfect consistency.",
+  "intro": "filling meal in a bowl after which you don’t need much – maybe just a little pillow to rest your head on. You",
   "ingredients": [
     {
       "item": "large onion, sliced",
@@ -85,25 +85,7 @@
     "Ladle the hot soup into bowls. Spoon some pesto in the center, drizzle with plenty of olive oil and finish with a generous amount of freshly shredded basil, if you like.",
     "When this recipe was first published I used young pecorino cheese in it so as not to outdo the asparagus.",
     "I have since realized that fresh asparagus actually withstands quite a lot and can impart its flavor over pretty gutsy dishes. A flavorful sheep's cheese is ideal with the earthy lentils.",
-    "Green lentils, asparagus and watercress",
-    "Serves 4 generously",
-    "1 cup green lentils",
-    "4 cups watercress (thick stalks removed)",
-    "³ cup light olive oil",
-    "1 tbsp red wine vinegar",
-    "1 garlic clove, peeled salt and black pepper",
-    "1 large bunch thin asparagus spears",
-    "½ oz semi-mature pecorino (or one of the more full-bodied varieties of",
-    "Manchego), broken into chunks walnut oil to finish (optional)",
-    "Wash the lentils in cold water, then place in a saucepan with plenty of fresh water and bring to the boil. Simmer for 15 minutes, or until the lentils are just cooked but haven’t started to disintegrate.",
-    "While the lentils are cooking, put half the watercress, the parsley, olive oil, vinegar, garlic and some salt and pepper into a food processor. Blitz until smooth. Pour into a bowl.",
-    "As soon as the lentils are cooked drain them well and mix them, while still hot, with the watercress dressing. Taste and adjust the seasoning; you will probably need more salt.",
-    "Cook the asparagus in simmering salted water for 2 to 3 minutes; drain. Cut the spears into roughly 2",
-    "½-inch-long segments.",
-    "You can serve the salad warm or at room temperature. Toss together the lentils, asparagus and most of the remaining watercress. Add pieces of cheese as you plate the salad.",
-    "Drizzle with walnut oil, if using, and garnish with the reserved watercress. Serve with wedges of lemon.",
-    "My friend and colleague, Helen Goh, is a bit of food encyclopedia. I am always astounded by how much she knows and how effortlessly she accesses her knowledge. After suggesting that I try this dish, which she hadn’t cooked for years, Helen went on to rapidly recite the long list of ingredients and quantities as if she were reading from her notes. She didn’t miss a single item!",
-    "Spiced red lentils with cucumber yogurt"
+    "Green lentils, asparagus and watercress"
   ],
   "time": {
     "total": 30
@@ -112,8 +94,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/chickpea-tomato-and-bread-soup.jpg"
 }

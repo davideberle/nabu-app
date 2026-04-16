@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Crispy samosas right out of the hot oil take this popular chaat to a whole new level. You could use any samosas, even shop-bought, but why miss out on the fun of making them yourself? This is an excellent way to use up leftover samosas. However, your samosa chaat will be better if you make the samosas just before serving.\n\nSamosa chaat is so popular in India and it is now being seen on many more Indian restaurant menus in the West as well. In fact, this easy recipe has become a must at my cooking classes. People just love it! Samosa chaat might be seen more often on Western menus these days, but it’s still not one that jumps off the page and says ‘try me!’ Once tried, however, there’s no going back. This simple recipe is one of my all-time favourites.",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 5
+    "prep": "5 MINS, PLUS MAKING THE SAMOSAS IF USING HOMEMADE",
+    "cook": "10 MINS",
+    "total": "5 MINS, PLUS MAKING THE SAMOSAS IF USING HOMEMADE10 MINS"
   },
   "ingredients": [
     {
@@ -47,7 +47,7 @@
     "Place two hot samosas in the centre of each of four serving plates. (If using shop-bought or leftover samosas, you could microwave them until hot, or better, place them in an oven preheated to 200°C (400°F/Gas 6) for about 10 minutes.) You could leave the samosas whole or break them up a bit.",
     "Cover the samosas with the chickpeas and onion. Top with mint and coriander sauce, yoghurt sauce and tamarind sauce. To finish, cover generously with fine sev."
   ],
-  "image": null,
+  "image": "/recipes/samosa-chaat.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -56,9 +56,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Starters & Snacks",
-    "meal_role": "main"
+    "chapter": "Starters & Snacks"
   },
-  "cuisine": "Indian",
-  "tips": "Note: MAKING THE SAMOSAS IF USING HOMEMADE; MAKING THE SAMOSAS IF USING HOMEMADE10 MINS."
+  "cuisine": "Indian"
 }

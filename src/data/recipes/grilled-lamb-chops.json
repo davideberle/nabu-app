@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Sometimes simplicity is best, and that is certainly the case with the famous lamb chops served at Lahore Kebab House in Shoreditch. After trying their lamb chops on a visit there, I arranged to meet Emran Siddique, one of the owners, to find out how they were prepared. I guess you could say I needed that recipe! These delicious marinated lamb chops are cooked over a flame grill, which produces a tasty char. Lahore uses only top-quality ingredients and marinates the lamb for three days. This makes all the difference. These lamb chops are out-of-this-world gorgeous! I recommend serving them with cucumber raita and lime wedges.",
   "time": {
-    "prep": 15,
-    "cook": 15,
-    "total": 15
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "15 MINS",
+    "total": "15 MINS, PLUS MARINATING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -72,14 +72,13 @@
     "Whisk the yoghurt until nice and creamy, then pour it over the meat, massaging it right into the flesh, ensuring every piece is coated. As you massage the yoghurt into the meat, it will take on the colours of the spices in the marinade. Marinate the meat for 24–72 hours. (You could marinate for a shorter time, but the longer the better.)",
     "When ready to cook, set up the barbecue for direct heat cooking, until the coals are extremely hot. Grill each lamb chop until nicely charred underneath, then flip over and do the same on the other side. When nicely blackened, remove from the heat to rest for about 5 minutes. Season with salt and black pepper and serve garnished with coriander (cilantro)."
   ],
-  "tips": "The chargrilled exterior of these lamb chops is one of the things that makes them so delicious. I don’t recommend pan-frying. Note: MARINATING TIME; MARINATING TIME15 MINS.",
+  "tips": "The chargrilled exterior of these lamb chops is one of the things that makes them so delicious. I don’t recommend pan-frying.",
   "image": "/recipes/grilled-lamb-chops.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Street Food",
-    "meal_role": "main"
+    "chapter": "Street Food"
   },
   "cuisine": "Indian"
 }

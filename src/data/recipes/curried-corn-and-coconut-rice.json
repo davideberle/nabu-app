@@ -56,7 +56,7 @@
     "Warm the oil in a medium sauté pan over medium heat. Add the garlic, curry powder, and the remaing ¼ teaspoon salt and sauté until fragrant, about 2 minutes. Add the corn and sauté until heated through, 3 to 5 minutes.",
     "To serve, spoon the corn over the rice."
   ],
-  "image": null,
+  "image": "/recipes/curried-corn-and-coconut-rice.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -68,8 +68,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Grains & Legumes",
-    "meal_role": "side"
+    "chapter": "Grains & Legumes"
   },
   "cuisine": "African & Caribbean"
 }

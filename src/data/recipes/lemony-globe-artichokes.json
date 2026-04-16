@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "on its own or with some good mayonnaise.",
+  "intro": "This is a majestic dish, perfect for starting off a light summer’s supper. Eat it warm or at room temperature,",
   "ingredients": [
     {
       "item": "medium globe artichokes",
@@ -61,25 +61,7 @@
     "Transfer the warm artichokes to serving plates and remove the string. Pile the lemony peas on top, drizzle generously with oil and serve.",
     "170 | Green Things",
     "Verjus, or verjuice, is a sour juice made from unripe grapes. It was very popular in medieval times and is still used for making sauces in a few traditional French dishes. I was reminded of it by Ramael Scully, the former evening chef of Ottolenghi in Islington. Scully trained as a chef in Australia, where verjus has been regaining popularity in recent years as an alternative to vinegar in sauces and dressings, mainly thanks to the food writer Maggie Beer. Here, reduced verjus, with its sweetness and mild acidity, works wonders with raw vegetables.",
-    "Asparagus, fennel and beets with verjus",
-    "Serves 4 as a starter",
-    "4 mini beets (about",
-    "4 tbsp grapeseed oil salt and black pepper",
-    "4 to 5 oz fresh pencil-thin asparagus, or normal asparagus",
-    "½ large fennel bulb (¼ lb), halved vertically",
-    "¼ cup pine nuts, toasted",
-    "1 tbsp dill leaves to garnish",
-    "Preheat the oven to 400°F. Trim most of the stalk from the beets, leaving a little at the top of each beet for the look. Put them into an ovenproof dish, cover it with foil and bake for about",
-    "45 minutes, or until the beets are cooked through. Remove from the oven and leave to cool down before cutting into halves or quarters (you may want to peel them if the skin is tough).",
-    "Pour the verjus into a small saucepan, bring to a light simmer and leave it to reduce to about 3 tablespoons. Transfer to a mixing bowl and allow to cool down, then whisk in the grapeseed oil and salt and pepper to taste. Put aside.",
-    "If using normal asparagus, cut the spears on a sharp angle into long and very thin slices, or use a potato peeler to make",
-    "“shavings.” Place the fennel half cut-side down on a mandolin and shave into paper-thin slices. The slices will have a hand shape.",
-    "To assemble, arrange the vegetables on small serving plates.",
-    "Scatter the pine nuts on top and drizzle over the dressing. Garnish with dill and serve.",
-    "172 | Green Things",
-    "Goat's curd, a light cheese made from goat’s milk, is known for its soft and creamy, yet not terribly unctuous, texture and for its wonderful freshness. It’s hard to get, though. You'll want to ask around at your local farmers' market or a good cheese shop.",
-    "Still, there is no need to get despondent if you can’t find it. There is an abundance of young and fresh goat cheeses that will do the trick equally well. My favorite is Caprini freschi, from Piedmont in Italy.",
-    "Caramelized fennel with goat cheese"
+    "Asparagus, fennel and beets with verjus"
   ],
   "time": {
     "total": 30
@@ -88,8 +70,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/lemony-globe-artichokes.jpg"
 }

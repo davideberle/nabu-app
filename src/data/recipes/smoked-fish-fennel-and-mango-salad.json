@@ -59,7 +59,7 @@
     "Flake the mackerel into bite-sized chunks, and slice the trout into chunky strips. Arrange the fish on a plate, add the fennel and mango slices, and sprinkle over the pomegranate seeds.",
     "When ready to serve, drizzle with the dressing, and serve with slices of fresh whole-wheat or other dark bread."
   ],
-  "image": null,
+  "image": "/recipes/smoked-fish-fennel-and-mango-salad.jpg",
   "time": {
     "total": 45
   },
@@ -67,8 +67,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish & Seafood",
-    "meal_role": "main"
+    "chapter": "Fish & Seafood"
   },
   "cuisine": "Other"
 }

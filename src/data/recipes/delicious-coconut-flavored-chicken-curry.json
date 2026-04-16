@@ -64,11 +64,5 @@
   "time": {
     "total": 180
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/delicious-coconut-flavored-chicken-curry.jpg"
 }

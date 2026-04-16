@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "and red onion, lightly dressed with garlic, olive oil and white wine vinegar.",
+  "intro": "I say, enjoy this pie fully! I suggest serving it warm or at room temperature with a simple salad of tomato",
   "ingredients": [
     {
       "item": "puff pastry",
@@ -73,8 +73,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "",
-    "meal_role": "dessert"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/broccoli-and-gorgonzola-pie.jpg"
 }

@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "There has to be a rice bowl in your repertoire. It’s such a good way to enjoy so many different kinds of fruits and veggies. This rice bowl showcases the tastes of the tropics.",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 15
+    "prep": "5 minutes",
+    "cook": "10 minutes",
+    "total": "15 minutes"
   },
   "ingredients": [
     {
@@ -1302,8 +1302,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Soups & Stews",
-    "meal_role": "side"
+    "chapter": "Soups & Stews"
   },
   "cuisine": "Other"
 }

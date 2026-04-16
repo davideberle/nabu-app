@@ -106,7 +106,7 @@
     "Finally, open up the pitas, tearing the two sides apart. Place under a hot broiler for 2 minutes, until golden and completely dry. Allow to cool down before breaking into odd-shaped pieces.",
     "Divide the hummus among four individual shallow bowls; don’t level it or press it down, you want the height. Spoon over the warm chickpeas, followed by the tahini sauce, the lemon sauce, and a drizzle of olive oil. Garnish with the parsley and a sprinkle of paprika and serve, accompanied with the toasted pita pieces."
   ],
-  "image": null,
+  "image": "/recipes/musabaha-warm-chickpeas-with-hummus-and-toasted-pita.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -118,8 +118,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Pulses & Grains",
-    "meal_role": "starter"
+    "chapter": "Pulses & Grains"
   },
   "cuisine": "Middle Eastern"
 }

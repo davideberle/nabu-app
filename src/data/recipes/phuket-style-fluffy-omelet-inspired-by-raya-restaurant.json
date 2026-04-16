@@ -27,11 +27,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/phuket-style-fluffy-omelet-inspired-by-raya-restaurant.jpg"
 }

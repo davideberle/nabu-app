@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I’ve learned so much from my friend Chef Palash Mitra over the past few years. This recipe is one I simply had to share with you. The tender chunks of chicken are awesome served on their own with a tasty raita. It is equally as good added to a curry, such as the butter chicken.\n\nBefore I watched Palash prepare this marinade, I used to simply throw my marinades together in a couple of minutes. Palash took his time and blended the ingredients together by hand into a smooth emulsion. It is obvious he loves what he does, and his meticulous style and attention to detail really do make a big difference. These kebabs are featured in the photograph.",
   "time": {
-    "prep": 15,
-    "cook": 15,
-    "total": 15
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "15 MINS",
+    "total": "15 MINS, PLUS MARINATING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -91,14 +91,13 @@
     "Work these ingredients together with your hands until they are completely emulsified. This takes about 5 minutes. Mix into the chicken, cover and marinate in the fridge for 24 hours.",
     "To cook the chicken, thread the pieces onto skewers and grill, using the direct heat method, until lightly charred on the underside. Flip over the chicken skewers and grill the other side until cooked through. Alternately, bake in the oven at 200°C (400°F/Gas 6) for 6–8 minutes, or until cooked through."
   ],
-  "tips": "Palash adds 1 teaspoon of sandalwood powder to his marinade. It isn’t easy to find but if you come across some, give it a go! Note: MARINATING TIME; MARINATING TIME15 MINS.",
-  "image": null,
+  "tips": "Palash adds 1 teaspoon of sandalwood powder to his marinade. It isn’t easy to find but if you come across some, give it a go!",
+  "image": "/recipes/tandoori-murgh-malai-tikka.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Street Food",
-    "meal_role": "main"
+    "chapter": "Street Food"
   },
   "cuisine": "Indian"
 }

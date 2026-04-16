@@ -9,7 +9,7 @@
   "servings": "12 servings",
   "intro": "Serve this to folks who never eat eggplant. They will be amazed. Serve at room temperature with wheat crackers.",
   "time": {
-    "prep": 20,
+    "prep": "20 mins",
     "total": 30
   },
   "ingredients": [
@@ -68,8 +68,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Starters & Appetizers",
-    "meal_role": "starter"
+    "chapter": "Starters & Appetizers"
   },
   "cuisine": "Moroccan"
 }

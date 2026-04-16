@@ -50,10 +50,6 @@
     {
       "item": "Parmesan cheese",
       "amount": "1/2 cup"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -61,12 +57,7 @@
     "Over medium heat, melt butter in a large skillet. Cook garlic and mushrooms for 5 minutes, stirring occasionally.",
     "Add salt, pepper, broth, lemon juice and parsley. Cook 3 minutes, stirring occasionally.",
     "Leave skillet uncovered, add catfish and simmer until fish flakes easily with fork, about 6 to 8 minutes. Sauce will",
-    "be thin. Serve over spaghetti and sprinkle with Parmesan cheese. If desired, garnish with parsley and lemon pieces.",
-    "(47) Orzo Shrimp Stew",
-    "You can never have too much seafood, and this recipe of orzo shrimp stew is a great way to make the most of your",
-    "fish and shellfish collection. This dish is quick, easy to prepare, and flavorful. It also reheats well, so you can make",
-    "it part of a weeknight meal.",
-    "Yield:"
+    "be thin. Serve over spaghetti and sprinkle with Parmesan cheese. If desired, garnish with parsley and lemon pieces."
   ],
   "time": {
     "total": 46
@@ -75,8 +66,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "",
-    "meal_role": "component"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/catfish-with-lemon-and-butter-sauce.jpg"
 }

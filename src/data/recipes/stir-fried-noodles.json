@@ -109,8 +109,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "image": "/recipes/stir-fried-noodles.jpg",
   "cuisine": "Southeast Asian"

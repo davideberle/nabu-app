@@ -54,10 +54,6 @@
     {
       "item": "Salt and black pepper, to taste",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -68,12 +64,7 @@
     "heat, occasionally stir, until they brown and nearly crisp, about 5 minutes. Stir and add the onion. Cook on low heat,",
     "stirring occasionally, till softened, about 5 minutes.",
     "Toss everything in the baking dish. Add in the ricotta and Parmesan cheese and stir to combine.",
-    "Bake in a preheated to 350 F oven for 10 minutes or until the cheese turns golden.",
-    "(20) Cheese Manicotti",
-    "Cheese Manicotti is a classic cheesy Italian dish with pasta shells stuffed with mozzarella and ricotta cheeses. The",
-    "traditional version of this dish has a tomato sauce, meat and vegetables, and this recipe omits them for the sake of",
-    "simplicity. This makes it the perfect weeknight meal recipe to make in your slow cooker or Instant Pot.",
-    "Yield: 6"
+    "Bake in a preheated to 350 F oven for 10 minutes or until the cheese turns golden."
   ],
   "time": {
     "total": 70
@@ -82,8 +73,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/baked-pasta-with-broccoli-olives-and-pancetta.jpg"
 }

@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "There’s nothing like a casserole baking in the oven, and this one smells so good. With two different sauces, along with the veggies and tortillas, this dinner is a quadruple win.",
   "time": {
-    "prep": 5,
-    "cook": 40,
-    "total": 45
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
   },
   "ingredients": [
     {
@@ -1583,8 +1583,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Courses",
-    "meal_role": "main"
+    "chapter": "Main Courses"
   },
   "cuisine": "Other"
 }

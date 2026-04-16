@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "Kousa means “squash” or “zucchini” in Arabic, and it is one of the vegetables that is most commonly cored and stuffed with ground beef. The stuffed kousa are then either simmered in a rich tomato sauce or a yogurt sauce. I personally always gravitate to warm, cooked yogurt dishes, and this is one of my favorites. But instead of going through the process of coring and stuffing the zucchini, which can be very time-consuming, I make a deconstructed version on the advice of my Syrian friend Nadia (who is an excellent cook).",
   "time": {
-    "prep": 15,
-    "cook": 45,
-    "total": 60
+    "prep": "15 minutes",
+    "cook": "45 minutes",
+    "total": "15 minutes45 minutes"
   },
   "ingredients": [
     {
@@ -111,8 +111,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: 1 Hour",
-    "meal_role": "main"
+    "chapter": "Main Dishes: 1 Hour"
   },
   "subtitle": "UNSTUFFED ZUCCHINI IN YOGURT",
   "cuisine": "Middle Eastern"

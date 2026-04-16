@@ -9,9 +9,9 @@
   "servings": "16 squares",
   "intro": "Not only are these bars gorgeous, but they travel really well, too. The ingredients are fun because they contain just about every nut and seed that you can think of.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -545,8 +545,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads",
-    "meal_role": "main"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

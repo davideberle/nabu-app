@@ -28,7 +28,7 @@
     "Boil the kettle. Melt the lard or coconut oil in a deep pan. Add the beans, sugar and ⅓ cup (75ml) hot water and heat gently to dissolve the sugar, stirring constantly. Increase the heat and stir constantly until the paste is thick and glossy and the water has mostly evaporated, stirring and scraping the bottom of the pan so it doesn’t catch. When the paste is ready, it will start to come away from the base of the pan. Do take care while stirring, as the hot paste will spit as it bubbles. Turn the paste into a container and leave to cool. Store in the fridge.",
     "This delectable variation is made with dried jujubes (also known as Chinese dates), and can be used instead of red bean paste in, for example, the pumpkin cakes here and the rice pudding here. To make it, split open 10 oz (300g) dried jujubes. Soak them in water for 1 hour. Drain them, put them in a bowl and steam over a high flame for about 30 minutes, until tender. When cool enough to handle, remove and discard the stones, then pass through a mouli-legumes. Place in a pan with 3 oz (70g) lard or coconut oil, ½ cup (100g) sugar and ⅓ cup (75ml) water. Stir constantly over a medium flame to melt the sugar and evaporate the water, as in the main recipe. Makes about 16 oz (450g) paste."
   ],
-  "image": null,
+  "image": "/recipes/red-bean-paste.jpg",
   "time": {
     "total": 135
   },
@@ -36,8 +36,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basic Recipes",
-    "meal_role": "main"
+    "chapter": "Basic Recipes"
   },
   "cuisine": "Chinese"
 }

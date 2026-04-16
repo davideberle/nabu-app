@@ -55,11 +55,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/steamed-eggplant-with-sesame-and-green-onion.jpg"
 }

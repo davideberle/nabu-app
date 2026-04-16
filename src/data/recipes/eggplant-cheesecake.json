@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "temperature, sprinkled with parsley, if you like. The kuku will keep in the",
+  "intro": "to 14 minutes, until the eggplant is completely soft. Leave aside to cool down.",
   "ingredients": [
     {
       "item": "plus 1 tsp/65 ml olive oil, plus extra for brushing foil",
@@ -58,11 +58,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/eggplant-cheesecake.jpg"
 }

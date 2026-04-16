@@ -5,7 +5,7 @@
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
+  "servings": "serves 16",
   "ingredients": [
     {
       "item": "cups/250 g quinoa",
@@ -96,11 +96,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/quinoa-and-wild-garlic-cakes-with-salbitxada-sauce.jpg"
 }

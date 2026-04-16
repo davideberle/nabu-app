@@ -9,9 +9,9 @@
   "servings": "makes enough to serve 8–10",
   "intro": "You don’t need a tandoor oven to make great-tasting, fluffy naans. Sure, it’s nice to use a tandoor, and I often do, but this pan method is much easier and worth a try. I guarantee you that the naans you make at home on your hob will be just as good as most takeaways, if not better.",
   "time": {
-    "prep": 15,
-    "cook": 20,
-    "total": 15
+    "prep": "15 MINS, PLUS RISING TIME",
+    "cook": "20 MINS",
+    "total": "15 MINS, PLUS RISING TIME20 MINS"
   },
   "ingredients": [
     {
@@ -75,9 +75,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts & Drinks",
-    "meal_role": "main"
+    "chapter": "Desserts & Drinks"
   },
-  "cuisine": "Indian",
-  "tips": "Note: RISING TIME; RISING TIME20 MINS."
+  "cuisine": "Indian"
 }

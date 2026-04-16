@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Vegetable pakoras can be made in lots of ways with many different variations. In fact, if you have tried the onion bhaji recipe opposite, it can be made into vegetable pakoras too. Simply follow that recipe and add a few chopped vegetables of choice and voilà… you’ve got vegetable pakoras! Below is a recipe that is completely different to that one but just as delicious. If you want to make this recipe gluten-free, just leave out the panko breadcrumbs.",
   "time": {
-    "prep": 15,
-    "cook": 15,
-    "total": 30
+    "prep": "15 MINS",
+    "cook": "15 MINS",
+    "total": "15 MINS15 MINS"
   },
   "ingredients": [
     {
@@ -79,7 +79,7 @@
     "Heat about 10cm (4in) of oil in a large saucepan or wok to 180°C (355°F). If you don’t have an oil thermometer, the oil is ready when a small piece of the battered vegetables sizzles immediately and rises to the top. You might need to cook the pakoras in batches. Fry until they are crispy, brown and cooked through. This will take about 4 minutes. Serve hot with pakora sauce."
   ],
   "tips": "In this recipe I give measurements in both grams and US cups but there’s no need to go rifling through your cupboards for your kitchen scales or cup measures! This isn’t that kind of cooking. Just use any tea cup and adjust, adding more or less of the vegetables should you wish to do so.",
-  "image": null,
+  "image": "/recipes/vegetable-pakoras.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -88,8 +88,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics & Breads",
-    "meal_role": "main"
+    "chapter": "Basics & Breads"
   },
   "cuisine": "Indian"
 }

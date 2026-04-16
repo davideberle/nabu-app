@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "want to roast them as I describe, or keep fresh. With or without hazelnuts, this makes the most luxurious",
+  "intro": "but are worth using for this salad if you can get them. Try them first and decide for yourself whether you",
   "ingredients": [
     {
       "item": "small zucchini (1",
@@ -54,8 +54,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "side"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/zucchini-and-hazelnut-salad.jpg"
 }

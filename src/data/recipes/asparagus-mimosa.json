@@ -1,0 +1,41 @@
+{
+  "id": "asparagus-mimosa",
+  "name": "Asparagus mimosa",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "This traditional way with asparagus is probably my favorite. It is simple and therefore relies on the quality",
+  "ingredients": [
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "of medium asparagus",
+      "amount": "2 bunches"
+    },
+    {
+      "item": "good-quality olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "small capers, drained",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "Maldon sea salt black pepper",
+      "amount": "1 tsp"
+    }
+  ],
+  "method": [
+    "Drain and, while still warm but not hot, divide among four serving plates. Drizzle the oil over the asparagus and sprinkle with the capers, salt and some pepper. Top with the grated egg, staying close to the center of the stalks so that the tips and bases remain visible.",
+    "Here asparagus spears are simply cooked on a ridged griddle pan. The fact that they are not boiled means that they keep more of their original flavor. The texture, though, is slightly more sinewy than when boiling or steaming. I suggest using a mild feta, not too salty, or another type of mild sheep's cheese from the Balkans (see Dates and Turkish Sheep's Cheese, page 280). Serve warm, as a starter, or as part of a mezze spread.",
+    "Char-grilled asparagus"
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/asparagus-mimosa.jpg"
+}

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "salt. Stir well, sprinkle the lime zest over the top, and serve at once, with the",
+  "intro": "over high heat, stirring frequently, until the onions soften a little but don’t turn",
   "ingredients": [
     {
       "item": "oz/40 g dried sea spaghetti or another dried seaweed",
@@ -69,11 +69,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/seaweed-ginger-and-carrot-salad.jpg"
 }

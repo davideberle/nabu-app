@@ -9,9 +9,9 @@
   "servings": "4 to 6 servings",
   "intro": "There’s no dish more universal than chicken and potatoes. I make some version of it on a weekly basis, with eyeballed measurements and throwing in what I have on hand. This recipe was made using my mom’s baharat spice blend from her famous Chicken Biryani (here). This is an easy, hands-off meal that is bursting with flavor. Don’t forget to mop up the juices with a piece of bread.",
   "time": {
-    "prep": 10,
-    "cook": 60,
-    "total": 70
+    "prep": "10 minutes",
+    "cook": "1 hour",
+    "total": "10 minutes1 hour"
   },
   "ingredients": [
     {
@@ -103,8 +103,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: 1 Hour",
-    "meal_role": "main"
+    "chapter": "Main Dishes: 1 Hour"
   },
   "cuisine": "Middle Eastern"
 }

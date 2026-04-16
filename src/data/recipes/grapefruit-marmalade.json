@@ -29,13 +29,12 @@
     "Add lemon juice and simmer for another 5 minutes.",
     "Pour into sterilized jars and seal tightly."
   ],
-  "image": null,
+  "image": "/recipes/grapefruit-marmalade.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Sweet Ends",
-    "meal_role": "main"
+    "chapter": "Sweet Ends"
   },
   "cuisine": "Greek"
 }

@@ -55,7 +55,7 @@
     "Add the mushrooms to the pot and rewarm the soup over medium heat, stirring frequently to prevent scorching, for 5 to 10 minutes, until the mushrooms are plump and the flavors have melded. If necessary, add water to thin the soup or simmer to thicken it.",
     "Divide the soup among four bowls. For a savory hit, garnish with a tiny pinch of salt, add a small drizzle of chile oil, and sprinkle with the cilantro. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/velvety-corn-and-coconut-soup.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -64,8 +64,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups",
-    "meal_role": "main"
+    "chapter": "Soups"
   },
   "cuisine": "Southeast Asian"
 }

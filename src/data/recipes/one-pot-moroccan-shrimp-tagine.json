@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "The rich, exotic flavors of Morocco shine through in this delicious, one-pot shrimp tagine dish! Serve over prepared couscous.",
   "time": {
-    "prep": 20,
+    "prep": "20 minutes",
     "total": 30
   },
   "ingredients": [
@@ -107,8 +107,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

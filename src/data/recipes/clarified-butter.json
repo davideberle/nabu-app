@@ -35,13 +35,12 @@
     "Skim the surface foam, then slowly pour the clear butter into a clean container, leaving the solids on the bottom of the pan.",
     "Cover and refrigerate indefinitely."
   ],
-  "image": null,
+  "image": "/recipes/clarified-butter.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics",
-    "meal_role": "main"
+    "chapter": "Basics"
   },
   "cuisine": "Greek"
 }

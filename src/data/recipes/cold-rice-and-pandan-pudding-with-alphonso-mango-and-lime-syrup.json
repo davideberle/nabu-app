@@ -1,6 +1,6 @@
 {
   "id": "cold-rice-and-pandan-pudding-with-alphonso-mango-and-lime-syrup",
-  "name": "Cold Rice and Pandan Pudding with Alphonso Mango and Lime Syrup",
+  "name": "Cold Rice And Pandan Pudding With Alphonso Mango And Lime Syrup",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -66,11 +66,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "dessert"
-    ],
-    "chapter": "",
-    "meal_role": "dessert"
-  }
+  "image": "/recipes/cold-rice-and-pandan-pudding-with-alphonso-mango-and-lime-syrup.jpg"
 }

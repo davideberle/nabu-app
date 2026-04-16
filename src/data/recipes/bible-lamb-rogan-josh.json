@@ -14,88 +14,31 @@
     "total": 20
   },
   "ingredients": [
-    {
-      "item": "rapeseed (canola) oil or seasoned oil",
-      "amount": "4 tbsp"
-    },
-    {
-      "item": "garlic and ginger paste",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "paprika",
-      "amount": "2 tbsp"
-    },
-    {
-      "item": "chilli powder, or more to taste",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "tomato purée",
-      "amount": "125ml (½ cup)"
-    },
-    {
-      "item": "base curry sauce, heated",
-      "amount": "500ml (2 cups)"
-    },
-    {
-      "item": "ground cumin",
-      "amount": "1 tbsp"
-    },
-    {
-      "item": "mixed powder",
-      "amount": "1½ tbsp"
-    },
-    {
-      "item": "pre-cooked stewed lamb, plus 200ml (generous ¾ cup) of its cooking stock",
-      "amount": "700g (1lb 9oz)"
-    },
-    {
-      "item": "tomatoes, quartered",
-      "amount": "2"
-    },
-    {
-      "item": "raw cashew paste",
-      "amount": "2–3 tbsp"
-    },
-    {
-      "item": "plain yoghurt, plus extra to garnish",
-      "amount": "3 tbsp"
-    },
-    {
-      "item": "dried fenugreek leaves (kasoori methi)",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "garam masala",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "Salt, to taste",
-      "amount": ""
-    },
-    {
-      "item": "chopped coriander (cilantro) leaves",
-      "amount": "3 tbsp"
-    },
-    {
-      "item": "Chopped red onion, to garnish",
-      "amount": ""
-    }
+    { "item": "rapeseed (canola) oil or seasoned oil", "amount": "4 tbsp" },
+    { "item": "garlic and ginger paste", "amount": "2 tbsp" },
+    { "item": "paprika", "amount": "2 tbsp" },
+    { "item": "chilli powder, or more to taste", "amount": "1 tsp" },
+    { "item": "tomato pur\u00e9e", "amount": "125ml (\u00bd cup)" },
+    { "item": "base curry sauce, heated", "amount": "500ml (2 cups)" },
+    { "item": "ground cumin", "amount": "1 tbsp" },
+    { "item": "mixed powder", "amount": "1\u00bd tbsp" },
+    { "item": "pre-cooked stewed lamb, plus 200ml (generous \u00be cup) of its cooking stock", "amount": "700g (1lb 9oz)" },
+    { "item": "tomatoes, quartered", "amount": "2" },
+    { "item": "raw cashew paste", "amount": "2\u20133 tbsp" },
+    { "item": "plain yoghurt, plus extra to garnish", "amount": "3 tbsp" },
+    { "item": "dried fenugreek leaves (kasoori methi)", "amount": "1 tsp" },
+    { "item": "garam masala", "amount": "1 tsp" },
+    { "item": "Salt, to taste", "amount": "" },
+    { "item": "chopped coriander (cilantro) leaves", "amount": "3 tbsp" },
+    { "item": "Chopped red onion, to garnish", "amount": "" }
   ],
   "method": [
-    "Heat the oil in a large frying pan over a medium–high heat until hot. Add the garlic and ginger paste and let it sizzle for about 30 seconds, stirring continuously. Add the paprika and chilli powder and fry for about 30 seconds. The mixture should turn a darker red as it cooks. Pour in the tomato purée, which should start to bubble as soon as it hits the pan. Cook it down by about half, then stir in 250ml (1 cup) of the base curry sauce, the cumin and mixed powder.",
+    "Heat the oil in a large frying pan over a medium\u2013high heat until hot. Add the garlic and ginger paste and let it sizzle for about 30 seconds, stirring continuously. Add the paprika and chilli powder and fry for about 30 seconds. The mixture should turn a darker red as it cooks. Pour in the tomato pur\u00e9e, which should start to bubble as soon as it hits the pan. Cook it down by about half, then stir in 250ml (1 cup) of the base curry sauce, the cumin and mixed powder.",
     "Allow the sauce to simmer for about 2 minutes, without stirring unless it is obviously catching on the pan. Some of the sauce should caramelize to the sides of the pan; you want to scrape it off from time to time as it adds a nice smoky flavour. Add the pre-cooked lamb and the rest of the base sauce with the stock.",
     "Let the sauce come to a boil until it reduces to your preferred consistency, only stirring if it is catching. Add the tomato wedges to the sauce.",
     "To serve, swirl in the cashew paste, then add the yoghurt 1 tablespoon at a time, stirring continuously. Sprinkle with the dried fenugreek leaves (kasoori methi) and garam masala and season with salt. Top with coriander (cilantro) and garnish with chopped red onion and a little plain yoghurt."
   ],
   "image": "/recipes/bible-lamb-rogan-josh.jpg",
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "Recipes",
-    "meal_role": "main"
-  },
+  "category": { "dish_type": ["main"], "chapter": "Recipes" },
   "cuisine": "Indian"
 }

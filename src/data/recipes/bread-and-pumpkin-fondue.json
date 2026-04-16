@@ -1,0 +1,70 @@
+{
+  "id": "bread-and-pumpkin-fondue",
+  "name": "Bread And Pumpkin “fondue”",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "loosely around the filling into an airy ball, so all the filling is covered. Repeat",
+  "ingredients": [
+    {
+      "item": "oz/350 g sourdough bread, sliced into pieces ⅔-inch/1.5-cm thick",
+      "amount": "12"
+    },
+    {
+      "item": "medium pumpkin, peeled and cut into ¾-inch/2-cm chunks (about 5¾ cups/800 g)",
+      "amount": "1"
+    },
+    {
+      "item": "small turnips, peeled and cut into ¾-inch/2-cm chunks (1½ cups/200 g)",
+      "amount": "2"
+    },
+    {
+      "item": "cups/170 g coarsely grated Gruyère",
+      "amount": "1½"
+    },
+    {
+      "item": "cups/170 g coarsely grated Emmentaler",
+      "amount": "1½"
+    },
+    {
+      "item": "dry mustard",
+      "amount": "2½ tsp"
+    },
+    {
+      "item": "cups/400 ml heavy cream",
+      "amount": "1⅔"
+    },
+    {
+      "item": "cups/350 ml dry white wine",
+      "amount": "1½"
+    },
+    {
+      "item": "large clove garlic, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "grated nutmeg",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cup/10 g sage leaves, coarsely chopped salt and white pepper",
+      "amount": "⅓"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F/210°C. Lay the sourdough out on a baking sheet and bake for 10 minutes, until lightly toasted. Remove and set aside.",
+    "In a large bowl, mix together the vegetables with a rounded 1 cup/120 g of a mixture of both cheeses and 1 teaspoon of the dry mustard. Spread the mixture into a deep gratin dish, roughly 9 by 13-inches/23 by 33-cm.",
+    "Place the cream and wine in a saucepan over medium heat. Whisk gently as you add the remaining 1½ teaspoons dry mustard, the garlic, nutmeg, sage, ½",
+    "teaspoon salt, and ¼ teaspoon white pepper. Warm through before pouring over the gratin.",
+    "Cover the dish with aluminum foil, place in the oven, and bake for 45 minutes.",
+    "Remove the foil and layer the bread on top, each piece slightly overlapping with the next. Press the bread down and turn it over so that it soaks up some of the liquid. Sprinkle all the remaining cheese on top, cover with foil, and cook for a further 15 minutes. Remove the foil and cook for a final 15 minutes, until the top is golden and crispy. Remove from the oven and set aside for 10 minutes before serving.",
+    "Mushroom and Tarragon Pithivier",
+    "MUSHROOM AND TARRAGON PITHIVIER"
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/bread-and-pumpkin-fondue.jpg"
+}

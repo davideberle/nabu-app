@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "finish with a drizzle of the herb oil, and serve at once.",
+  "intro": "pepper. Chop the mint and fold it into the tomatoes just before serving, as it",
   "ingredients": [
     {
       "item": "large eggplants (2¾ lb/1.2 kg) scant 1 cup/200 g kashk, or mix a scant ⅔ cup/140 g crème fraîche and a scant ⅔ cup/60 g grated Parmesan",
@@ -61,11 +61,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/iranian-style-pasta.jpg"
 }

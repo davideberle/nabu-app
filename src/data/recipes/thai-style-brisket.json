@@ -8,7 +8,7 @@
   "servings": "serves 8",
   "intro": "This is an incredible brisket that will blow your mind. Peanut butter, soy, crunchy vegetables and spicy sauce give it the authentic Thai taste we love.",
   "time": {
-    "prep": 570,
+    "prep": "9 hours 30 minutes",
     "total": 180
   },
   "ingredients": [
@@ -100,8 +100,7 @@
   "category": {
     "dish_type": [
       "main"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

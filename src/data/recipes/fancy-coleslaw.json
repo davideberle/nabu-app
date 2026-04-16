@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "Sort-of-Waldorf (left), Fancy Coleslaw (center), Spiced cashews (right)",
+  "intro": "if you break the apple slices; it’s all part of the look—t ransfer to individual",
   "ingredients": [
     {
       "item": "medium carrots, peeled and cut into thin matchsticks (scant 1¼ cups/140 g)",
@@ -95,12 +95,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

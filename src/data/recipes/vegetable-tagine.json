@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "A flavorful and delicious meal. A must-try!",
   "time": {
-    "prep": 25,
+    "prep": "25 mins",
     "total": 50
   },
   "ingredients": [
@@ -104,8 +104,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

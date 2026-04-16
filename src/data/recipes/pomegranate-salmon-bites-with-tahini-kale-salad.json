@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "I cook with salmon quite often, mainly because it cooks quickly, reserving it for nights when I don’t have much time to get dinner on the table. Salmon bites cook even quicker than a large fillet, and they’re fun for my kids to eat. The tartness from the pomegranate molasses in the marinade cuts through the richness of the salmon perfectly. I serve this dish with a kale Caesar salad, but Middle Eastern–style, with a tahini Caesar dressing and pita chips.",
   "time": {
-    "prep": 10,
-    "cook": 20,
-    "total": 30
+    "prep": "10 minutes",
+    "cook": "20 minutes",
+    "total": "10 minutes20 minutes"
   },
   "ingredients": [
     {
@@ -134,8 +134,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Main Dishes: 30 Minutes",
-    "meal_role": "side"
+    "chapter": "Main Dishes: 30 Minutes"
   },
   "cuisine": "Middle Eastern"
 }

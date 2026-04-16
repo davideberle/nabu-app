@@ -78,7 +78,7 @@
     "With wet hands, press 1 tablespoon of the mixture in the palm of your hand to form a patty or a ball the size of a small walnut, about a scant 1 oz / 25 g (you can also use a wet ice-cream scoop for this).",
     "Sprinkle the balls evenly with sesame seeds and deep-fry them in batches for 4 minutes, until well browned and cooked through. It is important they really dry out on the inside, so make sure they get enough time in the oil. Drain in a colander lined with paper towels and serve at once."
   ],
-  "image": null,
+  "image": "/recipes/falafel.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -90,8 +90,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Pulses & Grains",
-    "meal_role": "starter"
+    "chapter": "Pulses & Grains"
   },
   "cuisine": "Middle Eastern"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Ella’s was their legendary sweet potato cakes. Here’s a modified version.",
+  "intro": "things with an air of innocent self-importance. At the very heart of the center was a small café, called Orna",
   "ingredients": [
     {
       "item": "peeled sweet potatoes, cut into large chunks",
@@ -71,8 +71,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/sweet-potato-cakes.jpg"
 }

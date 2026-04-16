@@ -41,8 +41,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
   "image": "/recipes/acha-pudding.jpg",
   "cuisine": "Nigerian"

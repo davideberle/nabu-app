@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "Want a nice side dish and don't want to heat up the kitchen? Great dinner idea for those hot summer nights.",
   "time": {
-    "prep": 15,
+    "prep": "15 mins",
     "total": 120
   },
   "ingredients": [
@@ -58,8 +58,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

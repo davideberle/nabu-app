@@ -59,7 +59,7 @@
     "Rinse the lentils, drain well, put into a serving bowl, and season. Add the scallions, chile, and drained fava beans, and stir well.",
     "To make the dressing, put the oil, vinegar, and ginger in a small bowl. Season with salt and pepper, add a pinch of sugar (if using), and whisk until well combined. Drizzle over the salad and let stand for 10 minutes, to develop the flavors. When ready to serve, stir in the feta and parsley."
   ],
-  "image": null,
+  "image": "/recipes/gingered-fava-beans-with-lentils.jpg",
   "time": {
     "total": 45
   },
@@ -67,8 +67,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Grains & Pulses",
-    "meal_role": "main"
+    "chapter": "Grains & Pulses"
   },
   "cuisine": "Other"
 }

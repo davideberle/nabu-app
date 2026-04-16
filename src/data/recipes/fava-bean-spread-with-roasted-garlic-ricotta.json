@@ -1,0 +1,55 @@
+{
+  "id": "fava-bean-spread-with-roasted-garlic-ricotta",
+  "name": "Fava Bean Spread with Roasted Garlic Ricotta",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "garlic (10 cloves), cloves separated, skin on",
+      "amount": "1 head"
+    },
+    {
+      "item": "cup/125 ml olive oil",
+      "amount": "½"
+    },
+    {
+      "item": "cup/240 g ricotta",
+      "amount": "1"
+    },
+    {
+      "item": "sour cream",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "lemons, rind shaved in long strips from one, 2 tsp finely grated zest from the other",
+      "amount": "2"
+    },
+    {
+      "item": "lb/600 g fava beans (2⅔ cups/400 g if starting with shelled beans)",
+      "amount": "1⅓"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "cup/15 g mint leaves, chopped, plus 1 tbsp shredded mint leaves to garnish salt and black pepper",
+      "amount": "½"
+    }
+  ],
+  "method": [
+    "Mix the garlic cloves with 1 teaspoon of the olive oil, place on a baking sheet, and cook for 15 minutes, until soft. Remove from the oven and when cool enough to handle, squash the garlic out of its skin using the back of a fork.",
+    "Discard the skins, place the flesh in a small bowl, and add the ricotta, sour cream, ¼ teaspoon salt, and some black pepper. Use a whisk to mix everything together well and set aside.",
+    "Place the remaining olive oil in a small saucepan with the shaved lemon rind.",
+    "Place over medium heat, bring to a gentle simmer, then remove from the heat to cool and infuse.",
+    "Bring a large pan of water to a boil. Add the fava beans, blanch for 1 minute, drain, and then remove them from their skins. Crush the beans with a fork, add all but 1 tablespoon of the lemon-infused oil (removing the rind first), the lemon juice, the chopped mint, ½ teaspoon salt, and some black pepper and mix together.",
+    "Spread the ricotta mix in a thin layer over the bottom of of each serving plate or one larger platter. Spoon the fava bean mixture on top, lightly spreading it out to cover most of the ricotta. Sprinkle the shredded mint and grated lemon zest over the fava mixture and finish with a drizzle of the lemon-infused oil."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/fava-bean-spread-with-roasted-garlic-ricotta.jpg"
+}

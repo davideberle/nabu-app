@@ -45,7 +45,7 @@
   "method": [
     "Put the coconut milk, cashew cream, coconut water, rum, lemon zest, and vanilla syrup in a small saucepan. Cook over medium heat, stirring often, until warmed though and thoroughly combined, about 3 minutes. Divide evenly into 2½-pint Mason jars or mugs. Garnish each drink with the nutmeg and cinnamon and serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/congo-square.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -57,8 +57,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Kitchen Basics",
-    "meal_role": "main"
+    "chapter": "Kitchen Basics"
   },
   "cuisine": "African & Caribbean"
 }

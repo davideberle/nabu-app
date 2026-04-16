@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "lemon for the aioli, if you prefer.",
+  "intro": "often not sober, for all sorts of reasons, I managed to fall in love with a national perversion: warm and cheesy",
   "ingredients": [
     {
       "item": "medium eggplants",
@@ -90,8 +90,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/eggplant-croquettes.jpg"
 }

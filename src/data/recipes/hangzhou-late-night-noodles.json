@@ -71,13 +71,12 @@
     "Bring a pan of water to the boil. Add the noodles and cook them to your liking, then rinse them under the cold tap and drain well. Heat 1 tablespoon of the cooking oil in a seasoned wok over a high flame. Add the pork and stir-fry until just cooked, then set aside. Return the wok to the flame with the remaining oil. Add the preserved vegetable and stir-fry briefly until you can smell it. Add the tofu and mushrooms and stir-fry until the mushrooms are just cooked.",
     "Return the pork to the wok, add the noodles and stir-fry vigorously to mix everything together, seasoning with the soy sauce and salt (remember the preserved vegetable is salty). When the noodles are piping hot, add the chives and stir-fry briefly until they smell wonderful. Stir in the spring onion greens and then, off the heat, the sesame oil. Serve."
   ],
-  "image": null,
+  "image": "/recipes/hangzhou-late-night-noodles.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Noodles",
-    "meal_role": "main"
+    "chapter": "Noodles"
   },
   "time": {
     "prep": 20,

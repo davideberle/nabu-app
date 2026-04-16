@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "In 1947, Kundan Lal Gujral opened the first tandoori restaurant, called Moti Mahal, in Delhi, India. Although tandoor-style ovens had already been used for thousands of years, he was the first to have large tandoors manufactured for use in a restaurant. The restaurant served delicious marinated chicken, meat and vegetables, all charred to perfection in a tandoor. Not one to waste, Gujral came up with the idea of using the leftover marinades in a curry, and butter chicken (murgh makhani) was born. For the chicken, use tandoori chicken tikka or tandoori chicken legs. Reserve the marinade for the sauce.",
   "time": {
-    "prep": 10,
-    "cook": 30,
-    "total": 40
+    "prep": "10 MINS",
+    "cook": "30 MINS",
+    "total": "10 MINS30 MINS"
   },
   "ingredients": [
     {
@@ -102,8 +102,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
   "cuisine": "Indian"
 }

@@ -1,6 +1,6 @@
 {
   "id": "summer-berries-and-cream",
-  "name": "Summer Berries and Cream",
+  "name": "Summer Berries And Cream",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -48,11 +48,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "dessert"
-    ],
-    "chapter": "",
-    "meal_role": "dessert"
-  }
+  "image": "/recipes/summer-berries-and-cream.png"
 }

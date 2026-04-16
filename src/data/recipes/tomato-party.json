@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Eastern grocers) or Israeli couscous. Or just leave out the fregola and double the quantity of couscous.",
+  "intro": "The purpose of this salad (pictured on pages 132 to 133) is to make use of as many as possible of the infinite",
   "ingredients": [
     {
       "item": "couscous salt olive oil",
@@ -74,8 +74,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/tomato-party.jpg"
 }

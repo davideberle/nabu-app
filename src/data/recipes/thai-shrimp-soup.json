@@ -8,7 +8,7 @@
   "servings": "serves 8",
   "intro": "This delicious soup is ready in minutes and is a hit. Its ingredients are also available at most grocery store, big or small",
   "time": {
-    "prep": 40,
+    "prep": "40 minutes",
     "total": 6
   },
   "ingredients": [
@@ -94,8 +94,7 @@
   "category": {
     "dish_type": [
       "soup"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

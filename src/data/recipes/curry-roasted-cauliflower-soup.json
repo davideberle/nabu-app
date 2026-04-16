@@ -68,11 +68,5 @@
   "time": {
     "total": 60
   },
-  "category": {
-    "dish_type": [
-      "soup"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/curry-roasted-cauliflower-soup.jpg"
 }

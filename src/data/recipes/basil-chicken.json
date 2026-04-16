@@ -8,7 +8,7 @@
   "servings": "serves 4",
   "intro": "This is a traditional Thai dish, where you stir-fry minced or sliced meat with basil, and top it with a tasty sauce. This is an easy meal that should take you no longer than 25 minutes to prepare, making it a quick option for lunch or dinner! So, are you ready to make one of the most famous Thai dishes in your kitchen?",
   "time": {
-    "prep": 25,
+    "prep": "25 minutes",
     "total": 5
   },
   "ingredients": [
@@ -61,8 +61,7 @@
   "category": {
     "dish_type": [
       "main"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

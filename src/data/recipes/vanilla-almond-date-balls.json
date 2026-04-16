@@ -9,9 +9,9 @@
   "servings": "20 balls",
   "intro": "Vanilla is such a great flavor, and it seems to make something a treat without going over the top. Almond flour and protein powder is added for an extra oomph of protein.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -151,8 +151,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads",
-    "meal_role": "main"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

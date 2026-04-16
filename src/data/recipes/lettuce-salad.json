@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "commercial varieties that go by funny names such as “sun-blushed” or “sun-kissed.”",
+  "intro": "It is essential for every good cook to have a solid lettuce salad up their sleeve, a good in-between course to",
   "ingredients": [
     {
       "item": "garlic clove, crushed",
@@ -73,8 +73,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/lettuce-salad.jpg"
 }

@@ -9,9 +9,9 @@
   "servings": "serves 4–6",
   "intro": "You’ve got to love a good shawarma kebab! Perfectly marinated pieces of meat that are nice and crisp on the exterior and juicy and tender in the centre. I’m getting hungry just writing about it. At UK takeaways, beef, chicken and lamb are marinated and then placed on a rotating spit. The meat is shaved off with a large electric knife and then served in fresh naans topped with salad, hot sauce and/or yoghurt dressing.\n\nI don’t have a large spit, nor the need to cook as much meat as takeaways do, so I decided to downsize this recipe a bit. You will need metal skewers and a good barbecue for best results. I like to add vegetables like red onions and (bell) peppers to the skewers – they are delicious served with the marinated, grilled meat.",
   "time": {
-    "prep": 15,
-    "cook": 15,
-    "total": 15
+    "prep": "15 MINS, PLUS FREEZING AND MARINATING",
+    "cook": "15 MINS",
+    "total": "15 MINS, PLUS FREEZING AND MARINATING15 MINS"
   },
   "ingredients": [
     {
@@ -87,14 +87,12 @@
     "In the meantime, skewer the marinated chicken discs on the metal skewers so that they are pressed tightly together. I like to include some chillies, red onions and peppers for colour.",
     "Place the skewers over the heat and rotate often until charred on the outside and cooked through – about 15 minutes. Remove the meat and vegetables and chop the meat into small pieces. Serve the meat and vegetables on their own or wrapped in fresh naans, buns or tortillas with your sauces of choice."
   ],
-  "image": null,
+  "image": "/recipes/shawarma-kebabs.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Street Food",
-    "meal_role": "main"
+    "chapter": "Street Food"
   },
-  "cuisine": "Indian",
-  "tips": "Note: FREEZING AND MARINATING; FREEZING AND MARINATING15 MINS."
+  "cuisine": "Indian"
 }

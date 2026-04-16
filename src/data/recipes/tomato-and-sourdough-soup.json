@@ -59,7 +59,7 @@
     "Heat the oil in a medium saucepan and add the onion. Sauté for about 5 minutes, stirring often, until the onion is translucent. Add the cumin and garlic and fry for 2 minutes. Pour in the stock, both types of tomato, sugar, 1 teaspoon salt, and a good grind of black pepper.",
     "Bring the soup to a gentle simmer and cook for 20 minutes, adding the bread, torn into chunks, halfway through the cooking. Finally, add the cilantro and then blitz, using a blender, in a few pulses so that the tomatoes break down but are still a little coarse and chunky. The soup should be quite thick; add a little water if it is too thick at this point. Serve, drizzled with oil and scattered with fresh cilantro."
   ],
-  "image": null,
+  "image": "/recipes/tomato-and-sourdough-soup.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -71,8 +71,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups",
-    "meal_role": "main"
+    "chapter": "Soups"
   },
   "cuisine": "Middle Eastern"
 }

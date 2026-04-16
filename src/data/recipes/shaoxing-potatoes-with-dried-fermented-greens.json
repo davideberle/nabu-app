@@ -35,7 +35,7 @@
     "Heat the oil in a seasoned wok over a high flame. Add the potatoes and stir-fry for about 1 minute. Add 1⅓ cups (300ml) of the soaking water, topped up with hot water from the kettle if you don’t have enough. Bring to the boil, season with salt and cover and simmer until the potatoes are just cooked.",
     "Add the soaked greens and heat for another 30 seconds or so. Adjust the seasoning if necessary, then serve with a sprinkling of spring onion greens."
   ],
-  "image": null,
+  "image": "/recipes/shaoxing-potatoes-with-dried-fermented-greens.jpg",
   "time": {
     "total": 5
   },
@@ -43,8 +43,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "cuisine": "Chinese"
 }

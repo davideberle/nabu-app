@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "when the spears are often thick and woody and not good enough to eat as they are. Serve with crusty bread",
+  "intro": "sweet, a little sour and totally light. When I recently shut myself up at my parents’ house, to finally get on",
   "ingredients": [
     {
       "item": "medium potato",
@@ -66,8 +66,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/asparagus-vichyssoise.jpg"
 }

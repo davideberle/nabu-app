@@ -66,7 +66,7 @@
     "Warm the remaining 1 tablespoon oil in a large nonstick skillet or griddle over medium-high heat. Portion the batter into the skillet, using a little more than ¼ cup batter per cake. A large skillet should comfortably fit 2 or 3 cakes without touching. After about 1 minute, when the bottom starts to set, decrease the heat to medium-low and use a wooden spoon to shape the cakes, pushing them in and up so they are about 3 inches wide and ½ inch thick. Cook until golden brown and crispy on the bottom, 8 to 10 minutes. Flip the cakes, add a bit more oil, and tilt the pan to distribute the oil evenly. Cook until golden brown and crispy on the other side, 8 to 10 more minutes. Transfer the cakes to a baking sheet and put them in the oven to keep warm until all the cakes are cooked.",
     "Serve with the pecans, syrup, and orange blossom cream alongside for topping."
   ],
-  "image": null,
+  "image": "/recipes/maple-glazed-banana-johnnycakes.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -78,8 +78,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts",
-    "meal_role": "main"
+    "chapter": "Desserts"
   },
   "cuisine": "African & Caribbean"
 }

@@ -1,0 +1,66 @@
+{
+  "id": "stuffed-portobello-with-melting-taleggio",
+  "name": "Stuffed portobello with melting Taleggio",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Gruyère and some cheddars, are wonderfully pungent but tend to split and turn gritty. This is why I often",
+  "ingredients": [
+    {
+      "item": "large portobellos (or another similar mushroom), stalks removed",
+      "amount": "4"
+    },
+    {
+      "item": "olive oil salt and black pepper",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "small onion, finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "celery stalk, finely diced",
+      "amount": "1"
+    },
+    {
+      "item": "finely chopped sun-dried tomatoes",
+      "amount": "2 cups"
+    },
+    {
+      "item": "garlic cloves, crushed",
+      "amount": "2"
+    },
+    {
+      "item": "grated Parmesan",
+      "amount": "½ cup"
+    },
+    {
+      "item": "chopped tarragon leaves",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "coarsely shredded basil leaves",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "Taleggio, sliced",
+      "amount": "½ oz"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F. Line a baking sheet with parchment paper. Place the mushrooms, stalk-side up, on the baking sheet and drizzle over a little oil and some salt and pepper. Put into the oven and roast for about 15 minutes, or until the mushrooms begin to soften.",
+    "Meanwhile, heat up 2 tablespoons of the oil in a sauté pan, add the onion and celery and cook on low heat for 5 to 10 minutes, or until the vegetables are soft but not brown; stir every few minutes during cooking. Add the sun-dried tomatoes and garlic and cook for a few more minutes. Remove from the heat and leave to cool down.",
+    "Once cool, add the Parmesan, tarragon and half the basil to the mixture and season with pepper. (You can add a little bit of salt but not too much because Taleggio is very salty.) Pile up the filling on the whole mushrooms and top with the Taleggio slices. Return to the oven and cook for about 10 minutes, or until the cheese melts and the mushrooms are tender.",
+    "Transfer the mushrooms to serving plates and drizzle with oil.",
+    "Garnish with the remaining basil and serve right away, with a green salad.",
+    "This dish can work in endless contexts: with a few elegant endive leaves stirred through, it will make a substantial vegetarian main course; as it is you can put it in a Tupperware container and take it on a picnic; or offer it alongside other salads as part of a smart spring buffet.",
+    "Shimeji are the clustered small mushrooms that you often get in “exotic” selections.",
+    "Marinated mushrooms with walnut and tahini yogurt"
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/stuffed-portobello-with-melting-taleggio.jpg"
+}

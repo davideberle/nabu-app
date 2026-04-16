@@ -73,11 +73,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/nam-prik-num-roasted-green-chili-dip.jpg"
 }

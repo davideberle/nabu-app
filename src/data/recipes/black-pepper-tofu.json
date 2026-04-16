@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "point is spiciness so don’t go too far.",
+  "intro": "You will definitely surprise yourself with this one. It is an extremely delicious dish that’s quick and straight-",
   "ingredients": [
     {
       "item": "firm tofu vegetable oil for frying cornstarch to dust the tofu",
@@ -78,8 +78,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/black-pepper-tofu.jpg"
 }

@@ -71,7 +71,7 @@
     "In a separate bowl, whisk together all the dressing ingredients. Taste the dressing and season, if necessary.",
     "Lay the salad leaves on a serving plate or 4 individual plates and top with the crabmeat mixture. Drizzle with the dressing and serve with the lemon wedges."
   ],
-  "image": null,
+  "image": "/recipes/chile-crab-and-avocado-salad.jpg",
   "time": {
     "total": 35
   },
@@ -79,8 +79,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish & Seafood",
-    "meal_role": "main"
+    "chapter": "Fish & Seafood"
   },
   "cuisine": "Other"
 }

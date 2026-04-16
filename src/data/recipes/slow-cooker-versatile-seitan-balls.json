@@ -9,9 +9,9 @@
   "servings": "3 cups or 34 balls",
   "intro": "These little round balls add so much flavor and texture to your hardy dishes. They make a fantastic foundation for marinara sauce submarine sandwiches, too. Pictured in Slow Cooker Seitan Bourguignon (page 226).",
   "time": {
-    "prep": 10,
-    "cook": 5,
-    "total": 75
+    "prep": "10 minutes",
+    "cook": "5 minutes",
+    "total": "1 hour 15 minutes"
   },
   "ingredients": [
     {
@@ -322,8 +322,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts",
-    "meal_role": "main"
+    "chapter": "Desserts"
   },
   "cuisine": "Other"
 }

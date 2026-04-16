@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 2",
-  "intro": "easily so I add some of the pasta’s cooking liquid before serving; make sure it is quite runny.",
+  "intro": "I use panko, the crisp Japanese breadcrumbs, to add texture to this creamy pasta. The sauce dries out",
   "ingredients": [
     {
       "item": "olive oil",
@@ -76,8 +76,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/crunchy-pappardelle.jpg"
 }

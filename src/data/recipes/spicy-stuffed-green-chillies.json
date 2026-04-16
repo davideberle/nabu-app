@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Green chillies stuffed with spiced gram flour? You’re just going to have to trust me here if you don’t already know how good these are! These stuffed chillies make the perfect appetizer.",
   "time": {
-    "prep": 10,
-    "cook": 10,
-    "total": 20
+    "prep": "10 MINS",
+    "cook": "10–15 MINS",
+    "total": "10 MINS10–15 MINS"
   },
   "ingredients": [
     {
@@ -70,8 +70,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Basics & Breads",
-    "meal_role": "starter"
+    "chapter": "Basics & Breads"
   },
   "cuisine": "Indian"
 }

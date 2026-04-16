@@ -50,10 +50,6 @@
     {
       "item": "black pepper",
       "amount": "1/2 tsp."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -63,11 +59,7 @@
     "milk. Continue stirring until mixture thickens. Add Parmesan cheese and 1 1/2 cups Cheddar cheese; stir until",
     "melted and smooth.",
     "Stir ziti and sausage into vegetable-cheese mixture. Place in baking dish and top with remaining Cheddar cheese.",
-    "Bake at 350 degrees F. for 30 minutes.",
-    "(31) Pasta with Chicken and Broccoli Pesto",
-    "Pasta with chicken and broccoli pesto because it is so filling, healthy, delicious, and easy. This meal is also really",
-    "good, made with turkey bacon and cream cheese instead of regular bacon.",
-    "Yield:"
+    "Bake at 350 degrees F. for 30 minutes."
   ],
   "time": {
     "total": 60
@@ -76,8 +68,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/italian-ziti-medley.jpg"
 }

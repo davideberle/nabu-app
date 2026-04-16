@@ -11,8 +11,7 @@
     "dish_type": [
       "baking"
     ],
-    "chapter": "Baking & Patisserie",
-    "meal_role": "dessert"
+    "chapter": "Baking & Patisserie"
   },
   "servings": "serves 4",
   "time": {
@@ -65,6 +64,6 @@
       "gluten-free"
     ]
   },
-  "image": null,
+  "image": "/recipes/banana-and-hazelnut.jpg",
   "cuisine": "Middle Eastern"
 }

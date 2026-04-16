@@ -24,13 +24,12 @@
     "Boil or steam sweetcorn cobs, then cut off the kernels and blend to a smooth, creamy juice. Sweeten with diluted honey, if desired.",
     "Make it in the same way as the pumpkin juice, with just a hint of added sweetness from diluted honey."
   ],
-  "image": null,
+  "image": "/recipes/warm-pumpkin-juice-with-honey.jpg",
   "category": {
     "dish_type": [
       "drink"
     ],
-    "chapter": "Drinks",
-    "meal_role": "drink"
+    "chapter": "Drinks"
   },
   "time": {
     "prep": 5,

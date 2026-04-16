@@ -90,8 +90,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
   "image": "/recipes/very-fudgy-chocolate-chip-brownies.jpg",
   "cuisine": "Other"

@@ -87,8 +87,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/hot-yogurt-and-fava-bean-soup.jpg"
 }

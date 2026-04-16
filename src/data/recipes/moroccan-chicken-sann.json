@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "The marinade is incredible, and the pieces of prune and apricot create a nice sweet balance. Serve with Basmati rice.",
   "time": {
-    "prep": 15,
+    "prep": "15 mins",
     "total": 180
   },
   "ingredients": [
@@ -88,8 +88,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

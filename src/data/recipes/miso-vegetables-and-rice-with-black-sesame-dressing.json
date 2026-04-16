@@ -84,11 +84,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/miso-vegetables-and-rice-with-black-sesame-dressing.jpg"
 }

@@ -59,7 +59,7 @@
     "The next day, heat the mustard oil in a saucepan. When visibly hot, add the bay leaves and the marinated vegetables. Cook for 3–5 minutes and no longer. Set aside to cool completely before eating, although I have to admit I find it hard to wait for this pickle to cool before I start snacking.",
     "NOTE: Citric acid powder is used in commercially available curry pastes and pickles. You could substitute amchoor (dried mango powder) if you want a natural alternative, but it isn’t as strong. Citric acid is available from Asian grocers and in chemist shops."
   ],
-  "image": null,
+  "image": "/recipes/cg-chickpea-carrot-and-garlic-pickle.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -68,8 +68,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Accompaniments",
-    "meal_role": "component"
+    "chapter": "Accompaniments"
   },
   "time": {
     "total": 180

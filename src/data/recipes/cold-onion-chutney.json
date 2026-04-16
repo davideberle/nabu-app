@@ -9,7 +9,8 @@
   "servings": "makes enough for 4–6 as an accompaniment",
   "intro": "You know those sliced onions that are served in a red sauce with papadams before the meal at Indian restaurants? Well, this simple chutney is a lot more popular than you might think.\n\nThis simple recipe is actually the most popular one on my blog. For me, that’s still quite difficult to take in! Out of all of the recipes on my blog, this is the one people look up most. I have to say I love it too. If you’re planning a curry night anytime soon, you won’t want to leave this onion chutney off the menu. It’s so easy to make!",
   "time": {
-    "prep": 5,
+    "prep": "5 MINS, PLUS SITTING TIME",
+    "cook": "",
     "total": 105
   },
   "ingredients": [
@@ -43,7 +44,7 @@
     "Now mix the ketchup, tomato purée, chilli powder and salt together. Stir in the sliced onions and roasted cumin seeds.",
     "Stick in the fridge for about 45 minutes before serving, to allow the ingredients to get to know each other, and serve with papadams or whatever you fancy."
   ],
-  "image": null,
+  "image": "/recipes/cold-onion-chutney.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -52,9 +53,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Base Sauces",
-    "meal_role": "side"
+    "chapter": "Base Sauces"
   },
-  "cuisine": "Indian",
-  "tips": "Note: SITTING TIME."
+  "cuisine": "Indian"
 }

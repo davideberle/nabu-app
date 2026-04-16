@@ -1,0 +1,90 @@
+{
+  "id": "fried-leeks",
+  "name": "Fried leeks",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "The sharp and sweet pickled red peppers used here are the sort of thing you can always keep in the fridge,",
+  "ingredients": [
+    {
+      "item": "red bell pepper",
+      "amount": "1"
+    },
+    {
+      "item": "sugar",
+      "amount": "6 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "1 cup"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "pink peppercorns",
+      "amount": "10"
+    },
+    {
+      "item": "coriander seeds",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "cardamom pods, crushed salt",
+      "amount": "3"
+    },
+    {
+      "item": "medium leeks",
+      "amount": "5"
+    },
+    {
+      "item": "crème fraîche",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "chopped capers",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "green onions, sliced thinly at an angle, plus extra to garnish",
+      "amount": "2"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "olive oil white pepper",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "panko",
+      "amount": "½ cup"
+    },
+    {
+      "item": "egg, beaten",
+      "amount": "1"
+    },
+    {
+      "item": "¼-inch-thick strips. Place in a small saucepan and add the sugar, water, vinegar, peppercorns, coriander seeds, cardamom and some salt. Bring to the boil, then simmer for about 20 minutes, or until the pepper is cooked. Set aside to cool down.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Meanwhile, remove and discard the hard green leaves from the leeks and cut them into roughly 1-inch-long segments. Cook in boiling salted water for 15 minutes, or until semi-soft. Drain and let dry.",
+    "While you wait for the vegetables, stir together the crème fraîche, capers, green onions, lemon juice, olive oil and some salt and pepper. Taste and adjust the seasoning.",
+    "Heat up the sunflower oil in a medium saucepan. Place the panko and egg in two small separate plates and season with salt. Take the cooked leeks and roll them first in the egg and then in panko to coat all over. Fry them in the hot oil for about",
+    "30 seconds on each side; do this in a few batches so you don’t crowd them in the pan. Once they are nice and golden, transfer the leeks to paper towels.",
+    "Serve about five chunks of hot leeks per portion, topped with a good dollop of the crème fraîche sauce. Lift the strips of red pepper out of the pan, shake away most of the syrup and place them over the leeks (the coriander seeds and peppercorns are fine too). Garnish with green onion and serve at once.",
+    "44 | Funny Onions",
+    "You will definitely surprise yourself with this one. It is an extremely delicious dish that’s quick and straight- forward to make, but looks as if it’s been prepared at a top Chinese restaurant. It is fiery, both from the chiles and the black pepper; you can moderate this by reducing their quantity a little. However, the whole point is spiciness so don’t go too far.",
+    "Black pepper tofu"
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/fried-leeks.jpg"
+}

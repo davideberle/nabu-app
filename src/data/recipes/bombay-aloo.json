@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Monday nights are always curry nights at my house. On Sundays, we usually cook up a roast Sunday dinner with all the fixings, so I always make extra roast potatoes for this curry. You could do the same in place of the pre-cooked stewed potatoes used here, although the cooking stock is nice added to this sauce.\n\nBombay aloo can be served either quite saucy or dry, and as I usually serve this curry as a side dish, my sauce is on the dry side. If serving as a vegetarian main course, you might want to add more liquid.",
   "time": {
-    "prep": 10,
-    "cook": 15,
-    "total": 10
+    "prep": "10 MINS, PLUS MAKING THE BASE SAUCE AND COOKING THE POTATOES",
+    "cook": "15 MINS",
+    "total": "10 MINS, PLUS MAKING THE BASE SAUCE AND COOKING THE POTATOES15 MINS"
   },
   "ingredients": [
     {
@@ -77,7 +77,7 @@
     "Continue to simmer while spooning the sauce over the potatoes. When well coated, add the tomatoes and cook for a further 2 minutes.",
     "Season with salt and sprinkle with the dried fenugreek leaves (kasoori methi) and garam masala. Top with the chopped coriander (cilantro) to serve."
   ],
-  "image": null,
+  "image": "/recipes/bombay-aloo.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -85,9 +85,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
-  "cuisine": "Indian",
-  "tips": "Note: MAKING THE BASE SAUCE AND COOKING THE POTATOES; MAKING THE BASE SAUCE AND COOKING THE POTATOES15 MINS."
+  "cuisine": "Indian"
 }

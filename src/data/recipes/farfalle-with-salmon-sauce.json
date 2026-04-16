@@ -34,22 +34,12 @@
     {
       "item": "smoked salmon, cut into thin strips",
       "amount": "1/4 lb."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "Cook pasta according to package directions; drain and set aside.",
     "Cook lemon juice and wine to reduce; lower heat and add cream. Cook, stirring constantly, until sauce thickens,",
-    "about 10 minutes. Add salt, pepper, dill and salmon; heat. Ladle sauce over pasta and serve.",
-    "(49) Pasta with Asparagus and Shrimp",
-    "Pasta with Asparagus and Shrimp is a delicious and healthy dish that's quick to cook. One of the most popular",
-    "dishes from Italy, this pasta sauce is rich in garlic, olive oil, and lemon. It provides a lot of different flavors in one",
-    "dish. The shrimp and asparagus, along with the lemon zest, provide depth to the sauce, while the black olives add a",
-    "salty pop that makes this dish truly satisfying without any other palate-bothering ingredients.",
-    "Yield:"
+    "about 10 minutes. Add salt, pepper, dill and salmon; heat. Ladle sauce over pasta and serve."
   ],
   "time": {
     "total": 40
@@ -58,8 +48,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "",
-    "meal_role": "component"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/farfalle-with-salmon-sauce.jpg"
 }

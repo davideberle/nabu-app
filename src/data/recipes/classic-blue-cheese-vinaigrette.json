@@ -38,7 +38,7 @@
     "Combine the vinegar and lemon juice in a bowl. Add the mayonnaise and oil to a separate bowl, then pour in the vinegar-lemon mixture, whisking constantly, until the dressing has emulsified.",
     "Add the cheese to the bowl, and whisk again until smooth. Season to taste with salt and black pepper. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/classic-blue-cheese-vinaigrette.jpg",
   "time": {
     "total": 40
   },
@@ -46,8 +46,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Sauces & Dressings",
-    "meal_role": "component"
+    "chapter": "Sauces & Dressings"
   },
   "cuisine": "Other"
 }

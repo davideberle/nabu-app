@@ -9,9 +9,9 @@
   "servings": "serves 3",
   "intro": "Making pasta and gnocchi from scratch is actually not as diﬃcult as you might think. Normally made with mashed potatoes, this plantain gnocchi feels so luxurious, and indeed special. I absolutely love roasted garlic, so whenever the oven is on I roast a bulb so that I have easy access to it in the coming days. This sauce is mainly a combination of roasted garlic and coconut milk, so it is very rich.",
   "time": {
-    "prep": 30,
-    "cook": 40,
-    "total": 70
+    "prep": "30 MINUTESCOOK TIME: 40 MINUTES",
+    "cook": "40 MINUTES",
+    "total": "30 MINUTESCOOK TIME: 40 MINUTES40 MINUTES"
   },
   "ingredients": [
     {
@@ -97,8 +97,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Special Occasions",
-    "meal_role": "main"
+    "chapter": "Special Occasions"
   },
   "cuisine": "Caribbean"
 }

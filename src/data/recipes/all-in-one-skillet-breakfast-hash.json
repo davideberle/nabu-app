@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Here’s a hardy breakfast that will feed a large group with satisfaction guaranteed. This will stick to your ribs, just as any good protein meal should.",
   "time": {
-    "prep": 40,
-    "cook": 40,
-    "total": 80
+    "prep": "40 minutes",
+    "cook": "40 minutes",
+    "total": "1 hour 20 minutes"
   },
   "ingredients": [
     {
@@ -175,8 +175,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Breakfast",
-    "meal_role": "main"
+    "chapter": "Breakfast"
   },
   "cuisine": "Other"
 }

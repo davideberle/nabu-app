@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "crushed sesame seeds, and serve.",
+  "intro": "occasionally, until the barley is cooked but still has a bite. You might need to",
   "ingredients": [
     {
       "item": "pandan leaves (see headnote) (1 oz/30 g)",
@@ -50,11 +50,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/tau-fu-fa.jpg"
 }

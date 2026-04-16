@@ -9,7 +9,7 @@
   "servings": "32 servings",
   "intro": "These creamy Middle Eastern-style potatoes are flavored with turmeric and use olive oil rather than butter. They are great alone and for fillings in puff pastries. Amounts of salt, pepper, and other spices may be adjusted to taste.",
   "time": {
-    "prep": 20,
+    "prep": "20 mins",
     "total": 26
   },
   "ingredients": [
@@ -50,10 +50,9 @@
   "image": "/recipes/moroccan-mashed-potatoes.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "side"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

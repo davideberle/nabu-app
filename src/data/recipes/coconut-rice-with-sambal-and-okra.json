@@ -99,8 +99,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "",
-    "meal_role": "component"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/coconut-rice-with-sambal-and-okra.jpg"
 }

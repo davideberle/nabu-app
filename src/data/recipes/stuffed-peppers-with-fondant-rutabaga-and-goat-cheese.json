@@ -60,11 +60,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/stuffed-peppers-with-fondant-rutabaga-and-goat-cheese.jpg"
 }

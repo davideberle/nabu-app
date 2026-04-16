@@ -9,9 +9,9 @@
   "servings": "serves 6 or more as part of a multi-course meal",
   "intro": "Fluffy steamed idlis taste great. They are delicious dipped into your favourite chutneys and sambar. This recipe uses a quick ‘cheat’s method’ batter, which is a lot less work than more authentic versions that use a fermented batter. For the best results, you will need idli moulds – available online and at Asian markets. Before I invested in an idli mould set, I used a Yorkshire pudding tray placed on a brick in a large lidded pot of boiling water to steam. It worked well, so do what you have to try these. You’ll be glad you did!",
   "time": {
-    "prep": 10,
-    "cook": 20,
-    "total": 30
+    "prep": "10 MINS",
+    "cook": "20 MINS",
+    "total": "10 MINS20 MINS"
   },
   "ingredients": [
     {
@@ -59,7 +59,7 @@
     "Carefully lower the trays into the idli pan, cover and steam for 15 minutes. After 15 minutes, you should have delicious, fluffy idlis. To check for doneness, stick a toothpick or fork into the centre of one or two. If it comes out clean, your idlis are ready. If it comes out with a little batter stuck to it, continue steaming for a couple more minutes. Remove the trays from the steamer and let the steamed idlis sit, undisturbed, for about 2 minutes before removing them from the moulds. A small knife or spoon will help you lift the cooked idlis neatly out of the moulds.",
     "Serve with chutneys and/or sambar if you like."
   ],
-  "image": null,
+  "image": "/recipes/idlis.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -68,8 +68,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts & Drinks",
-    "meal_role": "main"
+    "chapter": "Desserts & Drinks"
   },
   "cuisine": "Indian"
 }

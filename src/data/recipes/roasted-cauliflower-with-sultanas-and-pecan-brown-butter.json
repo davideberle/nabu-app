@@ -9,9 +9,9 @@
   "servings": "serves 2–3",
   "intro": "Roasting is one of my favourite ways to eat cauliflower. It becomes nutty and slightly sweet in the process. This cauliflower is lightly spiced and it works so wonderfully with the pecans and brown butter.",
   "time": {
-    "prep": 30,
-    "cook": 35,
-    "total": 65
+    "prep": "30 MINUTESCOOK TIME: 35 MINUTES",
+    "cook": "35 MINUTES",
+    "total": "30 MINUTESCOOK TIME: 35 MINUTES35 MINUTES"
   },
   "ingredients": [
     {
@@ -83,8 +83,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Sides",
-    "meal_role": "main"
+    "chapter": "Sides"
   },
   "cuisine": "Caribbean"
 }

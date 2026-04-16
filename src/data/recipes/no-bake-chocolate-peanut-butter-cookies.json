@@ -9,9 +9,9 @@
   "servings": "24 cookies",
   "intro": "Although these are no-bake cookies, they have the texture of baked cookies. They have no refined sugar, take 10 minutes to make, and are a favorite. That’s a five-star rating!",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -330,8 +330,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Salads",
-    "meal_role": "dessert"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

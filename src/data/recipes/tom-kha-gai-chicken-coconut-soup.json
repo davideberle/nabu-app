@@ -93,11 +93,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "soup"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/tom-kha-gai-chicken-coconut-soup.jpg"
 }

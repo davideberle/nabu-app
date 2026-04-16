@@ -71,11 +71,6 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/celery-salad-with-feta-and-soft-boiled-egg.jpg",
+  "intro": "seeds and nuts, lemon juice, olive oil, ¼ teaspoon salt, and a grind of black"
 }

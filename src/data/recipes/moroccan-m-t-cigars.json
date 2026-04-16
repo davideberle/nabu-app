@@ -8,9 +8,8 @@
   },
   "intro": "This gоеѕ grеаt with hummus оn thе ѕіdе!",
   "time": {
-    "prep": 20,
-    "total": 20,
-    "cook": 0
+    "prep": "20 mins",
+    "total": "20 mins0"
   },
   "ingredients": [
     {
@@ -59,8 +58,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

@@ -72,8 +72,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments & Dips",
-    "meal_role": "main"
+    "chapter": "Condiments & Dips"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/moroccan-chermoula.jpg"
 }

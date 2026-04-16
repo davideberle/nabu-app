@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "butter lettuce leaves as part of a mezze selection.",
+  "intro": "This is my take on a classic Turkish dish that resonates with variations all over the Levant. Serve it with",
   "ingredients": [
     {
       "item": "large onions, finely chopped",
@@ -76,8 +76,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

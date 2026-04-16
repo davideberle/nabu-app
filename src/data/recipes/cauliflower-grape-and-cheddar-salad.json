@@ -1,12 +1,12 @@
 {
   "id": "cauliflower-grape-and-cheddar-salad",
-  "name": "Cauliflower, Grape, and Cheddar Salad",
+  "name": "Cauliflower, Grape, And Cheddar Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Divide among shallow plates, spoon the remaining salsa over the top, and",
+  "intro": "the cheese, and half the salsa and toss carefully so the onions don’t fall apart.",
   "ingredients": [
     {
       "item": "large cauliflower, broken into bite-size florets (2 lb/900 g)",
@@ -45,12 +45,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "side"
   }
 }

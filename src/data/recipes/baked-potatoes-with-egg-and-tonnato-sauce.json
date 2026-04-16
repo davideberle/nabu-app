@@ -73,11 +73,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/baked-potatoes-with-egg-and-tonnato-sauce.jpg"
 }

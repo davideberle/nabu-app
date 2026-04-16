@@ -66,7 +66,7 @@
     "Whisk together the yogurt, garlic, chile, lemon zest and juice, and molasses in a large mixing bowl. Add the chopped vegetables, walnuts, mint, and most of the parsley and stir well. Season with ¾ teaspoon salt and some pepper.",
     "Transfer the salad to a large, shallow serving plate and spread it out. Garnish with the remaining parsley. Finally, drizzle over some date syrup and olive oil."
   ],
-  "image": null,
+  "image": "/recipes/chunky-zucchini-and-tomato-salad.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -77,8 +77,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Middle Eastern"
 }

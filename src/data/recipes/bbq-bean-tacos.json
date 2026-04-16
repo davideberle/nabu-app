@@ -1,6 +1,6 @@
 {
   "id": "bbq-bean-tacos",
-  "name": "Bbq Bean Tacos",
+  "name": "BBQ Bean Tacos",
   "source": {
     "cookbook": "Mexican Home Cooking",
     "author": "Various"
@@ -61,8 +61,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Mexican"
 }

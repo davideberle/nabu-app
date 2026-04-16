@@ -42,21 +42,12 @@
     {
       "item": "Freshly ground black pepper, to taste",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "Cook pasta as directed on package. When cooked through but al dente, remove from heat, drain and rinse.",
     "Put the onions into a salad bowl and toss with the lemon juice. Add in the ham, pasta and all other ingredients.",
-    "Season with salt and pepper to taste and serve.",
-    "(8) Rotini Salad",
-    "Rotini Salad is always a crowd-pleaser. It's so easy to make and it can be eaten hot or cold. To give the salad a fresh",
-    "taste, we added greens (arugula), tomatoes, avocados, onion, jalapeños, and cilantro and lime juice. The lemon",
-    "vinaigrette is made with olive oil, apple cider vinegar and zest from one lemon for a tangy twist on an old favorite.",
-    "Yield: 6"
+    "Season with salt and pepper to taste and serve."
   ],
   "time": {
     "total": 35
@@ -65,8 +56,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/summer-pasta-salad.jpg"
 }

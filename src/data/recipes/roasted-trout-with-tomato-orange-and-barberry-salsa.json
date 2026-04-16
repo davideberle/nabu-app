@@ -75,11 +75,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/roasted-trout-with-tomato-orange-and-barberry-salsa.jpg"
 }

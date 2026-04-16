@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "the prepared salad to sit a little so the bread croutons can soften up – unless you want them mega-crunchy.",
+  "intro": "changed the bread and bulked it up with quinoa, which is the only grain I dare to use in this salad as it’s very",
   "ingredients": [
     {
       "item": "quinoa",
@@ -72,8 +72,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/quinoa-and-grilled-sourdough-salad.jpg"
 }

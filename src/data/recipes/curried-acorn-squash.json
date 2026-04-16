@@ -34,11 +34,5 @@
   "time": {
     "total": 120
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/curried-acorn-squash.jpg"
 }

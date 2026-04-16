@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "oil, a sprinkle of the sumac and cilantro, and the last of the lemon juice.",
+  "intro": "garlic, and a pinch of salt in a bowl and whisk until you have a thick, pourable",
   "ingredients": [
     {
       "item": "green chile, with seeds, coarsely chopped",
@@ -69,11 +69,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/coated-olives-with-spicy-yogurt.jpg"
 }

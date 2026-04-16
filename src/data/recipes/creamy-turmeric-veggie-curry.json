@@ -61,11 +61,5 @@
   "time": {
     "total": 10
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/creamy-turmeric-veggie-curry.jpg"
 }

@@ -52,7 +52,7 @@
     "To make the relish, peel, core, and chop the apples into bite-sized pieces. Place in a separate bowl with the beets and dill, and mix together.",
     "To serve, spoon the relish over the leaves and fish. Sprinkle over the remaining red onion, and serve with the horseradish-onion mixture on the side."
   ],
-  "image": null,
+  "image": "/recipes/smoked-trout-and-endive-with-dill-relish.jpg",
   "time": {
     "total": 45
   },
@@ -60,8 +60,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish & Seafood",
-    "meal_role": "main"
+    "chapter": "Fish & Seafood"
   },
   "cuisine": "Other"
 }

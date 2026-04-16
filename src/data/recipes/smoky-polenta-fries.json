@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "very gently. Spoon the herb oil on top and serve.",
+  "intro": "Finally, in a bowl, stir together the yogurt, garlic, fresh and dried mint, lemon",
   "ingredients": [
     {
       "item": "cups/375 ml vegetable stock scant ½ cup/60 g quick-cook polenta",
@@ -70,11 +70,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/smoky-polenta-fries.jpg"
 }

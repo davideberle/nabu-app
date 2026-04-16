@@ -9,9 +9,9 @@
   "servings": "serves 8–10",
   "intro": "Sometimes you simply just need cake. In fact, I would like this cake right now. It’s worth the wait – giving the cake enough time to soak up the syrup takes it to another level. This orange and yoghurt loaf comes together with such simple ingredients, doesn’t require any special equipment and the polenta (cornmeal) adds a wonderful texture to the crumb. The use of olive oil and yoghurt keeps the cake very moist.",
   "time": {
-    "prep": 20,
-    "cook": 65,
-    "total": 85
+    "prep": "20 MINUTES",
+    "cook": "1 HOUR 5 MINUTES",
+    "total": "20 MINUTES1 HOUR 5 MINUTES"
   },
   "ingredients": [
     {
@@ -84,8 +84,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts",
-    "meal_role": "main"
+    "chapter": "Desserts"
   },
   "cuisine": "Caribbean"
 }

@@ -38,10 +38,6 @@
     {
       "item": "Parmesan or Romano cheese, grated",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -52,14 +48,7 @@
     "Bring 4 quarts salted water to a boil in large pot. Stirring constantly, gradually add spaghetti to boiling water. When",
     "spaghetti and water reach a full boil, cover and turn off heat. Let it stand exactly 10 minutes, stirring several times.",
     "Pour spaghetti into large colander and drain; do not rinse. Shake and pour spaghetti back into hot pot. Pour hot oil,",
-    "wine and shrimp sauce over spaghetti and toss. Add salt, pepper and cheese as desired.",
-    "(43) Green Fettuccine with Scallop and Parsley Sauce",
-    "Green Fettuccine with Scallop and Parsley Sauce is a delicious, nutritious main course that can be whipped up in",
-    "less than 10 minutes. It's easy to make and very impressive for the company. Plus, since it’s green! You don't need",
-    "to worry about any difficult-to-pronounce ingredients or complicated cooking techniques, just simple pasta with a",
-    "creamy homemade sauce. The trickiest part of this recipe may be convincing your guests that the dish is not green,",
-    "but once they try it, they'll surely change their minds.",
-    "Yield: 10"
+    "wine and shrimp sauce over spaghetti and toss. Add salt, pepper and cheese as desired."
   ],
   "time": {
     "total": 40
@@ -68,8 +57,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/elegant-spaghetti-with-shrimp.jpg"
 }

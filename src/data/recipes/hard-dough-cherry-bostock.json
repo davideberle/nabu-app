@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "This cherry bostock will make your friends and family feel like they’re in a fancy bakery. Essentially, bostock is a slice of stale brioche topped with frangipane and jam, and it’s very easy to put together. As this recipe has simple components, I urge you to buy a really good-quality jam that is loaded with cherry flavour.",
   "time": {
-    "prep": 10,
-    "cook": 25,
-    "total": 35
+    "prep": "10 MINUTESCOOK TIME: 25 MINUTES",
+    "cook": "25 MINUTES",
+    "total": "10 MINUTESCOOK TIME: 25 MINUTES25 MINUTES"
   },
   "ingredients": [
     {
@@ -87,8 +87,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Dreams",
-    "meal_role": "main"
+    "chapter": "Dreams"
   },
   "cuisine": "Caribbean"
 }

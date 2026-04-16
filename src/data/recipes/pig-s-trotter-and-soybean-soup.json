@@ -35,7 +35,7 @@
     "Cut the trotters in half lengthways, then chop them into 1½ in (3cm) chunks, discarding the very knobbly foot end. Blanch them in boiling water for 2 minutes, then rinse them in cold water. Use tweezers to pluck out any remaining bristles. Smack the ginger and spring onion whites lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
     "Put the soybeans and trotter pieces in a pan with 2½ quarts (2.5 liters) cold water and bring to the boil. Skim. Add the ginger and spring onions, then cover, reduce the heat and simmer for about 4 hours, until the beans are completely tender. Season with salt and pepper before serving."
   ],
-  "image": null,
+  "image": "/recipes/pig-s-trotter-and-soybean-soup.jpg",
   "time": {
     "total": 180
   },
@@ -43,8 +43,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups",
-    "meal_role": "main"
+    "chapter": "Soups"
   },
   "cuisine": "Chinese"
 }

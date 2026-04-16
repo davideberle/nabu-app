@@ -94,7 +94,7 @@
     "For the soup, place the garlic, half the celery, and half the chardin a food processor and blitz to a coarse paste. Heat the oil in a large saucepan over medium heat and sauté the onion for about 10 minutes, until pale golden. Add the celery and chard paste and cook for 3 minutes more. Add the stock, zucchini, the remaining celery and chard, the lemon juice, 1 teaspoon salt, and ½ teaspoon black pepper. Bring to a boil and cook for 10 minutes, then taste and adjust the seasoning. It needs to be sharp, so add another tablespoon of lemon juice if you need to.",
     "Finally, carefully add the kubbeh to the soup—a few at a time, so they don’t stick to one another—and simmer gently for 20 minutes. Leave aside for a good half hour for them to settle and soften, then reheat and serve. Accompany with a wedge of lemon for an extra lemony kick."
   ],
-  "image": null,
+  "image": "/recipes/kubbeh-hamusta.jpg",
   "time": {
     "total": 80
   },
@@ -102,8 +102,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Stuffed Vegetables",
-    "meal_role": "main"
+    "chapter": "Stuffed Vegetables"
   },
   "cuisine": "Middle Eastern"
 }

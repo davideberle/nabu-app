@@ -56,7 +56,7 @@
     "Add the jaggery and cook the kadhi for 7-8 minutes on medium flame.",
     "Season with salt and serve hot."
   ],
-  "image": "/recipes/malwa-style-amli-kadhi.jpg",
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"
@@ -68,8 +68,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Large Plates",
-    "meal_role": "main"
+    "chapter": "Large Plates"
   },
   "cuisine": "Indian"
 }

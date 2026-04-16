@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "You can cook a lot more rice using this method, and the water-to-rice ratio isn’t as important. You need to cook with enough water so that the grains of rice can float around freely as it simmers. This is my preferred method when I am preparing rice for a fried rice recipe.",
   "time": {
-    "prep": 2,
-    "cook": 10,
-    "total": 2
+    "prep": "2 MINS, PLUS SOAKING TIME",
+    "cook": "10 MINS",
+    "total": "2 MINS, PLUS SOAKING TIME10 MINS"
   },
   "ingredients": [
     {
@@ -32,7 +32,7 @@
     "Bring a large saucepan of water to a boil, then add the rice. Stir in the salt and butter, reduce the heat and simmer for 7–9 minutes. To check for doneness, take out a couple of grains and press them with your fingers. They should be soft but still have a bit of resistance to them.",
     "Carefully pour the rice into a colander. If serving immediately, transfer to a serving dish and your job is done. If storing for later, rinse with cold water, carefully stir through and place in an air-tight container in the fridge for up to 4 days."
   ],
-  "image": null,
+  "image": "/recipes/boiled-white-rice.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -40,9 +40,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Desserts & Drinks",
-    "meal_role": "side"
+    "chapter": "Desserts & Drinks"
   },
-  "cuisine": "Indian",
-  "tips": "Note: SOAKING TIME; SOAKING TIME10 MINS."
+  "cuisine": "Indian"
 }

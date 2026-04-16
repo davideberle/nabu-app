@@ -58,11 +58,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/puy-lentils-with-eggplant-tomatoes-and-yogurt.jpg"
 }

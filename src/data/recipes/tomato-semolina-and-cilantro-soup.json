@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "Cohen, whose Moroccan grandmother made a semolina-based soup (as did my Italian grandmother). Here’s",
+  "intro": "I was looking for a soup containing semolina when I came across a recipe by the famous Israeli chef, Rafi",
   "ingredients": [
     {
       "item": "olive oil",
@@ -84,8 +84,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/tomato-semolina-and-cilantro-soup.jpg"
 }

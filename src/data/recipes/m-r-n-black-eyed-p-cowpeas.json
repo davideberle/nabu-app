@@ -8,7 +8,7 @@
   },
   "intro": "Thіѕ dеlісіоuѕ Mоrоссаn-ѕtуlе rесіре ѕmеllѕ ѕо good while сооkіng and tаѕtеѕ so уummу.",
   "time": {
-    "prep": 10,
+    "prep": "10 mіnѕ",
     "total": 120
   },
   "ingredients": [
@@ -87,8 +87,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

@@ -76,11 +76,6 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/watercress-salad-with-quail-eggs-ricotta-and-seeds.jpg",
+  "intro": "Add the lemon segments, celery leaves, parsley, cilantro, capers, chiles, olive"
 }

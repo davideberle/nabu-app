@@ -80,7 +80,7 @@
     "In the same sauté pan, toast the millet over medium heat, stirring often, until the millet starts to smell nutty, about 3 minutes. Transfer to a medium saucepan. Stir in the stock, 1 cup of the re-served porcini mushroom liquid, and the remaining ¼ teaspoon salt, 1 teaspoon oil, and the tempeh mixture. Bring to a boil over high heat. Immediately decrease the heat to low, cover, and simmer, until all the liquid is absorbed, about 15 minutes. Turn off the heat and let sit, covered, for 15 minutes.",
     "Season to taste with black pepper and, if desired, more salt. Serve garnished with the parsley and drizzled with olive oil."
   ],
-  "image": null,
+  "image": "/recipes/dirty-millet.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -92,8 +92,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Grains & Legumes",
-    "meal_role": "main"
+    "chapter": "Grains & Legumes"
   },
   "cuisine": "African & Caribbean"
 }

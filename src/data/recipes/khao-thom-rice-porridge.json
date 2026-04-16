@@ -41,11 +41,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": "",
-    "meal_role": "breakfast"
-  }
+  "image": "/recipes/khao-thom-rice-porridge.jpg"
 }

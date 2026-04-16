@@ -49,11 +49,5 @@
   "time": {
     "total": 25
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/curried-chicken-salad.jpg"
 }

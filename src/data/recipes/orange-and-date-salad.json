@@ -1,12 +1,12 @@
 {
   "id": "orange-and-date-salad",
-  "name": "Orange and Date Salad",
+  "name": "Orange And Date Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "pepper. Stir together and serve.",
+  "intro": "against the cannellini, but use regular white, which needs a minute or two less",
   "ingredients": [
     {
       "item": "medium oranges (2¼ lb/1 kg in total; about 3 cups/500 g after peeling and slicing)",
@@ -77,12 +77,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

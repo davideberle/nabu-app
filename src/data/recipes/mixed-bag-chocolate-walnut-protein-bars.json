@@ -9,9 +9,9 @@
   "servings": "8 servings",
   "intro": "Everything but the kitchen sink goes into this recipe. The long slim bars will have you happily chewing your way to protein enrichment on your way out the door.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -1146,8 +1146,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Salads",
-    "meal_role": "dessert"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

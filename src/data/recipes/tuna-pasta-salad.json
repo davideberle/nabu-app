@@ -50,10 +50,6 @@
     {
       "item": "Salt and freshly ground black pepper, to taste",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -61,12 +57,7 @@
     "Combine lemon zest, lemon juice, oil and salt and pepper in a cup.",
     "Add tuna, eggs, tomatoes, cucumber and parsley to pasta. Pour over dressing and toss until well combined.",
     "Breakfast Pasta Recipes",
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "(12) Crab and Spaghetti Bake",
-    "One recipe that has been passed down from one generation to the next and loved by all is this Crab and Spaghetti",
-    "Bake. It's filled with flavors of the deep sea that we know so well, buttermilk crabmeat, spaghetti sauce, lemon",
-    "juice, parsley.",
-    "Yield: 6"
+    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
   ],
   "time": {
     "total": 35
@@ -75,8 +66,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/tuna-pasta-salad.jpg"
 }

@@ -81,13 +81,12 @@
     "Top with the parsley.",
     "This dish will keep, covered and refrigerated, for up to 2 days if you discard the fruit, as it ferments quickly, ruining any leftovers. Cold, leftover octopus from this recipe can be sliced into small chunks and arranged over greens, tomatoes, or any vegetables for added flavor."
   ],
-  "image": null,
+  "image": "/recipes/octopus-with-figs-and-peaches.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Greek"
 }

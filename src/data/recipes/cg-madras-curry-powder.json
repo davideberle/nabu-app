@@ -75,7 +75,7 @@
     "Tip the warm spices onto a plate and leave to cool, then grind to a fine powder in a spice grinder or pestle and mortar. Add the turmeric, chilli powder, if using, garlic powder and onion powder, and stir to combine.",
     "Store in an airtight container in a cool, dark place and use within 2 months for optimal flavour."
   ],
-  "image": null,
+  "image": "/recipes/cg-madras-curry-powder.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -84,8 +84,7 @@
     "dish_type": [
       "base"
     ],
-    "chapter": "Base Recipes",
-    "meal_role": "component"
+    "chapter": "Base Recipes"
   },
   "time": {
     "prep": 15,

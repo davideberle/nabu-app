@@ -9,9 +9,9 @@
   "servings": "makes enough to serve 8–10",
   "intro": "I’ve found that keema naans are best cooked in a tandoor or very hot oven on a pizza stone. They are difficult to get right in a frying pan because of the meat inside. The trick is to roll them out while keeping the meat inside. With a little practice, you’ll roll out your naans and the minced meat inside will be thin and flavourful, just like at the best restaurants.\n\nI often substitute homemade tandoori masala for the mixed powder in the minced lamb. I like both versions, so you might like to give both a try.",
   "time": {
-    "prep": 25,
-    "cook": 10,
-    "total": 25
+    "prep": "25 MINS, PLUS THE TIME TO PREPARE THE DOUGH",
+    "cook": "10 MINS",
+    "total": "25 MINS, PLUS THE TIME TO PREPARE THE DOUGH10 MINS"
   },
   "ingredients": [
     {
@@ -69,14 +69,13 @@
     "Brush the shaped naan with just a little melted ghee and place on the heated pizza stone in the oven. Bake for about 3 minutes, then flip it over and cook for another 3 minutes. Check the dough and filling are done, and cook for longer if needed.",
     "To serve, sprinkle with coriander (cilantro) and perhaps a little more melted ghee. Keep warm while you roll and bake the remaining naans."
   ],
-  "tips": "If you don’t have a pizza stone, you can use a baking tray, although it will not get as hot. Note: THE TIME TO PREPARE THE DOUGH; THE TIME TO PREPARE THE DOUGH10 MINS.",
-  "image": null,
+  "tips": "If you don’t have a pizza stone, you can use a baking tray, although it will not get as hot.",
+  "image": "/recipes/keema-naans.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts & Drinks",
-    "meal_role": "main"
+    "chapter": "Desserts & Drinks"
   },
   "cuisine": "Indian"
 }

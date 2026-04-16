@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This recipe was sent to me by my friend Usman Butt – executive chef of Imran’s in Birmingham’s Balti Triangle. If you’re a lamb curry fan, this is one you’ve simply got to try. The sauce is quite mild and has a delicious flavour that when teamed with the tender lamb shanks is about as good as it gets.\n\nLamb nihari is a fantastic all-round option for entertaining. Your guests can add chopped green chillies, lemon juice, julienned ginger and coriander (cilantro) to taste at the table. If you want the curry to be fiery hot, add loads of chillies, or simply go for some of the less spicy options to produce the perfect curry for you.",
   "time": {
-    "prep": 20,
-    "cook": 210,
-    "total": 230
+    "prep": "20 MINS",
+    "cook": "3½ HOURS",
+    "total": "20 MINS3½ HOURS"
   },
   "ingredients": [
     {
@@ -117,8 +117,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
   "cuisine": "Indian"
 }

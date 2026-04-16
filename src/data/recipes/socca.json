@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "chickpea flour, water and olive oil. He was generous enough to give me the recipe.",
+  "intro": "village of Cogolin, run by an inspiring couple, Anne and Philippe Audibert. Among other brilliant dishes made",
   "ingredients": [
     {
       "item": "cherry tomatoes, halved",
@@ -62,8 +62,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/socca.jpg"
 }

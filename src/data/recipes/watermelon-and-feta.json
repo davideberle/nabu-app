@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "cheeses you can use here, see Dates and Turkish Sheep's Cheese, page 280).",
+  "intro": "reminds me of hot sweaty nights on the seafront in Tel Aviv, when everyone is out enjoying beer, loud music",
   "ingredients": [
     {
       "item": "feta",
@@ -49,8 +49,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/watermelon-and-feta.jpg"
 }

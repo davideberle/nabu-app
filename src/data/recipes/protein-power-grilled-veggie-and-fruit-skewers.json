@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "We’ve all heard of fruit skewers, but have you heard of fruit and marinated tofu skewers? All are grilled on a stick to make the prettiest and freshest finger food around.",
   "time": {
-    "prep": 5,
-    "cook": 15,
-    "total": 20
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -873,8 +873,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers & Snacks",
-    "meal_role": "main"
+    "chapter": "Appetizers & Snacks"
   },
   "cuisine": "Other"
 }

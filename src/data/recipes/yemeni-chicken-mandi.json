@@ -9,9 +9,9 @@
   "servings": "4 to 6 servings",
   "intro": "Yemeni chicken mandi is a rice dish that has gained popularity not only in Yemen, but across all the Arab world. It can be made with lamb or chicken, and it is heavily spiced with Yemeni hawaij spices—a classic blend of aromatic spices used across Yemeni cuisine. Traditionally, mandi is cooked in an underground oven called a taboon, using hot coals. This recipe is an easier adaptation of the dish, suitable for a modern kitchen. The seasoned chicken sits on top of glistening yellow rice, garnished with fried onions, almonds, and raisins. It is commonly served with a spicy green or red bisbas sauce, which resembles a spicy chutney.",
   "time": {
-    "prep": 15,
-    "cook": 75,
-    "total": 90
+    "prep": "15 minutes",
+    "cook": "1 hour and 15 minutes",
+    "total": "15 minutes1 hour and 15 minutes"
   },
   "ingredients": [
     {
@@ -156,8 +156,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: Worth the Effort",
-    "meal_role": "main"
+    "chapter": "Main Dishes: Worth the Effort"
   },
   "cuisine": "Middle Eastern"
 }

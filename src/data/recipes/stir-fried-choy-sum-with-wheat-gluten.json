@@ -67,7 +67,7 @@
     "Add the gluten puffs, ½ cup (100ml) mushroom-soaking water, soy sauce, sugar and ¼ teaspoon salt and mix well. Simmer for about 1 minute, then add the choy sum to the wok. When everything is piping hot, give the potato starch mixture a stir and add just enough to thicken the remaining liquid to a lazy gravy. Remove from the heat, stir in the sesame oil and serve.",
     "This juicy little stir-fry is based on one I’ve eaten in Yangzhou. Heat 3 tbsp oil or lard in a seasoned wok over a high flame. Add some slices of peeled ginger (with some sliced garlic if you like) and stir-fry briefly until aromatic, then add 8 fresh shiitake mushrooms, sliced. Stir-fry until the mushrooms soften, then add 300g green pak choy, cut into bite-sized pieces. When the pak choy is wilted, add 4 tbsp stock and a pinch of sugar, then season with salt. If you wish, thicken the juices with ½ tsp potato starch mixed with 1 tbsp cold water. Serve."
   ],
-  "image": null,
+  "image": "/recipes/stir-fried-choy-sum-with-wheat-gluten.jpg",
   "time": {
     "total": 1
   },
@@ -75,8 +75,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "cuisine": "Chinese"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Stir well and serve at once, or chill and serve within 24 hours.",
+  "intro": "Bring a large pot of water to a boil, throw in the cauliflower, and blanch for",
   "ingredients": [
     {
       "item": "medium candy beets or a variety of beets (1⅔ lb/750 g) rounded 1 cup/225 g Puy lentils",
@@ -57,11 +57,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/candy-beets-with-lentils-and-yuzu.jpg"
 }

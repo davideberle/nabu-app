@@ -46,8 +46,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
   "image": "/recipes/basic-thick-cashew-cream.jpg",
   "cuisine": "Other"

@@ -1,6 +1,6 @@
 {
   "id": "posh-chopped-salad",
-  "name": "Posh Chopped Salad",
+  "name": "Posh chopped salad",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -29,11 +29,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/posh-chopped-salad.png"
 }

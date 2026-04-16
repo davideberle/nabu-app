@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "much else. You can use commercial sun-dried tomatoes in oil to save yourself making the oven-dried tomatoes.",
+  "intro": "Filling a tart with potatoes is a real treat for potato lovers. Serve it with a green salad and you don’t need",
   "ingredients": [
     {
       "item": "cherry tomatoes",
@@ -66,8 +66,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/surprise-tatin.jpg"
 }

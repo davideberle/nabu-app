@@ -64,13 +64,12 @@
     "Season to taste with salt and pepper. Use immediately or place in a jar with a tight-fitting lid and refrigerate for up to 3 days.",
     "To reconstitute, shake vigorously."
   ],
-  "image": null,
+  "image": "/recipes/greek-yogurt-ranch-sauce.jpg",
   "category": {
     "dish_type": [
       "side"
     ],
-    "chapter": "Basics",
-    "meal_role": "side"
+    "chapter": "Basics"
   },
   "cuisine": "Greek"
 }

@@ -1,6 +1,6 @@
 {
   "id": "butternut-squash-with-buckwheat-polenta-and-tempura-lemon",
-  "name": "Butternut Squash with Buckwheat Polenta and Tempura Lemon",
+  "name": "Butternut Squash With Buckwheat Polenta And Tempura Lemon",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -117,11 +117,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/butternut-squash-with-buckwheat-polenta-and-tempura-lemon.jpg"
 }

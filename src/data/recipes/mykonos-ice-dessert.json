@@ -107,13 +107,12 @@
     "Cover and freeze until firm.",
     "Remove from freezer 12 -16 minutes before serving."
   ],
-  "image": null,
+  "image": "/recipes/mykonos-ice-dessert.jpg",
   "category": {
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Sweet Ends",
-    "meal_role": "dessert"
+    "chapter": "Sweet Ends"
   },
   "cuisine": "Greek"
 }

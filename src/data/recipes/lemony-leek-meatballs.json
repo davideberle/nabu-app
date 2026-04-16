@@ -57,7 +57,7 @@
     "Wipe out the pan with a paper towel and then lay the meatballs on the bottom, slightly overlapping if needed. Pour over enough stock to almost, but not quite cover the patties. Add the lemon juice and ½ teaspoon salt. Bring to a boil, then cover and simmer gently for 30 minutes. Remove the lid and cook for a few more minutes, if needed, until almost all the liquid has evaporated. Remove the pan from the heat and set aside to cool down.",
     "Serve the meatballs just warm or at room temperature, with a dollop of the yogurt and a sprinkle of the parsley."
   ],
-  "image": null,
+  "image": "/recipes/lemony-leek-meatballs.jpg",
   "time": {
     "total": 80
   },
@@ -65,8 +65,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "cuisine": "Middle Eastern"
 }

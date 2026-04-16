@@ -66,10 +66,6 @@
     {
       "item": "no-boil lasagna noodles",
       "amount": "12"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -81,13 +77,7 @@
     "Spread one-third of the meat mixture over the bottom of a greased 13x9x2-inch baking dish. Cover with one-fourth",
     "of the cheese mixture. Layer noodles. Repeat layering meat, cheese, and noodles two more times.",
     "Bake in a preheated to 350 F oven for 30 minutes. Sprinkle with remaining cheese mixture and bake, uncovered,",
-    "about 5 more minutes until the cheese turns gold. Set aside for 10 minutes and serve.",
-    "(29) Chicken and Peppers over Pasta",
-    "This is a dish that you can make with as much or as little chicken and peppers as you’d like. You can also vary the",
-    "type of pasta flavors by using different kinds of cheese, herbs, or sauces. It's one of my favorite ways to eat pasta",
-    "because it's so hearty! I hope you enjoy this recipe. This is a dish that can be made with any amount of chicken and",
-    "peppers that you'd like.",
-    "Yield: 6"
+    "about 5 more minutes until the cheese turns gold. Set aside for 10 minutes and serve."
   ],
   "time": {
     "total": 70
@@ -96,8 +86,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/easy-homemade-lasagna.jpg"
 }

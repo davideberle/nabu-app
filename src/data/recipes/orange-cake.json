@@ -9,9 +9,9 @@
   "servings": "10 to 12 servings",
   "intro": "This simple orange cake was tested six times before I was happy with the results. I was adamant about including a cake that was unfussy and perfectly delicious on its own—no need for any glaze or icing! I also don’t particularly enjoy baking, so the only cake I’ll bake is one that I can mix in a bowl using a whisk or spatula. I don’t want many steps, I don’t want to wait for anything to chill, and I don’t want to take out my stand mixer. This orange cake is the answer. It reminds me of the cakes we used to always have at the breakfast table or at teatime. We would often cut a slice of cake and top it with plain yogurt to enjoy. I recently asked a few Iraqi friends if they did this as well and was met with blank stares. Maybe it was just our family. But make this cake and try it! I do have to warn you though: zesting the oranges is a bit of a workout, so feel free to get someone else involved and pass it on to them while you do the “hard” part.",
   "time": {
-    "prep": 15,
-    "cook": 45,
-    "total": 60
+    "prep": "15 minutes",
+    "cook": "45 minutes",
+    "total": "15 minutes45 minutes"
   },
   "ingredients": [
     {
@@ -66,8 +66,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts & Drinks",
-    "meal_role": "dessert"
+    "chapter": "Desserts & Drinks"
   },
   "cuisine": "Middle Eastern"
 }

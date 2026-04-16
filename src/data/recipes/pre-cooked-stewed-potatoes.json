@@ -9,9 +9,9 @@
   "servings": "makes enough for 4–10 servings depending on use",
   "intro": "This pre-cooked potato dish can be eaten on its own or used in other British Indian restaurant-style dishes. Serve it as is and it could be a delicious, authentic-style Bombay aloo, in which case I recommend cutting the potato cubes smaller. Be sure to cook the potatoes until they are soft. Nobody likes an 80% cooked, hard potato. This is exactly why you will want to make this recipe if you are intending on whipping up a potato-based curry or two. It’s a good job to get done early so that all you have to do is heat them up in the curry sauce of your choice and serve. They keep for at least 3 days, covered in the fridge, and can also be frozen with their tasty cooking stock. Defrost before using.",
   "time": {
-    "prep": 10,
-    "cook": 30,
-    "total": 40
+    "prep": "10 MINS",
+    "cook": "30 MINS",
+    "total": "10 MINS30 MINS"
   },
   "ingredients": [
     {
@@ -80,7 +80,7 @@
     "Now add the potato pieces and cover with the spice stock or water. Cover and simmer until the potatoes are soft and cooked through, about 30 minutes. Sprinkle with the garam masala and season with salt and black pepper, giving it all a good stir. Serve the potatoes as they are immediately or remove the potato pieces and strain the stock for use in your curries. This will keep for at least 3 days in the fridge and can also be frozen. The strained cooking stock adds a nice flavour to vegetarian curries."
   ],
   "tips": "If serving this as a dish on its own, you might like to spice it up a bit by adding chilli powder and/or chopped green chillies to taste. Garnish with chopped coriander (cilantro).",
-  "image": null,
+  "image": "/recipes/pre-cooked-stewed-potatoes.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -88,8 +88,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Accompaniments",
-    "meal_role": "main"
+    "chapter": "Accompaniments"
   },
   "cuisine": "Indian"
 }

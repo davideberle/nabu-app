@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "this over the salad, finish with the hazelnuts, and serve.",
+  "intro": "when cool enough to handle, roughly crush with the flat side of a large knife.",
   "ingredients": [
     {
       "item": "tbsp/75 ml rice wine vinegar",
@@ -86,11 +86,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/pomelo-salad.jpg"
 }

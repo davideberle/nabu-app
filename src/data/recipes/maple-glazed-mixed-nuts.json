@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "This easy-to-make protein snack only takes minutes. The result is maple-sweet candied nuts that would be a gift of love for anyone.",
   "time": {
-    "prep": 5,
-    "cook": 15,
-    "total": 20
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -47,8 +47,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers & Snacks",
-    "meal_role": "main"
+    "chapter": "Appetizers & Snacks"
   },
   "cuisine": "Other"
 }

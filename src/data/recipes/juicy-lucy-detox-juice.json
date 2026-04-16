@@ -91,11 +91,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "drink"
-    ],
-    "chapter": "",
-    "meal_role": "drink"
-  }
+  "image": "/recipes/juicy-lucy-detox-juice.jpg"
 }

@@ -37,23 +37,13 @@
     {
       "item": "Parmesan cheese",
       "amount": "1/2 cup"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "Cook pasta as per the directions on the package. In a saucepan, boil the broccoli for about 3 minutes and drain.",
     "Blend in a food processor.",
     "In a skillet, gently cook the chicken, pepper, pine nuts and garlic for 2-3 minutes, stirring.",
-    "Add broccoli and stir for about 2 minutes. Add pasta and toss. Add the Parmesan cheese and toss to combine.",
-    "(32) Orzo with Braised Short Ribs in Burgundy Sauce",
-    "Braised short ribs are one of those dishes that taste amazing and require little to no effort. The key ingredient in",
-    "braising the meat is a flavorful liquid (typically red wine) and lots of time to tenderize the beef. The short rib is one",
-    "of the most beautiful cuts of beef: elegant, tender, and succulent. Braised in a thick, rich sauce with plenty of red",
-    "wine and bright flavors like garlic and fresh herbs, it becomes an almost magical dish.",
-    "Yield: 8"
+    "Add broccoli and stir for about 2 minutes. Add pasta and toss. Add the Parmesan cheese and toss to combine."
   ],
   "time": {
     "total": 36
@@ -62,8 +52,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/pasta-with-chicken-and-broccoli-pesto.jpg"
 }

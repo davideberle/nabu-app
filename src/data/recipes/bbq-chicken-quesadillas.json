@@ -1,6 +1,6 @@
 {
   "id": "bbq-chicken-quesadillas",
-  "name": "Bbq Chicken Quesadillas",
+  "name": "BBQ Chicken Quesadillas",
   "source": {
     "cookbook": "Mexican Home Cooking",
     "author": "Various"
@@ -49,8 +49,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Mexican"
 }

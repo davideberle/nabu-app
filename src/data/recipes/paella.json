@@ -1,0 +1,52 @@
+{
+  "id": "paella",
+  "name": "Paella",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "skinless and boneless chicken thighs, preferably",
+      "amount": "4"
+    },
+    {
+      "item": "of garlic",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "paella rice",
+      "amount": "2 cups"
+    },
+    {
+      "item": "handfuls of frozen peas",
+      "amount": ""
+    },
+    {
+      "item": "broth into a saucepan and bring to a boil.",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Place a large casserole-type pan on a high heat and d r izzle in some olive oil. Add the pa rsley, chicken,",
+    "chorizo, and bacon",
+    "to the pan and stir together. C ook fo r about 5 minutes, unti l th e chicke n turns",
+    "golden • Add your onion and garlic to the pan and cook fo r 5 minutes. Add t he saffron (if using) and",
+    "to the pan with a pinch of salt and pepper, giving it a good stir. Pour in your hot broth and bring to",
+    "a boil, stirring and scraping all the goodness off the botto m of the pan as you go • Put a lid o n the pan,",
+    "turn the heat down to a simmer, and cook the rice according to the package instructions . When the",
+    "rice is nearly done, stir in the seafood and peas, then squeeze in the juice of I lemo n . Cook fo r a further",
+    "5 minutes, have a taste, and add more salt and pepper and a little extra water if you think it 's needed - you",
+    "don't want the r ice to become too dry. Ser ve in the midd le of the table with some lemo n wedges for",
+    "over and let everyone help themselves",
+    "292 CLASSIC FISH",
+    "SHRIMP AND SWEET CORN",
+    "This is inspired by a great classic American soup, clam chowder. In this version I use shrimp, but in America",
+    "chowder is made using whole jars of pre-cooke d clams, so you could also have a go at using t hese."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/paella.png"
+}

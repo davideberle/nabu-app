@@ -81,11 +81,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/alphonso-mango-and-curried-chickpea-salad.jpg"
 }

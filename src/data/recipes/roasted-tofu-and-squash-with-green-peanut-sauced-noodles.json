@@ -9,9 +9,9 @@
   "servings": "serves 1",
   "intro": "I love making a sauce at the top end of the week that can filter into various dishes. This dressing is very rich, but when topped with roasted tofu and squash, it provides a wonderful stress-free lunch option. This makes tons of sauce, so save the leftovers to use over rice and veggies!",
   "time": {
-    "prep": 20,
-    "cook": 20,
-    "total": 40
+    "prep": "20 MINUTESCOOK TIME: 20 MINUTES",
+    "cook": "20 MINUTES",
+    "total": "20 MINUTESCOOK TIME: 20 MINUTES20 MINUTES"
   },
   "ingredients": [
     {
@@ -136,8 +136,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Cooking for One",
-    "meal_role": "main"
+    "chapter": "Cooking for One"
   },
   "cuisine": "Caribbean"
 }

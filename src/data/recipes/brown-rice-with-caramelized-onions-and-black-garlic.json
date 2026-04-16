@@ -59,11 +59,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/brown-rice-with-caramelized-onions-and-black-garlic.jpg"
 }

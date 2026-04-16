@@ -31,7 +31,7 @@
     "Beat in the oil, a few drops at a time, to make the mayonnaise. Once the sauce has emulsified, pour in the olive oil in a thin trickle, beating continually with the pestle in the same direction. The sauce is ready once it has a very thick texture and the pestle almost stands up by itself in the bowl.",
     "Cover and refrigerate for up to 24 hours, until ready to use."
   ],
-  "image": null,
+  "image": "/recipes/traditional-french-garlic-a-oli.jpg",
   "time": {
     "total": 50
   },
@@ -39,8 +39,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Sauces & Dressings",
-    "meal_role": "component"
+    "chapter": "Sauces & Dressings"
   },
   "cuisine": "Other"
 }

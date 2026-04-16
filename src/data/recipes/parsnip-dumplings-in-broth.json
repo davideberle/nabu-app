@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "keep the vegetables left over from making stock and serve them deep-fried, or even as they are, with",
+  "intro": "flavored vegetarian broth (pictured on page 30) – she adds prunes to it. I’m telling you, it works! You can",
   "ingredients": [
     {
       "item": "olive oil",
@@ -97,8 +97,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/parsnip-dumplings-in-broth.jpg"
 }

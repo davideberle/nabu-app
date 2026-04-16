@@ -39,13 +39,12 @@
     "Add 3 tablespoons oil or lard to a seasoned wok over a high flame and swirl it around. Add the shrimp and stir-fry until crisp and fragrant. Remove the shrimp and set aside.",
     "Return the wok to the stove with the remainder of the oil or lard, add the sliced greens or cabbage and stir-fry over a high flame until the cabbage is hot, barely cooked and still a little crisp. Add the shrimp and soy sauce and season with salt if necessary (you may not need any because of the saltiness of the shrimp and soy). Finally, add the spring onion greens, stir them a couple of times, then turn onto a dish and serve."
   ],
-  "image": null,
+  "image": "/recipes/stir-fried-cabbage-with-dried-shrimp.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "time": {
     "prep": 20,

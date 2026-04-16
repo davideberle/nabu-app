@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Fried Lima Beans with Feta, Sorrel and Sumac (page 214), or as a side dish with grilled lamb chops.",
+  "intro": "herbs and spices – works in plenty of contexts. Try it next to Two-Potato Vindaloo (page 18), along with",
   "ingredients": [
     {
       "item": "green beans, trimmed",
@@ -75,8 +75,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/green-bean-salad-with-mustard-seeds-and-tarragon.jpg"
 }

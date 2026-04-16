@@ -73,7 +73,7 @@
     "Fill the jar with the hot brine, making sure the cucumbers are completely covered. Put the rest of the dill on top and cover the jar loosely with the lid (this allows gas to escape from the jar). Store in a cool, dark place for 3 days.",
     "After 3 days, taste a pickle. It should be mildly pickled. Leave to ferment for up to 3 days longer if you want a sharper taste. In any case, once you are happy with the flavor, seal the jar and refrigerate for up to 2 weeks."
   ],
-  "image": null,
+  "image": "/recipes/pickled-cucumbers-with-dill.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -82,8 +82,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments",
-    "meal_role": "main"
+    "chapter": "Condiments"
   },
   "time": {
     "prep": 20,

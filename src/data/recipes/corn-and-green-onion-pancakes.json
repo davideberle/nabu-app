@@ -1,0 +1,62 @@
+{
+  "id": "corn-and-green-onion-pancakes",
+  "name": "Corn And Green Onion Pancakes",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 15",
+  "intro": "pastry shell with parchment paper, fill it with dried beans or pie weights, and",
+  "ingredients": [
+    {
+      "item": "ears corn, husks removed (2¼ lb/1 kg)",
+      "amount": "6"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "green onions, white and green parts, finely chopped (about ¾ cup/70 g)",
+      "amount": "5"
+    },
+    {
+      "item": "green chile, coarsely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "ground cumin",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "brown sugar",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "eggs",
+      "amount": "2"
+    },
+    {
+      "item": "plus 1 tbsp/100 g all-purpose flour",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "cup/120 g clarified butter",
+      "amount": "½"
+    },
+    {
+      "item": "limes, cut into wedges salt and white pepper",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Place a ridged grill pan over high heat until smoking. Brush 1 ear of corn with oil and grill for 5 minutes, turning regularly until charred all over. Set aside.",
+    "Remove the kernels from the remaining 5 ears by holding them upright on a work surface and running a sharp knife between the base of the kernels and the cob. Place the kernels in a food processor with half the green onions, the chile, cumin, sugar, 1 egg, ¾ teaspoon salt, and a good grind of black pepper.",
+    "Blitz for 1 minute, until smooth, and then transfer to a bowl. Separate the remaining egg and add the yolk to the mix, along with the flour and the",
+    "remaining green onions. Cut the smoky corn kernels off the grilled ear and gently stir them into the corn mixture. Whisk the egg white to soft peaks and then fold it into the mixture.",
+    "Heat a large sauté pan over medium-high heat and add half the butter. Add 2 heaped tablespoons of batter for each pancake and fry for about 2 minutes on each side, until golden brown. Cook the pancakes in batches of 3 or 4—y ou don’t want to crowd the pan—and remove and keep them warm as you cook the rest, adding more butter as necessary. Serve warm, alongside the lime wedges."
+  ],
+  "time": {
+    "total": 30
+  }
+}

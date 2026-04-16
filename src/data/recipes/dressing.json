@@ -1,0 +1,70 @@
+{
+  "id": "dressing",
+  "name": "Dressing",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 2",
+  "intro": "pour in the oil, along with ¾ teaspoon salt and a good grind of black pepper.",
+  "ingredients": [
+    {
+      "item": "small kohlrabi, peeled and cut into very fine strips roughly 2-inches/5-cm long and paper-thin (¾ cup/100 g)",
+      "amount": "1"
+    },
+    {
+      "item": "small rutabaga, peeled and cut into very fine strips roughly 2-inches/5-cm long and paper-thin (¾ cup/100 g)",
+      "amount": "¼"
+    },
+    {
+      "item": "small turnip, peeled and cut into very fine strips roughly 2-inches/5-cm long and paper-thin (⅔ cup/80 g)",
+      "amount": "1"
+    },
+    {
+      "item": "small carrot, peeled and cut into very fine strips roughly 2-inches/5-cm long and paper-thin (½ cup/60 g)",
+      "amount": "1"
+    },
+    {
+      "item": "red chile, finely chopped",
+      "amount": "1"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "canola oil scant ¼ cup/25 g sliced almonds",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "poppy seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cups/20 g cilantro leaves",
+      "amount": "1¼"
+    },
+    {
+      "item": "cup/15 g dill leaves scant ⅓ cup/50 g pomegranate seeds (seeds from about ½ small pomegranate) salt",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Place the sliced vegetables in a large bowl and add the chile, lemon juice, vinegar, sugar, oil, and a scant ½ teaspoon salt. Mix well and set aside.",
+    "Place the almonds in a small pan and toast for 1 minute, stirring all the time.",
+    "Add the poppy seeds and fry for another minute, taking care not to overcolor the almonds. Remove from the pan and set aside.",
+    "Just before serving, add the almonds, poppy seeds, cilantro, and dill to the vegetables and mix together. Transfer to serving bowls or a large platter, spoon the pomegranate seeds over the top, and serve."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/dressing.jpg"
+}

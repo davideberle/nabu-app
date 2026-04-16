@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Kolkata-style prawn (shrimp) curries are making their way onto many curry-house menus. This recipe was inspired by a visit to my local curry house, Raj Bari in Yarm. I didn’t see the chefs making the dish while I was there, but they were nice enough to let me know what went into it. I returned home and decided to make the curry all over again for my family. It was that good!",
   "time": {
-    "prep": 10,
-    "cook": 15,
-    "total": 25
+    "prep": "10 MINS",
+    "cook": "15 MINS",
+    "total": "10 MINS15 MINS"
   },
   "ingredients": [
     {
@@ -104,8 +104,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
   "cuisine": "Indian"
 }

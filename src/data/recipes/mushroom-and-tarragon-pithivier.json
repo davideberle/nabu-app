@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "aside for 10 minutes before serving.",
+  "intro": "of the liquid. Sprinkle all the remaining cheese on top, cover with foil, and",
   "ingredients": [
     {
       "item": "cups/300 ml vegetable stock",
@@ -84,11 +84,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/mushroom-and-tarragon-pithivier.jpg"
 }

@@ -6,11 +6,11 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "thank-yous to Itamar Srulovich.",
+  "intro": "a light meal from heaven, or next to Smoky Frittata (page 96) with some Greek yogurt on the side. A million",
   "ingredients": [
     {
       "item": "about 6 tbsp olive oil",
-      "amount": "6"
+      "amount": ""
     },
     {
       "item": "small white onions, thinly sliced",
@@ -59,8 +59,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/itamar-s-bulgur-pilaf.jpg"
 }

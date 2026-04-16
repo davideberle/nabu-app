@@ -40,8 +40,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
   "image": "/recipes/s-mores.jpg",
   "cuisine": "Other"

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "brush this gently over the top and sides of the cake, and serve.",
+  "intro": "Arrange the eggplant slices in the prepared baking pan; they should fill up the",
   "ingredients": [
     {
       "item": "eggs",
@@ -69,11 +69,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/fritter-roulette.jpg"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "Cakes (page 149) or roast chicken.",
+  "intro": "caramelized macadamias, if you like, or use roasted peanuts instead. Consider serving the slaw with Chard",
   "ingredients": [
     {
       "item": "lime juice",
@@ -100,8 +100,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/sweet-winter-slaw.jpg"
 }

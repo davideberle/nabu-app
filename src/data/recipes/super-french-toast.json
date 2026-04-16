@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 8",
-  "intro": "sprinkle with the sea salt. Serve at once.",
+  "intro": "brush with butter. Place under the broiler for up to 2 minutes, until lightly",
   "ingredients": [
     {
       "item": "cups/600 ml whole milk",
@@ -66,11 +66,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": "",
-    "meal_role": "breakfast"
-  }
+  "image": "/recipes/super-french-toast.jpg"
 }

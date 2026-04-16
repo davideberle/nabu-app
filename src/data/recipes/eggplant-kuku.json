@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "trim the edge to get a nice round cake with distinct layers. Serve warm or at",
+  "intro": "then pour in half of the red mix to make a shallow omelet. Just before it sets",
   "ingredients": [
     {
       "item": "cup/120 ml sunflower oil, plus extra to brush the baking pan",
@@ -56,11 +56,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/eggplant-kuku.jpg"
 }

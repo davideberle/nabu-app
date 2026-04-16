@@ -9,9 +9,9 @@
   "servings": "8 servings",
   "intro": "Lots of texture and wonderful flavors enhance this spiced-up sandwich. It’s one of the best veggie combinations you could ask for.",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 15
+    "prep": "5 minutes",
+    "cook": "10 minutes",
+    "total": "15 minutes"
   },
   "ingredients": [
     {
@@ -456,8 +456,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Soups & Stews",
-    "meal_role": "main"
+    "chapter": "Soups & Stews"
   },
   "cuisine": "Other"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "cooked through. Remove, leave to settle for 5 minutes, and serve.",
+  "intro": "Bake for 40 minutes, until all the liquid has been absorbed and the pasta is",
   "ingredients": [
     {
       "item": "cup/160 ml whole milk",
@@ -79,11 +79,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/taleggio-and-spinach-roulade.jpg"
 }

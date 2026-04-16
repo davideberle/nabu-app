@@ -8,7 +8,7 @@
   "servings": "serves 6",
   "intro": "This dish has been a family favorite for a long time. I like to double the recipe and add extra veggies",
   "time": {
-    "prep": 30,
+    "prep": "30 minutes",
     "total": 4
   },
   "ingredients": [
@@ -95,8 +95,7 @@
   "category": {
     "dish_type": [
       "main"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

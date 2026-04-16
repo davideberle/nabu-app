@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "spoon the pomegranate seeds over the top, and serve.",
+  "intro": "Place the almonds in a small pan and toast for 1 minute, stirring all the time.",
   "ingredients": [
     {
       "item": "small red onions (7 oz/200 g)",
@@ -51,11 +51,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/fig-salad.jpg"
 }

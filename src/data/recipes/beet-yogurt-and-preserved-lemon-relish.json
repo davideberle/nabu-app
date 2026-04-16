@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "a salad or serving alongside oily fish.",
+  "intro": "leaves. Don’t throw out the leaves. Use them for salads, or sauté with a little olive oil, garlic and caraway seeds",
   "ingredients": [
     {
       "item": "large beets",
@@ -68,8 +68,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "",
-    "meal_role": "component"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

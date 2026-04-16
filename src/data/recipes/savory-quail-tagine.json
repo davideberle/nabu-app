@@ -9,7 +9,7 @@
   "servings": "2 servings",
   "intro": "Quail cooked in savory spices with vegetables in a tagine for a change from the usual. If you do not own a tagine, a Dutch oven will work perfectly well.",
   "time": {
-    "prep": 20,
+    "prep": "20 mins",
     "total": 85
   },
   "ingredients": [
@@ -70,8 +70,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

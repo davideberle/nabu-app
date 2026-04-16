@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "chopped herbs such as basil or mint, grated lemon zest, harissa paste, crushed garlic or a mellow vinegar.",
+  "intro": "Treat this recipe as a blueprint for an infinite number of roast vegetable dishes. The point here is to lighten",
   "ingredients": [
     {
       "item": "parsnips (1½ lbs total)",
@@ -75,8 +75,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "",
-    "meal_role": "component"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/roasted-parsnips-and-sweet-potatoes-with-caper-vinaigrette.jpg"
 }

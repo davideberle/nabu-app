@@ -36,11 +36,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "soup"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/cashew-and-miso-cream-soup.jpg"
 }

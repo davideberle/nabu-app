@@ -9,7 +9,7 @@
   "servings": "10 servings",
   "intro": "A (mostly) vegetarian, a shoestring-budget meal that will leave you feeling both very satisfied and with tons of leftovers. Bonus: it's super-healthy and easy to prepare.",
   "time": {
-    "prep": 15,
+    "prep": "15 mins",
     "total": 50
   },
   "ingredients": [
@@ -93,8 +93,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups & Stews",
-    "meal_role": "main"
+    "chapter": "Soups & Stews"
   },
   "cuisine": "Moroccan"
 }

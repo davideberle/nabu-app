@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Dhansak curries are very popular at curry houses all over the UK, but like so many of the curries we know and love here, our dhansaks are totally different to what would be called a dhansak in India. Authentic dhansaks have both Persian and Gujarati influences. The Parsis brought with them the idea of cooking meat, vegetables and lentils together into a thick stew when they fled Iran. The Gujaratis added more spices to the rather mild Iranian version. These special dhansaks are normally served at family dinners on a Sunday and big events like weddings, and are usually made with goat or mutton on the bone and served with brown rice.",
   "time": {
-    "prep": 10,
-    "cook": 50,
-    "total": 10
+    "prep": "10 MINS, PLUS SOAKING TIME",
+    "cook": "50 MINS",
+    "total": "10 MINS, PLUS SOAKING TIME50 MINS"
   },
   "ingredients": [
     {
@@ -112,14 +112,12 @@
     "Add the lamb and brown it for about 2 minutes. Stir in the chilli powder, turmeric and 1½ tablespoons of the garam masala. Stir these spices in, then add the tomatoes, tamarind paste, aubergines (eggplants), squash and potato. Add just enough water to cover – about 1 litre (4¼ cups) – and simmer for 50 minutes, or until the lamb is really tender and the vegetables and lentils have all broken down into a thick sauce. Lentils can stick to the bottom of the pan, so be sure to top up the water if necessary.",
     "To finish, stir in the coriander (cilantro) and mint, then add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce. Stir it all up, season with salt and garnish with a colourful layer of coriander (cilantro)."
   ],
-  "image": null,
+  "image": "/recipes/lamb-dhansak.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
-  "cuisine": "Indian",
-  "tips": "Note: SOAKING TIME; SOAKING TIME50 MINS."
+  "cuisine": "Indian"
 }

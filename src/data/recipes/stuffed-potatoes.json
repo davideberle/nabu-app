@@ -116,7 +116,7 @@
     "To make the stuffed potatoes, place the beef, bread crumbs, onion, garlic, parsley, thyme, cinnamon, 1 teaspoon salt, some black pepper, and the eggs in a mixing bowl. Use your hands to combine all the ingredients well.",
     "Hollow out each potato half with a melon baller or a teaspoon, creating shell ⅔ inch / 1.5 cm thick. Stuff the meat mixture into each cavity, using your hands to push it right down so that it fills the potato completely. Carefully press all the potatoes down into the tomato sauce so that they are sitting close together, with the meat stuffing facing upward. Add about 1¼ cups / 300 ml water, or just enough to almost cover the patties with sauce, bring to a light simmer, cover the pan with a lid, and leave to cook slowly for at least 1 hour or even longer, until the sauce is thick and the potatoes are very soft. If the sauce hasn’t thickened enough, remove the lid and reduce for 5 to 10 minutes. Serve hot or warm, garnished with the cilantro."
   ],
-  "image": null,
+  "image": "/recipes/stuffed-potatoes.jpg",
   "time": {
     "total": 80
   },
@@ -124,8 +124,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Stuffed Vegetables",
-    "meal_role": "main"
+    "chapter": "Stuffed Vegetables"
   },
   "cuisine": "Middle Eastern"
 }

@@ -75,7 +75,7 @@
     "Transfer to a blender. Add the peaches, tomato sauce, water, vinegar, pomegranate molasses, lime juice, tamari, tomato paste, and chipotle chile and process until smooth.",
     "Pour the sauce back into the saucepan and simmer over medium-low heat, stirring occasionally, until thick, about 20 minutes. Stir in the sage and simmer for 1 to 2 minutes. Taste and season with more salt if desired. Use immediately or store in a tightly sealed jar in the refrigerator for up to 1 week."
   ],
-  "image": null,
+  "image": "/recipes/pomegranate-peach-barbecue-sauce.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -87,8 +87,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Spice Blends & Sauces",
-    "meal_role": "side"
+    "chapter": "Spice Blends & Sauces"
   },
   "cuisine": "African & Caribbean"
 }

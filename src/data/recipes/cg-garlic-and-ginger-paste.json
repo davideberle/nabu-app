@@ -22,7 +22,7 @@
     "Place the garlic and ginger in a food processor or pestle and mortar and blend with just enough water to make a smooth paste. Some chefs finely chop their garlic and ginger instead, which is a good alternative to making a paste. Store in an airtight container in the fridge for up to 3 days and use as needed. If you’re planning a curry party, go ahead and get this job ticked off early.",
     "I often make larger batches of pastes and freeze them in ice cube trays. Frozen cubes can be transferred to airtight plastic bags in the freezer, ready for when you get that curry craving. Be sure to let them defrost a little first."
   ],
-  "image": null,
+  "image": "/recipes/cg-garlic-and-ginger-paste.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -31,8 +31,7 @@
     "dish_type": [
       "base"
     ],
-    "chapter": "Base Recipes",
-    "meal_role": "component"
+    "chapter": "Base Recipes"
   },
   "time": {
     "prep": 10,

@@ -1,12 +1,12 @@
 {
   "id": "fregola-and-artichoke-pilaf",
-  "name": "Fregola and Artichoke Pilaf",
+  "name": "Fregola And Artichoke Pilaf",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "portion and the reserved cooked onion. Serve lime halves to squeeze over",
+  "intro": "Cook for 20 minutes, stirring occasionally, until soft and golden brown. Stir",
   "ingredients": [
     {
       "item": "globe artichokes (2 lb/900 g), or 10½ oz/300 g artichoke hearts",
@@ -85,12 +85,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

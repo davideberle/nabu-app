@@ -1,6 +1,6 @@
 {
   "id": "bacon-with-rosemary",
-  "name": "Bacon with Rosemary",
+  "name": "Bacon With Rosemary",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -49,11 +49,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/bacon-with-rosemary.png"
 }

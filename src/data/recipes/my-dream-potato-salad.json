@@ -9,9 +9,9 @@
   "servings": "serves 4–6",
   "intro": "Potato salad can be a very sensitive topic. However, this is my book and therefore you can’t judge me for what you’re about to read. I call this my dream potato salad because it involves lots of spring onions (scallions), as well as raw mangetout (snow peas) and radishes for crunch. I opt for new potatoes because for me, potato salad season is a peak spring and summer dish, which happens to be new potato season. This is far from a traditional potato salad, so potato sal traditionalists, look away now! The question is, should a potato salad be mayo or oil based? The real answer is ackee curry mayo. Ackee’s wonderful smooth and silky texture really lends itself to creamy dressings like this. The curry flavour is perfect as potatoes can really take a lot of flavour. This would be a great salad for a barbecue – please stand your corner on my behalf if anyone challenges you about your potato salad choices.",
   "time": {
-    "prep": 10,
-    "cook": 20,
-    "total": 30
+    "prep": "10 MINUTESCOOK TIME: 20 MINUTES",
+    "cook": "20 MINUTES",
+    "total": "10 MINUTESCOOK TIME: 20 MINUTES20 MINUTES"
   },
   "ingredients": [
     {
@@ -79,8 +79,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Salads",
-    "meal_role": "side"
+    "chapter": "Salads"
   },
   "cuisine": "Caribbean"
 }

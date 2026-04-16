@@ -46,7 +46,7 @@
     "Pile the tofu up in a deep serving dish with the chicken slivers on top. Pour over the rest of the stock. Arrange the green leaves prettily around the tofu, garnish with the slivered ham and serve.",
     "(If you wish to make the full, classic version of this dish, you will also need small amounts of cooked chicken gizzard and liver, cut into slivers, sliced bamboo shoot, blanched pea shoots, dried shrimp eggs and a few uncooked shrimp, which should be lightly coated in starch paste and briefly stir-fried in lard. Add the chicken offal, shrimp eggs and bamboo shoot to the wok along with the chicken slivers. Garnish with the cooked shrimp, pea shoots and ham.)"
   ],
-  "image": null,
+  "image": "/recipes/boiled-firm-tofu-slivers-in-chicken-stock.jpg",
   "time": {
     "total": 10
   },
@@ -54,8 +54,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Tofu",
-    "meal_role": "main"
+    "chapter": "Tofu"
   },
   "cuisine": "Chinese"
 }

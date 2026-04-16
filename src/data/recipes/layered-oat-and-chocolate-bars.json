@@ -9,9 +9,9 @@
   "servings": "16 squares",
   "intro": "You wouldn’t think that no-bake bars could look like this and hold together like this, but they do. They’re more like a candy bar than anything else, except they’re loaded with protein.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -119,8 +119,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Salads",
-    "meal_role": "dessert"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

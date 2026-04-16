@@ -9,9 +9,9 @@
   "servings": "8 bars",
   "intro": "These big and sturdy bars are great for the trail or even for just sitting in the backyard. Melted chocolate is included, so they are nice and chocolaty, too.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -192,8 +192,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Salads",
-    "meal_role": "dessert"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

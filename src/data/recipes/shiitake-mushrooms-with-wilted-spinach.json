@@ -60,7 +60,7 @@
     "Add the onion, salt, mustard, and apple cider vinegar, and bring to a boil. Remove from the heat.",
     "Slowly stir in the extra-virgin olive oil. Add the baby spinach, toss with hot mushroom mixture until wilted, and season with black pepper. Serve with quinoa, if you wish."
   ],
-  "image": null,
+  "image": "/recipes/shiitake-mushrooms-with-wilted-spinach.jpg",
   "time": {
     "total": 15
   },
@@ -69,8 +69,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

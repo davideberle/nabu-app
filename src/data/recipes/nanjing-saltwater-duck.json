@@ -64,7 +64,7 @@
     "When the duck has finished salting, rinse it well and pat dry on paper towels. Bring the broth to the boil again. Add the pieces of duck and cover them with a plate so they are kept fully immersed in the liquid. Bring to the boil, cover and turn off the heat. Leave to steep for 20 minutes. Bring the broth to the boil a second time, then cover, turn off the heat and leave to steep for another 15 minutes.",
     "Remove the duck pieces from the broth and allow to cool completely, retaining the broth. Cut the meat into slices before serving. Chinese cooks usually chop through the bone, but you may wish to remove the meat from the leg bones before cutting it. Serve the sliced duck with a spoonful or two of the cooking broth, to make it juicy."
   ],
-  "image": null,
+  "image": "/recipes/nanjing-saltwater-duck.jpg",
   "time": {
     "total": 180
   },
@@ -72,8 +72,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers",
-    "meal_role": "main"
+    "chapter": "Appetizers"
   },
   "cuisine": "Chinese"
 }

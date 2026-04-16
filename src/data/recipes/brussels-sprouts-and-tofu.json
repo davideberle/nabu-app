@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "sweet sauce lends vibrancy to the dish and makes it utterly addictive. Serve with hot steamed rice.",
+  "intro": "Though unorthodox, here’s probably one of the best things you can do with the old Brussels. The delicious",
   "ingredients": [
     {
       "item": "sweet chile sauce",
@@ -75,20 +75,7 @@
     "Serve warm, but not hot, garnished with the sesame seeds, if using, and the rest of the cilantro.",
     "In the summer of 2009 I was asked by the makers of the Food Programme on BBC Radio 4 to host a half- hour show on a subject of my choice. Bizarrely, I ended up doing a program about cauliflower, trying to show how this veg is unjustifiably losing its popularity in recent years, particularly to broccoli. I know that there’s nothing obviously sexy about cauliflower to warrant star status. In fact, it seems – on the face of it – somehow dull and dreary. But as we were working on the show I realized that this isn’t really the case, that cauliflower is actually wonderfully versatile, much more so than broccoli. Both Sami Tamimi, Ottolenghi's executive head chef, and I agreed that it is one of those singular vegetables, like potato or eggplant, that can take on big flavors without losing its own unique character.",
     "Here’s one example. Serve it as part of a mezze selection or as a side dish with lentils or fish. To upgrade, drizzle with tahini sauce.",
-    "Saffron cauliflower",
-    "Serves 4 as a side dish",
-    "³ cup boiling water",
-    "1 medium cauliflower, divided into medium florets",
-    "1 large red onion, sliced",
-    "³ cup golden raisins (if they are very dry soak them in water for a few minutes, then drain)",
-    "½ cup good-quality green olives, pitted and cut lengthways in half",
-    "4 tbsp olive oil",
-    "2 bay leaves salt and black pepper",
-    "4 tbsp roughly chopped parsley",
-    "Preheat the oven to 400°F. Put the saffron strands in a small bowl and pour over the boiling water. Leave to infuse for a minute, then pour the saffron and water into a large mixing bowl. Add the remaining ingredients, except the parsley, and mix everything together well with your hands.",
-    "Transfer the mix to a medium ovenproof dish, cover with foil and place in the oven. Cook for 40 to 45 minutes, or until the cauliflower is tender but still a bit firm, not soft. Halfway through the cooking time remove the dish from the oven and stir well, then cover again and return to bake.",
-    "Once the cauliflower is cooked, take it out of the oven, remove the foil and allow to cool down slightly before stirring in the parsley.",
-    "Taste and adjust the seasoning, then serve warm or at room temperature."
+    "Saffron cauliflower"
   ],
   "time": {
     "total": 30
@@ -97,8 +84,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

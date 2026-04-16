@@ -73,7 +73,7 @@
   "method": [
     "Warm the oil in a medium sauté pan over medium-low heat. Add the onion and salt and sauté until the onion is soft, 5 to 7 minutes. Add the garlic, cumin, paprika, black pepper, and cayenne and sauté until fragrant, for 2 to 3 minutes. Set aside to cool slightly, about 5 minutes. Add the lemon juice, orange juice, water, habanero, and saffron and mix until well combined. Stir in the cilantro and parsley. Taste and season with more salt if desired. Use immediately or store in a tightly sealed jar in the refrigerator for up to 1 week."
   ],
-  "image": null,
+  "image": "/recipes/chermoula.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -85,8 +85,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Spice Blends & Sauces",
-    "meal_role": "main"
+    "chapter": "Spice Blends & Sauces"
   },
   "cuisine": "African & Caribbean"
 }

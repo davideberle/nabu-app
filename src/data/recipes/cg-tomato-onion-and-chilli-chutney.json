@@ -33,7 +33,7 @@
   "method": [
     "Mix the tomatoes, onion, chillies and coriander (cilantro) in a bowl and add salt to taste. Place in the fridge for the flavours to develop for about an hour. Serve as a topping on whatever dish you want."
   ],
-  "image": null,
+  "image": "/recipes/cg-tomato-onion-and-chilli-chutney.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -42,8 +42,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Accompaniments",
-    "meal_role": "component"
+    "chapter": "Accompaniments"
   },
   "time": {
     "prep": 10,

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Shimeji are the clustered small mushrooms that you often get in “exotic” selections.",
+  "intro": "substantial vegetarian main course; as it is you can put it in a Tupperware container and take it on a picnic;",
   "ingredients": [
     {
       "item": "white wine vinegar",
@@ -75,8 +75,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/marinated-mushrooms-with-walnut-and-tahini-yogurt.jpg"
 }

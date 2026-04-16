@@ -46,10 +46,6 @@
     {
       "item": "capers",
       "amount": "2 tbsp."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -59,11 +55,7 @@
     "In a large skillet, heat olive oil and sauté garlic with remaining 1/2 tsp. seasoning salt. When garlic just starts to",
     "brown, add onion, remaining 1/2 tsp. basil, spinach and sun-dried tomatoes (if using).",
     "Continue cooking until onion and spinach are done, 3 to 5 minutes on medium-high heat.",
-    "Lower heat; add cooked and drained pasta, tuna and capers; toss well.",
-    "(41) One-Pot Pasta a La Puttanesca",
-    "This dish is truly something special with its robust, spicy, slightly smoky flavors and its lovely bright color. By",
-    "using canned tomatoes and dried herbs, you can make this in a matter of minutes on even the busiest night.",
-    "Yield:"
+    "Lower heat; add cooked and drained pasta, tuna and capers; toss well."
   ],
   "time": {
     "total": 35
@@ -72,8 +64,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/grilled-tuna-pasta-toss.jpg"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 8",
-  "intro": "out for me. What else can I add?",
+  "intro": "“I think this is the most delicious recipe (pictured on page 40) in the world!” wrote Claudine after trying it",
   "ingredients": [
     {
       "item": "puff pastry",
@@ -82,8 +82,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "",
-    "meal_role": "dessert"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/caramelized-garlic-tart.jpg"
 }

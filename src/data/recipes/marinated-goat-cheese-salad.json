@@ -77,7 +77,7 @@
     "Preheat the oven to 400°F (200°C). Brush the bread rounds with a little of the strained oil and bake for 3–5 minutes, until lightly toasted. Heat the broiler. Cut each goat cheese in half horizontally and put a piece on top of each bread round. Broil for 2–3 minutes, until bubbling and golden.",
     "Arrange the salad leaves on individual plates, drizzle with the vinaigrette, and place the cheese toasts on top."
   ],
-  "image": null,
+  "image": "/recipes/marinated-goat-cheese-salad.jpg",
   "time": {
     "total": 25
   },
@@ -85,8 +85,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Cheese",
-    "meal_role": "starter"
+    "chapter": "Cheese"
   },
   "cuisine": "Other"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "with ½ teaspoon chile oil drizzled over each portion.",
+  "intro": "into bowls. Scatter the snap peas on top, sprinkle with the cilantro, and finish",
   "ingredients": [
     {
       "item": "lb/2 kg tomatoes (about 20), blanched, peeled, and coarsely chopped (10½ cups/1.9 kg)",
@@ -67,11 +67,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "soup"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/tomato-and-watermelon-gazpacho.jpg"
 }

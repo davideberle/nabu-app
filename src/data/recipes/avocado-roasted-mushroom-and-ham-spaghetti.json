@@ -42,10 +42,6 @@
     {
       "item": "grated Parmesan cheese",
       "amount": "1/4 cup"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -54,11 +50,7 @@
     "Bring salted water to boil in a large pot and then cook spaghetti as per the directions on the package. Drain and set",
     "aside in a large bowl.",
     "In a blender, combine lemon juice, garlic, olive paste and avocados and blend until smooth.",
-    "Combine pasta, diced ham, mushrooms and avocado sauce. Sprinkle with Parmesan cheese and serve immediately.",
-    "(14) Cheese Ravioli",
-    "One of the most popular dishes in Italy, cheese ravioli, is a soft dough wrapped around a filling of Parmesan,",
-    "ricotta, or mozzarella. The dough can be stuffed with bread crumbs and any other ingredient such as spinach or",
-    "mushrooms, which enhances the flavor of the dish."
+    "Combine pasta, diced ham, mushrooms and avocado sauce. Sprinkle with Parmesan cheese and serve immediately."
   ],
   "time": {
     "total": 45
@@ -67,8 +59,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/avocado-roasted-mushroom-and-ham-spaghetti.jpg"
 }

@@ -50,7 +50,7 @@
     "Place the tomatoes, onion, and half of the basil in a bowl. Drizzle with plenty of olive oil, season well, and toss to coat.",
     "Arrange the arugula on a serving plate and drizzle with a little oil and some balsamic vinegar. Season and spoon the tomato and basil mixture on top. Add the torn mozzarella. Sprinkle over the remaining basil, and drizzle again with a little oil and balsamic vinegar. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/tomato-salad-with-balsamic-vinaigrette.jpg",
   "time": {
     "total": 40
   },
@@ -58,8 +58,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Cheese",
-    "meal_role": "starter"
+    "chapter": "Cheese"
   },
   "cuisine": "Other"
 }

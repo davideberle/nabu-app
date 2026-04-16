@@ -9,9 +9,9 @@
   "servings": "makes 6",
   "intro": "I am hooked on puris! Especially served for breakfast with the potato curry. You will see my finished puris on that page too. There is really so much you can do with puris. Dip them into curries and dhals, or they are delicious served with pickles, like the spicy mixed vegetable pickle. At the end of the day, these are fried bread so I’m sure you’ll find a use for them.",
   "time": {
-    "prep": 20,
-    "cook": 10,
-    "total": 20
+    "prep": "20 MINS, PLUS RESTING TIME",
+    "cook": "10 MINS",
+    "total": "20 MINS, PLUS RESTING TIME10 MINS"
   },
   "ingredients": [
     {
@@ -34,7 +34,7 @@
     "Carefully remove them with a slotted spoon or spider strainer when ready and transfer to paper towel to absorb any excess oil.",
     "You can serve puris on their own, as you would naans, or filled with the filling of your choice. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/puris.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -43,9 +43,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts & Drinks",
-    "meal_role": "main"
+    "chapter": "Desserts & Drinks"
   },
-  "cuisine": "Indian",
-  "tips": "Note: RESTING TIME; RESTING TIME10 MINS."
+  "cuisine": "Indian"
 }

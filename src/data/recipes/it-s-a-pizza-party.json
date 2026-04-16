@@ -9,9 +9,9 @@
   "servings": "serves 6",
   "intro": "Not only did I reignite my sourdough journey in lockdown, I also bought a pizza oven. So I completed lockdown with flying colours. Pizza seems to be the ultimate gathering food. It’s universally liked and is a safe option to please multiple guests (despite the whole pineapple discourse … I promise you, liking or not liking pineapple on pizza doesn’t need to be attached to your personality or in your Hinge bio). This is coming from a pineapple on pizza advocate. Most people rarely seem to make pizza at home even though its actually quite easy. The dough uses minimal ingredients and the toppings can be totally customisable to your desired flavour combinations. This is a deep-dish style pizza, which for me gets the best results when baking in a home oven.",
   "time": {
-    "prep": 30,
-    "cook": 60,
-    "total": 90
+    "prep": "30 MINUTES",
+    "cook": "1 HOUR",
+    "total": "30 MINUTES1 HOUR"
   },
   "ingredients": [
     {
@@ -122,8 +122,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "For Company",
-    "meal_role": "main"
+    "chapter": "For Company"
   },
   "cuisine": "Caribbean"
 }

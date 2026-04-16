@@ -37,22 +37,13 @@
     {
       "item": "Parmesan cheese",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "Melt butter in a large skillet and sauté onion over medium heat for 5 minutes. Add ham, peas, potatoes and pesto",
     "sauce to skillet; heat through.",
     "Cook fettuccine according to package directions; drain. Place hot pasta in a large, heated serving bowl.",
-    "Add the potato-pesto mixture and toss gently to mix. Sprinkle with Parmesan cheese and serve.",
-    "(18) Italian Spaghetti Sauce",
-    "The sauce is boiled with a mixture of onions, carrots, celery, and olive oil. The garlic and red pepper are added to",
-    "the mix, along with tomatoes and oregano. It can also contain sugar or wine, depending on personal preference.",
-    "Pepperoni slices are often added for flavor before it's poured over cooked pasta noodles.",
-    "Yield:"
+    "Add the potato-pesto mixture and toss gently to mix. Sprinkle with Parmesan cheese and serve."
   ],
   "time": {
     "total": 35
@@ -61,8 +52,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/summer-pasta-with-pesto.jpg"
 }

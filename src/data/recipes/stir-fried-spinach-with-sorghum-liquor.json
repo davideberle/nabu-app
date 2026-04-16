@@ -34,13 +34,12 @@
     "Thoroughly wash and trim the spinach. If the leaves are large, you may wish to cut them in half lengthways. Dry the spinach as far as possible in a salad spinner or by spreading it out on a clean tea towel.",
     "Heat the oil in a seasoned wok over a high flame until very hot. Add the spinach and stir-fry vigorously until wilted and greatly reduced in volume. Pour the liquor around the edges of the wok so it sizzles, then stir it into the spinach. When everything is hot and fragrant, season with the soy sauce and with salt, if necessary. Serve."
   ],
-  "image": null,
+  "image": "/recipes/stir-fried-spinach-with-sorghum-liquor.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "time": {
     "prep": 20,

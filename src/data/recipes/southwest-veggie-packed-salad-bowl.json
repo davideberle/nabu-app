@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "Vibrant colors fill this bowl with all the best vegetables associated with the Southwest. Add a small sweet potato and a spicy dressing and you’re all set.",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 15
+    "prep": "5 minutes",
+    "cook": "10 minutes",
+    "total": "15 minutes"
   },
   "ingredients": [
     {
@@ -1247,8 +1247,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Soups & Stews",
-    "meal_role": "side"
+    "chapter": "Soups & Stews"
   },
   "cuisine": "Other"
 }

@@ -9,9 +9,9 @@
   "servings": "serves 2",
   "intro": "If you haven’t tried the famous Mumbai toastie yet, it’s time you did. These are so good. Buttered fluffy white bread topped with seasoned potatoes, vegetables and the essential mint and coriander sauce… this is a sandwich you would expect from the exciting city that is Mumbai. These are often served as a simple sandwich, but for me, it’s the buttered and toasted version that gets it! If you’ve made some of my potato curry and have leftovers, you could use it on these toasties if you wish.",
   "time": {
-    "prep": 10,
-    "cook": 20,
-    "total": 30
+    "prep": "10 MINS",
+    "cook": "20 MINS",
+    "total": "10 MINS20 MINS"
   },
   "ingredients": [
     {
@@ -123,8 +123,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Starters & Snacks",
-    "meal_role": "main"
+    "chapter": "Starters & Snacks"
   },
   "cuisine": "Indian"
 }

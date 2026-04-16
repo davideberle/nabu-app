@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "and keep them in the freezer. If you don’t have enough you can always add more grated Parmesan.",
+  "intro": "This recipe is a bit of a solution – what to do with all the Parmesan rinds left after grating. In restaurants",
   "ingredients": [
     {
       "item": "olive oil",
@@ -68,8 +68,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/savoy-cabbage-and-parmesan-rind-soup.jpg"
 }

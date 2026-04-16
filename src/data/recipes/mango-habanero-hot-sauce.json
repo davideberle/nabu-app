@@ -74,7 +74,7 @@
     "Warm the oil in a small saucepan over medium-low heat. Add the onion, carrot, cumin, salt, and cayenne and sauté until the onion just starts to brown, 8 to 10 minutes. Add the garlic, chile, and lime zest and sauté until the garlic is fragrant, 2 to 3 minutes. Add the mango, water, vinegar, lime juice, and white pepper and sauté until everything is warmed through, 2 to 3 minutes.",
     "Transfer to a blender and puree until smooth. Taste and season with more salt if desired. Stir in the parsley. Use immediately or store in a tightly sealed jar in the refrigerator for up to 1 week."
   ],
-  "image": null,
+  "image": "/recipes/mango-habanero-hot-sauce.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -86,8 +86,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Spice Blends & Sauces",
-    "meal_role": "side"
+    "chapter": "Spice Blends & Sauces"
   },
   "cuisine": "African & Caribbean"
 }

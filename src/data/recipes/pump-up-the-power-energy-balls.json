@@ -9,8 +9,8 @@
   "servings": "32 balls",
   "intro": "No-bake treats are so easy to make. Currants are readily available, and they seem to have been made to be combined with pepitas . . . and hempseed . . . and peanut butter . . .",
   "time": {
-    "prep": 20,
-    "total": 20
+    "prep": "20 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -81,8 +81,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads",
-    "meal_role": "main"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

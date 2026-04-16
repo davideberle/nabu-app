@@ -83,7 +83,7 @@
     "Quarter the cucumber lengthwise, then scoop out and discard the seeds. Cut the flesh into small, neat chunks. Reserve on a plate. Halve the tomatoes, scoop out and discard some of the seeds, and add to the cucumber. Tear or chop the lettuce into bite-sized pieces.",
     "Stir the dressing. Put a layer of lettuce in the bowl (do not toss), then scatter in some olives and scallions. Sprinkle over some parsley, cilantro, mint, and purslane or arugula. Add half the cucumber and tomatoes. Continue adding the ingredients until everything is in the bowl. Toss the salad just before serving."
   ],
-  "image": null,
+  "image": "/recipes/shepherd-s-salad.jpg",
   "time": {
     "total": 50
   },
@@ -92,8 +92,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

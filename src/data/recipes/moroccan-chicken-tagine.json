@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "Sweet and savory stewed chicken with dried fruits and exotic spices. Serve this on top of couscous and top with toasted almonds and fresh cilantro. Children love the familiarity of the 'sweet' spices and dried fruits.",
   "time": {
-    "prep": 20,
+    "prep": "20 mins",
     "total": 125
   },
   "ingredients": [
@@ -97,8 +97,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "variation of a green curry makes one of the most satisfying supper dishes for the late winter and early",
+  "intro": "Yes, there’s a long list of ingredients here, but I am ready to be extra-kind and allow you to adapt the recipe,",
   "ingredients": [
     {
       "item": "¾-inch piece of galangal (or fresh ginger), peeled and chopped",
@@ -110,8 +110,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/purple-sprouting-broccoli-with-rice-noodles.jpg"
 }

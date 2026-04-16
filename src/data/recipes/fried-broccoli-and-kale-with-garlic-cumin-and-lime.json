@@ -57,11 +57,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/fried-broccoli-and-kale-with-garlic-cumin-and-lime.jpg"
 }

@@ -43,7 +43,7 @@
     "Separate the tatsoi leaves and wash them thoroughly. If they are longer than about 4 in (10cm), cut them in half. Bring a pan of water to the boil, add ½ teaspoon salt and ½ tablespoon cooking oil, then blanch the tatsoi briefly—just enough to wilt the leaves. Drain and shake dry.",
     "Heat the remaining oil in a seasoned wok over a high flame. Add the ginger and stir briefly until you can smell its fragrance. Add the blanched tatsoi and bamboo shoot, if using, and stir-fry. When the tatsoi is piping hot, add the stock and sugar and season with salt. Mix well and serve."
   ],
-  "image": null,
+  "image": "/recipes/stir-fried-tatsoi-with-winter-bamboo-shoot.jpg",
   "time": {
     "total": 2
   },
@@ -51,8 +51,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "cuisine": "Chinese"
 }

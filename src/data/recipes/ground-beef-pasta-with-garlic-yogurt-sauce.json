@@ -42,10 +42,6 @@
     {
       "item": "garlic cloves, crushed",
       "amount": "4-5"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -54,12 +50,7 @@
     "minutes, or until the meat is cooked through.",
     "Meanwhile, cook pasta, according package instructions. Drain and set aside. Melt the butter in a large pot and toss",
     "the pasta in it.",
-    "Serve the pasta, top with the cooked ground beef and covered with the garlic-yogurt sauce.",
-    "(37) Baked Turkey Tetrazzini",
-    "This classic dish is a family favorite, and for a good reason. Baked Turkey Tetrazzini is rich, creamy comfort food.",
-    "It also happens to be very easy to make, as long as you have the ingredients on hand! This recipe only takes about",
-    "45 minutes from start to finish and tastes delicious with some crusty bread for dipping in the sauce.",
-    "Yield: 6"
+    "Serve the pasta, top with the cooked ground beef and covered with the garlic-yogurt sauce."
   ],
   "time": {
     "total": 43
@@ -68,8 +59,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/ground-beef-pasta-with-garlic-yogurt-sauce.jpg"
 }

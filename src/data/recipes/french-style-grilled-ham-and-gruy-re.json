@@ -1,6 +1,6 @@
 {
   "id": "french-style-grilled-ham-and-gruy-re",
-  "name": "French-Style Grilled Ham And Gruyère",
+  "name": "French-Style Grilled Ham And GruyèRe",
   "source": {
     "cookbook": "The Best of Fine Cooking: Breakfast",
     "author": "Fine Cooking"
@@ -63,11 +63,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/french-style-grilled-ham-and-gruy-re.jpg"
 }

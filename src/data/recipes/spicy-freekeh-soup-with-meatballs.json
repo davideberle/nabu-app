@@ -116,7 +116,7 @@
     "Wipe out the pan with paper towels and add the olive oil for the soup. Over medium heat, fry the onion and garlic for 5 minutes. Stir in the carrots and celery and cook for 2 minutes. Add the tomatoes, tomato paste, spices, sugar, 2 teaspoons salt, and ½ teaspoon pepper and cook for 1 more minute. Stir in the freekeh and cook for 2 to 3 minutes. Add the stocks, hot water, and meatballs. Bring to a boil, lower the heat, and simmer very gently for a further 35 to 45 minutes, stirring occasionally, until the freekeh is plump and tender. The soup should be quite thick. Reduce or add a little water as needed. Finally, taste and adjust the seasoning.",
     "Ladle the hot soup into serving bowls and sprinkle with the cilantro. Serve the lemon wedges on the side."
   ],
-  "image": null,
+  "image": "/recipes/spicy-freekeh-soup-with-meatballs.jpg",
   "time": {
     "total": 50
   },
@@ -124,8 +124,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups",
-    "meal_role": "main"
+    "chapter": "Soups"
   },
   "cuisine": "Middle Eastern"
 }

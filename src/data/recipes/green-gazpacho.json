@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "standing blender works best here but an immersion blender could also be used.",
+  "intro": "There are a million recipes around for gazpacho, which is by far my favorite cold soup. This one, a green",
   "ingredients": [
     {
       "item": "thick slices sourdough bread",
@@ -93,17 +93,7 @@
     "Lastly, add the remaining ice and pulse once or twice, just to crush it a little. Serve at once, with the croutons.",
     "182 | Green Things",
     "This traditional way with asparagus is probably my favorite. It is simple and therefore relies on the quality of the asparagus itself more than anything else. See if you can get the spears from a farmers’ market or the shop at a farm where they have been freshly picked. Roughly chopped tarragon sprinkled on top will make a good addition.",
-    "Asparagus mimosa",
-    "Serves 4 as a starter",
-    "2 bunches of medium asparagus",
-    "2 tbsp good-quality olive oil",
-    "2 tsp small capers, drained",
-    "1 tsp Maldon sea salt black pepper",
-    "Gently place your eggs in a saucepan of boiling water and simmer for 9 minutes. Remove the eggs from the pan and immerse them in a large bowl of cold water. After a few minutes, take them out of the water and leave to cool down completely. Peel the eggs and grate them on a coarse cheese grater.",
-    "Bend the asparagus until the tough bottom ends snap off; discard the ends. Place the spears in a large pot of boiling water and cook for 3 minutes, or until tender. It may take slightly longer if they are thick.",
-    "Drain and, while still warm but not hot, divide among four serving plates. Drizzle the oil over the asparagus and sprinkle with the capers, salt and some pepper. Top with the grated egg, staying close to the center of the stalks so that the tips and bases remain visible.",
-    "Here asparagus spears are simply cooked on a ridged griddle pan. The fact that they are not boiled means that they keep more of their original flavor. The texture, though, is slightly more sinewy than when boiling or steaming. I suggest using a mild feta, not too salty, or another type of mild sheep's cheese from the Balkans (see Dates and Turkish Sheep's Cheese, page 280). Serve warm, as a starter, or as part of a mezze spread.",
-    "Char-grilled asparagus"
+    "Asparagus mimosa"
   ],
   "time": {
     "total": 30
@@ -112,8 +102,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/green-gazpacho.jpg"
 }

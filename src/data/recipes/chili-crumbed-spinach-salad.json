@@ -55,7 +55,7 @@
     "To make the breadcrumb topping, put the bread in a food processor and pulse to form crumbs. Pour the crumbs into a roasting pan and bake for 5–10 minutes or until golden. Don’t let them brown. Stir the red pepper flakes and salt and pepper into the crumbs. Set aside.",
     "To assemble the salad, pour the dressing into a large salad bowl and swirl it around. Add the spinach leaves and shake to coat. Add the raisins (if using) and sun-dried tomatoes, and toss gently. Top with the pine nuts, sprinkle over breadcrumbs, and serve."
   ],
-  "image": null,
+  "image": "/recipes/chili-crumbed-spinach-salad.jpg",
   "time": {
     "total": 25
   },
@@ -64,8 +64,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

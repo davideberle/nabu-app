@@ -9,9 +9,9 @@
   "servings": "serves 2–3",
   "intro": "Cho cho, aka chayote is so insanely delicious raw, yet it’s never prepared that way in Jamaican cooking! I love the sturdy crunch it offers, it really holds the dressing and works really well alongside the cuke, which is it’s cooler cousin flavour-wise.",
   "time": {
-    "prep": 10,
-    "cook": 0,
-    "total": 10
+    "prep": "10 MINUTES",
+    "cook": "",
+    "total": "10 MINUTES0"
   },
   "ingredients": [
     {
@@ -77,8 +77,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Salads",
-    "meal_role": "side"
+    "chapter": "Salads"
   },
   "cuisine": "Caribbean"
 }

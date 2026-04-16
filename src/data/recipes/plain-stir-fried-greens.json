@@ -29,13 +29,12 @@
     "Crisp lettuces such as romaine are wonderful stir-fried like this.",
     "With its deep green, purple-hearted leaves, this vegetable is unmistakable, and can often be found in Chinese food shops. Blanch the leaves in boiling water with a little oil, then stir-fry with finely chopped garlic and salt. The purple of the leaves will give the cooking juices a magnificent magenta color. The vegetable is traditionally eaten around the Dragon Boat Festival in late spring. A handful of fava beans, skinned and then boiled until tender, makes a delightful addition to the dish."
   ],
-  "image": null,
+  "image": "/recipes/plain-stir-fried-greens.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "time": {
     "prep": 20,

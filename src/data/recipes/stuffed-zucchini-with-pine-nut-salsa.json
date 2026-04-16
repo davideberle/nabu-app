@@ -63,11 +63,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/stuffed-zucchini-with-pine-nut-salsa.jpg"
 }

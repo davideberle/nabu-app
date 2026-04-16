@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "sprinkle with sumac or ground Persian lime (see page 245).",
+  "intro": "When chard isn’t in season try a combination of spinach and arugula (you won’t need to blanch them) and",
   "ingredients": [
     {
       "item": "Swiss chard",
@@ -65,8 +65,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/chickpea-saut-with-greek-yogurt.jpg"
 }

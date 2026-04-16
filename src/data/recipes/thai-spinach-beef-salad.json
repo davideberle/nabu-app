@@ -8,7 +8,7 @@
   "servings": "serves 4",
   "intro": "This is a fun salad to eat. It is crunchy, dense, and a little spicy. Most importantly, it's good for you.",
   "time": {
-    "prep": 20,
+    "prep": "20 minutes",
     "total": 3
   },
   "ingredients": [
@@ -71,8 +71,7 @@
   "category": {
     "dish_type": [
       "main"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "Here’s a wonderful breakfast you’ll want over and over again. This dish serves two or three people, but it can easily be doubled or tripled for a larger family.",
   "time": {
-    "prep": 40,
-    "cook": 40,
-    "total": 80
+    "prep": "40 minutes",
+    "cook": "40 minutes",
+    "total": "1 hour 20 minutes"
   },
   "ingredients": [
     {
@@ -254,8 +254,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Breakfast",
-    "meal_role": "main"
+    "chapter": "Breakfast"
   },
   "cuisine": "Other"
 }

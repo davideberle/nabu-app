@@ -44,12 +44,11 @@
     "vegan",
     "vegetarian"
   ],
-  "image": null,
+  "image": "/recipes/asaro-yam-porridge.jpg",
   "category": {
     "dish_type": [
       "main"
-    ],
-    "meal_role": "main"
+    ]
   },
   "time": {
     "prep": 20,

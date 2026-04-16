@@ -64,11 +64,5 @@
   "time": {
     "total": 120
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/curried-pork-ribs.jpg"
 }

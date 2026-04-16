@@ -46,7 +46,7 @@
     "Place the spelt in a lidded saucepan. Cover with 3 cups of water, add a pinch of salt, and bring to a boil. Then reduce the heat to a simmer and cover. Cook for about 40 minutes, until all the water has been absorbed. Remove from the heat and drain the remaining water. Heat the olive oil in a large nonstick frying pan over medium heat. Add the spelt and cook for about 10 minutes, stirring frequently, until golden brown. Remove from the heat and allow to cool.",
     "To assemble the stacks, place a slice of tomato on each of 4 individual plates and season with salt and pepper. Top each one with a slice of goat’s cheese, a slice of watermelon, and a few basil leaves. Repeat to get one more layer of each, then sprinkle over a few spoonfuls of the toasted spelt. Drizzle with the extra-virgin olive oil and season to taste. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/goat-cheese-stacks-with-toasted-spelt.jpg",
   "time": {
     "total": 70
   },
@@ -54,8 +54,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Cheese",
-    "meal_role": "starter"
+    "chapter": "Cheese"
   },
   "cuisine": "Other"
 }

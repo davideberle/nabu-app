@@ -9,9 +9,9 @@
   "servings": "makes 8",
   "intro": "These mildly spiced, deep-fried potato burgers are a delicious way to use up leftover mashed potatoes. The mashed potato is first fried with a few complementary spices and herbs, and then formed into large balls that are dipped into a seasoned gram-flour batter. Everything, right up to making the sandwich, can be done ahead of time. At busy restaurants and street stalls, the potato vada are formed and fried earlier in the day and heated through again in hot oil before serving. This is really convenient if you are serving a group of friends. When I tried these at food stalls in India there was always a plate of roasted chillies you could help yourself to for topping your vada pav, making them as mild or spicy as you want. If you really want to treat yourself, spread lots of butter on the buns before grilling!",
   "time": {
-    "prep": 10,
-    "cook": 25,
-    "total": 35
+    "prep": "10 MINS",
+    "cook": "25 MINS",
+    "total": "10 MINS25 MINS"
   },
   "ingredients": [
     {
@@ -119,8 +119,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Starters & Snacks",
-    "meal_role": "main"
+    "chapter": "Starters & Snacks"
   },
   "cuisine": "Indian"
 }

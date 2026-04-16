@@ -36,13 +36,12 @@
     "Heat the oil in a seasoned wok until smoking. Turn off the heat, immediately add the chillies and stir them for a few seconds until fragrant and darkening, but not burned. Swiftly add the drained cabbage and stir to clothe it in the fragrant oil. Serve at room temperature.",
     "Add 1½ tsp Chinkiang vinegar and ¾ tsp sesame oil to the main recipe."
   ],
-  "image": null,
+  "image": "/recipes/spicy-chinese-cabbage.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers",
-    "meal_role": "main"
+    "chapter": "Appetizers"
   },
   "time": {
     "prep": 20,

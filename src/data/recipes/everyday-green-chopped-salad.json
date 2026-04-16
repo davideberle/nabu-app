@@ -1,6 +1,6 @@
 {
   "id": "everyday-green-chopped-salad",
-  "name": "Everyday Green Chopped Salad",
+  "name": "Everyday green chopped salad",
   "source": {
     "cookbook": "Jamie's Food Revolution",
     "author": "Jamie Oliver"
@@ -36,11 +36,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/everyday-green-chopped-salad.png"
 }

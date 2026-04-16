@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "This recipe came to be as a way to use the kale that was flourishing in the garden. It could also incorporate other vegetables - whatever is in your fridge that needs to be used. Serve over couscous.",
   "time": {
-    "prep": 15,
+    "prep": "15 mins",
     "total": 22
   },
   "ingredients": [
@@ -91,8 +91,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups & Stews",
-    "meal_role": "main"
+    "chapter": "Soups & Stews"
   },
   "cuisine": "Moroccan"
 }

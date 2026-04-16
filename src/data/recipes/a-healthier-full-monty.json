@@ -55,11 +55,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": "",
-    "meal_role": "breakfast"
-  }
+  "image": "/recipes/a-healthier-full-monty.png"
 }

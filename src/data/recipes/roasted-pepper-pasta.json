@@ -38,10 +38,6 @@
     {
       "item": "Parmesan cheese, to serve",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -49,12 +45,7 @@
     "sugar and season with salt and black pepper to taste.",
     "Roast in a preheated to 375 F oven for 15 minutes, or until the vegetables are slightly charred around the edges.",
     "Prepare the pasta according to package directions.",
-    "Toss it with the roasted vegetables and serve with pesto and Parmesan cheese.",
-    "(16) Greek-style Baked Pasta",
-    "Do you feel like something’s missing from your usual pasta dish? Spice? Texture? Flavor? You need to try Greek-",
-    "style baked pasta! The key ingredient is feta cheese, which gives it a tangy and savory flavor. Plus, the cool and",
-    "creamy texture is a refreshing change from the usual gooey hot mess of spaghetti that we all love so much.",
-    "Yield: 5"
+    "Toss it with the roasted vegetables and serve with pesto and Parmesan cheese."
   ],
   "time": {
     "total": 45
@@ -63,8 +54,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/roasted-pepper-pasta.jpg"
 }

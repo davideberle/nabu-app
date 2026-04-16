@@ -68,16 +68,13 @@
   ],
   "image": "/recipes/casarecce-with-miso-marinated-alaskan-black-cod-baby-bok-choy-and-black-sesame-s.jpg",
   "time": {
-    "prep": 15,
-    "cook": 20,
-    "total": 35
+    "total": 16
   },
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Fall",
-    "meal_role": "main"
+    "chapter": "Fall"
   },
   "cuisine": "Italian"
 }

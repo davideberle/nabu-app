@@ -9,9 +9,9 @@
   "servings": "makes about 3 × 250ml (1 cup) jars",
   "intro": "There are a lot of outstanding lime pickles that can be purchased, from both small producers and big-name brands. This is my recipe that I have developed over the past few years. I wouldn’t say it is any better than many you can purchase but it is different and delicious. Sometimes different is good! You know you are at an outstanding restaurant if they place their own homemade pickles and chutneys on the table.",
   "time": {
-    "prep": 5,
-    "cook": 15,
-    "total": 5
+    "prep": "5 MINS, PLUS FERMENTING TIME",
+    "cook": "15 MINS",
+    "total": "5 MINS, PLUS FERMENTING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -64,8 +64,8 @@
     "After these last 2 days, scoop the lime pickle into a food processor and process to a chunky or smooth paste, whichever you prefer.",
     "Spoon it into sterilized jars (see below), leaving about a 5cm (2in) space at the top. The pickle should be covered with oil, so add a little extra if needed. Place the jars in a cool, dark place for 2 weeks before using. The preserved limes should keep indefinitely but, once opened, store in the fridge and use within 2 months."
   ],
-  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour. Note: FERMENTING TIME; FERMENTING TIME15 MINS.",
-  "image": null,
+  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour.",
+  "image": "/recipes/lime-pickle.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -74,8 +74,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Base Sauces",
-    "meal_role": "side"
+    "chapter": "Base Sauces"
   },
   "cuisine": "Indian"
 }

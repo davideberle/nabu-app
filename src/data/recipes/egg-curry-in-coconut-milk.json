@@ -167,11 +167,5 @@
   "time": {
     "total": 50
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/egg-curry-in-coconut-milk.jpg"
 }

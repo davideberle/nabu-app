@@ -54,10 +54,6 @@
     {
       "item": "Salt and black pepper, to taste",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -68,13 +64,7 @@
     "Cook on low heat, stirring occasionally, about 2 minutes. Add the Ricotta cheese and half the Parmesan and fontina.",
     "Stir to combine.",
     "Toss everything in the baking dish. Top with the remaining fontina and Parmesan.",
-    "Bake the pasta until the cheese turns golden, 15-20 minutes.",
-    "(34) Mini Shell Bacon and Pea Pasta",
-    "This dish is a delicious take on the traditional bacon and peas pasta. It's a lightened up, healthier version that will",
-    "still make you feel like you're indulging. The new recipe combines pasta with vegetables, bacon, eggs, and peas in a",
-    "creamy sauce for a hearty meal that satisfies your hunger without weighing you down.",
-    "Tired of eating the same old thing? Try this dish for something new!",
-    "Yield:"
+    "Bake the pasta until the cheese turns golden, 15-20 minutes."
   ],
   "time": {
     "total": 57
@@ -83,8 +73,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/easy-three-cheese-pasta-with-chicken-and-mushrooms.jpg"
 }

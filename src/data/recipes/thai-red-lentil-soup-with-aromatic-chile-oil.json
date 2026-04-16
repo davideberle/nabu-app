@@ -100,11 +100,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "soup"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/thai-red-lentil-soup-with-aromatic-chile-oil.jpg"
 }

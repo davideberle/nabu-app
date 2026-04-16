@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "Quick and easy thighs with complex Moroccan flavors. Serve with rice, garnished with lemon wedges.",
   "time": {
-    "prep": 10,
+    "prep": "10 mins",
     "total": 65
   },
   "ingredients": [
@@ -82,8 +82,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

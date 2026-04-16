@@ -60,7 +60,7 @@
     "If you plan to garnish it, blanch the bok choy in boiling water with a little salt and a dash of cooking oil, then refresh in cold water. Drain well just before using.",
     "Strain the cooking liquid into a wok, turn the heat up high and stir as the liquid reduces. When it is starting to become syrupy, add the hock (discard the ginger, spring onion and spices) and spoon the sauce over it. When you have a dark, glossy pool of sauce that makes the hock look gorgeous and shining, transfer it to a serving dish and spoon over the remains of the sauce. Surround it with a halo of blanched green bok choy, if you wish."
   ],
-  "image": null,
+  "image": "/recipes/slow-cooked-pork-hock-with-rock-sugar.jpg",
   "time": {
     "total": 180
   },
@@ -68,8 +68,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Meat",
-    "meal_role": "main"
+    "chapter": "Meat"
   },
   "cuisine": "Chinese"
 }

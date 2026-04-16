@@ -9,9 +9,9 @@
   "servings": "9 servings",
   "intro": "What?! Lentil balls as a sweet protein snack, you say? Yes, it’s possible. They’re sweetened just right—try them once and you’ll be craving them forever. No kidding!",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -1181,8 +1181,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads",
-    "meal_role": "main"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

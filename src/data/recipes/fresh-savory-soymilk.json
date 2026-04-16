@@ -48,7 +48,7 @@
     "Lightly grease the inside of a pan with vegetable oil. Line a sieve with muslin and strain the soymilk through it into the pan. Draw the edges of the muslin together and squeeze to extract as much liquid as possible. Use some of the remaining hot water to rinse the residue in the sieve as you go along, and then repeat the squeezing. Add the rest of the hot water to the strained soymilk in the pan and bring it to the boil, stirring to prevent sticking. Simmer for 7–8 minutes. Serve in individual bowls, seasoned with your chosen condiments to taste, and drink it with spoons, like a soup.",
     "If you choose the savory option, for each bowl of soymilk I suggest about 1 teaspoon light soy sauce or organic tamari to taste, and 1 teaspoon each of papery dried shrimp, spring onion greens and Sichuan preserved vegetable (and the dough stick, if using)."
   ],
-  "image": null,
+  "image": "/recipes/fresh-savory-soymilk.jpg",
   "time": {
     "total": 8
   },
@@ -56,8 +56,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Drinks",
-    "meal_role": "main"
+    "chapter": "Drinks"
   },
   "cuisine": "Chinese"
 }

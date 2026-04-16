@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "a perfect cheesy lasagne. Serve this with an arugula and tomato salad.",
+  "intro": "It took the aid of Cook’s Illustrated, a magazine for food nerds like me, to enable me to crack the secret for",
   "ingredients": [
     {
       "item": "dried porcini mushrooms",
@@ -99,8 +99,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

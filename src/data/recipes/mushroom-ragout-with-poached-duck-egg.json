@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "use as part of the mixed fresh mushrooms here.",
+  "intro": "Here is my ideal solace for a gloomy winter night, even without the egg if you want to keep it simpler. If you",
   "ingredients": [
     {
       "item": "dried porcini mushrooms",
@@ -86,8 +86,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/mushroom-ragout-with-poached-duck-egg.jpg"
 }

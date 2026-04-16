@@ -9,9 +9,9 @@
   "servings": "16 bars",
   "intro": "Layers of crunchy goodness are filled with so many wonderful sweet flavors. Not too sweet, though—these bars have just the right contrast and balance.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -667,8 +667,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads",
-    "meal_role": "main"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

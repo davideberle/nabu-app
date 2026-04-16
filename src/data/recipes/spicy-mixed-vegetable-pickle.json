@@ -9,9 +9,9 @@
   "servings": "makes a 1-litre (4½ cups) jar",
   "intro": "I always have some of this mixed pickle on hand just in case I get unexpected guests. It is one of my favourites and goes well with everything from papadams to dosas. You can vary the vegetables you use depending on what sounds good and is in season. I’ve used marrow, radishes, turnips, broccoli and even pumpkin in the past with excellent results. I like my pickles to be quite spicy. If you don’t, reduce the amount of chillies and chilli powder. You can always add more to taste later.",
   "time": {
-    "prep": 15,
-    "cook": 20,
-    "total": 15
+    "prep": "15 MINS, PLUS PICKLING TIME",
+    "cook": "20 MINS",
+    "total": "15 MINS, PLUS PICKLING TIME20 MINS"
   },
   "ingredients": [
     {
@@ -101,7 +101,7 @@
     "In the summer months, you can place this outside in the sun. In colder months, place it all by a sunny window. Leave to ferment for 3 days, stirring every 8 hours or so. Then scoop it all into a sterilized jar (see note) with a tight-fitting lid. You can taste it now but wait for at least a week if you can. It gets better!",
     "This pickle will keep in the fridge for at least three months. Make sure that the vegetables and fruit are always covered in oil to avoid it going off."
   ],
-  "image": null,
+  "image": "/recipes/spicy-mixed-vegetable-pickle.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -110,9 +110,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Base Sauces",
-    "meal_role": "side"
+    "chapter": "Base Sauces"
   },
-  "cuisine": "Indian",
-  "tips": "Note: PICKLING TIME; PICKLING TIME20 MINS."
+  "cuisine": "Indian"
 }

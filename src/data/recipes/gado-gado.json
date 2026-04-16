@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "meat or tofu, or just spoon over hot rice or rice noodles.",
+  "intro": "also work. The satay sauce is a little work but it's worth every bit of the effort. Use it for marinating white",
   "ingredients": [
     {
       "item": "garlic cloves, peeled",
@@ -112,8 +112,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

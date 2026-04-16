@@ -78,11 +78,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/seaweed-spaghetti-and-sesame-salad-with-tahini-dressing.jpg"
 }

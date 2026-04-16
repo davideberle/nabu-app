@@ -9,9 +9,9 @@
   "servings": "makes enough for 4 as a snack",
   "intro": "You won’t find bora and podina on many curry-house menus, but I think they’re missing a trick. This Bangladeshi snack food is an excellent alternative to papadams. It does take a little longer to make but it’s worth every extra minute.\n\nThis recipe was emailed to me by Eshan ‘Mo’ Miah. Mo and I have never met face to face but I feel like we’re great friends. Back in the early days of my blog, Mo started sending me his family recipes as well as recipes from his family’s restaurant, Table Talk, which is local to me. At the time, Mo was living and working near London, but he arranged for me to visit the Table Talk kitchen to learn from his father, Manik Miah. I picked up so many tips and recipes that day.\n\nMo has been a great source for recipes, a few of which you’ll find in this book. He has also opened a new restaurant in Newquay called Zaman’s. If it is anywhere near as good as Table Talk, he’s on to a winner!",
   "time": {
-    "prep": 60,
-    "cook": 20,
-    "total": 80
+    "prep": "1 HOUR",
+    "cook": "20 MINS",
+    "total": "1 HOUR20 MINS"
   },
   "ingredients": [
     {
@@ -58,8 +58,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics & Breads",
-    "meal_role": "main"
+    "chapter": "Basics & Breads"
   },
   "cuisine": "Indian"
 }

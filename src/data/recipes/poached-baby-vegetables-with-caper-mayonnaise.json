@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Serve the vegetables warm or cold.",
+  "intro": "Poaching is popular again, and rightly so. Vegetables cooked this way don’t need to be insipid or dull; if not",
   "ingredients": [
     {
       "item": "garlic clove, crushed",
@@ -97,8 +97,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/poached-baby-vegetables-with-caper-mayonnaise.jpg"
 }

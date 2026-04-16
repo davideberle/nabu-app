@@ -85,7 +85,7 @@
     "Add the parsley and whisk well. The grits should be firm and creamy. Add a bit of water to thin them if necessary.",
     "To serve, top the grits with the greens, using a slotted spoon so that the liquid drains from the greens. Add a splash of hot-pepper vinegar and season with black pepper."
   ],
-  "image": null,
+  "image": "/recipes/savory-grits-with-slow-cooked-collard-greens.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -97,8 +97,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Grains & Legumes",
-    "meal_role": "main"
+    "chapter": "Grains & Legumes"
   },
   "cuisine": "African & Caribbean"
 }

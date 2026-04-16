@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "with seeds as you go, and serve the sauce in a bowl on the side.",
+  "intro": "verts for about 4 minutes, until just cooked but still retaining a bite. Using a",
   "ingredients": [
     {
       "item": "cups/300 g fresh or defrosted frozen green peas",
@@ -61,11 +61,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/peas-with-sorrel-and-mustard.jpg"
 }

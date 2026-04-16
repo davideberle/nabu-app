@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "end of May – so try to prepare this salad (pictured on page 246) then.",
+  "intro": "has an unbeatable perfumed aroma. I’d go as far as saying that you haven’t tasted a real mango until you’ve",
   "ingredients": [
     {
       "item": "unsalted butter salt",
@@ -78,8 +78,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/mango-and-coconut-rice-salad.jpg"
 }

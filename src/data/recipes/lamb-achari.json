@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "In Hindi, ‘achar’ means pickle. Achari is a very popular Punjabi curry made with the spices often used to make pickles, such as the panch poran and dried chillies used in this recipe. The sweet flavour of the mango chutney and sourness in the lime pickle give this curry the well-rounded flavour loved by so many.",
   "time": {
-    "prep": 10,
-    "cook": 10,
-    "total": 10
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB",
+    "cook": "10 MINS",
+    "total": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB10 MINS"
   },
   "ingredients": [
     {
@@ -102,9 +102,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Biryanis & Rice",
-    "meal_role": "main"
+    "chapter": "Biryanis & Rice"
   },
-  "cuisine": "Indian",
-  "tips": "Note: MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB; MAKING THE BASE CURRY SAUCE AND COOKING THE LAMB10 MINS."
+  "cuisine": "Indian"
 }

@@ -1,12 +1,12 @@
 {
   "id": "marrow-with-tomato-and-feta",
-  "name": "Marrow with Tomato and Feta",
+  "name": "Marrow With Tomato And Feta",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "mayonnaise as you go, or spreading on more with a knife.",
+  "intro": "so that it gets a light glaze, about 2 tablespoons for all the corn. Sprinkle with",
   "ingredients": [
     {
       "item": "large marrow squash, skin on, cut crosswise into slices ⅔-inch/1.5-cm thick (1¾ lb/810 g)",
@@ -53,12 +53,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

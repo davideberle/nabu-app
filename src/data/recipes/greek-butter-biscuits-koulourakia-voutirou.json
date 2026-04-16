@@ -73,13 +73,12 @@
     "Arrange on greased baking sheets, brush with beaten egg.",
     "Bake in a moderate oven for about 12 minutes."
   ],
-  "image": null,
+  "image": "/recipes/greek-butter-biscuits-koulourakia-voutirou.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Sweet Ends",
-    "meal_role": "main"
+    "chapter": "Sweet Ends"
   },
   "cuisine": "Greek"
 }

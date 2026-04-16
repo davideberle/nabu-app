@@ -1,6 +1,6 @@
 {
   "id": "braised-lentils-with-mushroom-and-preserved-lemon-ragout",
-  "name": "Braised Lentils with Mushroom and Preserved Lemon Ragout",
+  "name": "Braised Lentils With Mushroom And Preserved Lemon Ragout",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -74,12 +74,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

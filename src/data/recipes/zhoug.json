@@ -57,7 +57,7 @@
   "method": [
     "Place all of the ingredients in a small food processor. Blitz in a few pulses to get a coarse paste; make sure not to overmix. Store in a sterilized jar (SEE PRESERVED LEMONS) in the fridge for up to 3 weeks."
   ],
-  "image": null,
+  "image": "/recipes/zhoug.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -66,8 +66,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments",
-    "meal_role": "main"
+    "chapter": "Condiments"
   },
   "time": {
     "prep": 20,

@@ -9,9 +9,9 @@
   "servings": "serves 4–10 depending on use",
   "intro": "Paneer is often added raw to curries just before serving, as you can’t cook it in a sauce long or it will begin to break up. Here is another option. The crispy exterior that the paneer gets when shallow-fried helps stop it from disintegrating in the sauce, and it’s also delicious. Plain paneer doesn’t have a lot of flavour, so marinating for about 30 minutes before frying will make it more interesting.\n\nI find commercially available paneer works perfectly well for BIR curries, frying and grilling, but I also like to make my own. To do this, bring 1.5 litres (6¼ cups) of full-fat (whole) milk to a boil, whisking continuously so that it doesn’t boil over. When the milk has come to a boil, reduce the heat and simmer to reduce by about 15%. Remove the milk from the heat and stir in the juice of one lemon and whisk for 5–10 minutes to separate the curds from the whey. Wrap the curds tightly in cheesecloth and hang over the sink for about 2 hours. Form the paneer into a block, pressing out any remaining whey, and you’ve got the 200g (7oz) of fresh paneer needed for this recipe! Your homemade paneer will keep in the fridge for up to three days.",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 5
+    "prep": "5 MINS, PLUS MARINATING TIME",
+    "cook": "10 MINS",
+    "total": "5 MINS, PLUS MARINATING TIME10 MINS"
   },
   "ingredients": [
     {
@@ -56,9 +56,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Accompaniments",
-    "meal_role": "main"
+    "chapter": "Accompaniments"
   },
-  "cuisine": "Indian",
-  "tips": "Note: MARINATING TIME; MARINATING TIME10 MINS."
+  "cuisine": "Indian"
 }

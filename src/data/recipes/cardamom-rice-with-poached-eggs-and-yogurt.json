@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Additions will be welcomed: consider peas, green beans, fried onions, buttered sunflower seeds and even",
+  "intro": "This is what you should cook on a late Sunday morning to really spoil your family. I can’t get enough of it.",
   "ingredients": [
     {
       "item": "peanut oil, plus extra to finish",
@@ -94,8 +94,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": "",
-    "meal_role": "breakfast"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

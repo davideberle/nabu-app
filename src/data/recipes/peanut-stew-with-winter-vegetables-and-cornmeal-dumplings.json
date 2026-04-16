@@ -109,7 +109,7 @@
     "Decrease the heat under the saucepan of water to low and maintain a slow simmer. With a soup spoon, gently drop tablespoons of the batter into the water, waiting about 15 seconds before adding the next spoonful of batter. When the batter is used up, cover and simmer until the dumplings are puffed, about 10 minutes. Using a slotted spoon, gently transfer the dumplings to a plate.",
     "Season the stew with salt and white pepper to taste. Serve each bowl of stew with a few dumplings on top. Garnish with the parsley."
   ],
-  "image": null,
+  "image": "/recipes/peanut-stew-with-winter-vegetables-and-cornmeal-dumplings.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -121,8 +121,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Salads & Slaws",
-    "meal_role": "main"
+    "chapter": "Salads & Slaws"
   },
   "cuisine": "African & Caribbean"
 }

@@ -68,13 +68,12 @@
     "Pulse briefly.",
     "Add remaining ingredients and blend quickly."
   ],
-  "image": null,
+  "image": "/recipes/sesame-seed-sauce.jpg",
   "category": {
     "dish_type": [
       "side"
     ],
-    "chapter": "Basics",
-    "meal_role": "side"
+    "chapter": "Basics"
   },
   "cuisine": "Greek"
 }

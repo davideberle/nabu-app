@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "rather than hot, or at room temperature.",
+  "intro": "they stick to the sides. Pour the cauliflower mixture into the pan, spreading it",
   "ingredients": [
     {
       "item": "medium butternut squash, peeled and cut into ¾-inch/2-cm cubes (5 cups/700 g)",
@@ -48,17 +48,10 @@
     "10 minutes, until the pastry is golden brown. Remove and leave to cool.",
     "Spread the roasted squash in the cooled pastry shell, dot the Stilton between the pieces, and sprinkle the membrillo over the top. Place the eggs, cream, and crème fraîche in a bowl with ¼ teaspoon salt and some black pepper.",
     "Whisk together and then pour this mixture over the squash, leaving some of the filling exposed. Place in the oven for about 40 minutes, until the custard has set. Remove from the oven and allow to rest before removing from the pan and breaking off the hanging pastry. Serve warm or at room temperature.",
-    "CORN AND GREEN ONION PANCAKES",
-    "SERVES FOUR TO SIX"
+    "CORN AND GREEN ONION PANCAKES"
   ],
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/membrillo-and-stilton-quiche.jpg"
 }

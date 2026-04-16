@@ -67,11 +67,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/crushed-puy-lentils-with-tahini-and-cumin.jpg"
 }

@@ -34,7 +34,7 @@
     "Peel and trim the dudhi and slice it in half lengthways, then slice it into semicircles about ⅛ in (4mm) thick. Beat the eggs in a bowl.",
     "Bring the stock to the boil. Add the sliced dudhi and boil for about 10 minutes, until tender. Season with salt and pepper and stir in the lard, if using. Turn the heat down low, then drizzle the egg all over the surface of the soup. When the egg has set into “flowers,” turn off the heat, stir gently and serve."
   ],
-  "image": null,
+  "image": "/recipes/simple-egg-flower-soup.jpg",
   "time": {
     "total": 10
   },
@@ -42,8 +42,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups",
-    "meal_role": "main"
+    "chapter": "Soups"
   },
   "cuisine": "Chinese"
 }

@@ -58,10 +58,6 @@
     {
       "item": "lime, in juice",
       "amount": "1"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -71,12 +67,7 @@
     "In a separate bowl, mix all ingredients for the dressing.",
     "Pour dressing mixed up pasta salad and mix until everything is evenly coated.",
     "Sprinkle feta cheese as a garnish on top.",
-    "Refrigerate until ready to use the same day.",
-    "(7) Summer Pasta Salad",
-    "Summer pasta salad is probably one of the most refreshing after-school treats you can make. It’s quick, simple, and",
-    "one of the tastiest ways to use up that last jar of alfredo sauce you had stashed in your fridge from over winter",
-    "break.",
-    "Yield: 6"
+    "Refrigerate until ready to use the same day."
   ],
   "time": {
     "total": 35
@@ -85,8 +76,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/mexican-salad.jpg"
 }

@@ -45,7 +45,7 @@
   "method": [
     "Combine all the ingredients in a large pot and bring to a boil over medium-high heat. Decrease the heat to medium-low and simmer uncovered for about 1 hour. Strain through a fine-mesh sieve, pressing down on the solids to extract as much liquid as possible. (Compost the solids.) Use immediately or let cool and store in the refrigerator for up to 3 days or the freezer for up to 6 months."
   ],
-  "image": null,
+  "image": "/recipes/simple-vegetable-stock.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -57,8 +57,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads & Slaws",
-    "meal_role": "main"
+    "chapter": "Salads & Slaws"
   },
   "cuisine": "African & Caribbean"
 }

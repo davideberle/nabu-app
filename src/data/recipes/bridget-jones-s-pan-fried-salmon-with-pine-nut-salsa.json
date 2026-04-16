@@ -68,11 +68,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/bridget-jones-s-pan-fried-salmon-with-pine-nut-salsa.jpg"
 }

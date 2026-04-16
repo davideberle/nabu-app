@@ -9,9 +9,9 @@
   "servings": "serves 1",
   "intro": "I often find myself craving dark chocolate, but wanting something a bit more than just a couple of squares. Something I can sit and watch too many episodes of my latest TV obsession with … This recipe is so ridiculously simple, yet so incredibly rich and rewarding.",
   "time": {
-    "prep": 5,
-    "cook": 1,
-    "total": 6
+    "prep": "5 MINUTES",
+    "cook": "1 MINUTE",
+    "total": "5 MINUTES1 MINUTE"
   },
   "ingredients": [
     {
@@ -67,8 +67,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Cooking for One",
-    "meal_role": "dessert"
+    "chapter": "Cooking for One"
   },
   "cuisine": "Caribbean"
 }

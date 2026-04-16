@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "These moist and chocolaty muffins will leave you feeling guilt-free. Blend, pour, and bake for an easy road to chocolate protein.",
   "time": {
-    "prep": 40,
-    "cook": 40,
-    "total": 80
+    "prep": "40 minutes",
+    "cook": "40 minutes",
+    "total": "1 hour 20 minutes"
   },
   "ingredients": [
     {
@@ -806,8 +806,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Breakfast",
-    "meal_role": "dessert"
+    "chapter": "Breakfast"
   },
   "cuisine": "Other"
 }

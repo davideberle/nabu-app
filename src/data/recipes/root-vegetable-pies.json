@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "teaspoon salt and whisk a little longer. Taste, add more salt if you like, and",
+  "intro": "fry for 2 minutes, stirring often, to cook the onion just a little. You want it to",
   "ingredients": [
     {
       "item": "plus 1½ tbsp/190 g unsalted butter, fridge-cold, diced",
@@ -104,11 +104,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/root-vegetable-pies.jpg"
 }

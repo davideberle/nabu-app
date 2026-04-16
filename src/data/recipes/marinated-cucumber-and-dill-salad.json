@@ -43,7 +43,7 @@
     "Remove the weights, wrap the cucumber carefully in a clean kitchen towel, and squeeze out the excess water. Transfer to a bowl, cover, and refrigerate for at least 1 hour, until completely chilled.",
     "Meanwhile, put 2 tablespoons of boiling water into a bowl and stir in the sugar to dissolve. Then add the vinegar, a generous amount of black pepper, and the dill, and place the bowl in the fridge to cool. Once the dressing and cucumber are completely cold, mix the two together. Adjust the seasoning to taste before serving. If using rice wine vinegar, add the lemon juice to balance out the flavor."
   ],
-  "image": null,
+  "image": "/recipes/marinated-cucumber-and-dill-salad.jpg",
   "time": {
     "total": 40
   },
@@ -52,8 +52,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

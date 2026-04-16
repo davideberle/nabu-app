@@ -53,22 +53,13 @@
     {
       "item": "Parmesan cheese, to serve",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "Put pasta, garlic, chilies, basil, paprika, olive oil, olives, anchovies, tomatoes, salt and pepper in a large skillet. Add",
     "in water.",
     "Over high heat, bring to a boil. Boil mixture, stirring and keep turning the pasta, until pasta becomes al dente and",
-    "water has nearly evaporated, about 12-15 minutes. Serve with Parmesan.",
-    "(42) Elegant Spaghetti with Shrimp",
-    "The key ingredient for any pasta is always a good sauce, and this one will not disappoint: it's tangy, creamy, and",
-    "cheesy all in one. Topped off with fresh parsley or oregano to mask the scent of shrimp, this dish is perfect as a",
-    "date-dish because it looks impressive but requires little effort from you to prepare.",
-    "Yield: 6"
+    "water has nearly evaporated, about 12-15 minutes. Serve with Parmesan."
   ],
   "time": {
     "total": 45
@@ -77,8 +68,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/one-pot-pasta-a-la-puttanesca.jpg"
 }

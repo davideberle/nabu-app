@@ -9,8 +9,9 @@
   "servings": "makes 600ml",
   "intro": "You really can’t go wrong with a nice podina. It is delicious served really cold with hot homemade bora. Or you can serve it with samosas, papadams, onion bhajis, on top of kebabs… anything really!",
   "time": {
-    "prep": 5,
-    "total": 5
+    "prep": "5 MINS, PLUS SITTING TIME",
+    "cook": "",
+    "total": "5 MINS, PLUS SITTING TIME0"
   },
   "ingredients": [
     {
@@ -37,7 +38,7 @@
   "method": [
     "Put the mint, coriander (cilantro), green chillies and 2 tablespoons of water in a blender and blitz to a paste. Add this to the yoghurt in a bowl and mix until smooth, seasoning with salt. Refrigerate until really cold."
   ],
-  "image": null,
+  "image": "/recipes/podina-coriander-and-mint-chutney.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -46,9 +47,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Base Sauces",
-    "meal_role": "side"
+    "chapter": "Base Sauces"
   },
-  "cuisine": "Indian",
-  "tips": "Note: SITTING TIME; SITTING TIME0."
+  "cuisine": "Indian"
 }

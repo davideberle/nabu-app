@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "This is a Moroccan take on shepherd's pie. Delicious combinations of savory and sweet, with lamb and turmeric simmered with cinnamon, raisins, and sweet potato. This dish also looks pleasant, and each happy eater gets their own ramekin!",
   "time": {
-    "prep": 20,
+    "prep": "20 mins",
     "total": 45
   },
   "ingredients": [
@@ -103,8 +103,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
   "cuisine": "Moroccan"
 }

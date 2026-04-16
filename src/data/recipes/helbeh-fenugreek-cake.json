@@ -88,7 +88,7 @@
     "Prepare the syrup while the cake is in the oven. Place the sugar and water in a small saucepan and mix well with a wooden spoon. Bring to a boil, add the lemon juice, and simmer gently for 4 minutes. Take the syrup off the heat, allow it to cool down just a little, and then add the orange blossom and rose waters.",
     "When the cake is ready, remove it from the oven and immediately drizzle the syrup all over it, making sure you use all of the syrup. Leave the cake to cool completely, then cover well with aluminum foil or parchment paper. Serve the next day."
   ],
-  "image": null,
+  "image": "/recipes/helbeh-fenugreek-cake.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -99,8 +99,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Cakes & Cookies",
-    "meal_role": "dessert"
+    "chapter": "Cakes & Cookies"
   },
   "cuisine": "Middle Eastern"
 }

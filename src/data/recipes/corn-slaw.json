@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "Allow to cool for 5 minutes before serving with a final drizzle of oil.",
+  "intro": "broiler for 8 to 15 minutes (oven broilers tend to vary a lot), until the cheese",
   "ingredients": [
     {
       "item": "tbsp/100 ml white wine vinegar",
@@ -69,11 +69,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/corn-slaw.jpg"
 }

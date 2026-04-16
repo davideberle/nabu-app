@@ -8,7 +8,7 @@
   "servings": "serves 4",
   "intro": "Elevate your culinary experience with this vibrant dish that combines the flavors of Thai cuisine. The delightful combination of red pepper, snow peas, and shrimp is enhanced by the rich and flavorful peanut sauce. A touch of ginger and red pepper flakes adds an extra kick of deliciousness. To complete the dish, serve this colorful main course over a bed of pasta, creating a fusion of Thai and Italian influences that will surely impress your taste buds.",
   "time": {
-    "prep": 25,
+    "prep": "25 minutes",
     "total": 3
   },
   "ingredients": [
@@ -81,8 +81,7 @@
   "category": {
     "dish_type": [
       "main"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

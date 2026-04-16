@@ -81,8 +81,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
   "image": "/recipes/chocolate-coconut-cream-pie.jpg",
   "cuisine": "Other"

@@ -9,9 +9,9 @@
   "servings": "serves 4; makes 370g (2 cups)",
   "intro": "Pilau rice is one of those dishes I insist on cooking with ghee. I also prefer to steam it, as the flavour of the spices infuses better with the rice. If cooking for a large group, you might be better off frying cold cooked basmati rice, as in the next recipe.",
   "time": {
-    "prep": 10,
-    "cook": 10,
-    "total": 10
+    "prep": "10 MINS, PLUS SOAKING TIME COOKING TIME: 50 MINS",
+    "cook": "PREP TIME: 10 MINS, PLUS SOAKING TIME 50 MINS",
+    "total": "10 MINS, PLUS SOAKING TIME COOKING TIME: 50 MINSPREP TIME: 10 MINS, PLUS SOAKING TIME 50 MINS"
   },
   "ingredients": [
     {
@@ -70,14 +70,12 @@
     "Add the garlic to the pan, followed by the drained rice. Stir this all up so that the rice is evenly coated in the ghee. Pour in the water or stock, add the bay leaves, then cover the pan. When the rice begins to boil and the water foams, remove from the heat and let it sit, covered and undisturbed, for 40 minutes.",
     "After 40 minutes, lift the lid and pour the saffron milk mixture on top. Carefully stir through the rice using a fork or chopstick until nice and fluffy. Don’t stir too vigorously as the basmati rice may split. Season with salt and transfer to a warm bowl to serve."
   ],
-  "image": null,
+  "image": "/recipes/pilau-rice.jpg",
   "category": {
     "dish_type": [
       "side"
     ],
-    "chapter": "Desserts & Drinks",
-    "meal_role": "side"
+    "chapter": "Desserts & Drinks"
   },
-  "cuisine": "Indian",
-  "tips": "Note: SOAKING TIME COOKING TIME: 50 MINS; SOAKING TIME COOKING TIME: 50 MINSPREP TIME: 10 MINS, PLUS SOAKING TIME 50 MINS."
+  "cuisine": "Indian"
 }

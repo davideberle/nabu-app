@@ -38,13 +38,12 @@
     "Divide the soy sauces and sesame oil between 2 serving bowls. Bring the stock to the boil and keep it warm. Bring a pan of water to the boil. Add the noodles, separate them with chopsticks and boil until cooked to your liking. Drain well.",
     "Pour the hot stock over the seasonings in the bowls. Divide the noodles between the serving bowls and garnish with the spring onions."
   ],
-  "image": null,
+  "image": "/recipes/springtime-noodles.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Noodles",
-    "meal_role": "main"
+    "chapter": "Noodles"
   },
   "time": {
     "prep": 20,

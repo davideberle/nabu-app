@@ -53,21 +53,12 @@
     {
       "item": "black pepper",
       "amount": "½ tsp."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "Sauté garlic and onion in oil until tender, but not brown. Put in water, tomato paste, tomatoes, brown sugar, salt,",
     "pepper, oregano and bay leaf; simmer uncovered 1 hour. If adding meatballs, add after ½ hour of simmering.",
-    "Cook spaghetti as per the directions on the package; drain. Discard bay leaf and serve sauce over spaghetti.",
-    "(19) Baked Pasta with Broccoli, Olives and Pancetta",
-    "A creamy, cheesy, savory, autumnal meal bursting with flavor.",
-    "Broccoli and pasta are a classic combo. This is an easy thing to make for when you're looking for something quick",
-    "to put together and satisfying at the same time.",
-    "Yield: 6"
+    "Cook spaghetti as per the directions on the package; drain. Discard bay leaf and serve sauce over spaghetti."
   ],
   "time": {
     "total": 31
@@ -76,8 +67,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/italian-spaghetti-sauce.jpg"
 }

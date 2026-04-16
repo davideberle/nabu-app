@@ -63,7 +63,7 @@
     "Meanwhile, preheat the oven to 400°F and oil a 3-quart baking dish.",
     "With a spoon, gently transfer the potatoes to the oiled baking dish, then pour in all the liquid from the saucepan. Put the bread crumbs, the tarragon, and the remaining 2 tablespoons oil and ¼ teaspoon salt in a small bowl and mix well. Scatter over the potatoes. Bake for 35 to 40 minutes, until the top is golden. Season with white pepper and let cool for 15 minutes before serving."
   ],
-  "image": null,
+  "image": "/recipes/curried-scalloped-potatoes-with-coconut-milk.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -75,8 +75,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "cuisine": "African & Caribbean"
 }

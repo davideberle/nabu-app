@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "If you ever find yourself in the Northern Quarter of Manchester, you’ll find some fantastic home-style curry cafés that you’ve simply got to try. These are no-nonsense restaurants and/or takeaways that look like old greasy spoons but are immaculate, and the food is out of this world. You can still get a curry and rice for a fiver! One of my favourites is Al-Faisal Tandoori.\n\nI first visited Al-Faisal Tandoori back in 1998 and little has changed. They still have the green tables with chairs that are attached and water and glasses are on every table. They are only open until 8pm and there is no alcohol on the menu but it is the perfect place for a lunch or early dinner. The food is cooked fresh daily. This simple recipe was given to me on the day I visited by Tariq Malik. I love it!",
   "time": {
-    "prep": 10,
-    "cook": 75,
-    "total": 10
+    "prep": "10 MINS, PLUS PREPARING THE CHICKPEAS",
+    "cook": "1¼ HOURS",
+    "total": "10 MINS, PLUS PREPARING THE CHICKPEAS1¼ HOURS"
   },
   "ingredients": [
     {
@@ -69,9 +69,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
-  "cuisine": "Indian",
-  "tips": "Note: PREPARING THE CHICKPEAS; PREPARING THE CHICKPEAS1¼ HOURS."
+  "cuisine": "Indian"
 }

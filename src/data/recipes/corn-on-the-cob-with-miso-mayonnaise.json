@@ -1,12 +1,12 @@
 {
   "id": "corn-on-the-cob-with-miso-mayonnaise",
-  "name": "Corn on the Cob with Miso Mayonnaise",
+  "name": "Corn On The Cob With Miso Mayonnaise",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "the pine nuts. Finish with a sprinkle of za’atar and serve at once.",
+  "intro": "cook, stirring often, for 3 to 4 minutes, until the nuts turn golden brown. Stir",
   "ingredients": [
     {
       "item": "ears corn (1⅓ lb/600 g), husks removed and cut into 2-inch/5-cm segments",
@@ -58,12 +58,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

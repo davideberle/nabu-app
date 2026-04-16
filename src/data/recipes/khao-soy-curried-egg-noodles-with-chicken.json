@@ -63,11 +63,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/khao-soy-curried-egg-noodles-with-chicken.jpg"
 }

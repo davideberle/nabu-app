@@ -76,11 +76,5 @@
   "time": {
     "total": 38
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/coconut-curry-haddock.jpg"
 }

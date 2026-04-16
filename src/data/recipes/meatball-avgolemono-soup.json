@@ -120,13 +120,12 @@
     "Cook gently until sauce has thickened.",
     "Serve at once in soup bowls."
   ],
-  "image": null,
+  "image": "/recipes/meatball-avgolemono-soup.jpg",
   "category": {
     "dish_type": [
       "soup"
     ],
-    "chapter": "More Than Greek Salad",
-    "meal_role": "main"
+    "chapter": "More Than Greek Salad"
   },
   "cuisine": "Greek"
 }

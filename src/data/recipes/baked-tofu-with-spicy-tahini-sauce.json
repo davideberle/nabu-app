@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "There’s no need for takeout when you’re armed with this recipe. Baked tofu is dredged in a spicy sauce that can be whipped up in an instant. You might be tempted to double the topping.",
   "time": {
-    "prep": 5,
-    "cook": 40,
-    "total": 45
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
   },
   "ingredients": [
     {
@@ -594,8 +594,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Courses",
-    "meal_role": "main"
+    "chapter": "Main Courses"
   },
   "cuisine": "Other"
 }

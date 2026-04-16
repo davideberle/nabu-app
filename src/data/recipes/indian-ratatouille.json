@@ -1,0 +1,76 @@
+{
+  "id": "indian-ratatouille",
+  "name": "Indian Ratatouille",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "while they are still hot, then leave to cool down a little, discarding the bay",
+  "ingredients": [
+    {
+      "item": "medium red onions, cut into 1¼-inch/3-cm dice (about 2½ cups/300 g)",
+      "amount": "2"
+    },
+    {
+      "item": "lb/1 kg Yukon gold potatoes, peeled and cut into 1¼-inch/3-cm dice",
+      "amount": "2¼"
+    },
+    {
+      "item": "large red peppers, cut into 1¼-inch/3-cm dice (2 cups/300 g)",
+      "amount": "3"
+    },
+    {
+      "item": "panch phoran",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "cardamom pods",
+      "amount": "5"
+    },
+    {
+      "item": "lb/450 g okra, trimmed, or haricots verts if you remain unconvinced",
+      "amount": "1"
+    },
+    {
+      "item": "tomatoes, peeled and chopped (5½ oz/160 g)",
+      "amount": "2"
+    },
+    {
+      "item": "green chiles, seeded and finely chopped about 24 fresh curry leaves",
+      "amount": "3"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "tamarind paste, depending on acidity",
+      "amount": "1 to 3 tbsp"
+    },
+    {
+      "item": "tbsp/50 g pumpkin seeds, lightly toasted",
+      "amount": "6"
+    },
+    {
+      "item": "chopped cilantro, to serve",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Heat the oil in an extra-large sauté pan over medium-high heat. Add the onions and potatoes and fry for 10 minutes, stirring occasionally. Lift the vegetables out with a slotted spoon and set aside.",
+    "Top up the oil, if needed, so you have 2 tablespoons in the pan. Add the peppers and spices and fry over high heat for 3 minutes, stirring often. Add the okra, tomatoes, chiles, and curry leaves and fry over high heat for 5 minutes.",
+    "Return the onions and potatoes to the pan. Add the sugar, tamarind paste, a scant 1 cup/200 ml water, and ¾ teaspoon salt and simmer for 5 minutes.",
+    "Spread the vegetables out on a large baking sheet, sprinkle with the pumpkin seeds, and bake for 12 minutes. Serve warm, sprinkled with cilantro.",
+    "Fennel with Capers and Olives",
+    "FENNEL WITH CAPERS AND OLIVES"
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/indian-ratatouille.jpg"
+}

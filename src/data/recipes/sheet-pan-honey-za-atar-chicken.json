@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "This was one of the first chicken dishes I created on my blog that went viral. And for good reason! It combines herby za’atar seasoning with honey and garlic to create a lip-smacking marinade that perfectly coats and flavors the chicken, carrots, and potatoes as they bake. This is the type of dish that doesn’t quite make it to the table before I’ve had a full portion just for testing purposes. My favorite part is mopping up the juices in the bottom of the pan with a piece of pita bread.",
   "time": {
-    "prep": 10,
-    "cook": 40,
-    "total": 50
+    "prep": "10 minutes",
+    "cook": "40 minutes",
+    "total": "10 minutes40 minutes"
   },
   "ingredients": [
     {
@@ -108,8 +108,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: 1 Hour",
-    "meal_role": "main"
+    "chapter": "Main Dishes: 1 Hour"
   },
   "cuisine": "Middle Eastern"
 }

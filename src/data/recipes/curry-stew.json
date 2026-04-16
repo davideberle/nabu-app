@@ -93,11 +93,5 @@
   "time": {
     "total": 60
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/curry-stew.jpg"
 }

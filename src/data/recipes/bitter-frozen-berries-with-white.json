@@ -1,12 +1,12 @@
 {
   "id": "bitter-frozen-berries-with-white",
-  "name": "Bitter Frozen Berries with White",
+  "name": "Bitter Frozen Berries With White",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "a sprinkle of pomegranate seeds, some clotted cream, and a sprinkle of mint.",
+  "intro": "Just before serving, squeeze all the thick juices out of the cheesecloth before",
   "ingredients": [
     {
       "item": "oz/90 g white chocolate, chips or a block broken into very small pieces",
@@ -40,11 +40,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/bitter-frozen-berries-with-white.jpg"
 }

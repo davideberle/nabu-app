@@ -60,7 +60,7 @@
     "Reserve 1⁄4 cup of dressing, and toss the potatoes with the remainder of the dressing.",
     "Divide the salad leaves between 4 chilled individual plates, spoon one-quarter of the potato salad over the leaves, and drizzle each serving with 1 tablespoon of the reserved dressing. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/warm-potato-salad-with-mustard-vinaigrette.jpg",
   "time": {
     "total": 15
   },
@@ -69,8 +69,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

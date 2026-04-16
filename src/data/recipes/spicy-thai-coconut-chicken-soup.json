@@ -8,7 +8,7 @@
   "servings": "serves 6",
   "intro": "Indulge in the simplicity and unique Thai twist of this delightful soup recipe, which holds a special place as your favorite. To enhance the flavor profile, opt for whole coconut milk, ensuring a rich and creamy texture that will elevate the taste to new heights. Prepare to savor the harmonious blend of ingredients in this soup, as it takes you on a culinary journey with its Thai-inspired goodness.",
   "time": {
-    "prep": 60,
+    "prep": "1 hour",
     "total": 20
   },
   "ingredients": [
@@ -92,8 +92,7 @@
   "category": {
     "dish_type": [
       "soup"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

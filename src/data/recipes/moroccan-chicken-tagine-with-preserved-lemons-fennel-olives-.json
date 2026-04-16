@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "Prep time: 30 mins",
   "time": {
-    "prep": 30,
+    "prep": "30 mins",
     "total": 110
   },
   "ingredients": [
@@ -107,8 +107,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

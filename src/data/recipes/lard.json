@@ -21,7 +21,7 @@
     "Put the dough in a large mixing bowl. Add about ½ cup (100ml) cold water and knead the dough vigorously by hand with the water. You will notice that the liquid quickly becomes milky: this is the starch leaching out of the dough. When the liquid has become thick and white, like light cream, strain it off and discard. Return the wet dough to the bowl and continue adding water in stages, kneading thoroughly between each addition to extract as much starch as possible, and straining off the milky liquid. Make sure you massage out any hard spots in the dough: this is where the starch is lurking.",
     "Keep kneading and rinsing until the water is running pretty clear and you are left with a soft, squishy mass of ivory-colored gluten. The whole process is likely to take around an hour, and you should be left with 2¼–3 cups (300–350g) gluten."
   ],
-  "image": null,
+  "image": "/recipes/lard.jpg",
   "time": {
     "total": 60
   },
@@ -29,8 +29,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basic Recipes",
-    "meal_role": "main"
+    "chapter": "Basic Recipes"
   },
   "cuisine": "Chinese"
 }

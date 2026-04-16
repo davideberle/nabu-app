@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "When you bite into these shami kebabs, they simply melt in your mouth. Crisp on the outside and fall-apart tender inside; I can’t get enough of them. There are few things as toothsome as a hot shami drizzled with coriander, garlic and chilli raita or spicy tomato chutney. Although I use lamb for this recipe, mutton is a popular alternative. If you’ve got the bone from the shoulder, simmer it with the meat for even more fantastic flavour.",
   "time": {
-    "prep": 15,
-    "cook": 80,
-    "total": 95
+    "prep": "15 MINS",
+    "cook": "1 HOUR 20 MINS",
+    "total": "15 MINS1 HOUR 20 MINS"
   },
   "ingredients": [
     {
@@ -78,8 +78,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics & Breads",
-    "meal_role": "main"
+    "chapter": "Basics & Breads"
   },
   "cuisine": "Indian"
 }

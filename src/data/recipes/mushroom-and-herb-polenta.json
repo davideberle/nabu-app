@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 2",
-  "intro": "traditional, slow-cooking one. For most purposes I find that the quick polenta is good enough. Either one",
+  "intro": "in the runny state, like a mash, with a flavorful sauce. The rest he spreads onto an oiled surface and allows",
   "ingredients": [
     {
       "item": "olive oil",
@@ -80,8 +80,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/mushroom-and-herb-polenta.jpg"
 }

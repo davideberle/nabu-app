@@ -52,7 +52,7 @@
     "Cover the salad and let stand for 20 minutes to develop the flavors.",
     "Mix the sliced almonds with the remaining scallions. Scatter the mixture over the salad, toss lightly, and serve, garnished with cilantro."
   ],
-  "image": null,
+  "image": "/recipes/lentil-salad-with-lemon-and-almonds.jpg",
   "time": {
     "total": 25
   },
@@ -60,8 +60,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Grains & Pulses",
-    "meal_role": "main"
+    "chapter": "Grains & Pulses"
   },
   "cuisine": "Other"
 }

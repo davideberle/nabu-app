@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "Soaked in a delicious honey-soy marinade and paired with grilled vegetables, these kabobs will please both meat-eaters and vegetarians .",
   "time": {
-    "prep": 30,
+    "prep": "30 mins",
     "total": 120
   },
   "ingredients": [
@@ -105,8 +105,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

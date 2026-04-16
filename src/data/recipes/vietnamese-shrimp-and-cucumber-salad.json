@@ -59,7 +59,7 @@
     "Meanwhile, whisk the rice wine vinegar, sugar, chile, garlic, fish sauce, lime juice, and 21⁄2 fl oz (75ml) cold water together in a bowl until the sugar dissolves. Add the cooked shrimp to the bowl and stir until they are coated in the dressing. Let cool completely.",
     "Add the chopped rau ram or mint, papaya, and cucumber, and toss together. Transfer the salad to a serving plate, with the shrimp on the top, and garnish with mint sprigs."
   ],
-  "image": null,
+  "image": "/recipes/vietnamese-shrimp-and-cucumber-salad.jpg",
   "time": {
     "total": 17
   },
@@ -67,8 +67,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish & Seafood",
-    "meal_role": "main"
+    "chapter": "Fish & Seafood"
   },
   "cuisine": "Other"
 }

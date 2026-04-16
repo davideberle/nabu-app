@@ -1,12 +1,12 @@
 {
   "id": "baked-artichoke-and-pearled-spelt-salad",
-  "name": "Baked Artichoke and Pearled Spelt Salad",
+  "name": "Baked Artichoke And Pearled Spelt Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "before serving warm, or serve at room temperature. Top each stuffed pepper",
+  "intro": "until needed. (The leftover butter can be used for cooking carrots or zucchini,",
   "ingredients": [
     {
       "item": "large globe artichokes (2¾ lb/1.2 kg)",
@@ -64,12 +64,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

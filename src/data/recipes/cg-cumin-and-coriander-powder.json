@@ -24,7 +24,7 @@
   "method": [
     "Roast in a dry frying pan until warm to the touch and fragrant. Let cool and then grind into a fine powder. Store in an airtight container for up to 2 months."
   ],
-  "image": null,
+  "image": "/recipes/cg-cumin-and-coriander-powder.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -33,8 +33,7 @@
     "dish_type": [
       "base"
     ],
-    "chapter": "Base Recipes",
-    "meal_role": "component"
+    "chapter": "Base Recipes"
   },
   "time": {
     "prep": 10,

@@ -9,9 +9,9 @@
   "servings": "8 pieces",
   "intro": "To this day, I’m still not sure why this dish is called arayes, which literally translates to “brides” in Arabic. But no matter, it will continue to be a constant go-to meal for my family, because it uses one of my favorite versatile proteins to cook with in a fun way. Arayes are usually made at barbecues using raw kofta smeared inside pita bread, which is crisped up on the grill until the beef is juicy and cooked through. They’re a popular Levantine street food but also a perfect weeknight dinner that guarantees happy bellies (especially little ones). No need to fire up the grill; these come out perfectly crispy and delicious when grilled on a stovetop cast-iron pan or baked in the oven.",
   "time": {
-    "prep": 15,
-    "cook": 30,
-    "total": 45
+    "prep": "15 minutes",
+    "cook": "30 minutes",
+    "total": "15 minutes30 minutes"
   },
   "ingredients": [
     {
@@ -78,8 +78,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: 1 Hour",
-    "meal_role": "main"
+    "chapter": "Main Dishes: 1 Hour"
   },
   "subtitle": "STUFFED PITA",
   "cuisine": "Middle Eastern"

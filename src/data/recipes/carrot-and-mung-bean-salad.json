@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Spoon the crushed chickpeas on top, followed by a drizzle of the yogurt, and",
+  "intro": "To arrange, spread the eggplant slices out on a platter or individual plates.",
   "ingredients": [
     {
       "item": "cup/140 g dried green mung beans",
@@ -68,11 +68,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/carrot-and-mung-bean-salad.jpg"
 }

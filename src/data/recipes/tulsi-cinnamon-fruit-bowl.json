@@ -57,10 +57,9 @@
   ],
   "category": {
     "dish_type": [
-      "main"
+      "breakfast"
     ],
-    "chapter": "Small Plates",
-    "meal_role": "main"
+    "chapter": "Small Plates"
   },
   "time": {
     "prep": 20,

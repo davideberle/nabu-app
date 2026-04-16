@@ -9,9 +9,9 @@
   "servings": "2 cups",
   "intro": "These patties are ready in no time with an electric pressure cooker and are super simple to make. There seems to be an infinite number of recipe possibilities for these little disks. Pictured in Polenta with Rich Mushroom Gravy (page 239).",
   "time": {
-    "prep": 10,
-    "cook": 5,
-    "total": 75
+    "prep": "10 minutes",
+    "cook": "5 minutes",
+    "total": "1 hour 15 minutes"
   },
   "ingredients": [
     {
@@ -133,8 +133,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts",
-    "meal_role": "main"
+    "chapter": "Desserts"
   },
   "cuisine": "Other"
 }

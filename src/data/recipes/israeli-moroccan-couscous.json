@@ -9,7 +9,7 @@
   "servings": "8 servings",
   "intro": "The vegetables can be cubed but will take longer to cook.",
   "time": {
-    "prep": 20,
+    "prep": "20 mins",
     "total": 22
   },
   "ingredients": [
@@ -84,8 +84,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides",
-    "meal_role": "side"
+    "chapter": "Sides"
   },
   "cuisine": "Moroccan"
 }

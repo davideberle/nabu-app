@@ -63,11 +63,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/butternut-squash-with-corn-salsa-feta-and-pumpkin-seeds.jpg"
 }

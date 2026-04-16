@@ -1,12 +1,12 @@
 {
   "id": "fava-beans-with-lemon-and-cilantro",
-  "name": "Fava Beans with Lemon and Cilantro",
+  "name": "Fava Beans With Lemon And Cilantro",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "more black pepper, and the lemon zest.",
+  "intro": "before spooning the vegetables over the rice. Finish with a drizzle of oil, a bit",
   "ingredients": [
     {
       "item": "cup/60 ml olive oil",
@@ -43,12 +43,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
   }
 }

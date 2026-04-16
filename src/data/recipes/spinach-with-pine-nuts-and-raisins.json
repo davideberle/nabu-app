@@ -42,7 +42,7 @@
     "Combine the oil, raisins, and pine nuts in a shallow frying pan over medium heat. When the raisins and pine nuts start to sizzle, cook for 2 minutes, stirring constantly. Carefully add the sherry and cook until the liquid has reduced by half.",
     "Add the spinach and paprika and cook, stirring constantly, for 5 minutes, or until the spinach has wilted. Season with salt and black pepper and serve hot or cold."
   ],
-  "image": null,
+  "image": "/recipes/spinach-with-pine-nuts-and-raisins.jpg",
   "time": {
     "total": 15
   },
@@ -51,8 +51,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

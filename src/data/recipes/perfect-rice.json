@@ -28,7 +28,7 @@
     "Add the 1¾ cups plus 2 tablespoons water to the pan and bring to a boil over high heat, stirring occasionally to prevent clumping. Lower the heat slightly and let simmer briskly for 1 to 3 minutes, stirring occasionally, until glossy on top. A few craters may form, which is fine. Turn the heat to low, cover the pan, and cook for 10 minutes.",
     "Turn off the heat and let the rice sit for 10 minutes. Uncover, fluff with chopsticks or a fork to circulate the grains, re-cover, and let rest again for 10 minutes to complete cooking. The rice will stay warm, covered, for 30 minutes. Fluff once more before serving."
   ],
-  "image": null,
+  "image": "/recipes/perfect-rice.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -37,8 +37,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Basic Recipes and Know-How",
-    "meal_role": "side"
+    "chapter": "Basic Recipes and Know-How"
   },
   "cuisine": "Southeast Asian"
 }

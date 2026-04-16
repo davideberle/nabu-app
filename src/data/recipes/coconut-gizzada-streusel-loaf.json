@@ -9,9 +9,9 @@
   "servings": "serves 8",
   "intro": "Coconut Gizzada is a very popular Jamaican snack consisting of a pastry case (shell) filled with a mixture of coconut, brown sugar and spices. I love it, so I decided to make it into cake form, inspired by old-fashioned coffee cakes with a streusel running through it. This loaf is impossibly fluffy and each part of the cake is flooded with coconut flavour. It is a perfect lazy Saturday afternoon bake with your siblings or friends.",
   "time": {
-    "prep": 20,
-    "cook": 75,
-    "total": 95
+    "prep": "20 MINUTES",
+    "cook": "1¼ HOURS",
+    "total": "20 MINUTES1¼ HOURS"
   },
   "ingredients": [
     {
@@ -127,8 +127,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts",
-    "meal_role": "main"
+    "chapter": "Desserts"
   },
   "cuisine": "Caribbean"
 }

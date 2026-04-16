@@ -8,7 +8,7 @@
   "servings": "serves 6",
   "intro": "A unique peanut sauce complements the colorful combination of tender sirloin, cauliflower, carrots, broccoli and mushrooms. I like to serve it over spaghetti, but fried noodles work well too.",
   "time": {
-    "prep": 40,
+    "prep": "40 minutes",
     "total": 10
   },
   "ingredients": [
@@ -94,8 +94,7 @@
   "category": {
     "dish_type": [
       "main"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

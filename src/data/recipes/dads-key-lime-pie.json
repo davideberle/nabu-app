@@ -61,8 +61,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
   "image": "/recipes/dads-key-lime-pie.jpg",
   "cuisine": "Italian"

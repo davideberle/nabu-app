@@ -1,6 +1,6 @@
 {
   "id": "style-lamb-leg-with-cumin-dipping-salt",
-  "name": "Mechouia-Style Lamb Leg with Cumin Dipping Salt",
+  "name": "-Style Lamb Leg with Cumin Dipping Salt",
   "persianName": "Mechouia",
   "source": {
     "cookbook": "Persiana",
@@ -83,8 +83,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Roasts & grills",
-    "meal_role": "main"
+    "chapter": "Roasts & grills"
   },
   "cuisine": "Persian"
 }

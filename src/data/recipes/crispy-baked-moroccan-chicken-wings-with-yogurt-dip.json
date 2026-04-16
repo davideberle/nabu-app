@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "Ditch the deep fryer in favor of flavor-packed baked chicken wings coated in Moroccan spices and crisped to perfection atop a foil-lined baking sheet from Kelly Senyei of Just a Taste. Dunk the spiced wings in a refreshing herb yogurt dip made with mint, cilantro, lemon juice, and honey.",
   "time": {
-    "prep": 15,
+    "prep": "15 mins",
     "total": 45
   },
   "ingredients": [
@@ -115,8 +115,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Starters & Appetizers",
-    "meal_role": "starter"
+    "chapter": "Starters & Appetizers"
   },
   "cuisine": "Moroccan"
 }

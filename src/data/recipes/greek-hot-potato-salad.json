@@ -44,7 +44,7 @@
   "method": [
     "Boil the potatoes until tender and keep hot. Slice the onion into a large bowl. Sprinkle with salt and cold water and allow to stand about 5 minutes, then drain. Slice the hot potatoes and add to the onions. Add celery, lemon juice, and olive oil. Mix well to absorb the dressing. Season to taste, and garnish with chopped parsley. Serve warm."
   ],
-  "image": null,
+  "image": "/recipes/greek-hot-potato-salad.jpg",
   "time": {
     "total": 5
   },
@@ -52,8 +52,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "More Than Greek Salad",
-    "meal_role": "side"
+    "chapter": "More Than Greek Salad"
   },
   "cuisine": "Greek"
 }

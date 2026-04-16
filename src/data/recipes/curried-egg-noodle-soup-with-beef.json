@@ -106,11 +106,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "soup"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/curried-egg-noodle-soup-with-beef.jpg"
 }

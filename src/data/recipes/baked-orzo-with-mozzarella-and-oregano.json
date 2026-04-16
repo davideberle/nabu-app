@@ -78,11 +78,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/baked-orzo-with-mozzarella-and-oregano.jpg"
 }

@@ -9,9 +9,9 @@
   "servings": "serves 6",
   "intro": "I don’t want to be dramatic, but if there’s no bread for the table then can you really call it a spread? Bread is my love language, especially when it’s doused with lots of garlic butter and spring onions (scallions). This one is for the garlic lovers. Using both garlic granules and fresh garlic offers a deep savoury flavour. These rolls are best served straight from the oven, but are also lovely the next day for a breakfast sandwich.",
   "time": {
-    "prep": 40,
-    "cook": 20,
-    "total": 60
+    "prep": "40 MINUTES",
+    "cook": "20 MINUTES",
+    "total": "40 MINUTES20 MINUTES"
   },
   "ingredients": [
     {
@@ -94,8 +94,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides",
-    "meal_role": "side"
+    "chapter": "Sides"
   },
   "cuisine": "Caribbean"
 }

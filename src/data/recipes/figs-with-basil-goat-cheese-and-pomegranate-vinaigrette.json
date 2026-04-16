@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "young and creamy goat cheese (see Caramelized Fennel with Goat Cheese, page 172).",
+  "intro": "I am afraid I can’t replicate in the United Kingdom. Still, I can buy good French or Italian figs, a day or two",
   "ingredients": [
     {
       "item": "shallot, finely chopped",
@@ -57,8 +57,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "",
-    "meal_role": "component"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/figs-with-basil-goat-cheese-and-pomegranate-vinaigrette.jpg"
 }

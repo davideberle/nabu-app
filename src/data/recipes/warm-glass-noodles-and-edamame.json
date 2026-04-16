@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "upgrade it by adding fried tofu and/or roasted peanuts.",
+  "intro": "omega-3 fatty acids, vitamin A and more), these young soybeans are widely available, whether frozen and",
   "ingredients": [
     {
       "item": "glass (cellophane) noodles",
@@ -86,8 +86,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/warm-glass-noodles-and-edamame.jpg"
 }

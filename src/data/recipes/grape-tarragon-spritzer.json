@@ -35,7 +35,7 @@
     "Put the remaining grapes in a blender and process until completely broken down. Strain through a fine-mesh sieve into a serving pitcher, pressing down on the solids to extract as much liquid as possible. (Compost the solids.) This should yield about 1¼ cups juice. Add the lemon juice and tarragon syrup and mix well. Add the sparkling water and stir gently to combine.",
     "To serve, put a handful of frozen grapes in each glass and garnish with a sprig of tarragon."
   ],
-  "image": null,
+  "image": "/recipes/grape-tarragon-spritzer.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -47,8 +47,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Kitchen Basics",
-    "meal_role": "main"
+    "chapter": "Kitchen Basics"
   },
   "cuisine": "African & Caribbean"
 }

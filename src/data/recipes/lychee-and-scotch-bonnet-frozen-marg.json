@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "This is very much inspired by a bar in Margate, a town on the British coast, where I live. When I’m ‘Margate tipsy’, I’m referring to being three frozen margs deep at Little Swift on the seafront. It’s that spicy-sweet combination that is just what I crave, even in a cocktail. The floral flavour of lychee just sings alongside the hot scotch bonnie. Make this for a girlfriend, or just for yourself. It’s very much a treat and should be enjoyed in quantities.",
   "time": {
-    "prep": 10,
-    "cook": 6,
-    "total": 16
+    "prep": "10 MINUTES",
+    "cook": "6 MINUTES",
+    "total": "10 MINUTES6 MINUTES"
   },
   "ingredients": [
     {
@@ -78,8 +78,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "For Company",
-    "meal_role": "main"
+    "chapter": "For Company"
   },
   "cuisine": "Caribbean"
 }

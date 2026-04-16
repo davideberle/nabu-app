@@ -50,7 +50,7 @@
     "In a food processor, pulse the dressing ingredients together until well combined. Season with salt and pepper to taste.",
     "Put the feta, peas, spinach, and mint in a bowl, and toss gently to mix. Season with a little pepper if you wish. Transfer to a serving bowl, and serve with the watercress mayonnaise and lemon wedges on the side."
   ],
-  "image": null,
+  "image": "/recipes/green-feta-salad-with-watercress-mayonnaise.jpg",
   "time": {
     "total": 45
   },
@@ -58,8 +58,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Cheese",
-    "meal_role": "starter"
+    "chapter": "Cheese"
   },
   "cuisine": "Other"
 }

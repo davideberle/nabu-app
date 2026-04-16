@@ -44,7 +44,7 @@
     "When the artichokes are cool enough to handle, carefully cut them into quarters.",
     "Divide the arugula and artichokes between 4 individual plates. Using a vegetable peeler, shave pieces of Parmesan over each salad. Drizzle with olive oil and balsamic vinegar, and season to taste with salt and pepper."
   ],
-  "image": null,
+  "image": "/recipes/artichoke-salad-with-lemon-juice.jpg",
   "time": {
     "total": 35
   },
@@ -53,8 +53,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

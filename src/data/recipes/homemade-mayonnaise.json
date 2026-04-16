@@ -67,13 +67,12 @@
     "Add oil one drop at a time, beating constantly.",
     "When mayonnaise starts to thicken, thin with lemon juice and continue beating, alternately adding lemon juice and oil."
   ],
-  "image": null,
+  "image": "/recipes/homemade-mayonnaise.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics",
-    "meal_role": "main"
+    "chapter": "Basics"
   },
   "cuisine": "Greek"
 }

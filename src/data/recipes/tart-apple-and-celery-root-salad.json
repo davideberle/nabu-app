@@ -1,0 +1,68 @@
+{
+  "id": "tart-apple-and-celery-root-salad",
+  "name": "Tart Apple And Celery Root Salad",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Cut down the side of each grapefruit, following its natural line, to remove the",
+  "ingredients": [
+    {
+      "item": "cup/120 g quinoa",
+      "amount": "¾"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "medium red onion, thinly sliced (rounded 1 cup/130 g)",
+      "amount": "1"
+    },
+    {
+      "item": "cup/60 ml canola oil",
+      "amount": "¼"
+    },
+    {
+      "item": "large celery root (10½ oz/300 g)",
+      "amount": "½"
+    },
+    {
+      "item": "cup/60 ml lemon juice",
+      "amount": "¼"
+    },
+    {
+      "item": "or 3 Granny Smith apples (14 oz/400 g)",
+      "amount": "2"
+    },
+    {
+      "item": "poppy seeds",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "red chile, thinly sliced on the diagonal",
+      "amount": "1"
+    },
+    {
+      "item": "cup/15 g cilantro leaves, coarsely chopped salt",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Bring a saucepan of water to a boil. Add the quinoa and simmer for 9 minutes. Drain, refresh under cold water, and then set aside to dry completely.",
+    "Place the vinegar, sugar, and 1 teaspoon salt in a bowl and whisk to combine.",
+    "Add the onion and rub the liquids into it using your hands. Add the oil, stir, and set aside for 30 minutes to marinate.",
+    "Peel the celery root, cut into very thin strips, and place in a bowl with the lemon juice to prevent discoloration. Quarter the apples, remove the cores, and cut each quarter into similarly thin strips. Add to the celery root and mix",
+    "well. Add the onion along with the quinoa, poppy seeds, chile, and cilantro.",
+    "Mix well and taste to see if you need any more salt, sugar, or vinegar: you are aiming for a pungent, sweet-and-sour flavor.",
+    "PARSLEY, LEMON, AND CANNELLINI"
+  ],
+  "time": {
+    "total": 30
+  }
+}

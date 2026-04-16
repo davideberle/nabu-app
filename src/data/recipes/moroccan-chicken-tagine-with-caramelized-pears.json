@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "Chicken cooked in a tagine is always meltingly tender. Adding sweet, caramelized pears at the end makes this Moroccan dish irresistible.",
   "time": {
-    "prep": 20,
+    "prep": "20 mins",
     "total": 70
   },
   "ingredients": [
@@ -86,8 +86,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

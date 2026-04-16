@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "(see Dates and Turkish Sheep's Cheese, page 280). Serve warm, as a starter, or as part of a mezze spread.",
+  "intro": "that they keep more of their original flavor. The texture, though, is slightly more sinewy than when boiling or",
   "ingredients": [
     {
       "item": "of asparagus",
@@ -44,8 +44,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/char-grilled-asparagus.jpg"
 }

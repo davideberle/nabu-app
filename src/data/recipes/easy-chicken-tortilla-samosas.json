@@ -9,9 +9,9 @@
   "servings": "makes 12, serves 4 or more as part of a multi-course meal",
   "intro": "Many people don’t attempt making samosas because they don’t want the mess of making their own pastry, and/or samosa wrappers are hard to come by without a special trip to an Asian grocer. Long before I ever tried Indian food, I was a big fan of Mexican food, and this recipe came to me because of my fondness for deep-fried chimichangas. You could use this method with other filled samosa recipes in this book too.",
   "time": {
-    "prep": 15,
-    "cook": 15,
-    "total": 30
+    "prep": "15 MINS",
+    "cook": "15 MINS",
+    "total": "15 MINS15 MINS"
   },
   "ingredients": [
     {
@@ -98,13 +98,12 @@
     "In a small bowl, whisk 4 tablespoons of water and the flour with a fork to make a paste. This paste will be used to seal the samosas. Take one tortilla half and place it on a clean surface with the flat cut at the top. Bring the two corners together. Apply a generous amount of the paste to the exterior of one of the straight edges and press the two sides together to form a cone shape. You will need to press firmly so the cone sticks together. Fill the cone almost to the top with the chicken mixture and seal the top using more paste. Repeat with the remaining tortillas.",
     "Heat the oil to 170°C (340°F), or until a piece of tortilla begins to sizzle immediately when added to the oil and floats to the top. Cooking in batches, add the samosas to the hot oil and cook for about 4 minutes, or until they are crispy brown and heated through. Transfer to paper towel to soak up the excess oil and serve hot with a good raita, hot sauce and/or chutney."
   ],
-  "image": null,
+  "image": "/recipes/easy-chicken-tortilla-samosas.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics & Breads",
-    "meal_role": "main"
+    "chapter": "Basics & Breads"
   },
   "cuisine": "Indian"
 }

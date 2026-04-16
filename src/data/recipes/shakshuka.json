@@ -2,72 +2,101 @@
   "id": "shakshuka",
   "name": "Shakshuka",
   "source": {
-    "cookbook": "Jerusalem",
-    "author": "Yotam Ottolenghi & Sami Tamimi",
-    "chapter": "Vegetables"
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 2 to 4",
-  "intro": "Shakshuka is Tunisian in origin but has become hugely popular in Jerusalem and all over Israel as substantial breakfast or lunch fare. Tunisian cuisine has a passionate love affair with eggs and this particular version of shakshuka is the seasonal variant for the summer and early autumn. Potatoes are used during the winter and eggplants in spring.",
+  "servings": "serves 4",
+  "intro": "In a tiny alley in old Jaffa there’s a little restaurant serving food to customers sitting outside at shared shabby",
   "tips": "Having published recipes for shakshuka once or twice before, we are well aware of the risk of repeating ourselves. Still, we are happy to add another version of this splendid dish, seeing how popular it is and how convenient it is to prepare. This time the focus is on tomato and spice. But we encourage you to play around with different ingredients and adjust the amount of heat to your taste. Serve with good white bread and nothing else.",
   "ingredients": [
     {
-      "item": "olive oil",
-      "amount": "2 tbsp"
+      "item": "cumin seeds",
+      "amount": "½ tsp"
     },
     {
-      "item": "Pilpelchuma or harissa (store-bought or see recipe)",
-      "amount": "2 tbsp"
+      "item": "light olive oil or vegetable oil",
+      "amount": "¾ cup"
     },
     {
-      "item": "tomato paste",
-      "amount": "2 tsp"
-    },
-    {
-      "item": "large red peppers, cut into ¼-inch / 0.5cm dice (2 cups / 300 g in total)",
+      "item": "large onions, sliced",
       "amount": "2"
     },
     {
-      "item": "cloves garlic, finely chopped",
-      "amount": "4"
+      "item": "red bell peppers, cut into",
+      "amount": "2"
     },
     {
-      "item": "ground cumin",
-      "amount": "1 tsp"
-    },
-    {
-      "item": "large, very ripe tomatoes, chopped (5 cups / 800 g in total); canned are also fine",
-      "amount": "5"
-    },
-    {
-      "item": "large free-range eggs, plus 4 egg yolks",
-      "amount": "4"
-    },
-    {
-      "item": "labneh (store-bought or see recipe) or thick yogurt",
-      "amount": "½ cup / 120 g"
-    },
-    {
-      "item": "salt",
+      "item": "¾-inch strips",
       "amount": ""
+    },
+    {
+      "item": "yellow bell peppers, cut into",
+      "amount": "2"
+    },
+    {
+      "item": "¾-inch strips",
+      "amount": ""
+    },
+    {
+      "item": "muscovado sugar",
+      "amount": "4 tsp"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "thyme sprigs, leaves picked and chopped",
+      "amount": "6"
+    },
+    {
+      "item": "chopped parsley",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "chopped cilantro, plus extra to garnish",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ripe tomatoes, roughly chopped",
+      "amount": "6"
+    },
+    {
+      "item": "saffron threads pinch of cayenne pepper salt and black pepper up to 1",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "¹8 cups water",
+      "amount": ""
+    },
+    {
+      "item": "eggs",
+      "amount": "8"
     }
   ],
   "method": [
-    "Heat the olive oil in a large frying pan over medium heat and add the pilpelchuma or harissa, tomato paste, peppers, garlic, cumin, and ¾ teaspoon salt. Stir and cook over medium heat for about 8 minutes to allow the peppers to soften. Add the tomatoes, bring to a gentle simmer, and cook for a further 10 minutes until you have quite a thick sauce. Taste for seasoning.",
-    "Make 8 little dips in the sauce. Gently break the eggs and carefully pour each into its own dip. Do the same with the yolks. Use a fork to swirl the egg whites a little bit with the sauce, taking care not to break the yolks. Simmer gently for 8 to 10 minutes, until the egg whites are set but the yolks are still runny (you can cover the pan with a lid if you wish to hasten the process). Remove from the heat, leave for a couple of minutes to settle, then spoon into individual plates and serve with the labneh or yogurt."
+    "In a very large pan dry-roast the cumin seeds on high heat for",
+    "2 minutes. Add the oil and onions and sauté for 5 minutes. Add the peppers, sugar and herbs and continue cooking on high heat for 5 to 10 minutes to get a nice color.",
+    "Add the tomatoes, saffron, cayenne and some salt and pepper.",
+    "Reduce the heat to low and cook for 15 minutes. During the cooking keep adding water so that the mix has a pasta sauce consistency. Taste and adjust the seasoning. It should be potent and flavorful. (You can prepare this mix well in advance.)",
+    "Remove the bay leaves, then divide the pepper mix among four deep frying pans, each large enough to take a generous individual portion. Place them on medium heat to warm up, then make two gaps in the pepper mix in each pan and carefully break an egg into each gap. Sprinkle with salt and cover the pans with lids.",
+    "Cook on a very (!) gentle heat for 10 to 12 minutes, or until the eggs are just set. Sprinkle with cilantro and serve.",
+    "Soon after I published this recipe, an annoyed Guardian reader sent a letter grumbling about the amount of fat in the pie. His comment somehow managed to unsettle my normally-very-good-tempered self. I guess it was the moralistic tone of the reproach, a condescending attempt by someone who, I suspect, doesn’t really like food to tell others what to eat.",
+    "I say, enjoy this pie fully! I suggest serving it warm or at room temperature with a simple salad of tomato and red onion, lightly dressed with garlic, olive oil and white wine vinegar.",
+    "Broccoli and Gorgonzola pie"
   ],
   "image": "/recipes/shakshuka.jpg",
   "dietary": [
     "vegetarian"
   ],
   "time": {
-    "total": 28
+    "total": 30
   },
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "cuisine": "Middle Eastern"
 }

@@ -51,7 +51,7 @@
     "While the tomatoes are cooking, put the halloumi, garlic, parsley, paprika, and the remaining oil into a bowl and combine well. Heat a griddle pan until hot, then, after letting it drain first, carefully add a slice of halloumi to the pan. Repeat, adding the halloumi slices one by one until they are all in the griddle pan. When you have added the last one, go back to the first one and begin turning them over to cook on the other side. They should be golden brown. When you have turned them all, go back to the first one and begin removing them from the griddle pan.",
     "Put the halloumi slices back into the bowl with the garlic, herb, and spice mix and stir gently. Add the cooked tomatoes to the mix along with the basil and stir to combine. Add the spinach leaves, toss together, and serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/grilled-halloumi-and-tomato-salad.jpg",
   "time": {
     "total": 20
   },
@@ -59,8 +59,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Cheese",
-    "meal_role": "starter"
+    "chapter": "Cheese"
   },
   "cuisine": "Other"
 }

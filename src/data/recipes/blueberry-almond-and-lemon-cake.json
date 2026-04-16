@@ -67,11 +67,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "dessert"
-    ],
-    "chapter": "",
-    "meal_role": "dessert"
-  }
+  "image": "/recipes/blueberry-almond-and-lemon-cake.jpg"
 }

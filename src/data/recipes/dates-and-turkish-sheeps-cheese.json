@@ -1,0 +1,52 @@
+{
+  "id": "dates-and-turkish-sheeps-cheese",
+  "name": "Dates and Turkish sheep's cheese",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "and fry, others spread like cream cheese. The best, I find, are the sheep's milk cheeses. Ask to taste from the",
+  "ingredients": [
+    {
+      "item": "whole almonds (skin on)",
+      "amount": "½ tbsp"
+    },
+    {
+      "item": "large Medjool dates (5 oz in total)",
+      "amount": "6"
+    },
+    {
+      "item": "arugula",
+      "amount": "½ cups"
+    },
+    {
+      "item": "lightly salted Turkish sheep’s cheese (or buffalo ricotta or buffalo mozzarella), broken or cut into pieces a few leaves of dill",
+      "amount": "4 to 5 oz"
+    },
+    {
+      "item": "mixed purple and green basil leaves, and red chard leaves",
+      "amount": "¾ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "pomegranate molasses salt and black pepper",
+      "amount": "½ tsp"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 300°F. Spread the almonds in a small baking pan and roast them for 8 to 10 minutes, or until they turn a nice brown inside. Remove from the oven and leave to cool down.",
+    "Halve the dates lengthways and remove and discard the pit. Cut each half into four to six long slices.",
+    "Spread the arugula over the bottom of each serving dish. On top, build up dates, cheese, dill, basil and red chard, making sure you can clearly see all four elements.",
+    "Mix together well the olive oil, pomegranate molasses and some salt and pepper, and drizzle over the salad. Roughly chop the almonds, sprinkle on top and serve.",
+    "This you must eat on the beach, or at least outdoors, on a hot day, with the sun’s rays unobstructed. It reminds me of hot sweaty nights on the seafront in Tel Aviv, when everyone is out enjoying beer, loud music and often a heated conversation. The sweet juiciness of the watermelon and the crumbly saltiness of the feta give this salad all its character. So make sure you choose the best possible of both (for other salty cheeses you can use here, see Dates and Turkish Sheep's Cheese, page 280).",
+    "Watermelon and feta"
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/dates-and-turkish-sheeps-cheese.jpg"
+}

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "spoonful of the chile sauce on top.",
+  "intro": "Remove the lid, add the vinegar, olives, and almonds, and stir gently. Sprinkle",
   "ingredients": [
     {
       "item": "sunflower oil",
@@ -106,11 +106,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "soup"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/hot-and-sour-mushroom-soup.jpg"
 }

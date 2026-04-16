@@ -49,10 +49,6 @@
     {
       "item": "Parmesan cheese",
       "amount": "1/2 cup"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -62,13 +58,7 @@
     "In a large-sized skillet, heat olive oil over medium heat. Add onion and yellow squash; cook 2 minutes. Add",
     "asparagus, snow peas and tomatoes; cook 2 minutes. Add cream and bring to boil. Reduce heat and simmer for 2",
     "minutes. Season with salt and pepper.",
-    "Toss with cooked spaghetti or angel hair pasta and garnish with Parmesan cheese.",
-    "(26) Skillet Pasta with Sausage and Vegetables",
-    "Sausage and vegetables are a classic combination for a quick and easy breakfast. This easy skillet pasta recipe is",
-    "one of my favorites because it's an extremely quick dish to make when you don't have much time on your hands. It's",
-    "also packed with protein, veggies, cheese, and more flavor than you'll know what to do with! Give this one a try.",
-    "This recipe is so easy to make and has so many flavors combined.",
-    "Yield: 8"
+    "Toss with cooked spaghetti or angel hair pasta and garnish with Parmesan cheese."
   ],
   "time": {
     "total": 36
@@ -77,8 +67,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/pasta-primavera.jpg"
 }

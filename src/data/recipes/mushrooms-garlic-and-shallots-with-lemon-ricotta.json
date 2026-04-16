@@ -1,0 +1,73 @@
+{
+  "id": "mushrooms-garlic-and-shallots-with-lemon-ricotta",
+  "name": "Mushrooms, Garlic, and Shallots with Lemon Ricotta",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "olive oil, plus extra to finish",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tbsp/60 g unsalted butter about 1 lb/470 g peeled baby shallots (about 35) scant 3 oz/80 g peeled garlic cloves (about 24)",
+      "amount": "4"
+    },
+    {
+      "item": "thyme sprigs",
+      "amount": "2"
+    },
+    {
+      "item": "cinnamon sticks",
+      "amount": "2"
+    },
+    {
+      "item": "oz/200 g portobello mushrooms, quartered",
+      "amount": "7"
+    },
+    {
+      "item": "oz/250 g cremini mushrooms, halved",
+      "amount": "8"
+    },
+    {
+      "item": "oz/100 g buna-shimeji (brown beech) or wild mushrooms",
+      "amount": "3½"
+    },
+    {
+      "item": "chile flakes scant 1 cup/200 ml vegetable stock",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "tbsp/100 ml Pernod",
+      "amount": "7"
+    },
+    {
+      "item": "tbsp/5 g tarragon leaves, chopped",
+      "amount": "3"
+    },
+    {
+      "item": "cup/10 g flat-leaf parsley leaves, chopped",
+      "amount": "⅓"
+    },
+    {
+      "item": "cup/10 g mint leaves, chopped",
+      "amount": "⅓"
+    },
+    {
+      "item": "cup/250 g ricotta grated zest of 1 lemon salt and black pepper",
+      "amount": "1"
+    }
+  ],
+  "method": [
+    "Put the olive oil in a large sauté pan with a scant 3 tablespoons/40 g of the butter and place over medium heat. Add the shallots, garlic, thyme, and cinnamon and sauté gently for about 12 minutes, until the onions are beginning to soften. Increase the temperature to medium-high, add the",
+    "portobello and chestnut mushrooms, mix well, and cook for 2 minutes more.",
+    "Add the buna-shimeji mushrooms and the chile flakes and cook for another minute. Pour in the stock and simmer rapidly for 8 to 10 minutes, stirring gently once or twice, until the liquid has almost disappeared and the shallots and garlic are cooked through. Pour in the Pernod, 1¼ teaspoons salt, and a good grind of black pepper. Cook for 1 to 2 minutes to allow the alcohol to evaporate, before stirring in the remaining butter and the chopped herbs.",
+    "Mix together the ricotta and lemon zest in a small bowl. Divide the warm mushrooms among individual plates and top each serving with equal portions of the ricotta mixture. Finish with a drizzle of oil and serve."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/mushrooms-garlic-and-shallots-with-lemon-ricotta.jpg"
+}

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "You also don’t have to make the sauce. A squirt of lemon or lime juice will suffice.",
+  "intro": "Don’t be put off by the long list of ingredients. You are likely to find many of them in your kitchen cupboard.",
   "ingredients": [
     {
       "item": "Greek yogurt",
@@ -121,8 +121,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/leek-fritters.jpg"
 }

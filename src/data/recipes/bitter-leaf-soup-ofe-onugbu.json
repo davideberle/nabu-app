@@ -54,15 +54,14 @@
     "vegan",
     "vegetarian"
   ],
-  "image": null,
+  "image": "/recipes/bitter-leaf-soup-ofe-onugbu.jpg",
   "time": {
     "total": 20
   },
   "category": {
     "dish_type": [
       "soup"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Nigerian"
 }

@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "This appetizer starts with fresh toasted Italian bread slices. Top that off with spicy citrus marinated veggies and you have a winning finger food.",
   "time": {
-    "prep": 5,
-    "cook": 15,
-    "total": 20
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -824,8 +824,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Appetizers & Snacks",
-    "meal_role": "starter"
+    "chapter": "Appetizers & Snacks"
   },
   "cuisine": "Other"
 }

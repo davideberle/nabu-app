@@ -58,10 +58,6 @@
     {
       "item": "fresh Romano cheese",
       "amount": "3 tbsp."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -73,11 +69,7 @@
     "Place all seafood mixture in the skillet.",
     "Cut peas pods in half and add with tomatoes to seafood. Cook to heat vegetables. Toss linguine with seafood",
     "mixture in a large bowl.",
-    "Serve with fresh Romano cheese and extra crushed red pepper.",
-    "(46) Catfish with Lemon and Butter Sauce",
-    "This is a fresh and simple dish that's both delicious and healthy. It's a quick and easy meal that is perfectly served",
-    "over rice or with fresh pita bread on the side.",
-    "Yield: 8"
+    "Serve with fresh Romano cheese and extra crushed red pepper."
   ],
   "time": {
     "total": 45
@@ -86,8 +78,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/scallops-and-shrimp-with-linguine.jpg"
 }

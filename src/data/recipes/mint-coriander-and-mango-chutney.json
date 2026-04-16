@@ -9,9 +9,9 @@
   "servings": "makes enough for 4 as an accompaniment",
   "intro": "I love this simple chutney, pictured on the bottom right. It’s so good spooned over the lamb seekh kebabs – you will be amazed how the flavours work together. If you’re serving this to guests, they’ll probably be wondering what the heck went into it, it’s such an interesting flavour combo. Admittedly, the first time I tried a similar chutney, I couldn’t figure it out either. I’m usually quite good at recognizing ingredients but not with this one.",
   "time": {
-    "prep": 5,
-    "cook": 0,
-    "total": 5
+    "prep": "5 MINS",
+    "cook": "",
+    "total": "5 MINS0"
   },
   "ingredients": [
     {
@@ -46,7 +46,7 @@
   "method": [
     "Finely chop the coriander (cilantro) and mint leaves and place in a blender with the remaining ingredients, seasoning with salt. Blend until smooth and use within three days."
   ],
-  "image": null,
+  "image": "/recipes/mint-coriander-and-mango-chutney.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -55,8 +55,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Base Sauces",
-    "meal_role": "side"
+    "chapter": "Base Sauces"
   },
   "cuisine": "Indian"
 }

@@ -37,15 +37,14 @@
     "vegan",
     "vegetarian"
   ],
-  "image": null,
+  "image": "/recipes/semovita-semolina.jpg",
   "time": {
     "total": 27
   },
   "category": {
     "dish_type": [
       "main"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Nigerian"
 }

@@ -83,11 +83,5 @@
   "time": {
     "total": 15
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/curried-meatballs-in-sauce.jpg"
 }

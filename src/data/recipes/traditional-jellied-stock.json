@@ -39,7 +39,7 @@
     "Return the trotters and carcasses to the saucepan, cover with 3½ quarts (3.5 liters) water and bring to the boil. Skim, then add the ginger, spring onion and Shaoxing wine. Return to the boil, then turn down the heat and simmer gently for 3 hours.",
     "Strain and discard the trotters and carcasses. Boil to reduce the liquid to about 1 quart (1 liter). Season with salt and pepper. Allow to cool completely, then chill in the fridge overnight, or until set."
   ],
-  "image": null,
+  "image": "/recipes/traditional-jellied-stock.jpg",
   "time": {
     "total": 180
   },
@@ -47,8 +47,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basic Recipes",
-    "meal_role": "main"
+    "chapter": "Basic Recipes"
   },
   "cuisine": "Chinese"
 }

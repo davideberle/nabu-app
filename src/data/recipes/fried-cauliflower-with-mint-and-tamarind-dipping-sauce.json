@@ -1,12 +1,12 @@
 {
   "id": "fried-cauliflower-with-mint-and-tamarind-dipping-sauce",
-  "name": "Fried Cauliflower with Mint and Tamarind Dipping Sauce",
+  "name": "Fried Cauliflower With Mint And Tamarind Dipping Sauce",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "poached egg alongside, with some pickle and some yogurt. Serve at once.",
+  "intro": "water. Immediately remove the pan from the heat and set it aside. After about",
   "ingredients": [
     {
       "item": "cups/120 g panko bread crumbs",
@@ -98,12 +98,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
   }
 }

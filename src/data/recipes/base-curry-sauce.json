@@ -9,9 +9,9 @@
   "servings": "makes 3 litres (3 us quarts) or enough for 10–15 servings",
   "intro": "This smooth curry sauce ‘gravy’, more than any other ingredient, is what gives BIR-style curries their distinctive flavour and texture. A base curry sauce is essentially just a slowly cooked onion stock with a few other veggies and spices thrown in. The sauce is quite bland in flavour but it does taste good. It needs to be bland as it is used in everything, from the mildest korma to the spiciest phall. The magic happens when this bland sauce is used in the different curries and cooked with the ingredients called for in those curries.\n\nBase sauces at restaurants are all quite similar and rarely is an exact recipe followed. This recipe is a scaled-down version of the recipe in my first book, The Curry Guy. It is also different to the quick recipe. These are different recipes that both get excellent results. If you have a 3-litre (3 US-quart) stockpot, it’s the perfect size for this recipe.",
   "time": {
-    "prep": 15,
-    "cook": 75,
-    "total": 90
+    "prep": "15 MINS",
+    "cook": "1¼ HOURS",
+    "total": "15 MINS1¼ HOURS"
   },
   "ingredients": [
     {
@@ -92,8 +92,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Accompaniments",
-    "meal_role": "side"
+    "chapter": "Accompaniments"
   },
   "cuisine": "Indian"
 }

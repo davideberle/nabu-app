@@ -9,9 +9,9 @@
   "servings": "16 kofta; 4 to 6 servings",
   "intro": "Kofta is a universal food across the Middle Eastern region, not only because it’s delicious and easy to make, but also because it’s versatile and economical. Transform a pound of ground beef into juicy, well-seasoned kofta and use them in wraps, stews, or sauces with rice. This dish is one variation of the latter application of kofta, and one of my favorite ways to enjoy it. Kofta bil tahini is a traditional Levantine dish that has you pouring a rich tahini sauce all over roasted kofta and potatoes and then digging in with bread, or scooping it on top of rice. In this recipe, the method is streamlined using one large oven-safe skillet to sear the kofta and then roasting the kofta in the oven with the potatoes. The tahini sauce is added and baked for a few minutes just before serving. Tahini is a naturally thick paste, and it will thicken up even more when cooled, so don’t worry if it looks thick; that’s normal. It’s important not to bake the tahini sauce too long to avoid it thickening too much. The crunchy almonds as a garnish are a must!",
   "time": {
-    "prep": 30,
-    "cook": 30,
-    "total": 60
+    "prep": "30 minutes",
+    "cook": "30 minutes",
+    "total": "30 minutes30 minutes"
   },
   "ingredients": [
     {
@@ -158,8 +158,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: 1 Hour",
-    "meal_role": "main"
+    "chapter": "Main Dishes: 1 Hour"
   },
   "subtitle": "BAKED KOFTA WITH TAHINI",
   "cuisine": "Middle Eastern"

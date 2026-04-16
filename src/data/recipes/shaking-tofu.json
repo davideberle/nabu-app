@@ -99,7 +99,7 @@
     "When the oil shimmers, add the tofu and cook for 5 to 6 minutes, turning frequently to brown on two or three sides. Turn the heat to medium, pour in the seasoning sauce, and cook for 2 to 4 minutes, until the sauce reduces and clings to the tofu. Remove from the heat.",
     "Quickly toss the salad and transfer everything, dressing included, to a platter or serving dish. Crown with the tofu and any lingering sauce in the pan. At the table, combine the ingredients and dive in."
   ],
-  "image": null,
+  "image": "/recipes/shaking-tofu.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -108,8 +108,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Eggs, Tofu, and Tempeh",
-    "meal_role": "main"
+    "chapter": "Eggs, Tofu, and Tempeh"
   },
   "cuisine": "Southeast Asian"
 }

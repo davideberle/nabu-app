@@ -1,6 +1,6 @@
 {
   "id": "cannellini-bean-pur-e-with-pickled-mushrooms-and-pita-croutons",
-  "name": "Cannellini Bean Purée with Pickled Mushrooms and Pita Croutons",
+  "name": "Cannellini Bean Purée With Pickled Mushrooms And Pita Croutons",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
@@ -79,11 +79,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "bread"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/cannellini-bean-pur-e-with-pickled-mushrooms-and-pita-croutons.jpg"
 }

@@ -62,8 +62,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
   "image": "/recipes/chocolate-brownie-crumble-ice-cream.jpg",
   "cuisine": "Other"

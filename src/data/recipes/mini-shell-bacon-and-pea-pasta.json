@@ -49,10 +49,6 @@
     {
       "item": "Parmesan cheese, to serve",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -60,14 +56,7 @@
     "water.",
     "Over medium heat, bring to a boil. Boil, frequently stirring until pasta is al dente and water has nearly evaporated,",
     "about 15 minutes. Add the mascarpone cheese and dill and stir.",
-    "Serve with Parmesan.",
-    "(35) Chicken-Macaroni Supreme",
-    "A fun, easy, and healthy recipe for a macaroni and cheese dish.",
-    "Delicious, even the kids will love!",
-    "Many food recipes call for chicken or bacon. You can keep this recipe vegetarian by using vegetarian cheese and",
-    "adding vegetables such as broccoli to the mix.",
-    "This recipe is great if you're looking for a quick dinner or a meal that both adults and children enjoy.",
-    "Yield: 6"
+    "Serve with Parmesan."
   ],
   "time": {
     "total": 48
@@ -76,8 +65,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/mini-shell-bacon-and-pea-pasta.jpg"
 }

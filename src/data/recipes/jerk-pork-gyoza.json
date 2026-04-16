@@ -8,9 +8,9 @@
   },
   "intro": "Number 184,871,809 in the different ways of using jerk marinade! These gyoza are spicy, deeply savoury and easy to make. Make these for friends, or for yourself, like I did. They also freeze very well, so you can save any leftovers for future dumpling cravings.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 25
+    "prep": "20 MINUTESCOOK TIME: 5 MINUTES",
+    "cook": "5 MINUTES",
+    "total": "20 MINUTESCOOK TIME: 5 MINUTES5 MINUTES"
   },
   "ingredients": [
     {
@@ -76,8 +76,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "For Company",
-    "meal_role": "main"
+    "chapter": "For Company"
   },
   "cuisine": "Caribbean"
 }

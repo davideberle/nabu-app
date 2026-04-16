@@ -59,11 +59,6 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/rice-noodles-with-green-onions-and-edamame.jpg",
+  "intro": "Bring a small saucepan of water to a boil, add the lemon slices, and blanch for"
 }

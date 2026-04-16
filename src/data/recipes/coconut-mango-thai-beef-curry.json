@@ -8,7 +8,7 @@
   "servings": "serves 6",
   "intro": "Experience a delightful combination of sweet and spicy flavors with this recipe. The tropical essence of mango and coconut milk brings a burst of freshness, while the curry paste adds a fiery kick. This dish is perfect for infusing traditional recipes with an exciting flavor profile. If you prefer a milder taste, simply reduce the amount of curry paste for a lighter variation. Get ready to elevate your culinary creations with this exquisite blend of sweet and spicy goodness.",
   "time": {
-    "prep": 145,
+    "prep": "2 hours 25 minutes",
     "total": 130
   },
   "ingredients": [
@@ -50,8 +50,7 @@
   "category": {
     "dish_type": [
       "main"
-    ],
-    "meal_role": "main"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

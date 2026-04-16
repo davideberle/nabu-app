@@ -33,21 +33,12 @@
     {
       "item": "Salt and pepper to taste",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "In a large saucepan, heat broth to boil. Add tomatoes, broccoli and orzo.",
     "When broth returns to boil, stir in shrimp. Simmer until shrimp becomes opaque and pasta is cooked. Stir in",
-    "margarine or butter. Season with salt and pepper.",
-    "(48) Farfalle with Salmon Sauce",
-    "A dish traditionally served in Italy and Japan, farfalle with salmon sauce is made from cheese, pasta, and salmon",
-    "cooked in a fish broth. Topped with fresh parsley, this dairy-free dish will not leave you feeling heavy like some",
-    "other traditional Italian pastas do. A fun experiment for any adventurous eater!",
-    "Yield: 6"
+    "margarine or butter. Season with salt and pepper."
   ],
   "time": {
     "total": 35
@@ -56,8 +47,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/orzo-shrimp-stew.jpg"
 }

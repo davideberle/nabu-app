@@ -54,7 +54,7 @@
     "In a large bowl, whisk together the mayonnaise, extra-virgin olive oil, Dijon mustard, lemon juice, cornichon pickles, grated onion, flat-leaf parsley, and salt, and black pepper. Set the remoulade sauce aside.",
     "Wash and peel the celery root, then quarter it. Working quickly, grate each quarter into the bowl with the sauce. Toss and serve over lettuce leaves immediately. Once made, this dish will keep in the fridge for up to 2 days."
   ],
-  "image": null,
+  "image": "/recipes/celery-root-and-mustard-remoulade.jpg",
   "time": {
     "total": 40
   },
@@ -63,8 +63,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

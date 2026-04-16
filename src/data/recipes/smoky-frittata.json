@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "it is highly effective in adding depth and pungency to vegetarian dishes.",
+  "intro": "Scamorza affumicata is an Italian cheese that melts fantastically well. Often labelled “smoked mozzarella,”",
   "ingredients": [
     {
       "item": "small cauliflower, cut into medium florets",
@@ -61,8 +61,8 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": "",
-    "meal_role": "breakfast"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/smoky-frittata.jpg"
 }

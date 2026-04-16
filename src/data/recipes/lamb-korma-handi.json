@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This korma is a lot different to the sweet, creamy and mild kormas you might be familiar with from UK curry houses. Our British-style kormas are actually kormas only in name. Korma or quorma is actually a style of cooking where meat or vegetables are braised and cooked in one big pot. Handis are used traditionally because of their large belly and smaller mouth, which is perfect for korma-style cooking. The meat is usually cooked on the bone for flavour, but you could use lamb off the bone for easier eating. Do you really need all that ghee? Yep, if you want to make it authentic, but use less if you must. Served with chapattis and homemade lime pickle, this is a must-try!",
   "time": {
-    "prep": 15,
-    "cook": 60,
-    "total": 75
+    "prep": "15 MINS",
+    "cook": "1 HOUR",
+    "total": "15 MINS1 HOUR"
   },
   "ingredients": [
     {
@@ -93,8 +93,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Grills & Kebabs",
-    "meal_role": "main"
+    "chapter": "Grills & Kebabs"
   },
   "cuisine": "Indian"
 }

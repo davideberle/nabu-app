@@ -9,10 +9,9 @@
   "introduction": null,
   "category": {
     "dish_type": [
-      "main"
+      "salad"
     ],
-    "chapter": "Meat & Fish",
-    "meal_role": "main"
+    "chapter": "Meat & Fish"
   },
   "servings": "serves 4",
   "time": {
@@ -51,8 +50,6 @@
   ],
   "tags": {
     "dietary": [
-      "vegetarian",
-      "vegan",
       "gluten-free"
     ]
   },

@@ -57,10 +57,6 @@
     {
       "item": "salt",
       "amount": "1 1/2 tsp."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -82,12 +78,7 @@
     "from sticking to one another or going to the bottom of the pan. Boil about 8 minutes, until tender. Drain thoroughly",
     "in large sieve.",
     "Serve with tomato sauce or add butter and freshly-grated Romano cheese and gently stir all together immediately",
-    "before serving.",
-    "(15) Roasted Pepper Pasta",
-    "Roasted peppers and garlic are the perfect match for a pasta dish, because the roasted pepper's strong flavor can",
-    "hold its own against the pungency of the raw garlic. The result is a creamy, delicious sauce with a hint of sweetness",
-    "that will leave your mouth watering for more.",
-    "Yield: 5"
+    "before serving."
   ],
   "time": {
     "total": 40
@@ -96,8 +87,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/cheese-ravioli.jpg"
 }

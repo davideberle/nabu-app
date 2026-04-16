@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "You have to make this! Flatbread topped with these simple ingredients adds up to so much pleasure and protein.",
   "time": {
-    "prep": 5,
-    "cook": 40,
-    "total": 45
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
   },
   "ingredients": [
     {
@@ -960,8 +960,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Courses",
-    "meal_role": "main"
+    "chapter": "Main Courses"
   },
   "cuisine": "Other"
 }

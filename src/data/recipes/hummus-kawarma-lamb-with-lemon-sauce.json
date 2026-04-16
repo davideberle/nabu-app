@@ -104,7 +104,7 @@
     "Heat the butter or ghee and the olive oil in a large frying pan over medium-high heat. Add the meat in two or three batches and stir as you fry each batch for 2 minutes. The meat should be light pink in the middle.",
     "Divide the hummus among 6 individual shallow bowls, leaving a slight hollow in the center of each. Spoon the warm kawarma into the hollow and scatter with the reserved chickpeas. Drizzle generously with the lemon sauce and garnish with some parsley and the pine nuts."
   ],
-  "image": null,
+  "image": "/recipes/hummus-kawarma-lamb-with-lemon-sauce.jpg",
   "time": {
     "total": 30
   },
@@ -112,8 +112,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Pulses & Grains",
-    "meal_role": "starter"
+    "chapter": "Pulses & Grains"
   },
   "cuisine": "Middle Eastern"
 }

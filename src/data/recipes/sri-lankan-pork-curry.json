@@ -9,9 +9,9 @@
   "servings": "serves 6 or more as part of a multi-course meal",
   "intro": "I first learned this pork curry recipe on a visit to Sri Lanka, where the chef at one of my hotels very kindly walked me through the cooking process. He made a special Sri Lankan curry powder that took hours to roast before being ground into a fine powder. I have changed the ingredients and method slightly for ease using my own curry powder blend, but I think I’ve still kept it very authentically Sri Lankan. The most important thing with this recipe is to use the freshest ingredients you can get your hands on and ensure the pork is very tender. Get that right and the other ingredients finish the job for you with very little effort. Any good-quality curry powder can be used if you don’t want to make your own.",
   "time": {
-    "prep": 15,
-    "cook": 60,
-    "total": 75
+    "prep": "15 MINS",
+    "cook": "1 HOUR",
+    "total": "15 MINS1 HOUR"
   },
   "ingredients": [
     {
@@ -92,13 +92,12 @@
     "Add the onions and fry for about 5 minutes until soft and translucent, then pour in the ground spices and the garlic and ginger paste. Add the green chillies and tomato paste, followed by the tamarind pulp and coconut milk. Mix well and add the pork with just enough water or stock to cover. Simmer for about 40 minutes, or until the pork is fork-tender.",
     "Season with salt and black pepper and sprinkle with the garam masala to serve."
   ],
-  "image": null,
+  "image": "/recipes/sri-lankan-pork-curry.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
   "cuisine": "Indian"
 }

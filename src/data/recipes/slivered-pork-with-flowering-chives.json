@@ -63,8 +63,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Meat",
-    "meal_role": "main"
+    "chapter": "Meat"
   },
   "time": {
     "prep": 20,

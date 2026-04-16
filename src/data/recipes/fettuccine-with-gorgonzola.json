@@ -42,10 +42,6 @@
     {
       "item": "shredded Parmesan cheese",
       "amount": "3 oz."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -53,12 +49,7 @@
     "In a saucepan, bring cream to a simmer. Add Gorgonzola cheese, butter and vodka. Blend; add salt and pepper to",
     "taste. Add spinach and ricotta; simmer and stir until blended.",
     "Cook noodles according to package directions; drain. Pour sauce over noodles and toss to coat. Sprinkle with",
-    "Parmesan cheese and toss again. Serve immediately.",
-    "(22) Linguine Carbonara",
-    "This is a simple yet mouth-watering Italian recipe that can be made by anyone. Have the kids help make it while",
-    "you take care of the sauce or do it all in one go with ease, giving the kids a break to play at some point. This simple",
-    "yet flavorful dish requires just three main ingredients: linguine, eggs, and bacon.",
-    "Yield:"
+    "Parmesan cheese and toss again. Serve immediately."
   ],
   "time": {
     "total": 35
@@ -67,8 +58,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/fettuccine-with-gorgonzola.jpg"
 }

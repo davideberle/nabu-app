@@ -11,8 +11,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Meat & Fish",
-    "meal_role": "main"
+    "chapter": "Meat & Fish"
   },
   "servings": "serves 4",
   "time": {
@@ -138,6 +137,6 @@
       "gluten-free"
     ]
   },
-  "image": null,
+  "image": "/recipes/spiced-red-plum-ginger-and-rhubarb-relish.jpg",
   "cuisine": "Middle Eastern"
 }

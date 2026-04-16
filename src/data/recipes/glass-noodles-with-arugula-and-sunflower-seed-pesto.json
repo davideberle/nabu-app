@@ -41,11 +41,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/glass-noodles-with-arugula-and-sunflower-seed-pesto.jpg"
 }

@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Elegance and protein are wrapped up in this pretty quiche. It’s full of veggies and is a special dinner that reheats perfectly. You can bake this quiche in a springform pan or a pie plate.",
   "time": {
-    "prep": 5,
-    "cook": 40,
-    "total": 45
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
   },
   "ingredients": [
     {
@@ -1203,8 +1203,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Courses",
-    "meal_role": "main"
+    "chapter": "Main Courses"
   },
   "cuisine": "Other"
 }

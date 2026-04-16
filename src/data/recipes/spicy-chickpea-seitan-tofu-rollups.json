@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "A super simple process and easy handling are two pluses for these protein-rich rollups. Tofu mingles with tasty ingredients to make for a great base.",
   "time": {
-    "prep": 5,
-    "cook": 15,
-    "total": 20
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -723,8 +723,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers & Snacks",
-    "meal_role": "main"
+    "chapter": "Appetizers & Snacks"
   },
   "cuisine": "Other"
 }

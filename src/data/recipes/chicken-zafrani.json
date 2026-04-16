@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This delicious curry has a rich flavour that’s all its own. I like it with chillies, often more than called for in the recipe, but if you leave them out it is a great curry for kids and those who prefer milder curries. You can get away with only marinating the chicken for about 30 minutes, but if you marinate the meat for about 24 hours, it will be even better. The marinade is used to make the sauce. This makes cooking the dish a lot easier as you just have to take the marinated chicken out of the fridge and cook it. You can literally get home from work and cook this one up in under 30 minutes.",
   "time": {
-    "prep": 15,
-    "cook": 30,
-    "total": 15
+    "prep": "15 MINS, PLUS MARINATING TIME",
+    "cook": "30 MINS",
+    "total": "15 MINS, PLUS MARINATING TIME30 MINS"
   },
   "ingredients": [
     {
@@ -124,14 +124,13 @@
     "When ready to cook, melt the ghee or oil in a large saucepan with a tight-fitting lid over a medium–high heat. Add the cinnamon stick, cardamom pods and star anise. If you don’t like whole spices in your curries, be sure to count them in and then count them back out again at the end of cooking. Let these spices infuse into the ghee for about 30 seconds, then tip in the chicken pieces along with all the marinade.",
     "Cover and simmer over a low heat for about 25 minutes, or until the chicken is cooked through. You can add a drop of water if the curry is looking thirsty but the chicken will release moisture to make the sauce. When the chicken is cooked through, stir in the saffron and cream and cook for a further 3 minutes, then add the dried fenugreek leaves (kasoori methi) by rubbing the leaves between your fingers into the sauce. Season with salt and serve."
   ],
-  "tips": "This chicken zafrani, like all authentic curries, can be adjusted to your personal preference. Feel free to cut the chicken thighs into bite-size pieces. If you prefer more sauce, add a little water or stock and cook it down until you are happy with the consistency. If you like creamy curries, adding more cream, though not authentic, will do the job! Note: MARINATING TIME; MARINATING TIME30 MINS.",
+  "tips": "This chicken zafrani, like all authentic curries, can be adjusted to your personal preference. Feel free to cut the chicken thighs into bite-size pieces. If you prefer more sauce, add a little water or stock and cook it down until you are happy with the consistency. If you like creamy curries, adding more cream, though not authentic, will do the job!",
   "image": "/recipes/chicken-zafrani.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
   "cuisine": "Indian"
 }

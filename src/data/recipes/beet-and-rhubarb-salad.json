@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "top, sprinkle with the cilantro, and serve warm or at room temperature.",
+  "intro": "place in the oven to roast for 30 minutes, turning the vegetables once or twice",
   "ingredients": [
     {
       "item": "medium beets of various kinds or, if you can’t get them, one type is fine (1¾ lb/800 g) 10½ oz/300 g trimmed rhubarb (about 7 stalks), cut on the diagonal into 1-inch/2.5-cm pieces scant 2½ tbsp/30 g superfine sugar",
@@ -54,11 +54,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/beet-and-rhubarb-salad.jpg"
 }

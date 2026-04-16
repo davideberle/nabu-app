@@ -57,11 +57,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/broccolini-with-soy-sauce-garlic-and-peanuts.jpg"
 }

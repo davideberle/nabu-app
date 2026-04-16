@@ -39,7 +39,7 @@
     "Wash the lemons and cut a deep cross all the way from the top to within ¾ inch / 2 cm from the base. Stuff each lemon with 1 tablespoon of the salt and place in the jar. Push the lemons in tightly so they are squeezed together tightly. Seal the jar and leave in a cool spot for at least a week.",
     "After this initial period, remove the lid and press the lemons as hard as you can to squeeze out as much of the juice as possible. Add the rosemary, chile, and lemon juice and cover with a thin layer of olive oil. Seal the jar and leave in a cool place for at least 4 weeks. The longer you leave them, the better the flavor."
   ],
-  "image": null,
+  "image": "/recipes/preserved-lemons.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -48,8 +48,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments",
-    "meal_role": "main"
+    "chapter": "Condiments"
   },
   "time": {
     "prep": 20,

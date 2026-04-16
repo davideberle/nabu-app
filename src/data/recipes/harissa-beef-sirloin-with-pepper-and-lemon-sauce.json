@@ -71,11 +71,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/harissa-beef-sirloin-with-pepper-and-lemon-sauce.jpg"
 }

@@ -77,7 +77,7 @@
     "To make the dressing, combine the vinegar, lemon juice, mustard, maple syrup, salt, and cinnamon in a blender. With the blender running, slowly pour in the oil and process until creamy.",
     "To serve, pour the dressing over the salad and toss well with clean hands. Cover and refrigerate for 1 hour to allow flavors to meld. Remove from the refrigerator about 30 minutes before serving to bring to room temperature. Season with white pepper to taste just before serving."
   ],
-  "image": null,
+  "image": "/recipes/cinnamon-soaked-wheat-berry-salad.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -89,8 +89,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Grains & Legumes",
-    "meal_role": "side"
+    "chapter": "Grains & Legumes"
   },
   "cuisine": "African & Caribbean"
 }

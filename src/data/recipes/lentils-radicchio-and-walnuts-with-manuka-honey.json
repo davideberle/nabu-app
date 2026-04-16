@@ -65,11 +65,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/lentils-radicchio-and-walnuts-with-manuka-honey.jpg"
 }

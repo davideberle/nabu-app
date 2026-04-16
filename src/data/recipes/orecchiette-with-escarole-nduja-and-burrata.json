@@ -48,7 +48,10 @@
     "Meanwhile, in a large pot of boiling salted water, cook the orecchiette until al dente, drain, and transfer to the sauté pan. Over medium-high heat, sauté the pasta for a minute, adding half the Parmigiano and pasta water as necessary to bind the ingredients.",
     "Plate in four bowls. Finish with the remaining ¼ cup Parmigiano, the remaining 1 ounce ’nduja, scoops of the burrata, and a drizzle of oil. Enjoy!"
   ],
-  "image": "/recipes/orecchiette-with-escarole-nduja-and-burrata.jpg",
+  "tags": {
+    "season": ["fall"]
+  },
+  "image": null,
   "time": {
     "total": 25
   },
@@ -56,8 +59,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fall",
-    "meal_role": "main"
+    "chapter": "Fall"
   },
   "cuisine": "Italian"
 }

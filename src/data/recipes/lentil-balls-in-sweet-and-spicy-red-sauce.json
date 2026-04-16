@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "A crispy lentil bean ball gets mixed into a tangy tomato sauce for this appetizer. Make sure to have napkins and toothpicks on hand, but you’ll have no need for a leftover container.",
   "time": {
-    "prep": 5,
-    "cook": 15,
-    "total": 20
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -627,8 +627,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Appetizers & Snacks",
-    "meal_role": "dessert"
+    "chapter": "Appetizers & Snacks"
   },
   "cuisine": "Other"
 }

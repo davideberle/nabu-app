@@ -47,7 +47,7 @@
     "Wash the clams thoroughly, discarding any that are open. Put them in a saucepan with the Shaoxing wine and 4 tablespoons water, cover with a lid, then steam over a high flame for 2–3 minutes, until the clams have opened. Remove them with a slotted spoon, reserving the cooking liquor. Use chopsticks to pick the clams out of the shells, and set them aside. (If you wish, you can keep a few in their shells.) Bring a pan of water to the boil. Add the rice cake strips and steep over a gentle flame for a minute or so to warm through. Drain.",
     "Heat the oil in a seasoned wok over a high flame. Add the ginger and spring onion and stir-fry until they smell wonderful. Add the bok choy, stir once or twice, tip in the drained rice cake slices and stir-fry until the bok choy has wilted. Add the clam meat and cooking liquor, leaving any grit in the saucepan. Stir briefly to incorporate and season with salt and pepper. Serve."
   ],
-  "image": null,
+  "image": "/recipes/stir-fried-rice-cake-with-fresh-clams.jpg",
   "time": {
     "total": 3
   },
@@ -55,8 +55,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Rice",
-    "meal_role": "dessert"
+    "chapter": "Rice"
   },
   "cuisine": "Chinese"
 }

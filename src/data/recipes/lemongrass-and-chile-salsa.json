@@ -47,7 +47,7 @@
     "Add the basil, ginger, and chile. Pour in the honey, soy sauce, Thai fish sauce, and lime juice, and stir well. Cover and chill for at least 1 hour to help develop the flavors.",
     "Stir in the whole basil leaves just before serving. The salsa can be stored in the fridge for up to 2 days."
   ],
-  "image": null,
+  "image": "/recipes/lemongrass-and-chile-salsa.jpg",
   "time": {
     "total": 50
   },
@@ -55,8 +55,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Sauces & Dressings",
-    "meal_role": "component"
+    "chapter": "Sauces & Dressings"
   },
   "cuisine": "Other"
 }

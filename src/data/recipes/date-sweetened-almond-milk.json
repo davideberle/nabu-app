@@ -34,7 +34,7 @@
     "Put all the ingredients in a blender and process until smooth. Strain through a piece of cheesecloth into a pitcher, squeezing the cheesecloth to extract as much liquid as possible. Stored in the refrigerator, it should last 5 days."
   ],
   "tips": "Put the almonds in a heatproof bowl and pour in boiling water to cover. After 1 minute, drain the almonds in a colander, then rinse them with cold water. Drain well, transfer to a clean kitchen towel, and pat dry. Use your fingers to slip off the skins.",
-  "image": null,
+  "image": "/recipes/date-sweetened-almond-milk.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -43,8 +43,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts",
-    "meal_role": "main"
+    "chapter": "Desserts"
   },
   "time": {
     "prep": 20,

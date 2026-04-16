@@ -77,7 +77,7 @@
     "Heat the olive oil in a small nonstick frying pan over low heat. Add the almonds and toast for 2–3 minutes, or until the nuts are lightly browned. Remove from the heat and allow to cool.",
     "Place the kale in a large bowl and drizzle with some of the dressing. Toss well to coat. Then add the sweet corn, almonds, chickpeas, scallions, and zucchini. Drizzle with more of the dressing and toss well to coat. Add the freekeh and the remaining dressing and toss well to coat. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/kale-and-freekeh-salad-with-garlic-tahini.jpg",
   "time": {
     "total": 50
   },
@@ -85,8 +85,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Grains & Pulses",
-    "meal_role": "main"
+    "chapter": "Grains & Pulses"
   },
   "cuisine": "Other"
 }

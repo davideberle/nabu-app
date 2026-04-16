@@ -58,7 +58,7 @@
     "Warm the oil in a small saucepan over medium-low heat. Add the onion and sauté until soft, 5 to 7 minutes. Add the garlic, cumin, and salt and sauté until the garlic is fragrant, 2 to 3 minutes.",
     "Transfer the mixture to a blender. Add the chile, vinegar, banana, water, and agave nectar and puree until smooth. Stir in the white pepper. Use immediately or store in a tightly sealed jar in the refrigerator for up to 1 month."
   ],
-  "image": null,
+  "image": "/recipes/chipotle-banana-pepper-sauce.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -70,8 +70,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Spice Blends & Sauces",
-    "meal_role": "side"
+    "chapter": "Spice Blends & Sauces"
   },
   "cuisine": "African & Caribbean"
 }

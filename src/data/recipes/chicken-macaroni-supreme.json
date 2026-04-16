@@ -66,10 +66,6 @@
     {
       "item": "American cheese, shredded",
       "amount": "1 1/2 cups"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -79,14 +75,7 @@
     "pepper and bouillon granules to skillet. Stir-fry for 1 minute on medium-high heat. Lower heat, cover and simmer",
     "until broccoli is tender.",
     "Add macaroni, peas and chicken to skillet; heat through. In a small bowl, blend flour with milk; add to macaroni.",
-    "Add cheese and stir until melted.",
-    "(36) Ground Beef Pasta with Garlic-Yogurt Sauce",
-    "Pasta in a mixed sauce of beef, garlic, and yogurt sounds like a recipe for disaster. But with just a few tweaks,",
-    "ground beef pasta can be both heartily satisfying and healthier than most restaurant-quality dishes. This dish is",
-    "substantial enough for breakfast or dinner but compact enough to pack up and take on the go. It will appeal to meat",
-    "lovers while meeting strict vegan standards. Best of all? This easy meal won’t break the bank, it only requires six",
-    "ingredients!",
-    "Yield: 5"
+    "Add cheese and stir until melted."
   ],
   "time": {
     "total": 32
@@ -95,8 +84,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/chicken-macaroni-supreme.jpg"
 }

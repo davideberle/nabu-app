@@ -1,0 +1,51 @@
+{
+  "id": "baigan-choka",
+  "name": "Baigan Choka",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 2",
+  "intro": "or at room temperature, stirring in the remaining cilantro at the last minute.",
+  "ingredients": [
+    {
+      "item": "medium eggplants (2 lb/900 g)",
+      "amount": "3"
+    },
+    {
+      "item": "mild red chile",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "small onion, thinly sliced (about ½ cup/50 g)",
+      "amount": "½"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "1 clove"
+    },
+    {
+      "item": "chopped chives salt",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "To cook the eggplants on a gas stove top, which is the best way to get a smoky flavor, line the area around the burner heads with aluminum foil and place the eggplants directly on 3 medium flames. Roast for about 15 minutes, turning frequently with metal tongs, until the skin is burned all over. Burn the chile over a flame for just a minute or two, until it blisters and chars.",
+    "To broil the eggplants in the oven, preheat the broiler. Prick the eggplants in several places with a sharp knife. Put them on a baking sheet lined with",
+    "aluminum foil and place under the broiler. Cook for about 1 hour and 10 minutes, turning them every 20 minutes, until they have deflated and their skin is charred and burned all over. Add the chile to the pan for the last 10 minutes, so that it too gets charred.",
+    "Remove the eggplants from the stove top or broiler and leave to cool a little before scraping out the flesh and discarding the skin. Place the flesh in a colander to drain for at least 30 minutes. Peel the skin off the chile, remove the seeds, and finely chop the flesh.",
+    "Place the eggplant and chile flesh in a large bowl and whisk vigorously for 2 to 3 minutes, until light and creamy. You can also use a handheld mixer.",
+    "Meanwhile, heat both oils in a small pan over high heat. Add the onion and fry for 2 minutes, stirring often, to cook the onion just a little. You want it to remain slightly crunchy. Pour the hot oil and onion into the bowl with the eggplant and keep whisking for another minute. Add the garlic, chives, and ½ teaspoon salt and whisk a little longer. Taste, add more salt if you like, and serve."
+  ],
+  "time": {
+    "total": 30
+  }
+}

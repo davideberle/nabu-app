@@ -11,8 +11,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Meat & Fish",
-    "meal_role": "main"
+    "chapter": "Meat & Fish"
   },
   "servings": "serves 4",
   "time": {
@@ -167,6 +166,6 @@
       "vegetarian"
     ]
   },
-  "image": null,
+  "image": "/recipes/roast-chicken-and-three-rice-salad.jpg",
   "cuisine": "Middle Eastern"
 }

@@ -9,9 +9,9 @@
   "servings": "serves 6",
   "intro": "Rice and peas is a crowd pleaser, and in the right hands can be the main event, outshining the rest of its companions on a plate. But these arancini are in a league of their own. This recipe came into being by accident when I had a restaurant residency years ago. I had some leftover rice and peas, decided to turn them into arancini and the rest is history. This is my revised take on the concept, using a more traditional risotto-making technique. These would be great to make the day before and then simply fry them on the day you are serving.",
   "time": {
-    "prep": 30,
-    "cook": 60,
-    "total": 90
+    "prep": "30 MINUTES",
+    "cook": "1 HOUR",
+    "total": "30 MINUTES1 HOUR"
   },
   "ingredients": [
     {
@@ -103,8 +103,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Special Occasions",
-    "meal_role": "side"
+    "chapter": "Special Occasions"
   },
   "cuisine": "Caribbean"
 }

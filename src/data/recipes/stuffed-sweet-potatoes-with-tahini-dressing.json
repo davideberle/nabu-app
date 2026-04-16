@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "This recipe makes a complete meal in one pretty package. Sweet and savory flavors are served together, and then slathered with the perfect dressing as a foil.",
   "time": {
-    "prep": 5,
-    "cook": 40,
-    "total": 45
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
   },
   "ingredients": [
     {
@@ -549,8 +549,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Main Courses",
-    "meal_role": "dessert"
+    "chapter": "Main Courses"
   },
   "cuisine": "Other"
 }

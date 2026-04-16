@@ -9,9 +9,9 @@
   "servings": "serves 4–8",
   "intro": "Onion bhajis and vegetable pakoras are best cooked in two stages. The first cooking is in oil that is hot enough to sizzle and cook them through. They are then removed to rest, the oil temperature is increased and they are fried again in the hotter oil to give them a darker and crispier exterior. The bhajis are pictured.\n\nMixing the onions with salt at the beginning of the recipe is key to making the perfect bhajis. If you were to bend a fresh onion slice, it would snap. The salt releases moisture from the onion slices so they become limp and no longer snap when bent, making it easier to form your bhajis.",
   "time": {
-    "prep": 15,
-    "cook": 15,
-    "total": 15
+    "prep": "15 MINS, PLUS SITTING TIME",
+    "cook": "15 MINS",
+    "total": "15 MINS, PLUS SITTING TIME15 MINS"
   },
   "ingredients": [
     {
@@ -61,7 +61,7 @@
     "Heat about 10cm (4in) of rapeseed (canola) oil to 160°C (320°F) in a large frying pan. Form the onion mixture into bhajis about the size of golf balls, or larger if you prefer. Fry in small batches until lightly browned and cooked through, then remove them with a slotted spoon to a wire rack to rest while you fry the remaining bhajis.",
     "When all the bhajis are cooked, raise the heat of the oil to 180°C (355°F) and fry them again in small batches until you are happy with the colour of the exterior. Serve immediately or, if working ahead, place the bhajis on a wire rack placed over a foil-lined dish in a low oven for up to 30 minutes."
   ],
-  "image": null,
+  "image": "/recipes/onion-bhajis.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -70,9 +70,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics & Breads",
-    "meal_role": "main"
+    "chapter": "Basics & Breads"
   },
-  "cuisine": "Indian",
-  "tips": "Note: SITTING TIME; SITTING TIME15 MINS."
+  "cuisine": "Indian"
 }

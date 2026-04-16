@@ -1,0 +1,51 @@
+{
+  "id": "asparagus",
+  "name": "Asparagus",
+  "source": {
+    "cookbook": "Jamie's Food Revolution",
+    "author": "Jamie Oliver"
+  },
+  "servings": "serves 2",
+  "ingredients": [
+    {
+      "item": "tuna steaks (about 7 ounces each, Y2 inch thick)",
+      "amount": "2"
+    },
+    {
+      "item": "Fo r the dressing",
+      "amount": ""
+    },
+    {
+      "item": "To prepare your dressing and tuna",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Put a large gr: ! pan on a high heat and let it get screaming hot. Pick the basil leaves off the stalks and finely",
+    "chop. Seed and finely chop the chile. Finely chop the sun-dried tomatoes and put into a bowl with the",
+    "basil and chile • Halve t he lemon and squeeze all the juice into the bowl • Add a lug of extra virgin olive",
+    "oil and mix together . Add a splash of balsamic vinegar, season with salt and pepper, and put to one side •",
+    "Bend the as paragus gently until the woody bottoms o f the stalks break off • Discard these woody ends •",
+    "Drizzle a little olive oil over the tuna, then season with salt and pepper and rub into the fish",
+    "To cook your tuna",
+    "Lay your asparagus tips on the hot, dry grill pan. Turn them every minute or two, letting them char a little",
+    "but not burn -th is will give them a wonderfully nutty flavor • After a few minutes, push them to one side",
+    "nd add the tuna to the pan • You will be able t o see the heat cooking up the tuna from the bottom •",
+    "After a minute or so, when the tuna has cooked halfway through, flip both steaks over. Cook for another",
+    "minute o r two. You may t hink it strange, as it's fish, but the tuna should actually remain slightly pink in the",
+    "middle when you serve it -it will become too dry if you overcook it",
+    "To serve your tuna",
+    "Pile a few asparagus spears on each plate and spoon some of your tangy dressing over them. Lay the",
+    "tu na fillets over the asparagus and spoon another dollop of the dressing on top • Drizzle with a little",
+    "extra virgin olive oi l before serving",
+    "QUICK-COOKING MEAT AND FISH 261",
+    "ITALIAN PAN-SEARED TUNA",
+    "The great thing about this meal is that it all happens quickly, in one pan. Remember, t una should be cooked",
+    "qUickly so it's still a little blushing in the middle -don't be tempted to overcook it. I like to buy",
+    "o lives with the pits still in because the flavor is much better."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/asparagus.png"
+}

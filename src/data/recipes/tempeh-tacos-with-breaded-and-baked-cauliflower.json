@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "Now’s the time for all good cooks to bake breaded cauliflower. There are so many layers of flavor that you could easily want to have two.",
   "time": {
-    "prep": 5,
-    "cook": 40,
-    "total": 45
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
   },
   "ingredients": [
     {
@@ -1306,8 +1306,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Courses",
-    "meal_role": "main"
+    "chapter": "Main Courses"
   },
   "cuisine": "Other"
 }

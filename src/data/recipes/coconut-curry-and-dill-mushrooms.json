@@ -48,7 +48,7 @@
     "When the mushrooms are soft, fragrant, and have released a fair amount of liquid, uncover the pot and let simmer briskly for 2 minutes to concentrate flavors. Throw in the dill, give a stir, and then turn off the heat. Partially cover the mushrooms and let rest for 5 to 10 minutes to concentrate their flavors, then taste and season with more salt, if needed.",
     "Present the mushrooms in the cooking vessel (if it’s appropriate), or transfer to a shallow bowl. Either way, serve warm."
   ],
-  "image": null,
+  "image": "/recipes/coconut-curry-and-dill-mushrooms.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -57,8 +57,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads and Vegetable Sides",
-    "meal_role": "main"
+    "chapter": "Salads and Vegetable Sides"
   },
   "cuisine": "Southeast Asian"
 }

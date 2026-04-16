@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "and serve at once (you can remove the curry stems and cinnamon sticks or",
+  "intro": "over the hot rice and fluff up the rice with a fork. Transfer to a serving bowl",
   "ingredients": [
     {
       "item": "cup/110 g unsalted butter",
@@ -35,11 +35,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/saffron-date-and-almond-rice.jpg"
 }

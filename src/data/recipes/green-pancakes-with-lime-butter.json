@@ -98,8 +98,8 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": "",
-    "meal_role": "breakfast"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/green-pancakes-with-lime-butter.jpg"
 }

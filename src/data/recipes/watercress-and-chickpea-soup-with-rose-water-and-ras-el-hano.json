@@ -73,7 +73,7 @@
     "Using a food processor or blender, blitz the soup until smooth. Add the rose water, stir, taste, and add more salt or rose water if you like. Set aside until the carrot and chickpeas are ready, then reheat to serve.",
     "To serve, divide the soup among four bowls and top with the hot carrot and chickpeas and, if you like, about 2 teaspoons yogurt per portion."
   ],
-  "image": null,
+  "image": "/recipes/watercress-and-chickpea-soup-with-rose-water-and-ras-el-hano.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -84,8 +84,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups",
-    "meal_role": "main"
+    "chapter": "Soups"
   },
   "cuisine": "Middle Eastern"
 }

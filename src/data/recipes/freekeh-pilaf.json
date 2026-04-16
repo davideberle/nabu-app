@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 2",
-  "intro": "stock, I suggest reducing a good vegetable stock by half to intensify it.",
+  "intro": "The key to this dish is good stock with a lot of flavor. As Arabs normally cook freekeh in chicken or mutton",
   "ingredients": [
     {
       "item": "medium onions, thinly sliced",
@@ -82,8 +82,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/freekeh-pilaf.jpg"
 }

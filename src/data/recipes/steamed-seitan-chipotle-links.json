@@ -9,9 +9,9 @@
   "servings": "1 cup or 4 links",
   "intro": "These spicy hot links can be fried and served as a link, or they can be sliced or crumbled. Regardless, they push so many recipes over the top. This is a small-batch recipe, so you can double the ingredients if you’re looking for a larger quantity. Pictured in White Bean Stew with Chipotle Links (page 268).",
   "time": {
-    "prep": 10,
-    "cook": 5,
-    "total": 75
+    "prep": "10 minutes",
+    "cook": "5 minutes",
+    "total": "1 hour 15 minutes"
   },
   "ingredients": [
     {
@@ -166,8 +166,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts",
-    "meal_role": "main"
+    "chapter": "Desserts"
   },
   "cuisine": "Other"
 }

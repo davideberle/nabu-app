@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "the rest, adding more butter as necessary. Serve warm, alongside the lime",
+  "intro": "chile, cumin, sugar, 1 egg, ¾ teaspoon salt, and a good grind of black pepper.",
   "ingredients": [
     {
       "item": "sunflower oil",
@@ -74,11 +74,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/spicy-scrambled-eggs.jpg"
 }

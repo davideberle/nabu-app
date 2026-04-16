@@ -74,10 +74,6 @@
     {
       "item": "minced fresh parsley",
       "amount": "1/4 cup"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -86,12 +82,7 @@
     "Add heavy cream and chicken stock; cook until liquid is reduced. Add green onions, broccoli, and basil. Season",
     "with salt and pepper.",
     "Cook pasta according to package directions. Add vegetables to pasta and toss with cheese to coat. Garnish with",
-    "parsley.",
-    "(25) Pasta Primavera",
-    "This is a very easy and delicious pasta dish that is made with ribbons of fettuccine noodles, fresh peas, asparagus,",
-    "and cherry tomatoes. It's quick to make and all the ingredients can be purchased at your local grocery store. It's a",
-    "great addition to the spring/summer dinner season!",
-    "Yield:"
+    "parsley."
   ],
   "time": {
     "total": 33
@@ -100,8 +91,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/linguine-with-spring-vegetables.jpg"
 }

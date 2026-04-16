@@ -66,8 +66,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
   "image": "/recipes/banana-cake-with-raisins.jpg",
   "cuisine": "Southeast Asian"

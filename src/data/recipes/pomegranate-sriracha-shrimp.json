@@ -70,13 +70,12 @@
     "Give the sauce a stir, then add to the pan, stirring to combine. Let the sauce come to a vigorous boil, stirring occasionally to keep things moving. When the shrimp are cooked through, about 2 minutes, give the cornstarch slurry a stir and add to the pan. Cook, stirring, to slightly thicken the sauce and coat the shrimp.",
     "Transfer the shrimp to a deep plate or shallow bowl and garnish with the cilantro. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/pomegranate-sriracha-shrimp.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Chicken and Seafood",
-    "meal_role": "main"
+    "chapter": "Chicken and Seafood"
   },
   "cuisine": "Southeast Asian"
 }

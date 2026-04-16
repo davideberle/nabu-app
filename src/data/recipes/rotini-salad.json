@@ -70,10 +70,6 @@
     {
       "item": "Accent",
       "amount": "2 tsp."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -81,13 +77,7 @@
     "Blend together dressing ingredients: vinegar, sugar, salt, pepper, garlic salt, dry mustard, parsley and Accent in a",
     "small bowl.",
     "Mix vegetables, onion, cucumber, bell pepper, pimentos and celery with pasta in a large container.",
-    "Toss with vinegar dressing and chill before serving.",
-    "(9) Super food Macaroni Salad",
-    "In a country where it is often difficult to find fresh vegetables, macaroni salad is one of the few foods that are",
-    "inexpensive and can be made from ingredients found at any grocery store. Macaroni salad in particular features",
-    "macaroni noodles, mayonnaise, vinegar, sugar and seasoning. This recipe also includes carrots and celery for a",
-    "more hearty meal!",
-    "Yield: 6"
+    "Toss with vinegar dressing and chill before serving."
   ],
   "time": {
     "total": 35
@@ -96,8 +86,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/rotini-salad.jpg"
 }

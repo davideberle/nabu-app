@@ -9,9 +9,9 @@
   "servings": "makes 170g (1½ cups)",
   "intro": "Garam masala is a blend of warming, aromatic spices. In India, the ingredients used can vary greatly from region to region and even from family to family, and most home and professional chefs will have their own special recipe. This is one of mine, and in it I use the same spices that are popular in northern India, Bangladesh and Pakistan – essential for achieving that curry-house flavour.\n\nGaram masala is an important part of the mixed powder used in most of the BIR curries in this cookbook, and is also added on its own to a lot of recipes. Sprinkling it over your finished curries is a good way to add a touch more excitement to the dish.",
   "time": {
-    "prep": 8,
-    "cook": 2,
-    "total": 10
+    "prep": "8 MINS",
+    "cook": "2 MINS",
+    "total": "8 MINS2 MINS"
   },
   "ingredients": [
     {
@@ -56,7 +56,7 @@
     "Tip the warm spices onto a plate and leave to cool, then grind to a fine powder in a spice grinder or pestle and mortar.",
     "Store in an air-tight container in a cool, dark place and use within 2 months for optimal flavour."
   ],
-  "image": null,
+  "image": "/recipes/garam-masala.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -65,8 +65,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Accompaniments",
-    "meal_role": "main"
+    "chapter": "Accompaniments"
   },
   "cuisine": "Indian"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "alongside, with a spoonful of mascarpone on top.",
+  "intro": "the sugar, or just use store-bought vanilla sugar). Transfer to a large bowl, add",
   "ingredients": [
     {
       "item": "oz/150 g soft goat cheese",
@@ -76,11 +76,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "dessert"
-    ],
-    "chapter": "",
-    "meal_role": "dessert"
-  }
+  "image": "/recipes/fig-and-goat-cheese-tart.jpg"
 }

@@ -1,12 +1,12 @@
 {
   "id": "braised-kale-with-crispy-shallots",
-  "name": "Braised Kale with Crispy Shallots",
+  "name": "Braised Kale With Crispy Shallots",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "cool. Add the lemon juice, stir in the remaining cilantro, and serve.",
+  "intro": "about 25 minutes, stirring occasionally, until the beans are very soft. A lot of",
   "ingredients": [
     {
       "item": "lb/550 g kale, stems removed and leaves coarsely shredded (6½ cups/450 g)",
@@ -58,12 +58,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

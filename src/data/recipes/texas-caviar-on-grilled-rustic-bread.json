@@ -79,7 +79,7 @@
     "Preheat the oven to 400°F. Season the black-eyed pea mixture with black pepper and, if desired, more salt.",
     "Lightly brush each slice of bread with garlic oil, saving any leftover for drizzling. Put the bread on a large baking sheet and bake, without turning, until lightly browned and toasted on top, 6 to 10 minutes. Top each slice with 2 heaping tablespoons of the black-eyed pea mixture. Garnish with a few slices of crispy garlic and a scattering of the remaining cilantro. Drizzle with garlic oil and enjoy."
   ],
-  "image": null,
+  "image": "/recipes/texas-caviar-on-grilled-rustic-bread.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -91,8 +91,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Appetizers & Snacks",
-    "meal_role": "starter"
+    "chapter": "Appetizers & Snacks"
   },
   "cuisine": "African & Caribbean"
 }

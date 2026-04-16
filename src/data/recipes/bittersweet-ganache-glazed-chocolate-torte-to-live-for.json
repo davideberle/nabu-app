@@ -88,8 +88,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "image": "/recipes/bittersweet-ganache-glazed-chocolate-torte-to-live-for.jpg"
 }

@@ -111,7 +111,7 @@
     "For the soup, trim any excess fat off the chicken and discard. Pour the oil into a very large saucepan or Dutch oven and sear the chicken pieces over high heat on all sides, 3 to 4 minutes. Remove from the pan, discard the oil, and wipe the pan. Add the wine and let it bubble away for a minute. Return the chicken, cover with water, and bring to a very gentle simmer. Simmer for about 10 minutes, skimming away the scum. Add the carrots, celery, onions, and turnip. Tie all the herbs into a bundle with string and add to the pot. Add the bay leaves, ginger, peppercorns, allspice, and 1½ teaspoons salt and then pour in enough water to cover everything well.",
     "Bring the soup back to a very gentle simmer and cook for 1½ hours, skimming occasionally and adding water as needed to keep everything well covered. Lift the chicken from the soup and remove the meat from the bones. Keep the meat in a bowl with a little broth to keep it moist, and refrigerate; reserve for another use. Return the bones to the pot and simmer for another hour, adding just enough water to keep the bones and vegetables covered. Strain the hot soup and discard the herbs, vegetables, and bones. Warm the cooked knaidlach in the soup. Once they are hot, serve the soup and knaidlach in shallow bowls, sprinkled with dill."
   ],
-  "image": null,
+  "image": "/recipes/clear-chicken-soup-with-knaidlach.jpg",
   "time": {
     "total": 40
   },
@@ -119,8 +119,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups",
-    "meal_role": "main"
+    "chapter": "Soups"
   },
   "cuisine": "Middle Eastern"
 }

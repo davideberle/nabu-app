@@ -108,8 +108,8 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": "",
-    "meal_role": "side"
+    "chapter": ""
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "image": "/recipes/hot-dog-and-hamburger-buns.jpg"
 }

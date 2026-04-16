@@ -47,7 +47,7 @@
     "Spread the ground spices out in a frying pan. Place over medium-low heat and dry-roast them for about 2 minutes. Put the spices in a small food processor, along with the chile, garlic, and salt. Process a little, then, with the machine still running, pour in the oil and process until you get a sticky paste.",
     "Spoon the mixture into a sterilized jar (SEE PRESERVED LEMONS) and cover with a film of oil to prevent it drying out. Seal and store in the fridge, where it will last for up to 1 month."
   ],
-  "image": null,
+  "image": "/recipes/pilpelchuma.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -59,8 +59,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments",
-    "meal_role": "main"
+    "chapter": "Condiments"
   },
   "cuisine": "Middle Eastern"
 }

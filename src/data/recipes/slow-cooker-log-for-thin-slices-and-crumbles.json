@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "One large oval log is a perfect shape for slicing. You have the option of cutting the log into nuggets or you can crumble it. This versatility makes this seitan a go-to for a multitude of recipes. Pictured in Seitan Sloppy Joes (page 145).",
   "time": {
-    "prep": 10,
-    "cook": 5,
-    "total": 75
+    "prep": "10 minutes",
+    "cook": "5 minutes",
+    "total": "1 hour 15 minutes"
   },
   "ingredients": [
     {
@@ -261,8 +261,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Desserts",
-    "meal_role": "main"
+    "chapter": "Desserts"
   },
   "cuisine": "Other"
 }

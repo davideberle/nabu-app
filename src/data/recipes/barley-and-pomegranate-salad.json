@@ -50,8 +50,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "side"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/barley-and-pomegranate-salad.jpg"
 }

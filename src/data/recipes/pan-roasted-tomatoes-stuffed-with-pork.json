@@ -60,13 +60,12 @@
     "Slide the skillet into the oven and roast for 13 to 15 minutes, until the tomato skin is wrinkly and the meat mixture is cooked and hot throughout. Remove from the oven and let rest for 5 minutes.",
     "Serve the tomatoes warm, with any pan juices."
   ],
-  "image": null,
+  "image": "/recipes/pan-roasted-tomatoes-stuffed-with-pork.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Pork and Beef",
-    "meal_role": "main"
+    "chapter": "Pork and Beef"
   },
   "cuisine": "Southeast Asian"
 }

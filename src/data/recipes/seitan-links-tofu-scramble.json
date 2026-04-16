@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "A scramble is one of the easiest ways to prepare tofu. Take it a step further and add some veggies and seitan and you’ve got a major power breakfast.",
   "time": {
-    "prep": 40,
-    "cook": 40,
-    "total": 80
+    "prep": "40 minutes",
+    "cook": "40 minutes",
+    "total": "1 hour 20 minutes"
   },
   "ingredients": [
     {
@@ -342,8 +342,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Breakfast",
-    "meal_role": "main"
+    "chapter": "Breakfast"
   },
   "cuisine": "Other"
 }

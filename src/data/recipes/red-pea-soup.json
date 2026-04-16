@@ -9,9 +9,9 @@
   "servings": "serves 4–6",
   "intro": "Saturday soup is a ritual in most Jamaican households, and my favourite soup growing up was red pea soup. In fact, if I had to choose a last meal, this would be it. It’s a hug in a bowl, and when the weather dips and the seasons switch between autumn (fall) and winter, this is the soup that I make. It is finished with a type of simple dumpling called spinners. The most important ingredient here is the time to make it. Leaving the kidney beans to soak overnight creates a buttery texture in the final soup. Be sure to chop the yam, sweet potatoes and carrots to the same size so that they cook evenly.",
   "time": {
-    "prep": 20,
-    "cook": 90,
-    "total": 110
+    "prep": "20 MINUTES",
+    "cook": "1½ HOURS",
+    "total": "20 MINUTES1½ HOURS"
   },
   "ingredients": [
     {
@@ -98,8 +98,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Comfort Grub",
-    "meal_role": "main"
+    "chapter": "Comfort Grub"
   },
   "cuisine": "Caribbean"
 }

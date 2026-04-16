@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "sour cream and olive oil. Or allow it to cool down, then take it to work for lunch or on a picnic.",
+  "intro": "all good vegetables, it is marvelous simply with a bit of olive oil. Here it works with the lentils and nuts to",
   "ingredients": [
     {
       "item": "Puy lentils",
@@ -67,8 +67,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/celeriac-and-lentils-with-hazelnut-and-mint.jpg"
 }

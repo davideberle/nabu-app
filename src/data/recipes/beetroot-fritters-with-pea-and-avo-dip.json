@@ -9,9 +9,9 @@
   "servings": "serves 1",
   "intro": "As someone who works from home a lot, I’ve found solitude is best broken up by taking the time to make myself a lovely lunch. This dish feels like a proper treat. The spiced beetroot (beet) fritters are very light and have the most vibrant earthy colour. Paired with the creamy, cold and bring green pea and avo dip, it’s a wonderful contrast of textures and flavour.",
   "time": {
-    "prep": 10,
-    "cook": 5,
-    "total": 15
+    "prep": "10 MINUTESCOOK TIME: 5 MINUTES",
+    "cook": "5 MINUTES",
+    "total": "10 MINUTESCOOK TIME: 5 MINUTES5 MINUTES"
   },
   "ingredients": [
     {
@@ -102,8 +102,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Cooking for One",
-    "meal_role": "starter"
+    "chapter": "Cooking for One"
   },
   "cuisine": "Caribbean"
 }

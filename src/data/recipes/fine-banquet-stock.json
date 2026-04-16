@@ -43,7 +43,7 @@
     "Return the ingredients to the pan. Cover generously with water and bring to the boil. Smack the ginger and spring onions lightly with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers.",
     "When the stock has come to the boil, skim it well. Add the dried scallops, if using, ginger, spring onions and Shaoxing wine. Return to the boil, then turn down the heat and simmer very gently, uncovered, for at least 3 hours, preferably longer. Strain out the solid ingredients. Strain through muslin if you wish, for an even clearer finish. Allow to cool completely before chilling."
   ],
-  "image": null,
+  "image": "/recipes/fine-banquet-stock.jpg",
   "time": {
     "total": 180
   },
@@ -51,8 +51,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basic Recipes",
-    "meal_role": "main"
+    "chapter": "Basic Recipes"
   },
   "cuisine": "Chinese"
 }

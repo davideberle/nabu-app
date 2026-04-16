@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Here’s a bowl that’s filled with everyone’s favorite vegetables and fruits. Simply throw all the ingredients into a bowl and then pour on the slightly sweet and tangy dressing. Toss and eat!",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 15
+    "prep": "5 minutes",
+    "cook": "10 minutes",
+    "total": "15 minutes"
   },
   "ingredients": [
     {
@@ -1555,8 +1555,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Soups & Stews",
-    "meal_role": "main"
+    "chapter": "Soups & Stews"
   },
   "cuisine": "Other"
 }

@@ -53,11 +53,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/tomatoes-with-sumac-shallots-and-pine-nuts.jpg"
 }

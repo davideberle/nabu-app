@@ -9,7 +9,8 @@
   "servings": "serves 4 or more as a side dish",
   "intro": "This simple salad (shown on picture 1 and picture 2) makes a perfect side for your summer barbecue.",
   "time": {
-    "prep": 10,
+    "prep": "10 MINS, PLUS STANDING TIME",
+    "cook": "",
     "total": 15
   },
   "ingredients": [
@@ -45,7 +46,7 @@
   "method": [
     "Mix all the ingredients together in a bowl and season with salt and black pepper. Allow to sit for 15 minutes before serving."
   ],
-  "image": null,
+  "image": "/recipes/tomato-onion-and-mint-salad.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -54,9 +55,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Desserts & Drinks",
-    "meal_role": "side"
+    "chapter": "Desserts & Drinks"
   },
-  "cuisine": "Indian",
-  "tips": "Note: STANDING TIME."
+  "cuisine": "Indian"
 }

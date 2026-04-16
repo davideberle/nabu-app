@@ -62,21 +62,12 @@
     {
       "item": "Salt, to taste",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "Place pasta, chicken, tomatoes, bell pepper, red onion, basil, olives, capers and pine nuts in a large bowl.",
     "Prepare the dressing by whisking lemon juice, garlic, olive oil, and salt. Pour the dressing over the salad, toss to",
-    "combine, and serve.",
-    "(6) Mexican salad",
-    "This recipe is perfect for summertime because it uses fresh vegetables and fruits that are in season. The following",
-    "ingredients can be found at your local grocery store: romaine lettuce, tomatoes, black beans (or pinto beans),",
-    "avocado, lime wedges, and salsa. It is an easy recipe that will make a great addition to any meal.",
-    "Yield: 3"
+    "combine, and serve."
   ],
   "time": {
     "total": 30
@@ -85,8 +76,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/mediterranean-chicken-and-pasta-salad.jpg"
 }

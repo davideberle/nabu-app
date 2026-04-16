@@ -11,8 +11,7 @@
     "dish_type": [
       "baking"
     ],
-    "chapter": "Baking & Patisserie",
-    "meal_role": "dessert"
+    "chapter": "Baking & Patisserie"
   },
   "servings": "makes about 20",
   "time": {
@@ -91,6 +90,6 @@
       "gluten-free"
     ]
   },
-  "image": null,
+  "image": "/recipes/macadamia-and-white-chocolate.jpg",
   "cuisine": "Middle Eastern"
 }

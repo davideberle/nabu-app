@@ -9,9 +9,9 @@
   "servings": "serves 1",
   "intro": "I crave spicy and salty things. Larb is a type of Thai salad that packs a massive punch. Traditionally, it is made with minced (ground) pork and is vibrant with lime and mint. This dish comes together so quickly, making it very lunch-friendly, and a wonderful meal to make for yourself when you want something delicious without having to break a sweat. Grating the tofu creates a similar texture to the traditional minced meat and allows it to caramelise really well in the pan. Serve this up with any leftover grain, over noodles, or with crunchy vegetables!",
   "time": {
-    "prep": 5,
-    "cook": 20,
-    "total": 25
+    "prep": "5 MINUTESCOOK TIME: 20 MINUTES",
+    "cook": "20 MINUTES",
+    "total": "5 MINUTESCOOK TIME: 20 MINUTES20 MINUTES"
   },
   "ingredients": [
     {
@@ -109,8 +109,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Cooking for One",
-    "meal_role": "main"
+    "chapter": "Cooking for One"
   },
   "cuisine": "Caribbean"
 }

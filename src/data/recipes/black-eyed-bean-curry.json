@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "I learned this recipe at a brilliant restaurant in Newcastle called Ury. I was invited there one afternoon to watch the head chef prepare this bean curry. Talk about gorgeous! This one is so easy to make but the flavours are still complex and work so well together.",
   "time": {
-    "prep": 10,
-    "cook": 20,
-    "total": 30
+    "prep": "10 MINS",
+    "cook": "20 MINS",
+    "total": "10 MINS20 MINS"
   },
   "ingredients": [
     {
@@ -94,8 +94,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
   "cuisine": "Indian"
 }

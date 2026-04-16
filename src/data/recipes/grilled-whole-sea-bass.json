@@ -74,13 +74,12 @@
     "Set the lavraki on the grill (see Cooking tip). Cook for 6 minutes per side.",
     "Remove the head, backbone, and tail. Carve 2 fillets from each side for serving."
   ],
-  "image": null,
+  "image": "/recipes/grilled-whole-sea-bass.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Greek"
 }

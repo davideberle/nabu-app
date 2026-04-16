@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "are cooked for a long time anyway.",
+  "intro": "cases I slice the stalks thinly and the leaves a bit wider, then throw the stalks into a pan and sauté or blanch",
   "ingredients": [
     {
       "item": "waxy potato, peeled and cut into ³",
@@ -67,8 +67,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/chard-and-saffron-omelettes.jpg"
 }

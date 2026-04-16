@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Bulgur is a type of cracked wheat that is parboiled, dried, and then ground into various sizes. Fine bulgur is used in salads like tabouli and requires no cooking; it is simply soaked in liquid. Medium and coarse bulgur are used to make dishes like this bulgur pilaf. Its cooking process is similar to that of rice, using a bulgur-to-liquid ratio of 1:2. When I was growing up, my mom cooked bulgur regularly instead of rice, often making “red bulgur” using tomato paste and adding chickpeas, and sometimes making “yellow bulgur” with onions and mushrooms (see One-Pot Chicken & Mushroom Bulgur). This Turkishstyle bulgur pilaf is one we grew accustomed to, as we frequented Turkish restaurants and always enjoyed it alongside grilled meat. The distinguishing features of Turkish pilaf are the use of red pepper paste along with tomato paste and the addition of dried mint, which gives it a unique and delicious flavor. This dish is very quick to make and versatile as a side to many meals.",
   "time": {
-    "prep": 5,
-    "cook": 40,
-    "total": 45
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "5 minutes40 minutes"
   },
   "ingredients": [
     {
@@ -90,8 +90,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads & Sides",
-    "meal_role": "main"
+    "chapter": "Salads & Sides"
   },
   "cuisine": "Middle Eastern"
 }

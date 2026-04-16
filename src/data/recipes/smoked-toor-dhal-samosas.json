@@ -9,9 +9,9 @@
   "servings": "makes about 25",
   "intro": "I tried smoked toor dhal samosas at a little street-food stall in Mumbai. They were so good I had to try making them at home. Samosa pastry is available at most Asian shops in the freezer section, but if you want to try making your own, look at my lamb or vegetable samosas recipe. If you would like to see how I fold them, watch my samosa video on my YouTube channel, Dan Toombs. To try these samosas smoked you will need to light charcoal, as described below, or use a home smoker for an easier and smokier process. They are pictured.",
   "time": {
-    "prep": 60,
-    "cook": 35,
-    "total": 60
+    "prep": "1 HOUR, PLUS SOAKING AND RESTING TIME",
+    "cook": "35 MINS",
+    "total": "1 HOUR, PLUS SOAKING AND RESTING TIME35 MINS"
   },
   "ingredients": [
     {
@@ -91,8 +91,8 @@
     "If frying immediately, heat about 10cm (4in) of oil in a large saucepan or wok to 170°C (340°F) and fry in batches for about 3 minutes until crispy and lightly browned. Keep warm while you fry the remaining samosas.",
     "Serve with your favourite chutneys and lime wedges for squeezing."
   ],
-  "tips": "For a lighter option, preheat the oven to 200°C (400°F/Gas 6), brush each samosa with a little oil and bake for about 20 minutes, or until heated through and browned to your liking. Note: SOAKING AND RESTING TIME; SOAKING AND RESTING TIME35 MINS.",
-  "image": null,
+  "tips": "For a lighter option, preheat the oven to 200°C (400°F/Gas 6), brush each samosa with a little oil and bake for about 20 minutes, or until heated through and browned to your liking.",
+  "image": "/recipes/smoked-toor-dhal-samosas.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -101,8 +101,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics & Breads",
-    "meal_role": "main"
+    "chapter": "Basics & Breads"
   },
   "cuisine": "Indian"
 }

@@ -9,9 +9,9 @@
   "servings": "18 balls",
   "intro": "Who doesn’t like pistachios? You can have these bites at a moment’s notice, for yourself or friends. They’re easy to pack along, too.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -697,8 +697,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads",
-    "meal_role": "main"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

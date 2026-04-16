@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "at room temperature, can be served on its own or with steamed seasonal greens such as broccolini or",
+  "intro": "texture. Like Puy lentils, they don’t disintegrate in the cooking, which makes them ideal for salads. You can",
   "ingredients": [
     {
       "item": "plum tomatoes",
@@ -79,8 +79,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/castelluccio-lentils-with-tomatoes-and-gorgonzola.jpg"
 }

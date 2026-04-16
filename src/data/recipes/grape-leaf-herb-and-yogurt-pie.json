@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Cyprus. It makes a substantial snack or a light starter. Serve with Burnt Eggplant with Tahini (page 122).",
+  "intro": "introduction to one of the world’s most accomplished cuisines and it is packed full of recipes you just know",
   "ingredients": [
     {
       "item": "grape leaves (fresh or from a jar)",
@@ -71,40 +71,7 @@
     "160 | Leaves, Cooked and Raw",
     "You really need to get your hands dirty here. The flavored crème fraîche has to cover every bit of endive leaf in order to flavor it properly, because endive’s fresh, watery and slightly bitter nature asks for a lot of rich dressing. On top of that I add butter-toasted nuts, a welcome addition to almost any salad, to make this a truly sumptuous starter.",
     "A note about Roquefort and other European cheeses: as a general rule, most continental cheeses use rennet, a cluster of enzymes taken from animals’ stomachs that causes milk to coagulate and eventually form into cheese. British cheeses tend to be based on vegetarian alternatives to rennet. Here, as in all recipes with cheese, I encourage a strict vegetarian to check thoroughly whether the variety is completely vegetarian and, if not, to look for alternatives; these can often be found online.",
-    "Nutty endive with Roquefort",
-    "Serves 4 as a starter",
-    "1¾ oz Roquefort or another strong blue cheese",
-    "¾ cup crème fraîche white pepper",
-    "³ cup roughly chopped pine nuts",
-    "³ cup roughly chopped walnuts",
-    "1 tsp butter salt",
-    "2 endives a few leaves of radicchio, Treviso or baby chard",
-    "Grate the Roquefort on a coarse grater and place in a bowl with the crème fraîche and some white pepper. Use a whisk to mix thoroughly to a thick mixture. Taste and adjust the seasoning.",
-    "In a hot frying pan lightly toast the nuts with the butter and pinch of salt. Keep shaking the pan to get an even golden color on all the nuts. Leave to cool.",
-    "Trim the base of the endives and pick off the outer leaves. Trim a bit more to remove more leaves until you get to the core. Using your hands, smear each leaf with plenty of the Roquefort mix.",
-    "Form bundles of six to eight leaves pressed together, each leaf partly encased in a larger one.",
-    "Line a serving dish with some red leaves. Place a few bundles of endive on top, stacking them or leaning them standing against each other. Sprinkle generously with the toasted nuts and serve.",
-    "162 | Leaves, Cooked and Raw",
-    "I don’t usually celebrate Valentine’s Day. This is due to cowardly cynicism, combined with a firm belief that you cannot just create a momentous intimate occasion, especially when millions of other couples are trying to do exactly the same. It just feels a bit claustrophobic. But if you twisted my arm and forced me to, I guess I would choose this salad to celebrate the day, representing the more realistic flavors of love: bitter and sweet.",
-    "The theme here is red. For this salad I’d go out of my way to find an exciting combination of red leaves and herbs. I love the long, twisted red leaves of some varieties of radicchio di Treviso. Red orach, purple basil, red amaranth and bull’s blood (red) chard are also stunning leaves. Some tiny sprouting varieties, such as radish or purple basil, will also add character.",
-    "Bittersweet salad",
-    "Serves 2 (of course)",
-    "2 blood oranges (or plain oranges) blood orange juice as needed",
-    "1¼ tbsp lemon juice",
-    "¼ cup maple syrup coarse sea salt",
-    "½ tsp orange-flower water",
-    "½ small radicchio",
-    "1 small Treviso, leaves separated",
-    "1 tbsp olive oil black pepper handful of small red leaves",
-    "¾ cup good-quality ricotta",
-    "2 tbsp pine nuts, toasted seeds from 1 small pomegranate (see page 110)",
-    "Take each of the blood oranges in turn and use a small sharp knife to slice off the top and base. Now cut down the side of the orange, following its natural curve, to remove the skin and white pith. Over a small bowl, cut in between the membranes to remove the individual segments into the bowl. Squeeze all the juice from the membrane and skin into a small saucepan.",
-    "Make up the juice in the pan to 7 tbsp with extra blood orange juice. Add the lemon juice, maple syrup and a pinch of salt and bring to a light simmer. Leave to reduce for 20 to 25 minutes, or until you are left with about 3 tablespoons of thick syrup. Strain it through a fine sieve and allow to cool down, then stir in the orange-flower water.",
-    "Pull apart the radicchio leaves and tear them roughly into large pieces. Put into a mixing bowl. Add the Treviso leaves, oil and some salt and pepper, and toss gently. Divide the salad leaves between two serving plates. Dot with the orange segments, small red leaves and spoonfuls of ricotta, building the salad up. Drizzle with the orange syrup and finish with pine nuts and pomegranate seeds.",
-    "166 | Green Things",
-    "I have a terrible habit of adding yogurt or sour cream to almost anything that’s been cooking for a long time, has got a lot of heat, is slightly greasy or just seems a bit heavy to me. Terrible – because I know not everyone is keen on adding dairy products left, right and center, particularly not to a perfectly nice dish of pulses, a spicy vegetable stew or a roasted cut of lean meat. So here’s a perfect alternative, a dish shouting freshness that would go well with plenty of hearty dishes. Try it with Sweet Potato Cakes (page 32) or with",
-    "Coconut Rice with Sambal and Okra (page 230).",
-    "Cucumber salad with smashed garlic and ginger"
+    "Nutty endive with Roquefort"
   ],
   "time": {
     "total": 30
@@ -113,8 +80,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "",
-    "meal_role": "dessert"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/grape-leaf-herb-and-yogurt-pie.jpg"
 }

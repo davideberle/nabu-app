@@ -42,7 +42,7 @@
     "Peel the turnips and beets, halve them if they are not small, and cut them into slices ¼-inch / 0.5cm thick. Place in a large mixing bowl and sprinkle with 1 teaspoon salt. Stir well, cover, and set aside to marinate overnight at room temperature.",
     "The following day, transfer the vegetables and their juices to a sterilized 1½- to 2-quart / 1.5 to 2l jar (SEE PRESERVED LEMONS). Add the chile and celery, followed by 3 tablespoons salt, the vinegar, and the water. If needed, add more water and vinegar to fill the jar (two parts water to one part vinegar) to within ¾ inch / 2 cm of the rim. Seal the jar, shake it gently to dissolve the salt, and place in a well-lit spot. After 3 to 4 days, the pickles should be ready. They will keep somewhere cool and dark for up to 1 month."
   ],
-  "image": null,
+  "image": "/recipes/pickled-turnip-and-beet.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -51,8 +51,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments",
-    "meal_role": "main"
+    "chapter": "Condiments"
   },
   "time": {
     "prep": 20,

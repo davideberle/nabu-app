@@ -42,13 +42,12 @@
     "Break the eggs into a bowl. Add 1 tablespoon of the chopped ginger, along with the salt, sugar and pepper. Do not mix.",
     "Heat the cooking oil in a seasoned wok over a high flame. Add the remaining ginger and stir-fry very briefly until you can smell its fragrance, then add the egg mixture and stir-fry gently to scramble. When the eggs are just about cooked, stir in the vinegar. Remove from the wok and serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/dai-jianjun-s-vegetarian-crabmeat.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry and Eggs",
-    "meal_role": "main"
+    "chapter": "Poultry and Eggs"
   },
   "time": {
     "prep": 20,

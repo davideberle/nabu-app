@@ -55,7 +55,7 @@
     "Put the chicken, lettuce, and nuts in a large bowl and toss gently to combine. Drizzle with the dressing and toss again to coat.",
     "When ready to serve, combine the pineapple and mango with the salad and add a pinch of black pepper. Transfer to a serving bowl and sprinkle over a little curry powder."
   ],
-  "image": null,
+  "image": "/recipes/tropical-chicken-salad-with-curried-yogurt.jpg",
   "time": {
     "total": 40
   },
@@ -63,8 +63,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry & Meat",
-    "meal_role": "main"
+    "chapter": "Poultry & Meat"
   },
   "cuisine": "Other"
 }

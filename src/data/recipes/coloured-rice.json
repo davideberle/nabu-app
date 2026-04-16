@@ -9,8 +9,9 @@
   "servings": "serves 4",
   "intro": "A cookbook of curry-house recipes wouldn’t be complete if I didn’t explain how to make coloured rice. You probably already know it’s done with food colouring, but if you don’t, it is. Powdered food colouring is normally used when the rice is still moist from cooking. You can use the colours of your choice. Here is one option.",
   "time": {
-    "prep": 5,
-    "total": 5
+    "prep": "5 MINS, PLUS THE TIME TO PREPARE THE RICE",
+    "cook": "",
+    "total": "5 MINS, PLUS THE TIME TO PREPARE THE RICE0"
   },
   "ingredients": [
     {
@@ -29,7 +30,7 @@
   "method": [
     "Place your cooked rice on a large plate and mentally divide it into quarters. Stir red food colouring powder into one quarter, green into another, and leave the rest white. Let it stand for a few minutes, then mix it all up again."
   ],
-  "tips": "It is important to cool leftover rice quickly (within an hour) after cooking. When reheating, take care to fully heat it all the way through before using. Note: THE TIME TO PREPARE THE RICE; THE TIME TO PREPARE THE RICE0.",
+  "tips": "It is important to cool leftover rice quickly (within an hour) after cooking. When reheating, take care to fully heat it all the way through before using.",
   "image": "/recipes/coloured-rice.jpg",
   "dietary": [
     "vegan",
@@ -39,8 +40,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Desserts & Drinks",
-    "meal_role": "side"
+    "chapter": "Desserts & Drinks"
   },
   "cuisine": "Indian"
 }

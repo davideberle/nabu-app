@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "rice and little vermicelli noodles to create an attractive texture that is light and delicate.",
+  "intro": "This comforting main course makes use of a combination common to Arab and Turkish cuisines – it mixes",
   "ingredients": [
     {
       "item": "unsalted butter",
@@ -86,8 +86,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

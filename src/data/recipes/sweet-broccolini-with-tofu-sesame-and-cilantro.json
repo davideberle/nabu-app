@@ -12,8 +12,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "servings": "serves 4 as a starter",
   "time": {
@@ -106,6 +105,6 @@
       "gluten-free"
     ]
   },
-  "image": null,
+  "image": "/recipes/sweet-broccolini-with-tofu-sesame-and-cilantro.jpg",
   "cuisine": "Middle Eastern"
 }

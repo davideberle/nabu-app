@@ -61,8 +61,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "image": "/recipes/low-fat-and-luscious-hot-cocoa.jpg"
 }

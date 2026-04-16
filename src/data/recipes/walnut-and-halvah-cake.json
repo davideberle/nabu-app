@@ -1,0 +1,66 @@
+{
+  "id": "walnut-and-halvah-cake",
+  "name": "Walnut and Halvah Cake",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 1",
+  "intro": "set on top before being flipped over, or you will end up with splashes of batter",
+  "ingredients": [
+    {
+      "item": "tbsp/85 g unsalted butter, at room temperature, plus extra for greasing the pan",
+      "amount": "6"
+    },
+    {
+      "item": "cup/100 g superfine sugar",
+      "amount": "½"
+    },
+    {
+      "item": "eggs, lightly whisked",
+      "amount": "2"
+    },
+    {
+      "item": "cups/200 g all-purpose flour",
+      "amount": "1⅔"
+    },
+    {
+      "item": "baking powder",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "baking soda",
+      "amount": "¾ tsp"
+    },
+    {
+      "item": "plus 1 tbsp/130 g sour cream salt",
+      "amount": "½ cup"
+    },
+    {
+      "item": "cup/60 g unsalted butter scant 1¼ cups/120 g walnuts, coarsely chopped",
+      "amount": "¼"
+    },
+    {
+      "item": "ground cinnamon scant 3 tbsp/25 g dark muscovado sugar",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "oz/170 g plain sesame halvah, broken into 1¼-inch/3-cm pieces",
+      "amount": "6"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350°F/180°C. Grease a 9 by 5-inch/23 by 12-cm loaf pan with a little butter and line the base and sides with waxed paper.",
+    "Start with the topping. Put the butter in a small saucepan and place over medium-low heat. Melt and then allow it to sizzle for about 3 minutes, until light brown and smelling slightly nutty. Remove from the heat and set aside to",
+    "cool. Once cool, mix the butter, walnuts, and cinnamon together. Divide the mixture in half and stir the muscovado sugar into one of the portions; you may need to use your hands to ensure that the sugar breaks up and spreads evenly throughout the nuts.",
+    "Now for the cake batter. In a stand mixer, cream the butter and superfine sugar on medium speed until the mixture becomes light in color and the texture is fluffy. Add the eggs, a little at a time, until they are incorporated.",
+    "Sift together the flour, baking powder, baking soda, and a pinch of salt. Add this to the batter, alternating with the sour cream, in a couple of additions: Be sure not to overmix.",
+    "Spread half the batter onto the bottom of the prepared loaf pan and scatter the sugarless nut mixture evenly over the batter. Dot the halvah on top.",
+    "Spread the remaining batter on top; this may be slightly challenging, as the halvah drags into the batter, but you shouldn’t worry about it too much. Finish by sprinkling the sugary nuts on top.",
+    "Bake in the oven for 40 to 45 minutes, until a skewer inserted into the center comes out clean. Leave to cool for 20 minutes, then gently remove from the pan by lifting the waxed paper. Remove the paper and leave the cake to cool completely on a wire rack (otherwise it might crumble). Wrapped in aluminum foil, the cake will keep for a day or two."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/walnut-and-halvah-cake.jpg"
+}

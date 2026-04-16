@@ -72,8 +72,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Salads & Sides",
-    "meal_role": "side"
+    "chapter": "Salads & Sides"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/tahini-cabbage-slaw.jpg"
 }

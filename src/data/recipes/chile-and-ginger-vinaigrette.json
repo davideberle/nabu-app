@@ -51,7 +51,7 @@
     "Add the remaining ingredients, season to taste with salt and black pepper, and whisk to combine. Set aside for a few hours to develop the flavors.",
     "Remove the lemongrass stalks just before serving. If the ingredients have separated, whisk again to re-emulsify."
   ],
-  "image": null,
+  "image": "/recipes/chile-and-ginger-vinaigrette.jpg",
   "time": {
     "total": 35
   },
@@ -59,8 +59,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Sauces & Dressings",
-    "meal_role": "component"
+    "chapter": "Sauces & Dressings"
   },
   "cuisine": "Other"
 }

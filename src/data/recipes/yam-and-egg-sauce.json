@@ -49,15 +49,14 @@
     "vegan",
     "vegetarian"
   ],
-  "image": null,
+  "image": "/recipes/yam-and-egg-sauce.jpg",
   "time": {
     "total": 30
   },
   "category": {
     "dish_type": [
       "side"
-    ],
-    "meal_role": "side"
+    ]
   },
   "cuisine": "Nigerian"
 }

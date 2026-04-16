@@ -1,12 +1,12 @@
 {
   "id": "soba-noodles-with-quick-pickled-mushrooms",
-  "name": "Soba Noodles with Quick-pickled Mushrooms",
+  "name": "Soba Noodles With Quick-pickled Mushrooms",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "well. Cover and leave to marinate for at least 1 hour. Sprinkle with the",
+  "intro": "Place the ancho chile in a small heatproof bowl and pour in boiling water just",
   "ingredients": [
     {
       "item": "cup/60 ml rice vinegar",
@@ -78,12 +78,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

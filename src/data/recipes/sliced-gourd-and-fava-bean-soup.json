@@ -42,7 +42,7 @@
     "Peel the chayote or gourd and cut it neatly into ⅛ in (3mm) slices. Trim off any fat from the ham and cut it into neat little slices. Bring the stock to the boil in a large pan, then keep it warm.",
     "Heat the oil in a seasoned wok over a high flame. Add the fava beans and sliced gourd and stir-fry for about a minute. Add the stock and ham, bring to the boil and simmer gently for 2 minutes until the vegetables are tender. Season with salt. Give the potato starch mixture a stir and add it to the soup in 2 or 3 stages, stirring as the liquid thickens. Add just enough to give the soup a lazy, gravy-like consistency. Serve."
   ],
-  "image": null,
+  "image": "/recipes/sliced-gourd-and-fava-bean-soup.jpg",
   "time": {
     "total": 2
   },
@@ -50,8 +50,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups",
-    "meal_role": "main"
+    "chapter": "Soups"
   },
   "cuisine": "Chinese"
 }

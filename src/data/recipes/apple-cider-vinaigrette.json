@@ -39,7 +39,7 @@
     "Slowly whisk in the extra-virgin olive oil, a few drops at a time, until the dressing is smooth and all the oil has been incorporated.",
     "Season with black pepper and use immediately, or refrigerate in a tightly sealed container for up to 3 days."
   ],
-  "image": null,
+  "image": "/recipes/apple-cider-vinaigrette.jpg",
   "time": {
     "total": 40
   },
@@ -47,8 +47,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Sauces & Dressings",
-    "meal_role": "component"
+    "chapter": "Sauces & Dressings"
   },
   "cuisine": "Other"
 }

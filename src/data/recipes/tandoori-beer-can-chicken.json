@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "This is one you are very unlikely to find at a curry house but it was too good to leave out of the book. I’ve been making beer can chicken for many years and this Indian-inspired version is one of my current favourites. You could also easily make this in a conventional oven – see my tip.",
   "time": {
-    "prep": 10,
-    "cook": 60,
-    "total": 10
+    "prep": "10 MINS, PLUS MARINATING TIME",
+    "cook": "1–1½ HOURS",
+    "total": "10 MINS, PLUS MARINATING TIME1–1½ HOURS"
   },
   "ingredients": [
     {
@@ -74,14 +74,13 @@
     "When your barbecue is good and hot you’re ready to cook. If you have a thermometer, aim for a cooking temperature of 190–200°C (375–390°F). Place the chicken on the beer can and stand it directly on the barbecue on the side with no coals. Cover and cook for about 1–1¼ hours until the chicken is cooked through and the juices run clear when stuck with a knife in the thigh. You can’t be too careful with chicken so if you have a meat thermometer, check that your chicken is 82°C (180°F).",
     "When cooked through, transfer to a serving plate and cover with foil to sit for about 10 minutes before serving."
   ],
-  "tips": "You can also cook the chicken in the oven. Preheat the oven to 230°C (450°F/Gas 8). Place the chicken on a half-full beer can in a roasting tray and roast for 20 minutes. Reduce the heat to 200°C (400°F/Gas 6) and continue to roast until cooked through and the juices run clear, about another 30 minutes. Season with salt and black pepper. Let the chicken rest for about 10 minutes before carving. Note: MARINATING TIME; MARINATING TIME1–1½ HOURS.",
+  "tips": "You can also cook the chicken in the oven. Preheat the oven to 230°C (450°F/Gas 8). Place the chicken on a half-full beer can in a roasting tray and roast for 20 minutes. Reduce the heat to 200°C (400°F/Gas 6) and continue to roast until cooked through and the juices run clear, about another 30 minutes. Season with salt and black pepper. Let the chicken rest for about 10 minutes before carving.",
   "image": "/recipes/tandoori-beer-can-chicken.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Street Food",
-    "meal_role": "main"
+    "chapter": "Street Food"
   },
   "cuisine": "Indian"
 }

@@ -56,7 +56,7 @@
     "For the syrup, place the sugar, water, bay leaf, and vanilla bean and seeds in a small saucepan and heat gently just until the sugar dissolves. Remove from the heat and leave to cool.",
     "To serve, top each serving with the coconut, pistachios, and about 1 tablespoon of the syrup."
   ],
-  "image": null,
+  "image": "/recipes/muhallabieh.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -67,8 +67,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Cakes & Cookies",
-    "meal_role": "main"
+    "chapter": "Cakes & Cookies"
   },
   "cuisine": "Middle Eastern"
 }

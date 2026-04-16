@@ -9,9 +9,9 @@
   "servings": "makes about 300ml (1¼ cups)",
   "intro": "I can’t get enough of this mildly spiced chutney, pictured.",
   "time": {
-    "prep": 10,
-    "cook": 2,
-    "total": 10
+    "prep": "10 MINS, PLUS SOAKING TIME IF USING DRIED COCONUT FLAKES",
+    "cook": "2 MINS",
+    "total": "10 MINS, PLUS SOAKING TIME IF USING DRIED COCONUT FLAKES2 MINS"
   },
   "ingredients": [
     {
@@ -78,8 +78,8 @@
     "Heat the oil in a small pan over a high heat. When hot, add the mustard seeds. When they begin to pop, reduce the temperature to medium–high and stir in the white urad dhal. Let the dhal toast until light brown – about 1 minute should do. Stir in the asafoetida and curry leaves and let this all sizzle in the oil for about 20 seconds. Your kitchen will smell amazing.",
     "Pour the spiced oil over the chutney to serve."
   ],
-  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour. Note: SOAKING TIME IF USING DRIED COCONUT FLAKES; SOAKING TIME IF USING DRIED COCONUT FLAKES2 MINS.",
-  "image": null,
+  "tips": "*If you are gluten-free, please check the asafoetida packaging as some brands contain wheat flour.",
+  "image": "/recipes/green-coconut-chutney.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -88,8 +88,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Base Sauces",
-    "meal_role": "side"
+    "chapter": "Base Sauces"
   },
   "cuisine": "Indian"
 }

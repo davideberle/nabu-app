@@ -78,10 +78,6 @@
     {
       "item": "Salt and pepper",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -91,12 +87,7 @@
     "To Assemble:",
     "Fill manicotti with filling mixture. Place in single layer in baking dish. Cover with sauce and extra Parmesan",
     "cheese.",
-    "Bake at 350 degrees F. for 15 minutes, covered, and 15 minutes uncovered.",
-    "(21) Fettuccine with Gorgonzola",
-    "Attention all pasta lovers! Are you looking for a new dish to try? If so, this one is for you. This simple recipe will",
-    "have your taste buds singing in delight after one taste. Fettuccine with Gorgonzola is a hearty and filling dish that",
-    "will leave you feeling satisfied.",
-    "Yield: 6"
+    "Bake at 350 degrees F. for 15 minutes, covered, and 15 minutes uncovered."
   ],
   "time": {
     "total": 90
@@ -105,8 +96,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/cheese-manicotti.jpg"
 }

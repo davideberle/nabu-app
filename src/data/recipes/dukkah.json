@@ -57,7 +57,7 @@
     "Decrease the heat to low and cook the sesame and nigella seeds together, stirring occasionally, until the sesame seeds turn light brown, then remove from the pan.",
     "Rub the hazelnuts between the palms of your hands to remove and discard some of the skins. Use a mortar and pestle to chop them coarsely, then transfer to a medium bowl. Lightly crush the cumin and fennel seeds and add to the hazelnuts. Do the same with the coriander seeds, followed by the green peppercorns and then the sunflower seeds. Add the sesame and nigella seeds, the salt, and the paprika and mix well. Store in an airtight container for up to 1 month."
   ],
-  "image": null,
+  "image": "/recipes/dukkah.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -69,8 +69,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments",
-    "meal_role": "main"
+    "chapter": "Condiments"
   },
   "cuisine": "Middle Eastern"
 }

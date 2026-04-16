@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "condiment to keep in your fridge and add to roasted eggplant, vegetable stews and many rice and couscous",
+  "intro": "This soup is sweetly delicious and relatively easy to prepare, if you don’t mind a bit of garlic peeling. The",
   "ingredients": [
     {
       "item": "red bell pepper",
@@ -119,8 +119,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/garlic-soup-and-harissa.jpg"
 }

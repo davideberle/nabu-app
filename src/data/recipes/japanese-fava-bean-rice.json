@@ -38,7 +38,7 @@
     "Rinse the rice in several changes of water until the water runs clear. Set aside in a sieve to drain completely. If the bacon has rinds, slice them off and reserve them. Cut the bacon or pancetta into ½ in (1cm) slices or small cubes. Bring a pan of water to the boil, blanch the bacon briefly, then drain it.",
     "Put the lard or cooking oil in a heavy-bottomed pan with a tight-fitting lid and heat over a high flame. Add the meat and rinds, if you have them, and stir-fry until they smell delicious. Remove and discard the rinds, if using. Add the beans and stir them into the fragrant oil. Add the rice and 1⅓ cups (300ml) cold water and season with salt (remember the bacon is already salty). Stir well, scraping the bottom of the pan. Cook over a high flame for a few minutes, without stirring, until small holes appear on the surface. Cover the pan, transfer to a very low flame and cook gently for 20 minutes. Serve with a sprinkling of spring onion greens."
   ],
-  "image": null,
+  "image": "/recipes/japanese-fava-bean-rice.jpg",
   "time": {
     "total": 20
   },
@@ -46,8 +46,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Rice",
-    "meal_role": "side"
+    "chapter": "Rice"
   },
   "cuisine": "Chinese"
 }

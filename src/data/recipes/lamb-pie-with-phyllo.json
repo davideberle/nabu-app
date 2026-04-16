@@ -149,13 +149,12 @@
     "Brush top with remaining butter, and with a sharp knife score it into 12 squares, but do not cut all the way through. Bake for 45 minutes, or until golden.",
     "Let stand for 5 minutes, then cut through the squares to separate."
   ],
-  "image": null,
+  "image": "/recipes/lamb-pie-with-phyllo.jpg",
   "category": {
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Savory Pitas and Pies",
-    "meal_role": "dessert"
+    "chapter": "Savory Pitas and Pies"
   },
   "cuisine": "Greek"
 }

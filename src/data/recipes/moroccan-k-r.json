@@ -8,7 +8,7 @@
   },
   "intro": "This simple Mоrоссаn Kѕrа (оr Kеѕrа) fеаturеѕ semolina and аnіѕееd and is іdеаl fоr a Mоrоссаn Tаgіnе meal.",
   "time": {
-    "prep": 120,
+    "prep": "2 hrs",
     "total": 25
   },
   "ingredients": [
@@ -69,8 +69,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

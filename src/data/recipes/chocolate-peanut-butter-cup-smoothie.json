@@ -53,13 +53,13 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Drinks",
-    "meal_role": "drink"
+    "chapter": "Drinks"
   },
   "time": {
     "prep": 5,
     "cook": 0,
     "total": 5
   },
-  "cuisine": "Other"
+  "cuisine": "Other",
+  "image": "/recipes/chocolate-peanut-butter-cup-smoothie.jpg"
 }

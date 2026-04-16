@@ -1,12 +1,12 @@
 {
   "id": "kale-and-cheese-pikelets",
-  "name": "Kale and Cheese Pikelets",
+  "name": "Kale And Cheese Pikelets",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "cilantro, and chile flakes and serve at once.",
+  "intro": "for a further 8 to 10 minutes, until most of the liquid has evaporated. Add the",
   "ingredients": [
     {
       "item": "oz/50 g kale (2 to 4 medium leaves), tough stalks removed and thinly sliced",
@@ -72,12 +72,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

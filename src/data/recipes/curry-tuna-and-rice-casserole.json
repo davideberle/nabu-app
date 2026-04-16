@@ -68,11 +68,5 @@
   "time": {
     "total": 50
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/curry-tuna-and-rice-casserole.jpg"
 }

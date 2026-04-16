@@ -50,8 +50,7 @@
   "category": {
     "dish_type": [
       "side"
-    ],
-    "meal_role": "side"
+    ]
   },
   "time": {
     "prep": 10,

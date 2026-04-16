@@ -142,11 +142,5 @@
   "time": {
     "total": 540
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/curry-couscous-and-quinoa-pilaf.jpg"
 }

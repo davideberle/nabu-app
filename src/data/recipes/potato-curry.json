@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Delicious and satisfying, potato curry is usually served for breakfast in India. It’s currently served for breakfast at my house almost weekly. It’s the perfect way to start the day but it’s pretty good any time of day really! You’ve probably seen this curry on a few Indian restaurant menus. It’s delicious served over rice, but the more traditional way to serve it is with fresh homemade puris. You could cube the potatoes, but I like to serve this one the way I was taught: simply boil your potatoes and break them up by hand into the spicy sauce. This gives you less uniform, different-size chunks, which I like. If you have any left over, cook it down and spread it on a Mumbai toastie.",
   "time": {
-    "prep": 10,
-    "cook": 20,
-    "total": 30
+    "prep": "10 MINS",
+    "cook": "20 MINS",
+    "total": "10 MINS20 MINS"
   },
   "ingredients": [
     {
@@ -108,8 +108,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Curries",
-    "meal_role": "main"
+    "chapter": "Curries"
   },
   "cuisine": "Indian"
 }

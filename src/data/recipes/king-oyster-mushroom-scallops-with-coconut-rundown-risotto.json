@@ -9,9 +9,9 @@
   "servings": "serves 2",
   "intro": "This is very much a date-night dish. Risotto feels romantic to me, though I first had it in a bougie French restaurant when I was being schmoozed by a record label. It was a scallop risotto, and 19-year-old me hated it and got a McDonald’s afterwards. Adult Denai is different. Schmooze your lover and make this for them!",
   "time": {
-    "prep": 10,
-    "cook": 40,
-    "total": 50
+    "prep": "10 MINUTES",
+    "cook": "40 MINUTES",
+    "total": "10 MINUTES40 MINUTES"
   },
   "ingredients": [
     {
@@ -120,8 +120,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Special Occasions",
-    "meal_role": "main"
+    "chapter": "Special Occasions"
   },
   "cuisine": "Caribbean"
 }

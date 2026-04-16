@@ -9,9 +9,9 @@
   "servings": "8 servings",
   "intro": "Here’s a complete meal for your whole family. It’s a big batch, it’s quick to prepare, and it keeps great in the fridge or freezer.",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 15
+    "prep": "5 minutes",
+    "cook": "10 minutes",
+    "total": "15 minutes"
   },
   "ingredients": [
     {
@@ -255,8 +255,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Soups & Stews",
-    "meal_role": "side"
+    "chapter": "Soups & Stews"
   },
   "cuisine": "Other"
 }

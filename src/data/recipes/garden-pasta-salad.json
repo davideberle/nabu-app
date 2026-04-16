@@ -62,22 +62,13 @@
     {
       "item": "Salt and pepper to taste",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "Cook pasta according to package directions; rinse and drain.",
     "Mix pasta with broccoli, tomato, zucchini, black olives, bell pepper, and onion and Parmesan cheese. Blend oil,",
     "vinegar, mustard, garlic, salt and pepper in a small container.",
-    "Toss with salad and refrigerate before serving.",
-    "(11) Tuna Pasta Salad",
-    "This Tuna Pasta Salad is a classic Italian dish that has been around for decades! This pasta salad is a great healthy",
-    "alternative to standard pasta dishes. Great for lunch, dinner, and parties; this dish goes great with all kinds of breads",
-    "and crackers!",
-    "Yield: 6"
+    "Toss with salad and refrigerate before serving."
   ],
   "time": {
     "total": 35
@@ -86,8 +77,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/garden-pasta-salad.jpg"
 }

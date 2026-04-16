@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "This fabulous array of ingredients is more of an assembly than a recipe. The cashew cheese is so delicious you’ll want to eat it by the spoonful.",
   "time": {
-    "prep": 5,
-    "cook": 15,
-    "total": 20
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -335,8 +335,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers & Snacks",
-    "meal_role": "main"
+    "chapter": "Appetizers & Snacks"
   },
   "cuisine": "Other"
 }

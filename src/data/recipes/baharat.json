@@ -45,7 +45,7 @@
   "method": [
     "Place all the spices in a spice grinder or mortar and grind until a fine powder is formed. Store in an airtight container, where it will keep for 8 weeks."
   ],
-  "image": null,
+  "image": "/recipes/baharat.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -54,8 +54,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments",
-    "meal_role": "main"
+    "chapter": "Condiments"
   },
   "time": {
     "prep": 20,

@@ -9,9 +9,9 @@
   "servings": "2 servings",
   "intro": "This homemade calzone dough is stuffed with prepared veggies and a little of this and a little of that. Slide it in the oven to bake for a great lunch that you deserve.",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 15
+    "prep": "5 minutes",
+    "cook": "10 minutes",
+    "total": "15 minutes"
   },
   "ingredients": [
     {
@@ -565,8 +565,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Soups & Stews",
-    "meal_role": "main"
+    "chapter": "Soups & Stews"
   },
   "cuisine": "Other"
 }

@@ -1,12 +1,12 @@
 {
   "id": "lemon-and-curry-leaf-rice",
-  "name": "Lemon and Curry Leaf Rice",
+  "name": "Lemon And Curry Leaf Rice",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "pepper. Mix well and set aside for at least 10 minutes before serving.",
+  "intro": "stirring frequently. Transfer to a small plate as soon as the pine nuts begin to",
   "ingredients": [
     {
       "item": "short cinnamon sticks, each about 2-inches/5-cm long",
@@ -37,11 +37,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/lemon-and-curry-leaf-rice.jpg"
 }

@@ -54,11 +54,5 @@
   "time": {
     "total": 35
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/curried-quinoa.jpg"
 }

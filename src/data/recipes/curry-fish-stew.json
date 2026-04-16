@@ -61,11 +61,5 @@
   "time": {
     "total": 22
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/curry-fish-stew.jpg"
 }

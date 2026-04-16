@@ -9,9 +9,9 @@
   "servings": "12 servings",
   "intro": "Mild fruit flavors blend perfectly in this sweet cookie dough. You’ll feel like celebrating when you bite into one of these lightly crispy cookies.",
   "time": {
-    "prep": 20,
-    "cook": 5,
-    "total": 20
+    "prep": "20 minutes",
+    "cook": "5 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -938,8 +938,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads",
-    "meal_role": "main"
+    "chapter": "Salads"
   },
   "cuisine": "Other"
 }

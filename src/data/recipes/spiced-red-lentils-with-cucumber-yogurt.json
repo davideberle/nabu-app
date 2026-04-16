@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 2",
-  "intro": "were reading from her notes. She didn’t miss a single item!",
+  "intro": "hadn’t cooked for years, Helen went on to rapidly recite the long list of ingredients and quantities as if she",
   "ingredients": [
     {
       "item": "split red lentils",
@@ -117,8 +117,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

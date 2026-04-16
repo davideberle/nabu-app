@@ -66,10 +66,6 @@
     {
       "item": "Non-stick cooking spray",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -82,13 +78,7 @@
     "Spray a 9x13-inch baking dish with non-stick cooking spray (or two 8x8-inch baking dishes). Pour mixture into",
     "baking dish.",
     "Top with seasoned bread crumbs and bake, covered, at 350 degrees F. for 20 minutes. Uncover and bake 10 to 15",
-    "minutes more or until it bubbles.",
-    "(38) Beef and Spinach Lasagna",
-    "The best way to get creative with this recipe is to add your favorite vegetables to the filling. Mushrooms, broccoli,",
-    "or spinach would all be delicious additions!",
-    "Lasagna might be one of the funniest meals you can make! Granted, it’s not a quick dish. But when you want",
-    "something that will stick with you (literally) for hours and deliver a punch-load of flavor - lasagna is your best bet.",
-    "Yield: 8"
+    "minutes more or until it bubbles."
   ],
   "time": {
     "total": 75
@@ -97,8 +87,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/baked-turkey-tetrazzini.jpg"
 }

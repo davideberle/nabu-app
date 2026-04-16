@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "cool yogurt will make an excellent condiment.",
+  "intro": "Here’s a great recipe you can make heaps of and keep for a few days. It only gets better! As always, thick",
   "ingredients": [
     {
       "item": "cardamom pods",
@@ -110,8 +110,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/two-potato-vindaloo.jpg"
 }

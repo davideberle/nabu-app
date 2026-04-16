@@ -1,0 +1,56 @@
+{
+  "id": "fava",
+  "name": "Fava",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "Bring a saucepan of water to a boil over high heat, add the lentils, turn down",
+  "ingredients": [
+    {
+      "item": "large onions (1⅓ lb/600 g)",
+      "amount": "3"
+    },
+    {
+      "item": "cups/300 g yellow split peas",
+      "amount": "1½"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "ground turmeric",
+      "amount": "¼ tsp"
+    },
+    {
+      "item": "tbsp/100 ml olive oil, plus extra to finish",
+      "amount": "7"
+    },
+    {
+      "item": "garlic, crushed",
+      "amount": "2 cloves"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "tbsp/10 g finely chopped chives",
+      "amount": "3½"
+    },
+    {
+      "item": "cup/35 g capers, coarsely chopped salt and white pepper",
+      "amount": "¼"
+    }
+  ],
+  "method": [
+    "While the peas are cooking, peel and slice the 2 remaining onions ¼-inch/5- mm thick. Place a large sauté pan over medium-high heat and add 1 tablespoon of the oil. Add the onions and cook for 15 to 20 minutes, until golden brown, sweet, and caramelized. Remove from the heat and set aside.",
+    "Remove ½ cup/100 g of the cooked peas and set aside. Put the rest in a food processor bowl, adding the garlic, lemon juice, remaining 6 tablespoons olive oil, ¾ teaspoon salt, ⅛ teaspoon white pepper, and 3 tablespoons of the cooking water. Blitz until almost completely smooth, transfer to a large bowl, and fold in the reserved yellow peas, half the chives, and half the caramelized onion. Put in a shallow bowl and use an offset spatula to swirl the mixture.",
+    "Top with the rest of the onions, the capers, and the chives and finish with a drizzle of olive oil."
+  ],
+  "time": {
+    "total": 30
+  }
+}

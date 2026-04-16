@@ -63,7 +63,7 @@
     "For a touch of luxe, dribble the remaining 1 teaspoon oil around the edge and continue gently frying for 2 to 3 minutes, until browned on the second side.",
     "Transfer the frittata to a plate and cut into wedges. Serve, hot, warm, or at room temperature. Eat with a dab of chile sauce or mix the soy sauce and reserved 1 tablespoon mushroom-soaking liquid for dunking. Or, eat with both."
   ],
-  "image": null,
+  "image": "/recipes/shiitake-and-tofu-frittata.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -71,8 +71,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Eggs, Tofu, and Tempeh",
-    "meal_role": "main"
+    "chapter": "Eggs, Tofu, and Tempeh"
   },
   "cuisine": "Southeast Asian"
 }

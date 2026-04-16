@@ -8,7 +8,7 @@
   "servings": "serves 4",
   "intro": "This quick salmon recipe is a pretty straightforward recipe. A store-bought dressing gives this healthy dish an enhanced flavor, without significantly lengthening the preparation time.",
   "time": {
-    "prep": 15,
+    "prep": "15 minutes",
     "total": 10
   },
   "ingredients": [
@@ -51,8 +51,7 @@
   "category": {
     "dish_type": [
       "side"
-    ],
-    "meal_role": "side"
+    ]
   },
   "cuisine": "Southeast Asian"
 }

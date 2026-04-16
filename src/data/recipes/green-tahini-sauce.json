@@ -11,8 +11,7 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Basics",
-    "meal_role": "component"
+    "chapter": "Basics"
   },
   "servings": "makes 1 pint / 600 ml",
   "time": {
@@ -75,6 +74,6 @@
       "gluten-free"
     ]
   },
-  "image": null,
+  "image": "/recipes/green-tahini-sauce.jpg",
   "cuisine": "Middle Eastern"
 }

@@ -83,7 +83,7 @@
     "Heat a little olive oil in a nonstick frying pan. Add the bread, garlic, and ginger, if using, toss and stir until golden. Drain on paper towel. Discard the garlic and ginger. In the same pan, dry-fry the lardons until crisp and golden. Drain on paper towels.",
     "In a salad bowl, place the lettuce, and tear the herbs into it. Add the onion, lardons, and croutons. Add 1⁄3 cup olive oil to a pan with the dressing ingredients. Heat gently, stirring. Add to the salad, and toss. Divide between 4 bowls. Top each with a poached egg and serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/bistro-salad-with-fris-e-lettuce.jpg",
   "time": {
     "total": 15
   },
@@ -91,8 +91,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry & Meat",
-    "meal_role": "main"
+    "chapter": "Poultry & Meat"
   },
   "cuisine": "Other"
 }

@@ -87,8 +87,7 @@
     "dish_type": [
       "base"
     ],
-    "chapter": "Base Recipes",
-    "meal_role": "component"
+    "chapter": "Base Recipes"
   },
   "time": {
     "total": 75

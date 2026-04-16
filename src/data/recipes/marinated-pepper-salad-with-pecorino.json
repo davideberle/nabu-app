@@ -1,0 +1,72 @@
+{
+  "id": "marinated-pepper-salad-with-pecorino",
+  "name": "Marinated pepper salad with pecorino",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 2",
+  "intro": "Crusty bread is essential to soak up the sweet dressing left after finishing this salad. Serve as a starter,",
+  "ingredients": [
+    {
+      "item": "red bell pepper, quartered",
+      "amount": "1"
+    },
+    {
+      "item": "yellow bell pepper, quartered",
+      "amount": "1"
+    },
+    {
+      "item": "olive oil salt",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "balsamic vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "water",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "muscovado sugar",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "thyme sprigs",
+      "amount": "2"
+    },
+    {
+      "item": "garlic clove, thinly sliced black pepper",
+      "amount": "1"
+    },
+    {
+      "item": "flat-leaf parsley, leaves picked",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "watercress",
+      "amount": "1 cup"
+    },
+    {
+      "item": "mature pecorino, shaved",
+      "amount": "2 oz"
+    },
+    {
+      "item": "drained capers",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 375°F. Toss the peppers with 1 tablespoon of the oil and a little salt. Scatter in a roasting pan and roast for",
+    "35 minutes, or until they soften and take on some color. Remove to a bowl and cover it with plastic wrap. Once cooled to room temperature, peel the peppers and cut into thick strips.",
+    "Whisk together 2 tablespoons of the oil, the balsamic vinegar, water, sugar, thyme, garlic, and some salt and pepper. Pour this over the peppers and leave aside for at least an hour, or overnight in the fridge.",
+    "To assemble the salad toss together the herbs, watercress, drained pepper strips, pecorino and capers. Add the remaining",
+    "1 tablespoon olive oil and 1 tablespoon (or more if you like) of the marinade. Taste and adjust the seasoning as needed.",
+    "A fantastic Mediterranean feast, full to the brim with roasted vegetables."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/marinated-pepper-salad-with-pecorino.jpg"
+}

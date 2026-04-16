@@ -54,10 +54,6 @@
     {
       "item": "egg, whisked",
       "amount": "1"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -67,11 +63,7 @@
     "gherkins and parsley.",
     "Toss everything with the pasta. Add in the mushroom soup and stir to combine.",
     "Whisk the egg with mozzarella cheese and spread all over the pasta equally.",
-    "Bake in a preheated to 350 F oven for 10 minutes or until the cheese turns golden.",
-    "(28) Easy Homemade Lasagna",
-    "Lazy Sundays are perfect for spending a few hours preparing and cooking this classic dish. It will provide you with",
-    "an abundant amount of leftovers for the rest of the week, and your family will love coming home to it.",
-    "Yield: 5"
+    "Bake in a preheated to 350 F oven for 10 minutes or until the cheese turns golden."
   ],
   "time": {
     "total": 50
@@ -80,8 +72,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/baked-ground-beef-pasta.jpg"
 }

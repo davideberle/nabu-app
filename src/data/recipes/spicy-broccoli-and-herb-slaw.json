@@ -53,13 +53,12 @@
     "Transfer the drained slaw to a large bowl. Add the chicken, cilantro, and dressing and toss well, then let sit for 1 to 2 minutes to develop flavor and toss again.",
     "Transfer the slaw to a serving plate, leaving most of the excess dressing behind. Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/spicy-broccoli-and-herb-slaw.jpg",
   "category": {
     "dish_type": [
       "side"
     ],
-    "chapter": "Salads and Vegetable Sides",
-    "meal_role": "side"
+    "chapter": "Salads and Vegetable Sides"
   },
   "cuisine": "Southeast Asian"
 }

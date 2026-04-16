@@ -1,12 +1,12 @@
 {
   "id": "brussels-sprouts-with-caramelized-garlic-and-lemon-peel",
-  "name": "Brussels Sprouts with Caramelized Garlic and Lemon Peel",
+  "name": "Brussels Sprouts With Caramelized Garlic And Lemon Peel",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "alongside the the fried cauliflower.",
+  "intro": "Next, dip it into the egg and then, finally, into the spicy bread crumbs, turning",
   "ingredients": [
     {
       "item": "oz/200 g garlic (5 medium heads or 3 large heads), cloves removed and peeled about ½ cup/120 ml olive oil",
@@ -49,12 +49,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

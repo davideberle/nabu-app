@@ -47,7 +47,7 @@
     "Uncover and let cool to room temperature. Strain through a fine-mesh sieve into a pitcher, pressing down on the solids to extract as much liquid as possible. (Compost the solids.) Add the pineapple chunks and refrigerate for at least 8 hours or overnight.",
     "Serve over ice, garnishing each glass with a pineapple spear."
   ],
-  "image": null,
+  "image": "/recipes/roselle-rooibos-drink.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -59,8 +59,7 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Kitchen Basics",
-    "meal_role": "drink"
+    "chapter": "Kitchen Basics"
   },
   "cuisine": "African & Caribbean"
 }

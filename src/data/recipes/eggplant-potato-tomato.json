@@ -1,0 +1,78 @@
+{
+  "id": "eggplant-potato-tomato",
+  "name": "Eggplant, Potato, Tomato",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "butter if needed. Cook each batch for 5 minutes, turning once, until crisp and",
+  "ingredients": [
+    {
+      "item": "medium tomatoes, cut into ⅜-inch/1-cm dice (about 2¼ cups/400 g)",
+      "amount": "4"
+    },
+    {
+      "item": "small red onion, finely chopped (⅓ cup/40 g)",
+      "amount": "½"
+    },
+    {
+      "item": "white wine vinegar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "cup/15 g flat-leaf parsley leaves, chopped",
+      "amount": "½"
+    },
+    {
+      "item": "Sriracha sauce or another hot savory chile sauce",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "medium eggplants, cut into 1¼-inch/3-cm chunks (1⅓ lb/600 g)",
+      "amount": "2"
+    },
+    {
+      "item": "cup/250 ml olive oil about 1¼ cups/300 ml sunflower oil",
+      "amount": "1"
+    },
+    {
+      "item": "lb/600 g Yukon gold potatoes or another waxy variety, peeled and cut into slices ⅛-inch/3- mm thick scant ½ cup/80 g tahini paste",
+      "amount": "1⅓"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2½ tbsp"
+    },
+    {
+      "item": "small clove garlic, crushed",
+      "amount": "1"
+    },
+    {
+      "item": "eggs, freshly poached",
+      "amount": "6"
+    },
+    {
+      "item": "sumac",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cilantro leaves, chopped salt and black pepper",
+      "amount": "1 tbsp"
+    }
+  ],
+  "method": [
+    "Place the tomatoes in a colander for 30 minutes to drain. Transfer to a medium bowl and add the onion, vinegar, parsley, Sriracha, and ¼ teaspoon salt. Mix gently and set aside.",
+    "Mix the eggplants with 1½ teaspoons salt, place in a colander, and set aside over a bowl for half an hour, to remove any excess liquid. Transfer to a plate lined with paper towels and pat dry. Pour all but 2 tablespoons of the olive oil into a 10½-inch/26-cm sauté pan, along with all of the sunflower oil; the oil needs to reach ⅜-inch/1-cm up the sides of the pan, so add more if you need to. Place over high heat and, once hot, add the eggplant in batches. Fry for 3 to 4 minutes, until golden brown. Remove with a slotted spoon, transfer to a plate lined with paper towels, and set aside somewhere warm while you continue with the remaining batches. Leave the oil to cool, pour it into a jar",
+    "—you’ll be able to use it for future frying—and wipe out the pan.",
+    "Bring a saucepan of water to a boil, add the potatoes, and cook for 3 minutes.",
+    "Drain, refresh under cold water, and set aside to dry. Add the remaining 2 tablespoons fresh olive oil to the sauté pan and place over medium-high heat.",
+    "Add the potatoes, ¼ teaspoon salt, and a grind of black pepper and fry for 10 minutes, shaking the pan from time to time, until they are cooked through and golden brown. Remove the pan from the heat and set aside.",
+    "Place the tahini, ¼ cup/60 ml water, 1½ tablespoons of the lemon juice, the garlic, and a pinch of salt in a bowl and whisk until you have a thick, pourable consistency. Spoon half of this sauce over the potatoes and spread the eggplants on top. Follow this with the remaining tahini sauce and then spoon over the tomatoes. Poach the eggs just before you are ready to serve and then lay them on top of the tomatoes, along with a drizzle of the remaining olive oil, a sprinkle of the sumac and cilantro, and the last of the lemon juice.",
+    "Bring to the table in the pan."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/eggplant-potato-tomato.jpg"
+}

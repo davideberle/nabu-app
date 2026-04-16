@@ -66,11 +66,5 @@
   "time": {
     "total": 15
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/coconut-curry-bowls.jpg"
 }

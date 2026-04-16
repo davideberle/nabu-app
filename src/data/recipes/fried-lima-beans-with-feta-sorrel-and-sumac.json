@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "penzeys.com. If you can’t find sorrel, use spinach and double the amount of lemon juice.",
+  "intro": "who often ask me why I use all these exotic ingredients that are impossible to find. Just in case you don’t",
   "ingredients": [
     {
       "item": "dried lima beans",
@@ -79,8 +79,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/fried-lima-beans-with-feta-sorrel-and-sumac.jpg"
 }

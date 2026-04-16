@@ -67,11 +67,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/avocado-butter-on-toast-with-tomato-salsa.jpg"
 }

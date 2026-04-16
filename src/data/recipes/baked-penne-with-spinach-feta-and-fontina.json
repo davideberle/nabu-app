@@ -1,0 +1,67 @@
+{
+  "id": "baked-penne-with-spinach-feta-and-fontina",
+  "name": "Baked Penne with Spinach, Feta and Fontina",
+  "source": {
+    "cookbook": "More Than Carbonara",
+    "author": "Various"
+  },
+  "servings": "serves 6",
+  "ingredients": [
+    {
+      "item": "penne",
+      "amount": "1 lb."
+    },
+    {
+      "item": "package spinach, frozen, thawed",
+      "amount": "1 10 oz."
+    },
+    {
+      "item": "cherry tomatoes, halved",
+      "amount": "1 cup"
+    },
+    {
+      "item": "garlic cloves, chopped",
+      "amount": "2"
+    },
+    {
+      "item": "fresh basil leaves, chopped",
+      "amount": "9-10"
+    },
+    {
+      "item": "crumbled feta cheese",
+      "amount": "2 cups"
+    },
+    {
+      "item": "fontina, grated",
+      "amount": "6 oz."
+    },
+    {
+      "item": "Parmesan cheese, grated",
+      "amount": "3/4 cup"
+    },
+    {
+      "item": "extra virgin olive oil",
+      "amount": "2 tbsp."
+    },
+    {
+      "item": "nutmeg",
+      "amount": "1/2 tsp."
+    },
+    {
+      "item": "Salt and black pepper, to taste",
+      "amount": ""
+    }
+  ],
+  "method": [
+    "Preheat the oven to 350 F and oil a ceramic or glass baking dish.",
+    "Prepare the pasta according to package directions and put it in the prepared baking dish. Toss with 1 tbsp. of the oil.",
+    "Meanwhile, put the spinach in a food processor and puree with the garlic, feta, half Parmesan cheese, nutmeg, salt,",
+    "and pepper. Stir in half the fontina.",
+    "Toss everything in the baking dish. Add the cherry tomatoes and stir. Top with the remaining fontina and Parmesan.",
+    "Bake the pasta until the cheese turns golden, 15-20 minutes."
+  ],
+  "time": {
+    "total": 50
+  },
+  "image": "/recipes/baked-penne-with-spinach-feta-and-fontina.jpg"
+}

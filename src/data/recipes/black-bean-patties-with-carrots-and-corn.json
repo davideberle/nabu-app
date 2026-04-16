@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Treat yourself to one of the most popular sandwiches out there. An added bonus is that this version has little bits of carrots and corn.",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 15
+    "prep": "5 minutes",
+    "cook": "10 minutes",
+    "total": "15 minutes"
   },
   "ingredients": [
     {
@@ -389,8 +389,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Soups & Stews",
-    "meal_role": "main"
+    "chapter": "Soups & Stews"
   },
   "cuisine": "Other"
 }

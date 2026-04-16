@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "apologize to all who had this experience. So please make sure to pierce the eggplants!",
+  "intro": "received two anxious letters from readers who had experienced mini-explosions in their kitchen. Apparently –",
   "ingredients": [
     {
       "item": "medium eggplants",
@@ -82,8 +82,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/lentils-with-broiled-eggplant.jpg"
 }

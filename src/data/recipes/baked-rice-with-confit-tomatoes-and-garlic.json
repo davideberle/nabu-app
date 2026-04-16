@@ -65,11 +65,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "side"
-    ],
-    "chapter": "",
-    "meal_role": "side"
-  }
+  "image": "/recipes/baked-rice-with-confit-tomatoes-and-garlic.jpg"
 }

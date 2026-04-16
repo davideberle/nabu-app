@@ -46,10 +46,6 @@
     {
       "item": "no-cook lasagna noodles",
       "amount": "12"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -60,15 +56,7 @@
     "fourth of the spinach-cheese mixture. Top with noodles. Repeat layering meat, spinach mixture, and noodles two",
     "more times.",
     "Bake for 40 minutes in a preheated to 350 F oven. Sprinkle with the remaining cheese mixture. Bake, uncovered,",
-    "about 5 minutes until the cheese turns golden. Set aside for at least 10 minutes before serving.",
-    "(39) Pork Chops with Spaghetti",
-    "Spaghetti is a simple and comforting dish that complements most main courses. (This is great for quick dinners, as",
-    "well!) Pork chops are light on the fat and heavy on the protein, making them a perfect accompaniment to this pasta.",
-    "The dish is traditionally made using spaghetti noodles mixed with garlic salt, butter, and the meat cooked with a",
-    "brown sugar mixture before being paired with a can of condensed milk. Nowadays, however, it often includes",
-    "seasoned bread crumbs to prevent the noodles from sticking to the pan and gravy or brown sugar instead of white",
-    "sugar.",
-    "Yield:"
+    "about 5 minutes until the cheese turns golden. Set aside for at least 10 minutes before serving."
   ],
   "time": {
     "total": 31
@@ -77,8 +65,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/beef-and-spinach-lasagna.jpg"
 }

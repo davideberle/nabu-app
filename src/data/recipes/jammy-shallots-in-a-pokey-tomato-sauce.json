@@ -9,9 +9,9 @@
   "servings": "serves 4",
   "intro": "Sun-dried tomatoes are a punchy flavour bomb, salty and sweet, and my love for shallots is undeniable. Far sweeter and jammier than their counterpart, I’ll always reach for them over regular onions. I really enjoy tomatoes and onions, a classic pairing, but this feels like it’s cool cousin. This side could be a great starter (appetizer), served with frozen parathas (of course) for scooping up all the goodness!",
   "time": {
-    "prep": 15,
-    "cook": 30,
-    "total": 45
+    "prep": "15 MINUTESCOOK TIME: 30 MINUTES",
+    "cook": "30 MINUTES",
+    "total": "15 MINUTESCOOK TIME: 30 MINUTES30 MINUTES"
   },
   "ingredients": [
     {
@@ -81,7 +81,7 @@
     "In a small bowl, mix together the soy sauce, balsamic vinegar, brown sugar and water. Add this to the pan to deglaze it, then add the shallots back to the pan, cut side down, along with the garlic cloves. Transfer to the oven and roast for 20 minutes until the shallots are sticky and wonderfully glazed.",
     "To serve, spread a serving dish with yoghurt and then top with the shallots. Drizzle over any remaining sauce from the pan and garnish with the chopped sun-dried tomatoes. Scoop up with some fried frozen parathas!"
   ],
-  "image": "/recipes/jammy-shallots-in-a-pokey-tomato-sauce.jpg",
+  "image": null,
   "dietary": [
     "vegan",
     "vegetarian"
@@ -90,8 +90,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Sides",
-    "meal_role": "starter"
+    "chapter": "Sides"
   },
   "cuisine": "Caribbean"
 }

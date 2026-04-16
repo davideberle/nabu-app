@@ -9,7 +9,7 @@
   "servings": "16 servings",
   "intro": "This simple Moroccan Ksra (or Kesra) features semolina and aniseed and is ideal for a Moroccan Tagine meal.",
   "time": {
-    "prep": 120,
+    "prep": "2 hrs",
     "total": 55
   },
   "ingredients": [
@@ -61,8 +61,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

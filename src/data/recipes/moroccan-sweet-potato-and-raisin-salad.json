@@ -9,7 +9,7 @@
   "servings": "4 servings",
   "intro": "This sweet Moroccan salad is prepared by simmering diced sweet potatoes or yams with cinnamon, turmeric, saffron, raisins, and honey. It is an easy dish with an exotic taste.",
   "time": {
-    "prep": 15,
+    "prep": "15 mins",
     "total": 10
   },
   "ingredients": [
@@ -63,8 +63,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts",
-    "meal_role": "dessert"
+    "chapter": "Desserts"
   },
   "cuisine": "Moroccan"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "candied rind on top and drizzle with a tiny amount of the syrup. Finish with a",
+  "intro": "them. Stir together the herbs, olive oil, and garlic and season with ¼ teaspoon",
   "ingredients": [
     {
       "item": "baby shallots, peeled and coarsely chopped (⅔ cup/100 g)",
@@ -96,12 +96,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

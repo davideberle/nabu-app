@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "go for a good variety of dried pasta and add a decent pinch of saffron threads to the cooking water.",
+  "intro": "delicious and I am sure that once tried you’ll keep on coming back to it. Instead of homemade you can",
   "ingredients": [
     {
       "item": "saffron threads",
@@ -106,39 +106,7 @@
     "Cook the tagliatelle for 2 to 3 minutes, or until al dente. Drain and return to the saucepan. Pour the spiced butter over the pasta and stir well, then divide among four plates. Sprinkle with the pine nuts and chopped herbs and serve.",
     "262 | Pasta, Polenta, Couscous",
     "Someone complained to the Guardian about the long list of ingredients in this recipe. But I knew it was a success when a friend spotted it on the menu (with a due credit) of the Sun and Doves, a cool and arty pub in Camberwell.",
-    "The ultimate winter couscous",
-    "Serves 4, or even more",
-    "2 medium carrots, peeled and cut into",
-    "2 medium parsnips, peeled and cut into",
-    "8 shallots, peeled",
-    "2 cinnamon sticks",
-    "5 tbsp olive oil salt",
-    "½ tsp ground ginger",
-    "¼ tsp ground turmeric",
-    "¼ tsp hot paprika",
-    "¼ tsp chile flakes",
-    "½ cups cubed pumpkin or butternut squash (from a 10 oz squash)",
-    "½ cup dried apricots, roughly chopped",
-    "1 cup chickpeas (canned or freshly cooked)",
-    "½ cups chickpea cooking liquid and/ or water",
-    "1 cup couscous large pinch of saffron",
-    "1 cup boiling vegetable stock",
-    "3 tbsp butter, broken into pieces",
-    "1 oz preserved lemon, finely chopped",
-    "2 cups cilantro leaves",
-    "Preheat the oven to 375°F. Place the carrots, parsnips and shallots in a large ovenproof dish. Add the cinnamon sticks, star anise, bay leaves, 4 tablespoons of the oil,",
-    "¾ teaspoon salt and all the other spices and mix well. Place in the oven and cook for 15 minutes.",
-    "Add the pumpkin, stir and return to the oven. Continue cooking for about 35 minutes, by which time the vegetables should have softened while retaining a bite. Now add the dried apricots and the chickpeas with their cooking liquid and/or water. Return to the oven and cook for a further 10 minutes, or until hot.",
-    "About 15 minutes before the vegetables are ready, put the couscous in a large heatproof bowl with the remaining 1 tablespoon olive oil, the saffron and",
-    "½ teaspoon salt. Pour the boiling stock over the couscous.",
-    "Cover the bowl with plastic wrap and leave for about 10 minutes.",
-    "Then add the butter and fluff up the couscous with a fork until the butter melts in. Cover again and leave somewhere warm.",
-    "To serve, spoon couscous into a deep plate or bowl. Stir the harissa and preserved lemon into the vegetables; taste and add salt if needed.",
-    "Spoon the vegetables onto the center of the couscous. Finish with plenty of cilantro leaves.",
-    "264 | Pasta, Polenta, Couscous",
-    "When cooking polenta my father always makes much more than he needs. Half of it he serves right away in the runny state, like a mash, with a flavorful sauce. The rest he spreads onto an oiled surface and allows to set. The next day he cuts out chunks, fries them in olive oil and serves with a chunky vegetable salad (tomato, cucumber, romaine lettuce) dressed lightly with red wine vinegar and olive oil. The dish here uses soft polenta, but you may want to double the quantity to follow my father’s idea.",
-    "Note that there are two types of polenta meal (or cornmeal) available – a quick or instant variety and the traditional, slow-cooking one. For most purposes I find that the quick polenta is good enough. Either one can be used for this dish.",
-    "Mushroom and herb polenta"
+    "The ultimate winter couscous"
   ],
   "time": {
     "total": 30
@@ -147,8 +115,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/saffron-tagliatelle-with-spiced-butter.jpg"
 }

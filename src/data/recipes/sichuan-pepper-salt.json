@@ -21,13 +21,12 @@
   "method": [
     "Put the salt and Sichuan peppercorns in a dry wok and stir gently over a very low flame for a few minutes, until your kitchen has filled with the gorgeous aroma of the toasted pepper and the salt has yellowed slightly. Tip the mixture into a mortar and grind it to a fine powder. Sift the powder through a tea strainer or a small sieve to remove any remaining woody pepper husk. Store in a sealed container."
   ],
-  "image": null,
+  "image": "/recipes/sichuan-pepper-salt.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Basic Recipes",
-    "meal_role": "main"
+    "chapter": "Basic Recipes"
   },
   "time": {
     "prep": 20,

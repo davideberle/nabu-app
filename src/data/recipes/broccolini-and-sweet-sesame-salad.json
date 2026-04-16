@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "of making. Served with the Quinoa Salad with Dried Persian Lime on page 245 this dish would make a",
+  "intro": "like it when black sesame seeds are used; they give it an extra-luxurious look. The Japanese dish is the",
   "ingredients": [
     {
       "item": "tahini",
@@ -80,8 +80,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/broccolini-and-sweet-sesame-salad.jpg"
 }

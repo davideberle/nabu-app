@@ -46,7 +46,7 @@
     "First, make the salsa. In a bowl, mix together the olives, raisins, capers, oil, and parsley. Taste, and season with a pinch of salt and some black pepper.",
     "Arrange the arugula and pastrami or other sliced beef in a shallow serving bowl. Spoon over the salsa, and serve at room temperature."
   ],
-  "image": null,
+  "image": "/recipes/pastrami-and-arugula-salad-with-olive-salsa.jpg",
   "time": {
     "total": 45
   },
@@ -54,8 +54,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry & Meat",
-    "meal_role": "main"
+    "chapter": "Poultry & Meat"
   },
   "cuisine": "Other"
 }

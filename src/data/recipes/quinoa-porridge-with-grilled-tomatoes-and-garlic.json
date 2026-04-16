@@ -1,12 +1,12 @@
 {
   "id": "quinoa-porridge-with-grilled-tomatoes-and-garlic",
-  "name": "Quinoa Porridge with Grilled Tomatoes and Garlic",
+  "name": "Quinoa Porridge With Grilled Tomatoes And Garlic",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "lime half into each bowl. Serve at once.",
+  "intro": "(the leaves can stay in the soup). Add the haricots verts, noodles, and half the",
   "ingredients": [
     {
       "item": "cups/250 g quinoa about 4⅔ cups/1.1 liters vegetable stock",
@@ -68,12 +68,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "breakfast"
-    ],
-    "chapter": "",
-    "meal_role": "breakfast"
   }
 }

@@ -61,11 +61,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "main"
-    ],
-    "chapter": "",
-    "meal_role": "main"
-  }
+  "image": "/recipes/cavolo-nero-with-chorizo-and-preserved-lemon.jpg"
 }

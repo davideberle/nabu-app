@@ -1,0 +1,66 @@
+{
+  "id": "pear-crostini",
+  "name": "Pear crostini",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "and full of flavor. You also need pears that are firm, yet sweet and slightly tart. Super-ripe pears, as much",
+  "ingredients": [
+    {
+      "item": "pine nuts",
+      "amount": "¼ cup"
+    },
+    {
+      "item": "olive oil, plus extra to finish",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "garlic clove, peeled salt and black pepper",
+      "amount": "1"
+    },
+    {
+      "item": "large slices sourdough bread, cut",
+      "amount": "4"
+    },
+    {
+      "item": "thick",
+      "amount": "½ inches"
+    },
+    {
+      "item": "semi-ripe pears (unpeeled)",
+      "amount": "3"
+    },
+    {
+      "item": "sugar",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "lemon juice",
+      "amount": "2 tsp"
+    },
+    {
+      "item": "good-quality goat cheese picked chervil leaves to garnish",
+      "amount": "4 to 5 oz"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F. Place the pine nuts, 4 tablespoons of the olive oil, the garlic, a pinch of salt and some black pepper in the bowl of a food processor and work to a coarse and wet paste.",
+    "Use a brush to apply to one side of every sourdough slice. Lay the bread slices on a baking sheet and bake for 10 minutes, or until lightly colored. Remove and allow to cool slightly.",
+    "While the bread is in the oven, prepare the pears. Stand each pear on a chopping board and use a sharp knife to trim off a very thin layer of the skin from each side. Then cut each pear lengthways into four thick slices. Remove the core with the tip of a knife.",
+    "Place the slices in a bowl with the remaining 1 tablespoon of oil, the sugar, lemon juice and a pinch of salt. Toss gently.",
+    "Take a ridged griddle pan and place on a high heat until piping hot. Lay the pear slices gently in the pan and leave for about a minute on each side, just to make char marks. Turn carefully and then remove with tongs, trying not to break the pears.",
+    "To assemble the crostini, slice the cheese thinly and arrange over the toasts, alongside the pears. You want to be able to see both clearly, so allow them to overlap and rest on each other to create height. Place the crostini in the oven for 3 to 4 minutes, just to warm up and for the cheese to partly melt. Remove from the oven.",
+    "Garnish the crostini with the picked chervil leaves, drizzle with oil and sprinkle with freshly ground black pepper. Serve hot or warm.",
+    "280 | Fruit with Cheese",
+    "Turkish grocers and supermarkets – there are many of them dotted around East and Northeast London – offer a bountiful selection of fresh and flavorful produce that you can never find in a normal supermarket.",
+    "The vegetables are usually bursting with flavor, and you can also get some fantastic fresh breads and many dried products from all over the Balkans.",
+    "I go to the Turkish Food Center in Dalston, near Ottolenghi in Islington, for their wonderful cheeses. There are, literally, dozens of varieties on offer – mostly white young cheeses in brine. They are available from the cheese counter, where they float in wonderfully murky waters that keep them fresh and moist, but also in jars, plastic wraps, vacuum-packed and even cans. Think feta, halloumi or ricotta and then extend the range of flavors and textures tenfold. Some are creamy and light, others salty and crumbly. Some you can slice and fry, others spread like cream cheese. The best, I find, are the sheep's milk cheeses. Ask to taste from the counter or just gamble with the pre-packed varieties. You can’t go far wrong.",
+    "Dates and Turkish sheep's cheese"
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/pear-crostini.jpg"
+}

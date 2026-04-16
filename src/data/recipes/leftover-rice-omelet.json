@@ -39,13 +39,12 @@
     "Heat the oil in a seasoned wok or an omelet pan over a high flame. Pour in the egg mixture and swirl it around the base of the pan. Reduce the heat to medium, cover and fry until the under side is golden. Flip the omelet over.",
     "When the omelet is golden on both sides and just cooked through, remove from the heat. Cut into strips or wedges and and pile them up prettily on a serving plate."
   ],
-  "image": null,
+  "image": "/recipes/leftover-rice-omelet.jpg",
   "category": {
     "dish_type": [
       "side"
     ],
-    "chapter": "Rice",
-    "meal_role": "side"
+    "chapter": "Rice"
   },
   "time": {
     "prep": 10,

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "she is also very creative. This is one of her recipes and it’s wonderful.",
+  "intro": "nature I could always rely on her to tell me if something I’d come up with was utter rubbish. To top it all,",
   "ingredients": [
     {
       "item": "medium sweet potatoes (about 2 lbs in total)",
@@ -64,8 +64,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/sweet-potato-wedges-with-lemongrass-cr-me-fra-che.jpg"
 }

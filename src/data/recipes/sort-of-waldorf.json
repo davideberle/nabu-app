@@ -1,0 +1,77 @@
+{
+  "id": "sort-of-waldorf",
+  "name": "Sort-of-Waldorf",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 6",
+  "intro": "molasses, olive oil, and a scant ½ teaspoon salt until well combined. Pour this",
+  "ingredients": [
+    {
+      "item": "cup/50 g shelled cobnuts or hazelnuts",
+      "amount": "⅓"
+    },
+    {
+      "item": "red cabbage, finely shredded (4¼ cups/300 g)",
+      "amount": "¼ head"
+    },
+    {
+      "item": "celery stalks, cut into ¼-inch/5-mm slices (3½ cups/350 g)",
+      "amount": "6"
+    },
+    {
+      "item": "Granny Smith apples, cored and thinly sliced (2¾ cups/300 g)",
+      "amount": "2"
+    },
+    {
+      "item": "medium red onion, thinly sliced (½ cup/60 g)",
+      "amount": "½"
+    },
+    {
+      "item": "cup/140 g sour cream",
+      "amount": "⅔"
+    },
+    {
+      "item": "cup/50 g finely chopped dill rounded ¾ cup/100 g dried sour cherries or cranberries (optional) salt and black pepper",
+      "amount": "1"
+    },
+    {
+      "item": "small shallot, finely chopped (2 tbsp/20 g)",
+      "amount": "1"
+    },
+    {
+      "item": "egg yolk",
+      "amount": "1"
+    },
+    {
+      "item": "Dijon mustard",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "cider vinegar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "cup/80 ml sunflower oil",
+      "amount": "⅓"
+    },
+    {
+      "item": "cup/80 ml canola oil salt",
+      "amount": "⅓"
+    }
+  ],
+  "method": [
+    "To make the mayonnaise, place the shallot, egg yolk, mustard, maple syrup, vinegar, and ½ teaspoon salt in the bowl of a small food processor. Whisk together, then, with the machine still running, slowly add the oils in a steady stream until you get a smooth and thick mayonnaise. Set aside.",
+    "Place the cabbage, celery, apples, and onion in a large bowl. Add the sour cream, dill, mayonnaise, sour cherries, ½ teaspoon salt, and some black pepper. Use your hands to thoroughly mix everything together—don’t worry if you break the apple slices; it’s all part of the look—t ransfer to individual plates, scatter the nuts on top, and serve.",
+    "Sort-of-Waldorf (left), Fancy Coleslaw (center), Spiced cashews (right)"
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/sort-of-waldorf.jpg"
+}

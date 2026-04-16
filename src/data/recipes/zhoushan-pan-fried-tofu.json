@@ -35,7 +35,7 @@
     "Heat the cooking oil in a seasoned frying pan. Add the tofu slices in a single layer and fry over a medium flame until beautifully golden on both sides. You may need to cook them in a couple of batches.",
     "When the tofu is nearly ready, sprinkle it with the ham and spring onions, cover the pan for a few seconds to give them a brief burst of heat, then transfer to a serving dish. Serve hot or cool."
   ],
-  "image": null,
+  "image": "/recipes/zhoushan-pan-fried-tofu.jpg",
   "time": {
     "total": 45
   },
@@ -43,8 +43,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Tofu",
-    "meal_role": "main"
+    "chapter": "Tofu"
   },
   "cuisine": "Chinese"
 }

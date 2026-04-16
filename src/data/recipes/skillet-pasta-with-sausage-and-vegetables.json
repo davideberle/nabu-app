@@ -50,10 +50,6 @@
     {
       "item": "red wine",
       "amount": "1/2 cup"
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -62,12 +58,7 @@
     "tender-crisp. Add wine and cook briefly to evaporate liquid. Mix in pasta.",
     "Garnish individual portions with Parmesan cheese.",
     "Poultry and Meat Pasta Recipes",
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "(27) Baked Ground Beef Pasta",
-    "Baked ground beef pasta is a simple yet filling meal that can be whipped up in under 30 minutes. Plus, it's perfect",
-    "for any on-the-go person who is looking to combine quality ingredients with ease and simplicity. It's never been",
-    "easier to get a healthy dinner on the table on busy weeknights.",
-    "Yield: 6"
+    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
   ],
   "time": {
     "total": 35
@@ -76,8 +67,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/skillet-pasta-with-sausage-and-vegetables.jpg"
 }

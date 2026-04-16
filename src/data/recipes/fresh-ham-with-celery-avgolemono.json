@@ -113,13 +113,12 @@
     "Do not allow sauce to boil.",
     "Serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/fresh-ham-with-celery-avgolemono.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Greek"
 }

@@ -50,7 +50,7 @@
     "Combine the millet and 1 cup of the water in a small saucepan and refrigerate overnight. In the morning, stir in the salt and bring to a boil over medium heat. Immediately decrease the heat to low, cover, and simmer until most of the liquid is absorbed, about 20 minutes. Remove from the heat and let sit, covered, for about 10 minutes.",
     "Put 1½ cups of the peaches and the bananas, orange juice, cashews, dates, lime juice, and the remaining 1 cup water in a blender and process until smooth. Scrape in the millet and any cooking liquid and puree until smooth. Serve garnished with the remaining peaches."
   ],
-  "image": null,
+  "image": "/recipes/fresh-peach-banana-and-warm-millet-smoothie.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -62,8 +62,7 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Desserts",
-    "meal_role": "drink"
+    "chapter": "Desserts"
   },
   "cuisine": "African & Caribbean"
 }

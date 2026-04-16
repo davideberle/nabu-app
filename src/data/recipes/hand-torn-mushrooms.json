@@ -39,13 +39,12 @@
     "Reheat the deep-frying oil to 375°F (190°C) and fry the mushrooms in batches again, until they turn a rich brown. Remove and drain on paper towels.",
     "Put the spring onions in a heatproof bowl. Heat 4 tablespoons fresh cooking oil in a wok over a high flame until a little smoke is coming off the sides of the wok. Pour the oil over the spring onions—in order to extract their fragrance, the oil must be hot enough to produce a violent sizzle, so it’s best to test the temperature by dripping a small amount over the onions first. If there’s a vigorous sizzle, pour over the rest of the oil. Add the salt and sugar and mix well. Toss in the fried mushrooms, adding a little more salt to taste if you wish, then serve."
   ],
-  "image": null,
+  "image": "/recipes/hand-torn-mushrooms.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Appetizers",
-    "meal_role": "main"
+    "chapter": "Appetizers"
   },
   "time": {
     "prep": 20,

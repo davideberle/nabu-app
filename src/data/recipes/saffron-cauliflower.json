@@ -1,0 +1,50 @@
+{
+  "id": "saffron-cauliflower",
+  "name": "Saffron cauliflower",
+  "source": {
+    "cookbook": "Plenty",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "intro": "there’s nothing obviously sexy about cauliflower to warrant star status. In fact, it seems – on the face of it –",
+  "ingredients": [
+    {
+      "item": "saffron",
+      "amount": "½ tsp"
+    },
+    {
+      "item": "medium cauliflower, divided into medium florets",
+      "amount": "1"
+    },
+    {
+      "item": "large red onion, sliced",
+      "amount": "1"
+    },
+    {
+      "item": "good-quality green olives, pitted and cut lengthways in half",
+      "amount": "½ cup"
+    },
+    {
+      "item": "olive oil",
+      "amount": "4 tbsp"
+    },
+    {
+      "item": "bay leaves salt and black pepper",
+      "amount": "2"
+    },
+    {
+      "item": "roughly chopped parsley",
+      "amount": "4 tbsp"
+    }
+  ],
+  "method": [
+    "Preheat the oven to 400°F. Put the saffron strands in a small bowl and pour over the boiling water. Leave to infuse for a minute, then pour the saffron and water into a large mixing bowl. Add the remaining ingredients, except the parsley, and mix everything together well with your hands.",
+    "Transfer the mix to a medium ovenproof dish, cover with foil and place in the oven. Cook for 40 to 45 minutes, or until the cauliflower is tender but still a bit firm, not soft. Halfway through the cooking time remove the dish from the oven and stir well, then cover again and return to bake.",
+    "Once the cauliflower is cooked, take it out of the oven, remove the foil and allow to cool down slightly before stirring in the parsley.",
+    "Taste and adjust the seasoning, then serve warm or at room temperature."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/saffron-cauliflower.jpg"
+}

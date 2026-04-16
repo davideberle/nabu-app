@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "These super easy burritos are spicy with lots of texture. The addition of avocados and black olives makes for a hearty meal.",
   "time": {
-    "prep": 5,
-    "cook": 40,
-    "total": 45
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
   },
   "ingredients": [
     {
@@ -379,8 +379,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Courses",
-    "meal_role": "main"
+    "chapter": "Main Courses"
   },
   "cuisine": "Other"
 }

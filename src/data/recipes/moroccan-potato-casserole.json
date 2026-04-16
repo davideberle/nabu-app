@@ -9,7 +9,7 @@
   "servings": "6 servings",
   "intro": "This is a very colorful dish and a very tasty one. A dressing made from fresh herbs and spices gives this vegetable dish a Moroccan flavor. It is a great vegan recipe!",
   "time": {
-    "prep": 40,
+    "prep": "40 mins",
     "total": 65
   },
   "ingredients": [
@@ -92,8 +92,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Moroccan"
 }

@@ -57,7 +57,7 @@
     "Tip the fried onion into a large mixing bowl and add the pilpelchuma, cumin, caraway, ¾ teaspoon salt, sugar, vinegar, and the remaining oil. Add the carrots and toss well. Leave aside for at least 30 minutes for the flavors to mature.",
     "Arrange the salad on a large platter, dotting with the arugula as you go."
   ],
-  "image": null,
+  "image": "/recipes/spicy-carrot-salad.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -69,8 +69,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Middle Eastern"
 }

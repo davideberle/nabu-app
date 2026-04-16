@@ -65,7 +65,7 @@
     "Place the broccoli in a large bowl. Drizzle with the oil, season to taste, and toss to coat. Heat a griddle pan over medium–high heat. Grill the broccoli for 3–5 minutes on each side, until tender and starting to brown.",
     "Remove the broccoli from the heat and drizzle with the lemon juice. On a large serving dish, spread out the barley and top with the broccoli. Pour over the desired amount of romesco dressing. Serve immediately with the remaining dressing on the side."
   ],
-  "image": null,
+  "image": "/recipes/grilled-broccoli-rabe-with-romesco.jpg",
   "time": {
     "total": 75
   },
@@ -74,8 +74,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "(pictured on page 212) and serve it warm or chilled (it can be kept in the fridge for up to 2 days).",
+  "intro": "and Jews standing at the door around lunchtime. It is one of those unique places I love so much, specializing",
   "ingredients": [
     {
       "item": "dried chickpeas",
@@ -86,8 +86,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "",
-    "meal_role": "component"
+    "chapter": ""
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/hummus-with-ful.jpg"
 }

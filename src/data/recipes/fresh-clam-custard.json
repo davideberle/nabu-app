@@ -48,7 +48,7 @@
     "Boil the kettle. Beat the eggs with ¼ teaspoon salt until well blended. Pour ¾ cup (150ml) of the clam cooking liquid slowly into the egg mixture, leaving any sandy residue in the pan. Add the Shaoxing wine and dark soy sauce, if using, and mix well. Skim off and discard any froth on the surface. Stir in the shelled clams.",
     "Bring water to the boil under your steamer. Warm a shallow bowl large enough to hold the clams and the egg mixture by filling it with hot water from the kettle, then pour off the water. Scatter the unshelled clams, smiley side up, across the base of the bowl. Pour over the egg and shelled clam mixture. Put the dish of eggs and clams in your steamer basket and steam over a medium flame for about 12 minutes, until the eggs have set into a very delicate custard. Scatter with the spring onion greens, cover and steam for a few seconds more, then serve."
   ],
-  "image": null,
+  "image": "/recipes/fresh-clam-custard.jpg",
   "time": {
     "total": 12
   },
@@ -56,8 +56,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish and Seafood",
-    "meal_role": "main"
+    "chapter": "Fish and Seafood"
   },
   "cuisine": "Chinese"
 }

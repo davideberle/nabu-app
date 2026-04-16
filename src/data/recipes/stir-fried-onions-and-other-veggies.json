@@ -9,9 +9,9 @@
   "servings": "makes enough for 4–10 servings, depending on use",
   "intro": "Most British Indian restaurant-style curry sauces are very smooth. Sometimes though, the curry needs just a bit more crunch – curries such a dry bhunas and spicy jalfrezis, for example. Adding a spoonful of this pre-cooked onion and pepper mixture will do just that.\n\nIn many of the curry houses I’ve visited, there is a tub of cooked onions and other vegetables at the ready for when they are needed. As they are already cooked, they can be added to a curry at the end of cooking. The veggies can be stored in the fridge for up to 3 days.\n\nIs this necessary? I don’t think so for the home cook, since vegetables cook very quickly anyway, as many of my recipes demonstrate. If you’re cooking for a large group of people, however, you might like to have these fried veggies on hand. Add them to any curry you want even if not suggested in the recipe. If you like crunchy veggies in your curries, you really can’t go wrong.",
   "time": {
-    "prep": 5,
-    "cook": 10,
-    "total": 15
+    "prep": "5 MINS",
+    "cook": "10 MINS",
+    "total": "5 MINS10 MINS"
   },
   "ingredients": [
     {
@@ -43,7 +43,7 @@
     "Heat the oil in a large pan over a medium–high heat. Toss in the panch poran and sizzle for about 10 seconds before adding the onions and green and red (bell) peppers. Fry for about 10 minutes until soft but the peppers still have a nice crunch to them.",
     "Add the turmeric and stir to combine. Tip into a bowl to cool and use as required. This same method can also be used for other vegetables."
   ],
-  "image": null,
+  "image": "/recipes/stir-fried-onions-and-other-veggies.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -52,8 +52,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Accompaniments",
-    "meal_role": "main"
+    "chapter": "Accompaniments"
   },
   "cuisine": "Indian"
 }

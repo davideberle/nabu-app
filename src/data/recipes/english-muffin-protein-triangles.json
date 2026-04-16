@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "Here’s a unique appetizer that’s easy to make. Flavor-packed ingredients are blended together and piled high on English muffins. After broiling and slicing, you have bite-size treats that you’ll want to serve again and again.",
   "time": {
-    "prep": 5,
-    "cook": 15,
-    "total": 20
+    "prep": "5 minutes",
+    "cook": "15 minutes",
+    "total": "20 minutes"
   },
   "ingredients": [
     {
@@ -487,8 +487,7 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Appetizers & Snacks",
-    "meal_role": "starter"
+    "chapter": "Appetizers & Snacks"
   },
   "cuisine": "Other"
 }

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "flavor. It keeps well so double it and it will sustain you kindly.",
+  "intro": "The process of broiling the vegetables before cooking them together gives this soup a profound depth of",
   "ingredients": [
     {
       "item": "medium eggplants",
@@ -71,8 +71,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

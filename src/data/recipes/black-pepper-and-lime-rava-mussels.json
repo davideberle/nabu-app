@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "These mussels make the perfect starter course. They’re crispy and, as very little spice is used, fuss-free too. You can work ahead as all the preparation up to actually frying the mussels can be done 1–2 hours beforehand. Then just 4 minutes of shallow-frying and your starter is on the table. They are pictured.",
   "time": {
-    "prep": 10,
-    "cook": 15,
-    "total": 25
+    "prep": "10 MINS",
+    "cook": "15 MINS",
+    "total": "10 MINS15 MINS"
   },
   "ingredients": [
     {
@@ -62,7 +62,7 @@
     "Heat the oil over a medium–high heat in a preferably non-stick frying pan. Fry the mussels on one side for about 2 minutes, then turn them over to fry the other side, until the mussels are golden brown. This shouldn’t take more than about 4 minutes.",
     "For a nice presentation, serve the fried mussels in half shells. Season with flaky sea salt and serve hot with lime wedges."
   ],
-  "image": null,
+  "image": "/recipes/black-pepper-and-lime-rava-mussels.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -70,8 +70,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics & Breads",
-    "meal_role": "main"
+    "chapter": "Basics & Breads"
   },
   "cuisine": "Indian"
 }

@@ -41,7 +41,7 @@
   "method": [
     "Put all the ingredients in a small saucepan over low heat and bring to a simmer. Cook, stirring occasionally, until the mango is falling apart, about 15 minutes. Let cool, then transfer to a blender and process until creamy. Strain through a fine-mesh sieve into a 1-pint glass jar, pressing the solids to extract as much liquid as possible. Use immediately, or seal tightly and store in the refrigerator for up to 2 weeks."
   ],
-  "image": null,
+  "image": "/recipes/mango-maple-syrup.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -53,8 +53,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "African & Caribbean"
 }

@@ -43,7 +43,7 @@
     "Stir in the parsley, season well with salt and pepper, and cook for 2 more minutes. Using a slotted spoon, remove the peppers, and arrange in a serving dish.",
     "Add the vinegar to the pan, increase the heat, and simmer the sauce for 5–7 minutes, or until it has reduced and thickened. Pour the sauce over the peppers and allow to cool before serving."
   ],
-  "image": null,
+  "image": "/recipes/red-pepper-salad.jpg",
   "time": {
     "total": 35
   },
@@ -52,8 +52,7 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "side"
+    "chapter": "Vegetables"
   },
   "cuisine": "Other"
 }

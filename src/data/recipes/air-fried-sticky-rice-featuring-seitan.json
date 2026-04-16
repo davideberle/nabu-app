@@ -9,9 +9,9 @@
   "servings": "4 servings",
   "intro": "This dinner recipe will knock your socks off. The sweet and spicy sauce is fast and easy to make. There’s a skillet option, too!",
   "time": {
-    "prep": 5,
-    "cook": 40,
-    "total": 45
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
   },
   "ingredients": [
     {
@@ -1628,8 +1628,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Main Courses",
-    "meal_role": "side"
+    "chapter": "Main Courses"
   },
   "cuisine": "Other"
 }

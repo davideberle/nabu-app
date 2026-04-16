@@ -42,21 +42,12 @@
     {
       "item": "lemon juice",
       "amount": "2 tbsp."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "Cook pasta as directed on package. When cooked through but al dente, remove from heat, drain and rinse.",
     "Combine mayonnaise, lemon juice, oil and salt and pepper in a cup.",
-    "Add tuna, apple, pepper and mushrooms to pasta. Pour over dressing and toss until well combined.",
-    "(3) Vermicelli Salad with Crabmeat",
-    "This salad brings together a selection of ingredients that are both delicious to eat and visually appealing, meaning",
-    "there's something for everyone to enjoy! It's also great served alongside a warm dish such as chicken curry or",
-    "steamed vegetables.",
-    "Yield:"
+    "Add tuna, apple, pepper and mushrooms to pasta. Pour over dressing and toss until well combined."
   ],
   "time": {
     "total": 35
@@ -65,8 +56,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/tuna-and-mushroom-pasta-salad.jpg"
 }

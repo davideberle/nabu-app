@@ -23,7 +23,7 @@
     "Take the rice out of the steamer and spread it out so that it cools quickly. Crush the wine yeast to a powder with a pestle and mortar. When the rice is lukewarm, scatter over the crushed yeast and mix it in. Put the mixture into a glass or earthenware jar. Make a hollow in the center of the rice, all the way to the bottom of the jar, so the juices can gather. Sprinkle over 3–4 tablespoons cooled boiled water, then close the jar with a clean tea towel or a loose-fitting lid and leave in a warm place to ferment. The ideal temperature for this is 85°F (30°C) (A Zhejiang farmer who makes this wine professionally warned me not to let it exceed 95°F/35°C, or the wine will sour.)",
     "The wine will be ready after a few days, depending on the ambient temperature. After a day, you can check it: when it is ready, the rice grains will be soft and pulpy but still keep their shape, and the liquid should be beautifully aromatic, with just a gentle hint of sourness. When you reach this stage, top the jar up with cooled boiled water, close with the lid and store in the fridge until needed."
   ],
-  "image": null,
+  "image": "/recipes/fermented-glutinous-rice-wine.jpg",
   "time": {
     "total": 180
   },
@@ -31,8 +31,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Basic Recipes",
-    "meal_role": "side"
+    "chapter": "Basic Recipes"
   },
   "cuisine": "Chinese"
 }

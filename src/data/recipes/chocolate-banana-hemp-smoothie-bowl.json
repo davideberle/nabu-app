@@ -9,9 +9,9 @@
   "servings": "1 serving",
   "intro": "There’s nothing like hiding a bit of spinach in a chocolate banana smoothie bowl. Make it for breakfast and you’re off to a running start for the day.",
   "time": {
-    "prep": 40,
-    "cook": 40,
-    "total": 80
+    "prep": "40 minutes",
+    "cook": "40 minutes",
+    "total": "1 hour 20 minutes"
   },
   "ingredients": [
     {
@@ -568,8 +568,7 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Breakfast",
-    "meal_role": "drink"
+    "chapter": "Breakfast"
   },
   "cuisine": "Other"
 }

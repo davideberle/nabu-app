@@ -9,9 +9,9 @@
   "servings": "serves 3–4",
   "intro": "Hispi cabbage is such a humble ingredient. I grew up absolutely loving cabbage as a really simple and quick meal. My mother used to steam it with LOTS of garlic and soy sauce and top it with fried onions. This recipe involves pan-frying it in brown butter and then coating it with a sorrel hoisin sauce, which makes it feel really special. The cabbage leaves get lovely and glazed and slightly crispy in all the right places.",
   "time": {
-    "prep": 10,
-    "cook": 30,
-    "total": 40
+    "prep": "10 MINUTESCOOK TIME: 30 MINUTES",
+    "cook": "30 MINUTES",
+    "total": "10 MINUTESCOOK TIME: 30 MINUTES30 MINUTES"
   },
   "ingredients": [
     {
@@ -62,8 +62,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Sides",
-    "meal_role": "main"
+    "chapter": "Sides"
   },
   "cuisine": "Caribbean"
 }

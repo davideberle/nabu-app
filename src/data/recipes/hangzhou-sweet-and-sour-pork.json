@@ -67,7 +67,7 @@
     "In a seasoned wok, heat the oil for deep-frying to 350°F (150°C). Use a pair of chopsticks to drop pieces of pork into the oil in batches. Fry for about 3 minutes, until crisp and just cooked through, then remove and set aside. Reheat the oil to 375–400°F (190–200°C). Fry the pork again until golden and crisp; set aside. Pour off the oil into a heatproof container.",
     "Return the pork pieces to a dry wok over a high flame. Give the sauce a quick stir and immediately pour it into the base of the wok. When the sauce boils and starts to thicken, stir vigorously to coat the pieces in the sauce, which will quickly reduce to a treacly glaze. Add the spring onion greens and turn a couple of times to give them a lick of heat. Remove from the heat, stir in the sesame oil, if using, and serve."
   ],
-  "image": null,
+  "image": "/recipes/hangzhou-sweet-and-sour-pork.jpg",
   "time": {
     "total": 3
   },
@@ -75,8 +75,7 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Meat",
-    "meal_role": "dessert"
+    "chapter": "Meat"
   },
   "cuisine": "Chinese"
 }

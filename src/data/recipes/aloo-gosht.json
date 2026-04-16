@@ -9,9 +9,9 @@
   "servings": "serves 4 or more as part of a multi-course meal",
   "intro": "Aloo gosht, or potatoes with meat, makes an excellent meal on its own. I do usually serve it with rice, chapattis and/or naans, but there are plenty of carbs in the potatoes, so you could simply serve it on its own as you would a stew. The bassar curry masala mentioned in this recipe is used mainly in Pakistani cuisine. It is spicy like chilli powder but has other ingredients thrown in, including mustard oil powder. It should be cooked before it is eaten and adds a really nice flavour.",
   "time": {
-    "prep": 10,
-    "cook": 15,
-    "total": 10
+    "prep": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE, COOKING THE POTATOES AND MEAT",
+    "cook": "15 MINS",
+    "total": "10 MINS, PLUS MAKING THE BASE CURRY SAUCE, COOKING THE POTATOES AND MEAT15 MINS"
   },
   "ingredients": [
     {
@@ -93,9 +93,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Biryanis & Rice",
-    "meal_role": "main"
+    "chapter": "Biryanis & Rice"
   },
-  "cuisine": "Indian",
-  "tips": "Note: MAKING THE BASE CURRY SAUCE, COOKING THE POTATOES AND MEAT; MAKING THE BASE CURRY SAUCE, COOKING THE POTATOES AND MEAT15 MINS."
+  "cuisine": "Indian"
 }

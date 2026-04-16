@@ -62,10 +62,6 @@
     {
       "item": "Non-stick cooking spray",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -75,11 +71,7 @@
     "pepper.",
     "Spoon spaghetti mixture into a shallow 2-quart casserole dish or 9-inch square baking dish, lightly sprayed with",
     "non-stick cooking spray. Sprinkle with cheese.",
-    "Bake uncovered at 375 degrees for about 25 minutes or until bubbly and heated through.",
-    "(13) Avocado, Roasted Mushroom, and Ham Spaghetti",
-    "Mushrooms, avocado, and ham are perfect for this winter-inspired pasta dish. You combine crunchy mushrooms",
-    "with creamy avocados to create a hearty sauce that will keep you warm as the weather gets colder.",
-    "Yield: 6"
+    "Bake uncovered at 375 degrees for about 25 minutes or until bubbly and heated through."
   ],
   "time": {
     "total": 55
@@ -88,8 +80,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/crab-and-spaghetti-bake.jpg"
 }

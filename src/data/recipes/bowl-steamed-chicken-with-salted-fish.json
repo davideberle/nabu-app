@@ -44,7 +44,7 @@
     "Smack the spring onion with the flat side of a Chinese cleaver or a rolling pin to loosen its fibers and cut it in half. Put the spring onion and ginger on the chicken and add the Shaoxing wine and chicken stock or water. Cover the bowl with a heatproof plate or aluminum foil, place it in a steamer basket and steam over a high flame for 30 minutes.",
     "To serve, remove the plate or foil, cover the bowl with a serving dish and swiftly invert it, so the chicken falls out in a dome surrounded by its cooking juices. Garnish with the spring onion greens. Don’t forget to spoon the wild, heady juices over your rice."
   ],
-  "image": null,
+  "image": "/recipes/bowl-steamed-chicken-with-salted-fish.jpg",
   "time": {
     "total": 95
   },
@@ -52,8 +52,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry and Eggs",
-    "meal_role": "main"
+    "chapter": "Poultry and Eggs"
   },
   "cuisine": "Chinese"
 }

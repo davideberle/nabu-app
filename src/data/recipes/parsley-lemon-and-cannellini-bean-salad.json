@@ -1,12 +1,12 @@
 {
   "id": "parsley-lemon-and-cannellini-bean-salad",
-  "name": "Parsley, Lemon, and Cannellini Bean Salad",
+  "name": "Parsley, Lemon, And Cannellini Bean Salad",
   "source": {
     "cookbook": "Plenty More",
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "aiming for a pungent, sweet-and-sour flavor.",
+  "intro": "Mix well and taste to see if you need any more salt, sugar, or vinegar: you are",
   "ingredients": [
     {
       "item": "cup/100 g red quinoa",
@@ -48,12 +48,5 @@
   ],
   "time": {
     "total": 30
-  },
-  "category": {
-    "dish_type": [
-      "salad"
-    ],
-    "chapter": "",
-    "meal_role": "main"
   }
 }

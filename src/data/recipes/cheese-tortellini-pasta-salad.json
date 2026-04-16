@@ -94,21 +94,13 @@
     {
       "item": "Dijon mustard",
       "amount": "1 1/2 tsp."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
     "Blanch snow peas and broccoli for 1 minute. Drain and cool. In a large bowl, combine tomatoes, peas, mushrooms,",
     "broccoli and black olives. Cook pasta according to package directions; drain and cool. Add vegetables to pasta and",
     "add cheese.",
-    "Dressing: Combine ingredients in a jar and shake vigorously. Toss with pasta mixture. Chill at least 4 hours.",
-    "(2) Tuna and Mushroom Pasta Salad",
-    "This recipe is a delicious way to use up leftovers. It’s quick, easy, and perfect for any summer day or picnic. It also",
-    "happens to be low-carb and vegan! So, come on in and enjoy this tasty dish!",
-    "Yield: 5"
+    "Dressing: Combine ingredients in a jar and shake vigorously. Toss with pasta mixture. Chill at least 4 hours."
   ],
   "time": {
     "total": 35
@@ -117,8 +109,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/cheese-tortellini-pasta-salad.jpg"
 }

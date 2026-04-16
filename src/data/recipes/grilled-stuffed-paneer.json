@@ -9,9 +9,9 @@
   "servings": "serves 2–3 or more as part of a multi-course meal",
   "intro": "This stuffed paneer recipe is delicious fried, but I also like to cook it outdoors on skewers over the hot coals. I usually marinate the paneer for about 2 hours or overnight, but I do this more for convenience than flavour. Still, you will get a more intense flavour if you marinate the paneer for a while. If marinating, prick each piece of paneer a few times with a fork to allow the marinade to really get into the cheese.",
   "time": {
-    "prep": 15,
-    "cook": 10,
-    "total": 25
+    "prep": "15 MINS",
+    "cook": "10 MINS",
+    "total": "15 MINS10 MINS"
   },
   "ingredients": [
     {
@@ -128,8 +128,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Street Food",
-    "meal_role": "main"
+    "chapter": "Street Food"
   },
   "cuisine": "Indian"
 }

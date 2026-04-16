@@ -50,10 +50,6 @@
     {
       "item": "Black pepper and salt",
       "amount": ""
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -63,13 +59,7 @@
     "Meanwhile, cook the pasta according package instructions. Drain and set aside in an oiled baking dish.",
     "Add the lamb mixture to the pasta and toss to combine. Pour the ricotta mixture on top and sprinkle with the",
     "remaining Parmesan cheese.",
-    "Bake the pasta until the cheese turns golden, 15-20 minutes.",
-    "(17) Summer Pasta with Pesto",
-    "One of the easiest, most delicious meals to make in the summer is pasta with pesto. It’s super quick to prepare. All",
-    "you need is some fresh basil, a couple cloves of garlic, pine nuts or walnuts (both work well), olive oil, Parmesan",
-    "cheese, and salt and pepper if desired. It's tasty, nutritious, and easy on the budget. You'll love how this pasta dish",
-    "takes advantage of fresh vegetables and herbs grown at home too!",
-    "Yield:"
+    "Bake the pasta until the cheese turns golden, 15-20 minutes."
   ],
   "time": {
     "total": 63
@@ -78,8 +68,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/greek-style-baked-pasta.jpg"
 }

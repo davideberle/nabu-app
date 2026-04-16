@@ -49,7 +49,7 @@
   "method": [
     "Peel the cucumbers and cut them into very thin slices. Mix all the rest of the ingredients in a medium bowl, add the cucumbers, and check the seasoning. Leave in the fridge for 30 minutes. Serve cold."
   ],
-  "image": null,
+  "image": "/recipes/yogurt-with-cucumber.jpg",
   "dietary": [
     "vegetarian"
   ],
@@ -60,8 +60,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Condiments",
-    "meal_role": "main"
+    "chapter": "Condiments"
   },
   "cuisine": "Middle Eastern"
 }

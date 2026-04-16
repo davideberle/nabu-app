@@ -173,13 +173,12 @@
     "Bake for 15 minutes, then reduce the oven temperature to 350°F and bake for 45 minutes more, or until golden brown.",
     "Let cool before cutting. Serve at room temperature, or refrigerate and serve cold."
   ],
-  "image": null,
+  "image": "/recipes/chaniotiki-tourta.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Savory Pitas and Pies",
-    "meal_role": "main"
+    "chapter": "Savory Pitas and Pies"
   },
   "cuisine": "Greek"
 }

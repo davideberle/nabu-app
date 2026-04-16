@@ -38,7 +38,7 @@
     "Make diagonal cuts into the thickest part of the fish at 1 in (2cm) intervals, then cut it into 2–2½ in (5–6cm) sections. Put them in a bowl. Smack the ginger and spring onion with the flat side of a Chinese cleaver or a rolling pin to loosen their fibers, then add them to the fish, along with the Shaoxing wine and salt. Mix well and set aside in the fridge for 2–3 hours.",
     "Pat the fish pieces dry with paper towels. Pour ⅛ in (3–4mm) cooking oil into a flat frying pan with a seasoned or non-stick surface and heat over a high flame. When the oil is hot, turn the heat down to medium and add the fish pieces in a single layer. Fry for 5–10 minutes, until crisp and golden, then turn over and repeat on the other side. It is very important not to move the fish around until it has developed a crisp, golden layer, to avoid breaking the skin. Serve with rice and other dishes."
   ],
-  "image": null,
+  "image": "/recipes/pan-fried-ribbonfish.jpg",
   "time": {
     "total": 180
   },
@@ -46,8 +46,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish and Seafood",
-    "meal_role": "main"
+    "chapter": "Fish and Seafood"
   },
   "cuisine": "Chinese"
 }

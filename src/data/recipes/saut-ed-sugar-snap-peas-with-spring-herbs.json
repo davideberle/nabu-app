@@ -59,7 +59,7 @@
     "Put about 12 cups of water in a large pot and bring to a boil over high heat. Add 1 teaspoon of the salt, then add the sugar snap peas and blanch for 30 seconds. Drain well.",
     "Heat the oil in a large skillet over medium heat. Add the garlic and sauté until fragrant, 2 to 3 minutes. Add the peas and the remaining ½ teaspoon salt, increase the heat to high, and cook, shaking the pan and tossing vigorously, for about 1 minute. Transfer to a large bowl, add the orange zest and lemon juice, and toss until the peas are evenly coated. Serve topped with the chive mixture, a few grinds of white pepper, and the sesame seeds."
   ],
-  "image": null,
+  "image": "/recipes/saut-ed-sugar-snap-peas-with-spring-herbs.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -71,8 +71,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetables",
-    "meal_role": "main"
+    "chapter": "Vegetables"
   },
   "cuisine": "African & Caribbean"
 }

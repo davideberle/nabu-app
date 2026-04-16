@@ -45,10 +45,6 @@
     {
       "item": "linguine",
       "amount": "1 lb."
-    },
-    {
-      "item": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "amount": ""
     }
   ],
   "method": [
@@ -57,13 +53,7 @@
     "In a medium bowl, whisk eggs, cheese, pepper and parsley.",
     "Cook pasta as per the directions on the package; drain. Place pasta in a heated serving bowl and toss with egg",
     "mixture. Pour on bacon mix and toss.",
-    "Serve while hot.",
-    "(23) Baked Penne with Spinach, Feta and Fontina",
-    "If you're not in the mood for a super-rich pasta dish or you just want to make a really quick and easy dish,",
-    "homemade penne is your answer. It means having just two ingredients’ penne and cheese. That's it! And don't",
-    "worry about flavor; adding salt, pepper, hot sauce, or crushed red pepper flakes only takes seconds of prep time and",
-    "doesn't affect the taste much.",
-    "Yield: 6"
+    "Serve while hot."
   ],
   "time": {
     "total": 35
@@ -72,8 +62,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "image": "/recipes/linguine-carbonara.jpg"
 }

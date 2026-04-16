@@ -114,13 +114,12 @@
     "Bake for 10 to 12 minutes, until the shrimp are a medium-pinkish color and the cheese is a bit browned. Don’t overcook the shrimp.",
     "Remove from the oven and garnish with parsley."
   ],
-  "image": null,
+  "image": "/recipes/shrimp-santorini.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
+    "chapter": "Main Dishes"
   },
   "cuisine": "Greek"
 }

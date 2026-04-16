@@ -76,13 +76,12 @@
     "When ready to make the pancakes, in a nonstick skillet, melt 2 teaspoons butter over medium-high heat, tilting the pan so the butter is evenly distributed over the surface.",
     "Pour the batter into the skillet, a ladleful at a time, to form pancakes that are about 4 inches (10 cm) in diameter. Don’t overcrowd the skillet. Flip the pancakes when the underside is golden brown and continue to cook until both sides are golden. Transfer to a plate, dabbing each pancake with a little butter as you stack them. Continue until the all the batter has been used, adding butter to the skillet between batches as needed. Serve hot."
   ],
-  "image": null,
+  "image": "/recipes/greek-yogurt-pancakes.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics",
-    "meal_role": "main"
+    "chapter": "Basics"
   },
   "cuisine": "Greek"
 }

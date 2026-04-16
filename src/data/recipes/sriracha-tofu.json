@@ -41,7 +41,7 @@
     "Let the tofu gently sizzle for 3 to 4 minutes to dry out and brown. Midway through cooking, when the underside is mottled orange or maybe browned, drizzle on the remaining 1½ teaspoons canola oil and flip the tofu. The finished tofu will have an orange-brown color with some dark brown spots.",
     "Remove the pan from the heat and let the sizzling subside, then transfer the tofu to a rack. Let the tofu rest for 5 to 10 minutes to cool and dry before using. The tofu can be stored in an airtight container in the refrigerator for up to 5 days (freezing dries out the tofu slightly)."
   ],
-  "image": null,
+  "image": "/recipes/sriracha-tofu.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -50,8 +50,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Eggs, Tofu, and Tempeh",
-    "meal_role": "main"
+    "chapter": "Eggs, Tofu, and Tempeh"
   },
   "cuisine": "Southeast Asian"
 }

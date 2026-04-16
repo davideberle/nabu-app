@@ -9,9 +9,9 @@
   "servings": "6 servings",
   "intro": "This is an easy and delicious recipe that serves up a complete meal. It’s great for any night of the week. Presoak the beans overnight and you’re on your way.",
   "time": {
-    "prep": 5,
-    "cook": 40,
-    "total": 45
+    "prep": "5 minutes",
+    "cook": "40 minutes",
+    "total": "45 minutes"
   },
   "ingredients": [
     {
@@ -1507,8 +1507,7 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Main Courses",
-    "meal_role": "main"
+    "chapter": "Main Courses"
   },
   "cuisine": "Other"
 }

@@ -9,7 +9,8 @@
   "servings": "makes enough for 4–6 as an accompaniment",
   "intro": "This is probably the most popular chutney served in Indian restaurants. Some chefs add a little food colouring to make it bright green.",
   "time": {
-    "prep": 5,
+    "prep": "5 MINS",
+    "cook": "",
     "total": 30
   },
   "ingredients": [
@@ -41,7 +42,7 @@
   "method": [
     "Place the ingredients in a mixing bowl and whisk to combine until smooth. Cover and place in the fridge for at least 30 minutes before serving."
   ],
-  "image": null,
+  "image": "/recipes/mint-chutney.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -50,8 +51,7 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Base Sauces",
-    "meal_role": "side"
+    "chapter": "Base Sauces"
   },
   "cuisine": "Indian"
 }

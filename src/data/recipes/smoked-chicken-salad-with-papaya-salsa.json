@@ -59,7 +59,7 @@
     "Now make the salsa. Halve the papaya, and remove the seeds. Peel, then chop the flesh. In a bowl, toss together the papaya with the chile, lime juice, and sugar. Season to taste with the salt and black pepper.",
     "In a large bowl, toss the spinach and basil with the dressing, then divide between 4 individual plates. Arrange the smoked chicken on top. Serve with the salsa spooned on top or on the side."
   ],
-  "image": null,
+  "image": "/recipes/smoked-chicken-salad-with-papaya-salsa.jpg",
   "time": {
     "total": 45
   },
@@ -67,8 +67,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry & Meat",
-    "meal_role": "main"
+    "chapter": "Poultry & Meat"
   },
   "cuisine": "Other"
 }

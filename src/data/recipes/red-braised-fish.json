@@ -63,7 +63,7 @@
     "When you are ready to cook, boil the kettle. Pat the fish dry with paper towels, then rub both sides with the 2 teaspoons dark soy sauce. Heat the lard or cooking oil in a seasoned wok over a high flame. Add the fish, turn the heat down to medium and fry until browned. Turn the fish, add the ginger and spring onion and fry until the other side is colored and the ginger and onion are fragrant. (Try not to move the fish around too much to avoid breaking the skin; just tilt the wok gently to make sure it is evenly colored.) Add the Shaoxing wine, 1½ tablespoons dark soy sauce, the sugar and 1 cup (200ml) hot water from the kettle. Bring to the boil over a high flame. Cover with a lid and cook over a medium flame for about 4 minutes. Carefully turn the fish, cover and cook for about another 4 minutes, until the thickest part of the fish is cooked through.",
     "Transfer the fish to a serving plate, discarding the ginger and spring onions. Turn up the heat to reduce the sauce to a dark, glossy gravy. Pour the sauce over the fish, scatter with spring onion greens and serve."
   ],
-  "image": null,
+  "image": "/recipes/red-braised-fish.jpg",
   "time": {
     "total": 4
   },
@@ -71,8 +71,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish and Seafood",
-    "meal_role": "main"
+    "chapter": "Fish and Seafood"
   },
   "cuisine": "Chinese"
 }

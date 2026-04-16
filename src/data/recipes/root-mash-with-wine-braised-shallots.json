@@ -1,0 +1,80 @@
+{
+  "id": "root-mash-with-wine-braised-shallots",
+  "name": "Root Mash with Wine-Braised Shallots",
+  "source": {
+    "cookbook": "Plenty More",
+    "author": "Yotam Ottolenghi"
+  },
+  "servings": "serves 4",
+  "ingredients": [
+    {
+      "item": "large celery root, peeled and cut into chunks (about 2 cups/300 g)",
+      "amount": "½"
+    },
+    {
+      "item": "large carrots, peeled and cut into chunks (about 2 cups/300 g)",
+      "amount": "2"
+    },
+    {
+      "item": "kabocha squash or another type, peeled and cut into chunks (about 2 cups/300 g)",
+      "amount": "½"
+    },
+    {
+      "item": "sweet potatoes, peeled and cut into chunks (about 4 cups/600 g) scant 5 tbsp/70 g unsalted butter, diced",
+      "amount": "2"
+    },
+    {
+      "item": "maple syrup",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "ground cumin salt and black pepper",
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "olive oil",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "lb/600 g shallots, peeled and left whole",
+      "amount": "1⅓"
+    },
+    {
+      "item": "cups/400 ml red wine scant 1 cup/200 ml vegetable stock",
+      "amount": "1⅔"
+    },
+    {
+      "item": "bay leaves",
+      "amount": "2"
+    },
+    {
+      "item": "black peppercorns",
+      "amount": "1 tsp"
+    },
+    {
+      "item": "thyme sprigs",
+      "amount": "4"
+    },
+    {
+      "item": "superfine sugar",
+      "amount": "1 tbsp"
+    },
+    {
+      "item": "tbsp/30 g unsalted butter salt",
+      "amount": "2"
+    }
+  ],
+  "method": [
+    "Start with the shallots. Place the oil in a saucepan and place over high heat.",
+    "Add the shallots and fry for about 5 minutes, stirring occasionally, until",
+    "colored all over. Add the wine, stock, bay leaves, peppercorns, thyme, sugar, and ¾ teaspoon salt. Cover, turn down the heat to low, and simmer gently for",
+    "1 hour. Remove the lid, increase the heat, and boil for about 8 minutes, until the remaining liquid is reduced by half. Use a slotted spoon to remove the shallots from the pan and keep them somewhere warm. Stir the butter into the sauce and set aside until ready to use.",
+    "Bring a saucepan of water to a boil over high heat, add the lentils, turn down the heat to medium, and simmer for about 25 minutes, until tender. Drain and set aside.",
+    "For the mash, half fill a saucepan with water and bring to a boil. Add the celery root and carrots and cook for about 10 minutes. Add the squash and sweet potatoes and cook for a further 10 to 15 minutes, until all the vegetables are cooked.",
+    "Drain the vegetables, shaking off as much liquid as possible, and mash well with a potato masher. Add the butter, maple syrup, cumin, cooked lentils, 1 teaspoon salt, and plenty of black pepper. Mix well and then divide the warm mash among the serving plates. Top with the shallots, spoon the sauce over the top, and serve at once."
+  ],
+  "time": {
+    "total": 30
+  },
+  "image": "/recipes/root-mash-with-wine-braised-shallots.jpg"
+}

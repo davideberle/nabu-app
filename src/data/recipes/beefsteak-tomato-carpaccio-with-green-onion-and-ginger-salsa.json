@@ -63,11 +63,5 @@
   "time": {
     "total": 30
   },
-  "category": {
-    "dish_type": [
-      "condiment"
-    ],
-    "chapter": "",
-    "meal_role": "component"
-  }
+  "image": "/recipes/beefsteak-tomato-carpaccio-with-green-onion-and-ginger-salsa.jpg"
 }

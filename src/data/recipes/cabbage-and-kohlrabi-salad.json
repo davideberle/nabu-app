@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "looking for kohlrabi, and it isn’t very easy to find. Serve the salad alongside rich main courses, such as Very",
+  "intro": "root vegetables you can use it in gratins; you can shallow-fry it in olive oil and serve with garlic and chives;",
   "ingredients": [
     {
       "item": "medium or",
@@ -60,8 +60,7 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "",
-    "meal_role": "main"
+    "chapter": ""
   },
   "cuisine": "Middle Eastern"
 }

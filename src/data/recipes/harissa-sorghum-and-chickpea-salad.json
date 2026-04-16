@@ -55,7 +55,7 @@
     "Meanwhile, preheat the oven to 400°F (200°C). Place the red bell peppers and onions on a baking sheet. Drizzle with the oil and toss to coat. Bake in the oven for 30–40 minutes, until softened. Remove from the heat. Add the red bell peppers and onions to the sorghum and mix well.",
     "Add the chickpeas and harissa paste to the sorghum mixture. Toss to combine, making sure the vegetables and chickpeas are evenly covered with the paste. Pour in the lemon juice and season to taste. Divide the arugula between 4 individual plates and top with the sorghum salad. Garnish with parsley and serve immediately."
   ],
-  "image": null,
+  "image": "/recipes/harissa-sorghum-and-chickpea-salad.jpg",
   "time": {
     "total": 65
   },
@@ -63,8 +63,7 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Grains & Pulses",
-    "meal_role": "main"
+    "chapter": "Grains & Pulses"
   },
   "cuisine": "Other"
 }
