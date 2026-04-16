@@ -144,6 +144,20 @@ export function getDietary(recipe: Recipe): string[] {
   return recipe.dietary || recipe.tags?.dietary || [];
 }
 
+// Derive low-calorie flag from name/dish_type heuristics.
+// No explicit calorie data exists in the dataset, so we use a conservative
+// approach: only flag recipes whose name or dish_type clearly indicates a
+// lighter dish (salad, soup, bowl). Quick cook time alone is NOT sufficient.
+const LOW_CAL_WORDS = ["salad", "soup", "bowl", "broth"];
+
+export function isLowCalorie(recipe: Recipe): boolean {
+  const nameLower = recipe.name.toLowerCase();
+  if (LOW_CAL_WORDS.some((w) => nameLower.includes(w))) return true;
+  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
+  if (dishTypes.some((d) => LOW_CAL_WORDS.some((w) => d.includes(w)))) return true;
+  return false;
+}
+
 // Generic occasion/meal-time strings that are not meaningful course labels.
 const OCCASION_TAGS = new Set(["dinner", "lunch", "supper", "brunch"]);
 
@@ -323,12 +337,6 @@ export async function getDietaryOptions(): Promise<
       count,
     }))
     .sort((a, b) => b.count - a.count);
-}
-
-// Check if a recipe is tagged as low-calorie
-export function isLowCalorie(recipe: Recipe): boolean {
-  const dietary = getDietary(recipe);
-  return dietary.some((t) => t.toLowerCase() === "low-calorie");
 }
 
 // Get the meal role for display (main, side, starter, dessert, component, breakfast, drink)

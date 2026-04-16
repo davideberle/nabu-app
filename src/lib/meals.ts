@@ -1,4 +1,4 @@
-import { type Recipe, getCuisine, getDietary } from "./recipes";
+import { type Recipe, getCuisine, getDietary, isLowCalorie } from "./recipes";
 
 // ----- season helpers -----
 
@@ -12,6 +12,14 @@ function currentSeason(now = new Date()): Season {
   if (m >= 8 && m <= 10) return "fall";
   return "winter";
 }
+
+/** Adjacent seasons that are "close enough" to not penalise. */
+const ADJACENT_SEASONS: Record<Season, Season[]> = {
+  spring: ["winter", "summer"],
+  summer: ["spring", "fall"],
+  fall: ["summer", "winter"],
+  winter: ["fall", "spring"],
+};
 
 const OPPOSITE_SEASON: Record<Season, Season> = {
   spring: "fall",
@@ -39,15 +47,31 @@ const INTRO_SEASON_SIGNALS: Record<Season, RegExp> = {
   winter: /\b(winter (dish|recipe|meal|dinner|cook|treat|favor|warm|stew)|(in|for|of) winter|cold day|cold[- ]weather|fireside)\b/i,
 };
 
+const SEASON_NAMES: Season[] = ["spring", "summer", "fall", "winter"];
+
 /**
  * Returns the primary season a recipe belongs to, or null if season-neutral.
- * Checks name first (strongest signal), then intro text.
+ * Priority: explicit tags.season > name keywords > chapter name > intro text.
  */
 function recipeSeason(recipe: Recipe): Season | null {
+  // 1. Explicit season tags (strongest signal)
+  const seasonTags = recipe.tags?.season ?? [];
+  for (const tag of seasonTags) {
+    const lower = tag.toLowerCase() as Season;
+    if (SEASON_NAMES.includes(lower)) return lower;
+  }
+
+  // 2. Name keywords
   const name = recipe.name;
   for (const [season, re] of Object.entries(SEASON_SIGNALS) as [Season, RegExp][]) {
     if (re.test(name)) return season;
   }
+
+  // 3. Chapter name (exact match only, e.g. "Fall", "Spring")
+  const chapter = (recipe.source?.chapter || recipe.category?.chapter || "").toLowerCase().trim();
+  if (chapter && SEASON_NAMES.includes(chapter as Season)) return chapter as Season;
+
+  // 4. Intro text patterns
   const intro = recipe.introduction || recipe.intro || "";
   if (intro) {
     for (const [season, re] of Object.entries(INTRO_SEASON_SIGNALS) as [Season, RegExp][]) {
@@ -149,30 +173,6 @@ export type WeekendMealOption = {
   rationale?: string;
 };
 
-/**
- * Returns true if a recipe is too flimsy/simple to anchor a weekend dinner.
- * Simple soups, light broths, and basic salads without substantial protein
- * or body are not credible weekend mains.
- */
-function isFlimsyForWeekend(recipe: Recipe): boolean {
-  const nameLower = recipe.name.toLowerCase();
-  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
-
-  const isSoup = dishTypes.includes("soup") || nameLower.includes("soup") || nameLower.includes("broth");
-  const isBasicSalad = dishTypes.includes("salad") || nameLower.includes("salad");
-
-  if (!isSoup && !isBasicSalad) return false;
-
-  // Substantial soups/stews with protein or long cook times are fine
-  if (recipe.time?.total && recipe.time.total >= 60) return false;
-  const proteins = detectProteins(recipe);
-  if (proteins.size > 0) return false;
-  if (nameLower.includes("stew") || nameLower.includes("chowder") || nameLower.includes("goulash") || nameLower.includes("ramen") || nameLower.includes("pho") || nameLower.includes("laksa")) return false;
-
-  // Short/simple soups and basic salads are flimsy weekend mains
-  return true;
-}
-
 // ----- helpers -----
 
 function shuffle<T>(arr: T[]): T[] {
@@ -219,18 +219,8 @@ function isPasta(recipe: Recipe): boolean {
   return false;
 }
 
-const LIGHT_DISH_WORDS = ["salad", "soup", "bowl"];
-
 function isLight(recipe: Recipe): boolean {
-  const nameLower = recipe.name.toLowerCase();
-  if (LIGHT_DISH_WORDS.some((w) => nameLower.includes(w))) return true;
-  const dishTypes = recipe.category?.dish_type ?? [];
-  if (
-    dishTypes.some((d) =>
-      LIGHT_DISH_WORDS.some((w) => d.toLowerCase().includes(w))
-    )
-  )
-    return true;
+  if (isLowCalorie(recipe)) return true;
   if (recipe.time?.total && recipe.time.total > 0 && recipe.time.total < 45)
     return true;
   const dietary = getDietary(recipe);
@@ -314,6 +304,26 @@ function isDinnerWorthy(recipe: Recipe): boolean {
 
   // Must have method steps
   if (!recipe.method || recipe.method.length < 2) return false;
+
+  return true;
+}
+
+/**
+ * Stricter filter for weekend mains: must be dinner-worthy AND substantial
+ * enough for a weekend dinner. Excludes salad-only, soup-only (unless also
+ * tagged "main"), and recipes whose intro signals breakfast/snack.
+ */
+function isWeekendMainWorthy(recipe: Recipe): boolean {
+  if (!isDinnerWorthy(recipe)) return false;
+
+  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
+
+  // Must have "main" in dish_type — salad-only or soup-only are too light
+  if (!dishTypes.includes("main")) return false;
+
+  // Exclude recipes whose intro clearly marks them as breakfast/snack
+  const intro = (recipe.introduction || recipe.intro || "").toLowerCase();
+  if (/\b(breakfast|brunch|snack)\b/.test(intro)) return false;
 
   return true;
 }
@@ -488,6 +498,13 @@ export function selectMealOptions(
   const lightRecipes = pool.filter(isLight);
   const pastaRecipes = pool.filter(isPasta);
 
+  // Weekend-worthy subset: stricter than general dinner pool
+  const weekendPool = pool.filter(isWeekendMainWorthy);
+  const weekendVegRecipes = weekendPool.filter(isVegetarianOrVegan);
+  const weekendNonVegRecipes = weekendPool.filter((r) => !isVegetarianOrVegan(r));
+  const weekendPastaRecipes = weekendPool.filter(isPasta);
+
+
   // Reduce target counts when days are skipped
   const skip = hints?.skipCount ?? 0;
   const weekdayTarget = Math.max(2, 6 - skip);
@@ -496,12 +513,8 @@ export function selectMealOptions(
   // We want 3-4 vegetarian/vegan out of 10 total
   const vegCount = 3 + Math.round(Math.random()); // 3 or 4
 
-  // Weekend pool: exclude flimsy soups/salads that aren't credible anchor meals
-  const weekendVegRecipes = vegRecipes.filter((r) => !isFlimsyForWeekend(r));
-  const weekendNonVegRecipes = nonVegRecipes.filter((r) => !isFlimsyForWeekend(r));
-
   // Weekend picks. Include at least 1 pasta for Sunday suggestion.
-  const weekendPasta = shuffle(pastaRecipes.filter((r) => !isFlimsyForWeekend(r))).slice(0, 1);
+  const weekendPasta = shuffle(weekendPastaRecipes).slice(0, 1);
   const weekendPastaIsVeg = weekendPasta.length > 0 && isVegetarianOrVegan(weekendPasta[0]);
 
   const weekendVegTarget = Math.min(2, vegCount);

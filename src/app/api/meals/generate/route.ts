@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getAllRecipes, getCuisine, getDietary, getRecipe } from "@/lib/recipes";
+import { getAllRecipes, getCuisine, getDietary, isLowCalorie, getRecipe } from "@/lib/recipes";
 import { selectMealOptions, getDisplayCategory, type WeekendMealOption, type WeekContextItem } from "@/lib/meals";
 import type { Recipe } from "@/lib/recipes";
 
@@ -14,6 +14,7 @@ function summarize(r: Recipe) {
     cuisine: getCuisine(r),
     time: r.time ?? null,
     category: getDisplayCategory(r),
+    lowCalorie: isLowCalorie(r),
   };
 }
 
