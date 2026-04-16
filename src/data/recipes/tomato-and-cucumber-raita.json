@@ -10,8 +10,8 @@
   "intro": "(or use your hands to better effect), scatter the chile and cilantro on top and",
   "ingredients": [
     {
-      "item": "small preserved lemons, seeds discarded, skin and  esh roughly chopped (¼ cup/50g)",
-      "amount": "1½"
+      "item": "small preserved lemons, seeds discarded, skin and \uf002 esh roughly chopped (\u00bc cup/50g)",
+      "amount": "1\u00bd"
     },
     {
       "item": "green chiles, seeded and chopped",
@@ -23,31 +23,31 @@
     },
     {
       "item": "olive oil",
-      "amount": "2½ tbsp"
+      "amount": "2\u00bd tbsp"
     },
     {
       "item": "cup/200g Greek-style yogurt",
-      "amount": "⅔"
+      "amount": "\u2154"
     },
     {
-      "item": "cup/10g mint leaves,  nely shredded",
-      "amount": "½"
+      "item": "cup/10g mint leaves, \uf001 nely shredded",
+      "amount": "\u00bd"
     },
     {
       "item": "lemon juice",
       "amount": "1 tbsp"
     },
     {
-      "item": "cumin seeds, toasted and  nely crushed",
+      "item": "cumin seeds, toasted and \uf001 nely crushed",
       "amount": "2 tsp"
     },
     {
-      "item": "English cucumber (or 3 or 4 small Lebanese cucumbers), quartered lengthwise, seeded, and  esh cut into ½-inch/1cm dice (2 cups/300g)",
+      "item": "English cucumber (or 3 or 4 small Lebanese cucumbers), quartered lengthwise, seeded, and \uf002 esh cut into \u00bd-inch/1cm dice (2 cups/300g)",
       "amount": "1"
     },
     {
-      "item": "onion,  nely chopped (½ cup/75g)",
-      "amount": "½"
+      "item": "onion, \uf001 nely chopped (\u00bd cup/75g)",
+      "amount": "\u00bd"
     },
     {
       "item": "oz/200g cherry tomatoes, quartered salt",
@@ -59,19 +59,22 @@
     }
   ],
   "method": [
-    "Place all the ingredients for the chile paste in the bowl of a food processor, with ¼ tsp of salt. Blitz to form a rough paste and set aside.",
-    "Put the yogurt in a bowl and whisk with the mint, lemon juice, 1½ tsp of the cumin seeds, and rounded ¼ tsp salt. Add the cucumber, onion, and tomatoes and stir gently. Transfer to a shallow bowl and top with chile paste.",
-    "Swirl lightly, sprinkle with the remaining ½ tsp of cumin seeds and serve.",
+    "Place all the ingredients for the chile paste in the bowl of a food processor, with \u00bc tsp of salt. Blitz to form a rough paste and set aside.",
+    "Put the yogurt in a bowl and whisk with the mint, lemon juice, 1\u00bd tsp of the cumin seeds, and rounded \u00bc tsp salt. Add the cucumber, onion, and tomatoes and stir gently. Transfer to a shallow bowl and top with chile paste.",
+    "Swirl lightly, sprinkle with the remaining \u00bd tsp of cumin seeds and serve.",
     "Zucchini, thyme, and walnut salad",
     "The garlic oil can be made in advance and kept for 3 days at room temperature.",
-    "Zucchini become watery soon after the salt has been added, so if preparing these more than 4–6 hours in advance, hold back on the seasoning and lemon juice until just before serving."
+    "Zucchini become watery soon after the salt has been added, so if preparing these more than 4\u20136 hours in advance, hold back on the seasoning and lemon juice until just before serving."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/tomato-and-cucumber-raita.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "salad"
+    ],
+    "meal_role": "side",
     "chapter": "Raw Veg"
   }
 }

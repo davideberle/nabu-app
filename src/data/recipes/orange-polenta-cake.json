@@ -1,6 +1,6 @@
 {
   "id": "orange-polenta-cake",
-  "name": "Orange Polenta Cake",
+  "name": "Orange polenta cake",
   "source": {
     "cookbook": "Ottolenghi: The Cookbook",
     "author": "Yotam Ottolenghi",
@@ -13,7 +13,7 @@
     ],
     "chapter": "Baking & Patisserie"
   },
-  "servings": "makes 2 small loaves (serves 4 to 6)",
+  "servings": "serves 4",
   "time": {
     "prep": 20,
     "cook": 30,

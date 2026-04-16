@@ -15,7 +15,7 @@
     },
     {
       "item": "rose harissa (or 50 percent more or less, depending on variety; see this page) flaked sea salt and black pepper",
-      "amount": "1½ tbsp"
+      "amount": "1\u00bd tbsp"
     },
     {
       "item": "large red or yellow bell peppers (14 oz/400g)",
@@ -35,19 +35,19 @@
     },
     {
       "item": "crushed red pepper flakes",
-      "amount": "½ tsp"
+      "amount": "\u00bd tsp"
     },
     {
       "item": "paprika",
-      "amount": "¼ tsp"
+      "amount": "\u00bc tsp"
     },
     {
-      "item": "small preserved lemon, seeds discarded, skin and  esh roughly chopped (2 tbsp)",
-      "amount": "½"
+      "item": "small preserved lemon, seeds discarded, skin and \uf002 esh roughly chopped (2 tbsp)",
+      "amount": "\u00bd"
     },
     {
       "item": "cup/10g parsley, roughly chopped, plus extra to serve",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "lemon, quartered, for serving",
@@ -59,22 +59,25 @@
     }
   ],
   "method": [
-    "Place the beef in a bowl and add the harissa, ½ tsp salt, and some black pepper. Brush or rub the harissa into the meat, then leave to marinate for at least 1 hour (or in the fridge if you are marinating overnight). If leaving in the fridge, be sure to bring the meat back to room temperature before cooking.",
-    "To make the sauce, preheat the broiler and cook the peppers for 20–25 minutes, turning twice, until charred all over. Place in a bowl, cover with plastic wrap, then, once cool enough to handle, remove the pepper skins and cut the  esh into long, thin strips. Discard the skin and seeds.",
-    "Put the oil into a medium frying pan and place over medium heat. Add the garlic, cook for 1 minute or so, then add the tomatoes and their juice, pepper  akes, paprika, ½ tsp salt, and some black pepper. Bring to a gentle simmer, cook for 7 minutes, then add the bell pepper, preserved lemon, and parsley. Cook for another 7 minutes, or until the sauce thickens but is still easy to pour. Set aside to come to room temperature.",
-    "Place a frying pan over high heat. Once smoking hot, add the steaks and cook for 4–5 minutes, turning after 2 minutes, until caramelized on both sides. Remove from the pan, sprinkle with a good pinch of salt, and rest for",
-    "Serve the meat warm or at room temperature, sliced into ½-inch/1cm strips, with the sauce spooned on top or alongside. Sprinkle with parsley and",
+    "Place the beef in a bowl and add the harissa, \u00bd tsp salt, and some black pepper. Brush or rub the harissa into the meat, then leave to marinate for at least 1 hour (or in the fridge if you are marinating overnight). If leaving in the fridge, be sure to bring the meat back to room temperature before cooking.",
+    "To make the sauce, preheat the broiler and cook the peppers for 20\u201325 minutes, turning twice, until charred all over. Place in a bowl, cover with plastic wrap, then, once cool enough to handle, remove the pepper skins and cut the \uf002 esh into long, thin strips. Discard the skin and seeds.",
+    "Put the oil into a medium frying pan and place over medium heat. Add the garlic, cook for 1 minute or so, then add the tomatoes and their juice, pepper \uf002 akes, paprika, \u00bd tsp salt, and some black pepper. Bring to a gentle simmer, cook for 7 minutes, then add the bell pepper, preserved lemon, and parsley. Cook for another 7 minutes, or until the sauce thickens but is still easy to pour. Set aside to come to room temperature.",
+    "Place a frying pan over high heat. Once smoking hot, add the steaks and cook for 4\u20135 minutes, turning after 2 minutes, until caramelized on both sides. Remove from the pan, sprinkle with a good pinch of salt, and rest for",
+    "Serve the meat warm or at room temperature, sliced into \u00bd-inch/1cm strips, with the sauce spooned on top or alongside. Sprinkle with parsley and",
     "serve with a wedge of lemon alongside.",
     "Spring roast chicken with preserved lemon",
-    "I’m not the rst to combine lemon, garlic, and chicken—and I won’t be the last— but sometimes it’s good to be reminded that the classics are classics for a reason.",
-    "Roasting a chicken is the ultimate simple dish. It’s easy, quick, lls the house with delicious smells, and everyone loves the result. You can prep the chicken 4–5 hours in advance if you like, and then just place in the oven when ready to cook."
+    "I\u2019m not the \uf001rst to combine lemon, garlic, and chicken\u2014and I won\u2019t be the last\u2014 but sometimes it\u2019s good to be reminded that the classics are classics for a reason.",
+    "Roasting a chicken is the ultimate simple dish. It\u2019s easy, quick, \uf001lls the house with delicious smells, and everyone loves the result. You can prep the chicken 4\u20135 hours in advance if you like, and then just place in the oven when ready to cook."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/harissa-beef-sirloin-with-pepper-and-lemon-sauce.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Meat"
   }
 }

@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "oz/100g feta",
-      "amount": "3½"
+      "amount": "3\u00bd"
     },
     {
       "item": "oz/300g full-fat cream cheese, at room temperature",
@@ -22,24 +22,24 @@
       "amount": "3 tbsp"
     },
     {
-      "item": "small lemon,  nely zested to get 1 tsp",
+      "item": "small lemon, \uf001 nely zested to get 1 tsp",
       "amount": "1"
     },
     {
       "item": "plus 1 tbsp/130ml heavy cream",
-      "amount": "½ cup"
+      "amount": "\u00bd cup"
     },
     {
       "item": "cup/100g blanched hazelnuts, roughly chopped",
-      "amount": "¾"
+      "amount": "\u00be"
     },
     {
-      "item": "unsalted butter, fridge-cold and cut into ¾-inch/2cm dice",
+      "item": "unsalted butter, fridge-cold and cut into \u00be-inch/2cm dice",
       "amount": "2 tbsp"
     },
     {
       "item": "cup/80g almond meal",
-      "amount": "⅔"
+      "amount": "\u2154"
     },
     {
       "item": "tbsp/25g granulated sugar",
@@ -51,7 +51,7 @@
     },
     {
       "item": "salt",
-      "amount": "⅛ tsp"
+      "amount": "\u215b tsp"
     },
     {
       "item": "5 oz/600g frozen pitted cherries, defrosted",
@@ -66,7 +66,7 @@
       "amount": "4"
     },
     {
-      "item": "orange: peel  nely shaved to get 4 strips",
+      "item": "orange: peel \uf001 nely shaved to get 4 strips",
       "amount": "1"
     },
     {
@@ -80,20 +80,23 @@
   ],
   "method": [
     "Using a spatula, break the feta down in a large bowl to make it as smooth as possible. Add the cream cheese, sugar, and lemon zest and whisk to combine. Pour in the cream and gently whisk until the mixture has thickened enough to hold its shape. Leave to set in the fridge until ready to use.",
-    "Preheat the oven to 400°F.",
-    "To make the crumble, place the hazelnuts, butter, almond meal, and sugar in a bowl. Use the tips of your  ngers to rub the butter into everything else until the consistency of breadcrumbs is formed. Stir in the sesame seeds and salt, then spread out on a baking sheet. Bake for about 12 minutes, until golden brown.",
-    "To make the compote, put the cherries, sugar, star anise, and orange peel into a medium saucepan and place over medium-high heat. Bring to a boil, then simmer for 10–15 minutes, until the sauce has thickened (but it will continue to thicken as it cools down). Set aside to come to room temperature. Discard star anise and orange peel.",
-    "When ready to serve, spoon a large scoop of the cheesecake into each bowl and top with some crumble. Spoon the compote on top and  nish with the remaining crumble. Drizzle with the olive oil and serve.",
+    "Preheat the oven to 400\u00b0F.",
+    "To make the crumble, place the hazelnuts, butter, almond meal, and sugar in a bowl. Use the tips of your \uf001 ngers to rub the butter into everything else until the consistency of breadcrumbs is formed. Stir in the sesame seeds and salt, then spread out on a baking sheet. Bake for about 12 minutes, until golden brown.",
+    "To make the compote, put the cherries, sugar, star anise, and orange peel into a medium saucepan and place over medium-high heat. Bring to a boil, then simmer for 10\u201315 minutes, until the sauce has thickened (but it will continue to thicken as it cools down). Set aside to come to room temperature. Discard star anise and orange peel.",
+    "When ready to serve, spoon a large scoop of the cheesecake into each bowl and top with some crumble. Spoon the compote on top and \uf001 nish with the remaining crumble. Drizzle with the olive oil and serve.",
     "Vanilla custard with roasted strawberries and rhubarb",
-    "If it’s in season, use forced rhubarb here: the hot-pink color of the slender stalks looks stunning once cooked. Regular eld-grown rhubarb, though, is also great.",
-    "The custard and fruit mixtures can be made a day in advance and kept in the fridge until ready to assemble. Serve this with some shortbread alongside, if you’re looking for crunch."
+    "If it\u2019s in season, use forced rhubarb here: the hot-pink color of the slender stalks looks stunning once cooked. Regular \uf001eld-grown rhubarb, though, is also great.",
+    "The custard and fruit mixtures can be made a day in advance and kept in the fridge until ready to assemble. Serve this with some shortbread alongside, if you\u2019re looking for crunch."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/sweet-and-salty-cheesecake-with-cherries.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "dessert"
+    ],
+    "meal_role": "dessert",
     "chapter": "Dessert"
   }
 }

@@ -19,18 +19,18 @@
     },
     {
       "item": "cups/30g basil leaves, roughly chopped",
-      "amount": "1½"
+      "amount": "1\u00bd"
     },
     {
       "item": "cups/30g cilantro leaves, roughly chopped",
-      "amount": "1½"
+      "amount": "1\u00bd"
     },
     {
       "item": "cup/70g shelled pistachios, roughly chopped",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
-      "item": "limes:  nely zest 2 to get 1 tsp, then juice 2 to get 3 tbsp; slice the  nal lime into 4 wedges, to serve",
+      "item": "limes: \uf001 nely zest 2 to get 1 tsp, then juice 2 to get 3 tbsp; slice the \uf001 nal lime into 4 wedges, to serve",
       "amount": "3"
     },
     {
@@ -42,12 +42,12 @@
       "amount": "1"
     },
     {
-      "item": "ripe avocados, cut into ¼-inch/ ½cm slices salt",
+      "item": "ripe avocados, cut into \u00bc-inch/ \u00bdcm slices salt",
       "amount": "2"
     },
     {
       "item": "nigella seeds or Urfa chile flakes, to sprinkle (optional)",
-      "amount": "¼ tsp"
+      "amount": "\u00bc tsp"
     },
     {
       "item": "1.",
@@ -59,14 +59,17 @@
     }
   ],
   "method": [
-    "Serve this as soon as you’ve mixed it together. The cucumber will make it watery if it sits around for too long. The dressing can be made up to 2 days in advance."
+    "Serve this as soon as you\u2019ve mixed it together. The cucumber will make it watery if it sits around for too long. The dressing can be made up to 2 days in advance."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/soba-noodles-with-lime-cardamom-and-avocado.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Noodles and Pasta"
   }
 }

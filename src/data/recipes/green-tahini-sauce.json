@@ -1,6 +1,6 @@
 {
   "id": "green-tahini-sauce",
-  "name": "Green Tahini Sauce",
+  "name": "Green tahini sauce",
   "source": {
     "cookbook": "Ottolenghi: The Cookbook",
     "author": "Yotam Ottolenghi",
@@ -13,7 +13,7 @@
     ],
     "chapter": "Basics"
   },
-  "servings": "makes 1 pint / 600 ml",
+  "servings": "serves 4",
   "time": {
     "prep": 20,
     "cook": 30,
@@ -74,6 +74,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/green-tahini-sauce.jpg",
+  "image": null,
   "cuisine": "Middle Eastern"
 }

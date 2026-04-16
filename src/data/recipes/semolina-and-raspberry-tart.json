@@ -1,6 +1,6 @@
 {
   "id": "semolina-and-raspberry-tart",
-  "name": "Semolina and Raspberry Tart",
+  "name": "Semolina and raspberry tart",
   "source": {
     "cookbook": "Ottolenghi: The Cookbook",
     "author": "Yotam Ottolenghi",
@@ -118,6 +118,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/semolina-and-raspberry-tart.jpg",
+  "image": null,
   "cuisine": "Middle Eastern"
 }

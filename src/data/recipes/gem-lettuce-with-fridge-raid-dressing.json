@@ -10,11 +10,11 @@
   "intro": "This started off as a clean-up of all the herbs Tara had lying around in her fridge",
   "ingredients": [
     {
-      "item": "very ripe avocado,  esh scooped out (3¼ oz/90g)",
-      "amount": "½"
+      "item": "very ripe avocado, \uf002 esh scooped out (3\u00bc oz/90g)",
+      "amount": "\u00bd"
     },
     {
-      "item": "1½-inch/4cm piece of ginger, peeled and roughly chopped (2 tbsp)",
+      "item": "1\u00bd-inch/4cm piece of ginger, peeled and roughly chopped (2 tbsp)",
       "amount": ""
     },
     {
@@ -22,7 +22,7 @@
       "amount": "1"
     },
     {
-      "item": "lemons:  nely zest 1 to get 1 tsp, then juice both to get 3 tbsp",
+      "item": "lemons: \uf001 nely zest 1 to get 1 tsp, then juice both to get 3 tbsp",
       "amount": "2"
     },
     {
@@ -39,27 +39,27 @@
     },
     {
       "item": "cup/10g basil leaves",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "cup/10g tarragon leaves",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "cup/10g dill",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "cup/10g parsley leaves",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "cup/10g cilantro leaves",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "cup/60ml water",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
       "item": "gem lettuces, trimmed at the bottom and cut lengthwise into eighths (14 oz/400g)",
@@ -75,19 +75,22 @@
     }
   ],
   "method": [
-    "Put the avocado, ginger, garlic, lemon zest, lemon juice, chile, and tahini into the bowl of a food processor with 5 tbsp/75ml of the oil and a rounded ¼ tsp salt. Blitz to a smooth paste, then add the basil, tarragon, dill, parsley, and cilantro. Blitz again, then, with the machine still running, slowly pour in the water until smooth and combined.",
-    "Mix the gem lettuce with the remaining 2 tsp of oil and ⅛ tsp salt until combined. Transfer to a platter, spoon the dressing on top, and sprinkle with the sesame seeds.",
-    "Cucumber and lamb’s lettuce salad",
+    "Put the avocado, ginger, garlic, lemon zest, lemon juice, chile, and tahini into the bowl of a food processor with 5 tbsp/75ml of the oil and a rounded \u00bc tsp salt. Blitz to a smooth paste, then add the basil, tarragon, dill, parsley, and cilantro. Blitz again, then, with the machine still running, slowly pour in the water until smooth and combined.",
+    "Mix the gem lettuce with the remaining 2 tsp of oil and \u215b tsp salt until combined. Transfer to a platter, spoon the dressing on top, and sprinkle with the sesame seeds.",
+    "Cucumber and lamb\u2019s lettuce salad",
     "Pictured with 5-spice peach and raspberry salad (this page)",
-    "It can be easy to get a bit set in your ways with salad dressing. Trying something new—as I do here, with the ginger and yogurt—can be a real joy. Prep the cucumbers in advance if you like, but don’t mix them with the dressing until just before serving; the salt in the dressing releases the water in the cucumber, so it will become watery if it sits around for too long. If you start with regular-size cucumbers that’s ne, but you’ll need to cut out the watery core before slicing.",
-    "This is absolutely lovely with all sorts of things—a roast leg of lamb, some grilled salmon, or the pea, za’atar, and feta fritters, on this page, to mention just three.",
+    "It can be easy to get a bit set in your ways with salad dressing. Trying something new\u2014as I do here, with the ginger and yogurt\u2014can be a real joy. Prep the cucumbers in advance if you like, but don\u2019t mix them with the dressing until just before serving; the salt in the dressing releases the water in the cucumber, so it will become watery if it sits around for too long. If you start with regular-size cucumbers that\u2019s \uf001ne, but you\u2019ll need to cut out the watery core before slicing.",
+    "This is absolutely lovely with all sorts of things\u2014a roast leg of lamb, some grilled salmon, or the pea, za\u2019atar, and feta fritters, on this page, to mention just three.",
     "The dressing can be made 2 days in advance and kept in the fridge. Slice and refrigerate the cucumbers up to 6 hours in advance."
   ],
   "time": {
     "total": 30
   },
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "salad"
+    ],
+    "meal_role": "side",
     "chapter": "Raw Veg"
   }
 }

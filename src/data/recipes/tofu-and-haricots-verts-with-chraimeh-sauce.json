@@ -18,12 +18,12 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "oz/400g firm tofu, cut into 1-inch/2½cm cubes and patted dry salt",
+      "item": "oz/400g firm tofu, cut into 1-inch/2\u00bdcm cubes and patted dry salt",
       "amount": "14"
     },
     {
       "item": "cup/15g cilantro, roughly chopped",
-      "amount": "¾"
+      "amount": "\u00be"
     },
     {
       "item": "garlic cloves, crushed",
@@ -43,7 +43,7 @@
     },
     {
       "item": "ground cinnamon",
-      "amount": "½ tsp"
+      "amount": "\u00bd tsp"
     },
     {
       "item": "sunflower oil",
@@ -75,18 +75,21 @@
     }
   ],
   "method": [
-    "Put the oil into a large sauté pan and place over medium-high heat. Once hot, add the tofu and a rounded ¼ tsp of salt and fry for 4–5 minutes, turning throughout so that all sides are golden brown. Remove from the pan and set aside.",
-    "To make the chraimeh sauce, mix the garlic, paprika, caraway, cumin, cinnamon, and oil in a small bowl. Return the large sauté pan to medium- high heat and, once hot, add the garlic and spice mix. Fry for about 1 minute, then add the tomato paste, sugar, lime juice, and ¾ tsp of salt. Stir to combine, then pour in the water to make a thin sauce. Once bubbling, stir frequently for about 2 minutes, until the sauce begins to thicken. Return the green beans to the pan and continue to cook for another 1 minute, until the sauce is thick and the beans are hot.",
+    "Put the oil into a large saut\u00e9 pan and place over medium-high heat. Once hot, add the tofu and a rounded \u00bc tsp of salt and fry for 4\u20135 minutes, turning throughout so that all sides are golden brown. Remove from the pan and set aside.",
+    "To make the chraimeh sauce, mix the garlic, paprika, caraway, cumin, cinnamon, and oil in a small bowl. Return the large saut\u00e9 pan to medium- high heat and, once hot, add the garlic and spice mix. Fry for about 1 minute, then add the tomato paste, sugar, lime juice, and \u00be tsp of salt. Stir to combine, then pour in the water to make a thin sauce. Once bubbling, stir frequently for about 2 minutes, until the sauce begins to thicken. Return the green beans to the pan and continue to cook for another 1 minute, until the sauce is thick and the beans are hot.",
     "Remove from the heat and gently stir in the tofu and cilantro. Divide among four shallow bowls and serve, with a wedge of lime alongside.",
     "Avocado and fava bean mash",
-    "You can look at shelling fava beans two ways: either as a great big bother not worth doing, or as something wonderfully therapeutic to do with the radio or music on. It’s also a job very easy to outsource, if anyone is offering to help. Either way, the resulting dish is wonderful—lighter than an avocado-only guacamole and all the more lovely for it. The mash can be made in advance, if you like; it keeps in the fridge for a couple of days."
+    "You can look at shelling fava beans two ways: either as a great big bother not worth doing, or as something wonderfully therapeutic to do with the radio or music on. It\u2019s also a job very easy to outsource, if anyone is offering to help. Either way, the resulting dish is wonderful\u2014lighter than an avocado-only guacamole and all the more lovely for it. The mash can be made in advance, if you like; it keeps in the fridge for a couple of days."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/tofu-and-haricots-verts-with-chraimeh-sauce.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Cooked Veg"
   }
 }

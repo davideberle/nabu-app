@@ -7,19 +7,19 @@
     "chapter": "Raw Veg"
   },
   "servings": "serves 4",
-  "intro": "Gazpacho is so often the go-to for a chilled summer soup that it’s easy to forget",
+  "intro": "Gazpacho is so often the go-to for a chilled summer soup that it\u2019s easy to forget",
   "ingredients": [
     {
       "item": "fresh mint sprigs",
       "amount": "4"
     },
     {
-      "item": "5-inch/12cm piece of ginger, peeled (3¼ oz/90g); two-thirds roughly grated and the remaining third cut into thin slices, about ⅛-inch/3mm thick salt",
+      "item": "5-inch/12cm piece of ginger, peeled (3\u00bc oz/90g); two-thirds roughly grated and the remaining third cut into thin slices, about \u215b-inch/3mm thick salt",
       "amount": ""
     },
     {
-      "item": "large cauliflower, broken up into ¾-inch/2cm  orets (3½ cups/350g)",
-      "amount": "½"
+      "item": "large cauliflower, broken up into \u00be-inch/2cm \uf002 orets (3\u00bd cups/350g)",
+      "amount": "\u00bd"
     },
     {
       "item": "large English cucumbers (or 8 small Lebanese cucumbers), peeled, seeded (if large), and roughly chopped (4 cups/650g)",
@@ -39,11 +39,11 @@
     },
     {
       "item": "cup/60ml olive oil",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
       "item": "cup/70g sliced almonds",
-      "amount": "⅔"
+      "amount": "\u2154"
     },
     {
       "item": "dried mint",
@@ -55,21 +55,24 @@
     }
   ],
   "method": [
-    "Pour 3⅓ cups/800ml of water into a medium saucepan and add the fresh mint sprigs, the thinly sliced ginger, and 2 tsp salt. Bring to a boil, then add the cauliower and blanch for 2–3 minutes, until just cooked but still al dente. Drain and set aside. Discard the mint and ginger.",
-    "Place the cucumbers in an upright blender or food processor with the grated ginger, garlic, yogurt, lemon juice, 1 tsp salt, and ½ tsp white pepper. Blitz until smooth, then chill in the fridge for at least 1 hour.",
-    "Heat the oil in a small skillet over medium heat and add the almonds. Cook for 3–4 minutes, stirring often, until the almonds are a light golden brown.",
+    "Pour 3\u2153 cups/800ml of water into a medium saucepan and add the fresh mint sprigs, the thinly sliced ginger, and 2 tsp salt. Bring to a boil, then add the cauli\uf002ower and blanch for 2\u20133 minutes, until just cooked but still al dente. Drain and set aside. Discard the mint and ginger.",
+    "Place the cucumbers in an upright blender or food processor with the grated ginger, garlic, yogurt, lemon juice, 1 tsp salt, and \u00bd tsp white pepper. Blitz until smooth, then chill in the fridge for at least 1 hour.",
+    "Heat the oil in a small skillet over medium heat and add the almonds. Cook for 3\u20134 minutes, stirring often, until the almonds are a light golden brown.",
     "Transfer to a separate bowl and stir in the dried mint. Add a pinch of salt and set aside to cool.",
-    "When ready to serve, divide the cauliower  orets among four bowls and pour the chilled soup over them. Spoon the almond mix on top and serve.",
+    "When ready to serve, divide the cauli\uf002ower \uf002 orets among four bowls and pour the chilled soup over them. Spoon the almond mix on top and serve.",
     "Beefsteak tomato carpaccio with green onion and ginger salsa",
     "As ever with tomato dishes, particularly when the tomatoes are uncooked, this is all about the quality of the ingredients. The tomatoes need to be superripe and sweet and the sherry vinegar needs to be best quality (such as Valdespino).",
-    "Double or triple the salsa, if you like; it’s absolutely delicious spooned over all sorts of things—roast chicken, for example—or on toast topped with mozzarella or avocado (or both), and it will keep in the fridge for up to 5 days. Once assembled, this dish will also keep in the fridge for up to 6 hours, but bring it back to room temperature before serving. Thanks to Ixta Belfrage for spotting this on the table next to her in Chinatown and being intrigued enough to ask for a plate."
+    "Double or triple the salsa, if you like; it\u2019s absolutely delicious spooned over all sorts of things\u2014roast chicken, for example\u2014or on toast topped with mozzarella or avocado (or both), and it will keep in the fridge for up to 5 days. Once assembled, this dish will also keep in the fridge for up to 6 hours, but bring it back to room temperature before serving. Thanks to Ixta Belfrage for spotting this on the table next to her in Chinatown and being intrigued enough to ask for a plate."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/chilled-cucumber-cauliflower-and-ginger-soup.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "salad"
+    ],
+    "meal_role": "side",
     "chapter": "Raw Veg"
   }
 }

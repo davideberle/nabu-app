@@ -15,7 +15,7 @@
     },
     {
       "item": "rice vinegar",
-      "amount": "1½ tsp"
+      "amount": "1\u00bd tsp"
     },
     {
       "item": "mirin",
@@ -27,7 +27,7 @@
     },
     {
       "item": "soy sauce",
-      "amount": "1½ tsp"
+      "amount": "1\u00bd tsp"
     },
     {
       "item": "tahini",
@@ -39,14 +39,14 @@
     },
     {
       "item": "oz/50g seaweed spaghetti",
-      "amount": "1¾"
+      "amount": "1\u00be"
     },
     {
       "item": "large English cucumber, halved lengthwise, seeds scooped out, and",
       "amount": "1"
     },
     {
-      "item": "esh cut into long, thin strips (2½ cups/250g)",
+      "item": "\uf002esh cut into long, thin strips (2\u00bd cups/250g)",
       "amount": ""
     },
     {
@@ -55,11 +55,11 @@
     },
     {
       "item": "cup/15g cilantro leaves salt",
-      "amount": "¾"
+      "amount": "\u00be"
     },
     {
       "item": "crushed red pepper flakes (or nanami togarashi, if you have it)",
-      "amount": "½ tsp"
+      "amount": "\u00bd tsp"
     },
     {
       "item": "1.",
@@ -69,19 +69,22 @@
   "method": [
     "To make the dressing, put the honey, vinegar, mirin, mustard, soy sauce, tahini, and peanut oil in a small bowl, whisk well to combine, then set aside.",
     "Put the seaweed spaghetti into a medium saucepan and cover with cold water. Bring to a boil, then decrease to a simmer and cook for 15 minutes, until al dente. Drain, refresh under cold running water, pat dry, and set aside.",
-    "Place in a large bowl, along with the cucumber, sesame seeds, cilantro, dressing, and ½ tsp of salt. Mix together, then divide among the bowls (or arrange in a large serving bowl), sprinkle with chile  akes and serve at once.",
+    "Place in a large bowl, along with the cucumber, sesame seeds, cilantro, dressing, and \u00bd tsp of salt. Mix together, then divide among the bowls (or arrange in a large serving bowl), sprinkle with chile \uf002 akes and serve at once.",
     "Pasta alla Norma",
     "After a day in the test kitchen, eating all day, there are just a handful of dishes",
-    "I’m happy to cook and eat once I get home. This is one of them. If you’re getting organized and into batch cooking, double or triple the recipe for the tomato sauce so that this is all ready to go. It keeps in the fridge for 5 days and also freezes well. The eggplant, once roasted, is also happy to sit around (either at room temperature or in the fridge) for 1 day, if you want to get ahead with this too.",
+    "I\u2019m happy to cook and eat once I get home. This is one of them. If you\u2019re getting organized and into batch cooking, double or triple the recipe for the tomato sauce so that this is all ready to go. It keeps in the fridge for 5 days and also freezes well. The eggplant, once roasted, is also happy to sit around (either at room temperature or in the fridge) for 1 day, if you want to get ahead with this too.",
     "If you see any ricotta salata, do get it to try instead of the pecorino romano.",
-    "It’s a variation of ricotta that has been pressed, salted, and dried—its avor is both salty and nutty. It’s rmer than standard ricotta and works really well shaved over spaghetti."
+    "It\u2019s a variation of ricotta that has been pressed, salted, and dried\u2014its \uf002avor is both salty and nutty. It\u2019s \uf001rmer than standard ricotta and works really well shaved over spaghetti."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/seaweed-spaghetti-and-sesame-salad-with-tahini-dressing.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Noodles and Pasta"
   }
 }

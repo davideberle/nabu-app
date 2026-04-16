@@ -35,7 +35,7 @@
     },
     {
       "item": "plus 2 tbsp/200ml passata (tomato puree)",
-      "amount": "¾ cup"
+      "amount": "\u00be cup"
     },
     {
       "item": "large tomatoes, quartered (14 oz/400g)",
@@ -43,15 +43,15 @@
     },
     {
       "item": "cups/350ml water",
-      "amount": "1½"
+      "amount": "1\u00bd"
     },
     {
-      "item": "cup/200g jarred roasted red peppers, drained and cut into ¾- inch/2cm thick rounds",
+      "item": "cup/200g jarred roasted red peppers, drained and cut into \u00be- inch/2cm thick rounds",
       "amount": "1"
     },
     {
       "item": "oz/15g dark chocolate (70% cacao)",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "cup/20g cilantro, roughly chopped",
@@ -75,22 +75,25 @@
     }
   ],
   "method": [
-    "Heat the oil in a large sauté pan with a lid over medium-high heat. Add the onions and fry for 8–9 minutes, stirring a few times, until caramelized and soft. Decrease the heat to medium and add the garlic, harissa, paprika, chicken, 1 tsp salt, and a good grind of black pepper. Cook for 5 minutes longer, stirring frequently, then add the tomato puree and tomatoes. Add the water, bring to a boil, then simmer over medium heat, covered, for 30 minutes, stirring every once in a while.",
-    "Add the peppers and chocolate and continue to simmer for 35–40 minutes, with the pan now uncovered, stirring frequently, until the sauce thickens and the chicken is falling apart. Remove from the heat and stir in the cilantro. If you are serving the chicken as it is (as a stew without the batter), it’s ready to serve (or freeze, once it has come to room temperature) at this stage. If you are making the corn crust, spoon the chicken into a ceramic baking dish",
-    "—one with high sides that measures about 8 x 12 inches/20 x 30cm—and set aside.",
-    "Preheat the oven to 400°F.",
-    "To make the batter, pour the butter into a blender with the corn, milk, egg yolks, and ¾ tsp salt. Blitz for a few seconds, to form a rough paste, then spoon into a large bowl. Place the egg whites in a separate clean bowl and whisk to form  rm peaks. Fold these gently into the runny corn mixture until just combined, then pour the mix evenly over the chicken.",
+    "Heat the oil in a large saut\u00e9 pan with a lid over medium-high heat. Add the onions and fry for 8\u20139 minutes, stirring a few times, until caramelized and soft. Decrease the heat to medium and add the garlic, harissa, paprika, chicken, 1 tsp salt, and a good grind of black pepper. Cook for 5 minutes longer, stirring frequently, then add the tomato puree and tomatoes. Add the water, bring to a boil, then simmer over medium heat, covered, for 30 minutes, stirring every once in a while.",
+    "Add the peppers and chocolate and continue to simmer for 35\u201340 minutes, with the pan now uncovered, stirring frequently, until the sauce thickens and the chicken is falling apart. Remove from the heat and stir in the cilantro. If you are serving the chicken as it is (as a stew without the batter), it\u2019s ready to serve (or freeze, once it has come to room temperature) at this stage. If you are making the corn crust, spoon the chicken into a ceramic baking dish",
+    "\u2014one with high sides that measures about 8 x 12 inches/20 x 30cm\u2014and set aside.",
+    "Preheat the oven to 400\u00b0F.",
+    "To make the batter, pour the butter into a blender with the corn, milk, egg yolks, and \u00be tsp salt. Blitz for a few seconds, to form a rough paste, then spoon into a large bowl. Place the egg whites in a separate clean bowl and whisk to form \uf001 rm peaks. Fold these gently into the runny corn mixture until just combined, then pour the mix evenly over the chicken.",
     "Bake for 35 minutes, until the top is golden brown. Keep an eye on it after",
-    "25 minutes to make sure the top is not taking on too much color; you might need to cover it with foil for the  nal 10 minutes. Remove from the oven and set aside for 10 minutes before serving.",
+    "25 minutes to make sure the top is not taking on too much color; you might need to cover it with foil for the \uf001 nal 10 minutes. Remove from the oven and set aside for 10 minutes before serving.",
     "Trout tartare with browned butter and pistachios",
-    "Tartare is all about the quality and freshness of the ingredients. The trout needs to be as fresh as can be, the nuts need to be best quality (always taste them to check for freshness), and the salt aked. If you can get hold of them, use slivered pistachios—their long shape is very elegant and their vibrant green looks great— but regular shelled pistachios, roughly chopped, are also ne. This is as easy to make as it is impressive to serve."
+    "Tartare is all about the quality and freshness of the ingredients. The trout needs to be as fresh as can be, the nuts need to be best quality (always taste them to check for freshness), and the salt \uf002aked. If you can get hold of them, use slivered pistachios\u2014their long shape is very elegant and their vibrant green looks great\u2014 but regular shelled pistachios, roughly chopped, are also \uf001ne. This is as easy to make as it is impressive to serve."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/slow-cooked-chicken-with-a-crisp-corn-crust.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Meat"
   }
 }

@@ -7,10 +7,10 @@
     "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 4",
-  "intro": "This is either lovely as it is or served with some pan-fried salmon. It’s quick to",
+  "intro": "This is either lovely as it is or served with some pan-fried salmon. It\u2019s quick to",
   "ingredients": [
     {
-      "item": "small red onions, peeled and cut into ¾-inch/2cm wedges (3 cups/300g)",
+      "item": "small red onions, peeled and cut into \u00be-inch/2cm wedges (3 cups/300g)",
       "amount": "2"
     },
     {
@@ -19,22 +19,22 @@
     },
     {
       "item": "cup/90g buckwheat groats",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "oz/350g haricots verts, trimmed and cut in half",
-      "amount": "12¼"
+      "amount": "12\u00bc"
     },
     {
       "item": "cup/5g mint leaves, roughly chopped",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
       "item": "cup/5g tarragon leaves, roughly chopped",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
-      "item": "Urfa chile flakes (or ½ tsp other crushed red pepper  akes), to serve",
+      "item": "Urfa chile flakes (or \u00bd tsp other crushed red pepper \uf002 akes), to serve",
       "amount": "1 tsp"
     },
     {
@@ -55,7 +55,7 @@
     },
     {
       "item": "dried mint",
-      "amount": "¼ tsp"
+      "amount": "\u00bc tsp"
     },
     {
       "item": "1.",
@@ -67,20 +67,23 @@
     }
   ],
   "method": [
-    "Mix the onions in a large bowl with 1 tbsp of oil and ⅛ tsp of salt. Spread out on a large parchment-lined baking sheet and roast for 18–20 minutes, until cooked through and golden. Remove from the oven and set aside to cool.",
+    "Mix the onions in a large bowl with 1 tbsp of oil and \u215b tsp of salt. Spread out on a large parchment-lined baking sheet and roast for 18\u201320 minutes, until cooked through and golden. Remove from the oven and set aside to cool.",
     "Bring a medium saucepan with slightly salted water to a boil. Add the buckwheat and cook for 8 minutes. Add the green beans and cook for 5 minutes, until both the green beans and buckwheat are al dente. Drain, refresh under cold water, and then set aside to dry well.",
-    "Mix together all the ingredients for the sauce with ⅛ tsp of salt in a bowl and set aside.",
-    "When ready to serve, mix the onions, buckwheat, green beans, mint, and tarragon with the remaining 1 tbsp of oil and ½ tsp of salt. Transfer the salad to a serving bowl and serve the sauce on the side or swirl the sauce through the salad before transferring it to the serving bowl. Sprinkle with the chile",
-    "akes and serve.",
+    "Mix together all the ingredients for the sauce with \u215b tsp of salt in a bowl and set aside.",
+    "When ready to serve, mix the onions, buckwheat, green beans, mint, and tarragon with the remaining 1 tbsp of oil and \u00bd tsp of salt. Transfer the salad to a serving bowl and serve the sauce on the side or swirl the sauce through the salad before transferring it to the serving bowl. Sprinkle with the chile",
+    "\uf002akes and serve.",
     "Couscous, cherry tomato, and herb salad",
-    "This salad is perfect at a summer barbecue, great alongside all sorts of grilled meats and grilled vegetables. Make the couscous, onion, and raisin mix 1 day in advance, if you like, and keep separately in the fridge—just bring back to room temperature before serving."
+    "This salad is perfect at a summer barbecue, great alongside all sorts of grilled meats and grilled vegetables. Make the couscous, onion, and raisin mix 1 day in advance, if you like, and keep separately in the fridge\u2014just bring back to room temperature before serving."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/buckwheat-and-haricots-verts-salad.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Rice, Grains, and Pulses"
   }
 }

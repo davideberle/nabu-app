@@ -10,12 +10,12 @@
   "intro": "and store in the fridge, ready for the oil, basil, and seasoning to be added when",
   "ingredients": [
     {
-      "item": "large shallot, sliced paper-thin (⅓ cup/70g)",
+      "item": "large shallot, sliced paper-thin (\u2153 cup/70g)",
       "amount": "1"
     },
     {
       "item": "sumac",
-      "amount": "1½ tbsp"
+      "amount": "1\u00bd tbsp"
     },
     {
       "item": "white wine vinegar salt",
@@ -23,7 +23,7 @@
     },
     {
       "item": "lb/700g mixed tomatoes (a mix of large tiger, green and red plum, red and yellow cherry; or a single variety if that is all you can get)",
-      "amount": "1½"
+      "amount": "1\u00bd"
     },
     {
       "item": "olive oil",
@@ -31,11 +31,11 @@
     },
     {
       "item": "cup/15g basil leaves black pepper",
-      "amount": "¾"
+      "amount": "\u00be"
     },
     {
       "item": "cup/25g pine nuts, toasted",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
       "item": "1.",
@@ -43,20 +43,23 @@
     }
   ],
   "method": [
-    "Place the shallot in a small bowl with the sumac, vinegar, and ⅛ tsp salt. Use your hands to mix them—you want the sumac to really be massaged into the shallots—then set aside for 30 minutes to soften.",
-    "Slice the large tomatoes in half lengthwise and then into ½-inch/1cm wedges and place in a large bowl. Slice the cherry tomatoes in half lengthwise and add to the bowl. Pour in the olive oil and mix gently with the basil leaves, a rounded ¼ tsp salt, and a generous grind of pepper.",
+    "Place the shallot in a small bowl with the sumac, vinegar, and \u215b tsp salt. Use your hands to mix them\u2014you want the sumac to really be massaged into the shallots\u2014then set aside for 30 minutes to soften.",
+    "Slice the large tomatoes in half lengthwise and then into \u00bd-inch/1cm wedges and place in a large bowl. Slice the cherry tomatoes in half lengthwise and add to the bowl. Pour in the olive oil and mix gently with the basil leaves, a rounded \u00bc tsp salt, and a generous grind of pepper.",
     "Arrange the tomatoes on a large platter. Spread the shallot slices over them, lifting some of the tomatoes and basil from under the shallots to rest on top.",
     "Sprinkle with the pine nuts and serve.",
-    "Chopped salad with tahini and za’atar",
+    "Chopped salad with tahini and za\u2019atar",
     "Pictured on this page",
-    "Adding tahini to an otherwise familiar tomato and cucumber salad can be a real revelation. You need to start with a brand of tahini that is creamy, nutty, and smooth enough to pour. These tend to be the Israeli, Palestinian, or Lebanese brands (rather than the Greek and Cypriot ones, which don’t taste as good). This is lovely as a starter, with the blocks of feta, or served alongside some grilled lamb or rice with lentils (with or without the feta)."
+    "Adding tahini to an otherwise familiar tomato and cucumber salad can be a real revelation. You need to start with a brand of tahini that is creamy, nutty, and smooth enough to pour. These tend to be the Israeli, Palestinian, or Lebanese brands (rather than the Greek and Cypriot ones, which don\u2019t taste as good). This is lovely as a starter, with the blocks of feta, or served alongside some grilled lamb or rice with lentils (with or without the feta)."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/tomatoes-with-sumac-shallots-and-pine-nuts.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "salad"
+    ],
+    "meal_role": "side",
     "chapter": "Raw Veg"
   }
 }

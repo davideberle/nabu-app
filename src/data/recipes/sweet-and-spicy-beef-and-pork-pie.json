@@ -1,6 +1,6 @@
 {
   "id": "sweet-and-spicy-beef-and-pork-pie",
-  "name": "Sweet and Spicy Beef and Pork Pie",
+  "name": "Sweet and spicy beef and pork pie",
   "source": {
     "cookbook": "Ottolenghi: The Cookbook",
     "author": "Yotam Ottolenghi",
@@ -13,7 +13,7 @@
     ],
     "chapter": "Baking & Patisserie"
   },
-  "servings": "makes one 1-lb / 500-g loaf",
+  "servings": "serves 4",
   "time": {
     "prep": 20,
     "cook": 30,
@@ -160,6 +160,6 @@
   "tags": {
     "dietary": []
   },
-  "image": "/recipes/sweet-and-spicy-beef-and-pork-pie.jpg",
+  "image": null,
   "cuisine": "Middle Eastern"
 }

@@ -7,7 +7,7 @@
     "chapter": "Meat"
   },
   "servings": "serves 4",
-  "intro": "hand. It works as well on strips of white sh or sticks of butternut squash as it",
+  "intro": "hand. It works as well on strips of white \uf001sh or sticks of butternut squash as it",
   "ingredients": [
     {
       "item": "boneless, skinless chicken breasts, each piece cut into 3 long strips (1 lb 5 oz/600g)",
@@ -15,7 +15,7 @@
     },
     {
       "item": "cup/50g all-purpose flour salt and black pepper",
-      "amount": "⅓"
+      "amount": "\u2153"
     },
     {
       "item": "eggs, lightly beaten",
@@ -23,7 +23,7 @@
     },
     {
       "item": "cups/80g panko crumbs",
-      "amount": "1⅓"
+      "amount": "1\u2153"
     },
     {
       "item": "tbsp/60g white sesame seeds",
@@ -35,11 +35,11 @@
     },
     {
       "item": "tbsp/40g sunflower seeds, roughly chopped",
-      "amount": "4½"
+      "amount": "4\u00bd"
     },
     {
       "item": "coriander seeds, roughly crushed",
-      "amount": "1½ tbsp"
+      "amount": "1\u00bd tbsp"
     },
     {
       "item": "ground turmeric",
@@ -47,7 +47,7 @@
     },
     {
       "item": "cayenne pepper about 7 tbsp/100ml sunflower oil, for frying",
-      "amount": "½ tsp"
+      "amount": "\u00bd tsp"
     },
     {
       "item": "lemon, quartered, to serve",
@@ -60,16 +60,16 @@
   ],
   "method": [
     "Place the meat between two bits of plastic wrap, then, one at a time, gently",
-    "atten them with a rolling pin; they should end up about ½ inch/1cm thick.",
-    "In a medium bowl, mix the  our with ¼ tsp salt and some black pepper.",
+    "\uf002atten them with a rolling pin; they should end up about \u00bd inch/1cm thick.",
+    "In a medium bowl, mix the \uf002 our with \u00bc tsp salt and some black pepper.",
     "Put the eggs into a second bowl.",
-    "In a third bowl, mix the panko, both sesame seeds, sunower seeds, coriander, turmeric, cayenne, and ¾ tsp salt.",
-    "Dip each bit of chicken into the  our and gently shake off the excess. Now dip it into the egg, then into the seed mix, to coat well. Repeat with the remaining chicken.",
-    "Put enough oil into a large frying pan to rise ¼ inch/½ cm up the sides and place over medium heat. Once hot, add the chicken in batches and fry for 5–",
-    "6 minutes, turning after 2½ minutes, until cooked through and golden brown on both sides. Transfer to a paper towel–lined plate while you continue with the remaining batch and serve hot, with the wedges of lemon alongside.",
+    "In a third bowl, mix the panko, both sesame seeds, sun\uf002ower seeds, coriander, turmeric, cayenne, and \u00be tsp salt.",
+    "Dip each bit of chicken into the \uf002 our and gently shake off the excess. Now dip it into the egg, then into the seed mix, to coat well. Repeat with the remaining chicken.",
+    "Put enough oil into a large frying pan to rise \u00bc inch/\u00bd cm up the sides and place over medium heat. Once hot, add the chicken in batches and fry for 5\u2013",
+    "6 minutes, turning after 2\u00bd minutes, until cooked through and golden brown on both sides. Transfer to a paper towel\u2013lined plate while you continue with the remaining batch and serve hot, with the wedges of lemon alongside.",
     "Slow-cooked chicken with a crisp corn crust",
-    "This is a wonderful meal on an autumn day, served with a crisp green salad. The slow-cooked chicken is packed full of avor and the crust—gluten-free, rich, and corny—makes for a welcome (and lighter) change to a heavier mash.",
-    "You can make the chicken well in advance if you want to get ahead. It keeps in the fridge for up to 3 days or can be frozen for 1 month. You want it to go into the oven defrosted, though, so it will need thawing before baking. The batter needs to be made fresh and spooned on top of the chicken just before the dish gets baked. It can also be baked a few hours in advance—just warm through for",
+    "This is a wonderful meal on an autumn day, served with a crisp green salad. The slow-cooked chicken is packed full of \uf002avor and the crust\u2014gluten-free, rich, and corny\u2014makes for a welcome (and lighter) change to a heavier mash.",
+    "You can make the chicken well in advance if you want to get ahead. It keeps in the fridge for up to 3 days or can be frozen for 1 month. You want it to go into the oven defrosted, though, so it will need thawing before baking. The batter needs to be made fresh and spooned on top of the chicken just before the dish gets baked. It can also be baked a few hours in advance\u2014just warm through for",
     "10 minutes, covered in foil, before serving. I love the combination of the chicken and the corn, but the chicken also works well as it is, served on top of rice, in a wrap, or with a buttery baked potato."
   ],
   "time": {
@@ -77,7 +77,10 @@
   },
   "image": "/recipes/seeded-chicken-schnitzel.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Meat"
   }
 }

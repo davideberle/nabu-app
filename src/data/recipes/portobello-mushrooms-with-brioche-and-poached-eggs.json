@@ -10,7 +10,7 @@
   "intro": "then get the eggs poaching. This works as well as a starter late in the day as it",
   "ingredients": [
     {
-      "item": "oz/400g portobello mushrooms, sliced ½-inch/1cm thick",
+      "item": "oz/400g portobello mushrooms, sliced \u00bd-inch/1cm thick",
       "amount": "14"
     },
     {
@@ -23,18 +23,18 @@
     },
     {
       "item": "ground cinnamon flaked sea salt and black pepper",
-      "amount": "½ tsp"
+      "amount": "\u00bd tsp"
     },
     {
       "item": "cup/5g basil leaves",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
       "item": "ground red pepper, plus extra to serve",
-      "amount": "⅛ tsp"
+      "amount": "\u215b tsp"
     },
     {
-      "item": "of brioche, cut ¾-inch/2cm thick (about 5¼ oz/150g)",
+      "item": "of brioche, cut \u00be-inch/2cm thick (about 5\u00bc oz/150g)",
       "amount": "4 slices"
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "item": "plus 2 tbsp/100g sour cream, to serve",
-      "amount": "⅓ cup"
+      "amount": "\u2153 cup"
     },
     {
       "item": "1.",
@@ -55,19 +55,22 @@
     }
   ],
   "method": [
-    "Mix the mushrooms with 3 tbsp of the oil, 1 garlic clove, ¼ tsp of the cinnamon, ½ tsp  aked salt, and a good grind of pepper. Spread out on a large parchment-lined baking sheet and roast for 15 minutes, stirring after 7 minutes, until soft and starting to brown. Toss with the basil and set aside.",
-    "While the mushrooms are in the oven, mix the remaining 2 tbsp of oil with the remaining ¼ tsp of cinnamon, 1 garlic clove, the pepper  akes, and ¼ tsp of  aked salt. Brush the oil and spices on one side of the brioche slices and place on a separate parchment-lined baking sheet, brushed side up. With about 6 or 7 minutes left for the mushrooms, put the bread into the oven alongside the mushrooms and toast until the bread is golden brown and crisp.",
-    "Meanwhile,  ll a medium saucepan with plenty of water and bring to a boil over high heat. Once boiling, decrease the heat to medium-high and carefully break in the eggs. Poach for 1½ minutes for a runny yolk (or a little longer for a  rmer set).",
-    "Divide the brioche among four plates and top each slice with the mushrooms so that they are all ready. Using a slotted spoon, remove the eggs from the water and spoon them on top of the mushrooms. Sprinkle each egg with a pinch of salt and a pinch of pepper  akes and serve warm, with a spoonful of sour cream alongside.",
+    "Mix the mushrooms with 3 tbsp of the oil, 1 garlic clove, \u00bc tsp of the cinnamon, \u00bd tsp \uf002 aked salt, and a good grind of pepper. Spread out on a large parchment-lined baking sheet and roast for 15 minutes, stirring after 7 minutes, until soft and starting to brown. Toss with the basil and set aside.",
+    "While the mushrooms are in the oven, mix the remaining 2 tbsp of oil with the remaining \u00bc tsp of cinnamon, 1 garlic clove, the pepper \uf002 akes, and \u00bc tsp of \uf002 aked salt. Brush the oil and spices on one side of the brioche slices and place on a separate parchment-lined baking sheet, brushed side up. With about 6 or 7 minutes left for the mushrooms, put the bread into the oven alongside the mushrooms and toast until the bread is golden brown and crisp.",
+    "Meanwhile, \uf001 ll a medium saucepan with plenty of water and bring to a boil over high heat. Once boiling, decrease the heat to medium-high and carefully break in the eggs. Poach for 1\u00bd minutes for a runny yolk (or a little longer for a \uf001 rmer set).",
+    "Divide the brioche among four plates and top each slice with the mushrooms so that they are all ready. Using a slotted spoon, remove the eggs from the water and spoon them on top of the mushrooms. Sprinkle each egg with a pinch of salt and a pinch of pepper \uf002 akes and serve warm, with a spoonful of sour cream alongside.",
     "Scrambled harissa tofu",
-    "This was brought onto our menu as a vegan option for breakfast. It’s been ying off the pass to all of our customers, vegan or not, ever since, as an alternative to eggs. We serve it on thick slices of grilled sourdough bread with a fresh green salad alongside. It’s also lovely with a sprinkle of crispy fried shallots. If you think you’ll get into the habit of making this for breakfast, double or quadruple the harissa onions—a batch keeps well in the fridge for around 5 days and turns this into a meal that can be ready in 5 minutes. Thanks to Claire Hodgson."
+    "This was brought onto our menu as a vegan option for breakfast. It\u2019s been \uf002ying off the pass to all of our customers, vegan or not, ever since, as an alternative to eggs. We serve it on thick slices of grilled sourdough bread with a fresh green salad alongside. It\u2019s also lovely with a sprinkle of crispy fried shallots. If you think you\u2019ll get into the habit of making this for breakfast, double or quadruple the harissa onions\u2014a batch keeps well in the fridge for around 5 days and turns this into a meal that can be ready in 5 minutes. Thanks to Claire Hodgson."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/portobello-mushrooms-with-brioche-and-poached-eggs.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "breakfast"
+    ],
+    "meal_role": "breakfast",
     "chapter": "Brunch"
   }
 }

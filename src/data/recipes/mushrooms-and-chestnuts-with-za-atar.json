@@ -1,16 +1,16 @@
 {
   "id": "mushrooms-and-chestnuts-with-za-atar",
-  "name": "Mushrooms and chestnuts with za’atar",
+  "name": "Mushrooms and chestnuts with za\u2019atar",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi",
     "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
-  "intro": "depending on what you see. Just keep the net weight the same. If you’ve got large",
+  "intro": "depending on what you see. Just keep the net weight the same. If you\u2019ve got large",
   "ingredients": [
     {
-      "item": "6 oz/650g portobello mushrooms (about 6–8), cut into 1¼- inch/3cm wedges",
+      "item": "6 oz/650g portobello mushrooms (about 6\u20138), cut into 1\u00bc- inch/3cm wedges",
       "amount": "1 lb"
     },
     {
@@ -19,15 +19,15 @@
     },
     {
       "item": "oz/150g ready-cooked and peeled chestnuts, broken in half",
-      "amount": "5¼"
+      "amount": "5\u00bc"
     },
     {
       "item": "cup/5g sage leaves, roughly chopped",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
       "item": "cup/60ml olive oil, plus 2 tsp, to serve",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
       "item": "garlic cloves, crushed salt and black pepper",
@@ -35,10 +35,10 @@
     },
     {
       "item": "cup/5g tarragon leaves, roughly chopped",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
-      "item": "za’atar",
+      "item": "za\u2019atar",
       "amount": "1 tbsp"
     },
     {
@@ -55,17 +55,20 @@
     }
   ],
   "method": [
-    "In a large bowl, mix the mushrooms, shallots, chestnuts, sage, oil, and garlic with ¾ tsp salt and lots of pepper. Spread on a large parchment-lined baking sheet and roast for 25 minutes, until the mushrooms and shallots are caramelized and soft. Remove from the oven and set aside to cool for 5 minutes.",
-    "Tip the warm mushrooms and chestnuts into a large bowl and mix in the tarragon, za’atar, lemon juice, and the 2 tsp of oil. Spoon into a large shallow bowl and serve.",
+    "In a large bowl, mix the mushrooms, shallots, chestnuts, sage, oil, and garlic with \u00be tsp salt and lots of pepper. Spread on a large parchment-lined baking sheet and roast for 25 minutes, until the mushrooms and shallots are caramelized and soft. Remove from the oven and set aside to cool for 5 minutes.",
+    "Tip the warm mushrooms and chestnuts into a large bowl and mix in the tarragon, za\u2019atar, lemon juice, and the 2 tsp of oil. Spoon into a large shallow bowl and serve.",
     "Brussels sprouts with browned butter and black garlic",
-    "Black garlic has a highly concentrated taste—licorice meets balsamic meets the absolute essence of garlic. It’s a quick way to inject a huge amount of avor into a dish. Get everything chopped and ready for this dish before you start, but don’t cook it until just before serving—you want the sprouts to be eaten fresh from the pan."
+    "Black garlic has a highly concentrated taste\u2014licorice meets balsamic meets the absolute essence of garlic. It\u2019s a quick way to inject a huge amount of \uf002avor into a dish. Get everything chopped and ready for this dish before you start, but don\u2019t cook it until just before serving\u2014you want the sprouts to be eaten fresh from the pan."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/mushrooms-and-chestnuts-with-za-atar.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Cooked Veg"
   }
 }

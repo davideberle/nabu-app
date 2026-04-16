@@ -1,6 +1,6 @@
 {
   "id": "fennel-cherry-tomato-and-crumble-gratin",
-  "name": "Fennel, Cherry Tomato, and Crumble Gratin",
+  "name": "Fennel, cherry tomato, and crumble gratin",
   "source": {
     "cookbook": "Ottolenghi: The Cookbook",
     "author": "Yotam Ottolenghi",
@@ -14,7 +14,7 @@
     ],
     "chapter": "Vegetables"
   },
-  "servings": "serves 6 to 8",
+  "servings": "serves 4",
   "time": {
     "prep": 20,
     "cook": 30,

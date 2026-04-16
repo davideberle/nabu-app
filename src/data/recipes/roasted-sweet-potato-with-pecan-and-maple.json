@@ -1,6 +1,6 @@
 {
   "id": "roasted-sweet-potato-with-pecan-and-maple",
-  "name": "Roasted Sweet Potato with Pecan and Maple",
+  "name": "Roasted sweet potato with pecan and maple",
   "source": {
     "cookbook": "Ottolenghi: The Cookbook",
     "author": "Yotam Ottolenghi",
@@ -154,6 +154,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/roasted-sweet-potato-with-pecan-and-maple.jpg",
+  "image": null,
   "cuisine": "Middle Eastern"
 }

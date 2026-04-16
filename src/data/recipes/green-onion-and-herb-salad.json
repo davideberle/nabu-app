@@ -7,10 +7,10 @@
     "chapter": "Raw Veg"
   },
   "servings": "serves 6",
-  "intro": "This is lovely alongside all sorts of meat: it’s as green- and herb-lled as a spring",
+  "intro": "This is lovely alongside all sorts of meat: it\u2019s as green- and herb-\uf001lled as a spring",
   "ingredients": [
     {
-      "item": "1½-inch/4cm piece of ginger, peeled and  nely chopped (¼ cup/25g)",
+      "item": "1\u00bd-inch/4cm piece of ginger, peeled and \uf001 nely chopped (\u00bc cup/25g)",
       "amount": ""
     },
     {
@@ -19,35 +19,35 @@
     },
     {
       "item": "olive oil",
-      "amount": "2½ tbsp"
+      "amount": "2\u00bd tbsp"
     },
     {
       "item": "salt",
-      "amount": "¼ tsp"
+      "amount": "\u00bc tsp"
     },
     {
-      "item": "green onions, cut into quarters lengthwise and  nely chopped (2¼ cups/150g)",
+      "item": "green onions, cut into quarters lengthwise and \uf001 nely chopped (2\u00bc cups/150g)",
       "amount": "15"
     },
     {
-      "item": "small Lebanese cucumbers (or ½ small English cucumber), unpeeled and cut into ½-inch/1cm dice (1 cup/150g)",
+      "item": "small Lebanese cucumbers (or \u00bd small English cucumber), unpeeled and cut into \u00bd-inch/1cm dice (1 cup/150g)",
       "amount": "2"
     },
     {
-      "item": "green bell pepper, cut in half lengthwise, seeded, and cut into ½- inch/1cm dice (1 cup/150g)",
+      "item": "green bell pepper, cut in half lengthwise, seeded, and cut into \u00bd- inch/1cm dice (1 cup/150g)",
       "amount": "1"
     },
     {
-      "item": "cup/15g mint leaves,  nely shredded",
-      "amount": "¾"
+      "item": "cup/15g mint leaves, \uf001 nely shredded",
+      "amount": "\u00be"
     },
     {
       "item": "cup/15g cilantro, roughly chopped",
-      "amount": "¾"
+      "amount": "\u00be"
     },
     {
       "item": "nigella seeds salt",
-      "amount": "½ tsp"
+      "amount": "\u00bd tsp"
     },
     {
       "item": "1.",
@@ -59,15 +59,18 @@
     "Place the green onions, cucumbers, bell pepper, mint, and cilantro in a large bowl. Add the dressing, and toss well. Add the nigella seeds and salt to taste, toss again, and serve.",
     "Curried lentil, tomato, and coconut soup",
     "Pictured on this page, bottom",
-    "I like the rough texture of this soup—with the lentils still holding their shape and the cilantro distinct—but you can also blitz it before serving, if you prefer things smooth. This soup can be made 4 days in advance if kept in the fridge, and up to",
+    "I like the rough texture of this soup\u2014with the lentils still holding their shape and the cilantro distinct\u2014but you can also blitz it before serving, if you prefer things smooth. This soup can be made 4 days in advance if kept in the fridge, and up to",
     "1 month if frozen.",
-    "Cilantro stems can all too often be thrown away, but they shouldn’t be—they have the texture of chives and taste, unsurprisingly, of cilantro. Serve this soup with lime wedges, if you like, for a citrusy kick."
+    "Cilantro stems can all too often be thrown away, but they shouldn\u2019t be\u2014they have the texture of chives and taste, unsurprisingly, of cilantro. Serve this soup with lime wedges, if you like, for a citrusy kick."
   ],
   "time": {
     "total": 30
   },
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "salad"
+    ],
+    "meal_role": "side",
     "chapter": "Raw Veg"
   }
 }

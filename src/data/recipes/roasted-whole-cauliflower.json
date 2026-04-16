@@ -10,7 +10,7 @@
   "intro": "fork! Either way, the tahini sauce is entirely optional. I love it, but just a squeeze",
   "ingredients": [
     {
-      "item": "jumbo cauliflower, with all leaves intact (2¾ lb/1.3kg)",
+      "item": "jumbo cauliflower, with all leaves intact (2\u00be lb/1.3kg)",
       "amount": "1"
     },
     {
@@ -31,30 +31,33 @@
     }
   ],
   "method": [
-    "Using a pair of scissors, lightly trim the leaves at the top of the cauliower, so that about 2 inches/5cm of the actual cauliower head is exposed.",
-    "Fill a pan (that is large enough to  t the cauliower in) three-quarters full of salted water. Bring to a boil, then carefully lower in the cauliower, exposed head down—don’t worry if the base is sticking out a little. Return to a boil, cook for 6 minutes, then use a slotted spoon to transfer the cauliower into a colander, exposed head down. Set aside for 10 minutes to drain and cool.",
-    "Preheat the oven to 375°F.",
-    "Mix together the butter and oil. Place the cauliower on a medium baking sheet, exposed head now facing upwards, and spread the butter-oil mix all over the cauliower, followed by 1¼ tsp of  aked salt. Place in the oven and roast for 1½–2 hours, basting the cauliower with the oil  ve or six times during cooking, until the cauliower is really tender and dark golden brown and the leaves are crisp and charred.",
+    "Using a pair of scissors, lightly trim the leaves at the top of the cauli\uf002ower, so that about 2 inches/5cm of the actual cauli\uf002ower head is exposed.",
+    "Fill a pan (that is large enough to \uf001 t the cauli\uf002ower in) three-quarters full of salted water. Bring to a boil, then carefully lower in the cauli\uf002ower, exposed head down\u2014don\u2019t worry if the base is sticking out a little. Return to a boil, cook for 6 minutes, then use a slotted spoon to transfer the cauli\uf002ower into a colander, exposed head down. Set aside for 10 minutes to drain and cool.",
+    "Preheat the oven to 375\u00b0F.",
+    "Mix together the butter and oil. Place the cauli\uf002ower on a medium baking sheet, exposed head now facing upwards, and spread the butter-oil mix all over the cauli\uf002ower, followed by 1\u00bc tsp of \uf002 aked salt. Place in the oven and roast for 1\u00bd\u20132 hours, basting the cauli\uf002ower with the oil \uf001 ve or six times during cooking, until the cauli\uf002ower is really tender and dark golden brown and the leaves are crisp and charred.",
     "Remove from the oven and set aside for 5 minutes, then cut into wedges (or pull it apart with your hands!). Serve with the lemon wedges and a little sprinkle of salt, or the green tahini sauce below.",
     "Green tahini sauce",
-    "This is a delicious sauce to serve with the cauliower, but is totally optional. It will keep in the fridge for up to 3 days.",
-    "This makes enough sauce for one cauliower, to serve four rounded ¼ cup/80g tahini",
-    "¾ cup/15g parsley, roughly chopped",
+    "This is a delicious sauce to serve with the cauli\uf002ower, but is totally optional. It will keep in the fridge for up to 3 days.",
+    "This makes enough sauce for one cauli\uf002ower, to serve four rounded \u00bc cup/80g tahini",
+    "\u00be cup/15g parsley, roughly chopped",
     "1 small garlic clove, crushed",
-    "⅓ cup/80ml water",
+    "\u2153 cup/80ml water",
     "3 tbsp lemon juice flaked sea salt",
-    "Pour the tahini into the small bowl of a food processor along with the parsley and garlic. Blitz for about 1 minute, until the tahini is green, then pour in the water and lemon juice and season with ¼ tsp of  aked salt.",
-    "Continue to blitz until you have a smooth green sauce with the consistency of heavy cream. Add a touch more tahini if it’s too thin, or a splash more water if it’s too thick.",
+    "Pour the tahini into the small bowl of a food processor along with the parsley and garlic. Blitz for about 1 minute, until the tahini is green, then pour in the water and lemon juice and season with \u00bc tsp of \uf002 aked salt.",
+    "Continue to blitz until you have a smooth green sauce with the consistency of heavy cream. Add a touch more tahini if it\u2019s too thin, or a splash more water if it\u2019s too thick.",
     "Curried egg and cauliflower salad",
     "Pictured with Roast cabbage with tarragon and pecorino (this page)",
-    "This is what Coronation chicken would taste like if you replaced the chicken with cauliower and hard-boiled egg. An introduction that possibly makes no sense until you eat it for yourself. If you are missing the chicken side of the equation, then you could do worse than serve this with said bird, roasted on the weekend."
+    "This is what Coronation chicken would taste like if you replaced the chicken with cauli\uf002ower and hard-boiled egg. An introduction that possibly makes no sense until you eat it for yourself. If you are missing the chicken side of the equation, then you could do worse than serve this with said bird, roasted on the weekend."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/roasted-whole-cauliflower.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Cooked Veg"
   }
 }

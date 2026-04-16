@@ -1,6 +1,6 @@
 {
   "id": "lemon-meringue",
-  "name": "Lemon Meringue",
+  "name": "Lemon meringue",
   "source": {
     "cookbook": "Ottolenghi: The Cookbook",
     "author": "Yotam Ottolenghi",
@@ -61,6 +61,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/lemon-meringue.jpg",
+  "image": null,
   "cuisine": "Middle Eastern"
 }

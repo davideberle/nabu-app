@@ -23,7 +23,7 @@
     },
     {
       "item": "light soy sauce",
-      "amount": "3½ tbsp"
+      "amount": "3\u00bd tbsp"
     },
     {
       "item": "granulated sugar",
@@ -34,7 +34,7 @@
       "amount": "1"
     },
     {
-      "item": "green onions, trimmed (5¾ oz/160g)",
+      "item": "green onions, trimmed (5\u00be oz/160g)",
       "amount": "10"
     },
     {
@@ -42,7 +42,7 @@
       "amount": "1"
     },
     {
-      "item": "1½-inch/4cm piece of ginger, peeled and julienned (¼ cup/30g)",
+      "item": "1\u00bd-inch/4cm piece of ginger, peeled and julienned (\u00bc cup/30g)",
       "amount": ""
     },
     {
@@ -55,7 +55,7 @@
     },
     {
       "item": "cup/10g cilantro leaves, or leaves and stems, if tender",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "1.",
@@ -69,22 +69,25 @@
   "method": [
     "Put all the ingredients for the sauce in a small pan and place over high heat.",
     "Once boiling, cook for 1 minute, swirling the pan slightly so that the sugar dissolves. Remove from the heat and set aside.",
-    "Make 5 diagonal slits on both sides of the  sh, ¼ inch/½ cm deep and about",
-    "3¼ inches/8cm long. Sprinkle 1 tsp of  aked salt evenly over one side of the",
-    "sh and rub in. Repeat with another tsp on the other side, then sprinkle the inside with another ½ tsp. Cut 8 of the green onions into 2-inch/5cm lengths and set aside. Thinly slice the remaining 2 green onions and set aside, keeping them separate.",
-    "Spread the cabbage and larger pieces of green onions out into a large baking dish or pan. Place the  sh diagonally on top and sprinkle with the ginger.",
-    "Pour the sauce over the  sh, then cover the pan tightly with foil and place in the oven for 40 minutes, basting twice during the process, until it is cooked through. To check that it is ready, gently insert a knife into one of the slits and check that the  esh comes away from the bones and is opaque. Sprinkle with the thinly sliced green onion, along with the chile, and set aside.",
-    "Pour the peanut oil into a small pan and place over high heat for about 2 minutes, until it starts to smoke. Very carefully pour it evenly over the  sh so that the skin and vegetables start to crisp. Top with the cilantro and serve, either straight from the baking dish or on a platter. If on a platter, arrange the cabbage leaves and green onion on the platter—pull them out from under the  sh—then carefully lift the  sh to sit on top. Pour the cooking sauce on top and serve.",
+    "Make 5 diagonal slits on both sides of the \uf001 sh, \u00bc inch/\u00bd cm deep and about",
+    "3\u00bc inches/8cm long. Sprinkle 1 tsp of \uf002 aked salt evenly over one side of the",
+    "\uf001sh and rub in. Repeat with another tsp on the other side, then sprinkle the inside with another \u00bd tsp. Cut 8 of the green onions into 2-inch/5cm lengths and set aside. Thinly slice the remaining 2 green onions and set aside, keeping them separate.",
+    "Spread the cabbage and larger pieces of green onions out into a large baking dish or pan. Place the \uf001 sh diagonally on top and sprinkle with the ginger.",
+    "Pour the sauce over the \uf001 sh, then cover the pan tightly with foil and place in the oven for 40 minutes, basting twice during the process, until it is cooked through. To check that it is ready, gently insert a knife into one of the slits and check that the \uf002 esh comes away from the bones and is opaque. Sprinkle with the thinly sliced green onion, along with the chile, and set aside.",
+    "Pour the peanut oil into a small pan and place over high heat for about 2 minutes, until it starts to smoke. Very carefully pour it evenly over the \uf001 sh so that the skin and vegetables start to crisp. Top with the cilantro and serve, either straight from the baking dish or on a platter. If on a platter, arrange the cabbage leaves and green onion on the platter\u2014pull them out from under the \uf001 sh\u2014then carefully lift the \uf001 sh to sit on top. Pour the cooking sauce on top and serve.",
     "Rose harissa chickpeas with flaked cod",
     "Pictured on this page",
-    "This is a great little tapas dish packed full of big avors. Serve it with some crusty bread and wilted greens."
+    "This is a great little tapas dish packed full of big \uf002avors. Serve it with some crusty bread and wilted greens."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/whole-roasted-sea-bass-with-soy-sauce-and-ginger.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Seafood"
   }
 }

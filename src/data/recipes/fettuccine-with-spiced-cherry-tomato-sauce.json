@@ -7,7 +7,7 @@
     "chapter": "Noodles and Pasta"
   },
   "servings": "serves 4",
-  "intro": "paprika, if you have this on hand rather than ancho. Alternatively, if you don’t",
+  "intro": "paprika, if you have this on hand rather than ancho. Alternatively, if you don\u2019t",
   "ingredients": [
     {
       "item": "tbsp/75ml olive oil",
@@ -23,7 +23,7 @@
     },
     {
       "item": "sugar (or a bit more or less, depending on the sweetness of the tomatoes)",
-      "amount": "½ tsp"
+      "amount": "\u00bd tsp"
     },
     {
       "item": "dried ancho chile, torn apart salt",
@@ -31,7 +31,7 @@
     },
     {
       "item": "plus 2 tbsp/200ml water",
-      "amount": "¾ cup"
+      "amount": "\u00be cup"
     },
     {
       "item": "cup/20g basil leaves",
@@ -42,8 +42,8 @@
       "amount": "14"
     },
     {
-      "item": "oz/35g Parmesan,  nely grated",
-      "amount": "1¼"
+      "item": "oz/35g Parmesan, \uf001 nely grated",
+      "amount": "1\u00bc"
     },
     {
       "item": "1.",
@@ -51,19 +51,22 @@
     }
   ],
   "method": [
-    "Put the oil into a large sauté pan and place over medium-high heat. Once hot, add the garlic and fry for up to 1 minute, stirring a few times, until starting to caramelize. Add the tomatoes—carefully, so that the oil doesn’t spit—along with the sugar, chile, and ½ tsp of salt. Pour in the water and stir for 4 minutes, until the tomatoes are starting to break down and the liquid is bubbling. Decrease the heat to medium-low and cook for about 1 hour, stirring every once in a while, until the tomatoes and ancho have broken down and the sauce has thickened. Stir in the basil and set aside somewhere warm.",
-    "Fill a large pot with plenty of salted water and place over high heat. Bring to a boil, then add the pasta. Cook for 10–12 minutes, or according to the package instructions, until al dente. Drain the pasta and stir it into the sauce.",
+    "Put the oil into a large saut\u00e9 pan and place over medium-high heat. Once hot, add the garlic and fry for up to 1 minute, stirring a few times, until starting to caramelize. Add the tomatoes\u2014carefully, so that the oil doesn\u2019t spit\u2014along with the sugar, chile, and \u00bd tsp of salt. Pour in the water and stir for 4 minutes, until the tomatoes are starting to break down and the liquid is bubbling. Decrease the heat to medium-low and cook for about 1 hour, stirring every once in a while, until the tomatoes and ancho have broken down and the sauce has thickened. Stir in the basil and set aside somewhere warm.",
+    "Fill a large pot with plenty of salted water and place over high heat. Bring to a boil, then add the pasta. Cook for 10\u201312 minutes, or according to the package instructions, until al dente. Drain the pasta and stir it into the sauce.",
     "Divide among 4 bowls, sprinkle with Parmesan, and serve.",
     "Pappardelle with rose harissa, black olives, and capers",
-    "Pictured with Gigli with chickpeas and za’atar (this page)",
-    "Pappare means “to gobble up,” in Italian, which is the destiny of this dish (particularly in Tara’s house, where her husband, Chris, makes it most Sunday nights). I like it spicy, but the quantity of harissa can easily be reduced. Make the sauce 3 days ahead if you like and keep in the fridge until needed."
+    "Pictured with Gigli with chickpeas and za\u2019atar (this page)",
+    "Pappare means \u201cto gobble up,\u201d in Italian, which is the destiny of this dish (particularly in Tara\u2019s house, where her husband, Chris, makes it most Sunday nights). I like it spicy, but the quantity of harissa can easily be reduced. Make the sauce 3 days ahead if you like and keep in the fridge until needed."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/fettuccine-with-spiced-cherry-tomato-sauce.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Noodles and Pasta"
   }
 }

@@ -7,7 +7,7 @@
     "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
-  "intro": "spread on a cheese sandwich or served with grilled meat as it is as a dip. I’ve left",
+  "intro": "spread on a cheese sandwich or served with grilled meat as it is as a dip. I\u2019ve left",
   "ingredients": [
     {
       "item": "red bell peppers, quartered, seeds and 1 stem discarded (10 cups/850g)",
@@ -27,11 +27,11 @@
     },
     {
       "item": "sweet smoked paprika",
-      "amount": "¾ tsp"
+      "amount": "\u00be tsp"
     },
     {
       "item": "crushed red pepper flakes",
-      "amount": "¼ tsp"
+      "amount": "\u00bc tsp"
     },
     {
       "item": "balsamic vinegar",
@@ -39,7 +39,7 @@
     },
     {
       "item": "cup/60g walnut halves, lightly roasted and roughly chopped salt",
-      "amount": "⅔"
+      "amount": "\u2154"
     },
     {
       "item": "tbsp/100ml olive oil",
@@ -54,7 +54,7 @@
       "amount": "3"
     },
     {
-      "item": "cans lima beans, drained and rinsed (2¾ cups/470g drained weight)",
+      "item": "cans lima beans, drained and rinsed (2\u00be cups/470g drained weight)",
       "amount": "2 (15.5 oz/440g)"
     },
     {
@@ -73,17 +73,20 @@
   "method": [
     "Mix the peppers and oil and spread out on a large parchment-lined baking sheet. Roast for 15 minutes, and then add the garlic. Continue to roast for",
     "15 minutes, until the skin of the peppers is soft and starting to blacken and the garlic is golden brown.",
-    "Place the peppers in a food processor, along with the garlic, thyme, paprika, pepper  akes, vinegar, all but 2 tbsp of the walnuts, and ½ tsp of salt. Blitz to form a rough paste and set aside.",
-    "To make the mash, put the oil into a small saucepan and place over medium heat. Once hot, add the garlic and thyme sprigs and fry very gently for 2–3 minutes, until the garlic starts to caramelize. Discard the garlic and set the sprigs of thyme aside, along with 2 tsp of the oil. Pour the remaining oil into a food processor with the lima beans, water, and ½ tsp of salt. Blitz until completely smooth, adding a little more water if you need to. Spread out on a large platter or a few plates, creating a natural rim around the edge, and spoon the muhammara into the center. Top with the crispy thyme springs, their reserved oil, and the remaining 2 tbsp of the walnuts and serve.",
+    "Place the peppers in a food processor, along with the garlic, thyme, paprika, pepper \uf002 akes, vinegar, all but 2 tbsp of the walnuts, and \u00bd tsp of salt. Blitz to form a rough paste and set aside.",
+    "To make the mash, put the oil into a small saucepan and place over medium heat. Once hot, add the garlic and thyme sprigs and fry very gently for 2\u20133 minutes, until the garlic starts to caramelize. Discard the garlic and set the sprigs of thyme aside, along with 2 tsp of the oil. Pour the remaining oil into a food processor with the lima beans, water, and \u00bd tsp of salt. Blitz until completely smooth, adding a little more water if you need to. Spread out on a large platter or a few plates, creating a natural rim around the edge, and spoon the muhammara into the center. Top with the crispy thyme springs, their reserved oil, and the remaining 2 tbsp of the walnuts and serve.",
     "Two bean and two lime salad",
-    "Making this ahead of time is ne—just hold back on the lime juice until before you serve. It will keep for up to 6 hours in the fridge. If you can’t get hold of fresh or frozen kaffir lime leaves, don’t use freeze-dried—the leaves are too brittle to work when nely chopped. As an alternative, use either a stick of lemongrass (remove the tough outer skin and nely chop the soft inner esh) or else just stick with the lime zest and juice already listed—the dish will still pack a punch."
+    "Making this ahead of time is \uf001ne\u2014just hold back on the lime juice until before you serve. It will keep for up to 6 hours in the fridge. If you can\u2019t get hold of fresh or frozen kaffir lime leaves, don\u2019t use freeze-dried\u2014the leaves are too brittle to work when \uf001nely chopped. As an alternative, use either a stick of lemongrass (remove the tough outer skin and \uf001nely chop the soft inner \uf002esh) or else just stick with the lime zest and juice already listed\u2014the dish will still pack a punch."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/lima-bean-mash-with-muhammara.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Cooked Veg"
   }
 }

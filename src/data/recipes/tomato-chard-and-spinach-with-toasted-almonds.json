@@ -7,23 +7,23 @@
     "chapter": "Cooked Veg"
   },
   "servings": "serves 6",
-  "intro": "rice, or sprinkled with feta. It’s also good as an accompaniment to chicken or sh,",
+  "intro": "rice, or sprinkled with feta. It\u2019s also good as an accompaniment to chicken or \uf001sh,",
   "ingredients": [
     {
       "item": "cup/60ml olive oil",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
       "item": "cup/50g sliced almonds",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "paprika",
-      "amount": "½ tsp"
+      "amount": "\u00bd tsp"
     },
     {
       "item": "caraway seeds",
-      "amount": "1½ tsp"
+      "amount": "1\u00bd tsp"
     },
     {
       "item": "garlic cloves, thinly sliced",
@@ -39,22 +39,22 @@
     },
     {
       "item": "oz/130g spinach, roughly shredded",
-      "amount": "4½"
+      "amount": "4\u00bd"
     },
     {
-      "item": "limes:  nely zest to get 1 tsp, then juice to get 2 tbsp",
+      "item": "limes: \uf001 nely zest to get 1 tsp, then juice to get 2 tbsp",
       "amount": "2"
     },
     {
       "item": "cups/35g mint, roughly chopped",
-      "amount": "1¾"
+      "amount": "1\u00be"
     },
     {
       "item": "cups/35g dill, roughly chopped",
-      "amount": "1¾"
+      "amount": "1\u00be"
     },
     {
-      "item": "green onions, chopped into ½-inch/1cm pieces (1 cup/80g)",
+      "item": "green onions, chopped into \u00bd-inch/1cm pieces (1 cup/80g)",
       "amount": "8"
     },
     {
@@ -63,18 +63,21 @@
     }
   ],
   "method": [
-    "Place a large sauté pan with a lid, over medium heat with 2 tbsp of the oil, the almonds, and paprika. Fry for 2–3 minutes, until the almonds are golden brown, then transfer to a bowl, discarding the oil once cooled.",
-    "Return the pan to medium-high heat with the remaining 2 tbsp of oil. Once hot, add the caraway and garlic and fry for 1 minute, until they start to sizzle and brown. Add the tomatoes with their juice, chard, and ¾ tsp of salt and stir through, crushing the tomatoes as you go. Cover the pan and continue to cook for 20 minutes, stirring every once in a while, until the chard wilts and the tomatoes break down. Remove from the heat, stir in the spinach, lime zest, lime juice, the mint, dill, and green onions. Serve with the almonds sprinkled on top.",
+    "Place a large saut\u00e9 pan with a lid, over medium heat with 2 tbsp of the oil, the almonds, and paprika. Fry for 2\u20133 minutes, until the almonds are golden brown, then transfer to a bowl, discarding the oil once cooled.",
+    "Return the pan to medium-high heat with the remaining 2 tbsp of oil. Once hot, add the caraway and garlic and fry for 1 minute, until they start to sizzle and brown. Add the tomatoes with their juice, chard, and \u00be tsp of salt and stir through, crushing the tomatoes as you go. Cover the pan and continue to cook for 20 minutes, stirring every once in a while, until the chard wilts and the tomatoes break down. Remove from the heat, stir in the spinach, lime zest, lime juice, the mint, dill, and green onions. Serve with the almonds sprinkled on top.",
     "Fried broccoli and kale with garlic, cumin, and lime",
-    "You can blanch the broccoli and kale well ahead of time here—a good few hours.",
-    "Once half-cooked, and then refreshed and dried, it’s ready for the nal fry before serving. Doing this little bit of prep turns the dish into one that can get to the table in just over 5 minutes."
+    "You can blanch the broccoli and kale well ahead of time here\u2014a good few hours.",
+    "Once half-cooked, and then refreshed and dried, it\u2019s ready for the \uf001nal fry before serving. Doing this little bit of prep turns the dish into one that can get to the table in just over 5 minutes."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/tomato-chard-and-spinach-with-toasted-almonds.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Cooked Veg"
   }
 }

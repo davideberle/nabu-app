@@ -10,23 +10,23 @@
   "intro": "Reserving 2 tbsp of water, drain the pasta and snow peas and place in a large",
   "ingredients": [
     {
-      "item": "tbsp/75ml olive oil about 9 anchovy fillets in oil, drained and  nely chopped (1½ tbsp)",
+      "item": "tbsp/75ml olive oil about 9 anchovy fillets in oil, drained and \uf001 nely chopped (1\u00bd tbsp)",
       "amount": "5"
     },
     {
-      "item": "Aleppo chile flakes, plus extra to serve (or ¾ tsp other crushed red pepper  akes)",
-      "amount": "1½ tsp"
+      "item": "Aleppo chile flakes, plus extra to serve (or \u00be tsp other crushed red pepper \uf002 akes)",
+      "amount": "1\u00bd tsp"
     },
     {
       "item": "garlic clove, crushed",
       "amount": "1"
     },
     {
-      "item": "lemon: nely zest to get 1 tsp,then cut into 4 wedges, to serve",
+      "item": "lemon: \uf001nely zest to get 1 tsp,then cut into 4 wedges, to serve",
       "amount": "1"
     },
     {
-      "item": "cup/20g parsley,  nely chopped black pepper",
+      "item": "cup/20g parsley, \uf001 nely chopped black pepper",
       "amount": "1"
     },
     {
@@ -47,12 +47,12 @@
     }
   ],
   "method": [
-    "Put the oil into a large sauté pan and place over medium heat. Once hot, add the anchovies, chile  akes, garlic, lemon zest, ½ cup of the parsley, and a good grind of pepper. Fry gently for 5 minutes, stirring frequently, until the anchovies have melted into the oil. Pour in the wine and cook for 4–5",
+    "Put the oil into a large saut\u00e9 pan and place over medium heat. Once hot, add the anchovies, chile \uf002 akes, garlic, lemon zest, \u00bd cup of the parsley, and a good grind of pepper. Fry gently for 5 minutes, stirring frequently, until the anchovies have melted into the oil. Pour in the wine and cook for 4\u20135",
     "minutes, until the sauce has thickened and reduced, then remove from the heat and set aside while you cook the pasta.",
-    "Bring a large pot of salted water to a boil and cook the spaghetti until al dente. Thirty seconds before the spaghetti is ready, add the samphire (to the same pot the pasta is cooking in). Reserve a couple of ladles of the pasta water, then drain the pasta and samphire. Return the sauté pan of sauce to medium-high heat. Add the cooked spaghetti and samphire and toss to combine. If you need to loosen the sauce, add a little of the reserved pasta water. Stir in the remaining ½ cup of parsley and another good grind of pepper, then divide among 4 plates.",
-    "Finish with a sprinkling of chile  akes and serve, with a lemon wedge on the side.",
+    "Bring a large pot of salted water to a boil and cook the spaghetti until al dente. Thirty seconds before the spaghetti is ready, add the samphire (to the same pot the pasta is cooking in). Reserve a couple of ladles of the pasta water, then drain the pasta and samphire. Return the saut\u00e9 pan of sauce to medium-high heat. Add the cooked spaghetti and samphire and toss to combine. If you need to loosen the sauce, add a little of the reserved pasta water. Stir in the remaining \u00bd cup of parsley and another good grind of pepper, then divide among 4 plates.",
+    "Finish with a sprinkling of chile \uf002 akes and serve, with a lemon wedge on the side.",
     "Gnocchi alla Romana",
-    "Comfort food does not get any more comforting than this. Serve this as it is, or with a crisp green salad. It’s the ultimate family dish. I’ve yet to meet a kid who doesn’t love it or an adult who doesn’t think it’s perfect with a glass of red wine.",
+    "Comfort food does not get any more comforting than this. Serve this as it is, or with a crisp green salad. It\u2019s the ultimate family dish. I\u2019ve yet to meet a kid who doesn\u2019t love it or an adult who doesn\u2019t think it\u2019s perfect with a glass of red wine.",
     "Make this up to the point it goes in the oven if you like and keep in the fridge for",
     "1 day before baking."
   ],
@@ -61,7 +61,10 @@
   },
   "image": "/recipes/anchovy-and-samphire-spaghetti.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Noodles and Pasta"
   }
 }

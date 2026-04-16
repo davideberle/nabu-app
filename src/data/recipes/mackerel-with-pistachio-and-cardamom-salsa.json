@@ -10,15 +10,15 @@
   "intro": "This is a super impressive (but secretly very easy) summer starter. It also works",
   "ingredients": [
     {
-      "item": "cardamom pods (or ½ teaspoon of ground cardamom) salt",
+      "item": "cardamom pods (or \u00bd teaspoon of ground cardamom) salt",
       "amount": "8"
     },
     {
-      "item": "mackerel fillets, skin on and pinbones removed (9¼ oz/260g)",
+      "item": "mackerel fillets, skin on and pinbones removed (9\u00bc oz/260g)",
       "amount": "4"
     },
     {
-      "item": "1¼-inch/3cm piece of ginger, peeled (1 oz/25g)",
+      "item": "1\u00bc-inch/3cm piece of ginger, peeled (1 oz/25g)",
       "amount": ""
     },
     {
@@ -30,23 +30,23 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "cup/15g cilantro,  nely chopped",
-      "amount": "¾"
+      "item": "cup/15g cilantro, \uf001 nely chopped",
+      "amount": "\u00be"
     },
     {
-      "item": "cup/10g basil leaves,  nely chopped",
-      "amount": "½"
+      "item": "cup/10g basil leaves, \uf001 nely chopped",
+      "amount": "\u00bd"
     },
     {
       "item": "shelled pistachios, lightly toasted and roughly chopped",
-      "amount": "2½ tbsp"
+      "amount": "2\u00bd tbsp"
     },
     {
-      "item": "limes:  nely zest 1 to get 1 tsp, then juice to get 2 tsp; cut the second lime into wedges, to serve",
+      "item": "limes: \uf001 nely zest 1 to get 1 tsp, then juice to get 2 tsp; cut the second lime into wedges, to serve",
       "amount": "2"
     },
     {
-      "item": "green chile, seeded and  nely chopped",
+      "item": "green chile, seeded and \uf001 nely chopped",
       "amount": "1"
     },
     {
@@ -59,22 +59,25 @@
     }
   ],
   "method": [
-    "Using the  at side of a large knife, crush the cardamom pods to release the seeds. Transfer the seeds to a pestle and mortar and crush them nely; you",
-    "should have about ½ tsp. Discard the pods. If starting with ground cardamom you don’t need to do this.",
-    "Mix a pinch of cardamom (about ⅛ tsp) with a pinch of salt. Rub this on both sides of the  sh and set aside until ready to fry.",
+    "Using the \uf002 at side of a large knife, crush the cardamom pods to release the seeds. Transfer the seeds to a pestle and mortar and crush them \uf001nely; you",
+    "should have about \u00bd tsp. Discard the pods. If starting with ground cardamom you don\u2019t need to do this.",
+    "Mix a pinch of cardamom (about \u215b tsp) with a pinch of salt. Rub this on both sides of the \uf001 sh and set aside until ready to fry.",
     "Finely grate the ginger, then press the pulp through a sieve (with a bowl underneath); you should get 1 tsp of juice. Discard the pulp and set the liquid aside.",
     "Using a fork (or a small whisk, if you have one), whip the cream until stiff.",
     "Switch to using a spatula and fold in the sour cream, ginger juice, and a small pinch of salt, so you have a soft cream. Keep in the fridge until needed.",
-    "Combine the cilantro and basil with the pistachios, the remaining ⅛ tsp of cardamom, the lime zest, lime juice, chile, 4 tsp/20ml of the oil, and ⅛ tsp salt. Set aside.",
-    "When ready to serve, put the remaining 1 tbsp plus 2 tsp of oil into a large frying pan and place over high heat. Once very hot, add the mackerel  llets, skin side down (the skin should sizzle), and fry for 2 minutes. Press the  llets with a  sh spatula as they cook, to prevent the skin from curling up. Once the skin is crisp and golden brown, turn over and fry for 1 minute, until golden brown.",
-    "Transfer the mackerel to four individual plates. Spoon one-quarter of the ginger cream and the pistachio and cardamom salsa next to each llet. Serve hot, with a wedge of lime."
+    "Combine the cilantro and basil with the pistachios, the remaining \u215b tsp of cardamom, the lime zest, lime juice, chile, 4 tsp/20ml of the oil, and \u215b tsp salt. Set aside.",
+    "When ready to serve, put the remaining 1 tbsp plus 2 tsp of oil into a large frying pan and place over high heat. Once very hot, add the mackerel \uf001 llets, skin side down (the skin should sizzle), and fry for 2 minutes. Press the \uf001 llets with a \uf001 sh spatula as they cook, to prevent the skin from curling up. Once the skin is crisp and golden brown, turn over and fry for 1 minute, until golden brown.",
+    "Transfer the mackerel to four individual plates. Spoon one-quarter of the ginger cream and the pistachio and cardamom salsa next to each \uf001llet. Serve hot, with a wedge of lime."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/mackerel-with-pistachio-and-cardamom-salsa.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Seafood"
   }
 }

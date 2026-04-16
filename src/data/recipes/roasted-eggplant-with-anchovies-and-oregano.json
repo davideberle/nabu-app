@@ -10,7 +10,7 @@
   "intro": "sourdough, but also works as a side to all sorts of things. Roast chicken leftovers",
   "ingredients": [
     {
-      "item": "medium eggplants, sliced into ¾-inch/2cm rounds (2 lb 2 oz/1kg) salt",
+      "item": "medium eggplants, sliced into \u00be-inch/2cm rounds (2 lb 2 oz/1kg) salt",
       "amount": "4"
     },
     {
@@ -18,7 +18,7 @@
       "amount": "7"
     },
     {
-      "item": "anchovy fillets in oil, drained and  nely chopped (about 1 tbsp)",
+      "item": "anchovy fillets in oil, drained and \uf001 nely chopped (about 1 tbsp)",
       "amount": "6"
     },
     {
@@ -35,7 +35,7 @@
     },
     {
       "item": "cup/5g parsley leaves, roughly chopped",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
       "item": "1.",
@@ -47,18 +47,21 @@
     }
   ],
   "method": [
-    "Mix the eggplant in a large bowl with ½ tsp of salt. Transfer to 2 large parchment-lined baking sheets and then brush with 5 tbsp/70ml of oil—you want it on both sides of the discs. Bake for 35 minutes, until dark golden brown and cooked through. Remove from the oven and set aside to cool.",
-    "In a small bowl, whisk together the anchovies, vinegar, garlic, ⅛ tsp of salt, and ¼ tsp of pepper. Slowly pour in the remaining 2 tbsp of oil, whisking continuously, until combined.",
-    "When ready to serve,  nely chop the oregano and place in a large bowl along with the eggplant and parsley. Pour in the anchovy dressing, gently mix, and transfer to a platter or bowl.",
+    "Mix the eggplant in a large bowl with \u00bd tsp of salt. Transfer to 2 large parchment-lined baking sheets and then brush with 5 tbsp/70ml of oil\u2014you want it on both sides of the discs. Bake for 35 minutes, until dark golden brown and cooked through. Remove from the oven and set aside to cool.",
+    "In a small bowl, whisk together the anchovies, vinegar, garlic, \u215b tsp of salt, and \u00bc tsp of pepper. Slowly pour in the remaining 2 tbsp of oil, whisking continuously, until combined.",
+    "When ready to serve, \uf001 nely chop the oregano and place in a large bowl along with the eggplant and parsley. Pour in the anchovy dressing, gently mix, and transfer to a platter or bowl.",
     "Roasted eggplant with curried yogurt",
-    "All the various components of this dish can be prepared 1 day in advance, if you want to get ahead. Keep all the elements separate and in the fridge, bringing everything back to room temperature before you assemble the dish. When you next see some fresh curry leaves, grab hold of them—they are sometimes around, but then they disappear from the shelves for a while. Freeze what you don’t use so that they’re ready for when you next need them. Lightly fried in 1 tablespoon of oil, they make a wonderfully aromatic addition to this dish, sprinkled on top with the pomegranate seeds before serving. If you’re going down the curry theme for the rest of your meal and have some papadums fried, these are great crumbled on top. If you do this, you won’t need the almonds."
+    "All the various components of this dish can be prepared 1 day in advance, if you want to get ahead. Keep all the elements separate and in the fridge, bringing everything back to room temperature before you assemble the dish. When you next see some fresh curry leaves, grab hold of them\u2014they are sometimes around, but then they disappear from the shelves for a while. Freeze what you don\u2019t use so that they\u2019re ready for when you next need them. Lightly fried in 1 tablespoon of oil, they make a wonderfully aromatic addition to this dish, sprinkled on top with the pomegranate seeds before serving. If you\u2019re going down the curry theme for the rest of your meal and have some papadums fried, these are great crumbled on top. If you do this, you won\u2019t need the almonds."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/roasted-eggplant-with-anchovies-and-oregano.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Cooked Veg"
   }
 }

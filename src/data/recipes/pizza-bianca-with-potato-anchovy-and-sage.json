@@ -7,7 +7,7 @@
     "chapter": "Cooked Veg"
   },
   "servings": "serves 2",
-  "intro": "Making your own pizza dough is easy, rolling it out is fun, and it’s a great thing to",
+  "intro": "Making your own pizza dough is easy, rolling it out is fun, and it\u2019s a great thing to",
   "ingredients": [
     {
       "item": "plus 6 tbsp/200g bread flour, plus extra for dusting the worktop",
@@ -23,38 +23,38 @@
     },
     {
       "item": "cup/120ml lukewarm water",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "oz/180g new potatoes, unpeeled and thinly sliced on a mandoline",
-      "amount": "6⅓"
+      "amount": "6\u2153"
     },
     {
       "item": "olive oil salt and black pepper",
       "amount": "3 tbsp"
     },
     {
-      "item": "plus 1½ tbsp/200g mascarpone",
-      "amount": "¾ cup"
+      "item": "plus 1\u00bd tbsp/200g mascarpone",
+      "amount": "\u00be cup"
     },
     {
-      "item": "oz/40g pecorino romano,  nely grated",
-      "amount": "1½"
+      "item": "oz/40g pecorino romano, \uf001 nely grated",
+      "amount": "1\u00bd"
     },
     {
-      "item": "anchovy fillets, drained and  nely chopped",
+      "item": "anchovy fillets, drained and \uf001 nely chopped",
       "amount": "4"
     },
     {
-      "item": "sage leaves,  nely chopped",
+      "item": "sage leaves, \uf001 nely chopped",
       "amount": "8"
     },
     {
-      "item": "lemons:  nely zest to get 2 tsp",
+      "item": "lemons: \uf001 nely zest to get 2 tsp",
       "amount": "2"
     },
     {
-      "item": "green onions, thinly sliced at an angle (rounded ¾ cup/50g)",
+      "item": "green onions, thinly sliced at an angle (rounded \u00be cup/50g)",
       "amount": "5"
     },
     {
@@ -63,22 +63,25 @@
     }
   ],
   "method": [
-    "Put the  our and yeast in a large bowl with the oil and ½ tsp salt. Stir to combine, then pour in the water, using a spatula to bring together. Transfer to a lightly oiled surface, then, with lightly oiled hands, knead the dough for 5 minutes until soft and elastic. Add more oil if it starts to stick. Divide the dough in half and transfer to a large parchment-lined baking sheet, spaced well apart. Cover with a slightly damp kitchen towel and let rise in a warm place for 60–90 minutes, to double in size.",
-    "Preheat the oven to 475°F or as high as it goes.",
-    "While the dough is rising, make the topping. In a small bowl, combine the potatoes with 1 tbsp of oil, ⅛ tsp of salt, and a good grind of pepper.",
-    "Transfer the potato slices to a parchment-lined baking sheet, big enough that the slices can lie  at and be spaced apart. Roast for 7 minutes, until golden brown, then set aside.",
+    "Put the \uf002 our and yeast in a large bowl with the oil and \u00bd tsp salt. Stir to combine, then pour in the water, using a spatula to bring together. Transfer to a lightly oiled surface, then, with lightly oiled hands, knead the dough for 5 minutes until soft and elastic. Add more oil if it starts to stick. Divide the dough in half and transfer to a large parchment-lined baking sheet, spaced well apart. Cover with a slightly damp kitchen towel and let rise in a warm place for 60\u201390 minutes, to double in size.",
+    "Preheat the oven to 475\u00b0F or as high as it goes.",
+    "While the dough is rising, make the topping. In a small bowl, combine the potatoes with 1 tbsp of oil, \u215b tsp of salt, and a good grind of pepper.",
+    "Transfer the potato slices to a parchment-lined baking sheet, big enough that the slices can lie \uf002 at and be spaced apart. Roast for 7 minutes, until golden brown, then set aside.",
     "In a small bowl, combine the mascarpone, pecorino, anchovies, sage, and lemon zest with a good grind of pepper and set aside.",
-    "Grease two large baking sheets with olive oil. Lightly  our your work surface. Working with one piece at a time, roll the dough into a rectangle that’s 12 x 8 inches/30 x 20cm. Carefully transfer to the baking sheet and repeat with the second ball of dough. Spread the mascarpone mixture evenly over both dough bases, leaving a ¾ inch/2cm uncovered border",
+    "Grease two large baking sheets with olive oil. Lightly \uf002 our your work surface. Working with one piece at a time, roll the dough into a rectangle that\u2019s 12 x 8 inches/30 x 20cm. Carefully transfer to the baking sheet and repeat with the second ball of dough. Spread the mascarpone mixture evenly over both dough bases, leaving a \u00be inch/2cm uncovered border",
     "around the edge. Sprinkle the green onions on top, then layer on the potatoes. Drizzle each pizza with about 1 tbsp of oil and bake for 9 minutes, until the edges are crisp and golden. Serve warm with a good grind of black pepper.",
     "Buckwheat and haricots verts salad",
-    "This is either lovely as it is or served with some pan-fried salmon. It’s quick to make—less than half an hour if you get the various elements all cooking at the same time—but can also be prepared in advance, if you like. All the elements can be made 1 day ahead and kept separately in the fridge, ready for the dish to be assembled before serving."
+    "This is either lovely as it is or served with some pan-fried salmon. It\u2019s quick to make\u2014less than half an hour if you get the various elements all cooking at the same time\u2014but can also be prepared in advance, if you like. All the elements can be made 1 day ahead and kept separately in the fridge, ready for the dish to be assembled before serving."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/pizza-bianca-with-potato-anchovy-and-sage.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Cooked Veg"
   }
 }

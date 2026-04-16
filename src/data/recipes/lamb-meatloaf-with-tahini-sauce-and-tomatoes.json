@@ -10,11 +10,11 @@
   "intro": "to cool and set, then cut into thick slices. This will keep in the fridge for up to 2",
   "ingredients": [
     {
-      "item": "zucchini, roughly chopped (1½ cups/160g)",
+      "item": "zucchini, roughly chopped (1\u00bd cups/160g)",
       "amount": "1"
     },
     {
-      "item": "carrot, roughly chopped (⅔ cup/100g)",
+      "item": "carrot, roughly chopped (\u2154 cup/100g)",
       "amount": "1"
     },
     {
@@ -22,7 +22,7 @@
       "amount": "1"
     },
     {
-      "item": "small tomatoes: 1 roughly chopped, 2 coarsely grated and skin discarded (¾ cup/180g)",
+      "item": "small tomatoes: 1 roughly chopped, 2 coarsely grated and skin discarded (\u00be cup/180g)",
       "amount": "3"
     },
     {
@@ -34,7 +34,7 @@
       "amount": "4"
     },
     {
-      "item": "oz/80g pecorino,  nely grated",
+      "item": "oz/80g pecorino, \uf001 nely grated",
       "amount": "3"
     },
     {
@@ -59,7 +59,7 @@
     },
     {
       "item": "cup/100g tahini",
-      "amount": "⅓"
+      "amount": "\u2153"
     },
     {
       "item": "lemon juice",
@@ -75,17 +75,17 @@
     }
   ],
   "method": [
-    "Preheat the oven to 400°F and grease a 8 x 4-inch/20 x 10cm loaf pan with a little oil.",
+    "Preheat the oven to 400\u00b0F and grease a 8 x 4-inch/20 x 10cm loaf pan with a little oil.",
     "Place the zucchini, carrot, onion, and chopped tomato in the bowl of a food processor and blitz to combine; you want the consistency to be similar to that of the ground lamb. Transfer the vegetables to a sieve set over a bowl and squeeze them to get rid of as much liquid as possible. Put the vegetables into a large bowl with the ground lamb, 2 of the garlic cloves, the pecorino, breadcrumbs, eggs, tomato paste, cumin, allspice, and 1 tsp salt. Bring the mixture together until well combined, then transfer to the loaf pan.",
-    "Place the loaf pan inside a high-sided baking dish. Carefully  ll the baking dish with enough boiling water to rise halfway up the sides of the loaf pan.",
+    "Place the loaf pan inside a high-sided baking dish. Carefully \uf001 ll the baking dish with enough boiling water to rise halfway up the sides of the loaf pan.",
     "Transfer to the oven and bake for 1 hour and 10 minutes, until golden brown.",
-    "While the meatloaf is cooking, prepare the tahini sauce. Put the tahini, the remaining 2 garlic cloves, lemon juice, and ¼ tsp salt into a medium bowl.",
+    "While the meatloaf is cooking, prepare the tahini sauce. Put the tahini, the remaining 2 garlic cloves, lemon juice, and \u00bc tsp salt into a medium bowl.",
     "Slowly whisk in the water until you get a smooth, thick sauce. Set aside until ready to serve.",
     "Once the meatloaf has cooked, remove the pan from the water bath and leave to cool for 10 minutes. Drain away and discard the liquid and fat from the loaf pan, then, using a wide spatula, transfer the meatloaf to a platter.",
     "Pour one-third of the tahini sauce over the meatloaf, followed by one-third of the grated tomato.",
     "Serve warm, with the remaining tahini and tomato alongside, or leave to cool and cut into slices to serve in sandwiches.",
     "Lamb arayes with tahini and sumac",
-    "Arayes are lamb stuffed atbreads popular across the Middle East. They’re traditionally made with pita bread but I’ve used tortillas here. They’re great for lunch or as a snack before supper, served with a fresh chopped salad or some sumac yogurt sauce (this page). They’re quick and easy to make, but if you want to make things even quicker and easier, the lling can be made up to 1 day ahead and kept in the fridge. You’re then all set to just ll and fry. Thanks to Sami",
+    "Arayes are lamb stuffed \uf002atbreads popular across the Middle East. They\u2019re traditionally made with pita bread but I\u2019ve used tortillas here. They\u2019re great for lunch or as a snack before supper, served with a fresh chopped salad or some sumac yogurt sauce (this page). They\u2019re quick and easy to make, but if you want to make things even quicker and easier, the \uf001lling can be made up to 1 day ahead and kept in the fridge. You\u2019re then all set to just \uf001ll and fry. Thanks to Sami",
     "Tamimi, for bringing these (along with so many other tasty things) to the ongoing feast."
   ],
   "time": {
@@ -93,7 +93,10 @@
   },
   "image": "/recipes/lamb-meatloaf-with-tahini-sauce-and-tomatoes.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Meat"
   }
 }

@@ -7,7 +7,7 @@
     "chapter": "Brunch"
   },
   "servings": "serves 6",
-  "intro": "salad alongside. It’s also lovely with a sprinkle of crispy fried shallots. If you think",
+  "intro": "salad alongside. It\u2019s also lovely with a sprinkle of crispy fried shallots. If you think",
   "ingredients": [
     {
       "item": "olive oil",
@@ -18,8 +18,8 @@
       "amount": "2"
     },
     {
-      "item": "English cucumber, sliced in half lengthwise, seeded, and thinly sliced on an angle (¾ cup/180g)",
-      "amount": "½"
+      "item": "English cucumber, sliced in half lengthwise, seeded, and thinly sliced on an angle (\u00be cup/180g)",
+      "amount": "\u00bd"
     },
     {
       "item": "green chiles, seeded and thinly sliced",
@@ -47,11 +47,11 @@
     },
     {
       "item": "rose harissa (or 50 percent more or less, depending on variety; see this page)",
-      "amount": "1½ tbsp"
+      "amount": "1\u00bd tbsp"
     },
     {
       "item": "lb/700g silken tofu, drained",
-      "amount": "1½"
+      "amount": "1\u00bd"
     },
     {
       "item": "of sourdough, toasted",
@@ -63,19 +63,22 @@
     }
   ],
   "method": [
-    "Place a large frying pan over medium-high heat and add the oil. Add the onions and fry for 9–10 minutes, stirring frequently, until caramelized and soft.",
-    "While the onions are frying, mix the cucumber, chiles, avocado, cilantro, oil, lime juice, and nigella seeds with a rounded ¼ tsp salt and set aside.",
-    "Add the harissa to the onions and continue to stir for 1 minute, then add the tofu and ¾ tsp salt. Use a potato masher to break up the tofu so it looks like scrambled egg and continue to heat for 2 minutes, until it’s hot. Serve the scrambled tofu on the toast with the salad alongside.",
+    "Place a large frying pan over medium-high heat and add the oil. Add the onions and fry for 9\u201310 minutes, stirring frequently, until caramelized and soft.",
+    "While the onions are frying, mix the cucumber, chiles, avocado, cilantro, oil, lime juice, and nigella seeds with a rounded \u00bc tsp salt and set aside.",
+    "Add the harissa to the onions and continue to stir for 1 minute, then add the tofu and \u00be tsp salt. Use a potato masher to break up the tofu so it looks like scrambled egg and continue to heat for 2 minutes, until it\u2019s hot. Serve the scrambled tofu on the toast with the salad alongside.",
     "Avocado butter on toast with tomato salsa",
-    "The only way to make a creamy, rich avocado even more creamy and rich is, of course, to add some creamy rich butter. Don’t worry that it will be a case of too much of a good thing; the salsa does what all good salsas do, bringing freshness, sharpness, and balance to whatever it sits alongside.",
-    "Make sure your avocados are nice and ripe and that your butter is supersoft so that they blend together properly. Don’t be tempted to speed things along by melting the butter, which will cause it to separate. Just leave it at room temperature for a few hours. Both the salsa and avocado butter can be made 1 day in advance, if you like. Store them separately in the fridge."
+    "The only way to make a creamy, rich avocado even more creamy and rich is, of course, to add some creamy rich butter. Don\u2019t worry that it will be a case of too much of a good thing; the salsa does what all good salsas do, bringing freshness, sharpness, and balance to whatever it sits alongside.",
+    "Make sure your avocados are nice and ripe and that your butter is supersoft so that they blend together properly. Don\u2019t be tempted to speed things along by melting the butter, which will cause it to separate. Just leave it at room temperature for a few hours. Both the salsa and avocado butter can be made 1 day in advance, if you like. Store them separately in the fridge."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/scrambled-harissa-tofu.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "breakfast"
+    ],
+    "meal_role": "breakfast",
     "chapter": "Brunch"
   }
 }

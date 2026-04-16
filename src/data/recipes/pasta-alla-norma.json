@@ -15,15 +15,15 @@
     },
     {
       "item": "cup/120ml olive oil salt and black pepper",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "garlic cloves, thinly sliced",
       "amount": "5"
     },
     {
-      "item": "mild dried chiles (seeded if you don’t want the heat)",
-      "amount": "1–2"
+      "item": "mild dried chiles (seeded if you don\u2019t want the heat)",
+      "amount": "1\u20132"
     },
     {
       "item": "large oregano sprigs",
@@ -39,7 +39,7 @@
     },
     {
       "item": "oz/45g mature pecorino romano (or ricotta salata), shaved",
-      "amount": "1½"
+      "amount": "1\u00bd"
     },
     {
       "item": "cup/20g basil leaves, torn",
@@ -55,19 +55,22 @@
     }
   ],
   "method": [
-    "Using a peeler and working from top to bottom of each eggplant, shave off long alternating strips of peel so that they look striped, like zebras. Cut crosswise into ½-inch/1cm slices and place in a bowl with 5 tbsp/75ml of oil, ¾ tsp salt, and a generous grind of pepper. Mix well, then spread out on two large parchment-lined baking sheets. Roast for 30–35 minutes, until dark golden brown. Remove from the oven and set aside to cool.",
-    "Put 2 tbsp of oil into a sauté pan and place over medium-high heat. Add the garlic and chiles and fry for 1–2 minutes, stirring constantly, until the garlic is golden brown. Add the tomatoes and their juice, oregano, sugar, ½ tsp salt, and a grind of pepper. Decrease the heat to medium-low and cook for 10 minutes, until the sauce is thick. Remove the oregano sprigs and stir in the eggplant. Set aside.",
+    "Using a peeler and working from top to bottom of each eggplant, shave off long alternating strips of peel so that they look striped, like zebras. Cut crosswise into \u00bd-inch/1cm slices and place in a bowl with 5 tbsp/75ml of oil, \u00be tsp salt, and a generous grind of pepper. Mix well, then spread out on two large parchment-lined baking sheets. Roast for 30\u201335 minutes, until dark golden brown. Remove from the oven and set aside to cool.",
+    "Put 2 tbsp of oil into a saut\u00e9 pan and place over medium-high heat. Add the garlic and chiles and fry for 1\u20132 minutes, stirring constantly, until the garlic is golden brown. Add the tomatoes and their juice, oregano, sugar, \u00bd tsp salt, and a grind of pepper. Decrease the heat to medium-low and cook for 10 minutes, until the sauce is thick. Remove the oregano sprigs and stir in the eggplant. Set aside.",
     "Bring a large pot of salted water to a boil and add the spaghetti. Cook until al dente, then strain, reserving some cooking water. Add the spaghetti to the sauce and mix well, adding two-thirds of the pecorino and basil, and a few tbsp of the cooking water if the sauce has become too thick.",
     "Divide the spaghetti among four shallow bowls, then top with the remaining pecorino, basil, and 1 tbsp of oil, and serve.",
     "Fettuccine with spiced cherry tomato sauce",
-    "Buy a big batch of cherry tomatoes when they are ripe and sweet, and double or triple the quantity of sauce. It takes a while to cook—just over an hour—but it keeps in the fridge for 5 days and freezes for up to 1 month. The ancho chile adds a lovely smoky richness, but can be replaced by ¼ tsp sweet smoked paprika, if you have this on hand rather than ancho. Alternatively, if you don’t want the kick, leave the chile out altogether."
+    "Buy a big batch of cherry tomatoes when they are ripe and sweet, and double or triple the quantity of sauce. It takes a while to cook\u2014just over an hour\u2014but it keeps in the fridge for 5 days and freezes for up to 1 month. The ancho chile adds a lovely smoky richness, but can be replaced by \u00bc tsp sweet smoked paprika, if you have this on hand rather than ancho. Alternatively, if you don\u2019t want the kick, leave the chile out altogether."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/pasta-alla-norma.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Noodles and Pasta"
   }
 }

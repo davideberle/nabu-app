@@ -1,6 +1,6 @@
 {
   "id": "raspberry-and-oat-bars",
-  "name": "Raspberry and Oat Bars",
+  "name": "Raspberry and oat bars",
   "source": {
     "cookbook": "Ottolenghi: The Cookbook",
     "author": "Yotam Ottolenghi",
@@ -13,7 +13,7 @@
     ],
     "chapter": "Baking & Patisserie"
   },
-  "servings": "makes about 20",
+  "servings": "serves 4",
   "time": {
     "prep": 20,
     "cook": 30,

@@ -7,7 +7,7 @@
     "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 4",
-  "intro": "really get a smoky taste into the esh of the eggplant, though, it’s best to put it",
+  "intro": "really get a smoky taste into the \uf002esh of the eggplant, though, it\u2019s best to put it",
   "ingredients": [
     {
       "item": "eggplants, pricked a few times with a knife (2 lb 6 oz/1.1kg)",
@@ -18,8 +18,8 @@
       "amount": "10"
     },
     {
-      "item": "cup/160g Puy lentils (or 4⅔ cups/350g ready-cooked lentils, if you want to save time)",
-      "amount": "¾"
+      "item": "cup/160g Puy lentils (or 4\u2154 cups/350g ready-cooked lentils, if you want to save time)",
+      "amount": "\u00be"
     },
     {
       "item": "olive oil, plus extra to serve",
@@ -27,7 +27,7 @@
     },
     {
       "item": "lemon juice",
-      "amount": "1½ tbsp"
+      "amount": "1\u00bd tbsp"
     },
     {
       "item": "small garlic clove, crushed",
@@ -47,21 +47,24 @@
     }
   ],
   "method": [
-    "Preheat the oven to 475°F or as high as your oven will go.",
-    "Place the eggplants on a baking sheet and roast for 1 hour, turning them over halfway through, until the  esh is completely soft and slightly smoky. Remove from the oven and, once cool enough handle, scoop the  esh out into a colander. Set aside, in the sink or over a bowl, for 30 minutes, for any liquid to drain away. The skin can be discarded.",
+    "Preheat the oven to 475\u00b0F or as high as your oven will go.",
+    "Place the eggplants on a baking sheet and roast for 1 hour, turning them over halfway through, until the \uf002 esh is completely soft and slightly smoky. Remove from the oven and, once cool enough handle, scoop the \uf002 esh out into a colander. Set aside, in the sink or over a bowl, for 30 minutes, for any liquid to drain away. The skin can be discarded.",
     "Place the cherry tomatoes on the same baking sheet and roast for 12 minutes, until slightly blackened, split, and soft. Remove from the oven and set aside.",
-    "Meanwhile, if starting with uncooked lentils,  ll a medium saucepan with plenty of water and place over high heat. Once boiling, add the lentils, decrease the heat to medium, and cook for 20 minutes, until soft but still retaining a bite. Drain, then set aside to dry out slightly. If starting with ready-cooked lentils, just tip them into a large bowl and add the eggplant",
-    "esh, tomatoes, oil, lemon juice, garlic, 2 tbsp of oregano, ¾ tsp salt, and a good grind of pepper. Mix well, then spoon into a large shallow bowl. Top with the yogurt, swirling it through slightly so there are obvious streaks.",
+    "Meanwhile, if starting with uncooked lentils, \uf001 ll a medium saucepan with plenty of water and place over high heat. Once boiling, add the lentils, decrease the heat to medium, and cook for 20 minutes, until soft but still retaining a bite. Drain, then set aside to dry out slightly. If starting with ready-cooked lentils, just tip them into a large bowl and add the eggplant",
+    "\uf002esh, tomatoes, oil, lemon juice, garlic, 2 tbsp of oregano, \u00be tsp salt, and a good grind of pepper. Mix well, then spoon into a large shallow bowl. Top with the yogurt, swirling it through slightly so there are obvious streaks.",
     "Sprinkle the remaining 1 tbsp of oregano over the top, drizzle with a little oil, and serve.",
     "Brown rice with caramelized onions and black garlic",
-    "This rich rice dish is a lovely accompaniment to lamb or pork, but also works well as it is, with a plate of fresh or steamed veg. It’s also a great introduction to black garlic if you’ve yet to shake hands. The balsamic-licorice avor and squidgy texture of the cloves makes them easy to slice or blitz, and they’re an even easier way to add a ton of avor to all sorts of dishes. Don’t be afraid to really caramelize the onions—the darker the color, the sweeter the avor. The onions can be made the day before you need them and kept in the fridge."
+    "This rich rice dish is a lovely accompaniment to lamb or pork, but also works well as it is, with a plate of fresh or steamed veg. It\u2019s also a great introduction to black garlic if you\u2019ve yet to shake hands. The balsamic-licorice \uf002avor and squidgy texture of the cloves makes them easy to slice or blitz, and they\u2019re an even easier way to add a ton of \uf002avor to all sorts of dishes. Don\u2019t be afraid to really caramelize the onions\u2014the darker the color, the sweeter the \uf002avor. The onions can be made the day before you need them and kept in the fridge."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/puy-lentils-with-eggplant-tomatoes-and-yogurt.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Rice, Grains, and Pulses"
   }
 }

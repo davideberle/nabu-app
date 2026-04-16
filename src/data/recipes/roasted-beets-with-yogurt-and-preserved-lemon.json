@@ -19,14 +19,14 @@
     },
     {
       "item": "cumin seeds",
-      "amount": "1½ tsp"
+      "amount": "1\u00bd tsp"
     },
     {
       "item": "small red onion, very thinly sliced (mounded 1 cup/100g)",
       "amount": "1"
     },
     {
-      "item": "small preserved lemon, skin and  esh  nely chopped and seeds discarded (¼ cup/40g)",
+      "item": "small preserved lemon, skin and \uf002 esh \uf001 nely chopped and seeds discarded (\u00bc cup/40g)",
       "amount": "1"
     },
     {
@@ -35,7 +35,7 @@
     },
     {
       "item": "cup/15g dill, roughly shredded salt and black pepper",
-      "amount": "¾"
+      "amount": "\u00be"
     },
     {
       "item": "tahini",
@@ -43,7 +43,7 @@
     },
     {
       "item": "cup/150g Greek-style yogurt",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "1.",
@@ -59,20 +59,23 @@
     }
   ],
   "method": [
-    "When cool enough to handle, peel off the skin and cut each beet into ¼- inch/½ cm slices. Place in a large mixing bowl and set aside to cool.",
-    "Put the olive oil into a small frying pan and place over medium heat. Add the cumin seeds and cook for about 3 minutes, until they start to pop. Pour the seeds and oil over the beets along with the onion, preserved lemon, lemon juice, ½ cup/10g of the dill, 1 tsp of salt, and a grind of black pepper. Mix everything together well, then transfer the salad to a large serving plate.",
-    "Stir the tahini into the yogurt and dot this over the beets in four or  ve places. Stir minimally—you want the yogurt and beets to mix only slightly— then sprinkle with the remaining ¼ cup/5g of dill.",
+    "When cool enough to handle, peel off the skin and cut each beet into \u00bc- inch/\u00bd cm slices. Place in a large mixing bowl and set aside to cool.",
+    "Put the olive oil into a small frying pan and place over medium heat. Add the cumin seeds and cook for about 3 minutes, until they start to pop. Pour the seeds and oil over the beets along with the onion, preserved lemon, lemon juice, \u00bd cup/10g of the dill, 1 tsp of salt, and a grind of black pepper. Mix everything together well, then transfer the salad to a large serving plate.",
+    "Stir the tahini into the yogurt and dot this over the beets in four or \uf001 ve places. Stir minimally\u2014you want the yogurt and beets to mix only slightly\u2014 then sprinkle with the remaining \u00bc cup/5g of dill.",
     "Whole-roasted celery root with coriander seed oil",
-    "I’ve managed to achieve the seemingly impossible here, of taking a recipe from my NOPI cookbook (full of recipes that would not make it into Ottolenghi",
+    "I\u2019ve managed to achieve the seemingly impossible here, of taking a recipe from my NOPI cookbook (full of recipes that would not make it into Ottolenghi",
     "SIMPLE) and actually making it more complicated for Ottolenghi SIMPLE. In",
-    "NOPI, the celery root is roasted whole as it is, for 3 hours, brushed with oil and sprinkled with salt. The results are so delicious and so straightforward that I’ve taken the liberty of adding one more twist in the form of the coriander seeds. The taste is even more wonderful than before. I like to eat it as it is as a starter, cut into wedges and served with a squeeze of lemon or a dollop of crème fraîche, but you can also serve it as a side to a pork chop or steak."
+    "NOPI, the celery root is roasted whole as it is, for 3 hours, brushed with oil and sprinkled with salt. The results are so delicious and so straightforward that I\u2019ve taken the liberty of adding one more twist in the form of the coriander seeds. The taste is even more wonderful than before. I like to eat it as it is as a starter, cut into wedges and served with a squeeze of lemon or a dollop of cr\u00e8me fra\u00eeche, but you can also serve it as a side to a pork chop or steak."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/roasted-beets-with-yogurt-and-preserved-lemon.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Cooked Veg"
   }
 }

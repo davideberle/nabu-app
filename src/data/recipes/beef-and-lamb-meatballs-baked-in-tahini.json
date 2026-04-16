@@ -1,6 +1,6 @@
 {
   "id": "beef-and-lamb-meatballs-baked-in-tahini",
-  "name": "Beef and Lamb Meatballs Baked in Tahini",
+  "name": "Beef and lamb meatballs baked in tahini",
   "source": {
     "cookbook": "Ottolenghi: The Cookbook",
     "author": "Yotam Ottolenghi",
@@ -142,6 +142,6 @@
   "tags": {
     "dietary": []
   },
-  "image": "/recipes/beef-and-lamb-meatballs-baked-in-tahini.jpg",
+  "image": null,
   "cuisine": "Middle Eastern"
 }

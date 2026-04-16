@@ -7,23 +7,23 @@
     "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
-  "intro": "you serve. It will keep for up to 6 hours in the fridge. If you can’t get hold of fresh",
+  "intro": "you serve. It will keep for up to 6 hours in the fridge. If you can\u2019t get hold of fresh",
   "ingredients": [
     {
       "item": "large kaffir lime leaves (fresh or frozen), stems removed",
       "amount": "6"
     },
     {
-      "item": "large limes:  nely zest to get 1½ tsp, then juice to get 2 tbsp",
+      "item": "large limes: \uf001 nely zest to get 1\u00bd tsp, then juice to get 2 tbsp",
       "amount": "2"
     },
     {
       "item": "cups/30g cilantro, roughly chopped",
-      "amount": "1½"
+      "amount": "1\u00bd"
     },
     {
       "item": "cup/10g mint leaves",
-      "amount": "½"
+      "amount": "\u00bd"
     },
     {
       "item": "garlic clove, crushed",
@@ -31,7 +31,7 @@
     },
     {
       "item": "cup/60ml olive oil",
-      "amount": "¼"
+      "amount": "\u00bc"
     },
     {
       "item": "green chiles, seeded and thinly sliced salt",
@@ -43,7 +43,7 @@
     },
     {
       "item": "oz/150g frozen shelled edamame (or peas)",
-      "amount": "5¼"
+      "amount": "5\u00bc"
     },
     {
       "item": "black sesame seeds",
@@ -55,20 +55,23 @@
     }
   ],
   "method": [
-    "Roll up all the kaffir leaves into a thick cigar shape. Slice as thinly as possible, then  nely chop the strips. Place in the bowl of a food processor with the lime zest, 1 cup/20g of cilantro, the mint, garlic, olive oil, chile, and ½ tsp of salt. Blitz until smooth, then set aside.",
+    "Roll up all the kaffir leaves into a thick cigar shape. Slice as thinly as possible, then \uf001 nely chop the strips. Place in the bowl of a food processor with the lime zest, 1 cup/20g of cilantro, the mint, garlic, olive oil, chile, and \u00bd tsp of salt. Blitz until smooth, then set aside.",
     "Bring a large pan of salted water to a boil and add the green beans. Blanch for 3 minutes, then add the edamame and cook for 1 minute. Drain all together, refresh under cold water, and set aside to dry.",
     "Spoon the lime paste over the beans, add the lime juice, and stir to combine.",
-    "Sprinkle with the sesame seeds, along with the remaining ½ cup/5g of cilantro, and serve at once.",
-    "Mushrooms and chestnuts with za’atar",
-    "These are lovely as an autumn or festive side. They are also great for breakfast, served with scrambled eggs. Use any mushrooms—or a mix of mushrooms— depending on what you see. Just keep the net weight the same. If you’ve got large shallots lying around, they are ne to use—just cut them in half or even into quarters.",
-    "If you want to get ahead, prepare this up to 4 hours in advance—just place everything on the baking sheet, minus the salt and pepper, ready to be seasoned before roasting."
+    "Sprinkle with the sesame seeds, along with the remaining \u00bd cup/5g of cilantro, and serve at once.",
+    "Mushrooms and chestnuts with za\u2019atar",
+    "These are lovely as an autumn or festive side. They are also great for breakfast, served with scrambled eggs. Use any mushrooms\u2014or a mix of mushrooms\u2014 depending on what you see. Just keep the net weight the same. If you\u2019ve got large shallots lying around, they are \uf001ne to use\u2014just cut them in half or even into quarters.",
+    "If you want to get ahead, prepare this up to 4 hours in advance\u2014just place everything on the baking sheet, minus the salt and pepper, ready to be seasoned before roasting."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/two-bean-and-two-lime-salad.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Cooked Veg"
   }
 }

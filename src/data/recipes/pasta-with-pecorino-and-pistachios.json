@@ -7,11 +7,11 @@
     "chapter": "Noodles and Pasta"
   },
   "servings": "serves 4",
-  "intro": "Troe is the traditional pasta to serve with pesto, but fusilli works just as well. For",
+  "intro": "Tro\uf001e is the traditional pasta to serve with pesto, but fusilli works just as well. For",
   "ingredients": [
     {
       "item": "cups/50g basil leaves",
-      "amount": "2½"
+      "amount": "2\u00bd"
     },
     {
       "item": "garlic clove, crushed",
@@ -34,15 +34,15 @@
       "amount": "2"
     },
     {
-      "item": "oz/75g pecorino,  nely shaved",
-      "amount": "2½"
+      "item": "oz/75g pecorino, \uf001 nely shaved",
+      "amount": "2\u00bd"
     },
     {
       "item": "plus 1 tbsp/75g shelled pistachios, roughly chopped",
-      "amount": "½ cup"
+      "amount": "\u00bd cup"
     },
     {
-      "item": "lemon:  nely zest to get 1 tsp salt and black pepper",
+      "item": "lemon: \uf001 nely zest to get 1 tsp salt and black pepper",
       "amount": "1"
     },
     {
@@ -51,19 +51,22 @@
     }
   ],
   "method": [
-    "Place 1½ cups/30g of the basil in the bowl of a food processor with the garlic, anchovies, and olive oil. Blitz to form a rough paste and set aside.",
+    "Place 1\u00bd cups/30g of the basil in the bowl of a food processor with the garlic, anchovies, and olive oil. Blitz to form a rough paste and set aside.",
     "Fill a large saucepan halfway with salted water and place over high heat.",
     "Once boiling, add the pasta and cook for about 7 minutes, until nearly al dente. Add the snow peas and cook together for another 2 minutes, until the pasta is just cooked and the snow peas are soft.",
-    "Reserving 2 tbsp of water, drain the pasta and snow peas and place in a large bowl. Add the basil paste and stir well. Add the pecorino, pistachios, lemon zest, the remaining 1 cup/20g of basil, ⅛ tsp salt, and a generous grind of pepper. Toss gently to combine and serve.",
+    "Reserving 2 tbsp of water, drain the pasta and snow peas and place in a large bowl. Add the basil paste and stir well. Add the pecorino, pistachios, lemon zest, the remaining 1 cup/20g of basil, \u215b tsp salt, and a generous grind of pepper. Toss gently to combine and serve.",
     "Anchovy and samphire spaghetti",
-    "Both samphire (a sea vegetable—you can substitute thin spears of asparagus) and anchovy pack a really salty punch. Combining the two results in a simple little dish that delivers big on avor. Thanks to Claudia Lazarus."
+    "Both samphire (a sea vegetable\u2014you can substitute thin spears of asparagus) and anchovy pack a really salty punch. Combining the two results in a simple little dish that delivers big on \uf002avor. Thanks to Claudia Lazarus."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/pasta-with-pecorino-and-pistachios.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main",
     "chapter": "Noodles and Pasta"
   }
 }

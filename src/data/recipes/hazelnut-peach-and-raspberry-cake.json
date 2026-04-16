@@ -14,7 +14,7 @@
       "amount": "2 tsp"
     },
     {
-      "item": "large peaches, pits removed, sliced into ½-inch/1½ cm wedges (2½ cups/340g)",
+      "item": "large peaches, pits removed, sliced into \u00bd-inch/1\u00bd cm wedges (2\u00bd cups/340g)",
       "amount": "2"
     },
     {
@@ -23,7 +23,7 @@
     },
     {
       "item": "plus 2 tbsp/320g granulated sugar",
-      "amount": "1½ cups"
+      "amount": "1\u00bd cups"
     },
     {
       "item": "cup/125g blanched hazelnuts",
@@ -31,7 +31,7 @@
     },
     {
       "item": "plus 2 tbsp/200g unsalted butter, at room temperature",
-      "amount": "¾ cup"
+      "amount": "\u00be cup"
     },
     {
       "item": "large eggs, beaten",
@@ -39,15 +39,15 @@
     },
     {
       "item": "plus 2 tbsp/125g all-purpose flour",
-      "amount": "¾ cup"
+      "amount": "\u00be cup"
     },
     {
       "item": "baking powder",
-      "amount": "1½ tsp"
+      "amount": "1\u00bd tsp"
     },
     {
       "item": "salt",
-      "amount": "⅛ tsp"
+      "amount": "\u215b tsp"
     },
     {
       "item": "1.",
@@ -55,11 +55,11 @@
     }
   ],
   "method": [
-    "Preheat the oven to 375°F. Line a 9-inch/24cm round springform cake pan with parchment paper and brush with the oil.",
-    "Place the peaches in a medium bowl with 1½ cups/150g of the raspberries and 1 tbsp of the sugar. Mix and set aside.",
+    "Preheat the oven to 375\u00b0F. Line a 9-inch/24cm round springform cake pan with parchment paper and brush with the oil.",
+    "Place the peaches in a medium bowl with 1\u00bd cups/150g of the raspberries and 1 tbsp of the sugar. Mix and set aside.",
     "Put the hazelnuts into a food processor and blitz for under 1 minute, until roughly ground. Set aside.",
-    "Put the remaining 1½ cups plus 1 tbsp/310g sugar and the butter into the bowl of a standing mixer  tted with the paddle attachment. Beat until smooth and well combined, then gradually add the eggs, mixing until incorporated. Add the ground hazelnuts,  our, baking powder, and salt and continue to mix until smooth. Spread the batter evenly in the cake pan and arrange the peach slices and raspberries randomly on top. Bake for 70–80 minutes, covering the cake with foil after 30 minutes so that it does not take on too much color.",
-    "Remove from the oven and set aside to cool slightly before releasing the cake from its pan. Place the remaining ½ cup/50g of raspberries on top of the cake, in the middle, and serve.",
+    "Put the remaining 1\u00bd cups plus 1 tbsp/310g sugar and the butter into the bowl of a standing mixer \uf001 tted with the paddle attachment. Beat until smooth and well combined, then gradually add the eggs, mixing until incorporated. Add the ground hazelnuts, \uf002 our, baking powder, and salt and continue to mix until smooth. Spread the batter evenly in the cake pan and arrange the peach slices and raspberries randomly on top. Bake for 70\u201380 minutes, covering the cake with foil after 30 minutes so that it does not take on too much color.",
+    "Remove from the oven and set aside to cool slightly before releasing the cake from its pan. Place the remaining \u00bd cup/50g of raspberries on top of the cake, in the middle, and serve.",
     "Spiced apple cake",
     "This can either be eaten as it is, slightly warm or at room temperature, served with or without a scoop of vanilla ice cream. This cake should be eaten on the day it is baked, or the day after; store in an airtight container to keep it at its best."
   ],
@@ -68,7 +68,10 @@
   },
   "image": "/recipes/hazelnut-peach-and-raspberry-cake.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "dessert"
+    ],
+    "meal_role": "dessert",
     "chapter": "Dessert"
   }
 }

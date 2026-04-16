@@ -31,11 +31,11 @@
     },
     {
       "item": "cups/25g parsley, roughly chopped",
-      "amount": "1¼"
+      "amount": "1\u00bc"
     },
     {
       "item": "oz/120g good-quality canned tuna in oil, drained",
-      "amount": "4¼"
+      "amount": "4\u00bc"
     },
     {
       "item": "tbsp/20g baby capers (or regular capers, chopped), drained",
@@ -51,7 +51,7 @@
     },
     {
       "item": "cup/180ml olive oil",
-      "amount": "¾"
+      "amount": "\u00be"
     },
     {
       "item": "1.",
@@ -63,12 +63,12 @@
     }
   ],
   "method": [
-    "Place the potatoes on a baking sheet, drizzle with the oil, sprinkle with ½ tsp salt, and bake for 50–55 minutes, or until the skin is crisp and the middle is soft. Remove from the oven and set aside.",
+    "Place the potatoes on a baking sheet, drizzle with the oil, sprinkle with \u00bd tsp salt, and bake for 50\u201355 minutes, or until the skin is crisp and the middle is soft. Remove from the oven and set aside.",
     "While the potatoes are in the oven, make the sauce. Place the egg yolks in the bowl of a food processor with the lemon juice, 1 cup/20g of parsley, the tuna, half the capers, all the anchovies, and the garlic. Blitz for 1 minute to form a rough paste, scraping down the sides of the bowl with a spatula to help the machine. With the machine still running, slowly add the oil in a steady stream, until the consistency is that of a thin mayonnaise. Set aside.",
-    "When ready to serve, slice the hot potatoes almost (but not completely) in half; leave the base of the skin intact. Squeeze the outside of the potatoes a little—this helps to loosen their  esh—and sprinkle the insides with a pinch of  aked salt. Spoon the sauce over the potatoes and top with an egg, torn in half just before serving so that the yolk runs into the sauce. Add the remaining ¼ cup/5g of parsley and capers, drizzle with some oil, and serve.",
+    "When ready to serve, slice the hot potatoes almost (but not completely) in half; leave the base of the skin intact. Squeeze the outside of the potatoes a little\u2014this helps to loosen their \uf002 esh\u2014and sprinkle the insides with a pinch of \uf002 aked salt. Spoon the sauce over the potatoes and top with an egg, torn in half just before serving so that the yolk runs into the sauce. Add the remaining \u00bc cup/5g of parsley and capers, drizzle with some oil, and serve.",
     "Oven fries with oregano and feta",
-    "These are inspired by some fries I ate in George Calombaris’s Melbourne-based restaurant, Jimmy Grants, when I was in Australia judging on MasterChef. I’d heard great things, but my high expectations were still exceeded. Eat these fries as they are, as a side to some sh or meat and with a simple salad, or with a wedge of lemon to squeeze over them.",
-    "If you happen to be on holiday in Greece (or live near a shop that sells Greek produce), be sure to pick up some dried Greek oregano—its avor is much more intense than regular dried oregano.",
+    "These are inspired by some fries I ate in George Calombaris\u2019s Melbourne-based restaurant, Jimmy Grants, when I was in Australia judging on MasterChef. I\u2019d heard great things, but my high expectations were still exceeded. Eat these fries as they are, as a side to some \uf001sh or meat and with a simple salad, or with a wedge of lemon to squeeze over them.",
+    "If you happen to be on holiday in Greece (or live near a shop that sells Greek produce), be sure to pick up some dried Greek oregano\u2014its \uf002avor is much more intense than regular dried oregano.",
     "Get ahead by parboiling the potatoes up to 6 hours in advance."
   ],
   "time": {
@@ -76,7 +76,10 @@
   },
   "image": "/recipes/baked-potatoes-with-egg-and-tonnato-sauce.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side",
     "chapter": "Cooked Veg"
   }
 }

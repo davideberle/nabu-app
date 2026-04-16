@@ -7,18 +7,18 @@
     "chapter": "Dessert"
   },
   "servings": "serves 6",
-  "intro": "well in the fridge up to 1 day. But don’t macerate the fruit for this amount of time",
+  "intro": "well in the fridge up to 1 day. But don\u2019t macerate the fruit for this amount of time",
   "ingredients": [
     {
       "item": "oz/200g blackberries",
       "amount": "7"
     },
     {
-      "item": "ripe plums, pits removed, cut into ½-inch/1cm wedges (2½ cups/360g)",
+      "item": "ripe plums, pits removed, cut into \u00bd-inch/1cm wedges (2\u00bd cups/360g)",
       "amount": "4"
     },
     {
-      "item": "vanilla extract rounded ¼ cup/60g granulated sugar",
+      "item": "vanilla extract rounded \u00bc cup/60g granulated sugar",
       "amount": "1 tsp"
     },
     {
@@ -34,8 +34,8 @@
       "amount": "6"
     },
     {
-      "item": "cups/200g confectioners’ sugar, sifted",
-      "amount": "1⅔"
+      "item": "cups/200g confectioners\u2019 sugar, sifted",
+      "amount": "1\u2154"
     },
     {
       "item": "cup/120g almond meal",
@@ -43,15 +43,15 @@
     },
     {
       "item": "salt",
-      "amount": "⅛ tsp"
+      "amount": "\u215b tsp"
     },
     {
       "item": "oz/150g egg whites (from 4 or 5 large eggs)",
-      "amount": "5¼"
+      "amount": "5\u00bc"
     },
     {
       "item": "cup/180g unsalted butter, melted and slightly cooled",
-      "amount": "¾"
+      "amount": "\u00be"
     },
     {
       "item": "1.",
@@ -59,20 +59,23 @@
     }
   ],
   "method": [
-    "Place the blackberries and plums in a bowl with the vanilla, granulated sugar, bay leaves, and ½ tsp of the cinnamon. Set aside for 30 minutes. Don’t be tempted to leave them sitting around for longer than this, as the fruit will become too juicy.",
-    "Preheat the oven to 400°F.",
-    "Mix the  our, confectioners’ sugar, almond meal, the remaining ½ tsp of cinnamon, and salt in a separate large bowl. Set aside.",
-    "Lightly whisk the egg whites by hand for 30 seconds, so they just start to froth. Stir into the  our mixture, along with the melted butter, until combined.",
-    "Tip the batter into a 9 x 13-inch/23 x 33cm parchment-lined baking dish and top evenly with the fruit and juices. Bake for 60 minutes, covering the dish with foil for the  nal 10 minutes, until the cake is golden brown and the fruit is bubbling. Set aside for 10 minutes before serving.",
+    "Place the blackberries and plums in a bowl with the vanilla, granulated sugar, bay leaves, and \u00bd tsp of the cinnamon. Set aside for 30 minutes. Don\u2019t be tempted to leave them sitting around for longer than this, as the fruit will become too juicy.",
+    "Preheat the oven to 400\u00b0F.",
+    "Mix the \uf002 our, confectioners\u2019 sugar, almond meal, the remaining \u00bd tsp of cinnamon, and salt in a separate large bowl. Set aside.",
+    "Lightly whisk the egg whites by hand for 30 seconds, so they just start to froth. Stir into the \uf002 our mixture, along with the melted butter, until combined.",
+    "Tip the batter into a 9 x 13-inch/23 x 33cm parchment-lined baking dish and top evenly with the fruit and juices. Bake for 60 minutes, covering the dish with foil for the \uf001 nal 10 minutes, until the cake is golden brown and the fruit is bubbling. Set aside for 10 minutes before serving.",
     "Blueberry, almond, and lemon cake",
-    "For all the pans and molds that can be used to great effect in baking, there’s nothing quite like a simple loaf cake to reassure one that all is okay with the world. This is timeless, easy, and also keeps well, for 3 days, stored in an airtight container at room temperature."
+    "For all the pans and molds that can be used to great effect in baking, there\u2019s nothing quite like a simple loaf cake to reassure one that all is okay with the world. This is timeless, easy, and also keeps well, for 3 days, stored in an airtight container at room temperature."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/plum-blackberry-and-bay-friand.jpg",
   "category": {
-    "dish_type": [],
+    "dish_type": [
+      "dessert"
+    ],
+    "meal_role": "dessert",
     "chapter": "Dessert"
   }
 }

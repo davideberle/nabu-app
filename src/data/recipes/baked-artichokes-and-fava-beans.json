@@ -1,6 +1,6 @@
 {
   "id": "baked-artichokes-and-fava-beans",
-  "name": "Baked Artichokes and Fava Beans",
+  "name": "Baked artichokes and fava beans",
   "source": {
     "cookbook": "Ottolenghi: The Cookbook",
     "author": "Yotam Ottolenghi",
@@ -14,7 +14,7 @@
     ],
     "chapter": "Vegetables"
   },
-  "servings": "serves 4 as a starter",
+  "servings": "serves 4",
   "time": {
     "prep": 20,
     "cook": 30,
