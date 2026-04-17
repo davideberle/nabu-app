@@ -65,7 +65,7 @@
     "Preheat the oven to 350 degrees Fahrenheit. Crosshatch bread",
     "using a serrated knife, cutting slices every inch in both",
     "directions but not through the bottom of the baguette.",
-    "Combine melted butter, garlic, and parsley in a small bowl—",
+    "Combine melted butter, garlic, and parsley in a small bowl\u2014",
     "Salt & pepper to taste.",
     "Brush the melted butter mixture within the crosshatches of the",
     "baguette.",
@@ -80,7 +80,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
     "chapter": "Bread Recipes",
     "meal_role": "main"

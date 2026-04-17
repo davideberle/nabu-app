@@ -9,7 +9,7 @@
   "servings": "serves 12",
   "ingredients": [
     {
-      "item": "• 2 giant eggs • 1 small-medium zucchini (about 3/4 cup",
+      "item": "\u2022 2 giant eggs \u2022 1 small-medium zucchini (about 3/4 cup",
       "amount": ""
     },
     {
@@ -17,7 +17,7 @@
       "amount": ""
     },
     {
-      "item": "• 3/4 cup natural creamy peanut butter, drippy (if too firm,",
+      "item": "\u2022 3/4 cup natural creamy peanut butter, drippy (if too firm,",
       "amount": ""
     },
     {
@@ -25,23 +25,23 @@
       "amount": ""
     },
     {
-      "item": "• 1 tablespoon pure maple syrup",
+      "item": "\u2022 1 tablespoon pure maple syrup",
       "amount": ""
     },
     {
-      "item": "• a pinch of salt",
+      "item": "\u2022 a pinch of salt",
       "amount": ""
     },
     {
-      "item": "• 1 tsp vanilla extract (pure)",
+      "item": "\u2022 1 tsp vanilla extract (pure)",
       "amount": ""
     },
     {
-      "item": "• 1 teaspoon of baking soda",
+      "item": "\u2022 1 teaspoon of baking soda",
       "amount": ""
     },
     {
-      "item": "• 1/2 cup vanilla plant-based protein powder (Sun Warrior,",
+      "item": "\u2022 1/2 cup vanilla plant-based protein powder (Sun Warrior,",
       "amount": ""
     },
     {
@@ -49,7 +49,7 @@
       "amount": ""
     },
     {
-      "item": "• 2 tbsp tiny chocolate chips + 1/3 cup",
+      "item": "\u2022 2 tbsp tiny chocolate chips + 1/3 cup",
       "amount": ""
     }
   ],
@@ -83,7 +83,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
     "chapter": "Bread Recipes",
     "meal_role": "main"

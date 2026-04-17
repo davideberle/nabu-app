@@ -62,7 +62,7 @@
     "until smooth and soft. Cut a ball out from the dough and place it",
     "in the slow cooker. Cook on high for 2 hours, or until golden on",
     "the bottom and cooked through. (The interior temperature of the",
-    "bread should be around 200°, but the top will not be brown.)",
+    "bread should be around 200\u00b0, but the top will not be brown.)",
     "Remove the bread from the slow cooker with care.",
     "To crisp up the crust, place the bread on a baking pan and broil",
     "for 2 to 3 minutes, or until golden. Allow for at least 20 minutes",
@@ -74,7 +74,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
     "chapter": "Bread Recipes",
     "meal_role": "main"

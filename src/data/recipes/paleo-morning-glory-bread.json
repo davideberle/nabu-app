@@ -9,39 +9,39 @@
   "servings": "serves 10",
   "ingredients": [
     {
-      "item": "• 65 grams of heated coconut oil (a third of a cup)",
+      "item": "\u2022 65 grams of heated coconut oil (a third of a cup)",
       "amount": ""
     },
     {
-      "item": "• 200 grams blanched almond flour (2 cups)",
+      "item": "\u2022 200 grams blanched almond flour (2 cups)",
       "amount": ""
     },
     {
-      "item": "• 30 grammes tapioca flour, 1/4 cup",
+      "item": "\u2022 30 grammes tapioca flour, 1/4 cup",
       "amount": ""
     },
     {
-      "item": "• 12 tbsp baking powder",
+      "item": "\u2022 12 tbsp baking powder",
       "amount": ""
     },
     {
-      "item": "• 1 teaspoon bicarbonate of soda",
+      "item": "\u2022 1 teaspoon bicarbonate of soda",
       "amount": ""
     },
     {
-      "item": "• 1/2 tsp cinnamon",
+      "item": "\u2022 1/2 tsp cinnamon",
       "amount": ""
     },
     {
-      "item": "• a quarter teaspoon of Celtic sea salt",
+      "item": "\u2022 a quarter teaspoon of Celtic sea salt",
       "amount": ""
     },
     {
-      "item": "• 60 grams dried cranberries, raisins, or chopped dates",
+      "item": "\u2022 60 grams dried cranberries, raisins, or chopped dates",
       "amount": ""
     },
     {
-      "item": "• 46 grams, 1/2 cup shredded or grated carrots",
+      "item": "\u2022 46 grams, 1/2 cup shredded or grated carrots",
       "amount": ""
     },
     {
@@ -49,15 +49,15 @@
       "amount": "75"
     },
     {
-      "item": "• three eggs",
+      "item": "\u2022 three eggs",
       "amount": ""
     },
     {
-      "item": "• 50 g coconut sugar (1/4 cup)",
+      "item": "\u2022 50 g coconut sugar (1/4 cup)",
       "amount": ""
     },
     {
-      "item": "• 1/2 cup walnuts, chopped (46 grammes + extra for",
+      "item": "\u2022 1/2 cup walnuts, chopped (46 grammes + extra for",
       "amount": ""
     },
     {
@@ -101,7 +101,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
     "chapter": "Bread Recipes",
     "meal_role": "main"

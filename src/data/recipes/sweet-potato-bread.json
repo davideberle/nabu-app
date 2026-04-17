@@ -9,51 +9,51 @@
   "servings": "serves 10",
   "ingredients": [
     {
-      "item": "• 15 ounces sweet potatoes, rinsed (save 2 tablespoons",
+      "item": "\u2022 15 ounces sweet potatoes, rinsed (save 2 tablespoons",
       "amount": ""
     },
     {
-      "item": "liquid) • 1 1/4 cup granulated sugar • 1/3 cup water",
+      "item": "liquid) \u2022 1 1/4 cup granulated sugar \u2022 1/3 cup water",
       "amount": ""
     },
     {
-      "item": "• a third cup of vegetable oil",
+      "item": "\u2022 a third cup of vegetable oil",
       "amount": ""
     },
     {
-      "item": "• 2 eggs, big",
+      "item": "\u2022 2 eggs, big",
       "amount": ""
     },
     {
-      "item": "• 1 3/4 cup flour (all-purpose)",
+      "item": "\u2022 1 3/4 cup flour (all-purpose)",
       "amount": ""
     },
     {
-      "item": "• 1 teaspoon bicarbonate of soda",
+      "item": "\u2022 1 teaspoon bicarbonate of soda",
       "amount": ""
     },
     {
-      "item": "• a quarter teaspoon of salt",
+      "item": "\u2022 a quarter teaspoon of salt",
       "amount": ""
     },
     {
-      "item": "• nutmeg (1/2 teaspoon)",
+      "item": "\u2022 nutmeg (1/2 teaspoon)",
       "amount": ""
     },
     {
-      "item": "• a quarter teaspoon of baking powder",
+      "item": "\u2022 a quarter teaspoon of baking powder",
       "amount": ""
     },
     {
-      "item": "• 1/2 cup pecans, chopped (optional)",
+      "item": "\u2022 1/2 cup pecans, chopped (optional)",
       "amount": ""
     },
     {
-      "item": "• a half teaspoon of allspice",
+      "item": "\u2022 a half teaspoon of allspice",
       "amount": ""
     },
     {
-      "item": "• 1/2 tsp cinnamon",
+      "item": "\u2022 1/2 tsp cinnamon",
       "amount": ""
     }
   ],
@@ -82,7 +82,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
     "chapter": "Bread Recipes",
     "meal_role": "main"

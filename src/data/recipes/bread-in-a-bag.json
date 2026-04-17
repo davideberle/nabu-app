@@ -59,7 +59,7 @@
   ],
   "method": [
     "Spray mini loaf pans with cooking spray and preheat oven to",
-    "375°F. 1 cup flour, sugar, and yeast in a resealable plastic bag,",
+    "375\u00b0F. 1 cup flour, sugar, and yeast in a resealable plastic bag,",
     "plus warm water",
     "To combine, seal the bag and smash it together with your hands.",
     "Allow 10 minutes for resting at room temperature. (The yeast",
@@ -78,7 +78,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
     "chapter": "Bread Recipes",
     "meal_role": "main"

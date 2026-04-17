@@ -9,19 +9,19 @@
   "servings": "serves 10",
   "ingredients": [
     {
-      "item": "• a quarter-cup of sunflower seeds",
+      "item": "\u2022 a quarter-cup of sunflower seeds",
       "amount": ""
     },
     {
-      "item": "• a quarter-cup of pumpkin seeds",
+      "item": "\u2022 a quarter-cup of pumpkin seeds",
       "amount": ""
     },
     {
-      "item": "• chia seeds, 1 tbsp.",
+      "item": "\u2022 chia seeds, 1 tbsp.",
       "amount": ""
     },
     {
-      "item": "• 12 CUP CULTURED COCONUT",
+      "item": "\u2022 12 CUP CULTURED COCONUT",
       "amount": ""
     },
     {
@@ -29,39 +29,39 @@
       "amount": ""
     },
     {
-      "item": "• flaxseed flour, 2 tbsp.",
+      "item": "\u2022 flaxseed flour, 2 tbsp.",
       "amount": ""
     },
     {
-      "item": "• two eggs",
+      "item": "\u2022 two eggs",
       "amount": ""
     },
     {
-      "item": "• 4 beaten egg whites",
+      "item": "\u2022 4 beaten egg whites",
       "amount": ""
     },
     {
-      "item": "• coconut oil, 2 tbsp.",
+      "item": "\u2022 coconut oil, 2 tbsp.",
       "amount": ""
     },
     {
-      "item": "• 1 tablespoon powdered baking soda",
+      "item": "\u2022 1 tablespoon powdered baking soda",
       "amount": ""
     },
     {
-      "item": "• psyllium husk powder, 2 tbsp.",
+      "item": "\u2022 psyllium husk powder, 2 tbsp.",
       "amount": ""
     },
     {
-      "item": "• 1 tbsp vinegar (apple cider vinegar)",
+      "item": "\u2022 1 tbsp vinegar (apple cider vinegar)",
       "amount": ""
     },
     {
-      "item": "• a quarter-teaspoon of salt",
+      "item": "\u2022 a quarter-teaspoon of salt",
       "amount": ""
     },
     {
-      "item": "• 12 cup water that has been brought",
+      "item": "\u2022 12 cup water that has been brought",
       "amount": ""
     },
     {
@@ -87,14 +87,14 @@
     "Slowly drizzle in the water until you get a dough-like texture.",
     "Transfer the mixture to the loaf pan and spread it out evenly.",
     "Top the loaf mixture with the saved teaspoons of seeds.",
-    "Bake for 30 to 35 minutes at 350°F."
+    "Bake for 30 to 35 minutes at 350\u00b0F."
   ],
   "time": {
     "total": 45
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
     "chapter": "Bread Recipes",
     "meal_role": "main"

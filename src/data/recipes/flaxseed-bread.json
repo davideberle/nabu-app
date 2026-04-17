@@ -9,7 +9,7 @@
   "servings": "serves 12",
   "ingredients": [
     {
-      "item": "• 1 cup warm or hot water + 2 1/3 cup + 1 tbsp golden",
+      "item": "\u2022 1 cup warm or hot water + 2 1/3 cup + 1 tbsp golden",
       "amount": ""
     },
     {
@@ -17,19 +17,19 @@
       "amount": ""
     },
     {
-      "item": "• 1 tablespoon of baking powder",
+      "item": "\u2022 1 tablespoon of baking powder",
       "amount": ""
     },
     {
-      "item": "• 1 teaspoon of baking soda**",
+      "item": "\u2022 1 teaspoon of baking soda**",
       "amount": ""
     },
     {
-      "item": "• 1 teaspoon apple cider vinegar",
+      "item": "\u2022 1 teaspoon apple cider vinegar",
       "amount": ""
     },
     {
-      "item": "• 1/2 teaspoon salt",
+      "item": "\u2022 1/2 teaspoon salt",
       "amount": ""
     }
   ],
@@ -64,7 +64,7 @@
     "boost. As soon as the primary and acid are combined, the",
     "reaction begins. So, as soon as you combine the two, pop the",
     "bread in the oven before the response cools down.",
-    "Set the oven to 350°F and bake the bread for 60 minutes. It's",
+    "Set the oven to 350\u00b0F and bake the bread for 60 minutes. It's",
     "best if the crust is golden brown (if using golden flaxseeds).",
     "Remove the bread from the oven and cool for 10 minutes in the",
     "loaf pan. Before slicing the bread, place it on a cooling rack to",
@@ -79,7 +79,7 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
     "chapter": "Bread Recipes",
     "meal_role": "main"

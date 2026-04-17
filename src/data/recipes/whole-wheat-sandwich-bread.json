@@ -124,7 +124,7 @@
     "Continue the extending and folding technique two more times,",
     "stopping between folds for 20 to 30 minutes.",
     "Grease a 9\" x 5\" loaf pan lightly. Using oiled hands, pat dough",
-    "into a 9\" × 11\" rectangle on a lightly greased board. With the",
+    "into a 9\" \u00d7 11\" rectangle on a lightly greased board. With the",
     "dough, make a letter fold by folding one-third of the rectangle",
     "over the center third, then folding the remaining third over the",
     "middle third. Flatten the dough with your fingers, then roll it",
@@ -138,14 +138,14 @@
     "Nearly an hour before you want to bake, preheat the oven to 375",
     "degrees Fahrenheit.",
     "Bake for 45 to 50 minutes, or until brown on top and internal",
-    "temperature reaches 200°."
+    "temperature reaches 200\u00b0."
   ],
   "time": {
     "total": 45
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
     "chapter": "Bread Recipes",
     "meal_role": "main"
