@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Soups & Stews"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "mushrooms (straw, portobello, enoki, or white), stems trimmed and rinsed in salted water",
@@ -70,7 +70,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups & Stews"
+    "chapter": "Soups & Stews",
+    "meal_role": "main"
   },
   "image": "/recipes/pumpkin-and-peanut-soup.jpg",
   "cuisine": "Southeast Asian"

@@ -10,10 +10,6 @@
   "intro": "quick meal. You eat it with sticky rice. (Note: there is also a Northern Thai version of gang om which",
   "ingredients": [
     {
-      "item": "111",
-      "amount": ""
-    },
-    {
       "item": "small shallots with skins on, roasted in a pan or oven",
       "amount": "4–5"
     },
@@ -50,7 +46,11 @@
   },
   "image": "/recipes/gang-om-lemongrass-and-dill-chicken-soup.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Isaan"
-  }
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": "Isaan",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

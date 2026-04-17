@@ -59,7 +59,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Greek Breakfast Recipes"
+    "chapter": "Greek Breakfast Recipes",
+    "meal_role": "dessert"
   },
   "cuisine": "Mediterranean"
 }

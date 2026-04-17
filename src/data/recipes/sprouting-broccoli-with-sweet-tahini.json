@@ -70,7 +70,10 @@
   },
   "image": "/recipes/sprouting-broccoli-with-sweet-tahini.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Blanched"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Blanched",
+    "meal_role": "main"
   }
 }

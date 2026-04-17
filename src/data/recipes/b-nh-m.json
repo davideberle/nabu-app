@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Main Dishes"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "dried white beans, soaked in 2 cups (480 ml) water for at least 8 hours (or 10½ ounces/300 g canned white beans, drained, for a quicker version)",
@@ -143,7 +143,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/b-nh-m.jpg",
   "cuisine": "Southeast Asian"

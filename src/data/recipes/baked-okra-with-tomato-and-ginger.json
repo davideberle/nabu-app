@@ -12,7 +12,8 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables"
+    "chapter": "Vegetables",
+    "meal_role": "side"
   },
   "servings": "serves 2 to 4",
   "time": {
@@ -86,7 +87,7 @@
     }
   ],
   "method": [
-    "Preheat the oven to 400\u00b0F / 200\u00b0C. To prepare the okra, take a small, sharp knife and carefully remove the stalk end. Try not to cut very low; leave the end of the stalk to seal the main body of the fruit, so the seeds are not exposed.",
+    "Preheat the oven to 400°F / 200°C. To prepare the okra, take a small, sharp knife and carefully remove the stalk end. Try not to cut very low; leave the end of the stalk to seal the main body of the fruit, so the seeds are not exposed.",
     "Mix the okra with 3 tablespoons of the olive oil and some salt and pepper. Scatter on a baking sheet in a single layer, then place in the oven and bake for 15 to 20 minutes, until just tender.",
     "Meanwhile, prepare the sauce. Heat the remaining 2 tablespoons oil in a large saucepan, add the garlic, ginger, and red pepper flakes, and fry for about a minute. Add the tomatoes, sugar, and some salt and pepper and cook, uncovered, over medium heat for 10 minutes, until the mixture thickens slightly.",
     "When the okra is ready, stir it gently into the sauce and cook for 2 minutes. To serve warm, spoon the okra onto serving plates and scatter the cilantro on top. If serving at room temperature, adjust the seasoning again before serving and garnish with the cilantro."

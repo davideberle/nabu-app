@@ -77,7 +77,8 @@
   "category": {
     "dish_type": [
       "dessert"
-    ]
+    ],
+    "meal_role": "dessert"
   },
   "cuisine": "African & Caribbean"
 }

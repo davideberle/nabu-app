@@ -12,7 +12,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish"
+    "chapter": "Fish",
+    "meal_role": "main"
   },
   "servings": "makes 7 tsp",
   "time": {

@@ -155,7 +155,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Bread Recipes"
+    "chapter": "Bread Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Other",
   "image": "/recipes/cinnamon-swirl-bread.jpg"

@@ -10,14 +10,6 @@
   "intro": "Out of all the dishes to come out of Thailand in recent years, this one may well be the most popular, found",
   "ingredients": [
     {
-      "item": "61",
-      "amount": ""
-    },
-    {
-      "item": "63",
-      "amount": ""
-    },
-    {
       "item": "sashimi- grade salmon, hamachi, scallops, or lightly poached shrimp, lobster, crab legs or surimi",
       "amount": "1 lb (approx 500 g)"
     },
@@ -66,7 +58,11 @@
   },
   "image": "/recipes/khao-soy-curried-egg-noodles-with-chicken.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Street Eats"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Street Eats",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

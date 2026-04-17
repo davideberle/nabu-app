@@ -69,7 +69,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Grains & Legumes"
+    "chapter": "Grains & Legumes",
+    "meal_role": "side"
   },
   "cuisine": "African & Caribbean"
 }

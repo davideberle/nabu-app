@@ -1,13 +1,13 @@
 {
   "id": "spiced-shepherd-s-pie-with-lima-bean-crust",
-  "name": "Spiced \u201cshepherd\u2019s pie\u201d with lima bean crust",
+  "name": "Spiced “shepherd’s pie” with lima bean crust",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi",
     "chapter": "Meat"
   },
   "servings": "serves 6",
-  "intro": "where it goes in the oven. If baked straight from the fridge it will need an extra 5\u2013",
+  "intro": "where it goes in the oven. If baked straight from the fridge it will need an extra 5–",
   "ingredients": [
     {
       "item": "tbsp/90ml olive oil",
@@ -34,7 +34,7 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "lemons, \uf001 nely zested salt",
+      "item": "lemons,  nely zested salt",
       "amount": "2"
     },
     {
@@ -47,7 +47,7 @@
     },
     {
       "item": "oz/100g dried apricots, quartered",
-      "amount": "3\u00bd"
+      "amount": "3½"
     },
     {
       "item": "plus 3 tbsp/280ml chicken stock",
@@ -55,11 +55,11 @@
     },
     {
       "item": "plus 3 tbsp/220ml white wine",
-      "amount": "\u00be cup"
+      "amount": "¾ cup"
     },
     {
       "item": "cup/80g pitted green olives, halved",
-      "amount": "\u2154"
+      "amount": "⅔"
     },
     {
       "item": "cups/670g cooked lima beans (three 15.5 oz/440g cans, drained, or",
@@ -67,11 +67,11 @@
     },
     {
       "item": "cups/400g uncooked beans, soaked overnight and cooked)",
-      "amount": "2\u00bd"
+      "amount": "2½"
     },
     {
       "item": "cup/70g tahini",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "water black pepper",
@@ -83,12 +83,12 @@
     }
   ],
   "method": [
-    "Put 3 tbsp of oil into a large heavy-bottom pan with a lid and place over medium-high heat. Add the garlic and shallots and saut\u00e9 for 5 minutes, stirring frequently, until soft and golden. Increase the heat to high and add the lamb, cumin, allspice, half the lemon zest, and \u00bd tsp salt. Fry for 5 minutes, until browned, stirring every now and then, then add the tomato paste, harissa, and apricots. Fry for another 2 minutes, then pour in the stock and wine. Decrease the heat to medium and simmer, covered, for 30 minutes. Once cooked, set aside to cool, then add the olives. Spoon into a 8 x 10-inch/20 x 25cm ovenproof high-sided dish and refrigerate for at least",
-    "30 minutes. This will \uf001 rm up the meat, making it easier to spread the mash on top.",
-    "Preheat the oven to 400\u00b0F.",
-    "To make the mash, mix the lima beans in a bowl with the remaining lemon zest, 2 tbsp of the olive oil, the tahini, water, \u00be tsp salt, and a grind of black pepper. Use a potato masher to mash the beans; they don\u2019t need to be completely smooth, just spreadable. Spread the mash over the lamb, then use a spoon to make a few shallow divots. Drizzle with the remaining 1 tbsp",
+    "Put 3 tbsp of oil into a large heavy-bottom pan with a lid and place over medium-high heat. Add the garlic and shallots and sauté for 5 minutes, stirring frequently, until soft and golden. Increase the heat to high and add the lamb, cumin, allspice, half the lemon zest, and ½ tsp salt. Fry for 5 minutes, until browned, stirring every now and then, then add the tomato paste, harissa, and apricots. Fry for another 2 minutes, then pour in the stock and wine. Decrease the heat to medium and simmer, covered, for 30 minutes. Once cooked, set aside to cool, then add the olives. Spoon into a 8 x 10-inch/20 x 25cm ovenproof high-sided dish and refrigerate for at least",
+    "30 minutes. This will  rm up the meat, making it easier to spread the mash on top.",
+    "Preheat the oven to 400°F.",
+    "To make the mash, mix the lima beans in a bowl with the remaining lemon zest, 2 tbsp of the olive oil, the tahini, water, ¾ tsp salt, and a grind of black pepper. Use a potato masher to mash the beans; they don’t need to be completely smooth, just spreadable. Spread the mash over the lamb, then use a spoon to make a few shallow divots. Drizzle with the remaining 1 tbsp",
     "of oil and bake for 30 minutes, until nicely colored and bubbly. Rest for 10 minutes before serving.",
-    "Arnold\u2019s roast chicken with caraway and cranberry stuffing"
+    "Arnold’s roast chicken with caraway and cranberry stuffing"
   ],
   "time": {
     "total": 30
@@ -97,7 +97,7 @@
     "dish_type": [
       "main"
     ],
-    "meal_role": "main",
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "main"
   }
 }

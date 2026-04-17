@@ -67,7 +67,10 @@
   },
   "image": "/recipes/fennel-with-capers-and-olives.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Braised"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Braised",
+    "meal_role": "main"
   }
 }

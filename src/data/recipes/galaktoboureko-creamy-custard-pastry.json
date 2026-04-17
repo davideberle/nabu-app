@@ -143,7 +143,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Sweet Ends"
+    "chapter": "Sweet Ends",
+    "meal_role": "dessert"
   },
   "cuisine": "Greek"
 }

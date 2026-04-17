@@ -83,7 +83,10 @@
   },
   "image": "/recipes/iranian-vegetable-stew-with-dried-lime.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Braised"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Braised",
+    "meal_role": "main"
   }
 }

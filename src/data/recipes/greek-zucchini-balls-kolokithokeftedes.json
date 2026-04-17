@@ -69,7 +69,8 @@
     "dish_type": [
       "snack"
     ],
-    "chapter": "Greek Snack Recipes"
+    "chapter": "Greek Snack Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mediterranean"
 }

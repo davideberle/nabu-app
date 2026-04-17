@@ -70,7 +70,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Mexican Taco Dinner Recipes"
+    "chapter": "Mexican Taco Dinner Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Mexican"
 }

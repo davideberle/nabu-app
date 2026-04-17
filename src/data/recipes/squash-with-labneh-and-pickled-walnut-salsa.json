@@ -73,7 +73,10 @@
   },
   "image": "/recipes/squash-with-labneh-and-pickled-walnut-salsa.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Grilled"
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Grilled",
+    "meal_role": "component"
   }
 }

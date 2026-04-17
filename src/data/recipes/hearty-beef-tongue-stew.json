@@ -10,10 +10,6 @@
   "intro": "and old-fashioned, never cool, but strangely satisfying. The original dish is basically Portuguese",
   "ingredients": [
     {
-      "item": "83",
-      "amount": ""
-    },
-    {
       "item": "Soak the meat in cool water with a tablespoon of salt for 20 minutes, then rinse and pat dry.",
       "amount": ""
     }
@@ -51,7 +47,11 @@
   },
   "image": "/recipes/hearty-beef-tongue-stew.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Bangkok and Central Thai"
-  }
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": "Bangkok and Central Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

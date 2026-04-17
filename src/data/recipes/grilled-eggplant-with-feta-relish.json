@@ -70,7 +70,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Greek Dinner"
+    "chapter": "Greek Dinner",
+    "meal_role": "component"
   },
   "cuisine": "Greek"
 }

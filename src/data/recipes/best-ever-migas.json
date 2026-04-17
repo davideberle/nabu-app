@@ -82,7 +82,8 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": "Mexican Breakfast Recipes"
+    "chapter": "Mexican Breakfast Recipes",
+    "meal_role": "breakfast"
   },
   "cuisine": "Mexican"
 }

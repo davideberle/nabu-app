@@ -10,19 +10,19 @@
   "intro": "but some people will prefer one, particularly if eating them in the morning topped",
   "ingredients": [
     {
-      "item": "parsnips, peeled and cut into 1\u00bd-inch/4cm chunks (6 cups/600g)",
+      "item": "parsnips, peeled and cut into 1½-inch/4cm chunks (6 cups/600g)",
       "amount": "6"
     },
     {
       "item": "cup/120ml olive oil salt",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "water, as needed",
-      "amount": "1\u20132 tbsp"
+      "amount": "1–2 tbsp"
     },
     {
-      "item": "3\u00be oz/560g smoked cod or haddock fillets, skinless and boneless, chopped into 1\u00bd-inch/4cm pieces",
+      "item": "3¾ oz/560g smoked cod or haddock fillets, skinless and boneless, chopped into 1½-inch/4cm pieces",
       "amount": "1 lb"
     },
     {
@@ -38,7 +38,7 @@
       "amount": "2"
     },
     {
-      "item": "lemons: \uf001 nely zest to get 2 tsp, then cut into wedges, to serve",
+      "item": "lemons:  nely zest to get 2 tsp, then cut into wedges, to serve",
       "amount": "2"
     },
     {
@@ -59,12 +59,12 @@
     }
   ],
   "method": [
-    "Toss the parsnips with 3 tbsp of the oil and \u00bc tsp of salt. Transfer to a large parchment-lined baking pan and roast for 30 minutes, until golden brown and soft. Tip into a food processor and blitz to form a coarse mash. If the mix is very dry, then add the water and blitz again to combine. Transfer to a large bowl and set aside.",
-    "Place the \uf001 sh in the food processor (don\u2019t worry about wiping it clean) and pulse a few times\u2014you want it to be roughly chopped rather than completely minced\u2014then add to the bowl of parsnips, along with the dill, chives, garlic, lemon zest, eggs, 1 tsp salt, and plenty of pepper. Mix well, then form into 12 patties; they should be about 3\u00bc inch/8cm wide and \u00be\u2013",
-    "1\u00bc inches/2\u20133cm thick. At this stage you can cover the patties and keep them in the fridge until ready to cook (up to 24 hours).",
-    "Put 1\u00bd tbsp of the butter and 2\u00bd tbsp of the remaining oil into a large frying pan and place over medium-high heat. Once the butter starts to foam, add half the patties and fry for 8 minutes, turning them after 4 minutes, until crisp and golden brown. Keep warm while you cook the rest, adding the remaining 1\u00bd tbsp of butter and 2\u00bd tbsp of oil to the pan. Serve with wedges of lemon.",
+    "Toss the parsnips with 3 tbsp of the oil and ¼ tsp of salt. Transfer to a large parchment-lined baking pan and roast for 30 minutes, until golden brown and soft. Tip into a food processor and blitz to form a coarse mash. If the mix is very dry, then add the water and blitz again to combine. Transfer to a large bowl and set aside.",
+    "Place the  sh in the food processor (don’t worry about wiping it clean) and pulse a few times—you want it to be roughly chopped rather than completely minced—then add to the bowl of parsnips, along with the dill, chives, garlic, lemon zest, eggs, 1 tsp salt, and plenty of pepper. Mix well, then form into 12 patties; they should be about 3¼ inch/8cm wide and ¾–",
+    "1¼ inches/2–3cm thick. At this stage you can cover the patties and keep them in the fridge until ready to cook (up to 24 hours).",
+    "Put 1½ tbsp of the butter and 2½ tbsp of the remaining oil into a large frying pan and place over medium-high heat. Once the butter starts to foam, add half the patties and fry for 8 minutes, turning them after 4 minutes, until crisp and golden brown. Keep warm while you cook the rest, adding the remaining 1½ tbsp of butter and 2½ tbsp of oil to the pan. Serve with wedges of lemon.",
     "Grilled prawn, corn, and tomato salad",
-    "Taking the shell off the prawns can be a bit of a \uf001ddly job, so start with peeled prawns (fresh, or frozen and defrosted), if you like. They won\u2019t have the tail intact, which always looks great, but they work perfectly well. If you want to get ahead, make the dressing up to 2 days in advance."
+    "Taking the shell off the prawns can be a bit of a ddly job, so start with peeled prawns (fresh, or frozen and defrosted), if you like. They won’t have the tail intact, which always looks great, but they work perfectly well. If you want to get ahead, make the dressing up to 2 days in advance."
   ],
   "time": {
     "total": 30
@@ -74,7 +74,7 @@
     "dish_type": [
       "main"
     ],
-    "meal_role": "main",
-    "chapter": "Seafood"
+    "chapter": "Seafood",
+    "meal_role": "main"
   }
 }

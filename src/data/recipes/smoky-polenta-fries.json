@@ -73,7 +73,10 @@
   },
   "image": "/recipes/smoky-polenta-fries.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Fried"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Fried",
+    "meal_role": "main"
   }
 }

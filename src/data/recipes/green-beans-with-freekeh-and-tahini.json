@@ -65,7 +65,10 @@
   },
   "image": "/recipes/green-beans-with-freekeh-and-tahini.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

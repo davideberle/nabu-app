@@ -83,7 +83,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Vegetables"
+    "chapter": "Vegetables",
+    "meal_role": "starter"
   },
   "cuisine": "Middle Eastern"
 }

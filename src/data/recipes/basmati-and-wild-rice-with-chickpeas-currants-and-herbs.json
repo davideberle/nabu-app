@@ -90,7 +90,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Pulses & Grains"
+    "chapter": "Pulses & Grains",
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern"
 }

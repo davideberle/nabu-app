@@ -28,7 +28,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Rice"
+    "chapter": "Rice",
+    "meal_role": "side"
   },
   "image": "/recipes/plain-white-rice.jpg",
   "cuisine": "Chinese",

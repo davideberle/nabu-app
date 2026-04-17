@@ -78,7 +78,11 @@
   },
   "image": "/recipes/curried-chicken-in-coconut-milk.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

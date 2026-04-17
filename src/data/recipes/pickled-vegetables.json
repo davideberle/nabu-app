@@ -84,9 +84,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "condiment"
     ],
-    "chapter": "Spring"
+    "chapter": "Spring",
+    "meal_role": "component"
   },
   "cuisine": "Italian"
 }

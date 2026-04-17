@@ -42,5 +42,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/fennel-and-cilantro-salad.jpg"
+  "image": "/recipes/fennel-and-cilantro-salad.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "meal_role": "side"
+  }
 }

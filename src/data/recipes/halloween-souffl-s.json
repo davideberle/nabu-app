@@ -80,5 +80,13 @@
   ],
   "time": {
     "total": 30
-  }
+  },
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "",
+    "meal_role": "starter"
+  },
+  "cuisine": "Middle Eastern"
 }

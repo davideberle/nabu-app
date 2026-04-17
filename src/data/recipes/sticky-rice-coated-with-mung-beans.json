@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Sides"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "vegetable oil",
@@ -56,7 +56,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "cuisine": "Southeast Asian"
 }

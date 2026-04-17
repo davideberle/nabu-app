@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Sides"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "pear-shaped butternut or kabocha squash or sugar pumpkins (about 2 pounds/1 kg)",
@@ -89,7 +89,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/brown-rice-in-butternut-squash.jpg",
   "cuisine": "Southeast Asian"

@@ -139,7 +139,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Mexican Dinner Recipes"
+    "chapter": "Mexican Dinner Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mexican"
 }

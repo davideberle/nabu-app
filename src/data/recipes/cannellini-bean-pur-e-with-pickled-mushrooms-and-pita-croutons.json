@@ -82,7 +82,10 @@
   },
   "image": "/recipes/cannellini-bean-pur-e-with-pickled-mushrooms-and-pita-croutons.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Mashed"
+    "dish_type": [
+      "bread"
+    ],
+    "chapter": "Mashed",
+    "meal_role": "side"
   }
 }

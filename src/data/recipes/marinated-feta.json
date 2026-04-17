@@ -56,9 +56,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Mezze & sharing plates"
+    "chapter": "Mezze & sharing plates",
+    "meal_role": "starter"
   },
   "cuisine": "Persian"
 }

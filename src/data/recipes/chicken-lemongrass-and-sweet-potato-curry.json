@@ -75,7 +75,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Chicken and Seafood"
+    "chapter": "Chicken and Seafood",
+    "meal_role": "dessert"
   },
   "cuisine": "Southeast Asian"
 }

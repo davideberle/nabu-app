@@ -125,7 +125,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "More Than Greek Salad"
+    "chapter": "More Than Greek Salad",
+    "meal_role": "main"
   },
   "cuisine": "Greek"
 }

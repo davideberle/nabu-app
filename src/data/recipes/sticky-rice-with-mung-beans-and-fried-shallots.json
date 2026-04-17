@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Sides"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "sticky rice, rinsed, soaked for 4 to 8 hours, and drained",
@@ -64,7 +64,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/sticky-rice-with-mung-beans-and-fried-shallots.jpg",
   "cuisine": "Southeast Asian"

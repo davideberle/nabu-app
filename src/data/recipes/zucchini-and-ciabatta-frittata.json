@@ -15,11 +15,11 @@
     },
     {
       "item": "plus 2 tbsp/200ml whole milk",
-      "amount": "\u00be cup"
+      "amount": "¾ cup"
     },
     {
       "item": "plus 2 tbsp/200ml heavy cream",
-      "amount": "\u00be cup"
+      "amount": "¾ cup"
     },
     {
       "item": "large garlic cloves, passed through a garlic press",
@@ -31,10 +31,10 @@
     },
     {
       "item": "ground cumin",
-      "amount": "\u00be tsp"
+      "amount": "¾ tsp"
     },
     {
-      "item": "oz/80g Parmesan, \uf001 nely grated salt and black pepper",
+      "item": "oz/80g Parmesan,  nely grated salt and black pepper",
       "amount": "3"
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "item": "cups/25g basil leaves, torn",
-      "amount": "1\u00bc"
+      "amount": "1¼"
     },
     {
       "item": "olive oil",
@@ -60,11 +60,11 @@
   ],
   "method": [
     "Put the ciabatta, milk, and cream into a medium bowl and mix well. Cover and set aside for 30 minutes, for the bread to absorb most of the liquid.",
-    "Put the garlic, eggs, cumin and \u00bc cup/50g of Parmesan into a separate large bowl with \u00be tsp salt and \u00bc tsp pepper. Mix well, then add the bread and any remaining liquid, followed by the zucchini and basil. Stir gently.",
+    "Put the garlic, eggs, cumin and ¼ cup/50g of Parmesan into a separate large bowl with ¾ tsp salt and ¼ tsp pepper. Mix well, then add the bread and any remaining liquid, followed by the zucchini and basil. Stir gently.",
     "Place an 8 x 10-inch/20 x 25cm baking dish in the oven for 5 minutes, until hot. Remove from the oven, brush with the oil, and pour in the zucchini mix.",
-    "Even out the top and bake for 20 minutes. Sprinkle the last of the Parmesan evenly on top of the frittata, then bake for another 20\u201325 minutes, until the frittata is cooked through\u2014a knife inserted into the center should come out clean\u2014and the top is golden brown. Set aside for 5 minutes, then serve.",
+    "Even out the top and bake for 20 minutes. Sprinkle the last of the Parmesan evenly on top of the frittata, then bake for another 20–25 minutes, until the frittata is cooked through—a knife inserted into the center should come out clean—and the top is golden brown. Set aside for 5 minutes, then serve.",
     "Portobello mushrooms with brioche and poached eggs",
-    "As with all dishes that involve eggs and toast and getting ready in the morning, this is all about timing. Ideally, you want the mushrooms and toast coming out of the oven about the same time, and the eggs poached and ready soon after. Get the mushrooms cooking \uf001rst, put the bread into the oven halfway through, and then get the eggs poaching. This works as well as a starter late in the day as it does in the morning. Use duck eggs for an extra-rich twist."
+    "As with all dishes that involve eggs and toast and getting ready in the morning, this is all about timing. Ideally, you want the mushrooms and toast coming out of the oven about the same time, and the eggs poached and ready soon after. Get the mushrooms cooking rst, put the bread into the oven halfway through, and then get the eggs poaching. This works as well as a starter late in the day as it does in the morning. Use duck eggs for an extra-rich twist."
   ],
   "time": {
     "total": 30
@@ -74,7 +74,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "meal_role": "breakfast",
-    "chapter": "Brunch"
+    "chapter": "Brunch",
+    "meal_role": "breakfast"
   }
 }

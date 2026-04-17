@@ -79,7 +79,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "starter"
   },
   "cuisine": "Caribbean"
 }

@@ -60,7 +60,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/peanut-butter-and-jam-fudge-swirled-ice-cream.jpg",
   "cuisine": "Other"

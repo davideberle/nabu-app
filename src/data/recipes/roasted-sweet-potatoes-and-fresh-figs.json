@@ -62,9 +62,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "side"
     ],
-    "chapter": "Vegetables"
+    "chapter": "Vegetables",
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern"
 }

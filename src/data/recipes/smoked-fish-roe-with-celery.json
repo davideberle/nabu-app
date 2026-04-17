@@ -39,9 +39,10 @@
   "image": "/recipes/smoked-fish-roe-with-celery.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Summer"
+    "chapter": "Summer",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 20,

@@ -38,5 +38,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/cucumber-and-avocado-pasta.jpg"
+  "image": "/recipes/cucumber-and-avocado-pasta.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main"
+  }
 }

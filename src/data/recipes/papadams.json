@@ -1782,7 +1782,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Recipes"
+    "chapter": "Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

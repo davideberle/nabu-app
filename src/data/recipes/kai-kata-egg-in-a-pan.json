@@ -10,14 +10,6 @@
   "intro": "requested American-style breakfasts from local cooks. The cooks’ efforts, which utilized local ingredients,",
   "ingredients": [
     {
-      "item": "123",
-      "amount": ""
-    },
-    {
-      "item": "125",
-      "amount": ""
-    },
-    {
       "item": "glass vermicelli (woon sen)",
       "amount": "8 oz (approx 250 g)"
     },
@@ -66,7 +58,11 @@
   },
   "image": "/recipes/kai-kata-egg-in-a-pan.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Isaan"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Isaan",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

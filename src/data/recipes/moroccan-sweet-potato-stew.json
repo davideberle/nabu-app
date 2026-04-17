@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "Tagine Cookbook",
     "author": "Various",
-    "chapter": "Desserts"
+    "chapter": "Soups & Stews"
   },
   "servings": "6 servings",
   "intro": "A perfect blend of rich sweet potato stew with a kick of curry powder and ginger plus the crunch of peanuts.",
@@ -98,9 +98,10 @@
   "image": "/recipes/moroccan-sweet-potato-stew.jpg",
   "category": {
     "dish_type": [
-      "dessert"
+      "main"
     ],
-    "chapter": "Desserts"
+    "chapter": "Soups & Stews",
+    "meal_role": "main"
   },
   "cuisine": "Moroccan"
 }

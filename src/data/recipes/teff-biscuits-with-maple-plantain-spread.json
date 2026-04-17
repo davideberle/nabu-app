@@ -69,7 +69,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "cuisine": "African & Caribbean"
 }

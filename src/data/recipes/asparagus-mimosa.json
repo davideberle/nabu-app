@@ -37,5 +37,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/asparagus-mimosa.jpg"
+  "image": "/recipes/asparagus-mimosa.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "starter"
+    ],
+    "meal_role": "starter"
+  }
 }

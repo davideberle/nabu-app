@@ -52,7 +52,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basic Recipes and Know-How"
+    "chapter": "Basic Recipes and Know-How",
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

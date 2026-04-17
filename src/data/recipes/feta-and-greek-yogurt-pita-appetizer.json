@@ -50,7 +50,8 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": "Greek Appetizers and Snacks"
+    "chapter": "Greek Appetizers and Snacks",
+    "meal_role": "side"
   },
   "cuisine": "Greek"
 }

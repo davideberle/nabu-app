@@ -25,7 +25,8 @@
     "dish_type": [
       "base"
     ],
-    "chapter": "Base Recipes"
+    "chapter": "Base Recipes",
+    "meal_role": "component"
   },
   "time": {
     "prep": 10,

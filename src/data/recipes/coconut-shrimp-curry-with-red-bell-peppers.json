@@ -81,7 +81,11 @@
   },
   "image": "/recipes/coconut-shrimp-curry-with-red-bell-peppers.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

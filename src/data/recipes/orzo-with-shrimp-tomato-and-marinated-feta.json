@@ -10,12 +10,12 @@
   "intro": "feta is lovely dotted over salads, so I tend to make a batch to keep in the fridge",
   "ingredients": [
     {
-      "item": "oz/200g feta, broken into \u00bd\u2013\u00be inch/1\u20132cm pieces",
+      "item": "oz/200g feta, broken into ½–¾ inch/1–2cm pieces",
       "amount": "7"
     },
     {
       "item": "crushed red pepper flakes",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
       "item": "fennel seeds, toasted and lightly crushed",
@@ -27,14 +27,14 @@
     },
     {
       "item": "cups/250g orzo salt and black pepper",
-      "amount": "1\u2153"
+      "amount": "1⅓"
     },
     {
       "item": "garlic cloves, crushed",
       "amount": "3"
     },
     {
-      "item": "orange, peel \uf001 nely shaved to get 3 strips",
+      "item": "orange, peel  nely shaved to get 3 strips",
       "amount": "1"
     },
     {
@@ -47,7 +47,7 @@
     },
     {
       "item": "plus 2 tbsp/200ml water",
-      "amount": "\u00be cup"
+      "amount": "¾ cup"
     },
     {
       "item": "oz/400g raw peeled shrimp",
@@ -55,7 +55,7 @@
     },
     {
       "item": "cups/30g basil leaves, roughly shredded",
-      "amount": "1\u00bd"
+      "amount": "1½"
     },
     {
       "item": "1.",
@@ -63,15 +63,15 @@
     }
   ],
   "method": [
-    "In a medium bowl, mix the feta with \u00bc tsp of the chile \uf002 akes, 2 tsp of the fennel seeds, and 1 tbsp of the oil. Set aside while you cook the orzo.",
-    "Place a large saut\u00e9 pan with a lid over medium-high heat. Add 2 tbsp of oil, the orzo, \u215b tsp salt, and a good grind of pepper. Fry for 3\u20134 minutes, stirring frequently, until golden brown, then remove from the pan and set aside.",
+    "In a medium bowl, mix the feta with ¼ tsp of the chile  akes, 2 tsp of the fennel seeds, and 1 tbsp of the oil. Set aside while you cook the orzo.",
+    "Place a large sauté pan with a lid over medium-high heat. Add 2 tbsp of oil, the orzo, ⅛ tsp salt, and a good grind of pepper. Fry for 3–4 minutes, stirring frequently, until golden brown, then remove from the pan and set aside.",
     "Return the pan to the medium-high heat and add the remaining 2 tbsp of oil,",
-    "\u00bc tsp of chile \uf002 akes, 2 tsp of fennel seeds, the garlic, and the orange peel.",
-    "Fry for 1 minute, until the garlic starts to lightly brown, then add the tomatoes and their juice, stock, water, \u00be tsp salt, and plenty of pepper.",
-    "Cook for 2\u20133 minutes, or until boiling, then stir in the fried orzo. Cover, then decrease the heat to medium-low and simmer for 15 minutes, stirring once or twice throughout so the orzo cooks evenly. Remove the lid and cook for",
-    "1\u20132 minutes, until the consistency is like risotto. Stir in the shrimp and cook for 2\u20133 minutes, until they are pink. Stir in the basil and serve at once, with the marinated feta sprinkled on top.",
+    "¼ tsp of chile  akes, 2 tsp of fennel seeds, the garlic, and the orange peel.",
+    "Fry for 1 minute, until the garlic starts to lightly brown, then add the tomatoes and their juice, stock, water, ¾ tsp salt, and plenty of pepper.",
+    "Cook for 2–3 minutes, or until boiling, then stir in the fried orzo. Cover, then decrease the heat to medium-low and simmer for 15 minutes, stirring once or twice throughout so the orzo cooks evenly. Remove the lid and cook for",
+    "1–2 minutes, until the consistency is like risotto. Stir in the shrimp and cook for 2–3 minutes, until they are pink. Stir in the basil and serve at once, with the marinated feta sprinkled on top.",
     "Pasta with pecorino and pistachios",
-    "Tro\uf001e is the traditional pasta to serve with pesto, but fusilli works just as well. For an extra twist of color and \uf002avor, stir in some oven-dried tomatoes. Slice 14 oz/400g cherry tomatoes in half, toss with 1 tbsp olive oil and some salt and pepper, and roast at 350\u00b0F for 40 minutes, until semi-dried and slightly caramelized. A batch of these tomatoes will keep well for up to 1 week in a sealed container in the fridge, ready to be thrown in with all sorts of other salads and grains."
+    "Troe is the traditional pasta to serve with pesto, but fusilli works just as well. For an extra twist of color and avor, stir in some oven-dried tomatoes. Slice 14 oz/400g cherry tomatoes in half, toss with 1 tbsp olive oil and some salt and pepper, and roast at 350°F for 40 minutes, until semi-dried and slightly caramelized. A batch of these tomatoes will keep well for up to 1 week in a sealed container in the fridge, ready to be thrown in with all sorts of other salads and grains."
   ],
   "time": {
     "total": 30
@@ -81,7 +81,7 @@
     "dish_type": [
       "main"
     ],
-    "meal_role": "main",
-    "chapter": "Noodles and Pasta"
+    "chapter": "Noodles and Pasta",
+    "meal_role": "main"
   }
 }

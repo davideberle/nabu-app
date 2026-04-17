@@ -77,7 +77,10 @@
     "total": 30
   },
   "category": {
-    "dish_type": [],
-    "chapter": "Braised"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Braised",
+    "meal_role": "main"
   }
 }

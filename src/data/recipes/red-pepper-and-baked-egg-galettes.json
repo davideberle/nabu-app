@@ -76,7 +76,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Baking"
+    "chapter": "Baking",
+    "meal_role": "dessert"
   },
   "cuisine": "Middle Eastern"
 }

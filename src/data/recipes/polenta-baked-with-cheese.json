@@ -57,9 +57,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "side"
     ],
-    "chapter": "Winter"
+    "chapter": "Winter",
+    "meal_role": "side"
   },
   "cuisine": "Italian"
 }

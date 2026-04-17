@@ -63,15 +63,18 @@
     "medium-low heat for approximately about 5 minutes until the roux is",
     "slightly browned and thickened. Add the milk. Continue cooking for 5-10",
     "minutes, stirring until the mixture is thick. Combine the roux into the soup",
-    "until smooth. Season the soup with pepper and salt.",
-    "Recipe 40: Curry Salmon with Broccoli"
+    "until smooth. Season the soup with pepper and salt."
   ],
   "time": {
     "total": 60
   },
   "image": "/recipes/curry-roasted-cauliflower-soup.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -51,9 +51,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Summer"
+    "chapter": "Summer",
+    "meal_role": "starter"
   },
   "cuisine": "Italian"
 }

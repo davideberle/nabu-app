@@ -29,9 +29,10 @@
   "image": "/recipes/grilled-radicchio.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "side"
     ],
-    "chapter": "Winter"
+    "chapter": "Winter",
+    "meal_role": "side"
   },
   "time": {
     "prep": 20,

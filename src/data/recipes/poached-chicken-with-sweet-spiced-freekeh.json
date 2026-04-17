@@ -76,9 +76,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "main"
     ],
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

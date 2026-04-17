@@ -48,7 +48,11 @@
   },
   "image": "/recipes/jaew-chili-sauce.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Dips and Sauces"
-  }
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Dips and Sauces",
+    "meal_role": "component"
+  },
+  "cuisine": "Southeast Asian"
 }

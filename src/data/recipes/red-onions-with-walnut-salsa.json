@@ -61,7 +61,10 @@
   },
   "image": "/recipes/red-onions-with-walnut-salsa.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Roasted"
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Roasted",
+    "meal_role": "component"
   }
 }

@@ -70,5 +70,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/apple-crumble-with-vanilla-sauce.jpg"
+  "image": "/recipes/apple-crumble-with-vanilla-sauce.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ],
+    "meal_role": "dessert"
+  }
 }

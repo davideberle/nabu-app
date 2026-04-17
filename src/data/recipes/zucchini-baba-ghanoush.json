@@ -62,7 +62,10 @@
   },
   "image": "/recipes/zucchini-baba-ghanoush.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Grilled"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grilled",
+    "meal_role": "main"
   }
 }

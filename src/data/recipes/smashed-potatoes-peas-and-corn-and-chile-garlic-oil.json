@@ -66,7 +66,8 @@
   "category": {
     "dish_type": [
       "starter"
-    ]
+    ],
+    "meal_role": "starter"
   },
   "cuisine": "African & Caribbean"
 }

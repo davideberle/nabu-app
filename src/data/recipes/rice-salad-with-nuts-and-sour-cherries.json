@@ -77,7 +77,10 @@
   },
   "image": "/recipes/rice-salad-with-nuts-and-sour-cherries.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Steamed"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Steamed",
+    "meal_role": "main"
   }
 }

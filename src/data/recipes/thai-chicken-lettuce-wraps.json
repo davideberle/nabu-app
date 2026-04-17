@@ -9,7 +9,7 @@
   "intro": "This recipe is tasty and delicious. It's also fun to put the salad together.",
   "time": {
     "prep": "35 minutes",
-    "total": "35 minutes0"
+    "total": 35
   },
   "ingredients": [
     {
@@ -93,7 +93,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

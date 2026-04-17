@@ -46,5 +46,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/nutty-endive-with-roquefort.jpg"
+  "image": "/recipes/nutty-endive-with-roquefort.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "starter"
+    ],
+    "meal_role": "starter"
+  }
 }

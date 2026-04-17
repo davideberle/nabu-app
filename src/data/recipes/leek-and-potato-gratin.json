@@ -54,9 +54,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "side"
     ],
-    "chapter": "Autumn"
+    "chapter": "Autumn",
+    "meal_role": "side"
   },
   "cuisine": "Italian"
 }

@@ -88,7 +88,10 @@
     "total": 30
   },
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

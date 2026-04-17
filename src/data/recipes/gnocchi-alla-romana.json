@@ -18,24 +18,24 @@
       "amount": "1"
     },
     {
-      "item": "cups/250g semolina (either \uf001 ne or coarse)",
-      "amount": "1\u00bd"
+      "item": "cups/250g semolina (either  ne or coarse)",
+      "amount": "1½"
     },
     {
       "item": "finely grated nutmeg",
       "amount": "1 tsp"
     },
     {
-      "item": "oz/100g Parmesan, \uf001 nely grated",
-      "amount": "3\u00bd"
+      "item": "oz/100g Parmesan,  nely grated",
+      "amount": "3½"
     },
     {
       "item": "egg yolks",
       "amount": "2"
     },
     {
-      "item": "oz/40g aged Cheddar, \uf001 nely grated",
-      "amount": "1\u00bd"
+      "item": "oz/40g aged Cheddar,  nely grated",
+      "amount": "1½"
     },
     {
       "item": "1.",
@@ -49,13 +49,13 @@
   "method": [
     "Put the butter and milk into a medium saucepan with 1 tsp of salt and a good grind of black pepper. Place over medium-high heat. Once the butter has",
     "melted and the milk is simmering, remove from the heat and whisk in the semolina, nutmeg, Parmesan, and egg yolks until smooth and combined.",
-    "Return to the heat and whisk continuously until thickened. Continue to cook and stir for 3\u20134 minutes, until the mixture comes away from the sides of the pan. Set aside to cool for 15 minutes; don\u2019t leave it for longer, or else it\u2019ll set too much and break when rolled.",
-    "Lay two large pieces of plastic wrap\u2014about 12 x 16 inches/30 x 40cm\u2014on your work surface and spoon half the mixture onto each piece. Roll to form",
-    "2 sausages\u2014each about 1\u00bd inches/4cm wide and 15 inches/38cm long\u2014 and keep in the fridge for at least 2 hours, until set. Remove and discard the plastic, and then cut each sausage into \u00bd-inch/1\u00bd cm rounds. Arrange the rounds in a shallow baking sheet, about 9 x 13 inches/23 x 33cm, in rows that slightly overlap. Sprinkle with Cheddar and bake for 15 minutes, until the cheese has melted.",
-    "Turn the oven to its highest broil setting and place the gnocchi about 4 inches/10cm beneath the heat. Broil for 2\u20133 minutes, until the top is golden brown. Let cool for 5 minutes before serving.",
+    "Return to the heat and whisk continuously until thickened. Continue to cook and stir for 3–4 minutes, until the mixture comes away from the sides of the pan. Set aside to cool for 15 minutes; don’t leave it for longer, or else it’ll set too much and break when rolled.",
+    "Lay two large pieces of plastic wrap—about 12 x 16 inches/30 x 40cm—on your work surface and spoon half the mixture onto each piece. Roll to form",
+    "2 sausages—each about 1½ inches/4cm wide and 15 inches/38cm long— and keep in the fridge for at least 2 hours, until set. Remove and discard the plastic, and then cut each sausage into ½-inch/1½ cm rounds. Arrange the rounds in a shallow baking sheet, about 9 x 13 inches/23 x 33cm, in rows that slightly overlap. Sprinkle with Cheddar and bake for 15 minutes, until the cheese has melted.",
+    "Turn the oven to its highest broil setting and place the gnocchi about 4 inches/10cm beneath the heat. Broil for 2–3 minutes, until the top is golden brown. Let cool for 5 minutes before serving.",
     "Lamb and feta meatballs",
     "Pictured on this page, left",
-    "These work either as a main course, in a pita or with some rice and vegetables, or eaten as they are as a canap\u00e9 before supper. If you do the latter, you\u2019ll make double the number of balls and they\u2019ll need less cooking\u20143\u20134 minutes in the pan, then 3 minutes in the oven to warm through. Once they\u2019ve come out of the pan, put them on individual cocktail sticks (the wood skewers will be \uf001ne in the oven for such a short time, and then they\u2019ll be ready to serve). The pomegranate molasses is a delicious addition, with its distinct sweet-sharpness, but don\u2019t worry if you don\u2019t have it; the meatballs are still great without it. These can be fried up to 6 hours in advance and warmed through for 5 minutes before serving.",
+    "These work either as a main course, in a pita or with some rice and vegetables, or eaten as they are as a canapé before supper. If you do the latter, you’ll make double the number of balls and they’ll need less cooking—3–4 minutes in the pan, then 3 minutes in the oven to warm through. Once they’ve come out of the pan, put them on individual cocktail sticks (the wood skewers will be ne in the oven for such a short time, and then they’ll be ready to serve). The pomegranate molasses is a delicious addition, with its distinct sweet-sharpness, but don’t worry if you don’t have it; the meatballs are still great without it. These can be fried up to 6 hours in advance and warmed through for 5 minutes before serving.",
     "Leftovers can also be eaten the next day, either at room temperature or warmed through."
   ],
   "time": {
@@ -66,7 +66,7 @@
     "dish_type": [
       "main"
     ],
-    "meal_role": "main",
-    "chapter": "Noodles and Pasta"
+    "chapter": "Noodles and Pasta",
+    "meal_role": "main"
   }
 }

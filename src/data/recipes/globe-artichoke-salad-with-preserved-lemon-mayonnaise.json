@@ -83,7 +83,10 @@
   },
   "image": "/recipes/globe-artichoke-salad-with-preserved-lemon-mayonnaise.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

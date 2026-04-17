@@ -12,7 +12,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Veggie Sides and Salads"
+    "chapter": "Veggie Sides and Salads",
+    "meal_role": "main"
   },
   "servings": "serves four to six",
   "time": {

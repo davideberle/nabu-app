@@ -132,9 +132,10 @@
   "image": "/recipes/one-pot-shrimp-and-rice.jpg",
   "category": {
     "dish_type": [
-      "side"
+      "main"
     ],
-    "chapter": "Main Dishes: 30 Minutes"
+    "chapter": "Main Dishes: 30 Minutes",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

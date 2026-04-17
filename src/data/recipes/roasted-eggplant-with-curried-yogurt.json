@@ -7,7 +7,7 @@
     "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
-  "intro": "sprinkled on top with the pomegranate seeds before serving. If you\u2019re going down",
+  "intro": "sprinkled on top with the pomegranate seeds before serving. If you’re going down",
   "ingredients": [
     {
       "item": "large eggplants or 4 medium, (2 lb 6 oz/1.1kg)",
@@ -19,7 +19,7 @@
     },
     {
       "item": "cup/200g Greek-style yogurt",
-      "amount": "\u2154"
+      "amount": "⅔"
     },
     {
       "item": "medium curry powder",
@@ -27,31 +27,31 @@
     },
     {
       "item": "ground turmeric",
-      "amount": "\u00bc tsp"
+      "amount": "¼ tsp"
     },
     {
       "item": "large lime: zest to get 1 tsp, then juice to get 2 tsp",
       "amount": "1"
     },
     {
-      "item": "onion, thinly sliced (1\u2154 cups/150g)",
+      "item": "onion, thinly sliced (1⅔ cups/150g)",
       "amount": "1"
     },
     {
       "item": "cup/30g sliced almonds",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "cumin seeds, toasted and lightly crushed",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
       "item": "coriander seeds, toasted and lightly crushed",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
       "item": "cup/40g pomegranate seeds",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "1.",
@@ -63,7 +63,7 @@
     },
     {
       "item": "minutes, until dark golden brown, then set aside to cool.",
-      "amount": "40\u201345"
+      "amount": "40–45"
     },
     {
       "item": "3.",
@@ -86,7 +86,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

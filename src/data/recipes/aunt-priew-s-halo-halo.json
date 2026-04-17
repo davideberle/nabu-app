@@ -10,10 +10,6 @@
   "intro": "You’re right in thinking this is not a Thai dessert. In fact, it’s Filipino. My Aunt Priew learned this",
   "ingredients": [
     {
-      "item": "147",
-      "amount": ""
-    },
-    {
       "item": "cooking oil",
       "amount": "1 cup (250 ml)"
     },
@@ -82,7 +78,11 @@
   },
   "image": "/recipes/aunt-priew-s-halo-halo.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Drinks and Desserts"
-  }
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Drinks and Desserts",
+    "meal_role": "dessert"
+  },
+  "cuisine": "Southeast Asian"
 }

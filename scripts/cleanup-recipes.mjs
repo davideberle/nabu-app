@@ -48,7 +48,6 @@ const COOKBOOK_CUISINES = {
   "Thai Spice Recipes": "Southeast Asian",
   "Vegan Nigerian Kitchen": "Nigerian",
   "Tagine Cookbook": "Moroccan",
-  "Jamie's Food Revolution": "British",
   "Superfood Boost": "Other",
   "The High-Protein Vegan Cookbook": "Other",
   "Vegan Chocolate": "Other",

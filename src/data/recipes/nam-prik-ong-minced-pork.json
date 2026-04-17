@@ -10,10 +10,6 @@
   "intro": "the Italian meat ragu. It is not meant to be spicy and is most often eaten with pork",
   "ingredients": [
     {
-      "item": "93",
-      "amount": ""
-    },
-    {
       "item": "young Northern Thai green chilies (prik num) roasted on a baking tray in the oven and peeled after cooling",
       "amount": "15"
     },
@@ -51,7 +47,11 @@
   },
   "image": "/recipes/nam-prik-ong-minced-pork.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "component"
+  },
+  "cuisine": "Southeast Asian"
 }

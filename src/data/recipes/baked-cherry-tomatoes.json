@@ -48,9 +48,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "side"
     ],
-    "chapter": "Summer"
+    "chapter": "Summer",
+    "meal_role": "side"
   },
   "cuisine": "Italian"
 }

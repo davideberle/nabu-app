@@ -82,7 +82,9 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: 1 Hour"
+    "chapter": "Main Dishes: 1 Hour",
+    "meal_role": "main"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/sheet-pan-palestinian-musakhansumac-roasted-chicken-and-onio.jpg"
 }

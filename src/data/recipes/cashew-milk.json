@@ -40,7 +40,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Essentials"
+    "chapter": "Essentials",
+    "meal_role": "component"
   },
   "cuisine": "Indian"
 }

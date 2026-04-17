@@ -60,7 +60,10 @@
   },
   "image": "/recipes/honey-roasted-carrots-with-tahini-yogurt.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Roasted"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Roasted",
+    "meal_role": "main"
   }
 }

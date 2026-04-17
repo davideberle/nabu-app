@@ -64,7 +64,10 @@
   },
   "image": "/recipes/black-currant-friands.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

@@ -40,7 +40,7 @@
     "Place one of the pastry circles inside a shallow bowl. (You can use a larger piece if you don’t want to waste much pastry and fill it up more.) You will need to work quickly so that the pastry does not dry out and become stiff. Put half the parsley in the center of the circle and sprinkle with half the green onion. Create a little nest in which to rest an egg, then carefully crack an egg into the nest. Sprinkle generously with salt and pepper and fold in the sides of the pastry to create a parcel. The four folds will overlap so that the egg is fully enclosed. You can’t seal the pastry, but a neat fold should keep the egg inside.",
     "Carefully turn the parcel over and gently place it in the oil, seal side down. Cook for 60 to 90 seconds on each side, until the pastry is golden brown. The egg white should be set and the yolk still runny. Lift the cooked parcel from the oil and place between paper towels to soak up the excess oil. Keep warm while you cook the second pastry. Serve both parcels at once."
   ],
-  "image": "/recipes/brick.jpg",
+  "image": null,
   "dietary": [
     "vegetarian"
   ],
@@ -48,7 +48,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Baking"
+    "chapter": "Baking",
+    "meal_role": "dessert"
   },
   "time": {
     "prep": 20,

@@ -33,9 +33,10 @@
   "image": "/recipes/broad-beans-with-pecorino.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "side"
     ],
-    "chapter": "Spring"
+    "chapter": "Spring",
+    "meal_role": "side"
   },
   "time": {
     "prep": 20,

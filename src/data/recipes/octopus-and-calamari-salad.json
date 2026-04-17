@@ -56,7 +56,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Spring"
+    "chapter": "Spring",
+    "meal_role": "side"
   },
   "cuisine": "Italian"
 }

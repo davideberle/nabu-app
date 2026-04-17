@@ -80,9 +80,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "main"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/caramelized-garlic-tart.jpg"

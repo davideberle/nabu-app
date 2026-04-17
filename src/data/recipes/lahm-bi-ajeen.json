@@ -91,7 +91,9 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Salads & Sides"
+    "chapter": "Salads & Sides",
+    "meal_role": "starter"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/lahm-bi-ajeenspiced-ground-beef-flatbread.jpg"
 }

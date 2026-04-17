@@ -56,7 +56,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics"
+    "chapter": "Basics",
+    "meal_role": "main"
   },
   "cuisine": "Greek"
 }

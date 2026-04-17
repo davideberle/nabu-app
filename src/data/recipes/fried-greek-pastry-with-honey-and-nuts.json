@@ -98,7 +98,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Greek Desserts"
+    "chapter": "Greek Desserts",
+    "meal_role": "dessert"
   },
   "cuisine": "Greek"
 }

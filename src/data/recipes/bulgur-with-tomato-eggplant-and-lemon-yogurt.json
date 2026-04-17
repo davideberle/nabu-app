@@ -10,7 +10,7 @@
   "intro": "though, it makes a satisfying vegetarian main. You can make all the elements up",
   "ingredients": [
     {
-      "item": "small eggplants, cut into 1\u00bc-inch/3cm chunks (6 cups/500g)",
+      "item": "small eggplants, cut into 1¼-inch/3cm chunks (6 cups/500g)",
       "amount": "2"
     },
     {
@@ -39,23 +39,23 @@
     },
     {
       "item": "cups/400ml water",
-      "amount": "1\u2154"
+      "amount": "1⅔"
     },
     {
       "item": "cups/250g bulgur wheat",
-      "amount": "1\u00bd"
+      "amount": "1½"
     },
     {
       "item": "cup/200g Greek-style yogurt",
-      "amount": "\u2154"
+      "amount": "⅔"
     },
     {
-      "item": "small preserved lemon, seeds discarded, skin and \uf002 esh \uf001 nely chopped (2 tbsp/25g)",
+      "item": "small preserved lemon, seeds discarded, skin and  esh  nely chopped (2 tbsp/25g)",
       "amount": "1"
     },
     {
-      "item": "cup/10g mint leaves, \uf001 nely shredded",
-      "amount": "\u00bd"
+      "item": "cup/10g mint leaves,  nely shredded",
+      "amount": "½"
     },
     {
       "item": "1.",
@@ -67,10 +67,10 @@
     }
   ],
   "method": [
-    "Place the eggplant in a large bowl with 4 tbsp of the oil, \u00bd tsp salt, and a good grind of pepper. Mix well and then spread out on a large parchment- lined baking sheet. Roast for 35\u201340 minutes, stirring halfway through, until the eggplant is caramelized and soft. Remove from the oven and set aside.",
-    "Add the remaining 3 tbsp plus 1 tsp of oil to a large saut\u00e9 pan with a lid and place over medium-high heat. Once hot, add the onions and fry for 8 minutes, stirring a few times, until caramelized and soft. Add the garlic and allspice and fry for 1 minute, stirring continuously, until the garlic is aromatic and starting to brown. Add the cherry tomatoes, mashing them with a potato masher to break them up. Stir in the tomato paste, water, and 1 tsp salt. Bring to a boil, decrease the heat to medium-low, cover, and cook for",
+    "Place the eggplant in a large bowl with 4 tbsp of the oil, ½ tsp salt, and a good grind of pepper. Mix well and then spread out on a large parchment- lined baking sheet. Roast for 35–40 minutes, stirring halfway through, until the eggplant is caramelized and soft. Remove from the oven and set aside.",
+    "Add the remaining 3 tbsp plus 1 tsp of oil to a large sauté pan with a lid and place over medium-high heat. Once hot, add the onions and fry for 8 minutes, stirring a few times, until caramelized and soft. Add the garlic and allspice and fry for 1 minute, stirring continuously, until the garlic is aromatic and starting to brown. Add the cherry tomatoes, mashing them with a potato masher to break them up. Stir in the tomato paste, water, and 1 tsp salt. Bring to a boil, decrease the heat to medium-low, cover, and cook for",
     "12 minutes. Add the bulgur, stir so that it is completely coated, and then remove from the heat. Set aside for 20 minutes, for the bulgur to absorb all the liquid.",
-    "In a medium bowl, mix together the yogurt with the preserved lemon, half the mint, and \u215b tsp salt.",
+    "In a medium bowl, mix together the yogurt with the preserved lemon, half the mint, and ⅛ tsp salt.",
     "Divide the bulgur among four plates. Serve with the yogurt and eggplant on top and a sprinkle of the remaining mint.",
     "Bulgur with mushrooms and feta",
     "This works as both a side and a main, with some wilted greens alongside. Get as diverse a mix of mushrooms as you can and like. Thanks to food writer Limor",
@@ -84,7 +84,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Rice, Grains, and Pulses"
+    "chapter": "Rice, Grains, and Pulses",
+    "meal_role": "side"
   }
 }

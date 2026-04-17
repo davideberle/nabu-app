@@ -12,7 +12,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Sweets"
+    "chapter": "Sweets",
+    "meal_role": "dessert"
   },
   "servings": "makes about 35 cookies",
   "time": {

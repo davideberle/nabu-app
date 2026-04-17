@@ -96,7 +96,11 @@
   },
   "image": "/recipes/tom-kha-gai-chicken-coconut-soup.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Bangkok and Central Thai"
-  }
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": "Bangkok and Central Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

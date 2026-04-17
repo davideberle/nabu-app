@@ -75,7 +75,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Mexican Desserts"
+    "chapter": "Mexican Desserts",
+    "meal_role": "dessert"
   },
   "cuisine": "Mexican"
 }

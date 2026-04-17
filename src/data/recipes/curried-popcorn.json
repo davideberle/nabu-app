@@ -57,7 +57,11 @@
   },
   "image": "/recipes/curried-popcorn.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "starter"
+  },
+  "cuisine": "Southeast Asian"
 }

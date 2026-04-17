@@ -7,18 +7,18 @@
     "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 4",
-  "intro": "as it is, with a plate of fresh or steamed veg. It\u2019s also a great introduction to black",
+  "intro": "as it is, with a plate of fresh or steamed veg. It’s also a great introduction to black",
   "ingredients": [
     {
       "item": "plus 1 tsp/65ml sunflower oil",
-      "amount": "\u00bc cup"
+      "amount": "¼ cup"
     },
     {
-      "item": "large onions, cut into \u00be-inch/2cm wedges (5 cups/500g) salt",
+      "item": "large onions, cut into ¾-inch/2cm wedges (5 cups/500g) salt",
       "amount": "2"
     },
     {
-      "item": "lemon: peel \uf001 nely shaved, plus 2 tbsp juice",
+      "item": "lemon: peel  nely shaved, plus 2 tbsp juice",
       "amount": "1"
     },
     {
@@ -35,11 +35,11 @@
     },
     {
       "item": "cup/150g Greek-style yogurt",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "cup/10g parsley leaves, roughly chopped",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "1.",
@@ -47,13 +47,13 @@
     }
   ],
   "method": [
-    "Pour 3 tbsp/50ml of oil into a large saut\u00e9 pan with a lid, and place over medium-high heat. Once hot, add the onions, along with \u00bc tsp salt, and fry",
-    "for 12 minutes, stirring occasionally to make sure they don\u2019t burn. Add the lemon peel and cook for another 12 minutes, continuing to stir from time to time, until the onions are dark and caramelized. Transfer to a plate and set aside.",
+    "Pour 3 tbsp/50ml of oil into a large sauté pan with a lid, and place over medium-high heat. Once hot, add the onions, along with ¼ tsp salt, and fry",
+    "for 12 minutes, stirring occasionally to make sure they don’t burn. Add the lemon peel and cook for another 12 minutes, continuing to stir from time to time, until the onions are dark and caramelized. Transfer to a plate and set aside.",
     "Add the remaining 1 tbsp plus 1 tsp of oil to the pan, then add the rice and",
-    "\u00bd tsp of salt. Fry for 1 minute, stirring continuously, then pour in the water.",
+    "½ tsp of salt. Fry for 1 minute, stirring continuously, then pour in the water.",
     "Bring to a boil, then decrease the heat to medium-low. Cover the pan and simmer for about 45 minutes, until cooked through. Remove from the heat and stir in the onions, lemon juice, and black garlic. Serve at once, topping each serving with a generous spoonful of the yogurt and a sprinkle of parsley; alternatively, you can serve the yogurt in a bowl on the side.",
     "Baked mint rice with pomegranate and olive salsa",
-    "Cooking rice perfectly is one of those things that shouldn\u2019t be complicated but can be surprisingly difficult, for some, to get right. Baking it in the oven, on the other hand, as I do here, is a completely foolproof method (and one that worked, incidentally, when feeding 700 people during two sittings at Wilderness Festival in",
+    "Cooking rice perfectly is one of those things that shouldn’t be complicated but can be surprisingly difficult, for some, to get right. Baking it in the oven, on the other hand, as I do here, is a completely foolproof method (and one that worked, incidentally, when feeding 700 people during two sittings at Wilderness Festival in",
     "2017!). This is such a great side to all sorts of dishes, such as roasted root vegetables or slow-cooked lamb or pork.",
     "To get ahead, the salsa can be made a few hours in advance and kept in the fridge."
   ],
@@ -65,7 +65,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Rice, Grains, and Pulses"
+    "chapter": "Rice, Grains, and Pulses",
+    "meal_role": "side"
   }
 }

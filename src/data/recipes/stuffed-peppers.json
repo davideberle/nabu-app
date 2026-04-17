@@ -82,8 +82,10 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/stuffed-peppers.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "servings": "serves 2-3"
 }

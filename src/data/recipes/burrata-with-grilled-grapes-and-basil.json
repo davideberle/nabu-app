@@ -7,11 +7,11 @@
     "chapter": "Raw Veg"
   },
   "servings": "serves 6",
-  "intro": "the fridge for up to 1 day before grilling. If you can\u2019t get hold of burrata, balls of",
+  "intro": "the fridge for up to 1 day before grilling. If you can’t get hold of burrata, balls of",
   "ingredients": [
     {
       "item": "oz/320g seedless red grapes, pulled off their vine",
-      "amount": "11\u00bc"
+      "amount": "11¼"
     },
     {
       "item": "Valdespino vinegar (or other best-quality sherry vinegar)",
@@ -27,18 +27,18 @@
     },
     {
       "item": "dark brown sugar",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "fennel seeds, toasted and lightly crushed flaked sea salt and black pepper",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "large balls of burrata or buffalo mozzarella (1 lb 5 oz/600g)",
       "amount": "3"
     },
     {
-      "item": "small purple or green basil sprigs (\u00bc cup/5g), to serve",
+      "item": "small purple or green basil sprigs (¼ cup/5g), to serve",
       "amount": "6"
     },
     {
@@ -47,12 +47,12 @@
     }
   ],
   "method": [
-    "Put the grapes in a medium bowl with the vinegar, oil, garlic, sugar, 1 tsp of the fennel seeds, \u00bc tsp of \uf002 aked salt, and plenty of pepper. Mix well and marinate for at least 1 hour and up to 1 day. Thread 5 or 6 grapes onto each skewer. Don\u2019t throw away the marinade; you\u2019ll need it when serving.",
-    "Place a grill pan over high heat and ventilate your kitchen well. Once hot, add the grape skewers in batches and grill for 2\u20133 minutes, turning after 1\u00bd minutes. Remove from the heat.",
-    "When ready to serve, tear the balls of burrata in half and place one-half on each plate. Arrange the grape skewers to lean against them\u20142 per portion",
-    "\u2014and spoon 1\u00bd tsp of the marinade over the cheese. Alternatively, arrange on a platter to serve a crowd. Sprinkle with the remaining \u00bd tsp of fennel seeds, garnish with a sprig of basil, and serve.",
-    "Cauliflower \u201ctabbouleh\u201d",
-    "If you\u2019re doubling or tripling this recipe, break the cauli\uf002ower into \uf002orets and pop them into a food processor (rather than grating by hand). Pulse a few times to blitz it up into tabbouleh-like pieces, but don\u2019t overwork the machine, as the cauli\uf002ower will turn to a mush. Toasted pistachios, roughly chopped, can be used instead of (or as well as) the pomegranate seeds, if you want a crunchy garnish."
+    "Put the grapes in a medium bowl with the vinegar, oil, garlic, sugar, 1 tsp of the fennel seeds, ¼ tsp of  aked salt, and plenty of pepper. Mix well and marinate for at least 1 hour and up to 1 day. Thread 5 or 6 grapes onto each skewer. Don’t throw away the marinade; you’ll need it when serving.",
+    "Place a grill pan over high heat and ventilate your kitchen well. Once hot, add the grape skewers in batches and grill for 2–3 minutes, turning after 1½ minutes. Remove from the heat.",
+    "When ready to serve, tear the balls of burrata in half and place one-half on each plate. Arrange the grape skewers to lean against them—2 per portion",
+    "—and spoon 1½ tsp of the marinade over the cheese. Alternatively, arrange on a platter to serve a crowd. Sprinkle with the remaining ½ tsp of fennel seeds, garnish with a sprig of basil, and serve.",
+    "Cauliflower “tabbouleh”",
+    "If you’re doubling or tripling this recipe, break the cauliower into orets and pop them into a food processor (rather than grating by hand). Pulse a few times to blitz it up into tabbouleh-like pieces, but don’t overwork the machine, as the cauliower will turn to a mush. Toasted pistachios, roughly chopped, can be used instead of (or as well as) the pomegranate seeds, if you want a crunchy garnish."
   ],
   "time": {
     "total": 30
@@ -62,7 +62,7 @@
     "dish_type": [
       "salad"
     ],
-    "meal_role": "side",
-    "chapter": "Raw Veg"
+    "chapter": "Raw Veg",
+    "meal_role": "side"
   }
 }

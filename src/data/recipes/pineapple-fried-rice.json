@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Sides"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "whole, medium-ripe pineapple (about 3 pounds/1.5 kg)",
@@ -87,7 +87,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/pineapple-fried-rice.jpg",
   "cuisine": "Southeast Asian"

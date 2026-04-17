@@ -7,7 +7,7 @@
     "chapter": "Meat"
   },
   "servings": "serves 4",
-  "intro": "Roasting a chicken is the ultimate simple dish. It\u2019s easy, quick, \uf001lls the house with",
+  "intro": "Roasting a chicken is the ultimate simple dish. It’s easy, quick, lls the house with",
   "ingredients": [
     {
       "item": "tbsp/70g unsalted butter, at room temperature",
@@ -22,15 +22,15 @@
       "amount": "3"
     },
     {
-      "item": "small preserved lemon, seeds discarded, \uf002 esh and skin roughly chopped (2\u00bd tbsp)",
-      "amount": "\u00bd"
+      "item": "small preserved lemon, seeds discarded,  esh and skin roughly chopped (2½ tbsp)",
+      "amount": "½"
     },
     {
-      "item": "lemon: \uf001 nely zest to get 1 tsp, then juice to get 1\u00bd tbsp salt and black pepper",
+      "item": "lemon:  nely zest to get 1 tsp, then juice to get 1½ tbsp salt and black pepper",
       "amount": "1"
     },
     {
-      "item": "whole chicken (3\u2153 lb/1.5kg)",
+      "item": "whole chicken (3⅓ lb/1.5kg)",
       "amount": "1"
     },
     {
@@ -43,9 +43,9 @@
     }
   ],
   "method": [
-    "Place the butter, thyme, garlic, preserved lemon, lemon zest, \u00bc tsp salt, and a generous grind of pepper in a food processor. Blitz to combine.",
-    "With the chicken\u2019s legs pointing toward you, use your hands to loosen the skin away from the breasts and spread most of the butter mixture evenly under the skin and over the breasts. Spread the remaining butter over the legs.",
-    "Place the chicken in a medium high-sided baking pan, drizzle with the lemon juice, and sprinkle with \u00bd tsp salt and plenty of pepper. Roast for roughly 70 minutes, basting every 20 minutes or so, until the skin is golden brown and crisp and the juices run clear when the meat is pierced with a small knife.",
+    "Place the butter, thyme, garlic, preserved lemon, lemon zest, ¼ tsp salt, and a generous grind of pepper in a food processor. Blitz to combine.",
+    "With the chicken’s legs pointing toward you, use your hands to loosen the skin away from the breasts and spread most of the butter mixture evenly under the skin and over the breasts. Spread the remaining butter over the legs.",
+    "Place the chicken in a medium high-sided baking pan, drizzle with the lemon juice, and sprinkle with ½ tsp salt and plenty of pepper. Roast for roughly 70 minutes, basting every 20 minutes or so, until the skin is golden brown and crisp and the juices run clear when the meat is pierced with a small knife.",
     "Remove from the oven and set aside to rest for 10 minutes before serving."
   ],
   "time": {
@@ -56,7 +56,7 @@
     "dish_type": [
       "main"
     ],
-    "meal_role": "main",
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "main"
   }
 }

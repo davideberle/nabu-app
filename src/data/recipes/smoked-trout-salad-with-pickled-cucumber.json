@@ -7,7 +7,7 @@
     "chapter": "Fish & Seafood"
   },
   "servings": "serves 4",
-  "intro": "Homemade pickled cucumber is surprisingly quick and easy to make. Its refreshing tang adds a lift to any dish it is paired with—including this light salad of smoked fish and avocado.",
+  "intro": "Homemade pickled cucumber is surprisingly quick and easy to make. Its refreshing tang adds a lift to any dish it is paired with\u2014including this light salad of smoked fish and avocado.",
   "ingredients": [
     {
       "item": "avocado, halved, pitted, and peeled",
@@ -35,7 +35,7 @@
     },
     {
       "item": "cold-smoked trout fillets, flaked",
-      "amount": "2 × 7oz (200g)"
+      "amount": "2 \u00d7 7oz (200g)"
     },
     {
       "item": "salt and freshly ground black pepper",
@@ -55,12 +55,12 @@
     }
   ],
   "method": [
-    "1⁄2 large cucumber, peeled and halved lengthwise, seeded, and sliced",
+    "1\u20442 large cucumber, peeled and halved lengthwise, seeded, and sliced",
     "Cut the avocado flesh into slices lengthwise, then sprinkle with the lemon juice to prevent discoloration. Set aside.",
     "To make the pickled cucumber, whisk the vinegar, sugar, and chile in a small bowl until combined. Add the cucumber, and toss it all together. In a separate small bowl, stir together the yogurt and mint until well mixed.",
     "Arrange the salad leaves and olives in a large bowl or on 4 individual plates. Top with the flaked trout and avocado, then season to taste. Spoon some of the pickled cucumber mixture over top, and keep the rest in a bowl to serve on the side along with the mint yogurt."
   ],
-  "image": "/recipes/smoked-trout-salad-with-pickled-cucumber.jpg",
+  "image": null,
   "time": {
     "total": 45
   },

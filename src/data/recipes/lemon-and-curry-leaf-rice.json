@@ -40,7 +40,10 @@
   },
   "image": "/recipes/lemon-and-curry-leaf-rice.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Steamed"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Steamed",
+    "meal_role": "main"
   }
 }

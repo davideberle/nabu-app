@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "cup/50g unsalted butter",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "garlic cloves, thinly sliced (3 tbsp)",
@@ -23,23 +23,23 @@
     },
     {
       "item": "cups/200g frozen peas, defrosted",
-      "amount": "1\u2154"
+      "amount": "1⅔"
     },
     {
       "item": "cups/25g basil leaves, roughly shredded",
-      "amount": "1\u00bc"
+      "amount": "1¼"
     },
     {
       "item": "cup/15g tarragon leaves",
-      "amount": "\u00be"
+      "amount": "¾"
     },
     {
-      "item": "lemon, \uf001 nely zested to get 1 tsp",
+      "item": "lemon,  nely zested to get 1 tsp",
       "amount": "1"
     },
     {
       "item": "plus 1 tbsp/50g pine nuts, lightly toasted",
-      "amount": "\u2153 cup"
+      "amount": "⅓ cup"
     },
     {
       "item": "olive oil",
@@ -47,19 +47,19 @@
     },
     {
       "item": "cups/600ml whole milk",
-      "amount": "2\u00bd"
+      "amount": "2½"
     },
     {
       "item": "cups/600 ml water",
-      "amount": "2\u00bd"
+      "amount": "2½"
     },
     {
       "item": "plus 2 tbsp/180g semolina",
       "amount": "1 cup"
     },
     {
-      "item": "oz/100g pecorino, \uf001 nely shaved",
-      "amount": "3\u00bd"
+      "item": "oz/100g pecorino,  nely shaved",
+      "amount": "3½"
     },
     {
       "item": "1.",
@@ -67,11 +67,11 @@
     }
   ],
   "method": [
-    "Put the butter into a large saut\u00e9 pan with a lid and place over medium-high heat. Once the butter has melted, add the garlic and fry for 1\u20132 minutes, until starting to brown. Add the zucchini, \u00be tsp salt, and a good grind of pepper and cook for 5 minutes, stirring frequently, until the zucchini start to soften. Decrease the heat to medium-low, cover, and continue to cook for 5 minutes. Stir in the peas and warm through for 1 minute. Remove from the heat, stir in the basil, tarragon, and lemon zest, and set aside while you make the porridge.",
-    "To make the porridge, put the milk and water into a medium saucepan along with \u00be tsp salt and plenty of pepper. Bring to a boil over medium-high heat and add the semolina. Whisk continuously for 3\u20134 minutes, until smooth and thick, like porridge. Remove from the heat and stir in 3 oz/80g of the pecorino.",
+    "Put the butter into a large sauté pan with a lid and place over medium-high heat. Once the butter has melted, add the garlic and fry for 1–2 minutes, until starting to brown. Add the zucchini, ¾ tsp salt, and a good grind of pepper and cook for 5 minutes, stirring frequently, until the zucchini start to soften. Decrease the heat to medium-low, cover, and continue to cook for 5 minutes. Stir in the peas and warm through for 1 minute. Remove from the heat, stir in the basil, tarragon, and lemon zest, and set aside while you make the porridge.",
+    "To make the porridge, put the milk and water into a medium saucepan along with ¾ tsp salt and plenty of pepper. Bring to a boil over medium-high heat and add the semolina. Whisk continuously for 3–4 minutes, until smooth and thick, like porridge. Remove from the heat and stir in 3 oz/80g of the pecorino.",
     "Divide the porridge among four (or six) shallow bowls and top with the zucchini and peas. Finish with the pine nuts, a sprinkle of the remaining pecorino, and drizzle with the oil.",
     "Roasted eggplant with anchovies and oregano",
-    "Anchovies and eggplant might sound like an unlikely combination, but it\u2019s one that really works. The anchovies bring more of a salty depth to the dish (rather than anything really \uf001shy). This is lovely as it is, spooned on top of toasted sourdough, but also works as a side to all sorts of things. Roast chicken leftovers or a fresh tuna steak, for example. It keeps well in the fridge for up to 2 days; just bring back to room temperature before serving."
+    "Anchovies and eggplant might sound like an unlikely combination, but it’s one that really works. The anchovies bring more of a salty depth to the dish (rather than anything really shy). This is lovely as it is, spooned on top of toasted sourdough, but also works as a side to all sorts of things. Roast chicken leftovers or a fresh tuna steak, for example. It keeps well in the fridge for up to 2 days; just bring back to room temperature before serving."
   ],
   "time": {
     "total": 30
@@ -81,7 +81,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

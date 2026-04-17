@@ -79,7 +79,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/fried-lima-beans-with-feta-sorrel-and-sumac.jpg"

@@ -66,7 +66,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Greek Vegetarian Recipes"
+    "chapter": "Greek Vegetarian Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Mediterranean"
 }

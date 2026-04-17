@@ -53,7 +53,10 @@
   },
   "image": "/recipes/yogurt-and-kaffir-lime-leaf-spread.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Mashed"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Mashed",
+    "meal_role": "main"
   }
 }

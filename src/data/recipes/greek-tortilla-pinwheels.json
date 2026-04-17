@@ -65,7 +65,8 @@
     "dish_type": [
       "snack"
     ],
-    "chapter": "Greek Appetizers and Snacks"
+    "chapter": "Greek Appetizers and Snacks",
+    "meal_role": "main"
   },
   "cuisine": "Greek"
 }

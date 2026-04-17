@@ -78,7 +78,11 @@
   },
   "image": "/recipes/coconut-curry-cabbage.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "vegetable"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "side"
+  },
+  "cuisine": "Southeast Asian"
 }

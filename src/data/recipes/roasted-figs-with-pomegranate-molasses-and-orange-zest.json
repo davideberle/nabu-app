@@ -58,7 +58,10 @@
   },
   "image": "/recipes/roasted-figs-with-pomegranate-molasses-and-orange-zest.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

@@ -81,5 +81,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sushi.jpg"
+  "image": "/recipes/sushi.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main"
+  }
 }

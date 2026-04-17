@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Main Dishes"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "firm tofu",
@@ -119,7 +119,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/green-fresh-spring-rolls.jpg",
   "cuisine": "Southeast Asian"

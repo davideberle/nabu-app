@@ -59,7 +59,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/creamy-pepper-pasta.jpg",
   "time": {
@@ -67,5 +68,6 @@
     "cook": 35,
     "total": 55
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "servings": "serves 2-3"
 }

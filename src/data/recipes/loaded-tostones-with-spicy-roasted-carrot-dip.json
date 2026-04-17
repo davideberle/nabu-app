@@ -94,7 +94,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "starter"
   },
   "cuisine": "Caribbean"
 }

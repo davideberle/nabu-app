@@ -82,7 +82,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "French Lunch Recipes"
+    "chapter": "French Lunch Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Mediterranean"
 }

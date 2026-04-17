@@ -86,7 +86,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish and Seafood"
+    "chapter": "Fish and Seafood",
+    "meal_role": "main"
   },
   "image": "/recipes/clear-steamed-sea-bass.jpg",
   "cuisine": "Chinese",

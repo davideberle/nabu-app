@@ -73,7 +73,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Mexican Taco Vegetarian Recipes"
+    "chapter": "Mexican Taco Vegetarian Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mexican"
 }

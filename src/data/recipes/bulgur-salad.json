@@ -71,7 +71,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Salads & Sides"
+    "chapter": "Salads & Sides",
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/bulgur-salad.jpg"

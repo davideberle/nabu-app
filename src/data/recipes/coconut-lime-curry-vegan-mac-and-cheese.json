@@ -118,7 +118,11 @@
   },
   "image": "/recipes/coconut-lime-curry-vegan-mac-and-cheese.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

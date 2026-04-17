@@ -35,5 +35,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/persimmon-spinach-smoothie.jpg"
+  "image": "/recipes/persimmon-spinach-smoothie.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "drink"
+    ],
+    "meal_role": "drink"
+  }
 }

@@ -12,7 +12,8 @@
       "vegetable",
       "side"
     ],
-    "chapter": "Vegetables"
+    "chapter": "Vegetables",
+    "meal_role": "side"
   },
   "servings": "serves 4 to 6",
   "time": {
@@ -82,6 +83,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/couscous-with-dried-apricots-and-butternut-squash.jpg",
+  "image": null,
   "cuisine": "Middle Eastern"
 }

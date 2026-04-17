@@ -10,10 +10,6 @@
   "intro": "resembles crow poo apparently. It is not pulverized very fi nely",
   "ingredients": [
     {
-      "item": "39",
-      "amount": ""
-    },
-    {
       "item": "coconut milk",
       "amount": "1 cup (250 ml)"
     },
@@ -74,7 +70,11 @@
   },
   "image": "/recipes/nam-prik-kee-ga-dip.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Dips and Sauces"
-  }
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Dips and Sauces",
+    "meal_role": "component"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -44,7 +44,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Rice"
+    "chapter": "Rice",
+    "meal_role": "side"
   },
   "time": {
     "prep": 10,

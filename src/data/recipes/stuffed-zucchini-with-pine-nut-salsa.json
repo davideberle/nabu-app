@@ -15,27 +15,27 @@
     },
     {
       "item": "garlic clove, crushed",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "large egg, beaten",
       "amount": "1"
     },
     {
-      "item": "oz/40g Parmesan (or pecorino), \uf001 nely grated scant 1 cup/40g fresh sourdough breadcrumbs (from about 1 slice, crust left on if soft) salt",
-      "amount": "1\u00bd"
+      "item": "oz/40g Parmesan (or pecorino),  nely grated scant 1 cup/40g fresh sourdough breadcrumbs (from about 1 slice, crust left on if soft) salt",
+      "amount": "1½"
     },
     {
       "item": "oz/100g cherry tomatoes, quartered",
-      "amount": "3\u00bd"
+      "amount": "3½"
     },
     {
-      "item": "large lemon: \uf001 nely zest to get 2 tsp, then juice to get 1 tbsp",
+      "item": "large lemon:  nely zest to get 2 tsp, then juice to get 1 tbsp",
       "amount": "1"
     },
     {
-      "item": "cup/5g finely chopped oregano leaves, plus a few extra leaves to serve mounded \u00bc cup/35g pine nuts, lightly toasted",
-      "amount": "\u00bc"
+      "item": "cup/5g finely chopped oregano leaves, plus a few extra leaves to serve mounded ¼ cup/35g pine nuts, lightly toasted",
+      "amount": "¼"
     },
     {
       "item": "olive oil",
@@ -56,8 +56,8 @@
   ],
   "method": [
     "In a separate bowl, mix the lemon zest, oregano, and pine nuts. Stir half of this into the zucchini mixture and set the rest aside for the salsa.",
-    "Place the hollowed zucchini on a medium baking sheet or ovenproof dish, hollowed side facing up. Drizzle 1 tbsp of oil (in total) over the zucchini and season with \u215b tsp of salt (in total). Spoon the zucchini mixture back into the hollows and bake for 15 minutes, until the \uf001 lling is set and golden brown.",
-    "While the zucchini are baking, make the salsa. Add the lemon juice, remaining 2 tbsp of oil, and \u215b tsp of salt to the bowl of oregano and pine nuts. Let the zucchini cool a little. Spoon the salsa on top, sprinkle with oregano leaves, and serve.",
+    "Place the hollowed zucchini on a medium baking sheet or ovenproof dish, hollowed side facing up. Drizzle 1 tbsp of oil (in total) over the zucchini and season with ⅛ tsp of salt (in total). Spoon the zucchini mixture back into the hollows and bake for 15 minutes, until the  lling is set and golden brown.",
+    "While the zucchini are baking, make the salsa. Add the lemon juice, remaining 2 tbsp of oil, and ⅛ tsp of salt to the bowl of oregano and pine nuts. Let the zucchini cool a little. Spoon the salsa on top, sprinkle with oregano leaves, and serve.",
     "Herby zucchini and peas with semolina porridge",
     "The semolina porridge is a super-comforting base to all sorts of toppings. It works very well, for example, topped with a very simple beef ragout."
   ],
@@ -69,7 +69,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

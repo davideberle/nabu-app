@@ -50,7 +50,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "Salad Pasta Recipes"
+    "chapter": "Salad Pasta Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Italian",
   "image": "/recipes/caprese-style-pasta-salad.jpg"

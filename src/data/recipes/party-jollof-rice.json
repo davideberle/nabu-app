@@ -91,7 +91,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/party-jollof-rice.jpg",
   "cuisine": "Nigerian"

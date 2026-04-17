@@ -61,7 +61,10 @@
   },
   "image": "/recipes/smoked-beets-with-yogurt-and-caramelized-macadamias.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Roasted"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Roasted",
+    "meal_role": "main"
   }
 }

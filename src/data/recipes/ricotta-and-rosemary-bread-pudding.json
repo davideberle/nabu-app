@@ -64,7 +64,10 @@
   },
   "image": "/recipes/ricotta-and-rosemary-bread-pudding.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Baked"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Baked",
+    "meal_role": "dessert"
   }
 }

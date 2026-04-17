@@ -7,26 +7,26 @@
     "chapter": "Raw Veg"
   },
   "servings": "serves 6",
-  "intro": "This is delicious as it is\u2014it screams summer, it screams virtuous and it de\uf001nitely",
+  "intro": "This is delicious as it is—it screams summer, it screams virtuous and it denitely",
   "ingredients": [
     {
-      "item": "medium watermelon (2\u00be lb/1.3kg), rind and seeds discarded and",
-      "amount": "\u00bd"
+      "item": "medium watermelon (2¾ lb/1.3kg), rind and seeds discarded and",
+      "amount": "½"
     },
     {
-      "item": "\uf002esh cut into 2\u00be-inch/7cm-long, \u00bc-inch/\u00bd cm-wide batons (4\u00be cups/600g)",
+      "item": "esh cut into 2¾-inch/7cm-long, ¼-inch/½ cm-wide batons (4¾ cups/600g)",
       "amount": ""
     },
     {
-      "item": "Granny Smith apples, cored and cut into 2\u00be-inch/7cm-long, \u00bc-inch/",
+      "item": "Granny Smith apples, cored and cut into 2¾-inch/7cm-long, ¼-inch/",
       "amount": "2"
     },
     {
       "item": "cm-wide batons (2 cups/250g)",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
-      "item": "limes: \uf001 nely zest to get 2 tsp, then juice to get 3 tbsp",
+      "item": "limes:  nely zest to get 2 tsp, then juice to get 3 tbsp",
       "amount": "3"
     },
     {
@@ -34,20 +34,20 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "lemongrass stalk, trimmed, woody outer leaves discarded, then \uf001 nely chopped (2 tbsp)",
+      "item": "lemongrass stalk, trimmed, woody outer leaves discarded, then  nely chopped (2 tbsp)",
       "amount": "1"
     },
     {
       "item": "cup/5g mint leaves",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "cup/10g cilantro leaves flaked sea salt",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "black mustard seeds, lightly toasted",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "1.",
@@ -55,12 +55,12 @@
     }
   ],
   "method": [
-    "Mix the salad just before you\u2019re ready to serve, otherwise it will get too soggy. In a large bowl, combine the watermelon, apples, lime zest, lime juice,",
-    "olive oil, and lemongrass with three-quarters of the herbs and \u00be tsp of",
-    "\uf002aked salt. Using your hands as a natural sieve, arrange the salad on a platter.",
-    "There will be quite a bit of juice at the bottom of the bowl; you don\u2019t need it. Scatter with the remaining herbs, sprinkle with the mustard seeds and \u00bc tsp of \uf002 aked salt, and serve.",
+    "Mix the salad just before you’re ready to serve, otherwise it will get too soggy. In a large bowl, combine the watermelon, apples, lime zest, lime juice,",
+    "olive oil, and lemongrass with three-quarters of the herbs and ¾ tsp of",
+    "aked salt. Using your hands as a natural sieve, arrange the salad on a platter.",
+    "There will be quite a bit of juice at the bottom of the bowl; you don’t need it. Scatter with the remaining herbs, sprinkle with the mustard seeds and ¼ tsp of  aked salt, and serve.",
     "5-spice peach and raspberry salad",
-    "You don\u2019t want this salad to be too sweet, so for the best results start with peaches that are not too ripe. This looks so perfectly summery and also works really well at a barbecue, where the fruit complements and cuts through all sorts of meat. Some slow-cooked pork belly alongside is a particularly winning combination."
+    "You don’t want this salad to be too sweet, so for the best results start with peaches that are not too ripe. This looks so perfectly summery and also works really well at a barbecue, where the fruit complements and cuts through all sorts of meat. Some slow-cooked pork belly alongside is a particularly winning combination."
   ],
   "time": {
     "total": 30
@@ -70,7 +70,7 @@
     "dish_type": [
       "salad"
     ],
-    "meal_role": "side",
-    "chapter": "Raw Veg"
+    "chapter": "Raw Veg",
+    "meal_role": "side"
   }
 }

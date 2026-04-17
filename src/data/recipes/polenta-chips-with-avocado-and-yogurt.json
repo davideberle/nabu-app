@@ -57,7 +57,10 @@
   },
   "image": "/recipes/polenta-chips-with-avocado-and-yogurt.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Fried"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Fried",
+    "meal_role": "main"
   }
 }

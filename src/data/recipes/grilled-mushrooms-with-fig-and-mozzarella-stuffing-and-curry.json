@@ -122,7 +122,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Street Food"
+    "chapter": "Street Food",
+    "meal_role": "side"
   },
   "cuisine": "Indian"
 }

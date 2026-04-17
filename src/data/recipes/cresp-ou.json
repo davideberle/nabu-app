@@ -93,7 +93,10 @@
   },
   "image": "/recipes/cresp-ou.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Cracked"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Cracked",
+    "meal_role": "main"
   }
 }

@@ -7,35 +7,35 @@
     "chapter": "Dessert"
   },
   "servings": "serves 8",
-  "intro": "all decisions at Ottolenghi have to pass, would \uf001rmly disagree! It\u2019s true, though,",
+  "intro": "all decisions at Ottolenghi have to pass, would rmly disagree! It’s true, though,",
   "ingredients": [
     {
       "item": "cups/270g almond meal",
-      "amount": "2\u00be"
+      "amount": "2¾"
     },
     {
       "item": "cups/250g granulated sugar, plus 1 tbsp to sprinkle on top",
-      "amount": "1\u00bc"
+      "amount": "1¼"
     },
     {
-      "item": "plus 1 tbsp/40g confectioners\u2019 sugar, sifted",
-      "amount": "\u00bc cup"
+      "item": "plus 1 tbsp/40g confectioners’ sugar, sifted",
+      "amount": "¼ cup"
     },
     {
       "item": "cup/40g Dutch-processed cocoa powder, sifted",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
-      "item": "orange: \uf001 nely zest to get 1 tsp",
+      "item": "orange:  nely zest to get 1 tsp",
       "amount": "1"
     },
     {
       "item": "Chinese 5-spice powder",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "salt",
-      "amount": "\u00bc tsp"
+      "amount": "¼ tsp"
     },
     {
       "item": "large egg whites",
@@ -55,15 +55,15 @@
     }
   ],
   "method": [
-    "Place the almond meal, granulated sugar, confectioners\u2019 sugar, cocoa powder, orange zest, 5-spice powder, and salt in the bowl of a standing mixer \uf001 tted with the dough hook. Mix on medium speed, until combined.",
-    "With the mixer running, add the egg whites and vanilla and continue to mix for 1\u20132 minutes, until the dough comes together into a ball. Tip the dough out on a clean surface, shape into a \uf002 at disk about 1\u00bc inches/3cm thick, and wrap in plastic wrap. Place in the fridge for about 1 hour, to rest.",
+    "Place the almond meal, granulated sugar, confectioners’ sugar, cocoa powder, orange zest, 5-spice powder, and salt in the bowl of a standing mixer  tted with the dough hook. Mix on medium speed, until combined.",
+    "With the mixer running, add the egg whites and vanilla and continue to mix for 1–2 minutes, until the dough comes together into a ball. Tip the dough out on a clean surface, shape into a  at disk about 1¼ inches/3cm thick, and wrap in plastic wrap. Place in the fridge for about 1 hour, to rest.",
     "Cut out two pieces of parchment paper, each 16 inches/40cm square.",
-    "Unwrap the dough from its plastic wrap, place in the middle of the two sheets of parchment paper, and roll out to form a circle about 9 inches/22cm wide and \u00bd inch/1\u00bd cm thick. Using a 2\u00be-inch/7cm star- shaped cookie cutter (or whichever cookie cutter you are using), cut out the stars and place on a parchment-lined baking sheet. Press together the scraps of dough and roll out again, cutting out more stars. Continue until all the dough has been used, then sprinkle the tops with the 1 tbsp of granulated sugar.",
+    "Unwrap the dough from its plastic wrap, place in the middle of the two sheets of parchment paper, and roll out to form a circle about 9 inches/22cm wide and ½ inch/1½ cm thick. Using a 2¾-inch/7cm star- shaped cookie cutter (or whichever cookie cutter you are using), cut out the stars and place on a parchment-lined baking sheet. Press together the scraps of dough and roll out again, cutting out more stars. Continue until all the dough has been used, then sprinkle the tops with the 1 tbsp of granulated sugar.",
     "Bake for 12 minutes, until the bottoms are slightly crisp and the middles are soft and gooey. Remove from the oven and set aside to cool.",
     "No-churn raspberry ice cream",
     "This is the same recipe for ice cream used in the Knickerbocker Glory in my book",
-    "SWEET. It\u2019s a great stand-alone recipe, so here it gets its own page.",
-    "Make this throughout the year\u2014fresh raspberries are great when they\u2019re in season and there is a glut, but frozen also work really well. The liquid released by the frozen kind actually gives the puree a lovely, smooth consistency. Get ahead with making this; it needs to freeze for at least 12 hours and both the ice cream and puree can be kept for up to 1 month."
+    "SWEET. It’s a great stand-alone recipe, so here it gets its own page.",
+    "Make this throughout the year—fresh raspberries are great when they’re in season and there is a glut, but frozen also work really well. The liquid released by the frozen kind actually gives the puree a lovely, smooth consistency. Get ahead with making this; it needs to freeze for at least 12 hours and both the ice cream and puree can be kept for up to 1 month."
   ],
   "time": {
     "total": 30
@@ -73,7 +73,7 @@
     "dish_type": [
       "dessert"
     ],
-    "meal_role": "dessert",
-    "chapter": "Dessert"
+    "chapter": "Dessert",
+    "meal_role": "dessert"
   }
 }

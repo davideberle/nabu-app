@@ -50,7 +50,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Mexican Taco Lunch Recipes"
+    "chapter": "Mexican Taco Lunch Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mexican"
 }

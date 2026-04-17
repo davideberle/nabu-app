@@ -81,7 +81,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Grills & Kebabs"
+    "chapter": "Grills & Kebabs",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

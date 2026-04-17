@@ -60,5 +60,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/oregano-cashew-cheese-balls.jpg"
+  "image": "/recipes/oregano-cashew-cheese-balls.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "starter"
+    ],
+    "meal_role": "starter"
+  }
 }

@@ -30,7 +30,11 @@
   },
   "image": "/recipes/phuket-style-fluffy-omelet-inspired-by-raya-restaurant.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Southern Thai"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Southern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

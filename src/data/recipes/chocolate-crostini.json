@@ -43,7 +43,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/chocolate-crostini.jpg",
   "cuisine": "Other"

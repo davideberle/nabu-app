@@ -48,7 +48,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "Mexican Salad Recipes"
+    "chapter": "Mexican Salad Recipes",
+    "meal_role": "side"
   },
   "cuisine": "Mexican"
 }

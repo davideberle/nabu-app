@@ -76,5 +76,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/chocolate-chip-cookies.jpg"
+  "image": "/recipes/chocolate-chip-cookies.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ],
+    "meal_role": "dessert"
+  }
 }

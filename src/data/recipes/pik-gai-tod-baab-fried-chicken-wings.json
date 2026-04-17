@@ -74,7 +74,11 @@
   },
   "image": "/recipes/pik-gai-tod-baab-fried-chicken-wings.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "starter"
+  },
+  "cuisine": "Southeast Asian"
 }

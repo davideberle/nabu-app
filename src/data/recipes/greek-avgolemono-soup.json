@@ -101,7 +101,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Greek Vegetarian Recipes"
+    "chapter": "Greek Vegetarian Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mediterranean"
 }

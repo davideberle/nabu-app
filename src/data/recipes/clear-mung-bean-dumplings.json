@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Main Dishes"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "vegetable oil",
@@ -78,7 +78,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/clear-mung-bean-dumplings.jpg",
   "cuisine": "Southeast Asian"

@@ -72,7 +72,9 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes: Soups & Stews"
+    "chapter": "Main Dishes: Soups & Stews",
+    "meal_role": "main"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/margat-batatacurried-potato-stew.jpg"
 }

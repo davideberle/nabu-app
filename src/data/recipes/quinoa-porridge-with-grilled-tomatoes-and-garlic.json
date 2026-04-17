@@ -71,7 +71,10 @@
     "total": 30
   },
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "breakfast"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "breakfast"
   }
 }

@@ -77,7 +77,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Snacks"
+    "chapter": "Snacks",
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Sides"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "cubes store-bought or homemade chao, finely mashed",
@@ -40,7 +40,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/chao-dipping-sauce.jpg",
   "time": {

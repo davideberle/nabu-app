@@ -71,7 +71,10 @@
   },
   "image": "/recipes/buttermilk-crusted-okra-with-tomato-and-bread-sauce.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Fried"
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Fried",
+    "meal_role": "component"
   }
 }

@@ -7,7 +7,7 @@
     "chapter": "Dessert"
   },
   "servings": "serves 4",
-  "intro": "This might seem like a lot to serve four, but it\u2019s so light and \uf002uffy that you\u2019ll be",
+  "intro": "This might seem like a lot to serve four, but it’s so light and uffy that you’ll be",
   "ingredients": [
     {
       "item": "tbsp/90g dark muscovado sugar",
@@ -26,12 +26,12 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "lemons: \uf001 nely zest to get 2 tsp, then juice to get 1 tbsp",
+      "item": "lemons:  nely zest to get 2 tsp, then juice to get 1 tbsp",
       "amount": "2"
     },
     {
       "item": "oz/420g really ripe Mission figs (about 10, depending on size), tough stems removed, halved lengthwise",
-      "amount": "14\u00be"
+      "amount": "14¾"
     },
     {
       "item": "large eggs, yolks and whites separated",
@@ -39,19 +39,19 @@
     },
     {
       "item": "cup/50g all-purpose flour",
-      "amount": "\u2153"
+      "amount": "⅓"
     },
     {
       "item": "vanilla extract",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "tbsp/100ml heavy cream",
       "amount": "7"
     },
     {
-      "item": "salt vanilla ice cream (or cr\u00e8me fra\u00eeche, to serve)",
-      "amount": "\u215b tsp"
+      "item": "salt vanilla ice cream (or crème fraîche, to serve)",
+      "amount": "⅛ tsp"
     },
     {
       "item": "1.",
@@ -63,14 +63,14 @@
     }
   ],
   "method": [
-    "Put 4 tbsp/50g of the sugar into a small ovenproof high-sided saut\u00e9 pan (about 7 inches/18cm), along with the water. (If you don\u2019t have an ovenproof pan this size, cook the \uf001 gs in a regular frying pan and transfer them to a 9-inch/22cm baking dish.) Place over medium-high heat for 3\u20134 minutes, swirling the pan a few times, until the sugar has completely melted and is bubbling rapidly. Carefully add the wine and thyme and stir continuously for about 1 minute, keeping the pan on the heat, until combined and thick. Remove from the heat, stir in the lemon juice and \uf001 gs, and set aside to cool for 20 minutes (or longer)\u2014you just don\u2019t want them to be piping hot when the topping gets poured on. If you need to transfer the \uf001 gs to a baking dish, do this now.",
+    "Put 4 tbsp/50g of the sugar into a small ovenproof high-sided sauté pan (about 7 inches/18cm), along with the water. (If you don’t have an ovenproof pan this size, cook the  gs in a regular frying pan and transfer them to a 9-inch/22cm baking dish.) Place over medium-high heat for 3–4 minutes, swirling the pan a few times, until the sugar has completely melted and is bubbling rapidly. Carefully add the wine and thyme and stir continuously for about 1 minute, keeping the pan on the heat, until combined and thick. Remove from the heat, stir in the lemon juice and  gs, and set aside to cool for 20 minutes (or longer)—you just don’t want them to be piping hot when the topping gets poured on. If you need to transfer the  gs to a baking dish, do this now.",
     "Place the egg yolks in a bowl with the remaining 3 tbsp/40g of sugar, the",
-    "\uf002our, vanilla, cream, lemon zest, and salt. Whisk until pale and thickened: 2\u2013",
-    "3 minutes by hand, or 1 minute with a handheld mixer. Whisk the egg whites separately by hand for 1\u20132 minutes, to form stiff peaks, and fold gently into the batter until just combined.",
-    "Spread out the \uf001 gs in the saut\u00e9 pan (or baking dish) and pour in the batter.",
-    "Bake for 30 minutes, until the batter has risen and is golden brown and cooked through. Remove from the oven, divide among four bowls, and serve hot with the ice cream or cr\u00e8me fra\u00eeche.",
+    "our, vanilla, cream, lemon zest, and salt. Whisk until pale and thickened: 2–",
+    "3 minutes by hand, or 1 minute with a handheld mixer. Whisk the egg whites separately by hand for 1–2 minutes, to form stiff peaks, and fold gently into the batter until just combined.",
+    "Spread out the  gs in the sauté pan (or baking dish) and pour in the batter.",
+    "Bake for 30 minutes, until the batter has risen and is golden brown and cooked through. Remove from the oven, divide among four bowls, and serve hot with the ice cream or crème fraîche.",
     "Honey and yogurt set cheesecake",
-    "No oven, no bain-marie, no cracks\u2014this is the simplest of cheesecakes! You can make this up to 2 days ahead, topping with the honey and thyme just before serving if you like. It will keep in the fridge but the base will soften with time."
+    "No oven, no bain-marie, no cracks—this is the simplest of cheesecakes! You can make this up to 2 days ahead, topping with the honey and thyme just before serving if you like. It will keep in the fridge but the base will soften with time."
   ],
   "time": {
     "total": 30
@@ -80,7 +80,7 @@
     "dish_type": [
       "dessert"
     ],
-    "meal_role": "dessert",
-    "chapter": "Dessert"
+    "chapter": "Dessert",
+    "meal_role": "dessert"
   }
 }

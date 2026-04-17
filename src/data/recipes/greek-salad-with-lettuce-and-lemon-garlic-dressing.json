@@ -89,7 +89,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "Greek Salads"
+    "chapter": "Greek Salads",
+    "meal_role": "main"
   },
   "cuisine": "Greek"
 }

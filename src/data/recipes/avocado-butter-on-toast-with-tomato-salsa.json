@@ -10,31 +10,31 @@
   "intro": "much of a good thing; the salsa does what all good salsas do, bringing freshness,",
   "ingredients": [
     {
-      "item": "or 3 very ripe avocados, at room temperature, \uf002 esh scooped out to get 9 oz/250g",
+      "item": "or 3 very ripe avocados, at room temperature,  esh scooped out to get 9 oz/250g",
       "amount": "2"
     },
     {
-      "item": "cup/60g unsalted butter, softened and cut into \u00be-inch/2cm cubes",
-      "amount": "\u00bc"
+      "item": "cup/60g unsalted butter, softened and cut into ¾-inch/2cm cubes",
+      "amount": "¼"
     },
     {
-      "item": "limes: \uf001 nely zest to get 2 tsp, then juice to get 2 tbsp salt",
+      "item": "limes:  nely zest to get 2 tsp, then juice to get 2 tbsp salt",
       "amount": "3"
     },
     {
       "item": "cup/10g tarragon leaves, roughly chopped",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "cup/10g dill, roughly chopped",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "oz/200g cherry tomatoes, quartered",
       "amount": "7"
     },
     {
-      "item": "capers, \uf001 nely chopped",
+      "item": "capers,  nely chopped",
       "amount": "2 tsp"
     },
     {
@@ -51,7 +51,7 @@
     },
     {
       "item": "cumin seeds, toasted and crushed",
-      "amount": "\u00bc tsp"
+      "amount": "¼ tsp"
     },
     {
       "item": "1.",
@@ -59,11 +59,11 @@
     }
   ],
   "method": [
-    "Put the avocado and butter into the bowl of a small food processor with half the lime zest, half the lime juice, and \u00bd tsp salt. Blitz until smooth, scraping down the sides of the bowl a couple of times if you need to. Transfer to a small bowl along with two-thirds of the tarragon and dill. Fold in the herbs, then refrigerate for 10 minutes.",
+    "Put the avocado and butter into the bowl of a small food processor with half the lime zest, half the lime juice, and ½ tsp salt. Blitz until smooth, scraping down the sides of the bowl a couple of times if you need to. Transfer to a small bowl along with two-thirds of the tarragon and dill. Fold in the herbs, then refrigerate for 10 minutes.",
     "To make the salsa, mix together the tomatoes, capers, remaining lime zest, remaining lime juice and the oil with a good grind of pepper. Set aside until ready to serve.",
     "Grill or toast the bread, then rub one side of each piece with the cut side of the garlic clove. Leave the bread to cool down just a little, then spread each slice with the avocado butter and top with the tomato salsa. Sprinkle with the cumin seeds and the remaining herbs. Finish with a grind of pepper and a drizzle of oil, and serve.",
     "Beet, caraway, and goat cheese bread",
-    "Making a bread that requires no yeast or kneading has got to be the de\uf001nition of simple! The texture is more cakey as a result and best eaten with some salted butter (not used to make sandwiches). If you are warming it through, do so in the oven rather than in the toaster, as it\u2019s quite crumbly. Once baked, it will keep in an airtight container for 1 week or in the freezer for up to 1 month\u2014thaw before slicing and toasting."
+    "Making a bread that requires no yeast or kneading has got to be the denition of simple! The texture is more cakey as a result and best eaten with some salted butter (not used to make sandwiches). If you are warming it through, do so in the oven rather than in the toaster, as it’s quite crumbly. Once baked, it will keep in an airtight container for 1 week or in the freezer for up to 1 month—thaw before slicing and toasting."
   ],
   "time": {
     "total": 30
@@ -73,7 +73,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "meal_role": "breakfast",
-    "chapter": "Brunch"
+    "chapter": "Brunch",
+    "meal_role": "breakfast"
   }
 }

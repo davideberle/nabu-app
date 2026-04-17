@@ -49,7 +49,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Mexican Taco Dinner Recipes"
+    "chapter": "Mexican Taco Dinner Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mexican"
 }

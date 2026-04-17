@@ -103,7 +103,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "French Lunch Recipes"
+    "chapter": "French Lunch Recipes",
+    "meal_role": "dessert"
   },
   "cuisine": "Mediterranean"
 }

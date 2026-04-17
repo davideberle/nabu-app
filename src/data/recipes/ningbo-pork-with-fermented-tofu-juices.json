@@ -64,7 +64,7 @@
     "Heat the oil in a seasoned wok over a high flame. Add the spring onions and ginger and stir-fry until they smell wonderful, then add the pork, wine, fermented tofu liquid, sugar, light soy sauce and ½ teaspoon of the dark soy sauce, with enough stock or water to just cover the meat. Bring to the boil, then cover and simmer over a low flame or in the oven for 1 hour, until tender. Spoon the liquid over the pork occasionally.",
     "When the pork has cooked, transfer the pan to a high flame, remove the lid and boil rapidly, spooning the liquid over the pork, until it has reduced to a thick, syrupy consistency. Add the remaining dark soy sauce as the liquid reduces. If you are using the deep-fried cabbage or seaweed, first arrange the pork chunks on a serving dish and pour a little sauce over them, then pile up the cabbage or seaweed on the other end of the dish and sprinkle lightly with granulated sugar. If using aonori-ko seaweed flakes, simply sprinkle them over the finished dish. Serve."
   ],
-  "image": "/recipes/ningbo-pork-with-fermented-tofu-juices.jpg",
+  "image": null,
   "time": {
     "total": 75
   },
@@ -72,7 +72,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "main"
   },
   "cuisine": "Chinese"
 }

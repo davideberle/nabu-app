@@ -51,7 +51,11 @@
   },
   "image": "/recipes/sankaya-fuk-tong-pumpkin-custard.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Drinks and Desserts"
-  }
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Drinks and Desserts",
+    "meal_role": "dessert"
+  },
+  "cuisine": "Southeast Asian"
 }

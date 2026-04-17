@@ -10,14 +10,6 @@
   "intro": "Chris Schultz came up with this sweet roll recipe to pair with the coconut ice cream.",
   "ingredients": [
     {
-      "item": "153",
-      "amount": ""
-    },
-    {
-      "item": "155",
-      "amount": ""
-    },
-    {
       "item": "strong black coffee",
       "amount": "2 cups (500 ml)"
     },
@@ -40,7 +32,11 @@
   },
   "image": "/recipes/thai-sweet-rolls.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Drinks and Desserts"
-  }
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Drinks and Desserts",
+    "meal_role": "dessert"
+  },
+  "cuisine": "Southeast Asian"
 }

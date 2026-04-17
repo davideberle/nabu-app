@@ -88,7 +88,11 @@
   },
   "image": "/recipes/por-pia-tod-spring-rolls.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Isaan"
-  }
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Isaan",
+    "meal_role": "starter"
+  },
+  "cuisine": "Southeast Asian"
 }

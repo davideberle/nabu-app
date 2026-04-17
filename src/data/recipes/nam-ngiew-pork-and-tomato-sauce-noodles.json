@@ -10,14 +10,6 @@
   "intro": "This is a great dish for a party or large family gathering.",
   "ingredients": [
     {
-      "item": "107",
-      "amount": ""
-    },
-    {
-      "item": "109",
-      "amount": ""
-    },
-    {
       "item": "package spring roll wrappers (frozen is fi ne). If using a whole package of 50 wrappers consider doubling the Chicken Larb recipe",
       "amount": "1"
     },
@@ -93,7 +85,11 @@
   },
   "image": "/recipes/nam-ngiew-pork-and-tomato-sauce-noodles.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

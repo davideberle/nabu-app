@@ -10,10 +10,6 @@
   "intro": "family style with everything else, alongside stews, soups, salads, chili dips, fried pork and sticky rice.",
   "ingredients": [
     {
-      "item": "95",
-      "amount": ""
-    },
-    {
       "item": "feet (7 meters) sausage casing or",
       "amount": "20"
     },
@@ -93,7 +89,11 @@
   },
   "image": "/recipes/gang-gradang-cold-pork-jelly.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "starter"
+  },
+  "cuisine": "Southeast Asian"
 }

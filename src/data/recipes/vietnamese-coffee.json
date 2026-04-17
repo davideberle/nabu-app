@@ -35,7 +35,8 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Sweets and Coffee"
+    "chapter": "Sweets and Coffee",
+    "meal_role": "drink"
   },
   "cuisine": "Southeast Asian"
 }

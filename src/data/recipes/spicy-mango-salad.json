@@ -50,5 +50,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/spicy-mango-salad.jpg"
+  "image": "/recipes/spicy-mango-salad.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "salad"
+    ],
+    "meal_role": "main"
+  }
 }

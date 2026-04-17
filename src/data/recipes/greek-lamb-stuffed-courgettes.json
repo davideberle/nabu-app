@@ -71,7 +71,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Greek Dinner Recipes"
+    "chapter": "Greek Dinner Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mediterranean"
 }

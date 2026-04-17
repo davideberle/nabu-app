@@ -72,7 +72,10 @@
   },
   "image": "/recipes/corn-slaw.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Grilled"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Grilled",
+    "meal_role": "main"
   }
 }

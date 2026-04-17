@@ -7,7 +7,7 @@
     "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 6",
-  "intro": "Sticky rice is brilliant as it is, served alongside all sorts of \uf001sh and meat dishes, but",
+  "intro": "Sticky rice is brilliant as it is, served alongside all sorts of sh and meat dishes, but",
   "ingredients": [
     {
       "item": "cups/400g Thai sticky rice salt",
@@ -15,11 +15,11 @@
     },
     {
       "item": "cups/600ml water",
-      "amount": "2\u00bd"
+      "amount": "2½"
     },
     {
       "item": "peanut oil",
-      "amount": "1\u00bd tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "2-inch/5cm piece of ginger, peeled and julienned (5 tbsp/40g)",
@@ -34,8 +34,8 @@
       "amount": "2"
     },
     {
-      "item": "cups/30g cilantro stems, cut into 1\u00bc-inch/3cm lengths",
-      "amount": "1\u00bd"
+      "item": "cups/30g cilantro stems, cut into 1¼-inch/3cm lengths",
+      "amount": "1½"
     },
     {
       "item": "salted and roasted peanuts, roughly chopped",
@@ -55,12 +55,12 @@
     }
   ],
   "method": [
-    "Put the rice into a medium saucepan with a well-\uf001tting lid, along with \u00bd tsp salt and the water. Bring to a boil, then decrease the heat to medium-low and simmer gently, covered, for 15 minutes. Remove from the heat and set aside, still covered, for 5 minutes.",
-    "While the rice is cooking, put the oil into a medium frying pan and place over medium-high heat. Once hot, add the ginger, garlic and chiles and fry for 3\u20134 minutes, stirring frequently, until just starting to brown. Add the cilantro, peanuts, sesame seeds, and a generous pinch of salt and continue to fry for",
-    "1\u20132 minutes, until golden brown. Spoon over the rice and serve, with the wedges of lime alongside.",
+    "Put the rice into a medium saucepan with a well-tting lid, along with ½ tsp salt and the water. Bring to a boil, then decrease the heat to medium-low and simmer gently, covered, for 15 minutes. Remove from the heat and set aside, still covered, for 5 minutes.",
+    "While the rice is cooking, put the oil into a medium frying pan and place over medium-high heat. Once hot, add the ginger, garlic and chiles and fry for 3–4 minutes, stirring frequently, until just starting to brown. Add the cilantro, peanuts, sesame seeds, and a generous pinch of salt and continue to fry for",
+    "1–2 minutes, until golden brown. Spoon over the rice and serve, with the wedges of lime alongside.",
     "Baked rice with confit tomatoes and garlic",
-    "This was my go-to side for a good few months, working well with pretty much anything else on the table. There\u2019s also enough going on, \uf002avorwise, for it to be lovely as it is, as a main.",
-    "Peeling so many garlic cloves won\u2019t win me any \u201csimple\u201d brownie points, I know, but, once done, the simple joy of this dish is that the rice is baked in the oven rather than on the stove. For those who \uf001nd creating perfectly cooked rice in a pan of simmering water strangely difficult, this will be a revelation. Just make sure the foil is sealed tightly over the dish\u2014you don\u2019t want any steam to escape in the oven."
+    "This was my go-to side for a good few months, working well with pretty much anything else on the table. There’s also enough going on, avorwise, for it to be lovely as it is, as a main.",
+    "Peeling so many garlic cloves won’t win me any “simple” brownie points, I know, but, once done, the simple joy of this dish is that the rice is baked in the oven rather than on the stove. For those who nd creating perfectly cooked rice in a pan of simmering water strangely difficult, this will be a revelation. Just make sure the foil is sealed tightly over the dish—you don’t want any steam to escape in the oven."
   ],
   "time": {
     "total": 30
@@ -70,7 +70,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Rice, Grains, and Pulses"
+    "chapter": "Rice, Grains, and Pulses",
+    "meal_role": "side"
   }
 }

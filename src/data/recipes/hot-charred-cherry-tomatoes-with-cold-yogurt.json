@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "oz/350g cherry tomatoes",
-      "amount": "12\u00bc"
+      "amount": "12¼"
     },
     {
       "item": "olive oil",
@@ -19,11 +19,11 @@
     },
     {
       "item": "cumin seeds",
-      "amount": "\u00be tsp"
+      "amount": "¾ tsp"
     },
     {
       "item": "light brown sugar",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
       "item": "garlic cloves, thinly sliced",
@@ -38,15 +38,15 @@
       "amount": "6"
     },
     {
-      "item": "lemon: \uf001 nely shave the skin of \u00bd to get 3 strips, then \uf001 nely grate the other \u00bd to get 1 tsp zest flaked sea salt and black pepper",
+      "item": "lemon:  nely shave the skin of ½ to get 3 strips, then  nely grate the other ½ to get 1 tsp zest flaked sea salt and black pepper",
       "amount": "1"
     },
     {
       "item": "cups/350g extra-thick Greek-style yogurt, fridge-cold",
-      "amount": "1\u2154"
+      "amount": "1⅔"
     },
     {
-      "item": "Urfa chile flakes (or \u00bd tsp other crushed red pepper \uf002 akes)",
+      "item": "Urfa chile flakes (or ½ tsp other crushed red pepper  akes)",
       "amount": "1 tsp"
     },
     {
@@ -59,12 +59,12 @@
     }
   ],
   "method": [
-    "Place the tomatoes in a mixing bowl with the olive oil, cumin, sugar, garlic, thyme, oregano sprigs, lemon strips, \u00bd tsp of \uf002 aked salt, and a good grind of pepper. Mix to combine, then transfer to a baking sheet just large enough\u2014 about 6 x 8 inches/15 x 20cm\u2014to \uf001 t all the tomatoes together snugly. Place the sheet about 2 inches/5cm beneath the broiler and roast for 20 minutes, until the tomatoes are beginning to blister and the liquid is bubbling. Turn the oven to the broil setting and broil for 6\u20138 minutes, until the tomatoes start to blacken on top.",
-    "While the tomatoes are roasting, combine the yogurt with the grated lemon zest and \u00bc tsp of \uf002 aked salt. Keep in the fridge until ready to serve.",
+    "Place the tomatoes in a mixing bowl with the olive oil, cumin, sugar, garlic, thyme, oregano sprigs, lemon strips, ½ tsp of  aked salt, and a good grind of pepper. Mix to combine, then transfer to a baking sheet just large enough— about 6 x 8 inches/15 x 20cm—to  t all the tomatoes together snugly. Place the sheet about 2 inches/5cm beneath the broiler and roast for 20 minutes, until the tomatoes are beginning to blister and the liquid is bubbling. Turn the oven to the broil setting and broil for 6–8 minutes, until the tomatoes start to blacken on top.",
+    "While the tomatoes are roasting, combine the yogurt with the grated lemon zest and ¼ tsp of  aked salt. Keep in the fridge until ready to serve.",
     "Once the tomatoes are ready, spread the chilled yogurt on a platter (with a lip) or in a wide, shallow bowl, creating a dip in it with the back of a spoon.",
-    "Spoon the hot tomatoes on top, along with their juices, lemon strips, garlic, and herbs, and \uf001 nish with the oregano leaves and chile \uf002 akes. Serve at once.",
+    "Spoon the hot tomatoes on top, along with their juices, lemon strips, garlic, and herbs, and  nish with the oregano leaves and chile  akes. Serve at once.",
     "Tomato, chard, and spinach with toasted almonds",
-    "This is perfect served in all sorts of ways: warm as it is, along with some steamed rice, or sprinkled with feta. It\u2019s also good as an accompaniment to chicken or \uf001sh, served warm or at room temperature.",
+    "This is perfect served in all sorts of ways: warm as it is, along with some steamed rice, or sprinkled with feta. It’s also good as an accompaniment to chicken or sh, served warm or at room temperature.",
     "Once cooked, this can be kept for up 1 day in the fridge, just bring back to room temperature or warm through before serving, adding the almonds at the last minute."
   ],
   "time": {
@@ -75,7 +75,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

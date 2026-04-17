@@ -63,7 +63,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "cuisine": "Other",
   "image": "/recipes/thick-and-glossy-fudge-frosting.jpg"

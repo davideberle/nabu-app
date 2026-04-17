@@ -74,7 +74,10 @@
   },
   "image": "/recipes/caramelized-brandy-pears-with-fennel-seed-crackers.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

@@ -57,5 +57,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/eggplant-with-buttermilk-sauce.jpg"
+  "image": "/recipes/eggplant-with-buttermilk-sauce.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "condiment"
+    ],
+    "meal_role": "component"
+  }
 }

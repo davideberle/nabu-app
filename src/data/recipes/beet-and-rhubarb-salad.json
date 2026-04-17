@@ -57,7 +57,10 @@
   },
   "image": "/recipes/beet-and-rhubarb-salad.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Roasted"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Roasted",
+    "meal_role": "main"
   }
 }

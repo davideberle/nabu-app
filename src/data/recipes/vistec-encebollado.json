@@ -81,7 +81,8 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": "Desayuno (Breakfast)"
+    "chapter": "Desayuno (Breakfast)",
+    "meal_role": "breakfast"
   },
   "cuisine": "Caribbean"
 }

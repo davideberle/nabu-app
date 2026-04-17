@@ -70,7 +70,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

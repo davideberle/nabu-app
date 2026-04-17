@@ -10,10 +10,6 @@
   "intro": "version that you would fi nd in Thailand. This also means you won’t fi nd any soy sauce in the sauce.",
   "ingredients": [
     {
-      "item": "53",
-      "amount": ""
-    },
-    {
       "item": "vegetable oil",
       "amount": "1 teaspoon"
     },
@@ -45,7 +41,11 @@
   },
   "image": "/recipes/pad-thai.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Street Eats"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Street Eats",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

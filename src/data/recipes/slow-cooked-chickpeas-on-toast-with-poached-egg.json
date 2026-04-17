@@ -71,7 +71,10 @@
   },
   "image": "/recipes/slow-cooked-chickpeas-on-toast-with-poached-egg.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

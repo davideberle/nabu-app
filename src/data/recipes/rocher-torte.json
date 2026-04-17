@@ -83,5 +83,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/rocher-torte.jpg"
+  "image": "/recipes/rocher-torte.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ],
+    "meal_role": "dessert"
+  }
 }

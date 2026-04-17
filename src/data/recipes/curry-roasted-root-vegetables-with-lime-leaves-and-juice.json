@@ -62,7 +62,10 @@
   },
   "image": "/recipes/curry-roasted-root-vegetables-with-lime-leaves-and-juice.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Roasted"
+    "dish_type": [
+      "drink"
+    ],
+    "chapter": "Roasted",
+    "meal_role": "drink"
   }
 }

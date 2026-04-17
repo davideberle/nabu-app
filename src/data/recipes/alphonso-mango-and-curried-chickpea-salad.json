@@ -84,7 +84,10 @@
   },
   "image": "/recipes/alphonso-mango-and-curried-chickpea-salad.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

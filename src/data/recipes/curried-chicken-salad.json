@@ -52,7 +52,11 @@
   },
   "image": "/recipes/curried-chicken-salad.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -76,7 +76,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/crunchy-pappardelle.jpg"

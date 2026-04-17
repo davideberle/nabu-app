@@ -29,7 +29,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Rice"
+    "chapter": "Rice",
+    "meal_role": "side"
   },
   "cuisine": "Chinese"
 }

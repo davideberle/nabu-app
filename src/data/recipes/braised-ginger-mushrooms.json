@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Main Dishes"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "king oyster mushrooms, rinsed and cut into bite-size pieces",
@@ -66,7 +66,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/braised-ginger-mushrooms.jpg",
   "cuisine": "Southeast Asian"

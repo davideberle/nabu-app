@@ -96,7 +96,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "For Company"
+    "chapter": "For Company",
+    "meal_role": "starter"
   },
   "cuisine": "Caribbean"
 }

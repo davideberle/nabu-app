@@ -99,7 +99,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "French Lunch Recipes"
+    "chapter": "French Lunch Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mediterranean"
 }

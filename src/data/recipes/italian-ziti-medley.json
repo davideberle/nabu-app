@@ -69,7 +69,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry and Meat Pasta Recipes"
+    "chapter": "Poultry and Meat Pasta Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Italian",
   "image": "/recipes/italian-ziti-medley.jpg"

@@ -76,7 +76,11 @@
   },
   "image": "/recipes/nam-prik-num-roasted-green-chili-dip.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "component"
+  },
+  "cuisine": "Southeast Asian"
 }

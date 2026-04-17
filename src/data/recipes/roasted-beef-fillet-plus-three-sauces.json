@@ -11,7 +11,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Meat & Fish"
+    "chapter": "Meat & Fish",
+    "meal_role": "main"
   },
   "servings": "serves 4",
   "time": {

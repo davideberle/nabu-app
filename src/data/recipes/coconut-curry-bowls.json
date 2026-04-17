@@ -61,15 +61,18 @@
     "Prepare and serve the cauliflower rice. Cook the cauliflower rice according",
     "to the package directions while the curry simmers. (Some brands vary, but",
     "many come in microwavable bags and require just a few minutes to",
-    "prepare.) Serve the rice in four dishes with the curry on top.",
-    "Recipe 2: Coconut Curry Cabbage"
+    "prepare.) Serve the rice in four dishes with the curry on top."
   ],
   "time": {
     "total": 15
   },
   "image": "/recipes/coconut-curry-bowls.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -47,7 +47,7 @@
     "Put the olive oil in a pan over very low heat, and add the garlic and paprika. Stir for 3–4 minutes. Add half the basil and parsley, and stir for 1 minute. Add the tomatoes and stir gently for 2–3 minutes, until hot.",
     "Remove from the heat. Stir in the remaining basil and parsley, and then the sherry vinegar. Season with salt and black pepper to taste, and serve while still warm."
   ],
-  "image": "/recipes/tomato-and-paprika-vinaigrette.jpg",
+  "image": null,
   "time": {
     "total": 20
   },
@@ -55,7 +55,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Sauces & Dressings"
+    "chapter": "Sauces & Dressings",
+    "meal_role": "component"
   },
   "cuisine": "Other"
 }

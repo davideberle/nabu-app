@@ -62,7 +62,11 @@
   },
   "image": "/recipes/pon-pla-tu-mackerel-salad.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Dips and Sauces"
-  }
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Dips and Sauces",
+    "meal_role": "side"
+  },
+  "cuisine": "Southeast Asian"
 }

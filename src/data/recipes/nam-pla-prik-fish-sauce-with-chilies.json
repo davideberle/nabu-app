@@ -46,7 +46,11 @@
   },
   "image": "/recipes/nam-pla-prik-fish-sauce-with-chilies.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Dips and Sauces"
-  }
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Dips and Sauces",
+    "meal_role": "component"
+  },
+  "cuisine": "Southeast Asian"
 }

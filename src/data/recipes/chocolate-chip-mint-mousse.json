@@ -68,5 +68,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/chocolate-chip-mint-mousse.jpg"
+  "image": "/recipes/chocolate-chip-mint-mousse.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "dessert"
+    ],
+    "meal_role": "dessert"
+  }
 }

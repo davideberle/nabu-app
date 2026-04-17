@@ -57,5 +57,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/marinated-buffalo-mozzarella-and-tomato.jpg"
+  "image": "/recipes/marinated-buffalo-mozzarella-and-tomato.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "starter"
+    ],
+    "meal_role": "starter"
+  }
 }

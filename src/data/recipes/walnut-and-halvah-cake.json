@@ -65,7 +65,10 @@
   },
   "image": "/recipes/walnut-and-halvah-cake.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

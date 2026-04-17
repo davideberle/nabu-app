@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Desserts"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "vegetable oil",
@@ -78,7 +78,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/sweet-and-sour-seitan.jpg",
   "cuisine": "Southeast Asian"

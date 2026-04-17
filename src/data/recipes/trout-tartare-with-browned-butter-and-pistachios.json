@@ -7,22 +7,22 @@
     "chapter": "Seafood"
   },
   "servings": "serves 4",
-  "intro": "check for freshness), and the salt \uf002aked. If you can get hold of them, use slivered",
+  "intro": "check for freshness), and the salt aked. If you can get hold of them, use slivered",
   "ingredients": [
     {
       "item": "shallot, sliced paper-thin (5 tbsp/30g)",
       "amount": "1"
     },
     {
-      "item": "lemons: zest \uf001 nely to get 2 tsp, then juice to get 2\u00bd tbsp",
+      "item": "lemons: zest  nely to get 2 tsp, then juice to get 2½ tbsp",
       "amount": "2"
     },
     {
       "item": "granulated sugar flaked sea salt and black pepper",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
-      "item": "trout fillets, skinless, cut into \u00bd-inch/1\u00bdcm pieces (12\u00be oz/360g)",
+      "item": "trout fillets, skinless, cut into ½-inch/1½cm pieces (12¾ oz/360g)",
       "amount": "4"
     },
     {
@@ -31,19 +31,19 @@
     },
     {
       "item": "unsalted butter",
-      "amount": "1\u00bd tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "cumin seeds",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
-      "item": "slivered pistachios (or roughly chopped pistachios, if you can\u2019t get any), lightly toasted",
+      "item": "slivered pistachios (or roughly chopped pistachios, if you can’t get any), lightly toasted",
       "amount": "2 tbsp"
     },
     {
-      "item": "cup/5g tarragon leaves, \uf001 nely chopped",
-      "amount": "\u00bc"
+      "item": "cup/5g tarragon leaves,  nely chopped",
+      "amount": "¼"
     },
     {
       "item": "1.",
@@ -51,12 +51,12 @@
     }
   ],
   "method": [
-    "Place the shallot in a small bowl with 2 tbsp of the lemon juice, the sugar, \u00bd tsp \uf002 aked salt, and a generous grind of pepper. Using your \uf001 ngers, massage the sugar and salt into the shallot and set aside.",
-    "Put the trout in a separate small bowl along with the oil, lemon zest, the remaining 2 tsp of lemon juice, 1\u00bd tsp \uf002 aked salt, and a generous grind of pepper. Stir and set aside for 30 minutes\u2014not longer, or the \uf001 sh will overcook.",
+    "Place the shallot in a small bowl with 2 tbsp of the lemon juice, the sugar, ½ tsp  aked salt, and a generous grind of pepper. Using your  ngers, massage the sugar and salt into the shallot and set aside.",
+    "Put the trout in a separate small bowl along with the oil, lemon zest, the remaining 2 tsp of lemon juice, 1½ tsp  aked salt, and a generous grind of pepper. Stir and set aside for 30 minutes—not longer, or the  sh will overcook.",
     "Before serving, put the butter and cumin seeds into a small pan and place over medium heat. Melt the butter gently for about 5 minutes, swirling the pan from time to time, until the butter begins to foam, turn brown, smell nutty, and is caramelized.",
-    "Divide the trout among four dishes and top with the shallot (discarding any liquid). Sprinkle with the pistachios and tarragon and drizzle with the cumin seed\u2013browned butter. Finish with a little sprinkle of \uf002 aked salt and serve.",
+    "Divide the trout among four dishes and top with the shallot (discarding any liquid). Sprinkle with the pistachios and tarragon and drizzle with the cumin seed–browned butter. Finish with a little sprinkle of  aked salt and serve.",
     "Mackerel with pistachio and cardamom salsa",
-    "This is a super impressive (but secretly very easy) summer starter. It also works well as a main course. Serve with some herb-\uf001lled rice."
+    "This is a super impressive (but secretly very easy) summer starter. It also works well as a main course. Serve with some herb-lled rice."
   ],
   "time": {
     "total": 30
@@ -66,7 +66,7 @@
     "dish_type": [
       "main"
     ],
-    "meal_role": "main",
-    "chapter": "Seafood"
+    "chapter": "Seafood",
+    "meal_role": "main"
   }
 }

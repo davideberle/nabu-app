@@ -10,14 +10,6 @@
   "intro": "This recipe is “wetter” than a typical hoy tod or shellfi sh omelet, which is crispy on the bottom",
   "ingredients": [
     {
-      "item": "55",
-      "amount": ""
-    },
-    {
-      "item": "57",
-      "amount": ""
-    },
-    {
       "item": "rice vermicelli",
       "amount": "6 oz (160 g)"
     },
@@ -103,7 +95,11 @@
   },
   "image": "/recipes/or-suan-oyster-omelet.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Street Eats"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Street Eats",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

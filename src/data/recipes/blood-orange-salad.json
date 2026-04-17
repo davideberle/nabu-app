@@ -44,7 +44,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Winter"
+    "chapter": "Winter",
+    "meal_role": "side"
   },
   "time": {
     "prep": 10,

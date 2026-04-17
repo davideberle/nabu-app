@@ -79,7 +79,10 @@
   },
   "image": "/recipes/fig-and-goat-cheese-tart.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

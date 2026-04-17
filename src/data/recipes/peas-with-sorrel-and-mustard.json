@@ -64,7 +64,10 @@
   },
   "image": "/recipes/peas-with-sorrel-and-mustard.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Blanched"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Blanched",
+    "meal_role": "main"
   }
 }

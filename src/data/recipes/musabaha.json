@@ -62,7 +62,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Condiments & Dips"
+    "chapter": "Condiments & Dips",
+    "meal_role": "component"
   },
   "cuisine": "Middle Eastern"
 }

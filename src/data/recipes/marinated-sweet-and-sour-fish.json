@@ -82,9 +82,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "main"
     ],
-    "chapter": "Fish"
+    "chapter": "Fish",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

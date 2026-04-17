@@ -75,7 +75,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Base Sauces"
+    "chapter": "Base Sauces",
+    "meal_role": "side"
   },
   "cuisine": "Indian"
 }

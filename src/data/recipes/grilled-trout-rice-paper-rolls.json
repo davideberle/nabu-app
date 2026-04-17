@@ -80,7 +80,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Chicken and Seafood"
+    "chapter": "Chicken and Seafood",
+    "meal_role": "side"
   },
   "cuisine": "Southeast Asian"
 }

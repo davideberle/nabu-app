@@ -60,7 +60,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Summer"
+    "chapter": "Summer",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 15,

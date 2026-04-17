@@ -72,7 +72,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/jerusalem-artichokes-with-manouri-and-basil-oil.jpg"

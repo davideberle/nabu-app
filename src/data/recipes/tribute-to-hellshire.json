@@ -112,7 +112,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "main"
   },
   "cuisine": "Caribbean"
 }

@@ -81,7 +81,10 @@
   },
   "image": "/recipes/corsican-pie-with-zucchini-flowers.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Baked"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Baked",
+    "meal_role": "dessert"
   }
 }

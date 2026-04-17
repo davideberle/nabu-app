@@ -59,7 +59,8 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Kitchen Basics"
+    "chapter": "Kitchen Basics",
+    "meal_role": "drink"
   },
   "cuisine": "African & Caribbean"
 }

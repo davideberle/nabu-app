@@ -38,7 +38,8 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": "Accompaniments"
+    "chapter": "Accompaniments",
+    "meal_role": "side"
   },
   "time": {
     "total": 3

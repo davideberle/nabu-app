@@ -134,5 +134,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/kale-chips.jpg"
+  "image": "/recipes/kale-chips.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side"
+  }
 }

@@ -53,7 +53,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts & Drinks"
+    "chapter": "Desserts & Drinks",
+    "meal_role": "dessert"
   },
   "cuisine": "Indian"
 }

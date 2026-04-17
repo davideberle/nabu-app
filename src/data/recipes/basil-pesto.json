@@ -79,5 +79,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/basil-pesto.jpg"
+  "image": "/recipes/basil-pesto.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "condiment"
+    ],
+    "meal_role": "component"
+  }
 }

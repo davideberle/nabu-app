@@ -1,16 +1,16 @@
 {
   "id": "cauliflower-tabbouleh",
-  "name": "Cauliflower \u201ctabbouleh\u201d",
+  "name": "Cauliflower “tabbouleh”",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi",
     "chapter": "Raw Veg"
   },
   "servings": "serves 6",
-  "intro": "If you\u2019re doubling or tripling this recipe, break the cauli\uf002ower into \uf002orets and pop",
+  "intro": "If you’re doubling or tripling this recipe, break the cauliower into orets and pop",
   "ingredients": [
     {
-      "item": "large cauliflower (1\u00be lb/800g)",
+      "item": "large cauliflower (1¾ lb/800g)",
       "amount": "1"
     },
     {
@@ -18,16 +18,16 @@
       "amount": "5"
     },
     {
-      "item": "green onions, \uf001 nely chopped (scant 1 cup/70g)",
+      "item": "green onions,  nely chopped (scant 1 cup/70g)",
       "amount": "7"
     },
     {
       "item": "cups/50g parsley, roughly chopped",
-      "amount": "2\u00bd"
+      "amount": "2½"
     },
     {
       "item": "cups/25g dill, roughly chopped",
-      "amount": "1\u00bc"
+      "amount": "1¼"
     },
     {
       "item": "cup/20g mint, roughly chopped",
@@ -42,8 +42,8 @@
       "amount": "3 tbsp"
     },
     {
-      "item": "cup/100g pomegranate seeds (from \u00bd pomegranate)",
-      "amount": "\u2154"
+      "item": "cup/100g pomegranate seeds (from ½ pomegranate)",
+      "amount": "⅔"
     },
     {
       "item": "1.",
@@ -55,12 +55,12 @@
     }
   ],
   "method": [
-    "Place the grated cauli\uf002ower in a large bowl along with the lemon juice and",
-    "1\u00bc tsp salt. Set aside to marinate for 20 minutes, then add the green onions, parsley, dill, mint, allspice, oil, and a generous grind of black pepper. Gently mix to combine, transfer to a serving plate or bowl, sprinkle with the pomegranate seeds, and serve.",
+    "Place the grated cauliower in a large bowl along with the lemon juice and",
+    "1¼ tsp salt. Set aside to marinate for 20 minutes, then add the green onions, parsley, dill, mint, allspice, oil, and a generous grind of black pepper. Gently mix to combine, transfer to a serving plate or bowl, sprinkle with the pomegranate seeds, and serve.",
     "Green onion and herb salad",
-    "This is lovely alongside all sorts of meat: it\u2019s as green- and herb-\uf001lled as a spring roast chicken wants (this page) and as citrusy and refreshing as any slow-cooked lamb (this page) or beef meatballs (this page) might demand.",
-    "If you can get hold of baby cucumbers for this, then do; they have a lot less water in them than the standard ones. If you start with the large ones that\u2019s \uf001ne, but slice in half lengthwise, scoop out the watery seeded core, and proceed.",
-    "The dressing can be made the day before. Prepare the salad to the point of adding the herbs and salt up to 4\u20136 hours in advance."
+    "This is lovely alongside all sorts of meat: it’s as green- and herb-lled as a spring roast chicken wants (this page) and as citrusy and refreshing as any slow-cooked lamb (this page) or beef meatballs (this page) might demand.",
+    "If you can get hold of baby cucumbers for this, then do; they have a lot less water in them than the standard ones. If you start with the large ones that’s ne, but slice in half lengthwise, scoop out the watery seeded core, and proceed.",
+    "The dressing can be made the day before. Prepare the salad to the point of adding the herbs and salt up to 4–6 hours in advance."
   ],
   "time": {
     "total": 30
@@ -70,7 +70,7 @@
     "dish_type": [
       "salad"
     ],
-    "meal_role": "side",
-    "chapter": "Raw Veg"
+    "chapter": "Raw Veg",
+    "meal_role": "side"
   }
 }

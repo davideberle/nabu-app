@@ -1,13 +1,13 @@
 {
   "id": "braised-eggs-with-leek-and-za-atar",
-  "name": "Braised eggs with leek and za\u2019atar",
+  "name": "Braised eggs with leek and za’atar",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi",
     "chapter": "Brunch"
   },
   "servings": "serves 6",
-  "intro": "short amount of time. It\u2019s a dish as happily eaten for brunch, with coffee, as it is",
+  "intro": "short amount of time. It’s a dish as happily eaten for brunch, with coffee, as it is",
   "ingredients": [
     {
       "item": "unsalted butter",
@@ -18,7 +18,7 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "extra-large leeks (or 4 smaller), trimmed and cut into \u00bc-inch/\u00bd cm slices (6 cups/530g) salt and black pepper",
+      "item": "extra-large leeks (or 4 smaller), trimmed and cut into ¼-inch/½ cm slices (6 cups/530g) salt and black pepper",
       "amount": "2"
     },
     {
@@ -26,12 +26,12 @@
       "amount": "1 tsp"
     },
     {
-      "item": "small preserved lemon, seeds discarded, skin and \uf002 esh \uf001 nely chopped (2\u00bd tbsp)",
-      "amount": "\u00bd"
+      "item": "small preserved lemon, seeds discarded, skin and  esh  nely chopped (2½ tbsp)",
+      "amount": "½"
     },
     {
       "item": "cups/300ml vegetable stock",
-      "amount": "1\u00bc"
+      "amount": "1¼"
     },
     {
       "item": "oz/200g baby spinach leaves",
@@ -42,11 +42,11 @@
       "amount": "6"
     },
     {
-      "item": "oz/90g feta, broken into \u00be-inch/2cm pieces",
-      "amount": "3\u00bc"
+      "item": "oz/90g feta, broken into ¾-inch/2cm pieces",
+      "amount": "3¼"
     },
     {
-      "item": "za\u2019atar",
+      "item": "za’atar",
       "amount": "1 tbsp"
     },
     {
@@ -55,9 +55,9 @@
     }
   ],
   "method": [
-    "Put the butter and 1 tbsp of the oil into a large saut\u00e9 pan with a lid and place over medium-high heat. Once the butter starts to foam, add the leeks, \u00bd tsp of salt, and plenty of pepper. Fry for 3 minutes, stirring frequently, until the leeks are soft. Add the cumin, lemon, and vegetable stock and boil rapidly for 4\u20135 minutes, until most of the stock has evaporated. Fold in the spinach and cook for 1 minute, until wilted, then decrease the heat to medium.",
-    "Use a large spoon to make 6 indentations in the mixture and break 1 egg into each space. Sprinkle the eggs with a pinch of salt, dot the feta around the eggs, then cover the pan. Simmer for 4\u20135 minutes, until the egg whites are cooked but the yolks are still runny.",
-    "Mix the za\u2019atar with the remaining 1 tbsp of oil and brush over the eggs.",
+    "Put the butter and 1 tbsp of the oil into a large sauté pan with a lid and place over medium-high heat. Once the butter starts to foam, add the leeks, ½ tsp of salt, and plenty of pepper. Fry for 3 minutes, stirring frequently, until the leeks are soft. Add the cumin, lemon, and vegetable stock and boil rapidly for 4–5 minutes, until most of the stock has evaporated. Fold in the spinach and cook for 1 minute, until wilted, then decrease the heat to medium.",
+    "Use a large spoon to make 6 indentations in the mixture and break 1 egg into each space. Sprinkle the eggs with a pinch of salt, dot the feta around the eggs, then cover the pan. Simmer for 4–5 minutes, until the egg whites are cooked but the yolks are still runny.",
+    "Mix the za’atar with the remaining 1 tbsp of oil and brush over the eggs.",
     "Serve at once, straight from the pan.",
     "Harissa and Manchego omeletes",
     "I like to eat this either for brunch or for a speedy supper, with a fresh tomato and avocado salad on the side. The onions can be caramelized 2 days in advance and kept in the fridge, so it is worth making a double batch of these. Add a tablespoonful to scrambled eggs or couscous salad, for example. Make the egg mixture the day before if you like and let it sit in the fridge. Everything is then ready to be poured into the pan."
@@ -70,7 +70,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "meal_role": "breakfast",
-    "chapter": "Brunch"
+    "chapter": "Brunch",
+    "meal_role": "breakfast"
   }
 }

@@ -51,7 +51,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "cuisine": "Other",
   "image": "/recipes/all-purpose-chocolate-syrup-no-fat-added.jpg"

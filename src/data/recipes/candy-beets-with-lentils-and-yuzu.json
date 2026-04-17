@@ -60,7 +60,10 @@
   },
   "image": "/recipes/candy-beets-with-lentils-and-yuzu.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

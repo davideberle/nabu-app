@@ -51,7 +51,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry and Eggs"
+    "chapter": "Poultry and Eggs",
+    "meal_role": "main"
   },
   "cuisine": "Chinese"
 }

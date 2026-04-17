@@ -64,7 +64,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Noodles"
+    "chapter": "Noodles",
+    "meal_role": "main"
   },
   "image": "/recipes/shanghai-stir-fried-chunky-noodles.jpg",
   "cuisine": "Chinese",

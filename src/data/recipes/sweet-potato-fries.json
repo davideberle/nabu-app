@@ -10,7 +10,7 @@
   "intro": "These are lovely either as a side or a snack. If a snack, serve alongside some sour",
   "ingredients": [
     {
-      "item": "very large sweet potatoes, peeled and sliced into \u00bd-inch/1\u00bd cm-thick fries (2\u00bd lb/1.2kg)",
+      "item": "very large sweet potatoes, peeled and sliced into ½-inch/1½ cm-thick fries (2½ lb/1.2kg)",
       "amount": "3"
     },
     {
@@ -19,7 +19,7 @@
     },
     {
       "item": "cayenne",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
       "item": "garlic cloves, crushed",
@@ -47,13 +47,13 @@
     }
   ],
   "method": [
-    "Mix the sweet potatoes in a large bowl with the paprika, cayenne, garlic, polenta, oil, and 1 tsp \uf002 aked salt. Once combined, tip the sweet potatoes (and all the oil) onto two large parchment-lined baking sheets and roast for",
-    "25\u201330 minutes, stirring gently once or twice, until the potatoes are cooked, crisp and golden brown.",
-    "Remove from the oven, sprinkle with the sumac and 1 tsp \uf002 aked salt, and serve at once.",
-    "Harissa\u2013baked potato skins and crispy lettuce salad",
+    "Mix the sweet potatoes in a large bowl with the paprika, cayenne, garlic, polenta, oil, and 1 tsp  aked salt. Once combined, tip the sweet potatoes (and all the oil) onto two large parchment-lined baking sheets and roast for",
+    "25–30 minutes, stirring gently once or twice, until the potatoes are cooked, crisp and golden brown.",
+    "Remove from the oven, sprinkle with the sumac and 1 tsp  aked salt, and serve at once.",
+    "Harissa–baked potato skins and crispy lettuce salad",
     "Pictured on this page, left",
-    "The basis of this recipe is that you\u2019ll be using up skins from potatoes you\u2019ve already cooked and have sitting around. This is either because you\u2019ve used the cooked \uf002esh to make mash or, in one of life\u2019s great mysteries, your kids have eaten the inside of a baked potato and left the best bit (i.e., the cooked skins)!",
-    "Either way, don\u2019t throw them away\u2014they bring a great extra crunch to an already fresh and crunchy salad and they turn this into a dish you can get onto the table in less than 30 minutes. This is totally brilliant alongside the Slow- cooked chicken with a crisp corn crust (this page).",
+    "The basis of this recipe is that you’ll be using up skins from potatoes you’ve already cooked and have sitting around. This is either because you’ve used the cooked esh to make mash or, in one of life’s great mysteries, your kids have eaten the inside of a baked potato and left the best bit (i.e., the cooked skins)!",
+    "Either way, don’t throw them away—they bring a great extra crunch to an already fresh and crunchy salad and they turn this into a dish you can get onto the table in less than 30 minutes. This is totally brilliant alongside the Slow- cooked chicken with a crisp corn crust (this page).",
     "All the elements can be made in advance: the dressing up to 3 days and the potato skins can be kept in a sealed container for 1 day at room temperature.",
     "Just assemble when ready to serve."
   ],
@@ -65,7 +65,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

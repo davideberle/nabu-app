@@ -117,7 +117,11 @@
   },
   "image": "/recipes/phuket-steamed-fish-balls.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Southern Thai"
-  }
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Southern Thai",
+    "meal_role": "starter"
+  },
+  "cuisine": "Southeast Asian"
 }

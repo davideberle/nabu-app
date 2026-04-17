@@ -175,7 +175,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "For Company"
+    "chapter": "For Company",
+    "meal_role": "side"
   },
   "cuisine": "Caribbean"
 }

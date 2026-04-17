@@ -69,7 +69,10 @@
   },
   "image": "/recipes/seared-chanterelles-with-black-glutinous-rice.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Fried"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Fried",
+    "meal_role": "main"
   }
 }

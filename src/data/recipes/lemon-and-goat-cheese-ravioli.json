@@ -62,5 +62,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/lemon-and-goat-cheese-ravioli.jpg"
+  "image": "/recipes/lemon-and-goat-cheese-ravioli.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main"
+  }
 }

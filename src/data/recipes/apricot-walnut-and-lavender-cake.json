@@ -66,7 +66,10 @@
   },
   "image": "/recipes/apricot-walnut-and-lavender-cake.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

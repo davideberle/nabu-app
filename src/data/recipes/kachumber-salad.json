@@ -59,7 +59,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Desserts & Drinks"
+    "chapter": "Desserts & Drinks",
+    "meal_role": "side"
   },
   "cuisine": "Indian"
 }

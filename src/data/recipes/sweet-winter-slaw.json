@@ -100,7 +100,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/sweet-winter-slaw.jpg"

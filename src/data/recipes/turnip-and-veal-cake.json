@@ -86,9 +86,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "main"
     ],
-    "chapter": "Stuffed Vegetables"
+    "chapter": "Stuffed Vegetables",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

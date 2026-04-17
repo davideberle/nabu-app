@@ -49,15 +49,18 @@
     "Transfer the broth into a sizable pan and bring it to a slight boil.",
     "Lower the heat before adding curry and chili powders. Cover and simmer to",
     "tenderness for around 25 minutes.",
-    "Season accordingly with salt and pepper and enjoy.",
-    "Recipe 25: Curry and Cheese Cauliflower"
+    "Season accordingly with salt and pepper and enjoy."
   ],
   "time": {
     "total": 35
   },
   "image": "/recipes/curried-quinoa.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "side"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "side"
+  },
+  "cuisine": "Southeast Asian"
 }

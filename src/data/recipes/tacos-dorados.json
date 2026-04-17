@@ -78,7 +78,8 @@
     "dish_type": [
       "snack"
     ],
-    "chapter": "Mexican Taco Snack Recipes"
+    "chapter": "Mexican Taco Snack Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mexican"
 }

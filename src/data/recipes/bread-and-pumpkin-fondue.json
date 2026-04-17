@@ -69,7 +69,10 @@
   },
   "image": "/recipes/bread-and-pumpkin-fondue.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Baked"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Baked",
+    "meal_role": "main"
   }
 }

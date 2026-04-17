@@ -58,7 +58,10 @@
   },
   "image": "/recipes/steamed-eggplant-with-sesame-and-green-onion.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Steamed"
+    "dish_type": [
+      "side"
+    ],
+    "chapter": "Steamed",
+    "meal_role": "side"
   }
 }

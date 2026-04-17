@@ -60,7 +60,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Poultry and Meat Pasta Recipes"
+    "chapter": "Poultry and Meat Pasta Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Italian",
   "image": "/recipes/ground-beef-pasta-with-garlic-yogurt-sauce.jpg"

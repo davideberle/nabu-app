@@ -73,9 +73,10 @@
   },
   "category": {
     "dish_type": [
-      "condiment"
+      "side"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/roasted-parsnips-and-sweet-potatoes-with-caper-vinaigrette.jpg"

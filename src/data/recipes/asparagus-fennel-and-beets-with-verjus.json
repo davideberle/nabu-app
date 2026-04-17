@@ -53,5 +53,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/asparagus-fennel-and-beets-with-verjus.jpg"
+  "image": "/recipes/asparagus-fennel-and-beets-with-verjus.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side"
+  }
 }

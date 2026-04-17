@@ -84,14 +84,27 @@ const COOKBOOK_CUISINES: Record<string, string> = {
   "Thai Spice Recipes": "Thai",
   "Vegan Nigerian Kitchen": "Nigerian",
   "Tagine Cookbook": "Moroccan",
-  "Jamie's Food Revolution": "British",
 };
+
+// Cookbooks hidden from all browse surfaces (data preserved for future recovery).
+const HIDDEN_COOKBOOKS = new Set([
+  "Pasta for All Seasons",
+  "Mexican Home Cooking",
+  "Italian And Lebanese Cookbook",
+  "The Complete Greek Cookbook",
+  "Brunch Cookbook",
+  "The Curry Guy Bible",
+  "The Curry Guy",
+  "The Authentic Greek Kitchen",
+  "Vegan Nigerian Kitchen",
+  "Falastin",
+]);
 
 // Static cookbook recipes loaded from the pre-built bundle (see scripts/bundle-recipes.mjs).
 // Using a static import instead of fs.readdirSync avoids Turbopack bundling thousands
 // of individual JSON files into every serverless function that touches this module.
 const staticRecipes: Recipe[] = (recipesBundle as Recipe[])
-  .filter((r) => r.source?.cookbook !== "My Recipes")
+  .filter((r) => r.source?.cookbook !== "My Recipes" && !HIDDEN_COOKBOOKS.has(r.source?.cookbook ?? ""))
   .sort((a, b) => a.name.localeCompare(b.name));
 
 // On Vercel builds without Turso configured, the local SQLite fallback doesn't
@@ -216,7 +229,6 @@ const COOKBOOK_COVERS: Record<string, string> = {
   Plentiful: "/cookbooks/plentiful.jpg",
   "The Vegan Korean": "/cookbooks/the-vegan-korean.jpg",
   "Black Rican Vegan": "/cookbooks/black-rican-vegan.jpg",
-  "Brunch Cookbook": "/cookbooks/brunch-cookbook.jpg",
   "Four Seasons": "/cookbooks/four-seasons.jpg",
   "The High-Protein Vegan Cookbook":
     "/cookbooks/the-high-protein-vegan-cookbook.jpg",

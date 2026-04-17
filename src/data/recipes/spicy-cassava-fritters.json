@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Main Dishes"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "cassava roots, peeled, soaked, and grated (see here), or frozen grated cassava, thawed",
@@ -55,7 +55,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/spicy-cassava-fritters.jpg",
   "cuisine": "Southeast Asian"

@@ -56,25 +56,6 @@ const CHAPTER_ORDER: Record<string, string[]> = {
     'Dips and Sauces', 'Street Eats', 'Bangkok and Central Thai',
     'Northern Thai', 'Isaan', 'Southern Thai', 'Drinks and Desserts'
   ],
-  'Mexican Home Cooking': [
-    'Mexican Breakfast Recipes', 'Mexican Lunch Recipes', 'Mexican Dinner Recipes',
-    'Mexican Soup Recipes', 'Vegetarian Mexican Recipes', 'Mexican Salad Recipes',
-    'Mexican Desserts', 'Most Famous Mexican Recipes',
-    'Welcome to the World of Mexican Taco Breakfast Recipes',
-    'Mexican Taco Lunch Recipes', 'Mexican Taco Dinner Recipes',
-    'Mexican Taco Snack Recipes', 'Mexican Taco Vegetarian Recipes'
-  ],
-  'The Complete Greek Cookbook': [
-    'Greek Breakfast and Appetizers', 'Greek Lunch', 'Greek Dinner',
-    'Greek Vegetarian', 'Greek Breakfast', 'Greek Appetizers and Snacks',
-    'Greek Salads', 'Greek Soups and Sides', 'Greek Desserts'
-  ],
-  'Italian And Lebanese Cookbook': [
-    'French Breakfast Recipes', 'French Lunch Recipes', 'French Dinner Recipes',
-    'French Dessert Recipes', 'French Snack Recipes', 'French Vegetarian Recipes',
-    'Greek Breakfast Recipes', 'Greek Lunch Recipes', 'Greek Dinner Recipes',
-    'Greek Dessert Recipes', 'Greek Snack Recipes', 'Greek Vegetarian Recipes'
-  ]
 };
 
 const DEFAULT_CHAPTER_ORDER = [

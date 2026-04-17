@@ -11,10 +11,10 @@
   "ingredients": [
     {
       "item": "oz/150g cherry tomatoes, quartered",
-      "amount": "5\u00bc"
+      "amount": "5¼"
     },
     {
-      "item": "small orange: \uf001 nely zest to get 1 tsp, then juice to get 1 tbsp",
+      "item": "small orange:  nely zest to get 1 tsp, then juice to get 1 tbsp",
       "amount": "1"
     },
     {
@@ -23,11 +23,11 @@
     },
     {
       "item": "maple syrup (or honey)",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "barberries (or currants soaked in 1 tbsp lemon juice)",
-      "amount": "1\u00bd tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "fennel seeds, lightly toasted and crushed",
@@ -46,12 +46,12 @@
       "amount": "1"
     },
     {
-      "item": "whole trout, gutted and scaled (ask your \uf001 shmonger to do this for you) (1\u00bd lb/700g)",
+      "item": "whole trout, gutted and scaled (ask your  shmonger to do this for you) (1½ lb/700g)",
       "amount": "2"
     },
     {
-      "item": "cup/10g cilantro leaves, \uf001 nely shredded",
-      "amount": "\u00bd"
+      "item": "cup/10g cilantro leaves,  nely shredded",
+      "amount": "½"
     },
     {
       "item": "1.",
@@ -63,13 +63,13 @@
     }
   ],
   "method": [
-    "Put the tomatoes in a medium bowl with the orange zest, orange juice, lime juice, maple syrup, barberries, fennel seeds, oil, \u215b tsp salt, and a good grind of pepper. Mix, then set aside.",
+    "Put the tomatoes in a medium bowl with the orange zest, orange juice, lime juice, maple syrup, barberries, fennel seeds, oil, ⅛ tsp salt, and a good grind of pepper. Mix, then set aside.",
     "In a small pan, gently warm the butter with the garlic over medium heat until just melted. Arrange the trout on a medium baking sheet, spaced apart.",
-    "Sprinkle the top, bottom, and cavity of each \uf001 sh with \u00bc tsp salt. Pour the butter mixture all over the trout, making sure it covers both sides as well as the cavity. Roast in the oven for 18\u201320 minutes, basting once, until the \uf001 sh is just cooked.",
-    "Serve the \uf001 sh on the baking sheet or arrange on plates, spooning on some of the cooking juices. Stir the cilantro into the salsa and spoon over the \uf001 sh.",
+    "Sprinkle the top, bottom, and cavity of each  sh with ¼ tsp salt. Pour the butter mixture all over the trout, making sure it covers both sides as well as the cavity. Roast in the oven for 18–20 minutes, basting once, until the  sh is just cooked.",
+    "Serve the  sh on the baking sheet or arrange on plates, spooning on some of the cooking juices. Stir the cilantro into the salsa and spoon over the  sh.",
     "Serve with the lime wedges alongside.",
     "Chile fish with tahini",
-    "There are very few things, in my book, that aren\u2019t improved by a drizzle of creamy tahini sauce. Here it makes perfect sense, balancing the chile and bringing a welcome creaminess.",
+    "There are very few things, in my book, that aren’t improved by a drizzle of creamy tahini sauce. Here it makes perfect sense, balancing the chile and bringing a welcome creaminess.",
     "I tend to make double the tomato sauce and keep the excess in the fridge for",
     "1 week, or the freezer for 1 month, so you can either make this dish twice or spoon it alongside some grilled chicken or veg. The tahini sauce can be made 3 days ahead and kept in the fridge."
   ],
@@ -81,7 +81,7 @@
     "dish_type": [
       "main"
     ],
-    "meal_role": "main",
-    "chapter": "Seafood"
+    "chapter": "Seafood",
+    "meal_role": "main"
   }
 }

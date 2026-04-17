@@ -92,15 +92,18 @@
     "Stir coconut milk, sugar, and kaffir leaves, and fish sauce. Combine well.",
     "Have the mixture to a casserole and cover. Bake for 1 hour.",
     "During the last 15 minutes, add tomatoes.",
-    "Garnish with coriander leaves and serve.",
-    "Recipe 31: Curry Coconut Shrimp"
+    "Garnish with coriander leaves and serve."
   ],
   "time": {
     "total": 60
   },
   "image": "/recipes/curry-chicken-with-potatoes.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

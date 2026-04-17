@@ -10,14 +10,6 @@
   "intro": "coconut milk. Maybe these contradictions are why this particular dip is not often found on menus abroad.",
   "ingredients": [
     {
-      "item": "41",
-      "amount": ""
-    },
-    {
-      "item": "43",
-      "amount": ""
-    },
-    {
       "item": "large coriander (cilantro) root, washed and coarsely chopped",
       "amount": "1"
     },
@@ -79,7 +71,11 @@
   },
   "image": "/recipes/crabmeat-lon-chili-dip.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Dips and Sauces"
-  }
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Dips and Sauces",
+    "meal_role": "component"
+  },
+  "cuisine": "Southeast Asian"
 }

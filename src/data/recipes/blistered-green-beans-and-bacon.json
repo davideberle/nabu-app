@@ -65,7 +65,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads and Vegetable Sides"
+    "chapter": "Salads and Vegetable Sides",
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

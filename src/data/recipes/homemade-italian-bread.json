@@ -32,8 +32,10 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/homemade-italian-bread.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "servings": "makes 1 medium-sized loaf"
 }

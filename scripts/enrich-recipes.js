@@ -48,12 +48,10 @@ const COOKBOOK_CUISINES = {
   "The High-Protein Vegan Cookbook": "International",
   "Vegan Chocolate": "International",
   "Salads & Dressings": "International",
-  "Jamie's Food Revolution": "British",
   "Brunch Cookbook": "International",
   "Superfood Boost": "International",
   "Bread Cookbook": "International",
   "Raw Food": "International",
-  "The Best of Fine Cooking: Breakfast": "International",
 };
 
 // ── Chapter → dish_type inference ──

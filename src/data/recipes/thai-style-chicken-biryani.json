@@ -10,10 +10,6 @@
   "intro": "family gatherings. It’s quite labor-intensive, but has been simplifi ed considerably (!) from the",
   "ingredients": [
     {
-      "item": "139",
-      "amount": ""
-    },
-    {
       "item": "times until the water becomes clear. Add the rice to the pot once the water is boiling, and cook for 5 minutes. Pour the rice into a colan- der to drain the water. Add a pinch of saff ron to the rice and mix in.",
       "amount": "3–4"
     }
@@ -48,7 +44,11 @@
   },
   "image": "/recipes/thai-style-chicken-biryani.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Southern Thai"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Southern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

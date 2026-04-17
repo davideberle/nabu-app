@@ -83,7 +83,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Chicken and Seafood"
+    "chapter": "Chicken and Seafood",
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

@@ -81,7 +81,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Mexican Breakfast Recipes"
+    "chapter": "Mexican Breakfast Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Mexican"
 }

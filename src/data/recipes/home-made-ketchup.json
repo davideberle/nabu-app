@@ -54,7 +54,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Essentials"
+    "chapter": "Essentials",
+    "meal_role": "component"
   },
   "time": {
     "prep": 20,

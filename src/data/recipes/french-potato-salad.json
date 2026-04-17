@@ -68,7 +68,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "French Snack Recipes"
+    "chapter": "French Snack Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mediterranean"
 }

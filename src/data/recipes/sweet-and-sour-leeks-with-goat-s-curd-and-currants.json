@@ -61,7 +61,10 @@
   },
   "image": "/recipes/sweet-and-sour-leeks-with-goat-s-curd-and-currants.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Braised"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Braised",
+    "meal_role": "main"
   }
 }

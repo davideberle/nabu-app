@@ -109,7 +109,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Greek Vegetarian Recipes"
+    "chapter": "Greek Vegetarian Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mediterranean"
 }

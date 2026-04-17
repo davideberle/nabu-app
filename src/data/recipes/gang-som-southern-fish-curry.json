@@ -10,10 +10,6 @@
   "intro": "keep its shape after long cooking). The protein is a white-fl eshed fi sh; if you were to use three-layer",
   "ingredients": [
     {
-      "item": "129",
-      "amount": ""
-    },
-    {
       "item": "fi rm white fi sh like cod, halibut or hake, skinned and cut into fi lets",
       "amount": "1 lb (500 g)"
     },
@@ -56,7 +52,11 @@
   },
   "image": "/recipes/gang-som-southern-fish-curry.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Southern Thai"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Southern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

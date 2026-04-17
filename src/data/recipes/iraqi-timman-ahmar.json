@@ -54,9 +54,10 @@
   ],
   "category": {
     "dish_type": [
-      "main"
+      "side"
     ],
-    "chapter": "Salads & Sides"
+    "chapter": "Salads & Sides",
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern"
 }

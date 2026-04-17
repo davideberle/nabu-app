@@ -78,7 +78,10 @@
   },
   "image": "/recipes/mixed-vegetables-and-yogurt-with-green-chile-oil.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Fried"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Fried",
+    "meal_role": "main"
   }
 }

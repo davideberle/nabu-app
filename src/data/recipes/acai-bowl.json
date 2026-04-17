@@ -50,7 +50,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Bowls, Puddings & Grains"
+    "chapter": "Bowls, Puddings & Grains",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

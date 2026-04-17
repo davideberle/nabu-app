@@ -66,5 +66,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/dressing.jpg"
+  "image": "/recipes/dressing.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "condiment"
+    ],
+    "meal_role": "component"
+  }
 }

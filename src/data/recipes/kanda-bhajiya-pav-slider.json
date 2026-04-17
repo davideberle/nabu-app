@@ -79,7 +79,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Small Plates"
+    "chapter": "Small Plates",
+    "meal_role": "starter"
   },
   "cuisine": "Indian"
 }

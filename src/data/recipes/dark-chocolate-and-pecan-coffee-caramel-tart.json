@@ -108,7 +108,8 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "drink"
   },
   "cuisine": "Caribbean"
 }

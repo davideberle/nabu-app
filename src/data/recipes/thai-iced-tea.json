@@ -32,7 +32,11 @@
   },
   "image": "/recipes/thai-iced-tea.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Drinks and Desserts"
-  }
+    "dish_type": [
+      "drink"
+    ],
+    "chapter": "Drinks and Desserts",
+    "meal_role": "drink"
+  },
+  "cuisine": "Southeast Asian"
 }

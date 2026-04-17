@@ -63,7 +63,10 @@
   },
   "image": "/recipes/stuffed-peppers-with-fondant-rutabaga-and-goat-cheese.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Baked"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Baked",
+    "meal_role": "main"
   }
 }

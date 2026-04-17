@@ -78,8 +78,10 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/oliva-ascolane.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "servings": "makes 1 dozen"
 }

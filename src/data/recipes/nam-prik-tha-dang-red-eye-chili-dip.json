@@ -10,10 +10,6 @@
   "intro": "we go there, hauling kilos of the stuff back on the plane home. Luckily, Thai customs offi cials",
   "ingredients": [
     {
-      "item": "103",
-      "amount": ""
-    },
-    {
       "item": "pork chops, without bone (raw pork scallopini cutlets)",
       "amount": "2 lbs (1 kg)"
     },
@@ -56,7 +52,11 @@
   },
   "image": "/recipes/nam-prik-tha-dang-red-eye-chili-dip.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "component"
+  },
+  "cuisine": "Southeast Asian"
 }

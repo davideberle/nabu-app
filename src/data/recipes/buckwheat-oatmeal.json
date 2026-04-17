@@ -46,5 +46,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/buckwheat-oatmeal.jpg"
+  "image": "/recipes/buckwheat-oatmeal.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "breakfast"
+    ],
+    "meal_role": "breakfast"
+  }
 }

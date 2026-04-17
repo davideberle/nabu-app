@@ -14,7 +14,7 @@
       "amount": "5 tbsp"
     },
     {
-      "item": "large onion, thinly sliced (2\u00bd cups/250g)",
+      "item": "large onion, thinly sliced (2½ cups/250g)",
       "amount": "1"
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "item": "tbsp/65g rose harissa (or 50 percent more or less, depending on variety; see this page)",
-      "amount": "4\u00bd"
+      "amount": "4½"
     },
     {
       "item": "nigella seeds",
@@ -35,7 +35,7 @@
     },
     {
       "item": "cup/15g cilantro, roughly chopped salt and black pepper",
-      "amount": "\u00be"
+      "amount": "¾"
     },
     {
       "item": "oz/110g Manchego, coarsely grated",
@@ -55,12 +55,12 @@
     }
   ],
   "method": [
-    "Put 3 tbsp of the oil into a medium (8-inch/20cm) ovenproof frying pan and place over medium heat. Add the onion and cook for 15 minutes, stirring from time to time, until the onion has caramelized and is a deep golden brown. Tip into a large bowl and add the eggs, milk, harissa, nigella seeds, half the cilantro, \u00bd tsp of salt, and a good grind of black pepper. Whisk to combine and set aside.",
-    "Wipe clean the pan you cooked the onions in, increase the heat to medium- high, and add 2 tsp of the oil. Pour in one-quarter of the egg mixture, swirling it around so that the mixture is evenly spread. After 1 minute, sprinkle with one-quarter of the Manchego and place under the broiler for 1 minute for the cheese to melt and the eggs to puff up and \uf001 nish cooking.",
+    "Put 3 tbsp of the oil into a medium (8-inch/20cm) ovenproof frying pan and place over medium heat. Add the onion and cook for 15 minutes, stirring from time to time, until the onion has caramelized and is a deep golden brown. Tip into a large bowl and add the eggs, milk, harissa, nigella seeds, half the cilantro, ½ tsp of salt, and a good grind of black pepper. Whisk to combine and set aside.",
+    "Wipe clean the pan you cooked the onions in, increase the heat to medium- high, and add 2 tsp of the oil. Pour in one-quarter of the egg mixture, swirling it around so that the mixture is evenly spread. After 1 minute, sprinkle with one-quarter of the Manchego and place under the broiler for 1 minute for the cheese to melt and the eggs to puff up and  nish cooking.",
     "Using a spatula, ease around the edges of the omelete to slide it out of the pan and onto a plate. Keep warm while you continue with the remaining egg mix in the same way, adding more oil with each batch, to get 4 omeletes.",
     "Serve at once, with the remaining cilantro sprinkled on top and a lime half alongside.",
     "Zucchini and ciabatta frittata",
-    "This is a regular feature at home on the weekend, when Karl and I are feeding friends. We tend to serve it with a mixed herb and leaf salad dressed with lemon juice and olive oil and a few chunks of feta crumbled over it. The frittata manages to be light, \uf002uffy, and comforting in a way that you can only get when you soak bread with milk and cream. Don\u2019t waste the ciabatta crusts: they can be blitzed into fresh breadcrumbs and freeze well. This can be baked about 4 hours in advance and then warmed through for 5 minutes before serving. Ideally it should be eaten on the day it is baked, but it will keep in the fridge for 1 day; just warm through for 10 minutes."
+    "This is a regular feature at home on the weekend, when Karl and I are feeding friends. We tend to serve it with a mixed herb and leaf salad dressed with lemon juice and olive oil and a few chunks of feta crumbled over it. The frittata manages to be light, uffy, and comforting in a way that you can only get when you soak bread with milk and cream. Don’t waste the ciabatta crusts: they can be blitzed into fresh breadcrumbs and freeze well. This can be baked about 4 hours in advance and then warmed through for 5 minutes before serving. Ideally it should be eaten on the day it is baked, but it will keep in the fridge for 1 day; just warm through for 10 minutes."
   ],
   "time": {
     "total": 30
@@ -70,7 +70,7 @@
     "dish_type": [
       "breakfast"
     ],
-    "meal_role": "breakfast",
-    "chapter": "Brunch"
+    "chapter": "Brunch",
+    "meal_role": "breakfast"
   }
 }

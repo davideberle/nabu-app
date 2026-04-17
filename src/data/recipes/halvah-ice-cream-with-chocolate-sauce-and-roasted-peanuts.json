@@ -58,7 +58,10 @@
   },
   "image": "/recipes/halvah-ice-cream-with-chocolate-sauce-and-roasted-peanuts.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

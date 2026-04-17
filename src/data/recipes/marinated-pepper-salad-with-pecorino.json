@@ -68,5 +68,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/marinated-pepper-salad-with-pecorino.jpg"
+  "image": "/recipes/marinated-pepper-salad-with-pecorino.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "salad"
+    ],
+    "meal_role": "main"
+  }
 }

@@ -49,5 +49,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/vegetable-stew.jpg"
+  "image": "/recipes/vegetable-stew.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main"
+  }
 }

@@ -78,7 +78,10 @@
   },
   "image": "/recipes/urad-dal-with-coconut-and-cilantro.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

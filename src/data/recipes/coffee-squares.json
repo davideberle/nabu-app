@@ -42,7 +42,8 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Balls & Bars"
+    "chapter": "Balls & Bars",
+    "meal_role": "drink"
   },
   "time": {
     "prep": 5,

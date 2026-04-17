@@ -38,7 +38,10 @@
   },
   "image": "/recipes/saffron-date-and-almond-rice.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Steamed"
+    "dish_type": [
+      "side"
+    ],
+    "chapter": "Steamed",
+    "meal_role": "side"
   }
 }

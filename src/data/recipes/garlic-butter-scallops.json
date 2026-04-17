@@ -73,7 +73,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Appetizers"
+    "chapter": "Appetizers",
+    "meal_role": "starter"
   },
   "cuisine": "Caribbean"
 }

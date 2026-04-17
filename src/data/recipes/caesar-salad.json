@@ -59,7 +59,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/caesar-salad.jpg",
   "time": {
@@ -67,5 +68,6 @@
     "cook": 20,
     "total": 30
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "servings": "serves 2-3"
 }

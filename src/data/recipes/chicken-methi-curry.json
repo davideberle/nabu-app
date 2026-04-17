@@ -110,7 +110,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Biryanis & Rice"
+    "chapter": "Biryanis & Rice",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

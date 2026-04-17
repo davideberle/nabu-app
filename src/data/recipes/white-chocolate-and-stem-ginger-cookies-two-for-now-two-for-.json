@@ -79,7 +79,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Cooking for One"
+    "chapter": "Cooking for One",
+    "meal_role": "dessert"
   },
   "cuisine": "Caribbean"
 }

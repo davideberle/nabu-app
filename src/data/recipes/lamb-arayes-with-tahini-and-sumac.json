@@ -7,19 +7,19 @@
     "chapter": "Meat"
   },
   "servings": "serves 8",
-  "intro": "ahead and kept in the fridge. You\u2019re then all set to just \uf001ll and fry. Thanks to Sami",
+  "intro": "ahead and kept in the fridge. You’re then all set to just ll and fry. Thanks to Sami",
   "ingredients": [
     {
       "item": "2 oz/500g ground lamb",
       "amount": "1 lb"
     },
     {
-      "item": "small onion, coarsely grated (\u00bd cup/60g)",
-      "amount": "\u00bd"
+      "item": "small onion, coarsely grated (½ cup/60g)",
+      "amount": "½"
     },
     {
-      "item": "small tomatoes, coarsely grated and skin discarded (\u00bd cup/140g)",
-      "amount": "1\u00bd"
+      "item": "small tomatoes, coarsely grated and skin discarded (½ cup/140g)",
+      "amount": "1½"
     },
     {
       "item": "ground allspice",
@@ -27,7 +27,7 @@
     },
     {
       "item": "cup/90g tahini",
-      "amount": "\u2153"
+      "amount": "⅓"
     },
     {
       "item": "garlic cloves, crushed",
@@ -38,7 +38,7 @@
       "amount": "2 tsp"
     },
     {
-      "item": "cup/20g mint, \uf001 nely shredded salt",
+      "item": "cup/20g mint,  nely shredded salt",
       "amount": "1"
     },
     {
@@ -51,7 +51,7 @@
     },
     {
       "item": "cup/60ml olive oil, plus 2 tsp for brushing",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "sumac",
@@ -63,16 +63,16 @@
     }
   ],
   "method": [
-    "Mix together all the ingredients for the \uf001 lling in a large bowl with 1 tsp salt.",
-    "Taking one tortilla at a time, spoon about 1 cup/100g of \uf001 lling over half the tortilla, leaving a border of \u00bc inch/\u00bd cm around the edges. Sprinkle the meat lightly with cheese and then fold the tortilla over, to make a semi-circle.",
-    "Press down gently so that the meat is evenly spread and \u00bd inch/1cm thick.",
+    "Mix together all the ingredients for the  lling in a large bowl with 1 tsp salt.",
+    "Taking one tortilla at a time, spoon about 1 cup/100g of  lling over half the tortilla, leaving a border of ¼ inch/½ cm around the edges. Sprinkle the meat lightly with cheese and then fold the tortilla over, to make a semi-circle.",
+    "Press down gently so that the meat is evenly spread and ½ inch/1cm thick.",
     "Continue with the remaining tortillas, meat, and cheese in the same way.",
-    "Put 1 tbsp oil into a large nonstick frying pan and place over medium-low heat. Once hot, add 2 of the folded tortillas and fry gently for 2\u20133 minutes.",
-    "Turn over and cook for another 2\u20133 minutes, until the tortilla is golden brown on both sides and the meat is cooked through. Transfer to a plate, sprinkle with a pinch of salt, and set aside. Using a paper towel, wipe the pan clean of all the lamb juices and continue in the same way with the remaining oil and tortillas.",
+    "Put 1 tbsp oil into a large nonstick frying pan and place over medium-low heat. Once hot, add 2 of the folded tortillas and fry gently for 2–3 minutes.",
+    "Turn over and cook for another 2–3 minutes, until the tortilla is golden brown on both sides and the meat is cooked through. Transfer to a plate, sprinkle with a pinch of salt, and set aside. Using a paper towel, wipe the pan clean of all the lamb juices and continue in the same way with the remaining oil and tortillas.",
     "Mix the remaining 2 tsp oil with the sumac. Brush lightly over the tops of the arayes, and serve warm or at room temperature.",
     "Slow-cooked lamb shoulder with mint and cumin",
-    "This is a feast of a meal when served with something like lima beans\u2014gently mashed with the cooking juices from the lamb\u2014and a simple green salad. Get the lamb marinating overnight in the fridge, if you can, for the \uf002avors to really seep into the meat. If you\u2019re planning to eat it on the day you\u2019re cooking, 4 or 5 hours is long enough, but you\u2019ll have to get going \uf001rst thing because it also needs",
-    "6\u00bd hours in the oven. If you want to really get ahead, the lamb can also be cooked 1 day in advance and kept in the fridge, ready to be shredded and warmed up in its own juices."
+    "This is a feast of a meal when served with something like lima beans—gently mashed with the cooking juices from the lamb—and a simple green salad. Get the lamb marinating overnight in the fridge, if you can, for the avors to really seep into the meat. If you’re planning to eat it on the day you’re cooking, 4 or 5 hours is long enough, but you’ll have to get going rst thing because it also needs",
+    "6½ hours in the oven. If you want to really get ahead, the lamb can also be cooked 1 day in advance and kept in the fridge, ready to be shredded and warmed up in its own juices."
   ],
   "time": {
     "total": 30
@@ -81,7 +81,7 @@
     "dish_type": [
       "main"
     ],
-    "meal_role": "main",
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "main"
   }
 }

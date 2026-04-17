@@ -9,7 +9,7 @@
   "intro": "Thai food is rich in flavor, but dishes are heavy and time-consuming. My answer is a refreshing salad with mango, ginger root and jalapeño.",
   "time": {
     "prep": "30 minutes",
-    "total": "30 minutes0"
+    "total": 30
   },
   "ingredients": [
     {
@@ -76,7 +76,8 @@
   "category": {
     "dish_type": [
       "main"
-    ]
+    ],
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

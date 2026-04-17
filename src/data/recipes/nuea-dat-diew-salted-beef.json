@@ -10,10 +10,6 @@
   "intro": "portable and keeps for a while. You need a dehydrator for it, though. Otherwise the meat",
   "ingredients": [
     {
-      "item": "79",
-      "amount": ""
-    },
-    {
       "item": "unscented oil",
       "amount": "2 cups (500 ml)"
     },
@@ -43,7 +39,11 @@
   },
   "image": "/recipes/nuea-dat-diew-salted-beef.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Bangkok and Central Thai"
-  }
+    "dish_type": [
+      "side"
+    ],
+    "chapter": "Bangkok and Central Thai",
+    "meal_role": "side"
+  },
+  "cuisine": "Southeast Asian"
 }

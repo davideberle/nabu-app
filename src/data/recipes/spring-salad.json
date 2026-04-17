@@ -64,7 +64,10 @@
   },
   "image": "/recipes/spring-salad.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Tossed"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Tossed",
+    "meal_role": "main"
   }
 }

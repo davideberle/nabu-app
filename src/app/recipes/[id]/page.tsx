@@ -61,7 +61,6 @@ function getCuisineFromCookbook(cookbook?: string): string | null {
     'Vegan Nigerian Kitchen': 'Nigerian',
     'Tagine Cookbook': 'Moroccan',
     'Land of Fish and Rice': 'Chinese',
-    'Brunch Cookbook': 'American',
     'Vegan Chocolate': 'Desserts',
     'The High-Protein Vegan Cookbook': 'Vegan',
     'Zagami Family Cookbook': 'Italian',

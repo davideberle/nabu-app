@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "Tagine Cookbook",
     "author": "Various",
-    "chapter": "Desserts"
+    "chapter": "Salads & Sides"
   },
   "servings": "4 servings",
   "intro": "This sweet Moroccan salad is prepared by simmering diced sweet potatoes or yams with cinnamon, turmeric, saffron, raisins, and honey. It is an easy dish with an exotic taste.",
@@ -61,9 +61,10 @@
   "image": "/recipes/moroccan-sweet-potato-and-raisin-salad.jpg",
   "category": {
     "dish_type": [
-      "dessert"
+      "salad"
     ],
-    "chapter": "Desserts"
+    "chapter": "Salads & Sides",
+    "meal_role": "main"
   },
   "cuisine": "Moroccan"
 }

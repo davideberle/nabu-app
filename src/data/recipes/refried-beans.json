@@ -65,7 +65,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Mexican Lunch Recipes"
+    "chapter": "Mexican Lunch Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mexican",
   "image": "/recipes/refried-beans.jpg"

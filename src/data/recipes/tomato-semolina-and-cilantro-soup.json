@@ -84,7 +84,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/tomato-semolina-and-cilantro-soup.jpg"

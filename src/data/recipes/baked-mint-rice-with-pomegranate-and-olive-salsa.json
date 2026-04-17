@@ -15,23 +15,23 @@
     },
     {
       "item": "cup/50g unsalted butter, melted",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "cups/800ml boiling water",
-      "amount": "3\u2153"
+      "amount": "3⅓"
     },
     {
       "item": "oz/40g mint sprigs",
-      "amount": "1\u00bd"
+      "amount": "1½"
     },
     {
-      "item": "cup/40g pitted green olives, thinly sliced seeds from 1 small pomegranate (\u2154 cup/90g)",
-      "amount": "\u2153"
+      "item": "cup/40g pitted green olives, thinly sliced seeds from 1 small pomegranate (⅔ cup/90g)",
+      "amount": "⅓"
     },
     {
       "item": "cup/50g walnut halves, lightly roasted and roughly broken",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "olive oil",
@@ -47,15 +47,15 @@
     },
     {
       "item": "cup/10g mint leaves",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "salt",
-      "amount": "\u00bc tsp"
+      "amount": "¼ tsp"
     },
     {
-      "item": "oz/150g feta, crumbled into \u00bd\u2013\u00be inch/1\u20132cm pieces",
-      "amount": "5\u00bc"
+      "item": "oz/150g feta, crumbled into ½–¾ inch/1–2cm pieces",
+      "amount": "5¼"
     },
     {
       "item": "1.",
@@ -63,13 +63,13 @@
     }
   ],
   "method": [
-    "Preheat the oven to 475\u00b0F, or as high as your oven will go.",
+    "Preheat the oven to 475°F, or as high as your oven will go.",
     "Place the rice in a high-sided ovenproof dish, measuring 8 x 12 inches/20 x",
-    "30cm. Season with \u00be tsp of salt and plenty of pepper, then pour in the butter and boiling water. Top with the sprigs of mint and cover the dish tightly with foil so that the rice is well sealed. Bake for 25 minutes, until the rice is light and \uf002 uffy and all the liquid has been absorbed.",
+    "30cm. Season with ¾ tsp of salt and plenty of pepper, then pour in the butter and boiling water. Top with the sprigs of mint and cover the dish tightly with foil so that the rice is well sealed. Bake for 25 minutes, until the rice is light and  uffy and all the liquid has been absorbed.",
     "Meanwhile, make the salsa: place the olives, pomegranate, walnuts, olive oil, pomegranate molasses, garlic, mint, and salt in a medium bowl. Mix well and set aside.",
-    "Take the rice out of the oven and remove and discard the foil. Pull the leaves off the mint sprigs\u2014the stalks can be discarded\u2014then place these back on the rice and sprinkle with the feta. Just before serving, spoon the salsa evenly over the rice. Serve hot.",
+    "Take the rice out of the oven and remove and discard the foil. Pull the leaves off the mint sprigs—the stalks can be discarded—then place these back on the rice and sprinkle with the feta. Just before serving, spoon the salsa evenly over the rice. Serve hot.",
     "Thai sticky rice with crispy ginger, chile, and peanuts",
-    "Sticky rice is brilliant as it is, served alongside all sorts of \uf001sh and meat dishes, but the addition of a crispy topping makes it even more wonderful. I like to serve this with the whole roasted sea bass (this page) or fried tofu, as part of an Asian-style feast. Get all your chopping done before you start here\u2014you want everything to be ready to chuck into the pan when it\u2019s hot, rather than slicing things into matchsticks at this stage."
+    "Sticky rice is brilliant as it is, served alongside all sorts of sh and meat dishes, but the addition of a crispy topping makes it even more wonderful. I like to serve this with the whole roasted sea bass (this page) or fried tofu, as part of an Asian-style feast. Get all your chopping done before you start here—you want everything to be ready to chuck into the pan when it’s hot, rather than slicing things into matchsticks at this stage."
   ],
   "time": {
     "total": 30
@@ -79,7 +79,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Rice, Grains, and Pulses"
+    "chapter": "Rice, Grains, and Pulses",
+    "meal_role": "side"
   }
 }

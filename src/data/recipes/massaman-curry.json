@@ -10,10 +10,6 @@
   "intro": "agrees on is that it isn’t typically Thai. Some people say it came from Persia; others say it came from",
   "ingredients": [
     {
-      "item": "137",
-      "amount": ""
-    },
-    {
       "item": "Serve with steamed rice. Garnish with fresh sliced red chilies, coriander leaves and roasted peanuts.",
       "amount": ""
     },
@@ -98,7 +94,11 @@
   },
   "image": "/recipes/massaman-curry.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Southern Thai"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Southern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -102,5 +102,12 @@
   ],
   "time": {
     "total": 30
+  },
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main"
   }
 }

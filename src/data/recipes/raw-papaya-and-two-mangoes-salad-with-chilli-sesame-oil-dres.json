@@ -75,7 +75,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Small Plates"
+    "chapter": "Small Plates",
+    "meal_role": "side"
   },
   "time": {
     "prep": 10,

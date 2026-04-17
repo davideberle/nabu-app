@@ -81,8 +81,9 @@
   "image": "/recipes/tom-kha-gai.jpg",
   "category": {
     "dish_type": [
-      "main"
-    ]
+      "soup"
+    ],
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

@@ -63,7 +63,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Greek Dessert Recipes"
+    "chapter": "Greek Dessert Recipes",
+    "meal_role": "dessert"
   },
   "cuisine": "Mediterranean"
 }

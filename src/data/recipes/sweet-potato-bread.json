@@ -84,7 +84,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Bread Recipes"
+    "chapter": "Bread Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Other",
   "image": "/recipes/sweet-potato-bread.jpg"

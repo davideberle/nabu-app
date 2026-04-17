@@ -113,7 +113,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

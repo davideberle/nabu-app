@@ -10,10 +10,6 @@
   "intro": "pounded to within an inch of its life and deep-fried. There is nothing better than this for sticky",
   "ingredients": [
     {
-      "item": "105",
-      "amount": ""
-    },
-    {
       "item": "pork spare ribs, cut into",
       "amount": "2 lbs (1 kg)"
     },
@@ -86,7 +82,11 @@
   },
   "image": "/recipes/moo-tod-fried-pork-cutlets.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

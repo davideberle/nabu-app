@@ -10,7 +10,7 @@
   "intro": "lovely colorful addition to all sorts of feasts: great served alongside the couscous",
   "ingredients": [
     {
-      "item": "2 oz/1kg long, thin baby carrots, unpeeled but scrubbed, stalk trimmed to about 1\u00bc inches/3cm",
+      "item": "2 oz/1kg long, thin baby carrots, unpeeled but scrubbed, stalk trimmed to about 1¼ inches/3cm",
       "amount": "2 lb"
     },
     {
@@ -19,7 +19,7 @@
     },
     {
       "item": "apple cider vinegar",
-      "amount": "1\u00bd tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "honey",
@@ -31,23 +31,23 @@
     },
     {
       "item": "ground cinnamon salt and black pepper",
-      "amount": "\u215b tsp"
+      "amount": "⅛ tsp"
     },
     {
       "item": "cup/120g Greek-style yogurt",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
-      "item": "cup/60g cr\u00e8me fra\u00eeche",
-      "amount": "\u00bc"
+      "item": "cup/60g crème fraîche",
+      "amount": "¼"
     },
     {
       "item": "cup/5g dill, roughly chopped",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "cup/10g cilantro, roughly chopped",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "1.",
@@ -55,11 +55,11 @@
     }
   ],
   "method": [
-    "Place the carrots in a steamer and steam for 8\u201312 minutes (depending on thickness), until they are cooked through but still retain a bite.",
-    "Meanwhile, whisk together the olive oil, vinegar, honey, garlic, cinnamon, \u00bd tsp salt, and lots of pepper in a large bowl. Once combined, add the carrots as soon as they are cooked. Mix well and set aside to cool.",
-    "Mix together the yogurt and cr\u00e8me fra\u00eeche in a medium bowl with \u00bc tsp of salt. Add this to the carrots, along with the dill and cilantro. Stir through gently\u2014you don\u2019t want to overmix. Transfer carefully to a serving bowl and serve.",
+    "Place the carrots in a steamer and steam for 8–12 minutes (depending on thickness), until they are cooked through but still retain a bite.",
+    "Meanwhile, whisk together the olive oil, vinegar, honey, garlic, cinnamon, ½ tsp salt, and lots of pepper in a large bowl. Once combined, add the carrots as soon as they are cooked. Mix well and set aside to cool.",
+    "Mix together the yogurt and crème fraîche in a medium bowl with ¼ tsp of salt. Add this to the carrots, along with the dill and cilantro. Stir through gently—you don’t want to overmix. Transfer carefully to a serving bowl and serve.",
     "Roasted butternut squash with lentils and dolcelatte",
-    "I like to serve this with the squash and lentils still a little warm\u2014so that the cheese slightly melts when it\u2019s dotted on top\u2014but it also works at room temperature, if you want to make it in advance. Make up to the point of adding the dolcelatte and set aside for up to 6 hours. Add the \uf001nal elements just before serving.",
+    "I like to serve this with the squash and lentils still a little warm—so that the cheese slightly melts when it’s dotted on top—but it also works at room temperature, if you want to make it in advance. Make up to the point of adding the dolcelatte and set aside for up to 6 hours. Add the nal elements just before serving.",
     "If you start with ready-cooked lentils, then skip the stage where they get simmered and just add them straight to the bowl with the lemon, garlic, herbs, and so forth."
   ],
   "time": {
@@ -70,7 +70,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

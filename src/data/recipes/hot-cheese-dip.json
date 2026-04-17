@@ -65,7 +65,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Winter"
+    "chapter": "Winter",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 15,

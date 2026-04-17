@@ -65,7 +65,9 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Salads & Sides"
+    "chapter": "Salads & Sides",
+    "meal_role": "main"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/turkish-cheese-b-rekphyllo-cheese-pie.jpg"
 }

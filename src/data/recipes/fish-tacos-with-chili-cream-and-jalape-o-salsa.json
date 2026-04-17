@@ -55,7 +55,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Mexican Taco Lunch Recipes"
+    "chapter": "Mexican Taco Lunch Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Mexican"
 }

@@ -28,7 +28,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Smoothies, Mylkshakes & Drinks"
+    "chapter": "Smoothies, Mylkshakes & Drinks",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

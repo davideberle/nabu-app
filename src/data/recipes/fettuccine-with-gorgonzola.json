@@ -59,7 +59,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Breakfast Pasta Recipes"
+    "chapter": "Breakfast Pasta Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Italian",
   "image": "/recipes/fettuccine-with-gorgonzola.jpg"

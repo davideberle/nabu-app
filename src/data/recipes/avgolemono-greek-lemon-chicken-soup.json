@@ -83,7 +83,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Greek Soups and Sides"
+    "chapter": "Greek Soups and Sides",
+    "meal_role": "main"
   },
   "cuisine": "Greek"
 }

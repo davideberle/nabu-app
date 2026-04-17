@@ -43,7 +43,10 @@
   },
   "image": "/recipes/bitter-frozen-berries-with-white.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

@@ -10,10 +10,6 @@
   "intro": "leaves than the Chinese version, but obviously the Chinese kind also works well. Other good options are",
   "ingredients": [
     {
-      "item": "77",
-      "amount": ""
-    },
-    {
       "item": "beef sirloin tip (Thais calls it “coconut skin” beef because it’s striated with fat)",
       "amount": "1 lb (½ kg)"
     },
@@ -46,7 +42,11 @@
   },
   "image": "/recipes/simple-stir-fried-greens.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Bangkok and Central Thai"
-  }
+    "dish_type": [
+      "vegetable"
+    ],
+    "chapter": "Bangkok and Central Thai",
+    "meal_role": "side"
+  },
+  "cuisine": "Southeast Asian"
 }

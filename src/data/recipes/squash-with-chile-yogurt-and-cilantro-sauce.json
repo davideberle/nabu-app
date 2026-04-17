@@ -52,7 +52,10 @@
   },
   "image": "/recipes/squash-with-chile-yogurt-and-cilantro-sauce.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Roasted"
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Roasted",
+    "meal_role": "component"
   }
 }

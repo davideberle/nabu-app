@@ -55,7 +55,10 @@
   },
   "image": "/recipes/pot-barley-orange-and-sesame-pudding.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

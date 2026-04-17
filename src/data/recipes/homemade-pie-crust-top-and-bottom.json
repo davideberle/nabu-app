@@ -34,7 +34,9 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "servings": "serves 4"
 }

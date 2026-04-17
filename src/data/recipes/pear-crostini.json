@@ -62,5 +62,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pear-crostini.jpg"
+  "image": "/recipes/pear-crostini.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "starter"
+    ],
+    "meal_role": "starter"
+  }
 }

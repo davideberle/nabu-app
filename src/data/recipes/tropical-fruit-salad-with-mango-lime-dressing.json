@@ -62,7 +62,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Beverages"
+    "chapter": "Beverages",
+    "meal_role": "side"
   },
   "cuisine": "African & Caribbean"
 }

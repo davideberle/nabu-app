@@ -63,7 +63,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Sweets and Coffee"
+    "chapter": "Sweets and Coffee",
+    "meal_role": "dessert"
   },
   "cuisine": "Southeast Asian"
 }

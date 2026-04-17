@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Soups & Stews"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "medium chayote, peeled and cut into 1½-inch (4 cm) cubes",
@@ -134,7 +134,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups & Stews"
+    "chapter": "Soups & Stews",
+    "meal_role": "main"
   },
   "image": "/recipes/spicy-noodle-soup.jpg",
   "cuisine": "Southeast Asian"

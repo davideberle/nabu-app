@@ -70,7 +70,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Basics & Breads"
+    "chapter": "Basics & Breads",
+    "meal_role": "starter"
   },
   "cuisine": "Indian"
 }

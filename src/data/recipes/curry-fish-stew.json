@@ -56,15 +56,18 @@
     "Add the prepared curry powder and stir for 2 more minutes.",
     "Pour the coconut cream and chicken broth into the pan and combine.",
     "Simmer for 10 minutes, until the sauce has thickened.",
-    "Add the tilapia and shrimp and simmer for 5 minutes.",
-    "Recipe 35: Curry Fried Chicken"
+    "Add the tilapia and shrimp and simmer for 5 minutes."
   ],
   "time": {
     "total": 22
   },
   "image": "/recipes/curry-fish-stew.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

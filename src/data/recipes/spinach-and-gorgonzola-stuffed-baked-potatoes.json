@@ -1,21 +1,21 @@
 {
   "id": "spinach-and-gorgonzola-stuffed-baked-potatoes",
-  "name": "Spinach and Gorgonzola\u2013stuffed baked potatoes",
+  "name": "Spinach and Gorgonzola–stuffed baked potatoes",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi",
     "chapter": "Cooked Veg"
   },
   "servings": "serves 2",
-  "intro": "or prefer\u2014it\u2019ll work just as well. This is either a meal in itself, to serve two, or",
+  "intro": "or prefer—it’ll work just as well. This is either a meal in itself, to serve two, or",
   "ingredients": [
     {
-      "item": "large russet potatoes (1\u00bd lb/700g)",
+      "item": "large russet potatoes (1½ lb/700g)",
       "amount": "2"
     },
     {
       "item": "unsalted butter",
-      "amount": "1\u00bd tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "heavy cream",
@@ -23,14 +23,14 @@
     },
     {
       "item": "oz/60g Gorgonzola salt and black pepper",
-      "amount": "2\u00bc"
+      "amount": "2¼"
     },
     {
       "item": "oz/200g baby spinach leaves",
       "amount": "7"
     },
     {
-      "item": "tbsp/20g walnut halves, lightly toasted and broken up into \u00bd-inch/1cm pieces (optional)",
+      "item": "tbsp/20g walnut halves, lightly toasted and broken up into ½-inch/1cm pieces (optional)",
       "amount": "2"
     },
     {
@@ -47,10 +47,10 @@
     }
   ],
   "method": [
-    "Take the remaining \u00bd tbsp of butter and divide it among the potato cavities.",
+    "Take the remaining ½ tbsp of butter and divide it among the potato cavities.",
     "Sprinkle with a generous pinch of salt and return to the oven for 8 minutes, for the skin to become crisp. Remove from the oven and set aside.",
-    "Place a medium saucepan, halfway \uf001 lled with salted water, over high heat.",
-    "Once boiling, add the spinach for about 10\u201315 seconds, just to wilt. Drain the spinach, squeezing out as much of the water as possible. Stir into the potato \uf002 esh, to combine, then spoon the mash back inside the empty skins, piled high. Bake for 15 minutes, until the top of the mash is crisp and browned. Remove from the oven, sprinkle with the walnuts, and serve.",
+    "Place a medium saucepan, halfway  lled with salted water, over high heat.",
+    "Once boiling, add the spinach for about 10–15 seconds, just to wilt. Drain the spinach, squeezing out as much of the water as possible. Stir into the potato  esh, to combine, then spoon the mash back inside the empty skins, piled high. Bake for 15 minutes, until the top of the mash is crisp and browned. Remove from the oven, sprinkle with the walnuts, and serve.",
     "Baked potatoes with egg and tonnato sauce",
     "This brings together two of the most simple and comforting dishes: a baked potato and a soft-boiled egg. If you want to make this even more hearty than it is, fold extra tuna into the sauce before spooning it over the potatoes. If you want to get ahead, the tonnato sauce can be made 1 day in advance and kept in the fridge."
   ],
@@ -62,7 +62,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

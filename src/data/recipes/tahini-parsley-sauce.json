@@ -12,7 +12,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Snacks, Spreads, and Sauces"
+    "chapter": "Snacks, Spreads, and Sauces",
+    "meal_role": "component"
   },
   "servings": "makes 1 small jar",
   "time": {

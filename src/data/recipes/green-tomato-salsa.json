@@ -51,7 +51,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Vegetarian Mexican Recipes"
+    "chapter": "Vegetarian Mexican Recipes",
+    "meal_role": "component"
   },
   "cuisine": "Mexican"
 }

@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Sides"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "ripe Asian dwarf bananas, peeled",
@@ -85,7 +85,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/grilled-bananas-wrapped-in-sticky-rice.jpg",
   "cuisine": "Southeast Asian"

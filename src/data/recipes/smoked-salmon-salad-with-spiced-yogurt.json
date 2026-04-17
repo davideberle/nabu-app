@@ -51,7 +51,7 @@
     },
     {
       "item": "(For the dressing) Greek-style yogurt",
-      "amount": "4–6 tbsp"
+      "amount": "4\u20136 tbsp"
     },
     {
       "item": "(For the dressing) juice of 1 lemon",
@@ -68,7 +68,7 @@
     "To make the spiced yogurt dressing, mix together the yogurt, lemon juice, and five-spice powder in a small bowl. Season to taste.",
     "When ready to serve, add the smoked salmon pieces to the salad mixture, and toss again. Serve with the spiced yogurt on the side."
   ],
-  "image": "/recipes/smoked-salmon-salad-with-spiced-yogurt.jpg",
+  "image": null,
   "time": {
     "total": 45
   },

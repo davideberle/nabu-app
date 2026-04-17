@@ -103,7 +103,10 @@
   },
   "image": "/recipes/thai-red-lentil-soup-with-aromatic-chile-oil.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

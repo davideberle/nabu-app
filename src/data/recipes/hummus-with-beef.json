@@ -73,7 +73,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Condiments & Dips"
+    "chapter": "Condiments & Dips",
+    "meal_role": "starter"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/hummus-with-beef.jpg"

@@ -81,7 +81,10 @@
     "total": 30
   },
   "category": {
-    "dish_type": [],
-    "chapter": "Blanched"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Blanched",
+    "meal_role": "main"
   }
 }

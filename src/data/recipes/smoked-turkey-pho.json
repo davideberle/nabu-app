@@ -202,7 +202,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Soups"
+    "chapter": "Soups",
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

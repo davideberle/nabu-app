@@ -12,7 +12,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "main"
   },
   "servings": "serves four generously",
   "time": {

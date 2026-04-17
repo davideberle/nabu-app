@@ -36,7 +36,8 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": "Rice"
+    "chapter": "Rice",
+    "meal_role": "breakfast"
   },
   "time": {
     "prep": 15,

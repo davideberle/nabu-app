@@ -64,7 +64,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/sweet-potato-wedges-with-lemongrass-cr-me-fra-che.jpg"

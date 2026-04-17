@@ -10,10 +10,6 @@
   "intro": "jasmine extract, but if that’s hard to fi nd, you can substitute with vanilla. This easy to make",
   "ingredients": [
     {
-      "item": "151",
-      "amount": ""
-    },
-    {
       "item": "coconut milk (canned) or contents of one 8 fl oz can",
       "amount": "2 cups (500 ml)"
     },
@@ -52,7 +48,11 @@
   },
   "image": "/recipes/kanom-pui-fai-cupcakes.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Drinks and Desserts"
-  }
+    "dish_type": [
+      "baking"
+    ],
+    "chapter": "Drinks and Desserts",
+    "meal_role": "dessert"
+  },
+  "cuisine": "Southeast Asian"
 }

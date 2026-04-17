@@ -58,7 +58,8 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": "French Vegetarian Recipes"
+    "chapter": "French Vegetarian Recipes",
+    "meal_role": "breakfast"
   },
   "cuisine": "Mediterranean"
 }

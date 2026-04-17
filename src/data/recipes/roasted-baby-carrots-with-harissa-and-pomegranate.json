@@ -23,23 +23,23 @@
     },
     {
       "item": "unsalted butter, melted",
-      "amount": "1\u00bd tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "olive oil salt",
       "amount": "1 tbsp"
     },
     {
-      "item": "lb/800g long, thin baby carrots (or regular carrots, cut into long batons, 4 x \u00bd inch/10 x 1\u00bd cm), peeled and stems trimmed (to leave just a little bit)",
-      "amount": "1\u00be"
+      "item": "lb/800g long, thin baby carrots (or regular carrots, cut into long batons, 4 x ½ inch/10 x 1½ cm), peeled and stems trimmed (to leave just a little bit)",
+      "amount": "1¾"
     },
     {
       "item": "cup/10g cilantro leaves, roughly chopped",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
-      "item": "cup/60g pomegranate seeds (from \u00bd pomegranate)",
-      "amount": "\u00bd"
+      "item": "cup/60g pomegranate seeds (from ½ pomegranate)",
+      "amount": "½"
     },
     {
       "item": "lemon juice",
@@ -55,11 +55,11 @@
     }
   ],
   "method": [
-    "In a large bowl, mix the cumin, honey, harissa, butter, oil, and \u00be tsp salt. Add the carrots, mix well, then spread out on a large parchment-lined baking sheet. You don\u2019t want to overcrowd the carrots, so use two sheets if you need to.",
-    "Roast for 12\u201314 minutes, until the carrots are beginning to brown but still retain a bite, then remove from the oven and set aside to cool.",
+    "In a large bowl, mix the cumin, honey, harissa, butter, oil, and ¾ tsp salt. Add the carrots, mix well, then spread out on a large parchment-lined baking sheet. You don’t want to overcrowd the carrots, so use two sheets if you need to.",
+    "Roast for 12–14 minutes, until the carrots are beginning to brown but still retain a bite, then remove from the oven and set aside to cool.",
     "When ready to serve, mix the carrots with the cilantro, pomegranate seeds, and lemon juice and serve.",
     "Carrot salad with yogurt and cinnamon",
-    "I love the look of the long, thin baby carrots here, but don\u2019t worry if you don\u2019t have any. Regular carrots, halved or quartered lengthwise, work just \uf001ne. This is a lovely colorful addition to all sorts of feasts: great served alongside the couscous and tomato salad (this page), as just one example, and the slow-cooked lamb (this page). Steam the carrots and make the dressing 6 hours in advance, or even up to 1 day ahead if keeping in the fridge. Bring back to room temperature, adding the yogurt and herbs when ready to serve."
+    "I love the look of the long, thin baby carrots here, but don’t worry if you don’t have any. Regular carrots, halved or quartered lengthwise, work just ne. This is a lovely colorful addition to all sorts of feasts: great served alongside the couscous and tomato salad (this page), as just one example, and the slow-cooked lamb (this page). Steam the carrots and make the dressing 6 hours in advance, or even up to 1 day ahead if keeping in the fridge. Bring back to room temperature, adding the yogurt and herbs when ready to serve."
   ],
   "time": {
     "total": 30
@@ -69,7 +69,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

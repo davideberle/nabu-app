@@ -77,7 +77,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "French Dinner Recipes"
+    "chapter": "French Dinner Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mediterranean"
 }

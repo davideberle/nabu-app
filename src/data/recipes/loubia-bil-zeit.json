@@ -72,9 +72,10 @@
   "image": "/recipes/loubia-bil-zeitolive-oil-braised-green-beans.jpg",
   "category": {
     "dish_type": [
-      "starter"
+      "main"
     ],
-    "chapter": "Main Dishes: 1 Hour"
+    "chapter": "Main Dishes: 1 Hour",
+    "meal_role": "main"
   },
   "subtitle": "OLIVE OIL–BRAISED GREEN BEANS",
   "cuisine": "Middle Eastern"

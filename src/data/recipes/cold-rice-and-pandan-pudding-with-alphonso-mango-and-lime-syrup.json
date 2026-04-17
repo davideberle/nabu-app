@@ -69,7 +69,10 @@
   },
   "image": "/recipes/cold-rice-and-pandan-pudding-with-alphonso-mango-and-lime-syrup.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

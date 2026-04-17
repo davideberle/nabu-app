@@ -63,7 +63,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/avocado-quinoa-and-fava-bean-salad.jpg"

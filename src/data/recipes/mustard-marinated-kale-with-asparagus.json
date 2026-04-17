@@ -7,7 +7,7 @@
     "chapter": "Cooked Veg"
   },
   "servings": "serves 4",
-  "intro": "hours in advance of serving, if you like. Just don\u2019t mix everything together until the",
+  "intro": "hours in advance of serving, if you like. Just don’t mix everything together until the",
   "ingredients": [
     {
       "item": "sunflower seeds",
@@ -19,10 +19,10 @@
     },
     {
       "item": "maple syrup salt and black pepper",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
-      "item": "oz/250g kale,stems discarded, leaves torn roughly into 1\u00bd\u20132-inch/4\u2013",
+      "item": "oz/250g kale,stems discarded, leaves torn roughly into 1½–2-inch/4–",
       "amount": "9"
     },
     {
@@ -35,7 +35,7 @@
     },
     {
       "item": "white wine vinegar",
-      "amount": "1\u00bd tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "whole-grain mustard",
@@ -47,15 +47,15 @@
     },
     {
       "item": "oz/120g frozen shelled edamame, defrosted",
-      "amount": "4\u00bc"
+      "amount": "4¼"
     },
     {
       "item": "cup/10g tarragon leaves, roughly chopped",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "cup/5g dill, roughly chopped",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "1.",
@@ -67,13 +67,13 @@
     }
   ],
   "method": [
-    "Mix the sun\uf002ower and pumpkin seeds with \u00bd tsp of maple syrup, \u215b tsp of salt, and a good grind of pepper. Spread out on a small parchment-lined baking sheet and bake for 12 minutes, until the seeds are golden brown. Set aside for about 30 minutes; the seeds will stick together as they cool and crisp up, but can then be broken into 1-inch/2\u00bdcm pieces.",
-    "Put the kale into a large bowl with the remaining 1 tsp of maple syrup, 2 tbsp of the oil, the vinegar, mustard, and \u00bc tsp of salt. Mix together well, using your hands to massage the kale for about 1 minute, until it softens and takes on the \uf002 avors of the marinade. Set aside for at least 30 minutes (or up to 4 hours, if you want to get ahead).",
-    "Put the remaining 1 tbsp of oil into a large frying pan and place over medium-high heat. Add the asparagus and \u215b tsp of salt and fry for 6 minutes, turning over throughout so that all sides start to brown and soften.",
-    "Set aside to cool, then slice on an angle into 1\u00bd-inch/4cm pieces.",
+    "Mix the sunower and pumpkin seeds with ½ tsp of maple syrup, ⅛ tsp of salt, and a good grind of pepper. Spread out on a small parchment-lined baking sheet and bake for 12 minutes, until the seeds are golden brown. Set aside for about 30 minutes; the seeds will stick together as they cool and crisp up, but can then be broken into 1-inch/2½cm pieces.",
+    "Put the kale into a large bowl with the remaining 1 tsp of maple syrup, 2 tbsp of the oil, the vinegar, mustard, and ¼ tsp of salt. Mix together well, using your hands to massage the kale for about 1 minute, until it softens and takes on the  avors of the marinade. Set aside for at least 30 minutes (or up to 4 hours, if you want to get ahead).",
+    "Put the remaining 1 tbsp of oil into a large frying pan and place over medium-high heat. Add the asparagus and ⅛ tsp of salt and fry for 6 minutes, turning over throughout so that all sides start to brown and soften.",
+    "Set aside to cool, then slice on an angle into 1½-inch/4cm pieces.",
     "When ready to serve, add the asparagus, edamame, tarragon, and dill to the kale and mix well. Spread out on a large platter, sprinkle with the seeds, and serve.",
     "Roasted asparagus with almonds, capers, and dill",
-    "This is a dish that my husband, Karl, cooks at home a lot on the weekend. He tends to be a bit more liberal on the butter front with his asparagus\u2014what are weekends for, after all! And he is Irish! I\u2019ve kept quantities just a little bit in check here."
+    "This is a dish that my husband, Karl, cooks at home a lot on the weekend. He tends to be a bit more liberal on the butter front with his asparagus—what are weekends for, after all! And he is Irish! I’ve kept quantities just a little bit in check here."
   ],
   "time": {
     "total": 30
@@ -82,7 +82,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

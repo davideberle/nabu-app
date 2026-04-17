@@ -97,7 +97,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Greek Dinner"
+    "chapter": "Greek Dinner",
+    "meal_role": "main"
   },
   "cuisine": "Greek"
 }

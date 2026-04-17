@@ -88,7 +88,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Spring"
+    "chapter": "Spring",
+    "meal_role": "main"
   },
   "cuisine": "Italian"
 }

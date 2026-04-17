@@ -35,7 +35,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Spice Blends & Sauces"
+    "chapter": "Spice Blends & Sauces",
+    "meal_role": "component"
   },
   "cuisine": "African & Caribbean"
 }

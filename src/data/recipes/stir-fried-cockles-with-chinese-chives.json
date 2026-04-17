@@ -39,7 +39,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fish and Seafood"
+    "chapter": "Fish and Seafood",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

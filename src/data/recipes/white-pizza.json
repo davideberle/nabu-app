@@ -59,7 +59,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Summer"
+    "chapter": "Summer",
+    "meal_role": "main"
   },
   "cuisine": "Italian"
 }

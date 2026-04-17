@@ -54,7 +54,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/zucchini-and-hazelnut-salad.jpg"

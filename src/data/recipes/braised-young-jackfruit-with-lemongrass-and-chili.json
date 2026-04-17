@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Main Dishes"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "fresh young jackfruit or breadfruit, peeled, or canned jackfruit, drained",
@@ -77,7 +77,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/braised-young-jackfruit-with-lemongrass-and-chili.jpg",
   "cuisine": "Southeast Asian"

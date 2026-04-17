@@ -69,7 +69,8 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": "Welcome to the World of Mexican Taco Breakfast Recipes"
+    "chapter": "Welcome to the World of Mexican Taco Breakfast Recipes",
+    "meal_role": "breakfast"
   },
   "cuisine": "Mexican"
 }

@@ -7,19 +7,19 @@
     "chapter": "Dessert"
   },
   "servings": "serves 12",
-  "intro": "All sorts of different-\uf002avored chocolate (ginger chocolate, chile chocolate, and so",
+  "intro": "All sorts of different-avored chocolate (ginger chocolate, chile chocolate, and so",
   "ingredients": [
     {
-      "item": "oz/100g mint-flavored dark chocolate, roughly chopped into 1\u00bc- inch/3cm pieces",
-      "amount": "3\u00bd"
+      "item": "oz/100g mint-flavored dark chocolate, roughly chopped into 1¼- inch/3cm pieces",
+      "amount": "3½"
     },
     {
-      "item": "oz/200g dark chocolate (70% cacao), roughly chopped into 1\u00bc- inch/3cm pieces",
+      "item": "oz/200g dark chocolate (70% cacao), roughly chopped into 1¼- inch/3cm pieces",
       "amount": "7"
     },
     {
-      "item": "tbsp/120g unsalted butter, cut into \u00be-inch/2cm cubes",
-      "amount": "8\u00bd"
+      "item": "tbsp/120g unsalted butter, cut into ¾-inch/2cm cubes",
+      "amount": "8½"
     },
     {
       "item": "light corn syrup salt",
@@ -27,15 +27,15 @@
     },
     {
       "item": "cup/100g golden raisins, soaked in s2 tbsp of rum for 30 minutes",
-      "amount": "\u00be"
+      "amount": "¾"
     },
     {
-      "item": "oz/170g graham crackers, roughly broken into \u00be-inch/2cm pieces",
+      "item": "oz/170g graham crackers, roughly broken into ¾-inch/2cm pieces",
       "amount": "6"
     },
     {
       "item": "plus 1 tbsp/100g shelled pistachios, chopped",
-      "amount": "\u00be cup"
+      "amount": "¾ cup"
     },
     {
       "item": "1.",
@@ -44,12 +44,12 @@
   ],
   "method": [
     "Line a 8 x 10-inch/18 x 28cm baking pan or glass baking dish with parchment paper and set aside.",
-    "Put both chocolates, the butter, corn syrup, and \u215b tsp salt in a large heatproof bowl set over a saucepan of barely simmering water (taking care that the base of the bowl is not touching the water). Heat for 2\u20133 minutes, stirring often, until completely melted and combined.",
-    "Add the raisins and rum, the graham crackers, and three-quarters of the pistachios (try adding the larger bits here, reserving the more powdery bits to \uf001 nish) to the chocolate. Using a spatula, combine everything until the graham crackers and nuts are completely coated in chocolate. Transfer to the prepared pan, smoothing the top with the spatula so that it\u2019s \uf002 at and even, then sprinkle the remaining pistachios on top. Set aside for 10 minutes to cool, then wrap tightly with plastic wrap. Refrigerate for 2\u20133 hours, until completely set.",
+    "Put both chocolates, the butter, corn syrup, and ⅛ tsp salt in a large heatproof bowl set over a saucepan of barely simmering water (taking care that the base of the bowl is not touching the water). Heat for 2–3 minutes, stirring often, until completely melted and combined.",
+    "Add the raisins and rum, the graham crackers, and three-quarters of the pistachios (try adding the larger bits here, reserving the more powdery bits to  nish) to the chocolate. Using a spatula, combine everything until the graham crackers and nuts are completely coated in chocolate. Transfer to the prepared pan, smoothing the top with the spatula so that it’s  at and even, then sprinkle the remaining pistachios on top. Set aside for 10 minutes to cool, then wrap tightly with plastic wrap. Refrigerate for 2–3 hours, until completely set.",
     "Cut into 24 bars. If not serving straightaway, store them in an airtight container and serve fridge-cold.",
     "Brunsli chocolate cookies",
-    "Anyone from Switzerland will tell you that these should only be made with cinnamon and cloves and only baked and eaten at Christmas. Having played around with the spice mix and baked and eaten them happily throughout the year, I would make the case for the rules for this chewy brownie-like (and gluten- free) cookie to be extended. Swiss-born Cornelia Staeubli, through whom nearly all decisions at Ottolenghi have to pass, would \uf001rmly disagree! It\u2019s true, though, that they\u2019re particularly at home when things are festive, so I\u2019ve made them into stars to play the game.",
-    "Either way, these keep for 5 days in a sealed container. The dough can also be frozen (either when shaped into a ball or cut into cookie shapes) for up to 1 month. If you bake from frozen, just add another 1\u20132 minutes to the cooking time."
+    "Anyone from Switzerland will tell you that these should only be made with cinnamon and cloves and only baked and eaten at Christmas. Having played around with the spice mix and baked and eaten them happily throughout the year, I would make the case for the rules for this chewy brownie-like (and gluten- free) cookie to be extended. Swiss-born Cornelia Staeubli, through whom nearly all decisions at Ottolenghi have to pass, would rmly disagree! It’s true, though, that they’re particularly at home when things are festive, so I’ve made them into stars to play the game.",
+    "Either way, these keep for 5 days in a sealed container. The dough can also be frozen (either when shaped into a ball or cut into cookie shapes) for up to 1 month. If you bake from frozen, just add another 1–2 minutes to the cooking time."
   ],
   "time": {
     "total": 30
@@ -59,7 +59,7 @@
     "dish_type": [
       "dessert"
     ],
-    "meal_role": "dessert",
-    "chapter": "Dessert"
+    "chapter": "Dessert",
+    "meal_role": "dessert"
   }
 }

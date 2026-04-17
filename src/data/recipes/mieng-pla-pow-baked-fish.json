@@ -56,7 +56,11 @@
   },
   "image": "/recipes/mieng-pla-pow-baked-fish.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Isaan"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Isaan",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

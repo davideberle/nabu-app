@@ -10,10 +10,6 @@
   "intro": "version, we add a fried egg on top (sunny-side up with a runny yolk,",
   "ingredients": [
     {
-      "item": "131",
-      "amount": ""
-    },
-    {
       "item": "pork skin, cut into",
       "amount": "500 g (1 lb)"
     },
@@ -63,7 +59,11 @@
   },
   "image": "/recipes/hokkien-fried-noodles.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Southern Thai"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Southern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

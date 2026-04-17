@@ -73,8 +73,10 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/christys-wood-oven-style-pizza.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "servings": "makes one large 12 inch pizza"
 }

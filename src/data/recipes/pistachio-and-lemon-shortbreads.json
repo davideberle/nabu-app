@@ -66,7 +66,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts & sweet treats"
+    "chapter": "Desserts & sweet treats",
+    "meal_role": "dessert"
   },
   "cuisine": "Persian"
 }

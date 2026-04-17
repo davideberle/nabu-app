@@ -115,7 +115,11 @@
   },
   "image": "/recipes/curry-dumplings-with-homemade-dipping-sauce.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "starter"
+  },
+  "cuisine": "Southeast Asian"
 }

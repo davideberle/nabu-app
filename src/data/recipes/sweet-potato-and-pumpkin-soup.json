@@ -61,7 +61,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Salads & Slaws"
+    "chapter": "Salads & Slaws",
+    "meal_role": "dessert"
   },
   "cuisine": "African & Caribbean"
 }

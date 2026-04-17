@@ -70,15 +70,18 @@
     "Pour in the coconut milk and sugar.",
     "Stir it very well and bring the liquid to a boil.",
     "Reduce the heat and simmer for 5 minutes.",
-    "Add the shrimp and shredded coconuts and simmer for 5 minutes.",
-    "Recipe 32: Curry Couscous and Quinoa Pilaf"
+    "Add the shrimp and shredded coconuts and simmer for 5 minutes."
   ],
   "time": {
     "total": 20
   },
   "image": "/recipes/curry-coconut-shrimp.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Soups & Stews"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "dried shiitake mushrooms, soaked",
@@ -63,7 +63,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Soups & Stews"
+    "chapter": "Soups & Stews",
+    "meal_role": "main"
   },
   "image": "/recipes/sponge-gourd-and-mushroom-soup.jpg",
   "cuisine": "Southeast Asian"

@@ -10,8 +10,8 @@
   "intro": "heard great things, but my high expectations were still exceeded. Eat these fries",
   "ingredients": [
     {
-      "item": "lb/2kg yellow potatoes, unpeeled and cut into \u00be-inch/2cm-wide fries",
-      "amount": "4\u00bd"
+      "item": "lb/2kg yellow potatoes, unpeeled and cut into ¾-inch/2cm-wide fries",
+      "amount": "4½"
     },
     {
       "item": "tbsp/90ml sunflower oil flaked sea salt",
@@ -19,7 +19,7 @@
     },
     {
       "item": "cup/60ml olive oil",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "garlic cloves, thinly sliced",
@@ -31,7 +31,7 @@
     },
     {
       "item": "oz/150g feta, roughly crumbled",
-      "amount": "5\u00bc"
+      "amount": "5¼"
     },
     {
       "item": "1.",
@@ -43,11 +43,11 @@
     }
   ],
   "method": [
-    "Place a large pot \uf001 lled with plenty of salted water over high heat. Once boiling, add the potatoes and cook for 7\u20138 minutes, until starting to soften at the edges but still holding their shape. Drain and set aside to dry out for 5 minutes, then transfer to a large bowl. Add the sun\uf002ower oil along with 1 tbsp salt and mix well.",
-    "Tip the potatoes and sun\uf002ower oil onto two large parchment-lined baking sheets (so that they are not overcrowded) and bake for 40\u201350 minutes, stirring a few times, until golden brown and crisp.",
-    "About 5 minutes before the fries are ready, heat the olive oil and garlic in a small saucepan over medium-high heat. Fry gently for 3\u20134 minutes, until the garlic is pale golden brown. Take the cooked fries out of the oven and pour the olive oil and garlic over them, then return to the oven for a further 4 minutes. Remove from the oven and, while piping hot, sprinkle with the oregano and feta. Serve at once.",
+    "Place a large pot  lled with plenty of salted water over high heat. Once boiling, add the potatoes and cook for 7–8 minutes, until starting to soften at the edges but still holding their shape. Drain and set aside to dry out for 5 minutes, then transfer to a large bowl. Add the sunower oil along with 1 tbsp salt and mix well.",
+    "Tip the potatoes and sunower oil onto two large parchment-lined baking sheets (so that they are not overcrowded) and bake for 40–50 minutes, stirring a few times, until golden brown and crisp.",
+    "About 5 minutes before the fries are ready, heat the olive oil and garlic in a small saucepan over medium-high heat. Fry gently for 3–4 minutes, until the garlic is pale golden brown. Take the cooked fries out of the oven and pour the olive oil and garlic over them, then return to the oven for a further 4 minutes. Remove from the oven and, while piping hot, sprinkle with the oregano and feta. Serve at once.",
     "Shallow-fried potatoes with rosemary and sumac",
-    "Sumac is a bright and astringent ground spice that I have been championing for a very long time. Its color and kick means it\u2019s a great way to shake up all sorts of everyday dishes."
+    "Sumac is a bright and astringent ground spice that I have been championing for a very long time. Its color and kick means it’s a great way to shake up all sorts of everyday dishes."
   ],
   "time": {
     "total": 30
@@ -57,7 +57,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

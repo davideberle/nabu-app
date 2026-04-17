@@ -46,7 +46,10 @@
   },
   "image": "/recipes/crushed-carrots-with-harissa-and-pistachios.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Mashed"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Mashed",
+    "meal_role": "main"
   }
 }

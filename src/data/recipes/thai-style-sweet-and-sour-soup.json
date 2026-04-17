@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Desserts"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "tamarind pulps (see Note), seeds removed",
@@ -84,7 +84,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/thai-style-sweet-and-sour-soup.jpg",
   "cuisine": "Southeast Asian"

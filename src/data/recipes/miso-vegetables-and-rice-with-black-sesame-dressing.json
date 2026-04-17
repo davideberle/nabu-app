@@ -87,7 +87,10 @@
   },
   "image": "/recipes/miso-vegetables-and-rice-with-black-sesame-dressing.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Steamed"
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Steamed",
+    "meal_role": "component"
   }
 }

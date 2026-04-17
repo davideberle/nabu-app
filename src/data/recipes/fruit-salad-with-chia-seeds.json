@@ -38,7 +38,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Bowls, Puddings & Grains"
+    "chapter": "Bowls, Puddings & Grains",
+    "meal_role": "side"
   },
   "time": {
     "prep": 10,

@@ -38,9 +38,10 @@
   "image": "/recipes/raw-artichokes-with-parmigiano.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "starter"
     ],
-    "chapter": "Spring"
+    "chapter": "Spring",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 20,

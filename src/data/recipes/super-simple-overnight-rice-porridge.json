@@ -53,7 +53,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Soups"
+    "chapter": "Soups",
+    "meal_role": "side"
   },
   "cuisine": "Southeast Asian"
 }

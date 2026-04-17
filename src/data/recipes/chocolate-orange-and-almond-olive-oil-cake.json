@@ -92,7 +92,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/chocolate-orange-and-almond-olive-oil-cake.jpg",
   "cuisine": "Other"

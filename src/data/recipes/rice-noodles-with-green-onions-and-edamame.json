@@ -63,7 +63,10 @@
   "image": "/recipes/rice-noodles-with-green-onions-and-edamame.jpg",
   "intro": "Bring a small saucepan of water to a boil, add the lemon slices, and blanch for",
   "category": {
-    "dish_type": [],
-    "chapter": "Blanched"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Blanched",
+    "meal_role": "main"
   }
 }

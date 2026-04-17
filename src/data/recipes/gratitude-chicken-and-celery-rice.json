@@ -58,7 +58,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Rice and Noodles"
+    "chapter": "Rice and Noodles",
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

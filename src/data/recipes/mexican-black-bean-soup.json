@@ -85,7 +85,8 @@
     "dish_type": [
       "soup"
     ],
-    "chapter": "Mexican Soup Recipes"
+    "chapter": "Mexican Soup Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mexican"
 }

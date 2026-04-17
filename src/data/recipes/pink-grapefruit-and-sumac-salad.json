@@ -59,7 +59,10 @@
   },
   "image": "/recipes/pink-grapefruit-and-sumac-salad.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Tossed"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Tossed",
+    "meal_role": "main"
   }
 }

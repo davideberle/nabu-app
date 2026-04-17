@@ -53,15 +53,18 @@
     "Put back chicken wings, plus squash. Pour in coconut milk and water.",
     "Simmer for about 20 minutes, covered.",
     "Remove the lid, stir in chickpeas, and let cook for another 10 minutes.",
-    "Garnish with freshly chopped basil leaves.",
-    "Recipe 19: Curried Egg Noodle Soup with"
+    "Garnish with freshly chopped basil leaves."
   ],
   "time": {
     "total": 55
   },
   "image": "/recipes/curried-chicken-wings.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "starter"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "starter"
+  },
+  "cuisine": "Southeast Asian"
 }

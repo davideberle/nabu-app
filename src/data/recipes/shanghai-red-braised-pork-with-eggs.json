@@ -74,7 +74,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "main"
   },
   "image": "/recipes/shanghai-red-braised-pork-with-eggs.jpg",
   "cuisine": "Chinese",

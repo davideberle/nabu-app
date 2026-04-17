@@ -10,10 +10,6 @@
   "intro": "restaurant, I always end up ordering the fi sh larb, and it’s always incredibly delicious.",
   "ingredients": [
     {
-      "item": "101",
-      "amount": ""
-    },
-    {
       "item": "big dried chilies",
       "amount": "7"
     },
@@ -53,7 +49,11 @@
   },
   "image": "/recipes/minced-fish-larb-with-herbs.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

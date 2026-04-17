@@ -55,7 +55,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Salads & vegetables"
+    "chapter": "Salads & vegetables",
+    "meal_role": "side"
   },
   "cuisine": "Persian"
 }

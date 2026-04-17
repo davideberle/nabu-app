@@ -109,7 +109,10 @@
   },
   "image": "/recipes/hot-and-sour-mushroom-soup.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

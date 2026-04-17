@@ -62,8 +62,10 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/calzone.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "servings": "makes 2 calzones"
 }

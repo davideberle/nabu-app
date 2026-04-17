@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Main Dishes"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "peeled split mung beans, rinsed, soaked, and drained",
@@ -92,7 +92,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/grilled-mushrooms-with-crispy-glutinous-puffs.jpg",
   "cuisine": "Southeast Asian"

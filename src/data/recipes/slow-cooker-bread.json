@@ -76,7 +76,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Bread Recipes"
+    "chapter": "Bread Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Other",
   "image": "/recipes/slow-cooker-bread.jpg"

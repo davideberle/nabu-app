@@ -43,7 +43,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Tofu"
+    "chapter": "Tofu",
+    "meal_role": "main"
   },
   "cuisine": "Chinese"
 }

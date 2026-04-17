@@ -63,7 +63,10 @@
   },
   "image": "/recipes/sprouting-broccoli-and-edamame-salad-with-curry-leaves-and-coconut.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Blanched"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Blanched",
+    "meal_role": "main"
   }
 }

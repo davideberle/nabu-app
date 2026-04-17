@@ -90,7 +90,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Fish"
+    "chapter": "Fish",
+    "meal_role": "starter"
   },
   "cuisine": "Middle Eastern"
 }

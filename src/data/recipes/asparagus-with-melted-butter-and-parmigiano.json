@@ -34,9 +34,10 @@
   "image": "/recipes/asparagus-with-melted-butter-and-parmigiano.jpg",
   "category": {
     "dish_type": [
-      "main"
+      "side"
     ],
-    "chapter": "Spring"
+    "chapter": "Spring",
+    "meal_role": "side"
   },
   "time": {
     "prep": 20,

@@ -73,7 +73,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Breads & grains"
+    "chapter": "Breads & grains",
+    "meal_role": "side"
   },
   "cuisine": "Persian"
 }

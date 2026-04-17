@@ -76,7 +76,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Vegetarian Mexican Recipes"
+    "chapter": "Vegetarian Mexican Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mexican"
 }

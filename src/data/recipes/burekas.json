@@ -86,7 +86,7 @@
     "Brush the two short edges of each pastry with egg and dip these edges in the seed mix; a tiny amount of seeds, just ⅙ inch / 2 mm wide, is all that is needed, as they are quite dominant. Brush the top of each pastry with some egg as well, avoiding the seeds.",
     "Make sure the pastries are spaced about 1¼ inches / 3 cm apart. Bake for 15 to 17 minutes, until golden brown all over. Serve warm or at room temperature. If some of the filling spills out of the pastries during the baking, just gently stuff it back in when they are cool enough to handle."
   ],
-  "image": "/recipes/burekas.jpg",
+  "image": null,
   "dietary": [
     "vegetarian"
   ],
@@ -97,7 +97,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Baking"
+    "chapter": "Baking",
+    "meal_role": "dessert"
   },
   "cuisine": "Middle Eastern"
 }

@@ -77,7 +77,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Seafood Pasta Recipes"
+    "chapter": "Seafood Pasta Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Italian",
   "image": "/recipes/green-fettuccine-with-scallop-and-parsley-sauce.jpg"

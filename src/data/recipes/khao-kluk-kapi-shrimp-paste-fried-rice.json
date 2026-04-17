@@ -10,10 +10,6 @@
   "intro": "preparation but the actual cooking is fairly simple. The fi nal fl avors are a melange of salty, sour,",
   "ingredients": [
     {
-      "item": "71",
-      "amount": ""
-    },
-    {
       "item": "unscented oil",
       "amount": "2 tablespoons"
     },
@@ -55,7 +51,11 @@
   },
   "image": "/recipes/khao-kluk-kapi-shrimp-paste-fried-rice.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Bangkok and Central Thai"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Bangkok and Central Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

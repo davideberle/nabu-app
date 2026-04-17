@@ -108,7 +108,11 @@
   },
   "image": "/recipes/sweet-chili-sauce.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Street Eats"
-  }
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Street Eats",
+    "meal_role": "component"
+  },
+  "cuisine": "Southeast Asian"
 }

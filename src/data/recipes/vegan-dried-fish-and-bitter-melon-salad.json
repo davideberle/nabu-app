@@ -101,7 +101,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/vegan-dried-fish-and-bitter-melon-salad.jpg",
   "cuisine": "Southeast Asian"

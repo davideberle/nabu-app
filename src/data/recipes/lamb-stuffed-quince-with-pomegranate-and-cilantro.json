@@ -96,7 +96,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Stuffed Vegetables"
+    "chapter": "Stuffed Vegetables",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

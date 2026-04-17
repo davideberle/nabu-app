@@ -81,7 +81,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Starters"
+    "chapter": "Starters",
+    "meal_role": "starter"
   },
   "time": {
     "prep": 15,

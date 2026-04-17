@@ -12,7 +12,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "main"
   },
   "servings": "serves six as a main, or twelve as a side",
   "time": {

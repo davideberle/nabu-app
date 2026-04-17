@@ -75,7 +75,10 @@
   "image": "/recipes/celery-salad-with-feta-and-soft-boiled-egg.jpg",
   "intro": "seeds and nuts, lemon juice, olive oil, ¼ teaspoon salt, and a grind of black",
   "category": {
-    "dish_type": [],
-    "chapter": "Tossed"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Tossed",
+    "meal_role": "main"
   }
 }

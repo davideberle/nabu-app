@@ -9,7 +9,7 @@
   "intro": "A fresh and delicious Thai salad accompanied with a satisfying crunch from the peanut sauce",
   "time": {
     "prep": "25 minutes",
-    "total": "25 minutes0"
+    "total": 25
   },
   "ingredients": [
     {
@@ -94,8 +94,9 @@
   "image": "/recipes/thai-salad-with-peanut-sauce.jpg",
   "category": {
     "dish_type": [
-      "side"
-    ]
+      "salad"
+    ],
+    "meal_role": "side"
   },
   "cuisine": "Southeast Asian"
 }

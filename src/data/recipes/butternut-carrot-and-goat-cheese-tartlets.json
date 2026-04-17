@@ -11,7 +11,8 @@
     "dish_type": [
       "baking"
     ],
-    "chapter": "Baking & Patisserie"
+    "chapter": "Baking & Patisserie",
+    "meal_role": "dessert"
   },
   "servings": "makes one 1-lb / 500-g loaf",
   "time": {

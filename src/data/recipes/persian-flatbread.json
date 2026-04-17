@@ -55,9 +55,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "bread"
     ],
-    "chapter": "Breads & grains"
+    "chapter": "Breads & grains",
+    "meal_role": "side"
   },
   "cuisine": "Persian"
 }

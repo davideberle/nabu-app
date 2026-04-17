@@ -99,7 +99,10 @@
   },
   "image": "/recipes/quinoa-and-wild-garlic-cakes-with-salbitxada-sauce.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Fried"
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Fried",
+    "meal_role": "component"
   }
 }

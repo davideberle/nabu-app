@@ -11,7 +11,7 @@
   "ingredients": [
     {
       "item": "cups/250g couscous",
-      "amount": "1\u00bd"
+      "amount": "1½"
     },
     {
       "item": "tbsp/90ml olive oil",
@@ -23,7 +23,7 @@
     },
     {
       "item": "cups/400ml boiling water",
-      "amount": "1\u2154"
+      "amount": "1⅔"
     },
     {
       "item": "oz/300g cherry tomatoes",
@@ -35,7 +35,7 @@
     },
     {
       "item": "cup/30g golden raisins",
-      "amount": "\u00bc"
+      "amount": "¼"
     },
     {
       "item": "cumin seeds, toasted and lightly crushed",
@@ -43,18 +43,18 @@
     },
     {
       "item": "cup/50g roasted and salted almonds, roughly chopped",
-      "amount": "\u2153"
+      "amount": "⅓"
     },
     {
       "item": "cup/15g cilantro leaves, roughly chopped",
-      "amount": "\u00be"
+      "amount": "¾"
     },
     {
       "item": "cup/15g mint leaves, roughly torn",
-      "amount": "\u00be"
+      "amount": "¾"
     },
     {
-      "item": "lemon: \uf001 nely zest to get 1 tsp, then juice to get 1 tbsp",
+      "item": "lemon:  nely zest to get 1 tsp, then juice to get 1 tbsp",
       "amount": "1"
     },
     {
@@ -63,15 +63,15 @@
     }
   ],
   "method": [
-    "Place the couscous in a medium bowl. Drizzle with 2 tbsp of oil, sprinkle with 1 tsp of ras el hanout, \u00be tsp of salt, and plenty of pepper, then pour in the boiling water. Stir, cover the bowl tightly with foil and set aside for 20 minutes. Remove the foil, \uf002 uff the couscous with a fork, and set aside to cool.",
-    "Put 1 tbsp of oil into a large frying pan and place over high heat. Once hot, add the tomatoes and fry for 3\u20134 minutes, stirring a few times, until they start to brown and split open. Remove from the pan, sprinkle with a pinch of salt, and set aside with any juices.",
+    "Place the couscous in a medium bowl. Drizzle with 2 tbsp of oil, sprinkle with 1 tsp of ras el hanout, ¾ tsp of salt, and plenty of pepper, then pour in the boiling water. Stir, cover the bowl tightly with foil and set aside for 20 minutes. Remove the foil,  uff the couscous with a fork, and set aside to cool.",
+    "Put 1 tbsp of oil into a large frying pan and place over high heat. Once hot, add the tomatoes and fry for 3–4 minutes, stirring a few times, until they start to brown and split open. Remove from the pan, sprinkle with a pinch of salt, and set aside with any juices.",
     "Wipe the pan clean, then add the remaining 3 tbsp of oil and return to medium-high heat. Add the onions, the remaining 1 tsp of ras el hanout, and",
-    "\u215b tsp salt and fry for 10\u201312 minutes, stirring, until dark golden brown and soft. Remove from the heat, stir in the raisins, and set aside to cool.",
-    "Once the couscous has cooled slightly, transfer it to a large bowl. Add the onion and raisin mix and stir. Add the cumin, almonds, cilantro, mint, lemon zest, lemon juice, \u00bc tsp salt, and a generous grind of pepper and mix gently.",
+    "⅛ tsp salt and fry for 10–12 minutes, stirring, until dark golden brown and soft. Remove from the heat, stir in the raisins, and set aside to cool.",
+    "Once the couscous has cooled slightly, transfer it to a large bowl. Add the onion and raisin mix and stir. Add the cumin, almonds, cilantro, mint, lemon zest, lemon juice, ¼ tsp salt, and a generous grind of pepper and mix gently.",
     "Transfer to a serving platter, top with the tomatoes, and serve.",
     "Puy lentil and eggplant stew",
-    "Few things bring me more pleasure in the kitchen than taking a set of familiar ingredients and seeing them in a new light. It\u2019s happened here with this stew and the Puy lentil and eggplant dish on this page. The two ingredient lists are very similar\u2014the eggplant, cherry tomatoes, olive oil, garlic, and oregano. Both dishes, though equally delicious, are completely different from one another. It\u2019s one of the many reasons I love eggplants\u2014they\u2019re so versatile and can be cooked in such different ways to yield such different results.",
-    "Serve the stew either as a hearty starter or a side, or else as a main, served with any grain you like. The stew can be made up to 3 days ahead and kept in the fridge\u2014just warm through and add the cr\u00e8me fra\u00eeche, oil, chile \uf002akes, and oregano before serving."
+    "Few things bring me more pleasure in the kitchen than taking a set of familiar ingredients and seeing them in a new light. It’s happened here with this stew and the Puy lentil and eggplant dish on this page. The two ingredient lists are very similar—the eggplant, cherry tomatoes, olive oil, garlic, and oregano. Both dishes, though equally delicious, are completely different from one another. It’s one of the many reasons I love eggplants—they’re so versatile and can be cooked in such different ways to yield such different results.",
+    "Serve the stew either as a hearty starter or a side, or else as a main, served with any grain you like. The stew can be made up to 3 days ahead and kept in the fridge—just warm through and add the crème fraîche, oil, chile akes, and oregano before serving."
   ],
   "time": {
     "total": 30
@@ -81,7 +81,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Rice, Grains, and Pulses"
+    "chapter": "Rice, Grains, and Pulses",
+    "meal_role": "side"
   }
 }

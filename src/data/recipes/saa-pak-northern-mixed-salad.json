@@ -10,10 +10,6 @@
   "intro": "ingredients like these are hard to fi nd. I’m including it anyway because it is one of my very favorite",
   "ingredients": [
     {
-      "item": "89",
-      "amount": ""
-    },
-    {
       "item": "water",
       "amount": "3 cups (750 ml)"
     },
@@ -83,7 +79,11 @@
   },
   "image": "/recipes/saa-pak-northern-mixed-salad.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

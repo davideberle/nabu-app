@@ -48,7 +48,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Condiments"
+    "chapter": "Condiments",
+    "meal_role": "component"
   },
   "time": {
     "prep": 20,

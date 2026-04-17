@@ -87,7 +87,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Small Plates"
+    "chapter": "Small Plates",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

@@ -84,7 +84,8 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": "Greek Snack Recipes"
+    "chapter": "Greek Snack Recipes",
+    "meal_role": "side"
   },
   "cuisine": "Mediterranean"
 }

@@ -10,10 +10,6 @@
   "intro": "herbal sausage in my freezer. I fi rst learned to make this with the help of my friends Chris",
   "ingredients": [
     {
-      "item": "97",
-      "amount": ""
-    },
-    {
       "item": "coriander seeds",
       "amount": "1 teaspoon"
     },
@@ -98,7 +94,11 @@
   },
   "image": "/recipes/sai-oua-chiang-mai-sausage.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -146,7 +146,8 @@
     "dish_type": [
       "bread"
     ],
-    "chapter": "Bread Recipes"
+    "chapter": "Bread Recipes",
+    "meal_role": "side"
   },
   "cuisine": "Other",
   "image": "/recipes/sourdough-bread.jpg"

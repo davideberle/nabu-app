@@ -60,8 +60,10 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Main Dishes"
+    "chapter": "Main Dishes",
+    "meal_role": "main"
   },
   "image": "/recipes/penne-con-salscia-e-ricotta.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "servings": "serves 2-3"
 }

@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Sides"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "glutinous rice (or sticky rice) flour",
@@ -75,7 +75,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/sticky-rice-dumplings-with-coconut-filling.jpg",
   "cuisine": "Southeast Asian"

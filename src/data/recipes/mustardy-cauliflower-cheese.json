@@ -10,7 +10,7 @@
   "intro": "This is the ultimate comfort dish, looking for a roast chicken, some sausages, or a",
   "ingredients": [
     {
-      "item": "large cauliflower, broken into roughly 1\u00bd inch/4cm \uf002 orets (7 cups/700g)",
+      "item": "large cauliflower, broken into roughly 1½ inch/4cm  orets (7 cups/700g)",
       "amount": "1"
     },
     {
@@ -18,12 +18,12 @@
       "amount": "2"
     },
     {
-      "item": "small onion, \uf001 nely diced (1 cup/120g)",
+      "item": "small onion,  nely diced (1 cup/120g)",
       "amount": "1"
     },
     {
       "item": "cumin seeds",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "medium curry powder",
@@ -34,28 +34,28 @@
       "amount": "1 tsp"
     },
     {
-      "item": "green chiles, seeded and \uf001 nely diced",
+      "item": "green chiles, seeded and  nely diced",
       "amount": "2"
     },
     {
       "item": "black mustard seeds",
-      "amount": "\u00be tsp"
+      "amount": "¾ tsp"
     },
     {
       "item": "plus 2 tbsp/200ml heavy cream",
-      "amount": "\u00be cup"
+      "amount": "¾ cup"
     },
     {
       "item": "oz/120g aged Cheddar, coarsely grated salt",
-      "amount": "4\u00bc"
+      "amount": "4¼"
     },
     {
-      "item": "cup/15g fresh white breadcrumbs (from about \u00bd slice, crust left on if soft)",
-      "amount": "\u2153"
+      "item": "cup/15g fresh white breadcrumbs (from about ½ slice, crust left on if soft)",
+      "amount": "⅓"
     },
     {
-      "item": "cup/5g parsley, \uf001 nely chopped",
-      "amount": "\u00bc"
+      "item": "cup/5g parsley,  nely chopped",
+      "amount": "¼"
     },
     {
       "item": "1.",
@@ -71,10 +71,10 @@
     }
   ],
   "method": [
-    "Put the butter into a 9-inch/24cm round casserole pan or ovenproof dish of a similar size and place over medium heat. Add the onion and saut\u00e9 for 8 minutes, until soft and golden. Add the cumin, curry powder, mustard powder, and chiles and cook for 4 minutes, stirring occasionally. Add the mustard seeds, cook for 1 minute, then pour in the cream. Add 1\u00bc cups/100g of Cheddar and \u00bd tsp of salt and simmer for 2\u20133 minutes, until the sauce slightly thickens. Add the cauli\uf002ower, stir gently, and simmer for 1 minute before removing from the heat.",
-    "Place the remaining \u00bc cup/20g of Cheddar in a bowl and add the breadcrumbs and parsley. Mix, then sprinkle over the cauli\uf002ower. Wipe the top inside edge of the pan clean (with a spatula or cloth)\u2014any cream there will burn\u2014and place in the oven. Bake for 8 minutes, until the sauce is bubbling and the cauli\uf002ower is hot. Turn the broiler to high and keep the pan underneath for 4 minutes, or until the top is golden and crisp. Keep an eye on it so that it does not burn. Remove from the oven and allow to cool a little\u2014just for 5 minutes or so\u2014before serving.",
+    "Put the butter into a 9-inch/24cm round casserole pan or ovenproof dish of a similar size and place over medium heat. Add the onion and sauté for 8 minutes, until soft and golden. Add the cumin, curry powder, mustard powder, and chiles and cook for 4 minutes, stirring occasionally. Add the mustard seeds, cook for 1 minute, then pour in the cream. Add 1¼ cups/100g of Cheddar and ½ tsp of salt and simmer for 2–3 minutes, until the sauce slightly thickens. Add the cauliower, stir gently, and simmer for 1 minute before removing from the heat.",
+    "Place the remaining ¼ cup/20g of Cheddar in a bowl and add the breadcrumbs and parsley. Mix, then sprinkle over the cauliower. Wipe the top inside edge of the pan clean (with a spatula or cloth)—any cream there will burn—and place in the oven. Bake for 8 minutes, until the sauce is bubbling and the cauliower is hot. Turn the broiler to high and keep the pan underneath for 4 minutes, or until the top is golden and crisp. Keep an eye on it so that it does not burn. Remove from the oven and allow to cool a little—just for 5 minutes or so—before serving.",
     "Roasted whole cauliflower",
-    "Keep all the leaves on the head of cauli\uf002ower\u2014they are deliciously crisp and tasty when roasted. I like to serve this in the center of the table, for people to share with drinks at the start of a meal. We break the cauli\uf002ower apart with our hands, dipping the individual \uf002orets and crispy green leaves into the green tahini sauce and sprinkling with salt. If that sounds a bit odd or messy (which it\u2019s actually not, surprisingly), you can always cut the cauli\uf002ower into four wedges and serve on individual plates, to be eaten more traditionally with a knife and fork! Either way, the tahini sauce is entirely optional. I love it, but just a squeeze of lemon or a dollop of cr\u00e8me fra\u00eeche also work very well."
+    "Keep all the leaves on the head of cauliower—they are deliciously crisp and tasty when roasted. I like to serve this in the center of the table, for people to share with drinks at the start of a meal. We break the cauliower apart with our hands, dipping the individual orets and crispy green leaves into the green tahini sauce and sprinkling with salt. If that sounds a bit odd or messy (which it’s actually not, surprisingly), you can always cut the cauliower into four wedges and serve on individual plates, to be eaten more traditionally with a knife and fork! Either way, the tahini sauce is entirely optional. I love it, but just a squeeze of lemon or a dollop of crème fraîche also work very well."
   ],
   "time": {
     "total": 30
@@ -84,7 +84,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

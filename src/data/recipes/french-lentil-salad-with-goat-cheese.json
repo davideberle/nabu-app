@@ -72,7 +72,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "French Vegetarian Recipes"
+    "chapter": "French Vegetarian Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mediterranean"
 }

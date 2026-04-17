@@ -77,7 +77,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "Salad Pasta Recipes"
+    "chapter": "Salad Pasta Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Italian",
   "image": "/recipes/mediterranean-chicken-and-pasta-salad.jpg"

@@ -10,10 +10,6 @@
   "intro": "Almost everyone knows how to fry an egg, but Thai eggs are crispy and frilled at the edges like lace.",
   "ingredients": [
     {
-      "item": "75",
-      "amount": ""
-    },
-    {
       "item": "unscented cooking oil",
       "amount": "2 tablespoons"
     },
@@ -44,7 +40,11 @@
   },
   "image": "/recipes/fried-lacey-eggs-with-thai-style-dressing.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Bangkok and Central Thai"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Bangkok and Central Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

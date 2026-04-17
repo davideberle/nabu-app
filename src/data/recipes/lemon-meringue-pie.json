@@ -51,8 +51,10 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/lemon-meringue-pie.jpg",
-  "cuisine": "Italian"
+  "cuisine": "Italian",
+  "servings": "serves 4-6"
 }

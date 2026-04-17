@@ -74,7 +74,8 @@
     "dish_type": [
       "breakfast"
     ],
-    "chapter": "Bread Recipes"
+    "chapter": "Bread Recipes",
+    "meal_role": "breakfast"
   },
   "cuisine": "Other",
   "image": "/recipes/oatmeal-blueberry-bread.jpg"

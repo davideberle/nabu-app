@@ -11,19 +11,19 @@
   "ingredients": [
     {
       "item": "lb/800g cherry tomatoes",
-      "amount": "1\u00be"
+      "amount": "1¾"
     },
     {
-      "item": "large garlic cloves (or 25 small), peeled (\u2154 cup/85g)",
+      "item": "large garlic cloves (or 25 small), peeled (⅔ cup/85g)",
       "amount": "12"
     },
     {
-      "item": "large shallots, cut into 1\u00bc-inch/3cm pieces (1 cup/220g)",
+      "item": "large shallots, cut into 1¼-inch/3cm pieces (1 cup/220g)",
       "amount": "4"
     },
     {
-      "item": "cups/25g cilantro stems, cut into 1\u00bd-inch/4cm lengths, plus \u00bd cup/10g leaves, roughly chopped, to serve",
-      "amount": "1\u00bc"
+      "item": "cups/25g cilantro stems, cut into 1½-inch/4cm lengths, plus ½ cup/10g leaves, roughly chopped, to serve",
+      "amount": "1¼"
     },
     {
       "item": "thyme leaves",
@@ -39,11 +39,11 @@
     },
     {
       "item": "cups/300g basmati rice",
-      "amount": "1\u00bd"
+      "amount": "1½"
     },
     {
       "item": "cups/600ml boiling water",
-      "amount": "2\u00bd"
+      "amount": "2½"
     },
     {
       "item": "1.",
@@ -56,12 +56,12 @@
   ],
   "method": [
     "Arrange the tomatoes, garlic, shallots, cilantro stems, thyme, and cinnamon sticks in a large high-sided casserole dish, about 8 x 12 inches/20 x 30cm.",
-    "Pour in the olive oil, add \u00bd tsp of salt and a good grind of black pepper, and place in the oven for 1 hour, until the vegetables are soft. Remove from the oven, sprinkle the rice evenly over the vegetables, without stirring them together, and set aside.",
-    "Increase the oven temperature to 450\u00b0F.",
-    "Sprinkle \u00bd tsp of salt and plenty of black pepper over the rice and then carefully pour the boiling water over the rice. Seal the dish tightly with foil and place in the oven for 25 minutes, until the rice is cooked. Remove from the oven and set aside for 10 minutes, still covered. Remove the foil, sprinkle with the cilantro leaves, stir these very gently into the rice, and serve.",
+    "Pour in the olive oil, add ½ tsp of salt and a good grind of black pepper, and place in the oven for 1 hour, until the vegetables are soft. Remove from the oven, sprinkle the rice evenly over the vegetables, without stirring them together, and set aside.",
+    "Increase the oven temperature to 450°F.",
+    "Sprinkle ½ tsp of salt and plenty of black pepper over the rice and then carefully pour the boiling water over the rice. Seal the dish tightly with foil and place in the oven for 25 minutes, until the rice is cooked. Remove from the oven and set aside for 10 minutes, still covered. Remove the foil, sprinkle with the cilantro leaves, stir these very gently into the rice, and serve.",
     "Rice noodle salad with cucumber and poppy seeds",
-    "For anyone who thinks that this list of ingredients looks suspiciously long for a book of simple recipes, I\u2019m actually feeling quite pleased with how I\u2019ve managed to get the list down. My ability to buy up half the stock in an Asian shop when making noodle salads has been well documented in letters from some of my readers over the years, written to the Guardian.",
-    "All the elements can be made a few hours in advance\u2014the onion and ginger can be made the day before\u2014and just assembled when ready to serve."
+    "For anyone who thinks that this list of ingredients looks suspiciously long for a book of simple recipes, I’m actually feeling quite pleased with how I’ve managed to get the list down. My ability to buy up half the stock in an Asian shop when making noodle salads has been well documented in letters from some of my readers over the years, written to the Guardian.",
+    "All the elements can be made a few hours in advance—the onion and ginger can be made the day before—and just assembled when ready to serve."
   ],
   "time": {
     "total": 30
@@ -71,7 +71,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Rice, Grains, and Pulses"
+    "chapter": "Rice, Grains, and Pulses",
+    "meal_role": "side"
   }
 }

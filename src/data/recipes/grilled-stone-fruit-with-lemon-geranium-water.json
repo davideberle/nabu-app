@@ -63,7 +63,10 @@
   },
   "image": "/recipes/grilled-stone-fruit-with-lemon-geranium-water.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Sweetened"
+    "dish_type": [
+      "dessert"
+    ],
+    "chapter": "Sweetened",
+    "meal_role": "dessert"
   }
 }

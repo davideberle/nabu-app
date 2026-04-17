@@ -57,7 +57,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Rice"
+    "chapter": "Rice",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

@@ -76,7 +76,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Desayuno (Breakfast)"
+    "chapter": "Desayuno (Breakfast)",
+    "meal_role": "side"
   },
   "cuisine": "Caribbean"
 }

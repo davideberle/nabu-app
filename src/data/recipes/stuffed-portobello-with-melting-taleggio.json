@@ -62,5 +62,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/stuffed-portobello-with-melting-taleggio.jpg"
+  "image": "/recipes/stuffed-portobello-with-melting-taleggio.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main"
+  }
 }

@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Desserts"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "block (14 ounces/400 g) firm tofu",
@@ -64,7 +64,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/japanese-style-savory-and-sweet-tofu.jpg",
   "cuisine": "Southeast Asian"

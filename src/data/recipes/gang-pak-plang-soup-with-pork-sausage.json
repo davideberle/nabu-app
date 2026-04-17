@@ -14,10 +14,6 @@
       "amount": "5"
     },
     {
-      "item": "91",
-      "amount": ""
-    },
-    {
       "item": "chicken wings",
       "amount": "2 lbs (1 kg)"
     },
@@ -44,7 +40,11 @@
   },
   "image": "/recipes/gang-pak-plang-soup-with-pork-sausage.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Northern Thai"
-  }
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": "Northern Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

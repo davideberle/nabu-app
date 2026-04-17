@@ -67,7 +67,10 @@
     "total": 30
   },
   "category": {
-    "dish_type": [],
-    "chapter": "Baked"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Baked",
+    "meal_role": "main"
   }
 }

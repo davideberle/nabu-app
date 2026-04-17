@@ -68,7 +68,10 @@
   },
   "image": "/recipes/lentils-radicchio-and-walnuts-with-manuka-honey.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Braised"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Braised",
+    "meal_role": "main"
   }
 }

@@ -56,7 +56,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Accompaniments"
+    "chapter": "Accompaniments",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

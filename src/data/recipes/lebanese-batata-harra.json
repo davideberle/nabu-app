@@ -64,7 +64,9 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Salads & Sides"
+    "chapter": "Salads & Sides",
+    "meal_role": "starter"
   },
-  "cuisine": "Middle Eastern"
+  "cuisine": "Middle Eastern",
+  "image": "/recipes/lebanese-batata-harrabaked-spicy-potatoes.jpg"
 }

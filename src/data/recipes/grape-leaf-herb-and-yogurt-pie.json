@@ -78,9 +78,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "main"
     ],
-    "chapter": ""
+    "chapter": "",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/grape-leaf-herb-and-yogurt-pie.jpg"

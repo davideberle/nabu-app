@@ -89,7 +89,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Vegetarian Mexican Recipes"
+    "chapter": "Vegetarian Mexican Recipes",
+    "meal_role": "dessert"
   },
   "cuisine": "Mexican"
 }

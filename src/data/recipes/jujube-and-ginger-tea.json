@@ -35,7 +35,8 @@
     "dish_type": [
       "drink"
     ],
-    "chapter": "Drinks"
+    "chapter": "Drinks",
+    "meal_role": "drink"
   },
   "cuisine": "Chinese"
 }

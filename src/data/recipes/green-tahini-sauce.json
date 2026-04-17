@@ -11,7 +11,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Basics"
+    "chapter": "Basics",
+    "meal_role": "component"
   },
   "servings": "serves 4",
   "time": {

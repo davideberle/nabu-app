@@ -14,10 +14,6 @@
       "amount": ""
     },
     {
-      "item": "117",
-      "amount": ""
-    },
-    {
       "item": "pork loin",
       "amount": "2 lbs (1 kg)"
     },
@@ -68,7 +64,11 @@
   },
   "image": "/recipes/central-thai-style-fruit-som-tum.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Isaan"
-  }
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Isaan",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

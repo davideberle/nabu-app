@@ -107,7 +107,8 @@
     "dish_type": [
       "salad"
     ],
-    "chapter": "Greek Lunch Recipes"
+    "chapter": "Greek Lunch Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Mediterranean"
 }

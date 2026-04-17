@@ -70,7 +70,10 @@
   },
   "image": "/recipes/grilled-grilled-lettuce-with-farro-and-lemon.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Grilled"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Grilled",
+    "meal_role": "main"
   }
 }

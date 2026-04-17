@@ -68,7 +68,10 @@
   },
   "image": "/recipes/sweet-potatoes-with-orange-bitters.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Roasted"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Roasted",
+    "meal_role": "main"
   }
 }

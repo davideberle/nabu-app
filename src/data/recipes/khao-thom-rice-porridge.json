@@ -10,10 +10,6 @@
   "intro": "(chicken, pork, fi sh, shrimp—but I never see beef) or the plain rice porridge with the little side dishes",
   "ingredients": [
     {
-      "item": "73",
-      "amount": ""
-    },
-    {
       "item": "small head Chinese or green cabbage (approx 1½ lbs/675 g), cleaned, cored and chopped into bite-sized pieces",
       "amount": "1"
     },
@@ -44,7 +40,11 @@
   },
   "image": "/recipes/khao-thom-rice-porridge.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Bangkok and Central Thai"
-  }
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": "Bangkok and Central Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

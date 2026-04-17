@@ -71,7 +71,10 @@
   },
   "image": "/recipes/globe-artichoke-and-mozzarella-with-candied-lemon.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

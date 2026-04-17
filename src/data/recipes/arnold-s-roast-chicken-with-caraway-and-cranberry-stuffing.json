@@ -1,13 +1,13 @@
 {
   "id": "arnold-s-roast-chicken-with-caraway-and-cranberry-stuffing",
-  "name": "Arnold\u2019s roast chicken with caraway and cranberry stuffing",
+  "name": "Arnold’s roast chicken with caraway and cranberry stuffing",
   "source": {
     "cookbook": "Ottolenghi Simple",
     "author": "Yotam Ottolenghi",
     "chapter": "Meat"
   },
   "servings": "serves 4",
-  "intro": "others, including the inspiration behind this dish, but I\u2019ve no doubt Arnold would",
+  "intro": "others, including the inspiration behind this dish, but I’ve no doubt Arnold would",
   "ingredients": [
     {
       "item": "tbsp/70g unsalted butter",
@@ -30,32 +30,32 @@
       "amount": "1"
     },
     {
-      "item": "large celery stalks, cut into \u00bd-inch/1cm dice (3 cups/300g)",
-      "amount": "5\u20136"
+      "item": "large celery stalks, cut into ½-inch/1cm dice (3 cups/300g)",
+      "amount": "5–6"
     },
     {
-      "item": "onion, cut into \u00bd-inch/1cm dice (scant 1 cup/140g)",
+      "item": "onion, cut into ½-inch/1cm dice (scant 1 cup/140g)",
       "amount": "1"
     },
     {
       "item": "oz/100g dried cranberries",
-      "amount": "3\u00bd"
+      "amount": "3½"
     },
     {
       "item": "oz/100g ready-cooked and peeled chestnuts, roughly chopped",
-      "amount": "3\u00bd"
+      "amount": "3½"
     },
     {
-      "item": "mixed rye and wheat sourdough bread, crusts removed, lightly toasted, then roughly torn into \u00be-inch/2cm pieces (3\u2153 cups/100g)",
-      "amount": "4\u20135 slices"
+      "item": "mixed rye and wheat sourdough bread, crusts removed, lightly toasted, then roughly torn into ¾-inch/2cm pieces (3⅓ cups/100g)",
+      "amount": "4–5 slices"
     },
     {
       "item": "cup/15g parsley, roughly chopped",
-      "amount": "\u00be"
+      "amount": "¾"
     },
     {
       "item": "cup/120ml chicken stock black pepper",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "1.",
@@ -63,12 +63,12 @@
     }
   ],
   "method": [
-    "To make the marinade, melt 2 tbsp/30g of butter and stir in 3 tsp of the caraway seeds, 2 of the garlic cloves, the sugar, and \u00bd tsp salt. Place the chicken in a large bowl, rub the marinade all over it, and set aside.",
-    "Preheat the oven to 400\u00b0F.",
+    "To make the marinade, melt 2 tbsp/30g of butter and stir in 3 tsp of the caraway seeds, 2 of the garlic cloves, the sugar, and ½ tsp salt. Place the chicken in a large bowl, rub the marinade all over it, and set aside.",
+    "Preheat the oven to 400°F.",
     "To make the stuffing, put the remaining 3 tbsp/40g butter into a large nonstick pan and place over medium-high heat. Add the remaining 2 tsp of caraway seeds and fry for 2 minutes, until fragrant. Add the remaining 5 garlic cloves, the celery, onion, cranberries, chestnuts, and 1 tsp salt. Fry for",
-    "12\u201313 minutes, stirring often, until golden and softened. Tip into a medium bowl and stir in the bread, parsley, and stock.",
-    "Transfer the chicken to a small roasting pan. Sprinkle with a generous pinch of salt and a grind of pepper and \uf001 ll the cavity with the stuffing. Place any leftover stuffing in an ovenproof dish and put it into the oven 30\u201335 minutes after the chicken goes into the oven.",
-    "Roast the chicken for 70\u201375 minutes, basting every 20 minutes, until the skin is golden brown and crisp and the juices run clear when a knife is inserted",
+    "12–13 minutes, stirring often, until golden and softened. Tip into a medium bowl and stir in the bread, parsley, and stock.",
+    "Transfer the chicken to a small roasting pan. Sprinkle with a generous pinch of salt and a grind of pepper and  ll the cavity with the stuffing. Place any leftover stuffing in an ovenproof dish and put it into the oven 30–35 minutes after the chicken goes into the oven.",
+    "Roast the chicken for 70–75 minutes, basting every 20 minutes, until the skin is golden brown and crisp and the juices run clear when a knife is inserted",
     "into the thickest part of the thigh. Remove from the oven and set aside to rest for 10 minutes before serving.",
     "Beef meatballs with lemon and celery root",
     "Pictured on this page, left",
@@ -82,7 +82,7 @@
     "dish_type": [
       "main"
     ],
-    "meal_role": "main",
-    "chapter": "Meat"
+    "chapter": "Meat",
+    "meal_role": "main"
   }
 }

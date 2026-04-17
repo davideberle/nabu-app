@@ -31,7 +31,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Summer"
+    "chapter": "Summer",
+    "meal_role": "dessert"
   },
   "time": {
     "prep": 20,

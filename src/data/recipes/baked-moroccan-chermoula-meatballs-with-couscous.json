@@ -98,9 +98,10 @@
   "image": "/recipes/baked-moroccan-chermoula-meatballs-with-couscous.jpg",
   "category": {
     "dish_type": [
-      "side"
+      "main"
     ],
-    "chapter": "Main Dishes: 30 Minutes"
+    "chapter": "Main Dishes: 30 Minutes",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

@@ -15,19 +15,19 @@
     },
     {
       "item": "fast-acting instant dried yeast",
-      "amount": "\u00be tsp"
+      "amount": "¾ tsp"
     },
     {
       "item": "granulated sugar",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "olive oil, plus a little extra for greasing",
       "amount": "3 tbsp"
     },
     {
-      "item": "salt brimming \u00bc cup/65ml lukewarm water mounded \u00bc cup/40g blanched hazelnuts, toasted and roughly chopped",
-      "amount": "\u00bc tsp"
+      "item": "salt brimming ¼ cup/65ml lukewarm water mounded ¼ cup/40g blanched hazelnuts, toasted and roughly chopped",
+      "amount": "¼ tsp"
     },
     {
       "item": "sesame seeds, lightly toasted",
@@ -35,14 +35,14 @@
     },
     {
       "item": "cup/150g Nutella, softened (in the microwave or gently on the stove, until easily spreadable)",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
-      "item": "small orange, \uf001 nely zested to get 1 tsp",
+      "item": "small orange,  nely zested to get 1 tsp",
       "amount": "1"
     },
     {
-      "item": "confectioners\u2019 sugar",
+      "item": "confectioners’ sugar",
       "amount": "2 tsp"
     },
     {
@@ -51,17 +51,17 @@
     }
   ],
   "method": [
-    "Put the \uf002 our, yeast, sugar, 2 tbsp of the oil, and the salt into a large bowl and mix to combine. Gently pour in the water, then, using a spatula, bring the mixture together until combined. Transfer to a lightly oiled surface and, with lightly oiled hands, knead the dough for 3 minutes until soft and elastic. You may need to add a little more oil if the dough starts to stick to the surface or your hands. Transfer to a lightly oiled bowl and cover with a clean, damp kitchen towel. Let rise in a warm place for 40 minutes, until nearly doubled in size.",
-    "Preheat the oven to 425\u00b0F.",
+    "Put the  our, yeast, sugar, 2 tbsp of the oil, and the salt into a large bowl and mix to combine. Gently pour in the water, then, using a spatula, bring the mixture together until combined. Transfer to a lightly oiled surface and, with lightly oiled hands, knead the dough for 3 minutes until soft and elastic. You may need to add a little more oil if the dough starts to stick to the surface or your hands. Transfer to a lightly oiled bowl and cover with a clean, damp kitchen towel. Let rise in a warm place for 40 minutes, until nearly doubled in size.",
+    "Preheat the oven to 425°F.",
     "Combine the hazelnuts and sesame seeds in a small bowl and set aside 1 tbsp.",
-    "On a lightly \uf002 oured surface, roll the dough out into a 12 x 16-inch/30 x",
-    "40cm rectangle, so that the longest side is toward you, parallel to the work surface. Using a spatula, spread the dough with Nutella, leaving a \u00be- inch/2cm border on the top edge. Sprinkle the orange zest evenly over the",
+    "On a lightly  oured surface, roll the dough out into a 12 x 16-inch/30 x",
+    "40cm rectangle, so that the longest side is toward you, parallel to the work surface. Using a spatula, spread the dough with Nutella, leaving a ¾- inch/2cm border on the top edge. Sprinkle the orange zest evenly over the",
     "Nutella, then scatter the sesame seed and hazelnut mix on top. With the longest side still toward you, roll the dough into a long log. Brush with the remaining 1 tbsp of oil, then sprinkle on the remaining 1 tbsp of sesame seed and hazelnut mix (press them into the dough gently, so they stick). Trim the",
-    "ends and cut the roll into 10 segments, each 1\u00bc inches/3cm long, and transfer to a parchment-lined baking sheet, seam side down.",
-    "Bake for about 10 minutes, until golden brown. Dust with the confectioners\u2019 sugar and let cool slightly. Serve.",
+    "ends and cut the roll into 10 segments, each 1¼ inches/3cm long, and transfer to a parchment-lined baking sheet, seam side down.",
+    "Bake for about 10 minutes, until golden brown. Dust with the confectioners’ sugar and let cool slightly. Serve.",
     "Mint and pistachio chocolate fridge cake",
-    "This is called a chocolate fridge cake but it should be seen as a bit of a larder cake as well, using what you have on hand\u2014which is why this is a pantry recipe.",
-    "All sorts of different-\uf002avored chocolate (ginger chocolate, chile chocolate, and so forth), nuts, dried fruit, or alcohol can be used, instead of what\u2019s listed here, depending on what you have and what you like. The cake can be stored in the fridge, in a sealed container, for up to 1 week."
+    "This is called a chocolate fridge cake but it should be seen as a bit of a larder cake as well, using what you have on hand—which is why this is a pantry recipe.",
+    "All sorts of different-avored chocolate (ginger chocolate, chile chocolate, and so forth), nuts, dried fruit, or alcohol can be used, instead of what’s listed here, depending on what you have and what you like. The cake can be stored in the fridge, in a sealed container, for up to 1 week."
   ],
   "time": {
     "total": 30
@@ -71,7 +71,7 @@
     "dish_type": [
       "dessert"
     ],
-    "meal_role": "dessert",
-    "chapter": "Dessert"
+    "chapter": "Dessert",
+    "meal_role": "dessert"
   }
 }

@@ -10,10 +10,6 @@
   "intro": "leaves and lime, but if you don’t want to use them, it’s fi ne. The",
   "ingredients": [
     {
-      "item": "81",
-      "amount": ""
-    },
-    {
       "item": "unscented oil",
       "amount": "2 tablespoons"
     },
@@ -88,7 +84,11 @@
   },
   "image": "/recipes/cashew-nuts-yum.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Bangkok and Central Thai"
-  }
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Bangkok and Central Thai",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

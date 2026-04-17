@@ -56,7 +56,11 @@
   },
   "image": "/recipes/salted-eggs.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Bangkok and Central Thai"
-  }
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Bangkok and Central Thai",
+    "meal_role": "component"
+  },
+  "cuisine": "Southeast Asian"
 }

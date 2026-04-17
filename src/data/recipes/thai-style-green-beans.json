@@ -66,8 +66,9 @@
   "image": "/recipes/thai-style-green-beans.jpg",
   "category": {
     "dish_type": [
-      "main"
-    ]
+      "vegetable"
+    ],
+    "meal_role": "main"
   },
   "cuisine": "Southeast Asian"
 }

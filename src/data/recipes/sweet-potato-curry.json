@@ -75,5 +75,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sweet-potato-curry.jpg"
+  "image": "/recipes/sweet-potato-curry.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main"
+  }
 }

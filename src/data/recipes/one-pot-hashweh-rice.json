@@ -93,9 +93,10 @@
   "image": "/recipes/one-pot-hashweh-rice.jpg",
   "category": {
     "dish_type": [
-      "side"
+      "main"
     ],
-    "chapter": "Main Dishes: 1 Hour"
+    "chapter": "Main Dishes: 1 Hour",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern"
 }

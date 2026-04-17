@@ -48,7 +48,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Noodles"
+    "chapter": "Noodles",
+    "meal_role": "main"
   },
   "time": {
     "prep": 20,

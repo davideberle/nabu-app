@@ -82,7 +82,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/coconut-fried-rice.jpg",
   "cuisine": "Nigerian"

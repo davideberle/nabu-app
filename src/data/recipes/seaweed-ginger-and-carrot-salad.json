@@ -72,7 +72,10 @@
   },
   "image": "/recipes/seaweed-ginger-and-carrot-salad.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Blanched"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Blanched",
+    "meal_role": "main"
   }
 }

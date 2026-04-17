@@ -10,10 +10,6 @@
   "intro": "like a bullhorn in your face ... but much better than that, obviously. This recipe can be served with either",
   "ingredients": [
     {
-      "item": "51",
-      "amount": ""
-    },
-    {
       "item": "pad Thai or similar dried, thin rice noodles",
       "amount": "8 oz (226 g)"
     },
@@ -109,7 +105,11 @@
   },
   "image": "/recipes/drunken-noodles.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Street Eats"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Street Eats",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -10,12 +10,12 @@
   "intro": "serving. Doing this little bit of prep turns the dish into one that can get to the",
   "ingredients": [
     {
-      "item": "large head of broccoli, cut into 1\u00bc\u20131\u00bd inch/3\u20134cm \uf002 orets (3 cups/300g)",
+      "item": "large head of broccoli, cut into 1¼–1½ inch/3–4cm  orets (3 cups/300g)",
       "amount": "1"
     },
     {
-      "item": "oz/350g curly kale, tough stems discarded and leaves torn into pieces (3\u00be cups/250g)",
-      "amount": "12\u00bc"
+      "item": "oz/350g curly kale, tough stems discarded and leaves torn into pieces (3¾ cups/250g)",
+      "amount": "12¼"
     },
     {
       "item": "olive oil",
@@ -27,15 +27,15 @@
     },
     {
       "item": "cumin seeds",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
-      "item": "Urfa chile flakes (or 1 tsp other crushed red pepper \uf002 akes) salt",
+      "item": "Urfa chile flakes (or 1 tsp other crushed red pepper  akes) salt",
       "amount": "2 tsp"
     },
     {
       "item": "cup/10g mint leaves, roughly shredded",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "lime juice",
@@ -47,13 +47,13 @@
     }
   ],
   "method": [
-    "Place a large saucepan \uf001 lled with plenty of salted water over high heat. Once boiling, add the broccoli and blanch for 90 seconds. Use a slotted spoon to remove the broccoli, then refresh under plenty of cold water and dry well.",
+    "Place a large saucepan  lled with plenty of salted water over high heat. Once boiling, add the broccoli and blanch for 90 seconds. Use a slotted spoon to remove the broccoli, then refresh under plenty of cold water and dry well.",
     "Keep the water at a boil and add the kale. Blanch for 30 seconds, then drain and refresh. Squeeze out as much water from the kale as you can with a clean kitchen towel and set aside.",
-    "Put the oil into a large saut\u00e9 pan and place over high heat. Add the garlic and cumin and fry for about 2 minutes, stirring a few times, until the garlic is a light golden brown. Use a slotted spoon to remove the garlic and set aside.",
-    "Add the kale to the oil\u2014take care, it might spatter at the beginning\u2014and fry for 3\u20134 minutes, until the leaves are starting to crisp. Add the broccoli, 1 tsp chile \uf002 akes, and \u00bc tsp of salt. Stir through for a minute, then transfer to a large plate or dish. Gently mix in the mint and drizzle with the lime juice.",
-    "Serve with the remaining 1 tsp chile \uf002 akes and the crisp garlic sprinkled on top.",
+    "Put the oil into a large sauté pan and place over high heat. Add the garlic and cumin and fry for about 2 minutes, stirring a few times, until the garlic is a light golden brown. Use a slotted spoon to remove the garlic and set aside.",
+    "Add the kale to the oil—take care, it might spatter at the beginning—and fry for 3–4 minutes, until the leaves are starting to crisp. Add the broccoli, 1 tsp chile  akes, and ¼ tsp of salt. Stir through for a minute, then transfer to a large plate or dish. Gently mix in the mint and drizzle with the lime juice.",
+    "Serve with the remaining 1 tsp chile  akes and the crisp garlic sprinkled on top.",
     "Broccolini with soy sauce, garlic, and peanuts",
-    "This is also lovely with (an equal quantity of ) choy sum, if you prefer, instead of the broccolini. If you use choy sum it\u2019ll only need 1\u00bd minutes of steaming. This is good as a side to all sorts of things\u2014any roasted bird, for example\u2014as it is with a bowl of steamed rice."
+    "This is also lovely with (an equal quantity of ) choy sum, if you prefer, instead of the broccolini. If you use choy sum it’ll only need 1½ minutes of steaming. This is good as a side to all sorts of things—any roasted bird, for example—as it is with a bowl of steamed rice."
   ],
   "time": {
     "total": 30
@@ -63,7 +63,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

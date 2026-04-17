@@ -47,7 +47,8 @@
     "dish_type": [
       "condiment"
     ],
-    "chapter": "Kitchen Basics"
+    "chapter": "Kitchen Basics",
+    "meal_role": "component"
   },
   "cuisine": "African & Caribbean"
 }

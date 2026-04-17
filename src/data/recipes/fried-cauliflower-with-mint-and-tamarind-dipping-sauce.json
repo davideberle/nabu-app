@@ -101,7 +101,10 @@
     "total": 30
   },
   "category": {
-    "dish_type": [],
-    "chapter": "Fried"
+    "dish_type": [
+      "condiment"
+    ],
+    "chapter": "Fried",
+    "meal_role": "component"
   }
 }

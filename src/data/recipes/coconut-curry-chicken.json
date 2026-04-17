@@ -64,15 +64,18 @@
     "Add in the coconut milk, chopped tomatoes, tomato sauce and white sugar.",
     "Stir well to mix.",
     "Cover and cook for approximately about 35 to 40 minutes.",
-    "Remove and serve immediately.",
-    "Recipe 4: Coconut Curry Haddock"
+    "Remove and serve immediately."
   ],
   "time": {
     "total": 60
   },
   "image": "/recipes/coconut-curry-chicken.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

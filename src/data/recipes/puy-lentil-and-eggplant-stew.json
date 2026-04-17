@@ -7,7 +7,7 @@
     "chapter": "Rice, Grains, and Pulses"
   },
   "servings": "serves 4",
-  "intro": "though equally delicious, are completely different from one another. It\u2019s one of the",
+  "intro": "though equally delicious, are completely different from one another. It’s one of the",
   "ingredients": [
     {
       "item": "olive oil, plus extra to serve",
@@ -18,15 +18,15 @@
       "amount": "3"
     },
     {
-      "item": "large red onion, \uf001 nely chopped (1 cup/160g)",
+      "item": "large red onion,  nely chopped (1 cup/160g)",
       "amount": "1"
     },
     {
       "item": "thyme leaves salt",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
-      "item": "small eggplants, cut into chunks, about 2 x \u00be inch/5 x 2cm (6 cups/420g)",
+      "item": "small eggplants, cut into chunks, about 2 x ¾ inch/5 x 2cm (6 cups/420g)",
       "amount": "2"
     },
     {
@@ -35,7 +35,7 @@
     },
     {
       "item": "plus 2 tbsp/180g Puy lentils",
-      "amount": "\u00be cup"
+      "amount": "¾ cup"
     },
     {
       "item": "cups/500ml vegetable stock",
@@ -43,18 +43,18 @@
     },
     {
       "item": "cup/80ml dry white wine",
-      "amount": "\u2153"
+      "amount": "⅓"
     },
     {
       "item": "cups/450ml water",
-      "amount": "1\u00be"
+      "amount": "1¾"
     },
     {
-      "item": "tbsp/100g cr\u00e8me fra\u00eeche",
+      "item": "tbsp/100g crème fraîche",
       "amount": "6"
     },
     {
-      "item": "Urfa chile flakes (or \u00bd tsp other crushed red pepper \uf002 akes)",
+      "item": "Urfa chile flakes (or ½ tsp other crushed red pepper  akes)",
       "amount": "1 tsp"
     },
     {
@@ -67,11 +67,11 @@
     }
   ],
   "method": [
-    "Put 2 tbsp of oil into a large high-sided saut\u00e9 pan and place over medium- high heat. Add the garlic, onion, thyme, and \u00bc tsp salt and fry for 8 minutes, stirring often, until soft and golden. Tip into a bowl, leaving the oil behind.",
-    "Place the eggplant and tomatoes in a bowl and season with \u00bc tsp of salt and plenty of pepper. Add the remaining 1 tbsp of oil to the same pan (don\u2019t worry about wiping it clean) and, once very hot, add the eggplant and tomatoes. Fry for 10 minutes, over medium-high, turning them often until the eggplant is soft and golden brown and the tomatoes are beginning to blacken. Return the garlic and onion to the pan, then add the lentils, stock, wine, water, and \u00be tsp salt. Bring to a boil. Decrease the heat to medium and simmer gently for about 40 minutes, until the lentils are soft but still retain a bite.",
-    "Serve warm or at room temperature, with dollops of cr\u00e8me fra\u00eeche, a drizzle of oil, and chile \uf002 akes and oregano on top.",
+    "Put 2 tbsp of oil into a large high-sided sauté pan and place over medium- high heat. Add the garlic, onion, thyme, and ¼ tsp salt and fry for 8 minutes, stirring often, until soft and golden. Tip into a bowl, leaving the oil behind.",
+    "Place the eggplant and tomatoes in a bowl and season with ¼ tsp of salt and plenty of pepper. Add the remaining 1 tbsp of oil to the same pan (don’t worry about wiping it clean) and, once very hot, add the eggplant and tomatoes. Fry for 10 minutes, over medium-high, turning them often until the eggplant is soft and golden brown and the tomatoes are beginning to blacken. Return the garlic and onion to the pan, then add the lentils, stock, wine, water, and ¾ tsp salt. Bring to a boil. Decrease the heat to medium and simmer gently for about 40 minutes, until the lentils are soft but still retain a bite.",
+    "Serve warm or at room temperature, with dollops of crème fraîche, a drizzle of oil, and chile  akes and oregano on top.",
     "Bulgur with tomato, eggplant, and lemon yogurt",
-    "You can make just the bulgur and tomato, if you like (without the eggplant and preserved lemon yogurt) and serve it as a side. With the eggplant and yogurt, though, it makes a satisfying vegetarian main. You can make all the elements up to 1 day ahead\u2014just keep separate in the fridge, warm through and assemble before serving."
+    "You can make just the bulgur and tomato, if you like (without the eggplant and preserved lemon yogurt) and serve it as a side. With the eggplant and yogurt, though, it makes a satisfying vegetarian main. You can make all the elements up to 1 day ahead—just keep separate in the fridge, warm through and assemble before serving."
   ],
   "time": {
     "total": 30
@@ -81,7 +81,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Rice, Grains, and Pulses"
+    "chapter": "Rice, Grains, and Pulses",
+    "meal_role": "side"
   }
 }

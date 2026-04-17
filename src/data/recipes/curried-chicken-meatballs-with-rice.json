@@ -66,15 +66,18 @@
     "into balls.",
     "Place meatballs on sprayed sheet pan and bake for 7 minutes.",
     "Place curry sauce in saucepan over medium heat and bring to a simmer.",
-    "Coat cooked meatballs with curry sauce and serve over rice.",
-    "Recipe 17: Curried Chicken Salad"
+    "Coat cooked meatballs with curry sauce and serve over rice."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/curried-chicken-meatballs-with-rice.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

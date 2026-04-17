@@ -65,7 +65,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Basics & Breads"
+    "chapter": "Basics & Breads",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

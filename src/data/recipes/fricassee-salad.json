@@ -96,7 +96,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Fish"
+    "chapter": "Fish",
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern"
 }

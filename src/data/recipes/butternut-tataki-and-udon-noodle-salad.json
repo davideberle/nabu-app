@@ -77,7 +77,10 @@
   },
   "image": "/recipes/butternut-tataki-and-udon-noodle-salad.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Grilled"
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Grilled",
+    "meal_role": "main"
   }
 }

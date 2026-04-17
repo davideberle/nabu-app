@@ -52,7 +52,11 @@
   },
   "image": "/recipes/curry-and-cheese-cauliflower.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "side"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "side"
+  },
+  "cuisine": "Southeast Asian"
 }

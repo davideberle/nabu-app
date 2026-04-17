@@ -48,5 +48,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/dates-and-turkish-sheeps-cheese.jpg"
+  "image": "/recipes/dates-and-turkish-sheeps-cheese.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "starter"
+    ],
+    "meal_role": "starter"
+  }
 }

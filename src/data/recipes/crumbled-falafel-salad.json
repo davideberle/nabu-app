@@ -106,9 +106,10 @@
   ],
   "category": {
     "dish_type": [
-      "starter"
+      "salad"
     ],
-    "chapter": "Salads & Sides"
+    "chapter": "Salads & Sides",
+    "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/crumbled-falafel-salad.jpg"

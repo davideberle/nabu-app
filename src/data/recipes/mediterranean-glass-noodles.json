@@ -82,5 +82,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/mediterranean-glass-noodles.jpg"
+  "image": "/recipes/mediterranean-glass-noodles.jpg",
+  "cuisine": "Other",
+  "category": {
+    "dish_type": [
+      "main"
+    ],
+    "meal_role": "main"
+  }
 }

@@ -87,7 +87,10 @@
   },
   "image": "/recipes/spicy-chickpea-and-bulgur-soup.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Simmered"
+    "dish_type": [
+      "soup"
+    ],
+    "chapter": "Simmered",
+    "meal_role": "main"
   }
 }

@@ -85,7 +85,11 @@
   },
   "image": "/recipes/pad-krapao-basil-stir-fry.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Street Eats"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Street Eats",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

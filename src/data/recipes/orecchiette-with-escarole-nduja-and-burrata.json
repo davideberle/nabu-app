@@ -49,7 +49,9 @@
     "Plate in four bowls. Finish with the remaining ¼ cup Parmigiano, the remaining 1 ounce ’nduja, scoops of the burrata, and a drizzle of oil. Enjoy!"
   ],
   "tags": {
-    "season": ["fall"]
+    "season": [
+      "fall"
+    ]
   },
   "image": null,
   "time": {
@@ -59,7 +61,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Fall"
+    "chapter": "Fall",
+    "meal_role": "main"
   },
   "cuisine": "Italian"
 }

@@ -88,15 +88,18 @@
     "Add the soy sauce, hot sauce, bay leaf, sweet potatoes, coconut milk, and",
     "bay leaf to the pot and bring the liquid to boil.",
     "Lower heat to simmer and cook for 50 minutes. Garnish the stew with",
-    "cilantro.",
-    "Recipe 44: Curry Tuna and Rice Casserole"
+    "cilantro."
   ],
   "time": {
     "total": 60
   },
   "image": "/recipes/curry-stew.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Thai Curries"
-  }
+    "dish_type": [
+      "main"
+    ],
+    "chapter": "Thai Curries",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }

@@ -6,7 +6,7 @@
     "author": "Helen Le",
     "chapter": "Sides"
   },
-  "servings": "",
+  "servings": "serves 4",
   "ingredients": [
     {
       "item": "fresh young green jackfruit or breadfruit, peeled, or canned jackfruit, drained",
@@ -72,7 +72,8 @@
     "dish_type": [
       "side"
     ],
-    "chapter": "Sides"
+    "chapter": "Sides",
+    "meal_role": "side"
   },
   "image": "/recipes/young-jackfruit-and-seaweed-salad.jpg",
   "cuisine": "Southeast Asian"

@@ -14,7 +14,7 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "fresh chorizo cooking sausages, halved lengthwise and cut into \u00bd- inch/1cm rounds (1\u00bc cups/150g)",
+      "item": "fresh chorizo cooking sausages, halved lengthwise and cut into ½- inch/1cm rounds (1¼ cups/150g)",
       "amount": "2"
     },
     {
@@ -23,10 +23,10 @@
     },
     {
       "item": "sweet smoked paprika",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
-      "item": "5 oz/600g cavolo nero (lacinato kale), leaves pulled off stems, stems discarded, leaves roughly chopped into 1\u00bd-inch/4cm strips and rinsed (5\u2153 cups/360g)",
+      "item": "5 oz/600g cavolo nero (lacinato kale), leaves pulled off stems, stems discarded, leaves roughly chopped into 1½-inch/4cm strips and rinsed (5⅓ cups/360g)",
       "amount": "1 lb"
     },
     {
@@ -34,7 +34,7 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "small preserved lemons, seeds discarded, skin and \uf002 esh roughly chopped (\u00bc cup/40g)",
+      "item": "small preserved lemons, seeds discarded, skin and  esh roughly chopped (¼ cup/40g)",
       "amount": "2"
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "item": "plus 2 tbsp/100g sour cream",
-      "amount": "\u2153 cup"
+      "amount": "⅓ cup"
     },
     {
       "item": "1.",
@@ -51,13 +51,13 @@
     }
   ],
   "method": [
-    "Put the oil into a large saut\u00e9 pan with a lid and place over medium-high heat.",
-    "Once hot, add the chorizo and fry for 3\u20134 minutes, until golden brown. Add the garlic and cook for 1 minute longer, until starting to brown. Stir in the paprika, then, using a slotted spoon, lift the chorizo and garlic out of the oil and place in a small bowl.",
-    "Add the cavolo nero to the pan, in three or four additions, stirring it into the oil. Once all the leaves have been added, add the water, \u00bc tsp of salt, and plenty of pepper. Cook for 3 minutes, covered, stirring once or twice to help the leaves wilt. Remove the lid and continue to fry for 5\u20136 minutes, stirring frequently, until the liquid has evaporated and the leaves are cooked but still retain a slight bite and are starting to brown.",
+    "Put the oil into a large sauté pan with a lid and place over medium-high heat.",
+    "Once hot, add the chorizo and fry for 3–4 minutes, until golden brown. Add the garlic and cook for 1 minute longer, until starting to brown. Stir in the paprika, then, using a slotted spoon, lift the chorizo and garlic out of the oil and place in a small bowl.",
+    "Add the cavolo nero to the pan, in three or four additions, stirring it into the oil. Once all the leaves have been added, add the water, ¼ tsp of salt, and plenty of pepper. Cook for 3 minutes, covered, stirring once or twice to help the leaves wilt. Remove the lid and continue to fry for 5–6 minutes, stirring frequently, until the liquid has evaporated and the leaves are cooked but still retain a slight bite and are starting to brown.",
     "Return the chorizo and garlic to the pan, along with the preserved lemon and lemon juice. Stir through, then remove from the heat and add the sour cream. Fold through, to combine, then divide among four bowls or place on one large platter.",
     "Quick okra with sweet-and-sour dressing",
     "Pictured on this page, left",
-    "Anyone who loves okra will never stop trying to convert those who think they don\u2019t love okra to the vegetable. Anyone put off by its sliminess (which results from it being chopped up and cooked) really should be open-minded here. The okra remains whole and is barely cooked, so the result is the opposite of what you might imagine. This is a lovely side to all sorts of dishes\u2014it\u2019s perfect alongside the Whole roasted sea bass with soy sauce and ginger (this page)\u2014or as it is, with a bowl of plain rice."
+    "Anyone who loves okra will never stop trying to convert those who think they don’t love okra to the vegetable. Anyone put off by its sliminess (which results from it being chopped up and cooked) really should be open-minded here. The okra remains whole and is barely cooked, so the result is the opposite of what you might imagine. This is a lovely side to all sorts of dishes—it’s perfect alongside the Whole roasted sea bass with soy sauce and ginger (this page)—or as it is, with a bowl of plain rice."
   ],
   "time": {
     "total": 30
@@ -67,7 +67,7 @@
     "dish_type": [
       "side"
     ],
-    "meal_role": "side",
-    "chapter": "Cooked Veg"
+    "chapter": "Cooked Veg",
+    "meal_role": "side"
   }
 }

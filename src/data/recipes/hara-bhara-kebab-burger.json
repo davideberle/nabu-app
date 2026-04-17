@@ -113,7 +113,8 @@
     "dish_type": [
       "main"
     ],
-    "chapter": "Starters & Snacks"
+    "chapter": "Starters & Snacks",
+    "meal_role": "main"
   },
   "cuisine": "Indian"
 }

@@ -65,9 +65,10 @@
   },
   "category": {
     "dish_type": [
-      "condiment"
+      "main"
     ],
-    "chapter": "Seafood Pasta Recipes"
+    "chapter": "Seafood Pasta Recipes",
+    "meal_role": "main"
   },
   "cuisine": "Italian",
   "image": "/recipes/catfish-with-lemon-and-butter-sauce.jpg"

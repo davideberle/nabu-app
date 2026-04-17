@@ -79,5 +79,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/quince-and-sweet-gorgonzola-salad.jpg"
+  "image": "/recipes/quince-and-sweet-gorgonzola-salad.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "salad"
+    ],
+    "meal_role": "main"
+  }
 }

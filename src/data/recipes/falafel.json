@@ -90,7 +90,8 @@
     "dish_type": [
       "starter"
     ],
-    "chapter": "Pulses & Grains"
+    "chapter": "Pulses & Grains",
+    "meal_role": "starter"
   },
   "cuisine": "Middle Eastern"
 }

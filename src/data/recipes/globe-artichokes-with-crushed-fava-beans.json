@@ -58,5 +58,12 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/globe-artichokes-with-crushed-fava-beans.jpg"
+  "image": "/recipes/globe-artichokes-with-crushed-fava-beans.jpg",
+  "category": {
+    "chapter": "",
+    "dish_type": [
+      "side"
+    ],
+    "meal_role": "side"
+  }
 }

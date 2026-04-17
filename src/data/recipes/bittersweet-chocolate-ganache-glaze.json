@@ -54,7 +54,8 @@
     "dish_type": [
       "dessert"
     ],
-    "chapter": "Desserts"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
   },
   "image": "/recipes/bittersweet-chocolate-ganache-glaze.jpg",
   "cuisine": "Other"

@@ -10,10 +10,6 @@
   "intro": "It’s hard to believe, but I really think I am lucky enough to have one of the best cooks of Isaan food in",
   "ingredients": [
     {
-      "item": "115",
-      "amount": ""
-    },
-    {
       "item": "small bird’s eye chilies (or to taste depending on desired spice tolerance)",
       "amount": "2–4"
     },
@@ -73,7 +69,11 @@
   },
   "image": "/recipes/foolproof-som-tum-pla-rah.jpg",
   "category": {
-    "dish_type": [],
-    "chapter": "Isaan"
-  }
+    "dish_type": [
+      "salad"
+    ],
+    "chapter": "Isaan",
+    "meal_role": "main"
+  },
+  "cuisine": "Southeast Asian"
 }
