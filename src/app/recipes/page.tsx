@@ -135,6 +135,7 @@ export default async function RecipesPage() {
                       src={cookbook.cover}
                       alt={cookbook.name}
                       fill
+                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 25vw, 50vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (

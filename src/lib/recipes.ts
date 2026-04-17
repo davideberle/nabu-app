@@ -218,9 +218,12 @@ export function formatServings(raw: string): string {
 // Cookbook cover images
 const COOKBOOK_COVERS: Record<string, string> = {
   "Ottolenghi: The Cookbook": "/cookbooks/ottolenghi-the-cookbook.jpg",
+  "Ottolenghi Simple": "/cookbooks/ottolenghi-simple.jpg",
   Jerusalem: "/cookbooks/jerusalem.jpg",
   Falastin: "/cookbooks/falastin.jpg",
   Persiana: "/cookbooks/persiana.jpg",
+  Plenty: "/cookbooks/plenty.jpg",
+  "Plenty More": "/cookbooks/plenty-more.jpg",
   "The Curry Guy": "/cookbooks/the-curry-guy.jpg",
   "The Curry Guy Bible": "/cookbooks/the-curry-guy-bible.jpg",
   "The Indian Vegan": "/cookbooks/the-indian-vegan.jpg",
@@ -229,13 +232,19 @@ const COOKBOOK_COVERS: Record<string, string> = {
   Plentiful: "/cookbooks/plentiful.jpg",
   "The Vegan Korean": "/cookbooks/the-vegan-korean.jpg",
   "Black Rican Vegan": "/cookbooks/black-rican-vegan.jpg",
+  "Brunch Cookbook": "/cookbooks/brunch-cookbook.jpg",
   "Four Seasons": "/cookbooks/four-seasons.jpg",
   "The High-Protein Vegan Cookbook":
     "/cookbooks/the-high-protein-vegan-cookbook.jpg",
   "Land of Fish and Rice": "/cookbooks/land-of-fish-and-rice.jpg",
   "Vegan Chocolate": "/cookbooks/vegan-chocolate.jpg",
+  "Vegan Vietnamese": "/cookbooks/vegan-vietnamese.jpg",
   "The Authentic Greek Kitchen": "/cookbooks/the-authentic-greek-kitchen.jpg",
+  "The Complete Greek Cookbook": "/cookbooks/the-complete-greek-cookbook.jpg",
   "Zagami Family Cookbook": "/cookbooks/zagami-family-cookbook.jpg",
+  "Jamie's Food Revolution": "/cookbooks/jamies-food-revolution.jpg",
+  "Tagine Cookbook": "/cookbooks/tagine-cookbook.jpg",
+  "Raw Food": "/cookbooks/raw-food.jpg",
   "My Recipes": "/cookbooks/my-recipes.jpg",
 };
 

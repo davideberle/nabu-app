@@ -1,7 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getRecipe, getAllRecipes, getCourseTags, formatServings, isLowCalorie, getMealRole } from "@/lib/recipes";
+import BackButton from "@/components/BackButton";
 
 export const revalidate = 60;
 
@@ -136,16 +136,9 @@ export default async function RecipePage({
 
   return (
     <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950">
-      {/* Back button */}
+      {/* Back button — returns to previous page (cookbook, search, etc.) or /recipes for direct links */}
       <div className="fixed top-4 left-4 z-10">
-        <Link
-          href="/recipes"
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-white/95 dark:bg-stone-900/95 shadow-lg backdrop-blur text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-100 transition-colors"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
-          </svg>
-        </Link>
+        <BackButton />
       </div>
 
       {/* Hero image */}
