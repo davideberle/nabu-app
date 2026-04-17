@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getRecipe, getAllRecipes, getCourseTags, formatServings, isLowCalorie, getMealRole } from "@/lib/recipes";
+import { getCourseTagColor, normalizeTagLabel, PUBLICATION_BADGE_CLASSES } from "@/lib/tag-colors";
 import BackButton from "@/components/BackButton";
 
 export const revalidate = 60;
@@ -12,7 +13,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// Capitalize first letter
 function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -179,7 +179,7 @@ export default async function RecipePage({
                     {recipe.source.cookbook}
                   </span>
                   {recipe.source.publication && (
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${PUBLICATION_BADGE_CLASSES}`}>
                       {recipe.source.publication}
                     </span>
                   )}
@@ -197,9 +197,9 @@ export default async function RecipePage({
               {getCourseTags(recipe).map((type) => (
                 <span
                   key={type}
-                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 border border-amber-200 dark:border-amber-800"
+                  className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border border-transparent ${getCourseTagColor(type)}`}
                 >
-                  {capitalize(type)}
+                  {normalizeTagLabel(type)}
                 </span>
               ))}
 

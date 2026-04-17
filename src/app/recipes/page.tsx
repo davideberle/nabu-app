@@ -1,13 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAllRecipes, getCookbooks, getCuisines, getDietaryOptions, getDietary, getCourseTags } from "@/lib/recipes";
+import { getCourseTagColor, normalizeTagLabel } from "@/lib/tag-colors";
 
 export const revalidate = 60;
-
-function capitalize(str: string): string {
-  if (!str) return '';
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
 
 export default async function RecipesPage() {
   const recipes = await getAllRecipes();
@@ -67,7 +63,7 @@ export default async function RecipesPage() {
           <div className="flex items-stretch">
             <div className="relative w-28 sm:w-36 shrink-0">
               <Image
-                src="/cookbooks/my-recipes.jpg"
+                src="/cookbooks/my-recipes-custom.jpg"
                 alt="My Recipes"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -229,9 +225,9 @@ export default async function RecipesPage() {
                         {courseTags.slice(0, 1).map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] px-1.5 py-0.5 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded"
+                            className={`text-[10px] px-1.5 py-0.5 rounded ${getCourseTagColor(tag)}`}
                           >
-                            {capitalize(tag)}
+                            {normalizeTagLabel(tag)}
                           </span>
                         ))}
                         {dietary.slice(0, 1).map((tag) => (

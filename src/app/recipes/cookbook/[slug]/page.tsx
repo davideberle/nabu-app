@@ -2,14 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getCookbooks, getRecipesByCookbook, getDietary, getCourseTags, formatServings } from "@/lib/recipes";
+import { getCourseTagColor, normalizeTagLabel, PUBLICATION_BADGE_CLASSES } from "@/lib/tag-colors";
 import { ChapterNav } from "./ChapterNav";
 
 export const revalidate = 60;
-
-function capitalize(str: string): string {
-  if (!str) return '';
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
 
 // Chapter order by cookbook (as they appear in the book)
 const CHAPTER_ORDER: Record<string, string[]> = {
@@ -187,16 +183,21 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
                               {formatServings(recipe.servings)}
                             </p>
                           )}
-                          {(courseTags.length > 0 || dietary.length > 0) && (
-                            <div className="flex gap-1.5 mt-2">
+                          {(courseTags.length > 0 || dietary.length > 0 || recipe.source?.publication) && (
+                            <div className="flex flex-wrap gap-1.5 mt-2">
                               {courseTags.slice(0, 1).map((tag) => (
                                 <span
                                   key={tag}
-                                  className="text-[10px] px-1.5 py-0.5 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded"
+                                  className={`text-[10px] px-1.5 py-0.5 rounded ${getCourseTagColor(tag)}`}
                                 >
-                                  {capitalize(tag)}
+                                  {normalizeTagLabel(tag)}
                                 </span>
                               ))}
+                              {recipe.source?.publication && (
+                                <span className={`text-[10px] px-1.5 py-0.5 rounded ${PUBLICATION_BADGE_CLASSES}`}>
+                                  {recipe.source.publication}
+                                </span>
+                              )}
                               {dietary.slice(0, 2).map((tag: string) => (
                                 <span
                                   key={tag}
@@ -249,16 +250,21 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
                         {formatServings(recipe.servings)}
                       </p>
                     )}
-                    {(courseTags.length > 0 || dietary.length > 0) && (
-                      <div className="flex gap-1.5 mt-2">
+                    {(courseTags.length > 0 || dietary.length > 0 || recipe.source?.publication) && (
+                      <div className="flex flex-wrap gap-1.5 mt-2">
                         {courseTags.slice(0, 1).map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] px-1.5 py-0.5 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded"
+                            className={`text-[10px] px-1.5 py-0.5 rounded ${getCourseTagColor(tag)}`}
                           >
-                            {capitalize(tag)}
+                            {normalizeTagLabel(tag)}
                           </span>
                         ))}
+                        {recipe.source?.publication && (
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded ${PUBLICATION_BADGE_CLASSES}`}>
+                            {recipe.source.publication}
+                          </span>
+                        )}
                         {dietary.slice(0, 2).map((tag: string) => (
                           <span
                             key={tag}

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useCallback, useRef } from "react";
+import { getCourseTagColor } from "@/lib/tag-colors";
 
 // ----- types -----
 
@@ -145,21 +146,7 @@ const KIND_COLORS: Record<string, string> = {
   custom: "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400",
 };
 
-// ----- category colors -----
-
-const CATEGORY_COLORS: Record<string, string> = {
-  Pasta: "bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300",
-  Curry: "bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300",
-  Soup: "bg-sky-100 dark:bg-sky-900 text-sky-700 dark:text-sky-300",
-  Salad: "bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300",
-  Bowl: "bg-teal-100 dark:bg-teal-900 text-teal-700 dark:text-teal-300",
-  "Stir-Fry": "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300",
-  Tagine: "bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300",
-  Rice: "bg-lime-100 dark:bg-lime-900 text-lime-700 dark:text-lime-300",
-  Roast: "bg-rose-100 dark:bg-rose-900 text-rose-700 dark:text-rose-300",
-  Grill: "bg-fuchsia-100 dark:bg-fuchsia-900 text-fuchsia-700 dark:text-fuchsia-300",
-  Main: "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400",
-};
+// Category colors now come from the shared tag-colors module.
 
 // ----- time display helper -----
 
@@ -1024,7 +1011,7 @@ function RecipeCard({
   const vegTags = recipe.dietary.filter(
     (t) => t === "vegan" || t === "vegetarian"
   );
-  const catColors = CATEGORY_COLORS[recipe.category] || CATEGORY_COLORS.Main;
+  const catColors = getCourseTagColor(recipe.category);
 
   return (
     <div
@@ -1145,7 +1132,7 @@ function WeekendMealCard({
   const vegTags = main.dietary.filter(
     (t) => t === "vegan" || t === "vegetarian"
   );
-  const catColors = CATEGORY_COLORS[main.category] || CATEGORY_COLORS.Main;
+  const catColors = getCourseTagColor(main.category);
 
   return (
     <div
@@ -1353,9 +1340,7 @@ function QuickViewModal({
               {/* Badges */}
               <div className="flex flex-wrap gap-2">
                 <span
-                  className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                    CATEGORY_COLORS[recipe.category] || CATEGORY_COLORS.Main
-                  }`}
+                  className={`text-xs px-2 py-0.5 rounded-full font-medium ${getCourseTagColor(recipe.category)}`}
                 >
                   {recipe.category}
                 </span>
