@@ -342,6 +342,83 @@ async function migrate(client: Client) {
         ],
       });
     },
+
+    // v5 -> v6: import Schoggi-Weggli and Zopf from FOOBY into My Recipes
+    async () => {
+      const foobyImports = [
+        {
+          id: "schoggi-weggli",
+          name: "Schoggi-Weggli",
+          image: "/recipes/schoggi-weggli.jpg",
+          source: { cookbook: "My Recipes", publication: "Fooby", author: "Fooby" },
+          cuisine: "Swiss",
+          category: "Bread",
+          servings: "16 rolls",
+          time: { prep: 25, total: 205 },
+          intro: "Classic Swiss chocolate bread rolls — soft milk dough studded with dark chocolate chunks. Perfect for breakfast or a snack.",
+          ingredients: [
+            { amount: "500 g", item: "Halbweissmehl (semi-white flour)", group: "Dough" },
+            { amount: "1½ EL", item: "sugar", group: "Dough" },
+            { amount: "½ cube", item: "fresh yeast (about 20 g), crumbled", group: "Dough" },
+            { amount: "1½ tsp", item: "salt", group: "Dough" },
+            { amount: "3.5 dl", item: "milk", group: "Dough" },
+            { amount: "60 g", item: "butter", group: "Dough" },
+            { amount: "100 g", item: "dark chocolate, roughly chopped", group: "Dough" },
+            { amount: "1", item: "egg, beaten", group: "Topping" },
+          ],
+          method: [
+            "Combine the flour, salt, sugar, and crumbled yeast in a bowl and mix. Add the milk and knead with the dough hooks of a hand mixer for about 5 minutes.",
+            "Add the butter and continue kneading for about 5 minutes until the dough is soft and smooth. Knead in the chopped chocolate.",
+            "Cover and let rise at room temperature for about 2 hours until doubled in size.",
+            "Divide the dough into 16 portions, shape into balls, and place on two baking-paper-lined trays. Cover and let rise for another 30 minutes.",
+            "Brush the rolls with beaten egg.",
+            "Bake each tray for about 15 minutes in the lower half of a 220 °C preheated oven. Cool on a wire rack.",
+          ],
+          dietary: ["vegetarian"],
+          tags: ["Bread", "Baking", "Breakfast", "Chocolate", "Swiss", "Fooby"],
+          mealRole: "bread",
+        },
+        {
+          id: "zopf",
+          name: "Zopf",
+          image: "/recipes/zopf.jpg",
+          source: { cookbook: "My Recipes", publication: "Fooby", author: "Fooby" },
+          cuisine: "Swiss",
+          category: "Bread",
+          servings: "1 braided loaf (about 10 slices)",
+          time: { prep: 40, total: 195 },
+          intro: "The quintessential Swiss Sunday bread — a rich, buttery braided loaf with a golden egg-wash crust. A staple of every Swiss brunch table.",
+          ingredients: [
+            { amount: "500 g", item: "Zopfmehl (braiding/bread flour)", group: "Dough" },
+            { amount: "1 tsp", item: "sugar", group: "Dough" },
+            { amount: "½ cube", item: "fresh yeast (about 20 g), crumbled", group: "Dough" },
+            { amount: "¾ EL", item: "salt", group: "Dough" },
+            { amount: "80 g", item: "butter, in small pieces", group: "Dough" },
+            { amount: "2", item: "eggs (1 for dough, 1 for glazing)", group: "Dough" },
+            { amount: "2.5 dl", item: "milk", group: "Dough" },
+          ],
+          method: [
+            "Combine the flour, salt, and sugar in a bowl and mix. Crumble in the yeast. Cut the butter into pieces, add with one egg and the milk, and knead into a soft, smooth dough.",
+            "Cover and let rise at room temperature for about 1½ hours until doubled in size.",
+            "Halve the dough and roll each half into a strand about 70 cm long, tapering slightly at the ends.",
+            "Lay the two strands in a cross. Take the bottom end of the lower strand over to the opposite side, then repeat with the other strand. Continue braiding to the ends.",
+            "Pinch the ends together and tuck them under the loaf. Place on a baking-paper-lined tray.",
+            "Beat the remaining egg, brush the loaf, and let rise for another 30 minutes. Brush with egg again.",
+            "Bake for about 35 minutes in the lower half of a 200 °C preheated oven. Cool on a wire rack.",
+          ],
+          dietary: ["vegetarian"],
+          tags: ["Bread", "Baking", "Brunch", "Breakfast", "Swiss", "Fooby"],
+          mealRole: "bread",
+        },
+      ];
+
+      for (const recipe of foobyImports) {
+        await client.execute({
+          sql: "INSERT OR IGNORE INTO recipes (id, data, created_at) VALUES (?, ?, ?)",
+          args: [recipe.id, JSON.stringify(recipe), new Date().toISOString()],
+        });
+      }
+    },
   ];
 
   if (version < migrations.length) {

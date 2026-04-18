@@ -245,7 +245,7 @@ const COOKBOOK_COVERS: Record<string, string> = {
   "Jamie's Food Revolution": "/cookbooks/jamies-food-revolution.jpg",
   "Tagine Cookbook": "/cookbooks/tagine-cookbook.jpg",
   "Raw Food": "/cookbooks/raw-food.jpg",
-  "My Recipes": "/cookbooks/my-recipes-custom.jpg",
+  "My Recipes": "/cookbooks/my-recipes-cover.jpg",
 };
 
 export async function getCookbooks(): Promise<
