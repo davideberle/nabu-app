@@ -15,7 +15,9 @@ export async function GET(request: NextRequest) {
   const events = recipeId
     ? await getCookEventsForRecipe(recipeId)
     : await getRecentCookEvents();
-  return NextResponse.json(events);
+  // vNext: date-only presentation — strip per-event notes from API output
+  const cleaned = events.map(({ note: _note, ...rest }) => rest);
+  return NextResponse.json(cleaned);
 }
 
 /**

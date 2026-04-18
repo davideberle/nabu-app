@@ -150,12 +150,29 @@ export type WeekContextItem = {
   effect?: "skip-meal" | "guest-friendly" | "quick-meal" | "light-meal";
 };
 
+export type CandidateItem = {
+  recipeId: string;
+  recipeName: string;
+};
+
+export type CandidateSet = {
+  generatedAt: string;
+  policyVersion: string;
+  items: CandidateItem[];
+};
+
+export type DayPlanningState = "open" | "assigned" | "meal" | "skipped";
+
 export type MealPlan = {
   week: string; // "2026-W15"
+  status?: "draft" | "finalized";
+  plannerVersion?: string;
+  candidateSet?: CandidateSet | null;
   days: {
     date: string; // "2026-04-07"
     dayOfWeek: string; // "Monday"
     type: "weekday" | "weekend";
+    planningState?: DayPlanningState;
     recipeId: string | null;
     recipeName: string | null;
     meal?: MealSlot | null;
@@ -634,6 +651,30 @@ export function selectMealOptions(
   return { weekday, weekend, weekendMeals };
 }
 
+/**
+ * Phase 1 (vNext): select ~12 candidate mains as a flat list.
+ * Internally reuses the diversity logic from selectMealOptions but
+ * merges weekday + weekend into a single shuffled candidate pool.
+ */
+export function selectCandidateMains(
+  allRecipes: Recipe[],
+  excludeIds?: Set<string>,
+  hints?: GenerationHints
+): Recipe[] {
+  const { weekday, weekend } = selectMealOptions(allRecipes, excludeIds, hints);
+  // Merge and deduplicate
+  const seen = new Set<string>();
+  const candidates: Recipe[] = [];
+  for (const r of shuffle([...weekday, ...weekend])) {
+    if (!seen.has(r.id)) {
+      seen.add(r.id);
+      candidates.push(r);
+    }
+  }
+  // Target ~12 candidates
+  return candidates.slice(0, 12);
+}
+
 // ----- week date helpers -----
 
 export function getISOWeek(date: Date): { year: number; week: number } {
@@ -669,6 +710,8 @@ export function getWeekDates(
     { offset: 1, day: "Tuesday" },
     { offset: 2, day: "Wednesday" },
     { offset: 3, day: "Thursday" },
+    { offset: 4, day: "Friday" },
+    { offset: 5, day: "Saturday" },
     { offset: 6, day: "Sunday" },
   ];
   return offsets.map(({ offset, day }) => {

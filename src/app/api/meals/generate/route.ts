@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getAllRecipes, getCuisine, getDietary, isLowCalorie, getRecipe } from "@/lib/recipes";
-import { selectMealOptions, getDisplayCategory, type WeekendMealOption, type WeekContextItem } from "@/lib/meals";
+import { selectMealOptions, selectCandidateMains, getDisplayCategory, type WeekendMealOption, type WeekContextItem } from "@/lib/meals";
 import { getRecentlyCookedRecipeIds } from "@/lib/db";
 import type { Recipe } from "@/lib/recipes";
 
@@ -62,11 +62,24 @@ export async function GET(request: NextRequest) {
     (c) => c.effect === "guest-friendly"
   );
 
-  const { weekday, weekend, weekendMeals } = selectMealOptions(allRecipes, excludeIds, {
+  const hints = {
     skipCount,
     preferQuick: wantQuick,
     preferGuestFriendly: wantGuestFriendly,
-  });
+  };
+
+  // vNext flat candidates mode (default)
+  const mode = request.nextUrl.searchParams.get("mode");
+  if (mode !== "legacy") {
+    const candidates = selectCandidateMains(allRecipes, excludeIds, hints);
+    return NextResponse.json({
+      candidates: candidates.map(summarize),
+      appliedContext: weekContext.length > 0 ? { skipCount, wantQuick, wantGuestFriendly } : undefined,
+    });
+  }
+
+  // Legacy mode: weekday/weekend split (kept for backward compat)
+  const { weekday, weekend, weekendMeals } = selectMealOptions(allRecipes, excludeIds, hints);
 
   return NextResponse.json({
     weekday: weekday.map(summarize),

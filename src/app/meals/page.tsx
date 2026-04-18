@@ -19,12 +19,6 @@ type RecipeOption = {
   lowCalorie?: boolean;
 };
 
-type WeekendMealCombo = {
-  main: RecipeOption;
-  sides: RecipeOption[];
-  rationale?: string | null;
-};
-
 type RecipeDetail = RecipeOption & {
   introduction?: string | null;
   tips?: string | null;
@@ -41,27 +35,37 @@ type WeekContextItem = {
   effect?: "skip-meal" | "guest-friendly" | "quick-meal" | "light-meal";
 };
 
+type CandidateItem = {
+  recipeId: string;
+  recipeName: string;
+};
+
+type CandidateSet = {
+  generatedAt: string;
+  policyVersion: string;
+  items: CandidateItem[];
+};
+
 type DaySlot = {
   date: string;
   dayOfWeek: string;
+  type?: "weekday" | "weekend";
+  planningState?: "open" | "assigned" | "meal" | "skipped";
   recipeId: string | null;
   recipeName: string | null;
 };
 
 type MealPlan = {
   week: string;
+  status?: "draft" | "finalized";
+  plannerVersion?: string;
+  candidateSet?: CandidateSet | null;
   days: DaySlot[];
   context?: WeekContextItem[];
   notes?: string;
   locked: boolean;
   createdAt: string;
   updatedAt?: string;
-};
-
-type IngredientGroup = {
-  recipeName: string;
-  recipeId: string;
-  ingredients: { item: string; amount: string }[];
 };
 
 // ----- date helpers -----
@@ -99,6 +103,8 @@ function getWeekDates(
     { offset: 1, day: "Tuesday" },
     { offset: 2, day: "Wednesday" },
     { offset: 3, day: "Thursday" },
+    { offset: 4, day: "Friday" },
+    { offset: 5, day: "Saturday" },
     { offset: 6, day: "Sunday" },
   ];
   return offsets.map(({ offset, day }) => {
@@ -163,8 +169,18 @@ function formatPlannerTime(totalMin: number | undefined | null): string | null {
 }
 
 
-// ----- autosave hook -----
+// ----- persistence helpers -----
 
+/** Immediately persist a plan to the server. */
+function savePlanNow(plan: MealPlan): void {
+  fetch("/api/meals/plan", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(plan),
+  }).catch(() => {});
+}
+
+/** Debounced autosave for non-critical changes (notes, context). */
 function useAutosave(plan: MealPlan | null, delayMs = 1500) {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastSavedRef = useRef<string>("");
@@ -173,15 +189,11 @@ function useAutosave(plan: MealPlan | null, delayMs = 1500) {
     const serialized = JSON.stringify(p);
     if (serialized === lastSavedRef.current) return;
     lastSavedRef.current = serialized;
-    fetch("/api/meals/plan", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: serialized,
-    }).catch(() => {});
+    savePlanNow(p);
   }, []);
 
   useEffect(() => {
-    if (!plan || plan.locked) return;
+    if (!plan) return;
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => save(plan), delayMs);
     return () => {
@@ -189,7 +201,6 @@ function useAutosave(plan: MealPlan | null, delayMs = 1500) {
     };
   }, [plan, delayMs, save]);
 
-  // Reset last-saved ref when week changes
   const weekRef = useRef(plan?.week);
   useEffect(() => {
     if (plan?.week !== weekRef.current) {
@@ -215,32 +226,30 @@ export default function MealsPage() {
   const weekDates = getWeekDates(activeWeek.year, activeWeek.week);
 
   const [plan, setPlan] = useState<MealPlan | null>(null);
-  const [weekdayOptions, setWeekdayOptions] = useState<RecipeOption[]>([]);
-  const [weekendOptions, setWeekendOptions] = useState<RecipeOption[]>([]);
-  const [weekendMeals, setWeekendMeals] = useState<WeekendMealCombo[]>([]);
+  const [candidates, setCandidates] = useState<RecipeOption[]>([]);
   const [selectedRecipe, setSelectedRecipe] = useState<RecipeOption | null>(null);
   const [loading, setLoading] = useState(false);
-  const [loadingMore, setLoadingMore] = useState(false);
-  const [ingredientGroups, setIngredientGroups] = useState<IngredientGroup[] | null>(null);
-  const [showIngredients, setShowIngredients] = useState(false);
   const [quickViewRecipe, setQuickViewRecipe] = useState<RecipeDetail | null>(null);
   const [quickViewLoading, setQuickViewLoading] = useState(false);
   const [showContextEditor, setShowContextEditor] = useState(false);
   const [filterLowCal, setFilterLowCal] = useState(false);
   const [planLoading, setPlanLoading] = useState(true);
 
-  // Track all shown recipe IDs for "Show More" exclusion
-  const [shownIds, setShownIds] = useState<Set<string>>(new Set());
-
-  // Autosave drafts
+  // Autosave for notes/context changes only
   useAutosave(plan);
 
   const buildEmptyPlan = useCallback((): MealPlan => {
+    const WEEKEND_DAYS = new Set(["Friday", "Saturday", "Sunday"]);
     return {
       week: weekId,
+      status: "draft",
+      plannerVersion: "vNext-1",
+      candidateSet: null,
       days: weekDates.map((wd) => ({
         date: wd.date,
         dayOfWeek: wd.dayOfWeek,
+        type: (WEEKEND_DAYS.has(wd.dayOfWeek) ? "weekend" : "weekday") as "weekday" | "weekend",
+        planningState: "open" as const,
         recipeId: null,
         recipeName: null,
       })),
@@ -257,13 +266,8 @@ export default function MealsPage() {
     // old/empty data over a saved plan while the fetch is in flight.
     setPlan(null);
     setPlanLoading(true);
-    setWeekdayOptions([]);
-    setWeekendOptions([]);
-    setWeekendMeals([]);
+    setCandidates([]);
     setSelectedRecipe(null);
-    setIngredientGroups(null);
-    setShowIngredients(false);
-    setShownIds(new Set());
     setShowContextEditor(false);
 
     let cancelled = false;
@@ -273,6 +277,19 @@ export default function MealsPage() {
         if (cancelled) return;
         if (data && data.week) {
           setPlan(data);
+          // Restore saved candidates so the week feels stable on reload
+          if (data.candidateSet?.items?.length) {
+            setCandidates(
+              data.candidateSet.items.map((c) => ({
+                id: c.recipeId,
+                name: c.recipeName,
+                dietary: [],
+                cuisine: "",
+                time: null,
+                category: "",
+              }))
+            );
+          }
         } else {
           setPlan(null);
         }
@@ -286,7 +303,7 @@ export default function MealsPage() {
     return () => { cancelled = true; };
   }, [weekId]);
 
-  // Generate meal options (initial)
+  // Generate ~12 candidate mains for the week
   async function handleGenerate() {
     setLoading(true);
     try {
@@ -295,46 +312,24 @@ export default function MealsPage() {
         : "";
       const res = await fetch(`/api/meals/generate?${contextParam}`);
       const data = await res.json();
-      setWeekdayOptions(data.weekday);
-      setWeekendOptions(data.weekend);
-      setWeekendMeals(data.weekendMeals || []);
-      const ids = new Set<string>();
-      [...data.weekday, ...data.weekend].forEach((r: RecipeOption) => ids.add(r.id));
-      setShownIds(ids);
-      if (!plan) {
-        setPlan(buildEmptyPlan());
-      }
+      const newCandidates: RecipeOption[] = data.candidates || [];
+      setCandidates(newCandidates);
+
+      // Persist candidate set with the plan
+      const candidateSet: CandidateSet = {
+        generatedAt: new Date().toISOString(),
+        policyVersion: "planner-v1",
+        items: newCandidates.map((r) => ({ recipeId: r.id, recipeName: r.name })),
+      };
+      const updatedPlan = plan
+        ? { ...plan, candidateSet }
+        : { ...buildEmptyPlan(), candidateSet };
+      setPlan(updatedPlan);
+      savePlanNow(updatedPlan);
     } catch (err) {
       console.error("Failed to generate options:", err);
     } finally {
       setLoading(false);
-    }
-  }
-
-  // Show More — appends more options
-  async function handleShowMore() {
-    setLoadingMore(true);
-    try {
-      const excludeParam = [...shownIds].join(",");
-      const res = await fetch(`/api/meals/generate?exclude=${excludeParam}`);
-      const data = await res.json();
-      const newWeekday: RecipeOption[] = data.weekday || [];
-      const newWeekend: RecipeOption[] = data.weekend || [];
-      const newMeals: WeekendMealCombo[] = data.weekendMeals || [];
-
-      setWeekdayOptions((prev) => [...prev, ...newWeekday]);
-      setWeekendOptions((prev) => [...prev, ...newWeekend]);
-      setWeekendMeals((prev) => [...prev, ...newMeals]);
-
-      setShownIds((prev) => {
-        const updated = new Set(prev);
-        [...newWeekday, ...newWeekend].forEach((r: RecipeOption) => updated.add(r.id));
-        return updated;
-      });
-    } catch (err) {
-      console.error("Failed to load more options:", err);
-    } finally {
-      setLoadingMore(false);
     }
   }
 
@@ -356,62 +351,35 @@ export default function MealsPage() {
     }
   }
 
-  // Assign recipe to a day slot
+  // Assign recipe to a day slot — persists immediately
   function handleSlotClick(dayIndex: number) {
-    if (!plan || plan.locked || !selectedRecipe || planLoading) return;
+    if (!plan || !selectedRecipe || planLoading) return;
     const newDays = [...plan.days];
     newDays[dayIndex] = {
       ...newDays[dayIndex],
       recipeId: selectedRecipe.id,
       recipeName: selectedRecipe.name,
+      planningState: "assigned",
     };
-    setPlan({ ...plan, days: newDays });
+    const updatedPlan = { ...plan, days: newDays };
+    setPlan(updatedPlan);
+    savePlanNow(updatedPlan);
     setSelectedRecipe(null);
   }
 
+  // Clear a day slot — persists immediately
   function handleClearSlot(dayIndex: number) {
-    if (!plan || plan.locked) return;
+    if (!plan) return;
     const newDays = [...plan.days];
     newDays[dayIndex] = {
       ...newDays[dayIndex],
       recipeId: null,
       recipeName: null,
+      planningState: "open",
     };
-    setPlan({ ...plan, days: newDays });
-  }
-
-  async function handleLock() {
-    if (!plan) return;
-    const lockedPlan = { ...plan, locked: true };
-    try {
-      await fetch("/api/meals/plan", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(lockedPlan),
-      });
-      setPlan(lockedPlan);
-    } catch (err) {
-      console.error("Failed to save plan:", err);
-    }
-  }
-
-  async function handleViewIngredients() {
-    if (!plan) return;
-    const recipeIds = plan.days
-      .map((d) => d.recipeId)
-      .filter((id): id is string => id !== null);
-    try {
-      const res = await fetch("/api/meals/ingredients", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ recipeIds }),
-      });
-      const data = await res.json();
-      setIngredientGroups(data.ingredients);
-      setShowIngredients(true);
-    } catch (err) {
-      console.error("Failed to load ingredients:", err);
-    }
+    const updatedPlan = { ...plan, days: newDays };
+    setPlan(updatedPlan);
+    savePlanNow(updatedPlan);
   }
 
   // ----- context/notes helpers -----
@@ -439,9 +407,7 @@ export default function MealsPage() {
     });
   }
 
-  const allSlotsFilled =
-    plan !== null && plan.days.every((d) => d.recipeId !== null);
-  const hasOptions = weekdayOptions.length > 0 || weekendOptions.length > 0;
+  const hasCandidates = candidates.length > 0;
   const contextItems = plan?.context || [];
   const hasContext = contextItems.length > 0 || (plan?.notes && plan.notes.trim().length > 0);
 
@@ -546,31 +512,32 @@ export default function MealsPage() {
           )}
         </div>
 
-        {/* Calendar grid */}
-        <div className="grid grid-cols-5 gap-3 mb-6">
+        {/* Calendar grid — 7-day week */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-6">
           {weekDates.map((wd, i) => {
             const slot = plan?.days[i] ?? null;
             const isFilled = slot?.recipeId !== null;
-            const isSelectable = selectedRecipe && !plan?.locked;
+            const isSelectable = !!selectedRecipe;
             const dayContext = getContextForDate(wd.date);
             const isSkipped = dayContext.some(
               (c) => c.effect === "skip-meal"
             );
+            const isWeekend = ["Friday", "Saturday", "Sunday"].includes(wd.dayOfWeek);
             return (
               <div
                 key={wd.date}
                 onClick={() => isSelectable && !isSkipped && handleSlotClick(i)}
-                className={`rounded-lg border p-3 min-h-[120px] flex flex-col transition-colors ${
+                className={`rounded-lg border p-3 min-h-[110px] flex flex-col transition-colors ${
                   isSkipped
                     ? "bg-zinc-100 dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700 opacity-60"
-                    : plan?.locked
-                      ? "bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
-                      : isSelectable
-                        ? "cursor-pointer border-blue-400 dark:border-blue-600 bg-blue-50 dark:bg-blue-950 hover:bg-blue-100 dark:hover:bg-blue-900"
+                    : isSelectable
+                      ? "cursor-pointer border-blue-400 dark:border-blue-600 bg-blue-50 dark:bg-blue-950 hover:bg-blue-100 dark:hover:bg-blue-900"
+                      : isFilled
+                        ? "bg-white dark:bg-zinc-900 border-emerald-200 dark:border-emerald-800"
                         : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
                 }`}
               >
-                <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                <div className={`text-xs font-medium ${isWeekend ? "text-indigo-500 dark:text-indigo-400" : "text-zinc-500 dark:text-zinc-400"}`}>
                   {wd.dayOfWeek.slice(0, 3)}
                 </div>
                 <div className="text-xs text-zinc-400 dark:text-zinc-500 mb-1">
@@ -600,28 +567,21 @@ export default function MealsPage() {
                     <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 line-clamp-3">
                       {slot?.recipeName}
                     </p>
-                    {!plan?.locked && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleClearSlot(i);
-                        }}
-                        className="mt-1 text-xs text-zinc-400 hover:text-red-500 self-end"
-                      >
-                        Clear
-                      </button>
-                    )}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleClearSlot(i);
+                      }}
+                      className="mt-1 text-xs text-zinc-400 hover:text-red-500 self-end"
+                    >
+                      Clear
+                    </button>
                   </div>
                 ) : (
                   <div className="flex-1 flex items-center justify-center">
                     <span className="text-xs text-zinc-400 dark:text-zinc-600">
                       {isSelectable ? "Click to assign" : "Empty"}
                     </span>
-                  </div>
-                )}
-                {plan?.locked && isFilled && (
-                  <div className="mt-1 text-right">
-                    <span className="text-xs text-zinc-400">&#128274;</span>
                   </div>
                 )}
               </div>
@@ -631,7 +591,7 @@ export default function MealsPage() {
 
         {/* Action buttons */}
         <div className="flex gap-3 mb-6">
-          {!plan?.locked && !hasOptions && !planLoading && (
+          {!hasCandidates && !planLoading && (
             <button
               onClick={handleGenerate}
               disabled={loading}
@@ -640,29 +600,13 @@ export default function MealsPage() {
               {loading ? "Generating..." : "Generate Options"}
             </button>
           )}
-          {!plan?.locked && hasOptions && (
+          {hasCandidates && (
             <button
-              onClick={handleShowMore}
-              disabled={loadingMore}
-              className="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-500 dark:hover:border-zinc-500 disabled:opacity-50 transition-colors"
+              onClick={handleGenerate}
+              disabled={loading}
+              className="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-500 dark:hover:border-zinc-500 disabled:opacity-50 transition-colors"
             >
-              {loadingMore ? "Loading..." : "Show More"}
-            </button>
-          )}
-          {allSlotsFilled && !plan?.locked && (
-            <button
-              onClick={handleLock}
-              className="px-4 py-2 rounded-lg text-sm font-medium bg-green-600 text-white hover:bg-green-700 transition-colors"
-            >
-              &#128274; Lock Plan
-            </button>
-          )}
-          {plan?.locked && (
-            <button
-              onClick={handleViewIngredients}
-              className="px-4 py-2 rounded-lg text-sm font-medium bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
-            >
-              View Ingredients
+              {loading ? "Regenerating..." : "Regenerate"}
             </button>
           )}
         </div>
@@ -684,9 +628,9 @@ export default function MealsPage() {
           </div>
         )}
 
-        {/* Recipe option cards */}
-        {hasOptions && !plan?.locked && (
-          <div className="space-y-8">
+        {/* Candidate mains */}
+        {hasCandidates && (
+          <div className="space-y-4">
             {/* Filter controls */}
             <div className="flex gap-2">
               <button
@@ -701,132 +645,27 @@ export default function MealsPage() {
               </button>
             </div>
 
-            {/* Weekday options */}
-            {weekdayOptions.length > 0 && (
-              <div>
-                <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-3 uppercase tracking-wide">
-                  Weekday Options
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {weekdayOptions
-                    .filter((r) => !filterLowCal || r.lowCalorie)
-                    .map((r) => (
-                    <RecipeCard
-                      key={r.id}
-                      recipe={r}
-                      isSelected={selectedRecipe?.id === r.id}
-                      isAssigned={
-                        plan?.days.some((d) => d.recipeId === r.id) ?? false
-                      }
-                      onSelect={() =>
-                        setSelectedRecipe(
-                          selectedRecipe?.id === r.id ? null : r
-                        )
-                      }
-                      onQuickView={() => handleQuickView(r.id)}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Weekend: Build a Meal */}
-            {weekendMeals.length > 0 && (
-              <div>
-                <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-3 uppercase tracking-wide">
-                  Weekend &mdash; Build a Meal
-                </h2>
-                <div className="space-y-4">
-                  {weekendMeals
-                    .filter((combo) => !filterLowCal || combo.main.lowCalorie)
-                    .map((combo) => (
-                    <WeekendMealCard
-                      key={combo.main.id}
-                      combo={combo}
-                      isSelected={selectedRecipe?.id === combo.main.id}
-                      isAssigned={
-                        plan?.days.some((d) => d.recipeId === combo.main.id) ?? false
-                      }
-                      onSelectMain={() =>
-                        setSelectedRecipe(
-                          selectedRecipe?.id === combo.main.id ? null : combo.main
-                        )
-                      }
-                      onQuickView={(id) => handleQuickView(id)}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Fallback: plain weekend options if no combos */}
-            {weekendMeals.length === 0 && weekendOptions.length > 0 && (
-              <div>
-                <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-3 uppercase tracking-wide">
-                  Weekend Options
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {weekendOptions
-                    .filter((r) => !filterLowCal || r.lowCalorie)
-                    .map((r) => (
-                    <RecipeCard
-                      key={r.id}
-                      recipe={r}
-                      isSelected={selectedRecipe?.id === r.id}
-                      isAssigned={
-                        plan?.days.some((d) => d.recipeId === r.id) ?? false
-                      }
-                      onSelect={() =>
-                        setSelectedRecipe(
-                          selectedRecipe?.id === r.id ? null : r
-                        )
-                      }
-                      onQuickView={() => handleQuickView(r.id)}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Ingredients panel */}
-        {showIngredients && ingredientGroups && (
-          <div className="mt-6">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">
-                Ingredients
-              </h2>
-              <button
-                onClick={() => setShowIngredients(false)}
-                className="text-xs text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
-              >
-                Hide
-              </button>
-            </div>
-            <div className="space-y-4">
-              {ingredientGroups.map((group) => (
-                <div
-                  key={group.recipeId}
-                  className="rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4"
-                >
-                  <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-2">
-                    {group.recipeName}
-                  </h3>
-                  <ul className="space-y-1">
-                    {group.ingredients.map((ing, idx) => (
-                      <li
-                        key={idx}
-                        className="text-sm text-zinc-600 dark:text-zinc-400 flex justify-between"
-                      >
-                        <span>{ing.item}</span>
-                        <span className="text-zinc-400 dark:text-zinc-500 ml-2">
-                          {ing.amount}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">
+              Candidates
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {candidates
+                .filter((r) => !filterLowCal || r.lowCalorie)
+                .map((r) => (
+                <RecipeCard
+                  key={r.id}
+                  recipe={r}
+                  isSelected={selectedRecipe?.id === r.id}
+                  isAssigned={
+                    plan?.days.some((d) => d.recipeId === r.id) ?? false
+                  }
+                  onSelect={() =>
+                    setSelectedRecipe(
+                      selectedRecipe?.id === r.id ? null : r
+                    )
+                  }
+                  onQuickView={() => handleQuickView(r.id)}
+                />
               ))}
             </div>
           </div>
@@ -1108,149 +947,6 @@ function RecipeCard({
             </button>
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-// ----- Weekend Meal Card (Build a Meal) -----
-
-function WeekendMealCard({
-  combo,
-  isSelected,
-  isAssigned,
-  onSelectMain,
-  onQuickView,
-}: {
-  combo: WeekendMealCombo;
-  isSelected: boolean;
-  isAssigned: boolean;
-  onSelectMain: () => void;
-  onQuickView: (id: string) => void;
-}) {
-  const { main, sides, rationale } = combo;
-  const vegTags = main.dietary.filter(
-    (t) => t === "vegan" || t === "vegetarian"
-  );
-  const catColors = getCourseTagColor(main.category);
-
-  return (
-    <div
-      className={`rounded-lg border overflow-hidden transition-colors ${
-        isAssigned
-          ? "opacity-50 border-zinc-200 dark:border-zinc-700"
-          : isSelected
-            ? "border-blue-500 dark:border-blue-400 ring-2 ring-blue-500/30"
-            : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
-      }`}
-    >
-      <div className="flex flex-col sm:flex-row">
-        {/* Main dish */}
-        <div className="flex-1 flex">
-          {main.image ? (
-            <div className="relative w-32 sm:w-40 shrink-0 bg-zinc-100 dark:bg-zinc-800">
-              <Image
-                src={main.image}
-                alt={main.name}
-                fill
-                className="object-cover"
-                sizes="160px"
-              />
-            </div>
-          ) : (
-            <div className="w-20 shrink-0 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 flex items-center justify-center">
-              <span className="text-2xl opacity-30">&#127869;</span>
-            </div>
-          )}
-          <div className="p-3 flex-1 min-w-0">
-            <div className="flex flex-wrap gap-1.5 mb-1">
-              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${catColors}`}>
-                {main.category}
-              </span>
-              {main.cuisine && main.cuisine !== "Other" && (
-                <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                  {main.cuisine}
-                </span>
-              )}
-              {vegTags.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
-                >
-                  {t}
-                </span>
-              ))}
-              {main.lowCalorie && (
-                <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300">
-                  low-cal
-                </span>
-              )}
-            </div>
-            <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 line-clamp-2">
-              {main.name}
-            </p>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-              {main.source?.cookbook}
-            </p>
-            <div className="flex items-center gap-2 mt-2">
-              {formatPlannerTime(main.time?.total) && (
-                <span className="text-xs text-zinc-400">{formatPlannerTime(main.time?.total)}</span>
-              )}
-              <button
-                onClick={() => onQuickView(main.id)}
-                className="text-xs px-2 py-1 rounded text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-              >
-                Quick View
-              </button>
-              <button
-                onClick={onSelectMain}
-                disabled={isAssigned}
-                className={`text-xs px-2 py-1 rounded font-medium transition-colors ${
-                  isAssigned
-                    ? "text-zinc-400 cursor-not-allowed"
-                    : isSelected
-                      ? "bg-blue-500 text-white"
-                      : "text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950"
-                }`}
-              >
-                {isAssigned ? "Assigned" : isSelected ? "Selected" : "Select"}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Suggested sides + rationale */}
-        {(sides.length > 0 || rationale) && (
-          <div className="sm:w-56 border-t sm:border-t-0 sm:border-l border-zinc-200 dark:border-zinc-800 p-3 bg-zinc-50 dark:bg-zinc-950">
-            {sides.length > 0 && (
-              <>
-                <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-2 uppercase tracking-wide">
-                  Suggested sides
-                </p>
-                <ul className="space-y-1.5">
-                  {sides.map((s) => (
-                    <li key={s.id} className="flex items-start justify-between gap-1">
-                      <span className="text-xs text-zinc-700 dark:text-zinc-300 line-clamp-1">
-                        {s.name}
-                      </span>
-                      <button
-                        onClick={() => onQuickView(s.id)}
-                        className="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 shrink-0"
-                      >
-                        view
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-            {rationale && (
-              <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-2 italic">
-                {rationale}
-              </p>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );

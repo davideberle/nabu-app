@@ -388,11 +388,6 @@ export default async function RecipePage({
                           <span className="text-sm font-medium text-stone-600 dark:text-stone-300">
                             {formatted}
                           </span>
-                          {event.note && (
-                            <p className="text-sm text-stone-400 dark:text-stone-500 mt-0.5">
-                              {event.note}
-                            </p>
-                          )}
                         </div>
                       </li>
                     );
