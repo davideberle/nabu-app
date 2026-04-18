@@ -306,6 +306,42 @@ async function migrate(client: Client) {
         )
       `);
     },
+
+    // v4 -> v5: create cook_events table for cooking history
+    async () => {
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS cook_events (
+          id         TEXT PRIMARY KEY,
+          recipe_id  TEXT NOT NULL,
+          cooked_on  TEXT NOT NULL,
+          note       TEXT,
+          source     TEXT,
+          created_at TEXT NOT NULL
+        )
+      `);
+      await client.execute(`
+        CREATE INDEX IF NOT EXISTS idx_cook_events_recipe
+          ON cook_events (recipe_id, cooked_on DESC)
+      `);
+      await client.execute(`
+        CREATE INDEX IF NOT EXISTS idx_cook_events_date
+          ON cook_events (cooked_on DESC)
+      `);
+
+      // Seed: David cooked white bean soup yesterday (2026-04-16)
+      await client.execute({
+        sql: `INSERT OR IGNORE INTO cook_events (id, recipe_id, cooked_on, note, source, created_at)
+              VALUES (?, ?, ?, ?, ?, ?)`,
+        args: [
+          "seed-white-bean-soup-20260416",
+          "weisse-bohnen-suppe-mit-basilikum-und-mandeln",
+          "2026-04-16",
+          "Weisse-Bohnen-Suppe from Tanja Vegetarisch — creamy and delicious with the almond-basil pesto.",
+          "seed",
+          new Date().toISOString(),
+        ],
+      });
+    },
   ];
 
   if (version < migrations.length) {
@@ -506,4 +542,112 @@ export async function deleteMyRecipe(id: string): Promise<boolean> {
     args: [id],
   });
   return result.rowsAffected > 0;
+}
+
+// ---------------------------------------------------------------------------
+// Cook event types & helpers
+// ---------------------------------------------------------------------------
+
+export type CookEvent = {
+  id: string;
+  recipeId: string;
+  cookedOn: string; // YYYY-MM-DD
+  note?: string;
+  source?: string; // e.g. "manual", "seed", "planner"
+  createdAt: string;
+};
+
+function rowToCookEvent(row: Record<string, unknown>): CookEvent {
+  return {
+    id: row["id"] as string,
+    recipeId: row["recipe_id"] as string,
+    cookedOn: row["cooked_on"] as string,
+    ...(row["note"] ? { note: row["note"] as string } : {}),
+    ...(row["source"] ? { source: row["source"] as string } : {}),
+    createdAt: row["created_at"] as string,
+  };
+}
+
+/** Get all cook events for a specific recipe, newest first. */
+export async function getCookEventsForRecipe(
+  recipeId: string
+): Promise<CookEvent[]> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: "SELECT * FROM cook_events WHERE recipe_id = ? ORDER BY cooked_on DESC",
+    args: [recipeId],
+  });
+  return result.rows.map((row) => rowToCookEvent(row as Record<string, unknown>));
+}
+
+/** Get the most recent cook events across all recipes, newest first. */
+export async function getRecentCookEvents(
+  limit = 20
+): Promise<CookEvent[]> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: "SELECT * FROM cook_events ORDER BY cooked_on DESC LIMIT ?",
+    args: [limit],
+  });
+  return result.rows.map((row) => rowToCookEvent(row as Record<string, unknown>));
+}
+
+/** Get the last cooked date for a recipe, or null if never cooked. */
+export async function getLastCookedDate(
+  recipeId: string
+): Promise<string | null> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: "SELECT cooked_on FROM cook_events WHERE recipe_id = ? ORDER BY cooked_on DESC LIMIT 1",
+    args: [recipeId],
+  });
+  if (result.rows.length === 0) return null;
+  return result.rows[0]["cooked_on"] as string;
+}
+
+/** Get recipe IDs cooked in the last N days, for planner recency bias. */
+export async function getRecentlyCookedRecipeIds(
+  days = 14
+): Promise<Set<string>> {
+  const client = await getDb();
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - days);
+  const cutoffStr = cutoff.toISOString().split("T")[0];
+  const result = await client.execute({
+    sql: "SELECT DISTINCT recipe_id FROM cook_events WHERE cooked_on >= ?",
+    args: [cutoffStr],
+  });
+  return new Set(result.rows.map((row) => row["recipe_id"] as string));
+}
+
+/** Log a new cook event. */
+export async function createCookEvent(event: {
+  recipeId: string;
+  cookedOn: string;
+  note?: string;
+  source?: string;
+}): Promise<CookEvent> {
+  const client = await getDb();
+  const id = crypto.randomUUID();
+  const createdAt = new Date().toISOString();
+  await client.execute({
+    sql: `INSERT INTO cook_events (id, recipe_id, cooked_on, note, source, created_at)
+          VALUES (?, ?, ?, ?, ?, ?)`,
+    args: [
+      id,
+      event.recipeId,
+      event.cookedOn,
+      event.note || null,
+      event.source || "manual",
+      createdAt,
+    ],
+  });
+  return {
+    id,
+    recipeId: event.recipeId,
+    cookedOn: event.cookedOn,
+    ...(event.note ? { note: event.note } : {}),
+    source: event.source || "manual",
+    createdAt,
+  };
 }

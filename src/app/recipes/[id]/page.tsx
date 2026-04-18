@@ -2,6 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getRecipe, getAllRecipes, getCourseTags, formatServings, isLowCalorie, getMealRole } from "@/lib/recipes";
 import { getCourseTagColor, normalizeTagLabel, PUBLICATION_BADGE_CLASSES } from "@/lib/tag-colors";
+import { getCookEventsForRecipe } from "@/lib/db";
 import BackButton from "@/components/BackButton";
 
 export const revalidate = 60;
@@ -362,6 +363,44 @@ export default async function RecipePage({
               </div>
             </footer>
           )})()}
+
+          {/* Cooking history */}
+          {await (async () => {
+            const cookEvents = await getCookEventsForRecipe(recipe.id);
+            if (cookEvents.length === 0) return null;
+            return (
+              <section className="px-8 py-6 border-t border-stone-100 dark:border-stone-800">
+                <h2 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-4">
+                  Cooking History
+                </h2>
+                <ul className="space-y-3">
+                  {cookEvents.map((event) => {
+                    const date = new Date(event.cookedOn + "T12:00:00");
+                    const formatted = date.toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    });
+                    return (
+                      <li key={event.id} className="flex items-start gap-3">
+                        <span className="flex-shrink-0 mt-0.5 w-2 h-2 rounded-full bg-stone-300 dark:bg-stone-600" />
+                        <div>
+                          <span className="text-sm font-medium text-stone-600 dark:text-stone-300">
+                            {formatted}
+                          </span>
+                          {event.note && (
+                            <p className="text-sm text-stone-400 dark:text-stone-500 mt-0.5">
+                              {event.note}
+                            </p>
+                          )}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            );
+          })()}
         </article>
       </main>
     </div>

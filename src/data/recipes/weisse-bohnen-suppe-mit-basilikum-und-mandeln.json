@@ -1,0 +1,45 @@
+{
+  "id": "weisse-bohnen-suppe-mit-basilikum-und-mandeln",
+  "name": "Weisse-Bohnen-Suppe mit Basilikum und Mandeln",
+  "source": {
+    "cookbook": "Tanja Vegetarisch",
+    "author": "Tanja Grandits"
+  },
+  "servings": "4",
+  "time": {
+    "prep": 10,
+    "cook": 15,
+    "total": 25
+  },
+  "ingredients": [
+    { "item": "Olivenöl", "amount": "4 tbsp", "group": "Suppe" },
+    { "item": "Frühlingszwiebeln, in feine Ringe geschnitten", "amount": "4", "group": "Suppe" },
+    { "item": "Knoblauchzehen, fein geschnitten", "amount": "2", "group": "Suppe" },
+    { "item": "Anis, gemahlen", "amount": "1 Prise", "group": "Suppe" },
+    { "item": "Weiße Bohnen, gekocht", "amount": "400 g", "group": "Suppe" },
+    { "item": "Gemüse- oder Kräuterfond", "amount": "1.2 l", "group": "Suppe" },
+    { "item": "Salz", "amount": "", "group": "Suppe" },
+    { "item": "Schwarzer Pfeffer aus der Mühle", "amount": "", "group": "Suppe" },
+    { "item": "Rahm", "amount": "300 ml", "group": "Suppe" },
+    { "item": "Basilikum, grobe Stiele entfernt, klein geschnitten", "amount": "1 großes Bund", "group": "Suppe" },
+    { "item": "Mandel-Basilikum-Pesto", "amount": "4 tbsp", "group": "Topping" },
+    { "item": "Mandeln mit Haut, geröstet und grob gehackt", "amount": "2 tbsp", "group": "Topping" },
+    { "item": "Kleine Basilikumblätter", "amount": "1 handful", "group": "Topping" }
+  ],
+  "method": [
+    "Das Olivenöl in einem Topf erhitzen. Frühlingszwiebeln und Knoblauch darin anschwitzen. Anis, Bohnen und Gemüsefond dazugeben und 10 Minuten köcheln lassen. Dann den Rahm dazugeben und weitere 5 Minuten köcheln lassen.",
+    "Das Basilikum zur Suppe geben, alles mixen und durch ein feines Sieb passieren.",
+    "Das Pesto, die Mandeln und einige Basilikumblätter auf die Suppe geben."
+  ],
+  "image": null,
+  "category": {
+    "dish_type": ["soup"],
+    "chapter": "Suppen",
+    "meal_role": "main"
+  },
+  "tags": {
+    "dietary": ["vegetarian"],
+    "season": ["all"]
+  },
+  "introduction": "Suppen werden dann zu einem wunderbaren Essen, wenn unterschiedlichste Konsistenzen sich abwechseln. Auf keinen Fall sollte eine Suppe deshalb nur flüssig oder cremig sein. Diese Bohnensuppe ist so sämig und schmelzig, dass es die reine Löffelfreude ist. Durch das Mandelpesto und die Mandeln erhält man genau den Kontrast, der das Essen zum Vergnügen macht."
+}

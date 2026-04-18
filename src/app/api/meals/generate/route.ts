@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getAllRecipes, getCuisine, getDietary, isLowCalorie, getRecipe } from "@/lib/recipes";
 import { selectMealOptions, getDisplayCategory, type WeekendMealOption, type WeekContextItem } from "@/lib/meals";
+import { getRecentlyCookedRecipeIds } from "@/lib/db";
 import type { Recipe } from "@/lib/recipes";
 
 function summarize(r: Recipe) {
@@ -32,6 +33,10 @@ export async function GET(request: NextRequest) {
   // Support "exclude" param to avoid re-showing already-seen recipes
   const excludeParam = request.nextUrl.searchParams.get("exclude");
   const excludeIds = excludeParam ? new Set(excludeParam.split(",")) : new Set<string>();
+
+  // Also exclude recipes cooked in the last 14 days to avoid repetition
+  const recentlyCooked = await getRecentlyCookedRecipeIds(14);
+  for (const id of recentlyCooked) excludeIds.add(id);
 
   // Parse week context to influence generation
   let weekContext: WeekContextItem[] = [];

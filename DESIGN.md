@@ -16,6 +16,7 @@ back to a file-based SQLite database.
 | 1 → 2  | `recipes` table + seed My Recipes |
 | 2 → 3  | `meal_plans` table for weekly meal planning |
 | 3 → 4  | Normalize My Recipes `category` (occasion strings → course labels) |
+| 4 → 5  | `cook_events` table for cooking history + seed event |
 
 ### Recipes (`src/lib/recipes.ts`)
 
@@ -70,6 +71,25 @@ without clear user-facing value.
 Weekly meal plans are stored in Turso (`meal_plans` table), not the
 filesystem. The planner uses `meal_role` and `dish_type` to select
 dinner-worthy mains and complementary sides with cuisine diversity.
+
+### Cook events (`src/lib/db.ts`)
+
+Cooking history is tracked in a dedicated `cook_events` table with one row
+per cook event. Each event records `recipe_id`, `cooked_on` (date), an
+optional `note`, and a `source` tag (`manual`, `seed`, `planner`).
+
+Helpers:
+- `getCookEventsForRecipe(id)` — all events for a recipe, newest first
+- `getRecentCookEvents(limit)` — recent events across all recipes
+- `getLastCookedDate(id)` — most recent cook date for a recipe
+- `getRecentlyCookedRecipeIds(days)` — recipe IDs cooked in the last N days
+- `createCookEvent(event)` — log a new cook event
+
+The meal planner uses `getRecentlyCookedRecipeIds(14)` to exclude recently
+cooked recipes from generation. The recipe detail page shows cooking
+history at the bottom when events exist.
+
+API: `GET/POST /api/cook-events` (query by `recipeId` or list recent).
 
 ### Todos (`src/lib/db.ts`)
 

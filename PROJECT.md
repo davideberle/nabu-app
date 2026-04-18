@@ -7,7 +7,7 @@ https://app.davideberle.com.
 
 - **Framework**: Next.js 16 (App Router, Server Components)
 - **Auth**: NextAuth v5 (Google OAuth, single-user allow-list)
-- **Database**: Turso (libSQL) via `@libsql/client` — shared by todos and My Recipes
+- **Database**: Turso (libSQL) via `@libsql/client` — shared by todos, My Recipes, meal plans, and cook history
 - **Styling**: Tailwind CSS v4
 - **Hosting**: Vercel (auto-deploy from `main`)
 
@@ -16,7 +16,7 @@ https://app.davideberle.com.
 | Module   | Status | Notes |
 |----------|--------|-------|
 | Todos    | Live   | Full CRUD, Turso-backed |
-| Recipes  | Live   | ~3,560 cookbook recipes (static JSON, classified by meal_role) + My Recipes (Turso) |
+| Recipes  | Live   | ~3,527 cookbook recipes (static JSON, classified by meal_role) + My Recipes (Turso), with cook history shown on recipe pages |
 | Meals    | Live   | Weekly meal planner with cuisine diversity (Turso-backed) |
 | Music    | Live   | Sonos zone control |
 | Shopping | Stub   | Lists placeholder |
