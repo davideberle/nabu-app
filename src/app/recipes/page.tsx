@@ -63,7 +63,7 @@ export default async function RecipesPage() {
           <div className="flex items-stretch">
             <div className="relative w-28 sm:w-36 shrink-0">
               <Image
-                src="/cookbooks/my-recipes-custom.jpg"
+                src="/cookbooks/my-recipes-cover.jpg"
                 alt="My Recipes"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"

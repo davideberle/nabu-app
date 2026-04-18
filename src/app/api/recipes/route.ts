@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { revalidatePath } from "next/cache";
 import {
   createMyRecipe,
   updateMyRecipe,
@@ -23,6 +24,8 @@ export async function POST(request: NextRequest) {
   }
 
   await createMyRecipe(recipe);
+  revalidatePath("/recipes");
+  revalidatePath("/recipes/cookbook/my-recipes");
   return NextResponse.json(recipe, { status: 201 });
 }
 
@@ -37,6 +40,8 @@ export async function PUT(request: NextRequest) {
   }
 
   await updateMyRecipe(recipe.id, recipe);
+  revalidatePath("/recipes");
+  revalidatePath("/recipes/cookbook/my-recipes");
   return NextResponse.json(recipe);
 }
 
@@ -58,5 +63,7 @@ export async function DELETE(request: NextRequest) {
     );
   }
 
+  revalidatePath("/recipes");
+  revalidatePath("/recipes/cookbook/my-recipes");
   return NextResponse.json({ ok: true });
 }
