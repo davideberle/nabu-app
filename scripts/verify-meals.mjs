@@ -162,6 +162,25 @@ assert(pc.category.dish_type.includes("breakfast"), "dish_type is breakfast");
 assert(!isDinnerWorthy(pc), "not dinner-worthy");
 assert(!isWeekendMainWorthy(pc), "not weekend-main-worthy");
 
+console.log("\n6b. Pickled Mustard Greens → condiment, not dinner-worthy");
+const pmg = find("pickled-mustard-greens");
+assert(pmg, "recipe found");
+assert(pmg.category.dish_type.includes("condiment"), `dish_type is condiment (got: ${JSON.stringify(pmg.category.dish_type)})`);
+assert(pmg.category.meal_role === "side", `meal_role is side (got: ${pmg.category.meal_role})`);
+assert(!isDinnerWorthy(pmg), "not dinner-worthy");
+assert(!isWeekendMainWorthy(pmg), "not weekend-main-worthy");
+assert(pmg.image === null || pmg.image === undefined, `image is null (got: ${pmg.image})`);
+
+console.log("\n6c. Aluvati → image nulled (illustrative)");
+const alu = find("aluvati");
+assert(alu, "recipe found");
+assert(alu.image === null || alu.image === undefined, `image is null (got: ${alu.image})`);
+
+console.log("\n6d. Triple-grain Herbed Salad Bowl → image nulled");
+const tghsb = find("triple-grain-herbed-salad-bowl");
+assert(tghsb, "recipe found");
+assert(tghsb.image === null || tghsb.image === undefined, `image is null (got: ${tghsb.image})`);
+
 // ---- Broader sanity checks ----
 
 console.log("\n7. Weekend-main pool is a strict subset of dinner pool");

@@ -61,11 +61,11 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "condiment"
     ],
     "chapter": "Main Dishes",
-    "meal_role": "main"
+    "meal_role": "side"
   },
-  "image": "/recipes/pickled-mustard-greens.jpg",
+  "image": null,
   "cuisine": "Southeast Asian"
 }

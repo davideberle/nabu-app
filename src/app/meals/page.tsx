@@ -334,21 +334,40 @@ export default function MealsPage() {
           const daysChanged = JSON.stringify(normalized.days) !== JSON.stringify(data.days);
           if (daysChanged) savePlanNow(normalized);
           setPlan(normalized);
-          // Restore saved candidates with full card data for stable reload
+          // Restore saved candidates with full card data for stable reload,
+          // then reconcile images against current canonical recipe data to
+          // prevent stale persisted images from resurfacing.
           if (data.candidateSet?.items?.length) {
-            setCandidates(
-              data.candidateSet.items.map((c: CandidateItem) => ({
-                id: c.recipeId,
-                name: c.recipeName,
-                source: c.source ?? undefined,
-                image: c.image ?? null,
-                dietary: c.dietary ?? [],
-                cuisine: c.cuisine ?? "",
-                time: c.time ?? null,
-                category: c.category ?? "",
-                lowCalorie: c.lowCalorie,
-              }))
-            );
+            const restored = data.candidateSet.items.map((c: CandidateItem) => ({
+              id: c.recipeId,
+              name: c.recipeName,
+              source: c.source ?? undefined,
+              image: c.image ?? null,
+              dietary: c.dietary ?? [],
+              cuisine: c.cuisine ?? "",
+              time: c.time ?? null,
+              category: c.category ?? "",
+              lowCalorie: c.lowCalorie,
+            }));
+            setCandidates(restored);
+
+            // Reconcile: fetch current canonical images and patch any stale ones
+            const ids = restored.map((r: RecipeOption) => r.id).join(",");
+            fetch(`/api/meals/lookup?ids=${encodeURIComponent(ids)}`)
+              .then((lr) => lr.json())
+              .then((lookup: Record<string, { image: string | null }>) => {
+                if (cancelled) return;
+                setCandidates((prev) =>
+                  prev.map((r) => {
+                    const canonical = lookup[r.id];
+                    if (canonical && r.image !== canonical.image) {
+                      return { ...r, image: canonical.image };
+                    }
+                    return r;
+                  })
+                );
+              })
+              .catch(() => { /* non-critical — stale image is cosmetic */ });
           }
         } else {
           setPlan(null);
@@ -722,14 +741,13 @@ export default function MealsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {candidates
                 .filter((r) => !filterLowCal || r.lowCalorie)
+                .filter((r) => !plan?.days.some((d) => d?.recipeId === r.id))
                 .map((r) => (
                 <RecipeCard
                   key={r.id}
                   recipe={r}
                   isSelected={selectedRecipe?.id === r.id}
-                  isAssigned={
-                    plan?.days.some((d) => d?.recipeId === r.id) ?? false
-                  }
+                  isAssigned={false}
                   onSelect={() =>
                     setSelectedRecipe(
                       selectedRecipe?.id === r.id ? null : r
