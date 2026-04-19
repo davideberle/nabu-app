@@ -38,11 +38,20 @@ type WeekContextItem = {
 type CandidateItem = {
   recipeId: string;
   recipeName: string;
+  source?: { cookbook: string; author: string; chapter?: string } | null;
+  image?: string | null;
+  dietary: string[];
+  cuisine: string;
+  time: { prep: number; cook: number; total: number } | null;
+  category: string;
+  lowCalorie?: boolean;
+  bucket: string;
 };
 
 type CandidateSet = {
   generatedAt: string;
   policyVersion: string;
+  bucketContract?: readonly number[];
   items: CandidateItem[];
 };
 
@@ -277,16 +286,19 @@ export default function MealsPage() {
         if (cancelled) return;
         if (data && data.week) {
           setPlan(data);
-          // Restore saved candidates so the week feels stable on reload
+          // Restore saved candidates with full card data for stable reload
           if (data.candidateSet?.items?.length) {
             setCandidates(
-              data.candidateSet.items.map((c) => ({
+              data.candidateSet.items.map((c: CandidateItem) => ({
                 id: c.recipeId,
                 name: c.recipeName,
-                dietary: [],
-                cuisine: "",
-                time: null,
-                category: "",
+                source: c.source ?? undefined,
+                image: c.image ?? null,
+                dietary: c.dietary ?? [],
+                cuisine: c.cuisine ?? "",
+                time: c.time ?? null,
+                category: c.category ?? "",
+                lowCalorie: c.lowCalorie,
               }))
             );
           }
@@ -315,11 +327,22 @@ export default function MealsPage() {
       const newCandidates: RecipeOption[] = data.candidates || [];
       setCandidates(newCandidates);
 
-      // Persist candidate set with the plan
-      const candidateSet: CandidateSet = {
+      // Persist the full candidateSet from the API (includes display data)
+      const candidateSet: CandidateSet = data.candidateSet ?? {
         generatedAt: new Date().toISOString(),
-        policyVersion: "planner-v1",
-        items: newCandidates.map((r) => ({ recipeId: r.id, recipeName: r.name })),
+        policyVersion: "planner-v2",
+        items: newCandidates.map((r) => ({
+          recipeId: r.id,
+          recipeName: r.name,
+          source: r.source ?? null,
+          image: r.image ?? null,
+          dietary: r.dietary,
+          cuisine: r.cuisine,
+          time: r.time,
+          category: r.category,
+          lowCalorie: r.lowCalorie,
+          bucket: "meat",
+        })),
       };
       const updatedPlan = plan
         ? { ...plan, candidateSet }

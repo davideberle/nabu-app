@@ -153,11 +153,22 @@ export type WeekContextItem = {
 export type CandidateItem = {
   recipeId: string;
   recipeName: string;
+  source?: { cookbook: string; author: string; chapter?: string } | null;
+  image?: string | null;
+  dietary: string[];
+  cuisine: string;
+  time: { prep: number; cook: number; total: number } | null;
+  category: string;
+  lowCalorie?: boolean;
+  bucket: CandidateBucket;
 };
+
+export type CandidateBucket = "salad" | "soup" | "vegetarian" | "fish" | "meat";
 
 export type CandidateSet = {
   generatedAt: string;
   policyVersion: string;
+  bucketContract: readonly [number, number, number, number, number]; // salad, soup, veg, fish, meat
   items: CandidateItem[];
 };
 
@@ -651,28 +662,82 @@ export function selectMealOptions(
   return { weekday, weekend, weekendMeals };
 }
 
+// ----- bucket classification for planner candidates -----
+
+const FISH_PATTERNS = /\b(salmon|tuna|trout|cod|halibut|catfish|sea bass|snapper|mackerel|sardine|anchov|swordfish|fish|shrimp|prawn|scallop|crab|lobster|mussel|clam|oyster|squid|calamari|octopus|seafood)\b/i;
+
+function classifyBucket(recipe: Recipe): CandidateBucket | null {
+  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
+  const nameLower = recipe.name.toLowerCase();
+  const ingredientText = recipe.ingredients.map((i) => i.item).join(" ");
+
+  // Salad bucket: dish_type includes "salad" or name contains "salad"
+  if (dishTypes.includes("salad") || nameLower.includes("salad")) return "salad";
+
+  // Soup bucket: dish_type includes "soup" or name signals soup/stew
+  if (dishTypes.includes("soup") || nameLower.includes("soup") || nameLower.includes("stew") || nameLower.includes("chowder") || nameLower.includes("broth")) return "soup";
+
+  // Vegetarian/vegan
+  if (isVegetarianOrVegan(recipe)) return "vegetarian";
+
+  // Fish/seafood
+  if (FISH_PATTERNS.test(nameLower) || FISH_PATTERNS.test(ingredientText)) return "fish";
+
+  // Remaining non-vegetarian = meat
+  return "meat";
+}
+
 /**
- * Phase 1 (vNext): select ~12 candidate mains as a flat list.
- * Internally reuses the diversity logic from selectMealOptions but
- * merges weekday + weekend into a single shuffled candidate pool.
+ * Visible weekly contract for Phase 2:
+ *   3 salads, 3 soups, 2 vegetarian mains, 2 fish mains, 2 meat mains = 12 total.
+ * Ordered by bucket in the above sequence.
  */
+export const CANDIDATE_BUCKET_CONTRACT = [3, 3, 2, 2, 2] as const;
+export const CANDIDATE_BUCKET_ORDER: CandidateBucket[] = ["salad", "soup", "vegetarian", "fish", "meat"];
+
 export function selectCandidateMains(
   allRecipes: Recipe[],
   excludeIds?: Set<string>,
-  hints?: GenerationHints
+  _hints?: GenerationHints
 ): Recipe[] {
-  const { weekday, weekend } = selectMealOptions(allRecipes, excludeIds, hints);
-  // Merge and deduplicate
-  const seen = new Set<string>();
-  const candidates: Recipe[] = [];
-  for (const r of shuffle([...weekday, ...weekend])) {
-    if (!seen.has(r.id)) {
-      seen.add(r.id);
-      candidates.push(r);
-    }
+  // Filter to dinner-worthy, exclude recently used, drop opposite season
+  let pool = allRecipes.filter(isDinnerWorthy);
+  if (excludeIds && excludeIds.size > 0) {
+    pool = pool.filter((r) => !excludeIds.has(r.id));
   }
-  // Target ~12 candidates
-  return candidates.slice(0, 12);
+  pool = filterBySeason(pool);
+
+  // Prefer recipes with images
+  const withImages = pool.filter((r) => !!r.image);
+  if (withImages.length >= 40) pool = withImages;
+
+  // Partition by bucket
+  const buckets: Record<CandidateBucket, Recipe[]> = {
+    salad: [],
+    soup: [],
+    vegetarian: [],
+    fish: [],
+    meat: [],
+  };
+  for (const r of pool) {
+    const b = classifyBucket(r);
+    if (b) buckets[b].push(r);
+  }
+
+  // Pick from each bucket with cuisine diversity
+  const result: Recipe[] = [];
+  for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
+    const bucket = CANDIDATE_BUCKET_ORDER[i];
+    const needed = CANDIDATE_BUCKET_CONTRACT[i];
+    const picks = pickWithoutCuisineRepeat(
+      shuffle(buckets[bucket]),
+      needed,
+      result
+    );
+    result.push(...picks);
+  }
+
+  return result;
 }
 
 // ----- week date helpers -----

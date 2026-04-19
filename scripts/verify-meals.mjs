@@ -175,6 +175,132 @@ const springPool = filterBySeason(dinnerPool, "spring");
 const fallRecipesInSpring = springPool.filter((r) => recipeSeason(r) === "fall");
 assert(fallRecipesInSpring.length === 0, `no fall recipes in spring pool (was ${fallRecipesInSpring.length})`);
 
+// ---- Phase 2: Bucket classification & candidate contract ----
+
+const FISH_PATTERNS = /\b(salmon|tuna|trout|cod|halibut|catfish|sea bass|snapper|mackerel|sardine|anchov|swordfish|fish|shrimp|prawn|scallop|crab|lobster|mussel|clam|oyster|squid|calamari|octopus|seafood)\b/i;
+
+function getDietary(recipe) {
+  return recipe.dietary || recipe.tags?.dietary || [];
+}
+
+function isVegetarianOrVegan(recipe) {
+  const tags = getDietary(recipe);
+  return tags.some((t) => t.toLowerCase() === "vegan" || t.toLowerCase() === "vegetarian");
+}
+
+function classifyBucket(recipe) {
+  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
+  const nameLower = recipe.name.toLowerCase();
+  const ingredientText = recipe.ingredients.map((i) => i.item).join(" ");
+  if (dishTypes.includes("salad") || nameLower.includes("salad")) return "salad";
+  if (dishTypes.includes("soup") || nameLower.includes("soup") || nameLower.includes("stew") || nameLower.includes("chowder") || nameLower.includes("broth")) return "soup";
+  if (isVegetarianOrVegan(recipe)) return "vegetarian";
+  if (FISH_PATTERNS.test(nameLower) || FISH_PATTERNS.test(ingredientText)) return "fish";
+  return "meat";
+}
+
+const BUCKET_ORDER = ["salad", "soup", "vegetarian", "fish", "meat"];
+const BUCKET_CONTRACT = [3, 3, 2, 2, 2]; // total = 12
+
+console.log("\n9. Bucket pools have enough recipes to fill contract");
+const currentSeason = (() => {
+  const m = new Date().getMonth();
+  if (m >= 2 && m <= 4) return "spring";
+  if (m >= 5 && m <= 7) return "summer";
+  if (m >= 8 && m <= 10) return "fall";
+  return "winter";
+})();
+const seasonedPool = filterBySeason(dinnerPool, currentSeason);
+const bucketCounts = {};
+for (const b of BUCKET_ORDER) bucketCounts[b] = 0;
+for (const r of seasonedPool) {
+  const b = classifyBucket(r);
+  if (b) bucketCounts[b]++;
+}
+for (let i = 0; i < BUCKET_ORDER.length; i++) {
+  const b = BUCKET_ORDER[i];
+  const needed = BUCKET_CONTRACT[i];
+  assert(
+    bucketCounts[b] >= needed,
+    `bucket "${b}" has ${bucketCounts[b]} recipes (need >= ${needed})`
+  );
+}
+
+console.log("\n10. Simulated candidate selection produces exactly 12 items in contract order");
+// Simplified simulation — pick from each bucket
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const simBuckets = { salad: [], soup: [], vegetarian: [], fish: [], meat: [] };
+for (const r of seasonedPool) {
+  const b = classifyBucket(r);
+  if (b) simBuckets[b].push(r);
+}
+const simResult = [];
+for (let i = 0; i < BUCKET_ORDER.length; i++) {
+  const b = BUCKET_ORDER[i];
+  const needed = BUCKET_CONTRACT[i];
+  const picks = shuffle(simBuckets[b]).slice(0, needed);
+  simResult.push(...picks);
+}
+assert(simResult.length === 12, `total candidates = ${simResult.length} (expected 12)`);
+
+// Verify order: first 3 are salads, next 3 soups, etc.
+let orderCorrect = true;
+let idx = 0;
+for (let i = 0; i < BUCKET_ORDER.length; i++) {
+  for (let j = 0; j < BUCKET_CONTRACT[i]; j++) {
+    if (classifyBucket(simResult[idx]) !== BUCKET_ORDER[i]) orderCorrect = false;
+    idx++;
+  }
+}
+assert(orderCorrect, "candidates are in correct bucket order (salad→soup→veg→fish→meat)");
+
+console.log("\n11. Saved candidate fidelity: CandidateItem fields non-empty");
+// normalizeTime mirrors the API's logic: coerce strings, reject non-finite
+function normalizeTime(time) {
+  if (!time) return null;
+  const parseMin = (v) => {
+    if (typeof v === "number" && isFinite(v)) return v;
+    if (typeof v === "string") { const n = parseInt(v, 10); return isFinite(n) ? n : 0; }
+    return 0;
+  };
+  const prep = parseMin(time.prep);
+  const cook = parseMin(time.cook);
+  let total = parseMin(time.total);
+  if (total <= 0 && prep + cook > 0) total = prep + cook;
+  if (total <= 0) return null;
+  return { prep, cook, total };
+}
+
+// Simulate what the API would persist
+const simSaved = simResult.map((r) => ({
+  recipeId: r.id,
+  recipeName: r.name,
+  source: r.source ?? null,
+  image: r.image ?? null,
+  dietary: getDietary(r),
+  cuisine: "Other",
+  time: normalizeTime(r.time),
+  category: classifyBucket(r) === "salad" ? "Salad" : "Main",
+  lowCalorie: false,
+  bucket: classifyBucket(r),
+}));
+const allHaveId = simSaved.every((c) => c.recipeId && c.recipeName);
+assert(allHaveId, "all saved candidates have recipeId and recipeName");
+const allHaveBucket = simSaved.every((c) => BUCKET_ORDER.includes(c.bucket));
+assert(allHaveBucket, "all saved candidates have valid bucket label");
+const noneHaveNaN = simSaved.every(
+  (c) => c.time === null || (typeof c.time.total === "number" && !isNaN(c.time.total))
+);
+assert(noneHaveNaN, "no NaN in saved candidate time fields");
+
 console.log(`\n${"=".repeat(50)}`);
 console.log(`Results: ${passed} passed, ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);

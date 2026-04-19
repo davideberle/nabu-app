@@ -17,7 +17,7 @@ https://app.davideberle.com.
 |----------|--------|-------|
 | Todos    | Live   | Full CRUD, Turso-backed |
 | Recipes  | Live   | ~3,527 cookbook recipes (static JSON, classified by meal_role) + My Recipes (Turso), with cook history shown on recipe pages |
-| Meals    | Live   | Weekly meal planner with cuisine diversity (Turso-backed) |
+| Meals    | Live   | Weekly meal planner with bucket-based candidate selection (salad/soup/veg/fish/meat contract, Phase 2), cuisine diversity, Turso-backed |
 | Music    | Live   | Sonos zone control |
 | Shopping | Stub   | Lists placeholder |
 | System   | Stub   | Status placeholder |
