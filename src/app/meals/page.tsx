@@ -186,7 +186,9 @@ function savePlanNow(plan: MealPlan): void {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(plan),
-  }).catch(() => {});
+  }).catch((err) => {
+    console.error("Failed to save meal plan:", err);
+  });
 }
 
 /** Debounced autosave for non-critical changes (notes, context). */

@@ -11,11 +11,18 @@ export async function GET(request: NextRequest) {
       { status: 400 }
     );
   }
-  const plan = await loadMealPlan(week);
-  if (!plan) {
-    return NextResponse.json(null);
+  try {
+    const plan = await loadMealPlan(week);
+    if (!plan) {
+      return NextResponse.json(null);
+    }
+    return NextResponse.json(plan);
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to load plan" },
+      { status: 500 }
+    );
   }
-  return NextResponse.json(plan);
 }
 
 export async function POST(request: NextRequest) {
