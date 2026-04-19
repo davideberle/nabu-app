@@ -178,6 +178,45 @@ function formatPlannerTime(totalMin: number | undefined | null): string | null {
 }
 
 
+// ----- plan normalization -----
+
+/**
+ * Normalize a persisted plan so that `days` always contains exactly 7
+ * well-formed DaySlot entries aligned to the canonical weekDates.
+ * Tolerates null / undefined / partial entries in the persisted data.
+ */
+function normalizePlanDays(
+  plan: MealPlan,
+  weekDates: { date: string; dayOfWeek: string }[],
+): MealPlan {
+  const WEEKEND_DAYS = new Set(["Friday", "Saturday", "Sunday"]);
+  const persisted = plan.days ?? [];
+
+  // Build a lookup by date for persisted slots so we can match by date first.
+  const byDate = new Map<string, DaySlot>();
+  for (const slot of persisted) {
+    if (slot && typeof slot === "object" && slot.date) {
+      byDate.set(slot.date, slot);
+    }
+  }
+
+  const days: DaySlot[] = weekDates.map((wd, i) => {
+    // Prefer date-match, fall back to positional index.
+    const saved = byDate.get(wd.date) ?? (persisted[i] && typeof persisted[i] === "object" ? persisted[i] : null);
+
+    return {
+      date: wd.date,
+      dayOfWeek: wd.dayOfWeek,
+      type: (WEEKEND_DAYS.has(wd.dayOfWeek) ? "weekend" : "weekday") as "weekday" | "weekend",
+      planningState: saved?.planningState ?? "open",
+      recipeId: saved?.recipeId ?? null,
+      recipeName: saved?.recipeName ?? null,
+    };
+  });
+
+  return { ...plan, days };
+}
+
 // ----- persistence helpers -----
 
 /** Immediately persist a plan to the server. */
@@ -287,7 +326,14 @@ export default function MealsPage() {
       .then((data: MealPlan | null) => {
         if (cancelled) return;
         if (data && data.week) {
-          setPlan(data);
+          const normalized = normalizePlanDays(data, getWeekDates(
+            parseInt(data.week.split("-W")[0]),
+            parseInt(data.week.split("-W")[1]),
+          ));
+          // Self-heal: persist repaired plan if days were malformed.
+          const daysChanged = JSON.stringify(normalized.days) !== JSON.stringify(data.days);
+          if (daysChanged) savePlanNow(normalized);
+          setPlan(normalized);
           // Restore saved candidates with full card data for stable reload
           if (data.candidateSet?.items?.length) {
             setCandidates(
@@ -682,7 +728,7 @@ export default function MealsPage() {
                   recipe={r}
                   isSelected={selectedRecipe?.id === r.id}
                   isAssigned={
-                    plan?.days.some((d) => d.recipeId === r.id) ?? false
+                    plan?.days.some((d) => d?.recipeId === r.id) ?? false
                   }
                   onSelect={() =>
                     setSelectedRecipe(
