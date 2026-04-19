@@ -150,10 +150,10 @@ assert(springFiltered.length === 0, "excluded from spring meal plans");
 const fallFiltered = filterBySeason([ore], "fall");
 assert(fallFiltered.length === 1, "included in fall meal plans");
 
-console.log("\n5. Punjabi Lobia Masala → verify image exists");
+console.log("\n5. Punjabi Lobia Masala → image nulled by cleanup (73deb4ed)");
 const plm = find("punjabi-lobia-masala");
 assert(plm, "recipe found");
-assert(plm.image === "/recipes/punjabi-lobia-masala.jpg", `image path set: ${plm.image}`);
+assert(plm.image === null || plm.image === undefined, `image is null (got: ${plm.image})`);
 
 console.log("\n6. Plain Congee → breakfast, not dinner-worthy");
 const pc = find("plain-congee");

@@ -37,7 +37,7 @@ export async function getDb(): Promise<Client> {
     // Enable WAL + busy_timeout for local file-based builds with parallel workers
     if (!process.env.TURSO_DATABASE_URL) {
       await client.execute("PRAGMA journal_mode = WAL");
-      await client.execute("PRAGMA busy_timeout = 5000");
+      await client.execute("PRAGMA busy_timeout = 30000");
     }
     await migrate(client);
     _migrated = true;

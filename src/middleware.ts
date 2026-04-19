@@ -3,10 +3,10 @@ import { auth } from "@/auth";
 export default auth((req) => {
   const isLoggedIn = !!req.auth;
   const isLoginPage = req.nextUrl.pathname === "/login";
-  const isAuthRoute = req.nextUrl.pathname.startsWith("/api/auth");
+  const isApiRoute = req.nextUrl.pathname.startsWith("/api/");
 
-  // Allow auth routes always
-  if (isAuthRoute) {
+  // Allow all API routes (includes /api/auth) — they handle their own auth
+  if (isApiRoute) {
     return;
   }
 

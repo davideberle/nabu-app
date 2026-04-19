@@ -541,7 +541,7 @@ export default function MealsPage() {
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-6">
           {weekDates.map((wd, i) => {
             const slot = plan?.days[i] ?? null;
-            const isFilled = slot?.recipeId !== null;
+            const isFilled = slot != null && slot.recipeId != null;
             const isSelectable = !!selectedRecipe;
             const dayContext = getContextForDate(wd.date);
             const isSkipped = dayContext.some(
