@@ -114,3 +114,104 @@ All recipe pages are async Server Components that `await` recipe data.
 Vercel auto-deploys from `main`. The Turso migration runs on first
 function invocation, seeding tables idempotently (CREATE TABLE IF NOT
 EXISTS + INSERT OR IGNORE for seed data).
+
+## Recipe & Meals UX Refresh (April 2026)
+
+### Problem statement
+
+The meal planner and recipe browsing surfaces are functionally useful, but the
+current presentation is still too catalog-like and utilitarian. In practice:
+
+- the meal planner can still surface recipes without images, which makes the
+  candidate grid feel incomplete and less appetising
+- shallow image containers crop dishes too aggressively, so the food is often
+  harder to read at a glance
+- the visual language leans generic recipe-directory rather than warm,
+  editorial, or chef-like
+
+The recipe + meals side of the app should feel more like a confident cooking
+product and less like a generic recipe listing site.
+
+### Goals
+
+- Exclude image-less recipes from meal-planner candidate surfaces and generated
+  visible suggestions.
+- Make recipe imagery dish-first: less destructive cropping, more generous
+  image space, and layouts that let the food lead.
+- Shift the recipes / meals UI toward a more elevated “cook / chef” feel:
+  warmer, more tactile, more editorial, less badge-heavy utility chrome.
+- Keep the app fast, mobile-friendly, and compatible with the existing recipe
+  corpus.
+
+### Non-goals
+
+- Redesign unrelated modules (todos, music, shopping, system).
+- Solve the entire missing-image corpus problem in this phase.
+- Rework core meal-planner selection logic beyond the image-eligibility rule
+  and presentation needs.
+- Introduce a second recipe source of truth outside the existing kitchen /
+  bundled-recipes / Turso flow.
+
+### Design direction
+
+The target feel is modern food-editorial rather than directory UI:
+
+- warmer palette, softer surfaces, higher-quality spacing
+- stronger serif / editorial typography where it helps
+- image-led cards with taller media areas and less cramped metadata
+- fewer “utility app” affordances competing with the dish itself
+- recipe pages that feel like a chef’s notebook / beautiful cookbook, not a
+  generic listing template
+
+### Implementation phases
+
+#### Phase 1 — Planner image eligibility
+
+- Change planner candidate selection to hard-exclude recipes without images
+  from visible planner options.
+- Verify generated candidate sets and assigned recipe cards only use image-backed
+  recipes.
+- Keep direct recipe access intact for existing imageless recipes outside the
+  planner flow.
+
+#### Phase 2 — Meal planner visual refresh
+
+- Redesign planner cards to use more generous image ratios and improved visual
+  hierarchy.
+- Reduce the current “grid of utility cards” feel.
+- Improve quick-view presentation so the dish image, title, and key cooking
+  signals read first.
+
+#### Phase 3 — Recipe browsing refresh
+
+- Refresh `/recipes` and adjacent image-led listing surfaces with a more
+  editorial presentation.
+- Rebalance typography, section headers, spacing, and card treatments around a
+  more premium cooking vibe.
+- Use image-first layouts wherever recipes are being promoted visually.
+
+#### Phase 4 — Recipe detail polish
+
+- Review hero/media treatment on recipe detail pages for better dish framing.
+- Tighten the details presentation so pages feel more like a cookbook spread
+  than a data sheet.
+- Verify mobile and desktop crop behavior across representative recipes.
+
+### Acceptance criteria
+
+- Meal planner no longer shows recipes without images in candidate selection or
+  generated visible options.
+- Planner cards and quick view show noticeably better dish framing with less
+  aggressive cropping on common recipe imagery.
+- Recipes and meals surfaces share a clear visual identity that feels warmer,
+  more chef/editorial, and less generic-directory.
+- Mobile and desktop layouts both remain usable and visually coherent.
+
+### File locations
+
+Primary implementation points for this refresh:
+
+- `src/lib/meals.ts`
+- `src/app/meals/page.tsx`
+- `src/app/recipes/page.tsx`
+- `src/app/recipes/[id]/page.tsx`

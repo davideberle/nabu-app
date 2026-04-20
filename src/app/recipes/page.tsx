@@ -12,8 +12,8 @@ export default async function RecipesPage() {
   const dietaryOptions = await getDietaryOptions();
   const recipesWithImages = recipes.filter(r => r.image);
 
-  // Get 8 featured recipes with images
-  const featuredRecipes = recipesWithImages.slice(0, 8);
+  // Get 9 featured recipes with images (3 for hero mosaic + 6 for explore grid)
+  const featuredRecipes = recipesWithImages.slice(0, 9);
 
   return (
     <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950 pb-20">
@@ -39,21 +39,62 @@ export default async function RecipesPage() {
       </header>
 
       <main className="max-w-5xl mx-auto px-4 py-6">
-        {/* Search placeholder */}
-        <div className="mb-8">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search recipes..."
-              className="w-full px-4 py-3 pl-10 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-lg text-stone-700 dark:text-stone-200 placeholder:text-stone-400"
-              disabled
-            />
-            <svg className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-          <p className="text-xs text-stone-400 mt-2 text-center">Search coming soon</p>
-        </div>
+        {/* Hero mosaic — 2 large + 2 small featured recipes */}
+        {featuredRecipes.length >= 4 && (
+          <section className="mb-10">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              {/* Primary hero — spans 2 rows on large screens */}
+              <Link
+                href={`/recipes/${featuredRecipes[0].id}`}
+                className="group col-span-2 lg:col-span-2 lg:row-span-2 relative rounded-2xl overflow-hidden"
+              >
+                <div className="relative aspect-[16/9] lg:aspect-auto lg:h-full min-h-[240px]">
+                  <Image
+                    src={featuredRecipes[0].image!}
+                    alt={featuredRecipes[0].name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(min-width: 1024px) 66vw, 100vw"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                  <div className="absolute bottom-4 left-5 right-5">
+                    <p className="text-[10px] tracking-widest uppercase text-white/60 mb-1">
+                      {featuredRecipes[0].source?.cookbook}
+                    </p>
+                    <h2 className="text-lg sm:text-xl font-serif text-white leading-snug drop-shadow-sm">
+                      {featuredRecipes[0].name}
+                    </h2>
+                  </div>
+                </div>
+              </Link>
+              {/* Secondary tiles */}
+              {featuredRecipes.slice(1, 3).map((recipe) => (
+                <Link
+                  key={recipe.id}
+                  href={`/recipes/${recipe.id}`}
+                  className="group relative rounded-2xl overflow-hidden"
+                >
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={recipe.image!}
+                      alt={recipe.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(min-width: 1024px) 33vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <h3 className="text-sm font-serif text-white leading-snug drop-shadow-sm line-clamp-2">
+                        {recipe.name}
+                      </h3>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* My Recipes quick access */}
         <Link
@@ -188,44 +229,45 @@ export default async function RecipesPage() {
           </div>
         </section>
 
-        {/* Featured Recipes with Images */}
+        {/* More to explore — editorial recipe cards */}
         <section>
-          <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4">
-            Featured Recipes
+          <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-5">
+            More to explore
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {featuredRecipes.map((recipe) => {
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {featuredRecipes.slice(3, 9).map((recipe) => {
               const dietary = getDietary(recipe);
               const courseTags = getCourseTags(recipe);
               return (
                 <Link
                   key={recipe.id}
                   href={`/recipes/${recipe.id}`}
-                  className="group rounded-lg bg-white dark:bg-stone-900 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+                  className="group rounded-xl bg-white dark:bg-stone-900 shadow-sm hover:shadow-md transition-all overflow-hidden"
                 >
                   {recipe.image && (
-                    <div className="relative h-36 w-full overflow-hidden">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
                       <Image
                         src={recipe.image}
                         alt={recipe.name}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       />
                     </div>
                   )}
-                  <div className="p-3">
-                    <h3 className="font-serif text-sm text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 leading-snug line-clamp-2">
+                  <div className="p-4">
+                    <h3 className="font-serif text-[15px] text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 leading-snug line-clamp-2">
                       {recipe.name}
                     </h3>
-                    <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                    <p className="text-xs text-stone-400 dark:text-stone-500 mt-1.5">
                       {recipe.source?.cookbook}
                     </p>
                     {(courseTags.length > 0 || dietary.length > 0) && (
-                      <div className="flex gap-1 mt-2">
+                      <div className="flex gap-1.5 mt-2.5">
                         {courseTags.slice(0, 1).map((tag) => (
                           <span
                             key={tag}
-                            className={`text-[10px] px-1.5 py-0.5 rounded ${getCourseTagColor(tag)}`}
+                            className={`text-[10px] px-2 py-0.5 rounded-full ${getCourseTagColor(tag)}`}
                           >
                             {normalizeTagLabel(tag)}
                           </span>
@@ -233,7 +275,7 @@ export default async function RecipesPage() {
                         {dietary.slice(0, 1).map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] px-1.5 py-0.5 bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 rounded"
+                            className="text-[10px] px-2 py-0.5 bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 rounded-full"
                           >
                             {tag}
                           </span>

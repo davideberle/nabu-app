@@ -142,17 +142,19 @@ export default async function RecipePage({
         <BackButton />
       </div>
 
-      {/* Hero image */}
+      {/* Hero image — generous but not overwhelming; object-[center_30%] keeps
+           the dish visible rather than cropping to sky/ceiling above the plate */}
       {recipe.image ? (
-        <div className="relative h-[65vh] w-full">
+        <div className="relative h-[55vh] sm:h-[60vh] w-full">
           <Image
             src={recipe.image}
             alt={recipe.name}
             fill
-            className="object-cover object-center"
+            className="object-cover object-[center_30%]"
             priority
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/5" />
         </div>
       ) : (
         // Spacer for recipes without images

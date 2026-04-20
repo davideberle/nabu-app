@@ -507,22 +507,26 @@ export default function MealsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950">
       {/* Header */}
-      <header className="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+      <header className="border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
               href="/"
-              className="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 text-sm"
+              className="text-stone-400 hover:text-stone-600 dark:text-stone-500 dark:hover:text-stone-300"
             >
-              &larr; Back
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+              </svg>
             </Link>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">&#127869;</span>
-              <h1 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                Meals
+            <div>
+              <h1 className="text-xl font-serif text-stone-800 dark:text-stone-100">
+                Meal Planner
               </h1>
+              <p className="text-xs text-stone-400 dark:text-stone-500">
+                Plan your week
+              </p>
             </div>
           </div>
         </div>
@@ -533,23 +537,23 @@ export default function MealsPage() {
         <div className="flex gap-2 mb-6">
           <button
             onClick={() => setActiveTab("this")}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               activeTab === "this"
-                ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600"
+                ? "bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900"
+                : "bg-white dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:border-stone-400 dark:hover:border-stone-500"
             }`}
           >
-            This Week (W{thisWeek.week})
+            This Week
           </button>
           <button
             onClick={() => setActiveTab("next")}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               activeTab === "next"
-                ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600"
+                ? "bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900"
+                : "bg-white dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:border-stone-400 dark:hover:border-stone-500"
             }`}
           >
-            Next Week (W{nextWeek.week})
+            Next Week
           </button>
         </div>
 
@@ -563,12 +567,14 @@ export default function MealsPage() {
                 setShowContextEditor(!showContextEditor);
               }}
               disabled={planLoading}
-              className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex items-center gap-1.5 transition-colors disabled:opacity-50"
+              className="text-sm text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 flex items-center gap-1.5 transition-colors disabled:opacity-50"
             >
-              <span className="text-base">&#128221;</span>
-              {showContextEditor ? "Hide week notes" : "Week notes & context"}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+              {showContextEditor ? "Hide notes" : "Week notes"}
               {hasContext && !showContextEditor && (
-                <span className="ml-1 px-1.5 py-0.5 text-xs rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">
+                <span className="ml-1 px-1.5 py-0.5 text-xs rounded-full bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-300">
                   {contextItems.length + (plan?.notes?.trim() ? 1 : 0)}
                 </span>
               )}
@@ -603,7 +609,7 @@ export default function MealsPage() {
         </div>
 
         {/* Calendar grid — 7-day week */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-8">
           {weekDates.map((wd, i) => {
             const slot = plan?.days[i] ?? null;
             const isFilled = slot != null && slot.recipeId != null;
@@ -617,20 +623,20 @@ export default function MealsPage() {
               <div
                 key={wd.date}
                 onClick={() => isSelectable && !isSkipped && handleSlotClick(i)}
-                className={`rounded-lg border p-3 min-h-[110px] flex flex-col transition-colors ${
+                className={`rounded-xl border p-3 min-h-[110px] flex flex-col transition-all ${
                   isSkipped
-                    ? "bg-zinc-100 dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700 opacity-60"
+                    ? "bg-stone-100 dark:bg-stone-900 border-stone-300 dark:border-stone-700 opacity-60"
                     : isSelectable
-                      ? "cursor-pointer border-blue-400 dark:border-blue-600 bg-blue-50 dark:bg-blue-950 hover:bg-blue-100 dark:hover:bg-blue-900"
+                      ? "cursor-pointer border-amber-400 dark:border-amber-600 bg-amber-50/50 dark:bg-amber-950/30 hover:bg-amber-50 dark:hover:bg-amber-900/30 shadow-sm"
                       : isFilled
-                        ? "bg-white dark:bg-zinc-900 border-emerald-200 dark:border-emerald-800"
-                        : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
+                        ? "bg-white dark:bg-stone-900 border-stone-300 dark:border-stone-700 shadow-sm"
+                        : "bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-800"
                 }`}
               >
-                <div className={`text-xs font-medium ${isWeekend ? "text-indigo-500 dark:text-indigo-400" : "text-zinc-500 dark:text-zinc-400"}`}>
+                <div className={`text-xs font-medium ${isWeekend ? "text-amber-600 dark:text-amber-400" : "text-stone-500 dark:text-stone-400"}`}>
                   {wd.dayOfWeek.slice(0, 3)}
                 </div>
-                <div className="text-xs text-zinc-400 dark:text-zinc-500 mb-1">
+                <div className="text-[10px] text-stone-400 dark:text-stone-500 mb-1">
                   {formatDateShort(wd.date)}
                 </div>
                 {/* Context badges for this day */}
@@ -648,13 +654,13 @@ export default function MealsPage() {
                 )}
                 {isSkipped ? (
                   <div className="flex-1 flex items-center justify-center">
-                    <span className="text-xs text-zinc-400 dark:text-zinc-500 italic">
+                    <span className="text-xs text-stone-400 dark:text-stone-500 italic">
                       Skipped
                     </span>
                   </div>
                 ) : isFilled ? (
                   <div className="flex-1 flex flex-col justify-between">
-                    <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 line-clamp-3">
+                    <p className="text-sm font-serif text-stone-800 dark:text-stone-100 line-clamp-3 leading-snug">
                       {slot?.recipeName}
                     </p>
                     <button
@@ -662,15 +668,15 @@ export default function MealsPage() {
                         e.stopPropagation();
                         handleClearSlot(i);
                       }}
-                      className="mt-1 text-xs text-zinc-400 hover:text-red-500 self-end"
+                      className="mt-1 text-[10px] text-stone-400 hover:text-red-500 self-end transition-colors"
                     >
-                      Clear
+                      clear
                     </button>
                   </div>
                 ) : (
                   <div className="flex-1 flex items-center justify-center">
-                    <span className="text-xs text-zinc-400 dark:text-zinc-600">
-                      {isSelectable ? "Click to assign" : "Empty"}
+                    <span className="text-xs text-stone-400 dark:text-stone-600">
+                      {isSelectable ? "Tap to assign" : "—"}
                     </span>
                   </div>
                 )}
@@ -685,7 +691,7 @@ export default function MealsPage() {
             <button
               onClick={handleGenerate}
               disabled={loading}
-              className="px-4 py-2 rounded-lg text-sm font-medium bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 disabled:opacity-50 transition-colors"
+              className="px-5 py-2.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-50 transition-colors shadow-sm"
             >
               {loading ? "Generating..." : "Generate Options"}
             </button>
@@ -694,24 +700,23 @@ export default function MealsPage() {
             <button
               onClick={handleGenerate}
               disabled={loading}
-              className="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-500 dark:hover:border-zinc-500 disabled:opacity-50 transition-colors"
+              className="px-5 py-2.5 rounded-full text-sm font-medium bg-white dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 hover:border-stone-500 dark:hover:border-stone-500 disabled:opacity-50 transition-colors"
             >
-              {loading ? "Regenerating..." : "Regenerate"}
+              {loading ? "Refreshing..." : "Refresh suggestions"}
             </button>
           )}
         </div>
 
         {/* Selected recipe indicator */}
         {selectedRecipe && (
-          <div className="mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 flex items-center justify-between">
-            <span className="text-sm text-blue-700 dark:text-blue-300">
-              Selected:{" "}
-              <span className="font-medium">{selectedRecipe.name}</span> &mdash;
-              click a day slot to assign
+          <div className="mb-4 p-3 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 flex items-center justify-between">
+            <span className="text-sm text-stone-700 dark:text-stone-300">
+              <span className="font-serif font-medium">{selectedRecipe.name}</span>
+              <span className="text-stone-400 ml-2">— tap a day to assign</span>
             </span>
             <button
               onClick={() => setSelectedRecipe(null)}
-              className="text-xs text-blue-500 hover:text-blue-700"
+              className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
             >
               Cancel
             </button>
@@ -720,25 +725,24 @@ export default function MealsPage() {
 
         {/* Candidate mains */}
         {hasCandidates && (
-          <div className="space-y-4">
-            {/* Filter controls */}
-            <div className="flex gap-2">
+          <div className="space-y-5">
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400">
+                This week&apos;s suggestions
+              </h2>
               <button
                 onClick={() => setFilterLowCal(!filterLowCal)}
                 className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
                   filterLowCal
-                    ? "bg-cyan-600 text-white"
-                    : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500"
+                    ? "bg-emerald-600 text-white"
+                    : "bg-white dark:bg-stone-800 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:border-stone-400 dark:hover:border-stone-500"
                 }`}
               >
-                Low-Calorie
+                Low-cal only
               </button>
             </div>
 
-            <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">
-              Candidates
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {candidates
                 .filter((r) => !filterLowCal || r.lowCalorie)
                 .filter((r) => !plan?.days.some((d) => d?.recipeId === r.id))
@@ -809,10 +813,10 @@ function WeekContextEditor({
   }
 
   return (
-    <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 space-y-4">
+    <div className="rounded-xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-4 space-y-4">
       {/* Free-text notes */}
       <div>
-        <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide block mb-1">
+        <label className="text-xs font-medium text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-1">
           Week Notes
         </label>
         <textarea
@@ -821,14 +825,14 @@ function WeekContextEditor({
           disabled={locked}
           placeholder="General notes for this week..."
           rows={2}
-          className="w-full text-sm rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-3 py-2 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 disabled:opacity-50 resize-none"
+          className="w-full text-sm rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-3 py-2 placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-400 disabled:opacity-50 resize-none"
         />
       </div>
 
       {/* Existing context items */}
       {(plan.context || []).length > 0 && (
         <div>
-          <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide block mb-2">
+          <label className="text-xs font-medium text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-2">
             Context Items
           </label>
           <div className="space-y-2">
@@ -847,18 +851,18 @@ function WeekContextEditor({
                     {formatDateShort(ctx.date)}
                   </span>
                 )}
-                <span className="text-zinc-700 dark:text-zinc-300 flex-1 min-w-0 truncate">
+                <span className="text-stone-700 dark:text-stone-300 flex-1 min-w-0 truncate">
                   {ctx.note}
                 </span>
                 {ctx.effect && (
-                  <span className="text-[10px] text-zinc-400 shrink-0">
+                  <span className="text-[10px] text-stone-400 shrink-0">
                     {ctx.effect}
                   </span>
                 )}
                 {!locked && (
                   <button
                     onClick={() => onRemoveContext(ctx.id)}
-                    className="shrink-0 text-xs text-zinc-400 hover:text-red-500 transition-colors"
+                    className="shrink-0 text-xs text-stone-400 hover:text-red-500 transition-colors"
                   >
                     &times;
                   </button>
@@ -872,14 +876,14 @@ function WeekContextEditor({
       {/* Add new context item */}
       {!locked && (
         <div>
-          <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide block mb-2">
+          <label className="text-xs font-medium text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-2">
             Add Context
           </label>
           <div className="flex flex-wrap gap-2">
             <select
               value={newKind}
               onChange={(e) => setNewKind(e.target.value as WeekContextItem["kind"])}
-              className="text-sm rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+              className="text-sm rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
             >
               {CONTEXT_KIND_OPTIONS.map((o) => (
                 <option key={o.value} value={o.value}>
@@ -890,7 +894,7 @@ function WeekContextEditor({
             <select
               value={newDate}
               onChange={(e) => setNewDate(e.target.value)}
-              className="text-sm rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+              className="text-sm rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
             >
               <option value="">Any day</option>
               {weekDates.map((wd) => (
@@ -905,12 +909,12 @@ function WeekContextEditor({
               onChange={(e) => setNewNote(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleAdd()}
               placeholder="Note..."
-              className="flex-1 min-w-[120px] text-sm rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-3 py-1.5 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+              className="flex-1 min-w-[120px] text-sm rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-3 py-1.5 placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
             />
             <button
               onClick={handleAdd}
               disabled={!newNote.trim()}
-              className="px-3 py-1.5 rounded-lg text-sm font-medium bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 disabled:opacity-30 transition-colors"
+              className="px-3 py-1.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-30 transition-colors"
             >
               Add
             </button>
@@ -936,105 +940,99 @@ function RecipeCard({
   onSelect: () => void;
   onQuickView: () => void;
 }) {
-  const vegTags = recipe.dietary.filter(
+  const isVeg = recipe.dietary.some(
     (t) => t === "vegan" || t === "vegetarian"
   );
-  const catColors = getCourseTagColor(recipe.category);
 
   return (
     <div
-      className={`rounded-lg border overflow-hidden transition-colors ${
+      className={`group rounded-xl overflow-hidden transition-all ${
         isAssigned
-          ? "opacity-50 border-zinc-200 dark:border-zinc-700"
+          ? "opacity-40"
           : isSelected
-            ? "border-blue-500 dark:border-blue-400 ring-2 ring-blue-500/30"
-            : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600"
+            ? "ring-2 ring-amber-500/40 shadow-md"
+            : "bg-white dark:bg-stone-900 shadow-sm hover:shadow-md"
       }`}
     >
-      {/* Image */}
+      {/* Image — generous 4:3 aspect ratio */}
       {recipe.image ? (
-        <div className="relative h-36 bg-zinc-100 dark:bg-zinc-800">
+        <div
+          className="relative aspect-[4/3] bg-stone-100 dark:bg-stone-800 overflow-hidden cursor-pointer"
+          onClick={(e) => { e.stopPropagation(); onQuickView(); }}
+        >
           <Image
             src={recipe.image}
             alt={recipe.name}
             fill
-            className="object-cover"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
+          {/* Subtle overlay with category + time */}
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 to-transparent p-3 pt-8">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-medium tracking-wide uppercase text-white/80">
+                {recipe.category}
+              </span>
+              {formatPlannerTime(recipe.time?.total) && (
+                <span className="text-[10px] text-white/60">
+                  · {formatPlannerTime(recipe.time?.total)}
+                </span>
+              )}
+            </div>
+          </div>
+          {isVeg && (
+            <div className="absolute top-2 right-2">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-600/90 text-white font-medium backdrop-blur-sm">
+                {recipe.dietary.includes("vegan") ? "vegan" : "vegetarian"}
+              </span>
+            </div>
+          )}
         </div>
       ) : (
-        <div className="h-20 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 flex items-center justify-center">
-          <span className="text-3xl opacity-30">&#127869;</span>
+        <div className="aspect-[4/3] bg-gradient-to-br from-stone-100 to-stone-200 dark:from-stone-800 dark:to-stone-900 flex items-center justify-center">
+          <span className="text-4xl opacity-20">&#127869;</span>
         </div>
       )}
 
-      <div className="p-3">
-        {/* Category badge + cuisine */}
-        <div className="flex flex-wrap gap-1.5 mb-2">
-          <span
-            className={`text-xs px-2 py-0.5 rounded-full font-medium ${catColors}`}
-          >
-            {recipe.category}
-          </span>
-          {recipe.cuisine && recipe.cuisine !== "Other" && (
-            <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-              {recipe.cuisine}
-            </span>
-          )}
-          {vegTags.map((t) => (
-            <span
-              key={t}
-              className="text-xs px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
-            >
-              {t}
-            </span>
-          ))}
-          {recipe.lowCalorie && (
-            <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300">
-              low-cal
-            </span>
-          )}
-        </div>
-
+      <div className="p-4">
         {/* Name */}
-        <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-1 line-clamp-2">
+        <h3
+          className="font-serif text-[15px] text-stone-800 dark:text-stone-100 leading-snug line-clamp-2 cursor-pointer hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+          onClick={(e) => { e.stopPropagation(); onQuickView(); }}
+        >
           {recipe.name}
-        </p>
-        <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
+        </h3>
+        <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
           {recipe.source?.cookbook}
+          {recipe.cuisine && recipe.cuisine !== "Other" && (
+            <span className="text-stone-300 dark:text-stone-600"> · {recipe.cuisine}</span>
+          )}
         </p>
 
-        {/* Time + actions */}
-        <div className="flex items-center justify-between">
-          {formatPlannerTime(recipe.time?.total) && (
-            <span className="text-xs text-zinc-400 dark:text-zinc-500">
-              {formatPlannerTime(recipe.time?.total)}
-            </span>
-          )}
-          <div className="flex gap-2 ml-auto">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onQuickView();
-              }}
-              className="text-xs px-2 py-1 rounded text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-            >
-              Quick View
-            </button>
-            <button
-              onClick={onSelect}
-              disabled={isAssigned}
-              className={`text-xs px-2 py-1 rounded font-medium transition-colors ${
-                isAssigned
-                  ? "text-zinc-400 cursor-not-allowed"
-                  : isSelected
-                    ? "bg-blue-500 text-white"
-                    : "text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950"
-              }`}
-            >
-              {isAssigned ? "Assigned" : isSelected ? "Selected" : "Select"}
-            </button>
-          </div>
+        {/* Actions */}
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100 dark:border-stone-800">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView();
+            }}
+            className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+          >
+            View recipe
+          </button>
+          <button
+            onClick={onSelect}
+            disabled={isAssigned}
+            className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
+              isAssigned
+                ? "text-stone-300 dark:text-stone-600 cursor-not-allowed"
+                : isSelected
+                  ? "bg-amber-500 text-white shadow-sm"
+                  : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700"
+            }`}
+          >
+            {isAssigned ? "Assigned" : isSelected ? "Selected" : "Add to plan"}
+          </button>
         </div>
       </div>
     </div>
@@ -1063,118 +1061,116 @@ function QuickViewModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-xl max-w-2xl w-full max-h-[85vh] overflow-y-auto">
+      <div className="bg-white dark:bg-stone-900 rounded-t-2xl sm:rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {loading ? (
-          <div className="p-8 text-center">
-            <p className="text-sm text-zinc-500">Loading recipe...</p>
+          <div className="p-12 text-center">
+            <p className="text-sm text-stone-400 font-serif italic">Loading recipe...</p>
           </div>
         ) : recipe ? (
           <>
-            {/* Header with image */}
+            {/* Hero image — generous height */}
             {recipe.image && (
-              <div className="relative h-48 sm:h-56">
+              <div className="relative aspect-[16/10] sm:aspect-[16/9]">
                 <Image
                   src={recipe.image}
                   alt={recipe.name}
                   fill
-                  className="object-cover rounded-t-xl"
+                  className="object-cover rounded-t-2xl"
                   sizes="(max-width: 672px) 100vw, 672px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                 <button
                   onClick={onClose}
-                  className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors"
+                  className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm text-white/80 flex items-center justify-center hover:bg-black/50 transition-colors"
                 >
-                  &times;
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
-                <div className="absolute bottom-3 left-4 right-4">
-                  <h2 className="text-lg font-semibold text-white drop-shadow-sm">
-                    {recipe.name}
-                  </h2>
-                  <p className="text-sm text-white/80">
+                <div className="absolute bottom-4 left-5 right-5">
+                  <p className="text-xs tracking-widest uppercase text-white/60 mb-1">
                     {recipe.source?.cookbook}
                   </p>
+                  <h2 className="text-xl sm:text-2xl font-serif text-white leading-snug drop-shadow-sm">
+                    {recipe.name}
+                  </h2>
                 </div>
               </div>
             )}
             {!recipe.image && (
-              <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-start justify-between">
+              <div className="px-6 pt-6 pb-4 flex items-start justify-between">
                 <div>
-                  <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                    {recipe.name}
-                  </h2>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                  <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-1">
                     {recipe.source?.cookbook}
                   </p>
+                  <h2 className="text-xl font-serif text-stone-800 dark:text-stone-100">
+                    {recipe.name}
+                  </h2>
                 </div>
                 <button
                   onClick={onClose}
-                  className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-xl leading-none"
+                  className="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
                 >
-                  &times;
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
               </div>
             )}
 
-            <div className="p-4 space-y-4">
-              {/* Badges */}
-              <div className="flex flex-wrap gap-2">
-                <span
-                  className={`text-xs px-2 py-0.5 rounded-full font-medium ${getCourseTagColor(recipe.category)}`}
-                >
-                  {recipe.category}
-                </span>
+            <div className="px-6 py-5 space-y-5">
+              {/* Meta line */}
+              <div className="flex flex-wrap items-center gap-3 text-xs text-stone-400 dark:text-stone-500">
+                {recipe.category && (
+                  <span className="font-medium text-stone-600 dark:text-stone-300">{recipe.category}</span>
+                )}
                 {recipe.cuisine && recipe.cuisine !== "Other" && (
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                    {recipe.cuisine}
-                  </span>
+                  <span>{recipe.cuisine}</span>
                 )}
                 {formatPlannerTime(recipe.time?.total) && (
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                  <span className="flex items-center gap-1">
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                     {formatPlannerTime(recipe.time?.total)}
                   </span>
                 )}
                 {recipe.servings && (
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                    {recipe.servings}
-                  </span>
-                )}
-                {recipe.lowCalorie && (
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300">
-                    low-cal
-                  </span>
+                  <span>{recipe.servings}</span>
                 )}
               </div>
 
               {/* Introduction */}
               {recipe.introduction && (
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 italic">
+                <p className="text-stone-600 dark:text-stone-400 font-serif text-sm leading-relaxed italic">
                   {recipe.introduction}
                 </p>
               )}
 
+              {/* Divider */}
+              <div className="flex justify-center">
+                <div className="w-12 h-px bg-stone-200 dark:bg-stone-700" />
+              </div>
+
               {/* Ingredients */}
               <div>
-                <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
+                <h3 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-3">
                   Ingredients
                 </h3>
-                <ul className="space-y-1">
+                <ul className="space-y-1.5">
                   {recipe.ingredients.map((ing, idx) => (
                     <li
                       key={idx}
-                      className="text-sm text-zinc-600 dark:text-zinc-400 flex gap-2"
+                      className="text-sm text-stone-600 dark:text-stone-400 flex justify-between"
                     >
-                      <span className="text-zinc-400 dark:text-zinc-500 shrink-0 w-16 text-right">
-                        {ing.amount}
-                      </span>
-                      <span>
-                        {ing.unit ? `${ing.unit} ` : ""}
-                        {ing.item}
+                      <span>{ing.item}</span>
+                      <span className="text-stone-400 dark:text-stone-500 ml-3 tabular-nums shrink-0">
+                        {ing.amount}{ing.unit ? ` ${ing.unit}` : ""}
                       </span>
                     </li>
                   ))}
@@ -1183,35 +1179,46 @@ function QuickViewModal({
 
               {/* Method (preview — first 4 steps) */}
               <div>
-                <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
+                <h3 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-3">
                   Method
                 </h3>
-                <ol className="space-y-2">
+                <ol className="space-y-3">
                   {recipe.method.slice(0, 4).map((step, idx) => (
                     <li
                       key={idx}
-                      className="text-sm text-zinc-600 dark:text-zinc-400 flex gap-2"
+                      className="text-sm text-stone-600 dark:text-stone-400 flex gap-3"
                     >
-                      <span className="text-zinc-400 dark:text-zinc-500 shrink-0 font-medium">
-                        {idx + 1}.
+                      <span className="text-lg font-serif text-stone-300 dark:text-stone-600 leading-none shrink-0 pt-0.5">
+                        {idx + 1}
                       </span>
-                      <span className="line-clamp-3">{step}</span>
+                      <span className="leading-relaxed line-clamp-3">{step}</span>
                     </li>
                   ))}
                 </ol>
                 {recipe.method.length > 4 && (
-                  <p className="text-xs text-zinc-400 mt-2">
-                    +{recipe.method.length - 4} more steps...
+                  <p className="text-xs text-stone-400 mt-3 italic">
+                    +{recipe.method.length - 4} more steps
                   </p>
                 )}
               </div>
 
               {/* Tips */}
               {recipe.tips && (
-                <div className="text-xs text-zinc-500 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-800 rounded-lg p-3">
-                  <span className="font-medium">Tip:</span> {recipe.tips}
+                <div className="text-sm text-stone-500 dark:text-stone-400 bg-amber-50/50 dark:bg-amber-900/10 rounded-xl p-4 border border-amber-100 dark:border-amber-900/20">
+                  <span className="text-xs tracking-widest uppercase text-amber-600 dark:text-amber-400">Tip</span>
+                  <p className="mt-1 leading-relaxed">{recipe.tips}</p>
                 </div>
               )}
+
+              {/* Full recipe link */}
+              <div className="pt-2 pb-1 text-center">
+                <Link
+                  href={`/recipes/${recipe.id}`}
+                  className="text-sm text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200 underline underline-offset-2 transition-colors"
+                >
+                  View full recipe
+                </Link>
+              </div>
             </div>
           </>
         ) : null}

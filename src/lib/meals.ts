@@ -396,9 +396,6 @@ function pickWithoutCuisineRepeat(
   const usedCuisines = new Set(alreadyPicked.map((r) => getCuisine(r)));
   const remaining = shuffle(pool);
 
-  // Prefer recipes with images
-  remaining.sort((a, b) => (b.image ? 1 : 0) - (a.image ? 1 : 0));
-
   for (const r of remaining) {
     if (picked.length >= count) break;
     const cuisine = getCuisine(r);
@@ -510,9 +507,9 @@ export function selectMealOptions(
   // Drop recipes from the opposite season (spring ≠ fall suggestions, etc.)
   dinnerRecipes = filterBySeason(dinnerRecipes);
 
-  // Prefer recipes with images — if we have enough, use only those
+  // Hard rule: planner-visible candidates must have images
   const withImages = dinnerRecipes.filter((r) => !!r.image);
-  let pool = withImages.length >= 40 ? withImages : dinnerRecipes;
+  let pool = withImages;
 
   // If context requests quick/light meals, boost those in the pool
   if (hints?.preferQuick) {
@@ -707,9 +704,8 @@ export function selectCandidateMains(
   }
   pool = filterBySeason(pool);
 
-  // Prefer recipes with images
-  const withImages = pool.filter((r) => !!r.image);
-  if (withImages.length >= 40) pool = withImages;
+  // Hard rule: planner-visible candidates must have images
+  pool = pool.filter((r) => !!r.image);
 
   // Partition by bucket
   const buckets: Record<CandidateBucket, Recipe[]> = {
