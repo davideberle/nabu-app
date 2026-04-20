@@ -181,6 +181,16 @@ const tghsb = find("triple-grain-herbed-salad-bowl");
 assert(tghsb, "recipe found");
 assert(tghsb.image === null || tghsb.image === undefined, `image is null (got: ${tghsb.image})`);
 
+console.log("\n6e. Hominy and Spinach in Tomato-Garlic Broth → image nulled (wrong image)");
+const hominy = find("hominy-and-spinach-in-tomato-garlic-broth");
+assert(hominy, "recipe found");
+assert(hominy.image === null || hominy.image === undefined, `image is null (got: ${hominy.image})`);
+
+console.log("\n6f. Celtuce Salad with Spring Onion Oil → image nulled (wrong image)");
+const celtuce = find("celtuce-salad-with-spring-onion-oil");
+assert(celtuce, "recipe found");
+assert(celtuce.image === null || celtuce.image === undefined, `image is null (got: ${celtuce.image})`);
+
 // ---- Broader sanity checks ----
 
 console.log("\n7. Weekend-main pool is a strict subset of dinner pool");
