@@ -419,6 +419,28 @@ async function migrate(client: Client) {
         });
       }
     },
+
+    // v6 -> v7: create cooking_sessions table for live cooking surface
+    async () => {
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS cooking_sessions (
+          id          TEXT PRIMARY KEY,
+          date        TEXT NOT NULL UNIQUE,
+          recipe_id   TEXT NOT NULL,
+          recipe_name TEXT NOT NULL,
+          recipe_data TEXT NOT NULL,
+          status      TEXT NOT NULL DEFAULT 'active',
+          current_step INTEGER NOT NULL DEFAULT 0,
+          started_at  TEXT NOT NULL,
+          completed_at TEXT,
+          created_at  TEXT NOT NULL
+        )
+      `);
+      await client.execute(`
+        CREATE INDEX IF NOT EXISTS idx_cooking_sessions_date
+          ON cooking_sessions (date DESC)
+      `);
+    },
   ];
 
   if (version < migrations.length) {

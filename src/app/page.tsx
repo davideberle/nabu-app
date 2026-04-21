@@ -42,6 +42,14 @@ async function getTiles() {
       stats: "Browse",
     },
     {
+      id: "cooking",
+      name: "Cooking",
+      emoji: "🔥",
+      description: "Today\u2019s recipe, step by step",
+      href: "/cooking",
+      stats: "Cook",
+    },
+    {
       id: "meals",
       name: "Meals",
       emoji: "🍽️",
