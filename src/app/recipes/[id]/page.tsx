@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getRecipe, getAllRecipes, getCourseTags, formatServings, isLowCalorie, getMealRole } from "@/lib/recipes";
+import { getRecipe, getAllRecipes, getCourseTags, formatServings, isLowCalorie, getMealRole, normalizeIngredient } from "@/lib/recipes";
 import { getCourseTagColor, normalizeTagLabel, PUBLICATION_BADGE_CLASSES } from "@/lib/tag-colors";
 import { getCookEventsForRecipe } from "@/lib/db";
 import BackButton from "@/components/BackButton";
@@ -18,27 +18,8 @@ function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// Abbreviate and clean up measurements
-function cleanAmount(amount: string): string {
-  if (!amount) return '';
-  return amount
-    // Remove imperial measurements in brackets
-    .replace(/\s*\([^)]*oz[^)]*\)/gi, '')
-    .replace(/\s*\([^)]*lb[^)]*\)/gi, '')
-    .replace(/\s*\([^)]*cup[^)]*\)/gi, '')
-    .replace(/\s*\([^)]*inch[^)]*\)/gi, '')
-    .replace(/\s*\([^)]*in\)/gi, '')
-    // Abbreviate common units
-    .replace(/\btablespoons?\b/gi, 'tbsp')
-    .replace(/\bteaspoons?\b/gi, 'tsp')
-    .replace(/\bkilograms?\b/gi, 'kg')
-    .replace(/\bgrams?\b/gi, 'g')
-    .replace(/\bmillilitres?\b/gi, 'ml')
-    .replace(/\blitres?\b/gi, 'l')
-    // Clean up extra spaces
-    .replace(/\s+/g, ' ')
-    .trim();
-}
+// Measurement cleanup now uses the centralized normalizeIngredient helper
+// from @/lib/recipes — see normalizeIngredient().
 
 // Get cuisine from cookbook
 function getCuisineFromCookbook(cookbook?: string): string | null {
@@ -275,19 +256,22 @@ export default async function RecipePage({
                   </h3>
                 )}
                 <ul className="space-y-2">
-                  {group.items.map((ing, i) => (
-                    <li
-                      key={i}
-                      className="flex justify-between items-baseline"
-                    >
-                      <span className="text-stone-700 dark:text-stone-300">
-                        {capitalize(ing.item)}
-                      </span>
-                      <span className="text-stone-400 dark:text-stone-500 text-sm ml-4 tabular-nums">
-                        {cleanAmount(ing.amount)}{ing.unit && ` ${ing.unit}`}
-                      </span>
-                    </li>
-                  ))}
+                  {group.items.map((ing, i) => {
+                    const norm = normalizeIngredient(ing.amount, ing.item);
+                    return (
+                      <li
+                        key={i}
+                        className="flex justify-between items-baseline"
+                      >
+                        <span className="text-stone-700 dark:text-stone-300">
+                          {capitalize(norm.item)}
+                        </span>
+                        <span className="text-stone-400 dark:text-stone-500 text-sm ml-4 tabular-nums">
+                          {norm.amount}{ing.unit && ` ${ing.unit}`}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}

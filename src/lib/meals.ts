@@ -13,19 +13,17 @@ function currentSeason(now = new Date()): Season {
   return "winter";
 }
 
-/** Adjacent seasons that are "close enough" to not penalise. */
-const ADJACENT_SEASONS: Record<Season, Season[]> = {
-  spring: ["winter", "summer"],
-  summer: ["spring", "fall"],
-  fall: ["summer", "winter"],
-  winter: ["fall", "spring"],
-};
-
-const OPPOSITE_SEASON: Record<Season, Season> = {
-  spring: "fall",
-  summer: "winter",
-  fall: "spring",
-  winter: "summer",
+/**
+ * Seasons allowed for planner display: current + the trailing (previous)
+ * season we just came from. This prevents forward-season ingredients from
+ * surfacing too early (e.g. peach salad in spring) while still allowing
+ * hearty winter dishes to linger into early spring.
+ */
+const PLANNER_ALLOWED_SEASONS: Record<Season, Set<Season>> = {
+  spring: new Set(["spring", "winter"]),
+  summer: new Set(["summer", "spring"]),
+  fall: new Set(["fall", "summer"]),
+  winter: new Set(["winter", "fall"]),
 };
 
 /** Keywords that strongly signal a recipe belongs to a particular season. */
@@ -82,15 +80,15 @@ function recipeSeason(recipe: Recipe): Season | null {
 }
 
 /**
- * Filter out recipes whose season is the OPPOSITE of the current season.
- * Season-neutral and adjacent-season recipes pass through.
+ * Filter out recipes whose detected season is not in the allowed set for the
+ * current season. Season-neutral recipes always pass through.
  */
 function filterBySeason<T extends Recipe>(recipes: T[], now?: Date): T[] {
   const season = currentSeason(now);
-  const opposite = OPPOSITE_SEASON[season];
+  const allowed = PLANNER_ALLOWED_SEASONS[season];
   return recipes.filter((r) => {
     const rs = recipeSeason(r);
-    return rs !== opposite;
+    return rs === null || allowed.has(rs);
   });
 }
 

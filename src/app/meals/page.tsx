@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { getCourseTagColor } from "@/lib/tag-colors";
+import { normalizeIngredient } from "@/lib/normalize-ingredients";
 
 // ----- types -----
 
@@ -1163,17 +1164,20 @@ function QuickViewModal({
                   Ingredients
                 </h3>
                 <ul className="space-y-1.5">
-                  {recipe.ingredients.map((ing, idx) => (
-                    <li
-                      key={idx}
-                      className="text-sm text-stone-600 dark:text-stone-400 flex justify-between"
-                    >
-                      <span>{ing.item}</span>
-                      <span className="text-stone-400 dark:text-stone-500 ml-3 tabular-nums shrink-0">
-                        {ing.amount}{ing.unit ? ` ${ing.unit}` : ""}
-                      </span>
-                    </li>
-                  ))}
+                  {recipe.ingredients.map((ing, idx) => {
+                    const norm = normalizeIngredient(ing.amount, ing.item);
+                    return (
+                      <li
+                        key={idx}
+                        className="text-sm text-stone-600 dark:text-stone-400 flex justify-between"
+                      >
+                        <span>{norm.item}</span>
+                        <span className="text-stone-400 dark:text-stone-500 ml-3 tabular-nums shrink-0">
+                          {norm.amount}{ing.unit ? ` ${ing.unit}` : ""}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
 

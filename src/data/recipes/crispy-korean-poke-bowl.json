@@ -6,22 +6,23 @@
     "author": "Various",
     "chapter": "Main Dishes"
   },
+  "servings": "serves 4",
   "ingredients": [
     {
-      "item": "ounces dried soba noodles*",
-      "amount": "9"
+      "item": "dried soba noodles",
+      "amount": "250 g"
     },
     {
       "item": "pineapple juice",
-      "amount": "1 cup"
+      "amount": "240 ml"
     },
     {
-      "item": "tbsps maple syrup",
-      "amount": "2"
+      "item": "maple syrup",
+      "amount": "2 tbsp"
     },
     {
-      "item": "tbsps soy sauce",
-      "amount": "2"
+      "item": "soy sauce",
+      "amount": "2 tbsp"
     },
     {
       "item": "sesame oil",
@@ -32,28 +33,28 @@
       "amount": "2"
     },
     {
-      "item": "tbsps gochujang",
-      "amount": "3 to 4"
+      "item": "gochujang",
+      "amount": "3 to 4 tbsp"
     },
     {
       "item": "pineapple chunks",
-      "amount": "2 cups"
+      "amount": "300 g"
     },
     {
-      "item": "pound extra firm tofu, drained and pressed",
-      "amount": "1"
+      "item": "extra firm tofu, drained and pressed",
+      "amount": "450 g"
     },
     {
       "item": "cornstarch",
-      "amount": "¼ to ⅓ cup"
+      "amount": "30–40 g"
     },
     {
-      "item": "about ¼ cup vegetable oil",
-      "amount": ""
+      "item": "vegetable oil",
+      "amount": "60 ml"
     },
     {
       "item": "vegan kimchi, or more!",
-      "amount": "½ cup"
+      "amount": "120 g"
     },
     {
       "item": "scallions, chopped",

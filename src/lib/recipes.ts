@@ -366,4 +366,8 @@ export function getMealRole(recipe: Recipe): string | null {
   return role || null;
 }
 
+// Re-export the centralized ingredient normalizer so server components can
+// import it alongside other recipe utilities.
+export { normalizeIngredient } from "./normalize-ingredients";
+
 export { slugify as _slugify };
