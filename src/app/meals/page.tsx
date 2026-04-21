@@ -729,7 +729,7 @@ export default function MealsPage() {
           <div className="space-y-5">
             <div className="flex items-center justify-between">
               <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400">
-                This week&apos;s suggestions
+                {activeTab === "next" ? "Next week\u2019s suggestions" : "This week\u2019s suggestions"}
               </h2>
               <button
                 onClick={() => setFilterLowCal(!filterLowCal)}
