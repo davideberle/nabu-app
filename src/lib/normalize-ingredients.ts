@@ -58,6 +58,45 @@ export function normalizeIngredient(
     }
   }
 
+  // 3b. Standalone ounces/oz (no metric alternative) → approximate grams.
+  //     Handles "4 ounces", "8 oz", "½ ounce", "10½ oz." etc.
+  //     1 oz ≈ 28 g. Skips fl oz (fluid ounces).
+  if (
+    /\b(?:ounces?|oz\.?)\s*$/i.test(a) &&
+    !/\bfl\.?\s/i.test(a) &&
+    !/\b(?:g|kg|ml|l|L)\b/.test(a)
+  ) {
+    const ozMatch = a.match(
+      /^([\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/.,-]*)\s*(?:ounces?|oz\.?)$/i,
+    );
+    if (ozMatch) {
+      const raw = ozMatch[1].trim();
+      const VULGAR: Record<string, number> = {
+        "½": 0.5, "¼": 0.25, "¾": 0.75,
+        "⅓": 1 / 3, "⅔": 2 / 3, "⅛": 0.125,
+      };
+      let num = 0;
+      let rest = raw;
+      for (const [ch, val] of Object.entries(VULGAR)) {
+        if (rest.includes(ch)) {
+          const idx = rest.indexOf(ch);
+          const before = rest.substring(0, idx).trim();
+          num += (before ? parseFloat(before) || 0 : 0) + val;
+          rest = rest.substring(idx + ch.length).trim();
+        }
+      }
+      if (rest) {
+        const n = parseFloat(rest);
+        if (!isNaN(n)) num += n;
+      }
+      if (num > 0) {
+        const grams = Math.round(num * 28);
+        const rounded = grams > 50 ? Math.round(grams / 5) * 5 : grams;
+        a = `${rounded} g`;
+      }
+    }
+  }
+
   // 4. Item contains "imperial (M metric) rest" with a bare-number amount.
   //    e.g. amount "1", item "gallon (4 L) water" → "4 L" / "water"
   if (/^[\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/–—\-]*$/.test(a)) {

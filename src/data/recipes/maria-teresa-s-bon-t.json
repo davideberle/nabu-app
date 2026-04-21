@@ -57,10 +57,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ],
     "chapter": "Autumn",
-    "meal_role": "main"
+    "meal_role": "dessert"
   },
   "cuisine": "Italian"
 }
