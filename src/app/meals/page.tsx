@@ -610,6 +610,22 @@ export default function MealsPage() {
         </div>
 
         {/* Calendar grid — 7-day week */}
+        {planLoading ? (
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-8">
+            {weekDates.map((wd) => (
+              <div
+                key={wd.date}
+                className="rounded-xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-3 min-h-[110px] flex flex-col animate-pulse"
+              >
+                <div className="h-3 w-8 rounded bg-stone-200 dark:bg-stone-700 mb-1" />
+                <div className="h-2 w-10 rounded bg-stone-100 dark:bg-stone-800 mb-3" />
+                <div className="flex-1 flex items-center justify-center">
+                  <div className="h-3 w-16 rounded bg-stone-100 dark:bg-stone-800" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-8">
           {weekDates.map((wd, i) => {
             const slot = plan?.days[i] ?? null;
@@ -685,10 +701,30 @@ export default function MealsPage() {
             );
           })}
         </div>
+        )}
+
+        {/* Empty state — no plan and no candidates yet */}
+        {!planLoading && !plan && !hasCandidates && (
+          <div className="rounded-xl border border-dashed border-stone-300 dark:border-stone-700 bg-white/60 dark:bg-stone-900/40 px-6 py-10 mb-6 text-center">
+            <p className="font-serif text-stone-500 dark:text-stone-400 mb-1">
+              No plan for {activeTab === "next" ? "next" : "this"} week yet
+            </p>
+            <p className="text-xs text-stone-400 dark:text-stone-500 mb-5">
+              Generate suggestions to start filling in your week.
+            </p>
+            <button
+              onClick={handleGenerate}
+              disabled={loading}
+              className="px-5 py-2.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-50 transition-colors shadow-sm"
+            >
+              {loading ? "Generating..." : "Generate Options"}
+            </button>
+          </div>
+        )}
 
         {/* Action buttons */}
         <div className="flex gap-3 mb-6">
-          {!hasCandidates && !planLoading && (
+          {!hasCandidates && !planLoading && plan && (
             <button
               onClick={handleGenerate}
               disabled={loading}
