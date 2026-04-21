@@ -7,6 +7,36 @@ const VULGAR: Record<string, number> = {
   "⅓": 1 / 3, "⅔": 2 / 3, "⅛": 0.125,
 };
 
+/** Map of spelled-out number words to their numeric values (0–20). */
+const WORD_NUMS: Record<string, number> = {
+  zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6,
+  seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12,
+  thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17,
+  eighteen: 18, nineteen: 19, twenty: 20,
+};
+
+/** Try to parse a leading spelled-out number word. Returns [value, rest] or null. */
+function parseWordNum(s: string): [number, string] | null {
+  const m = s.match(/^(\w+)\b\s*(.*)/);
+  if (!m) return null;
+  const val = WORD_NUMS[m[1].toLowerCase()];
+  return val !== undefined && val > 0 ? [val, m[2]] : null;
+}
+
+/** Convert ounces to display grams string (rounded to nearest 5 above 50). */
+function ozToG(n: number): string {
+  const g = Math.round(n * 28);
+  const r = g > 50 ? Math.round(g / 5) * 5 : g;
+  return `${r} g`;
+}
+
+/** Convert pounds to display grams/kg string. */
+function lbToMetric(n: number): string {
+  const g = Math.round(n * 454);
+  if (g >= 1000) return `${(g / 1000).toFixed(1).replace(/\.0$/, "")} kg`;
+  return `${g > 50 ? Math.round(g / 5) * 5 : g} g`;
+}
+
 /** Parse a string like "1½", "3.5", "10½" into a number. Returns 0 on failure. */
 function parseNum(raw: string): number {
   let num = 0;
@@ -76,6 +106,115 @@ export function normalizeIngredient(
     if (slashMetricLead && new RegExp(`\\b(?:${IMP_ALL})`, "i").test(a)) {
       a = slashMetricLead[1].trim();
       it = slashMetricLead[2].replace(/^[,\s]+/, "").trim();
+    }
+  }
+
+  // ── 1c. Amount: "One N-ounce/pound [descriptor]" → convert to metric, move descriptor to item.
+  //    e.g. "One 4-ounce Fuji apple" → amount "115 g", item "Fuji apple, ..."
+  //    Also handles "One 15-ounce can" when item has more info.
+  {
+    const oneUnitRe = /^(one|two|three|four|1|2|3|4)\s+(\d+[½¼¾⅓⅔⅛]?)[\s-]*(ounces?|oz\.?|pounds?|lbs?\.?)\s*(.*)/i;
+    const oneMatch = a.match(oneUnitRe);
+    if (oneMatch) {
+      const count = WORD_NUMS[oneMatch[1].toLowerCase()] ?? parseInt(oneMatch[1]);
+      const weightNum = parseNum(oneMatch[2]);
+      const unitWord = oneMatch[3].toLowerCase();
+      const trailing = oneMatch[4].trim();
+      if (weightNum > 0) {
+        const isLb = /^(?:pound|lb)/i.test(unitWord);
+        const metricStr = isLb ? lbToMetric(weightNum) : ozToG(weightNum);
+        const prefix = count > 1 ? `${count} × ` : "";
+        a = `${prefix}${metricStr}`;
+        // Move trailing descriptor to beginning of item if present
+        if (trailing) {
+          it = trailing + (it ? (it.length <= 2 ? it : `, ${it}`) : "");
+        }
+      }
+    }
+  }
+
+  // ── 1d. Item-only: "One pound of chickpeas" / "Salmon filet, one pound" / "Eight ounces of feta"
+  //    When amount is empty and item contains spelled-out imperial weight.
+  if (!a || /^\s*$/.test(a)) {
+    // Leading: "One pound of X" / "Eight ounces of X"
+    const leadSpelled = it.match(
+      /^(\w+)\s+(pounds?|ounces?)\s+(?:of\s+)?(.+)/i,
+    );
+    if (leadSpelled) {
+      const parsed = WORD_NUMS[leadSpelled[1].toLowerCase()];
+      if (parsed && parsed > 0) {
+        const unitW = leadSpelled[2].toLowerCase();
+        const isLb = /^pound/i.test(unitW);
+        a = isLb ? lbToMetric(parsed) : ozToG(parsed);
+        it = leadSpelled[3].trim();
+      }
+    }
+    // Trailing: "Salmon filet, one pound"
+    if (!a || /^\s*$/.test(a)) {
+      const trailSpelled = it.match(
+        /^(.+?),?\s+(one|two|three|four|five|six|seven|eight|nine|ten)\s+(pounds?|ounces?)\s*$/i,
+      );
+      if (trailSpelled) {
+        const parsed = WORD_NUMS[trailSpelled[2].toLowerCase()];
+        if (parsed && parsed > 0) {
+          const unitW = trailSpelled[3].toLowerCase();
+          const isLb = /^pound/i.test(unitW);
+          a = isLb ? lbToMetric(parsed) : ozToG(parsed);
+          it = trailSpelled[1].trim();
+        }
+      }
+    }
+    // Leading: "One N-ounce/pound descriptor" in item when amount empty
+    if (!a || /^\s*$/.test(a)) {
+      const oneItemRe = it.match(
+        /^(one|two|three|four|1|2|3|4)\s+(\d+[½¼¾⅓⅔⅛]?)[\s-]*(ounces?|oz\.?|pounds?|lbs?\.?)\s+(.*)/i,
+      );
+      if (oneItemRe) {
+        const count = WORD_NUMS[oneItemRe[1].toLowerCase()] ?? parseInt(oneItemRe[1]);
+        const weightNum = parseNum(oneItemRe[2]);
+        const unitWord = oneItemRe[3].toLowerCase();
+        const rest = oneItemRe[4].trim();
+        if (weightNum > 0) {
+          const isLb = /^(?:pound|lb)/i.test(unitWord);
+          const metricStr = isLb ? lbToMetric(weightNum) : ozToG(weightNum);
+          const prefix = count > 1 ? `${count} × ` : "";
+          a = `${prefix}${metricStr}`;
+          it = rest;
+        }
+      }
+    }
+  }
+
+  // ── 1e. Item-only container: "14.5 ounces can diced tomatoes" / "8-oz. cream cheese"
+  //    / "15-ounce can black beans" / "28-ounce can crushed fire-roasted tomatoes"
+  //    When amount is empty or just a count, and item leads with imperial size + container.
+  {
+    const CONTAINERS = "cans?|tins?|jars?|bottles?|bags?|cartons?|containers?|boxes?|packs?|packages?|packets?";
+    // "N ounces can X" or "N-ounce can X" or "N oz. can X" or "N-oz. X" (product like cream cheese)
+    const itemLeadImp = it.match(
+      new RegExp(
+        `^(\\d+\\.?\\d*)[\\s-]*(ounces?|oz\\.?|pounds?|lbs?\\.?)\\s+(?:(${CONTAINERS})\\b\\s*)?(.*)`,
+        "i",
+      ),
+    );
+    if (itemLeadImp && (!a || /^(1|2|3|4|one|two|three|four)?\s*$/i.test(a))) {
+      const sizeNum = parseFloat(itemLeadImp[1]);
+      const unitW = itemLeadImp[2].toLowerCase();
+      const container = itemLeadImp[3] || "";
+      const rest = itemLeadImp[4].trim();
+      if (sizeNum > 0 && !/\bfl\.?\s/i.test(unitW)) {
+        const isLb = /^(?:pound|lb)/i.test(unitW);
+        const metricStr = isLb ? lbToMetric(sizeNum) : ozToG(sizeNum);
+        const countPre = a && /\d/.test(a) ? `${a.trim()} ` : "";
+        if (container) {
+          a = countPre ? countPre.trim() : "";
+          it = `${metricStr} ${container} ${rest}`.trim();
+        } else {
+          // Product without container: "8-oz. cream cheese" → amount "225 g", item "cream cheese"
+          a = `${countPre}${metricStr}`.trim();
+          it = rest;
+        }
+      }
     }
   }
 
@@ -174,11 +313,7 @@ export function normalizeIngredient(
     );
     if (ozMatch) {
       const num = parseNum(ozMatch[1]);
-      if (num > 0) {
-        const grams = Math.round(num * 28);
-        const rounded = grams > 50 ? Math.round(grams / 5) * 5 : grams;
-        a = `${rounded} g`;
-      }
+      if (num > 0) a = ozToG(num);
     }
   }
 
@@ -193,16 +328,7 @@ export function normalizeIngredient(
     );
     if (lbMatch) {
       const num = parseNum(lbMatch[1]);
-      if (num > 0) {
-        const grams = Math.round(num * 454);
-        if (grams >= 1000) {
-          const kg = (grams / 1000).toFixed(1).replace(/\.0$/, "");
-          a = `${kg} kg`;
-        } else {
-          const rounded = grams > 50 ? Math.round(grams / 5) * 5 : grams;
-          a = `${rounded} g`;
-        }
-      }
+      if (num > 0) a = lbToMetric(num);
     }
   }
 
@@ -286,13 +412,12 @@ export function normalizeIngredient(
   //    and "One 13½-ounce can coconut milk"
   {
     const CONTAINERS = "cans?|tins?|jars?|bottles?|bags?|cartons?|containers?|boxes?|packs?";
-    // At start of item: "15-ounce can ..."
+    // At start of item: "15-ounce can ..." or "15 ounce can ..." or "15 oz. can ..."
     it = it.replace(
-      new RegExp(`(^|\\b(?:one|two|three|1|2|3|4)\\s+)(\\d+[½¼¾⅓⅔]?)-(ounces?|oz)\\.?\\s+(${CONTAINERS})\\b`, "gi"),
+      new RegExp(`(^|\\b(?:one|two|three|1|2|3|4)\\s+)(\\d+\\.?\\d*[½¼¾⅓⅔]?)[\\s-]+(ounces?|oz)\\.?\\s+(${CONTAINERS})\\b`, "gi"),
       (_m, pre, num, _unit, container) => {
         const n = parseNum(num);
-        const g = n > 0 ? (Math.round(n * 28) > 50 ? Math.round(Math.round(n * 28) / 5) * 5 : Math.round(n * 28)) : 0;
-        return g > 0 ? `${pre}${g} g ${container}` : _m;
+        return n > 0 ? `${pre}${ozToG(n)} ${container}` : _m;
       },
     );
     // Parenthesized: "(10.5 oz.) can"
@@ -300,8 +425,7 @@ export function normalizeIngredient(
       new RegExp(`\\((\\d+\\.?\\d*)\\s*(?:oz\\.?|ounces?)\\)\\s+(${CONTAINERS})\\b`, "gi"),
       (_m, num, container) => {
         const n = parseFloat(num);
-        const g = n > 0 ? (Math.round(n * 28) > 50 ? Math.round(Math.round(n * 28) / 5) * 5 : Math.round(n * 28)) : 0;
-        return g > 0 ? `(${g} g) ${container}` : _m;
+        return n > 0 ? `(${ozToG(n)}) ${container}` : _m;
       },
     );
   }
@@ -391,12 +515,93 @@ export function normalizeIngredient(
   );
 
   // ── 8. Amount: strip parenthesized imperial when metric already leads.
-  //    e.g. "800g (1lb 12oz)" → "800g"
-  if (/\b(?:g|kg|ml|l|L|dl)\b/.test(a)) {
+  //    e.g. "800g (1lb 12oz)" → "800g", "100g (3½ oz)" → "100g"
+  if (/(?:^|\d)\s*(?:g|kg|ml|l|L|dl)\b/.test(a)) {
     a = a.replace(
       new RegExp(`\\s*\\([^)]*\\b(?:${IMP_ALL})\\b[^)]*\\)`, "gi"),
       "",
     );
+  }
+
+  // ── 8a2. Amount: "½ lb (1 medium)" → convert lb to metric, keep descriptor.
+  //    Handles cases where parens contain a count/descriptor, not a metric value.
+  {
+    const lbDescriptor = a.match(
+      /^([\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/.,-]*)\s*(lbs?\.?|pounds?)\s*(\(.*\))$/i,
+    );
+    if (lbDescriptor && !/\b(?:g|kg|ml|l|L|dl)\b/.test(lbDescriptor[3])) {
+      const num = parseNum(lbDescriptor[1]);
+      if (num > 0) {
+        a = `${lbToMetric(num)} ${lbDescriptor[3]}`;
+      }
+    }
+  }
+  // Same for oz: "4 oz (1 small)" etc.
+  {
+    const ozDescriptor = a.match(
+      /^([\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/.,-]*)\s*(oz\.?|ounces?)\s*(\(.*\))$/i,
+    );
+    if (ozDescriptor && !/\bfl\.?\s/i.test(a) && !/\b(?:g|kg|ml|l|L|dl)\b/.test(ozDescriptor[3])) {
+      const num = parseNum(ozDescriptor[1]);
+      if (num > 0) {
+        a = `${ozToG(num)} ${ozDescriptor[3]}`;
+      }
+    }
+  }
+
+  // ── 8b. Amount: "N (M oz.)" or "N (M lb)" — count + parenthesized imperial size for containers.
+  //    e.g. "1 (14.5 oz.)" + "can tomatoes" → "1" amount with item "405 g can tomatoes"
+  //    or  "1 (8 oz.)" + "pkg. manicotti" → "225 g pkg. manicotti"
+  {
+    const countParenImp = a.match(
+      /^(\d+)\s*\(\s*([\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/.,-]*)\s*(oz\.?|ounces?|lbs?\.?|pounds?)\s*\)$/i,
+    );
+    if (countParenImp && !/\bfl\.?\s/i.test(a)) {
+      const count = parseInt(countParenImp[1]);
+      const sizeNum = parseNum(countParenImp[2]);
+      const unitW = countParenImp[3].toLowerCase();
+      if (sizeNum > 0) {
+        const isLb = /^(?:pound|lb)/i.test(unitW);
+        const metricStr = isLb ? lbToMetric(sizeNum) : ozToG(sizeNum);
+        a = count > 1 ? `${count}` : "";
+        it = `${metricStr} ${it}`.trim();
+      }
+    }
+  }
+
+  // ── 8c. Item: "½ lb. ground beef" when amount is a count like "1"
+  //    → merge: amount "455 g", item "ground beef"
+  if (/^\d+$/.test(a)) {
+    const itemLeadFrac = it.match(
+      /^([\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/.,-]*)\s*(lbs?\.?|pounds?|oz\.?|ounces?)\s+(.*)/i,
+    );
+    if (itemLeadFrac && !/\bfl\.?\s/i.test(it)) {
+      const sizeNum = parseNum(itemLeadFrac[1]);
+      const unitW = itemLeadFrac[2].toLowerCase();
+      const rest = itemLeadFrac[3].trim();
+      if (sizeNum > 0) {
+        const isLb = /^(?:pound|lb)/i.test(unitW);
+        a = isLb ? lbToMetric(sizeNum) : ozToG(sizeNum);
+        it = rest;
+      }
+    }
+  }
+
+  // ── 8d. Item-only: "Generous/About N ounces ..." when amount is empty.
+  //    e.g. "" + "Generous 8 ounces white bread" → "225 g" + "white bread ..."
+  if (!a || /^\s*$/.test(a)) {
+    const qualImp = it.match(
+      /^(?:generous|about|roughly|approximately|scant)\s+(\d+\.?\d*)\s*(ounces?|oz\.?|pounds?|lbs?\.?)\s+(.*)/i,
+    );
+    if (qualImp && !/\bfl\.?\s/i.test(it)) {
+      const n = parseFloat(qualImp[1]);
+      const unitW = qualImp[2].toLowerCase();
+      if (n > 0) {
+        const isLb = /^(?:pound|lb)/i.test(unitW);
+        a = isLb ? lbToMetric(n) : ozToG(n);
+        it = qualImp[3].trim();
+      }
+    }
   }
 
   // ── 9. Abbreviate verbose metric unit words in the amount.
