@@ -990,24 +990,6 @@ function RecipeCard({
             className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
-          {/* Time badge on image */}
-          {formatPlannerTime(recipe.time?.total) && (
-            <div className="absolute bottom-2 left-2">
-              <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-black/50 text-white backdrop-blur-sm">
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                {formatPlannerTime(recipe.time?.total)}
-              </span>
-            </div>
-          )}
-          {isVeg && (
-            <div className="absolute top-2 right-2">
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-600/90 text-white font-medium backdrop-blur-sm">
-                {recipe.dietary.includes("vegan") ? "vegan" : "vegetarian"}
-              </span>
-            </div>
-          )}
         </div>
       ) : (
         <div className="aspect-[4/3] bg-gradient-to-br from-stone-100 to-stone-200 dark:from-stone-800 dark:to-stone-900 flex items-center justify-center">
@@ -1023,31 +1005,32 @@ function RecipeCard({
         >
           {recipe.name}
         </h3>
-        <div className="flex items-center gap-2 mt-1">
-          <p className="text-xs text-stone-400 dark:text-stone-500 truncate">
-            {recipe.source?.cookbook}
-          </p>
+        <p className="text-xs text-stone-400 dark:text-stone-500 truncate mt-1">
+          {recipe.source?.cookbook}
+        </p>
+        <div className="flex flex-wrap items-center gap-1 mt-1.5">
           {formatPlannerTime(recipe.time?.total) && (
-            <span className="shrink-0 inline-flex items-center gap-0.5 text-[10px] font-medium text-stone-500 dark:text-stone-400">
+            <span className="inline-flex items-center gap-0.5 text-[10px] font-medium px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400">
               <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               {formatPlannerTime(recipe.time?.total)}
             </span>
           )}
+          {recipe.courseTags.map((tag) => (
+            <span
+              key={tag}
+              className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${getCourseTagColor(tag)}`}
+            >
+              {tag}
+            </span>
+          ))}
+          {isVeg && (
+            <span className="text-[10px] px-2 py-0.5 rounded-full font-medium bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400">
+              {recipe.dietary.includes("vegan") ? "vegan" : "vegetarian"}
+            </span>
+          )}
         </div>
-        {recipe.courseTags.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-1.5">
-            {recipe.courseTags.map((tag) => (
-              <span
-                key={tag}
-                className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${getCourseTagColor(tag)}`}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
 
         {/* Actions */}
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100 dark:border-stone-800">
