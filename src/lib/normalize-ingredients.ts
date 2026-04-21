@@ -23,7 +23,7 @@ export function normalizeIngredient(
   // 1. If item starts with an imperial unit word, merge it into the amount.
   //    e.g. amount "9", item "ounces dried soba noodles" → "9 ounces" / "dried soba noodles"
   const itemUnitRe =
-    /^(ounces?|oz|pounds?|lbs?|cups?|gallons?|pints?|quarts?|fl\.?\s*oz)\b\s*(.*)/i;
+    /^(ounces?|oz\.?|pounds?|lbs?\.?|cups?|gallons?|pints?|quarts?|fl\.?\s*oz\.?)\b\s*(.*)/i;
   const itemUnitMatch = it.match(itemUnitRe);
   if (itemUnitMatch && /^[\d½¼¾⅓⅔⅛]/.test(a)) {
     a = `${a} ${itemUnitMatch[1]}`;
@@ -41,7 +41,7 @@ export function normalizeIngredient(
   // 2. Amount: "N imperial (M metric)" → extract metric part.
   //    Matches patterns like "2 ounces (50 g)", "½ cup (120 ml)"
   const impMetricParens = a.match(
-    /[\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/–—.,\-]*\s*(?:ounces?|oz|pounds?|lbs?|cups?|gallons?|pints?|quarts?|fl\.?\s*oz)\s*\(([^)]*\d\s*(?:g|kg|ml|l|L)\b[^)]*)\)/i,
+    /[\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/–—.,\-]*\s*(?:ounces?|oz\.?|pounds?|lbs?\.?|cups?|gallons?|pints?|quarts?|fl\.?\s*oz\.?)\s*\(([^)]*\d\s*(?:g|kg|ml|l|L)\b[^)]*)\)/i,
   );
   if (impMetricParens) {
     a = impMetricParens[1].trim();
@@ -51,7 +51,7 @@ export function normalizeIngredient(
   //    Matches "28 ounces/800 g"
   if (!impMetricParens) {
     const impSlashMetric = a.match(
-      /[\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/–—.,\-]*\s*(?:ounces?|oz|pounds?|lbs?)\s*\/\s*([\d,.]+ *(?:g|kg|ml|l|L)\b)/i,
+      /[\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/–—.,\-]*\s*(?:ounces?|oz\.?|pounds?|lbs?\.?)\s*\/\s*([\d,.]+ *(?:g|kg|ml|l|L)\b)/i,
     );
     if (impSlashMetric) {
       a = impSlashMetric[1].trim();
@@ -62,7 +62,7 @@ export function normalizeIngredient(
   //    e.g. amount "1", item "gallon (4 L) water" → "4 L" / "water"
   if (/^[\d½¼¾⅓⅔⅛][\d\s½¼¾⅓⅔⅛/–—\-]*$/.test(a)) {
     const itemInlineMetric = it.match(
-      /^.*?(?:ounces?|oz|pounds?|lbs?|cups?|gallons?|pints?|quarts?)\s*\((\d[\d.,]*\s*(?:g|kg|ml|l|L))\)\s*(.*)/i,
+      /^.*?(?:ounces?|oz\.?|pounds?|lbs?\.?|cups?|gallons?|pints?|quarts?)\s*\((\d[\d.,]*\s*(?:g|kg|ml|l|L))\)\s*(.*)/i,
     );
     if (itemInlineMetric) {
       a = itemInlineMetric[1].trim();

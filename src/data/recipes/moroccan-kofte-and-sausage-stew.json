@@ -54,8 +54,8 @@
       "group": "Stew"
     },
     {
-      "item": "⅓ pounds ground beef",
-      "amount": "1",
+      "item": "ground beef",
+      "amount": "600g",
       "group": "Stew"
     },
     {
@@ -94,12 +94,12 @@
       "group": "Stew"
     },
     {
-      "item": "(16 ounces) of can diced tomatoes",
+      "item": "can (400g) diced tomatoes",
       "amount": "1",
       "group": "Stew"
     },
     {
-      "item": "(14.5 ounces) of can chicken stock",
+      "item": "can (410ml) chicken stock",
       "amount": "1",
       "group": "Stew"
     },

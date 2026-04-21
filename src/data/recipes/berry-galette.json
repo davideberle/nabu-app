@@ -4,7 +4,7 @@
   "source": {
     "cookbook": "The Vegan Korean",
     "author": "Various",
-    "chapter": "Main Dishes"
+    "chapter": "Desserts"
   },
   "ingredients": [
     {
@@ -59,10 +59,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ],
-    "chapter": "Main Dishes",
-    "meal_role": "main"
-  },
-  "cuisine": "Korean"
+    "chapter": "Desserts",
+    "meal_role": "dessert"
+  }
 }
