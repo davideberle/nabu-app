@@ -157,16 +157,16 @@ export type CandidateItem = {
   cuisine: string;
   time: { prep: number; cook: number; total: number } | null;
   category: string;
-  lowCalorie?: boolean;
+  courseTags: string[];
   bucket: CandidateBucket;
 };
 
-export type CandidateBucket = "salad" | "soup" | "vegetarian" | "fish" | "meat";
+export type CandidateBucket = "salad" | "soup" | "vegetarian" | "meat";
 
 export type CandidateSet = {
   generatedAt: string;
   policyVersion: string;
-  bucketContract: readonly [number, number, number, number, number]; // salad, soup, veg, fish, meat
+  bucketContract: readonly number[]; // salad, soup, veg, meat
   items: CandidateItem[];
 };
 
@@ -659,12 +659,9 @@ export function selectMealOptions(
 
 // ----- bucket classification for planner candidates -----
 
-const FISH_PATTERNS = /\b(salmon|tuna|trout|cod|halibut|catfish|sea bass|snapper|mackerel|sardine|anchov|swordfish|fish|shrimp|prawn|scallop|crab|lobster|mussel|clam|oyster|squid|calamari|octopus|seafood)\b/i;
-
 function classifyBucket(recipe: Recipe): CandidateBucket | null {
   const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
   const nameLower = recipe.name.toLowerCase();
-  const ingredientText = recipe.ingredients.map((i) => i.item).join(" ");
 
   // Salad bucket: dish_type includes "salad" or name contains "salad"
   if (dishTypes.includes("salad") || nameLower.includes("salad")) return "salad";
@@ -675,20 +672,17 @@ function classifyBucket(recipe: Recipe): CandidateBucket | null {
   // Vegetarian/vegan
   if (isVegetarianOrVegan(recipe)) return "vegetarian";
 
-  // Fish/seafood
-  if (FISH_PATTERNS.test(nameLower) || FISH_PATTERNS.test(ingredientText)) return "fish";
-
-  // Remaining non-vegetarian = meat
+  // Fish/seafood and remaining non-vegetarian = meat
   return "meat";
 }
 
 /**
  * Visible weekly contract for Phase 2:
- *   3 salads, 3 soups, 2 vegetarian mains, 2 fish mains, 2 meat mains = 12 total.
+ *   3 salads, 3 soups, 2 vegetarian mains, 4 meat/fish mains = 12 total.
  * Ordered by bucket in the above sequence.
  */
-export const CANDIDATE_BUCKET_CONTRACT = [3, 3, 2, 2, 2] as const;
-export const CANDIDATE_BUCKET_ORDER: CandidateBucket[] = ["salad", "soup", "vegetarian", "fish", "meat"];
+export const CANDIDATE_BUCKET_CONTRACT = [3, 3, 2, 4] as const;
+export const CANDIDATE_BUCKET_ORDER: CandidateBucket[] = ["salad", "soup", "vegetarian", "meat"];
 
 export function selectCandidateMains(
   allRecipes: Recipe[],
@@ -710,7 +704,6 @@ export function selectCandidateMains(
     salad: [],
     soup: [],
     vegetarian: [],
-    fish: [],
     meat: [],
   };
   for (const r of pool) {

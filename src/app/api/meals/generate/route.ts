@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getAllRecipes, getCuisine, getDietary, isLowCalorie, getRecipe } from "@/lib/recipes";
+import { getAllRecipes, getCuisine, getDietary, getCourseTags, getRecipe } from "@/lib/recipes";
 import { selectMealOptions, selectCandidateMains, getDisplayCategory, CANDIDATE_BUCKET_ORDER, CANDIDATE_BUCKET_CONTRACT, type WeekendMealOption, type WeekContextItem, type CandidateItem, type CandidateBucket } from "@/lib/meals";
 import { getRecentlyCookedRecipeIds } from "@/lib/db";
 import type { Recipe } from "@/lib/recipes";
@@ -31,7 +31,7 @@ function summarize(r: Recipe) {
     cuisine: getCuisine(r),
     time: normalizeTime(r.time),
     category: getDisplayCategory(r),
-    lowCalorie: isLowCalorie(r),
+    courseTags: getCourseTags(r),
   };
 }
 
@@ -118,7 +118,7 @@ export async function GET(request: NextRequest) {
         cuisine: s.cuisine,
         time: s.time,
         category: s.category,
-        lowCalorie: s.lowCalorie,
+        courseTags: s.courseTags,
         bucket: s.bucket,
       })) satisfies CandidateItem[],
     };
