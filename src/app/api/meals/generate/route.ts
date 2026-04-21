@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getAllRecipes, getCuisine, getDietary, getCourseTags, getRecipe } from "@/lib/recipes";
-import { selectMealOptions, selectCandidateMains, getDisplayCategory, CANDIDATE_BUCKET_ORDER, CANDIDATE_BUCKET_CONTRACT, type WeekendMealOption, type WeekContextItem, type CandidateItem, type CandidateBucket } from "@/lib/meals";
+import { selectMealOptions, selectCandidateMainsWithQualityGate, getDisplayCategory, CANDIDATE_BUCKET_ORDER, CANDIDATE_BUCKET_CONTRACT, type WeekendMealOption, type WeekContextItem, type CandidateItem, type CandidateBucket } from "@/lib/meals";
 import { getRecentlyCookedRecipeIds } from "@/lib/db";
 import type { Recipe } from "@/lib/recipes";
 
@@ -84,10 +84,11 @@ export async function GET(request: NextRequest) {
     preferGuestFriendly: wantGuestFriendly,
   };
 
-  // vNext flat candidates mode (default)
+  // vNext flat candidates mode (default) — quality-gated
   const mode = request.nextUrl.searchParams.get("mode");
   if (mode !== "legacy") {
-    const candidates = selectCandidateMains(allRecipes, excludeIds, hints);
+    const { candidates, diagnostics } = selectCandidateMainsWithQualityGate(allRecipes, excludeIds, hints);
+
     // Assign bucket labels based on position in the contract order
     let offset = 0;
     const bucketLabels: CandidateBucket[] = [];
@@ -104,10 +105,10 @@ export async function GET(request: NextRequest) {
       bucket: bucketLabels[idx] ?? "meat",
     }));
 
-    // Also return a persistable candidateSet with full card data
+    // Persistable candidateSet with full card data
     const candidateSet = {
       generatedAt: new Date().toISOString(),
-      policyVersion: "planner-v2",
+      policyVersion: diagnostics.policyVersion,
       bucketContract: CANDIDATE_BUCKET_CONTRACT,
       items: summarized.map((s) => ({
         recipeId: s.id,
@@ -127,6 +128,7 @@ export async function GET(request: NextRequest) {
       candidates: summarized,
       candidateSet,
       appliedContext: weekContext.length > 0 ? { skipCount, wantQuick, wantGuestFriendly } : undefined,
+      qualityDiagnostics: diagnostics,
     });
   }
 

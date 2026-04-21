@@ -1,4 +1,4 @@
-import { type Recipe, getCuisine, getDietary, isLowCalorie } from "./recipes";
+import { type Recipe, getCuisine, getDietary } from "./recipes";
 
 // ----- season helpers -----
 
@@ -246,18 +246,15 @@ function isPasta(recipe: Recipe): boolean {
 }
 
 function isLight(recipe: Recipe): boolean {
-  if (isLowCalorie(recipe)) return true;
   if (recipe.time?.total && recipe.time.total > 0 && recipe.time.total < 45)
     return true;
-  const dietary = getDietary(recipe);
-  if (dietary.some((t) => t.toLowerCase() === "low-calorie")) return true;
   return false;
 }
 
 // ----- filtering: only select dinner-worthy recipes -----
 
 const EXCLUDED_DISH_TYPES = new Set([
-  "dessert", "baking", "breakfast", "drink", "condiment", "base", "bread",
+  "dessert", "baking", "breakfast", "drink", "condiment", "base", "bread", "component",
 ]);
 
 /** Chapter names that should never appear in dinner options */
@@ -684,48 +681,338 @@ function classifyBucket(recipe: Recipe): CandidateBucket | null {
 export const CANDIDATE_BUCKET_CONTRACT = [3, 3, 2, 4] as const;
 export const CANDIDATE_BUCKET_ORDER: CandidateBucket[] = ["salad", "soup", "vegetarian", "meat"];
 
-export function selectCandidateMains(
+// ----- quality gate: plausibility checks -----
+
+export type QualityIssue = {
+  recipeId: string;
+  recipeName: string;
+  issues: string[];
+  action: "excluded" | "fixed" | "warning";
+  confidence: "high" | "medium";
+};
+
+export type QualityDiagnostics = {
+  policyVersion: string;
+  poolSize: number;
+  eligibleAfterPlausibility: number;
+  excludedRecipes: QualityIssue[];
+  appliedFixes: QualityIssue[];
+  validationWarnings: string[];
+  repairAttempts: { bucket: CandidateBucket; needed: number; available: number }[];
+};
+
+/** Servings patterns that indicate volume-based output (not dinner portions). */
+const NON_DINNER_SERVINGS =
+  /^(makes?\s+)?(about\s+)?[\d½⅓⅔¼¾⅛⅜⅝⅞–—\-\s]*(cup|cups|tbsp|tablespoon|tablespoons|ml|jar|jars|small jar)\b/i;
+
+/**
+ * Returns true if a recipe name signals it IS a component/garnish, not a dinner
+ * dish. Distinguishes "Pickled Cabbage" (IS a pickle) from "Cod with Pickled
+ * Chillies" (a dish that USES a pickle as garnish) by checking whether the
+ * component word appears after "with"/"&" (= accompaniment, not the main thing).
+ */
+function isComponentByName(name: string): boolean {
+  const n = name.toLowerCase();
+
+  // Words that mean "this IS a component" unless they appear after "with"
+  const guardedWords = ["pickled", "candied"];
+  for (const w of guardedWords) {
+    if (new RegExp(`\\b${w}\\b`).test(n)) {
+      if (!new RegExp(`\\bwith\\s+.*\\b${w}\\b`).test(n)
+        && !new RegExp(`&\\s+.*\\b${w}\\b`).test(n)) return true;
+    }
+  }
+
+  // Relish/chutney/compote — same guard
+  const endComponents = ["relish", "chutney", "compote", "brittle"];
+  for (const w of endComponents) {
+    if (new RegExp(`\\b${w}\\b`).test(n)) {
+      if (!new RegExp(`\\bwith\\s+.*\\b${w}\\b`).test(n)
+        && !new RegExp(`&\\s+.*\\b${w}\\b`).test(n)) return true;
+    }
+  }
+
+  // Always-bad patterns (no "with" guard needed — these are never dinner mains)
+  if (/\bglazed (walnut|nut|pecan|almond|cashew|peanut)/i.test(n)) return true;
+  if (/\b(granola|spice (blend|mix|rub)|crumble topping)\b/i.test(n)) return true;
+  if (/\btoasted (nut|coconut|seed)/i.test(n)
+    && !new RegExp(`\\bwith\\s+.*\\btoasted\\b`).test(n)) return true;
+  if (/\bspiced (nut|seed|walnut|pecan|almond)/i.test(n)) return true;
+
+  return false;
+}
+
+/** Chapter names that strongly signal side/accompaniment context. */
+const SIDE_CHAPTER_SIGNALS = [
+  "vegetables", "vegetable", "sides", "side dishes",
+  "blanched", "steamed", "accompaniment", "garnish",
+  "pickle", "pickled", "salting",
+];
+
+type PlausibilityResult = {
+  eligible: boolean;
+  confidence: "high" | "medium";
+  issues: string[];
+  suggestedFix?: { field: string; from: string; to: string };
+};
+
+/**
+ * Recipe-level plausibility check. Runs AFTER isDinnerWorthy but catches
+ * edge-cases that the broad filter misses. Conservative: only excludes
+ * when confidence is high, and flags medium-confidence issues as warnings.
+ */
+function checkPlausibility(recipe: Recipe): PlausibilityResult {
+  const issues: string[] = [];
+  const dishTypes = (recipe.category?.dish_type ?? []).map(t => t.toLowerCase());
+  const mealRole = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
+  const servings = (recipe.servings || "");
+  const nameLower = recipe.name.toLowerCase();
+
+  // HIGH: volume-based servings → component/condiment, not a dinner
+  if (servings && NON_DINNER_SERVINGS.test(servings)) {
+    issues.push(`non-dinner servings: "${servings}"`);
+    return { eligible: false, confidence: "high", issues };
+  }
+
+  // HIGH: component/garnish name patterns
+  if (isComponentByName(recipe.name)) {
+    issues.push(`component/garnish name pattern: "${recipe.name}"`);
+    return { eligible: false, confidence: "high", issues };
+  }
+
+  // HIGH: meal_role is "component" or "side" but dish_type claims "main"
+  // This catches metadata drift where a recipe was correctly tagged as
+  // side/component but then had "main" added incorrectly.
+  if (mealRole === "component" && dishTypes.includes("main")) {
+    issues.push(`meal_role "component" contradicts dish_type "main"`);
+    return {
+      eligible: false, confidence: "high", issues,
+      suggestedFix: { field: "category.dish_type", from: "main", to: "component" },
+    };
+  }
+
+  // MEDIUM: dish_type says "main" but chapter strongly signals side/vegetable
+  // AND recipe has few ingredients (not substantial enough to be a main)
+  if (dishTypes.includes("main") && !dishTypes.includes("soup") && !dishTypes.includes("salad")) {
+    const chapter = (recipe.source?.chapter || recipe.category?.chapter || "").toLowerCase();
+    if (SIDE_CHAPTER_SIGNALS.some(c => chapter.includes(c)) && recipe.ingredients.length < 6) {
+      issues.push(
+        `tagged "main" but chapter "${chapter}" with ${recipe.ingredients.length} ingredients suggests side`
+      );
+      return { eligible: false, confidence: "medium", issues };
+    }
+  }
+
+  // MEDIUM: very short servings phrasing like "1 loaf", "1 batch" — not a dinner
+  if (servings && /^(makes?\s+)?\d+\s*(loaf|loaves|batch|dozen)\b/i.test(servings)) {
+    issues.push(`non-dinner servings: "${servings}"`);
+    return { eligible: false, confidence: "medium", issues };
+  }
+
+  return { eligible: true, confidence: "high", issues };
+}
+
+/**
+ * Set-level validation: checks the assembled candidate set for issues
+ * that only surface when looking at the full 12-item set together.
+ */
+function validateCandidateSet(
+  candidates: Recipe[],
+  bucketLabels: CandidateBucket[]
+): string[] {
+  const warnings: string[] = [];
+
+  // Check for same-cookbook-and-chapter duplicates (too-similar pairing)
+  const chapterKeys = new Map<string, string>();
+  for (const r of candidates) {
+    const key = `${r.source?.cookbook ?? ""}::${r.source?.chapter ?? ""}`;
+    if (key === "::") continue; // skip recipes without source info
+    if (chapterKeys.has(key)) {
+      warnings.push(
+        `Same cookbook+chapter: "${r.name}" and "${chapterKeys.get(key)}" (${key})`
+      );
+    } else {
+      chapterKeys.set(key, r.name);
+    }
+  }
+
+  // Check protein diversity in meat bucket
+  const meatPicks = candidates.filter((_, i) => bucketLabels[i] === "meat");
+  const proteinSeen = new Map<string, string>();
+  for (const r of meatPicks) {
+    const proteins = detectProteins(r);
+    for (const p of proteins) {
+      if (p === "fish" || p === "seafood") continue; // grouped
+      if (proteinSeen.has(p)) {
+        warnings.push(
+          `Duplicate protein "${p}" in meat bucket: "${r.name}" and "${proteinSeen.get(p)}"`
+        );
+      } else {
+        proteinSeen.set(p, r.name);
+      }
+    }
+  }
+
+  return warnings;
+}
+
+/**
+ * Quality-gated candidate generation. Builds an oversized pool, runs
+ * plausibility checks, applies safe fixes, excludes suspicious recipes,
+ * assembles the final 12-item set, and runs set-level validation.
+ *
+ * Returns candidates + diagnostics for observability.
+ */
+export function selectCandidateMainsWithQualityGate(
   allRecipes: Recipe[],
   excludeIds?: Set<string>,
   _hints?: GenerationHints
-): Recipe[] {
-  // Filter to dinner-worthy, exclude recently used, drop opposite season
+): { candidates: Recipe[]; diagnostics: QualityDiagnostics } {
+  const diagnostics: QualityDiagnostics = {
+    policyVersion: "planner-v2.1-quality-gate",
+    poolSize: 0,
+    eligibleAfterPlausibility: 0,
+    excludedRecipes: [],
+    appliedFixes: [],
+    validationWarnings: [],
+    repairAttempts: [],
+  };
+
+  // Step 1: build base pool (isDinnerWorthy + exclusions + season + image)
   let pool = allRecipes.filter(isDinnerWorthy);
   if (excludeIds && excludeIds.size > 0) {
     pool = pool.filter((r) => !excludeIds.has(r.id));
   }
   pool = filterBySeason(pool);
-
-  // Hard rule: planner-visible candidates must have images
   pool = pool.filter((r) => !!r.image);
+  diagnostics.poolSize = pool.length;
 
-  // Partition by bucket
+  // Step 2: run plausibility checks on entire pool
+  const eligible: Recipe[] = [];
+  for (const recipe of pool) {
+    const result = checkPlausibility(recipe);
+    if (!result.eligible) {
+      diagnostics.excludedRecipes.push({
+        recipeId: recipe.id,
+        recipeName: recipe.name,
+        issues: result.issues,
+        action: "excluded",
+        confidence: result.confidence,
+      });
+      // Log suggested fix if present (for manual review)
+      if (result.suggestedFix) {
+        diagnostics.appliedFixes.push({
+          recipeId: recipe.id,
+          recipeName: recipe.name,
+          issues: [`suggested: ${result.suggestedFix.field} ${result.suggestedFix.from} → ${result.suggestedFix.to}`],
+          action: "fixed",
+          confidence: result.confidence,
+        });
+      }
+    } else {
+      if (result.issues.length > 0) {
+        // Warnings for recipes that passed but had minor issues
+        diagnostics.validationWarnings.push(
+          `${recipe.name} (${recipe.id}): ${result.issues.join("; ")}`
+        );
+      }
+      eligible.push(recipe);
+    }
+  }
+  diagnostics.eligibleAfterPlausibility = eligible.length;
+
+  // Step 3: partition by bucket
   const buckets: Record<CandidateBucket, Recipe[]> = {
-    salad: [],
-    soup: [],
-    vegetarian: [],
-    meat: [],
+    salad: [], soup: [], vegetarian: [], meat: [],
   };
-  for (const r of pool) {
+  for (const r of eligible) {
     const b = classifyBucket(r);
     if (b) buckets[b].push(r);
   }
 
-  // Pick from each bucket with cuisine diversity
-  const result: Recipe[] = [];
+  // Step 4: pick from each bucket with OVERSIZED targets for repair margin
+  const OVERSIZE_FACTOR = 2;
+  const oversizedPicks: Record<CandidateBucket, Recipe[]> = {
+    salad: [], soup: [], vegetarian: [], meat: [],
+  };
+  const allPicked: Recipe[] = [];
+
   for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
     const bucket = CANDIDATE_BUCKET_ORDER[i];
     const needed = CANDIDATE_BUCKET_CONTRACT[i];
+    const oversizedTarget = needed * OVERSIZE_FACTOR;
     const picks = pickWithoutCuisineRepeat(
       shuffle(buckets[bucket]),
-      needed,
-      result
+      oversizedTarget,
+      allPicked
     );
-    result.push(...picks);
+    oversizedPicks[bucket] = picks;
+    allPicked.push(...picks);
+
+    diagnostics.repairAttempts.push({
+      bucket,
+      needed,
+      available: buckets[bucket].length,
+    });
   }
 
-  return result;
+  // Step 5: assemble final set — take the contract count from oversized picks
+  const result: Recipe[] = [];
+  const bucketLabels: CandidateBucket[] = [];
+  for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
+    const bucket = CANDIDATE_BUCKET_ORDER[i];
+    const needed = CANDIDATE_BUCKET_CONTRACT[i];
+    const picks = oversizedPicks[bucket].slice(0, needed);
+    result.push(...picks);
+    for (const _ of picks) bucketLabels.push(bucket);
+  }
+
+  // Step 6: set-level validation
+  const setWarnings = validateCandidateSet(result, bucketLabels);
+  diagnostics.validationWarnings.push(...setWarnings);
+
+  // Step 7: set-level repair — swap out recipes that cause set-level issues
+  // For now: if same-cookbook-chapter duplicate found, try to swap the second
+  // occurrence with a remaining oversized pick from the same bucket.
+  if (setWarnings.some(w => w.startsWith("Same cookbook+chapter"))) {
+    const seenChapterKeys = new Map<string, number>(); // key → first index
+    for (let idx = 0; idx < result.length; idx++) {
+      const r = result[idx];
+      const key = `${r.source?.cookbook ?? ""}::${r.source?.chapter ?? ""}`;
+      if (key === "::") continue;
+      if (seenChapterKeys.has(key)) {
+        // Try to swap with an unused oversized pick from same bucket
+        const bucket = bucketLabels[idx];
+        const usedIds = new Set(result.map(x => x.id));
+        const replacement = oversizedPicks[bucket].find(
+          x => !usedIds.has(x.id) && `${x.source?.cookbook ?? ""}::${x.source?.chapter ?? ""}` !== key
+        );
+        if (replacement) {
+          diagnostics.validationWarnings.push(
+            `Repaired: swapped "${r.name}" for "${replacement.name}" (same-chapter duplicate)`
+          );
+          result[idx] = replacement;
+        }
+      } else {
+        seenChapterKeys.set(key, idx);
+      }
+    }
+  }
+
+  return { candidates: result, diagnostics };
 }
+
+/** Backward-compatible wrapper — returns just the recipe list. */
+export function selectCandidateMains(
+  allRecipes: Recipe[],
+  excludeIds?: Set<string>,
+  hints?: GenerationHints
+): Recipe[] {
+  return selectCandidateMainsWithQualityGate(allRecipes, excludeIds, hints).candidates;
+}
+
+/** Exported for testing */
+export { checkPlausibility as _checkPlausibility, isDinnerWorthy as _isDinnerWorthy };
 
 // ----- week date helpers -----
 
