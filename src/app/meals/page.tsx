@@ -16,7 +16,7 @@ type RecipeOption = {
   cuisine: string;
   time: { prep: number; cook: number; total: number } | null;
   category: string;
-  lowCalorie?: boolean;
+  courseTags: string[];
 };
 
 type RecipeDetail = RecipeOption & {
@@ -44,7 +44,7 @@ type CandidateItem = {
   cuisine: string;
   time: { prep: number; cook: number; total: number } | null;
   category: string;
-  lowCalorie?: boolean;
+  courseTags?: string[];
   bucket: string;
 };
 
@@ -282,7 +282,6 @@ export default function MealsPage() {
   const [quickViewRecipe, setQuickViewRecipe] = useState<RecipeDetail | null>(null);
   const [quickViewLoading, setQuickViewLoading] = useState(false);
   const [showContextEditor, setShowContextEditor] = useState(false);
-  const [filterLowCal, setFilterLowCal] = useState(false);
   const [planLoading, setPlanLoading] = useState(true);
 
   // Autosave for notes/context changes only
@@ -347,7 +346,7 @@ export default function MealsPage() {
               cuisine: c.cuisine ?? "",
               time: c.time ?? null,
               category: c.category ?? "",
-              lowCalorie: c.lowCalorie,
+              courseTags: c.courseTags ?? [],
             }));
             setCandidates(restored);
 
@@ -407,7 +406,7 @@ export default function MealsPage() {
           cuisine: r.cuisine,
           time: r.time,
           category: r.category,
-          lowCalorie: r.lowCalorie,
+          courseTags: r.courseTags,
           bucket: "meat",
         })),
       };
@@ -726,25 +725,12 @@ export default function MealsPage() {
         {/* Candidate mains */}
         {hasCandidates && (
           <div className="space-y-5">
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400">
-                This week&apos;s suggestions
-              </h2>
-              <button
-                onClick={() => setFilterLowCal(!filterLowCal)}
-                className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
-                  filterLowCal
-                    ? "bg-emerald-600 text-white"
-                    : "bg-white dark:bg-stone-800 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:border-stone-400 dark:hover:border-stone-500"
-                }`}
-              >
-                Low-cal only
-              </button>
-            </div>
+            <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400">
+              This week&apos;s suggestions
+            </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {candidates
-                .filter((r) => !filterLowCal || r.lowCalorie)
                 .filter((r) => !plan?.days.some((d) => d?.recipeId === r.id))
                 .map((r) => (
                 <RecipeCard
@@ -1004,10 +990,19 @@ function RecipeCard({
         </h3>
         <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
           {recipe.source?.cookbook}
-          {recipe.cuisine && recipe.cuisine !== "Other" && (
-            <span className="text-stone-300 dark:text-stone-600"> · {recipe.cuisine}</span>
-          )}
         </p>
+        {recipe.courseTags.length > 0 && (
+          <div className="flex flex-wrap gap-1 mt-1.5">
+            {recipe.courseTags.map((tag) => (
+              <span
+                key={tag}
+                className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${getCourseTagColor(tag)}`}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Actions */}
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100 dark:border-stone-800">
@@ -1128,9 +1123,6 @@ function QuickViewModal({
               <div className="flex flex-wrap items-center gap-3 text-xs text-stone-400 dark:text-stone-500">
                 {recipe.category && (
                   <span className="font-medium text-stone-600 dark:text-stone-300">{recipe.category}</span>
-                )}
-                {recipe.cuisine && recipe.cuisine !== "Other" && (
-                  <span>{recipe.cuisine}</span>
                 )}
                 {formatPlannerTime(recipe.time?.total) && (
                   <span className="flex items-center gap-1">
