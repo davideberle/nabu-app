@@ -44,10 +44,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "side"
     ],
     "chapter": "Vegetables",
-    "meal_role": "main"
+    "meal_role": "side"
   },
   "cuisine": "Chinese"
 }

@@ -46,10 +46,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "component"
     ],
     "chapter": "Soups & Stews",
-    "meal_role": "main"
+    "meal_role": "component"
   },
   "cuisine": "African & Caribbean"
 }
