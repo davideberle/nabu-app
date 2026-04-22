@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 import {
   getTodaySession,
   createCookingSession,
+  updateSessionRecipeData,
   updateSessionStep,
   completeSession,
 } from "@/lib/cooking";
@@ -14,15 +15,49 @@ import { getRecipe } from "@/lib/recipes";
  * GET /api/cooking?date=2026-04-21
  * Returns today's cooking session. If none exists but today has a planned
  * meal, auto-creates the session so the cooking page loads seamlessly.
+ *
+ * When an existing session was sourced from the meal plan, the base recipe
+ * data is refreshed from the current recipe so cleaned/updated recipes are
+ * picked up without losing session state (currentStep, status, etc.).
  */
 export async function GET(request: NextRequest) {
   const today =
     request.nextUrl.searchParams.get("date") ??
     new Date().toISOString().split("T")[0];
 
-  // 1. Return existing session if found
+  // 1. Check for existing session
   const existing = await getTodaySession(today);
   if (existing) {
+    // Refresh base recipe data from the current recipe source so that
+    // cleaned / updated recipes are reflected without losing user progress.
+    const currentRecipe = await getRecipe(existing.recipeId);
+    if (currentRecipe) {
+      // Also refresh serveWith from the current meal plan slot
+      const now = new Date(today + "T12:00:00Z");
+      const { year, week } = getISOWeek(now);
+      const weekId = `${year}-W${String(week).padStart(2, "0")}`;
+      const plan = await loadMealPlan(weekId);
+      const todaySlot = plan?.days.find((d) => d.date === today);
+      const freshServeWith = todaySlot?.meal?.serveWith ?? null;
+
+      const recipeChanged =
+        JSON.stringify(existing.recipeData) !== JSON.stringify(currentRecipe);
+      const nameChanged = existing.recipeName !== currentRecipe.name;
+      const serveWithChanged =
+        JSON.stringify(existing.serveWith ?? null) !==
+        JSON.stringify(freshServeWith?.length ? freshServeWith : null);
+
+      if (recipeChanged || nameChanged || serveWithChanged) {
+        await updateSessionRecipeData(existing.id, {
+          recipeName: currentRecipe.name,
+          recipeData: currentRecipe,
+          serveWith: freshServeWith?.length ? freshServeWith : null,
+        });
+        existing.recipeName = currentRecipe.name;
+        existing.recipeData = currentRecipe;
+        existing.serveWith = freshServeWith?.length ? freshServeWith : undefined;
+      }
+    }
     return NextResponse.json({ session: existing });
   }
 

@@ -114,6 +114,31 @@ export async function updateSessionStep(
   });
 }
 
+/** Update the stored recipe snapshot and metadata for a session. */
+export async function updateSessionRecipeData(
+  id: string,
+  updates: {
+    recipeName: string;
+    recipeData: Recipe;
+    serveWith?: string[] | null;
+  }
+): Promise<void> {
+  const client = await getDb();
+  const serveWithJson =
+    updates.serveWith?.length ? JSON.stringify(updates.serveWith) : null;
+  await client.execute({
+    sql: `UPDATE cooking_sessions
+          SET recipe_name = ?, recipe_data = ?, serve_with = ?
+          WHERE id = ?`,
+    args: [
+      updates.recipeName,
+      JSON.stringify(updates.recipeData),
+      serveWithJson,
+      id,
+    ],
+  });
+}
+
 /** Mark a session as completed. */
 export async function completeSession(id: string): Promise<void> {
   const client = await getDb();
