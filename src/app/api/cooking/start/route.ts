@@ -52,11 +52,15 @@ export async function POST() {
     );
   }
 
+  // Carry over serveWith from meal plan slot if present
+  const serveWith = todaySlot.meal?.serveWith;
+
   const session = await createCookingSession({
     date: today,
     recipeId: recipe.id,
     recipeName: recipe.name,
     recipeData: recipe,
+    ...(serveWith?.length ? { serveWith } : {}),
   });
 
   return NextResponse.json({ session }, { status: 201 });

@@ -138,6 +138,7 @@ function hasProteinClash(main: Recipe, side: Recipe): boolean {
 export type MealSlot = {
   main: { id: string; name: string };
   sides?: { id: string; name: string }[];
+  serveWith?: string[];
 };
 
 export type WeekContextItem = {

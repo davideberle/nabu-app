@@ -441,6 +441,13 @@ async function migrate(client: Client) {
           ON cooking_sessions (date DESC)
       `);
     },
+
+    // v7 -> v8: add serve_with column for free-text accompaniments
+    async () => {
+      await client.execute(
+        "ALTER TABLE cooking_sessions ADD COLUMN serve_with TEXT"
+      );
+    },
   ];
 
   if (version < migrations.length) {

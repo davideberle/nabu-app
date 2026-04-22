@@ -11,6 +11,7 @@ export type CookingSession = {
   recipeId: string;
   recipeName: string;
   recipeData: Recipe;
+  serveWith?: string[]; // free-text accompaniments from meal plan
   status: "active" | "completed";
   currentStep: number;
   startedAt: string;
@@ -23,12 +24,14 @@ export type CookingSession = {
 // ---------------------------------------------------------------------------
 
 function rowToSession(row: Record<string, unknown>): CookingSession {
+  const serveWithRaw = row["serve_with"] as string | null;
   return {
     id: row["id"] as string,
     date: row["date"] as string,
     recipeId: row["recipe_id"] as string,
     recipeName: row["recipe_name"] as string,
     recipeData: JSON.parse(row["recipe_data"] as string) as Recipe,
+    ...(serveWithRaw ? { serveWith: JSON.parse(serveWithRaw) as string[] } : {}),
     status: row["status"] as CookingSession["status"],
     currentStep: row["current_step"] as number,
     startedAt: row["started_at"] as string,
@@ -63,20 +66,24 @@ export async function createCookingSession(params: {
   recipeId: string;
   recipeName: string;
   recipeData: Recipe;
+  serveWith?: string[];
 }): Promise<CookingSession> {
   const client = await getDb();
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
+  const serveWithJson =
+    params.serveWith?.length ? JSON.stringify(params.serveWith) : null;
   await client.execute({
     sql: `INSERT INTO cooking_sessions
-            (id, date, recipe_id, recipe_name, recipe_data, status, current_step, started_at, created_at)
-          VALUES (?, ?, ?, ?, ?, 'active', 0, ?, ?)`,
+            (id, date, recipe_id, recipe_name, recipe_data, serve_with, status, current_step, started_at, created_at)
+          VALUES (?, ?, ?, ?, ?, ?, 'active', 0, ?, ?)`,
     args: [
       id,
       params.date,
       params.recipeId,
       params.recipeName,
       JSON.stringify(params.recipeData),
+      serveWithJson,
       now,
       now,
     ],
@@ -87,6 +94,7 @@ export async function createCookingSession(params: {
     recipeId: params.recipeId,
     recipeName: params.recipeName,
     recipeData: params.recipeData,
+    ...(params.serveWith?.length ? { serveWith: params.serveWith } : {}),
     status: "active",
     currentStep: 0,
     startedAt: now,

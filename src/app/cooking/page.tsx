@@ -9,8 +9,6 @@ type SessionResponse = { session: CookingSession | null };
 export default function CookingPage() {
   const [session, setSession] = useState<CookingSession | null>(null);
   const [loading, setLoading] = useState(true);
-  const [starting, setStarting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   const fetchSession = useCallback(async () => {
     const today = new Date().toISOString().split("T")[0];
@@ -23,23 +21,6 @@ export default function CookingPage() {
   useEffect(() => {
     fetchSession();
   }, [fetchSession]);
-
-  async function handleStart() {
-    setStarting(true);
-    setError(null);
-    const res = await fetch("/api/cooking/start", { method: "POST" });
-    const data = await res.json();
-    if (!res.ok) {
-      setError(data.error ?? "Failed to start session");
-      if (res.status === 409 && data.session) {
-        setSession(data.session);
-      }
-      setStarting(false);
-      return;
-    }
-    setSession(data.session);
-    setStarting(false);
-  }
 
   async function handleStepChange(step: number) {
     if (!session) return;
@@ -83,11 +64,7 @@ export default function CookingPage() {
             onComplete={handleComplete}
           />
         ) : (
-          <EmptyState
-            onStart={handleStart}
-            starting={starting}
-            error={error}
-          />
+          <EmptyState />
         )}
       </main>
     </div>
@@ -123,35 +100,23 @@ function Header() {
 // Empty state
 // ---------------------------------------------------------------------------
 
-function EmptyState({
-  onStart,
-  starting,
-  error,
-}: {
-  onStart: () => void;
-  starting: boolean;
-  error: string | null;
-}) {
+function EmptyState() {
   return (
     <div className="text-center py-16 space-y-6">
       <div className="text-5xl">🍳</div>
       <h2 className="text-xl font-serif font-semibold text-zinc-900 dark:text-zinc-100">
-        Nothing cooking yet
+        Nothing planned for today
       </h2>
       <p className="text-zinc-500 dark:text-zinc-400 max-w-sm mx-auto">
-        Start a cooking session from today&apos;s meal plan to see the recipe
-        and track your progress step by step.
+        Assign a recipe in the{" "}
+        <Link
+          href="/meals"
+          className="underline underline-offset-2 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors"
+        >
+          meal planner
+        </Link>{" "}
+        and it will appear here automatically.
       </p>
-      <button
-        onClick={onStart}
-        disabled={starting}
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-amber-600 hover:bg-amber-700 disabled:opacity-50 text-white font-medium transition-colors"
-      >
-        {starting ? "Starting..." : "Start from today\u2019s plan"}
-      </button>
-      {error && (
-        <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
-      )}
     </div>
   );
 }
@@ -199,6 +164,21 @@ function ActiveSession({
           {recipe.servings && <span>{recipe.servings}</span>}
           {recipe.time?.total && <span>{recipe.time.total} min</span>}
         </div>
+        {session.serveWith && session.serveWith.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            <span className="text-xs text-zinc-400 dark:text-zinc-500">
+              Serve with:
+            </span>
+            {session.serveWith.map((item, i) => (
+              <span
+                key={i}
+                className="text-xs px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Ingredients */}

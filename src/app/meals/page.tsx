@@ -56,6 +56,12 @@ type CandidateSet = {
   items: CandidateItem[];
 };
 
+type MealSlot = {
+  main: { id: string; name: string };
+  sides?: { id: string; name: string }[];
+  serveWith?: string[];
+};
+
 type DaySlot = {
   date: string;
   dayOfWeek: string;
@@ -63,6 +69,7 @@ type DaySlot = {
   planningState?: "open" | "assigned" | "meal" | "skipped";
   recipeId: string | null;
   recipeName: string | null;
+  meal?: MealSlot | null;
 };
 
 type MealPlan = {
@@ -212,6 +219,7 @@ function normalizePlanDays(
       planningState: saved?.planningState ?? "open",
       recipeId: saved?.recipeId ?? null,
       recipeName: saved?.recipeName ?? null,
+      meal: saved?.meal ?? null,
     };
   });
 
@@ -302,6 +310,7 @@ export default function MealsPage() {
         planningState: "open" as const,
         recipeId: null,
         recipeName: null,
+        meal: null,
       })),
       context: [],
       notes: "",
@@ -450,6 +459,12 @@ export default function MealsPage() {
       recipeId: selectedRecipe.id,
       recipeName: selectedRecipe.name,
       planningState: "assigned",
+      meal: {
+        main: { id: selectedRecipe.id, name: selectedRecipe.name },
+        ...(newDays[dayIndex].meal?.serveWith?.length
+          ? { serveWith: newDays[dayIndex].meal!.serveWith }
+          : {}),
+      },
     };
     const updatedPlan = { ...plan, days: newDays };
     setPlan(updatedPlan);
@@ -466,6 +481,25 @@ export default function MealsPage() {
       recipeId: null,
       recipeName: null,
       planningState: "open",
+      meal: null,
+    };
+    const updatedPlan = { ...plan, days: newDays };
+    setPlan(updatedPlan);
+    savePlanNow(updatedPlan);
+  }
+
+  function handleServeWithChange(dayIndex: number, serveWith: string[]) {
+    if (!plan) return;
+    const slot = plan.days[dayIndex];
+    if (!slot.recipeId) return;
+    const newDays = [...plan.days];
+    newDays[dayIndex] = {
+      ...newDays[dayIndex],
+      meal: {
+        main: { id: slot.recipeId, name: slot.recipeName ?? "" },
+        ...(slot.meal?.sides ? { sides: slot.meal.sides } : {}),
+        serveWith: serveWith.length > 0 ? serveWith : undefined,
+      },
     };
     const updatedPlan = { ...plan, days: newDays };
     setPlan(updatedPlan);
@@ -676,9 +710,26 @@ export default function MealsPage() {
                   </div>
                 ) : isFilled ? (
                   <div className="flex-1 flex flex-col justify-between">
-                    <p className="text-sm font-serif text-stone-800 dark:text-stone-100 line-clamp-3 leading-snug">
+                    <p className="text-sm font-serif text-stone-800 dark:text-stone-100 line-clamp-2 leading-snug">
                       {slot?.recipeName}
                     </p>
+                    {/* serveWith tags */}
+                    {slot?.meal?.serveWith && slot.meal.serveWith.length > 0 && (
+                      <div className="flex flex-wrap gap-0.5 mt-1">
+                        {slot.meal.serveWith.map((sw, si) => (
+                          <span
+                            key={si}
+                            className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/40"
+                          >
+                            {sw}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <ServeWithInput
+                      value={slot?.meal?.serveWith ?? []}
+                      onChange={(sw) => handleServeWithChange(i, sw)}
+                    />
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -944,6 +995,60 @@ function WeekContextEditor({
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+// ----- ServeWith inline editor -----
+
+function ServeWithInput({
+  value,
+  onChange,
+}: {
+  value: string[];
+  onChange: (items: string[]) => void;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState("");
+
+  if (!editing) {
+    return (
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          setEditing(true);
+          setDraft(value.join(", "));
+        }}
+        className="mt-1 text-[10px] text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 text-left transition-colors"
+      >
+        {value.length > 0 ? "edit sides" : "+ serve with"}
+      </button>
+    );
+  }
+
+  function commit() {
+    const items = draft
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    onChange(items);
+    setEditing(false);
+  }
+
+  return (
+    <div className="mt-1" onClick={(e) => e.stopPropagation()}>
+      <input
+        autoFocus
+        value={draft}
+        onChange={(e) => setDraft(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") commit();
+          if (e.key === "Escape") setEditing(false);
+        }}
+        onBlur={commit}
+        placeholder="e.g. rice, salad"
+        className="w-full text-[10px] px-1.5 py-1 rounded border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-700 dark:text-stone-200 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
+      />
     </div>
   );
 }
