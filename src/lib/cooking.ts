@@ -5,6 +5,12 @@ import type { Recipe } from "./recipes";
 // Types
 // ---------------------------------------------------------------------------
 
+export type TonightPlan = {
+  summary?: string;
+  sections: { title: string; items: string[] }[];
+  updatedAt?: string;
+};
+
 export type CookingSession = {
   id: string;
   date: string; // YYYY-MM-DD (unique — one session per day)
@@ -12,6 +18,7 @@ export type CookingSession = {
   recipeName: string;
   recipeData: Recipe;
   serveWith?: string[]; // free-text accompaniments from meal plan
+  tonight?: TonightPlan; // runtime-updatable live plan for tonight
   status: "active" | "completed";
   currentStep: number;
   startedAt: string;
@@ -25,6 +32,7 @@ export type CookingSession = {
 
 function rowToSession(row: Record<string, unknown>): CookingSession {
   const serveWithRaw = row["serve_with"] as string | null;
+  const tonightRaw = row["tonight"] as string | null;
   return {
     id: row["id"] as string,
     date: row["date"] as string,
@@ -32,6 +40,7 @@ function rowToSession(row: Record<string, unknown>): CookingSession {
     recipeName: row["recipe_name"] as string,
     recipeData: JSON.parse(row["recipe_data"] as string) as Recipe,
     ...(serveWithRaw ? { serveWith: JSON.parse(serveWithRaw) as string[] } : {}),
+    ...(tonightRaw ? { tonight: JSON.parse(tonightRaw) as TonightPlan } : {}),
     status: row["status"] as CookingSession["status"],
     currentStep: row["current_step"] as number,
     startedAt: row["started_at"] as string,
@@ -136,6 +145,18 @@ export async function updateSessionRecipeData(
       serveWithJson,
       id,
     ],
+  });
+}
+
+/** Update the live "tonight" plan block. */
+export async function updateSessionTonight(
+  id: string,
+  tonight: TonightPlan | null
+): Promise<void> {
+  const client = await getDb();
+  await client.execute({
+    sql: "UPDATE cooking_sessions SET tonight = ? WHERE id = ?",
+    args: [tonight ? JSON.stringify(tonight) : null, id],
   });
 }
 

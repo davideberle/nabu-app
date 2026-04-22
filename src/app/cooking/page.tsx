@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import type { CookingSession } from "@/lib/cooking";
+import type { CookingSession, TonightPlan } from "@/lib/cooking";
 
 type SessionResponse = { session: CookingSession | null };
 
@@ -20,6 +20,11 @@ export default function CookingPage() {
 
   useEffect(() => {
     fetchSession();
+    // Poll every 12 seconds so chat-driven updates appear while cooking
+    const interval = setInterval(() => {
+      fetchSession();
+    }, 12_000);
+    return () => clearInterval(interval);
   }, [fetchSession]);
 
   async function handleStepChange(step: number) {
@@ -122,6 +127,53 @@ function EmptyState() {
 }
 
 // ---------------------------------------------------------------------------
+// Tonight's Version card
+// ---------------------------------------------------------------------------
+
+function TonightCard({ tonight }: { tonight: TonightPlan }) {
+  return (
+    <div className="rounded-xl border-2 border-amber-400 dark:border-amber-600 bg-amber-50 dark:bg-amber-950/30 p-5 space-y-4">
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400">
+          Tonight&apos;s version
+        </h3>
+        {tonight.updatedAt && (
+          <span className="text-xs text-amber-600/60 dark:text-amber-400/50">
+            Updated{" "}
+            {new Date(tonight.updatedAt).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </span>
+        )}
+      </div>
+      {tonight.summary && (
+        <p className="text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
+          {tonight.summary}
+        </p>
+      )}
+      {tonight.sections.map((section, i) => (
+        <div key={i} className="space-y-1.5">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+            {section.title}
+          </h4>
+          <ul className="space-y-1">
+            {section.items.map((item, j) => (
+              <li
+                key={j}
+                className="text-sm text-amber-900 dark:text-amber-200 pl-3 relative before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:rounded-full before:bg-amber-400 dark:before:bg-amber-600"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Active session view
 // ---------------------------------------------------------------------------
 
@@ -140,6 +192,16 @@ function ActiveSession({
 
   return (
     <div className="space-y-8">
+      {/* Tonight's version — shown above original recipe when present */}
+      {session.tonight && <TonightCard tonight={session.tonight} />}
+
+      {/* Original recipe label when tonight block is shown */}
+      {session.tonight && (
+        <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+          Original recipe
+        </h3>
+      )}
+
       {/* Recipe header */}
       <div className="space-y-3">
         {recipe.image && (

@@ -5,6 +5,7 @@ import {
   createCookingSession,
   updateSessionRecipeData,
   updateSessionStep,
+  updateSessionTonight,
   completeSession,
 } from "@/lib/cooking";
 import { loadMealPlan } from "@/lib/meals-persistence";
@@ -115,8 +116,13 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
+  if ("tonight" in body) {
+    await updateSessionTonight(body.id, body.tonight ?? null);
+    return NextResponse.json({ ok: true });
+  }
+
   return NextResponse.json(
-    { error: "Provide currentStep (number) or status: 'completed'" },
+    { error: "Provide currentStep (number), status: 'completed', or tonight" },
     { status: 400 }
   );
 }

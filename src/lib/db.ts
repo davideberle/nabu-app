@@ -448,6 +448,13 @@ async function migrate(client: Client) {
         "ALTER TABLE cooking_sessions ADD COLUMN serve_with TEXT"
       );
     },
+
+    // v8 -> v9: add tonight column for runtime-updatable live plan block
+    async () => {
+      await client.execute(
+        "ALTER TABLE cooking_sessions ADD COLUMN tonight TEXT"
+      );
+    },
   ];
 
   if (version < migrations.length) {
