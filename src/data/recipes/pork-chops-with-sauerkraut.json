@@ -14,10 +14,6 @@
   },
   "ingredients": [
     {
-      "item": "Pork is frequently served in northern Greece, particularly in Kastoria.",
-      "amount": ""
-    },
-    {
       "item": "butter",
       "amount": "2 tbsp"
     },
@@ -47,30 +43,6 @@
     },
     {
       "item": "salt and pepper to taste",
-      "amount": ""
-    },
-    {
-      "item": "In skillet melt butter and brown pork chops well.",
-      "amount": ""
-    },
-    {
-      "item": "Drain sauerkraut and place in a casserole.",
-      "amount": ""
-    },
-    {
-      "item": "Add diluted tomato paste, olive oil, and paprika or caraway seeds to sauerkraut.",
-      "amount": ""
-    },
-    {
-      "item": "Place chops on top of sauerkraut and add pan drippings.",
-      "amount": ""
-    },
-    {
-      "item": "Add water, salt, and pepper.",
-      "amount": ""
-    },
-    {
-      "item": "Cover and simmer for about 1 hour, or until chops are very tender.",
       "amount": ""
     }
   ],
