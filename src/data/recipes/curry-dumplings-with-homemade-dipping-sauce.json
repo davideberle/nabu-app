@@ -33,8 +33,8 @@
       "amount": ""
     },
     {
-      "item": "Pinch of cayenne pepper",
-      "amount": ""
+      "item": "cayenne pepper",
+      "amount": "pinch"
     },
     {
       "item": "fresh cilantro (chopped)",
@@ -106,9 +106,7 @@
     "below the bottom of the steamer.",
     "Cover and over high heat, bring to boil.",
     "Add the dumplings and steam for 15 minutes, or until cooked through. 11.",
-    "Serve the dumpling along with the dipping sauce.",
-    "Recipe 34: Curry Fish Stew",
-    "This is a thick and creamy curried fish stew. Serve with crusty bread and/or"
+    "Serve the dumpling along with the dipping sauce."
   ],
   "time": {
     "total": 60
