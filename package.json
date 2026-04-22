@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/bundle-recipes.mjs && node scripts/check-bundle-hygiene.mjs",
+    "prebuild": "node scripts/bundle-recipes.mjs && node scripts/check-bundle-hygiene.mjs && node scripts/check-recipe-corruption.mjs",
     "dev": "node scripts/bundle-recipes.mjs && next dev",
     "build": "node scripts/bundle-recipes.mjs && next build",
     "start": "next start"
