@@ -6,6 +6,58 @@ import type { CookingSession, TonightPlan } from "@/lib/cooking";
 
 type SessionResponse = { session: CookingSession | null };
 
+// ---------------------------------------------------------------------------
+// Method cleanup heuristic — merge broken fragments into real steps
+// ---------------------------------------------------------------------------
+
+function mergeMethodFragments(steps: string[]): string[] {
+  if (steps.length === 0) return steps;
+
+  const merged: string[] = [];
+  for (const step of steps) {
+    const trimmed = step.trim();
+    if (!trimmed) continue;
+
+    if (merged.length === 0) {
+      merged.push(trimmed);
+      continue;
+    }
+
+    const prev = merged[merged.length - 1];
+    const startsLowercase = /^[a-z]/.test(trimmed);
+    const prevEndsWithContinuation =
+      /(?:,|;|:|\band\b|\bor\b|\bthe\b|\bwith\b|\bof\b|\bfor\b|\bto\b|\bin\b|\ba\b|\ban\b)\s*$/i.test(
+        prev
+      );
+    const prevLacksEndPunctuation = !/[.!?)"]\s*$/.test(prev);
+    const isShortFragment = trimmed.length < 35;
+
+    // Merge when: starts lowercase, or previous clearly continues, or both
+    // are short fragments that look like parts of the same thought
+    if (
+      startsLowercase ||
+      (prevEndsWithContinuation && isShortFragment) ||
+      (prevLacksEndPunctuation && isShortFragment && !startsWithVerb(trimmed))
+    ) {
+      merged[merged.length - 1] = prev + " " + trimmed;
+    } else {
+      merged.push(trimmed);
+    }
+  }
+  return merged;
+}
+
+function startsWithVerb(text: string): boolean {
+  // Common cooking-instruction opening verbs
+  return /^(Add|Bake|Beat|Blend|Boil|Bring|Broil|Brown|Brush|Chop|Combine|Cook|Cover|Cut|Dice|Drain|Fold|Fry|Garnish|Grate|Grill|Heat|Knead|Layer|Let|Marinate|Melt|Mix|Oil|Peel|Place|Pour|Preheat|Press|Put|Reduce|Remove|Rinse|Roast|Roll|Season|Serve|Set|Simmer|Slice|Soak|Spread|Sprinkle|Stir|Strain|Taste|Toast|Top|Toss|Transfer|Trim|Turn|Wash|Whisk|Wipe)\b/i.test(
+    text
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
+
 export default function CookingPage() {
   const [session, setSession] = useState<CookingSession | null>(null);
   const [loading, setLoading] = useState(true);
@@ -20,7 +72,6 @@ export default function CookingPage() {
 
   useEffect(() => {
     fetchSession();
-    // Poll every 12 seconds so chat-driven updates appear while cooking
     const interval = setInterval(() => {
       fetchSession();
     }, 12_000);
@@ -93,7 +144,7 @@ function Header() {
           </Link>
         </div>
         <h1 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-          Today&apos;s Recipe
+          Tonight&apos;s Cooking
         </h1>
         <div className="w-16" />
       </div>
@@ -127,19 +178,27 @@ function EmptyState() {
 }
 
 // ---------------------------------------------------------------------------
-// Tonight's Version card
+// Tonight's Plan — the main actionable cooking section
 // ---------------------------------------------------------------------------
 
-function TonightCard({ tonight }: { tonight: TonightPlan }) {
+function TonightPlanBlock({ tonight }: { tonight: TonightPlan }) {
+  // Categorize sections for structured rendering
+  const stepSections = tonight.sections.filter((s) =>
+    /step|method|cook|instruction|make|do this/i.test(s.title)
+  );
+  const otherSections = tonight.sections.filter(
+    (s) => !/step|method|cook|instruction|make|do this/i.test(s.title)
+  );
+
   return (
-    <div className="rounded-xl border-2 border-amber-400 dark:border-amber-600 bg-amber-50 dark:bg-amber-950/30 p-5 space-y-4">
+    <div className="space-y-5">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400">
-          Tonight&apos;s version
+          Tonight&apos;s Plan
         </h3>
         {tonight.updatedAt && (
-          <span className="text-xs text-amber-600/60 dark:text-amber-400/50">
-            Updated{" "}
+          <span className="text-xs text-zinc-400 dark:text-zinc-500">
+            updated{" "}
             {new Date(tonight.updatedAt).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
@@ -147,13 +206,37 @@ function TonightCard({ tonight }: { tonight: TonightPlan }) {
           </span>
         )}
       </div>
+
       {tonight.summary && (
-        <p className="text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
+        <p className="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
           {tonight.summary}
         </p>
       )}
-      {tonight.sections.map((section, i) => (
-        <div key={i} className="space-y-1.5">
+
+      {/* Render step-like sections as numbered steps */}
+      {stepSections.map((section, i) => (
+        <div key={`steps-${i}`} className="space-y-3">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+            {section.title}
+          </h4>
+          <ol className="space-y-2.5">
+            {section.items.map((item, j) => (
+              <li key={j} className="flex gap-3 items-start">
+                <span className="mt-0.5 shrink-0 w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center text-xs font-bold text-amber-700 dark:text-amber-400">
+                  {j + 1}
+                </span>
+                <span className="text-sm text-zinc-800 dark:text-zinc-200 leading-relaxed pt-0.5">
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      ))}
+
+      {/* Render non-step sections (sides, notes, watch-outs) as bullet lists */}
+      {otherSections.map((section, i) => (
+        <div key={`other-${i}`} className="space-y-1.5">
           <h4 className="text-xs font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-400">
             {section.title}
           </h4>
@@ -161,7 +244,7 @@ function TonightCard({ tonight }: { tonight: TonightPlan }) {
             {section.items.map((item, j) => (
               <li
                 key={j}
-                className="text-sm text-amber-900 dark:text-amber-200 pl-3 relative before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:rounded-full before:bg-amber-400 dark:before:bg-amber-600"
+                className="text-sm text-zinc-700 dark:text-zinc-300 pl-3 relative before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:rounded-full before:bg-amber-300 dark:before:bg-amber-700"
               >
                 {item}
               </li>
@@ -169,6 +252,27 @@ function TonightCard({ tonight }: { tonight: TonightPlan }) {
           </ul>
         </div>
       ))}
+
+      {/* If no sections categorized as steps, render all as the old style */}
+      {stepSections.length === 0 &&
+        otherSections.length === 0 &&
+        tonight.sections.map((section, i) => (
+          <div key={i} className="space-y-1.5">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+              {section.title}
+            </h4>
+            <ul className="space-y-1">
+              {section.items.map((item, j) => (
+                <li
+                  key={j}
+                  className="text-sm text-zinc-700 dark:text-zinc-300 pl-3 relative before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:rounded-full before:bg-amber-300 dark:before:bg-amber-700"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
     </div>
   );
 }
@@ -187,22 +291,17 @@ function ActiveSession({
   onComplete: () => void;
 }) {
   const recipe = session.recipeData;
-  const steps = recipe.method ?? [];
+  const rawSteps = recipe.method ?? [];
+  const steps = mergeMethodFragments(rawSteps);
   const isCompleted = session.status === "completed";
+  const hasTonight = !!session.tonight;
+
+  // Adjust currentStep when merge reduced step count
+  const effectiveStep = Math.min(session.currentStep, steps.length);
 
   return (
     <div className="space-y-8">
-      {/* Tonight's version — shown above original recipe when present */}
-      {session.tonight && <TonightCard tonight={session.tonight} />}
-
-      {/* Original recipe label when tonight block is shown */}
-      {session.tonight && (
-        <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
-          Original recipe
-        </h3>
-      )}
-
-      {/* Recipe header */}
+      {/* ---- Dish identity hero ---- */}
       <div className="space-y-3">
         {recipe.image && (
           <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-zinc-200 dark:bg-zinc-800">
@@ -218,13 +317,16 @@ function ActiveSession({
           {recipe.name}
         </h2>
         {recipe.intro && (
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed whitespace-pre-line">
             {recipe.intro}
           </p>
         )}
         <div className="flex items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
           {recipe.servings && <span>{recipe.servings}</span>}
           {recipe.time?.total && <span>{recipe.time.total} min</span>}
+          {recipe.source?.cookbook && (
+            <span className="italic">{recipe.source.cookbook}</span>
+          )}
         </div>
         {session.serveWith && session.serveWith.length > 0 && (
           <div className="flex flex-wrap gap-1.5 pt-1">
@@ -243,7 +345,28 @@ function ActiveSession({
         )}
       </div>
 
-      {/* Ingredients */}
+      {/* ---- Tonight's plan — primary cooking section ---- */}
+      {hasTonight && (
+        <div className="rounded-xl border border-amber-300 dark:border-amber-700 bg-amber-50/60 dark:bg-amber-950/20 p-5">
+          <TonightPlanBlock tonight={session.tonight!} />
+        </div>
+      )}
+
+      {/* ---- Divider when both tonight + original exist ---- */}
+      {hasTonight && (
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-zinc-200 dark:border-zinc-800" />
+          </div>
+          <div className="relative flex justify-center">
+            <span className="bg-zinc-50 dark:bg-zinc-950 px-3 text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+              Original recipe
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* ---- Ingredients ---- */}
       {recipe.ingredients && recipe.ingredients.length > 0 && (
         <div className="space-y-3">
           <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
@@ -256,9 +379,7 @@ function ActiveSession({
                 className="text-sm text-zinc-700 dark:text-zinc-300 flex gap-2"
               >
                 <span className="text-zinc-400 dark:text-zinc-500 min-w-[4rem] text-right shrink-0">
-                  {typeof ing === "string"
-                    ? ""
-                    : ing.amount ?? ""}
+                  {typeof ing === "string" ? "" : ing.amount ?? ""}
                 </span>
                 <span>
                   {typeof ing === "string" ? ing : ing.item ?? ""}
@@ -269,7 +390,7 @@ function ActiveSession({
         </div>
       )}
 
-      {/* Method steps */}
+      {/* ---- Method steps (with fragment merging) ---- */}
       {steps.length > 0 && (
         <div className="space-y-3">
           <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
@@ -277,14 +398,12 @@ function ActiveSession({
           </h3>
           <ol className="space-y-4">
             {steps.map((step, i) => {
-              const isDone = i < session.currentStep;
-              const isCurrent = i === session.currentStep && !isCompleted;
+              const isDone = i < effectiveStep;
+              const isCurrent = i === effectiveStep && !isCompleted;
               return (
                 <li key={i} className="flex gap-3 items-start group">
                   <button
-                    onClick={() =>
-                      onStepChange(isDone ? i : i + 1)
-                    }
+                    onClick={() => onStepChange(isDone ? i : i + 1)}
                     disabled={isCompleted}
                     className={`mt-0.5 shrink-0 w-7 h-7 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-colors ${
                       isDone
@@ -293,7 +412,9 @@ function ActiveSession({
                           ? "border-amber-500 text-amber-600 dark:text-amber-400"
                           : "border-zinc-300 dark:border-zinc-600 text-zinc-400 dark:text-zinc-500"
                     }`}
-                    aria-label={isDone ? `Undo step ${i + 1}` : `Complete step ${i + 1}`}
+                    aria-label={
+                      isDone ? `Undo step ${i + 1}` : `Complete step ${i + 1}`
+                    }
                   >
                     {isDone ? "\u2713" : i + 1}
                   </button>
@@ -315,7 +436,19 @@ function ActiveSession({
         </div>
       )}
 
-      {/* Session actions */}
+      {/* ---- Tips ---- */}
+      {recipe.tips && (
+        <div className="space-y-2">
+          <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+            Tips
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed whitespace-pre-line">
+            {recipe.tips}
+          </p>
+        </div>
+      )}
+
+      {/* ---- Session actions ---- */}
       <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800">
         {isCompleted ? (
           <div className="text-center py-4">
@@ -326,7 +459,7 @@ function ActiveSession({
         ) : (
           <button
             onClick={onComplete}
-            disabled={session.currentStep < steps.length}
+            disabled={effectiveStep < steps.length}
             className="w-full py-3 rounded-lg bg-amber-600 hover:bg-amber-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-medium transition-colors"
           >
             Mark as done
