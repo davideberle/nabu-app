@@ -67,6 +67,19 @@ function rowToSession(row: Record<string, unknown>): CookingSession {
 // Queries
 // ---------------------------------------------------------------------------
 
+/** Get a cooking session by its id. */
+export async function getSessionById(
+  id: string
+): Promise<CookingSession | null> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: "SELECT * FROM cooking_sessions WHERE id = ?",
+    args: [id],
+  });
+  if (result.rows.length === 0) return null;
+  return rowToSession(result.rows[0] as Record<string, unknown>);
+}
+
 /** Get today's cooking session, or null if none exists. */
 export async function getTodaySession(
   today?: string
