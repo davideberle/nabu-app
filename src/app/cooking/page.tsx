@@ -2,9 +2,17 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import type { CookingSession, TonightPlan } from "@/lib/cooking";
+import type {
+  CookingSession,
+  CookingFeedback,
+  TonightPlan,
+  RecipeHistory,
+} from "@/lib/cooking";
 
-type SessionResponse = { session: CookingSession | null };
+type SessionResponse = {
+  session: CookingSession | null;
+  history?: RecipeHistory | null;
+};
 
 // ---------------------------------------------------------------------------
 // Method cleanup heuristic — merge broken fragments into real steps
@@ -60,6 +68,7 @@ function startsWithVerb(text: string): boolean {
 
 export default function CookingPage() {
   const [session, setSession] = useState<CookingSession | null>(null);
+  const [history, setHistory] = useState<RecipeHistory | null>(null);
   const [loading, setLoading] = useState(true);
 
   const fetchSession = useCallback(async () => {
@@ -67,6 +76,7 @@ export default function CookingPage() {
     const res = await fetch(`/api/cooking?date=${today}`);
     const data: SessionResponse = await res.json();
     setSession(data.session);
+    setHistory(data.history ?? null);
     setLoading(false);
   }, []);
 
@@ -98,6 +108,18 @@ export default function CookingPage() {
     setSession({ ...session, status: "completed" });
   }
 
+  async function handleFeedback(feedback: CookingFeedback) {
+    if (!session) return;
+    await fetch("/api/cooking", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: session.id, feedback }),
+    });
+    setSession({ ...session, feedback });
+    // Re-fetch to update history with new feedback
+    fetchSession();
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
@@ -116,8 +138,10 @@ export default function CookingPage() {
         {session ? (
           <ActiveSession
             session={session}
+            history={history}
             onStepChange={handleStepChange}
             onComplete={handleComplete}
+            onFeedback={handleFeedback}
           />
         ) : (
           <EmptyState />
@@ -283,12 +307,16 @@ function TonightPlanBlock({ tonight }: { tonight: TonightPlan }) {
 
 function ActiveSession({
   session,
+  history,
   onStepChange,
   onComplete,
+  onFeedback,
 }: {
   session: CookingSession;
+  history: RecipeHistory | null;
   onStepChange: (step: number) => void;
   onComplete: () => void;
+  onFeedback: (feedback: CookingFeedback) => void;
 }) {
   const recipe = session.recipeData;
   const rawSteps = recipe.method ?? [];
@@ -344,6 +372,9 @@ function ActiveSession({
           </div>
         )}
       </div>
+
+      {/* ---- Recipe history summary ---- */}
+      {history && <RecipeHistoryBlock history={history} />}
 
       {/* ---- Tonight's plan — primary cooking section ---- */}
       {hasTonight && (
@@ -451,10 +482,16 @@ function ActiveSession({
       {/* ---- Session actions ---- */}
       <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800">
         {isCompleted ? (
-          <div className="text-center py-4">
-            <p className="text-amber-600 dark:text-amber-400 font-medium">
-              Done — enjoy your meal!
-            </p>
+          <div className="space-y-6">
+            <div className="text-center py-2">
+              <p className="text-amber-600 dark:text-amber-400 font-medium">
+                Done — enjoy your meal!
+              </p>
+            </div>
+            <FeedbackBlock
+              existingFeedback={session.feedback}
+              onSubmit={onFeedback}
+            />
           </div>
         ) : (
           <button
@@ -466,6 +503,230 @@ function ActiveSession({
           </button>
         )}
       </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Recipe history summary — derived from completed sessions
+// ---------------------------------------------------------------------------
+
+const VERDICT_LABELS: Record<CookingFeedback["verdict"], string> = {
+  great: "Great",
+  good: "Good",
+  okay: "Okay",
+  "not-again": "Not again",
+};
+
+function RecipeHistoryBlock({ history }: { history: RecipeHistory }) {
+  return (
+    <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100/50 dark:bg-zinc-900/50 p-4 space-y-2">
+      <h3 className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+        Your history with this dish
+      </h3>
+      <div className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-300">
+        <span>
+          Cooked{" "}
+          <span className="font-medium text-zinc-900 dark:text-zinc-100">
+            {history.totalCooks}
+          </span>{" "}
+          {history.totalCooks === 1 ? "time" : "times"}
+        </span>
+        <span className="text-zinc-300 dark:text-zinc-700">|</span>
+        <span>
+          Last on{" "}
+          <span className="font-medium text-zinc-900 dark:text-zinc-100">
+            {history.lastCooked}
+          </span>
+        </span>
+      </div>
+      {history.recentFeedback.length > 0 && (
+        <div className="space-y-1.5 pt-1">
+          {history.recentFeedback.map((fb, i) => (
+            <div
+              key={i}
+              className="flex items-start gap-2 text-xs text-zinc-500 dark:text-zinc-400"
+            >
+              <span className="shrink-0 font-medium">
+                {fb.date}: {VERDICT_LABELS[fb.verdict]}
+              </span>
+              {fb.notes && (
+                <span className="text-zinc-400 dark:text-zinc-500 truncate">
+                  — {fb.notes}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Post-cook feedback form
+// ---------------------------------------------------------------------------
+
+const VERDICT_OPTIONS: { value: CookingFeedback["verdict"]; label: string }[] =
+  [
+    { value: "great", label: "Great" },
+    { value: "good", label: "Good" },
+    { value: "okay", label: "Okay" },
+    { value: "not-again", label: "Not again" },
+  ];
+
+function FeedbackBlock({
+  existingFeedback,
+  onSubmit,
+}: {
+  existingFeedback?: CookingFeedback;
+  onSubmit: (feedback: CookingFeedback) => void;
+}) {
+  const [verdict, setVerdict] = useState<CookingFeedback["verdict"] | null>(
+    existingFeedback?.verdict ?? null
+  );
+  const [wouldCookAgain, setWouldCookAgain] = useState(
+    existingFeedback?.wouldCookAgain ?? true
+  );
+  const [notes, setNotes] = useState(existingFeedback?.notes ?? "");
+  const [keepForNextTime, setKeepForNextTime] = useState(
+    existingFeedback?.keepForNextTime?.join("\n") ?? ""
+  );
+  const [changeNextTime, setChangeNextTime] = useState(
+    existingFeedback?.changeNextTime?.join("\n") ?? ""
+  );
+  const [saved, setSaved] = useState(!!existingFeedback);
+
+  function handleSubmit() {
+    if (!verdict) return;
+    const keepLines = keepForNextTime
+      .split("\n")
+      .map((l) => l.trim())
+      .filter(Boolean);
+    const changeLines = changeNextTime
+      .split("\n")
+      .map((l) => l.trim())
+      .filter(Boolean);
+    onSubmit({
+      verdict,
+      wouldCookAgain,
+      ...(notes.trim() ? { notes: notes.trim() } : {}),
+      ...(keepLines.length ? { keepForNextTime: keepLines } : {}),
+      ...(changeLines.length ? { changeNextTime: changeLines } : {}),
+      capturedAt: new Date().toISOString(),
+    });
+    setSaved(true);
+  }
+
+  if (saved && existingFeedback) {
+    return (
+      <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100/50 dark:bg-zinc-900/50 p-4 space-y-2">
+        <h3 className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+          Your feedback
+        </h3>
+        <p className="text-sm text-zinc-700 dark:text-zinc-300">
+          <span className="font-medium">
+            {VERDICT_LABELS[existingFeedback.verdict]}
+          </span>
+          {" — "}
+          {existingFeedback.wouldCookAgain
+            ? "would cook again"
+            : "probably not again"}
+        </p>
+        {existingFeedback.notes && (
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            {existingFeedback.notes}
+          </p>
+        )}
+        <button
+          onClick={() => setSaved(false)}
+          className="text-xs text-amber-600 dark:text-amber-400 hover:underline"
+        >
+          Edit
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100/50 dark:bg-zinc-900/50 p-4 space-y-4">
+      <h3 className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+        How was it?
+      </h3>
+
+      {/* Verdict */}
+      <div className="flex gap-2">
+        {VERDICT_OPTIONS.map((opt) => (
+          <button
+            key={opt.value}
+            onClick={() => setVerdict(opt.value)}
+            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+              verdict === opt.value
+                ? "bg-amber-600 text-white"
+                : "bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-300 dark:hover:bg-zinc-700"
+            }`}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Would cook again */}
+      <label className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+        <input
+          type="checkbox"
+          checked={wouldCookAgain}
+          onChange={(e) => setWouldCookAgain(e.target.checked)}
+          className="rounded border-zinc-300 dark:border-zinc-600 text-amber-600 focus:ring-amber-500"
+        />
+        Would cook again
+      </label>
+
+      {/* Notes */}
+      <textarea
+        value={notes}
+        onChange={(e) => setNotes(e.target.value)}
+        placeholder="Any notes? (optional)"
+        rows={2}
+        className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm text-zinc-800 dark:text-zinc-200 p-2.5 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:ring-1 focus:ring-amber-500 resize-none"
+      />
+
+      {/* Keep / change for next time */}
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">
+            Keep next time
+          </label>
+          <textarea
+            value={keepForNextTime}
+            onChange={(e) => setKeepForNextTime(e.target.value)}
+            placeholder="One per line"
+            rows={2}
+            className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-xs text-zinc-800 dark:text-zinc-200 p-2 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:ring-1 focus:ring-amber-500 resize-none"
+          />
+        </div>
+        <div>
+          <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">
+            Change next time
+          </label>
+          <textarea
+            value={changeNextTime}
+            onChange={(e) => setChangeNextTime(e.target.value)}
+            placeholder="One per line"
+            rows={2}
+            className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-xs text-zinc-800 dark:text-zinc-200 p-2 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:ring-1 focus:ring-amber-500 resize-none"
+          />
+        </div>
+      </div>
+
+      {/* Submit */}
+      <button
+        onClick={handleSubmit}
+        disabled={!verdict}
+        className="w-full py-2.5 rounded-lg bg-amber-600 hover:bg-amber-700 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium transition-colors"
+      >
+        Save feedback
+      </button>
     </div>
   );
 }

@@ -11,6 +11,15 @@ export type TonightPlan = {
   updatedAt?: string;
 };
 
+export type CookingFeedback = {
+  verdict: "great" | "good" | "okay" | "not-again";
+  wouldCookAgain: boolean;
+  notes?: string;
+  keepForNextTime?: string[];
+  changeNextTime?: string[];
+  capturedAt: string;
+};
+
 export type CookingSession = {
   id: string;
   date: string; // YYYY-MM-DD (unique — one session per day)
@@ -19,6 +28,7 @@ export type CookingSession = {
   recipeData: Recipe;
   serveWith?: string[]; // free-text accompaniments from meal plan
   tonight?: TonightPlan; // runtime-updatable live plan for tonight
+  feedback?: CookingFeedback; // post-cook feedback, set after completion
   status: "active" | "completed";
   currentStep: number;
   startedAt: string;
@@ -33,6 +43,7 @@ export type CookingSession = {
 function rowToSession(row: Record<string, unknown>): CookingSession {
   const serveWithRaw = row["serve_with"] as string | null;
   const tonightRaw = row["tonight"] as string | null;
+  const feedbackRaw = row["feedback"] as string | null;
   return {
     id: row["id"] as string,
     date: row["date"] as string,
@@ -41,6 +52,7 @@ function rowToSession(row: Record<string, unknown>): CookingSession {
     recipeData: JSON.parse(row["recipe_data"] as string) as Recipe,
     ...(serveWithRaw ? { serveWith: JSON.parse(serveWithRaw) as string[] } : {}),
     ...(tonightRaw ? { tonight: JSON.parse(tonightRaw) as TonightPlan } : {}),
+    ...(feedbackRaw ? { feedback: JSON.parse(feedbackRaw) as CookingFeedback } : {}),
     status: row["status"] as CookingSession["status"],
     currentStep: row["current_step"] as number,
     startedAt: row["started_at"] as string,
@@ -168,4 +180,68 @@ export async function completeSession(id: string): Promise<void> {
     sql: "UPDATE cooking_sessions SET status = 'completed', completed_at = ? WHERE id = ?",
     args: [now, id],
   });
+}
+
+/** Save post-cook feedback on a session. */
+export async function updateSessionFeedback(
+  id: string,
+  feedback: CookingFeedback
+): Promise<void> {
+  const client = await getDb();
+  await client.execute({
+    sql: "UPDATE cooking_sessions SET feedback = ? WHERE id = ?",
+    args: [JSON.stringify(feedback), id],
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Recipe history — derived from completed cooking sessions
+// ---------------------------------------------------------------------------
+
+export type RecipeHistory = {
+  recipeId: string;
+  totalCooks: number;
+  lastCooked: string; // YYYY-MM-DD
+  recentFeedback: {
+    date: string;
+    verdict: CookingFeedback["verdict"];
+    notes?: string;
+  }[];
+};
+
+/** Derive cooking history for a recipe from completed sessions. */
+export async function getRecipeHistory(
+  recipeId: string
+): Promise<RecipeHistory | null> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: `SELECT date, feedback FROM cooking_sessions
+          WHERE recipe_id = ? AND status = 'completed'
+          ORDER BY date DESC`,
+    args: [recipeId],
+  });
+
+  if (result.rows.length === 0) return null;
+
+  const rows = result.rows as Record<string, unknown>[];
+  const recentFeedback: RecipeHistory["recentFeedback"] = [];
+
+  for (const row of rows.slice(0, 3)) {
+    const fbRaw = row["feedback"] as string | null;
+    if (fbRaw) {
+      const fb = JSON.parse(fbRaw) as CookingFeedback;
+      recentFeedback.push({
+        date: row["date"] as string,
+        verdict: fb.verdict,
+        ...(fb.notes ? { notes: fb.notes } : {}),
+      });
+    }
+  }
+
+  return {
+    recipeId,
+    totalCooks: result.rows.length,
+    lastCooked: rows[0]["date"] as string,
+    recentFeedback,
+  };
 }

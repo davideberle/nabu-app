@@ -455,6 +455,13 @@ async function migrate(client: Client) {
         "ALTER TABLE cooking_sessions ADD COLUMN tonight TEXT"
       );
     },
+
+    // v9 -> v10: add feedback column for post-cook feedback (JSON blob)
+    async () => {
+      await client.execute(
+        "ALTER TABLE cooking_sessions ADD COLUMN feedback TEXT"
+      );
+    },
   ];
 
   if (version < migrations.length) {

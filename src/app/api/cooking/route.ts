@@ -6,8 +6,11 @@ import {
   updateSessionRecipeData,
   updateSessionStep,
   updateSessionTonight,
+  updateSessionFeedback,
   completeSession,
+  getRecipeHistory,
 } from "@/lib/cooking";
+import type { CookingFeedback } from "@/lib/cooking";
 import { loadMealPlan } from "@/lib/meals-persistence";
 import { getISOWeek } from "@/lib/meals";
 import { getRecipe } from "@/lib/recipes";
@@ -59,7 +62,9 @@ export async function GET(request: NextRequest) {
         existing.serveWith = freshServeWith?.length ? freshServeWith : undefined;
       }
     }
-    return NextResponse.json({ session: existing });
+    // Include recipe history derived from past completed sessions
+    const history = await getRecipeHistory(existing.recipeId);
+    return NextResponse.json({ session: existing, history });
   }
 
   // 2. Try to auto-create from today's meal plan
@@ -91,13 +96,16 @@ export async function GET(request: NextRequest) {
     ...(serveWith?.length ? { serveWith } : {}),
   });
 
-  return NextResponse.json({ session });
+  const history = await getRecipeHistory(recipe.id);
+  return NextResponse.json({ session, history });
 }
 
 /**
  * PATCH /api/cooking
- * Body: { id, currentStep } or { id, status: "completed" }
- * Updates step pointer or marks session completed.
+ * Body: { id, currentStep } | { id, status: "completed" } |
+ *       { id, tonight } | { id, feedback }
+ * Updates step pointer, marks session completed, updates tonight plan,
+ * or saves post-cook feedback.
  */
 export async function PATCH(request: NextRequest) {
   const body = await request.json();
@@ -121,8 +129,21 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
+  if ("feedback" in body && body.feedback) {
+    const fb = body.feedback as CookingFeedback;
+    await updateSessionFeedback(body.id, {
+      verdict: fb.verdict,
+      wouldCookAgain: fb.wouldCookAgain,
+      ...(fb.notes ? { notes: fb.notes } : {}),
+      ...(fb.keepForNextTime?.length ? { keepForNextTime: fb.keepForNextTime } : {}),
+      ...(fb.changeNextTime?.length ? { changeNextTime: fb.changeNextTime } : {}),
+      capturedAt: new Date().toISOString(),
+    });
+    return NextResponse.json({ ok: true });
+  }
+
   return NextResponse.json(
-    { error: "Provide currentStep (number), status: 'completed', or tonight" },
+    { error: "Provide currentStep, status, tonight, or feedback" },
     { status: 400 }
   );
 }
