@@ -266,7 +266,10 @@ function normalizePlanDays(
       planningState: saved?.planningState ?? "open",
       recipeId: saved?.recipeId ?? null,
       recipeName: saved?.recipeName ?? null,
-      meal: saved?.meal ?? null,
+      // Backfill meal from legacy recipeId/recipeName if absent
+      meal: saved?.meal ?? (saved?.recipeId && saved?.recipeName
+        ? { main: { id: saved.recipeId, name: saved.recipeName } }
+        : null),
     };
   });
 
@@ -362,6 +365,7 @@ function MealsPageInner() {
   const [planLoading, setPlanLoading] = useState(true);
   const [feedbackMap, setFeedbackMap] = useState<Record<string, "up" | "down">>({});
   const [dayHistory, setDayHistory] = useState<Record<string, DayHistory>>({});
+  const [editingServeWith, setEditingServeWith] = useState<number | null>(null);
 
   // Autosave for notes/context changes only
   useAutosave(plan);
@@ -555,6 +559,7 @@ function MealsPageInner() {
   function handleSlotClick(dayIndex: number) {
     if (!plan || !selectedRecipe || planLoading) return;
     const newDays = [...plan.days];
+    const existingMeal = newDays[dayIndex].meal;
     newDays[dayIndex] = {
       ...newDays[dayIndex],
       recipeId: selectedRecipe.id,
@@ -562,9 +567,8 @@ function MealsPageInner() {
       planningState: "assigned",
       meal: {
         main: { id: selectedRecipe.id, name: selectedRecipe.name },
-        ...(newDays[dayIndex].meal?.serveWith?.length
-          ? { serveWith: newDays[dayIndex].meal!.serveWith }
-          : {}),
+        sides: existingMeal?.sides,
+        serveWith: existingMeal?.serveWith,
       },
     };
     const updatedPlan = { ...plan, days: newDays };
@@ -589,18 +593,15 @@ function MealsPageInner() {
     savePlanNow(updatedPlan);
   }
 
+  // Update serveWith on an assigned day slot — persists immediately
   function handleServeWithChange(dayIndex: number, serveWith: string[]) {
     if (!plan) return;
     const slot = plan.days[dayIndex];
-    if (!slot.recipeId) return;
+    if (!slot?.meal) return;
     const newDays = [...plan.days];
     newDays[dayIndex] = {
       ...newDays[dayIndex],
-      meal: {
-        main: { id: slot.recipeId, name: slot.recipeName ?? "" },
-        ...(slot.meal?.sides ? { sides: slot.meal.sides } : {}),
-        serveWith: serveWith.length > 0 ? serveWith : undefined,
-      },
+      meal: { ...slot.meal, serveWith: serveWith.length > 0 ? serveWith : undefined },
     };
     const updatedPlan = { ...plan, days: newDays };
     setPlan(updatedPlan);
@@ -883,23 +884,30 @@ function MealsPageInner() {
                     <p className="text-[13px] font-serif text-stone-700 dark:text-stone-200 line-clamp-2 leading-snug">
                       {slot?.recipeName}
                     </p>
-                    {/* serveWith tags */}
-                    {slot?.meal?.serveWith && slot.meal.serveWith.length > 0 && (
-                      <div className="flex flex-wrap gap-0.5 mt-1.5">
-                        {slot.meal.serveWith.map((sw, si) => (
-                          <span
-                            key={si}
-                            className="text-[9px] px-1.5 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400"
-                          >
-                            {sw}
-                          </span>
-                        ))}
-                      </div>
+                    {/* Serve-with notes */}
+                    {slot?.meal?.serveWith && slot.meal.serveWith.length > 0 && editingServeWith !== i && (
+                      <button
+                        onClick={(e) => { e.stopPropagation(); setEditingServeWith(i); }}
+                        className="mt-1 text-[10px] text-stone-400 dark:text-stone-500 text-left leading-tight hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+                      >
+                        + {slot.meal.serveWith.join(", ")}
+                      </button>
                     )}
-                    <ServeWithInput
-                      value={slot?.meal?.serveWith ?? []}
-                      onChange={(sw) => handleServeWithChange(i, sw)}
-                    />
+                    {!slot?.meal?.serveWith?.length && editingServeWith !== i && (
+                      <button
+                        onClick={(e) => { e.stopPropagation(); setEditingServeWith(i); }}
+                        className="mt-1 text-[10px] text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors text-left"
+                      >
+                        + serve with...
+                      </button>
+                    )}
+                    {editingServeWith === i && (
+                      <ServeWithEditor
+                        value={slot?.meal?.serveWith ?? []}
+                        onChange={(sw) => handleServeWithChange(i, sw)}
+                        onClose={() => setEditingServeWith(null)}
+                      />
+                    )}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -1194,55 +1202,47 @@ function WeekContextEditor({
   );
 }
 
-// ----- ServeWith inline editor -----
+// ----- ServeWithEditor sub-component -----
 
-function ServeWithInput({
+function ServeWithEditor({
   value,
   onChange,
+  onClose,
 }: {
   value: string[];
   onChange: (items: string[]) => void;
+  onClose: () => void;
 }) {
-  const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState("");
+  const [text, setText] = useState(value.join(", "));
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  if (!editing) {
-    return (
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          setEditing(true);
-          setDraft(value.join(", "));
-        }}
-        className="mt-1 text-[10px] text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 text-left transition-colors"
-      >
-        {value.length > 0 ? "edit sides" : "+ serve with"}
-      </button>
-    );
-  }
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   function commit() {
-    const items = draft
+    const items = text
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
     onChange(items);
-    setEditing(false);
+    onClose();
   }
 
   return (
     <div className="mt-1" onClick={(e) => e.stopPropagation()}>
       <input
-        autoFocus
-        value={draft}
-        onChange={(e) => setDraft(e.target.value)}
+        ref={inputRef}
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === "Enter") commit();
-          if (e.key === "Escape") setEditing(false);
+          if (e.key === "Escape") onClose();
         }}
         onBlur={commit}
-        placeholder="e.g. rice, salad"
-        className="w-full text-[10px] px-1.5 py-1 rounded border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-700 dark:text-stone-200 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
+        placeholder="e.g. Rice, Flatbreads"
+        className="w-full text-[11px] rounded border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-700 dark:text-stone-200 px-1.5 py-1 placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-1 focus:ring-amber-400/40"
       />
     </div>
   );

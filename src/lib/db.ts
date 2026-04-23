@@ -420,20 +420,15 @@ async function migrate(client: Client) {
       }
     },
 
-    // v6 -> v7: create cooking_sessions table for live cooking surface
+    // v6 -> v7: create cooking_sessions table for live cooking sessions
     async () => {
       await client.execute(`
         CREATE TABLE IF NOT EXISTS cooking_sessions (
-          id          TEXT PRIMARY KEY,
-          date        TEXT NOT NULL UNIQUE,
-          recipe_id   TEXT NOT NULL,
-          recipe_name TEXT NOT NULL,
-          recipe_data TEXT NOT NULL,
-          status      TEXT NOT NULL DEFAULT 'active',
-          current_step INTEGER NOT NULL DEFAULT 0,
-          started_at  TEXT NOT NULL,
-          completed_at TEXT,
-          created_at  TEXT NOT NULL
+          id         TEXT PRIMARY KEY,
+          date       TEXT NOT NULL,
+          data       TEXT NOT NULL,
+          created_at TEXT NOT NULL,
+          updated_at TEXT NOT NULL
         )
       `);
       await client.execute(`
@@ -442,28 +437,7 @@ async function migrate(client: Client) {
       `);
     },
 
-    // v7 -> v8: add serve_with column for free-text accompaniments
-    async () => {
-      await client.execute(
-        "ALTER TABLE cooking_sessions ADD COLUMN serve_with TEXT"
-      );
-    },
-
-    // v8 -> v9: add tonight column for runtime-updatable live plan block
-    async () => {
-      await client.execute(
-        "ALTER TABLE cooking_sessions ADD COLUMN tonight TEXT"
-      );
-    },
-
-    // v9 -> v10: add feedback column for post-cook feedback (JSON blob)
-    async () => {
-      await client.execute(
-        "ALTER TABLE cooking_sessions ADD COLUMN feedback TEXT"
-      );
-    },
-
-    // v10 -> v11: create candidate_feedback table for planner thumbs up/down
+    // v7 -> v8: create candidate_feedback table for planner thumbs up/down
     async () => {
       await client.execute(`
         CREATE TABLE IF NOT EXISTS candidate_feedback (

@@ -1,295 +1,416 @@
+// Cooking Session types and persistence helpers.
+// This module owns the runtime shape for live cooking sessions.
+// Domain logic (anchor policy, adaptation lifecycle) lives in projects/live-cooking/.
+
 import { getDb } from "./db";
-import type { Recipe } from "./recipes";
+import { loadMealPlan } from "./meals-persistence";
+import { getRecipe } from "./recipes";
+import { getISOWeek } from "./meals";
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
-export type TonightPlan = {
-  summary?: string;
-  sections: { title: string; items: string[] }[];
-  updatedAt?: string;
+export type AnchorType =
+  | "kitchen-recipe"
+  | "my-recipe"
+  | "external-recipe"
+  | "synthesized-plan";
+
+export type Anchor = {
+  type: AnchorType;
+  recipeId?: string;
+  title: string;
+  provenance: {
+    source: string; // e.g. "kitchen", "My Recipes", "Serious Eats"
+    url?: string;
+    author?: string;
+  };
 };
 
-export type CookingFeedback = {
-  verdict: "great" | "good" | "okay" | "not-again";
-  wouldCookAgain: boolean;
-  notes?: string;
-  keepForNextTime?: string[];
-  changeNextTime?: string[];
-  capturedAt: string;
+export type SessionStatus = "draft" | "active" | "completed" | "abandoned";
+
+export type AdaptationKind =
+  | "servings"
+  | "ingredient-substitution"
+  | "ingredient-omission"
+  | "time-shortcut"
+  | "guest-scaling"
+  | "technique-upgrade"
+  | "plating-finish"
+  | "wine-pairing"
+  | "rescue-fix";
+
+export type Adaptation = {
+  id: string;
+  kind: AdaptationKind;
+  summary: string;
+  messageSource?: string; // "telegram" | "app"
+  createdAt: string;
+};
+
+export type CoachCards = {
+  nextMove: string | null;
+  upgrade: string | null;
+  shortcut: string | null;
+  wine: string | null;
+};
+
+export type SessionIngredient = {
+  amount: string;
+  item: string;
+  group?: string | null;
+};
+
+export type RelatedRecipe = {
+  kind: "side";
+  recipeId: string;
+  title: string;
 };
 
 export type CookingSession = {
   id: string;
-  date: string; // YYYY-MM-DD (unique — one session per day)
-  recipeId: string;
-  recipeName: string;
-  recipeData: Recipe;
-  serveWith?: string[]; // free-text accompaniments from meal plan
-  tonight?: TonightPlan; // runtime-updatable live plan for tonight
-  feedback?: CookingFeedback; // post-cook feedback, set after completion
-  status: "active" | "completed";
-  currentStep: number;
-  startedAt: string;
-  completedAt?: string;
+  date: string; // YYYY-MM-DD
+  status: SessionStatus;
+  source: "meal-plan" | "ad-hoc" | "telegram";
+  mealPlanRef?: {
+    week: string;
+    day: string;
+  } | null;
+  anchor: Anchor;
+  relatedRecipes: RelatedRecipe[];
+  serveWith: string[]; // free-text: "Flatbreads", "Basmati rice", etc.
+  servings: {
+    base: string;
+    current: string;
+  };
+  ingredients: {
+    base: SessionIngredient[];
+    session: SessionIngredient[];
+  };
+  method: {
+    base: string[];
+    session: string[];
+  };
+  adaptations: Adaptation[];
+  coachCards: CoachCards;
+  notes: string;
   createdAt: string;
+  updatedAt: string;
 };
 
 // ---------------------------------------------------------------------------
-// Row mapping
+// Persistence helpers
 // ---------------------------------------------------------------------------
 
-function rowToSession(row: Record<string, unknown>): CookingSession {
-  const serveWithRaw = row["serve_with"] as string | null;
-  const tonightRaw = row["tonight"] as string | null;
-  const feedbackRaw = row["feedback"] as string | null;
-  return {
-    id: row["id"] as string,
-    date: row["date"] as string,
-    recipeId: row["recipe_id"] as string,
-    recipeName: row["recipe_name"] as string,
-    recipeData: JSON.parse(row["recipe_data"] as string) as Recipe,
-    ...(serveWithRaw ? { serveWith: JSON.parse(serveWithRaw) as string[] } : {}),
-    ...(tonightRaw ? { tonight: JSON.parse(tonightRaw) as TonightPlan } : {}),
-    ...(feedbackRaw ? { feedback: JSON.parse(feedbackRaw) as CookingFeedback } : {}),
-    status: row["status"] as CookingSession["status"],
-    currentStep: row["current_step"] as number,
-    startedAt: row["started_at"] as string,
-    ...(row["completed_at"]
-      ? { completedAt: row["completed_at"] as string }
-      : {}),
-    createdAt: row["created_at"] as string,
-  };
+export async function getCookingSessionForDate(
+  date: string
+): Promise<CookingSession | null> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: "SELECT data FROM cooking_sessions WHERE date = ? ORDER BY updated_at DESC LIMIT 1",
+    args: [date],
+  });
+  if (result.rows.length === 0) return null;
+  return JSON.parse(result.rows[0]["data"] as string) as CookingSession;
 }
 
-// ---------------------------------------------------------------------------
-// Queries
-// ---------------------------------------------------------------------------
-
-/** Get a cooking session by its id. */
-export async function getSessionById(
+export async function getCookingSession(
   id: string
 ): Promise<CookingSession | null> {
   const client = await getDb();
   const result = await client.execute({
-    sql: "SELECT * FROM cooking_sessions WHERE id = ?",
+    sql: "SELECT data FROM cooking_sessions WHERE id = ?",
     args: [id],
   });
   if (result.rows.length === 0) return null;
-  return rowToSession(result.rows[0] as Record<string, unknown>);
+  return JSON.parse(result.rows[0]["data"] as string) as CookingSession;
 }
 
-/** Get today's cooking session, or null if none exists. */
-export async function getTodaySession(
-  today?: string
-): Promise<CookingSession | null> {
-  const date = today ?? new Date().toISOString().split("T")[0];
+export async function saveCookingSession(
+  session: CookingSession
+): Promise<void> {
   const client = await getDb();
-  const result = await client.execute({
-    sql: "SELECT * FROM cooking_sessions WHERE date = ?",
-    args: [date],
-  });
-  if (result.rows.length === 0) return null;
-  return rowToSession(result.rows[0] as Record<string, unknown>);
-}
-
-/** Create a new cooking session for a given date + recipe. */
-export async function createCookingSession(params: {
-  date: string;
-  recipeId: string;
-  recipeName: string;
-  recipeData: Recipe;
-  serveWith?: string[];
-}): Promise<CookingSession> {
-  const client = await getDb();
-  const id = crypto.randomUUID();
   const now = new Date().toISOString();
-  const serveWithJson =
-    params.serveWith?.length ? JSON.stringify(params.serveWith) : null;
-  await client.execute({
-    sql: `INSERT INTO cooking_sessions
-            (id, date, recipe_id, recipe_name, recipe_data, serve_with, status, current_step, started_at, created_at)
-          VALUES (?, ?, ?, ?, ?, ?, 'active', 0, ?, ?)`,
-    args: [
-      id,
-      params.date,
-      params.recipeId,
-      params.recipeName,
-      JSON.stringify(params.recipeData),
-      serveWithJson,
-      now,
-      now,
-    ],
-  });
-  return {
-    id,
-    date: params.date,
-    recipeId: params.recipeId,
-    recipeName: params.recipeName,
-    recipeData: params.recipeData,
-    ...(params.serveWith?.length ? { serveWith: params.serveWith } : {}),
-    status: "active",
-    currentStep: 0,
-    startedAt: now,
-    createdAt: now,
+  const updated: CookingSession = {
+    ...session,
+    updatedAt: now,
+    createdAt: session.createdAt || now,
   };
-}
 
-/** Update the current step pointer. */
-export async function updateSessionStep(
-  id: string,
-  step: number
-): Promise<void> {
-  const client = await getDb();
   await client.execute({
-    sql: "UPDATE cooking_sessions SET current_step = ? WHERE id = ?",
-    args: [step, id],
-  });
-}
-
-/** Update the stored recipe snapshot and metadata for a session. */
-export async function updateSessionRecipeData(
-  id: string,
-  updates: {
-    recipeName: string;
-    recipeData: Recipe;
-    serveWith?: string[] | null;
-  }
-): Promise<void> {
-  const client = await getDb();
-  const serveWithJson =
-    updates.serveWith?.length ? JSON.stringify(updates.serveWith) : null;
-  await client.execute({
-    sql: `UPDATE cooking_sessions
-          SET recipe_name = ?, recipe_data = ?, serve_with = ?
-          WHERE id = ?`,
+    sql: `INSERT INTO cooking_sessions (id, date, data, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?)
+          ON CONFLICT(id) DO UPDATE SET
+            data = excluded.data,
+            updated_at = excluded.updated_at`,
     args: [
-      updates.recipeName,
-      JSON.stringify(updates.recipeData),
-      serveWithJson,
-      id,
+      updated.id,
+      updated.date,
+      JSON.stringify(updated),
+      updated.createdAt,
+      now,
     ],
   });
 }
 
-/** Update the live "tonight" plan block. */
-export async function updateSessionTonight(
-  id: string,
-  tonight: TonightPlan | null
-): Promise<void> {
-  const client = await getDb();
-  await client.execute({
-    sql: "UPDATE cooking_sessions SET tonight = ? WHERE id = ?",
-    args: [tonight ? JSON.stringify(tonight) : null, id],
-  });
-}
-
-/** Mark a session as completed. */
-export async function completeSession(id: string): Promise<void> {
-  const client = await getDb();
-  const now = new Date().toISOString();
-  await client.execute({
-    sql: "UPDATE cooking_sessions SET status = 'completed', completed_at = ? WHERE id = ?",
-    args: [now, id],
-  });
-}
-
-/** Save post-cook feedback on a session. */
-export async function updateSessionFeedback(
-  id: string,
-  feedback: CookingFeedback
-): Promise<void> {
-  const client = await getDb();
-  await client.execute({
-    sql: "UPDATE cooking_sessions SET feedback = ? WHERE id = ?",
-    args: [JSON.stringify(feedback), id],
-  });
-}
-
 // ---------------------------------------------------------------------------
-// Date-range session lookup — used by planner history projection
+// Partial update (patch) support
 // ---------------------------------------------------------------------------
 
-export type SessionSummary = {
-  date: string;
-  recipeId: string;
-  recipeName: string;
-  status: CookingSession["status"];
+export type SessionPatch = {
+  status?: SessionStatus;
+  coachCards?: Partial<CoachCards>;
+  notes?: string;
+  appendNotes?: string;
+  adaptations?: Adaptation[];
+  relatedRecipes?: RelatedRecipe[];
+  serveWith?: string[];
+  servings?: { current: string };
+  ingredients?: { session: SessionIngredient[] };
+  method?: { session: string[] };
 };
 
-/**
- * Get lightweight session summaries for a date range (inclusive).
- * Used by the planner to project planned-vs-cooked status per day.
- */
-export async function getSessionsForDateRange(
-  from: string,
-  to: string,
-): Promise<SessionSummary[]> {
-  const client = await getDb();
-  const result = await client.execute({
-    sql: `SELECT date, recipe_id, recipe_name, status
-          FROM cooking_sessions
-          WHERE date >= ? AND date <= ?
-          ORDER BY date ASC`,
-    args: [from, to],
-  });
-  return result.rows.map((row) => ({
-    date: (row as Record<string, unknown>)["date"] as string,
-    recipeId: (row as Record<string, unknown>)["recipe_id"] as string,
-    recipeName: (row as Record<string, unknown>)["recipe_name"] as string,
-    status: (row as Record<string, unknown>)["status"] as CookingSession["status"],
-  }));
-}
+const VALID_STATUSES: SessionStatus[] = [
+  "draft",
+  "active",
+  "completed",
+  "abandoned",
+];
 
-// ---------------------------------------------------------------------------
-// Recipe history — derived from completed cooking sessions
-// ---------------------------------------------------------------------------
+const VALID_ADAPTATION_KINDS: AdaptationKind[] = [
+  "servings",
+  "ingredient-substitution",
+  "ingredient-omission",
+  "time-shortcut",
+  "guest-scaling",
+  "technique-upgrade",
+  "plating-finish",
+  "wine-pairing",
+  "rescue-fix",
+];
 
-export type RecipeHistory = {
-  recipeId: string;
-  totalCooks: number;
-  lastCooked: string; // YYYY-MM-DD
-  recentFeedback: {
-    date: string;
-    verdict: CookingFeedback["verdict"];
-    notes?: string;
-  }[];
-};
-
-/** Derive cooking history for a recipe from completed sessions. */
-export async function getRecipeHistory(
-  recipeId: string
-): Promise<RecipeHistory | null> {
-  const client = await getDb();
-  const result = await client.execute({
-    sql: `SELECT date, feedback FROM cooking_sessions
-          WHERE recipe_id = ? AND status = 'completed'
-          ORDER BY date DESC`,
-    args: [recipeId],
-  });
-
-  if (result.rows.length === 0) return null;
-
-  const rows = result.rows as Record<string, unknown>[];
-  const recentFeedback: RecipeHistory["recentFeedback"] = [];
-
-  for (const row of rows.slice(0, 3)) {
-    const fbRaw = row["feedback"] as string | null;
-    if (fbRaw) {
-      const fb = JSON.parse(fbRaw) as CookingFeedback;
-      recentFeedback.push({
-        date: row["date"] as string,
-        verdict: fb.verdict,
-        ...(fb.notes ? { notes: fb.notes } : {}),
-      });
+export function validatePatch(patch: SessionPatch): string | null {
+  if (patch.status && !VALID_STATUSES.includes(patch.status)) {
+    return `Invalid status: ${patch.status}`;
+  }
+  if (patch.adaptations) {
+    for (const a of patch.adaptations) {
+      if (!a.id || !a.kind || !a.summary) {
+        return "Each adaptation needs id, kind, and summary";
+      }
+      if (!VALID_ADAPTATION_KINDS.includes(a.kind)) {
+        return `Invalid adaptation kind: ${a.kind}`;
+      }
     }
   }
+  if (patch.coachCards) {
+    const validKeys = ["nextMove", "upgrade", "shortcut", "wine"];
+    for (const key of Object.keys(patch.coachCards)) {
+      if (!validKeys.includes(key)) {
+        return `Invalid coachCard key: ${key}`;
+      }
+    }
+  }
+  return null;
+}
+
+export function applyPatch(
+  session: CookingSession,
+  patch: SessionPatch
+): CookingSession {
+  const updated = { ...session };
+
+  if (patch.status) {
+    updated.status = patch.status;
+  }
+
+  if (patch.coachCards) {
+    updated.coachCards = { ...session.coachCards, ...patch.coachCards };
+  }
+
+  if (patch.notes !== undefined) {
+    updated.notes = patch.notes;
+  } else if (patch.appendNotes) {
+    updated.notes = session.notes
+      ? session.notes + "\n" + patch.appendNotes
+      : patch.appendNotes;
+  }
+
+  if (patch.adaptations && patch.adaptations.length > 0) {
+    updated.adaptations = [...session.adaptations, ...patch.adaptations];
+  }
+
+  if (patch.relatedRecipes) {
+    updated.relatedRecipes = patch.relatedRecipes;
+  }
+
+  if (patch.serveWith) {
+    updated.serveWith = patch.serveWith;
+  }
+
+  if (patch.servings?.current) {
+    updated.servings = { ...session.servings, current: patch.servings.current };
+  }
+
+  if (patch.ingredients?.session) {
+    updated.ingredients = {
+      base: session.ingredients.base,
+      session: patch.ingredients.session,
+    };
+  }
+
+  if (patch.method?.session) {
+    updated.method = {
+      base: session.method.base,
+      session: patch.method.session,
+    };
+  }
+
+  return updated;
+}
+
+export async function patchCookingSession(
+  id: string,
+  patch: SessionPatch
+): Promise<CookingSession | null> {
+  const session = await getCookingSession(id);
+  if (!session) return null;
+
+  const error = validatePatch(patch);
+  if (error) throw new Error(error);
+
+  const updated = applyPatch(session, patch);
+  await saveCookingSession(updated);
+  return updated;
+}
+
+// ---------------------------------------------------------------------------
+// Session factory: create from a recipe
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// Auto-create session from today's meal plan
+// ---------------------------------------------------------------------------
+
+export async function createSessionFromPlan(
+  date: string
+): Promise<CookingSession | null> {
+  // Already have a session? Return it.
+  const existing = await getCookingSessionForDate(date);
+  if (existing) return existing;
+
+  // Find meal plan for this date's ISO week
+  const d = new Date(date + "T12:00:00Z");
+  const { year, week } = getISOWeek(d);
+  const weekId = `${year}-W${String(week).padStart(2, "0")}`;
+  const plan = await loadMealPlan(weekId);
+  if (!plan) return null;
+
+  // Find assigned recipe for this date
+  const daySlot = plan.days.find((day) => day.date === date && day.recipeId);
+  if (!daySlot?.recipeId) return null;
+
+  const recipe = await getRecipe(daySlot.recipeId);
+  if (!recipe) return null;
+
+  const isMyRecipe = recipe.source?.cookbook === "My Recipes";
+  const anchorType: AnchorType = isMyRecipe ? "my-recipe" : "kitchen-recipe";
+  const provenance = {
+    source: isMyRecipe ? "My Recipes" : recipe.source?.cookbook || "kitchen",
+    author: recipe.source?.author,
+  };
+
+  const ingredients = recipe.ingredients.map((ing) => ({
+    amount: ing.amount,
+    item: ing.item,
+    group: ing.group ?? null,
+  }));
+
+  const meal = daySlot.meal;
+  const relatedRecipes: RelatedRecipe[] = [];
+  if (meal?.sides) {
+    for (const side of meal.sides) {
+      relatedRecipes.push({ kind: "side", recipeId: side.id, title: side.name });
+    }
+  }
+  const serveWith = meal?.serveWith ?? [];
+
+  const session = buildSessionFromRecipe({
+    date,
+    recipeId: recipe.id,
+    title: recipe.name,
+    source: "meal-plan",
+    provenance,
+    anchorType,
+    servings: recipe.servings || "4",
+    ingredients,
+    method: recipe.method,
+    mealPlanRef: { week: weekId, day: daySlot.dayOfWeek },
+    relatedRecipes,
+    serveWith,
+  });
+
+  await saveCookingSession(session);
+  return session;
+}
+
+// ---------------------------------------------------------------------------
+// Session factory: create from a recipe
+// ---------------------------------------------------------------------------
+
+export function buildSessionFromRecipe(opts: {
+  date: string;
+  recipeId: string;
+  title: string;
+  source: CookingSession["source"];
+  provenance: Anchor["provenance"];
+  anchorType: AnchorType;
+  servings: string;
+  ingredients: SessionIngredient[];
+  method: string[];
+  mealPlanRef?: CookingSession["mealPlanRef"];
+  relatedRecipes?: RelatedRecipe[];
+  serveWith?: string[];
+}): CookingSession {
+  const now = new Date().toISOString();
+  const id = `cook_${opts.date}_${opts.recipeId.slice(0, 30)}`;
 
   return {
-    recipeId,
-    totalCooks: result.rows.length,
-    lastCooked: rows[0]["date"] as string,
-    recentFeedback,
+    id,
+    date: opts.date,
+    status: "draft",
+    source: opts.source,
+    mealPlanRef: opts.mealPlanRef ?? null,
+    anchor: {
+      type: opts.anchorType,
+      recipeId: opts.recipeId,
+      title: opts.title,
+      provenance: opts.provenance,
+    },
+    relatedRecipes: opts.relatedRecipes ?? [],
+    serveWith: opts.serveWith ?? [],
+    servings: {
+      base: opts.servings,
+      current: opts.servings,
+    },
+    ingredients: {
+      base: opts.ingredients,
+      session: [],
+    },
+    method: {
+      base: opts.method,
+      session: [],
+    },
+    adaptations: [],
+    coachCards: {
+      nextMove: null,
+      upgrade: null,
+      shortcut: null,
+      wine: null,
+    },
+    notes: "",
+    createdAt: now,
+    updatedAt: now,
   };
 }
