@@ -49,11 +49,22 @@ type CandidateItem = {
   bucket: string;
 };
 
+type CandidateDiagnostics = {
+  poolSize: number;
+  validatedSize: number;
+  autoCorrected: { recipeId: string; recipeName: string; fixes: string[] }[];
+  excluded: { recipeId: string; recipeName: string; reasons: string[] }[];
+  bucketFill: Record<string, { target: number; filled: number }>;
+  repairPasses: number;
+  warnings: string[];
+};
+
 type CandidateSet = {
   generatedAt: string;
   policyVersion: string;
   bucketContract?: readonly number[];
   items: CandidateItem[];
+  diagnostics?: CandidateDiagnostics;
 };
 
 type MealSlot = {
@@ -391,8 +402,13 @@ export default function MealsPage() {
     return () => { cancelled = true; };
   }, [weekId]);
 
-  // Generate ~12 candidate mains for the week
-  async function handleGenerate() {
+  // Generate quality-gated candidate mains for the week
+  async function handleGenerate(isRegenerate = false) {
+    // Require explicit confirmation before regenerating over an existing set
+    if (isRegenerate && hasCandidates) {
+      if (!window.confirm("Replace current suggestions? This will generate a fresh set.")) return;
+    }
+
     setLoading(true);
     try {
       const contextParam = plan?.context?.length
@@ -403,10 +419,10 @@ export default function MealsPage() {
       const newCandidates: RecipeOption[] = data.candidates || [];
       setCandidates(newCandidates);
 
-      // Persist the full candidateSet from the API (includes display data)
+      // Persist the full candidateSet from the API (includes diagnostics)
       const candidateSet: CandidateSet = data.candidateSet ?? {
         generatedAt: new Date().toISOString(),
-        policyVersion: "planner-v2",
+        policyVersion: "planner-v2.1",
         items: newCandidates.map((r) => ({
           recipeId: r.id,
           recipeName: r.name,
@@ -763,34 +779,47 @@ export default function MealsPage() {
               Generate suggestions to start filling in your week.
             </p>
             <button
-              onClick={handleGenerate}
+              onClick={() => handleGenerate(false)}
               disabled={loading}
               className="px-5 py-2.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-50 transition-colors shadow-sm"
             >
-              {loading ? "Generating..." : "Generate Options"}
+              {loading ? "Generating..." : "Generate suggestions"}
             </button>
           </div>
         )}
 
-        {/* Action buttons */}
-        <div className="flex gap-3 mb-6">
+        {/* Action buttons — generate (first time) or explicit regenerate */}
+        <div className="flex items-center gap-3 mb-6">
           {!hasCandidates && !planLoading && plan && (
             <button
-              onClick={handleGenerate}
+              onClick={() => handleGenerate(false)}
               disabled={loading}
               className="px-5 py-2.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-50 transition-colors shadow-sm"
             >
-              {loading ? "Generating..." : "Generate Options"}
+              {loading ? "Generating..." : "Generate suggestions"}
             </button>
           )}
           {hasCandidates && (
-            <button
-              onClick={handleGenerate}
-              disabled={loading}
-              className="px-5 py-2.5 rounded-full text-sm font-medium bg-white dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 hover:border-stone-500 dark:hover:border-stone-500 disabled:opacity-50 transition-colors"
-            >
-              {loading ? "Refreshing..." : "Refresh suggestions"}
-            </button>
+            <>
+              {/* Candidate set metadata — shows this is a saved, stable set */}
+              {plan?.candidateSet?.generatedAt && (
+                <span className="text-[11px] text-stone-400 dark:text-stone-500">
+                  Generated {new Date(plan.candidateSet.generatedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
+                  {plan.candidateSet.policyVersion && (
+                    <span className="ml-1 text-stone-300 dark:text-stone-600">
+                      ({plan.candidateSet.policyVersion})
+                    </span>
+                  )}
+                </span>
+              )}
+              <button
+                onClick={() => handleGenerate(true)}
+                disabled={loading}
+                className="px-4 py-2 rounded-full text-xs font-medium text-stone-400 dark:text-stone-500 border border-stone-200 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:text-stone-600 dark:hover:text-stone-300 disabled:opacity-50 transition-colors"
+              >
+                {loading ? "Regenerating..." : "Regenerate"}
+              </button>
+            </>
           )}
         </div>
 

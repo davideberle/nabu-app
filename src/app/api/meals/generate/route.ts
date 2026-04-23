@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getAllRecipes, getCuisine, getDietary, getCourseTags, getRecipe } from "@/lib/recipes";
-import { selectMealOptions, selectCandidateMainsWithQualityGate, getDisplayCategory, CANDIDATE_BUCKET_ORDER, CANDIDATE_BUCKET_CONTRACT, type WeekendMealOption, type WeekContextItem, type CandidateItem, type CandidateBucket } from "@/lib/meals";
+import { getAllRecipes, getCuisine, getDietary, isLowCalorie, getCourseTags, getRecipe } from "@/lib/recipes";
+import { selectMealOptions, selectCandidateMains, getDisplayCategory, CANDIDATE_BUCKET_CONTRACT, type WeekendMealOption, type WeekContextItem, type CandidateItem, type CandidateBucket, type QualityGatedResult, type TaggedCandidate } from "@/lib/meals";
 import { getRecentlyCookedRecipeIds } from "@/lib/db";
 import type { Recipe } from "@/lib/recipes";
 
@@ -32,6 +32,7 @@ function summarize(r: Recipe) {
     time: normalizeTime(r.time),
     category: getDisplayCategory(r),
     courseTags: getCourseTags(r),
+    lowCalorie: isLowCalorie(r),
   };
 }
 
@@ -84,31 +85,20 @@ export async function GET(request: NextRequest) {
     preferGuestFriendly: wantGuestFriendly,
   };
 
-  // vNext flat candidates mode (default) — quality-gated
+  // vNext quality-gated candidates mode (default)
   const mode = request.nextUrl.searchParams.get("mode");
   if (mode !== "legacy") {
-    const { candidates, diagnostics } = selectCandidateMainsWithQualityGate(allRecipes, excludeIds, hints);
+    const { candidates: taggedCandidates, diagnostics } = selectCandidateMains(allRecipes, excludeIds, hints);
 
-    // Assign bucket labels based on position in the contract order
-    let offset = 0;
-    const bucketLabels: CandidateBucket[] = [];
-    for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
-      const count = CANDIDATE_BUCKET_CONTRACT[i];
-      for (let j = 0; j < count && offset + j < candidates.length; j++) {
-        bucketLabels.push(CANDIDATE_BUCKET_ORDER[i]);
-      }
-      offset += count;
-    }
-
-    const summarized = candidates.map((r, idx) => ({
-      ...summarize(r),
-      bucket: bucketLabels[idx] ?? "meat",
+    const summarized = taggedCandidates.map(({ recipe, bucket }) => ({
+      ...summarize(recipe),
+      bucket,
     }));
 
-    // Persistable candidateSet with full card data
+    // Persistable candidateSet with diagnostics for staleness detection and review
     const candidateSet = {
       generatedAt: new Date().toISOString(),
-      policyVersion: diagnostics.policyVersion,
+      policyVersion: "planner-v2.1",
       bucketContract: CANDIDATE_BUCKET_CONTRACT,
       items: summarized.map((s) => ({
         recipeId: s.id,
@@ -122,6 +112,7 @@ export async function GET(request: NextRequest) {
         courseTags: s.courseTags,
         bucket: s.bucket,
       })) satisfies CandidateItem[],
+      diagnostics,
     };
 
     return NextResponse.json({

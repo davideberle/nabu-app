@@ -162,13 +162,33 @@ export type CandidateItem = {
   bucket: CandidateBucket;
 };
 
-export type CandidateBucket = "salad" | "soup" | "vegetarian" | "meat";
+export type CandidateBucket = "salad" | "soup" | "vegetarian" | "fish" | "meat";
+
+// ----- diagnostics types for quality-gated generation -----
+
+export type PlausibilityIssue = {
+  field: string;
+  message: string;
+  confidence: "high" | "low";
+  action: "auto-corrected" | "excluded";
+};
+
+export type CandidateDiagnostics = {
+  poolSize: number;
+  validatedSize: number;
+  autoCorrected: { recipeId: string; recipeName: string; fixes: string[] }[];
+  excluded: { recipeId: string; recipeName: string; reasons: string[] }[];
+  bucketFill: Record<CandidateBucket, { target: number; filled: number }>;
+  repairPasses: number;
+  warnings: string[];
+};
 
 export type CandidateSet = {
   generatedAt: string;
   policyVersion: string;
-  bucketContract: readonly number[]; // salad, soup, veg, meat
+  bucketContract: readonly [number, number, number, number, number]; // salad, soup, veg, fish, meat
   items: CandidateItem[];
+  diagnostics?: CandidateDiagnostics;
 };
 
 export type DayPlanningState = "open" | "assigned" | "meal" | "skipped";
@@ -657,9 +677,12 @@ export function selectMealOptions(
 
 // ----- bucket classification for planner candidates -----
 
+const FISH_PATTERNS = /\b(salmon|tuna|trout|cod|halibut|catfish|sea bass|snapper|mackerel|sardine|anchov|swordfish|fish|shrimp|prawn|scallop|crab|lobster|mussel|clam|oyster|squid|calamari|octopus|seafood)\b/i;
+
 function classifyBucket(recipe: Recipe): CandidateBucket | null {
   const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
   const nameLower = recipe.name.toLowerCase();
+  const ingredientText = recipe.ingredients.map((i) => i.item).join(" ");
 
   // Salad bucket: dish_type includes "salad" or name contains "salad"
   if (dishTypes.includes("salad") || nameLower.includes("salad")) return "salad";
@@ -670,216 +693,216 @@ function classifyBucket(recipe: Recipe): CandidateBucket | null {
   // Vegetarian/vegan
   if (isVegetarianOrVegan(recipe)) return "vegetarian";
 
-  // Fish/seafood and remaining non-vegetarian = meat
+  // Fish/seafood
+  if (FISH_PATTERNS.test(nameLower) || FISH_PATTERNS.test(ingredientText)) return "fish";
+
+  // Remaining non-vegetarian = meat
   return "meat";
 }
 
 /**
  * Visible weekly contract for Phase 2:
- *   3 salads, 3 soups, 2 vegetarian mains, 4 meat/fish mains = 12 total.
+ *   3 salads, 3 soups, 2 vegetarian mains, 2 fish, 2 meat = 12 total.
  * Ordered by bucket in the above sequence.
  */
-export const CANDIDATE_BUCKET_CONTRACT = [3, 3, 2, 4] as const;
-export const CANDIDATE_BUCKET_ORDER: CandidateBucket[] = ["salad", "soup", "vegetarian", "meat"];
+export const CANDIDATE_BUCKET_CONTRACT = [3, 3, 2, 2, 2] as const;
+export const CANDIDATE_BUCKET_ORDER: CandidateBucket[] = ["salad", "soup", "vegetarian", "fish", "meat"];
 
-// ----- quality gate: plausibility checks -----
+/** Max repair iterations before we accept the best we have. */
+const MAX_REPAIR_PASSES = 3;
 
-export type QualityIssue = {
-  recipeId: string;
-  recipeName: string;
-  issues: string[];
-  action: "excluded" | "fixed" | "warning";
-  confidence: "high" | "medium";
-};
+// ----- plausibility checks -----
 
-export type QualityDiagnostics = {
-  policyVersion: string;
-  poolSize: number;
-  eligibleAfterPlausibility: number;
-  excludedRecipes: QualityIssue[];
-  appliedFixes: QualityIssue[];
-  validationWarnings: string[];
-  repairAttempts: { bucket: CandidateBucket; needed: number; available: number }[];
-};
+/** Drink patterns that should never appear in planner candidates. */
+const DRINK_PATTERNS = /\b(cocktail|mocktail|smoothie|juice|lemonade|limeade|iced tea|milkshake|mylkshake|lassi|horchata|spritz|sangria|punch|toddy|coffee|espresso|chai latte|matcha latte|kombucha|shrub|soda|tonic|cooler|fizz|shandy|mead)\b/i;
 
-/** Servings patterns that indicate volume-based output (not dinner portions). */
-const NON_DINNER_SERVINGS =
-  /^(makes?\s+)?(about\s+)?[\d½⅓⅔¼¾⅛⅜⅝⅞–—\-\s]*(cup|cups|tbsp|tablespoon|tablespoons|ml|jar|jars|small jar)\b/i;
+/** Roles that are never valid as dinner mains. */
+const INVALID_MAIN_ROLES = new Set(["component", "base", "condiment", "garnish", "drink", "beverage", "breakfast", "snack"]);
+
+/** Dish types that signal a recipe is a component/sub-recipe, not a standalone dish. */
+const COMPONENT_DISH_TYPES = new Set(["component", "base", "condiment", "garnish", "sauce", "dressing", "spice-blend"]);
 
 /**
- * Returns true if a recipe name signals it IS a component/garnish, not a dinner
- * dish. Distinguishes "Pickled Cabbage" (IS a pickle) from "Cod with Pickled
- * Chillies" (a dish that USES a pickle as garnish) by checking whether the
- * component word appears after "with"/"&" (= accompaniment, not the main thing).
+ * Run plausibility checks on a recipe to determine if it's safe for planner use.
+ * Returns a list of issues found. High-confidence issues can be auto-corrected;
+ * low-confidence issues cause exclusion.
  */
-function isComponentByName(name: string): boolean {
-  const n = name.toLowerCase();
-
-  // Words that mean "this IS a component" unless they appear after "with"
-  const guardedWords = ["pickled", "candied"];
-  for (const w of guardedWords) {
-    if (new RegExp(`\\b${w}\\b`).test(n)) {
-      if (!new RegExp(`\\bwith\\s+.*\\b${w}\\b`).test(n)
-        && !new RegExp(`&\\s+.*\\b${w}\\b`).test(n)) return true;
-    }
-  }
-
-  // Relish/chutney/compote — same guard
-  const endComponents = ["relish", "chutney", "compote", "brittle"];
-  for (const w of endComponents) {
-    if (new RegExp(`\\b${w}\\b`).test(n)) {
-      if (!new RegExp(`\\bwith\\s+.*\\b${w}\\b`).test(n)
-        && !new RegExp(`&\\s+.*\\b${w}\\b`).test(n)) return true;
-    }
-  }
-
-  // Always-bad patterns (no "with" guard needed — these are never dinner mains)
-  if (/\bglazed (walnut|nut|pecan|almond|cashew|peanut)/i.test(n)) return true;
-  if (/\b(granola|spice (blend|mix|rub)|crumble topping)\b/i.test(n)) return true;
-  if (/\btoasted (nut|coconut|seed)/i.test(n)
-    && !new RegExp(`\\bwith\\s+.*\\btoasted\\b`).test(n)) return true;
-  if (/\bspiced (nut|seed|walnut|pecan|almond)/i.test(n)) return true;
-
-  return false;
-}
-
-/** Chapter names that strongly signal side/accompaniment context. */
-const SIDE_CHAPTER_SIGNALS = [
-  "vegetables", "vegetable", "sides", "side dishes",
-  "blanched", "steamed", "accompaniment", "garnish",
-  "pickle", "pickled", "salting",
-];
-
-type PlausibilityResult = {
-  eligible: boolean;
-  confidence: "high" | "medium";
-  issues: string[];
-  suggestedFix?: { field: string; from: string; to: string };
-};
-
-/**
- * Recipe-level plausibility check. Runs AFTER isDinnerWorthy but catches
- * edge-cases that the broad filter misses. Conservative: only excludes
- * when confidence is high, and flags medium-confidence issues as warnings.
- */
-function checkPlausibility(recipe: Recipe): PlausibilityResult {
-  const issues: string[] = [];
-  const dishTypes = (recipe.category?.dish_type ?? []).map(t => t.toLowerCase());
-  const mealRole = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
-  const servings = (recipe.servings || "");
+function checkPlausibility(recipe: Recipe): PlausibilityIssue[] {
+  const issues: PlausibilityIssue[] = [];
+  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
+  const role = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
   const nameLower = recipe.name.toLowerCase();
+  const chapter = (recipe.source?.chapter || recipe.category?.chapter || "").toLowerCase();
 
-  // HIGH: volume-based servings → component/condiment, not a dinner
-  if (servings && NON_DINNER_SERVINGS.test(servings)) {
-    issues.push(`non-dinner servings: "${servings}"`);
-    return { eligible: false, confidence: "high", issues };
+  // 1. Drink detection — high confidence, exclude
+  if (DRINK_PATTERNS.test(nameLower)) {
+    issues.push({ field: "name", message: `Name matches drink pattern`, confidence: "high", action: "excluded" });
+  }
+  if (dishTypes.includes("drink") || dishTypes.includes("beverage")) {
+    issues.push({ field: "dish_type", message: `dish_type contains drink/beverage`, confidence: "high", action: "excluded" });
+  }
+  if (role === "drink" || role === "beverage") {
+    issues.push({ field: "meal_role", message: `meal_role is drink/beverage`, confidence: "high", action: "excluded" });
   }
 
-  // HIGH: component/garnish name patterns
-  if (isComponentByName(recipe.name)) {
-    issues.push(`component/garnish name pattern: "${recipe.name}"`);
-    return { eligible: false, confidence: "high", issues };
+  // 2. Component/sub-recipe masquerading as a main
+  if (dishTypes.some((t) => COMPONENT_DISH_TYPES.has(t)) && !dishTypes.includes("main")) {
+    issues.push({ field: "dish_type", message: `Component/sub-recipe type without main tag`, confidence: "high", action: "excluded" });
   }
 
-  // HIGH: meal_role is "component" or "side" but dish_type claims "main"
-  // This catches metadata drift where a recipe was correctly tagged as
-  // side/component but then had "main" added incorrectly.
-  if (mealRole === "component" && dishTypes.includes("main")) {
-    issues.push(`meal_role "component" contradicts dish_type "main"`);
-    return {
-      eligible: false, confidence: "high", issues,
-      suggestedFix: { field: "category.dish_type", from: "main", to: "component" },
-    };
+  // 3. Role/category mismatch: role says side/component but dish_type says main
+  if (INVALID_MAIN_ROLES.has(role) && dishTypes.includes("main")) {
+    // High confidence: dish_type is more reliable than role for ingested cookbooks
+    issues.push({ field: "meal_role", message: `Role "${role}" conflicts with dish_type "main" — auto-correcting role`, confidence: "high", action: "auto-corrected" });
   }
 
-  // MEDIUM: dish_type says "main" but chapter strongly signals side/vegetable
-  // AND recipe has few ingredients (not substantial enough to be a main)
-  if (dishTypes.includes("main") && !dishTypes.includes("soup") && !dishTypes.includes("salad")) {
-    const chapter = (recipe.source?.chapter || recipe.category?.chapter || "").toLowerCase();
-    if (SIDE_CHAPTER_SIGNALS.some(c => chapter.includes(c)) && recipe.ingredients.length < 6) {
-      issues.push(
-        `tagged "main" but chapter "${chapter}" with ${recipe.ingredients.length} ingredients suggests side`
-      );
-      return { eligible: false, confidence: "medium", issues };
-    }
+  // 4. Role is side/starter but dish_type includes main + soup/salad — likely miscategorized, safe to keep
+  if ((role === "side" || role === "starter") && dishTypes.includes("main")) {
+    issues.push({ field: "meal_role", message: `Role "${role}" but dish_type includes "main" — trusting dish_type`, confidence: "high", action: "auto-corrected" });
   }
 
-  // MEDIUM: very short servings phrasing like "1 loaf", "1 batch" — not a dinner
-  if (servings && /^(makes?\s+)?\d+\s*(loaf|loaves|batch|dozen)\b/i.test(servings)) {
-    issues.push(`non-dinner servings: "${servings}"`);
-    return { eligible: false, confidence: "medium", issues };
-  }
-
-  return { eligible: true, confidence: "high", issues };
-}
-
-/**
- * Set-level validation: checks the assembled candidate set for issues
- * that only surface when looking at the full 12-item set together.
- */
-function validateCandidateSet(
-  candidates: Recipe[],
-  bucketLabels: CandidateBucket[]
-): string[] {
-  const warnings: string[] = [];
-
-  // Check for same-cookbook-and-chapter duplicates (too-similar pairing)
-  const chapterKeys = new Map<string, string>();
-  for (const r of candidates) {
-    const key = `${r.source?.cookbook ?? ""}::${r.source?.chapter ?? ""}`;
-    if (key === "::") continue; // skip recipes without source info
-    if (chapterKeys.has(key)) {
-      warnings.push(
-        `Same cookbook+chapter: "${r.name}" and "${chapterKeys.get(key)}" (${key})`
-      );
+  // 5. Dessert chapter leaking into mains — low confidence if dish_type says main
+  if (chapter && /\b(dessert|sweet|patisserie|pastry|baking)\b/.test(chapter)) {
+    if (dishTypes.includes("main")) {
+      issues.push({ field: "chapter", message: `Dessert chapter but tagged as main — suspicious`, confidence: "low", action: "excluded" });
     } else {
-      chapterKeys.set(key, r.name);
+      issues.push({ field: "chapter", message: `Dessert/sweet chapter`, confidence: "high", action: "excluded" });
     }
   }
 
-  // Check protein diversity in meat bucket
-  const meatPicks = candidates.filter((_, i) => bucketLabels[i] === "meat");
-  const proteinSeen = new Map<string, string>();
-  for (const r of meatPicks) {
-    const proteins = detectProteins(r);
-    for (const p of proteins) {
-      if (p === "fish" || p === "seafood") continue; // grouped
-      if (proteinSeen.has(p)) {
-        warnings.push(
-          `Duplicate protein "${p}" in meat bucket: "${r.name}" and "${proteinSeen.get(p)}"`
-        );
-      } else {
-        proteinSeen.set(p, r.name);
-      }
+  // 6. Missing or broken time data — auto-correct if we can infer
+  const time = recipe.time;
+  if (time) {
+    const prep = typeof time.prep === "number" ? time.prep : NaN;
+    const cook = typeof time.cook === "number" ? time.cook : NaN;
+    const total = typeof time.total === "number" ? time.total : NaN;
+    if (isNaN(total) && !isNaN(prep) && !isNaN(cook) && prep + cook > 0) {
+      issues.push({ field: "time.total", message: `Missing total, can infer from prep+cook`, confidence: "high", action: "auto-corrected" });
+    }
+    if (isNaN(total) && isNaN(prep) && isNaN(cook)) {
+      // Not blocking — just a cosmetic issue for display
     }
   }
 
-  return warnings;
+  // 7. Name signals breakfast/brunch but passed isDinnerWorthy — low confidence
+  if (/\b(breakfast|brunch|morning)\b/i.test(nameLower) && !issues.some((i) => i.action === "excluded")) {
+    issues.push({ field: "name", message: `Name suggests breakfast/brunch`, confidence: "low", action: "excluded" });
+  }
+
+  return issues;
 }
 
 /**
- * Quality-gated candidate generation. Builds an oversized pool, runs
- * plausibility checks, applies safe fixes, excludes suspicious recipes,
- * assembles the final 12-item set, and runs set-level validation.
- *
- * Returns candidates + diagnostics for observability.
+ * Apply safe auto-corrections to a recipe based on plausibility findings.
+ * Returns a shallow copy with corrections applied + list of fix descriptions.
  */
-export function selectCandidateMainsWithQualityGate(
+function applyAutoCorrections(recipe: Recipe, issues: PlausibilityIssue[]): { recipe: Recipe; fixes: string[] } {
+  const fixes: string[] = [];
+  let corrected = recipe;
+
+  for (const issue of issues) {
+    if (issue.action !== "auto-corrected") continue;
+
+    if (issue.field === "meal_role") {
+      // Trust dish_type over role — correct the role
+      corrected = {
+        ...corrected,
+        mealRole: "main",
+        category: corrected.category
+          ? { ...corrected.category, meal_role: "main" }
+          : corrected.category,
+      };
+      fixes.push(`Corrected meal_role to "main" (was "${recipe.mealRole || recipe.category?.meal_role}")`);
+    }
+
+    if (issue.field === "time.total" && corrected.time) {
+      const prep = typeof corrected.time.prep === "number" ? corrected.time.prep : 0;
+      const cook = typeof corrected.time.cook === "number" ? corrected.time.cook : 0;
+      corrected = {
+        ...corrected,
+        time: { ...corrected.time, total: prep + cook },
+      };
+      fixes.push(`Set time.total to ${prep + cook} from prep+cook`);
+    }
+  }
+
+  return { recipe: corrected, fixes };
+}
+
+/**
+ * Validate a candidate set holistically. Returns warnings for weak spots.
+ */
+function validateSetComposition(
+  buckets: Record<CandidateBucket, Recipe[]>,
+): { valid: boolean; warnings: string[] } {
+  const warnings: string[] = [];
+  let valid = true;
+
+  for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
+    const bucket = CANDIDATE_BUCKET_ORDER[i];
+    const target = CANDIDATE_BUCKET_CONTRACT[i];
+    const count = buckets[bucket].length;
+    if (count < target) {
+      warnings.push(`Bucket "${bucket}": ${count}/${target} filled`);
+      valid = false;
+    }
+  }
+
+  // Check cuisine diversity across the full set
+  const allPicked = Object.values(buckets).flat();
+  const cuisineCounts = new Map<string, number>();
+  for (const r of allPicked) {
+    const c = getCuisine(r);
+    cuisineCounts.set(c, (cuisineCounts.get(c) || 0) + 1);
+  }
+  for (const [cuisine, count] of cuisineCounts) {
+    if (count > 3 && cuisine !== "Other") {
+      warnings.push(`Cuisine "${cuisine}" appears ${count} times — limited diversity`);
+    }
+  }
+
+  return { valid, warnings };
+}
+
+export type TaggedCandidate = {
+  recipe: Recipe;
+  bucket: CandidateBucket;
+};
+
+export type QualityGatedResult = {
+  candidates: TaggedCandidate[];
+  diagnostics: CandidateDiagnostics;
+};
+
+/**
+ * Quality-gated candidate generation pipeline (Phase 2).
+ *
+ * Flow: generate oversized pool → plausibility check each recipe →
+ *       auto-correct safe issues → exclude low-confidence →
+ *       pick per-bucket → validate set → iteratively repair → return.
+ */
+export function selectCandidateMains(
   allRecipes: Recipe[],
   excludeIds?: Set<string>,
   _hints?: GenerationHints
-): { candidates: Recipe[]; diagnostics: QualityDiagnostics } {
-  const diagnostics: QualityDiagnostics = {
-    policyVersion: "planner-v2.1-quality-gate",
+): QualityGatedResult {
+  const diagnostics: CandidateDiagnostics = {
     poolSize: 0,
-    eligibleAfterPlausibility: 0,
-    excludedRecipes: [],
-    appliedFixes: [],
-    validationWarnings: [],
-    repairAttempts: [],
+    validatedSize: 0,
+    autoCorrected: [],
+    excluded: [],
+    bucketFill: {
+      salad: { target: CANDIDATE_BUCKET_CONTRACT[0], filled: 0 },
+      soup: { target: CANDIDATE_BUCKET_CONTRACT[1], filled: 0 },
+      vegetarian: { target: CANDIDATE_BUCKET_CONTRACT[2], filled: 0 },
+      fish: { target: CANDIDATE_BUCKET_CONTRACT[3], filled: 0 },
+      meat: { target: CANDIDATE_BUCKET_CONTRACT[4], filled: 0 },
+    },
+    repairPasses: 0,
+    warnings: [],
   };
 
-  // Step 1: build base pool (isDinnerWorthy + exclusions + season + image)
+  // --- Step 1: Build oversized pool ---
   let pool = allRecipes.filter(isDinnerWorthy);
   if (excludeIds && excludeIds.size > 0) {
     pool = pool.filter((r) => !excludeIds.has(r.id));
@@ -888,128 +911,120 @@ export function selectCandidateMainsWithQualityGate(
   pool = pool.filter((r) => !!r.image);
   diagnostics.poolSize = pool.length;
 
-  // Step 2: run plausibility checks on entire pool
-  const eligible: Recipe[] = [];
+  // --- Step 2: Plausibility check + auto-correct / exclude ---
+  const validated: Recipe[] = [];
   for (const recipe of pool) {
-    const result = checkPlausibility(recipe);
-    if (!result.eligible) {
-      diagnostics.excludedRecipes.push({
+    const issues = checkPlausibility(recipe);
+    const excluded = issues.filter((i) => i.action === "excluded");
+    const autoFixed = issues.filter((i) => i.action === "auto-corrected");
+
+    if (excluded.length > 0) {
+      diagnostics.excluded.push({
         recipeId: recipe.id,
         recipeName: recipe.name,
-        issues: result.issues,
-        action: "excluded",
-        confidence: result.confidence,
+        reasons: excluded.map((i) => i.message),
       });
-      // Log suggested fix if present (for manual review)
-      if (result.suggestedFix) {
-        diagnostics.appliedFixes.push({
-          recipeId: recipe.id,
-          recipeName: recipe.name,
-          issues: [`suggested: ${result.suggestedFix.field} ${result.suggestedFix.from} → ${result.suggestedFix.to}`],
-          action: "fixed",
-          confidence: result.confidence,
-        });
-      }
+      continue;
+    }
+
+    if (autoFixed.length > 0) {
+      const { recipe: corrected, fixes } = applyAutoCorrections(recipe, autoFixed);
+      diagnostics.autoCorrected.push({
+        recipeId: recipe.id,
+        recipeName: recipe.name,
+        fixes,
+      });
+      validated.push(corrected);
     } else {
-      if (result.issues.length > 0) {
-        // Warnings for recipes that passed but had minor issues
-        diagnostics.validationWarnings.push(
-          `${recipe.name} (${recipe.id}): ${result.issues.join("; ")}`
-        );
-      }
-      eligible.push(recipe);
+      validated.push(recipe);
     }
   }
-  diagnostics.eligibleAfterPlausibility = eligible.length;
+  diagnostics.validatedSize = validated.length;
 
-  // Step 3: partition by bucket
-  const buckets: Record<CandidateBucket, Recipe[]> = {
-    salad: [], soup: [], vegetarian: [], meat: [],
-  };
-  for (const r of eligible) {
-    const b = classifyBucket(r);
-    if (b) buckets[b].push(r);
+  // --- Step 3: Partition validated pool into buckets ---
+  function partitionIntoBuckets(recipes: Recipe[]): Record<CandidateBucket, Recipe[]> {
+    const buckets: Record<CandidateBucket, Recipe[]> = {
+      salad: [], soup: [], vegetarian: [], fish: [], meat: [],
+    };
+    for (const r of recipes) {
+      const b = classifyBucket(r);
+      if (b) buckets[b].push(r);
+    }
+    return buckets;
   }
 
-  // Step 4: pick from each bucket with OVERSIZED targets for repair margin
-  const OVERSIZE_FACTOR = 2;
-  const oversizedPicks: Record<CandidateBucket, Recipe[]> = {
-    salad: [], soup: [], vegetarian: [], meat: [],
-  };
-  const allPicked: Recipe[] = [];
+  const bucketPools = partitionIntoBuckets(validated);
 
-  for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
-    const bucket = CANDIDATE_BUCKET_ORDER[i];
-    const needed = CANDIDATE_BUCKET_CONTRACT[i];
-    const oversizedTarget = needed * OVERSIZE_FACTOR;
-    const picks = pickWithoutCuisineRepeat(
-      shuffle(buckets[bucket]),
-      oversizedTarget,
-      allPicked
-    );
-    oversizedPicks[bucket] = picks;
-    allPicked.push(...picks);
+  // --- Step 4: Pick from each bucket with cuisine diversity ---
+  function pickFromBuckets(
+    pools: Record<CandidateBucket, Recipe[]>,
+    usedIds: Set<string>,
+  ): Record<CandidateBucket, Recipe[]> {
+    const picked: Record<CandidateBucket, Recipe[]> = {
+      salad: [], soup: [], vegetarian: [], fish: [], meat: [],
+    };
+    const allPicked: Recipe[] = [];
 
-    diagnostics.repairAttempts.push({
-      bucket,
-      needed,
-      available: buckets[bucket].length,
-    });
+    for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
+      const bucket = CANDIDATE_BUCKET_ORDER[i];
+      const needed = CANDIDATE_BUCKET_CONTRACT[i];
+      const available = shuffle(pools[bucket]).filter((r) => !usedIds.has(r.id));
+      const picks = pickWithoutCuisineRepeat(available, needed, allPicked);
+      picked[bucket] = picks;
+      allPicked.push(...picks);
+      picks.forEach((r) => usedIds.add(r.id));
+    }
+
+    return picked;
   }
 
-  // Step 5: assemble final set — take the contract count from oversized picks
-  const result: Recipe[] = [];
-  const bucketLabels: CandidateBucket[] = [];
-  for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
-    const bucket = CANDIDATE_BUCKET_ORDER[i];
-    const needed = CANDIDATE_BUCKET_CONTRACT[i];
-    const picks = oversizedPicks[bucket].slice(0, needed);
-    result.push(...picks);
-    for (const _ of picks) bucketLabels.push(bucket);
-  }
+  const usedIds = new Set<string>();
+  let pickedBuckets = pickFromBuckets(bucketPools, usedIds);
 
-  // Step 6: set-level validation
-  const setWarnings = validateCandidateSet(result, bucketLabels);
-  diagnostics.validationWarnings.push(...setWarnings);
+  // --- Step 5: Validate set and iteratively repair weak buckets ---
+  let pass = 0;
+  while (pass < MAX_REPAIR_PASSES) {
+    const { valid } = validateSetComposition(pickedBuckets);
+    if (valid) break;
 
-  // Step 7: set-level repair — swap out recipes that cause set-level issues
-  // For now: if same-cookbook-chapter duplicate found, try to swap the second
-  // occurrence with a remaining oversized pick from the same bucket.
-  if (setWarnings.some(w => w.startsWith("Same cookbook+chapter"))) {
-    const seenChapterKeys = new Map<string, number>(); // key → first index
-    for (let idx = 0; idx < result.length; idx++) {
-      const r = result[idx];
-      const key = `${r.source?.cookbook ?? ""}::${r.source?.chapter ?? ""}`;
-      if (key === "::") continue;
-      if (seenChapterKeys.has(key)) {
-        // Try to swap with an unused oversized pick from same bucket
-        const bucket = bucketLabels[idx];
-        const usedIds = new Set(result.map(x => x.id));
-        const replacement = oversizedPicks[bucket].find(
-          x => !usedIds.has(x.id) && `${x.source?.cookbook ?? ""}::${x.source?.chapter ?? ""}` !== key
-        );
-        if (replacement) {
-          diagnostics.validationWarnings.push(
-            `Repaired: swapped "${r.name}" for "${replacement.name}" (same-chapter duplicate)`
-          );
-          result[idx] = replacement;
-        }
-      } else {
-        seenChapterKeys.set(key, idx);
+    pass++;
+    diagnostics.repairPasses = pass;
+
+    // Try to fill under-filled buckets from remaining pool
+    for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
+      const bucket = CANDIDATE_BUCKET_ORDER[i];
+      const target = CANDIDATE_BUCKET_CONTRACT[i];
+      const current = pickedBuckets[bucket].length;
+      if (current < target) {
+        const remaining = bucketPools[bucket].filter((r) => !usedIds.has(r.id));
+        const extra = remaining.slice(0, target - current);
+        pickedBuckets[bucket].push(...extra);
+        extra.forEach((r) => usedIds.add(r.id));
       }
+    }
+  }
+
+  // Final validation after all repair passes to capture current warnings
+  {
+    const { warnings } = validateSetComposition(pickedBuckets);
+    diagnostics.warnings = warnings;
+  }
+
+  // Record final fill stats
+  for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
+    const bucket = CANDIDATE_BUCKET_ORDER[i];
+    diagnostics.bucketFill[bucket].filled = pickedBuckets[bucket].length;
+  }
+
+  // --- Step 6: Assemble final ordered result with bucket labels ---
+  const result: TaggedCandidate[] = [];
+  for (const bucket of CANDIDATE_BUCKET_ORDER) {
+    for (const recipe of pickedBuckets[bucket]) {
+      result.push({ recipe, bucket });
     }
   }
 
   return { candidates: result, diagnostics };
-}
-
-/** Backward-compatible wrapper — returns just the recipe list. */
-export function selectCandidateMains(
-  allRecipes: Recipe[],
-  excludeIds?: Set<string>,
-  hints?: GenerationHints
-): Recipe[] {
-  return selectCandidateMainsWithQualityGate(allRecipes, excludeIds, hints).candidates;
 }
 
 /** Exported for testing */
