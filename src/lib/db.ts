@@ -462,6 +462,23 @@ async function migrate(client: Client) {
         "ALTER TABLE cooking_sessions ADD COLUMN feedback TEXT"
       );
     },
+
+    // v10 -> v11: create candidate_feedback table for planner thumbs up/down
+    async () => {
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS candidate_feedback (
+          recipe_id  TEXT NOT NULL,
+          week       TEXT NOT NULL,
+          feedback   TEXT NOT NULL CHECK (feedback IN ('up', 'down')),
+          created_at TEXT NOT NULL,
+          PRIMARY KEY (recipe_id, week)
+        )
+      `);
+      await client.execute(`
+        CREATE INDEX IF NOT EXISTS idx_candidate_feedback_week
+          ON candidate_feedback (week)
+      `);
+    },
   ];
 
   if (version < migrations.length) {
@@ -770,4 +787,70 @@ export async function createCookEvent(event: {
     source: event.source || "manual",
     createdAt,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Candidate feedback helpers (planner thumbs up / down)
+// ---------------------------------------------------------------------------
+
+export type CandidateFeedback = {
+  recipeId: string;
+  week: string;
+  feedback: "up" | "down";
+  createdAt: string;
+};
+
+/** Get all feedback for a given week. */
+export async function getCandidateFeedback(
+  week: string
+): Promise<CandidateFeedback[]> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: "SELECT recipe_id, week, feedback, created_at FROM candidate_feedback WHERE week = ?",
+    args: [week],
+  });
+  return result.rows.map((row) => ({
+    recipeId: row["recipe_id"] as string,
+    week: row["week"] as string,
+    feedback: row["feedback"] as "up" | "down",
+    createdAt: row["created_at"] as string,
+  }));
+}
+
+/** Get all thumbs-down recipe IDs (across all weeks) for exclusion. */
+export async function getThumbsDownRecipeIds(): Promise<Set<string>> {
+  const client = await getDb();
+  const result = await client.execute(
+    "SELECT DISTINCT recipe_id FROM candidate_feedback WHERE feedback = 'down'"
+  );
+  return new Set(result.rows.map((row) => row["recipe_id"] as string));
+}
+
+/** Upsert feedback for a recipe in a given week. */
+export async function setCandidateFeedback(
+  recipeId: string,
+  week: string,
+  feedback: "up" | "down"
+): Promise<void> {
+  const client = await getDb();
+  await client.execute({
+    sql: `INSERT INTO candidate_feedback (recipe_id, week, feedback, created_at)
+          VALUES (?, ?, ?, ?)
+          ON CONFLICT(recipe_id, week) DO UPDATE SET
+            feedback = excluded.feedback,
+            created_at = excluded.created_at`,
+    args: [recipeId, week, feedback, new Date().toISOString()],
+  });
+}
+
+/** Remove feedback for a recipe in a given week. */
+export async function removeCandidateFeedback(
+  recipeId: string,
+  week: string
+): Promise<void> {
+  const client = await getDb();
+  await client.execute({
+    sql: "DELETE FROM candidate_feedback WHERE recipe_id = ? AND week = ?",
+    args: [recipeId, week],
+  });
 }

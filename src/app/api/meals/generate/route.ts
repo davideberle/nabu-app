@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getAllRecipes, getCuisine, getDietary, isLowCalorie, getCourseTags, getRecipe } from "@/lib/recipes";
 import { selectMealOptions, selectCandidateMains, getDisplayCategory, CANDIDATE_BUCKET_CONTRACT, type WeekendMealOption, type WeekContextItem, type CandidateItem, type CandidateBucket, type QualityGatedResult, type TaggedCandidate } from "@/lib/meals";
-import { getRecentlyCookedRecipeIds } from "@/lib/db";
+import { getRecentlyCookedRecipeIds, getThumbsDownRecipeIds } from "@/lib/db";
 import type { Recipe } from "@/lib/recipes";
 
 function parseMinutes(v: unknown): number {
@@ -54,6 +54,10 @@ export async function GET(request: NextRequest) {
   // Also exclude recipes cooked in the last 14 days to avoid repetition
   const recentlyCooked = await getRecentlyCookedRecipeIds(14);
   for (const id of recentlyCooked) excludeIds.add(id);
+
+  // Exclude recipes the user has thumbs-downed in any week
+  const thumbsDown = await getThumbsDownRecipeIds();
+  for (const id of thumbsDown) excludeIds.add(id);
 
   // Parse week context to influence generation
   let weekContext: WeekContextItem[] = [];

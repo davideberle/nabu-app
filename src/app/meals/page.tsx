@@ -303,6 +303,7 @@ export default function MealsPage() {
   const [quickViewLoading, setQuickViewLoading] = useState(false);
   const [showContextEditor, setShowContextEditor] = useState(false);
   const [planLoading, setPlanLoading] = useState(true);
+  const [feedbackMap, setFeedbackMap] = useState<Record<string, "up" | "down">>({});
 
   // Autosave for notes/context changes only
   useAutosave(plan);
@@ -339,6 +340,7 @@ export default function MealsPage() {
     setCandidates([]);
     setSelectedRecipe(null);
     setShowContextEditor(false);
+    setFeedbackMap({});
 
     let cancelled = false;
     fetch(`/api/meals/plan?week=${weekId}`)
@@ -392,6 +394,16 @@ export default function MealsPage() {
         } else {
           setPlan(null);
         }
+        // Load persisted feedback for this week
+        fetch(`/api/meals/feedback?week=${weekId}`)
+          .then((r) => r.json())
+          .then((fbData: { feedback: { recipeId: string; feedback: "up" | "down" }[] }) => {
+            if (cancelled) return;
+            const map: Record<string, "up" | "down"> = {};
+            for (const fb of fbData.feedback) map[fb.recipeId] = fb.feedback;
+            setFeedbackMap(map);
+          })
+          .catch(() => { /* non-critical */ });
       })
       .catch(() => {
         if (!cancelled) setPlan(null);
@@ -520,6 +532,30 @@ export default function MealsPage() {
     const updatedPlan = { ...plan, days: newDays };
     setPlan(updatedPlan);
     savePlanNow(updatedPlan);
+  }
+
+  // ----- feedback helpers -----
+
+  function handleFeedback(recipeId: string, type: "up" | "down") {
+    const current = feedbackMap[recipeId];
+    if (current === type) {
+      // Toggle off
+      const next = { ...feedbackMap };
+      delete next[recipeId];
+      setFeedbackMap(next);
+      fetch("/api/meals/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ recipeId, week: weekId, remove: true }),
+      }).catch(() => {});
+    } else {
+      setFeedbackMap({ ...feedbackMap, [recipeId]: type });
+      fetch("/api/meals/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ recipeId, week: weekId, feedback: type }),
+      }).catch(() => {});
+    }
   }
 
   // ----- context/notes helpers -----
@@ -847,22 +883,25 @@ export default function MealsPage() {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {candidates
-                .filter((r) => !plan?.days.some((d) => d?.recipeId === r.id))
-                .map((r) => (
-                <RecipeCard
-                  key={r.id}
-                  recipe={r}
-                  isSelected={selectedRecipe?.id === r.id}
-                  isAssigned={false}
-                  onSelect={() =>
-                    setSelectedRecipe(
-                      selectedRecipe?.id === r.id ? null : r
-                    )
-                  }
-                  onQuickView={() => handleQuickView(r.id)}
-                />
-              ))}
+              {candidates.map((r) => {
+                const isAssigned = plan?.days.some((d) => d?.recipeId === r.id) ?? false;
+                return (
+                  <RecipeCard
+                    key={r.id}
+                    recipe={r}
+                    isSelected={selectedRecipe?.id === r.id}
+                    isAssigned={isAssigned}
+                    feedback={feedbackMap[r.id] ?? null}
+                    onSelect={() =>
+                      setSelectedRecipe(
+                        selectedRecipe?.id === r.id ? null : r
+                      )
+                    }
+                    onQuickView={() => handleQuickView(r.id)}
+                    onFeedback={(type) => handleFeedback(r.id, type)}
+                  />
+                );
+              })}
             </div>
           </div>
         )}
@@ -1088,14 +1127,18 @@ function RecipeCard({
   recipe,
   isSelected,
   isAssigned,
+  feedback,
   onSelect,
   onQuickView,
+  onFeedback,
 }: {
   recipe: RecipeOption;
   isSelected: boolean;
   isAssigned: boolean;
+  feedback: "up" | "down" | null;
   onSelect: () => void;
   onQuickView: () => void;
+  onFeedback: (type: "up" | "down") => void;
 }) {
   const isVeg = recipe.dietary.some(
     (t) => t === "vegan" || t === "vegetarian"
@@ -1105,10 +1148,12 @@ function RecipeCard({
     <div
       className={`group rounded-xl overflow-hidden transition-all ${
         isAssigned
-          ? "opacity-40"
-          : isSelected
-            ? "ring-2 ring-amber-500/40 shadow-md"
-            : "bg-white dark:bg-stone-900 shadow-sm hover:shadow-md"
+          ? "opacity-40 pointer-events-none bg-white dark:bg-stone-900 shadow-sm"
+          : feedback === "down"
+            ? "opacity-50 bg-white dark:bg-stone-900 shadow-sm"
+            : isSelected
+              ? "ring-2 ring-amber-500/40 shadow-md"
+              : "bg-white dark:bg-stone-900 shadow-sm hover:shadow-md"
       }`}
     >
       {/* Image — generous 4:3 aspect ratio */}
@@ -1168,15 +1213,48 @@ function RecipeCard({
 
         {/* Actions */}
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100 dark:border-stone-800">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onQuickView();
-            }}
-            className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
-          >
-            View recipe
-          </button>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onQuickView();
+              }}
+              className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+            >
+              View recipe
+            </button>
+            {/* Thumbs up / down */}
+            <div className="flex items-center gap-0.5 ml-2">
+              <button
+                onClick={(e) => { e.stopPropagation(); onFeedback("up"); }}
+                title="Like"
+                className={`p-1 rounded transition-colors ${
+                  feedback === "up"
+                    ? "text-green-600 dark:text-green-400"
+                    : "text-stone-300 dark:text-stone-600 hover:text-green-500 dark:hover:text-green-400"
+                }`}
+              >
+                <svg className="w-3.5 h-3.5" fill={feedback === "up" ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
+                </svg>
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); onFeedback("down"); }}
+                title="Dislike"
+                className={`p-1 rounded transition-colors ${
+                  feedback === "down"
+                    ? "text-red-500 dark:text-red-400"
+                    : "text-stone-300 dark:text-stone-600 hover:text-red-400 dark:hover:text-red-400"
+                }`}
+              >
+                <svg className="w-3.5 h-3.5" fill={feedback === "down" ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3H10z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 2h3a2 2 0 012 2v7a2 2 0 01-2 2h-3" />
+                </svg>
+              </button>
+            </div>
+          </div>
           <button
             onClick={onSelect}
             disabled={isAssigned}
