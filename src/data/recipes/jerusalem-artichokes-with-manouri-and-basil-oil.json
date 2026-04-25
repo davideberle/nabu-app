@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "a rich Greek sheep's cheese that I use often. If you can’t get it, use halloumi or another softish, young",
+  "intro": "Manouri is a rich Greek sheep’s cheese. If you can’t get it, use halloumi or another soft, young cheese.",
   "ingredients": [
     {
       "item": "Jerusalem artichokes juice of 2 small lemons",
@@ -61,19 +61,17 @@
     "When you are ready to serve, wipe clean your frying pan and pour in enough olive oil to come 2 inches up the sides. Set on a medium heat and, once hot, fry the cheese slices for about",
     "2 minutes on each side, or until they turn a good brown color.",
     "Transfer to paper towels.",
-    "Arrange some endive leaves on serving dishes. Build up the salad on top with warm cheese, Jerusalem artichokes, cherry tomatoes and more leaves. Finish with a drizzle of basil oil and serve at once.",
-    "My right-hand person with this book was Claudine Boulstridge. Claudine tried most of the recipes diligently and came back with criticisms, insights and general common-sensical observations. Despite her gracious nature I could always rely on her to tell me if something I’d come up with was utter rubbish. To top it all, she is also very creative. This is one of her recipes and it’s wonderful.",
-    "Sweet potato wedges with lemongrass crème fraîche"
+    "Arrange some endive leaves on serving dishes. Build up the salad on top with warm cheese, Jerusalem artichokes, cherry tomatoes and more leaves. Finish with a drizzle of basil oil and serve at once."
   ],
   "time": {
-    "total": 30
+    "total": 60
   },
   "category": {
     "dish_type": [
-      "main"
+      "side"
     ],
     "chapter": "",
-    "meal_role": "main"
+    "meal_role": "side"
   },
   "cuisine": "Middle Eastern",
   "image": "/recipes/jerusalem-artichokes-with-manouri-and-basil-oil.jpg"
