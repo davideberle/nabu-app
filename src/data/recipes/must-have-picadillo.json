@@ -76,9 +76,9 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "component"
     ],
-    "meal_role": "main"
+    "meal_role": "component"
   },
   "cuisine": "Caribbean"
 }

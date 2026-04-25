@@ -6,15 +6,15 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "This is an unusual yet delectable main course where the flavorful filling takes center stage. Consider",
+  "intro": "This is an unusual yet delectable main course where the flavorful filling takes center stage.",
   "ingredients": [
     {
       "item": "vegetable stock",
-      "amount": "¼ cups"
+      "amount": "1¼ cups"
     },
     {
       "item": "white wine",
-      "amount": "½ cups"
+      "amount": "½ cup"
     },
     {
       "item": "large onions",
@@ -25,12 +25,16 @@
       "amount": "3"
     },
     {
-      "item": "feta, crumbled",
-      "amount": "¼ oz"
+      "item": "fresh white breadcrumbs",
+      "amount": "⅔ cup"
     },
     {
-      "item": "³ cups parsley leaves (loosely packed), finely chopped",
-      "amount": ""
+      "item": "feta, crumbled",
+      "amount": "3½ oz"
+    },
+    {
+      "item": "parsley leaves (loosely packed), finely chopped",
+      "amount": "⅔ cup"
     },
     {
       "item": "olive oil, plus extra to finish",
@@ -45,25 +49,21 @@
       "amount": "3"
     },
     {
-      "item": "salt black pepper",
+      "item": "salt and black pepper",
       "amount": "¾ tsp"
     }
   ],
   "method": [
     "Preheat the oven to 350°F. Have ready a small buttered ovenproof dish.",
-    "Place the stock and white wine in a medium saucepan and bring to the boil. Meanwhile, trim",
-    "¼ inch off the top and bottom of the onions. Cut them lengthways in half and remove the brown skin.",
+    "Place the stock and white wine in a medium saucepan and bring to the boil. Meanwhile, trim ¼ inch off the top and bottom of the onions. Cut them lengthways in half and remove the brown skin.",
     "Gently remove most of the insides (keep these for another use), retaining two or three of the outer layers. Carefully separate the outer layers from each other and place them in the simmering stock, a few at a time. Cook for 3 to 4 minutes, or until just tender.",
     "Drain well and cool slightly. Keep the stock.",
-    "Use a coarse cheese grater to grate the tomatoes (you’ll be left with most of the skin in your hand; discard it). Place the grated tomato in a large bowl and add the breadcrumbs, feta, parsley, olive oil, garlic, green onions, salt and some pepper.",
-    "Fill each onion layer generously with stuffing. Pull the sides together so you end up with a fat cigar shape. Place the stuffed onions, seam-side down, in the buttered dish and pour over about",
-    "³ cup of the reserved stock, just to cover the bottom of the dish.",
-    "Bake for 45 to 50 minutes, or until the onions are soft and lightly colored and the stuffing is bubbling; add more stock if they dry completely before the end of the cooking process. Drizzle with oil and serve warm.",
-    "42 | Funny Onions",
-    "The sharp and sweet pickled red peppers used here are the sort of thing you can always keep in the fridge, ready to add to salads, roasted vegetables or salsas for fish."
+    "Use a coarse cheese grater to grate the tomatoes (you'll be left with most of the skin in your hand; discard it). Place the grated tomato in a large bowl and add the breadcrumbs, feta, parsley, olive oil, garlic, green onions, salt and some pepper.",
+    "Fill each onion layer generously with stuffing. Pull the sides together so you end up with a fat cigar shape. Place the stuffed onions, seam-side down, in the buttered dish and pour over about ⅔ cup of the reserved stock, just to cover the bottom of the dish.",
+    "Bake for 45 to 50 minutes, or until the onions are soft and lightly colored and the stuffing is bubbling; add more stock if they dry completely before the end of the cooking process. Drizzle with oil and serve warm."
   ],
   "time": {
-    "total": 30
+    "total": 75
   },
   "category": {
     "dish_type": [
