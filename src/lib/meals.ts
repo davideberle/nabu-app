@@ -1030,6 +1030,38 @@ export function selectCandidateMains(
 /** Exported for testing */
 export { checkPlausibility as _checkPlausibility, isDinnerWorthy as _isDinnerWorthy };
 
+// ----- week id helpers -----
+
+/** Format an ISO week id string from year + week number. */
+export function formatWeekId(year: number, week: number): string {
+  return `${year}-W${String(week).padStart(2, "0")}`;
+}
+
+/** Parse a "YYYY-Www" string into { year, week }. Returns null on invalid input. */
+export function parseWeekId(weekId: string): { year: number; week: number } | null {
+  const m = /^(\d{4})-W(\d{2})$/.exec(weekId);
+  if (!m) return null;
+  const year = parseInt(m[1], 10);
+  const week = parseInt(m[2], 10);
+  if (week < 1 || week > 53) return null;
+  return { year, week };
+}
+
+/**
+ * Offset an ISO week by `delta` weeks (positive = forward, negative = back).
+ * Handles year boundaries correctly by converting to date, offsetting, and
+ * re-deriving the ISO week.
+ */
+export function offsetWeek(
+  year: number,
+  week: number,
+  delta: number,
+): { year: number; week: number } {
+  const monday = getWeekMonday(year, week);
+  monday.setUTCDate(monday.getUTCDate() + delta * 7);
+  return getISOWeek(monday);
+}
+
 // ----- week date helpers -----
 
 export function getISOWeek(date: Date): { year: number; week: number } {

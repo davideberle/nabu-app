@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { getCourseTagColor } from "@/lib/tag-colors";
 import { normalizeIngredient } from "@/lib/normalize-ingredients";
 
@@ -96,6 +97,22 @@ type MealPlan = {
   updatedAt?: string;
 };
 
+type DayHistoryStatus =
+  | "planned"
+  | "cooked-as-planned"
+  | "cooked-other"
+  | "skipped"
+  | null;
+
+type DayHistory = {
+  date: string;
+  status: DayHistoryStatus;
+  plannedRecipeId: string | null;
+  plannedRecipeName: string | null;
+  cookedRecipeId: string | null;
+  cookedRecipeName: string | null;
+};
+
 // ----- date helpers -----
 
 function getISOWeek(date: Date): { year: number; week: number } {
@@ -150,6 +167,25 @@ function formatWeekId(year: number, week: number): string {
 function formatDateShort(dateStr: string): string {
   const [, m, d] = dateStr.split("-");
   return `${parseInt(m)}/${parseInt(d)}`;
+}
+
+function parseWeekId(weekId: string): { year: number; week: number } | null {
+  const m = /^(\d{4})-W(\d{2})$/.exec(weekId);
+  if (!m) return null;
+  const year = parseInt(m[1], 10);
+  const week = parseInt(m[2], 10);
+  if (week < 1 || week > 53) return null;
+  return { year, week };
+}
+
+function offsetWeek(
+  year: number,
+  week: number,
+  delta: number,
+): { year: number; week: number } {
+  const monday = getWeekMonday(year, week);
+  monday.setUTCDate(monday.getUTCDate() + delta * 7);
+  return getISOWeek(monday);
 }
 
 // ----- context kind labels -----
@@ -283,17 +319,38 @@ function useAutosave(plan: MealPlan | null, delayMs = 1500) {
 // ----- component -----
 
 export default function MealsPage() {
-  const now = new Date();
-  const thisWeek = getISOWeek(now);
-  const nextWeek = {
-    year: thisWeek.year,
-    week: thisWeek.week + 1,
-  };
+  return (
+    <Suspense>
+      <MealsPageInner />
+    </Suspense>
+  );
+}
 
-  const [activeTab, setActiveTab] = useState<"this" | "next">("this");
-  const activeWeek = activeTab === "this" ? thisWeek : nextWeek;
+function MealsPageInner() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const now = new Date();
+  const currentWeek = getISOWeek(now);
+  const currentWeekId = formatWeekId(currentWeek.year, currentWeek.week);
+
+  // Derive active week from URL ?week= param, falling back to current week
+  const weekParam = searchParams.get("week");
+  const parsedParam = weekParam ? parseWeekId(weekParam) : null;
+  const activeWeek = parsedParam ?? currentWeek;
   const weekId = formatWeekId(activeWeek.year, activeWeek.week);
   const weekDates = getWeekDates(activeWeek.year, activeWeek.week);
+  const isCurrentWeek = weekId === currentWeekId;
+  const isPastWeek = !isCurrentWeek && weekDates[6].date < now.toISOString().split("T")[0];
+
+  function navigateToWeek(year: number, week: number) {
+    const id = formatWeekId(year, week);
+    const cid = formatWeekId(currentWeek.year, currentWeek.week);
+    if (id === cid) {
+      router.push("/meals");
+    } else {
+      router.push(`/meals?week=${id}`);
+    }
+  }
 
   const [plan, setPlan] = useState<MealPlan | null>(null);
   const [candidates, setCandidates] = useState<RecipeOption[]>([]);
@@ -304,6 +361,7 @@ export default function MealsPage() {
   const [showContextEditor, setShowContextEditor] = useState(false);
   const [planLoading, setPlanLoading] = useState(true);
   const [feedbackMap, setFeedbackMap] = useState<Record<string, "up" | "down">>({});
+  const [dayHistory, setDayHistory] = useState<Record<string, DayHistory>>({});
 
   // Autosave for notes/context changes only
   useAutosave(plan);
@@ -331,7 +389,7 @@ export default function MealsPage() {
     };
   }, [weekId, weekDates]);
 
-  // Load existing plan when tab changes
+  // Load existing plan when week changes
   useEffect(() => {
     // Clear stale plan immediately to prevent autosave from writing
     // old/empty data over a saved plan while the fetch is in flight.
@@ -341,6 +399,7 @@ export default function MealsPage() {
     setSelectedRecipe(null);
     setShowContextEditor(false);
     setFeedbackMap({});
+    setDayHistory({});
 
     let cancelled = false;
     fetch(`/api/meals/plan?week=${weekId}`)
@@ -402,6 +461,16 @@ export default function MealsPage() {
             const map: Record<string, "up" | "down"> = {};
             for (const fb of fbData.feedback) map[fb.recipeId] = fb.feedback;
             setFeedbackMap(map);
+          })
+          .catch(() => { /* non-critical */ });
+        // Load history projection for this week
+        fetch(`/api/meals/history?week=${weekId}`)
+          .then((r) => r.json())
+          .then((histData: { days: DayHistory[] }) => {
+            if (cancelled) return;
+            const map: Record<string, DayHistory> = {};
+            for (const d of histData.days) map[d.date] = d;
+            setDayHistory(map);
           })
           .catch(() => { /* non-critical */ });
       })
@@ -619,28 +688,52 @@ export default function MealsPage() {
       </header>
 
       <main className="max-w-5xl mx-auto px-4 py-6">
-        {/* Week selector tabs */}
-        <div className="flex gap-2 mb-6">
+        {/* Week navigation */}
+        <div className="flex items-center gap-3 mb-6">
           <button
-            onClick={() => setActiveTab("this")}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              activeTab === "this"
-                ? "bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900"
-                : "bg-white dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:border-stone-400 dark:hover:border-stone-500"
-            }`}
+            onClick={() => {
+              const prev = offsetWeek(activeWeek.year, activeWeek.week, -1);
+              navigateToWeek(prev.year, prev.week);
+            }}
+            className="p-2 rounded-full text-stone-400 hover:text-stone-700 dark:text-stone-500 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+            aria-label="Previous week"
           >
-            This Week
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
           </button>
+          <div className="text-center min-w-[160px]">
+            <span className="text-sm font-medium text-stone-700 dark:text-stone-200">
+              {weekDates[0].dayOfWeek.slice(0, 3)} {formatDateShort(weekDates[0].date)}
+              {" \u2013 "}
+              {weekDates[6].dayOfWeek.slice(0, 3)} {formatDateShort(weekDates[6].date)}
+            </span>
+            <span className="block text-[11px] text-stone-400 dark:text-stone-500">
+              {weekId}
+              {isCurrentWeek && " \u00b7 This week"}
+              {isPastWeek && " \u00b7 Past"}
+            </span>
+          </div>
           <button
-            onClick={() => setActiveTab("next")}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              activeTab === "next"
-                ? "bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900"
-                : "bg-white dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:border-stone-400 dark:hover:border-stone-500"
-            }`}
+            onClick={() => {
+              const next = offsetWeek(activeWeek.year, activeWeek.week, 1);
+              navigateToWeek(next.year, next.week);
+            }}
+            className="p-2 rounded-full text-stone-400 hover:text-stone-700 dark:text-stone-500 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+            aria-label="Next week"
           >
-            Next Week
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </button>
+          {!isCurrentWeek && (
+            <button
+              onClick={() => navigateToWeek(currentWeek.year, currentWeek.week)}
+              className="ml-1 px-3 py-1.5 rounded-full text-xs font-medium text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-700 dark:hover:text-stone-200 transition-colors"
+            >
+              This week
+            </button>
+          )}
         </div>
 
         {/* Week context summary + toggle */}
@@ -721,6 +814,7 @@ export default function MealsPage() {
               (c) => c.effect === "skip-meal"
             );
             const isWeekend = ["Friday", "Saturday", "Sunday"].includes(wd.dayOfWeek);
+            const hist = dayHistory[wd.date] ?? null;
             return (
               <div
                 key={wd.date}
@@ -752,6 +846,31 @@ export default function MealsPage() {
                         {CONTEXT_KIND_OPTIONS.find((o) => o.value === ctx.kind)?.label || ctx.kind}
                       </span>
                     ))}
+                  </div>
+                )}
+                {/* History status badge */}
+                {hist?.status && (
+                  <div className="mb-1">
+                    {hist.status === "cooked-as-planned" && (
+                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 font-medium">
+                        Cooked
+                      </span>
+                    )}
+                    {hist.status === "cooked-other" && (
+                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 font-medium" title={hist.cookedRecipeName ? `Cooked: ${hist.cookedRecipeName}` : undefined}>
+                        Swapped
+                      </span>
+                    )}
+                    {hist.status === "skipped" && !isSkipped && (
+                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-stone-200 dark:bg-stone-700 text-stone-500 dark:text-stone-400 font-medium">
+                        Skipped
+                      </span>
+                    )}
+                    {hist.status === "planned" && (
+                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 font-medium">
+                        Planned
+                      </span>
+                    )}
                   </div>
                 )}
                 {isSkipped ? (
@@ -809,24 +928,32 @@ export default function MealsPage() {
         {!planLoading && !plan && !hasCandidates && (
           <div className="rounded-xl border border-dashed border-stone-300 dark:border-stone-700 bg-white/60 dark:bg-stone-900/40 px-6 py-10 mb-6 text-center">
             <p className="font-serif text-stone-500 dark:text-stone-400 mb-1">
-              No plan for {activeTab === "next" ? "next" : "this"} week yet
+              No plan for this week yet
             </p>
-            <p className="text-xs text-stone-400 dark:text-stone-500 mb-5">
-              Generate suggestions to start filling in your week.
-            </p>
-            <button
-              onClick={() => handleGenerate(false)}
-              disabled={loading}
-              className="px-5 py-2.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-50 transition-colors shadow-sm"
-            >
-              {loading ? "Generating..." : "Generate suggestions"}
-            </button>
+            {isPastWeek ? (
+              <p className="text-xs text-stone-400 dark:text-stone-500">
+                No saved plan for this past week.
+              </p>
+            ) : (
+              <>
+                <p className="text-xs text-stone-400 dark:text-stone-500 mb-5">
+                  Generate suggestions to start filling in your week.
+                </p>
+                <button
+                  onClick={() => handleGenerate(false)}
+                  disabled={loading}
+                  className="px-5 py-2.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-50 transition-colors shadow-sm"
+                >
+                  {loading ? "Generating..." : "Generate suggestions"}
+                </button>
+              </>
+            )}
           </div>
         )}
 
         {/* Action buttons — generate (first time) or explicit regenerate */}
         <div className="flex items-center gap-3 mb-6">
-          {!hasCandidates && !planLoading && plan && (
+          {!hasCandidates && !planLoading && plan && !isPastWeek && (
             <button
               onClick={() => handleGenerate(false)}
               disabled={loading}
@@ -848,13 +975,15 @@ export default function MealsPage() {
                   )}
                 </span>
               )}
-              <button
-                onClick={() => handleGenerate(true)}
-                disabled={loading}
-                className="px-4 py-2 rounded-full text-xs font-medium text-stone-400 dark:text-stone-500 border border-stone-200 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:text-stone-600 dark:hover:text-stone-300 disabled:opacity-50 transition-colors"
-              >
-                {loading ? "Regenerating..." : "Regenerate"}
-              </button>
+              {!isPastWeek && (
+                <button
+                  onClick={() => handleGenerate(true)}
+                  disabled={loading}
+                  className="px-4 py-2 rounded-full text-xs font-medium text-stone-400 dark:text-stone-500 border border-stone-200 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 hover:text-stone-600 dark:hover:text-stone-300 disabled:opacity-50 transition-colors"
+                >
+                  {loading ? "Regenerating..." : "Regenerate"}
+                </button>
+              )}
             </>
           )}
         </div>
@@ -879,7 +1008,7 @@ export default function MealsPage() {
         {hasCandidates && (
           <div className="space-y-5">
             <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400">
-              {activeTab === "next" ? "Next week\u2019s suggestions" : "This week\u2019s suggestions"}
+              Suggestions
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

@@ -208,6 +208,41 @@ export async function updateSessionFeedback(
 }
 
 // ---------------------------------------------------------------------------
+// Date-range session lookup — used by planner history projection
+// ---------------------------------------------------------------------------
+
+export type SessionSummary = {
+  date: string;
+  recipeId: string;
+  recipeName: string;
+  status: CookingSession["status"];
+};
+
+/**
+ * Get lightweight session summaries for a date range (inclusive).
+ * Used by the planner to project planned-vs-cooked status per day.
+ */
+export async function getSessionsForDateRange(
+  from: string,
+  to: string,
+): Promise<SessionSummary[]> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: `SELECT date, recipe_id, recipe_name, status
+          FROM cooking_sessions
+          WHERE date >= ? AND date <= ?
+          ORDER BY date ASC`,
+    args: [from, to],
+  });
+  return result.rows.map((row) => ({
+    date: (row as Record<string, unknown>)["date"] as string,
+    recipeId: (row as Record<string, unknown>)["recipe_id"] as string,
+    recipeName: (row as Record<string, unknown>)["recipe_name"] as string,
+    status: (row as Record<string, unknown>)["status"] as CookingSession["status"],
+  }));
+}
+
+// ---------------------------------------------------------------------------
 // Recipe history — derived from completed cooking sessions
 // ---------------------------------------------------------------------------
 
