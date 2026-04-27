@@ -492,10 +492,14 @@ function MealsPageInner() {
 
     setLoading(true);
     try {
-      const contextParam = plan?.context?.length
-        ? `&context=${encodeURIComponent(JSON.stringify(plan.context))}`
-        : "";
-      const res = await fetch(`/api/meals/generate?${contextParam}`);
+      const params = new URLSearchParams();
+      if (plan?.context?.length) {
+        params.set("context", JSON.stringify(plan.context));
+      }
+      if (candidates.length > 0) {
+        params.set("exclude", candidates.map((c) => c.id).join(","));
+      }
+      const res = await fetch(`/api/meals/generate?${params}`);
       const data = await res.json();
       const newCandidates: RecipeOption[] = data.candidates || [];
       setCandidates(newCandidates);

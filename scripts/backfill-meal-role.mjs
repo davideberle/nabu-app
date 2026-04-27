@@ -12,7 +12,7 @@
  *   drink     – beverages
  *
  * Also fills in category.dish_type for the ~436 recipes that are missing it,
- * using the same heuristics from enrich-recipes.js.
+ * using chapter-name and recipe-name heuristics.
  *
  * Run: node scripts/backfill-meal-role.mjs [--dry-run]
  */

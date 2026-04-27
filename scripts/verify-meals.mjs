@@ -31,7 +31,7 @@ function find(id) {
 // ---- helpers mirroring meals.ts logic ----
 
 const EXCLUDED_DISH_TYPES = new Set([
-  "dessert", "baking", "breakfast", "drink", "condiment", "base", "bread",
+  "dessert", "baking", "breakfast", "drink", "condiment", "base", "bread", "component",
 ]);
 const EXCLUDED_CHAPTER_PATTERNS = [
   "dessert", "sweet", "baking", "patisserie", "pastry",
@@ -53,12 +53,16 @@ function isDinnerWorthy(recipe) {
   if (lowTypes.includes("vegetable") && !hasMainRole) return false;
   if (lowTypes.includes("starter") && !hasMainRole) return false;
   const nameLower = recipe.name.toLowerCase();
-  const breakfastWords = ["pancake", "waffle", "johnnycake", "french toast", "granola", "porridge", "oatmeal"];
+  const breakfastWords = ["breakfast", "brunch", "morning", "cereal", "muesli", "smoothie", "juice", "milkshake", "scramble", "scrambled egg", "pancake", "waffle", "johnnycake", "french toast", "granola", "porridge", "oatmeal"];
   if (breakfastWords.some((w) => nameLower.includes(w))) return false;
+  const snackWords = ["snack", "bar ", "energy ball", "trail mix", "dip", "hummus", "guacamole", "salsa", "cracker", "chip", "popcorn", "nut butter", "lunch box", "lunchbox", "sandwich", "wrap"];
+  if (snackWords.some((w) => nameLower.includes(w))) return false;
   const dessertWords = ["cake", "brownie", "cookie", "muffin", "cupcake", "fudge", "ice cream", "sorbet", "pudding", "truffle", "macaron"];
   if (dessertWords.some((w) => nameLower.includes(w))) return false;
   const sauceWords = ["dressing", "vinaigrette", "aioli", "mayonnaise", "ketchup"];
   if (sauceWords.some((w) => nameLower.includes(w))) return false;
+  const mealRole = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
+  if (["breakfast", "brunch", "lunch", "drink", "snack"].includes(mealRole)) return false;
   if (recipe.ingredients.length < 3) return false;
   if (!recipe.method || recipe.method.length < 2) return false;
   return true;

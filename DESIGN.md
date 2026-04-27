@@ -100,7 +100,6 @@ Full CRUD backed by Turso `todos` table. API routes at `/api/todos`.
 | Script | Purpose |
 |--------|---------|
 | `scripts/bundle-recipes.mjs` | Pre-aggregate recipe JSONs into single bundle (runs as `prebuild`) |
-| `scripts/enrich-recipes.js` | Infer `dish_type` and time estimates for recipes missing them |
 | `scripts/backfill-meal-role.mjs` | Backfill `category.meal_role` from `dish_type` heuristics |
 | `scripts/validate-recipes.mjs` | Validate corpus completeness and data quality (CI-friendly) |
 
