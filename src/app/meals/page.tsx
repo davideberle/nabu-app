@@ -369,7 +369,6 @@ function MealsPageInner() {
   const [editingServeWith, setEditingServeWith] = useState<number | null>(null);
   const [cookedSlots, setCookedSlots] = useState<Set<string>>(new Set());
   const [markingCooked, setMarkingCooked] = useState<number | null>(null);
-  const [feedbackMap, setFeedbackMap] = useState<Record<string, "up" | "down">>({});
   const [expandingDay, setExpandingDay] = useState<number | null>(null);
   const [expandLoading, setExpandLoading] = useState(false);
   const [expandComplements, setExpandComplements] = useState<{
@@ -377,8 +376,6 @@ function MealsPageInner() {
     sides: RecipeOption[];
     desserts: RecipeOption[];
   } | null>(null);
-
-  const router = useRouter();
 
   // Autosave for notes/context changes only
   useAutosave(plan);
@@ -972,6 +969,7 @@ function MealsPageInner() {
             const isWeekend = ["Friday", "Saturday", "Sunday"].includes(wd.dayOfWeek);
             const today = new Date().toISOString().split("T")[0];
             const isPast = wd.date < today;
+            const hist = dayHistory[wd.date] ?? null;
             const isCooked = isFilled && cookedSlots.has(`${slot!.recipeId}:${wd.date}`);
             const isClickable = isSelectable ? !isSkipped : (isFilled && !isSkipped);
             return (
@@ -1179,7 +1177,7 @@ function MealsPageInner() {
                   Generate suggestions to start filling in your week.
                 </p>
                 <button
-                  onClick={() => handleGenerate(false)}
+                  onClick={() => handleGenerate()}
                   disabled={loading}
                   className="px-6 py-2.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-50 transition-colors"
                 >
@@ -1194,7 +1192,7 @@ function MealsPageInner() {
         <div className="flex items-center gap-3 mb-8">
           {!hasCandidates && !planLoading && plan && !isPastWeek && (
             <button
-              onClick={() => handleGenerate(false)}
+              onClick={() => handleGenerate()}
               disabled={loading}
               className="px-6 py-2.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-50 transition-colors"
             >
@@ -1215,7 +1213,7 @@ function MealsPageInner() {
               )}
               {!isPastWeek && (
                 <button
-                  onClick={() => handleGenerate(true)}
+                  onClick={() => handleGenerate()}
                   disabled={loading}
                   className="px-4 py-2 rounded-full text-xs text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 disabled:opacity-50 transition-colors"
                 >
@@ -1250,9 +1248,7 @@ function MealsPageInner() {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {candidates
-                .filter((r) => !filterLowCal || r.lowCalorie)
-                .map((r) => {
+              {candidates.map((r) => {
                   const isAssigned = plan?.days.some((d) => d?.recipeId === r.id) ?? false;
                   return (
                     <RecipeCard

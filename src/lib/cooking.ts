@@ -116,6 +116,20 @@ export async function getCookingSessionForDate(
   return JSON.parse(result.rows[0]["data"] as string) as CookingSession;
 }
 
+export async function getSessionsForDateRange(
+  from: string,
+  to: string
+): Promise<CookingSession[]> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: "SELECT data FROM cooking_sessions WHERE date >= ? AND date <= ? ORDER BY date",
+    args: [from, to],
+  });
+  return result.rows.map(
+    (row) => JSON.parse(row["data"] as string) as CookingSession
+  );
+}
+
 export async function getCookingSession(
   id: string
 ): Promise<CookingSession | null> {

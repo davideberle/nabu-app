@@ -69,12 +69,13 @@ export async function GET(request: NextRequest) {
     const hasPlannedRecipe = !!(slot?.recipeId);
     const hasCooked = !!(session && (session.status === "completed" || session.status === "active"));
     const isPast = wd.date < today;
+    const cookedRecipeId = session?.anchor?.recipeId ?? null;
 
     let status: DayHistoryStatus = null;
 
     if (hasPlannedRecipe && hasCooked) {
       status =
-        session!.recipeId === slot!.recipeId
+        cookedRecipeId === slot!.recipeId
           ? "cooked-as-planned"
           : "cooked-other";
     } else if (hasPlannedRecipe && !hasCooked) {
@@ -89,8 +90,8 @@ export async function GET(request: NextRequest) {
       status,
       plannedRecipeId: slot?.recipeId ?? null,
       plannedRecipeName: slot?.recipeName ?? null,
-      cookedRecipeId: session?.recipeId ?? null,
-      cookedRecipeName: session?.recipeName ?? null,
+      cookedRecipeId,
+      cookedRecipeName: session?.anchor?.title ?? null,
     };
   });
 
