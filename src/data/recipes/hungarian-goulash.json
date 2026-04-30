@@ -24,8 +24,8 @@
       "amount": "3"
     },
     {
-      "item": "½ tbsp. sweet paprika",
-      "amount": "1"
+      "item": "sweet paprika",
+      "amount": "1 ½ tbsp."
     },
     {
       "item": "Salt and pepper to taste",
@@ -70,7 +70,7 @@
     "Check for desired thickness and add more liquid if needed.",
     "Serve over the egg noodles."
   ],
-  "image": "/recipes/hungarian-goulash.jpg",
+  "image": null,
   "time": {
     "total": 40
   },
@@ -81,5 +81,5 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Italian"
+  "cuisine": "Hungarian"
 }
