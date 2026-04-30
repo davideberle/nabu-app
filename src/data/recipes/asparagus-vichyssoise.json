@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "sweet, a little sour and totally light. When I recently shut myself up at my parents’ house, to finally get on",
+  "intro": "My love for cold soups comes from my parents. When I was a child my mother used to make the most refreshing gazpacho for us, to alleviate the dry heat of the Jerusalem summer. It was marvelous – a little sweet, a little sour and totally light. When I recently shut myself up at my parents' house, to finally get on with all the recipe intros for this book, my father made one of his glorious creations: a cold creamy soup of potato, freshly picked basil, cucumber chunks and loads of goat's milk yogurt from the neighboring goat farm. I am afraid I can't replicate this in London. The ideal time for making my cold soup is toward the end of the asparagus season, in the early summer, when the spears are often thick and woody and not good enough to eat as they are. Serve with crusty bread dipped in olive oil.",
   "ingredients": [
     {
       "item": "medium potato",
@@ -22,42 +22,40 @@
     },
     {
       "item": "unsalted butter",
-      "amount": "½ tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "good-quality vegetable stock",
-      "amount": "½ cups"
+      "amount": "2½ cups"
     },
     {
-      "item": "sugar salt and white pepper",
+      "item": "sugar",
       "amount": "1 tsp"
+    },
+    {
+      "item": "salt and white pepper",
+      "amount": ""
     },
     {
       "item": "heavy cream",
       "amount": "3 tbsp"
     },
     {
-      "item": "Greek yogurt grated zest of",
+      "item": "Greek yogurt",
       "amount": "6 tbsp"
     },
     {
-      "item": "lemon",
-      "amount": "½"
-    },
-    {
-      "item": "¾-inch pieces, keeping the tips separate. Reserve whole spears.",
+      "item": "grated zest of ½ lemon",
       "amount": ""
     }
   ],
   "method": [
-    "Place the vegetables, except for the asparagus tips, with the butter in a medium saucepan and sauté on medium heat for about 4 minutes; make sure they don’t take on any color. Cover the vegetables with the stock and add the sugar and some salt and white pepper. Bring to a boil, then simmer, covered, for",
-    "40 minutes. At the end of this time add the asparagus tips and continue cooking for 10 minutes.",
+    "Peel the potato and dice roughly. Chop off and discard the tough green ends of the leeks. Cut through the pale center, then wash and slice roughly. Trim off and discard the woody base of the asparagus. Cut all but three of the spears into ¾‑inch pieces, keeping the tips separate. Reserve whole spears.",
+    "Place the vegetables, except for the asparagus tips, with the butter in a medium saucepan and sauté on medium heat for about 4 minutes; make sure they don't take on any color. Cover the vegetables with the stock and add the sugar and some salt and white pepper. Bring to a boil, then simmer, covered, for 40 minutes. At the end of this time add the asparagus tips and continue cooking for 10 minutes.",
     "Once done, blitz the soup well in a blender until very smooth.",
     "Gently fold in the cream and half the yogurt. Allow the soup to come to room temperature, then chill.",
     "While the soup is cooling down, bring a pan of water to the boil and blanch the reserved asparagus for 2 minutes; drain and refresh under plenty of cold water. Shred.",
-    "Pour the cold soup into bowls. Spoon a dollop of yogurt on top of each and swirl with the tip of a skewer. Place the shredded asparagus in the center and garnish with lemon zest.",
-    "All over Malaysia a profusion of street food is served in big open-air complexes. The different stalls prepare cheap, cheerful and incredibly delicious dishes from Malay, Chinese or Indian cuisines. Since everything is so tempting you often end up with a table still piled with delicacies and no stomach capacity. The attraction of this type of dining is that it is both fresh and complex. Many dishes are prepared from raw in front of your eyes, using great ingredients, which makes it far superior to many Western solutions for fast food. I was guided through a recent Malaysian adventure by Helen Goh and her affectionate family, the Lees, who have taught me many culinary secrets.",
-    "This Malay dish (pictured on pages 186 to 187) takes only a few minutes to make (once you have a little bit of prep out of the way) and is unique in its many layers and depth of flavors. If you want to serve more than two people you’ll need to start again with a second batch, because double quantities will be too much for one wok."
+    "Pour the cold soup into bowls. Spoon a dollop of yogurt on top of each and swirl with the tip of a skewer. Place the shredded asparagus in the center and garnish with lemon zest."
   ],
   "time": {
     "total": 30

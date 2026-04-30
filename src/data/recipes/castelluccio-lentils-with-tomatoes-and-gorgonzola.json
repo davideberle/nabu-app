@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "texture. Like Puy lentils, they don’t disintegrate in the cooking, which makes them ideal for salads. You can",
+  "intro": "Castelluccio lentils from Umbria are tiny brownish jewels with a delicate flavor and a wonderfully tender texture. Like Puy lentils, they don't disintegrate in the cooking, which makes them ideal for salads. You can get them from Italian or gourmet markets, or use Puy instead. This substantial dish, which is best eaten at room temperature, can be served on its own or with steamed seasonal greens such as broccolini or baby fennel.",
   "ingredients": [
     {
       "item": "plum tomatoes",
@@ -21,8 +21,11 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "balsamic vinegar salt",
+      "item": "balsamic vinegar",
       "amount": "2 tbsp"
+    },
+    {
+      "item": "salt"
     },
     {
       "item": "small red onion, very thinly sliced",
@@ -37,12 +40,19 @@
       "amount": "1 tsp"
     },
     {
+      "item": "Castelluccio lentils",
+      "amount": "1⅓ cups"
+    },
+    {
       "item": "olive oil",
       "amount": "3 tbsp"
     },
     {
-      "item": "garlic clove, crushed black pepper",
+      "item": "garlic clove, crushed",
       "amount": "1"
+    },
+    {
+      "item": "black pepper"
     },
     {
       "item": "chopped chervil or parsley",
@@ -62,15 +72,11 @@
     }
   ],
   "method": [
-    "To make the oven-dried tomatoes. Preheat the oven to 275°F.",
-    "Quarter the tomatoes vertically and place skin-side down on a baking sheet lined with parchment paper. Arrange the thyme sprigs on top of them. Drizzle over the olive oil and balsamic vinegar and sprinkle with some salt. Roast for 1",
-    "½ hours, or until semi-dried. Discard the thyme and allow to cool down slightly.",
+    "To make the oven-dried tomatoes. Preheat the oven to 275°F. Quarter the tomatoes vertically and place skin-side down on a baking sheet lined with parchment paper. Arrange the thyme sprigs on top of them. Drizzle over the olive oil and balsamic vinegar and sprinkle with some salt. Roast for 1½ hours, or until semi-dried. Discard the thyme and allow to cool down slightly.",
     "Meanwhile, place the red onion in a medium bowl, pour over the vinegar and sprinkle with the sea salt. Stir, then leave for a few minutes so the onion softens a bit.",
-    "Place the lentils in a pan of boiling water (the water should come",
-    "¼ inches above the lentils) and cook for 20 to 30 minutes, or until tender. Drain well in a sieve and, while still warm, add to the sliced onion. Also add the olive oil, garlic and some black pepper.",
+    "Place the lentils in a pan of boiling water (the water should come 1¼ inches above the lentils) and cook for 20 to 30 minutes, or until tender. Drain well in a sieve and, while still warm, add to the sliced onion. Also add the olive oil, garlic and some black pepper.",
     "Stir to mix and leave aside to cool down. Once cool, add the herbs and gently mix together. Taste and adjust the seasoning.",
-    "To serve, pile up the lentils on a large plate or bowl, integrating the Gorgonzola and tomatoes as you build up the pile. Drizzle the tomato cooking juices on top and serve.",
-    "On a visit to southern France my partner, Karl, and I were taken to Grain de Sel, a minute restaurant in the village of Cogolin, run by an inspiring couple, Anne and Philippe Audibert. Among other brilliant dishes made from local produce that Philippe buys daily in the local market, I was served a variation on the renowned pissaladière. Instead of the normal dough base, Philippe used socca batter, a speciality of Nice made from chickpea flour, water and olive oil. He was generous enough to give me the recipe."
+    "To serve, pile up the lentils on a large plate or bowl, integrating the Gorgonzola and tomatoes as you build up the pile. Drizzle the tomato cooking juices on top and serve."
   ],
   "time": {
     "total": 30

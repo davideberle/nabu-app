@@ -6,15 +6,19 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 2",
-  "intro": "spiciness. You can get it from Turkish grocers or kalustyans.com. Alternatively, use plain chile flakes mixed",
+  "intro": "Here's my idea of comfort food and a perfect Sunday brunch treat. It is inspired by çılbır, which is Turkish poached eggs with yogurt. It calls for kırmızı biber, a common Turkish spice made from crushed chiles that have been rubbed with oil and often roasted. The Turks use it as a general condiment and also add it to melted butter to give the final touch to many dishes. Kırmızı biber has a sweet aroma and can vary in spiciness. You can get it from Turkish grocers or kalustyans.com. Alternatively, use plain chile flakes mixed with some sweet paprika.",
   "ingredients": [
     {
       "item": "arugula",
       "amount": "¾ lb (about 14 cups)"
     },
     {
-      "item": "olive oil salt",
+      "item": "olive oil",
       "amount": "2 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": ""
     },
     {
       "item": "eggs",
@@ -42,17 +46,11 @@
     }
   ],
   "method": [
-    "Preheat the oven to 300°F. Place the arugula and oil in a large pan, add some salt and sauté on a medium heat for about",
-    "5 minutes, or until the arugula wilts and most of the liquid has evaporated.",
+    "Preheat the oven to 300°F. Place the arugula and oil in a large pan, add some salt and sauté on a medium heat for about 5 minutes, or until the arugula wilts and most of the liquid has evaporated.",
     "Transfer to a small ovenproof dish and make four deep indentations in the arugula. Carefully break an egg into each hollow, taking care not to break the yolk. Place in the oven to cook for 10 to 15 minutes, or until the egg whites are set. (Alternatively, divide the arugula into small pans and cook two eggs in each.)",
     "While the eggs are in the oven, mix the yogurt with the garlic and a pinch of salt. Stir well and set aside; do not chill.",
     "Melt the butter in a small saucepan. Add the kırmızı biber and a pinch of salt and fry for 1 to 2 minutes, or until the butter starts to foam and turns a nice golden-red. Add the sage and cook for a few more seconds. Remove from the heat.",
-    "Once the eggs are cooked take them out of the oven. Spoon the yogurt over the center, and pour the hot chile butter over the yogurt and eggs. Serve immediately.",
-    "142 | Leaves, Cooked and Raw",
-    "Anybody who’s been following my writing couldn’t help noticing how much I carry on about chard. These wonderful leaves belong to the same family as beets. When picked small they make a great contribution to leafy salads, both in flavor and with their magnificent red hue. But it is the large, mature deep-green leaves – with stalks ranging from white, to yellow, to red and orange – that I love so much. They are in season from",
-    "June to August, and have a sharp and earthy flavor, not too dominant but perfectly recognizable.",
-    "Both chard stalks and leaves are edible, although the stalks normally take a bit longer to cook. In most cases I slice the stalks thinly and the leaves a bit wider, then throw the stalks into a pan and sauté or blanch for 3 minutes before adding the leaves and cooking through. Here, though, I start them off together as they are cooked for a long time anyway.",
-    "Chard and saffron omelettes"
+    "Once the eggs are cooked take them out of the oven. Spoon the yogurt over the center, and pour the hot chile butter over the yogurt and eggs. Serve immediately."
   ],
   "time": {
     "total": 30

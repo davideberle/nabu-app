@@ -6,19 +6,27 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Manouri is a rich Greek sheep’s cheese. If you can’t get it, use halloumi or another soft, young cheese.",
+  "intro": "Here’s a complex salad that makes a whole satisfying meal on its own. In its center there is Manouri, a rich Greek sheep’s cheese that I use often. If you can’t get it, use halloumi or another softish, young sheep’s cheese.",
   "ingredients": [
     {
-      "item": "Jerusalem artichokes juice of 2 small lemons",
+      "item": "Jerusalem artichokes",
       "amount": "1 lb"
+    },
+    {
+      "item": "juice of 2 small lemons",
+      "amount": ""
     },
     {
       "item": "thyme sprigs",
       "amount": "4"
     },
     {
-      "item": "olive oil salt and black pepper",
+      "item": "olive oil",
       "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
     },
     {
       "item": "basil (leaves and stalks)",
@@ -29,16 +37,28 @@
       "amount": "½ cup"
     },
     {
-      "item": "garlic clove, peeled salt",
+      "item": "garlic clove, peeled",
       "amount": "1"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": "⅔ cup"
     },
     {
       "item": "olive oil",
       "amount": "½ cup"
     },
     {
-      "item": "cherry tomatoes salt",
+      "item": "cherry tomatoes",
       "amount": "2¾ cups"
+    },
+    {
+      "item": "salt",
+      "amount": ""
     },
     {
       "item": "Manouri cheese (or halloumi), cut into ½-inch-thick slices",
@@ -50,17 +70,11 @@
     }
   ],
   "method": [
-    "Preheat the oven to 425°F. Start with the artichokes. Squeeze the juice of 1 lemon into a medium bowl and add about 2¼ cups of water. Peel the artichokes with a vegetable peeler, slice them lengthways ³",
-    "8-inch thick and throw immediately into the acidulated water to prevent them from turning brown.",
-    "Lift the artichokes from the water into an ovenproof dish. Add the thyme, the juice of the second lemon, 3 tablespoons water,",
-    "1 tablespoon olive oil and some salt and pepper. Mix everything together, then spread out the artichoke slices. Cover the dish with foil and put it into the oven to roast for 40 to 45 minutes, or until the artichokes are tender. Take out of the oven and keep somewhere warm.",
+    "Preheat the oven to 425°F. Start with the artichokes. Squeeze the juice of 1 lemon into a medium bowl and add about 2¼ cups of water. Peel the artichokes with a vegetable peeler, slice them lengthways ⅜-inch thick and throw immediately into the acidulated water to prevent them from turning brown.",
+    "Lift the artichokes from the water into an ovenproof dish. Add the thyme, the juice of the second lemon, 3 tablespoons water, 1 tablespoon olive oil and some salt and pepper. Mix everything together, then spread out the artichoke slices. Cover the dish with foil and put it into the oven to roast for 40 to 45 minutes, or until the artichokes are tender. Take out of the oven and keep somewhere warm.",
     "To make the basil oil. Put the basil, parsley, garlic and a pinch of salt in a food processor bowl and start the machine. Add the oil in a slow trickle. When it is all incorporated you will have a runny paste.",
-    "Place a large frying pan on high heat and let it heat up well. Add",
-    "1 tablespoon of the oil and the tomatoes and char them quickly, shaking the pan to get even coloring. After 3 to 4 minutes the tomatoes should be lightly blackened but retain their shape.",
-    "Sprinkle with salt, remove from the pan and add them to the cooked artichokes.",
-    "When you are ready to serve, wipe clean your frying pan and pour in enough olive oil to come 2 inches up the sides. Set on a medium heat and, once hot, fry the cheese slices for about",
-    "2 minutes on each side, or until they turn a good brown color.",
-    "Transfer to paper towels.",
+    "Place a large frying pan on high heat and let it heat up well. Add 1 tablespoon of the oil and the tomatoes and char them quickly, shaking the pan to get even coloring. After 3 to 4 minutes the tomatoes should be lightly blackened but retain their shape. Sprinkle with salt, remove from the pan and add them to the cooked artichokes.",
+    "When you are ready to serve, wipe clean your frying pan and pour in enough olive oil to come 2 inches up the sides. Set on a medium heat and, once hot, fry the cheese slices for about 2 minutes on each side, or until they turn a good brown color. Transfer to paper towels.",
     "Arrange some endive leaves on serving dishes. Build up the salad on top with warm cheese, Jerusalem artichokes, cherry tomatoes and more leaves. Finish with a drizzle of basil oil and serve at once."
   ],
   "time": {

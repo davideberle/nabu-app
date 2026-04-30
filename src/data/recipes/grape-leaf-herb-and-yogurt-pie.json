@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "introduction to one of the world’s most accomplished cuisines and it is packed full of recipes you just know",
+  "intro": "Whenever I walk into a bookshop I find myself in the cookery section within seconds; it's an urge I can't control. On a recent visit to a secondhand bookshop in Hay-on-Wye, the capital of bookshops, I came across a real treasure, Classic Turkish Cookery by Ghillie Başan, published in 1995. This book offers a fantastic introduction to one of the world's most accomplished cuisines and it is packed full of recipes you just know you must try. It is there that I came across this unusual savory cake originating from the Turkish part of Cyprus. It makes a substantial snack or a light starter. Serve with Burnt Eggplant with Tahini (page 122).",
   "ingredients": [
     {
       "item": "grape leaves (fresh or from a jar)",
@@ -45,12 +45,20 @@
       "amount": "3 tbsp"
     },
     {
-      "item": "finely chopped mint grated zest of 1 lemon",
+      "item": "finely chopped mint",
       "amount": "4 tbsp"
     },
     {
-      "item": "lemon juice salt and black pepper",
+      "item": "grated zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "lemon juice",
       "amount": "1 tbsp"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
     },
     {
       "item": "rice flour",
@@ -67,11 +75,7 @@
     "Take a round and shallow ovenproof dish that is roughly 8 inches in diameter, and cover its bottom and sides with grape leaves, slightly overlapping them and allowing the leaves to hang over the rim of the dish. Mix the melted butter with 2 tablespoons of olive oil; use about two-thirds of this to generously brush the leaves lining the dish.",
     "Mix together in a bowl the shallots, yogurt, pine nuts, chopped herbs and lemon zest and juice, and season with salt and pepper to taste. Then add the rice flour and mix well until you get a homogenous paste. Spread this paste evenly in the baking dish.",
     "Fold the overhanging grape leaves back over the top of the filling so they cover the edges, then cover the filling completely with the remaining grape leaves. Brush with the rest of the butter and oil mix. Finally, scatter the breadcrumbs over the top and drizzle over the remaining 1 tablespoon olive oil.",
-    "Bake for 40 minutes, or until the leaves crisp up and the breadcrumbs turn golden brown. Remove from the oven and leave to rest for at least 10 minutes. Cut into wedges and serve warmish or at room temperature, with a dollop of fresh yogurt.",
-    "160 | Leaves, Cooked and Raw",
-    "You really need to get your hands dirty here. The flavored crème fraîche has to cover every bit of endive leaf in order to flavor it properly, because endive’s fresh, watery and slightly bitter nature asks for a lot of rich dressing. On top of that I add butter-toasted nuts, a welcome addition to almost any salad, to make this a truly sumptuous starter.",
-    "A note about Roquefort and other European cheeses: as a general rule, most continental cheeses use rennet, a cluster of enzymes taken from animals’ stomachs that causes milk to coagulate and eventually form into cheese. British cheeses tend to be based on vegetarian alternatives to rennet. Here, as in all recipes with cheese, I encourage a strict vegetarian to check thoroughly whether the variety is completely vegetarian and, if not, to look for alternatives; these can often be found online.",
-    "Nutty endive with Roquefort"
+    "Bake for 40 minutes, or until the leaves crisp up and the breadcrumbs turn golden brown. Remove from the oven and leave to rest for at least 10 minutes. Cut into wedges and serve warmish or at room temperature, with a dollop of fresh yogurt."
   ],
   "time": {
     "total": 30

@@ -6,15 +6,18 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "omega-3 fatty acids, vitamin A and more), these young soybeans are widely available, whether frozen and",
+  "intro": "Until recently edamame, which are similar to fava beans but harder and nuttier, were only available in Japanese restaurants. Now, with their health benefits celebrated everywhere (they are full of protein, omega-3 fatty acids, vitamin A and more), these young soybeans are widely available, whether frozen and shelled, cooked or raw. Edamame fit well in most salads and in warm dishes. This one makes a refreshing light meal. You can upgrade it by adding fried tofu and/or roasted peanuts.",
   "ingredients": [
     {
       "item": "glass (cellophane) noodles",
       "amount": "7 oz"
     },
     {
-      "item": "grated galangal or fresh ginger juice of 4 limes",
+      "item": "grated galangal or fresh ginger",
       "amount": "2 tbsp"
+    },
+    {
+      "item": "juice of 4 limes"
     },
     {
       "item": "peanut oil",
@@ -46,7 +49,7 @@
     },
     {
       "item": "shelled cooked edamame",
-      "amount": "½ cups"
+      "amount": "2\u00bd cups"
     },
     {
       "item": "green onions, thinly sliced (including the green parts)",
@@ -65,19 +68,18 @@
       "amount": "3 tbsp"
     },
     {
-      "item": "sesame seeds, toasted salt (optional)",
+      "item": "sesame seeds, toasted",
       "amount": "3 tbsp"
+    },
+    {
+      "item": "salt (optional)"
     }
   ],
   "method": [
-    "Soak the noodles in a bowl of hot water for about 5 minutes, or until soft (don’t leave them in the water for too long or they will get soggy). Drain and leave to dry.",
+    "Soak the noodles in a bowl of hot water for about 5 minutes, or until soft (don't leave them in the water for too long or they will get soggy). Drain and leave to dry.",
     "To make the sauce. In a small bowl whisk together all of the sauce ingredients and set aside.",
     "Heat the sunflower oil in a large frying pan or a wok and add the garlic. When it starts to turn golden, remove the pan from the heat and add the sauce and noodles. Gently stir together, then add most of the edamame and the green onions, chile, cilantro and mint. Stir everything together while you return the pan to the heat for a few seconds, just to warm through. Taste and season with salt, if you like.",
-    "Pile up on a large platter or in a shallow bowl and scatter over the remaining edamame and the sesame seeds. Garnish with cilantro leaves and serve. You can also serve this dish at room temperature, adjusting the seasoning when it is cool.",
-    "200 | Green Beans",
-    "202 | Green Beans",
-    "I came up with this soup when asked to contribute a seasonal recipe to the Royal Horticultural Society’s flower show at Hampton Court Palace. It involves a bit of work but the result is, quite fittingly, majestic.",
-    "Hot yogurt and fava bean soup"
+    "Pile up on a large platter or in a shallow bowl and scatter over the remaining edamame and the sesame seeds. Garnish with cilantro leaves and serve. You can also serve this dish at room temperature, adjusting the seasoning when it is cool."
   ],
   "time": {
     "total": 30

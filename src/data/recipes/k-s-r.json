@@ -34,7 +34,7 @@
     },
     {
       "item": "pomegranate molasses",
-      "amount": "½ tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "lemon juice",
@@ -57,17 +57,26 @@
       "amount": "2"
     },
     {
-      "item": "ground cumin salt and black pepper seeds from 1 medium pomegranate (see page 110) handful of mint leaves, some whole and some roughly shredded",
+      "item": "ground cumin",
       "amount": "1 tsp"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
+    },
+    {
+      "item": "seeds from 1 medium pomegranate",
+      "amount": ""
+    },
+    {
+      "item": "mint leaves, some whole and some roughly shredded",
+      "amount": "handful"
     }
   ],
   "method": [
     "Place the onions and olive oil in a large pan and sauté on medium heat for about 5 minutes, or until translucent. Add the tomato paste and stir with a wooden spoon for 2 minutes. Add the tomatoes and simmer on low heat for a further 4 minutes. Now add the water and bring to the boil. Remove immediately from the heat and stir in the bulgur.",
     "Next, add the molasses, lemon juice, parsley, green onions, chiles, garlic, cumin and some salt and pepper. Stir well, then leave aside until the dish reaches room temperature or is just lukewarm. Taste it and adjust the seasoning; it will probably need plenty of salt.",
-    "Spoon the kısır onto serving dishes and flatten it out roughly with a spoon, creating a wave-like pattern on the surface. Scatter pomegranate seeds all over, drizzle with oil and finish with mint and green onion.",
-    "This is what you should cook on a late Sunday morning to really spoil your family. I can’t get enough of it.",
-    "Additions will be welcomed: consider peas, green beans, fried onions, buttered sunflower seeds and even golden raisins.",
-    "Cardamom rice with poached eggs and yogurt"
+    "Spoon the kısır onto serving dishes and flatten it out roughly with a spoon, creating a wave-like pattern on the surface. Scatter pomegranate seeds all over, drizzle with oil and finish with mint and green onion."
   ],
   "time": {
     "total": 30

@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { getCourseTagColor } from "@/lib/tag-colors";
 import { normalizeIngredient } from "@/lib/normalize-ingredients";
 
@@ -366,9 +367,29 @@ function MealsPageInner() {
   const [feedbackMap, setFeedbackMap] = useState<Record<string, "up" | "down">>({});
   const [dayHistory, setDayHistory] = useState<Record<string, DayHistory>>({});
   const [editingServeWith, setEditingServeWith] = useState<number | null>(null);
+  const [cookedSlots, setCookedSlots] = useState<Set<string>>(new Set());
+  const [markingCooked, setMarkingCooked] = useState<number | null>(null);
+  const [feedbackMap, setFeedbackMap] = useState<Record<string, "up" | "down">>({});
+  const [expandingDay, setExpandingDay] = useState<number | null>(null);
+  const [expandLoading, setExpandLoading] = useState(false);
+  const [expandComplements, setExpandComplements] = useState<{
+    starters: RecipeOption[];
+    sides: RecipeOption[];
+    desserts: RecipeOption[];
+  } | null>(null);
+
+  const router = useRouter();
 
   // Autosave for notes/context changes only
   useAutosave(plan);
+
+  // Load recipe feedback on mount
+  useEffect(() => {
+    fetch("/api/meals/feedback")
+      .then((r) => r.json())
+      .then((data: Record<string, "up" | "down">) => setFeedbackMap(data))
+      .catch(() => {});
+  }, []);
 
   const buildEmptyPlan = useCallback((): MealPlan => {
     const WEEKEND_DAYS = new Set(["Friday", "Saturday", "Sunday"]);
@@ -402,8 +423,8 @@ function MealsPageInner() {
     setCandidates([]);
     setSelectedRecipe(null);
     setShowContextEditor(false);
-    setFeedbackMap({});
-    setDayHistory({});
+    setExpandingDay(null);
+    setExpandComplements(null);
 
     let cancelled = false;
     fetch(`/api/meals/plan?week=${weekId}`)
@@ -487,13 +508,31 @@ function MealsPageInner() {
     return () => { cancelled = true; };
   }, [weekId]);
 
-  // Generate quality-gated candidate mains for the week
-  async function handleGenerate(isRegenerate = false) {
-    // Require explicit confirmation before regenerating over an existing set
-    if (isRegenerate && hasCandidates) {
-      if (!window.confirm("Replace current suggestions? This will generate a fresh set.")) return;
-    }
+  // Fetch cook events to determine cooked state for assigned days
+  useEffect(() => {
+    if (!plan) { setCookedSlots(new Set()); return; }
+    const assignedIds = plan.days
+      .filter((d) => d.recipeId)
+      .map((d) => d.recipeId!);
+    if (assignedIds.length === 0) { setCookedSlots(new Set()); return; }
 
+    let cancelled = false;
+    fetch("/api/cook-events")
+      .then((r) => r.json())
+      .then((events: { recipeId: string; cookedOn: string }[]) => {
+        if (cancelled) return;
+        const slotKeys = new Set<string>();
+        for (const ev of events) {
+          slotKeys.add(`${ev.recipeId}:${ev.cookedOn}`);
+        }
+        setCookedSlots(slotKeys);
+      })
+      .catch(() => { if (!cancelled) setCookedSlots(new Set()); });
+    return () => { cancelled = true; };
+  }, [plan?.week, plan?.days]);
+
+  // Generate ~12 candidate mains for the week
+  async function handleGenerate() {
     setLoading(true);
     try {
       const params = new URLSearchParams();
@@ -557,7 +596,13 @@ function MealsPageInner() {
 
   // Assign recipe to a day slot — persists immediately
   function handleSlotClick(dayIndex: number) {
-    if (!plan || !selectedRecipe || planLoading) return;
+    if (!plan || planLoading) return;
+    // No candidate selected — navigate to recipe page if assigned
+    if (!selectedRecipe) {
+      const slot = plan.days[dayIndex];
+      if (slot?.recipeId) router.push(`/recipes/${slot.recipeId}`);
+      return;
+    }
     const newDays = [...plan.days];
     const existingMeal = newDays[dayIndex].meal;
     newDays[dayIndex] = {
@@ -580,6 +625,11 @@ function MealsPageInner() {
   // Clear a day slot — persists immediately
   function handleClearSlot(dayIndex: number) {
     if (!plan) return;
+    // Close expand panel if clearing the expanded day
+    if (expandingDay === dayIndex) {
+      setExpandingDay(null);
+      setExpandComplements(null);
+    }
     const newDays = [...plan.days];
     newDays[dayIndex] = {
       ...newDays[dayIndex],
@@ -591,6 +641,30 @@ function MealsPageInner() {
     const updatedPlan = { ...plan, days: newDays };
     setPlan(updatedPlan);
     savePlanNow(updatedPlan);
+  }
+
+  // Mark a past slot as cooked via cook-events API
+  async function handleMarkCooked(dayIndex: number) {
+    if (!plan) return;
+    const slot = plan.days[dayIndex];
+    if (!slot?.recipeId) return;
+    setMarkingCooked(dayIndex);
+    try {
+      await fetch("/api/cook-events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          recipeId: slot.recipeId,
+          cookedOn: slot.date,
+          source: "meal-planner",
+        }),
+      });
+      setCookedSlots((prev) => new Set(prev).add(`${slot.recipeId}:${slot.date}`));
+    } catch (err) {
+      console.error("Failed to mark cooked:", err);
+    } finally {
+      setMarkingCooked(null);
+    }
   }
 
   // Update serveWith on an assigned day slot — persists immediately
@@ -608,28 +682,110 @@ function MealsPageInner() {
     savePlanNow(updatedPlan);
   }
 
-  // ----- feedback helpers -----
-
-  function handleFeedback(recipeId: string, type: "up" | "down") {
+  // Toggle feedback for a candidate recipe
+  async function handleFeedback(recipeId: string, value: "up" | "down") {
     const current = feedbackMap[recipeId];
-    if (current === type) {
-      // Toggle off
-      const next = { ...feedbackMap };
-      delete next[recipeId];
-      setFeedbackMap(next);
-      fetch("/api/meals/feedback", {
+    const next = current === value ? null : value;
+    // Optimistic update
+    setFeedbackMap((prev) => {
+      const updated = { ...prev };
+      if (next === null) delete updated[recipeId];
+      else updated[recipeId] = next;
+      return updated;
+    });
+    try {
+      await fetch("/api/meals/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ recipeId, week: weekId, remove: true }),
-      }).catch(() => {});
-    } else {
-      setFeedbackMap({ ...feedbackMap, [recipeId]: type });
-      fetch("/api/meals/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ recipeId, week: weekId, feedback: type }),
-      }).catch(() => {});
+        body: JSON.stringify({ recipeId, feedback: next }),
+      });
+    } catch (err) {
+      console.error("Failed to save feedback:", err);
+      // Revert on failure
+      setFeedbackMap((prev) => {
+        const reverted = { ...prev };
+        if (current) reverted[recipeId] = current;
+        else delete reverted[recipeId];
+        return reverted;
+      });
     }
+  }
+
+  // ----- day expansion (Turn into meal) -----
+
+  async function handleExpandDay(dayIndex: number) {
+    if (!plan) return;
+    const slot = plan.days[dayIndex];
+    if (!slot?.recipeId) return;
+
+    // Toggle off if already expanding this day
+    if (expandingDay === dayIndex) {
+      setExpandingDay(null);
+      setExpandComplements(null);
+      return;
+    }
+
+    setExpandingDay(dayIndex);
+    setExpandLoading(true);
+    setExpandComplements(null);
+    try {
+      const dayType = slot.type || "weekday";
+      const res = await fetch(
+        `/api/meals/expand?mainId=${encodeURIComponent(slot.recipeId)}&dayType=${dayType}`
+      );
+      const data = await res.json();
+      setExpandComplements({
+        starters: data.starters || [],
+        sides: data.sides || [],
+        desserts: data.desserts || [],
+      });
+    } catch (err) {
+      console.error("Failed to load complements:", err);
+      setExpandComplements({ starters: [], sides: [], desserts: [] });
+    } finally {
+      setExpandLoading(false);
+    }
+  }
+
+  function handleAcceptComplement(dayIndex: number, complement: RecipeOption) {
+    if (!plan) return;
+    const slot = plan.days[dayIndex];
+    if (!slot?.meal) return;
+
+    const existingSides = slot.meal.sides || [];
+    // Don't add duplicates
+    if (existingSides.some((s) => s.id === complement.id)) return;
+
+    const newSides = [...existingSides, { id: complement.id, name: complement.name }];
+    const newDays = [...plan.days];
+    newDays[dayIndex] = {
+      ...newDays[dayIndex],
+      planningState: "meal",
+      meal: { ...slot.meal, sides: newSides },
+    };
+    const updatedPlan = { ...plan, days: newDays };
+    setPlan(updatedPlan);
+    savePlanNow(updatedPlan);
+  }
+
+  function handleRemoveComplement(dayIndex: number, complementId: string) {
+    if (!plan) return;
+    const slot = plan.days[dayIndex];
+    if (!slot?.meal?.sides) return;
+
+    const newSides = slot.meal.sides.filter((s) => s.id !== complementId);
+    const newDays = [...plan.days];
+    newDays[dayIndex] = {
+      ...newDays[dayIndex],
+      planningState: newSides.length > 0 ? "meal" : "assigned",
+      meal: {
+        ...slot.meal,
+        sides: newSides.length > 0 ? newSides : undefined,
+      },
+    };
+    const updatedPlan = { ...plan, days: newDays };
+    setPlan(updatedPlan);
+    savePlanNow(updatedPlan);
   }
 
   // ----- context/notes helpers -----
@@ -814,19 +970,24 @@ function MealsPageInner() {
               (c) => c.effect === "skip-meal"
             );
             const isWeekend = ["Friday", "Saturday", "Sunday"].includes(wd.dayOfWeek);
-            const hist = dayHistory[wd.date] ?? null;
+            const today = new Date().toISOString().split("T")[0];
+            const isPast = wd.date < today;
+            const isCooked = isFilled && cookedSlots.has(`${slot!.recipeId}:${wd.date}`);
+            const isClickable = isSelectable ? !isSkipped : (isFilled && !isSkipped);
             return (
               <div
                 key={wd.date}
-                onClick={() => isSelectable && !isSkipped && handleSlotClick(i)}
-                className={`rounded-2xl p-3.5 min-h-[120px] flex flex-col transition-all ${
+                onClick={() => isClickable && handleSlotClick(i)}
+                className={`rounded-xl border p-3 min-h-[110px] flex flex-col transition-all ${
                   isSkipped
                     ? "bg-stone-100/80 dark:bg-stone-900/60 opacity-50"
                     : isSelectable
-                      ? "cursor-pointer bg-amber-50/60 dark:bg-amber-950/20 ring-1 ring-amber-300/60 dark:ring-amber-700/40 hover:bg-amber-50 dark:hover:bg-amber-900/30"
-                      : isFilled
-                        ? "bg-white dark:bg-stone-900 shadow-[0_1px_3px_rgba(0,0,0,0.06)]"
-                        : "bg-white/70 dark:bg-stone-900/50 shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
+                      ? "cursor-pointer border-amber-400 dark:border-amber-600 bg-amber-50/50 dark:bg-amber-950/30 hover:bg-amber-50 dark:hover:bg-amber-900/30 shadow-sm"
+                      : isCooked
+                        ? "bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/50 shadow-sm cursor-pointer"
+                        : isFilled
+                          ? "bg-white dark:bg-stone-900 border-stone-300 dark:border-stone-700 shadow-sm cursor-pointer"
+                          : "bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-800"
                 }`}
               >
                 <div className={`text-[11px] font-medium ${isWeekend ? "text-stone-600 dark:text-stone-300" : "text-stone-400 dark:text-stone-500"}`}>
@@ -884,8 +1045,36 @@ function MealsPageInner() {
                     <p className="text-[13px] font-serif text-stone-700 dark:text-stone-200 line-clamp-2 leading-snug">
                       {slot?.recipeName}
                     </p>
+                    {isCooked && (
+                      <span className="mt-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
+                        Cooked
+                      </span>
+                    )}
+                    {/* Accepted sides */}
+                    {slot?.meal?.sides && slot.meal.sides.length > 0 && (
+                      <div className="mt-1 space-y-0.5">
+                        {slot.meal.sides.map((side) => (
+                          <div key={side.id} className="flex items-center gap-1">
+                            <span className="text-[10px] text-violet-600 dark:text-violet-400 leading-tight line-clamp-1">
+                              + {side.name}
+                            </span>
+                            {!isCooked && (
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleRemoveComplement(i, side.id);
+                                }}
+                                className="text-[10px] text-stone-300 dark:text-stone-600 hover:text-red-400 transition-colors shrink-0"
+                              >
+                                &times;
+                              </button>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                     {/* Serve-with notes */}
-                    {slot?.meal?.serveWith && slot.meal.serveWith.length > 0 && editingServeWith !== i && (
+                    {!isCooked && slot?.meal?.serveWith && slot.meal.serveWith.length > 0 && editingServeWith !== i && (
                       <button
                         onClick={(e) => { e.stopPropagation(); setEditingServeWith(i); }}
                         className="mt-1 text-[10px] text-stone-400 dark:text-stone-500 text-left leading-tight hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
@@ -893,7 +1082,7 @@ function MealsPageInner() {
                         + {slot.meal.serveWith.join(", ")}
                       </button>
                     )}
-                    {!slot?.meal?.serveWith?.length && editingServeWith !== i && (
+                    {!isCooked && !slot?.meal?.serveWith?.length && editingServeWith !== i && (
                       <button
                         onClick={(e) => { e.stopPropagation(); setEditingServeWith(i); }}
                         className="mt-1 text-[10px] text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors text-left"
@@ -908,15 +1097,44 @@ function MealsPageInner() {
                         onClose={() => setEditingServeWith(null)}
                       />
                     )}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleClearSlot(i);
-                      }}
-                      className="mt-1.5 text-[10px] text-stone-300 dark:text-stone-600 hover:text-red-400 self-end transition-colors"
-                    >
-                      clear
-                    </button>
+                    {!isCooked && (
+                      <div className="mt-1 flex items-center justify-end gap-2 flex-wrap">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleExpandDay(i);
+                          }}
+                          className={`text-[10px] transition-colors ${
+                            expandingDay === i
+                              ? "text-violet-600 dark:text-violet-400 font-medium"
+                              : "text-violet-500 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300"
+                          }`}
+                        >
+                          {expandingDay === i ? "close" : slot?.planningState === "meal" ? "edit meal" : "turn into meal"}
+                        </button>
+                        {isPast && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleMarkCooked(i);
+                            }}
+                            disabled={markingCooked === i}
+                            className="text-[10px] text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors disabled:opacity-50"
+                          >
+                            {markingCooked === i ? "saving..." : "mark cooked"}
+                          </button>
+                        )}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleClearSlot(i);
+                          }}
+                          className="text-[10px] text-stone-400 hover:text-red-500 transition-colors"
+                        >
+                          clear
+                        </button>
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <div className="flex-1 flex items-center justify-center">
@@ -929,6 +1147,20 @@ function MealsPageInner() {
             );
           })}
         </div>
+        )}
+
+        {/* Complement picker — Turn into meal */}
+        {expandingDay !== null && plan?.days[expandingDay]?.recipeId && (
+          <ComplementPicker
+            dayIndex={expandingDay}
+            slot={plan.days[expandingDay]}
+            complements={expandComplements}
+            loading={expandLoading}
+            acceptedSides={plan.days[expandingDay].meal?.sides || []}
+            onAccept={(complement) => handleAcceptComplement(expandingDay, complement)}
+            onRemove={(complementId) => handleRemoveComplement(expandingDay, complementId)}
+            onClose={() => { setExpandingDay(null); setExpandComplements(null); }}
+          />
         )}
 
         {/* Empty state — no plan and no candidates yet */}
@@ -1018,25 +1250,27 @@ function MealsPageInner() {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {candidates.map((r) => {
-                const isAssigned = plan?.days.some((d) => d?.recipeId === r.id) ?? false;
-                return (
-                  <RecipeCard
-                    key={r.id}
-                    recipe={r}
-                    isSelected={selectedRecipe?.id === r.id}
-                    isAssigned={isAssigned}
-                    feedback={feedbackMap[r.id] ?? null}
-                    onSelect={() =>
-                      setSelectedRecipe(
-                        selectedRecipe?.id === r.id ? null : r
-                      )
-                    }
-                    onQuickView={() => handleQuickView(r.id)}
-                    onFeedback={(type) => handleFeedback(r.id, type)}
-                  />
-                );
-              })}
+              {candidates
+                .filter((r) => !filterLowCal || r.lowCalorie)
+                .map((r) => {
+                  const isAssigned = plan?.days.some((d) => d?.recipeId === r.id) ?? false;
+                  return (
+                    <RecipeCard
+                      key={r.id}
+                      recipe={r}
+                      isSelected={selectedRecipe?.id === r.id}
+                      isAssigned={isAssigned}
+                      feedback={feedbackMap[r.id] ?? null}
+                      onSelect={() =>
+                        setSelectedRecipe(
+                          selectedRecipe?.id === r.id ? null : r
+                        )
+                      }
+                      onQuickView={() => handleQuickView(r.id)}
+                      onFeedback={(value) => handleFeedback(r.id, value)}
+                    />
+                  );
+                })}
             </div>
           </div>
         )}
@@ -1265,7 +1499,7 @@ function RecipeCard({
   feedback: "up" | "down" | null;
   onSelect: () => void;
   onQuickView: () => void;
-  onFeedback: (type: "up" | "down") => void;
+  onFeedback: (value: "up" | "down") => void;
 }) {
   const isVeg = recipe.dietary.some(
     (t) => t === "vegan" || t === "vegetarian"
@@ -1275,12 +1509,10 @@ function RecipeCard({
     <div
       className={`group rounded-2xl overflow-hidden transition-all ${
         isAssigned
-          ? "opacity-35 pointer-events-none bg-white dark:bg-stone-900"
-          : feedback === "down"
-            ? "opacity-40 bg-white dark:bg-stone-900"
-            : isSelected
-              ? "ring-2 ring-stone-400/40 dark:ring-stone-500/40 shadow-md"
-              : "bg-white dark:bg-stone-900 shadow-[0_1px_4px_rgba(0,0,0,0.05)] hover:shadow-[0_2px_12px_rgba(0,0,0,0.08)]"
+          ? "opacity-40 grayscale pointer-events-none bg-white dark:bg-stone-900 shadow-sm"
+          : isSelected
+            ? "ring-2 ring-amber-500/40 shadow-md"
+            : "bg-white dark:bg-stone-900 shadow-sm hover:shadow-md"
       }`}
     >
       {/* Image */}
@@ -1339,47 +1571,44 @@ function RecipeCard({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100/80 dark:border-stone-800/60">
-          <div className="flex items-center gap-1.5">
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100 dark:border-stone-800">
+          <div className="flex items-center gap-1">
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onQuickView();
               }}
-              className="text-[11px] text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+              className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
             >
-              View
+              View recipe
             </button>
-            <div className="flex items-center gap-0.5 ml-1">
-              <button
-                onClick={(e) => { e.stopPropagation(); onFeedback("up"); }}
-                title="Like"
-                className={`p-1 rounded transition-colors ${
-                  feedback === "up"
-                    ? "text-green-600 dark:text-green-400"
-                    : "text-stone-300 dark:text-stone-700 hover:text-green-500 dark:hover:text-green-400"
-                }`}
-              >
-                <svg className="w-3.5 h-3.5" fill={feedback === "up" ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
-                </svg>
-              </button>
-              <button
-                onClick={(e) => { e.stopPropagation(); onFeedback("down"); }}
-                title="Dislike"
-                className={`p-1 rounded transition-colors ${
-                  feedback === "down"
-                    ? "text-red-500 dark:text-red-400"
-                    : "text-stone-300 dark:text-stone-700 hover:text-red-400 dark:hover:text-red-400"
-                }`}
-              >
-                <svg className="w-3.5 h-3.5" fill={feedback === "down" ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3H10z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 2h3a2 2 0 012 2v7a2 2 0 01-2 2h-3" />
-                </svg>
-              </button>
-            </div>
+            <span className="text-stone-200 dark:text-stone-700 mx-1">|</span>
+            <button
+              onClick={(e) => { e.stopPropagation(); onFeedback("up"); }}
+              title={feedback === "up" ? "Remove thumbs up" : "Thumbs up — welcome back"}
+              className={`p-1 rounded transition-colors ${
+                feedback === "up"
+                  ? "text-emerald-500"
+                  : "text-stone-300 dark:text-stone-600 hover:text-emerald-400"
+              }`}
+            >
+              <svg className="w-3.5 h-3.5" fill={feedback === "up" ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z" />
+              </svg>
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); onFeedback("down"); }}
+              title={feedback === "down" ? "Remove thumbs down" : "Thumbs down — do not suggest again"}
+              className={`p-1 rounded transition-colors ${
+                feedback === "down"
+                  ? "text-red-400"
+                  : "text-stone-300 dark:text-stone-600 hover:text-red-400"
+              }`}
+            >
+              <svg className="w-3.5 h-3.5" fill={feedback === "down" ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3H10z" />
+              </svg>
+            </button>
           </div>
           <button
             onClick={onSelect}
@@ -1395,6 +1624,172 @@ function RecipeCard({
             {isAssigned ? "Assigned" : isSelected ? "Selected" : "Add to plan"}
           </button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// ----- Complement Picker (Turn into meal) -----
+
+function ComplementPicker({
+  dayIndex,
+  slot,
+  complements,
+  loading,
+  acceptedSides,
+  onAccept,
+  onRemove,
+  onClose,
+}: {
+  dayIndex: number;
+  slot: DaySlot;
+  complements: { starters: RecipeOption[]; sides: RecipeOption[]; desserts: RecipeOption[] } | null;
+  loading: boolean;
+  acceptedSides: { id: string; name: string }[];
+  onAccept: (recipe: RecipeOption) => void;
+  onRemove: (id: string) => void;
+  onClose: () => void;
+}) {
+  const isWeekend = slot.type === "weekend";
+  const acceptedIds = new Set(acceptedSides.map((s) => s.id));
+
+  return (
+    <div className="rounded-xl border border-violet-200 dark:border-violet-800/50 bg-white dark:bg-stone-900 p-5 mb-8">
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <h3 className="text-sm font-medium text-stone-800 dark:text-stone-100">
+            Turn into meal — {slot.dayOfWeek} {slot.recipeName && (
+              <span className="font-serif text-stone-500 dark:text-stone-400">({slot.recipeName})</span>
+            )}
+          </h3>
+          <p className="text-xs text-stone-400 dark:text-stone-500 mt-0.5">
+            {isWeekend ? "Pick starters, sides, or desserts" : "Pick starters or sides"} to build out this meal.
+          </p>
+        </div>
+        <button
+          onClick={onClose}
+          className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
+        >
+          Close
+        </button>
+      </div>
+
+      {/* Accepted complements */}
+      {acceptedSides.length > 0 && (
+        <div className="mb-4 flex flex-wrap gap-2">
+          {acceptedSides.map((side) => (
+            <span
+              key={side.id}
+              className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300"
+            >
+              {side.name}
+              <button
+                onClick={() => onRemove(side.id)}
+                className="text-violet-400 hover:text-red-400 transition-colors"
+              >
+                &times;
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+
+      {loading ? (
+        <div className="py-8 text-center">
+          <p className="text-sm text-stone-400 font-serif italic">Loading suggestions...</p>
+        </div>
+      ) : complements ? (
+        <div className="space-y-5">
+          {complements.starters.length > 0 && (
+            <ComplementSection
+              label="Starters"
+              items={complements.starters}
+              acceptedIds={acceptedIds}
+              onAccept={onAccept}
+            />
+          )}
+          {complements.sides.length > 0 && (
+            <ComplementSection
+              label="Sides"
+              items={complements.sides}
+              acceptedIds={acceptedIds}
+              onAccept={onAccept}
+            />
+          )}
+          {isWeekend && complements.desserts.length > 0 && (
+            <ComplementSection
+              label="Desserts"
+              items={complements.desserts}
+              acceptedIds={acceptedIds}
+              onAccept={onAccept}
+            />
+          )}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function ComplementSection({
+  label,
+  items,
+  acceptedIds,
+  onAccept,
+}: {
+  label: string;
+  items: RecipeOption[];
+  acceptedIds: Set<string>;
+  onAccept: (recipe: RecipeOption) => void;
+}) {
+  return (
+    <div>
+      <h4 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-2">
+        {label}
+      </h4>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {items.map((r) => {
+          const isAccepted = acceptedIds.has(r.id);
+          return (
+            <div
+              key={r.id}
+              className={`flex items-center gap-3 rounded-lg border p-2.5 transition-all ${
+                isAccepted
+                  ? "border-violet-300 dark:border-violet-700 bg-violet-50/50 dark:bg-violet-950/20"
+                  : "border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700"
+              }`}
+            >
+              {r.image && (
+                <Image
+                  src={r.image}
+                  alt={r.name}
+                  width={48}
+                  height={48}
+                  className="rounded-md object-cover w-12 h-12 shrink-0"
+                />
+              )}
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-serif text-stone-800 dark:text-stone-100 line-clamp-2 leading-snug">
+                  {r.name}
+                </p>
+                <p className="text-[10px] text-stone-400 dark:text-stone-500 mt-0.5">
+                  {r.source?.cookbook}
+                  {r.cuisine && r.cuisine !== "Other" && <span> · {r.cuisine}</span>}
+                </p>
+              </div>
+              <button
+                onClick={() => onAccept(r)}
+                disabled={isAccepted}
+                className={`shrink-0 text-xs px-2.5 py-1 rounded-full font-medium transition-colors ${
+                  isAccepted
+                    ? "bg-violet-200 dark:bg-violet-800 text-violet-500 dark:text-violet-400 cursor-not-allowed"
+                    : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-violet-100 dark:hover:bg-violet-900/30 hover:text-violet-700 dark:hover:text-violet-300"
+                }`}
+              >
+                {isAccepted ? "Added" : "Add"}
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

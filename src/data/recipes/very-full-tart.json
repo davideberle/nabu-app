@@ -65,19 +65,15 @@
     "Preheat the oven to 450°F. Use a small serrated knife to cut around the stem of the peppers and lift it out along with the seeds.",
     "Shake the peppers to remove all the remaining seeds; discard the stems and seeds. Place the two peppers in a small ovenproof dish, drizzle with a little oil and put on the top shelf in the oven.",
     "Mix the eggplant in a bowl with 4 tablespoons of olive oil and some salt and pepper. Spread in a large baking pan and place in the oven on the shelf beneath the peppers.",
-    "After 12 minutes add the sweet potato dice to the eggplant pan and stir gently. Return to the oven to roast for another",
-    "12 minutes. Then add the zucchini to the pan, stir and roast for a further 10 to 12 minutes. At this point the peppers should be brown and the rest of the vegetables cooked. Remove all from the oven and reduce the temperature to 325°F. Cover the peppers with foil and cool, then peel and tear roughly into strips.",
+    "After 12 minutes add the sweet potato dice to the eggplant pan and stir gently. Return to the oven to roast for another 12 minutes. Then add the zucchini to the pan, stir and roast for a further 10 to 12 minutes. At this point the peppers should be brown and the rest of the vegetables cooked. Remove all from the oven and reduce the temperature to 325°F. Cover the peppers with foil and cool, then peel and tear roughly into strips.",
     "Heat 2 tablespoons of olive oil in a frying pan on medium heat.",
     "Sauté the onions with the bay leaves and some salt for 25 minutes, stirring occasionally, until they turn brown, soft and sweet.",
     "Remove from the heat, discard the bay leaves and set aside.",
-    "Lightly grease a 9-inch loose-bottomed tart pan. Roll out the pie crust dough to a circle roughly",
-    "¹8 inch thick and large enough to line the pan, plus extra to hang over the rim. Carefully line the pan with the dough, pressing it into the corners and leaving the excess hanging over the top edge. Line the dough with a large sheet of parchment paper and fill it with pie weights or dried beans. Bake the crust for 30 minutes. Carefully remove the paper with the weights, then bake for 10 to 15 minutes more, or until it turns golden brown. Remove and allow to cool a little.",
+    "Lightly grease a 9-inch loose-bottomed tart pan. Roll out the pie crust dough to a circle roughly ¹8 inch thick and large enough to line the pan, plus extra to hang over the rim. Carefully line the pan with the dough, pressing it into the corners and leaving the excess hanging over the top edge. Line the dough with a large sheet of parchment paper and fill it with pie weights or dried beans. Bake the crust for 30 minutes. Carefully remove the paper with the weights, then bake for 10 to 15 minutes more, or until it turns golden brown. Remove and allow to cool a little.",
     "Scatter the cooked onion over the bottom of the crust and top with the roasted vegetables, arranging them evenly. Scatter half the thyme leaves over. Next, dot the veg with small chunks of both cheeses and then with the tomato halves, cut-side up.",
     "Whisk the eggs and cream in a small bowl with some salt and pepper. Carefully pour this mix into the tart; the top layer of tomatoes and cheese should remain exposed. Scatter the remaining thyme over the top. Place in the oven and bake for",
     "35 to 45 minutes, or until the filling sets and turns golden.",
-    "Remove and allow to rest for at least 10 minutes before releasing the tart from the pan and serving.",
-    "This brilliant brunch grub relies on chipotles – smoke-dried jalapeño peppers – which give out a terrific smoky flavor that is warm, earthy and not too spicy. This Mexican staple will add depth and pungency to all stew-type dishes. You can find them at penzeys.com and other online suppliers of chiles.",
-    "Scrambled smoky duck eggs on sourdough"
+    "Remove and allow to rest for at least 10 minutes before releasing the tart from the pan and serving."
   ],
   "time": {
     "total": 30
@@ -89,6 +85,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/very-full-tart.jpg"
+  "image": "/recipes/very-full-tart.jpg",
+  "cuisine": "Middle Eastern"
 }

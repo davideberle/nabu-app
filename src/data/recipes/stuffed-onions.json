@@ -58,7 +58,7 @@
     "Place the stock and white wine in a medium saucepan and bring to the boil. Meanwhile, trim ¼ inch off the top and bottom of the onions. Cut them lengthways in half and remove the brown skin.",
     "Gently remove most of the insides (keep these for another use), retaining two or three of the outer layers. Carefully separate the outer layers from each other and place them in the simmering stock, a few at a time. Cook for 3 to 4 minutes, or until just tender.",
     "Drain well and cool slightly. Keep the stock.",
-    "Use a coarse cheese grater to grate the tomatoes (you'll be left with most of the skin in your hand; discard it). Place the grated tomato in a large bowl and add the breadcrumbs, feta, parsley, olive oil, garlic, green onions, salt and some pepper.",
+    "Use a coarse cheese grater to grate the tomatoes (you’ll be left with most of the skin in your hand; discard it). Place the grated tomato in a large bowl and add the breadcrumbs, feta, parsley, olive oil, garlic, green onions, salt and some pepper.",
     "Fill each onion layer generously with stuffing. Pull the sides together so you end up with a fat cigar shape. Place the stuffed onions, seam-side down, in the buttered dish and pour over about ⅔ cup of the reserved stock, just to cover the bottom of the dish.",
     "Bake for 45 to 50 minutes, or until the onions are soft and lightly colored and the stuffing is bubbling; add more stock if they dry completely before the end of the cooking process. Drizzle with oil and serve warm."
   ],
@@ -72,6 +72,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/stuffed-onions.jpg"
+  "image": "/recipes/stuffed-onions.jpg",
+  "cuisine": "Middle Eastern"
 }

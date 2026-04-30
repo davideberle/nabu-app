@@ -6,60 +6,75 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "leaves. Don’t throw out the leaves. Use them for salads, or sauté with a little olive oil, garlic and caraway seeds",
+  "intro": "Some wonderful beets are available in the summer months: small, firm bulbs, sold with the stalks and the leaves. Don’t throw out the leaves. Use them for salads, or sauté with a little olive oil, garlic and caraway seeds and serve warm with a dollop of crème fraîche. If you manage to get young beets you may want to roast them in the oven, covered in foil, rather than boil them as described below. They are more flavorful this way. The preserved lemon relish can be used in loads of other contexts. Try mixing with cooked potato to create a salad or serving alongside oily fish.",
   "ingredients": [
     {
       "item": "large beets",
       "amount": "2 lbs"
     },
     {
-      "item": "heaped tbsp chopped dill",
-      "amount": "4"
+      "item": "chopped dill",
+      "amount": "4 heaped tbsp"
     },
     {
       "item": "small red onion, very thinly sliced",
       "amount": "1"
     },
     {
+      "item": "Greek yogurt",
+      "amount": "⅔ cup"
+    },
+    {
       "item": "yellow bell peppers",
-      "amount": "2"
+      "amount": "2",
+      "group": "relish"
     },
     {
       "item": "olive oil",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "relish"
     },
     {
-      "item": "coriander seeds one 14-oz can chopped plum tomatoes (with their juices)",
-      "amount": "1½ tsp"
+      "item": "coriander seeds",
+      "amount": "1½ tsp",
+      "group": "relish"
+    },
+    {
+      "item": "chopped plum tomatoes (with their juices)",
+      "amount": "one 14-oz can",
+      "group": "relish"
     },
     {
       "item": "garlic cloves, crushed",
-      "amount": "2"
+      "amount": "2",
+      "group": "relish"
     },
     {
-      "item": "sugar salt and black pepper",
-      "amount": "1 tsp"
+      "item": "sugar",
+      "amount": "1 tsp",
+      "group": "relish"
+    },
+    {
+      "item": "salt and black pepper",
+      "group": "relish"
     },
     {
       "item": "chopped preserved lemon",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "relish"
     },
     {
       "item": "each chopped parsley and cilantro",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "relish"
     }
   ],
   "method": [
-    "Start by cooking the beets whole in plenty of boiling water for",
-    "1 to 2 hours, or until they are tender; check by piercing them with a knife. Allow them to cool down completely before you peel them and cut into wedges.",
-    "To make the relish. Preheat the grill to high. Use a small knife to cut around the stems of the peppers; carefully pull out the stems with the seeds and discard. Place the peppers on a grill pan lined with foil and grill for up to 30 minutes, or until they are cooked inside and black on the outside, turning them over once during the cooking. Fold the edges of the foil over the peppers to enclose them completely, then leave to cool down.",
-    "Peel them and cut into strips.",
+    "Start by cooking the beets whole in plenty of boiling water for 1 to 2 hours, or until they are tender; check by piercing them with a knife. Allow them to cool down completely before you peel them and cut into wedges.",
+    "To make the relish. Preheat the grill to high. Use a small knife to cut around the stems of the peppers; carefully pull out the stems with the seeds and discard. Place the peppers on a grill pan lined with foil and grill for up to 30 minutes, or until they are cooked inside and black on the outside, turning them over once during the cooking. Fold the edges of the foil over the peppers to enclose them completely, then leave to cool down. Peel them and cut into strips.",
     "Pour the olive oil into a medium saucepan, heat up and fry the coriander seeds for 30 seconds. Add the tomatoes, garlic, sugar and some salt and pepper and simmer for 15 minutes. Add the preserved lemon and continue simmering for 10 minutes.",
     "Remove from the heat and stir in the herbs and yellow pepper strips. Allow to cool down completely.",
-    "When you are ready to finish the salad, transfer the cool beet wedges to a mixing bowl and add the relish, dill, red onion and some salt and pepper. Stir well, then taste for seasoning. Just before you serve, add the yogurt and swirl it through gently.",
-    "Don’t stir too much, so you get a white and red marbled effect rather than uniform pink.",
-    "Jersey Royal potatoes are at their peak in spring and early summer, which is just as well since they make a stunning picnic salad. This one is a poshed-up version of the ordinary spud salad and it’s just as satisfying.",
-    "Royal potato salad"
+    "When you are ready to finish the salad, transfer the cool beet wedges to a mixing bowl and add the relish, dill, red onion and some salt and pepper. Stir well, then taste for seasoning. Just before you serve, add the yogurt and swirl it through gently. Don’t stir too much, so you get a white and red marbled effect rather than uniform pink."
   ],
   "time": {
     "total": 30

@@ -5,8 +5,8 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "stunning picnic salad. This one is a poshed-up version of the ordinary spud salad and it’s just as satisfying.",
+  "servings": "serves 4–6",
+  "intro": "Jersey Royal potatoes are at their peak in spring and early summer, which is just as well since they make a stunning picnic salad. This one is a poshed-up version of the ordinary spud salad and it’s just as satisfying.",
   "ingredients": [
     {
       "item": "quail’s eggs",
@@ -29,6 +29,10 @@
       "amount": "½ cup"
     },
     {
+      "item": "pine nuts",
+      "amount": "¹⁄₃ cup"
+    },
+    {
       "item": "grated Parmesan (2 oz)",
       "amount": "½ cup"
     },
@@ -41,19 +45,25 @@
       "amount": "1 cup"
     },
     {
-      "item": "white wine vinegar bunch of sorrel (or mint) leaves, finely shredded salt and black pepper",
+      "item": "white wine vinegar",
       "amount": "½ tsp"
+    },
+    {
+      "item": "bunch of sorrel (or mint) leaves, finely shredded",
+      "amount": ""
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
     }
   ],
   "method": [
     "Place the quail’s eggs in a saucepan, cover with cold water and bring to the boil. Simmer for between 30 seconds (soft-boiled) and 2 minutes (hard-boiled), depending on how you like them cooked. Refresh in cold water, then peel.",
     "Blanch the peas in boiling water for 30 seconds, then drain and refresh. Set aside.",
-    "In a separate pan of boiling water, cook the potatoes for 15 to",
-    "20 minutes, or until they are soft but not falling apart.",
+    "In a separate pan of boiling water, cook the potatoes for 15 to 20 minutes, or until they are soft but not falling apart.",
     "While the potatoes are cooking place the basil, parsley, pine nuts, Parmesan and garlic in a food processor and blitz to a paste. Add the oil and pulse until you get a runny pesto. Pour into a large bowl.",
     "Drain the potatoes, then cut in two as soon as you can handle them (they will absorb more flavor when hot). Add to the bowl and toss with the pesto, vinegar, sorrel and peas. Mix well, even crushing the potatoes slightly, so all the flavors mix. Taste and adjust the seasoning; be generous with pepper.",
-    "Cut the eggs in half and gently fold into the salad. Garnish with chopped parsley.",
-    "Filling a tart with potatoes is a real treat for potato lovers. Serve it with a green salad and you don’t need much else. You can use commercial sun-dried tomatoes in oil to save yourself making the oven-dried tomatoes."
+    "Cut the eggs in half and gently fold into the salad. Garnish with chopped parsley."
   ],
   "time": {
     "total": 30

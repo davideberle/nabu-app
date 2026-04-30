@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "It is essential for every good cook to have a solid lettuce salad up their sleeve, a good in-between course to",
+  "intro": "It is essential for every good cook to have a solid lettuce salad up their sleeve, a good in-between course to cleanse the palate and lighten the spirits. This one should do the trick; it also makes for a good starter. I am not very fond of sun-dried tomatoes, particularly not for salads – they are harsh, both in flavor and texture – but I love semi-dried tomatoes. You can make them yourself (see Castelluccio Lentils with Tomatoes and Gorgonzola, page 222) and store in olive oil for quite some time, or buy one of the commercial varieties that go by funny names such as \"sun-blushed\" or \"sun-kissed.\"",
   "ingredients": [
     {
       "item": "garlic clove, crushed",
@@ -21,19 +21,23 @@
       "amount": "1½ tbsp"
     },
     {
-      "item": "grapeseed oil salt and black pepper",
+      "item": "grapeseed oil",
       "amount": "1 tbsp"
     },
     {
-      "item": "of butter lettuce, leaves separated",
+      "item": "salt and black pepper",
+      "amount": ""
+    },
+    {
+      "item": "butter lettuce, leaves separated",
       "amount": "1 head"
     },
     {
-      "item": "of curly lettuce, leaves separated",
+      "item": "curly lettuce, leaves separated",
       "amount": "½ head"
     },
     {
-      "item": "of radicchio, leaves separated",
+      "item": "radicchio, leaves separated",
       "amount": "1 head"
     },
     {
@@ -41,12 +45,8 @@
       "amount": "3"
     },
     {
-      "item": "radishes, trimmed and cut into",
+      "item": "radishes, trimmed and cut into ⅛-inch-thick slices",
       "amount": "20"
-    },
-    {
-      "item": "8-inch-thick slices",
-      "amount": ""
     },
     {
       "item": "semi-dried tomatoes, whole or roughly torn",
@@ -60,11 +60,7 @@
   "method": [
     "To make the dressing. In a small bowl whisk together the ingredients, being quite generous with the salt and pepper.",
     "Wash the lettuce leaves, dry well and keep whole or tear into large pieces. Place in a large mixing bowl and add the radicchio, green onions, radishes and tomatoes.",
-    "Just before serving, pour the dressing over the salad and toss gently. Transfer to a large mixing bowl and sprinkle the capers over the top.",
-    "148 | Leaves, Cooked and Raw",
-    "I always want to add sharpness to slow-cooked, stewy-type dishes, something to break down the heavy seriousness of the dish and introduce a little refreshing edge to it – a bit of humor even. The Italians invented gremolata – chopped garlic, parsley and lemon zest – which they use to finish off the famous ossobuco alla milanese. Here, though, I don’t really need this kind of thing as I include heaps of sharpness in the dish from the start, in the form of tamarind and chard (for more on chard, see Chard and Saffron",
-    "Omelettes on page 142). Still, I can’t resist the temptation of a little lemon juice at the end, just in case; some chile flakes will also give it a kick if you want to add them. This is a perfect main course for when it gets a bit cloudy.",
-    "Swiss chard, chickpea and tamarind stew"
+    "Just before serving, pour the dressing over the salad and toss gently. Transfer to a large mixing bowl and sprinkle the capers over the top."
   ],
   "time": {
     "total": 30

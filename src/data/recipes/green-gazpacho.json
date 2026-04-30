@@ -86,14 +86,10 @@
     }
   ],
   "method": [
-    "To make the croutons. Preheat the oven to 375°F. Cut the bread into",
-    "¾-inch cubes and toss them with the oil and a bit of salt.",
+    "To make the croutons. Preheat the oven to 375°F. Cut the bread into ¾-inch cubes and toss them with the oil and a bit of salt.",
     "Spread on a baking sheet and bake for about 10 minutes, or until the croutons turn golden and crisp. Remove from the oven and allow to cool down.",
     "Roughly chop the celery, bell peppers, cucumbers, bread, chile and garlic. Place in a blender and add the sugar, walnuts, spinach, basil, parsley, vinegar, oil, yogurt, most of the water, half the ice cubes, the salt and some white pepper. Blitz the soup until smooth. Add more water, if needed, to get your preferred consistency. Taste the soup and adjust the seasoning.",
-    "Lastly, add the remaining ice and pulse once or twice, just to crush it a little. Serve at once, with the croutons.",
-    "182 | Green Things",
-    "This traditional way with asparagus is probably my favorite. It is simple and therefore relies on the quality of the asparagus itself more than anything else. See if you can get the spears from a farmers’ market or the shop at a farm where they have been freshly picked. Roughly chopped tarragon sprinkled on top will make a good addition.",
-    "Asparagus mimosa"
+    "Lastly, add the remaining ice and pulse once or twice, just to crush it a little. Serve at once, with the croutons."
   ],
   "time": {
     "total": 30
@@ -105,6 +101,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/green-gazpacho.jpg"
+  "image": "/recipes/green-gazpacho.jpg",
+  "cuisine": "Middle Eastern"
 }

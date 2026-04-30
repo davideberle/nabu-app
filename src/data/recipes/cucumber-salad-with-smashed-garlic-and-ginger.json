@@ -5,24 +5,28 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "pulses, a spicy vegetable stew or a roasted cut of lean meat. So here’s a perfect alternative, a dish shouting",
+  "servings": "serves 4–6 as a condiment or a side dish",
+  "intro": "I have a terrible habit of adding yogurt or sour cream to almost anything that's been cooking for a long time, has got a lot of heat, is slightly greasy or just seems a bit heavy to me. Terrible – because I know not everyone is keen on adding dairy products left, right and center, particularly not to a perfectly nice dish of pulses, a spicy vegetable stew or a roasted cut of lean meat. So here's a perfect alternative, a dish shouting freshness that would go well with plenty of hearty dishes. Try it with Sweet Potato Cakes (page 32) or with Coconut Rice with Sambal and Okra (page 230).",
   "ingredients": [
     {
       "item": "rice wine vinegar",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "dressing"
     },
     {
       "item": "sugar",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "dressing"
     },
     {
       "item": "sunflower oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "dressing"
     },
     {
       "item": "toasted sesame oil",
-      "amount": "2 tsp"
+      "amount": "2 tsp",
+      "group": "dressing"
     },
     {
       "item": "small red onion, very thinly sliced",
@@ -30,7 +34,7 @@
     },
     {
       "item": "fresh ginger, peeled and sliced",
-      "amount": "½ inches"
+      "amount": "1½ inches"
     },
     {
       "item": "Maldon sea salt",
@@ -41,12 +45,8 @@
       "amount": "2"
     },
     {
-      "item": "small (or 8 mini) cucumbers (1",
+      "item": "small (or 8 mini) cucumbers (1¼ lbs), peeled",
       "amount": "4"
-    },
-    {
-      "item": "lbs), peeled",
-      "amount": "¼"
     },
     {
       "item": "toasted sesame seeds",
@@ -61,12 +61,8 @@
     "To make the dressing. Whisk together all the dressing ingredients in a medium mixing bowl.",
     "Add the sliced red onion, mix well and leave aside to marinate for about an hour.",
     "Place the ginger and salt in a mortar and pound well with a pestle. Add the garlic and continue pounding until it is also well crushed and broken into pieces (stop pounding before it disintegrates into a paste). Use a spatula to scrape the contents of the mortar into the bowl with the onion and dressing. Stir together.",
-    "Cut the cucumbers lengthways in half, then cut each half on an angle into",
-    "¼-inch-thick slices. Add the cucumber to the bowl, followed by the sesame seeds and cilantro. Stir well and leave to sit for 10 minutes.",
-    "Before serving, stir the salad again, tip out some of the liquid that has accumulated at the bottom of the bowl and adjust the seasoning.",
-    "168 | Green Things",
-    "This is a majestic dish, perfect for starting off a light summer’s supper. Eat it warm or at room temperature, on its own or with some good mayonnaise.",
-    "Lemony globe artichokes"
+    "Cut the cucumbers lengthways in half, then cut each half on an angle into ¼-inch-thick slices. Add the cucumber to the bowl, followed by the sesame seeds and cilantro. Stir well and leave to sit for 10 minutes.",
+    "Before serving, stir the salad again, tip out some of the liquid that has accumulated at the bottom of the bowl and adjust the seasoning."
   ],
   "time": {
     "total": 30

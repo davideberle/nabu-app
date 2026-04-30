@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "Yes, there’s a long list of ingredients here, but I am ready to be extra-kind and allow you to adapt the recipe,",
+  "intro": "Yes, there's a long list of ingredients here, but I am ready to be extra-kind and allow you to adapt the recipe, to use commercial Thai curry paste instead of having to schlep and get all the individual items. This \"dry\" variation of a green curry makes one of the most satisfying supper dishes for the late winter and early months of spring.",
   "ingredients": [
     {
       "item": "¾-inch piece of galangal (or fresh ginger), peeled and chopped",
@@ -14,11 +14,11 @@
     },
     {
       "item": "medium fresh green chiles, seeded and roughly chopped",
-      "amount": "½"
+      "amount": "1½"
     },
     {
       "item": "lemongrass stalks, outer layer and tough ends removed, roughly chopped",
-      "amount": "½"
+      "amount": "1½"
     },
     {
       "item": "garlic clove, crushed",
@@ -33,12 +33,12 @@
       "amount": "¾ tbsp"
     },
     {
-      "item": "cumin seeds, finely ground grated zest and juice of",
+      "item": "cumin seeds, finely ground",
       "amount": "½ tsp"
     },
     {
-      "item": "lime",
-      "amount": "½"
+      "item": "grated zest and juice of ½ lime",
+      "amount": ""
     },
     {
       "item": "small bunch of cilantro (with stalks and roots)",
@@ -50,15 +50,19 @@
     },
     {
       "item": "purple sprouting broccoli or broccolini",
-      "amount": "¼ lbs"
+      "amount": "1¼ lbs"
     },
     {
       "item": "red onion, finely chopped",
       "amount": "1"
     },
     {
-      "item": "vegetable oil salt",
+      "item": "vegetable oil",
       "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": ""
     },
     {
       "item": "palm sugar",
@@ -70,7 +74,7 @@
     },
     {
       "item": "coconut milk",
-      "amount": "¾ cups"
+      "amount": "1¾ cups"
     },
     {
       "item": "wide rice noodles (or rice sticks)",
@@ -92,16 +96,10 @@
   "method": [
     "To make the spice paste. Place all the ingredients in the small bowl of a food processor and blend to a paste. You might need to stop once or twice to scrape the mixture back down from the sides of the bowl or add a little extra lime juice or oil. Keep the paste on the side.",
     "Trim any leaves from the broccoli and divide into large florets.",
-    "Sauté the onion with the oil in a medium saucepan for 2 to",
-    "3 minutes, or until translucent. Add the spice paste and cook, stirring, for 2 minutes. Add 1 teaspoon salt, the palm sugar, lime leaves and coconut milk. Bring to the boil, then turn down the heat and simmer gently for 5 minutes.",
+    "Sauté the onion with the oil in a medium saucepan for 2 to 3 minutes, or until translucent. Add the spice paste and cook, stirring, for 2 minutes. Add 1 teaspoon salt, the palm sugar, lime leaves and coconut milk. Bring to the boil, then turn down the heat and simmer gently for 5 minutes.",
     "Bring two medium saucepans of salted water to the boil. In one, cook the rice noodles for 3 to 6 minutes (check the instructions on the packet) and in the other cook the broccoli for 1 to 2 minutes.",
     "Drain both. Rinse the noodles briefly under hot water and drain well, then toss with 3 tablespoons of the sesame oil and the lime juice; season generously with salt. Drizzle the rest of the sesame oil over the broccoli and sprinkle with a pinch of salt.",
-    "Divide the noodles among warmed wide bowls and top with the warm broccoli. Spoon 3 to 4 tablespoons of the sauce per portion over and around the broccoli, and finish with the basil or cilantro and a squirt of lime juice.",
-    "People always ask me what to do with kohlrabi, an often unwanted child in the organic vegetable box. It seems too healthful, too weird, too German! In actual fact, this is a wonderful vegetable. When mixed with root vegetables you can use it in gratins; you can shallow-fry it in olive oil and serve with garlic and chives; and you can add it to an Asian stir-fry.",
-    "But in this salad (pictured on pages 100 to 101) I think I have found the absolute best use for a kohlrabi.",
-    "It is wonderfully fresh-tasting, with a good lemony kick and some sharp sweetness. You may end up going looking for kohlrabi, and it isn’t very easy to find. Serve the salad alongside rich main courses, such as Very",
-    "Full Tart (page 84).",
-    "Cabbage and kohlrabi salad"
+    "Divide the noodles among warmed wide bowls and top with the warm broccoli. Spoon 3 to 4 tablespoons of the sauce per portion over and around the broccoli, and finish with the basil or cilantro and a squirt of lime juice."
   ],
   "time": {
     "total": 30

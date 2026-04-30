@@ -6,15 +6,15 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "This dish (pictured on pages 268 and 269) is a variation on a recipe by two inspiring Israeli food writers,",
+  "intro": "Polenta made from fresh corn is almost like baby food, but in a good sense. It is smooth, sweet and soothing, a bit like a chunky savory porridge. It is my ideal heartwarming supper meal. Just keep in mind that it is nothing like regular polenta made from cornmeal – it is softer and not as substantial. This dish (pictured on pages 268 and 269) is a variation on a recipe by two inspiring Israeli food writers, Haim Cohen and Eli Landau.",
   "ingredients": [
     {
-      "item": "medium eggplant, cut into",
-      "amount": "1"
+      "item": "vegetable oil",
+      "amount": "⅔ cup"
     },
     {
-      "item": "¾-inch dice",
-      "amount": ""
+      "item": "medium eggplant, cut into ¾-inch dice",
+      "amount": "1"
     },
     {
       "item": "tomato paste",
@@ -30,7 +30,7 @@
     },
     {
       "item": "water",
-      "amount": "½ tbsp"
+      "amount": "6½ tbsp"
     },
     {
       "item": "salt",
@@ -49,8 +49,8 @@
       "amount": "6"
     },
     {
-      "item": "water",
-      "amount": "¼ cups"
+      "item": "water (for polenta)",
+      "amount": "2¼ cups"
     },
     {
       "item": "butter, diced",
@@ -61,25 +61,21 @@
       "amount": "7 oz"
     },
     {
-      "item": "salt black pepper",
+      "item": "salt (for polenta)",
       "amount": "¼ tsp"
+    },
+    {
+      "item": "black pepper",
+      "amount": ""
     }
   ],
   "method": [
     "To make the eggplant sauce. Heat up the oil in a large saucepan and fry the eggplant on medium heat for about 15 minutes, or until nicely brown. Drain off as much oil as you can and discard it.",
     "Add the tomato paste to the pan and stir with the eggplant. Cook for 2 minutes, then add the wine and cook for 1 minute. Add the chopped tomatoes, water, salt, sugar and oregano and cook for a further 5 minutes to get a deep-flavored sauce. Set aside; warm it up when needed.",
-    "To make the polenta. Remove the leaves and “silk” from each ear of corn, then chop off the pointed top and stalk. Stand each ear upright on its base and use a sharp knife to shave off the kernels.",
-    "You want to have 1",
-    "¼ lbs of kernels.",
+    "To make the polenta. Remove the leaves and “silk” from each ear of corn, then chop off the pointed top and stalk. Stand each ear upright on its base and use a sharp knife to shave off the kernels. You want to have 1¼ lbs of kernels.",
     "Place the kernels in a medium saucepan and cover them with the water. Cook for 12 minutes on a low simmer. Use a slotted spoon to lift the kernels from the water and into a food processor; reserve the cooking liquid. Process them for quite a few minutes, to break as much of the kernel case as possible. Add some of the cooking liquid if the mixture becomes too dry to process.",
-    "Now return the corn paste to the pan with the cooking liquid and cook, while stirring, on low heat for 10 to 15 minutes, or until the mixture thickens to a mashed potato consistency. Fold in the butter, the feta, salt and some pepper and cook for a further",
-    "2 minutes. Taste and add more salt if needed.",
-    "Divide the polenta among shallow bowls and spoon some warm eggplant sauce in the center.",
-    "Fruit with Cheese",
-    "272 | Fruit with Cheese",
-    "Fresh figs are available in summer and then make another short appearance in autumn. When they are good they are amazing, a word I use way too often, although in this case I totally stand behind it. The unctuous sweetness of a fresh fig, combined with its ripe-rich texture, is unbeatable. In Israel and Palestine fig trees are to be found everywhere, and picking the fruit and eating it straight off the tree is a childhood experience",
-    "I am afraid I can’t replicate in the United Kingdom. Still, I can buy good French or Italian figs, a day or two old, from La Fromagerie in London. Good figs are heavy and slightly squidgy and have a noticeable sweet smell; they often tend to crack at their base. Stick to those and you’ll be fine. But no matter what you do, don’t buy under-ripe supermarket figs that have been cargoed here from the ends of the world. Use a very young and creamy goat cheese (see Caramelized Fennel with Goat Cheese, page 172).",
-    "Figs with basil, goat cheese and pomegranate vinaigrette"
+    "Now return the corn paste to the pan with the cooking liquid and cook, while stirring, on low heat for 10 to 15 minutes, or until the mixture thickens to a mashed potato consistency. Fold in the butter, the feta, salt and some pepper and cook for a further 2 minutes. Taste and add more salt if needed.",
+    "Divide the polenta among shallow bowls and spoon some warm eggplant sauce in the center."
   ],
   "time": {
     "total": 30

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 6",
-  "intro": "often not sober, for all sorts of reasons, I managed to fall in love with a national perversion: warm and cheesy",
+  "intro": "My fascination with croquettes started when I was living in Amsterdam, more than a decade ago. As I was often not sober, for all sorts of reasons, I managed to fall in love with a national perversion: warm and cheesy grease balls that came out of a vending machine. I assure you that you'll be able to enjoy my croquettes with a much clearer conscience. Serve them as a nibble or a starter. You can substitute a much simpler wedge of lemon for the aioli, if you prefer.",
   "ingredients": [
     {
       "item": "medium eggplants",
@@ -29,12 +29,19 @@
       "amount": "3 tbsp"
     },
     {
-      "item": "salt black pepper about 1",
+      "item": "salt",
       "amount": "½ tsp"
     },
     {
+      "item": "black pepper",
+      "amount": ""
+    },
+    {
       "item": "dried white breadcrumbs",
-      "amount": "¾ cups"
+      "amount": "about 1¾ cups"
+    },
+    {
+      "group": "Tarragon aioli (optional)"
     },
     {
       "item": "egg yolk",
@@ -46,7 +53,7 @@
     },
     {
       "item": "lemon juice",
-      "amount": "½ tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "salt",
@@ -61,27 +68,24 @@
       "amount": "¼ cup"
     },
     {
-      "item": "chopped tarragon sunflower oil for frying",
+      "item": "chopped tarragon",
       "amount": "2 tbsp"
+    },
+    {
+      "item": "sunflower oil for frying",
+      "amount": ""
     }
   ],
   "method": [
-    "First, burn the eggplants (see page 116). When the eggplants are cool, make a slit along each eggplant and use a spoon to scoop out the flesh; try to avoid the black skin. Place in a colander and discard the rest. Leave to drain for 30 minutes to get rid of some of the liquid. Once drained, you should have roughly 1",
-    "¼ lbs of eggplant flesh.",
+    "First, burn the eggplants (see page 116). When the eggplants are cool, make a slit along each eggplant and use a spoon to scoop out the flesh; try to avoid the black skin. Place in a colander and discard the rest. Leave to drain for 30 minutes to get rid of some of the liquid. Once drained, you should have roughly 1¼ lbs of eggplant flesh.",
     "Place the eggplant flesh in a large bowl. Add the potatoes, egg, feta, Parmesan, salt and some pepper. Bring everything together gently with a fork; you want to keep the mix quite rough.",
     "Add about half of the breadcrumbs, just enough so the mix is sufficiently solid to hold its shape but is still a little sticky.",
     "Remove the mix from the bowl and divide it into four. Roll each portion into a thick sausage that is about 1 inch in diameter.",
     "Sprinkle the remaining breadcrumbs on your work surface and roll the sausages in them so they are completely coated. Transfer to a tray and leave to firm up in the fridge for at least 20 minutes.",
     "To make the aioli. Place the egg yolk, garlic, lemon juice and salt in a food processor. Turn the machine on and add the oils, one after the other, in a slow, steady stream. When the aioli is creamy and thick like mayonnaise, fold in the tarragon. Keep in the fridge.",
-    "To cook the croquettes, cut each sausage into 2",
-    "¼-inch-long barrel-shaped pieces; you should end up with about 20 pieces.",
-    "Pour enough frying oil into a frying pan to come about",
-    "¾ inch up the sides. Heat up the oil, then fry the croquettes in small batches for about 3 minutes, turning them over to color evenly. Make sure the oil is always hot but not so hot that it burns the croquettes.",
-    "Transfer to paper towels to drain. Serve hot.",
-    "122 | The Mighty Eggplant",
-    "This can be a potent dip or condiment that you can serve with raw vegetables or to accompany lamb or fish.",
-    "Or, with the optional chunks of cucumber and tomato, it can be a gloriously refreshing summer salad that exudes Middle Eastern aromas. You choose.",
-    "Burnt eggplant with tahini"
+    "To cook the croquettes, cut each sausage into 2¼-inch-long barrel-shaped pieces; you should end up with about 20 pieces.",
+    "Pour enough frying oil into a frying pan to come about ¾ inch up the sides. Heat up the oil, then fry the croquettes in small batches for about 3 minutes, turning them over to color evenly. Make sure the oil is always hot but not so hot that it burns the croquettes.",
+    "Transfer to paper towels to drain. Serve hot."
   ],
   "time": {
     "total": 30

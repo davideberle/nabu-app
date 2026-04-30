@@ -5,8 +5,8 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 6",
-  "intro": "This is a bastardized version of a Turkish original. Serve it cold, just above fridge temperature, with",
+  "servings": "serves 6 as a starter",
+  "intro": "This is a bastardized version of a Turkish original. Serve it cold, just above fridge temperature, with goat's-milk yogurt.",
   "ingredients": [
     {
       "item": "medium onion, finely chopped",
@@ -15,6 +15,10 @@
     {
       "item": "olive oil",
       "amount": "1 tbsp"
+    },
+    {
+      "item": "short-grain rice",
+      "amount": "⅔ cup"
     },
     {
       "item": "currants",
@@ -57,16 +61,19 @@
       "amount": "¾ cup"
     },
     {
-      "item": "sugar salt and black pepper",
-      "amount": "½ tbsp"
+      "item": "sugar",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
     }
   ],
   "method": [
+    "Sauté the onion in the oil until softened. Add the rice, currants, pine nuts, parsley, mint, spices and half the lemon juice. Continue cooking on low heat for 5 minutes, stirring occasionally.",
+    "Halve the zucchini lengthways along the center and use a spoon to scoop out some of the flesh to make \"boats.\" Place them in a shallow saucepan that is large enough to accommodate them side by side. Fill them with the rice stuffing. Pour the boiling water, remaining lemon juice, sugar and some salt around the zucchini. The liquid should not come as high as the filling.",
     "Simmer, covered, for 30 to 40 minutes, basting the filling occasionally with the cooking juices. The zucchini are ready when the rice is al dente and almost all the juices have evaporated.",
-    "Allow to cool down completely before refrigerating. Garnish with chopped parsley when serving.",
-    "70 | Zucchini and Other Squashes",
-    "Fresh hazelnuts are wonderfully sweet and juicy. They have a short season, from mid-August until October, but are worth using for this salad if you can get them. Try them first and decide for yourself whether you want to roast them as I describe, or keep fresh. With or without hazelnuts, this makes the most luxurious summer starter.",
-    "Zucchini and hazelnut salad"
+    "Allow to cool down completely before refrigerating. Garnish with chopped parsley when serving."
   ],
   "time": {
     "total": 30

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "delicious and I am sure that once tried you’ll keep on coming back to it. Instead of homemade you can",
+  "intro": "Counterintuitive as this combination of pasta with Moroccan-style butter may seem, it is absolutely delicious and I am sure that once tried you'll keep on coming back to it. Instead of homemade you can go for a good variety of dried pasta and add a decent pinch of saffron threads to the cooking water.",
   "ingredients": [
     {
       "item": "saffron threads",
@@ -25,12 +25,8 @@
       "amount": "4 tbsp"
     },
     {
-      "item": "15",
-      "amount": ""
-    },
-    {
-      "item": "“00” pasta flour, plus extra for rolling",
-      "amount": "½ oz (3½ cups)"
+      "item": "\"00\" pasta flour, plus extra for rolling",
+      "amount": "15½ oz (3½ cups)"
     },
     {
       "item": "ground turmeric",
@@ -38,51 +34,67 @@
     },
     {
       "item": "butter",
-      "amount": "1 cup (2 sticks)"
+      "amount": "1 cup (2 sticks)",
+      "group": "spiced butter"
     },
     {
       "item": "olive oil",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "spiced butter"
     },
     {
       "item": "shallots, finely chopped",
-      "amount": "8"
+      "amount": "8",
+      "group": "spiced butter"
     },
     {
       "item": "ground ginger",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "spiced butter"
     },
     {
       "item": "sweet paprika",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "spiced butter"
     },
     {
       "item": "ground coriander",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "spiced butter"
     },
     {
       "item": "ground cinnamon",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "spiced butter"
     },
     {
       "item": "cayenne pepper",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "spiced butter"
     },
     {
       "item": "chile flakes",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "spiced butter"
     },
     {
       "item": "ground turmeric",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "spiced butter"
     },
     {
-      "item": "salt black pepper",
-      "amount": "1 tsp"
+      "item": "salt",
+      "amount": "1 tsp",
+      "group": "spiced butter"
     },
     {
-      "item": "³ cup pine nuts, toasted and roughly chopped",
-      "amount": ""
+      "item": "black pepper",
+      "amount": "",
+      "group": "spiced butter"
+    },
+    {
+      "item": "pine nuts, toasted and roughly chopped",
+      "amount": "⅔ cup"
     },
     {
       "item": "roughly chopped mint",
@@ -96,17 +108,11 @@
   "method": [
     "Place the saffron in a small bowl with the boiling water and leave to infuse for at least 10 minutes. Then add the eggs and oil and beat to mix. Place the flour and turmeric in the bowl of a food processor and add the saffron mix. Blend until a crumbly dough is formed. You may need a little more oil or flour to adjust the dough to the required consistency – neither sticky nor very dry.",
     "Lightly dust your surface with flour, tip out the dough and knead into a ball. Work for a few minutes, adding more flour if you need, until it becomes silky soft. Wrap the dough in plastic wrap and chill for 30 minutes, or up to a day.",
-    "Divide the dough into two pieces. Keep one well covered. Using a rolling pin, flatten the other piece into a thin rectangle. Set the pasta machine to its widest setting and pass the dough through.",
-    "Continue rolling the pasta, narrowing the setting by a notch every time, until you get to the lowest setting.",
-    "Fold up the pasta sheet twice along its length, sprinkling some flour between the layers. Use a large knife to cut long strips that are",
-    "¾ inch wide. Hang them on the back of a chair to dry for",
-    "10 minutes. Repeat with the remaining dough.",
+    "Divide the dough into two pieces. Keep one well covered. Using a rolling pin, flatten the other piece into a thin rectangle. Set the pasta machine to its widest setting and pass the dough through. Continue rolling the pasta, narrowing the setting by a notch every time, until you get to the lowest setting.",
+    "Fold up the pasta sheet twice along its length, sprinkling some flour between the layers. Use a large knife to cut long strips that are ¾ inch wide. Hang them on the back of a chair to dry for 10 minutes. Repeat with the remaining dough.",
     "Bring a large pot of salted water to a boil.",
     "To make the spiced butter. Place the butter and oil in a frying pan and cook the shallots gently for about 10 minutes, or until they soften and the butter turns slightly brown. Now add all the spices, the salt and some pepper. Remove from the heat and keep warm.",
-    "Cook the tagliatelle for 2 to 3 minutes, or until al dente. Drain and return to the saucepan. Pour the spiced butter over the pasta and stir well, then divide among four plates. Sprinkle with the pine nuts and chopped herbs and serve.",
-    "262 | Pasta, Polenta, Couscous",
-    "Someone complained to the Guardian about the long list of ingredients in this recipe. But I knew it was a success when a friend spotted it on the menu (with a due credit) of the Sun and Doves, a cool and arty pub in Camberwell.",
-    "The ultimate winter couscous"
+    "Cook the tagliatelle for 2 to 3 minutes, or until al dente. Drain and return to the saucepan. Pour the spiced butter over the pasta and stir well, then divide among four plates. Sprinkle with the pine nuts and chopped herbs and serve."
   ],
   "time": {
     "total": 30

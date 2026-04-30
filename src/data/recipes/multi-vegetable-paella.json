@@ -5,8 +5,8 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 2",
-  "intro": "on Portobello Road. This is a proper piece of Spain in central London, not only for the produce but also for the",
+  "servings": "serves 2 generously",
+  "intro": "All my Spanish ingredients, and lots of other delicious wonders, I get at a small Spanish supermarket, Garcia, on Portobello Road. This is a proper piece of Spain in central London, not only for the produce but also for the typical laid-back attitude. I can't be sure but I think they take a siesta in the middle of the day. Calasparra rice and other good-quality Spanish products can be bought from LaTienda.com in the United States.",
   "ingredients": [
     {
       "item": "olive oil",
@@ -54,11 +54,15 @@
     },
     {
       "item": "good-quality sherry",
-      "amount": "½ tbsp"
+      "amount": "6½ tbsp"
     },
     {
-      "item": "saffron threads salt",
+      "item": "saffron threads",
       "amount": "1 tsp"
+    },
+    {
+      "item": "salt",
+      "amount": ""
     },
     {
       "item": "boiling vegetable stock",
@@ -91,14 +95,10 @@
   ],
   "method": [
     "Heat up the olive oil in a paella pan, or a large shallow skillet, and gently fry the onion for 5 minutes. Add the bell peppers and fennel and continue to fry on medium heat for about 6 minutes, or until soft and golden. Add the garlic and cook for 1 minute more.",
-    "Add the bay leaves, paprika, turmeric and cayenne to the vegetables and stir well. Then add the rice and stir thoroughly for",
-    "2 minutes before adding the sherry and saffron. Boil down for a minute, then add the stock and",
-    "³ teaspoon salt. Reduce the heat to the minimum and simmer very gently for about 20 minutes, or until most of the liquid has been absorbed by the rice. Do not cover the pan and don’t stir the rice during the cooking.",
+    "Add the bay leaves, paprika, turmeric and cayenne to the vegetables and stir well. Then add the rice and stir thoroughly for 2 minutes before adding the sherry and saffron. Boil down for a minute, then add the stock and ⅓ teaspoon salt. Reduce the heat to the minimum and simmer very gently for about 20 minutes, or until most of the liquid has been absorbed by the rice. Do not cover the pan and don't stir the rice during the cooking.",
     "Meanwhile, pour plenty of boiling water over the fava beans in a bowl and leave for a minute, then drain well and leave to cool down. Now squeeze each bean gently to remove the skin and discard it.",
     "Remove the paella pan from the heat. Taste and add more salt if needed but without stirring the rice and vegetables much. Scatter the tomatoes, artichokes and fava beans over the rice and cover the pan tightly with foil. Leave to rest for 10 minutes.",
-    "Take off the foil. Scatter the olives on top of the paella and sprinkle with parsley. Serve with wedges of lemon.",
-    "Crusty bread is essential to soak up the sweet dressing left after finishing this salad. Serve as a starter, followed by a main course of Mushroom and Herb Polenta (page 264).",
-    "Marinated pepper salad with pecorino"
+    "Take off the foil. Scatter the olives on top of the paella and sprinkle with parsley. Serve with wedges of lemon."
   ],
   "time": {
     "total": 30

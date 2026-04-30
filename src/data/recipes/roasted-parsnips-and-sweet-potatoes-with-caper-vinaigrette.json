@@ -60,13 +60,11 @@
   "method": [
     "Preheat the oven to 375°F. Peel the parsnips and cut into two or three segments, depending on their lengths. Then cut each piece lengthways into two or four. You want pieces roughly",
     "2 inches long and ½-inch wide. Peel the onions and cut each into six wedges.",
-    "Place the parsnips and onions in a large mixing bowl and add",
-    "½ cup of the olive oil, the thyme, rosemary, garlic, 1 teaspoon salt and some pepper. Mix well and spread out in a large roasting pan. Roast for 20 minutes.",
+    "Place the parsnips and onions in a large mixing bowl and add ½ cup of the olive oil, the thyme, rosemary, garlic, 1 teaspoon salt and some pepper. Mix well and spread out in a large roasting pan. Roast for 20 minutes.",
     "While the parsnips are cooking, trim both ends of the sweet potatoes. Cut them (with their skins) widthways in half, then each half into six wedges. Add the potatoes to the pan with the parsnips and onion and stir well. Return to the oven to roast for a further 40 to 50 minutes.",
     "When all the vegetables are cooked through and have taken on a golden color, stir in the halved tomatoes. Roast for 10 minutes more. Meanwhile, whisk together the lemon juice, capers, maple syrup, mustard, remaining 2 tablespoons oil and ½ teaspoon salt.",
     "Pour the dressing over the roasted vegetables as soon as you take them out of the oven. Stir well, then taste and adjust the seasoning. Scatter the sesame seeds over the vegetables if using and serve at the table in the roasting pan.",
-    "Here’s a great recipe you can make heaps of and keep for a few days. It only gets better! As always, thick cool yogurt will make an excellent condiment.",
-    "Two-potato vindaloo"
+    "Here’s a great recipe you can make heaps of and keep for a few days. It only gets better! As always, thick cool yogurt will make an excellent condiment."
   ],
   "time": {
     "total": 30
@@ -78,6 +76,6 @@
     "chapter": "",
     "meal_role": "side"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/roasted-parsnips-and-sweet-potatoes-with-caper-vinaigrette.jpg"
+  "image": "/recipes/roasted-parsnips-and-sweet-potatoes-with-caper-vinaigrette.jpg",
+  "cuisine": "Middle Eastern"
 }

@@ -14,9 +14,12 @@ back to a file-based SQLite database.
 |---------|-----------|
 | 0 → 1  | `todos` table + seed data |
 | 1 → 2  | `recipes` table + seed My Recipes |
-| 2 → 3  | `meal_plans` table for weekly meal planning |
-| 3 → 4  | Normalize My Recipes `category` (occasion strings → course labels) |
+| 2 → 3  | Strip `source.chapter` from My Recipes (informal category labels) |
+| 3 → 4  | `meal_plans` table for weekly meal planning |
 | 4 → 5  | `cook_events` table for cooking history + seed event |
+| 5 → 6  | Import Schoggi-Weggli and Zopf (Fooby) into My Recipes |
+| 6 → 7  | `cooking_sessions` table for live cooking sessions |
+| 7 → 8  | `recipe_feedback` table for planner candidate preferences |
 
 ### Recipes (`src/lib/recipes.ts`)
 

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "of character to salads, lentil dishes and creamy sauces. If you can't get hold of it, substitute with cilantro or",
+  "intro": "This is a wonderfully aromatic dish that uses an abundance of spices, resulting in a curry-like delicacy. It can be served warm with a mix of basmati and wild rice or at room temperature as a side dish. Lovage looks like flat-leaf parsley but tastes like intense celery. Use it sparingly and you'll find it adds tons of character to salads, lentil dishes and creamy sauces. If you can't get hold of it, substitute with cilantro or tarragon.",
   "ingredients": [
     {
       "item": "olive oil",
@@ -41,8 +41,20 @@
       "amount": "1 tsp"
     },
     {
-      "item": "ground cardamom pinch of ground cloves salt and black pepper one 14-oz can chopped tomatoes (with their juices)",
+      "item": "ground cardamom",
       "amount": "1 tsp"
+    },
+    {
+      "item": "ground cloves",
+      "amount": "pinch"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
+    },
+    {
+      "item": "chopped tomatoes (with their juices)",
+      "amount": "one 14-oz can"
     },
     {
       "item": "sugar",
@@ -50,7 +62,7 @@
     },
     {
       "item": "sugar snap peas, halved at an angle",
-      "amount": "½ cups"
+      "amount": "1½ cups"
     },
     {
       "item": "large string beans, sliced at an angle",
@@ -58,7 +70,7 @@
     },
     {
       "item": "shelled fava beans (fresh or frozen)",
-      "amount": "¾ cups"
+      "amount": "1¾ cups"
     },
     {
       "item": "chopped lovage",
@@ -66,13 +78,8 @@
     }
   ],
   "method": [
-    "Heat up the oil in a large pan and add the onion. Sauté on medium heat for 3 minutes, stirring frequently; add the garlic and cook for",
-    "1 more minute. Now add the tomato paste, spices and some salt and pepper and keep on cooking and stirring for another minute.",
-    "Next, add the tomatoes, sugar and all the peas and beans. Stir to mix. Bring to the boil, then cover and simmer gently for 15 to",
-    "20 minutes, or until the sugar snaps are cooked through but are still crunchy. Taste and add salt and pepper as you like. Stir in the lovage just before serving warm or cooled.",
-    "194 | Green Beans",
-    "When this recipe first appeared in the Guardian I didn’t mention skinning the fava beans. This time I have done so because I decided to make the burgers smoother and more refined. I have to admit that the skinning does add a fair amount of work, probably 30 minutes, but I believe the upgrade is worth it. I did save some time, though, by leaving out a sour cream and lemon sauce from the original. If you insist, serve with the condiment for the Sweet Potato Cakes on page 32.",
-    "Fava bean burgers"
+    "Heat up the oil in a large pan and add the onion. Sauté on medium heat for 3 minutes, stirring frequently; add the garlic and cook for 1 more minute. Now add the tomato paste, spices and some salt and pepper and keep on cooking and stirring for another minute.",
+    "Next, add the tomatoes, sugar and all the peas and beans. Stir to mix. Bring to the boil, then cover and simmer gently for 15 to 20 minutes, or until the sugar snaps are cooked through but are still crunchy. Taste and add salt and pepper as you like. Stir in the lovage just before serving warm or cooled."
   ],
   "time": {
     "total": 30

@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "save some time, though, by leaving out a sour cream and lemon sauce from the original. If you insist, serve",
+  "intro": "When this recipe first appeared in the Guardian I didn't mention skinning the fava beans. This time I have done so because I decided to make the burgers smoother and more refined. I have to admit that the skinning does add a fair amount of work, probably 30 minutes, but I believe the upgrade is worth it. I did save some time, though, by leaving out a sour cream and lemon sauce from the original. If you insist, serve with the condiment for the Sweet Potato Cakes on page 32.",
   "ingredients": [
     {
       "item": "cumin seeds",
@@ -45,8 +45,12 @@
       "amount": "2"
     },
     {
-      "item": "ground turmeric salt and black pepper",
+      "item": "ground turmeric",
       "amount": "¼ tsp"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
     },
     {
       "item": "chopped cilantro",
@@ -70,19 +74,12 @@
     }
   ],
   "method": [
-    "Put the whole seeds in a pan and dry-roast over high heat for",
-    "3 to 4 minutes, or until they start releasing their aromas. Grind to a powder in a mortar and pestle and leave aside.",
-    "Wilt the spinach in a hot pan with 1 tablespoon of the olive oil.",
-    "When cool enough to handle, squeeze out any liquid, then chop roughly and set aside.",
+    "Put the whole seeds in a pan and dry-roast over high heat for 3 to 4 minutes, or until they start releasing their aromas. Grind to a powder in a mortar and pestle and leave aside.",
+    "Wilt the spinach in a hot pan with 1 tablespoon of the olive oil. When cool enough to handle, squeeze out any liquid, then chop roughly and set aside.",
     "Blanch the fava beans in boiling water for about a minute; drain and refresh under cold running water. Once cool enough to handle, remove and discard the skins (see page 202).",
-    "Cook the potatoes in boiling water for about 15 minutes, or until tender. Drain and tip into a large mixing bowl. Immediately add the skinned fava beans, crushed seeds, chile, garlic, turmeric, remaining 2 tablespoons of olive oil and some salt and pepper.",
-    "Use a potato masher to mash it all up roughly; don’t worry if some beans are not totally crushed. Next, add the wilted spinach, chopped cilantro and breadcrumbs. Taste to check the seasoning.",
-    "Lastly, mix in the egg.",
-    "Wet your hands and shape the mix into fat patties that are roughly 2 inches in diameter and",
-    "¾ inch thick. Chill them for at least half an hour.",
-    "To cook, heat up the sunflower oil and fry the burgers on high heat for 5 minutes on each side, or until golden brown. Serve warm, with the lemon wedges.",
-    "Gado-gado is best described as a very substantial salad. You don’t need anything else with it. A visit to an",
-    "Asian grocer is essential for getting all the right ingredients, but some creative substitutes would probably also work. The satay sauce is a little work but it's worth every bit of the effort. Use it for marinating white meat or tofu, or just spoon over hot rice or rice noodles."
+    "Cook the potatoes in boiling water for about 15 minutes, or until tender. Drain and tip into a large mixing bowl. Immediately add the skinned fava beans, crushed seeds, chile, garlic, turmeric, remaining 2 tablespoons of olive oil and some salt and pepper. Use a potato masher to mash it all up roughly; don't worry if some beans are not totally crushed. Next, add the wilted spinach, chopped cilantro and breadcrumbs. Taste to check the seasoning. Lastly, mix in the egg.",
+    "Wet your hands and shape the mix into fat patties that are roughly 2 inches in diameter and ¾ inch thick. Chill them for at least half an hour.",
+    "To cook, heat up the sunflower oil and fry the burgers on high heat for 5 minutes on each side, or until golden brown. Serve warm, with the lemon wedges."
   ],
   "time": {
     "total": 30

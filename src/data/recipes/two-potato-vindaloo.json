@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Here’s a great recipe you can make heaps of and keep for a few days. It only gets better! As always, thick",
+  "intro": "Here’s a great recipe you can make heaps of and keep for a few days. It only gets better! As always, thick cool yogurt will make an excellent condiment.",
   "ingredients": [
     {
       "item": "cardamom pods",
@@ -77,8 +77,12 @@
       "amount": "1¾ cups"
     },
     {
-      "item": "sugar salt",
+      "item": "sugar",
       "amount": "1 tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": ""
     },
     {
       "item": "peeled waxy potatoes, cut into 1-inch dice",
@@ -89,19 +93,19 @@
       "amount": "2"
     },
     {
-      "item": "peeled sweet potatoes, cut into 1-inch dice mint or cilantro leaves to serve",
+      "item": "peeled sweet potatoes, cut into 1-inch dice",
       "amount": "2½ cups"
+    },
+    {
+      "item": "mint or cilantro leaves, to serve",
+      "amount": ""
     }
   ],
   "method": [
-    "Heat up the oil in a large heavy-based pot. Add the shallots with the mustard and fenugreek seeds, and sauté on a medium– low heat for 8 minutes, or until the shallots brown. Stir in the spice mix, curry leaves, ginger and chile and cook for a further",
-    "3 minutes. Next, add the tomatoes, vinegar, water, sugar and some salt. Bring to the boil, then leave to simmer, covered, for",
-    "Add the potatoes and bell peppers and simmer for another",
-    "20 minutes. For the last stage, add the sweet potatoes. Make sure all the vegetables are just immersed in the sauce (add more water if needed) and continue cooking, covered, for about 40 minutes, or until the potatoes are tender.",
-    "Remove the lid and leave to bubble away for about 10 minutes to reduce and thicken the sauce. Serve hot, with plain rice and garnished with herbs.",
-    "Some wonderful beets are available in the summer months: small, firm bulbs, sold with the stalks and the leaves. Don’t throw out the leaves. Use them for salads, or sauté with a little olive oil, garlic and caraway seeds and serve warm with a dollop of crème fraîche. If you manage to get young beets you may want to roast them in the oven, covered in foil, rather than boil them as described below. They are more flavorful this way.",
-    "The preserved lemon relish can be used in loads of other contexts. Try mixing with cooked potato to create a salad or serving alongside oily fish.",
-    "Beet, yogurt and preserved lemon relish"
+    "Dry-roast the cardamom pods and cumin and coriander seeds in a small frying pan over medium heat until they begin to pop. Transfer to a mortar and pestle and add the cloves. Work to a fine powder, removing and discarding the cardamom pods once the seeds are released. Add the turmeric, paprika and cinnamon and set aside.",
+    "Heat up the oil in a large heavy-based pot. Add the shallots with the mustard and fenugreek seeds, and sauté on a medium–low heat for 8 minutes, or until the shallots brown. Stir in the spice mix, curry leaves, ginger and chile and cook for a further 3 minutes. Next, add the tomatoes, vinegar, water, sugar and some salt. Bring to the boil, then leave to simmer, covered, for 20 minutes.",
+    "Add the potatoes and bell peppers and simmer for another 20 minutes. For the last stage, add the sweet potatoes. Make sure all the vegetables are just immersed in the sauce (add more water if needed) and continue cooking, covered, for about 40 minutes, or until the potatoes are tender.",
+    "Remove the lid and leave to bubble away for about 10 minutes to reduce and thicken the sauce. Serve hot, with plain rice and garnished with herbs."
   ],
   "time": {
     "total": 30
@@ -113,6 +117,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/two-potato-vindaloo.jpg"
+  "image": "/recipes/two-potato-vindaloo.jpg",
+  "cuisine": "Middle Eastern"
 }

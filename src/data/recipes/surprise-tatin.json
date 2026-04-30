@@ -47,17 +47,14 @@
   ],
   "method": [
     "Preheat the oven to 275°F. Halve the tomatoes and place them skin-side down on a baking sheet. Drizzle over some olive oil and sprinkle with salt and pepper. Place in the oven to dry for",
-    "Meanwhile, cook the potatoes in boiling salted water for",
-    "25 minutes. Drain and let cool. Trim off a bit of the top and bottom of each potato, then cut into 1-inch-thick discs.",
+    "Meanwhile, cook the potatoes in boiling salted water for 25 minutes. Drain and let cool. Trim off a bit of the top and bottom of each potato, then cut into 1-inch-thick discs.",
     "Sauté the onion with the oil and some salt for about 10 minutes, or until golden brown.",
     "Once you’ve prepared all the vegetables, brush a 9-inch cake pan with oil and line the bottom with a circle of parchment paper.",
     "In a small pan cook the sugar and butter on a high heat, stirring constantly with a wooden spoon, to get a semi-dark caramel.",
     "Pour the caramel carefully into the cake pan and tilt it to spread the caramel evenly over the bottom. Pick the oregano leaves, tear and scatter on the caramel.",
     "Lay the potato slices close together, cut-side down, on the bottom of the pan. Gently press onion and tomatoes into the gaps and sprinkle generously with salt and pepper. Spread the slices of goat cheese evenly over the potatoes. Cut a puff pastry disc that is 1 inch larger in diameter than the pan. Lay the pastry lid over the tart filling and gently tuck the edges down around the potatoes inside the pan. (At this stage you can chill the tart for up to 24 hours.)",
-    "Preheat the oven to 400°F. Bake the tart for 25 minutes, then reduce the temperature to 350°F and continue baking for",
-    "15 minutes, or until the pastry is thoroughly cooked. Remove from the oven and let settle for 2 minutes only. Hold an inverted plate firmly on top of the pan and carefully but briskly turn them over together, then lift off the pan. Serve the tart hot or warm.",
-    "Here’s a complex salad that makes a whole satisfying meal on its own. In its center there is Manouri, a rich Greek sheep's cheese that I use often. If you can’t get it, use halloumi or another softish, young sheep's cheese.",
-    "Jerusalem artichokes with Manouri and basil oil"
+    "Preheat the oven to 400°F. Bake the tart for 25 minutes, then reduce the temperature to 350°F and continue baking for 15 minutes, or until the pastry is thoroughly cooked. Remove from the oven and let settle for 2 minutes only. Hold an inverted plate firmly on top of the pan and carefully but briskly turn them over together, then lift off the pan. Serve the tart hot or warm.",
+    "Here’s a complex salad that makes a whole satisfying meal on its own. In its center there is Manouri, a rich Greek sheep's cheese that I use often. If you can’t get it, use halloumi or another softish, young sheep's cheese."
   ],
   "time": {
     "total": 30
@@ -69,6 +66,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/surprise-tatin.jpg"
+  "image": "/recipes/surprise-tatin.jpg",
+  "cuisine": "Middle Eastern"
 }

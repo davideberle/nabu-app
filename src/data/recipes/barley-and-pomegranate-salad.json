@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "promise that it is going to become a daily affair! It will go well with Fried Leeks (page 42) as well as many",
+  "intro": "You'll be surprised by how simple this salad is to make, considering how spectacular it tastes. I can almost promise that it is going to become a daily affair! It will go well with Fried Leeks (page 42) as well as many fatty cuts of meat.",
   "ingredients": [
     {
       "item": "pearl barley",
@@ -29,19 +29,30 @@
       "amount": "2"
     },
     {
+      "item": "ground allspice",
+      "amount": "⅔ tsp"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
+    },
+    {
       "item": "chopped dill",
       "amount": "3 tbsp"
     },
     {
-      "item": "chopped parsley seeds from 2 large pomegranates (see page 110)",
+      "item": "chopped parsley",
       "amount": "3 tbsp"
+    },
+    {
+      "item": "seeds from 2 large pomegranates (see page 110)",
+      "amount": ""
     }
   ],
   "method": [
     "Rinse the barley with cold water, then place in a medium saucepan and cover with plenty of fresh water. Simmer for 30 to 35 minutes, or until tender but still with a bite.",
     "Drain the barley and transfer to a mixing bowl. While it is still hot, add the celery, olive oil, vinegar, garlic, allspice and some salt and pepper. Stir, then leave to cool down completely.",
-    "Once cool, add the herbs, celery leaves and pomegranate seeds and mix in. Taste and adjust the seasoning to your liking, then serve.",
-    "This is my take on a classic Turkish dish that resonates with variations all over the Levant. Serve it with butter lettuce leaves as part of a mezze selection."
+    "Once cool, add the herbs, celery leaves and pomegranate seeds and mix in. Taste and adjust the seasoning to your liking, then serve."
   ],
   "time": {
     "total": 30

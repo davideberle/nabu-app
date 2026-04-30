@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "This is a majestic dish, perfect for starting off a light summer’s supper. Eat it warm or at room temperature,",
+  "intro": "This is a majestic dish, perfect for starting off a light summer’s supper. Eat it warm or at room temperature, on its own or with some good mayonnaise.",
   "ingredients": [
     {
       "item": "medium globe artichokes",
@@ -29,8 +29,12 @@
       "amount": "½ cup"
     },
     {
-      "item": "onion, finely chopped salt and black pepper",
+      "item": "onion, finely chopped",
       "amount": "1"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
     },
     {
       "item": "olive oil",
@@ -38,7 +42,7 @@
     },
     {
       "item": "green peas (fresh or frozen)",
-      "amount": "¾ cups"
+      "amount": "1¾ cups"
     },
     {
       "item": "sugar",
@@ -50,18 +54,14 @@
     }
   ],
   "method": [
+    "Trim off the artichoke stalks close to the base, so that later they can sit flat in the pan. Tear off and discard the thick outer leaves, then use a small sharp knife to trim and tidy the base. Cut each artichoke vertically in half. Remove and discard the hairy choke and some of the internal purple leaves, to create a cavity in the heart of the artichoke. Rub all the cut surfaces immediately with the juice of one lemon and place in a bowl of cold water.",
     "Mix the chopped herbs and onion with plenty of salt and pepper.",
     "Drain the artichokes and stuff the cavity in each half with the herb mix so that it is full but levelled. Keep the excess stuffing.",
     "Reshape each artichoke and use string to tie the halves back together closely.",
-    "Stand the four reconstructed artichokes in a saucepan just big enough to hold them close together. Add the juice of two lemons, the squeezed lemon halves and plenty of salt. Fill with water almost to cover the artichokes, leaving the top",
-    "¼ inch out of the water. Simmer on low heat for 20 to 35 minutes, making sure the artichoke bottoms are always immersed in water (keep the pan covered if the artichokes are not too big; otherwise top up with water during the cooking). To check if they are done, stick in a knife at the base. The artichoke heart should be soft throughout.",
-    "Gently lift the artichokes from the pan and leave to drain for",
-    "Meanwhile, sauté the remaining stuffing with 4 tablespoons of the olive oil for about 3 minutes. Add the peas, sugar, garlic and",
-    "5 tablespoons of the artichoke cooking liquid. Cook for 2 minutes more, then taste and add salt and pepper as needed. Add the juice of the remaining lemon (or more if you like).",
-    "Transfer the warm artichokes to serving plates and remove the string. Pile the lemony peas on top, drizzle generously with oil and serve.",
-    "170 | Green Things",
-    "Verjus, or verjuice, is a sour juice made from unripe grapes. It was very popular in medieval times and is still used for making sauces in a few traditional French dishes. I was reminded of it by Ramael Scully, the former evening chef of Ottolenghi in Islington. Scully trained as a chef in Australia, where verjus has been regaining popularity in recent years as an alternative to vinegar in sauces and dressings, mainly thanks to the food writer Maggie Beer. Here, reduced verjus, with its sweetness and mild acidity, works wonders with raw vegetables.",
-    "Asparagus, fennel and beets with verjus"
+    "Stand the four reconstructed artichokes in a saucepan just big enough to hold them close together. Add the juice of two lemons, the squeezed lemon halves and plenty of salt. Fill with water almost to cover the artichokes, leaving the top ¼ inch out of the water. Simmer on low heat for 20 to 35 minutes, making sure the artichoke bottoms are always immersed in water (keep the pan covered if the artichokes are not too big; otherwise top up with water during the cooking). To check if they are done, stick in a knife at the base. The artichoke heart should be soft throughout.",
+    "Gently lift the artichokes from the pan and leave to drain for 5 minutes.",
+    "Meanwhile, sauté the remaining stuffing with 4 tablespoons of the olive oil for about 3 minutes. Add the peas, sugar, garlic and 5 tablespoons of the artichoke cooking liquid. Cook for 2 minutes more, then taste and add salt and pepper as needed. Add the juice of the remaining lemon (or more if you like).",
+    "Transfer the warm artichokes to serving plates and remove the string. Pile the lemony peas on top, drizzle generously with oil and serve."
   ],
   "time": {
     "total": 30

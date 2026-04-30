@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 2",
-  "intro": "cheap, cheerful and incredibly delicious dishes from Malay, Chinese or Indian cuisines. Since everything is so",
+  "intro": "All over Malaysia a profusion of street food is served in big open-air complexes. The different stalls prepare cheap, cheerful and incredibly delicious dishes from Malay, Chinese or Indian cuisines. Since everything is so tempting you often end up with a table still piled with delicacies and no stomach capacity. The attraction of this type of dining is that it is both fresh and complex. Many dishes are prepared from raw in front of your eyes, using great ingredients, which makes it far superior to many Western solutions for fast food. I was guided through a recent Malaysian adventure by Helen Goh and her affectionate family, the Lees, who have taught me many culinary secrets. This Malay dish takes only a few minutes to make (once you have a little bit of prep out of the way) and is unique in its many layers and depth of flavors. If you want to serve more than two people you'll need to start again with a second batch, because double quantities will be too much for one wok.",
   "ingredients": [
     {
       "item": "peanut oil",
@@ -17,7 +17,7 @@
       "amount": "½"
     },
     {
-      "item": "firm tofu, cut into",
+      "item": "firm tofu, cut into ⅜-inch-thick strips",
       "amount": "8 oz"
     },
     {
@@ -34,7 +34,7 @@
     },
     {
       "item": "ground coriander",
-      "amount": "½ tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "ground cumin",
@@ -57,24 +57,27 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "Mung bean sprouts handful of shredded iceberg lettuce",
+      "item": "mung bean sprouts",
       "amount": "2 oz"
     },
     {
-      "item": "crisp-fried shallots lemon wedges to serve",
+      "item": "shredded iceberg lettuce",
+      "amount": "handful"
+    },
+    {
+      "item": "crisp-fried shallots",
       "amount": "1 tbsp"
+    },
+    {
+      "item": "lemon wedges to serve",
+      "amount": ""
     }
   ],
   "method": [
     "Set a wok or a large pan on high heat. Once hot, add the oil and then the onion, and cook for about 1 minute to soften a bit.",
     "Add the tofu and French beans and cook for 2 to 3 minutes to give the tofu a bit of color. Stir gently as you cook, trying not to break up the tofu.",
-    "Next, add the choi sum. When it wilts add the noodles and carefully spread them in the wok using tongs or large chopsticks.",
-    "You want the noodles to get a lot of heat, almost to fry. Mix gently, cooking the noodles for about 2 minutes. Now add the spices, sambal oelek, soy sauces, water and bean sprouts and toss carefully. Cook for about a minute, or until the noodles are semisoft.",
-    "When ready, top with lettuce, transfer to serving bowls and sprinkle with crisp shallots. On the side, serve lemon wedges and a small bowl of extra sambal olek.",
-    "188 | Green Things",
-    "In 2009 I travelled to Tokyo with the sole purpose of eating. I have always liked Japanese food but this time I was blown away, completely taken over by food and by the fact that the Japanese, like no other culture that I know of, are all foodies. It was fantastic being in the company of so many who, just like me, are willing to line up for the best sponge cake in the world, the finest slice of raw fish or the greatest soba noodles. The latter I tasted, along with dozens of businessmen in fancy suits, at Yabusoba, an unassuming restaurant in the old neighborhood of Kanda.",
-    "Soba noodles, made of buckwheat, are often served cold with a flavorful dipping sauce. Wakame is a sea vegetable with a mild salty flavor and a slurpy texture. Other varieties of seaweed can be used as substitutes here. Or, if ocean flavor is not your thing, replace with thinly sliced radishes.",
-    "Soba noodles with wakame"
+    "Next, add the choi sum. When it wilts add the noodles and carefully spread them in the wok using tongs or large chopsticks. You want the noodles to get a lot of heat, almost to fry. Mix gently, cooking the noodles for about 2 minutes. Now add the spices, sambal oelek, soy sauces, water and bean sprouts and toss carefully. Cook for about a minute, or until the noodles are semisoft.",
+    "When ready, top with lettuce, transfer to serving bowls and sprinkle with crisp shallots. On the side, serve lemon wedges and a small bowl of extra sambal olek."
   ],
   "time": {
     "total": 30

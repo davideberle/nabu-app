@@ -59,20 +59,15 @@
   ],
   "method": [
     "If using fresh artichokes, prepare them first. Use your hands to pull off the hard outer leaves until you reach the center with its small softer leaves. Rub about one-third of the lemon juice on the artichokes as you clean them. Use a small, sharp serrated knife to trim off all the leaves, then scrape away the hairy choke from the center. Discard the leaves and choke.",
-    "Cut the artichoke hearts (freshly prepared or frozen) into",
-    "¼-inch- thick slices. Put at once into a pot with plenty of water and all the lemon juice (you may have used some already when cleaning the fresh artichokes; add whatever is left). Bring to the boil and simmer for about 5 minutes, or until the artichokes are tender (the frozen ones won’t take as long as the fresh). Drain.",
+    "Cut the artichoke hearts (freshly prepared or frozen) into ¼-inch- thick slices. Put at once into a pot with plenty of water and all the lemon juice (you may have used some already when cleaning the fresh artichokes; add whatever is left). Bring to the boil and simmer for about 5 minutes, or until the artichokes are tender (the frozen ones won’t take as long as the fresh). Drain.",
     "While the artichokes are cooking, put the onions in a pan with the olive oil and some salt and pepper. Cook on medium heat for about 10 minutes, or until golden, stirring occasionally. Add the onions and oil to the cooked artichokes together with the lemon zest, thyme and parsley. Stir gently to mix. Taste and add more salt and pepper, if you like. Set aside.",
     "Preheat the oven to 375°F.",
-    "To make the béchamel. Melt the butter in a small saucepan. Add the flour and cook on medium heat, stirring all the time, for about",
-    "2 minutes. Make sure the mix doesn’t brown much. Mix the water and milk and slowly add to the saucepan as you whisk. Add the salt and keep on cooking and whisking on low heat for about",
-    "10 minutes, or until the sauce is thick and creamy.",
+    "To make the béchamel. Melt the butter in a small saucepan. Add the flour and cook on medium heat, stirring all the time, for about 2 minutes. Make sure the mix doesn’t brown much. Mix the water and milk and slowly add to the saucepan as you whisk. Add the salt and keep on cooking and whisking on low heat for about 10 minutes, or until the sauce is thick and creamy.",
     "Gently mix together the artichokes and béchamel, then pour into a small ovenproof dish that’s been lightly greased with oil.",
     "Make small holes in the artichoke mix and into each drop about",
     "1 teaspoonful of ricotta. Cover the dish with foil and bake for",
-    "Remove the foil and scatter the Parmesan over the top. Increase the oven temperature to 400°F. Continue baking for 15 to",
-    "20 minutes, or until the Parmesan turns golden brown and the béchamel is bubbling away. Remove from the oven and serve hot or warm.",
-    "Here’s a secret ingredient I pick up from the freezer of a Lebanese market in London: tiny Egyptian okra, perfectly firm, packed with flavor. Almost as important, it comes already trimmed.",
-    "Okra with tomato, lemon and cilantro"
+    "Remove the foil and scatter the Parmesan over the top. Increase the oven temperature to 400°F. Continue baking for 15 to 20 minutes, or until the Parmesan turns golden brown and the béchamel is bubbling away. Remove from the oven and serve hot or warm.",
+    "Here’s a secret ingredient I pick up from the freezer of a Lebanese market in London: tiny Egyptian okra, perfectly firm, packed with flavor. Almost as important, it comes already trimmed."
   ],
   "time": {
     "total": 30
@@ -84,6 +79,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/artichoke-gratin.jpg"
+  "image": "/recipes/artichoke-gratin.jpg",
+  "cuisine": "Middle Eastern"
 }

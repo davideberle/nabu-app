@@ -5,12 +5,16 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "This Provençal-style starter is quick to prepare. Serve it with a little salad of seasonal leaves and a few",
+  "servings": "serves 4 as a small starter",
+  "intro": "This Provençal-style starter is quick to prepare. Serve it with a little salad of seasonal leaves and a few broken pieces of robust goat cheese.",
   "ingredients": [
     {
-      "item": "medium tomatoes (ripe but firm) salt",
+      "item": "medium tomatoes (ripe but firm)",
       "amount": "4"
+    },
+    {
+      "item": "salt",
+      "amount": ""
     },
     {
       "item": "large onion, finely chopped",
@@ -45,19 +49,19 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "chopped capers black pepper",
-      "amount": "½ tbsp"
+      "item": "chopped capers",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "black pepper",
+      "amount": ""
     }
   ],
   "method": [
+    "Preheat the oven to 325°F. Trim off about ⅜ inch from the top of each tomato and discard. Use a little spoon or a melon baller to remove the seeds and most of the flesh, leaving a clean shell. Lightly salt the inside of the tomatoes and place upside down in a colander, to drain off some moisture.",
     "Meanwhile, put the onion, garlic, olives and 1 tablespoon of the oil in a medium pan and cook on low heat for 5 to 6 minutes, to soften the onion completely. Remove from the heat and stir in the panko, herbs, capers and some pepper. Taste and add salt, if you like.",
     "Wipe the insides of the tomatoes with a paper towel, then fill them up with the herb stuffing, pressing down very gently as you go. You want a nice dome of stuffing on top.",
-    "Place the tomatoes in a greased ovenproof dish and drizzle lightly with the remaining oil. Bake for 35 to 45 minutes, or until the tomatoes soften. Serve hot or warm.",
-    "Leaves, Cooked and Raw",
-    "140 | Leaves, Cooked and Raw",
-    "Here’s my idea of comfort food and a perfect Sunday brunch treat. It is inspired by çılbır, which is Turkish poached eggs with yogurt. It calls for kırmızı biber, a common Turkish spice made from crushed chiles that have been rubbed with oil and often roasted. The Turks use it as a general condiment and also add it to melted butter to give the final touch to many dishes.",
-    "Kırmızı biber has a sweet aroma and can vary in spiciness. You can get it from Turkish grocers or kalustyans.com. Alternatively, use plain chile flakes mixed with some sweet paprika.",
-    "Baked eggs with yogurt and chile"
+    "Place the tomatoes in a greased ovenproof dish and drizzle lightly with the remaining oil. Bake for 35 to 45 minutes, or until the tomatoes soften. Serve hot or warm."
   ],
   "time": {
     "total": 30

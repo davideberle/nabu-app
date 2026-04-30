@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "changed the bread and bulked it up with quinoa, which is the only grain I dare to use in this salad as it’s very",
+  "intro": "This summery bread salad isn't much short of a whole meal. I have taken the traditional Arab fattoush, changed the bread and bulked it up with quinoa, which is the only grain I dare to use in this salad as it's very light and delicate. A lot rests here on the poor tomato. If your tomatoes are sweet and juicy you may not need as much dressing to perk them up. If they are \"dry\" and bland you may want to add a bit more. Leave the prepared salad to sit a little so the bread croutons can soften up – unless you want them mega-crunchy.",
   "ingredients": [
     {
       "item": "quinoa",
@@ -15,6 +15,14 @@
     {
       "item": "sourdough bread",
       "amount": "4 slices"
+    },
+    {
+      "item": "olive oil, plus extra to brush the bread",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "salt",
+      "amount": ""
     },
     {
       "item": "ripe medium tomatoes",
@@ -34,7 +42,7 @@
     },
     {
       "item": "chopped mint",
-      "amount": "½ tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "chopped parsley",
@@ -49,21 +57,18 @@
       "amount": "¾ tbsp"
     },
     {
-      "item": "small garlic cloves, crushed black pepper",
+      "item": "small garlic cloves, crushed",
       "amount": "2"
+    },
+    {
+      "item": "black pepper",
+      "amount": ""
     }
   ],
   "method": [
     "Preheat the oven to 350°F. Place the quinoa in a saucepan of boiling water and cook for 9 minutes, or until tender. Drain in a fine sieve, rinse under cold water and leave to dry.",
-    "Brush the bread with a little bit of olive oil and sprinkle with some salt. Lay the slices on a baking sheet and bake for about",
-    "10 minutes, turning them over halfway through. The bread should be completely dry and crisp. Remove from the oven and allow to cool down, then break by hand into different-sized pieces.",
-    "Cut the tomatoes into roughly",
-    "¾-inch dice and put in a mixing bowl. Cut the cucumbers into similar-size pieces and add to the tomatoes. Add all the remaining ingredients, including the quinoa and croutons, and stir gently until everything is mixed well together. Taste and adjust the seasoning.",
-    "130 | To m at o e s",
-    "Straightforward comfort food at my dad’s home was simply cooked semolina with butter and Parmesan.",
-    "I was looking for a soup containing semolina when I came across a recipe by the famous Israeli chef, Rafi",
-    "Cohen, whose Moroccan grandmother made a semolina-based soup (as did my Italian grandmother). Here’s my variation on his theme.",
-    "Tomato, semolina and cilantro soup"
+    "Brush the bread with a little bit of olive oil and sprinkle with some salt. Lay the slices on a baking sheet and bake for about 10 minutes, turning them over halfway through. The bread should be completely dry and crisp. Remove from the oven and allow to cool down, then break by hand into different-sized pieces.",
+    "Cut the tomatoes into roughly ¾-inch dice and put in a mixing bowl. Cut the cucumbers into similar-size pieces and add to the tomatoes. Add all the remaining ingredients, including the quinoa and croutons, and stir gently until everything is mixed well together. Taste and adjust the seasoning."
   ],
   "time": {
     "total": 30

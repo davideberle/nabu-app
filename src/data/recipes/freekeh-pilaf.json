@@ -68,12 +68,10 @@
   "method": [
     "Place the onions, butter and olive oil in a large heavy pot and sauté on a medium heat, stirring occasionally, for 15 to 20 minutes, or until the onion is soft and brown.",
     "Meanwhile, soak the freekeh in cold water for 5 minutes. Drain in a sieve and rinse well under cold running water. Drain well.",
-    "Add the freekeh and spices to the onions, followed by the stock and some salt and pepper. Stir well. Bring to the boil, then cover, reduce the heat to a bare minimum and leave to simmer for",
-    "15 minutes. Remove the pan from the heat and leave it covered for 5 minutes. Finally, remove the lid and leave the pilaf to cool down a little, about another 5 minutes.",
+    "Add the freekeh and spices to the onions, followed by the stock and some salt and pepper. Stir well. Bring to the boil, then cover, reduce the heat to a bare minimum and leave to simmer for 15 minutes. Remove the pan from the heat and leave it covered for 5 minutes. Finally, remove the lid and leave the pilaf to cool down a little, about another 5 minutes.",
     "While you wait, mix the yogurt with the lemon juice, garlic and some salt.",
     "Stir the herbs into the warm (not hot) pilaf. Taste and adjust the seasoning. Spoon onto serving dishes and top each portion with a generous dollop of yogurt. Sprinkle with pine nuts and parsley and finish with a trickle of olive oil.",
-    "Full of little surprises – whole pink peppercorns, currants, coriander seeds – this is one of the most comforting dishes I’ve come across. You can serve it with Leek Fritters (page 36) and their sauce to create a light meal from heaven, or next to Smoky Frittata (page 96) with some Greek yogurt on the side. A million thank-yous to Itamar Srulovich.",
-    "Itamar’s bulgur pilaf"
+    "Full of little surprises – whole pink peppercorns, currants, coriander seeds – this is one of the most comforting dishes I’ve come across. You can serve it with Leek Fritters (page 36) and their sauce to create a light meal from heaven, or next to Smoky Frittata (page 96) with some Greek yogurt on the side. A million thank-yous to Itamar Srulovich."
   ],
   "time": {
     "total": 30
@@ -85,6 +83,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/freekeh-pilaf.jpg"
+  "image": "/recipes/freekeh-pilaf.jpg",
+  "cuisine": "Middle Eastern"
 }

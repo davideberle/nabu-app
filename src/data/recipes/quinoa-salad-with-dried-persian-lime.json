@@ -5,16 +5,20 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "whole dish. In this salad (pictured on page 247), though, I use it in powdered form. Unfortunately this is not",
+  "servings": "serves 4–6",
+  "intro": "I recently started using a new addictive substance – the small dried limes (or lemons) that appear widely in Iranian cooking. They add a fantastic sharpness and unique perfumed aroma to stews and marinades. For long-cooked wet dishes you just throw one in, lightly perforated, and it will impart its flavor to the whole dish. In this salad (pictured on page 247), though, I use it in powdered form. Unfortunately this is not simple to achieve because the limes are rock hard. If you have a spice grinder you should be fine; however, a food processor will struggle and give you some powder that you'll then need to sieve. You can buy the limes in powder form but this is not as potent as what you make yourself. You can find dried limes online at kalustyans.com and from most Middle Eastern and North African shops.",
   "ingredients": [
     {
       "item": "medium sweet potatoes (about 12 oz each)",
       "amount": "2"
     },
     {
-      "item": "olive oil salt and black pepper",
+      "item": "olive oil",
       "amount": "7 tbsp"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
     },
     {
       "item": "mixed basmati and wild rice",
@@ -63,11 +67,7 @@
     "Pour the remaining oil into a small frying pan to heat up, then fry the garlic for about 30 seconds, or until it turns light golden.",
     "Add the sage and oregano and stir as you fry for about a minute; watch to be sure that the herbs or garlic don’t burn. Pour the contents of the pan over the rice and quinoa.",
     "Next, add the roasted sweet potato with its oil. Add the lime powder, mint, green onions, lemon juice, feta, and some salt and pepper. Toss everything together gently, being careful not to mush up the sweet potato and feta. Taste and adjust the seasoning.",
-    "Serve warmish, or at room temperature, garnished with green onions.",
-    "Pasta, Polenta, Couscous",
-    "250 | Pasta, Polenta, Couscous",
-    "The trade-off for having to make your own pasta here is that there’s no sauce to labor over. The combination of melting cheese, grapeseed oil and pink peppercorns is delicate yet clearly present and satisfying. Choose a relatively soft and quite mild goat cheese.",
-    "Lemon and goat cheese ravioli"
+    "Serve warmish, or at room temperature, garnished with green onions."
   ],
   "time": {
     "total": 30

@@ -6,15 +6,19 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "on page 28 for a lengthier version. Unlike some other risotti, this one (pictured on page 233) feels light as a",
+  "intro": "The crucial component in this dish is the stock, which will make or break it. You can quickly make one by covering some aromatic vegetables and herbs (carrot, celery, onion, bay leaf, parsley, garlic, lemongrass, fennel, thyme, etc.) with water and simmering for half an hour. Look at the Parsnip Dumplings in Broth on page 28 for a lengthier version. Unlike some other risotti, this one (pictured on page 233) feels light as a feather \u2013 or almost.",
   "ingredients": [
     {
       "item": "medium eggplants",
       "amount": "2"
     },
     {
-      "item": "plus 1 tbsp olive oil coarse sea salt",
-      "amount": "½ cup"
+      "item": "olive oil",
+      "amount": "\u00bd cup plus 1 tbsp"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": ""
     },
     {
       "item": "medium onion, finely chopped",
@@ -30,11 +34,15 @@
     },
     {
       "item": "white wine",
-      "amount": "½ cup"
+      "amount": "\u00bd cup"
     },
     {
-      "item": "hot vegetable stock grated zest of 1 lemon",
-      "amount": "¼ cups"
+      "item": "hot vegetable stock",
+      "amount": "3\u00bc cups"
+    },
+    {
+      "item": "lemon, zest grated",
+      "amount": "1"
     },
     {
       "item": "lemon juice",
@@ -42,36 +50,28 @@
     },
     {
       "item": "butter",
-      "amount": "½ tbsp"
+      "amount": "1\u00bd tbsp"
     },
     {
-      "item": "grated Parmesan (about 2 oz) (or another mature hard cheese) black pepper",
-      "amount": "½ cup"
+      "item": "grated Parmesan (about 2 oz) (or another mature hard cheese)",
+      "amount": "\u00bd cup"
+    },
+    {
+      "item": "black pepper",
+      "amount": ""
     },
     {
       "item": "shredded basil leaves",
-      "amount": "½ cup"
+      "amount": "\u00bd cup"
     }
   ],
   "method": [
-    "Start by burning one of the eggplants (see page 116). Once ready, remove from the heat and make a long cut through the eggplant.",
-    "Scoop out the soft flesh while avoiding the skin. Discard the skin.",
-    "Chop the flesh roughly and set aside.",
-    "Cut the other eggplant into",
-    "½-inch dice. Heat up ¹",
-    "³ cup of the olive oil in a frying pan and fry the eggplant dice in batches until golden and crisp. Transfer to a colander and sprinkle with salt.",
-    "Put the onion and remaining oil in a heavy pan and fry slowly until soft and translucent. Add the garlic and cook for a further",
-    "3 minutes. Turn up the heat and add the rice, stirring to coat it in the oil. Fry for 2 to 3 minutes. Add the wine (it should hiss) and cook for 2 to 3 minutes, or until nearly evaporated. Turn the heat down to medium.",
-    "Now start adding the hot stock to the rice, a ladleful at a time, waiting until each addition has been fully absorbed before adding the next and stirring all the time. When all the stock has been added, remove the pan from the heat. Add half the lemon zest, the lemon juice, grilled eggplant, butter, most of the Parmesan and",
-    "¾ teaspoon salt. Stir well, then cover and set aside for 5 minutes.",
+    "Start by burning one of the eggplants (see page 116). Once ready, remove from the heat and make a long cut through the eggplant. Scoop out the soft flesh while avoiding the skin. Discard the skin. Chop the flesh roughly and set aside.",
+    "Cut the other eggplant into \u00bd-inch dice. Heat up \u2153 cup of the olive oil in a frying pan and fry the eggplant dice in batches until golden and crisp. Transfer to a colander and sprinkle with salt. Leave to cool.",
+    "Put the onion and remaining oil in a heavy pan and fry slowly until soft and translucent. Add the garlic and cook for a further 3 minutes. Turn up the heat and add the rice, stirring to coat it in the oil. Fry for 2 to 3 minutes. Add the wine (it should hiss) and cook for 2 to 3 minutes, or until nearly evaporated. Turn the heat down to medium.",
+    "Now start adding the hot stock to the rice, a ladleful at a time, waiting until each addition has been fully absorbed before adding the next and stirring all the time. When all the stock has been added, remove the pan from the heat. Add half the lemon zest, the lemon juice, grilled eggplant, butter, most of the Parmesan and \u00be teaspoon salt. Stir well, then cover and set aside for 5 minutes.",
     "Taste and add more salt, if you like, plus some black pepper.",
-    "To serve, spoon the risotto into shallow bowls and sprinkle with the diced eggplant, the remaining Parmesan, the basil and the rest of the lemon zest.",
-    "I first tried farro when my friend and ex-colleague, Nir Feller, cooked with it at Ottolenghi in Notting Hill.",
-    "Initially I wasn’t quite sold on it; it just tasted a bit too “healthy” for my liking. Since then, though, I have grown to appreciate farro’s nutty aroma and its robust texture that goes so well with intense flavors.",
-    "Farro is the Italian name for an old wheat variety similar to, or possibly even the same as, emmer or spelt.",
-    "It can be eaten by some people who are normally intolerant of wheat. It is sold in a few forms – whole, semi-pearled and pearled – and the one you use will determine the cooking time, which is anywhere from",
-    "15 minutes to an hour. When done it should be tender but retain a real bite. Get it in Italian or well-stocked supermarkets. Alternatively, use pearled spelt or pearl barley.",
-    "Farro and roasted pepper salad"
+    "To serve, spoon the risotto into shallow bowls and sprinkle with the diced eggplant, the remaining Parmesan, the basil and the rest of the lemon zest."
   ],
   "time": {
     "total": 30

@@ -1,52 +1,31 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import {
-  getCandidateFeedback,
-  setCandidateFeedback,
-  removeCandidateFeedback,
-} from "@/lib/db";
+import { getAllRecipeFeedback, setRecipeFeedback } from "@/lib/db";
 
-/** GET /api/meals/feedback?week=2026-W17 */
-export async function GET(request: NextRequest) {
-  const week = request.nextUrl.searchParams.get("week");
-  if (!week) {
-    return NextResponse.json(
-      { error: "Missing required query parameter: week" },
-      { status: 400 }
-    );
-  }
-  const feedback = await getCandidateFeedback(week);
-  return NextResponse.json({ feedback });
+/** GET — return all recipe feedback entries as a map { recipeId: feedback }. */
+export async function GET() {
+  const entries = await getAllRecipeFeedback();
+  const map: Record<string, "up" | "down"> = {};
+  for (const e of entries) map[e.recipeId] = e.feedback;
+  return NextResponse.json(map);
 }
 
-/** POST /api/meals/feedback  { recipeId, week, feedback } or { recipeId, week, remove: true } */
+/** POST — set or clear feedback for a recipe.
+ *  Body: { recipeId: string, feedback: "up" | "down" | null }
+ */
 export async function POST(request: NextRequest) {
-  const body = (await request.json()) as {
+  const { recipeId, feedback } = (await request.json()) as {
     recipeId: string;
-    week: string;
-    feedback?: "up" | "down";
-    remove?: boolean;
+    feedback: "up" | "down" | null;
   };
 
-  if (!body.recipeId || !body.week) {
+  if (!recipeId || (feedback !== "up" && feedback !== "down" && feedback !== null)) {
     return NextResponse.json(
-      { error: "Missing required fields: recipeId, week" },
+      { error: "recipeId required; feedback must be 'up', 'down', or null" },
       { status: 400 }
     );
   }
 
-  if (body.remove) {
-    await removeCandidateFeedback(body.recipeId, body.week);
-    return NextResponse.json({ ok: true });
-  }
-
-  if (body.feedback !== "up" && body.feedback !== "down") {
-    return NextResponse.json(
-      { error: "feedback must be 'up' or 'down'" },
-      { status: 400 }
-    );
-  }
-
-  await setCandidateFeedback(body.recipeId, body.week, body.feedback);
+  await setRecipeFeedback(recipeId, feedback);
   return NextResponse.json({ ok: true });
 }

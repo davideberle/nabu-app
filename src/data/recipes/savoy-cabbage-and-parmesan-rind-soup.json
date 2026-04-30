@@ -37,11 +37,11 @@
       "amount": "5 cups"
     },
     {
-      "item": "Parmesan rinds, plus about",
+      "item": "Parmesan rinds, plus about ⅓ cup grated Parmesan (optional)",
       "amount": "3 oz"
     },
     {
-      "item": "³ cup grated Parmesan (optional) coarse sea salt",
+      "item": "coarse sea salt",
       "amount": ""
     },
     {
@@ -56,10 +56,7 @@
     "Add enough stock just to cover the vegetables and bring to the boil. Add the Parmesan rind, then reduce the heat and simmer for about 10 minutes, or until the potato is tender. Remove and discard the Parmesan rind. Taste the soup and season with salt.",
     "Remove the saucepan from the heat and allow the soup to cool down for a few minutes. Then, using an immersion blender or a regular blender, blitz the soup roughly. Add more stock if you think it is too thick. Adjust the seasoning. Keep hot.",
     "Heat up the remaining 2 tablespoons of oil in a frying pan and sauté the reserved shredded cabbage with the chile and a bit of salt for 3 to 4 minutes, or until the cabbage softens but still retains its vibrant green.",
-    "Ladle the hot soup into serving bowls. Add the optional grated",
-    "Parmesan. Top generously with shredded cabbage and finish with a few caraway seeds.",
-    "Though unorthodox, here’s probably one of the best things you can do with the old Brussels. The delicious sweet sauce lends vibrancy to the dish and makes it utterly addictive. Serve with hot steamed rice.",
-    "Brussels sprouts and tofu"
+    "Ladle the hot soup into serving bowls. Add the optional grated Parmesan. Top generously with shredded cabbage and finish with a few caraway seeds."
   ],
   "time": {
     "total": 30
@@ -71,6 +68,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/savoy-cabbage-and-parmesan-rind-soup.jpg"
+  "image": "/recipes/savoy-cabbage-and-parmesan-rind-soup.jpg",
+  "cuisine": "Middle Eastern"
 }

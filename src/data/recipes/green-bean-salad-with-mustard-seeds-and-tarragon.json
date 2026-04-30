@@ -6,19 +6,19 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "herbs and spices – works in plenty of contexts. Try it next to Two-Potato Vindaloo (page 18), along with",
+  "intro": "This salad – offering a good balance of clean freshness from the beans with the punchy complexity of the herbs and spices – works in plenty of contexts. Try it next to Two-Potato Vindaloo (page 18), along with Fried Lima Beans with Feta, Sorrel and Sumac (page 214), or as a side dish with grilled lamb chops.",
   "ingredients": [
     {
       "item": "green beans, trimmed",
-      "amount": "¼ cups"
+      "amount": "1¼ cups"
     },
     {
       "item": "snow peas, trimmed",
-      "amount": "¼ cups"
+      "amount": "2¼ cups"
     },
     {
       "item": "green peas (fresh or frozen)",
-      "amount": "¾ cups"
+      "amount": "1¾ cups"
     },
     {
       "item": "coriander seeds, roughly crushed with a mortar and pestle",
@@ -45,12 +45,20 @@
       "amount": "1"
     },
     {
-      "item": "garlic clove, crushed grated zest of 1 lemon",
+      "item": "garlic clove, crushed",
       "amount": "1"
     },
     {
-      "item": "chopped tarragon coarse sea salt",
+      "item": "grated zest of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "chopped tarragon",
       "amount": "2 tbsp"
+    },
+    {
+      "item": "coarse sea salt",
+      "amount": ""
     },
     {
       "item": "baby chard leaves (optional)",
@@ -58,15 +66,11 @@
     }
   ],
   "method": [
+    "Fill a medium saucepan with cold water and bring to the boil. Blanch the green beans for 4 minutes, then immediately lift them out of the pan and into iced water to refresh. Drain and dry.",
     "Bring a fresh pan of water to the boil and blanch the snow peas for 1 minute only. Refresh, drain and dry. Use the same boiling water to blanch the peas for 20 seconds. Refresh, drain and dry.",
     "Combine the beans, snow peas and peas in a large mixing bowl.",
     "Put the coriander seeds, mustard seeds and oil in a small saucepan and heat up. When the seeds begin to pop, pour the contents of the pan over the beans and peas. Toss together, then add the nigella seeds, red onion, chile, garlic, lemon zest and tarragon. Mix well and season with salt to taste.",
-    "Just before serving, gently fold the chard leaves, if using, in with the beans and peas, and spoon the salad onto plates or into bowls.",
-    "198 | Green Beans",
-    "Until recently edamame, which are similar to fava beans but harder and nuttier, were only available in",
-    "Japanese restaurants. Now, with their health benefits celebrated everywhere (they are full of protein, omega-3 fatty acids, vitamin A and more), these young soybeans are widely available, whether frozen and shelled, cooked or raw.",
-    "Edamame fit well in most salads and in warm dishes. This one makes a refreshing light meal. You can upgrade it by adding fried tofu and/or roasted peanuts.",
-    "Warm glass noodles and edamame"
+    "Just before serving, gently fold the chard leaves, if using, in with the beans and peas, and spoon the salad onto plates or into bowls."
   ],
   "time": {
     "total": 30

@@ -9,6 +9,10 @@
   "intro": "In 2007 I visited Hanoi with my friend, Alex Meitlis, and found myself squatting in the dingiest of family-run",
   "ingredients": [
     {
+      "item": "rice flour",
+      "amount": "1⅓ cups"
+    },
+    {
       "item": "small egg",
       "amount": "1"
     },
@@ -21,16 +25,20 @@
       "amount": "1 tsp"
     },
     {
-      "item": "canned coconut milk a little bit of sunflower oil",
-      "amount": "¾ cups"
+      "item": "canned coconut milk",
+      "amount": "1¾ cups"
+    },
+    {
+      "item": "sunflower oil",
+      "amount": "a little bit"
     },
     {
       "item": "lime juice",
-      "amount": "½ tbsp"
+      "amount": "2½ tbsp"
     },
     {
       "item": "toasted sesame oil",
-      "amount": "½ tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "brown sugar",
@@ -78,11 +86,15 @@
     },
     {
       "item": "snow peas",
-      "amount": "½ cups"
+      "amount": "1½ cups"
     },
     {
       "item": "loosely packed cilantro leaves",
       "amount": "1 cup"
+    },
+    {
+      "item": "loosely packed Thai basil leaves",
+      "amount": "⅔ cup"
     },
     {
       "item": "loosely packed mint leaves",
@@ -103,10 +115,7 @@
     "To make the filling. Shred the carrot and daikon thinly. Slice the green onions on an angle, and cut the green chile and snow peas into long, thin strips. Pick the herb leaves. Set all the prepared vegetables and herbs aside with the sprouts and mushrooms.",
     "When you are ready to serve the pancakes, heat up a large non- stick frying pan that is roughly 9 inches in diameter, making sure it doesn’t get extremely hot. Add a tiny amount of sunflower oil.",
     "Pour in about one-quarter of the batter and swirl around to coat the bottom of the pan. The edges of the pancake can be thinner than the center and turn crisp, or it can all have the same thickness like a regular pancake. Once the underside is golden brown, turn the pancake over and cook the other side. Remove from the pan and keep warm while you make the other three pancakes.",
-    "Place a warm pancake on each serving plate and pile vegetables and herbs over one half of it. Drizzle the vegetables with some sauce and fold the other half of the pancake over them. Spoon some more sauce on top and serve, with any remaining sauce on the side.",
-    "I can easily imagine someone writing a Ph.D. thesis on different cheeses and how they melt. Here are a few of my modest observations: young varieties, such as fontina or mozzarella, melt at a relatively low temperature and therefore don’t “break” but stay creamy and smooth; other, more mature cheeses, such as",
-    "Gruyère and some cheddars, are wonderfully pungent but tend to split and turn gritty. This is why I often choose Taleggio, a wonderfully soft cow’s milk variety from northern Italy. It has the strong aroma of a mature cheese and melts evenly and smoothly.",
-    "Stuffed portobello with melting Taleggio"
+    "Place a warm pancake on each serving plate and pile vegetables and herbs over one half of it. Drizzle the vegetables with some sauce and fold the other half of the pancake over them. Spoon some more sauce on top and serve, with any remaining sauce on the side."
   ],
   "time": {
     "total": 30
@@ -118,6 +127,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/b-nh-x-o.jpg"
+  "image": "/recipes/b-nh-x-o.jpg",
+  "cuisine": "Middle Eastern"
 }

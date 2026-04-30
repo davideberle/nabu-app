@@ -1,60 +1,108 @@
 #!/usr/bin/env node
-// Regression guard: detect cookbook import corruption in recipe JSON files.
+// Regression guard: catch obvious tail/backmatter corruption in recipe method arrays.
 //
-// Why: bulk imports from cookbook PDFs sometimes leak non-recipe text into
-// the method arrays — chapter headers ("Recipe 3:"), boilerplate
-// ("Thank you for downloading this book"), and structural artefacts
-// ("Conclusion", "About the Author"). These corrupt the cooking UI.
+// Some recipe imports accidentally include lines from book formatting —
+// chapter headers, conclusions, author bios, etc. This script scans every
+// source recipe JSON and fails the build if any method step matches known
+// corruption patterns.
 
-import { readFileSync, readdirSync } from "fs";
+import { readdirSync, readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const recipesDir = join(__dirname, "..", "src", "data", "recipes");
 
+// Patterns that should never appear as (or at the start of) a method step.
+// Each entry: [regex, human-readable label]
 const CORRUPTION_PATTERNS = [
-  /^Recipe\s+\d+\s*:/i,
-  /^Conclusion$/i,
-  /^Afterthoughts$/i,
-  /^About the Author$/i,
-  /^Thank you for downloading this book/i,
+  [/^Recipe\s+\d+\s*:/i, "chapter header (Recipe N:)"],
+  [/^Conclusion$/i, "backmatter (Conclusion)"],
+  [/^Afterthoughts$/i, "backmatter (Afterthoughts)"],
+  [/^About the Author$/i, "backmatter (About the Author)"],
+  [/^Thank you for downloading this book/i, "backmatter (download notice)"],
+];
+
+// Patterns that indicate corruption but are currently present in the app mirror
+// (pre-existing Plenty data not yet synced from repaired kitchen source).
+// These warn instead of failing to avoid blocking unrelated deployments.
+// TODO: promote to CORRUPTION_PATTERNS after Plenty kitchen→app sync.
+const METHOD_WARN_PATTERNS = [
+  [/^\d{1,3}\s*\|\s*[A-Z]/, "page number with chapter name (e.g. '182 | Green Things')"],
+  [/^\d{1,3}\s*\|\s*Index\b/, "book index content"],
 ];
 
 const files = readdirSync(recipesDir).filter((f) => f.endsWith(".json"));
-let failed = false;
+let failures = 0;
 
 for (const file of files) {
-  const filePath = join(recipesDir, file);
-  let recipe;
+  const path = join(recipesDir, file);
+  let data;
   try {
-    recipe = JSON.parse(readFileSync(filePath, "utf8"));
-  } catch (err) {
-    console.error(`FAIL: ${file} is not valid JSON: ${err.message}`);
-    failed = true;
+    data = JSON.parse(readFileSync(path, "utf-8"));
+  } catch {
+    // Malformed JSON is caught by other checks; skip here.
     continue;
   }
 
-  const method = recipe.method;
+  const method = data.method;
   if (!Array.isArray(method)) continue;
 
   for (let i = 0; i < method.length; i++) {
-    const step = method[i];
-    if (typeof step !== "string") continue;
-    const trimmed = step.trim();
-    for (const pattern of CORRUPTION_PATTERNS) {
-      if (pattern.test(trimmed)) {
+    const step = typeof method[i] === "string" ? method[i].trim() : "";
+    for (const [pattern, label] of CORRUPTION_PATTERNS) {
+      if (pattern.test(step)) {
         console.error(
-          `FAIL: ${file} method[${i}] matches corruption pattern ${pattern}: "${trimmed}"`
+          `CORRUPT  ${file}  method[${i}]: ${label}\n         "${step}"`
         );
-        failed = true;
+        failures++;
       }
     }
   }
 }
 
-if (failed) {
+// --- Warning-level checks (do not fail build, but surface in output) ---
+let warnings = 0;
+
+for (const file of files) {
+  const path = join(recipesDir, file);
+  let data;
+  try {
+    data = JSON.parse(readFileSync(path, "utf-8"));
+  } catch {
+    continue;
+  }
+
+  // Method steps matching warn-level corruption patterns
+  const method = data.method;
+  if (Array.isArray(method)) {
+    for (let i = 0; i < method.length; i++) {
+      const step = typeof method[i] === "string" ? method[i].trim() : "";
+      for (const [pattern, label] of METHOD_WARN_PATTERNS) {
+        if (pattern.test(step)) {
+          console.warn(
+            `WARN     ${file}  method[${i}]: ${label}\n         "${step}"`
+          );
+          warnings++;
+        }
+      }
+    }
+  }
+
+  // Truncated intro: starts with lowercase letter (likely mid-sentence capture)
+  if (data.intro && typeof data.intro === "string" && /^[a-z]/.test(data.intro.trim())) {
+    console.warn(
+      `WARN     ${file}  intro starts lowercase (likely truncated)\n         "${data.intro.trim().substring(0, 80)}..."`
+    );
+    warnings++;
+  }
+}
+
+if (failures > 0) {
+  console.error(`\n✗ ${failures} corrupted method step(s) found.`);
+  if (warnings > 0) console.warn(`⚠ ${warnings} warning(s) (non-blocking).`);
   process.exit(1);
 } else {
-  console.log(`OK: ${files.length} recipes checked, no import corruption found.`);
+  if (warnings > 0) console.warn(`⚠ ${warnings} warning(s) (non-blocking).`);
+  console.log(`✓ ${files.length} recipes scanned — no corruption detected.`);
 }

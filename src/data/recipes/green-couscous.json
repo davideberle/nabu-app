@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "extremely healthful but still feels light and comforting. Serve it with Poached Baby Vegetables (page 12) or",
+  "intro": "A good-looking and even better tasting side salad (pictured on page 257). It has strong flavors and is extremely healthful but still feels light and comforting. Serve it with Poached Baby Vegetables (page 12) or with fish. Adding some feta will make it a bit more substantial.",
   "ingredients": [
     {
       "item": "couscous",
@@ -33,8 +33,8 @@
       "amount": "¼ tsp"
     },
     {
-      "item": "³ cup chopped parsley",
-      "amount": ""
+      "item": "chopped parsley",
+      "amount": "⅓ cup"
     },
     {
       "item": "chopped cilantro",
@@ -70,19 +70,15 @@
     },
     {
       "item": "arugula leaves, chopped",
-      "amount": "¼ cup"
+      "amount": "1¼ cup"
     }
   ],
   "method": [
-    "Place the couscous in a large bowl and cover with the boiling water or stock. Cover the bowl with plastic wrap and leave for",
-    "Meanwhile, fry the onion in the olive oil on medium heat until golden and completely soft. Add the salt and cumin and mix well.",
-    "Leave to cool slightly.",
+    "Place the couscous in a large bowl and cover with the boiling water or stock. Cover the bowl with plastic wrap and leave for 10 minutes.",
+    "Meanwhile, fry the onion in the olive oil on medium heat until golden and completely soft. Add the salt and cumin and mix well. Leave to cool slightly.",
     "To make the herb paste. Place all the ingredients in a food processor and blitz until smooth.",
     "Add the herb paste to the couscous and mix everything together well with a fork to fluff it up. Now add the cooked onion, the pistachios, green onions, green chile and arugula and gently mix.",
-    "Serve at room temperature.",
-    "260 | Pasta, Polenta, Couscous",
-    "Counterintuitive as this combination of pasta with Moroccan-style butter may seem, it is absolutely delicious and I am sure that once tried you’ll keep on coming back to it. Instead of homemade you can go for a good variety of dried pasta and add a decent pinch of saffron threads to the cooking water.",
-    "Saffron tagliatelle with spiced butter"
+    "Serve at room temperature."
   ],
   "time": {
     "total": 30

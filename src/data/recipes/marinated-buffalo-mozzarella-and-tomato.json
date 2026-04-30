@@ -5,12 +5,16 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "of Monarola in the Cinque Terre, northern Italy. I’ll never forget it. You also need a top-quality buffalo",
+  "servings": "serves 4 as a starter",
+  "intro": "This is probably one of the simplest yet finest starters you can offer. There's only one catch – your ingredients. I would ditch the idea at once if I couldn't get a ripe summery tomato, juicy and sweetly intense, a tomato that has never seen a fridge or a chilled truck, only soil and sun. You can actually get such tomatoes if you look hard enough. The best tomato I ever had was homegrown in the village of Monarola in the Cinque Terre, northern Italy. I'll never forget it. You also need a top-quality buffalo mozzarella. Serve this with good crusty white bread.",
   "ingredients": [
     {
-      "item": "fennel seeds grated zest of 1 lemon",
+      "item": "fennel seeds",
       "amount": "½ tsp"
+    },
+    {
+      "item": "grated zest of 1 lemon",
+      "amount": ""
     },
     {
       "item": "basil leaves, shredded",
@@ -33,8 +37,12 @@
       "amount": "1"
     },
     {
-      "item": "Maldon sea salt black pepper",
+      "item": "Maldon sea salt",
       "amount": "½ tsp"
+    },
+    {
+      "item": "black pepper",
+      "amount": ""
     },
     {
       "item": "buffalo mozzarella",
@@ -46,13 +54,9 @@
     }
   ],
   "method": [
-    "To make the marinade. Scatter the fennel seeds in a small frying pan over medium heat and dry-roast until they begin to pop.",
-    "Transfer to a mortar and pestle and crush roughly. Place the crushed seeds in a small bowl and add the remaining marinade ingredients.",
+    "To make the marinade. Scatter the fennel seeds in a small frying pan over medium heat and dry-roast until they begin to pop. Transfer to a mortar and pestle and crush roughly. Place the crushed seeds in a small bowl and add the remaining marinade ingredients.",
     "Break the mozzarella roughly with your hands. Smear it with the marinade and set aside for 15 to 30 minutes.",
-    "To serve, cut the tomatoes into wedges and plate along with the marinated mozzarella. Drizzle with extra olive oil and serve.",
-    "128 | To m at o e s",
-    "This summery bread salad isn’t much short of a whole meal. I have taken the traditional Arab fattoush, changed the bread and bulked it up with quinoa, which is the only grain I dare to use in this salad as it’s very light and delicate. A lot rests here on the poor tomato. If your tomatoes are sweet and juicy you may not need as much dressing to perk them up. If they are “dry” and bland you may want to add a bit more. Leave the prepared salad to sit a little so the bread croutons can soften up – unless you want them mega-crunchy.",
-    "Quinoa and grilled sourdough salad"
+    "To serve, cut the tomatoes into wedges and plate along with the marinated mozzarella. Drizzle with extra olive oil and serve."
   ],
   "time": {
     "total": 30

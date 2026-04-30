@@ -9,8 +9,16 @@
   "intro": "You will definitely surprise yourself with this one. It is an extremely delicious dish that’s quick and straight-",
   "ingredients": [
     {
-      "item": "firm tofu vegetable oil for frying cornstarch to dust the tofu",
-      "amount": "¾ lbs"
+      "item": "firm tofu",
+      "amount": "1¾ lbs"
+    },
+    {
+      "item": "vegetable oil, for frying",
+      "amount": ""
+    },
+    {
+      "item": "cornstarch, to dust the tofu",
+      "amount": ""
     },
     {
       "item": "butter",
@@ -53,23 +61,15 @@
       "amount": "5 tbsp"
     },
     {
-      "item": "small and thin green onions, cut into",
+      "item": "small and thin green onions, cut into 1¼-inch segments",
       "amount": "16"
-    },
-    {
-      "item": "¼-inch segments",
-      "amount": ""
     }
   ],
   "method": [
-    "Start with the tofu. Pour enough oil into a large frying pan or wok to come",
-    "¼ inch up the sides and heat. Cut the tofu into large cubes, about 1 x 1 inch. Toss them in some cornstarch and shake off the excess, then add to the hot oil. (You’ll need to fry the tofu pieces in a few batches so they don’t stew in the pan.) Fry, turning them around as you go, until they are golden all over and have a thin crust. As they are cooked, transfer them onto paper towels.",
+    "Start with the tofu. Pour enough oil into a large frying pan or wok to come ¼ inch up the sides and heat. Cut the tofu into large cubes, about 1 x 1 inch. Toss them in some cornstarch and shake off the excess, then add to the hot oil. (You’ll need to fry the tofu pieces in a few batches so they don’t stew in the pan.) Fry, turning them around as you go, until they are golden all over and have a thin crust. As they are cooked, transfer them onto paper towels.",
     "Remove the oil and any sediment from the pan, then put the butter inside and melt it. Add the shallots, chiles, garlic and ginger. Sauté on low to medium heat for about 15 minutes, stirring occasionally, until the ingredients have turned shiny and are totally soft. Next, add the soy sauces and sugar and stir, then add the crushed black pepper.",
     "Add the tofu to warm it up in the sauce for about a minute.",
-    "Finally, stir in the green onions. Serve hot, with steamed rice.",
-    "46 | Funny Onions",
-    "This soup is sweetly delicious and relatively easy to prepare, if you don’t mind a bit of garlic peeling. The harissa adds work but you could substitute a good commercial variety. Still, this one makes a fantastic condiment to keep in your fridge and add to roasted eggplant, vegetable stews and many rice and couscous dishes.",
-    "Garlic soup and harissa"
+    "Finally, stir in the green onions. Serve hot, with steamed rice."
   ],
   "time": {
     "total": 30
@@ -81,6 +81,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/black-pepper-tofu.jpg"
+  "image": "/recipes/black-pepper-tofu.jpg",
+  "cuisine": "Middle Eastern"
 }

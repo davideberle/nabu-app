@@ -13,12 +13,8 @@
       "amount": "4 tbsp"
     },
     {
-      "item": "Swiss chard (stalks and leaves), cut into ³",
+      "item": "Swiss chard (stalks and leaves), cut into ⅜-inch slices",
       "amount": "1 lb"
-    },
-    {
-      "item": "8-inch slices",
-      "amount": ""
     },
     {
       "item": "coriander seeds",
@@ -37,8 +33,12 @@
       "amount": "1½ tbsp"
     },
     {
-      "item": "tomato paste one 14-oz can chopped plum tomatoes, with their juices",
+      "item": "tomato paste",
       "amount": "1 tsp"
+    },
+    {
+      "item": "14-oz can chopped plum tomatoes, with their juices",
+      "amount": "1"
     },
     {
       "item": "water",
@@ -49,12 +49,24 @@
       "amount": "1½ tbsp"
     },
     {
-      "item": "freshly cooked chickpeas (or a 14-oz can, drained) salt and black pepper juice of 1 lemon",
+      "item": "freshly cooked chickpeas (or a 14-oz can, drained)",
       "amount": "2½ cups"
     },
     {
-      "item": "Greek yogurt (optional) generous handful of cilantro leaves",
+      "item": "salt and black pepper",
+      "amount": ""
+    },
+    {
+      "item": "juice of 1 lemon",
+      "amount": ""
+    },
+    {
+      "item": "Greek yogurt (optional)",
       "amount": "1 cup"
+    },
+    {
+      "item": "cilantro leaves",
+      "amount": "generous handful"
     },
     {
       "item": "short-grain rice",
@@ -77,11 +89,7 @@
     "Strain the tamarind water through a small sieve into the pan.",
     "Bring to the boil, then cover with a lid and leave to simmer for about 30 minutes. When ready, the dish should have the consistency of a thick soup. You can adjust this either by adding more water or simmering uncovered so the excess liquid can evaporate. Taste and add more salt and pepper if needed.",
     "While the stew is cooking, put the rice, butter and a bit of salt in a medium pan and set on a medium heat. Stir to coat the rice with butter. Add the water and bring to the boil, then cover the pan with a tight-fitting lid and leave to simmer on a low flame for 15 to 20 minutes. Remove from the heat and leave covered for 5 minutes.",
-    "When ready to serve, spoon the rice into shallow soup bowls, creating a large crater in the center. Add the lemon juice to the stew and stir, then put a ladle or two into the middle of the rice in each bowl. Spoon yogurt on top, if you like. Drizzle with oil and finish with plenty of cilantro leaves.",
-    "The cheese I use in these splendid cakes is kashkaval, of which there are different regional varieties all over the Balkans. There is also an Italian version called caciocavallo. Kashkaval is normally made from sheep’s milk and has a tangy yet nutty flavor. You can get it from Arab or Turkish grocers (see Dates and Turkish",
-    "Sheep's Cheese on page 280). Choose a strong and less industrialized variety. If you can’t get it, replace with mature pecorino.",
-    "You don’t necessarily have to make the sauce as the cakes work perfectly well accompanied with just a wedge of lemon. Still, if you choose to make it (and I can’t recommend it enough) you’ll be able to keep it in the fridge for a day or two and serve it with a million other things – roasted root vegetables, hearty lentils, red meat and oily fish. (For more on chard, see Chard and Saffron Omelettes, page 142.)",
-    "Chard cakes with sorrel sauce"
+    "When ready to serve, spoon the rice into shallow soup bowls, creating a large crater in the center. Add the lemon juice to the stew and stir, then put a ladle or two into the middle of the rice in each bowl. Spoon yogurt on top, if you like. Drizzle with oil and finish with plenty of cilantro leaves."
   ],
   "time": {
     "total": 30
@@ -93,6 +101,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/swiss-chard-chickpea-and-tamarind-stew.jpg"
+  "image": "/recipes/swiss-chard-chickpea-and-tamarind-stew.jpg",
+  "cuisine": "Middle Eastern"
 }

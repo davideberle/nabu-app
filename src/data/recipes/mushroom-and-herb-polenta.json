@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 2",
-  "intro": "in the runny state, like a mash, with a flavorful sauce. The rest he spreads onto an oiled surface and allows",
+  "intro": "When cooking polenta my father always makes much more than he needs. Half of it he serves right away in the runny state, like a mash, with a flavorful sauce. The rest he spreads onto an oiled surface and allows to set. The next day he cuts out chunks, fries them in olive oil and serves with a chunky vegetable salad (tomato, cucumber, romaine lettuce) dressed lightly with red wine vinegar and olive oil. The dish here uses soft polenta, but you may want to double the quantity to follow my father's idea. Note that there are two types of polenta meal (or cornmeal) available – a quick or instant variety and the traditional, slow-cooking one. For most purposes I find that the quick polenta is good enough. Either one can be used for this dish.",
   "ingredients": [
     {
       "item": "olive oil",
@@ -29,12 +29,16 @@
       "amount": "1 tablespoon"
     },
     {
-      "item": "truffle oil salt and black pepper",
+      "item": "truffle oil",
       "amount": "1 tablespoon"
     },
     {
+      "item": "salt and black pepper",
+      "amount": ""
+    },
+    {
       "item": "vegetable stock",
-      "amount": "¼ cups"
+      "amount": "2¼ cups"
     },
     {
       "item": "polenta (instant or traditional)",
@@ -46,7 +50,7 @@
     },
     {
       "item": "butter",
-      "amount": "½ tbsp"
+      "amount": "2½ tbsp"
     },
     {
       "item": "finely chopped rosemary",
@@ -57,21 +61,14 @@
       "amount": "1 tablespoon"
     },
     {
-      "item": "Taleggio (rind removed), cut into",
+      "item": "Taleggio (rind removed), cut into ⅜-inch slices",
       "amount": "4 oz"
     }
   ],
   "method": [
-    "Heat half the olive oil in a large frying pan over medium-high heat.",
-    "Once hot, add half of the mushrooms and fry for a few minutes, or until just cooked; try not to move them much so you get golden- brown patches on their surface. Remove from the pan, and repeat with the rest of the mushrooms and oil. Off the heat, return all the mushrooms to the pan and add the garlic, tarragon, thyme, truffle oil and some salt and pepper. Keep warm.",
-    "Bring the stock to the boil in a saucepan. Slowly stir in the polenta, then reduce the heat to the minimum and cook, stirring constantly with a wooden spoon. The polenta is ready when it leaves the sides of the pan but is still runny. If you are using instant polenta this shouldn’t take more than 5 minutes; with traditional polenta it could take up to 50 minutes (if it seems to dry out, add some more stock or water but just enough to keep it at a thick porridge consistency).",
-    "Preheat the broiler. When the polenta is ready, stir in the",
-    "Parmesan, butter, rosemary and half the chervil. Season with salt and pepper. Spread the polenta over a heatproof dish and top with the Taleggio. Place under the broiler until the cheese bubbles. Remove, top with the mushrooms and their juices, and return to the broiler for a minute to warm up. Serve hot, garnished with the remaining chervil.",
-    "266 | Pasta, Polenta, Couscous",
-    "Polenta made from fresh corn is almost like baby food, but in a good sense. It is smooth, sweet and soothing, a bit like a chunky savory porridge. It is my ideal heartwarming supper meal. Just keep in mind that it is nothing like regular polenta made from cornmeal – it is softer and not as substantial.",
-    "This dish (pictured on pages 268 and 269) is a variation on a recipe by two inspiring Israeli food writers,",
-    "Haim Cohen and Eli Landau.",
-    "Sweet corn polenta"
+    "Heat half the olive oil in a large frying pan over medium-high heat. Once hot, add half of the mushrooms and fry for a few minutes, or until just cooked; try not to move them much so you get golden-brown patches on their surface. Remove from the pan, and repeat with the rest of the mushrooms and oil. Off the heat, return all the mushrooms to the pan and add the garlic, tarragon, thyme, truffle oil and some salt and pepper. Keep warm.",
+    "Bring the stock to the boil in a saucepan. Slowly stir in the polenta, then reduce the heat to the minimum and cook, stirring constantly with a wooden spoon. The polenta is ready when it leaves the sides of the pan but is still runny. If you are using instant polenta this shouldn't take more than 5 minutes; with traditional polenta it could take up to 50 minutes (if it seems to dry out, add some more stock or water but just enough to keep it at a thick porridge consistency).",
+    "Preheat the broiler. When the polenta is ready, stir in the Parmesan, butter, rosemary and half the chervil. Season with salt and pepper. Spread the polenta over a heatproof dish and top with the Taleggio. Place under the broiler until the cheese bubbles. Remove, top with the mushrooms and their juices, and return to the broiler for a minute to warm up. Serve hot, garnished with the remaining chervil."
   ],
   "time": {
     "total": 30

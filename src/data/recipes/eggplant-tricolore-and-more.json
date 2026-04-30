@@ -38,12 +38,9 @@
     }
   ],
   "method": [
-    "Preheat the oven to 375°F. Cut the eggplants widthways into",
-    "¾-inch-thick slices. Place the slices on a baking sheet lined with parchment paper. Brush them generously on both sides with plenty of oil and sprinkle with salt and pepper. Roast in the oven for 25 to 30 minutes, or until the eggplants are soft and golden brown. Allow to cool down.",
+    "Preheat the oven to 375°F. Cut the eggplants widthways into ¾-inch-thick slices. Place the slices on a baking sheet lined with parchment paper. Brush them generously on both sides with plenty of oil and sprinkle with salt and pepper. Roast in the oven for 25 to 30 minutes, or until the eggplants are soft and golden brown. Allow to cool down.",
     "Mix together the bell pepper, tomatoes, vinegar, capers and brine, and 2 tablespoons of olive oil. Set aside for at least 30 minutes (the mix can be kept refrigerated for several days; the flavors will deepen over time).",
-    "To serve, arrange the eggplant slices, slightly overlapping, on a serving dish. Break the mozzarella into large chunks and scatter on top. Spoon over the yellow pepper salsa and finish with the cilantro.",
-    "Broiled vegetable soup",
-    "The process of broiling the vegetables before cooking them together gives this soup a profound depth of flavor. It keeps well so double it and it will sustain you kindly."
+    "To serve, arrange the eggplant slices, slightly overlapping, on a serving dish. Break the mozzarella into large chunks and scatter on top. Spoon over the yellow pepper salsa and finish with the cilantro."
   ],
   "time": {
     "total": 30
@@ -55,6 +52,6 @@
     "chapter": "",
     "meal_role": "main"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/eggplant-tricolore-and-more.jpg"
+  "image": "/recipes/eggplant-tricolore-and-more.jpg",
+  "cuisine": "Middle Eastern"
 }

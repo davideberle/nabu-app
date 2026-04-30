@@ -5,8 +5,8 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 2",
-  "intro": "creating an unusual yet delicious salad. Use Greek black olives of the dry, wrinkled variety. Having matured",
+  "servings": "serves 2 generously",
+  "intro": "The mild sweetness of beets offers an ideal background for the intensity of sharp orange and salty olive, creating an unusual yet delicious salad. Use Greek black olives of the dry, wrinkled variety. Having matured longer on the tree, they are saltier and more robust in flavor. If you wish to keep the salad more mild and fresh it also tastes great without the olives. Serve with Steamed Rice with Herbs (page 235) to create a light and healthful meal.",
   "ingredients": [
     {
       "item": "small or 2 large beets",
@@ -41,17 +41,19 @@
       "amount": "1 tsp"
     },
     {
-      "item": "red wine vinegar salt and black pepper",
+      "item": "red wine vinegar",
       "amount": "1½ tbsp"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
     }
   ],
   "method": [
     "Place the beets in a pot, cover with cold water and bring to the boil. Cook for 1 to 2 hours, or until tender – when you stick a small knife into each beet it should go in smoothly. Leave the beets to cool down in the water. Once cool, take them out and peel. Cut in half, then cut each half into wedges that are 1 inch thick at their base. Place the beets in a mixing bowl.",
     "Take the oranges and use a small sharp knife to trim off their tops and bases. Now cut down the sides of the oranges, following their natural curves, to remove the skin and white pith. Over a small bowl remove the segments from the oranges by slicing between the membranes. Transfer the segments and juice to the bowl with the beets; discard the membrane.",
     "Cut the Treviso vertically into 1-inch-thick slices. Break them up into separate leaves and add to the salad.",
-    "Finally, add the remaining ingredients and toss everything together gently. Taste and adjust the seasoning, then serve.",
-    "Treat this recipe as a blueprint for an infinite number of roast vegetable dishes. The point here is to lighten up long-cooked veggies with something crisp and fresh. You can use any of your favorite vegetables – rutabaga, potato, carrot, salsify, beet, cauliflower – and many other refreshing combinations at the end: chopped herbs such as basil or mint, grated lemon zest, harissa paste, crushed garlic or a mellow vinegar.",
-    "Roasted parsnips and sweet potatoes with caper vinaigrette"
+    "Finally, add the remaining ingredients and toss everything together gently. Taste and adjust the seasoning, then serve."
   ],
   "time": {
     "total": 30

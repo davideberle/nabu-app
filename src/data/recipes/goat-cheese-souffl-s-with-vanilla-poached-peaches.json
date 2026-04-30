@@ -5,24 +5,38 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 6",
-  "intro": "haunted by politicians, English nobility and, most notably, by Princess Diana. In those days – and how dated",
+  "servings": "serves 6–10, depending on the size of your ramekins",
+  "intro": "Back in the 1990s I was the pastry chef at Launceston Place, a restaurant in London that was regularly haunted by politicians, English nobility and, most notably, by Princess Diana. In those days – and how dated this seems now – they had a delicious double-baked goat cheese soufflé starter. It never came off the menu and had also become a regular feature in many other restaurants. The only variation allowed was the sweet seasonal condiment that came with it. This is my little tribute to them and to '90s food.",
   "ingredients": [
     {
+      "item": "water",
+      "amount": "⅔ cup",
+      "group": "poached peaches"
+    },
+    {
+      "item": "white wine",
+      "amount": "⅔ cup",
+      "group": "poached peaches"
+    },
+    {
       "item": "sugar",
-      "amount": "¾ cup"
+      "amount": "¾ cup",
+      "group": "poached peaches"
     },
     {
       "item": "black peppercorns",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "poached peaches"
     },
     {
       "item": "vanilla pod, split and seeds scraped out",
-      "amount": "½"
+      "amount": "½",
+      "group": "poached peaches"
     },
     {
       "item": "medium peaches, peeled",
-      "amount": "2 to 3"
+      "amount": "2 to 3",
+      "group": "poached peaches"
     },
     {
       "item": "unsalted butter at room temperature, plus extra to brush the ramekins",
@@ -33,8 +47,8 @@
       "amount": "½ cup"
     },
     {
-      "item": "plus 2 tbsp milk",
-      "amount": "1 cup"
+      "item": "milk",
+      "amount": "1 cup plus 2 tbsp"
     },
     {
       "item": "bay leaf",
@@ -45,6 +59,10 @@
       "amount": "½"
     },
     {
+      "item": "all-purpose flour",
+      "amount": "⅓ cup"
+    },
+    {
       "item": "hard goat cheese (skin removed), broken into pieces",
       "amount": "6 oz"
     },
@@ -53,26 +71,22 @@
       "amount": "5"
     },
     {
+      "item": "salt",
+      "amount": "⅓ tsp"
+    },
+    {
       "item": "heavy cream per soufflé, if reheating",
       "amount": "3 tbsp"
     }
   ],
   "method": [
-    "To make the poached peaches. Put all the ingredients in a medium saucepan (the peaches may not be totally covered with liquid; this is fine). Bring to a simmer and cook gently, covered, for about",
-    "15 minutes, turning the peaches over once. They need to be soft but shouldn’t disintegrate. Leave them to cool down in the juices.",
-    "Preheat the oven to 375°F. Put a large roasting pan inside and pour into it enough boiling water to come",
-    "¾ inch up its sides.",
+    "To make the poached peaches. Put all the ingredients in a medium saucepan (the peaches may not be totally covered with liquid; this is fine). Bring to a simmer and cook gently, covered, for about 15 minutes, turning the peaches over once. They need to be soft but shouldn't disintegrate. Leave them to cool down in the juices.",
+    "Preheat the oven to 375°F. Put a large roasting pan inside and pour into it enough boiling water to come ¾ inch up its sides.",
     "Take individual ramekins and brush their sides and bottoms with soft butter. Spoon in ground hazelnuts and turn the ramekins to coat the inside evenly. Remove any excess nuts and place the ramekins in the fridge.",
-    "In a small saucepan combine the milk, bay leaf and onion. Bring to the boil, then set aside. Take a medium saucepan, set on medium heat and melt the butter. Add the flour as you stir with a wooden spoon and cook while stirring for 2 minutes. Discard the bay leaf and onion and gradually add the milk to the butter mix as you stir. Continue cooking and stirring for 3 minutes as the mixture thickens. Off the heat, stir in the cheese, then the yolks and salt.",
-    "Transfer to a mixing bowl.",
+    "In a small saucepan combine the milk, bay leaf and onion. Bring to the boil, then set aside. Take a medium saucepan, set on medium heat and melt the butter. Add the flour as you stir with a wooden spoon and cook while stirring for 2 minutes. Discard the bay leaf and onion and gradually add the milk to the butter mix as you stir. Continue cooking and stirring for 3 minutes as the mixture thickens. Off the heat, stir in the cheese, then the yolks and salt. Transfer to a mixing bowl.",
     "In a separate bowl whisk the egg whites to soft peaks, then gently fold them into the cheese mix. Divide among the ramekins, filling them almost to the brim. Set them carefully in the pan of water in the oven. Bake for 10 to 12 minutes, or until golden brown and risen. You can now serve the soufflés directly from the oven.",
     "Alternatively, turn off the oven and leave the soufflés inside for 10 minutes. Remove the pan from the oven and allow the soufflés to cool down in it. Now run a knife around the inside of the ramekins and take out the soufflés. Place, bottom side up, on a baking sheet lined with parchment paper (you can leave them there, covered, for up to 4 hours).",
-    "When ready to serve, preheat the oven to 325°F. Drizzle about",
-    "3 tablespoons of cream over each soufflé. Place the baking sheet in the oven and warm up well for about 8 minutes. Serve each soufflé with a few slices of peach (not too many!) drizzled with a little juice.",
-    "During a cooking class I gave at Leith’s a few years ago a woman came up to me and said: “I’ve got a tree full of quinces in my garden but I don’t do anything with them. I am scared of quince.” She’s not alone. The daunting thing about quince is the preparation. Although it has the innocent look of, say, an apple or a pear, it is rock hard and requires long cooking before becoming edible.",
-    "Still, once you’ve got rid of your quince aversion and tried preparing it yourself, you’ll be amazed by the transformation it goes through, from an unyielding, dull, off-white, hard mass into a magnificent red fruit with a soft, perfumed flesh. You can then use it in plenty of contexts: in desserts or salads, or to accompany fatty and rich meats such as lamb, game or pork.",
-    "Any quince syrup left after making this salad (pictured on pages 276 to 277) you can warm up and pour over vanilla ice cream.",
-    "Quince and sweet Gorgonzola salad"
+    "When ready to serve, preheat the oven to 325°F. Drizzle about 3 tablespoons of cream over each soufflé. Place the baking sheet in the oven and warm up well for about 8 minutes. Serve each soufflé with a few slices of peach (not too many!) drizzled with a little juice."
   ],
   "time": {
     "total": 30

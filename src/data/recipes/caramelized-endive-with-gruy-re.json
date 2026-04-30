@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "ability to penetrate in between the endive leaves. But I chose Gruyère in the end because its piquant flavor",
+  "intro": "When I first published this recipe in the Guardian in 2007 I used Taleggio and was perfectly happy with it. Still, when I tried the dish again for this book I decided to double-check which cheese variety worked best. Taleggio was a winner for its creaminess and its ability to penetrate in between the endive leaves. But I chose Gruyère in the end because its piquant flavor works better with the endive's bitterness. You can now make your choice. Another, less cheesy option is raclette, which was born to melt.",
   "ingredients": [
     {
       "item": "olive oil",
@@ -17,8 +17,12 @@
       "amount": "1½ tbsp"
     },
     {
-      "item": "sugar salt",
+      "item": "sugar",
       "amount": "½ tsp"
+    },
+    {
+      "item": "salt",
+      "amount": ""
     },
     {
       "item": "endives, cut in half lengthways",
@@ -33,8 +37,12 @@
       "amount": "7 oz"
     },
     {
-      "item": "fresh breadcrumbs black pepper",
+      "item": "fresh breadcrumbs",
       "amount": "1½ tsp"
+    },
+    {
+      "item": "black pepper",
+      "amount": ""
     }
   ],
   "method": [
@@ -42,13 +50,7 @@
     "Place the endive halves, cut-side down, in the pan. Do not move them for 3 to 5 minutes, or until they turn deep golden. (You might need to do this in two batches as the endives need space.)",
     "Remove from the heat. Transfer the endive halves to a small ovenproof dish, arranging them cut-side up, close together.",
     "Sprinkle with half the thyme. Place the slices of cheese on top and sprinkle with the rest of the thyme.",
-    "Place in the oven to bake for 8 to 12 minutes, or until the cheese starts to bubble. Remove from the oven. Sprinkle with the breadcrumbs and some black pepper. Return to the oven, increase the temperature to 400°F and bake for 5 to 7 minutes, or until the breadcrumbs brown. Serve hot.",
-    "158 | Leaves, Cooked and Raw",
-    "Whenever I walk into a bookshop I find myself in the cookery section within seconds; it’s an urge I can’t control. On a recent visit to a secondhand bookshop in Hay-on-Wye, the capital of bookshops, I came across a real treasure,",
-    "Classic Turkish Cookery by Ghillie Baan, published in 1995. This book offers a fantastic introduction to one of the world’s most accomplished cuisines and it is packed full of recipes you just know you must try.",
-    "It is there that I came across this unusual savory cake originating from the Turkish part of",
-    "Cyprus. It makes a substantial snack or a light starter. Serve with Burnt Eggplant with Tahini (page 122).",
-    "Grape leaf, herb and yogurt pie"
+    "Place in the oven to bake for 8 to 12 minutes, or until the cheese starts to bubble. Remove from the oven. Sprinkle with the breadcrumbs and some black pepper. Return to the oven, increase the temperature to 400°F and bake for 5 to 7 minutes, or until the breadcrumbs brown. Serve hot."
   ],
   "time": {
     "total": 30

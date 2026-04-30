@@ -5,43 +5,51 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "in order to flavor it properly, because endive’s fresh, watery and slightly bitter nature asks for a lot of rich",
+  "servings": "serves 4 as a starter",
+  "intro": "You really need to get your hands dirty here. The flavored crème fraîche has to cover every bit of endive leaf in order to flavor it properly, because endive's fresh, watery and slightly bitter nature asks for a lot of rich dressing. On top of that I add butter-toasted nuts, a welcome addition to almost any salad, to make this a truly sumptuous starter.\n\nA note about Roquefort and other European cheeses: as a general rule, most continental cheeses use rennet, a cluster of enzymes taken from animals' stomachs that causes milk to coagulate and eventually form into cheese. British cheeses tend to be based on vegetarian alternatives to rennet. Here, as in all recipes with cheese, I encourage a strict vegetarian to check thoroughly whether the variety is completely vegetarian and, if not, to look for alternatives; these can often be found online.",
   "ingredients": [
     {
       "item": "Roquefort or another strong blue cheese",
       "amount": "1¾ oz"
     },
     {
-      "item": "crème fraîche white pepper",
+      "item": "crème fraîche",
       "amount": "¾ cup"
     },
     {
-      "item": "³ cup roughly chopped pine nuts",
+      "item": "white pepper",
       "amount": ""
     },
     {
-      "item": "³ cup roughly chopped walnuts",
-      "amount": ""
+      "item": "roughly chopped pine nuts",
+      "amount": "⅓ cup"
     },
     {
-      "item": "butter salt",
+      "item": "roughly chopped walnuts",
+      "amount": "⅓ cup"
+    },
+    {
+      "item": "butter",
       "amount": "1 tsp"
     },
     {
-      "item": "endives a few leaves of radicchio, Treviso or baby chard",
+      "item": "salt",
+      "amount": ""
+    },
+    {
+      "item": "endives",
       "amount": "2"
+    },
+    {
+      "item": "a few leaves of radicchio, Treviso or baby chard",
+      "amount": ""
     }
   ],
   "method": [
+    "Grate the Roquefort on a coarse grater and place in a bowl with the crème fraîche and some white pepper. Use a whisk to mix thoroughly to a thick mixture. Taste and adjust the seasoning.",
     "In a hot frying pan lightly toast the nuts with the butter and pinch of salt. Keep shaking the pan to get an even golden color on all the nuts. Leave to cool.",
-    "Trim the base of the endives and pick off the outer leaves. Trim a bit more to remove more leaves until you get to the core. Using your hands, smear each leaf with plenty of the Roquefort mix.",
-    "Form bundles of six to eight leaves pressed together, each leaf partly encased in a larger one.",
-    "Line a serving dish with some red leaves. Place a few bundles of endive on top, stacking them or leaning them standing against each other. Sprinkle generously with the toasted nuts and serve.",
-    "162 | Leaves, Cooked and Raw",
-    "I don’t usually celebrate Valentine’s Day. This is due to cowardly cynicism, combined with a firm belief that you cannot just create a momentous intimate occasion, especially when millions of other couples are trying to do exactly the same. It just feels a bit claustrophobic. But if you twisted my arm and forced me to, I guess I would choose this salad to celebrate the day, representing the more realistic flavors of love: bitter and sweet.",
-    "The theme here is red. For this salad I’d go out of my way to find an exciting combination of red leaves and herbs. I love the long, twisted red leaves of some varieties of radicchio di Treviso. Red orach, purple basil, red amaranth and bull’s blood (red) chard are also stunning leaves. Some tiny sprouting varieties, such as radish or purple basil, will also add character.",
-    "Bittersweet salad"
+    "Trim the base of the endives and pick off the outer leaves. Trim a bit more to remove more leaves until you get to the core. Using your hands, smear each leaf with plenty of the Roquefort mix. Form bundles of six to eight leaves pressed together, each leaf partly encased in a larger one.",
+    "Line a serving dish with some red leaves. Place a few bundles of endive on top, stacking them or leaning them standing against each other. Sprinkle generously with the toasted nuts and serve."
   ],
   "time": {
     "total": 30

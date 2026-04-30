@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Goat's curd, a light cheese made from goat’s milk, is known for its soft and creamy, yet not terribly unctuous,",
+  "intro": "Goat’s curd, a light cheese made from goat’s milk, is known for its soft and creamy, yet not terribly unctuous, texture and for its wonderful freshness. It’s hard to get, though. You’ll want to ask around at your local farmers’ market or a good cheese shop. Still, there is no need to get despondent if you can’t find it. There is an abundance of young and fresh goat cheeses that will do the trick equally well. My favorite is Caprini freschi, from Piedmont in Italy.",
   "ingredients": [
     {
       "item": "small fennel bulbs",
@@ -14,7 +14,7 @@
     },
     {
       "item": "unsalted butter",
-      "amount": "½ tbsp"
+      "amount": "3½ tbsp"
     },
     {
       "item": "olive oil, plus extra to finish",
@@ -25,8 +25,11 @@
       "amount": "2 tbsp"
     },
     {
-      "item": "fennel seeds coarse sea salt and black pepper",
+      "item": "fennel seeds",
       "amount": "1 tsp"
+    },
+    {
+      "item": "coarse sea salt and black pepper"
     },
     {
       "item": "garlic clove, crushed",
@@ -37,21 +40,18 @@
       "amount": "¾ cup"
     },
     {
-      "item": "young and creamy goat cheese grated zest of 1 lemon",
+      "item": "young and creamy goat cheese",
       "amount": "5 oz"
+    },
+    {
+      "item": "grated zest of 1 lemon"
     }
   ],
   "method": [
-    "Start by preparing the fennel bulbs. First take off the leafy fronds and keep them for the garnish. Then slice off some of the root part and remove any tough or brown outer layers, making sure the base still holds everything together. Cut each bulb lengthways into",
-    "½-inch-thick slices.",
+    "Start by preparing the fennel bulbs. First take off the leafy fronds and keep them for the garnish. Then slice off some of the root part and remove any tough or brown outer layers, making sure the base still holds everything together. Cut each bulb lengthways into ½-inch-thick slices.",
     "Melt half the butter with half the oil in a large frying pan placed over high heat. When the butter starts to foam add a layer of sliced fennel. Do not overcrowd the pan and don’t turn the fennel over or stir it around in the pan until one side has become light golden, which will take about 2 minutes. Then turn the slices over using tongs and cook for a further 1 to 2 minutes. Remove from the pan. Continue with the rest of the fennel, using up the remaining butter and oil.",
     "Once all the fennel has been seared, add the sugar, fennel seeds and plenty of salt and pepper to the pan. Fry for 30 seconds, then return all the fennel slices to the pan and caramelize them gently for 1 to 2 minutes (they need to remain firm inside so just allow them to be coated in the melting sugar and seeds). Remove the fennel from the pan and leave to cool down on a plate.",
-    "To serve, toss the fennel in a bowl with the garlic and dill. Taste and adjust the seasoning. Arrange on a serving plate and dot with spoonfuls of goat cheese. Finish with a drizzle of oil and a scattering of lemon zest. Garnish with the fennel fronds. Serve at room temperature.",
-    "174 | Green Things",
-    "176 | Green Things",
-    "My grandmother, Luciana Ottolenghi, formerly Cohen, who’s had a huge influence on my taste buds and on my dad’s cooking, was born to a Jewish family from Rome. In this recipe I pay homage to the way Roman",
-    "Jews cook their artichokes, deep-frying them in olive oil, although I take it in a totally different direction.",
-    "Globe artichokes with crushed fava beans"
+    "To serve, toss the fennel in a bowl with the garlic and dill. Taste and adjust the seasoning. Arrange on a serving plate and dot with spoonfuls of goat cheese. Finish with a drizzle of oil and a scattering of lemon zest. Garnish with the fennel fronds. Serve at room temperature."
   ],
   "time": {
     "total": 30

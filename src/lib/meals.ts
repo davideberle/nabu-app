@@ -1062,6 +1062,96 @@ export function offsetWeek(
   return getISOWeek(monday);
 }
 
+// ----- day-level complement selection (Phase 4) -----
+
+export type ComplementRole = "starter" | "side" | "dessert";
+
+export type ComplementSuggestion = {
+  role: ComplementRole;
+  recipe: Recipe;
+};
+
+/**
+ * Returns true if a recipe is suitable as a dessert.
+ */
+function isDessert(recipe: Recipe): boolean {
+  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
+  const role = (recipe.category?.meal_role || recipe.mealRole || "").toLowerCase();
+  return dishTypes.includes("dessert") || role === "dessert";
+}
+
+/**
+ * Returns true if a recipe is a starter (appetiser).
+ */
+function isStarter(recipe: Recipe): boolean {
+  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
+  const role = (recipe.category?.meal_role || recipe.mealRole || "").toLowerCase();
+  return dishTypes.includes("starter") || role === "starter";
+}
+
+/**
+ * Select complement suggestions for a specific day's assigned main.
+ * Weekdays: starters + sides. Weekends: starters + sides + desserts.
+ */
+export function selectDayComplements(
+  mainRecipe: Recipe,
+  allRecipes: Recipe[],
+  dayType: "weekday" | "weekend",
+): ComplementSuggestion[] {
+  const mainCuisine = getCuisine(mainRecipe);
+  const seasonFiltered = filterBySeason(allRecipes);
+  const withImages = seasonFiltered.filter((r) => !!r.image && r.id !== mainRecipe.id);
+
+  const results: ComplementSuggestion[] = [];
+
+  // --- Starters ---
+  const starterPool = withImages.filter(isStarter);
+  const starterCompatible = starterPool.filter((s) => !hasProteinClash(mainRecipe, s));
+  const sameCuisineStarters = shuffle(starterCompatible.filter((s) => getCuisine(s) === mainCuisine));
+  const otherStarters = shuffle(starterCompatible.filter((s) => getCuisine(s) !== mainCuisine));
+  const starterPicks = [...sameCuisineStarters, ...otherStarters].slice(0, 3);
+  for (const r of starterPicks) {
+    results.push({ role: "starter", recipe: r });
+  }
+
+  // --- Sides ---
+  const { max: maxSides } = getSideCountRange(mainRecipe);
+  if (maxSides > 0) {
+    const sidePool = withImages.filter(isSideDish).filter((s) => !isStarter(s));
+    const sideCompatible = sidePool.filter((s) => !hasProteinClash(mainRecipe, s));
+
+    const mainBase = dominantBase(mainRecipe);
+    const usedBases = new Set<string>();
+    if (mainBase) usedBases.add(mainBase);
+
+    const sameCuisineSides = shuffle(sideCompatible.filter((s) => getCuisine(s) === mainCuisine));
+    const otherSides = shuffle(sideCompatible.filter((s) => getCuisine(s) !== mainCuisine));
+
+    const sidePicks: Recipe[] = [];
+    for (const s of [...sameCuisineSides, ...otherSides]) {
+      if (sidePicks.length >= 4) break;
+      const base = dominantBase(s);
+      if (base && usedBases.has(base)) continue;
+      sidePicks.push(s);
+      if (base) usedBases.add(base);
+    }
+    for (const r of sidePicks) {
+      results.push({ role: "side", recipe: r });
+    }
+  }
+
+  // --- Desserts (weekend only) ---
+  if (dayType === "weekend") {
+    const dessertPool = withImages.filter(isDessert);
+    const dessertPicks = shuffle(dessertPool).slice(0, 3);
+    for (const r of dessertPicks) {
+      results.push({ role: "dessert", recipe: r });
+    }
+  }
+
+  return results;
+}
+
 // ----- week date helpers -----
 
 export function getISOWeek(date: Date): { year: number; week: number } {

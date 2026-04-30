@@ -6,11 +6,23 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "The purpose of this salad (pictured on pages 132 to 133) is to make use of as many as possible of the infinite",
+  "intro": "The purpose of this salad (pictured on pages 132 to 133) is to make use of as many as possible of the infinite types of tomatoes that are available now. Some I cook a little, others more, and some I leave completely raw, to maximize the \"tomatoey\" effect with diverse flavors and textures. Choose whatever tomato selection you can get; the one below is just a suggestion. Instead of the Sardinian fregola (available from kalustyans.com), you can use Arab mograbiah (from Middle Eastern grocers) or Israeli couscous. Or just leave out the fregola and double the quantity of couscous.",
   "ingredients": [
     {
-      "item": "couscous salt olive oil",
+      "item": "couscous",
       "amount": "¾ cup"
+    },
+    {
+      "item": "salt",
+      "amount": ""
+    },
+    {
+      "item": "olive oil",
+      "amount": ""
+    },
+    {
+      "item": "boiling water",
+      "amount": "⅔ cup"
     },
     {
       "item": "fregola",
@@ -21,8 +33,12 @@
       "amount": "3"
     },
     {
-      "item": "brown sugar black pepper",
+      "item": "brown sugar",
       "amount": "¾ tsp"
+    },
+    {
+      "item": "black pepper",
+      "amount": ""
     },
     {
       "item": "balsamic vinegar",
@@ -59,13 +75,10 @@
   ],
   "method": [
     "Preheat the oven to 325°F. Put the couscous in a bowl with a pinch of salt and a drizzle of oil. Pour over the boiling water, stir and cover the bowl with plastic wrap. Set aside for 12 minutes, then remove the plastic wrap, separate the grains with a fork and leave to cool.",
-    "Place the fregola in a pan of boiling salted water and simmer for",
-    "18 minutes, or until al dente. Drain in a colander and rinse under cold running water. Leave to dry completely.",
+    "Place the fregola in a pan of boiling salted water and simmer for 18 minutes, or until al dente. Drain in a colander and rinse under cold running water. Leave to dry completely.",
     "Meanwhile, spread the quartered vine tomatoes over half of a large baking pan and sprinkle with the sugar and some salt and pepper. Drizzle the balsamic vinegar and some oil over the top.",
     "Place in the oven. After about 20 minutes remove from the oven and increase the temperature to 400°F. On the empty side of the baking pan, spread the yellow tomatoes. Season them with salt and pepper and drizzle over some oil. Return to the oven and roast for 12 minutes. Remove the tomatoes and allow to cool down.",
-    "Mix together the couscous and fregola in a large bowl. Add the herbs, garlic, cooked tomatoes with all their juices, the green tomato and cherry tomatoes. Very gently mix together using your hands. Taste for seasoning: you might need to add salt, pepper and some olive oil.",
-    "134 | To m at o e s",
-    "While all the meat-eaters are scoffing smoky joints of this, that or the other, try this Mexican sandwich as a vegetarian barbecue dish."
+    "Mix together the couscous and fregola in a large bowl. Add the herbs, garlic, cooked tomatoes with all their juices, the green tomato and cherry tomatoes. Very gently mix together using your hands. Taste for seasoning: you might need to add salt, pepper and some olive oil."
   ],
   "time": {
     "total": 30

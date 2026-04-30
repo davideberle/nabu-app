@@ -5,8 +5,8 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "are willing to line up for the best sponge cake in the world, the finest slice of raw fish or the greatest soba",
+  "servings": "serves 4–6",
+  "intro": "In 2009 I travelled to Tokyo with the sole purpose of eating. I have always liked Japanese food but this time I was blown away, completely taken over by food and by the fact that the Japanese, like no other culture that I know of, are all foodies. It was fantastic being in the company of so many who, just like me, are willing to line up for the best sponge cake in the world, the finest slice of raw fish or the greatest soba noodles. The latter I tasted, along with dozens of businessmen in fancy suits, at Yabusoba, an unassuming restaurant in the old neighborhood of Kanda. Soba noodles, made of buckwheat, are often served cold with a flavorful dipping sauce. Wakame is a sea vegetable with a mild salty flavor and a slurpy texture. Other varieties of seaweed can be used as substitutes here. Or, if ocean flavor is not your thing, replace with thinly sliced radishes.",
   "ingredients": [
     {
       "item": "large cucumbers (skin on)",
@@ -17,48 +17,67 @@
       "amount": "2 tsp"
     },
     {
-      "item": "soba noodles one 2-oz package wakame",
+      "item": "soba noodles",
       "amount": "11 oz"
     },
     {
-      "item": "rice vinegar grated zest of 2 limes",
-      "amount": "2 tbsp"
+      "item": "wakame",
+      "amount": "one 2-oz package"
+    },
+    {
+      "item": "rice vinegar",
+      "amount": "2 tbsp",
+      "group": "sauce"
+    },
+    {
+      "item": "grated zest of 2 limes",
+      "amount": "",
+      "group": "sauce"
     },
     {
       "item": "lime juice",
-      "amount": "¼ cup"
+      "amount": "¼ cup",
+      "group": "sauce"
     },
     {
       "item": "grated fresh ginger",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "sauce"
     },
     {
-      "item": "fresh red chiles, finely chopped (or less if you don’t like it too hot)",
-      "amount": "2"
+      "item": "fresh red chiles, finely chopped (or less if you don't like it too hot)",
+      "amount": "2",
+      "group": "sauce"
     },
     {
       "item": "palm sugar",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "sauce"
     },
     {
       "item": "toasted sesame oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "sauce"
     },
     {
       "item": "peanut oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "sauce"
     },
     {
       "item": "sweet chile sauce",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "sauce"
     },
     {
       "item": "garlic clove, crushed",
-      "amount": "1"
+      "amount": "1",
+      "group": "sauce"
     },
     {
       "item": "salt",
-      "amount": "¾ tsp"
+      "amount": "¾ tsp",
+      "group": "sauce"
     },
     {
       "item": "toasted sesame seeds",
@@ -71,20 +90,20 @@
     {
       "item": "mint leaves, roughly chopped",
       "amount": "¾ cup"
+    },
+    {
+      "item": "radish sprouts, plus extra to garnish",
+      "amount": "1⅓ cups"
     }
   ],
   "method": [
-    "Put the noodles in a pan of boiling water and cook for 4 to",
-    "5 minutes, or as instructed on the packet. Drain and rinse in a stream of cold water to stop the cooking. Leave to dry.",
-    "Soak the wakame in warm water for about 10 minutes, or until it softens up; drain. Remove the tough “stalks” and discard. Cut or tear the rest into large pieces and put into a large mixing bowl.",
+    "Shred the cucumbers using a mandolin or the shredding blade in a food processor. Place the thin strips in a colander, sprinkle with the salt and stir well, then leave to drain for at least 30 minutes.",
+    "Put the noodles in a pan of boiling water and cook for 4 to 5 minutes, or as instructed on the packet. Drain and rinse in a stream of cold water to stop the cooking. Leave to dry.",
+    "Soak the wakame in warm water for about 10 minutes, or until it softens up; drain. Remove the tough \"stalks\" and discard. Cut or tear the rest into large pieces and put into a large mixing bowl.",
     "Add the cooked noodles and cucumber to the wakame.",
     "To make the sauce. Whisk together all of the sauce ingredients.",
     "Add to the noodle mix. Stir gently, then add the sesame seeds, cilantro, mint and sprouts. Stir well again and taste – you want a sweetish tart flavor with a kick. If needed, add more salt, vinegar or sugar.",
-    "To serve, pile the noodles in serving bowls and garnish with radish sprouts.",
-    "192 | Green Beans",
-    "This is a wonderfully aromatic dish that uses an abundance of spices, resulting in a curry-like delicacy. It can be served warm with a mix of basmati and wild rice or at room temperature as a side dish.",
-    "Lovage looks like flat-leaf parsley but tastes like intense celery. Use it sparingly and you’ll find it adds tons of character to salads, lentil dishes and creamy sauces. If you can't get hold of it, substitute with cilantro or tarragon.",
-    "Mixed beans with many spices and lovage"
+    "To serve, pile the noodles in serving bowls and garnish with radish sprouts."
   ],
   "time": {
     "total": 30

@@ -59,6 +59,7 @@ export type CoachCards = {
 export type SessionIngredient = {
   amount: string;
   item: string;
+  unit?: string;
   group?: string | null;
 };
 
@@ -296,23 +297,24 @@ export async function patchCookingSession(
 export async function createSessionFromPlan(
   date: string
 ): Promise<CookingSession | null> {
-  // Already have a session? Return it.
+  // Already have a session? For ad-hoc sessions, return as-is.
+  // For meal-plan sessions, sync plan-derived fields below.
   const existing = await getCookingSessionForDate(date);
-  if (existing) return existing;
+  if (existing && existing.source !== "meal-plan") return existing;
 
   // Find meal plan for this date's ISO week
   const d = new Date(date + "T12:00:00Z");
   const { year, week } = getISOWeek(d);
   const weekId = `${year}-W${String(week).padStart(2, "0")}`;
   const plan = await loadMealPlan(weekId);
-  if (!plan) return null;
+  if (!plan) return existing ?? null;
 
   // Find assigned recipe for this date
   const daySlot = plan.days.find((day) => day.date === date && day.recipeId);
-  if (!daySlot?.recipeId) return null;
+  if (!daySlot?.recipeId) return existing ?? null;
 
   const recipe = await getRecipe(daySlot.recipeId);
-  if (!recipe) return null;
+  if (!recipe) return existing ?? null;
 
   const isMyRecipe = recipe.source?.cookbook === "My Recipes";
   const anchorType: AnchorType = isMyRecipe ? "my-recipe" : "kitchen-recipe";
@@ -324,6 +326,7 @@ export async function createSessionFromPlan(
   const ingredients = recipe.ingredients.map((ing) => ({
     amount: ing.amount,
     item: ing.item,
+    unit: ing.unit,
     group: ing.group ?? null,
   }));
 
@@ -336,6 +339,43 @@ export async function createSessionFromPlan(
   }
   const serveWith = meal?.serveWith ?? [];
 
+  // Existing meal-plan session: sync plan-derived fields, preserve user edits
+  if (existing) {
+    const mainChanged = existing.anchor.recipeId !== recipe.id;
+    const synced: CookingSession = {
+      ...existing,
+      anchor: {
+        type: anchorType,
+        recipeId: recipe.id,
+        title: recipe.name,
+        provenance,
+      },
+      mealPlanRef: { week: weekId, day: daySlot.dayOfWeek },
+      relatedRecipes,
+      serveWith,
+      // Sync base servings/ingredients/method when main recipe changed,
+      // and reset current servings only if user hasn't adjusted them
+      servings: mainChanged
+        ? { base: recipe.servings || "4", current: recipe.servings || "4" }
+        : {
+            base: recipe.servings || "4",
+            current:
+              existing.servings.current !== existing.servings.base
+                ? existing.servings.current
+                : recipe.servings || "4",
+          },
+      ingredients: mainChanged
+        ? { base: ingredients, session: [] }
+        : { base: ingredients, session: existing.ingredients.session },
+      method: mainChanged
+        ? { base: recipe.method, session: [] }
+        : { base: recipe.method, session: existing.method.session },
+    };
+    await saveCookingSession(synced);
+    return synced;
+  }
+
+  // No existing session — create fresh
   const session = buildSessionFromRecipe({
     date,
     recipeId: recipe.id,

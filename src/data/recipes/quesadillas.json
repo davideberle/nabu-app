@@ -6,71 +6,92 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "While all the meat-eaters are scoffing smoky joints of this, that or the other, try this Mexican sandwich as a",
+  "intro": "While all the meat-eaters are scoffing smoky joints of this, that or the other, try this Mexican sandwich as a vegetarian barbecue dish.",
   "ingredients": [
     {
       "item": "cooked black beans (canned are fine)",
-      "amount": "½ cups"
+      "amount": "1½ cups",
+      "group": "Black bean paste"
     },
     {
       "item": "ground coriander",
-      "amount": "1 tsp"
+      "amount": "1 tsp",
+      "group": "Black bean paste"
     },
     {
       "item": "ground cumin",
-      "amount": "½ tsp"
+      "amount": "½ tsp",
+      "group": "Black bean paste"
     },
     {
       "item": "cayenne pepper",
-      "amount": "¼ tsp"
+      "amount": "¼ tsp",
+      "group": "Black bean paste"
     },
     {
-      "item": "cilantro (leaves and stalks, about 1 oz), chopped juice of 1 lime",
-      "amount": "1 bunch"
+      "item": "cilantro (leaves and stalks, about 1 oz), chopped",
+      "amount": "1 bunch",
+      "group": "Black bean paste"
+    },
+    {
+      "item": "lime juice",
+      "amount": "juice of 1 lime",
+      "group": "Black bean paste"
     },
     {
       "item": "salt",
-      "amount": "¼ tsp"
+      "amount": "¼ tsp",
+      "group": "Black bean paste"
     },
     {
       "item": "small red onion, thinly sliced",
-      "amount": "½"
+      "amount": "½",
+      "group": "Salsa"
     },
     {
       "item": "white wine vinegar",
-      "amount": "½ tbsp"
+      "amount": "½ tbsp",
+      "group": "Salsa"
     },
     {
       "item": "green onions, thinly sliced",
-      "amount": "3"
+      "amount": "3",
+      "group": "Salsa"
     },
     {
       "item": "medium tomatoes, diced",
-      "amount": "5"
+      "amount": "5",
+      "group": "Salsa"
     },
     {
       "item": "garlic clove, crushed",
-      "amount": "1"
+      "amount": "1",
+      "group": "Salsa"
     },
     {
       "item": "mild fresh red chile, finely diced",
-      "amount": "1"
+      "amount": "1",
+      "group": "Salsa"
     },
     {
-      "item": "of cilantro (leaves and stalks, about 1 oz), finely chopped, plus extra leaves to garnish",
-      "amount": "1 bunch"
+      "item": "cilantro (leaves and stalks, about 1 oz), finely chopped, plus extra leaves to garnish",
+      "amount": "1 bunch",
+      "group": "Salsa"
     },
     {
-      "item": "salt juice of",
-      "amount": "¾ tsp"
+      "item": "salt",
+      "amount": "¾ tsp",
+      "group": "Salsa"
     },
     {
-      "item": "lime",
-      "amount": "½"
+      "item": "lime juice",
+      "amount": "juice of ½ lime",
+      "group": "Salsa"
     },
     {
       "item": "ripe medium avocados, diced",
-      "amount": "2"
+      "amount": "2",
+      "group": "Salsa"
     },
     {
       "item": "small tortillas (preferably corn)",
@@ -82,7 +103,7 @@
     },
     {
       "item": "good-quality sharp Cheddar, grated",
-      "amount": "½ oz"
+      "amount": "4½ oz"
     },
     {
       "item": "drained and roughly chopped pickled jalapeños",
@@ -93,13 +114,9 @@
     "To make the black bean paste. Place all the ingredients in a food processor and quickly pulse until a rough paste has formed.",
     "Make the salsa. First soak the red onion in the vinegar in a large bowl for a few minutes. Then add all of the other ingredients and stir well.",
     "Prepare the barbecue, or heat a ridged griddle pan.",
-    "Take one of the tortillas and spread with 2 tablespoons of the bean paste, creating a large circle in the center but leaving about",
-    "¾ inch clear all around at the edge. Over one half of the bean circle spread a tablespoon of sour cream, a sprinkle of Cheddar, a tablespoon of salsa and some jalapeños. Fold over the other tortilla half.",
+    "Take one of the tortillas and spread with 2 tablespoons of the bean paste, creating a large circle in the center but leaving about ¾ inch clear all around at the edge. Over one half of the bean circle spread a tablespoon of sour cream, a sprinkle of Cheddar, a tablespoon of salsa and some jalapeños. Fold over the other tortilla half.",
     "To cook, gently place the quesadillas on the barbecue, or one at a time on the hot griddle pan. Leave for 2 to 3 minutes, then turn and cook for 2 to 3 minutes on the other side. The filling should be warm and the tortilla nicely charred.",
-    "Cut each tortilla into two at an angle and transfer to a serving dish. Spoon any remaining salsa alongside and garnish with cilantro leaves.",
-    "136 | To m at o e s",
-    "This Provençal-style starter is quick to prepare. Serve it with a little salad of seasonal leaves and a few broken pieces of robust goat cheese.",
-    "Herb-stuffed tomatoes"
+    "Cut each tortilla into two at an angle and transfer to a serving dish. Spoon any remaining salsa alongside and garnish with cilantro leaves."
   ],
   "time": {
     "total": 30

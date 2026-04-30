@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "This soup is sweetly delicious and relatively easy to prepare, if you don’t mind a bit of garlic peeling. The",
+  "intro": "This soup is sweetly delicious and relatively easy to prepare, if you don’t mind a bit of garlic peeling. The harissa adds work but you could substitute a good commercial variety. Still, this one makes a fantastic condiment to keep in your fridge and add to roasted eggplant, vegetable stews and many rice and couscous dishes.",
   "ingredients": [
     {
       "item": "red bell pepper",
@@ -81,36 +81,45 @@
       "amount": "1 tsp"
     },
     {
-      "item": "white wine generous pinch of saffron threads",
+      "item": "white wine",
       "amount": "1 cup"
+    },
+    {
+      "item": "saffron threads",
+      "amount": "generous pinch"
     },
     {
       "item": "bay leaves",
       "amount": "4"
     },
     {
-      "item": "quart good-quality vegetable stock",
-      "amount": "1"
+      "item": "good-quality vegetable stock",
+      "amount": "1 quart"
     },
     {
       "item": "coarse sea salt",
       "amount": "½ tsp"
     },
     {
-      "item": "roughly chopped parsley roughly chopped cilantro",
+      "item": "roughly chopped parsley",
       "amount": "4 tbsp"
+    },
+    {
+      "item": "roughly chopped cilantro",
+      "amount": ""
+    },
+    {
+      "item": "Greek yogurt (optional)",
+      "amount": ""
     }
   ],
   "method": [
     "To make the harissa. Preheat the grill to high, then grill the bell pepper for 15 to 20 minutes, or until blackened all over. Transfer to a bowl, cover it with plastic wrap and allow to cool. Then peel the pepper and discard its seeds.",
     "Place a frying pan on low heat and lightly dry-roast the coriander, cumin and caraway seeds for 2 minutes. Remove them to a mortar and use a pestle to grind to a powder.",
     "Add the olive oil to the frying pan and heat, then fry the onion, garlic and chiles on medium heat for 6 to 8 minutes, to a dark smoky color. Cool slightly, then tip into a blender or a food processor. Add the remaining harissa ingredients, including the grilled pepper and ground spices, and blitz together to make a paste. Set aside.",
-    "Gently fry the shallots and celery with the butter and oil for about",
-    "10 minutes, or until soft and translucent. Add the garlic and cook for a further 5 minutes. Stir in the ginger and thyme. Pour in the wine and leave to simmer for a few minutes, then add the saffron, bay leaves, stock and salt. Simmer for about 10 minutes.",
+    "Gently fry the shallots and celery with the butter and oil for about 10 minutes, or until soft and translucent. Add the garlic and cook for a further 5 minutes. Stir in the ginger and thyme. Pour in the wine and leave to simmer for a few minutes, then add the saffron, bay leaves, stock and salt. Simmer for about 10 minutes.",
     "Remove the bay leaves and add the parsley. Blitz with an immersion blender (or regular blender) or a food processor. Do not blend to a complete purée; keep some bits of vegetable for texture.",
-    "Divide the soup among shallow bowls. Swirl in some harissa and sprinkle with chopped cilantro. Finish with a dollop of Greek yogurt, if you like.",
-    "Here is my ideal solace for a gloomy winter night, even without the egg if you want to keep it simpler. If you can get fresh porcini (also called ceps), available during the autumn months, grab them with both hands and use as part of the mixed fresh mushrooms here.",
-    "Mushroom ragout with poached duck egg"
+    "Divide the soup among shallow bowls. Swirl in some harissa and sprinkle with chopped cilantro. Finish with a dollop of Greek yogurt, if you like."
   ],
   "time": {
     "total": 30

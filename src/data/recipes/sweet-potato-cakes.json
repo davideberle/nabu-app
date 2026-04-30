@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "things with an air of innocent self-importance. At the very heart of the center was a small café, called Orna",
+  "intro": "When I was a student in Tel Aviv in the early 1990s I lived in the trendy center of the city, around Shenkin Street, and used to hang about in cafés with other students who, just like me, talked about meaningful things with an air of innocent self-importance. At the very heart of the center was a small café, called Orna and Ella's, that epitomized the scene; everyone wanted to be seen there. And what symbolized Orna and Ella's was their legendary sweet potato cakes. Here's a modified version.",
   "ingredients": [
     {
       "item": "peeled sweet potatoes, cut into large chunks",
@@ -14,27 +14,41 @@
     },
     {
       "item": "Greek yogurt",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "sauce"
     },
     {
       "item": "sour cream",
-      "amount": "3 tbsp"
+      "amount": "3 tbsp",
+      "group": "sauce"
     },
     {
       "item": "olive oil",
-      "amount": "2 tbsp"
+      "amount": "2 tbsp",
+      "group": "sauce"
     },
     {
       "item": "lemon juice",
-      "amount": "1 tbsp"
+      "amount": "1 tbsp",
+      "group": "sauce"
     },
     {
-      "item": "chopped cilantro salt and black pepper",
-      "amount": "1 tbsp"
+      "item": "chopped cilantro",
+      "amount": "1 tbsp",
+      "group": "sauce"
     },
     {
-      "item": "soy sauce scant ¾ cup all-purpose flour",
+      "item": "salt and black pepper",
+      "amount": "",
+      "group": "sauce"
+    },
+    {
+      "item": "soy sauce",
       "amount": "2 tsp"
+    },
+    {
+      "item": "all-purpose flour",
+      "amount": "scant ¾ cup"
     },
     {
       "item": "salt",
@@ -49,20 +63,19 @@
       "amount": "3 tbsp"
     },
     {
-      "item": "finely chopped fresh red chile (or more if you want them hot) plenty of butter for frying",
+      "item": "finely chopped fresh red chile (or more if you want them hot)",
       "amount": "½ tsp"
+    },
+    {
+      "item": "butter for frying",
+      "amount": "plenty"
     }
   ],
   "method": [
+    "Steam the sweet potatoes until completely soft, then leave in a colander to drain for at least an hour.",
     "To make the sauce. Whisk together all the sauce ingredients until smooth; set aside.",
-    "Once the sweet potatoes have lost most of their liquid, place them in a mixing bowl and add the rest of the ingredients (except the butter). Mix everything together, preferably by hand, until the mix is smooth and even; do not over-mix. The mixture should be sticky; if it’s runny add some more flour.",
-    "Melt some butter in a non-stick frying pan. For each cake, use a tablespoon to lift some mix into the pan and flatten with the back of the spoon to create a not-too-perfect disc that is roughly 2 inches in diameter and ³",
-    "8 inch thick. Fry the cakes on medium heat for about 6 minutes on each side, or until you get a nice brown crust. Place in between two sheets of paper towels to soak up the excess butter. Serve hot or warm, with the sauce on the side.",
-    "36 | Funny Onions",
-    "My aunt, Yona Ashkenazi, makes the most heavenly leek fritters, inspired by her late husband Yaacov’s",
-    "Turkish descent. I have to admit I haven’t eaten her wonderful food for many years but these fritters in particular, and another version made with spinach, remain distinct and sweet childhood memories. I believe my leek fritters come quite close.",
-    "Don’t be put off by the long list of ingredients. You are likely to find many of them in your kitchen cupboard.",
-    "You also don’t have to make the sauce. A squirt of lemon or lime juice will suffice."
+    "Once the sweet potatoes have lost most of their liquid, place them in a mixing bowl and add the rest of the ingredients (except the butter). Mix everything together, preferably by hand, until the mix is smooth and even; do not over-mix. The mixture should be sticky; if it's runny add some more flour.",
+    "Melt some butter in a non-stick frying pan. For each cake, use a tablespoon to lift some mix into the pan and flatten with the back of the spoon to create a not-too-perfect disc that is roughly 2 inches in diameter and ⅜ inch thick. Fry the cakes on medium heat for about 6 minutes on each side, or until you get a nice brown crust. Place in between two sheets of paper towels to soak up the excess butter. Serve hot or warm, with the sauce on the side."
   ],
   "time": {
     "total": 30

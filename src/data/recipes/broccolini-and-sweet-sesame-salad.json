@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "like it when black sesame seeds are used; they give it an extra-luxurious look. The Japanese dish is the",
+  "intro": "Ingen no goma-ae, Japanese green beans with ground sesame and miso, is a true delicacy. I particularly like it when black sesame seeds are used; they give it an extra-luxurious look. The Japanese dish is the inspiration for this salad, although I must admit the use of tahini is a move no Japanese would ever dream of making.",
   "ingredients": [
     {
       "item": "tahini",
@@ -14,7 +14,7 @@
     },
     {
       "item": "water",
-      "amount": "½ tbsp"
+      "amount": "2½ tbsp"
     },
     {
       "item": "small garlic clove, crushed",
@@ -33,8 +33,12 @@
       "amount": "¾ tbsp"
     },
     {
-      "item": "mirin pinch of salt",
-      "amount": "½ tbsp"
+      "item": "mirin",
+      "amount": "1½ tbsp"
+    },
+    {
+      "item": "salt",
+      "amount": "pinch"
     },
     {
       "item": "broccolini or purple sprouting broccoli",
@@ -54,7 +58,7 @@
     },
     {
       "item": "cilantro leaves",
-      "amount": "½ cups"
+      "amount": "1½ cups"
     },
     {
       "item": "toasted sesame seeds",
@@ -66,12 +70,10 @@
     }
   ],
   "method": [
-    "To make the sauce. Whisk together all the ingredients in a bowl (reduce the amount of honey if you don’t like it too rich).",
-    "The sauce should be smooth and thick but with a pourable consistency, so adjust the amount of water as necessary. Taste and add more salt, if you like.",
+    "To make the sauce. Whisk together all the ingredients in a bowl (reduce the amount of honey if you don't like it too rich). The sauce should be smooth and thick but with a pourable consistency, so adjust the amount of water as necessary. Taste and add more salt, if you like.",
     "Trim off any leaves from the broccolini. If the stalks are thick cut them lengthways into two or four, so you are left with long and thinner stalks, similar in size to the green beans. Trim off the stalk ends of the beans and snow peas, keeping them separate.",
     "Bring a medium pan of unsalted water to the boil. Blanch the green beans for 3 to 5 minutes, or until just tender but still crunchy. Lift into a colander and refresh under running cold water; drain and dry well with a tea towel. In the same water blanch the snow peas for 2 minutes; refresh, drain and dry. Repeat the process with the broccoli, blanching it for 2 to 3 minutes.",
-    "Mix all the vegetables together in a bowl with the oil. You can now serve the salad in two ways. For one, stir most of the cilantro leaves and sesame and nigella seeds in with the vegetables and pile up on a serving dish; pour the sauce on top and finish with the remaining cilantro and seeds. Alternatively, pile the vegetables on a serving plate, dotting with cilantro leaves and sprinkling with seeds as you go; serve the sauce in a bowl on the side.",
-    "This comforting main course makes use of a combination common to Arab and Turkish cuisines – it mixes rice and little vermicelli noodles to create an attractive texture that is light and delicate."
+    "Mix all the vegetables together in a bowl with the oil. You can now serve the salad in two ways. For one, stir most of the cilantro leaves and sesame and nigella seeds in with the vegetables and pile up on a serving dish; pour the sauce on top and finish with the remaining cilantro and seeds. Alternatively, pile the vegetables on a serving plate, dotting with cilantro leaves and sprinkling with seeds as you go; serve the sauce in a bowl on the side."
   ],
   "time": {
     "total": 30

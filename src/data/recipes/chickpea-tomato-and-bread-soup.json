@@ -5,20 +5,20 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "filling meal in a bowl after which you don’t need much – maybe just a little pillow to rest your head on. You",
+  "servings": "serves 4–6",
+  "intro": "Here’s a take on the Tuscan ribollita. Somewhere between a soup and a vegetable stew, it is a warming and filling meal in a bowl after which you don’t need much – maybe just a little pillow to rest your head on. You can reduce or increase the amount of liquid to achieve your perfect consistency.",
   "ingredients": [
     {
       "item": "large onion, sliced",
       "amount": "1"
     },
     {
-      "item": "medium fennel bulb, sliced about",
+      "item": "medium fennel bulb, sliced",
       "amount": "1"
     },
     {
       "item": "olive oil",
-      "amount": "½ cup"
+      "amount": "about ½ cup"
     },
     {
       "item": "large carrot, peeled, cut lengthways in half and sliced",
@@ -33,8 +33,12 @@
       "amount": "1 tbsp"
     },
     {
-      "item": "white wine one 14-oz can Italian plum tomatoes",
+      "item": "white wine",
       "amount": "1 cup"
+    },
+    {
+      "item": "Italian plum tomatoes",
+      "amount": "one 14-oz can"
     },
     {
       "item": "chopped oregano",
@@ -57,8 +61,11 @@
       "amount": "2 tsp"
     },
     {
-      "item": "vegetable stock salt and black pepper",
-      "amount": "½ cups"
+      "item": "vegetable stock",
+      "amount": "4½ cups"
+    },
+    {
+      "item": "salt and black pepper"
     },
     {
       "item": "large slices stale sourdough bread (crust removed)",
@@ -66,26 +73,23 @@
     },
     {
       "item": "freshly cooked chickpeas (canned are fine too)",
-      "amount": "½ cups"
+      "amount": "2½ cups"
     },
     {
-      "item": "basil pesto (bought or freshly made; see Royal Potato Salad, page 20) handful of shredded basil leaves to serve (optional)",
+      "item": "basil pesto (bought or freshly made; see Royal Potato Salad, page 20)",
       "amount": "4 tbsp"
+    },
+    {
+      "item": "handful of shredded basil leaves to serve (optional)"
     }
   ],
   "method": [
-    "Preheat the oven to 350°F. Place the onion and fennel in a large saucepan, add 3 tablespoons of the oil and sauté on medium heat for about 4 minutes. Add the carrot and celery and continue cooking for 4 minutes, just to soften the vegetables, stirring occasionally. Stir in the tomato paste and stir as you cook for",
-    "1 minute. Add the wine and let it bubble away for a minute or two.",
+    "Preheat the oven to 350°F. Place the onion and fennel in a large saucepan, add 3 tablespoons of the oil and sauté on medium heat for about 4 minutes. Add the carrot and celery and continue cooking for 4 minutes, just to soften the vegetables, stirring occasionally. Stir in the tomato paste and stir as you cook for 1 minute. Add the wine and let it bubble away for a minute or two.",
     "Next, add the canned tomatoes with their juices, the herbs, sugar, vegetable stock and some salt and pepper. Bring to the boil, then cover and leave to simmer gently for about 30 minutes.",
-    "While you wait, break the bread into rough chunks with your hands. Toss with 2 tablespoons oil and some salt and scatter in a roasting pan. Bake for about 10 minutes, or until thoroughly dry.",
-    "Remove from the oven and set aside.",
+    "While you wait, break the bread into rough chunks with your hands. Toss with 2 tablespoons oil and some salt and scatter in a roasting pan. Bake for about 10 minutes, or until thoroughly dry. Remove from the oven and set aside.",
     "About 10 minutes before you want to serve the soup, place the chickpeas in a bowl and crush them a little with a potato masher or the end of a rolling pin; you want some to be left whole. Add them to the soup and leave to simmer for a further 5 minutes.",
-    "Next add the toasted bread, stir well and cook for another",
-    "5 minutes. Taste the soup and add salt and pepper liberally.",
-    "Ladle the hot soup into bowls. Spoon some pesto in the center, drizzle with plenty of olive oil and finish with a generous amount of freshly shredded basil, if you like.",
-    "When this recipe was first published I used young pecorino cheese in it so as not to outdo the asparagus.",
-    "I have since realized that fresh asparagus actually withstands quite a lot and can impart its flavor over pretty gutsy dishes. A flavorful sheep's cheese is ideal with the earthy lentils.",
-    "Green lentils, asparagus and watercress"
+    "Next add the toasted bread, stir well and cook for another 5 minutes. Taste the soup and add salt and pepper liberally.",
+    "Ladle the hot soup into bowls. Spoon some pesto in the center, drizzle with plenty of olive oil and finish with a generous amount of freshly shredded basil, if you like."
   ],
   "time": {
     "total": 30

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getAllRecipes, getCuisine, getDietary, isLowCalorie, getCourseTags, getRecipe } from "@/lib/recipes";
-import { selectMealOptions, selectCandidateMains, getDisplayCategory, CANDIDATE_BUCKET_CONTRACT, type WeekendMealOption, type WeekContextItem, type CandidateItem, type CandidateBucket, type QualityGatedResult, type TaggedCandidate } from "@/lib/meals";
+import { selectMealOptions, selectCandidateMains, getDisplayCategory, CANDIDATE_BUCKET_ORDER, CANDIDATE_BUCKET_CONTRACT, type WeekendMealOption, type WeekContextItem, type CandidateItem, type CandidateBucket, type QualityGatedResult, type TaggedCandidate } from "@/lib/meals";
 import { getRecentlyCookedRecipeIds, getThumbsDownRecipeIds } from "@/lib/db";
 import type { Recipe } from "@/lib/recipes";
 
@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
   const recentlyCooked = await getRecentlyCookedRecipeIds(14);
   for (const id of recentlyCooked) excludeIds.add(id);
 
-  // Exclude recipes the user has thumbs-downed in any week
+  // Exclude recipes the user has thumbs-downed
   const thumbsDown = await getThumbsDownRecipeIds();
   for (const id of thumbsDown) excludeIds.add(id);
 

@@ -5,8 +5,8 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "of melting cheese, grapeseed oil and pink peppercorns is delicate yet clearly present and satisfying. Choose",
+  "servings": "serves 4 as a starter",
+  "intro": "The trade-off for having to make your own pasta here is that there's no sauce to labor over. The combination of melting cheese, grapeseed oil and pink peppercorns is delicate yet clearly present and satisfying. Choose a relatively soft and quite mild goat cheese.",
   "ingredients": [
     {
       "item": "olive oil",
@@ -17,20 +17,36 @@
       "amount": "3"
     },
     {
-      "item": "11",
-      "amount": ""
+      "item": "\"00\" pasta flour, plus extra for rolling",
+      "amount": "11½ oz (about 2¾ cups)"
     },
     {
-      "item": "“00” pasta flour, plus extra for rolling",
-      "amount": "½ oz (about 2¾ cups)"
-    },
-    {
-      "item": "ground turmeric grated zest of 3 lemons semolina",
+      "item": "ground turmeric",
       "amount": "¼ tsp"
+    },
+    {
+      "item": "grated zest of lemons",
+      "amount": "3"
+    },
+    {
+      "item": "semolina",
+      "amount": ""
     },
     {
       "item": "soft goat cheese",
       "amount": "11 oz"
+    },
+    {
+      "item": "Maldon sea salt",
+      "amount": "⅓ tsp"
+    },
+    {
+      "item": "chile flakes",
+      "amount": "pinch"
+    },
+    {
+      "item": "black pepper",
+      "amount": ""
     },
     {
       "item": "egg white, beaten",
@@ -41,23 +57,28 @@
       "amount": "2 tsp"
     },
     {
-      "item": "chopped tarragon grated zest of 1 lemon grapeseed oil lemon juice (optional)",
+      "item": "chopped tarragon",
       "amount": "1 tsp"
+    },
+    {
+      "item": "grated zest of lemon",
+      "amount": "1"
+    },
+    {
+      "item": "grapeseed oil",
+      "amount": ""
+    },
+    {
+      "item": "lemon juice (optional)",
+      "amount": ""
     }
   ],
   "method": [
     "To make the pasta dough. Whisk together the oil and eggs. Put the flour, turmeric and lemon zest in a food processor, add the oil and egg mixture and blend to a crumbly dough. It might require extra flour or oil. Once the dough has come together and is smooth (you may need to work it a little by hand), divide it into four thick, rectangular blocks. Wrap them in plastic wrap and chill for at least 30 minutes, or up to 2 days.",
-    "Lightly dust a work surface with flour. Take one piece of dough and flatten it on the floured surface with a rolling pin. Set your pasta machine to the widest setting and pass the dough through.",
-    "Repeat, narrowing the setting by a notch each time, until you get to the lowest setting. When each sheet is rolled, keep it under a moist towel so it doesn’t dry out.",
+    "Lightly dust a work surface with flour. Take one piece of dough and flatten it on the floured surface with a rolling pin. Set your pasta machine to the widest setting and pass the dough through. Repeat, narrowing the setting by a notch each time, until you get to the lowest setting. When each sheet is rolled, keep it under a moist towel so it doesn't dry out.",
     "To make the filling. Combine the filling ingredients, apart from the egg white, in a bowl and crush together with a fork.",
-    "Use a pastry cutter or the rim of a glass to stamp out roughly",
-    "3-inch discs from the pasta sheets. To shape each raviolo, brush a disc with a little egg white and place a heaped teaspoon of filling in its center. Place another pasta disc on top. Dip your fingers in flour, then gently press out any air as you seal the edges of the two discs together. You should end up with a pillow-shaped center surrounded by an edge that is just under",
-    "³8 inch wide. Seal the sides of the edges together firmly until you can’t see a seam where the two discs meet. As they are made, place the ravioli on a dish towel or tray sprinkled with semolina. Leave to dry for",
-    "10 to 15 minutes. (You can now cover the tray with plastic wrap and keep the ravioli in the fridge for a day.)",
-    "When ready to cook, bring a large pan of salted water to the boil. Cook the pasta for 2 to 3 minutes, or until al dente. Drain and divide among four plates. Sprinkle with pink peppercorns, tarragon and lemon zest. Drizzle grapeseed oil over the ravioli and around them, sprinkle with extra salt and a squirt of lemon juice, if you like, and serve at once.",
-    "252 | Pasta, Polenta, Couscous",
-    "I use panko, the crisp Japanese breadcrumbs, to add texture to this creamy pasta. The sauce dries out easily so I add some of the pasta’s cooking liquid before serving; make sure it is quite runny.",
-    "Crunchy pappardelle"
+    "Use a pastry cutter or the rim of a glass to stamp out roughly 3-inch discs from the pasta sheets. To shape each raviolo, brush a disc with a little egg white and place a heaped teaspoon of filling in its center. Place another pasta disc on top. Dip your fingers in flour, then gently press out any air as you seal the edges of the two discs together. You should end up with a pillow-shaped center surrounded by an edge that is just under ⅜ inch wide. Seal the sides of the edges together firmly until you can't see a seam where the two discs meet. As they are made, place the ravioli on a dish towel or tray sprinkled with semolina. Leave to dry for 10 to 15 minutes. (You can now cover the tray with plastic wrap and keep the ravioli in the fridge for a day.)",
+    "When ready to cook, bring a large pan of salted water to the boil. Cook the pasta for 2 to 3 minutes, or until al dente. Drain and divide among four plates. Sprinkle with pink peppercorns, tarragon and lemon zest. Drizzle grapeseed oil over the ravioli and around them, sprinkle with extra salt and a squirt of lemon juice, if you like, and serve at once."
   ],
   "time": {
     "total": 30

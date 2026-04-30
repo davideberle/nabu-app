@@ -5,12 +5,16 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 2",
-  "intro": "This can be a potent dip or condiment that you can serve with raw vegetables or to accompany lamb or fish.",
+  "servings": "serves 2–4",
+  "intro": "This can be a potent dip or condiment that you can serve with raw vegetables or to accompany lamb or fish. Or, with the optional chunks of cucumber and tomato, it can be a gloriously refreshing summer salad that exudes Middle Eastern aromas. You choose.",
   "ingredients": [
     {
       "item": "large eggplant",
       "amount": "1"
+    },
+    {
+      "item": "tahini paste",
+      "amount": "⅓ cup"
     },
     {
       "item": "water",
@@ -29,32 +33,33 @@
       "amount": "1"
     },
     {
-      "item": "chopped parsley salt and black pepper",
+      "item": "chopped parsley",
       "amount": "3 tbsp"
+    },
+    {
+      "item": "salt and black pepper"
     },
     {
       "item": "mini cucumbers (6 to 7 oz in total, optional)",
       "amount": "3"
     },
     {
-      "item": "cherry tomatoes (optional) seeds from",
+      "item": "cherry tomatoes (optional)",
       "amount": "¾ cup"
     },
     {
-      "item": "large pomegranate (see page 110) a little olive oil to finish",
+      "item": "seeds from large pomegranate (see page 110)",
       "amount": "½"
+    },
+    {
+      "item": "a little olive oil to finish"
     }
   ],
   "method": [
     "First, burn the eggplant (see page 116). When cool enough to handle scoop out the flesh into a colander, avoiding the blackened skin. Leave to drain for at least 30 minutes.",
-    "Chop the eggplant flesh roughly and transfer to a medium mixing bowl. Add the tahini, water, pomegranate molasses, lemon juice, garlic, parsley and some salt and pepper; mix well with a whisk.",
-    "Taste and adjust the seasoning, adding more garlic, lemon juice or molasses if needed. You want the salad to have a robust sour/ slightly sweet flavor.",
-    "If you want to add cucumber and tomatoes, cut the cucumbers lengthways in half and then each half lengthways in two. Cut each quarter into",
-    "³8-inch-long pieces. Halve the tomatoes. Stir them and the cucumber into the eggplant mix.",
-    "To serve, spread over a shallow dish, scatter the pomegranate seeds on top and drizzle with oil.",
-    "126 | To m at o e s",
-    "This is probably one of the simplest yet finest starters you can offer. There’s only one catch – your ingredients. I would ditch the idea at once if I couldn’t get a ripe summery tomato, juicy and sweetly intense, a tomato that has never seen a fridge or a chilled truck, only soil and sun. You can actually get such tomatoes if you look hard enough. The best tomato I ever had was homegrown in the village of Monarola in the Cinque Terre, northern Italy. I’ll never forget it. You also need a top-quality buffalo mozzarella. Serve this with good crusty white bread.",
-    "Marinated buffalo mozzarella and tomato"
+    "Chop the eggplant flesh roughly and transfer to a medium mixing bowl. Add the tahini, water, pomegranate molasses, lemon juice, garlic, parsley and some salt and pepper; mix well with a whisk. Taste and adjust the seasoning, adding more garlic, lemon juice or molasses if needed. You want the salad to have a robust sour/slightly sweet flavor.",
+    "If you want to add cucumber and tomatoes, cut the cucumbers lengthways in half and then each half lengthways in two. Cut each quarter into ⅜-inch-long pieces. Halve the tomatoes. Stir them and the cucumber into the eggplant mix.",
+    "To serve, spread over a shallow dish, scatter the pomegranate seeds on top and drizzle with oil."
   ],
   "time": {
     "total": 30

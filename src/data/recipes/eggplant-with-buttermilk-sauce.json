@@ -5,16 +5,23 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "I can’t think of a more rustically elegant (is that a contradiction in terms?) starter. Serve with some robust",
+  "servings": "serves 4 as a starter",
+  "intro": "I can’t think of a more rustically elegant (is that a contradiction in terms?) starter. Serve with some robust white bread or pita and you are, literally, in food heaven. In the recipe you’ll find Sami Tamimi’s technique for getting the seeds out of the pomegranate, which I am afraid is now a very well-known secret.",
   "ingredients": [
     {
       "item": "large and long eggplants",
       "amount": "2"
     },
     {
+      "item": "olive oil",
+      "amount": "⅓ cup"
+    },
+    {
       "item": "lemon thyme leaves, plus a few whole sprigs to garnish",
-      "amount": "½ tsp"
+      "amount": "1½ tsp"
+    },
+    {
+      "item": "Maldon sea salt and black pepper"
     },
     {
       "item": "pomegranate",
@@ -26,19 +33,27 @@
     },
     {
       "item": "buttermilk",
-      "amount": "9 tbsp"
+      "amount": "9 tbsp",
+      "group": "sauce"
     },
     {
       "item": "Greek yogurt",
-      "amount": "½ cup"
+      "amount": "½ cup",
+      "group": "sauce"
     },
     {
       "item": "olive oil, plus a drizzle to finish",
-      "amount": "½ tbsp"
+      "amount": "1½ tbsp",
+      "group": "sauce"
     },
     {
-      "item": "small garlic clove, crushed pinch of salt",
-      "amount": "1"
+      "item": "small garlic clove, crushed",
+      "amount": "1",
+      "group": "sauce"
+    },
+    {
+      "item": "pinch of salt",
+      "group": "sauce"
     }
   ],
   "method": [
@@ -48,11 +63,7 @@
     "Roast for 35 to 40 minutes, at which point the flesh should be soft, flavorful and nicely browned. Remove from the oven and allow to cool down completely.",
     "While the eggplants are in the oven, cut the pomegranate into two horizontally. Hold one half over a bowl, with the cut side against your palm, and use the back of a wooden spoon or a rolling pin to gently knock on the pomegranate skin. Continue beating with increasing power until the seeds start coming out naturally and falling through your fingers into the bowl. Once all are there, sift through the seeds to remove any bits of white skin or membrane.",
     "To make the sauce. Whisk together all of the ingredients. Taste for seasoning, then keep cold until needed.",
-    "To serve, spoon plenty of buttermilk sauce over the eggplant halves without covering the stalks. Sprinkle za’atar and plenty of pomegranate seeds on top and garnish with lemon thyme. Finish with a drizzle of olive oil.",
-    "112 | The Mighty Eggplant",
-    "This dish has become my mother’s ultimate cook-to-impress fare. And she is not the only one, as I have been informed by many readers. It is the refreshing nature of the cold buckwheat noodles (see more about them in",
-    "Soba noodles with wakame, page 188), the sweet sharpness of the dressing and the muskiness of mango that make it so pleasing. Serve this as a substantial starter or turn it into a light main course by adding some fried firm tofu.",
-    "Soba noodles with eggplant and mango"
+    "To serve, spoon plenty of buttermilk sauce over the eggplant halves without covering the stalks. Sprinkle za’atar and plenty of pomegranate seeds on top and garnish with lemon thyme. Finish with a drizzle of olive oil."
   ],
   "time": {
     "total": 30

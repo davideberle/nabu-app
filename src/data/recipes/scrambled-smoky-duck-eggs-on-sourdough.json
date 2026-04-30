@@ -13,8 +13,12 @@
       "amount": "4"
     },
     {
-      "item": "thick slices sourdough bread lightly salted butter",
+      "item": "thick slices sourdough bread",
       "amount": "4"
+    },
+    {
+      "item": "lightly salted butter",
+      "amount": ""
     },
     {
       "item": "olive oil",
@@ -25,12 +29,8 @@
       "amount": "4"
     },
     {
-      "item": "green onions, cut into",
+      "item": "green onions, cut into ¾-inch-long pieces",
       "amount": "4"
-    },
-    {
-      "item": "¾-inch-long pieces",
-      "amount": ""
     },
     {
       "item": "plum tomatoes, roughly chopped",
@@ -41,8 +41,16 @@
       "amount": "6"
     },
     {
-      "item": "Maldon sea salt black pepper bunch of cilantro leaves, roughly chopped",
+      "item": "Maldon sea salt",
       "amount": "1 tsp"
+    },
+    {
+      "item": "black pepper",
+      "amount": ""
+    },
+    {
+      "item": "bunch of cilantro leaves, roughly chopped",
+      "amount": "1"
     },
     {
       "item": "heaped tbsp sour cream",
@@ -54,9 +62,7 @@
     "Preheat the grill to high. Place the sourdough bread slices under the grill and toast well on both sides. Spread butter generously on the toasts and leave them somewhere warm.",
     "Heat up the olive oil in a large frying pan. Add the garlic and green onions and cook lightly on medium–high heat. When they begin to turn golden, add the chopped tomatoes and chipotles and cook for a further 1 to 2 minutes.",
     "Break the eggs into a bowl and beat lightly with a fork, adding the salt and some pepper. Pour the eggs into the frying pan and cook for 20 to 30 seconds, stirring constantly to create runny scrambled eggs.",
-    "Put the toasts on serving plates, spoon the eggs on top and sprinkle over the cilantro. Serve immediately, with the sour cream on top or on the side.",
-    "In a tiny alley in old Jaffa there’s a little restaurant serving food to customers sitting outside at shared shabby tables. The place is heaving around lunchtime and everybody, more or less, is eating the same thing. The place is called Dr. Shakshuka, after its signature dish, and this is, obviously, what everybody’s tucking into.",
-    "Shakshuka (pictured on pages 88 to 89) is a North African dish with many variations. Some add preserved lemon, others feta and different herbs and spices. It is my ideal brunch fare! Cook and serve it in individual pans, if you have them, or in one very large one. Chunky white bread on the side is a must."
+    "Put the toasts on serving plates, spoon the eggs on top and sprinkle over the cilantro. Serve immediately, with the sour cream on top or on the side."
   ],
   "time": {
     "total": 30
@@ -68,6 +74,6 @@
     "chapter": "",
     "meal_role": "breakfast"
   },
-  "cuisine": "Middle Eastern",
-  "image": "/recipes/scrambled-smoky-duck-eggs-on-sourdough.jpg"
+  "image": "/recipes/scrambled-smoky-duck-eggs-on-sourdough.jpg",
+  "cuisine": "Middle Eastern"
 }

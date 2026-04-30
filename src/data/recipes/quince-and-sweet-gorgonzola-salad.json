@@ -5,16 +5,16 @@
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
   },
-  "servings": "serves 4",
-  "intro": "with a soft, perfumed flesh. You can then use it in plenty of contexts: in desserts or salads, or to accompany",
+  "servings": "serves 4 as a starter",
+  "intro": "During a cooking class I gave at Leith's a few years ago a woman came up to me and said: \"I've got a tree full of quinces in my garden but I don't do anything with them. I am scared of quince.\" She's not alone. The daunting thing about quince is the preparation. Although it has the innocent look of, say, an apple or a pear, it is rock hard and requires long cooking before becoming edible. Still, once you've got rid of your quince aversion and tried preparing it yourself, you'll be amazed by the transformation it goes through, from an unyielding, dull, off-white, hard mass into a magnificent red fruit with a soft, perfumed flesh. You can then use it in plenty of contexts: in desserts or salads, or to accompany fatty and rich meats such as lamb, game or pork. Any quince syrup left after making this salad you can warm up and pour over vanilla ice cream.",
   "ingredients": [
     {
       "item": "water",
-      "amount": "¾ cups"
+      "amount": "1¾ cups"
     },
     {
       "item": "sugar",
-      "amount": "½ cups"
+      "amount": "1½ cups"
     },
     {
       "item": "black peppercorns",
@@ -25,11 +25,11 @@
       "amount": "4"
     },
     {
-      "item": "bay leaves juice of",
+      "item": "bay leaves",
       "amount": "2"
     },
     {
-      "item": "lemon",
+      "item": "lemon, juiced",
       "amount": "½"
     },
     {
@@ -49,35 +49,34 @@
       "amount": "2 tsp"
     },
     {
-      "item": "olive oil, plus extra to finish salt and black pepper",
+      "item": "olive oil, plus extra to finish",
       "amount": "4 tbsp"
     },
     {
-      "item": "mixed leaves (such as mizuna, dandelion, watercress or radicchio di Treviso)",
-      "amount": "½ cups"
+      "item": "salt and black pepper",
+      "amount": ""
     },
     {
-      "item": "sweet Gorgonzola scant",
+      "item": "mixed leaves (such as mizuna, dandelion, watercress or radicchio di Treviso)",
+      "amount": "2½ cups"
+    },
+    {
+      "item": "sweet Gorgonzola",
       "amount": "4 to 5 oz"
     },
     {
       "item": "shelled unsalted pistachios, lightly toasted, some whole and some roughly chopped",
-      "amount": "½ cup"
+      "amount": "scant ½ cup"
     }
   ],
   "method": [
     "Preheat the oven to 275°F. Take a medium-sized heavy pan that can go in the oven and for which you have a tight-fitting lid. Place inside the water, sugar, peppercorns, orange zest, bay leaves, lemon juice and red wine. Set on the stove and bring to a light simmer. As soon as the sugar dissolves, remove from the heat.",
     "Meanwhile, use a vegetable peeler to peel the quinces; keep the skin. With a heavy knife, cut the fruit vertically into quarters and remove the core; keep this too. Cut each quarter into two segments. Place the quince segments, plus the skins and cores, in the sugar syrup. Cover the pan and put it into the oven to cook for about 2 hours. After this time the quince should be completely tender. Remove from the oven and leave to cool, uncovered.",
-    "Whisk together until smooth the mustard, vinegar, oil, 4 table- spoons of the quince cooking liquid,",
-    "½ teaspoon salt and a good grind of black pepper.",
-    "To finish the salad, place some salad leaves on four serving plates. Arrange four quince segments per portion and some hand-broken pieces of Gorgonzola on the leaves. Try to build the salad up. Place a few more leaves on top. Spoon the dressing over and scatter over the pistachios. Finish with a light drizzle of olive oil. Alternatively, arrange similarly in a large, central mixing bowl and bring to the table.",
-    "278 | Fruit with Cheese",
-    "My dad always quotes an old Tuscan saying that was often used in conversation between a landowner and the supervisor of the land: Al contadino non far sapere quanto è buono il formaggio con le pere. The beautiful Italian melody unfortunately doesn’t carry through to the English translation: To the peasant dare not tell how pears with cheese taste so well.",
-    "As well as revealing something about the class structure in the Italian countryside and about the existential anxieties of the landowners, the phrase also makes a much less explosive, but still profound, truth about the sublime combination of pear and cheese, particularly the Grandes Dames of Italian cheese, Parmesan and pecorino.",
-    "Here I go for goat cheese, which is just as good with pear when chosen well. It should be an artisanal one and full of flavor. You also need pears that are firm, yet sweet and slightly tart. Super-ripe pears, as much as I love them, will overcook and turn mushy."
+    "Whisk together until smooth the mustard, vinegar, oil, 4 tablespoons of the quince cooking liquid, ½ teaspoon salt and a good grind of black pepper.",
+    "To finish the salad, place some salad leaves on four serving plates. Arrange four quince segments per portion and some hand-broken pieces of Gorgonzola on the leaves. Try to build the salad up. Place a few more leaves on top. Spoon the dressing over and scatter over the pistachios. Finish with a light drizzle of olive oil. Alternatively, arrange similarly in a large, central mixing bowl and bring to the table."
   ],
   "time": {
-    "total": 30
+    "total": 150
   },
   "image": "/recipes/quince-and-sweet-gorgonzola-salad.jpg",
   "category": {

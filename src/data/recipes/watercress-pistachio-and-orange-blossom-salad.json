@@ -6,51 +6,57 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "It is essential to dress the salad as you serve it and not a second earlier: the delicate herbs wilt in an",
+  "intro": "I would either start a meal or end it with this salad. It is an ideal palate-cleanser with its robust yet refreshing herb flavors. Or, you could serve it to balance a long-cooked or rich main course, such as the Smoky frittata on page 96. Another idea is to add spoonfuls of buffalo ricotta to transform the salad into a more substantial starter.\nIt is essential to dress the salad as you serve it and not a second earlier: the delicate herbs wilt in an instant when they come in contact with the acidic dressing.",
   "ingredients": [
     {
       "item": "olive oil",
-      "amount": "4 tbsp"
+      "amount": "4 tbsp",
+      "group": "dressing"
     },
     {
       "item": "lemon juice (or more if you like it very sour)",
-      "amount": "1½ tbsp"
+      "amount": "1\u00bd tbsp",
+      "group": "dressing"
     },
     {
-      "item": "orange-flower water salt and black pepper",
-      "amount": "1 tsp"
+      "item": "orange-flower water",
+      "amount": "1 tsp",
+      "group": "dressing"
     },
     {
-      "item": "watercress, thick stalks removed scant 1 cup basil leaves",
-      "amount": "3½ cups"
+      "item": "salt and black pepper",
+      "amount": "",
+      "group": "dressing"
+    },
+    {
+      "item": "watercress, thick stalks removed",
+      "amount": "3\u00bd cups"
+    },
+    {
+      "item": "basil leaves",
+      "amount": "scant 1 cup"
     },
     {
       "item": "cilantro leaves",
-      "amount": "1½ cups"
+      "amount": "1\u00bd cups"
     },
     {
       "item": "dill",
-      "amount": "¼ cup"
+      "amount": "\u00bc cup"
     },
     {
       "item": "tarragon leaves",
-      "amount": "¼ cup"
+      "amount": "\u00bc cup"
     },
     {
-      "item": "³ cup shelled unsalted pistachios, lightly toasted and coarsely crushed",
-      "amount": ""
+      "item": "shelled unsalted pistachios, lightly toasted and coarsely crushed",
+      "amount": "\u2153 cup"
     }
   ],
   "method": [
     "To make the dressing. In a little bowl whisk together all of the dressing ingredients.",
     "Place the watercress and herbs in a large mixing bowl and set aside until you are ready to serve the salad (you can leave them in the fridge in an airtight container for a few hours).",
-    "Just before serving, pour the dressing and the pistachios over the leaves, toss gently and serve immediately.",
-    "154 | Leaves, Cooked and Raw",
-    "156 | Leaves, Cooked and Raw",
-    "This started off as a take on manakish, a Levantine flatbread topped with za’atar and often also containing halloumi-style cheese or minced lamb. My version is so far removed from the original that it doesn’t warrant the use of the name. Still, the za’atar and sumac give this “pizza” an earthy Middle Eastern kick, reminiscent of the aromas coming from bread stalls in East Jerusalem. (For information on za’atar and sumac, see Fried",
-    "Lima Beans with Feta, Sorrel and Sumac, page 214.)",
-    "You’ll probably find it difficult to fit the six individual pizzas into your oven all at once: you’d need three baking sheets large enough to take two pizzas each. If you haven’t got them, bake the individual pizzas in batches or make three double-sized pizzas.",
-    "Egg, spinach and pecorino pizza"
+    "Just before serving, pour the dressing and the pistachios over the leaves, toss gently and serve immediately."
   ],
   "time": {
     "total": 30

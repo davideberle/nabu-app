@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "I am afraid I can’t replicate in the United Kingdom. Still, I can buy good French or Italian figs, a day or two",
+  "intro": "Fresh figs are available in summer and then make another short appearance in autumn. When they are good they are amazing. The unctuous sweetness of a fresh fig, combined with its ripe-rich texture, is unbeatable. In Israel and Palestine fig trees are to be found everywhere, and picking the fruit and eating it straight off the tree is a childhood experience I am afraid I can’t replicate in the United Kingdom. Still, I can buy good French or Italian figs, a day or two old, from La Fromagerie in London. Good figs are heavy and slightly squidgy and have a noticeable sweet smell; they often tend to crack at their base. Stick to those and you’ll be fine. But no matter what you do, don’t buy under-ripe supermarket figs that have been cargoed here from the ends of the world. Use a very young and creamy goat cheese (see Caramelized Fennel with Goat Cheese, page 172).",
   "ingredients": [
     {
       "item": "shallot, finely chopped",
@@ -17,8 +17,12 @@
       "amount": "½ tsp"
     },
     {
-      "item": "pomegranate molasses salt and black pepper",
+      "item": "pomegranate molasses",
       "amount": "2 tsp"
+    },
+    {
+      "item": "salt and black pepper",
+      "amount": ""
     },
     {
       "item": "olive oil, plus extra to finish",
@@ -26,7 +30,7 @@
     },
     {
       "item": "arugula",
-      "amount": "½ cups"
+      "amount": "1½ cups"
     },
     {
       "item": "mixed purple and green basil leaves",
@@ -38,17 +42,14 @@
     },
     {
       "item": "young and creamy goat cheese",
-      "amount": "½ oz"
+      "amount": "2½ oz"
     }
   ],
   "method": [
     "Place the shallot, mustard and pomegranate molasses in a medium bowl. Add some salt and pepper and whisk vigorously as you slowly pour in the olive oil. You are aiming for a homogenous dressing.",
     "Add most of the arugula and basil leaves to the dressing, reserving some to finish the salad, and toss gently. Lift the dressed leaves onto a large serving plate, spreading them out to line it.",
     "Cut the figs vertically into quarters and arrange over the leaves.",
-    "Next, dot the figs and leaves with teaspoonfuls of cheese. Scatter the reserved leaves on top, drizzle with extra oil and season with some salt and pepper.",
-    "274 | Fruit with Cheese",
-    "Goat cheese soufflés with vanilla-poached peaches",
-    "Back in the 1990s I was the pastry chef at Launceston Place, a restaurant in London that was regularly haunted by politicians, English nobility and, most notably, by Princess Diana. In those days – and how dated this seems now – they had a delicious double-baked goat cheese soufflé starter. It never came off the menu and had also become a regular feature in many other restaurants. The only variation allowed was the sweet seasonal condiment that came with it. This is my little tribute to them and to ‘90s food."
+    "Next, dot the figs and leaves with teaspoonfuls of cheese. Scatter the reserved leaves on top, drizzle with extra oil and season with some salt and pepper."
   ],
   "time": {
     "total": 30

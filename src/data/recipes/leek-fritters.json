@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "Don’t be put off by the long list of ingredients. You are likely to find many of them in your kitchen cupboard.",
+  "intro": "My aunt, Yona Ashkenazi, makes the most heavenly leek fritters, inspired by her late husband Yaacov's Turkish descent. I have to admit I haven't eaten her wonderful food for many years but these fritters in particular, and another version made with spinach, remain distinct and sweet childhood memories. I believe my leek fritters come quite close. Don't be put off by the long list of ingredients. You are likely to find many of them in your kitchen cupboard. You also don't have to make the sauce. A squirt of lemon or lime juice will suffice.",
   "ingredients": [
     {
       "item": "Greek yogurt",
@@ -49,6 +49,10 @@
       "amount": "5"
     },
     {
+      "item": "olive oil",
+      "amount": "⅔ cup"
+    },
+    {
       "item": "fresh red chile, seeded and sliced",
       "amount": "1"
     },
@@ -85,8 +89,8 @@
       "amount": "1"
     },
     {
-      "item": "plus 1 tbsp self-rising flour (see page 28)",
-      "amount": "¾ cup"
+      "item": "self-rising flour (see page 28)",
+      "amount": "¾ cup plus 1 tbsp"
     },
     {
       "item": "baking powder",
@@ -97,8 +101,12 @@
       "amount": "1"
     },
     {
+      "item": "milk",
+      "amount": "⅔ cup"
+    },
+    {
       "item": "unsalted butter, melted",
-      "amount": "½ tbsp"
+      "amount": "4½ tbsp"
     }
   ],
   "method": [
@@ -107,12 +115,8 @@
     "Sauté the leeks and shallots in a pan with half the oil on medium heat for about 15 minutes, or until soft. Transfer to a large bowl and add the chile, parsley, spices, sugar and salt. Allow to cool down.",
     "Whisk the egg white to soft peaks and fold it into the vegetables.",
     "In another bowl mix together the flour, baking powder, whole egg, milk and butter to form a batter. Gently mix it into the egg white and vegetable mixture.",
-    "Put 2 tablespoons of the remaining oil in a large frying pan and place over a medium heat. Spoon about half of the vegetable mixture into the pan to make four large fritters. Fry them for 2 to",
-    "3 minutes on each side, or until golden and crisp. Remove to paper towels and keep warm. Continue making the fritters, adding more oil as needed. You should end up with about eight large fritters.",
-    "Serve warm, with the sauce on the side or drizzled over.",
-    "38 | Funny Onions",
-    "“I think this is the most delicious recipe (pictured on page 40) in the world!” wrote Claudine after trying it out for me. What else can I add?",
-    "Caramelized garlic tart"
+    "Put 2 tablespoons of the remaining oil in a large frying pan and place over a medium heat. Spoon about half of the vegetable mixture into the pan to make four large fritters. Fry them for 2 to 3 minutes on each side, or until golden and crisp. Remove to paper towels and keep warm. Continue making the fritters, adding more oil as needed. You should end up with about eight large fritters.",
+    "Serve warm, with the sauce on the side or drizzled over."
   ],
   "time": {
     "total": 30
