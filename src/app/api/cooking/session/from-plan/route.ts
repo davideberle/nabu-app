@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createSessionFromPlan } from "@/lib/cooking";
+import { todayInZurich } from "@/lib/date";
 
 // POST /api/cooking/session/from-plan
 // Creates a cooking session from a day's planned meal (if one exists).
@@ -10,7 +11,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json().catch(() => ({}));
     const date: string =
       (body as { date?: string }).date ||
-      new Date().toISOString().split("T")[0];
+      todayInZurich();
 
     const session = await createSessionFromPlan(date);
     if (!session) {

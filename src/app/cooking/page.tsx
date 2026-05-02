@@ -1,17 +1,14 @@
 import Link from "next/link";
 import { createSessionFromPlan } from "@/lib/cooking";
+import { todayInZurich } from "@/lib/date";
 import type { CookingSession, SessionIngredient, CoachCards } from "@/lib/cooking";
 import { getRecipe } from "@/lib/recipes";
 import type { Recipe } from "@/lib/recipes";
 
-function today(): string {
-  return new Date().toISOString().split("T")[0];
-}
-
 export const dynamic = "force-dynamic";
 
 export default async function CookingPage() {
-  const date = today();
+  const date = todayInZurich();
   // Auto-load existing session or create one from today's meal plan
   const session = await createSessionFromPlan(date);
 
