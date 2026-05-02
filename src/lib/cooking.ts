@@ -104,16 +104,92 @@ export type CookingSession = {
 // Persistence helpers
 // ---------------------------------------------------------------------------
 
+type CookingSessionRow = Record<string, unknown>;
+
+function safeParse<T>(raw: unknown): T | null {
+  if (typeof raw !== "string" || raw.length === 0) return null;
+  try {
+    return JSON.parse(raw) as T;
+  } catch {
+    return null;
+  }
+}
+
+function legacyRowToSession(row: CookingSessionRow): CookingSession | null {
+  const recipeId = row["recipe_id"] as string | null;
+  const recipeName = row["recipe_name"] as string | null;
+  const recipeData = safeParse<{
+    source?: { cookbook?: string; author?: string };
+    servings?: string;
+    ingredients?: { amount?: string; item?: string; unit?: string; group?: string | null }[];
+    method?: string[];
+  }>(row["recipe_data"]);
+
+  if (!recipeId || !recipeName || !recipeData) return null;
+
+  const now = new Date().toISOString();
+  const statusRaw = row["status"] as string | null;
+  const status: SessionStatus =
+    statusRaw === "completed" ? "completed" : statusRaw === "abandoned" ? "abandoned" : "active";
+  const ingredients = (recipeData.ingredients ?? []).map((ing) => ({
+    amount: ing.amount ?? "",
+    item: ing.item ?? "",
+    unit: ing.unit,
+    group: ing.group ?? null,
+  }));
+
+  return {
+    id: row["id"] as string,
+    date: row["date"] as string,
+    status,
+    source: "meal-plan",
+    mealPlanRef: null,
+    anchor: {
+      type: recipeData.source?.cookbook === "My Recipes" ? "my-recipe" : "kitchen-recipe",
+      recipeId,
+      title: recipeName,
+      provenance: {
+        source: recipeData.source?.cookbook || "kitchen",
+        author: recipeData.source?.author,
+      },
+    },
+    relatedRecipes: [],
+    serveWith: safeParse<string[]>(row["serve_with"]) ?? [],
+    servings: {
+      base: recipeData.servings || "4",
+      current: recipeData.servings || "4",
+    },
+    ingredients: { base: ingredients, session: [] },
+    method: { base: recipeData.method ?? [], session: [] },
+    adaptations: [],
+    coachCards: { nextMove: null, upgrade: null, shortcut: null, wine: null },
+    notes: "",
+    createdAt: (row["created_at"] as string | null) || now,
+    updatedAt:
+      (row["updated_at"] as string | null) ||
+      (row["started_at"] as string | null) ||
+      (row["created_at"] as string | null) ||
+      now,
+  };
+}
+
+function rowToSession(row: CookingSessionRow): CookingSession | null {
+  return safeParse<CookingSession>(row["data"]) ?? legacyRowToSession(row);
+}
+
 export async function getCookingSessionForDate(
   date: string
 ): Promise<CookingSession | null> {
   const client = await getDb();
   const result = await client.execute({
-    sql: "SELECT data FROM cooking_sessions WHERE date = ? ORDER BY updated_at DESC LIMIT 1",
+    sql: `SELECT * FROM cooking_sessions
+          WHERE date = ?
+          ORDER BY COALESCE(updated_at, created_at, started_at) DESC
+          LIMIT 1`,
     args: [date],
   });
   if (result.rows.length === 0) return null;
-  return JSON.parse(result.rows[0]["data"] as string) as CookingSession;
+  return rowToSession(result.rows[0] as CookingSessionRow);
 }
 
 export async function getSessionsForDateRange(
@@ -122,12 +198,14 @@ export async function getSessionsForDateRange(
 ): Promise<CookingSession[]> {
   const client = await getDb();
   const result = await client.execute({
-    sql: "SELECT data FROM cooking_sessions WHERE date >= ? AND date <= ? ORDER BY date",
+    sql: `SELECT * FROM cooking_sessions
+          WHERE date >= ? AND date <= ?
+          ORDER BY date`,
     args: [from, to],
   });
-  return result.rows.map(
-    (row) => JSON.parse(row["data"] as string) as CookingSession
-  );
+  return result.rows
+    .map((row) => rowToSession(row as CookingSessionRow))
+    .filter((session): session is CookingSession => session !== null);
 }
 
 export async function getCookingSession(
@@ -135,11 +213,29 @@ export async function getCookingSession(
 ): Promise<CookingSession | null> {
   const client = await getDb();
   const result = await client.execute({
-    sql: "SELECT data FROM cooking_sessions WHERE id = ?",
+    sql: "SELECT * FROM cooking_sessions WHERE id = ?",
     args: [id],
   });
   if (result.rows.length === 0) return null;
-  return JSON.parse(result.rows[0]["data"] as string) as CookingSession;
+  return rowToSession(result.rows[0] as CookingSessionRow);
+}
+
+function legacySnapshotForSession(session: CookingSession) {
+  return {
+    id: session.anchor.recipeId ?? session.id,
+    name: session.anchor.title,
+    source: {
+      cookbook: session.anchor.provenance.source,
+      author: session.anchor.provenance.author,
+    },
+    servings: session.servings.base,
+    ingredients: session.ingredients.base,
+    method: session.method.base,
+  };
+}
+
+function legacyStatus(status: SessionStatus): "active" | "completed" {
+  return status === "completed" ? "completed" : "active";
 }
 
 export async function saveCookingSession(
@@ -153,17 +249,36 @@ export async function saveCookingSession(
     createdAt: session.createdAt || now,
   };
 
+  const recipeId = updated.anchor.recipeId || updated.id;
+  const recipeName = updated.anchor.title;
+  const recipeData = JSON.stringify(legacySnapshotForSession(updated));
+  const serveWith = updated.serveWith.length > 0 ? JSON.stringify(updated.serveWith) : null;
+  const data = JSON.stringify(updated);
+
   await client.execute({
-    sql: `INSERT INTO cooking_sessions (id, date, data, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?)
+    sql: `INSERT INTO cooking_sessions
+            (id, date, recipe_id, recipe_name, recipe_data, serve_with, status, current_step, started_at, created_at, data, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?)
           ON CONFLICT(id) DO UPDATE SET
+            date = excluded.date,
+            recipe_id = excluded.recipe_id,
+            recipe_name = excluded.recipe_name,
+            recipe_data = excluded.recipe_data,
+            serve_with = excluded.serve_with,
+            status = excluded.status,
             data = excluded.data,
             updated_at = excluded.updated_at`,
     args: [
       updated.id,
       updated.date,
-      JSON.stringify(updated),
+      recipeId,
+      recipeName,
+      recipeData,
+      serveWith,
+      legacyStatus(updated.status),
       updated.createdAt,
+      updated.createdAt,
+      data,
       now,
     ],
   });
