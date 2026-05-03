@@ -7,7 +7,7 @@
     "chapter": "Steamed"
   },
   "servings": "serves 6",
-  "intro": "vinegar, maple syrup, and ¼ teaspoon salt. Stir in the ginger and garlic and set",
+  "intro": null,
   "ingredients": [
     {
       "item": "tbsp/80 ml olive oil",
@@ -69,8 +69,7 @@
     "Bring a small saucepan of water to a boil and add the quinoa. Cook for 9 minutes, then drain into a fine sieve, refresh under cold water, and set aside.",
     "Place the almonds and pine nuts in a small pan with 1 tablespoon of the olive oil and a pinch of salt. Cook over medium-low heat for about 5 minutes, stirring frequently. Transfer to a small plate as soon as the pine nuts begin to color and set aside.",
     "Heat the sunflower oil in a large sauté pan and add the onions, ¼ teaspoon salt, and some black pepper. Cook over high heat for 5 to 8 minutes, stirring often, so that parts of the onion get crisp and others just soft. Transfer to paper towels to drain.",
-    "Place all the grains in a large bowl along with the chopped herbs, arugula, fried onion, nuts, and sour cherries. Add the lemon juice and zest, the remaining 3½ tablespoons olive oil, the garlic, ½ teaspoon salt, and some pepper. Mix well and set aside for at least 10 minutes before serving.",
-    "LEMON AND CURRY LEAF RICE"
+    "Place all the grains in a large bowl along with the chopped herbs, arugula, fried onion, nuts, and sour cherries. Add the lemon juice and zest, the remaining 3½ tablespoons olive oil, the garlic, ½ teaspoon salt, and some pepper. Mix well and set aside for at least 10 minutes before serving."
   ],
   "time": {
     "total": 30

@@ -7,7 +7,7 @@
     "chapter": "Fried"
   },
   "servings": "serves 4",
-  "intro": "Finally, in a bowl, stir together the yogurt, garlic, fresh and dried mint, lemon",
+  "intro": null,
   "ingredients": [
     {
       "item": "cups/375 ml vegetable stock scant ½ cup/60 g quick-cook polenta",
@@ -63,10 +63,7 @@
     "Heat the olive oil in a small pan over medium heat, add the onion, and cook for 5 to 6 minutes. Add the garlic and cook for another 4 minutes before transferring the mixture to the tomatoes, along with the chile flakes, tomato paste, sugar, and ½ teaspoon salt. Use a handheld blender or a small food processor to blitz to a rough paste. Set aside until the sauce comes to room temperature.",
     "Once the polenta is chilled and properly set, remove it from the tray and cut into fries roughly ⅔-inch/1.5-cm thick and 2½-inches/6-cm long. Pour the vegetable oil to a depth of ¾-inch/2-cm into a saucepan and heat over medium-high heat.",
     "Toss the fries in the flour until well coated, shake off the excess, and carefully place in the hot oil. Fry for about 6 minutes, until golden brown, and transfer to paper towels to drain. Don’t fry too many at a time; if the pan is too crowded, the temperature of the oil will drop and the fries won’t crisp.",
-    "Serve hot, with the tomato sauce spooned on top or in a bowl alongside.",
-    "Buttermilk-Crusted Okra with Tomato and Bread Sauce",
-    "BUTTERMILK-CRUSTED OKRA WITH",
-    "TOMATO AND BREAD SAUCE"
+    "Serve hot, with the tomato sauce spooned on top or in a bowl alongside."
   ],
   "time": {
     "total": 30

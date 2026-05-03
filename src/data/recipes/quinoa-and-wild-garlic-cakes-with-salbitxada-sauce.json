@@ -90,9 +90,7 @@
     "Cheddar, bread crumbs, cumin, 1 teaspoon salt, and a good grind of pepper in a large bowl. Add the quinoa, stir well, and form the mixture into 2 oz/60 g patties each about 2½-inches/6-cm wide and ¾-inch/2-cm thick.",
     "Place a nonstick pan over medium heat and add half the oil. Fry the patties in batches for 3 minutes on each side, until golden, adding oil as needed.",
     "Transfer to a baking sheet and finish off in the oven for about 8 minutes.",
-    "Serve hot with a squeeze of lemon juice, or with the sauce spooned on top or alongside.",
-    "UDON NOODLES WITH FRIED",
-    "EGGPLANT, WALNUT, AND MISO"
+    "Serve hot with a squeeze of lemon juice, or with the sauce spooned on top or alongside."
   ],
   "time": {
     "total": 30
@@ -104,5 +102,6 @@
     ],
     "chapter": "Fried",
     "meal_role": "component"
-  }
+  },
+  "intro": null
 }

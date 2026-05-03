@@ -7,7 +7,7 @@
     "chapter": "Fried"
   },
   "servings": "serves 4",
-  "intro": "Place all the ingredients for the basil oil and a pinch of salt in the bowl of a",
+  "intro": null,
   "ingredients": [
     {
       "item": "cup/100 g channa dal",
@@ -68,9 +68,7 @@
     "Lightly oil an 8-inch/20-cm square tray and spread out the semolina mix. Use an offset spatula to flatten it down before setting aside for about 20 minutes, to cool and set. Wipe out the sauté pan, add the ghee, and place over high heat. Use a knife to cut the upma into 4 squares and then cut each square in half on the diagonal. Add the triangles to the pan and fry for about 6 minutes, turning once, so that both sides turn golden and crispy. You will need to do this in two batches, so keep them warm, in a low oven, while you continue with the second batch, adding more butter if needed.",
     "Finally, poach the eggs. Fill a shallow saucepan with enough water for a whole egg to cook in. Add the vinegar and bring to a rapid boil. To poach each egg, carefully break it into a cup, then gently pour it into the boiling water. Immediately remove the pan from the heat and set it aside. After about",
     "4 minutes the egg should be poached to perfection. Using a slotted spoon, carefully transfer the poached egg to a bowl of warm water to keep it from cooling down. Once all the eggs are done, dry them on paper towels.",
-    "Put 2 triangles on each plate, leaning one up against the other. Spoon a poached egg alongside, with some pickle and some yogurt. Serve at once.",
-    "FRIED CAULIFLOWER WITH MINT AND",
-    "TAMARIND DIPPING SAUCE"
+    "Put 2 triangles on each plate, leaning one up against the other. Spoon a poached egg alongside, with some pickle and some yogurt. Serve at once."
   ],
   "time": {
     "total": 30

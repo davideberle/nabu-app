@@ -7,7 +7,7 @@
     "chapter": "Tossed"
   },
   "servings": "serves 4",
-  "intro": "Cut down the side of each grapefruit, following its natural line, to remove the",
+  "intro": null,
   "ingredients": [
     {
       "item": "cup/120 g quinoa",
@@ -60,8 +60,7 @@
     "Add the onion and rub the liquids into it using your hands. Add the oil, stir, and set aside for 30 minutes to marinate.",
     "Peel the celery root, cut into very thin strips, and place in a bowl with the lemon juice to prevent discoloration. Quarter the apples, remove the cores, and cut each quarter into similarly thin strips. Add to the celery root and mix",
     "well. Add the onion along with the quinoa, poppy seeds, chile, and cilantro.",
-    "Mix well and taste to see if you need any more salt, sugar, or vinegar: you are aiming for a pungent, sweet-and-sour flavor.",
-    "PARSLEY, LEMON, AND CANNELLINI"
+    "Mix well and taste to see if you need any more salt, sugar, or vinegar: you are aiming for a pungent, sweet-and-sour flavor."
   ],
   "time": {
     "total": 30

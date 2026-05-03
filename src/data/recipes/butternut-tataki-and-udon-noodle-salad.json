@@ -68,9 +68,7 @@
   "method": [
     "Place a ridged grill pan over high heat and wait until it is red hot. Toss the butternut in the peanut oil and sear in batches for 3 minutes, turning once so that both sides get charred. You might need to do this in four batches, as you don’t want to crowd the pan. Transfer the batons to a large bowl, pour over half the ginger dressing, and set aside to cool, stirring gently once or twice.",
     "Bring a large pan of water to a boil. Add the noodles and cook for 6 to 7 minutes, or according to the package instructions, until al dente. Drain, refresh under cold water, and set aside to dry.",
-    "Add the noodles to the butternut, followed by the radishes, snow peas, cucumbers, chiles, shiso, sesame oil, sesame seeds, and cilantro. Stir gently, transfer to a serving plate, spoon the remaining dressing over the top, and serve.",
-    "Zucchini “Baba Ghanoush”",
-    "ZUCCHINI “BABA GHANOUSH”"
+    "Add the noodles to the butternut, followed by the radishes, snow peas, cucumbers, chiles, shiso, sesame oil, sesame seeds, and cilantro. Stir gently, transfer to a serving plate, spoon the remaining dressing over the top, and serve."
   ],
   "time": {
     "total": 30
@@ -82,5 +80,6 @@
     ],
     "chapter": "Grilled",
     "meal_role": "main"
-  }
+  },
+  "intro": null
 }

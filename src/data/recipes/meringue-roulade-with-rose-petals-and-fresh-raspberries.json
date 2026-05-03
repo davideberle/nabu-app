@@ -66,8 +66,7 @@
     "Meanwhile, make the cream. Place the mascarpone, confectioners’ sugar, and rose water in a large bowl and whisk by hand until smooth. Add the cream and whisk for about 4 minutes, until the cream just holds its shape. (You can do this in an electric mixer but keep a close eye on it as it’s easy to overmix.)",
     "Spread most of the mascarpone cream over the original underside of the meringue, reserving a few tablespoons. Leave a small border around the edge of the meringue. Scatter most of the raspberries and 1½ tablespoons of rose petals evenly over the cream.",
     "Using the paper to assist you and starting from a long edge, roll up the meringue into a perfect log shape. Carefully transfer the log onto a serving dish. Use the remaining cream to create a rough wavy strip along the top of the log. Chill for at least 30 minutes.",
-    "When ready to serve, dust the log with confectioners’ sugar, dot with the remaining raspberries, and scatter the remaining rose petals and the pistachios evenly over the top.",
-    "Apricot, Walnut, and Lavender Cake"
+    "When ready to serve, dust the log with confectioners’ sugar, dot with the remaining raspberries, and scatter the remaining rose petals and the pistachios evenly over the top."
   ],
   "time": {
     "total": 30
@@ -79,5 +78,6 @@
     ],
     "chapter": "Sweetened",
     "meal_role": "dessert"
-  }
+  },
+  "intro": null
 }

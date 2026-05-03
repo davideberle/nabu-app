@@ -94,9 +94,7 @@
     "Add the lemongrass, lime leaves, red lentils, and 3 cups/700 ml water. Bring to a boil, turn down the heat to low, and simmer for 15 minutes, until the lentils are completely soft.",
     "Remove the soup from the heat and take out and discard the lemongrass and lime leaves. Use a blender to process the soup until it is completely smooth.",
     "Add the coconut milk, lime juice, soy sauce, and ½ teaspoon salt and stir.",
-    "Return the soup to medium heat, and once the soup is almost boiling, ladle into bowls. Scatter the snap peas on top, sprinkle with the cilantro, and finish with ½ teaspoon chile oil drizzled over each portion.",
-    "Tomato and Watermelon Gazpacho",
-    "TOMATO AND WATERMELON GAZPACHO"
+    "Return the soup to medium heat, and once the soup is almost boiling, ladle into bowls. Scatter the snap peas on top, sprinkle with the cilantro, and finish with ½ teaspoon chile oil drizzled over each portion."
   ],
   "time": {
     "total": 30
@@ -108,5 +106,6 @@
     ],
     "chapter": "Simmered",
     "meal_role": "main"
-  }
+  },
+  "intro": null
 }

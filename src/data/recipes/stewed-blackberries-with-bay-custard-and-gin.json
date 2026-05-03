@@ -42,8 +42,7 @@
     "Place 2 cups/300 g of the blackberries in a small saucepan along with the sugar and simmer over medium-low heat for 10 minutes, stirring occasionally, until the berries are soft but still hold their shape and lots of liquid has come out. Remove from the heat and leave to cool.",
     "Drain the juices from the blackberries and stir the rose water and gin into the juices. Soak the ladyfingers in the juices until they have absorbed all the juice.",
     "To serve, scoop a large portion of ice cream into each of 4 glasses or tumblers. Top with the soaked ladyfingers and then pour the custard over the top. Add the stewed blackberries and the remaining fresh blackberries and serve.",
-    "Set “Cheesecake” with Plum Compote",
-    "SET “CHEESECAKE” WITH PLUM"
+    "Set “Cheesecake” with Plum Compote"
   ],
   "time": {
     "total": 30
@@ -55,5 +54,6 @@
     ],
     "chapter": "Sweetened",
     "meal_role": "dessert"
-  }
+  },
+  "intro": null
 }

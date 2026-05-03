@@ -43,9 +43,7 @@
     "To make the herb paste, place the cilantro, garlic, the remaining 4 tablespoons oil, and a generous pinch of salt in the bowl of a small food processer, blitz to form a fine paste, and set aside.",
     "Turn down the oven temperature to 350°F/180°C. Lay the pumpkin seeds on a baking sheet and roast in the oven for 6 to 8 minutes. The outer skin will pop open and the seeds will become light and crispy. Remove from the oven and allow to cool.",
     "When you are ready to serve, swirl together the yogurt and Sriracha sauce.",
-    "Lay the squash wedges on a platter and drizzle the spicy yogurt sauce and then the herb paste over the top (you can also swirl the yogurt sauce and herb paste together, if you like). Scatter the pumpkin seeds on top, followed by the extra cilantro leaves, and serve.",
-    "Pea and Mint Croquettes",
-    "PEA AND MINT CROQUETTES"
+    "Lay the squash wedges on a platter and drizzle the spicy yogurt sauce and then the herb paste over the top (you can also swirl the yogurt sauce and herb paste together, if you like). Scatter the pumpkin seeds on top, followed by the extra cilantro leaves, and serve."
   ],
   "time": {
     "total": 30
@@ -57,5 +55,6 @@
     ],
     "chapter": "Roasted",
     "meal_role": "component"
-  }
+  },
+  "intro": null
 }

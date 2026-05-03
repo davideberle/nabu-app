@@ -75,8 +75,7 @@
   ],
   "method": [
     "Place a large Dutch oven over medium heat and sauté the butter, onion, turmeric, and cumin for 10 minutes. Add the tomato paste and cook, stirring, for another 2 minutes. Bundle the herbs together and use some string to tie them into a bunch. Add these to the dish along with the potatoes, squash, limes, chile, 1½ teaspoons salt, and 4½ cups/1 liter water and bring to a boil.",
-    "Turn down the heat and boil gently for 15 minutes, until the potatoes are semicooked. Stir in the tomatoes, spinach, and barberries, crushing the limes gently to release some of the juice inside, and transfer everything to a large roasting pan. Bake uncovered for 20 minutes, until the sauce has thickened a little and the vegetables are soft. Remove from the oven, discard the herb bundle, and allow to sit for 5 minutes before serving with a dollop of yogurt on the side.",
-    "GRILLED LETTUCE WITH FARRO AND"
+    "Turn down the heat and boil gently for 15 minutes, until the potatoes are semicooked. Stir in the tomatoes, spinach, and barberries, crushing the limes gently to release some of the juice inside, and transfer everything to a large roasting pan. Bake uncovered for 20 minutes, until the sauce has thickened a little and the vegetables are soft. Remove from the oven, discard the herb bundle, and allow to sit for 5 minutes before serving with a dollop of yogurt on the side."
   ],
   "time": {
     "total": 30
@@ -88,5 +87,6 @@
     ],
     "chapter": "Braised",
     "meal_role": "main"
-  }
+  },
+  "intro": null
 }

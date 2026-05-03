@@ -7,7 +7,7 @@
     "chapter": "Tossed"
   },
   "servings": "serves 4",
-  "intro": "Mix well and taste to see if you need any more salt, sugar, or vinegar: you are",
+  "intro": null,
   "ingredients": [
     {
       "item": "cup/100 g red quinoa",
@@ -44,8 +44,7 @@
   ],
   "method": [
     "Bring a saucepan of water to a boil. Add the quinoa and simmer for 11 minutes. Drain, refresh under cold water, and set aside to dry completely.",
-    "Transfer the cooked quinoa to a large bowl. Add the parsley, mint, green onions, beans, lemon, allspice, olive oil, ¾ teaspoon salt, and some black pepper. Stir together and serve.",
-    "ORANGE AND DATE SALAD"
+    "Transfer the cooked quinoa to a large bowl. Add the parsley, mint, green onions, beans, lemon, allspice, olive oil, ¾ teaspoon salt, and some black pepper. Stir together and serve."
   ],
   "time": {
     "total": 30

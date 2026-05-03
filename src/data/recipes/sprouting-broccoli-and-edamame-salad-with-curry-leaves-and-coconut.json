@@ -55,8 +55,7 @@
     "Return the pan of water to a boil, add the edamame, and blanch for 2 minutes. Transfer to the colander, run under cold water, pat dry, and add to the broccoli and beans. Sprinkle ½ teaspoon salt over the vegetables, stir, and set aside.",
     "Heat the olive oil in a sauté pan over medium-high heat. Add the onion and ¼ teaspoon salt and cook for about 4 minutes, until soft. Add the black mustard seeds and, when they begin to pop, add the curry leaves, chiles, and lime rind.",
     "Fry for a final 2 minutes before pouring everything over the vegetables. Stir and set aside for 10 minutes.",
-    "Just before serving, add the lime juice, cilantro, and coconut. Give everything a very gentle stir and serve.",
-    "BEET, AVOCADO, AND PEA SALAD"
+    "Just before serving, add the lime juice, cilantro, and coconut. Give everything a very gentle stir and serve."
   ],
   "time": {
     "total": 30
@@ -68,5 +67,6 @@
     ],
     "chapter": "Blanched",
     "meal_role": "main"
-  }
+  },
+  "intro": null
 }

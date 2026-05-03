@@ -71,9 +71,7 @@
   ],
   "method": [
     "Place the butter and oil in a large sauté pan over medium heat. Add the onion and fry for about 8 minutes, until soft. Add the squash, increase the heat to medium-high, and cook for a further 10 minutes, stirring occasionally, until it starts to color. Remove from the heat and add the pumpkin seeds, 1 teaspoon of the nigella seeds, the cumin, coriander, turmeric, cardamom, cinnamon, chile, sugar, and ¾ teaspoon salt. Mix well and transfer to a baking sheet large enough to hold the vegetables in a single but snug layer, about 10 by 12- inches/25 by 30-cm. Pour the stock over the squash and roast for 30 minutes, until the squash is tender. Set aside for about 10 minutes: the liquid in the pan will continue to be absorbed.",
-    "Serve warm, with the yogurt spooned on top or on the side, along with a sprinkling of the cilantro and the remaining ¼ teaspoon nigella seeds.",
-    "Honey-Roasted Carrots with Tahini Yogurt",
-    "HONEY-ROASTED CARROTS WITH TAHINI"
+    "Serve warm, with the yogurt spooned on top or on the side, along with a sprinkling of the cilantro and the remaining ¼ teaspoon nigella seeds."
   ],
   "time": {
     "total": 30
@@ -85,5 +83,6 @@
     ],
     "chapter": "Roasted",
     "meal_role": "main"
-  }
+  },
+  "intro": null
 }

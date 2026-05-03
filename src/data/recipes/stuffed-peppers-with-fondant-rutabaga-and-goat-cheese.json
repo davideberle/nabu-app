@@ -55,8 +55,7 @@
     "Preheat the oven to 500°F/250°C.",
     "Cut the peppers in half lengthwise, keeping the stalks on. Remove the seeds and white flesh and place, cut side up, on a large baking sheet lined with parchment paper. Drizzle the oil over the top, sprinkle with a pinch of salt, and place in the oven for 30 to 35 minutes, until the peppers are slightly charred and the flesh is completely soft. Remove the peppers from the oven and turn down the oven temperature to 425°F/220°C.",
     "Spoon the rutabaga mixture into each pepper and dot the goat cheese on top.",
-    "Return to the oven for a further 10 to 15 minutes, so that the cheese gets some color. Remove from the oven and allow to cool for about 5 minutes before serving warm, or serve at room temperature. Top each stuffed pepper with a sprinkle of parsley.",
-    "BAKED ARTICHOKE AND PEARLED SPELT"
+    "Return to the oven for a further 10 to 15 minutes, so that the cheese gets some color. Remove from the oven and allow to cool for about 5 minutes before serving warm, or serve at room temperature. Top each stuffed pepper with a sprinkle of parsley."
   ],
   "time": {
     "total": 30
@@ -68,5 +67,6 @@
     ],
     "chapter": "Baked",
     "meal_role": "main"
-  }
+  },
+  "intro": null
 }

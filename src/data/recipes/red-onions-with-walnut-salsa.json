@@ -7,7 +7,7 @@
     "chapter": "Roasted"
   },
   "servings": "serves 4",
-  "intro": "Transfer the carrots to a large serving platter or individual plates. Serve warm",
+  "intro": null,
   "ingredients": [
     {
       "item": "medium red onions (1⅓ lb/600 g)",
@@ -53,8 +53,7 @@
   "method": [
     "While the onions are cooking, put all of the salsa ingredients in a small bowl, add ¼ teaspoon salt, stir, and set aside.",
     "To serve, put the arugula and parsley in a large bowl. Add the warm onions, the cheese, and half the salsa and toss carefully so the onions don’t fall apart.",
-    "Divide among shallow plates, spoon the remaining salsa over the top, and serve.",
-    "CAULIFLOWER, GRAPE, AND CHEDDAR"
+    "Divide among shallow plates, spoon the remaining salsa over the top, and serve."
   ],
   "time": {
     "total": 30

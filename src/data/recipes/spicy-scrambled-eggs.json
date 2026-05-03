@@ -7,7 +7,7 @@
     "chapter": "Cracked"
   },
   "servings": "serves 4",
-  "intro": "chile, cumin, sugar, 1 egg, ¾ teaspoon salt, and a good grind of black pepper.",
+  "intro": null,
   "ingredients": [
     {
       "item": "sunflower oil",
@@ -69,8 +69,7 @@
   "method": [
     "Put a large, preferably nonstick sauté pan over medium heat and add the oil, cumin, caraway, onion, ginger, and chile. Cook for 8 minutes, stirring occasionally, until the onion is soft. Add the ground spices, tomato paste, and",
     "¾ teaspoon salt and cook and stir for 2 minutes. Add the tomatoes and cook for a further 8 to 10 minutes, until most of the liquid has evaporated. Add the eggs, turn down the heat to medium-low, and continuously, but very gently, scrape the base of the pan with a wooden spatula. You want to end up with large, curd-like folds and you want the eggs to be soft and very moist. Cook",
-    "the mixture for a total of about 3 minutes. Sprinkle with the green onions, cilantro, and chile flakes and serve at once.",
-    "KALE AND CHEESE PIKELETS"
+    "the mixture for a total of about 3 minutes. Sprinkle with the green onions, cilantro, and chile flakes and serve at once."
   ],
   "time": {
     "total": 30

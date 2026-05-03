@@ -7,7 +7,7 @@
     "chapter": "Braised"
   },
   "servings": "serves 6",
-  "intro": "before spooning the vegetables over the rice. Finish with a drizzle of oil, a bit",
+  "intro": null,
   "ingredients": [
     {
       "item": "cup/60 ml olive oil",
@@ -39,8 +39,7 @@
     }
   ],
   "method": [
-    "Pour the oil into a large sauté pan and place over medium heat. Add the onion and cook for 8 minutes, stirring occasionally, until translucent. Add the garlic and about four-fifths of the cilantro and sauté for another minute. Add the fava beans, paprika, allspice, ½ teaspoon salt, plenty of black pepper, and a scant 1 cup/200 ml water and stir well. Cover the pan and simmer gently for about 25 minutes, stirring occasionally, until the beans are very soft. A lot of the water will have evaporated, but the mixture should be wet, with the beans still immersed in liquid. Remove from the heat, take off the lid, and leave to cool. Add the lemon juice, stir in the remaining cilantro, and serve.",
-    "BRAISED KALE WITH CRISPY SHALLOTS"
+    "Pour the oil into a large sauté pan and place over medium heat. Add the onion and cook for 8 minutes, stirring occasionally, until translucent. Add the garlic and about four-fifths of the cilantro and sauté for another minute. Add the fava beans, paprika, allspice, ½ teaspoon salt, plenty of black pepper, and a scant 1 cup/200 ml water and stir well. Cover the pan and simmer gently for about 25 minutes, stirring occasionally, until the beans are very soft. A lot of the water will have evaporated, but the mixture should be wet, with the beans still immersed in liquid. Remove from the heat, take off the lid, and leave to cool. Add the lemon juice, stir in the remaining cilantro, and serve."
   ],
   "time": {
     "total": 30

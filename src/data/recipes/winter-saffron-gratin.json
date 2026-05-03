@@ -7,7 +7,7 @@
     "chapter": "Baked"
   },
   "servings": "serves 4",
-  "intro": "dry. Add the spelt to the pan and simmer gently until al dente; spelt will take",
+  "intro": null,
   "ingredients": [
     {
       "item": "small Jerusalem artichokes, peeled and thinly sliced (9 oz/250 g)",
@@ -67,9 +67,7 @@
     "Stir in the cream and then add the chopped herbs, two-thirds of the",
     "Parmesan, ¾ teaspoon salt, and ¼ teaspoon white pepper and stir until smooth. Transfer the drained vegetables to a bowl, pour the sauce over them, and mix well. Grease an 8-inch/20-cm square baking dish and pour the vegetables and sauce into it. Don’t try to level out the mixture too much: it should look rustic. Cover the dish with aluminum foil and place in the oven for 40 minutes.",
     "Remove the foil, mix the remaining cheese with the bread crumbs, and scatter over the top. Increase the oven temperature to 400°F/210°C and return to the oven for about 15 minutes, until the crust is golden brown.",
-    "Remove from the oven and set aside for 10 minutes before serving.",
-    "Tomato and Almond Tart",
-    "TOMATO AND ALMOND TART"
+    "Remove from the oven and set aside for 10 minutes before serving."
   ],
   "time": {
     "total": 30

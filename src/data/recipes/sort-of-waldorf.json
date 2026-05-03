@@ -7,7 +7,7 @@
     "chapter": "Tossed"
   },
   "servings": "serves 6",
-  "intro": "molasses, olive oil, and a scant ½ teaspoon salt until well combined. Pour this",
+  "intro": null,
   "ingredients": [
     {
       "item": "cup/50 g shelled cobnuts or hazelnuts",
@@ -68,8 +68,7 @@
   ],
   "method": [
     "To make the mayonnaise, place the shallot, egg yolk, mustard, maple syrup, vinegar, and ½ teaspoon salt in the bowl of a small food processor. Whisk together, then, with the machine still running, slowly add the oils in a steady stream until you get a smooth and thick mayonnaise. Set aside.",
-    "Place the cabbage, celery, apples, and onion in a large bowl. Add the sour cream, dill, mayonnaise, sour cherries, ½ teaspoon salt, and some black pepper. Use your hands to thoroughly mix everything together—don’t worry if you break the apple slices; it’s all part of the look—t ransfer to individual plates, scatter the nuts on top, and serve.",
-    "Sort-of-Waldorf (left), Fancy Coleslaw (center), Spiced cashews (right)"
+    "Place the cabbage, celery, apples, and onion in a large bowl. Add the sour cream, dill, mayonnaise, sour cherries, ½ teaspoon salt, and some black pepper. Use your hands to thoroughly mix everything together—don’t worry if you break the apple slices; it’s all part of the look—t ransfer to individual plates, scatter the nuts on top, and serve."
   ],
   "time": {
     "total": 30

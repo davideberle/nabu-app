@@ -7,7 +7,7 @@
     "chapter": "Braised"
   },
   "servings": "serves 4",
-  "intro": "while they are still hot, then leave to cool down a little, discarding the bay",
+  "intro": null,
   "ingredients": [
     {
       "item": "medium red onions, cut into 1¼-inch/3-cm dice (about 2½ cups/300 g)",
@@ -66,9 +66,7 @@
     "Heat the oil in an extra-large sauté pan over medium-high heat. Add the onions and potatoes and fry for 10 minutes, stirring occasionally. Lift the vegetables out with a slotted spoon and set aside.",
     "Top up the oil, if needed, so you have 2 tablespoons in the pan. Add the peppers and spices and fry over high heat for 3 minutes, stirring often. Add the okra, tomatoes, chiles, and curry leaves and fry over high heat for 5 minutes.",
     "Return the onions and potatoes to the pan. Add the sugar, tamarind paste, a scant 1 cup/200 ml water, and ¾ teaspoon salt and simmer for 5 minutes.",
-    "Spread the vegetables out on a large baking sheet, sprinkle with the pumpkin seeds, and bake for 12 minutes. Serve warm, sprinkled with cilantro.",
-    "Fennel with Capers and Olives",
-    "FENNEL WITH CAPERS AND OLIVES"
+    "Spread the vegetables out on a large baking sheet, sprinkle with the pumpkin seeds, and bake for 12 minutes. Serve warm, sprinkled with cilantro."
   ],
   "time": {
     "total": 30

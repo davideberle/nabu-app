@@ -7,7 +7,7 @@
     "chapter": "Roasted"
   },
   "servings": "serves 4",
-  "intro": "the cheese, and half the salsa and toss carefully so the onions don’t fall apart.",
+  "intro": null,
   "ingredients": [
     {
       "item": "large cauliflower, broken into bite-size florets (2 lb/900 g)",
@@ -41,8 +41,7 @@
   "method": [
     "Toss the cauliflower florets with half the oil, ½ teaspoon salt, and some black pepper. Spread out on a baking sheet and roast for 20 to 25 minutes, stirring once or twice, until golden brown. Remove from the oven and set aside to cool.",
     "To make the dressing, whisk together the remaining 3 tablespoons oil with the vinegar, mustard, honey, and ¼ teaspoon salt. Add the raisins and let them marinate for at least 10 minutes.",
-    "Just before serving, transfer the cauliflower to a large bowl and add the hazelnuts, grapes, Cheddar, and parsley. Pour the raisins and dressing over the top, toss together, transfer to a large platter, and serve.",
-    "EGGPLANTS WITH CRUSHED CHICKPEAS"
+    "Just before serving, transfer the cauliflower to a large bowl and add the hazelnuts, grapes, Cheddar, and parsley. Pour the raisins and dressing over the top, toss together, transfer to a large platter, and serve."
   ],
   "time": {
     "total": 30

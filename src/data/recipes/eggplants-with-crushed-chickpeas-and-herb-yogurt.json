@@ -7,7 +7,7 @@
     "chapter": "Roasted"
   },
   "servings": "serves 4",
-  "intro": "Toss the cauliflower florets with half the oil, ½ teaspoon salt, and some black",
+  "intro": null,
   "ingredients": [
     {
       "item": "large eggplants, cut crosswise into slices ¾-inch/2-cm thick (2¾ lb/1.2 kg)",
@@ -47,9 +47,7 @@
     "Meanwhile, put the chickpeas in a bowl along with the cumin seeds, lemon flesh, 3 tablespoons of the oil, 2 tablespoons of the cooking liquid, ½ teaspoon salt, and a good grind of black pepper. Mash roughly using a fork or potato masher, adding a bit more of the cooking liquid if needed to get a thick, spreadable paste.",
     "Place the yogurt in the bowl of a small food processor along with the remaining 1 tablespoon olive oil, 2 tablespoons water, the herbs, ¼ teaspoon salt, and some black pepper. Blitz until well combined. You need to be able to drizzle the yogurt, so add a tablespoon or two of water or oil if you need to.",
     "To arrange, spread the eggplant slices out on a platter or individual plates.",
-    "Spoon the crushed chickpeas on top, followed by a drizzle of the yogurt, and serve.",
-    "Carrot and Mung Bean Salad",
-    "CARROT AND MUNG BEAN SALAD"
+    "Spoon the crushed chickpeas on top, followed by a drizzle of the yogurt, and serve."
   ],
   "time": {
     "total": 30

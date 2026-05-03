@@ -69,9 +69,7 @@
     "Drain the dal, rinse under cold water, and set aside.",
     "Place the butter in a large sauté pan over medium-high heat. When it starts to sizzle, add the onion and fry for 15 minutes, stirring from time to time, until soft and golden brown. Add the garlic, ginger, chile, and garam masala and fry for another 2 minutes, stirring constantly. Add the tomatoes and cook for a further 4 minutes. Add the dal, 4½ cups/1 liter water, and 1 teaspoon salt.",
     "Turn down the heat to medium and simmer for 40 minutes, stirring every 5 minutes or so, until the sauce has the consistency of thick soup and the dal is cooked but still holding its shape. Bring to a rapid boil for a few minutes toward the end of cooking if the sauce needs reducing.",
-    "Turn the heat down to low, then stir in the coconut cream, lime juice, and black mustard seeds. Remove from the heat and serve, accompanied with the toppings in 3 separate bowls, for diners to sprinkle on top of their portion as they like.",
-    "LENTILS WITH MUSHROOM AND",
-    "PRESERVED LEMON RAGOUT"
+    "Turn the heat down to low, then stir in the coconut cream, lime juice, and black mustard seeds. Remove from the heat and serve, accompanied with the toppings in 3 separate bowls, for diners to sprinkle on top of their portion as they like."
   ],
   "time": {
     "total": 30
@@ -83,5 +81,6 @@
     ],
     "chapter": "Simmered",
     "meal_role": "main"
-  }
+  },
+  "intro": null
 }

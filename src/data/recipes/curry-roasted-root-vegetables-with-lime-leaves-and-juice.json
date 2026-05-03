@@ -53,9 +53,7 @@
     "Place the carrots, parsnips, and rutabaga in a large roasting pan, about 12 by",
     "16-inches/30 by 40-cm. Add the olive oil, half the lime juice, the curry powder, 1¼ teaspoons salt, and a good grind of black pepper. Mix well and place in the oven to roast for 30 minutes, turning the vegetables once or twice during the cooking. Add the lime leaves, curry leaves, and green onions and",
     "roast for a further 10 minutes. The vegetables should have taken on a nice golden brown color and the green onions should have softened.",
-    "Remove the vegetables from the oven, pour the remaining lime juice over the top, sprinkle with the cilantro, and serve warm or at room temperature.",
-    "Beet and Rhubarb Salad",
-    "BEET AND RHUBARB SALAD"
+    "Remove the vegetables from the oven, pour the remaining lime juice over the top, sprinkle with the cilantro, and serve warm or at room temperature."
   ],
   "time": {
     "total": 30
@@ -67,5 +65,6 @@
     ],
     "chapter": "Roasted",
     "meal_role": "drink"
-  }
+  },
+  "intro": null
 }

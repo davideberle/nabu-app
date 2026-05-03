@@ -7,7 +7,7 @@
     "chapter": "Simmered"
   },
   "servings": "serves 8",
-  "intro": "stirring often, until the rice is cooked but still retains a bite and all the stock is",
+  "intro": null,
   "ingredients": [
     {
       "item": "cup/125 g dried chickpeas, soaked in water overnight with 2 tbsp baking soda",
@@ -67,8 +67,7 @@
     "Put the butter, onions, and garlic in a large pan and place over medium heat.",
     "Cook for 20 minutes, stirring occasionally, until soft and golden brown. Stir in the turmeric, ½ teaspoon salt, and some black pepper and remove one- third of this mix from the pan to use later.",
     "Add the chickpeas and lima beans to the pan, then add the split peas and stock. Simmer for about 35 minutes, skimming the froth occasionally, until the peas are tender.",
-    "Add the herbs, green onions, and spinach, stir well, and cook for another 15 minutes; add more stock or water if the soup is very thick. Add the noodles and cook for about 10 minutes, until they are just done. Stir in the sour cream and vinegar and serve at once, garnished with 1 teaspoon of sour cream per portion and the reserved cooked onion. Serve lime halves to squeeze over each portion.",
-    "FREGOLA AND ARTICHOKE PILAF"
+    "Add the herbs, green onions, and spinach, stir well, and cook for another 15 minutes; add more stock or water if the soup is very thick. Add the noodles and cook for about 10 minutes, until they are just done. Stir in the sour cream and vinegar and serve at once, garnished with 1 teaspoon of sour cream per portion and the reserved cooked onion. Serve lime halves to squeeze over each portion."
   ],
   "time": {
     "total": 30

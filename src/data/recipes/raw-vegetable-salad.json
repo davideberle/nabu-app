@@ -7,7 +7,7 @@
     "chapter": "Tossed"
   },
   "servings": "serves 4",
-  "intro": "each portion, giving it as much height as possible. Carefully dot the salad with",
+  "intro": null,
   "ingredients": [
     {
       "item": "cauliflower (7 oz/200 g), broken into small florets",
@@ -56,8 +56,7 @@
   ],
   "method": [
     "First make the dressing. Mix together the shallot, mayonnaise, vinegar, mustard, and some salt and pepper in a large bowl. Whisk well as you slowly pour in the oil, along with ¾ teaspoon salt and a good grind of black pepper.",
-    "Add all the salad ingredients to the dressing, use your hands to toss everything together gently, and serve.",
-    "CRUNCHY ROOT VEGETABLES"
+    "Add all the salad ingredients to the dressing, use your hands to toss everything together gently, and serve."
   ],
   "time": {
     "total": 30

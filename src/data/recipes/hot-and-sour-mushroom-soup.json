@@ -7,7 +7,7 @@
     "chapter": "Simmered"
   },
   "servings": "serves 6",
-  "intro": "Remove the lid, add the vinegar, olives, and almonds, and stir gently. Sprinkle",
+  "intro": null,
   "ingredients": [
     {
       "item": "sunflower oil",
@@ -101,8 +101,7 @@
   "method": [
     "Heat the sunflower oil in a large saucepan over high heat and add the onions, carrots, celery, garlic, and ginger. Cook for about 5 minutes, until the edges of the vegetables begin to color. Pour in 2½ quarts/2.2 liters water and add the lemongrass, prunes, chile, star anise, soy, lime leaves, and cilantro roots.",
     "Bring to a boil, then turn down the heat to a low simmer, add the tamarind paste, followed by the enoki and white mushrooms, and cook for 45 minutes.",
-    "Strain the stock and return it to the pan. You can discard the vegetables and prunes, though I love eating the carrot and celery. Bring the stock back to a very low simmer, add the enoki and white mushrooms, and cook for 1 minute. Then add the buna-shimeji mushrooms, lime juice, cilantro leaves, basil, bean sprouts, green beans, tamarind, and 1½ teaspoons salt and cook for 1 minute to heat through. Ladle into warmed bowls and finish with a little drizzle of sesame oil, no more than a few drops in each bowl.",
-    "SPICY CHICKPEA AND BULGUR SOUP"
+    "Strain the stock and return it to the pan. You can discard the vegetables and prunes, though I love eating the carrot and celery. Bring the stock back to a very low simmer, add the enoki and white mushrooms, and cook for 1 minute. Then add the buna-shimeji mushrooms, lime juice, cilantro leaves, basil, bean sprouts, green beans, tamarind, and 1½ teaspoons salt and cook for 1 minute to heat through. Ladle into warmed bowls and finish with a little drizzle of sesame oil, no more than a few drops in each bowl."
   ],
   "time": {
     "total": 30

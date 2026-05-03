@@ -38,8 +38,7 @@
     "food processor, add ¾ teaspoon salt, and blitz briefly to form a coarse paste.",
     "Leave to cool and then add the orange zest, garlic, harissa, half the lemon zest, and some black pepper. Stir to combine.",
     "Mix together the yogurt, lemon juice, the remaining lemon zest, and ¼ teaspoon salt.",
-    "Spread the yogurt out on a serving platter and spoon the carrot mixture on top. Sprinkle with the pistachios, drizzle with a little olive oil, and serve.",
-    "SPICE-STUFFED POTATO CAKES"
+    "Spread the yogurt out on a serving platter and spoon the carrot mixture on top. Sprinkle with the pistachios, drizzle with a little olive oil, and serve."
   ],
   "time": {
     "total": 30
@@ -51,5 +50,6 @@
     ],
     "chapter": "Mashed",
     "meal_role": "main"
-  }
+  },
+  "intro": null
 }

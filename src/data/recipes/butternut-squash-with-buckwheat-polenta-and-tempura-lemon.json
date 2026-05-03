@@ -110,10 +110,7 @@
     "To make the tempura, mix together the flour and cornstarch, then whisk in the soda water until the mixture is smooth and runny. Sit the bowl over ice for 45 minutes.",
     "Pour oil to a depth of 1¼-inches/3-cm into a saucepan and heat to about",
     "320°F/160°C. Dip the lemon slices into the batter and fry for 2 to 3 minutes, until golden and crispy. Remove with a slotted spoon and sprinkle immediately with salt.",
-    "Place a spoonful of warm polenta on each plate and lay a squash wedge across it, adding a mix of the baked aromatics on top. Finish with a tempura lemon slice and serve at once.",
-    "Lentils, Radicchio, and Walnuts with Manuka Honey",
-    "LENTILS, RADICCHIO, AND WALNUTS",
-    "WITH MANUKA HONEY"
+    "Place a spoonful of warm polenta on each plate and lay a squash wedge across it, adding a mix of the baked aromatics on top. Finish with a tempura lemon slice and serve at once."
   ],
   "time": {
     "total": 30
@@ -125,5 +122,6 @@
     ],
     "chapter": "Braised",
     "meal_role": "main"
-  }
+  },
+  "intro": null
 }

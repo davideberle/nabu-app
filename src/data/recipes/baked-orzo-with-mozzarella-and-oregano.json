@@ -72,9 +72,7 @@
     "½ teaspoon pepper. Mix well and transfer to a rectangular baking dish, 8½ by",
     "10½-inches (21 by 27-cm) or a round one, 10.5 inches (27 cm) in diameter.",
     "Arrange the tomatoes on top and sprinkle with the dried oregano, ¼ teaspoon salt, and a grind of black pepper.",
-    "Bake for 40 minutes, until all the liquid has been absorbed and the pasta is cooked through. Remove, leave to settle for 5 minutes, and serve.",
-    "Taleggio and Spinach Roulade",
-    "TALEGGIO AND SPINACH ROULADE"
+    "Bake for 40 minutes, until all the liquid has been absorbed and the pasta is cooked through. Remove, leave to settle for 5 minutes, and serve."
   ],
   "time": {
     "total": 30
@@ -86,5 +84,6 @@
     ],
     "chapter": "Baked",
     "meal_role": "main"
-  }
+  },
+  "intro": null
 }

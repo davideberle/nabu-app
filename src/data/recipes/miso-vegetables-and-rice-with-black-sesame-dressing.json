@@ -78,9 +78,7 @@
     "Meanwhile, place all of the ingredients for the black sesame dressing in a small bowl and mix together well.",
     "Pour another 1½ cups/375 ml water into a separate pan and add the dashi powder, soy sauce, mirin, miso paste, and sugar. Bring to a boil, stirring occasionally, and then turn down the heat to medium. Add the broccolini and simmer for 4 minutes. Using a slotted spoon, transfer the broccolini to a large bowl. Add the mushrooms to the stock mixture, cook for 3 minutes, remove, and add to the bowl with the broccolini. Repeat with the carrots—they need 2 minutes; snow peas, 1 minute; cucumber, just 15 seconds. When all the vegetables have been cooked and set aside, increase the temperature under the stock and reduce the liquid until there is about ¼ cup/60 ml left: this should take about 10 minutes.",
     "Divide the rice among 4 bowls and place the vegetables on top. Spoon the reduced cooking liquid over the top, followed by the black sesame dressing.",
-    "Finish with the cilantro leaves and serve at once.",
-    "Tomato and Roasted Lemon Salad",
-    "TOMATO AND ROASTED LEMON SALAD"
+    "Finish with the cilantro leaves and serve at once."
   ],
   "time": {
     "total": 30
@@ -92,5 +90,6 @@
     ],
     "chapter": "Steamed",
     "meal_role": "component"
-  }
+  },
+  "intro": null
 }

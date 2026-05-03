@@ -71,14 +71,13 @@
     "Simmer for 30 seconds for semisoft, or 2 minutes for hard-boiled. Refresh in cold water, then peel.",
     "For the dressing, place the garlic, lemon juice, olive oil, ¼ teaspoon salt, and some black pepper in a small bowl. Whisk to combine and set aside.",
     "To assemble the salad, mix the herbs and watercress together and then divide half of the salad among 4 starter plates. Halve the quail eggs and put a few halves on every plate. Use a teaspoon to deposit tiny dollops of ricotta over the salad and drizzle the dressing on top. Pile the remaining salad leaves over each portion, giving it as much height as possible. Carefully dot the salad with any remaining egg halves and cheese and drizzle with a tiny amount of oil.",
-    "Finish with a sprinkle of the seeds on top and serve at once.",
-    "RAW VEGETABLE SALAD"
+    "Finish with a sprinkle of the seeds on top and serve at once."
   ],
   "time": {
     "total": 30
   },
   "image": "/recipes/watercress-salad-with-quail-eggs-ricotta-and-seeds.jpg",
-  "intro": "Add the lemon segments, celery leaves, parsley, cilantro, capers, chiles, olive",
+  "intro": null,
   "category": {
     "dish_type": [
       "salad"

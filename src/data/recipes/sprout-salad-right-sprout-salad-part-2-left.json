@@ -7,7 +7,7 @@
     "chapter": "Tossed"
   },
   "servings": "serves 4",
-  "intro": "Put the oranges, dates, radishes, onion, arugula, lettuce, cilantro, parsley, and",
+  "intro": null,
   "ingredients": [
     {
       "item": "cumin seeds",
@@ -61,8 +61,7 @@
   "method": [
     "Place the cumin seeds in a small sauté pan. Toast over high heat for a minute or two, shaking the pan to move the seeds around, until they give off their aroma and begin to pop. Transfer to a mortar and crush with a pestle until powdery.",
     "Put the sprouts, daikon, and carrots in a large bowl. Add the herbs, garlic, oils, vinegars, ground cumin seeds, 1 teaspoon salt, and some black pepper.",
-    "Stir well, taste, and adjust the seasoning if you need. Add the tomatoes and spinach leaves, stir gently, and serve.",
-    "SPROUT SALAD, PART TWO"
+    "Stir well, taste, and adjust the seasoning if you need. Add the tomatoes and spinach leaves, stir gently, and serve."
   ],
   "time": {
     "total": 30
