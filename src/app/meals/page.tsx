@@ -346,14 +346,14 @@ function MealsPageInner() {
   const isCurrentWeek = weekId === currentWeekId;
   const isPastWeek = !isCurrentWeek && weekDates[6].date < now.toISOString().split("T")[0];
 
-  function navigateToWeek(year: number, week: number) {
+  function getWeekHref(year: number, week: number): string {
     const id = formatWeekId(year, week);
     const cid = formatWeekId(currentWeek.year, currentWeek.week);
-    if (id === cid) {
-      router.push("/meals");
-    } else {
-      router.push(`/meals?week=${id}`);
-    }
+    return id === cid ? "/meals" : `/meals?week=${id}`;
+  }
+
+  function navigateToWeek(year: number, week: number) {
+    router.push(getWeekHref(year, week));
   }
 
   const [plan, setPlan] = useState<MealPlan | null>(null);
@@ -813,6 +813,10 @@ function MealsPageInner() {
   const hasCandidates = candidates.length > 0;
   const contextItems = plan?.context || [];
   const hasContext = contextItems.length > 0 || (plan?.notes && plan.notes.trim().length > 0);
+  const prevWeek = offsetWeek(activeWeek.year, activeWeek.week, -1);
+  const nextWeek = offsetWeek(activeWeek.year, activeWeek.week, 1);
+  const prevWeekHref = getWeekHref(prevWeek.year, prevWeek.week);
+  const nextWeekHref = getWeekHref(nextWeek.year, nextWeek.week);
 
   // Find context items for a specific date
   function getContextForDate(date: string): WeekContextItem[] {
@@ -843,18 +847,15 @@ function MealsPageInner() {
       <main className="max-w-5xl mx-auto px-5 py-8">
         {/* Week navigation */}
         <div className="flex items-center gap-3 mb-8">
-          <button
-            onClick={() => {
-              const prev = offsetWeek(activeWeek.year, activeWeek.week, -1);
-              navigateToWeek(prev.year, prev.week);
-            }}
+          <Link
+            href={prevWeekHref}
             className="p-2 rounded-full text-stone-400 hover:text-stone-700 dark:text-stone-500 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
             aria-label="Previous week"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-          </button>
+          </Link>
           <div className="text-center min-w-[160px]">
             <span className="text-sm font-medium text-stone-700 dark:text-stone-200">
               {weekDates[0].dayOfWeek.slice(0, 3)} {formatDateShort(weekDates[0].date)}
@@ -867,18 +868,15 @@ function MealsPageInner() {
               {isPastWeek && " \u00b7 Past"}
             </span>
           </div>
-          <button
-            onClick={() => {
-              const next = offsetWeek(activeWeek.year, activeWeek.week, 1);
-              navigateToWeek(next.year, next.week);
-            }}
+          <Link
+            href={nextWeekHref}
             className="p-2 rounded-full text-stone-400 hover:text-stone-700 dark:text-stone-500 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
             aria-label="Next week"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </button>
+          </Link>
           {!isCurrentWeek && (
             <button
               onClick={() => navigateToWeek(currentWeek.year, currentWeek.week)}
