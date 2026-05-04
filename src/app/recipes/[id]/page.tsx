@@ -2,8 +2,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getRecipe, getAllRecipes, getCourseTags, formatServings, isLowCalorie, getMealRole, normalizeIngredient } from "@/lib/recipes";
 import { getCourseTagColor, normalizeTagLabel, PUBLICATION_BADGE_CLASSES } from "@/lib/tag-colors";
-import { getCookEventsForRecipe } from "@/lib/db";
 import BackButton from "@/components/BackButton";
+import CookingHistory from "@/components/CookingHistory";
 
 export const revalidate = 60;
 
@@ -350,38 +350,8 @@ export default async function RecipePage({
             </footer>
           )})()}
 
-          {/* Cooking history */}
-          {await (async () => {
-            const cookEvents = await getCookEventsForRecipe(recipe.id);
-            if (cookEvents.length === 0) return null;
-            return (
-              <section className="px-8 py-6 border-t border-stone-100 dark:border-stone-800">
-                <h2 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-4">
-                  Cooking History
-                </h2>
-                <ul className="space-y-3">
-                  {cookEvents.map((event) => {
-                    const date = new Date(event.cookedOn + "T12:00:00");
-                    const formatted = date.toLocaleDateString("en-GB", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    });
-                    return (
-                      <li key={event.id} className="flex items-start gap-3">
-                        <span className="flex-shrink-0 mt-0.5 w-2 h-2 rounded-full bg-stone-300 dark:bg-stone-600" />
-                        <div>
-                          <span className="text-sm font-medium text-stone-600 dark:text-stone-300">
-                            {formatted}
-                          </span>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </section>
-            );
-          })()}
+          {/* Cooking history — loaded client-side so static recipe prerender never depends on Turso. */}
+          <CookingHistory recipeId={recipe.id} />
         </article>
       </main>
     </div>
