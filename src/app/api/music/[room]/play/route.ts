@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { resolveMusicRequest } from "@/lib/music-domain";
 
-const SONOS_API = "http://localhost:5005";
+export const runtime = "nodejs";
 
 export async function GET(
   _request: Request,
@@ -8,10 +9,16 @@ export async function GET(
 ) {
   const { room } = await params;
   try {
-    const res = await fetch(`${SONOS_API}/${encodeURIComponent(room)}/play`);
-    const data = await res.json();
-    return NextResponse.json(data);
-  } catch {
-    return NextResponse.json({ error: "Failed to play" }, { status: 502 });
+    const result = await resolveMusicRequest({
+      action: "resume",
+      room: decodeURIComponent(room),
+      source: "companion-app-legacy-route",
+    });
+    return NextResponse.json(result, { status: result.ok === false ? 502 : 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { ok: false, message: error instanceof Error ? error.message : "Failed to resume" },
+      { status: 502 }
+    );
   }
 }

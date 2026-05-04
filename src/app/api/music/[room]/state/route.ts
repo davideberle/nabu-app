@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { getRoomProjections } from "@/lib/music-domain";
 
-const SONOS_API = "http://localhost:5005";
+export const runtime = "nodejs";
 
 export async function GET(
   _request: Request,
@@ -8,10 +9,20 @@ export async function GET(
 ) {
   const { room } = await params;
   try {
-    const res = await fetch(`${SONOS_API}/${encodeURIComponent(room)}/state`);
-    const data = await res.json();
-    return NextResponse.json(data);
-  } catch {
-    return NextResponse.json({ error: "Failed to fetch state" }, { status: 502 });
+    const rooms = await getRoomProjections();
+    const projection = rooms.find(
+      (entry) => entry.room.toLowerCase() === decodeURIComponent(room).toLowerCase()
+    );
+
+    if (!projection) {
+      return NextResponse.json({ error: `Unknown room: ${room}` }, { status: 404 });
+    }
+
+    return NextResponse.json(projection);
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Failed to fetch room state" },
+      { status: 502 }
+    );
   }
 }

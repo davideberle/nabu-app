@@ -1,75 +1,42 @@
 import { NextResponse } from "next/server";
-import { readFile, writeFile } from "fs/promises";
-import { existsSync } from "fs";
+import { setTrackFeedback } from "@/lib/music-domain";
 
-const FEEDBACK_PATH =
-  "/Users/claweberle/.openclaw/workspace/projects/companion-app/app/music-feedback.json";
+export const runtime = "nodejs";
 
-interface FeedbackEntry {
+type FeedbackEntry = {
   room: string;
   track: string;
   artist: string;
   album: string;
   action: "like" | "dislike";
   timestamp: string;
-}
-
-async function readFeedback(): Promise<FeedbackEntry[]> {
-  if (!existsSync(FEEDBACK_PATH)) {
-    return [];
-  }
-  try {
-    const raw = await readFile(FEEDBACK_PATH, "utf-8");
-    return JSON.parse(raw);
-  } catch {
-    return [];
-  }
-}
-
-async function writeFeedback(entries: FeedbackEntry[]): Promise<void> {
-  await writeFile(FEEDBACK_PATH, JSON.stringify(entries, null, 2), "utf-8");
-}
+};
 
 export async function GET() {
-  const entries = await readFeedback();
-  return NextResponse.json(entries);
+  // Legacy route retained for old clients. Canonical reads live in sonos-music/preferences.json.
+  return NextResponse.json([] as FeedbackEntry[]);
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { room, track, artist, album, action } = body;
+    const track = typeof body.track === "string" ? body.track : typeof body.title === "string" ? body.title : "";
+    const artist = typeof body.artist === "string" ? body.artist : "";
+    const album = typeof body.album === "string" ? body.album : "";
+    const action = body.action === "dislike" ? "dislike" : body.action === "like" || body.action === "love" ? "love" : "";
 
-    if (!room || !track || !action) {
+    if (!track || !action) {
       return NextResponse.json(
-        { error: "Missing required fields: room, track, action" },
+        { error: "Missing required fields: track, action" },
         { status: 400 }
       );
     }
 
-    if (action !== "like" && action !== "dislike") {
-      return NextResponse.json(
-        { error: 'Action must be "like" or "dislike"' },
-        { status: 400 }
-      );
-    }
-
-    const entries = await readFeedback();
-    const entry: FeedbackEntry = {
-      room,
-      track,
-      artist: artist || "",
-      album: album || "",
-      action,
-      timestamp: new Date().toISOString(),
-    };
-    entries.push(entry);
-    await writeFeedback(entries);
-
-    return NextResponse.json({ ok: true, entry });
-  } catch {
+    const result = await setTrackFeedback({ title: track, artist, album, action });
+    return NextResponse.json(result);
+  } catch (error) {
     return NextResponse.json(
-      { error: "Invalid request body" },
+      { error: error instanceof Error ? error.message : "Invalid request body" },
       { status: 400 }
     );
   }

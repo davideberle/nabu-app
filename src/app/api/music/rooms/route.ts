@@ -6,10 +6,10 @@ export const runtime = "nodejs";
 export async function GET() {
   try {
     const rooms = await getRoomProjections();
-    return NextResponse.json(rooms);
+    return NextResponse.json({ rooms });
   } catch (error) {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Failed to fetch zones" },
+      { rooms: [], error: error instanceof Error ? error.message : "Music room state unavailable" },
       { status: 502 }
     );
   }
