@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { auth, signOut } from "@/auth";
+import { NabuCard, NabuHeader, NabuIconFrame, NabuMain, NabuPageShell, NabuPill, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
 import { initialTodos } from "@/lib/todos";
 import { getRecipesByCookbook } from "@/lib/recipes";
 
@@ -73,101 +74,84 @@ export default async function Home() {
   const tiles = await getTiles();
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
-      {/* Header */}
-      <header className="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
-        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">📜</span>
-            <h1 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Nabu
-            </h1>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-zinc-500 dark:text-zinc-400">
-              {session?.user?.name}
-            </span>
-            <form
-              action={async () => {
-                "use server";
-                await signOut({ redirectTo: "/login" });
-              }}
+    <NabuPageShell>
+      <NabuHeader
+        title="Nabu"
+        subtitle={session?.user?.name ?? "Household companion"}
+        icon="📜"
+        action={
+          <form
+            action={async () => {
+              "use server";
+              await signOut({ redirectTo: "/login" });
+            }}
+          >
+            <button
+              type="submit"
+              className="text-xs font-medium text-stone-400 transition-colors hover:text-stone-700 dark:text-stone-500 dark:hover:text-stone-200"
             >
-              <button
-                type="submit"
-                className="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
-              >
-                Sign out
-              </button>
-            </form>
-          </div>
-        </div>
-      </header>
+              Sign out
+            </button>
+          </form>
+        }
+      />
 
-      {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-4 py-8">
-        {/* Today's Focus (placeholder for future) */}
-        <div className="mb-8 p-4 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800">
-          <div className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
-            <span>🎯</span>
-            <span className="font-medium">Today&apos;s Focus:</span>
-            <span className="text-blue-600 dark:text-blue-400">
-              No focus set — tap a recipe or project to set one
-            </span>
-          </div>
-        </div>
+      <NabuMain className="pb-24">
+        <section className="mb-8 grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
+          <NabuSurface tone="accent" className="p-4 sm:p-6">
+            <NabuSectionHeader
+              eyebrow="Today"
+              title="No focus set"
+              description="Tap a recipe, meal, or project when something needs to become the main thread."
+              action={<NabuIconFrame className="h-11 w-11 border-amber-100 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-900/20">🎯</NabuIconFrame>}
+            />
+          </NabuSurface>
 
-        {/* Tiles Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <NabuSurface className="p-4 sm:p-5">
+            <NabuSectionHeader eyebrow="Systems" />
+            <div className="mt-4 space-y-3 overflow-hidden">
+              {["Voice Relay", "Gateway", "Music Assistant"].map((item) => (
+                <div key={item} className="flex min-w-0 flex-wrap items-center justify-between gap-2 text-sm">
+                  <span className="text-stone-600 dark:text-stone-300">{item}</span>
+                  <NabuPill tone="green">Live</NabuPill>
+                </div>
+              ))}
+            </div>
+          </NabuSurface>
+        </section>
+
+        <NabuSectionHeader
+          className="mb-4"
+          eyebrow="Surfaces"
+          title="What do you need?"
+        />
+
+        <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
           {tiles.map((tile) => (
-            <Link
+            <NabuCard
               key={tile.id}
               href={tile.href}
-              className="group p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors"
             >
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">{tile.emoji}</span>
-                    <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              <div className="flex min-w-0 items-start justify-between gap-3 overflow-hidden">
+                <div className="min-w-0 overflow-hidden">
+                  <div className="mb-3 flex min-w-0 items-center gap-3">
+                    <NabuIconFrame className="bg-stone-100 transition-colors group-hover:bg-stone-200 dark:bg-stone-800 dark:group-hover:bg-stone-700">
+                      {tile.emoji}
+                    </NabuIconFrame>
+                    <h2 className="min-w-0 truncate text-base font-semibold tracking-[-0.01em] text-primary">
                       {tile.name}
                     </h2>
                   </div>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  <p className="text-sm leading-6 text-tertiary">
                     {tile.description}
                   </p>
                 </div>
-                <span className="text-xs px-2 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                  {tile.stats}
-                </span>
+                <NabuPill className="hidden shrink-0 sm:inline-flex">{tile.stats}</NabuPill>
               </div>
-            </Link>
+            </NabuCard>
           ))}
         </div>
-      </main>
-
-      {/* System Status Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between text-sm">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-green-500"></span>
-              <span className="text-zinc-600 dark:text-zinc-400">Voice Relay</span>
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-green-500"></span>
-              <span className="text-zinc-600 dark:text-zinc-400">Gateway</span>
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-green-500"></span>
-              <span className="text-zinc-600 dark:text-zinc-400">Music Assistant</span>
-            </span>
-          </div>
-          <span className="text-zinc-400 dark:text-zinc-500">
-            Last sync: just now
-          </span>
-        </div>
-      </footer>
-    </div>
+      </NabuMain>
+    </NabuPageShell>
   );
 }

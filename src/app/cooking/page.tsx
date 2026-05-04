@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NabuBadge, NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageShell, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
 import { createSessionFromPlan } from "@/lib/cooking";
 import { todayInZurich } from "@/lib/date";
 import type { CookingSession, SessionIngredient, CoachCards } from "@/lib/cooking";
@@ -24,44 +25,26 @@ export default async function CookingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950">
-      {/* Header */}
-      <header className="border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900">
-        <div className="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              className="text-stone-400 hover:text-stone-600 dark:text-stone-500 dark:hover:text-stone-300"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
-              </svg>
-            </Link>
-            <div>
-              <h1 className="text-xl font-serif text-stone-800 dark:text-stone-100">
-                Live Cooking
-              </h1>
-              <p className="text-xs text-stone-400 dark:text-stone-500">
-                {formatDateDisplay(date)}
-              </p>
-            </div>
-          </div>
-          {session && (
-            <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${statusColor(session.status)}`}>
-              {session.status}
-            </span>
-          )}
-        </div>
-      </header>
+    <NabuPageShell>
+      <NabuHeader
+        title="Live Cooking"
+        eyebrow="Today’s meal"
+        subtitle={formatDateDisplay(date)}
+        backHref="/"
+        maxWidth="3xl"
+        action={session ? (
+          <NabuBadge tone={statusTone(session.status)}>{session.status}</NabuBadge>
+        ) : null}
+      />
 
-      <main className="max-w-3xl mx-auto px-4 py-6 space-y-6">
+      <NabuMain maxWidth="3xl" className="space-y-6">
         {session ? (
           <SessionView session={session} sideRecipes={sideRecipes} />
         ) : (
           <EmptyState date={date} />
         )}
-      </main>
-    </div>
+      </NabuMain>
+    </NabuPageShell>
   );
 }
 
@@ -84,16 +67,11 @@ function SessionView({ session, sideRecipes }: { session: CookingSession; sideRe
   return (
     <>
       {/* ── Meal overview ── */}
-      <section className="rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-5">
-        <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-1">
-          Tonight&rsquo;s meal
-        </p>
-        <h2 className="text-2xl font-serif text-stone-800 dark:text-stone-100 leading-snug">
-          {session.anchor.title}
-        </h2>
+      <NabuSurface className="p-5">
+        <NabuSectionHeader eyebrow="Tonight’s meal" title={session.anchor.title} />
 
         {hasSides && (
-          <p className="text-sm text-stone-500 dark:text-stone-400 mt-2 leading-relaxed">
+          <p className="mt-2 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
             {sideRecipes.length > 0 && (
               <>with {sideRecipes.map((r) => r.name).join(" & ")}</>
             )}
@@ -107,14 +85,11 @@ function SessionView({ session, sideRecipes }: { session: CookingSession; sideRe
           </p>
         )}
 
-        <div className="flex items-center gap-4 mt-3 text-sm text-stone-500 dark:text-stone-400">
-          <span>Serves {session.servings.current}</span>
+        <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-stone-500 dark:text-stone-400">
+          <NabuBadge>Serves {session.servings.current}</NabuBadge>
           {session.servings.current !== session.servings.base && (
-            <span className="text-xs text-amber-600 dark:text-amber-400">
-              (base: {session.servings.base})
-            </span>
+            <NabuBadge tone="amber">base: {session.servings.base}</NabuBadge>
           )}
-          <span className="text-stone-300 dark:text-stone-700">&middot;</span>
           <span className="text-xs">
             {session.anchor.provenance.source}
             {session.anchor.provenance.author && (
@@ -129,7 +104,7 @@ function SessionView({ session, sideRecipes }: { session: CookingSession; sideRe
           sideRecipes={sideRecipes}
           serveWith={session.serveWith}
         />
-      </section>
+      </NabuSurface>
 
       {/* Coach cards */}
       <CoachCardsSection cards={session.coachCards} />
@@ -160,28 +135,24 @@ function SessionView({ session, sideRecipes }: { session: CookingSession; sideRe
       ))}
 
       {session.serveWith.length > 0 && (
-        <section className="rounded-xl bg-white/60 dark:bg-stone-900/60 border border-stone-200 dark:border-stone-800 p-4">
-          <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-1.5">
-            Also on the table
-          </p>
-          <ul className="space-y-1">
+        <NabuSurface tone="muted" className="p-4">
+          <NabuKicker>Also on the table</NabuKicker>
+          <ul className="mt-2 space-y-1">
             {session.serveWith.map((item, i) => (
-              <li key={i} className="text-sm text-stone-500 dark:text-stone-400 flex items-center gap-2">
-                <span className="w-1 h-1 rounded-full bg-stone-300 dark:bg-stone-600 shrink-0" />
+              <li key={i} className="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400">
+                <span className="h-1 w-1 shrink-0 rounded-full bg-stone-300 dark:bg-stone-600" />
                 {item}
               </li>
             ))}
           </ul>
-        </section>
+        </NabuSurface>
       )}
 
       {/* Adaptations */}
       {session.adaptations.length > 0 && (
-        <section className="rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-5">
-          <h3 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-3">
-            Session Modifications
-          </h3>
-          <ul className="space-y-2">
+        <NabuSurface className="p-5">
+          <NabuKicker>Session Modifications</NabuKicker>
+          <ul className="mt-3 space-y-2">
             {session.adaptations.map((a) => (
               <li key={a.id} className="flex items-start gap-2 text-sm">
                 <span className="shrink-0 text-[10px] px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 mt-0.5">
@@ -193,19 +164,17 @@ function SessionView({ session, sideRecipes }: { session: CookingSession; sideRe
               </li>
             ))}
           </ul>
-        </section>
+        </NabuSurface>
       )}
 
       {/* Notes */}
       {session.notes && (
-        <section className="rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-5">
-          <h3 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-2">
-            Notes
-          </h3>
-          <p className="text-sm text-stone-600 dark:text-stone-400 whitespace-pre-wrap">
+        <NabuSurface className="p-5">
+          <NabuKicker>Notes</NabuKicker>
+          <p className="mt-2 whitespace-pre-wrap text-sm text-stone-600 dark:text-stone-400">
             {session.notes}
           </p>
-        </section>
+        </NabuSurface>
       )}
 
       {/* Footer meta */}
@@ -234,20 +203,19 @@ function CoachCardsSection({ cards }: { cards: CoachCards }) {
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 gap-3">
       {active.map((cfg) => (
-        <div
+        <NabuSurface
           key={cfg.key}
-          className={`rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 border-l-4 ${cfg.color} p-4`}
+          as="div"
+          className={`border-l-4 ${cfg.color} p-4`}
         >
-          <div className="flex items-center gap-2 mb-1">
+          <div className="mb-1 flex items-center gap-2">
             <span className="text-sm">{cfg.icon}</span>
-            <span className="text-xs font-medium tracking-widest uppercase text-stone-400 dark:text-stone-500">
-              {cfg.label}
-            </span>
+            <NabuKicker>{cfg.label}</NabuKicker>
           </div>
-          <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+          <p className="text-sm leading-relaxed text-stone-700 dark:text-stone-300">
             {cards[cfg.key]}
           </p>
-        </div>
+        </NabuSurface>
       ))}
     </section>
   );
@@ -273,29 +241,13 @@ function MealComponentBlock({
   modified?: { ingredients: boolean; method: boolean };
 }) {
   return (
-    <section className="rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-5 space-y-5">
+    <NabuSurface className="space-y-5 p-5">
       {/* Component header — role label + title */}
-      <div>
-        <div className="flex items-center gap-2 mb-1">
-          <span
-            className={`text-[10px] tracking-widest uppercase font-medium ${
-              role === "main"
-                ? "text-stone-600 dark:text-stone-300"
-                : "text-stone-400 dark:text-stone-500"
-            }`}
-          >
-            {role === "main" ? "Main" : "Side"}
-          </span>
-        </div>
-        <h3 className="text-xl font-serif text-stone-800 dark:text-stone-100 leading-snug">
-          {title}
-        </h3>
-        {servings && (
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
-            Serves {servings}
-          </p>
-        )}
-      </div>
+      <NabuSectionHeader
+        eyebrow={role === "main" ? "Main" : "Side"}
+        title={title}
+        action={servings ? <NabuBadge>Serves {servings}</NabuBadge> : null}
+      />
 
       {/* Ingredients */}
       {ingredients.length > 0 && (
@@ -339,7 +291,7 @@ function MealComponentBlock({
           </ol>
         </div>
       )}
-    </section>
+    </NabuSurface>
   );
 }
 
@@ -412,20 +364,20 @@ function formatIngredientAmount(ing: SessionIngredient): string {
 
 function EmptyState({ date }: { date: string }) {
   return (
-    <div className="text-center py-16 space-y-4">
-      <div className="text-5xl opacity-30">&#127859;</div>
-      <h2 className="text-lg font-serif text-stone-600 dark:text-stone-400">
-        Nothing planned for today
-      </h2>
-      <p className="text-sm text-stone-400 dark:text-stone-500 max-w-sm mx-auto">
-        Assign a recipe in the{" "}
-        <Link href="/meals" className="underline hover:text-stone-600 dark:hover:text-stone-300">
-          meal planner
-        </Link>{" "}
-        and it will appear here automatically, or ask Nabu on Telegram
-        for live cooking help.
-      </p>
-    </div>
+    <NabuEmptyState
+      icon="🍳"
+      title="Nothing planned for today"
+      description={
+        <>
+          Assign a recipe in the{" "}
+          <Link href="/meals" className="underline hover:text-stone-600 dark:hover:text-stone-300">
+            meal planner
+          </Link>{" "}
+          and it will appear here automatically, or ask Nabu on Telegram
+          for live cooking help.
+        </>
+      }
+    />
   );
 }
 
@@ -493,16 +445,16 @@ function CookingFlowNote({
 // Helpers
 // ---------------------------------------------------------------------------
 
-function statusColor(status: string): string {
+function statusTone(status: string): "stone" | "green" | "amber" | "red" {
   switch (status) {
     case "active":
-      return "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300";
+      return "green";
     case "completed":
-      return "bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400";
+      return "stone";
     case "abandoned":
-      return "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400";
+      return "red";
     default:
-      return "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300";
+      return "amber";
   }
 }
 

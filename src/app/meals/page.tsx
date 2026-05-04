@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { NabuBadge, NabuButton, NabuEmptyState, NabuHeader, NabuMain, NabuPageShell, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
 import { getCourseTagColor } from "@/lib/tag-colors";
 import { normalizeIngredient } from "@/lib/normalize-ingredients";
 
@@ -824,71 +825,61 @@ function MealsPageInner() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950">
-      {/* Header */}
-      <header className="border-b border-stone-200/80 dark:border-stone-800 bg-white/80 dark:bg-stone-900/80 backdrop-blur-sm">
-        <div className="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+    <NabuPageShell>
+      <NabuHeader
+        title="Meal Planner"
+        eyebrow="Food workflow"
+        subtitle={`${weekDates[0].dayOfWeek.slice(0, 3)} ${formatDateShort(weekDates[0].date)} – ${weekDates[6].dayOfWeek.slice(0, 3)} ${formatDateShort(weekDates[6].date)}`}
+        backHref="/"
+      />
+
+      <NabuMain>
+        {/* Week navigation */}
+        <NabuSurface className="mb-8 p-3 sm:p-4">
+          <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 sm:flex sm:flex-wrap sm:gap-3">
             <Link
-              href="/"
-              className="text-stone-400 hover:text-stone-600 dark:text-stone-500 dark:hover:text-stone-300 transition-colors"
+              href={prevWeekHref}
+              className="rounded-full p-2 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700 dark:text-stone-500 dark:hover:bg-stone-800 dark:hover:text-stone-200"
+              aria-label="Previous week"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </Link>
-            <h1 className="text-xl font-serif text-stone-800 dark:text-stone-100">
-              Meal Planner
-            </h1>
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-5xl mx-auto px-5 py-8">
-        {/* Week navigation */}
-        <div className="flex items-center gap-3 mb-8">
-          <Link
-            href={prevWeekHref}
-            className="p-2 rounded-full text-stone-400 hover:text-stone-700 dark:text-stone-500 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
-            aria-label="Previous week"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </Link>
-          <div className="text-center min-w-[160px]">
-            <span className="text-sm font-medium text-stone-700 dark:text-stone-200">
-              {weekDates[0].dayOfWeek.slice(0, 3)} {formatDateShort(weekDates[0].date)}
-              {" \u2013 "}
-              {weekDates[6].dayOfWeek.slice(0, 3)} {formatDateShort(weekDates[6].date)}
-            </span>
-            <span className="block text-[11px] text-stone-400 dark:text-stone-500">
-              {weekId}
-              {isCurrentWeek && " \u00b7 This week"}
-              {isPastWeek && " \u00b7 Past"}
-            </span>
-          </div>
-          <Link
-            href={nextWeekHref}
-            className="p-2 rounded-full text-stone-400 hover:text-stone-700 dark:text-stone-500 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
-            aria-label="Next week"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
-          {!isCurrentWeek && (
-            <button
-              onClick={() => navigateToWeek(currentWeek.year, currentWeek.week)}
-              className="ml-1 px-3 py-1.5 rounded-full text-xs font-medium text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-700 dark:hover:text-stone-200 transition-colors"
+            <div className="min-w-0 text-center sm:min-w-40">
+              <span className="block truncate text-sm font-medium text-stone-700 dark:text-stone-200">
+                {weekDates[0].dayOfWeek.slice(0, 3)} {formatDateShort(weekDates[0].date)}
+                {" \u2013 "}
+                {weekDates[6].dayOfWeek.slice(0, 3)} {formatDateShort(weekDates[6].date)}
+              </span>
+              <span className="block truncate text-[11px] text-stone-400 dark:text-stone-500">
+                {weekId}
+                {isCurrentWeek && " \u00b7 This week"}
+                {isPastWeek && " \u00b7 Past"}
+              </span>
+            </div>
+            <Link
+              href={nextWeekHref}
+              className="rounded-full p-2 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700 dark:text-stone-500 dark:hover:bg-stone-800 dark:hover:text-stone-200"
+              aria-label="Next week"
             >
-              This week
-            </button>
-          )}
-        </div>
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+            {!isCurrentWeek && (
+              <button
+                onClick={() => navigateToWeek(currentWeek.year, currentWeek.week)}
+                className="col-span-3 rounded-full border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-500 transition-colors hover:border-stone-400 hover:text-stone-700 sm:col-span-1 dark:border-stone-700 dark:text-stone-400 dark:hover:border-stone-500 dark:hover:text-stone-200"
+              >
+                This week
+              </button>
+            )}
+          </div>
+        </NabuSurface>
 
         {/* Week context summary + toggle */}
-        <div className="mb-4">
+        <div className="mb-5">
           <div className="flex items-center gap-2 mb-2">
             <button
               onClick={() => {
@@ -940,7 +931,7 @@ function MealsPageInner() {
 
         {/* Calendar grid — 7-day week */}
         {planLoading ? (
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-10">
+          <div className="grid grid-cols-1 gap-3 mb-10 min-[380px]:grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
             {weekDates.map((wd) => (
               <div
                 key={wd.date}
@@ -955,7 +946,7 @@ function MealsPageInner() {
             ))}
           </div>
         ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-10">
+        <div className="grid grid-cols-1 gap-3 mb-10 min-[380px]:grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
           {weekDates.map((wd, i) => {
             const slot = plan?.days[i] ?? null;
             const isFilled = slot != null && slot.recipeId != null;
@@ -1009,24 +1000,16 @@ function MealsPageInner() {
                 {hist?.status && (
                   <div className="mb-1">
                     {hist.status === "cooked-as-planned" && (
-                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400">
-                        Cooked
-                      </span>
+                      <NabuBadge tone="green" className="px-1.5 py-0.5 text-[9px]">Cooked</NabuBadge>
                     )}
                     {hist.status === "cooked-other" && (
-                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400" title={hist.cookedRecipeName ? `Cooked: ${hist.cookedRecipeName}` : undefined}>
-                        Swapped
-                      </span>
+                      <NabuBadge tone="blue" className="px-1.5 py-0.5 text-[9px]" title={hist.cookedRecipeName ? `Cooked: ${hist.cookedRecipeName}` : undefined}>Swapped</NabuBadge>
                     )}
                     {hist.status === "skipped" && !isSkipped && (
-                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-400 dark:text-stone-500">
-                        Skipped
-                      </span>
+                      <NabuBadge className="px-1.5 py-0.5 text-[9px]">Skipped</NabuBadge>
                     )}
                     {hist.status === "planned" && (
-                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400">
-                        Planned
-                      </span>
+                      <NabuBadge tone="amber" className="px-1.5 py-0.5 text-[9px]">Planned</NabuBadge>
                     )}
                   </div>
                 )}
@@ -1161,41 +1144,24 @@ function MealsPageInner() {
 
         {/* Empty state — no plan and no candidates yet */}
         {!planLoading && !plan && !hasCandidates && (
-          <div className="rounded-2xl bg-white/50 dark:bg-stone-900/30 px-6 py-14 mb-8 text-center">
-            <p className="font-serif text-stone-500 dark:text-stone-400 mb-1">
-              No plan for this week yet
-            </p>
-            {isPastWeek ? (
-              <p className="text-xs text-stone-400 dark:text-stone-500">
-                No saved plan for this past week.
-              </p>
-            ) : (
-              <>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mb-6">
-                  Generate suggestions to start filling in your week.
-                </p>
-                <button
-                  onClick={() => handleGenerate()}
-                  disabled={loading}
-                  className="px-6 py-2.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-50 transition-colors"
-                >
-                  {loading ? "Generating..." : "Generate suggestions"}
-                </button>
-              </>
-            )}
-          </div>
+          <NabuEmptyState
+            className="mb-8"
+            title="No plan for this week yet"
+            description={isPastWeek ? "No saved plan for this past week." : "Generate suggestions to start filling in your week."}
+            action={!isPastWeek ? (
+              <NabuButton onClick={() => handleGenerate()} disabled={loading}>
+                {loading ? "Generating..." : "Generate suggestions"}
+              </NabuButton>
+            ) : null}
+          />
         )}
 
         {/* Action buttons — generate (first time) or explicit regenerate */}
-        <div className="flex items-center gap-3 mb-8">
+        <div className="flex flex-wrap items-center gap-3 mb-8">
           {!hasCandidates && !planLoading && plan && !isPastWeek && (
-            <button
-              onClick={() => handleGenerate()}
-              disabled={loading}
-              className="px-6 py-2.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-50 transition-colors"
-            >
+            <NabuButton onClick={() => handleGenerate()} disabled={loading}>
               {loading ? "Generating..." : "Generate suggestions"}
-            </button>
+            </NabuButton>
           )}
           {hasCandidates && (
             <>
@@ -1210,13 +1176,14 @@ function MealsPageInner() {
                 </span>
               )}
               {!isPastWeek && (
-                <button
+                <NabuButton
                   onClick={() => handleGenerate()}
                   disabled={loading}
-                  className="px-4 py-2 rounded-full text-xs text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 disabled:opacity-50 transition-colors"
+                  tone="ghost"
+                  size="sm"
                 >
                   {loading ? "Regenerating..." : "Regenerate"}
-                </button>
+                </NabuButton>
               )}
             </>
           )}
@@ -1224,10 +1191,10 @@ function MealsPageInner() {
 
         {/* Selected recipe indicator */}
         {selectedRecipe && (
-          <div className="mb-6 p-4 rounded-2xl bg-amber-50/50 dark:bg-amber-950/20 flex items-center justify-between">
-            <span className="text-sm text-stone-600 dark:text-stone-300">
+          <div className="mb-6 flex flex-col gap-3 rounded-2xl bg-amber-50/50 p-4 sm:flex-row sm:items-center sm:justify-between dark:bg-amber-950/20">
+            <span className="min-w-0 text-sm text-stone-600 dark:text-stone-300">
               <span className="font-serif font-medium">{selectedRecipe.name}</span>
-              <span className="text-stone-400 dark:text-stone-500 ml-2">&mdash; tap a day to assign</span>
+              <span className="text-stone-400 dark:text-stone-500 sm:ml-2">&mdash; tap a day to assign</span>
             </span>
             <button
               onClick={() => setSelectedRecipe(null)}
@@ -1241,9 +1208,10 @@ function MealsPageInner() {
         {/* Candidate mains */}
         {hasCandidates && (
           <div className="space-y-6">
-            <h2 className="text-[11px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
-              Suggestions
-            </h2>
+            <NabuSectionHeader
+              eyebrow="Suggestions"
+              description="Pick a main, then tap a day. Assigned recipes stay visible but quiet."
+            />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {candidates.map((r) => {
@@ -1268,7 +1236,7 @@ function MealsPageInner() {
             </div>
           </div>
         )}
-      </main>
+      </NabuMain>
 
       {/* Quick View Modal */}
       {(quickViewRecipe || quickViewLoading) && (
@@ -1281,7 +1249,7 @@ function MealsPageInner() {
           }}
         />
       )}
-    </div>
+    </NabuPageShell>
   );
 }
 
@@ -1318,7 +1286,7 @@ function WeekContextEditor({
   }
 
   return (
-    <div className="rounded-2xl bg-white dark:bg-stone-900 p-5 space-y-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+    <div className="min-w-0 rounded-2xl bg-white p-4 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-5 dark:bg-stone-900 space-y-5">
       {/* Free-text notes */}
       <div>
         <label className="text-[11px] text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-1.5">
@@ -1344,7 +1312,7 @@ function WeekContextEditor({
             {(plan.context || []).map((ctx) => (
               <div
                 key={ctx.id}
-                className="flex items-center gap-2 text-sm"
+                className="flex min-w-0 flex-wrap items-center gap-2 text-sm"
               >
                 <span
                   className={`shrink-0 text-xs px-2 py-0.5 rounded-full ${KIND_COLORS[ctx.kind] || KIND_COLORS.custom}`}
@@ -1384,7 +1352,7 @@ function WeekContextEditor({
           <label className="text-[11px] text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-2">
             Add Context
           </label>
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-[auto_auto_minmax(0,1fr)_auto]">
             <select
               value={newKind}
               onChange={(e) => setNewKind(e.target.value as WeekContextItem["kind"])}
@@ -1414,7 +1382,7 @@ function WeekContextEditor({
               onChange={(e) => setNewNote(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleAdd()}
               placeholder="Note..."
-              className="flex-1 min-w-[120px] text-sm rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-3 py-1.5 placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+              className="min-w-0 rounded-lg border border-stone-200 bg-stone-50 px-3 py-1.5 text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500/20 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-500"
             />
             <button
               onClick={handleAdd}

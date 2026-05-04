@@ -184,7 +184,7 @@ export async function getCookingSessionForDate(
   const result = await client.execute({
     sql: `SELECT * FROM cooking_sessions
           WHERE date = ?
-          ORDER BY COALESCE(updated_at, created_at, started_at) DESC
+          ORDER BY COALESCE(updated_at, created_at) DESC
           LIMIT 1`,
     args: [date],
   });
@@ -220,24 +220,6 @@ export async function getCookingSession(
   return rowToSession(result.rows[0] as CookingSessionRow);
 }
 
-function legacySnapshotForSession(session: CookingSession) {
-  return {
-    id: session.anchor.recipeId ?? session.id,
-    name: session.anchor.title,
-    source: {
-      cookbook: session.anchor.provenance.source,
-      author: session.anchor.provenance.author,
-    },
-    servings: session.servings.base,
-    ingredients: session.ingredients.base,
-    method: session.method.base,
-  };
-}
-
-function legacyStatus(status: SessionStatus): "active" | "completed" {
-  return status === "completed" ? "completed" : "active";
-}
-
 export async function saveCookingSession(
   session: CookingSession
 ): Promise<void> {
@@ -249,36 +231,21 @@ export async function saveCookingSession(
     createdAt: session.createdAt || now,
   };
 
-  const recipeId = updated.anchor.recipeId || updated.id;
-  const recipeName = updated.anchor.title;
-  const recipeData = JSON.stringify(legacySnapshotForSession(updated));
-  const serveWith = updated.serveWith.length > 0 ? JSON.stringify(updated.serveWith) : null;
   const data = JSON.stringify(updated);
 
   await client.execute({
     sql: `INSERT INTO cooking_sessions
-            (id, date, recipe_id, recipe_name, recipe_data, serve_with, status, current_step, started_at, created_at, data, updated_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?)
+            (id, date, data, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?)
           ON CONFLICT(id) DO UPDATE SET
             date = excluded.date,
-            recipe_id = excluded.recipe_id,
-            recipe_name = excluded.recipe_name,
-            recipe_data = excluded.recipe_data,
-            serve_with = excluded.serve_with,
-            status = excluded.status,
             data = excluded.data,
             updated_at = excluded.updated_at`,
     args: [
       updated.id,
       updated.date,
-      recipeId,
-      recipeName,
-      recipeData,
-      serveWith,
-      legacyStatus(updated.status),
-      updated.createdAt,
-      updated.createdAt,
       data,
+      updated.createdAt,
       now,
     ],
   });
