@@ -26,6 +26,9 @@ await db.execute(`
     genres_json TEXT NOT NULL DEFAULT '[]',
     reasons TEXT,
     library_status TEXT,
+    artwork_url TEXT,
+    album_year INTEGER,
+    release_year INTEGER,
     source_signals_json TEXT,
     played_count INTEGER NOT NULL DEFAULT 0,
     history_json TEXT,
@@ -34,6 +37,31 @@ await db.execute(`
   )
 `);
 
+const columns = await db.execute("PRAGMA table_info(discovery_candidates)");
+const columnNames = new Set(columns.rows.map((row) => String(row.name)));
+if (!columnNames.has("artwork_url")) {
+  await db.execute("ALTER TABLE discovery_candidates ADD COLUMN artwork_url TEXT");
+}
+if (!columnNames.has("album_year")) {
+  await db.execute("ALTER TABLE discovery_candidates ADD COLUMN album_year INTEGER");
+}
+if (!columnNames.has("release_year")) {
+  await db.execute("ALTER TABLE discovery_candidates ADD COLUMN release_year INTEGER");
+}
+
+function optionalArtworkUrl(candidate) {
+  return candidate.artwork_url || candidate.cover_art_url || candidate.source_signals?.artwork_url || null;
+}
+
+function optionalYear(value) {
+  if (Number.isFinite(value)) return value;
+  if (typeof value === 'string' && value.trim()) {
+    const parsed = Number.parseInt(value, 10);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+  return null;
+}
+
 let inserted = 0;
 for (const candidate of candidates) {
   const createdAt = candidate.created_at || new Date().toISOString();
@@ -41,8 +69,8 @@ for (const candidate of candidates) {
   const result = await db.execute({
     sql: `INSERT OR IGNORE INTO discovery_candidates (
       id, status, lane, score, type, name, artist, genres_json, reasons, library_status,
-      source_signals_json, played_count, history_json, created_at, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      artwork_url, album_year, release_year, source_signals_json, played_count, history_json, created_at, updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     args: [
       candidate.id,
       candidate.status || 'inbox',
@@ -54,6 +82,9 @@ for (const candidate of candidates) {
       JSON.stringify(candidate.genres || []),
       candidate.reasons || null,
       candidate.library_status || null,
+      optionalArtworkUrl(candidate),
+      optionalYear(candidate.album_year),
+      optionalYear(candidate.release_year),
       JSON.stringify(candidate.source_signals || {}),
       candidate.played_count || 0,
       JSON.stringify(candidate.history || []),

@@ -58,6 +58,9 @@ type DiscoveryCandidate = {
   score?: number;
   reasons?: string;
   library_status?: string;
+  artwork_url?: string | null;
+  album_year?: number | null;
+  release_year?: number | null;
   status?: string;
   played_count?: number;
 };
@@ -100,6 +103,10 @@ function typeLabel(type?: string | null) {
   if (!type) return "media";
   if (type === "compilation") return "compilation";
   return type;
+}
+
+function displayYear(candidate: DiscoveryCandidate) {
+  return candidate.album_year ?? candidate.release_year ?? null;
 }
 
 export default function MusicPage() {
@@ -241,26 +248,42 @@ export default function MusicPage() {
                       key={candidate.id}
                       className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between"
                     >
-                      <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="font-medium text-primary">
-                            {candidate.name}
-                          </h3>
-                          <NabuBadge tone="stone">{typeLabel(candidate.type)}</NabuBadge>
-                          {candidate.score != null && (
-                            <NabuBadge tone="blue">{candidate.score}</NabuBadge>
+                      <div className="flex min-w-0 gap-4">
+                        {candidate.artwork_url ? (
+                          <img
+                            src={candidate.artwork_url}
+                            alt={`${candidate.name} cover`}
+                            className="h-16 w-16 shrink-0 rounded-xl object-cover"
+                          />
+                        ) : (
+                          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
+                            🎵
+                          </div>
+                        )}
+                        <div className="min-w-0">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h3 className="font-medium text-primary">
+                              {candidate.name}
+                            </h3>
+                            <NabuBadge tone="stone">{typeLabel(candidate.type)}</NabuBadge>
+                            {displayYear(candidate) && (
+                              <NabuBadge tone="stone">{displayYear(candidate)}</NabuBadge>
+                            )}
+                            {candidate.score != null && (
+                              <NabuBadge tone="blue">{candidate.score}</NabuBadge>
+                            )}
+                          </div>
+                          <p className="mt-1 text-sm text-tertiary">
+                            {[candidate.artist, candidate.genres?.join(" · "), candidate.lane]
+                              .filter(Boolean)
+                              .join(" · ")}
+                          </p>
+                          {candidate.reasons && (
+                            <p className="mt-1 line-clamp-2 text-sm text-tertiary">
+                              {candidate.reasons}
+                            </p>
                           )}
                         </div>
-                        <p className="mt-1 text-sm text-tertiary">
-                          {[candidate.artist, candidate.genres?.join(" · "), candidate.lane]
-                            .filter(Boolean)
-                            .join(" · ")}
-                        </p>
-                        {candidate.reasons && (
-                          <p className="mt-1 line-clamp-2 text-sm text-tertiary">
-                            {candidate.reasons}
-                          </p>
-                        )}
                       </div>
                       <div className="flex shrink-0 items-center gap-2">
                         <NabuButton

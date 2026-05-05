@@ -47,6 +47,9 @@ export type DiscoveryCandidate = {
   score?: number;
   reasons?: string;
   library_status?: string;
+  artwork_url?: string | null;
+  album_year?: number | null;
+  release_year?: number | null;
   status?: "inbox" | "trial" | "promoted" | "rejected";
   played_count?: number;
   last_played_at?: string | null;
@@ -87,6 +90,15 @@ export async function getRoomProjections(): Promise<RoomProjection[]> {
   return rooms.map((room) => ({ room, nowPlaying: null, lastMedia: null }));
 }
 
+function asOptionalNumber(value: unknown): number | null {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string" && value.trim()) {
+    const parsed = Number.parseInt(value, 10);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+  return null;
+}
+
 function rowToDiscoveryCandidate(row: Record<string, unknown>): DiscoveryCandidate {
   return {
     id: row.id as string,
@@ -98,6 +110,9 @@ function rowToDiscoveryCandidate(row: Record<string, unknown>): DiscoveryCandida
     score: typeof row.score === "number" ? row.score : undefined,
     reasons: asString(row.reasons) || undefined,
     library_status: asString(row.library_status) || undefined,
+    artwork_url: asString(row.artwork_url) || undefined,
+    album_year: asOptionalNumber(row.album_year),
+    release_year: asOptionalNumber(row.release_year),
     status: (asString(row.status) as DiscoveryCandidate["status"]) || "inbox",
     played_count: typeof row.played_count === "number" ? row.played_count : 0,
     last_played_at: asString(row.last_played_at),
@@ -120,6 +135,9 @@ async function ensureDiscoverySchema() {
       genres_json TEXT NOT NULL DEFAULT '[]',
       reasons TEXT,
       library_status TEXT,
+      artwork_url TEXT,
+      album_year INTEGER,
+      release_year INTEGER,
       source_signals_json TEXT,
       played_count INTEGER NOT NULL DEFAULT 0,
       history_json TEXT,
@@ -127,6 +145,18 @@ async function ensureDiscoverySchema() {
       updated_at TEXT NOT NULL
     )
   `);
+  const columns = await db.execute("PRAGMA table_info(discovery_candidates)");
+  const columnNames = new Set(columns.rows.map((row) => String(row.name)));
+  if (!columnNames.has("artwork_url")) {
+    await db.execute("ALTER TABLE discovery_candidates ADD COLUMN artwork_url TEXT");
+  }
+  if (!columnNames.has("album_year")) {
+    await db.execute("ALTER TABLE discovery_candidates ADD COLUMN album_year INTEGER");
+  }
+  if (!columnNames.has("release_year")) {
+    await db.execute("ALTER TABLE discovery_candidates ADD COLUMN release_year INTEGER");
+  }
+
   return db;
 }
 

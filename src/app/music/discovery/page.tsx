@@ -21,6 +21,9 @@ type Candidate = {
   lane?: string;
   score?: number;
   reasons?: string;
+  artwork_url?: string | null;
+  album_year?: number | null;
+  release_year?: number | null;
   status?: "inbox" | "trial" | "promoted" | "rejected";
   played_count?: number;
   last_played_at?: string | null;
@@ -46,6 +49,10 @@ const GROUPS: Array<{
   { key: "promoted", title: "Promoted", empty: "Nothing promoted yet.", statTone: "green" },
   { key: "rejected", title: "Rejected", empty: "No rejected candidates.", statTone: "stone" },
 ];
+
+function displayYear(candidate: Candidate) {
+  return candidate.album_year ?? candidate.release_year ?? null;
+}
 
 function formatCandidate(candidate: Candidate) {
   return [candidate.artist, candidate.genres?.join(" · "), candidate.lane]
@@ -145,25 +152,41 @@ export default function MusicDiscoveryPage() {
                           key={candidate.id}
                           className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between"
                         >
-                          <div className="min-w-0">
-                            <div className="flex flex-wrap items-center gap-2">
-                              <h3 className="font-medium text-primary">{candidate.name}</h3>
-                              {candidate.type && (
-                                <NabuBadge tone="stone">{candidate.type}</NabuBadge>
+                          <div className="flex min-w-0 gap-4">
+                            {candidate.artwork_url ? (
+                              <img
+                                src={candidate.artwork_url}
+                                alt={`${candidate.name} cover`}
+                                className="h-16 w-16 shrink-0 rounded-xl object-cover"
+                              />
+                            ) : (
+                              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
+                                🎵
+                              </div>
+                            )}
+                            <div className="min-w-0">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <h3 className="font-medium text-primary">{candidate.name}</h3>
+                                {candidate.type && (
+                                  <NabuBadge tone="stone">{candidate.type}</NabuBadge>
+                                )}
+                                {displayYear(candidate) && (
+                                  <NabuBadge tone="stone">{displayYear(candidate)}</NabuBadge>
+                                )}
+                                {candidate.score != null && (
+                                  <NabuBadge tone="blue">{candidate.score}</NabuBadge>
+                                )}
+                              </div>
+                              <p className="mt-1 text-sm text-tertiary">{formatCandidate(candidate)}</p>
+                              {candidate.reasons && (
+                                <p className="mt-1 text-sm text-tertiary">{candidate.reasons}</p>
                               )}
-                              {candidate.score != null && (
-                                <NabuBadge tone="blue">{candidate.score}</NabuBadge>
+                              {group.key === "trial" && (
+                                <p className="mt-1 text-xs text-quaternary">
+                                  Played {candidate.played_count || 0} time(s)
+                                </p>
                               )}
                             </div>
-                            <p className="mt-1 text-sm text-tertiary">{formatCandidate(candidate)}</p>
-                            {candidate.reasons && (
-                              <p className="mt-1 text-sm text-tertiary">{candidate.reasons}</p>
-                            )}
-                            {group.key === "trial" && (
-                              <p className="mt-1 text-xs text-quaternary">
-                                Played {candidate.played_count || 0} time(s)
-                              </p>
-                            )}
                           </div>
                           <div className="flex shrink-0 flex-wrap gap-2">
                             {group.key === "inbox" && (
