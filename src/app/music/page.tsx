@@ -1,7 +1,20 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  NabuPageShell,
+  NabuHeader,
+  NabuMain,
+  NabuSurface,
+  NabuCard,
+  NabuSectionHeader,
+  NabuKicker,
+  NabuButton,
+  NabuLinkButton,
+  NabuBadge,
+  NabuStat,
+  NabuEmptyState,
+} from "@/components/ui/nabu";
 
 const ROOM_ORDER = ["Living Room", "Cinema", "Penthouse", "Pool"];
 
@@ -170,36 +183,19 @@ export default function MusicPage() {
   const inbox = discovery.inbox || [];
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
-      <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
-        <div className="mx-auto flex max-w-5xl items-center gap-4 px-4 py-4">
-          <Link
-            href="/"
-            className="text-sm text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100"
-          >
-            ← Back
-          </Link>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🎵</span>
-              <h1 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                Music
-              </h1>
-            </div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">
-              Discovery first, Sonos rooms underneath.
-            </p>
-          </div>
-        </div>
-      </header>
+    <NabuPageShell>
+      <NabuHeader
+        title="Music"
+        backHref="/"
+        subtitle="Discovery first, Sonos rooms underneath."
+        icon="🎵"
+      />
 
-      <main className="mx-auto max-w-5xl space-y-6 px-4 py-8">
+      <NabuMain>
         {loading ? (
-          <div className="rounded-2xl border border-zinc-200 bg-white p-10 text-center text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
-            Loading music…
-          </div>
+          <NabuEmptyState title="Loading music…" />
         ) : (
-          <>
+          <div className="space-y-6">
             {(error || notice) && (
               <div
                 className={`rounded-xl border px-4 py-3 text-sm ${
@@ -212,53 +208,33 @@ export default function MusicPage() {
               </div>
             )}
 
-            <section className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+            {/* Discovery section */}
+            <NabuSurface as="section">
               <div className="border-b border-zinc-100 p-6 dark:border-zinc-800">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                  <div>
-                    <p className="text-sm font-medium uppercase tracking-wide text-blue-600 dark:text-blue-400">
-                      Discovery inbox
-                    </p>
-                    <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
-                      {counts.inbox} candidates waiting
-                    </h2>
-                    <p className="mt-2 max-w-2xl text-sm text-zinc-600 dark:text-zinc-400">
-                      New albums, compilations, and playlists from the Sonos music discovery pipeline.
-                    </p>
-                  </div>
-                  <Link
-                    href="/music/discovery"
-                    className="inline-flex items-center justify-center rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-800 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800"
-                  >
-                    Open full discovery →
-                  </Link>
-                </div>
+                <NabuSectionHeader
+                  eyebrow="Discovery inbox"
+                  title={`${counts.inbox} candidates waiting`}
+                  description="New albums, compilations, and playlists from the Sonos music discovery pipeline."
+                  action={
+                    <NabuLinkButton href="/music/discovery" tone="secondary" size="sm">
+                      Open full discovery →
+                    </NabuLinkButton>
+                  }
+                />
 
                 <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  {([
-                    ["Inbox", counts.inbox],
-                    ["Trial", counts.trial],
-                    ["Promoted", counts.promoted],
-                    ["Rejected", counts.rejected],
-                  ] as const).map(([label, value]) => (
-                    <div
-                      key={label}
-                      className="rounded-2xl bg-zinc-50 p-4 dark:bg-zinc-950"
-                    >
-                      <p className="text-xs text-zinc-500 dark:text-zinc-500">{label}</p>
-                      <p className="mt-1 text-2xl font-semibold text-zinc-950 dark:text-zinc-50">
-                        {value}
-                      </p>
-                    </div>
-                  ))}
+                  <NabuStat label="Inbox" value={counts.inbox} tone="blue" />
+                  <NabuStat label="Trial" value={counts.trial} tone="amber" />
+                  <NabuStat label="Promoted" value={counts.promoted} tone="green" />
+                  <NabuStat label="Rejected" value={counts.rejected} tone="stone" />
                 </div>
               </div>
 
               <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
                 {inbox.length === 0 ? (
-                  <div className="p-6 text-sm text-zinc-500 dark:text-zinc-400">
+                  <p className="p-6 text-sm text-tertiary">
                     No discovery candidates waiting right now.
-                  </div>
+                  </p>
                 ) : (
                   inbox.map((candidate) => (
                     <article
@@ -267,31 +243,30 @@ export default function MusicPage() {
                     >
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="font-medium text-zinc-950 dark:text-zinc-50">
+                          <h3 className="font-medium text-primary">
                             {candidate.name}
                           </h3>
-                          <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
-                            {typeLabel(candidate.type)}
-                          </span>
+                          <NabuBadge tone="stone">{typeLabel(candidate.type)}</NabuBadge>
                           {candidate.score != null && (
-                            <span className="rounded-full bg-blue-50 px-2 py-0.5 text-xs text-blue-700 dark:bg-blue-950 dark:text-blue-300">
-                              {candidate.score}
-                            </span>
+                            <NabuBadge tone="blue">{candidate.score}</NabuBadge>
                           )}
                         </div>
-                        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+                        <p className="mt-1 text-sm text-tertiary">
                           {[candidate.artist, candidate.genres?.join(" · "), candidate.lane]
                             .filter(Boolean)
                             .join(" · ")}
                         </p>
                         {candidate.reasons && (
-                          <p className="mt-1 line-clamp-2 text-sm text-zinc-600 dark:text-zinc-400">
+                          <p className="mt-1 line-clamp-2 text-sm text-tertiary">
                             {candidate.reasons}
                           </p>
                         )}
                       </div>
                       <div className="flex shrink-0 items-center gap-2">
-                        <button
+                        <NabuButton
+                          tone="primary"
+                          size="sm"
+                          disabled={busy === `discovery-${candidate.id}-try`}
                           onClick={() =>
                             postAction(
                               `discovery-${candidate.id}-try`,
@@ -300,12 +275,13 @@ export default function MusicPage() {
                               "Added to trial"
                             )
                           }
-                          disabled={busy === `discovery-${candidate.id}-try`}
-                          className="rounded-full bg-zinc-950 px-3 py-1.5 text-sm text-white hover:bg-zinc-800 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-white"
                         >
                           Try
-                        </button>
-                        <button
+                        </NabuButton>
+                        <NabuButton
+                          tone="ghost"
+                          size="sm"
+                          disabled={busy === `discovery-${candidate.id}-reject`}
                           onClick={() =>
                             postAction(
                               `discovery-${candidate.id}-reject`,
@@ -314,27 +290,19 @@ export default function MusicPage() {
                               "Rejected"
                             )
                           }
-                          disabled={busy === `discovery-${candidate.id}-reject`}
-                          className="rounded-full border border-zinc-300 px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
                         >
                           Reject
-                        </button>
+                        </NabuButton>
                       </div>
                     </article>
                   ))
                 )}
               </div>
-            </section>
+            </NabuSurface>
 
+            {/* Rooms section */}
             <section className="space-y-3">
-              <div>
-                <p className="text-sm font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-500">
-                  Rooms
-                </p>
-                <h2 className="mt-1 text-2xl font-semibold text-zinc-950 dark:text-zinc-50">
-                  Playing now
-                </h2>
-              </div>
+              <NabuSectionHeader eyebrow="Rooms" title="Playing now" />
 
               <div className="space-y-3">
                 {orderedRooms.map((room) => {
@@ -344,25 +312,16 @@ export default function MusicPage() {
                   const hasTrack = Boolean(now?.track);
 
                   return (
-                    <article
-                      key={room.room}
-                      className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"
-                    >
+                    <NabuCard key={room.room}>
                       <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center justify-between gap-3">
-                            <h3 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
+                            <h3 className="text-lg font-semibold text-primary">
                               {room.room}
                             </h3>
-                            <span
-                              className={`rounded-full px-2.5 py-1 text-xs font-medium ${
-                                isPlaying
-                                  ? "bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
-                                  : "bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400"
-                              }`}
-                            >
+                            <NabuBadge tone={isPlaying ? "green" : "stone"}>
                               {statusLabel(now?.state)}
-                            </span>
+                            </NabuBadge>
                           </div>
 
                           <div className="mt-4 flex gap-4">
@@ -378,23 +337,21 @@ export default function MusicPage() {
                               </div>
                             )}
                             <div className="min-w-0">
-                              <p className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-500">
-                                Playing now
-                              </p>
+                              <NabuKicker>Playing now</NabuKicker>
                               {hasTrack ? (
                                 <>
-                                  <p className="mt-1 truncate font-medium text-zinc-950 dark:text-zinc-50">
+                                  <p className="mt-1 truncate font-medium text-primary">
                                     {now?.track}
                                   </p>
-                                  <p className="truncate text-sm text-zinc-600 dark:text-zinc-400">
+                                  <p className="truncate text-sm text-tertiary">
                                     {now?.artist || "Unknown artist"}
                                   </p>
-                                  <p className="truncate text-sm text-zinc-500 dark:text-zinc-500">
+                                  <p className="truncate text-sm text-quaternary">
                                     {now?.album || "Unknown album"}
                                   </p>
                                 </>
                               ) : (
-                                <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+                                <p className="mt-1 text-sm text-tertiary">
                                   Nothing live from Sonos right now.
                                 </p>
                               )}
@@ -403,7 +360,10 @@ export default function MusicPage() {
 
                           {hasTrack && now && (
                             <div className="mt-4 flex flex-wrap items-center gap-2">
-                              <button
+                              <NabuButton
+                                tone="secondary"
+                                size="sm"
+                                disabled={busy === `${room.room}-track-love`}
                                 onClick={() =>
                                   postAction(
                                     `${room.room}-track-love`,
@@ -417,12 +377,13 @@ export default function MusicPage() {
                                     "Loved track"
                                   )
                                 }
-                                disabled={busy === `${room.room}-track-love`}
-                                className="rounded-full border border-zinc-300 px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
                               >
                                 ♥ Love track
-                              </button>
-                              <button
+                              </NabuButton>
+                              <NabuButton
+                                tone="secondary"
+                                size="sm"
+                                disabled={busy === `${room.room}-resume-room`}
                                 onClick={() =>
                                   postAction(
                                     `${room.room}-resume-room`,
@@ -431,36 +392,44 @@ export default function MusicPage() {
                                     `Resumed in ${room.room}`
                                   )
                                 }
-                                disabled={busy === `${room.room}-resume-room`}
-                                className="rounded-full border border-zinc-300 px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
                               >
                                 Resume room
-                              </button>
+                              </NabuButton>
                             </div>
                           )}
                         </div>
 
-                        <div className="w-full rounded-2xl bg-zinc-50 p-4 dark:bg-zinc-950 lg:max-w-sm">
-                          <p className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-500">
-                            Last playlist / album
-                          </p>
+                        <NabuSurface
+                          tone="muted"
+                          as="div"
+                          className="w-full p-4 lg:max-w-sm"
+                        >
+                          <NabuKicker>Last playlist / album</NabuKicker>
                           {last ? (
                             <>
-                              <p className="mt-2 font-medium text-zinc-950 dark:text-zinc-50">
+                              <p className="mt-2 font-medium text-primary">
                                 {last.name}
                               </p>
-                              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+                              <p className="mt-1 text-sm text-tertiary">
                                 {typeLabel(last.type)} · {formatDate(last.lastPlayed)}
                               </p>
                               {last.lastTrack?.title && (
-                                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                                  Last track: {last.lastTrack.artist ? `${last.lastTrack.artist} — ` : ""}
+                                <p className="mt-2 text-sm text-tertiary">
+                                  Last track:{" "}
+                                  {last.lastTrack.artist
+                                    ? `${last.lastTrack.artist} — `
+                                    : ""}
                                   {last.lastTrack.title}
-                                  {last.lastTrack.trackNo ? ` (#${last.lastTrack.trackNo})` : ""}
+                                  {last.lastTrack.trackNo
+                                    ? ` (#${last.lastTrack.trackNo})`
+                                    : ""}
                                 </p>
                               )}
                               <div className="mt-4 flex flex-wrap gap-2">
-                                <button
+                                <NabuButton
+                                  tone="primary"
+                                  size="sm"
+                                  disabled={busy === `${room.room}-play-again`}
                                   onClick={() =>
                                     postAction(
                                       `${room.room}-play-again`,
@@ -469,12 +438,13 @@ export default function MusicPage() {
                                       `Playing ${last.name}`
                                     )
                                   }
-                                  disabled={busy === `${room.room}-play-again`}
-                                  className="rounded-full bg-zinc-950 px-3 py-1.5 text-sm text-white hover:bg-zinc-800 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-white"
                                 >
                                   Play again
-                                </button>
-                                <button
+                                </NabuButton>
+                                <NabuButton
+                                  tone="secondary"
+                                  size="sm"
+                                  disabled={busy === `${room.room}-resume`}
                                   onClick={() =>
                                     postAction(
                                       `${room.room}-resume`,
@@ -483,12 +453,13 @@ export default function MusicPage() {
                                       `Resuming ${last.name}`
                                     )
                                   }
-                                  disabled={busy === `${room.room}-resume`}
-                                  className="rounded-full border border-zinc-300 px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
                                 >
                                   Resume
-                                </button>
-                                <button
+                                </NabuButton>
+                                <NabuButton
+                                  tone="ghost"
+                                  size="sm"
+                                  disabled={busy === `${room.room}-playlist-love`}
                                   onClick={() =>
                                     postAction(
                                       `${room.room}-playlist-love`,
@@ -497,12 +468,13 @@ export default function MusicPage() {
                                       "Marked as loved"
                                     )
                                   }
-                                  disabled={busy === `${room.room}-playlist-love`}
-                                  className="rounded-full border border-zinc-300 px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
                                 >
                                   👍
-                                </button>
-                                <button
+                                </NabuButton>
+                                <NabuButton
+                                  tone="ghost"
+                                  size="sm"
+                                  disabled={busy === `${room.room}-playlist-skip`}
                                   onClick={() =>
                                     postAction(
                                       `${room.room}-playlist-skip`,
@@ -511,28 +483,26 @@ export default function MusicPage() {
                                       "Marked as skip"
                                     )
                                   }
-                                  disabled={busy === `${room.room}-playlist-skip`}
-                                  className="rounded-full border border-zinc-300 px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
                                 >
                                   👎
-                                </button>
+                                </NabuButton>
                               </div>
                             </>
                           ) : (
-                            <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+                            <p className="mt-2 text-sm text-tertiary">
                               No durable play history for this room yet.
                             </p>
                           )}
-                        </div>
+                        </NabuSurface>
                       </div>
-                    </article>
+                    </NabuCard>
                   );
                 })}
               </div>
             </section>
-          </>
+          </div>
         )}
-      </main>
-    </div>
+      </NabuMain>
+    </NabuPageShell>
   );
 }
