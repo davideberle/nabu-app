@@ -15,11 +15,11 @@ https://app.davideberle.com.
 
 | Module   | Status | Notes |
 |----------|--------|-------|
-| Todos    | Live   | Full CRUD, Turso-backed |
+| Todos    | Live   | Full CRUD, Turso-backed. UI polished with Nabu/Untitled wrapper in `57ae11d8`. |
 | Recipes  | Live   | ~3,527 cookbook recipes (static JSON, classified by meal_role) + My Recipes (Turso), with cook history shown on recipe pages |
 | Meals    | Live   | Weekly meal planner (Phases 1–3 done: 7-day week, quality-gated candidates, ISO week nav + history). Phase 4 active: day expansion, side/serve-with, UX polish. Turso-backed |
 | Cooking  | Live   | Live cooking session, auto-loaded from meal plan, with session sync and coach cards |
-| Music    | Live   | Sonos zone control |
+| Music    | Live   | Sonos zone control + discovery review. UI polished with Nabu/Untitled wrapper in `57ae11d8`. |
 | Shopping | Stub   | Lists placeholder |
 | System   | Stub   | Status placeholder |
 
@@ -29,3 +29,10 @@ https://app.davideberle.com.
 - `TURSO_AUTH_TOKEN` — Turso auth token
 - `AUTH_SECRET` — NextAuth secret
 - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` — Google OAuth credentials
+## Current UI refresh status
+
+- Untitled UI/Nabu wrapper foundation is live.
+- Dashboard, Meals, and Cooking polish shipped in `dab49fac`.
+- Todos, Music, and Music Discovery polish shipped in `57ae11d8`.
+- Remaining Untitled/Nabu rollout candidates: Recipes index/detail/cookbook/category pages, Login, Shopping, and System. Recipes are the next high-value slice.
+
