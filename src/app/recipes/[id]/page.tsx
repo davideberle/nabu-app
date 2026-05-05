@@ -4,6 +4,7 @@ import { getRecipe, getAllRecipes, getCourseTags, formatServings, isLowCalorie, 
 import { getCourseTagColor, normalizeTagLabel, PUBLICATION_BADGE_CLASSES } from "@/lib/tag-colors";
 import BackButton from "@/components/BackButton";
 import CookingHistory from "@/components/CookingHistory";
+import { NabuPageShell, NabuBadge, NabuKicker, cn } from "@/components/ui/nabu";
 
 export const revalidate = 60;
 
@@ -117,7 +118,7 @@ export default async function RecipePage({
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950">
+    <NabuPageShell>
       {/* Back button — returns to previous page (cookbook, search, etc.) or /recipes for direct links */}
       <div className="fixed top-4 left-4 z-10">
         <BackButton />
@@ -142,26 +143,24 @@ export default async function RecipePage({
         <div className="h-20" />
       )}
 
-      <main className={`relative max-w-2xl mx-auto px-4 pb-16 ${recipe.image ? '-mt-24' : 'pt-4'}`}>
-        <article className="bg-white dark:bg-stone-900 rounded-2xl shadow-2xl overflow-hidden">
+      <main className={cn("relative max-w-2xl mx-auto px-4 pb-16", recipe.image ? "-mt-24" : "pt-4")}>
+        <article className="bg-primary border border-primary rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
           <header className="px-8 pt-10 pb-6">
             {/* Source line with cuisine */}
             {recipe.source && (
               <div className="mb-4 space-y-2">
-                <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500">
+                <p className="text-xs tracking-widest uppercase text-quaternary">
                   {(() => {
                     const cuisine = recipe.cuisine
                       ? (Array.isArray(recipe.cuisine) ? recipe.cuisine[0] : recipe.cuisine)
                       : getCuisineFromCookbook(recipe.source!.cookbook);
-                    return cuisine && <span className="text-stone-600 dark:text-stone-300">{cuisine} · </span>;
+                    return cuisine && <span className="text-secondary">{cuisine} · </span>;
                   })()}
                   {recipe.source.author ? `${recipe.source.author} — ` : ''}{recipe.source.cookbook}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-200">
-                    {recipe.source.cookbook}
-                  </span>
+                  <NabuBadge tone="stone">{recipe.source.cookbook}</NabuBadge>
                   {recipe.source.publication && (
                     <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${PUBLICATION_BADGE_CLASSES}`}>
                       {recipe.source.publication}
@@ -171,7 +170,7 @@ export default async function RecipePage({
               </div>
             )}
 
-            <h1 className="text-3xl md:text-4xl font-serif text-stone-800 dark:text-stone-100 leading-tight tracking-tight">
+            <h1 className="text-3xl md:text-4xl font-serif text-primary leading-tight tracking-tight">
               {recipe.name}
             </h1>
 
@@ -181,7 +180,7 @@ export default async function RecipePage({
               {getCourseTags(recipe).map((type) => (
                 <span
                   key={type}
-                  className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border border-transparent ${getCourseTagColor(type)}`}
+                  className={cn("inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border border-transparent", getCourseTagColor(type))}
                 >
                   {normalizeTagLabel(type)}
                 </span>
@@ -190,7 +189,7 @@ export default async function RecipePage({
               {/* Cooking time */}
               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               {formatTime(recipe.time as any) && (
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300">
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-secondary border border-secondary text-secondary">
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -201,7 +200,7 @@ export default async function RecipePage({
 
               {/* Servings */}
               {recipe.servings && (
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300">
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-secondary border border-secondary text-secondary">
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -213,45 +212,39 @@ export default async function RecipePage({
               {(() => {
                 const role = getMealRole(recipe);
                 return role && !getCourseTags(recipe).some(t => t.toLowerCase() === role.toLowerCase()) && (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sky-50 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
-                    {capitalize(role)}
-                  </span>
+                  <NabuBadge tone="blue">{capitalize(role)}</NabuBadge>
                 );
               })()}
 
               {/* Low calorie */}
               {isLowCalorie(recipe) && (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-300 border border-green-200 dark:border-green-800">
-                  Low calorie
-                </span>
+                <NabuBadge tone="green">Low calorie</NabuBadge>
               )}
             </div>
           </header>
 
           {/* Decorative divider */}
           <div className="flex items-center justify-center py-2">
-            <div className="w-16 h-px bg-stone-200 dark:bg-stone-700" />
+            <div className="w-16 h-px bg-secondary" />
           </div>
 
           {/* Introduction */}
           {(recipe.introduction || recipe.intro) && (
             <section className="px-8 py-6">
-              <p className="text-stone-600 dark:text-stone-400 font-serif text-lg leading-relaxed whitespace-pre-line">
+              <p className="text-secondary font-serif text-lg leading-relaxed whitespace-pre-line">
                 {recipe.introduction || recipe.intro}
               </p>
             </section>
           )}
 
           {/* Ingredients */}
-          <section className="px-8 py-8 bg-[#faf9f7] dark:bg-stone-800/30">
-            <h2 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-6">
-              Ingredients
-            </h2>
+          <section className="px-8 py-8 bg-secondary border-t border-secondary">
+            <NabuKicker>Ingredients</NabuKicker>
 
             {ingredientGroups.map((group, groupIndex) => (
-              <div key={groupIndex} className={groupIndex > 0 ? "mt-6" : ""}>
+              <div key={groupIndex} className={groupIndex > 0 ? "mt-6" : "mt-5"}>
                 {group.name && (
-                  <h3 className="text-sm font-medium text-stone-700 dark:text-stone-300 mb-3 pb-1 border-b border-stone-200 dark:border-stone-700">
+                  <h3 className="text-sm font-medium text-primary mb-3 pb-1 border-b border-secondary">
                     {group.name}
                   </h3>
                 )}
@@ -263,10 +256,10 @@ export default async function RecipePage({
                         key={i}
                         className="flex justify-between items-baseline"
                       >
-                        <span className="text-stone-700 dark:text-stone-300">
+                        <span className="text-primary">
                           {capitalize(norm.item)}
                         </span>
-                        <span className="text-stone-400 dark:text-stone-500 text-sm ml-4 tabular-nums">
+                        <span className="text-tertiary text-sm ml-4 tabular-nums">
                           {norm.amount}{ing.unit && ` ${ing.unit}`}
                         </span>
                       </li>
@@ -278,17 +271,15 @@ export default async function RecipePage({
           </section>
 
           {/* Method */}
-          <section className="px-8 py-8">
-            <h2 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-6">
-              Method
-            </h2>
-            <ol className="space-y-6">
+          <section className="px-8 py-8 border-t border-secondary">
+            <NabuKicker>Method</NabuKicker>
+            <ol className="mt-5 space-y-6">
               {recipe.method.map((step, i) => (
                 <li key={i} className="flex gap-5">
-                  <span className="flex-shrink-0 text-2xl font-serif text-stone-300 dark:text-stone-600 leading-none pt-1">
+                  <span className="flex-shrink-0 text-2xl font-serif text-quaternary leading-none pt-1">
                     {i + 1}
                   </span>
-                  <p className="text-stone-600 dark:text-stone-400 leading-relaxed">
+                  <p className="text-secondary leading-relaxed">
                     {step}
                   </p>
                 </li>
@@ -298,11 +289,9 @@ export default async function RecipePage({
 
           {/* Notes/Tips */}
           {recipe.tips && (
-            <section className="px-8 py-6 bg-amber-50/50 dark:bg-amber-900/10 border-t border-amber-100 dark:border-amber-900/20">
-              <h2 className="text-xs tracking-widest uppercase text-amber-600 dark:text-amber-400 mb-3">
-                Notes
-              </h2>
-              <p className="text-stone-600 dark:text-stone-400 text-sm leading-relaxed whitespace-pre-line">
+            <section className="px-8 py-6 bg-utility-orange-50/70 dark:bg-utility-orange-950/20 border-t border-utility-orange-200 dark:border-utility-orange-700/60">
+              <NabuKicker>Notes</NabuKicker>
+              <p className="mt-3 text-secondary text-sm leading-relaxed whitespace-pre-line">
                 {recipe.tips}
               </p>
             </section>
@@ -310,8 +299,8 @@ export default async function RecipePage({
 
           {/* Serving suggestions */}
           {recipe.serving && (
-            <section className="px-8 py-5 border-t border-stone-100 dark:border-stone-800">
-              <p className="text-sm text-stone-500 dark:text-stone-400 italic">
+            <section className="px-8 py-5 border-t border-secondary">
+              <p className="text-sm text-tertiary italic">
                 {recipe.serving}
               </p>
             </section>
@@ -319,13 +308,13 @@ export default async function RecipePage({
 
           {/* Related recipes */}
           {recipe.related_recipes && recipe.related_recipes.length > 0 && (
-            <section className="px-8 py-4 border-t border-stone-100 dark:border-stone-800">
-              <p className="text-xs text-stone-400 dark:text-stone-500">
+            <section className="px-8 py-4 border-t border-secondary">
+              <p className="text-xs text-tertiary">
                 See also:{" "}
                 {recipe.related_recipes.map((rel, i) => (
                   <span key={i}>
                     {i > 0 && ", "}
-                    <span className="text-stone-600 dark:text-stone-400">{rel.name}</span>
+                    <span className="text-secondary">{rel.name}</span>
                   </span>
                 ))}
               </p>
@@ -336,24 +325,20 @@ export default async function RecipePage({
           {(() => {
             const dietary = recipe.dietary || recipe.tags?.dietary || [];
             return dietary.length > 0 && (
-            <footer className="px-8 py-4 bg-[#faf9f7] dark:bg-stone-800/30 border-t border-stone-100 dark:border-stone-800">
-              <div className="flex gap-3">
-                {dietary.map((tag: string) => (
-                  <span
-                    key={tag}
-                    className="text-xs text-stone-400 dark:text-stone-500"
-                  >
-                    {capitalize(tag)}
-                  </span>
-                ))}
-              </div>
-            </footer>
-          )})()}
+              <footer className="px-8 py-4 bg-secondary border-t border-secondary">
+                <div className="flex flex-wrap gap-2">
+                  {dietary.map((tag: string) => (
+                    <NabuBadge key={tag} tone="stone">{capitalize(tag)}</NabuBadge>
+                  ))}
+                </div>
+              </footer>
+            );
+          })()}
 
           {/* Cooking history — loaded client-side so static recipe prerender never depends on Turso. */}
           <CookingHistory recipeId={recipe.id} />
         </article>
       </main>
-    </div>
+    </NabuPageShell>
   );
 }

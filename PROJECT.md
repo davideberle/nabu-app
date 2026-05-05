@@ -34,5 +34,6 @@ https://app.davideberle.com.
 - Untitled UI/Nabu wrapper foundation is live.
 - Dashboard, Meals, and Cooking polish shipped in `dab49fac`.
 - Todos, Music, and Music Discovery polish shipped in `57ae11d8`.
-- Remaining Untitled/Nabu rollout candidates: Recipes index/detail/cookbook/category pages, Login, Shopping, and System. Recipes are the next high-value slice.
+- Recipes index, detail, and cookbooks polish shipped (NabuPageShell/NabuHeader/NabuMain/NabuCard/NabuBadge applied; editorial hero preserved).
+- Remaining Untitled/Nabu rollout candidates: Cookbook/cuisine/dietary sub-pages, Login, Shopping, and System.
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllRecipes, getCookbooks, getCuisines, getDietaryOptions, getDietary, getCourseTags } from "@/lib/recipes";
 import { getCourseTagColor, normalizeTagLabel } from "@/lib/tag-colors";
+import { NabuPageShell, NabuHeader, NabuMain, NabuSectionHeader, NabuCard, NabuBadge, NabuLinkButton, cn } from "@/components/ui/nabu";
 
 export const revalidate = 60;
 
@@ -16,29 +17,15 @@ export default async function RecipesPage() {
   const featuredRecipes = recipesWithImages.slice(0, 9);
 
   return (
-    <div className="min-h-screen bg-[#f8f6f3] dark:bg-stone-950 pb-20">
-      <header className="border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900">
-        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center gap-4">
-          <Link
-            href="/"
-            className="text-stone-400 hover:text-stone-600 dark:text-stone-500 dark:hover:text-stone-300"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
-            </svg>
-          </Link>
-          <div>
-            <h1 className="text-xl font-serif text-stone-800 dark:text-stone-100">
-              Recipes
-            </h1>
-            <p className="text-xs text-stone-400 dark:text-stone-500">
-              {recipes.length} recipes · {cookbooks.length} cookbooks
-            </p>
-          </div>
-        </div>
-      </header>
+    <NabuPageShell>
+      <NabuHeader
+        title="Recipes"
+        subtitle={`${recipes.length} recipes · ${cookbooks.length} cookbooks`}
+        backHref="/"
+        maxWidth="5xl"
+      />
 
-      <main className="max-w-5xl mx-auto px-4 py-6">
+      <NabuMain maxWidth="5xl">
         {/* Hero mosaic — 2 large + 2 small featured recipes */}
         {featuredRecipes.length >= 4 && (
           <section className="mb-10">
@@ -97,12 +84,9 @@ export default async function RecipesPage() {
         )}
 
         {/* My Recipes quick access */}
-        <Link
-          href="/recipes/cookbook/my-recipes"
-          className="group block mb-8 rounded-xl overflow-hidden bg-white dark:bg-stone-900 shadow-sm hover:shadow-md transition-shadow"
-        >
+        <NabuCard href="/recipes/cookbook/my-recipes" className="p-0 mb-8">
           <div className="flex items-stretch">
-            <div className="relative w-28 sm:w-36 shrink-0">
+            <div className="relative w-28 sm:w-36 shrink-0 overflow-hidden">
               <Image
                 src="/cookbooks/my-recipes-cover.jpg"
                 alt="My Recipes"
@@ -111,21 +95,19 @@ export default async function RecipesPage() {
               />
             </div>
             <div className="flex flex-col justify-center px-5 py-4">
-              <h2 className="font-serif text-lg text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300">
-                My Recipes
-              </h2>
-              <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+              <h2 className="font-serif text-lg text-primary leading-snug">My Recipes</h2>
+              <p className="text-xs text-tertiary mt-1">
                 Your personal collection · {cookbooks.find(c => c.slug === 'my-recipes')?.count ?? 0} recipes
               </p>
             </div>
           </div>
-        </Link>
+        </NabuCard>
 
         {/* Quick filter pills */}
         <div className="flex gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4">
           <Link
             href="/recipes"
-            className="text-xs px-4 py-2 bg-stone-800 dark:bg-stone-200 text-white dark:text-stone-900 rounded-full whitespace-nowrap font-medium"
+            className="text-xs px-4 py-2 bg-primary border border-primary text-primary rounded-full whitespace-nowrap font-medium shadow-xs hover:bg-primary_hover transition-colors"
           >
             All ({recipes.length})
           </Link>
@@ -133,7 +115,7 @@ export default async function RecipesPage() {
             <Link
               key={d.slug}
               href={`/recipes/dietary/${d.slug}`}
-              className="text-xs px-4 py-2 bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 rounded-full whitespace-nowrap hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
+              className="text-xs px-4 py-2 bg-secondary border border-secondary text-secondary rounded-full whitespace-nowrap hover:bg-secondary_hover transition-colors"
             >
               {d.name} ({d.count})
             </Link>
@@ -142,7 +124,7 @@ export default async function RecipesPage() {
             <Link
               key={c.slug}
               href={`/recipes/cuisine/${c.slug}`}
-              className="text-xs px-4 py-2 bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 rounded-full whitespace-nowrap hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
+              className="text-xs px-4 py-2 bg-secondary border border-secondary text-secondary rounded-full whitespace-nowrap hover:bg-secondary_hover transition-colors"
             >
               {c.name} ({c.count})
             </Link>
@@ -151,14 +133,11 @@ export default async function RecipesPage() {
 
         {/* Browse by Cookbook */}
         <section className="mb-10">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400">
-              Browse by Cookbook
-            </h2>
-            <Link href="/recipes/cookbooks" className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-300">
-              View all →
-            </Link>
-          </div>
+          <NabuSectionHeader
+            eyebrow="Browse by Cookbook"
+            action={<NabuLinkButton href="/recipes/cookbooks" tone="ghost" size="sm">View all →</NabuLinkButton>}
+            className="mb-4"
+          />
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
             {cookbooks.slice(0, 6).map((cookbook) => (
               <Link
@@ -166,7 +145,7 @@ export default async function RecipesPage() {
                 href={`/recipes/cookbook/${cookbook.slug}`}
                 className="group"
               >
-                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-stone-200 dark:bg-stone-800 shadow-sm group-hover:shadow-md transition-shadow">
+                <div className="relative aspect-[3/4] rounded-xl overflow-hidden border border-primary bg-secondary shadow-xs group-hover:shadow-md transition-shadow">
                   {cookbook.cover ? (
                     <Image
                       src={cookbook.cover}
@@ -177,13 +156,13 @@ export default async function RecipesPage() {
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center p-2">
-                      <span className="text-center font-serif text-stone-500 dark:text-stone-400 text-[10px] leading-tight">
+                      <span className="text-center font-serif text-quaternary text-[10px] leading-tight">
                         {cookbook.name}
                       </span>
                     </div>
                   )}
                 </div>
-                <p className="text-[10px] text-stone-500 dark:text-stone-400 mt-1.5 text-center truncate">
+                <p className="text-[10px] text-tertiary mt-1.5 text-center truncate">
                   {cookbook.count} recipes
                 </p>
               </Link>
@@ -193,18 +172,16 @@ export default async function RecipesPage() {
 
         {/* Browse by Cuisine */}
         <section className="mb-10">
-          <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4">
-            Browse by Cuisine
-          </h2>
+          <NabuSectionHeader eyebrow="Browse by Cuisine" className="mb-4" />
           <div className="flex flex-wrap gap-2">
             {cuisines.map((cuisine) => (
               <Link
                 key={cuisine.slug}
                 href={`/recipes/cuisine/${cuisine.slug}`}
-                className="px-4 py-2 bg-white dark:bg-stone-900 rounded-lg border border-stone-100 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-600 transition-colors text-sm text-stone-700 dark:text-stone-300"
+                className="px-4 py-2 bg-primary border border-primary rounded-xl text-sm text-primary hover:border-secondary_hover transition-colors"
               >
                 {cuisine.name}
-                <span className="ml-2 text-stone-400 dark:text-stone-500">{cuisine.count}</span>
+                <span className="ml-2 text-quaternary">{cuisine.count}</span>
               </Link>
             ))}
           </div>
@@ -212,18 +189,16 @@ export default async function RecipesPage() {
 
         {/* Browse by Dietary */}
         <section className="mb-10">
-          <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4">
-            Dietary
-          </h2>
+          <NabuSectionHeader eyebrow="Dietary" className="mb-4" />
           <div className="flex flex-wrap gap-2">
             {dietaryOptions.map((d) => (
               <Link
                 key={d.slug}
                 href={`/recipes/dietary/${d.slug}`}
-                className="px-4 py-2 bg-white dark:bg-stone-900 rounded-lg border border-stone-100 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-600 transition-colors text-sm text-stone-700 dark:text-stone-300"
+                className="px-4 py-2 bg-primary border border-primary rounded-xl text-sm text-primary hover:border-secondary_hover transition-colors"
               >
                 {d.name}
-                <span className="ml-2 text-stone-400 dark:text-stone-500">{d.count}</span>
+                <span className="ml-2 text-quaternary">{d.count}</span>
               </Link>
             ))}
           </div>
@@ -231,19 +206,13 @@ export default async function RecipesPage() {
 
         {/* More to explore — editorial recipe cards */}
         <section>
-          <h2 className="text-sm font-medium tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-5">
-            More to explore
-          </h2>
+          <NabuSectionHeader eyebrow="More to explore" className="mb-5" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {featuredRecipes.slice(3, 9).map((recipe) => {
               const dietary = getDietary(recipe);
               const courseTags = getCourseTags(recipe);
               return (
-                <Link
-                  key={recipe.id}
-                  href={`/recipes/${recipe.id}`}
-                  className="group rounded-xl bg-white dark:bg-stone-900 shadow-sm hover:shadow-md transition-all overflow-hidden"
-                >
+                <NabuCard key={recipe.id} href={`/recipes/${recipe.id}`} className="p-0">
                   {recipe.image && (
                     <div className="relative aspect-[4/3] w-full overflow-hidden">
                       <Image
@@ -256,10 +225,10 @@ export default async function RecipesPage() {
                     </div>
                   )}
                   <div className="p-4">
-                    <h3 className="font-serif text-[15px] text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 leading-snug line-clamp-2">
+                    <h3 className="font-serif text-[15px] text-primary leading-snug line-clamp-2">
                       {recipe.name}
                     </h3>
-                    <p className="text-xs text-stone-400 dark:text-stone-500 mt-1.5">
+                    <p className="text-xs text-tertiary mt-1.5">
                       {recipe.source?.cookbook}
                     </p>
                     {(courseTags.length > 0 || dietary.length > 0) && (
@@ -267,28 +236,23 @@ export default async function RecipesPage() {
                         {courseTags.slice(0, 1).map((tag) => (
                           <span
                             key={tag}
-                            className={`text-[10px] px-2 py-0.5 rounded-full ${getCourseTagColor(tag)}`}
+                            className={cn("text-[10px] px-2 py-0.5 rounded-full", getCourseTagColor(tag))}
                           >
                             {normalizeTagLabel(tag)}
                           </span>
                         ))}
                         {dietary.slice(0, 1).map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-[10px] px-2 py-0.5 bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 rounded-full"
-                          >
-                            {tag}
-                          </span>
+                          <NabuBadge key={tag} tone="stone">{tag}</NabuBadge>
                         ))}
                       </div>
                     )}
                   </div>
-                </Link>
+                </NabuCard>
               );
             })}
           </div>
         </section>
-      </main>
-    </div>
+      </NabuMain>
+    </NabuPageShell>
   );
 }
