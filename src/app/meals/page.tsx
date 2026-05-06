@@ -1879,7 +1879,10 @@ function QuickViewModal({
                 </h3>
                 <ul className="space-y-1.5">
                   {recipe.ingredients.map((ing, idx) => {
-                    const norm = normalizeIngredient(ing.amount, ing.item);
+                    const norm = normalizeIngredient(
+                      ing.unit ? `${ing.amount} ${ing.unit}` : ing.amount,
+                      ing.item,
+                    );
                     return (
                       <li
                         key={idx}
@@ -1887,7 +1890,7 @@ function QuickViewModal({
                       >
                         <span>{norm.item}</span>
                         <span className="text-stone-400 dark:text-stone-500 ml-3 tabular-nums shrink-0">
-                          {norm.amount}{ing.unit ? ` ${ing.unit}` : ""}
+                          {norm.amount}
                         </span>
                       </li>
                     );

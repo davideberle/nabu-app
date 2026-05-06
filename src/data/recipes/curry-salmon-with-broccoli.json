@@ -9,7 +9,7 @@
   "servings": "serves 6",
   "ingredients": [
     {
-      "item": "of uncooked long grain white rice",
+      "item": "uncooked long grain white rice",
       "amount": "1 ½ cups"
     },
     {
@@ -34,7 +34,7 @@
     },
     {
       "item": "curry powder",
-      "amount": "2 tsp."
+      "amount": "2 tsp"
     },
     {
       "item": "salmon fillets, bones and skin removed",
@@ -42,17 +42,14 @@
     }
   ],
   "method": [
-    "Preheat an oven to a heat 200°C/400°F. Grease the 9x13-in. baking dish.",
-    "Boil water and rice in a pot. Cover. Lower heat to low. Simmer for 25",
-    "minutes.",
-    "On baking dish’s bottom, put broccoli. In a bowl, mix curry, wine,",
-    "mayonnaise and cream of celery soup. Evenly pour ½ over broccoli. Slice",
-    "salmon to chunks. Put into baking dish. Put leftover soup mixture over.",
-    "In preheated oven, bake for approximately about 45 minutes till fish easily",
-    "flakes with a fork and broccoli is tender. Serve it on cooked rice."
+    "Preheat the oven to 200°C/400°F. Grease a 9 × 13-inch baking dish.",
+    "Bring the water and rice to a boil in a pot. Cover, reduce the heat to low, and simmer for 25 minutes.",
+    "Put the broccoli in the bottom of the prepared baking dish. In a bowl, mix the cream of celery soup, mayonnaise, white wine, and curry powder. Pour half of the mixture evenly over the broccoli.",
+    "Cut the salmon into chunks and arrange it in the baking dish. Pour the remaining soup mixture over the salmon.",
+    "Bake for about 45 minutes, until the fish flakes easily with a fork and the broccoli is tender. Serve over the cooked rice."
   ],
   "time": {
-    "total": 60
+    "total": 70
   },
   "image": "/recipes/curry-salmon-with-broccoli.jpg",
   "category": {

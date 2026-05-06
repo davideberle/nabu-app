@@ -250,7 +250,10 @@ export default async function RecipePage({
                 )}
                 <ul className="space-y-2">
                   {group.items.map((ing, i) => {
-                    const norm = normalizeIngredient(ing.amount, ing.item);
+                    const norm = normalizeIngredient(
+                      ing.unit ? `${ing.amount} ${ing.unit}` : ing.amount,
+                      ing.item,
+                    );
                     return (
                       <li
                         key={i}
@@ -260,7 +263,7 @@ export default async function RecipePage({
                           {capitalize(norm.item)}
                         </span>
                         <span className="text-tertiary text-sm ml-4 tabular-nums">
-                          {norm.amount}{ing.unit && ` ${ing.unit}`}
+                          {norm.amount}
                         </span>
                       </li>
                     );

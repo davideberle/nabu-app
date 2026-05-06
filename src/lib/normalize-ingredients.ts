@@ -15,6 +15,39 @@ const WORD_NUMS: Record<string, number> = {
   eighteen: 18, nineteen: 19, twenty: 20,
 };
 
+/** Normalize common short unit spellings and punctuation for display. */
+function normalizeAmountText(s: string): string {
+  return s
+    .replace(/(^|[\s(])([\d¼½¾⅓⅔⅛][\d\s/¼½¾⅓⅔⅛.,–—-]*?)\s*T\.?($|[\s),;])/g, "$1$2 tbsp$3")
+    .replace(/(^|[\s(])([\d¼½¾⅓⅔⅛][\d\s/¼½¾⅓⅔⅛.,–—-]*?)\s*t\.?($|[\s),;])/g, "$1$2 tsp$3")
+    .replace(/\btbsp\./gi, "tbsp")
+    .replace(/\btsp\./gi, "tsp")
+    .replace(/\b(tbsp|tsp|g|kg|ml|l|oz|lb|cups?)\s+\1\b/gi, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** Normalize imported ingredient item text without changing source meaning. */
+function normalizeItemText(s: string): string {
+  return s
+    .replace(/^of\s+/i, "")
+    .replace(/^(can|cans|tin|tins|jar|jars|bottle|bottles|bag|bags|box|boxes|carton|cartons|container|containers|package|packages|pkg)\s+of\s+/i, "$1 ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isBareCountAmount(s: string): boolean {
+  return /^(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten)$/i.test(s.trim());
+}
+
+function splitLeadingContainer(item: string): { container: string; rest: string } | null {
+  const m = item.match(/^(cans?|tins?|jars?|bottles?|bags?|boxes?|cartons?|containers?|packages?|pkg)\b\s+(.+)/i);
+  if (!m) return null;
+  const rest = m[2].trim();
+  if (!rest) return null;
+  return { container: m[1].toLowerCase(), rest };
+}
+
 /** Try to parse a leading spelled-out number word. Returns [value, rest] or null. */
 function parseWordNum(s: string): [number, string] | null {
   const m = s.match(/^(\w+)\b\s*(.*)/);
@@ -73,8 +106,19 @@ export function normalizeIngredient(
   rawAmount: string,
   rawItem: string,
 ): { amount: string; item: string } {
-  let a = (rawAmount ?? "").trim();
-  let it = (rawItem ?? "").trim();
+  let a = normalizeAmountText((rawAmount ?? "").trim());
+  let it = normalizeItemText((rawItem ?? "").trim());
+
+  // ── 0. If item starts with a container noun and amount is a bare count,
+  //    move the container into amount for cleaner display.
+  //    e.g. amount "1", item "can chopped tomatoes" → "1 can" / "chopped tomatoes"
+  {
+    const leadingContainer = splitLeadingContainer(it);
+    if (leadingContainer && isBareCountAmount(a)) {
+      a = `${a} ${leadingContainer.container}`;
+      it = leadingContainer.rest;
+    }
+  }
 
   // ── 1. If item starts with an imperial unit word, merge it into the amount.
   //    e.g. amount "9", item "ounces dried soba noodles" → "9 ounces" / "dried soba noodles"
@@ -614,6 +658,7 @@ export function normalizeIngredient(
     .replace(/\bmillilitres?\b/gi, "ml")
     .replace(/\blitres?\b/gi, "L")
     .replace(/\bdecilitres?\b/gi, "dl")
+    .replace(/\b(tbsp|tsp|g|kg|ml|l|oz|lb|cups?)\s+\1\b/gi, "$1")
     .replace(/\s+/g, " ")
     .trim();
 

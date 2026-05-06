@@ -66,9 +66,9 @@
     "First, make the dressing. Put all the dressing ingredients in a small bowl, and mix thoroughly until the sugar has dissolved. Taste and season with salt and black pepper as needed. If it needs sweetening, add more sugar; if it needs saltiness, add a little more fish sauce.",
     "Quarter and core the apples, then chop into bite-sized pieces. Put in a bowl with the carrots, cabbage, and sunflower seeds. Toss well. Drizzle with the dressing, and toss to coat. Transfer to a serving dish, and scatter the peanuts over the top."
   ],
-  "image": "/recipes/shredded-carrot-and-cabbage-with-nuts.jpg",
   "time": {
-    "total": 45
+    "prep": 15,
+    "total": 15
   },
   "category": {
     "dish_type": [
