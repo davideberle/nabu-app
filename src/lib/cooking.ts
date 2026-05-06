@@ -5,6 +5,7 @@
 import { getDb } from "./db";
 import { loadMealPlan } from "./meals-persistence";
 import { getRecipe } from "./recipes";
+import { buildCookingGuidance } from "./cooking-guidance";
 import { getISOWeek } from "./meals";
 
 // ---------------------------------------------------------------------------
@@ -64,7 +65,7 @@ export type SessionIngredient = {
 };
 
 export type RelatedRecipe = {
-  kind: "side";
+  kind: "starter" | "side" | "dessert";
   recipeId: string;
   title: string;
 };
@@ -233,19 +234,49 @@ export async function saveCookingSession(
 
   const data = JSON.stringify(updated);
 
+  // Keep writing the legacy columns too: production still has NOT NULL
+  // constraints from the original cooking_sessions schema. The app reads the
+  // canonical JSON `data` field when present, while these columns preserve
+  // compatibility for existing table constraints and older rows.
+  const legacyRecipeData = JSON.stringify({
+    source: {
+      cookbook: updated.anchor.provenance.source,
+      author: updated.anchor.provenance.author,
+    },
+    servings: updated.servings.base,
+    ingredients: updated.ingredients.base,
+    method: updated.method.base,
+  });
+  const completedAt = updated.status === "completed" ? now : null;
+
   await client.execute({
     sql: `INSERT INTO cooking_sessions
-            (id, date, data, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?)
+            (id, date, recipe_id, recipe_name, recipe_data, status, current_step,
+             started_at, completed_at, created_at, serve_with, data, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT(id) DO UPDATE SET
             date = excluded.date,
+            recipe_id = excluded.recipe_id,
+            recipe_name = excluded.recipe_name,
+            recipe_data = excluded.recipe_data,
+            status = excluded.status,
+            completed_at = excluded.completed_at,
+            serve_with = excluded.serve_with,
             data = excluded.data,
             updated_at = excluded.updated_at`,
     args: [
       updated.id,
       updated.date,
-      data,
+      updated.anchor.recipeId ?? updated.id,
+      updated.anchor.title,
+      legacyRecipeData,
+      updated.status,
+      0,
       updated.createdAt,
+      completedAt,
+      updated.createdAt,
+      JSON.stringify(updated.serveWith),
+      data,
       now,
     ],
   });
@@ -430,15 +461,20 @@ export async function createSessionFromPlan(
   const relatedRecipes: RelatedRecipe[] = [];
   if (meal?.sides) {
     for (const side of meal.sides) {
-      relatedRecipes.push({ kind: "side", recipeId: side.id, title: side.name });
+      const rawKind = (side as { kind?: string }).kind;
+      const kind = rawKind === "starter" || rawKind === "dessert" ? rawKind : "side";
+      relatedRecipes.push({ kind, recipeId: side.id, title: side.name });
     }
   }
   const serveWith = meal?.serveWith ?? [];
+  const relatedRecipeRecords = (
+    await Promise.all(relatedRecipes.map((related) => getRecipe(related.recipeId)))
+  ).filter((side): side is NonNullable<typeof side> => !!side);
 
   // Existing meal-plan session: sync plan-derived fields, preserve user edits
   if (existing) {
     const mainChanged = existing.anchor.recipeId !== recipe.id;
-    const synced: CookingSession = {
+    const syncedBase: CookingSession = {
       ...existing,
       anchor: {
         type: anchorType,
@@ -467,12 +503,26 @@ export async function createSessionFromPlan(
         ? { base: recipe.method, session: [] }
         : { base: recipe.method, session: existing.method.session },
     };
+    const guidance = buildCookingGuidance({
+      session: syncedBase,
+      mainRecipe: recipe,
+      sideRecipes: relatedRecipeRecords,
+    });
+    const synced: CookingSession = {
+      ...syncedBase,
+      coachCards: {
+        ...syncedBase.coachCards,
+        nextMove: guidance.mealFlow[0] ?? syncedBase.coachCards.nextMove,
+        upgrade: guidance.mealFlow.at(-1) ?? syncedBase.coachCards.upgrade,
+        wine: guidance.pairing.wine,
+      },
+    };
     await saveCookingSession(synced);
     return synced;
   }
 
   // No existing session — create fresh
-  const session = buildSessionFromRecipe({
+  const sessionBase = buildSessionFromRecipe({
     date,
     recipeId: recipe.id,
     title: recipe.name,
@@ -486,6 +536,20 @@ export async function createSessionFromPlan(
     relatedRecipes,
     serveWith,
   });
+  const guidance = buildCookingGuidance({
+    session: sessionBase,
+    mainRecipe: recipe,
+    sideRecipes: relatedRecipeRecords,
+  });
+  const session: CookingSession = {
+    ...sessionBase,
+    coachCards: {
+      nextMove: guidance.mealFlow[0] ?? null,
+      upgrade: guidance.mealFlow.at(-1) ?? null,
+      shortcut: null,
+      wine: guidance.pairing.wine,
+    },
+  };
 
   await saveCookingSession(session);
   return session;

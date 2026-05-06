@@ -1,9 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
+import { CompleteSessionButton } from "./complete-session-button";
 import { NabuBadge, NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageShell, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
 import { createSessionFromPlan } from "@/lib/cooking";
 import { todayInZurich } from "@/lib/date";
 import type { CookingSession, SessionIngredient, CoachCards } from "@/lib/cooking";
-import { getRecipe } from "@/lib/recipes";
+import { buildCookingGuidance, extractTableSides, formatList, formatRecipeTime } from "@/lib/cooking-guidance";
+import { formatServings, getRecipe } from "@/lib/recipes";
 import type { Recipe } from "@/lib/recipes";
 
 export const dynamic = "force-dynamic";
@@ -13,7 +16,10 @@ export default async function CookingPage() {
   // Auto-load existing session or create one from today's meal plan
   const session = await createSessionFromPlan(date);
 
-  // Load full recipe data for side recipes so we can render ingredients + method
+  // Load full recipe data for the main image/time and for side recipe blocks.
+  const mainRecipe = session?.anchor.recipeId
+    ? await getRecipe(session.anchor.recipeId)
+    : undefined;
   const sideRecipes: Recipe[] = [];
   if (session) {
     const results = await Promise.all(
@@ -39,7 +45,7 @@ export default async function CookingPage() {
 
       <NabuMain maxWidth="3xl" className="space-y-6">
         {session ? (
-          <SessionView session={session} sideRecipes={sideRecipes} />
+          <SessionView session={session} sideRecipes={sideRecipes} mainRecipe={mainRecipe} />
         ) : (
           <EmptyState date={date} />
         )}
@@ -52,7 +58,15 @@ export default async function CookingPage() {
 // Session view
 // ---------------------------------------------------------------------------
 
-function SessionView({ session, sideRecipes }: { session: CookingSession; sideRecipes: Recipe[] }) {
+function SessionView({
+  session,
+  sideRecipes,
+  mainRecipe,
+}: {
+  session: CookingSession;
+  sideRecipes: Recipe[];
+  mainRecipe?: Recipe;
+}) {
   const hasSessionIngredients = session.ingredients.session.length > 0;
   const hasSessionMethod = session.method.session.length > 0;
   const mainIngredients = hasSessionIngredients
@@ -62,34 +76,70 @@ function SessionView({ session, sideRecipes }: { session: CookingSession; sideRe
     ? session.method.session
     : session.method.base;
 
-  const hasSides = sideRecipes.length > 0 || session.serveWith.length > 0;
+  const sideRecipeById = new Map(sideRecipes.map((recipe) => [recipe.id, recipe]));
+  const mealComponents = session.relatedRecipes
+    .map((related) => ({ related, recipe: sideRecipeById.get(related.recipeId) }))
+    .filter((item): item is { related: CookingSession["relatedRecipes"][number]; recipe: Recipe } => !!item.recipe);
+  const tableSides = extractTableSides(mainIngredients, session.serveWith);
+  const guidance = buildCookingGuidance({
+    session,
+    mainRecipe,
+    sideRecipes: mealComponents.map(({ recipe }) => recipe),
+  });
+  const timeLabel = formatRecipeTime(mainRecipe?.time);
+  const hasSides = mealComponents.length > 0 || tableSides.length > 0;
 
   return (
     <>
       {/* ── Meal overview ── */}
       <NabuSurface className="p-5">
-        <NabuSectionHeader eyebrow="Tonight’s meal" title={session.anchor.title} />
+        <NabuSectionHeader
+          eyebrow="Tonight’s meal"
+          title={session.anchor.title}
+          action={
+            <CompleteSessionButton
+              sessionId={session.id}
+              completed={session.status === "completed"}
+            />
+          }
+        />
 
         {hasSides && (
           <p className="mt-2 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
-            {sideRecipes.length > 0 && (
-              <>with {sideRecipes.map((r) => r.name).join(" & ")}</>
+            {mealComponents.length > 0 && (
+              <>with {mealComponents.map(({ recipe }) => recipe.name).join(" & ")}</>
             )}
-            {sideRecipes.length > 0 && session.serveWith.length > 0 && ", "}
-            {session.serveWith.length > 0 && (
+            {mealComponents.length > 0 && tableSides.length > 0 && ", "}
+            {tableSides.length > 0 && (
               <span className="text-stone-400 dark:text-stone-500">
-                {sideRecipes.length === 0 ? "served with " : ""}
-                {session.serveWith.join(", ").toLowerCase()}
+                {mealComponents.length === 0 ? "served with " : ""}
+                {formatList(tableSides).toLowerCase()}
               </span>
             )}
           </p>
         )}
 
+        {mainRecipe?.image && (
+          <div className="mt-4 overflow-hidden rounded-2xl border border-stone-100 bg-stone-100 dark:border-stone-800 dark:bg-stone-900">
+            <Image
+              src={mainRecipe.image}
+              alt={session.anchor.title}
+              width={960}
+              height={540}
+              priority
+              className="aspect-[16/9] w-full object-cover"
+            />
+          </div>
+        )}
+
         <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-stone-500 dark:text-stone-400">
-          <NabuBadge>Serves {session.servings.current}</NabuBadge>
-          {session.servings.current !== session.servings.base && (
-            <NabuBadge tone="amber">base: {session.servings.base}</NabuBadge>
+          {formatServings(session.servings.current) && (
+            <NabuBadge>{formatServings(session.servings.current)}</NabuBadge>
           )}
+          {session.servings.current !== session.servings.base && formatServings(session.servings.base) && (
+            <NabuBadge tone="amber">base: {formatServings(session.servings.base)}</NabuBadge>
+          )}
+          {timeLabel && <NabuBadge tone="blue">{timeLabel}</NabuBadge>}
           <span className="text-xs">
             {session.anchor.provenance.source}
             {session.anchor.provenance.author && (
@@ -99,11 +149,9 @@ function SessionView({ session, sideRecipes }: { session: CookingSession; sideRe
         </div>
 
         {/* Cooking flow — a quick practical sequence */}
-        <CookingFlowNote
-          mainTitle={session.anchor.title}
-          sideRecipes={sideRecipes}
-          serveWith={session.serveWith}
-        />
+        <CookingFlowNote steps={guidance.mealFlow} timeLabel={timeLabel} />
+
+        <PairingSuggestions pairing={guidance.pairing} />
       </NabuSurface>
 
       {/* Coach cards */}
@@ -118,10 +166,10 @@ function SessionView({ session, sideRecipes }: { session: CookingSession; sideRe
         modified={{ ingredients: hasSessionIngredients, method: hasSessionMethod }}
       />
 
-      {sideRecipes.map((recipe) => (
+      {mealComponents.map(({ related, recipe }) => (
         <MealComponentBlock
           key={recipe.id}
-          role="side"
+          role={related.kind}
           title={recipe.name}
           servings={recipe.servings}
           ingredients={recipe.ingredients.map((ing) => ({
@@ -134,11 +182,11 @@ function SessionView({ session, sideRecipes }: { session: CookingSession; sideRe
         />
       ))}
 
-      {session.serveWith.length > 0 && (
+      {tableSides.length > 0 && (
         <NabuSurface tone="muted" className="p-4">
           <NabuKicker>Also on the table</NabuKicker>
           <ul className="mt-2 space-y-1">
-            {session.serveWith.map((item, i) => (
+            {tableSides.map((item, i) => (
               <li key={i} className="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400">
                 <span className="h-1 w-1 shrink-0 rounded-full bg-stone-300 dark:bg-stone-600" />
                 {item}
@@ -233,20 +281,22 @@ function MealComponentBlock({
   method,
   modified,
 }: {
-  role: "main" | "side";
+  role: "main" | "starter" | "side" | "dessert";
   title: string;
   servings?: string | number;
   ingredients: SessionIngredient[];
   method: string[];
   modified?: { ingredients: boolean; method: boolean };
 }) {
+  const servingLabel = servings ? formatServings(String(servings)) : "";
+
   return (
     <NabuSurface className="space-y-5 p-5">
       {/* Component header — role label + title */}
       <NabuSectionHeader
-        eyebrow={role === "main" ? "Main" : "Side"}
+        eyebrow={componentRoleLabel(role)}
         title={title}
-        action={servings ? <NabuBadge>Serves {servings}</NabuBadge> : null}
+        action={servingLabel ? <NabuBadge>{servingLabel}</NabuBadge> : null}
       />
 
       {/* Ingredients */}
@@ -298,6 +348,19 @@ function MealComponentBlock({
 // ---------------------------------------------------------------------------
 // Ingredient list
 // ---------------------------------------------------------------------------
+
+function componentRoleLabel(role: "main" | "starter" | "side" | "dessert"): string {
+  switch (role) {
+    case "main":
+      return "Main";
+    case "starter":
+      return "Starter";
+    case "dessert":
+      return "Dessert";
+    default:
+      return "Side";
+  }
+}
 
 function IngredientList({ ingredients }: { ingredients: SessionIngredient[] }) {
   // Group ingredients if groups exist
@@ -386,57 +449,64 @@ function EmptyState({ date }: { date: string }) {
 // ---------------------------------------------------------------------------
 
 function CookingFlowNote({
-  mainTitle,
-  sideRecipes,
-  serveWith,
+  steps,
+  timeLabel,
 }: {
-  mainTitle: string;
-  sideRecipes: Recipe[];
-  serveWith: string[];
+  steps: string[];
+  timeLabel: string | null;
 }) {
-  // Build a short, practical cooking sequence
-  const steps: string[] = [];
-
-  if (sideRecipes.length > 0) {
-    // When there are sides, suggest starting prep for items that take longest
-    steps.push(
-      `Read through all recipes. Start any side prep that needs resting or chilling first.`
-    );
-    steps.push(`Begin the ${mainTitle}.`);
-    for (const side of sideRecipes) {
-      steps.push(`Prepare the ${side.name} alongside or between main steps.`);
-    }
-  } else {
-    steps.push(`Read through the recipe, then gather your ingredients.`);
-    steps.push(`Work through the ${mainTitle} method step by step.`);
-  }
-
-  if (serveWith.length > 0) {
-    steps.push(
-      `Get ${serveWith.join(" and ").toLowerCase()} ready to serve alongside.`
-    );
-  }
-
-  steps.push("Taste, adjust seasoning, and plate.");
-
   return (
     <div className="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800">
-      <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-2">
-        Cooking flow
-      </p>
-      <ol className="space-y-1">
+      <div className="mb-2 flex items-center justify-between gap-3">
+        <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
+          Meal flow
+        </p>
+        {timeLabel && (
+          <span className="text-xs text-stone-400 dark:text-stone-500">
+            {timeLabel}
+          </span>
+        )}
+      </div>
+      <ol className="space-y-2">
         {steps.map((step, i) => (
           <li
             key={i}
-            className="text-sm text-stone-500 dark:text-stone-400 flex gap-2"
+            className="flex gap-2 text-sm text-stone-600 dark:text-stone-400"
           >
-            <span className="text-stone-300 dark:text-stone-600 shrink-0 tabular-nums">
+            <span className="shrink-0 tabular-nums text-stone-300 dark:text-stone-600">
               {i + 1}.
             </span>
             <span>{step}</span>
           </li>
         ))}
       </ol>
+    </div>
+  );
+}
+
+function PairingSuggestions({
+  pairing,
+}: {
+  pairing: { wine: string; nonAlcoholic: string };
+}) {
+  return (
+    <div className="mt-4 grid gap-3 border-t border-stone-100 pt-3 sm:grid-cols-2 dark:border-stone-800">
+      <div>
+        <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
+          Wine
+        </p>
+        <p className="mt-1 text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+          {pairing.wine}
+        </p>
+      </div>
+      <div>
+        <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
+          Non-alcoholic
+        </p>
+        <p className="mt-1 text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+          {pairing.nonAlcoholic}
+        </p>
+      </div>
     </div>
   );
 }

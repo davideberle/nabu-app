@@ -101,7 +101,9 @@
     "vegetarian"
   ],
   "time": {
-    "total": 8
+    "prep": 25,
+    "cook": 20,
+    "total": 45
   },
   "category": {
     "dish_type": [
