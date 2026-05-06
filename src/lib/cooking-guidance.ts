@@ -6,9 +6,15 @@ export type CookingPairingSuggestion = {
   nonAlcoholic: string;
 };
 
+export type CookingKnowledgeNote = {
+  term: string;
+  note: string;
+};
+
 export type CookingGuidance = {
   mealFlow: string[];
   pairing: CookingPairingSuggestion;
+  knowledgeNotes: CookingKnowledgeNote[];
 };
 
 export type RecipeTime = {
@@ -47,6 +53,7 @@ export function buildCookingGuidance({
       profile,
     }),
     pairing: getPairingSuggestion(profile),
+    knowledgeNotes: getKnowledgeNotes(profile),
   };
 }
 
@@ -245,6 +252,123 @@ function buildRecipeProfile(
     hasHerbs,
     needsAcidFinish,
   };
+}
+
+function getKnowledgeNotes(profile: RecipeProfile): CookingKnowledgeNote[] {
+  const glossary: { term: string; pattern: RegExp; note: string }[] = [
+    {
+      term: "Sofrito",
+      pattern: /\bsofrito\b/i,
+      note: "A cooked aromatic base, usually blended or finely chopped onion/garlic/pepper/herbs. Treat it like the flavor foundation: sauté it in oil until fragrant before adding liquid.",
+    },
+    {
+      term: "Soffritto / soffrito",
+      pattern: /\bsoffritto\b/i,
+      note: "Italian aromatic base, usually onion, carrot and celery slowly cooked in fat until sweet and soft — not browned hard.",
+    },
+    {
+      term: "Mirepoix",
+      pattern: /\bmirepoix\b/i,
+      note: "French aromatic base of onion, carrot and celery. Cook it gently first so it sweetens and flavors the whole dish.",
+    },
+    {
+      term: "Deglaze",
+      pattern: /\bdeglaz(e|ing)\b/i,
+      note: "Add liquid to a hot pan and scrape up the browned bits stuck to the bottom; those bits are concentrated flavor.",
+    },
+    {
+      term: "Reduce",
+      pattern: /\breduc(e|ed|ing|tion)\b/i,
+      note: "Simmer liquid so water evaporates and the flavor thickens/concentrates. Stop before it gets too salty or sticky.",
+    },
+    {
+      term: "Bloom spices",
+      pattern: /\bbloom(?:ing)?\b.*\bspices?\b|\bspices?\b.*\bbloom(?:ing)?\b/i,
+      note: "Briefly warm spices in oil or butter before adding liquid; this wakes up fat-soluble aromas. Keep the heat moderate so they do not burn.",
+    },
+    {
+      term: "Temper eggs",
+      pattern: /\btemper(?:ed|ing)?\b/i,
+      note: "Slowly whisk hot liquid into eggs or dairy before adding them back to the pot, so they warm up without scrambling or splitting.",
+    },
+    {
+      term: "Fold in",
+      pattern: /\bfold in\b/i,
+      note: "Gently lift and turn the mixture with a spatula instead of stirring hard, so airy or delicate ingredients keep their texture.",
+    },
+    {
+      term: "Bain-marie",
+      pattern: /\bbain[- ]marie\b|\bwater bath\b/i,
+      note: "A hot-water bath that surrounds a dish with gentle, even heat — common for custards and cheesecakes.",
+    },
+    {
+      term: "Confit",
+      pattern: /\bconfit\b/i,
+      note: "Slow cooking in fat or oil at low heat until tender. It should be gentle, not a hard fry.",
+    },
+    {
+      term: "Blanch and shock",
+      pattern: /\bblanch\b|\bshock\b/i,
+      note: "Briefly boil, then cool fast in cold/ice water. This keeps vegetables bright and stops the cooking.",
+    },
+    {
+      term: "Julienne",
+      pattern: /\bjulienne\b/i,
+      note: "Cut into thin matchsticks. Uniform size matters more than perfection.",
+    },
+    {
+      term: "Chiffonade",
+      pattern: /\bchiffonade\b/i,
+      note: "Stack leafy herbs/greens, roll them up, then slice thinly into ribbons.",
+    },
+    {
+      term: "Roux",
+      pattern: /\broux\b/i,
+      note: "Cook flour and fat together before adding liquid; it thickens sauces and removes raw flour taste.",
+    },
+    {
+      term: "Slurry",
+      pattern: /\bslurry\b/i,
+      note: "Starch mixed with cold liquid before it goes into hot sauce/soup. Add gradually and stir so it thickens smoothly.",
+    },
+    {
+      term: "Emulsify",
+      pattern: /\bemulsif(?:y|ied|ying)\b|\bemulsion\b/i,
+      note: "Force fat and water-based liquid to combine — usually by whisking/blending while adding oil slowly.",
+    },
+    {
+      term: "Mise en place",
+      pattern: /\bmise en place\b/i,
+      note: "Have ingredients measured, chopped and ready before cooking. Especially useful for fast recipes where the pan will not wait.",
+    },
+    {
+      term: "Adobo",
+      pattern: /\badobo\b/i,
+      note: "A seasoned spice blend or marinade; in Puerto Rican-style cooking it often brings garlic, oregano, pepper and salt. Taste before adding more salt.",
+    },
+    {
+      term: "Culantro",
+      pattern: /\bculantro\b/i,
+      note: "A stronger, long-leaf relative of cilantro/coriander. Use it like a bold herb; if missing, cilantro is the closest easy substitute.",
+    },
+    {
+      term: "Yuca",
+      pattern: /\byuca\b|\bcassava\b/i,
+      note: "A starchy root, more fibrous than potato. It needs to cook until fully tender; remove any tough woody core if present.",
+    },
+  ];
+
+  const notes: CookingKnowledgeNote[] = [];
+  const seen = new Set<string>();
+  for (const item of glossary) {
+    if (!item.pattern.test(profile.text)) continue;
+    const key = item.term.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    notes.push({ term: item.term, note: item.note });
+    if (notes.length >= 4) break;
+  }
+  return notes;
 }
 
 function getPairingSuggestion(profile: RecipeProfile): CookingPairingSuggestion {

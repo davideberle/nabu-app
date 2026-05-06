@@ -38,9 +38,6 @@ export default async function CookingPage() {
         subtitle={formatDateDisplay(date)}
         backHref="/"
         maxWidth="3xl"
-        action={session ? (
-          <NabuBadge tone={statusTone(session.status)}>{session.status}</NabuBadge>
-        ) : null}
       />
 
       <NabuMain maxWidth="3xl" className="space-y-6">
@@ -151,6 +148,8 @@ function SessionView({
         {/* Cooking flow — a quick practical sequence */}
         <CookingFlowNote steps={guidance.mealFlow} timeLabel={timeLabel} />
 
+        <KnowledgeNotes notes={guidance.knowledgeNotes} />
+
         <PairingSuggestions pairing={guidance.pairing} />
       </NabuSurface>
 
@@ -238,10 +237,8 @@ function SessionView({
 // ---------------------------------------------------------------------------
 
 const CARD_CONFIG: { key: keyof CoachCards; label: string; icon: string; color: string }[] = [
-  { key: "nextMove", label: "Next move", icon: "\uD83D\uDD25", color: "border-l-orange-400" },
   { key: "upgrade", label: "Upgrade", icon: "\u2728", color: "border-l-violet-400" },
   { key: "shortcut", label: "Shortcut", icon: "\u23F1\uFE0F", color: "border-l-sky-400" },
-  { key: "wine", label: "Wine", icon: "\uD83C\uDF77", color: "border-l-rose-400" },
 ];
 
 function CoachCardsSection({ cards }: { cards: CoachCards }) {
@@ -484,6 +481,30 @@ function CookingFlowNote({
   );
 }
 
+function KnowledgeNotes({
+  notes,
+}: {
+  notes: { term: string; note: string }[];
+}) {
+  if (notes.length === 0) return null;
+
+  return (
+    <div className="mt-4 border-t border-stone-100 pt-3 dark:border-stone-800">
+      <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
+        Quick explanations
+      </p>
+      <dl className="mt-2 space-y-2">
+        {notes.map((item) => (
+          <div key={item.term} className="text-sm leading-relaxed">
+            <dt className="font-medium text-stone-700 dark:text-stone-300">{item.term}</dt>
+            <dd className="text-stone-500 dark:text-stone-400">{item.note}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
 function PairingSuggestions({
   pairing,
 }: {
@@ -514,19 +535,6 @@ function PairingSuggestions({
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-function statusTone(status: string): "stone" | "green" | "amber" | "red" {
-  switch (status) {
-    case "active":
-      return "green";
-    case "completed":
-      return "stone";
-    case "abandoned":
-      return "red";
-    default:
-      return "amber";
-  }
-}
 
 function formatDateDisplay(date: string): string {
   const d = new Date(date + "T12:00:00");

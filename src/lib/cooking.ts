@@ -512,9 +512,9 @@ export async function createSessionFromPlan(
       ...syncedBase,
       coachCards: {
         ...syncedBase.coachCards,
-        nextMove: guidance.mealFlow[0] ?? syncedBase.coachCards.nextMove,
+        nextMove: null,
         upgrade: guidance.mealFlow.at(-1) ?? syncedBase.coachCards.upgrade,
-        wine: guidance.pairing.wine,
+        wine: null,
       },
     };
     await saveCookingSession(synced);
@@ -544,10 +544,10 @@ export async function createSessionFromPlan(
   const session: CookingSession = {
     ...sessionBase,
     coachCards: {
-      nextMove: guidance.mealFlow[0] ?? null,
+      nextMove: null,
       upgrade: guidance.mealFlow.at(-1) ?? null,
       shortcut: null,
-      wine: guidance.pairing.wine,
+      wine: null,
     },
   };
 
@@ -579,7 +579,7 @@ export function buildSessionFromRecipe(opts: {
   return {
     id,
     date: opts.date,
-    status: "draft",
+    status: "active",
     source: opts.source,
     mealPlanRef: opts.mealPlanRef ?? null,
     anchor: {
