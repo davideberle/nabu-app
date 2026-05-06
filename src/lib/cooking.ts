@@ -57,6 +57,13 @@ export type CoachCards = {
   wine: string | null;
 };
 
+export type SessionStory = {
+  title?: string;
+  text: string;
+  source?: string | null;
+  updatedAt?: string;
+};
+
 export type SessionIngredient = {
   amount: string;
   item: string;
@@ -96,6 +103,7 @@ export type CookingSession = {
   };
   adaptations: Adaptation[];
   coachCards: CoachCards;
+  story?: SessionStory | null;
   notes: string;
   createdAt: string;
   updatedAt: string;
@@ -164,6 +172,7 @@ function legacyRowToSession(row: CookingSessionRow): CookingSession | null {
     method: { base: recipeData.method ?? [], session: [] },
     adaptations: [],
     coachCards: { nextMove: null, upgrade: null, shortcut: null, wine: null },
+    story: null,
     notes: "",
     createdAt: (row["created_at"] as string | null) || now,
     updatedAt:
@@ -174,8 +183,37 @@ function legacyRowToSession(row: CookingSessionRow): CookingSession | null {
   };
 }
 
+function extractBackstoryFromNotes(notes: string): { story: SessionStory; notes: string } | null {
+  const prefix = "Backstory:";
+  const trimmed = notes.trim();
+  if (!trimmed.toLowerCase().startsWith(prefix.toLowerCase())) return null;
+
+  const afterPrefix = trimmed.slice(prefix.length).trim();
+  const nextParagraphIndex = afterPrefix.indexOf("\n\n");
+  const storyText = nextParagraphIndex === -1
+    ? afterPrefix
+    : afterPrefix.slice(0, nextParagraphIndex).trim();
+  if (!storyText) return null;
+
+  const remainingNotes = nextParagraphIndex === -1
+    ? ""
+    : afterPrefix.slice(nextParagraphIndex).trim();
+
+  return { story: { text: storyText }, notes: remainingNotes };
+}
+
+function normalizeSession(session: CookingSession | null): CookingSession | null {
+  if (!session) return null;
+  const extracted = session.story ? null : extractBackstoryFromNotes(session.notes ?? "");
+  return {
+    ...session,
+    story: session.story ?? extracted?.story ?? null,
+    notes: extracted ? extracted.notes : (session.notes ?? ""),
+  };
+}
+
 function rowToSession(row: CookingSessionRow): CookingSession | null {
-  return safeParse<CookingSession>(row["data"]) ?? legacyRowToSession(row);
+  return normalizeSession(safeParse<CookingSession>(row["data"]) ?? legacyRowToSession(row));
 }
 
 export async function getCookingSessionForDate(
@@ -289,6 +327,7 @@ export async function saveCookingSession(
 export type SessionPatch = {
   status?: SessionStatus;
   coachCards?: Partial<CoachCards>;
+  story?: SessionStory | null;
   notes?: string;
   appendNotes?: string;
   adaptations?: Adaptation[];
@@ -340,6 +379,11 @@ export function validatePatch(patch: SessionPatch): string | null {
       }
     }
   }
+  if (patch.story !== undefined && patch.story !== null) {
+    if (typeof patch.story.text !== "string" || patch.story.text.trim().length === 0) {
+      return "Story needs non-empty text";
+    }
+  }
   return null;
 }
 
@@ -355,6 +399,10 @@ export function applyPatch(
 
   if (patch.coachCards) {
     updated.coachCards = { ...session.coachCards, ...patch.coachCards };
+  }
+
+  if (patch.story !== undefined) {
+    updated.story = patch.story;
   }
 
   if (patch.notes !== undefined) {
@@ -514,7 +562,6 @@ export async function createSessionFromPlan(
         ...syncedBase.coachCards,
         nextMove: null,
         upgrade: guidance.mealFlow.at(-1) ?? syncedBase.coachCards.upgrade,
-        wine: null,
       },
     };
     await saveCookingSession(synced);
@@ -609,6 +656,7 @@ export function buildSessionFromRecipe(opts: {
       shortcut: null,
       wine: null,
     },
+    story: null,
     notes: "",
     createdAt: now,
     updatedAt: now,

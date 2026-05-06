@@ -88,6 +88,8 @@ function SessionView({
 
   return (
     <>
+      <StoryCard story={session.story} title={session.anchor.title} />
+
       {/* ── Meal overview ── */}
       <NabuSurface className="p-5">
         <NabuSectionHeader
@@ -229,6 +231,44 @@ function SessionView({
         Last updated {formatTimestamp(session.updatedAt)}
       </div>
     </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Story card
+// ---------------------------------------------------------------------------
+
+function StoryCard({
+  story,
+  title,
+}: {
+  story: CookingSession["story"];
+  title: string;
+}) {
+  if (!story?.text) return null;
+
+  return (
+    <NabuSurface className="overflow-hidden border-amber-100 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-5 dark:border-amber-900/40 dark:from-amber-950/30 dark:via-stone-950 dark:to-orange-950/20">
+      <div className="flex items-start gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100 text-lg dark:bg-amber-900/40">
+          📜
+        </div>
+        <div>
+          <NabuKicker>Story of the dish</NabuKicker>
+          <h2 className="mt-1 text-xl font-semibold tracking-tight text-stone-950 dark:text-stone-50">
+            {story.title || title}
+          </h2>
+          <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-stone-700 dark:text-stone-300">
+            {story.text}
+          </p>
+          {story.source && (
+            <p className="mt-3 text-xs text-stone-400 dark:text-stone-500">
+              Source: {story.source}
+            </p>
+          )}
+        </div>
+      </div>
+    </NabuSurface>
   );
 }
 
