@@ -21,6 +21,7 @@ type RecipeOption = {
   time: { prep: number; cook: number; total: number } | null;
   category: string;
   courseTags: string[];
+  rationale?: string;
 };
 
 type RecipeDetail = RecipeOption & {
@@ -1737,6 +1738,11 @@ function ComplementSection({
                   {r.source?.cookbook}
                   {r.cuisine && r.cuisine !== "Other" && <span> · {r.cuisine}</span>}
                 </p>
+                {r.rationale && (
+                  <p className="text-[10px] italic text-violet-400 dark:text-violet-500 mt-0.5 line-clamp-2 leading-snug">
+                    {r.rationale}
+                  </p>
+                )}
               </div>
               <button
                 onClick={() => onAccept(r)}

@@ -1069,7 +1069,114 @@ export type ComplementRole = "starter" | "side" | "dessert";
 export type ComplementSuggestion = {
   role: ComplementRole;
   recipe: Recipe;
+  rationale: string;
 };
+
+// ----- chef-style rationale generator -----
+
+/** Detect broad texture/temperature traits from recipe name + ingredients. */
+function detectTraits(recipe: Recipe): Set<string> {
+  const text = (recipe.name + " " + recipe.ingredients.map((i) => i.item).join(" ")).toLowerCase();
+  const traits = new Set<string>();
+  if (/\b(crisp|crunchy|fried|roast|grilled|charred|toasted)\b/.test(text)) traits.add("crunchy");
+  if (/\b(creamy|cream|yogurt|yoghurt|tahini|labneh|avocado|hummus)\b/.test(text)) traits.add("creamy");
+  if (/\b(fresh|raw|pickled|herb|mint|cilantro|parsley|dill)\b/.test(text)) traits.add("fresh");
+  if (/\b(spicy|chili|chilli|harissa|hot sauce|jalapeño|sriracha)\b/.test(text)) traits.add("spicy");
+  if (/\b(tangy|lemon|lime|vinegar|sumac|tamarind|pomegranate)\b/.test(text)) traits.add("tangy");
+  if (/\b(rich|braised|slow[- ]cooked|stewed|confit)\b/.test(text)) traits.add("rich");
+  if (/\b(light|delicate|steamed|poached)\b/.test(text)) traits.add("light");
+  return traits;
+}
+
+/**
+ * Generate a concise chef-style rationale for why a complement pairs with a main.
+ * Deterministic — based on cuisine, role, base, traits, and dish type.
+ */
+function generateRationale(
+  main: Recipe,
+  complement: Recipe,
+  role: ComplementRole,
+): string {
+  const mainCuisine = getCuisine(main);
+  const compCuisine = getCuisine(complement);
+  const sameCuisine = mainCuisine === compCuisine && mainCuisine !== "Other";
+  const compBase = dominantBase(complement);
+  const mainTraits = detectTraits(main);
+  const compTraits = detectTraits(complement);
+  const compDishTypes = (complement.category?.dish_type ?? []).map((t) => t.toLowerCase());
+  const compName = complement.name.toLowerCase();
+
+  const parts: string[] = [];
+
+  // Cuisine relationship
+  if (sameCuisine) {
+    parts.push(`same ${mainCuisine} profile`);
+  } else if (compCuisine !== "Other" && mainCuisine !== "Other") {
+    parts.push(`${compCuisine} twist`);
+  }
+
+  // Role-specific logic
+  if (role === "starter") {
+    if (compDishTypes.includes("soup")) {
+      parts.push(mainTraits.has("light") ? "warming opener" : "light warming start");
+    } else if (compDishTypes.includes("salad") || compName.includes("salad")) {
+      parts.push("fresh opener so the main stays center stage");
+    } else if (compTraits.has("light")) {
+      parts.push("lighter start before the main");
+    } else {
+      parts.push("sets the tone without competing");
+    }
+  } else if (role === "side") {
+    // Starchy base commentary
+    if (compBase === "rice") {
+      parts.push("soaks up the sauce");
+    } else if (compBase === "bread") {
+      parts.push("warm bread to scoop everything up");
+    } else if (compBase === "potato") {
+      parts.push("starchy anchor for the plate");
+    } else if (compBase === "grain") {
+      parts.push("hearty grain base");
+    } else if (compBase === "lentil" || compBase === "bean") {
+      parts.push("adds body and protein");
+    }
+
+    // Texture/contrast commentary
+    if (!compBase) {
+      if (compTraits.has("creamy") && (mainTraits.has("spicy") || mainTraits.has("crunchy"))) {
+        parts.push("cool creamy contrast");
+      } else if (compTraits.has("crunchy") && (mainTraits.has("rich") || mainTraits.has("creamy"))) {
+        parts.push("crunchy contrast to the richness");
+      } else if (compTraits.has("tangy")) {
+        parts.push("bright acidity to cut through");
+      } else if (compTraits.has("fresh")) {
+        parts.push("fresh lift on the side");
+      } else if (compDishTypes.includes("salad") || compName.includes("salad")) {
+        parts.push("crisp counterpoint");
+      } else if (compDishTypes.includes("vegetable") || compDishTypes.includes("side")) {
+        parts.push("rounds out the plate");
+      }
+    }
+  } else if (role === "dessert") {
+    if (compTraits.has("fresh") || compName.includes("fruit")) {
+      parts.push("light finish to clear the palate");
+    } else if (compTraits.has("rich") || compName.includes("chocolate") || compName.includes("cake")) {
+      parts.push("indulgent closer");
+    } else {
+      parts.push("sweet finish");
+    }
+  }
+
+  // Fallback: always produce something useful
+  if (parts.length === 0) {
+    if (role === "starter") parts.push("light opener");
+    else if (role === "side") parts.push("complements the main");
+    else parts.push("sweet ending");
+  }
+
+  // Join with comma separator, capitalize first letter
+  const text = parts.join(", ");
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
 
 /**
  * Returns true if a recipe is suitable as a dessert.
@@ -1117,7 +1224,7 @@ export function selectDayComplements(
   const otherStarters = shuffle(starterCompatible.filter((s) => getCuisine(s) !== mainCuisine));
   const starterPicks = [...sameCuisineStarters, ...otherStarters].slice(0, 3);
   for (const r of starterPicks) {
-    results.push({ role: "starter", recipe: r });
+    results.push({ role: "starter", recipe: r, rationale: generateRationale(mainRecipe, r, "starter") });
   }
 
   // --- Sides ---
@@ -1142,7 +1249,7 @@ export function selectDayComplements(
       if (base) usedBases.add(base);
     }
     for (const r of sidePicks) {
-      results.push({ role: "side", recipe: r });
+      results.push({ role: "side", recipe: r, rationale: generateRationale(mainRecipe, r, "side") });
     }
   }
 
@@ -1151,7 +1258,7 @@ export function selectDayComplements(
     const dessertPool = withImages.filter(isDessert);
     const dessertPicks = shuffle(dessertPool).slice(0, 3);
     for (const r of dessertPicks) {
-      results.push({ role: "dessert", recipe: r });
+      results.push({ role: "dessert", recipe: r, rationale: generateRationale(mainRecipe, r, "dessert") });
     }
   }
 

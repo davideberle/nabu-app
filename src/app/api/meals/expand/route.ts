@@ -59,13 +59,13 @@ export async function GET(request: NextRequest) {
   const grouped = {
     starters: complements
       .filter((c) => c.role === "starter")
-      .map((c) => summarize(c.recipe)),
+      .map((c) => ({ ...summarize(c.recipe), rationale: c.rationale })),
     sides: complements
       .filter((c) => c.role === "side")
-      .map((c) => summarize(c.recipe)),
+      .map((c) => ({ ...summarize(c.recipe), rationale: c.rationale })),
     desserts: complements
       .filter((c) => c.role === "dessert")
-      .map((c) => summarize(c.recipe)),
+      .map((c) => ({ ...summarize(c.recipe), rationale: c.rationale })),
     mainCuisine: getCuisine(mainRecipe),
   };
 
