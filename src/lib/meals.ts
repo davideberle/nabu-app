@@ -1100,7 +1100,13 @@ export function selectDayComplements(
 ): ComplementSuggestion[] {
   const mainCuisine = getCuisine(mainRecipe);
   const seasonFiltered = filterBySeason(allRecipes);
-  const withImages = seasonFiltered.filter((r) => !!r.image && r.id !== mainRecipe.id);
+  // Deduplicate by id to guard against data-level duplicates (e.g. homoglyph variants).
+  const seen = new Set<string>();
+  const withImages = seasonFiltered.filter((r) => {
+    if (!r.image || r.id === mainRecipe.id || seen.has(r.id)) return false;
+    seen.add(r.id);
+    return true;
+  });
 
   const results: ComplementSuggestion[] = [];
 
