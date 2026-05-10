@@ -1070,6 +1070,8 @@ export type ComplementSuggestion = {
   role: ComplementRole;
   recipe: Recipe;
   rationale: string;
+  recommended?: boolean;
+  score?: number;
 };
 
 // ----- chef-style rationale generator -----
@@ -1197,8 +1199,65 @@ function isStarter(recipe: Recipe): boolean {
 }
 
 /**
+ * Score a complement recipe against a main dish.
+ * Higher = better pairing. Used to pick the single best starter and side.
+ */
+function scoreComplement(main: Recipe, comp: Recipe, role: ComplementRole): number {
+  let score = 0;
+  const mainCuisine = getCuisine(main);
+  const compCuisine = getCuisine(comp);
+
+  // Same cuisine is a strong signal (+4)
+  if (mainCuisine === compCuisine && mainCuisine !== "Other") score += 4;
+  // Cross-cuisine but both non-Other is mildly interesting (+1)
+  else if (mainCuisine !== "Other" && compCuisine !== "Other") score += 1;
+
+  const mainTraits = detectTraits(main);
+  const compTraits = detectTraits(comp);
+
+  // Texture/flavor contrast bonuses
+  if (mainTraits.has("rich") && compTraits.has("fresh")) score += 3;
+  if (mainTraits.has("rich") && compTraits.has("tangy")) score += 3;
+  if (mainTraits.has("rich") && compTraits.has("crunchy")) score += 2;
+  if (mainTraits.has("spicy") && compTraits.has("creamy")) score += 3;
+  if (mainTraits.has("creamy") && compTraits.has("crunchy")) score += 2;
+  if (mainTraits.has("light") && compTraits.has("rich")) score += 1;
+
+  if (role === "side") {
+    const compBase = dominantBase(comp);
+    const mainBase = dominantBase(main);
+    // Starch complement: rice/bread with saucy mains
+    const mainName = main.name.toLowerCase();
+    const saucy = /curry|stew|tagine|braise|dal|chili/i.test(mainName);
+    if (saucy && (compBase === "rice" || compBase === "bread")) score += 3;
+    // Penalize duplicate starch family
+    if (compBase && mainBase && compBase === mainBase) score -= 3;
+    // Vegetable sides get a small bonus (variety)
+    const compDishTypes = (comp.category?.dish_type ?? []).map((t) => t.toLowerCase());
+    if (compDishTypes.includes("vegetable") || compDishTypes.includes("salad")) score += 1;
+  }
+
+  if (role === "starter") {
+    const compName = comp.name.toLowerCase();
+    const compDishTypes = (comp.category?.dish_type ?? []).map((t) => t.toLowerCase());
+    // Salad/soup starters that don't compete with main protein
+    if (compDishTypes.includes("salad") || compName.includes("salad")) score += 2;
+    if (compDishTypes.includes("soup") || compName.includes("soup")) score += 1;
+    if (compTraits.has("light")) score += 1;
+  }
+
+  if (role === "dessert") {
+    // Fresh desserts after heavy mains
+    if (mainTraits.has("rich") && compTraits.has("fresh")) score += 2;
+  }
+
+  return score;
+}
+
+/**
  * Select complement suggestions for a specific day's assigned main.
  * Weekdays: starters + sides. Weekends: starters + sides + desserts.
+ * Returns items sorted by score; the top starter and top side are marked recommended.
  */
 export function selectDayComplements(
   mainRecipe: Recipe,
@@ -1220,11 +1279,13 @@ export function selectDayComplements(
   // --- Starters ---
   const starterPool = withImages.filter(isStarter);
   const starterCompatible = starterPool.filter((s) => !hasProteinClash(mainRecipe, s));
-  const sameCuisineStarters = shuffle(starterCompatible.filter((s) => getCuisine(s) === mainCuisine));
-  const otherStarters = shuffle(starterCompatible.filter((s) => getCuisine(s) !== mainCuisine));
-  const starterPicks = [...sameCuisineStarters, ...otherStarters].slice(0, 3);
-  for (const r of starterPicks) {
-    results.push({ role: "starter", recipe: r, rationale: generateRationale(mainRecipe, r, "starter") });
+  // Score and sort starters; shuffle first to break ties randomly
+  const starterScored = shuffle(starterCompatible)
+    .map((r) => ({ recipe: r, score: scoreComplement(mainRecipe, r, "starter") }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3);
+  for (const { recipe: r, score } of starterScored) {
+    results.push({ role: "starter", recipe: r, rationale: generateRationale(mainRecipe, r, "starter"), score });
   }
 
   // --- Sides ---
@@ -1237,30 +1298,43 @@ export function selectDayComplements(
     const usedBases = new Set<string>();
     if (mainBase) usedBases.add(mainBase);
 
-    const sameCuisineSides = shuffle(sideCompatible.filter((s) => getCuisine(s) === mainCuisine));
-    const otherSides = shuffle(sideCompatible.filter((s) => getCuisine(s) !== mainCuisine));
+    // Score and sort sides; shuffle first to break ties randomly
+    const sideScored = shuffle(sideCompatible)
+      .map((r) => ({ recipe: r, score: scoreComplement(mainRecipe, r, "side") }))
+      .sort((a, b) => b.score - a.score);
 
-    const sidePicks: Recipe[] = [];
-    for (const s of [...sameCuisineSides, ...otherSides]) {
+    const sidePicks: { recipe: Recipe; score: number }[] = [];
+    for (const s of sideScored) {
       if (sidePicks.length >= 4) break;
-      const base = dominantBase(s);
+      const base = dominantBase(s.recipe);
       if (base && usedBases.has(base)) continue;
       sidePicks.push(s);
       if (base) usedBases.add(base);
     }
-    for (const r of sidePicks) {
-      results.push({ role: "side", recipe: r, rationale: generateRationale(mainRecipe, r, "side") });
+    for (const { recipe: r, score } of sidePicks) {
+      results.push({ role: "side", recipe: r, rationale: generateRationale(mainRecipe, r, "side"), score });
     }
   }
 
   // --- Desserts (weekend only) ---
   if (dayType === "weekend") {
     const dessertPool = withImages.filter(isDessert);
-    const dessertPicks = shuffle(dessertPool).slice(0, 3);
-    for (const r of dessertPicks) {
-      results.push({ role: "dessert", recipe: r, rationale: generateRationale(mainRecipe, r, "dessert") });
+    const dessertScored = shuffle(dessertPool)
+      .map((r) => ({ recipe: r, score: scoreComplement(mainRecipe, r, "dessert") }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 3);
+    for (const { recipe: r, score } of dessertScored) {
+      results.push({ role: "dessert", recipe: r, rationale: generateRationale(mainRecipe, r, "dessert"), score });
     }
   }
+
+  // Mark top starter and top side as recommended
+  const topStarter = results.filter((r) => r.role === "starter").sort((a, b) => (b.score ?? 0) - (a.score ?? 0))[0];
+  const topSide = results.filter((r) => r.role === "side").sort((a, b) => (b.score ?? 0) - (a.score ?? 0))[0];
+  const topDessert = results.filter((r) => r.role === "dessert").sort((a, b) => (b.score ?? 0) - (a.score ?? 0))[0];
+  if (topStarter) topStarter.recommended = true;
+  if (topSide) topSide.recommended = true;
+  if (topDessert) topDessert.recommended = true;
 
   return results;
 }

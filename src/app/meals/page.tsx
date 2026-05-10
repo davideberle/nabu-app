@@ -22,6 +22,7 @@ type RecipeOption = {
   category: string;
   courseTags: string[];
   rationale?: string;
+  recommended?: boolean;
 };
 
 type RecipeDetail = RecipeOption & {
@@ -1140,6 +1141,7 @@ function MealsPageInner() {
             onAccept={(complement) => handleAcceptComplement(expandingDay, complement)}
             onRemove={(complementId) => handleRemoveComplement(expandingDay, complementId)}
             onClose={() => { setExpandingDay(null); setExpandComplements(null); }}
+            onQuickView={handleQuickView}
           />
         )}
 
@@ -1603,6 +1605,7 @@ function ComplementPicker({
   onAccept,
   onRemove,
   onClose,
+  onQuickView,
 }: {
   dayIndex: number;
   slot: DaySlot;
@@ -1612,9 +1615,30 @@ function ComplementPicker({
   onAccept: (recipe: RecipeOption) => void;
   onRemove: (id: string) => void;
   onClose: () => void;
+  onQuickView: (recipeId: string) => void;
 }) {
   const isWeekend = slot.type === "weekend";
   const acceptedIds = new Set(acceptedSides.map((s) => s.id));
+
+  // Split into recommended picks vs alternatives
+  const recStarter = complements?.starters.find((r) => r.recommended) ?? null;
+  const recSide = complements?.sides.find((r) => r.recommended) ?? null;
+  const recDessert = isWeekend ? (complements?.desserts.find((r) => r.recommended) ?? null) : null;
+  const recommended = [recStarter, recSide, recDessert].filter(Boolean) as RecipeOption[];
+  const recommendedIds = new Set(recommended.map((r) => r.id));
+
+  const altStarters = complements?.starters.filter((r) => !r.recommended) ?? [];
+  const altSides = complements?.sides.filter((r) => !r.recommended) ?? [];
+  const altDesserts = isWeekend ? (complements?.desserts.filter((r) => !r.recommended) ?? []) : [];
+  const hasAlternatives = altStarters.length > 0 || altSides.length > 0 || altDesserts.length > 0;
+
+  const allRecommendedAccepted = recommended.length > 0 && recommended.every((r) => acceptedIds.has(r.id));
+
+  function handleAddRecommended() {
+    for (const r of recommended) {
+      if (!acceptedIds.has(r.id)) onAccept(r);
+    }
+  }
 
   return (
     <div className="rounded-xl border border-violet-200 dark:border-violet-800/50 bg-white dark:bg-stone-900 p-5 mb-8">
@@ -1626,7 +1650,7 @@ function ComplementPicker({
             )}
           </h3>
           <p className="text-xs text-stone-400 dark:text-stone-500 mt-0.5">
-            {isWeekend ? "Pick starters, sides, or desserts" : "Pick starters or sides"} to build out this meal.
+            Pick 1 starter + 1 side to round out the plate.
           </p>
         </div>
         <button
@@ -1663,102 +1687,150 @@ function ComplementPicker({
         </div>
       ) : complements ? (
         <div className="space-y-5">
-          {complements.starters.length > 0 && (
-            <ComplementSection
-              label="Starters"
-              items={complements.starters}
-              acceptedIds={acceptedIds}
-              onAccept={onAccept}
-            />
+          {/* Recommended meal set */}
+          {recommended.length > 0 && (
+            <div>
+              <h4 className="text-xs tracking-widest uppercase text-violet-500 dark:text-violet-400 mb-2 flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                My pick
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {recommended.map((r) => {
+                  const isAccepted = acceptedIds.has(r.id);
+                  const roleLabel = recStarter?.id === r.id ? "Starter" : recDessert?.id === r.id ? "Dessert" : "Side";
+                  return (
+                    <div
+                      key={r.id}
+                      className={`flex items-center gap-3 rounded-lg border-2 p-3 transition-all ${
+                        isAccepted
+                          ? "border-violet-400 dark:border-violet-600 bg-violet-50/50 dark:bg-violet-950/20"
+                          : "border-violet-200 dark:border-violet-800 bg-violet-50/30 dark:bg-violet-950/10"
+                      }`}
+                    >
+                      {r.image && (
+                        <button
+                          onClick={() => onQuickView(r.id)}
+                          className="shrink-0 rounded-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-violet-400"
+                        >
+                          <Image
+                            src={r.image}
+                            alt={r.name}
+                            width={56}
+                            height={56}
+                            className="rounded-md object-cover w-14 h-14"
+                          />
+                        </button>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[9px] uppercase tracking-wider text-violet-400 dark:text-violet-500 font-medium">{roleLabel}</span>
+                        </div>
+                        <button
+                          onClick={() => onQuickView(r.id)}
+                          className="text-sm font-serif text-stone-800 dark:text-stone-100 line-clamp-2 leading-snug text-left hover:text-violet-700 dark:hover:text-violet-300 transition-colors"
+                        >
+                          {r.name}
+                        </button>
+                        <p className="text-[10px] text-stone-400 dark:text-stone-500 mt-0.5">
+                          {r.source?.cookbook}
+                        </p>
+                        {r.rationale && (
+                          <p className="text-[10px] italic text-violet-400 dark:text-violet-500 mt-0.5 line-clamp-2 leading-snug">
+                            {r.rationale}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {/* Add recommended button */}
+              <button
+                onClick={handleAddRecommended}
+                disabled={allRecommendedAccepted}
+                className={`mt-3 w-full sm:w-auto px-5 py-2 rounded-full text-sm font-medium transition-colors ${
+                  allRecommendedAccepted
+                    ? "bg-violet-200 dark:bg-violet-800 text-violet-400 dark:text-violet-500 cursor-not-allowed"
+                    : "bg-violet-600 dark:bg-violet-500 text-white hover:bg-violet-700 dark:hover:bg-violet-400"
+                }`}
+              >
+                {allRecommendedAccepted
+                  ? "Added"
+                  : `Add ${recommended.length === 1 ? "this" : `these ${recommended.length}`}`}
+              </button>
+            </div>
           )}
-          {complements.sides.length > 0 && (
-            <ComplementSection
-              label="Sides"
-              items={complements.sides}
-              acceptedIds={acceptedIds}
-              onAccept={onAccept}
-            />
-          )}
-          {isWeekend && complements.desserts.length > 0 && (
-            <ComplementSection
-              label="Desserts"
-              items={complements.desserts}
-              acceptedIds={acceptedIds}
-              onAccept={onAccept}
-            />
+
+          {/* Alternatives — swappable options */}
+          {hasAlternatives && (
+            <div>
+              <h4 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-2">
+                Or swap in...
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                {[...altStarters.map((r) => ({ ...r, _role: "Starter" as const })),
+                  ...altSides.map((r) => ({ ...r, _role: "Side" as const })),
+                  ...altDesserts.map((r) => ({ ...r, _role: "Dessert" as const })),
+                ].map((r) => {
+                  const isAccepted = acceptedIds.has(r.id);
+                  return (
+                    <div
+                      key={r.id}
+                      className={`flex items-center gap-2.5 rounded-lg border p-2 transition-all ${
+                        isAccepted
+                          ? "border-violet-300 dark:border-violet-700 bg-violet-50/50 dark:bg-violet-950/20"
+                          : "border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700"
+                      }`}
+                    >
+                      {r.image && (
+                        <button
+                          onClick={() => onQuickView(r.id)}
+                          className="shrink-0 rounded-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-violet-400"
+                        >
+                          <Image
+                            src={r.image}
+                            alt={r.name}
+                            width={40}
+                            height={40}
+                            className="rounded object-cover w-10 h-10"
+                          />
+                        </button>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <span className="text-[9px] uppercase tracking-wider text-stone-400 dark:text-stone-500">{r._role}</span>
+                        <button
+                          onClick={() => onQuickView(r.id)}
+                          className="block text-xs font-serif text-stone-700 dark:text-stone-200 line-clamp-1 leading-snug text-left hover:text-violet-600 dark:hover:text-violet-300 transition-colors"
+                        >
+                          {r.name}
+                        </button>
+                        {r.rationale && (
+                          <p className="text-[9px] italic text-stone-400 dark:text-stone-500 mt-0.5 line-clamp-1">
+                            {r.rationale}
+                          </p>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => onAccept(r)}
+                        disabled={isAccepted}
+                        className={`shrink-0 text-[10px] px-2 py-0.5 rounded-full font-medium transition-colors ${
+                          isAccepted
+                            ? "bg-violet-200 dark:bg-violet-800 text-violet-500 dark:text-violet-400 cursor-not-allowed"
+                            : "bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 hover:bg-violet-100 dark:hover:bg-violet-900/30 hover:text-violet-700 dark:hover:text-violet-300"
+                        }`}
+                      >
+                        {isAccepted ? "Added" : "Add"}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           )}
         </div>
       ) : null}
-    </div>
-  );
-}
-
-function ComplementSection({
-  label,
-  items,
-  acceptedIds,
-  onAccept,
-}: {
-  label: string;
-  items: RecipeOption[];
-  acceptedIds: Set<string>;
-  onAccept: (recipe: RecipeOption) => void;
-}) {
-  return (
-    <div>
-      <h4 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-2">
-        {label}
-      </h4>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {items.map((r) => {
-          const isAccepted = acceptedIds.has(r.id);
-          return (
-            <div
-              key={r.id}
-              className={`flex items-center gap-3 rounded-lg border p-2.5 transition-all ${
-                isAccepted
-                  ? "border-violet-300 dark:border-violet-700 bg-violet-50/50 dark:bg-violet-950/20"
-                  : "border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700"
-              }`}
-            >
-              {r.image && (
-                <Image
-                  src={r.image}
-                  alt={r.name}
-                  width={48}
-                  height={48}
-                  className="rounded-md object-cover w-12 h-12 shrink-0"
-                />
-              )}
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-serif text-stone-800 dark:text-stone-100 line-clamp-2 leading-snug">
-                  {r.name}
-                </p>
-                <p className="text-[10px] text-stone-400 dark:text-stone-500 mt-0.5">
-                  {r.source?.cookbook}
-                  {r.cuisine && r.cuisine !== "Other" && <span> · {r.cuisine}</span>}
-                </p>
-                {r.rationale && (
-                  <p className="text-[10px] italic text-violet-400 dark:text-violet-500 mt-0.5 line-clamp-2 leading-snug">
-                    {r.rationale}
-                  </p>
-                )}
-              </div>
-              <button
-                onClick={() => onAccept(r)}
-                disabled={isAccepted}
-                className={`shrink-0 text-xs px-2.5 py-1 rounded-full font-medium transition-colors ${
-                  isAccepted
-                    ? "bg-violet-200 dark:bg-violet-800 text-violet-500 dark:text-violet-400 cursor-not-allowed"
-                    : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-violet-100 dark:hover:bg-violet-900/30 hover:text-violet-700 dark:hover:text-violet-300"
-                }`}
-              >
-                {isAccepted ? "Added" : "Add"}
-              </button>
-            </div>
-          );
-        })}
-      </div>
     </div>
   );
 }
