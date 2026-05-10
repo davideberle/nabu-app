@@ -33,6 +33,10 @@
       "amount": "1 lb."
     },
     {
+      "item": "frozen peas",
+      "amount": "1 cup"
+    },
+    {
       "item": "turmeric",
       "amount": "½ tsp"
     },
@@ -93,5 +97,6 @@
     "chapter": "Thai Curries",
     "meal_role": "main"
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Southeast Asian",
+  "tips": "Serve with jasmine rice. Add the frozen peas in the last 2–3 minutes, just long enough to heat through and stay bright."
 }
