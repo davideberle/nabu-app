@@ -12,6 +12,7 @@ export type CookingKnowledgeNote = {
 };
 
 export type CookingGuidance = {
+  dishStory?: string;
   mealFlow: string[];
   pairing: CookingPairingSuggestion;
   knowledgeNotes: CookingKnowledgeNote[];
@@ -44,6 +45,7 @@ export function buildCookingGuidance({
   const profile = buildRecipeProfile(session.anchor.title, mainRecipe, mainIngredients, mainMethod, tableSides);
 
   return {
+    dishStory: buildDishStory(mainRecipe),
     mealFlow: buildMealFlow({
       mainTitle: session.anchor.title,
       mainIngredients,
@@ -51,6 +53,7 @@ export function buildCookingGuidance({
       sideRecipes,
       tableSides,
       profile,
+      tips: mainRecipe?.tips,
     }),
     pairing: getPairingSuggestion(profile),
     knowledgeNotes: getKnowledgeNotes(profile),
@@ -64,6 +67,7 @@ export function buildMealFlow({
   sideRecipes,
   tableSides,
   profile,
+  tips,
 }: {
   mainTitle: string;
   mainIngredients: SessionIngredient[];
@@ -71,37 +75,69 @@ export function buildMealFlow({
   sideRecipes: Recipe[];
   tableSides: string[];
   profile?: RecipeProfile;
+  tips?: string;
 }): string[] {
   const p = profile ?? buildRecipeProfile(mainTitle, undefined, mainIngredients, mainMethod, tableSides);
+  const cats = categorizeIngredients(mainIngredients);
   const steps: string[] = [];
-  const grainSides = tableSides.filter(isGrainOrStarchSide);
+
+  // Detect serving suggestion (e.g. "Serve with jasmine rice") from method/tips
+  const servingSuggestion = extractServingSuggestion(mainMethod, tips);
+
+  // Side categorization — include extracted serving suggestion as grain side if applicable
+  const grainSides = [...tableSides.filter(isGrainOrStarchSide)];
+  if (!grainSides.length && servingSuggestion && isGrainOrStarchSide(servingSuggestion)) {
+    grainSides.push(servingSuggestion);
+  }
   const freshSides = tableSides.filter(isFreshFinishSide);
   const warmAtEndSides = tableSides.filter(isWarmAtEndSide);
-  const handledSides = new Set([...grainSides, ...freshSides, ...warmAtEndSides]);
+  const handledSides = new Set([...tableSides.filter(isGrainOrStarchSide), ...freshSides, ...warmAtEndSides]);
   const otherSides = tableSides.filter((side) => !handledSides.has(side));
 
+  // === STEP 1: Prep ===
   if (p.hasSofrito) {
     steps.push(
       "Make or measure the sofrito first: blend/chop the aromatics if needed, then have it ready before the pot goes on."
     );
-    steps.push(
-      "Start the pot by heating oil, then sauté sofrito and aromatics until fragrant before adding liquid or longer-cooking ingredients."
-    );
   } else if (p.methodStyle === "marinate") {
-    steps.push("Check the marinating/resting step first; start that before you prep anything else.");
-  } else if (p.methodStyle === "bake") {
-    steps.push("Preheat the oven first, then prep the tray/pan and ingredients while it comes up to temperature.");
+    steps.push("Start the marinade or resting step first — that's the longest wait.");
+  } else if (p.methodStyle === "bake" || p.methodStyle === "roast") {
+    const prepItems = [...cats.aromatics, ...cats.proteins].slice(0, 3);
+    steps.push(
+      prepItems.length
+        ? `Preheat the oven. Prep ${formatList(prepItems).toLowerCase()} while it comes to temperature.`
+        : "Preheat the oven, then prep ingredients while it comes to temperature."
+    );
   } else if (p.methodStyle === "quick-stir-fry") {
-    steps.push("Prep every ingredient and sauce before heating the pan; once you start cooking, it moves fast.");
+    const allPrep = [...cats.aromatics, ...cats.proteins, ...cats.spices].slice(0, 4);
+    steps.push(
+      allPrep.length
+        ? `Prep everything before the wok goes on: ${formatList(allPrep).toLowerCase()}.`
+        : "Prep every ingredient and have sauces measured before heating the pan — it moves fast."
+    );
   } else if (p.methodStyle === "salad") {
-    steps.push("Make the dressing and any cooked/crunchy elements first; keep delicate leaves or herbs until the end.");
+    steps.push("Make the dressing first, then prep any cooked or crunchy elements. Save delicate leaves for last.");
   } else {
-    steps.push(`Read the ${mainTitle} method once, then gather and prep the slowest ingredients first.`);
+    // simmer / general — build a concrete prep step from ingredients
+    const prepParts: string[] = [];
+    if (cats.aromatics.length) prepParts.push(`prep ${formatList(cats.aromatics).toLowerCase()}`);
+    if (cats.spices.length) {
+      const shown = cats.spices.slice(0, 3);
+      const ellipsis = cats.spices.length > 3 ? " …" : "";
+      prepParts.push(`measure out the spices (${formatList(shown).toLowerCase()}${ellipsis})`);
+    }
+    if (prepParts.length) {
+      const sentence = prepParts.join(" and ");
+      steps.push(sentence.charAt(0).toUpperCase() + sentence.slice(1) + ".");
+    } else {
+      steps.push(`Gather and prep the ${mainTitle} ingredients, starting with anything that takes longest.`);
+    }
   }
 
+  // === STEP 2: Sides ===
   if (grainSides.length > 0) {
     steps.push(
-      `Start ${formatList(grainSides).toLowerCase()} early enough that it can finish and sit covered while the main cooks.`
+      `Start ${formatList(grainSides).toLowerCase()} now so it's ready when the main is done.`
     );
   }
 
@@ -111,37 +147,162 @@ export function buildMealFlow({
     );
   }
 
+  // === STEP 3–4: Main cooking ===
+  if (p.hasSofrito) {
+    steps.push(
+      "Start the pot by heating oil, then sauté sofrito and aromatics until fragrant before adding liquid or longer-cooking ingredients."
+    );
+  }
+
   if (p.methodStyle === "simmer") {
-    steps.push(`Simmer the ${mainTitle} gently, adding quick-cooking or delicate ingredients near the end.`);
+    // Build-the-base step with concrete ingredients
+    const baseParts: string[] = [];
+    if (cats.aromatics.length) baseParts.push(`cook ${formatList(cats.aromatics).toLowerCase()} until soft, add spices`);
+    if (cats.sauceBase.length) baseParts.push(`then add ${formatList(cats.sauceBase).toLowerCase()} and let it simmer`);
+    if (baseParts.length) {
+      steps.push(`Build the base: ${baseParts.join(", ")}.`);
+    } else {
+      steps.push("Build the sauce base and let it simmer until the flavors come together.");
+    }
+
+    // Protein + quick-cook step
+    if (cats.proteins.length) {
+      let proteinStep = `Add ${formatList(cats.proteins).toLowerCase()} to the simmering sauce and cook gently.`;
+      if (cats.quickCook.length) {
+        proteinStep += ` Drop in ${formatList(cats.quickCook).toLowerCase()} in the last few minutes.`;
+      }
+      steps.push(proteinStep);
+    } else if (cats.quickCook.length) {
+      steps.push(`Add ${formatList(cats.quickCook).toLowerCase()} near the end — they only need a few minutes.`);
+    }
   } else if (p.methodStyle === "roast" || p.methodStyle === "bake") {
-    steps.push(`Cook the ${mainTitle}, then use the oven time to clear prep and set up sides.`);
+    steps.push(`Get the ${mainTitle} in the oven, then use the time to prep sides and clear up.`);
   } else if (p.methodStyle === "quick-stir-fry") {
-    steps.push(`Cook the ${mainTitle} hot and fast; do not walk away from the pan.`);
+    steps.push(`Cook the ${mainTitle} hot and fast — do not walk away from the pan.`);
+    if (cats.quickCook.length) {
+      steps.push(`Toss in ${formatList(cats.quickCook).toLowerCase()} at the very end.`);
+    }
   } else if (p.methodStyle === "salad") {
-    steps.push(`Assemble the ${mainTitle} close to serving so it stays crisp.`);
+    steps.push(`Assemble the ${mainTitle} close to serving so everything stays crisp.`);
   } else {
-    steps.push(`Cook the ${mainTitle}, keeping quick-cooking or delicate ingredients for the end if the recipe calls for them.`);
+    // general
+    if (cats.proteins.length && cats.aromatics.length) {
+      steps.push(`Cook the ${mainTitle}: start with ${formatList(cats.aromatics).toLowerCase()}, then add ${formatList(cats.proteins).toLowerCase()}.`);
+    } else {
+      steps.push(`Cook the ${mainTitle}, keeping quick-cooking or delicate ingredients for the end.`);
+    }
+    if (cats.quickCook.length) {
+      steps.push(`Add ${formatList(cats.quickCook).toLowerCase()} near the end — they only need a few minutes.`);
+    }
   }
 
+  // === Side timing ===
   if (warmAtEndSides.length > 0) {
-    steps.push(`Warm ${formatList(warmAtEndSides).toLowerCase()} near serving time so it does not dry out.`);
+    steps.push(`Warm ${formatList(warmAtEndSides).toLowerCase()} near serving time.`);
   }
-
   if (freshSides.length > 0) {
-    steps.push(`Prepare ${formatList(freshSides).toLowerCase()} at the end so it stays fresh and bright next to the hot food.`);
+    steps.push(`Prepare ${formatList(freshSides).toLowerCase()} at the end so it stays fresh.`);
   }
-
   if (otherSides.length > 0) {
-    steps.push(`Bring ${formatList(otherSides).toLowerCase()} to the table while the main rests or gets its final seasoning.`);
+    steps.push(`Bring ${formatList(otherSides).toLowerCase()} to the table.`);
   }
 
+  // === Finish ===
   if (p.needsAcidFinish) {
-    steps.push("Taste at the end and add a small hit of acid — lemon, lime or vinegar — if the dish feels heavy or flat.");
+    if (cats.acidFinish.length) {
+      steps.push(`Finish with ${formatList(cats.acidFinish).toLowerCase()}, taste for salt, and serve.`);
+    } else {
+      steps.push("Taste at the end — add a squeeze of lemon or lime if it feels heavy or flat.");
+    }
   } else {
-    steps.push("Taste, adjust salt/herbs, then serve with the sides ready.");
+    const servePart = servingSuggestion && !grainSides.length ? ` with ${servingSuggestion}` : "";
+    steps.push(`Taste, adjust seasoning, and serve${servePart}.`);
   }
 
   return steps;
+}
+
+function buildDishStory(recipe?: Recipe): string | undefined {
+  const intro = recipe?.introduction ?? recipe?.intro;
+  if (intro && typeof intro === "string" && intro.trim()) return intro.trim();
+
+  // Factual source attribution — never fabricate
+  if (recipe?.source?.cookbook) {
+    const author =
+      recipe.source.author && recipe.source.author !== "Various"
+        ? ` by ${recipe.source.author}`
+        : "";
+    return `From ${recipe.source.cookbook}${author}.`;
+  }
+
+  return undefined;
+}
+
+type IngredientGroups = {
+  aromatics: string[];
+  spices: string[];
+  proteins: string[];
+  quickCook: string[];
+  acidFinish: string[];
+  sauceBase: string[];
+};
+
+function categorizeIngredients(ingredients: SessionIngredient[]): IngredientGroups {
+  const groups: IngredientGroups = {
+    aromatics: [],
+    spices: [],
+    proteins: [],
+    quickCook: [],
+    acidFinish: [],
+    sauceBase: [],
+  };
+
+  for (const ing of ingredients) {
+    const raw = ing.item.toLowerCase();
+    if (/^(vegetable oil|olive oil|oil|salt|water|butter|cooking spray|sugar|flour)\b/.test(raw)) continue;
+
+    const label = ingredientLabel(ing);
+
+    if (/\b(onion|shallot|leek|garlic|ginger|lemongrass|celery)\b/.test(raw) && !/powder/.test(raw)) {
+      groups.aromatics.push(label);
+    } else if (
+      /\b(cumin|turmeric|coriander|cardamom|curry|paprika|cinnamon|clove|nutmeg|cayenne|garam masala|mustard seed|fenugreek|saffron|star anise|five.spice|allspice|jalape[nñ]o|chili(?!\s*paste)|chilli(?!\s*paste)|pepper flakes|red pepper)\b/.test(
+        raw
+      )
+    ) {
+      groups.spices.push(label);
+    } else if (
+      /\b(cod|salmon|chicken|beef|lamb|pork|shrimp|prawn|tofu|tempeh|fish|turkey|veal|duck|seitan|halloumi|paneer|mussels?|clams?|squid|octopus)\b/.test(
+        raw
+      )
+    ) {
+      groups.proteins.push(label);
+    } else if (/\b(frozen peas|frozen corn|spinach|baby spinach|bean sprout|snow pea|sugar snap|bok choy|watercress)\b/.test(raw)) {
+      groups.quickCook.push(label);
+    } else if (/\b(lemon juice|lime juice|vinegar|tamarind|verjuice)\b/.test(raw)) {
+      groups.acidFinish.push(label);
+    } else if (/\b(tomato(?:es)?|passata|coconut milk|coconut cream|broth|stock)\b/.test(raw)) {
+      groups.sauceBase.push(label);
+    }
+  }
+
+  return groups;
+}
+
+function ingredientLabel(ing: SessionIngredient): string {
+  return ing.item
+    .replace(/^(medium|large|small|fresh|whole|dried|chopped|diced|minced|sliced|crushed|ground|grated)\s+/i, "")
+    .replace(/,\s*(chopped|diced|minced|sliced|seeded|finely|roughly|thinly|cut|peeled|trimmed).*$/i, "")
+    .replace(/\s+fillets?\b/i, "")
+    .replace(/\s+with\s+(their\s+)?juice\b/i, "")
+    .trim();
+}
+
+function extractServingSuggestion(method: string[], tips?: string): string | null {
+  const text = [...method, tips ?? ""].join(" ");
+  const match = text.match(/\b[Ss]erve\s+with\s+([^.,]+)/);
+  if (match) return match[1].trim();
+  return null;
 }
 
 export function extractTableSides(

@@ -148,7 +148,7 @@ function SessionView({
         </div>
 
         {/* Cooking flow — a quick practical sequence */}
-        <CookingFlowNote steps={guidance.mealFlow} timeLabel={timeLabel} />
+        <CookingFlowNote steps={guidance.mealFlow} timeLabel={timeLabel} dishStory={guidance.dishStory} />
 
         <KnowledgeNotes notes={guidance.knowledgeNotes} />
 
@@ -488,9 +488,11 @@ function EmptyState({ date }: { date: string }) {
 function CookingFlowNote({
   steps,
   timeLabel,
+  dishStory,
 }: {
   steps: string[];
   timeLabel: string | null;
+  dishStory?: string;
 }) {
   return (
     <div className="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800">
@@ -504,6 +506,11 @@ function CookingFlowNote({
           </span>
         )}
       </div>
+      {dishStory && (
+        <p className="mb-2 text-sm italic text-stone-500 dark:text-stone-400">
+          {dishStory}
+        </p>
+      )}
       <ol className="space-y-2">
         {steps.map((step, i) => (
           <li
