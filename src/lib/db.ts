@@ -697,6 +697,21 @@ export async function getRecentCookEvents(
   return result.rows.map((row) => rowToCookEvent(row as Record<string, unknown>));
 }
 
+/** Get cook events for a date range, newest event first within each day. */
+export async function getCookEventsForDateRange(
+  from: string,
+  to: string
+): Promise<CookEvent[]> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: `SELECT * FROM cook_events
+          WHERE cooked_on >= ? AND cooked_on <= ?
+          ORDER BY cooked_on DESC, created_at DESC`,
+    args: [from, to],
+  });
+  return result.rows.map((row) => rowToCookEvent(row as Record<string, unknown>));
+}
+
 /** Get the last cooked date for a recipe, or null if never cooked. */
 export async function getLastCookedDate(
   recipeId: string

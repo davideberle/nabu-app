@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getSessionsForDateRange } from "@/lib/cooking";
+import { getCookEventsForDateRange } from "@/lib/db";
 import { loadMealPlan } from "@/lib/meals-persistence";
 import { parseWeekId, getWeekDates } from "@/lib/meals";
 
@@ -9,8 +9,8 @@ import { parseWeekId, getWeekDates } from "@/lib/meals";
  *
  * For each day in the week returns a lightweight status:
  *   - "planned"           — recipe assigned, not yet cooked
- *   - "cooked-as-planned" — cooked the planned recipe
- *   - "cooked-other"      — cooked a different recipe than planned
+ *   - "cooked-as-planned" — explicitly marked cooked for the planned recipe
+ *   - "cooked-other"      — explicitly marked cooked for a different recipe
  *   - "skipped"           — day was planned but no cook happened (past only)
  *   - null                — no plan and no cook for that day
  *
@@ -55,35 +55,42 @@ export async function GET(request: NextRequest) {
   const to = weekDates[6].date;
   const today = new Date().toISOString().split("T")[0];
 
-  const [plan, sessions] = await Promise.all([
+  const [plan, cookEvents] = await Promise.all([
     loadMealPlan(weekParam),
-    getSessionsForDateRange(from, to),
+    getCookEventsForDateRange(from, to),
   ]);
 
-  // Build session lookup by date
-  const sessionByDate = new Map(sessions.map((s) => [s.date, s]));
+  const eventsByDate = new Map<string, typeof cookEvents>();
+  for (const event of cookEvents) {
+    const existing = eventsByDate.get(event.cookedOn) ?? [];
+    existing.push(event);
+    eventsByDate.set(event.cookedOn, existing);
+  }
 
   const days: DayHistory[] = weekDates.map((wd, i) => {
     const slot = plan?.days[i] ?? null;
-    const session = sessionByDate.get(wd.date) ?? null;
+    const events = eventsByDate.get(wd.date) ?? [];
     const hasPlannedRecipe = !!(slot?.recipeId);
-    const hasCooked = !!(session && (session.status === "completed" || session.status === "active"));
     const isPast = wd.date < today;
-    const cookedRecipeId = session?.anchor?.recipeId ?? null;
+    const plannedCookEvent = hasPlannedRecipe
+      ? events.find((event) => event.recipeId === slot!.recipeId)
+      : null;
+    const cookedEvent = plannedCookEvent ?? events[0] ?? null;
+    const hasCooked = !!cookedEvent;
+    const cookedRecipeId = cookedEvent?.recipeId ?? null;
 
     let status: DayHistoryStatus = null;
 
-    if (hasPlannedRecipe && hasCooked) {
-      status =
-        cookedRecipeId === slot!.recipeId
-          ? "cooked-as-planned"
-          : "cooked-other";
+    if (hasPlannedRecipe && plannedCookEvent) {
+      status = "cooked-as-planned";
+    } else if (hasPlannedRecipe && hasCooked) {
+      status = "cooked-other";
     } else if (hasPlannedRecipe && !hasCooked) {
       status = isPast ? "skipped" : "planned";
     } else if (!hasPlannedRecipe && hasCooked) {
       status = "cooked-other";
     }
-    // else: null — no plan and no cook
+    // else: null — no plan and no explicit cook event
 
     return {
       date: wd.date,
@@ -91,7 +98,7 @@ export async function GET(request: NextRequest) {
       plannedRecipeId: slot?.recipeId ?? null,
       plannedRecipeName: slot?.recipeName ?? null,
       cookedRecipeId,
-      cookedRecipeName: session?.anchor?.title ?? null,
+      cookedRecipeName: null,
     };
   });
 
