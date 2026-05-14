@@ -5,7 +5,6 @@
 import { getDb } from "./db";
 import { loadMealPlan } from "./meals-persistence";
 import { getRecipe } from "./recipes";
-import { buildCookingGuidance } from "./cooking-guidance";
 import { getISOWeek } from "./meals";
 
 // ---------------------------------------------------------------------------
@@ -357,6 +356,22 @@ const VALID_ADAPTATION_KINDS: AdaptationKind[] = [
   "rescue-fix",
 ];
 
+function mergeTextLists(...lists: (string[] | undefined)[]): string[] {
+  const seen = new Set<string>();
+  const result: string[] = [];
+  for (const list of lists) {
+    for (const item of list ?? []) {
+      const trimmed = item.trim();
+      if (!trimmed) continue;
+      const key = trimmed.toLowerCase().replace(/\s+/g, " ");
+      if (seen.has(key)) continue;
+      seen.add(key);
+      result.push(trimmed);
+    }
+  }
+  return result;
+}
+
 export function validatePatch(patch: SessionPatch): string | null {
   if (patch.status && !VALID_STATUSES.includes(patch.status)) {
     return `Invalid status: ${patch.status}`;
@@ -543,9 +558,6 @@ export async function createSessionFromPlan(
     }
   }
   const serveWith = meal?.serveWith ?? [];
-  const relatedRecipeRecords = (
-    await Promise.all(relatedRecipes.map((related) => getRecipe(related.recipeId)))
-  ).filter((side): side is NonNullable<typeof side> => !!side);
 
   // Existing meal-plan session: sync plan-derived fields, preserve user edits
   if (existing) {
@@ -560,7 +572,7 @@ export async function createSessionFromPlan(
       },
       mealPlanRef: { week: weekId, day: daySlot.dayOfWeek },
       relatedRecipes,
-      serveWith,
+      serveWith: mergeTextLists(existing.serveWith, serveWith),
       // Sync base servings/ingredients/method when main recipe changed,
       // and reset current servings only if user hasn't adjusted them
       servings: mainChanged
@@ -579,17 +591,12 @@ export async function createSessionFromPlan(
         ? { base: recipe.method, session: [] }
         : { base: recipe.method, session: existing.method.session },
     };
-    const guidance = buildCookingGuidance({
-      session: syncedBase,
-      mainRecipe: recipe,
-      sideRecipes: relatedRecipeRecords,
-    });
     const synced: CookingSession = {
       ...syncedBase,
       coachCards: {
         ...syncedBase.coachCards,
         nextMove: null,
-        upgrade: guidance.mealFlow.at(-1) ?? syncedBase.coachCards.upgrade,
+        upgrade: syncedBase.coachCards.upgrade ?? null,
       },
     };
     await saveCookingSession(synced);
@@ -611,16 +618,11 @@ export async function createSessionFromPlan(
     relatedRecipes,
     serveWith,
   });
-  const guidance = buildCookingGuidance({
-    session: sessionBase,
-    mainRecipe: recipe,
-    sideRecipes: relatedRecipeRecords,
-  });
   const session: CookingSession = {
     ...sessionBase,
     coachCards: {
       nextMove: null,
-      upgrade: guidance.mealFlow.at(-1) ?? null,
+      upgrade: null,
       shortcut: null,
       wine: null,
     },
