@@ -4,7 +4,7 @@ import { CompleteSessionButton } from "./complete-session-button";
 import { NabuBadge, NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageShell, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
 import { createSessionFromPlan } from "@/lib/cooking";
 import { todayInZurich } from "@/lib/date";
-import type { CookingSession, SessionIngredient, CoachCards } from "@/lib/cooking";
+import type { CookingSession, SessionIngredient } from "@/lib/cooking";
 import { buildCookingGuidance, extractTableSides, formatList, formatRecipeTime } from "@/lib/cooking-guidance";
 import { formatServings, getRecipe } from "@/lib/recipes";
 import type { Recipe } from "@/lib/recipes";
@@ -141,15 +141,7 @@ function SessionView({
           </span>
         </div>
 
-        {/* Cooking flow — a quick practical sequence */}
-        <CookingFlowNote steps={guidance.mealFlow} timeLabel={timeLabel} dishStory={guidance.dishStory} />
-
-        <KnowledgeNotes notes={guidance.knowledgeNotes} />
-
       </NabuSurface>
-
-      {/* Coach cards */}
-      <CoachCardsSection cards={session.coachCards} />
 
       {/* ── Meal components: main → sides → serve-with notes ── */}
       <MealComponentBlock
@@ -178,7 +170,7 @@ function SessionView({
 
       {tableSides.length > 0 && (
         <NabuSurface tone="muted" className="p-4">
-          <NabuKicker>Also on the table</NabuKicker>
+          <NabuKicker>Serve with</NabuKicker>
           <ul className="mt-2 space-y-1">
             {tableSides.map((item, i) => (
               <li key={i} className="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400">
@@ -190,24 +182,11 @@ function SessionView({
         </NabuSurface>
       )}
 
-      {/* Adaptations */}
-      {session.adaptations.length > 0 && (
-        <NabuSurface className="p-5">
-          <NabuKicker>Session Modifications</NabuKicker>
-          <ul className="mt-3 space-y-2">
-            {session.adaptations.map((a) => (
-              <li key={a.id} className="flex items-start gap-2 text-sm">
-                <span className="shrink-0 text-[10px] px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 mt-0.5">
-                  {a.kind}
-                </span>
-                <span className="text-stone-600 dark:text-stone-400">
-                  {a.summary}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </NabuSurface>
-      )}
+      <PairingSuggestions
+        pairing={guidance.pairing}
+        wineOverride={session.coachCards.wine}
+        date={session.date}
+      />
 
       {/* Notes */}
       {session.notes && (
@@ -218,8 +197,6 @@ function SessionView({
           </p>
         </NabuSurface>
       )}
-
-      <PairingSuggestions pairing={guidance.pairing} />
 
       <NabuSurface className="p-5">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -274,40 +251,6 @@ function StoryCard({
         </div>
       </div>
     </NabuSurface>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Coach cards
-// ---------------------------------------------------------------------------
-
-const CARD_CONFIG: { key: keyof CoachCards; label: string; icon: string; color: string }[] = [
-  { key: "upgrade", label: "Upgrade", icon: "\u2728", color: "border-l-violet-400" },
-  { key: "shortcut", label: "Shortcut", icon: "\u23F1\uFE0F", color: "border-l-sky-400" },
-];
-
-function CoachCardsSection({ cards }: { cards: CoachCards }) {
-  const active = CARD_CONFIG.filter((c) => cards[c.key]);
-  if (active.length === 0) return null;
-
-  return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      {active.map((cfg) => (
-        <NabuSurface
-          key={cfg.key}
-          as="div"
-          className={`border-l-4 ${cfg.color} p-4`}
-        >
-          <div className="mb-1 flex items-center gap-2">
-            <span className="text-sm">{cfg.icon}</span>
-            <NabuKicker>{cfg.label}</NabuKicker>
-          </div>
-          <p className="text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-            {cards[cfg.key]}
-          </p>
-        </NabuSurface>
-      ))}
-    </section>
   );
 }
 
@@ -486,90 +429,26 @@ function EmptyState({ date }: { date: string }) {
   );
 }
 
-// ---------------------------------------------------------------------------
-// Cooking flow note — practical sequence summary
-// ---------------------------------------------------------------------------
-
-function CookingFlowNote({
-  steps,
-  timeLabel,
-  dishStory,
-}: {
-  steps: string[];
-  timeLabel: string | null;
-  dishStory?: string;
-}) {
-  return (
-    <div className="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800">
-      <div className="mb-2 flex items-center justify-between gap-3">
-        <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
-          Meal flow
-        </p>
-        {timeLabel && (
-          <span className="text-xs text-stone-400 dark:text-stone-500">
-            {timeLabel}
-          </span>
-        )}
-      </div>
-      {dishStory && (
-        <p className="mb-2 text-sm italic text-stone-500 dark:text-stone-400">
-          {dishStory}
-        </p>
-      )}
-      <ol className="space-y-2">
-        {steps.map((step, i) => (
-          <li
-            key={i}
-            className="flex gap-2 text-sm text-stone-600 dark:text-stone-400"
-          >
-            <span className="shrink-0 tabular-nums text-stone-300 dark:text-stone-600">
-              {i + 1}.
-            </span>
-            <span>{step}</span>
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-}
-
-function KnowledgeNotes({
-  notes,
-}: {
-  notes: { term: string; note: string }[];
-}) {
-  if (notes.length === 0) return null;
-
-  return (
-    <div className="mt-4 border-t border-stone-100 pt-3 dark:border-stone-800">
-      <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
-        Quick explanations
-      </p>
-      <dl className="mt-2 space-y-2">
-        {notes.map((item) => (
-          <div key={item.term} className="text-sm leading-relaxed">
-            <dt className="font-medium text-stone-700 dark:text-stone-300">{item.term}</dt>
-            <dd className="text-stone-500 dark:text-stone-400">{item.note}</dd>
-          </div>
-        ))}
-      </dl>
-    </div>
-  );
-}
-
 function PairingSuggestions({
   pairing,
+  wineOverride,
+  date,
 }: {
   pairing: { wine: string; nonAlcoholic: string };
+  wineOverride?: string | null;
+  date: string;
 }) {
+  const wine = withDrinkEmoji(wineOverride?.trim() || pairing.wine, "🍷");
+  const showNonAlcoholic = isMondayOrTuesday(date);
+
   return (
     <NabuSurface className="overflow-hidden p-5">
       <div className="mb-4 flex items-center gap-3">
         <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-violet-50 text-lg dark:bg-violet-950/40">
-          🍷
+          {firstDrinkEmoji(wine) ?? "🍷"}
         </div>
         <div>
-          <NabuKicker>Drinks</NabuKicker>
+          <NabuKicker>Wine</NabuKicker>
           <h2 className="mt-1 text-lg font-semibold tracking-[-0.02em] text-primary">
             Pair with this meal
           </h2>
@@ -581,17 +460,19 @@ function PairingSuggestions({
             Wine
           </p>
           <p className="mt-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-            {pairing.wine}
+            {wine}
           </p>
         </div>
-        <div className="rounded-2xl border border-stone-100 bg-stone-50/70 p-4 dark:border-stone-800 dark:bg-stone-900/40">
-          <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
-            Non-alcoholic
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-            {pairing.nonAlcoholic}
-          </p>
-        </div>
+        {showNonAlcoholic && (
+          <div className="rounded-2xl border border-stone-100 bg-stone-50/70 p-4 dark:border-stone-800 dark:bg-stone-900/40">
+            <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
+              Non-alcoholic
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
+              {pairing.nonAlcoholic}
+            </p>
+          </div>
+        )}
       </div>
     </NabuSurface>
   );
@@ -600,6 +481,21 @@ function PairingSuggestions({
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+
+const DRINK_EMOJIS = ["🍷", "🥂", "🍾", "🍺"];
+
+function firstDrinkEmoji(text: string): string | null {
+  return DRINK_EMOJIS.find((emoji) => text.includes(emoji)) ?? null;
+}
+
+function withDrinkEmoji(text: string, fallback: string): string {
+  return firstDrinkEmoji(text) ? text : `${fallback} ${text}`;
+}
+
+function isMondayOrTuesday(date: string): boolean {
+  const day = new Date(date + "T12:00:00").getDay();
+  return day === 1 || day === 2;
+}
 
 function formatDateDisplay(date: string): string {
   const d = new Date(date + "T12:00:00");
