@@ -226,15 +226,6 @@ function buildDishStory(recipe?: Recipe): string | undefined {
   const intro = recipe?.introduction ?? recipe?.intro;
   if (intro && typeof intro === "string" && intro.trim()) return intro.trim();
 
-  // Factual source attribution — never fabricate
-  if (recipe?.source?.cookbook) {
-    const author =
-      recipe.source.author && recipe.source.author !== "Various"
-        ? ` by ${recipe.source.author}`
-        : "";
-    return `From ${recipe.source.cookbook}${author}.`;
-  }
-
   return undefined;
 }
 

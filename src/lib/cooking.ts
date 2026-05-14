@@ -458,7 +458,35 @@ export async function patchCookingSession(
 
   const updated = applyPatch(session, patch);
   await saveCookingSession(updated);
+  if (patch.status === "completed") {
+    await recordCookEventForSession(updated);
+  }
   return updated;
+}
+
+async function recordCookEventForSession(session: CookingSession): Promise<void> {
+  const recipeId = session.anchor.recipeId;
+  if (!recipeId) return;
+
+  const client = await getDb();
+  const existing = await client.execute({
+    sql: "SELECT id FROM cook_events WHERE recipe_id = ? AND cooked_on = ? LIMIT 1",
+    args: [recipeId, session.date],
+  });
+  if (existing.rows.length > 0) return;
+
+  await client.execute({
+    sql: `INSERT INTO cook_events (id, recipe_id, cooked_on, note, source, created_at)
+          VALUES (?, ?, ?, ?, ?, ?)`,
+    args: [
+      crypto.randomUUID(),
+      recipeId,
+      session.date,
+      null,
+      "live-cooking",
+      new Date().toISOString(),
+    ],
+  });
 }
 
 // ---------------------------------------------------------------------------

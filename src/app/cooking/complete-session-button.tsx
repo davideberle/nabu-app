@@ -44,10 +44,10 @@ export function CompleteSessionButton({
         onClick={handleClick}
         disabled={completed || saving}
         tone={completed ? "secondary" : "primary"}
-        size="sm"
+        size="md"
         className="w-full justify-center sm:w-auto"
       >
-        {completed ? "Completed" : saving ? "Saving..." : "Mark complete"}
+        {completed ? "Cooked" : saving ? "Saving..." : "Mark cooked"}
       </NabuButton>
       {error ? <p className="text-xs text-red-500 dark:text-red-400">{error}</p> : null}
     </div>

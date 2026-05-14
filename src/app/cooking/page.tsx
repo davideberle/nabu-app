@@ -95,12 +95,6 @@ function SessionView({
         <NabuSectionHeader
           eyebrow="Tonight’s meal"
           title={session.anchor.title}
-          action={
-            <CompleteSessionButton
-              sessionId={session.id}
-              completed={session.status === "completed"}
-            />
-          }
         />
 
         {hasSides && (
@@ -152,7 +146,6 @@ function SessionView({
 
         <KnowledgeNotes notes={guidance.knowledgeNotes} />
 
-        <PairingSuggestions pairing={guidance.pairing} />
       </NabuSurface>
 
       {/* Coach cards */}
@@ -226,6 +219,23 @@ function SessionView({
         </NabuSurface>
       )}
 
+      <PairingSuggestions pairing={guidance.pairing} />
+
+      <NabuSurface className="p-5">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <NabuKicker>Finish session</NabuKicker>
+            <p className="mt-1 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
+              Mark this meal as cooked when dinner is actually done.
+            </p>
+          </div>
+          <CompleteSessionButton
+            sessionId={session.id}
+            completed={session.status === "completed"}
+          />
+        </div>
+      </NabuSurface>
+
       {/* Footer meta */}
       <div className="text-center text-xs text-stone-400 dark:text-stone-600 pb-8">
         Last updated {formatTimestamp(session.updatedAt)}
@@ -261,11 +271,6 @@ function StoryCard({
           <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-stone-700 dark:text-stone-300">
             {story.text}
           </p>
-          {story.source && (
-            <p className="mt-3 text-xs text-stone-400 dark:text-stone-500">
-              Source: {story.source}
-            </p>
-          )}
         </div>
       </div>
     </NabuSurface>
@@ -558,24 +563,37 @@ function PairingSuggestions({
   pairing: { wine: string; nonAlcoholic: string };
 }) {
   return (
-    <div className="mt-4 grid gap-3 border-t border-stone-100 pt-3 sm:grid-cols-2 dark:border-stone-800">
-      <div>
-        <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
-          Wine
-        </p>
-        <p className="mt-1 text-sm leading-relaxed text-stone-600 dark:text-stone-400">
-          {pairing.wine}
-        </p>
+    <NabuSurface className="overflow-hidden p-5">
+      <div className="mb-4 flex items-center gap-3">
+        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-violet-50 text-lg dark:bg-violet-950/40">
+          🍷
+        </div>
+        <div>
+          <NabuKicker>Drinks</NabuKicker>
+          <h2 className="mt-1 text-lg font-semibold tracking-[-0.02em] text-primary">
+            Pair with this meal
+          </h2>
+        </div>
       </div>
-      <div>
-        <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
-          Non-alcoholic
-        </p>
-        <p className="mt-1 text-sm leading-relaxed text-stone-600 dark:text-stone-400">
-          {pairing.nonAlcoholic}
-        </p>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <div className="rounded-2xl border border-stone-100 bg-stone-50/70 p-4 dark:border-stone-800 dark:bg-stone-900/40">
+          <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
+            Wine
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
+            {pairing.wine}
+          </p>
+        </div>
+        <div className="rounded-2xl border border-stone-100 bg-stone-50/70 p-4 dark:border-stone-800 dark:bg-stone-900/40">
+          <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
+            Non-alcoholic
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
+            {pairing.nonAlcoholic}
+          </p>
+        </div>
       </div>
-    </div>
+    </NabuSurface>
   );
 }
 
