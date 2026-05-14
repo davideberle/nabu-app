@@ -103,7 +103,9 @@ const HIDDEN_COOKBOOKS = new Set([
 // Static cookbook recipes loaded from the pre-built bundle (see scripts/bundle-recipes.mjs).
 // Using a static import instead of fs.readdirSync avoids Turbopack bundling thousands
 // of individual JSON files into every serverless function that touches this module.
-const staticRecipes: Recipe[] = (recipesBundle as Recipe[])
+const allStaticRecipes: Recipe[] = recipesBundle as Recipe[];
+
+const staticRecipes: Recipe[] = allStaticRecipes
   .filter((r) => r.source?.cookbook !== "My Recipes" && !HIDDEN_COOKBOOKS.has(r.source?.cookbook ?? ""))
   .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -122,8 +124,10 @@ export const getAllRecipes = cache(async (): Promise<Recipe[]> => {
 });
 
 export async function getRecipe(id: string): Promise<Recipe | undefined> {
-  // Check static first (fast path for the vast majority)
-  const staticHit = staticRecipes.find((r) => r.id === id);
+  // Check the full static bundle first. Hidden cookbooks stay out of browse
+  // surfaces, but explicit recipe references (for example live-cooking sides)
+  // should still resolve to ingredients and method.
+  const staticHit = allStaticRecipes.find((r) => r.id === id);
   if (staticHit) return staticHit;
   // Fall back to Turso for My Recipes (skip if DB unavailable at build time)
   return canAccessDb ? getMyRecipe(id) : undefined;
