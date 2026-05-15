@@ -26,6 +26,7 @@ export async function POST(request: NextRequest) {
   await createMyRecipe(recipe);
   revalidatePath("/recipes");
   revalidatePath("/recipes/cookbook/my-recipes");
+  revalidatePath(`/recipes/${recipe.id}`);
   return NextResponse.json(recipe, { status: 201 });
 }
 
@@ -42,6 +43,7 @@ export async function PUT(request: NextRequest) {
   await updateMyRecipe(recipe.id, recipe);
   revalidatePath("/recipes");
   revalidatePath("/recipes/cookbook/my-recipes");
+  revalidatePath(`/recipes/${recipe.id}`);
   return NextResponse.json(recipe);
 }
 
@@ -65,5 +67,6 @@ export async function DELETE(request: NextRequest) {
 
   revalidatePath("/recipes");
   revalidatePath("/recipes/cookbook/my-recipes");
+  revalidatePath(`/recipes/${id}`);
   return NextResponse.json({ ok: true });
 }
