@@ -438,42 +438,37 @@ function PairingSuggestions({
   wineOverride?: string | null;
   date: string;
 }) {
-  const wine = withDrinkEmoji(wineOverride?.trim() || pairing.wine, "🍷");
+  const wine = wineOverride?.trim() || pairing.wine;
+  const wineEmoji = firstDrinkEmoji(wine) ?? "🍷";
+  const wineText = stripDrinkEmoji(wine);
   const showNonAlcoholic = isMondayOrTuesday(date);
 
   return (
-    <NabuSurface className="overflow-hidden p-5">
-      <div className="mb-4 flex items-center gap-3">
-        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-violet-50 text-lg dark:bg-violet-950/40">
-          {firstDrinkEmoji(wine) ?? "🍷"}
+    <NabuSurface className="overflow-hidden p-3.5 sm:p-4">
+      <div className="flex items-start gap-3">
+        <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-violet-50 text-base dark:bg-violet-950/40">
+          {wineEmoji}
         </div>
-        <div>
-          <NabuKicker>Wine</NabuKicker>
-          <h2 className="mt-1 text-lg font-semibold tracking-[-0.02em] text-primary">
-            Pair with this meal
-          </h2>
-        </div>
-      </div>
-      <div className="grid gap-3 sm:grid-cols-2">
-        <div className="rounded-2xl border border-stone-100 bg-stone-50/70 p-4 dark:border-stone-800 dark:bg-stone-900/40">
-          <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
-            Wine
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-            {wine}
-          </p>
-        </div>
-        {showNonAlcoholic && (
-          <div className="rounded-2xl border border-stone-100 bg-stone-50/70 p-4 dark:border-stone-800 dark:bg-stone-900/40">
-            <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
-              Non-alcoholic
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-              {pairing.nonAlcoholic}
-            </p>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+            <NabuKicker>Wine</NabuKicker>
+            <span className="text-sm font-medium text-primary">Pairing</span>
           </div>
-        )}
+          <p className="mt-1 text-sm leading-snug text-stone-700 dark:text-stone-300">
+            {wineText}
+          </p>
+        </div>
       </div>
+      {showNonAlcoholic && (
+        <div className="mt-3 rounded-xl border border-stone-100 bg-stone-50/70 px-3 py-2 dark:border-stone-800 dark:bg-stone-900/40">
+          <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
+            Non-alcoholic
+          </p>
+          <p className="mt-1 text-sm leading-snug text-stone-700 dark:text-stone-300">
+            {pairing.nonAlcoholic}
+          </p>
+        </div>
+      )}
     </NabuSurface>
   );
 }
@@ -488,8 +483,8 @@ function firstDrinkEmoji(text: string): string | null {
   return DRINK_EMOJIS.find((emoji) => text.includes(emoji)) ?? null;
 }
 
-function withDrinkEmoji(text: string, fallback: string): string {
-  return firstDrinkEmoji(text) ? text : `${fallback} ${text}`;
+function stripDrinkEmoji(text: string): string {
+  return text.replace(new RegExp(DRINK_EMOJIS.join("|"), "g"), "").trim();
 }
 
 function isMondayOrTuesday(date: string): boolean {
