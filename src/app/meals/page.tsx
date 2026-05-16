@@ -478,6 +478,57 @@ function MealsPageInner() {
               })
               .catch(() => { /* non-critical — stale image is cosmetic */ });
           }
+
+          // Reconcile stored web inspirations that may not be in candidateSet
+          fetch(`/api/meals/inspirations?week=${encodeURIComponent(weekId)}`)
+            .then((r) => (r.ok ? r.json() : { candidates: [] }))
+            .then((inspData: { candidates?: RecipeOption[] }) => {
+              if (cancelled) return;
+              const webCandidates = inspData.candidates ?? [];
+              if (webCandidates.length === 0) return;
+
+              const existingItems = normalized.candidateSet?.items ?? [];
+              const existingIds = new Set(existingItems.map((c: CandidateItem) => c.recipeId));
+
+              // Merge into visible candidates (dedup by id)
+              setCandidates((prev) => {
+                const prevIds = new Set(prev.map((r) => r.id));
+                const novel = webCandidates.filter((r) => !prevIds.has(r.id));
+                return novel.length > 0 ? [...prev, ...novel] : prev;
+              });
+
+              // Persist missing web inspirations into the candidateSet
+              const missingItems: CandidateItem[] = webCandidates
+                .filter((r) => !existingIds.has(r.id))
+                .map((r) => ({
+                  recipeId: r.id,
+                  recipeName: r.name,
+                  source: r.source ?? null,
+                  image: r.image ?? null,
+                  dietary: r.dietary,
+                  cuisine: r.cuisine,
+                  time: r.time,
+                  category: r.category,
+                  courseTags: r.courseTags,
+                  bucket: "web-inspiration",
+                }));
+
+              if (missingItems.length > 0) {
+                const repairedSet: CandidateSet = {
+                  generatedAt: normalized.candidateSet?.generatedAt ?? new Date().toISOString(),
+                  policyVersion: normalized.candidateSet?.policyVersion?.includes("+web")
+                    ? normalized.candidateSet.policyVersion
+                    : `${normalized.candidateSet?.policyVersion ?? "planner-v2.1"}+web`,
+                  bucketContract: normalized.candidateSet?.bucketContract,
+                  diagnostics: normalized.candidateSet?.diagnostics,
+                  items: [...existingItems, ...missingItems],
+                };
+                const repairedPlan = { ...normalized, candidateSet: repairedSet };
+                setPlan(repairedPlan);
+                savePlanNow(repairedPlan).catch(() => {});
+              }
+            })
+            .catch(() => { /* non-critical — web inspirations are supplementary */ });
         } else {
           setPlan(null);
         }
