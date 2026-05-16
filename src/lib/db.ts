@@ -464,6 +464,29 @@ async function migrate(client: Client) {
           ON web_recipe_inspirations (week)
       `);
     },
+
+    // v9 -> v10: repair older web_recipe_inspirations tables created before imported_at existed
+    async () => {
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS web_recipe_inspirations (
+          recipe_id   TEXT PRIMARY KEY,
+          week        TEXT NOT NULL,
+          source_url  TEXT NOT NULL,
+          source_name TEXT NOT NULL,
+          imported_at TEXT
+        )
+      `);
+      const columns = await client.execute("PRAGMA table_info(web_recipe_inspirations)");
+      const hasImportedAt = columns.rows.some((row) => row.name === "imported_at");
+      if (!hasImportedAt) {
+        await client.execute("ALTER TABLE web_recipe_inspirations ADD COLUMN imported_at TEXT");
+      }
+      await client.execute("UPDATE web_recipe_inspirations SET imported_at = COALESCE(imported_at, datetime('now'))");
+      await client.execute(`
+        CREATE INDEX IF NOT EXISTS idx_web_recipe_inspirations_week
+          ON web_recipe_inspirations (week)
+      `);
+    },
   ];
 
   if (version < migrations.length) {
