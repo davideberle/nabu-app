@@ -3,6 +3,7 @@ import { auth, signOut } from "@/auth";
 import { NabuCard, NabuHeader, NabuIconFrame, NabuMain, NabuPageShell, NabuPill, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
 import { initialTodos } from "@/lib/todos";
 import { getRecipesByCookbook } from "@/lib/recipes";
+import { houseAssets } from "@/data/house-assets";
 
 async function getTiles() {
   const activeTodos = initialTodos.filter((t) => !t.completed).length;
@@ -57,6 +58,14 @@ async function getTiles() {
       description: "Weekly meal planning",
       href: "/meals",
       stats: "Plan ahead",
+    },
+    {
+      id: "assets",
+      name: "House Assets",
+      emoji: "🏠",
+      description: "Equipment, warranties, maintenance",
+      href: "/assets",
+      stats: `${houseAssets.length} tracked`,
     },
     {
       id: "system",
