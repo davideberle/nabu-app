@@ -877,6 +877,11 @@ export type WebRecipeInspiration = {
   imported_at: string;
 };
 
+async function hasWebInspirationImportedAt(client: Client): Promise<boolean> {
+  const columns = await client.execute("PRAGMA table_info(web_recipe_inspirations)");
+  return columns.rows.some((row) => String(row.name) === "imported_at");
+}
+
 /** Record provenance for a web inspiration recipe. */
 export async function recordWebInspiration(
   recipeId: string,
@@ -885,6 +890,10 @@ export async function recordWebInspiration(
   sourceName: string
 ): Promise<void> {
   const client = await getDb();
+  const hasImportedAt = await hasWebInspirationImportedAt(client);
+  if (!hasImportedAt) {
+    await client.execute("ALTER TABLE web_recipe_inspirations ADD COLUMN imported_at TEXT");
+  }
   await client.execute({
     sql: `INSERT INTO web_recipe_inspirations (recipe_id, week, source_url, source_name, imported_at)
           VALUES (?, ?, ?, ?, ?)
@@ -908,6 +917,10 @@ export async function getWebInspirationsForWeek(
   week: string
 ): Promise<WebRecipeInspiration[]> {
   const client = await getDb();
+  const hasImportedAt = await hasWebInspirationImportedAt(client);
+  if (!hasImportedAt) {
+    await client.execute("ALTER TABLE web_recipe_inspirations ADD COLUMN imported_at TEXT");
+  }
   const result = await client.execute({
     sql: "SELECT * FROM web_recipe_inspirations WHERE week = ? ORDER BY imported_at DESC",
     args: [week],
