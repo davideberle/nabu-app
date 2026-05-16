@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  outputFileTracingIncludes: {
+    "/api/meals/inspirations": ["./scripts/weekly-inspirations.mjs"],
+  },
   images: {
     remotePatterns: [
       {

@@ -13,10 +13,10 @@ import {
   getMyRecipe,
 } from "@/lib/db";
 import type { Recipe } from "@/lib/recipes";
-import { exec } from "node:child_process";
+import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 
-const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 
 type RecipeOption = {
   id: string;
@@ -97,23 +97,22 @@ export async function POST(request: NextRequest) {
   const week = body.week ?? currentIsoWeekId();
   const count = body.count ?? 4;
 
-  // Check if Kitchen importer is configured
-  const importerCommand = process.env.KITCHEN_INSPIRATION_IMPORTER_COMMAND;
-  if (!importerCommand) {
-    return NextResponse.json(
-      {
-        error: "Kitchen inspiration importer not configured. Set KITCHEN_INSPIRATION_IMPORTER_COMMAND environment variable.",
-        week,
-        candidates: [],
-      },
-      { status: 503 }
-    );
+  // Validate week/count to prevent argument injection
+  if (typeof week !== "string" || !/^\d{4}-W\d{2}$/.test(week)) {
+    return NextResponse.json({ error: "Invalid week format (expected YYYY-Wnn)" }, { status: 400 });
   }
+  if (typeof count !== "number" || !Number.isInteger(count) || count < 1 || count > 12) {
+    return NextResponse.json({ error: "Invalid count (expected 1-12)" }, { status: 400 });
+  }
+
+  // Use configured importer or fall back to vendored kitchen importer script
+  const customCommand = process.env.KITCHEN_INSPIRATION_IMPORTER_COMMAND;
+  const scriptPath = `${process.cwd()}/scripts/weekly-inspirations.mjs`;
+  const importerArgs = ["--week", week, "--count", String(count), "--write-app-files", "--write-app-db", "--yes", "--json"];
 
   try {
     // Run the Kitchen importer
-    const command = `${importerCommand} --week ${week} --count ${count} --write-app-files --write-app-db --yes --json`;
-    const { stdout, stderr } = await execAsync(command, {
+    const execOpts = {
       env: {
         ...process.env,
         NABU_DB_DIR: process.env.NABU_DB_DIR || process.env.HOME + "/.openclaw/workspace/projects/companion-app/app",
@@ -122,7 +121,11 @@ export async function POST(request: NextRequest) {
         BLOB_READ_WRITE_TOKEN: process.env.BLOB_READ_WRITE_TOKEN,
       },
       timeout: 60000,
-    });
+    };
+
+    const { stdout, stderr } = customCommand
+      ? await execFileAsync(customCommand.split(" ")[0], [...customCommand.split(" ").slice(1), ...importerArgs], execOpts)
+      : await execFileAsync(process.execPath, [scriptPath, ...importerArgs], execOpts);
 
     if (stderr && !stderr.includes("warning")) {
       console.error("Kitchen importer stderr:", stderr);
