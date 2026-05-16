@@ -23,6 +23,34 @@
   },
   "ingredients": [
     {
+      "amount": "1 lb 2 oz / 500 g",
+      "unit": "",
+      "item": "shelled fava beans (fresh or frozen)",
+      "original": "1 lb 2 oz / 500 g shelled fava beans (fresh or frozen)",
+      "group": null
+    },
+    {
+      "amount": "12",
+      "unit": "",
+      "item": "radishes, trimmed",
+      "original": "12 radishes, trimmed",
+      "group": null
+    },
+    {
+      "amount": "1",
+      "unit": "",
+      "item": "small red onion, very thinly sliced",
+      "original": "1 small red onion, very thinly sliced",
+      "group": null
+    },
+    {
+      "amount": "3",
+      "unit": "tbsp",
+      "item": "chopped cilantro",
+      "original": "3 tbsp chopped cilantro",
+      "group": null
+    },
+    {
       "amount": "30",
       "unit": "g",
       "item": "preserved lemon, finely chopped",

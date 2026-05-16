@@ -37,10 +37,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "snack"
     ],
     "chapter": "Balls & Bars",
-    "meal_role": "main"
+    "meal_role": "snack"
   },
   "cuisine": "Other"
 }
