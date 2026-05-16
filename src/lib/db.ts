@@ -447,6 +447,23 @@ async function migrate(client: Client) {
         )
       `);
     },
+
+    // v8 -> v9: create web_recipe_inspirations provenance table
+    async () => {
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS web_recipe_inspirations (
+          recipe_id   TEXT PRIMARY KEY,
+          week        TEXT NOT NULL,
+          source_url  TEXT NOT NULL,
+          source_name TEXT NOT NULL,
+          imported_at TEXT NOT NULL
+        )
+      `);
+      await client.execute(`
+        CREATE INDEX IF NOT EXISTS idx_web_recipe_inspirations_week
+          ON web_recipe_inspirations (week)
+      `);
+    },
   ];
 
   if (version < migrations.length) {
@@ -823,4 +840,54 @@ export async function getThumbsDownRecipeIds(): Promise<Set<string>> {
     "SELECT recipe_id FROM recipe_feedback WHERE feedback = 'down'"
   );
   return new Set(result.rows.map((row) => row["recipe_id"] as string));
+}
+
+// ---------------------------------------------------------------------------
+// Web recipe inspirations provenance
+// ---------------------------------------------------------------------------
+
+export type WebRecipeInspiration = {
+  recipe_id: string;
+  week: string;
+  source_url: string;
+  source_name: string;
+  imported_at: string;
+};
+
+/** Record provenance for a web inspiration recipe. */
+export async function recordWebInspiration(
+  recipeId: string,
+  week: string,
+  sourceUrl: string,
+  sourceName: string
+): Promise<void> {
+  const client = await getDb();
+  await client.execute({
+    sql: `INSERT INTO web_recipe_inspirations (recipe_id, week, source_url, source_name, imported_at)
+          VALUES (?, ?, ?, ?, ?)
+          ON CONFLICT (recipe_id) DO UPDATE SET week = ?, source_url = ?, source_name = ?, imported_at = ?`,
+    args: [
+      recipeId,
+      week,
+      sourceUrl,
+      sourceName,
+      new Date().toISOString(),
+      week,
+      sourceUrl,
+      sourceName,
+      new Date().toISOString(),
+    ],
+  });
+}
+
+/** Get all web inspirations for a given ISO week. */
+export async function getWebInspirationsForWeek(
+  week: string
+): Promise<WebRecipeInspiration[]> {
+  const client = await getDb();
+  const result = await client.execute({
+    sql: "SELECT * FROM web_recipe_inspirations WHERE week = ? ORDER BY imported_at DESC",
+    args: [week],
+  });
+  return result.rows as unknown as WebRecipeInspiration[];
 }

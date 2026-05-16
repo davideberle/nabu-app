@@ -14,7 +14,7 @@ import { normalizeIngredient } from "@/lib/normalize-ingredients";
 type RecipeOption = {
   id: string;
   name: string;
-  source?: { cookbook: string; author: string; chapter?: string };
+  source?: { cookbook: string; author: string; chapter?: string; publication?: string };
   image?: string | null;
   dietary: string[];
   cuisine: string;
@@ -44,7 +44,7 @@ type WeekContextItem = {
 type CandidateItem = {
   recipeId: string;
   recipeName: string;
-  source?: { cookbook: string; author: string; chapter?: string } | null;
+  source?: { cookbook: string; author: string; chapter?: string; publication?: string } | null;
   image?: string | null;
   dietary: string[];
   cuisine: string;
@@ -283,14 +283,15 @@ function normalizePlanDays(
 // ----- persistence helpers -----
 
 /** Immediately persist a plan to the server. */
-function savePlanNow(plan: MealPlan): void {
-  fetch("/api/meals/plan", {
+async function savePlanNow(plan: MealPlan): Promise<void> {
+  const res = await fetch("/api/meals/plan", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(plan),
-  }).catch((err) => {
-    console.error("Failed to save meal plan:", err);
   });
+  if (!res.ok) {
+    throw new Error(`Failed to save meal plan: ${res.status}`);
+  }
 }
 
 /** Debounced autosave for non-critical changes (notes, context). */
@@ -302,7 +303,7 @@ function useAutosave(plan: MealPlan | null, delayMs = 1500) {
     const serialized = JSON.stringify(p);
     if (serialized === lastSavedRef.current) return;
     lastSavedRef.current = serialized;
-    savePlanNow(p);
+    savePlanNow(p).catch((err) => console.error("Autosave failed:", err));
   }, []);
 
   useEffect(() => {
@@ -363,10 +364,12 @@ function MealsPageInner() {
   const [candidates, setCandidates] = useState<RecipeOption[]>([]);
   const [selectedRecipe, setSelectedRecipe] = useState<RecipeOption | null>(null);
   const [loading, setLoading] = useState(false);
+  const [webInspirationLoading, setWebInspirationLoading] = useState(false);
   const [quickViewRecipe, setQuickViewRecipe] = useState<RecipeDetail | null>(null);
   const [quickViewLoading, setQuickViewLoading] = useState(false);
   const [showContextEditor, setShowContextEditor] = useState(false);
   const [planLoading, setPlanLoading] = useState(true);
+  const [generateError, setGenerateError] = useState<string | null>(null);
   const [feedbackMap, setFeedbackMap] = useState<Record<string, "up" | "down">>({});
   const [dayHistory, setDayHistory] = useState<Record<string, DayHistory>>({});
   const [editingServeWith, setEditingServeWith] = useState<number | null>(null);
@@ -438,7 +441,7 @@ function MealsPageInner() {
           ));
           // Self-heal: persist repaired plan if days were malformed.
           const daysChanged = JSON.stringify(normalized.days) !== JSON.stringify(data.days);
-          if (daysChanged) savePlanNow(normalized);
+          if (daysChanged) savePlanNow(normalized).catch(() => {});
           setPlan(normalized);
           // Restore saved candidates with full card data for stable reload,
           // then reconcile images against current canonical recipe data to
@@ -534,6 +537,7 @@ function MealsPageInner() {
   // Generate ~12 candidate mains for the week
   async function handleGenerate() {
     setLoading(true);
+    setGenerateError(null);
     try {
       const params = new URLSearchParams();
       if (plan?.context?.length) {
@@ -543,8 +547,14 @@ function MealsPageInner() {
         params.set("exclude", candidates.map((c) => c.id).join(","));
       }
       const res = await fetch(`/api/meals/generate?${params}`);
+      if (!res.ok) {
+        throw new Error(`Generation failed (${res.status})`);
+      }
       const data = await res.json();
       const newCandidates: RecipeOption[] = data.candidates || [];
+      if (newCandidates.length === 0) {
+        throw new Error("No candidates returned");
+      }
       setCandidates(newCandidates);
 
       // Persist the full candidateSet from the API (includes diagnostics)
@@ -568,11 +578,77 @@ function MealsPageInner() {
         ? { ...plan, candidateSet }
         : { ...buildEmptyPlan(), candidateSet };
       setPlan(updatedPlan);
-      savePlanNow(updatedPlan);
+      await savePlanNow(updatedPlan);
     } catch (err) {
+      const msg = err instanceof Error ? err.message : "Failed to generate options";
       console.error("Failed to generate options:", err);
+      setGenerateError(msg);
     } finally {
       setLoading(false);
+    }
+  }
+
+  // Add 3-4 trusted web inspirations to the current week's candidate set
+  async function handleAddWebInspirations() {
+    setWebInspirationLoading(true);
+    setGenerateError(null);
+    try {
+      const res = await fetch("/api/meals/inspirations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ week: weekId, count: 4 }),
+      });
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || `Web inspiration import failed (${res.status})`);
+      }
+      const data = await res.json();
+      const webCandidates: RecipeOption[] = data.candidates || [];
+      if (webCandidates.length === 0) {
+        throw new Error("No new web inspirations found");
+      }
+
+      const mergedCandidates = [
+        ...candidates,
+        ...webCandidates.filter((r) => !candidates.some((existing) => existing.id === r.id)),
+      ];
+      setCandidates(mergedCandidates);
+
+      const basePlan = plan ?? buildEmptyPlan();
+      const existingItems = basePlan.candidateSet?.items ?? [];
+      const webItems: CandidateItem[] = webCandidates
+        .filter((r) => !existingItems.some((item) => item.recipeId === r.id))
+        .map((r) => ({
+          recipeId: r.id,
+          recipeName: r.name,
+          source: r.source ?? null,
+          image: r.image ?? null,
+          dietary: r.dietary,
+          cuisine: r.cuisine,
+          time: r.time,
+          category: r.category,
+          courseTags: r.courseTags,
+          bucket: "web-inspiration",
+        }));
+
+      const candidateSet: CandidateSet = {
+        generatedAt: basePlan.candidateSet?.generatedAt ?? new Date().toISOString(),
+        policyVersion: basePlan.candidateSet?.policyVersion
+          ? `${basePlan.candidateSet.policyVersion}+web`
+          : "planner-v2.1+web",
+        bucketContract: basePlan.candidateSet?.bucketContract,
+        diagnostics: basePlan.candidateSet?.diagnostics,
+        items: [...existingItems, ...webItems],
+      };
+      const updatedPlan = { ...basePlan, candidateSet };
+      setPlan(updatedPlan);
+      await savePlanNow(updatedPlan);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Failed to add web inspirations";
+      console.error("Failed to add web inspirations:", err);
+      setGenerateError(msg);
+    } finally {
+      setWebInspirationLoading(false);
     }
   }
 
@@ -618,7 +694,7 @@ function MealsPageInner() {
     };
     const updatedPlan = { ...plan, days: newDays };
     setPlan(updatedPlan);
-    savePlanNow(updatedPlan);
+    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
     setSelectedRecipe(null);
   }
 
@@ -640,7 +716,7 @@ function MealsPageInner() {
     };
     const updatedPlan = { ...plan, days: newDays };
     setPlan(updatedPlan);
-    savePlanNow(updatedPlan);
+    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
   }
 
   // Mark a past slot as cooked via cook-events API
@@ -679,7 +755,7 @@ function MealsPageInner() {
     };
     const updatedPlan = { ...plan, days: newDays };
     setPlan(updatedPlan);
-    savePlanNow(updatedPlan);
+    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
   }
 
   // Toggle feedback for a candidate recipe
@@ -765,7 +841,7 @@ function MealsPageInner() {
     };
     const updatedPlan = { ...plan, days: newDays };
     setPlan(updatedPlan);
-    savePlanNow(updatedPlan);
+    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
   }
 
   function handleRemoveComplement(dayIndex: number, complementId: string) {
@@ -785,7 +861,7 @@ function MealsPageInner() {
     };
     const updatedPlan = { ...plan, days: newDays };
     setPlan(updatedPlan);
-    savePlanNow(updatedPlan);
+    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
   }
 
   // ----- context/notes helpers -----
@@ -1179,18 +1255,41 @@ function MealsPageInner() {
                 </span>
               )}
               {!isPastWeek && (
-                <NabuButton
-                  onClick={() => handleGenerate()}
-                  disabled={loading}
-                  tone="ghost"
-                  size="sm"
-                >
-                  {loading ? "Regenerating..." : "Regenerate"}
-                </NabuButton>
+                <>
+                  <NabuButton
+                    onClick={() => handleAddWebInspirations()}
+                    disabled={webInspirationLoading}
+                    tone="ghost"
+                    size="sm"
+                  >
+                    {webInspirationLoading ? "Finding web ideas..." : "Add 3–4 web ideas"}
+                  </NabuButton>
+                  <NabuButton
+                    onClick={() => handleGenerate()}
+                    disabled={loading}
+                    tone="ghost"
+                    size="sm"
+                  >
+                    {loading ? "Regenerating..." : "Regenerate"}
+                  </NabuButton>
+                </>
               )}
             </>
           )}
         </div>
+
+        {/* Generation error banner */}
+        {generateError && (
+          <div className="mb-6 p-4 rounded-2xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800/50 flex items-center justify-between">
+            <span className="text-sm text-red-600 dark:text-red-400">{generateError}</span>
+            <button
+              onClick={() => setGenerateError(null)}
+              className="text-xs text-red-400 hover:text-red-600 dark:hover:text-red-200 transition-colors ml-3"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
 
         {/* Selected recipe indicator */}
         {selectedRecipe && (
@@ -1469,6 +1568,7 @@ function RecipeCard({
   const isVeg = recipe.dietary.some(
     (t) => t === "vegan" || t === "vegetarian"
   );
+  const isWebInspiration = recipe.source?.publication?.includes("Web inspiration") ?? false;
 
   return (
     <div
@@ -1508,9 +1608,16 @@ function RecipeCard({
         >
           {recipe.name}
         </h3>
-        <p className="text-[11px] text-stone-400 dark:text-stone-500 truncate mt-1 italic">
-          {recipe.source?.cookbook}
-        </p>
+        <div className="mt-1 flex items-center gap-2">
+          <p className="text-[11px] text-stone-400 dark:text-stone-500 truncate italic">
+            {isWebInspiration ? recipe.source?.publication : recipe.source?.cookbook}
+          </p>
+          {isWebInspiration && (
+            <span className="shrink-0 text-[9px] uppercase tracking-[0.14em] px-1.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-300">
+              web
+            </span>
+          )}
+        </div>
         <div className="flex flex-wrap items-center gap-1 mt-2">
           {formatPlannerTime(recipe.time?.total) && (
             <span className="inline-flex items-center gap-0.5 text-[10px] px-2 py-0.5 rounded-full bg-stone-50 dark:bg-stone-800 text-stone-400 dark:text-stone-500">
