@@ -712,8 +712,10 @@ function extensionForContentType(contentType, imageUrl) {
 }
 
 async function upsertMyRecipe(recipe) {
-  if (!recipe.image || !recipe.image.startsWith("/recipes/")) {
-    throw new Error(`Refusing to import ${recipe.id}: missing persisted /recipes image path`);
+  const hasLocalImage = recipe.image && recipe.image.startsWith("/recipes/");
+  const hasBlobImage = recipe.image && /^https:\/\/[^/]+\.public\.blob\.vercel-storage\.com\//.test(recipe.image);
+  if (!hasLocalImage && !hasBlobImage) {
+    throw new Error(`Refusing to import ${recipe.id}: image must be a local /recipes/ path or a Vercel Blob URL, got: ${recipe.image || "(none)"}`);
   }
   const requireFromApp = createRequire(path.join(APP_DIR, "package.json"));
   const { createClient } = requireFromApp("@libsql/client");

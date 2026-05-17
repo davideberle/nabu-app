@@ -18,6 +18,11 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
+type ImporterExecError = Error & {
+  stdout?: string;
+  stderr?: string;
+};
+
 type RecipeOption = {
   id: string;
   name: string;
@@ -56,6 +61,35 @@ function recipeToCandidate(recipe: Recipe, provenance: { source_url: string; sou
     category: recipe.category?.dish_type?.[0] ?? "main",
     courseTags: recipe.category?.dish_type ?? ["main"],
   };
+}
+
+function stripCommandPrefix(message: string): string {
+  return message
+    .replace(/^Command failed:[^\n]*(?:\n|$)/, "")
+    .trim();
+}
+
+function summarizeImporterReport(stdout?: string): { message?: string; report?: unknown } {
+  if (!stdout?.trim()) return {};
+  try {
+    const report = JSON.parse(stdout) as {
+      imported?: unknown[];
+      errors?: { message?: string; url?: string }[];
+      skipped?: { reason?: string; name?: string; url?: string }[];
+    };
+    const firstError = report.errors?.find((err) => err?.message);
+    if (firstError?.message) {
+      return { message: firstError.message, report };
+    }
+    const importedCount = report.imported?.length ?? 0;
+    const skippedCount = report.skipped?.length ?? 0;
+    return {
+      message: `Importer exited without importing recipes (${importedCount} imported, ${skippedCount} skipped)`,
+      report,
+    };
+  } catch {
+    return {};
+  }
 }
 
 export async function GET(request: NextRequest) {
@@ -160,12 +194,26 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ week, candidates, report });
   } catch (error) {
     console.error("Kitchen importer failed:", error);
-    const message = error instanceof Error ? error.message : "Unknown error";
+    // Extract useful context without leaking full command paths or env details.
+    // The importer may print a JSON report to stdout and still exit 1; prefer
+    // that structured error over Node's generic "Command failed: /var/task/...".
+    let message = "Unknown error";
+    let stderr: string | undefined;
+    let report: unknown;
+    if (error instanceof Error) {
+      const execError = error as ImporterExecError;
+      const summary = summarizeImporterReport(execError.stdout);
+      message = summary.message ?? (stripCommandPrefix(error.message) || "Importer command failed");
+      stderr = execError.stderr;
+      report = summary.report;
+    }
     return NextResponse.json(
       {
         error: `Kitchen importer failed: ${message}`,
         week,
         candidates: [],
+        ...(stderr ? { detail: stderr.slice(0, 2000) } : {}),
+        ...(report ? { report } : {}),
       },
       { status: 500 }
     );
