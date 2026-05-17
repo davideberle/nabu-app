@@ -6,6 +6,7 @@ type CookEvent = {
   id: string;
   recipeId: string;
   cookedOn: string;
+  source?: string;
   createdAt: string;
 };
 
@@ -56,6 +57,11 @@ export default function CookingHistory({ recipeId }: { recipeId: string }) {
                 <span className="text-sm font-medium text-stone-600 dark:text-stone-300">
                   {formatted}
                 </span>
+                {event.source && (
+                  <span className="ml-2 text-xs text-stone-400 dark:text-stone-500">
+                    {event.source}
+                  </span>
+                )}
               </div>
             </li>
           );

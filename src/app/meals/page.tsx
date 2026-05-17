@@ -787,6 +787,18 @@ function MealsPageInner() {
         }),
       });
       setCookedSlots((prev) => new Set(prev).add(`${slot.recipeId}:${slot.date}`));
+      // Optimistically update dayHistory so badge changes from Planned/Skipped → Cooked
+      setDayHistory((prev) => ({
+        ...prev,
+        [slot.date]: {
+          date: slot.date,
+          status: "cooked-as-planned",
+          plannedRecipeId: slot.recipeId,
+          plannedRecipeName: slot.recipeName ?? null,
+          cookedRecipeId: slot.recipeId,
+          cookedRecipeName: slot.recipeName ?? null,
+        },
+      }));
     } catch (err) {
       console.error("Failed to mark cooked:", err);
     } finally {
