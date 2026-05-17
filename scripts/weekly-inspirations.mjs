@@ -729,11 +729,31 @@ async function upsertMyRecipe(recipe) {
       created_at TEXT NOT NULL
     )
   `);
+  const tableInfo = await client.execute("PRAGMA table_info(recipes)");
+  const columns = new Set(tableInfo.rows.map((row) => String(row.name)));
+  const now = new Date().toISOString();
+  const insertColumns = ["id", "data", "created_at"];
+  const insertArgs = [recipe.id, JSON.stringify(recipe), now];
+  const updateSets = ["data = excluded.data"];
+
+  // Production has a newer recipes schema with derived columns alongside JSON data.
+  // Keep this vendored importer tolerant of both the old local schema and live Turso.
+  if (columns.has("name")) {
+    insertColumns.splice(1, 0, "name");
+    insertArgs.splice(1, 0, recipe.name);
+    updateSets.push("name = excluded.name");
+  }
+  if (columns.has("updated_at")) {
+    insertColumns.push("updated_at");
+    insertArgs.push(now);
+    updateSets.push("updated_at = excluded.updated_at");
+  }
+
   await client.execute({
-    sql: `INSERT INTO recipes (id, data, created_at)
-          VALUES (?, ?, ?)
-          ON CONFLICT(id) DO UPDATE SET data = excluded.data`,
-    args: [recipe.id, JSON.stringify(recipe), new Date().toISOString()],
+    sql: `INSERT INTO recipes (${insertColumns.join(", ")})
+          VALUES (${insertColumns.map(() => "?").join(", ")})
+          ON CONFLICT(id) DO UPDATE SET ${updateSets.join(", ")}`,
+    args: insertArgs,
   });
   client.close?.();
 }
