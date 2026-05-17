@@ -356,6 +356,19 @@ const VALID_ADAPTATION_KINDS: AdaptationKind[] = [
   "rescue-fix",
 ];
 
+/** Merge related-recipe lists: plan entries win for duplicates, extras preserved. */
+function mergeRelatedRecipes(
+  plan: RelatedRecipe[],
+  existing: RelatedRecipe[]
+): RelatedRecipe[] {
+  const merged = [...plan];
+  const planIds = new Set(plan.map((r) => r.recipeId));
+  for (const r of existing) {
+    if (!planIds.has(r.recipeId)) merged.push(r);
+  }
+  return merged;
+}
+
 function mergeTextLists(...lists: (string[] | undefined)[]): string[] {
   const seen = new Set<string>();
   const result: string[] = [];
@@ -571,7 +584,9 @@ export async function createSessionFromPlan(
         provenance,
       },
       mealPlanRef: { week: weekId, day: daySlot.dayOfWeek },
-      relatedRecipes,
+      // Merge relatedRecipes: meal-plan sides are authoritative, but
+      // preserve any extras added via patches (e.g. from Telegram).
+      relatedRecipes: mergeRelatedRecipes(relatedRecipes, existing.relatedRecipes),
       serveWith: mergeTextLists(existing.serveWith, serveWith),
       // Sync base servings/ingredients/method when main recipe changed,
       // and reset current servings only if user hasn't adjusted them

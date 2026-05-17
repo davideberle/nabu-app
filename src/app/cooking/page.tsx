@@ -98,18 +98,21 @@ function SessionView({
         />
 
         {hasSides && (
-          <p className="mt-2 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
-            {mealComponents.length > 0 && (
-              <>with {mealComponents.map(({ recipe }) => recipe.name).join(" & ")}</>
-            )}
-            {mealComponents.length > 0 && tableSides.length > 0 && ", "}
-            {tableSides.length > 0 && (
-              <span className="text-stone-400 dark:text-stone-500">
-                {mealComponents.length === 0 ? "served with " : ""}
-                {formatList(tableSides).toLowerCase()}
-              </span>
-            )}
-          </p>
+          <ul className="mt-3 space-y-1">
+            {mealComponents.map(({ related, recipe }) => (
+              <li key={recipe.id} className="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400">
+                <span className="h-1 w-1 shrink-0 rounded-full bg-stone-300 dark:bg-stone-600" />
+                <span className="font-medium text-stone-600 dark:text-stone-300">{recipe.name}</span>
+                <span className="text-xs text-stone-400 dark:text-stone-500">&middot; {related.kind}</span>
+              </li>
+            ))}
+            {tableSides.map((item, i) => (
+              <li key={`serve-${i}`} className="flex items-center gap-2 text-sm text-stone-400 dark:text-stone-500">
+                <span className="h-1 w-1 shrink-0 rounded-full bg-stone-300 dark:bg-stone-600" />
+                {item}
+              </li>
+            ))}
+          </ul>
         )}
 
         {mainRecipe?.image && (
