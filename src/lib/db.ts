@@ -875,11 +875,19 @@ export type WebRecipeInspiration = {
   source_url: string;
   source_name: string;
   imported_at: string;
+  recipe_name?: string;
+  image?: string | null;
+  status?: string;
 };
 
-async function hasWebInspirationImportedAt(client: Client): Promise<boolean> {
+async function getWebInspirationColumns(client: Client): Promise<Set<string>> {
   const columns = await client.execute("PRAGMA table_info(web_recipe_inspirations)");
-  return columns.rows.some((row) => String(row.name) === "imported_at");
+  return new Set(columns.rows.map((row) => String(row.name)));
+}
+
+async function hasWebInspirationImportedAt(client: Client): Promise<boolean> {
+  const columns = await getWebInspirationColumns(client);
+  return columns.has("imported_at");
 }
 
 /** Record provenance for a web inspiration recipe. */
@@ -890,10 +898,65 @@ export async function recordWebInspiration(
   sourceName: string
 ): Promise<void> {
   const client = await getDb();
-  const hasImportedAt = await hasWebInspirationImportedAt(client);
-  if (!hasImportedAt) {
+  const columns = await getWebInspirationColumns(client);
+  if (!columns.has("imported_at")) {
     await client.execute("ALTER TABLE web_recipe_inspirations ADD COLUMN imported_at TEXT");
+    columns.add("imported_at");
   }
+
+  const now = new Date().toISOString();
+
+  // The live Turso table has richer provenance columns than older local DBs.
+  // Fill those columns when present, but keep the old compact schema working too.
+  if (columns.has("id")) {
+    let recipeName = recipeId;
+    let image: string | null = null;
+    const recipeResult = await client.execute({
+      sql: "SELECT data FROM recipes WHERE id = ?",
+      args: [recipeId],
+    });
+    if (recipeResult.rows.length > 0) {
+      try {
+        const recipe = JSON.parse(recipeResult.rows[0]["data"] as string) as Recipe;
+        recipeName = recipe.name || recipeId;
+        image = recipe.image || null;
+      } catch {
+        // Keep provenance recording best-effort; recipe JSON is still stored separately.
+      }
+    }
+
+    await client.execute({
+      sql: `INSERT INTO web_recipe_inspirations
+              (id, week, recipe_id, recipe_name, source_name, source_url, image, status, provenance_json, created_at, updated_at, imported_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (source_url) DO UPDATE SET
+              week = excluded.week,
+              recipe_id = excluded.recipe_id,
+              recipe_name = excluded.recipe_name,
+              source_name = excluded.source_name,
+              image = excluded.image,
+              status = excluded.status,
+              provenance_json = excluded.provenance_json,
+              updated_at = excluded.updated_at,
+              imported_at = excluded.imported_at`,
+      args: [
+        crypto.randomUUID(),
+        week,
+        recipeId,
+        recipeName,
+        sourceName,
+        sourceUrl,
+        image,
+        "imported",
+        JSON.stringify({ source: "weekly-inspirations" }),
+        now,
+        now,
+        now,
+      ],
+    });
+    return;
+  }
+
   await client.execute({
     sql: `INSERT INTO web_recipe_inspirations (recipe_id, week, source_url, source_name, imported_at)
           VALUES (?, ?, ?, ?, ?)
@@ -903,11 +966,11 @@ export async function recordWebInspiration(
       week,
       sourceUrl,
       sourceName,
-      new Date().toISOString(),
+      now,
       week,
       sourceUrl,
       sourceName,
-      new Date().toISOString(),
+      now,
     ],
   });
 }
