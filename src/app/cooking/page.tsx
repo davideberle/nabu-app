@@ -160,6 +160,7 @@ function SessionView({
           key={recipe.id}
           role={related.kind}
           title={recipe.name}
+          image={recipe.image}
           servings={recipe.servings}
           ingredients={recipe.ingredients.map((ing) => ({
             amount: ing.amount,
@@ -264,6 +265,7 @@ function StoryCard({
 function MealComponentBlock({
   role,
   title,
+  image,
   servings,
   ingredients,
   method,
@@ -271,6 +273,7 @@ function MealComponentBlock({
 }: {
   role: "main" | "starter" | "side" | "dessert";
   title: string;
+  image?: string | null;
   servings?: string | number;
   ingredients: SessionIngredient[];
   method: string[];
@@ -286,6 +289,18 @@ function MealComponentBlock({
         title={title}
         action={servingLabel ? <NabuBadge>{servingLabel}</NabuBadge> : null}
       />
+
+      {image && (
+        <div className="overflow-hidden rounded-xl border border-stone-100 bg-stone-100 dark:border-stone-800 dark:bg-stone-900">
+          <Image
+            src={image}
+            alt={title}
+            width={960}
+            height={540}
+            className="aspect-[16/9] w-full object-cover"
+          />
+        </div>
+      )}
 
       {/* Ingredients */}
       {ingredients.length > 0 && (
