@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       "./scripts/weekly-inspirations.mjs",
       "./node_modules/@vercel/blob/**/*",
       "./node_modules/async-retry/**/*",
+      "./node_modules/retry/**/*",
       "./node_modules/is-buffer/**/*",
       "./node_modules/is-node-process/**/*",
       "./node_modules/throttleit/**/*",
