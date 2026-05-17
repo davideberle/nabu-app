@@ -487,6 +487,17 @@ async function migrate(client: Client) {
           ON web_recipe_inspirations (week)
       `);
     },
+
+    // v10 -> v11: create wine_cellar_status table for tracking consumed bottles
+    async () => {
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS wine_cellar_status (
+          bottle_id  TEXT PRIMARY KEY,
+          status     TEXT NOT NULL DEFAULT 'available' CHECK (status IN ('available', 'out')),
+          updated_at TEXT NOT NULL
+        )
+      `);
+    },
   ];
 
   if (version < migrations.length) {
@@ -989,4 +1000,62 @@ export async function getWebInspirationsForWeek(
     args: [week],
   });
   return result.rows as unknown as WebRecipeInspiration[];
+}
+
+// ---------------------------------------------------------------------------
+// Wine cellar helpers
+// ---------------------------------------------------------------------------
+
+export type WineCellarStatus = {
+  bottleId: string;
+  status: "available" | "out";
+  updatedAt: string;
+};
+
+/** Get status map for all bottles that have a status row. */
+export async function getWineCellarStatuses(): Promise<
+  Map<string, WineCellarStatus>
+> {
+  const client = await getDb();
+  try {
+    const result = await client.execute(
+      "SELECT bottle_id, status, updated_at FROM wine_cellar_status"
+    );
+    const map = new Map<string, WineCellarStatus>();
+    for (const row of result.rows) {
+      map.set(row["bottle_id"] as string, {
+        bottleId: row["bottle_id"] as string,
+        status: row["status"] as "available" | "out",
+        updatedAt: row["updated_at"] as string,
+      });
+    }
+    return map;
+  } catch {
+    // Table may not exist yet if migration hasn't run (e.g. build prerender)
+    return new Map();
+  }
+}
+
+/** Mark a bottle as "out" (consumed). */
+export async function markBottleOut(bottleId: string): Promise<void> {
+  const client = await getDb();
+  const now = new Date().toISOString();
+  await client.execute({
+    sql: `INSERT INTO wine_cellar_status (bottle_id, status, updated_at)
+          VALUES (?, 'out', ?)
+          ON CONFLICT (bottle_id) DO UPDATE SET status = 'out', updated_at = ?`,
+    args: [bottleId, now, now],
+  });
+}
+
+/** Mark a bottle back as "available" (undo). */
+export async function markBottleAvailable(bottleId: string): Promise<void> {
+  const client = await getDb();
+  const now = new Date().toISOString();
+  await client.execute({
+    sql: `INSERT INTO wine_cellar_status (bottle_id, status, updated_at)
+          VALUES (?, 'available', ?)
+          ON CONFLICT (bottle_id) DO UPDATE SET status = 'available', updated_at = ?`,
+    args: [bottleId, now, now],
+  });
 }

@@ -4,6 +4,7 @@ import { NabuCard, NabuHeader, NabuIconFrame, NabuMain, NabuPageShell, NabuPill,
 import { initialTodos } from "@/lib/todos";
 import { getRecipesByCookbook } from "@/lib/recipes";
 import { houseAssets } from "@/data/house-assets";
+import { wineBottles } from "@/data/wine-cellar";
 
 async function getTiles() {
   const activeTodos = initialTodos.filter((t) => !t.completed).length;
@@ -58,6 +59,14 @@ async function getTiles() {
       description: "Weekly meal planning",
       href: "/meals",
       stats: "Plan ahead",
+    },
+    {
+      id: "wine",
+      name: "Wine Cellar",
+      emoji: "🍷",
+      description: "Home stock, pairings, status",
+      href: "/wine",
+      stats: `${wineBottles.length} bottles`,
     },
     {
       id: "assets",
