@@ -388,8 +388,13 @@ function isSideDish(recipe: Recipe): boolean {
  */
 export function getDisplayCategory(recipe: Recipe): string {
   const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
+  const role = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
   const name = recipe.name.toLowerCase();
 
+  if (role === "dessert" || dishTypes.includes("dessert")) return "Dessert";
+  if (role === "component" || dishTypes.includes("component")) return "Component";
+  if (role === "condiment" || dishTypes.includes("condiment")) return "Condiment";
+  if (dishTypes.includes("bread")) return "Bread";
   if (isPasta(recipe)) return "Pasta";
   if (dishTypes.includes("soup") || name.includes("soup") || name.includes("stew")) return "Soup";
   if (dishTypes.includes("salad") || name.includes("salad")) return "Salad";
