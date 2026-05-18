@@ -7,7 +7,7 @@
  *
  * Kitchen-owned weekly web inspiration importer.
  *
- * Goal: find 3-4 trusted web recipes for a week, skip duplicates already in
+ * Goal: find 6 trusted web recipes for a week, skip duplicates already in
  * the kitchen/app library, extract structured recipe data from JSON-LD, and
  * optionally stage/import them as Kitchen recipes + Companion App My Recipes.
  *
@@ -89,7 +89,7 @@ export const TRUSTED_SOURCES = [
 ];
 
 const TRUSTED_HOSTS = new Set(TRUSTED_SOURCES.map((s) => s.host));
-const DEFAULT_COUNT = 4;
+const DEFAULT_COUNT = 6;
 const USER_AGENT = "NabuKitchenWeeklyInspiration/0.1 (+https://app.davideberle.com)";
 
 function usage() {

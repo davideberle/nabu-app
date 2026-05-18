@@ -129,7 +129,7 @@ export async function POST(request: NextRequest) {
   }
 
   const week = body.week ?? currentIsoWeekId();
-  const count = body.count ?? 4;
+  const count = body.count ?? 6;
 
   // Validate week/count to prevent argument injection
   if (typeof week !== "string" || !/^\d{4}-W\d{2}$/.test(week)) {
@@ -178,8 +178,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Fetch the imported recipes and build candidate cards
+    // Fetch the imported My Recipes rows and build candidate cards. A web
+    // idea is never returned to the planner unless the importer wrote it to
+    // the app DB, so quick view/detail resolution stays normal.
     const candidates: RecipeOption[] = [];
+    const missingMyRecipeIds: string[] = [];
     for (const imported of report.imported) {
       const recipe = await getMyRecipe(imported.id);
       if (recipe) {
@@ -188,10 +191,30 @@ export async function POST(request: NextRequest) {
           source_url: imported.url,
           source_name: imported.source,
         }));
+      } else {
+        missingMyRecipeIds.push(imported.id);
       }
     }
 
-    return NextResponse.json({ week, candidates, report });
+    if (candidates.length === 0 && missingMyRecipeIds.length > 0) {
+      return NextResponse.json(
+        {
+          error: "Kitchen importer staged recipes, but they were not available in My Recipes",
+          week,
+          candidates: [],
+          missingMyRecipeIds,
+          report,
+        },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({
+      week,
+      candidates,
+      ...(missingMyRecipeIds.length > 0 ? { missingMyRecipeIds } : {}),
+      report,
+    });
   } catch (error) {
     console.error("Kitchen importer failed:", error);
     // Extract useful context without leaking full command paths or env details.

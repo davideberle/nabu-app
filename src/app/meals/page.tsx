@@ -236,6 +236,63 @@ function formatPlannerTime(totalMin: number | undefined | null): string | null {
   return `${clamped} min`;
 }
 
+function isWebIdea(recipe: RecipeOption): boolean {
+  return recipe.source?.publication?.includes("Web inspiration") ?? false;
+}
+
+function toCandidateItem(recipe: RecipeOption, bucket?: string): CandidateItem {
+  return {
+    recipeId: recipe.id,
+    recipeName: recipe.name,
+    source: recipe.source ?? null,
+    image: recipe.image ?? null,
+    dietary: recipe.dietary,
+    cuisine: recipe.cuisine,
+    time: recipe.time,
+    category: recipe.category,
+    courseTags: recipe.courseTags,
+    bucket: bucket ?? (isWebIdea(recipe) ? "web-inspiration" : "meat"),
+  };
+}
+
+function restoreCandidateItem(item: CandidateItem): RecipeOption {
+  return {
+    id: item.recipeId,
+    name: item.recipeName,
+    source: item.source ?? undefined,
+    image: item.image ?? null,
+    dietary: item.dietary ?? [],
+    cuisine: item.cuisine ?? "",
+    time: item.time ?? null,
+    category: item.category ?? "",
+    courseTags: item.courseTags ?? [],
+  };
+}
+
+function mergeUniqueCandidates(
+  existing: RecipeOption[],
+  additions: RecipeOption[],
+): RecipeOption[] {
+  const seen = new Set(existing.map((recipe) => recipe.id));
+  const novel = additions.filter((recipe) => {
+    if (seen.has(recipe.id)) return false;
+    seen.add(recipe.id);
+    return true;
+  });
+  return novel.length > 0 ? [...existing, ...novel] : existing;
+}
+
+function replaceDatabaseCandidates(
+  existing: RecipeOption[],
+  databaseCandidates: RecipeOption[],
+): RecipeOption[] {
+  const nextIds = new Set(databaseCandidates.map((recipe) => recipe.id));
+  const existingWebIdeas = existing.filter(
+    (recipe) => isWebIdea(recipe) && !nextIds.has(recipe.id),
+  );
+  return [...databaseCandidates, ...existingWebIdeas];
+}
+
 
 // ----- plan normalization -----
 
@@ -362,6 +419,8 @@ function MealsPageInner() {
 
   const [plan, setPlan] = useState<MealPlan | null>(null);
   const [candidates, setCandidates] = useState<RecipeOption[]>([]);
+  const candidatesRef = useRef<RecipeOption[]>([]);
+  const [ideaMetadata, setIdeaMetadata] = useState<{ generatedAt?: string; policyVersion?: string } | null>(null);
   const [selectedRecipe, setSelectedRecipe] = useState<RecipeOption | null>(null);
   const [loading, setLoading] = useState(false);
   const [webInspirationLoading, setWebInspirationLoading] = useState(false);
@@ -382,6 +441,10 @@ function MealsPageInner() {
     sides: RecipeOption[];
     desserts: RecipeOption[];
   } | null>(null);
+
+  useEffect(() => {
+    candidatesRef.current = candidates;
+  }, [candidates]);
 
   // Autosave for notes/context changes only
   useAutosave(plan);
@@ -423,8 +486,6 @@ function MealsPageInner() {
     // old/empty data over a saved plan while the fetch is in flight.
     setPlan(null);
     setPlanLoading(true);
-    setCandidates([]);
-    setSelectedRecipe(null);
     setShowContextEditor(false);
     setExpandingDay(null);
     setExpandComplements(null);
@@ -443,22 +504,22 @@ function MealsPageInner() {
           const daysChanged = JSON.stringify(normalized.days) !== JSON.stringify(data.days);
           if (daysChanged) savePlanNow(normalized).catch(() => {});
           setPlan(normalized);
+          let seededVisibleForThisWeek = false;
           // Restore saved candidates with full card data for stable reload,
           // then reconcile images against current canonical recipe data to
-          // prevent stale persisted images from resurfacing.
+          // prevent stale persisted images from resurfacing. Once ideas are
+          // visible, week navigation deliberately leaves that list alone.
           if (data.candidateSet?.items?.length) {
-            const restored = data.candidateSet.items.map((c: CandidateItem) => ({
-              id: c.recipeId,
-              name: c.recipeName,
-              source: c.source ?? undefined,
-              image: c.image ?? null,
-              dietary: c.dietary ?? [],
-              cuisine: c.cuisine ?? "",
-              time: c.time ?? null,
-              category: c.category ?? "",
-              courseTags: c.courseTags ?? [],
-            }));
-            setCandidates(restored);
+            const restored = data.candidateSet.items.map(restoreCandidateItem);
+            if (candidatesRef.current.length === 0) {
+              candidatesRef.current = restored;
+              setCandidates(restored);
+              setIdeaMetadata({
+                generatedAt: data.candidateSet.generatedAt,
+                policyVersion: data.candidateSet.policyVersion,
+              });
+              seededVisibleForThisWeek = true;
+            }
 
             // Reconcile: fetch current canonical images and patch any stale ones
             const ids = restored.map((r: RecipeOption) => r.id).join(",");
@@ -466,66 +527,37 @@ function MealsPageInner() {
               .then((lr) => lr.json())
               .then((lookup: Record<string, { image: string | null }>) => {
                 if (cancelled) return;
-                setCandidates((prev) =>
-                  prev.map((r) => {
+                setCandidates((prev) => {
+                  const next = prev.map((r) => {
                     const canonical = lookup[r.id];
                     if (canonical && r.image !== canonical.image) {
                       return { ...r, image: canonical.image };
                     }
                     return r;
-                  })
-                );
+                  });
+                  candidatesRef.current = next;
+                  return next;
+                });
               })
               .catch(() => { /* non-critical — stale image is cosmetic */ });
           }
 
-          // Reconcile stored web inspirations that may not be in candidateSet
+          // Reconcile stored web inspirations for direct week loads. Browsing
+          // weeks should not replace or grow an already-visible idea list.
           fetch(`/api/meals/inspirations?week=${encodeURIComponent(weekId)}`)
             .then((r) => (r.ok ? r.json() : { candidates: [] }))
             .then((inspData: { candidates?: RecipeOption[] }) => {
               if (cancelled) return;
               const webCandidates = inspData.candidates ?? [];
               if (webCandidates.length === 0) return;
-
-              const existingItems = normalized.candidateSet?.items ?? [];
-              const existingIds = new Set(existingItems.map((c: CandidateItem) => c.recipeId));
-
-              // Merge into visible candidates (dedup by id)
-              setCandidates((prev) => {
-                const prevIds = new Set(prev.map((r) => r.id));
-                const novel = webCandidates.filter((r) => !prevIds.has(r.id));
-                return novel.length > 0 ? [...prev, ...novel] : prev;
-              });
-
-              // Persist missing web inspirations into the candidateSet
-              const missingItems: CandidateItem[] = webCandidates
-                .filter((r) => !existingIds.has(r.id))
-                .map((r) => ({
-                  recipeId: r.id,
-                  recipeName: r.name,
-                  source: r.source ?? null,
-                  image: r.image ?? null,
-                  dietary: r.dietary,
-                  cuisine: r.cuisine,
-                  time: r.time,
-                  category: r.category,
-                  courseTags: r.courseTags,
-                  bucket: "web-inspiration",
-                }));
-
-              if (missingItems.length > 0) {
-                const repairedSet: CandidateSet = {
-                  generatedAt: normalized.candidateSet?.generatedAt ?? new Date().toISOString(),
-                  policyVersion: normalized.candidateSet?.policyVersion?.includes("+web")
-                    ? normalized.candidateSet.policyVersion
-                    : `${normalized.candidateSet?.policyVersion ?? "planner-v2.1"}+web`,
-                  bucketContract: normalized.candidateSet?.bucketContract,
-                  diagnostics: normalized.candidateSet?.diagnostics,
-                  items: [...existingItems, ...missingItems],
-                };
-                const repairedPlan = { ...normalized, candidateSet: repairedSet };
-                setPlan(repairedPlan);
-                savePlanNow(repairedPlan).catch(() => {});
+              if (candidatesRef.current.length === 0) {
+                candidatesRef.current = webCandidates;
+                setCandidates(webCandidates);
+                setIdeaMetadata(null);
+              } else if (seededVisibleForThisWeek) {
+                const visibleCandidates = mergeUniqueCandidates(candidatesRef.current, webCandidates);
+                candidatesRef.current = visibleCandidates;
+                setCandidates(visibleCandidates);
               }
             })
             .catch(() => { /* non-critical — web inspirations are supplementary */ });
@@ -585,7 +617,8 @@ function MealsPageInner() {
     return () => { cancelled = true; };
   }, [plan?.week, plan?.days]);
 
-  // Generate ~12 candidate mains for the week
+  // Generate recipe-database ideas. Web ideas stay visible but are researched
+  // through their own action and provenance table.
   async function handleGenerate() {
     setLoading(true);
     setGenerateError(null);
@@ -606,29 +639,36 @@ function MealsPageInner() {
       if (newCandidates.length === 0) {
         throw new Error("No candidates returned");
       }
-      setCandidates(newCandidates);
+      const visibleCandidates = replaceDatabaseCandidates(candidatesRef.current, newCandidates);
+      candidatesRef.current = visibleCandidates;
+      setCandidates(visibleCandidates);
 
-      // Persist the full candidateSet from the API (includes diagnostics)
-      const candidateSet: CandidateSet = data.candidateSet ?? {
+      // Persist the full candidateSet from the API (includes diagnostics),
+      // while keeping already-visible web ideas attached to this plan.
+      const databaseCandidateSet: CandidateSet = data.candidateSet ?? {
         generatedAt: new Date().toISOString(),
         policyVersion: "planner-v2.1",
-        items: newCandidates.map((r) => ({
-          recipeId: r.id,
-          recipeName: r.name,
-          source: r.source ?? null,
-          image: r.image ?? null,
-          dietary: r.dietary,
-          cuisine: r.cuisine,
-          time: r.time,
-          category: r.category,
-          courseTags: r.courseTags,
-          bucket: "meat",
-        })),
+        items: newCandidates.map((r) => toCandidateItem(r, "meat")),
+      };
+      const databaseItemIds = new Set(databaseCandidateSet.items.map((item) => item.recipeId));
+      const preservedWebItems = visibleCandidates
+        .filter((recipe) => isWebIdea(recipe) && !databaseItemIds.has(recipe.id))
+        .map((recipe) => toCandidateItem(recipe, "web-inspiration"));
+      const candidateSet: CandidateSet = {
+        ...databaseCandidateSet,
+        policyVersion: preservedWebItems.length > 0 && !databaseCandidateSet.policyVersion?.includes("+web")
+          ? `${databaseCandidateSet.policyVersion ?? "planner-v2.1"}+web`
+          : databaseCandidateSet.policyVersion,
+        items: [...databaseCandidateSet.items, ...preservedWebItems],
       };
       const updatedPlan = plan
         ? { ...plan, candidateSet }
         : { ...buildEmptyPlan(), candidateSet };
       setPlan(updatedPlan);
+      setIdeaMetadata({
+        generatedAt: candidateSet.generatedAt,
+        policyVersion: candidateSet.policyVersion,
+      });
       await savePlanNow(updatedPlan);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Failed to generate options";
@@ -639,7 +679,8 @@ function MealsPageInner() {
     }
   }
 
-  // Add 3-4 trusted web inspirations to the current week's candidate set
+  // Research trusted web inspirations and import them into My Recipes before
+  // they appear as selectable planner cards.
   async function handleAddWebInspirations() {
     setWebInspirationLoading(true);
     setGenerateError(null);
@@ -647,7 +688,7 @@ function MealsPageInner() {
       const res = await fetch("/api/meals/inspirations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ week: weekId, count: 4 }),
+        body: JSON.stringify({ week: weekId, count: 6 }),
       });
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
@@ -659,34 +700,23 @@ function MealsPageInner() {
         throw new Error("No new web inspirations found");
       }
 
-      const mergedCandidates = [
-        ...candidates,
-        ...webCandidates.filter((r) => !candidates.some((existing) => existing.id === r.id)),
-      ];
-      setCandidates(mergedCandidates);
+      const visibleCandidates = mergeUniqueCandidates(candidatesRef.current, webCandidates);
+      candidatesRef.current = visibleCandidates;
+      setCandidates(visibleCandidates);
 
       const basePlan = plan ?? buildEmptyPlan();
       const existingItems = basePlan.candidateSet?.items ?? [];
       const webItems: CandidateItem[] = webCandidates
         .filter((r) => !existingItems.some((item) => item.recipeId === r.id))
-        .map((r) => ({
-          recipeId: r.id,
-          recipeName: r.name,
-          source: r.source ?? null,
-          image: r.image ?? null,
-          dietary: r.dietary,
-          cuisine: r.cuisine,
-          time: r.time,
-          category: r.category,
-          courseTags: r.courseTags,
-          bucket: "web-inspiration",
-        }));
+        .map((r) => toCandidateItem(r, "web-inspiration"));
+
+      const existingPolicyVersion = basePlan.candidateSet?.policyVersion ?? "planner-v2.1";
 
       const candidateSet: CandidateSet = {
         generatedAt: basePlan.candidateSet?.generatedAt ?? new Date().toISOString(),
-        policyVersion: basePlan.candidateSet?.policyVersion
-          ? `${basePlan.candidateSet.policyVersion}+web`
-          : "planner-v2.1+web",
+        policyVersion: existingPolicyVersion.includes("+web")
+          ? existingPolicyVersion
+          : `${existingPolicyVersion}+web`,
         bucketContract: basePlan.candidateSet?.bucketContract,
         diagnostics: basePlan.candidateSet?.diagnostics,
         items: [...existingItems, ...webItems],
@@ -723,14 +753,16 @@ function MealsPageInner() {
 
   // Assign recipe to a day slot — persists immediately
   function handleSlotClick(dayIndex: number) {
-    if (!plan || planLoading) return;
+    if (planLoading) return;
+    const activePlan = plan ?? (selectedRecipe ? buildEmptyPlan() : null);
+    if (!activePlan) return;
     // No candidate selected — navigate to recipe page if assigned
     if (!selectedRecipe) {
-      const slot = plan.days[dayIndex];
+      const slot = activePlan.days[dayIndex];
       if (slot?.recipeId) router.push(`/recipes/${slot.recipeId}`);
       return;
     }
-    const newDays = [...plan.days];
+    const newDays = [...activePlan.days];
     const existingMeal = newDays[dayIndex].meal;
     newDays[dayIndex] = {
       ...newDays[dayIndex],
@@ -743,7 +775,7 @@ function MealsPageInner() {
         serveWith: existingMeal?.serveWith,
       },
     };
-    const updatedPlan = { ...plan, days: newDays };
+    const updatedPlan = { ...activePlan, days: newDays };
     setPlan(updatedPlan);
     savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
     setSelectedRecipe(null);
@@ -1289,30 +1321,48 @@ function MealsPageInner() {
           <NabuEmptyState
             className="mb-8"
             title="No plan for this week yet"
-            description={isPastWeek ? "No saved plan for this past week." : "Generate suggestions to start filling in your week."}
+            description={isPastWeek ? "No saved plan for this past week." : "Generate recipe-database ideas or research web ideas, then pick cards for the week above."}
             action={!isPastWeek ? (
-              <NabuButton onClick={() => handleGenerate()} disabled={loading}>
-                {loading ? "Generating..." : "Generate suggestions"}
-              </NabuButton>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <NabuButton onClick={() => handleGenerate()} disabled={loading}>
+                  {loading ? "Generating ideas..." : "Generate ideas"}
+                </NabuButton>
+                <NabuButton
+                  onClick={() => handleAddWebInspirations()}
+                  disabled={webInspirationLoading}
+                  tone="ghost"
+                >
+                  {webInspirationLoading ? "Researching web ideas..." : "Research web ideas"}
+                </NabuButton>
+              </div>
             ) : null}
           />
         )}
 
-        {/* Action buttons — generate (first time) or explicit regenerate */}
+        {/* Action buttons — database ideas and web research are separate flows */}
         <div className="flex flex-wrap items-center gap-3 mb-8">
           {!hasCandidates && !planLoading && plan && !isPastWeek && (
-            <NabuButton onClick={() => handleGenerate()} disabled={loading}>
-              {loading ? "Generating..." : "Generate suggestions"}
-            </NabuButton>
+            <>
+              <NabuButton onClick={() => handleGenerate()} disabled={loading}>
+                {loading ? "Generating ideas..." : "Generate ideas"}
+              </NabuButton>
+              <NabuButton
+                onClick={() => handleAddWebInspirations()}
+                disabled={webInspirationLoading}
+                tone="ghost"
+              >
+                {webInspirationLoading ? "Researching web ideas..." : "Research web ideas"}
+              </NabuButton>
+            </>
           )}
           {hasCandidates && (
             <>
-              {plan?.candidateSet?.generatedAt && (
+              {ideaMetadata?.generatedAt && (
                 <span className="text-[11px] text-stone-400 dark:text-stone-500">
-                  Generated {new Date(plan.candidateSet.generatedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
-                  {plan.candidateSet.policyVersion && (
+                  Recipe DB ideas generated {new Date(ideaMetadata.generatedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
+                  {ideaMetadata.policyVersion && (
                     <span className="ml-1 text-stone-300 dark:text-stone-600">
-                      ({plan.candidateSet.policyVersion})
+                      ({ideaMetadata.policyVersion})
                     </span>
                   )}
                 </span>
@@ -1325,7 +1375,7 @@ function MealsPageInner() {
                     tone="ghost"
                     size="sm"
                   >
-                    {webInspirationLoading ? "Finding web ideas..." : "Add 3–4 web ideas"}
+                    {webInspirationLoading ? "Researching web ideas..." : "Research web ideas"}
                   </NabuButton>
                   <NabuButton
                     onClick={() => handleGenerate()}
@@ -1333,7 +1383,7 @@ function MealsPageInner() {
                     tone="ghost"
                     size="sm"
                   >
-                    {loading ? "Regenerating..." : "Regenerate"}
+                    {loading ? "Generating ideas..." : "Generate ideas"}
                   </NabuButton>
                 </>
               )}
@@ -1375,7 +1425,7 @@ function MealsPageInner() {
           <div className="space-y-6">
             <NabuSectionHeader
               eyebrow="Suggestions"
-              description="Pick a main, then tap a day. Assigned recipes stay visible but quiet."
+              description="Ideas stay here while you browse weeks. Web ideas are imported to My Recipes before they appear."
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
