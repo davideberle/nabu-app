@@ -86,10 +86,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "dessert"
     ],
     "chapter": "Spring",
-    "meal_role": "main"
+    "meal_role": "dessert"
   },
   "cuisine": "Italian"
 }

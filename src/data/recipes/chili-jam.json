@@ -63,10 +63,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "condiment"
     ],
     "chapter": "Main Dishes",
-    "meal_role": "main"
+    "meal_role": "component"
   },
   "image": "/recipes/chili-jam.jpg",
   "cuisine": "Southeast Asian"
