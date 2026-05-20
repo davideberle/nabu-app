@@ -12,12 +12,14 @@ export interface WineBottle {
   appellation: string;
   country: string;
   region: string;
-  vintage: number;
+  vintage: number | null;
   color: "red" | "white" | "rosé";
   grapes?: string;
   style: string;
   pairingUse: string;
   imageUrl?: string;
+  imageKind?: "product" | "photo";
+  sourceNote?: string;
   sourceUrl?: string;
 }
 
@@ -89,5 +91,43 @@ export const wineBottles: WineBottle[] = [
       "Flexible red for weekday/smart-casual dinners: tomato sauces, roasted vegetables, mushrooms, lighter meat.",
     imageUrl: "/wine/le-volte-ornellaia-2023.png",
     sourceUrl: "https://www.ornellaia.com/en/wines/le-volte-dellornellaia-2023/",
+  },
+  {
+    id: "vale-de-camelos-viola-campanica-branco",
+    producer: "Vale de Camelos",
+    wine: "Viola Campaniça Branco",
+    appellation: "Vinho Regional Alentejano",
+    country: "Portugal",
+    region: "Alentejo",
+    vintage: null,
+    color: "white",
+    grapes: "Campaniça",
+    style:
+      "Fresh organic Alentejo white with citrus, pale stone fruit and a lightly herbal local-grape character.",
+    pairingUse:
+      "Aperitif, salads, grilled vegetables, simple seafood, roast chicken, lemony pasta or lighter Portuguese-style plates.",
+    imageUrl: "/wine/vale-de-camelos-viola-campanica-branco.jpg",
+    imageKind: "photo",
+    sourceNote:
+      "Vintage not visible in David's 2026-05-18 bottle photo.",
+  },
+  {
+    id: "pfaffl-hund-gruner-veltliner-reserve",
+    producer: "Weingut R&A Pfaffl",
+    wine: "Hund Grüner Veltliner Reserve",
+    appellation: "Weinviertel DAC Reserve",
+    country: "Austria",
+    region: "Weinviertel",
+    vintage: null,
+    color: "white",
+    grapes: "Grüner Veltliner",
+    style:
+      "Structured Grüner Veltliner Reserve with citrus, orchard fruit, white pepper and enough weight for richer food.",
+    pairingUse:
+      "Strong all-round white for schnitzel, pork, asparagus, herbs, creamy sauces, spicy vegetables and salty snacks.",
+    imageUrl: "/wine/pfaffl-hund-gruner-veltliner-reserve.jpg",
+    imageKind: "photo",
+    sourceNote:
+      "Vintage not visible in David's 2026-05-18 bottle photo; the 2025 medal is an award year, not the vintage.",
   },
 ];

@@ -36,6 +36,9 @@ export function WineBottleCard({ bottle }: { bottle: BottleWithStatus }) {
   }
 
   const pending = isPending;
+  const isSourcePhoto = bottle.imageKind === "photo";
+  const vintageLabel =
+    typeof bottle.vintage === "number" ? String(bottle.vintage) : "Vintage unknown";
   const colorAccent =
     bottle.color === "red"
       ? "from-red-950/10 via-stone-100 to-rose-950/20 dark:from-red-950/30 dark:via-stone-900 dark:to-rose-950/40"
@@ -48,15 +51,24 @@ export function WineBottleCard({ bottle }: { bottle: BottleWithStatus }) {
       className={`grid overflow-hidden transition-opacity sm:grid-cols-[170px_minmax(0,1fr)] ${isOut ? "opacity-50" : ""}`}
     >
       <div
-        className={`relative flex min-h-56 items-center justify-center overflow-hidden bg-gradient-to-br p-5 sm:min-h-full ${colorAccent}`}
+        className={`relative flex min-h-56 items-center justify-center overflow-hidden bg-gradient-to-br ${isSourcePhoto ? "p-0" : "p-5"} sm:min-h-full ${colorAccent}`}
       >
         <div className="absolute inset-x-8 bottom-5 h-6 rounded-full bg-black/10 blur-xl dark:bg-black/30" />
         {bottle.imageUrl ? (
-          <img
-            src={bottle.imageUrl}
-            alt={`${bottle.wine} by ${bottle.producer}`}
-            className="relative z-10 max-h-60 w-auto max-w-full object-contain drop-shadow-xl"
-          />
+          <>
+            <img
+              src={bottle.imageUrl}
+              alt={`${bottle.wine} by ${bottle.producer}`}
+              className={
+                isSourcePhoto
+                  ? "absolute inset-0 h-full w-full object-cover"
+                  : "relative z-10 max-h-60 w-auto max-w-full object-contain drop-shadow-xl"
+              }
+            />
+            {isSourcePhoto ? (
+              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/5" />
+            ) : null}
+          </>
         ) : (
           <span className="relative z-10 text-4xl opacity-60" aria-hidden="true">
             {bottle.color === "red" ? "🍷" : bottle.color === "rosé" ? "🌸" : "🥂"}
@@ -81,7 +93,7 @@ export function WineBottleCard({ bottle }: { bottle: BottleWithStatus }) {
             ) : null}
           </div>
           <div className="flex shrink-0 flex-col items-end gap-2">
-            <NabuBadge tone="stone">{bottle.vintage}</NabuBadge>
+            <NabuBadge tone="stone">{vintageLabel}</NabuBadge>
             {isOut ? (
               <NabuBadge tone="red">Out</NabuBadge>
             ) : (
@@ -98,6 +110,9 @@ export function WineBottleCard({ bottle }: { bottle: BottleWithStatus }) {
               {bottle.pairingUse}
             </p>
           </div>
+          {bottle.sourceNote ? (
+            <p className="text-xs leading-5 text-quaternary">{bottle.sourceNote}</p>
+          ) : null}
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
