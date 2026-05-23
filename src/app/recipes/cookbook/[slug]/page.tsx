@@ -157,7 +157,7 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
                     return (
                       <Link
                         key={recipe.id}
-                        href={`/recipes/${recipe.id}`}
+                        href={`/recipes/${recipe.id}?from=${encodeURIComponent(`/recipes/cookbook/${slug}`)}`}
                         className="group rounded-xl bg-white dark:bg-stone-900 shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
                       >
                         {recipe.image ? (
@@ -224,7 +224,7 @@ export default async function CookbookPage({ params }: { params: Promise<{ slug:
               return (
                 <Link
                   key={recipe.id}
-                  href={`/recipes/${recipe.id}`}
+                  href={`/recipes/${recipe.id}?from=${encodeURIComponent(`/recipes/cookbook/${slug}`)}`}
                   className="group rounded-xl bg-white dark:bg-stone-900 shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
                 >
                   {recipe.image ? (

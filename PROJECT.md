@@ -32,6 +32,7 @@ https://app.davideberle.com.
 - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` — Google OAuth credentials
 ## Current UI refresh status
 
+- 2026-05-23: Recipe detail back button hotfix: recipe links now carry a safe parent `from` target from browse/cookbook/cuisine/dietary/meals surfaces, and the floating recipe back button routes deterministically to that parent instead of relying on browser history (which could jump around after in-page chapter/scroll interactions). Local production build passes.
 - Untitled UI/Nabu wrapper foundation is live.
 - Dashboard, Meals, and Cooking polish shipped in `dab49fac`.
 - Todos, Music, and Music Discovery polish shipped in `57ae11d8`.

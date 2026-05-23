@@ -32,7 +32,7 @@ export default async function RecipesPage() {
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {/* Primary hero — spans 2 rows on large screens */}
               <Link
-                href={`/recipes/${featuredRecipes[0].id}`}
+                href={`/recipes/${featuredRecipes[0].id}?from=${encodeURIComponent('/recipes')}`}
                 className="group col-span-2 lg:col-span-2 lg:row-span-2 relative rounded-2xl overflow-hidden"
               >
                 <div className="relative aspect-[16/9] lg:aspect-auto lg:h-full min-h-[240px]">
@@ -59,7 +59,7 @@ export default async function RecipesPage() {
               {featuredRecipes.slice(1, 3).map((recipe) => (
                 <Link
                   key={recipe.id}
-                  href={`/recipes/${recipe.id}`}
+                  href={`/recipes/${recipe.id}?from=${encodeURIComponent('/recipes')}`}
                   className="group relative rounded-2xl overflow-hidden"
                 >
                   <div className="relative aspect-[4/3]">
@@ -212,7 +212,7 @@ export default async function RecipesPage() {
               const dietary = getDietary(recipe);
               const courseTags = getCourseTags(recipe);
               return (
-                <NabuCard key={recipe.id} href={`/recipes/${recipe.id}`} className="p-0">
+                <NabuCard key={recipe.id} href={`/recipes/${recipe.id}?from=${encodeURIComponent('/recipes')}`} className="p-0">
                   {recipe.image && (
                     <div className="relative aspect-[4/3] w-full overflow-hidden">
                       <Image

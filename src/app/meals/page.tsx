@@ -759,7 +759,7 @@ function MealsPageInner() {
     // No candidate selected — navigate to recipe page if assigned
     if (!selectedRecipe) {
       const slot = activePlan.days[dayIndex];
-      if (slot?.recipeId) router.push(`/recipes/${slot.recipeId}`);
+      if (slot?.recipeId) router.push(`/recipes/${slot.recipeId}?from=${encodeURIComponent('/meals')}`);
       return;
     }
     const newDays = [...activePlan.days];
@@ -2232,7 +2232,7 @@ function QuickViewModal({
               {/* Full recipe link */}
               <div className="pt-2 pb-1 text-center">
                 <Link
-                  href={`/recipes/${recipe.id}`}
+                  href={`/recipes/${recipe.id}?from=${encodeURIComponent('/meals')}`}
                   className="text-sm text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200 underline underline-offset-2 transition-colors"
                 >
                   View full recipe

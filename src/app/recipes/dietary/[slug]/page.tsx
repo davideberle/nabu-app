@@ -57,7 +57,7 @@ export default async function DietaryPage({ params }: { params: Promise<{ slug: 
             return (
               <Link
                 key={recipe.id}
-                href={`/recipes/${recipe.id}`}
+                href={`/recipes/${recipe.id}?from=${encodeURIComponent(`/recipes/dietary/${slug}`)}`}
                 className="group rounded-xl bg-white dark:bg-stone-900 shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
               >
                 {recipe.image ? (
