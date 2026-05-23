@@ -206,6 +206,7 @@ export type MealPlan = {
     recipeId: string | null;
     recipeName: string | null;
     meal?: MealSlot | null;
+    brunch?: MealSlot | null;
   }[];
   context?: WeekContextItem[];
   notes?: string; // free-text week notes

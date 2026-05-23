@@ -17,7 +17,7 @@ https://app.davideberle.com.
 |----------|--------|-------|
 | Todos    | Live   | Full CRUD, Turso-backed. UI polished with Nabu/Untitled wrapper in `57ae11d8`. |
 | Recipes  | Live   | ~3,527 cookbook recipes (static JSON, classified by meal_role) + My Recipes (Turso), with cook history shown on recipe pages |
-| Meals    | Live   | Weekly meal planner (Phases 1–3 done: 7-day week, quality-gated candidates, ISO week nav + history). Phase 4 active: day expansion, side/serve-with, UX polish. Turso-backed |
+| Meals    | Live   | Weekly meal planner (Phases 1–4: 7-day week, quality-gated candidates, ISO week nav + history, day expansion, side/serve-with, and weekend Sat/Sun breakfast/brunch slots). Turso-backed |
 | Cooking  | Live   | Live cooking session, auto-loaded from meal plan. UI intentionally lean: main steps, sides/serve-with, concise wine, optional notes; meal-flow/shortcut/upgrade/session-modification blocks hidden. |
 | Wine     | Live   | Household wine-cellar view backed by kitchen-owned seed data mirror; tracks red/white bottles, bottle images, pairing lanes, and consumed status. |
 | Music    | Live   | Sonos zone control + discovery review. Discovery cards include cover/year metadata; already-in-library candidates are rejected out of inbox during sync. UI polished with Nabu/Untitled wrapper in `57ae11d8`. |

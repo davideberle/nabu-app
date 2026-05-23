@@ -73,7 +73,9 @@ without clear user-facing value.
 
 Weekly meal plans are stored in Turso (`meal_plans` table), not the
 filesystem. The planner uses `meal_role` and `dish_type` to select
-dinner-worthy mains and complementary sides with cuisine diversity.
+dinner-worthy mains and complementary sides with cuisine diversity. Day JSON
+keeps legacy `recipeId` / `recipeName` / `meal` fields as the main slot, with
+an optional `brunch` `MealSlot` for Saturday/Sunday breakfast/brunch planning.
 
 ### Cook events (`src/lib/db.ts`)
 

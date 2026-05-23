@@ -10,7 +10,7 @@ function timestamp(value: string | undefined | null): number | null {
 }
 
 function hasAssignedMeal(day: MealDay | undefined): boolean {
-  return Boolean(day?.recipeId || day?.meal?.main?.id);
+  return Boolean(day?.recipeId || day?.meal?.main?.id || day?.brunch?.main?.id);
 }
 
 function isOpenDay(day: MealDay): boolean {
@@ -18,6 +18,7 @@ function isOpenDay(day: MealDay): boolean {
     !day.recipeId &&
     !day.recipeName &&
     !day.meal &&
+    !day.brunch &&
     (day.planningState === undefined || day.planningState === "open")
   );
 }

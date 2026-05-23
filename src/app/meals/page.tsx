@@ -86,6 +86,7 @@ type DaySlot = {
   recipeId: string | null;
   recipeName: string | null;
   meal?: MealSlot | null;
+  brunch?: MealSlot | null;
 };
 
 type MealPlan = {
@@ -116,6 +117,14 @@ type DayHistory = {
   cookedRecipeId: string | null;
   cookedRecipeName: string | null;
 };
+
+// ----- slot helpers -----
+
+const BRUNCH_DAY_NAMES = new Set(["Saturday", "Sunday"]);
+
+function hasBrunchSlot(dayOfWeek: string): boolean {
+  return BRUNCH_DAY_NAMES.has(dayOfWeek);
+}
 
 // ----- date helpers -----
 
@@ -331,6 +340,7 @@ function normalizePlanDays(
       meal: saved?.meal ?? (saved?.recipeId && saved?.recipeName
         ? { main: { id: saved.recipeId, name: saved.recipeName } }
         : null),
+      brunch: saved?.brunch ?? null,
     };
   });
 
@@ -340,6 +350,10 @@ function normalizePlanDays(
 // ----- persistence helpers -----
 
 /** Immediately persist a plan to the server. */
+function touchPlan(plan: MealPlan): MealPlan {
+  return { ...plan, updatedAt: new Date().toISOString() };
+}
+
 async function savePlanNow(plan: MealPlan): Promise<void> {
   const res = await fetch("/api/meals/plan", {
     method: "POST",
@@ -472,6 +486,7 @@ function MealsPageInner() {
         recipeId: null,
         recipeName: null,
         meal: null,
+        brunch: null,
       })),
       context: [],
       notes: "",
@@ -661,9 +676,9 @@ function MealsPageInner() {
           : databaseCandidateSet.policyVersion,
         items: [...databaseCandidateSet.items, ...preservedWebItems],
       };
-      const updatedPlan = plan
+      const updatedPlan = touchPlan(plan
         ? { ...plan, candidateSet }
-        : { ...buildEmptyPlan(), candidateSet };
+        : { ...buildEmptyPlan(), candidateSet });
       setPlan(updatedPlan);
       setIdeaMetadata({
         generatedAt: candidateSet.generatedAt,
@@ -721,7 +736,7 @@ function MealsPageInner() {
         diagnostics: basePlan.candidateSet?.diagnostics,
         items: [...existingItems, ...webItems],
       };
-      const updatedPlan = { ...basePlan, candidateSet };
+      const updatedPlan = touchPlan({ ...basePlan, candidateSet });
       setPlan(updatedPlan);
       await savePlanNow(updatedPlan);
     } catch (err) {
@@ -775,7 +790,35 @@ function MealsPageInner() {
         serveWith: existingMeal?.serveWith,
       },
     };
-    const updatedPlan = { ...activePlan, days: newDays };
+    const updatedPlan = touchPlan({ ...activePlan, days: newDays });
+    setPlan(updatedPlan);
+    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    setSelectedRecipe(null);
+  }
+
+  // Assign recipe to the weekend breakfast/brunch slot — persists immediately
+  function handleBrunchSlotClick(dayIndex: number) {
+    if (planLoading) return;
+    const activePlan = plan ?? (selectedRecipe ? buildEmptyPlan() : null);
+    if (!activePlan) return;
+    const slot = activePlan.days[dayIndex];
+    if (!slot || !hasBrunchSlot(slot.dayOfWeek)) return;
+
+    // No candidate selected — navigate to brunch recipe page if assigned
+    if (!selectedRecipe) {
+      const recipeId = slot.brunch?.main?.id;
+      if (recipeId) router.push(`/recipes/${recipeId}?from=${encodeURIComponent('/meals')}`);
+      return;
+    }
+
+    const newDays = [...activePlan.days];
+    newDays[dayIndex] = {
+      ...slot,
+      brunch: {
+        main: { id: selectedRecipe.id, name: selectedRecipe.name },
+      },
+    };
+    const updatedPlan = touchPlan({ ...activePlan, days: newDays });
     setPlan(updatedPlan);
     savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
     setSelectedRecipe(null);
@@ -797,7 +840,22 @@ function MealsPageInner() {
       planningState: "open",
       meal: null,
     };
-    const updatedPlan = { ...plan, days: newDays };
+    const updatedPlan = touchPlan({ ...plan, days: newDays });
+    setPlan(updatedPlan);
+    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+  }
+
+  // Clear only the weekend breakfast/brunch slot — persists immediately
+  function handleClearBrunchSlot(dayIndex: number) {
+    if (!plan) return;
+    const slot = plan.days[dayIndex];
+    if (!slot || !hasBrunchSlot(slot.dayOfWeek)) return;
+    const newDays = [...plan.days];
+    newDays[dayIndex] = {
+      ...slot,
+      brunch: null,
+    };
+    const updatedPlan = touchPlan({ ...plan, days: newDays });
     setPlan(updatedPlan);
     savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
   }
@@ -848,7 +906,7 @@ function MealsPageInner() {
       ...newDays[dayIndex],
       meal: { ...slot.meal, serveWith: serveWith.length > 0 ? serveWith : undefined },
     };
-    const updatedPlan = { ...plan, days: newDays };
+    const updatedPlan = touchPlan({ ...plan, days: newDays });
     setPlan(updatedPlan);
     savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
   }
@@ -934,7 +992,7 @@ function MealsPageInner() {
       planningState: "meal",
       meal: { ...slot.meal, sides: newSides },
     };
-    const updatedPlan = { ...plan, days: newDays };
+    const updatedPlan = touchPlan({ ...plan, days: newDays });
     setPlan(updatedPlan);
     savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
   }
@@ -954,7 +1012,7 @@ function MealsPageInner() {
         sides: newSides.length > 0 ? newSides : undefined,
       },
     };
-    const updatedPlan = { ...plan, days: newDays };
+    const updatedPlan = touchPlan({ ...plan, days: newDays });
     setPlan(updatedPlan);
     savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
   }
@@ -1122,6 +1180,9 @@ function MealsPageInner() {
         <div className="grid grid-cols-1 gap-3 mb-10 min-[380px]:grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
           {weekDates.map((wd, i) => {
             const slot = plan?.days[i] ?? null;
+            const hasBrunch = hasBrunchSlot(wd.dayOfWeek);
+            const brunchSlot = slot?.brunch ?? null;
+            const isBrunchFilled = Boolean(brunchSlot?.main?.id);
             const isFilled = slot != null && slot.recipeId != null;
             const isSelectable = !!selectedRecipe;
             const dayContext = getContextForDate(wd.date);
@@ -1134,15 +1195,16 @@ function MealsPageInner() {
             const hist = dayHistory[wd.date] ?? null;
             const isCooked = isFilled && cookedSlots.has(`${slot!.recipeId}:${wd.date}`);
             const isClickable = isSelectable ? !isSkipped : (isFilled && !isSkipped);
+            const cardHandlesMainClick = !hasBrunch;
             return (
               <div
                 key={wd.date}
-                onClick={() => isClickable && handleSlotClick(i)}
+                onClick={() => cardHandlesMainClick && isClickable && handleSlotClick(i)}
                 className={`rounded-xl border p-3 min-h-[110px] flex flex-col transition-all ${
                   isSkipped
                     ? "bg-stone-100/80 dark:bg-stone-900/60 opacity-50"
                     : isSelectable
-                      ? "cursor-pointer border-amber-400 dark:border-amber-600 bg-amber-50/50 dark:bg-amber-950/30 hover:bg-amber-50 dark:hover:bg-amber-900/30 shadow-sm"
+                      ? `${cardHandlesMainClick ? "cursor-pointer " : ""}border-amber-400 dark:border-amber-600 bg-amber-50/50 dark:bg-amber-950/30 hover:bg-amber-50 dark:hover:bg-amber-900/30 shadow-sm`
                       : isCooked
                         ? "bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/50 shadow-sm cursor-pointer"
                         : isFilled
@@ -1186,6 +1248,44 @@ function MealsPageInner() {
                     )}
                   </div>
                 )}
+                {!isSkipped && hasBrunch && (
+                  <div className="mb-2 rounded-lg border border-amber-100 bg-amber-50/40 p-2 dark:border-amber-900/50 dark:bg-amber-950/20">
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (isSelectable || isBrunchFilled) handleBrunchSlotClick(i);
+                      }}
+                      className={`block w-full text-left ${isSelectable || isBrunchFilled ? "cursor-pointer" : "cursor-default"}`}
+                    >
+                      <span className="mb-0.5 block text-[9px] font-medium uppercase tracking-wider text-amber-500 dark:text-amber-400">
+                        Breakfast/brunch
+                      </span>
+                      {isBrunchFilled ? (
+                        <span className="block text-[12px] font-serif leading-snug text-stone-700 line-clamp-2 dark:text-stone-200">
+                          {brunchSlot?.main.name}
+                        </span>
+                      ) : (
+                        <span className="block text-[11px] text-stone-400 dark:text-stone-500">
+                          {isSelectable ? "Assign here" : "—"}
+                        </span>
+                      )}
+                    </button>
+                    {isBrunchFilled && !isSelectable && (
+                      <div className="mt-1 flex justify-end">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleClearBrunchSlot(i);
+                          }}
+                          className="text-[10px] text-stone-400 transition-colors hover:text-red-500"
+                        >
+                          clear
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
                 {isSkipped ? (
                   <div className="flex-1 flex items-center justify-center">
                     <span className="text-[11px] text-stone-300 dark:text-stone-600 italic">
@@ -1193,7 +1293,15 @@ function MealsPageInner() {
                     </span>
                   </div>
                 ) : isFilled ? (
-                  <div className="flex-1 flex flex-col justify-between">
+                  <div
+                    onClick={() => hasBrunch && isClickable && handleSlotClick(i)}
+                    className={`flex-1 flex flex-col justify-between ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
+                  >
+                    {hasBrunch && (
+                      <span className="mb-0.5 text-[9px] font-medium uppercase tracking-wider text-stone-400 dark:text-stone-500">
+                        Main meal
+                      </span>
+                    )}
                     <p className="text-[13px] font-serif text-stone-700 dark:text-stone-200 line-clamp-2 leading-snug">
                       {slot?.recipeName}
                     </p>
@@ -1289,9 +1397,17 @@ function MealsPageInner() {
                     )}
                   </div>
                 ) : (
-                  <div className="flex-1 flex items-center justify-center">
+                  <div
+                    onClick={() => hasBrunch && isClickable && handleSlotClick(i)}
+                    className={`flex-1 flex flex-col items-center justify-center ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
+                  >
+                    {hasBrunch && (
+                      <span className="mb-1 text-[9px] font-medium uppercase tracking-wider text-stone-400 dark:text-stone-500">
+                        Main meal
+                      </span>
+                    )}
                     <span className="text-[11px] text-stone-300 dark:text-stone-600">
-                      {isSelectable ? "Tap to assign" : "\u2014"}
+                      {isSelectable ? (hasBrunch ? "Assign here" : "Tap to assign") : "\u2014"}
                     </span>
                   </div>
                 )}
@@ -1409,7 +1525,7 @@ function MealsPageInner() {
           <div className="mb-6 flex flex-col gap-3 rounded-2xl bg-amber-50/50 p-4 sm:flex-row sm:items-center sm:justify-between dark:bg-amber-950/20">
             <span className="min-w-0 text-sm text-stone-600 dark:text-stone-300">
               <span className="font-serif font-medium">{selectedRecipe.name}</span>
-              <span className="text-stone-400 dark:text-stone-500 sm:ml-2">&mdash; tap a day to assign</span>
+              <span className="text-stone-400 dark:text-stone-500 sm:ml-2">&mdash; tap a day to assign; weekends offer brunch or main</span>
             </span>
             <button
               onClick={() => setSelectedRecipe(null)}
@@ -1430,7 +1546,7 @@ function MealsPageInner() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {candidates.map((r) => {
-                  const isAssigned = plan?.days.some((d) => d?.recipeId === r.id) ?? false;
+                  const isAssigned = plan?.days.some((d) => d?.recipeId === r.id || d?.brunch?.main?.id === r.id) ?? false;
                   return (
                     <RecipeCard
                       key={r.id}
