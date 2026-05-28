@@ -232,6 +232,7 @@ export async function POST(request: NextRequest) {
     const candidates: RecipeOption[] = [];
     const missingMyRecipeIds: string[] = [];
     const skippedDuplicates: string[] = [];
+    const skippedNonMain: string[] = [];
     for (const imported of report.imported) {
       // Skip if this recipe or URL was already used in recent weeks
       if (recentRecipeIds.has(imported.id) || recentSourceUrls.has(imported.url)) {
@@ -240,6 +241,10 @@ export async function POST(request: NextRequest) {
       }
       const recipe = await getMyRecipe(imported.id);
       if (recipe) {
+        if (!isMainPlannerCandidate(recipe)) {
+          skippedNonMain.push(imported.id);
+          continue;
+        }
         await recordWebInspiration(imported.id, week, imported.url, imported.source);
         candidates.push(recipeToCandidate(recipe, {
           source_url: imported.url,
@@ -258,6 +263,7 @@ export async function POST(request: NextRequest) {
           week,
           candidates: [],
           skippedDuplicates,
+          ...(skippedNonMain.length > 0 ? { skippedNonMain } : {}),
           report,
         },
         { status: 200 },
@@ -281,6 +287,7 @@ export async function POST(request: NextRequest) {
       week,
       candidates,
       ...(skippedDuplicates.length > 0 ? { skippedDuplicates } : {}),
+      ...(skippedNonMain.length > 0 ? { skippedNonMain } : {}),
       ...(missingMyRecipeIds.length > 0 ? { missingMyRecipeIds } : {}),
       report,
     });
