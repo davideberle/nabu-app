@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getAllRecipes, getCuisine, getDietary, isLowCalorie, getCourseTags, getRecipe } from "@/lib/recipes";
 import { selectMealOptions, selectCandidateMains, getDisplayCategory, CANDIDATE_BUCKET_ORDER, CANDIDATE_BUCKET_CONTRACT, type WeekendMealOption, type WeekContextItem, type CandidateItem, type CandidateBucket, type QualityGatedResult, type TaggedCandidate } from "@/lib/meals";
-import { getRecentlyCookedRecipeIds, getThumbsDownRecipeIds } from "@/lib/db";
+import { getRecentlyCookedRecipeIds, getThumbsDownRecipeIds, getPlannedRecipeIdsForWeeks } from "@/lib/db";
+import { getRecentWeekIds } from "@/lib/meals";
 import type { Recipe } from "@/lib/recipes";
 
 function parseMinutes(v: unknown): number {
@@ -54,6 +55,14 @@ export async function GET(request: NextRequest) {
   // Also exclude recipes cooked in the last 14 days to avoid repetition
   const recentlyCooked = await getRecentlyCookedRecipeIds(14);
   for (const id of recentlyCooked) excludeIds.add(id);
+
+  // Exclude recipes planned in recent prior weeks (main + brunch)
+  const weekParam = request.nextUrl.searchParams.get("week");
+  if (weekParam) {
+    const recentWeeks = getRecentWeekIds(weekParam, 3);
+    const plannedIds = await getPlannedRecipeIdsForWeeks(recentWeeks);
+    for (const id of plannedIds) excludeIds.add(id);
+  }
 
   // Exclude recipes the user has thumbs-downed
   const thumbsDown = await getThumbsDownRecipeIds();

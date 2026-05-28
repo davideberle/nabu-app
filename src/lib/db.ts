@@ -700,6 +700,55 @@ export async function deleteMyRecipe(id: string): Promise<boolean> {
   return result.rowsAffected > 0;
 }
 
+
+function collectMealPlanRecipeIds(plan: { days?: unknown }): string[] {
+  const ids = new Set<string>();
+  const days = Array.isArray(plan.days) ? plan.days : [];
+  for (const day of days) {
+    if (!day || typeof day !== "object") continue;
+    const record = day as Record<string, unknown>;
+    if (typeof record.recipeId === "string" && record.recipeId) {
+      ids.add(record.recipeId);
+    }
+    const meal = record.meal as { main?: { id?: unknown } } | null | undefined;
+    if (typeof meal?.main?.id === "string" && meal.main.id) {
+      ids.add(meal.main.id);
+    }
+    const brunch = record.brunch as { main?: { id?: unknown } } | null | undefined;
+    if (typeof brunch?.main?.id === "string" && brunch.main.id) {
+      ids.add(brunch.main.id);
+    }
+  }
+  return [...ids];
+}
+
+/** Get main/brunch recipe IDs planned in the supplied ISO weeks. */
+export async function getPlannedRecipeIdsForWeeks(
+  weeks: string[]
+): Promise<Set<string>> {
+  const uniqueWeeks = [...new Set(weeks.filter(Boolean))];
+  const ids = new Set<string>();
+  if (uniqueWeeks.length === 0) return ids;
+
+  const client = await getDb();
+  const placeholders = uniqueWeeks.map(() => "?").join(", ");
+  const result = await client.execute({
+    sql: `SELECT data FROM meal_plans WHERE week IN (${placeholders})`,
+    args: uniqueWeeks,
+  });
+
+  for (const row of result.rows) {
+    try {
+      const plan = JSON.parse(row["data"] as string) as { days?: unknown };
+      for (const id of collectMealPlanRecipeIds(plan)) ids.add(id);
+    } catch {
+      // Ignore one malformed historical plan rather than breaking generation.
+    }
+  }
+
+  return ids;
+}
+
 // ---------------------------------------------------------------------------
 // Cook event types & helpers
 // ---------------------------------------------------------------------------
@@ -899,6 +948,24 @@ async function getWebInspirationColumns(client: Client): Promise<Set<string>> {
 async function hasWebInspirationImportedAt(client: Client): Promise<boolean> {
   const columns = await getWebInspirationColumns(client);
   return columns.has("imported_at");
+}
+
+/** Get recent web inspiration provenance rows, newest first. */
+export async function getRecentWebInspirations(
+  limit = 100
+): Promise<WebRecipeInspiration[]> {
+  const client = await getDb();
+  const hasImportedAt = await hasWebInspirationImportedAt(client);
+  if (!hasImportedAt) {
+    await client.execute("ALTER TABLE web_recipe_inspirations ADD COLUMN imported_at TEXT");
+  }
+  const result = await client.execute({
+    sql: `SELECT * FROM web_recipe_inspirations
+          ORDER BY COALESCE(imported_at, updated_at, created_at, week) DESC
+          LIMIT ?`,
+    args: [limit],
+  });
+  return result.rows as unknown as WebRecipeInspiration[];
 }
 
 /** Record provenance for a web inspiration recipe. */

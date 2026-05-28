@@ -12,6 +12,8 @@ import {
   recordWebInspiration,
   getMyRecipe,
 } from "@/lib/db";
+import { getRecentWeekIds } from "@/lib/meals";
+import { loadMealPlan } from "@/lib/meals-persistence";
 import type { Recipe } from "@/lib/recipes";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
@@ -139,6 +141,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid count (expected 1-12)" }, { status: 400 });
   }
 
+  // Reject if the target week plan is locked
+  const weekPlan = await loadMealPlan(week);
+  if (weekPlan?.locked) {
+    return NextResponse.json(
+      { error: "Plan is locked", locked: true },
+      { status: 409 },
+    );
+  }
+
   // Use configured importer or fall back to vendored kitchen importer script
   const customCommand = process.env.KITCHEN_INSPIRATION_IMPORTER_COMMAND;
   const scriptPath = `${process.cwd()}/scripts/weekly-inspirations.mjs`;
@@ -178,12 +189,33 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Build a set of recipe_id and source_url used in recent prior weeks
+    // so we never resurface the same web inspiration.
+    const recentWeeks = getRecentWeekIds(week, 4);
+    const recentInspirations = await Promise.all(
+      recentWeeks.map((w) => getWebInspirationsForWeek(w)),
+    );
+    const recentRecipeIds = new Set<string>();
+    const recentSourceUrls = new Set<string>();
+    for (const weekInsps of recentInspirations) {
+      for (const insp of weekInsps) {
+        recentRecipeIds.add(insp.recipe_id);
+        if (insp.source_url) recentSourceUrls.add(insp.source_url);
+      }
+    }
+
     // Fetch the imported My Recipes rows and build candidate cards. A web
     // idea is never returned to the planner unless the importer wrote it to
     // the app DB, so quick view/detail resolution stays normal.
     const candidates: RecipeOption[] = [];
     const missingMyRecipeIds: string[] = [];
+    const skippedDuplicates: string[] = [];
     for (const imported of report.imported) {
+      // Skip if this recipe or URL was already used in recent weeks
+      if (recentRecipeIds.has(imported.id) || recentSourceUrls.has(imported.url)) {
+        skippedDuplicates.push(imported.id);
+        continue;
+      }
       const recipe = await getMyRecipe(imported.id);
       if (recipe) {
         await recordWebInspiration(imported.id, week, imported.url, imported.source);
@@ -194,6 +226,20 @@ export async function POST(request: NextRequest) {
       } else {
         missingMyRecipeIds.push(imported.id);
       }
+    }
+
+    // All imported results were recent duplicates
+    if (candidates.length === 0 && skippedDuplicates.length > 0) {
+      return NextResponse.json(
+        {
+          error: `All ${skippedDuplicates.length} imported recipe(s) were already used in recent weeks`,
+          week,
+          candidates: [],
+          skippedDuplicates,
+          report,
+        },
+        { status: 200 },
+      );
     }
 
     if (candidates.length === 0 && missingMyRecipeIds.length > 0) {
@@ -212,6 +258,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       week,
       candidates,
+      ...(skippedDuplicates.length > 0 ? { skippedDuplicates } : {}),
       ...(missingMyRecipeIds.length > 0 ? { missingMyRecipeIds } : {}),
       report,
     });

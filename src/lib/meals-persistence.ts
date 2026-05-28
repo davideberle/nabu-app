@@ -47,11 +47,13 @@ function preserveStoredAssignmentsForStaleSave(
   return { ...incomingPlan, days };
 }
 
-export async function saveMealPlan(plan: MealPlan): Promise<void> {
+export type SaveResult = { ok: true } | { ok: false; reason: "locked" };
+
+export async function saveMealPlan(plan: MealPlan): Promise<SaveResult> {
   const client = await getDb();
   const now = new Date().toISOString();
   const existing = await client.execute({
-    sql: "SELECT data, updated_at FROM meal_plans WHERE week = ?",
+    sql: "SELECT data, locked, updated_at FROM meal_plans WHERE week = ?",
     args: [plan.week],
   });
 
@@ -59,6 +61,18 @@ export async function saveMealPlan(plan: MealPlan): Promise<void> {
     existing.rows.length > 0
       ? (JSON.parse(existing.rows[0]["data"] as string) as MealPlan)
       : null;
+
+  // Reject mutations to a locked plan unless the incoming payload is also locked
+  // (i.e. the only allowed write to a locked plan is one that keeps it locked).
+  const storedLocked = existing.rows.length > 0 && (existing.rows[0]["locked"] as number) === 1;
+  if (storedLocked && !plan.locked) {
+    return { ok: false, reason: "locked" };
+  }
+  if (storedLocked && plan.locked) {
+    // Plan is locked — block all content mutations.
+    return { ok: false, reason: "locked" };
+  }
+
   if (storedPlan && !storedPlan.updatedAt) {
     storedPlan.updatedAt = existing.rows[0]["updated_at"] as string | undefined;
   }
@@ -86,6 +100,7 @@ export async function saveMealPlan(plan: MealPlan): Promise<void> {
       now,
     ],
   });
+  return { ok: true };
 }
 
 export async function loadMealPlan(weekId: string): Promise<MealPlan | null> {

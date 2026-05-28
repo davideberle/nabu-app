@@ -466,9 +466,12 @@ function MealsPageInner() {
   // Load recipe feedback on mount
   useEffect(() => {
     fetch("/api/meals/feedback")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`Feedback fetch failed: ${r.status}`);
+        return r.json();
+      })
       .then((data: Record<string, "up" | "down">) => setFeedbackMap(data))
-      .catch(() => {});
+      .catch((err) => { console.error("Failed to load feedback:", err); });
   }, []);
 
   const buildEmptyPlan = useCallback((): MealPlan => {
@@ -581,14 +584,15 @@ function MealsPageInner() {
         }
         // Load persisted feedback for this week
         fetch(`/api/meals/feedback?week=${weekId}`)
-          .then((r) => r.json())
-          .then((fbData: { feedback: { recipeId: string; feedback: "up" | "down" }[] }) => {
-            if (cancelled) return;
-            const map: Record<string, "up" | "down"> = {};
-            for (const fb of fbData.feedback) map[fb.recipeId] = fb.feedback;
-            setFeedbackMap(map);
+          .then((r) => {
+            if (!r.ok) throw new Error(`Feedback fetch failed: ${r.status}`);
+            return r.json();
           })
-          .catch(() => { /* non-critical */ });
+          .then((fbData: Record<string, "up" | "down">) => {
+            if (cancelled) return;
+            setFeedbackMap(fbData);
+          })
+          .catch((err) => { console.error("Failed to load feedback:", err); });
         // Load history projection for this week
         fetch(`/api/meals/history?week=${weekId}`)
           .then((r) => r.json())
@@ -635,10 +639,12 @@ function MealsPageInner() {
   // Generate recipe-database ideas. Web ideas stay visible but are researched
   // through their own action and provenance table.
   async function handleGenerate() {
+    if (plan?.locked) return;
     setLoading(true);
     setGenerateError(null);
     try {
       const params = new URLSearchParams();
+      params.set("week", weekId);
       if (plan?.context?.length) {
         params.set("context", JSON.stringify(plan.context));
       }
@@ -697,6 +703,7 @@ function MealsPageInner() {
   // Research trusted web inspirations and import them into My Recipes before
   // they appear as selectable planner cards.
   async function handleAddWebInspirations() {
+    if (plan?.locked) return;
     setWebInspirationLoading(true);
     setGenerateError(null);
     try {
@@ -751,12 +758,17 @@ function MealsPageInner() {
   // Quick View — fetch full recipe detail
   async function handleQuickView(recipeId: string) {
     setQuickViewLoading(true);
+    setQuickViewRecipe(null);
     try {
       const res = await fetch("/api/meals/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: recipeId }),
       });
+      if (!res.ok) {
+        console.error("Quick View fetch failed:", res.status);
+        return;
+      }
       const data = await res.json();
       setQuickViewRecipe(data);
     } catch (err) {
@@ -771,6 +783,7 @@ function MealsPageInner() {
     if (planLoading) return;
     const activePlan = plan ?? (selectedRecipe ? buildEmptyPlan() : null);
     if (!activePlan) return;
+    if (activePlan.locked) return;
     // No candidate selected — navigate to recipe page if assigned
     if (!selectedRecipe) {
       const slot = activePlan.days[dayIndex];
@@ -801,6 +814,7 @@ function MealsPageInner() {
     if (planLoading) return;
     const activePlan = plan ?? (selectedRecipe ? buildEmptyPlan() : null);
     if (!activePlan) return;
+    if (activePlan.locked) return;
     const slot = activePlan.days[dayIndex];
     if (!slot || !hasBrunchSlot(slot.dayOfWeek)) return;
 
@@ -826,7 +840,7 @@ function MealsPageInner() {
 
   // Clear a day slot — persists immediately
   function handleClearSlot(dayIndex: number) {
-    if (!plan) return;
+    if (!plan || plan.locked) return;
     // Close expand panel if clearing the expanded day
     if (expandingDay === dayIndex) {
       setExpandingDay(null);
@@ -847,7 +861,7 @@ function MealsPageInner() {
 
   // Clear only the weekend breakfast/brunch slot — persists immediately
   function handleClearBrunchSlot(dayIndex: number) {
-    if (!plan) return;
+    if (!plan || plan.locked) return;
     const slot = plan.days[dayIndex];
     if (!slot || !hasBrunchSlot(slot.dayOfWeek)) return;
     const newDays = [...plan.days];
@@ -862,12 +876,12 @@ function MealsPageInner() {
 
   // Mark a past slot as cooked via cook-events API
   async function handleMarkCooked(dayIndex: number) {
-    if (!plan) return;
+    if (!plan || plan.locked) return;
     const slot = plan.days[dayIndex];
     if (!slot?.recipeId) return;
     setMarkingCooked(dayIndex);
     try {
-      await fetch("/api/cook-events", {
+      const res = await fetch("/api/cook-events", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -876,6 +890,10 @@ function MealsPageInner() {
           source: "meal-planner",
         }),
       });
+      if (!res.ok) {
+        console.error("Failed to mark cooked:", res.status);
+        return;
+      }
       setCookedSlots((prev) => new Set(prev).add(`${slot.recipeId}:${slot.date}`));
       // Optimistically update dayHistory so badge changes from Planned/Skipped → Cooked
       setDayHistory((prev) => ({
@@ -898,7 +916,7 @@ function MealsPageInner() {
 
   // Update serveWith on an assigned day slot — persists immediately
   function handleServeWithChange(dayIndex: number, serveWith: string[]) {
-    if (!plan) return;
+    if (!plan || plan.locked) return;
     const slot = plan.days[dayIndex];
     if (!slot?.meal) return;
     const newDays = [...plan.days];
@@ -913,6 +931,7 @@ function MealsPageInner() {
 
   // Toggle feedback for a candidate recipe
   async function handleFeedback(recipeId: string, value: "up" | "down") {
+    if (plan?.locked) return;
     const current = feedbackMap[recipeId];
     const next = current === value ? null : value;
     // Optimistic update
@@ -977,7 +996,7 @@ function MealsPageInner() {
   }
 
   function handleAcceptComplement(dayIndex: number, complement: RecipeOption) {
-    if (!plan) return;
+    if (!plan || plan.locked) return;
     const slot = plan.days[dayIndex];
     if (!slot?.meal) return;
 
@@ -998,7 +1017,7 @@ function MealsPageInner() {
   }
 
   function handleRemoveComplement(dayIndex: number, complementId: string) {
-    if (!plan) return;
+    if (!plan || plan.locked) return;
     const slot = plan.days[dayIndex];
     if (!slot?.meal?.sides) return;
 

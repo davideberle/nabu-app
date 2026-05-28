@@ -1068,6 +1068,16 @@ export function offsetWeek(
   return getISOWeek(monday);
 }
 
+/** Return previous ISO week ids, newest first. */
+export function getRecentWeekIds(weekId: string, lookback: number): string[] {
+  const parsed = parseWeekId(weekId);
+  if (!parsed || lookback < 1) return [];
+  return Array.from({ length: lookback }, (_, i) => {
+    const { year, week } = offsetWeek(parsed.year, parsed.week, -(i + 1));
+    return formatWeekId(year, week);
+  });
+}
+
 // ----- day-level complement selection (Phase 4) -----
 
 export type ComplementRole = "starter" | "side" | "dessert";

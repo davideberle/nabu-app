@@ -34,7 +34,13 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    await saveMealPlan(plan);
+    const result = await saveMealPlan(plan);
+    if (!result.ok) {
+      return NextResponse.json(
+        { error: "Plan is locked", locked: true },
+        { status: 409 }
+      );
+    }
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(

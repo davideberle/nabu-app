@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getCookEventsForDateRange } from "@/lib/db";
+import { getCookEventsForDateRange, getMyRecipe } from "@/lib/db";
+import { getRecipe } from "@/lib/recipes";
 import { loadMealPlan } from "@/lib/meals-persistence";
-import { parseWeekId, getWeekDates } from "@/lib/meals";
+import { parseWeekId, getWeekDates, type MealPlan } from "@/lib/meals";
 
 /**
  * Planner history projection for a given ISO week.
@@ -67,13 +68,41 @@ export async function GET(request: NextRequest) {
     eventsByDate.set(event.cookedOn, existing);
   }
 
+  // Collect all planned recipe IDs (main + brunch) so we can match cook events
+  function getPlannedIds(slot: MealPlan["days"][number] | null): string[] {
+    if (!slot) return [];
+    const ids: string[] = [];
+    if (slot.recipeId) ids.push(slot.recipeId);
+    if (slot.meal?.main?.id && !ids.includes(slot.meal.main.id)) ids.push(slot.meal.main.id);
+    if (slot.brunch?.main?.id) ids.push(slot.brunch.main.id);
+    return ids;
+  }
+
+  // Build a set of cooked recipe IDs for name resolution
+  const cookedRecipeIds = new Set<string>();
+  for (const ev of cookEvents) cookedRecipeIds.add(ev.recipeId);
+
+  // Resolve recipe names for cooked events (My Recipes + static cookbook fallback)
+  const recipeNameCache = new Map<string, string>();
+  await Promise.all(
+    [...cookedRecipeIds].map(async (id) => {
+      try {
+        const recipe = await getMyRecipe(id) ?? await getRecipe(id);
+        if (recipe) recipeNameCache.set(id, recipe.name);
+      } catch { /* best-effort */ }
+    }),
+  );
+
   const days: DayHistory[] = weekDates.map((wd, i) => {
     const slot = plan?.days[i] ?? null;
     const events = eventsByDate.get(wd.date) ?? [];
-    const hasPlannedRecipe = !!(slot?.recipeId);
+    const plannedIds = getPlannedIds(slot);
+    const hasPlannedRecipe = plannedIds.length > 0;
     const isPast = wd.date < today;
+
+    // Match cook event against any planned ID (main or brunch)
     const plannedCookEvent = hasPlannedRecipe
-      ? events.find((event) => event.recipeId === slot!.recipeId)
+      ? events.find((event) => plannedIds.includes(event.recipeId))
       : null;
     const cookedEvent = plannedCookEvent ?? events[0] ?? null;
     const hasCooked = !!cookedEvent;
@@ -92,13 +121,24 @@ export async function GET(request: NextRequest) {
     }
     // else: null — no plan and no explicit cook event
 
+    // Resolve cooked recipe name from cache, slot data, or leave null
+    let cookedRecipeName: string | null = null;
+    if (cookedRecipeId) {
+      cookedRecipeName =
+        recipeNameCache.get(cookedRecipeId) ??
+        (cookedRecipeId === slot?.recipeId ? slot?.recipeName ?? null : null) ??
+        (cookedRecipeId === slot?.meal?.main?.id ? slot?.meal?.main?.name ?? null : null) ??
+        (cookedRecipeId === slot?.brunch?.main?.id ? slot?.brunch?.main?.name ?? null : null) ??
+        null;
+    }
+
     return {
       date: wd.date,
       status,
-      plannedRecipeId: slot?.recipeId ?? null,
-      plannedRecipeName: slot?.recipeName ?? null,
+      plannedRecipeId: slot?.recipeId ?? slot?.meal?.main?.id ?? null,
+      plannedRecipeName: slot?.recipeName ?? slot?.meal?.main?.name ?? null,
       cookedRecipeId,
-      cookedRecipeName: null,
+      cookedRecipeName,
     };
   });
 
