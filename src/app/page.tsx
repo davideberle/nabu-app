@@ -45,6 +45,14 @@ async function getTiles() {
       stats: "Browse",
     },
     {
+      id: "garden",
+      name: "Garden",
+      emoji: "🌿",
+      description: "Irrigation schedule, rain brake, zones",
+      href: "/garden",
+      stats: "Auto",
+    },
+    {
       id: "cooking",
       name: "Cooking",
       emoji: "🔥",

@@ -6,7 +6,8 @@
     "prebuild": "node scripts/bundle-recipes.mjs && node scripts/check-bundle-hygiene.mjs && node scripts/check-recipe-corruption.mjs",
     "dev": "node scripts/bundle-recipes.mjs && next dev",
     "build": "node scripts/bundle-recipes.mjs && next build",
-    "start": "next start"
+    "start": "next start",
+    "publish:garden-snapshot": "node scripts/publish-garden-snapshot.mjs"
   },
   "dependencies": {
     "@libsql/client": "^0.17.2",

@@ -170,9 +170,10 @@ export async function runWeeklyInspirations(options = {}) {
 
   const known = await loadKnownRecipes();
   const sourceFilter = buildSourceFilter(opts.sources);
+  const discoveryLimit = Math.max(opts.count * 12, 72);
   const discovered = opts.urls.length > 0
     ? opts.urls.map((url) => ({ url, source: sourceForUrl(url) })).filter((c) => c.source)
-    : await searchTrustedSources(opts.query, opts.count * 6, sourceFilter);
+    : await searchTrustedSources(opts.query, discoveryLimit, sourceFilter);
 
   const report = {
     week: opts.week,
@@ -180,6 +181,7 @@ export async function runWeeklyInspirations(options = {}) {
     requestedCount: opts.count,
     dryRun: !(opts.writeKitchen || opts.writeAppFiles || opts.writeAppDb),
     considered: discovered.length,
+    discoveryLimit,
     imported: [],
     skipped: [],
     errors: [],
@@ -214,6 +216,18 @@ export async function runWeeklyInspirations(options = {}) {
           name: extracted.name,
           reason: "duplicate",
           duplicate,
+        });
+        continue;
+      }
+
+      const mealRole = inferMealRole(extracted);
+      if (mealRole !== "main") {
+        report.skipped.push({
+          url: candidate.url,
+          name: extracted.name,
+          reason: "non-main",
+          mealRole,
+          dishTypes: inferDishTypes(extracted),
         });
         continue;
       }
@@ -306,7 +320,7 @@ function assertTrustedUrl(url) {
 }
 
 export async function searchTrustedSources(query, limit = 24, sources = TRUSTED_SOURCES) {
-  const perSource = Math.max(3, Math.ceil(limit / Math.max(1, sources.length)));
+  const perSource = Math.max(8, Math.ceil(limit / Math.max(1, sources.length)));
   const all = [];
   for (const source of sources.sort((a, b) => a.priority - b.priority)) {
     try {

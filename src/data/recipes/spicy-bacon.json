@@ -58,7 +58,6 @@
     "submerging 2-ply rice papers into marinade",
     "Bake them in the oven for approximately 10 minutes, until they are crispy."
   ],
-  "image": "/recipes/spicy-bacon.jpg",
   "dietary": [
     "vegan",
     "vegetarian"
@@ -68,10 +67,11 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "component"
     ],
     "chapter": "Main Dishes",
-    "meal_role": "main"
+    "meal_role": "component"
   },
-  "cuisine": "Korean"
+  "cuisine": "Korean",
+  "mealRole": "component"
 }

@@ -23,6 +23,17 @@
 # misc
 .DS_Store
 *.pem
+/.openclaw
+/AGENTS.md
+/HEARTBEAT.md
+/IDENTITY.md
+/MEMORY.md
+/SOUL.md
+/TOOLS.md
+/USER.md
+/memory
+/secrets
+*.wrong-original
 
 # debug
 npm-debug.log*

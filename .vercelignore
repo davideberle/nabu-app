@@ -1,0 +1,15 @@
+.openclaw
+HEARTBEAT.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+USER.md
+AGENTS.md
+MEMORY.md
+memory/
+secrets/
+.env*
+.vercel
+.next
+node_modules
+*.wrong-original

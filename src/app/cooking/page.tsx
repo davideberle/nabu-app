@@ -66,12 +66,29 @@ function SessionView({
 }) {
   const hasSessionIngredients = session.ingredients.session.length > 0;
   const hasSessionMethod = session.method.session.length > 0;
-  const mainIngredients = hasSessionIngredients
+
+  // Decide whether session lists are full integrated replacements or just
+  // partial adjustments/substitutions. Showing a 2-item substitution list
+  // instead of a 15-item ingredient list loses the base recipe.
+  const ingredientsComplete = hasSessionIngredients &&
+    isCompleteOverride(session.ingredients.session, session.ingredients.base);
+  const methodComplete = hasSessionMethod &&
+    isCompleteOverride(session.method.session, session.method.base);
+
+  const mainIngredients = ingredientsComplete
     ? session.ingredients.session
     : session.ingredients.base;
-  const mainMethod = hasSessionMethod
+  const mainMethod = methodComplete
     ? session.method.session
     : session.method.base;
+
+  // Partial adjustments shown alongside the base recipe
+  const ingredientAdjustments = hasSessionIngredients && !ingredientsComplete
+    ? session.ingredients.session
+    : [];
+  const methodAdjustments = hasSessionMethod && !methodComplete
+    ? session.method.session
+    : [];
 
   const sideRecipeById = new Map(sideRecipes.map((recipe) => [recipe.id, recipe]));
   const mealComponents = session.relatedRecipes
@@ -152,7 +169,9 @@ function SessionView({
         title={session.anchor.title}
         ingredients={mainIngredients}
         method={mainMethod}
-        modified={{ ingredients: hasSessionIngredients, method: hasSessionMethod }}
+        modified={{ ingredients: ingredientsComplete, method: methodComplete }}
+        ingredientAdjustments={ingredientAdjustments}
+        methodAdjustments={methodAdjustments}
       />
 
       {mealComponents.map(({ related, recipe }) => (
@@ -270,6 +289,8 @@ function MealComponentBlock({
   ingredients,
   method,
   modified,
+  ingredientAdjustments = [],
+  methodAdjustments = [],
 }: {
   role: "main" | "starter" | "side" | "dessert";
   title: string;
@@ -278,6 +299,8 @@ function MealComponentBlock({
   ingredients: SessionIngredient[];
   method: string[];
   modified?: { ingredients: boolean; method: boolean };
+  ingredientAdjustments?: SessionIngredient[];
+  methodAdjustments?: string[];
 }) {
   const servingLabel = servings ? formatServings(String(servings)) : "";
 
@@ -342,6 +365,46 @@ function MealComponentBlock({
               </li>
             ))}
           </ol>
+        </div>
+      )}
+
+      {/* Tonight's changes — shown when session has partial adjustments */}
+      {(ingredientAdjustments.length > 0 || methodAdjustments.length > 0) && (
+        <div className="pt-3 border-t border-amber-200/60 dark:border-amber-800/40">
+          <h4 className="text-xs tracking-widest uppercase text-amber-600 dark:text-amber-400 mb-3">
+            Tonight&apos;s changes
+          </h4>
+          {ingredientAdjustments.length > 0 && (
+            <div className="mb-3">
+              <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-1.5">
+                Substitutions
+              </p>
+              <ul className="space-y-1">
+                {ingredientAdjustments.map((ing, i) => (
+                  <li key={i} className="text-sm text-amber-700 dark:text-amber-300 flex justify-between gap-4">
+                    <span>{ing.item}</span>
+                    <span className="text-amber-500 dark:text-amber-400 tabular-nums shrink-0 text-right">
+                      {formatIngredientAmount(ing)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {methodAdjustments.length > 0 && (
+            <div>
+              <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-1.5">
+                Adjustments
+              </p>
+              <ul className="space-y-1.5">
+                {methodAdjustments.map((note, i) => (
+                  <li key={i} className="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
+                    {note}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </NabuSurface>
@@ -527,4 +590,18 @@ function formatTimestamp(iso: string): string {
     hour: "numeric",
     minute: "2-digit",
   });
+}
+
+/**
+ * Heuristic: does the session list look like a complete integrated replacement
+ * for the base, or just a short list of adjustments/substitutions?
+ *
+ * A session list is "complete" when it has at least 3 items AND covers at
+ * least half the base list length. Below that threshold we treat it as
+ * partial adjustments that belong *alongside* the base recipe.
+ */
+function isCompleteOverride(sessionList: unknown[], baseList: unknown[]): boolean {
+  if (sessionList.length === 0) return false;
+  if (baseList.length === 0) return true;
+  return sessionList.length >= 3 && sessionList.length >= baseList.length * 0.5;
 }

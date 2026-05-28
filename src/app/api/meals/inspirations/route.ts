@@ -170,10 +170,15 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Use configured importer or fall back to vendored kitchen importer script
+  // Use configured importer or fall back to vendored kitchen importer script.
+  // Over-request from the importer because the API applies additional filtering
+  // (recent-week duplicates, non-main checks) that the importer cannot know
+  // about. This way we're far more likely to end up with `count` candidates
+  // after post-import filtering instead of a surprising short list.
+  const importerCount = Math.min(count * 2, 12);
   const customCommand = process.env.KITCHEN_INSPIRATION_IMPORTER_COMMAND;
   const scriptPath = `${process.cwd()}/scripts/weekly-inspirations.mjs`;
-  const importerArgs = ["--week", week, "--count", String(count), "--write-app-files", "--write-app-db", "--yes", "--json"];
+  const importerArgs = ["--week", week, "--count", String(importerCount), "--write-app-files", "--write-app-db", "--yes", "--json"];
 
   try {
     // Run the Kitchen importer
@@ -197,17 +202,6 @@ export async function POST(request: NextRequest) {
     }
 
     const report = JSON.parse(stdout);
-    if (!report.imported || report.imported.length === 0) {
-      return NextResponse.json(
-        {
-          error: "Kitchen importer found no new recipes",
-          week,
-          candidates: [],
-          report,
-        },
-        { status: 200 }
-      );
-    }
 
     // Build a set of recipe_id and source_url used in the current week
     // AND recent prior weeks so clicking "Research Web Ideas" cannot just
@@ -255,6 +249,43 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // If the importer ran out of fresh/new URLs after filtering, top up with
+    // older stored inspirations that are still valid main candidates and not
+    // already in the recent/current provenance set. This keeps the UI contract
+    // stable: Research Web Ideas should return up to the requested count, not
+    // a surprising short list because some newly imported pages were sides or
+    // duplicate source URLs.
+    if (candidates.length < count) {
+      const storedInspirations = await getWebInspirationsForWeek(week);
+      for (const insp of storedInspirations) {
+        if (candidates.length >= count) break;
+        if (recentRecipeIds.has(insp.recipe_id) || (insp.source_url && recentSourceUrls.has(insp.source_url))) continue;
+        if (candidates.some((c) => c.id === insp.recipe_id)) continue;
+        const recipe = await getMyRecipe(insp.recipe_id);
+        if (recipe && isMainPlannerCandidate(recipe)) {
+          candidates.push(recipeToCandidate(recipe, {
+            source_url: insp.source_url,
+            source_name: insp.source_name,
+          }));
+        }
+      }
+    }
+
+    const returnedCandidates = candidates.slice(0, count);
+    const partialResult = returnedCandidates.length > 0 && returnedCandidates.length < count;
+
+    if (returnedCandidates.length === 0 && (!report.imported || report.imported.length === 0)) {
+      return NextResponse.json(
+        {
+          error: "Kitchen importer found no new recipes",
+          week,
+          candidates: [],
+          report,
+        },
+        { status: 200 }
+      );
+    }
+
     // All imported results were recent duplicates
     if (candidates.length === 0 && skippedDuplicates.length > 0) {
       return NextResponse.json(
@@ -285,7 +316,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       week,
-      candidates,
+      candidates: returnedCandidates,
+      ...(partialResult ? { warning: `Only ${returnedCandidates.length} fresh main candidate(s) found after filtering importer results` } : {}),
       ...(skippedDuplicates.length > 0 ? { skippedDuplicates } : {}),
       ...(skippedNonMain.length > 0 ? { skippedNonMain } : {}),
       ...(missingMyRecipeIds.length > 0 ? { missingMyRecipeIds } : {}),
