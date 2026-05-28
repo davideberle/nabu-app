@@ -576,6 +576,8 @@ export function toKitchenRecipe(extracted, { slug, week, persistedImage = false 
 
 export function toCompanionRecipe(extracted, { slug, week, image }) {
   const time = normalizeTimeObject(extracted);
+  const dishTypes = inferDishTypes(extracted);
+  const mealRole = inferMealRole(extracted);
   return {
     id: slug,
     name: extracted.name,
@@ -583,12 +585,13 @@ export function toCompanionRecipe(extracted, { slug, week, image }) {
       cookbook: "My Recipes",
       author: extracted.author || extracted.source.name,
       publication: `${extracted.source.name} · Web inspiration`,
+      url: extracted.url,
     },
     cuisine: extracted.cuisine || inferCuisine(extracted.name, extracted.source),
     category: {
-      dish_type: inferDishTypes(extracted),
+      dish_type: dishTypes,
       chapter: "",
-      meal_role: "main",
+      meal_role: mealRole,
     },
     servings: formatServings(extracted.yieldText, extracted.servings),
     time,
@@ -596,9 +599,7 @@ export function toCompanionRecipe(extracted, { slug, week, image }) {
     introduction: extracted.description || null,
     tips: `Source: ${extracted.url}. Imported as weekly web inspiration for ${week}.`,
     ingredients: extracted.ingredients.map((item) => ({
-      item,
-      amount: "",
-      unit: "",
+      ...parseIngredientLine(item),
       group: "Ingredients",
     })),
     method: extracted.method,
@@ -608,7 +609,7 @@ export function toCompanionRecipe(extracted, { slug, week, image }) {
       season: inferSeasons(extracted),
     },
     image,
-    mealRole: "main",
+    mealRole,
   };
 }
 
@@ -625,11 +626,39 @@ function normalizeTimeObject(extracted) {
 
 function inferDishTypes(extracted) {
   const text = `${extracted.name} ${extracted.category ?? ""}`.toLowerCase();
+  if (/chutney|pickle|relish|raita|salsa/.test(text)) return ["condiment", "side"];
+  if (/shrikhand|dessert|cake|pie|pudding|mousse|sorbet|ice cream/.test(text)) return ["dessert"];
+  if (/asparagus stir fry|stir[- ]?fried asparagus/.test(text)) return ["side", "vegetable"];
   if (text.includes("soup") || text.includes("stew")) return ["soup", "main"];
   if (text.includes("salad")) return ["salad", "main"];
   if (text.includes("pasta") || text.includes("noodle")) return ["main", "pasta"];
   if (text.includes("curry") || text.includes("dal") || text.includes("dhal")) return ["main", "curry"];
   return ["main"];
+}
+
+function inferMealRole(extracted) {
+  const types = inferDishTypes(extracted);
+  if (types.includes("dessert")) return "dessert";
+  if (types.includes("condiment")) return "condiment";
+  if (types.includes("side") && !types.includes("main")) return "side";
+  return "main";
+}
+
+function parseIngredientLine(value) {
+  const original = cleanText(value);
+  if (!original) return { item: "", amount: "", unit: "" };
+
+  const amountPattern = "(?:\\d+\\/\\d+|\\d+\\.\\d+|\\d+|[¼½¾⅓⅔⅛⅜⅝⅞]|a|an)";
+  const mixedAmountPattern = `(?:${amountPattern})(?:\\s+(?:to|-|–|—)\\s*(?:${amountPattern}))?(?:\\s+(?:${amountPattern}))?`;
+  const unitPattern = "(?:cups?|tbsp|tablespoons?|tsp|teaspoons?|oz|ounces?|lb|lbs|pounds?|g|grams?|kg|ml|l|liters?|cloves?|cans?|bunch(?:es)?|sprigs?|pinch(?:es)?|packet(?:s)?)";
+  const match = original.match(new RegExp(`^(${mixedAmountPattern})(?:\\s+(${unitPattern})\\b)?\\s*(?:of\\s+)?(.+)$`, "i"));
+  if (!match) return { item: original, amount: "", unit: "" };
+
+  const amount = cleanText(match[1]);
+  const unit = cleanText(match[2] ?? "");
+  const item = cleanText(match[3]);
+  if (!item || item.length < 2) return { item: original, amount: "", unit: "" };
+  return { item, amount, unit };
 }
 
 function inferCuisine(name, source) {
@@ -775,7 +804,41 @@ export async function loadKnownRecipes() {
     for (const r of recipes) addKnownRecipe(known, r);
   });
 
+  await loadKnownRecipesFromAppDb(known);
+
   return known;
+}
+
+async function loadKnownRecipesFromAppDb(known) {
+  const url = process.env.TURSO_DATABASE_URL || (process.env.NABU_DB_DIR ? `file:${process.env.NABU_DB_DIR}/nabu.db` : null);
+  if (!url) return;
+  try {
+    const requireFromApp = createRequire(path.join(APP_DIR, "package.json"));
+    const { createClient } = requireFromApp("@libsql/client");
+    const client = createClient({ url, authToken: process.env.TURSO_AUTH_TOKEN });
+
+    const recipes = await client.execute("SELECT data FROM recipes");
+    for (const row of recipes.rows) {
+      try {
+        addKnownRecipe(known, JSON.parse(row.data));
+      } catch {
+        // Ignore one malformed runtime recipe.
+      }
+    }
+
+    try {
+      const inspirations = await client.execute("SELECT source_url FROM web_recipe_inspirations");
+      for (const row of inspirations.rows) {
+        if (row.source_url) known.sourceUrls.add(normalizeUrl(String(row.source_url)));
+      }
+    } catch {
+      // Older local DBs may not have the provenance table yet.
+    }
+
+    client.close?.();
+  } catch {
+    // DB lookup is best-effort; static bundle + kitchen JSON still protect most duplicates.
+  }
 }
 
 async function loadKitchenRecipeJsons(dir) {

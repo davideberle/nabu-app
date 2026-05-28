@@ -46,6 +46,26 @@ function currentIsoWeekId(date = new Date()): string {
   return `${d.getUTCFullYear()}-W${String(week).padStart(2, "0")}`;
 }
 
+function inferMealRole(recipe: Recipe): string {
+  const role = (recipe as Record<string, unknown>).mealRole as string | undefined
+    ?? recipe.category?.meal_role;
+  if (role) return role;
+  const name = recipe.name?.toLowerCase() ?? "";
+  if (/chutney|pickle|relish|raita|salsa/.test(name)) return "condiment";
+  if (/shrikhand|dessert|cake|pie|pudding|mousse|sorbet|ice cream/.test(name)) return "dessert";
+  return "main";
+}
+
+function isMainPlannerCandidate(recipe: Recipe): boolean {
+  const role = inferMealRole(recipe);
+  if (role && role !== "main") return false;
+  const dishTypes = recipe.category?.dish_type?.map((type) => type.toLowerCase()) ?? [];
+  if (dishTypes.some((type) => ["condiment", "dessert", "side"].includes(type))) {
+    return false;
+  }
+  return true;
+}
+
 function recipeToCandidate(recipe: Recipe, provenance: { source_url: string; source_name: string }): RecipeOption {
   return {
     id: recipe.id,
@@ -104,7 +124,7 @@ export async function GET(request: NextRequest) {
 
     for (const insp of inspirations) {
       const recipe = await getMyRecipe(insp.recipe_id);
-      if (recipe) {
+      if (recipe && isMainPlannerCandidate(recipe)) {
         candidates.push(recipeToCandidate(recipe, {
           source_url: insp.source_url,
           source_name: insp.source_name,
@@ -189,11 +209,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Build a set of recipe_id and source_url used in recent prior weeks
-    // so we never resurface the same web inspiration.
+    // Build a set of recipe_id and source_url used in the current week
+    // AND recent prior weeks so clicking "Research Web Ideas" cannot just
+    // re-return the same ideas already shown this week.
     const recentWeeks = getRecentWeekIds(week, 4);
+    const allWeeks = [week, ...recentWeeks.filter((w) => w !== week)];
     const recentInspirations = await Promise.all(
-      recentWeeks.map((w) => getWebInspirationsForWeek(w)),
+      allWeeks.map((w) => getWebInspirationsForWeek(w)),
     );
     const recentRecipeIds = new Set<string>();
     const recentSourceUrls = new Set<string>();

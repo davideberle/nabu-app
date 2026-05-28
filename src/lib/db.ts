@@ -1008,15 +1008,11 @@ export async function recordWebInspiration(
               (id, week, recipe_id, recipe_name, source_name, source_url, image, status, provenance_json, created_at, updated_at, imported_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT (source_url) DO UPDATE SET
-              week = excluded.week,
-              recipe_id = excluded.recipe_id,
               recipe_name = excluded.recipe_name,
               source_name = excluded.source_name,
               image = excluded.image,
               status = excluded.status,
-              provenance_json = excluded.provenance_json,
-              updated_at = excluded.updated_at,
-              imported_at = excluded.imported_at`,
+              updated_at = excluded.updated_at`,
       args: [
         crypto.randomUUID(),
         week,
@@ -1038,13 +1034,9 @@ export async function recordWebInspiration(
   await client.execute({
     sql: `INSERT INTO web_recipe_inspirations (recipe_id, week, source_url, source_name, imported_at)
           VALUES (?, ?, ?, ?, ?)
-          ON CONFLICT (recipe_id) DO UPDATE SET week = ?, source_url = ?, source_name = ?, imported_at = ?`,
+          ON CONFLICT (recipe_id) DO UPDATE SET source_name = excluded.source_name`,
     args: [
       recipeId,
-      week,
-      sourceUrl,
-      sourceName,
-      now,
       week,
       sourceUrl,
       sourceName,

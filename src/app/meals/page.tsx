@@ -25,6 +25,15 @@ type RecipeOption = {
   recommended?: boolean;
 };
 
+type RecipeLookupValue = {
+  image: string | null;
+  time?: RecipeOption["time"];
+  category?: string;
+  courseTags?: string[];
+  source?: RecipeOption["source"];
+  name?: string;
+};
+
 type RecipeDetail = RecipeOption & {
   introduction?: string | null;
   tips?: string | null;
@@ -275,6 +284,19 @@ function restoreCandidateItem(item: CandidateItem): RecipeOption {
     time: item.time ?? null,
     category: item.category ?? "",
     courseTags: item.courseTags ?? [],
+  };
+}
+
+function applyRecipeLookup(recipe: RecipeOption, canonical?: RecipeLookupValue): RecipeOption {
+  if (!canonical) return recipe;
+  return {
+    ...recipe,
+    name: canonical.name ?? recipe.name,
+    source: canonical.source ?? recipe.source,
+    image: canonical.image,
+    time: canonical.time ?? recipe.time,
+    category: canonical.category ?? recipe.category,
+    courseTags: canonical.courseTags ?? recipe.courseTags,
   };
 }
 
@@ -543,16 +565,10 @@ function MealsPageInner() {
             const ids = restored.map((r: RecipeOption) => r.id).join(",");
             fetch(`/api/meals/lookup?ids=${encodeURIComponent(ids)}`)
               .then((lr) => lr.json())
-              .then((lookup: Record<string, { image: string | null }>) => {
+              .then((lookup: Record<string, RecipeLookupValue>) => {
                 if (cancelled) return;
                 setCandidates((prev) => {
-                  const next = prev.map((r) => {
-                    const canonical = lookup[r.id];
-                    if (canonical && r.image !== canonical.image) {
-                      return { ...r, image: canonical.image };
-                    }
-                    return r;
-                  });
+                  const next = prev.map((r) => applyRecipeLookup(r, lookup[r.id]));
                   candidatesRef.current = next;
                   return next;
                 });
