@@ -27,6 +27,23 @@ const ZONES = [
   },
 ];
 
+function nextScheduledAt(scheduledTime, now = new Date()) {
+  const [hourRaw, minuteRaw] = scheduledTime.split(':');
+  const hour = Number(hourRaw);
+  const minute = Number(minuteRaw);
+  if (!Number.isFinite(hour) || !Number.isFinite(minute)) return null;
+  const candidate = new Date(now);
+  candidate.setHours(hour, minute, 0, 0);
+  if (candidate.getTime() <= now.getTime()) candidate.setDate(candidate.getDate() + 1);
+  return candidate.toISOString();
+}
+
+function planActionForZone(plan, dryRun) {
+  if (dryRun.decision === 'skip' || plan?.action === 'skip_zone') return 'skip-zone';
+  if (!plan) return 'decide-at-runtime';
+  return 'water';
+}
+
 function buildSnapshot(input) {
   const dryRun = input.dryRun || {};
   const stateZones = input.wateringState?.zones || {};
@@ -38,11 +55,12 @@ function buildSnapshot(input) {
     source: 'live',
     automation: {
       enabled: true,
-      method: 'OpenClaw cron → Home Assistant → Gardena',
+      method: 'macOS LaunchAgents → Home Assistant → Gardena',
       visibleInGardenaApp: true,
       rainSuppression: true,
     },
     weather: dryRun.weather || null,
+    season: dryRun.season || null,
     skip: {
       active: dryRun.decision === 'skip',
       reasons: dryRun.reasons || [],
@@ -57,9 +75,10 @@ function buildSnapshot(input) {
         remainingMinutes: live.remainingMinutes ?? null,
         lastStartedAt: zoneState.last_started_at || null,
         lastMinutes: typeof zoneState.last_minutes === 'number' ? zoneState.last_minutes : null,
-        nextPlannedMinutes: plan?.minutes ?? 0,
+        nextScheduledAt: nextScheduledAt(zone.scheduledTime),
+        nextPlannedMinutes: typeof plan?.minutes === 'number' && plan.minutes > 0 ? plan.minutes : null,
         nextReason: plan?.reasons || dryRun.reasons || [],
-        nextAction: plan?.action === 'skip_zone' || dryRun.decision === 'skip' ? 'skip-zone' : 'water',
+        nextAction: planActionForZone(plan, dryRun),
       };
     }),
     recentLog: input.recentLog || [],

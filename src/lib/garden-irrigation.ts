@@ -12,9 +12,10 @@ export type GardenZoneSnapshot = {
   remainingMinutes: number | null;
   lastStartedAt: string | null;
   lastMinutes: number | null;
-  nextPlannedMinutes: number;
+  nextScheduledAt: string | null;
+  nextPlannedMinutes: number | null;
   nextReason: string[];
-  nextAction: "water" | "skip-zone";
+  nextAction: "water" | "skip-zone" | "decide-at-runtime";
 };
 
 export type GardenWeatherSummary = {
@@ -34,6 +35,7 @@ export type GardenWateringLogEntry = {
   decision: "water" | "skip" | string;
   zones?: GardenZoneId[];
   weather?: GardenWeatherSummary;
+  season?: GardenSeasonPolicy;
   reasons?: string[];
   results?: Array<{
     zone: GardenZoneId;
@@ -41,6 +43,12 @@ export type GardenWateringLogEntry = {
     minutes: number;
     reasons?: string[];
   }>;
+};
+
+export type GardenSeasonPolicy = {
+  status: "active" | "shoulder" | "off-season" | string;
+  automaticWateringAllowed: boolean;
+  reason: string;
 };
 
 export type GardenScheduleSnapshot = {
@@ -54,6 +62,7 @@ export type GardenScheduleSnapshot = {
     rainSuppression: boolean;
   };
   weather: GardenWeatherSummary | null;
+  season: GardenSeasonPolicy | null;
   skip: {
     active: boolean;
     reasons: string[];
@@ -73,6 +82,7 @@ type ScriptZoneResult = {
 type ScriptDryRun = {
   decision?: string;
   weather?: GardenWeatherSummary;
+  season?: GardenSeasonPolicy;
   reasons?: string[];
   results?: ScriptZoneResult[];
 };
@@ -80,7 +90,7 @@ type ScriptDryRun = {
 type SnapshotBlob = GardenScheduleSnapshot & { writtenAt?: string };
 
 const SNAPSHOT_PATH = "garden-irrigation/latest.json";
-const ZONES: Array<Omit<GardenZoneSnapshot, "state" | "remainingMinutes" | "lastStartedAt" | "lastMinutes" | "nextPlannedMinutes" | "nextReason" | "nextAction">> = [
+const ZONES: Array<Omit<GardenZoneSnapshot, "state" | "remainingMinutes" | "lastStartedAt" | "lastMinutes" | "nextScheduledAt" | "nextPlannedMinutes" | "nextReason" | "nextAction">> = [
   {
     id: "entrance",
     name: "Entrance",
@@ -104,6 +114,23 @@ const ZONES: Array<Omit<GardenZoneSnapshot, "state" | "remainingMinutes" | "last
   },
 ];
 
+function nextScheduledAt(scheduledTime: string, now = new Date()) {
+  const [hourRaw, minuteRaw] = scheduledTime.split(":");
+  const hour = Number(hourRaw);
+  const minute = Number(minuteRaw);
+  if (!Number.isFinite(hour) || !Number.isFinite(minute)) return null;
+  const candidate = new Date(now);
+  candidate.setHours(hour, minute, 0, 0);
+  if (candidate.getTime() <= now.getTime()) candidate.setDate(candidate.getDate() + 1);
+  return candidate.toISOString();
+}
+
+function planActionForZone(plan: ScriptZoneResult | undefined, dryRun: ScriptDryRun) {
+  if (dryRun.decision === "skip" || plan?.action === "skip_zone") return "skip-zone" as const;
+  if (!plan) return "decide-at-runtime" as const;
+  return "water" as const;
+}
+
 function token() {
   return process.env.BLOB_READ_WRITE_TOKEN;
 }
@@ -115,11 +142,12 @@ function fallbackSnapshot(error?: string): GardenScheduleSnapshot {
     source: "fallback",
     automation: {
       enabled: true,
-      method: "OpenClaw cron → Home Assistant → Gardena",
+      method: "macOS LaunchAgents → Home Assistant → Gardena",
       visibleInGardenaApp: true,
       rainSuppression: true,
     },
     weather: null,
+    season: null,
     skip: { active: false, reasons: [] },
     zones: ZONES.map((zone) => ({
       ...zone,
@@ -127,9 +155,10 @@ function fallbackSnapshot(error?: string): GardenScheduleSnapshot {
       remainingMinutes: null,
       lastStartedAt: null,
       lastMinutes: null,
-      nextPlannedMinutes: zone.id === "gym" ? 30 : 60,
-      nextReason: ["Fallback plan; live garden snapshot unavailable"],
-      nextAction: "water",
+      nextScheduledAt: nextScheduledAt(zone.scheduledTime),
+      nextPlannedMinutes: null,
+      nextReason: ["Live garden snapshot unavailable; watering will decide at run time"],
+      nextAction: "decide-at-runtime",
     })),
     recentLog: [],
     error,
@@ -183,11 +212,12 @@ export function buildSnapshotFromScript(input: {
     source: "live",
     automation: {
       enabled: true,
-      method: "OpenClaw cron → Home Assistant → Gardena",
+      method: "macOS LaunchAgents → Home Assistant → Gardena",
       visibleInGardenaApp: true,
       rainSuppression: true,
     },
     weather: input.dryRun.weather || null,
+    season: input.dryRun.season || null,
     skip: {
       active: input.dryRun.decision === "skip",
       reasons: input.dryRun.reasons || [],
@@ -202,9 +232,10 @@ export function buildSnapshotFromScript(input: {
         remainingMinutes: live?.remainingMinutes ?? null,
         lastStartedAt: zoneState.last_started_at || null,
         lastMinutes: typeof zoneState.last_minutes === "number" ? zoneState.last_minutes : null,
-        nextPlannedMinutes: plan?.minutes ?? 0,
+        nextScheduledAt: nextScheduledAt(zone.scheduledTime),
+        nextPlannedMinutes: typeof plan?.minutes === "number" && plan.minutes > 0 ? plan.minutes : null,
         nextReason: plan?.reasons || input.dryRun.reasons || [],
-        nextAction: plan?.action === "skip_zone" || input.dryRun.decision === "skip" ? "skip-zone" : "water",
+        nextAction: planActionForZone(plan, input.dryRun),
       };
     }),
     recentLog: input.recentLog || [],

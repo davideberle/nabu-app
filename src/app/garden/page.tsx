@@ -90,20 +90,83 @@ function zoneIsSkipping(zone: GardenZoneSnapshot, globalSkip: boolean) {
   return globalSkip || zone.nextAction === "skip-zone";
 }
 
-function zonePlanText(zone: GardenZoneSnapshot, globalSkip: boolean) {
+function nextPlanText(zone: GardenZoneSnapshot, globalSkip: boolean) {
   if (zoneIsSkipping(zone, globalSkip)) return "Skip today";
+  if (zone.nextAction === "decide-at-runtime" || zone.nextPlannedMinutes === null) return "Will decide at run time";
   return `${formatMinutes(zone.nextPlannedMinutes)} planned`;
 }
 
+function lastWateringText(zone: GardenZoneSnapshot) {
+  if (!zone.lastStartedAt) return "No run recorded";
+  return `${formatShortDateTime(zone.lastStartedAt)} · ${formatMinutes(zone.lastMinutes)}`;
+}
+
+type ZoneRuntimeStatus = {
+  key: "watering" | "completed" | "closed" | "unknown";
+  label: string;
+  helper: string;
+  tone: "stone" | "green" | "amber" | "blue" | "red";
+};
+
+function expectedEndAt(zone: GardenZoneSnapshot) {
+  if (!zone.lastStartedAt || !zone.lastMinutes) return null;
+  const started = new Date(zone.lastStartedAt);
+  if (Number.isNaN(started.getTime())) return null;
+  return new Date(started.getTime() + zone.lastMinutes * 60_000);
+}
+
+function zoneRuntimeStatus(zone: GardenZoneSnapshot, now = new Date()): ZoneRuntimeStatus {
+  const valveState = zone.state?.toLowerCase() || null;
+  const end = expectedEndAt(zone);
+  const graceMs = 5 * 60_000;
+
+  if (valveState === "open") {
+    if (end && now.getTime() > end.getTime() + graceMs) {
+      return {
+        key: "completed",
+        label: "Completed",
+        helper: `Planned run ended ${formatShortDateTime(end.toISOString())}; valve state looks stale.`,
+        tone: "amber",
+      };
+    }
+    const helper = zone.remainingMinutes !== null
+      ? `${formatMinutes(zone.remainingMinutes)} remaining`
+      : end
+        ? `Expected until ${formatShortDateTime(end.toISOString())}`
+        : "Valve reports open";
+    return { key: "watering", label: "Watering now", helper, tone: "green" };
+  }
+
+  if (valveState === "closed") {
+    return {
+      key: zone.lastStartedAt ? "completed" : "closed",
+      label: zone.lastStartedAt ? "Completed" : "Closed",
+      helper: zone.lastStartedAt ? lastWateringText(zone) : "No watering run recorded",
+      tone: "stone",
+    };
+  }
+
+  return {
+    key: "unknown",
+    label: "Unknown",
+    helper: zone.lastStartedAt ? `Last known run ${lastWateringText(zone)}` : "No valve state in the latest snapshot",
+    tone: "amber",
+  };
+}
+
 function zoneBadgeTone(zone: GardenZoneSnapshot, globalSkip: boolean) {
-  if (zone.state === "open") return "green" as const;
+  const status = zoneRuntimeStatus(zone);
+  if (status.key === "watering") return "green" as const;
   if (zoneIsSkipping(zone, globalSkip)) return "amber" as const;
+  if (zone.nextAction === "decide-at-runtime") return "stone" as const;
   return "blue" as const;
 }
 
 function zoneBadgeText(zone: GardenZoneSnapshot, globalSkip: boolean) {
-  if (zone.state === "open") return "Running";
+  const status = zoneRuntimeStatus(zone);
+  if (status.key === "watering") return "Watering";
   if (zoneIsSkipping(zone, globalSkip)) return "Skip";
+  if (zone.nextAction === "decide-at-runtime") return "Decide later";
   return "Planned";
 }
 
@@ -135,12 +198,14 @@ function healthDescription(snapshot: GardenScheduleSnapshot, runningCount: numbe
 function weatherLine(snapshot: GardenScheduleSnapshot) {
   const w = snapshot.weather;
   if (!w) return "Weather snapshot unavailable";
-  return [
+  const parts = [
     `${formatTemperature(w.max_temp_today_c)} max`,
     `${formatPercent(w.avg_daylight_cloud_cover_pct)} cloud`,
     `ET0 ${formatRain(w.et0_today_mm)}`,
     `${formatRain(w.next_24h_mm)} rain next 24h`,
-  ].join(" · ");
+  ];
+  if (snapshot.season) parts.push(`${sentence(snapshot.season.status)} season`);
+  return parts.join(" · ");
 }
 
 function StatTile({
@@ -171,11 +236,12 @@ function StatTile({
   );
 }
 
-function MiniMetric({ label, value }: { label: string; value: ReactNode }) {
+function MiniMetric({ label, value, helper }: { label: string; value: ReactNode; helper?: ReactNode }) {
   return (
     <div className="rounded-xl bg-secondary px-3 py-2">
       <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-quaternary">{label}</p>
       <p className="mt-1 text-sm font-semibold text-primary">{value}</p>
+      {helper ? <p className="mt-1 text-xs leading-4 text-quaternary">{helper}</p> : null}
     </div>
   );
 }
@@ -189,6 +255,9 @@ function HeroStatus({ snapshot, runningCount }: { snapshot: GardenScheduleSnapsh
           <div className="flex flex-wrap items-center gap-2">
             <NabuBadge tone={healthTone(snapshot, runningCount)}>{snapshot.automation.enabled ? "Automation on" : "Automation off"}</NabuBadge>
             <NabuBadge tone={snapshot.automation.rainSuppression ? "blue" : "amber"}>Rain brake</NabuBadge>
+            {snapshot.season ? (
+              <NabuBadge tone={snapshot.season.automaticWateringAllowed ? "green" : "amber"}>{sentence(snapshot.season.status)} season</NabuBadge>
+            ) : null}
             <NabuBadge tone={snapshot.automation.visibleInGardenaApp ? "green" : "amber"}>Gardena-visible</NabuBadge>
           </div>
           <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-primary sm:text-4xl">
@@ -215,50 +284,34 @@ function HeroStatus({ snapshot, runningCount }: { snapshot: GardenScheduleSnapsh
 function ZoneRow({ zone, globalSkip, skipReasons }: { zone: GardenZoneSnapshot; globalSkip: boolean; skipReasons: string[] }) {
   const skipping = zoneIsSkipping(zone, globalSkip);
   const reasons = globalSkip ? skipReasons : zone.nextReason;
+  const status = zoneRuntimeStatus(zone);
 
   return (
     <NabuCard className="p-0">
-      <div className="grid gap-4 p-4 sm:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)_auto] sm:items-center sm:p-5">
+      <div className="grid gap-4 p-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.45fr)] lg:items-start sm:p-5">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-lg font-semibold tracking-[-0.02em] text-primary">{zone.name}</h3>
             <NabuBadge tone={zoneBadgeTone(zone, globalSkip)}>{zoneBadgeText(zone, globalSkip)}</NabuBadge>
           </div>
           <p className="mt-1 text-sm leading-5 text-tertiary">{zone.planting}</p>
-          <p className="mt-2 text-xs text-quaternary">Daily check at {zone.scheduledTime}</p>
+          <p className="mt-2 text-xs text-quaternary">LaunchAgent check at {zone.scheduledTime}</p>
         </div>
 
-        <div className="grid grid-cols-3 gap-2 sm:grid-cols-3">
-          <MiniMetric label="Today" value={zonePlanText(zone, globalSkip)} />
-          <MiniMetric label="Last run" value={formatMinutes(zone.lastMinutes)} />
-          <MiniMetric label="Valve" value={<span className="capitalize">{zone.state || "unknown"}</span>} />
+        <div className="grid gap-2 sm:grid-cols-3">
+          <MiniMetric label="Current status" value={status.label} helper={status.helper} />
+          <MiniMetric label="Last watering" value={zone.lastStartedAt ? formatShortDateTime(zone.lastStartedAt) : "None"} helper={zone.lastStartedAt ? `Duration ${formatMinutes(zone.lastMinutes)}` : "No duration recorded"} />
+          <MiniMetric label="Next scheduled" value={formatShortDateTime(zone.nextScheduledAt)} helper={nextPlanText(zone, globalSkip)} />
         </div>
-
-        {zone.state === "open" ? (
-          <div className="rounded-2xl border border-utility-success-200 bg-utility-success-50 px-4 py-3 text-sm text-utility-success-700 dark:border-utility-success-800 dark:bg-utility-success-950/25 dark:text-utility-success-300 sm:w-36">
-            <p className="text-[10px] font-medium uppercase tracking-[0.14em]">Remaining</p>
-            <p className="mt-1 font-semibold">{formatMinutes(zone.remainingMinutes)}</p>
-          </div>
-        ) : (
-          <div className={cn(
-            "rounded-2xl border px-4 py-3 text-sm sm:w-36",
-            skipping
-              ? "border-utility-warning-200 bg-utility-warning-50 text-utility-warning-700 dark:border-utility-warning-800 dark:bg-utility-warning-950/25 dark:text-utility-warning-300"
-              : "border-utility-blue-200 bg-utility-blue-50 text-utility-blue-700 dark:border-utility-blue-800 dark:bg-utility-blue-950/25 dark:text-utility-blue-300",
-          )}>
-            <p className="text-[10px] font-medium uppercase tracking-[0.14em]">Next</p>
-            <p className="mt-1 font-semibold">{skipping ? "No water" : formatMinutes(zone.nextPlannedMinutes)}</p>
-          </div>
-        )}
       </div>
 
       <div className="border-t border-secondary bg-secondary/45 px-4 py-3 sm:px-5">
         <div className="grid gap-2 text-sm sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
           <p className="leading-6 text-tertiary">
-            <span className="font-medium text-primary">Why: </span>
-            {compactReasons(reasons)}
+            <span className="font-medium text-primary">{skipping ? "Skip reason: " : "Next decision: "}</span>
+            {compactReasons(reasons, zone.nextAction === "decide-at-runtime" ? "Weather will be evaluated at the scheduled run time." : "No reason recorded")}
           </p>
-          <p className="text-xs text-quaternary">Last started {formatShortDateTime(zone.lastStartedAt)}</p>
+          <p className="text-xs text-quaternary">Valve snapshot: {zone.state || "unknown"}</p>
         </div>
       </div>
     </NabuCard>
@@ -300,6 +353,12 @@ function WeatherPanel({ snapshot }: { snapshot: GardenScheduleSnapshot }) {
           tone={(weather?.et0_today_mm || 0) >= 5 ? "amber" : "stone"}
         />
       </div>
+      {snapshot.season ? (
+        <p className="mt-4 rounded-xl bg-secondary px-3 py-2 text-xs leading-5 text-tertiary">
+          <span className="font-medium text-primary">Season gate: </span>
+          {snapshot.season.reason}
+        </p>
+      ) : null}
     </NabuSurface>
   );
 }
@@ -379,7 +438,7 @@ function GardenContent() {
   }, [refresh]);
 
   const running = useMemo(
-    () => snapshot?.zones.filter((zone) => zone.state === "open") || [],
+    () => snapshot?.zones.filter((zone) => zoneRuntimeStatus(zone).key === "watering") || [],
     [snapshot],
   );
 
