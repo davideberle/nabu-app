@@ -18,6 +18,9 @@ import type { Recipe } from "@/lib/recipes";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 
+const NON_MAIN_ROLES = new Set(["component", "base", "condiment", "garnish", "drink", "beverage", "breakfast", "snack", "dessert", "side"]);
+const NON_MAIN_DISH_TYPES = new Set(["condiment", "dessert", "side", "component", "base", "garnish", "sauce", "dressing", "drink", "beverage", "breakfast", "snack"]);
+
 const execFileAsync = promisify(execFile);
 
 type ImporterExecError = Error & {
@@ -57,12 +60,10 @@ function inferMealRole(recipe: Recipe): string {
 }
 
 function isMainPlannerCandidate(recipe: Recipe): boolean {
-  const role = inferMealRole(recipe);
-  if (role && role !== "main") return false;
+  const role = inferMealRole(recipe).toLowerCase();
+  if (NON_MAIN_ROLES.has(role)) return false;
   const dishTypes = recipe.category?.dish_type?.map((type) => type.toLowerCase()) ?? [];
-  if (dishTypes.some((type) => ["condiment", "dessert", "side"].includes(type))) {
-    return false;
-  }
+  if (dishTypes.some((type) => NON_MAIN_DISH_TYPES.has(type))) return false;
   return true;
 }
 
@@ -117,12 +118,17 @@ function summarizeImporterReport(stdout?: string): { message?: string; report?: 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const week = searchParams.get("week") ?? currentIsoWeekId();
+  const limit = Math.min(
+    Math.max(1, Number(searchParams.get("count")) || 6),
+    12,
+  );
 
   try {
     const inspirations = await getWebInspirationsForWeek(week);
     const candidates: RecipeOption[] = [];
 
     for (const insp of inspirations) {
+      if (candidates.length >= limit) break;
       const recipe = await getMyRecipe(insp.recipe_id);
       if (recipe && isMainPlannerCandidate(recipe)) {
         candidates.push(recipeToCandidate(recipe, {
@@ -175,7 +181,7 @@ export async function POST(request: NextRequest) {
   // (recent-week duplicates, non-main checks) that the importer cannot know
   // about. This way we're far more likely to end up with `count` candidates
   // after post-import filtering instead of a surprising short list.
-  const importerCount = Math.min(count * 2, 12);
+  const importerCount = Math.min(count * 3, 12);
   const customCommand = process.env.KITCHEN_INSPIRATION_IMPORTER_COMMAND;
   const scriptPath = `${process.cwd()}/scripts/weekly-inspirations.mjs`;
   const importerArgs = ["--week", week, "--count", String(importerCount), "--write-app-files", "--write-app-db", "--yes", "--json"];
@@ -211,12 +217,21 @@ export async function POST(request: NextRequest) {
     const recentInspirations = await Promise.all(
       allWeeks.map((w) => getWebInspirationsForWeek(w)),
     );
+    const currentRecipeIds = new Set<string>();
+    const currentSourceUrls = new Set<string>();
     const recentRecipeIds = new Set<string>();
     const recentSourceUrls = new Set<string>();
-    for (const weekInsps of recentInspirations) {
+    for (let i = 0; i < recentInspirations.length; i++) {
+      const weekInsps = recentInspirations[i];
+      const isCurrentWeek = i === 0;
       for (const insp of weekInsps) {
-        recentRecipeIds.add(insp.recipe_id);
-        if (insp.source_url) recentSourceUrls.add(insp.source_url);
+        if (isCurrentWeek) {
+          currentRecipeIds.add(insp.recipe_id);
+          if (insp.source_url) currentSourceUrls.add(insp.source_url);
+        } else {
+          recentRecipeIds.add(insp.recipe_id);
+          if (insp.source_url) recentSourceUrls.add(insp.source_url);
+        }
       }
     }
 
@@ -229,7 +244,7 @@ export async function POST(request: NextRequest) {
     const skippedNonMain: string[] = [];
     for (const imported of report.imported) {
       // Skip if this recipe or URL was already used in recent weeks
-      if (recentRecipeIds.has(imported.id) || recentSourceUrls.has(imported.url)) {
+      if (recentRecipeIds.has(imported.id) || recentSourceUrls.has(imported.url) || currentRecipeIds.has(imported.id) || currentSourceUrls.has(imported.url)) {
         skippedDuplicates.push(imported.id);
         continue;
       }
@@ -240,6 +255,8 @@ export async function POST(request: NextRequest) {
           continue;
         }
         await recordWebInspiration(imported.id, week, imported.url, imported.source);
+        currentRecipeIds.add(imported.id);
+        if (imported.url) currentSourceUrls.add(imported.url);
         candidates.push(recipeToCandidate(recipe, {
           source_url: imported.url,
           source_name: imported.source,
@@ -259,6 +276,9 @@ export async function POST(request: NextRequest) {
       const storedInspirations = await getWebInspirationsForWeek(week);
       for (const insp of storedInspirations) {
         if (candidates.length >= count) break;
+        // Current-week stored ideas are allowed here as top-ups: they are
+        // exactly what David is already looking at. We only exclude prior-week
+        // repeats and already-returned cards.
         if (recentRecipeIds.has(insp.recipe_id) || (insp.source_url && recentSourceUrls.has(insp.source_url))) continue;
         if (candidates.some((c) => c.id === insp.recipe_id)) continue;
         const recipe = await getMyRecipe(insp.recipe_id);

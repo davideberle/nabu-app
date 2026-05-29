@@ -24,12 +24,23 @@ export async function GET(request: NextRequest) {
     courseTags?: string[];
     source?: { cookbook: string; author: string; chapter?: string; publication?: string };
     name?: string;
+    mealRole?: string;
+    isMain?: boolean;
   }> = {};
+
+  const NON_MAIN_ROLES = new Set(["component", "base", "condiment", "garnish", "drink", "beverage", "breakfast", "snack", "dessert", "side"]);
+  const NON_MAIN_DISH_TYPES = new Set(["condiment", "dessert", "side", "component", "base", "garnish", "sauce", "dressing", "drink", "beverage", "breakfast", "snack"]);
 
   await Promise.all(
     ids.map(async (id) => {
       const recipe = await getRecipe(id);
       if (recipe) {
+        const mealRole = (recipe as Record<string, unknown>).mealRole as string | undefined
+          ?? recipe.category?.meal_role
+          ?? "main";
+        const dishTypes = recipe.category?.dish_type?.map((t) => t.toLowerCase()) ?? [];
+        const isMain = !NON_MAIN_ROLES.has(mealRole.toLowerCase())
+          && !dishTypes.some((t) => NON_MAIN_DISH_TYPES.has(t));
         result[id] = {
           image: recipe.image ?? null,
           time: recipe.time ?? {},
@@ -37,6 +48,8 @@ export async function GET(request: NextRequest) {
           courseTags: recipe.category?.dish_type ?? ["main"],
           source: recipe.source,
           name: recipe.name,
+          mealRole,
+          isMain,
         };
       } else {
         result[id] = { image: null };

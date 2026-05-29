@@ -32,6 +32,7 @@ type RecipeLookupValue = {
   courseTags?: string[];
   source?: RecipeOption["source"];
   name?: string;
+  isMain?: boolean;
 };
 
 type RecipeDetail = RecipeOption & {
@@ -561,17 +562,44 @@ function MealsPageInner() {
               seededVisibleForThisWeek = true;
             }
 
-            // Reconcile: fetch current canonical images and patch any stale ones
+            // Reconcile: fetch current canonical images and patch any stale ones.
+            // Also evict candidates the lookup now considers non-main (e.g. a
+            // recipe reclassified as a side/condiment since the plan was saved).
             const ids = restored.map((r: RecipeOption) => r.id).join(",");
             fetch(`/api/meals/lookup?ids=${encodeURIComponent(ids)}`)
               .then((lr) => lr.json())
               .then((lookup: Record<string, RecipeLookupValue>) => {
                 if (cancelled) return;
+                const staleIds = new Set(
+                  Object.entries(lookup)
+                    .filter(([, v]) => v.isMain === false)
+                    .map(([id]) => id),
+                );
                 setCandidates((prev) => {
-                  const next = prev.map((r) => applyRecipeLookup(r, lookup[r.id]));
+                  const next = prev
+                    .filter((r) => !staleIds.has(r.id))
+                    .map((r) => applyRecipeLookup(r, lookup[r.id]));
                   candidatesRef.current = next;
                   return next;
                 });
+                // Prune the persisted candidateSet so stale non-main items
+                // don't reappear on future page loads.
+                if (staleIds.size > 0) {
+                  setPlan((prev) => {
+                    if (!prev?.candidateSet) return prev;
+                    const pruned = {
+                      ...prev,
+                      candidateSet: {
+                        ...prev.candidateSet,
+                        items: prev.candidateSet.items.filter(
+                          (item) => !staleIds.has(item.recipeId),
+                        ),
+                      },
+                    };
+                    savePlanNow(pruned).catch(() => {});
+                    return pruned;
+                  });
+                }
               })
               .catch(() => { /* non-critical — stale image is cosmetic */ });
           }
