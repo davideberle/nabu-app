@@ -186,8 +186,14 @@ export async function POST(request: NextRequest) {
   const scriptPath = `${process.cwd()}/scripts/weekly-inspirations.mjs`;
   const importerArgs = ["--week", week, "--count", String(importerCount), "--write-app-files", "--write-app-db", "--yes", "--json"];
 
+  // Run the Kitchen importer. It may exit nonzero (code 1) even when it
+  // produces a valid JSON report on stdout (e.g. 0 imported, N skipped).
+  // We parse stdout from the exec error in that case and continue with
+  // the stored-week top-up path instead of returning 500.
+  let report: { imported?: { id: string; url: string; source: string }[]; errors?: { message?: string; url?: string }[]; skipped?: { reason?: string; name?: string; url?: string }[] };
+  let importerStderr: string | undefined;
+
   try {
-    // Run the Kitchen importer
     const execOpts = {
       env: {
         ...process.env,
@@ -206,9 +212,91 @@ export async function POST(request: NextRequest) {
     if (stderr && !stderr.includes("warning")) {
       console.error("Kitchen importer stderr:", stderr);
     }
+    importerStderr = stderr;
 
-    const report = JSON.parse(stdout);
+    report = JSON.parse(stdout);
+  } catch (error) {
+    // The importer may print a valid JSON report to stdout and still exit 1
+    // (e.g. 0 imported, all skipped). Try to recover the report from stdout.
+    let recoveredReport: typeof report | undefined;
+    if (error instanceof Error) {
+      const execError = error as ImporterExecError;
+      importerStderr = execError.stderr;
+      if (execError.stdout?.trim()) {
+        try {
+          recoveredReport = JSON.parse(execError.stdout);
+        } catch {
+          // stdout was not valid JSON — genuine failure
+        }
+      }
+    }
 
+    if (recoveredReport) {
+      // We have a structured report despite nonzero exit — continue with it
+      console.warn("Kitchen importer exited nonzero but produced a valid report; continuing with top-up path");
+      report = recoveredReport;
+    } else {
+      // Genuine failure: no parseable report. Try stored top-up as last resort.
+      console.error("Kitchen importer failed:", error);
+      try {
+        const storedInspirations = await getWebInspirationsForWeek(week);
+        const recentWeeks = getRecentWeekIds(week, 4);
+        const priorWeeks = recentWeeks.filter((w) => w !== week);
+        const priorInspirations = await Promise.all(priorWeeks.map((w) => getWebInspirationsForWeek(w)));
+        const recentRecipeIds = new Set<string>();
+        const recentSourceUrls = new Set<string>();
+        for (const weekInsps of priorInspirations) {
+          for (const insp of weekInsps) {
+            recentRecipeIds.add(insp.recipe_id);
+            if (insp.source_url) recentSourceUrls.add(insp.source_url);
+          }
+        }
+
+        const fallbackCandidates: RecipeOption[] = [];
+        for (const insp of storedInspirations) {
+          if (fallbackCandidates.length >= count) break;
+          if (recentRecipeIds.has(insp.recipe_id) || (insp.source_url && recentSourceUrls.has(insp.source_url))) continue;
+          const recipe = await getMyRecipe(insp.recipe_id);
+          if (recipe && isMainPlannerCandidate(recipe)) {
+            fallbackCandidates.push(recipeToCandidate(recipe, {
+              source_url: insp.source_url,
+              source_name: insp.source_name,
+            }));
+          }
+        }
+
+        if (fallbackCandidates.length > 0) {
+          return NextResponse.json({
+            week,
+            candidates: fallbackCandidates,
+            warning: "Importer failed; returning stored inspirations as fallback",
+          });
+        }
+      } catch (topUpError) {
+        console.error("Stored top-up also failed:", topUpError);
+      }
+
+      let message = "Unknown error";
+      let stderrDetail: string | undefined;
+      if (error instanceof Error) {
+        message = stripCommandPrefix(error.message) || "Importer command failed";
+        stderrDetail = (error as ImporterExecError).stderr;
+      }
+      return NextResponse.json(
+        {
+          error: `Kitchen importer failed: ${message}`,
+          week,
+          candidates: [],
+          ...(stderrDetail ? { detail: stderrDetail.slice(0, 2000) } : {}),
+        },
+        { status: 500 }
+      );
+    }
+  }
+
+  // From here on we have a valid `report` — either from a clean exit or
+  // recovered from a nonzero exit with parseable stdout.
+  try {
     // Build a set of recipe_id and source_url used in the current week
     // AND recent prior weeks so clicking "Research Web Ideas" cannot just
     // re-return the same ideas already shown this week.
@@ -242,7 +330,7 @@ export async function POST(request: NextRequest) {
     const missingMyRecipeIds: string[] = [];
     const skippedDuplicates: string[] = [];
     const skippedNonMain: string[] = [];
-    for (const imported of report.imported) {
+    for (const imported of (report.imported ?? [])) {
       // Skip if this recipe or URL was already used in recent weeks
       if (recentRecipeIds.has(imported.id) || recentSourceUrls.has(imported.url) || currentRecipeIds.has(imported.id) || currentSourceUrls.has(imported.url)) {
         skippedDuplicates.push(imported.id);
@@ -344,28 +432,9 @@ export async function POST(request: NextRequest) {
       report,
     });
   } catch (error) {
-    console.error("Kitchen importer failed:", error);
-    // Extract useful context without leaking full command paths or env details.
-    // The importer may print a JSON report to stdout and still exit 1; prefer
-    // that structured error over Node's generic "Command failed: /var/task/...".
-    let message = "Unknown error";
-    let stderr: string | undefined;
-    let report: unknown;
-    if (error instanceof Error) {
-      const execError = error as ImporterExecError;
-      const summary = summarizeImporterReport(execError.stdout);
-      message = summary.message ?? (stripCommandPrefix(error.message) || "Importer command failed");
-      stderr = execError.stderr;
-      report = summary.report;
-    }
+    console.error("Post-import processing failed:", error);
     return NextResponse.json(
-      {
-        error: `Kitchen importer failed: ${message}`,
-        week,
-        candidates: [],
-        ...(stderr ? { detail: stderr.slice(0, 2000) } : {}),
-        ...(report ? { report } : {}),
-      },
+      { error: "Failed to process importer results", week, candidates: [] },
       { status: 500 }
     );
   }
