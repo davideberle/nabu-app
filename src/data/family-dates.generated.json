@@ -1,0 +1,50 @@
+{
+  "milestones": [
+    {
+      "id": "david-birthday",
+      "label": "David's Birthday",
+      "kind": "birthday",
+      "canonicalDate": "31.10.1985"
+    },
+    {
+      "id": "marisol-birthday",
+      "label": "Marisol's Birthday",
+      "kind": "birthday",
+      "canonicalDate": "09.03.1988"
+    },
+    {
+      "id": "santiago-birthday",
+      "label": "Santiago's Birthday",
+      "kind": "birthday",
+      "canonicalDate": "29.10.2017",
+      "isChild": true,
+      "note": "use for age-aware kid recommendations"
+    },
+    {
+      "id": "isabel-birthday",
+      "label": "Isabel's Birthday",
+      "kind": "birthday",
+      "canonicalDate": "14.12.2019",
+      "isChild": true,
+      "note": "use for age-aware kid recommendations"
+    },
+    {
+      "id": "first-date",
+      "label": "First Date Anniversary",
+      "kind": "anniversary",
+      "canonicalDate": "17.10.2009",
+      "note": "Important anniversary"
+    },
+    {
+      "id": "wedding",
+      "label": "Wedding Anniversary",
+      "kind": "anniversary",
+      "canonicalDate": "16.05.2014",
+      "note": "Important anniversary"
+    }
+  ],
+  "planningRules": {
+    "kidsPlanningStartWeeks": 8,
+    "majorPlanningStartWeeks": 6
+  }
+}

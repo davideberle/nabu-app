@@ -5,13 +5,35 @@ import { initialTodos } from "@/lib/todos";
 import { getRecipesByCookbook } from "@/lib/recipes";
 import { houseAssets } from "@/data/house-assets";
 import { wineBottles } from "@/data/wine-cellar";
+import { getNextPlanningMilestone, getNextMilestone, formatMilestoneDate, getComputedMilestones } from "@/data/family";
+
+function getFamilySummary() {
+  const planning = getNextPlanningMilestone();
+  const next = getNextMilestone();
+  const milestones = getComputedMilestones();
+  const planningCount = milestones.filter((m) => m.planningStatus === "planning-window").length;
+  return { planning, next, planningCount };
+}
 
 async function getTiles() {
   const activeTodos = initialTodos.filter((t) => !t.completed).length;
   const myRecipes = await getRecipesByCookbook("my-recipes");
   const myRecipesCount = myRecipes.length;
+  const family = getFamilySummary();
 
   return [
+    {
+      id: "family",
+      name: "Family",
+      emoji: "👨‍👩‍👧‍👦",
+      description: "Birthdays, anniversaries, planning",
+      href: "/family",
+      stats: family.planningCount > 0
+        ? `${family.planningCount} planning`
+        : family.next
+          ? `${family.next.daysUntil}d`
+          : "View",
+    },
     {
       id: "todos",
       name: "Todos",
@@ -98,6 +120,19 @@ async function getTiles() {
 export default async function Home() {
   const session = await auth();
   const tiles = await getTiles();
+  const family = getFamilySummary();
+
+  // Build a today description that includes the next family planning item
+  let todayTitle = "No focus set";
+  let todayDescription =
+    "Tap a recipe, meal, or project when something needs to become the main thread.";
+  if (family.planning) {
+    todayTitle = family.planning.label;
+    todayDescription = `${family.planning.planningLabel} — ${formatMilestoneDate(family.planning.nextOccurrence)}`;
+  } else if (family.next && family.next.daysUntil <= 30) {
+    todayTitle = family.next.label;
+    todayDescription = `Coming up in ${family.next.daysUntil} days — ${formatMilestoneDate(family.next.nextOccurrence)}`;
+  }
 
   return (
     <NabuPageShell>
@@ -130,11 +165,13 @@ export default async function Home() {
               <div className="min-w-0">
                 <NabuSectionHeader
                   eyebrow="Today"
-                  title="No focus set"
-                  description="Tap a recipe, meal, or project when something needs to become the main thread."
+                  title={todayTitle}
+                  description={todayDescription}
                 />
               </div>
-              <NabuIconFrame className="h-9 w-9 border-amber-200/60 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-900/20">🎯</NabuIconFrame>
+              <NabuIconFrame className="h-9 w-9 border-amber-200/60 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-900/20">
+                {family.planning ? "👨‍👩‍👧‍👦" : "🎯"}
+              </NabuIconFrame>
             </div>
           </NabuSurface>
 

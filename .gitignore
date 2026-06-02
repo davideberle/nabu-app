@@ -54,6 +54,10 @@ next-env.d.ts
 # generated recipe bundle (built by scripts/bundle-recipes.mjs)
 src/data/recipes-bundle.json
 
+# generated family dates — committed as a deploy mirror for Vercel builds
+# (canonical source: projects/family/DATES.md)
+# src/data/family-dates.generated.json   ← intentionally tracked
+
 # database
 *.db
 *.db-wal
