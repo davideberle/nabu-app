@@ -118,19 +118,25 @@ const canAccessDb =
 // Deduplicated fetch of all recipes (static + Turso My Recipes) per request
 export const getAllRecipes = cache(async (): Promise<Recipe[]> => {
   const myRecipes = canAccessDb ? await getAllMyRecipes() : [];
-  return [...staticRecipes, ...myRecipes].sort((a, b) =>
+  const myRecipeIds = new Set(myRecipes.map((recipe) => recipe.id));
+  return [
+    ...staticRecipes.filter((recipe) => !myRecipeIds.has(recipe.id)),
+    ...myRecipes,
+  ].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
 });
 
 export async function getRecipe(id: string): Promise<Recipe | undefined> {
-  // Check the full static bundle first. Hidden cookbooks stay out of browse
-  // surfaces, but explicit recipe references (for example live-cooking sides)
-  // should still resolve to ingredients and method.
+  const myRecipe = canAccessDb ? await getMyRecipe(id) : undefined;
+  if (myRecipe) return myRecipe;
+
+  // My Recipes can intentionally override imported/static slugs. Fall back to
+  // the full static bundle so hidden cookbook recipes still resolve when they
+  // are referenced explicitly, for example as live-cooking sides.
   const staticHit = allStaticRecipes.find((r) => r.id === id);
   if (staticHit) return staticHit;
-  // Fall back to Turso for My Recipes (skip if DB unavailable at build time)
-  return canAccessDb ? getMyRecipe(id) : undefined;
+  return undefined;
 }
 
 export async function getRecipesByChapter(
