@@ -19,6 +19,7 @@ https://app.davideberle.com.
 | Recipes  | Live   | ~3,527 cookbook recipes (static JSON, classified by meal_role) + My Recipes (Turso), with cook history shown on recipe pages |
 | Meals    | Live   | Weekly meal planner (Phases 1–4: 7-day week, quality-gated candidates, ISO week nav + history, day expansion, side/serve-with, and weekend Sat/Sun breakfast/brunch slots). Turso-backed |
 | Cooking  | Live   | Live cooking session, auto-loaded from meal plan. UI intentionally lean: main steps, sides/serve-with, concise wine, optional notes; meal-flow/shortcut/upgrade/session-modification blocks hidden. |
+| Family   | Foundation live | `/family` renders family-owned milestones and planning windows. Next target is the focused iPad milestone tracker with scoped access and reduced navigation. |
 | Wine     | Live   | Household wine-cellar view backed by kitchen-owned seed data mirror; tracks red/white bottles, bottle images, pairing lanes, and consumed status. |
 | Music    | Live   | Sonos zone control + discovery review. Discovery cards include cover/year metadata; already-in-library candidates are rejected out of inbox during sync. UI polished with Nabu/Untitled wrapper in `57ae11d8`. |
 | Shopping | Stub   | Lists placeholder |
@@ -32,6 +33,7 @@ https://app.davideberle.com.
 - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` — Google OAuth credentials
 ## Current UI refresh status
 
+- 2026-06-02: Family iPad foundation deployed to production (`dpl_Ghf1nTW1kijDPPziocu7ivMTYPw3`). `/family` renders upcoming birthdays/anniversaries, computed ages/counts, and planning-window status from the family domain mirror; dashboard and Today link into it; iPad/PWA safe-area, manifest, and icon support are live. David clarified this is not the finished milestone tracker: the next target is a focused iPad tracker with scoped access and reduced app chrome.
 - 2026-06-02: Meal planner quality hardening deployed to production (`dpl_6APPLuH6RRn2NxF2AmsysNLvWLiQ`). Generated candidates now avoid recipes cooked in the last 45 days and recipes planned in the last 5 prior weeks, apply stricter main-dish filtering to planner/web candidates, add cuisine/source diversity scoring, and record cook events at recipe level for mains plus accepted sides. Local and Vercel production builds pass; production `/api/meals/generate` returns `planner-v2.2`.
 - 2026-06-01: Meal planner navigation/clarity hotfix deployed to production (`dpl_9gV7HbnxfBmY6p46ZtxEWBYyQb7R`). Week navigation now keeps explicit `?week=YYYY-Www` URLs for current/previous/next weeks, and cooked meal cards show one compact cooked badge instead of a duplicate label. Local and Vercel production builds pass.
 - 2026-05-31: Dashboard, shared Nabu surfaces, `/meals`, and `/cooking` visual upgrade pass deployed to production (`dpl_mZP7vk8DNUNPP81QzfJ9X8zhrnk5`). The pass reduces decorative backgrounds/shadows, standardizes calmer 8px-style surfaces, tightens dashboard and meal workflow hierarchy, and preserves session notes plus Monday/Tuesday non-alcoholic pairing hints. Local and Vercel production builds pass.

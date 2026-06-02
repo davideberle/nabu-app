@@ -1,9 +1,11 @@
 import { auth } from "@/auth";
+import { isTrackerAllowedPath, isTrackerOnlyEmail } from "@/lib/access";
 
 export default auth((req) => {
   const isLoggedIn = !!req.auth;
   const isLoginPage = req.nextUrl.pathname === "/login";
   const isApiRoute = req.nextUrl.pathname.startsWith("/api/");
+  const isTrackerOnly = isTrackerOnlyEmail(req.auth?.user?.email);
 
   // Allow all API routes (includes /api/auth) — they handle their own auth
   if (isApiRoute) {
@@ -17,7 +19,12 @@ export default auth((req) => {
 
   // Redirect to home if logged in and on login page
   if (isLoggedIn && isLoginPage) {
-    return Response.redirect(new URL("/", req.nextUrl.origin));
+    return Response.redirect(new URL(isTrackerOnly ? "/family/tracker" : "/", req.nextUrl.origin));
+  }
+
+  // Shared-iPad / tracker-only accounts stay inside the milestone tracker.
+  if (isLoggedIn && isTrackerOnly && !isTrackerAllowedPath(req.nextUrl.pathname)) {
+    return Response.redirect(new URL("/family/tracker", req.nextUrl.origin));
   }
 });
 

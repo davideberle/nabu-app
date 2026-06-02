@@ -1,8 +1,8 @@
 {
-  "name": "Nabu",
-  "short_name": "Nabu",
-  "description": "David's household companion app",
-  "start_url": "/",
+  "name": "Nabu Family Milestones",
+  "short_name": "Milestones",
+  "description": "Family milestone tracker",
+  "start_url": "/family/tracker",
   "display": "standalone",
   "background_color": "#f5f3f0",
   "theme_color": "#f5f3f0",

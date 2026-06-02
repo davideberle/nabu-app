@@ -2,7 +2,7 @@ import {
   NabuBadge,
   NabuHeader,
   NabuIconFrame,
-  NabuKicker,
+  NabuLinkButton,
   NabuMain,
   NabuPageShell,
   NabuSectionHeader,
@@ -139,6 +139,11 @@ export default function FamilyPage() {
         subtitle="Milestones and planning"
         icon="👨‍👩‍👧‍👦"
         backHref="/"
+        action={
+          <NabuLinkButton href="/family/tracker" tone="secondary" size="sm">
+            iPad tracker
+          </NabuLinkButton>
+        }
       />
 
       <NabuMain className="space-y-6 pb-20">
