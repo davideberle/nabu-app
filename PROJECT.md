@@ -32,6 +32,9 @@ https://app.davideberle.com.
 - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` — Google OAuth credentials
 ## Current UI refresh status
 
+- 2026-06-02: Meal planner quality hardening deployed to production (`dpl_6APPLuH6RRn2NxF2AmsysNLvWLiQ`). Generated candidates now avoid recipes cooked in the last 45 days and recipes planned in the last 5 prior weeks, apply stricter main-dish filtering to planner/web candidates, add cuisine/source diversity scoring, and record cook events at recipe level for mains plus accepted sides. Local and Vercel production builds pass; production `/api/meals/generate` returns `planner-v2.2`.
+- 2026-06-01: Meal planner navigation/clarity hotfix deployed to production (`dpl_9gV7HbnxfBmY6p46ZtxEWBYyQb7R`). Week navigation now keeps explicit `?week=YYYY-Www` URLs for current/previous/next weeks, and cooked meal cards show one compact cooked badge instead of a duplicate label. Local and Vercel production builds pass.
+- 2026-05-31: Dashboard, shared Nabu surfaces, `/meals`, and `/cooking` visual upgrade pass deployed to production (`dpl_mZP7vk8DNUNPP81QzfJ9X8zhrnk5`). The pass reduces decorative backgrounds/shadows, standardizes calmer 8px-style surfaces, tightens dashboard and meal workflow hierarchy, and preserves session notes plus Monday/Tuesday non-alcoholic pairing hints. Local and Vercel production builds pass.
 - 2026-05-23: Recipe detail back button hotfix: recipe links now carry a safe parent `from` target from browse/cookbook/cuisine/dietary/meals surfaces, and the floating recipe back button routes deterministically to that parent instead of relying on browser history (which could jump around after in-page chapter/scroll interactions). Local production build passes.
 - Untitled UI/Nabu wrapper foundation is live.
 - Dashboard, Meals, and Cooking polish shipped in `dab49fac`.
@@ -39,4 +42,3 @@ https://app.davideberle.com.
 - Recipes index, detail, and cookbooks polish shipped (NabuPageShell/NabuHeader/NabuMain/NabuCard/NabuBadge applied; editorial hero preserved).
 - Wine cellar polish shipped: grouped red/white sections, hero stock summary, bottle photos, safe unknown-vintage display.
 - Remaining Untitled/Nabu rollout candidates: Cookbook/cuisine/dietary sub-pages, Login, Shopping, and System.
-

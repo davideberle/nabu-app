@@ -11,15 +11,17 @@ import {
   getWebInspirationsForWeek,
   recordWebInspiration,
   getMyRecipe,
+  getRecentlyCookedRecipeIds,
+  getPlannedRecipeIdsForWeeks,
 } from "@/lib/db";
-import { getRecentWeekIds } from "@/lib/meals";
+import { getRecentWeekIds, isMainPlannerCandidate } from "@/lib/meals";
 import { loadMealPlan } from "@/lib/meals-persistence";
 import type { Recipe } from "@/lib/recipes";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 
-const NON_MAIN_ROLES = new Set(["component", "base", "condiment", "garnish", "drink", "beverage", "breakfast", "snack", "dessert", "side"]);
-const NON_MAIN_DISH_TYPES = new Set(["condiment", "dessert", "side", "component", "base", "garnish", "sauce", "dressing", "drink", "beverage", "breakfast", "snack"]);
+const RECENTLY_COOKED_LOOKBACK_DAYS = 45;
+const RECENTLY_PLANNED_LOOKBACK_WEEKS = 5;
 
 const execFileAsync = promisify(execFile);
 
@@ -47,24 +49,6 @@ function currentIsoWeekId(date = new Date()): string {
   const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
   const week = Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
   return `${d.getUTCFullYear()}-W${String(week).padStart(2, "0")}`;
-}
-
-function inferMealRole(recipe: Recipe): string {
-  const role = (recipe as Record<string, unknown>).mealRole as string | undefined
-    ?? recipe.category?.meal_role;
-  if (role) return role;
-  const name = recipe.name?.toLowerCase() ?? "";
-  if (/chutney|pickle|relish|raita|salsa/.test(name)) return "condiment";
-  if (/shrikhand|dessert|cake|pie|pudding|mousse|sorbet|ice cream/.test(name)) return "dessert";
-  return "main";
-}
-
-function isMainPlannerCandidate(recipe: Recipe): boolean {
-  const role = inferMealRole(recipe).toLowerCase();
-  if (NON_MAIN_ROLES.has(role)) return false;
-  const dishTypes = recipe.category?.dish_type?.map((type) => type.toLowerCase()) ?? [];
-  if (dishTypes.some((type) => NON_MAIN_DISH_TYPES.has(type))) return false;
-  return true;
 }
 
 function recipeToCandidate(recipe: Recipe, provenance: { source_url: string; source_name: string }): RecipeOption {
@@ -115,6 +99,14 @@ function summarizeImporterReport(stdout?: string): { message?: string; report?: 
   }
 }
 
+async function getPlannerExclusionIds(week: string): Promise<Set<string>> {
+  const [recentlyCooked, recentlyPlanned] = await Promise.all([
+    getRecentlyCookedRecipeIds(RECENTLY_COOKED_LOOKBACK_DAYS),
+    getPlannedRecipeIdsForWeeks(getRecentWeekIds(week, RECENTLY_PLANNED_LOOKBACK_WEEKS)),
+  ]);
+  return new Set([...recentlyCooked, ...recentlyPlanned]);
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const week = searchParams.get("week") ?? currentIsoWeekId();
@@ -125,10 +117,12 @@ export async function GET(request: NextRequest) {
 
   try {
     const inspirations = await getWebInspirationsForWeek(week);
+    const exclusionIds = await getPlannerExclusionIds(week);
     const candidates: RecipeOption[] = [];
 
     for (const insp of inspirations) {
       if (candidates.length >= limit) break;
+      if (exclusionIds.has(insp.recipe_id)) continue;
       const recipe = await getMyRecipe(insp.recipe_id);
       if (recipe && isMainPlannerCandidate(recipe)) {
         candidates.push(recipeToCandidate(recipe, {
@@ -175,6 +169,7 @@ export async function POST(request: NextRequest) {
       { status: 409 },
     );
   }
+  const plannerExclusionIds = await getPlannerExclusionIds(week);
 
   // Use configured importer or fall back to vendored kitchen importer script.
   // Over-request from the importer because the API applies additional filtering
@@ -240,7 +235,7 @@ export async function POST(request: NextRequest) {
       console.error("Kitchen importer failed:", error);
       try {
         const storedInspirations = await getWebInspirationsForWeek(week);
-        const recentWeeks = getRecentWeekIds(week, 4);
+        const recentWeeks = getRecentWeekIds(week, RECENTLY_PLANNED_LOOKBACK_WEEKS);
         const priorWeeks = recentWeeks.filter((w) => w !== week);
         const priorInspirations = await Promise.all(priorWeeks.map((w) => getWebInspirationsForWeek(w)));
         const recentRecipeIds = new Set<string>();
@@ -255,6 +250,7 @@ export async function POST(request: NextRequest) {
         const fallbackCandidates: RecipeOption[] = [];
         for (const insp of storedInspirations) {
           if (fallbackCandidates.length >= count) break;
+          if (plannerExclusionIds.has(insp.recipe_id)) continue;
           if (recentRecipeIds.has(insp.recipe_id) || (insp.source_url && recentSourceUrls.has(insp.source_url))) continue;
           const recipe = await getMyRecipe(insp.recipe_id);
           if (recipe && isMainPlannerCandidate(recipe)) {
@@ -300,7 +296,7 @@ export async function POST(request: NextRequest) {
     // Build a set of recipe_id and source_url used in the current week
     // AND recent prior weeks so clicking "Research Web Ideas" cannot just
     // re-return the same ideas already shown this week.
-    const recentWeeks = getRecentWeekIds(week, 4);
+    const recentWeeks = getRecentWeekIds(week, RECENTLY_PLANNED_LOOKBACK_WEEKS);
     const allWeeks = [week, ...recentWeeks.filter((w) => w !== week)];
     const recentInspirations = await Promise.all(
       allWeeks.map((w) => getWebInspirationsForWeek(w)),
@@ -332,7 +328,7 @@ export async function POST(request: NextRequest) {
     const skippedNonMain: string[] = [];
     for (const imported of (report.imported ?? [])) {
       // Skip if this recipe or URL was already used in recent weeks
-      if (recentRecipeIds.has(imported.id) || recentSourceUrls.has(imported.url) || currentRecipeIds.has(imported.id) || currentSourceUrls.has(imported.url)) {
+      if (plannerExclusionIds.has(imported.id) || recentRecipeIds.has(imported.id) || recentSourceUrls.has(imported.url) || currentRecipeIds.has(imported.id) || currentSourceUrls.has(imported.url)) {
         skippedDuplicates.push(imported.id);
         continue;
       }
@@ -367,6 +363,7 @@ export async function POST(request: NextRequest) {
         // Current-week stored ideas are allowed here as top-ups: they are
         // exactly what David is already looking at. We only exclude prior-week
         // repeats and already-returned cards.
+        if (plannerExclusionIds.has(insp.recipe_id)) continue;
         if (recentRecipeIds.has(insp.recipe_id) || (insp.source_url && recentSourceUrls.has(insp.source_url))) continue;
         if (candidates.some((c) => c.id === insp.recipe_id)) continue;
         const recipe = await getMyRecipe(insp.recipe_id);

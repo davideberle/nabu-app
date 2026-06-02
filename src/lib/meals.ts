@@ -276,7 +276,9 @@ function isLight(recipe: Recipe): boolean {
 // ----- filtering: only select dinner-worthy recipes -----
 
 const EXCLUDED_DISH_TYPES = new Set([
-  "dessert", "baking", "breakfast", "drink", "condiment", "base", "bread", "component",
+  "dessert", "baking", "breakfast", "brunch", "drink", "beverage",
+  "condiment", "base", "bread", "component", "garnish", "sauce",
+  "dressing", "pickle", "preserve", "chutney", "raita", "salsa", "dip",
 ]);
 
 /** Chapter names that should never appear in dinner options */
@@ -285,9 +287,45 @@ const EXCLUDED_CHAPTER_PATTERNS = [
   "bread", "breakfast", "brunch", "drink", "beverage",
   "smoothie", "mylkshake", "coffee", "basic recipe",
   "basic sauce", "base sauce", "kitchen basic", "know-how",
-  "condiment", "pickle", "preserve", "chutney", "spice blend",
+  "condiment", "pickle", "preserve", "chutney", "raita", "salsa",
+  "dip", "dressing", "sauce", "spice blend",
   "desayuno",
 ];
+
+const NON_MAIN_NAME_PATTERNS = /\b(sauce|dressing|vinaigrette|pickle|pickled|chutney|raita|salsa|dip|relish|jam|marmalade|aioli|mayonnaise|ketchup|paste|rub|spice blend|masala powder)\b/i;
+const BREAKFAST_SNACK_PATTERNS = /\b(pancake|waffle|johnnycake|french toast|granola|porridge|oatmeal|breakfast|brunch|morning|cereal|muesli|smoothie|juice|milkshake|snack|energy ball|trail mix|lunch box|lunchbox)\b/i;
+const DESSERT_PATTERNS = /\b(cake|brownie|cookie|biscuit|muffin|cupcake|fudge|ice cream|sorbet|pudding|truffle|macaron|shrikhand|dessert|pie|tart|crumble|sweet roll)\b/i;
+
+function recipeCategoryValues(recipe: Recipe): string[] {
+  const values: string[] = [];
+  const category = recipe.category as unknown;
+  if (category && typeof category === "object") {
+    const record = category as { dish_type?: unknown; meal_role?: unknown; chapter?: unknown };
+    if (Array.isArray(record.dish_type)) {
+      values.push(...record.dish_type.filter((v): v is string => typeof v === "string"));
+    }
+    if (typeof record.meal_role === "string") values.push(record.meal_role);
+    if (typeof record.chapter === "string") values.push(record.chapter);
+  } else if (typeof category === "string") {
+    values.push(category);
+  }
+  if (recipe.mealRole) values.push(recipe.mealRole);
+  return values.map((value) => value.toLowerCase().trim()).filter(Boolean);
+}
+
+function hasClearMainSignal(recipe: Recipe): boolean {
+  const values = recipeCategoryValues(recipe);
+  if (values.some((value) => ["main", "dinner", "supper", "entree", "entrée"].includes(value))) {
+    return true;
+  }
+
+  return hasSubstantialMainNameSignal(recipe);
+}
+
+function hasSubstantialMainNameSignal(recipe: Recipe): boolean {
+  const text = `${recipe.name} ${(recipe.introduction || recipe.intro || "")}`.toLowerCase();
+  return /\b(curry|stew|tagine|rag[uù]|chili|soup|ramen|pho|laksa|pasta|spaghetti|noodle|risotto|biryani|pilaf|taco|enchilada|quesadilla|burger|sandwich|wrap|bowl|roast|grill|grilled|braised|chicken|beef|pork|lamb|fish|salmon|shrimp|tofu|tempeh|lentil|bean)\b/.test(text);
+}
 
 /**
  * Returns true if a recipe is suitable as a dinner main dish.
@@ -295,9 +333,12 @@ const EXCLUDED_CHAPTER_PATTERNS = [
 function isDinnerWorthy(recipe: Recipe): boolean {
   const dishTypes = recipe.category?.dish_type ?? [];
   const lowTypes = dishTypes.map((t) => t.toLowerCase());
+  const role = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
+  const categoryValues = recipeCategoryValues(recipe);
 
   // Exclude non-dinner dish types
   if (lowTypes.some((t) => EXCLUDED_DISH_TYPES.has(t))) return false;
+  if (categoryValues.some((t) => EXCLUDED_DISH_TYPES.has(t))) return false;
 
   // Exclude by chapter name
   const chapter = (
@@ -308,22 +349,20 @@ function isDinnerWorthy(recipe: Recipe): boolean {
   if (chapter && EXCLUDED_CHAPTER_PATTERNS.some((p) => chapter.includes(p))) return false;
 
   // Exclude side-only dishes (unless they're also tagged as main/soup/salad)
-  const hasMainRole = lowTypes.some(
-    (t) => t === "main" || t === "soup" || t === "salad"
+  const hasMainRole = [...lowTypes, ...categoryValues].some(
+    (t) => t === "main" || t === "dinner" || t === "supper" || t === "soup" || t === "salad"
   );
   if (lowTypes.includes("side") && !hasMainRole) return false;
   if (lowTypes.includes("vegetable") && !hasMainRole) return false;
   if (lowTypes.includes("starter") && !hasMainRole) return false;
+  if (categoryValues.includes("side") && !hasMainRole) return false;
+  if (categoryValues.includes("vegetable") && !hasMainRole) return false;
+  if (categoryValues.includes("starter") && !hasMainRole) return false;
 
   // Name-based exclusions for things that slipped through
   const nameLower = recipe.name.toLowerCase();
-  const breakfastWords = [
-    "pancake", "waffle", "johnnycake", "french toast", "granola",
-    "porridge", "oatmeal", "breakfast", "brunch", "morning",
-    "cereal", "muesli", "smoothie", "juice", "milkshake",
-    "scramble", "scrambled egg",
-  ];
-  if (breakfastWords.some((w) => nameLower.includes(w))) return false;
+  const introLower = (recipe.introduction || recipe.intro || "").toLowerCase();
+  if (BREAKFAST_SNACK_PATTERNS.test(nameLower) || BREAKFAST_SNACK_PATTERNS.test(introLower)) return false;
 
   // Snack/lunch/non-dinner items
   const snackWords = [
@@ -333,16 +372,13 @@ function isDinnerWorthy(recipe: Recipe): boolean {
   ];
   if (snackWords.some((w) => nameLower.includes(w))) return false;
 
-  const dessertWords = ["cake", "brownie", "cookie", "muffin", "cupcake", "fudge", "ice cream", "sorbet", "pudding", "truffle", "macaron"];
-  if (dessertWords.some((w) => nameLower.includes(w))) return false;
+  if (DESSERT_PATTERNS.test(nameLower) || DESSERT_PATTERNS.test(introLower)) return false;
 
-  // Exclude sauces/dressings masquerading as recipes
-  const sauceWords = ["dressing", "vinaigrette", "aioli", "mayonnaise", "ketchup"];
-  if (sauceWords.some((w) => nameLower.includes(w))) return false;
+  // Exclude sauces/dressings/condiments unless the recipe is clearly a full main.
+  if (NON_MAIN_NAME_PATTERNS.test(nameLower) && !hasSubstantialMainNameSignal(recipe)) return false;
 
   // Exclude meal_role mismatches
-  const role = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
-  if (role === "breakfast" || role === "brunch" || role === "lunch" || role === "drink" || role === "snack") return false;
+  if (role === "breakfast" || role === "brunch" || role === "lunch" || role === "drink" || role === "beverage" || role === "snack" || role === "dessert") return false;
 
   // Must have a reasonable number of ingredients (not just a sauce/dip)
   if (recipe.ingredients.length < 3) return false;
@@ -351,6 +387,10 @@ function isDinnerWorthy(recipe: Recipe): boolean {
   if (!recipe.method || recipe.method.length < 2) return false;
 
   return true;
+}
+
+export function isMainPlannerCandidate(recipe: Recipe): boolean {
+  return isDinnerWorthy(recipe);
 }
 
 /**
@@ -436,6 +476,65 @@ function pickWithoutCuisineRepeat(
       if (picked.some((p) => p.id === r.id)) continue;
       picked.push(r);
     }
+  }
+
+  return picked;
+}
+
+function stableNoise(value: string): number {
+  let hash = 2166136261;
+  for (let i = 0; i < value.length; i++) {
+    hash ^= value.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0) / 0xffffffff;
+}
+
+function sourceDiversityKey(recipe: Recipe): string {
+  return [
+    recipe.source?.cookbook,
+    recipe.source?.author,
+    recipe.source?.publication,
+  ].filter(Boolean).join(" | ") || "Unknown";
+}
+
+function pickDiverseCandidates(
+  pool: Recipe[],
+  count: number,
+  alreadyPicked: Recipe[],
+): Recipe[] {
+  const picked: Recipe[] = [];
+  const usedIds = new Set(alreadyPicked.map((r) => r.id));
+  const cuisineCounts = new Map<string, number>();
+  const sourceCounts = new Map<string, number>();
+
+  for (const recipe of alreadyPicked) {
+    const cuisine = getCuisine(recipe);
+    const source = sourceDiversityKey(recipe);
+    cuisineCounts.set(cuisine, (cuisineCounts.get(cuisine) ?? 0) + 1);
+    sourceCounts.set(source, (sourceCounts.get(source) ?? 0) + 1);
+  }
+
+  const remaining = [...pool].filter((recipe) => !usedIds.has(recipe.id));
+  while (picked.length < count && remaining.length > 0) {
+    remaining.sort((a, b) => {
+      const score = (recipe: Recipe) => {
+        const cuisinePenalty = (cuisineCounts.get(getCuisine(recipe)) ?? 0) * 8;
+        const sourcePenalty = (sourceCounts.get(sourceDiversityKey(recipe)) ?? 0) * 5;
+        const hasImageBonus = recipe.image ? -1 : 0;
+        return cuisinePenalty + sourcePenalty + hasImageBonus + stableNoise(recipe.id) * 0.5;
+      };
+      return score(a) - score(b);
+    });
+
+    const next = remaining.shift();
+    if (!next) break;
+    picked.push(next);
+    usedIds.add(next.id);
+    const cuisine = getCuisine(next);
+    const source = sourceDiversityKey(next);
+    cuisineCounts.set(cuisine, (cuisineCounts.get(cuisine) ?? 0) + 1);
+    sourceCounts.set(source, (sourceCounts.get(source) ?? 0) + 1);
   }
 
   return picked;
@@ -974,8 +1073,8 @@ export function selectCandidateMains(
     for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
       const bucket = CANDIDATE_BUCKET_ORDER[i];
       const needed = CANDIDATE_BUCKET_CONTRACT[i];
-      const available = shuffle(pools[bucket]).filter((r) => !usedIds.has(r.id));
-      const picks = pickWithoutCuisineRepeat(available, needed, allPicked);
+      const available = pools[bucket].filter((r) => !usedIds.has(r.id));
+      const picks = pickDiverseCandidates(available, needed, allPicked);
       picked[bucket] = picks;
       allPicked.push(...picks);
       picks.forEach((r) => usedIds.add(r.id));
@@ -1003,7 +1102,11 @@ export function selectCandidateMains(
       const current = pickedBuckets[bucket].length;
       if (current < target) {
         const remaining = bucketPools[bucket].filter((r) => !usedIds.has(r.id));
-        const extra = remaining.slice(0, target - current);
+        const extra = pickDiverseCandidates(
+          remaining,
+          target - current,
+          Object.values(pickedBuckets).flat(),
+        );
         pickedBuckets[bucket].push(...extra);
         extra.forEach((r) => usedIds.add(r.id));
       }

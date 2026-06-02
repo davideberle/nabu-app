@@ -5,7 +5,7 @@ import { NabuBadge, NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageSh
 import { createSessionFromPlan } from "@/lib/cooking";
 import { todayInZurich } from "@/lib/date";
 import type { CookingSession, SessionIngredient } from "@/lib/cooking";
-import { buildCookingGuidance, extractTableSides, formatList, formatRecipeTime } from "@/lib/cooking-guidance";
+import { buildCookingGuidance, extractTableSides, formatRecipeTime } from "@/lib/cooking-guidance";
 import { formatServings, getRecipe } from "@/lib/recipes";
 import type { Recipe } from "@/lib/recipes";
 
@@ -101,67 +101,20 @@ function SessionView({
     sideRecipes: mealComponents.map(({ recipe }) => recipe),
   });
   const timeLabel = formatRecipeTime(mainRecipe?.time);
-  const hasSides = mealComponents.length > 0 || tableSides.length > 0;
 
   return (
     <>
+      <MealOverview
+        session={session}
+        mainRecipe={mainRecipe}
+        mealComponents={mealComponents}
+        tableSides={tableSides}
+        timeLabel={timeLabel}
+        mealFlow={guidance.mealFlow}
+        wine={session.coachCards.wine || guidance.pairing.wine}
+      />
+
       <StoryCard story={session.story} title={session.anchor.title} />
-
-      {/* ── Meal overview ── */}
-      <NabuSurface className="p-5">
-        <NabuSectionHeader
-          eyebrow="Tonight’s meal"
-          title={session.anchor.title}
-        />
-
-        {hasSides && (
-          <ul className="mt-3 space-y-1">
-            {mealComponents.map(({ related, recipe }) => (
-              <li key={recipe.id} className="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400">
-                <span className="h-1 w-1 shrink-0 rounded-full bg-stone-300 dark:bg-stone-600" />
-                <span className="font-medium text-stone-600 dark:text-stone-300">{recipe.name}</span>
-                <span className="text-xs text-stone-400 dark:text-stone-500">&middot; {related.kind}</span>
-              </li>
-            ))}
-            {tableSides.map((item, i) => (
-              <li key={`serve-${i}`} className="flex items-center gap-2 text-sm text-stone-400 dark:text-stone-500">
-                <span className="h-1 w-1 shrink-0 rounded-full bg-stone-300 dark:bg-stone-600" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {mainRecipe?.image && (
-          <div className="mt-4 overflow-hidden rounded-2xl border border-stone-100 bg-stone-100 dark:border-stone-800 dark:bg-stone-900">
-            <Image
-              src={mainRecipe.image}
-              alt={session.anchor.title}
-              width={960}
-              height={540}
-              priority
-              className="aspect-[16/9] w-full object-cover"
-            />
-          </div>
-        )}
-
-        <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-stone-500 dark:text-stone-400">
-          {formatServings(session.servings.current) && (
-            <NabuBadge>{formatServings(session.servings.current)}</NabuBadge>
-          )}
-          {session.servings.current !== session.servings.base && formatServings(session.servings.base) && (
-            <NabuBadge tone="amber">base: {formatServings(session.servings.base)}</NabuBadge>
-          )}
-          {timeLabel && <NabuBadge tone="blue">{timeLabel}</NabuBadge>}
-          <span className="text-xs">
-            {session.anchor.provenance.source}
-            {session.anchor.provenance.author && (
-              <> &middot; {session.anchor.provenance.author}</>
-            )}
-          </span>
-        </div>
-
-      </NabuSurface>
 
       {/* ── Meal components: main → sides → serve-with notes ── */}
       <MealComponentBlock
@@ -191,41 +144,15 @@ function SessionView({
         />
       ))}
 
-      {tableSides.length > 0 && (
-        <NabuSurface tone="muted" className="p-4">
-          <NabuKicker>Serve with</NabuKicker>
-          <ul className="mt-2 space-y-1">
-            {tableSides.map((item, i) => (
-              <li key={i} className="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400">
-                <span className="h-1 w-1 shrink-0 rounded-full bg-stone-300 dark:bg-stone-600" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </NabuSurface>
-      )}
+      <NonAlcoholicHint date={session.date} suggestion={guidance.pairing.nonAlcoholic} />
 
-      <PairingSuggestions
-        pairing={guidance.pairing}
-        wineOverride={session.coachCards.wine}
-        date={session.date}
-      />
-
-      {/* Notes */}
-      {session.notes && (
-        <NabuSurface className="p-5">
-          <NabuKicker>Notes</NabuKicker>
-          <p className="mt-2 whitespace-pre-wrap text-sm text-stone-600 dark:text-stone-400">
-            {session.notes}
-          </p>
-        </NabuSurface>
-      )}
+      <SessionNotes notes={session.notes} />
 
       <NabuSurface className="p-5">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <NabuKicker>Finish session</NabuKicker>
-            <p className="mt-1 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
+            <p className="mt-1 text-sm leading-relaxed text-tertiary">
               Mark this meal as cooked when dinner is actually done.
             </p>
           </div>
@@ -237,10 +164,125 @@ function SessionView({
       </NabuSurface>
 
       {/* Footer meta */}
-      <div className="text-center text-xs text-stone-400 dark:text-stone-600 pb-8">
+      <div className="text-center text-xs text-quaternary pb-8">
         Last updated {formatTimestamp(session.updatedAt)}
       </div>
     </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Meal overview
+// ---------------------------------------------------------------------------
+
+function MealOverview({
+  session,
+  mainRecipe,
+  mealComponents,
+  tableSides,
+  timeLabel,
+  mealFlow,
+  wine,
+}: {
+  session: CookingSession;
+  mainRecipe?: Recipe;
+  mealComponents: Array<{
+    related: CookingSession["relatedRecipes"][number];
+    recipe: Recipe;
+  }>;
+  tableSides: string[];
+  timeLabel: string | null;
+  mealFlow: string[];
+  wine: string;
+}) {
+  const servingLabel = formatServings(session.servings.current);
+  const sourceLabel = [
+    session.anchor.provenance.source,
+    session.anchor.provenance.author,
+  ].filter(Boolean).join(" · ");
+  const overviewItems = [
+    { label: "Main", value: session.anchor.title },
+    {
+      label: "Cook",
+      value: mealComponents.length
+        ? mealComponents.map(({ recipe }) => recipe.name).join(" + ")
+        : "Main dish only",
+    },
+    {
+      label: "Table",
+      value: tableSides.length ? tableSides.join(" + ") : "No extra sides",
+    },
+    { label: "Drink", value: stripDrinkEmoji(wine).replace(/^Optional:\s*/i, "") },
+  ];
+  const attackPlan = mealFlow.slice(0, 4);
+
+  return (
+    <NabuSurface className="overflow-hidden p-0">
+      {mainRecipe?.image && (
+        <div className="border-b border-primary bg-secondary">
+          <Image
+            src={mainRecipe.image}
+            alt={session.anchor.title}
+            width={960}
+            height={540}
+            priority
+            className="aspect-[16/9] w-full object-cover"
+          />
+        </div>
+      )}
+
+      <div className="space-y-5 p-5">
+        <div className="space-y-3">
+          <NabuKicker>Tonight</NabuKicker>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div className="min-w-0">
+              <h2 className="text-2xl font-semibold leading-tight tracking-[-0.02em] text-primary">
+                {session.anchor.title}
+              </h2>
+              {sourceLabel && (
+                <p className="mt-1 text-xs text-tertiary">{sourceLabel}</p>
+              )}
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-2">
+              {servingLabel && <NabuBadge>{servingLabel}</NabuBadge>}
+              {session.servings.current !== session.servings.base && formatServings(session.servings.base) && (
+                <NabuBadge tone="amber">base: {formatServings(session.servings.base)}</NabuBadge>
+              )}
+              {timeLabel && <NabuBadge tone="blue">{timeLabel}</NabuBadge>}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2">
+          {overviewItems.map((item) => (
+            <div key={item.label} className="border-t border-secondary pt-3">
+              <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-quaternary">
+                {item.label}
+              </p>
+              <p className="mt-1 text-sm font-medium leading-snug text-primary">
+                {item.value}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {attackPlan.length > 0 && (
+          <div className="border-t border-secondary pt-4">
+            <NabuKicker>Order of attack</NabuKicker>
+            <ol className="mt-3 space-y-2.5">
+              {attackPlan.map((step, index) => (
+                <li key={index} className="grid grid-cols-[1.75rem_1fr] gap-3 text-sm leading-relaxed text-secondary">
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-secondary text-xs font-semibold text-quaternary">
+                    {index + 1}
+                  </span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+      </div>
+    </NabuSurface>
   );
 }
 
@@ -258,17 +300,17 @@ function StoryCard({
   if (!story?.text) return null;
 
   return (
-    <NabuSurface className="overflow-hidden border-amber-100 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-5 dark:border-amber-900/40 dark:from-amber-950/30 dark:via-stone-950 dark:to-orange-950/20">
+    <NabuSurface tone="accent" className="p-5">
       <div className="flex items-start gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100 text-lg dark:bg-amber-900/40">
+        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-amber-50/80 text-lg dark:bg-amber-900/20">
           📜
         </div>
-        <div>
+        <div className="min-w-0">
           <NabuKicker>Story of the dish</NabuKicker>
-          <h2 className="mt-1 text-xl font-semibold tracking-tight text-stone-950 dark:text-stone-50">
+          <h2 className="mt-1 text-lg font-semibold tracking-tight text-primary">
             {story.title || title}
           </h2>
-          <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-stone-700 dark:text-stone-300">
+          <p className="mt-2.5 whitespace-pre-wrap text-sm leading-7 text-tertiary">
             {story.text}
           </p>
         </div>
@@ -314,7 +356,7 @@ function MealComponentBlock({
       />
 
       {image && (
-        <div className="overflow-hidden rounded-xl border border-stone-100 bg-stone-100 dark:border-stone-800 dark:bg-stone-900">
+        <div className="overflow-hidden rounded-lg border border-secondary bg-secondary">
           <Image
             src={image}
             alt={title}
@@ -327,13 +369,13 @@ function MealComponentBlock({
 
       {/* Ingredients */}
       {ingredients.length > 0 && (
-        <div className="pt-3 border-t border-stone-100 dark:border-stone-800">
+        <div className="pt-3 border-t border-secondary">
           <div className="flex items-center justify-between mb-3">
-            <h4 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500">
+            <h4 className="text-xs tracking-widest uppercase text-quaternary">
               Ingredients
             </h4>
             {modified?.ingredients && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300">
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400">
                 modified
               </span>
             )}
@@ -344,21 +386,21 @@ function MealComponentBlock({
 
       {/* Method */}
       {method.length > 0 && (
-        <div className="pt-3 border-t border-stone-100 dark:border-stone-800">
+        <div className="pt-3 border-t border-secondary">
           <div className="flex items-center justify-between mb-3">
-            <h4 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500">
+            <h4 className="text-xs tracking-widest uppercase text-quaternary">
               Method
             </h4>
             {modified?.method && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300">
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400">
                 modified
               </span>
             )}
           </div>
           <ol className="space-y-4">
             {method.map((step, i) => (
-              <li key={i} className="flex gap-3 text-sm text-stone-600 dark:text-stone-400">
-                <span className="text-lg font-serif text-stone-300 dark:text-stone-600 leading-none shrink-0 pt-0.5">
+              <li key={i} className="flex gap-3 text-sm text-secondary">
+                <span className="text-lg font-serif text-quaternary leading-none shrink-0 pt-0.5">
                   {i + 1}
                 </span>
                 <span className="leading-relaxed">{step}</span>
@@ -370,13 +412,13 @@ function MealComponentBlock({
 
       {/* Tonight's changes — shown when session has partial adjustments */}
       {(ingredientAdjustments.length > 0 || methodAdjustments.length > 0) && (
-        <div className="pt-3 border-t border-amber-200/60 dark:border-amber-800/40">
+        <div className="pt-3 border-t border-amber-200/50 dark:border-amber-800/30">
           <h4 className="text-xs tracking-widest uppercase text-amber-600 dark:text-amber-400 mb-3">
             Tonight&apos;s changes
           </h4>
           {ingredientAdjustments.length > 0 && (
             <div className="mb-3">
-              <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-1.5">
+              <p className="text-[10px] tracking-widest uppercase text-quaternary mb-1.5">
                 Substitutions
               </p>
               <ul className="space-y-1">
@@ -393,7 +435,7 @@ function MealComponentBlock({
           )}
           {methodAdjustments.length > 0 && (
             <div>
-              <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-1.5">
+              <p className="text-[10px] tracking-widest uppercase text-quaternary mb-1.5">
                 Adjustments
               </p>
               <ul className="space-y-1.5">
@@ -453,7 +495,7 @@ function IngredientList({ ingredients }: { ingredients: SessionIngredient[] }) {
     <div className="space-y-4">
       {Array.from(groups.entries()).map(([group, ings]) => (
         <div key={group}>
-          <h4 className="text-xs font-medium text-stone-500 dark:text-stone-400 mb-1.5">
+          <h4 className="text-xs font-medium text-tertiary mb-1.5">
             {group}
           </h4>
           <ul className="space-y-1.5">
@@ -469,9 +511,9 @@ function IngredientList({ ingredients }: { ingredients: SessionIngredient[] }) {
 
 function IngredientRow({ ing }: { ing: SessionIngredient }) {
   return (
-    <li className="text-sm text-stone-600 dark:text-stone-400 flex justify-between gap-4">
+    <li className="text-sm text-secondary flex justify-between gap-4">
       <span>{ing.item}</span>
-      <span className="text-stone-400 dark:text-stone-500 tabular-nums shrink-0 text-right">
+      <span className="text-quaternary tabular-nums shrink-0 text-right">
         {formatIngredientAmount(ing)}
       </span>
     </li>
@@ -499,7 +541,7 @@ function EmptyState({ date }: { date: string }) {
       description={
         <>
           Assign a recipe in the{" "}
-          <Link href="/meals" className="underline hover:text-stone-600 dark:hover:text-stone-300">
+          <Link href="/meals" className="underline hover:text-secondary">
             meal planner
           </Link>{" "}
           and it will appear here automatically, or ask Nabu on Telegram
@@ -510,46 +552,45 @@ function EmptyState({ date }: { date: string }) {
   );
 }
 
-function PairingSuggestions({
-  pairing,
-  wineOverride,
-  date,
-}: {
-  pairing: { wine: string; nonAlcoholic: string };
-  wineOverride?: string | null;
-  date: string;
-}) {
-  const wine = wineOverride?.trim() || pairing.wine;
-  const wineEmoji = firstDrinkEmoji(wine) ?? "🍷";
-  const wineText = stripDrinkEmoji(wine);
-  const showNonAlcoholic = isMondayOrTuesday(date);
+// ---------------------------------------------------------------------------
+// Non-alcoholic pairing hint (Mon/Tue only)
+// ---------------------------------------------------------------------------
+
+function NonAlcoholicHint({ date, suggestion }: { date: string; suggestion: string }) {
+  const day = new Date(date + "T12:00:00").getDay(); // 0=Sun … 6=Sat
+  if (day !== 1 && day !== 2) return null; // Monday or Tuesday only
+  if (!suggestion) return null;
 
   return (
-    <NabuSurface className="overflow-hidden p-3.5 sm:p-4">
+    <NabuSurface tone="accent" className="p-5">
       <div className="flex items-start gap-3">
-        <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-violet-50 text-base dark:bg-violet-950/40">
-          {wineEmoji}
+        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-emerald-50/80 text-lg dark:bg-emerald-900/20">
+          🍋
         </div>
-        <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-            <NabuKicker>Wine</NabuKicker>
-            <span className="text-sm font-medium text-primary">Pairing</span>
-          </div>
-          <p className="mt-1 text-sm leading-snug text-stone-700 dark:text-stone-300">
-            {wineText}
+        <div className="min-w-0">
+          <NabuKicker>Non-alcoholic pairing</NabuKicker>
+          <p className="mt-1.5 text-sm leading-relaxed text-tertiary">
+            {suggestion}
           </p>
         </div>
       </div>
-      {showNonAlcoholic && (
-        <div className="mt-3 rounded-xl border border-stone-100 bg-stone-50/70 px-3 py-2 dark:border-stone-800 dark:bg-stone-900/40">
-          <p className="text-[10px] tracking-widest uppercase text-stone-400 dark:text-stone-500">
-            Non-alcoholic
-          </p>
-          <p className="mt-1 text-sm leading-snug text-stone-700 dark:text-stone-300">
-            {pairing.nonAlcoholic}
-          </p>
-        </div>
-      )}
+    </NabuSurface>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Session notes
+// ---------------------------------------------------------------------------
+
+function SessionNotes({ notes }: { notes: string }) {
+  if (!notes?.trim()) return null;
+
+  return (
+    <NabuSurface className="p-5">
+      <NabuKicker>Session notes</NabuKicker>
+      <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-secondary">
+        {notes}
+      </p>
     </NabuSurface>
   );
 }
@@ -560,17 +601,8 @@ function PairingSuggestions({
 
 const DRINK_EMOJIS = ["🍷", "🥂", "🍾", "🍺"];
 
-function firstDrinkEmoji(text: string): string | null {
-  return DRINK_EMOJIS.find((emoji) => text.includes(emoji)) ?? null;
-}
-
 function stripDrinkEmoji(text: string): string {
   return text.replace(new RegExp(DRINK_EMOJIS.join("|"), "g"), "").trim();
-}
-
-function isMondayOrTuesday(date: string): boolean {
-  const day = new Date(date + "T12:00:00").getDay();
-  return day === 1 || day === 2;
 }
 
 function formatDateDisplay(date: string): string {

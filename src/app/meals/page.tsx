@@ -446,8 +446,7 @@ function MealsPageInner() {
 
   function getWeekHref(year: number, week: number): string {
     const id = formatWeekId(year, week);
-    const cid = formatWeekId(currentWeek.year, currentWeek.week);
-    return id === cid ? "/meals" : `/meals?week=${id}`;
+    return `/meals?week=${id}`;
   }
 
   function navigateToWeek(year: number, week: number) {
@@ -923,13 +922,17 @@ function MealsPageInner() {
     if (!plan || plan.locked) return;
     const slot = plan.days[dayIndex];
     if (!slot?.recipeId) return;
+    const recipeIds = Array.from(new Set([
+      slot.recipeId,
+      ...(slot.meal?.sides ?? []).map((side) => side.id).filter(Boolean),
+    ]));
     setMarkingCooked(dayIndex);
     try {
       const res = await fetch("/api/cook-events", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          recipeId: slot.recipeId,
+          recipeIds,
           cookedOn: slot.date,
           source: "meal-planner",
         }),
@@ -1129,11 +1132,11 @@ function MealsPageInner() {
 
       <NabuMain>
         {/* Week navigation */}
-        <NabuSurface className="mb-8 p-3 sm:p-4">
+        <NabuSurface className="mb-6 p-3">
           <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 sm:flex sm:flex-wrap sm:gap-3">
             <Link
               href={prevWeekHref}
-              className="rounded-full p-2 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700 dark:text-stone-500 dark:hover:bg-stone-800 dark:hover:text-stone-200"
+              className="grid h-8 w-8 place-items-center rounded-lg text-quaternary transition-colors hover:bg-secondary_hover hover:text-secondary"
               aria-label="Previous week"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1141,12 +1144,12 @@ function MealsPageInner() {
               </svg>
             </Link>
             <div className="min-w-0 text-center sm:min-w-40">
-              <span className="block truncate text-sm font-medium text-stone-700 dark:text-stone-200">
+              <span className="block truncate text-sm font-medium text-primary">
                 {weekDates[0].dayOfWeek.slice(0, 3)} {formatDateShort(weekDates[0].date)}
                 {" \u2013 "}
                 {weekDates[6].dayOfWeek.slice(0, 3)} {formatDateShort(weekDates[6].date)}
               </span>
-              <span className="block truncate text-[11px] text-stone-400 dark:text-stone-500">
+              <span className="block truncate text-[11px] text-quaternary">
                 {weekId}
                 {isCurrentWeek && " \u00b7 This week"}
                 {isPastWeek && " \u00b7 Past"}
@@ -1154,7 +1157,7 @@ function MealsPageInner() {
             </div>
             <Link
               href={nextWeekHref}
-              className="rounded-full p-2 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700 dark:text-stone-500 dark:hover:bg-stone-800 dark:hover:text-stone-200"
+              className="grid h-8 w-8 place-items-center rounded-lg text-quaternary transition-colors hover:bg-secondary_hover hover:text-secondary"
               aria-label="Next week"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1164,7 +1167,7 @@ function MealsPageInner() {
             {!isCurrentWeek && (
               <button
                 onClick={() => navigateToWeek(currentWeek.year, currentWeek.week)}
-                className="col-span-3 rounded-full border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-500 transition-colors hover:border-stone-400 hover:text-stone-700 sm:col-span-1 dark:border-stone-700 dark:text-stone-400 dark:hover:border-stone-500 dark:hover:text-stone-200"
+                className="col-span-3 rounded-full border border-secondary px-3 py-1.5 text-xs font-medium text-tertiary transition-colors hover:border-primary hover:text-secondary sm:col-span-1"
               >
                 This week
               </button>
@@ -1173,7 +1176,7 @@ function MealsPageInner() {
         </NabuSurface>
 
         {/* Week context summary + toggle */}
-        <div className="mb-5">
+        <div className="mb-4">
           <div className="flex items-center gap-2 mb-2">
             <button
               onClick={() => {
@@ -1182,14 +1185,14 @@ function MealsPageInner() {
                 setShowContextEditor(!showContextEditor);
               }}
               disabled={planLoading}
-              className="text-sm text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 flex items-center gap-1.5 transition-colors disabled:opacity-50"
+              className="text-xs text-tertiary hover:text-secondary flex items-center gap-1.5 transition-colors disabled:opacity-50"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
               </svg>
               {showContextEditor ? "Hide notes" : "Week notes"}
               {hasContext && !showContextEditor && (
-                <span className="ml-1 px-1.5 py-0.5 text-xs rounded-full bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-300">
+                <span className="ml-1 px-1.5 py-0.5 text-xs rounded bg-secondary text-tertiary">
                   {contextItems.length + (plan?.notes?.trim() ? 1 : 0)}
                 </span>
               )}
@@ -1225,22 +1228,22 @@ function MealsPageInner() {
 
         {/* Calendar grid — 7-day week */}
         {planLoading ? (
-          <div className="grid grid-cols-1 gap-3 mb-10 min-[380px]:grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
+          <div className="grid grid-cols-1 gap-2 mb-8 min-[380px]:grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
             {weekDates.map((wd) => (
               <div
                 key={wd.date}
-                className="rounded-2xl bg-white dark:bg-stone-900 p-3.5 min-h-[120px] flex flex-col animate-pulse shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+                className="rounded-lg border border-secondary bg-primary p-3 min-h-[110px] flex flex-col animate-pulse"
               >
-                <div className="h-3 w-8 rounded bg-stone-200 dark:bg-stone-700 mb-1" />
-                <div className="h-2 w-10 rounded bg-stone-100 dark:bg-stone-800 mb-3" />
+                <div className="h-3 w-8 rounded bg-secondary mb-1" />
+                <div className="h-2 w-10 rounded bg-secondary mb-3" />
                 <div className="flex-1 flex items-center justify-center">
-                  <div className="h-3 w-16 rounded bg-stone-100 dark:bg-stone-800" />
+                  <div className="h-3 w-16 rounded bg-secondary" />
                 </div>
               </div>
             ))}
           </div>
         ) : (
-        <div className="grid grid-cols-1 gap-3 mb-10 min-[380px]:grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
+        <div className="grid grid-cols-1 gap-2 mb-8 min-[380px]:grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
           {weekDates.map((wd, i) => {
             const slot = plan?.days[i] ?? null;
             const hasBrunch = hasBrunchSlot(wd.dayOfWeek);
@@ -1263,22 +1266,22 @@ function MealsPageInner() {
               <div
                 key={wd.date}
                 onClick={() => cardHandlesMainClick && isClickable && handleSlotClick(i)}
-                className={`rounded-xl border p-3 min-h-[110px] flex flex-col transition-all ${
+                className={`rounded-lg border p-3 min-h-[110px] flex flex-col transition-all ${
                   isSkipped
-                    ? "bg-stone-100/80 dark:bg-stone-900/60 opacity-50"
+                    ? "border-secondary bg-secondary opacity-50"
                     : isSelectable
-                      ? `${cardHandlesMainClick ? "cursor-pointer " : ""}border-amber-400 dark:border-amber-600 bg-amber-50/50 dark:bg-amber-950/30 hover:bg-amber-50 dark:hover:bg-amber-900/30 shadow-sm`
+                      ? `${cardHandlesMainClick ? "cursor-pointer " : ""}border-amber-300/80 dark:border-amber-700/60 bg-amber-50/30 dark:bg-amber-950/15 hover:bg-amber-50/50 dark:hover:bg-amber-900/20`
                       : isCooked
-                        ? "bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/50 shadow-sm cursor-pointer"
+                        ? "bg-emerald-50/30 dark:bg-emerald-950/10 border-emerald-200/80 dark:border-emerald-800/30 cursor-pointer"
                         : isFilled
-                          ? "bg-white dark:bg-stone-900 border-stone-300 dark:border-stone-700 shadow-sm cursor-pointer"
-                          : "bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-800"
+                          ? "bg-primary border-primary shadow-xs dark:shadow-none cursor-pointer"
+                          : "bg-primary border-secondary"
                 }`}
               >
-                <div className={`text-[11px] font-medium ${isWeekend ? "text-stone-600 dark:text-stone-300" : "text-stone-400 dark:text-stone-500"}`}>
+                <div className={`text-[11px] font-medium ${isWeekend ? "text-secondary" : "text-quaternary"}`}>
                   {wd.dayOfWeek.slice(0, 3)}
                 </div>
-                <div className="text-[10px] text-stone-300 dark:text-stone-600 mb-1.5">
+                <div className="text-[10px] text-quaternary mb-1.5">
                   {formatDateShort(wd.date)}
                 </div>
                 {/* Context badges for this day */}
@@ -1294,25 +1297,25 @@ function MealsPageInner() {
                     ))}
                   </div>
                 )}
-                {/* History status badge */}
-                {hist?.status && (
+                {/* History status badge (with cookedSlots fallback) */}
+                {(hist?.status || isCooked) && (
                   <div className="mb-1">
-                    {hist.status === "cooked-as-planned" && (
+                    {(hist?.status === "cooked-as-planned" || (!hist?.status && isCooked)) && (
                       <NabuBadge tone="green" className="px-1.5 py-0.5 text-[9px]">Cooked</NabuBadge>
                     )}
-                    {hist.status === "cooked-other" && (
+                    {hist?.status === "cooked-other" && (
                       <NabuBadge tone="blue" className="px-1.5 py-0.5 text-[9px]" title={hist.cookedRecipeName ? `Cooked: ${hist.cookedRecipeName}` : undefined}>Swapped</NabuBadge>
                     )}
-                    {hist.status === "skipped" && !isSkipped && (
+                    {hist?.status === "skipped" && !isSkipped && (
                       <NabuBadge className="px-1.5 py-0.5 text-[9px]">Skipped</NabuBadge>
                     )}
-                    {hist.status === "planned" && (
+                    {hist?.status === "planned" && (
                       <NabuBadge tone="amber" className="px-1.5 py-0.5 text-[9px]">Planned</NabuBadge>
                     )}
                   </div>
                 )}
                 {!isSkipped && hasBrunch && (
-                  <div className="mb-2 rounded-lg border border-amber-100 bg-amber-50/40 p-2 dark:border-amber-900/50 dark:bg-amber-950/20">
+                  <div className="mb-2 rounded-md border border-secondary bg-secondary/60 p-2">
                     <button
                       type="button"
                       onClick={(e) => {
@@ -1321,15 +1324,15 @@ function MealsPageInner() {
                       }}
                       className={`block w-full text-left ${isSelectable || isBrunchFilled ? "cursor-pointer" : "cursor-default"}`}
                     >
-                      <span className="mb-0.5 block text-[9px] font-medium uppercase tracking-wider text-amber-500 dark:text-amber-400">
+                      <span className="mb-0.5 block text-[9px] font-medium uppercase tracking-wider text-quaternary">
                         Breakfast/brunch
                       </span>
                       {isBrunchFilled ? (
-                        <span className="block text-[12px] font-serif leading-snug text-stone-700 line-clamp-2 dark:text-stone-200">
+                        <span className="block text-[12px] font-serif leading-snug text-primary line-clamp-2">
                           {brunchSlot?.main.name}
                         </span>
                       ) : (
-                        <span className="block text-[11px] text-stone-400 dark:text-stone-500">
+                        <span className="block text-[11px] text-quaternary">
                           {isSelectable ? "Assign here" : "—"}
                         </span>
                       )}
@@ -1341,7 +1344,7 @@ function MealsPageInner() {
                             e.stopPropagation();
                             handleClearBrunchSlot(i);
                           }}
-                          className="text-[10px] text-stone-400 transition-colors hover:text-red-500"
+                          className="text-[10px] text-quaternary transition-colors hover:text-red-500"
                         >
                           clear
                         </button>
@@ -1351,7 +1354,7 @@ function MealsPageInner() {
                 )}
                 {isSkipped ? (
                   <div className="flex-1 flex items-center justify-center">
-                    <span className="text-[11px] text-stone-300 dark:text-stone-600 italic">
+                    <span className="text-[11px] text-quaternary italic">
                       Skipped
                     </span>
                   </div>
@@ -1361,18 +1364,13 @@ function MealsPageInner() {
                     className={`flex-1 flex flex-col justify-between ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
                   >
                     {hasBrunch && (
-                      <span className="mb-0.5 text-[9px] font-medium uppercase tracking-wider text-stone-400 dark:text-stone-500">
+                      <span className="mb-0.5 text-[9px] font-medium uppercase tracking-wider text-quaternary">
                         Main meal
                       </span>
                     )}
-                    <p className="text-[13px] font-serif text-stone-700 dark:text-stone-200 line-clamp-2 leading-snug">
+                    <p className="text-[13px] font-serif text-primary line-clamp-2 leading-snug">
                       {slot?.recipeName}
                     </p>
-                    {isCooked && (
-                      <span className="mt-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-                        Cooked
-                      </span>
-                    )}
                     {/* Accepted sides */}
                     {slot?.meal?.sides && slot.meal.sides.length > 0 && (
                       <div className="mt-1 space-y-0.5">
@@ -1400,7 +1398,7 @@ function MealsPageInner() {
                     {!isCooked && slot?.meal?.serveWith && slot.meal.serveWith.length > 0 && editingServeWith !== i && (
                       <button
                         onClick={(e) => { e.stopPropagation(); setEditingServeWith(i); }}
-                        className="mt-1 text-[10px] text-stone-400 dark:text-stone-500 text-left leading-tight hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+                        className="mt-1 text-[10px] text-quaternary text-left leading-tight hover:text-secondary transition-colors"
                       >
                         + {slot.meal.serveWith.join(", ")}
                       </button>
@@ -1408,7 +1406,7 @@ function MealsPageInner() {
                     {!isCooked && !slot?.meal?.serveWith?.length && editingServeWith !== i && (
                       <button
                         onClick={(e) => { e.stopPropagation(); setEditingServeWith(i); }}
-                        className="mt-1 text-[10px] text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors text-left"
+                        className="mt-1 text-[10px] text-quaternary hover:text-secondary transition-colors text-left"
                       >
                         + serve with...
                       </button>
@@ -1452,7 +1450,7 @@ function MealsPageInner() {
                             e.stopPropagation();
                             handleClearSlot(i);
                           }}
-                          className="text-[10px] text-stone-400 hover:text-red-500 transition-colors"
+                          className="text-[10px] text-quaternary hover:text-red-500 transition-colors"
                         >
                           clear
                         </button>
@@ -1465,11 +1463,11 @@ function MealsPageInner() {
                     className={`flex-1 flex flex-col items-center justify-center ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
                   >
                     {hasBrunch && (
-                      <span className="mb-1 text-[9px] font-medium uppercase tracking-wider text-stone-400 dark:text-stone-500">
+                      <span className="mb-1 text-[9px] font-medium uppercase tracking-wider text-quaternary">
                         Main meal
                       </span>
                     )}
-                    <span className="text-[11px] text-stone-300 dark:text-stone-600">
+                    <span className="text-[11px] text-quaternary">
                       {isSelectable ? (hasBrunch ? "Assign here" : "Tap to assign") : "\u2014"}
                     </span>
                   </div>
@@ -1498,7 +1496,7 @@ function MealsPageInner() {
         {/* Empty state — no plan and no candidates yet */}
         {!planLoading && !plan && !hasCandidates && (
           <NabuEmptyState
-            className="mb-8"
+            className="mb-6"
             title="No plan for this week yet"
             description={isPastWeek ? "No saved plan for this past week." : "Generate recipe-database ideas or research web ideas, then pick cards for the week above."}
             action={!isPastWeek ? (
@@ -1519,7 +1517,7 @@ function MealsPageInner() {
         )}
 
         {/* Action buttons — database ideas and web research are separate flows */}
-        <div className="flex flex-wrap items-center gap-3 mb-8">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
           {!hasCandidates && !planLoading && plan && !isPastWeek && (
             <>
               <NabuButton onClick={() => handleGenerate()} disabled={loading}>
@@ -1537,10 +1535,10 @@ function MealsPageInner() {
           {hasCandidates && (
             <>
               {ideaMetadata?.generatedAt && (
-                <span className="text-[11px] text-stone-400 dark:text-stone-500">
+                <span className="text-[11px] text-quaternary">
                   Recipe DB ideas generated {new Date(ideaMetadata.generatedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
                   {ideaMetadata.policyVersion && (
-                    <span className="ml-1 text-stone-300 dark:text-stone-600">
+                    <span className="ml-1 opacity-60">
                       ({ideaMetadata.policyVersion})
                     </span>
                   )}
@@ -1572,7 +1570,7 @@ function MealsPageInner() {
 
         {/* Generation error banner */}
         {generateError && (
-          <div className="mb-6 p-4 rounded-2xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800/50 flex items-center justify-between">
+          <div className="mb-5 p-3.5 rounded-lg bg-red-50 dark:bg-red-950/20 border border-red-200/80 dark:border-red-800/40 flex items-center justify-between">
             <span className="text-sm text-red-600 dark:text-red-400">{generateError}</span>
             <button
               onClick={() => setGenerateError(null)}
@@ -1585,14 +1583,14 @@ function MealsPageInner() {
 
         {/* Selected recipe indicator */}
         {selectedRecipe && (
-          <div className="mb-6 flex flex-col gap-3 rounded-2xl bg-amber-50/50 p-4 sm:flex-row sm:items-center sm:justify-between dark:bg-amber-950/20">
-            <span className="min-w-0 text-sm text-stone-600 dark:text-stone-300">
+          <div className="mb-5 flex flex-col gap-3 rounded-lg bg-amber-50/30 p-3.5 sm:flex-row sm:items-center sm:justify-between dark:bg-amber-950/10">
+            <span className="min-w-0 text-sm text-secondary">
               <span className="font-serif font-medium">{selectedRecipe.name}</span>
-              <span className="text-stone-400 dark:text-stone-500 sm:ml-2">&mdash; tap a day to assign; weekends offer brunch or main</span>
+              <span className="text-quaternary sm:ml-2">&mdash; tap a day to assign; weekends offer brunch or main</span>
             </span>
             <button
               onClick={() => setSelectedRecipe(null)}
-              className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
+              className="text-xs text-quaternary hover:text-secondary transition-colors"
             >
               Cancel
             </button>
@@ -1680,10 +1678,10 @@ function WeekContextEditor({
   }
 
   return (
-    <div className="min-w-0 rounded-2xl bg-white p-4 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-5 dark:bg-stone-900 space-y-5">
+    <div className="min-w-0 rounded-lg border border-primary bg-primary p-4 shadow-xs sm:p-5 dark:shadow-none space-y-5">
       {/* Free-text notes */}
       <div>
-        <label className="text-[11px] text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-1.5">
+        <label className="text-[11px] text-quaternary uppercase tracking-widest block mb-1.5">
           Week Notes
         </label>
         <textarea
@@ -1699,7 +1697,7 @@ function WeekContextEditor({
       {/* Existing context items */}
       {(plan.context || []).length > 0 && (
         <div>
-          <label className="text-[11px] text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-2">
+          <label className="text-[11px] text-quaternary uppercase tracking-widest block mb-2">
             Context Items
           </label>
           <div className="space-y-2">
@@ -1718,18 +1716,18 @@ function WeekContextEditor({
                     {formatDateShort(ctx.date)}
                   </span>
                 )}
-                <span className="text-stone-700 dark:text-stone-300 flex-1 min-w-0 truncate">
+                <span className="text-secondary flex-1 min-w-0 truncate">
                   {ctx.note}
                 </span>
                 {ctx.effect && (
-                  <span className="text-[10px] text-stone-400 shrink-0">
+                  <span className="text-[10px] text-quaternary shrink-0">
                     {ctx.effect}
                   </span>
                 )}
                 {!locked && (
                   <button
                     onClick={() => onRemoveContext(ctx.id)}
-                    className="shrink-0 text-xs text-stone-400 hover:text-red-500 transition-colors"
+                    className="shrink-0 text-xs text-quaternary hover:text-red-500 transition-colors"
                   >
                     &times;
                   </button>
@@ -1743,7 +1741,7 @@ function WeekContextEditor({
       {/* Add new context item */}
       {!locked && (
         <div>
-          <label className="text-[11px] text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-2">
+          <label className="text-[11px] text-quaternary uppercase tracking-widest block mb-2">
             Add Context
           </label>
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-[auto_auto_minmax(0,1fr)_auto]">
@@ -1864,18 +1862,18 @@ function RecipeCard({
 
   return (
     <div
-      className={`group rounded-2xl overflow-hidden transition-all ${
+      className={`group rounded-lg border overflow-hidden transition-all ${
         isAssigned
-          ? "opacity-40 grayscale pointer-events-none bg-white dark:bg-stone-900 shadow-sm"
+          ? "opacity-40 grayscale pointer-events-none border-secondary bg-primary"
           : isSelected
-            ? "ring-2 ring-amber-500/40 shadow-md"
-            : "bg-white dark:bg-stone-900 shadow-sm hover:shadow-md"
+            ? "ring-2 ring-amber-400/30 border-primary bg-primary shadow-xs"
+            : "border-primary bg-primary shadow-xs hover:shadow-md dark:shadow-none dark:hover:shadow-none"
       }`}
     >
       {/* Image */}
       {recipe.image ? (
         <div
-          className="relative aspect-[4/3] bg-stone-100 dark:bg-stone-800 overflow-hidden cursor-pointer"
+          className="relative aspect-[4/3] bg-secondary overflow-hidden cursor-pointer"
           onClick={(e) => { e.stopPropagation(); onQuickView(); }}
         >
           <Image
@@ -1887,7 +1885,7 @@ function RecipeCard({
           />
         </div>
       ) : (
-        <div className="aspect-[4/3] bg-gradient-to-br from-stone-100 to-stone-150 dark:from-stone-800 dark:to-stone-900 flex items-center justify-center">
+        <div className="aspect-[4/3] bg-secondary flex items-center justify-center">
           <span className="text-4xl opacity-10">&middot;</span>
         </div>
       )}
@@ -1895,24 +1893,24 @@ function RecipeCard({
       <div className="p-4 pb-3.5">
         {/* Name */}
         <h3
-          className="font-serif text-[15px] text-stone-700 dark:text-stone-200 leading-snug line-clamp-2 cursor-pointer hover:text-stone-500 dark:hover:text-stone-400 transition-colors"
+          className="font-serif text-[15px] text-primary leading-snug line-clamp-2 cursor-pointer hover:text-tertiary transition-colors"
           onClick={(e) => { e.stopPropagation(); onQuickView(); }}
         >
           {recipe.name}
         </h3>
         <div className="mt-1 flex items-center gap-2">
-          <p className="text-[11px] text-stone-400 dark:text-stone-500 truncate italic">
+          <p className="text-[11px] text-quaternary truncate italic">
             {isWebInspiration ? recipe.source?.publication : recipe.source?.cookbook}
           </p>
           {isWebInspiration && (
-            <span className="shrink-0 text-[9px] uppercase tracking-[0.14em] px-1.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-300">
+            <span className="shrink-0 text-[9px] uppercase tracking-[0.14em] px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400">
               web
             </span>
           )}
         </div>
         <div className="flex flex-wrap items-center gap-1 mt-2">
           {formatPlannerTime(recipe.time?.total) && (
-            <span className="inline-flex items-center gap-0.5 text-[10px] px-2 py-0.5 rounded-full bg-stone-50 dark:bg-stone-800 text-stone-400 dark:text-stone-500">
+            <span className="inline-flex items-center gap-0.5 text-[10px] px-1.5 py-0.5 rounded bg-secondary text-quaternary">
               <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -1935,25 +1933,25 @@ function RecipeCard({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100 dark:border-stone-800">
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-secondary">
           <div className="flex items-center gap-1">
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onQuickView();
               }}
-              className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+              className="text-xs text-quaternary hover:text-secondary transition-colors"
             >
               View recipe
             </button>
-            <span className="text-stone-200 dark:text-stone-700 mx-1">|</span>
+            <span className="text-quaternary mx-1">|</span>
             <button
               onClick={(e) => { e.stopPropagation(); onFeedback("up"); }}
               title={feedback === "up" ? "Remove thumbs up" : "Thumbs up — welcome back"}
               className={`p-1 rounded transition-colors ${
                 feedback === "up"
                   ? "text-emerald-500"
-                  : "text-stone-300 dark:text-stone-600 hover:text-emerald-400"
+                  : "text-quaternary hover:text-emerald-400"
               }`}
             >
               <svg className="w-3.5 h-3.5" fill={feedback === "up" ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
@@ -1966,7 +1964,7 @@ function RecipeCard({
               className={`p-1 rounded transition-colors ${
                 feedback === "down"
                   ? "text-red-400"
-                  : "text-stone-300 dark:text-stone-600 hover:text-red-400"
+                  : "text-quaternary hover:text-red-400"
               }`}
             >
               <svg className="w-3.5 h-3.5" fill={feedback === "down" ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
@@ -1979,10 +1977,10 @@ function RecipeCard({
             disabled={isAssigned}
             className={`text-[11px] px-3 py-1.5 rounded-full font-medium transition-colors ${
               isAssigned
-                ? "text-stone-300 dark:text-stone-600 cursor-not-allowed"
+                ? "text-quaternary cursor-not-allowed"
                 : isSelected
-                  ? "bg-stone-700 dark:bg-stone-200 text-white dark:text-stone-900"
-                  : "bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700"
+                  ? "bg-primary_hover text-primary"
+                  : "bg-secondary text-tertiary hover:bg-secondary_hover"
             }`}
           >
             {isAssigned ? "Assigned" : isSelected ? "Selected" : "Add to plan"}
@@ -2040,21 +2038,21 @@ function ComplementPicker({
   }
 
   return (
-    <div className="rounded-xl border border-violet-200 dark:border-violet-800/50 bg-white dark:bg-stone-900 p-5 mb-8">
+    <div className="rounded-lg border border-violet-200/80 dark:border-violet-800/40 bg-primary p-5 mb-6">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-sm font-medium text-stone-800 dark:text-stone-100">
+          <h3 className="text-sm font-medium text-primary">
             Turn into meal — {slot.dayOfWeek} {slot.recipeName && (
-              <span className="font-serif text-stone-500 dark:text-stone-400">({slot.recipeName})</span>
+              <span className="font-serif text-tertiary">({slot.recipeName})</span>
             )}
           </h3>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-0.5">
+          <p className="text-xs text-quaternary mt-0.5">
             Pick 1 starter + 1 side to round out the plate.
           </p>
         </div>
         <button
           onClick={onClose}
-          className="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
+          className="text-xs text-quaternary hover:text-secondary transition-colors"
         >
           Close
         </button>
@@ -2102,10 +2100,10 @@ function ComplementPicker({
                   return (
                     <div
                       key={r.id}
-                      className={`flex items-center gap-3 rounded-lg border-2 p-3 transition-all ${
+                      className={`flex items-center gap-3 rounded-lg border p-3 transition-all ${
                         isAccepted
-                          ? "border-violet-400 dark:border-violet-600 bg-violet-50/50 dark:bg-violet-950/20"
-                          : "border-violet-200 dark:border-violet-800 bg-violet-50/30 dark:bg-violet-950/10"
+                          ? "border-violet-300 dark:border-violet-700 bg-violet-50/40 dark:bg-violet-950/15"
+                          : "border-violet-200/80 dark:border-violet-800/60 bg-violet-50/20 dark:bg-violet-950/10"
                       }`}
                     >
                       {r.image && (
@@ -2165,7 +2163,7 @@ function ComplementPicker({
           {/* Alternatives — swappable options */}
           {hasAlternatives && (
             <div>
-              <h4 className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-2">
+              <h4 className="text-xs tracking-widest uppercase text-quaternary mb-2">
                 Or swap in...
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -2179,8 +2177,8 @@ function ComplementPicker({
                       key={r.id}
                       className={`flex items-center gap-2.5 rounded-lg border p-2 transition-all ${
                         isAccepted
-                          ? "border-violet-300 dark:border-violet-700 bg-violet-50/50 dark:bg-violet-950/20"
-                          : "border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700"
+                          ? "border-violet-300 dark:border-violet-700 bg-violet-50/40 dark:bg-violet-950/15"
+                          : "border-secondary hover:border-primary"
                       }`}
                     >
                       {r.image && (
@@ -2261,7 +2259,7 @@ function QuickViewModal({
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-[#f8f6f3] dark:bg-stone-900 rounded-t-2xl sm:rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-primary rounded-t-lg sm:rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {loading ? (
           <div className="p-12 text-center">
             <p className="text-sm text-stone-400 font-serif italic">Loading recipe...</p>
@@ -2275,7 +2273,7 @@ function QuickViewModal({
                   src={recipe.image}
                   alt={recipe.name}
                   fill
-                  className="object-cover rounded-t-2xl"
+                  className="object-cover rounded-t-lg sm:rounded-t-lg"
                   sizes="(max-width: 672px) 100vw, 672px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
@@ -2300,16 +2298,16 @@ function QuickViewModal({
             {!recipe.image && (
               <div className="px-6 pt-6 pb-4 flex items-start justify-between">
                 <div>
-                  <p className="text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-1">
+                  <p className="text-xs tracking-widest uppercase text-quaternary mb-1">
                     {recipe.source?.cookbook}
                   </p>
-                  <h2 className="text-xl font-serif text-stone-800 dark:text-stone-100">
+                  <h2 className="text-xl font-serif text-primary">
                     {recipe.name}
                   </h2>
                 </div>
                 <button
                   onClick={onClose}
-                  className="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
+                  className="text-quaternary hover:text-secondary transition-colors"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -2320,9 +2318,9 @@ function QuickViewModal({
 
             <div className="px-6 py-6 space-y-6">
               {/* Meta line */}
-              <div className="flex flex-wrap items-center gap-3 text-xs text-stone-400 dark:text-stone-500">
+              <div className="flex flex-wrap items-center gap-3 text-xs text-quaternary">
                 {recipe.category && (
-                  <span className="text-stone-500 dark:text-stone-400">{recipe.category}</span>
+                  <span className="text-tertiary">{recipe.category}</span>
                 )}
                 {formatPlannerTime(recipe.time?.total) && (
                   <span className="flex items-center gap-1">
@@ -2339,19 +2337,19 @@ function QuickViewModal({
 
               {/* Introduction */}
               {recipe.introduction && (
-                <p className="text-stone-500 dark:text-stone-400 font-serif text-sm leading-relaxed italic">
+                <p className="text-tertiary font-serif text-sm leading-relaxed italic">
                   {recipe.introduction}
                 </p>
               )}
 
               {/* Divider */}
               <div className="flex justify-center">
-                <div className="w-12 h-px bg-stone-200 dark:bg-stone-800" />
+                <div className="w-12 h-px bg-secondary" />
               </div>
 
               {/* Ingredients */}
               <div>
-                <h3 className="text-[11px] tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-3">
+                <h3 className="text-[11px] tracking-widest uppercase text-quaternary mb-3">
                   Ingredients
                 </h3>
                 <ul className="space-y-1.5">
@@ -2363,10 +2361,10 @@ function QuickViewModal({
                     return (
                       <li
                         key={idx}
-                        className="text-sm text-stone-600 dark:text-stone-400 flex justify-between"
+                        className="text-sm text-secondary flex justify-between"
                       >
                         <span>{norm.item}</span>
-                        <span className="text-stone-400 dark:text-stone-500 ml-3 tabular-nums shrink-0">
+                        <span className="text-quaternary ml-3 tabular-nums shrink-0">
                           {norm.amount}
                         </span>
                       </li>
@@ -2377,16 +2375,16 @@ function QuickViewModal({
 
               {/* Method (preview — first 4 steps) */}
               <div>
-                <h3 className="text-[11px] tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-3">
+                <h3 className="text-[11px] tracking-widest uppercase text-quaternary mb-3">
                   Method
                 </h3>
                 <ol className="space-y-3">
                   {recipe.method.slice(0, 4).map((step, idx) => (
                     <li
                       key={idx}
-                      className="text-sm text-stone-600 dark:text-stone-400 flex gap-3"
+                      className="text-sm text-secondary flex gap-3"
                     >
-                      <span className="text-lg font-serif text-stone-300 dark:text-stone-600 leading-none shrink-0 pt-0.5">
+                      <span className="text-lg font-serif text-quaternary leading-none shrink-0 pt-0.5">
                         {idx + 1}
                       </span>
                       <span className="leading-relaxed line-clamp-3">{step}</span>
@@ -2402,8 +2400,8 @@ function QuickViewModal({
 
               {/* Tips */}
               {recipe.tips && (
-                <div className="text-sm text-stone-500 dark:text-stone-400 bg-stone-100/60 dark:bg-stone-800/40 rounded-xl px-5 py-4">
-                  <span className="text-[11px] tracking-widest uppercase text-stone-400 dark:text-stone-500">Tip</span>
+                <div className="text-sm text-tertiary bg-secondary rounded-lg px-4 py-3.5">
+                  <span className="text-[11px] tracking-widest uppercase text-quaternary">Tip</span>
                   <p className="mt-1.5 leading-relaxed">{recipe.tips}</p>
                 </div>
               )}
@@ -2412,7 +2410,7 @@ function QuickViewModal({
               <div className="pt-2 pb-1 text-center">
                 <Link
                   href={`/recipes/${recipe.id}?from=${encodeURIComponent('/meals')}`}
-                  className="text-sm text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200 underline underline-offset-2 transition-colors"
+                  className="text-sm text-tertiary hover:text-primary underline underline-offset-2 transition-colors"
                 >
                   View full recipe
                 </Link>

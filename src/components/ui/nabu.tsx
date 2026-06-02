@@ -24,10 +24,10 @@ const badgeToneColor: Record<BadgeTone, UntitledBadgeColor> = {
 };
 
 const surfaceToneClass: Record<SurfaceTone, string> = {
-  default: "border-primary bg-primary shadow-sm dark:shadow-none",
-  muted: "border-secondary bg-secondary shadow-xs dark:shadow-none",
+  default: "border-primary bg-primary shadow-xs dark:shadow-none",
+  muted: "border-secondary bg-secondary dark:shadow-none",
   accent:
-    "border-utility-orange-200 bg-utility-orange-50/70 shadow-sm dark:border-utility-orange-700/60 dark:bg-utility-orange-950/20 dark:shadow-none",
+    "border-utility-orange-200 bg-utility-orange-50/60 dark:border-utility-orange-700/60 dark:bg-utility-orange-950/20 dark:shadow-none",
 };
 
 export function cn(
@@ -73,19 +73,19 @@ export function NabuHeader({
   maxWidth?: MaxWidth;
 }) {
   return (
-    <header className="border-b border-secondary bg-primary/75 backdrop-blur-xl">
+    <header className="border-b border-secondary bg-primary/80 backdrop-blur-xl">
       <div
         className={cn(
           maxWidthClass[maxWidth],
-          "mx-auto flex w-full min-w-0 flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-5",
+          "mx-auto flex w-full min-w-0 flex-wrap items-center justify-between gap-3 px-4 py-3.5 sm:px-6",
         )}
       >
-        <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+        <div className="flex min-w-0 flex-1 items-center gap-3">
           {backHref ? <NabuBackLink href={backHref} /> : null}
           {!backHref && icon ? <NabuIconFrame>{icon}</NabuIconFrame> : null}
           <div className="min-w-0">
             {eyebrow ? <NabuKicker>{eyebrow}</NabuKicker> : null}
-            <h1 className="truncate text-xl font-semibold tracking-[-0.02em] text-primary">
+            <h1 className="truncate text-lg font-semibold tracking-[-0.02em] text-primary sm:text-xl">
               {title}
             </h1>
             {subtitle ? (
@@ -106,7 +106,7 @@ export function NabuBackLink({ href }: { href: string }) {
     <Link
       href={href}
       aria-label="Back"
-      className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-primary bg-primary text-quaternary shadow-xs transition-colors hover:text-secondary"
+      className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-primary bg-primary text-quaternary shadow-xs transition-colors hover:text-secondary"
     >
       <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 19l-7-7 7-7" />
@@ -125,7 +125,7 @@ export function NabuMain({
   className?: string;
 }) {
   return (
-    <main className={cn(maxWidthClass[maxWidth], "mx-auto w-full min-w-0 px-4 py-6 sm:px-5 sm:py-8", className)}>
+    <main className={cn(maxWidthClass[maxWidth], "mx-auto w-full min-w-0 px-4 py-5 sm:px-6 sm:py-7", className)}>
       {children}
     </main>
   );
@@ -146,7 +146,7 @@ export function NabuSurface({
   return (
     <Component
       className={cn(
-        "min-w-0 max-w-full overflow-hidden rounded-2xl border backdrop-blur-sm",
+        "min-w-0 max-w-full overflow-hidden rounded-lg border",
         surfaceToneClass[tone],
         className,
       )}
@@ -166,8 +166,8 @@ export function NabuCard({
   href?: string;
 }) {
   const base = cn(
-    "group min-w-0 max-w-full overflow-hidden rounded-2xl border border-primary bg-primary p-4 shadow-sm transition-all sm:p-5 dark:shadow-none",
-    href && "hover:-translate-y-0.5 hover:border-secondary_hover hover:bg-primary_hover hover:shadow-lg dark:hover:shadow-none",
+    "group min-w-0 max-w-full overflow-hidden rounded-lg border border-primary bg-primary p-4 shadow-xs transition-all dark:shadow-none",
+    href && "hover:-translate-y-0.5 hover:border-secondary_hover hover:bg-primary_hover hover:shadow-md dark:hover:shadow-none",
     className,
   );
 
@@ -196,16 +196,16 @@ export function NabuSectionHeader({
   className?: string;
 }) {
   return (
-    <div className={cn("flex min-w-0 flex-col gap-3 sm:flex-row sm:items-end sm:justify-between", className)}>
+    <div className={cn("flex min-w-0 flex-col gap-2 sm:flex-row sm:items-end sm:justify-between", className)}>
       <div className="min-w-0">
         {eyebrow ? <NabuKicker>{eyebrow}</NabuKicker> : null}
         {title ? (
-          <h2 className="mt-1 text-lg font-semibold tracking-[-0.02em] text-primary">
+          <h2 className="mt-0.5 text-base font-semibold tracking-[-0.02em] text-primary sm:text-lg">
             {title}
           </h2>
         ) : null}
         {description ? (
-          <p className="mt-1 max-w-2xl text-sm leading-6 text-tertiary">
+          <p className="mt-0.5 max-w-2xl text-sm leading-relaxed text-tertiary">
             {description}
           </p>
         ) : null}
@@ -217,7 +217,7 @@ export function NabuSectionHeader({
 
 export function NabuKicker({ children }: { children: ReactNode }) {
   return (
-    <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-quaternary">
+    <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
       {children}
     </p>
   );
@@ -233,7 +233,7 @@ export function NabuIconFrame({
   return (
     <div
       className={cn(
-        "grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-primary bg-secondary text-xl shadow-xs",
+        "grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-primary bg-secondary text-lg shadow-xs",
         className,
       )}
     >
@@ -335,17 +335,17 @@ export function NabuEmptyState({
   className?: string;
 }) {
   return (
-    <NabuSurface tone="muted" className={cn("px-6 py-14 text-center", className)}>
-      {icon ? <div className="mb-4 text-5xl opacity-35">{icon}</div> : null}
-      <h2 className="text-lg font-semibold tracking-[-0.02em] text-primary">
+    <NabuSurface tone="muted" className={cn("px-6 py-12 text-center", className)}>
+      {icon ? <div className="mb-3 text-4xl opacity-30">{icon}</div> : null}
+      <h2 className="text-base font-semibold tracking-[-0.02em] text-primary">
         {title}
       </h2>
       {description ? (
-        <div className="mx-auto mt-2 max-w-sm text-sm leading-6 text-quaternary">
+        <div className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-quaternary">
           {description}
         </div>
       ) : null}
-      {action ? <div className="mt-6">{action}</div> : null}
+      {action ? <div className="mt-5">{action}</div> : null}
     </NabuSurface>
   );
 }
@@ -360,11 +360,11 @@ export function NabuStat({
   tone?: BadgeTone;
 }) {
   return (
-    <div className="min-w-0 rounded-xl border border-secondary bg-secondary p-3">
-      <p className="text-[10px] uppercase tracking-[0.16em] text-quaternary">
+    <div className="min-w-0 rounded-lg border border-secondary bg-secondary p-2.5">
+      <p className="text-[10px] uppercase tracking-[0.14em] text-quaternary">
         {label}
       </p>
-      <div className="mt-1 flex items-center gap-2 text-sm font-medium text-primary">
+      <div className="mt-0.5 flex items-center gap-2 text-sm font-medium text-primary">
         <span className="min-w-0 truncate">{value}</span>
         <span className={cn("h-1.5 w-1.5 shrink-0 rounded-full", badgeDotClass(tone))} />
       </div>

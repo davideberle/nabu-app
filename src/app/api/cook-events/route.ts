@@ -3,8 +3,7 @@ import type { NextRequest } from "next/server";
 import {
   getCookEventsForRecipe,
   getRecentCookEvents,
-  createCookEvent,
-  getCookEventsForDateRange,
+  createCookEventIfMissing,
 } from "@/lib/db";
 import { loadMealPlan } from "@/lib/meals-persistence";
 import { getISOWeek, formatWeekId } from "@/lib/meals";
@@ -25,20 +24,35 @@ export async function GET(request: NextRequest) {
 
 /**
  * POST /api/cook-events
- * Body: { recipeId, cookedOn, note?, source? }
+ * Body: { recipeId, cookedOn, note?, source? } or { recipeIds: [], cookedOn, note?, source? }
  */
 export async function POST(request: NextRequest) {
-  const body = await request.json();
+  const body = (await request.json()) as {
+    recipeId?: unknown;
+    recipeIds?: unknown;
+    cookedOn?: unknown;
+    note?: unknown;
+    source?: unknown;
+  };
+  const rawRecipeIds = Array.isArray(body.recipeIds)
+    ? body.recipeIds
+    : body.recipeId
+      ? [body.recipeId]
+      : [];
+  const recipeIds: string[] = [
+    ...new Set(rawRecipeIds.filter((id: unknown): id is string => typeof id === "string" && id.trim().length > 0)),
+  ];
 
-  if (!body.recipeId || !body.cookedOn) {
+  if (recipeIds.length === 0 || typeof body.cookedOn !== "string") {
     return NextResponse.json(
-      { error: "recipeId and cookedOn are required" },
+      { error: "recipeId or recipeIds and cookedOn are required" },
       { status: 400 }
     );
   }
+  const cookedOn = body.cookedOn;
 
   // Validate date format
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(body.cookedOn)) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(cookedOn)) {
     return NextResponse.json(
       { error: "cookedOn must be YYYY-MM-DD" },
       { status: 400 }
@@ -46,7 +60,7 @@ export async function POST(request: NextRequest) {
   }
 
   // Enforce locked weekly plans server-side
-  const cookedDate = new Date(body.cookedOn + "T12:00:00Z");
+  const cookedDate = new Date(cookedOn + "T12:00:00Z");
   const { year, week } = getISOWeek(cookedDate);
   const weekPlan = await loadMealPlan(formatWeekId(year, week));
   if (weekPlan?.locked) {
@@ -56,22 +70,32 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Idempotency: if an event with the same recipe/date/source already exists, return it
-  const effectiveSource = body.source || "manual";
-  const existing = await getCookEventsForDateRange(body.cookedOn, body.cookedOn);
-  const duplicate = existing.find(
-    (e) => e.recipeId === body.recipeId && e.source === effectiveSource,
+  // Idempotency: if an event with the same recipe/date/source already exists, return it.
+  const effectiveSource = typeof body.source === "string" && body.source ? body.source : "manual";
+  const note = typeof body.note === "string" ? body.note : undefined;
+  const results = await Promise.all(
+    recipeIds.map((recipeId) =>
+      createCookEventIfMissing({
+        recipeId,
+        cookedOn,
+        note,
+        source: effectiveSource,
+      }),
+    ),
   );
-  if (duplicate) {
-    return NextResponse.json(duplicate, { status: 200 });
+  const events = results.map((result) => result.event);
+  const createdCount = results.filter((result) => result.created).length;
+
+  if (!Array.isArray(body.recipeIds) && typeof body.recipeId === "string") {
+    return NextResponse.json(events[0], { status: createdCount > 0 ? 201 : 200 });
   }
 
-  const event = await createCookEvent({
-    recipeId: body.recipeId,
-    cookedOn: body.cookedOn,
-    note: body.note,
-    source: body.source,
-  });
-
-  return NextResponse.json(event, { status: 201 });
+  return NextResponse.json(
+    {
+      events,
+      created: createdCount,
+      existing: events.length - createdCount,
+    },
+    { status: createdCount > 0 ? 201 : 200 },
+  );
 }

@@ -2,7 +2,7 @@
 // This module owns the runtime shape for live cooking sessions.
 // Domain logic (anchor policy, adaptation lifecycle) lives in projects/live-cooking/.
 
-import { getDb } from "./db";
+import { createCookEventIfMissing, getDb } from "./db";
 import { loadMealPlan } from "./meals-persistence";
 import { getRecipe } from "./recipes";
 import { getISOWeek } from "./meals";
@@ -493,28 +493,22 @@ export async function patchCookingSession(
 }
 
 async function recordCookEventForSession(session: CookingSession): Promise<void> {
-  const recipeId = session.anchor.recipeId;
-  if (!recipeId) return;
+  const recipeIds = new Set<string>();
+  if (session.anchor.recipeId) recipeIds.add(session.anchor.recipeId);
+  for (const related of session.relatedRecipes) {
+    if (related.recipeId) recipeIds.add(related.recipeId);
+  }
+  if (recipeIds.size === 0) return;
 
-  const client = await getDb();
-  const existing = await client.execute({
-    sql: "SELECT id FROM cook_events WHERE recipe_id = ? AND cooked_on = ? LIMIT 1",
-    args: [recipeId, session.date],
-  });
-  if (existing.rows.length > 0) return;
-
-  await client.execute({
-    sql: `INSERT INTO cook_events (id, recipe_id, cooked_on, note, source, created_at)
-          VALUES (?, ?, ?, ?, ?, ?)`,
-    args: [
-      crypto.randomUUID(),
-      recipeId,
-      session.date,
-      null,
-      "live-cooking",
-      new Date().toISOString(),
-    ],
-  });
+  await Promise.all(
+    [...recipeIds].map((recipeId) =>
+      createCookEventIfMissing({
+        recipeId,
+        cookedOn: session.date,
+        source: "live-cooking",
+      }),
+    ),
+  );
 }
 
 // ---------------------------------------------------------------------------

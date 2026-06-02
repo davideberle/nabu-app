@@ -701,6 +701,22 @@ export async function deleteMyRecipe(id: string): Promise<boolean> {
 }
 
 
+function collectMealSlotRecipeIds(slot: unknown, ids: Set<string>) {
+  if (!slot || typeof slot !== "object") return;
+  const record = slot as {
+    main?: { id?: unknown };
+    sides?: { id?: unknown }[];
+  };
+  if (typeof record.main?.id === "string" && record.main.id) {
+    ids.add(record.main.id);
+  }
+  if (Array.isArray(record.sides)) {
+    for (const side of record.sides) {
+      if (typeof side?.id === "string" && side.id) ids.add(side.id);
+    }
+  }
+}
+
 function collectMealPlanRecipeIds(plan: { days?: unknown }): string[] {
   const ids = new Set<string>();
   const days = Array.isArray(plan.days) ? plan.days : [];
@@ -710,19 +726,13 @@ function collectMealPlanRecipeIds(plan: { days?: unknown }): string[] {
     if (typeof record.recipeId === "string" && record.recipeId) {
       ids.add(record.recipeId);
     }
-    const meal = record.meal as { main?: { id?: unknown } } | null | undefined;
-    if (typeof meal?.main?.id === "string" && meal.main.id) {
-      ids.add(meal.main.id);
-    }
-    const brunch = record.brunch as { main?: { id?: unknown } } | null | undefined;
-    if (typeof brunch?.main?.id === "string" && brunch.main.id) {
-      ids.add(brunch.main.id);
-    }
+    collectMealSlotRecipeIds(record.meal, ids);
+    collectMealSlotRecipeIds(record.brunch, ids);
   }
   return [...ids];
 }
 
-/** Get main/brunch recipe IDs planned in the supplied ISO weeks. */
+/** Get meal recipe IDs planned in the supplied ISO weeks, including sides/brunch. */
 export async function getPlannedRecipeIdsForWeeks(
   weeks: string[]
 ): Promise<Set<string>> {
@@ -869,6 +879,35 @@ export async function createCookEvent(event: {
     ...(event.note ? { note: event.note } : {}),
     source: event.source || "manual",
     createdAt,
+  };
+}
+
+export async function createCookEventIfMissing(event: {
+  recipeId: string;
+  cookedOn: string;
+  note?: string;
+  source?: string;
+}): Promise<{ event: CookEvent; created: boolean }> {
+  const source = event.source || "manual";
+  const client = await getDb();
+  const existing = await client.execute({
+    sql: `SELECT * FROM cook_events
+          WHERE recipe_id = ? AND cooked_on = ? AND COALESCE(source, 'manual') = ?
+          ORDER BY created_at DESC
+          LIMIT 1`,
+    args: [event.recipeId, event.cookedOn, source],
+  });
+
+  if (existing.rows.length > 0) {
+    return {
+      event: rowToCookEvent(existing.rows[0] as Record<string, unknown>),
+      created: false,
+    };
+  }
+
+  return {
+    event: await createCookEvent({ ...event, source }),
+    created: true,
   };
 }
 

@@ -114,7 +114,7 @@ export default async function Home() {
           >
             <button
               type="submit"
-              className="text-xs font-medium text-stone-400 transition-colors hover:text-stone-700 dark:text-stone-500 dark:hover:text-stone-200"
+              className="text-xs font-medium text-quaternary transition-colors hover:text-secondary"
             >
               Sign out
             </button>
@@ -122,23 +122,28 @@ export default async function Home() {
         }
       />
 
-      <NabuMain className="pb-24">
-        <section className="mb-8 grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
-          <NabuSurface tone="accent" className="p-4 sm:p-6">
-            <NabuSectionHeader
-              eyebrow="Today"
-              title="No focus set"
-              description="Tap a recipe, meal, or project when something needs to become the main thread."
-              action={<NabuIconFrame className="h-11 w-11 border-amber-100 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-900/20">🎯</NabuIconFrame>}
-            />
+      <NabuMain className="space-y-6 pb-20">
+        {/* Today / Now */}
+        <section className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.6fr]">
+          <NabuSurface tone="accent" className="p-4 sm:p-5">
+            <div className="flex min-w-0 items-start justify-between gap-3">
+              <div className="min-w-0">
+                <NabuSectionHeader
+                  eyebrow="Today"
+                  title="No focus set"
+                  description="Tap a recipe, meal, or project when something needs to become the main thread."
+                />
+              </div>
+              <NabuIconFrame className="h-9 w-9 border-amber-200/60 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-900/20">🎯</NabuIconFrame>
+            </div>
           </NabuSurface>
 
-          <NabuSurface className="p-4 sm:p-5">
+          <NabuSurface tone="muted" className="p-4">
             <NabuSectionHeader eyebrow="Systems" />
-            <div className="mt-4 space-y-3 overflow-hidden">
+            <div className="mt-3 space-y-2">
               {["Voice Relay", "Gateway", "Music Assistant"].map((item) => (
-                <div key={item} className="flex min-w-0 flex-wrap items-center justify-between gap-2 text-sm">
-                  <span className="text-stone-600 dark:text-stone-300">{item}</span>
+                <div key={item} className="flex min-w-0 items-center justify-between gap-2 text-xs">
+                  <span className="truncate text-tertiary">{item}</span>
                   <NabuPill tone="green">Live</NabuPill>
                 </div>
               ))}
@@ -146,37 +151,40 @@ export default async function Home() {
           </NabuSurface>
         </section>
 
-        <NabuSectionHeader
-          className="mb-4"
-          eyebrow="Surfaces"
-          title="What do you need?"
-        />
+        {/* Surface grid */}
+        <section>
+          <NabuSectionHeader
+            className="mb-3"
+            eyebrow="Surfaces"
+            title="What do you need?"
+          />
 
-        <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
-          {tiles.map((tile) => (
-            <NabuCard
-              key={tile.id}
-              href={tile.href}
-            >
-              <div className="flex min-w-0 items-start justify-between gap-3 overflow-hidden">
-                <div className="min-w-0 overflow-hidden">
-                  <div className="mb-3 flex min-w-0 items-center gap-3">
-                    <NabuIconFrame className="bg-stone-100 transition-colors group-hover:bg-stone-200 dark:bg-stone-800 dark:group-hover:bg-stone-700">
-                      {tile.emoji}
-                    </NabuIconFrame>
-                    <h2 className="min-w-0 truncate text-base font-semibold tracking-[-0.01em] text-primary">
-                      {tile.name}
-                    </h2>
+          <div className="grid min-w-0 grid-cols-1 gap-3 min-[480px]:grid-cols-2 lg:grid-cols-3">
+            {tiles.map((tile) => (
+              <NabuCard
+                key={tile.id}
+                href={tile.href}
+              >
+                <div className="flex min-w-0 items-center gap-3">
+                  <NabuIconFrame className="bg-stone-100 transition-colors group-hover:bg-stone-200 dark:bg-stone-800 dark:group-hover:bg-stone-700">
+                    {tile.emoji}
+                  </NabuIconFrame>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex min-w-0 items-center justify-between gap-2">
+                      <h2 className="min-w-0 truncate text-sm font-semibold tracking-[-0.01em] text-primary">
+                        {tile.name}
+                      </h2>
+                      <NabuPill className="hidden shrink-0 min-[480px]:inline-flex">{tile.stats}</NabuPill>
+                    </div>
+                    <p className="mt-0.5 truncate text-xs leading-relaxed text-tertiary">
+                      {tile.description}
+                    </p>
                   </div>
-                  <p className="text-sm leading-6 text-tertiary">
-                    {tile.description}
-                  </p>
                 </div>
-                <NabuPill className="hidden shrink-0 sm:inline-flex">{tile.stats}</NabuPill>
-              </div>
-            </NabuCard>
-          ))}
-        </div>
+              </NabuCard>
+            ))}
+          </div>
+        </section>
       </NabuMain>
     </NabuPageShell>
   );

@@ -2,103 +2,88 @@
   "id": "massaman-curry",
   "name": "Massaman Curry",
   "source": {
-    "cookbook": "Real Thai Cooking",
-    "author": "Chawadee Nualkhair",
-    "chapter": "Southern Thai"
+    "cookbook": "Thai Spice Recipes",
+    "author": "Various"
   },
-  "servings": "serves 6",
-  "intro": "agrees on is that it isn’t typically Thai. Some people say it came from Persia; others say it came from",
+  "servings": "serves 4",
+  "intro": "This curry is famous for a reason. Beef short ribs are simmered until tender, then finished in a rich coconut milk massaman sauce with sweet potato, onion, tamarind, palm sugar, fish sauce, and roasted peanuts.",
+  "time": {
+    "prep": 30,
+    "cook": 180,
+    "total": 210
+  },
   "ingredients": [
     {
-      "item": "Serve with steamed rice. Garnish with fresh sliced red chilies, coriander leaves and roasted peanuts.",
+      "item": "Bone-in beef short ribs",
+      "amount": "2 lb"
+    },
+    {
+      "item": "coconut milk",
+      "amount": "2 1/2 cups"
+    },
+    {
+      "item": "Massaman curry paste",
+      "amount": "5 tbsp"
+    },
+    {
+      "item": "Fish sauce",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Chopped palm sugar",
+      "amount": "3 tbsp"
+    },
+    {
+      "item": "Tamarind juice",
+      "amount": "2 tbsp"
+    },
+    {
+      "item": "large white-flesh sweet potato",
+      "amount": "1"
+    },
+    {
+      "item": "large onion, sliced",
+      "amount": "1/2"
+    },
+    {
+      "item": "Roasted peanuts",
+      "amount": "1/4 cup"
+    },
+    {
+      "item": "Jasmine rice",
+      "amount": "4 cups"
+    },
+    {
+      "item": "Oil",
       "amount": ""
     },
     {
-      "item": "(2 kgs)",
-      "amount": "4½ lbs"
-    },
-    {
-      "item": "small potatoes, peeled",
-      "amount": "10"
-    },
-    {
-      "item": "thinly sliced shallots",
-      "amount": "¾ cup (75 g)"
-    },
-    {
-      "item": "1¹⁄",
+      "item": "Water",
       "amount": ""
-    },
-    {
-      "item": "³ cups (300 g) ghee",
-      "amount": ""
-    },
-    {
-      "item": "peeled garlic",
-      "amount": "2 tablespoons"
-    },
-    {
-      "item": "fi nely chopped ginger",
-      "amount": "2 tablespoons"
-    },
-    {
-      "item": "red fi nger-length chilies (prik chee fah, if available)",
-      "amount": "6"
-    },
-    {
-      "item": "salt",
-      "amount": "3 tablespoons"
-    },
-    {
-      "item": "sugar",
-      "amount": "3 tablespoons"
-    },
-    {
-      "item": "Garam Masala (you can buy ready-made or make your own, recipe on facing page)",
-      "amount": "9 tablespoons"
-    },
-    {
-      "item": "plain yogurt",
-      "amount": "2 cups (500 g)"
-    },
-    {
-      "item": "fi nely sliced mint leaves (reserved half for garnish)",
-      "amount": "1 cup (40 g)"
-    },
-    {
-      "item": "cloves",
-      "amount": "5"
-    },
-    {
-      "item": "cinnamon sticks",
-      "amount": "3"
-    },
-    {
-      "item": "cardamom pods",
-      "amount": "6"
-    },
-    {
-      "item": "uncooked jasmine rice",
-      "amount": "4 cups (900 g)"
     }
   ],
   "method": [
-    "Cut the chicken into 10 pieces (2 pieces per leg—thigh and drum- stick; breast, 2 pieces per side; wings with back attached, 2 piec- es). Put them in a large dish.",
-    "Prepare the Marinade. In a mortar and pestle or food proces- sor, pound the garlic, ginger and chilies into a paste.",
-    "Thai-style Chicken Biryani",
-    "This dish, adapted from the Indians, is commonly known as khao mok gai, or “chicken buried under a mountain of rice.” However, the recipe here is called khao buree (or “cigarette” or",
-    "“smoked” rice) and, as another entry from the Bunnag family cookbook, is served at most family gatherings. It’s quite labor-intensive, but has been simplifi ed considerably (!) from the original recipe, which calls for the making of a lid and oven-proof bowl from dough."
+    "Cut the beef from the bone and, if necessary, cut it into large cubes.",
+    "In a heavy-bottomed pan over medium heat, add enough oil to cover the bottom, then fry the beef until fully browned on both sides. Do this in batches as needed and avoid overcrowding the pan.",
+    "Once all the beef is seared, return it to the pan, together with the bones removed.",
+    "Add 1/2 cup coconut milk and enough water to submerge everything.",
+    "Add 1 tablespoon curry paste and 1 tablespoon fish sauce, then simmer for 2 to 2 1/2 hours, until the beef is tender.",
+    "In a second heavy-bottomed pot, add about 3/4 cup of the remaining coconut milk and bring to a boil. Let it boil until reduced by half and thickened.",
+    "Add the remaining curry paste to the reduced coconut milk over medium heat, stirring constantly, until the coconut oil separates from the curry paste.",
+    "Add the remaining coconut milk and stir until the paste dissolves. Add the remaining tamarind juice, palm sugar, and fish sauce.",
+    "Use tongs to transfer the beef from the first pot to the curry pot. Leave the bones behind and reserve the cooking liquid.",
+    "Add the onion, sweet potato, and roasted peanuts to the curry.",
+    "Skim fat and scum from the reserved beef cooking liquid, then add enough liquid to the curry to submerge everything.",
+    "Simmer for 10 to 15 minutes, until the sweet potato is tender.",
+    "Taste and adjust with more fish sauce, sugar, or tamarind as needed.",
+    "Serve with jasmine rice."
   ],
-  "time": {
-    "total": 30
-  },
   "image": "/recipes/massaman-curry.jpg",
   "category": {
     "dish_type": [
       "main"
     ],
-    "chapter": "Southern Thai",
     "meal_role": "main"
   },
-  "cuisine": "Southeast Asian"
+  "cuisine": "Thai"
 }

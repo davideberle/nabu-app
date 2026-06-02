@@ -6,6 +6,9 @@ import { getRecentlyCookedRecipeIds, getThumbsDownRecipeIds, getPlannedRecipeIds
 import { getRecentWeekIds } from "@/lib/meals";
 import type { Recipe } from "@/lib/recipes";
 
+const RECENTLY_COOKED_LOOKBACK_DAYS = 45;
+const RECENTLY_PLANNED_LOOKBACK_WEEKS = 5;
+
 function parseMinutes(v: unknown): number {
   if (typeof v === "number" && isFinite(v)) return v;
   if (typeof v === "string") { const n = parseInt(v, 10); return isFinite(n) ? n : 0; }
@@ -52,14 +55,14 @@ export async function GET(request: NextRequest) {
   const excludeParam = request.nextUrl.searchParams.get("exclude");
   const excludeIds = excludeParam ? new Set(excludeParam.split(",")) : new Set<string>();
 
-  // Also exclude recipes cooked in the last 14 days to avoid repetition
-  const recentlyCooked = await getRecentlyCookedRecipeIds(14);
+  // Also exclude recipes cooked recently to avoid repetition.
+  const recentlyCooked = await getRecentlyCookedRecipeIds(RECENTLY_COOKED_LOOKBACK_DAYS);
   for (const id of recentlyCooked) excludeIds.add(id);
 
   // Exclude recipes planned in recent prior weeks (main + brunch)
   const weekParam = request.nextUrl.searchParams.get("week");
   if (weekParam) {
-    const recentWeeks = getRecentWeekIds(weekParam, 3);
+    const recentWeeks = getRecentWeekIds(weekParam, RECENTLY_PLANNED_LOOKBACK_WEEKS);
     const plannedIds = await getPlannedRecipeIdsForWeeks(recentWeeks);
     for (const id of plannedIds) excludeIds.add(id);
   }
@@ -111,7 +114,7 @@ export async function GET(request: NextRequest) {
     // Persistable candidateSet with diagnostics for staleness detection and review
     const candidateSet = {
       generatedAt: new Date().toISOString(),
-      policyVersion: "planner-v2.1",
+      policyVersion: "planner-v2.2",
       bucketContract: CANDIDATE_BUCKET_CONTRACT,
       items: summarized.map((s) => ({
         recipeId: s.id,
