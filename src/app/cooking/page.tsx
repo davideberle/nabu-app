@@ -144,8 +144,6 @@ function SessionView({
         />
       ))}
 
-      <NonAlcoholicHint date={session.date} suggestion={guidance.pairing.nonAlcoholic} />
-
       <SessionNotes notes={session.notes} />
 
       <NabuSurface className="p-5">
@@ -549,32 +547,6 @@ function EmptyState({ date }: { date: string }) {
         </>
       }
     />
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Non-alcoholic pairing hint (Mon/Tue only)
-// ---------------------------------------------------------------------------
-
-function NonAlcoholicHint({ date, suggestion }: { date: string; suggestion: string }) {
-  const day = new Date(date + "T12:00:00").getDay(); // 0=Sun … 6=Sat
-  if (day !== 1 && day !== 2) return null; // Monday or Tuesday only
-  if (!suggestion) return null;
-
-  return (
-    <NabuSurface tone="accent" className="p-5">
-      <div className="flex items-start gap-3">
-        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-emerald-50/80 text-lg dark:bg-emerald-900/20">
-          🍋
-        </div>
-        <div className="min-w-0">
-          <NabuKicker>Non-alcoholic pairing</NabuKicker>
-          <p className="mt-1.5 text-sm leading-relaxed text-tertiary">
-            {suggestion}
-          </p>
-        </div>
-      </div>
-    </NabuSurface>
   );
 }
 

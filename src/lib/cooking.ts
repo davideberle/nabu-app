@@ -108,6 +108,35 @@ export type CookingSession = {
   updatedAt: string;
 };
 
+const DRINK_SERVE_WITH_PATTERN =
+  /\b(wine|riesling|sauvignon|gr[üu]ner|veltliner|chardonnay|albari[nñ]o|verdejo|chablis|ros[eé]|pinot|chianti|barbera|rioja|grenache|garnacha|sparkling|champagne|prosecco|cava|beer|lager|pilsner|ipa|cider|cocktail|mocktail|non[-\s]?alc(?:oholic)?|na\s+(?:wine|beer|riesling|sparkling)|sparkling water)\b/i;
+
+export function isDrinkServeWith(item: string): boolean {
+  return DRINK_SERVE_WITH_PATTERN.test(item);
+}
+
+function splitServeWith(items: string[] | undefined): {
+  food: string[];
+  drinks: string[];
+} {
+  const food: string[] = [];
+  const drinks: string[] = [];
+  for (const item of items ?? []) {
+    const trimmed = item.trim();
+    if (!trimmed) continue;
+    if (isDrinkServeWith(trimmed)) {
+      drinks.push(trimmed);
+    } else {
+      food.push(trimmed);
+    }
+  }
+  return { food: mergeTextLists(food), drinks: mergeTextLists(drinks) };
+}
+
+function drinkText(items: string[]): string | null {
+  return items.length > 0 ? items.join(" + ") : null;
+}
+
 // ---------------------------------------------------------------------------
 // Persistence helpers
 // ---------------------------------------------------------------------------
@@ -204,8 +233,15 @@ function extractBackstoryFromNotes(notes: string): { story: SessionStory; notes:
 function normalizeSession(session: CookingSession | null): CookingSession | null {
   if (!session) return null;
   const extracted = session.story ? null : extractBackstoryFromNotes(session.notes ?? "");
+  const split = splitServeWith(session.serveWith);
+  const migratedDrink = drinkText(split.drinks);
   return {
     ...session,
+    serveWith: split.food,
+    coachCards: {
+      ...session.coachCards,
+      wine: session.coachCards?.wine ?? migratedDrink,
+    },
     story: session.story ?? extracted?.story ?? null,
     notes: extracted ? extracted.notes : (session.notes ?? ""),
   };
@@ -564,11 +600,15 @@ export async function createSessionFromPlan(
       relatedRecipes.push({ kind, recipeId: side.id, title: side.name });
     }
   }
-  const serveWith = meal?.serveWith ?? [];
+  const planServeWith = splitServeWith(meal?.serveWith);
+  const serveWith = planServeWith.food;
+  const planDrink = drinkText(planServeWith.drinks);
 
   // Existing meal-plan session: sync plan-derived fields, preserve user edits
   if (existing) {
     const mainChanged = existing.anchor.recipeId !== recipe.id;
+    const existingServeWith = splitServeWith(existing.serveWith);
+    const existingDrink = drinkText(existingServeWith.drinks);
     const syncedBase: CookingSession = {
       ...existing,
       anchor: {
@@ -581,7 +621,7 @@ export async function createSessionFromPlan(
       // Merge relatedRecipes: meal-plan sides are authoritative, but
       // preserve any extras added via patches (e.g. from Telegram).
       relatedRecipes: mergeRelatedRecipes(relatedRecipes, existing.relatedRecipes),
-      serveWith: mergeTextLists(existing.serveWith, serveWith),
+      serveWith: mergeTextLists(existingServeWith.food, serveWith),
       // Sync base servings/ingredients/method when main recipe changed,
       // and reset current servings only if user hasn't adjusted them
       servings: mainChanged
@@ -606,6 +646,7 @@ export async function createSessionFromPlan(
         ...syncedBase.coachCards,
         nextMove: null,
         upgrade: syncedBase.coachCards.upgrade ?? null,
+        wine: syncedBase.coachCards.wine ?? existingDrink ?? planDrink,
       },
     };
     await saveCookingSession(synced);
@@ -633,7 +674,7 @@ export async function createSessionFromPlan(
       nextMove: null,
       upgrade: null,
       shortcut: null,
-      wine: null,
+      wine: planDrink,
     },
   };
 

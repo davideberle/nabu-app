@@ -1,4 +1,4 @@
-import type { CookingSession, SessionIngredient } from "./cooking";
+import { isDrinkServeWith, type CookingSession, type SessionIngredient } from "./cooking";
 import type { Recipe } from "./recipes";
 
 export type CookingPairingSuggestion = {
@@ -300,13 +300,13 @@ export function extractTableSides(
   ingredients: SessionIngredient[],
   explicitServeWith: string[]
 ): string[] {
-  const sides: string[] = [...explicitServeWith];
+  const sides: string[] = explicitServeWith.filter((item) => !isDrinkServeWith(item));
 
   for (const ingredient of ingredients) {
     const item = ingredient.item.trim();
     if (!item) continue;
     const servingMatch = item.match(/^(.*?),\s*for serving$/i);
-    if (servingMatch?.[1]) {
+    if (servingMatch?.[1] && !isDrinkServeWith(servingMatch[1])) {
       sides.push(servingMatch[1]);
     }
   }
