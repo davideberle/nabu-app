@@ -6,7 +6,6 @@ import {
   NabuIconFrame,
   NabuLinkButton,
   NabuSectionHeader,
-  NabuStat,
   NabuSurface,
   cn,
 } from "@/components/ui/nabu";
@@ -14,13 +13,17 @@ import {
   familyMembers,
   initialCompletions,
   initialRewards,
+  rewardDefinitions,
   dayLabels,
   currentDayIndex,
   weekSummary,
+  weekPoints,
+  nextRewardForPerson,
   todayStatusLabel,
   type FamilyPerson,
   type CompletionRecord,
   type RewardRecord,
+  type RewardDefinition,
 } from "@/data/family-routines";
 
 // ---------------------------------------------------------------------------
@@ -71,6 +74,11 @@ function progressPercent(done: number, total: number): number {
   return Math.round((done / total) * 100);
 }
 
+function rewardProgress(points: number, target: number): number {
+  if (target <= 0) return 0;
+  return Math.min(100, Math.round((points / target) * 100));
+}
+
 // ---------------------------------------------------------------------------
 // Person card
 // ---------------------------------------------------------------------------
@@ -89,7 +97,11 @@ function PersonCard({
   const color = person.colorToken as PersonColor;
   const summary = weekSummary(person.id, completions);
   const todayLabel = todayStatusLabel(person.id, completions, today);
-  const percent = progressPercent(summary.done, summary.total);
+  const points = weekPoints(person.id, completions);
+  const nextReward = nextRewardForPerson(person.id, points);
+  const percent = nextReward
+    ? rewardProgress(points, nextReward.reward.targetPoints)
+    : progressPercent(summary.done, summary.total);
   const todayReward = rewards.find(
     (r) => r.personId === person.id && r.day === today,
   );
@@ -128,11 +140,30 @@ function PersonCard({
         <NabuBadge tone={statusBadgeTone(todayLabel)}>{todayLabel}</NabuBadge>
       </div>
 
-      {/* Progress bar */}
-      {summary.total > 0 && (
+      {/* Goal progress */}
+      {person.role === "child" && nextReward ? (
         <div className="space-y-1.5">
           <div className="flex items-center justify-between text-xs text-tertiary">
-            <span>Week progress</span>
+            <span className="truncate">
+              {nextReward.reward.icon} {nextReward.reward.title}
+            </span>
+            <span className="font-medium text-secondary">
+              {nextReward.missing === 0
+                ? "ready"
+                : `${nextReward.missing} pts missing`}
+            </span>
+          </div>
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
+            <div
+              className={cn("h-full rounded-full transition-all", colorDot[color])}
+              style={{ width: `${percent}%` }}
+            />
+          </div>
+        </div>
+      ) : summary.total > 0 ? (
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between text-xs text-tertiary">
+            <span>Logged this week</span>
             <span className="font-medium text-secondary">
               {summary.done}/{summary.total}
             </span>
@@ -144,12 +175,23 @@ function PersonCard({
             />
           </div>
         </div>
+      ) : null}
+
+      {person.role === "child" && (
+        <div className="rounded-md bg-white/60 px-3 py-2 dark:bg-white/5">
+          <p className="text-[10px] uppercase tracking-widest text-quaternary">
+            This week
+          </p>
+          <p className="text-sm font-semibold text-primary">
+            {points} habit points
+          </p>
+        </div>
       )}
 
       {/* Stats row */}
       <div className="grid grid-cols-3 gap-2">
         <MiniStat label="Done" value={summary.done} />
-        <MiniStat label="Pending" value={summary.planned} />
+        <MiniStat label="Open" value={summary.planned} />
         {summary.submitted > 0 && (
           <MiniStat label="Review" value={summary.submitted} />
         )}
@@ -175,6 +217,36 @@ function MiniStat({ label, value }: { label: string; value: number | string }) {
   );
 }
 
+function RewardGoalCard({
+  reward,
+  childCount,
+}: {
+  reward: RewardDefinition;
+  childCount: number;
+}) {
+  return (
+    <div className="flex min-w-0 items-start gap-3 rounded-lg border border-secondary bg-primary p-3">
+      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-amber-50 text-xl dark:bg-amber-950/30">
+        {reward.icon}
+      </div>
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-center gap-1.5">
+          <p className="truncate text-sm font-semibold text-primary">
+            {reward.title}
+          </p>
+          <NabuBadge tone={reward.period === "daily" ? "blue" : reward.period === "weekly" ? "green" : "violet"}>
+            {reward.period}
+          </NabuBadge>
+        </div>
+        <p className="mt-1 text-xs leading-snug text-tertiary">
+          {reward.targetPoints} pts target
+          {reward.period === "daily" ? " today" : " this cycle"} · {childCount} kids
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Main component
 // ---------------------------------------------------------------------------
@@ -186,10 +258,6 @@ export function FamilyDashboardClient() {
 
   const children = familyMembers.filter((p) => p.role === "child");
   const parents = familyMembers.filter((p) => p.role === "parent");
-
-  const reviewCount = completions.filter(
-    (c) => c.status === "submitted",
-  ).length;
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-secondary px-4 py-5 text-primary sm:px-6 sm:py-7">
@@ -205,7 +273,7 @@ export function FamilyDashboardClient() {
                 Family board
               </p>
               <h1 className="truncate text-2xl font-semibold tracking-normal text-primary sm:text-3xl">
-                This week
+                Family rewards
               </h1>
             </div>
           </div>
@@ -233,29 +301,21 @@ export function FamilyDashboardClient() {
           ))}
         </div>
 
-        {/* Summary strip */}
+        {/* Reward goals */}
         <NabuSurface tone="muted" className="p-4">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <NabuStat
-              label="Today"
-              value={dayLabels[today]}
-              tone="blue"
-            />
-            <NabuStat
-              label="Needs review"
-              value={reviewCount.toString()}
-              tone={reviewCount > 0 ? "amber" : "stone"}
-            />
-            <NabuStat
-              label="Children"
-              value={children.length.toString()}
-              tone="green"
-            />
-            <NabuStat
-              label="Family"
-              value={familyMembers.length.toString()}
-              tone="stone"
-            />
+          <NabuSectionHeader
+            title="What are we earning?"
+            description="Daily privileges, weekly family time, and longer goals."
+            className="mb-3"
+          />
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {rewardDefinitions.map((reward) => (
+              <RewardGoalCard
+                key={reward.id}
+                reward={reward}
+                childCount={children.length}
+              />
+            ))}
           </div>
         </NabuSurface>
 

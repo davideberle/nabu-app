@@ -4,7 +4,6 @@ import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   NabuBadge,
-  NabuIconFrame,
   NabuLinkButton,
   NabuSurface,
   cn,
@@ -17,11 +16,12 @@ import {
   dayLabels,
   currentDayIndex,
   initialCompletions,
-  initialRewards,
+  rewardDefinitions,
+  routineProgress,
+  weekPoints,
+  nextRewardForPerson,
   type CompletionRecord,
   type CompletionStatus,
-  type RewardRecord,
-  type RewardStatus,
   type RoutineCategory,
   type RoutineDefinition,
 } from "@/data/family-routines";
@@ -44,7 +44,7 @@ const colorAccent: Record<PersonColor, string> = {
 // ---------------------------------------------------------------------------
 
 const statusLabel: Record<CompletionStatus, string> = {
-  planned: "Planned",
+  planned: "Do it",
   done: "Done",
   submitted: "In review",
   approved: "Approved",
@@ -94,11 +94,13 @@ const statusStyle: Record<
   },
 };
 
-const rewardStatusLabel: Record<RewardStatus, string> = {
-  "not-yet": "Not yet",
-  earned: "Earned",
-  approved: "Approved",
-  redeemed: "Redeemed",
+const laneIcon: Record<RoutineCategory, string> = {
+  practice: "🎼",
+  "body-care": "🏃",
+  household: "🍽️",
+  "family-contribution": "🏠",
+  job: "💶",
+  reward: "🎁",
 };
 
 // ---------------------------------------------------------------------------
@@ -107,10 +109,6 @@ const rewardStatusLabel: Record<RewardStatus, string> = {
 
 function completionKey(routineId: string, personId: string, day: number) {
   return `${routineId}:${personId}:${day}`;
-}
-
-function rewardKey(personId: string, day: number) {
-  return `${personId}:${day}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -148,7 +146,7 @@ function TaskTile({
         aria-label={`Log ${routine.title} for an unscheduled day`}
       >
         <span className="text-[10px] text-quaternary">
-          {isScheduled ? "+" : "Log"}
+          {isScheduled ? "Do" : "Log"}
         </span>
       </button>
     );
@@ -179,55 +177,6 @@ function TaskTile({
   );
 }
 
-function RewardTile({
-  status,
-  title,
-  isToday,
-}: {
-  status: RewardStatus | null;
-  title: string;
-  isToday: boolean;
-}) {
-  if (!status) {
-    return (
-      <div
-        className={cn(
-          "flex h-full min-h-[52px] items-center justify-center rounded-md border border-dashed",
-          "border-stone-200 dark:border-stone-700",
-          !isToday && "opacity-40",
-        )}
-      />
-    );
-  }
-
-  const isEarned = status === "earned" || status === "approved" || status === "redeemed";
-  return (
-    <div
-      className={cn(
-        "flex h-full min-h-[52px] flex-col items-start justify-center gap-0.5 rounded-md border px-2.5 py-2",
-        isEarned
-          ? "border-emerald-200 bg-emerald-50/60 dark:border-emerald-800 dark:bg-emerald-950/20"
-          : "border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-800/40",
-        isToday && "ring-1 ring-stone-300 dark:ring-stone-600",
-      )}
-    >
-      <span
-        className={cn(
-          "text-[11px] font-medium leading-tight",
-          isEarned
-            ? "text-emerald-700 dark:text-emerald-400"
-            : "text-quaternary",
-        )}
-      >
-        {rewardStatusLabel[status]}
-      </span>
-      <span className="line-clamp-1 text-[10px] leading-tight text-quaternary">
-        {title}
-      </span>
-    </div>
-  );
-}
-
 // ---------------------------------------------------------------------------
 // Swimlane row label
 // ---------------------------------------------------------------------------
@@ -235,8 +184,51 @@ function RewardTile({
 function LaneLabel({ category }: { category: RoutineCategory }) {
   const meta = categoryMeta[category];
   return (
-    <div className="flex h-full min-w-[110px] max-w-[140px] items-center pr-2">
+    <div className="flex h-full min-w-[110px] max-w-[140px] items-center gap-2 pr-2">
+      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-stone-100 text-base dark:bg-stone-800">
+        {laneIcon[category]}
+      </span>
       <span className="text-xs font-semibold text-tertiary">{meta.label}</span>
+    </div>
+  );
+}
+
+function RewardGoalCard({
+  reward,
+  points,
+}: {
+  reward: (typeof rewardDefinitions)[number];
+  points: number;
+}) {
+  const progress = Math.min(100, Math.round((points / reward.targetPoints) * 100));
+  const missing = Math.max(0, reward.targetPoints - points);
+
+  return (
+    <div className="min-w-0 rounded-lg border border-secondary bg-primary p-3">
+      <div className="flex items-start gap-3">
+        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-amber-50 text-2xl dark:bg-amber-950/30">
+          {reward.icon}
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <p className="truncate text-sm font-semibold text-primary">
+              {reward.title}
+            </p>
+            <NabuBadge tone={reward.period === "daily" ? "blue" : reward.period === "weekly" ? "green" : "violet"}>
+              {reward.period}
+            </NabuBadge>
+          </div>
+          <p className="mt-1 text-xs text-tertiary">
+            {missing === 0 ? "Ready" : `${missing} pts missing`}
+          </p>
+        </div>
+      </div>
+      <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
+        <div
+          className="h-full rounded-full bg-amber-400 transition-all"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
     </div>
   );
 }
@@ -262,28 +254,29 @@ export function PersonBoardClient({ personId }: { personId: string }) {
     },
   );
 
-  const [rewards] = useState<Map<string, RewardRecord>>(() => {
-    const map = new Map<string, RewardRecord>();
-    for (const r of initialRewards) {
-      if (r.personId === personId) {
-        map.set(rewardKey(r.personId, r.day), r);
-      }
-    }
-    return map;
-  });
-
   const routines = useMemo(() => routinesForPerson(personId), [personId]);
+  const completionList = useMemo(
+    () => Array.from(completions.values()),
+    [completions],
+  );
+  const points = weekPoints(personId, completionList);
+  const nextReward = nextRewardForPerson(personId, points);
+  const rewardGoals = rewardDefinitions.filter((reward) =>
+    reward.assignedTo.includes(personId),
+  );
+  const pocketMoneyJobs = routines.filter((routine) => routine.category === "job");
 
   // Grouped by category
   const laneData = useMemo(() => {
     return swimlaneCategories
+      .filter((cat) => cat !== "reward" && cat !== "job")
       .map((cat) => ({
         category: cat,
         routines: routines
           .filter((r) => r.category === cat)
           .sort((a, b) => a.title.localeCompare(b.title)),
       }))
-      .filter((lane) => lane.category === "reward" || lane.routines.length > 0);
+      .filter((lane) => lane.routines.length > 0);
   }, [routines]);
 
   // Tap handler — cycle planned → done, or create ad-hoc
@@ -361,6 +354,33 @@ export function PersonBoardClient({ personId }: { personId: string }) {
           </NabuLinkButton>
         </header>
 
+        {person.role === "child" && (
+          <NabuSurface tone="muted" className="p-4">
+            <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
+              <div>
+                <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
+                  Reward goals
+                </p>
+                <h2 className="mt-0.5 text-base font-semibold text-primary">
+                  {points} habit points this week
+                </h2>
+              </div>
+              {nextReward ? (
+                <NabuBadge tone={nextReward.missing === 0 ? "green" : "amber"}>
+                  {nextReward.missing === 0
+                    ? `${nextReward.reward.title} ready`
+                    : `${nextReward.missing} pts missing`}
+                </NabuBadge>
+              ) : null}
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+              {rewardGoals.map((reward) => (
+                <RewardGoalCard key={reward.id} reward={reward} points={points} />
+              ))}
+            </div>
+          </NabuSurface>
+        )}
+
         {/* Board grid */}
         <NabuSurface className="overflow-x-auto p-0">
           <div className="min-w-[600px]">
@@ -384,44 +404,28 @@ export function PersonBoardClient({ personId }: { personId: string }) {
 
             {/* Swimlanes */}
             {laneData.map((lane) => {
-              if (lane.category === "reward") {
-                return (
-                  <div
-                    key="reward"
-                    className="grid grid-cols-[140px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
-                  >
-                    <div className="flex items-center p-3">
-                      <LaneLabel category="reward" />
-                    </div>
-                    {dayLabels.map((_, dayIdx) => {
-                      const rKey = rewardKey(personId, dayIdx);
-                      const reward = rewards.get(rKey);
-                      return (
-                        <div key={dayIdx} className="p-1.5">
-                          <RewardTile
-                            status={reward?.status ?? null}
-                            title={reward?.title ?? ""}
-                            isToday={dayIdx === today}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              }
-
               return lane.routines.map((routine) => (
                 <div
                   key={routine.id}
                   className="grid grid-cols-[140px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
                 >
                   <div className="flex flex-col justify-center p-3">
-                    <span className="text-[11px] font-medium text-secondary">
-                      {routine.title}
-                    </span>
-                    <span className="text-[10px] text-quaternary">
-                      {categoryMeta[routine.category].label}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-stone-100 text-base dark:bg-stone-800">
+                        {routine.icon}
+                      </span>
+                      <div className="min-w-0">
+                        <span className="block truncate text-[11px] font-medium text-secondary">
+                          {routine.title}
+                        </span>
+                        <span className="text-[10px] text-quaternary">
+                          {(() => {
+                            const progress = routineProgress(personId, routine.id, completionList);
+                            return `${progress.done}/${progress.target} target · +${routine.points} pts`;
+                          })()}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                   {dayLabels.map((_, dayIdx) => {
                     const scheduled =
@@ -448,9 +452,78 @@ export function PersonBoardClient({ personId }: { personId: string }) {
           </div>
         </NabuSurface>
 
+        {person.role === "child" && pocketMoneyJobs.length > 0 && (
+          <NabuSurface className="overflow-x-auto p-0">
+            <div className="min-w-[600px]">
+              <div className="grid grid-cols-[140px_repeat(7,1fr)] border-b border-secondary">
+                <div className="flex flex-col justify-center p-3">
+                  <LaneLabel category="job" />
+                  <span className="mt-1 text-[10px] text-quaternary">
+                    Weekly pocket money
+                  </span>
+                </div>
+                {dayLabels.map((label, i) => (
+                  <div
+                    key={label}
+                    className={cn(
+                      "flex items-center justify-center p-3 text-xs font-semibold",
+                      i === today
+                        ? "bg-stone-100 text-primary dark:bg-stone-800"
+                        : "text-quaternary",
+                    )}
+                  >
+                    {label}
+                  </div>
+                ))}
+              </div>
+              {pocketMoneyJobs.map((routine) => (
+                <div
+                  key={routine.id}
+                  className="grid grid-cols-[140px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
+                >
+                  <div className="flex flex-col justify-center p-3">
+                    <div className="flex items-center gap-2">
+                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-emerald-50 text-base dark:bg-emerald-950/30">
+                        {routine.icon}
+                      </span>
+                      <div className="min-w-0">
+                        <span className="block truncate text-[11px] font-medium text-secondary">
+                          {routine.title}
+                        </span>
+                        <span className="text-[10px] text-quaternary">
+                          Grocery shopping · approval
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  {dayLabels.map((_, dayIdx) => {
+                    const scheduled =
+                      routine.days === null || routine.days.includes(dayIdx);
+                    const key = completionKey(routine.id, personId, dayIdx);
+                    const record = completions.get(key);
+
+                    return (
+                      <div key={dayIdx} className="p-1.5">
+                        <TaskTile
+                          routine={routine}
+                          status={record?.status ?? (scheduled ? "planned" : null)}
+                          note={record?.note}
+                          isToday={dayIdx === today}
+                          isScheduled={scheduled}
+                          onTap={() => handleTileTap(routine.id, dayIdx)}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </NabuSurface>
+        )}
+
         {/* Legend */}
         <div className="flex flex-wrap items-center gap-3 text-[11px] text-quaternary">
-          <span className="font-medium text-tertiary">Tap to toggle:</span>
+          <span className="font-medium text-tertiary">Tap:</span>
           {(["planned", "done", "submitted"] as const).map((s) => (
             <span key={s} className="flex items-center gap-1.5">
               <span
