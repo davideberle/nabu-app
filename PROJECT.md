@@ -19,7 +19,7 @@ https://app.davideberle.com.
 | Recipes  | Live   | ~3,527 cookbook recipes (static JSON, classified by meal_role) + My Recipes (Turso), with cook history shown on recipe pages |
 | Meals    | Live   | Weekly meal planner (Phases 1–4: 7-day week, quality-gated candidates, ISO week nav + history, day expansion, side/serve-with, and weekend Sat/Sun breakfast/brunch slots). Turso-backed |
 | Cooking  | Live   | Live cooking session, auto-loaded from meal plan. UI intentionally lean: main steps, sides/serve-with, concise wine, optional notes; meal-flow/shortcut/upgrade/session-modification blocks hidden. |
-| Family   | Live | `/family` renders family-owned milestones and planning windows; `/family/tracker` is the focused iPad tracker with scoped access and reduced navigation. |
+| Family   | Live | `/family` renders family-owned milestones and planning windows; `/family/dashboard` is the shared-iPad routines board prototype; `/family/tracker` remains the focused milestone tracker. |
 | Wine     | Live   | Household wine-cellar view backed by kitchen-owned seed data mirror; tracks red/white bottles, bottle images, pairing lanes, and consumed status. |
 | Music    | Live   | Sonos zone control + discovery review. Discovery cards include cover/year metadata; already-in-library candidates are rejected out of inbox during sync. UI polished with Nabu/Untitled wrapper in `57ae11d8`. |
 | Shopping | Stub   | Lists placeholder |
@@ -31,9 +31,10 @@ https://app.davideberle.com.
 - `TURSO_AUTH_TOKEN` — Turso auth token
 - `AUTH_SECRET` — NextAuth secret
 - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` — Google OAuth credentials
-- `IPAD_TRACKER_ONLY_EMAILS` — optional comma-separated Google accounts restricted to the family tracker; defaults to `assistant@davideberle.com`
+- `IPAD_TRACKER_ONLY_EMAILS` — optional comma-separated Google accounts restricted to family iPad surfaces; defaults to `assistant@davideberle.com`
 ## Current UI refresh status
 
+- 2026-06-03: Family routines dashboard prototype is ready for production deployment. Added a separate dashboard tile linking to `/family/dashboard`, an iPad-friendly family overview, person weekly boards at `/family/dashboard/[person]`, static family-routine seed data, local tap-to-toggle/log interactions, and updated scoped iPad access plus the manifest start URL to land on the routines board. Persistence, payments, and Screen Time enforcement remain out of scope for this prototype.
 - 2026-06-02: Focused Family iPad tracker deployed to production (`dpl_H7VYjyBXrw74vB3zdSpCMKTgwoKN`). Added `/family/tracker` as the direct Home Screen target, updated the manifest to start there, and added tracker-only account scoping so restricted accounts are redirected into the tracker and blocked from the wider app. Local build passed, iPad portrait/landscape screenshots were checked, production alias is live, `/family/tracker` redirects unauthenticated users to login, and `/manifest.json` exposes `start_url: "/family/tracker"`.
 - 2026-06-02: Family iPad foundation deployed to production (`dpl_Ghf1nTW1kijDPPziocu7ivMTYPw3`). `/family` renders upcoming birthdays/anniversaries, computed ages/counts, and planning-window status from the family domain mirror; dashboard and Today link into it; iPad/PWA safe-area, manifest, and icon support are live. David later clarified this was foundation work; the focused tracker shipped separately at `/family/tracker`.
 - 2026-06-02: Meal planner quality hardening deployed to production (`dpl_6APPLuH6RRn2NxF2AmsysNLvWLiQ`). Generated candidates now avoid recipes cooked in the last 45 days and recipes planned in the last 5 prior weeks, apply stricter main-dish filtering to planner/web candidates, add cuisine/source diversity scoring, and record cook events at recipe level for mains plus accepted sides. Local and Vercel production builds pass; production `/api/meals/generate` returns `planner-v2.2`.

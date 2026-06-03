@@ -35,6 +35,14 @@ async function getTiles() {
           : "View",
     },
     {
+      id: "routines",
+      name: "Routines",
+      emoji: "📋",
+      description: "Family board, weekly routines, rewards",
+      href: "/family/dashboard",
+      stats: "Board",
+    },
+    {
       id: "todos",
       name: "Todos",
       emoji: "✅",

@@ -1,8 +1,8 @@
 {
-  "name": "Nabu Family Milestones",
-  "short_name": "Milestones",
-  "description": "Family milestone tracker",
-  "start_url": "/family/tracker",
+  "name": "Nabu Family Board",
+  "short_name": "Family Board",
+  "description": "Family routines and milestone dashboard",
+  "start_url": "/family/dashboard",
   "display": "standalone",
   "background_color": "#f5f3f0",
   "theme_color": "#f5f3f0",

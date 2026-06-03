@@ -22,6 +22,8 @@ export function isTrackerAllowedPath(pathname: string): boolean {
   return (
     pathname === "/family" ||
     pathname === "/family/tracker" ||
+    pathname === "/family/dashboard" ||
+    pathname.startsWith("/family/dashboard/") ||
     pathname.startsWith("/api/auth/")
   );
 }
