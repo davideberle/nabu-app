@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CompleteSessionButton } from "./complete-session-button";
 import { NabuBadge, NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageShell, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
-import { createSessionFromPlan } from "@/lib/cooking";
+import { createSessionFromPlan, isDrinkServeWith } from "@/lib/cooking";
 import { todayInZurich } from "@/lib/date";
 import type { CookingSession, SessionIngredient } from "@/lib/cooking";
 import { buildCookingGuidance, extractTableSides, formatRecipeTime } from "@/lib/cooking-guidance";
@@ -116,6 +116,8 @@ function SessionView({
 
       <StoryCard story={session.story} title={session.anchor.title} />
 
+      <SessionNotes notes={session.notes} />
+
       {/* ── Meal components: main → sides → serve-with notes ── */}
       <MealComponentBlock
         role="main"
@@ -143,8 +145,6 @@ function SessionView({
           method={recipe.method}
         />
       ))}
-
-      <SessionNotes notes={session.notes} />
 
       <NabuSurface className="p-5">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -555,16 +555,42 @@ function EmptyState({ date }: { date: string }) {
 // ---------------------------------------------------------------------------
 
 function SessionNotes({ notes }: { notes: string }) {
-  if (!notes?.trim()) return null;
+  const useful = filterSessionNotes(notes);
+  if (!useful) return null;
 
   return (
-    <NabuSurface className="p-5">
-      <NabuKicker>Session notes</NabuKicker>
-      <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-secondary">
-        {notes}
+    <div className="px-1">
+      <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-quaternary">
+        Tonight&apos;s notes
       </p>
-    </NabuSurface>
+      <p className="mt-1.5 whitespace-pre-wrap text-sm leading-relaxed text-tertiary">
+        {useful}
+      </p>
+    </div>
   );
+}
+
+function filterSessionNotes(notes: string): string | null {
+  if (!notes?.trim()) return null;
+
+  const lines = notes
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => {
+      if (!l) return false;
+      // Drop drink-pairing lines
+      if (isDrinkServeWith(l)) return false;
+      // Drop leftover backstory prefixes
+      if (/^backstory:/i.test(l)) return false;
+      // Drop generic filler
+      if (/^(enjoy|bon app[eé]tit|have a (great|good)|happy cooking|good luck)/i.test(l)) return false;
+      // Drop very short noise (e.g. "ok", "done", "—")
+      if (l.replace(/[^a-zA-Z]/g, "").length < 6) return false;
+      return true;
+    });
+
+  const result = lines.join("\n").trim();
+  return result || null;
 }
 
 // ---------------------------------------------------------------------------

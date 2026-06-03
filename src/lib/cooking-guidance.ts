@@ -601,8 +601,9 @@ function inferMethodStyle(text: string, recipe?: Recipe): MethodStyle {
   const dishTypes = recipe?.category?.dish_type?.join(" ").toLowerCase() ?? "";
   if (/\b(marinate|marinating|rest overnight|overnight)\b/.test(text)) return "marinate";
   if (/\b(stir-fry|stir fry|wok)\b/.test(text)) return "quick-stir-fry";
-  if (/\b(salad|slaw)\b/.test(dishTypes) || /\b(toss|leaves|dressing|vinaigrette)\b/.test(text)) return "salad";
-  if (/\b(simmer|stew|soup|braise|broth)\b/.test(text)) return "simmer";
+  // Simmer/braise before salad: a curry with "basil leaves" is a simmer dish, not a salad.
+  if (/\b(simmer|stew|soup|braise|broth|curry(?!\s*powder))\b/.test(text)) return "simmer";
+  if (/\b(salad|slaw)\b/.test(dishTypes) || /\b(dressing|vinaigrette)\b/.test(text)) return "salad";
   if (/\b(roast|grill|barbecue|bbq)\b/.test(text)) return "roast";
   if (/\b(bake|oven)\b/.test(text)) return "bake";
   return "general";
