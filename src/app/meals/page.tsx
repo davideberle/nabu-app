@@ -192,6 +192,13 @@ function formatDateShort(dateStr: string): string {
   return `${parseInt(m)}/${parseInt(d)}`;
 }
 
+function formatLocalDate(date: Date): string {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
 function parseWeekId(weekId: string): { year: number; week: number } | null {
   const m = /^(\d{4})-W(\d{2})$/.exec(weekId);
   if (!m) return null;
@@ -442,7 +449,8 @@ function MealsPageInner() {
   const weekId = formatWeekId(activeWeek.year, activeWeek.week);
   const weekDates = getWeekDates(activeWeek.year, activeWeek.week);
   const isCurrentWeek = weekId === currentWeekId;
-  const isPastWeek = !isCurrentWeek && weekDates[6].date < now.toISOString().split("T")[0];
+  const todayLocal = formatLocalDate(now);
+  const isPastWeek = !isCurrentWeek && weekDates[6].date < todayLocal;
 
   function getWeekHref(year: number, week: number): string {
     const id = formatWeekId(year, week);
@@ -1256,8 +1264,7 @@ function MealsPageInner() {
               (c) => c.effect === "skip-meal"
             );
             const isWeekend = ["Friday", "Saturday", "Sunday"].includes(wd.dayOfWeek);
-            const today = new Date().toISOString().split("T")[0];
-            const isPast = wd.date < today;
+            const isPastOrToday = wd.date <= todayLocal;
             const hist = dayHistory[wd.date] ?? null;
             const isCooked = isFilled && cookedSlots.has(`${slot!.recipeId}:${wd.date}`);
             const isClickable = isSelectable ? !isSkipped : (isFilled && !isSkipped);
@@ -1433,7 +1440,7 @@ function MealsPageInner() {
                         >
                           {expandingDay === i ? "close" : slot?.planningState === "meal" ? "edit meal" : "turn into meal"}
                         </button>
-                        {isPast && (
+                        {isPastOrToday && (
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
