@@ -19,14 +19,7 @@ export type RoutineCategory =
 
 export type TaskClass = "routine" | "responsibility" | "privilege" | "job";
 
-export type CompletionStatus =
-  | "planned"
-  | "done"
-  | "submitted"
-  | "approved"
-  | "skipped"
-  | "missed"
-  | "needs-help";
+export type CompletionStatus = "done";
 
 export type RewardStatus = "not-yet" | "earned" | "approved" | "redeemed";
 
@@ -53,6 +46,7 @@ export type CompletionRecord = {
   day: number;
   status: CompletionStatus;
   note?: string;
+  challenge?: string;
 };
 
 export type RewardRecord = {
@@ -116,10 +110,9 @@ export const routineDefinitions: RoutineDefinition[] = [
   // Santiago — Body / Care
   { id: "s-physio",   title: "Physio exercises", icon: "🏃", taskClass: "routine", category: "body-care", assignedTo: ["santiago"], days: [0,1,2,3,4], weeklyTarget: 5, points: 2, requiresApproval: false },
   // Santiago — Household
-  { id: "s-dinner",   title: "Dinner helper",  icon: "🍽️", taskClass: "responsibility", category: "household", assignedTo: ["santiago"], days: [1,3,5], weeklyTarget: 2, points: 1, requiresApproval: false },
-  { id: "s-clear",    title: "Clear table",    icon: "🧽", taskClass: "responsibility", category: "household", assignedTo: ["santiago"], days: null, weeklyTarget: 5, points: 1, requiresApproval: false },
+  { id: "s-table-dinner", title: "Table + dinner", icon: "🍽️", taskClass: "responsibility", category: "household", assignedTo: ["santiago"], days: null, weeklyTarget: 5, points: 1, requiresApproval: false },
   // Santiago — Family contribution
-  { id: "s-tidy",     title: "Room tidy",      icon: "🧺", taskClass: "responsibility", category: "family-contribution", assignedTo: ["santiago"], days: [0,1,2,3,4,5,6], weeklyTarget: 5, points: 1, requiresApproval: false },
+  { id: "s-extra-bonus", title: "Extra bonus", icon: "⭐", taskClass: "responsibility", category: "family-contribution", assignedTo: ["santiago"], days: null, weeklyTarget: 3, points: 2, requiresApproval: false, description: "Useful extra effort that was not on the normal list." },
   // Santiago — Optional job
   { id: "s-grocery",  title: "Claim pocket money", icon: "🛒", taskClass: "job", category: "job", assignedTo: ["santiago"], days: [5], weeklyTarget: 1, points: 0, requiresApproval: true, description: "Weekly grocery shopping job", moneyLabel: "Pocket money" },
 
@@ -206,14 +199,10 @@ export const initialCompletions: CompletionRecord[] = [
   { routineId: "s-kumon",  personId: "santiago", day: 0, status: "done" },
   { routineId: "s-piano",  personId: "santiago", day: 0, status: "done" },
   { routineId: "s-physio", personId: "santiago", day: 0, status: "done" },
-  { routineId: "s-clear",  personId: "santiago", day: 0, status: "done" },
-  { routineId: "s-tidy",   personId: "santiago", day: 0, status: "done" },
+  { routineId: "s-table-dinner", personId: "santiago", day: 0, status: "done" },
   // Santiago — Tue (day 1)
   { routineId: "s-kumon",  personId: "santiago", day: 1, status: "done" },
-  { routineId: "s-physio", personId: "santiago", day: 1, status: "submitted", note: "Did 3 of 5 sets" },
-  { routineId: "s-dinner", personId: "santiago", day: 1, status: "planned" },
-  { routineId: "s-clear",  personId: "santiago", day: 1, status: "planned" },
-  { routineId: "s-tidy",   personId: "santiago", day: 1, status: "done" },
+  { routineId: "s-extra-bonus", personId: "santiago", day: 1, status: "done", note: "Helped without being asked" },
 
   // Isabel — Mon (day 0)
   { routineId: "i-kumon",  personId: "isabel", day: 0, status: "done" },
@@ -222,16 +211,11 @@ export const initialCompletions: CompletionRecord[] = [
   { routineId: "i-tidy",   personId: "isabel", day: 0, status: "done" },
   // Isabel — Tue (day 1)
   { routineId: "i-kumon",  personId: "isabel", day: 1, status: "done" },
-  { routineId: "i-piano",  personId: "isabel", day: 1, status: "planned" },
-  { routineId: "i-clear",  personId: "isabel", day: 1, status: "planned" },
-  { routineId: "i-tidy",   personId: "isabel", day: 1, status: "planned" },
 
   // David — Mon
   { routineId: "d-exercise", personId: "david", day: 0, status: "done" },
   { routineId: "d-cook",     personId: "david", day: 0, status: "done" },
   // David — Tue
-  { routineId: "d-exercise", personId: "david", day: 1, status: "planned" },
-  { routineId: "d-cook",     personId: "david", day: 1, status: "planned" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -280,13 +264,15 @@ export function weekSummary(
   completions: CompletionRecord[],
 ): { done: number; planned: number; submitted: number; total: number } {
   const mine = completions.filter((c) => c.personId === personId);
-  const done = mine.filter((c) => c.status === "done" || c.status === "approved").length;
-  const submitted = mine.filter((c) => c.status === "submitted").length;
-  const planned = mine.filter((c) => c.status === "planned").length;
-  return { done, planned, submitted, total: mine.length };
+  const done = mine.filter((c) => c.status === "done").length;
+  const target = routinesForPerson(personId).reduce((sum, routine) => {
+    if (routine.taskClass === "job") return sum;
+    return sum + routine.weeklyTarget;
+  }, 0);
+  return { done, planned: Math.max(0, target - done), submitted: 0, total: target };
 }
 
-/** Weekly points from done/approved completion records. */
+/** Weekly points from done completion records. */
 export function weekPoints(
   personId: string,
   completions: CompletionRecord[],
@@ -296,7 +282,7 @@ export function weekPoints(
     .filter(
       (c) =>
         c.personId === personId &&
-        (c.status === "done" || c.status === "approved"),
+        c.status === "done",
     )
     .reduce((sum, completion) => {
       const routine = routines.find((r) => r.id === completion.routineId);
@@ -315,7 +301,7 @@ export function routineProgress(
     (c) =>
       c.personId === personId &&
       c.routineId === routineId &&
-      (c.status === "done" || c.status === "approved"),
+      c.status === "done",
   ).length;
   return { done, target: routine?.weeklyTarget ?? 0 };
 }
@@ -338,14 +324,14 @@ export function todayStatusLabel(
   completions: CompletionRecord[],
   today: number,
 ): string {
-  const todayTasks = completions.filter(
-    (c) => c.personId === personId && c.day === today,
+  const scheduledToday = routinesForPersonDay(personId, today).filter(
+    (routine) => routine.taskClass !== "job",
   );
-  if (todayTasks.length === 0) return "Rest day";
-  const done = todayTasks.filter((c) => c.status === "done" || c.status === "approved").length;
-  const submitted = todayTasks.filter((c) => c.status === "submitted").length;
-  if (submitted > 0) return "Waiting for review";
-  if (done === todayTasks.length) return "All done";
-  const remaining = todayTasks.length - done;
-  return `${remaining} remaining`;
+  const todayTasks = completions.filter(
+    (c) => c.personId === personId && c.day === today && c.status === "done",
+  );
+  if (scheduledToday.length === 0) return "Rest day";
+  if (todayTasks.length >= scheduledToday.length) return "All done";
+  const remaining = scheduledToday.length - todayTasks.length;
+  return `${remaining} not done`;
 }

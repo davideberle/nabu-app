@@ -61,12 +61,19 @@ const colorDot: Record<PersonColor, string> = {
 };
 
 type BadgeTone = "stone" | "green" | "amber" | "blue" | "violet" | "red";
+type WeekNav = {
+  weekId: string;
+  currentWeekId: string;
+  rangeLabel: string;
+  prevHref: string;
+  currentHref: string;
+  nextHref: string;
+};
 
 function statusBadgeTone(label: string): BadgeTone {
   if (label === "All done") return "green";
-  if (label === "Waiting for review") return "amber";
   if (label === "Rest day") return "stone";
-  return "blue";
+  return "amber";
 }
 
 function progressPercent(done: number, total: number): number {
@@ -88,11 +95,13 @@ function PersonCard({
   completions,
   rewards,
   today,
+  weekId,
 }: {
   person: FamilyPerson;
   completions: CompletionRecord[];
   rewards: RewardRecord[];
   today: number;
+  weekId: string;
 }) {
   const color = person.colorToken as PersonColor;
   const summary = weekSummary(person.id, completions);
@@ -108,7 +117,7 @@ function PersonCard({
 
   return (
     <Link
-      href={`/family/dashboard/${person.id}`}
+      href={`/family/dashboard/${person.id}?week=${weekId}`}
       className={cn(
         "group flex min-w-0 flex-col gap-3 rounded-xl border-2 p-5 transition-all",
         "hover:-translate-y-0.5 hover:shadow-md",
@@ -191,11 +200,8 @@ function PersonCard({
       {/* Stats row */}
       <div className="grid grid-cols-3 gap-2">
         <MiniStat label="Done" value={summary.done} />
-        <MiniStat label="Open" value={summary.planned} />
-        {summary.submitted > 0 && (
-          <MiniStat label="Review" value={summary.submitted} />
-        )}
-        {todayReward && summary.submitted === 0 && (
+        <MiniStat label="Not done" value={summary.planned} />
+        {todayReward && (
           <MiniStat
             label="Reward"
             value={todayReward.status === "earned" ? "Earned" : "Pending"}
@@ -219,31 +225,75 @@ function MiniStat({ label, value }: { label: string; value: number | string }) {
 
 function RewardGoalCard({
   reward,
-  childCount,
+  childProgress,
 }: {
   reward: RewardDefinition;
-  childCount: number;
+  childProgress: { name: string; points: number }[];
 }) {
+  const current = Math.round(
+    childProgress.reduce((sum, child) => sum + child.points, 0) /
+      Math.max(1, childProgress.length),
+  );
+  const missing = Math.max(0, reward.targetPoints - current);
+  const ready = missing === 0;
+
   return (
-    <div className="flex min-w-0 items-start gap-3 rounded-lg border border-secondary bg-primary p-3">
-      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-amber-50 text-xl dark:bg-amber-950/30">
-        {reward.icon}
-      </div>
-      <div className="min-w-0">
-        <div className="flex flex-wrap items-center gap-1.5">
-          <p className="truncate text-sm font-semibold text-primary">
-            {reward.title}
-          </p>
-          <NabuBadge tone={reward.period === "daily" ? "blue" : reward.period === "weekly" ? "green" : "violet"}>
-            {reward.period}
-          </NabuBadge>
+    <div className="flex min-w-0 flex-col gap-3 rounded-lg border border-secondary bg-primary p-3">
+      <div className="flex min-w-0 items-start gap-3">
+        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-amber-50 text-xl dark:bg-amber-950/30">
+          {reward.icon}
         </div>
-        <p className="mt-1 text-xs leading-snug text-tertiary">
-          {reward.targetPoints} pts target
-          {reward.period === "daily" ? " today" : " this cycle"} · {childCount} kids
-        </p>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <p className="truncate text-sm font-semibold text-primary">
+              {reward.title}
+            </p>
+            <NabuBadge tone={reward.period === "daily" ? "blue" : reward.period === "weekly" ? "green" : "violet"}>
+              {reward.period}
+            </NabuBadge>
+          </div>
+          <p className="mt-1 text-xs font-semibold text-secondary">
+            {ready ? "Ready to claim" : `${missing} pts missing`}
+          </p>
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-2 rounded-md bg-secondary p-2">
+        <MiniStat label="Target" value={reward.targetPoints} />
+        <MiniStat label="Current" value={current} />
+        <MiniStat label="Missing" value={missing} />
       </div>
     </div>
+  );
+}
+
+function WeekNavBar({ weekNav }: { weekNav: WeekNav }) {
+  const isCurrentWeek = weekNav.weekId === weekNav.currentWeekId;
+
+  return (
+    <nav className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-secondary bg-primary p-3">
+      <div>
+        <p className="text-[10px] font-medium uppercase tracking-widest text-quaternary">
+          Week
+        </p>
+        <p className="text-sm font-semibold text-primary">
+          {weekNav.weekId} · {weekNav.rangeLabel}
+          {isCurrentWeek ? " · This week" : ""}
+        </p>
+      </div>
+      <div className="flex items-center gap-2">
+        <NabuLinkButton href={weekNav.prevHref} tone="secondary" size="sm">
+          Prev
+        </NabuLinkButton>
+        {!isCurrentWeek && (
+          <NabuLinkButton href={weekNav.currentHref} tone="secondary" size="sm">
+            This week
+          </NabuLinkButton>
+        )}
+        <NabuLinkButton href={weekNav.nextHref} tone="secondary" size="sm">
+          Next
+        </NabuLinkButton>
+      </div>
+    </nav>
   );
 }
 
@@ -251,13 +301,17 @@ function RewardGoalCard({
 // Main component
 // ---------------------------------------------------------------------------
 
-export function FamilyDashboardClient() {
+export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
   const today = currentDayIndex();
   const completions = initialCompletions;
   const rewards = initialRewards;
 
   const children = familyMembers.filter((p) => p.role === "child");
   const parents = familyMembers.filter((p) => p.role === "parent");
+  const childProgress = children.map((child) => ({
+    name: child.displayName,
+    points: weekPoints(child.id, completions),
+  }));
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-secondary px-4 py-5 text-primary sm:px-6 sm:py-7">
@@ -283,6 +337,8 @@ export function FamilyDashboardClient() {
             </NabuLinkButton>
           </div>
         </header>
+
+        <WeekNavBar weekNav={weekNav} />
 
         {/* Week day indicator */}
         <div className="flex items-center gap-1 overflow-x-auto">
@@ -313,7 +369,7 @@ export function FamilyDashboardClient() {
               <RewardGoalCard
                 key={reward.id}
                 reward={reward}
-                childCount={children.length}
+                childProgress={childProgress}
               />
             ))}
           </div>
@@ -330,6 +386,7 @@ export function FamilyDashboardClient() {
                 completions={completions}
                 rewards={rewards}
                 today={today}
+                weekId={weekNav.weekId}
               />
             ))}
           </div>
@@ -346,6 +403,7 @@ export function FamilyDashboardClient() {
                 completions={completions}
                 rewards={rewards}
                 today={today}
+                weekId={weekNav.weekId}
               />
             ))}
           </div>
