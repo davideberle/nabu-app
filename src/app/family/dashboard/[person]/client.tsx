@@ -19,10 +19,10 @@ import {
   rewardDefinitions,
   routineProgress,
   weekPoints,
-  nextRewardForPerson,
   type CompletionRecord,
   type RoutineCategory,
   type RoutineDefinition,
+  type RewardDefinition,
 } from "@/data/family-routines";
 
 // ---------------------------------------------------------------------------
@@ -36,22 +36,6 @@ const colorAccent: Record<PersonColor, string> = {
   violet: "text-violet-600 dark:text-violet-400",
   amber: "text-amber-600 dark:text-amber-400",
   green: "text-emerald-600 dark:text-emerald-400",
-};
-
-// ---------------------------------------------------------------------------
-// Tile status styling
-// ---------------------------------------------------------------------------
-
-const doneTile = {
-  bg: "bg-emerald-50 dark:bg-emerald-950/30",
-  text: "text-emerald-700 dark:text-emerald-400",
-  border: "border-emerald-200 dark:border-emerald-800",
-};
-
-const notDoneTile = {
-  bg: "bg-stone-50 dark:bg-stone-800/60",
-  text: "text-secondary",
-  border: "border-stone-200 dark:border-stone-700",
 };
 
 const laneIcon: Record<RoutineCategory, string> = {
@@ -81,91 +65,191 @@ type WeekNav = {
   overviewHref: string;
 };
 
-type LogDraft = {
+// ---------------------------------------------------------------------------
+// Voice coach types
+// ---------------------------------------------------------------------------
+
+type CoachPhase = "ask" | "recording" | "typed" | "analyzing" | "follow-up" | "accepted" | "parent-review";
+
+type CoachSession = {
   routine: RoutineDefinition;
   day: number;
-  text: string;
+  phase: CoachPhase;
+  transcript: string;
   hasVoiceMemo: boolean;
   seconds: number;
+  coachResponse: string;
+  followUpAnswer: string;
 };
 
-function analyzeMemo(text: string, routine: RoutineDefinition, hasVoiceMemo: boolean): string {
+type RealtimeStatus =
+  | { state: "checking"; label: string }
+  | { state: "ready"; label: string }
+  | { state: "demo"; label: string }
+  | { state: "error"; label: string };
+
+// ---------------------------------------------------------------------------
+// Deterministic voice coach analysis
+// ---------------------------------------------------------------------------
+
+function analyzeForCoach(
+  text: string,
+  routine: RoutineDefinition,
+  hasVoiceMemo: boolean,
+): { accepted: boolean; response: string; needsFollowUp: boolean } {
   const words = text.trim().split(/\s+/).filter(Boolean);
   const lower = text.toLowerCase();
+
+  // No input at all
+  if (words.length === 0 && !hasVoiceMemo) {
+    return {
+      accepted: false,
+      response: `Tell me what you did for ${routine.title} — even one sentence is fine.`,
+      needsFollowUp: false,
+    };
+  }
+
+  // Voice memo only, no text
   if (words.length === 0 && hasVoiceMemo) {
-    return `Voice memo saved. Next time, add one concrete detail so we know what made ${routine.title} count.`;
+    return {
+      accepted: false,
+      response: `I heard you, but can you say one specific thing you did? Like which piece you practiced or which exercises you finished.`,
+      needsFollowUp: true,
+    };
   }
-  if (words.length < 6) {
-    return `Too vague. What exactly did you do for ${routine.title}? Add one detail next time.`;
+
+  // Practice tasks: need task-specific detail
+  if (routine.category === "practice") {
+    const hasPracticeDetail = /\b(page|piece|song|sheet|chapter|problem|exercise|minute|scale|section|level|lesson)\b/i.test(lower);
+    if (!hasPracticeDetail && words.length < 8) {
+      return {
+        accepted: false,
+        response: `What specifically did you work on? Which piece, page, or exercise?`,
+        needsFollowUp: true,
+      };
+    }
   }
-  if (/\b(help|clean|clear|practice|exercise|finish|set|read|write|cook|table|dish|plate)\b/.test(lower)) {
-    return `Good detail. Nice if that really happened; make sure the quality matches the points.`;
+
+  // Physio: need exercise specifics
+  if (routine.id.includes("physio")) {
+    const hasPhysioDetail = /\b(stretch|exercise|rep|set|minute|balance|squat|lunge|plank|push|pull|leg|arm|back|core)\b/i.test(lower);
+    if (!hasPhysioDetail && words.length < 8) {
+      return {
+        accepted: false,
+        response: `Which exercises did you do? Name at least one specific one.`,
+        needsFollowUp: true,
+      };
+    }
   }
-  return `Logged. I want one more specific detail next time: what changed because you did it?`;
+
+  // Dinner/table tasks: check for specifics about what part they handled
+  if (routine.category === "household" && /dinner|table/i.test(routine.title)) {
+    const hasDinnerDetail = /\b(set|clear|wash|wipe|plate|glass|cutlery|serve|help|cook|chop|stir|pour)\b/i.test(lower);
+    if (!hasDinnerDetail && words.length < 6) {
+      return {
+        accepted: false,
+        response: `What part did you handle — setting, clearing, or helping cook?`,
+        needsFollowUp: true,
+      };
+    }
+  }
+
+  // Enough detail — accept
+  if (words.length >= 4) {
+    return {
+      accepted: true,
+      response: `Got it — nice work on ${routine.title}!`,
+      needsFollowUp: false,
+    };
+  }
+
+  // Short but has keywords
+  if (/\b(did|finished|completed|done|helped|practiced|cleaned|set|cleared)\b/i.test(lower)) {
+    return {
+      accepted: true,
+      response: `Okay, locked in. Good job.`,
+      needsFollowUp: false,
+    };
+  }
+
+  // Too vague
+  return {
+    accepted: false,
+    response: `Can you add one more detail about what you actually did?`,
+    needsFollowUp: true,
+  };
+}
+
+function analyzeFollowUp(
+  text: string,
+  _routine: RoutineDefinition,
+): { accepted: boolean; response: string } {
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  if (words.length >= 2) {
+    return { accepted: true, response: "Thanks — that's enough. Marked done!" };
+  }
+  return { accepted: false, response: "I'll send this to a parent to check." };
 }
 
 // ---------------------------------------------------------------------------
-// Tile component
+// Simple done flow for non-proof tasks
+// ---------------------------------------------------------------------------
+
+type SimpleDone = {
+  routine: RoutineDefinition;
+  day: number;
+};
+
+// ---------------------------------------------------------------------------
+// Tile component — visual only
 // ---------------------------------------------------------------------------
 
 function TaskTile({
   routine,
   isDone,
-  note,
-  challenge,
   isToday,
   isScheduled,
   onTap,
 }: {
   routine: RoutineDefinition;
   isDone: boolean;
-  note?: string;
-  challenge?: string;
   isToday: boolean;
   isScheduled: boolean;
   onTap: () => void;
 }) {
-  const style = isDone ? doneTile : notDoneTile;
   return (
     <button
       type="button"
       onClick={onTap}
+      disabled={isDone}
+      aria-label={
+        isDone
+          ? `${routine.title}: completed`
+          : `${routine.title}: tap to mark done`
+      }
       className={cn(
-        "flex h-full min-h-[64px] w-full flex-col items-start justify-center gap-0.5 rounded-md border px-2.5 py-2 text-left transition-all",
-        style.bg,
-        style.border,
-        isToday && "ring-1 ring-stone-300 dark:ring-stone-600",
+        "flex h-full min-h-[56px] w-full items-center justify-center rounded-md border transition-all",
+        isDone
+          ? "cursor-default border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30"
+          : "border-stone-200 bg-stone-50 hover:shadow-sm active:scale-[0.98] dark:border-stone-700 dark:bg-stone-800/60",
+        isToday && !isDone && "ring-1 ring-stone-300 dark:ring-stone-600",
         !isScheduled && !isDone && "border-dashed opacity-65",
-        "hover:shadow-sm active:scale-[0.98]",
       )}
     >
-      <span className={cn("text-[11px] font-medium leading-tight", style.text)}>
-        {isDone ? "Done" : "Not done"}
-      </span>
-      {!isDone && (
-        <span className="text-[10px] font-semibold leading-tight text-quaternary">
-          +{routine.points} pts
+      {isDone ? (
+        <span className="flex items-center gap-1">
+          <svg className="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+          </svg>
+          <svg className="h-3 w-3 text-emerald-400/60" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+          </svg>
         </span>
-      )}
-      {isDone && (
-        <span className="text-[10px] font-semibold leading-tight text-emerald-700 dark:text-emerald-400">
-          +{routine.points} pts
-        </span>
-      )}
-      {challenge && (
-        <span className="line-clamp-1 text-[10px] leading-tight text-tertiary">
-          {challenge}
-        </span>
-      )}
-      {!challenge && note && (
-        <span className="line-clamp-1 text-[10px] leading-tight text-quaternary">
-          {note}
-        </span>
+      ) : (
+        <span className="h-4 w-4 rounded-full border-2 border-stone-300 dark:border-stone-500" aria-hidden="true" />
       )}
       {!isScheduled && !isDone && (
-        <span className="text-[10px] leading-tight text-quaternary">
-          Bonus log
-        </span>
+        <span className="ml-1.5 text-[10px] text-quaternary">bonus</span>
       )}
     </button>
   );
@@ -187,19 +271,31 @@ function LaneLabel({ category }: { category: RoutineCategory }) {
   );
 }
 
-function RewardGoalCard({
+// ---------------------------------------------------------------------------
+// Reward wallet card
+// ---------------------------------------------------------------------------
+
+function RewardWalletCard({
   reward,
-  points,
+  balance,
+  spent,
+  onRedeem,
 }: {
-  reward: (typeof rewardDefinitions)[number];
-  points: number;
+  reward: RewardDefinition;
+  balance: number;
+  spent: number;
+  onRedeem: (rewardId: string) => void;
 }) {
-  const progress = Math.min(100, Math.round((points / reward.targetPoints) * 100));
-  const missing = Math.max(0, reward.targetPoints - points);
-  const ready = missing === 0;
+  const redeemedCount = spent;
+  const canAfford = balance >= reward.costPoints;
 
   return (
-    <div className="min-w-0 rounded-lg border border-secondary bg-primary p-3">
+    <div className={cn(
+      "min-w-0 rounded-lg border p-3 transition-colors",
+      redeemedCount > 0
+        ? "border-emerald-200 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/20"
+        : "border-secondary bg-primary",
+    )}>
       <div className="flex items-start gap-3">
         <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-amber-50 text-2xl dark:bg-amber-950/30">
           {reward.icon}
@@ -214,33 +310,39 @@ function RewardGoalCard({
             </NabuBadge>
           </div>
           <p className="mt-1 text-xs font-semibold text-secondary">
-            {ready ? "Ready to claim" : `${missing} pts missing`}
+            {redeemedCount > 0
+              ? `Redeemed x${redeemedCount}`
+              : canAfford
+                ? "Available"
+                : `${reward.costPoints - balance} more needed`}
           </p>
         </div>
       </div>
-      <div className="mt-3 grid grid-cols-3 gap-2 rounded-md bg-secondary p-2">
-        <div>
-          <p className="text-[10px] uppercase tracking-widest text-quaternary">Target</p>
-          <p className="text-sm font-semibold text-primary">{reward.targetPoints}</p>
-        </div>
-        <div>
-          <p className="text-[10px] uppercase tracking-widest text-quaternary">Earned</p>
-          <p className="text-sm font-semibold text-primary">{points}</p>
-        </div>
-        <div>
-          <p className="text-[10px] uppercase tracking-widest text-quaternary">Missing</p>
-          <p className="text-sm font-semibold text-primary">{missing}</p>
-        </div>
-      </div>
-      <div className="mt-3 h-2 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
-        <div
-          className="h-full rounded-full bg-amber-400 transition-all"
-          style={{ width: `${progress}%` }}
-        />
+      <div className="mt-3 flex items-center justify-between gap-2">
+        <span className="text-xs text-tertiary">
+          Cost: {reward.costPoints} pts
+        </span>
+        <button
+          type="button"
+          disabled={!canAfford}
+          onClick={() => onRedeem(reward.id)}
+          className={cn(
+            "rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors",
+            canAfford
+              ? "bg-stone-900 text-white hover:bg-stone-800 dark:bg-white dark:text-stone-900 dark:hover:bg-stone-100"
+              : "bg-stone-100 text-quaternary dark:bg-stone-800",
+          )}
+        >
+          {redeemedCount > 0 ? "Redeem again" : "Redeem"}
+        </button>
       </div>
     </div>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Week nav bar
+// ---------------------------------------------------------------------------
 
 function WeekNavBar({ weekNav }: { weekNav: WeekNav }) {
   const isCurrentWeek = weekNav.weekId === weekNav.currentWeekId;
@@ -274,6 +376,426 @@ function WeekNavBar({ weekNav }: { weekNav: WeekNav }) {
 }
 
 // ---------------------------------------------------------------------------
+// Voice Coach Modal
+// ---------------------------------------------------------------------------
+
+function VoiceCoachModal({
+  session,
+  onUpdate,
+  onClose,
+  onComplete,
+  onParentReview,
+}: {
+  session: CoachSession;
+  onUpdate: (s: CoachSession) => void;
+  onClose: () => void;
+  onComplete: (routine: RoutineDefinition, day: number, note: string) => void;
+  onParentReview: (routine: RoutineDefinition, day: number, note: string) => void;
+}) {
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const mediaChunksRef = useRef<Blob[]>([]);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [realtimeStatus, setRealtimeStatus] = useState<RealtimeStatus>({
+    state: "checking",
+    label: "Checking voice",
+  });
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function checkRealtimeSession() {
+      try {
+        const response = await fetch("/api/family/voice-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            personId: session.routine.assignedTo[0] ?? "child",
+            routineId: session.routine.id,
+            routineTitle: session.routine.title,
+            day: session.day,
+            date: new Date().toISOString().slice(0, 10),
+          }),
+        });
+        const data = await response.json();
+        if (cancelled) return;
+        if (response.ok && data.available) {
+          setRealtimeStatus({ state: "ready", label: "Realtime ready" });
+        } else if (response.ok && data.reason === "demo") {
+          setRealtimeStatus({ state: "demo", label: "Demo coach" });
+        } else {
+          setRealtimeStatus({ state: "error", label: "Voice fallback" });
+        }
+      } catch {
+        if (!cancelled) {
+          setRealtimeStatus({ state: "error", label: "Voice fallback" });
+        }
+      }
+    }
+
+    checkRealtimeSession();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [session.day, session.routine.assignedTo, session.routine.id, session.routine.title]);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+      if (mediaRecorderRef.current?.state === "recording") {
+        mediaRecorderRef.current.stop();
+      }
+    };
+  }, []);
+
+  const stopRecording = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+    if (mediaRecorderRef.current?.state === "recording") {
+      mediaRecorderRef.current.stop();
+    }
+    onUpdate({ ...session, phase: "analyzing" });
+
+    // Simulate analysis delay then run deterministic check
+    setTimeout(() => {
+      const result = analyzeForCoach(session.transcript, session.routine, true);
+      if (result.accepted) {
+        onUpdate({
+          ...session,
+          phase: "accepted",
+          coachResponse: result.response,
+          hasVoiceMemo: true,
+        });
+      } else if (result.needsFollowUp) {
+        onUpdate({
+          ...session,
+          phase: "follow-up",
+          coachResponse: result.response,
+          hasVoiceMemo: true,
+        });
+      } else {
+        onUpdate({
+          ...session,
+          phase: "parent-review",
+          coachResponse: result.response,
+          hasVoiceMemo: true,
+        });
+      }
+    }, 600);
+  }, [session, onUpdate]);
+
+  const startRecording = useCallback(async () => {
+    if (typeof navigator === "undefined" || !navigator.mediaDevices) {
+      // Fallback to typed mode
+      onUpdate({ ...session, phase: "typed" });
+      return;
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const recorder = new MediaRecorder(stream);
+      mediaChunksRef.current = [];
+      recorder.ondataavailable = (event) => {
+        if (event.data.size > 0) mediaChunksRef.current.push(event.data);
+      };
+      recorder.onstop = () => {
+        stream.getTracks().forEach((track) => track.stop());
+      };
+      mediaRecorderRef.current = recorder;
+      recorder.start();
+      const updated = { ...session, phase: "recording" as const, seconds: 0 };
+      onUpdate(updated);
+      let sec = 0;
+      timerRef.current = setInterval(() => {
+        sec += 1;
+        if (sec >= 30) {
+          stopRecording();
+          return;
+        }
+        onUpdate({ ...updated, seconds: sec });
+      }, 1000);
+    } catch {
+      onUpdate({ ...session, phase: "typed" });
+    }
+  }, [session, onUpdate, stopRecording]);
+
+  const submitTyped = useCallback(() => {
+    const result = analyzeForCoach(session.transcript, session.routine, session.hasVoiceMemo);
+    if (result.accepted) {
+      onUpdate({ ...session, phase: "accepted", coachResponse: result.response });
+    } else if (result.needsFollowUp) {
+      onUpdate({ ...session, phase: "follow-up", coachResponse: result.response });
+    } else {
+      onUpdate({ ...session, phase: "parent-review", coachResponse: result.response });
+    }
+  }, [session, onUpdate]);
+
+  const submitFollowUp = useCallback(() => {
+    const result = analyzeFollowUp(session.followUpAnswer, session.routine);
+    if (result.accepted) {
+      onUpdate({ ...session, phase: "accepted", coachResponse: result.response });
+    } else {
+      onUpdate({ ...session, phase: "parent-review", coachResponse: result.response });
+    }
+  }, [session, onUpdate]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 px-4">
+      <div className="w-full max-w-md rounded-lg border border-secondary bg-primary p-5 shadow-xl">
+        {/* Header */}
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-[10px] font-medium uppercase tracking-widest text-quaternary">
+              Voice coach
+            </p>
+            <div className="mt-1 flex flex-wrap items-center gap-2">
+              <h2 className="text-lg font-semibold text-primary">
+                {session.routine.icon} {session.routine.title} · {dayLabels[session.day]}
+              </h2>
+              <NabuBadge
+                tone={
+                  realtimeStatus.state === "ready"
+                    ? "green"
+                    : realtimeStatus.state === "checking"
+                      ? "blue"
+                      : realtimeStatus.state === "demo"
+                        ? "amber"
+                        : "stone"
+                }
+              >
+                {realtimeStatus.label}
+              </NabuBadge>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="grid h-8 w-8 place-items-center rounded-md border border-secondary text-quaternary hover:text-primary"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+
+        {/* Ask phase */}
+        {session.phase === "ask" && (
+          <div className="mt-4 space-y-4">
+            <p className="text-sm text-secondary">
+              What did you do for {session.routine.title}?
+            </p>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={startRecording}
+                className="flex-1 rounded-md bg-stone-900 px-3 py-2.5 text-sm font-semibold text-white dark:bg-white dark:text-stone-900"
+              >
+                Record answer
+              </button>
+              <button
+                type="button"
+                onClick={() => onUpdate({ ...session, phase: "typed" })}
+                className="rounded-md border border-secondary px-3 py-2.5 text-sm font-semibold text-secondary"
+              >
+                Type instead
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Recording phase */}
+        {session.phase === "recording" && (
+          <div className="mt-4 space-y-4">
+            <div className="flex items-center gap-3">
+              <span className="h-3 w-3 animate-pulse rounded-full bg-red-500" />
+              <span className="text-sm font-semibold text-primary">
+                Recording… {session.seconds}s / 30s
+              </span>
+            </div>
+            <textarea
+              value={session.transcript}
+              onChange={(e) => onUpdate({ ...session, transcript: e.target.value })}
+              rows={2}
+              placeholder="Add typed notes while recording…"
+              className="w-full resize-none rounded-md border border-secondary bg-secondary px-3 py-2 text-sm text-primary outline-none placeholder:text-quaternary focus:border-stone-400"
+            />
+            <button
+              type="button"
+              onClick={stopRecording}
+              className="w-full rounded-md border-2 border-red-200 bg-red-50 px-3 py-2.5 text-sm font-semibold text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300"
+            >
+              Stop & submit
+            </button>
+          </div>
+        )}
+
+        {/* Typed fallback phase */}
+        {session.phase === "typed" && (
+          <div className="mt-4 space-y-4">
+            <p className="text-sm text-secondary">
+              Tell me what you did for {session.routine.title}:
+            </p>
+            <textarea
+              value={session.transcript}
+              onChange={(e) => onUpdate({ ...session, transcript: e.target.value })}
+              rows={3}
+              placeholder="I practiced scales for 10 minutes, then worked on the new piece…"
+              className="w-full resize-none rounded-md border border-secondary bg-secondary px-3 py-2 text-sm text-primary outline-none placeholder:text-quaternary focus:border-stone-400"
+              autoFocus
+            />
+            <div className="flex justify-end gap-2">
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-md border border-secondary px-3 py-2 text-sm font-semibold text-secondary"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={submitTyped}
+                className="rounded-md bg-stone-900 px-3 py-2 text-sm font-semibold text-white dark:bg-white dark:text-stone-900"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Analyzing phase */}
+        {session.phase === "analyzing" && (
+          <div className="mt-4 flex items-center gap-3 py-4">
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-stone-300 border-t-stone-600" />
+            <span className="text-sm text-secondary">Checking your answer…</span>
+          </div>
+        )}
+
+        {/* Follow-up phase */}
+        {session.phase === "follow-up" && (
+          <div className="mt-4 space-y-4">
+            <div className="rounded-md bg-amber-50 p-3 dark:bg-amber-950/20">
+              <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
+                {session.coachResponse}
+              </p>
+            </div>
+            <textarea
+              value={session.followUpAnswer}
+              onChange={(e) => onUpdate({ ...session, followUpAnswer: e.target.value })}
+              rows={2}
+              placeholder="Add the detail here…"
+              className="w-full resize-none rounded-md border border-secondary bg-secondary px-3 py-2 text-sm text-primary outline-none placeholder:text-quaternary focus:border-stone-400"
+              autoFocus
+            />
+            <div className="flex justify-end gap-2">
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-md border border-secondary px-3 py-2 text-sm font-semibold text-secondary"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={submitFollowUp}
+                className="rounded-md bg-stone-900 px-3 py-2 text-sm font-semibold text-white dark:bg-white dark:text-stone-900"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Accepted phase */}
+        {session.phase === "accepted" && (
+          <div className="mt-4 space-y-4">
+            <div className="rounded-md bg-emerald-50 p-3 dark:bg-emerald-950/20">
+              <p className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
+                {session.coachResponse}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() =>
+                onComplete(session.routine, session.day, session.transcript || "Voice confirmed")
+              }
+              className="w-full rounded-md bg-emerald-600 px-3 py-2.5 text-sm font-semibold text-white"
+            >
+              Lock it in
+            </button>
+          </div>
+        )}
+
+        {/* Parent review phase */}
+        {session.phase === "parent-review" && (
+          <div className="mt-4 space-y-4">
+            <div className="rounded-md bg-stone-100 p-3 dark:bg-stone-800">
+              <p className="text-sm font-medium text-secondary">
+                {session.coachResponse}
+              </p>
+            </div>
+            <p className="text-xs text-tertiary">
+              A parent will review this and decide.
+            </p>
+            <button
+              type="button"
+              onClick={() =>
+                onParentReview(session.routine, session.day, session.transcript || "Sent for review")
+              }
+              className="w-full rounded-md border border-secondary px-3 py-2.5 text-sm font-semibold text-secondary"
+            >
+              Send to parent
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Simple confirm modal for non-proof tasks
+// ---------------------------------------------------------------------------
+
+function SimpleConfirmModal({
+  draft,
+  onConfirm,
+  onClose,
+}: {
+  draft: SimpleDone;
+  onConfirm: () => void;
+  onClose: () => void;
+}) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 px-4">
+      <div className="w-full max-w-sm rounded-lg border border-secondary bg-primary p-5 shadow-xl">
+        <h2 className="text-base font-semibold text-primary">
+          {draft.routine.icon} {draft.routine.title}
+        </h2>
+        <p className="mt-2 text-sm text-secondary">
+          Mark as done for {dayLabels[draft.day]}?
+        </p>
+        <div className="mt-4 flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-md border border-secondary px-3 py-2 text-sm font-semibold text-secondary"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={onConfirm}
+            className="rounded-md bg-stone-900 px-3 py-2 text-sm font-semibold text-white dark:bg-white dark:text-stone-900"
+          >
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Main board component
 // ---------------------------------------------------------------------------
 
@@ -286,11 +808,8 @@ export function PersonBoardClient({
 }) {
   const person = familyMembers.find((p) => p.id === personId);
   const today = currentDayIndex();
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const mediaChunksRef = useRef<Blob[]>([]);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Local mutable state
+  // Completion state
   const [completions, setCompletions] = useState<Map<string, CompletionRecord>>(
     () => {
       const map = new Map<string, CompletionRecord>();
@@ -302,31 +821,36 @@ export function PersonBoardClient({
       return map;
     },
   );
-  const [logDraft, setLogDraft] = useState<LogDraft | null>(null);
-  const [isRecording, setIsRecording] = useState(false);
 
-  useEffect(() => {
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-      if (mediaRecorderRef.current?.state === "recording") {
-        mediaRecorderRef.current.stop();
-      }
-    };
-  }, []);
+  // Wallet: track redeemed rewards { rewardId: timesRedeemed }
+  const [redeemed, setRedeemed] = useState<Record<string, number>>({});
+
+  // Modal state
+  const [simpleDraft, setSimpleDraft] = useState<SimpleDone | null>(null);
+  const [coachSession, setCoachSession] = useState<CoachSession | null>(null);
 
   const routines = useMemo(() => routinesForPerson(personId), [personId]);
   const completionList = useMemo(
     () => Array.from(completions.values()),
     [completions],
   );
-  const points = weekPoints(personId, completionList);
-  const nextReward = nextRewardForPerson(personId, points);
+  const totalEarned = weekPoints(personId, completionList);
+
+  // Calculate total spent on redeemed rewards
+  const totalSpent = useMemo(() => {
+    return Object.entries(redeemed).reduce((sum, [rewardId, count]) => {
+      const reward = rewardDefinitions.find((r) => r.id === rewardId);
+      return sum + (reward ? reward.costPoints * count : 0);
+    }, 0);
+  }, [redeemed]);
+
+  const balance = totalEarned - totalSpent;
+
   const rewardGoals = rewardDefinitions.filter((reward) =>
     reward.assignedTo.includes(personId),
   );
   const pocketMoneyJobs = routines.filter((routine) => routine.category === "job");
 
-  // Grouped by category
   const laneData = useMemo(() => {
     return swimlaneCategories
       .filter((cat) => cat !== "reward" && cat !== "job")
@@ -339,106 +863,58 @@ export function PersonBoardClient({
       .filter((lane) => lane.routines.length > 0);
   }, [routines]);
 
-  const stopRecording = useCallback(() => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-    if (mediaRecorderRef.current?.state === "recording") {
-      mediaRecorderRef.current.stop();
-    }
-    setIsRecording(false);
-  }, []);
-
-  const startRecording = useCallback(async () => {
-    if (!logDraft || typeof navigator === "undefined" || !navigator.mediaDevices) {
-      return;
-    }
-
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream);
-      mediaChunksRef.current = [];
-      recorder.ondataavailable = (event) => {
-        if (event.data.size > 0) mediaChunksRef.current.push(event.data);
-      };
-      recorder.onstop = () => {
-        stream.getTracks().forEach((track) => track.stop());
-        setLogDraft((draft) =>
-          draft ? { ...draft, hasVoiceMemo: true } : draft,
-        );
-      };
-      mediaRecorderRef.current = recorder;
-      recorder.start();
-      setIsRecording(true);
-      timerRef.current = setInterval(() => {
-        setLogDraft((draft) => {
-          if (!draft) return draft;
-          const nextSeconds = Math.min(30, draft.seconds + 1);
-          if (nextSeconds >= 30) stopRecording();
-          return { ...draft, seconds: nextSeconds };
+  // Completion handlers
+  const markDone = useCallback(
+    (routine: RoutineDefinition, day: number, note?: string) => {
+      setCompletions((prev) => {
+        const next = new Map(prev);
+        next.set(completionKey(routine.id, personId, day), {
+          routineId: routine.id,
+          personId,
+          day,
+          status: "done",
+          note,
         });
-      }, 1000);
-    } catch {
-      setLogDraft((draft) =>
-        draft
-          ? {
-              ...draft,
-              text: draft.text || "Microphone unavailable, typed note instead.",
-            }
-          : draft,
-      );
-    }
-  }, [logDraft, stopRecording]);
-
-  const submitLogDraft = useCallback(() => {
-    if (!logDraft) return;
-    stopRecording();
-    const challenge = analyzeMemo(
-      logDraft.text,
-      logDraft.routine,
-      logDraft.hasVoiceMemo,
-    );
-    setCompletions((prev) => {
-      const next = new Map(prev);
-      next.set(completionKey(logDraft.routine.id, personId, logDraft.day), {
-        routineId: logDraft.routine.id,
-        personId,
-        day: logDraft.day,
-        status: "done",
-        note: logDraft.text.trim() || (logDraft.hasVoiceMemo ? "Voice memo" : undefined),
-        challenge,
+        return next;
       });
-      return next;
-    });
-    setLogDraft(null);
-  }, [logDraft, personId, stopRecording]);
+    },
+    [personId],
+  );
 
-  // Tap handler: done toggles back to not done; not-done opens the voice memo flow.
   const handleTileTap = useCallback(
     (routine: RoutineDefinition, day: number) => {
       const key = completionKey(routine.id, personId, day);
-      const existing = completions.get(key);
+      // Already done → no-op (locked)
+      if (completions.has(key)) return;
 
-      if (existing) {
-        setCompletions((prev) => {
-          const next = new Map(prev);
-          next.delete(key);
-          return next;
+      // Voice-coach tasks → open coach modal
+      if (routine.proofMode === "voice-coach") {
+        setCoachSession({
+          routine,
+          day,
+          phase: "ask",
+          transcript: "",
+          hasVoiceMemo: false,
+          seconds: 0,
+          coachResponse: "",
+          followUpAnswer: "",
         });
         return;
       }
 
-      setLogDraft({
-        routine,
-        day,
-        text: "",
-        hasVoiceMemo: false,
-        seconds: 0,
-      });
+      // Parent-confirm tasks → simple done (future: parent queue)
+      // Simple tasks → confirm modal
+      setSimpleDraft({ routine, day });
     },
     [completions, personId],
   );
+
+  const handleRedeem = useCallback((rewardId: string) => {
+    setRedeemed((prev) => ({
+      ...prev,
+      [rewardId]: (prev[rewardId] ?? 0) + 1,
+    }));
+  }, []);
 
   if (!person) {
     return (
@@ -486,28 +962,31 @@ export function PersonBoardClient({
 
         <WeekNavBar weekNav={weekNav} />
 
+        {/* Wallet */}
         {person.role === "child" && (
           <NabuSurface tone="muted" className="p-4">
             <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
               <div>
                 <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
-                  Reward goals
+                  Reward wallet
                 </p>
                 <h2 className="mt-0.5 text-base font-semibold text-primary">
-                  {points} habit points this week
+                  {balance} pts available
                 </h2>
+                <p className="text-xs text-tertiary">
+                  {totalEarned} earned · {totalSpent} spent
+                </p>
               </div>
-              {nextReward ? (
-                <NabuBadge tone={nextReward.missing === 0 ? "green" : "amber"}>
-                  {nextReward.missing === 0
-                    ? `${nextReward.reward.title} ready`
-                    : `${nextReward.missing} pts missing`}
-                </NabuBadge>
-              ) : null}
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               {rewardGoals.map((reward) => (
-                <RewardGoalCard key={reward.id} reward={reward} points={points} />
+                <RewardWalletCard
+                  key={reward.id}
+                  reward={reward}
+                  balance={balance}
+                  spent={redeemed[reward.id] ?? 0}
+                  onRedeem={handleRedeem}
+                />
               ))}
             </div>
           </NabuSurface>
@@ -515,9 +994,9 @@ export function PersonBoardClient({
 
         {/* Board grid */}
         <NabuSurface className="overflow-x-auto p-0">
-          <div className="min-w-[600px]">
+          <div className="min-w-[760px]">
             {/* Day headers */}
-            <div className="grid grid-cols-[140px_repeat(7,1fr)] border-b border-secondary">
+            <div className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary">
               <div className="p-3" />
               {dayLabels.map((label, i) => (
                 <div
@@ -536,63 +1015,76 @@ export function PersonBoardClient({
 
             {/* Swimlanes */}
             {laneData.map((lane) => {
-              return lane.routines.map((routine) => (
-                <div
-                  key={routine.id}
-                  className="grid grid-cols-[140px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
-                >
-                  <div className="flex flex-col justify-center p-3">
-                    <div className="flex items-center gap-2">
-                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-stone-100 text-base dark:bg-stone-800">
-                        {routine.icon}
-                      </span>
-                      <div className="min-w-0 space-y-1">
-                        <span className="block truncate text-xs font-semibold text-primary">
-                          {routine.title}
+              return lane.routines.map((routine) => {
+                const progress = routineProgress(personId, routine.id, completionList);
+                return (
+                  <div
+                    key={routine.id}
+                    className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
+                  >
+                    <div className="flex flex-col justify-center p-3">
+                      <div className="flex items-center gap-2">
+                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-stone-100 text-base dark:bg-stone-800">
+                          {routine.icon}
                         </span>
-                        <span className="inline-flex rounded-md bg-stone-100 px-2 py-0.5 text-[11px] font-semibold text-secondary dark:bg-stone-800">
-                          {(() => {
-                            const progress = routineProgress(personId, routine.id, completionList);
-                            return `${progress.done}/${progress.target} target · +${routine.points} pts`;
-                          })()}
-                        </span>
+                        <div className="min-w-0 space-y-1">
+                          <span className="block text-xs font-semibold leading-tight text-primary">
+                            {routine.title}
+                          </span>
+                          {/* Compact progress bar with count */}
+                          <div className="flex items-center gap-1.5">
+                            <div className="relative h-3.5 w-16 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
+                              <div
+                                className="h-full rounded-full bg-emerald-400 transition-all"
+                                style={{
+                                  width: `${progress.target > 0 ? Math.round((progress.done / progress.target) * 100) : 0}%`,
+                                }}
+                              />
+                              <span className="absolute inset-0 flex items-center justify-center text-[9px] font-bold text-stone-700 dark:text-stone-200">
+                                {progress.done}
+                              </span>
+                            </div>
+                            <span className="text-[10px] font-semibold text-quaternary">
+                              / {progress.target}
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  {dayLabels.map((_, dayIdx) => {
-                    const scheduled =
-                      routine.days === null || routine.days.includes(dayIdx);
-                    const key = completionKey(routine.id, personId, dayIdx);
-                    const record = completions.get(key);
+                    {dayLabels.map((_, dayIdx) => {
+                      const scheduled =
+                        routine.days === null || routine.days.includes(dayIdx);
+                      const key = completionKey(routine.id, personId, dayIdx);
+                      const record = completions.get(key);
 
-                    return (
-                      <div key={dayIdx} className="p-1.5">
-                        <TaskTile
-                          routine={routine}
-                          isDone={record?.status === "done"}
-                          note={record?.note}
-                          challenge={record?.challenge}
-                          isToday={dayIdx === today}
-                          isScheduled={scheduled}
-                          onTap={() => handleTileTap(routine, dayIdx)}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              ));
+                      return (
+                        <div key={dayIdx} className="p-1.5">
+                          <TaskTile
+                            routine={routine}
+                            isDone={record?.status === "done"}
+                            isToday={dayIdx === today}
+                            isScheduled={scheduled}
+                            onTap={() => handleTileTap(routine, dayIdx)}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              });
             })}
           </div>
         </NabuSurface>
 
+        {/* Pocket money jobs */}
         {person.role === "child" && pocketMoneyJobs.length > 0 && (
           <NabuSurface className="overflow-x-auto p-0">
-            <div className="min-w-[600px]">
-              <div className="grid grid-cols-[140px_repeat(7,1fr)] border-b border-secondary">
+            <div className="min-w-[760px]">
+              <div className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary">
                 <div className="flex flex-col justify-center p-3">
                   <LaneLabel category="job" />
                   <span className="mt-1 text-[10px] text-quaternary">
-                    Weekly pocket money
+                    0 pts · parent approval
                   </span>
                 </div>
                 {dayLabels.map((label, i) => (
@@ -612,19 +1104,16 @@ export function PersonBoardClient({
               {pocketMoneyJobs.map((routine) => (
                 <div
                   key={routine.id}
-                  className="grid grid-cols-[140px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
+                  className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
                 >
                   <div className="flex flex-col justify-center p-3">
                     <div className="flex items-center gap-2">
                       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-emerald-50 text-base dark:bg-emerald-950/30">
                         {routine.icon}
                       </span>
-                      <div className="min-w-0 space-y-1">
-                        <span className="block truncate text-xs font-semibold text-primary">
+                      <div className="min-w-0">
+                        <span className="block text-xs font-semibold leading-tight text-primary">
                           {routine.title}
-                        </span>
-                        <span className="inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-400">
-                          Grocery shopping · approval
                         </span>
                       </div>
                     </div>
@@ -640,8 +1129,6 @@ export function PersonBoardClient({
                         <TaskTile
                           routine={routine}
                           isDone={record?.status === "done"}
-                          note={record?.note}
-                          challenge={record?.challenge}
                           isToday={dayIdx === today}
                           isScheduled={scheduled}
                           onTap={() => handleTileTap(routine, dayIdx)}
@@ -655,102 +1142,22 @@ export function PersonBoardClient({
           </NabuSurface>
         )}
 
-        {logDraft && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 px-4">
-            <div className="w-full max-w-md rounded-lg border border-secondary bg-primary p-4 shadow-xl">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-[10px] font-medium uppercase tracking-widest text-quaternary">
-                    Done memo · max 30s
-                  </p>
-                  <h2 className="mt-1 text-lg font-semibold text-primary">
-                    {logDraft.routine.title} · {dayLabels[logDraft.day]}
-                  </h2>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    stopRecording();
-                    setLogDraft(null);
-                  }}
-                  className="grid h-8 w-8 place-items-center rounded-md border border-secondary text-quaternary hover:text-primary"
-                  aria-label="Close memo"
-                >
-                  ×
-                </button>
-              </div>
-
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                <button
-                  type="button"
-                  onClick={isRecording ? stopRecording : startRecording}
-                  className={cn(
-                    "rounded-md border px-3 py-2 text-sm font-semibold transition-colors",
-                    isRecording
-                      ? "border-red-200 bg-red-50 text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300"
-                      : "border-secondary bg-secondary text-secondary hover:text-primary",
-                  )}
-                >
-                  {isRecording ? `Stop ${logDraft.seconds}s` : "Record voice"}
-                </button>
-                {logDraft.hasVoiceMemo && (
-                  <NabuBadge tone="green">Voice memo saved</NabuBadge>
-                )}
-                <span className="text-xs text-quaternary">
-                  {30 - logDraft.seconds}s left
-                </span>
-              </div>
-
-              <label className="mt-4 block">
-                <span className="text-xs font-semibold text-secondary">
-                  What did you do?
-                </span>
-                <textarea
-                  value={logDraft.text}
-                  onChange={(event) =>
-                    setLogDraft((draft) =>
-                      draft ? { ...draft, text: event.target.value } : draft,
-                    )
-                  }
-                  rows={4}
-                  placeholder="I cleared the plates, wiped the table, and helped put glasses away."
-                  className="mt-1 w-full resize-none rounded-md border border-secondary bg-secondary px-3 py-2 text-sm text-primary outline-none transition-colors placeholder:text-quaternary focus:border-stone-400"
-                />
-              </label>
-
-              <div className="mt-4 flex justify-end gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    stopRecording();
-                    setLogDraft(null);
-                  }}
-                  className="rounded-md border border-secondary px-3 py-2 text-sm font-semibold text-secondary"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  onClick={submitLogDraft}
-                  className="rounded-md bg-stone-900 px-3 py-2 text-sm font-semibold text-white dark:bg-white dark:text-stone-900"
-                >
-                  Mark done
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Legend */}
+        {/* Legend — visual only, no text labels */}
         <div className="flex flex-wrap items-center gap-3 text-[11px] text-quaternary">
-          <span className="font-medium text-tertiary">Tap:</span>
+          <span className="font-medium text-tertiary">Legend:</span>
           <span className="flex items-center gap-1.5">
-            <span className="inline-block h-3 w-3 rounded-sm border border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30" />
-            Done
+            <span className="inline-block h-3 w-3 rounded-sm border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30">
+              <svg className="h-3 w-3 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            Completed
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="inline-block h-3 w-3 rounded-sm border border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-800/60" />
-            Not done
+            <span className="inline-flex h-3 w-3 items-center justify-center rounded-sm border border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-800/60">
+              <span className="h-1.5 w-1.5 rounded-full border border-stone-300 dark:border-stone-500" />
+            </span>
+            Open
           </span>
           <span className="flex items-center gap-1.5">
             <span className="inline-block h-3 w-3 rounded-sm border border-dashed border-stone-300 dark:border-stone-600" />
@@ -758,6 +1165,36 @@ export function PersonBoardClient({
           </span>
         </div>
       </div>
+
+      {/* Simple confirm modal */}
+      {simpleDraft && (
+        <SimpleConfirmModal
+          draft={simpleDraft}
+          onConfirm={() => {
+            markDone(simpleDraft.routine, simpleDraft.day);
+            setSimpleDraft(null);
+          }}
+          onClose={() => setSimpleDraft(null)}
+        />
+      )}
+
+      {/* Voice coach modal */}
+      {coachSession && (
+        <VoiceCoachModal
+          session={coachSession}
+          onUpdate={setCoachSession}
+          onClose={() => setCoachSession(null)}
+          onComplete={(routine, day, note) => {
+            markDone(routine, day, note);
+            setCoachSession(null);
+          }}
+          onParentReview={(routine, day, note) => {
+            // For now, mark done with a "pending review" note
+            markDone(routine, day, `[pending review] ${note}`);
+            setCoachSession(null);
+          }}
+        />
+      )}
     </main>
   );
 }

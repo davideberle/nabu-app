@@ -12,7 +12,6 @@ import {
 import {
   familyMembers,
   initialCompletions,
-  initialRewards,
   rewardDefinitions,
   dayLabels,
   currentDayIndex,
@@ -22,7 +21,6 @@ import {
   todayStatusLabel,
   type FamilyPerson,
   type CompletionRecord,
-  type RewardRecord,
   type RewardDefinition,
 } from "@/data/family-routines";
 
@@ -76,11 +74,6 @@ function statusBadgeTone(label: string): BadgeTone {
   return "amber";
 }
 
-function progressPercent(done: number, total: number): number {
-  if (total === 0) return 0;
-  return Math.round((done / total) * 100);
-}
-
 function rewardProgress(points: number, target: number): number {
   if (target <= 0) return 0;
   return Math.min(100, Math.round((points / target) * 100));
@@ -93,13 +86,11 @@ function rewardProgress(points: number, target: number): number {
 function PersonCard({
   person,
   completions,
-  rewards,
   today,
   weekId,
 }: {
   person: FamilyPerson;
   completions: CompletionRecord[];
-  rewards: RewardRecord[];
   today: number;
   weekId: string;
 }) {
@@ -110,10 +101,9 @@ function PersonCard({
   const nextReward = nextRewardForPerson(person.id, points);
   const percent = nextReward
     ? rewardProgress(points, nextReward.reward.targetPoints)
-    : progressPercent(summary.done, summary.total);
-  const todayReward = rewards.find(
-    (r) => r.personId === person.id && r.day === today,
-  );
+    : summary.total > 0
+      ? Math.round((summary.done / summary.total) * 100)
+      : 0;
 
   return (
     <Link
@@ -158,8 +148,8 @@ function PersonCard({
             </span>
             <span className="font-medium text-secondary">
               {nextReward.missing === 0
-                ? "ready"
-                : `${nextReward.missing} pts missing`}
+                ? "available"
+                : `${nextReward.missing} pts to go`}
             </span>
           </div>
           <div className="h-1.5 w-full overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
@@ -172,7 +162,7 @@ function PersonCard({
       ) : summary.total > 0 ? (
         <div className="space-y-1.5">
           <div className="flex items-center justify-between text-xs text-tertiary">
-            <span>Logged this week</span>
+            <span>This week</span>
             <span className="font-medium text-secondary">
               {summary.done}/{summary.total}
             </span>
@@ -189,37 +179,14 @@ function PersonCard({
       {person.role === "child" && (
         <div className="rounded-md bg-white/60 px-3 py-2 dark:bg-white/5">
           <p className="text-[10px] uppercase tracking-widest text-quaternary">
-            This week
+            Balance
           </p>
           <p className="text-sm font-semibold text-primary">
-            {points} habit points
+            {points} pts
           </p>
         </div>
       )}
-
-      {/* Stats row */}
-      <div className="grid grid-cols-3 gap-2">
-        <MiniStat label="Done" value={summary.done} />
-        <MiniStat label="Not done" value={summary.planned} />
-        {todayReward && (
-          <MiniStat
-            label="Reward"
-            value={todayReward.status === "earned" ? "Earned" : "Pending"}
-          />
-        )}
-      </div>
     </Link>
-  );
-}
-
-function MiniStat({ label, value }: { label: string; value: number | string }) {
-  return (
-    <div className="rounded-md bg-white/60 p-2 dark:bg-white/5">
-      <p className="text-[10px] uppercase tracking-widest text-quaternary">
-        {label}
-      </p>
-      <p className="text-sm font-semibold text-primary">{String(value)}</p>
-    </div>
   );
 }
 
@@ -253,14 +220,19 @@ function RewardGoalCard({
             </NabuBadge>
           </div>
           <p className="mt-1 text-xs font-semibold text-secondary">
-            {ready ? "Ready to claim" : `${missing} pts missing`}
+            {ready ? "Available" : `${missing} pts to go`}
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-2 rounded-md bg-secondary p-2">
-        <MiniStat label="Target" value={reward.targetPoints} />
-        <MiniStat label="Current" value={current} />
-        <MiniStat label="Missing" value={missing} />
+      <div className="grid grid-cols-2 gap-2 rounded-md bg-secondary p-2">
+        <div>
+          <p className="text-[10px] uppercase tracking-widest text-quaternary">Cost</p>
+          <p className="text-sm font-semibold text-primary">{reward.costPoints}</p>
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-widest text-quaternary">Avg balance</p>
+          <p className="text-sm font-semibold text-primary">{current}</p>
+        </div>
       </div>
     </div>
   );
@@ -304,7 +276,6 @@ function WeekNavBar({ weekNav }: { weekNav: WeekNav }) {
 export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
   const today = currentDayIndex();
   const completions = initialCompletions;
-  const rewards = initialRewards;
 
   const children = familyMembers.filter((p) => p.role === "child");
   const parents = familyMembers.filter((p) => p.role === "parent");
@@ -357,11 +328,11 @@ export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
           ))}
         </div>
 
-        {/* Reward goals */}
+        {/* Reward shop */}
         <NabuSurface tone="muted" className="p-4">
           <NabuSectionHeader
-            title="What are we earning?"
-            description="Daily privileges, weekly family time, and longer goals."
+            title="Reward shop"
+            description="Earn points, redeem rewards."
             className="mb-3"
           />
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -384,7 +355,6 @@ export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
                 key={person.id}
                 person={person}
                 completions={completions}
-                rewards={rewards}
                 today={today}
                 weekId={weekNav.weekId}
               />
@@ -401,7 +371,6 @@ export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
                 key={person.id}
                 person={person}
                 completions={completions}
-                rewards={rewards}
                 today={today}
                 weekId={weekNav.weekId}
               />

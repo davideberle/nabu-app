@@ -23,6 +23,8 @@ export type CompletionStatus = "done";
 
 export type RewardStatus = "not-yet" | "earned" | "approved" | "redeemed";
 
+export type ProofMode = "none" | "voice-coach" | "parent-confirm";
+
 export type RoutineDefinition = {
   id: string;
   title: string;
@@ -35,6 +37,7 @@ export type RoutineDefinition = {
   weeklyTarget: number;
   points: number;
   requiresApproval: boolean;
+  proofMode: ProofMode;
   description?: string;
   moneyLabel?: string;
 };
@@ -63,6 +66,8 @@ export type RewardDefinition = {
   period: "daily" | "weekly" | "long-term";
   assignedTo: string[];
   targetPoints: number;
+  /** Points deducted from wallet when redeemed. */
+  costPoints: number;
   description: string;
 };
 
@@ -104,38 +109,38 @@ export const swimlaneCategories: RoutineCategory[] = [
 // ---------------------------------------------------------------------------
 
 export const routineDefinitions: RoutineDefinition[] = [
-  // Santiago — Practice
-  { id: "s-kumon",    title: "Kumon",         icon: "✏️", taskClass: "routine", category: "practice",    assignedTo: ["santiago"], days: [0,1,2,3,4], weeklyTarget: 5, points: 2, requiresApproval: false },
-  { id: "s-piano",    title: "Piano practice", icon: "🎹", taskClass: "routine", category: "practice",   assignedTo: ["santiago"], days: [0,2,4], weeklyTarget: 3, points: 2, requiresApproval: false },
-  // Santiago — Body / Care
-  { id: "s-physio",   title: "Physio exercises", icon: "🏃", taskClass: "routine", category: "body-care", assignedTo: ["santiago"], days: [0,1,2,3,4], weeklyTarget: 5, points: 2, requiresApproval: false },
-  // Santiago — Household
-  { id: "s-table-dinner", title: "Table + dinner", icon: "🍽️", taskClass: "responsibility", category: "household", assignedTo: ["santiago"], days: null, weeklyTarget: 5, points: 1, requiresApproval: false },
+  // Santiago — Practice (voice-coach: practice tasks need detail)
+  { id: "s-kumon",    title: "Kumon",         icon: "✏️", taskClass: "routine", category: "practice",    assignedTo: ["santiago"], days: [0,1,2,3,4], weeklyTarget: 5, points: 1, requiresApproval: false, proofMode: "voice-coach" },
+  { id: "s-piano",    title: "Piano practice", icon: "🎹", taskClass: "routine", category: "practice",   assignedTo: ["santiago"], days: [0,2,4], weeklyTarget: 3, points: 1, requiresApproval: false, proofMode: "voice-coach" },
+  // Santiago — Body / Care (voice-coach: physio needs specifics)
+  { id: "s-physio",   title: "Physio exercises", icon: "🏃", taskClass: "routine", category: "body-care", assignedTo: ["santiago"], days: [0,1,2,3,4], weeklyTarget: 5, points: 1, requiresApproval: false, proofMode: "voice-coach" },
+  // Santiago — Household (voice-coach: table+dinner can be ambiguous between siblings)
+  { id: "s-table-dinner", title: "Table + dinner", icon: "🍽️", taskClass: "responsibility", category: "household", assignedTo: ["santiago"], days: null, weeklyTarget: 5, points: 1, requiresApproval: false, proofMode: "voice-coach" },
   // Santiago — Family contribution
-  { id: "s-extra-bonus", title: "Extra bonus", icon: "⭐", taskClass: "responsibility", category: "family-contribution", assignedTo: ["santiago"], days: null, weeklyTarget: 3, points: 2, requiresApproval: false, description: "Useful extra effort that was not on the normal list." },
-  // Santiago — Optional job
-  { id: "s-grocery",  title: "Claim pocket money", icon: "🛒", taskClass: "job", category: "job", assignedTo: ["santiago"], days: [5], weeklyTarget: 1, points: 0, requiresApproval: true, description: "Weekly grocery shopping job", moneyLabel: "Pocket money" },
+  { id: "s-extra-bonus", title: "Extra bonus", icon: "⭐", taskClass: "responsibility", category: "family-contribution", assignedTo: ["santiago"], days: null, weeklyTarget: 3, points: 1, requiresApproval: false, proofMode: "none", description: "Useful extra effort that was not on the normal list." },
+  // Santiago — Optional job (parent-confirm: paid work)
+  { id: "s-grocery",  title: "Claim pocket money", icon: "🛒", taskClass: "job", category: "job", assignedTo: ["santiago"], days: [5], weeklyTarget: 1, points: 0, requiresApproval: true, proofMode: "parent-confirm", description: "Weekly grocery shopping job", moneyLabel: "Pocket money" },
 
   // Isabel — Practice
-  { id: "i-kumon",    title: "Kumon",          icon: "✏️", taskClass: "routine", category: "practice",   assignedTo: ["isabel"], days: [0,1,2,3,4], weeklyTarget: 5, points: 2, requiresApproval: false },
-  { id: "i-piano",    title: "Piano practice", icon: "🎹", taskClass: "routine", category: "practice",   assignedTo: ["isabel"], days: [1,3], weeklyTarget: 2, points: 2, requiresApproval: false },
+  { id: "i-kumon",    title: "Kumon",          icon: "✏️", taskClass: "routine", category: "practice",   assignedTo: ["isabel"], days: [0,1,2,3,4], weeklyTarget: 5, points: 1, requiresApproval: false, proofMode: "voice-coach" },
+  { id: "i-piano",    title: "Piano practice", icon: "🎹", taskClass: "routine", category: "practice",   assignedTo: ["isabel"], days: [1,3], weeklyTarget: 2, points: 1, requiresApproval: false, proofMode: "voice-coach" },
   // Isabel — Body / Care
-  { id: "i-physio",   title: "Physio exercises", icon: "🏃", taskClass: "routine", category: "body-care", assignedTo: ["isabel"], days: [0,2,4], weeklyTarget: 3, points: 2, requiresApproval: false },
-  // Isabel — Household
-  { id: "i-dinner",   title: "Dinner helper",  icon: "🍽️", taskClass: "responsibility", category: "household", assignedTo: ["isabel"], days: [0,2,4], weeklyTarget: 2, points: 1, requiresApproval: false },
-  { id: "i-clear",    title: "Clear table",    icon: "🧽", taskClass: "responsibility", category: "household", assignedTo: ["isabel"], days: null, weeklyTarget: 5, points: 1, requiresApproval: false },
+  { id: "i-physio",   title: "Physio exercises", icon: "🏃", taskClass: "routine", category: "body-care", assignedTo: ["isabel"], days: [0,2,4], weeklyTarget: 3, points: 1, requiresApproval: false, proofMode: "voice-coach" },
+  // Isabel — Household (voice-coach for dinner ambiguity; clear table is simple tap-to-done)
+  { id: "i-dinner",   title: "Dinner helper",  icon: "🍽️", taskClass: "responsibility", category: "household", assignedTo: ["isabel"], days: [0,2,4], weeklyTarget: 2, points: 1, requiresApproval: false, proofMode: "voice-coach" },
+  { id: "i-clear",    title: "Clear table",    icon: "🧽", taskClass: "responsibility", category: "household", assignedTo: ["isabel"], days: null, weeklyTarget: 5, points: 1, requiresApproval: false, proofMode: "none" },
   // Isabel — Family contribution
-  { id: "i-tidy",     title: "Room tidy",      icon: "🧺", taskClass: "responsibility", category: "family-contribution", assignedTo: ["isabel"], days: [0,1,2,3,4,5,6], weeklyTarget: 5, points: 1, requiresApproval: false },
+  { id: "i-tidy",     title: "Room tidy",      icon: "🧺", taskClass: "responsibility", category: "family-contribution", assignedTo: ["isabel"], days: [0,1,2,3,4,5,6], weeklyTarget: 5, points: 1, requiresApproval: false, proofMode: "none" },
   // Isabel — Optional job
-  { id: "i-grocery",  title: "Claim pocket money", icon: "🛒", taskClass: "job", category: "job", assignedTo: ["isabel"], days: [5], weeklyTarget: 1, points: 0, requiresApproval: true, description: "Weekly grocery shopping job", moneyLabel: "Pocket money" },
+  { id: "i-grocery",  title: "Claim pocket money", icon: "🛒", taskClass: "job", category: "job", assignedTo: ["isabel"], days: [5], weeklyTarget: 1, points: 0, requiresApproval: true, proofMode: "parent-confirm", description: "Weekly grocery shopping job", moneyLabel: "Pocket money" },
 
   // David
-  { id: "d-exercise", title: "Exercise",       icon: "💪", taskClass: "routine", category: "body-care",  assignedTo: ["david"], days: [0,1,2,3,4], weeklyTarget: 4, points: 1, requiresApproval: false },
-  { id: "d-cook",     title: "Cook dinner",    icon: "🥘", taskClass: "responsibility", category: "household", assignedTo: ["david"], days: null, weeklyTarget: 4, points: 1, requiresApproval: false },
+  { id: "d-exercise", title: "Exercise",       icon: "💪", taskClass: "routine", category: "body-care",  assignedTo: ["david"], days: [0,1,2,3,4], weeklyTarget: 4, points: 1, requiresApproval: false, proofMode: "none" },
+  { id: "d-cook",     title: "Cook dinner",    icon: "🥘", taskClass: "responsibility", category: "household", assignedTo: ["david"], days: null, weeklyTarget: 4, points: 1, requiresApproval: false, proofMode: "none" },
 
   // Marisol
-  { id: "m-yoga",     title: "Yoga",           icon: "🧘", taskClass: "routine", category: "body-care",  assignedTo: ["marisol"], days: [0,2,4], weeklyTarget: 3, points: 1, requiresApproval: false },
-  { id: "m-garden",   title: "Garden check",   icon: "🌱", taskClass: "responsibility", category: "household", assignedTo: ["marisol"], days: [5,6], weeklyTarget: 2, points: 1, requiresApproval: false },
+  { id: "m-yoga",     title: "Yoga",           icon: "🧘", taskClass: "routine", category: "body-care",  assignedTo: ["marisol"], days: [0,2,4], weeklyTarget: 3, points: 1, requiresApproval: false, proofMode: "none" },
+  { id: "m-garden",   title: "Garden check",   icon: "🌱", taskClass: "responsibility", category: "household", assignedTo: ["marisol"], days: [5,6], weeklyTarget: 2, points: 1, requiresApproval: false, proofMode: "none" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -149,7 +154,8 @@ export const rewardDefinitions: RewardDefinition[] = [
     icon: "🤝",
     period: "daily",
     assignedTo: ["santiago", "isabel"],
-    targetPoints: 4,
+    targetPoints: 3,
+    costPoints: 3,
     description: "Daily privilege once enough useful things are done.",
   },
   {
@@ -158,7 +164,8 @@ export const rewardDefinitions: RewardDefinition[] = [
     icon: "🎮",
     period: "daily",
     assignedTo: ["santiago", "isabel"],
-    targetPoints: 5,
+    targetPoints: 4,
+    costPoints: 4,
     description: "Small daily screen reward, not the whole economy.",
   },
   {
@@ -167,7 +174,8 @@ export const rewardDefinitions: RewardDefinition[] = [
     icon: "🎬",
     period: "weekly",
     assignedTo: ["santiago", "isabel"],
-    targetPoints: 24,
+    targetPoints: 14,
+    costPoints: 14,
     description: "Weekly family reward for a solid week.",
   },
   {
@@ -176,7 +184,8 @@ export const rewardDefinitions: RewardDefinition[] = [
     icon: "🧭",
     period: "long-term",
     assignedTo: ["santiago", "isabel"],
-    targetPoints: 45,
+    targetPoints: 30,
+    costPoints: 30,
     description: "Longer goal built from several good weeks.",
   },
   {
@@ -185,7 +194,8 @@ export const rewardDefinitions: RewardDefinition[] = [
     icon: "🗺️",
     period: "long-term",
     assignedTo: ["santiago", "isabel"],
-    targetPoints: 90,
+    targetPoints: 60,
+    costPoints: 60,
     description: "Big shared goal, slow enough to stay special.",
   },
 ];
