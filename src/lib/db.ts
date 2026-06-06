@@ -498,6 +498,19 @@ async function migrate(client: Client) {
         )
       `);
     },
+
+    // v11 -> v12: create travel_item_states table for trip board status tracking
+    async () => {
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS travel_item_states (
+          trip_id    TEXT NOT NULL,
+          item_id    TEXT NOT NULL,
+          status     TEXT NOT NULL CHECK (status IN ('idea', 'planned', 'done')),
+          updated_at TEXT NOT NULL,
+          PRIMARY KEY (trip_id, item_id)
+        )
+      `);
+    },
   ];
 
   if (version < migrations.length) {
@@ -1155,5 +1168,76 @@ export async function markBottleAvailable(bottleId: string): Promise<void> {
           VALUES (?, 'available', ?)
           ON CONFLICT (bottle_id) DO UPDATE SET status = 'available', updated_at = ?`,
     args: [bottleId, now, now],
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Travel item state helpers
+// ---------------------------------------------------------------------------
+
+export type TravelItemState = {
+  tripId: string;
+  itemId: string;
+  status: "idea" | "planned" | "done";
+  updatedAt: string;
+};
+
+/**
+ * Idempotently ensure the travel_item_states table exists.
+ * Guards against schema_version being ahead of the migrations array,
+ * which can cause the migration that creates this table to be skipped.
+ */
+async function ensureTravelItemStatesTable(client: Client): Promise<void> {
+  await client.execute(`
+    CREATE TABLE IF NOT EXISTS travel_item_states (
+      trip_id    TEXT NOT NULL,
+      item_id    TEXT NOT NULL,
+      status     TEXT NOT NULL CHECK (status IN ('idea', 'planned', 'done')),
+      updated_at TEXT NOT NULL,
+      PRIMARY KEY (trip_id, item_id)
+    )
+  `);
+}
+
+/** Get all item states for a trip. */
+export async function getTravelItemStates(
+  tripId: string
+): Promise<Map<string, TravelItemState>> {
+  const client = await getDb();
+  await ensureTravelItemStatesTable(client);
+  try {
+    const result = await client.execute({
+      sql: "SELECT trip_id, item_id, status, updated_at FROM travel_item_states WHERE trip_id = ?",
+      args: [tripId],
+    });
+    const map = new Map<string, TravelItemState>();
+    for (const row of result.rows) {
+      map.set(row["item_id"] as string, {
+        tripId: row["trip_id"] as string,
+        itemId: row["item_id"] as string,
+        status: row["status"] as "idea" | "planned" | "done",
+        updatedAt: row["updated_at"] as string,
+      });
+    }
+    return map;
+  } catch {
+    return new Map();
+  }
+}
+
+/** Set the status for a travel item (upsert). */
+export async function setTravelItemStatus(
+  tripId: string,
+  itemId: string,
+  status: "idea" | "planned" | "done"
+): Promise<void> {
+  const client = await getDb();
+  await ensureTravelItemStatesTable(client);
+  const now = new Date().toISOString();
+  await client.execute({
+    sql: `INSERT INTO travel_item_states (trip_id, item_id, status, updated_at)
+          VALUES (?, ?, ?, ?)
+          ON CONFLICT (trip_id, item_id) DO UPDATE SET status = ?, updated_at = ?`,
+    args: [tripId, itemId, status, now, status, now],
   });
 }
