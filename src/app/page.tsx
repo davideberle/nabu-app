@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { auth, signOut } from "@/auth";
 import { NabuCard, NabuHeader, NabuIconFrame, NabuMain, NabuPageShell, NabuPill, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
 import { initialTodos } from "@/lib/todos";
@@ -15,7 +14,21 @@ function getFamilySummary() {
   return { planning, next, planningCount };
 }
 
-async function getTiles() {
+interface Tile {
+  id: string;
+  name: string;
+  emoji: string;
+  description: string;
+  href: string;
+  stats: string;
+}
+
+interface TileCategory {
+  label: string;
+  tiles: Tile[];
+}
+
+async function getTileCategories(): Promise<TileCategory[]> {
   const activeTodos = initialTodos.filter((t) => !t.completed).length;
   const myRecipes = await getRecipesByCookbook("my-recipes");
   const myRecipesCount = myRecipes.length;
@@ -23,119 +36,134 @@ async function getTiles() {
 
   return [
     {
-      id: "family",
-      name: "Family",
-      emoji: "👨‍👩‍👧‍👦",
-      description: "Birthdays, anniversaries, planning",
-      href: "/family",
-      stats: family.planningCount > 0
-        ? `${family.planningCount} planning`
-        : family.next
-          ? `${family.next.daysUntil}d`
-          : "View",
+      label: "Planning & Family",
+      tiles: [
+        {
+          id: "family",
+          name: "Family",
+          emoji: "👨‍👩‍👧‍👦",
+          description: "Birthdays, anniversaries, planning",
+          href: "/family",
+          stats: family.planningCount > 0
+            ? `${family.planningCount} planning`
+            : family.next
+              ? `${family.next.daysUntil}d`
+              : "View",
+        },
+        {
+          id: "san-sebastian",
+          name: "San Sebastian",
+          emoji: "🏖️",
+          description: "Summer trip board — activities, food, hikes",
+          href: "/travel/san-sebastian",
+          stats: "Plan",
+        },
+        {
+          id: "routines",
+          name: "Routines",
+          emoji: "📋",
+          description: "Family board, weekly routines, rewards",
+          href: "/family/dashboard",
+          stats: "Board",
+        },
+        {
+          id: "todos",
+          name: "Todos",
+          emoji: "✅",
+          description: "Tasks, reminders, follow-ups",
+          href: "/todos",
+          stats: `${activeTodos} active`,
+        },
+      ],
     },
     {
-      id: "san-sebastian",
-      name: "San Sebastian",
-      emoji: "🏖️",
-      description: "Summer trip board — activities, food, hikes",
-      href: "/travel/san-sebastian",
-      stats: "Plan",
+      label: "Food & Cooking",
+      tiles: [
+        {
+          id: "shopping",
+          name: "Shopping",
+          emoji: "🛒",
+          description: "Kids list, David's list, Bulk",
+          href: "/shopping",
+          stats: "Lists",
+        },
+        {
+          id: "recipes",
+          name: "Recipes",
+          emoji: "🍳",
+          description: "Browse, search, cook mode",
+          href: "/recipes",
+          stats: `${myRecipesCount} saved`,
+        },
+        {
+          id: "cooking",
+          name: "Cooking",
+          emoji: "🔥",
+          description: "Live session for today",
+          href: "/cooking",
+          stats: "Today",
+        },
+        {
+          id: "meals",
+          name: "Meals",
+          emoji: "🍽️",
+          description: "Weekly meal planning",
+          href: "/meals",
+          stats: "Plan ahead",
+        },
+      ],
     },
     {
-      id: "routines",
-      name: "Routines",
-      emoji: "📋",
-      description: "Family board, weekly routines, rewards",
-      href: "/family/dashboard",
-      stats: "Board",
-    },
-    {
-      id: "todos",
-      name: "Todos",
-      emoji: "✅",
-      description: "Tasks, reminders, follow-ups",
-      href: "/todos",
-      stats: `${activeTodos} active`,
-    },
-    {
-      id: "shopping",
-      name: "Shopping",
-      emoji: "🛒",
-      description: "Kids list, David's list, Bulk",
-      href: "/shopping",
-      stats: "Lists",
-    },
-    {
-      id: "recipes",
-      name: "Recipes",
-      emoji: "🍳",
-      description: "Browse, search, cook mode",
-      href: "/recipes",
-      stats: `${myRecipesCount} saved`,
-    },
-    {
-      id: "music",
-      name: "Music",
-      emoji: "🎵",
-      description: "DJ, discoveries, history",
-      href: "/music",
-      stats: "Browse",
-    },
-    {
-      id: "garden",
-      name: "Garden",
-      emoji: "🌿",
-      description: "Irrigation schedule, rain brake, zones",
-      href: "/garden",
-      stats: "Auto",
-    },
-    {
-      id: "cooking",
-      name: "Cooking",
-      emoji: "🔥",
-      description: "Live session for today",
-      href: "/cooking",
-      stats: "Today",
-    },
-    {
-      id: "meals",
-      name: "Meals",
-      emoji: "🍽️",
-      description: "Weekly meal planning",
-      href: "/meals",
-      stats: "Plan ahead",
-    },
-    {
-      id: "wine",
-      name: "Wine Cellar",
-      emoji: "🍷",
-      description: "Home stock, pairings, status",
-      href: "/wine",
-      stats: `${wineBottles.length} bottles`,
-    },
-    {
-      id: "assets",
-      name: "House Assets",
-      emoji: "🏠",
-      description: "Equipment, warranties, maintenance",
-      href: "/assets",
-      stats: `${houseAssets.length} tracked`,
-    },
-    {
-      id: "system",
-      name: "System",
-      emoji: "🔧",
-      description: "Status, services, logs",
-      href: "/system",
-      stats: "Status",
+      label: "Home & Systems",
+      tiles: [
+        {
+          id: "garden",
+          name: "Garden",
+          emoji: "🌿",
+          description: "Irrigation schedule, rain brake, zones",
+          href: "/garden",
+          stats: "Auto",
+        },
+        {
+          id: "wine",
+          name: "Wine Cellar",
+          emoji: "🍷",
+          description: "Home stock, pairings, status",
+          href: "/wine",
+          stats: `${wineBottles.length} bottles`,
+        },
+        {
+          id: "music",
+          name: "Music",
+          emoji: "🎵",
+          description: "DJ, discoveries, history",
+          href: "/music",
+          stats: "Browse",
+        },
+        {
+          id: "assets",
+          name: "House Assets",
+          emoji: "🏠",
+          description: "Equipment, warranties, maintenance",
+          href: "/assets",
+          stats: `${houseAssets.length} tracked`,
+        },
+        {
+          id: "system",
+          name: "System",
+          emoji: "🔧",
+          description: "Status, services, logs",
+          href: "/system",
+          stats: "Status",
+        },
+      ],
     },
   ];
 }
 
 export default async function Home() {
   const session = await auth();
-  const tiles = await getTiles();
+  const categories = await getTileCategories();
   const family = getFamilySummary();
 
   // Build a today description that includes the next family planning item
@@ -204,40 +232,41 @@ export default async function Home() {
           </NabuSurface>
         </section>
 
-        {/* Surface grid */}
-        <section>
-          <NabuSectionHeader
-            className="mb-3"
-            eyebrow="Surfaces"
-            title="What do you need?"
-          />
+        {/* Categorised tile grids */}
+        {categories.map((category) => (
+          <section key={category.label}>
+            <NabuSectionHeader
+              className="mb-3"
+              eyebrow={category.label}
+            />
 
-          <div className="grid min-w-0 grid-cols-1 gap-3 min-[480px]:grid-cols-2 lg:grid-cols-3">
-            {tiles.map((tile) => (
-              <NabuCard
-                key={tile.id}
-                href={tile.href}
-              >
-                <div className="flex min-w-0 items-center gap-3">
-                  <NabuIconFrame className="bg-stone-100 transition-colors group-hover:bg-stone-200 dark:bg-stone-800 dark:group-hover:bg-stone-700">
-                    {tile.emoji}
-                  </NabuIconFrame>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex min-w-0 items-center justify-between gap-2">
-                      <h2 className="min-w-0 truncate text-sm font-semibold tracking-[-0.01em] text-primary">
-                        {tile.name}
-                      </h2>
-                      <NabuPill className="hidden shrink-0 min-[480px]:inline-flex">{tile.stats}</NabuPill>
+            <div className="grid min-w-0 grid-cols-1 gap-3 min-[480px]:grid-cols-2 lg:grid-cols-3">
+              {category.tiles.map((tile) => (
+                <NabuCard
+                  key={tile.id}
+                  href={tile.href}
+                >
+                  <div className="flex min-w-0 items-center gap-3">
+                    <NabuIconFrame className="bg-stone-100 transition-colors group-hover:bg-stone-200 dark:bg-stone-800 dark:group-hover:bg-stone-700">
+                      {tile.emoji}
+                    </NabuIconFrame>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex min-w-0 items-center justify-between gap-2">
+                        <h2 className="min-w-0 truncate text-sm font-semibold tracking-[-0.01em] text-primary">
+                          {tile.name}
+                        </h2>
+                        <NabuPill className="hidden shrink-0 min-[480px]:inline-flex">{tile.stats}</NabuPill>
+                      </div>
+                      <p className="mt-0.5 truncate text-xs leading-relaxed text-tertiary">
+                        {tile.description}
+                      </p>
                     </div>
-                    <p className="mt-0.5 truncate text-xs leading-relaxed text-tertiary">
-                      {tile.description}
-                    </p>
                   </div>
-                </div>
-              </NabuCard>
-            ))}
-          </div>
-        </section>
+                </NabuCard>
+              ))}
+            </div>
+          </section>
+        ))}
       </NabuMain>
     </NabuPageShell>
   );
