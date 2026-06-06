@@ -511,6 +511,48 @@ async function migrate(client: Client) {
         )
       `);
     },
+
+    // v12 -> v13: family board — completions, reward redemptions, board config
+    async () => {
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS family_completions (
+          person_id  TEXT NOT NULL,
+          routine_id TEXT NOT NULL,
+          week       TEXT NOT NULL,
+          day        INTEGER NOT NULL,
+          status     TEXT NOT NULL DEFAULT 'done',
+          note       TEXT,
+          created_at TEXT NOT NULL,
+          PRIMARY KEY (person_id, routine_id, week, day)
+        )
+      `);
+      await client.execute(`
+        CREATE INDEX IF NOT EXISTS idx_family_completions_week
+          ON family_completions (week, person_id)
+      `);
+
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS family_reward_redemptions (
+          id         TEXT PRIMARY KEY,
+          person_id  TEXT NOT NULL,
+          reward_id  TEXT NOT NULL,
+          week       TEXT NOT NULL,
+          created_at TEXT NOT NULL
+        )
+      `);
+      await client.execute(`
+        CREATE INDEX IF NOT EXISTS idx_family_redemptions_week
+          ON family_reward_redemptions (week, person_id)
+      `);
+
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS family_board_config (
+          id         TEXT PRIMARY KEY DEFAULT 'default',
+          data       TEXT NOT NULL,
+          updated_at TEXT NOT NULL
+        )
+      `);
+    },
   ];
 
   if (version < migrations.length) {

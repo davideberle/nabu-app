@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   NabuBadge,
@@ -11,10 +12,11 @@ import {
 } from "@/components/ui/nabu";
 import {
   familyMembers,
-  initialCompletions,
+  routineDefinitions,
   rewardDefinitions,
   dayLabels,
   currentDayIndex,
+  routinesForPerson,
   weekSummary,
   weekPoints,
   nextRewardForPerson,
@@ -23,6 +25,7 @@ import {
   type CompletionRecord,
   type RewardDefinition,
 } from "@/data/family-routines";
+import type { FamilyBoardConfig } from "@/lib/family-db";
 
 // ---------------------------------------------------------------------------
 // Color helpers
@@ -275,14 +278,33 @@ function WeekNavBar({ weekNav }: { weekNav: WeekNav }) {
 
 export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
   const today = currentDayIndex();
-  const completions = initialCompletions;
+  const [completions, setCompletions] = useState<CompletionRecord[]>([]);
+  const [loaded, setLoaded] = useState(false);
+
+  // Load completions from DB
+  useEffect(() => {
+    let cancelled = false;
+    async function load() {
+      const res = await fetch(`/api/family/completions?week=${weekNav.weekId}`);
+      if (cancelled) return;
+      const data: CompletionRecord[] = await res.json();
+      setCompletions(data);
+      setLoaded(true);
+    }
+    load();
+    return () => { cancelled = true; };
+  }, [weekNav.weekId]);
 
   const children = familyMembers.filter((p) => p.role === "child");
   const parents = familyMembers.filter((p) => p.role === "parent");
-  const childProgress = children.map((child) => ({
-    name: child.displayName,
-    points: weekPoints(child.id, completions),
-  }));
+  const childProgress = useMemo(
+    () =>
+      children.map((child) => ({
+        name: child.displayName,
+        points: weekPoints(child.id, completions),
+      })),
+    [children, completions],
+  );
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-secondary px-4 py-5 text-primary sm:px-6 sm:py-7">
@@ -328,55 +350,67 @@ export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
           ))}
         </div>
 
-        {/* Reward shop */}
-        <NabuSurface tone="muted" className="p-4">
-          <NabuSectionHeader
-            title="Reward shop"
-            description="Earn points, redeem rewards."
-            className="mb-3"
-          />
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {rewardDefinitions.map((reward) => (
-              <RewardGoalCard
-                key={reward.id}
-                reward={reward}
-                childProgress={childProgress}
-              />
-            ))}
+        {/* Loading state */}
+        {!loaded && (
+          <div className="flex items-center gap-3 py-8">
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-stone-300 border-t-stone-600" />
+            <span className="text-sm text-secondary">Loading board…</span>
           </div>
-        </NabuSurface>
+        )}
 
-        {/* Children cards */}
-        <section>
-          <NabuSectionHeader className="mb-3" eyebrow="Children" />
-          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
-            {children.map((person) => (
-              <PersonCard
-                key={person.id}
-                person={person}
-                completions={completions}
-                today={today}
-                weekId={weekNav.weekId}
+        {loaded && (
+          <>
+            {/* Reward shop */}
+            <NabuSurface tone="muted" className="p-4">
+              <NabuSectionHeader
+                title="Reward shop"
+                description="Earn points, redeem rewards."
+                className="mb-3"
               />
-            ))}
-          </div>
-        </section>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                {rewardDefinitions.map((reward) => (
+                  <RewardGoalCard
+                    key={reward.id}
+                    reward={reward}
+                    childProgress={childProgress}
+                  />
+                ))}
+              </div>
+            </NabuSurface>
 
-        {/* Parents */}
-        <section>
-          <NabuSectionHeader className="mb-3" eyebrow="Parents" />
-          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
-            {parents.map((person) => (
-              <PersonCard
-                key={person.id}
-                person={person}
-                completions={completions}
-                today={today}
-                weekId={weekNav.weekId}
-              />
-            ))}
-          </div>
-        </section>
+            {/* Children cards */}
+            <section>
+              <NabuSectionHeader className="mb-3" eyebrow="Children" />
+              <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+                {children.map((person) => (
+                  <PersonCard
+                    key={person.id}
+                    person={person}
+                    completions={completions}
+                    today={today}
+                    weekId={weekNav.weekId}
+                  />
+                ))}
+              </div>
+            </section>
+
+            {/* Parents */}
+            <section>
+              <NabuSectionHeader className="mb-3" eyebrow="Parents" />
+              <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+                {parents.map((person) => (
+                  <PersonCard
+                    key={person.id}
+                    person={person}
+                    completions={completions}
+                    today={today}
+                    weekId={weekNav.weekId}
+                  />
+                ))}
+              </div>
+            </section>
+          </>
+        )}
       </div>
     </main>
   );

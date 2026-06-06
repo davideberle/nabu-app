@@ -5,17 +5,17 @@ import Link from "next/link";
 import {
   NabuBadge,
   NabuLinkButton,
+  NabuSectionHeader,
   NabuSurface,
   cn,
 } from "@/components/ui/nabu";
 import {
   familyMembers,
-  routinesForPerson,
+  routineDefinitions,
   categoryMeta,
   swimlaneCategories,
   dayLabels,
   currentDayIndex,
-  initialCompletions,
   rewardDefinitions,
   routineProgress,
   weekPoints,
@@ -24,6 +24,12 @@ import {
   type RoutineDefinition,
   type RewardDefinition,
 } from "@/data/family-routines";
+import type {
+  FamilyBoardConfig,
+  RoutineOverride,
+  RewardOverride,
+  RewardRedemption,
+} from "@/lib/family-db";
 
 // ---------------------------------------------------------------------------
 // Color tokens per person
@@ -66,6 +72,40 @@ type WeekNav = {
 };
 
 // ---------------------------------------------------------------------------
+// Resolve routines/rewards with config overrides (client-side mirror)
+// ---------------------------------------------------------------------------
+
+function resolveRoutinesClient(config: FamilyBoardConfig): RoutineDefinition[] {
+  return routineDefinitions
+    .map((r) => {
+      const ov = config.routineOverrides[r.id];
+      if (!ov) return r;
+      if (ov.enabled === false) return null;
+      return {
+        ...r,
+        ...(ov.weeklyTarget !== undefined ? { weeklyTarget: ov.weeklyTarget } : {}),
+        ...(ov.points !== undefined ? { points: ov.points } : {}),
+      };
+    })
+    .filter((r): r is RoutineDefinition => r !== null);
+}
+
+function resolveRewardsClient(config: FamilyBoardConfig): RewardDefinition[] {
+  return rewardDefinitions
+    .map((r) => {
+      const ov = config.rewardOverrides[r.id];
+      if (!ov) return r;
+      if (ov.enabled === false) return null;
+      return {
+        ...r,
+        ...(ov.costPoints !== undefined ? { costPoints: ov.costPoints } : {}),
+        ...(ov.targetPoints !== undefined ? { targetPoints: ov.targetPoints } : {}),
+      };
+    })
+    .filter((r): r is RewardDefinition => r !== null);
+}
+
+// ---------------------------------------------------------------------------
 // Voice coach types
 // ---------------------------------------------------------------------------
 
@@ -100,7 +140,6 @@ function analyzeForCoach(
   const words = text.trim().split(/\s+/).filter(Boolean);
   const lower = text.toLowerCase();
 
-  // No input at all
   if (words.length === 0 && !hasVoiceMemo) {
     return {
       accepted: false,
@@ -109,7 +148,6 @@ function analyzeForCoach(
     };
   }
 
-  // Voice memo only, no text
   if (words.length === 0 && hasVoiceMemo) {
     return {
       accepted: false,
@@ -118,7 +156,6 @@ function analyzeForCoach(
     };
   }
 
-  // Practice tasks: need task-specific detail
   if (routine.category === "practice") {
     const hasPracticeDetail = /\b(page|piece|song|sheet|chapter|problem|exercise|minute|scale|section|level|lesson)\b/i.test(lower);
     if (!hasPracticeDetail && words.length < 8) {
@@ -130,7 +167,6 @@ function analyzeForCoach(
     }
   }
 
-  // Physio: need exercise specifics
   if (routine.id.includes("physio")) {
     const hasPhysioDetail = /\b(stretch|exercise|rep|set|minute|balance|squat|lunge|plank|push|pull|leg|arm|back|core)\b/i.test(lower);
     if (!hasPhysioDetail && words.length < 8) {
@@ -142,7 +178,6 @@ function analyzeForCoach(
     }
   }
 
-  // Dinner/table tasks: check for specifics about what part they handled
   if (routine.category === "household" && /dinner|table/i.test(routine.title)) {
     const hasDinnerDetail = /\b(set|clear|wash|wipe|plate|glass|cutlery|serve|help|cook|chop|stir|pour)\b/i.test(lower);
     if (!hasDinnerDetail && words.length < 6) {
@@ -154,7 +189,6 @@ function analyzeForCoach(
     }
   }
 
-  // Enough detail — accept
   if (words.length >= 4) {
     return {
       accepted: true,
@@ -163,7 +197,6 @@ function analyzeForCoach(
     };
   }
 
-  // Short but has keywords
   if (/\b(did|finished|completed|done|helped|practiced|cleaned|set|cleared)\b/i.test(lower)) {
     return {
       accepted: true,
@@ -172,7 +205,6 @@ function analyzeForCoach(
     };
   }
 
-  // Too vague
   return {
     accepted: false,
     response: `Can you add one more detail about what you actually did?`,
@@ -201,7 +233,7 @@ type SimpleDone = {
 };
 
 // ---------------------------------------------------------------------------
-// Tile component — visual only
+// Tile component
 // ---------------------------------------------------------------------------
 
 function TaskTile({
@@ -458,7 +490,6 @@ function VoiceCoachModal({
     }
     onUpdate({ ...session, phase: "analyzing" });
 
-    // Simulate analysis delay then run deterministic check
     setTimeout(() => {
       const result = analyzeForCoach(session.transcript, session.routine, true);
       if (result.accepted) {
@@ -488,7 +519,6 @@ function VoiceCoachModal({
 
   const startRecording = useCallback(async () => {
     if (typeof navigator === "undefined" || !navigator.mediaDevices) {
-      // Fallback to typed mode
       onUpdate({ ...session, phase: "typed" });
       return;
     }
@@ -578,7 +608,6 @@ function VoiceCoachModal({
           </button>
         </div>
 
-        {/* Ask phase */}
         {session.phase === "ask" && (
           <div className="mt-4 space-y-4">
             <p className="text-sm text-secondary">
@@ -603,7 +632,6 @@ function VoiceCoachModal({
           </div>
         )}
 
-        {/* Recording phase */}
         {session.phase === "recording" && (
           <div className="mt-4 space-y-4">
             <div className="flex items-center gap-3">
@@ -629,7 +657,6 @@ function VoiceCoachModal({
           </div>
         )}
 
-        {/* Typed fallback phase */}
         {session.phase === "typed" && (
           <div className="mt-4 space-y-4">
             <p className="text-sm text-secondary">
@@ -662,7 +689,6 @@ function VoiceCoachModal({
           </div>
         )}
 
-        {/* Analyzing phase */}
         {session.phase === "analyzing" && (
           <div className="mt-4 flex items-center gap-3 py-4">
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-stone-300 border-t-stone-600" />
@@ -670,7 +696,6 @@ function VoiceCoachModal({
           </div>
         )}
 
-        {/* Follow-up phase */}
         {session.phase === "follow-up" && (
           <div className="mt-4 space-y-4">
             <div className="rounded-md bg-amber-50 p-3 dark:bg-amber-950/20">
@@ -705,7 +730,6 @@ function VoiceCoachModal({
           </div>
         )}
 
-        {/* Accepted phase */}
         {session.phase === "accepted" && (
           <div className="mt-4 space-y-4">
             <div className="rounded-md bg-emerald-50 p-3 dark:bg-emerald-950/20">
@@ -725,7 +749,6 @@ function VoiceCoachModal({
           </div>
         )}
 
-        {/* Parent review phase */}
         {session.phase === "parent-review" && (
           <div className="mt-4 space-y-4">
             <div className="rounded-md bg-stone-100 p-3 dark:bg-stone-800">
@@ -796,6 +819,235 @@ function SimpleConfirmModal({
 }
 
 // ---------------------------------------------------------------------------
+// Parent Controls Panel
+// ---------------------------------------------------------------------------
+
+function ParentControlsPanel({
+  personId,
+  weekId,
+  completions,
+  redemptions,
+  config,
+  allRoutines,
+  allRewards,
+  onUndoCompletion,
+  onUndoRedemption,
+  onConfigChange,
+}: {
+  personId: string;
+  weekId: string;
+  completions: Map<string, CompletionRecord>;
+  redemptions: RewardRedemption[];
+  config: FamilyBoardConfig;
+  allRoutines: RoutineDefinition[];
+  allRewards: RewardDefinition[];
+  onUndoCompletion: (routineId: string, day: number) => void;
+  onUndoRedemption: (redemptionId: string) => void;
+  onConfigChange: (config: FamilyBoardConfig) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const personRoutines = allRoutines.filter((r) => r.assignedTo.includes(personId));
+  const personRedemptions = redemptions.filter((r) => r.personId === personId);
+  const personCompletions = Array.from(completions.entries())
+    .filter(([, c]) => c.personId === personId)
+    .map(([key, c]) => ({ key, ...c }));
+
+  const updateRoutineOverride = (routineId: string, field: keyof RoutineOverride, value: number | boolean) => {
+    const prev = config.routineOverrides[routineId] ?? {};
+    onConfigChange({
+      ...config,
+      routineOverrides: {
+        ...config.routineOverrides,
+        [routineId]: { ...prev, [field]: value },
+      },
+    });
+  };
+
+  const updateRewardOverride = (rewardId: string, field: keyof RewardOverride, value: number | boolean) => {
+    const prev = config.rewardOverrides[rewardId] ?? {};
+    onConfigChange({
+      ...config,
+      rewardOverrides: {
+        ...config.rewardOverrides,
+        [rewardId]: { ...prev, [field]: value },
+      },
+    });
+  };
+
+  return (
+    <NabuSurface tone="muted" className="p-4">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="flex w-full items-center justify-between"
+      >
+        <NabuSectionHeader
+          eyebrow="Parent controls"
+          title="Adjust routines, rewards & undo completions"
+          className="text-left"
+        />
+        <span className="text-xs font-semibold text-quaternary">{open ? "Close" : "Open"}</span>
+      </button>
+
+      {open && (
+        <div className="mt-4 space-y-6">
+          {/* Undo completions */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-quaternary">
+              Undo completions this week
+            </h3>
+            {personCompletions.length === 0 ? (
+              <p className="mt-2 text-xs text-tertiary">No completions to undo.</p>
+            ) : (
+              <div className="mt-2 space-y-1">
+                {personCompletions.map((c) => {
+                  const routine = routineDefinitions.find((r) => r.id === c.routineId);
+                  return (
+                    <div key={c.key} className="flex items-center justify-between rounded-md border border-secondary bg-primary px-3 py-2">
+                      <span className="text-xs text-primary">
+                        {routine?.icon} {routine?.title ?? c.routineId} · {dayLabels[c.day]}
+                        {c.note ? <span className="ml-2 text-quaternary">({c.note})</span> : null}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => onUndoCompletion(c.routineId, c.day)}
+                        className="rounded px-2 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/20"
+                      >
+                        Undo
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Undo redemptions */}
+          {personRedemptions.length > 0 && (
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-quaternary">
+                Undo redemptions this week
+              </h3>
+              <div className="mt-2 space-y-1">
+                {personRedemptions.map((r) => {
+                  const reward = rewardDefinitions.find((rw) => rw.id === r.rewardId);
+                  return (
+                    <div key={r.id} className="flex items-center justify-between rounded-md border border-secondary bg-primary px-3 py-2">
+                      <span className="text-xs text-primary">
+                        {reward?.icon} {reward?.title ?? r.rewardId}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => onUndoRedemption(r.id)}
+                        className="rounded px-2 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/20"
+                      >
+                        Undo
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Routine settings */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-quaternary">
+              Routine settings
+            </h3>
+            <div className="mt-2 space-y-2">
+              {personRoutines.map((routine) => {
+                const ov = config.routineOverrides[routine.id] ?? {};
+                const target = ov.weeklyTarget ?? routine.weeklyTarget;
+                const pts = ov.points ?? routine.points;
+                return (
+                  <div key={routine.id} className="rounded-md border border-secondary bg-primary px-3 py-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm">{routine.icon}</span>
+                      <span className="text-xs font-semibold text-primary">{routine.title}</span>
+                    </div>
+                    <div className="mt-2 flex flex-wrap items-center gap-4">
+                      <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
+                        Target/wk
+                        <input
+                          type="number"
+                          min={0}
+                          max={7}
+                          value={target}
+                          onChange={(e) => updateRoutineOverride(routine.id, "weeklyTarget", Number(e.target.value))}
+                          className="w-12 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
+                        />
+                      </label>
+                      <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
+                        Points
+                        <input
+                          type="number"
+                          min={0}
+                          max={10}
+                          value={pts}
+                          onChange={(e) => updateRoutineOverride(routine.id, "points", Number(e.target.value))}
+                          className="w-12 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
+                        />
+                      </label>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Reward settings */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-quaternary">
+              Reward settings
+            </h3>
+            <div className="mt-2 space-y-2">
+              {allRewards.filter((r) => r.assignedTo.includes(personId)).map((reward) => {
+                const ov = config.rewardOverrides[reward.id] ?? {};
+                const cost = ov.costPoints ?? reward.costPoints;
+                const target = ov.targetPoints ?? reward.targetPoints;
+                return (
+                  <div key={reward.id} className="rounded-md border border-secondary bg-primary px-3 py-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm">{reward.icon}</span>
+                      <span className="text-xs font-semibold text-primary">{reward.title}</span>
+                    </div>
+                    <div className="mt-2 flex flex-wrap items-center gap-4">
+                      <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
+                        Target pts
+                        <input
+                          type="number"
+                          min={1}
+                          max={200}
+                          value={target}
+                          onChange={(e) => updateRewardOverride(reward.id, "targetPoints", Number(e.target.value))}
+                          className="w-14 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
+                        />
+                      </label>
+                      <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
+                        Cost pts
+                        <input
+                          type="number"
+                          min={1}
+                          max={200}
+                          value={cost}
+                          onChange={(e) => updateRewardOverride(reward.id, "costPoints", Number(e.target.value))}
+                          className="w-14 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
+                        />
+                      </label>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+    </NabuSurface>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Main board component
 // ---------------------------------------------------------------------------
 
@@ -809,44 +1061,94 @@ export function PersonBoardClient({
   const person = familyMembers.find((p) => p.id === personId);
   const today = currentDayIndex();
 
-  // Completion state
-  const [completions, setCompletions] = useState<Map<string, CompletionRecord>>(
-    () => {
-      const map = new Map<string, CompletionRecord>();
-      for (const c of initialCompletions) {
-        if (c.personId === personId) {
-          map.set(completionKey(c.routineId, c.personId, c.day), c);
-        }
-      }
-      return map;
-    },
-  );
+  // Board config from DB
+  const [config, setConfig] = useState<FamilyBoardConfig>({
+    routineOverrides: {},
+    rewardOverrides: {},
+  });
 
-  // Wallet: track redeemed rewards { rewardId: timesRedeemed }
-  const [redeemed, setRedeemed] = useState<Record<string, number>>({});
+  // Completion state — loaded from DB
+  const [completions, setCompletions] = useState<Map<string, CompletionRecord>>(
+    () => new Map(),
+  );
+  const [loaded, setLoaded] = useState(false);
+
+  // Redemptions from DB
+  const [redemptions, setRedemptions] = useState<RewardRedemption[]>([]);
 
   // Modal state
   const [simpleDraft, setSimpleDraft] = useState<SimpleDone | null>(null);
   const [coachSession, setCoachSession] = useState<CoachSession | null>(null);
 
-  const routines = useMemo(() => routinesForPerson(personId), [personId]);
+  // Load data from API on mount / week change
+  useEffect(() => {
+    let cancelled = false;
+    async function load() {
+      const [compRes, redRes, cfgRes] = await Promise.all([
+        fetch(`/api/family/completions?week=${weekNav.weekId}`),
+        fetch(`/api/family/redemptions?week=${weekNav.weekId}`),
+        fetch("/api/family/config"),
+      ]);
+      if (cancelled) return;
+
+      const compData: CompletionRecord[] = await compRes.json();
+      const redData: RewardRedemption[] = await redRes.json();
+      const cfgData: FamilyBoardConfig = await cfgRes.json();
+
+      const map = new Map<string, CompletionRecord>();
+      for (const c of compData) {
+        map.set(completionKey(c.routineId, c.personId, c.day), c);
+      }
+      setCompletions(map);
+      setRedemptions(redData);
+      setConfig(cfgData);
+      setLoaded(true);
+    }
+    load();
+    return () => { cancelled = true; };
+  }, [weekNav.weekId]);
+
+  // Resolved definitions with config overrides
+  const resolvedRoutines = useMemo(() => resolveRoutinesClient(config), [config]);
+  const resolvedRewards = useMemo(() => resolveRewardsClient(config), [config]);
+
+  const routines = useMemo(() => resolvedRoutines.filter((r) => r.assignedTo.includes(personId)), [resolvedRoutines, personId]);
   const completionList = useMemo(
     () => Array.from(completions.values()),
     [completions],
   );
-  const totalEarned = weekPoints(personId, completionList);
 
-  // Calculate total spent on redeemed rewards
+  // Points calculation using resolved routines (with config overrides)
+  const totalEarned = useMemo(() => {
+    return completionList
+      .filter((c) => c.personId === personId && c.status === "done")
+      .reduce((sum, c) => {
+        const routine = resolvedRoutines.find((r) => r.id === c.routineId);
+        return sum + (routine?.points ?? 0);
+      }, 0);
+  }, [completionList, personId, resolvedRoutines]);
+
+  // Redemption counts per reward
+  const redeemedCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const r of redemptions) {
+      if (r.personId === personId) {
+        counts[r.rewardId] = (counts[r.rewardId] ?? 0) + 1;
+      }
+    }
+    return counts;
+  }, [redemptions, personId]);
+
   const totalSpent = useMemo(() => {
-    return Object.entries(redeemed).reduce((sum, [rewardId, count]) => {
-      const reward = rewardDefinitions.find((r) => r.id === rewardId);
+    return Object.entries(redeemedCounts).reduce((sum, [rewardId, count]) => {
+      const reward = resolvedRewards.find((r) => r.id === rewardId);
       return sum + (reward ? reward.costPoints * count : 0);
     }, 0);
-  }, [redeemed]);
+  }, [redeemedCounts, resolvedRewards]);
 
   const balance = totalEarned - totalSpent;
 
-  const rewardGoals = rewardDefinitions.filter((reward) =>
+  const rewardGoals = resolvedRewards.filter((reward) =>
     reward.assignedTo.includes(personId),
   );
   const pocketMoneyJobs = routines.filter((routine) => routine.category === "job");
@@ -863,31 +1165,40 @@ export function PersonBoardClient({
       .filter((lane) => lane.routines.length > 0);
   }, [routines]);
 
-  // Completion handlers
+  // Completion handlers — persist to DB
   const markDone = useCallback(
-    (routine: RoutineDefinition, day: number, note?: string) => {
+    async (routine: RoutineDefinition, day: number, note?: string) => {
+      const record: CompletionRecord = {
+        routineId: routine.id,
+        personId,
+        day,
+        status: "done",
+        note,
+      };
+      // Optimistic update
       setCompletions((prev) => {
         const next = new Map(prev);
-        next.set(completionKey(routine.id, personId, day), {
-          routineId: routine.id,
-          personId,
-          day,
-          status: "done",
-          note,
-        });
+        next.set(completionKey(routine.id, personId, day), record);
         return next;
       });
+      // Persist
+      await fetch("/api/family/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          week: weekNav.weekId,
+          ...record,
+        }),
+      });
     },
-    [personId],
+    [personId, weekNav.weekId],
   );
 
   const handleTileTap = useCallback(
     (routine: RoutineDefinition, day: number) => {
       const key = completionKey(routine.id, personId, day);
-      // Already done → no-op (locked)
       if (completions.has(key)) return;
 
-      // Voice-coach tasks → open coach modal
       if (routine.proofMode === "voice-coach") {
         setCoachSession({
           routine,
@@ -902,18 +1213,59 @@ export function PersonBoardClient({
         return;
       }
 
-      // Parent-confirm tasks → simple done (future: parent queue)
-      // Simple tasks → confirm modal
       setSimpleDraft({ routine, day });
     },
     [completions, personId],
   );
 
-  const handleRedeem = useCallback((rewardId: string) => {
-    setRedeemed((prev) => ({
-      ...prev,
-      [rewardId]: (prev[rewardId] ?? 0) + 1,
-    }));
+  const handleRedeem = useCallback(async (rewardId: string) => {
+    const res = await fetch("/api/family/redemptions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ personId, rewardId, week: weekNav.weekId }),
+    });
+    const redemption: RewardRedemption = await res.json();
+    setRedemptions((prev) => [...prev, redemption]);
+  }, [personId, weekNav.weekId]);
+
+  // Parent controls: undo completion
+  const handleUndoCompletion = useCallback(async (routineId: string, day: number) => {
+    const key = completionKey(routineId, personId, day);
+    setCompletions((prev) => {
+      const next = new Map(prev);
+      next.delete(key);
+      return next;
+    });
+    await fetch("/api/family/completions", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ week: weekNav.weekId, personId, routineId, day }),
+    });
+  }, [personId, weekNav.weekId]);
+
+  // Parent controls: undo redemption
+  const handleUndoRedemption = useCallback(async (redemptionId: string) => {
+    setRedemptions((prev) => prev.filter((r) => r.id !== redemptionId));
+    await fetch("/api/family/redemptions", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: redemptionId }),
+    });
+  }, []);
+
+  // Parent controls: save config
+  const configSaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const handleConfigChange = useCallback((newConfig: FamilyBoardConfig) => {
+    setConfig(newConfig);
+    // Debounce save
+    if (configSaveTimer.current) clearTimeout(configSaveTimer.current);
+    configSaveTimer.current = setTimeout(async () => {
+      await fetch("/api/family/config", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newConfig),
+      });
+    }, 500);
   }, []);
 
   if (!person) {
@@ -962,208 +1314,233 @@ export function PersonBoardClient({
 
         <WeekNavBar weekNav={weekNav} />
 
-        {/* Wallet */}
-        {person.role === "child" && (
-          <NabuSurface tone="muted" className="p-4">
-            <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
-              <div>
-                <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
-                  Reward wallet
-                </p>
-                <h2 className="mt-0.5 text-base font-semibold text-primary">
-                  {balance} pts available
-                </h2>
-                <p className="text-xs text-tertiary">
-                  {totalEarned} earned · {totalSpent} spent
-                </p>
-              </div>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-              {rewardGoals.map((reward) => (
-                <RewardWalletCard
-                  key={reward.id}
-                  reward={reward}
-                  balance={balance}
-                  spent={redeemed[reward.id] ?? 0}
-                  onRedeem={handleRedeem}
-                />
-              ))}
-            </div>
-          </NabuSurface>
+        {/* Loading state */}
+        {!loaded && (
+          <div className="flex items-center gap-3 py-8">
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-stone-300 border-t-stone-600" />
+            <span className="text-sm text-secondary">Loading board…</span>
+          </div>
         )}
 
-        {/* Board grid */}
-        <NabuSurface className="overflow-x-auto p-0">
-          <div className="min-w-[760px]">
-            {/* Day headers */}
-            <div className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary">
-              <div className="p-3" />
-              {dayLabels.map((label, i) => (
-                <div
-                  key={label}
-                  className={cn(
-                    "flex items-center justify-center p-3 text-xs font-semibold",
-                    i === today
-                      ? "bg-stone-100 text-primary dark:bg-stone-800"
-                      : "text-quaternary",
-                  )}
-                >
-                  {label}
+        {loaded && (
+          <>
+            {/* Wallet */}
+            {person.role === "child" && (
+              <NabuSurface tone="muted" className="p-4">
+                <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
+                  <div>
+                    <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
+                      Reward wallet
+                    </p>
+                    <h2 className="mt-0.5 text-base font-semibold text-primary">
+                      {balance} pts available
+                    </h2>
+                    <p className="text-xs text-tertiary">
+                      {totalEarned} earned · {totalSpent} spent
+                    </p>
+                  </div>
                 </div>
-              ))}
-            </div>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                  {rewardGoals.map((reward) => (
+                    <RewardWalletCard
+                      key={reward.id}
+                      reward={reward}
+                      balance={balance}
+                      spent={redeemedCounts[reward.id] ?? 0}
+                      onRedeem={handleRedeem}
+                    />
+                  ))}
+                </div>
+              </NabuSurface>
+            )}
 
-            {/* Swimlanes */}
-            {laneData.map((lane) => {
-              return lane.routines.map((routine) => {
-                const progress = routineProgress(personId, routine.id, completionList);
-                return (
-                  <div
-                    key={routine.id}
-                    className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
-                  >
-                    <div className="flex flex-col justify-center p-3">
-                      <div className="flex items-center gap-2">
-                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-stone-100 text-base dark:bg-stone-800">
-                          {routine.icon}
-                        </span>
-                        <div className="min-w-0 space-y-1">
-                          <span className="block text-xs font-semibold leading-tight text-primary">
-                            {routine.title}
-                          </span>
-                          {/* Compact progress bar with count */}
-                          <div className="flex items-center gap-1.5">
-                            <div className="relative h-3.5 w-16 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
-                              <div
-                                className="h-full rounded-full bg-emerald-400 transition-all"
-                                style={{
-                                  width: `${progress.target > 0 ? Math.round((progress.done / progress.target) * 100) : 0}%`,
-                                }}
-                              />
-                              <span className="absolute inset-0 flex items-center justify-center text-[9px] font-bold text-stone-700 dark:text-stone-200">
-                                {progress.done}
+            {/* Board grid */}
+            <NabuSurface className="overflow-x-auto p-0">
+              <div className="min-w-[760px]">
+                {/* Day headers */}
+                <div className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary">
+                  <div className="p-3" />
+                  {dayLabels.map((label, i) => (
+                    <div
+                      key={label}
+                      className={cn(
+                        "flex items-center justify-center p-3 text-xs font-semibold",
+                        i === today
+                          ? "bg-stone-100 text-primary dark:bg-stone-800"
+                          : "text-quaternary",
+                      )}
+                    >
+                      {label}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Swimlanes */}
+                {laneData.map((lane) => {
+                  return lane.routines.map((routine) => {
+                    const progress = routineProgress(personId, routine.id, completionList);
+                    return (
+                      <div
+                        key={routine.id}
+                        className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
+                      >
+                        <div className="flex flex-col justify-center p-3">
+                          <div className="flex items-center gap-2">
+                            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-stone-100 text-base dark:bg-stone-800">
+                              {routine.icon}
+                            </span>
+                            <div className="min-w-0 space-y-1">
+                              <span className="block text-xs font-semibold leading-tight text-primary">
+                                {routine.title}
                               </span>
+                              <div className="flex items-center gap-1.5">
+                                <div className="relative h-3.5 w-16 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
+                                  <div
+                                    className="h-full rounded-full bg-emerald-400 transition-all"
+                                    style={{
+                                      width: `${progress.target > 0 ? Math.round((progress.done / progress.target) * 100) : 0}%`,
+                                    }}
+                                  />
+                                  <span className="absolute inset-0 flex items-center justify-center text-[9px] font-bold text-stone-700 dark:text-stone-200">
+                                    {progress.done}
+                                  </span>
+                                </div>
+                                <span className="text-[10px] font-semibold text-quaternary">
+                                  / {progress.target}
+                                </span>
+                              </div>
                             </div>
-                            <span className="text-[10px] font-semibold text-quaternary">
-                              / {progress.target}
+                          </div>
+                        </div>
+                        {dayLabels.map((_, dayIdx) => {
+                          const scheduled =
+                            routine.days === null || routine.days.includes(dayIdx);
+                          const key = completionKey(routine.id, personId, dayIdx);
+                          const record = completions.get(key);
+
+                          return (
+                            <div key={dayIdx} className="p-1.5">
+                              <TaskTile
+                                routine={routine}
+                                isDone={record?.status === "done"}
+                                isToday={dayIdx === today}
+                                isScheduled={scheduled}
+                                onTap={() => handleTileTap(routine, dayIdx)}
+                              />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                  });
+                })}
+              </div>
+            </NabuSurface>
+
+            {/* Pocket money jobs */}
+            {person.role === "child" && pocketMoneyJobs.length > 0 && (
+              <NabuSurface className="overflow-x-auto p-0">
+                <div className="min-w-[760px]">
+                  <div className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary">
+                    <div className="flex flex-col justify-center p-3">
+                      <LaneLabel category="job" />
+                      <span className="mt-1 text-[10px] text-quaternary">
+                        0 pts · parent approval
+                      </span>
+                    </div>
+                    {dayLabels.map((label, i) => (
+                      <div
+                        key={label}
+                        className={cn(
+                          "flex items-center justify-center p-3 text-xs font-semibold",
+                          i === today
+                            ? "bg-stone-100 text-primary dark:bg-stone-800"
+                            : "text-quaternary",
+                        )}
+                      >
+                        {label}
+                      </div>
+                    ))}
+                  </div>
+                  {pocketMoneyJobs.map((routine) => (
+                    <div
+                      key={routine.id}
+                      className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
+                    >
+                      <div className="flex flex-col justify-center p-3">
+                        <div className="flex items-center gap-2">
+                          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-emerald-50 text-base dark:bg-emerald-950/30">
+                            {routine.icon}
+                          </span>
+                          <div className="min-w-0">
+                            <span className="block text-xs font-semibold leading-tight text-primary">
+                              {routine.title}
                             </span>
                           </div>
                         </div>
                       </div>
+                      {dayLabels.map((_, dayIdx) => {
+                        const scheduled =
+                          routine.days === null || routine.days.includes(dayIdx);
+                        const key = completionKey(routine.id, personId, dayIdx);
+                        const record = completions.get(key);
+
+                        return (
+                          <div key={dayIdx} className="p-1.5">
+                            <TaskTile
+                              routine={routine}
+                              isDone={record?.status === "done"}
+                              isToday={dayIdx === today}
+                              isScheduled={scheduled}
+                              onTap={() => handleTileTap(routine, dayIdx)}
+                            />
+                          </div>
+                        );
+                      })}
                     </div>
-                    {dayLabels.map((_, dayIdx) => {
-                      const scheduled =
-                        routine.days === null || routine.days.includes(dayIdx);
-                      const key = completionKey(routine.id, personId, dayIdx);
-                      const record = completions.get(key);
-
-                      return (
-                        <div key={dayIdx} className="p-1.5">
-                          <TaskTile
-                            routine={routine}
-                            isDone={record?.status === "done"}
-                            isToday={dayIdx === today}
-                            isScheduled={scheduled}
-                            onTap={() => handleTileTap(routine, dayIdx)}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              });
-            })}
-          </div>
-        </NabuSurface>
-
-        {/* Pocket money jobs */}
-        {person.role === "child" && pocketMoneyJobs.length > 0 && (
-          <NabuSurface className="overflow-x-auto p-0">
-            <div className="min-w-[760px]">
-              <div className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary">
-                <div className="flex flex-col justify-center p-3">
-                  <LaneLabel category="job" />
-                  <span className="mt-1 text-[10px] text-quaternary">
-                    0 pts · parent approval
-                  </span>
+                  ))}
                 </div>
-                {dayLabels.map((label, i) => (
-                  <div
-                    key={label}
-                    className={cn(
-                      "flex items-center justify-center p-3 text-xs font-semibold",
-                      i === today
-                        ? "bg-stone-100 text-primary dark:bg-stone-800"
-                        : "text-quaternary",
-                    )}
-                  >
-                    {label}
-                  </div>
-                ))}
-              </div>
-              {pocketMoneyJobs.map((routine) => (
-                <div
-                  key={routine.id}
-                  className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary last:border-b-0"
-                >
-                  <div className="flex flex-col justify-center p-3">
-                    <div className="flex items-center gap-2">
-                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-emerald-50 text-base dark:bg-emerald-950/30">
-                        {routine.icon}
-                      </span>
-                      <div className="min-w-0">
-                        <span className="block text-xs font-semibold leading-tight text-primary">
-                          {routine.title}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  {dayLabels.map((_, dayIdx) => {
-                    const scheduled =
-                      routine.days === null || routine.days.includes(dayIdx);
-                    const key = completionKey(routine.id, personId, dayIdx);
-                    const record = completions.get(key);
+              </NabuSurface>
+            )}
 
-                    return (
-                      <div key={dayIdx} className="p-1.5">
-                        <TaskTile
-                          routine={routine}
-                          isDone={record?.status === "done"}
-                          isToday={dayIdx === today}
-                          isScheduled={scheduled}
-                          onTap={() => handleTileTap(routine, dayIdx)}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              ))}
+            {/* Legend */}
+            <div className="flex flex-wrap items-center gap-3 text-[11px] text-quaternary">
+              <span className="font-medium text-tertiary">Legend:</span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block h-3 w-3 rounded-sm border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30">
+                  <svg className="h-3 w-3 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+                Completed
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-flex h-3 w-3 items-center justify-center rounded-sm border border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-800/60">
+                  <span className="h-1.5 w-1.5 rounded-full border border-stone-300 dark:border-stone-500" />
+                </span>
+                Open
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block h-3 w-3 rounded-sm border border-dashed border-stone-300 dark:border-stone-600" />
+                Bonus day
+              </span>
             </div>
-          </NabuSurface>
-        )}
 
-        {/* Legend — visual only, no text labels */}
-        <div className="flex flex-wrap items-center gap-3 text-[11px] text-quaternary">
-          <span className="font-medium text-tertiary">Legend:</span>
-          <span className="flex items-center gap-1.5">
-            <span className="inline-block h-3 w-3 rounded-sm border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30">
-              <svg className="h-3 w-3 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-              </svg>
-            </span>
-            Completed
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="inline-flex h-3 w-3 items-center justify-center rounded-sm border border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-800/60">
-              <span className="h-1.5 w-1.5 rounded-full border border-stone-300 dark:border-stone-500" />
-            </span>
-            Open
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="inline-block h-3 w-3 rounded-sm border border-dashed border-stone-300 dark:border-stone-600" />
-            Bonus day
-          </span>
-        </div>
+            {/* Parent controls — always available at bottom */}
+            <ParentControlsPanel
+              personId={personId}
+              weekId={weekNav.weekId}
+              completions={completions}
+              redemptions={redemptions}
+              config={config}
+              allRoutines={resolvedRoutines}
+              allRewards={resolvedRewards}
+              onUndoCompletion={handleUndoCompletion}
+              onUndoRedemption={handleUndoRedemption}
+              onConfigChange={handleConfigChange}
+            />
+          </>
+        )}
       </div>
 
       {/* Simple confirm modal */}
@@ -1189,7 +1566,6 @@ export function PersonBoardClient({
             setCoachSession(null);
           }}
           onParentReview={(routine, day, note) => {
-            // For now, mark done with a "pending review" note
             markDone(routine, day, `[pending review] ${note}`);
             setCoachSession(null);
           }}
