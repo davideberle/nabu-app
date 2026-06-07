@@ -1,10 +1,5 @@
 import { auth } from "@/auth";
-import {
-  isAdminOnlyApiRoute,
-  isTrackerAllowedApiPath,
-  isTrackerAllowedPath,
-  isTrackerOnlyEmail,
-} from "@/lib/access";
+import { isTrackerAllowedPath, isTrackerOnlyEmail } from "@/lib/access";
 
 export default auth((req) => {
   const isLoggedIn = !!req.auth;
@@ -12,15 +7,8 @@ export default auth((req) => {
   const isApiRoute = req.nextUrl.pathname.startsWith("/api/");
   const isTrackerOnly = isTrackerOnlyEmail(req.auth?.user?.email);
 
+  // Allow all API routes (includes /api/auth) — they handle their own auth
   if (isApiRoute) {
-    if (isLoggedIn && isTrackerOnly) {
-      if (
-        !isTrackerAllowedApiPath(req.nextUrl.pathname) ||
-        isAdminOnlyApiRoute(req.method, req.nextUrl.pathname)
-      ) {
-        return Response.json({ error: "Forbidden" }, { status: 403 });
-      }
-    }
     return;
   }
 
@@ -34,7 +22,7 @@ export default auth((req) => {
     return Response.redirect(new URL(isTrackerOnly ? "/family/dashboard" : "/", req.nextUrl.origin));
   }
 
-  // Shared-iPad / tracker-only accounts stay inside the family dashboard.
+  // Shared-iPad / tracker-only accounts stay inside the family surfaces.
   if (isLoggedIn && isTrackerOnly && !isTrackerAllowedPath(req.nextUrl.pathname)) {
     return Response.redirect(new URL("/family/dashboard", req.nextUrl.origin));
   }

@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { getBoardConfig, saveBoardConfig, type FamilyBoardConfig } from "@/lib/family-db";
 import { auth } from "@/auth";
-import { isAdminEmail } from "@/lib/access";
 
 /**
  * GET /api/family/config
@@ -25,9 +24,6 @@ export async function PUT(request: Request) {
   const session = await auth();
   if (!session?.user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-  if (!isAdminEmail(session.user.email)) {
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
   let body: unknown;
   try {

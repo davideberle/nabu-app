@@ -1160,11 +1160,9 @@ function ParentControlsPanel({
 export function PersonBoardClient({
   personId,
   weekNav,
-  canManageParentControls,
 }: {
   personId: string;
   weekNav: WeekNav;
-  canManageParentControls: boolean;
 }) {
   const person = familyMembers.find((p) => p.id === personId);
   const today = currentDayIndex();
@@ -1663,22 +1661,20 @@ export function PersonBoardClient({
               </span>
             </div>
 
-            {/* Parent controls — info@ only */}
-            {canManageParentControls && (
-              <ParentControlsPanel
-                personId={personId}
-                weekId={weekNav.weekId}
-                completions={completions}
-                redemptions={redemptions}
-                config={config}
-                allRoutines={resolvedRoutines}
-                allRewards={resolvedRewards}
-                saveStatus={configSaveStatus}
-                onUndoCompletion={handleUndoCompletion}
-                onUndoRedemption={handleUndoRedemption}
-                onConfigChange={handleConfigChange}
-              />
-            )}
+            {/* Parent controls — always available at bottom */}
+            <ParentControlsPanel
+              personId={personId}
+              weekId={weekNav.weekId}
+              completions={completions}
+              redemptions={redemptions}
+              config={config}
+              allRoutines={resolvedRoutines}
+              allRewards={resolvedRewards}
+              saveStatus={configSaveStatus}
+              onUndoCompletion={handleUndoCompletion}
+              onUndoRedemption={handleUndoRedemption}
+              onConfigChange={handleConfigChange}
+            />
           </>
         )}
       </div>
