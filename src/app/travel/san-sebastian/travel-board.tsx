@@ -11,6 +11,7 @@ import {
 import type {
   TravelCategory,
   TravelItem,
+  TravelSubItem,
   TravelItemStatus,
 } from "@/data/travel-san-sebastian";
 
@@ -33,6 +34,31 @@ function nextStatus(current: TravelItemStatus): TravelItemStatus {
   return STATUS_CYCLE[(idx + 1) % STATUS_CYCLE.length];
 }
 
+const TAG_STYLES: Record<string, string> = {
+  sunny: "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-700 dark:bg-amber-900/20 dark:text-amber-300",
+  rainy: "border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-700 dark:bg-sky-900/20 dark:text-sky-300",
+  adults: "border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-700 dark:bg-violet-900/20 dark:text-violet-300",
+  family: "border-teal-200 bg-teal-50 text-teal-700 dark:border-teal-700 dark:bg-teal-900/20 dark:text-teal-300",
+  "family-friendly": "border-teal-200 bg-teal-50 text-teal-700 dark:border-teal-700 dark:bg-teal-900/20 dark:text-teal-300",
+  culture: "border-indigo-200 bg-indigo-50 text-indigo-700 dark:border-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-300",
+  food: "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-700 dark:bg-orange-900/20 dark:text-orange-300",
+  pintxos: "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-700 dark:bg-orange-900/20 dark:text-orange-300",
+  michelin: "border-red-200 bg-red-50 text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300",
+  "bib-gourmand": "border-red-200 bg-red-50 text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300",
+  "fine-dining": "border-red-200 bg-red-50 text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300",
+  "special-occasion": "border-red-200 bg-red-50 text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300",
+  booking: "border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-700 dark:bg-rose-900/20 dark:text-rose-300",
+  wine: "border-purple-200 bg-purple-50 text-purple-700 dark:border-purple-700 dark:bg-purple-900/20 dark:text-purple-300",
+  wellness: "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300",
+};
+
+const SOURCE_TAG_STYLES: Record<string, string> = {
+  Michelin: "border-red-200 bg-red-50 text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300",
+  "TripAdvisor Top": "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300",
+  "Lonely Planet": "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-700 dark:bg-blue-900/20 dark:text-blue-300",
+  "Studio website": "border-secondary bg-secondary text-tertiary",
+};
+
 /* ------------------------------------------------------------------ */
 /*  Compact metadata chips                                             */
 /* ------------------------------------------------------------------ */
@@ -41,6 +67,32 @@ function MetaChip({ children }: { children: React.ReactNode }) {
   return (
     <span className="inline-flex items-center gap-1 rounded-md border border-secondary bg-secondary px-1.5 py-0.5 text-[11px] leading-tight text-tertiary">
       {children}
+    </span>
+  );
+}
+
+function TagChip({ tag }: { tag: string }) {
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center rounded-md border px-1.5 py-0.5 text-[11px] font-medium leading-tight",
+        TAG_STYLES[tag] ?? "border-secondary bg-secondary text-tertiary"
+      )}
+    >
+      {tag}
+    </span>
+  );
+}
+
+function SourceTagChip({ tag }: { tag: string }) {
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center rounded-md border px-1.5 py-0.5 text-[10px] font-medium leading-tight",
+        SOURCE_TAG_STYLES[tag] ?? "border-secondary bg-secondary text-tertiary"
+      )}
+    >
+      {tag}
     </span>
   );
 }
@@ -69,6 +121,10 @@ function LinkChip({
 
 function ItemMeta({ item }: { item: TravelItem }) {
   const chips: React.ReactNode[] = [];
+
+  if (item.cuisine) {
+    chips.push(<MetaChip key="cuisine">{item.cuisine}</MetaChip>);
+  }
 
   // Price
   if (item.price) {
@@ -103,6 +159,17 @@ function ItemMeta({ item }: { item: TravelItem }) {
     );
   }
 
+  if (item.booking) {
+    chips.push(
+      <span
+        key="booking"
+        className="inline-flex items-center rounded-md border border-rose-200 bg-rose-50 px-1.5 py-0.5 text-[11px] font-medium leading-tight text-rose-700 dark:border-rose-700 dark:bg-rose-900/20 dark:text-rose-300"
+      >
+        {item.booking}
+      </span>
+    );
+  }
+
   // Category tag
   if (item.categoryTag) {
     chips.push(
@@ -124,11 +191,6 @@ function ItemMeta({ item }: { item: TravelItem }) {
     const e = item.excursionMeta;
     chips.push(<MetaChip key="etime">{e.timeNeeded}</MetaChip>);
     chips.push(<MetaChip key="edist">~{e.distanceKm} km</MetaChip>);
-    for (const tag of e.tags) {
-      chips.push(
-        <MetaChip key={`etag-${tag}`}>{tag}</MetaChip>
-      );
-    }
   }
 
   // Hours / schedule
@@ -137,6 +199,18 @@ function ItemMeta({ item }: { item: TravelItem }) {
   }
   if (item.schedule) {
     chips.push(<MetaChip key="sched">{item.schedule}</MetaChip>);
+  }
+
+  const tags = [
+    ...(item.tags ?? []),
+    ...(item.excursionMeta?.tags.filter((tag) => !(item.tags ?? []).includes(tag)) ?? []),
+  ];
+  for (const tag of tags) {
+    chips.push(<TagChip key={`tag-${tag}`} tag={tag} />);
+  }
+
+  for (const tag of item.sourceTags ?? []) {
+    chips.push(<SourceTagChip key={`source-${tag}`} tag={tag} />);
   }
 
   // Links
@@ -163,6 +237,52 @@ function ItemMeta({ item }: { item: TravelItem }) {
   return (
     <div className="mt-1.5 flex flex-wrap gap-1">
       {chips}
+    </div>
+  );
+}
+
+function SubItemRow({ subItem }: { subItem: TravelSubItem }) {
+  return (
+    <div className="flex min-w-0 gap-2 py-2">
+      <span className="mt-0.5 shrink-0 text-xs text-quaternary">-</span>
+      <div className="min-w-0 flex-1">
+        <div className="text-xs font-medium text-primary">{subItem.label}</div>
+        {subItem.note ? (
+          <p className="mt-0.5 text-[11px] leading-relaxed text-tertiary">
+            {subItem.note}
+          </p>
+        ) : null}
+        <div className="mt-1 flex flex-wrap gap-1">
+          {subItem.cuisine ? <MetaChip>{subItem.cuisine}</MetaChip> : null}
+          {subItem.price ? <MetaChip>{subItem.price}</MetaChip> : null}
+          {subItem.michelin ? (
+            <span className="inline-flex items-center rounded-md border border-red-200 bg-red-50 px-1.5 py-0.5 text-[10px] font-medium leading-tight text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
+              {subItem.michelin}
+            </span>
+          ) : null}
+          {subItem.hours ? <MetaChip>{subItem.hours}</MetaChip> : null}
+          {subItem.tags?.map((tag) => (
+            <TagChip key={tag} tag={tag} />
+          ))}
+          {subItem.mapUrl ? <LinkChip href={subItem.mapUrl}>Map</LinkChip> : null}
+          {subItem.websiteUrl ? <LinkChip href={subItem.websiteUrl}>Web</LinkChip> : null}
+          {subItem.sourceUrl ? (
+            <LinkChip href={subItem.sourceUrl}>
+              {subItem.sourceLabel ?? "Source"}
+            </LinkChip>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SubItems({ items }: { items: TravelSubItem[] }) {
+  return (
+    <div className="mt-2 border-t border-secondary pt-1">
+      {items.map((subItem) => (
+        <SubItemRow key={subItem.id} subItem={subItem} />
+      ))}
     </div>
   );
 }
@@ -315,6 +435,10 @@ export function TravelBoard({
                             {item.note}
                           </p>
                         )}
+
+                        {item.subItems?.length ? (
+                          <SubItems items={item.subItems} />
+                        ) : null}
 
                         {hasError && (
                           <p className="mt-1 text-xs text-red-500">
