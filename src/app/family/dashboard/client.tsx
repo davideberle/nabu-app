@@ -301,7 +301,7 @@ function resolveRoutinesClient(config: FamilyBoardConfig): RoutineDefinition[] {
       if (ov.enabled === false) return null;
       return {
         ...r,
-        ...(ov.weeklyTarget !== undefined ? { weeklyTarget: ov.weeklyTarget } : {}),
+        ...("weeklyTarget" in ov ? { weeklyTarget: ov.weeklyTarget } : {}),
         ...(ov.points !== undefined ? { points: ov.points } : {}),
       };
     })

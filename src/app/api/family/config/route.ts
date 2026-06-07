@@ -42,8 +42,10 @@ export async function PUT(request: Request) {
     for (const [key, val] of Object.entries(payload.routineOverrides as Record<string, unknown>)) {
       if (typeof val !== "object" || val === null) continue;
       const ov = val as Record<string, unknown>;
-      const entry: Record<string, number | boolean> = {};
-      if (typeof ov.weeklyTarget === "number" && ov.weeklyTarget >= 0 && ov.weeklyTarget <= 7) {
+      const entry: Record<string, number | boolean | null> = {};
+      if (ov.weeklyTarget === null) {
+        entry.weeklyTarget = null;
+      } else if (typeof ov.weeklyTarget === "number" && ov.weeklyTarget >= 0 && ov.weeklyTarget <= 7) {
         entry.weeklyTarget = Math.round(ov.weeklyTarget);
       }
       if (typeof ov.points === "number" && ov.points >= 0 && ov.points <= 10) {

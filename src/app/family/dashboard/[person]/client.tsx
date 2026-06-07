@@ -83,7 +83,7 @@ function resolveRoutinesClient(config: FamilyBoardConfig): RoutineDefinition[] {
       if (ov.enabled === false) return null;
       return {
         ...r,
-        ...(ov.weeklyTarget !== undefined ? { weeklyTarget: ov.weeklyTarget } : {}),
+        ...("weeklyTarget" in ov ? { weeklyTarget: ov.weeklyTarget } : {}),
         ...(ov.points !== undefined ? { points: ov.points } : {}),
       };
     })
@@ -279,9 +279,6 @@ function TaskTile({
         </span>
       ) : (
         <span className="h-4 w-4 rounded-full border-2 border-stone-300 dark:border-stone-500" aria-hidden="true" />
-      )}
-      {!isScheduled && !isDone && (
-        <span className="ml-1.5 text-[10px] text-quaternary">bonus</span>
       )}
     </button>
   );
@@ -1014,7 +1011,7 @@ function ParentControlsPanel({
                   {group.routines.map((routine) => {
                     const ov = config.routineOverrides[routine.id] ?? {};
                     const enabled = isRoutineEnabled(routine.id);
-                    const target = ov.weeklyTarget ?? routine.weeklyTarget;
+                    const target = ov.weeklyTarget !== undefined ? ov.weeklyTarget : routine.weeklyTarget;
                     const pts = ov.points ?? routine.points;
                     return (
                       <div
@@ -1041,17 +1038,21 @@ function ParentControlsPanel({
                         </div>
                         {enabled && (
                           <div className="mt-2 flex flex-wrap items-center gap-4">
-                            <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
-                              Weekly target
-                              <input
-                                type="number"
-                                min={0}
-                                max={7}
-                                value={target}
-                                onChange={(e) => updateRoutineOverride(routine.id, "weeklyTarget", Number(e.target.value))}
-                                className="w-12 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
-                              />
-                            </label>
+                            {target !== null ? (
+                              <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
+                                Weekly target
+                                <input
+                                  type="number"
+                                  min={0}
+                                  max={7}
+                                  value={target}
+                                  onChange={(e) => updateRoutineOverride(routine.id, "weeklyTarget", Number(e.target.value))}
+                                  className="w-12 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
+                                />
+                              </label>
+                            ) : (
+                              <span className="text-[11px] text-quaternary">No weekly target</span>
+                            )}
                             <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
                               Points per completion
                               <input
@@ -1444,37 +1445,6 @@ export function PersonBoardClient({
 
         {loaded && (
           <>
-            {/* Wallet */}
-            {person.role === "child" && (
-              <NabuSurface tone="muted" className="p-4">
-                <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
-                  <div>
-                    <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
-                      Reward wallet
-                    </p>
-                    <h2 className="mt-0.5 text-base font-semibold text-primary">
-                      {balance} pts available
-                    </h2>
-                    <p className="text-xs text-tertiary">
-                      {totalEarned} earned · {totalSpent} spent
-                    </p>
-                  </div>
-                </div>
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-                  {rewardGoals.map((reward) => (
-                    <RewardWalletCard
-                      key={reward.id}
-                      reward={reward}
-                      balance={balance}
-                      spent={redeemedCounts[reward.id] ?? 0}
-                      redeeming={redeemingReward === reward.id}
-                      onRedeem={handleRedeem}
-                    />
-                  ))}
-                </div>
-              </NabuSurface>
-            )}
-
             {/* Board grid */}
             <NabuSurface className="overflow-x-auto p-0">
               <div className="min-w-[760px]">
@@ -1514,22 +1484,35 @@ export function PersonBoardClient({
                               <span className="block text-xs font-semibold leading-tight text-primary">
                                 {routine.title}
                               </span>
-                              <div className="flex items-center gap-1.5">
-                                <div className="relative h-3.5 w-16 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
-                                  <div
-                                    className="h-full rounded-full bg-emerald-400 transition-all"
-                                    style={{
-                                      width: `${progress.target > 0 ? Math.round((progress.done / progress.target) * 100) : 0}%`,
-                                    }}
-                                  />
-                                  <span className="absolute inset-0 flex items-center justify-center text-[9px] font-bold text-stone-700 dark:text-stone-200">
-                                    {progress.done}
+                              {routine.days !== null && (
+                                <span className="block text-[9px] text-quaternary">
+                                  {routine.days.map((d) => dayLabels[d]).join(" · ")}
+                                </span>
+                              )}
+                              {progress.target !== null ? (
+                                <div className="flex items-center gap-1.5">
+                                  <div className="relative h-3.5 w-16 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
+                                    <div
+                                      className="h-full rounded-full bg-emerald-400 transition-all"
+                                      style={{
+                                        width: `${progress.target > 0 ? Math.round((progress.done / progress.target) * 100) : 0}%`,
+                                      }}
+                                    />
+                                    <span className="absolute inset-0 flex items-center justify-center text-[9px] font-bold text-stone-700 dark:text-stone-200">
+                                      {progress.done}
+                                    </span>
+                                  </div>
+                                  <span className="text-[10px] font-semibold text-quaternary">
+                                    / {progress.target}
                                   </span>
                                 </div>
-                                <span className="text-[10px] font-semibold text-quaternary">
-                                  / {progress.target}
-                                </span>
-                              </div>
+                              ) : (
+                                progress.done > 0 && (
+                                  <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+                                    {progress.done} done
+                                  </span>
+                                )
+                              )}
                             </div>
                           </div>
                         </div>
@@ -1624,6 +1607,37 @@ export function PersonBoardClient({
               </NabuSurface>
             )}
 
+            {/* Wallet — below board and pocket-money jobs */}
+            {person.role === "child" && (
+              <NabuSurface tone="muted" className="p-4">
+                <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
+                  <div>
+                    <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
+                      Reward wallet
+                    </p>
+                    <h2 className="mt-0.5 text-base font-semibold text-primary">
+                      {balance} pts available
+                    </h2>
+                    <p className="text-xs text-tertiary">
+                      {totalEarned} earned · {totalSpent} spent
+                    </p>
+                  </div>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                  {rewardGoals.map((reward) => (
+                    <RewardWalletCard
+                      key={reward.id}
+                      reward={reward}
+                      balance={balance}
+                      spent={redeemedCounts[reward.id] ?? 0}
+                      redeeming={redeemingReward === reward.id}
+                      onRedeem={handleRedeem}
+                    />
+                  ))}
+                </div>
+              </NabuSurface>
+            )}
+
             {/* Legend */}
             <div className="flex flex-wrap items-center gap-3 text-[11px] text-quaternary">
               <span className="font-medium text-tertiary">Legend:</span>
@@ -1639,11 +1653,11 @@ export function PersonBoardClient({
                 <span className="inline-flex h-3 w-3 items-center justify-center rounded-sm border border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-800/60">
                   <span className="h-1.5 w-1.5 rounded-full border border-stone-300 dark:border-stone-500" />
                 </span>
-                Open
+                Scheduled
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="inline-block h-3 w-3 rounded-sm border border-dashed border-stone-300 dark:border-stone-600" />
-                Bonus day
+                Unscheduled
               </span>
             </div>
 

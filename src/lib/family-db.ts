@@ -174,7 +174,7 @@ export async function removeRedemption(id: string): Promise<boolean> {
 // ---------------------------------------------------------------------------
 
 export type RoutineOverride = {
-  weeklyTarget?: number;
+  weeklyTarget?: number | null;
   points?: number;
   enabled?: boolean;
 };
@@ -237,8 +237,8 @@ export function resolveRoutines(
       if (ov.enabled === false) return null;
       return {
         ...r,
-        ...(ov.weeklyTarget !== undefined ? { weeklyTarget: ov.weeklyTarget } : {}),
-        ...(ov.points !== undefined ? { points: ov.points } : {}),
+        ...("weeklyTarget" in ov ? { weeklyTarget: ov.weeklyTarget } : {}),
+        ...("points" in ov ? { points: ov.points } : {}),
       };
     })
     .filter((r): r is RoutineDefinition => r !== null);
