@@ -323,7 +323,13 @@ function resolveRewardsClient(config: FamilyBoardConfig): RewardDefinition[] {
     .filter((r): r is RewardDefinition => r !== null);
 }
 
-export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
+export function FamilyDashboardClient({
+  weekNav,
+  trackerOnly,
+}: {
+  weekNav: WeekNav;
+  trackerOnly: boolean;
+}) {
   const today = currentDayIndex();
   const [completions, setCompletions] = useState<CompletionRecord[]>([]);
   const [redemptions, setRedemptions] = useState<RewardRedemption[]>([]);
@@ -402,11 +408,13 @@ export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
               </h1>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <NabuLinkButton href="/" tone="secondary" size="sm">
-              Dashboard
-            </NabuLinkButton>
-          </div>
+          {!trackerOnly && (
+            <div className="flex items-center gap-2">
+              <NabuLinkButton href="/" tone="secondary" size="sm">
+                Dashboard
+              </NabuLinkButton>
+            </div>
+          )}
         </header>
 
         <WeekNavBar weekNav={weekNav} />

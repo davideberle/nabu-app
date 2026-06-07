@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { familyMembers } from "@/data/family-routines";
 import { formatWeekId, getISOWeek, getWeekDates, offsetWeek, parseWeekId } from "@/lib/meals";
+import { auth } from "@/auth";
+import { isAdminEmail } from "@/lib/access";
 import { PersonBoardClient } from "./client";
 
 type Props = {
@@ -21,7 +23,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PersonBoardPage({ params, searchParams }: Props) {
   const { person: personId } = await params;
   const query = searchParams ? await searchParams : {};
-  return <PersonBoardClient personId={personId} weekNav={weekNavFor(personId, query.week)} />;
+  const session = await auth();
+  return (
+    <PersonBoardClient
+      personId={personId}
+      weekNav={weekNavFor(personId, query.week)}
+      canManageParentControls={isAdminEmail(session?.user?.email)}
+    />
+  );
 }
 
 function weekNavFor(personId: string, weekParam?: string) {
