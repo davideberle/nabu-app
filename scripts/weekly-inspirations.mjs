@@ -86,6 +86,13 @@ export const TRUSTED_SOURCES = [
     priority: 8,
     strategy: "homepage-search",
   },
+  {
+    name: "FOOBY",
+    host: "fooby.ch",
+    cuisine: "Swiss",
+    priority: 0,
+    strategy: "fooby-json",
+  },
 ];
 
 const TRUSTED_HOSTS = new Set(TRUSTED_SOURCES.map((s) => s.host));
@@ -321,19 +328,38 @@ function assertTrustedUrl(url) {
 
 export async function searchTrustedSources(query, limit = 24, sources = TRUSTED_SOURCES) {
   const perSource = Math.max(8, Math.ceil(limit / Math.max(1, sources.length)));
-  const all = [];
+  // Gather candidates grouped by source host for fair round-robin later.
+  const byHost = new Map();
   for (const source of sources.sort((a, b) => a.priority - b.priority)) {
     try {
       const results = await searchSource(source, query, perSource);
-      all.push(...results.map((r) => ({ ...r, source })));
+      const candidates = results
+        .map((r) => ({ ...r, source }))
+        .filter((r) => r.url && isProbablyRecipeUrl(r.url));
+      if (candidates.length > 0) {
+        byHost.set(source.host, candidates);
+      }
     } catch {
       // One source failing should not kill the weekly run.
     }
   }
 
+  // Round-robin interleave so no single source dominates the candidate list.
+  const interleaved = [];
+  const iterators = [...byHost.values()].map((arr) => ({ arr, idx: 0 }));
+  let progress = true;
+  while (progress) {
+    progress = false;
+    for (const it of iterators) {
+      if (it.idx < it.arr.length) {
+        interleaved.push(it.arr[it.idx++]);
+        progress = true;
+      }
+    }
+  }
+
   const seen = new Set();
-  return all
-    .filter((r) => r.url && isProbablyRecipeUrl(r.url))
+  return interleaved
     .filter((r) => {
       const key = normalizeUrl(r.url);
       if (seen.has(key)) return false;
@@ -347,7 +373,33 @@ async function searchSource(source, query, limit) {
   if (source.strategy === "wordpress") {
     return searchWordPress(source, query, limit);
   }
+  if (source.strategy === "fooby-json") {
+    return searchFooby(source, query, limit);
+  }
   return searchHomepageLinks(source, query, limit);
+}
+
+async function searchFooby(source, query, limit) {
+  // FOOBY's search treats "recipe" literally and over-weights kid/baking pages.
+  // The endpoint is already scoped to recipes, so use the seasonal food terms.
+  const foobyQuery = query.replace(/\brecipes?\b/gi, "").replace(/\s+/g, " ").trim() || query;
+  const url = `https://fooby.ch/hawaii_search.sri?lang=en&treffertyp=rezepte&query=${encodeURIComponent(foobyQuery)}`;
+  const data = await fetchJson(url).catch(() => null);
+  if (!data) return [];
+  const results = Array.isArray(data.results) ? data.results : Array.isArray(data) ? data : [];
+  return results
+    .filter((r) => {
+      const href = r.url || r.link;
+      if (!href) return false;
+      // Only keep main fooby.ch recipes; skip little.fooby.ch (kids) and other subdomains.
+      try { return new URL(href.startsWith("http") ? href : `https://fooby.ch${href}`).host === "fooby.ch"; } catch { return false; }
+    })
+    .slice(0, limit)
+    .map((r) => {
+      const href = r.url || r.link;
+      const fullUrl = href.startsWith("http") ? href : `https://fooby.ch${href.startsWith("/") ? "" : "/"}${href}`;
+      return { title: r.title || "", url: fullUrl };
+    });
 }
 
 async function searchWordPress(source, query, limit) {

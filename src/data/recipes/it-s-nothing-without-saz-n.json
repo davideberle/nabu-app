@@ -1,6 +1,6 @@
 {
   "id": "it-s-nothing-without-saz-n",
-  "name": "It’s Nothing Without Sazón:",
+  "name": "It’s Nothing Without Sazón",
   "source": {
     "cookbook": "Black Rican Vegan",
     "author": "Lyana Blount"
@@ -36,8 +36,9 @@
       "amount": "1 tsp"
     }
   ],
+  "intro": "Just like the Adobo from Scratch, Sazón is normally used in a lot of Puerto Rican dishes. It has a strong taste of annatto seeds, which also help bring color to a lot of dishes. I like to make Sazón from scratch because it doesn’t include additives. You can visit your local spice shop to pick up the spices organically and individually.",
+  "introduction": "Just like the Adobo from Scratch, Sazón is normally used in a lot of Puerto Rican dishes. It has a strong taste of annatto seeds, which also help bring color to a lot of dishes. I like to make Sazón from scratch because it doesn’t include additives. You can visit your local spice shop to pick up the spices organically and individually.",
   "method": [
-    "Just like the Adobo from Scratch, Sazón is normally used in a lot of Puerto Rican dishes. It has a strong taste of annatto seeds, which also help bring color to a lot of dishes. I like to make Sazón from scratch because it doesn’t include additives. You can visit your local spice shop to pick up the spices organically and individually.",
     "In a small bowl, combine the garlic powder, cumin, turmeric, coriander, annatto, oregano and parsley. Store it in an airtight container or a glass container with a tight-fitting lid. It will keep on the shelf for at least 1 month or in the refrigerator for 3 months."
   ],
   "image": "/recipes/it-s-nothing-without-saz-n.jpg",
@@ -47,14 +48,15 @@
   ],
   "category": {
     "dish_type": [
-      "main"
+      "condiment"
     ],
-    "meal_role": "main"
+    "meal_role": "condiment"
   },
   "time": {
-    "prep": 20,
-    "cook": 35,
-    "total": 55
+    "prep": 5,
+    "cook": 0,
+    "total": 5
   },
-  "cuisine": "Caribbean"
+  "cuisine": "Caribbean",
+  "mealRole": "condiment"
 }

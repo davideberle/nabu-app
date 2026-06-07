@@ -57,17 +57,12 @@
     }
   ],
   "method": [
-    "In a large heavy skillet, combine 1/4 cup of butter and olive oil and heat. Add red and black pepper and garlic and",
-    "cook for about 3 minutes.",
-    "Add pork chops, drizzle with rosemary, and cook for 5 minutes on each side. Lower heat and add parsley, tomatoes",
-    "and salt. Cover with a lid and continue cooking for about 19 minutes.",
+    "In a large heavy skillet, combine 1/4 cup of butter and olive oil and heat. Add red and black pepper and garlic and cook for about 3 minutes.",
+    "Add pork chops, drizzle with rosemary, and cook for 5 minutes on each side. Lower heat and add parsley, tomatoes and salt. Cover with a lid and continue cooking for about 19 minutes.",
     "Remove the lid and cook until ready, or for 20 minutes.",
-    "Bring salted water to boil in a large pot and cook spaghetti for about 10 minutes and drain. Put it back in the pot and",
-    "add remaining butter and stir.",
+    "Bring salted water to boil in a large pot and cook spaghetti for about 10 minutes and drain. Put it back in the pot and add remaining butter and stir.",
     "Add a little sauce from the pork chops and grated cheese and stir to mix.",
-    "Put spaghetti on a platter with pork chops. Pour the sauce and enjoy.",
-    "Seafood Pasta Recipes",
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    "Put spaghetti on a platter with pork chops. Pour the sauce and enjoy."
   ],
   "time": {
     "total": 87
@@ -80,5 +75,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/pork-chops-with-spaghetti.jpg"
+  "image": null
 }
