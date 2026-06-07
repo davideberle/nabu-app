@@ -327,8 +327,28 @@ function assertTrustedUrl(url) {
 }
 
 export async function searchTrustedSources(query, limit = 24, sources = TRUSTED_SOURCES) {
+  const foobySource = sources.find((s) => s.host === "fooby.ch");
+
+  // Phase 1: If FOOBY is in the active source set, start with curated weekly
+  // homepage picks: editorially chosen "Inspiration for this week"
+  // recipes and should be the default starting point.
+  const curatedCandidates = [];
+  if (foobySource) {
+    try {
+      const weeklyLinks = await scrapeFoobyWeeklyLinks();
+      for (const link of weeklyLinks) {
+        if (link.url && isProbablyRecipeUrl(link.url)) {
+          curatedCandidates.push({ ...link, source: foobySource });
+        }
+      }
+    } catch {
+      // Curated scrape failed; will fall back to search-based discovery below.
+    }
+  }
+
+  // Phase 2: Top up from search-based discovery across all sources (including
+  // FOOBY search as fallback) via round-robin interleave.
   const perSource = Math.max(8, Math.ceil(limit / Math.max(1, sources.length)));
-  // Gather candidates grouped by source host for fair round-robin later.
   const byHost = new Map();
   for (const source of sources.sort((a, b) => a.priority - b.priority)) {
     try {
@@ -344,7 +364,7 @@ export async function searchTrustedSources(query, limit = 24, sources = TRUSTED_
     }
   }
 
-  // Round-robin interleave so no single source dominates the candidate list.
+  // Round-robin interleave so no single source dominates the top-up list.
   const interleaved = [];
   const iterators = [...byHost.values()].map((arr) => ({ arr, idx: 0 }));
   let progress = true;
@@ -358,8 +378,10 @@ export async function searchTrustedSources(query, limit = 24, sources = TRUSTED_
     }
   }
 
+  // Combine: curated FOOBY weekly picks first, then search-based top-up.
+  const combined = [...curatedCandidates, ...interleaved];
   const seen = new Set();
-  return interleaved
+  return combined
     .filter((r) => {
       const key = normalizeUrl(r.url);
       if (seen.has(key)) return false;
@@ -377,6 +399,40 @@ async function searchSource(source, query, limit) {
     return searchFooby(source, query, limit);
   }
   return searchHomepageLinks(source, query, limit);
+}
+
+/**
+ * Scrape the FOOBY homepage "Inspiration for this week" curated recipe links.
+ * Returns an array of { title, url } for recipe pages found in that section.
+ * Falls back to an empty array on any failure so the caller can top up from search.
+ */
+async function scrapeFoobyWeeklyLinks() {
+  const homepage = "https://fooby.ch/en.html";
+  const html = await fetchText(homepage).catch(() => "");
+  if (!html) return [];
+
+  // Find the "Inspiration for this week" section and extract recipe links after it.
+  // The section heading appears as text; recipe links follow as /en/recipes/<id>/<slug> hrefs.
+  const sectionIdx = html.indexOf("Inspiration for this week");
+  if (sectionIdx === -1) return [];
+
+  // Scan the chunk after the heading for recipe links (cap search window to avoid
+  // bleeding into unrelated page sections).
+  const chunk = html.slice(sectionIdx, sectionIdx + 8000);
+  const linkRe = /<a\s+[^>]*href=["']([^"']*\/en\/recipes\/\d+\/[^"']+)["'][^>]*>/gi;
+  const seen = new Set();
+  const results = [];
+  for (const m of chunk.matchAll(linkRe)) {
+    const href = absolutizeUrl(m[1], homepage);
+    if (!href) continue;
+    const key = normalizeUrl(href);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    // Only keep main fooby.ch recipes; skip little.fooby.ch or other subdomains.
+    try { if (new URL(href).host !== "fooby.ch") continue; } catch { continue; }
+    results.push({ title: "", url: href });
+  }
+  return results;
 }
 
 async function searchFooby(source, query, limit) {
