@@ -16,16 +16,16 @@ import {
   rewardDefinitions,
   dayLabels,
   currentDayIndex,
-  routinesForPerson,
   weekSummary,
   weekPoints,
   nextRewardForPerson,
   todayStatusLabel,
   type FamilyPerson,
   type CompletionRecord,
+  type RoutineDefinition,
   type RewardDefinition,
 } from "@/data/family-routines";
-import type { FamilyBoardConfig } from "@/lib/family-db";
+import type { FamilyBoardConfig, RewardRedemption } from "@/lib/family-db";
 
 // ---------------------------------------------------------------------------
 // Color helpers
@@ -89,21 +89,34 @@ function rewardProgress(points: number, target: number): number {
 function PersonCard({
   person,
   completions,
+  redemptions,
   today,
   weekId,
+  resolvedRoutines,
+  resolvedRewards,
 }: {
   person: FamilyPerson;
   completions: CompletionRecord[];
+  redemptions: RewardRedemption[];
   today: number;
   weekId: string;
+  resolvedRoutines: RoutineDefinition[];
+  resolvedRewards: RewardDefinition[];
 }) {
   const color = person.colorToken as PersonColor;
-  const summary = weekSummary(person.id, completions);
-  const todayLabel = todayStatusLabel(person.id, completions, today);
-  const points = weekPoints(person.id, completions);
-  const nextReward = nextRewardForPerson(person.id, points);
+  const summary = weekSummary(person.id, completions, resolvedRoutines);
+  const todayLabel = todayStatusLabel(person.id, completions, today, resolvedRoutines);
+  const earned = weekPoints(person.id, completions, resolvedRoutines);
+  const spent = redemptions
+    .filter((r) => r.personId === person.id)
+    .reduce((sum, r) => {
+      const rw = resolvedRewards.find((x) => x.id === r.rewardId);
+      return sum + (rw?.costPoints ?? 0);
+    }, 0);
+  const balance = earned - spent;
+  const nextReward = nextRewardForPerson(person.id, balance, resolvedRewards);
   const percent = nextReward
-    ? rewardProgress(points, nextReward.reward.targetPoints)
+    ? rewardProgress(balance, nextReward.reward.targetPoints)
     : summary.total > 0
       ? Math.round((summary.done / summary.total) * 100)
       : 0;
@@ -182,10 +195,10 @@ function PersonCard({
       {person.role === "child" && (
         <div className="rounded-md bg-white/60 px-3 py-2 dark:bg-white/5">
           <p className="text-[10px] uppercase tracking-widest text-quaternary">
-            Balance
+            Available
           </p>
           <p className="text-sm font-semibold text-primary">
-            {points} pts
+            {balance} pts
           </p>
         </div>
       )}
@@ -276,34 +289,99 @@ function WeekNavBar({ weekNav }: { weekNav: WeekNav }) {
 // Main component
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// Resolve routines/rewards with config overrides (client-side mirror)
+// ---------------------------------------------------------------------------
+
+function resolveRoutinesClient(config: FamilyBoardConfig): RoutineDefinition[] {
+  return routineDefinitions
+    .map((r) => {
+      const ov = config.routineOverrides[r.id];
+      if (!ov) return r;
+      if (ov.enabled === false) return null;
+      return {
+        ...r,
+        ...(ov.weeklyTarget !== undefined ? { weeklyTarget: ov.weeklyTarget } : {}),
+        ...(ov.points !== undefined ? { points: ov.points } : {}),
+      };
+    })
+    .filter((r): r is RoutineDefinition => r !== null);
+}
+
+function resolveRewardsClient(config: FamilyBoardConfig): RewardDefinition[] {
+  return rewardDefinitions
+    .map((r) => {
+      const ov = config.rewardOverrides[r.id];
+      if (!ov) return r;
+      if (ov.enabled === false) return null;
+      return {
+        ...r,
+        ...(ov.costPoints !== undefined ? { costPoints: ov.costPoints } : {}),
+        ...(ov.targetPoints !== undefined ? { targetPoints: ov.targetPoints } : {}),
+      };
+    })
+    .filter((r): r is RewardDefinition => r !== null);
+}
+
 export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
   const today = currentDayIndex();
   const [completions, setCompletions] = useState<CompletionRecord[]>([]);
+  const [redemptions, setRedemptions] = useState<RewardRedemption[]>([]);
+  const [config, setConfig] = useState<FamilyBoardConfig>({
+    routineOverrides: {},
+    rewardOverrides: {},
+  });
   const [loaded, setLoaded] = useState(false);
 
-  // Load completions from DB
+  // Load completions, redemptions, and config from DB
   useEffect(() => {
     let cancelled = false;
     async function load() {
-      const res = await fetch(`/api/family/completions?week=${weekNav.weekId}`);
+      const [compRes, redRes, cfgRes] = await Promise.all([
+        fetch(`/api/family/completions?week=${weekNav.weekId}`),
+        fetch(`/api/family/redemptions?week=${weekNav.weekId}`),
+        fetch("/api/family/config"),
+      ]);
       if (cancelled) return;
-      const data: CompletionRecord[] = await res.json();
-      setCompletions(data);
+      const compData: CompletionRecord[] = await compRes.json();
+      const redData: RewardRedemption[] = await redRes.json();
+      const cfgData: FamilyBoardConfig = await cfgRes.json();
+      setCompletions(compData);
+      setRedemptions(redData);
+      setConfig(cfgData);
       setLoaded(true);
     }
     load();
     return () => { cancelled = true; };
   }, [weekNav.weekId]);
 
+  const resolvedRoutines = useMemo(() => resolveRoutinesClient(config), [config]);
+  const resolvedRewards = useMemo(() => resolveRewardsClient(config), [config]);
+
   const children = familyMembers.filter((p) => p.role === "child");
   const parents = familyMembers.filter((p) => p.role === "parent");
+
+  // Per-child redemption spending
+  const childSpent = useMemo(() => {
+    const result: Record<string, number> = {};
+    for (const child of children) {
+      result[child.id] = redemptions
+        .filter((r) => r.personId === child.id)
+        .reduce((sum, r) => {
+          const reward = resolvedRewards.find((rw) => rw.id === r.rewardId);
+          return sum + (reward?.costPoints ?? 0);
+        }, 0);
+    }
+    return result;
+  }, [children, redemptions, resolvedRewards]);
+
   const childProgress = useMemo(
     () =>
       children.map((child) => ({
         name: child.displayName,
-        points: weekPoints(child.id, completions),
+        points: weekPoints(child.id, completions, resolvedRoutines) - (childSpent[child.id] ?? 0),
       })),
-    [children, completions],
+    [children, completions, resolvedRoutines, childSpent],
   );
 
   return (
@@ -368,7 +446,7 @@ export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
                 className="mb-3"
               />
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-                {rewardDefinitions.map((reward) => (
+                {resolvedRewards.map((reward) => (
                   <RewardGoalCard
                     key={reward.id}
                     reward={reward}
@@ -387,8 +465,11 @@ export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
                     key={person.id}
                     person={person}
                     completions={completions}
+                    redemptions={redemptions}
                     today={today}
                     weekId={weekNav.weekId}
+                    resolvedRoutines={resolvedRoutines}
+                    resolvedRewards={resolvedRewards}
                   />
                 ))}
               </div>
@@ -403,8 +484,11 @@ export function FamilyDashboardClient({ weekNav }: { weekNav: WeekNav }) {
                     key={person.id}
                     person={person}
                     completions={completions}
+                    redemptions={redemptions}
                     today={today}
                     weekId={weekNav.weekId}
+                    resolvedRoutines={resolvedRoutines}
+                    resolvedRewards={resolvedRewards}
                   />
                 ))}
               </div>

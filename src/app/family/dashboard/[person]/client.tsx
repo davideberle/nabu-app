@@ -311,11 +311,13 @@ function RewardWalletCard({
   reward,
   balance,
   spent,
+  redeeming,
   onRedeem,
 }: {
   reward: RewardDefinition;
   balance: number;
   spent: number;
+  redeeming: boolean;
   onRedeem: (rewardId: string) => void;
 }) {
   const redeemedCount = spent;
@@ -356,16 +358,16 @@ function RewardWalletCard({
         </span>
         <button
           type="button"
-          disabled={!canAfford}
+          disabled={!canAfford || redeeming}
           onClick={() => onRedeem(reward.id)}
           className={cn(
             "rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors",
-            canAfford
+            canAfford && !redeeming
               ? "bg-stone-900 text-white hover:bg-stone-800 dark:bg-white dark:text-stone-900 dark:hover:bg-stone-100"
               : "bg-stone-100 text-quaternary dark:bg-stone-800",
           )}
         >
-          {redeemedCount > 0 ? "Redeem again" : "Redeem"}
+          {redeeming ? "Redeeming…" : redeemedCount > 0 ? "Redeem again" : "Redeem"}
         </button>
       </div>
     </div>
@@ -830,6 +832,7 @@ function ParentControlsPanel({
   config,
   allRoutines,
   allRewards,
+  saveStatus,
   onUndoCompletion,
   onUndoRedemption,
   onConfigChange,
@@ -841,16 +844,30 @@ function ParentControlsPanel({
   config: FamilyBoardConfig;
   allRoutines: RoutineDefinition[];
   allRewards: RewardDefinition[];
+  saveStatus: "idle" | "saving" | "saved";
   onUndoCompletion: (routineId: string, day: number) => void;
   onUndoRedemption: (redemptionId: string) => void;
   onConfigChange: (config: FamilyBoardConfig) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const personRoutines = allRoutines.filter((r) => r.assignedTo.includes(personId));
+  // Include all seed routines for this person (even disabled ones) for toggle display
+  const allPersonRoutines = routineDefinitions.filter((r) => r.assignedTo.includes(personId));
   const personRedemptions = redemptions.filter((r) => r.personId === personId);
   const personCompletions = Array.from(completions.entries())
     .filter(([, c]) => c.personId === personId)
     .map(([key, c]) => ({ key, ...c }));
+
+  // Group routines by category for clearer display
+  const routinesByCategory = useMemo(() => {
+    const groups: { category: RoutineCategory; label: string; routines: RoutineDefinition[] }[] = [];
+    for (const cat of swimlaneCategories) {
+      const items = allPersonRoutines.filter((r) => r.category === cat);
+      if (items.length > 0) {
+        groups.push({ category: cat, label: categoryMeta[cat].label, routines: items });
+      }
+    }
+    return groups;
+  }, [allPersonRoutines]);
 
   const updateRoutineOverride = (routineId: string, field: keyof RoutineOverride, value: number | boolean) => {
     const prev = config.routineOverrides[routineId] ?? {};
@@ -874,6 +891,14 @@ function ParentControlsPanel({
     });
   };
 
+  const isRoutineEnabled = (routineId: string) => {
+    return config.routineOverrides[routineId]?.enabled !== false;
+  };
+
+  const isRewardEnabled = (rewardId: string) => {
+    return config.rewardOverrides[rewardId]?.enabled !== false;
+  };
+
   return (
     <NabuSurface tone="muted" className="p-4">
       <button
@@ -881,12 +906,28 @@ function ParentControlsPanel({
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between"
       >
-        <NabuSectionHeader
-          eyebrow="Parent controls"
-          title="Adjust routines, rewards & undo completions"
-          className="text-left"
-        />
-        <span className="text-xs font-semibold text-quaternary">{open ? "Close" : "Open"}</span>
+        <div className="text-left">
+          <p className="text-[10px] font-medium uppercase tracking-widest text-quaternary">
+            Parent controls
+          </p>
+          <p className="mt-0.5 text-sm font-semibold text-primary">
+            Adjust routines, rewards & undo completions
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          {saveStatus === "saving" && (
+            <span className="flex items-center gap-1 text-[11px] text-tertiary">
+              <span className="h-2 w-2 animate-spin rounded-full border border-stone-300 border-t-stone-600" />
+              Saving
+            </span>
+          )}
+          {saveStatus === "saved" && (
+            <span className="text-[11px] font-medium text-emerald-600 dark:text-emerald-400">Saved</span>
+          )}
+          <span className="rounded-md border border-secondary px-2 py-1 text-xs font-semibold text-quaternary">
+            {open ? "Close" : "Open"}
+          </span>
+        </div>
       </button>
 
       {open && (
@@ -896,6 +937,9 @@ function ParentControlsPanel({
             <h3 className="text-xs font-semibold uppercase tracking-widest text-quaternary">
               Undo completions this week
             </h3>
+            <p className="mt-1 text-[11px] text-tertiary">
+              Reverse a child completion if it was tapped by mistake.
+            </p>
             {personCompletions.length === 0 ? (
               <p className="mt-2 text-xs text-tertiary">No completions to undo.</p>
             ) : (
@@ -928,6 +972,9 @@ function ParentControlsPanel({
               <h3 className="text-xs font-semibold uppercase tracking-widest text-quaternary">
                 Undo redemptions this week
               </h3>
+              <p className="mt-1 text-[11px] text-tertiary">
+                Refund a redeemed reward and restore the points.
+              </p>
               <div className="mt-2 space-y-1">
                 {personRedemptions.map((r) => {
                   const reward = rewardDefinitions.find((rw) => rw.id === r.rewardId);
@@ -950,50 +997,80 @@ function ParentControlsPanel({
             </div>
           )}
 
-          {/* Routine settings */}
+          {/* Routine settings — grouped by category */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-widest text-quaternary">
               Routine settings
             </h3>
-            <div className="mt-2 space-y-2">
-              {personRoutines.map((routine) => {
-                const ov = config.routineOverrides[routine.id] ?? {};
-                const target = ov.weeklyTarget ?? routine.weeklyTarget;
-                const pts = ov.points ?? routine.points;
-                return (
-                  <div key={routine.id} className="rounded-md border border-secondary bg-primary px-3 py-2">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm">{routine.icon}</span>
-                      <span className="text-xs font-semibold text-primary">{routine.title}</span>
-                    </div>
-                    <div className="mt-2 flex flex-wrap items-center gap-4">
-                      <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
-                        Target/wk
-                        <input
-                          type="number"
-                          min={0}
-                          max={7}
-                          value={target}
-                          onChange={(e) => updateRoutineOverride(routine.id, "weeklyTarget", Number(e.target.value))}
-                          className="w-12 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
-                        />
-                      </label>
-                      <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
-                        Points
-                        <input
-                          type="number"
-                          min={0}
-                          max={10}
-                          value={pts}
-                          onChange={(e) => updateRoutineOverride(routine.id, "points", Number(e.target.value))}
-                          className="w-12 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
-                        />
-                      </label>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            <p className="mt-1 text-[11px] text-tertiary">
+              Change weekly targets, point values, or disable routines. Changes apply immediately.
+            </p>
+            {routinesByCategory.map((group) => (
+              <div key={group.category} className="mt-3">
+                <p className="mb-1.5 text-[11px] font-semibold text-secondary">
+                  {laneIcon[group.category]} {group.label}
+                </p>
+                <div className="space-y-1.5">
+                  {group.routines.map((routine) => {
+                    const ov = config.routineOverrides[routine.id] ?? {};
+                    const enabled = isRoutineEnabled(routine.id);
+                    const target = ov.weeklyTarget ?? routine.weeklyTarget;
+                    const pts = ov.points ?? routine.points;
+                    return (
+                      <div
+                        key={routine.id}
+                        className={cn(
+                          "rounded-md border border-secondary bg-primary px-3 py-2",
+                          !enabled && "opacity-50",
+                        )}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm">{routine.icon}</span>
+                            <span className="text-xs font-semibold text-primary">{routine.title}</span>
+                          </div>
+                          <label className="flex cursor-pointer items-center gap-1.5 text-[11px] text-tertiary">
+                            <input
+                              type="checkbox"
+                              checked={enabled}
+                              onChange={(e) => updateRoutineOverride(routine.id, "enabled", e.target.checked)}
+                              className="h-3.5 w-3.5 rounded border-stone-300 accent-stone-900 dark:accent-stone-100"
+                            />
+                            Active
+                          </label>
+                        </div>
+                        {enabled && (
+                          <div className="mt-2 flex flex-wrap items-center gap-4">
+                            <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
+                              Weekly target
+                              <input
+                                type="number"
+                                min={0}
+                                max={7}
+                                value={target}
+                                onChange={(e) => updateRoutineOverride(routine.id, "weeklyTarget", Number(e.target.value))}
+                                className="w-12 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
+                              />
+                            </label>
+                            <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
+                              Points per completion
+                              <input
+                                type="number"
+                                min={0}
+                                max={10}
+                                value={pts}
+                                onChange={(e) => updateRoutineOverride(routine.id, "points", Number(e.target.value))}
+                                className="w-12 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
+                              />
+                            </label>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Reward settings */}
@@ -1001,41 +1078,69 @@ function ParentControlsPanel({
             <h3 className="text-xs font-semibold uppercase tracking-widest text-quaternary">
               Reward settings
             </h3>
-            <div className="mt-2 space-y-2">
-              {allRewards.filter((r) => r.assignedTo.includes(personId)).map((reward) => {
+            <p className="mt-1 text-[11px] text-tertiary">
+              Set how many points a reward needs to unlock and how much it costs to redeem.
+            </p>
+            <div className="mt-2 space-y-1.5">
+              {rewardDefinitions.filter((r) => r.assignedTo.includes(personId)).map((reward) => {
                 const ov = config.rewardOverrides[reward.id] ?? {};
+                const enabled = isRewardEnabled(reward.id);
                 const cost = ov.costPoints ?? reward.costPoints;
                 const target = ov.targetPoints ?? reward.targetPoints;
                 return (
-                  <div key={reward.id} className="rounded-md border border-secondary bg-primary px-3 py-2">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm">{reward.icon}</span>
-                      <span className="text-xs font-semibold text-primary">{reward.title}</span>
-                    </div>
-                    <div className="mt-2 flex flex-wrap items-center gap-4">
-                      <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
-                        Target pts
+                  <div
+                    key={reward.id}
+                    className={cn(
+                      "rounded-md border border-secondary bg-primary px-3 py-2",
+                      !enabled && "opacity-50",
+                    )}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm">{reward.icon}</span>
+                        <span className="text-xs font-semibold text-primary">{reward.title}</span>
+                        <NabuBadge tone={reward.period === "daily" ? "blue" : reward.period === "weekly" ? "green" : "violet"}>
+                          {reward.period}
+                        </NabuBadge>
+                      </div>
+                      <label className="flex cursor-pointer items-center gap-1.5 text-[11px] text-tertiary">
                         <input
-                          type="number"
-                          min={1}
-                          max={200}
-                          value={target}
-                          onChange={(e) => updateRewardOverride(reward.id, "targetPoints", Number(e.target.value))}
-                          className="w-14 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
+                          type="checkbox"
+                          checked={enabled}
+                          onChange={(e) => updateRewardOverride(reward.id, "enabled", e.target.checked)}
+                          className="h-3.5 w-3.5 rounded border-stone-300 accent-stone-900 dark:accent-stone-100"
                         />
-                      </label>
-                      <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
-                        Cost pts
-                        <input
-                          type="number"
-                          min={1}
-                          max={200}
-                          value={cost}
-                          onChange={(e) => updateRewardOverride(reward.id, "costPoints", Number(e.target.value))}
-                          className="w-14 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
-                        />
+                        Active
                       </label>
                     </div>
+                    {enabled && (
+                      <div className="mt-2 flex flex-wrap items-center gap-4">
+                        <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
+                          Unlock at
+                          <input
+                            type="number"
+                            min={1}
+                            max={200}
+                            value={target}
+                            onChange={(e) => updateRewardOverride(reward.id, "targetPoints", Number(e.target.value))}
+                            className="w-14 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
+                          />
+                          <span className="text-quaternary">pts</span>
+                        </label>
+                        <label className="flex items-center gap-1.5 text-[11px] text-tertiary">
+                          Redeem cost
+                          <input
+                            type="number"
+                            min={1}
+                            max={200}
+                            value={cost}
+                            onChange={(e) => updateRewardOverride(reward.id, "costPoints", Number(e.target.value))}
+                            className="w-14 rounded border border-secondary bg-secondary px-1.5 py-0.5 text-xs text-primary"
+                          />
+                          <span className="text-quaternary">pts</span>
+                        </label>
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -1218,15 +1323,24 @@ export function PersonBoardClient({
     [completions, personId],
   );
 
+  const [redeemingReward, setRedeemingReward] = useState<string | null>(null);
+
   const handleRedeem = useCallback(async (rewardId: string) => {
-    const res = await fetch("/api/family/redemptions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ personId, rewardId, week: weekNav.weekId }),
-    });
-    const redemption: RewardRedemption = await res.json();
-    setRedemptions((prev) => [...prev, redemption]);
-  }, [personId, weekNav.weekId]);
+    if (redeemingReward) return; // prevent double-submit
+    setRedeemingReward(rewardId);
+    try {
+      const res = await fetch("/api/family/redemptions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ personId, rewardId, week: weekNav.weekId }),
+      });
+      if (!res.ok) return; // server rejected (e.g. insufficient balance)
+      const redemption: RewardRedemption = await res.json();
+      setRedemptions((prev) => [...prev, redemption]);
+    } finally {
+      setRedeemingReward(null);
+    }
+  }, [personId, weekNav.weekId, redeemingReward]);
 
   // Parent controls: undo completion
   const handleUndoCompletion = useCallback(async (routineId: string, day: number) => {
@@ -1253,18 +1367,24 @@ export function PersonBoardClient({
     });
   }, []);
 
-  // Parent controls: save config
+  // Parent controls: save config with status indicator
+  const [configSaveStatus, setConfigSaveStatus] = useState<"idle" | "saving" | "saved">("idle");
   const configSaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const savedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const handleConfigChange = useCallback((newConfig: FamilyBoardConfig) => {
     setConfig(newConfig);
+    setConfigSaveStatus("saving");
     // Debounce save
     if (configSaveTimer.current) clearTimeout(configSaveTimer.current);
+    if (savedTimer.current) clearTimeout(savedTimer.current);
     configSaveTimer.current = setTimeout(async () => {
       await fetch("/api/family/config", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newConfig),
       });
+      setConfigSaveStatus("saved");
+      savedTimer.current = setTimeout(() => setConfigSaveStatus("idle"), 2000);
     }, 500);
   }, []);
 
@@ -1347,6 +1467,7 @@ export function PersonBoardClient({
                       reward={reward}
                       balance={balance}
                       spent={redeemedCounts[reward.id] ?? 0}
+                      redeeming={redeemingReward === reward.id}
                       onRedeem={handleRedeem}
                     />
                   ))}
@@ -1378,7 +1499,7 @@ export function PersonBoardClient({
                 {/* Swimlanes */}
                 {laneData.map((lane) => {
                   return lane.routines.map((routine) => {
-                    const progress = routineProgress(personId, routine.id, completionList);
+                    const progress = routineProgress(personId, routine.id, completionList, resolvedRoutines);
                     return (
                       <div
                         key={routine.id}
@@ -1535,6 +1656,7 @@ export function PersonBoardClient({
               config={config}
               allRoutines={resolvedRoutines}
               allRewards={resolvedRewards}
+              saveStatus={configSaveStatus}
               onUndoCompletion={handleUndoCompletion}
               onUndoRedemption={handleUndoRedemption}
               onConfigChange={handleConfigChange}

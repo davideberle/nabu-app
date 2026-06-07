@@ -268,26 +268,32 @@ export function routinesForPerson(personId: string): RoutineDefinition[] {
   return routineDefinitions.filter((r) => r.assignedTo.includes(personId));
 }
 
-/** Summarise a person's week completion. */
+/** Summarise a person's week completion. Accepts optional resolved routines for config-aware targets. */
 export function weekSummary(
   personId: string,
   completions: CompletionRecord[],
+  resolvedRoutines?: RoutineDefinition[],
 ): { done: number; planned: number; submitted: number; total: number } {
   const mine = completions.filter((c) => c.personId === personId);
   const done = mine.filter((c) => c.status === "done").length;
-  const target = routinesForPerson(personId).reduce((sum, routine) => {
-    if (routine.taskClass === "job") return sum;
-    return sum + routine.weeklyTarget;
-  }, 0);
+  const pool = resolvedRoutines ?? routineDefinitions;
+  const target = pool
+    .filter((r) => r.assignedTo.includes(personId))
+    .reduce((sum, routine) => {
+      if (routine.taskClass === "job") return sum;
+      return sum + routine.weeklyTarget;
+    }, 0);
   return { done, planned: Math.max(0, target - done), submitted: 0, total: target };
 }
 
-/** Weekly points from done completion records. */
+/** Weekly points from done completion records. Accepts optional resolved routines for config-aware points. */
 export function weekPoints(
   personId: string,
   completions: CompletionRecord[],
+  resolvedRoutines?: RoutineDefinition[],
 ): number {
-  const routines = routinesForPerson(personId);
+  const pool = resolvedRoutines ?? routineDefinitions;
+  const routines = pool.filter((r) => r.assignedTo.includes(personId));
   return completions
     .filter(
       (c) =>
@@ -300,13 +306,15 @@ export function weekPoints(
     }, 0);
 }
 
-/** Progress for one routine row against its weekly target. */
+/** Progress for one routine row against its weekly target. Accepts optional resolved routines for config-aware targets. */
 export function routineProgress(
   personId: string,
   routineId: string,
   completions: CompletionRecord[],
+  resolvedRoutines?: RoutineDefinition[],
 ): { done: number; target: number } {
-  const routine = routineDefinitions.find((r) => r.id === routineId);
+  const pool = resolvedRoutines ?? routineDefinitions;
+  const routine = pool.find((r) => r.id === routineId);
   const done = completions.filter(
     (c) =>
       c.personId === personId &&
@@ -316,11 +324,14 @@ export function routineProgress(
   return { done, target: routine?.weeklyTarget ?? 0 };
 }
 
+/** Next reachable reward for a person. Accepts optional resolved rewards for config-aware targets. */
 export function nextRewardForPerson(
   personId: string,
   points: number,
+  resolvedRewards?: RewardDefinition[],
 ): { reward: RewardDefinition; missing: number } | null {
-  const rewards = rewardDefinitions
+  const pool = resolvedRewards ?? rewardDefinitions;
+  const rewards = pool
     .filter((reward) => reward.assignedTo.includes(personId))
     .sort((a, b) => a.targetPoints - b.targetPoints);
   const next = rewards.find((reward) => points < reward.targetPoints) ?? rewards.at(-1);
@@ -328,15 +339,21 @@ export function nextRewardForPerson(
   return { reward: next, missing: Math.max(0, next.targetPoints - points) };
 }
 
-/** Today status label for overview cards. */
+/** Today status label for overview cards. Accepts optional resolved routines for config-aware schedules. */
 export function todayStatusLabel(
   personId: string,
   completions: CompletionRecord[],
   today: number,
+  resolvedRoutines?: RoutineDefinition[],
 ): string {
-  const scheduledToday = routinesForPersonDay(personId, today).filter(
-    (routine) => routine.taskClass !== "job",
-  );
+  const pool = resolvedRoutines ?? routineDefinitions;
+  const scheduledToday = pool
+    .filter(
+      (r) =>
+        r.assignedTo.includes(personId) &&
+        (r.days === null || r.days.includes(today)) &&
+        r.taskClass !== "job",
+    );
   const todayTasks = completions.filter(
     (c) => c.personId === personId && c.day === today && c.status === "done",
   );
