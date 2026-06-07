@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/nabu";
 import type {
   TravelCategory,
+  TravelItem,
   TravelItemStatus,
 } from "@/data/travel-san-sebastian";
 
@@ -32,6 +33,144 @@ function nextStatus(current: TravelItemStatus): TravelItemStatus {
   return STATUS_CYCLE[(idx + 1) % STATUS_CYCLE.length];
 }
 
+/* ------------------------------------------------------------------ */
+/*  Compact metadata chips                                             */
+/* ------------------------------------------------------------------ */
+
+function MetaChip({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-md border border-secondary bg-secondary px-1.5 py-0.5 text-[11px] leading-tight text-tertiary">
+      {children}
+    </span>
+  );
+}
+
+function LinkChip({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1 rounded-md border border-secondary bg-secondary px-1.5 py-0.5 text-[11px] leading-tight text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
+    >
+      {children}
+      <svg className="h-2.5 w-2.5 shrink-0 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </a>
+  );
+}
+
+function ItemMeta({ item }: { item: TravelItem }) {
+  const chips: React.ReactNode[] = [];
+
+  // Price
+  if (item.price) {
+    chips.push(<MetaChip key="price">{item.price}</MetaChip>);
+  }
+
+  // Michelin
+  if (item.michelin) {
+    chips.push(
+      <span
+        key="michelin"
+        className="inline-flex items-center gap-1 rounded-md border border-red-200 bg-red-50 px-1.5 py-0.5 text-[11px] leading-tight text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300"
+      >
+        {item.michelin}
+      </span>
+    );
+  }
+
+  // Google rating
+  if (item.googleRating != null) {
+    chips.push(
+      <MetaChip key="rating">
+        <span className="text-amber-500">&#9733;</span> {item.googleRating}
+      </MetaChip>
+    );
+  }
+
+  // Distance from home
+  if (item.distanceFromHomeKm != null) {
+    chips.push(
+      <MetaChip key="dist">{item.distanceFromHomeKm < 1 ? `${item.distanceFromHomeKm * 1000}m` : `${item.distanceFromHomeKm} km`}</MetaChip>
+    );
+  }
+
+  // Category tag
+  if (item.categoryTag) {
+    chips.push(
+      <MetaChip key="cattag">{item.categoryTag}</MetaChip>
+    );
+  }
+
+  // Hike stats
+  if (item.hikeStats) {
+    const h = item.hikeStats;
+    chips.push(<MetaChip key="hlen">{h.lengthKm} km</MetaChip>);
+    chips.push(<MetaChip key="hdur">{h.duration}</MetaChip>);
+    chips.push(<MetaChip key="halt">+{h.altitudeGainM}m</MetaChip>);
+    chips.push(<MetaChip key="hdist">{h.distanceFromHomeKm} km from home</MetaChip>);
+  }
+
+  // Excursion meta
+  if (item.excursionMeta) {
+    const e = item.excursionMeta;
+    chips.push(<MetaChip key="etime">{e.timeNeeded}</MetaChip>);
+    chips.push(<MetaChip key="edist">~{e.distanceKm} km</MetaChip>);
+    for (const tag of e.tags) {
+      chips.push(
+        <MetaChip key={`etag-${tag}`}>{tag}</MetaChip>
+      );
+    }
+  }
+
+  // Hours / schedule
+  if (item.hours) {
+    chips.push(<MetaChip key="hours">{item.hours}</MetaChip>);
+  }
+  if (item.schedule) {
+    chips.push(<MetaChip key="sched">{item.schedule}</MetaChip>);
+  }
+
+  // Links
+  if (item.mapUrl) {
+    chips.push(
+      <LinkChip key="map" href={item.mapUrl}>Map</LinkChip>
+    );
+  }
+  if (item.websiteUrl) {
+    chips.push(
+      <LinkChip key="web" href={item.websiteUrl}>Web</LinkChip>
+    );
+  }
+  if (item.sourceUrl) {
+    chips.push(
+      <LinkChip key="src" href={item.sourceUrl}>
+        {item.sourceLabel ?? "Source"}
+      </LinkChip>
+    );
+  }
+
+  if (chips.length === 0) return null;
+
+  return (
+    <div className="mt-1.5 flex flex-wrap gap-1">
+      {chips}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Board                                                              */
+/* ------------------------------------------------------------------ */
+
 export function TravelBoard({
   categories,
   initialStates,
@@ -41,7 +180,7 @@ export function TravelBoard({
 }) {
   const router = useRouter();
   const [states, setStates] = useState<StatusMap>(initialStates);
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
   const [errorItemId, setErrorItemId] = useState<string | null>(null);
 
   async function cycleStatus(itemId: string) {
@@ -168,26 +307,11 @@ export function TravelBoard({
                           </NabuBadge>
                         </div>
 
-                        {/* Meta row */}
-                        {(item.timing || item.effort) && (
-                          <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-quaternary">
-                            {item.timing ? (
-                              <span>{item.timing}</span>
-                            ) : null}
-                            {item.effort ? (
-                              <span>Effort: {item.effort}</span>
-                            ) : null}
-                          </div>
-                        )}
-
-                        {item.booking && (
-                          <p className="mt-1 text-xs text-amber-600 dark:text-amber-400">
-                            {item.booking}
-                          </p>
-                        )}
+                        {/* Rich metadata chips */}
+                        <ItemMeta item={item} />
 
                         {item.note && (
-                          <p className="mt-1 text-xs leading-relaxed text-tertiary">
+                          <p className="mt-1.5 text-xs leading-relaxed text-tertiary">
                             {item.note}
                           </p>
                         )}
