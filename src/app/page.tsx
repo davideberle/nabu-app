@@ -74,6 +74,14 @@ async function getTileCategories(): Promise<TileCategory[]> {
           href: "/todos",
           stats: `${activeTodos} active`,
         },
+        {
+          id: "health",
+          name: "Health",
+          emoji: "🫀",
+          description: "Sleep, alcohol, meditation, meals",
+          href: "/health",
+          stats: "Today",
+        },
       ],
     },
     {

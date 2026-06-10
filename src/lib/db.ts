@@ -553,6 +553,58 @@ async function migrate(client: Client) {
         )
       `);
     },
+
+    // v13 -> v14: health dashboard tables
+    async () => {
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS health_daily_logs (
+          date                TEXT PRIMARY KEY,
+          breakfast_override  TEXT,
+          lunch_note          TEXT,
+          dinner_source       TEXT,
+          dinner_summary      TEXT,
+          day_note            TEXT,
+          created_at          TEXT NOT NULL,
+          updated_at          TEXT NOT NULL
+        )
+      `);
+
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS health_alcohol_events (
+          id                    TEXT PRIMARY KEY,
+          date                  TEXT NOT NULL,
+          drink_type            TEXT NOT NULL,
+          amount_label          TEXT,
+          estimated_grams       REAL,
+          context               TEXT,
+          created_at            TEXT NOT NULL
+        )
+      `);
+      await client.execute(`
+        CREATE INDEX IF NOT EXISTS idx_health_alcohol_date
+          ON health_alcohol_events (date)
+      `);
+
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS health_sleep_reports (
+          date           TEXT PRIMARY KEY,
+          sleep_quality  TEXT,
+          hours          REAL,
+          note           TEXT,
+          created_at     TEXT NOT NULL
+        )
+      `);
+
+      await client.execute(`
+        CREATE TABLE IF NOT EXISTS health_meditation_logs (
+          date       TEXT PRIMARY KEY,
+          minutes    INTEGER,
+          completed  INTEGER NOT NULL DEFAULT 0,
+          note       TEXT,
+          created_at TEXT NOT NULL
+        )
+      `);
+    },
   ];
 
   if (version < migrations.length) {
