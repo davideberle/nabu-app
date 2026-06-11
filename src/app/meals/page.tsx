@@ -530,9 +530,13 @@ function MealsPageInner() {
 
   // Load existing plan when week changes
   useEffect(() => {
-    // Clear stale plan immediately to prevent autosave from writing
-    // old/empty data over a saved plan while the fetch is in flight.
+    // Clear stale plan and candidates immediately to prevent autosave
+    // from writing old/empty data over a saved plan while the fetch is
+    // in flight, and to avoid leaking one week's candidates into another.
     setPlan(null);
+    setCandidates([]);
+    candidatesRef.current = [];
+    setIdeaMetadata(null);
     setPlanLoading(true);
     setShowContextEditor(false);
     setExpandingDay(null);
@@ -555,8 +559,8 @@ function MealsPageInner() {
           let seededVisibleForThisWeek = false;
           // Restore saved candidates with full card data for stable reload,
           // then reconcile images against current canonical recipe data to
-          // prevent stale persisted images from resurfacing. Once ideas are
-          // visible, week navigation deliberately leaves that list alone.
+          // prevent stale persisted images from resurfacing. Ideas are
+          // week-specific: each week restores its own saved set.
           if (data.candidateSet?.items?.length) {
             const restored = data.candidateSet.items.map(restoreCandidateItem);
             if (candidatesRef.current.length === 0) {
@@ -1609,7 +1613,7 @@ function MealsPageInner() {
           <div className="space-y-6">
             <NabuSectionHeader
               eyebrow="Suggestions"
-              description="Ideas stay here while you browse weeks. Web ideas are imported to My Recipes before they appear."
+              description="Saved ideas are restored for this week. Empty future weeks stay empty until you generate or research new ones. Web ideas are imported to My Recipes before they appear."
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
