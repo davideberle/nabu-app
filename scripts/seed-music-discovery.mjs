@@ -63,14 +63,38 @@ function optionalYear(value) {
 }
 
 let inserted = 0;
+let updated = 0;
+const syncStatuses = process.env.SYNC_DISCOVERY_STATUSES === '1';
 for (const candidate of candidates) {
   const createdAt = candidate.created_at || new Date().toISOString();
   const updatedAt = candidate.updated_at || createdAt;
+  const existing = await db.execute({
+    sql: "SELECT id FROM discovery_candidates WHERE id = ?",
+    args: [candidate.id],
+  });
+  const existed = existing.rows.length > 0;
   const result = await db.execute({
-    sql: `INSERT OR IGNORE INTO discovery_candidates (
+    sql: `INSERT INTO discovery_candidates (
       id, status, lane, score, type, name, artist, genres_json, reasons, library_status,
       artwork_url, album_year, release_year, source_signals_json, played_count, history_json, created_at, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ON CONFLICT(id) DO UPDATE SET
+      status = CASE WHEN ? THEN excluded.status ELSE discovery_candidates.status END,
+      lane = excluded.lane,
+      score = excluded.score,
+      type = excluded.type,
+      name = excluded.name,
+      artist = excluded.artist,
+      genres_json = excluded.genres_json,
+      reasons = excluded.reasons,
+      library_status = excluded.library_status,
+      artwork_url = excluded.artwork_url,
+      album_year = excluded.album_year,
+      release_year = excluded.release_year,
+      source_signals_json = excluded.source_signals_json,
+      played_count = CASE WHEN ? THEN excluded.played_count ELSE discovery_candidates.played_count END,
+      history_json = CASE WHEN ? THEN excluded.history_json ELSE discovery_candidates.history_json END,
+      updated_at = excluded.updated_at`,
     args: [
       candidate.id,
       candidate.status || 'inbox',
@@ -90,10 +114,17 @@ for (const candidate of candidates) {
       JSON.stringify(candidate.history || []),
       createdAt,
       updatedAt,
+      syncStatuses ? 1 : 0,
+      syncStatuses ? 1 : 0,
+      syncStatuses ? 1 : 0,
     ],
   });
-  inserted += Number(result.rowsAffected || 0);
+  const rowsAffected = Number(result.rowsAffected || 0);
+  if (rowsAffected > 0) {
+    if (!existed) inserted += 1;
+    else updated += 1;
+  }
 }
 
 const count = await db.execute('SELECT COUNT(*) as count FROM discovery_candidates');
-console.log(JSON.stringify({ statePath, source: candidates.length, inserted, total: Number(count.rows[0].count || 0) }, null, 2));
+console.log(JSON.stringify({ statePath, source: candidates.length, inserted, updated, syncStatuses, total: Number(count.rows[0].count || 0) }, null, 2));
