@@ -45,6 +45,7 @@ export type Recipe = {
   // Extra fields used by My Recipes
   cuisine?: string | string[];
   mealRole?: string;
+  visibility?: "personal" | "planner-candidate";
   madeHistory?: { date: string; note: string }[];
   lastMade?: string;
 };
@@ -151,6 +152,108 @@ export async function getRecipesByChapter(
 export async function getRecipesWithImages(): Promise<Recipe[]> {
   const all = await getAllRecipes();
   return all.filter((r) => r.image !== null);
+}
+
+export type RecipeSearchResult = Recipe & {
+  searchScore: number;
+};
+
+function normalizeSearchText(value: string): string {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function searchTerms(query: string): string[] {
+  return Array.from(
+    new Set(tokenizeSearchText(query)),
+  );
+}
+
+function tokenizeSearchText(value: string): string[] {
+  return normalizeSearchText(value)
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
+}
+
+function recipeCuisineTerms(recipe: Recipe): string[] {
+  const cuisine = recipe.cuisine;
+  return [
+    ...(Array.isArray(cuisine) ? cuisine : cuisine ? [cuisine] : []),
+    getCuisine(recipe),
+  ];
+}
+
+function hasSearchPhrase(text: string, phrase: string): boolean {
+  return new RegExp(`(^|[^a-z0-9])${phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^a-z0-9]|$)`).test(text);
+}
+
+function scoreText(text: string, tokens: Set<string>, phrase: string, terms: string[], phraseScore: number, termScore: number): number {
+  if (!text) return 0;
+
+  let score = hasSearchPhrase(text, phrase) ? phraseScore : 0;
+  for (const term of terms) {
+    if (tokens.has(term)) score += termScore;
+  }
+  return score;
+}
+
+export function searchRecipes(query: string, recipes: Recipe[]): RecipeSearchResult[] {
+  const trimmedQuery = query.trim();
+  if (!trimmedQuery) return [];
+
+  const phrase = normalizeSearchText(trimmedQuery);
+  const terms = searchTerms(trimmedQuery);
+  if (terms.length === 0) return [];
+
+  const scored = recipes
+    .map((recipe) => {
+      const nameText = normalizeSearchText(recipe.name);
+      const metadataText = normalizeSearchText(
+        [
+          recipe.source?.cookbook,
+          recipe.source?.author,
+          recipe.source?.chapter,
+          recipe.source?.publication,
+          ...recipeCuisineTerms(recipe),
+          ...getCourseTags(recipe),
+          ...getDietary(recipe),
+          recipe.category?.meal_role,
+          recipe.mealRole,
+        ]
+          .filter(Boolean)
+          .join(" "),
+      );
+      const ingredientText = normalizeSearchText(
+        recipe.ingredients
+          .map((ingredient) => [ingredient.item, ingredient.group].filter(Boolean).join(" "))
+          .join(" "),
+      );
+      const nameTokens = new Set(tokenizeSearchText(recipe.name));
+      const metadataTokens = new Set(tokenizeSearchText(metadataText));
+      const ingredientTokens = new Set(tokenizeSearchText(ingredientText));
+      const searchableTokens = new Set([...nameTokens, ...metadataTokens, ...ingredientTokens]);
+
+      if (!terms.every((term) => searchableTokens.has(term))) {
+        return null;
+      }
+
+      let searchScore = 0;
+      if (nameText === phrase) searchScore += 10000;
+      if (hasSearchPhrase(nameText, phrase)) searchScore += 5000;
+      searchScore += scoreText(nameText, nameTokens, phrase, terms, 3000, 500);
+      searchScore += scoreText(metadataText, metadataTokens, phrase, terms, 800, 120);
+      searchScore += scoreText(ingredientText, ingredientTokens, phrase, terms, 350, 50);
+
+      return { ...recipe, searchScore };
+    })
+    .filter((recipe): recipe is RecipeSearchResult => recipe !== null);
+
+  return scored.sort((a, b) => {
+    if (b.searchScore !== a.searchScore) return b.searchScore - a.searchScore;
+    return a.name.localeCompare(b.name);
+  });
 }
 
 // Get cuisine for a recipe (sync — pure function)
