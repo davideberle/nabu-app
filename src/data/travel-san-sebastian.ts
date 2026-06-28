@@ -532,6 +532,33 @@ export const categories: TravelCategory[] = [
         booking: "Walk-in",
       },
       {
+        id: "aitana-donostia",
+        label: "Aitana Donostia",
+        cuisine: "Modern Spanish / casual",
+        hours: "Check current hours",
+        price: "$$",
+        googleRating: 4.4,
+        distanceFromHomeKm: 3,
+        mapUrl: "https://www.google.com/maps/search/Aitana+Donostia+Easo+Kalea+6",
+        note: "Visited 2026-06-26 after the San Martin / Buen Pastor errands. Better fit for the family than very old-school bars like La Espiga.",
+        tags: ["casual", "modern", "family-friendly", "visited"],
+        booking: "Walk-in / reserve if convenient",
+      },
+      {
+        id: "polka",
+        label: "POLKA San Sebastian",
+        cuisine: "Modern casual / Basque-ish",
+        hours: "Check current hours",
+        price: "$$",
+        googleRating: 4.4,
+        distanceFromHomeKm: 3.5,
+        mapUrl: "https://www.google.com/maps/search/POLKA+San+Sebastian+Plaza+Sarriegi",
+        websiteUrl: "https://www.covermanager.com/reserve/module_restaurant/polka-san-sebastian/spanish",
+        note: "Visited 2026-06-28. Good polished casual dinner with kids, but not a pintxos crawl.",
+        tags: ["casual", "old-town", "family-friendly", "visited"],
+        booking: "Online booking available",
+      },
+      {
         id: "la-mejillonera",
         label: "La Mejillonera",
         cuisine: "Seafood / casual",
@@ -724,6 +751,16 @@ export const categories: TravelCategory[] = [
         tags: ["rainy", "family"],
       },
       {
+        id: "plaza-old-town-urgull-port-walk",
+        label: "Plaza Gipuzkoa / Old Town / Urgull / port walk",
+        hours: "Best in a dry 2-3h weather window",
+        categoryTag: "City walk",
+        distanceFromHomeKm: 3.5,
+        mapUrl: "https://www.google.com/maps/search/Plaza+Gipuzkoa+San+Sebastian",
+        note: "Completed 2026-06-28 with Plaza Gipuzkoa, Parte Vieja, Urgull, the port, and Aquarium afterwards.",
+        tags: ["family", "culture", "views", "visited"],
+      },
+      {
         id: "igeldo-funicular",
         label: "Monte Igueldo funicular + amusement park",
         hours: "Summer: daily 10:00–21:00; funicular runs every 15 min",
@@ -780,7 +817,39 @@ export const categories: TravelCategory[] = [
     ],
   },
 
-  // ===== 4. HIKES =====
+  // ===== 4. SHOPPING =====
+  {
+    id: "shopping",
+    name: "Shopping",
+    emoji: "🛍️",
+    description:
+      "Practical malls, outlets, sunglasses/clothes/errands, and car-friendly retail stops.",
+    items: [
+      {
+        id: "garbera",
+        label: "Garbera",
+        hours: "Check current holiday/Sunday hours",
+        categoryTag: "Mall",
+        distanceFromHomeKm: 6,
+        mapUrl: "https://www.google.com/maps/search/Garbera+Donostia",
+        websiteUrl: "https://www.garbera.com",
+        note: "Visited 2026-06-27. Easy mall/sunglasses/shopping run with parking; useful low-effort fallback when weather or energy is poor.",
+        tags: ["shopping", "mall", "family", "visited"],
+      },
+      {
+        id: "fashion-outlet-barakaldo",
+        label: "Fashion Outlet Barakaldo / Bilbao outlet",
+        hours: "Check current hours",
+        categoryTag: "Outlet",
+        distanceFromHomeKm: 105,
+        mapUrl: "https://www.google.com/maps/search/Fashion+Outlet+Barakaldo",
+        note: "Bilbao-side outlet candidate. Best paired with a Bilbao/Guggenheim day or airport-side routing rather than a standalone Donostia shopping drive.",
+        tags: ["shopping", "outlet", "bilbao"],
+      },
+    ],
+  },
+
+  // ===== 5. HIKES =====
   {
     id: "hikes",
     name: "Hikes",
@@ -869,7 +938,7 @@ export const categories: TravelCategory[] = [
     ],
   },
 
-  // ===== 5. EXCURSIONS =====
+  // ===== 6. EXCURSIONS =====
   {
     id: "excursions",
     name: "Excursions",
