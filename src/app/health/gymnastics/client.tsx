@@ -76,6 +76,16 @@ export function GymnasticsClient({
   });
 
   const [pending, setPending] = useState<Record<string, boolean>>({});
+  const [saveError, setSaveError] = useState<Record<string, boolean>>({});
+
+  const clearSaveError = useCallback((k: string) => {
+    setSaveError((e) => {
+      if (!e[k]) return e;
+      const copy = { ...e };
+      delete copy[k];
+      return copy;
+    });
+  }, []);
 
   const toggle = useCallback(
     async (week: number, session: GymnasticsSessionKey) => {
@@ -83,8 +93,9 @@ export function GymnasticsClient({
       if (pending[k]) return;
       const nextCompleted = !(status[k]?.completed ?? false);
 
-      // Optimistic update
+      // Optimistic update — clear any prior save error for this session
       const previous = status[k];
+      clearSaveError(k);
       setStatus((s) => ({
         ...s,
         [k]: { completed: nextCompleted, completedAt: nextCompleted ? new Date().toISOString() : null },
@@ -104,13 +115,14 @@ export function GymnasticsClient({
           [k]: { completed: nextCompleted, completedAt: data.record?.completedAt ?? null },
         }));
       } catch {
-        // Revert on failure
+        // Revert on failure and surface a visible, retryable error
         setStatus((s) => {
           const copy = { ...s };
           if (previous) copy[k] = previous;
           else delete copy[k];
           return copy;
         });
+        setSaveError((e) => ({ ...e, [k]: true }));
       } finally {
         setPending((p) => {
           const copy = { ...p };
@@ -119,7 +131,7 @@ export function GymnasticsClient({
         });
       }
     },
-    [pending, status],
+    [pending, status, clearSaveError],
   );
 
   if (restricted) {
@@ -224,6 +236,7 @@ export function GymnasticsClient({
           week={week}
           status={status}
           pending={pending}
+          saveError={saveError}
           onToggle={toggle}
         />
 
@@ -267,11 +280,13 @@ function WeekPanel({
   week,
   status,
   pending,
+  saveError,
   onToggle,
 }: {
   week: GymnasticsWeek;
   status: StatusMap;
   pending: Record<string, boolean>;
+  saveError: Record<string, boolean>;
   onToggle: (week: number, session: GymnasticsSessionKey) => void;
 }) {
   return (
@@ -290,6 +305,7 @@ function WeekPanel({
             completed={status[keyOf(week.week, sessionKey)]?.completed ?? false}
             completedAt={status[keyOf(week.week, sessionKey)]?.completedAt ?? null}
             pending={pending[keyOf(week.week, sessionKey)] ?? false}
+            saveError={saveError[keyOf(week.week, sessionKey)] ?? false}
             onToggle={() => onToggle(week.week, sessionKey)}
           />
         ))}
@@ -304,6 +320,7 @@ function SessionCard({
   completed,
   completedAt,
   pending,
+  saveError,
   onToggle,
 }: {
   sessionKey: GymnasticsSessionKey;
@@ -311,6 +328,7 @@ function SessionCard({
   completed: boolean;
   completedAt: string | null;
   pending: boolean;
+  saveError: boolean;
   onToggle: () => void;
 }) {
   return (
@@ -340,6 +358,7 @@ function SessionCard({
         onClick={onToggle}
         disabled={pending}
         aria-pressed={completed}
+        aria-describedby={saveError ? `gym-save-error-${sessionKey}` : undefined}
         className={cn(
           "mt-3 w-full rounded-full border px-4 py-2 text-sm font-medium transition-colors disabled:opacity-60",
           completed
@@ -349,7 +368,16 @@ function SessionCard({
       >
         {pending ? "Saving…" : completed ? "✓ Completed — tap to undo" : "Mark session complete"}
       </button>
-      {completed && completedAt ? (
+      {saveError ? (
+        <p
+          id={`gym-save-error-${sessionKey}`}
+          role="alert"
+          className="mt-1.5 flex items-center justify-center gap-1.5 text-center text-[11px] font-medium leading-snug text-red-600 dark:text-red-400"
+        >
+          <span aria-hidden="true">⚠</span>
+          Couldn&apos;t save — tap to retry.
+        </p>
+      ) : completed && completedAt ? (
         <p className="mt-1.5 text-center text-[10px] text-quaternary">
           Completed {formatCompletedAt(completedAt)}
         </p>
