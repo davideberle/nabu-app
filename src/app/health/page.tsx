@@ -562,6 +562,27 @@ export default function HealthPage() {
       <NabuHeader title="Health" eyebrow="Personal" backHref="/" icon="🫀" />
 
       <NabuMain className="space-y-6 pb-20">
+        <NabuCard href="/health/gymnastics" className="flex items-center gap-3">
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-primary bg-secondary text-lg shadow-xs">
+            🤸
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-sm font-semibold tracking-[-0.01em] text-primary">Gymnastics program</span>
+            <span className="block truncate text-xs text-quaternary">
+              10-week kipping, butterfly &amp; toes-to-bar · track your sessions
+            </span>
+          </span>
+          <svg
+            className="h-4 w-4 shrink-0 text-quaternary transition-transform group-hover:translate-x-0.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 5l7 7-7 7" />
+          </svg>
+        </NabuCard>
+
         {loading ? (
           <NabuSurface tone="muted" className="p-8 text-center">
             <p className="text-sm text-quaternary">Loading...</p>

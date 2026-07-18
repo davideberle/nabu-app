@@ -1,0 +1,298 @@
+{
+  "programId": "gym-kip-ttb-10wk-v1",
+  "title": "Kipping, Butterfly & Toes-to-Bar",
+  "subtitle": "10-week gymnastics skill add-on",
+  "summary": "A twice-weekly skill block that layers onto normal CrossFit training. Session A builds the kipping and butterfly pull-up; session B builds the kipping toes-to-bar. Keep sessions 48-72 hours apart and treat every rep as skill practice, not conditioning.",
+  "durationWeeks": 10,
+  "sessionsPerWeek": 2,
+  "totalSessions": 20,
+  "spacingHours": { "min": 48, "max": 72 },
+  "sessionLabels": {
+    "A": "Kipping + butterfly pull-ups",
+    "B": "Toes-to-bar kip"
+  },
+  "warmup": {
+    "title": "Warm-up — every session",
+    "items": [
+      "2×6 scap pull-ups",
+      "2×6 controlled beat swings",
+      "2×15s hollow hold",
+      "2×15s arch hold",
+      "One easy drill set from today's session"
+    ]
+  },
+  "progressionRule": "Only raise an EMOM target after you complete every minute cleanly on two separate sessions.",
+  "weeks": [
+    {
+      "week": 1,
+      "phase": "Shapes",
+      "focus": "Own the hollow and arch. Build clean single reps with a full reset.",
+      "sessions": {
+        "A": {
+          "label": "Kipping + butterfly pull-ups",
+          "blocks": [
+            { "movement": "Beat swings", "prescription": "4×5", "note": "Big hollow-to-arch shapes, no pull." },
+            { "movement": "Kipping singles", "prescription": "6×1", "note": "One clean rep, then reset to a dead hang." },
+            { "movement": "Low butterfly cycles", "prescription": "6×4", "note": "Learn the circle; the chin does not need to clear the bar." },
+            { "movement": "Strict pull-ups", "prescription": "3×3", "note": "Leave 2 reps in reserve every set." }
+          ]
+        },
+        "B": {
+          "label": "Toes-to-bar kip",
+          "blocks": [
+            { "movement": "Beat swings", "prescription": "4×5", "note": "Same tight shapes as session A." },
+            { "movement": "Kip knee raises", "prescription": "5×3" },
+            { "movement": "Knee-to-chest + push-away", "prescription": "5×3", "note": "Aggressive bar push-away at the top." },
+            { "movement": "Compression lifts", "prescription": "3×8", "note": "Build the toe-to-bar close." }
+          ]
+        }
+      }
+    },
+    {
+      "week": 2,
+      "phase": "Shapes",
+      "focus": "Own the hollow and arch. Build clean single reps with a full reset.",
+      "sessions": {
+        "A": {
+          "label": "Kipping + butterfly pull-ups",
+          "blocks": [
+            { "movement": "Beat swings", "prescription": "4×5", "note": "Big hollow-to-arch shapes, no pull." },
+            { "movement": "Kipping singles", "prescription": "6×1", "note": "One clean rep, then reset to a dead hang." },
+            { "movement": "Low butterfly cycles", "prescription": "6×4", "note": "Learn the circle; the chin does not need to clear the bar." },
+            { "movement": "Strict pull-ups", "prescription": "3×3", "note": "Leave 2 reps in reserve every set." }
+          ]
+        },
+        "B": {
+          "label": "Toes-to-bar kip",
+          "blocks": [
+            { "movement": "Beat swings", "prescription": "4×5", "note": "Same tight shapes as session A." },
+            { "movement": "Kip knee raises", "prescription": "5×3" },
+            { "movement": "Knee-to-chest + push-away", "prescription": "5×3", "note": "Aggressive bar push-away at the top." },
+            { "movement": "Compression lifts", "prescription": "3×8", "note": "Build the toe-to-bar close." }
+          ]
+        }
+      }
+    },
+    {
+      "week": 3,
+      "phase": "Height & contact",
+      "focus": "Raise the pull and start reaching the bar with the toes.",
+      "sessions": {
+        "A": {
+          "label": "Kipping + butterfly pull-ups",
+          "blocks": [
+            { "movement": "Kipping pull-ups", "prescription": "5×2" },
+            { "movement": "Low butterfly cycles", "prescription": "4×5" },
+            { "movement": "Butterfly pulls", "prescription": "6×2", "note": "Aim gradually higher each set." },
+            { "movement": "Full kipping singles", "prescription": "Optional 3", "note": "Only if the reps stay perfect." }
+          ]
+        },
+        "B": {
+          "label": "Toes-to-bar kip",
+          "blocks": [
+            { "movement": "Knee-to-chest", "prescription": "3×4" },
+            { "movement": "Alternating high toe targets", "prescription": "3×4", "note": "Alternate toward high targets." },
+            { "movement": "Reset toes-to-bar singles", "prescription": "6–10", "note": "Full reset between reps." },
+            { "movement": "Compression", "prescription": "3×10" }
+          ]
+        }
+      }
+    },
+    {
+      "week": 4,
+      "phase": "Height & contact",
+      "focus": "Raise the pull and start reaching the bar with the toes.",
+      "sessions": {
+        "A": {
+          "label": "Kipping + butterfly pull-ups",
+          "blocks": [
+            { "movement": "Kipping pull-ups", "prescription": "5×2" },
+            { "movement": "Low butterfly cycles", "prescription": "4×5" },
+            { "movement": "Butterfly pulls", "prescription": "6×2", "note": "Aim gradually higher each set." },
+            { "movement": "Full kipping singles", "prescription": "Optional 3", "note": "Only if the reps stay perfect." }
+          ]
+        },
+        "B": {
+          "label": "Toes-to-bar kip",
+          "blocks": [
+            { "movement": "Knee-to-chest", "prescription": "3×4" },
+            { "movement": "Alternating high toe targets", "prescription": "3×4", "note": "Alternate toward high targets." },
+            { "movement": "Reset toes-to-bar singles", "prescription": "6–10", "note": "Full reset between reps." },
+            { "movement": "Compression", "prescription": "3×10" }
+          ]
+        }
+      }
+    },
+    {
+      "week": 5,
+      "phase": "Connect",
+      "focus": "Link the first clean pairs while the backswing stays intact.",
+      "sessions": {
+        "A": {
+          "label": "Kipping + butterfly pull-ups",
+          "blocks": [
+            { "movement": "Kipping pull-ups", "prescription": "3×4" },
+            { "movement": "Butterfly pull-ups", "prescription": "6×2–3" },
+            { "movement": "Low butterfly cycles", "prescription": "4×4–5" }
+          ]
+        },
+        "B": {
+          "label": "Toes-to-bar kip",
+          "blocks": [
+            { "movement": "Toes-to-bar singles", "prescription": "8 singles every 20s", "note": "On a running clock, one clean rep per 20 seconds." },
+            { "movement": "Connected toes-to-bar", "prescription": "5×2", "note": "Return to singles if the second rep loses its backswing." }
+          ]
+        }
+      }
+    },
+    {
+      "week": 6,
+      "phase": "Connect",
+      "focus": "Link the first clean pairs while the backswing stays intact.",
+      "sessions": {
+        "A": {
+          "label": "Kipping + butterfly pull-ups",
+          "blocks": [
+            { "movement": "Kipping pull-ups", "prescription": "3×4" },
+            { "movement": "Butterfly pull-ups", "prescription": "6×2–3" },
+            { "movement": "Low butterfly cycles", "prescription": "4×4–5" }
+          ]
+        },
+        "B": {
+          "label": "Toes-to-bar kip",
+          "blocks": [
+            { "movement": "Toes-to-bar singles", "prescription": "8 singles every 20s", "note": "On a running clock, one clean rep per 20 seconds." },
+            { "movement": "Connected toes-to-bar", "prescription": "5×2", "note": "Return to singles if the second rep loses its backswing." }
+          ]
+        }
+      }
+    },
+    {
+      "week": 7,
+      "phase": "Repeatable sets",
+      "focus": "Turn pairs into repeatable small sets on the clock.",
+      "sessions": {
+        "A": {
+          "label": "Kipping + butterfly pull-ups",
+          "blocks": [
+            { "movement": "Butterfly pull-ups", "prescription": "5×4" },
+            { "movement": "Butterfly EMOM", "prescription": "EMOM 6 × 3", "note": "3 clean butterfly reps at the top of each minute." },
+            { "movement": "Kipping pull-ups", "prescription": "1×5", "note": "Easy, smooth finisher." }
+          ]
+        },
+        "B": {
+          "label": "Toes-to-bar kip",
+          "blocks": [
+            { "movement": "Toes-to-bar", "prescription": "6×3" },
+            { "movement": "Toes-to-bar EMOM", "prescription": "EMOM 6 × 3" },
+            { "movement": "Kip knee raises", "prescription": "2×5", "note": "Emphasize the bar push-away." }
+          ]
+        }
+      }
+    },
+    {
+      "week": 8,
+      "phase": "Repeatable sets",
+      "focus": "Turn pairs into repeatable small sets on the clock.",
+      "sessions": {
+        "A": {
+          "label": "Kipping + butterfly pull-ups",
+          "blocks": [
+            { "movement": "Butterfly pull-ups", "prescription": "5×4" },
+            { "movement": "Butterfly EMOM", "prescription": "EMOM 6 × 3", "note": "3 clean butterfly reps at the top of each minute." },
+            { "movement": "Kipping pull-ups", "prescription": "1×5", "note": "Easy, smooth finisher." }
+          ]
+        },
+        "B": {
+          "label": "Toes-to-bar kip",
+          "blocks": [
+            { "movement": "Toes-to-bar", "prescription": "6×3" },
+            { "movement": "Toes-to-bar EMOM", "prescription": "EMOM 6 × 3" },
+            { "movement": "Kip knee raises", "prescription": "2×5", "note": "Emphasize the bar push-away." }
+          ]
+        }
+      }
+    },
+    {
+      "week": 9,
+      "phase": "WOD capacity",
+      "focus": "Hold clean reps across a full 10-minute EMOM.",
+      "sessions": {
+        "A": {
+          "label": "Kipping + butterfly pull-ups",
+          "blocks": [
+            { "movement": "Butterfly EMOM", "prescription": "EMOM 10 × 3–5", "note": "Pick a number you can keep clean every minute." }
+          ]
+        },
+        "B": {
+          "label": "Toes-to-bar kip",
+          "blocks": [
+            { "movement": "Toes-to-bar EMOM", "prescription": "EMOM 10 × 3–5", "note": "Pick a number you can keep clean every minute." }
+          ]
+        }
+      }
+    },
+    {
+      "week": 10,
+      "phase": "WOD capacity",
+      "focus": "Prove capacity, then take one honest quality set that stops before form breaks.",
+      "sessions": {
+        "A": {
+          "label": "Kipping + butterfly pull-ups",
+          "blocks": [
+            { "movement": "Butterfly EMOM", "prescription": "EMOM 10 × 3–5" },
+            { "movement": "Quality set", "prescription": "1 set", "note": "One unbroken set, stopping two reps before failure." }
+          ]
+        },
+        "B": {
+          "label": "Toes-to-bar kip",
+          "blocks": [
+            { "movement": "Toes-to-bar EMOM", "prescription": "EMOM 10 × 3–5" },
+            { "movement": "Quality set", "prescription": "1 set of 6–10", "note": "Stop before the rhythm breaks." }
+          ]
+        }
+      }
+    }
+  ],
+  "prerequisites": {
+    "title": "Before you start",
+    "mustHave": [
+      "At least 5 strict pull-ups",
+      "A 30-second active hang",
+      "Pain-free shoulders and elbows"
+    ],
+    "repCaps": {
+      "initial": 25,
+      "later": 40,
+      "note": "Cap full dynamic reps near 25 per session at first, building toward 40 as capacity grows."
+    },
+    "stopRules": [
+      "Sharp shoulder pain",
+      "Medial (inner) elbow pain",
+      "Any torn-hand or hot-spot warning signs"
+    ],
+    "notes": [
+      "Keep butterfly volume low until the kip is genuinely ready.",
+      "Technique guidance here is not medical advice — your floor coach overrides the app."
+    ]
+  },
+  "m60Scaling": {
+    "title": "Masters (60+) scaling",
+    "intro": "Skill practice and workout scaling are different jobs. Keep them separate.",
+    "points": [
+      "Do not rehearse half-kips under fatigue.",
+      "Use proper kipping singles or small clean clusters during skill work — and in a metcon only with low-volume exposure while the rhythm is intact.",
+      "Default WOD substitution: about 40–50% of the programmed reps as strict pull-ups, in small sets, when that preserves the stimulus.",
+      "For high-volume or fast metcons, use the coach's intended scale (ring rows, jumping pull-ups, etc.) rather than turning the workout into strict-pull-up failure work.",
+      "Never scale 1:1 from kipping reps to strict reps. Ask the floor coach when the intended stimulus is unclear."
+    ]
+  },
+  "videos": [
+    { "id": "cf-kipping", "movement": "kipping", "title": "The Kipping Pull-Up", "source": "CrossFit", "youtubeId": "lzRo-4pq_AY", "url": "https://www.youtube.com/watch?v=lzRo-4pq_AY" },
+    { "id": "wodprep-kipping", "movement": "kipping", "title": "Kipping Basics", "source": "WODprep", "youtubeId": "W-Wkxk0aupc", "url": "https://www.youtube.com/watch?v=W-Wkxk0aupc" },
+    { "id": "cf-butterfly", "movement": "butterfly", "title": "The Butterfly Pull-Up", "source": "CrossFit", "youtubeId": "OenVG15QMj8", "url": "https://www.youtube.com/watch?v=OenVG15QMj8" },
+    { "id": "wodprep-butterfly", "movement": "butterfly", "title": "Butterfly Progression", "source": "WODprep", "youtubeId": "6ji4A5WCuBo", "url": "https://www.youtube.com/watch?v=6ji4A5WCuBo" },
+    { "id": "cf-ttb", "movement": "toes-to-bar", "title": "The Kipping Toes-to-Bar", "source": "CrossFit", "youtubeId": "_03pCKOv4l4", "url": "https://www.youtube.com/watch?v=_03pCKOv4l4" },
+    { "id": "invictus-ttb", "movement": "toes-to-bar", "title": "3 Tips for Stringing Toes-to-Bar", "source": "CrossFit Invictus", "youtubeId": "ImZw_XdrouE", "url": "https://www.youtube.com/watch?v=ImZw_XdrouE" }
+  ]
+}

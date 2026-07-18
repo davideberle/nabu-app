@@ -57,6 +57,27 @@ async function ensureHealthTables(client: Client): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
+// Gymnastics program progress (Phase 3A)
+//
+// Tracks completion of each week/session of the gymnastics skill add-on so
+// progress follows David across devices. Keyed by program_id + week + session.
+// ---------------------------------------------------------------------------
+
+async function ensureGymnasticsTable(client: Client): Promise<void> {
+  await client.execute(`
+    CREATE TABLE IF NOT EXISTS health_gymnastics_progress (
+      program_id   TEXT NOT NULL,
+      week         INTEGER NOT NULL,
+      session      TEXT NOT NULL,
+      completed    INTEGER NOT NULL DEFAULT 0,
+      completed_at TEXT,
+      note         TEXT,
+      PRIMARY KEY (program_id, week, session)
+    )
+  `);
+}
+
+// ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
@@ -329,5 +350,79 @@ function rowToMeditationLog(row: Record<string, unknown>): HealthMeditationLog {
     completed: (row["completed"] as number) === 1,
     ...(row["note"] ? { note: row["note"] as string } : {}),
     createdAt: row["created_at"] as string,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Gymnastics progress
+// ---------------------------------------------------------------------------
+
+export type GymnasticsProgressRecord = {
+  week: number;
+  session: "A" | "B";
+  completed: boolean;
+  completedAt: string | null;
+  note?: string;
+};
+
+/** All stored progress rows for a program. Absent week/session pairs are simply not returned. */
+export async function getGymnasticsProgress(
+  programId: string,
+): Promise<GymnasticsProgressRecord[]> {
+  const client = await getDb();
+  await ensureGymnasticsTable(client);
+  const result = await client.execute({
+    sql: "SELECT week, session, completed, completed_at, note FROM health_gymnastics_progress WHERE program_id = ? ORDER BY week ASC, session ASC",
+    args: [programId],
+  });
+  return result.rows.map((row) => rowToGymnasticsProgress(row as Record<string, unknown>));
+}
+
+/**
+ * Upsert the completion state of a single week/session. When `completed` is
+ * true the timestamp is stamped; when false it is cleared (uncomplete).
+ */
+export async function setGymnasticsProgress(entry: {
+  programId: string;
+  week: number;
+  session: "A" | "B";
+  completed: boolean;
+  note?: string;
+}): Promise<GymnasticsProgressRecord> {
+  const client = await getDb();
+  await ensureGymnasticsTable(client);
+  const completedAt = entry.completed ? new Date().toISOString() : null;
+  await client.execute({
+    sql: `INSERT INTO health_gymnastics_progress (program_id, week, session, completed, completed_at, note)
+          VALUES (?, ?, ?, ?, ?, ?)
+          ON CONFLICT (program_id, week, session) DO UPDATE SET
+            completed = excluded.completed,
+            completed_at = excluded.completed_at,
+            note = COALESCE(excluded.note, health_gymnastics_progress.note)`,
+    args: [
+      entry.programId,
+      entry.week,
+      entry.session,
+      entry.completed ? 1 : 0,
+      completedAt,
+      entry.note ?? null,
+    ],
+  });
+  return {
+    week: entry.week,
+    session: entry.session,
+    completed: entry.completed,
+    completedAt,
+    ...(entry.note ? { note: entry.note } : {}),
+  };
+}
+
+function rowToGymnasticsProgress(row: Record<string, unknown>): GymnasticsProgressRecord {
+  return {
+    week: row["week"] as number,
+    session: row["session"] as "A" | "B",
+    completed: (row["completed"] as number) === 1,
+    completedAt: (row["completed_at"] as string | null) ?? null,
+    ...(row["note"] ? { note: row["note"] as string } : {}),
   };
 }
