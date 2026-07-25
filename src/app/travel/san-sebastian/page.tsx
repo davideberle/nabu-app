@@ -1,79 +1,97 @@
+import { notFound } from "next/navigation";
 import {
   NabuPageShell,
   NabuHeader,
   NabuMain,
+  NabuSurface,
+  NabuSectionHeader,
+  NabuKicker,
 } from "@/components/ui/nabu";
-import { categories, TRIP_ID } from "@/data/travel-san-sebastian";
-import type { TravelItemStatus } from "@/data/travel-san-sebastian";
-import { getTravelItemStates } from "@/lib/db";
-import { TravelBoard } from "./travel-board";
+import { getTripById, type TripHighlight } from "@/data/travel";
 
-export const dynamic = "force-dynamic";
+export const metadata = {
+  title: "San Sebastian",
+};
 
-export default async function SanSebastianPage() {
-  const statesMap = await getTravelItemStates(TRIP_ID);
-  const initialStates: Record<string, TravelItemStatus> = {};
-  for (const [itemId, state] of statesMap) {
-    initialStates[itemId] = state.status;
+function HighlightRow({ highlight }: { highlight: TripHighlight }) {
+  return (
+    <div className="flex min-w-0 gap-3 py-3 first:pt-0 last:pb-0">
+      <span
+        aria-hidden
+        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-utility-orange-400"
+      />
+      <div className="min-w-0 flex-1">
+        <h3 className="text-sm font-semibold tracking-[-0.01em] text-primary">
+          {highlight.title}
+        </h3>
+        <p className="mt-0.5 text-sm leading-relaxed text-tertiary">
+          {highlight.detail}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default function SanSebastianPage() {
+  const trip = getTripById("san-sebastian");
+  if (!trip?.archive) {
+    notFound();
   }
 
-  const totalItems = categories.reduce((n, c) => n + c.items.length, 0);
-  const planned = Object.values(initialStates).filter((s) => s === "planned").length;
-  const done = Object.values(initialStates).filter((s) => s === "done").length;
+  const { snapshot, highlights, leftOpen } = trip.archive;
 
   return (
     <NabuPageShell>
       <NabuHeader
-        title="San Sebastian"
-        eyebrow="Travel"
-        backHref="/"
-        subtitle={`${totalItems} items · ${planned} planned · ${done} done`}
-        maxWidth="5xl"
+        title={trip.name}
+        eyebrow="Past trip"
+        backHref="/travel"
+        subtitle={`${trip.location} · ${trip.dateLabel}`}
+        maxWidth="3xl"
       />
 
-      <NabuMain className="pb-24">
-        <div className="mb-6 overflow-hidden rounded-lg border border-primary bg-primary p-4 sm:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-quaternary">
-            Summer 2026
+      <NabuMain maxWidth="3xl" className="space-y-8 pb-20">
+        {/* Snapshot */}
+        <NabuSurface tone="accent" className="p-4 sm:p-5">
+          <NabuKicker>Snapshot</NabuKicker>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-secondary">
+            {snapshot}
           </p>
-          <h2 className="mt-2 text-lg font-semibold text-primary sm:text-xl">
-            Family trip planning board
-          </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-tertiary">
-            Browse by category, mark items as idea / planned / done. Tap the
-            status icon to cycle. Weeks 1–2 kids surf until 19:00; weeks 3–4
-            they finish at 15:00. Home base: Aingeru Zaindaria Bidea 45.
-          </p>
+        </NabuSurface>
 
-          <div className="mt-4 grid grid-cols-3 gap-2">
-            <div className="rounded-md border border-secondary p-2.5">
-              <p className="text-[10px] uppercase tracking-[0.14em] text-quaternary">
-                Items
-              </p>
-              <p className="mt-1 text-xl font-semibold text-primary">
-                {totalItems}
-              </p>
+        {/* Highlights */}
+        <section>
+          <NabuSectionHeader
+            className="mb-3"
+            eyebrow="Highlights"
+            title="What stood out"
+          />
+          <NabuSurface tone="default" className="px-4 py-2 sm:px-5">
+            <div className="divide-y divide-secondary">
+              {highlights.map((highlight) => (
+                <HighlightRow key={highlight.title} highlight={highlight} />
+              ))}
             </div>
-            <div className="rounded-md border border-secondary p-2.5">
-              <p className="text-[10px] uppercase tracking-[0.14em] text-quaternary">
-                Planned
-              </p>
-              <p className="mt-1 text-xl font-semibold text-primary">
-                {planned}
-              </p>
-            </div>
-            <div className="rounded-md border border-secondary p-2.5">
-              <p className="text-[10px] uppercase tracking-[0.14em] text-quaternary">
-                Done
-              </p>
-              <p className="mt-1 text-xl font-semibold text-primary">
-                {done}
-              </p>
-            </div>
-          </div>
-        </div>
+          </NabuSurface>
+        </section>
 
-        <TravelBoard categories={categories} initialStates={initialStates} />
+        {/* Left open */}
+        {leftOpen.length > 0 ? (
+          <section>
+            <NabuSectionHeader
+              className="mb-3"
+              eyebrow="Left open"
+              title="For a return trip"
+            />
+            <NabuSurface tone="muted" className="px-4 py-2 sm:px-5">
+              <div className="divide-y divide-secondary">
+                {leftOpen.map((highlight) => (
+                  <HighlightRow key={highlight.title} highlight={highlight} />
+                ))}
+              </div>
+            </NabuSurface>
+          </section>
+        ) : null}
       </NabuMain>
     </NabuPageShell>
   );

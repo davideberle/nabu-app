@@ -51,12 +51,12 @@ async function getTileCategories(): Promise<TileCategory[]> {
               : "View",
         },
         {
-          id: "san-sebastian",
-          name: "San Sebastian",
-          emoji: "🏖️",
-          description: "Summer trip board — activities, food, hikes",
-          href: "/travel/san-sebastian",
-          stats: "Plan",
+          id: "travel",
+          name: "Travel",
+          emoji: "✈️",
+          description: "Upcoming and past trips",
+          href: "/travel",
+          stats: "Trips",
         },
         {
           id: "routines",
