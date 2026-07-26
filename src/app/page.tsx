@@ -67,6 +67,14 @@ async function getTileCategories(): Promise<TileCategory[]> {
           stats: "Board",
         },
         {
+          id: "assistant",
+          name: "Family Assistant",
+          emoji: "🪄",
+          description: "Santiago & Isabel's companion prototype",
+          href: "/family/assistant",
+          stats: "Prototype",
+        },
+        {
           id: "todos",
           name: "Todos",
           emoji: "✅",

@@ -27,7 +27,8 @@ export function isTrackerOnlyEmail(email: string | null | undefined): boolean {
 export function isTrackerAllowedPath(pathname: string): boolean {
   return (
     pathname === "/family/dashboard" ||
-    pathname.startsWith("/family/dashboard/")
+    pathname.startsWith("/family/dashboard/") ||
+    pathname === "/family/assistant"
   );
 }
 
