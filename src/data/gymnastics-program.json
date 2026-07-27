@@ -20,7 +20,7 @@
       "2×6 controlled beat swings",
       "2×15s hollow hold",
       "2×15s arch hold",
-      "2×2 top-position push-away descents"
+      "2×1 box-start push-away descent into one beat swing"
     ]
   },
   "sessionRules": {
@@ -38,7 +38,8 @@
     "items": [
       "Clean pairs / attempts — e.g. \"4 / 7\"",
       "Where the rhythm failed — top, descent, or backswing",
-      "Any pain or hand hot spots"
+      "Any pain or hand hot spots",
+      "Did rep two come from the backswing, or did it need extra arm pull?"
     ]
   },
   "weeks": [
@@ -62,13 +63,18 @@
           ]
         },
         "B": {
-          "label": "Assisted rhythm",
-          "goal": "Rehearse the exact transition with just enough help to keep the timing honest.",
+          "label": "Consolidate the pair",
+          "goal": "Make today's successful pair repeat with less effort on rep two; do not chase a third rep.",
           "blocks": [
-            { "movement": "Controlled beat swings", "prescription": "3×5", "note": "Warm the shape, not the arms." },
-            { "movement": "Box- or band-assisted linked reps", "prescription": "5×3", "note": "Minimum assistance. The box keeps the cadence — it is not a jump." },
-            { "movement": "Assisted push-away descents", "prescription": "3×3", "note": "Same descent, slightly helped, so the timing is easy to feel." },
-            { "movement": "Unassisted pair attempts", "prescription": "5 attempts", "note": "Full rest between attempts. Quality only — stop after two consecutive misses." }
+            { "movement": "Controlled beat swings", "prescription": "2×5", "note": "Easy rhythm check. Match the tempo that produced today's successful pairs." },
+            { "movement": "Box-start push-away descent into two beat swings", "prescription": "3×1", "note": "Step or jump to chin over bar, actively push the bar away, reach straight arms in the arch, then hold two controlled beat swings. Do not pull back up." },
+            { "movement": "Single + one beat swing + single", "prescription": "3×2", "note": "Keep the proven bridge. Let the deliberate return swing lift rep two instead of adding arm force." },
+            { "movement": "Kipping doubles", "prescription": "4×2", "note": "Rest 75–90 seconds. Same push-away after rep one; no third-rep attempts tomorrow." }
+          ],
+          "notes": [
+            "Best placement: immediately after the general/shoulder warm-up, before strength or the metcon.",
+            "Do this tomorrow only if at least 24 hours have passed since Session A and shoulders, elbows, grip, and hands feel normal; otherwise move it one day later.",
+            "Assistance is unnecessary for this session because both immediate pair attempts succeeded. The aim is a smoother second rep, not a harder pull."
           ]
         },
         "C": {
@@ -166,6 +172,7 @@
     { "id": "cf-kipping", "movement": "kipping", "title": "The Kipping Pull-up", "source": "CrossFit", "youtubeId": "lzRo-4pq_AY", "url": "https://www.youtube.com/watch?v=lzRo-4pq_AY" },
     { "id": "wodprep-kipping", "movement": "kipping", "title": "Master This Before Kipping Pull-Ups", "source": "WODprep", "youtubeId": "W-Wkxk0aupc", "url": "https://www.youtube.com/watch?v=W-Wkxk0aupc" },
     { "id": "invictus-kipping-explained", "movement": "linking", "title": "Kipping Pull-Ups Explained", "source": "CrossFit Invictus", "youtubeId": "JZb7pXn_UTI", "url": "https://www.youtube.com/watch?v=JZb7pXn_UTI" },
-    { "id": "jaakarhu-stringing", "movement": "linking", "title": "How to String Kipping Pull-ups", "source": "CrossFit Jääkarhu", "youtubeId": "P7F4jGGNrcE", "url": "https://www.youtube.com/watch?v=P7F4jGGNrcE" }
+    { "id": "jaakarhu-stringing", "movement": "linking", "title": "How to String Kipping Pull-ups", "source": "CrossFit Jääkarhu", "youtubeId": "P7F4jGGNrcE", "url": "https://www.youtube.com/watch?v=P7F4jGGNrcE" },
+    { "id": "road-to-elite-push-away", "movement": "linking", "title": "Movement: Push away Pull-up", "source": "Road To Elite", "youtubeId": "hqRIxJl8obQ", "url": "https://www.youtube.com/watch?v=hqRIxJl8obQ" }
   ]
 }
