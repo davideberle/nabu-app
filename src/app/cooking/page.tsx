@@ -2,9 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { CompleteSessionButton } from "./complete-session-button";
 import { NabuBadge, NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageShell, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
-import { createSessionFromPlan, isDrinkServeWith } from "@/lib/cooking";
+import { createSessionFromPlan } from "@/lib/cooking";
 import { todayInZurich } from "@/lib/date";
-import type { CookingSession, SessionIngredient } from "@/lib/cooking";
+import {
+  activeComponents,
+  componentStatusLabel,
+  firstServingsClause,
+  isDrinkServeWith,
+  resolveMainDish,
+  resolveSessionHero,
+  resolveWorkingRecipe,
+  setAsideComponents,
+  visibleServeWith,
+} from "@/lib/cooking-session";
+import type {
+  CookingSession,
+  RelatedRecipe,
+  ResolvedMain,
+  SessionHero,
+  SessionIngredient,
+  WorkingRecipe,
+} from "@/lib/cooking-session";
 import { buildCookingGuidance, extractTableSides, formatRecipeTime } from "@/lib/cooking-guidance";
 import { formatServings, getRecipe } from "@/lib/recipes";
 import type { Recipe } from "@/lib/recipes";
@@ -16,14 +34,20 @@ export default async function CookingPage() {
   // Auto-load existing session or create one from today's meal plan
   const session = await createSessionFromPlan(date);
 
-  // Load full recipe data for the main image/time and for side recipe blocks.
-  const mainRecipe = session?.anchor.recipeId
-    ? await getRecipe(session.anchor.recipeId)
+  // The rendered main is the resolved main dish, which may differ from the
+  // anchor when the session established an explicit main (e.g. via Telegram).
+  const resolved = session ? resolveMainDish(session) : null;
+  const mainRecipe = resolved?.recipeId
+    ? await getRecipe(resolved.recipeId)
     : undefined;
+  const anchorRecipe =
+    session && resolved?.anchorIsSecondary && session.anchor.recipeId
+      ? await getRecipe(session.anchor.recipeId)
+      : undefined;
   const sideRecipes: Recipe[] = [];
   if (session) {
     const results = await Promise.all(
-      session.relatedRecipes.map((r) => getRecipe(r.recipeId))
+      activeComponents(session).map((r) => getRecipe(r.recipeId))
     );
     for (const r of results) {
       if (r) sideRecipes.push(r);
@@ -41,8 +65,14 @@ export default async function CookingPage() {
       />
 
       <NabuMain maxWidth="3xl" className="space-y-6">
-        {session ? (
-          <SessionView session={session} sideRecipes={sideRecipes} mainRecipe={mainRecipe} />
+        {session && resolved ? (
+          <SessionView
+            session={session}
+            resolved={resolved}
+            mainRecipe={mainRecipe ?? undefined}
+            anchorRecipe={anchorRecipe ?? undefined}
+            sideRecipes={sideRecipes}
+          />
         ) : (
           <EmptyState date={date} />
         )}
@@ -57,44 +87,36 @@ export default async function CookingPage() {
 
 function SessionView({
   session,
-  sideRecipes,
+  resolved,
   mainRecipe,
+  anchorRecipe,
+  sideRecipes,
 }: {
   session: CookingSession;
-  sideRecipes: Recipe[];
+  resolved: ResolvedMain;
   mainRecipe?: Recipe;
+  anchorRecipe?: Recipe;
+  sideRecipes: Recipe[];
 }) {
-  const hasSessionIngredients = session.ingredients.session.length > 0;
-  const hasSessionMethod = session.method.session.length > 0;
-
-  // Decide whether session lists are full integrated replacements or just
-  // partial adjustments/substitutions. Showing a 2-item substitution list
-  // instead of a 15-item ingredient list loses the base recipe.
-  const ingredientsComplete = hasSessionIngredients &&
-    isCompleteOverride(session.ingredients.session, session.ingredients.base);
-  const methodComplete = hasSessionMethod &&
-    isCompleteOverride(session.method.session, session.method.base);
-
-  const mainIngredients = ingredientsComplete
-    ? session.ingredients.session
-    : session.ingredients.base;
-  const mainMethod = methodComplete
-    ? session.method.session
-    : session.method.base;
-
-  // Partial adjustments shown alongside the base recipe
-  const ingredientAdjustments = hasSessionIngredients && !ingredientsComplete
-    ? session.ingredients.session
-    : [];
-  const methodAdjustments = hasSessionMethod && !methodComplete
-    ? session.method.session
-    : [];
+  const hero = resolveSessionHero(session, mainRecipe?.image);
+  const working = resolveWorkingRecipe(
+    session,
+    mainRecipe
+      ? { ingredients: toSessionIngredients(mainRecipe.ingredients), method: mainRecipe.method }
+      : null
+  );
 
   const sideRecipeById = new Map(sideRecipes.map((recipe) => [recipe.id, recipe]));
-  const mealComponents = session.relatedRecipes
+  const mealComponents = activeComponents(session)
     .map((related) => ({ related, recipe: sideRecipeById.get(related.recipeId) }))
-    .filter((item): item is { related: CookingSession["relatedRecipes"][number]; recipe: Recipe } => !!item.recipe);
-  const tableSides = extractTableSides(mainIngredients, session.serveWith);
+    .filter((item): item is { related: RelatedRecipe; recipe: Recipe } => !!item.recipe);
+  const setAside = setAsideComponents(session);
+
+  const componentTitles = session.relatedRecipes.map((r) => r.title);
+  const tableSides = extractTableSides(
+    [...working.ingredients, ...working.ingredientAdjustments],
+    visibleServeWith(session, componentTitles)
+  );
   const guidance = buildCookingGuidance({
     session,
     mainRecipe,
@@ -102,49 +124,57 @@ function SessionView({
   });
   const timeLabel = formatRecipeTime(mainRecipe?.time);
 
+  const alsoCooking = [
+    ...(resolved.anchorIsSecondary ? [session.anchor.title] : []),
+    ...mealComponents.map(({ recipe }) => recipe.name),
+  ];
+
   return (
     <>
       <MealOverview
         session={session}
-        mainRecipe={mainRecipe}
-        mealComponents={mealComponents}
+        resolved={resolved}
+        hero={hero}
+        alsoCooking={alsoCooking}
         tableSides={tableSides}
         timeLabel={timeLabel}
         mealFlow={guidance.mealFlow}
         wine={session.coachCards.wine || guidance.pairing.wine}
       />
 
-      <StoryCard story={session.story} title={session.anchor.title} />
+      <StoryCard story={session.story} title={resolved.title} />
 
       <SessionNotes notes={session.notes} />
 
-      {/* ── Meal components: main → sides → serve-with notes ── */}
-      <MealComponentBlock
-        role="main"
-        title={session.anchor.title}
-        ingredients={mainIngredients}
-        method={mainMethod}
-        modified={{ ingredients: ingredientsComplete, method: methodComplete }}
-        ingredientAdjustments={ingredientAdjustments}
-        methodAdjustments={methodAdjustments}
-      />
+      {/* ── Main dish: tonight's working recipe ── */}
+      <MainDishBlock session={session} resolved={resolved} working={working} />
+
+      {/* ── Secondary dishes, subordinate but complete ── */}
+      {resolved.anchorIsSecondary && (
+        <CollapsedRecipeBlock
+          roleLabel="Also tonight"
+          title={session.anchor.title}
+          sourceLine={provenanceLabel(session)}
+          image={anchorRecipe?.image}
+          servings={anchorRecipe?.servings}
+          ingredients={session.ingredients.base}
+          method={session.method.base}
+        />
+      )}
 
       {mealComponents.map(({ related, recipe }) => (
-        <MealComponentBlock
+        <CollapsedRecipeBlock
           key={recipe.id}
-          role={related.kind}
+          roleLabel={componentRoleLabel(related.kind)}
           title={recipe.name}
           image={recipe.image}
           servings={recipe.servings}
-          ingredients={recipe.ingredients.map((ing) => ({
-            amount: ing.amount,
-            item: ing.item,
-            unit: ing.unit,
-            group: ing.group ?? null,
-          }))}
+          ingredients={toSessionIngredients(recipe.ingredients)}
           method={recipe.method}
         />
       ))}
+
+      {setAside.length > 0 && <SetAsideRow components={setAside} />}
 
       <NabuSurface className="p-5">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -170,41 +200,36 @@ function SessionView({
 }
 
 // ---------------------------------------------------------------------------
-// Meal overview
+// Meal overview — hero, tonight's line-up, order of attack
 // ---------------------------------------------------------------------------
 
 function MealOverview({
   session,
-  mainRecipe,
-  mealComponents,
+  resolved,
+  hero,
+  alsoCooking,
   tableSides,
   timeLabel,
   mealFlow,
   wine,
 }: {
   session: CookingSession;
-  mainRecipe?: Recipe;
-  mealComponents: Array<{
-    related: CookingSession["relatedRecipes"][number];
-    recipe: Recipe;
-  }>;
+  resolved: ResolvedMain;
+  hero: SessionHero;
+  alsoCooking: string[];
   tableSides: string[];
   timeLabel: string | null;
   mealFlow: string[];
   wine: string;
 }) {
   const servingLabel = formatServings(session.servings.current);
-  const sourceLabel = [
-    session.anchor.provenance.source,
-    session.anchor.provenance.author,
-  ].filter(Boolean).join(" · ");
+  const subtitle =
+    resolved.summary ??
+    (resolved.anchorIsSecondary ? null : provenanceLabel(session));
   const overviewItems = [
-    { label: "Main", value: session.anchor.title },
     {
-      label: "Cook",
-      value: mealComponents.length
-        ? mealComponents.map(({ recipe }) => recipe.name).join(" + ")
-        : "Main dish only",
+      label: "Also cooking",
+      value: alsoCooking.length ? alsoCooking.join(" + ") : "Main dish only",
     },
     {
       label: "Table",
@@ -216,18 +241,7 @@ function MealOverview({
 
   return (
     <NabuSurface className="overflow-hidden p-0">
-      {mainRecipe?.image && (
-        <div className="border-b border-primary bg-secondary">
-          <Image
-            src={mainRecipe.image}
-            alt={session.anchor.title}
-            width={960}
-            height={540}
-            priority
-            className="aspect-[16/9] w-full object-cover"
-          />
-        </div>
-      )}
+      <SessionHeroArea hero={hero} />
 
       <div className="space-y-5 p-5">
         <div className="space-y-3">
@@ -235,23 +249,20 @@ function MealOverview({
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0">
               <h2 className="text-2xl font-semibold leading-tight tracking-[-0.02em] text-primary">
-                {session.anchor.title}
+                {resolved.title}
               </h2>
-              {sourceLabel && (
-                <p className="mt-1 text-xs text-tertiary">{sourceLabel}</p>
+              {subtitle && (
+                <p className="mt-1 text-xs text-tertiary">{subtitle}</p>
               )}
             </div>
             <div className="flex shrink-0 flex-wrap gap-2">
               {servingLabel && <NabuBadge>{servingLabel}</NabuBadge>}
-              {session.servings.current !== session.servings.base && formatServings(session.servings.base) && (
-                <NabuBadge tone="amber">base: {formatServings(session.servings.base)}</NabuBadge>
-              )}
               {timeLabel && <NabuBadge tone="blue">{timeLabel}</NabuBadge>}
             </div>
           </div>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-3">
           {overviewItems.map((item) => (
             <div key={item.label} className="border-t border-secondary pt-3">
               <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-quaternary">
@@ -282,6 +293,74 @@ function MealOverview({
       </div>
     </NabuSurface>
   );
+}
+
+// ---------------------------------------------------------------------------
+// Hero area — recipe/session image, or a designed fallback (never blank)
+// ---------------------------------------------------------------------------
+
+function SessionHeroArea({ hero }: { hero: SessionHero }) {
+  if (hero.kind === "image") {
+    return (
+      <div className="border-b border-primary bg-secondary">
+        <HeroImage src={hero.url} alt={hero.alt} />
+        {hero.source && (
+          <p className="px-5 pt-2 text-[10px] text-quaternary">{hero.source}</p>
+        )}
+      </div>
+    );
+  }
+
+  const initial = hero.title.trim().charAt(0).toUpperCase() || "•";
+  return (
+    <div className="relative h-28 overflow-hidden border-b border-primary bg-gradient-to-br from-utility-orange-50 via-utility-orange-50/40 to-transparent sm:h-32">
+      <span
+        aria-hidden
+        className="absolute -top-8 right-2 select-none font-serif text-[10rem] leading-none text-utility-orange-200/60"
+      >
+        {initial}
+      </span>
+      <p className="absolute bottom-4 left-5 text-[11px] font-medium uppercase tracking-[0.18em] text-utility-orange-500">
+        Tonight’s table
+      </p>
+    </div>
+  );
+}
+
+function HeroImage({ src, alt }: { src: string; alt: string }) {
+  // next/image only serves local assets and configured remote hosts; other
+  // truthful session-supplied URLs fall back to a plain eager image.
+  if (isOptimizableImageSrc(src)) {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        width={960}
+        height={540}
+        preload
+        className="aspect-[16/9] w-full object-cover"
+      />
+    );
+  }
+  // eslint-disable-next-line @next/next/no-img-element
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="eager"
+      className="aspect-[16/9] w-full object-cover"
+    />
+  );
+}
+
+function isOptimizableImageSrc(src: string): boolean {
+  if (src.startsWith("/")) return true;
+  try {
+    const host = new URL(src).hostname;
+    return host.endsWith(".public.blob.vercel-storage.com");
+  } catch {
+    return false;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -318,147 +397,194 @@ function StoryCard({
 }
 
 // ---------------------------------------------------------------------------
-// Unified meal component block — used for both main dish and side recipes
+// Main dish block — tonight's working recipe in neutral text
 // ---------------------------------------------------------------------------
 
-function MealComponentBlock({
-  role,
-  title,
-  image,
-  servings,
-  ingredients,
-  method,
-  modified,
-  ingredientAdjustments = [],
-  methodAdjustments = [],
+function MainDishBlock({
+  session,
+  resolved,
+  working,
 }: {
-  role: "main" | "starter" | "side" | "dessert";
-  title: string;
-  image?: string | null;
-  servings?: string | number;
-  ingredients: SessionIngredient[];
-  method: string[];
-  modified?: { ingredients: boolean; method: boolean };
-  ingredientAdjustments?: SessionIngredient[];
-  methodAdjustments?: string[];
+  session: CookingSession;
+  resolved: ResolvedMain;
+  working: WorkingRecipe;
 }) {
-  const servingLabel = servings ? formatServings(String(servings)) : "";
+  const provenanceLine = working.isSessionVersion
+    ? resolved.anchorIsSecondary
+      ? "Tonight’s working recipe, updated live from the cooking chat."
+      : joinMeta("Tonight’s version", provenanceLabel(session))
+    : provenanceLabel(session);
 
   return (
     <NabuSurface className="space-y-5 p-5">
-      {/* Component header — role label + title */}
-      <NabuSectionHeader
-        eyebrow={componentRoleLabel(role)}
-        title={title}
-        action={servingLabel ? <NabuBadge>{servingLabel}</NabuBadge> : null}
-      />
+      <div>
+        <NabuSectionHeader
+          eyebrow="Main"
+          title={resolved.title}
+          action={
+            working.isSessionVersion ? (
+              <NabuBadge tone="amber">Tonight’s version</NabuBadge>
+            ) : null
+          }
+        />
+        {provenanceLine && (
+          <p className="mt-1 text-xs text-tertiary">{provenanceLine}</p>
+        )}
+      </div>
 
-      {image && (
-        <div className="overflow-hidden rounded-lg border border-secondary bg-secondary">
-          <Image
-            src={image}
-            alt={title}
-            width={960}
-            height={540}
-            className="aspect-[16/9] w-full object-cover"
+      {working.ingredients.length + working.ingredientAdjustments.length > 0 && (
+        <div className="border-t border-secondary pt-3">
+          <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
+            Ingredients
+          </h4>
+          <IngredientList
+            ingredients={working.ingredients}
+            tonightExtras={working.ingredientAdjustments}
           />
         </div>
       )}
 
-      {/* Ingredients */}
-      {ingredients.length > 0 && (
-        <div className="pt-3 border-t border-secondary">
-          <div className="flex items-center justify-between mb-3">
-            <h4 className="text-xs tracking-widest uppercase text-quaternary">
-              Ingredients
-            </h4>
-            {modified?.ingredients && (
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400">
-                modified
-              </span>
-            )}
-          </div>
-          <IngredientList ingredients={ingredients} />
-        </div>
-      )}
-
-      {/* Method */}
-      {method.length > 0 && (
-        <div className="pt-3 border-t border-secondary">
-          <div className="flex items-center justify-between mb-3">
-            <h4 className="text-xs tracking-widest uppercase text-quaternary">
-              Method
-            </h4>
-            {modified?.method && (
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400">
-                modified
-              </span>
-            )}
-          </div>
-          <ol className="space-y-4">
-            {method.map((step, i) => (
-              <li key={i} className="flex gap-3 text-sm text-secondary">
-                <span className="text-lg font-serif text-quaternary leading-none shrink-0 pt-0.5">
-                  {i + 1}
-                </span>
-                <span className="leading-relaxed">{step}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      )}
-
-      {/* Tonight's changes — shown when session has partial adjustments */}
-      {(ingredientAdjustments.length > 0 || methodAdjustments.length > 0) && (
-        <div className="pt-3 border-t border-amber-200/50 dark:border-amber-800/30">
-          <h4 className="text-xs tracking-widest uppercase text-amber-600 dark:text-amber-400 mb-3">
-            Tonight&apos;s changes
+      {working.method.length + working.methodAdjustments.length > 0 && (
+        <div className="border-t border-secondary pt-3">
+          <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
+            Method
           </h4>
-          {ingredientAdjustments.length > 0 && (
-            <div className="mb-3">
-              <p className="text-[10px] tracking-widest uppercase text-quaternary mb-1.5">
-                Substitutions
-              </p>
-              <ul className="space-y-1">
-                {ingredientAdjustments.map((ing, i) => (
-                  <li key={i} className="text-sm text-amber-700 dark:text-amber-300 flex justify-between gap-4">
-                    <span>{ing.item}</span>
-                    <span className="text-amber-500 dark:text-amber-400 tabular-nums shrink-0 text-right">
-                      {formatIngredientAmount(ing)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {methodAdjustments.length > 0 && (
-            <div>
-              <p className="text-[10px] tracking-widest uppercase text-quaternary mb-1.5">
-                Adjustments
-              </p>
-              <ul className="space-y-1.5">
-                {methodAdjustments.map((note, i) => (
-                  <li key={i} className="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
+          {working.methodAdjustments.length > 0 && (
+            <div className="mb-4">
+              <TonightGroupLabel />
+              <ul className="mt-1.5 space-y-1.5">
+                {working.methodAdjustments.map((note, i) => (
+                  <li key={i} className="text-sm leading-relaxed text-secondary">
                     {note}
                   </li>
                 ))}
               </ul>
             </div>
           )}
+          <MethodSteps steps={working.method} />
         </div>
       )}
     </NabuSurface>
   );
 }
 
+function provenanceLabel(session: CookingSession): string {
+  const { source, author } = session.anchor.provenance;
+  if (author && source?.toLowerCase().includes(author.toLowerCase())) {
+    return source;
+  }
+  return [source, author].filter(Boolean).join(" · ");
+}
+
+function joinMeta(...parts: (string | null | undefined)[]): string {
+  return parts.filter(Boolean).join(" · ");
+}
+
 // ---------------------------------------------------------------------------
-// Ingredient list
+// Secondary recipe block — collapsed, subordinate to the main dish
 // ---------------------------------------------------------------------------
 
-function componentRoleLabel(role: "main" | "starter" | "side" | "dessert"): string {
+function CollapsedRecipeBlock({
+  roleLabel,
+  title,
+  sourceLine,
+  image,
+  servings,
+  ingredients,
+  method,
+}: {
+  roleLabel: string;
+  title: string;
+  sourceLine?: string;
+  image?: string | null;
+  servings?: string | number;
+  ingredients: SessionIngredient[];
+  method: string[];
+}) {
+  const servingLabel = servings
+    ? formatServings(firstServingsClause(String(servings)))
+    : "";
+
+  return (
+    <NabuSurface className="p-0">
+    <details className="group">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-5 [&::-webkit-details-marker]:hidden">
+        <div className="min-w-0">
+          <NabuKicker>{roleLabel}</NabuKicker>
+          <h3 className="mt-0.5 text-base font-semibold tracking-[-0.02em] text-primary">
+            {title}
+          </h3>
+          {sourceLine && (
+            <p className="mt-0.5 text-xs text-tertiary">{sourceLine}</p>
+          )}
+        </div>
+        <div className="flex shrink-0 items-center gap-2">
+          {servingLabel && <NabuBadge>{servingLabel}</NabuBadge>}
+          <svg
+            className="h-4 w-4 text-quaternary transition-transform group-open:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </summary>
+
+      <div className="space-y-5 border-t border-secondary p-5">
+        {image && (
+          <div className="overflow-hidden rounded-lg border border-secondary bg-secondary">
+            <Image
+              src={image}
+              alt={title}
+              width={960}
+              height={540}
+              className="aspect-[16/9] w-full object-cover"
+            />
+          </div>
+        )}
+
+        {ingredients.length > 0 && (
+          <div>
+            <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
+              Ingredients
+            </h4>
+            <IngredientList ingredients={ingredients} />
+          </div>
+        )}
+
+        {method.length > 0 && (
+          <div>
+            <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
+              Method
+            </h4>
+            <MethodSteps steps={method} />
+          </div>
+        )}
+      </div>
+    </details>
+    </NabuSurface>
+  );
+}
+
+function SetAsideRow({ components }: { components: RelatedRecipe[] }) {
+  const parts = components.map((component) => {
+    const label = component.status ? componentStatusLabel(component.status) : "";
+    return label ? `${component.title} (${label})` : component.title;
+  });
+  return (
+    <p className="px-1 text-xs leading-relaxed text-quaternary">
+      Set aside tonight: {parts.join(" · ")}
+    </p>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Shared ingredient / method rendering (neutral text)
+// ---------------------------------------------------------------------------
+
+function componentRoleLabel(role: "starter" | "side" | "dessert"): string {
   switch (role) {
-    case "main":
-      return "Main";
     case "starter":
       return "Starter";
     case "dessert":
@@ -468,34 +594,50 @@ function componentRoleLabel(role: "main" | "starter" | "side" | "dessert"): stri
   }
 }
 
-function IngredientList({ ingredients }: { ingredients: SessionIngredient[] }) {
-  // Group ingredients if groups exist
+function TonightGroupLabel() {
+  return (
+    <h5 className="text-xs font-medium text-tertiary">
+      <span aria-hidden className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-amber-400 align-middle" />
+      Tonight
+    </h5>
+  );
+}
+
+function IngredientList({
+  ingredients,
+  tonightExtras = [],
+}: {
+  ingredients: SessionIngredient[];
+  tonightExtras?: SessionIngredient[];
+}) {
   const hasGroups = ingredients.some((i) => i.group);
-
-  if (!hasGroups) {
-    return (
-      <ul className="space-y-1.5">
-        {ingredients.map((ing, i) => (
-          <IngredientRow key={i} ing={ing} />
-        ))}
-      </ul>
-    );
-  }
-
   const groups = new Map<string, SessionIngredient[]>();
   for (const ing of ingredients) {
-    const g = ing.group || "Other";
+    const g = hasGroups ? (ing.group || "Other") : "";
     if (!groups.has(g)) groups.set(g, []);
     groups.get(g)!.push(ing);
   }
 
   return (
     <div className="space-y-4">
+      {/* Session additions grouped once under a quiet "Tonight" label */}
+      {tonightExtras.length > 0 && (
+        <div>
+          <TonightGroupLabel />
+          <ul className="mt-1.5 space-y-1.5">
+            {tonightExtras.map((ing, i) => (
+              <IngredientRow key={`t-${i}`} ing={ing} />
+            ))}
+          </ul>
+        </div>
+      )}
       {Array.from(groups.entries()).map(([group, ings]) => (
-        <div key={group}>
-          <h4 className="text-xs font-medium text-tertiary mb-1.5">
-            {group}
-          </h4>
+        <div key={group || "_ungrouped"}>
+          {group && (
+            <h5 className="mb-1.5 text-xs font-medium text-tertiary">
+              {group}
+            </h5>
+          )}
           <ul className="space-y-1.5">
             {ings.map((ing, i) => (
               <IngredientRow key={i} ing={ing} />
@@ -509,12 +651,27 @@ function IngredientList({ ingredients }: { ingredients: SessionIngredient[] }) {
 
 function IngredientRow({ ing }: { ing: SessionIngredient }) {
   return (
-    <li className="text-sm text-secondary flex justify-between gap-4">
+    <li className="flex justify-between gap-4 text-sm text-secondary">
       <span>{ing.item}</span>
-      <span className="text-quaternary tabular-nums shrink-0 text-right">
+      <span className="shrink-0 text-right tabular-nums text-quaternary">
         {formatIngredientAmount(ing)}
       </span>
     </li>
+  );
+}
+
+function MethodSteps({ steps }: { steps: string[] }) {
+  return (
+    <ol className="space-y-4">
+      {steps.map((step, i) => (
+        <li key={i} className="flex gap-3 text-sm text-secondary">
+          <span className="shrink-0 pt-0.5 font-serif text-lg leading-none text-quaternary">
+            {i + 1}
+          </span>
+          <span className="leading-relaxed">{step}</span>
+        </li>
+      ))}
+    </ol>
   );
 }
 
@@ -525,6 +682,15 @@ function formatIngredientAmount(ing: SessionIngredient): string {
   if (!unit) return amount;
   if (amount.toLowerCase().endsWith(unit.toLowerCase())) return amount;
   return `${amount} ${unit}`;
+}
+
+function toSessionIngredients(ingredients: Recipe["ingredients"]): SessionIngredient[] {
+  return ingredients.map((ing) => ({
+    amount: ing.amount,
+    item: ing.item,
+    unit: ing.unit,
+    group: ing.group ?? null,
+  }));
 }
 
 // ---------------------------------------------------------------------------
@@ -620,18 +786,4 @@ function formatTimestamp(iso: string): string {
     hour: "numeric",
     minute: "2-digit",
   });
-}
-
-/**
- * Heuristic: does the session list look like a complete integrated replacement
- * for the base, or just a short list of adjustments/substitutions?
- *
- * A session list is "complete" when it has at least 3 items AND covers at
- * least half the base list length. Below that threshold we treat it as
- * partial adjustments that belong *alongside* the base recipe.
- */
-function isCompleteOverride(sessionList: unknown[], baseList: unknown[]): boolean {
-  if (sessionList.length === 0) return false;
-  if (baseList.length === 0) return true;
-  return sessionList.length >= 3 && sessionList.length >= baseList.length * 0.5;
 }

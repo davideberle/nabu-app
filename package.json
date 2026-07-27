@@ -7,6 +7,7 @@
     "dev": "node scripts/generate-family-dates.mjs && node scripts/bundle-recipes.mjs && next dev",
     "build": "node scripts/generate-family-dates.mjs && node scripts/bundle-recipes.mjs && next build",
     "start": "next start",
+    "test": "node --test src/lib/*.test.ts",
     "publish:garden-snapshot": "node scripts/publish-garden-snapshot.mjs"
   },
   "dependencies": {

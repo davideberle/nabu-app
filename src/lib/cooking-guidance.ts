@@ -1,4 +1,10 @@
-import { isDrinkServeWith, type CookingSession, type SessionIngredient } from "./cooking";
+import {
+  isDrinkServeWith,
+  resolveMainDish,
+  resolveWorkingRecipe,
+  type CookingSession,
+  type SessionIngredient,
+} from "./cooking-session";
 import type { Recipe } from "./recipes";
 
 export type CookingPairingSuggestion = {
@@ -35,19 +41,30 @@ export function buildCookingGuidance({
   mainRecipe,
   sideRecipes = [],
 }: BuildGuidanceInput): CookingGuidance {
-  const mainIngredients = session.ingredients.session.length > 0
-    ? session.ingredients.session
-    : session.ingredients.base;
-  const mainMethod = session.method.session.length > 0
-    ? session.method.session
-    : session.method.base;
+  const main = resolveMainDish(session);
+  const working = resolveWorkingRecipe(
+    session,
+    mainRecipe
+      ? {
+          ingredients: mainRecipe.ingredients.map((ing) => ({
+            amount: ing.amount,
+            item: ing.item,
+            unit: ing.unit,
+            group: ing.group ?? null,
+          })),
+          method: mainRecipe.method,
+        }
+      : null
+  );
+  const mainIngredients = [...working.ingredients, ...working.ingredientAdjustments];
+  const mainMethod = [...working.method, ...working.methodAdjustments];
   const tableSides = extractTableSides(mainIngredients, session.serveWith);
-  const profile = buildRecipeProfile(session.anchor.title, mainRecipe, mainIngredients, mainMethod, tableSides);
+  const profile = buildRecipeProfile(main.title, mainRecipe, mainIngredients, mainMethod, tableSides);
 
   return {
     dishStory: buildDishStory(mainRecipe),
     mealFlow: buildMealFlow({
-      mainTitle: session.anchor.title,
+      mainTitle: main.title,
       mainIngredients,
       mainMethod,
       sideRecipes,

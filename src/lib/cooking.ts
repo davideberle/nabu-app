@@ -1,141 +1,29 @@
-// Cooking Session types and persistence helpers.
-// This module owns the runtime shape for live cooking sessions.
+// Cooking Session persistence and plan wiring.
+// The session contract itself (types, normalization, patching, resync
+// merging, display resolution) lives in ./cooking-session.ts, which is pure
+// and unit-testable; this module owns database access and plan loading.
 // Domain logic (anchor policy, adaptation lifecycle) lives in projects/live-cooking/.
 
 import { createCookEventIfMissing, getDb } from "./db";
 import { loadMealPlan } from "./meals-persistence";
 import { getRecipe } from "./recipes";
 import { getISOWeek } from "./meals";
+import {
+  applyPatch,
+  drinkText,
+  normalizeSession,
+  splitServeWith,
+  syncSessionWithPlan,
+  validatePatch,
+  type AnchorType,
+  type CookingSession,
+  type RelatedRecipe,
+  type SessionIngredient,
+  type SessionPatch,
+  type SessionStatus,
+} from "./cooking-session";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-export type AnchorType =
-  | "kitchen-recipe"
-  | "my-recipe"
-  | "external-recipe"
-  | "synthesized-plan";
-
-export type Anchor = {
-  type: AnchorType;
-  recipeId?: string;
-  title: string;
-  provenance: {
-    source: string; // e.g. "kitchen", "My Recipes", "Serious Eats"
-    url?: string;
-    author?: string;
-  };
-};
-
-export type SessionStatus = "draft" | "active" | "completed" | "abandoned";
-
-export type AdaptationKind =
-  | "servings"
-  | "ingredient-substitution"
-  | "ingredient-omission"
-  | "time-shortcut"
-  | "guest-scaling"
-  | "technique-upgrade"
-  | "plating-finish"
-  | "wine-pairing"
-  | "rescue-fix";
-
-export type Adaptation = {
-  id: string;
-  kind: AdaptationKind;
-  summary: string;
-  messageSource?: string; // "telegram" | "app"
-  createdAt: string;
-};
-
-export type CoachCards = {
-  nextMove: string | null;
-  upgrade: string | null;
-  shortcut: string | null;
-  wine: string | null;
-};
-
-export type SessionStory = {
-  title?: string;
-  text: string;
-  source?: string | null;
-  updatedAt?: string;
-};
-
-export type SessionIngredient = {
-  amount: string;
-  item: string;
-  unit?: string;
-  group?: string | null;
-};
-
-export type RelatedRecipe = {
-  kind: "starter" | "side" | "dessert";
-  recipeId: string;
-  title: string;
-};
-
-export type CookingSession = {
-  id: string;
-  date: string; // YYYY-MM-DD
-  status: SessionStatus;
-  source: "meal-plan" | "ad-hoc" | "telegram";
-  mealPlanRef?: {
-    week: string;
-    day: string;
-  } | null;
-  anchor: Anchor;
-  relatedRecipes: RelatedRecipe[];
-  serveWith: string[]; // free-text: "Flatbreads", "Basmati rice", etc.
-  servings: {
-    base: string;
-    current: string;
-  };
-  ingredients: {
-    base: SessionIngredient[];
-    session: SessionIngredient[];
-  };
-  method: {
-    base: string[];
-    session: string[];
-  };
-  adaptations: Adaptation[];
-  coachCards: CoachCards;
-  story?: SessionStory | null;
-  notes: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
-const DRINK_SERVE_WITH_PATTERN =
-  /\b(wine|riesling|sauvignon|gr[üu]ner|veltliner|chardonnay|albari[nñ]o|verdejo|chablis|ros[eé]|pinot|chianti|barbera|rioja|grenache|garnacha|sparkling|champagne|prosecco|cava|beer|lager|pilsner|ipa|cider|cocktail|mocktail|non[-\s]?alc(?:oholic)?|na\s+(?:wine|beer|riesling|sparkling)|sparkling water)\b/i;
-
-export function isDrinkServeWith(item: string): boolean {
-  return DRINK_SERVE_WITH_PATTERN.test(item);
-}
-
-function splitServeWith(items: string[] | undefined): {
-  food: string[];
-  drinks: string[];
-} {
-  const food: string[] = [];
-  const drinks: string[] = [];
-  for (const item of items ?? []) {
-    const trimmed = item.trim();
-    if (!trimmed) continue;
-    if (isDrinkServeWith(trimmed)) {
-      drinks.push(trimmed);
-    } else {
-      food.push(trimmed);
-    }
-  }
-  return { food: mergeTextLists(food), drinks: mergeTextLists(drinks) };
-}
-
-function drinkText(items: string[]): string | null {
-  return items.length > 0 ? items.join(" + ") : null;
-}
+export * from "./cooking-session";
 
 // ---------------------------------------------------------------------------
 // Persistence helpers
@@ -211,42 +99,6 @@ function legacyRowToSession(row: CookingSessionRow): CookingSession | null {
   };
 }
 
-function extractBackstoryFromNotes(notes: string): { story: SessionStory; notes: string } | null {
-  const prefix = "Backstory:";
-  const trimmed = notes.trim();
-  if (!trimmed.toLowerCase().startsWith(prefix.toLowerCase())) return null;
-
-  const afterPrefix = trimmed.slice(prefix.length).trim();
-  const nextParagraphIndex = afterPrefix.indexOf("\n\n");
-  const storyText = nextParagraphIndex === -1
-    ? afterPrefix
-    : afterPrefix.slice(0, nextParagraphIndex).trim();
-  if (!storyText) return null;
-
-  const remainingNotes = nextParagraphIndex === -1
-    ? ""
-    : afterPrefix.slice(nextParagraphIndex).trim();
-
-  return { story: { text: storyText }, notes: remainingNotes };
-}
-
-function normalizeSession(session: CookingSession | null): CookingSession | null {
-  if (!session) return null;
-  const extracted = session.story ? null : extractBackstoryFromNotes(session.notes ?? "");
-  const split = splitServeWith(session.serveWith);
-  const migratedDrink = drinkText(split.drinks);
-  return {
-    ...session,
-    serveWith: split.food,
-    coachCards: {
-      ...session.coachCards,
-      wine: session.coachCards?.wine ?? migratedDrink,
-    },
-    story: session.story ?? extracted?.story ?? null,
-    notes: extracted ? extracted.notes : (session.notes ?? ""),
-  };
-}
-
 function rowToSession(row: CookingSessionRow): CookingSession | null {
   return normalizeSession(safeParse<CookingSession>(row["data"]) ?? legacyRowToSession(row));
 }
@@ -294,6 +146,21 @@ export async function getCookingSession(
   return rowToSession(result.rows[0] as CookingSessionRow);
 }
 
+// Production still carries the original cooking_sessions schema with NOT NULL
+// legacy columns (recipe_id, recipe_name, ...), while freshly migrated local
+// databases only have the canonical (id, date, data, timestamps) shape.
+// Detect once which shape we are writing to.
+let _hasLegacySessionColumns: boolean | null = null;
+
+async function hasLegacySessionColumns(
+  client: Awaited<ReturnType<typeof getDb>>
+): Promise<boolean> {
+  if (_hasLegacySessionColumns !== null) return _hasLegacySessionColumns;
+  const info = await client.execute("PRAGMA table_info(cooking_sessions)");
+  _hasLegacySessionColumns = info.rows.some((row) => row["name"] === "recipe_id");
+  return _hasLegacySessionColumns;
+}
+
 export async function saveCookingSession(
   session: CookingSession
 ): Promise<void> {
@@ -306,6 +173,19 @@ export async function saveCookingSession(
   };
 
   const data = JSON.stringify(updated);
+
+  if (!(await hasLegacySessionColumns(client))) {
+    await client.execute({
+      sql: `INSERT INTO cooking_sessions (id, date, data, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(id) DO UPDATE SET
+              date = excluded.date,
+              data = excluded.data,
+              updated_at = excluded.updated_at`,
+      args: [updated.id, updated.date, data, updated.createdAt, now],
+    });
+    return;
+  }
 
   // Keep writing the legacy columns too: production still has NOT NULL
   // constraints from the original cooking_sessions schema. The app reads the
@@ -359,157 +239,6 @@ export async function saveCookingSession(
 // Partial update (patch) support
 // ---------------------------------------------------------------------------
 
-export type SessionPatch = {
-  status?: SessionStatus;
-  coachCards?: Partial<CoachCards>;
-  story?: SessionStory | null;
-  notes?: string;
-  appendNotes?: string;
-  adaptations?: Adaptation[];
-  relatedRecipes?: RelatedRecipe[];
-  serveWith?: string[];
-  servings?: { current: string };
-  ingredients?: { session: SessionIngredient[] };
-  method?: { session: string[] };
-};
-
-const VALID_STATUSES: SessionStatus[] = [
-  "draft",
-  "active",
-  "completed",
-  "abandoned",
-];
-
-const VALID_ADAPTATION_KINDS: AdaptationKind[] = [
-  "servings",
-  "ingredient-substitution",
-  "ingredient-omission",
-  "time-shortcut",
-  "guest-scaling",
-  "technique-upgrade",
-  "plating-finish",
-  "wine-pairing",
-  "rescue-fix",
-];
-
-/** Merge related-recipe lists: plan entries win for duplicates, extras preserved. */
-function mergeRelatedRecipes(
-  plan: RelatedRecipe[],
-  existing: RelatedRecipe[]
-): RelatedRecipe[] {
-  const merged = [...plan];
-  const planIds = new Set(plan.map((r) => r.recipeId));
-  for (const r of existing) {
-    if (!planIds.has(r.recipeId)) merged.push(r);
-  }
-  return merged;
-}
-
-function mergeTextLists(...lists: (string[] | undefined)[]): string[] {
-  const seen = new Set<string>();
-  const result: string[] = [];
-  for (const list of lists) {
-    for (const item of list ?? []) {
-      const trimmed = item.trim();
-      if (!trimmed) continue;
-      const key = trimmed.toLowerCase().replace(/\s+/g, " ");
-      if (seen.has(key)) continue;
-      seen.add(key);
-      result.push(trimmed);
-    }
-  }
-  return result;
-}
-
-export function validatePatch(patch: SessionPatch): string | null {
-  if (patch.status && !VALID_STATUSES.includes(patch.status)) {
-    return `Invalid status: ${patch.status}`;
-  }
-  if (patch.adaptations) {
-    for (const a of patch.adaptations) {
-      if (!a.id || !a.kind || !a.summary) {
-        return "Each adaptation needs id, kind, and summary";
-      }
-      if (!VALID_ADAPTATION_KINDS.includes(a.kind)) {
-        return `Invalid adaptation kind: ${a.kind}`;
-      }
-    }
-  }
-  if (patch.coachCards) {
-    const validKeys = ["nextMove", "upgrade", "shortcut", "wine"];
-    for (const key of Object.keys(patch.coachCards)) {
-      if (!validKeys.includes(key)) {
-        return `Invalid coachCard key: ${key}`;
-      }
-    }
-  }
-  if (patch.story !== undefined && patch.story !== null) {
-    if (typeof patch.story.text !== "string" || patch.story.text.trim().length === 0) {
-      return "Story needs non-empty text";
-    }
-  }
-  return null;
-}
-
-export function applyPatch(
-  session: CookingSession,
-  patch: SessionPatch
-): CookingSession {
-  const updated = { ...session };
-
-  if (patch.status) {
-    updated.status = patch.status;
-  }
-
-  if (patch.coachCards) {
-    updated.coachCards = { ...session.coachCards, ...patch.coachCards };
-  }
-
-  if (patch.story !== undefined) {
-    updated.story = patch.story;
-  }
-
-  if (patch.notes !== undefined) {
-    updated.notes = patch.notes;
-  } else if (patch.appendNotes) {
-    updated.notes = session.notes
-      ? session.notes + "\n" + patch.appendNotes
-      : patch.appendNotes;
-  }
-
-  if (patch.adaptations && patch.adaptations.length > 0) {
-    updated.adaptations = [...session.adaptations, ...patch.adaptations];
-  }
-
-  if (patch.relatedRecipes) {
-    updated.relatedRecipes = patch.relatedRecipes;
-  }
-
-  if (patch.serveWith) {
-    updated.serveWith = patch.serveWith;
-  }
-
-  if (patch.servings?.current) {
-    updated.servings = { ...session.servings, current: patch.servings.current };
-  }
-
-  if (patch.ingredients?.session) {
-    updated.ingredients = {
-      base: session.ingredients.base,
-      session: patch.ingredients.session,
-    };
-  }
-
-  if (patch.method?.session) {
-    updated.method = {
-      base: session.method.base,
-      session: patch.method.session,
-    };
-  }
-
-  return updated;
-}
-
 export async function patchCookingSession(
   id: string,
   patch: SessionPatch
@@ -531,8 +260,12 @@ export async function patchCookingSession(
 async function recordCookEventForSession(session: CookingSession): Promise<void> {
   const recipeIds = new Set<string>();
   if (session.anchor.recipeId) recipeIds.add(session.anchor.recipeId);
+  if (session.main?.recipeId) recipeIds.add(session.main.recipeId);
   for (const related of session.relatedRecipes) {
-    if (related.recipeId) recipeIds.add(related.recipeId);
+    if (!related.recipeId) continue;
+    // Components that were set aside tonight were not cooked.
+    if (related.status && related.status !== "active") continue;
+    recipeIds.add(related.recipeId);
   }
   if (recipeIds.size === 0) return;
 
@@ -548,17 +281,14 @@ async function recordCookEventForSession(session: CookingSession): Promise<void>
 }
 
 // ---------------------------------------------------------------------------
-// Session factory: create from a recipe
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
 // Auto-create session from today's meal plan
 // ---------------------------------------------------------------------------
 
 export async function createSessionFromPlan(
   date: string
 ): Promise<CookingSession | null> {
-  // Already have a session? For ad-hoc sessions, return as-is.
+  // Already have a session? For ad-hoc/Telegram sessions, return as-is —
+  // resync must never overwrite an explicitly established session.
   // For meal-plan sessions, sync plan-derived fields below.
   const existing = await getCookingSessionForDate(date);
   if (existing && existing.source !== "meal-plan") return existing;
@@ -606,49 +336,22 @@ export async function createSessionFromPlan(
 
   // Existing meal-plan session: sync plan-derived fields, preserve user edits
   if (existing) {
-    const mainChanged = existing.anchor.recipeId !== recipe.id;
-    const existingServeWith = splitServeWith(existing.serveWith);
-    const existingDrink = drinkText(existingServeWith.drinks);
-    const syncedBase: CookingSession = {
-      ...existing,
-      anchor: {
-        type: anchorType,
-        recipeId: recipe.id,
-        title: recipe.name,
-        provenance,
+    const synced = syncSessionWithPlan(existing, {
+      weekId,
+      dayOfWeek: daySlot.dayOfWeek,
+      anchorType,
+      provenance,
+      recipe: {
+        id: recipe.id,
+        name: recipe.name,
+        servings: recipe.servings || "4",
+        ingredients,
+        method: recipe.method,
       },
-      mealPlanRef: { week: weekId, day: daySlot.dayOfWeek },
-      // Merge relatedRecipes: meal-plan sides are authoritative, but
-      // preserve any extras added via patches (e.g. from Telegram).
-      relatedRecipes: mergeRelatedRecipes(relatedRecipes, existing.relatedRecipes),
-      serveWith: mergeTextLists(existingServeWith.food, serveWith),
-      // Sync base servings/ingredients/method when main recipe changed,
-      // and reset current servings only if user hasn't adjusted them
-      servings: mainChanged
-        ? { base: recipe.servings || "4", current: recipe.servings || "4" }
-        : {
-            base: recipe.servings || "4",
-            current:
-              existing.servings.current !== existing.servings.base
-                ? existing.servings.current
-                : recipe.servings || "4",
-          },
-      ingredients: mainChanged
-        ? { base: ingredients, session: [] }
-        : { base: ingredients, session: existing.ingredients.session },
-      method: mainChanged
-        ? { base: recipe.method, session: [] }
-        : { base: recipe.method, session: existing.method.session },
-    };
-    const synced: CookingSession = {
-      ...syncedBase,
-      coachCards: {
-        ...syncedBase.coachCards,
-        nextMove: null,
-        upgrade: syncedBase.coachCards.upgrade ?? null,
-        wine: syncedBase.coachCards.wine ?? existingDrink ?? planDrink,
-      },
-    };
+      relatedRecipes,
+      serveWithFood: serveWith,
+      planDrink,
+    });
     await saveCookingSession(synced);
     return synced;
   }
@@ -691,7 +394,7 @@ export function buildSessionFromRecipe(opts: {
   recipeId: string;
   title: string;
   source: CookingSession["source"];
-  provenance: Anchor["provenance"];
+  provenance: CookingSession["anchor"]["provenance"];
   anchorType: AnchorType;
   servings: string;
   ingredients: SessionIngredient[];
@@ -715,6 +418,8 @@ export function buildSessionFromRecipe(opts: {
       title: opts.title,
       provenance: opts.provenance,
     },
+    main: null,
+    heroImage: null,
     relatedRecipes: opts.relatedRecipes ?? [],
     serveWith: opts.serveWith ?? [],
     servings: {

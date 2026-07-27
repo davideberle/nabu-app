@@ -61,9 +61,10 @@ export function resolveDinnerFromKitchen(
   mealPlan: MealPlan | null,
   date: string,
 ): DinnerContext | null {
-  // 1. Live Cooking session
+  // 1. Live Cooking session — an explicit session main wins over the anchor
   if (cookingSession) {
     const label =
+      cookingSession.main?.title ||
       cookingSession.anchor.title ||
       cookingSession.anchor.provenance?.source ||
       "Cooking session";
