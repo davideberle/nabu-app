@@ -15,6 +15,16 @@
 // - Plan resync preserves session-local truth: explicit main, hero image,
 //   and non-active component statuses survive a resync.
 
+import {
+  analyzeMealCoherence,
+  type MealCoherenceReview,
+  type MealComponent,
+  type MealComponentRole,
+  type RecipeLike,
+  // Explicit .ts extension: cooking-session.ts is loaded directly by
+  // `node --test`, whose ESM resolver does not add extensions.
+} from "./meal-coherence.ts";
+
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
@@ -686,6 +696,154 @@ export function firstServingsClause(raw: string): string {
     /^(.+?\d)[\s;,.·—–-]*(?=(?:makes|serves|each|enough|yields|about|plus)\b)/i
   );
   return match ? match[1] : trimmed;
+}
+
+// ---------------------------------------------------------------------------
+// Whole-meal coherence (derived, never stored on the anchor)
+// ---------------------------------------------------------------------------
+
+/** Recipes the session references, keyed by recipe id. Partial is fine. */
+export type SessionRecipeLookup =
+  | Map<string, RecipeLike>
+  | Record<string, RecipeLike>;
+
+function lookupRecipe(
+  lookup: SessionRecipeLookup | undefined,
+  recipeId: string | undefined
+): RecipeLike | null {
+  if (!lookup || !recipeId) return null;
+  if (lookup instanceof Map) return lookup.get(recipeId) ?? null;
+  return lookup[recipeId] ?? null;
+}
+
+function componentKind(kind: RelatedRecipe["kind"]): MealComponentRole {
+  return kind === "starter" ? "starter" : kind === "dessert" ? "dessert" : "side";
+}
+
+/**
+ * Review the session as one meal (live-cooking DESIGN.md §3 rule 16).
+ *
+ * Pure and non-mutating: it reads the *working* recipe — tonight's session
+ * lists where they exist, the base lists otherwise — so a rebalanced glaze is
+ * seen while `ingredients.base` / `method.base` stay the anchor's verbatim
+ * original. Nothing is written back to the session or to any recipe.
+ *
+ * `recipes` is an optional lookup for components that resolve to stored
+ * recipes. Components missing from it still participate using their titles,
+ * which is the only signal an external or ad-hoc dish has anyway.
+ */
+export function reviewSessionCoherence(
+  session: CookingSession,
+  recipes?: SessionRecipeLookup
+): MealCoherenceReview {
+  const resolved = resolveMainDish(session);
+  const mainRecipe = lookupRecipe(recipes, resolved.recipeId);
+  const working = resolveWorkingRecipe(
+    session,
+    mainRecipe
+      ? {
+          ingredients: (mainRecipe.ingredients ?? []).map((i) => ({
+            amount: "",
+            item: i?.item ?? "",
+          })),
+          method: mainRecipe.method ?? [],
+        }
+      : null
+  );
+
+  const main: MealComponent = {
+    id: resolved.recipeId ?? session.anchor.recipeId ?? session.id,
+    title: resolved.title,
+    role: "main",
+    ingredients: [...working.ingredients, ...working.ingredientAdjustments],
+    method: [...working.method, ...working.methodAdjustments],
+    notes: resolved.summary ? [resolved.summary] : [],
+    timeMinutes: null,
+  };
+
+  const components: MealComponent[] = [];
+
+  // An explicit main displaces the anchor into a secondary dish, still cooked
+  // from its own untouched base lists.
+  if (resolved.anchorIsSecondary) {
+    components.push({
+      id: session.anchor.recipeId ?? `${session.id}:anchor`,
+      title: session.anchor.title,
+      role: "side",
+      ingredients: session.ingredients.base,
+      method: session.method.base,
+      timeMinutes: null,
+    });
+  }
+
+  for (const related of session.relatedRecipes) {
+    const recipe = lookupRecipe(recipes, related.recipeId);
+    components.push({
+      id: related.recipeId,
+      title: related.title,
+      role: componentKind(related.kind),
+      ingredients: (recipe?.ingredients ?? []).map((i) => ({ item: i?.item ?? "" })),
+      method: recipe?.method ?? [],
+      status: related.status ?? "active",
+      timeMinutes: null,
+    });
+  }
+
+  return analyzeMealCoherence({
+    main,
+    components,
+    // Only serve-with lines that are genuinely their own dish. A line that
+    // restates the main or a listed component ("Gochujang-glazed salmon
+    // 700 g", "Kimchi pancakes — optional") is the same dish written twice:
+    // counting it again would blame the main for repeating itself and would
+    // quietly put a set-aside component back on the plate.
+    serveWith: visibleServeWith(
+      session,
+      session.relatedRecipes.map((r) => r.title)
+    ),
+  });
+}
+
+/**
+ * Every recipe id the session references, in review order: the resolved main,
+ * the anchor (which renders as a secondary dish when an explicit main displaces
+ * it), then each component. Deduplicated, stable, no empty ids.
+ */
+export function sessionRecipeIds(session: CookingSession): string[] {
+  const resolved = resolveMainDish(session);
+  const ids = [
+    resolved.recipeId,
+    session.anchor.recipeId,
+    ...session.relatedRecipes.map((r) => r.recipeId),
+  ];
+  return [...new Set(ids.filter((id): id is string => Boolean(id && id.length > 0)))];
+}
+
+/** Resolve one recipe by id. Must reach explicitly referenced recipes that are
+ * hidden from browse surfaces — a session side can point at any of them. */
+export type SessionRecipeResolver = (
+  id: string
+) => Promise<RecipeLike | null | undefined>;
+
+/**
+ * `reviewSessionCoherence` with the recipe lookup filled in.
+ *
+ * Kept here, next to the contract, with the resolver injected so it stays
+ * testable without a database; `cooking.ts` binds it to `getRecipe`. Purely
+ * derived — nothing is written back to the session, the anchor base lists, or
+ * any recipe.
+ */
+export async function resolveSessionCoherence(
+  session: CookingSession,
+  resolve: SessionRecipeResolver
+): Promise<MealCoherenceReview> {
+  const ids = sessionRecipeIds(session);
+  const found = await Promise.all(ids.map((id) => resolve(id)));
+  const lookup = new Map<string, RecipeLike>();
+  found.forEach((recipe, i) => {
+    if (recipe) lookup.set(ids[i], recipe);
+  });
+  return reviewSessionCoherence(session, lookup);
 }
 
 /**

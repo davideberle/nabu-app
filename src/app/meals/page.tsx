@@ -8,6 +8,8 @@ import { useSearchParams } from "next/navigation";
 import { NabuBadge, NabuButton, NabuEmptyState, NabuHeader, NabuMain, NabuPageShell, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
 import { getCourseTagColor } from "@/lib/tag-colors";
 import { normalizeIngredient } from "@/lib/normalize-ingredients";
+import { mergeMealComponents } from "@/lib/meal-plan-components";
+import type { MealCoherenceReview } from "@/lib/meal-coherence";
 
 // ----- types -----
 
@@ -462,6 +464,9 @@ function MealsPageInner() {
   }
 
   const [plan, setPlan] = useState<MealPlan | null>(null);
+  // Mirror of the latest plan, so a click handler that was captured before the
+  // previous update still merges into the current plan rather than a stale one.
+  const planRef = useRef<MealPlan | null>(null);
   const [candidates, setCandidates] = useState<RecipeOption[]>([]);
   const candidatesRef = useRef<RecipeOption[]>([]);
   const [ideaMetadata, setIdeaMetadata] = useState<{ generatedAt?: string; policyVersion?: string } | null>(null);
@@ -480,15 +485,29 @@ function MealsPageInner() {
   const [markingCooked, setMarkingCooked] = useState<number | null>(null);
   const [expandingDay, setExpandingDay] = useState<number | null>(null);
   const [expandLoading, setExpandLoading] = useState(false);
+  // Guards against out-of-order expansion/review responses.
+  const expandRequestRef = useRef(0);
   const [expandComplements, setExpandComplements] = useState<{
     starters: RecipeOption[];
     sides: RecipeOption[];
     desserts: RecipeOption[];
+    /** Review of the meal as currently accepted — refreshed on every change. */
+    coherence: MealCoherenceReview | null;
   } | null>(null);
 
   useEffect(() => {
     candidatesRef.current = candidates;
   }, [candidates]);
+
+  useEffect(() => {
+    planRef.current = plan;
+  }, [plan]);
+
+  /** Update plan state and its mirror together, within the same tick. */
+  const commitPlan = useCallback((next: MealPlan) => {
+    planRef.current = next;
+    setPlan(next);
+  }, []);
 
   // Autosave for notes/context changes only
   useAutosave(plan);
@@ -986,6 +1005,7 @@ function MealsPageInner() {
     const updatedPlan = touchPlan({ ...plan, days: newDays });
     setPlan(updatedPlan);
     savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    refreshMealReview(dayIndex, updatedPlan);
   }
 
   // Toggle feedback for a candidate recipe
@@ -1020,6 +1040,20 @@ function MealsPageInner() {
 
   // ----- day expansion (Turn into meal) -----
 
+  // The expansion endpoint reviews the meal as currently accepted, so it needs
+  // the day's saved sides and every serve-with line, not just the main.
+  function expandUrl(slot: DaySlot): string {
+    const params = new URLSearchParams();
+    params.set("mainId", slot.recipeId ?? "");
+    params.set("dayType", slot.type || "weekday");
+    const sideIds = (slot.meal?.sides ?? []).map((s) => s.id).filter(Boolean);
+    if (sideIds.length > 0) params.set("sideIds", sideIds.join(","));
+    for (const item of slot.meal?.serveWith ?? []) {
+      if (item.trim().length > 0) params.append("serveWith", item);
+    }
+    return `/api/meals/expand?${params.toString()}`;
+  }
+
   async function handleExpandDay(dayIndex: number) {
     if (!plan) return;
     const slot = plan.days[dayIndex];
@@ -1032,67 +1066,108 @@ function MealsPageInner() {
       return;
     }
 
+    const seq = ++expandRequestRef.current;
     setExpandingDay(dayIndex);
     setExpandLoading(true);
     setExpandComplements(null);
     try {
-      const dayType = slot.type || "weekday";
-      const res = await fetch(
-        `/api/meals/expand?mainId=${encodeURIComponent(slot.recipeId)}&dayType=${dayType}`
-      );
+      const res = await fetch(expandUrl(slot));
       const data = await res.json();
+      if (seq !== expandRequestRef.current) return;
       setExpandComplements({
         starters: data.starters || [],
         sides: data.sides || [],
         desserts: data.desserts || [],
+        coherence: data.coherence ?? null,
       });
     } catch (err) {
       console.error("Failed to load complements:", err);
-      setExpandComplements({ starters: [], sides: [], desserts: [] });
+      if (seq !== expandRequestRef.current) return;
+      setExpandComplements({ starters: [], sides: [], desserts: [], coherence: null });
     } finally {
-      setExpandLoading(false);
+      if (seq === expandRequestRef.current) setExpandLoading(false);
     }
   }
 
-  function handleAcceptComplement(dayIndex: number, complement: RecipeOption) {
-    if (!plan || plan.locked) return;
-    const slot = plan.days[dayIndex];
+  /**
+   * Re-review the meal after the accepted plate changes.
+   *
+   * Only the review is replaced. The suggestion lists keep the order they were
+   * fetched in, so accepting a side never reshuffles the cards under the
+   * cursor; the balance summary always describes what is actually accepted.
+   */
+  function refreshMealReview(dayIndex: number, updatedPlan: MealPlan) {
+    if (expandingDay !== dayIndex) return;
+    const slot = updatedPlan.days[dayIndex];
+    if (!slot?.recipeId) return;
+    const seq = ++expandRequestRef.current;
+    fetch(expandUrl(slot))
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (!data || seq !== expandRequestRef.current) return;
+        setExpandComplements((prev) =>
+          prev ? { ...prev, coherence: data.coherence ?? null } : prev
+        );
+      })
+      .catch((err) => console.error("Failed to refresh meal review:", err));
+  }
+
+  /**
+   * Accept one or more complements as a single change to the day.
+   *
+   * The whole batch is merged in one pass because the picker's "Add these 3"
+   * button used to call this once per recommendation: each call read the same
+   * already-stale `plan`, so only the last recommendation survived and three
+   * saves raced. One merge, one `setPlan`, one save, one review refresh.
+   */
+  function handleAcceptComplements(dayIndex: number, complements: RecipeOption[]) {
+    // `planRef` rather than `plan`: a click handler captured before the last
+    // accept would otherwise re-apply a stale day.
+    const current = planRef.current;
+    if (!current || current.locked) return;
+    if (dayIndex < 0 || dayIndex >= current.days.length) return;
+    const slot = current.days[dayIndex];
     if (!slot?.meal) return;
 
-    const existingSides = slot.meal.sides || [];
-    // Don't add duplicates
-    if (existingSides.some((s) => s.id === complement.id)) return;
+    const merged = mergeMealComponents(
+      slot.meal.sides,
+      complements.map((c) => ({ id: c.id, name: c.name }))
+    );
+    if (!merged.changed) return;
 
-    const newSides = [...existingSides, { id: complement.id, name: complement.name }];
-    const newDays = [...plan.days];
+    const newDays = [...current.days];
     newDays[dayIndex] = {
-      ...newDays[dayIndex],
+      ...slot,
       planningState: "meal",
-      meal: { ...slot.meal, sides: newSides },
+      meal: { ...slot.meal, sides: merged.components },
     };
-    const updatedPlan = touchPlan({ ...plan, days: newDays });
-    setPlan(updatedPlan);
+    const updatedPlan = touchPlan({ ...current, days: newDays });
+    commitPlan(updatedPlan);
     savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    refreshMealReview(dayIndex, updatedPlan);
   }
 
   function handleRemoveComplement(dayIndex: number, complementId: string) {
-    if (!plan || plan.locked) return;
-    const slot = plan.days[dayIndex];
+    const current = planRef.current;
+    if (!current || current.locked) return;
+    const slot = current.days[dayIndex];
     if (!slot?.meal?.sides) return;
 
     const newSides = slot.meal.sides.filter((s) => s.id !== complementId);
-    const newDays = [...plan.days];
+    if (newSides.length === slot.meal.sides.length) return;
+    const newDays = [...current.days];
     newDays[dayIndex] = {
-      ...newDays[dayIndex],
+      ...slot,
       planningState: newSides.length > 0 ? "meal" : "assigned",
       meal: {
         ...slot.meal,
         sides: newSides.length > 0 ? newSides : undefined,
       },
     };
-    const updatedPlan = touchPlan({ ...plan, days: newDays });
-    setPlan(updatedPlan);
+    const updatedPlan = touchPlan({ ...current, days: newDays });
+    commitPlan(updatedPlan);
     savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    refreshMealReview(dayIndex, updatedPlan);
   }
 
   // ----- context/notes helpers -----
@@ -1495,9 +1570,10 @@ function MealsPageInner() {
             dayIndex={expandingDay}
             slot={plan.days[expandingDay]}
             complements={expandComplements}
+            coherence={expandComplements?.coherence ?? null}
             loading={expandLoading}
             acceptedSides={plan.days[expandingDay].meal?.sides || []}
-            onAccept={(complement) => handleAcceptComplement(expandingDay, complement)}
+            onAccept={(complements) => handleAcceptComplements(expandingDay, complements)}
             onRemove={(complementId) => handleRemoveComplement(expandingDay, complementId)}
             onClose={() => { setExpandingDay(null); setExpandComplements(null); }}
             onQuickView={handleQuickView}
@@ -2004,10 +2080,59 @@ function RecipeCard({
 
 // ----- Complement Picker (Turn into meal) -----
 
+/**
+ * Meal balance — the whole-meal review of what is currently accepted.
+ *
+ * Renders nothing for a coherent meal: no findings, no box. When something does
+ * collide it shows the two most serious findings and the two smallest moves,
+ * as guidance only. Nothing here writes to a recipe; the suggestions describe
+ * what to do differently on the night.
+ */
+function MealBalanceNote({ review }: { review: MealCoherenceReview | null }) {
+  if (!review || review.findings.length === 0) return null;
+
+  const rank = { major: 3, minor: 2, info: 1 } as const;
+  const findings = [...review.findings]
+    .sort((a, b) => rank[b.severity] - rank[a.severity])
+    .slice(0, 2);
+  const moves = review.suggestions.slice(0, 2);
+
+  return (
+    <div className="mb-4 rounded-md border border-amber-200/70 dark:border-amber-900/40 bg-amber-50/40 dark:bg-amber-950/10 px-3 py-2">
+      <p className="text-[10px] uppercase tracking-wider text-amber-600/90 dark:text-amber-500/90">
+        Meal balance
+      </p>
+      <ul className="mt-1 space-y-0.5">
+        {findings.map((f) => (
+          <li
+            key={`${f.kind}:${f.lane ?? ""}:${f.componentIds.join(",")}`}
+            className="text-[11px] leading-snug text-stone-600 dark:text-stone-300"
+          >
+            {f.summary}
+          </li>
+        ))}
+      </ul>
+      {moves.length > 0 && (
+        <ul className="mt-1.5 space-y-0.5">
+          {moves.map((s, i) => (
+            <li
+              key={`${s.kind}:${s.componentId ?? i}`}
+              className="text-[11px] leading-snug italic text-stone-500 dark:text-stone-400"
+            >
+              {s.summary}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 function ComplementPicker({
   dayIndex,
   slot,
   complements,
+  coherence,
   loading,
   acceptedSides,
   onAccept,
@@ -2018,9 +2143,14 @@ function ComplementPicker({
   dayIndex: number;
   slot: DaySlot;
   complements: { starters: RecipeOption[]; sides: RecipeOption[]; desserts: RecipeOption[] } | null;
+  coherence: MealCoherenceReview | null;
   loading: boolean;
   acceptedSides: { id: string; name: string }[];
-  onAccept: (recipe: RecipeOption) => void;
+  /**
+   * Accepts a whole batch at once. Single adds pass a one-element array — the
+   * picker never loops this callback, so a multi-add can't race itself.
+   */
+  onAccept: (recipes: RecipeOption[]) => void;
   onRemove: (id: string) => void;
   onClose: () => void;
   onQuickView: (recipeId: string) => void;
@@ -2043,9 +2173,9 @@ function ComplementPicker({
   const allRecommendedAccepted = recommended.length > 0 && recommended.every((r) => acceptedIds.has(r.id));
 
   function handleAddRecommended() {
-    for (const r of recommended) {
-      if (!acceptedIds.has(r.id)) onAccept(r);
-    }
+    const pending = recommended.filter((r) => !acceptedIds.has(r.id));
+    if (pending.length === 0) return;
+    onAccept(pending);
   }
 
   return (
@@ -2068,6 +2198,9 @@ function ComplementPicker({
           Close
         </button>
       </div>
+
+      {/* Whole-meal review of what is currently accepted — silent when coherent */}
+      <MealBalanceNote review={coherence} />
 
       {/* Accepted complements */}
       {acceptedSides.length > 0 && (
@@ -2221,7 +2354,7 @@ function ComplementPicker({
                         )}
                       </div>
                       <button
-                        onClick={() => onAccept(r)}
+                        onClick={() => onAccept([r])}
                         disabled={isAccepted}
                         className={`shrink-0 text-[10px] px-2 py-0.5 rounded-full font-medium transition-colors ${
                           isAccepted

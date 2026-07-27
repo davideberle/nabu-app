@@ -12,6 +12,7 @@ import {
   applyPatch,
   drinkText,
   normalizeSession,
+  resolveSessionCoherence,
   splitServeWith,
   syncSessionWithPlan,
   validatePatch,
@@ -22,6 +23,7 @@ import {
   type SessionPatch,
   type SessionStatus,
 } from "./cooking-session";
+import type { MealCoherenceReview } from "./meal-coherence";
 
 export * from "./cooking-session";
 
@@ -233,6 +235,44 @@ export async function saveCookingSession(
       now,
     ],
   });
+}
+
+// ---------------------------------------------------------------------------
+// Whole-meal coherence (derived on read, never persisted)
+// ---------------------------------------------------------------------------
+
+/**
+ * Review a session as one meal, loading the recipes it references.
+ *
+ * `getRecipe` is the explicit-reference resolver: it reaches My Recipes and the
+ * full static bundle including hidden cookbooks, which the browsable
+ * `getAllRecipes` collection excludes. A session side from a hidden cookbook
+ * must still be reviewed.
+ *
+ * The result is derived on every read and never stored: it is not written back
+ * to the session row, and it never mutates the anchor's base lists (see
+ * live-cooking DESIGN.md §3 rule 16).
+ */
+export async function deriveSessionCoherence(
+  session: CookingSession
+): Promise<MealCoherenceReview> {
+  return resolveSessionCoherence(session, getRecipe);
+}
+
+/**
+ * A session as the GET APIs return it: the stored session plus the derived
+ * review under an extra top-level `coherence` key. Existing clients that read
+ * only session fields are unaffected; `coherence` is never persisted, and the
+ * POST route strips it if a client round-trips a GET response back.
+ */
+export type CookingSessionWithCoherence = CookingSession & {
+  coherence: MealCoherenceReview;
+};
+
+export async function withSessionCoherence(
+  session: CookingSession
+): Promise<CookingSessionWithCoherence> {
+  return { ...session, coherence: await deriveSessionCoherence(session) };
 }
 
 // ---------------------------------------------------------------------------

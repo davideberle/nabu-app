@@ -11,8 +11,11 @@ import {
   mergeRelatedRecipes,
   normalizeSession,
   resolveMainDish,
+  resolveSessionCoherence,
   resolveSessionHero,
   resolveWorkingRecipe,
+  reviewSessionCoherence,
+  sessionRecipeIds,
   setAsideComponents,
   syncSessionWithPlan,
   validatePatch,
@@ -504,6 +507,282 @@ describe("patch validation and application", () => {
         ],
       }),
       null
+    );
+  });
+});
+
+describe("reviewSessionCoherence", () => {
+  it("reviews the session as one meal and never touches the anchor base lists", () => {
+    const session = makeSession({
+      main: KOREAN_MAIN,
+      relatedRecipes: [
+        { kind: "side", recipeId: "kimchi-pancakes", title: "Kimchi Pancakes" },
+        { kind: "side", recipeId: "cold-kimchi", title: "Cold Kimchi" },
+      ],
+    });
+    const baseBefore = JSON.parse(JSON.stringify(session.ingredients.base));
+    const methodBefore = JSON.parse(JSON.stringify(session.method.base));
+
+    const review = reviewSessionCoherence(session);
+
+    ok(review.findings.length > 0, "the Korean session is not coherent as-is");
+    deepStrictEqual(session.ingredients.base, baseBefore);
+    deepStrictEqual(session.method.base, methodBefore);
+  });
+
+  it("reads tonight's session glaze, not the anchor's, for the resolved main", () => {
+    const session = makeSession({ main: KOREAN_MAIN });
+    const review = reviewSessionCoherence(session);
+    // The salmon session list carries soy and gochujang; the doenjang
+    // aubergine anchor carries soy and doenjang. Both lanes must resolve to
+    // the salmon, which is tonight's main.
+    equal(
+      review.laneOwners.find((o) => o.lane === "gochujang")?.componentTitle,
+      "Gochujang-Glazed Salmon"
+    );
+    equal(
+      review.laneOwners.find((o) => o.lane === "soy")?.componentTitle,
+      "Gochujang-Glazed Salmon"
+    );
+  });
+
+  it("proposes only session-scoped adjustments", () => {
+    const session = makeSession({ main: KOREAN_MAIN });
+    const review = reviewSessionCoherence(session);
+    for (const suggestion of review.suggestions) {
+      ok(
+        ["component-status", "seasoning", "session-note"].includes(
+          suggestion.adjustment.target
+        ),
+        `unexpected adjustment target: ${suggestion.adjustment.target}`
+      );
+    }
+  });
+
+  it("does not review a serve-with line that restates the main or a component", () => {
+    // The Korean session lists the salmon and the kimchi pancakes in
+    // serveWith as well. Counting those lines again made the review tell the
+    // cook to reseason the main so the main could own its own lane, and put
+    // the set-aside pancake back on the plate as a fried ferment dish.
+    const session = makeSession({
+      main: KOREAN_MAIN,
+      relatedRecipes: [
+        {
+          kind: "side",
+          recipeId: "kimchi-pancakes",
+          title: "Kimchi Pancakes",
+          status: "optional",
+        },
+      ],
+    });
+    const review = reviewSessionCoherence(session);
+
+    equal(
+      review.laneOwners.find((o) => o.lane === "gochujang")?.componentTitle,
+      "Gochujang-Glazed Salmon"
+    );
+    ok(
+      !review.suggestions.some((s) => /salmon/i.test(s.componentTitle ?? "")),
+      "the main must never be told to reseason itself"
+    );
+    ok(
+      !review.findings.some((f) => f.lane === "ferment"),
+      "an optional component's serve-with line must not re-enter the plate"
+    );
+    ok(
+      !review.findings.some((f) => f.kind === "fried-repeat"),
+      "the omitted pancake is not fried tonight"
+    );
+  });
+
+  it("excludes components that were already set aside", () => {
+    const session = makeSession({
+      main: KOREAN_MAIN,
+      relatedRecipes: [
+        {
+          kind: "side",
+          recipeId: "kimchi-pancakes",
+          title: "Kimchi Pancakes",
+          status: "omitted",
+        },
+      ],
+    });
+    const review = reviewSessionCoherence(session);
+    ok(review.setAsideIds.includes("kimchi-pancakes"));
+    ok(!review.suggestions.some((s) => s.componentId === "kimchi-pancakes"));
+  });
+
+  it("uses looked-up recipes for component ingredients when available", () => {
+    const session = makeSession({
+      main: null,
+      ingredients: { base: [ing("cod fillets"), ing("white miso")], session: [] },
+      method: { base: ["Grill until just done."], session: [] },
+      anchor: {
+        type: "kitchen-recipe",
+        recipeId: "miso-cod",
+        title: "Miso-Glazed Cod",
+        provenance: { source: "kitchen" },
+      },
+      relatedRecipes: [
+        { kind: "side", recipeId: "miso-aubergine", title: "Roast Aubergine" },
+      ],
+      serveWith: [],
+    });
+
+    const withoutLookup = reviewSessionCoherence(session);
+    ok(
+      !withoutLookup.findings.some((f) => f.lane === "miso"),
+      "a title-only side gives no miso signal"
+    );
+
+    const withLookup = reviewSessionCoherence(session, {
+      "miso-aubergine": {
+        id: "miso-aubergine",
+        name: "Roast Aubergine",
+        ingredients: [{ item: "aubergine" }, { item: "white miso" }],
+        method: ["Roast until collapsing."],
+      },
+    });
+    const miso = withLookup.findings.find(
+      (f) => f.kind === "seasoning-lane-repeat" && f.lane === "miso"
+    );
+    ok(miso, "the looked-up side reveals the duplicated miso lane");
+    equal(miso.ownerId, "miso-cod");
+  });
+
+  it("is deterministic", () => {
+    const session = makeSession({ main: KOREAN_MAIN });
+    deepStrictEqual(reviewSessionCoherence(session), reviewSessionCoherence(session));
+  });
+});
+
+// ---------------------------------------------------------------------------
+// The API-facing helpers: what GET /api/cooking/session[?date|/:id] returns.
+// The routes are thin wrappers that bind `resolve` to `getRecipe` and put the
+// result on a `coherence` property; everything decidable is decided here.
+// ---------------------------------------------------------------------------
+
+describe("sessionRecipeIds", () => {
+  it("returns nothing to load for the external-anchor Korean session", () => {
+    // The anchor is an external recipe and the explicit main is ad-hoc, so the
+    // only stored recipe the session references is its component.
+    deepStrictEqual(sessionRecipeIds(makeSession({ main: KOREAN_MAIN })), [
+      "kimchi-pancakes",
+    ]);
+  });
+
+  it("lists the resolved main, the anchor, and every component, deduplicated", () => {
+    const ids = sessionRecipeIds(
+      makeSession({
+        anchor: {
+          type: "kitchen-recipe",
+          recipeId: "doenjang-aubergine",
+          title: "Doenjang Aubergine",
+          provenance: { source: "kitchen" },
+        },
+        main: { ...KOREAN_MAIN, recipeId: "gochujang-salmon" },
+        relatedRecipes: [
+          { kind: "side", recipeId: "kimchi-pancakes", title: "Kimchi Pancakes" },
+          { kind: "side", recipeId: "kimchi-pancakes", title: "Kimchi Pancakes" },
+          { kind: "starter", recipeId: "cold-kimchi", title: "Cold Kimchi" },
+        ],
+      })
+    );
+    // Resolved main first, then the anchor it displaced (which renders as a
+    // secondary dish), then components.
+    deepStrictEqual(ids, [
+      "gochujang-salmon",
+      "doenjang-aubergine",
+      "kimchi-pancakes",
+      "cold-kimchi",
+    ]);
+  });
+});
+
+describe("resolveSessionCoherence", () => {
+  const misoSession = () =>
+    makeSession({
+      main: null,
+      ingredients: { base: [ing("cod fillets"), ing("white miso")], session: [] },
+      method: { base: ["Grill until just done."], session: [] },
+      anchor: {
+        type: "kitchen-recipe",
+        recipeId: "miso-cod",
+        title: "Miso-Glazed Cod",
+        provenance: { source: "kitchen" },
+      },
+      relatedRecipes: [
+        { kind: "side", recipeId: "miso-aubergine", title: "Roast Aubergine" },
+      ],
+      serveWith: [],
+    });
+
+  it("loads component recipes and finds what a title alone cannot show", async () => {
+    const session = misoSession();
+    const asked: string[] = [];
+    const review = await resolveSessionCoherence(session, async (id) => {
+      asked.push(id);
+      return id === "miso-aubergine"
+        ? {
+            id,
+            name: "Roast Aubergine",
+            ingredients: [{ item: "aubergine" }, { item: "white miso" }],
+            method: ["Roast until collapsing."],
+          }
+        : null;
+    });
+
+    deepStrictEqual(asked, ["miso-cod", "miso-aubergine"], "each id is resolved once");
+    const miso = review.findings.find(
+      (f) => f.kind === "seasoning-lane-repeat" && f.lane === "miso"
+    );
+    ok(miso, "the resolved side reveals the duplicated miso lane");
+    equal(miso.ownerId, "miso-cod");
+  });
+
+  it("matches reviewSessionCoherence with the same lookup", async () => {
+    const session = misoSession();
+    const recipes = {
+      "miso-aubergine": {
+        id: "miso-aubergine",
+        name: "Roast Aubergine",
+        ingredients: [{ item: "aubergine" }, { item: "white miso" }],
+        method: ["Roast until collapsing."],
+      },
+    };
+    deepStrictEqual(
+      await resolveSessionCoherence(session, async (id) =>
+        id === "miso-aubergine" ? recipes["miso-aubergine"] : null
+      ),
+      reviewSessionCoherence(session, recipes)
+    );
+  });
+
+  it("reviews the Korean session without mutating it", async () => {
+    const session = makeSession({
+      main: KOREAN_MAIN,
+      relatedRecipes: [
+        { kind: "side", recipeId: "kimchi-pancakes", title: "Kimchi Pancakes" },
+        { kind: "side", recipeId: "cold-kimchi", title: "Cold Kimchi" },
+      ],
+    });
+    const before = JSON.parse(JSON.stringify(session));
+
+    const review = await resolveSessionCoherence(session, async () => null);
+
+    ok(review.findings.length > 0, "the Korean session is not coherent as-is");
+    equal(
+      review.laneOwners.find((o) => o.lane === "gochujang")?.componentTitle,
+      "Gochujang-Glazed Salmon"
+    );
+    deepStrictEqual(JSON.parse(JSON.stringify(session)), before);
+  });
+
+  it("survives a resolver that knows nothing", async () => {
+    const review = await resolveSessionCoherence(misoSession(), async () => undefined);
+    ok(
+      !review.findings.some((f) => f.lane === "miso"),
+      "a title-only side gives no miso signal, and nothing throws"
     );
   });
 });

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getAllRecipes, getRecipe, getCuisine, getDietary, isLowCalorie } from "@/lib/recipes";
 import { selectDayComplements, getDisplayCategory } from "@/lib/meals";
+import { buildMealExpansion } from "@/lib/meal-expand";
 import type { Recipe } from "@/lib/recipes";
 
 function parseMinutes(v: unknown): number {
@@ -35,14 +36,41 @@ function summarize(r: Recipe) {
 }
 
 /**
- * GET /api/meals/expand?mainId=<recipeId>&dayType=weekday|weekend
+ * GET /api/meals/expand
+ *   ?mainId=<recipeId>
+ *   &dayType=weekday|weekend
+ *   &sideIds=<recipeId,recipeId>   optional: components already saved on the day
+ *   &serveWith=<text>              optional, repeatable: free-text table additions
  *
- * Returns complement suggestions (starters, sides, desserts) for an
- * assigned main dish on a specific day.
+ * Returns complement suggestions (starters, sides, desserts) for an assigned
+ * main dish plus two reviews (kitchen DESIGN.md §4.3):
+ *
+ * - `coherence` — the day's meal as currently accepted: the main together with
+ *   `sideIds` and `serveWith`.
+ * - `recommendedSet` — the starter/side/dessert set the planner recommends,
+ *   assembled as one meal rather than three independent picks, with the
+ *   decisions that produced it. `recommended` on each grouped item mirrors it.
+ *
+ * Complements are still *scored* one at a time against the main, which is why
+ * two components can independently land on the same seasoning; the coherent
+ * selection step is what stops both of them being recommended together.
+ *
+ * Recipes are read read-only and never rewritten; suggestions are session and
+ * runtime adjustments for the caller to accept or ignore.
+ *
+ * `sideIds` are explicit references, so they resolve through `getRecipe` — the
+ * browsable collection from `getAllRecipes` excludes hidden cookbooks, and a
+ * saved side from one of those must still be reviewed.
  */
 export async function GET(request: NextRequest) {
-  const mainId = request.nextUrl.searchParams.get("mainId");
-  const dayType = (request.nextUrl.searchParams.get("dayType") || "weekday") as "weekday" | "weekend";
+  const query = request.nextUrl.searchParams;
+  const mainId = query.get("mainId");
+  const dayType = (query.get("dayType") || "weekday") as "weekday" | "weekend";
+  const sideIds = (query.get("sideIds") || "")
+    .split(",")
+    .map((id) => id.trim())
+    .filter((id) => id.length > 0);
+  const serveWith = query.getAll("serveWith").filter((text) => text.trim().length > 0);
 
   if (!mainId) {
     return NextResponse.json({ error: "mainId is required" }, { status: 400 });
@@ -56,17 +84,32 @@ export async function GET(request: NextRequest) {
   const allRecipes = await getAllRecipes();
   const complements = selectDayComplements(mainRecipe, allRecipes, dayType);
 
+  const expansion = await buildMealExpansion({
+    main: mainRecipe,
+    candidates: complements.map((c) => ({ role: c.role, recipe: c.recipe })),
+    sideIds,
+    serveWith,
+    dayType,
+    resolveRecipe: getRecipe,
+  });
+  const recommendedIds = new Set(expansion.recommendedIds);
+
+  const group = (role: "starter" | "side" | "dessert") =>
+    complements
+      .filter((c) => c.role === role)
+      .map((c) => ({
+        ...summarize(c.recipe),
+        rationale: c.rationale,
+        recommended: recommendedIds.has(c.recipe.id),
+      }));
+
   const grouped = {
-    starters: complements
-      .filter((c) => c.role === "starter")
-      .map((c) => ({ ...summarize(c.recipe), rationale: c.rationale, recommended: c.recommended ?? false })),
-    sides: complements
-      .filter((c) => c.role === "side")
-      .map((c) => ({ ...summarize(c.recipe), rationale: c.rationale, recommended: c.recommended ?? false })),
-    desserts: complements
-      .filter((c) => c.role === "dessert")
-      .map((c) => ({ ...summarize(c.recipe), rationale: c.rationale, recommended: c.recommended ?? false })),
+    starters: group("starter"),
+    sides: group("side"),
+    desserts: group("dessert"),
     mainCuisine: getCuisine(mainRecipe),
+    coherence: expansion.coherence,
+    recommendedSet: expansion.recommendedSet,
   };
 
   return NextResponse.json(grouped);
