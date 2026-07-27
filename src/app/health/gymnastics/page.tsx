@@ -6,8 +6,8 @@ import { GYMNASTICS_PROGRAM, type GymnasticsProgressRow } from "@/lib/gymnastics
 import { GymnasticsClient } from "./client";
 
 export const metadata: Metadata = {
-  title: "Gymnastics — Health — Nabu",
-  description: "10-week kipping, butterfly, and toes-to-bar skill program",
+  title: `${GYMNASTICS_PROGRAM.title} — Health — Nabu`,
+  description: GYMNASTICS_PROGRAM.subtitle,
 };
 
 export default async function GymnasticsPage() {

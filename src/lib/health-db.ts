@@ -1,5 +1,6 @@
 import type { Client } from "@libsql/client";
 import { getDb } from "./db";
+import type { GymnasticsSessionKey } from "./gymnastics";
 
 // ---------------------------------------------------------------------------
 // Idempotent table guard (mirrors ensureFamilyTables in family-db.ts)
@@ -359,7 +360,7 @@ function rowToMeditationLog(row: Record<string, unknown>): HealthMeditationLog {
 
 export type GymnasticsProgressRecord = {
   week: number;
-  session: "A" | "B";
+  session: GymnasticsSessionKey;
   completed: boolean;
   completedAt: string | null;
   note?: string;
@@ -385,7 +386,7 @@ export async function getGymnasticsProgress(
 export async function setGymnasticsProgress(entry: {
   programId: string;
   week: number;
-  session: "A" | "B";
+  session: GymnasticsSessionKey;
   completed: boolean;
   note?: string;
 }): Promise<GymnasticsProgressRecord> {
@@ -420,7 +421,7 @@ export async function setGymnasticsProgress(entry: {
 function rowToGymnasticsProgress(row: Record<string, unknown>): GymnasticsProgressRecord {
   return {
     week: row["week"] as number,
-    session: row["session"] as "A" | "B",
+    session: row["session"] as GymnasticsSessionKey,
     completed: (row["completed"] as number) === 1,
     completedAt: (row["completed_at"] as string | null) ?? null,
     ...(row["note"] ? { note: row["note"] as string } : {}),

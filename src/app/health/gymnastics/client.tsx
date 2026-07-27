@@ -180,15 +180,25 @@ export function GymnasticsClient({
               {finished ? "Program complete" : `Week ${summary.firstIncompleteWeek} up next`}
             </NabuBadge>
           </div>
-          <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-secondary">
+          <div
+            role="progressbar"
+            aria-label="Program progress"
+            aria-valuemin={0}
+            aria-valuemax={summary.totalSessions}
+            aria-valuenow={summary.completedCount}
+            aria-valuetext={`${summary.completedCount} of ${summary.totalSessions} sessions complete`}
+            className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-secondary"
+          >
             <div className="h-full rounded-full bg-emerald-400 transition-all" style={{ width: `${percent}%` }} />
           </div>
           <p className="mt-2 text-xs leading-relaxed text-tertiary">{program.summary}</p>
-          <p className="mt-2 text-[11px] text-quaternary">
-            Two sessions a week, {program.spacingHours.min}–{program.spacingHours.max}h apart · A ={" "}
-            {program.sessionLabels.A} · B = {program.sessionLabels.B}
+          <p className="mt-2 text-[11px] leading-relaxed text-quaternary">
+            {program.sessionsPerWeek} sessions a week · {program.spacingNote}
           </p>
         </NabuSurface>
+
+        {/* The one skill this block trains */}
+        <PrimarySkillCard program={program} />
 
         {/* Week selector */}
         <section>
@@ -224,7 +234,9 @@ export function GymnasticsClient({
                       />
                     ))}
                   </span>
-                  <span className="sr-only">{done} of 2 sessions done</span>
+                  <span className="sr-only">
+                    Week {w.week}: {done} of {GYMNASTICS_SESSION_KEYS.length} sessions done
+                  </span>
                 </button>
               );
             })}
@@ -240,6 +252,9 @@ export function GymnasticsClient({
           onToggle={toggle}
         />
 
+        {/* After-session feedback */}
+        <FeedbackPromptCard program={program} />
+
         {/* Warm-up */}
         <NabuSurface className="p-4">
           <NabuSectionHeader eyebrow="Every session" title={program.warmup.title} />
@@ -247,6 +262,19 @@ export function GymnasticsClient({
             {program.warmup.items.map((item) => (
               <li key={item} className="flex items-start gap-2 text-sm text-tertiary">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-quaternary" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </NabuSurface>
+
+        {/* Session rules */}
+        <NabuSurface className="p-4">
+          <NabuSectionHeader eyebrow="Non-negotiable" title={program.sessionRules.title} />
+          <ul className="mt-3 space-y-2">
+            {program.sessionRules.items.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-sm leading-relaxed text-secondary">
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-amber-400" />
                 {item}
               </li>
             ))}
@@ -296,19 +324,40 @@ function WeekPanel({
         eyebrow={`Week ${week.week} · ${week.phase}`}
         title={week.focus}
       />
-      <div className="grid gap-3 lg:grid-cols-2">
-        {GYMNASTICS_SESSION_KEYS.map((sessionKey) => (
-          <SessionCard
-            key={sessionKey}
-            sessionKey={sessionKey}
-            session={week.sessions[sessionKey]}
-            completed={status[keyOf(week.week, sessionKey)]?.completed ?? false}
-            completedAt={status[keyOf(week.week, sessionKey)]?.completedAt ?? null}
-            pending={pending[keyOf(week.week, sessionKey)] ?? false}
-            saveError={saveError[keyOf(week.week, sessionKey)] ?? false}
-            onToggle={() => onToggle(week.week, sessionKey)}
-          />
-        ))}
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {GYMNASTICS_SESSION_KEYS.map((sessionKey) => {
+          const session: GymnasticsSession | undefined = week.sessions[sessionKey];
+          // `scripts/validate-gymnastics.mjs` runs in prebuild and requires every
+          // A/B/C slot in every week, so this only fires on an invalid program.
+          // Say so visibly rather than crashing the page or silently dropping it.
+          if (!session) {
+            return (
+              <NabuCard key={sessionKey} className="flex flex-col">
+                <p className="text-[10px] uppercase tracking-[0.14em] text-quaternary">
+                  Session {sessionKey}
+                </p>
+                <p
+                  role="alert"
+                  className="mt-1.5 text-sm font-medium leading-relaxed text-red-600 dark:text-red-400"
+                >
+                  Missing from the program data — this session can&apos;t be shown or logged.
+                </p>
+              </NabuCard>
+            );
+          }
+          return (
+            <SessionCard
+              key={sessionKey}
+              sessionKey={sessionKey}
+              session={session}
+              completed={status[keyOf(week.week, sessionKey)]?.completed ?? false}
+              completedAt={status[keyOf(week.week, sessionKey)]?.completedAt ?? null}
+              pending={pending[keyOf(week.week, sessionKey)] ?? false}
+              saveError={saveError[keyOf(week.week, sessionKey)] ?? false}
+              onToggle={() => onToggle(week.week, sessionKey)}
+            />
+          );
+        })}
       </div>
     </section>
   );
@@ -341,7 +390,11 @@ function SessionCard({
         {completed ? <NabuBadge tone="green">Done</NabuBadge> : null}
       </div>
 
-      <ul className="mt-3 flex-1 space-y-2">
+      {session.goal ? (
+        <p className="mt-1.5 text-[11px] leading-relaxed text-tertiary">{session.goal}</p>
+      ) : null}
+
+      <ul className="mt-3 space-y-2">
         {session.blocks.map((block, i) => (
           <li key={`${block.movement}-${i}`} className="rounded-lg border border-secondary bg-secondary/60 p-2.5">
             <div className="flex items-baseline justify-between gap-3">
@@ -352,6 +405,18 @@ function SessionCard({
           </li>
         ))}
       </ul>
+
+      {session.notes?.length ? (
+        <ul className="mt-2.5 flex-1 space-y-1.5 rounded-lg border border-amber-200 bg-amber-50/60 p-2.5 dark:border-amber-800/50 dark:bg-amber-950/20">
+          {session.notes.map((note) => (
+            <li key={note} className="text-[11px] leading-relaxed text-secondary">
+              {note}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="flex-1" />
+      )}
 
       <button
         type="button"
@@ -396,6 +461,40 @@ function formatCompletedAt(iso: string): string {
   } catch {
     return "";
   }
+}
+
+// ---------------------------------------------------------------------------
+// Primary skill + after-session feedback
+// ---------------------------------------------------------------------------
+
+function PrimarySkillCard({ program }: { program: GymnasticsProgram }) {
+  const skill = program.primarySkill;
+  return (
+    <NabuSurface className="border-emerald-200 bg-emerald-50/50 p-4 dark:border-emerald-800/50 dark:bg-emerald-950/20">
+      <NabuSectionHeader eyebrow="Every rep, every session" title={skill.title} />
+      <p className="mt-2 text-sm font-medium leading-relaxed text-primary">{skill.cue}</p>
+      <p className="mt-1.5 text-xs leading-relaxed text-tertiary">{skill.failureSignal}</p>
+    </NabuSurface>
+  );
+}
+
+function FeedbackPromptCard({ program }: { program: GymnasticsProgram }) {
+  const prompt = program.feedbackPrompt;
+  return (
+    <NabuSurface tone="accent" className="p-4">
+      <NabuSectionHeader eyebrow="After the session" title={prompt.title} />
+      <ol className="mt-3 space-y-1.5">
+        {prompt.items.map((item, i) => (
+          <li key={item} className="flex items-start gap-2 text-sm leading-relaxed text-secondary">
+            <span className="mt-0.5 shrink-0 text-[11px] font-semibold tabular-nums text-quaternary">
+              {i + 1}.
+            </span>
+            {item}
+          </li>
+        ))}
+      </ol>
+    </NabuSurface>
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -452,10 +551,10 @@ function PrerequisitesCard({ program }: { program: GymnasticsProgram }) {
         </div>
       </div>
       <div className="mt-3 rounded-lg border border-secondary bg-secondary/60 p-3">
-        <p className="text-[10px] uppercase tracking-[0.12em] text-quaternary">Rep caps</p>
+        <p className="text-[10px] uppercase tracking-[0.12em] text-quaternary">Rep cap</p>
         <p className="mt-0.5 text-sm text-secondary">
-          Start near <strong className="font-semibold text-primary">{p.repCaps.initial}</strong> full dynamic reps per
-          session, building toward <strong className="font-semibold text-primary">{p.repCaps.later}</strong>. {p.repCaps.note}
+          Maximum <strong className="font-semibold text-primary">{p.repCaps.perSession}</strong> full unassisted dynamic
+          pull-up reps per session. {p.repCaps.note}
         </p>
       </div>
       <ul className="mt-3 space-y-1.5">

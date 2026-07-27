@@ -569,7 +569,7 @@ export default function HealthPage() {
           <span className="min-w-0 flex-1">
             <span className="block text-sm font-semibold tracking-[-0.01em] text-primary">Gymnastics program</span>
             <span className="block truncate text-xs text-quaternary">
-              10-week kipping, butterfly &amp; toes-to-bar · track your sessions
+              Link two kipping pull-ups · 2-week block, track your sessions
             </span>
           </span>
           <svg
