@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { guardRuntimeWrite } from "@/lib/api-guards";
 import {
   getCookingSessionForDate,
   saveCookingSession,
+  validateSessionBody,
   withSessionCoherence,
 } from "@/lib/cooking";
-import type { CookingSession } from "@/lib/cooking";
 
 /**
  * GET /api/cooking/session?date=YYYY-MM-DD
@@ -36,23 +37,38 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST /api/cooking/session — create or update a session
+/**
+ * POST /api/cooking/session — create or update a session.
+ *
+ * A session write is domain state (it feeds cook history and the derived
+ * whole-meal review), so it needs either the canonical authorized household
+ * session or the fail-closed trusted-runtime token that the Telegram
+ * live-cooking runtime carries. Reads stay open like the other planner GETs.
+ */
 export async function POST(request: NextRequest) {
+  const guard = await guardRuntimeWrite(request);
+  if (guard.response) return guard.response;
+
+  let body: unknown;
   try {
-    const body = (await request.json()) as CookingSession & {
-      coherence?: unknown;
-    };
-    if (!body.id || !body.date || !body.anchor) {
-      return NextResponse.json(
-        { error: "Invalid session data: id, date, and anchor are required" },
-        { status: 400 }
-      );
-    }
-    // The review GET adds is derived, never stored. A client that round-trips
-    // a GET response must not persist it into the session row.
-    const session: CookingSession = { ...body };
-    delete (session as { coherence?: unknown }).coherence;
-    await saveCookingSession(session);
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
+
+  // Structural validation before persistence. A malformed body (a string
+  // anchor, a related recipe with no id, a non-array method) used to be stored
+  // verbatim and then made every later read of that row throw, so both GET
+  // routes returned 500 forever. `validateSessionBody` returns the normalized
+  // session to store — the caller's object never reaches the database, which is
+  // also what strips the derived `coherence` a client may round-trip back.
+  const validated = validateSessionBody(body);
+  if (!validated.ok) {
+    return NextResponse.json({ error: validated.error }, { status: 400 });
+  }
+
+  try {
+    await saveCookingSession(validated.session);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(

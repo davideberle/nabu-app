@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { guardRuntimeWrite } from "@/lib/api-guards";
 import {
   patchCookingSession,
   getCookingSession,
@@ -37,11 +38,20 @@ export async function GET(
   }
 }
 
-// PATCH /api/cooking/session/:id — apply partial updates
+/**
+ * PATCH /api/cooking/session/:id — apply partial updates.
+ *
+ * Gated like POST /api/cooking/session: the canonical authorized household
+ * session, or the fail-closed trusted-runtime token the Telegram live-cooking
+ * runtime carries. Anonymous and tracker-only accounts never patch a session.
+ */
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const guard = await guardRuntimeWrite(request);
+  if (guard.response) return guard.response;
+
   const { id } = await params;
   try {
     const patch = (await request.json()) as SessionPatch;

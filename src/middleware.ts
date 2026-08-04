@@ -4,6 +4,7 @@ import {
   isTrackerAllowedApiPath,
   isTrackerAllowedPath,
   isTrackerOnlyEmail,
+  isTrustedRuntimeApiRoute,
 } from "@/lib/access";
 
 export default auth((req) => {
@@ -14,6 +15,14 @@ export default auth((req) => {
 
   if (isApiRoute) {
     if (isLoggedIn && isTrackerOnly) {
+      // Trusted-runtime-capable mutations are decided by the route guard, which
+      // is the only place that can see the bearer token: it accepts an
+      // authorized household session *or* a valid runtime token, and still
+      // refuses a tracker-only session that has neither. Refusing here would
+      // block a valid token before it could ever be checked.
+      if (isTrustedRuntimeApiRoute(req.method, req.nextUrl.pathname)) {
+        return;
+      }
       if (
         !isTrackerAllowedApiPath(req.nextUrl.pathname) ||
         isAdminOnlyApiRoute(req.method, req.nextUrl.pathname)

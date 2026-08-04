@@ -1,19 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CompleteSessionButton } from "./complete-session-button";
-import { NabuBadge, NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageShell, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
-import { createSessionFromPlan } from "@/lib/cooking";
+import { MealBalancePanel } from "./meal-balance";
+import { NabuBadge, NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageShell, NabuSurface } from "@/components/ui/nabu";
+import { createSessionFromPlan, deriveSessionCoherence } from "@/lib/cooking";
+import type { MealCoherenceReview } from "@/lib/meal-coherence";
 import { todayInZurich } from "@/lib/date";
 import {
   activeComponents,
+  anchorProvenanceLabel,
   componentStatusLabel,
   firstServingsClause,
-  isDrinkServeWith,
+  recipeProvenanceLabel,
   resolveMainDish,
   resolveSessionHero,
   resolveWorkingRecipe,
   setAsideComponents,
   visibleServeWith,
+  visibleSessionNotes,
 } from "@/lib/cooking-session";
 import type {
   CookingSession,
@@ -21,9 +25,15 @@ import type {
   ResolvedMain,
   SessionHero,
   SessionIngredient,
+  WorkingIngredient,
   WorkingRecipe,
+  WorkingStep,
 } from "@/lib/cooking-session";
-import { buildCookingGuidance, extractTableSides, formatRecipeTime } from "@/lib/cooking-guidance";
+import {
+  buildPairingSuggestion,
+  extractTableSides,
+  formatRecipeTime,
+} from "@/lib/cooking-guidance";
 import { formatServings, getRecipe } from "@/lib/recipes";
 import type { Recipe } from "@/lib/recipes";
 
@@ -31,12 +41,25 @@ export const dynamic = "force-dynamic";
 
 export default async function CookingPage() {
   const date = todayInZurich();
-  // Auto-load existing session or create one from today's meal plan
-  const session = await createSessionFromPlan(date);
-
-  // The rendered main is the resolved main dish, which may differ from the
-  // anchor when the session established an explicit main (e.g. via Telegram).
-  const resolved = session ? resolveMainDish(session) : null;
+  // Auto-load existing session or create one from today's meal plan.
+  //
+  // A malformed historical row — a legacy shape, a hand-edited field, an anchor
+  // that is not an object — must not blank the page the cook is standing at the
+  // stove with. Loading and resolving the main is where such a row throws, so
+  // both degrade to the useful empty state rather than the error screen.
+  // ./error.tsx is the backstop for anything further down the render.
+  let session: CookingSession | null = null;
+  let resolved: ResolvedMain | null = null;
+  try {
+    session = await createSessionFromPlan(date);
+    // The rendered main is the resolved main dish, which may differ from the
+    // anchor when the session established an explicit main (e.g. via Telegram).
+    resolved = session ? resolveMainDish(session) : null;
+  } catch (error) {
+    console.error(`[cooking] session for ${date} could not be loaded:`, error);
+    session = null;
+    resolved = null;
+  }
   const mainRecipe = resolved?.recipeId
     ? await getRecipe(resolved.recipeId)
     : undefined;
@@ -51,6 +74,20 @@ export default async function CookingPage() {
     );
     for (const r of results) {
       if (r) sideRecipes.push(r);
+    }
+  }
+  // Derived on every render, never stored (live-cooking DESIGN.md §3 rule 16).
+  // A malformed historical row must not blank the page the cook is standing at
+  // the stove with — the balance panel simply does not render for it.
+  let coherence: MealCoherenceReview | null = null;
+  if (session) {
+    try {
+      coherence = await deriveSessionCoherence(session);
+    } catch (error) {
+      console.error(
+        `[cooking] coherence review failed for session ${session.id}:`,
+        error,
+      );
     }
   }
 
@@ -72,6 +109,7 @@ export default async function CookingPage() {
             mainRecipe={mainRecipe ?? undefined}
             anchorRecipe={anchorRecipe ?? undefined}
             sideRecipes={sideRecipes}
+            coherence={coherence}
           />
         ) : (
           <EmptyState date={date} />
@@ -91,12 +129,14 @@ function SessionView({
   mainRecipe,
   anchorRecipe,
   sideRecipes,
+  coherence,
 }: {
   session: CookingSession;
   resolved: ResolvedMain;
   mainRecipe?: Recipe;
   anchorRecipe?: Recipe;
   sideRecipes: Recipe[];
+  coherence: MealCoherenceReview | null;
 }) {
   const hero = resolveSessionHero(session, mainRecipe?.image);
   const working = resolveWorkingRecipe(
@@ -114,47 +154,81 @@ function SessionView({
 
   const componentTitles = session.relatedRecipes.map((r) => r.title);
   const tableSides = extractTableSides(
-    [...working.ingredients, ...working.ingredientAdjustments],
+    working.ingredients,
     visibleServeWith(session, componentTitles)
   );
-  const guidance = buildCookingGuidance({
-    session,
-    mainRecipe,
-    sideRecipes: mealComponents.map(({ recipe }) => recipe),
-  });
   const timeLabel = formatRecipeTime(mainRecipe?.time);
 
+  // Every dish cooked alongside the main — including components without a
+  // stored recipe record, which are still on tonight's stove.
   const alsoCooking = [
     ...(resolved.anchorIsSecondary ? [session.anchor.title] : []),
-    ...mealComponents.map(({ recipe }) => recipe.name),
+    ...activeComponents(session).map(
+      (related) => sideRecipeById.get(related.recipeId)?.name ?? related.title
+    ),
   ];
+
+  const pairing = buildPairingSuggestion({
+    mainTitle: resolved.title,
+    mainRecipe,
+    ingredients: working.ingredients,
+    method: working.method.map((step) => step.text),
+    tableSides,
+  });
+
+  // Real recipe identity: the anchor's provenance when it is the main, the
+  // stored main recipe's source when an explicit main displaced the anchor.
+  // Chat-origin/internal wording never renders (rule 10).
+  const mainProvenance = resolved.anchorIsSecondary
+    ? mainRecipe
+      ? recipeProvenanceLabel({
+          source: mainRecipe.source?.cookbook,
+          author: mainRecipe.source?.author,
+        })
+      : null
+    : anchorProvenanceLabel(session);
+  const provenanceUrl =
+    !resolved.anchorIsSecondary && mainProvenance
+      ? session.anchor.provenance.url
+      : undefined;
+
+  const notes = visibleSessionNotes(session.notes, working, session.adaptations);
+  const drink = stripDrinkEmoji(session.coachCards.wine || pairing.wine).replace(
+    /^Optional:\s*/i,
+    ""
+  );
 
   return (
     <>
-      <MealOverview
-        session={session}
+      {/* ── The recipe document: identity, context, one list, one method ── */}
+      <RecipeDocument
         resolved={resolved}
         hero={hero}
+        provenance={mainProvenance}
+        provenanceUrl={provenanceUrl}
+        servingLabel={formatServings(session.servings.current)}
+        timeLabel={timeLabel}
+        working={working}
         alsoCooking={alsoCooking}
         tableSides={tableSides}
-        timeLabel={timeLabel}
-        mealFlow={guidance.mealFlow}
-        wine={session.coachCards.wine || guidance.pairing.wine}
+        drink={drink}
+        notes={notes}
       />
 
-      <StoryCard story={session.story} title={resolved.title} />
+      {/* ── Support, subordinate to the recipe ── */}
+      {coherence && (
+        <MealBalancePanel
+          sessionId={session.id}
+          review={coherence}
+          relatedRecipes={session.relatedRecipes}
+        />
+      )}
 
-      <SessionNotes notes={session.notes} />
-
-      {/* ── Main dish: tonight's working recipe ── */}
-      <MainDishBlock session={session} resolved={resolved} working={working} />
-
-      {/* ── Secondary dishes, subordinate but complete ── */}
       {resolved.anchorIsSecondary && (
         <CollapsedRecipeBlock
           roleLabel="Also tonight"
           title={session.anchor.title}
-          sourceLine={provenanceLabel(session)}
+          sourceLine={anchorProvenanceLabel(session) ?? undefined}
           image={anchorRecipe?.image}
           servings={anchorRecipe?.servings}
           ingredients={session.ingredients.base}
@@ -175,6 +249,8 @@ function SessionView({
       ))}
 
       {setAside.length > 0 && <SetAsideRow components={setAside} />}
+
+      <StoryCard story={session.story} />
 
       <NabuSurface className="p-5">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -200,99 +276,125 @@ function SessionView({
 }
 
 // ---------------------------------------------------------------------------
-// Meal overview — hero, tonight's line-up, order of attack
+// The recipe document — one calm surface the cook reads top to bottom:
+// hero, recipe identity (title, source, badges), a compact current-cook
+// context, then the single working ingredient list and the single method.
+// The title renders once; empty context rows render nothing at all.
 // ---------------------------------------------------------------------------
 
-function MealOverview({
-  session,
+function RecipeDocument({
   resolved,
   hero,
+  provenance,
+  provenanceUrl,
+  servingLabel,
+  timeLabel,
+  working,
   alsoCooking,
   tableSides,
-  timeLabel,
-  mealFlow,
-  wine,
+  drink,
+  notes,
 }: {
-  session: CookingSession;
   resolved: ResolvedMain;
   hero: SessionHero;
+  provenance: string | null;
+  provenanceUrl?: string;
+  servingLabel: string;
+  timeLabel: string | null;
+  working: WorkingRecipe;
   alsoCooking: string[];
   tableSides: string[];
-  timeLabel: string | null;
-  mealFlow: string[];
-  wine: string;
+  drink: string;
+  notes: string | null;
 }) {
-  const servingLabel = formatServings(session.servings.current);
-  const subtitle =
-    resolved.summary ??
-    (resolved.anchorIsSecondary ? null : provenanceLabel(session));
-  const overviewItems = [
-    {
-      label: "Also cooking",
-      value: alsoCooking.length ? alsoCooking.join(" + ") : "Main dish only",
-    },
-    {
-      label: "Table",
-      value: tableSides.length ? tableSides.join(" + ") : "No extra sides",
-    },
-    { label: "Drink", value: stripDrinkEmoji(wine).replace(/^Optional:\s*/i, "") },
-  ];
-  const attackPlan = mealFlow.slice(0, 4);
+  const contextRows = [
+    alsoCooking.length > 0
+      ? { label: "Also cooking", value: alsoCooking.join(" + ") }
+      : null,
+    tableSides.length > 0 ? { label: "Table", value: tableSides.join(" + ") } : null,
+    drink ? { label: "Drink", value: drink } : null,
+    notes ? { label: "Notes", value: notes } : null,
+  ].filter((row): row is { label: string; value: string } => row !== null);
 
   return (
     <NabuSurface className="overflow-hidden p-0">
       <SessionHeroArea hero={hero} />
 
-      <div className="space-y-5 p-5">
-        <div className="space-y-3">
-          <NabuKicker>Tonight</NabuKicker>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div className="min-w-0">
-              <h2 className="text-2xl font-semibold leading-tight tracking-[-0.02em] text-primary">
-                {resolved.title}
-              </h2>
-              {subtitle && (
-                <p className="mt-1 text-xs text-tertiary">{subtitle}</p>
-              )}
-            </div>
-            <div className="flex shrink-0 flex-wrap gap-2">
-              {servingLabel && <NabuBadge>{servingLabel}</NabuBadge>}
-              {timeLabel && <NabuBadge tone="blue">{timeLabel}</NabuBadge>}
-            </div>
+      <div className="p-5">
+        <NabuKicker>Tonight’s recipe</NabuKicker>
+        <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0">
+            <h2 className="text-2xl font-semibold leading-tight tracking-[-0.02em] text-primary">
+              {resolved.title}
+            </h2>
+            {resolved.summary && (
+              <p className="mt-1 text-sm text-tertiary">{resolved.summary}</p>
+            )}
+            {provenance && (
+              <p className="mt-1 text-xs text-tertiary">
+                {isLinkableUrl(provenanceUrl) ? (
+                  <a
+                    href={provenanceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline decoration-secondary underline-offset-2 hover:text-secondary"
+                  >
+                    {provenance}
+                  </a>
+                ) : (
+                  provenance
+                )}
+              </p>
+            )}
+          </div>
+          <div className="flex shrink-0 flex-wrap gap-2">
+            {servingLabel && <NabuBadge>{servingLabel}</NabuBadge>}
+            {timeLabel && <NabuBadge tone="blue">{timeLabel}</NabuBadge>}
+            {working.hasSessionChanges && (
+              <NabuBadge tone="amber">Adapted tonight</NabuBadge>
+            )}
           </div>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-3">
-          {overviewItems.map((item) => (
-            <div key={item.label} className="border-t border-secondary pt-3">
-              <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-quaternary">
-                {item.label}
-              </p>
-              <p className="mt-1 text-sm font-medium leading-snug text-primary">
-                {item.value}
-              </p>
-            </div>
-          ))}
-        </div>
+        {contextRows.length > 0 && (
+          <div className="mt-5 space-y-2 border-t border-secondary pt-4">
+            {contextRows.map((row) => (
+              <div key={row.label} className="flex gap-3">
+                <span className="w-24 shrink-0 pt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-quaternary">
+                  {row.label}
+                </span>
+                <span className="min-w-0 whitespace-pre-wrap text-sm leading-relaxed text-secondary">
+                  {row.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
 
-        {attackPlan.length > 0 && (
-          <div className="border-t border-secondary pt-4">
-            <NabuKicker>Order of attack</NabuKicker>
-            <ol className="mt-3 space-y-2.5">
-              {attackPlan.map((step, index) => (
-                <li key={index} className="grid grid-cols-[1.75rem_1fr] gap-3 text-sm leading-relaxed text-secondary">
-                  <span className="grid h-7 w-7 place-items-center rounded-full bg-secondary text-xs font-semibold text-quaternary">
-                    {index + 1}
-                  </span>
-                  <span>{step}</span>
-                </li>
-              ))}
-            </ol>
+        {working.ingredients.length > 0 && (
+          <div className="mt-5 border-t border-secondary pt-4">
+            <h3 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
+              Ingredients
+            </h3>
+            <IngredientList ingredients={working.ingredients} />
+          </div>
+        )}
+
+        {working.method.length > 0 && (
+          <div className="mt-5 border-t border-secondary pt-4">
+            <h3 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
+              Method
+            </h3>
+            <MethodSteps steps={working.method} />
           </div>
         )}
       </div>
     </NabuSurface>
   );
+}
+
+function isLinkableUrl(url: string | undefined): url is string {
+  return !!url && /^https?:\/\//i.test(url.trim());
 }
 
 // ---------------------------------------------------------------------------
@@ -364,16 +466,12 @@ function isOptimizableImageSrc(src: string): boolean {
 }
 
 // ---------------------------------------------------------------------------
-// Story card
+// Story card — reading for while things simmer, subordinate to the recipe.
+// The heading renders only when the story has its own title, so the main
+// dish title never appears twice on the page.
 // ---------------------------------------------------------------------------
 
-function StoryCard({
-  story,
-  title,
-}: {
-  story: CookingSession["story"];
-  title: string;
-}) {
+function StoryCard({ story }: { story: CookingSession["story"] }) {
   if (!story?.text) return null;
 
   return (
@@ -384,9 +482,11 @@ function StoryCard({
         </div>
         <div className="min-w-0">
           <NabuKicker>Story of the dish</NabuKicker>
-          <h2 className="mt-1 text-lg font-semibold tracking-tight text-primary">
-            {story.title || title}
-          </h2>
+          {story.title?.trim() && (
+            <h3 className="mt-1 text-lg font-semibold tracking-tight text-primary">
+              {story.title}
+            </h3>
+          )}
           <p className="mt-2.5 whitespace-pre-wrap text-sm leading-7 text-tertiary">
             {story.text}
           </p>
@@ -394,90 +494,6 @@ function StoryCard({
       </div>
     </NabuSurface>
   );
-}
-
-// ---------------------------------------------------------------------------
-// Main dish block — tonight's working recipe in neutral text
-// ---------------------------------------------------------------------------
-
-function MainDishBlock({
-  session,
-  resolved,
-  working,
-}: {
-  session: CookingSession;
-  resolved: ResolvedMain;
-  working: WorkingRecipe;
-}) {
-  const provenanceLine = working.isSessionVersion
-    ? resolved.anchorIsSecondary
-      ? "Tonight’s working recipe, updated live from the cooking chat."
-      : joinMeta("Tonight’s version", provenanceLabel(session))
-    : provenanceLabel(session);
-
-  return (
-    <NabuSurface className="space-y-5 p-5">
-      <div>
-        <NabuSectionHeader
-          eyebrow="Main"
-          title={resolved.title}
-          action={
-            working.isSessionVersion ? (
-              <NabuBadge tone="amber">Tonight’s version</NabuBadge>
-            ) : null
-          }
-        />
-        {provenanceLine && (
-          <p className="mt-1 text-xs text-tertiary">{provenanceLine}</p>
-        )}
-      </div>
-
-      {working.ingredients.length + working.ingredientAdjustments.length > 0 && (
-        <div className="border-t border-secondary pt-3">
-          <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
-            Ingredients
-          </h4>
-          <IngredientList
-            ingredients={working.ingredients}
-            tonightExtras={working.ingredientAdjustments}
-          />
-        </div>
-      )}
-
-      {working.method.length + working.methodAdjustments.length > 0 && (
-        <div className="border-t border-secondary pt-3">
-          <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
-            Method
-          </h4>
-          {working.methodAdjustments.length > 0 && (
-            <div className="mb-4">
-              <TonightGroupLabel />
-              <ul className="mt-1.5 space-y-1.5">
-                {working.methodAdjustments.map((note, i) => (
-                  <li key={i} className="text-sm leading-relaxed text-secondary">
-                    {note}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          <MethodSteps steps={working.method} />
-        </div>
-      )}
-    </NabuSurface>
-  );
-}
-
-function provenanceLabel(session: CookingSession): string {
-  const { source, author } = session.anchor.provenance;
-  if (author && source?.toLowerCase().includes(author.toLowerCase())) {
-    return source;
-  }
-  return [source, author].filter(Boolean).join(" · ");
-}
-
-function joinMeta(...parts: (string | null | undefined)[]): string {
-  return parts.filter(Boolean).join(" · ");
 }
 
 // ---------------------------------------------------------------------------
@@ -594,24 +610,9 @@ function componentRoleLabel(role: "starter" | "side" | "dessert"): string {
   }
 }
 
-function TonightGroupLabel() {
-  return (
-    <h5 className="text-xs font-medium text-tertiary">
-      <span aria-hidden className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-amber-400 align-middle" />
-      Tonight
-    </h5>
-  );
-}
-
-function IngredientList({
-  ingredients,
-  tonightExtras = [],
-}: {
-  ingredients: SessionIngredient[];
-  tonightExtras?: SessionIngredient[];
-}) {
+function IngredientList({ ingredients }: { ingredients: WorkingIngredient[] }) {
   const hasGroups = ingredients.some((i) => i.group);
-  const groups = new Map<string, SessionIngredient[]>();
+  const groups = new Map<string, WorkingIngredient[]>();
   for (const ing of ingredients) {
     const g = hasGroups ? (ing.group || "Other") : "";
     if (!groups.has(g)) groups.set(g, []);
@@ -620,17 +621,6 @@ function IngredientList({
 
   return (
     <div className="space-y-4">
-      {/* Session additions grouped once under a quiet "Tonight" label */}
-      {tonightExtras.length > 0 && (
-        <div>
-          <TonightGroupLabel />
-          <ul className="mt-1.5 space-y-1.5">
-            {tonightExtras.map((ing, i) => (
-              <IngredientRow key={`t-${i}`} ing={ing} />
-            ))}
-          </ul>
-        </div>
-      )}
       {Array.from(groups.entries()).map(([group, ings]) => (
         <div key={group || "_ungrouped"}>
           {group && (
@@ -649,10 +639,18 @@ function IngredientList({
   );
 }
 
-function IngredientRow({ ing }: { ing: SessionIngredient }) {
+function IngredientRow({ ing }: { ing: WorkingIngredient }) {
   return (
     <li className="flex justify-between gap-4 text-sm text-secondary">
-      <span>{ing.item}</span>
+      <span>
+        {ing.item}
+        {ing.replacedItem && (
+          <span className="text-xs text-quaternary">
+            {" "}
+            — instead of {replacedItemLabel(ing.replacedItem)}
+          </span>
+        )}
+      </span>
       <span className="shrink-0 text-right tabular-nums text-quaternary">
         {formatIngredientAmount(ing)}
       </span>
@@ -660,7 +658,13 @@ function IngredientRow({ ing }: { ing: SessionIngredient }) {
   );
 }
 
-function MethodSteps({ steps }: { steps: string[] }) {
+/** "cherry tomatoes, halved" → "cherry tomatoes": the hint names the
+ * ingredient that was swapped out, not its prep instructions. */
+function replacedItemLabel(item: string): string {
+  return item.split(",")[0].trim() || item.trim();
+}
+
+function MethodSteps({ steps }: { steps: (WorkingStep | string)[] }) {
   return (
     <ol className="space-y-4">
       {steps.map((step, i) => (
@@ -668,7 +672,9 @@ function MethodSteps({ steps }: { steps: string[] }) {
           <span className="shrink-0 pt-0.5 font-serif text-lg leading-none text-quaternary">
             {i + 1}
           </span>
-          <span className="leading-relaxed">{step}</span>
+          <span className="leading-relaxed">
+            {typeof step === "string" ? step : step.text}
+          </span>
         </li>
       ))}
     </ol>
@@ -714,49 +720,6 @@ function EmptyState({ date }: { date: string }) {
       }
     />
   );
-}
-
-// ---------------------------------------------------------------------------
-// Session notes
-// ---------------------------------------------------------------------------
-
-function SessionNotes({ notes }: { notes: string }) {
-  const useful = filterSessionNotes(notes);
-  if (!useful) return null;
-
-  return (
-    <div className="px-1">
-      <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-quaternary">
-        Tonight&apos;s notes
-      </p>
-      <p className="mt-1.5 whitespace-pre-wrap text-sm leading-relaxed text-tertiary">
-        {useful}
-      </p>
-    </div>
-  );
-}
-
-function filterSessionNotes(notes: string): string | null {
-  if (!notes?.trim()) return null;
-
-  const lines = notes
-    .split("\n")
-    .map((l) => l.trim())
-    .filter((l) => {
-      if (!l) return false;
-      // Drop drink-pairing lines
-      if (isDrinkServeWith(l)) return false;
-      // Drop leftover backstory prefixes
-      if (/^backstory:/i.test(l)) return false;
-      // Drop generic filler
-      if (/^(enjoy|bon app[eé]tit|have a (great|good)|happy cooking|good luck)/i.test(l)) return false;
-      // Drop very short noise (e.g. "ok", "done", "—")
-      if (l.replace(/[^a-zA-Z]/g, "").length < 6) return false;
-      return true;
-    });
-
-  const result = lines.join("\n").trim();
-  return result || null;
 }
 
 // ---------------------------------------------------------------------------

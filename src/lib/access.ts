@@ -39,6 +39,67 @@ export function isTrackerAllowedApiPath(pathname: string): boolean {
   );
 }
 
+/** Structural subset of the NextAuth session the access rules need. */
+export type PlannerWriteSession = { user?: { email?: string | null } | null } | null | undefined;
+
+export type PlannerWriteAccess =
+  | { allowed: true }
+  | { allowed: false; status: 401 | 403; error: "Unauthorized" | "Forbidden" };
+
+/**
+ * Canonical decision for planner/domain API mutations (meal plans, cook
+ * events, My Recipes, inspiration imports): a signed-in session is required,
+ * and tracker-only (shared iPad) accounts stay read-only family surfaces —
+ * they never write planner state.
+ */
+export function evaluatePlannerWriteAccess(session: PlannerWriteSession): PlannerWriteAccess {
+  if (!session?.user) {
+    return { allowed: false, status: 401, error: "Unauthorized" };
+  }
+  if (isTrackerOnlyEmail(session.user.email)) {
+    return { allowed: false, status: 403, error: "Forbidden" };
+  }
+  return { allowed: true };
+}
+
+/**
+ * API method/path combinations a trusted local runtime may perform with a
+ * bearer token instead of a browser session (kitchen DESIGN.md §"Phase 4C").
+ *
+ * This list exists because the policy has two enforcement points. The route
+ * guard (`lib/api-guards.ts`) decides "authorized session OR valid runtime
+ * token", but middleware runs first and used to 403 a tracker-only cookie
+ * before any bearer could be examined — so a Telegram runtime that happened to
+ * be on the shared-iPad account was refused despite carrying a valid token,
+ * contradicting the shared policy. Middleware now lets exactly these
+ * combinations through to the guard, which is the single place that decides.
+ *
+ * Nothing is weakened: the guard still returns 403 for a tracker-only session
+ * without a valid bearer, and every other tracker-restricted path keeps its
+ * middleware refusal.
+ *
+ * Kept in this module, not in `runtime-auth.ts`, because middleware runs on the
+ * Edge runtime and must not pull in `node:crypto`. Pure string matching only.
+ */
+const TRUSTED_RUNTIME_API_ROUTES: { methods: readonly string[]; pattern: RegExp }[] = [
+  { methods: ["POST"], pattern: /^\/api\/cooking\/session$/ },
+  { methods: ["POST"], pattern: /^\/api\/cooking\/session\/from-plan$/ },
+  // PATCH /api/cooking/session/:id — one path segment, and never `from-plan`,
+  // which is a POST-only creation route.
+  { methods: ["PATCH"], pattern: /^\/api\/cooking\/session\/(?!from-plan$)[^/]+$/ },
+];
+
+export function isTrustedRuntimeApiRoute(method: string, pathname: string): boolean {
+  const normalizedMethod = method.toUpperCase();
+  // A trailing slash addresses the same handler, so it must not change the
+  // decision in either direction.
+  const normalizedPath =
+    pathname.length > 1 && pathname.endsWith("/") ? pathname.replace(/\/+$/, "") : pathname;
+  return TRUSTED_RUNTIME_API_ROUTES.some(
+    (route) => route.methods.includes(normalizedMethod) && route.pattern.test(normalizedPath),
+  );
+}
+
 const ADMIN_ONLY_API_ROUTES: { method: string; path: string }[] = [
   { method: "PUT", path: "/api/family/config" },
   { method: "DELETE", path: "/api/family/completions" },

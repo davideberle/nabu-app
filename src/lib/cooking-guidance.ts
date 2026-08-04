@@ -1,27 +1,21 @@
-import {
-  isDrinkServeWith,
-  resolveMainDish,
-  resolveWorkingRecipe,
-  type CookingSession,
-  type SessionIngredient,
-} from "./cooking-session";
+// Display support for /cooking that is NOT the recipe: table-side extraction,
+// recipe-time formatting, and the wine pairing fallback.
+//
+// The former "order of attack" generator and its successor, the derived meal
+// timeline, are both deliberately gone. However filtered, a generated list of
+// timing bullets reads as a second instruction set competing with the working
+// method. The page has exactly one procedural sequence (live-cooking DESIGN.md
+// §3 rule 11); cross-component coordination is carried by the compact overview
+// rows and each side's own subordinate recipe block.
+
+// Explicit .ts extension: this module is loaded directly by `node --test`
+// (via cooking-guidance.test.ts), whose ESM resolver does not add extensions.
+import { isDrinkServeWith, type SessionIngredient } from "./cooking-session.ts";
 import type { Recipe } from "./recipes";
 
 export type CookingPairingSuggestion = {
   wine: string;
   nonAlcoholic: string;
-};
-
-export type CookingKnowledgeNote = {
-  term: string;
-  note: string;
-};
-
-export type CookingGuidance = {
-  dishStory?: string;
-  mealFlow: string[];
-  pairing: CookingPairingSuggestion;
-  knowledgeNotes: CookingKnowledgeNote[];
 };
 
 export type RecipeTime = {
@@ -30,288 +24,9 @@ export type RecipeTime = {
   total?: string | number;
 };
 
-type BuildGuidanceInput = {
-  session: CookingSession;
-  mainRecipe?: Recipe;
-  sideRecipes?: Recipe[];
-};
-
-export function buildCookingGuidance({
-  session,
-  mainRecipe,
-  sideRecipes = [],
-}: BuildGuidanceInput): CookingGuidance {
-  const main = resolveMainDish(session);
-  const working = resolveWorkingRecipe(
-    session,
-    mainRecipe
-      ? {
-          ingredients: mainRecipe.ingredients.map((ing) => ({
-            amount: ing.amount,
-            item: ing.item,
-            unit: ing.unit,
-            group: ing.group ?? null,
-          })),
-          method: mainRecipe.method,
-        }
-      : null
-  );
-  const mainIngredients = [...working.ingredients, ...working.ingredientAdjustments];
-  const mainMethod = [...working.method, ...working.methodAdjustments];
-  const tableSides = extractTableSides(mainIngredients, session.serveWith);
-  const profile = buildRecipeProfile(main.title, mainRecipe, mainIngredients, mainMethod, tableSides);
-
-  return {
-    dishStory: buildDishStory(mainRecipe),
-    mealFlow: buildMealFlow({
-      mainTitle: main.title,
-      mainIngredients,
-      mainMethod,
-      sideRecipes,
-      tableSides,
-      profile,
-      tips: mainRecipe?.tips,
-    }),
-    pairing: getPairingSuggestion(profile),
-    knowledgeNotes: getKnowledgeNotes(profile),
-  };
-}
-
-export function buildMealFlow({
-  mainTitle,
-  mainIngredients,
-  mainMethod,
-  sideRecipes,
-  tableSides,
-  profile,
-  tips,
-}: {
-  mainTitle: string;
-  mainIngredients: SessionIngredient[];
-  mainMethod: string[];
-  sideRecipes: Recipe[];
-  tableSides: string[];
-  profile?: RecipeProfile;
-  tips?: string;
-}): string[] {
-  const p = profile ?? buildRecipeProfile(mainTitle, undefined, mainIngredients, mainMethod, tableSides);
-  const cats = categorizeIngredients(mainIngredients);
-  const steps: string[] = [];
-
-  // Detect serving suggestion (e.g. "Serve with jasmine rice") from method/tips
-  const servingSuggestion = extractServingSuggestion(mainMethod, tips);
-
-  // Side categorization — include extracted serving suggestion as grain side if applicable
-  const grainSides = [...tableSides.filter(isGrainOrStarchSide)];
-  if (!grainSides.length && servingSuggestion && isGrainOrStarchSide(servingSuggestion)) {
-    grainSides.push(servingSuggestion);
-  }
-  const freshSides = tableSides.filter(isFreshFinishSide);
-  const warmAtEndSides = tableSides.filter(isWarmAtEndSide);
-  const handledSides = new Set([...tableSides.filter(isGrainOrStarchSide), ...freshSides, ...warmAtEndSides]);
-  const otherSides = tableSides.filter((side) => !handledSides.has(side));
-
-  // === STEP 1: Prep ===
-  if (p.hasSofrito) {
-    steps.push(
-      "Make or measure the sofrito first: blend/chop the aromatics if needed, then have it ready before the pot goes on."
-    );
-  } else if (p.methodStyle === "marinate") {
-    steps.push("Start the marinade or resting step first — that's the longest wait.");
-  } else if (p.methodStyle === "bake" || p.methodStyle === "roast") {
-    const prepItems = [...cats.aromatics, ...cats.proteins].slice(0, 3);
-    steps.push(
-      prepItems.length
-        ? `Preheat the oven. Prep ${formatList(prepItems).toLowerCase()} while it comes to temperature.`
-        : "Preheat the oven, then prep ingredients while it comes to temperature."
-    );
-  } else if (p.methodStyle === "quick-stir-fry") {
-    const allPrep = [...cats.aromatics, ...cats.proteins, ...cats.spices].slice(0, 4);
-    steps.push(
-      allPrep.length
-        ? `Prep everything before the wok goes on: ${formatList(allPrep).toLowerCase()}.`
-        : "Prep every ingredient and have sauces measured before heating the pan — it moves fast."
-    );
-  } else if (p.methodStyle === "salad") {
-    steps.push("Make the dressing first, then prep any cooked or crunchy elements. Save delicate leaves for last.");
-  } else {
-    // simmer / general — build a concrete prep step from ingredients
-    const prepParts: string[] = [];
-    if (cats.aromatics.length) prepParts.push(`prep ${formatList(cats.aromatics).toLowerCase()}`);
-    if (cats.spices.length) {
-      const shown = cats.spices.slice(0, 3);
-      const ellipsis = cats.spices.length > 3 ? " …" : "";
-      prepParts.push(`measure out the spices (${formatList(shown).toLowerCase()}${ellipsis})`);
-    }
-    if (prepParts.length) {
-      const sentence = prepParts.join(" and ");
-      steps.push(sentence.charAt(0).toUpperCase() + sentence.slice(1) + ".");
-    } else {
-      steps.push(`Gather and prep the ${mainTitle} ingredients, starting with anything that takes longest.`);
-    }
-  }
-
-  // === STEP 2: Sides ===
-  if (grainSides.length > 0) {
-    steps.push(
-      `Start ${formatList(grainSides).toLowerCase()} now so it's ready when the main is done.`
-    );
-  }
-
-  if (sideRecipes.length > 0) {
-    steps.push(
-      `Prep ${formatList(sideRecipes.map((side) => side.name))} before the final cook so the main dish stays the focus.`
-    );
-  }
-
-  // === STEP 3–4: Main cooking ===
-  if (p.hasSofrito) {
-    steps.push(
-      "Start the pot by heating oil, then sauté sofrito and aromatics until fragrant before adding liquid or longer-cooking ingredients."
-    );
-  }
-
-  if (p.methodStyle === "simmer") {
-    // Build-the-base step with concrete ingredients
-    const baseParts: string[] = [];
-    if (cats.aromatics.length) baseParts.push(`cook ${formatList(cats.aromatics).toLowerCase()} until soft, add spices`);
-    if (cats.sauceBase.length) baseParts.push(`then add ${formatList(cats.sauceBase).toLowerCase()} and let it simmer`);
-    if (baseParts.length) {
-      steps.push(`Build the base: ${baseParts.join(", ")}.`);
-    } else {
-      steps.push("Build the sauce base and let it simmer until the flavors come together.");
-    }
-
-    // Protein + quick-cook step
-    if (cats.proteins.length) {
-      let proteinStep = `Add ${formatList(cats.proteins).toLowerCase()} to the simmering sauce and cook gently.`;
-      if (cats.quickCook.length) {
-        proteinStep += ` Drop in ${formatList(cats.quickCook).toLowerCase()} in the last few minutes.`;
-      }
-      steps.push(proteinStep);
-    } else if (cats.quickCook.length) {
-      steps.push(`Add ${formatList(cats.quickCook).toLowerCase()} near the end — they only need a few minutes.`);
-    }
-  } else if (p.methodStyle === "roast" || p.methodStyle === "bake") {
-    steps.push(`Get the ${mainTitle} in the oven, then use the time to prep sides and clear up.`);
-  } else if (p.methodStyle === "quick-stir-fry") {
-    steps.push(`Cook the ${mainTitle} hot and fast — do not walk away from the pan.`);
-    if (cats.quickCook.length) {
-      steps.push(`Toss in ${formatList(cats.quickCook).toLowerCase()} at the very end.`);
-    }
-  } else if (p.methodStyle === "salad") {
-    steps.push(`Assemble the ${mainTitle} close to serving so everything stays crisp.`);
-  } else {
-    // general
-    if (cats.proteins.length && cats.aromatics.length) {
-      steps.push(`Cook the ${mainTitle}: start with ${formatList(cats.aromatics).toLowerCase()}, then add ${formatList(cats.proteins).toLowerCase()}.`);
-    } else {
-      steps.push(`Cook the ${mainTitle}, keeping quick-cooking or delicate ingredients for the end.`);
-    }
-    if (cats.quickCook.length) {
-      steps.push(`Add ${formatList(cats.quickCook).toLowerCase()} near the end — they only need a few minutes.`);
-    }
-  }
-
-  // === Side timing ===
-  if (warmAtEndSides.length > 0) {
-    steps.push(`Warm ${formatList(warmAtEndSides).toLowerCase()} near serving time.`);
-  }
-  if (freshSides.length > 0) {
-    steps.push(`Prepare ${formatList(freshSides).toLowerCase()} at the end so it stays fresh.`);
-  }
-  if (otherSides.length > 0) {
-    steps.push(`Bring ${formatList(otherSides).toLowerCase()} to the table.`);
-  }
-
-  // === Finish ===
-  if (p.needsAcidFinish) {
-    if (cats.acidFinish.length) {
-      steps.push(`Finish with ${formatList(cats.acidFinish).toLowerCase()}, taste for salt, and serve.`);
-    } else {
-      steps.push("Taste at the end — add a squeeze of lemon or lime if it feels heavy or flat.");
-    }
-  } else {
-    const servePart = servingSuggestion && !grainSides.length ? ` with ${servingSuggestion}` : "";
-    steps.push(`Taste, adjust seasoning, and serve${servePart}.`);
-  }
-
-  return steps;
-}
-
-function buildDishStory(recipe?: Recipe): string | undefined {
-  const intro = recipe?.introduction ?? recipe?.intro;
-  if (intro && typeof intro === "string" && intro.trim()) return intro.trim();
-
-  return undefined;
-}
-
-type IngredientGroups = {
-  aromatics: string[];
-  spices: string[];
-  proteins: string[];
-  quickCook: string[];
-  acidFinish: string[];
-  sauceBase: string[];
-};
-
-function categorizeIngredients(ingredients: SessionIngredient[]): IngredientGroups {
-  const groups: IngredientGroups = {
-    aromatics: [],
-    spices: [],
-    proteins: [],
-    quickCook: [],
-    acidFinish: [],
-    sauceBase: [],
-  };
-
-  for (const ing of ingredients) {
-    const raw = ing.item.toLowerCase();
-    if (/^(vegetable oil|olive oil|oil|salt|water|butter|cooking spray|sugar|flour)\b/.test(raw)) continue;
-
-    const label = ingredientLabel(ing);
-
-    if (/\b(onion|shallot|leek|garlic|ginger|lemongrass|celery)\b/.test(raw) && !/powder/.test(raw)) {
-      groups.aromatics.push(label);
-    } else if (
-      /\b(cumin|turmeric|coriander|cardamom|curry|paprika|cinnamon|clove|nutmeg|cayenne|garam masala|mustard seed|fenugreek|saffron|star anise|five.spice|allspice|jalape[nñ]o|chili(?!\s*paste)|chilli(?!\s*paste)|pepper flakes|red pepper)\b/.test(
-        raw
-      )
-    ) {
-      groups.spices.push(label);
-    } else if (
-      /\b(cod|salmon|chicken|beef|lamb|pork|shrimp|prawn|tofu|tempeh|fish|turkey|veal|duck|seitan|halloumi|paneer|mussels?|clams?|squid|octopus)\b/.test(
-        raw
-      )
-    ) {
-      groups.proteins.push(label);
-    } else if (/\b(frozen peas|frozen corn|spinach|baby spinach|bean sprout|snow pea|sugar snap|bok choy|watercress)\b/.test(raw)) {
-      groups.quickCook.push(label);
-    } else if (/\b(lemon juice|lime juice|vinegar|tamarind|verjuice)\b/.test(raw)) {
-      groups.acidFinish.push(label);
-    } else if (/\b(tomato(?:es)?|passata|coconut milk|coconut cream|broth|stock)\b/.test(raw)) {
-      groups.sauceBase.push(label);
-    }
-  }
-
-  return groups;
-}
-
-function ingredientLabel(ing: SessionIngredient): string {
-  return ing.item
-    .replace(/^(medium|large|small|fresh|whole|dried|chopped|diced|minced|sliced|crushed|ground|grated)\s+/i, "")
-    .replace(/,\s*(chopped|diced|minced|sliced|seeded|finely|roughly|thinly|cut|peeled|trimmed).*$/i, "")
-    .replace(/\s+fillets?\b/i, "")
-    .replace(/\s+with\s+(their\s+)?juice\b/i, "")
-    .trim();
-}
-
-function extractServingSuggestion(method: string[], tips?: string): string | null {
-  const text = [...method, tips ?? ""].join(" ");
-  const match = text.match(/\b[Ss]erve\s+with\s+([^.,]+)/);
-  if (match) return match[1].trim();
-  return null;
-}
+// ---------------------------------------------------------------------------
+// Table sides
+// ---------------------------------------------------------------------------
 
 export function extractTableSides(
   ingredients: SessionIngredient[],
@@ -331,6 +46,10 @@ export function extractTableSides(
   return uniqueByNormalized(sides.map(cleanSideLabel).filter(Boolean));
 }
 
+// ---------------------------------------------------------------------------
+// Recipe time
+// ---------------------------------------------------------------------------
+
 export function formatRecipeTime(time?: RecipeTime): string | null {
   if (!time) return null;
   const prep = minutesFromTimeValue(time.prep);
@@ -344,6 +63,29 @@ export function formatRecipeTime(time?: RecipeTime): string | null {
   return `${formatDuration(total)} total`;
 }
 
+// ---------------------------------------------------------------------------
+// Wine pairing fallback (used only when the session has no coachCards.wine)
+// ---------------------------------------------------------------------------
+
+export type PairingInput = {
+  mainTitle: string;
+  mainRecipe?: Recipe;
+  ingredients: SessionIngredient[];
+  method: string[];
+  tableSides: string[];
+};
+
+export function buildPairingSuggestion({
+  mainTitle,
+  mainRecipe,
+  ingredients,
+  method,
+  tableSides,
+}: PairingInput): CookingPairingSuggestion {
+  const profile = buildRecipeProfile(mainTitle, mainRecipe, ingredients, method, tableSides);
+  return getPairingSuggestion(profile);
+}
+
 type MethodStyle = "simmer" | "roast" | "bake" | "quick-stir-fry" | "salad" | "marinate" | "general";
 
 type RecipeProfile = {
@@ -353,13 +95,11 @@ type RecipeProfile = {
   methodStyle: MethodStyle;
   weight: "light" | "medium" | "rich";
   heat: "none" | "mild" | "spicy";
-  hasSofrito: boolean;
   hasTomato: boolean;
   hasCoconut: boolean;
   hasCreamOrCheese: boolean;
   hasCitrusOrVinegar: boolean;
   hasHerbs: boolean;
-  needsAcidFinish: boolean;
 };
 
 function buildRecipeProfile(
@@ -404,7 +144,6 @@ function buildRecipeProfile(
     hasCitrusOrVinegar || hasHerbs,
   ].filter(Boolean).length;
   const weight = richSignals >= 2 ? "rich" : lightSignals >= 2 ? "light" : "medium";
-  const needsAcidFinish = (weight === "rich" || hasCoconut || hasTomato || protein === "legume") && !hasCitrusOrVinegar;
 
   return {
     text,
@@ -413,131 +152,12 @@ function buildRecipeProfile(
     methodStyle,
     weight,
     heat,
-    hasSofrito: /\bsofrito|sofregit|soffritto\b/.test(text),
     hasTomato,
     hasCoconut,
     hasCreamOrCheese,
     hasCitrusOrVinegar,
     hasHerbs,
-    needsAcidFinish,
   };
-}
-
-function getKnowledgeNotes(profile: RecipeProfile): CookingKnowledgeNote[] {
-  const glossary: { term: string; pattern: RegExp; note: string }[] = [
-    {
-      term: "Sofrito",
-      pattern: /\bsofrito\b/i,
-      note: "A cooked aromatic base, usually blended or finely chopped onion/garlic/pepper/herbs. Treat it like the flavor foundation: sauté it in oil until fragrant before adding liquid.",
-    },
-    {
-      term: "Soffritto / soffrito",
-      pattern: /\bsoffritto\b/i,
-      note: "Italian aromatic base, usually onion, carrot and celery slowly cooked in fat until sweet and soft — not browned hard.",
-    },
-    {
-      term: "Mirepoix",
-      pattern: /\bmirepoix\b/i,
-      note: "French aromatic base of onion, carrot and celery. Cook it gently first so it sweetens and flavors the whole dish.",
-    },
-    {
-      term: "Deglaze",
-      pattern: /\bdeglaz(e|ing)\b/i,
-      note: "Add liquid to a hot pan and scrape up the browned bits stuck to the bottom; those bits are concentrated flavor.",
-    },
-    {
-      term: "Reduce",
-      pattern: /\breduc(e|ed|ing|tion)\b/i,
-      note: "Simmer liquid so water evaporates and the flavor thickens/concentrates. Stop before it gets too salty or sticky.",
-    },
-    {
-      term: "Bloom spices",
-      pattern: /\bbloom(?:ing)?\b.*\bspices?\b|\bspices?\b.*\bbloom(?:ing)?\b/i,
-      note: "Briefly warm spices in oil or butter before adding liquid; this wakes up fat-soluble aromas. Keep the heat moderate so they do not burn.",
-    },
-    {
-      term: "Temper eggs",
-      pattern: /\btemper(?:ed|ing)?\b/i,
-      note: "Slowly whisk hot liquid into eggs or dairy before adding them back to the pot, so they warm up without scrambling or splitting.",
-    },
-    {
-      term: "Fold in",
-      pattern: /\bfold in\b/i,
-      note: "Gently lift and turn the mixture with a spatula instead of stirring hard, so airy or delicate ingredients keep their texture.",
-    },
-    {
-      term: "Bain-marie",
-      pattern: /\bbain[- ]marie\b|\bwater bath\b/i,
-      note: "A hot-water bath that surrounds a dish with gentle, even heat — common for custards and cheesecakes.",
-    },
-    {
-      term: "Confit",
-      pattern: /\bconfit\b/i,
-      note: "Slow cooking in fat or oil at low heat until tender. It should be gentle, not a hard fry.",
-    },
-    {
-      term: "Blanch and shock",
-      pattern: /\bblanch\b|\bshock\b/i,
-      note: "Briefly boil, then cool fast in cold/ice water. This keeps vegetables bright and stops the cooking.",
-    },
-    {
-      term: "Julienne",
-      pattern: /\bjulienne\b/i,
-      note: "Cut into thin matchsticks. Uniform size matters more than perfection.",
-    },
-    {
-      term: "Chiffonade",
-      pattern: /\bchiffonade\b/i,
-      note: "Stack leafy herbs/greens, roll them up, then slice thinly into ribbons.",
-    },
-    {
-      term: "Roux",
-      pattern: /\broux\b/i,
-      note: "Cook flour and fat together before adding liquid; it thickens sauces and removes raw flour taste.",
-    },
-    {
-      term: "Slurry",
-      pattern: /\bslurry\b/i,
-      note: "Starch mixed with cold liquid before it goes into hot sauce/soup. Add gradually and stir so it thickens smoothly.",
-    },
-    {
-      term: "Emulsify",
-      pattern: /\bemulsif(?:y|ied|ying)\b|\bemulsion\b/i,
-      note: "Force fat and water-based liquid to combine — usually by whisking/blending while adding oil slowly.",
-    },
-    {
-      term: "Mise en place",
-      pattern: /\bmise en place\b/i,
-      note: "Have ingredients measured, chopped and ready before cooking. Especially useful for fast recipes where the pan will not wait.",
-    },
-    {
-      term: "Adobo",
-      pattern: /\badobo\b/i,
-      note: "A seasoned spice blend or marinade; in Puerto Rican-style cooking it often brings garlic, oregano, pepper and salt. Taste before adding more salt.",
-    },
-    {
-      term: "Culantro",
-      pattern: /\bculantro\b/i,
-      note: "A stronger, long-leaf relative of cilantro/coriander. Use it like a bold herb; if missing, cilantro is the closest easy substitute.",
-    },
-    {
-      term: "Yuca",
-      pattern: /\byuca\b|\bcassava\b/i,
-      note: "A starchy root, more fibrous than potato. It needs to cook until fully tender; remove any tough woody core if present.",
-    },
-  ];
-
-  const notes: CookingKnowledgeNote[] = [];
-  const seen = new Set<string>();
-  for (const item of glossary) {
-    if (!item.pattern.test(profile.text)) continue;
-    const key = item.term.toLowerCase();
-    if (seen.has(key)) continue;
-    seen.add(key);
-    notes.push({ term: item.term, note: item.note });
-    if (notes.length >= 4) break;
-  }
-  return notes;
 }
 
 function getPairingSuggestion(profile: RecipeProfile): CookingPairingSuggestion {
@@ -656,17 +276,9 @@ function normalizeCuisine(cuisine: Recipe["cuisine"] | undefined): string {
   return cuisine ?? "";
 }
 
-function isGrainOrStarchSide(side: string): boolean {
-  return /\b(rice|quinoa|couscous|bulgur|farro|barley|noodle|pasta|potato|polenta|millet)\b/i.test(side);
-}
-
-function isFreshFinishSide(side: string): boolean {
-  return /\b(avocado|salad|slaw|herb|herbs|lime|lemon|salsa|pickle|pickled|yogurt|raita|chutney|cucumber|tomato)\b/i.test(side);
-}
-
-function isWarmAtEndSide(side: string): boolean {
-  return /\b(bread|naan|pita|tortilla|flatbread|rolls?)\b/i.test(side);
-}
+// ---------------------------------------------------------------------------
+// Shared formatting
+// ---------------------------------------------------------------------------
 
 function cleanSideLabel(raw: string): string {
   return raw
@@ -686,13 +298,6 @@ function uniqueByNormalized(items: string[]): string[] {
     result.push(item);
   }
   return result;
-}
-
-export function formatList(items: string[]): string {
-  if (items.length === 0) return "";
-  if (items.length === 1) return items[0];
-  if (items.length === 2) return `${items[0]} and ${items[1]}`;
-  return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
 }
 
 function minutesFromTimeValue(value?: string | number): number {

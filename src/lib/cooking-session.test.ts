@@ -5,11 +5,16 @@ import { deepStrictEqual, equal, notEqual, ok } from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
   activeComponents,
+  anchorProvenanceLabel,
   applyPatch,
+  composeWorkingIngredients,
+  duplicatesWorkingRecipe,
   firstServingsClause,
+  isChatOriginText,
   isCompleteOverride,
   mergeRelatedRecipes,
   normalizeSession,
+  recipeProvenanceLabel,
   resolveMainDish,
   resolveSessionCoherence,
   resolveSessionHero,
@@ -19,7 +24,9 @@ import {
   setAsideComponents,
   syncSessionWithPlan,
   validatePatch,
+  validateSessionBody,
   visibleServeWith,
+  visibleSessionNotes,
   type CookingSession,
   type PlanSyncData,
   type SessionIngredient,
@@ -212,14 +219,72 @@ describe("resolveSessionHero", () => {
   });
 });
 
+// The 2026-08-03 incident fixture: a real external anchor (The Pasta Table)
+// with the modest intended session changes — roasted peppers instead of the
+// cherry tomatoes, lemon for brightness, salmon cooked separately on top.
+function farfalleSession(overrides: Partial<CookingSession> = {}): CookingSession {
+  return makeSession({
+    id: "cook_2026-08-03_farfalle",
+    date: "2026-08-03",
+    anchor: {
+      type: "external-recipe",
+      title: "Slow Roasted Tomato & Mascarpone Farfalle",
+      provenance: {
+        source: "The Pasta Table",
+        url: "https://www.thepastatable.com/post/slow-roasted-tomato-mascarpone-farfalle",
+        author: "The Pasta Table",
+      },
+    },
+    relatedRecipes: [],
+    serveWith: [],
+    ingredients: {
+      base: [
+        { amount: "1/2", item: "farfalle", unit: "lb" },
+        { amount: "2", item: "cherry tomatoes, halved", unit: "pints" },
+        { amount: "1/4", item: "extra virgin olive oil", unit: "cup" },
+        { amount: "1/2", item: "shallot, chopped" },
+        { amount: "8", item: "mascarpone", unit: "oz" },
+      ],
+      session: [
+        {
+          amount: "3",
+          item: "already-roasted peppers, sliced into ribbons",
+          replaces: "cherry tomatoes",
+        },
+        { amount: "1–2", item: "lemon juice", unit: "tsp" },
+      ],
+    },
+    method: {
+      base: [
+        "Roast the tomatoes low and slow until soft and semi dry.",
+        "Cook the pasta until al dente and reserve pasta water.",
+        "Sauté the shallot and garlic, then stir in the mascarpone.",
+        "Toss the pasta with the sauce, the tomatoes and basil, and serve.",
+      ],
+      // The peppers replace the tomatoes, so base steps 1 and 4 are no longer
+      // instructions this cook can follow. A truthful session therefore writes
+      // tonight's method out in full instead of appending to a method that
+      // contradicts its own ingredient list — see live-cooking DESIGN.md §3
+      // rule 11 and the 2026-08-03 incident.
+      sessionMode: "override",
+      session: [
+        "Cook the farfalle until al dente and reserve pasta water.",
+        "Season and cook the salmon steaks separately, then rest them.",
+        "Sauté the shallot and garlic, warm the roasted peppers through, then stir in the mascarpone with pasta water.",
+        "Toss with the pasta, squeeze the lemon over, and serve with the salmon on top.",
+      ],
+    },
+    ...overrides,
+  });
+}
+
 describe("resolveWorkingRecipe", () => {
   it("renders session lists as the working recipe when the main is a different dish", () => {
     const working = resolveWorkingRecipe(makeSession({ main: KOREAN_MAIN }));
     equal(working.isSessionVersion, true);
+    equal(working.hasSessionChanges, true);
     equal(working.ingredients[0].item, "salmon fillets");
     equal(working.method.length, 4);
-    deepStrictEqual(working.ingredientAdjustments, []);
-    deepStrictEqual(working.methodAdjustments, []);
   });
 
   it("uses the stored main recipe when an explicit main has no session lists", () => {
@@ -233,8 +298,9 @@ describe("resolveWorkingRecipe", () => {
       method: ["Roast the salmon."],
     });
     equal(working.isSessionVersion, false);
+    equal(working.hasSessionChanges, false);
     equal(working.ingredients[0].item, "salmon fillets");
-    deepStrictEqual(working.method, ["Roast the salmon."]);
+    deepStrictEqual(working.method.map((step) => step.text), ["Roast the salmon."]);
   });
 
   it("keeps complete session overrides as the working recipe for the anchor main", () => {
@@ -243,18 +309,210 @@ describe("resolveWorkingRecipe", () => {
     equal(working.ingredients[0].item, "salmon fillets");
   });
 
-  it("keeps short session lists as adjustments alongside the base recipe", () => {
-    const session = makeSession({
+  it("integrates a minor substitution into one list and one method — no detached correction lists", () => {
+    const working = resolveWorkingRecipe(farfalleSession());
+    equal(working.hasSessionChanges, true);
+
+    // One ingredient list: the peppers stand where the tomatoes stood, the
+    // tomatoes are gone, and the lemon is appended. Nothing to merge mentally.
+    const items = working.ingredients.map((row) => row.item);
+    deepStrictEqual(items, [
+      "farfalle",
+      "already-roasted peppers, sliced into ribbons",
+      "extra virgin olive oil",
+      "shallot, chopped",
+      "mascarpone",
+      "lemon juice",
+    ]);
+    equal(working.ingredients[1].replacedItem, "cherry tomatoes, halved");
+    equal(working.ingredients[1].tonight, true);
+    equal(working.ingredients[5].tonight, true);
+    equal(working.ingredients[5].replacedItem, undefined);
+
+    // One procedural sequence — tonight's complete method, not the anchor
+    // method with a step bolted on.
+    deepStrictEqual(
+      working.method.map((step) => step.text),
+      [
+        "Cook the farfalle until al dente and reserve pasta water.",
+        "Season and cook the salmon steaks separately, then rest them.",
+        "Sauté the shallot and garlic, warm the roasted peppers through, then stir in the mascarpone with pasta water.",
+        "Toss with the pasta, squeeze the lemon over, and serve with the salmon on top.",
+      ]
+    );
+  });
+
+  // The 2026-08-03 incident, pinned in both directions.
+  it("never instructs the cook to use an ingredient the substitution removed", () => {
+    const working = resolveWorkingRecipe(farfalleSession());
+    const method = working.method.map((step) => step.text).join(" ").toLowerCase();
+    const items = working.ingredients.map((row) => row.item.toLowerCase());
+
+    // The tomatoes are gone from the list, so nothing may tell the cook to
+    // roast them or toss them in.
+    ok(!items.some((item) => item.includes("cherry tomatoes")));
+    ok(!/roast the tomatoes/.test(method), `method still roasts tomatoes: ${method}`);
+    ok(!/\btomatoes\b/.test(method), `method still uses tomatoes: ${method}`);
+    // And what IS in the list is what the method cooks.
+    ok(/peppers/.test(method));
+    ok(/salmon/.test(method));
+    ok(/lemon/.test(method));
+  });
+
+  it("appends session steps only while the base instructions still hold", () => {
+    // No ingredient change invalidates the base method here, so an extra step
+    // continues the anchor sequence rather than replacing it.
+    const session = farfalleSession({
       ingredients: {
-        base: makeSession().ingredients.base,
-        session: [ing("smoked paprika", "1")],
+        base: farfalleSession().ingredients.base,
+        session: [{ amount: "1–2", item: "lemon juice", unit: "tsp" }],
       },
-      method: { base: makeSession().method.base, session: [] },
+      method: {
+        base: farfalleSession().method.base,
+        sessionMode: "append",
+        session: ["Squeeze the lemon over just before serving."],
+      },
     });
     const working = resolveWorkingRecipe(session);
-    equal(working.isSessionVersion, false);
-    equal(working.ingredients[0].item, "Asian aubergines");
-    equal(working.ingredientAdjustments[0].item, "smoked paprika");
+    equal(working.method.length, 5);
+    deepStrictEqual(working.method.slice(0, 4).map((step) => step.text), session.method.base);
+    equal(working.method[4].text, "Squeeze the lemon over just before serving.");
+    equal(working.method[4].tonight, true);
+    equal(working.method[3].tonight, undefined);
+  });
+
+  it("never mutates the anchor's verbatim base lists", () => {
+    const session = farfalleSession();
+    resolveWorkingRecipe(session);
+    equal(session.ingredients.base[1].item, "cherry tomatoes, halved");
+    equal(session.ingredients.base.length, 5);
+    equal(session.method.base.length, 4);
+  });
+});
+
+describe("composeWorkingIngredients", () => {
+  const base: SessionIngredient[] = [
+    { amount: "2", item: "cherry tomatoes, halved", unit: "pints" },
+    { amount: "1", item: "tomato paste", unit: "tbsp" },
+    { amount: "8", item: "mascarpone", unit: "oz", group: "Sauce" },
+  ];
+
+  it("substitutes the named base row in place, not the lookalike", () => {
+    const result = composeWorkingIngredients(base, [
+      { amount: "3", item: "roasted peppers", replaces: "cherry tomatoes" },
+    ]);
+    deepStrictEqual(
+      result.map((row) => row.item),
+      ["roasted peppers", "tomato paste", "mascarpone"]
+    );
+    equal(result[0].replacedItem, "cherry tomatoes, halved");
+  });
+
+  it("re-quantifies a same-named item in place without a replaced hint", () => {
+    const result = composeWorkingIngredients(base, [
+      { amount: "150", item: "mascarpone", unit: "g" },
+    ]);
+    equal(result.length, 3);
+    equal(result[2].amount, "150");
+    equal(result[2].tonight, true);
+    equal(result[2].replacedItem, undefined);
+    // The substituted row stays in its base group.
+    equal(result[2].group, "Sauce");
+  });
+
+  it("appends unmatched entries as additions and drops blank noise", () => {
+    const result = composeWorkingIngredients(base, [
+      { amount: "1", item: "lemon" },
+      { amount: "", item: "   " },
+    ]);
+    equal(result.length, 4);
+    equal(result[3].item, "lemon");
+    equal(result[3].tonight, true);
+  });
+
+  it("removes a base row for an omission (blank item + replaces)", () => {
+    const result = composeWorkingIngredients(base, [
+      { amount: "", item: "", replaces: "tomato paste" },
+    ]);
+    deepStrictEqual(
+      result.map((row) => row.item),
+      ["cherry tomatoes, halved", "mascarpone"]
+    );
+  });
+
+  it("an omission of something absent is a no-op", () => {
+    const result = composeWorkingIngredients(base, [
+      { amount: "", item: "", replaces: "saffron" },
+    ]);
+    equal(result.length, 3);
+  });
+
+  // Regression: fuzzy containment is a reading of an explicit `replaces`, never
+  // of a plain addition. Without this, adding salt deleted the salted butter
+  // and adding lemon deleted the lemon zest — an ingredient the cook still
+  // needs silently vanished from the only list they can see.
+  it("an addition without `replaces` never fuzzy-replaces a base row", () => {
+    const pantry: SessionIngredient[] = [
+      { amount: "100", item: "salted butter", unit: "g" },
+      { amount: "1", item: "lemon zest" },
+      { amount: "200", item: "flour", unit: "g" },
+    ];
+
+    const withSalt = composeWorkingIngredients(pantry, [{ amount: "1", item: "salt", unit: "tsp" }]);
+    deepStrictEqual(
+      withSalt.map((row) => row.item),
+      ["salted butter", "lemon zest", "flour", "salt"]
+    );
+    equal(withSalt[3].tonight, true);
+    equal(withSalt[3].replacedItem, undefined);
+
+    const withLemon = composeWorkingIngredients(pantry, [{ amount: "1", item: "lemon" }]);
+    deepStrictEqual(
+      withLemon.map((row) => row.item),
+      ["salted butter", "lemon zest", "flour", "lemon"]
+    );
+    equal(withLemon[0].tonight, undefined);
+    equal(withLemon[1].tonight, undefined);
+  });
+
+  it("an explicit `replaces` still matches by containment", () => {
+    const pantry: SessionIngredient[] = [
+      { amount: "100", item: "salted butter", unit: "g" },
+      { amount: "1", item: "lemon zest" },
+    ];
+    const result = composeWorkingIngredients(pantry, [
+      { amount: "100", item: "olive oil", unit: "ml", replaces: "butter" },
+    ]);
+    deepStrictEqual(result.map((row) => row.item), ["olive oil", "lemon zest"]);
+    equal(result[0].replacedItem, "salted butter");
+  });
+
+  it("an addition may still re-quantify the same ingredient by exact or core name", () => {
+    const byExact = composeWorkingIngredients(base, [
+      { amount: "150", item: "mascarpone", unit: "g" },
+    ]);
+    equal(byExact.length, 3);
+    equal(byExact[2].amount, "150");
+
+    const byCore = composeWorkingIngredients(base, [
+      { amount: "3", item: "cherry tomatoes, quartered", unit: "pints" },
+    ]);
+    equal(byCore.length, 3);
+    equal(byCore[0].amount, "3");
+    equal(byCore[0].item, "cherry tomatoes, quartered");
+  });
+
+  it("two session entries never claim the same base row", () => {
+    const result = composeWorkingIngredients(base, [
+      { amount: "3", item: "roasted peppers", replaces: "tomatoes" },
+      { amount: "1", item: "sun-dried tomatoes", replaces: "tomatoes" },
+    ]);
+    // First entry claims the cherry tomatoes; the second matches no free row
+    // by core name — "tomato paste" is a different core — so it appends.
+    deepStrictEqual(
+      result.map((row) => row.item),
+      ["roasted peppers", "tomato paste", "mascarpone", "sun-dried tomatoes"]
+    );
   });
 });
 
@@ -265,10 +523,187 @@ describe("isCompleteOverride", () => {
   it("any session list overrides an empty base", () => {
     equal(isCompleteOverride([1], []), true);
   });
-  it("needs at least 3 items covering half the base", () => {
+  it("needs at least 3 items covering half the base when no mode is set", () => {
     equal(isCompleteOverride([1, 2], [1, 2, 3, 4]), false);
     equal(isCompleteOverride([1, 2, 3], [1, 2, 3, 4, 5, 6]), true);
     equal(isCompleteOverride([1, 2, 3], [1, 2, 3, 4, 5, 6, 7]), false);
+  });
+
+  // An explicit mode is what the runtime should set; the length heuristic
+  // cannot tell a one-step override from a one-step addition, and the
+  // 2026-08-03 farfalle session was exactly that case.
+  it("an explicit mode decides, whatever the lengths are", () => {
+    equal(isCompleteOverride([1], [1, 2, 3, 4], "override"), true);
+    equal(isCompleteOverride([1, 2, 3, 4, 5], [1, 2], "append"), false);
+  });
+
+  it("an empty session list is never an override, even when marked", () => {
+    equal(isCompleteOverride([], [1, 2], "override"), false);
+    equal(isCompleteOverride([], [], "override"), false);
+  });
+
+  it("legacy rows with no mode keep their previous behaviour exactly", () => {
+    equal(isCompleteOverride([1], [], undefined), true);
+    equal(isCompleteOverride([1, 2], [1, 2, 3, 4], undefined), false);
+    equal(isCompleteOverride([1, 2, 3], [1, 2, 3, 4, 5, 6], undefined), true);
+  });
+});
+
+describe("recipe provenance (rule 10)", () => {
+  it("renders the real anchor source for an external recipe", () => {
+    equal(
+      anchorProvenanceLabel(farfalleSession()),
+      // Author repeats the source, so the label is the source alone.
+      "The Pasta Table"
+    );
+  });
+
+  it("joins source and author when they differ", () => {
+    equal(
+      recipeProvenanceLabel({ source: "Ottolenghi Simple", author: "Yotam Ottolenghi" }),
+      "Ottolenghi Simple · Yotam Ottolenghi"
+    );
+  });
+
+  it("never renders chat-origin metadata as recipe provenance", () => {
+    equal(
+      recipeProvenanceLabel({
+        source: "Tonight's meal as confirmed by David in Telegram",
+      }),
+      null
+    );
+    equal(recipeProvenanceLabel({ source: "kitchen", author: "via Telegram" }), null);
+    equal(recipeProvenanceLabel({ source: "updated live from the cooking chat" }), null);
+  });
+
+  it("a synthesized plan has no recipe provenance at all", () => {
+    const session = farfalleSession({
+      anchor: {
+        type: "synthesized-plan",
+        title: "Farfalle with Mascarpone, Roasted Peppers and Salmon Steak",
+        provenance: { source: "Nabu" },
+      },
+    });
+    equal(anchorProvenanceLabel(session), null);
+    // The best available recipe truth still renders: the title and lists.
+    equal(resolveMainDish(session).title, session.anchor.title);
+    ok(resolveWorkingRecipe(session).ingredients.length > 0);
+  });
+
+  it("flags chat wording, not chefs or publications", () => {
+    equal(isChatOriginText("The Pasta Table"), false);
+    equal(isChatOriginText("Jamie Oliver — Wonderful Veg Tagine"), false);
+    equal(isChatOriginText("Tonight's meal as confirmed by David in Telegram"), true);
+    equal(isChatOriginText("set via chat while shopping"), true);
+  });
+
+  it("drops a chat-origin hero credit but keeps the truthful image", () => {
+    const hero = resolveSessionHero(
+      farfalleSession({
+        heroImage: {
+          url: "https://example.com/farfalle.jpg",
+          source: "sent by Nabu in Telegram",
+        },
+      }),
+      null
+    );
+    equal(hero.kind, "image");
+    if (hero.kind === "image") {
+      equal(hero.url, "https://example.com/farfalle.jpg");
+      equal(hero.source, undefined);
+    }
+  });
+});
+
+describe("visibleSessionNotes", () => {
+  const working = resolveWorkingRecipe(farfalleSession());
+  const adaptations = [
+    {
+      id: "adapt-1",
+      kind: "ingredient-substitution" as const,
+      summary:
+        "Use three already-roasted peppers instead of the slow-roasted cherry tomatoes; brighten with lemon.",
+      createdAt: "2026-08-03T15:55:00.000Z",
+    },
+  ];
+
+  it("hides a note that duplicates the integrated working recipe", () => {
+    equal(
+      visibleSessionNotes(
+        "Use the already-roasted peppers instead of the cherry tomatoes tonight.",
+        working,
+        adaptations
+      ),
+      null
+    );
+  });
+
+  it("hides a note that restates an appended session step", () => {
+    equal(
+      visibleSessionNotes(
+        "Cook the salmon steaks separately and serve them on top of the pasta.",
+        working,
+        adaptations
+      ),
+      null
+    );
+  });
+
+  it("keeps a genuinely new note", () => {
+    equal(
+      visibleSessionNotes("Guests arrive at seven — table outside if warm.", working, adaptations),
+      "Guests arrive at seven — table outside if warm."
+    );
+  });
+
+  it("still drops drink, backstory, filler, and short noise lines", () => {
+    equal(visibleSessionNotes("Pairs well with a crisp Riesling", working), null);
+    equal(visibleSessionNotes("Backstory: an old Roman classic", working), null);
+    equal(visibleSessionNotes("Enjoy the meal!", working), null);
+    equal(visibleSessionNotes("ok", working), null);
+  });
+
+  it("filters per line, keeping the useful ones", () => {
+    equal(
+      visibleSessionNotes(
+        "Enjoy!\nGuests arrive at seven — table outside if warm.",
+        working
+      ),
+      "Guests arrive at seven — table outside if warm."
+    );
+  });
+
+  it("duplicate detection requires real substance", () => {
+    // Two meaningful tokens are not enough to call a note a duplicate.
+    equal(duplicatesWorkingRecipe("lemon pasta", working), false);
+  });
+});
+
+describe("historical malformed and synthesized sessions fail safely", () => {
+  it("the incident shape renders best-available truth with no invented provenance", () => {
+    // As synthesized on 2026-08-03: chat-origin provenance, no real anchor.
+    const incident = farfalleSession({
+      anchor: {
+        type: "synthesized-plan",
+        title: "Farfalle with Mascarpone, Roasted Peppers and Salmon Steak",
+        provenance: { source: "Tonight's meal as confirmed by David in Telegram" },
+      },
+    });
+    equal(anchorProvenanceLabel(incident), null);
+    const working = resolveWorkingRecipe(incident);
+    ok(working.ingredients.length > 0, "the lists still render");
+    ok(working.method.length > 0);
+  });
+
+  it("a session with empty lists still resolves an empty working recipe, not a crash", () => {
+    const bare = farfalleSession({
+      ingredients: { base: [], session: [] },
+      method: { base: [], session: [] },
+    });
+    const working = resolveWorkingRecipe(bare);
+    deepStrictEqual(working.ingredients, []);
+    deepStrictEqual(working.method, []);
+    equal(working.hasSessionChanges, false);
   });
 });
 
@@ -508,6 +943,66 @@ describe("patch validation and application", () => {
       }),
       null
     );
+  });
+
+  it("accepts session lists with substitutions and rejects malformed ones", () => {
+    equal(
+      validatePatch({
+        ingredients: {
+          session: [
+            { amount: "3", item: "roasted peppers", replaces: "cherry tomatoes" },
+          ],
+        },
+        method: { session: ["Cook the salmon separately."] },
+      }),
+      null
+    );
+    notEqual(
+      validatePatch({
+        ingredients: {
+          session: [{ amount: "3" } as unknown as SessionIngredient],
+        },
+      }),
+      null
+    );
+    notEqual(
+      validatePatch({
+        ingredients: {
+          session: [
+            { amount: "3", item: "peppers", replaces: 7 as unknown as string },
+          ],
+        },
+      }),
+      null
+    );
+    notEqual(
+      validatePatch({
+        method: { session: [42 as unknown as string] },
+      }),
+      null
+    );
+  });
+
+  it("a patched substitution round-trips through applyPatch into the working recipe", () => {
+    const session = farfalleSession({
+      ingredients: { base: farfalleSession().ingredients.base, session: [] },
+      method: { base: farfalleSession().method.base, session: [] },
+    });
+    const patch = {
+      ingredients: {
+        session: [
+          {
+            amount: "3",
+            item: "already-roasted peppers",
+            replaces: "cherry tomatoes",
+          },
+        ],
+      },
+    };
+    equal(validatePatch(patch), null);
+    const working = resolveWorkingRecipe(applyPatch(session, patch));
+    equal(working.ingredients[1].item, "already-roasted peppers");
+    equal(working.ingredients[1].replacedItem, "cherry tomatoes, halved");
   });
 });
 
@@ -784,5 +1279,311 @@ describe("resolveSessionCoherence", () => {
       !review.findings.some((f) => f.lane === "miso"),
       "a title-only side gives no miso signal, and nothing throws"
     );
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Full-body validation
+//
+// The bug these pin: POST /api/cooking/session accepted any JSON with truthy
+// id/date/anchor. `anchor: "chicken"` passed, persisted, and then made every
+// read of that row throw inside the derived coherence review — both GET routes
+// returned 500 permanently for the affected date and id.
+// ---------------------------------------------------------------------------
+
+describe("validateSessionBody", () => {
+  it("accepts a real production-shaped session unchanged in meaning", () => {
+    const source = makeSession();
+    const result = validateSessionBody(JSON.parse(JSON.stringify(source)));
+    ok(result.ok);
+    if (!result.ok) return;
+    equal(result.session.id, source.id);
+    equal(result.session.date, source.date);
+    equal(result.session.anchor.title, source.anchor.title);
+    equal(result.session.anchor.provenance.source, source.anchor.provenance.source);
+    deepStrictEqual(result.session.relatedRecipes, source.relatedRecipes);
+    deepStrictEqual(result.session.serveWith, source.serveWith);
+    equal(result.session.ingredients.base.length, source.ingredients.base.length);
+    equal(result.session.method.base.length, source.method.base.length);
+    equal(result.session.coachCards.wine, source.coachCards.wine);
+  });
+
+  it("keeps a validated session readable by the derived review", async () => {
+    // The end-to-end property that matters: anything POST accepts, GET can
+    // review without throwing.
+    const result = validateSessionBody(JSON.parse(JSON.stringify(makeSession())));
+    ok(result.ok);
+    if (!result.ok) return;
+    const review = await resolveSessionCoherence(result.session, async () => null);
+    ok(review);
+  });
+
+  it("rejects a string anchor", () => {
+    const body = { ...makeSession(), anchor: "chicken" };
+    const result = validateSessionBody(body);
+    equal(result.ok, false);
+    if (result.ok) return;
+    ok(/anchor/.test(result.error));
+  });
+
+  it("rejects every structurally unusable anchor", () => {
+    for (const anchor of [null, undefined, 42, [], ["a"], { title: "" }, { title: "   " }, { title: 7 }]) {
+      const result = validateSessionBody({ ...makeSession(), anchor });
+      equal(result.ok, false, `anchor=${JSON.stringify(anchor)}`);
+    }
+  });
+
+  it("rejects a body that is not an object at all", () => {
+    for (const body of ["session", 3, null, [], true]) {
+      equal(validateSessionBody(body).ok, false, JSON.stringify(body));
+    }
+  });
+
+  it("rejects a missing or malformed id and date", () => {
+    equal(validateSessionBody({ ...makeSession(), id: "" }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), id: 7 }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), date: "" }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), date: "26 July" }).ok, false);
+  });
+
+  it("rejects structurally unusable collections", () => {
+    equal(validateSessionBody({ ...makeSession(), relatedRecipes: "kimchi" }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), relatedRecipes: ["kimchi"] }).ok, false);
+    equal(
+      validateSessionBody({ ...makeSession(), relatedRecipes: [{ title: "No id" }] }).ok,
+      false,
+    );
+    equal(validateSessionBody({ ...makeSession(), serveWith: "rice" }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), serveWith: [{ dish: "rice" }] }).ok, false);
+    equal(
+      validateSessionBody({ ...makeSession(), method: { base: "step one", session: [] } }).ok,
+      false,
+    );
+    equal(
+      validateSessionBody({ ...makeSession(), ingredients: { base: [{ amount: "1" }], session: [] } })
+        .ok,
+      false,
+    );
+    equal(validateSessionBody({ ...makeSession(), coachCards: "none" }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), adaptations: [{ id: "a" }] }).ok, false);
+  });
+
+  it("rejects an unknown status, source, or component status", () => {
+    equal(validateSessionBody({ ...makeSession(), status: "cooking" }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), source: "smoke-signal" }).ok, false);
+    equal(
+      validateSessionBody({
+        ...makeSession(),
+        relatedRecipes: [{ kind: "side", recipeId: "x", title: "X", status: "maybe" }],
+      }).ok,
+      false,
+    );
+  });
+
+  it("applies the same main/hero/story rules a patch does", () => {
+    equal(validateSessionBody({ ...makeSession(), main: { title: "  " } }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), heroImage: { url: "javascript:x" } }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), story: { text: "" } }).ok, false);
+    ok(validateSessionBody({ ...makeSession(), heroImage: { url: "/images/x.jpg" } }).ok);
+    ok(validateSessionBody({ ...makeSession(), main: null }).ok);
+  });
+
+  it("keeps ingredient substitution targets through a full-body write", () => {
+    const body = {
+      id: "cook_2026-08-03_farfalle",
+      date: "2026-08-03",
+      anchor: {
+        type: "external-recipe",
+        title: "Slow Roasted Tomato & Mascarpone Farfalle",
+        provenance: { source: "The Pasta Table" },
+      },
+      ingredients: {
+        base: [{ amount: "2", item: "cherry tomatoes, halved" }],
+        session: [
+          { amount: "3", item: "roasted peppers", replaces: "cherry tomatoes" },
+          { amount: "1", item: "lemon", replaces: "   " },
+        ],
+      },
+    };
+    const result = validateSessionBody(body);
+    ok(result.ok);
+    if (!result.ok) return;
+    equal(result.session.ingredients.session[0].replaces, "cherry tomatoes");
+    // A blank target is dropped, not stored.
+    equal(result.session.ingredients.session[1].replaces, undefined);
+    notEqual(
+      validateSessionBody({
+        ...body,
+        ingredients: {
+          base: [],
+          session: [{ amount: "3", item: "peppers", replaces: 7 }],
+        },
+      }).ok,
+      true
+    );
+  });
+
+  it("accepts a minimal legacy session and fills the empty shape in", () => {
+    const result = validateSessionBody({
+      id: "cook_2026-01-02_legacy",
+      date: "2026-01-02",
+      anchor: { title: "Roast chicken" },
+    });
+    ok(result.ok);
+    if (!result.ok) return;
+    equal(result.session.anchor.type, "kitchen-recipe");
+    equal(result.session.anchor.provenance.source, "");
+    equal(result.session.status, "draft");
+    deepStrictEqual(result.session.relatedRecipes, []);
+    deepStrictEqual(result.session.serveWith, []);
+    deepStrictEqual(result.session.ingredients, { base: [], session: [] });
+    deepStrictEqual(result.session.method, { base: [], session: [] });
+    deepStrictEqual(result.session.coachCards, {
+      nextMove: null,
+      upgrade: null,
+      shortcut: null,
+      wine: null,
+    });
+  });
+
+  it("accepts a legacy anchor with only a source string in its provenance", () => {
+    const result = validateSessionBody({
+      id: "cook_2026-01-03_legacy",
+      date: "2026-01-03",
+      anchor: { type: "kitchen-recipe", recipeId: "roast-chicken", title: "Roast chicken", provenance: { source: "kitchen" } },
+    });
+    ok(result.ok);
+    if (!result.ok) return;
+    equal(result.session.anchor.recipeId, "roast-chicken");
+    equal(result.session.anchor.provenance.source, "kitchen");
+  });
+
+  it("returns the normalized session, not the caller's object", () => {
+    const body = {
+      ...makeSession(),
+      coherence: { findings: [], suggestions: [] },
+      somethingElse: "ignored",
+    };
+    const result = validateSessionBody(body);
+    ok(result.ok);
+    if (!result.ok) return;
+    equal("coherence" in result.session, false, "the derived review must never persist");
+    equal("somethingElse" in result.session, false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Explicit session-list mode (append vs override)
+// ---------------------------------------------------------------------------
+
+describe("session list mode round trip", () => {
+  const farfalleBody = () => {
+    const session = farfalleSession();
+    return JSON.parse(JSON.stringify(session)) as unknown;
+  };
+
+  it("survives a full-body write and still renders as tonight's whole method", () => {
+    const result = validateSessionBody(farfalleBody());
+    ok(result.ok);
+    if (!result.ok) return;
+    equal(result.session.method.sessionMode, "override");
+    equal(result.session.ingredients.sessionMode, undefined);
+
+    const working = resolveWorkingRecipe(result.session);
+    equal(working.method.length, 4);
+    ok(!working.method.some((step) => /tomatoes/i.test(step.text)));
+    // The anchor's verbatim method is still stored untouched.
+    equal(result.session.method.base.length, 4);
+    ok(result.session.method.base[0].includes("Roast the tomatoes"));
+  });
+
+  it("refuses an unknown mode instead of silently inferring one", () => {
+    const body = farfalleBody() as { method: { sessionMode: string } };
+    body.method.sessionMode = "replace";
+    const result = validateSessionBody(body);
+    equal(result.ok, false);
+    if (result.ok) return;
+    ok(result.error.includes("method.sessionMode"));
+
+    equal(
+      validatePatch({ method: { session: ["x"], sessionMode: "replace" as never } }),
+      'Invalid method.sessionMode: replace'
+    );
+    equal(
+      validatePatch({ ingredients: { session: [], sessionMode: "replace" as never } }),
+      'Invalid ingredients.sessionMode: replace'
+    );
+    equal(validatePatch({ method: { session: ["x"], sessionMode: "override" } }), null);
+  });
+
+  it("a patch that rewrites a list owns its mode, and omitting it clears a stale one", () => {
+    const session = farfalleSession();
+    equal(session.method.sessionMode, "override");
+
+    // A later, smaller adjustment must not inherit "override" — that would
+    // claim one appended line is the whole method.
+    const appended = applyPatch(session, {
+      method: { session: ["Grate more Parmigiano at the table."] },
+    });
+    equal(appended.method.sessionMode, undefined);
+    const working = resolveWorkingRecipe(appended);
+    equal(working.method.length, session.method.base.length + 1);
+
+    const marked = applyPatch(session, {
+      method: { session: ["Do it all differently."], sessionMode: "override" },
+    });
+    equal(marked.method.sessionMode, "override");
+    deepStrictEqual(resolveWorkingRecipe(marked).method.map((s) => s.text), [
+      "Do it all differently.",
+    ]);
+  });
+
+  it("a plan resync keeps the mode with its list and clears it with a reset", () => {
+    const kept = syncSessionWithPlan(
+      makeSession({
+        source: "meal-plan",
+        anchor: {
+          type: "my-recipe",
+          recipeId: "korean-sunday-spread",
+          title: "Korean Sunday Spread",
+          provenance: { source: "My Recipes" },
+        },
+        method: { base: ["Cook it."], session: ["Tonight's method."], sessionMode: "override" },
+      }),
+      planData()
+    );
+    equal(kept.method.sessionMode, "override");
+    deepStrictEqual(kept.method.session, ["Tonight's method."]);
+
+    const reset = syncSessionWithPlan(
+      makeSession({
+        source: "meal-plan",
+        anchor: {
+          type: "kitchen-recipe",
+          recipeId: "old-recipe",
+          title: "Old Recipe",
+          provenance: { source: "kitchen" },
+        },
+        method: { base: ["Cook it."], session: ["Tonight's method."], sessionMode: "override" },
+      }),
+      planData()
+    );
+    deepStrictEqual(reset.method.session, []);
+    equal(reset.method.sessionMode, undefined, "a cleared list must not keep an override claim");
+  });
+
+  it("legacy rows with no mode are untouched by the field existing", () => {
+    const legacy = validateSessionBody({
+      id: "cook_2026-01-01_legacy",
+      date: "2026-01-01",
+      anchor: { title: "Legacy Dish", provenance: { source: "kitchen" } },
+      method: { base: ["A.", "B.", "C.", "D."], session: ["Extra step."] },
+    });
+    ok(legacy.ok);
+    if (!legacy.ok) return;
+    equal(legacy.session.method.sessionMode, undefined);
+    equal("sessionMode" in legacy.session.method, false);
+    // Same inference as before the field existed: one step against four appends.
+    equal(resolveWorkingRecipe(legacy.session).method.length, 5);
   });
 });

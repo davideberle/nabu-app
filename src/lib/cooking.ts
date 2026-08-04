@@ -13,9 +13,11 @@ import {
   drinkText,
   normalizeSession,
   resolveSessionCoherence,
+  resolveSessionCoherenceSafely,
   splitServeWith,
   syncSessionWithPlan,
   validatePatch,
+  validateSessionBody,
   type AnchorType,
   type CookingSession,
   type RelatedRecipe,
@@ -101,8 +103,34 @@ function legacyRowToSession(row: CookingSessionRow): CookingSession | null {
   };
 }
 
+/**
+ * A stored row becomes a session only if it is structurally usable.
+ *
+ * `validateSessionBody` is the one definition of that — the same rules every
+ * write already passes — so this adds no second notion of validity. Applying it
+ * on READ closes the other half of the hole it was written for: a row that
+ * predates the write validation (or was hand-edited) still carries shapes like
+ * `anchor: "chicken"`, and every reader dereferences `session.anchor.title`.
+ * Such a row used to throw deep inside the render, and because part of that
+ * render is RSC serialization the throw escapes the route's error boundary
+ * entirely — `/cooking` returned a bare 500 to a cook standing at the stove.
+ *
+ * Refusing the row here degrades it to the page's useful empty state instead,
+ * with the reason logged. The validator normalizes rather than rejects
+ * everything merely absent, so legacy session shapes keep loading unchanged.
+ */
 function rowToSession(row: CookingSessionRow): CookingSession | null {
-  return normalizeSession(safeParse<CookingSession>(row["data"]) ?? legacyRowToSession(row));
+  const parsed = safeParse<CookingSession>(row["data"]) ?? legacyRowToSession(row);
+  if (!parsed) return null;
+
+  const validated = validateSessionBody(parsed);
+  if (!validated.ok) {
+    console.error(
+      `[cooking] unusable session row ${String(row["id"] ?? "<no id>")}: ${validated.error}`,
+    );
+    return null;
+  }
+  return normalizeSession(validated.session);
 }
 
 export async function getCookingSessionForDate(
@@ -266,13 +294,32 @@ export async function deriveSessionCoherence(
  * POST route strips it if a client round-trips a GET response back.
  */
 export type CookingSessionWithCoherence = CookingSession & {
-  coherence: MealCoherenceReview;
+  coherence: MealCoherenceReview | null;
+  /**
+   * Set only when the review could not be derived for this row — a historical
+   * session stored before POST validated its body. The session itself is still
+   * returned so the cook is not locked out of tonight's page, and the row is
+   * named here rather than hidden, because it is a data repair, not a feature.
+   */
+  coherenceError?: string;
 };
 
 export async function withSessionCoherence(
   session: CookingSession
 ): Promise<CookingSessionWithCoherence> {
-  return { ...session, coherence: await deriveSessionCoherence(session) };
+  const { review, error } = await resolveSessionCoherenceSafely(session, getRecipe);
+  if (!error) return { ...session, coherence: review };
+
+  // A malformed historical row must not turn a read into a 500 — but it must
+  // stay visible, so it is logged and reported, not swallowed.
+  console.error(
+    `[cooking-session] coherence review failed for session ${session.id}: ${error}`,
+  );
+  return {
+    ...session,
+    coherence: null,
+    coherenceError: `Meal balance could not be derived for this session (${error})`,
+  };
 }
 
 // ---------------------------------------------------------------------------
