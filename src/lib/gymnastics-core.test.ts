@@ -541,13 +541,18 @@ describe("live program", () => {
 
   // The exact progression the Health Dashboard domain owns. The app renders it;
   // it does not get to drift from it.
+  //
+  // Set length and total capacity are separate qualities and progress on their
+  // own schedules, so the totals run 24, 26, 30, 33, 40, 50 rather than rising
+  // evenly: the two "controlled top set" sessions buy set length and add almost
+  // no volume.
   const PLAN = [
-    { week: 1, session: "A", label: /repeat fours/i, prescription: "6×4", rest: /60[–-]75 seconds/, total: "24 full reps" },
-    { week: 1, session: "B", label: /rhythm on the clock/i, prescription: "EMOM 8×3", total: "24 full reps" },
-    { week: 2, session: "A", label: /introduce fives/i, prescription: "6×5", rest: /75[–-]90 seconds/, total: "30 full reps" },
-    { week: 2, session: "B", label: /densify fours/i, prescription: "EMOM 8×4", total: "32 full reps" },
-    { week: 3, session: "A", label: /accumulate fives/i, prescription: "8×5", rest: /60[–-]90 seconds/, total: "40 full reps" },
-    { week: 3, session: "B", label: /fifty[- ]rep benchmark/i, prescription: "10×5 on a 90-second clock", total: "50 full reps" },
+    { week: 1, session: "A", label: /repeat fours/i, prescription: "6×4", rest: /60 seconds/, total: "24 full reps" },
+    { week: 1, session: "B", label: /controlled six/i, prescription: "1×6", rest: /75 seconds/, total: "26 full reps" },
+    { week: 2, session: "A", label: /repeat fives/i, prescription: "6×5", rest: /60 seconds/, total: "30 full reps" },
+    { week: 2, session: "B", label: /controlled eight/i, prescription: "1×8", rest: /75[–-]90 seconds/, total: "33 full reps" },
+    { week: 3, session: "A", label: /accumulate fives/i, prescription: "8×5", rest: /60[–-]75 seconds/, total: "40 full reps" },
+    { week: 3, session: "B", label: /fifty[- ]rep application/i, prescription: "50-rep application", total: "50 full reps" },
   ] as const;
 
   const sessionOf = (week: number, key: string) =>
@@ -577,16 +582,83 @@ describe("live program", () => {
     });
   }
 
-  it("offers 7×4 when the fifth rep has to be forced", () => {
-    const w2a = textOf(sessionOf(2, "A"));
-    ok(/7×4/.test(w2a), "7×4 fallback missing");
-    ok(/repeatedly needs extra pulling/i.test(w2a), "fallback trigger missing");
+  it("carries each session total on its own block, in the prescribed order", () => {
+    deepStrictEqual(
+      PLAN.map(
+        (step) =>
+          sessionOf(step.week, step.session).blocks.find((b) => b.movement === "Session total")
+            ?.prescription,
+      ),
+      ["24 full reps", "26 full reps", "30 full reps", "33 full reps", "40 full reps", "50 full reps"],
+    );
   });
 
-  it("gates the fifty-rep benchmark on a clean week 3 session A", () => {
+  it("pairs each controlled top set with its back-off fives", () => {
+    const w1b = sessionOf(1, "B").blocks.map((b) => b.prescription);
+    ok(w1b.includes("1×6") && w1b.includes("4×5"), `week 1 B prescribes ${w1b.join(" + ")}`);
+
+    const w2b = sessionOf(2, "B").blocks.map((b) => b.prescription);
+    ok(w2b.includes("1×8") && w2b.includes("5×5"), `week 2 B prescribes ${w2b.join(" + ")}`);
+  });
+
+  it("treats a prescribed top set as a ceiling rather than a test", () => {
+    ok(
+      /A prescribed top set is a ceiling/i.test(PROGRAM.sessionRules.items.join(" ")),
+      "top-set ceiling rule missing from sessionRules",
+    );
+    ok(
+      /not the maximum/i.test(textOf(sessionOf(1, "B"))),
+      "week 1 B does not say to stop the six even when more reps are available",
+    );
+    ok(
+      /do not grind it/i.test(textOf(sessionOf(2, "B"))),
+      "week 2 B does not forbid grinding the set of eight",
+    );
+  });
+
+  it("finishes week 2 session A in fours when rep five is forced twice", () => {
+    const w2a = textOf(sessionOf(2, "A"));
+    ok(/rep five turns arm-dominant twice/i.test(w2a), "fallback trigger missing");
+    ok(/finish the remaining sets in fours/i.test(w2a), "fours fallback missing");
+  });
+
+  // EMOM 8×3 spread the same 24 reps the opening 6×4 already covered over a
+  // longer window, so it raised neither set length nor total capacity.
+  it("has retired the EMOM sessions that added no overload", () => {
+    for (const week of PROGRAM.weeks) {
+      for (const key of sessionKeysOf(PROGRAM)) {
+        ok(
+          !/\bEMOM\b/i.test(textOf(week.sessions[key])),
+          `week ${week.week} session ${key} reintroduces an EMOM`,
+        );
+      }
+    }
+  });
+
+  it("paces the fifty-rep application instead of opening it at the fresh maximum", () => {
+    const w3b = textOf(sessionOf(3, "B"));
+    ok(/not a fresh maximum/i.test(w3b), "open-below-maximum guidance missing");
+    ok(/downshift early/i.test(w3b), "early downshift to fours and threes missing");
+    ok(/10×5 on a 90-second clock/.test(w3b), "standalone fallback missing");
+    ok(
+      /not WOD pacing/i.test(textOf(sessionOf(2, "B"))),
+      "week 2 B does not separate a fresh set of eight from workout pacing",
+    );
+  });
+
+  it("gates the fifty-rep application on a clean week 3 session A", () => {
     const notes = (sessionOf(3, "B").notes ?? []).join(" ");
-    ok(/only after week 3 session A is clean/i.test(notes), "benchmark gate missing");
+    ok(/only after week 3 session A is clean/i.test(notes), "application gate missing");
     ok(/shoulders, elbows, grip, and hands/i.test(notes), "readiness check missing");
+  });
+
+  it("names set length and total capacity as the two qualities it trains", () => {
+    ok(/set length/i.test(PROGRAM.summary), "set length missing from the summary");
+    ok(/total capacity/i.test(PROGRAM.summary), "total capacity missing from the summary");
+    ok(
+      /separate qualities/i.test(textOf(sessionOf(1, "B"))),
+      "week 1 B does not say only one quality moves there",
+    );
   });
 
   it("opens the block with 48 hours clear of dynamic pulling", () => {
@@ -655,6 +727,8 @@ describe("live program", () => {
     ok(/sets of three/i.test(wod), "sets of three for the unassisted portion missing");
     ok(/coach/i.test(wod), "coach-led volume/movement scaling missing");
     ok(/time domain/i.test(wod), "intended time domain missing");
+    ok(/below the fresh maximum/i.test(wod), "open-below-maximum guidance missing");
+    ok(/downshift/i.test(wod), "early downshift guidance missing");
   });
 
   it("holds chest-to-bar and butterfly behind explicit gates", () => {

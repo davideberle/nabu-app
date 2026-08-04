@@ -8,7 +8,10 @@
  *     is present.
  *  2. Structural rules for the current block: 3 weeks, two sessions per week
  *     (A/B) with at least one block each, six sessions in total, and the exact
- *     prescription and rep total each of those six sessions must carry.
+ *     prescription, rest interval, and rep total each of those six sessions
+ *     must carry — including that set length and total capacity progress
+ *     separately (totals 24, 26, 30, 33, 40, 50) and that no retired EMOM
+ *     construct has crept back in.
  *  3. Every video has a valid YouTube URL and belongs to a declared movement
  *     group, and every declared group has at least one video.
  *  4. The safety, spacing, stop-rule, progression, WOD-scaling, gate, and
@@ -81,22 +84,69 @@ const EXPECTED_PROGRAM_ID = "gym-kipping-capacity-3wk-v1";
  * session's blocks and `total` must appear verbatim somewhere in the session —
  * this is the training content the Health Dashboard domain owns, so the app is
  * not free to drift from it.
+ *
+ * The block progresses set length and total capacity as separate qualities, so
+ * a session that raises one deliberately leaves the other nearly flat. That is
+ * why the totals run 24, 26, 30, 33, 40, 50 rather than climbing evenly.
  */
 const PLAN = [
-  { week: 1, session: "A", label: /repeat fours/i, prescription: "6×4", rest: /60[–-]75 seconds/, total: "24 full reps" },
-  { week: 1, session: "B", label: /rhythm on the clock/i, prescription: "EMOM 8×3", total: "24 full reps" },
-  { week: 2, session: "A", label: /introduce fives/i, prescription: "6×5", rest: /75[–-]90 seconds/, total: "30 full reps", extra: [{ re: /7×4/, what: "the 7×4 fallback when rep five needs extra pulling" }] },
-  { week: 2, session: "B", label: /densify fours/i, prescription: "EMOM 8×4", total: "32 full reps" },
-  { week: 3, session: "A", label: /accumulate fives/i, prescription: "8×5", rest: /60[–-]90 seconds/, total: "40 full reps" },
+  { week: 1, session: "A", label: /repeat fours/i, prescription: "6×4", rest: /60 seconds/, total: "24 full reps" },
+  {
+    week: 1,
+    session: "B",
+    label: /controlled six/i,
+    prescription: "1×6",
+    rest: /75 seconds/,
+    total: "26 full reps",
+    extra: [
+      { re: /4×5/, what: "the four back-off sets of five" },
+      { re: /not the maximum/i, what: "that the top set stops at six even when more reps are available" },
+    ],
+  },
+  {
+    week: 2,
+    session: "A",
+    label: /repeat fives/i,
+    prescription: "6×5",
+    rest: /60 seconds/,
+    total: "30 full reps",
+    extra: [
+      { re: /rep five turns arm-dominant twice/i, what: "when the fallback triggers — a second forced fifth rep" },
+      { re: /finish the remaining sets in fours/i, what: "the fours fallback itself" },
+    ],
+  },
+  {
+    week: 2,
+    session: "B",
+    label: /controlled eight/i,
+    prescription: "1×8",
+    rest: /75[–-]90 seconds/,
+    total: "33 full reps",
+    extra: [
+      { re: /5×5/, what: "the five back-off sets of five" },
+      { re: /do not grind it/i, what: "that the set of eight is never ground out" },
+      { re: /not WOD pacing/i, what: "that a fresh set of eight is a set-length exposure, not WOD pacing" },
+    ],
+  },
+  { week: 3, session: "A", label: /accumulate fives/i, prescription: "8×5", rest: /60[–-]75 seconds/, total: "40 full reps" },
   {
     week: 3,
     session: "B",
-    label: /fifty[- ]rep benchmark/i,
-    prescription: "10×5 on a 90-second clock",
+    label: /fifty[- ]rep application/i,
+    prescription: "50-rep application",
     total: "50 full reps",
-    extra: [{ re: /only after week 3 session A is clean/i, what: "the benchmark gate on a clean week 3 session A" }, { re: /shoulders, elbows, grip, and hands/i, what: "the shoulders/elbows/grip/hands readiness check" }],
+    extra: [
+      { re: /10×5 on a 90-second clock/, what: "the standalone 10×5 fallback when no WOD arrives" },
+      { re: /not a fresh maximum/i, what: "that the application opens below the fresh maximum" },
+      { re: /downshift early/i, what: "downshifting to fours and threes before the push-away goes" },
+      { re: /only after week 3 session A is clean/i, what: "the application gate on a clean week 3 session A" },
+      { re: /shoulders, elbows, grip, and hands/i, what: "the shoulders/elbows/grip/hands readiness check" },
+    ],
   },
 ];
+
+/** Session totals in order, as their own block, so volume cannot drift quietly. */
+const SESSION_TOTALS = ["24 full reps", "26 full reps", "30 full reps", "33 full reps", "40 full reps", "50 full reps"];
 
 if (typeof program.programId !== "string" || program.programId.length === 0) {
   fail("programId must be a non-empty string");
@@ -209,6 +259,34 @@ for (const step of PLAN) {
   for (const { re, what } of step.extra ?? []) {
     if (!re.test(text)) fail(`${where} must state ${what}`);
   }
+}
+
+// Each session carries its total on a dedicated block, and the six run in the
+// prescribed order. Reading them off the blocks — rather than anywhere in the
+// session text — is what stops a session from quietly changing its volume.
+const declaredTotals = PLAN.map((step) => {
+  const session = program.weeks?.find((w) => w.week === step.week)?.sessions?.[step.session];
+  return (session?.blocks ?? []).find((b) => b.movement === "Session total")?.prescription;
+});
+for (const [i, step] of PLAN.entries()) {
+  if (declaredTotals[i] !== SESSION_TOTALS[i]) {
+    fail(
+      `week ${step.week} session ${step.session} must carry a "Session total" block of "${SESSION_TOTALS[i]}", got ${declaredTotals[i] ?? "none"}`,
+    );
+  }
+}
+
+// EMOM 8×3 was retired on 2026-08-04: it spread the same 24 reps the opening
+// 6×4 already covered over a longer window, so it supplied no overload. Nothing
+// in the block may reintroduce a construct that raises neither quality.
+const allSessionText = (program.weeks ?? [])
+  .flatMap((week) => SESSIONS.map((s) => week.sessions?.[s]).filter(Boolean))
+  .map(sessionTextOf)
+  .join(" ");
+if (/\bEMOM\b/i.test(allSessionText)) {
+  fail(
+    "an EMOM is back in the block — EMOM 8×3 was retired because it repeated the completed 6×4's 24 reps over a longer window and was therefore no longer overload",
+  );
 }
 
 const totalSessions = (program.weeks ?? []).reduce(
@@ -342,6 +420,14 @@ if (!/from rep one|from the first rep/i.test(wodText)) fail("wodScaling must say
 if (!/sets of three/i.test(wodText)) fail("wodScaling must prescribe sets of three for the unassisted portion");
 if (!/coach/i.test(wodText)) fail("wodScaling must send volume/movement scaling through the coach");
 if (!/time domain/i.test(wodText)) fail("wodScaling must preserve the intended time domain");
+// A fresh set of eight is a set-length exposure, not a workout pace: the 50-rep
+// WOD opens below the fresh maximum and steps down before the rhythm goes.
+if (!/below the fresh maximum/i.test(wodText)) {
+  fail("wodScaling must say to open below the fresh maximum");
+}
+if (!/downshift/i.test(wodText)) {
+  fail("wodScaling must say to downshift early rather than after the push-away goes");
+}
 
 // Gates — what is deliberately held out of the block, and what earns it.
 const gateItems = program.gates?.items ?? [];
@@ -371,6 +457,17 @@ const narrative = [
 ].join(" ");
 if (/link(ing)? (two|a pair)|linked pair|pair attempts/i.test(narrative)) {
   fail("stale copy: this block builds capacity — linking a pair is no longer the limiter");
+}
+// The design decision the whole progression rests on, stated where the page
+// opens rather than buried in a session note.
+if (!/set length/i.test(program.summary ?? "")) {
+  fail("summary must name set length as a quality the block trains");
+}
+if (!/total capacity/i.test(program.summary ?? "")) {
+  fail("summary must name total capacity as a separate quality from set length");
+}
+if (!/A prescribed top set is a ceiling/i.test(rulesText)) {
+  fail("sessionRules must state that a prescribed top set is a ceiling, not a test");
 }
 
 // 5. The archive descriptor — titles and session labels for retired blocks.

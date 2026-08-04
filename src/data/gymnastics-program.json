@@ -2,7 +2,7 @@
   "programId": "gym-kipping-capacity-3wk-v1",
   "title": "Ordinary Kipping Pull-Up Capacity",
   "subtitle": "3-week kipping capacity block",
-  "summary": "Two short sessions a week for three weeks. Linked reps are already there — this block makes sets of five routine and accumulates 24 up to 50 clean reps in a session without ever losing the push-away.",
+  "summary": "Two short sessions a week for three weeks. Four linked reps are already ordinary, so this block trains two separate qualities: set length — how long one set stays clean — and total capacity — how many clean reps a session holds. They progress on their own schedules, from 24 reps up to an applied 50, and never at the cost of the push-away.",
   "primarySkill": {
     "title": "The one skill this block trains",
     "cue": "Same push-away, same tempo, every rep of every set — the last rep of a set of five should look like the first, and the arch after it should still be alive.",
@@ -27,6 +27,7 @@
       "Skip the extra skill session when the day's WOD already contains roughly 30 or more pulling reps.",
       "Stop a set when the push-away disappears, the next kip turns arm-dominant, pain appears, or a hand hot spot develops.",
       "Move back one step after two rhythm failures, and repeat a session until it is clean.",
+      "A prescribed top set is a ceiling, not a test — stop it on the number even when more reps are available.",
       "No butterfly and no chest-to-bar training volume during these three weeks."
     ]
   },
@@ -43,8 +44,8 @@
   "weeks": [
     {
       "week": 1,
-      "phase": "Repeatable fours",
-      "focus": "Make four linked reps ordinary — first on full rest, then against a clock.",
+      "phase": "Fours, then a controlled six",
+      "focus": "Make four linked reps ordinary, then take one longer set on purpose rather than discovering it at failure.",
       "sessions": {
         "A": {
           "label": "Repeat fours",
@@ -53,7 +54,7 @@
             {
               "movement": "Kipping pull-ups",
               "prescription": "6×4",
-              "note": "Rest 60–75 seconds between sets. Same push-away after every rep, including rep four."
+              "note": "Rest 60 seconds between sets. Same push-away after every rep, including rep four."
             },
             {
               "movement": "Session total",
@@ -62,79 +63,100 @@
             }
           ],
           "notes": [
-            "First session of the block: at least 48 hours without dynamic pulling before this one.",
+            "Scheduled for Tuesday 4 August — the block opens here, so take at least 48 hours without dynamic pulling before it.",
             "If a set breaks rhythm twice, drop to sets of three for the rest of the session and repeat this session next time."
           ]
         },
         "B": {
-          "label": "Hold rhythm on the clock",
-          "goal": "Hold the same three-rep rhythm every minute, so the clock — not fatigue — sets the pace.",
+          "label": "Controlled six + back-off fives",
+          "goal": "Find out what one longer set costs, at a length chosen in advance instead of discovered at failure.",
           "blocks": [
             {
-              "movement": "Kipping pull-ups",
-              "prescription": "EMOM 8×3",
-              "note": "Three linked reps at the top of each minute for eight minutes. Push away after rep three and drop with the arch intact."
+              "movement": "Kipping pull-ups — top set",
+              "prescription": "1×6",
+              "note": "One set of six, then stop. Six is the prescription, not the maximum — end the set at rep six even if more reps are available."
+            },
+            {
+              "movement": "Kipping pull-ups — back-off sets",
+              "prescription": "4×5",
+              "note": "Rest 75 seconds between all sets, including after the top set. Rep five has to rise off the backswing, not off an extra arm pull."
             },
             {
               "movement": "Session total",
-              "prescription": "24 full reps",
-              "note": "Eight rounds of three. If a minute turns arm-dominant, stop the EMOM there rather than finishing the clock."
+              "prescription": "26 full reps",
+              "note": "Set length is what moves this session — 26 reps is barely more than the 24 of session 1, and that is deliberate."
             }
+          ],
+          "notes": [
+            "Scheduled for Thursday 6 August, at least 48 hours after session 1.",
+            "Set length and total capacity are separate qualities, so only one of them moves here.",
+            "If rep six turns arm-dominant, end that set at five and take the back-off sets in fours."
           ]
         }
       }
     },
     {
       "week": 2,
-      "phase": "Introduce fives",
-      "focus": "Add a fifth rep on full rest, then densify the fours on the clock.",
+      "phase": "Repeatable fives, then a controlled eight",
+      "focus": "Make five the working set on the clock that already carries fours, then expose one set of eight without grinding it.",
       "sessions": {
         "A": {
-          "label": "Introduce fives",
-          "goal": "Find a fifth rep that rises off the same backswing instead of an extra arm pull.",
+          "label": "Repeat fives",
+          "goal": "Make a set of five as ordinary as a set of four already is, on the same rest.",
           "blocks": [
             {
               "movement": "Kipping pull-ups",
               "prescription": "6×5",
-              "note": "Rest 75–90 seconds between sets. Rep five must come from the push-away and the arch, not from pulling harder."
+              "note": "Rest 60 seconds between sets — the same clock session 1 held for fours. Every rep still ends in the same push-away."
             },
             {
-              "movement": "Fallback if rep five is forced",
-              "prescription": "7×4",
-              "note": "If rep five repeatedly needs extra pulling, run 7×4 instead and take fives again next week."
+              "movement": "Fallback if rep five turns arm-dominant twice",
+              "prescription": "Finish the remaining sets in fours",
+              "note": "Two forced fifth reps mean fives are not ready on 60 seconds yet. Finish the session in fours and repeat this session next time."
             },
             {
               "movement": "Session total",
               "prescription": "30 full reps",
-              "note": "28 reps on the 7×4 fallback. Either way, stop there."
+              "note": "Fewer on the fours fallback. Either way, stop on the prescription."
             }
           ],
           "notes": [
-            "If rep five repeatedly needs extra pulling, use 7×4 instead — the fifth rep is earned, not forced."
+            "Scheduled for Saturday 8 August.",
+            "This is the first session that moves set length and total capacity together — five reps a set, on the short rest."
           ]
         },
         "B": {
-          "label": "Densify fours",
-          "goal": "Carry the week 1 rhythm into a denser clock: four reps a minute, same push-away.",
+          "label": "Controlled eight + back-off fives",
+          "goal": "Expose one set of eight, stopped deliberately, and let the fives carry the volume.",
           "blocks": [
             {
-              "movement": "Kipping pull-ups",
-              "prescription": "EMOM 8×4",
-              "note": "Four linked reps at the top of each minute for eight minutes. The arch after rep four is the quality check."
+              "movement": "Kipping pull-ups — top set",
+              "prescription": "1×8",
+              "note": "One set of eight, then stop. Do not grind it — if the push-away changes before rep eight, end the set there and count it as the day's top set."
+            },
+            {
+              "movement": "Kipping pull-ups — back-off sets",
+              "prescription": "5×5",
+              "note": "Rest 75–90 seconds between all sets. The back-off fives should feel like the last session's fives, not like survival."
             },
             {
               "movement": "Session total",
-              "prescription": "32 full reps",
-              "note": "End the EMOM early rather than finishing a minute with an arm-dominant kip."
+              "prescription": "33 full reps",
+              "note": "Eight plus twenty-five. The longer set is the point; the three extra reps over the last session are incidental."
             }
+          ],
+          "notes": [
+            "Scheduled for Tuesday 11 August.",
+            "A fresh set of eight is a set-length exposure, not WOD pacing — nothing here says to open a 50-rep workout with eight.",
+            "If the top set stops early, run the back-off sets as prescribed rather than making the missing reps up."
           ]
         }
       }
     },
     {
       "week": 3,
-      "phase": "Accumulate and test",
-      "focus": "Accumulate fives, then take the fifty-rep benchmark only once the accumulation session is clean.",
+      "phase": "Accumulate and apply",
+      "focus": "Accumulate forty clean reps in fives, then take the fifty-rep application at workout pace.",
       "sessions": {
         "A": {
           "label": "Accumulate fives",
@@ -143,36 +165,43 @@
             {
               "movement": "Kipping pull-ups",
               "prescription": "8×5",
-              "note": "Rest 60–90 seconds between sets. Set eight should look like set one."
+              "note": "Rest 60–75 seconds between sets. Set eight must look like set one."
             },
             {
               "movement": "Session total",
               "prescription": "40 full reps",
-              "note": "This session is the gate for the benchmark. Repeat it until all eight sets are clean."
+              "note": "This session is the gate for the fifty-rep application. Repeat it until all eight sets are clean."
             }
           ],
           "notes": [
-            "Two rhythm failures here means repeating this session before the benchmark, not moving on to it."
+            "Scheduled for Thursday 13 August.",
+            "Two rhythm failures here means repeating this session before the application, not moving on to it."
           ]
         },
         "B": {
-          "label": "Fifty-rep benchmark",
-          "goal": "Fifty clean reps in sets of five, each set opening and closing with the same push-away.",
+          "label": "Fifty-rep application",
+          "goal": "Fifty clean reps under real pacing — opened below the fresh maximum and downshifted before the rhythm goes.",
           "blocks": [
             {
               "movement": "Kipping pull-ups",
+              "prescription": "50-rep application",
+              "note": "Open with repeatable fives, not a fresh maximum, and downshift early to fours and then threes before the push-away deteriorates. Small sets held together beat one big set followed by singles."
+            },
+            {
+              "movement": "Standalone fallback if no WOD arrives",
               "prescription": "10×5 on a 90-second clock",
-              "note": "Five linked reps every 90 seconds for ten rounds. Stop the benchmark the moment the push-away goes — an honest 8 rounds beats a scrappy 10."
+              "note": "Five linked reps every 90 seconds for ten rounds. Stop the moment the push-away goes — an honest 8 rounds beats a scrappy 10."
             },
             {
               "movement": "Session total",
               "prescription": "50 full reps",
-              "note": "This is the capacity the 50-pull-up WOD asks for. Earn it here, not in a metcon."
+              "note": "This is the capacity the 50-pull-up WOD asks for, taken at workout pace rather than as a fresh-set test."
             }
           ],
           "notes": [
+            "Scheduled for Saturday 15 August, or the day a 50-rep pull-up workout is programmed — whichever comes first.",
             "Attempt this only after week 3 session A is clean and shoulders, elbows, grip, and hands feel normal.",
-            "If any of that is not true, repeat week 3 session A instead and take the benchmark 48–72 hours later."
+            "If any of that is not true, repeat week 3 session A instead and take the application 48–72 hours later."
           ]
         }
       }
@@ -188,7 +217,7 @@
     ],
     "repCaps": {
       "perSession": 50,
-      "note": "Session volume is prescribed — 24 reps in week 1, rising to 50 at the week 3 benchmark. Never add reps beyond the day's prescription because a session felt easy."
+      "note": "Session volume is prescribed — 24 reps in the opening session, rising to 50 at the application. Never add reps beyond the day's prescription because a session felt easy."
     },
     "stopRules": [
       "The push-away disappears",
@@ -203,11 +232,12 @@
   },
   "wodScaling": {
     "title": "If the 50-pull-up WOD arrives first",
-    "intro": "Before the week 3 benchmark is earned, a 50-rep pull-up workout is a scaling problem, not a test day.",
+    "intro": "Before week 3 session A is clean, a 50-rep pull-up workout is a scaling problem, not a test day. Once it is clean the workout can be the application itself — but it is still paced, never attacked.",
     "points": [
-      "Tell the coach the current verified capacity is repeatable sets of four.",
+      "Tell the coach the current verified capacity, and update that after every clean session.",
       "Break from rep one. Never open with a set near failure and then grind out singles.",
-      "Use sets of three for the unassisted portion, with short deliberate rests.",
+      "Open below the fresh maximum. A set of eight in a skill session is a set-length exposure, not a workout pace.",
+      "Downshift early — fives to fours to sets of three — before the push-away deteriorates rather than after it has gone.",
       "Scale the total volume or the movement with the coach so the workout keeps its intended time domain.",
       "Stop unassisted reps as soon as the push-away or the shoulder position deteriorates, and finish on the coach's scale."
     ]
