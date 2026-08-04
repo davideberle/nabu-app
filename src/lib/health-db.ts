@@ -379,6 +379,40 @@ export async function getGymnasticsProgress(
   return result.rows.map((row) => rowToGymnasticsProgress(row as Record<string, unknown>));
 }
 
+export type GymnasticsHistoryRecord = GymnasticsProgressRecord & { programId: string };
+
+/**
+ * Completed rows for a set of retired programs, oldest first.
+ *
+ * Read-only by construction: there is no writer for another program id anywhere
+ * in the app, and the `completed = 1` filter means an untouched leftover row
+ * from a retired block never reads back as training that happened. An empty id
+ * list short-circuits rather than building a `WHERE program_id IN ()`.
+ */
+export async function getCompletedGymnasticsHistory(
+  programIds: string[],
+): Promise<GymnasticsHistoryRecord[]> {
+  if (programIds.length === 0) return [];
+  const client = await getDb();
+  await ensureGymnasticsTable(client);
+  const placeholders = programIds.map(() => "?").join(", ");
+  const result = await client.execute({
+    sql: `SELECT program_id, week, session, completed, completed_at, note
+            FROM health_gymnastics_progress
+           WHERE program_id IN (${placeholders})
+             AND completed = 1
+           ORDER BY completed_at ASC, week ASC, session ASC`,
+    args: programIds,
+  });
+  return result.rows.map((r) => {
+    const row = r as Record<string, unknown>;
+    return {
+      programId: row["program_id"] as string,
+      ...rowToGymnasticsProgress(row),
+    };
+  });
+}
+
 /**
  * Upsert the completion state of a single week/session. When `completed` is
  * true the timestamp is stamped; when false it is cleared (uncomplete).

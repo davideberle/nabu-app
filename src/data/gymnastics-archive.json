@@ -1,0 +1,27 @@
+{
+  "note": "Health-owned descriptor for retired gymnastics blocks. It carries titles and session labels ONLY — whether a session was actually done, and when, lives in the health_gymnastics_progress rows in Turso. Companion App mirrors this file byte-for-byte into src/data/gymnastics-archive.json and renders it read-only.",
+  "blocks": [
+    {
+      "programId": "gym-link-two-kip-2wk-v1",
+      "title": "Link Two Kipping Pull-Ups",
+      "subtitle": "2-week focused kipping block",
+      "period": "27 July – 3 August 2026",
+      "outcome": "Closed after four linked reps became repeatable on 60-second rests. Linking stopped being the limiter, which is what handed the work to the kipping-capacity block.",
+      "sessions": [
+        { "week": 1, "session": "A", "label": "Find the return" },
+        { "week": 1, "session": "B", "label": "Consolidate the pair" },
+        { "week": 1, "session": "C", "label": "Remove the reset" },
+        { "week": 2, "session": "A", "label": "Repeat clean pairs" },
+        { "week": 2, "session": "B", "label": "Make the cadence boring" },
+        { "week": 2, "session": "C", "label": "Quality test" }
+      ]
+    },
+    {
+      "programId": "gym-kip-ttb-10wk-v1",
+      "title": "Kipping, Butterfly & Toes-to-Bar",
+      "subtitle": "10-week gymnastics skill add-on",
+      "outcome": "Retired before any session was completed; replaced by the focused kipping-pair block.",
+      "sessions": []
+    }
+  ]
+}

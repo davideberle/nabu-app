@@ -1,129 +1,178 @@
 {
-  "programId": "gym-link-two-kip-2wk-v1",
-  "title": "Link Two Kipping Pull-Ups",
-  "subtitle": "2-week focused kipping block",
-  "summary": "Three short sessions a week for two weeks, built around one skill: once the chin clears the bar, push the bar away and ride straight back into the arch so the second rep starts itself. The clean single is already there — this block removes the reset between reps.",
+  "programId": "gym-kipping-capacity-3wk-v1",
+  "title": "Ordinary Kipping Pull-Up Capacity",
+  "subtitle": "3-week kipping capacity block",
+  "summary": "Two short sessions a week for three weeks. Linked reps are already there — this block makes sets of five routine and accumulates 24 up to 50 clean reps in a session without ever losing the push-away.",
   "primarySkill": {
     "title": "The one skill this block trains",
-    "cue": "Chin over bar → punch the bar away → let the hips swing forward into the arch → rep two starts from the backswing, not from a dead hang.",
-    "failureSignal": "Dropping straight down under the bar and stopping ends the chain. That descent — not the pull — is the limiter right now."
+    "cue": "Same push-away, same tempo, every rep of every set — the last rep of a set of five should look like the first, and the arch after it should still be alive.",
+    "failureSignal": "When the push-away disappears and the next kip turns arm-dominant, the set is finished. Reps taken after that rehearse the wrong descent and buy nothing but hot spots and sore elbows."
   },
-  "durationWeeks": 2,
-  "sessionsPerWeek": 3,
+  "durationWeeks": 3,
+  "sessionsPerWeek": 2,
   "totalSessions": 6,
-  "spacingHours": { "min": 24, "max": 48 },
-  "spacingNote": "Prefer non-consecutive days. Keep at least 24h between sessions, and 48h after pull-heavy work.",
+  "spacingHours": { "min": 48, "max": 72 },
+  "spacingNote": "Take at least 48 hours without dynamic pulling before the first session, then keep sessions 48–72 hours apart.",
   "warmup": {
     "title": "Warm-up — every session",
     "items": [
       "2×6 scap pull-ups",
-      "2×6 controlled beat swings",
-      "2×15s hollow hold",
-      "2×15s arch hold",
-      "2×1 box-start push-away descent into one beat swing"
+      "2×5 controlled beat swings",
+      "1 easy set of 3 linked kipping pull-ups"
     ]
   },
   "sessionRules": {
     "title": "Rules for every session",
     "items": [
-      "Cap full unassisted dynamic pull-up reps at 20 per session — every rep is skill practice, not conditioning.",
-      "Rest 60–90 seconds between pair attempts. Only fresh attempts count.",
-      "Stop pair attempts after two consecutive rhythm misses; finish with assisted patterning or stop for the day.",
-      "No butterfly and no toes-to-bar volume during these two weeks."
+      "Skip the extra skill session when the day's WOD already contains roughly 30 or more pulling reps.",
+      "Stop a set when the push-away disappears, the next kip turns arm-dominant, pain appears, or a hand hot spot develops.",
+      "Move back one step after two rhythm failures, and repeat a session until it is clean.",
+      "No butterfly and no chest-to-bar training volume during these three weeks."
     ]
   },
-  "progressionRule": "Move on only when the descent repeats itself: two linked reps with no reset, no chicken-wing pull, and an intact backswing. If the Week 2 quality test does not pass, repeat Week 2 rather than adding reps.",
+  "progressionRule": "Complete each session cleanly before advancing, and repeat a session as often as it takes. Progress is earned by holding the same push-away at the same tempo through the last set — never by the calendar reaching week three.",
   "feedbackPrompt": {
     "title": "Tell Nabu after each session",
     "items": [
-      "Clean pairs / attempts — e.g. \"4 / 7\"",
-      "Where the rhythm failed — top, descent, or backswing",
+      "Clean sets / sets prescribed — e.g. \"6 / 6\"",
+      "Which rep the push-away first disappeared on, if any",
       "Any pain or hand hot spots",
-      "Did rep two come from the backswing, or did it need extra arm pull?"
+      "Did the last set look like the first, or did the final reps turn arm-dominant?"
     ]
   },
   "weeks": [
     {
       "week": 1,
-      "phase": "Find the rhythm",
-      "focus": "Teach the push-away and the return to the arch, then take a few rested attempts at linking two.",
+      "phase": "Repeatable fours",
+      "focus": "Make four linked reps ordinary — first on full rest, then against a clock.",
       "sessions": {
         "A": {
-          "label": "Find the return",
-          "goal": "Feel the push-away at the top and let it carry you back into the arch.",
+          "label": "Repeat fours",
+          "goal": "Six identical sets of four, each rep ending in the same push-away back into the arch.",
           "blocks": [
-            { "movement": "Controlled beat swings", "prescription": "4×5", "note": "Hollow to arch, no pull. Set the rhythm you want to keep under the bar." },
-            { "movement": "Top-position push-away descents", "prescription": "4×2", "note": "Pull to chin over bar, punch the bar away, ride the arch. No second pull." },
-            { "movement": "Single into two beat swings", "prescription": "4×1", "note": "One clean rep flowing straight into two beat swings — never touch a dead hang." },
-            { "movement": "Linked pair attempts", "prescription": "4 attempts", "note": "Rest 60–90s. Two consecutive rhythm misses ends the attempts." }
+            {
+              "movement": "Kipping pull-ups",
+              "prescription": "6×4",
+              "note": "Rest 60–75 seconds between sets. Same push-away after every rep, including rep four."
+            },
+            {
+              "movement": "Session total",
+              "prescription": "24 full reps",
+              "note": "The prescription is the ceiling as well as the target — do not add sets because it felt easy."
+            }
           ],
           "notes": [
-            "Today's session fits after bench press and the box-jump workout only while shoulders, grip, and timing still feel crisp.",
-            "Fatigue fallback: if the grip is cooked or the first two pair attempts land late, skip the remaining pair attempts and finish with beat swings and push-away descents only. A tired kip rehearses the wrong descent."
+            "First session of the block: at least 48 hours without dynamic pulling before this one.",
+            "If a set breaks rhythm twice, drop to sets of three for the rest of the session and repeat this session next time."
           ]
         },
         "B": {
-          "label": "Consolidate the pair",
-          "goal": "Make today's successful pair repeat with less effort on rep two; do not chase a third rep.",
+          "label": "Hold rhythm on the clock",
+          "goal": "Hold the same three-rep rhythm every minute, so the clock — not fatigue — sets the pace.",
           "blocks": [
-            { "movement": "Controlled beat swings", "prescription": "2×5", "note": "Easy rhythm check. Match the tempo that produced today's successful pairs." },
-            { "movement": "Box-start push-away descent into two beat swings", "prescription": "3×1", "note": "Step or jump to chin over bar, actively push the bar away, reach straight arms in the arch, then hold two controlled beat swings. Do not pull back up." },
-            { "movement": "Single + one beat swing + single", "prescription": "3×2", "note": "Keep the proven bridge. Let the deliberate return swing lift rep two instead of adding arm force." },
-            { "movement": "Kipping doubles", "prescription": "4×2", "note": "Rest 75–90 seconds. Same push-away after rep one; no third-rep attempts tomorrow." }
-          ],
-          "notes": [
-            "Best placement: immediately after the general/shoulder warm-up, before strength or the metcon.",
-            "Do this tomorrow only if at least 24 hours have passed since Session A and shoulders, elbows, grip, and hands feel normal; otherwise move it one day later.",
-            "Assistance is unnecessary for this session because both immediate pair attempts succeeded. The aim is a smoother second rep, not a harder pull."
-          ]
-        },
-        "C": {
-          "label": "Remove the reset",
-          "goal": "Shrink the gap between rep one and rep two until it disappears.",
-          "blocks": [
-            { "movement": "Controlled beat swings", "prescription": "3×5", "note": "Same shapes, same tempo." },
-            { "movement": "Single + beat swing + single", "prescription": "4×2", "note": "The middle swing is the bridge. Push away first, swing second." },
-            { "movement": "Immediate pairs", "prescription": "5 attempts", "note": "Take the middle swing out. Rep two starts off the first backswing." },
-            { "movement": "Push-away descents", "prescription": "Optional 2×1", "note": "Only while the timing is still sharp. Stop before it degrades." }
+            {
+              "movement": "Kipping pull-ups",
+              "prescription": "EMOM 8×3",
+              "note": "Three linked reps at the top of each minute for eight minutes. Push away after rep three and drop with the arch intact."
+            },
+            {
+              "movement": "Session total",
+              "prescription": "24 full reps",
+              "note": "Eight rounds of three. If a minute turns arm-dominant, stop the EMOM there rather than finishing the clock."
+            }
           ]
         }
       }
     },
     {
       "week": 2,
-      "phase": "Make it repeatable",
-      "focus": "Turn one good pair into a boring, repeatable pair, then test whether it holds on the clock.",
+      "phase": "Introduce fives",
+      "focus": "Add a fifth rep on full rest, then densify the fours on the clock.",
       "sessions": {
         "A": {
-          "label": "Repeat clean pairs",
-          "goal": "Make the double ordinary — low volume, full rest, same descent every time.",
+          "label": "Introduce fives",
+          "goal": "Find a fifth rep that rises off the same backswing instead of an extra arm pull.",
           "blocks": [
-            { "movement": "Controlled beat swings", "prescription": "3×5", "note": "Rhythm check before any pulling." },
-            { "movement": "Push-away descents", "prescription": "2×2", "note": "Reminder reps, not work." },
-            { "movement": "Kipping doubles", "prescription": "5×2", "note": "Full rest between sets. Any reset between the two reps ends that set." },
-            { "movement": "Optional triples", "prescription": "Optional 2×3", "note": "Only after the doubles repeat cleanly. Otherwise stop at doubles." }
+            {
+              "movement": "Kipping pull-ups",
+              "prescription": "6×5",
+              "note": "Rest 75–90 seconds between sets. Rep five must come from the push-away and the arch, not from pulling harder."
+            },
+            {
+              "movement": "Fallback if rep five is forced",
+              "prescription": "7×4",
+              "note": "If rep five repeatedly needs extra pulling, run 7×4 instead and take fives again next week."
+            },
+            {
+              "movement": "Session total",
+              "prescription": "30 full reps",
+              "note": "28 reps on the 7×4 fallback. Either way, stop there."
+            }
+          ],
+          "notes": [
+            "If rep five repeatedly needs extra pulling, use 7×4 instead — the fifth rep is earned, not forced."
           ]
         },
         "B": {
-          "label": "Make the cadence boring",
-          "goal": "Same timing every rep. The fix is a more repeatable kip, not a bigger one.",
+          "label": "Densify fours",
+          "goal": "Carry the week 1 rhythm into a denser clock: four reps a minute, same push-away.",
           "blocks": [
-            { "movement": "Controlled beat swings", "prescription": "3×5", "note": "Find the tempo you will hold all session." },
-            { "movement": "Assisted triples", "prescription": "4×3", "note": "Minimal assistance, metronome rhythm — three identical descents." },
-            { "movement": "Push-away descents", "prescription": "2×2", "note": "Unassisted, between assisted sets." },
-            { "movement": "Unassisted doubles", "prescription": "5×2", "note": "Match the assisted cadence exactly." }
+            {
+              "movement": "Kipping pull-ups",
+              "prescription": "EMOM 8×4",
+              "note": "Four linked reps at the top of each minute for eight minutes. The arch after rep four is the quality check."
+            },
+            {
+              "movement": "Session total",
+              "prescription": "32 full reps",
+              "note": "End the EMOM early rather than finishing a minute with an arm-dominant kip."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "week": 3,
+      "phase": "Accumulate and test",
+      "focus": "Accumulate fives, then take the fifty-rep benchmark only once the accumulation session is clean.",
+      "sessions": {
+        "A": {
+          "label": "Accumulate fives",
+          "goal": "Prove sets of five are routine across eight sets, with the push-away intact in the last one.",
+          "blocks": [
+            {
+              "movement": "Kipping pull-ups",
+              "prescription": "8×5",
+              "note": "Rest 60–90 seconds between sets. Set eight should look like set one."
+            },
+            {
+              "movement": "Session total",
+              "prescription": "40 full reps",
+              "note": "This session is the gate for the benchmark. Repeat it until all eight sets are clean."
+            }
           ],
           "notes": [
-            "If a rep only works with a bigger kip, the timing slipped. Take the next attempt slower, not harder."
+            "Two rhythm failures here means repeating this session before the benchmark, not moving on to it."
           ]
         },
-        "C": {
-          "label": "Quality test",
-          "goal": "Prove the double repeats under a clock.",
+        "B": {
+          "label": "Fifty-rep benchmark",
+          "goal": "Fifty clean reps in sets of five, each set opening and closing with the same push-away.",
           "blocks": [
-            { "movement": "Controlled beat swings", "prescription": "3×5", "note": "Easy. This is a test day, not a volume day." },
-            { "movement": "EMOM", "prescription": "EMOM 8 × 2", "note": "Two linked reps at the top of each minute, then rest the rest of the minute." },
-            { "movement": "Score the test", "prescription": "6 / 8", "note": "Pass = at least 6 of 8 minutes with two clean linked reps: no reset, no chicken-wing pull, no pain, backswing intact. Otherwise repeat Week 2." }
+            {
+              "movement": "Kipping pull-ups",
+              "prescription": "10×5 on a 90-second clock",
+              "note": "Five linked reps every 90 seconds for ten rounds. Stop the benchmark the moment the push-away goes — an honest 8 rounds beats a scrappy 10."
+            },
+            {
+              "movement": "Session total",
+              "prescription": "50 full reps",
+              "note": "This is the capacity the 50-pull-up WOD asks for. Earn it here, not in a metcon."
+            }
+          ],
+          "notes": [
+            "Attempt this only after week 3 session A is clean and shoulders, elbows, grip, and hands feel normal.",
+            "If any of that is not true, repeat week 3 session A instead and take the benchmark 48–72 hours later."
           ]
         }
       }
@@ -132,24 +181,49 @@
   "prerequisites": {
     "title": "Before you start",
     "mustHave": [
-      "A clean kipping single from a dead hang",
+      "Four linked kipping pull-ups that repeat across fresh sets",
+      "A push-away after every rep, including the last one",
       "At least 5 strict pull-ups",
-      "A 30-second active hang",
-      "Pain-free shoulders and elbows"
+      "Pain-free shoulders, elbows, and hands"
     ],
     "repCaps": {
-      "perSession": 20,
-      "note": "Every session in this block is built to stay under that cap. If a session needs more reps to feel productive, the reps were too easy or the rest was too short."
+      "perSession": 50,
+      "note": "Session volume is prescribed — 24 reps in week 1, rising to 50 at the week 3 benchmark. Never add reps beyond the day's prescription because a session felt easy."
     },
     "stopRules": [
-      "Sharp shoulder pain",
-      "Medial (inner) elbow pain",
-      "Any torn-hand or hot-spot warning signs",
-      "Two consecutive rhythm misses — stop the pair attempts"
+      "The push-away disappears",
+      "The next kip turns arm-dominant",
+      "Sharp shoulder pain or medial (inner) elbow pain",
+      "A hand hot spot — stop before it tears"
     ],
     "notes": [
-      "No butterfly or toes-to-bar work belongs in these two weeks; it dilutes the descent you are trying to fix.",
+      "No butterfly and no chest-to-bar work belongs in these three weeks; each has its own gate after the block.",
       "Technique guidance here is not medical advice — your floor coach overrides the app."
+    ]
+  },
+  "wodScaling": {
+    "title": "If the 50-pull-up WOD arrives first",
+    "intro": "Before the week 3 benchmark is earned, a 50-rep pull-up workout is a scaling problem, not a test day.",
+    "points": [
+      "Tell the coach the current verified capacity is repeatable sets of four.",
+      "Break from rep one. Never open with a set near failure and then grind out singles.",
+      "Use sets of three for the unassisted portion, with short deliberate rests.",
+      "Scale the total volume or the movement with the coach so the workout keeps its intended time domain.",
+      "Stop unassisted reps as soon as the push-away or the shoulder position deteriorates, and finish on the coach's scale."
+    ]
+  },
+  "gates": {
+    "title": "Gates after this block",
+    "intro": "Neither of these belongs inside the block. Each has a gate that has to be met first.",
+    "items": [
+      {
+        "skill": "Chest-to-bar",
+        "requirement": "Introduce as low-volume technique work only once sets of five are routine and 8–10 clean ordinary kipping reps come without a hard final pull."
+      },
+      {
+        "skill": "Butterfly",
+        "requirement": "Reconsider only after roughly 15–20 clean unbroken ordinary kipping pull-ups, and learn it with a coach directly watching the shoulder path."
+      }
     ]
   },
   "m60Scaling": {
@@ -157,11 +231,11 @@
     "intro": "Skill practice and workout scaling are different jobs. Keep them separate.",
     "points": [
       "Do not rehearse half-kips under fatigue.",
-      "In skill work use clean singles or the linked pairs from this block — stop the set the moment the descent goes.",
+      "In skill work use the prescribed sets from this block — stop the set the moment the push-away goes.",
       "Default WOD substitution: about 40–50% of the programmed reps as strict pull-ups, in small sets, when that preserves the stimulus.",
       "For high-volume or fast metcons, use the coach's intended scale (ring rows, jumping pull-ups, etc.) rather than turning the workout into strict-pull-up failure work.",
       "Never scale 1:1 from kipping reps to strict reps. Ask the floor coach when the intended stimulus is unclear.",
-      "During these two weeks keep metcon kipping volume low, so the skill sessions stay the best reps of the week."
+      "During these three weeks keep extra metcon kipping volume low, so the skill sessions stay the best reps of the week."
     ]
   },
   "videoGroups": [

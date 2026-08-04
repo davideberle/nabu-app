@@ -16,6 +16,8 @@ import {
   GYMNASTICS_SESSION_KEYS,
   summarizeProgress,
   videosByMovement,
+  type GymnasticsGuidanceCard,
+  type GymnasticsHistoryBlock,
   type GymnasticsProgram,
   type GymnasticsProgressRow,
   type GymnasticsSession,
@@ -48,10 +50,13 @@ function toRows(status: StatusMap): GymnasticsProgressRow[] {
 export function GymnasticsClient({
   program,
   initialProgress,
+  history,
   restricted,
 }: {
   program: GymnasticsProgram;
   initialProgress: GymnasticsProgressRow[];
+  /** Completed blocks that came before this one. Read-only, from stored rows. */
+  history: GymnasticsHistoryBlock[];
   restricted: boolean;
 }) {
   const [status, setStatus] = useState<StatusMap>(() => {
@@ -287,11 +292,30 @@ export function GymnasticsClient({
           <p className="mt-1 text-sm leading-relaxed text-secondary">{program.progressionRule}</p>
         </NabuSurface>
 
+        {/* Scaling a workout the block has not built capacity for yet */}
+        <GuidanceCard
+          card={program.wodScaling}
+          eyebrow="Workout scaling"
+          className="border-amber-200 bg-amber-50/50 dark:border-amber-800/50 dark:bg-amber-950/20"
+          bulletClassName="bg-amber-400"
+        />
+
         {/* M60 scaling */}
-        <M60Card program={program} />
+        <GuidanceCard
+          card={program.m60Scaling}
+          eyebrow="Scaling"
+          className="border-utility-blue-200 bg-utility-blue-50/50 dark:border-utility-blue-800/50 dark:bg-utility-blue-950/20"
+          bulletClassName="bg-blue-400"
+        />
+
+        {/* What this block does not include, and what unlocks it */}
+        <GatesCard program={program} />
 
         {/* Prerequisites & safety */}
         <PrerequisitesCard program={program} />
+
+        {/* Blocks completed before this one, straight from stored rows */}
+        <TrainingHistorySection history={history} />
 
         {/* Videos */}
         <VideosSection program={program} />
@@ -324,11 +348,11 @@ function WeekPanel({
         eyebrow={`Week ${week.week} · ${week.phase}`}
         title={week.focus}
       />
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2">
         {GYMNASTICS_SESSION_KEYS.map((sessionKey) => {
           const session: GymnasticsSession | undefined = week.sessions[sessionKey];
-          // `scripts/validate-gymnastics.mjs` runs in prebuild and requires every
-          // A/B/C slot in every week, so this only fires on an invalid program.
+          // `scripts/validate-gymnastics.mjs` runs in prebuild and requires the
+          // program's slots in every week, so this only fires on an invalid program.
           // Say so visibly rather than crashing the page or silently dropping it.
           if (!session) {
             return (
@@ -498,21 +522,48 @@ function FeedbackPromptCard({ program }: { program: GymnasticsProgram }) {
 }
 
 // ---------------------------------------------------------------------------
-// M60 scaling
+// Scaling guidance (WOD scaling, masters scaling) and post-block gates
 // ---------------------------------------------------------------------------
 
-function M60Card({ program }: { program: GymnasticsProgram }) {
+function GuidanceCard({
+  card,
+  eyebrow,
+  className,
+  bulletClassName,
+}: {
+  card: GymnasticsGuidanceCard;
+  eyebrow: string;
+  className: string;
+  bulletClassName: string;
+}) {
   return (
-    <NabuSurface className="border-utility-blue-200 bg-utility-blue-50/50 p-4 dark:border-utility-blue-800/50 dark:bg-utility-blue-950/20">
-      <NabuSectionHeader eyebrow="Scaling" title={program.m60Scaling.title} description={program.m60Scaling.intro} />
+    <NabuSurface className={cn("p-4", className)}>
+      <NabuSectionHeader eyebrow={eyebrow} title={card.title} description={card.intro} />
       <ul className="mt-3 space-y-2">
-        {program.m60Scaling.points.map((point, i) => (
+        {card.points.map((point, i) => (
           <li key={i} className="flex items-start gap-2 text-sm leading-relaxed text-secondary">
-            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-blue-400" />
+            <span className={cn("mt-1.5 h-1 w-1 shrink-0 rounded-full", bulletClassName)} />
             {point}
           </li>
         ))}
       </ul>
+    </NabuSurface>
+  );
+}
+
+function GatesCard({ program }: { program: GymnasticsProgram }) {
+  const gates = program.gates;
+  return (
+    <NabuSurface className="p-4">
+      <NabuSectionHeader eyebrow="Not in this block" title={gates.title} description={gates.intro} />
+      <div className="mt-3 grid gap-2 sm:grid-cols-2">
+        {gates.items.map((gate) => (
+          <div key={gate.skill} className="rounded-lg border border-secondary bg-secondary/60 p-3">
+            <p className="text-sm font-semibold tracking-[-0.01em] text-primary">{gate.skill}</p>
+            <p className="mt-1 text-[11px] leading-relaxed text-tertiary">{gate.requirement}</p>
+          </div>
+        ))}
+      </div>
     </NabuSurface>
   );
 }
@@ -565,6 +616,72 @@ function PrerequisitesCard({ program }: { program: GymnasticsProgram }) {
         ))}
       </ul>
     </NabuSurface>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Training history
+// ---------------------------------------------------------------------------
+//
+// Everything here comes from `health_gymnastics_progress` rows for retired
+// program ids, projected by `summarizeHistory`. The component holds no list of
+// sessions of its own: if a row is not stored, the session is not shown.
+
+function TrainingHistorySection({ history }: { history: GymnasticsHistoryBlock[] }) {
+  if (history.length === 0) return null;
+
+  return (
+    <section>
+      <NabuSectionHeader
+        className="mb-3"
+        eyebrow="Before this block"
+        title="Training history"
+        description="Sessions already completed, as logged at the time."
+      />
+      <div className="space-y-3">
+        {history.map((block) => (
+          <NabuSurface key={block.programId} tone="muted" className="p-4">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <h3 className="text-sm font-semibold tracking-[-0.01em] text-primary">{block.title}</h3>
+                <p className="mt-0.5 text-[11px] text-quaternary">
+                  {block.subtitle}
+                  {block.period ? ` · ${block.period}` : ""}
+                </p>
+              </div>
+              <NabuBadge tone="green">
+                {block.completedCount} {block.completedCount === 1 ? "session" : "sessions"}
+              </NabuBadge>
+            </div>
+
+            {block.outcome ? (
+              <p className="mt-2 text-[11px] leading-relaxed text-tertiary">{block.outcome}</p>
+            ) : null}
+
+            <ol className="mt-3 space-y-2">
+              {block.entries.map((entry) => (
+                <li
+                  key={`${entry.week}-${entry.session}`}
+                  className="rounded-lg border border-secondary bg-secondary/60 p-2.5"
+                >
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span className="min-w-0 text-sm font-medium text-primary">
+                      W{entry.week} {entry.session} · {entry.label}
+                    </span>
+                    <span className="shrink-0 text-[11px] tabular-nums text-quaternary">
+                      {entry.completedAt ? formatCompletedAt(entry.completedAt) : "date not recorded"}
+                    </span>
+                  </div>
+                  {entry.note ? (
+                    <p className="mt-1 text-[11px] leading-relaxed text-tertiary">{entry.note}</p>
+                  ) : null}
+                </li>
+              ))}
+            </ol>
+          </NabuSurface>
+        ))}
+      </div>
+    </section>
   );
 }
 

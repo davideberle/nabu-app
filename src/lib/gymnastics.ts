@@ -16,7 +16,14 @@
  */
 
 import programData from "@/data/gymnastics-program.json";
-import { sessionKeysOf, type GymnasticsProgram, type GymnasticsSessionKey } from "./gymnastics-core";
+import archiveData from "@/data/gymnastics-archive.json";
+import {
+  archivedProgramIds,
+  sessionKeysOf,
+  type GymnasticsArchive,
+  type GymnasticsProgram,
+  type GymnasticsSessionKey,
+} from "./gymnastics-core";
 
 export * from "./gymnastics-core";
 
@@ -27,3 +34,18 @@ export const GYMNASTICS_PROGRAM = programData as GymnasticsProgram;
  * program so the UI, API, and progress helpers never hard-code a slot count.
  */
 export const GYMNASTICS_SESSION_KEYS: GymnasticsSessionKey[] = sessionKeysOf(GYMNASTICS_PROGRAM);
+
+/**
+ * Titles and session labels for blocks that came before the current one. Also a
+ * byte-for-byte copy of a health-owned canonical file
+ * (`projects/health-dashboard/gymnastics-archive.json`) and validated by
+ * `scripts/validate-gymnastics.mjs`. It records no completions of its own —
+ * whether a session happened is only ever read from Turso.
+ */
+export const GYMNASTICS_ARCHIVE = archiveData as GymnasticsArchive;
+
+/** Retired program ids the history read may query. Never the current one. */
+export const GYMNASTICS_ARCHIVED_PROGRAM_IDS: string[] = archivedProgramIds(
+  GYMNASTICS_ARCHIVE,
+  GYMNASTICS_PROGRAM.programId,
+);

@@ -7,6 +7,7 @@
 import { deepStrictEqual, equal } from "node:assert/strict";
 import { afterEach, describe, it } from "node:test";
 import {
+  evaluateHealthAccess,
   evaluatePlannerWriteAccess,
   getTrackerOnlyEmails,
   isTrackerOnlyEmail,
@@ -65,6 +66,59 @@ describe("evaluatePlannerWriteAccess", () => {
       evaluatePlannerWriteAccess({ user: { email: "assistant@davideberle.com" } }),
       { allowed: true },
     );
+  });
+});
+
+describe("evaluateHealthAccess", () => {
+  // Health data is personal, so this governs the GET as well as the POST — the
+  // gymnastics route calls it on both verbs.
+  it("rejects anonymous requests with 401", () => {
+    for (const session of [null, undefined, { user: null }]) {
+      deepStrictEqual(evaluateHealthAccess(session), {
+        allowed: false,
+        status: 401,
+        error: "Unauthorized",
+      });
+    }
+  });
+
+  it("rejects the tracker-only shared iPad account with 403, reads included", () => {
+    delete process.env.IPAD_TRACKER_ONLY_EMAILS;
+    deepStrictEqual(evaluateHealthAccess({ user: { email: "assistant@davideberle.com" } }), {
+      allowed: false,
+      status: 403,
+      error: "Forbidden",
+    });
+  });
+
+  it("allows the canonical authorized session", () => {
+    delete process.env.IPAD_TRACKER_ONLY_EMAILS;
+    deepStrictEqual(evaluateHealthAccess({ user: { email: "info@davideberle.com" } }), {
+      allowed: true,
+    });
+  });
+
+  it("follows the configured tracker-only list when overridden", () => {
+    process.env.IPAD_TRACKER_ONLY_EMAILS = "kiosk@example.com";
+    deepStrictEqual(evaluateHealthAccess({ user: { email: "kiosk@example.com" } }), {
+      allowed: false,
+      status: 403,
+      error: "Forbidden",
+    });
+  });
+
+  it("never diverges from the planner-write rule", () => {
+    delete process.env.IPAD_TRACKER_ONLY_EMAILS;
+    for (const session of [
+      null,
+      undefined,
+      { user: null },
+      { user: { email: "assistant@davideberle.com" } },
+      { user: { email: "info@davideberle.com" } },
+      { user: { email: "someone@else.com" } },
+    ]) {
+      deepStrictEqual(evaluateHealthAccess(session), evaluatePlannerWriteAccess(session));
+    }
   });
 });
 

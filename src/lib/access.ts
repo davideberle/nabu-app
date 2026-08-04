@@ -63,6 +63,19 @@ export function evaluatePlannerWriteAccess(session: PlannerWriteSession): Planne
 }
 
 /**
+ * Canonical decision for the health-domain API (gymnastics progress and the
+ * completed-block history it reads back).
+ *
+ * The rule is the same as a planner write, but it is stated separately because
+ * it also governs *reads*: health data is personal, so a tracker-only shared
+ * iPad account is refused a GET too, not just a mutation. Both the route and
+ * its contract test bind to this function, so the boundary has one definition.
+ */
+export function evaluateHealthAccess(session: PlannerWriteSession): PlannerWriteAccess {
+  return evaluatePlannerWriteAccess(session);
+}
+
+/**
  * API method/path combinations a trusted local runtime may perform with a
  * bearer token instead of a browser session (kitchen DESIGN.md §"Phase 4C").
  *

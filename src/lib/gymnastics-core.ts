@@ -60,6 +60,19 @@ export type GymnasticsNoteCard = {
   items: string[];
 };
 
+/** A titled list of guidance points, e.g. WOD scaling or masters scaling. */
+export type GymnasticsGuidanceCard = {
+  title: string;
+  intro: string;
+  points: string[];
+};
+
+/** A skill deliberately kept out of the block, plus the bar for adding it. */
+export type GymnasticsGate = {
+  skill: string;
+  requirement: string;
+};
+
 export type GymnasticsProgram = {
   programId: string;
   title: string;
@@ -83,7 +96,11 @@ export type GymnasticsProgram = {
     stopRules: string[];
     notes: string[];
   };
-  m60Scaling: { title: string; intro: string; points: string[] };
+  /** How to handle a workout that outruns the capacity the block has built. */
+  wodScaling: GymnasticsGuidanceCard;
+  /** Skills held out of the block, and what earns them afterwards. */
+  gates: { title: string; intro: string; items: GymnasticsGate[] };
+  m60Scaling: GymnasticsGuidanceCard;
   videoGroups: GymnasticsVideoGroup[];
   videos: GymnasticsVideo[];
 };
@@ -219,6 +236,127 @@ export function summarizeProgress(
     firstIncompleteWeek,
     byWeek,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Training history (completed blocks that came before the current one)
+// ---------------------------------------------------------------------------
+//
+// Completion is a fact about David's training, so it lives in Turso and nowhere
+// else — this file never decides that a session happened. The archive is only a
+// health-owned label sheet: block titles and session labels for program ids the
+// app no longer carries a full program for.
+
+/** A retired block's session slot, as the Health Dashboard labelled it. */
+export type GymnasticsArchivedSession = {
+  week: number;
+  session: GymnasticsSessionKey;
+  label: string;
+};
+
+export type GymnasticsArchivedBlock = {
+  programId: string;
+  title: string;
+  subtitle: string;
+  /** Human-readable span of the block, when the domain records one. */
+  period?: string;
+  /** Why the block was closed — the training meaning it handed forward. */
+  outcome?: string;
+  sessions: GymnasticsArchivedSession[];
+};
+
+export type GymnasticsArchive = {
+  blocks: GymnasticsArchivedBlock[];
+};
+
+/** One completed session in the history view. */
+export type GymnasticsHistoryEntry = {
+  week: number;
+  session: GymnasticsSessionKey;
+  /** The archived label for this slot, or a derived fallback. */
+  label: string;
+  completedAt: string | null;
+  note?: string;
+};
+
+export type GymnasticsHistoryBlock = {
+  programId: string;
+  title: string;
+  subtitle: string;
+  period?: string;
+  outcome?: string;
+  completedCount: number;
+  entries: GymnasticsHistoryEntry[];
+};
+
+/** A stored row plus the program it belongs to, as read back from Turso. */
+export type GymnasticsHistoryRow = GymnasticsProgressRow & { programId: string };
+
+/**
+ * Project stored rows into the completed-block history the page renders. Pure.
+ *
+ * Rules, all of which the tests pin:
+ *  - only `completed` rows count — an untouched row from a retired block is not
+ *    history, it is a leftover;
+ *  - the current program is never history, however complete it is;
+ *  - blocks appear in archive order, and a block with no completed rows is
+ *    dropped entirely (so the retired 10-week block stays invisible);
+ *  - rows from a program id the archive does not describe are dropped, because
+ *    the app has no honest title or label to show for them.
+ */
+export function summarizeHistory(
+  archive: GymnasticsArchive,
+  rows: GymnasticsHistoryRow[],
+  currentProgramId: string,
+): GymnasticsHistoryBlock[] {
+  const blocks: GymnasticsHistoryBlock[] = [];
+
+  for (const block of archive.blocks) {
+    if (block.programId === currentProgramId) continue;
+
+    const entries = rows
+      .filter((row) => row.programId === block.programId && row.completed)
+      .map((row) => {
+        const known = block.sessions.find(
+          (s) => s.week === row.week && s.session === row.session,
+        );
+        return {
+          week: row.week,
+          session: row.session,
+          label: known?.label ?? `Week ${row.week} · Session ${row.session}`,
+          completedAt: row.completedAt,
+          ...(row.note ? { note: row.note } : {}),
+        };
+      })
+      .sort((a, b) => a.week - b.week || a.session.localeCompare(b.session));
+
+    if (entries.length === 0) continue;
+
+    blocks.push({
+      programId: block.programId,
+      title: block.title,
+      subtitle: block.subtitle,
+      ...(block.period ? { period: block.period } : {}),
+      ...(block.outcome ? { outcome: block.outcome } : {}),
+      completedCount: entries.length,
+      entries,
+    });
+  }
+
+  return blocks;
+}
+
+/**
+ * Program ids the archive describes, minus the current one — the exact set the
+ * history read is allowed to query. Pure.
+ */
+export function archivedProgramIds(
+  archive: GymnasticsArchive,
+  currentProgramId: string,
+): string[] {
+  return archive.blocks
+    .map((b) => b.programId)
+    .filter((id) => id !== currentProgramId);
 }
 
 /**

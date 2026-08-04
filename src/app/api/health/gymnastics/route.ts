@@ -1,26 +1,44 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
-import { isTrackerOnlyEmail } from "@/lib/access";
-import { getGymnasticsProgress, setGymnasticsProgress } from "@/lib/health-db";
-import { GYMNASTICS_PROGRAM, parseProgressUpdate } from "@/lib/gymnastics";
+import { evaluateHealthAccess } from "@/lib/access";
+import {
+  getCompletedGymnasticsHistory,
+  getGymnasticsProgress,
+  setGymnasticsProgress,
+} from "@/lib/health-db";
+import {
+  GYMNASTICS_ARCHIVE,
+  GYMNASTICS_ARCHIVED_PROGRAM_IDS,
+  GYMNASTICS_PROGRAM,
+  parseProgressUpdate,
+  summarizeHistory,
+} from "@/lib/gymnastics";
 
 const PROGRAM_ID = GYMNASTICS_PROGRAM.programId;
 
 /**
  * GET /api/health/gymnastics
- * Returns stored week/session completion for the current program.
+ *
+ * Returns stored week/session completion for the current program, plus a
+ * read-only view of completed sessions from the blocks that came before it.
+ * `progress` is the only thing POST can write; `history` is never writable.
  */
 export async function GET() {
-  const session = await auth();
-  if (!session?.user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-  if (isTrackerOnlyEmail(session.user.email)) {
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  const access = evaluateHealthAccess(await auth());
+  if (!access.allowed) {
+    return NextResponse.json({ error: access.error }, { status: access.status });
   }
 
-  const progress = await getGymnasticsProgress(PROGRAM_ID);
-  return NextResponse.json({ programId: PROGRAM_ID, progress });
+  const [progress, historyRows] = await Promise.all([
+    getGymnasticsProgress(PROGRAM_ID),
+    getCompletedGymnasticsHistory(GYMNASTICS_ARCHIVED_PROGRAM_IDS),
+  ]);
+
+  return NextResponse.json({
+    programId: PROGRAM_ID,
+    progress,
+    history: summarizeHistory(GYMNASTICS_ARCHIVE, historyRows, PROGRAM_ID),
+  });
 }
 
 /**
@@ -31,12 +49,9 @@ export async function GET() {
  * needs no change here. Uncompleting is a POST with completed: false.
  */
 export async function POST(request: Request) {
-  const session = await auth();
-  if (!session?.user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-  if (isTrackerOnlyEmail(session.user.email)) {
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  const access = evaluateHealthAccess(await auth());
+  if (!access.allowed) {
+    return NextResponse.json({ error: access.error }, { status: access.status });
   }
 
   let body: unknown;

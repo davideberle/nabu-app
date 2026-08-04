@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { isTrackerOnlyEmail } from "@/lib/access";
-import { getGymnasticsProgress } from "@/lib/health-db";
-import { GYMNASTICS_PROGRAM, type GymnasticsProgressRow } from "@/lib/gymnastics";
+import { getCompletedGymnasticsHistory, getGymnasticsProgress } from "@/lib/health-db";
+import {
+  GYMNASTICS_ARCHIVE,
+  GYMNASTICS_ARCHIVED_PROGRAM_IDS,
+  GYMNASTICS_PROGRAM,
+  summarizeHistory,
+  type GymnasticsHistoryBlock,
+  type GymnasticsProgressRow,
+} from "@/lib/gymnastics";
 import { GymnasticsClient } from "./client";
 
 export const metadata: Metadata = {
@@ -15,8 +22,12 @@ export default async function GymnasticsPage() {
   const restricted = isTrackerOnlyEmail(session?.user?.email);
 
   let initialProgress: GymnasticsProgressRow[] = [];
+  let history: GymnasticsHistoryBlock[] = [];
   if (!restricted && session?.user) {
-    const rows = await getGymnasticsProgress(GYMNASTICS_PROGRAM.programId);
+    const [rows, historyRows] = await Promise.all([
+      getGymnasticsProgress(GYMNASTICS_PROGRAM.programId),
+      getCompletedGymnasticsHistory(GYMNASTICS_ARCHIVED_PROGRAM_IDS),
+    ]);
     initialProgress = rows.map((r) => ({
       week: r.week,
       session: r.session,
@@ -24,12 +35,14 @@ export default async function GymnasticsPage() {
       completedAt: r.completedAt,
       ...(r.note ? { note: r.note } : {}),
     }));
+    history = summarizeHistory(GYMNASTICS_ARCHIVE, historyRows, GYMNASTICS_PROGRAM.programId);
   }
 
   return (
     <GymnasticsClient
       program={GYMNASTICS_PROGRAM}
       initialProgress={initialProgress}
+      history={history}
       restricted={restricted}
     />
   );
