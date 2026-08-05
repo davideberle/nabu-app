@@ -60,8 +60,11 @@ function TodayCard({
   onRefresh: () => void;
 }) {
   return (
-    <NabuSurface tone="accent" className="p-4 sm:p-5">
-      <NabuSectionHeader eyebrow={`${day.dayOfWeek} — Today`} title="Health check-in" />
+    <NabuSurface tone="muted" className="p-4 sm:p-5">
+      <NabuSectionHeader eyebrow={`${day.dayOfWeek} — Today`} title="Corrections" />
+      <p className="mt-1 text-[11px] text-quaternary">
+        Nothing here needs a daily entry — fix something only when the inferred picture is wrong.
+      </p>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <SignalRow label="Breakfast" value={day.breakfast.label} confidence={day.breakfast.confidence} />
@@ -418,50 +421,43 @@ function MeditationField({
 // 7-day summary
 // ---------------------------------------------------------------------------
 
-function WeekSummarySection({ summary }: { summary: HealthWeekSummary }) {
+function AlcoholStatusBadge({ day }: { day: HealthDaySnapshot }) {
+  if (day.alcohol.status === "alcohol") {
+    return (
+      <NabuBadge tone="amber">
+        {day.alcohol.count} drink{day.alcohol.count > 1 ? "s" : ""}
+      </NabuBadge>
+    );
+  }
+  if (day.alcohol.status === "alcohol_free") {
+    return <NabuBadge tone="green">Alcohol-free</NabuBadge>;
+  }
+  return <NabuBadge tone="stone">Unknown</NabuBadge>;
+}
+
+function WeekAlcoholSection({ summary }: { summary: HealthWeekSummary }) {
   return (
     <section>
-      <NabuSectionHeader className="mb-3" eyebrow="Rolling 7 days" title="Week summary" />
+      <NabuSectionHeader className="mb-3" eyebrow="Rolling 7 days" title="Alcohol week" />
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="grid grid-cols-3 gap-3">
         <NabuStat
-          label="Alcohol"
-          value={`${summary.alcoholDrinks} drink${summary.alcoholDrinks !== 1 ? "s" : ""}`}
-          tone={summary.alcoholDrinks === 0 ? "green" : summary.alcoholDrinks <= 4 ? "amber" : "red"}
+          label="Alcohol days"
+          value={`${summary.alcoholDays}/7`}
+          tone={summary.alcoholDays > 4 ? "amber" : "stone"}
         />
         <NabuStat
-          label="Alcohol-free"
-          value={`${summary.alcoholFreeDays}/7 days`}
-          tone={summary.alcoholFreeDays >= 5 ? "green" : summary.alcoholFreeDays >= 3 ? "amber" : "red"}
+          label="Confirmed free"
+          value={`${summary.alcoholFreeDays}/7`}
+          tone={summary.alcoholFreeDays > 0 ? "green" : "stone"}
         />
-        <NabuStat
-          label="Sleep logged"
-          value={
-            summary.averageSleepHours
-              ? `${summary.averageSleepHours}h avg`
-              : `${summary.sleepLogged}/7 logged`
-          }
-          tone={summary.sleepLogged >= 5 ? "green" : summary.sleepLogged >= 2 ? "amber" : "stone"}
-        />
-        <NabuStat
-          label="Meditation"
-          value={`${summary.meditationDays}/7 days`}
-          tone={summary.meditationDays >= 5 ? "green" : summary.meditationDays >= 2 ? "amber" : "stone"}
-        />
+        <NabuStat label="Unknown" value={`${summary.unknownAlcoholDays}/7`} tone="stone" />
       </div>
 
-      <div className="mt-3">
-        <NabuSurface className="p-4">
-          <p className="text-[10px] uppercase tracking-[0.12em] text-quaternary">Data completeness</p>
-          <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-secondary">
-            <div
-              className="h-full rounded-full bg-emerald-400 transition-all"
-              style={{ width: `${summary.dataCompleteness}%` }}
-            />
-          </div>
-          <p className="mt-1 text-xs text-quaternary">{summary.dataCompleteness}% of signals logged</p>
-        </NabuSurface>
-      </div>
+      <p className="mt-2 text-[11px] text-quaternary">
+        Days without evidence stay unknown — they never count as alcohol-free. The Sunday
+        review is the place to settle them.
+      </p>
 
       {/* Day-by-day breakdown */}
       <div className="mt-4 space-y-2">
@@ -489,35 +485,47 @@ function DaySummaryRow({ day }: { day: HealthDaySnapshot }) {
             {dateLabel}
             {isToday ? <NabuBadge tone="green" className="ml-2">Today</NabuBadge> : null}
           </p>
-          <div className="mt-1 flex flex-wrap gap-x-4 gap-y-0.5 text-[11px] text-quaternary">
-            <span className="flex items-center gap-1">
-              <ConfidenceDot confidence={day.breakfast.confidence} /> Breakfast
-            </span>
-            <span className="flex items-center gap-1">
-              <ConfidenceDot confidence={day.lunch.confidence} /> Lunch
-            </span>
-            <span className="flex items-center gap-1">
-              <ConfidenceDot confidence={day.dinner.confidence} /> Dinner
-            </span>
-            <span className="flex items-center gap-1">
-              <ConfidenceDot confidence={day.sleep.confidence} /> Sleep
-            </span>
-            <span className="flex items-center gap-1">
-              <ConfidenceDot confidence={day.meditation.confidence} /> Med
-            </span>
-          </div>
+          <p className="mt-1 truncate text-[11px] text-quaternary">
+            {day.dinner.label
+              ? `Dinner: ${day.dinner.label}${day.dinner.source ? ` (${day.dinner.source})` : ""}`
+              : "Dinner unknown"}
+          </p>
         </div>
         <div className="shrink-0 text-right">
-          {day.alcohol.count > 0 ? (
-            <NabuBadge tone="amber">
-              {day.alcohol.count} drink{day.alcohol.count > 1 ? "s" : ""}
-            </NabuBadge>
-          ) : (
-            <NabuBadge tone="stone">AF</NabuBadge>
-          )}
+          <AlcoholStatusBadge day={day} />
         </div>
       </div>
     </NabuCard>
+  );
+}
+
+function SecondarySignalsSection({ summary }: { summary: HealthWeekSummary }) {
+  return (
+    <section>
+      <NabuSectionHeader className="mb-3" eyebrow="Optional signals" title="Sleep & meditation" />
+      <div className="grid grid-cols-2 gap-3">
+        <NabuStat
+          label="Sleep"
+          value={
+            summary.averageSleepHours
+              ? `${summary.averageSleepHours}h avg`
+              : summary.sleepLogged > 0
+                ? `${summary.sleepLogged} reported`
+                : "Nothing reported"
+          }
+          tone="stone"
+        />
+        <NabuStat
+          label="Meditation"
+          value={
+            summary.meditationDays > 0
+              ? `${summary.meditationDays} day${summary.meditationDays > 1 ? "s" : ""}`
+              : "Nothing reported"
+          }
+          tone="stone"
+        />
+      </div>
+    </section>
   );
 }
 
@@ -569,7 +577,7 @@ export default function HealthPage() {
           <span className="min-w-0 flex-1">
             <span className="block text-sm font-semibold tracking-[-0.01em] text-primary">Gymnastics program</span>
             <span className="block truncate text-xs text-quaternary">
-              Link two kipping pull-ups · 2-week block, track your sessions
+              Ordinary kipping pull-up capacity · 3-week block, track your sessions
             </span>
           </span>
           <svg
@@ -591,6 +599,9 @@ export default function HealthPage() {
           <NabuEmptyState icon="🔒" title="Access restricted" description={error} />
         ) : data && todaySnapshot ? (
           <>
+            <WeekAlcoholSection summary={data.summary} />
+            <SecondarySignalsSection summary={data.summary} />
+
             {/* Confidence legend */}
             <div className="flex gap-4 text-[10px] text-quaternary">
               <ConfidenceLabel confidence="logged" />
@@ -599,7 +610,6 @@ export default function HealthPage() {
             </div>
 
             <TodayCard day={todaySnapshot} onRefresh={load} />
-            <WeekSummarySection summary={data.summary} />
           </>
         ) : (
           <NabuEmptyState

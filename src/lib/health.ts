@@ -27,7 +27,7 @@ export type DataConfidence = "logged" | "assumed" | "missing";
 // Breakfast assumption
 // ---------------------------------------------------------------------------
 
-const DEFAULT_BREAKFAST = "Flat white with oat milk";
+const DEFAULT_BREAKFAST = "One doppio macchiato with oat milk";
 
 export function getBreakfastLabel(log: HealthDailyLog | null): {
   label: string;
@@ -87,6 +87,25 @@ export function resolveDinnerFromKitchen(
 }
 
 // ---------------------------------------------------------------------------
+// Alcohol day status
+// ---------------------------------------------------------------------------
+
+/**
+ * The primary weekly signal: was a day a confirmed alcohol day, a confirmed
+ * alcohol-free day, or is there no evidence either way?
+ *
+ * The absence of an alcohol event is NOT evidence of an alcohol-free day.
+ * Confirming an alcohol-free day requires explicit day-state storage with
+ * provenance (a later phase), so until that exists a day without events must
+ * read as `unknown`, never as `alcohol_free`.
+ */
+export type AlcoholDayStatus = "alcohol" | "alcohol_free" | "unknown";
+
+export function getAlcoholDayStatus(events: HealthAlcoholEvent[]): AlcoholDayStatus {
+  return events.length > 0 ? "alcohol" : "unknown";
+}
+
+// ---------------------------------------------------------------------------
 // Per-day health snapshot
 // ---------------------------------------------------------------------------
 
@@ -96,7 +115,12 @@ export type HealthDaySnapshot = {
   breakfast: { label: string; confidence: DataConfidence };
   lunch: { label: string | null; confidence: DataConfidence };
   dinner: { label: string | null; source: string | null; confidence: DataConfidence };
-  alcohol: { events: HealthAlcoholEvent[]; count: number; confidence: DataConfidence };
+  alcohol: {
+    events: HealthAlcoholEvent[];
+    count: number;
+    status: AlcoholDayStatus;
+    confidence: DataConfidence;
+  };
   sleep: { report: HealthSleepReport | null; confidence: DataConfidence };
   meditation: { log: HealthMeditationLog | null; confidence: DataConfidence };
 };
@@ -135,6 +159,7 @@ export function buildDaySnapshot(
     alcohol: {
       events: alcoholEvents,
       count: alcoholEvents.length,
+      status: getAlcoholDayStatus(alcoholEvents),
       confidence: alcoholEvents.length > 0 ? "logged" : "missing",
     },
     sleep: {
@@ -154,37 +179,42 @@ export function buildDaySnapshot(
 
 export type HealthWeekSummary = {
   days: HealthDaySnapshot[];
-  alcoholDrinks: number;
+  /** Days with confirmed alcohol evidence. */
+  alcoholDays: number;
+  /** Days explicitly confirmed alcohol-free. Never inferred from missing data. */
   alcoholFreeDays: number;
+  /** Days with no alcohol evidence either way. */
+  unknownAlcoholDays: number;
+  /** Total logged drink events across the window. */
+  alcoholDrinks: number;
   sleepLogged: number;
   averageSleepHours: number | null;
   meditationDays: number;
   meditationStreak: number;
-  dataCompleteness: number; // 0–100
 };
 
 export function buildWeekSummary(days: HealthDaySnapshot[]): HealthWeekSummary {
-  let alcoholDrinks = 0;
+  let alcoholDays = 0;
   let alcoholFreeDays = 0;
+  let unknownAlcoholDays = 0;
+  let alcoholDrinks = 0;
   let sleepLogged = 0;
   let totalSleepHours = 0;
   let meditationDays = 0;
   let currentStreak = 0;
   let maxStreak = 0;
 
-  let loggedSignals = 0;
-  const totalSignals = days.length * 4; // alcohol, sleep, meditation, lunch
-
   // Process days in chronological order for streak calculation
   const sorted = [...days].sort((a, b) => a.date.localeCompare(b.date));
 
   for (const day of sorted) {
     alcoholDrinks += day.alcohol.count;
-    if (day.alcohol.count === 0) alcoholFreeDays++;
+    if (day.alcohol.status === "alcohol") alcoholDays++;
+    else if (day.alcohol.status === "alcohol_free") alcoholFreeDays++;
+    else unknownAlcoholDays++;
 
     if (day.sleep.report) {
       sleepLogged++;
-      loggedSignals++;
       if (day.sleep.report.hours) totalSleepHours += day.sleep.report.hours;
     }
 
@@ -192,24 +222,21 @@ export function buildWeekSummary(days: HealthDaySnapshot[]): HealthWeekSummary {
       meditationDays++;
       currentStreak++;
       if (currentStreak > maxStreak) maxStreak = currentStreak;
-      loggedSignals++;
     } else {
       currentStreak = 0;
     }
-
-    if (day.alcohol.confidence === "logged") loggedSignals++;
-    if (day.lunch.confidence === "logged") loggedSignals++;
   }
 
   return {
     days: sorted,
-    alcoholDrinks,
+    alcoholDays,
     alcoholFreeDays,
+    unknownAlcoholDays,
+    alcoholDrinks,
     sleepLogged,
     averageSleepHours: sleepLogged > 0 ? Math.round((totalSleepHours / sleepLogged) * 10) / 10 : null,
     meditationDays,
     meditationStreak: maxStreak,
-    dataCompleteness: totalSignals > 0 ? Math.round((loggedSignals / totalSignals) * 100) : 0,
   };
 }
 
