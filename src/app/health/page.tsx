@@ -14,6 +14,7 @@ import {
   NabuSurface,
   cn,
 } from "@/components/ui/nabu";
+import { getDinnerSourceLabel } from "@/lib/health";
 import type { DataConfidence, HealthDaySnapshot, HealthWeekSummary } from "@/lib/health";
 
 // ---------------------------------------------------------------------------
@@ -59,6 +60,8 @@ function TodayCard({
   day: HealthDaySnapshot;
   onRefresh: () => void;
 }) {
+  const dinnerSource = getDinnerSourceLabel(day.dinner.source);
+
   return (
     <NabuSurface tone="muted" className="p-4 sm:p-5">
       <NabuSectionHeader eyebrow={`${day.dayOfWeek} — Today`} title="Corrections" />
@@ -73,7 +76,7 @@ function TodayCard({
           label="Dinner"
           value={day.dinner.label ?? "Not logged"}
           confidence={day.dinner.confidence}
-          detail={day.dinner.source ? `via ${day.dinner.source}` : undefined}
+          detail={dinnerSource ? `via ${dinnerSource}` : undefined}
         />
         <AlcoholField date={day.date} events={day.alcohol.events} onSaved={onRefresh} />
         <SleepField date={day.date} report={day.sleep.report} onSaved={onRefresh} />
@@ -455,8 +458,8 @@ function WeekAlcoholSection({ summary }: { summary: HealthWeekSummary }) {
       </div>
 
       <p className="mt-2 text-[11px] text-quaternary">
-        Days without evidence stay unknown — they never count as alcohol-free. The Sunday
-        review is the place to settle them.
+        Days without evidence stay unknown — they never count as alcohol-free, and they
+        stay unknown until a day is explicitly confirmed.
       </p>
 
       {/* Day-by-day breakdown */}
@@ -476,6 +479,7 @@ function DaySummaryRow({ day }: { day: HealthDaySnapshot }) {
     day: "numeric",
     month: "short",
   }).format(new Date(day.date + "T12:00:00"));
+  const dinnerSource = getDinnerSourceLabel(day.dinner.source);
 
   return (
     <NabuCard>
@@ -487,7 +491,7 @@ function DaySummaryRow({ day }: { day: HealthDaySnapshot }) {
           </p>
           <p className="mt-1 truncate text-[11px] text-quaternary">
             {day.dinner.label
-              ? `Dinner: ${day.dinner.label}${day.dinner.source ? ` (${day.dinner.source})` : ""}`
+              ? `Dinner: ${day.dinner.label}${dinnerSource ? ` (via ${dinnerSource})` : ""}`
               : "Dinner unknown"}
           </p>
         </div>

@@ -86,6 +86,29 @@ export function resolveDinnerFromKitchen(
   return null;
 }
 
+const DINNER_SOURCE_LABELS: Record<string, string> = {
+  "live-cooking": "Live Cooking",
+  "meal-plan": "the meal plan",
+};
+
+/**
+ * Human-readable label for a dinner source, for display next to the dinner.
+ *
+ * Internal slugs map to their display names. A source that still looks like a
+ * slug is omitted rather than leaked to the UI; free-text sources (a log can
+ * carry anything the writer sent) pass through unchanged.
+ */
+export function getDinnerSourceLabel(source: string | null | undefined): string | null {
+  const trimmed = source?.trim();
+  if (!trimmed) return null;
+
+  const known = DINNER_SOURCE_LABELS[trimmed.toLowerCase()];
+  if (known) return known;
+
+  const looksLikeSlug = /^[a-z0-9]+(?:[-_][a-z0-9]+)+$/.test(trimmed);
+  return looksLikeSlug ? null : trimmed;
+}
+
 // ---------------------------------------------------------------------------
 // Alcohol day status
 // ---------------------------------------------------------------------------

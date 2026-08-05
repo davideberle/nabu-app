@@ -13,6 +13,7 @@ import {
   buildWeekSummary,
   getAlcoholDayStatus,
   getBreakfastLabel,
+  getDinnerSourceLabel,
   resolveDinnerFromKitchen,
   type HealthDaySnapshot,
 } from "./health.ts";
@@ -132,5 +133,29 @@ describe("dinner resolution", () => {
     equal(fromPlan?.source, "meal-plan");
 
     equal(resolveDinnerFromKitchen(null, null, "2026-08-03"), null);
+  });
+});
+
+describe("dinner source label", () => {
+  it("never surfaces an internal slug", () => {
+    // The slugs the resolver itself produces must both have a display name.
+    for (const source of ["live-cooking", "meal-plan"]) {
+      const label = getDinnerSourceLabel(source);
+      ok(label, `expected a label for ${source}`);
+      doesNotMatch(label, /-/);
+    }
+
+    // Any other slug-shaped source is omitted rather than shown raw.
+    equal(getDinnerSourceLabel("some-future-source"), null);
+    equal(getDinnerSourceLabel("weekly_plan"), null);
+  });
+
+  it("passes free-text sources through and drops empty ones", () => {
+    equal(getDinnerSourceLabel("Dinner at Kronenhalle"), "Dinner at Kronenhalle");
+    equal(getDinnerSourceLabel("  Leftovers  "), "Leftovers");
+    equal(getDinnerSourceLabel(""), null);
+    equal(getDinnerSourceLabel("   "), null);
+    equal(getDinnerSourceLabel(null), null);
+    equal(getDinnerSourceLabel(undefined), null);
   });
 });
