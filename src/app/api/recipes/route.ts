@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { revalidatePath } from "next/cache";
+import { auth } from "@/auth";
+import { evaluatePlannerWriteAccess } from "@/lib/access";
 import {
   createMyRecipe,
   updateMyRecipe,
@@ -13,7 +15,15 @@ export async function GET() {
   return NextResponse.json(recipes);
 }
 
+// My Recipes rows are planner candidate inputs (dish_type/meal_role drive the
+// main gate), so every mutation needs the canonical authorized session. The
+// add-recipe runtime writes Turso directly and does not use this route.
 export async function POST(request: NextRequest) {
+  const access = evaluatePlannerWriteAccess(await auth());
+  if (!access.allowed) {
+    return NextResponse.json({ error: access.error }, { status: access.status });
+  }
+
   const recipe = await request.json();
 
   if (!recipe.id || !recipe.name) {
@@ -31,6 +41,11 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
+  const access = evaluatePlannerWriteAccess(await auth());
+  if (!access.allowed) {
+    return NextResponse.json({ error: access.error }, { status: access.status });
+  }
+
   const recipe = await request.json();
 
   if (!recipe.id) {
@@ -48,6 +63,11 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
+  const access = evaluatePlannerWriteAccess(await auth());
+  if (!access.allowed) {
+    return NextResponse.json({ error: access.error }, { status: access.status });
+  }
+
   const { id } = await request.json();
 
   if (!id) {

@@ -50,42 +50,11 @@ export type Recipe = {
   lastMade?: string;
 };
 
-// Cookbook to cuisine mapping
-const COOKBOOK_CUISINES: Record<string, string> = {
-  "Ottolenghi: The Cookbook": "Middle Eastern",
-  Jerusalem: "Middle Eastern",
-  Falastin: "Middle Eastern",
-  Persiana: "Middle Eastern",
-  "Souk to Table": "Middle Eastern",
-  Plenty: "Middle Eastern",
-  "Plenty More": "Middle Eastern",
-  "Ottolenghi Simple": "Middle Eastern",
-  "The Curry Guy": "Indian",
-  "The Curry Guy Bible": "Indian",
-  "The Indian Vegan": "Indian",
-  "Vietnamese Food Any Day": "Vietnamese",
-  "Vegan Vietnamese": "Vietnamese",
-  "Afro-Vegan": "African & Caribbean",
-  Plentiful: "Caribbean",
-  "Black Rican Vegan": "Caribbean",
-  "The Vegan Korean": "Korean",
-  "Mexican Home Cooking": "Mexican",
-  "Land of Fish and Rice": "Chinese",
-  "Four Seasons": "Italian",
-  "Italian And Lebanese Cookbook": "Mediterranean",
-  "More Than Carbonara": "Italian",
-  "Pasta for All Seasons": "Italian",
-  "The Best Pasta Recipes": "Italian",
-  "The Classic Italian Cook Book": "Italian",
-  "Zagami Family Cookbook": "Italian",
-  "The Authentic Greek Kitchen": "Greek",
-  "The Complete Greek Cookbook": "Greek",
-  "The Complete and Authentic Thai Curry Cookbook 2": "Thai",
-  "Real Thai Cooking": "Thai",
-  "Thai Spice Recipes": "Thai",
-  "Vegan Nigerian Kitchen": "Nigerian",
-  "Tagine Cookbook": "Moroccan",
-};
+// Cookbook→cuisine mapping and the pure cuisine/dietary helpers moved to
+// meals-core.ts so the planner gate/classifier stay dependency-free; they are
+// re-exported here unchanged for all existing importers.
+import { getCuisine, getDietary } from "./meals-core.ts";
+export { getCuisine, getDietary, COOKBOOK_CUISINES } from "./meals-core.ts";
 
 // Cookbooks hidden from all browse surfaces (data preserved for future recovery).
 const HIDDEN_COOKBOOKS = new Set([
@@ -254,20 +223,6 @@ export function searchRecipes(query: string, recipes: Recipe[]): RecipeSearchRes
     if (b.searchScore !== a.searchScore) return b.searchScore - a.searchScore;
     return a.name.localeCompare(b.name);
   });
-}
-
-// Get cuisine for a recipe (sync — pure function)
-export function getCuisine(recipe: Recipe): string {
-  const cookbook = recipe.source?.cookbook;
-  if (cookbook && COOKBOOK_CUISINES[cookbook]) {
-    return COOKBOOK_CUISINES[cookbook];
-  }
-  return "Other";
-}
-
-// Get dietary tags for a recipe (sync — pure function)
-export function getDietary(recipe: Recipe): string[] {
-  return recipe.dietary || recipe.tags?.dietary || [];
 }
 
 // Derive low-calorie flag from name/dish_type heuristics.

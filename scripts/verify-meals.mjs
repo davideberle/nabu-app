@@ -1,10 +1,34 @@
 #!/usr/bin/env node
-// Targeted verification for meal-planner eligibility and season filtering.
+// Targeted verification for meal-planner eligibility, bucket classification,
+// season filtering, metadata normalization, and save-boundary sanitation.
+//
+// Phase 3B rule: this script imports and exercises the PRODUCTION safety gate
+// and classifier from src/lib/meals.ts (backed by meals-core.ts) instead of
+// maintaining a divergent copy — if production behavior drifts, these checks
+// fail. It is read-only: no database module is imported and nothing is
+// written.
+//
 // Run: node scripts/verify-meals.mjs
 
 import { readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import {
+  isMainPlannerCandidate,
+  classifyPlannerBucket,
+  selectCandidateMains,
+  sanitizeCandidateItems,
+  normalizePlannerCuisine,
+  normalizePlannerTitle,
+  plannerPolicy,
+  DEFAULT_PLANNER_POLICY,
+  CANDIDATE_BUCKET_CONTRACT,
+  CANDIDATE_BUCKET_ORDER,
+  _isDinnerWorthy as isDinnerWorthy,
+  _isWeekendMainWorthy as isWeekendMainWorthy,
+  _recipeSeason as recipeSeason,
+  _filterBySeason as filterBySeason,
+} from "../src/lib/meals.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const bundle = JSON.parse(
@@ -28,97 +52,7 @@ function find(id) {
   return bundle.find((r) => r.id === id);
 }
 
-// ---- helpers mirroring meals.ts logic ----
-
-const EXCLUDED_DISH_TYPES = new Set([
-  "dessert", "baking", "breakfast", "drink", "condiment", "base", "bread", "component",
-]);
-const EXCLUDED_CHAPTER_PATTERNS = [
-  "dessert", "sweet", "baking", "patisserie", "pastry",
-  "bread", "breakfast", "brunch", "drink", "beverage",
-  "smoothie", "mylkshake", "coffee", "basic recipe",
-  "basic sauce", "base sauce", "kitchen basic", "know-how",
-  "condiment", "pickle", "preserve", "chutney", "spice blend",
-  "desayuno",
-];
-
-function isDinnerWorthy(recipe) {
-  const dishTypes = recipe.category?.dish_type ?? [];
-  const lowTypes = dishTypes.map((t) => t.toLowerCase());
-  if (lowTypes.some((t) => EXCLUDED_DISH_TYPES.has(t))) return false;
-  const chapter = (recipe.source?.chapter || recipe.category?.chapter || "").toLowerCase();
-  if (chapter && EXCLUDED_CHAPTER_PATTERNS.some((p) => chapter.includes(p))) return false;
-  const hasMainRole = lowTypes.some((t) => t === "main" || t === "soup" || t === "salad");
-  if (lowTypes.includes("side") && !hasMainRole) return false;
-  if (lowTypes.includes("vegetable") && !hasMainRole) return false;
-  if (lowTypes.includes("starter") && !hasMainRole) return false;
-  const nameLower = recipe.name.toLowerCase();
-  const breakfastWords = ["breakfast", "brunch", "morning", "cereal", "muesli", "smoothie", "juice", "milkshake", "scramble", "scrambled egg", "pancake", "waffle", "johnnycake", "french toast", "granola", "porridge", "oatmeal"];
-  if (breakfastWords.some((w) => nameLower.includes(w))) return false;
-  const snackWords = ["snack", "bar ", "energy ball", "trail mix", "dip", "hummus", "guacamole", "salsa", "cracker", "chip", "popcorn", "nut butter", "lunch box", "lunchbox", "sandwich", "wrap"];
-  if (snackWords.some((w) => nameLower.includes(w))) return false;
-  const dessertWords = ["cake", "brownie", "cookie", "muffin", "cupcake", "fudge", "ice cream", "sorbet", "pudding", "truffle", "macaron"];
-  if (dessertWords.some((w) => nameLower.includes(w))) return false;
-  const sauceWords = ["dressing", "vinaigrette", "aioli", "mayonnaise", "ketchup"];
-  if (sauceWords.some((w) => nameLower.includes(w))) return false;
-  const mealRole = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
-  if (["breakfast", "brunch", "lunch", "drink", "snack"].includes(mealRole)) return false;
-  if (recipe.ingredients.length < 3) return false;
-  if (!recipe.method || recipe.method.length < 2) return false;
-  return true;
-}
-
-function isWeekendMainWorthy(recipe) {
-  if (!isDinnerWorthy(recipe)) return false;
-  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
-  if (!dishTypes.includes("main")) return false;
-  const intro = (recipe.introduction || recipe.intro || "").toLowerCase();
-  if (/\b(breakfast|brunch|snack)\b/.test(intro)) return false;
-  return true;
-}
-
-const SEASON_SIGNALS = {
-  spring: /\b(spring|asparagus|fava bean|ramp|wild garlic|pea shoot|new potato|morel)\b/i,
-  summer: /\b(summer|watermelon|peach|grilled corn|zucchini|bbq|barbecue|gazpacho|ice pop|popsicle|sundried)\b/i,
-  fall: /\b(fall|autumn|squash|pumpkin|apple cider|wheat berr|cranberr|sweet potato)\b/i,
-  winter: /\b(winter|root vegetable|parsnip|turnip|braised|braise|hearty stew|mulled|warming)\b/i,
-};
-const INTRO_SEASON_SIGNALS = {
-  spring: /\b(spring (dish|recipe|meal|brunch|dinner|lunch|salad|vegeta|cook|treat|favor)|(in|for|of) spring)\b/i,
-  summer: /\b(summer (dish|recipe|meal|salad|treat|favor|cook|grill|bbq)|(in|for|of) summer|hot day|warm[- ]weather)\b/i,
-  fall: /\b(fall (dish|recipe|meal|dinner|cook|treat|favor|day|evening)|(in|for|of) (fall|autumn)|autumn(al)?)\b/i,
-  winter: /\b(winter (dish|recipe|meal|dinner|cook|treat|favor|warm|stew)|(in|for|of) winter|cold day|cold[- ]weather|fireside)\b/i,
-};
-const SEASON_NAMES = ["spring", "summer", "fall", "winter"];
-const OPPOSITE_SEASON = { spring: "fall", summer: "winter", fall: "spring", winter: "summer" };
-
-function recipeSeason(recipe) {
-  const seasonTags = recipe.tags?.season ?? [];
-  for (const tag of seasonTags) {
-    const lower = tag.toLowerCase();
-    if (SEASON_NAMES.includes(lower)) return lower;
-  }
-  const name = recipe.name;
-  for (const [season, re] of Object.entries(SEASON_SIGNALS)) {
-    if (re.test(name)) return season;
-  }
-  const chapter = (recipe.source?.chapter || recipe.category?.chapter || "").toLowerCase().trim();
-  if (chapter && SEASON_NAMES.includes(chapter)) return chapter;
-  const intro = recipe.introduction || recipe.intro || "";
-  if (intro) {
-    for (const [season, re] of Object.entries(INTRO_SEASON_SIGNALS)) {
-      if (re.test(intro)) return season;
-    }
-  }
-  return null;
-}
-
-function filterBySeason(recipes, season) {
-  const opposite = OPPOSITE_SEASON[season];
-  return recipes.filter((r) => recipeSeason(r) !== opposite);
-}
-
-// ---- Specific recipe checks ----
+// ---- Specific recipe checks (production gate) ----
 
 console.log("\n1. Moroccan Mashed Potatoes → must be side, not dinner-worthy");
 const mmp = find("moroccan-mashed-potatoes");
@@ -149,9 +83,9 @@ console.log("\n4. Orecchiette with Escarole → fall season, excluded in spring"
 const ore = find("orecchiette-with-escarole-nduja-and-burrata");
 assert(ore, "recipe found");
 assert(recipeSeason(ore) === "fall", `season detected as fall (got: ${recipeSeason(ore)})`);
-const springFiltered = filterBySeason([ore], "spring");
+const springFiltered = filterBySeason([ore], new Date("2026-04-15"));
 assert(springFiltered.length === 0, "excluded from spring meal plans");
-const fallFiltered = filterBySeason([ore], "fall");
+const fallFiltered = filterBySeason([ore], new Date("2026-10-15"));
 assert(fallFiltered.length === 1, "included in fall meal plans");
 
 console.log("\n5. Punjabi Lobia Masala → image nulled by cleanup (73deb4ed)");
@@ -204,135 +138,121 @@ assert(weekendPool.length < dinnerPool.length, `weekend pool (${weekendPool.leng
 assert(weekendPool.every((r) => dinnerPool.some((d) => d.id === r.id)), "every weekend-main is also dinner-worthy");
 
 console.log("\n8. Spring season filtering excludes fall-tagged recipes");
-const springPool = filterBySeason(dinnerPool, "spring");
+const springPool = filterBySeason(dinnerPool, new Date("2026-04-15"));
 const fallRecipesInSpring = springPool.filter((r) => recipeSeason(r) === "fall");
 assert(fallRecipesInSpring.length === 0, `no fall recipes in spring pool (was ${fallRecipesInSpring.length})`);
 
-// ---- Phase 2: Bucket classification & candidate contract ----
+// ---- Phase 3B: authoritative bucket classification regressions ----
 
-const FISH_PATTERNS = /\b(salmon|tuna|trout|cod|halibut|catfish|sea bass|snapper|mackerel|sardine|anchov|swordfish|fish|shrimp|prawn|scallop|crab|lobster|mussel|clam|oyster|squid|calamari|octopus|seafood)\b/i;
+console.log("\n9. Bucket regressions pin the audit's misclassification cases");
+const vichyssoise = find("asparagus-vichyssoise");
+assert(vichyssoise, "asparagus-vichyssoise found in bundle");
+assert(
+  classifyPlannerBucket(vichyssoise) === "soup",
+  `Asparagus vichyssoise classifies as soup (got: ${vichyssoise && classifyPlannerBucket(vichyssoise)})`
+);
+const turkeyPho = find("smoked-turkey-pho");
+assert(turkeyPho, "smoked-turkey-pho found in bundle");
+assert(
+  classifyPlannerBucket(turkeyPho) === "meat",
+  `Smoked Turkey Pho classifies as meat (got: ${turkeyPho && classifyPlannerBucket(turkeyPho)})`
+);
 
-function getDietary(recipe) {
-  return recipe.dietary || recipe.tags?.dietary || [];
+// ---- Phase 3B: production candidate pipeline (no local simulation) ----
+
+console.log("\n10. Production selectCandidateMains fills the contract in order");
+const gated = selectCandidateMains(bundle, new Set(), {});
+const expectedTotal = CANDIDATE_BUCKET_CONTRACT.reduce((a, b) => a + b, 0);
+assert(gated.candidates.length === expectedTotal, `total candidates = ${gated.candidates.length} (expected ${expectedTotal})`);
+for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
+  const bucket = CANDIDATE_BUCKET_ORDER[i];
+  const fill = gated.diagnostics.bucketFill[bucket];
+  assert(fill.filled >= fill.target, `bucket "${bucket}" filled ${fill.filled}/${fill.target}`);
 }
-
-function isVegetarianOrVegan(recipe) {
-  const tags = getDietary(recipe);
-  return tags.some((t) => t.toLowerCase() === "vegan" || t.toLowerCase() === "vegetarian");
-}
-
-function classifyBucket(recipe) {
-  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
-  const nameLower = recipe.name.toLowerCase();
-  const ingredientText = recipe.ingredients.map((i) => i.item).join(" ");
-  if (dishTypes.includes("salad") || nameLower.includes("salad")) return "salad";
-  if (dishTypes.includes("soup") || nameLower.includes("soup") || nameLower.includes("stew") || nameLower.includes("chowder") || nameLower.includes("broth")) return "soup";
-  if (isVegetarianOrVegan(recipe)) return "vegetarian";
-  if (FISH_PATTERNS.test(nameLower) || FISH_PATTERNS.test(ingredientText)) return "fish";
-  return "meat";
-}
-
-const BUCKET_ORDER = ["salad", "soup", "vegetarian", "fish", "meat"];
-const BUCKET_CONTRACT = [3, 3, 2, 2, 2]; // total = 12
-
-console.log("\n9. Bucket pools have enough recipes to fill contract");
-const currentSeason = (() => {
-  const m = new Date().getMonth();
-  if (m >= 2 && m <= 4) return "spring";
-  if (m >= 5 && m <= 7) return "summer";
-  if (m >= 8 && m <= 10) return "fall";
-  return "winter";
-})();
-const seasonedPool = filterBySeason(dinnerPool, currentSeason);
-const bucketCounts = {};
-for (const b of BUCKET_ORDER) bucketCounts[b] = 0;
-for (const r of seasonedPool) {
-  const b = classifyBucket(r);
-  if (b) bucketCounts[b]++;
-}
-for (let i = 0; i < BUCKET_ORDER.length; i++) {
-  const b = BUCKET_ORDER[i];
-  const needed = BUCKET_CONTRACT[i];
-  assert(
-    bucketCounts[b] >= needed,
-    `bucket "${b}" has ${bucketCounts[b]} recipes (need >= ${needed})`
-  );
-}
-
-console.log("\n10. Simulated candidate selection produces exactly 12 items in contract order");
-// Simplified simulation — pick from each bucket
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-const simBuckets = { salad: [], soup: [], vegetarian: [], fish: [], meat: [] };
-for (const r of seasonedPool) {
-  const b = classifyBucket(r);
-  if (b) simBuckets[b].push(r);
-}
-const simResult = [];
-for (let i = 0; i < BUCKET_ORDER.length; i++) {
-  const b = BUCKET_ORDER[i];
-  const needed = BUCKET_CONTRACT[i];
-  const picks = shuffle(simBuckets[b]).slice(0, needed);
-  simResult.push(...picks);
-}
-assert(simResult.length === 12, `total candidates = ${simResult.length} (expected 12)`);
-
-// Verify order: first 3 are salads, next 3 soups, etc.
 let orderCorrect = true;
 let idx = 0;
-for (let i = 0; i < BUCKET_ORDER.length; i++) {
-  for (let j = 0; j < BUCKET_CONTRACT[i]; j++) {
-    if (classifyBucket(simResult[idx]) !== BUCKET_ORDER[i]) orderCorrect = false;
+for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
+  for (let j = 0; j < CANDIDATE_BUCKET_CONTRACT[i]; j++) {
+    if (gated.candidates[idx]?.bucket !== CANDIDATE_BUCKET_ORDER[i]) orderCorrect = false;
     idx++;
   }
 }
-assert(orderCorrect, "candidates are in correct bucket order (salad→soup→veg→fish→meat)");
-
-console.log("\n11. Saved candidate fidelity: CandidateItem fields non-empty");
-// normalizeTime mirrors the API's logic: coerce strings, reject non-finite
-function normalizeTime(time) {
-  if (!time) return null;
-  const parseMin = (v) => {
-    if (typeof v === "number" && isFinite(v)) return v;
-    if (typeof v === "string") { const n = parseInt(v, 10); return isFinite(n) ? n : 0; }
-    return 0;
-  };
-  const prep = parseMin(time.prep);
-  const cook = parseMin(time.cook);
-  let total = parseMin(time.total);
-  if (total <= 0 && prep + cook > 0) total = prep + cook;
-  if (total <= 0) return null;
-  return { prep, cook, total };
-}
-
-// Simulate what the API would persist
-const simSaved = simResult.map((r) => ({
-  recipeId: r.id,
-  recipeName: r.name,
-  source: r.source ?? null,
-  image: r.image ?? null,
-  dietary: getDietary(r),
-  cuisine: "Other",
-  time: normalizeTime(r.time),
-  category: classifyBucket(r) === "salad" ? "Salad" : "Main",
-  lowCalorie: false,
-  bucket: classifyBucket(r),
-}));
-const allHaveId = simSaved.every((c) => c.recipeId && c.recipeName);
-assert(allHaveId, "all saved candidates have recipeId and recipeName");
-const allHaveBucket = simSaved.every((c) => BUCKET_ORDER.includes(c.bucket));
-assert(allHaveBucket, "all saved candidates have valid bucket label");
-const noneHaveNaN = simSaved.every(
-  (c) => c.time === null || (typeof c.time.total === "number" && !isNaN(c.time.total))
+assert(orderCorrect, "candidates are in contract bucket order (salad→soup→veg→fish→meat)");
+assert(
+  gated.candidates.every(({ recipe, bucket }) => classifyPlannerBucket(recipe) === bucket),
+  "every returned bucket label matches the authoritative classifier"
 );
-assert(noneHaveNaN, "no NaN in saved candidate time fields");
+assert(
+  gated.candidates.every(({ recipe }) => isMainPlannerCandidate(recipe)),
+  "every returned candidate passes the planner-main gate"
+);
+
+console.log("\n11. Exclusions are honored by the production pipeline");
+const firstId = gated.candidates[0]?.recipe.id;
+const rerun = selectCandidateMains(bundle, new Set([firstId]), {});
+assert(
+  rerun.candidates.every(({ recipe }) => recipe.id !== firstId),
+  `excluded recipe "${firstId}" does not reappear`
+);
+
+// ---- Phase 3B: save-boundary sanitation ----
+
+console.log("\n12. sanitizeCandidateItems enforces recent/negative exclusions");
+const items = [
+  { recipeId: "fresh-ok" },
+  { recipeId: "cooked-recently" },
+  { recipeId: "planned-recently" },
+  { recipeId: "offered-recently" },
+  { recipeId: "thumbs-downed" },
+  { recipeId: "assigned-this-week" },
+  { recipeId: "fresh-ok" },
+];
+const sanitized = sanitizeCandidateItems(
+  items,
+  new Set(["assigned-this-week"]),
+  {
+    recentlyCooked: new Set(["cooked-recently", "assigned-this-week"]),
+    recentlyPlanned: new Set(["planned-recently"]),
+    recentlyOffered: new Set(["offered-recently"]),
+    negativeFeedback: new Set(["thumbs-downed"]),
+  },
+);
+const keptIds = sanitized.items.map((i) => i.recipeId);
+assert(keptIds.includes("fresh-ok"), "clean candidate is kept");
+assert(!keptIds.includes("cooked-recently"), "recently cooked candidate removed");
+assert(!keptIds.includes("planned-recently"), "recently planned candidate removed");
+assert(!keptIds.includes("offered-recently"), "recently offered candidate removed");
+assert(!keptIds.includes("thumbs-downed"), "negative-feedback candidate removed");
+assert(keptIds.includes("assigned-this-week"), "assigned candidate kept (visible-but-disabled)");
+assert(keptIds.filter((id) => id === "fresh-ok").length === 1, "duplicate candidate collapsed");
+assert(sanitized.removed.length === 5, `removed count = ${sanitized.removed.length} (expected 5: 4 exclusions + 1 duplicate)`);
+
+// ---- Phase 3B: planner-facing metadata normalization ----
+
+console.log("\n13. Metadata normalization is deterministic and non-inventive");
+assert(normalizePlannerTitle("  Salade   Niçoise ​ ") === "Salade Niçoise", "title collapses whitespace + zero-width chars");
+assert(normalizePlannerTitle(42) === "", "non-string title degrades to empty, not invented");
+const cuisineProbe = { name: "x", ingredients: [], method: [], servings: "" };
+assert(normalizePlannerCuisine({ ...cuisineProbe, cuisine: ["  swiss "] }) === "Swiss", "array cuisine → canonical casing");
+assert(normalizePlannerCuisine({ ...cuisineProbe, cuisine: "international, mediterranean" }) === "International", "multi-value cuisine → first segment");
+assert(normalizePlannerCuisine({ ...cuisineProbe, cuisine: "", source: { cookbook: "Persiana", author: "" } }) === "Middle Eastern", "empty cuisine falls back to cookbook mapping");
+assert(normalizePlannerCuisine(cuisineProbe) === "Other", "no data → Other, nothing invented");
+
+console.log("\n14. Planner policy windows are configured");
+// Literal pins on purpose: comparing against DEFAULT_PLANNER_POLICY would
+// still pass if the exported defaults drifted from the documented windows.
+const policy = plannerPolicy({});
+assert(policy.recentlyCookedDays === 45, `recentlyCookedDays default is 45 (got ${policy.recentlyCookedDays})`);
+assert(policy.recentWeeksLookback === 5, `recentWeeksLookback default is 5 (got ${policy.recentWeeksLookback})`);
+assert(policy.negativeFeedbackDays === 60, `negativeFeedbackDays default is 60 (got ${policy.negativeFeedbackDays})`);
+assert(
+  DEFAULT_PLANNER_POLICY.recentlyCookedDays === 45 &&
+    DEFAULT_PLANNER_POLICY.recentWeeksLookback === 5 &&
+    DEFAULT_PLANNER_POLICY.negativeFeedbackDays === 60,
+  "DEFAULT_PLANNER_POLICY matches the documented 45/5/60 windows",
+);
+const overridden = plannerPolicy({ PLANNER_NEGATIVE_FEEDBACK_DAYS: "90" });
+assert(overridden.negativeFeedbackDays === 90, "negative window is env-configurable");
 
 console.log(`\n${"=".repeat(50)}`);
 console.log(`Results: ${passed} passed, ${failed} failed`);

@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { auth } from "@/auth";
+import { isTrackerOnlyEmail } from "@/lib/access";
 import { getAllRecipeFeedback, setRecipeFeedback } from "@/lib/db";
 
 /** GET — return all recipe feedback entries as a map { recipeId: feedback }. */
@@ -14,6 +16,14 @@ export async function GET() {
  *  Body: { recipeId: string, feedback: "up" | "down" | null }
  */
 export async function POST(request: NextRequest) {
+  const session = await auth();
+  if (!session?.user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  if (isTrackerOnlyEmail(session.user.email)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
   const { recipeId, feedback } = (await request.json()) as {
     recipeId: string;
     feedback: "up" | "down" | null;

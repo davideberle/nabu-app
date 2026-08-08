@@ -100,6 +100,12 @@ const TRUSTED_RUNTIME_API_ROUTES: { methods: readonly string[]; pattern: RegExp 
   // PATCH /api/cooking/session/:id — one path segment, and never `from-plan`,
   // which is a POST-only creation route.
   { methods: ["PATCH"], pattern: /^\/api\/cooking\/session\/(?!from-plan$)[^/]+$/ },
+  // Weekly planner preparation: the Thursday 05:30 run, the Friday 06:00
+  // watchdog, and week rollover. These are scheduled non-browser calls, so
+  // they authenticate with the runtime token rather than a session cookie.
+  { methods: ["POST"], pattern: /^\/api\/meals\/prepare$/ },
+  // Chat-driven targeted replacement of unassigned recommendations.
+  { methods: ["POST"], pattern: /^\/api\/meals\/replace$/ },
 ];
 
 export function isTrustedRuntimeApiRoute(method: string, pathname: string): boolean {

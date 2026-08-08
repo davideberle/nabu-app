@@ -9,6 +9,11 @@ import { NabuBadge, NabuButton, NabuEmptyState, NabuHeader, NabuMain, NabuPageSh
 import { getCourseTagColor } from "@/lib/tag-colors";
 import { normalizeIngredient } from "@/lib/normalize-ingredients";
 import { mergeMealComponents } from "@/lib/meal-plan-components";
+import {
+  reconcileSavedPlanResponse,
+  shoppingInvalidationNotice,
+  type SavePlanResponse,
+} from "@/lib/meal-plan-save";
 import type { MealCoherenceReview } from "@/lib/meal-coherence";
 
 // ----- types -----
@@ -25,6 +30,14 @@ type RecipeOption = {
   courseTags: string[];
   rationale?: string;
   recommended?: boolean;
+  /** Kitchen-supplied shelf metadata (planner-shelf-1). */
+  origin?: "web" | "catalog";
+  discovery?: "editorial" | "search" | "catalog";
+  role?: "main" | "light-meal" | "pairing" | "reject";
+  /** Why Kitchen put this idea on the shelf. Rendered as-is. */
+  reason?: string;
+  /** Reversible Keep intent for a hidden web-staging idea. */
+  kept?: boolean;
 };
 
 type RecipeLookupValue = {
@@ -48,7 +61,7 @@ type RecipeDetail = RecipeOption & {
 type WeekContextItem = {
   id: string;
   date?: string;
-  kind: "restaurant" | "guests" | "quick" | "skip" | "leftovers" | "custom";
+  kind: "restaurant" | "guests" | "quick" | "light" | "skip" | "leftovers" | "custom";
   note: string;
   effect?: "skip-meal" | "guest-friendly" | "quick-meal" | "light-meal";
 };
@@ -64,6 +77,10 @@ type CandidateItem = {
   category: string;
   courseTags?: string[];
   bucket: string;
+  origin?: "web" | "catalog";
+  discovery?: "editorial" | "search" | "catalog";
+  role?: "main" | "light-meal" | "pairing" | "reject";
+  reason?: string;
 };
 
 type CandidateDiagnostics = {
@@ -76,12 +93,21 @@ type CandidateDiagnostics = {
   warnings: string[];
 };
 
+type CandidateReserve = {
+  recipeId: string;
+  recipeName: string;
+  role: string;
+  sourceName?: string | null;
+  image?: string | null;
+};
+
 type CandidateSet = {
   generatedAt: string;
   policyVersion: string;
   bucketContract?: readonly number[];
   items: CandidateItem[];
   diagnostics?: CandidateDiagnostics;
+  reserves?: CandidateReserve[];
 };
 
 type MealSlot = {
@@ -118,6 +144,7 @@ type DayHistoryStatus =
   | "planned"
   | "cooked-as-planned"
   | "cooked-other"
+  | "planned-unlogged"
   | "skipped"
   | null;
 
@@ -226,6 +253,7 @@ const CONTEXT_KIND_OPTIONS: { value: WeekContextItem["kind"]; label: string }[] 
   { value: "restaurant", label: "Restaurant" },
   { value: "guests", label: "Guests" },
   { value: "quick", label: "Quick meal" },
+  { value: "light", label: "Light meal" },
   { value: "skip", label: "Skip" },
   { value: "leftovers", label: "Leftovers" },
   { value: "custom", label: "Other" },
@@ -236,6 +264,7 @@ const KIND_TO_EFFECT: Record<string, WeekContextItem["effect"]> = {
   skip: "skip-meal",
   guests: "guest-friendly",
   quick: "quick-meal",
+  light: "light-meal",
   leftovers: "skip-meal",
 };
 
@@ -243,6 +272,7 @@ const KIND_COLORS: Record<string, string> = {
   restaurant: "bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300",
   guests: "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300",
   quick: "bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300",
+  light: "bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300",
   skip: "bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300",
   leftovers: "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300",
   custom: "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400",
@@ -265,6 +295,9 @@ function formatPlannerTime(totalMin: number | undefined | null): string | null {
 }
 
 function isWebIdea(recipe: RecipeOption): boolean {
+  // `origin` is authoritative on shelves Kitchen prepared; the publication
+  // suffix keeps older saved sets reading correctly.
+  if (recipe.origin) return recipe.origin === "web";
   return recipe.source?.publication?.includes("Web inspiration") ?? false;
 }
 
@@ -280,6 +313,10 @@ function toCandidateItem(recipe: RecipeOption, bucket?: string): CandidateItem {
     category: recipe.category,
     courseTags: recipe.courseTags,
     bucket: bucket ?? (isWebIdea(recipe) ? "web-inspiration" : "meat"),
+    ...(recipe.origin ? { origin: recipe.origin } : {}),
+    ...(recipe.discovery ? { discovery: recipe.discovery } : {}),
+    ...(recipe.role ? { role: recipe.role } : {}),
+    ...(recipe.reason ? { reason: recipe.reason } : {}),
   };
 }
 
@@ -294,6 +331,10 @@ function restoreCandidateItem(item: CandidateItem): RecipeOption {
     time: item.time ?? null,
     category: item.category ?? "",
     courseTags: item.courseTags ?? [],
+    origin: item.origin,
+    discovery: item.discovery,
+    role: item.role,
+    reason: item.reason,
   };
 }
 
@@ -386,7 +427,7 @@ function touchPlan(plan: MealPlan): MealPlan {
   return { ...plan, updatedAt: new Date().toISOString() };
 }
 
-async function savePlanNow(plan: MealPlan): Promise<void> {
+async function savePlanNow(plan: MealPlan): Promise<SavePlanResponse> {
   const res = await fetch("/api/meals/plan", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -395,18 +436,35 @@ async function savePlanNow(plan: MealPlan): Promise<void> {
   if (!res.ok) {
     throw new Error(`Failed to save meal plan: ${res.status}`);
   }
+  // The response is authoritative: the save boundary can return the week to
+  // draft and invalidate its shopping list. See lib/meal-plan-save.ts.
+  return (await res.json()) as SavePlanResponse;
 }
 
 /** Debounced autosave for non-critical changes (notes, context). */
-function useAutosave(plan: MealPlan | null, delayMs = 1500) {
+function useAutosave(
+  plan: MealPlan | null,
+  onSaved: (sent: MealPlan, response: SavePlanResponse) => void,
+  delayMs = 1500,
+) {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastSavedRef = useRef<string>("");
+  const onSavedRef = useRef(onSaved);
+  useEffect(() => {
+    onSavedRef.current = onSaved;
+  }, [onSaved]);
 
   const save = useCallback((p: MealPlan) => {
-    const serialized = JSON.stringify(p);
+    // `updatedAt` is stamped by both sides on every write, so it is excluded
+    // from the "has anything actually changed" key. Without that, reconciling
+    // to the server's saved plan would look like a new edit and autosave would
+    // bounce back and forth with the server forever.
+    const serialized = JSON.stringify({ ...p, updatedAt: "" });
     if (serialized === lastSavedRef.current) return;
     lastSavedRef.current = serialized;
-    savePlanNow(p).catch((err) => console.error("Autosave failed:", err));
+    savePlanNow(p)
+      .then((response) => onSavedRef.current(p, response))
+      .catch((err) => console.error("Autosave failed:", err));
   }, []);
 
   useEffect(() => {
@@ -476,9 +534,20 @@ function MealsPageInner() {
   const [quickViewRecipe, setQuickViewRecipe] = useState<RecipeDetail | null>(null);
   const [quickViewLoading, setQuickViewLoading] = useState(false);
   const [showContextEditor, setShowContextEditor] = useState(false);
+  const [weekStatusSaving, setWeekStatusSaving] = useState(false);
+  const [weekStatusError, setWeekStatusError] = useState<string | null>(null);
+  // Set when a save reopened the week or invalidated its shopping list.
+  const [shoppingNotice, setShoppingNotice] = useState<string | null>(null);
   const [planLoading, setPlanLoading] = useState(true);
   const [generateError, setGenerateError] = useState<string | null>(null);
+  // Manual planner tools are exceptional repair actions, so they live behind an
+  // explicit disclosure rather than in the normal flow.
+  const [showPlannerTools, setShowPlannerTools] = useState(false);
+  const [preparing, setPreparing] = useState(false);
   const [feedbackMap, setFeedbackMap] = useState<Record<string, "up" | "down">>({});
+  // Reversible Keep intent for hidden web-staging ideas, seeded from the
+  // server on every week load so it survives a reload.
+  const [keptMap, setKeptMap] = useState<Record<string, boolean>>({});
   const [dayHistory, setDayHistory] = useState<Record<string, DayHistory>>({});
   const [editingServeWith, setEditingServeWith] = useState<number | null>(null);
   const [cookedSlots, setCookedSlots] = useState<Set<string>>(new Set());
@@ -509,8 +578,57 @@ function MealsPageInner() {
     setPlan(next);
   }, []);
 
+  /**
+   * Adopt what the server actually stored.
+   *
+   * The save boundary can change the plan on the way in: a meal-changing edit
+   * to a finalized week returns it to `draft` and invalidates the generated
+   * shopping list. Rendering the object that was *sent* would leave a "Week
+   * finalized" badge on a week the server has already reopened, until a reload.
+   *
+   * Only adopted when nothing newer is pending locally — an earlier save's
+   * response must never overwrite a later edit. That applies to *everything*
+   * the response implies, the shopping notice included: a superseded save may
+   * change neither the plan nor the banner.
+   */
+  const reconcileSavedPlan = useCallback(
+    (sent: MealPlan, response: SavePlanResponse) => {
+      const outcome = reconcileSavedPlanResponse(sent, planRef.current, response);
+      if (outcome.stale) return;
+      commitPlan(outcome.plan);
+      setShoppingNotice(outcome.notice);
+    },
+    [commitPlan],
+  );
+
+  /** Persist a plan that has already been committed locally, then reconcile. */
+  const saveAndReconcile = useCallback(
+    (sent: MealPlan) =>
+      savePlanNow(sent)
+        .then((response) => {
+          reconcileSavedPlan(sent, response);
+          return response;
+        }),
+    [reconcileSavedPlan],
+  );
+
+  /**
+   * Show an edit immediately, persist it, then reconcile to what was stored.
+   *
+   * The optimistic local update is unchanged — the planner has always felt
+   * instant. What is new is that the server's answer, not the optimistic guess,
+   * is what the page ends up rendering.
+   */
+  const persistPlan = useCallback(
+    (next: MealPlan) => {
+      commitPlan(next);
+      saveAndReconcile(next).catch((err) => console.error("Save failed:", err));
+    },
+    [commitPlan, saveAndReconcile],
+  );
+
   // Autosave for notes/context changes only
-  useAutosave(plan);
+  useAutosave(plan, reconcileSavedPlan);
 
   // Load recipe feedback on mount
   useEffect(() => {
@@ -555,6 +673,7 @@ function MealsPageInner() {
     setPlan(null);
     setCandidates([]);
     candidatesRef.current = [];
+    setKeptMap({});
     setIdeaMetadata(null);
     setPlanLoading(true);
     setShowContextEditor(false);
@@ -562,6 +681,37 @@ function MealsPageInner() {
     setExpandComplements(null);
 
     let cancelled = false;
+    // Reconcile stored web inspirations for direct week loads. Browsing weeks
+    // should not replace or grow an already-visible idea list. For a fresh
+    // current/future week the server ensures the FOOBY-led weekly set on this
+    // GET, so a brand-new week gets its web ideas without a manual research
+    // click.
+    const loadWebInspirations = (seededVisibleForThisWeek: boolean) => {
+      fetch(`/api/meals/inspirations?week=${encodeURIComponent(weekId)}`)
+        .then((r) => (r.ok ? r.json() : { candidates: [] }))
+        .then((inspData: { candidates?: RecipeOption[] }) => {
+          if (cancelled) return;
+          const webCandidates = inspData.candidates ?? [];
+          // Keep state is server-owned; seed it before rendering the cards so a
+          // reload shows exactly what David last kept.
+          setKeptMap((prev) => {
+            const next = { ...prev };
+            for (const candidate of webCandidates) next[candidate.id] = Boolean(candidate.kept);
+            return next;
+          });
+          if (webCandidates.length === 0) return;
+          if (candidatesRef.current.length === 0) {
+            candidatesRef.current = webCandidates;
+            setCandidates(webCandidates);
+            setIdeaMetadata(null);
+          } else if (seededVisibleForThisWeek) {
+            const visibleCandidates = mergeUniqueCandidates(candidatesRef.current, webCandidates);
+            candidatesRef.current = visibleCandidates;
+            setCandidates(visibleCandidates);
+          }
+        })
+        .catch(() => { /* non-critical — web inspirations are supplementary */ });
+    };
     fetch(`/api/meals/plan?week=${weekId}`)
       .then((r) => r.json())
       .then((data: MealPlan | null) => {
@@ -573,8 +723,12 @@ function MealsPageInner() {
           ));
           // Self-heal: persist repaired plan if days were malformed.
           const daysChanged = JSON.stringify(normalized.days) !== JSON.stringify(data.days);
-          if (daysChanged) savePlanNow(normalized).catch(() => {});
-          setPlan(normalized);
+          if (daysChanged) {
+            savePlanNow(normalized)
+              .then((response) => reconcileSavedPlan(normalized, response))
+              .catch(() => {});
+          }
+          commitPlan(normalized);
           let seededVisibleForThisWeek = false;
           // Restore saved candidates with full card data for stable reload,
           // then reconcile images against current canonical recipe data to
@@ -626,7 +780,10 @@ function MealsPageInner() {
                         ),
                       },
                     };
-                    savePlanNow(pruned).catch(() => {});
+                    planRef.current = pruned;
+                    savePlanNow(pruned)
+                      .then((response) => reconcileSavedPlan(pruned, response))
+                      .catch(() => {});
                     return pruned;
                   });
                 }
@@ -634,27 +791,10 @@ function MealsPageInner() {
               .catch(() => { /* non-critical — stale image is cosmetic */ });
           }
 
-          // Reconcile stored web inspirations for direct week loads. Browsing
-          // weeks should not replace or grow an already-visible idea list.
-          fetch(`/api/meals/inspirations?week=${encodeURIComponent(weekId)}`)
-            .then((r) => (r.ok ? r.json() : { candidates: [] }))
-            .then((inspData: { candidates?: RecipeOption[] }) => {
-              if (cancelled) return;
-              const webCandidates = inspData.candidates ?? [];
-              if (webCandidates.length === 0) return;
-              if (candidatesRef.current.length === 0) {
-                candidatesRef.current = webCandidates;
-                setCandidates(webCandidates);
-                setIdeaMetadata(null);
-              } else if (seededVisibleForThisWeek) {
-                const visibleCandidates = mergeUniqueCandidates(candidatesRef.current, webCandidates);
-                candidatesRef.current = visibleCandidates;
-                setCandidates(visibleCandidates);
-              }
-            })
-            .catch(() => { /* non-critical — web inspirations are supplementary */ });
+          loadWebInspirations(seededVisibleForThisWeek);
         } else {
           setPlan(null);
+          loadWebInspirations(false);
         }
         // Load persisted feedback for this week
         fetch(`/api/meals/feedback?week=${weekId}`)
@@ -710,6 +850,48 @@ function MealsPageInner() {
     return () => { cancelled = true; };
   }, [plan?.week, plan?.days]);
 
+  /**
+   * Ask Kitchen to prepare (or repair) this week's shelf.
+   *
+   * Same idempotent path the Friday watchdog uses: a healthy saved set is left
+   * exactly as it is, and only an unhealthy one is rebuilt. This is the repair
+   * action — it is not part of the normal weekly flow.
+   */
+  async function handlePrepareShelf() {
+    if (preparing || plan?.locked) return;
+    setPreparing(true);
+    setGenerateError(null);
+    try {
+      const res = await fetch("/api/meals/prepare", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ week: weekId, mode: "watchdog" }),
+      });
+      const data = (await res.json()) as { status?: string; error?: string };
+      if (!res.ok) throw new Error(data.error || `Preparation failed: ${res.status}`);
+      // Re-read rather than trusting local state: the shelf was written server
+      // side, and the response is a summary, not the plan.
+      const planRes = await fetch(`/api/meals/plan?week=${weekId}`);
+      const saved = (await planRes.json()) as MealPlan | null;
+      if (saved?.candidateSet?.items?.length) {
+        const restored = saved.candidateSet.items.map(restoreCandidateItem);
+        candidatesRef.current = restored;
+        setCandidates(restored);
+        commitPlan(saved);
+        setIdeaMetadata({
+          generatedAt: saved.candidateSet.generatedAt,
+          policyVersion: saved.candidateSet.policyVersion,
+        });
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Failed to prepare ideas";
+      console.error("Failed to prepare ideas:", err);
+      setGenerateError(msg);
+    } finally {
+      setPreparing(false);
+    }
+  }
+
   // Generate recipe-database ideas. Web ideas stay visible but are researched
   // through their own action and provenance table.
   async function handleGenerate() {
@@ -719,8 +901,18 @@ function MealsPageInner() {
     try {
       const params = new URLSearchParams();
       params.set("week", weekId);
-      if (plan?.context?.length) {
-        params.set("context", JSON.stringify(plan.context));
+      const generationContext = [
+        ...(plan?.context ?? []),
+        ...(plan?.notes?.trim()
+          ? [{
+              id: "week_notes",
+              kind: "custom" as const,
+              note: plan.notes.trim(),
+            }]
+          : []),
+      ];
+      if (generationContext.length) {
+        params.set("context", JSON.stringify(generationContext));
       }
       if (candidates.length > 0) {
         params.set("exclude", candidates.map((c) => c.id).join(","));
@@ -759,12 +951,12 @@ function MealsPageInner() {
       const updatedPlan = touchPlan(plan
         ? { ...plan, candidateSet }
         : { ...buildEmptyPlan(), candidateSet });
-      setPlan(updatedPlan);
+      commitPlan(updatedPlan);
       setIdeaMetadata({
         generatedAt: candidateSet.generatedAt,
         policyVersion: candidateSet.policyVersion,
       });
-      await savePlanNow(updatedPlan);
+      await saveAndReconcile(updatedPlan);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Failed to generate options";
       console.error("Failed to generate options:", err);
@@ -784,7 +976,7 @@ function MealsPageInner() {
       const res = await fetch("/api/meals/inspirations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ week: weekId, count: 6 }),
+        body: JSON.stringify({ week: weekId, count: 8 }),
       });
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
@@ -818,8 +1010,8 @@ function MealsPageInner() {
         items: [...existingItems, ...webItems],
       };
       const updatedPlan = touchPlan({ ...basePlan, candidateSet });
-      setPlan(updatedPlan);
-      await savePlanNow(updatedPlan);
+      commitPlan(updatedPlan);
+      await saveAndReconcile(updatedPlan);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Failed to add web inspirations";
       console.error("Failed to add web inspirations:", err);
@@ -878,8 +1070,7 @@ function MealsPageInner() {
       },
     };
     const updatedPlan = touchPlan({ ...activePlan, days: newDays });
-    setPlan(updatedPlan);
-    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    persistPlan(updatedPlan);
     setSelectedRecipe(null);
   }
 
@@ -907,8 +1098,7 @@ function MealsPageInner() {
       },
     };
     const updatedPlan = touchPlan({ ...activePlan, days: newDays });
-    setPlan(updatedPlan);
-    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    persistPlan(updatedPlan);
     setSelectedRecipe(null);
   }
 
@@ -929,8 +1119,7 @@ function MealsPageInner() {
       meal: null,
     };
     const updatedPlan = touchPlan({ ...plan, days: newDays });
-    setPlan(updatedPlan);
-    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    persistPlan(updatedPlan);
   }
 
   // Clear only the weekend breakfast/brunch slot — persists immediately
@@ -944,8 +1133,7 @@ function MealsPageInner() {
       brunch: null,
     };
     const updatedPlan = touchPlan({ ...plan, days: newDays });
-    setPlan(updatedPlan);
-    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    persistPlan(updatedPlan);
   }
 
   // Mark a past slot as cooked via cook-events API
@@ -1003,9 +1191,34 @@ function MealsPageInner() {
       meal: { ...slot.meal, serveWith: serveWith.length > 0 ? serveWith : undefined },
     };
     const updatedPlan = touchPlan({ ...plan, days: newDays });
-    setPlan(updatedPlan);
-    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    persistPlan(updatedPlan);
     refreshMealReview(dayIndex, updatedPlan);
+  }
+
+  /**
+   * Toggle Keep on a hidden web-staging idea.
+   *
+   * Keep is retention intent, not promotion: nothing appears in My Recipes
+   * until week rollover, and assigning the recipe is an equally strong signal.
+   * Optimistic, and reverted if the server refuses.
+   */
+  async function handleKeep(recipeId: string, next: boolean) {
+    if (plan?.locked) return;
+    const previous = keptMap[recipeId] ?? false;
+    setKeptMap((prev) => ({ ...prev, [recipeId]: next }));
+    try {
+      const res = await fetch("/api/meals/inspirations/keep", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ recipeId, kept: next }),
+      });
+      if (!res.ok) throw new Error(`Keep failed: ${res.status}`);
+      const data = (await res.json()) as { kept?: boolean };
+      setKeptMap((prev) => ({ ...prev, [recipeId]: Boolean(data.kept) }));
+    } catch (err) {
+      console.error("Failed to update Keep:", err);
+      setKeptMap((prev) => ({ ...prev, [recipeId]: previous }));
+    }
   }
 
   // Toggle feedback for a candidate recipe
@@ -1142,8 +1355,7 @@ function MealsPageInner() {
       meal: { ...slot.meal, sides: merged.components },
     };
     const updatedPlan = touchPlan({ ...current, days: newDays });
-    commitPlan(updatedPlan);
-    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    persistPlan(updatedPlan);
     refreshMealReview(dayIndex, updatedPlan);
   }
 
@@ -1165,8 +1377,7 @@ function MealsPageInner() {
       },
     };
     const updatedPlan = touchPlan({ ...current, days: newDays });
-    commitPlan(updatedPlan);
-    savePlanNow(updatedPlan).catch((err) => console.error("Save failed:", err));
+    persistPlan(updatedPlan);
     refreshMealReview(dayIndex, updatedPlan);
   }
 
@@ -1193,6 +1404,39 @@ function MealsPageInner() {
       ...plan,
       context: (plan.context || []).filter((c) => c.id !== id),
     });
+  }
+
+  // ----- finalize / reopen -----
+  //
+  // Finalization is the gate downstream of the planner: only a finalized week
+  // can generate a shopping draft (kitchen DESIGN.md §"Phase 4C"). It is
+  // deliberately *not* the old lock — the week stays fully editable, and any
+  // edit that changes which recipes are planned returns it to draft on the
+  // server and invalidates the generated draft, so stale ingredients can never
+  // be synced.
+  async function handleWeekStatusChange(next: "draft" | "finalized") {
+    if (!plan || plan.locked || weekStatusSaving) return;
+    setWeekStatusSaving(true);
+    setWeekStatusError(null);
+    const updatedPlan = touchPlan({ ...plan, status: next });
+    try {
+      // No optimistic success: nothing local changes until the server has
+      // stored the new status, and what is then rendered is the status the
+      // server stored — which for a reopen also cancels the queued Bring rows.
+      const response = await savePlanNow(updatedPlan);
+      commitPlan(response.plan);
+      setShoppingNotice(
+        response.shoppingInvalidated
+          ? shoppingInvalidationNotice(response.shoppingInvalidated)
+          : null,
+      );
+    } catch {
+      setWeekStatusError(
+        next === "finalized" ? "Could not finalize the week" : "Could not reopen the week",
+      );
+    } finally {
+      setWeekStatusSaving(false);
+    }
   }
 
   const hasCandidates = candidates.length > 0;
@@ -1261,6 +1505,53 @@ function MealsPageInner() {
             )}
           </div>
         </NabuSurface>
+
+        {/* Week status — finalize/reopen gate for shopping generation */}
+        {plan && !plan.locked && (
+          <NabuSurface className="mb-6 p-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-primary">
+                    {plan.status === "finalized" ? "Week finalized" : "Week in draft"}
+                  </span>
+                  <NabuBadge tone={plan.status === "finalized" ? "green" : "stone"}>
+                    {plan.status === "finalized" ? "finalized" : "draft"}
+                  </NabuBadge>
+                </div>
+                <p className="mt-1 text-xs leading-relaxed text-tertiary">
+                  {plan.status === "finalized"
+                    ? "Shopping can be generated from this week. Changing a planned meal returns the week to draft and invalidates the shopping list."
+                    : "Finalize the week to generate its shopping list. The week stays editable either way."}
+                </p>
+              </div>
+              <div className="flex shrink-0 flex-wrap items-center gap-2">
+                <NabuButton
+                  onClick={() =>
+                    handleWeekStatusChange(plan.status === "finalized" ? "draft" : "finalized")
+                  }
+                  disabled={weekStatusSaving || planLoading}
+                  tone={plan.status === "finalized" ? "secondary" : "primary"}
+                  size="sm"
+                >
+                  {weekStatusSaving
+                    ? "Saving…"
+                    : plan.status === "finalized"
+                      ? "Reopen week"
+                      : "Finalize week"}
+                </NabuButton>
+              </div>
+            </div>
+            {shoppingNotice && (
+              <p className="mt-3 border-t border-secondary pt-3 text-xs leading-relaxed text-tertiary">
+                {shoppingNotice}
+              </p>
+            )}
+            {weekStatusError && (
+              <p className="mt-2 text-xs text-red-500 dark:text-red-400">{weekStatusError}</p>
+            )}
+          </NabuSurface>
+        )}
 
         {/* Week context summary + toggle */}
         <div className="mb-4">
@@ -1394,6 +1685,9 @@ function MealsPageInner() {
                     )}
                     {hist?.status === "skipped" && !isSkipped && (
                       <NabuBadge className="px-1.5 py-0.5 text-[9px]">Skipped</NabuBadge>
+                    )}
+                    {hist?.status === "planned-unlogged" && (
+                      <NabuBadge className="px-1.5 py-0.5 text-[9px]">Not logged</NabuBadge>
                     )}
                     {hist?.status === "planned" && (
                       <NabuBadge tone="amber" className="px-1.5 py-0.5 text-[9px]">Planned</NabuBadge>
@@ -1580,80 +1874,62 @@ function MealsPageInner() {
           />
         )}
 
-        {/* Empty state — no plan and no candidates yet */}
+        {/* Empty state — no plan and no candidates yet.
+
+            Deliberately actionless. Kitchen prepares next week's shelf on
+            Thursday morning and repairs it on Friday, so an empty week is a
+            "not yet" rather than a prompt to go and generate something.
+            Manual repair lives in the Planner tools disclosure below. */}
         {!planLoading && !plan && !hasCandidates && (
           <NabuEmptyState
             className="mb-6"
-            title="No plan for this week yet"
-            description={isPastWeek ? "No saved plan for this past week." : "Generate recipe-database ideas or research web ideas, then pick cards for the week above."}
-            action={!isPastWeek ? (
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                <NabuButton onClick={() => handleGenerate()} disabled={loading}>
-                  {loading ? "Generating ideas..." : "Generate ideas"}
+            title={isPastWeek ? "No saved plan for this week" : "Ideas are still being prepared"}
+            description={
+              isPastWeek
+                ? "No saved plan for this past week."
+                : "Kitchen researches and assembles this week's ideas ahead of Friday shopping. They appear here on their own — nothing to press."
+            }
+          />
+        )}
+
+        {/* Planner tools — exceptional repair, not the weekly interaction. */}
+        {!isPastWeek && !planLoading && (
+          <div className="mb-6">
+            <button
+              onClick={() => setShowPlannerTools((open) => !open)}
+              aria-expanded={showPlannerTools}
+              className="text-[11px] text-quaternary hover:text-secondary transition-colors"
+            >
+              {showPlannerTools ? "Hide planner tools" : "Planner tools"}
+            </button>
+            {showPlannerTools && (
+              <div className="mt-3 flex flex-wrap items-center gap-3">
+                <NabuButton onClick={() => handlePrepareShelf()} disabled={preparing} tone="ghost" size="sm">
+                  {preparing ? "Preparing ideas..." : "Prepare / repair ideas"}
+                </NabuButton>
+                <NabuButton onClick={() => handleGenerate()} disabled={loading} tone="ghost" size="sm">
+                  {loading ? "Generating ideas..." : "Generate from recipe book"}
                 </NabuButton>
                 <NabuButton
                   onClick={() => handleAddWebInspirations()}
                   disabled={webInspirationLoading}
                   tone="ghost"
+                  size="sm"
                 >
                   {webInspirationLoading ? "Researching web ideas..." : "Research web ideas"}
                 </NabuButton>
+                {ideaMetadata?.generatedAt && (
+                  <span className="text-[11px] text-quaternary">
+                    Prepared {new Date(ideaMetadata.generatedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
+                    {ideaMetadata.policyVersion && (
+                      <span className="ml-1 opacity-60">({ideaMetadata.policyVersion})</span>
+                    )}
+                  </span>
+                )}
               </div>
-            ) : null}
-          />
+            )}
+          </div>
         )}
-
-        {/* Action buttons — database ideas and web research are separate flows */}
-        <div className="flex flex-wrap items-center gap-3 mb-6">
-          {!hasCandidates && !planLoading && plan && !isPastWeek && (
-            <>
-              <NabuButton onClick={() => handleGenerate()} disabled={loading}>
-                {loading ? "Generating ideas..." : "Generate ideas"}
-              </NabuButton>
-              <NabuButton
-                onClick={() => handleAddWebInspirations()}
-                disabled={webInspirationLoading}
-                tone="ghost"
-              >
-                {webInspirationLoading ? "Researching web ideas..." : "Research web ideas"}
-              </NabuButton>
-            </>
-          )}
-          {hasCandidates && (
-            <>
-              {ideaMetadata?.generatedAt && (
-                <span className="text-[11px] text-quaternary">
-                  Recipe DB ideas generated {new Date(ideaMetadata.generatedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
-                  {ideaMetadata.policyVersion && (
-                    <span className="ml-1 opacity-60">
-                      ({ideaMetadata.policyVersion})
-                    </span>
-                  )}
-                </span>
-              )}
-              {!isPastWeek && (
-                <>
-                  <NabuButton
-                    onClick={() => handleAddWebInspirations()}
-                    disabled={webInspirationLoading}
-                    tone="ghost"
-                    size="sm"
-                  >
-                    {webInspirationLoading ? "Researching web ideas..." : "Research web ideas"}
-                  </NabuButton>
-                  <NabuButton
-                    onClick={() => handleGenerate()}
-                    disabled={loading}
-                    tone="ghost"
-                    size="sm"
-                  >
-                    {loading ? "Generating ideas..." : "Generate ideas"}
-                  </NabuButton>
-                </>
-              )}
-            </>
-          )}
-        </div>
 
         {/* Generation error banner */}
         {generateError && (
@@ -1688,8 +1964,8 @@ function MealsPageInner() {
         {hasCandidates && (
           <div className="space-y-6">
             <NabuSectionHeader
-              eyebrow="Suggestions"
-              description="Saved ideas are restored for this week. Empty future weeks stay empty until you generate or research new ones. Web ideas are imported to My Recipes before they appear."
+              eyebrow="Ideas for this week"
+              description="One prepared set: the strongest web finds plus recipe-book ideas that cover what they missed. Web ideas stay out of My Recipes until you keep or cook them."
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -1702,6 +1978,7 @@ function MealsPageInner() {
                       isSelected={selectedRecipe?.id === r.id}
                       isAssigned={isAssigned}
                       feedback={feedbackMap[r.id] ?? null}
+                      kept={keptMap[r.id] ?? r.kept ?? false}
                       onSelect={() =>
                         setSelectedRecipe(
                           selectedRecipe?.id === r.id ? null : r
@@ -1709,6 +1986,7 @@ function MealsPageInner() {
                       }
                       onQuickView={() => handleQuickView(r.id)}
                       onFeedback={(value) => handleFeedback(r.id, value)}
+                      onKeep={isWebIdea(r) ? (next) => handleKeep(r.id, next) : undefined}
                     />
                   );
                 })}
@@ -1930,22 +2208,35 @@ function RecipeCard({
   isSelected,
   isAssigned,
   feedback,
+  kept,
   onSelect,
   onQuickView,
   onFeedback,
+  onKeep,
 }: {
   recipe: RecipeOption;
   isSelected: boolean;
   isAssigned: boolean;
   feedback: "up" | "down" | null;
+  /** Keep state for a hidden web idea. Undefined for catalog cards. */
+  kept?: boolean;
   onSelect: () => void;
   onQuickView: () => void;
   onFeedback: (value: "up" | "down") => void;
+  onKeep?: (next: boolean) => void;
 }) {
   const isVeg = recipe.dietary.some(
     (t) => t === "vegan" || t === "vegetarian"
   );
-  const isWebInspiration = recipe.source?.publication?.includes("Web inspiration") ?? false;
+  const isWebInspiration = isWebIdea(recipe);
+  // Editorial prominence is shown as what it is — where the idea was found —
+  // and never as a claim that it is a better dinner.
+  const discoveryLabel =
+    recipe.discovery === "editorial"
+      ? "editor's pick"
+      : recipe.discovery === "search"
+        ? "found by search"
+        : null;
 
   return (
     <div
@@ -1994,7 +2285,17 @@ function RecipeCard({
               web
             </span>
           )}
+          {isWebInspiration && discoveryLabel && (
+            <span className="shrink-0 text-[9px] uppercase tracking-[0.14em] text-quaternary">
+              {discoveryLabel}
+            </span>
+          )}
         </div>
+        {recipe.reason && (
+          <p className="mt-1.5 text-[11px] text-quaternary leading-snug line-clamp-2">
+            {recipe.reason}
+          </p>
+        )}
         <div className="flex flex-wrap items-center gap-1 mt-2">
           {formatPlannerTime(recipe.time?.total) && (
             <span className="inline-flex items-center gap-0.5 text-[10px] px-1.5 py-0.5 rounded bg-secondary text-quaternary">
@@ -2058,6 +2359,22 @@ function RecipeCard({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3H10z" />
               </svg>
             </button>
+            {/* Keep — web ideas only. Reversible, and not a promotion: the
+                recipe joins My Recipes at week rollover, not now. */}
+            {isWebInspiration && onKeep && (
+              <button
+                onClick={(e) => { e.stopPropagation(); onKeep(!kept); }}
+                title={kept ? "Kept — tap to stop keeping this idea" : "Keep this idea after the week ends"}
+                aria-pressed={Boolean(kept)}
+                className={`ml-0.5 text-[11px] px-2 py-0.5 rounded-full transition-colors ${
+                  kept
+                    ? "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400"
+                    : "text-quaternary hover:text-secondary"
+                }`}
+              >
+                {kept ? "Kept" : "Keep"}
+              </button>
+            )}
           </div>
           <button
             onClick={onSelect}

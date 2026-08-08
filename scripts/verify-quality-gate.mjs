@@ -2,10 +2,22 @@
 // Quality-gate verification: exercises the plausibility checks and
 // quality-gated candidate selection against known bad examples.
 // Run: node scripts/verify-quality-gate.mjs
+//
+// Phase 3B: the dinner gate, bucket classifier, and candidate pipeline are the
+// PRODUCTION functions imported from src/lib/meals.ts — no local mirror. The
+// servings/component-name heuristics below are supplementary bundle-data QA
+// this script owns; they are deliberately stricter than production.
 
 import { readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import {
+  selectCandidateMains,
+  classifyPlannerBucket,
+  CANDIDATE_BUCKET_ORDER,
+  CANDIDATE_BUCKET_CONTRACT,
+  _isDinnerWorthy as isDinnerWorthy,
+} from "../src/lib/meals.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const bundle = JSON.parse(
@@ -29,47 +41,7 @@ function find(id) {
   return bundle.find((r) => r.id === id);
 }
 
-// ---- Mirror the quality-gate logic from meals.ts ----
-
-const EXCLUDED_DISH_TYPES = new Set([
-  "dessert", "baking", "breakfast", "drink", "condiment", "base", "bread", "component",
-]);
-const EXCLUDED_CHAPTER_PATTERNS = [
-  "dessert", "sweet", "baking", "patisserie", "pastry",
-  "bread", "breakfast", "brunch", "drink", "beverage",
-  "smoothie", "mylkshake", "coffee", "basic recipe",
-  "basic sauce", "base sauce", "kitchen basic", "know-how",
-  "condiment", "pickle", "preserve", "chutney", "spice blend",
-  "desayuno",
-];
-
-function isDinnerWorthy(recipe) {
-  const dishTypes = recipe.category?.dish_type ?? [];
-  const lowTypes = dishTypes.map((t) => t.toLowerCase());
-  if (lowTypes.some((t) => EXCLUDED_DISH_TYPES.has(t))) return false;
-  const chapter = (recipe.source?.chapter || recipe.category?.chapter || "").toLowerCase();
-  if (chapter && EXCLUDED_CHAPTER_PATTERNS.some((p) => chapter.includes(p))) return false;
-  const hasMainRole = lowTypes.some((t) => t === "main" || t === "soup" || t === "salad");
-  if (lowTypes.includes("side") && !hasMainRole) return false;
-  if (lowTypes.includes("vegetable") && !hasMainRole) return false;
-  if (lowTypes.includes("starter") && !hasMainRole) return false;
-  const nameLower = recipe.name.toLowerCase();
-  const breakfastWords = ["pancake", "waffle", "johnnycake", "french toast", "granola", "porridge", "oatmeal", "breakfast", "brunch", "morning", "cereal", "muesli", "smoothie", "juice", "milkshake", "scramble", "scrambled egg"];
-  if (breakfastWords.some((w) => nameLower.includes(w))) return false;
-  const snackWords = ["snack", "bar ", "energy ball", "trail mix", "dip", "hummus", "guacamole", "salsa", "cracker", "chip", "popcorn", "nut butter", "lunch box", "lunchbox", "sandwich", "wrap"];
-  if (snackWords.some((w) => nameLower.includes(w))) return false;
-  const dessertWords = ["cake", "brownie", "cookie", "muffin", "cupcake", "fudge", "ice cream", "sorbet", "pudding", "truffle", "macaron"];
-  if (dessertWords.some((w) => nameLower.includes(w))) return false;
-  const sauceWords = ["dressing", "vinaigrette", "aioli", "mayonnaise", "ketchup"];
-  if (sauceWords.some((w) => nameLower.includes(w))) return false;
-  const role = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
-  if (role === "breakfast" || role === "brunch" || role === "lunch" || role === "drink" || role === "snack") return false;
-  if (recipe.ingredients.length < 3) return false;
-  if (!recipe.method || recipe.method.length < 2) return false;
-  return true;
-}
-
-// Plausibility checks (mirrors meals.ts checkPlausibility)
+// ---- Supplementary plausibility heuristics (script-owned bundle QA) ----
 const NON_DINNER_SERVINGS =
   /^(makes?\s+)?(about\s+)?[\d\u00bd\u2153\u2154\u00bc\u00be\u215b\u215c\u215d\u215e\u2013\u2014\-\s]*(cup|cups|tbsp|tablespoon|tablespoons|ml|jar|jars|small jar)\b/i;
 
@@ -268,93 +240,39 @@ assert(withImages.length - plausibilityExcluded >= 50, `enough eligible recipes 
 
 // ---- 4. Bucket sufficiency after quality gate ----
 
-console.log("\n8. Bucket pools still sufficient after quality gate");
-
-function getDietary(recipe) {
-  return recipe.dietary || recipe.tags?.dietary || [];
-}
-function isVegetarianOrVegan(recipe) {
-  const tags = getDietary(recipe);
-  return tags.some((t) => t.toLowerCase() === "vegan" || t.toLowerCase() === "vegetarian");
-}
-function classifyBucket(recipe) {
-  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
-  const nameLower = recipe.name.toLowerCase();
-  if (dishTypes.includes("salad") || nameLower.includes("salad")) return "salad";
-  if (dishTypes.includes("soup") || nameLower.includes("soup") || nameLower.includes("stew") || nameLower.includes("chowder") || nameLower.includes("broth")) return "soup";
-  if (isVegetarianOrVegan(recipe)) return "vegetarian";
-  return "meat";
-}
-
-const BUCKET_ORDER = ["salad", "soup", "vegetarian", "meat"];
-const BUCKET_CONTRACT = [3, 3, 2, 4];
+console.log("\n8. Bucket pools still sufficient after quality gate (production classifier)");
 
 const qualityPool = withImages.filter(r => checkPlausibility(r).eligible);
 const bucketCounts = {};
-for (const b of BUCKET_ORDER) bucketCounts[b] = 0;
+for (const b of CANDIDATE_BUCKET_ORDER) bucketCounts[b] = 0;
 for (const r of qualityPool) {
-  const b = classifyBucket(r);
-  if (b) bucketCounts[b]++;
+  bucketCounts[classifyPlannerBucket(r)]++;
 }
-for (let i = 0; i < BUCKET_ORDER.length; i++) {
-  const b = BUCKET_ORDER[i];
-  const needed = BUCKET_CONTRACT[i];
+for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
+  const b = CANDIDATE_BUCKET_ORDER[i];
+  const needed = CANDIDATE_BUCKET_CONTRACT[i];
   assert(
     bucketCounts[b] >= needed * 2,
     `bucket "${b}" has ${bucketCounts[b]} eligible recipes (need >= ${needed * 2} for oversized pool)`
   );
 }
 
-// ---- 5. Simulated quality-gated selection ----
+// ---- 5. Production quality-gated selection ----
 
-console.log("\n9. Simulated quality-gated selection produces 12 items");
+console.log("\n9. Production selectCandidateMains produces the full contract");
 
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-const simBuckets = { salad: [], soup: [], vegetarian: [], meat: [] };
-for (const r of qualityPool) {
-  const b = classifyBucket(r);
-  if (b) simBuckets[b].push(r);
-}
-
-// Oversized pick
-const oversized = {};
-for (let i = 0; i < BUCKET_ORDER.length; i++) {
-  const b = BUCKET_ORDER[i];
-  const needed = BUCKET_CONTRACT[i];
-  oversized[b] = shuffle(simBuckets[b]).slice(0, needed * 2);
-}
-
-// Final pick
-const simResult = [];
-for (let i = 0; i < BUCKET_ORDER.length; i++) {
-  const b = BUCKET_ORDER[i];
-  const needed = BUCKET_CONTRACT[i];
-  simResult.push(...oversized[b].slice(0, needed));
-}
-
-assert(simResult.length === 12, `total candidates = ${simResult.length} (expected 12)`);
-
-// All must pass plausibility
-const allPassPlausibility = simResult.every(r => checkPlausibility(r).eligible);
-assert(allPassPlausibility, "all selected candidates pass plausibility checks");
+const expectedTotal = CANDIDATE_BUCKET_CONTRACT.reduce((a, b) => a + b, 0);
+const gated = selectCandidateMains(bundle, new Set(), {});
+assert(gated.candidates.length === expectedTotal, `total candidates = ${gated.candidates.length} (expected ${expectedTotal})`);
+assert(
+  gated.candidates.every(({ recipe, bucket }) => classifyPlannerBucket(recipe) === bucket),
+  "every returned bucket label matches the production classifier"
+);
 
 // Print the selected candidates for inspection
 console.log("\n   Selected candidates:");
-let idx = 0;
-for (let i = 0; i < BUCKET_ORDER.length; i++) {
-  for (let j = 0; j < BUCKET_CONTRACT[i] && idx < simResult.length; j++) {
-    const r = simResult[idx];
-    console.log(`   [${BUCKET_ORDER[i].padEnd(10)}] ${r.name} (${r.id})`);
-    idx++;
-  }
+for (const { recipe, bucket } of gated.candidates) {
+  console.log(`   [${bucket.padEnd(10)}] ${recipe.name} (${recipe.id})`);
 }
 
 // ---- 6. Specific plausibility exclusion list ----

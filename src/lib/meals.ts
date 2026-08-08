@@ -1,4 +1,75 @@
-import { type Recipe, getCuisine, getDietary } from "./recipes";
+import type { Recipe } from "./recipes";
+import {
+  getCuisine,
+  getDietary,
+  isVegetarianOrVegan,
+  isDinnerWorthy,
+  classifyPlannerBucket,
+  type CandidateBucket,
+  CANDIDATE_BUCKET_CONTRACT,
+  CANDIDATE_BUCKET_ORDER,
+  // Explicit .ts extension: meals.ts is loaded directly by scripts/verify-meals.mjs
+  // and node --test, whose ESM resolver does not add extensions.
+} from "./meals-core.ts";
+
+// The authoritative planner-main gate, bucket classifier, metadata
+// normalizers, save-boundary sanitizers, policy windows, and week-id math live
+// in meals-core.ts (dependency-free so verification scripts import the exact
+// production functions). Re-exported here so app code keeps one import site.
+export {
+  isMainPlannerCandidate,
+  isDinnerWorthy as _isDinnerWorthy,
+  classifyPlannerBucket,
+  CANDIDATE_BUCKET_CONTRACT,
+  CANDIDATE_BUCKET_ORDER,
+  normalizePlannerCuisine,
+  normalizePlannerTitle,
+  sanitizeCandidateItems,
+  reclassifyCandidateItems,
+  plannerPolicy,
+  DEFAULT_PLANNER_POLICY,
+  formatWeekId,
+  parseWeekId,
+  offsetWeek,
+  getRecentWeekIds,
+  getISOWeek,
+  currentIsoWeekId,
+  getWeekMonday,
+  getWeekDates,
+} from "./meals-core.ts";
+export type {
+  CandidateBucket,
+  PlannerPolicy,
+  CandidateExclusionSets,
+  CandidateRemoval,
+  CandidateRemovalReason,
+  CandidateRelabel,
+} from "./meals-core.ts";
+
+// The combined weekly shelf (planner-shelf-1) and its trait/diagnostic shapes
+// live in planner-shelf.ts; re-exported here so app code keeps one import site.
+import type { ShelfTraits, ShelfDiagnostics } from "./planner-shelf.ts";
+export type {
+  ShelfTraits,
+  ShelfDiagnostics,
+  ShelfCandidate,
+  ShelfItem,
+  ShelfCoverage,
+  WeeklyShelf,
+} from "./planner-shelf.ts";
+export {
+  assembleWeeklyShelf,
+  applyTargetedReplacement,
+  deriveShelfTraits,
+  measureCoverage,
+  coverageGaps,
+  canAdmit,
+  SHELF_LIMITS,
+  SHELF_POLICY_VERSION,
+} from "./planner-shelf.ts";
+export { classifyPlannerRole, isMainSlotEligible } from "./planner-roles.ts";
+export type { PlannerRole, RoleClassification } from "./planner-roles.ts";
+import type { PlannerRole as PlannerRoleType } from "./planner-roles.ts";
 
 // ----- season helpers -----
 
@@ -144,7 +215,7 @@ export type MealSlot = {
 export type WeekContextItem = {
   id: string;
   date?: string; // optional day-specific context
-  kind: "restaurant" | "guests" | "quick" | "skip" | "leftovers" | "custom";
+  kind: "restaurant" | "guests" | "quick" | "light" | "skip" | "leftovers" | "custom";
   note: string;
   effect?: "skip-meal" | "guest-friendly" | "quick-meal" | "light-meal";
 };
@@ -160,9 +231,33 @@ export type CandidateItem = {
   category: string;
   courseTags: string[];
   bucket: CandidateBucket;
+  // --- combined-shelf metadata (planner-shelf-1) ---
+  // Present on shelves prepared by the weekly run. Absent on legacy sets, which
+  // stay readable: the planner falls back to bucket/source display for those.
+  /** Where the idea came from. `web` cards expose Keep; catalog cards do not. */
+  origin?: "web" | "catalog";
+  /** Editor-curated vs targeted-search discovery, so the UI can say which. */
+  discovery?: "editorial" | "search" | "catalog";
+  /**
+   * Role the item may play. The shelf only ever admits `main`/`light-meal`
+   * into a dinner slot; the wider type exists so a historical record that was
+   * written differently still reads back honestly instead of being retyped.
+   */
+  role?: PlannerRoleType;
+  /** Kitchen-authored explanation of why this idea is on the shelf. */
+  reason?: string;
+  /** Coverage traits the shelf reasoned about. Rendered, never recomputed. */
+  traits?: ShelfTraits;
 };
 
-export type CandidateBucket = "salad" | "soup" | "vegetarian" | "fish" | "meat";
+/** Pairing/serve-with idea kept as reserve metadata, never a main slot. */
+export type CandidateReserve = {
+  recipeId: string;
+  recipeName: string;
+  role: string;
+  sourceName?: string | null;
+  image?: string | null;
+};
 
 // ----- diagnostics types for quality-gated generation -----
 
@@ -186,9 +281,19 @@ export type CandidateDiagnostics = {
 export type CandidateSet = {
   generatedAt: string;
   policyVersion: string;
-  bucketContract: readonly [number, number, number, number, number]; // salad, soup, veg, fish, meat
+  /**
+   * Legacy fixed bucket contract (3 salad / 3 soup / 2 veg / 2 fish / 2 meat).
+   * Optional since `planner-shelf-1`: the combined shelf measures actual
+   * coverage instead of filling a rigid bucket quota. Kept so historical week
+   * records still read back exactly as they were saved.
+   */
+  bucketContract?: readonly [number, number, number, number, number];
   items: CandidateItem[];
   diagnostics?: CandidateDiagnostics;
+  /** Pairing ideas that survived classification without becoming mains. */
+  reserves?: CandidateReserve[];
+  /** Coverage/selection diagnostics for a combined shelf. */
+  shelfDiagnostics?: ShelfDiagnostics;
 };
 
 export type DayPlanningState = "open" | "assigned" | "meal" | "skipped";
@@ -232,14 +337,6 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function isVegetarianOrVegan(recipe: Recipe): boolean {
-  const tags = getDietary(recipe);
-  return tags.some(
-    (t) =>
-      t.toLowerCase() === "vegan" || t.toLowerCase() === "vegetarian"
-  );
-}
-
 const PASTA_WORDS = [
   "pasta",
   "spaghetti",
@@ -256,10 +353,13 @@ const PASTA_WORDS = [
 function isPasta(recipe: Recipe): boolean {
   const nameLower = recipe.name.toLowerCase();
   if (PASTA_WORDS.some((w) => nameLower.includes(w))) return true;
-  const dishTypes = recipe.category?.dish_type ?? [];
+  const dishTypes = (recipe.category?.dish_type ?? []).filter(
+    (d): d is string => typeof d === "string"
+  );
   if (dishTypes.some((d) => d.toLowerCase().includes("pasta"))) return true;
   if (
     recipe.ingredients.some((ing) =>
+      typeof ing.item === "string" &&
       PASTA_WORDS.some((w) => ing.item.toLowerCase().includes(w))
     )
   )
@@ -273,124 +373,21 @@ function isLight(recipe: Recipe): boolean {
   return false;
 }
 
-// ----- filtering: only select dinner-worthy recipes -----
+const HOT_WEATHER_HEAVY_PATTERNS = /\b(baked|braised|braise|casserole|gratin|lasagna|lasagne|macaroni|mac and cheese|rag[uù]|risotto|stew|chowder|hot pot|oven|roast|roasted|slow[- ]cooked)\b/i;
+const HOT_WEATHER_FRESH_PATTERNS = /\b(salad|raw|cold|chilled|gazpacho|ceviche|poke|crudo|tartare|grilled|grill|skewer|kebab|salsa|lettuce|cucumber|tomato|watermelon|zucchini|courgette|herb|mint|lime|lemon)\b/i;
+const HOT_WEATHER_HEAVY_PROTEIN_PATTERNS = /\b(beef|brisket|short rib|stroganoff|duck|lamb|mutton|pork shoulder|sausage|salchich[oó]n)\b/i;
 
-const EXCLUDED_DISH_TYPES = new Set([
-  "dessert", "baking", "breakfast", "brunch", "drink", "beverage",
-  "condiment", "base", "bread", "component", "garnish", "sauce",
-  "dressing", "pickle", "preserve", "chutney", "raita", "salsa", "dip",
-]);
-
-/** Chapter names that should never appear in dinner options */
-const EXCLUDED_CHAPTER_PATTERNS = [
-  "dessert", "sweet", "baking", "patisserie", "pastry",
-  "bread", "breakfast", "brunch", "drink", "beverage",
-  "smoothie", "mylkshake", "coffee", "basic recipe",
-  "basic sauce", "base sauce", "kitchen basic", "know-how",
-  "condiment", "pickle", "preserve", "chutney", "raita", "salsa",
-  "dip", "dressing", "sauce", "spice blend",
-  "desayuno",
-];
-
-const NON_MAIN_NAME_PATTERNS = /\b(sauce|dressing|vinaigrette|pickle|pickled|chutney|raita|salsa|dip|relish|jam|marmalade|aioli|mayonnaise|ketchup|paste|rub|spice blend|masala powder)\b/i;
-const BREAKFAST_SNACK_PATTERNS = /\b(pancake|waffle|johnnycake|french toast|granola|porridge|oatmeal|breakfast|brunch|morning|cereal|muesli|smoothie|juice|milkshake|snack|energy ball|trail mix|lunch box|lunchbox)\b/i;
-const DESSERT_PATTERNS = /\b(cake|brownie|cookie|biscuit|muffin|cupcake|fudge|ice cream|sorbet|pudding|truffle|macaron|shrikhand|dessert|pie|tart|crumble|sweet roll)\b/i;
-
-function recipeCategoryValues(recipe: Recipe): string[] {
-  const values: string[] = [];
-  const category = recipe.category as unknown;
-  if (category && typeof category === "object") {
-    const record = category as { dish_type?: unknown; meal_role?: unknown; chapter?: unknown };
-    if (Array.isArray(record.dish_type)) {
-      values.push(...record.dish_type.filter((v): v is string => typeof v === "string"));
-    }
-    if (typeof record.meal_role === "string") values.push(record.meal_role);
-    if (typeof record.chapter === "string") values.push(record.chapter);
-  } else if (typeof category === "string") {
-    values.push(category);
-  }
-  if (recipe.mealRole) values.push(recipe.mealRole);
-  return values.map((value) => value.toLowerCase().trim()).filter(Boolean);
-}
-
-function hasClearMainSignal(recipe: Recipe): boolean {
-  const values = recipeCategoryValues(recipe);
-  if (values.some((value) => ["main", "dinner", "supper", "entree", "entrée"].includes(value))) {
-    return true;
-  }
-
-  return hasSubstantialMainNameSignal(recipe);
-}
-
-function hasSubstantialMainNameSignal(recipe: Recipe): boolean {
-  const text = `${recipe.name} ${(recipe.introduction || recipe.intro || "")}`.toLowerCase();
-  return /\b(curry|stew|tagine|rag[uù]|chili|soup|ramen|pho|laksa|pasta|spaghetti|noodle|risotto|biryani|pilaf|taco|enchilada|quesadilla|burger|sandwich|wrap|bowl|roast|grill|grilled|braised|chicken|beef|pork|lamb|fish|salmon|shrimp|tofu|tempeh|lentil|bean)\b/.test(text);
-}
-
-/**
- * Returns true if a recipe is suitable as a dinner main dish.
- */
-function isDinnerWorthy(recipe: Recipe): boolean {
-  const dishTypes = recipe.category?.dish_type ?? [];
-  const lowTypes = dishTypes.map((t) => t.toLowerCase());
-  const role = (recipe.mealRole || recipe.category?.meal_role || "").toLowerCase();
-  const categoryValues = recipeCategoryValues(recipe);
-
-  // Exclude non-dinner dish types
-  if (lowTypes.some((t) => EXCLUDED_DISH_TYPES.has(t))) return false;
-  if (categoryValues.some((t) => EXCLUDED_DISH_TYPES.has(t))) return false;
-
-  // Exclude by chapter name
-  const chapter = (
-    recipe.source?.chapter ||
-    recipe.category?.chapter ||
-    ""
-  ).toLowerCase();
-  if (chapter && EXCLUDED_CHAPTER_PATTERNS.some((p) => chapter.includes(p))) return false;
-
-  // Exclude side-only dishes (unless they're also tagged as main/soup/salad)
-  const hasMainRole = [...lowTypes, ...categoryValues].some(
-    (t) => t === "main" || t === "dinner" || t === "supper" || t === "soup" || t === "salad"
-  );
-  if (lowTypes.includes("side") && !hasMainRole) return false;
-  if (lowTypes.includes("vegetable") && !hasMainRole) return false;
-  if (lowTypes.includes("starter") && !hasMainRole) return false;
-  if (categoryValues.includes("side") && !hasMainRole) return false;
-  if (categoryValues.includes("vegetable") && !hasMainRole) return false;
-  if (categoryValues.includes("starter") && !hasMainRole) return false;
-
-  // Name-based exclusions for things that slipped through
+function isHotWeatherFriendly(recipe: Recipe): boolean {
+  const text = `${recipe.name} ${recipe.introduction || recipe.intro || ""} ${recipe.ingredients.map((i) => i.item).join(" ")}`;
   const nameLower = recipe.name.toLowerCase();
-  const introLower = (recipe.introduction || recipe.intro || "").toLowerCase();
-  if (BREAKFAST_SNACK_PATTERNS.test(nameLower) || BREAKFAST_SNACK_PATTERNS.test(introLower)) return false;
 
-  // Snack/lunch/non-dinner items
-  const snackWords = [
-    "snack", "bar ", "energy ball", "trail mix", "dip", "hummus",
-    "guacamole", "salsa", "cracker", "chip", "popcorn", "nut butter",
-    "lunch box", "lunchbox", "sandwich", "wrap",
-  ];
-  if (snackWords.some((w) => nameLower.includes(w))) return false;
-
-  if (DESSERT_PATTERNS.test(nameLower) || DESSERT_PATTERNS.test(introLower)) return false;
-
-  // Exclude sauces/dressings/condiments unless the recipe is clearly a full main.
-  if (NON_MAIN_NAME_PATTERNS.test(nameLower) && !hasSubstantialMainNameSignal(recipe)) return false;
-
-  // Exclude meal_role mismatches
-  if (role === "breakfast" || role === "brunch" || role === "lunch" || role === "drink" || role === "beverage" || role === "snack" || role === "dessert") return false;
-
-  // Must have a reasonable number of ingredients (not just a sauce/dip)
-  if (recipe.ingredients.length < 3) return false;
-
-  // Must have method steps
-  if (!recipe.method || recipe.method.length < 2) return false;
-
-  return true;
-}
-
-export function isMainPlannerCandidate(recipe: Recipe): boolean {
-  return isDinnerWorthy(recipe);
+  // Pasta was explicitly called out as yesterday's dinner; keep pasta salads
+  // suppressed too unless David asks for pasta again.
+  if (isPasta(recipe)) return false;
+  if (HOT_WEATHER_HEAVY_PATTERNS.test(text)) return false;
+  if (HOT_WEATHER_HEAVY_PROTEIN_PATTERNS.test(text) && !/\b(grilled|grill|skewer|kebab|salad|lettuce wrap)\b/i.test(text)) return false;
+  if (HOT_WEATHER_FRESH_PATTERNS.test(text)) return true;
+  return isLight(recipe);
 }
 
 /**
@@ -502,6 +499,7 @@ function pickDiverseCandidates(
   pool: Recipe[],
   count: number,
   alreadyPicked: Recipe[],
+  preferredIds?: ReadonlySet<string>,
 ): Recipe[] {
   const picked: Recipe[] = [];
   const usedIds = new Set(alreadyPicked.map((r) => r.id));
@@ -522,7 +520,11 @@ function pickDiverseCandidates(
         const cuisinePenalty = (cuisineCounts.get(getCuisine(recipe)) ?? 0) * 8;
         const sourcePenalty = (sourceCounts.get(sourceDiversityKey(recipe)) ?? 0) * 5;
         const hasImageBonus = recipe.image ? -1 : 0;
-        return cuisinePenalty + sourcePenalty + hasImageBonus + stableNoise(recipe.id) * 0.5;
+        // Thumbs-up recipes rank ahead of equally diverse peers. The pool is
+        // already exclusion-filtered, so preference can never resurface a
+        // recently cooked/planned/offered recipe.
+        const preferredBonus = preferredIds?.has(recipe.id) ? -4 : 0;
+        return cuisinePenalty + sourcePenalty + hasImageBonus + preferredBonus + stableNoise(recipe.id) * 0.5;
       };
       return score(a) - score(b);
     });
@@ -605,6 +607,7 @@ function buildRationale(main: Recipe, sides: Recipe[], baseRationale: string): s
 export type GenerationHints = {
   skipCount?: number;
   preferQuick?: boolean;
+  preferLight?: boolean;
   preferGuestFriendly?: boolean;
 };
 
@@ -780,38 +783,7 @@ export function selectMealOptions(
   return { weekday, weekend, weekendMeals };
 }
 
-// ----- bucket classification for planner candidates -----
-
-const FISH_PATTERNS = /\b(salmon|tuna|trout|cod|halibut|catfish|sea bass|snapper|mackerel|sardine|anchov|swordfish|fish|shrimp|prawn|scallop|crab|lobster|mussel|clam|oyster|squid|calamari|octopus|seafood)\b/i;
-
-function classifyBucket(recipe: Recipe): CandidateBucket | null {
-  const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
-  const nameLower = recipe.name.toLowerCase();
-  const ingredientText = recipe.ingredients.map((i) => i.item).join(" ");
-
-  // Salad bucket: dish_type includes "salad" or name contains "salad"
-  if (dishTypes.includes("salad") || nameLower.includes("salad")) return "salad";
-
-  // Soup bucket: dish_type includes "soup" or name signals soup/stew
-  if (dishTypes.includes("soup") || nameLower.includes("soup") || nameLower.includes("stew") || nameLower.includes("chowder") || nameLower.includes("broth")) return "soup";
-
-  // Vegetarian/vegan
-  if (isVegetarianOrVegan(recipe)) return "vegetarian";
-
-  // Fish/seafood
-  if (FISH_PATTERNS.test(nameLower) || FISH_PATTERNS.test(ingredientText)) return "fish";
-
-  // Remaining non-vegetarian = meat
-  return "meat";
-}
-
-/**
- * Visible weekly contract for Phase 2:
- *   3 salads, 3 soups, 2 vegetarian mains, 2 fish, 2 meat = 12 total.
- * Ordered by bucket in the above sequence.
- */
-export const CANDIDATE_BUCKET_CONTRACT = [3, 3, 2, 2, 2] as const;
-export const CANDIDATE_BUCKET_ORDER: CandidateBucket[] = ["salad", "soup", "vegetarian", "fish", "meat"];
+// Bucket classification lives in meals-core.ts (classifyPlannerBucket).
 
 /** Max repair iterations before we accept the best we have. */
 const MAX_REPAIR_PASSES = 3;
@@ -939,13 +911,14 @@ function applyAutoCorrections(recipe: Recipe, issues: PlausibilityIssue[]): { re
  */
 function validateSetComposition(
   buckets: Record<CandidateBucket, Recipe[]>,
+  bucketContract: readonly [number, number, number, number, number] = CANDIDATE_BUCKET_CONTRACT,
 ): { valid: boolean; warnings: string[] } {
   const warnings: string[] = [];
   let valid = true;
 
   for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
     const bucket = CANDIDATE_BUCKET_ORDER[i];
-    const target = CANDIDATE_BUCKET_CONTRACT[i];
+    const target = bucketContract[i];
     const count = buckets[bucket].length;
     if (count < target) {
       warnings.push(`Bucket "${bucket}": ${count}/${target} filled`);
@@ -977,7 +950,21 @@ export type TaggedCandidate = {
 export type QualityGatedResult = {
   candidates: TaggedCandidate[];
   diagnostics: CandidateDiagnostics;
+  bucketContract: readonly [number, number, number, number, number];
 };
+
+function bucketContractForHints(hints?: GenerationHints): readonly [number, number, number, number, number] {
+  if (!hints?.preferLight) return CANDIDATE_BUCKET_CONTRACT;
+
+  const openDays = Math.max(1, 7 - (hints.skipCount ?? 0));
+  if (openDays <= 3) {
+    // Hot, short week: mostly cold/light choices; no forced soup/meat quota.
+    return [3, 0, 2, 2, 0] as const;
+  }
+
+  // Hot normal week: still varied, but salads/veg/fish lead the set.
+  return [4, 0, 3, 2, 1] as const;
+}
 
 /**
  * Quality-gated candidate generation pipeline (Phase 2).
@@ -989,19 +976,21 @@ export type QualityGatedResult = {
 export function selectCandidateMains(
   allRecipes: Recipe[],
   excludeIds?: Set<string>,
-  _hints?: GenerationHints
+  hints?: GenerationHints,
+  preferredIds?: ReadonlySet<string>,
 ): QualityGatedResult {
+  const bucketContract = bucketContractForHints(hints);
   const diagnostics: CandidateDiagnostics = {
     poolSize: 0,
     validatedSize: 0,
     autoCorrected: [],
     excluded: [],
     bucketFill: {
-      salad: { target: CANDIDATE_BUCKET_CONTRACT[0], filled: 0 },
-      soup: { target: CANDIDATE_BUCKET_CONTRACT[1], filled: 0 },
-      vegetarian: { target: CANDIDATE_BUCKET_CONTRACT[2], filled: 0 },
-      fish: { target: CANDIDATE_BUCKET_CONTRACT[3], filled: 0 },
-      meat: { target: CANDIDATE_BUCKET_CONTRACT[4], filled: 0 },
+      salad: { target: bucketContract[0], filled: 0 },
+      soup: { target: bucketContract[1], filled: 0 },
+      vegetarian: { target: bucketContract[2], filled: 0 },
+      fish: { target: bucketContract[3], filled: 0 },
+      meat: { target: bucketContract[4], filled: 0 },
     },
     repairPasses: 0,
     warnings: [],
@@ -1014,6 +1003,16 @@ export function selectCandidateMains(
   }
   pool = filterBySeason(pool);
   pool = pool.filter((r) => !!r.image);
+
+  if (hints?.preferQuick) {
+    const quickPool = pool.filter(isLight);
+    if (quickPool.length >= 18) pool = quickPool;
+  }
+
+  if (hints?.preferLight) {
+    const hotWeatherPool = pool.filter(isHotWeatherFriendly);
+    if (hotWeatherPool.length >= 18) pool = hotWeatherPool;
+  }
   diagnostics.poolSize = pool.length;
 
   // --- Step 2: Plausibility check + auto-correct / exclude ---
@@ -1052,8 +1051,7 @@ export function selectCandidateMains(
       salad: [], soup: [], vegetarian: [], fish: [], meat: [],
     };
     for (const r of recipes) {
-      const b = classifyBucket(r);
-      if (b) buckets[b].push(r);
+      buckets[classifyPlannerBucket(r)].push(r);
     }
     return buckets;
   }
@@ -1072,9 +1070,10 @@ export function selectCandidateMains(
 
     for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
       const bucket = CANDIDATE_BUCKET_ORDER[i];
-      const needed = CANDIDATE_BUCKET_CONTRACT[i];
+      const needed = bucketContract[i];
+      if (needed === 0) continue;
       const available = pools[bucket].filter((r) => !usedIds.has(r.id));
-      const picks = pickDiverseCandidates(available, needed, allPicked);
+      const picks = pickDiverseCandidates(available, needed, allPicked, preferredIds);
       picked[bucket] = picks;
       allPicked.push(...picks);
       picks.forEach((r) => usedIds.add(r.id));
@@ -1089,7 +1088,7 @@ export function selectCandidateMains(
   // --- Step 5: Validate set and iteratively repair weak buckets ---
   let pass = 0;
   while (pass < MAX_REPAIR_PASSES) {
-    const { valid } = validateSetComposition(pickedBuckets);
+    const { valid } = validateSetComposition(pickedBuckets, bucketContract);
     if (valid) break;
 
     pass++;
@@ -1098,7 +1097,7 @@ export function selectCandidateMains(
     // Try to fill under-filled buckets from remaining pool
     for (let i = 0; i < CANDIDATE_BUCKET_ORDER.length; i++) {
       const bucket = CANDIDATE_BUCKET_ORDER[i];
-      const target = CANDIDATE_BUCKET_CONTRACT[i];
+      const target = bucketContract[i];
       const current = pickedBuckets[bucket].length;
       if (current < target) {
         const remaining = bucketPools[bucket].filter((r) => !usedIds.has(r.id));
@@ -1106,6 +1105,7 @@ export function selectCandidateMains(
           remaining,
           target - current,
           Object.values(pickedBuckets).flat(),
+          preferredIds,
         );
         pickedBuckets[bucket].push(...extra);
         extra.forEach((r) => usedIds.add(r.id));
@@ -1115,7 +1115,7 @@ export function selectCandidateMains(
 
   // Final validation after all repair passes to capture current warnings
   {
-    const { warnings } = validateSetComposition(pickedBuckets);
+    const { warnings } = validateSetComposition(pickedBuckets, bucketContract);
     diagnostics.warnings = warnings;
   }
 
@@ -1133,53 +1133,16 @@ export function selectCandidateMains(
     }
   }
 
-  return { candidates: result, diagnostics };
+  return { candidates: result, diagnostics, bucketContract };
 }
 
-/** Exported for testing */
-export { checkPlausibility as _checkPlausibility, isDinnerWorthy as _isDinnerWorthy };
-
-// ----- week id helpers -----
-
-/** Format an ISO week id string from year + week number. */
-export function formatWeekId(year: number, week: number): string {
-  return `${year}-W${String(week).padStart(2, "0")}`;
-}
-
-/** Parse a "YYYY-Www" string into { year, week }. Returns null on invalid input. */
-export function parseWeekId(weekId: string): { year: number; week: number } | null {
-  const m = /^(\d{4})-W(\d{2})$/.exec(weekId);
-  if (!m) return null;
-  const year = parseInt(m[1], 10);
-  const week = parseInt(m[2], 10);
-  if (week < 1 || week > 53) return null;
-  return { year, week };
-}
-
-/**
- * Offset an ISO week by `delta` weeks (positive = forward, negative = back).
- * Handles year boundaries correctly by converting to date, offsetting, and
- * re-deriving the ISO week.
- */
-export function offsetWeek(
-  year: number,
-  week: number,
-  delta: number,
-): { year: number; week: number } {
-  const monday = getWeekMonday(year, week);
-  monday.setUTCDate(monday.getUTCDate() + delta * 7);
-  return getISOWeek(monday);
-}
-
-/** Return previous ISO week ids, newest first. */
-export function getRecentWeekIds(weekId: string, lookback: number): string[] {
-  const parsed = parseWeekId(weekId);
-  if (!parsed || lookback < 1) return [];
-  return Array.from({ length: lookback }, (_, i) => {
-    const { year, week } = offsetWeek(parsed.year, parsed.week, -(i + 1));
-    return formatWeekId(year, week);
-  });
-}
+/** Exported for testing/verification (scripts/verify-meals.mjs) */
+export {
+  checkPlausibility as _checkPlausibility,
+  isWeekendMainWorthy as _isWeekendMainWorthy,
+  recipeSeason as _recipeSeason,
+  filterBySeason as _filterBySeason,
+};
 
 // ----- day-level complement selection (Phase 4) -----
 
@@ -1458,49 +1421,4 @@ export function selectDayComplements(
   return results;
 }
 
-// ----- week date helpers -----
-
-export function getISOWeek(date: Date): { year: number; week: number } {
-  const d = new Date(
-    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
-  );
-  const dayNum = d.getUTCDay() || 7;
-  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-  const week = Math.ceil(
-    ((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7
-  );
-  return { year: d.getUTCFullYear(), week };
-}
-
-export function getWeekMonday(year: number, week: number): Date {
-  const jan4 = new Date(Date.UTC(year, 0, 4));
-  const dayOfWeek = jan4.getUTCDay() || 7;
-  const mondayOfW1 = new Date(jan4.getTime());
-  mondayOfW1.setUTCDate(jan4.getUTCDate() - dayOfWeek + 1);
-  const target = new Date(mondayOfW1.getTime());
-  target.setUTCDate(mondayOfW1.getUTCDate() + (week - 1) * 7);
-  return target;
-}
-
-export function getWeekDates(
-  year: number,
-  week: number
-): { date: string; dayOfWeek: string }[] {
-  const monday = getWeekMonday(year, week);
-  const offsets = [
-    { offset: 0, day: "Monday" },
-    { offset: 1, day: "Tuesday" },
-    { offset: 2, day: "Wednesday" },
-    { offset: 3, day: "Thursday" },
-    { offset: 4, day: "Friday" },
-    { offset: 5, day: "Saturday" },
-    { offset: 6, day: "Sunday" },
-  ];
-  return offsets.map(({ offset, day }) => {
-    const d = new Date(monday.getTime());
-    d.setUTCDate(d.getUTCDate() + offset);
-    const dateStr = d.toISOString().split("T")[0];
-    return { date: dateStr, dayOfWeek: day };
-  });
-}
+// Week id/date helpers live in meals-core.ts and are re-exported above.

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getRecipe } from "@/lib/recipes";
+import { isMainPlannerCandidate } from "@/lib/meals";
 
 /**
  * Lightweight lookup: returns current canonical fields for a list of recipe IDs.
@@ -28,9 +29,6 @@ export async function GET(request: NextRequest) {
     isMain?: boolean;
   }> = {};
 
-  const NON_MAIN_ROLES = new Set(["component", "base", "condiment", "garnish", "drink", "beverage", "breakfast", "snack", "dessert", "side"]);
-  const NON_MAIN_DISH_TYPES = new Set(["condiment", "dessert", "side", "component", "base", "garnish", "sauce", "dressing", "drink", "beverage", "breakfast", "snack"]);
-
   await Promise.all(
     ids.map(async (id) => {
       const recipe = await getRecipe(id);
@@ -38,9 +36,9 @@ export async function GET(request: NextRequest) {
         const mealRole = (recipe as Record<string, unknown>).mealRole as string | undefined
           ?? recipe.category?.meal_role
           ?? "main";
-        const dishTypes = recipe.category?.dish_type?.map((t) => t.toLowerCase()) ?? [];
-        const isMain = !NON_MAIN_ROLES.has(mealRole.toLowerCase())
-          && !dishTypes.some((t) => NON_MAIN_DISH_TYPES.has(t));
+        // The authoritative planner-main gate — the same rule candidate
+        // generation and the save boundary enforce.
+        const isMain = isMainPlannerCandidate(recipe);
         result[id] = {
           image: recipe.image ?? null,
           time: recipe.time ?? {},

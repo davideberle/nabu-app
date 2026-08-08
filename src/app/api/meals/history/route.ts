@@ -12,7 +12,10 @@ import { parseWeekId, getWeekDates, type MealPlan } from "@/lib/meals";
  *   - "planned"           — recipe assigned, not yet cooked
  *   - "cooked-as-planned" — explicitly marked cooked for the planned recipe
  *   - "cooked-other"      — explicitly marked cooked for a different recipe
- *   - "skipped"           — day was planned but no cook happened (past only)
+ *   - "planned-unlogged"  — day was planned but no cook was logged (past only)
+ *   - "skipped"           — day was intentionally empty (skip-meal context or
+ *                            a persisted `planningState: "skipped"`); distinct
+ *                            from a planned meal that simply has no cook log
  *   - null                — no plan and no cook for that day
  *
  * GET /api/meals/history?week=2026-W17
@@ -22,6 +25,7 @@ export type DayHistoryStatus =
   | "planned"
   | "cooked-as-planned"
   | "cooked-other"
+  | "planned-unlogged"
   | "skipped"
   | null;
 
@@ -93,12 +97,24 @@ export async function GET(request: NextRequest) {
     }),
   );
 
+  // A day is intentionally skipped when its persisted state says so, or when
+  // a dated skip-meal context targets it (older records predate the persisted
+  // state). An assignment always wins over a stale skip marker.
+  const skipContextDates = new Set(
+    (plan?.context ?? [])
+      .filter((item) => item.effect === "skip-meal" && item.date)
+      .map((item) => item.date as string),
+  );
+
   const days: DayHistory[] = weekDates.map((wd, i) => {
     const slot = plan?.days[i] ?? null;
     const events = eventsByDate.get(wd.date) ?? [];
     const plannedIds = getPlannedIds(slot);
     const hasPlannedRecipe = plannedIds.length > 0;
     const isPast = wd.date < today;
+    const isIntentionallySkipped =
+      !hasPlannedRecipe &&
+      (slot?.planningState === "skipped" || skipContextDates.has(wd.date));
 
     // Match cook event against any planned ID (main or brunch)
     const plannedCookEvent = hasPlannedRecipe
@@ -115,9 +131,11 @@ export async function GET(request: NextRequest) {
     } else if (hasPlannedRecipe && hasCooked) {
       status = "cooked-other";
     } else if (hasPlannedRecipe && !hasCooked) {
-      status = isPast ? "skipped" : "planned";
+      status = isPast ? "planned-unlogged" : "planned";
     } else if (!hasPlannedRecipe && hasCooked) {
       status = "cooked-other";
+    } else if (isIntentionallySkipped) {
+      status = "skipped";
     }
     // else: null — no plan and no explicit cook event
 

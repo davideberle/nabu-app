@@ -7,9 +7,10 @@
  *
  * Kitchen-owned weekly web inspiration importer.
  *
- * Goal: find 6 trusted web recipes for a week, skip duplicates already in
- * the kitchen/app library, extract structured recipe data from JSON-LD, and
- * optionally stage/import them as Kitchen recipes + Companion App My Recipes.
+ * Goal: find a FOOBY-led set of trusted web recipes for a week, skip
+ * duplicates already in the kitchen/app library, extract structured recipe
+ * data from JSON-LD, and optionally stage/import them as Kitchen recipes +
+ * Companion App My Recipes.
  *
  * Default mode is dry-run. Writes require explicit flags.
  */
@@ -18,6 +19,14 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { createRequire } from "node:module";
+// Canonical Kitchen source registry (tier, editorial surface, cadence, cap,
+// extraction strategy). Node strips the types; the module is dependency-free.
+import {
+  PLANNER_SOURCES,
+  buildDiscoveryPlan,
+  findSourceByUrl,
+} from "../src/lib/planner-sources.ts";
+import { classifyPlannerRole } from "../src/lib/planner-roles.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,74 +38,40 @@ const KITCHEN_RECIPES_DIR = path.join(KITCHEN_DIR, "recipes");
 const APP_PUBLIC_RECIPES_DIR = path.join(APP_DIR, "public/recipes");
 const APP_BUNDLE_PATH = path.join(APP_DIR, "src/data/recipes-bundle.json");
 
-export const TRUSTED_SOURCES = [
-  {
-    name: "Love & Lemons",
-    host: "www.loveandlemons.com",
-    cuisine: "Modern Vegetarian",
-    priority: 1,
-    strategy: "wordpress",
-  },
-  {
-    name: "Cookie and Kate",
-    host: "cookieandkate.com",
-    cuisine: "Modern Vegetarian",
-    priority: 2,
-    strategy: "wordpress",
-  },
-  {
-    name: "Ministry of Curry",
-    host: "ministryofcurry.com",
-    cuisine: "Indian",
-    priority: 3,
-    strategy: "wordpress",
-  },
-  {
-    name: "Indian Healthy Recipes",
-    host: "www.indianhealthyrecipes.com",
-    cuisine: "Indian",
-    priority: 4,
-    strategy: "wordpress",
-  },
-  {
-    name: "The Greek Foodie",
-    host: "thegreekfoodie.com",
-    cuisine: "Greek",
-    priority: 5,
-    strategy: "wordpress",
-  },
-  {
-    name: "The Foodie Takes Flight",
-    host: "thefoodietakesflight.com",
-    cuisine: "Asian Vegan",
-    priority: 6,
-    strategy: "wordpress",
-  },
-  {
-    name: "Forks Over Knives",
-    host: "www.forksoverknives.com",
-    cuisine: "Plant-Based",
-    priority: 7,
-    strategy: "wordpress",
-  },
-  {
-    name: "Serious Eats",
-    host: "www.seriouseats.com",
-    cuisine: "Global",
-    priority: 8,
-    strategy: "homepage-search",
-  },
-  {
-    name: "FOOBY",
-    host: "fooby.ch",
-    cuisine: "Swiss",
-    priority: 0,
-    strategy: "fooby-json",
-  },
-];
+/**
+ * The trusted-source roster is no longer defined here.
+ *
+ * It is the Kitchen-owned registry in
+ * `projects/kitchen/web-inspiration/source-registry.json`, projected into the
+ * deployable `src/lib/planner-sources.ts`. That replaced the old drift where
+ * this file and `kitchen/recipe-sources.json` named different sites.
+ *
+ * The shape below is the importer's view of a registry entry: same identity,
+ * plus the `strategy` field the search adapters switch on.
+ */
+function toImporterSource(source) {
+  return {
+    id: source.id,
+    name: source.name,
+    host: source.host,
+    cuisine: source.cuisine,
+    tier: source.tier,
+    lane: source.lane,
+    automatic: source.automatic,
+    visibleCap: source.visibleCap,
+    strategy: source.searchStrategy,
+    editorialSurfaces: source.editorialSurfaces,
+    extraction: source.extraction,
+  };
+}
+
+export const TRUSTED_SOURCES = PLANNER_SOURCES.map(toImporterSource);
+export const AUTOMATIC_SOURCES = TRUSTED_SOURCES.filter((s) => s.automatic);
 
 const TRUSTED_HOSTS = new Set(TRUSTED_SOURCES.map((s) => s.host));
-const DEFAULT_COUNT = 6;
+const DEFAULT_COUNT = 8;
+/** Pairing/serve-with ideas staged per week. They never occupy a main slot. */
+const MAX_PAIRING_IMPORTS = 3;
 const USER_AGENT = "NabuKitchenWeeklyInspiration/0.1 (+https://app.davideberle.com)";
 
 function usage() {
@@ -106,7 +81,7 @@ function usage() {
 Options:
   --query <text>              Search query. Default: season-aware dinner query.
   --week <YYYY-Www>           Week id for provenance. Default: current ISO week.
-  --count <n>                 Number of inspirations. Default: ${DEFAULT_COUNT}.
+  --count <n>                 Number of inspirations. Default: ${DEFAULT_COUNT} (aims for 4-6 FOOBY + 2-3 other sources).
   --source <host-or-name>     Limit to one trusted source. May be repeated.
   --url <recipe-url>          Import explicit trusted recipe URL. May be repeated.
   --write-kitchen             Save Kitchen recipe JSON under projects/kitchen/recipes/<slug>/recipe.json.
@@ -179,8 +154,8 @@ export async function runWeeklyInspirations(options = {}) {
   const sourceFilter = buildSourceFilter(opts.sources);
   const discoveryLimit = Math.max(opts.count * 12, 72);
   const discovered = opts.urls.length > 0
-    ? opts.urls.map((url) => ({ url, source: sourceForUrl(url) })).filter((c) => c.source)
-    : await searchTrustedSources(opts.query, discoveryLimit, sourceFilter);
+    ? opts.urls.map((url) => ({ url, source: sourceForUrl(url), discovery: "search" })).filter((c) => c.source)
+    : await discoverCandidates(opts.query, discoveryLimit, { sources: sourceFilter });
 
   const report = {
     week: opts.week,
@@ -190,12 +165,19 @@ export async function runWeeklyInspirations(options = {}) {
     considered: discovered.length,
     discoveryLimit,
     imported: [],
+    pairings: [],
     skipped: [],
     errors: [],
   };
 
   const picked = [];
   const seenUrls = new Set();
+  // Per-source ceilings come from the Kitchen registry (FOOBY 3, most others 2,
+  // The Greek Foodie 1). They are caps, never quotas: a source that offers
+  // nothing usable contributes nothing.
+  const perSourceCount = new Map();
+  let pairingCount = 0;
+
   for (const candidate of discovered) {
     if (picked.length >= opts.count) break;
     if (!candidate?.url || seenUrls.has(candidate.url)) continue;
@@ -209,10 +191,17 @@ export async function runWeeklyInspirations(options = {}) {
         continue;
       }
 
+      const used = perSourceCount.get(source.host) ?? 0;
+      const cap = source.visibleCap ?? 2;
+      if (used >= cap) {
+        report.skipped.push({ url: candidate.url, reason: `source cap reached (${source.name}: ${cap})` });
+        continue;
+      }
+
       const html = await fetchText(candidate.url);
       const extracted = extractRecipeFromHtml(html, candidate.url, source);
       if (!extracted) {
-        report.skipped.push({ url: candidate.url, reason: "no recipe JSON-LD found" });
+        report.skipped.push({ url: candidate.url, reason: "no usable recipe structure found" });
         continue;
       }
 
@@ -227,19 +216,33 @@ export async function runWeeklyInspirations(options = {}) {
         continue;
       }
 
-      const mealRole = inferMealRole(extracted);
-      if (mealRole !== "main") {
+      const slug = uniqueSlug(slugify(extracted.name), known.ids);
+
+      // Role classification runs on the recipe as it will actually be stored,
+      // using the production classifier — the same function the app applies to
+      // catalog recipes. Editorial prominence gets a candidate this far and no
+      // further.
+      const role = classifyPlannerRole(
+        toCompanionRecipe(extracted, { slug, week: opts.week, image: extracted.image ?? null }),
+      );
+      if (role.role === "reject") {
         report.skipped.push({
           url: candidate.url,
           name: extracted.name,
           reason: "non-main",
-          mealRole,
+          role: role.role,
+          roleCategory: role.category,
+          roleReasons: role.reasons,
           dishTypes: inferDishTypes(extracted),
         });
         continue;
       }
+      const isPairing = role.role === "pairing";
+      if (isPairing && pairingCount >= MAX_PAIRING_IMPORTS) {
+        report.skipped.push({ url: candidate.url, name: extracted.name, reason: "pairing cap reached" });
+        continue;
+      }
 
-      const slug = uniqueSlug(slugify(extracted.name), known.ids);
       const image = opts.writeAppFiles
         ? await persistRecipeImage(extracted.image, slug)
         : imagePathForDryRun(extracted.image, slug);
@@ -275,13 +278,26 @@ export async function runWeeklyInspirations(options = {}) {
         id: slug,
         name: extracted.name,
         source: source.name,
+        sourceId: source.id,
         url: candidate.url,
         image,
+        discovery: candidate.discovery === "editorial" ? "editorial" : "search",
+        role: role.role,
+        roleCategory: role.category,
         kitchenPath: path.relative(WORKSPACE_DIR, path.join(KITCHEN_RECIPES_DIR, slug, "recipe.json")),
         appDb: !!opts.writeAppDb,
       };
-      report.imported.push(imported);
-      picked.push(imported);
+
+      // A pairing is staged so the planner can offer it as a serve-with idea,
+      // but it never counts toward the main target and never fills a main slot.
+      if (isPairing) {
+        report.pairings.push(imported);
+        pairingCount += 1;
+      } else {
+        report.imported.push(imported);
+        picked.push(imported);
+        perSourceCount.set(source.host, used + 1);
+      }
 
       known.ids.add(slug);
       known.normalizedTitles.add(normalizeTitle(extracted.name));
@@ -326,62 +342,91 @@ function assertTrustedUrl(url) {
   }
 }
 
-export async function searchTrustedSources(query, limit = 24, sources = TRUSTED_SOURCES) {
-  const foobySource = sources.find((s) => s.host === "fooby.ch");
+/**
+ * Ordered weekly discovery: editorial surfaces first, targeted search second.
+ *
+ * This is the behaviour AC1 asks for and the old implementation did not have.
+ * Previously every source got the same generic seasonal query and the first
+ * parseable pages won. Now:
+ *
+ *   1. every tier-A editorial surface is read (FOOBY's "Inspiration for this
+ *      week", the monthly editor collections), plus seasonally relevant tier-B
+ *      surfaces. Those candidates are marked `discovery: "editorial"`
+ *   2. the lanes those candidates already cover are measured
+ *   3. only the *uncovered* lanes justify a targeted search step, which is what
+ *      opens tier C at all
+ *
+ * A source contributes nothing when its surface is broken or its picks do not
+ * qualify. There is no FOOBY quota: its cap is a ceiling applied later, during
+ * selection.
+ */
+export async function discoverCandidates(query, limit = 24, options = {}) {
+  const now = options.now ?? new Date();
+  const sourceFilter = options.sources ?? null;
+  const allow = sourceFilter ? new Set(sourceFilter.map((s) => s.host)) : null;
+  const keep = (step) => !allow || allow.has(step.source.host);
 
-  // Phase 1: If FOOBY is in the active source set, start with curated weekly
-  // homepage picks: editorially chosen "Inspiration for this week"
-  // recipes and should be the default starting point.
-  const curatedCandidates = [];
-  if (foobySource) {
-    try {
-      const weeklyLinks = await scrapeFoobyWeeklyLinks();
-      for (const link of weeklyLinks) {
-        if (link.url && isProbablyRecipeUrl(link.url)) {
-          curatedCandidates.push({ ...link, source: foobySource });
-        }
-      }
-    } catch {
-      // Curated scrape failed; will fall back to search-based discovery below.
-    }
-  }
-
-  // Phase 2: Top up from search-based discovery across all sources (including
-  // FOOBY search as fallback) via round-robin interleave.
-  const perSource = Math.max(8, Math.ceil(limit / Math.max(1, sources.length)));
+  const editorialSteps = buildDiscoveryPlan({ now }).filter((step) => step.mode === "editorial").filter(keep);
+  const editorial = [];
   const byHost = new Map();
-  for (const source of sources.sort((a, b) => a.priority - b.priority)) {
+
+  for (const step of editorialSteps) {
+    const source = toImporterSource(step.source);
+    let links = [];
     try {
-      const results = await searchSource(source, query, perSource);
-      const candidates = results
-        .map((r) => ({ ...r, source }))
-        .filter((r) => r.url && isProbablyRecipeUrl(r.url));
-      if (candidates.length > 0) {
-        byHost.set(source.host, candidates);
-      }
+      links = await scrapeEditorialSurface(step, source);
     } catch {
-      // One source failing should not kill the weekly run.
+      // A broken editorial surface reduces this source's yield for the week.
+      // It must never fail the run.
+    }
+    for (const link of links) {
+      if (!link?.url || !isProbablyRecipeUrl(link.url)) continue;
+      const candidate = { ...link, source, discovery: "editorial" };
+      editorial.push(candidate);
+      if (!byHost.has(source.host)) byHost.set(source.host, []);
+      byHost.get(source.host).push(candidate);
     }
   }
 
-  // Round-robin interleave so no single source dominates the top-up list.
-  const interleaved = [];
-  const iterators = [...byHost.values()].map((arr) => ({ arr, idx: 0 }));
-  let progress = true;
-  while (progress) {
-    progress = false;
-    for (const it of iterators) {
-      if (it.idx < it.arr.length) {
-        interleaved.push(it.arr[it.idx++]);
-        progress = true;
+  // Which lanes did the editorial pool actually cover?
+  const coveredLanes = new Set(editorial.map((c) => c.source.lane));
+  const laneGaps = [
+    ...new Set(
+      PLANNER_SOURCES
+        .filter((source) => source.automatic && !coveredLanes.has(source.lane))
+        .map((source) => source.lane),
+    ),
+  ];
+
+  const searchCandidates = [];
+  if (editorial.length < limit && laneGaps.length > 0) {
+    const searchSteps = buildDiscoveryPlan({ now, laneGaps }).filter((step) => step.mode === "search").filter(keep);
+    const perSource = Math.max(4, Math.ceil(limit / Math.max(1, searchSteps.length)));
+    for (const step of searchSteps) {
+      const source = toImporterSource(step.source);
+      try {
+        const results = await searchSource(source, query, perSource);
+        for (const result of results) {
+          if (!result?.url || !isProbablyRecipeUrl(result.url)) continue;
+          const candidate = { ...result, source, discovery: "search" };
+          searchCandidates.push(candidate);
+          if (!byHost.has(source.host)) byHost.set(source.host, []);
+          byHost.get(source.host).push(candidate);
+        }
+      } catch {
+        // One source failing must not kill the weekly run.
       }
     }
   }
 
-  // Combine: curated FOOBY weekly picks first, then search-based top-up.
-  const combined = [...curatedCandidates, ...interleaved];
+  // Interleave by host inside each phase so no single site fronts the queue.
+  const ordered = [
+    ...interleaveBySource(editorial, (c) => c.source.host),
+    ...interleaveBySource(searchCandidates, (c) => c.source.host),
+  ];
+
   const seen = new Set();
-  return combined
+  return ordered
     .filter((r) => {
       const key = normalizeUrl(r.url);
       if (seen.has(key)) return false;
@@ -389,6 +434,85 @@ export async function searchTrustedSources(query, limit = 24, sources = TRUSTED_
       return true;
     })
     .slice(0, limit);
+}
+
+/** Backwards-compatible alias; discovery is registry-driven now. */
+export async function searchTrustedSources(query, limit = 24, sources = TRUSTED_SOURCES) {
+  return discoverCandidates(query, limit, { sources });
+}
+
+/**
+ * Read one editorial surface and return its recipe links.
+ *
+ * A `homepage-section` surface anchors on its marker text and only scans the
+ * following chunk, so unrelated page sections cannot leak in. A `collection`
+ * surface scans the whole page but keeps only links that match the registry's
+ * link pattern and belong to the same source — a collection page must never be
+ * imported as if it were a recipe.
+ */
+async function scrapeEditorialSurface(step, source) {
+  const url = step.url ?? step.surface?.url;
+  if (!url) return [];
+  const html = await fetchText(url).catch(() => "");
+  if (!html) return [];
+
+  let scope = html;
+  if (step.surface?.marker) {
+    const idx = html.indexOf(step.surface.marker);
+    if (idx === -1) return [];
+    scope = html.slice(idx, idx + 12000);
+  }
+
+  const linkPattern = step.surface?.linkPattern ? new RegExp(step.surface.linkPattern, "i") : null;
+  const results = [];
+  const seen = new Set();
+  for (const match of scope.matchAll(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>([\s\S]{0,200}?)<\/a>/gi)) {
+    const href = absolutizeUrl(match[1], url);
+    if (!href) continue;
+    if (normalizeUrl(href) === normalizeUrl(url)) continue;
+    const key = normalizeUrl(href);
+    if (seen.has(key)) continue;
+    const linkSource = findSourceByUrl(href);
+    if (!linkSource || linkSource.host !== source.host) continue;
+    if (linkPattern && !linkPattern.test(href)) continue;
+    seen.add(key);
+    results.push({ title: decodeHtml(stripTags(match[2])).trim(), url: href });
+  }
+  return results;
+}
+
+/**
+ * Round-robin interleave arrays so no single bucket dominates the front.
+ * Pure helper -- exported for testing.
+ */
+export function roundRobinInterleave(buckets) {
+  const result = [];
+  const iterators = buckets.map((arr) => ({ arr, idx: 0 }));
+  let progress = true;
+  while (progress) {
+    progress = false;
+    for (const it of iterators) {
+      if (it.idx < it.arr.length) {
+        result.push(it.arr[it.idx++]);
+        progress = true;
+      }
+    }
+  }
+  return result;
+}
+
+/**
+ * Re-order candidates so sources are balanced (round-robin by source key).
+ * Pure helper -- exported for testing.
+ */
+export function interleaveBySource(candidates, sourceKey = (c) => c.source) {
+  const bySource = new Map();
+  for (const c of candidates) {
+    const key = typeof sourceKey === "function" ? sourceKey(c) : c[sourceKey];
+    if (!bySource.has(key)) bySource.set(key, []);
+    bySource.get(key).push(c);
+  }
+  return roundRobinInterleave([...bySource.values()]);
 }
 
 async function searchSource(source, query, limit) {
@@ -399,40 +523,6 @@ async function searchSource(source, query, limit) {
     return searchFooby(source, query, limit);
   }
   return searchHomepageLinks(source, query, limit);
-}
-
-/**
- * Scrape the FOOBY homepage "Inspiration for this week" curated recipe links.
- * Returns an array of { title, url } for recipe pages found in that section.
- * Falls back to an empty array on any failure so the caller can top up from search.
- */
-async function scrapeFoobyWeeklyLinks() {
-  const homepage = "https://fooby.ch/en.html";
-  const html = await fetchText(homepage).catch(() => "");
-  if (!html) return [];
-
-  // Find the "Inspiration for this week" section and extract recipe links after it.
-  // The section heading appears as text; recipe links follow as /en/recipes/<id>/<slug> hrefs.
-  const sectionIdx = html.indexOf("Inspiration for this week");
-  if (sectionIdx === -1) return [];
-
-  // Scan the chunk after the heading for recipe links (cap search window to avoid
-  // bleeding into unrelated page sections).
-  const chunk = html.slice(sectionIdx, sectionIdx + 8000);
-  const linkRe = /<a\s+[^>]*href=["']([^"']*\/en\/recipes\/\d+\/[^"']+)["'][^>]*>/gi;
-  const seen = new Set();
-  const results = [];
-  for (const m of chunk.matchAll(linkRe)) {
-    const href = absolutizeUrl(m[1], homepage);
-    if (!href) continue;
-    const key = normalizeUrl(href);
-    if (seen.has(key)) continue;
-    seen.add(key);
-    // Only keep main fooby.ch recipes; skip little.fooby.ch or other subdomains.
-    try { if (new URL(href).host !== "fooby.ch") continue; } catch { continue; }
-    results.push({ title: "", url: href });
-  }
-  return results;
 }
 
 async function searchFooby(source, query, limit) {
@@ -509,16 +599,158 @@ function isProbablyRecipeUrl(url) {
   }
 }
 
+/**
+ * Extract a recipe from a page.
+ *
+ * Structured extraction stays preferred: Recipe JSON-LD is tried first and
+ * wins whenever it is complete. Only when it is unusable does a source-specific
+ * fallback run, and only for sources the registry gives one to.
+ *
+ * FOOBY needs this. Its featured pages *do* ship Recipe JSON-LD, but with the
+ * whole preparation collapsed into a single `HowToStep`, which the structured
+ * path correctly refuses for a main. The page's own embedded `recipeJSON`
+ * carries the real per-section steps, grouped ingredients with quantities,
+ * times and servings — so the fallback reads that and merges the JSON-LD
+ * metadata (category, cuisine, keywords, diet) back on top.
+ */
 export function extractRecipeFromHtml(html, url, source) {
   const jsonLdBlocks = extractJsonLd(html);
+  let rawRecipeLd = null;
   for (const block of jsonLdBlocks) {
     const recipes = findRecipeObjects(block);
     for (const recipe of recipes) {
-      const normalized = normalizeRecipeLd(recipe, url, source);
+      if (!rawRecipeLd) rawRecipeLd = recipe;
+      const normalized = normalizeRecipeLd(recipe, url, source, html);
       if (normalized) return normalized;
     }
   }
+
+  if (source?.extraction?.fallback === "fooby-embedded-json") {
+    return extractFoobyRecipe(html, url, source, rawRecipeLd);
+  }
   return null;
+}
+
+/** Read the `var recipeJSON = {...};` payload FOOBY renders on every recipe. */
+export function parseFoobyRecipeJson(html) {
+  const marker = html.indexOf("var recipeJSON");
+  if (marker === -1) return null;
+  const start = html.indexOf("{", marker);
+  if (start === -1) return null;
+
+  // Brace-count to the matching close, skipping braces inside strings so a
+  // step containing "{" cannot truncate the payload.
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let i = start; i < html.length; i++) {
+    const ch = html[i];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (ch === "\\") escaped = true;
+      else if (ch === '"') inString = false;
+      continue;
+    }
+    if (ch === '"') { inString = true; continue; }
+    if (ch === "{") depth++;
+    else if (ch === "}") {
+      depth--;
+      if (depth === 0) {
+        try {
+          return JSON.parse(html.slice(start, i + 1));
+        } catch {
+          return null;
+        }
+      }
+    }
+  }
+  return null;
+}
+
+function foobyIngredientText(ingredient) {
+  const amount =
+    typeof ingredient?.amount === "number" && ingredient.amount > 0
+      ? String(Number.isInteger(ingredient.amount) ? ingredient.amount : ingredient.amount)
+      : "";
+  const unit = cleanText(ingredient?.unit ?? "");
+  const desc = cleanText(ingredient?.text ?? "");
+  return [amount, unit, desc].filter(Boolean).join(" ").trim();
+}
+
+function foobyMinutes(value) {
+  const match = String(value ?? "").match(/(\d+)\s*(h|std|hour|min)/i);
+  if (!match) return 0;
+  const n = Number.parseInt(match[1], 10);
+  return /^(h|std|hour)/i.test(match[2]) ? n * 60 : n;
+}
+
+function metaContent(html, property) {
+  const re = new RegExp(`<meta[^>]+(?:property|name)=["']${property}["'][^>]*content=["']([^"']*)["']`, "i");
+  return cleanText(html.match(re)?.[1] ?? "");
+}
+
+/**
+ * Source-specific FOOBY extraction.
+ *
+ * Deliberately accepts a single method step: FOOBY writes short recipes as one
+ * well-formed instruction with fully structured, grouped, quantified
+ * ingredients. That is a real recipe, and the role classifier — not the
+ * extractor — decides whether it can be a dinner main. Anything with fewer than
+ * three ingredients or no instruction at all is still refused.
+ */
+export function extractFoobyRecipe(html, url, source, rawRecipeLd = null) {
+  const payload = parseFoobyRecipeJson(html);
+  if (!payload) return null;
+
+  const name = cleanText(payload.name ?? metaContent(html, "og:title"));
+  const items = Array.isArray(payload.items) ? payload.items : [];
+
+  const ingredientEntries = [];
+  const method = [];
+  for (const item of items) {
+    const group = cleanText(item?.title ?? "");
+    for (const ingredient of Array.isArray(item?.ingredients) ? item.ingredients : []) {
+      const text = foobyIngredientText(ingredient);
+      if (text) ingredientEntries.push({ text, group: group || null });
+    }
+    const step = cleanText(item?.step ?? "");
+    if (step) method.push(group && group.toLowerCase() !== step.toLowerCase() ? `${group}: ${step}` : step);
+  }
+
+  if (!name || ingredientEntries.length < 3 || method.length < 1) return null;
+
+  const image =
+    payload.images?.large ||
+    payload.images?.medium ||
+    normalizeImage(rawRecipeLd?.image) ||
+    metaContent(html, "og:image") ||
+    null;
+
+  const prepMinutes = foobyMinutes(payload.time?.timeActive);
+  const totalMinutes = foobyMinutes(payload.time?.timeTotal) || prepMinutes;
+  const servings = Number.isFinite(payload.amount) && payload.amount > 0 ? payload.amount : 4;
+
+  return {
+    name,
+    url,
+    source,
+    author: normalizeAuthor(rawRecipeLd?.author) || source.name,
+    description: cleanText(firstString(rawRecipeLd?.description)) || metaContent(html, "description"),
+    image,
+    yieldText: normalizeYield(rawRecipeLd?.recipeYield) || `serves ${servings}`,
+    servings,
+    prepMinutes,
+    cookMinutes: Math.max(0, totalMinutes - prepMinutes),
+    totalMinutes,
+    ingredients: ingredientEntries.map((entry) => entry.text),
+    ingredientEntries,
+    method,
+    cuisine: firstString(rawRecipeLd?.recipeCuisine) || source.cuisine || inferCuisine(name, source),
+    category: firstString(rawRecipeLd?.recipeCategory),
+    keywords: normalizeKeywords(rawRecipeLd?.keywords),
+    dietary: normalizeDietary(rawRecipeLd?.suitableForDiet),
+    extractedBy: "fooby-embedded-json",
+  };
 }
 
 function extractJsonLd(html) {
@@ -555,9 +787,15 @@ function findRecipeObjects(node) {
   return out;
 }
 
-function normalizeRecipeLd(recipe, url, source) {
+function normalizeRecipeLd(recipe, url, source, html = "") {
   const name = cleanText(firstString(recipe.name));
   const ingredients = arrayOfStrings(recipe.recipeIngredient);
+  const foobyIngredientEntries = source?.strategy === "fooby-json"
+    ? extractFoobyIngredientEntries(html)
+    : [];
+  const ingredientEntries = foobyIngredientEntries.length >= ingredients.length
+    ? foobyIngredientEntries
+    : ingredients.map((text) => ({ text, group: null }));
   const method = normalizeInstructions(recipe.recipeInstructions);
   if (!name || ingredients.length < 3 || method.length < 2) return null;
 
@@ -573,7 +811,8 @@ function normalizeRecipeLd(recipe, url, source) {
     prepMinutes: parseDurationMinutes(recipe.prepTime),
     cookMinutes: parseDurationMinutes(recipe.cookTime),
     totalMinutes: parseDurationMinutes(recipe.totalTime),
-    ingredients,
+    ingredients: ingredientEntries.map((entry) => entry.text),
+    ingredientEntries,
     method,
     cuisine: firstString(recipe.recipeCuisine) || source.cuisine || inferCuisine(name, source),
     category: firstString(recipe.recipeCategory),
@@ -603,12 +842,43 @@ function normalizeInstructions(instructions) {
       visit(value.itemListElement, sectionName);
       return;
     }
+    const sectionOrStepName = cleanText(value.name ?? "");
     const text = cleanText(value.text || value.name || "");
-    if (text) steps.push(prefix ? `${prefix}: ${text}` : text);
+    if (text) {
+      const shouldPrefixStep =
+        !prefix &&
+        sectionOrStepName &&
+        sectionOrStepName !== text &&
+        sectionOrStepName.length <= 48 &&
+        !text.toLowerCase().startsWith(sectionOrStepName.toLowerCase());
+      steps.push(prefix ? `${prefix}: ${text}` : shouldPrefixStep ? `${sectionOrStepName}: ${text}` : text);
+    }
     if (value.itemListElement) visit(value.itemListElement, prefix);
   };
   visit(instructions);
   return [...new Set(steps)].filter((s) => s.length > 8);
+}
+
+function extractFoobyIngredientEntries(html) {
+  if (!html || !html.includes("recipe-ingredientlist__ingredient-wrapper")) return [];
+  const entries = [];
+  const sections = html.split(/<p class="heading--h3">/g).slice(1);
+  for (const section of sections) {
+    const headingEnd = section.indexOf("</p>");
+    if (headingEnd === -1) continue;
+    const group = cleanText(section.slice(0, headingEnd));
+    if (!group) continue;
+
+    const wrapperRe = /<div class="recipe-ingredientlist__ingredient-wrapper">([\s\S]*?)<\/div>/g;
+    for (const match of section.matchAll(wrapperRe)) {
+      const block = match[1];
+      const quantity = cleanText(block.match(/<span class="recipe-ingredientlist__ingredient-quantity">([\s\S]*?)<\/span>\s*<span class="recipe-ingredientlist__ingredient-desc">/)?.[1] ?? "");
+      const desc = cleanText(block.match(/<span class="recipe-ingredientlist__ingredient-desc">([\s\S]*?)<\/span>/)?.[1] ?? "");
+      const text = [quantity, desc].filter(Boolean).join(" ");
+      if (text) entries.push({ text, group });
+    }
+  }
+  return entries;
 }
 
 function normalizeImage(image) {
@@ -682,7 +952,8 @@ export function toKitchenRecipe(extracted, { slug, week, persistedImage = false 
     season: inferSeasons(extracted),
     tags: [...new Set(["web-inspiration", "weekly-inspiration", week, ...extracted.dietary, ...extracted.keywords.slice(0, 6)].filter(Boolean))],
     ingredients: {
-      ingredients: extracted.ingredients.map((item) => ({ item, amount: null, unit: "" })),
+      ingredients: (extracted.ingredientEntries ?? extracted.ingredients.map((text) => ({ text, group: null })))
+        .map((entry) => ({ item: entry.text, amount: null, unit: "", ...(entry.group ? { group: entry.group } : {}) })),
     },
     steps: extracted.method,
     notes: [
@@ -720,16 +991,18 @@ export function toCompanionRecipe(extracted, { slug, week, image }) {
     intro: extracted.description || `Weekly web inspiration from ${extracted.source.name}.`,
     introduction: extracted.description || null,
     tips: `Source: ${extracted.url}. Imported as weekly web inspiration for ${week}.`,
-    ingredients: extracted.ingredients.map((item) => ({
-      ...parseIngredientLine(item),
-      group: "Ingredients",
-    })),
+    ingredients: (extracted.ingredientEntries ?? extracted.ingredients.map((text) => ({ text, group: null })))
+      .map((entry) => ({
+        ...parseIngredientLine(entry.text),
+        group: entry.group || "Ingredients",
+      })),
     method: extracted.method,
     dietary: extracted.dietary,
     tags: {
       dietary: extracted.dietary,
       season: inferSeasons(extracted),
     },
+    visibility: "planner-candidate",
     image,
     mealRole,
   };
@@ -746,10 +1019,41 @@ function normalizeTimeObject(extracted) {
   };
 }
 
+/**
+ * What the source itself says the dish is.
+ *
+ * This used to be ignored: `recipeCategory` was concatenated into one text blob
+ * and only matched by dish-name keywords, so FOOBY's featured "starter" salad
+ * was inferred as a `main`. The declared category is data, not a guess, and it
+ * now decides first. Only when a page declares nothing do the name heuristics
+ * run.
+ */
+function dishTypesFromDeclaredCategory(category) {
+  const declared = String(category ?? "").toLowerCase().trim();
+  if (!declared) return null;
+  if (/\b(dessert|sweets?|s(ü|ue)ss|patisserie|pastry)\b/.test(declared)) return ["dessert"];
+  if (/\b(drink|drinks|beverage|cocktail|getr(ä|ae)nk)\b/.test(declared)) return ["drink"];
+  if (/\b(bak(e|ing)|bread|brot|geb(ä|ae)ck)\b/.test(declared)) return ["baking"];
+  if (/\b(breakfast|brunch|fr(ü|ue)hst(ü|ue)ck)\b/.test(declared)) return ["breakfast"];
+  if (/\b(snack|apero|ap(é|e)ritif|finger food)\b/.test(declared)) return ["snack"];
+  if (/\b(condiment|sauce|dressing|dip|chutney|pickle)\b/.test(declared)) return ["condiment", "side"];
+  if (/\b(starter|appetiz|appetis|vorspeise|entr(é|e)e froide)\b/.test(declared)) return ["starter"];
+  if (/\b(side|side dish|beilage)\b/.test(declared)) return ["side"];
+  if (/\b(salad|salat)\b/.test(declared)) return ["salad"];
+  if (/\b(soup|suppe)\b/.test(declared)) return ["soup", "main"];
+  if (/\b(main|main course|main dish|dinner|supper|hauptgang|hauptspeise)\b/.test(declared)) return ["main"];
+  return null;
+}
+
 function inferDishTypes(extracted) {
-  const text = `${extracted.name} ${extracted.category ?? ""}`.toLowerCase();
+  const declared = dishTypesFromDeclaredCategory(extracted.category);
+  if (declared) return declared;
+
+  const text = `${extracted.name}`.toLowerCase();
   if (/chutney|pickle|relish|raita|salsa/.test(text)) return ["condiment", "side"];
-  if (/shrikhand|dessert|cake|pie|pudding|mousse|sorbet|ice cream/.test(text)) return ["dessert"];
+  if (/shrikhand|dessert|cake|pie|pudding|mousse|sorbet|ice cream|cobbler|parfait|babka/.test(text)) return ["dessert"];
+  if (/\bdip\b|hummus|guacamole/.test(text)) return ["dip", "side"];
+  if (/\b(smoothie|juice|spritz|cocktail|lemonade|iced tea)\b/.test(text)) return ["drink"];
   if (/asparagus stir fry|stir[- ]?fried asparagus/.test(text)) return ["side", "vegetable"];
   if (text.includes("soup") || text.includes("stew")) return ["soup", "main"];
   if (text.includes("salad")) return ["salad", "main"];
@@ -761,7 +1065,13 @@ function inferDishTypes(extracted) {
 function inferMealRole(extracted) {
   const types = inferDishTypes(extracted);
   if (types.includes("dessert")) return "dessert";
+  if (types.includes("drink")) return "drink";
+  if (types.includes("baking")) return "baking";
+  if (types.includes("breakfast")) return "breakfast";
+  if (types.includes("snack")) return "snack";
+  if (types.includes("dip")) return "dip";
   if (types.includes("condiment")) return "condiment";
+  if (types.includes("starter") && !types.includes("main")) return "starter";
   if (types.includes("side") && !types.includes("main")) return "side";
   return "main";
 }
@@ -772,7 +1082,7 @@ function parseIngredientLine(value) {
 
   const amountPattern = "(?:\\d+\\/\\d+|\\d+\\.\\d+|\\d+|[¼½¾⅓⅔⅛⅜⅝⅞]|a|an)";
   const mixedAmountPattern = `(?:${amountPattern})(?:\\s+(?:to|-|–|—)\\s*(?:${amountPattern}))?(?:\\s+(?:${amountPattern}))?`;
-  const unitPattern = "(?:cups?|tbsp|tablespoons?|tsp|teaspoons?|oz|ounces?|lb|lbs|pounds?|g|grams?|kg|ml|l|liters?|cloves?|cans?|bunch(?:es)?|sprigs?|pinch(?:es)?|packet(?:s)?)";
+  const unitPattern = "(?:cups?|tbsp|tablespoons?|tsp|teaspoons?|oz|ounces?|lb|lbs|pounds?|g|grams?|kg|cm|ml|l|liters?|cloves?|cans?|tins?|bunch(?:es)?|sprigs?|pinch(?:es)?|packet(?:s)?)";
   const match = original.match(new RegExp(`^(${mixedAmountPattern})(?:\\s+(${unitPattern})\\b)?\\s*(?:of\\s+)?(.+)$`, "i"));
   if (!match) return { item: original, amount: "", unit: "" };
 
@@ -1118,7 +1428,7 @@ function currentIsoWeekId(date = new Date()) {
   return `${d.getUTCFullYear()}-W${String(week).padStart(2, "0")}`;
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   try {
     const args = parseArgs(process.argv.slice(2));
     if (args.help) {

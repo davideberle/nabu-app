@@ -1,13 +1,21 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getAllRecipes, getCuisine, getDietary, isLowCalorie, getCourseTags, getRecipe } from "@/lib/recipes";
-import { selectMealOptions, selectCandidateMains, getDisplayCategory, CANDIDATE_BUCKET_ORDER, CANDIDATE_BUCKET_CONTRACT, type WeekendMealOption, type WeekContextItem, type CandidateItem, type CandidateBucket, type QualityGatedResult, type TaggedCandidate } from "@/lib/meals";
-import { getRecentlyCookedRecipeIds, getThumbsDownRecipeIds, getPlannedRecipeIdsForWeeks } from "@/lib/db";
-import { getRecentWeekIds } from "@/lib/meals";
+import { getAllRecipes, getDietary, isLowCalorie, getCourseTags, getRecipe } from "@/lib/recipes";
+import {
+  selectMealOptions,
+  selectCandidateMains,
+  getDisplayCategory,
+  normalizePlannerCuisine,
+  normalizePlannerTitle,
+  plannerPolicy,
+  type WeekendMealOption,
+  type WeekContextItem,
+  type CandidateItem,
+} from "@/lib/meals";
+import { getPlannerRecencyExclusions, getRecentlyCookedRecipeIds, getThumbsDownRecipeIds, getThumbsUpRecipeIds } from "@/lib/db";
 import type { Recipe } from "@/lib/recipes";
 
-const RECENTLY_COOKED_LOOKBACK_DAYS = 45;
-const RECENTLY_PLANNED_LOOKBACK_WEEKS = 5;
+const HOT_WEATHER_CONTEXT_PATTERN = /\b(hot|heat|heatwave|warm|summer|light|no oven|oven off)\b/i;
 
 function parseMinutes(v: unknown): number {
   if (typeof v === "number" && isFinite(v)) return v;
@@ -28,11 +36,11 @@ function normalizeTime(time: Recipe["time"]): { prep: number; cook: number; tota
 function summarize(r: Recipe) {
   return {
     id: r.id,
-    name: r.name,
+    name: normalizePlannerTitle(r.name) || r.name,
     source: r.source ?? null,
     image: r.image ?? null,
     dietary: getDietary(r),
-    cuisine: getCuisine(r),
+    cuisine: normalizePlannerCuisine(r),
     time: normalizeTime(r.time),
     category: getDisplayCategory(r),
     courseTags: getCourseTags(r),
@@ -54,22 +62,32 @@ export async function GET(request: NextRequest) {
   // Support "exclude" param to avoid re-showing already-seen recipes
   const excludeParam = request.nextUrl.searchParams.get("exclude");
   const excludeIds = excludeParam ? new Set(excludeParam.split(",")) : new Set<string>();
+  const policy = plannerPolicy();
 
-  // Also exclude recipes cooked recently to avoid repetition.
-  const recentlyCooked = await getRecentlyCookedRecipeIds(RECENTLY_COOKED_LOOKBACK_DAYS);
-  for (const id of recentlyCooked) excludeIds.add(id);
-
-  // Exclude recipes planned in recent prior weeks (main + brunch)
   const weekParam = request.nextUrl.searchParams.get("week");
   if (weekParam) {
-    const recentWeeks = getRecentWeekIds(weekParam, RECENTLY_PLANNED_LOOKBACK_WEEKS);
-    const plannedIds = await getPlannedRecipeIdsForWeeks(recentWeeks);
-    for (const id of plannedIds) excludeIds.add(id);
+    // One authoritative exclusion assembly: recently cooked, planned in recent
+    // prior weeks, offered in recent candidate sets (including this week's own
+    // saved set, so regenerating cannot re-offer the same ideas), and active
+    // negative feedback.
+    const exclusions = await getPlannerRecencyExclusions(weekParam, policy);
+    for (const id of exclusions.recentlyCooked) excludeIds.add(id);
+    for (const id of exclusions.recentlyPlanned) excludeIds.add(id);
+    for (const id of exclusions.recentlyOffered) excludeIds.add(id);
+    for (const id of exclusions.currentWeekOffered) excludeIds.add(id);
+    for (const id of exclusions.negativeFeedback) excludeIds.add(id);
+  } else {
+    const [recentlyCooked, thumbsDown] = await Promise.all([
+      getRecentlyCookedRecipeIds(policy.recentlyCookedDays),
+      getThumbsDownRecipeIds(policy.negativeFeedbackDays),
+    ]);
+    for (const id of recentlyCooked) excludeIds.add(id);
+    for (const id of thumbsDown) excludeIds.add(id);
   }
 
-  // Exclude recipes the user has thumbs-downed
-  const thumbsDown = await getThumbsDownRecipeIds();
-  for (const id of thumbsDown) excludeIds.add(id);
+  // Thumbs-up recipes get a selection boost, applied only after every
+  // exclusion above — positive feedback never bypasses recency rules.
+  const preferredIds = await getThumbsUpRecipeIds();
 
   // Parse week context to influence generation
   let weekContext: WeekContextItem[] = [];
@@ -91,6 +109,9 @@ export async function GET(request: NextRequest) {
   const wantQuick = weekContext.some(
     (c) => c.effect === "quick-meal" || c.effect === "light-meal"
   );
+  const wantLight = weekContext.some(
+    (c) => c.effect === "light-meal" || HOT_WEATHER_CONTEXT_PATTERN.test(c.note)
+  );
   const wantGuestFriendly = weekContext.some(
     (c) => c.effect === "guest-friendly"
   );
@@ -98,13 +119,14 @@ export async function GET(request: NextRequest) {
   const hints = {
     skipCount,
     preferQuick: wantQuick,
+    preferLight: wantLight,
     preferGuestFriendly: wantGuestFriendly,
   };
 
   // vNext quality-gated candidates mode (default)
   const mode = request.nextUrl.searchParams.get("mode");
   if (mode !== "legacy") {
-    const { candidates: taggedCandidates, diagnostics } = selectCandidateMains(allRecipes, excludeIds, hints);
+    const { candidates: taggedCandidates, diagnostics, bucketContract } = selectCandidateMains(allRecipes, excludeIds, hints, preferredIds);
 
     const summarized = taggedCandidates.map(({ recipe, bucket }) => ({
       ...summarize(recipe),
@@ -115,7 +137,7 @@ export async function GET(request: NextRequest) {
     const candidateSet = {
       generatedAt: new Date().toISOString(),
       policyVersion: "planner-v2.2",
-      bucketContract: CANDIDATE_BUCKET_CONTRACT,
+      bucketContract,
       items: summarized.map((s) => ({
         recipeId: s.id,
         recipeName: s.name,
@@ -134,7 +156,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       candidates: summarized,
       candidateSet,
-      appliedContext: weekContext.length > 0 ? { skipCount, wantQuick, wantGuestFriendly } : undefined,
+      appliedContext: weekContext.length > 0 ? { skipCount, wantQuick, wantLight, wantGuestFriendly } : undefined,
       qualityDiagnostics: diagnostics,
     });
   }
@@ -146,7 +168,7 @@ export async function GET(request: NextRequest) {
     weekday: weekday.map(summarize),
     weekend: weekend.map(summarize),
     weekendMeals: weekendMeals.map(summarizeMealCombo),
-    appliedContext: weekContext.length > 0 ? { skipCount, wantQuick, wantGuestFriendly } : undefined,
+    appliedContext: weekContext.length > 0 ? { skipCount, wantQuick, wantLight, wantGuestFriendly } : undefined,
   });
 }
 

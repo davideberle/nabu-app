@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { auth } from "@/auth";
+import { evaluatePlannerWriteAccess } from "@/lib/access";
 import {
   getCookEventsForRecipe,
   getRecentCookEvents,
@@ -25,8 +27,17 @@ export async function GET(request: NextRequest) {
 /**
  * POST /api/cook-events
  * Body: { recipeId, cookedOn, note?, source? } or { recipeIds: [], cookedOn, note?, source? }
+ *
+ * Cook events feed the planner's recently-cooked exclusions, so writes need
+ * the canonical authorized session. Reads stay open like the other planner
+ * GET surfaces.
  */
 export async function POST(request: NextRequest) {
+  const access = evaluatePlannerWriteAccess(await auth());
+  if (!access.allowed) {
+    return NextResponse.json({ error: access.error }, { status: access.status });
+  }
+
   const body = (await request.json()) as {
     recipeId?: unknown;
     recipeIds?: unknown;

@@ -1,6 +1,7 @@
 // Unit tests for the trusted-runtime write policy behind the Cooking
 // Session mutation routes (POST /api/cooking/session,
-// POST /api/cooking/session/from-plan, PATCH /api/cooking/session/:id).
+// POST /api/cooking/session/from-plan, PATCH /api/cooking/session/:id) and the
+// weekly planner runtime routes (POST /api/meals/prepare, /api/meals/replace).
 // Run with: npm test  (node --test; Node 24 strips types natively)
 
 import { deepStrictEqual, equal } from "node:assert/strict";
@@ -202,6 +203,10 @@ const RUNTIME_ROUTES: [string, string][] = [
   ["POST", "/api/cooking/session"],
   ["POST", "/api/cooking/session/from-plan"],
   ["PATCH", "/api/cooking/session/abc-123"],
+  // Weekly preparation / watchdog / rollover, and chat-driven targeted
+  // replacement: scheduled non-browser calls on the same policy.
+  ["POST", "/api/meals/prepare"],
+  ["POST", "/api/meals/replace"],
 ];
 
 describe("middleware + guard: authorized session OR valid runtime token", () => {

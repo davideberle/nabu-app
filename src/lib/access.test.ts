@@ -140,6 +140,10 @@ describe("isTrustedRuntimeApiRoute", () => {
     equal(isTrustedRuntimeApiRoute("POST", "/api/cooking/session"), true);
     equal(isTrustedRuntimeApiRoute("POST", "/api/cooking/session/from-plan"), true);
     equal(isTrustedRuntimeApiRoute("PATCH", "/api/cooking/session/abc-123"), true);
+    // Weekly planner preparation and chat-driven targeted replacement are
+    // scheduled/non-browser calls, so they carry a bearer rather than a cookie.
+    equal(isTrustedRuntimeApiRoute("POST", "/api/meals/prepare"), true);
+    equal(isTrustedRuntimeApiRoute("POST", "/api/meals/replace"), true);
   });
 
   it("matches the method case-insensitively and ignores a trailing slash", () => {
@@ -151,6 +155,8 @@ describe("isTrustedRuntimeApiRoute", () => {
     equal(isTrustedRuntimeApiRoute("GET", "/api/cooking/session"), false);
     equal(isTrustedRuntimeApiRoute("DELETE", "/api/cooking/session/abc-123"), false);
     equal(isTrustedRuntimeApiRoute("PATCH", "/api/cooking/session/from-plan"), false);
+    equal(isTrustedRuntimeApiRoute("GET", "/api/meals/prepare"), false);
+    equal(isTrustedRuntimeApiRoute("GET", "/api/meals/replace"), false);
   });
 
   it("does not cover any other planner or family surface", () => {
