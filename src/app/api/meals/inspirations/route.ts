@@ -19,10 +19,12 @@ import { visibleCapForSource } from "@/lib/planner-sources";
 import { loadMealPlan } from "@/lib/meals-persistence";
 import {
   DEFAULT_WEB_INSPIRATION_COUNT,
-  ensureWeeklyInspirations,
+  IMPORTER_UNSUPPORTED_MESSAGE,
   getInspirationExclusionIds,
   getInspirationProvenanceSets,
+  importerRuntimeSupported,
   recordEligibleImports,
+  resolveWebInspirations,
   runInspirationImporter,
   shouldAutoEnsureWeeklyInspirations,
   type ImporterExecError,
@@ -175,9 +177,14 @@ export async function GET(request: NextRequest) {
         authorizedForEnsure: evaluatePlannerWriteAccess(await auth()).allowed,
       })
     ) {
-      const ensured = await ensureWeeklyInspirations(week);
+      // `resolveWebInspirations`, not `ensureWeeklyInspirations`: on Vercel
+      // there is no importer to run, and it says so without burning the claim.
+      const ensured = await resolveWebInspirations(week);
       if (ensured.status === "failed") {
         console.error(`Weekly inspiration ensure failed for ${week}:`, ensured.error);
+      }
+      if (ensured.status === "web-not-staged") {
+        console.warn(`No web inspirations staged for ${week}: ${ensured.reason}`);
       }
       if (ensured.status === "succeeded") {
         inspirations = await getWebInspirationsForWeek(week);
@@ -237,6 +244,17 @@ export async function POST(request: NextRequest) {
 
   const week = body.week ?? currentIsoWeekId();
   const count = body.count ?? DEFAULT_WEB_INSPIRATION_COUNT;
+
+  // "Research Web Ideas" runs the Kitchen importer as a child process. That is
+  // genuinely supported locally and genuinely impossible on Vercel, so the
+  // deployed app refuses it in as many words instead of shelling out and
+  // reporting the resulting emptiness as "the importer found no new recipes".
+  if (!importerRuntimeSupported()) {
+    return NextResponse.json(
+      { error: IMPORTER_UNSUPPORTED_MESSAGE, status: "importer-unavailable", week, candidates: [] },
+      { status: 503 },
+    );
+  }
 
   // Validate week/count to prevent argument injection
   if (typeof week !== "string" || !/^\d{4}-W\d{2}$/.test(week)) {

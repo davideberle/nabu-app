@@ -32,6 +32,32 @@ const execFileAsync = promisify(execFile);
 
 export const DEFAULT_WEB_INSPIRATION_COUNT = 8;
 
+/**
+ * Can this runtime actually run the Kitchen importer?
+ *
+ * On Vercel it cannot, and pretending otherwise is what produced a healthy
+ * twelve-item shelf with `webSelected: 0` in production. The importer needs a
+ * writable `public/recipes` directory, the workspace checkout beside the app,
+ * a minutes-long budget of outbound scraping, and a child process — a Vercel
+ * function has none of those. `execFile` there does not fail loudly with a
+ * useful reason; it fails as "0 imported", which reads exactly like a week
+ * where the web simply had nothing good.
+ *
+ * So the platform is asked directly rather than inferred from an error. Web
+ * discovery is a **local-runtime** job (`scripts/prepare-weekly-shelf.mjs` on
+ * David's Mac), and the deployed app assembles the shelf from what that run
+ * already staged.
+ *
+ * `KITCHEN_INSPIRATION_IMPORTER_COMMAND` is the deliberate override: a runtime
+ * that has been given a real importer command has said it can run one.
+ */
+export function importerRuntimeSupported(
+  env: Record<string, string | undefined> = process.env,
+): boolean {
+  if (env.KITCHEN_INSPIRATION_IMPORTER_COMMAND) return true;
+  return !(env.VERCEL || env.VERCEL_ENV);
+}
+
 export type ImporterExecError = Error & {
   stdout?: string;
   stderr?: string;
@@ -122,7 +148,15 @@ export async function getInspirationProvenanceSets(
 export type RunImporterOptions = {
   /** Test seam: replaces the child-process invocation. */
   exec?: (command: string, args: string[], opts: object) => Promise<{ stdout: string; stderr: string }>;
+  /** Test seam: the environment the runtime check reads. */
+  env?: Record<string, string | undefined>;
 };
+
+/** Thrown instead of spawning on a runtime that cannot host the importer. */
+export const IMPORTER_UNSUPPORTED_MESSAGE =
+  "The Kitchen importer cannot run in this runtime. Weekly web research runs on " +
+  "the local Kitchen runtime (scripts/prepare-weekly-shelf.mjs), which stages the " +
+  "week's ideas before /api/meals/prepare assembles the shelf.";
 
 /**
  * Run the Kitchen weekly-inspirations importer for a week.
@@ -130,12 +164,19 @@ export type RunImporterOptions = {
  * The importer may exit nonzero (code 1) even when it produces a valid JSON
  * report on stdout (e.g. 0 imported, N skipped); that case is recovered and
  * flagged. Throws the original error when stdout holds no parseable report.
+ *
+ * Refuses outright on a runtime that cannot host a child process at all. That
+ * check lives here, at the single place a spawn would happen, so no caller can
+ * reintroduce the failure mode by reaching past it.
  */
 export async function runInspirationImporter(
   week: string,
   importerCount: number,
   options: RunImporterOptions = {},
 ): Promise<ImporterRunResult> {
+  if (!importerRuntimeSupported(options.env ?? process.env)) {
+    throw new Error(IMPORTER_UNSUPPORTED_MESSAGE);
+  }
   const customCommand = process.env.KITCHEN_INSPIRATION_IMPORTER_COMMAND;
   const scriptPath = `${process.cwd()}/scripts/weekly-inspirations.mjs`;
   const importerArgs = ["--week", week, "--count", String(importerCount), "--write-app-files", "--write-app-db", "--yes", "--json"];
@@ -367,4 +408,58 @@ export async function ensureWeeklyInspirations(
     }
     return { status: "failed", error: error instanceof Error ? error.message : String(error) };
   }
+}
+
+/**
+ * What weekly preparation found when it looked for the week's web ideas.
+ *
+ * `web-not-staged` is the honest name for the production case: nothing was
+ * staged for this week and this runtime cannot go and get it. Preparation still
+ * builds a shelf from the catalog — a twelve-idea week is better than none —
+ * but the outcome says plainly that research did not happen, so a smoke test,
+ * the status endpoint, and the Friday watchdog can all tell the difference
+ * between "the web offered nothing" and "nobody asked the web".
+ */
+export type WebInspirationStatus =
+  | { status: "already-staged"; staged: number }
+  | { status: "web-not-staged"; reason: string }
+  | EnsureWeeklyInspirationsResult;
+
+export type WebStagingDeps = EnsureDeps & {
+  loadStoredCount?: (week: string) => Promise<number>;
+  env?: Record<string, string | undefined>;
+};
+
+/**
+ * Resolve the week's web ideas for weekly preparation, without ever assuming a
+ * child process is available.
+ *
+ * Order matters, and the first branch is the one that carries the weight: rows
+ * already staged for the week are the answer, whoever wrote them. That is what
+ * makes the local-runtime handoff work — `scripts/prepare-weekly-shelf.mjs`
+ * stages, then calls `/api/meals/prepare`, and preparation simply finds the
+ * work done.
+ */
+export async function resolveWebInspirations(
+  week: string,
+  count = DEFAULT_WEB_INSPIRATION_COUNT,
+  deps: WebStagingDeps = {},
+): Promise<WebInspirationStatus> {
+  const loadStoredCount =
+    deps.loadStoredCount ?? (async (w: string) => (await getWebInspirationsForWeek(w)).length);
+
+  const staged = await loadStoredCount(week);
+  if (staged > 0) return { status: "already-staged", staged };
+
+  if (!importerRuntimeSupported(deps.env ?? process.env)) {
+    return {
+      status: "web-not-staged",
+      reason:
+        `No web inspirations are staged for ${week}, and this runtime cannot run the ` +
+        "Kitchen importer. Stage them locally with scripts/prepare-weekly-shelf.mjs, " +
+        "then re-run preparation.",
+    };
+  }
+
+  return ensureWeeklyInspirations(week, count, deps);
 }

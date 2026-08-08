@@ -100,11 +100,18 @@ export async function GET(request: NextRequest) {
   try {
     const [plan, runs] = await Promise.all([loadMealPlan(week), getPlannerPreparationRuns(week)]);
     const health = assessShelfHealth(plan, new Date());
+    const items = plan?.candidateSet?.items ?? [];
+    // Counted from the *stored* shelf rather than read back off the last run's
+    // summary. A verifier asking "did web research reach this week's shelf?"
+    // should be answered by the shelf, not by a report about it.
+    const webSelected = items.filter((item) => (item as { origin?: string }).origin === "web").length;
     return NextResponse.json({
       week,
       healthy: health.healthy,
       problems: health.problems,
-      shelfSize: plan?.candidateSet?.items?.length ?? 0,
+      shelfSize: items.length,
+      webSelected,
+      catalogSelected: items.length - webSelected,
       policyVersion: plan?.candidateSet?.policyVersion ?? null,
       generatedAt: plan?.candidateSet?.generatedAt ?? null,
       runs,

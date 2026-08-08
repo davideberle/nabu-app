@@ -27,6 +27,16 @@ import {
   findSourceByUrl,
 } from "../src/lib/planner-sources.ts";
 import { classifyPlannerRole } from "../src/lib/planner-roles.ts";
+// The provenance write is defined once and shared with the app's db.ts, so the
+// two writers cannot drift on schema shape or upsert semantics.
+import {
+  buildWebInspirationUpsert,
+  isRichWebInspirationSchema,
+  normalizeDiscovery,
+  WEB_INSPIRATIONS_TABLE_SQL,
+  WEB_INSPIRATIONS_WEEK_INDEX_SQL,
+  WEB_INSPIRATION_ADDED_COLUMNS,
+} from "../src/lib/web-inspiration-provenance.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -87,11 +97,20 @@ Options:
   --write-kitchen             Save Kitchen recipe JSON under projects/kitchen/recipes/<slug>/recipe.json.
   --write-app-files           Download images to companion-app/app/public/recipes and set image to /recipes/<slug>.<ext>.
   --write-app-db              Upsert into Companion App My Recipes writable DB.
+  --stage-week                Record web_recipe_inspirations provenance for --week.
+                              This is what makes an import the *week's* staged set;
+                              without it an import is a one-off with no week claim.
+                              Requires --write-app-db.
   --yes                       Required with any write flag.
   --json                      Print machine-readable JSON report.
   --help                      Show this help.
 
-Dry-run is the default and performs no filesystem/DB writes.`;
+Dry-run is the default and performs no filesystem/DB writes.
+
+The scheduled weekly staging run is exactly:
+  --week <next ISO week> --write-app-files --write-app-db --stage-week --yes --json
+and it is safe to repeat: duplicate URLs/titles are refused and provenance is
+upserted, never appended.`;
 }
 
 function parseArgs(argv) {
@@ -104,6 +123,7 @@ function parseArgs(argv) {
     writeKitchen: false,
     writeAppFiles: false,
     writeAppDb: false,
+    stageWeek: false,
     yes: false,
     json: false,
     help: false,
@@ -119,6 +139,7 @@ function parseArgs(argv) {
     else if (a === "--write-kitchen") args.writeKitchen = true;
     else if (a === "--write-app-files") args.writeAppFiles = true;
     else if (a === "--write-app-db") args.writeAppDb = true;
+    else if (a === "--stage-week") args.stageWeek = true;
     else if (a === "--yes") args.yes = true;
     else if (a === "--json") args.json = true;
     else if (a === "--help" || a === "-h") args.help = true;
@@ -128,11 +149,19 @@ function parseArgs(argv) {
   if (!Number.isFinite(args.count) || args.count < 1 || args.count > 12) {
     throw new Error("--count must be a number from 1 to 12");
   }
-  if ((args.writeKitchen || args.writeAppFiles || args.writeAppDb) && !args.yes) {
+  if ((args.writeKitchen || args.writeAppFiles || args.writeAppDb || args.stageWeek) && !args.yes) {
     throw new Error("Write flags require --yes. Run dry-run first, then opt in explicitly.");
   }
   if (args.writeAppDb && !args.writeAppFiles) {
     throw new Error("--write-app-db requires --write-app-files so every My Recipe has a persisted image.");
+  }
+  // Provenance without the recipe it points at would leave the planner holding
+  // a week claim it cannot resolve to anything.
+  if (args.stageWeek && !args.writeAppDb) {
+    throw new Error("--stage-week requires --write-app-db: week provenance must point at a stored recipe.");
+  }
+  if (!/^\d{4}-W\d{2}$/.test(String(args.week))) {
+    throw new Error(`--week must look like YYYY-Www, got: ${args.week}`);
   }
   return args;
 }
@@ -147,9 +176,18 @@ export async function runWeeklyInspirations(options = {}) {
     writeKitchen: false,
     writeAppFiles: false,
     writeAppDb: false,
+    stageWeek: false,
     ...options,
   };
 
+  try {
+    return await runWeeklyInspirationsInner(opts);
+  } finally {
+    await closeAppDbClient();
+  }
+}
+
+async function runWeeklyInspirationsInner(opts) {
   const known = await loadKnownRecipes();
   const sourceFilter = buildSourceFilter(opts.sources);
   const discoveryLimit = Math.max(opts.count * 12, 72);
@@ -168,6 +206,10 @@ export async function runWeeklyInspirations(options = {}) {
     pairings: [],
     skipped: [],
     errors: [],
+    // Week provenance is only claimed when it was explicitly asked for, so a
+    // manual one-off import never silently becomes "the week's staged set".
+    stageWeek: !!opts.stageWeek,
+    stagedProvenance: [],
   };
 
   const picked = [];
@@ -274,6 +316,40 @@ export async function runWeeklyInspirations(options = {}) {
         await upsertMyRecipe(companionRecipe);
       }
 
+      const discovery = normalizeDiscovery(candidate.discovery);
+
+      // Provenance last, and only when the run was asked to claim the week.
+      // Ordering matters on a retry: the recipe row exists before anything
+      // points a week at it, so a crash can leave an orphan recipe — one with
+      // no week pointing at it — but never an orphan week claim.
+      //
+      // The orphan is not picked up again: `loadKnownRecipes` reads the app DB,
+      // so the retry finds its title and source URL already known and refuses
+      // the candidate as a duplicate. It is skipped, and the other discovered
+      // candidates fill the week instead. The stray recipe stays hidden
+      // (`visibility: planner-candidate`) until it is cleaned up by hand.
+      let stagedProvenance = false;
+      if (opts.stageWeek) {
+        await recordWebInspirationProvenance({
+          recipeId: slug,
+          week: opts.week,
+          sourceUrl: candidate.url,
+          sourceName: source.name,
+          discovery,
+          recipeName: extracted.name,
+          image,
+        });
+        stagedProvenance = true;
+        report.stagedProvenance.push({
+          id: slug,
+          week: opts.week,
+          url: candidate.url,
+          source: source.name,
+          discovery,
+          role: role.role,
+        });
+      }
+
       const imported = {
         id: slug,
         name: extracted.name,
@@ -281,11 +357,12 @@ export async function runWeeklyInspirations(options = {}) {
         sourceId: source.id,
         url: candidate.url,
         image,
-        discovery: candidate.discovery === "editorial" ? "editorial" : "search",
+        discovery,
         role: role.role,
         roleCategory: role.category,
         kitchenPath: path.relative(WORKSPACE_DIR, path.join(KITCHEN_RECIPES_DIR, slug, "recipe.json")),
         appDb: !!opts.writeAppDb,
+        stagedProvenance,
       };
 
       // A pairing is staged so the planner can offer it as a serve-with idea,
@@ -1172,17 +1249,88 @@ function extensionForContentType(contentType, imageUrl) {
   return "jpg";
 }
 
+// ---------------------------------------------------------------------------
+// App database
+// ---------------------------------------------------------------------------
+
+let appDbClient = null;
+
+/** The app's writable database. Memoized: one connection per importer run. */
+function getAppDbClient() {
+  if (appDbClient) return appDbClient;
+  const requireFromApp = createRequire(path.join(APP_DIR, "package.json"));
+  const { createClient } = requireFromApp("@libsql/client");
+  appDbClient = createClient({
+    url: appDbUrl(),
+    authToken: process.env.TURSO_AUTH_TOKEN,
+  });
+  return appDbClient;
+}
+
+function appDbUrl() {
+  return process.env.TURSO_DATABASE_URL || `file:${process.env.NABU_DB_DIR || APP_DIR}/nabu.db`;
+}
+
+export async function closeAppDbClient() {
+  const client = appDbClient;
+  appDbClient = null;
+  try {
+    await client?.close?.();
+  } catch {
+    // A connection that will not close cleanly is not worth failing a run over.
+  }
+}
+
+async function addColumnIfMissing(client, table, column, type) {
+  const info = await client.execute(`PRAGMA table_info(${table})`);
+  if (info.rows.some((row) => String(row.name) === column)) return;
+  await client.execute(`ALTER TABLE ${table} ADD COLUMN ${column} ${type}`);
+}
+
+/**
+ * Record week provenance for one staged web idea.
+ *
+ * The statement comes from `web-inspiration-provenance.ts`, which is also what
+ * the app's `recordWebInspiration` writes through — so this is the app's own
+ * write performed from the local runtime, not a second implementation of it.
+ * Upserted, never appended: re-running the weekly staging refreshes the row.
+ *
+ * `kept_at` / `promoted_at` are untouched here, so a re-import cannot undo a
+ * Keep, and nothing is promoted into My Recipes: the recipe stays hidden at
+ * `visibility: "planner-candidate"` until rollover decides otherwise.
+ */
+export async function recordWebInspirationProvenance(input) {
+  const client = getAppDbClient();
+  await client.execute(WEB_INSPIRATIONS_TABLE_SQL);
+  await client.execute(WEB_INSPIRATIONS_WEEK_INDEX_SQL);
+  for (const column of WEB_INSPIRATION_ADDED_COLUMNS) {
+    await addColumnIfMissing(client, "web_recipe_inspirations", column.name, column.type);
+  }
+
+  const info = await client.execute("PRAGMA table_info(web_recipe_inspirations)");
+  const columns = new Set(info.rows.map((row) => String(row.name)));
+  await client.execute(
+    buildWebInspirationUpsert(
+      columns,
+      {
+        ...input,
+        // The rich production table stores denormalized display fields; the
+        // compact one ignores them.
+        recipeName: isRichWebInspirationSchema(columns) ? input.recipeName : null,
+        image: isRichWebInspirationSchema(columns) ? input.image : null,
+      },
+      { id: crypto.randomUUID(), now: new Date().toISOString() },
+    ),
+  );
+}
+
 async function upsertMyRecipe(recipe) {
   const hasLocalImage = recipe.image && recipe.image.startsWith("/recipes/");
   const hasBlobImage = recipe.image && /^https:\/\/[^/]+\.public\.blob\.vercel-storage\.com\//.test(recipe.image);
   if (!hasLocalImage && !hasBlobImage) {
     throw new Error(`Refusing to import ${recipe.id}: image must be a local /recipes/ path or a Vercel Blob URL, got: ${recipe.image || "(none)"}`);
   }
-  const requireFromApp = createRequire(path.join(APP_DIR, "package.json"));
-  const { createClient } = requireFromApp("@libsql/client");
-  const url = process.env.TURSO_DATABASE_URL || `file:${process.env.NABU_DB_DIR || APP_DIR}/nabu.db`;
-  const authToken = process.env.TURSO_AUTH_TOKEN;
-  const client = createClient({ url, authToken });
+  const client = getAppDbClient();
   await client.execute(`
     CREATE TABLE IF NOT EXISTS recipes (
       id         TEXT PRIMARY KEY,
@@ -1216,7 +1364,6 @@ async function upsertMyRecipe(recipe) {
           ON CONFLICT(id) DO UPDATE SET ${updateSets.join(", ")}`,
     args: insertArgs,
   });
-  client.close?.();
 }
 
 export async function loadKnownRecipes() {
@@ -1242,12 +1389,11 @@ export async function loadKnownRecipes() {
 }
 
 async function loadKnownRecipesFromAppDb(known) {
-  const url = process.env.TURSO_DATABASE_URL || (process.env.NABU_DB_DIR ? `file:${process.env.NABU_DB_DIR}/nabu.db` : null);
-  if (!url) return;
+  // No Turso URL and no explicit local DB dir means there is no app database to
+  // consult — not that the importer should invent one under the app directory.
+  if (!process.env.TURSO_DATABASE_URL && !process.env.NABU_DB_DIR) return;
   try {
-    const requireFromApp = createRequire(path.join(APP_DIR, "package.json"));
-    const { createClient } = requireFromApp("@libsql/client");
-    const client = createClient({ url, authToken: process.env.TURSO_AUTH_TOKEN });
+    const client = getAppDbClient();
 
     const recipes = await client.execute("SELECT data FROM recipes");
     for (const row of recipes.rows) {
@@ -1266,8 +1412,6 @@ async function loadKnownRecipesFromAppDb(known) {
     } catch {
       // Older local DBs may not have the provenance table yet.
     }
-
-    client.close?.();
   } catch {
     // DB lookup is best-effort; static bundle + kitchen JSON still protect most duplicates.
   }
@@ -1452,6 +1596,9 @@ function printHumanReport(report) {
   console.log(`${report.dryRun ? "Dry-run" : "Run"}: weekly web inspirations for ${report.week}`);
   console.log(`Query: ${report.query}`);
   console.log(`Imported/staged: ${report.imported.length}/${report.requestedCount}`);
+  if (report.stageWeek) {
+    console.log(`Week provenance recorded: ${report.stagedProvenance.length} row(s) for ${report.week}`);
+  }
   for (const item of report.imported) {
     console.log(`  + ${item.name} (${item.source})`);
     console.log(`    ${item.url}`);

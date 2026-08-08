@@ -20,6 +20,12 @@ import {
   type StagedWebRecipe,
   type StagingFingerprint,
 } from "./planner-staging.ts";
+import {
+  buildWebInspirationUpsert,
+  isRichWebInspirationSchema,
+  WEB_INSPIRATIONS_TABLE_SQL,
+  WEB_INSPIRATIONS_WEEK_INDEX_SQL,
+} from "./web-inspiration-provenance.ts";
 
 // ---------------------------------------------------------------------------
 // Connection
@@ -504,44 +510,24 @@ async function migrate(client: Client) {
       `);
     },
 
-    // v8 -> v9: create web_recipe_inspirations provenance table
+    // v8 -> v9: create web_recipe_inspirations provenance table.
+    // The DDL is shared with the Kitchen importer, which may meet a database
+    // the app has never opened — see `web-inspiration-provenance.ts`.
     async () => {
-      await client.execute(`
-        CREATE TABLE IF NOT EXISTS web_recipe_inspirations (
-          recipe_id   TEXT PRIMARY KEY,
-          week        TEXT NOT NULL,
-          source_url  TEXT NOT NULL,
-          source_name TEXT NOT NULL,
-          imported_at TEXT NOT NULL
-        )
-      `);
-      await client.execute(`
-        CREATE INDEX IF NOT EXISTS idx_web_recipe_inspirations_week
-          ON web_recipe_inspirations (week)
-      `);
+      await client.execute(WEB_INSPIRATIONS_TABLE_SQL);
+      await client.execute(WEB_INSPIRATIONS_WEEK_INDEX_SQL);
     },
 
     // v9 -> v10: repair older web_recipe_inspirations tables created before imported_at existed
     async () => {
-      await client.execute(`
-        CREATE TABLE IF NOT EXISTS web_recipe_inspirations (
-          recipe_id   TEXT PRIMARY KEY,
-          week        TEXT NOT NULL,
-          source_url  TEXT NOT NULL,
-          source_name TEXT NOT NULL,
-          imported_at TEXT
-        )
-      `);
+      await client.execute(WEB_INSPIRATIONS_TABLE_SQL);
       const columns = await client.execute("PRAGMA table_info(web_recipe_inspirations)");
       const hasImportedAt = columns.rows.some((row) => row.name === "imported_at");
       if (!hasImportedAt) {
         await client.execute("ALTER TABLE web_recipe_inspirations ADD COLUMN imported_at TEXT");
       }
       await client.execute("UPDATE web_recipe_inspirations SET imported_at = COALESCE(imported_at, datetime('now'))");
-      await client.execute(`
-        CREATE INDEX IF NOT EXISTS idx_web_recipe_inspirations_week
-          ON web_recipe_inspirations (week)
-      `);
+      await client.execute(WEB_INSPIRATIONS_WEEK_INDEX_SQL);
     },
 
     // v10 -> v11: create wine_cellar_status table for tracking consumed bottles
@@ -1614,13 +1600,12 @@ export async function recordWebInspiration(
     columns.add("imported_at");
   }
 
-  const now = new Date().toISOString();
-
   // The live Turso table has richer provenance columns than older local DBs.
-  // Fill those columns when present, but keep the old compact schema working too.
-  if (columns.has("id")) {
-    let recipeName = recipeId;
-    let image: string | null = null;
+  // Both shapes are handled by the shared statement builder, which is also what
+  // the Kitchen importer writes through — one definition, two runtimes.
+  let recipeName: string | null = null;
+  let image: string | null = null;
+  if (isRichWebInspirationSchema(columns)) {
     const recipeResult = await client.execute({
       sql: "SELECT data FROM recipes WHERE id = ?",
       args: [recipeId],
@@ -1634,52 +1619,15 @@ export async function recordWebInspiration(
         // Keep provenance recording best-effort; recipe JSON is still stored separately.
       }
     }
-
-    await client.execute({
-      sql: `INSERT INTO web_recipe_inspirations
-              (id, week, recipe_id, recipe_name, source_name, source_url, image, status, provenance_json, created_at, updated_at, imported_at, discovery)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT (source_url) DO UPDATE SET
-              recipe_name = excluded.recipe_name,
-              source_name = excluded.source_name,
-              image = excluded.image,
-              status = excluded.status,
-              discovery = excluded.discovery,
-              updated_at = excluded.updated_at`,
-      args: [
-        crypto.randomUUID(),
-        week,
-        recipeId,
-        recipeName,
-        sourceName,
-        sourceUrl,
-        image,
-        "imported",
-        JSON.stringify({ source: "weekly-inspirations", discovery }),
-        now,
-        now,
-        now,
-        discovery,
-      ],
-    });
-    return;
   }
 
-  await client.execute({
-    sql: `INSERT INTO web_recipe_inspirations (recipe_id, week, source_url, source_name, imported_at, discovery)
-          VALUES (?, ?, ?, ?, ?, ?)
-          ON CONFLICT (recipe_id) DO UPDATE SET
-            source_name = excluded.source_name,
-            discovery = excluded.discovery`,
-    args: [
-      recipeId,
-      week,
-      sourceUrl,
-      sourceName,
-      now,
-      discovery,
-    ],
-  });
+  await client.execute(
+    buildWebInspirationUpsert(
+      columns,
+      { recipeId, week, sourceUrl, sourceName, discovery, recipeName, image },
+      { id: crypto.randomUUID(), now: new Date().toISOString() },
+    ),
+  );
 }
 
 /** Get all web inspirations for a given ISO week. */
@@ -1787,33 +1735,77 @@ export async function getExposureExcludedRecipeIds(now = new Date()): Promise<Se
   return suppressedRecipeIds(records.values(), now);
 }
 
+function exposureUpsertStatement(record: ExposureRecord) {
+  return {
+    sql: `INSERT INTO recipe_exposure
+            (recipe_id, exposure_count, first_exposed_at, last_exposed_at, cooldown_until, suppressed, last_counted_week, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+          ON CONFLICT (recipe_id) DO UPDATE SET
+            exposure_count = excluded.exposure_count,
+            last_exposed_at = excluded.last_exposed_at,
+            cooldown_until = excluded.cooldown_until,
+            suppressed = excluded.suppressed,
+            last_counted_week = excluded.last_counted_week,
+            updated_at = excluded.updated_at`,
+    args: [
+      record.recipeId,
+      record.exposureCount,
+      record.firstExposedAt,
+      record.lastExposedAt,
+      record.cooldownUntil,
+      record.suppressed ? 1 : 0,
+      record.lastCountedWeek,
+      record.updatedAt,
+    ],
+  };
+}
+
+function countedWeekStatement(week: string, recipeId: string, at: Date) {
+  return {
+    sql: `INSERT INTO recipe_exposure_weeks (recipe_id, week, counted_at)
+          VALUES (?, ?, ?)
+          ON CONFLICT (recipe_id, week) DO NOTHING`,
+    args: [recipeId, week, at.toISOString()],
+  };
+}
+
 export async function saveExposureRecords(records: readonly ExposureRecord[]): Promise<void> {
   if (records.length === 0) return;
   const client = await getDb();
   await ensurePreparationTables(client);
+  await client.batch(records.map(exposureUpsertStatement), "write");
+}
+
+/**
+ * Write the strikes and the counted-weeks ledger entries that justify them in
+ * **one** transaction.
+ *
+ * Rollover used to issue these as two batches, and the gap between them was a
+ * real hole rather than a theoretical one. A crash after the strikes but before
+ * the ledger leaves a week that is *partly* accounted for: the strike's own
+ * `last_counted_week` marker covers an ordinary retry, but that marker is
+ * cleared the moment a later week's selection clears the strike — and then a
+ * re-run of the older week has nothing left saying the week was finished, so it
+ * re-applies a strike against a recipe David has since chosen.
+ *
+ * `batch(..., "write")` is transactional, so the two facts now land together or
+ * not at all, and the ledger can no longer lag behind the strikes it describes.
+ */
+export async function saveExposureWithCountedIds(
+  records: readonly ExposureRecord[],
+  week: string,
+  recipeIds: readonly string[],
+  at = new Date(),
+): Promise<void> {
+  const unique = week ? [...new Set(recipeIds.filter(Boolean))] : [];
+  if (records.length === 0 && unique.length === 0) return;
+  const client = await getDb();
+  await ensurePreparationTables(client);
   await client.batch(
-    records.map((record) => ({
-      sql: `INSERT INTO recipe_exposure
-              (recipe_id, exposure_count, first_exposed_at, last_exposed_at, cooldown_until, suppressed, last_counted_week, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT (recipe_id) DO UPDATE SET
-              exposure_count = excluded.exposure_count,
-              last_exposed_at = excluded.last_exposed_at,
-              cooldown_until = excluded.cooldown_until,
-              suppressed = excluded.suppressed,
-              last_counted_week = excluded.last_counted_week,
-              updated_at = excluded.updated_at`,
-      args: [
-        record.recipeId,
-        record.exposureCount,
-        record.firstExposedAt,
-        record.lastExposedAt,
-        record.cooldownUntil,
-        record.suppressed ? 1 : 0,
-        record.lastCountedWeek,
-        record.updatedAt,
-      ],
-    })),
+    [
+      ...records.map(exposureUpsertStatement),
+      ...unique.map((recipeId) => countedWeekStatement(week, recipeId, at)),
+    ],
     "write",
   );
 }
@@ -1849,12 +1841,7 @@ export async function saveCountedExposureRecipeIds(
   const client = await getDb();
   await ensurePreparationTables(client);
   await client.batch(
-    unique.map((recipeId) => ({
-      sql: `INSERT INTO recipe_exposure_weeks (recipe_id, week, counted_at)
-            VALUES (?, ?, ?)
-            ON CONFLICT (recipe_id, week) DO NOTHING`,
-      args: [recipeId, week, at.toISOString()],
-    })),
+    unique.map((recipeId) => countedWeekStatement(week, recipeId, at)),
     "write",
   );
 }

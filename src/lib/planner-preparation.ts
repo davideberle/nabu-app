@@ -321,8 +321,20 @@ export type PreparationDeps = {
   now?: Date;
   loadPlan: (week: string) => Promise<MealPlan | null>;
   savePlan: (plan: MealPlan) => Promise<PlanSaveOutcome>;
-  /** Runs web discovery/import for the week. Idempotent on the caller's side. */
-  ensureWebInspirations: (week: string) => Promise<{ status: string; accepted?: number; error?: string }>;
+  /**
+   * Resolves the week's web ideas. Idempotent on the caller's side.
+   *
+   * It may only *find* them: on Vercel there is no importer to run, so this
+   * reports `web-not-staged` and preparation carries on with the catalog while
+   * saying so. See `resolveWebInspirations`.
+   */
+  ensureWebInspirations: (week: string) => Promise<{
+    status: string;
+    accepted?: number;
+    staged?: number;
+    error?: string;
+    reason?: string;
+  }>;
   /** Staged web ideas for the week, already resolved to shelf candidates. */
   loadWebCandidates: (week: string) => Promise<ShelfCandidate[]>;
   /** Catalog ideas eligible for gap-fill (recency + exposure already applied). */
@@ -343,6 +355,14 @@ export type PreparationOutcome = {
   catalogSelected?: number;
   remainingGaps?: string[];
   warnings?: string[];
+  /**
+   * What happened to web discovery, verbatim from `ensureWebInspirations`.
+   *
+   * Reported separately from `warnings` so a caller can branch on it. The value
+   * production cares about is `web-not-staged`: the shelf is real, the research
+   * behind its web half is not.
+   */
+  webStatus?: string;
   error?: string;
 };
 
@@ -394,8 +414,20 @@ export async function prepareWeek(
 
   try {
     const ensured = await deps.ensureWebInspirations(week);
+    // Neither of these stops preparation — a catalog-only shelf beats no shelf
+    // — but both have to reach the outcome. A run that quietly reports twelve
+    // healthy ideas after discovery never happened is how `webSelected: 0`
+    // survived a production smoke test.
+    const webWarnings: string[] = [];
     if (ensured.status === "failed") {
       console.warn(`Weekly web discovery failed for ${week}: ${ensured.error ?? "unknown error"}`);
+      webWarnings.push(`web discovery failed: ${ensured.error ?? "unknown error"}`);
+    }
+    if (ensured.status === "web-not-staged") {
+      console.warn(`No web inspirations staged for ${week}: ${ensured.reason ?? ""}`);
+      webWarnings.push(
+        `web-not-staged: ${ensured.reason ?? `no web inspirations are staged for ${week}`}`,
+      );
     }
 
     const [existing, web, catalog] = await Promise.all([
@@ -462,6 +494,7 @@ export async function prepareWeek(
     const shelfSize = storedPlan.candidateSet?.items?.length ?? 0;
     const health = assessShelfHealth(storedPlan, now);
     const warnings = [
+      ...webWarnings,
       ...(shelf.diagnostics.warnings ?? []),
       ...(health.healthy ? [] : health.problems.map((problem) => `saved shelf: ${problem}`)),
     ];
@@ -470,6 +503,7 @@ export async function prepareWeek(
       shelfSize,
       webSelected: shelf.diagnostics.webSelected,
       catalogSelected: shelf.diagnostics.catalogSelected,
+      webStatus: ensured.status,
       healthy: health.healthy,
     });
 
@@ -483,6 +517,7 @@ export async function prepareWeek(
       catalogSelected: shelf.diagnostics.catalogSelected,
       remainingGaps: shelf.diagnostics.remainingGaps,
       warnings,
+      webStatus: ensured.status,
     };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
@@ -542,6 +577,19 @@ export type RolloverDeps = {
   loadAssignedRecipeIdsSince?: (fromWeek: string) => Promise<Set<string>>;
   loadExposureRecords: () => Promise<Map<string, ExposureRecord>>;
   saveExposure: (records: ExposureRecord[]) => Promise<void>;
+  /**
+   * Write the strikes and their ledger entries in one transaction.
+   *
+   * Preferred over `saveExposure` + `saveCountedExposureIds`, which can only be
+   * issued in sequence and therefore leave a window where a week is half
+   * accounted for. Optional so a caller with no transactional store still
+   * works; `rolloverWeek` falls back to the two-call path when it is absent.
+   */
+  saveExposureWithCountedIds?: (
+    records: ExposureRecord[],
+    week: string,
+    recipeIds: string[],
+  ) => Promise<void>;
   /**
    * Recipe ids whose exposure has already been counted against `week`, from the
    * durable counted-weeks ledger. This is what makes an *out-of-order* re-run
@@ -670,12 +718,22 @@ export async function rolloverWeek(week: string, deps: RolloverDeps): Promise<Ro
       countedWeek: week,
       countedRecipeIds,
     });
-    await deps.saveExposure([...diff.exposed, ...diff.cleared]);
-    // The ledger is written after the strikes it describes: a crash between the
-    // two repeats the week once more, which the marker then absorbs, whereas
-    // the reverse order would lose a strike outright.
-    if (diff.newlyCounted.length > 0) {
-      await deps.saveCountedExposureIds(week, diff.newlyCounted);
+    // Strikes and ledger go down together when the store can do it. Ordering
+    // them as two writes was the remaining hole: the marker absorbs an ordinary
+    // retry, but a selection in a later week clears that marker, and a re-run
+    // arriving after that would reapply a strike the ledger should have
+    // retired. One transaction removes the window rather than narrowing it.
+    const exposureWrites = [...diff.exposed, ...diff.cleared];
+    if (deps.saveExposureWithCountedIds) {
+      await deps.saveExposureWithCountedIds(exposureWrites, week, diff.newlyCounted);
+    } else {
+      await deps.saveExposure(exposureWrites);
+      // Fallback ordering: the ledger follows the strikes it describes, so a
+      // crash between the two repeats the week once more (which the marker
+      // absorbs) instead of losing a strike outright.
+      if (diff.newlyCounted.length > 0) {
+        await deps.saveCountedExposureIds(week, diff.newlyCounted);
+      }
     }
 
     const summary = {

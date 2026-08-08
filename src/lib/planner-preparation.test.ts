@@ -470,6 +470,14 @@ describe("week rollover", () => {
     assignedSince?: Set<string>;
     /** Durable counted-weeks ledger, keyed by week. Shared across runs. */
     countedWeeks?: Map<string, Set<string>>;
+    /**
+     * Withhold the transactional dep, leaving only `saveExposure` +
+     * `saveCountedExposureIds`. Off by default: the deployed runtime supplies
+     * `saveExposureWithCountedIds` (planner-runtime), so that is the branch
+     * these tests have to be walking. Set it only where the two-write fallback
+     * is itself the thing under test.
+     */
+    legacyWrites?: boolean;
   }) {
     const promoted: string[] = [];
     const expired: string[] = [];
@@ -483,6 +491,26 @@ describe("week rollover", () => {
     // The ledger is a table, not a field on the record: a selection clears the
     // record but never these rows, which is the whole point of it existing.
     const ledger = options.countedWeeks ?? new Map<string, Set<string>>();
+
+    // Which write path actually ran. `saveExposure` and `saveCountedExposureIds`
+    // stay wired up even when the transactional dep is present, so "the
+    // fallback was not used" is an assertion rather than an absence.
+    const atomicWrites: { records: ExposureRecord[]; week: string; recipeIds: string[] }[] = [];
+    const legacyExposureWrites: ExposureRecord[][] = [];
+    const legacyLedgerWrites: { week: string; recipeIds: string[] }[] = [];
+
+    const applyExposure = (records: readonly ExposureRecord[]) => {
+      written.push(...records);
+      for (const record of records) stored.set(record.recipeId, record);
+    };
+    const applyLedger = (week: string, recipeIds: readonly string[]) => {
+      // Production writes no ledger rows when there is nothing new to count.
+      if (recipeIds.length === 0) return;
+      const forWeek = ledger.get(week) ?? new Set<string>();
+      for (const id of recipeIds) forWeek.add(id);
+      ledger.set(week, forWeek);
+    };
+
     const deps: RolloverDeps = {
       now: NOW,
       loadPlan: async () => options.plan,
@@ -498,19 +526,43 @@ describe("week rollover", () => {
       },
       loadExposureRecords: async () => new Map(stored),
       saveExposure: async (records) => {
-        written.push(...records);
-        for (const record of records) stored.set(record.recipeId, record);
+        legacyExposureWrites.push([...records]);
+        applyExposure(records);
       },
       loadCountedExposureIds: async (week) => new Set(ledger.get(week) ?? []),
       saveCountedExposureIds: async (week, recipeIds) => {
-        const forWeek = ledger.get(week) ?? new Set<string>();
-        for (const id of recipeIds) forWeek.add(id);
-        ledger.set(week, forWeek);
+        legacyLedgerWrites.push({ week, recipeIds: [...recipeIds] });
+        applyLedger(week, recipeIds);
       },
       promote: async (record) => { promoted.push(record.recipeId); return true; },
       expire: async (record) => { expired.push(record.recipeId); },
     };
-    return { deps, promoted, expired, written, stored, ledger, stagedWeeksRequested, expirableBefore, assignedSinceRequested };
+
+    if (!options.legacyWrites) {
+      // The production shape: strikes and ledger land together, in the same
+      // call, the way `db.saveExposureWithCountedIds` puts them in one
+      // transactional batch.
+      deps.saveExposureWithCountedIds = async (records, week, recipeIds) => {
+        atomicWrites.push({ records: [...records], week, recipeIds: [...recipeIds] });
+        applyExposure(records);
+        applyLedger(week, recipeIds);
+      };
+    }
+
+    return {
+      deps,
+      promoted,
+      expired,
+      written,
+      stored,
+      ledger,
+      stagedWeeksRequested,
+      expirableBefore,
+      assignedSinceRequested,
+      atomicWrites,
+      legacyExposureWrites,
+      legacyLedgerWrites,
+    };
   }
 
   function planWithShelf(assignedId: string): MealPlan {
@@ -550,6 +602,42 @@ describe("week rollover", () => {
     deepStrictEqual(exposed, ["ignored-catalog"]);
     ok(!exposed.includes("ignored-web"), "web ideas are handled by staging expiry, not exposure");
     ok(!exposed.includes("catalog-assigned"), "a chosen recipe was not ignored");
+  });
+
+  it("writes the strikes and their ledger rows in one transactional call", async () => {
+    // The branch the deployed runtime takes: planner-runtime supplies
+    // `saveExposureWithCountedIds`, so rollover must never fall back to the two
+    // sequential writes that left a week half accounted for.
+    const h = rolloverHarness({ plan: planWithShelf("catalog-assigned"), staged: [] });
+    await rolloverWeek("2026-W33", h.deps);
+
+    equal(h.atomicWrites.length, 1, "one call carries both halves");
+    equal(h.atomicWrites[0].week, "2026-W33");
+    deepStrictEqual(h.atomicWrites[0].recipeIds, ["ignored-catalog"]);
+    deepStrictEqual(
+      h.atomicWrites[0].records.map((r) => r.recipeId),
+      ["ignored-catalog"],
+      "the strike travels with the ledger row that justifies it",
+    );
+
+    equal(h.legacyExposureWrites.length, 0, "no separate exposure write");
+    equal(h.legacyLedgerWrites.length, 0, "and no separate ledger write to lag behind it");
+    equal(h.stored.get("ignored-catalog")?.exposureCount, 1);
+    deepStrictEqual([...(h.ledger.get("2026-W33") ?? [])], ["ignored-catalog"]);
+  });
+
+  it("still records both halves on a store with no transaction", async () => {
+    // The fallback is optional-dep support, not dead code: a caller without a
+    // transactional store still gets the strike and the ledger row, ordered so
+    // a crash between them repeats the week rather than losing a strike.
+    const h = rolloverHarness({ plan: planWithShelf("catalog-assigned"), staged: [], legacyWrites: true });
+    await rolloverWeek("2026-W33", h.deps);
+
+    equal(h.atomicWrites.length, 0, "there was no transactional dep to call");
+    equal(h.legacyExposureWrites.length, 1);
+    deepStrictEqual(h.legacyLedgerWrites, [{ week: "2026-W33", recipeIds: ["ignored-catalog"] }]);
+    equal(h.stored.get("ignored-catalog")?.exposureCount, 1);
+    deepStrictEqual([...(h.ledger.get("2026-W33") ?? [])], ["ignored-catalog"]);
   });
 
   it("escalates a second ignored appearance to suppression", async () => {

@@ -24,10 +24,11 @@ import {
   promoteStagedWebRecipe,
   saveCountedExposureRecipeIds,
   saveExposureRecords,
+  saveExposureWithCountedIds,
 } from "@/lib/db";
 import { getAllRecipes, getRecipe } from "@/lib/recipes";
 import { loadMealPlan, saveMealPlan } from "@/lib/meals-persistence";
-import { ensureWeeklyInspirations } from "@/lib/meal-inspirations";
+import { resolveWebInspirations } from "@/lib/meal-inspirations";
 import { catalogExclusionIds, toShelfCandidate } from "@/lib/planner-preparation";
 import type { PreparationDeps, RolloverDeps } from "@/lib/planner-preparation";
 import { SHELF_POLICY_VERSION, type ShelfCandidate } from "@/lib/planner-shelf";
@@ -143,12 +144,17 @@ export function buildPreparationDeps(now = new Date()): PreparationDeps {
       const result = await saveMealPlan(plan);
       return result.ok ? { ok: true, plan: result.plan } : { ok: false, reason: result.reason };
     },
+    // Never a child process. On Vercel this reads what the local Kitchen
+    // runtime already staged and reports `web-not-staged` when it finds
+    // nothing, rather than shelling out to an importer that cannot run there.
     ensureWebInspirations: async (week) => {
-      const result = await ensureWeeklyInspirations(week);
+      const result = await resolveWebInspirations(week);
       return {
         status: result.status,
         accepted: "accepted" in result ? result.accepted : undefined,
+        staged: "staged" in result ? result.staged : undefined,
         error: "error" in result ? result.error : undefined,
+        reason: "reason" in result ? result.reason : undefined,
       };
     },
     loadWebCandidates: (week) => loadWebCandidatesForWeek(week, now),
@@ -168,6 +174,8 @@ export function buildRolloverDeps(now = new Date()): RolloverDeps {
     saveExposure: (records) => saveExposureRecords(records),
     loadCountedExposureIds: (week) => getCountedExposureRecipeIds(week),
     saveCountedExposureIds: (week, recipeIds) => saveCountedExposureRecipeIds(week, recipeIds, now),
+    saveExposureWithCountedIds: (records, week, recipeIds) =>
+      saveExposureWithCountedIds(records, week, recipeIds, now),
     promote: (record) => promoteStagedWebRecipe(record, now),
     expire: (record) => expireStagedWebRecipe(record, now),
   };
