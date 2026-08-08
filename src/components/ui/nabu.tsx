@@ -167,7 +167,13 @@ export function NabuCard({
 }) {
   const base = cn(
     "group min-w-0 max-w-full overflow-hidden rounded-lg border border-primary bg-primary p-4 shadow-xs transition-all dark:shadow-none",
-    href && "hover:-translate-y-0.5 hover:border-secondary_hover hover:bg-primary_hover hover:shadow-md dark:hover:shadow-none",
+    // A linked card renders as an <a>, which is inline by default. Inside a
+    // flex or grid parent that gets blockified for free, but in a plain block
+    // container the bordered inline box fragments across line boxes and its
+    // block children escape it — so make the box explicit. A caller that
+    // passes its own display utility (`flex`, `grid`) still wins.
+    href &&
+      "block hover:-translate-y-0.5 hover:border-secondary_hover hover:bg-primary_hover hover:shadow-md dark:hover:shadow-none",
     className,
   );
 

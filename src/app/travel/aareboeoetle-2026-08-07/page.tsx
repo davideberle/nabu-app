@@ -19,7 +19,7 @@ export const metadata = {
 };
 
 /** Render a date-only ISO string without letting the server's zone shift it. */
-function formatPublishedOn(iso: string): string {
+function formatIsoDate(iso: string): string {
   return new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
@@ -65,50 +65,113 @@ function HighlightRow({ highlight }: { highlight: TripHighlight }) {
   );
 }
 
+/**
+ * The archived Aare day.
+ *
+ * The trip is past, so this page is a record rather than a briefing: it shows
+ * the plan as it was finalized and the conditions that were on file, and it
+ * claims nothing about how the day actually went, because nothing was written
+ * back. Two parts of the plan are deliberately not rendered — the
+ * pre-departure recheck gate (dropped from the projection once the trip was
+ * archived) and `plan.safety`, which is a packing-and-launch checklist and
+ * would read as a pending instruction here. Both stay useful upstream in
+ * `projects/travel/`; `plan.safety` also stays in the projection so the
+ * finalized plan is preserved intact.
+ */
 export default function AareboeoetlePage() {
   const trip = getTripById("aareboeoetle-2026-08-07");
-  if (!trip?.plan) {
+  if (!trip?.plan || !trip.archive) {
     notFound();
   }
 
-  const { note, schedule, anchors, decisions, conditions, safety } = trip.plan;
+  const { note, schedule, anchors, decisions, conditions } = trip.plan;
+  const { snapshot } = trip.archive;
 
   return (
     <NabuPageShell>
       <NabuHeader
         title={trip.name}
-        eyebrow="Upcoming trip"
+        eyebrow="Past trip"
         backHref="/travel"
         subtitle={`${trip.location} · ${trip.dateLabel}`}
         maxWidth="3xl"
       />
 
       <NabuMain maxWidth="3xl" className="space-y-8 pb-20">
-        {/* The finalized note */}
+        {/* What the day was */}
         <NabuSurface tone="accent" className="p-4 sm:p-5">
           <div className="flex min-w-0 flex-wrap items-center gap-2">
-            <NabuKicker>The day</NabuKicker>
+            <NabuKicker>Snapshot</NabuKicker>
             {trip.workPolicy ? (
-              <NabuPill tone="green">{trip.workPolicy}</NabuPill>
+              <NabuPill tone="stone">{trip.workPolicy}</NabuPill>
             ) : null}
           </div>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-secondary">
-            {note}
+            {snapshot}
           </p>
         </NabuSurface>
 
-        {/* Before leaving — the recheck gate */}
+        {/* The plan of record */}
         <section>
           <NabuSectionHeader
             className="mb-3"
-            eyebrow="Before leaving"
-            title="Friday-morning recheck"
+            eyebrow="Plan of record"
+            title="How the day was meant to run"
+            description={note}
+          />
+          <NabuSurface tone="default" className="px-4 py-2 sm:px-5">
+            <div className="divide-y divide-secondary">
+              {schedule.map((stop) => (
+                <ScheduleRow key={stop.title} stop={stop} />
+              ))}
+            </div>
+          </NabuSurface>
+        </section>
+
+        {/* Anchors — the factual river reference, useful again on a repeat */}
+        <section>
+          <NabuSectionHeader
+            className="mb-3"
+            eyebrow="Reference"
+            title="Anchors on the river"
+          />
+          <NabuSurface tone="default" className="px-4 py-2 sm:px-5">
+            <div className="divide-y divide-secondary">
+              {anchors.map((anchor) => (
+                <HighlightRow key={anchor.title} highlight={anchor} />
+              ))}
+            </div>
+          </NabuSurface>
+        </section>
+
+        {/* The finish, which the record never resolves */}
+        {decisions && decisions.length > 0 ? (
+          <section>
+            <NabuSectionHeader
+              className="mb-3"
+              eyebrow="Never resolved"
+              title="How the evening ended"
+              description="The finish was left to the day itself and no outcome was recorded, so these stay options — the record does not say which one was taken."
+            />
+            <NabuSurface tone="muted" className="px-4 py-2 sm:px-5">
+              <div className="divide-y divide-secondary">
+                {decisions.map((decision) => (
+                  <HighlightRow key={decision.title} highlight={decision} />
+                ))}
+              </div>
+            </NabuSurface>
+          </section>
+        ) : null}
+
+        {/* Conditions as they stood — readings only, no launch gate */}
+        <section>
+          <NabuSectionHeader
+            className="mb-3"
+            eyebrow="On file"
+            title="Conditions before the day"
           />
           <NabuSurface tone="muted" className="p-4 sm:p-5">
-            <p className="max-w-2xl text-sm leading-relaxed text-secondary">
-              {conditions.gate}
-            </p>
-            <p className="mt-4 text-xs text-quaternary">
+            <p className="text-xs text-quaternary">
               Checked {conditions.checkedAt}
             </p>
             <ul className="mt-1.5 space-y-1">
@@ -124,85 +187,15 @@ export default function AareboeoetlePage() {
           </NabuSurface>
         </section>
 
-        {/* Plan */}
-        <section>
-          <NabuSectionHeader
-            className="mb-3"
-            eyebrow="Plan"
-            title="How the day runs"
-          />
-          <NabuSurface tone="default" className="px-4 py-2 sm:px-5">
-            <div className="divide-y divide-secondary">
-              {schedule.map((stop) => (
-                <ScheduleRow key={stop.title} stop={stop} />
-              ))}
-            </div>
-          </NabuSurface>
-        </section>
-
-        {/* Anchors */}
-        <section>
-          <NabuSectionHeader
-            className="mb-3"
-            eyebrow="Confirmed"
-            title="Anchors on the river"
-          />
-          <NabuSurface tone="default" className="px-4 py-2 sm:px-5">
-            <div className="divide-y divide-secondary">
-              {anchors.map((anchor) => (
-                <HighlightRow key={anchor.title} highlight={anchor} />
-              ))}
-            </div>
-          </NabuSurface>
-        </section>
-
-        {/* Bern finish */}
-        {decisions && decisions.length > 0 ? (
-          <section>
-            <NabuSectionHeader
-              className="mb-3"
-              eyebrow="Open on the day"
-              title="Finishing in Bern"
-            />
-            <NabuSurface tone="muted" className="px-4 py-2 sm:px-5">
-              <div className="divide-y divide-secondary">
-                {decisions.map((decision) => (
-                  <HighlightRow key={decision.title} highlight={decision} />
-                ))}
-              </div>
-            </NabuSurface>
-          </section>
-        ) : null}
-
-        {/* Safety */}
-        <section>
-          <NabuSectionHeader
-            className="mb-3"
-            eyebrow="Non-negotiable"
-            title="On the water"
-          />
-          <NabuSurface tone="default" className="p-4 sm:p-5">
-            <ul className="space-y-2">
-              {safety.map((item) => (
-                <li key={item} className="flex min-w-0 gap-3">
-                  <span
-                    aria-hidden
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-utility-orange-400"
-                  />
-                  <span className="min-w-0 flex-1 text-sm leading-relaxed text-secondary">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </NabuSurface>
-        </section>
-
         {/* Provenance — restrained, and never the raw source slug */}
         {trip.source ? (
           <p className="text-xs leading-relaxed text-quaternary">
-            Published {formatPublishedOn(trip.source.publishedOn)} from a
-            finalized plan. Booking records stay with{" "}
+            Published {formatIsoDate(trip.source.publishedOn)} from a finalized
+            plan
+            {trip.source.archivedOn
+              ? `, archived ${formatIsoDate(trip.source.archivedOn)}`
+              : ""}
+            . Booking records stay with{" "}
             {trip.source.factOwners.map((owner) => owner.system).join(" and ")}{" "}
             — nothing here restates them.
           </p>

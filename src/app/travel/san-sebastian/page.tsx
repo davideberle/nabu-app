@@ -60,23 +60,25 @@ export default function SanSebastianPage() {
         </NabuSurface>
 
         {/* Highlights */}
-        <section>
-          <NabuSectionHeader
-            className="mb-3"
-            eyebrow="Highlights"
-            title="What stood out"
-          />
-          <NabuSurface tone="default" className="px-4 py-2 sm:px-5">
-            <div className="divide-y divide-secondary">
-              {highlights.map((highlight) => (
-                <HighlightRow key={highlight.title} highlight={highlight} />
-              ))}
-            </div>
-          </NabuSurface>
-        </section>
+        {highlights && highlights.length > 0 ? (
+          <section>
+            <NabuSectionHeader
+              className="mb-3"
+              eyebrow="Highlights"
+              title="What stood out"
+            />
+            <NabuSurface tone="default" className="px-4 py-2 sm:px-5">
+              <div className="divide-y divide-secondary">
+                {highlights.map((highlight) => (
+                  <HighlightRow key={highlight.title} highlight={highlight} />
+                ))}
+              </div>
+            </NabuSurface>
+          </section>
+        ) : null}
 
         {/* Left open */}
-        {leftOpen.length > 0 ? (
+        {leftOpen && leftOpen.length > 0 ? (
           <section>
             <NabuSectionHeader
               className="mb-3"

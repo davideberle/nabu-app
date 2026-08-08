@@ -22,8 +22,11 @@ function TripCard({ trip }: { trip: Trip }) {
           {trip.emoji}
         </NabuIconFrame>
         <div className="min-w-0 flex-1">
-          <div className="flex min-w-0 items-center justify-between gap-2">
-            <h3 className="min-w-0 truncate text-sm font-semibold tracking-[-0.01em] text-primary">
+          {/* Trip names are long and phone-width is short: the name wraps
+              rather than truncating, and the status pill keeps its own column
+              instead of squeezing the title out of view. */}
+          <div className="flex min-w-0 flex-wrap items-start justify-between gap-x-2 gap-y-1">
+            <h3 className="min-w-0 flex-1 break-words text-sm font-semibold tracking-[-0.01em] text-primary">
               {trip.name}
             </h3>
             <NabuPill tone={trip.status === "past" ? "stone" : "green"} className="shrink-0">

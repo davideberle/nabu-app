@@ -23,10 +23,16 @@ export interface TripHighlight {
 export interface TripArchive {
   /** One or two sentences framing what the trip was. */
   snapshot: string;
-  /** Confirmed, lived highlights worth remembering. */
-  highlights: TripHighlight[];
+  /**
+   * Confirmed, lived highlights worth remembering.
+   *
+   * Absent when a trip was archived from its plan and no account of the day
+   * was ever written back — an empty retrospective is honest, an invented one
+   * is not.
+   */
+  highlights?: TripHighlight[];
   /** Genuinely useful places/ideas not reached — candidates for a return. */
-  leftOpen: TripHighlight[];
+  leftOpen?: TripHighlight[];
 }
 
 /**
@@ -59,6 +65,12 @@ export interface TripSource {
   conversationId: string;
   /** ISO date this projection was published or last refreshed. */
   publishedOn: string;
+  /**
+   * ISO date the trip was moved to the archive, once it is past. Kept
+   * separate from {@link publishedOn} so archiving never overwrites when the
+   * plan itself was published.
+   */
+  archivedOn?: string;
   /** Explicit promotion gate — see {@link TripPromotion}. */
   promotion: TripPromotion;
   /** Upstream owners of facts referenced but not restated here. */
@@ -79,13 +91,23 @@ export interface TripConditions {
   checkedAt: string;
   /** Short, attributed readings — one line each. */
   readings: string[];
-  /** What must be rechecked before leaving, and what calls the day off. */
-  gate: string;
+  /**
+   * What must be rechecked before leaving, and what calls the day off.
+   *
+   * Only meaningful while the trip is still ahead. It is dropped when the trip
+   * is archived, so a past record never renders a pending launch gate; the
+   * readings stay as the conditions on record.
+   */
+  gate?: string;
 }
 
 /**
  * The usable plan for a finalized trip: short enough to read on the way to the
  * launch, not a planning catalogue. Planning lives in `projects/travel/`.
+ *
+ * A plan outlives the trip. Once the trip is past it stays on as the plan of
+ * record — what was intended, in the past tense — rather than being deleted or
+ * quietly rewritten into a claim about what happened.
  */
 export interface TripPlan {
   /** The short finalized note framing what this day is. */
@@ -209,55 +231,61 @@ const aareboeoetle: Trip = {
   name: "Aareböötle — Uttigen to Bern",
   location: "Aare, Canton of Bern",
   emoji: "🛶",
-  status: "upcoming",
+  status: "past",
   dateLabel: "Friday, 7 August 2026",
   startDate: "2026-08-07",
   endDate: "2026-08-07",
   summary:
-    "A one-day family float from Uttigen to Bern Eichholz, with a late gravel-bank picnic and swim and an optional easy riverside aperitif before the train home.",
+    "A one-day family float from Uttigen to Bern Eichholz. Archived with the plan of record — no account of how the day actually ran was written back.",
   href: "/travel/aareboeoetle-2026-08-07",
   workPolicy: "No calls",
   source: {
     conversationId: "thread-1785962531986-h8xj18",
     publishedOn: "2026-08-06",
+    archivedOn: "2026-08-08",
     promotion: "explicitly-finalized",
     factOwners: [
       {
         system: "TripIt",
-        owns: "Booking records. None are restated here — the boat rental appears only as the 18:00 return deadline it imposes on the plan.",
+        owns: "Booking records. None are restated here — the boat rental appears only as the 18:00 return deadline it imposed on the plan.",
       },
     ],
   },
+  archive: {
+    snapshot:
+      "A one-day family float down the Aare from Uttigen to Bern Eichholz on Friday 7 August 2026, built around a launch near 13:00, a gravel-bank picnic and swim in the middle, and a hard 18:00 rental return. What follows is that plan as it was finalized the evening before. Nothing was written back afterwards, so this record says what the day was meant to be, not what it became.",
+  },
   plan: {
-    note: "Finalized as a single float day, not a planning board. The times below are anchors rather than a script; the only hard commitments are the 18:00 rental return and the Friday-morning conditions recheck.",
+    note: "Finalized as a single float day, not a planning board. The times below were anchors rather than a script; the two hard commitments were the 18:00 rental return and a conditions recheck on the morning itself.",
     schedule: [
       {
         time: "13:00",
         title: "Launch at Uttigen",
-        detail: "Put in around 13:00. Everything after this is timed from here.",
+        detail:
+          "The planned put-in, around 13:00. Everything after it was timed from here.",
       },
       {
         time: "15:00–15:30",
         title: "Picnic and swim",
         detail:
-          "The main stop of the day, on a safely approachable gravel bank after Hunzigenbrücke.",
+          "The intended main stop, on a safely approachable gravel bank after Hunzigenbrücke.",
       },
       {
         time: "16:00",
         title: "Relaunch",
         detail:
-          "Back on the water no later than 16:00 — this is what protects the exit and the rental return.",
+          "Back on the water by 16:00 — the margin that protected the exit and the rental return.",
       },
       {
         time: "16:45–17:30",
         title: "Exit at Bern Eichholz",
-        detail: "Take out at Eichholz, beside the camping area.",
+        detail: "The planned take-out at Eichholz, beside the camping area.",
       },
       {
         time: "18:00",
         title: "Rental equipment returned",
         detail:
-          "A hard deadline. If the day is running behind, the picnic stop is what gets cut, not this.",
+          "The one hard deadline. If the float ran behind, the picnic stop was the part to give up, not this.",
       },
     ],
     anchors: [
@@ -282,24 +310,24 @@ const aareboeoetle: Trip = {
     ],
     decisions: [
       {
-        title: "Decide the Bern finish after the boat is returned",
+        title: "The finish was left until after the boat was returned",
         detail:
-          "Not before. The right call depends on how much energy is left once the equipment is handed back.",
+          "Deliberately not settled in advance — the right call depended on how much energy was left once the equipment was handed back.",
       },
       {
         title: "Default — one drink at Serini Eichholz",
         detail:
-          "If you are done by about 17:20 and everyone still has energy, take one appetizer and a drink at Serini, a few steps from the exit.",
+          "The intended default if the exit ran to about 17:20 with energy to spare: one appetizer and a drink a few steps from the take-out.",
       },
       {
-        title: "If late or tired — go straight home",
+        title: "If late or tired — straight home",
         detail:
-          "Via Tierpark and Bernmobil line 19 to Bern Hauptbahnhof, then the next direct train toward Basel.",
+          "The fallback: via Tierpark and Bernmobil line 19 to Bern Hauptbahnhof, then the next direct train toward Basel.",
       },
       {
         title: "Higher energy only — Dampfzentrale",
         detail:
-          "Walking downstream to Dampfzentrale works, but it is not the default after a 20 km river day.",
+          "Walking downstream to Dampfzentrale was kept as an option, but never as the default after a 20 km river day.",
       },
     ],
     conditions: {
@@ -309,7 +337,6 @@ const aareboeoetle: Trip = {
         "Wind: northerly 10–20 km/h, gusts around 30 km/h.",
         "FOEN Bern–Schönau: 130 m³/s and 21.3 °C at 09:00 Thursday.",
       ],
-      gate: "Recheck on Friday morning before leaving: MeteoSwiss warnings and radar, plus FOEN Aare conditions. Do not launch on a thunderstorm warning or a sharp overnight rise in the river.",
     },
     safety: [
       "A worn life vest for every person, adults included.",
