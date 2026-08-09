@@ -14,6 +14,7 @@
 
 import { visibleCapForSource, SHELF_TARGET, WEB_TARGET } from "./planner-sources.ts";
 import type { PlannerRole } from "./planner-roles.ts";
+import type { ShelfDisplay } from "./planner-display.ts";
 import type { CandidateBucket } from "./meals-core.ts";
 
 // ---------------------------------------------------------------------------
@@ -59,12 +60,30 @@ export type ShelfCandidate = {
   category?: string;
   courseTags?: string[];
   traits: ShelfTraits;
+  /**
+   * For a light meal: the one concrete thing that turns it into dinner, in the
+   * recipe's own terms. Kitchen decides it; the card only renders it.
+   */
+  completion?: string | null;
+  /**
+   * What the card says — group, editorial note, light-meal label, and the
+   * completion suggestion. Separate from `reason`, which stays internal.
+   */
+  display?: ShelfDisplay;
   /** Ranking hint from the caller (editorial order, catalog score). Lower first. */
   rank?: number;
 };
 
 export type ShelfItem = ShelfCandidate & {
-  /** Why this idea is on the shelf. Rendered as-is; never re-derived by the UI. */
+  /**
+   * Why the selector put this idea on the shelf — a missing soup lane, a
+   * weekend project, an explicit swap.
+   *
+   * Internal diagnostic only. It stays in the contract because tests and
+   * planner diagnostics depend on it, and it is never rendered: the card shows
+   * `display.note` instead. See Kitchen DESIGN.md, "Shelf presentation
+   * contract".
+   */
   reason: string;
   /** Assigned to a day of the week being planned — visible but disabled. */
   assigned: boolean;

@@ -15,6 +15,9 @@ import {
   type SavePlanResponse,
 } from "@/lib/meal-plan-save";
 import type { MealCoherenceReview } from "@/lib/meal-coherence";
+import { candidateDisplay, groupShelfItems } from "@/lib/planner-display";
+import type { ShelfDisplay } from "@/lib/planner-display";
+import type { ShelfTraits } from "@/lib/planner-shelf";
 
 // ----- types -----
 
@@ -34,8 +37,19 @@ type RecipeOption = {
   origin?: "web" | "catalog";
   discovery?: "editorial" | "search" | "catalog";
   role?: "main" | "light-meal" | "pairing" | "reject";
-  /** Why Kitchen put this idea on the shelf. Rendered as-is. */
-  reason?: string;
+  /** Coverage traits Kitchen derived. Carried so display can be re-derived. */
+  traits?: ShelfTraits;
+  /** For a light meal: the concrete thing that turns it into dinner. */
+  completion?: string;
+  /**
+   * Kitchen's presentation contract for the card: group, editorial note,
+   * light-meal label, completion suggestion.
+   *
+   * There is deliberately no `reason` here. The selector's own explanation
+   * ("to cover the curry gap") stays server-side; see Kitchen DESIGN.md,
+   * "Shelf presentation contract".
+   */
+  display?: ShelfDisplay;
   /** Reversible Keep intent for a hidden web-staging idea. */
   kept?: boolean;
 };
@@ -80,7 +94,11 @@ type CandidateItem = {
   origin?: "web" | "catalog";
   discovery?: "editorial" | "search" | "catalog";
   role?: "main" | "light-meal" | "pairing" | "reject";
+  /** Internal selector diagnostic. Persisted, never rendered. */
   reason?: string;
+  traits?: ShelfTraits;
+  completion?: string;
+  display?: ShelfDisplay;
 };
 
 type CandidateDiagnostics = {
@@ -316,7 +334,9 @@ function toCandidateItem(recipe: RecipeOption, bucket?: string): CandidateItem {
     ...(recipe.origin ? { origin: recipe.origin } : {}),
     ...(recipe.discovery ? { discovery: recipe.discovery } : {}),
     ...(recipe.role ? { role: recipe.role } : {}),
-    ...(recipe.reason ? { reason: recipe.reason } : {}),
+    ...(recipe.traits ? { traits: recipe.traits } : {}),
+    ...(recipe.completion ? { completion: recipe.completion } : {}),
+    ...(recipe.display ? { display: recipe.display } : {}),
   };
 }
 
@@ -334,8 +354,23 @@ function restoreCandidateItem(item: CandidateItem): RecipeOption {
     origin: item.origin,
     discovery: item.discovery,
     role: item.role,
-    reason: item.reason,
+    traits: item.traits,
+    completion: item.completion,
+    // Kitchen fills this in on read; deriving here is the fallback for a card
+    // that arrived from one of the manual repair paths.
+    display: candidateDisplay(item),
   };
+}
+
+/** The presentation contract for a card, derived when Kitchen did not supply it. */
+function displayFor(recipe: RecipeOption): ShelfDisplay {
+  return candidateDisplay({
+    role: recipe.role,
+    traits: recipe.traits,
+    time: recipe.time,
+    completion: recipe.completion,
+    display: recipe.display,
+  });
 }
 
 function applyRecipeLookup(recipe: RecipeOption, canonical?: RecipeLookupValue): RecipeOption {
@@ -1968,29 +2003,41 @@ function MealsPageInner() {
               description="One prepared set: the strongest web finds plus recipe-book ideas that cover what they missed. Web ideas stay out of My Recipes until you keep or cook them."
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {candidates.map((r) => {
-                  const isAssigned = plan?.days.some((d) => d?.recipeId === r.id || d?.brunch?.main?.id === r.id) ?? false;
-                  return (
-                    <RecipeCard
-                      key={r.id}
-                      recipe={r}
-                      isSelected={selectedRecipe?.id === r.id}
-                      isAssigned={isAssigned}
-                      feedback={feedbackMap[r.id] ?? null}
-                      kept={keptMap[r.id] ?? r.kept ?? false}
-                      onSelect={() =>
-                        setSelectedRecipe(
-                          selectedRecipe?.id === r.id ? null : r
-                        )
-                      }
-                      onQuickView={() => handleQuickView(r.id)}
-                      onFeedback={(value) => handleFeedback(r.id, value)}
-                      onKeep={isWebIdea(r) ? (next) => handleKeep(r.id, next) : undefined}
-                    />
-                  );
-                })}
-            </div>
+            {/* Grouped by meal character, never by weekday: a longer cooking
+                project is still perfectly assignable to a Wednesday. Empty
+                groups are omitted rather than shown as empty headings. */}
+            {groupShelfItems(candidates, displayFor).map((section) => (
+              <div key={section.group} className="space-y-4">
+                <div>
+                  <h3 className="font-serif text-[15px] text-primary">{section.label}</h3>
+                  <p className="mt-0.5 text-[11px] text-quaternary">{section.description}</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {section.items.map((r) => {
+                    const isAssigned = plan?.days.some((d) => d?.recipeId === r.id || d?.brunch?.main?.id === r.id) ?? false;
+                    return (
+                      <RecipeCard
+                        key={r.id}
+                        recipe={r}
+                        display={displayFor(r)}
+                        isSelected={selectedRecipe?.id === r.id}
+                        isAssigned={isAssigned}
+                        feedback={feedbackMap[r.id] ?? null}
+                        kept={keptMap[r.id] ?? r.kept ?? false}
+                        onSelect={() =>
+                          setSelectedRecipe(
+                            selectedRecipe?.id === r.id ? null : r
+                          )
+                        }
+                        onQuickView={() => handleQuickView(r.id)}
+                        onFeedback={(value) => handleFeedback(r.id, value)}
+                        onKeep={isWebIdea(r) ? (next) => handleKeep(r.id, next) : undefined}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         )}
       </NabuMain>
@@ -2205,6 +2252,7 @@ function ServeWithEditor({
 
 function RecipeCard({
   recipe,
+  display,
   isSelected,
   isAssigned,
   feedback,
@@ -2215,6 +2263,8 @@ function RecipeCard({
   onKeep,
 }: {
   recipe: RecipeOption;
+  /** Kitchen's presentation contract for this card. */
+  display: ShelfDisplay;
   isSelected: boolean;
   isAssigned: boolean;
   feedback: "up" | "down" | null;
@@ -2290,10 +2340,20 @@ function RecipeCard({
               {discoveryLabel}
             </span>
           )}
+          {display.lightMeal && (
+            <span className="shrink-0 text-[9px] uppercase tracking-[0.14em] px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400">
+              light meal
+            </span>
+          )}
         </div>
-        {recipe.reason && (
-          <p className="mt-1.5 text-[11px] text-quaternary leading-snug line-clamp-2">
-            {recipe.reason}
+        {/* Kitchen's editorial note — what kind of meal this makes. The
+            selector's own reason for picking it is deliberately not here. */}
+        <p className="mt-1.5 text-[11px] text-quaternary leading-snug line-clamp-2">
+          {display.note}
+        </p>
+        {display.makeItDinner && (
+          <p className="mt-1 text-[11px] text-tertiary leading-snug">
+            <span className="text-quaternary">Make it dinner:</span> {display.makeItDinner}
           </p>
         )}
         <div className="flex flex-wrap items-center gap-1 mt-2">

@@ -28,6 +28,10 @@ import {
   _isWeekendMainWorthy as isWeekendMainWorthy,
   _recipeSeason as recipeSeason,
   _filterBySeason as filterBySeason,
+  classifyPlannerRole,
+  deriveShelfTraits,
+  deriveShelfDisplay,
+  containsSelectorVocabulary,
 } from "../src/lib/meals.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -253,6 +257,61 @@ assert(
 );
 const overridden = plannerPolicy({ PLANNER_NEGATIVE_FEEDBACK_DAYS: "90" });
 assert(overridden.negativeFeedbackDays === 90, "negative window is env-configurable");
+
+console.log("\n15. Shelf display copy is clean across the whole recipe corpus");
+// The trait matrix is covered exhaustively by the unit tests; this is the
+// corpus-level check that the notes real recipes produce never leak selector
+// vocabulary, and that a light meal's completion suggestion is concrete.
+{
+  const eligible = bundle.filter(isMainPlannerCandidate);
+  const now = new Date();
+  let leaked = 0;
+  let emptyNote = 0;
+  let lightMeals = 0;
+  let withCompletion = 0;
+  const groups = new Set();
+
+  for (const recipe of eligible) {
+    const role = classifyPlannerRole(recipe);
+    if (role.role !== "main" && role.role !== "light-meal") continue;
+    const display = deriveShelfDisplay({
+      role: role.role,
+      traits: deriveShelfTraits(recipe, now),
+      time: recipe.time,
+      completion: role.completion,
+    });
+    groups.add(display.group);
+    if (!display.note) emptyNote++;
+    if (containsSelectorVocabulary(display.note)) {
+      if (leaked < 3) console.error(`     leaked: ${recipe.name} -> ${display.note}`);
+      leaked++;
+    }
+    if (display.lightMeal) {
+      lightMeals++;
+      if (display.makeItDinner) {
+        withCompletion++;
+        if (containsSelectorVocabulary(display.makeItDinner)) leaked++;
+      }
+    }
+  }
+
+  assert(eligible.length > 500, `corpus is large enough to be meaningful (${eligible.length} eligible)`);
+  assert(leaked === 0, `no editorial note leaks selector vocabulary (${leaked} leaked)`);
+  assert(emptyNote === 0, `every card gets a note (${emptyNote} empty)`);
+  assert(groups.size === 3, `all three display groups are reachable from the corpus (got ${[...groups].join(", ")})`);
+  assert(lightMeals > 0, `the corpus produces substantial light meals (${lightMeals})`);
+  assert(withCompletion > 0, `light meals carry concrete completions (${withCompletion}/${lightMeals})`);
+}
+
+console.log("\n16. BBQ Cauliflower is a light meal that becomes dinner with rice");
+{
+  const bbq = find("bbq-cauliflower");
+  const role = classifyPlannerRole(bbq);
+  assert(role.role === "light-meal", `role is light-meal (got ${role.role})`);
+  assert(role.mainEligible === true, "it can still carry a dinner");
+  assert(role.completion === "Serve with rice", `completion is the recipe's own rice line (got ${role.completion})`);
+  assert(bbq.method.length === 4 && bbq.ingredients.length === 18, "the recipe itself is untouched");
+}
 
 console.log(`\n${"=".repeat(50)}`);
 console.log(`Results: ${passed} passed, ${failed} failed`);

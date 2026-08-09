@@ -29,6 +29,7 @@ import {
 } from "./planner-shelf.ts";
 import { SHELF_TARGET } from "./planner-sources.ts";
 import { classifyPlannerRole } from "./planner-roles.ts";
+import { candidateDisplay, deriveShelfDisplay, type ShelfDisplay } from "./planner-display.ts";
 import { diffShelfExposure, type ExposureRecord } from "./planner-exposure.ts";
 import {
   planRollover,
@@ -76,6 +77,8 @@ function normalizeTime(time: Recipe["time"]): { prep: number; cook: number; tota
  */
 export function toShelfCandidate(recipe: Recipe, origin: CandidateOrigin, now: Date): ShelfCandidate {
   const role = classifyPlannerRole(recipe);
+  const traits = deriveShelfTraits(recipe, now);
+  const time = normalizeTime(recipe.time);
   return {
     recipeId: recipe.id,
     recipeName: normalizePlannerTitle(recipe.name) || recipe.name,
@@ -87,10 +90,12 @@ export function toShelfCandidate(recipe: Recipe, origin: CandidateOrigin, now: D
     cuisine: normalizePlannerCuisine(recipe),
     image: recipe.image ?? null,
     dietary: recipe.dietary ?? recipe.tags?.dietary ?? [],
-    time: normalizeTime(recipe.time),
+    time,
     category: recipe.category?.dish_type?.[0] ?? "main",
     courseTags: recipe.category?.dish_type ?? [],
-    traits: deriveShelfTraits(recipe, now),
+    traits,
+    ...(role.completion ? { completion: role.completion } : {}),
+    display: deriveShelfDisplay({ role: role.role, traits, time, completion: role.completion }),
     ...(origin.rank !== undefined ? { rank: origin.rank } : {}),
   };
 }
@@ -148,8 +153,12 @@ export function toCandidateItem(item: ShelfItem) {
     origin: item.origin,
     discovery: item.discovery,
     role: item.role,
+    // Internal diagnostic. Persisted for tests and planner diagnostics; the
+    // card renders `display` instead.
     reason: item.reason,
     traits: item.traits,
+    ...(item.completion ? { completion: item.completion } : {}),
+    display: item.display ?? candidateDisplay(item),
   };
 }
 
@@ -174,6 +183,9 @@ export async function hydrateShelfItems(
     cuisine?: string;
     image?: string | null;
     source?: { cookbook?: string } | null;
+    time?: { prep: number; cook: number; total: number } | null;
+    completion?: string | null;
+    display?: ShelfDisplay | null;
   }[],
   assignedRecipeIds: ReadonlySet<string>,
   resolveRecipe: (id: string) => Promise<Recipe | undefined | null>,
@@ -196,6 +208,8 @@ export async function hydrateShelfItems(
         cuisine: item.cuisine ?? "Other",
         image: item.image ?? null,
         traits: item.traits,
+        ...(item.completion ? { completion: item.completion } : {}),
+        display: item.display ?? candidateDisplay(item),
         reason: item.reason ?? "",
         assigned,
       });
@@ -234,11 +248,77 @@ export async function hydrateShelfItems(
         seasonalLocal: false,
         longHaul: false,
       },
+      display: item.display ?? candidateDisplay(item),
       reason: item.reason ?? "Saved earlier this week",
       assigned,
     });
   }
   return hydrated;
+}
+
+/**
+ * Attach the shelf presentation contract to persisted candidate items on read.
+ *
+ * This is what lets an already-prepared week — 2026-W33 in particular — render
+ * the three groups, the editorial notes and the light-meal labels without
+ * regenerating its shelf or moving a single day assignment. Nothing is written;
+ * the items come back with `display` filled in.
+ *
+ * Role is re-derived from the recipe rather than trusted from disk, for the
+ * same reason the bucket label already is: a set saved under an earlier
+ * classifier carries labels that are now wrong. A recipe that no longer
+ * classifies as main-eligible keeps its stored role — the shelf admitted it,
+ * and quietly re-labelling a card as a side is not this function's decision to
+ * make.
+ */
+export async function withShelfDisplay<
+  T extends {
+    recipeId: string;
+    role?: string;
+    traits?: ShelfTraits;
+    time?: { prep: number; cook: number; total: number } | null;
+    completion?: string | null;
+    display?: ShelfDisplay | null;
+  },
+>(
+  items: readonly T[],
+  resolveRecipe: (id: string) => Promise<Recipe | undefined | null>,
+  now: Date,
+): Promise<T[]> {
+  const out: T[] = [];
+  for (const item of items) {
+    if (!item?.recipeId) continue;
+
+    let recipe: Recipe | undefined | null = null;
+    try {
+      recipe = await resolveRecipe(item.recipeId);
+    } catch {
+      recipe = null;
+    }
+
+    if (!recipe) {
+      out.push({ ...item, display: candidateDisplay(item) });
+      continue;
+    }
+
+    const classification = classifyPlannerRole(recipe);
+    const role =
+      classification.role === "main" || classification.role === "light-meal"
+        ? classification.role
+        : item.role;
+    const traits = item.traits ?? deriveShelfTraits(recipe, now);
+    const time = item.time ?? normalizeTime(recipe.time);
+    const completion = classification.completion ?? item.completion ?? null;
+
+    out.push({
+      ...item,
+      role,
+      traits,
+      ...(completion ? { completion } : {}),
+      display: deriveShelfDisplay({ role, traits, time, completion }),
+    });
+  }
+  return out;
 }
 
 /** The recipe ids a plan has assigned to a day. Exported for route wiring. */

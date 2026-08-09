@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { isTrackerOnlyEmail } from "@/lib/access";
 import { saveMealPlan, loadMealPlan } from "@/lib/meals-persistence";
 import { reclassifyCandidateItems, type MealPlan } from "@/lib/meals";
+import { withShelfDisplay } from "@/lib/planner-preparation";
 import { getRecipe } from "@/lib/recipes";
 
 export async function GET(request: NextRequest) {
@@ -21,11 +22,28 @@ export async function GET(request: NextRequest) {
     }
     // Persisted bucket labels never override the authoritative classifier —
     // reclassify on the way out so stale stored labels cannot reach the UI.
+    //
+    // The display contract is attached in the same pass. It is a read-time
+    // derivation on purpose: a week prepared before the contract existed gains
+    // its groups, editorial notes and light-meal labels here, without its shelf
+    // being regenerated or any day assignment moving.
     if (plan.candidateSet?.items?.length) {
-      const { items } = await reclassifyCandidateItems(plan.candidateSet.items, getRecipe);
+      // Both passes resolve the same ~13 recipes; memoize so a shelf costs one
+      // lookup per recipe rather than two round-trips each.
+      const resolved = new Map<string, ReturnType<typeof getRecipe>>();
+      const resolveRecipe = (id: string) => {
+        const hit = resolved.get(id);
+        if (hit) return hit;
+        const pending = getRecipe(id);
+        resolved.set(id, pending);
+        return pending;
+      };
+
+      const { items } = await reclassifyCandidateItems(plan.candidateSet.items, resolveRecipe);
+      const displayed = await withShelfDisplay(items, resolveRecipe, new Date());
       return NextResponse.json({
         ...plan,
-        candidateSet: { ...plan.candidateSet, items },
+        candidateSet: { ...plan.candidateSet, items: displayed },
       });
     }
     return NextResponse.json(plan);

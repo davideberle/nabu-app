@@ -54,6 +54,13 @@ export type RoleClassification = {
   /** True for `pairing`: keep as reserve/pairing metadata, never as a main. */
   pairingEligible: boolean;
   reasons: string[];
+  /**
+   * For a `light-meal`: the one concrete thing that turns it into dinner,
+   * taken from the recipe's own serving guidance wherever the recipe gives it.
+   * Absent when the dish needs nothing, or when nothing trustworthy could be
+   * read — the planner shows this only when it is supplied.
+   */
+  completion?: string;
 };
 
 // --- vocabulary ------------------------------------------------------------
@@ -88,6 +95,135 @@ const LIGHT_MEAL_NAME = /\b(sandwich|sandwiches|wrap|wraps|tartines?|toasties|pa
 const SUBSTANCE_MARKERS = /\b(chicken|beef|pork|lamb|duck|turkey|fish|salmon|tuna|cod|prawns?|shrimp|tofu|tempeh|seitan|halloumi|paneer|feta|mozzarella|goat[’']?s? cheese|egg|eggs|lentils?|chickpeas?|beans?|quinoa|farro|bulgur|barley|rice|noodles?|pasta|potato|potatoes|freekeh|couscous)\b/i;
 
 const PAIRING_NAME = /\b(salad|slaw|side|sides|greens|roasted vegetables?|grilled vegetables?|pickles?|starter|appetiz|appetis)\b/i;
+
+/**
+ * Bases a recipe can tell us to serve it with, in the words recipes use.
+ * Order matters: the first match wins, so the more specific bread forms are
+ * listed before the generic one.
+ */
+const COMPLETION_BASES: [RegExp, string][] = [
+  [/\b(steamed rice|jasmine rice|basmati rice|brown rice|rice of choice|rice)\b/, "rice"],
+  [/\b(soba|udon|ramen|rice noodles?|noodles?)\b/, "noodles"],
+  [/\b(flatbreads?|naan|pitta|pita|sourdough|crusty bread|warm bread|bread)\b/, "bread"],
+  [/\b(tortillas?|wraps?)\b/, "warm tortillas"],
+  [/\b(couscous)\b/, "couscous"],
+  [/\b(quinoa)\b/, "quinoa"],
+  [/\b(polenta)\b/, "polenta"],
+  [/\b(new potatoes|boiled potatoes|potatoes)\b/, "potatoes"],
+  [/\b(pasta|spaghetti|orzo)\b/, "pasta"],
+];
+
+/** Fresh/green elements. A dish that already has one needs no salad on the side. */
+const FRESH_ELEMENT = /\b(salad|greens|spinach|rocket|arugula|herbs?|coriander|cilantro|parsley|mint|dill|basil|cucumber|lettuce|slaw|lime|lemon|pickled?)\b/i;
+
+/**
+ * The recipe's own serving guidance: its `serving` line, its closing method
+ * steps, and its intro — narrowed to the sentences that actually talk about
+ * serving.
+ *
+ * Narrowing matters. "rice" appears in the ingredient list of plenty of dishes
+ * that are already complete; only "serve with rice" is the recipe telling us
+ * what the plate is missing.
+ */
+function servingGuidance(recipe: Recipe): string {
+  const method = recipe.method ?? [];
+  const sources = [
+    typeof recipe.serving === "string" ? recipe.serving : "",
+    ...method.slice(-2),
+    recipe.introduction ?? recipe.intro ?? "",
+  ];
+  const sentences = sources
+    .join(" ")
+    .split(/(?<=[.!?])\s+/)
+    .filter((sentence) => /\bserv(e|es|ed|ing)\b|\balongside\b|\bspoon(ed)? over\b/i.test(sentence));
+  return sentences.join(" ").toLowerCase();
+}
+
+/**
+ * One concrete accompaniment that turns a light meal into dinner.
+ *
+ * Recipe fidelity first: if the recipe says what to serve it with, that is the
+ * answer and nothing is invented. Only a dish that says nothing falls back to
+ * the shape-based default the shelf contract allows (bread with soup, a warm
+ * flatbread with a salad plate). A dish with no fresh element of its own also
+ * gets a green salad named alongside the base; one that already has greens does
+ * not, because it does not need them.
+ */
+export function completionForLightMeal(recipe: Recipe): string | undefined {
+  const name = (recipe.name ?? "").toLowerCase();
+  const ingredientText = (recipe.ingredients ?? []).map((i) => String(i?.item ?? "")).join(" ").toLowerCase();
+  const guidance = servingGuidance(recipe);
+
+  let base: string | undefined;
+  for (const [pattern, label] of COMPLETION_BASES) {
+    if (pattern.test(guidance)) {
+      base = label;
+      break;
+    }
+  }
+
+  if (!base) {
+    // Nothing stated. Only two shapes get a default, and both are the ordinary
+    // thing you would put next to them.
+    if (/\b(soup|chowder|broth|stew)\b/.test(name)) base = "bread";
+    else if (/\b(salad|mezze|platter|plate)\b/.test(name)) base = "flatbread";
+    else return undefined;
+  }
+
+  const hasFresh = FRESH_ELEMENT.test(`${name} ${ingredientText}`);
+  return hasFresh ? `Serve with ${base}` : `Serve with ${base} and a green salad`;
+}
+
+/**
+ * Anything that can anchor a plate: a protein or a starch, in any of the
+ * vocabularies this corpus actually uses.
+ *
+ * Deliberately far broader than `SUBSTANCE_MARKERS`, and deliberately generous.
+ * The two mistakes are not symmetric: a false *positive* here leaves a recipe
+ * classified exactly as it is today, while a false *negative* would relabel a
+ * real dinner main as a light meal that needs completing. When in doubt this
+ * says "anchored".
+ */
+const PLATE_ANCHOR = new RegExp(
+  `\\b(?:${[
+    // meat and poultry
+    "chicken|poultry|beef|steak|brisket|sirloin|ribeye|short ribs?|pork|bacon|ham|pancetta|prosciutto",
+    "guanciale|sausages?|chorizo|salami|lamb|mutton|duck|turkey|veal|venison|rabbit|quail|goat meat|meatballs?",
+    "(?:beef|lamb|pork|meat|turkey) mince|minced (?:beef|lamb|pork|meat)|ground (?:beef|lamb|pork|meat)",
+    "pastrami|corned beef|liver|poussins?",
+    // fish and seafood
+    // `\\w*fish` so ribbonfish, monkfish and swordfish anchor a plate too.
+    "\\w*fish|salmon|tuna|trout|cod|haddock|hake|halibut|pollock|sea ?bass|bream|snapper|mackerel|herring",
+    "sardines?|anchov\\w*|prawns?|shrimps?|scallops?|mussels?|clams?|cockles?|oysters?|crab\\w*|lobster",
+    "squid|calamari|octopus|seafood|plaice|kipper|whitebait|langoustines?|spatchcock",
+    // eggs, dairy protein, plant protein
+    "eggs?|omelettes?|halloumi|paneer|feta|mozzarella|ricotta|burrata|cheddar|parmesan|gruy[eè]re|cheese",
+    "tofu|tempeh|seitan|textured vegetable protein",
+    // legumes and nuts substantial enough to anchor a plate
+    "lentils?|d[ah]a?ls?|chana|chickpeas?|garbanzo|beans?|black[- ]eyed peas?|split peas?|edamame",
+    "peanuts?|cashews?|walnuts?|falafels?",
+    // grains, breads and other starches
+    "rice|risotto|pilafs?|pilau|biryani|paella|congee|noodles?|ramen|soba|udon|pasta|spaghetti|penne|macaroni",
+    "linguine|rigatoni|fettuccine|tagliatelle|pappardelle|lasagn[ae]|orzo|gnocchi|couscous|quinoa|bulgur",
+    "freekeh|farro|barley|millet|bajra|jowar|polenta|semolina|grits|oats|potatoes?|sweet potato|yam|cassava",
+    "plantains?|bread|toast|flatbreads?|naan|pitta|pita|tortillas?|rotis?|rotla|chapati|paratha|dumplings?",
+    "buns?|pastry|filo|masa|cornmeal|amala|eko|agidi|fufu|ugali|injera|tapioca|sago|croutons?|mograbiah",
+  ].join("|")})\\b`,
+  "i",
+);
+
+/**
+ * Does the dish carry its own protein or starch?
+ *
+ * A plate of glazed vegetables is a real, substantial thing to eat and a
+ * genuinely good weeknight idea — but it is not a whole dinner on its own, and
+ * a `dish_type: ["main"]` label does not make it one. This is what separates a
+ * substantial light meal from a full main.
+ */
+function hasPlateAnchor(recipe: Recipe): boolean {
+  const text = `${recipe.name ?? ""} ${(recipe.ingredients ?? []).map((i) => i?.item ?? "").join(" ")}`;
+  return PLATE_ANCHOR.test(text);
+}
 
 function categoryValues(recipe: Recipe): string[] {
   const values: string[] = [];
@@ -244,11 +380,38 @@ export function classifyPlannerRole(recipe: Recipe): RoleClassification {
         countIngredients(recipe) >= 5;
       if (substantial) {
         reasons.push("light meal with enough substance for a weekday dinner");
-        return { role: "light-meal", category: "light-meal", mainEligible: true, pairingEligible: true, reasons };
+        return {
+          role: "light-meal",
+          category: "light-meal",
+          mainEligible: true,
+          pairingEligible: true,
+          reasons,
+          ...withCompletion(recipe),
+        };
       }
       reasons.push("light-meal shape without enough substance for a dinner main");
       return { role: "pairing", category: "starter", mainEligible: false, pairingEligible: true, reasons };
     }
+
+    // A vegetable-led plate with no protein and no starch of its own.
+    //
+    // This is the "BBQ Cauliflower" case: cauliflower in a tamari-miso glaze,
+    // labelled `dish_type: ["main"]`, whose own last step says to serve it with
+    // rice. It is a genuinely good weeknight idea and it stays main-eligible —
+    // but as a substantial light meal that says what completes it, not as an
+    // unquestioned full main whose title happens to read like a weekend grill.
+    if (!hasPlateAnchor(recipe)) {
+      reasons.push("vegetable-led plate with no protein or starch of its own");
+      return {
+        role: "light-meal",
+        category: "light-meal",
+        mainEligible: true,
+        pairingEligible: true,
+        reasons,
+        ...withCompletion(recipe),
+      };
+    }
+
     reasons.push("passes the planner main gate");
     return { role: "main", category: "main", mainEligible: true, pairingEligible: false, reasons };
   }
@@ -272,6 +435,11 @@ export function classifyPlannerRole(recipe: Recipe): RoleClassification {
     pairingEligible: false,
     reasons: ["refused by the planner main gate and not usable as a pairing"],
   };
+}
+
+function withCompletion(recipe: Recipe): { completion?: string } {
+  const completion = completionForLightMeal(recipe);
+  return completion ? { completion } : {};
 }
 
 /** Convenience predicate: may this recipe fill a dinner main slot? */

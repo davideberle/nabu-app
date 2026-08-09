@@ -27,6 +27,14 @@ import {
   findSourceByUrl,
 } from "../src/lib/planner-sources.ts";
 import { classifyPlannerRole } from "../src/lib/planner-roles.ts";
+// Image ingestion: collect every rendition of the recipe's photograph, measure
+// the real downloaded pixels, and keep the largest. Shared with the app so the
+// importer and the scoped refresh path cannot answer "which image" differently.
+import {
+  collectImageCandidates,
+  selectRecipeImage,
+  MAX_IMAGE_BYTES,
+} from "../src/lib/recipe-image-selection.ts";
 // The provenance write is defined once and shared with the app's db.ts, so the
 // two writers cannot drift on schema shape or upsert semantics.
 import {
@@ -285,15 +293,20 @@ async function runWeeklyInspirationsInner(opts) {
         continue;
       }
 
-      const image = opts.writeAppFiles
-        ? await persistRecipeImage(extracted.image, slug)
-        : imagePathForDryRun(extracted.image, slug);
+      // Always measured, in dry-run too: whether a page offers usable card
+      // artwork is a fact about the page, and a dry run that answered it from
+      // the URL alone would report an import that a real run then skips.
+      const resolvedImage = await resolveRecipeImage(extracted, slug, {
+        persist: opts.writeAppFiles,
+      });
+      const image = resolvedImage.image;
 
       if (!image) {
         report.skipped.push({
           url: candidate.url,
           name: extracted.name,
-          reason: "missing usable image",
+          reason: resolvedImage.rejectedTooSmall ? "image below the card floor" : "missing usable image",
+          imageCandidates: resolvedImage.considered,
         });
         continue;
       }
@@ -302,6 +315,7 @@ async function runWeeklyInspirationsInner(opts) {
         slug,
         week: opts.week,
         persistedImage: opts.writeAppFiles,
+        remoteImageUrl: resolvedImage.remoteUrl,
       });
       const companionRecipe = toCompanionRecipe(extracted, {
         slug,
@@ -357,6 +371,9 @@ async function runWeeklyInspirationsInner(opts) {
         sourceId: source.id,
         url: candidate.url,
         image,
+        imageSource: resolvedImage.remoteUrl,
+        imageWidth: resolvedImage.width,
+        imageHeight: resolvedImage.height,
         discovery,
         role: role.role,
         roleCategory: role.category,
@@ -398,7 +415,7 @@ function buildSourceFilter(filters) {
   );
 }
 
-function sourceForUrl(url) {
+export function sourceForUrl(url) {
   try {
     const host = new URL(url).host.replace(/^m\./, "www.");
     return TRUSTED_SOURCES.find((s) => s.host === host || `www.${s.host}` === host || s.host === host.replace(/^www\./, ""));
@@ -407,7 +424,7 @@ function sourceForUrl(url) {
   }
 }
 
-function assertTrustedUrl(url) {
+export function assertTrustedUrl(url) {
   const parsed = new URL(url);
   const host = parsed.host.replace(/^m\./, "www.");
   const source = sourceForUrl(url);
@@ -796,6 +813,14 @@ export function extractFoobyRecipe(html, url, source, rawRecipeLd = null) {
 
   if (!name || ingredientEntries.length < 3 || method.length < 1) return null;
 
+  // FOOBY names its own renditions, so they lead the candidate list; the page's
+  // Recipe JSON-LD and Open Graph tag are collected behind them.
+  const imageCandidates = collectImageCandidates({
+    structuredImage: rawRecipeLd?.image,
+    extraImages: [payload.images?.large, payload.images?.medium],
+    html,
+    pageUrl: url,
+  });
   const image =
     payload.images?.large ||
     payload.images?.medium ||
@@ -814,6 +839,7 @@ export function extractFoobyRecipe(html, url, source, rawRecipeLd = null) {
     author: normalizeAuthor(rawRecipeLd?.author) || source.name,
     description: cleanText(firstString(rawRecipeLd?.description)) || metaContent(html, "description"),
     image,
+    imageCandidates,
     yieldText: normalizeYield(rawRecipeLd?.recipeYield) || `serves ${servings}`,
     servings,
     prepMinutes,
@@ -883,6 +909,11 @@ function normalizeRecipeLd(recipe, url, source, html = "") {
     author: normalizeAuthor(recipe.author) || source.name,
     description: cleanText(firstString(recipe.description)),
     image: normalizeImage(recipe.image),
+    // Every rendition of the same photograph the page publishes, largest hint
+    // first. WordPress sources such as Cookie and Kate list the 225x225
+    // thumbnail *before* the original, so the first JSON-LD value is exactly
+    // the wrong one to persist.
+    imageCandidates: collectImageCandidates({ structuredImage: recipe.image, html, pageUrl: url }),
     yieldText: normalizeYield(recipe.recipeYield),
     servings: parseServings(recipe.recipeYield),
     prepMinutes: parseDurationMinutes(recipe.prepTime),
@@ -1012,7 +1043,11 @@ function normalizeDietary(value) {
   return tags;
 }
 
-export function toKitchenRecipe(extracted, { slug, week, persistedImage = false }) {
+export function toKitchenRecipe(extracted, { slug, week, persistedImage = false, remoteImageUrl = null }) {
+  // Provenance records the rendition that was actually downloaded, not the
+  // first URL the page declared — otherwise the note would point at a
+  // thumbnail the stored image is not.
+  const remoteImage = remoteImageUrl ?? extracted.image;
   return {
     id: slug,
     name: extracted.name,
@@ -1022,7 +1057,7 @@ export function toKitchenRecipe(extracted, { slug, week, persistedImage = false 
       url: extracted.url,
       brand: extracted.source.name,
       author: extracted.author,
-      ...(extracted.image ? { image: extracted.image, imageNote: persistedImage ? "remote — downloaded to companion app image storage" : "remote — not downloaded" } : {}),
+      ...(remoteImage ? { image: remoteImage, imageNote: persistedImage ? "remote — downloaded to companion app image storage" : "remote — not downloaded" } : {}),
     },
     servings: extracted.servings || 4,
     time: normalizeTimeObject(extracted),
@@ -1201,23 +1236,66 @@ async function saveKitchenRecipe(recipe, slug) {
   await fs.writeFile(path.join(dir, "recipe.json"), `${JSON.stringify(recipe, null, 2)}\n`, "utf8");
 }
 
-async function persistRecipeImage(imageUrl, slug) {
-  if (!imageUrl || !/^https:\/\//.test(imageUrl)) return null;
-  const res = await fetch(imageUrl, { headers: { "User-Agent": USER_AGENT } });
+/** One image download, bounded so a mis-typed candidate cannot pull a video. */
+export async function downloadImageCandidate(url) {
+  if (!/^https:\/\//.test(url)) return null;
+  const res = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
   if (!res.ok) return null;
   const contentType = res.headers.get("content-type") || "";
-  if (!contentType.startsWith("image/")) return null;
-  const bytes = Buffer.from(await res.arrayBuffer());
-  if (bytes.length < 1024) return null;
+  const declaredLength = Number.parseInt(res.headers.get("content-length") ?? "", 10);
+  if (Number.isFinite(declaredLength) && declaredLength > MAX_IMAGE_BYTES) return null;
+  return { bytes: new Uint8Array(await res.arrayBuffer()), contentType };
+}
 
-  if (process.env.BLOB_READ_WRITE_TOKEN) {
-    return uploadImageToVercelBlob(slug, bytes, contentType);
+/**
+ * Decide, and optionally persist, the image a staged recipe is stored with.
+ *
+ * The choice is made from measured pixels, never from the URL: the first
+ * Recipe JSON-LD value is a 225x225 thumbnail on the WordPress sources and a
+ * 440x400 crop on BBC Good Food. Nothing is resized — if the largest rendition
+ * the page publishes is still below the card floor the recipe is skipped rather
+ * than stretched.
+ */
+export async function resolveRecipeImage(extracted, slug, { persist = false, download = downloadImageCandidate } = {}) {
+  const candidates = extracted?.imageCandidates?.length
+    ? extracted.imageCandidates
+    : collectImageCandidates({ structuredImage: extracted?.image ?? null, pageUrl: extracted?.url ?? null });
+
+  const selection = await selectRecipeImage(candidates, download);
+  const considered = selection.considered;
+  if (!selection.chosen) {
+    return {
+      image: null,
+      considered,
+      rejectedTooSmall: considered.some((entry) => entry.outcome === "too-small"),
+    };
   }
 
-  const ext = extensionForContentType(contentType, imageUrl);
+  const chosen = selection.chosen;
+  const image = persist
+    ? await storeRecipeImageBytes(slug, chosen.bytes, chosen.contentType, chosen.url)
+    : `/recipes/${slug}.${extensionForContentType(chosen.contentType, chosen.url)}`;
+
+  return {
+    image,
+    remoteUrl: chosen.url,
+    width: chosen.width,
+    height: chosen.height,
+    considered,
+    rejectedTooSmall: false,
+  };
+}
+
+/** Write chosen image bytes to Vercel Blob when configured, else public/. */
+export async function storeRecipeImageBytes(slug, bytes, contentType, sourceUrl = "") {
+  const buffer = Buffer.from(bytes);
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    return uploadImageToVercelBlob(slug, buffer, contentType);
+  }
+  const ext = extensionForContentType(contentType, sourceUrl);
   await fs.mkdir(APP_PUBLIC_RECIPES_DIR, { recursive: true });
   const dest = path.join(APP_PUBLIC_RECIPES_DIR, `${slug}.${ext}`);
-  await fs.writeFile(dest, bytes);
+  await fs.writeFile(dest, buffer);
   return `/recipes/${slug}.${ext}`;
 }
 
@@ -1234,18 +1312,21 @@ async function uploadImageToVercelBlob(slug, bytes, contentType) {
   return result.url;
 }
 
-function imagePathForDryRun(imageUrl, slug) {
-  if (!imageUrl) return null;
-  return `/recipes/${slug}.${extensionForContentType("", imageUrl)}`;
-}
-
 function extensionForContentType(contentType, imageUrl) {
-  const lower = contentType.toLowerCase();
+  const lower = String(contentType ?? "").toLowerCase();
   if (lower.includes("png")) return "png";
   if (lower.includes("webp")) return "webp";
+  if (lower.includes("avif")) return "avif";
   if (lower.includes("jpeg") || lower.includes("jpg")) return "jpg";
-  const pathExt = new URL(imageUrl).pathname.match(/\.([a-z0-9]{3,4})$/i)?.[1]?.toLowerCase();
-  if (["jpg", "jpeg", "png", "webp"].includes(pathExt)) return pathExt === "jpeg" ? "jpg" : pathExt;
+  // A slug or a relative reference is not a URL; fall through to the default
+  // rather than throwing on a question that only affects the file extension.
+  let pathExt;
+  try {
+    pathExt = new URL(imageUrl).pathname.match(/\.([a-z0-9]{3,4})$/i)?.[1]?.toLowerCase();
+  } catch {
+    pathExt = undefined;
+  }
+  if (["jpg", "jpeg", "png", "webp", "avif"].includes(pathExt)) return pathExt === "jpeg" ? "jpg" : pathExt;
   return "jpg";
 }
 
@@ -1256,7 +1337,7 @@ function extensionForContentType(contentType, imageUrl) {
 let appDbClient = null;
 
 /** The app's writable database. Memoized: one connection per importer run. */
-function getAppDbClient() {
+export function getAppDbClient() {
   if (appDbClient) return appDbClient;
   const requireFromApp = createRequire(path.join(APP_DIR, "package.json"));
   const { createClient } = requireFromApp("@libsql/client");
@@ -1490,7 +1571,7 @@ async function fetchJson(url) {
   return JSON.parse(text);
 }
 
-async function fetchText(url) {
+export async function fetchText(url) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 12000);
   try {

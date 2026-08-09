@@ -71,6 +71,21 @@ export { classifyPlannerRole, isMainSlotEligible } from "./planner-roles.ts";
 export type { PlannerRole, RoleClassification } from "./planner-roles.ts";
 import type { PlannerRole as PlannerRoleType } from "./planner-roles.ts";
 
+// The shelf presentation contract (groups, editorial note, light-meal label and
+// completion suggestion) lives in planner-display.ts; re-exported here so app
+// code keeps one import site.
+import type { ShelfDisplay } from "./planner-display.ts";
+export type { ShelfDisplay, ShelfGroup, ShelfGroupSection } from "./planner-display.ts";
+export {
+  SHELF_GROUP_ORDER,
+  SHELF_GROUP_LABELS,
+  SHELF_GROUP_DESCRIPTIONS,
+  candidateDisplay,
+  deriveShelfDisplay,
+  groupShelfItems,
+  containsSelectorVocabulary,
+} from "./planner-display.ts";
+
 // ----- season helpers -----
 
 type Season = "spring" | "summer" | "fall" | "winter";
@@ -244,10 +259,22 @@ export type CandidateItem = {
    * written differently still reads back honestly instead of being retyped.
    */
   role?: PlannerRoleType;
-  /** Kitchen-authored explanation of why this idea is on the shelf. */
+  /**
+   * Internal selector diagnostic: which coverage the assembler used this idea
+   * for. Kept for tests and planner diagnostics and deliberately never
+   * rendered — the card shows `display.note`.
+   */
   reason?: string;
   /** Coverage traits the shelf reasoned about. Rendered, never recomputed. */
   traits?: ShelfTraits;
+  /** For a light meal: the concrete thing that turns it into dinner. */
+  completion?: string;
+  /**
+   * What the card says: group, editorial note, light-meal label, completion.
+   * Written when the shelf is prepared and refreshed on read, so an older
+   * saved week gains it without being regenerated.
+   */
+  display?: ShelfDisplay;
 };
 
 /** Pairing/serve-with idea kept as reserve metadata, never a main slot. */
