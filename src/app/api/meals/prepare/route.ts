@@ -12,6 +12,10 @@
  * household session *or* one valid `TRUSTED_RUNTIME_TOKEN` bearer. A missing
  * server token authorizes nothing (`lib/runtime-auth.ts`).
  *
+ * Every POST answer echoes the mode that actually ran — the schedules verify a
+ * run by the response alone, and an outcome that does not say which ritual
+ * produced it cannot be verified (`lib/planner-preparation-response.ts`).
+ *
  * Idempotent by construction. Each (week, mode) takes a DB-level claim, the
  * watchdog leaves a healthy shelf untouched, rollover promotion skips records
  * that were already promoted, and web discovery keeps its own duplicate
@@ -32,12 +36,16 @@ import {
   rolloverWeek,
   runWatchdog,
 } from "@/lib/planner-preparation";
+import {
+  preparationResponseBody,
+  preparationResponseStatus,
+  resolvePreparationMode,
+} from "@/lib/planner-preparation-response";
 import { buildPreparationDeps, buildRolloverDeps } from "@/lib/planner-runtime";
 import { claimPlannerPreparation, completePlannerPreparation, getPlannerPreparationRuns } from "@/lib/db";
 import { loadMealPlan } from "@/lib/meals-persistence";
 
 const WEEK_PATTERN = /^\d{4}-W\d{2}$/;
-type Mode = "prepare" | "watchdog" | "rollover";
 
 export async function POST(request: NextRequest) {
   const guard = await guardRuntimeWrite(request);
@@ -50,10 +58,7 @@ export async function POST(request: NextRequest) {
     // An empty body is a valid "prepare next week" call.
   }
 
-  const mode: Mode =
-    body.mode === "watchdog" || body.mode === "rollover" || body.mode === "prepare"
-      ? body.mode
-      : "prepare";
+  const mode = resolvePreparationMode(body.mode);
 
   const now = new Date();
   const requestedWeek = typeof body.week === "string" ? body.week : undefined;
@@ -69,7 +74,9 @@ export async function POST(request: NextRequest) {
         claim: claimPlannerPreparation,
         complete: completePlannerPreparation,
       });
-      return NextResponse.json(outcome, { status: outcome.status === "failed" ? 500 : 200 });
+      return NextResponse.json(preparationResponseBody(outcome, mode), {
+        status: preparationResponseStatus(outcome),
+      });
     }
 
     const deps = {
@@ -78,7 +85,9 @@ export async function POST(request: NextRequest) {
       complete: completePlannerPreparation,
     };
     const outcome = mode === "watchdog" ? await runWatchdog(week, deps) : await prepareWeek(week, deps);
-    return NextResponse.json(outcome, { status: outcome.status === "failed" ? 500 : 200 });
+    return NextResponse.json(preparationResponseBody(outcome, mode), {
+      status: preparationResponseStatus(outcome),
+    });
   } catch (error) {
     console.error(`Weekly preparation (${mode}) failed for ${week}:`, error);
     return NextResponse.json(
