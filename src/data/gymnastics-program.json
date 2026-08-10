@@ -2,7 +2,7 @@
   "programId": "gym-kipping-capacity-3wk-v1",
   "title": "Ordinary Kipping Pull-Up Capacity",
   "subtitle": "3-week kipping capacity block",
-  "summary": "Two short sessions a week for three weeks. Four linked reps are already ordinary, so this block trains two separate qualities: set length — how long one set stays clean — and total capacity — how many clean reps a session holds. They progress on their own schedules, from 24 reps up to an applied 50, and never at the cost of the push-away.",
+  "summary": "Two short sessions a week for three weeks. This block trains two separate qualities: set length — how long one set stays clean — and total capacity — how many clean reps a session holds. Forty reps are now inside total capacity, but on 10 August the kip disappeared on rep 40 and strict pulling strength finished it. So the block finishes by buying set length at low volume, then requiring the kip itself to survive all forty, before the applied 50.",
   "primarySkill": {
     "title": "The one skill this block trains",
     "cue": "Same push-away, same tempo, every rep of every set — the last rep of a set of five should look like the first, and the arch after it should still be alive.",
@@ -97,84 +97,81 @@
     },
     {
       "week": 2,
-      "phase": "Repeatable fives, then a controlled eight",
-      "focus": "Make five the working set on the clock that already carries fours, then expose one set of eight without grinding it.",
+      "phase": "A forty-rep baseline, then a controlled eight",
+      "focus": "Establish what total capacity already holds, then buy set length at the lowest volume that still teaches it.",
       "sessions": {
         "A": {
-          "label": "Repeat fives",
-          "goal": "Make a set of five as ordinary as a set of four already is, on the same rest.",
+          "label": "Accumulate fives — forty-rep baseline",
+          "goal": "Hold five linked reps on a one-minute clock for eight rounds, and find out where the kip itself actually runs out.",
           "blocks": [
             {
               "movement": "Kipping pull-ups",
-              "prescription": "6×5",
-              "note": "Rest 60 seconds between sets — the same clock session 1 held for fours. Every rep still ends in the same push-away."
-            },
-            {
-              "movement": "Fallback if rep five turns arm-dominant twice",
-              "prescription": "Finish the remaining sets in fours",
-              "note": "Two forced fifth reps mean fives are not ready on 60 seconds yet. Finish the session in fours and repeat this session next time."
+              "prescription": "8×5",
+              "note": "Five linked reps at the top of every minute, EMOM, for eight minutes. Every rep still ends in the same push-away."
             },
             {
               "movement": "Session total",
-              "prescription": "30 full reps",
-              "note": "Fewer on the fours fallback. Either way, stop on the prescription."
+              "prescription": "40 full reps",
+              "note": "A total-capacity baseline, not the quality gate. The gate is week 3 session A."
             }
           ],
           "notes": [
-            "Scheduled for Saturday 8 August.",
-            "This is the first session that moves set length and total capacity together — five reps a set, on the short rest."
+            "Completed Monday 10 August: all 40 reps, comfortable from a pulling-strength perspective. The kip disappeared on rep 40 and easy strict pulling finished that rep.",
+            "That result proves total pulling capacity at forty and nothing more — dynamic kip and grip endurance, not pulling strength, are now the limiters."
           ]
         },
         "B": {
-          "label": "Controlled eight + back-off fives",
-          "goal": "Expose one set of eight, stopped deliberately, and let the fives carry the volume.",
+          "label": "Controlled eight + back-off fours",
+          "goal": "Expose one deliberately stopped set of eight at the lowest total volume that still teaches set length.",
           "blocks": [
             {
               "movement": "Kipping pull-ups — top set",
               "prescription": "1×8",
-              "note": "One set of eight, then stop. Do not grind it — if the push-away changes before rep eight, end the set there and count it as the day's top set."
+              "note": "One set of eight, then stop. Do not grind it — end the set the moment the push-away changes, and never rescue it with strict pulling strength."
             },
             {
               "movement": "Kipping pull-ups — back-off sets",
-              "prescription": "5×5",
-              "note": "Rest 75–90 seconds between all sets. The back-off fives should feel like the last session's fives, not like survival."
+              "prescription": "4×4",
+              "note": "Rest 75–90 seconds between all sets, including after the top set. Fours rather than fives: Thursday's programmed strict chin-up ladder carries the week's high-volume pulling, not this session."
             },
             {
               "movement": "Session total",
-              "prescription": "33 full reps",
-              "note": "Eight plus twenty-five. The longer set is the point; the three extra reps over the last session are incidental."
+              "prescription": "Up to 24 full reps",
+              "note": "A ceiling, not a target. Set length is the only quality this session buys, so the volume sits deliberately below the forty already proven."
             }
           ],
           "notes": [
-            "Scheduled for Tuesday 11 August.",
+            "Scheduled for Wednesday 12 August.",
             "A fresh set of eight is a set-length exposure, not WOD pacing — nothing here says to open a 50-rep workout with eight.",
-            "If the top set stops early, run the back-off sets as prescribed rather than making the missing reps up."
+            "If the top set stops early, run the back-off sets as prescribed rather than making the missing reps up.",
+            "Thursday carries the programmed high-volume strict chin-ups and no extra kipping; Friday and Saturday stay kipping-free."
           ]
         }
       }
     },
     {
       "week": 3,
-      "phase": "Accumulate and apply",
-      "focus": "Accumulate forty clean reps in fives, then take the fifty-rep application at workout pace.",
+      "phase": "Prove the kip, then apply it",
+      "focus": "Require the same kip rhythm on rep forty as on rep one, then take the fifty-rep application after real recovery.",
       "sessions": {
         "A": {
-          "label": "Accumulate fives",
-          "goal": "Prove sets of five are routine across eight sets, with the push-away intact in the last one.",
+          "label": "Repeat the clean-forty gate",
+          "goal": "Forty reps again — but this time passed only if rep forty is still produced by the same kip rhythm as rep one.",
           "blocks": [
             {
               "movement": "Kipping pull-ups",
               "prescription": "8×5",
-              "note": "Rest 60–75 seconds between sets. Set eight must look like set one."
+              "note": "Five linked reps at the top of every minute, EMOM, for eight minutes — the same dose as 10 August. Set eight must look like set one, push-away included."
             },
             {
               "movement": "Session total",
               "prescription": "40 full reps",
-              "note": "This session is the gate for the fifty-rep application. Repeat it until all eight sets are clean."
+              "note": "This session is the gate for the fifty-rep application. It passes only when rep 40 uses the same kip rhythm as rep one; a rep rescued by strict pulling strength does not pass it. Repeat it until it does."
             }
           ],
           "notes": [
-            "Scheduled for Thursday 13 August.",
+            "Scheduled for Sunday 16 August, and only if shoulders, elbows, grip, and hands feel normal.",
+            "The gap from Wednesday is deliberately longer than the usual 48–72 hours: Thursday's programmed strict chin-up ladder is high-volume pulling, and Friday and Saturday stay kipping-free so the gate is taken fresh.",
             "Two rhythm failures here means repeating this session before the application, not moving on to it."
           ]
         },
@@ -199,9 +196,10 @@
             }
           ],
           "notes": [
-            "Scheduled for Saturday 15 August, or the day a 50-rep pull-up workout is programmed — whichever comes first.",
-            "Attempt this only after week 3 session A is clean and shoulders, elbows, grip, and hands feel normal.",
-            "If any of that is not true, repeat week 3 session A instead and take the application 48–72 hours later."
+            "Take it only after week 3 session A is clean and shoulders, elbows, grip, and hands feel normal — a forty finished by strict pulling strength is not a clean forty.",
+            "Do not schedule it inside the 17–21 August FMD. If Sunday 16 August only passes the clean-forty gate, take the application after the FMD and its refeed rather than forcing it into that week.",
+            "If any of that is not true, repeat week 3 session A instead and take the application 48–72 hours later.",
+            "A programmed 50-rep pull-up workout can be the application itself, once the gate is behind you and the same recovery rules hold."
           ]
         }
       }
@@ -217,7 +215,7 @@
     ],
     "repCaps": {
       "perSession": 50,
-      "note": "Session volume is prescribed — 24 reps in the opening session, rising to 50 at the application. Never add reps beyond the day's prescription because a session felt easy."
+      "note": "Session volume is prescribed, and it does not climb evenly — 24 in the opening session, 40 at the baseline and again at the gate, a deliberate ceiling of 24 at the set-length exposure, and 50 only at the application. Never add reps beyond the day's prescription because a session felt easy."
     },
     "stopRules": [
       "The push-away disappears",
@@ -232,9 +230,9 @@
   },
   "wodScaling": {
     "title": "If the 50-pull-up WOD arrives first",
-    "intro": "Before week 3 session A is clean, a 50-rep pull-up workout is a scaling problem, not a test day. Once it is clean the workout can be the application itself — but it is still paced, never attacked.",
+    "intro": "Before the clean-forty gate is passed, a 50-rep pull-up workout is a scaling problem, not a test day. Once it is passed the workout can be the application itself — but it is still paced, never attacked.",
     "points": [
-      "Tell the coach the current verified capacity, and update that after every clean session.",
+      "Tell the coach that total capacity is 8×5 EMOM for 40 reps, but that the kip disappeared on rep 40 and strict strength finished it — so the clean kipping gate is still below forty. Update that after every clean session.",
       "Break from rep one. Never open with a set near failure and then grind out singles.",
       "Open below the fresh maximum. A set of eight in a skill session is a set-length exposure, not a workout pace.",
       "Downshift early — fives to fours to sets of three — before the push-away deteriorates rather than after it has gone.",
@@ -254,6 +252,16 @@
         "skill": "Butterfly",
         "requirement": "Reconsider only after roughly 15–20 clean unbroken ordinary kipping pull-ups, and learn it with a coach directly watching the shoulder path."
       }
+    ]
+  },
+  "homeBarSubstitutions": {
+    "title": "Home bar — 80 cm wall clearance",
+    "intro": "The home pull-up bar sits about 80 cm from the wall. That geometry does not give reliable clearance for a full hollow-to-arch swing under fatigue, so a tucked-knee, arm-heavy hybrid is not useful muscle-up technique. Substitute deliberately instead of forcing the kip.",
+    "points": [
+      "Burpee pull-up: take the burpee in open space, move under the bar, then complete the prescribed pull-up reps cleanly.",
+      "Metabolic bar-muscle-up substitution: one burpee plus two strict or band-assisted pull-ups, with enough assistance to preserve the workout's intended pace.",
+      "Technique substitution: use low-bar, feet-assisted muscle-up transitions only on equipment with adequate clearance, and practise dynamic or jumping muscle-ups on a proper rig.",
+      "Hybrid reps taken on this bar are not kipping-technique volume. The 14 burpee double pull-ups of 8 August were 28 extra arm-heavy reps after the capacity work, and they count as neither."
     ]
   },
   "m60Scaling": {

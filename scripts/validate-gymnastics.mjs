@@ -10,8 +10,8 @@
  *     (A/B) with at least one block each, six sessions in total, and the exact
  *     prescription, rest interval, and rep total each of those six sessions
  *     must carry — including that set length and total capacity progress
- *     separately (totals 24, 26, 30, 33, 40, 50) and that no retired EMOM
- *     construct has crept back in.
+ *     separately (totals 24, 26, 40, up to 24, 40, 50) and that the retired
+ *     EMOM 8×3 construct has not crept back in.
  *  3. Every video has a valid YouTube URL and belongs to a declared movement
  *     group, and every declared group has at least one video.
  *  4. The safety, spacing, stop-rule, progression, WOD-scaling, gate, and
@@ -86,8 +86,11 @@ const EXPECTED_PROGRAM_ID = "gym-kipping-capacity-3wk-v1";
  * not free to drift from it.
  *
  * The block progresses set length and total capacity as separate qualities, so
- * a session that raises one deliberately leaves the other nearly flat. That is
- * why the totals run 24, 26, 30, 33, 40, 50 rather than climbing evenly.
+ * a session that raises one deliberately leaves the other flat — or drops it.
+ * That is why the totals run 24, 26, 40, up to 24, 40, 50 rather than climbing:
+ * 10 August proved forty reps of total capacity but not a forty-rep kip, so the
+ * set-length exposure that follows is capped below it on purpose and the forty
+ * is then repeated as a quality gate before the fifty is applied.
  */
 const PLAN = [
   { week: 1, session: "A", label: /repeat fours/i, prescription: "6×4", rest: /60 seconds/, total: "24 full reps" },
@@ -106,13 +109,15 @@ const PLAN = [
   {
     week: 2,
     session: "A",
-    label: /repeat fives/i,
-    prescription: "6×5",
-    rest: /60 seconds/,
-    total: "30 full reps",
+    label: /forty-rep baseline/i,
+    prescription: "8×5",
+    total: "40 full reps",
     extra: [
-      { re: /rep five turns arm-dominant twice/i, what: "when the fallback triggers — a second forced fifth rep" },
-      { re: /finish the remaining sets in fours/i, what: "the fours fallback itself" },
+      { re: /EMOM/, what: "that the forty is taken as an EMOM, five reps at the top of every minute" },
+      { re: /Monday 10 August/, what: "the date the baseline was completed" },
+      { re: /kip disappeared on rep 40/i, what: "that the kip, not the pulling strength, ran out on rep 40" },
+      { re: /strict pulling finished that rep/i, what: "that strict strength — not the kip — finished rep 40" },
+      { re: /not the quality gate/i, what: "that this forty is a capacity baseline rather than the quality gate" },
     ],
   },
   {
@@ -121,14 +126,30 @@ const PLAN = [
     label: /controlled eight/i,
     prescription: "1×8",
     rest: /75[–-]90 seconds/,
-    total: "33 full reps",
+    total: "24 full reps",
     extra: [
-      { re: /5×5/, what: "the five back-off sets of five" },
+      { re: /4×4/, what: "the four back-off sets of four" },
       { re: /do not grind it/i, what: "that the set of eight is never ground out" },
+      { re: /never rescue it with strict pulling strength/i, what: "that the top set is never rescued with strict strength" },
       { re: /not WOD pacing/i, what: "that a fresh set of eight is a set-length exposure, not WOD pacing" },
+      { re: /ceiling, not a target/i, what: "that the 24-rep total is a ceiling rather than a target" },
+      { re: /Friday and Saturday stay kipping-free/i, what: "that Thursday's strict ladder and a kipping-free Friday/Saturday follow" },
     ],
   },
-  { week: 3, session: "A", label: /accumulate fives/i, prescription: "8×5", rest: /60[–-]75 seconds/, total: "40 full reps" },
+  {
+    week: 3,
+    session: "A",
+    label: /clean-forty gate/i,
+    prescription: "8×5",
+    total: "40 full reps",
+    extra: [
+      { re: /EMOM/, what: "that the gate repeats the same EMOM dose as 10 August" },
+      { re: /Sunday 16 August/, what: "the date the gate is taken" },
+      { re: /same kip rhythm as rep one/i, what: "the pass condition — rep 40 on the same kip rhythm as rep one" },
+      { re: /rescued by strict pulling strength does not pass/i, what: "that a strict-strength rescue fails the gate" },
+      { re: /shoulders, elbows, grip, and hands/i, what: "the shoulders/elbows/grip/hands readiness check" },
+    ],
+  },
   {
     week: 3,
     session: "B",
@@ -140,13 +161,22 @@ const PLAN = [
       { re: /not a fresh maximum/i, what: "that the application opens below the fresh maximum" },
       { re: /downshift early/i, what: "downshifting to fours and threes before the push-away goes" },
       { re: /only after week 3 session A is clean/i, what: "the application gate on a clean week 3 session A" },
+      { re: /finished by strict pulling strength is not a clean forty/i, what: "that a strict-rescued forty does not open the application" },
+      { re: /17[–-]21 August FMD/, what: "that the application is not scheduled inside the 17–21 August FMD" },
       { re: /shoulders, elbows, grip, and hands/i, what: "the shoulders/elbows/grip/hands readiness check" },
     ],
   },
 ];
 
 /** Session totals in order, as their own block, so volume cannot drift quietly. */
-const SESSION_TOTALS = ["24 full reps", "26 full reps", "30 full reps", "33 full reps", "40 full reps", "50 full reps"];
+const SESSION_TOTALS = [
+  "24 full reps",
+  "26 full reps",
+  "40 full reps",
+  "Up to 24 full reps",
+  "40 full reps",
+  "50 full reps",
+];
 
 if (typeof program.programId !== "string" || program.programId.length === 0) {
   fail("programId must be a non-empty string");
@@ -277,15 +307,16 @@ for (const [i, step] of PLAN.entries()) {
 }
 
 // EMOM 8×3 was retired on 2026-08-04: it spread the same 24 reps the opening
-// 6×4 already covered over a longer window, so it supplied no overload. Nothing
-// in the block may reintroduce a construct that raises neither quality.
+// 6×4 already covered over a longer window, so it supplied no overload. The
+// clock itself was never the problem — 8×5 EMOM is how the forty is taken — so
+// only the retired 24-rep construct is banned here.
 const allSessionText = (program.weeks ?? [])
   .flatMap((week) => SESSIONS.map((s) => week.sessions?.[s]).filter(Boolean))
   .map(sessionTextOf)
   .join(" ");
-if (/\bEMOM\b/i.test(allSessionText)) {
+if (/8×3/.test(allSessionText)) {
   fail(
-    "an EMOM is back in the block — EMOM 8×3 was retired because it repeated the completed 6×4's 24 reps over a longer window and was therefore no longer overload",
+    "the retired 8×3 is back in the block — it repeated the completed 6×4's 24 reps over a longer window and was therefore no longer overload",
   );
 }
 
@@ -427,6 +458,36 @@ if (!/below the fresh maximum/i.test(wodText)) {
 }
 if (!/downshift/i.test(wodText)) {
   fail("wodScaling must say to downshift early rather than after the push-away goes");
+}
+// The coach has to hear the honest number: forty is total capacity, but the kip
+// did not survive it. Reporting "40" alone would overstate the current gate.
+if (!/40 reps/.test(wodText)) {
+  fail("wodScaling must tell the coach the current 40-rep total capacity");
+}
+if (!/kip disappeared on rep 40/i.test(wodText) || !/strict strength finished it/i.test(wodText)) {
+  fail(
+    "wodScaling must qualify the 40 — the kip disappeared on rep 40 and strict strength finished it, so the clean kipping gate is still below forty",
+  );
+}
+
+// Home-bar substitutions: the 80 cm wall clearance rules out a full swing, so
+// the alternatives are prescribed rather than improvised under fatigue.
+const homeBarText = [
+  program.homeBarSubstitutions?.title ?? "",
+  program.homeBarSubstitutions?.intro ?? "",
+  ...(program.homeBarSubstitutions?.points ?? []),
+].join(" ");
+if (!program.homeBarSubstitutions?.points?.length) fail("homeBarSubstitutions.points missing");
+if (!/80 cm/.test(homeBarText)) fail("homeBarSubstitutions must state the 80 cm wall clearance");
+if (!/hollow[- ]to[- ]arch/i.test(homeBarText)) {
+  fail("homeBarSubstitutions must say the clearance prevents a full hollow-to-arch swing");
+}
+if (!/burpee pull-up/i.test(homeBarText)) fail("homeBarSubstitutions must prescribe the burpee pull-up");
+if (!/band-assisted/i.test(homeBarText)) {
+  fail("homeBarSubstitutions must prescribe the strict or band-assisted muscle-up substitution");
+}
+if (!/not kipping-technique volume/i.test(homeBarText)) {
+  fail("homeBarSubstitutions must say hybrid reps on this bar are not kipping-technique volume");
 }
 
 // Gates — what is deliberately held out of the block, and what earns it.

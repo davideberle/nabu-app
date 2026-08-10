@@ -100,6 +100,8 @@ export type GymnasticsProgram = {
   wodScaling: GymnasticsGuidanceCard;
   /** Skills held out of the block, and what earns them afterwards. */
   gates: { title: string; intro: string; items: GymnasticsGate[] };
+  /** What to do on the home bar, whose wall clearance rules out a full swing. */
+  homeBarSubstitutions: GymnasticsGuidanceCard;
   m60Scaling: GymnasticsGuidanceCard;
   videoGroups: GymnasticsVideoGroup[];
   videos: GymnasticsVideo[];

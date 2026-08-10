@@ -300,6 +300,14 @@ export function GymnasticsClient({
           bulletClassName="bg-amber-400"
         />
 
+        {/* Substitutions for the home bar's limited wall clearance */}
+        <GuidanceCard
+          card={program.homeBarSubstitutions}
+          eyebrow="Home bar"
+          className="border-secondary bg-secondary/40"
+          bulletClassName="bg-quaternary"
+        />
+
         {/* M60 scaling */}
         <GuidanceCard
           card={program.m60Scaling}

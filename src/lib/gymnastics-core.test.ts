@@ -543,15 +543,16 @@ describe("live program", () => {
   // it does not get to drift from it.
   //
   // Set length and total capacity are separate qualities and progress on their
-  // own schedules, so the totals run 24, 26, 30, 33, 40, 50 rather than rising
-  // evenly: the two "controlled top set" sessions buy set length and add almost
-  // no volume.
+  // own schedules, so the totals run 24, 26, 40, up to 24, 40, 50 rather than
+  // rising evenly. The 10 August EMOM proved forty reps of total capacity but
+  // not a forty-rep kip, so the set-length exposure that follows is capped
+  // below it on purpose and the forty is repeated as a quality gate first.
   const PLAN = [
     { week: 1, session: "A", label: /repeat fours/i, prescription: "6×4", rest: /60 seconds/, total: "24 full reps" },
     { week: 1, session: "B", label: /controlled six/i, prescription: "1×6", rest: /75 seconds/, total: "26 full reps" },
-    { week: 2, session: "A", label: /repeat fives/i, prescription: "6×5", rest: /60 seconds/, total: "30 full reps" },
-    { week: 2, session: "B", label: /controlled eight/i, prescription: "1×8", rest: /75[–-]90 seconds/, total: "33 full reps" },
-    { week: 3, session: "A", label: /accumulate fives/i, prescription: "8×5", rest: /60[–-]75 seconds/, total: "40 full reps" },
+    { week: 2, session: "A", label: /forty-rep baseline/i, prescription: "8×5", total: "40 full reps" },
+    { week: 2, session: "B", label: /controlled eight/i, prescription: "1×8", rest: /75[–-]90 seconds/, total: "24 full reps" },
+    { week: 3, session: "A", label: /clean-forty gate/i, prescription: "8×5", total: "40 full reps" },
     { week: 3, session: "B", label: /fifty[- ]rep application/i, prescription: "50-rep application", total: "50 full reps" },
   ] as const;
 
@@ -589,16 +590,54 @@ describe("live program", () => {
           sessionOf(step.week, step.session).blocks.find((b) => b.movement === "Session total")
             ?.prescription,
       ),
-      ["24 full reps", "26 full reps", "30 full reps", "33 full reps", "40 full reps", "50 full reps"],
+      ["24 full reps", "26 full reps", "40 full reps", "Up to 24 full reps", "40 full reps", "50 full reps"],
     );
   });
 
-  it("pairs each controlled top set with its back-off fives", () => {
+  it("pairs each controlled top set with its back-off sets", () => {
     const w1b = sessionOf(1, "B").blocks.map((b) => b.prescription);
     ok(w1b.includes("1×6") && w1b.includes("4×5"), `week 1 B prescribes ${w1b.join(" + ")}`);
 
+    // Fours, not fives: this exposure sits below the forty already proven so it
+    // does not compete with Thursday's programmed strict chin-up ladder.
     const w2b = sessionOf(2, "B").blocks.map((b) => b.prescription);
-    ok(w2b.includes("1×8") && w2b.includes("5×5"), `week 2 B prescribes ${w2b.join(" + ")}`);
+    ok(w2b.includes("1×8") && w2b.includes("4×4"), `week 2 B prescribes ${w2b.join(" + ")}`);
+  });
+
+  // 10 August: all 40 reps completed, but the kip died on the last one and easy
+  // strict pulling covered for it. The block has to read that as capacity, not
+  // as a passed gate — otherwise the fifty gets unlocked by the wrong evidence.
+  it("records the 10 August forty as a capacity baseline, not a passed gate", () => {
+    const w2a = textOf(sessionOf(2, "A"));
+    ok(/Monday 10 August/.test(w2a), "completion date missing");
+    ok(/EMOM/.test(w2a), "the forty is taken as an EMOM");
+    ok(/kip disappeared on rep 40/i.test(w2a), "the kip failing on rep 40 is not recorded");
+    ok(/strict pulling finished that rep/i.test(w2a), "the strict-strength rescue is not recorded");
+    ok(/not the quality gate/i.test(w2a), "this session is not distinguished from the quality gate");
+  });
+
+  it("repeats the forty as a rhythm gate that a strict rescue cannot pass", () => {
+    const w3a = textOf(sessionOf(3, "A"));
+    ok(/Sunday 16 August/.test(w3a), "gate date missing");
+    ok(/same kip rhythm as rep one/i.test(w3a), "the pass condition on rep 40 is missing");
+    ok(
+      /rescued by strict pulling strength does not pass/i.test(w3a),
+      "a strict-strength rescue is not excluded from passing the gate",
+    );
+    ok(/shoulders, elbows, grip, and hands/i.test(w3a), "readiness check missing");
+  });
+
+  // Thursday's programmed strict chin-up ladder is the week's high-volume
+  // pulling, so Wednesday is capped and Friday/Saturday carry no kipping at all.
+  it("caps the set-length exposure below the forty already proven", () => {
+    const w2b = textOf(sessionOf(2, "B"));
+    ok(/Wednesday 12 August/.test(w2b), "session date missing");
+    ok(/ceiling, not a target/i.test(w2b), "the 24-rep ceiling is stated as a target");
+    ok(
+      /never rescue it with strict pulling strength/i.test(w2b),
+      "the top set may still be rescued with strict strength",
+    );
+    ok(/Friday and Saturday stay kipping-free/i.test(w2b), "the kipping-free days are not stated");
   });
 
   it("treats a prescribed top set as a ceiling rather than a test", () => {
@@ -616,20 +655,16 @@ describe("live program", () => {
     );
   });
 
-  it("finishes week 2 session A in fours when rep five is forced twice", () => {
-    const w2a = textOf(sessionOf(2, "A"));
-    ok(/rep five turns arm-dominant twice/i.test(w2a), "fallback trigger missing");
-    ok(/finish the remaining sets in fours/i.test(w2a), "fours fallback missing");
-  });
-
   // EMOM 8×3 spread the same 24 reps the opening 6×4 already covered over a
-  // longer window, so it raised neither set length nor total capacity.
-  it("has retired the EMOM sessions that added no overload", () => {
+  // longer window, so it raised neither set length nor total capacity. The
+  // clock was never the problem — 8×5 EMOM is how the forty is taken — so only
+  // the retired 24-rep construct stays out.
+  it("has retired the 8×3 that added no overload", () => {
     for (const week of PROGRAM.weeks) {
       for (const key of sessionKeysOf(PROGRAM)) {
         ok(
-          !/\bEMOM\b/i.test(textOf(week.sessions[key])),
-          `week ${week.week} session ${key} reintroduces an EMOM`,
+          !/8×3/.test(textOf(week.sessions[key])),
+          `week ${week.week} session ${key} reintroduces the retired 8×3`,
         );
       }
     }
@@ -650,6 +685,43 @@ describe("live program", () => {
     const notes = (sessionOf(3, "B").notes ?? []).join(" ");
     ok(/only after week 3 session A is clean/i.test(notes), "application gate missing");
     ok(/shoulders, elbows, grip, and hands/i.test(notes), "readiness check missing");
+    ok(
+      /finished by strict pulling strength is not a clean forty/i.test(notes),
+      "a strict-rescued forty is not excluded from opening the application",
+    );
+  });
+
+  // The FMD runs 17–21 August. Fifty hard kipping reps do not belong inside a
+  // 700 kcal/day week, so the application waits for the refeed instead.
+  it("keeps the fifty-rep application out of the 17–21 August FMD", () => {
+    const notes = (sessionOf(3, "B").notes ?? []).join(" ");
+    ok(/17[–-]21 August FMD/.test(notes), "the FMD window is not named");
+    ok(/after the FMD and its refeed/i.test(notes), "the post-FMD refeed deferral is missing");
+  });
+
+  // Reporting a bare "40" to the coach would overstate the current gate.
+  it("gives the coach the qualified forty rather than a bare number", () => {
+    const wod = [PROGRAM.wodScaling.intro, ...PROGRAM.wodScaling.points].join(" ");
+    ok(/40 reps/.test(wod), "the 40-rep total capacity is missing");
+    ok(/kip disappeared on rep 40/i.test(wod), "the kip failure is not reported");
+    ok(/strict strength finished it/i.test(wod), "the strict-strength rescue is not reported");
+    ok(/clean kipping gate is still below forty/i.test(wod), "the gate is not distinguished from capacity");
+  });
+
+  // The home bar sits ~80 cm from the wall, which rules out a full swing under
+  // fatigue. The substitutions are prescribed so they are not improvised.
+  it("prescribes home-bar substitutions instead of a wall-constrained kip", () => {
+    const card = PROGRAM.homeBarSubstitutions;
+    const text = [card.title, card.intro, ...card.points].join(" ");
+    ok(card.points.length > 0, "home-bar substitution points missing");
+    ok(/80 cm/.test(text), "the 80 cm wall clearance is not stated");
+    ok(/hollow[- ]to[- ]arch/i.test(text), "the blocked hollow-to-arch swing is not stated");
+    ok(/burpee pull-up/i.test(text), "the burpee pull-up substitution is missing");
+    ok(/band-assisted/i.test(text), "the strict or band-assisted substitution is missing");
+    ok(
+      /not kipping-technique volume/i.test(text),
+      "hybrid reps on this bar are not excluded from kipping-technique volume",
+    );
   });
 
   it("names set length and total capacity as the two qualities it trains", () => {
