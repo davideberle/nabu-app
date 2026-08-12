@@ -1,6 +1,6 @@
 "use client";
 
-import type { AssistantTint } from "@/data/family-assistant";
+import type { AssistantTint, AvatarColors } from "@/data/family-assistant";
 
 export type AvatarState =
   | "ready"
@@ -10,15 +10,7 @@ export type AvatarState =
   | "showing"
   | "speaking";
 
-type TintColors = {
-  from: string;
-  to: string;
-  ring: string;
-  face: string;
-  badge: string;
-};
-
-const TINTS: Record<AssistantTint, TintColors> = {
+const TINTS: Record<AssistantTint, AvatarColors> = {
   amber: {
     from: "#fcd34d",
     to: "#f97316",
@@ -195,17 +187,20 @@ export function AssistantAvatar({
   state,
   tint,
   crest,
+  look,
   label,
   className,
 }: {
   state: AvatarState;
   tint: AssistantTint;
   crest: "bolt" | "leaf";
+  /** Session-only dress-up recolor; falls back to the profile tint. */
+  look?: { id: string; colors: AvatarColors } | null;
   label: string;
   className?: string;
 }) {
-  const c = TINTS[tint];
-  const gradientId = `fa-grad-${tint}-${crest}`;
+  const c = look?.colors ?? TINTS[tint];
+  const gradientId = `fa-grad-${look?.id ?? tint}-${crest}`;
   return (
     <div role="img" aria-label={label} className={className}>
       <style>{AVATAR_CSS}</style>

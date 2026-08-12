@@ -16,18 +16,30 @@ import type { FamilyBoardConfig, RewardRedemption } from "@/lib/family-db";
 import {
   assistantProfiles,
   assistantProfileById,
+  avatarStyleById,
+  avatarStyles,
   dragonSongChoices,
   podcastChoices,
   ninjagoResume,
   parentSuggestion,
   starterPhrases,
-  detectIntent,
-  findUncertainWord,
   type AssistantChildId,
   type AssistantIntent,
   type AssistantProfile,
+  type AvatarStyleId,
   type MediaCard,
 } from "@/data/family-assistant";
+import {
+  createChildTurnClient,
+  type ChildTurnClient,
+} from "@/lib/family-assistant-client";
+import {
+  MAX_CHILD_TURN_CHARS,
+  childFacingRecovery,
+  envelopeSpokenText,
+  isRetryable,
+  type AssistantBlock,
+} from "@/lib/family-assistant-turn";
 import { AssistantAvatar, type AvatarState } from "./avatar";
 
 // ---------------------------------------------------------------------------
@@ -106,21 +118,50 @@ function resolveRewardsClient(config: FamilyBoardConfig): RewardDefinition[] {
 // Conversation state machine
 // ---------------------------------------------------------------------------
 
+/**
+ * The conversation is **free-form end to end**.
+ *
+ * Nothing in this component classifies what a child said. Every utterance —
+ * typed, spoken, or produced by tapping a starter chip — is sent verbatim to
+ * that child's own OpenClaw agent through the tailnet bridge, and the reply is
+ * whatever the agent actually answered.
+ *
+ * The five prototype scenarios that used to *be* the assistant are now two
+ * separate, clearly-labelled things:
+ *
+ *  - the four starter phrases are **starter prompts**: buttons that send real
+ *    text, exactly as if the child had typed it;
+ *  - the scripted card flows are **UI regression fixtures**, reachable only
+ *    from the explicit "Prototype demos" panel and marked as demos there.
+ *
+ * There is no code path in which the wording of an utterance selects a view.
+ * That is what closes the Goku/Dragon Ball regression: "edit my avatar so it
+ * looks like Goku from Dragon Ball" is a question for the agent, not a phrase
+ * for a matcher.
+ */
 type ConfirmOption =
-  | { kind: "intent"; intent: AssistantIntent; label: string; icon: string }
-  | { kind: "music-choices"; label: string; icon: string }
+  | { kind: "ask"; label: string; icon: string }
   | { kind: "retry"; label: string }
   | { kind: "dismiss"; label: string };
 
 type NowPlayingSource = "resume" | "music" | "podcast" | "parent";
 
-type ShowingView =
+type DemoView =
   | { kind: "resume" }
   | { kind: "music-choices" }
   | { kind: "podcasts" }
   | { kind: "points" }
   | { kind: "parent-suggestion" }
+  | { kind: "avatar-styles" }
   | { kind: "now-playing"; item: MediaCard; from: NowPlayingSource };
+
+type ShowingView =
+  /** The real thing: what the child's agent answered. */
+  | { kind: "assistant-reply"; question: string; blocks: AssistantBlock[] }
+  | DemoView;
+
+/** Sub-phase of `thinking`, so the child sees the turn leave before it lands. */
+type ThinkingPhase = "sending" | "thinking";
 
 type Stage =
   | { kind: "ready" }
@@ -132,9 +173,10 @@ type Stage =
       prompt: string;
       options: ConfirmOption[];
     }
-  | { kind: "thinking"; goal: string; transcript?: string }
+  | { kind: "thinking"; goal: string; phase: ThinkingPhase; transcript?: string }
   | { kind: "showing"; view: ShowingView }
-  | { kind: "recovering"; message: string };
+  /** `retryQuestion` is set when re-sending the same words could still work. */
+  | { kind: "recovering"; message: string; retryQuestion?: string };
 
 type PointsSnapshot = {
   live: boolean;
@@ -142,6 +184,149 @@ type PointsSnapshot = {
   balance: number;
   next: { title: string; icon: string; target: number; missing: number } | null;
 };
+
+/**
+ * Options shown after a spoken turn, before it is sent.
+ *
+ * Voice is the one input where the child did not see their words before
+ * committing them, and child speech recognition is the original failure this
+ * product exists to fix. So a spoken turn gets one confirmation step: read it
+ * back, then ask, re-record, or drop it. There is no uncertainty *highlight*
+ * any more — that used to come from the keyword classifier, and nothing here
+ * inspects the words.
+ */
+function voiceConfirmOptions(): ConfirmOption[] {
+  return [
+    { kind: "ask", label: "Yes, ask that", icon: "✨" },
+    { kind: "retry", label: "Say it again" },
+    { kind: "dismiss", label: "Never mind" },
+  ];
+}
+
+/**
+ * Surface name for the shared-iPad session, per child.
+ *
+ * Stable on purpose: the Gateway session key becomes `agent:<child>:ipad`, so
+ * a child picking their profile again — tomorrow, or after a reload — lands in
+ * the same conversation rather than a fresh one. It is sent to the mint route,
+ * validated there, and baked into the token; the browser cannot widen it.
+ */
+const ASSISTANT_SESSION_SUFFIX = "ipad";
+
+/**
+ * Renders the agent's reply blocks.
+ *
+ * Unknown block types are skipped rather than rendered or thrown on: a Phase 3
+ * bridge that starts sending Sonos cards must not break an iPad still running
+ * this build (see `lib/family-assistant-turn.ts`).
+ */
+function AssistantReply({ blocks }: { blocks: AssistantBlock[] }) {
+  return (
+    <div className="space-y-4">
+      {blocks.map((block, index) => {
+        if (block.type === "text") {
+          return (
+            <p
+              key={index}
+              // `whitespace-pre-wrap` renders the agent's own paragraphs and
+              // lists as plain text. Nothing here interprets markup, so the
+              // reply can never inject elements into this page.
+              className="whitespace-pre-wrap text-xl leading-relaxed text-primary"
+            >
+              {block.text}
+            </p>
+          );
+        }
+        if (block.type === "card") {
+          return (
+            <div key={index} className="rounded-2xl border border-primary bg-primary p-4">
+              <p className="text-base font-semibold text-primary">{block.title}</p>
+              {block.subtitle ? <p className="text-sm text-tertiary">{block.subtitle}</p> : null}
+              {block.meta ? (
+                <NabuBadge tone="stone" className="mt-2">
+                  {block.meta}
+                </NabuBadge>
+              ) : null}
+            </div>
+          );
+        }
+        if (block.type === "image") {
+          return (
+            // A plain <img>: the source is a bridge-supplied artifact, not a
+            // build-time asset, so next/image's optimizer has nothing to do here.
+            <img key={index} src={block.url} alt={block.alt} className="rounded-2xl" />
+          );
+        }
+        return null;
+      })}
+    </div>
+  );
+}
+
+/**
+ * The prototype scenarios, kept as UI regression fixtures.
+ *
+ * Collapsed by default and explicitly labelled. Nothing a child says can open
+ * it, and nothing inside it is reachable from the conversation path — that
+ * separation is the point: the fixtures exercise layouts Phase 3 will fill
+ * with real Sonos and family data, and they are never the assistant's meaning.
+ */
+function PrototypeDemoPanel({
+  open,
+  onToggle,
+  onRun,
+}: {
+  open: boolean;
+  onToggle: () => void;
+  onRun: (intent: AssistantIntent) => void;
+}) {
+  const demos: { intent: AssistantIntent; label: string; icon: string }[] = [
+    { intent: "resume-series", label: "Resume an audiobook", icon: "🥷" },
+    { intent: "fuzzy-music", label: "Music choices", icon: "🎶" },
+    { intent: "podcast", label: "Podcast choices", icon: "🎧" },
+    { intent: "points", label: "Coins and rewards", icon: "🪙" },
+    { intent: "parent-suggestion", label: parentSuggestion.label, icon: "💌" },
+  ];
+  return (
+    <div className="rounded-2xl border border-dashed border-secondary p-3">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        className={cn(
+          "flex min-h-11 w-full items-center justify-between gap-2 rounded-xl px-2 text-left",
+          focusRing,
+        )}
+      >
+        <span className="flex items-center gap-2">
+          <NabuBadge tone="amber">Prototype demos</NabuBadge>
+          <span className="text-sm text-quaternary">Not the assistant — fixed example screens</span>
+        </span>
+        <span aria-hidden="true" className="text-tertiary">
+          {open ? "▲" : "▼"}
+        </span>
+      </button>
+      {open ? (
+        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+          {demos.map((demo) => (
+            <button
+              key={demo.intent}
+              type="button"
+              onClick={() => onRun(demo.intent)}
+              className={cn(
+                "flex min-h-12 items-center gap-2 rounded-xl border border-primary bg-primary px-3 text-left text-sm font-medium text-secondary transition-colors hover:bg-secondary",
+                focusRing,
+              )}
+            >
+              <span aria-hidden="true">{demo.icon}</span>
+              {demo.label}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 function avatarStateFor(stage: Stage, isSpeaking: boolean): AvatarState {
   switch (stage.kind) {
@@ -411,7 +596,7 @@ function ProfileChooser({
       <header className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-secondary bg-primary/80 px-5 py-3 backdrop-blur-xl sm:px-8">
         <div>
           <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
-            Family assistant · prototype
+            Family assistant · not released yet
           </p>
           <h1 className="text-xl font-semibold tracking-[-0.02em]">
             Who&rsquo;s listening today?
@@ -472,8 +657,8 @@ function ProfileChooser({
       </main>
 
       <footer className="shrink-0 px-5 pb-6 text-center text-xs text-quaternary">
-        Interaction prototype — nothing here plays on the speakers, remembers, or
-        messages anyone for real yet.
+        Not released yet — answers are real, but nothing here plays on the
+        speakers, makes pictures, or messages anyone.
       </footer>
     </div>
   );
@@ -502,17 +687,50 @@ function Workspace({
   const [points, setPoints] = useState<PointsSnapshot | null>(null);
   const [demoPaused, setDemoPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  /** Session-only dress-up; resets when the workspace unmounts. */
+  const [avatarStyle, setAvatarStyle] = useState<AvatarStyleId | null>(null);
+  /** The scripted prototype flows, kept as explicit UI regression fixtures. */
+  const [demosOpen, setDemosOpen] = useState(false);
 
   const timersRef = useRef<number[]>([]);
   const aliveRef = useRef(true);
   const speakSeqRef = useRef(0);
+  const turnSeqRef = useRef(0);
   const recognitionRef = useRef<BrowserSpeechRecognition | null>(null);
   const finalTranscriptRef = useRef("");
   const listeningRef = useRef(false);
   const soundOnRef = useRef(true);
+  /** Aborts the in-flight turn when the child leaves, retries, or asks again. */
+  const turnAbortRef = useRef<AbortController | null>(null);
+  /**
+   * One transport client per mounted profile.
+   *
+   * It caches the child-scoped bridge session, so switching profiles must
+   * create a new one — which the `key={profile.id}` on `<Workspace>` already
+   * guarantees, and `reset()` on unmount makes explicit.
+   */
+  const turnClientRef = useRef<ChildTurnClient | null>(null);
+  if (turnClientRef.current === null) turnClientRef.current = createChildTurnClient();
 
-  const speechSupported = useMemo(() => speechRecognitionCtor() !== null, []);
+  /**
+   * Microphone availability, resolved after mount.
+   *
+   * Deliberately not a `useMemo`: `speechRecognitionCtor()` is null during
+   * server rendering and non-null in Safari/Chrome, so computing it during
+   * render made the server and the first client render disagree about the mic
+   * dock's caption and React discarded the tree on hydration. Starting at
+   * `false` and setting it in an effect means both renders agree, and the
+   * caption updates a tick later.
+   */
+  const [speechSupported, setSpeechSupported] = useState(false);
+  useEffect(() => {
+    setSpeechSupported(speechRecognitionCtor() !== null);
+  }, []);
   const tint = profile.tint;
+  const avatarLook = useMemo(() => {
+    const style = avatarStyleById(avatarStyle);
+    return style ? { id: style.id, colors: style.colors } : null;
+  }, [avatarStyle]);
 
   useEffect(() => {
     soundOnRef.current = soundOn;
@@ -529,6 +747,11 @@ function Workspace({
   const clearTimers = useCallback(() => {
     for (const id of timersRef.current) window.clearTimeout(id);
     timersRef.current = [];
+    // Every flow that clears pending transitions also invalidates any in-flight
+    // turn, so a late reply can never replace the stage the child is now on.
+    turnSeqRef.current += 1;
+    turnAbortRef.current?.abort();
+    turnAbortRef.current = null;
   }, []);
 
   const later = useCallback((fn: () => void, ms: number) => {
@@ -571,6 +794,9 @@ function Workspace({
       aliveRef.current = false;
       clearTimers();
       stopRecognition();
+      // Drop the cached child-scoped token rather than leaving it in memory
+      // for a profile that is no longer on screen.
+      turnClientRef.current?.reset();
       if (typeof window !== "undefined" && "speechSynthesis" in window) {
         try {
           window.speechSynthesis.cancel();
@@ -621,14 +847,18 @@ function Workspace({
     [speak],
   );
 
-  const think = useCallback((goal: string, transcript?: string) => {
-    setStage({ kind: "thinking", goal, transcript });
+  const think = useCallback((goal: string, phase: ThinkingPhase, transcript?: string) => {
+    setStage({ kind: "thinking", goal, phase, ...(transcript !== undefined ? { transcript } : {}) });
   }, []);
 
   const recover = useCallback(
-    (message: string) => {
+    (message: string, retryQuestion?: string) => {
       cancelSpeech();
-      setStage({ kind: "recovering", message });
+      setStage({
+        kind: "recovering",
+        message,
+        ...(retryQuestion !== undefined ? { retryQuestion } : {}),
+      });
     },
     [cancelSpeech],
   );
@@ -715,14 +945,19 @@ function Workspace({
   }, [present, profile.displayName, profile.id, weekId]);
 
   // ------------------------------------------------------------------
-  // Intent routing
+  // Prototype demo flows — UI regression fixtures only
+  //
+  // Reachable ONLY from the "Prototype demos" panel, never from anything a
+  // child says. They exercise the card/choice/now-playing layouts that Phase 3
+  // will render from real Sonos and family data, and they are labelled as
+  // demos wherever they appear.
   // ------------------------------------------------------------------
 
-  const runIntent = useCallback(
+  const runDemo = useCallback(
     (intent: AssistantIntent, transcript?: string) => {
       switch (intent) {
         case "resume-series":
-          think("Finding your Ninjago spot…", transcript);
+          think("Finding your Ninjago spot…", "thinking", transcript);
           later(
             () =>
               present(
@@ -733,7 +968,7 @@ function Workspace({
           );
           break;
         case "fuzzy-music":
-          think("Looking for dragon songs…", transcript);
+          think("Looking for dragon songs…", "thinking", transcript);
           later(
             () =>
               present(
@@ -744,7 +979,7 @@ function Workspace({
           );
           break;
         case "podcast":
-          think("Hunting for great podcasts…", transcript);
+          think("Hunting for great podcasts…", "thinking", transcript);
           later(
             () =>
               present(
@@ -755,11 +990,11 @@ function Workspace({
           );
           break;
         case "points":
-          think("Checking your family board…", transcript);
+          think("Checking your family board…", "thinking", transcript);
           void loadPoints();
           break;
         case "parent-suggestion":
-          think("Getting Mum and Dad's idea…", transcript);
+          think("Getting Mum and Dad's idea…", "thinking", transcript);
           later(
             () =>
               present(
@@ -774,58 +1009,74 @@ function Workspace({
     [later, loadPoints, present, think],
   );
 
-  const confirmOptionsForUnknown = useCallback((): ConfirmOption[] => {
-    return [
-      ...starterPhrases.map(
-        (s): ConfirmOption => ({
-          kind: "intent",
-          intent: s.intent,
-          label: s.phrase,
-          icon: s.icon,
-        }),
-      ),
-      { kind: "retry", label: "Say it again" },
-      { kind: "dismiss", label: "Never mind" },
-    ];
-  }, []);
+  // ------------------------------------------------------------------
+  // The real conversation: free-form text to the child's own agent
+  // ------------------------------------------------------------------
 
-  const processUtterance = useCallback(
+  /**
+   * Sends one utterance to the selected child agent and renders the answer.
+   *
+   * The whole function is transport and presentation. It does not look at the
+   * words: no matching, no classification, no keyword fallback. Whatever the
+   * child said goes to `family.childTurn` through the scoped bridge, and
+   * whatever the agent answered comes back as envelope blocks.
+   *
+   * The states a child sees, in order: sending → thinking → the answer, or a
+   * recovery message with a retry that re-sends the same words.
+   */
+  const askChild = useCallback(
     (text: string) => {
       clearTimers();
       cancelSpeech();
-      const trimmed = text.trim();
-      if (!trimmed) {
-        recover("I couldn't hear anything that time. Try again a bit closer, or tap an idea below.");
+      const question = text.trim().slice(0, MAX_CHILD_TURN_CHARS);
+      if (!question) {
+        recover("I couldn't hear anything that time. Try again a bit closer, or type it instead.");
         return;
       }
-      const intent = detectIntent(trimmed);
-      if (!intent) {
-        setStage({
-          kind: "confirming",
-          transcript: trimmed,
-          uncertain: trimmed,
-          prompt: "I'm not sure I got that right. Did you mean one of these?",
-          options: confirmOptionsForUnknown(),
-        });
+
+      const seq = turnSeqRef.current;
+      const controller = new AbortController();
+      turnAbortRef.current = controller;
+      const client = turnClientRef.current;
+      if (!client) {
+        recover("I can't reach my brain right now. Tell a grown-up, and try again in a bit.", question);
         return;
       }
-      if (intent === "fuzzy-music") {
-        setStage({
-          kind: "confirming",
-          transcript: trimmed,
-          uncertain: findUncertainWord(trimmed),
-          prompt: "A song with a dragon — I know a few of those. Want to see them?",
-          options: [
-            { kind: "music-choices", label: "Show me the dragon songs", icon: "🐉" },
-            { kind: "retry", label: "Say it again" },
-            { kind: "dismiss", label: "Never mind" },
-          ],
-        });
-        return;
-      }
-      runIntent(intent, trimmed);
+
+      think("Sending your question…", "sending", question);
+
+      void (async () => {
+        // Flip to "thinking" as soon as the request is actually on its way, so
+        // the two states mean something distinct rather than being decoration.
+        const pending = client.ask(
+          { childId: profile.id, sessionSuffix: ASSISTANT_SESSION_SUFFIX, message: question },
+          { signal: controller.signal },
+        );
+        if (aliveRef.current && seq === turnSeqRef.current) {
+          think(`${profile.companionName} is thinking…`, "thinking", question);
+        }
+
+        const outcome = await pending;
+        // A reply that arrives after the child moved on is dropped, never
+        // rendered over whatever they are looking at now.
+        if (!aliveRef.current || seq !== turnSeqRef.current) return;
+        turnAbortRef.current = null;
+
+        if (outcome.ok) {
+          const spoken = envelopeSpokenText(outcome.envelope);
+          present(
+            { kind: "assistant-reply", question, blocks: outcome.envelope.blocks },
+            spoken || "Here you go!",
+          );
+          return;
+        }
+        recover(
+          childFacingRecovery(outcome.envelope),
+          isRetryable(outcome.envelope) ? question : undefined,
+        );
+      })();
     },
-    [cancelSpeech, clearTimers, confirmOptionsForUnknown, recover, runIntent],
+    [cancelSpeech, clearTimers, present, profile.companionName, profile.id, recover, think],
   );
 
   // ------------------------------------------------------------------
@@ -888,7 +1139,15 @@ function Workspace({
         if (!aliveRef.current) return;
         const heard = finalTranscriptRef.current.trim();
         if (heard) {
-          processUtterance(heard);
+          // Voice gets one read-back step before the words leave the iPad.
+          // Child speech recognition is the original failure this product
+          // exists to fix, and nothing here inspects what was heard.
+          setStage({
+            kind: "confirming",
+            transcript: heard,
+            prompt: "Is that what you meant?",
+            options: voiceConfirmOptions(),
+          });
         } else {
           recover(
             "I couldn't hear anything that time. Try again a bit closer, or tap an idea below.",
@@ -903,7 +1162,7 @@ function Workspace({
       listeningRef.current = false;
       recover("Something went wrong with the microphone. Tap an idea below or type instead.");
     }
-  }, [cancelSpeech, clearTimers, processUtterance, recover, stopRecognition]);
+  }, [cancelSpeech, clearTimers, recover, stopRecognition]);
 
   const finishListening = useCallback(() => {
     const recognition = recognitionRef.current;
@@ -930,7 +1189,11 @@ function Workspace({
   }, [finishListening, isLiveListening, startListening]);
 
   // ------------------------------------------------------------------
-  // Simulated voice turn for the starter chips (works without any mic)
+  // Starter chips: type out the phrase, then send it as a real turn
+  //
+  // The animation is presentation only. What reaches the agent is the same
+  // free-form string a child could have typed, so a starter prompt and a typed
+  // question take exactly one code path.
   // ------------------------------------------------------------------
 
   const simulatePhrase = useCallback(
@@ -940,7 +1203,7 @@ function Workspace({
       stopRecognition();
       if (reducedMotion) {
         setStage({ kind: "listening", transcript: phrase, simulated: true });
-        later(() => processUtterance(phrase), 550);
+        later(() => askChild(phrase), 550);
         return;
       }
       setStage({ kind: "listening", transcript: "", simulated: true });
@@ -951,12 +1214,12 @@ function Workspace({
         if (shown < phrase.length) {
           later(step, 36);
         } else {
-          later(() => processUtterance(phrase), 500);
+          later(() => askChild(phrase), 500);
         }
       };
       later(step, 260);
     },
-    [cancelSpeech, clearTimers, later, processUtterance, reducedMotion, stopRecognition],
+    [askChild, cancelSpeech, clearTimers, later, reducedMotion, stopRecognition],
   );
 
   const onTypedSubmit = useCallback(() => {
@@ -964,21 +1227,14 @@ function Workspace({
     if (!value) return;
     setTyped("");
     stopRecognition();
-    processUtterance(value);
-  }, [processUtterance, stopRecognition, typed]);
+    askChild(value);
+  }, [askChild, stopRecognition, typed]);
 
   const onConfirmOption = useCallback(
-    (option: ConfirmOption) => {
+    (option: ConfirmOption, transcript: string) => {
       switch (option.kind) {
-        case "intent":
-          if (option.intent === "fuzzy-music") {
-            runIntent("fuzzy-music");
-          } else {
-            runIntent(option.intent);
-          }
-          break;
-        case "music-choices":
-          runIntent("fuzzy-music");
+        case "ask":
+          askChild(transcript);
           break;
         case "retry":
           if (speechSupported) {
@@ -992,7 +1248,7 @@ function Workspace({
           break;
       }
     },
-    [backToReady, recover, runIntent, speechSupported, startListening],
+    [askChild, backToReady, recover, speechSupported, startListening],
   );
 
   const playDemo = useCallback(
@@ -1065,7 +1321,11 @@ function Workspace({
           <p className="mt-1 text-base text-tertiary">{profile.greetingHint}</p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div>
+          <p className="mb-2 text-sm text-quaternary">
+            Ask me anything — or start with one of these:
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
           {starterPhrases.map((s) => (
             <button
               key={s.intent}
@@ -1084,28 +1344,14 @@ function Workspace({
               </span>
             </button>
           ))}
+          </div>
         </div>
 
-        <button
-          type="button"
-          onClick={() => runIntent("parent-suggestion")}
-          className={cn(
-            "flex min-w-0 items-center gap-3 rounded-2xl border border-violet-200 bg-violet-50 px-4 py-3 text-left transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-violet-800 dark:bg-violet-950/30",
-            focusRing,
-          )}
-        >
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/70 text-2xl dark:bg-white/10">
-            💌
-          </span>
-          <span className="min-w-0">
-            <span className="block text-xs font-semibold uppercase tracking-[0.12em] text-violet-700 dark:text-violet-300">
-              {parentSuggestion.label}
-            </span>
-            <span className="block truncate text-base font-medium text-primary">
-              There&rsquo;s an idea waiting for you
-            </span>
-          </span>
-        </button>
+        <PrototypeDemoPanel
+          open={demosOpen}
+          onToggle={() => setDemosOpen((value) => !value)}
+          onRun={runDemo}
+        />
       </div>
     );
   } else if (stage.kind === "listening") {
@@ -1153,7 +1399,7 @@ function Workspace({
               icon={"icon" in option ? option.icon : option.kind === "retry" ? "🎤" : undefined}
               primary={index === 0}
               tint={tint}
-              onClick={() => onConfirmOption(option)}
+              onClick={() => onConfirmOption(option, stage.transcript)}
             />
           ))}
         </div>
@@ -1167,6 +1413,9 @@ function Workspace({
             You said: <TranscriptText text={stage.transcript} />
           </p>
         ) : null}
+        <p className={cn("text-sm font-semibold uppercase tracking-[0.14em]", tintText[tint])}>
+          {stage.phase === "sending" ? "Sending" : "Thinking"}
+        </p>
         <div className="flex items-center gap-3">
           <span className="flex gap-1.5" aria-hidden="true">
             {[0, 1, 2].map((i) => (
@@ -1189,24 +1438,24 @@ function Workspace({
       <div className="flex min-h-full flex-col justify-center gap-5">
         <p className="text-2xl font-medium leading-snug text-primary">{stage.message}</p>
         <div className="grid gap-3 sm:grid-cols-2">
+          {stage.retryQuestion !== undefined && (
+            <BigOptionButton
+              label="Ask that again"
+              icon="↻"
+              primary
+              tint={tint}
+              onClick={() => askChild(stage.retryQuestion as string)}
+            />
+          )}
           {speechSupported && (
             <BigOptionButton
               label="Try talking again"
               icon="🎤"
-              primary
+              primary={stage.retryQuestion === undefined}
               tint={tint}
               onClick={startListening}
             />
           )}
-          {starterPhrases.map((s) => (
-            <BigOptionButton
-              key={s.intent}
-              label={s.phrase}
-              icon={s.icon}
-              tint={tint}
-              onClick={() => runIntent(s.intent)}
-            />
-          ))}
           <BigOptionButton label="Never mind" tint={tint} onClick={backToReady} />
         </div>
       </div>
@@ -1215,7 +1464,16 @@ function Workspace({
     const view = stage.view;
     let body: React.ReactNode = null;
 
-    if (view.kind === "resume") {
+    if (view.kind === "assistant-reply") {
+      body = (
+        <div className="space-y-4">
+          <p className="text-sm text-quaternary">
+            You asked: <TranscriptText text={view.question} />
+          </p>
+          <AssistantReply blocks={view.blocks} />
+        </div>
+      );
+    } else if (view.kind === "resume") {
       body = (
         <div className="space-y-4">
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-quaternary">
@@ -1302,7 +1560,7 @@ function Workspace({
             label="None of these — let me say it again"
             icon="🎤"
             tint={tint}
-            onClick={() => onConfirmOption({ kind: "retry", label: "retry" })}
+            onClick={startListening}
           />
         </div>
       );
@@ -1434,10 +1692,93 @@ function Workspace({
                 label="Keep Ninjago instead"
                 icon="🥷"
                 tint={tint}
-                onClick={() => runIntent("resume-series")}
+                onClick={() => runDemo("resume-series")}
               />
             </div>
           </div>
+        </div>
+      );
+    } else if (view.kind === "avatar-styles") {
+      body = (
+        <div className="space-y-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-quaternary">
+            Dress-up — pick {profile.companionName}&rsquo;s look
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {avatarStyles.map((style) => {
+              const wearing = avatarStyle === style.id;
+              return (
+                <button
+                  key={style.id}
+                  type="button"
+                  onClick={() => {
+                    setAvatarStyle(style.id);
+                    speak(`Ta-da — ${style.label}!`);
+                  }}
+                  aria-pressed={wearing}
+                  className={cn(
+                    "flex min-w-0 items-center gap-3 rounded-2xl border-2 bg-primary p-4 text-left shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md dark:shadow-none",
+                    wearing ? tintBorder[tint] : "border-primary",
+                    focusRing,
+                  )}
+                >
+                  <span
+                    aria-hidden="true"
+                    className="grid h-14 w-14 shrink-0 place-items-center rounded-full text-2xl"
+                    style={{
+                      background: `radial-gradient(circle at 35% 30%, ${style.colors.from}, ${style.colors.to})`,
+                    }}
+                  >
+                    {style.emoji}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-base font-semibold text-primary">
+                      {style.label}
+                    </span>
+                    <span className="block text-sm text-tertiary">{style.tagline}</span>
+                    {wearing && (
+                      <NabuBadge tone="green" className="mt-1.5">
+                        Wearing it now
+                      </NabuBadge>
+                    )}
+                  </span>
+                </button>
+              );
+            })}
+            <button
+              type="button"
+              onClick={() => {
+                setAvatarStyle(null);
+                speak("Back to my usual look!");
+              }}
+              aria-pressed={avatarStyle === null}
+              className={cn(
+                "flex min-w-0 items-center gap-3 rounded-2xl border-2 bg-primary p-4 text-left shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md dark:shadow-none",
+                avatarStyle === null ? tintBorder[tint] : "border-primary",
+                focusRing,
+              )}
+            >
+              <span
+                className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-secondary text-2xl"
+                aria-hidden="true"
+              >
+                🙂
+              </span>
+              <span className="min-w-0">
+                <span className="block text-base font-semibold text-primary">My usual look</span>
+                <span className="block text-sm text-tertiary">Back to normal</span>
+                {avatarStyle === null && (
+                  <NabuBadge tone="green" className="mt-1.5">
+                    Wearing it now
+                  </NabuBadge>
+                )}
+              </span>
+            </button>
+          </div>
+          <p className="text-xs text-quaternary">
+            Dress-up is just for now — {profile.companionName} goes back to normal next time, and
+            nothing is remembered.
+          </p>
         </div>
       );
     } else if (view.kind === "now-playing") {
@@ -1535,6 +1876,7 @@ function Workspace({
             state="ready"
             tint={tint}
             crest={profile.crest}
+            look={avatarLook}
             label=""
             className="h-9 w-9"
           />
@@ -1546,7 +1888,7 @@ function Workspace({
               </span>
             </p>
             <p className="text-[11px] uppercase tracking-[0.12em] text-quaternary">
-              Prototype · no real playback
+              Real answers · music and pictures not connected yet
             </p>
           </div>
         </div>
@@ -1609,6 +1951,7 @@ function Workspace({
             state={avatarState}
             tint={tint}
             crest={profile.crest}
+            look={avatarLook}
             label={`${profile.companionName} is ${avatarStateLabel(avatarState)}`}
             className="h-32 w-32 lg:h-52 lg:w-52"
           />

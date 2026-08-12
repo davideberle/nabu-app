@@ -145,35 +145,90 @@ export type StarterPhrase = {
   intent: AssistantIntent;
   icon: string;
   phrase: string;
+  /**
+   * The word the confirming flow marks as heard-but-uncertain when this exact
+   * suggested phrase is used. Presentation only — never used for routing.
+   */
+  uncertainWord?: string;
 };
 
 export const starterPhrases: StarterPhrase[] = [
   { intent: "resume-series", icon: "🥷", phrase: "Continue Ninjago" },
-  { intent: "fuzzy-music", icon: "🐉", phrase: "Play the song with the dragon" },
+  {
+    intent: "fuzzy-music",
+    icon: "🐉",
+    phrase: "Play the song with the dragon",
+    uncertainWord: "dragon",
+  },
   { intent: "podcast", icon: "🎧", phrase: "Find me a cool podcast" },
   { intent: "points", icon: "🪙", phrase: "Where do I stand?" },
 ];
 
-/**
- * Tiny keyword matcher for the prototype. The production language layer is a
- * family-assistant domain concern; this only needs to route the demo phrases
- * plus reasonable variations, and return null so the UI can run the
- * recoverable correction flow for everything else.
- */
-export function detectIntent(text: string): AssistantIntent | null {
-  const t = text.toLowerCase();
-  if (/dragon/.test(t)) return "fuzzy-music";
-  if (/(ninjago|episode|continue|resume|next one)/.test(t)) return "resume-series";
-  if (/podcast/.test(t)) return "podcast";
-  if (/(where do i stand|stand|points|coins|coin|reward|balance)/.test(t)) return "points";
-  if (/(mum|mom|dad|parent|surprise|something (new|different)|idea)/.test(t)) {
-    return "parent-suggestion";
-  }
-  return null;
-}
+// ---------------------------------------------------------------------------
+// Avatar dress-up styles
+//
+// The one bounded avatar-customization capability: recolor the companion from
+// this fixed, hand-authored set. Session-only (nothing is remembered), never a
+// copy of a licensed character's artwork or likeness. The semantic layer may
+// select one of these ids and nothing else.
+// ---------------------------------------------------------------------------
 
-/** The word the assistant should flag as uncertain for the fuzzy music flow. */
-export function findUncertainWord(text: string): string | undefined {
-  const match = text.match(/dragon\w*/i);
-  return match?.[0];
+export type AvatarStyleId = "ocean" | "berry" | "forest" | "sunset" | "midnight";
+
+export type AvatarColors = {
+  from: string;
+  to: string;
+  ring: string;
+  face: string;
+  badge: string;
+};
+
+export type AvatarStyle = {
+  id: AvatarStyleId;
+  label: string;
+  emoji: string;
+  tagline: string;
+  colors: AvatarColors;
+};
+
+export const avatarStyles: AvatarStyle[] = [
+  {
+    id: "ocean",
+    label: "Ocean Splash",
+    emoji: "🌊",
+    tagline: "Cool blue like a big wave",
+    colors: { from: "#7dd3fc", to: "#2563eb", ring: "#38bdf8", face: "#082f49", badge: "#1d4ed8" },
+  },
+  {
+    id: "berry",
+    label: "Berry Fizz",
+    emoji: "🫐",
+    tagline: "Bright pink-purple sparkle",
+    colors: { from: "#f0abfc", to: "#a21caf", ring: "#e879f9", face: "#4a044e", badge: "#86198f" },
+  },
+  {
+    id: "forest",
+    label: "Forest Hero",
+    emoji: "🌿",
+    tagline: "Deep green adventure",
+    colors: { from: "#86efac", to: "#15803d", ring: "#4ade80", face: "#052e16", badge: "#166534" },
+  },
+  {
+    id: "sunset",
+    label: "Sunset Glow",
+    emoji: "🌅",
+    tagline: "Warm red-orange evening",
+    colors: { from: "#fda4af", to: "#e11d48", ring: "#fb7185", face: "#4c0519", badge: "#be123c" },
+  },
+  {
+    id: "midnight",
+    label: "Starry Night",
+    emoji: "✨",
+    tagline: "Dark blue with a glow",
+    colors: { from: "#a5b4fc", to: "#4338ca", ring: "#818cf8", face: "#1e1b4b", badge: "#3730a3" },
+  },
+];
+
+export function avatarStyleById(id: string | null | undefined): AvatarStyle | null {
+  return avatarStyles.find((s) => s.id === id) ?? null;
 }
