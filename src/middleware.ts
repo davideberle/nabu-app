@@ -50,5 +50,11 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|manifest\\.json|.*\\.svg).*)"],
+  // `family/assistant/manifest.webmanifest` and the two Family Assistant icon
+  // PNGs are public install metadata: Safari fetches manifests and Home Screen
+  // icons without credentials, so an auth redirect here would break "Add to
+  // Home Screen" for the assistant. The exclusions are exact paths on purpose.
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|manifest\\.json|family/assistant/manifest\\.webmanifest|family-assistant-icon\\.png|family-assistant-icon-512\\.png|.*\\.svg).*)",
+  ],
 };

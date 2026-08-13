@@ -40,45 +40,37 @@ import {
   isRetryable,
   type AssistantBlock,
 } from "@/lib/family-assistant-turn";
+import {
+  MAX_RECORDING_MS,
+  checkChildUtterance,
+  pickRecorderMimeType,
+  recordingBlobType,
+  recordingFileName,
+  voiceCaptureSupported,
+} from "@/lib/family-voice";
+import {
+  createChildSpeechPlayer,
+  type ChildSpeechPlayer,
+} from "@/lib/family-speech";
 import { AssistantAvatar, type AvatarState } from "./avatar";
 
 // ---------------------------------------------------------------------------
-// Browser speech recognition shims (same shape as the person board client)
+// Voice input/output
+//
+// Speech-to-text: push-to-talk records real audio with MediaRecorder and posts
+// it to the authenticated `/api/family/transcribe` (ElevenLabs Scribe v2). The
+// returned transcript is the source of truth — browser SpeechRecognition is
+// not used on this surface any more. The recording is transient: an in-memory
+// blob that exists only between "tap to finish" and the transcription reply.
+//
+// Text-to-speech: replies are spoken through the authenticated
+// `/api/family/assistant/tts` (ElevenLabs, per-child voice) via
+// `createChildSpeechPlayer`, falling back to browser `speechSynthesis` when the
+// request or playback fails. The visible reply never depends on audio.
 // ---------------------------------------------------------------------------
 
-type BrowserSpeechRecognitionResult = {
-  isFinal: boolean;
-  0: { transcript: string };
-};
-
-type BrowserSpeechRecognitionEvent = {
-  resultIndex: number;
-  results: {
-    length: number;
-    [index: number]: BrowserSpeechRecognitionResult;
-  };
-};
-
-type BrowserSpeechRecognition = {
-  continuous: boolean;
-  interimResults: boolean;
-  lang: string;
-  onresult: ((event: BrowserSpeechRecognitionEvent) => void) | null;
-  onerror: (() => void) | null;
-  onend: (() => void) | null;
-  start: () => void;
-  stop: () => void;
-  abort: () => void;
-};
-
-function speechRecognitionCtor(): (new () => BrowserSpeechRecognition) | null {
-  if (typeof window === "undefined") return null;
-  const speechWindow = window as typeof window & {
-    SpeechRecognition?: new () => BrowserSpeechRecognition;
-    webkitSpeechRecognition?: new () => BrowserSpeechRecognition;
-  };
-  return speechWindow.SpeechRecognition ?? speechWindow.webkitSpeechRecognition ?? null;
-}
+/** Transcription endpoint (shared with the person board's voice memos). */
+const TRANSCRIBE_PATH = "/api/family/transcribe";
 
 // ---------------------------------------------------------------------------
 // Resolve routines/rewards with config overrides (client-side mirror)
@@ -166,6 +158,8 @@ type ThinkingPhase = "sending" | "thinking";
 type Stage =
   | { kind: "ready" }
   | { kind: "listening"; transcript: string; simulated: boolean }
+  /** Recording finished; the audio is at the transcription service. */
+  | { kind: "transcribing" }
   | {
       kind: "confirming";
       transcript: string;
@@ -190,10 +184,11 @@ type PointsSnapshot = {
  *
  * Voice is the one input where the child did not see their words before
  * committing them, and child speech recognition is the original failure this
- * product exists to fix. So a spoken turn gets one confirmation step: read it
- * back, then ask, re-record, or drop it. There is no uncertainty *highlight*
- * any more — that used to come from the keyword classifier, and nothing here
- * inspects the words.
+ * product exists to fix. So a spoken turn gets one confirmation step: the
+ * transcript comes back **editable** — the child can fix a word, send it,
+ * re-record, or drop it. There is no uncertainty *highlight* any more — that
+ * used to come from the keyword classifier, and nothing here inspects the
+ * words.
  */
 function voiceConfirmOptions(): ConfirmOption[] {
   return [
@@ -334,6 +329,8 @@ function avatarStateFor(stage: Stage, isSpeaking: boolean): AvatarState {
       return "ready";
     case "listening":
       return "listening";
+    case "transcribing":
+      return "thinking";
     case "confirming":
     case "recovering":
       return "confirming";
@@ -696,10 +693,23 @@ function Workspace({
   const aliveRef = useRef(true);
   const speakSeqRef = useRef(0);
   const turnSeqRef = useRef(0);
-  const recognitionRef = useRef<BrowserSpeechRecognition | null>(null);
-  const finalTranscriptRef = useRef("");
-  const listeningRef = useRef(false);
+  /** The in-progress push-to-talk recording, if any. */
+  const recorderRef = useRef<MediaRecorder | null>(null);
+  const recorderStreamRef = useRef<MediaStream | null>(null);
+  const recorderChunksRef = useRef<Blob[]>([]);
+  /** Bumped on every start/stop/cancel so a stale recording is discarded. */
+  const recordSeqRef = useRef(0);
   const soundOnRef = useRef(true);
+  /**
+   * ElevenLabs playback, one controller per mounted profile. Created lazily so
+   * server rendering never constructs an Audio element; `unlock()` is called
+   * from tap handlers, which is what lets iPad Safari play the reply later.
+   */
+  const speechPlayerRef = useRef<ChildSpeechPlayer | null>(null);
+  const speechPlayer = useCallback(() => {
+    if (speechPlayerRef.current === null) speechPlayerRef.current = createChildSpeechPlayer();
+    return speechPlayerRef.current;
+  }, []);
   /** Aborts the in-flight turn when the child leaves, retries, or asks again. */
   const turnAbortRef = useRef<AbortController | null>(null);
   /**
@@ -715,17 +725,24 @@ function Workspace({
   /**
    * Microphone availability, resolved after mount.
    *
-   * Deliberately not a `useMemo`: `speechRecognitionCtor()` is null during
-   * server rendering and non-null in Safari/Chrome, so computing it during
-   * render made the server and the first client render disagree about the mic
-   * dock's caption and React discarded the tree on hydration. Starting at
-   * `false` and setting it in an effect means both renders agree, and the
+   * Deliberately not a `useMemo`: the capability check reads `window` and
+   * `navigator`, which differ between server rendering and Safari, so computing
+   * it during render made the server and the first client render disagree about
+   * the mic dock's caption and React discarded the tree on hydration. Starting
+   * at `false` and setting it in an effect means both renders agree, and the
    * caption updates a tick later.
    */
   const [speechSupported, setSpeechSupported] = useState(false);
   useEffect(() => {
-    setSpeechSupported(speechRecognitionCtor() !== null);
+    setSpeechSupported(voiceCaptureSupported(window));
   }, []);
+  /**
+   * The editable confirm-before-send control for a spoken turn. `confirmDraft`
+   * starts as the ElevenLabs transcript and tracks the child's edits;
+   * `confirmIssue` is the age-appropriate refusal for an empty/overlong draft.
+   */
+  const [confirmDraft, setConfirmDraft] = useState("");
+  const [confirmIssue, setConfirmIssue] = useState<string | null>(null);
   const tint = profile.tint;
   const avatarLook = useMemo(() => {
     const style = avatarStyleById(avatarStyle);
@@ -761,24 +778,37 @@ function Workspace({
     timersRef.current.push(id);
   }, []);
 
-  const stopRecognition = useCallback(() => {
-    const recognition = recognitionRef.current;
-    recognitionRef.current = null;
-    listeningRef.current = false;
-    if (!recognition) return;
-    recognition.onresult = null;
-    recognition.onerror = null;
-    recognition.onend = null;
-    try {
-      recognition.abort();
-    } catch {
-      /* already stopped */
+  /**
+   * Discards any recording in progress: detaches the recorder, stops it, and
+   * releases the microphone. Bumping the sequence first means an `onstop` that
+   * fires after this cannot post stale audio anywhere.
+   */
+  const discardRecording = useCallback(() => {
+    recordSeqRef.current += 1;
+    const recorder = recorderRef.current;
+    recorderRef.current = null;
+    recorderChunksRef.current = [];
+    if (recorder) {
+      recorder.ondataavailable = null;
+      recorder.onerror = null;
+      recorder.onstop = null;
+      try {
+        if (recorder.state !== "inactive") recorder.stop();
+      } catch {
+        /* already stopped */
+      }
+    }
+    const stream = recorderStreamRef.current;
+    recorderStreamRef.current = null;
+    if (stream) {
+      for (const track of stream.getTracks()) track.stop();
     }
   }, []);
 
   const cancelSpeech = useCallback(() => {
     speakSeqRef.current += 1;
     setIsSpeaking(false);
+    speechPlayerRef.current?.cancel();
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       try {
         window.speechSynthesis.cancel();
@@ -793,7 +823,8 @@ function Workspace({
     return () => {
       aliveRef.current = false;
       clearTimers();
-      stopRecognition();
+      discardRecording();
+      speechPlayerRef.current?.cancel();
       // Drop the cached child-scoped token rather than leaving it in memory
       // for a profile that is no longer on screen.
       turnClientRef.current?.reset();
@@ -805,22 +836,15 @@ function Workspace({
         }
       }
     };
-  }, [clearTimers, stopRecognition]);
+  }, [clearTimers, discardRecording]);
 
-  const speak = useCallback(
-    (text: string) => {
-      setSpokenLine(text);
-      setIsSpeaking(true);
-      speakSeqRef.current += 1;
-      const seq = speakSeqRef.current;
-      const finish = () => {
-        if (speakSeqRef.current === seq) setIsSpeaking(false);
-      };
-      if (
-        soundOnRef.current &&
-        typeof window !== "undefined" &&
-        "speechSynthesis" in window
-      ) {
+  /**
+   * Browser `speechSynthesis`, the fallback voice. Runs when ElevenLabs TTS
+   * fails or its playback is blocked, so the child still hears the reply.
+   */
+  const browserSpeak = useCallback(
+    (text: string, finish: () => void) => {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
         try {
           window.speechSynthesis.cancel();
           const utterance = new SpeechSynthesisUtterance(text);
@@ -837,6 +861,46 @@ function Workspace({
       later(finish, Math.max(2400, text.length * 60));
     },
     [later, tint],
+  );
+
+  /**
+   * Speaks a line in the child's ElevenLabs voice, and always shows it.
+   *
+   * The visible line (`spokenLine`) is set before any audio work starts, so no
+   * audio outcome can lose the reply. With sound on, the ElevenLabs request is
+   * attempted first; `"fallback"` routes to `browserSpeak`; `"cancelled"` means
+   * a newer turn owns the stage and this one stays silent. The spoken text is
+   * always exactly the text shown.
+   */
+  const speak = useCallback(
+    (text: string) => {
+      setSpokenLine(text);
+      setIsSpeaking(true);
+      speakSeqRef.current += 1;
+      const seq = speakSeqRef.current;
+      const finish = () => {
+        if (speakSeqRef.current === seq) setIsSpeaking(false);
+      };
+      if (!soundOnRef.current) {
+        // Sound off: the "speaking" state is purely visual pacing.
+        later(finish, Math.max(2400, text.length * 60));
+        return;
+      }
+      // Safety net for a stuck `ended` event: generous enough to almost never
+      // cut real audio, and it only flips the avatar out of "speaking".
+      later(finish, Math.max(12_000, text.length * 150));
+      void (async () => {
+        const result = await speechPlayer().speak({ childId: profile.id, text });
+        if (!aliveRef.current || speakSeqRef.current !== seq) return;
+        if (result === "played") {
+          finish();
+        } else if (result === "fallback") {
+          browserSpeak(text, finish);
+        }
+        // "cancelled": whatever cancelled it owns the stage; stay silent.
+      })();
+    },
+    [browserSpeak, later, profile.id, speechPlayer],
   );
 
   const present = useCallback(
@@ -1083,9 +1147,85 @@ function Workspace({
   // Voice input
   // ------------------------------------------------------------------
 
+  /**
+   * Shows the spoken words back for the child to edit, send, redo, or drop.
+   * The editable draft starts as exactly what the transcription heard.
+   */
+  const enterConfirming = useCallback((heard: string) => {
+    setConfirmDraft(heard);
+    setConfirmIssue(null);
+    setStage({
+      kind: "confirming",
+      transcript: heard,
+      prompt: "Is that what you meant? You can fix any word.",
+      options: voiceConfirmOptions(),
+    });
+  }, []);
+
+  /**
+   * The finished recording: assemble the blob, release the microphone, and let
+   * ElevenLabs Scribe turn it into the transcript the child reviews. `seq`
+   * guards every step — a recording superseded by a newer one, a profile
+   * switch, or unmount is silently discarded, never posted or rendered late.
+   */
+  const processRecording = useCallback(
+    (seq: number) => {
+      const recorder = recorderRef.current;
+      const mime = recorder?.mimeType || null;
+      const chunks = recorderChunksRef.current;
+      recorderRef.current = null;
+      recorderChunksRef.current = [];
+      const stream = recorderStreamRef.current;
+      recorderStreamRef.current = null;
+      if (stream) {
+        for (const track of stream.getTracks()) track.stop();
+      }
+      if (!aliveRef.current || seq !== recordSeqRef.current) return;
+
+      const blob = new Blob(chunks, { type: recordingBlobType(mime) });
+      if (blob.size === 0) {
+        recover("I couldn't hear anything that time. Try again a bit closer, or tap an idea below.");
+        return;
+      }
+
+      setStage({ kind: "transcribing" });
+      void (async () => {
+        try {
+          const form = new FormData();
+          form.append("audio", blob, recordingFileName(mime));
+          const response = await fetch(TRANSCRIBE_PATH, { method: "POST", body: form });
+          if (!aliveRef.current || seq !== recordSeqRef.current) return;
+          if (!response.ok) {
+            recover(
+              response.status === 503
+                ? "My ears aren't working right now. Type it instead, or tell a grown-up."
+                : "I couldn't work out what you said. Try again, or type it instead.",
+            );
+            return;
+          }
+          const data = (await response.json()) as { transcript?: string };
+          if (!aliveRef.current || seq !== recordSeqRef.current) return;
+          const heard = (data.transcript ?? "").trim();
+          if (!heard) {
+            recover(
+              "I couldn't hear anything that time. Try again a bit closer, or tap an idea below.",
+            );
+            return;
+          }
+          // Voice gets one editable read-back step before the words leave the
+          // iPad. Nothing here inspects what was heard.
+          enterConfirming(heard);
+        } catch {
+          if (!aliveRef.current || seq !== recordSeqRef.current) return;
+          recover("I couldn't work out what you said. Try again, or type it instead.");
+        }
+      })();
+    },
+    [enterConfirming, recover],
+  );
+
   const startListening = useCallback(() => {
-    const Ctor = speechRecognitionCtor();
-    if (!Ctor) {
+    if (!voiceCaptureSupported(window)) {
       recover(
         "My ears don't work in this browser without microphone access. Tap an idea below or type instead — everything still works.",
       );
@@ -1093,90 +1233,82 @@ function Workspace({
     }
     clearTimers();
     cancelSpeech();
-    stopRecognition();
-    finalTranscriptRef.current = "";
+    discardRecording();
+    // A tap started this: the moment iPad Safari lets audio be unlocked.
+    speechPlayer().unlock();
+    const seq = recordSeqRef.current;
     setStage({ kind: "listening", transcript: "", simulated: false });
-    try {
-      const recognition = new Ctor();
-      recognition.continuous = false;
-      recognition.interimResults = true;
-      recognition.lang = navigator.language || "en-US";
-      recognition.onresult = (event) => {
-        let interim = "";
-        let finalText = finalTranscriptRef.current;
-        for (let index = event.resultIndex; index < event.results.length; index += 1) {
-          const result = event.results[index];
-          const text = result[0]?.transcript ?? "";
-          if (result.isFinal) {
-            finalText = `${finalText} ${text}`.trim();
-          } else {
-            interim = `${interim} ${text}`.trim();
-          }
-        }
-        finalTranscriptRef.current = finalText;
-        if (aliveRef.current && listeningRef.current) {
-          setStage({
-            kind: "listening",
-            transcript: `${finalText} ${interim}`.trim(),
-            simulated: false,
-          });
-        }
-      };
-      recognition.onerror = () => {
-        recognitionRef.current = null;
-        if (!listeningRef.current) return;
-        listeningRef.current = false;
-        if (aliveRef.current) {
+    void (async () => {
+      let stream: MediaStream;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      } catch {
+        if (aliveRef.current && seq === recordSeqRef.current) {
           recover(
             "I couldn't listen just now — the microphone said no. Tap an idea below or type instead.",
           );
         }
-      };
-      recognition.onend = () => {
-        recognitionRef.current = null;
-        if (!listeningRef.current) return;
-        listeningRef.current = false;
-        if (!aliveRef.current) return;
-        const heard = finalTranscriptRef.current.trim();
-        if (heard) {
-          // Voice gets one read-back step before the words leave the iPad.
-          // Child speech recognition is the original failure this product
-          // exists to fix, and nothing here inspects what was heard.
-          setStage({
-            kind: "confirming",
-            transcript: heard,
-            prompt: "Is that what you meant?",
-            options: voiceConfirmOptions(),
-          });
-        } else {
-          recover(
-            "I couldn't hear anything that time. Try again a bit closer, or tap an idea below.",
-          );
+        return;
+      }
+      // The child moved on (or the profile changed) while permission was
+      // pending: release the microphone immediately.
+      if (!aliveRef.current || seq !== recordSeqRef.current) {
+        for (const track of stream.getTracks()) track.stop();
+        return;
+      }
+      try {
+        const mime = pickRecorderMimeType((type) => MediaRecorder.isTypeSupported(type));
+        const recorder = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
+        recorderStreamRef.current = stream;
+        recorderChunksRef.current = [];
+        recorder.ondataavailable = (event) => {
+          if (event.data.size > 0) recorderChunksRef.current.push(event.data);
+        };
+        recorder.onstop = () => processRecording(seq);
+        recorder.onerror = () => {
+          if (seq !== recordSeqRef.current) return;
+          discardRecording();
+          if (aliveRef.current) {
+            recover("Something went wrong with the microphone. Tap an idea below or type instead.");
+          }
+        };
+        recorderRef.current = recorder;
+        recorder.start();
+        // Recordings are bounded; a forgotten open mic stops itself.
+        later(() => {
+          if (seq === recordSeqRef.current && recorderRef.current === recorder) {
+            finishListeningRef.current();
+          }
+        }, MAX_RECORDING_MS);
+      } catch {
+        for (const track of stream.getTracks()) track.stop();
+        recorderStreamRef.current = null;
+        if (aliveRef.current && seq === recordSeqRef.current) {
+          recover("Something went wrong with the microphone. Tap an idea below or type instead.");
         }
-      };
-      recognitionRef.current = recognition;
-      listeningRef.current = true;
-      recognition.start();
-    } catch {
-      recognitionRef.current = null;
-      listeningRef.current = false;
-      recover("Something went wrong with the microphone. Tap an idea below or type instead.");
-    }
-  }, [cancelSpeech, clearTimers, recover, stopRecognition]);
+      }
+    })();
+  }, [cancelSpeech, clearTimers, discardRecording, later, processRecording, recover, speechPlayer]);
 
   const finishListening = useCallback(() => {
-    const recognition = recognitionRef.current;
-    if (recognition) {
+    const recorder = recorderRef.current;
+    if (recorder && recorder.state === "recording") {
       try {
-        recognition.stop(); // onend fires and processes what was heard
+        recorder.stop(); // onstop fires and processes what was recorded
         return;
       } catch {
-        /* fall through to abort path */
+        /* fall through to the discard path */
       }
     }
-    stopRecognition();
+    discardRecording();
     backToReady();
-  }, [backToReady, stopRecognition]);
+  }, [backToReady, discardRecording]);
+
+  /** Lets the auto-stop timer inside `startListening` call the newest stop. */
+  const finishListeningRef = useRef(finishListening);
+  useEffect(() => {
+    finishListeningRef.current = finishListening;
+  }, [finishListening]);
 
   const isLiveListening = stage.kind === "listening" && !stage.simulated;
 
@@ -1200,7 +1332,10 @@ function Workspace({
     (phrase: string) => {
       clearTimers();
       cancelSpeech();
-      stopRecognition();
+      discardRecording();
+      // Tapping a starter chip is a user gesture: unlock audio now so the
+      // reply a few seconds later is allowed to play.
+      speechPlayer().unlock();
       if (reducedMotion) {
         setStage({ kind: "listening", transcript: phrase, simulated: true });
         later(() => askChild(phrase), 550);
@@ -1219,23 +1354,39 @@ function Workspace({
       };
       later(step, 260);
     },
-    [askChild, cancelSpeech, clearTimers, later, reducedMotion, stopRecognition],
+    [askChild, cancelSpeech, clearTimers, discardRecording, later, reducedMotion, speechPlayer],
   );
 
   const onTypedSubmit = useCallback(() => {
     const value = typed.trim();
     if (!value) return;
     setTyped("");
-    stopRecognition();
+    discardRecording();
+    // Submitting is a user gesture: unlock audio for the reply.
+    speechPlayer().unlock();
     askChild(value);
-  }, [askChild, stopRecognition, typed]);
+  }, [askChild, discardRecording, speechPlayer, typed]);
 
   const onConfirmOption = useCallback(
-    (option: ConfirmOption, transcript: string) => {
+    (option: ConfirmOption) => {
       switch (option.kind) {
-        case "ask":
-          askChild(transcript);
+        case "ask": {
+          // The child may have edited the words; what they see in the box is
+          // exactly what is sent. Empty and overlong drafts are refused with
+          // the same bound the bridge enforces.
+          const checked = checkChildUtterance(confirmDraft);
+          if (!checked.ok) {
+            setConfirmIssue(
+              checked.reason === "empty"
+                ? "There's nothing to ask yet — say it again or type some words."
+                : `That's very long! Keep it under ${checked.limit} letters.`,
+            );
+            return;
+          }
+          speechPlayer().unlock();
+          askChild(checked.text);
           break;
+        }
         case "retry":
           if (speechSupported) {
             startListening();
@@ -1248,7 +1399,7 @@ function Workspace({
           break;
       }
     },
-    [askChild, backToReady, recover, speechSupported, startListening],
+    [askChild, backToReady, confirmDraft, recover, speechPlayer, speechSupported, startListening],
   );
 
   const playDemo = useCallback(
@@ -1292,6 +1443,8 @@ function Workspace({
         return `${profile.companionName} is ready. ${profile.greeting}`;
       case "listening":
         return stage.transcript ? `Heard so far: ${stage.transcript}` : "Listening";
+      case "transcribing":
+        return "Working out what you said";
       case "confirming":
         return `I heard: ${stage.transcript}. ${stage.prompt}`;
       case "thinking":
@@ -1363,20 +1516,47 @@ function Workspace({
         <p className="min-h-24 text-3xl font-medium leading-snug text-primary">
           {stage.transcript ? (
             <>&ldquo;{stage.transcript}&rdquo;</>
-          ) : (
+          ) : stage.simulated ? (
             <span className="text-quaternary">Say what you&rsquo;d like…</span>
+          ) : (
+            <span className="text-quaternary">
+              Say what you&rsquo;d like — I&rsquo;ll show you the words when you tap stop.
+            </span>
           )}
         </p>
         {!stage.simulated && (
           <div>
             <BigOptionButton
-              label="Stop and think about it"
+              label="Done talking — show me the words"
               icon="◼"
               tint={tint}
               onClick={finishListening}
             />
           </div>
         )}
+      </div>
+    );
+  } else if (stage.kind === "transcribing") {
+    stageContent = (
+      <div className="flex min-h-full flex-col justify-center gap-4">
+        <p className={cn("text-sm font-semibold uppercase tracking-[0.14em]", tintText[tint])}>
+          Listening back
+        </p>
+        <div className="flex items-center gap-3">
+          <span className="flex gap-1.5" aria-hidden="true">
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className={cn(
+                  "h-2.5 w-2.5 rounded-full motion-safe:animate-bounce",
+                  tintBar[tint],
+                )}
+                style={{ animationDelay: `${i * 0.15}s` }}
+              />
+            ))}
+          </span>
+          <p className="text-2xl font-medium text-primary">Working out what you said…</p>
+        </div>
       </div>
     );
   } else if (stage.kind === "confirming") {
@@ -1386,9 +1566,28 @@ function Workspace({
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-quaternary">
             I heard
           </p>
-          <p className="mt-2 text-2xl font-medium leading-snug text-primary">
-            <TranscriptText text={stage.transcript} uncertain={stage.uncertain} />
-          </p>
+          {/* The transcript comes back editable: the ElevenLabs words are the
+              starting point, and whatever is in this box is exactly what gets
+              sent. Child speech recognition is the original failure this
+              product exists to fix, so the fix stays one tap away. */}
+          <textarea
+            value={confirmDraft}
+            onChange={(event) => {
+              setConfirmDraft(event.target.value);
+              setConfirmIssue(null);
+            }}
+            rows={3}
+            aria-label="What I heard — you can fix any word before sending"
+            className={cn(
+              "mt-2 w-full resize-none rounded-2xl border border-primary bg-primary p-4 text-2xl font-medium leading-snug text-primary",
+              focusRing,
+            )}
+          />
+          {confirmIssue ? (
+            <p className="mt-2 text-base font-medium text-amber-700 dark:text-amber-300">
+              {confirmIssue}
+            </p>
+          ) : null}
         </div>
         <p className="text-lg text-secondary">{stage.prompt}</p>
         <div className="grid gap-3 sm:grid-cols-2">
@@ -1399,7 +1598,7 @@ function Workspace({
               icon={"icon" in option ? option.icon : option.kind === "retry" ? "🎤" : undefined}
               primary={index === 0}
               tint={tint}
-              onClick={() => onConfirmOption(option, stage.transcript)}
+              onClick={() => onConfirmOption(option)}
             />
           ))}
         </div>
@@ -1896,7 +2095,13 @@ function Workspace({
           <button
             type="button"
             onClick={() => {
-              if (soundOn) cancelSpeech();
+              if (soundOn) {
+                cancelSpeech();
+              } else {
+                // Turning sound on is a tap: unlock audio right here so the
+                // next reply is allowed to play.
+                speechPlayer().unlock();
+              }
               setSoundOn((s) => !s);
             }}
             aria-pressed={soundOn}
