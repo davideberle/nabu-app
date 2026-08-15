@@ -52,6 +52,11 @@ import {
   createChildSpeechPlayer,
   type ChildSpeechPlayer,
 } from "@/lib/family-speech";
+import {
+  PRIMARY_INPUT_HEIGHT_CLASS,
+  SEND_BUTTON_SIZE_CLASS,
+  TALK_BUTTON_SIZE_CLASS,
+} from "@/lib/family-assistant-layout";
 import { AssistantAvatar, type AvatarState } from "./avatar";
 
 // ---------------------------------------------------------------------------
@@ -289,7 +294,7 @@ function PrototypeDemoPanel({
         onClick={onToggle}
         aria-expanded={open}
         className={cn(
-          "flex min-h-11 w-full items-center justify-between gap-2 rounded-xl px-2 text-left",
+          "flex min-h-12 w-full items-center justify-between gap-2 rounded-xl px-2 text-left",
           focusRing,
         )}
       >
@@ -489,11 +494,19 @@ function DemoBadgeRow({ text }: { text: string }) {
 }
 
 // ---------------------------------------------------------------------------
-// Push-to-talk dock (rendered in the side rail on landscape, footer on portrait)
+// Push-to-talk dock — the primary control surface.
+//
+// One component, two compositions. `variant="dock"` is the portrait footer: a
+// full-width bar with the big talk button beside the typed input, sitting
+// under the child's thumbs on a held iPad. `variant="rail"` is the landscape
+// side rail: the same controls stacked under the avatar. The button itself is
+// the whole visible circle (sizes from `family-assistant-layout.ts`), and it
+// announces its state with an icon *and* a word, never color alone.
 // ---------------------------------------------------------------------------
 
 function MicDock({
   className,
+  variant,
   tint,
   listening,
   speechSupported,
@@ -503,6 +516,7 @@ function MicDock({
   onMicToggle,
 }: {
   className?: string;
+  variant: "dock" | "rail";
   tint: AssistantProfile["tint"];
   listening: boolean;
   speechSupported: boolean;
@@ -511,68 +525,92 @@ function MicDock({
   onTypedSubmit: () => void;
   onMicToggle: () => void;
 }) {
-  return (
-    <div className={cn("flex w-full flex-col items-center gap-3", className)}>
-      <div className="relative">
-        {listening && (
-          <span
-            aria-hidden="true"
-            className={cn(
-              "absolute inset-0 rounded-full opacity-40 motion-safe:animate-ping",
-              tintBar[tint],
-            )}
-          />
-        )}
-        <button
-          type="button"
-          onClick={onMicToggle}
-          aria-pressed={listening}
-          aria-label={listening ? "Stop listening" : "Tap to talk"}
+  const talkButton = (
+    <div className="relative shrink-0">
+      {listening && (
+        <span
+          aria-hidden="true"
           className={cn(
-            "relative grid h-20 w-20 place-items-center rounded-full text-3xl text-white shadow-md transition-transform active:scale-95",
-            listening ? "bg-red-500 hover:bg-red-600 focus-visible:outline-red-600" : tintSolid[tint],
-            focusRing,
-          )}
-        >
-          {listening ? "◼" : "🎤"}
-        </button>
-      </div>
-      <p className="text-sm font-medium text-secondary">
-        {listening
-          ? "Listening — tap to finish"
-          : speechSupported
-            ? "Tap to talk"
-            : "Talking needs the microphone — tap an idea or type"}
-      </p>
-      <form
-        className="flex w-full max-w-sm items-center gap-2"
-        onSubmit={(event) => {
-          event.preventDefault();
-          onTypedSubmit();
-        }}
-      >
-        <input
-          type="text"
-          value={typed}
-          onChange={(event) => onTypedChange(event.target.value)}
-          aria-label="Type to your companion instead of talking"
-          placeholder="…or type it here"
-          className={cn(
-            "h-12 min-w-0 flex-1 rounded-full border border-primary bg-primary px-4 text-base text-primary placeholder:text-quaternary",
-            focusRing,
+            "pointer-events-none absolute inset-0 rounded-full opacity-40 motion-safe:animate-ping",
+            tintBar[tint],
           )}
         />
-        <button
-          type="submit"
-          className={cn(
-            "grid h-12 w-12 shrink-0 place-items-center rounded-full border border-primary bg-primary text-lg text-secondary transition-colors hover:bg-secondary",
-            focusRing,
-          )}
-          aria-label="Send typed message"
-        >
-          ↑
-        </button>
-      </form>
+      )}
+      <button
+        type="button"
+        onClick={onMicToggle}
+        aria-pressed={listening}
+        aria-label={listening ? "Stop listening" : "Tap to talk"}
+        className={cn(
+          "relative flex flex-col items-center justify-center gap-1 rounded-full text-white shadow-lg transition-transform active:scale-95",
+          TALK_BUTTON_SIZE_CLASS,
+          listening ? "bg-red-500 hover:bg-red-600 focus-visible:outline-red-600" : tintSolid[tint],
+          focusRing,
+        )}
+      >
+        <span aria-hidden="true" className="text-4xl leading-none">
+          {listening ? "◼" : "🎤"}
+        </span>
+        <span className="text-lg font-semibold leading-none">
+          {listening ? "Stop" : "Talk"}
+        </span>
+      </button>
+    </div>
+  );
+  const caption = listening
+    ? "Listening — tap Stop when you're done"
+    : speechSupported
+      ? "Tap the big button and talk"
+      : "Talking needs the microphone — tap an idea or type";
+  const typedForm = (
+    <form
+      className="flex w-full items-center gap-2"
+      onSubmit={(event) => {
+        event.preventDefault();
+        onTypedSubmit();
+      }}
+    >
+      <input
+        type="text"
+        value={typed}
+        onChange={(event) => onTypedChange(event.target.value)}
+        aria-label="Type to your companion instead of talking"
+        placeholder="…or type it here"
+        className={cn(
+          "min-w-0 flex-1 rounded-full border border-primary bg-primary px-5 text-lg text-primary placeholder:text-quaternary",
+          PRIMARY_INPUT_HEIGHT_CLASS,
+          focusRing,
+        )}
+      />
+      <button
+        type="submit"
+        className={cn(
+          "grid shrink-0 place-items-center rounded-full border border-primary bg-primary text-xl text-secondary transition-colors hover:bg-secondary",
+          SEND_BUTTON_SIZE_CLASS,
+          focusRing,
+        )}
+        aria-label="Send typed message"
+      >
+        ↑
+      </button>
+    </form>
+  );
+  if (variant === "rail") {
+    return (
+      <div className={cn("w-full flex-col items-center gap-3", className)}>
+        {talkButton}
+        <p className="text-center text-sm font-medium text-secondary">{caption}</p>
+        <div className="w-full max-w-sm">{typedForm}</div>
+      </div>
+    );
+  }
+  return (
+    <div className={cn("mx-auto flex w-full max-w-3xl items-center gap-4 sm:gap-6", className)}>
+      {talkButton}
+      <div className="flex min-w-0 flex-1 flex-col gap-2">
+        <p className="text-sm font-medium text-secondary">{caption}</p>
+        {typedForm}
+      </div>
     </div>
   );
 }
@@ -603,7 +641,7 @@ function ProfileChooser({
           <Link
             href="/family/dashboard"
             className={cn(
-              "inline-flex min-h-11 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
+              "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
               focusRing,
             )}
           >
@@ -613,7 +651,7 @@ function ProfileChooser({
             <Link
               href="/"
               className={cn(
-                "inline-flex min-h-11 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
+                "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
                 focusRing,
               )}
             >
@@ -1489,7 +1527,7 @@ function Workspace({
                 focusRing,
               )}
             >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-secondary text-2xl">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-secondary text-2xl">
                 {s.icon}
               </span>
               <span className="min-w-0 text-base font-medium text-primary">
@@ -2107,7 +2145,7 @@ function Workspace({
             aria-pressed={soundOn}
             aria-label={soundOn ? "Turn voice sound off" : "Turn voice sound on"}
             className={cn(
-              "grid h-11 w-11 place-items-center rounded-full border border-primary bg-primary text-lg transition-colors hover:bg-secondary",
+              "grid h-12 w-12 place-items-center rounded-full border border-primary bg-primary text-lg transition-colors hover:bg-secondary",
               focusRing,
             )}
           >
@@ -2116,7 +2154,7 @@ function Workspace({
           <Link
             href={boardHref}
             className={cn(
-              "inline-flex min-h-11 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
+              "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
               focusRing,
             )}
           >
@@ -2126,7 +2164,7 @@ function Workspace({
             type="button"
             onClick={onSwitchProfile}
             className={cn(
-              "inline-flex min-h-11 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
+              "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
               focusRing,
             )}
           >
@@ -2136,7 +2174,7 @@ function Workspace({
             <Link
               href="/"
               className={cn(
-                "inline-flex min-h-11 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
+                "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
                 focusRing,
               )}
             >
@@ -2146,11 +2184,15 @@ function Workspace({
         </nav>
       </header>
 
-      <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
+      {/* Portrait — both iPad sizes included — is one conversation column with
+          the talk dock under the child's thumbs. The avatar-rail split exists
+          only where landscape width genuinely pays for it (contract:
+          family-assistant-layout.ts). */}
+      <div className="flex min-h-0 flex-1 flex-col lg:landscape:flex-row">
         {/* Companion rail */}
         <section
           aria-label={`${profile.companionName}, your companion`}
-          className="flex shrink-0 flex-col items-center gap-2 px-4 pb-1 pt-4 lg:w-[340px] lg:justify-center lg:gap-5 lg:border-r lg:border-secondary lg:px-6 lg:py-8"
+          className="flex shrink-0 flex-col items-center gap-2 px-4 pb-1 pt-4 lg:landscape:w-[380px] lg:landscape:justify-center lg:landscape:gap-5 lg:landscape:border-r lg:landscape:border-secondary lg:landscape:px-6 lg:landscape:py-8"
         >
           <AssistantAvatar
             state={avatarState}
@@ -2158,18 +2200,19 @@ function Workspace({
             crest={profile.crest}
             look={avatarLook}
             label={`${profile.companionName} is ${avatarStateLabel(avatarState)}`}
-            className="h-32 w-32 lg:h-52 lg:w-52"
+            className="h-24 w-24 lg:landscape:h-44 lg:landscape:w-44"
           />
           <p className="text-sm font-medium text-tertiary">
             {profile.companionName} · {avatarStateLabel(avatarState)}
           </p>
           {(stage.kind === "showing" || isSpeaking) && spokenLine ? (
-            <div className="max-w-xs rounded-2xl border border-primary bg-primary px-4 py-3 text-center text-sm leading-relaxed text-secondary">
+            <div className="max-w-md rounded-2xl border border-primary bg-primary px-4 py-3 text-center text-sm leading-relaxed text-secondary">
               {spokenLine}
             </div>
           ) : null}
           <MicDock
-            className="hidden lg:flex"
+            className="hidden lg:landscape:flex"
+            variant="rail"
             tint={tint}
             listening={isLiveListening}
             speechSupported={speechSupported}
@@ -2182,11 +2225,12 @@ function Workspace({
 
         {/* Stage */}
         <section aria-label="Conversation" className="flex min-h-0 flex-1 flex-col">
-          <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-6 lg:py-6">
+          <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-6 lg:landscape:py-6">
             {stageContent}
           </div>
-          <div className="shrink-0 border-t border-secondary bg-primary/60 px-4 py-3 lg:hidden">
+          <div className="shrink-0 border-t border-secondary bg-primary/60 px-4 py-3 sm:px-6 lg:landscape:hidden">
             <MicDock
+              variant="dock"
               tint={tint}
               listening={isLiveListening}
               speechSupported={speechSupported}
