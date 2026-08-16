@@ -41,12 +41,12 @@ import {
   type AssistantBlock,
 } from "@/lib/family-assistant-turn";
 import {
-  MAX_RECORDING_MS,
   checkChildUtterance,
-  pickRecorderMimeType,
-  recordingBlobType,
-  recordingFileName,
+  startPushToTalk,
   voiceCaptureSupported,
+  type PushToTalkSession,
+  type RecorderControl,
+  type RecorderHandlers,
 } from "@/lib/family-voice";
 import {
   createChildSpeechPlayer,
@@ -76,6 +76,32 @@ import { AssistantAvatar, type AvatarState } from "./avatar";
 
 /** Transcription endpoint (shared with the person board's voice memos). */
 const TRANSCRIBE_PATH = "/api/family/transcribe";
+
+/**
+ * Wraps a real `MediaRecorder` in the small control surface
+ * `startPushToTalk` drives.
+ *
+ * The lifecycle itself lives in `lib/family-voice.ts` so `node --test` can run
+ * it; this is the only place DOM event types touch it.
+ */
+function adaptMediaRecorder(
+  recorder: MediaRecorder,
+  handlers: RecorderHandlers,
+): RecorderControl {
+  recorder.ondataavailable = (event) => handlers.onData(event.data);
+  recorder.onstop = () => handlers.onStop();
+  recorder.onerror = () => handlers.onError();
+  return {
+    start: () => recorder.start(),
+    stop: () => recorder.stop(),
+    mimeType: () => recorder.mimeType || null,
+    detach: () => {
+      recorder.ondataavailable = null;
+      recorder.onstop = null;
+      recorder.onerror = null;
+    },
+  };
+}
 
 // ---------------------------------------------------------------------------
 // Resolve routines/rewards with config overrides (client-side mirror)
@@ -162,7 +188,13 @@ type ThinkingPhase = "sending" | "thinking";
 
 type Stage =
   | { kind: "ready" }
-  | { kind: "listening"; transcript: string; simulated: boolean }
+  /**
+   * `live` is false while the microphone is still opening. Nothing on screen
+   * may claim to be listening until it flips: `getUserMedia` takes a moment
+   * (longer behind a permission prompt), and a child told "Listening…" too
+   * early speaks into a recorder that does not exist yet.
+   */
+  | { kind: "listening"; transcript: string; simulated: boolean; live: boolean }
   /** Recording finished; the audio is at the transcription service. */
   | { kind: "transcribing" }
   | {
@@ -333,7 +365,8 @@ function avatarStateFor(stage: Stage, isSpeaking: boolean): AvatarState {
     case "ready":
       return "ready";
     case "listening":
-      return "listening";
+      // Still opening the microphone: the avatar is busy, not listening.
+      return stage.live ? "listening" : "thinking";
     case "transcribing":
       return "thinking";
     case "confirming":
@@ -504,11 +537,18 @@ function DemoBadgeRow({ text }: { text: string }) {
 // announces its state with an icon *and* a word, never color alone.
 // ---------------------------------------------------------------------------
 
+/**
+ * Three states, not two: `starting` is the window where the microphone is
+ * being opened. It looks and reads like Stop — tapping it does stop the turn —
+ * but it never says "Listening", because nothing is being recorded yet.
+ */
+type MicState = "idle" | "starting" | "live";
+
 function MicDock({
   className,
   variant,
   tint,
-  listening,
+  micState,
   speechSupported,
   typed,
   onTypedChange,
@@ -518,16 +558,17 @@ function MicDock({
   className?: string;
   variant: "dock" | "rail";
   tint: AssistantProfile["tint"];
-  listening: boolean;
+  micState: MicState;
   speechSupported: boolean;
   typed: string;
   onTypedChange: (value: string) => void;
   onTypedSubmit: () => void;
   onMicToggle: () => void;
 }) {
+  const listening = micState !== "idle";
   const talkButton = (
     <div className="relative shrink-0">
-      {listening && (
+      {micState === "live" && (
         <span
           aria-hidden="true"
           className={cn(
@@ -540,7 +581,13 @@ function MicDock({
         type="button"
         onClick={onMicToggle}
         aria-pressed={listening}
-        aria-label={listening ? "Stop listening" : "Tap to talk"}
+        aria-label={
+          micState === "live"
+            ? "Stop listening"
+            : micState === "starting"
+              ? "Stop — the microphone is still turning on"
+              : "Tap to talk"
+        }
         className={cn(
           "relative flex flex-col items-center justify-center gap-1 rounded-full text-white shadow-lg transition-transform active:scale-95",
           TALK_BUTTON_SIZE_CLASS,
@@ -557,11 +604,14 @@ function MicDock({
       </button>
     </div>
   );
-  const caption = listening
-    ? "Listening — tap Stop when you're done"
-    : speechSupported
-      ? "Tap the big button and talk"
-      : "Talking needs the microphone — tap an idea or type";
+  const caption =
+    micState === "live"
+      ? "Listening — tap Stop when you're done"
+      : micState === "starting"
+        ? "Turning the microphone on…"
+        : speechSupported
+          ? "Tap the big button and talk"
+          : "Talking needs the microphone — tap an idea or type";
   const typedForm = (
     <form
       className="flex w-full items-center gap-2"
@@ -731,10 +781,8 @@ function Workspace({
   const aliveRef = useRef(true);
   const speakSeqRef = useRef(0);
   const turnSeqRef = useRef(0);
-  /** The in-progress push-to-talk recording, if any. */
-  const recorderRef = useRef<MediaRecorder | null>(null);
-  const recorderStreamRef = useRef<MediaStream | null>(null);
-  const recorderChunksRef = useRef<Blob[]>([]);
+  /** The in-progress push-to-talk session, if any. */
+  const recordSessionRef = useRef<PushToTalkSession | null>(null);
   /** Bumped on every start/stop/cancel so a stale recording is discarded. */
   const recordSeqRef = useRef(0);
   const soundOnRef = useRef(true);
@@ -817,30 +865,15 @@ function Workspace({
   }, []);
 
   /**
-   * Discards any recording in progress: detaches the recorder, stops it, and
-   * releases the microphone. Bumping the sequence first means an `onstop` that
-   * fires after this cannot post stale audio anywhere.
+   * Discards any recording in progress: cancels the session, which detaches the
+   * recorder and releases the microphone even if permission is still pending.
+   * Bumping the sequence first means a late outcome cannot post stale audio.
    */
   const discardRecording = useCallback(() => {
     recordSeqRef.current += 1;
-    const recorder = recorderRef.current;
-    recorderRef.current = null;
-    recorderChunksRef.current = [];
-    if (recorder) {
-      recorder.ondataavailable = null;
-      recorder.onerror = null;
-      recorder.onstop = null;
-      try {
-        if (recorder.state !== "inactive") recorder.stop();
-      } catch {
-        /* already stopped */
-      }
-    }
-    const stream = recorderStreamRef.current;
-    recorderStreamRef.current = null;
-    if (stream) {
-      for (const track of stream.getTracks()) track.stop();
-    }
+    const session = recordSessionRef.current;
+    recordSessionRef.current = null;
+    session?.cancel();
   }, []);
 
   const cancelSpeech = useCallback(() => {
@@ -1201,36 +1234,21 @@ function Workspace({
   }, []);
 
   /**
-   * The finished recording: assemble the blob, release the microphone, and let
-   * ElevenLabs Scribe turn it into the transcript the child reviews. `seq`
-   * guards every step — a recording superseded by a newer one, a profile
-   * switch, or unmount is silently discarded, never posted or rendered late.
+   * The finished recording: let ElevenLabs Scribe turn it into the transcript
+   * the child reviews. The route pins no language — Scribe v2 detects it per
+   * utterance — so a turn in German or Spanish comes back in the words the
+   * child actually said. `seq` guards every step: a recording superseded by a
+   * newer one, a profile switch, or unmount is silently discarded, never posted
+   * or rendered late.
    */
-  const processRecording = useCallback(
-    (seq: number) => {
-      const recorder = recorderRef.current;
-      const mime = recorder?.mimeType || null;
-      const chunks = recorderChunksRef.current;
-      recorderRef.current = null;
-      recorderChunksRef.current = [];
-      const stream = recorderStreamRef.current;
-      recorderStreamRef.current = null;
-      if (stream) {
-        for (const track of stream.getTracks()) track.stop();
-      }
+  const transcribeRecording = useCallback(
+    (seq: number, blob: Blob, fileName: string) => {
       if (!aliveRef.current || seq !== recordSeqRef.current) return;
-
-      const blob = new Blob(chunks, { type: recordingBlobType(mime) });
-      if (blob.size === 0) {
-        recover("I couldn't hear anything that time. Try again a bit closer, or tap an idea below.");
-        return;
-      }
-
       setStage({ kind: "transcribing" });
       void (async () => {
         try {
           const form = new FormData();
-          form.append("audio", blob, recordingFileName(mime));
+          form.append("audio", blob, fileName);
           const response = await fetch(TRANSCRIBE_PATH, { method: "POST", body: form });
           if (!aliveRef.current || seq !== recordSeqRef.current) return;
           if (!response.ok) {
@@ -1262,6 +1280,15 @@ function Workspace({
     [enterConfirming, recover],
   );
 
+  /**
+   * Opens the microphone and starts a push-to-talk session.
+   *
+   * The lifecycle — startup vs. live, a Stop tapped during startup, the minimum
+   * capture floor, chunk assembly, the 60-second bound — belongs to
+   * `startPushToTalk`; this handler only maps its one outcome onto the stage.
+   * `seq` still guards every callback, so a session the child has moved on from
+   * cannot paint over what they are looking at now.
+   */
   const startListening = useCallback(() => {
     if (!voiceCaptureSupported(window)) {
       recover(
@@ -1275,88 +1302,76 @@ function Workspace({
     // A tap started this: the moment iPad Safari lets audio be unlocked.
     speechPlayer().unlock();
     const seq = recordSeqRef.current;
-    setStage({ kind: "listening", transcript: "", simulated: false });
-    void (async () => {
-      let stream: MediaStream;
-      try {
-        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      } catch {
-        if (aliveRef.current && seq === recordSeqRef.current) {
-          recover(
-            "I couldn't listen just now — the microphone said no. Tap an idea below or type instead.",
-          );
+    // Not "Listening" yet — the microphone is still opening.
+    setStage({ kind: "listening", transcript: "", simulated: false, live: false });
+    const session = startPushToTalk({
+      getUserMedia: () => navigator.mediaDevices.getUserMedia({ audio: true }),
+      isTypeSupported: (type) => MediaRecorder.isTypeSupported(type),
+      createRecorder: (stream, mimeType, handlers) =>
+        adaptMediaRecorder(
+          new MediaRecorder(stream, mimeType ? { mimeType } : undefined),
+          handlers,
+        ),
+      onLive: () => {
+        if (!aliveRef.current || seq !== recordSeqRef.current) return;
+        setStage({ kind: "listening", transcript: "", simulated: false, live: true });
+      },
+      onSettle: (outcome) => {
+        if (recordSessionRef.current === session) recordSessionRef.current = null;
+        if (!aliveRef.current || seq !== recordSeqRef.current) return;
+        switch (outcome.kind) {
+          case "recorded":
+            transcribeRecording(seq, outcome.blob, outcome.fileName);
+            break;
+          case "empty":
+            recover(
+              "I couldn't hear anything that time. Try again a bit closer, or tap an idea below.",
+            );
+            break;
+          case "denied":
+            recover(
+              "I couldn't listen just now — the microphone said no. Tap an idea below or type instead.",
+            );
+            break;
+          case "failed":
+            recover(
+              "Something went wrong with the microphone. Tap an idea below or type instead.",
+            );
+            break;
+          case "cancelled":
+            // Whatever cancelled this owns the stage; stay silent.
+            break;
         }
-        return;
-      }
-      // The child moved on (or the profile changed) while permission was
-      // pending: release the microphone immediately.
-      if (!aliveRef.current || seq !== recordSeqRef.current) {
-        for (const track of stream.getTracks()) track.stop();
-        return;
-      }
-      try {
-        const mime = pickRecorderMimeType((type) => MediaRecorder.isTypeSupported(type));
-        const recorder = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
-        recorderStreamRef.current = stream;
-        recorderChunksRef.current = [];
-        recorder.ondataavailable = (event) => {
-          if (event.data.size > 0) recorderChunksRef.current.push(event.data);
-        };
-        recorder.onstop = () => processRecording(seq);
-        recorder.onerror = () => {
-          if (seq !== recordSeqRef.current) return;
-          discardRecording();
-          if (aliveRef.current) {
-            recover("Something went wrong with the microphone. Tap an idea below or type instead.");
-          }
-        };
-        recorderRef.current = recorder;
-        recorder.start();
-        // Recordings are bounded; a forgotten open mic stops itself.
-        later(() => {
-          if (seq === recordSeqRef.current && recorderRef.current === recorder) {
-            finishListeningRef.current();
-          }
-        }, MAX_RECORDING_MS);
-      } catch {
-        for (const track of stream.getTracks()) track.stop();
-        recorderStreamRef.current = null;
-        if (aliveRef.current && seq === recordSeqRef.current) {
-          recover("Something went wrong with the microphone. Tap an idea below or type instead.");
-        }
-      }
-    })();
-  }, [cancelSpeech, clearTimers, discardRecording, later, processRecording, recover, speechPlayer]);
+      },
+    });
+    recordSessionRef.current = session;
+  }, [cancelSpeech, clearTimers, discardRecording, recover, speechPlayer, transcribeRecording]);
 
+  /**
+   * Stop. During startup the session remembers the tap and applies it as soon
+   * as capture is live, so the utterance survives instead of vanishing.
+   */
   const finishListening = useCallback(() => {
-    const recorder = recorderRef.current;
-    if (recorder && recorder.state === "recording") {
-      try {
-        recorder.stop(); // onstop fires and processes what was recorded
-        return;
-      } catch {
-        /* fall through to the discard path */
-      }
+    const session = recordSessionRef.current;
+    if (session) {
+      session.stop();
+      return;
     }
     discardRecording();
     backToReady();
   }, [backToReady, discardRecording]);
 
-  /** Lets the auto-stop timer inside `startListening` call the newest stop. */
-  const finishListeningRef = useRef(finishListening);
-  useEffect(() => {
-    finishListeningRef.current = finishListening;
-  }, [finishListening]);
-
-  const isLiveListening = stage.kind === "listening" && !stage.simulated;
+  const micState: MicState =
+    stage.kind !== "listening" || stage.simulated ? "idle" : stage.live ? "live" : "starting";
+  const isRecording = micState !== "idle";
 
   const onMicToggle = useCallback(() => {
-    if (isLiveListening) {
+    if (isRecording) {
       finishListening();
     } else {
       startListening();
     }
-  }, [finishListening, isLiveListening, startListening]);
+  }, [finishListening, isRecording, startListening]);
 
   // ------------------------------------------------------------------
   // Starter chips: type out the phrase, then send it as a real turn
@@ -1375,15 +1390,20 @@ function Workspace({
       // reply a few seconds later is allowed to play.
       speechPlayer().unlock();
       if (reducedMotion) {
-        setStage({ kind: "listening", transcript: phrase, simulated: true });
+        setStage({ kind: "listening", transcript: phrase, simulated: true, live: true });
         later(() => askChild(phrase), 550);
         return;
       }
-      setStage({ kind: "listening", transcript: "", simulated: true });
+      setStage({ kind: "listening", transcript: "", simulated: true, live: true });
       let shown = 0;
       const step = () => {
         shown += 1;
-        setStage({ kind: "listening", transcript: phrase.slice(0, shown), simulated: true });
+        setStage({
+          kind: "listening",
+          transcript: phrase.slice(0, shown),
+          simulated: true,
+          live: true,
+        });
         if (shown < phrase.length) {
           later(step, 36);
         } else {
@@ -1480,7 +1500,10 @@ function Workspace({
       case "ready":
         return `${profile.companionName} is ready. ${profile.greeting}`;
       case "listening":
-        return stage.transcript ? `Heard so far: ${stage.transcript}` : "Listening";
+        if (stage.transcript) return `Heard so far: ${stage.transcript}`;
+        // Truthful for a screen reader too: nothing is being recorded until
+        // the recorder is live.
+        return stage.live ? "Listening" : "Turning the microphone on";
       case "transcribing":
         return "Working out what you said";
       case "confirming":
@@ -1549,23 +1572,33 @@ function Workspace({
     stageContent = (
       <div className="flex min-h-full flex-col justify-center gap-5">
         <p className={cn("text-sm font-semibold uppercase tracking-[0.14em]", tintText[tint])}>
-          {stage.simulated ? "Pretend voice demo" : "Listening…"}
+          {stage.simulated ? "Pretend voice demo" : stage.live ? "Listening…" : "Getting ready…"}
         </p>
         <p className="min-h-24 text-3xl font-medium leading-snug text-primary">
           {stage.transcript ? (
             <>&ldquo;{stage.transcript}&rdquo;</>
           ) : stage.simulated ? (
             <span className="text-quaternary">Say what you&rsquo;d like…</span>
-          ) : (
+          ) : stage.live ? (
             <span className="text-quaternary">
               Say what you&rsquo;d like — I&rsquo;ll show you the words when you tap stop.
+            </span>
+          ) : (
+            <span className="text-quaternary">
+              Turning the microphone on — wait for &ldquo;Listening&rdquo; before you start.
             </span>
           )}
         </p>
         {!stage.simulated && (
           <div>
+            {/* Live or not, this button stops the turn: a tap during startup is
+                remembered and applied the moment the recorder is live. */}
             <BigOptionButton
-              label="Done talking — show me the words"
+              label={
+                stage.live
+                  ? "Done talking — show me the words"
+                  : "Stop — I'll catch what you say"
+              }
               icon="◼"
               tint={tint}
               onClick={finishListening}
@@ -2214,7 +2247,7 @@ function Workspace({
             className="hidden lg:landscape:flex"
             variant="rail"
             tint={tint}
-            listening={isLiveListening}
+            micState={micState}
             speechSupported={speechSupported}
             typed={typed}
             onTypedChange={setTyped}
@@ -2232,7 +2265,7 @@ function Workspace({
             <MicDock
               variant="dock"
               tint={tint}
-              listening={isLiveListening}
+              micState={micState}
               speechSupported={speechSupported}
               typed={typed}
               onTypedChange={setTyped}
