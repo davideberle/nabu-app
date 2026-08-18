@@ -14,7 +14,6 @@ import {
 } from "@/data/family-routines";
 import type { FamilyBoardConfig, RewardRedemption } from "@/lib/family-db";
 import {
-  assistantProfiles,
   assistantProfileById,
   avatarStyleById,
   avatarStyles,
@@ -23,7 +22,6 @@ import {
   ninjagoResume,
   parentSuggestion,
   starterPhrases,
-  type AssistantChildId,
   type AssistantIntent,
   type AssistantProfile,
   type AvatarStyleId,
@@ -57,6 +55,8 @@ import {
   SEND_BUTTON_SIZE_CLASS,
   TALK_BUTTON_SIZE_CLASS,
 } from "@/lib/family-assistant-layout";
+import { childShellDestinationHref } from "@/lib/family-child-shell";
+import { useChildShell } from "@/components/family/child-shell-provider";
 import { AssistantAvatar, type AvatarState } from "./avatar";
 
 // ---------------------------------------------------------------------------
@@ -666,104 +666,21 @@ function MicDock({
 }
 
 // ---------------------------------------------------------------------------
-// Profile chooser
-// ---------------------------------------------------------------------------
-
-function ProfileChooser({
-  trackerOnly,
-  onPick,
-}: {
-  trackerOnly: boolean;
-  onPick: (id: AssistantChildId) => void;
-}) {
-  return (
-    <div className="flex min-h-dvh flex-col overflow-x-hidden bg-secondary text-primary">
-      <header className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-secondary bg-primary/80 px-5 py-3 backdrop-blur-xl sm:px-8">
-        <div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
-            Family assistant · not released yet
-          </p>
-          <h1 className="text-xl font-semibold tracking-[-0.02em]">
-            Who&rsquo;s listening today?
-          </h1>
-        </div>
-        <nav className="flex items-center gap-2">
-          <Link
-            href="/family/dashboard"
-            className={cn(
-              "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
-              focusRing,
-            )}
-          >
-            Family board
-          </Link>
-          {!trackerOnly && (
-            <Link
-              href="/"
-              className={cn(
-                "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
-                focusRing,
-              )}
-            >
-              Nabu
-            </Link>
-          )}
-        </nav>
-      </header>
-
-      <main className="mx-auto grid w-full max-w-3xl flex-1 content-center gap-5 px-5 py-8 sm:grid-cols-2 sm:px-8">
-        {assistantProfiles.map((profile) => (
-          <button
-            key={profile.id}
-            type="button"
-            onClick={() => onPick(profile.id)}
-            className={cn(
-              "flex min-w-0 flex-col items-center gap-4 rounded-3xl border-2 p-7 text-center transition-all hover:-translate-y-1 hover:shadow-lg",
-              tintBorder[profile.tint],
-              tintSoftBg[profile.tint],
-              focusRing,
-            )}
-          >
-            <AssistantAvatar
-              state="ready"
-              tint={profile.tint}
-              crest={profile.crest}
-              label={`${profile.companionName}, ${profile.displayName}'s companion`}
-              className="h-40 w-40"
-            />
-            <span className="text-2xl font-semibold text-primary">
-              {profile.displayName}
-            </span>
-            <span className={cn("text-sm font-medium", tintText[profile.tint])}>
-              {profile.companionName} is ready for you
-            </span>
-          </button>
-        ))}
-      </main>
-
-      <footer className="shrink-0 px-5 pb-6 text-center text-xs text-quaternary">
-        Not released yet — answers are real, but nothing here plays on the
-        speakers, makes pictures, or messages anyone.
-      </footer>
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
 // Conversational workspace
 // ---------------------------------------------------------------------------
 
 function Workspace({
   profile,
   weekId,
-  trackerOnly,
-  onSwitchProfile,
 }: {
   profile: AssistantProfile;
   weekId: string;
-  trackerOnly: boolean;
-  onSwitchProfile: () => void;
 }) {
+  // Shell chrome (avatar, tabs, switcher) lives in the persistent `(shell)`
+  // layout provider. Picking the other child there changes the Workspace
+  // `key`, so the whole conversation subtree unmounts and its cleanup
+  // discards any in-flight turn, recording and speech before the sibling's
+  // workspace mounts.
   const [stage, setStage] = useState<Stage>({ kind: "ready" });
   const [spokenLine, setSpokenLine] = useState<string>(profile.greeting);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -1517,7 +1434,9 @@ function Workspace({
     }
   }, [profile.companionName, profile.greeting, spokenLine, stage]);
 
-  const boardHref = `/family/dashboard/${profile.id}?week=${weekId}`;
+  // The routine-progress fixture links into the shell's own Plan destination,
+  // which renders the same person board without leaving the child shell.
+  const boardHref = childShellDestinationHref("plan", profile.id, weekId);
 
   // ------------------------------------------------------------------
   // Stage content
@@ -2135,87 +2054,10 @@ function Workspace({
   // ------------------------------------------------------------------
 
   return (
-    <div className="flex h-dvh min-h-0 w-full flex-col overflow-hidden bg-secondary text-primary">
+    <div className="flex min-h-0 w-full flex-1 flex-col overflow-hidden bg-secondary text-primary">
       <p aria-live="polite" className="sr-only">
         {announcement}
       </p>
-
-      <header className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-b border-secondary bg-primary/80 px-4 py-2.5 backdrop-blur-xl sm:px-6">
-        <div className="flex min-w-0 items-center gap-3">
-          <AssistantAvatar
-            state="ready"
-            tint={tint}
-            crest={profile.crest}
-            look={avatarLook}
-            label=""
-            className="h-9 w-9"
-          />
-          <div className="min-w-0">
-            <p className="truncate text-sm font-semibold text-primary">
-              {profile.companionName}
-              <span className="ml-2 font-normal text-quaternary">
-                with {profile.displayName}
-              </span>
-            </p>
-            <p className="text-[11px] uppercase tracking-[0.12em] text-quaternary">
-              Real answers · music and pictures not connected yet
-            </p>
-          </div>
-        </div>
-        <nav className="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={() => {
-              if (soundOn) {
-                cancelSpeech();
-              } else {
-                // Turning sound on is a tap: unlock audio right here so the
-                // next reply is allowed to play.
-                speechPlayer().unlock();
-              }
-              setSoundOn((s) => !s);
-            }}
-            aria-pressed={soundOn}
-            aria-label={soundOn ? "Turn voice sound off" : "Turn voice sound on"}
-            className={cn(
-              "grid h-12 w-12 place-items-center rounded-full border border-primary bg-primary text-lg transition-colors hover:bg-secondary",
-              focusRing,
-            )}
-          >
-            {soundOn ? "🔊" : "🔇"}
-          </button>
-          <Link
-            href={boardHref}
-            className={cn(
-              "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
-              focusRing,
-            )}
-          >
-            My board
-          </Link>
-          <button
-            type="button"
-            onClick={onSwitchProfile}
-            className={cn(
-              "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
-              focusRing,
-            )}
-          >
-            Switch
-          </button>
-          {!trackerOnly && (
-            <Link
-              href="/"
-              className={cn(
-                "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
-                focusRing,
-              )}
-            >
-              Nabu
-            </Link>
-          )}
-        </nav>
-      </header>
 
       {/* Portrait — both iPad sizes included — is one conversation column with
           the talk dock under the child's thumbs. The avatar-rail split exists
@@ -2235,9 +2077,32 @@ function Workspace({
             label={`${profile.companionName} is ${avatarStateLabel(avatarState)}`}
             className="h-24 w-24 lg:landscape:h-44 lg:landscape:w-44"
           />
-          <p className="text-sm font-medium text-tertiary">
-            {profile.companionName} · {avatarStateLabel(avatarState)}
-          </p>
+          <div className="flex items-center gap-3">
+            <p className="text-sm font-medium text-tertiary">
+              {profile.companionName} · {avatarStateLabel(avatarState)}
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                if (soundOn) {
+                  cancelSpeech();
+                } else {
+                  // Turning sound on is a tap: unlock audio right here so the
+                  // next reply is allowed to play.
+                  speechPlayer().unlock();
+                }
+                setSoundOn((s) => !s);
+              }}
+              aria-pressed={soundOn}
+              aria-label={soundOn ? "Turn voice sound off" : "Turn voice sound on"}
+              className={cn(
+                "grid h-12 w-12 place-items-center rounded-full border border-primary bg-primary text-lg transition-colors hover:bg-secondary",
+                focusRing,
+              )}
+            >
+              {soundOn ? "🔊" : "🔇"}
+            </button>
+          </div>
           {(stage.kind === "showing" || isSpeaking) && spokenLine ? (
             <div className="max-w-md rounded-2xl border border-primary bg-primary px-4 py-3 text-center text-sm leading-relaxed text-secondary">
               {spokenLine}
@@ -2280,50 +2145,17 @@ function Workspace({
 }
 
 // ---------------------------------------------------------------------------
-// Entry — profile chooser, then the workspace for the picked child
+// Entry — the workspace for the shell's selected child
 // ---------------------------------------------------------------------------
 
-export function FamilyAssistantClient({
-  weekId,
-  initialChild,
-  trackerOnly,
-}: {
-  weekId: string;
-  initialChild: AssistantChildId | null;
-  trackerOnly: boolean;
-}) {
-  const [childId, setChildId] = useState<AssistantChildId | null>(initialChild);
-  const profile = assistantProfileById(childId);
+export function FamilyAssistantClient({ weekId }: { weekId: string }) {
+  // The selected child is owned by the persistent `(shell)` layout provider;
+  // while no child is selected the provider shows the non-dismissable
+  // switcher, so this surface simply renders nothing behind it.
+  const { child } = useChildShell();
+  const profile = assistantProfileById(child);
 
-  const pickProfile = useCallback((id: AssistantChildId) => {
-    setChildId(id);
-    try {
-      window.history.replaceState(null, "", `/family/assistant?child=${id}`);
-    } catch {
-      /* history not writable — selection still works */
-    }
-  }, []);
+  if (!profile) return null;
 
-  const switchProfile = useCallback(() => {
-    setChildId(null);
-    try {
-      window.history.replaceState(null, "", "/family/assistant");
-    } catch {
-      /* ignore */
-    }
-  }, []);
-
-  if (!profile) {
-    return <ProfileChooser trackerOnly={trackerOnly} onPick={pickProfile} />;
-  }
-
-  return (
-    <Workspace
-      key={profile.id}
-      profile={profile}
-      weekId={weekId}
-      trackerOnly={trackerOnly}
-      onSwitchProfile={switchProfile}
-    />
-  );
+  return <Workspace key={profile.id} profile={profile} weekId={weekId} />;
 }

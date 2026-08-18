@@ -28,7 +28,18 @@ export function isTrackerAllowedPath(pathname: string): boolean {
   return (
     pathname === "/family/dashboard" ||
     pathname.startsWith("/family/dashboard/") ||
-    pathname === "/family/assistant"
+    pathname === "/family/assistant" ||
+    // Child-shell destinations: the shared-iPad shell's Plan and Rewards
+    // surfaces (the Assistant destination is /family/assistant above).
+    pathname === "/family/plan" ||
+    pathname === "/family/rewards" ||
+    // Rewards game corner: the Adaptive Chess Coach launch page and its
+    // vendored static bundle (Game Studio-owned pilot). The bundle is pure
+    // client-side game code with no secrets; keeping it behind the household
+    // login (rather than excluding it from middleware) is the conservative
+    // choice for a child-facing surface.
+    pathname === "/family/rewards/chess" ||
+    pathname.startsWith("/games/adaptive-chess-coach/")
   );
 }
 

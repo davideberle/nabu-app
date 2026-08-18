@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Chess Coach</title>
+    <style>
+      :root {
+        --bg: #1b1f2a;
+        --panel: #232838;
+        --panel-2: #2b3145;
+        --ink: #f4f6fb;
+        --ink-dim: #aeb6c8;
+        --accent: #6ea8fe;
+        --accent-ink: #0b1220;
+        --light: #eadfc8;
+        --dark: #7b96b0;
+        --sel: #f6d365;
+        --target: rgba(110, 168, 254, 0.55);
+        --last: rgba(246, 211, 101, 0.35);
+        --check: #ff6b6b;
+        --good: #57c98b;
+      }
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        overscroll-behavior: none;
+        touch-action: manipulation;
+      }
+      #app {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ---- Layout: portrait stacks, landscape is side-by-side ---- */
+      .play {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+      }
+      @media (orientation: landscape) {
+        .play {
+          flex-direction: row;
+          align-items: stretch;
+          justify-content: center;
+        }
+      }
+
+      .board-wrap {
+        width: min(96vw, calc(100vh - 150px));
+        max-width: 640px;
+        aspect-ratio: 1 / 1;
+      }
+      @media (orientation: landscape) {
+        .board-wrap {
+          width: min(70vh, calc(100vw - 300px));
+          height: min(70vh, calc(100vw - 300px));
+          align-self: center;
+        }
+      }
+
+      .board {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        user-select: none;
+      }
+      .sq {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: min(9vw, 46px);
+        line-height: 1;
+        cursor: pointer;
+      }
+      @media (orientation: landscape) {
+        .sq {
+          font-size: min(8vh, 46px);
+        }
+      }
+      .sq.light {
+        background: var(--light);
+      }
+      .sq.dark {
+        background: var(--dark);
+      }
+      .sq.sel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--sel);
+        opacity: 0.55;
+      }
+      .sq.last::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--last);
+      }
+      .sq.check .piece {
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px var(--check) inset;
+      }
+      .piece {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+      .piece.w {
+        color: #ffffff;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35), 0 0 2px rgba(0, 0, 0, 0.6);
+      }
+      .piece.b {
+        color: #1a1d27;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.25);
+      }
+      .dot {
+        position: absolute;
+        z-index: 3;
+        width: 30%;
+        height: 30%;
+        border-radius: 50%;
+        background: var(--target);
+        pointer-events: none;
+      }
+      .dot.capture {
+        width: 84%;
+        height: 84%;
+        background: transparent;
+        border: 5px solid var(--target);
+        box-sizing: border-box;
+      }
+
+      /* ---- Side / info panel ---- */
+      .panel {
+        width: min(96vw, 640px);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      @media (orientation: landscape) {
+        .panel {
+          width: 280px;
+          align-self: center;
+        }
+      }
+      .card {
+        background: var(--panel);
+        border-radius: 14px;
+        padding: 14px 16px;
+      }
+      .opponent {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .opponent .emoji {
+        font-size: 34px;
+      }
+      .opponent h2 {
+        margin: 0;
+        font-size: 17px;
+      }
+      .opponent p {
+        margin: 2px 0 0;
+        font-size: 13px;
+        color: var(--ink-dim);
+      }
+      .status-line {
+        font-size: 15px;
+        font-weight: 600;
+        min-height: 20px;
+      }
+      .status-line.good {
+        color: var(--good);
+      }
+      .meta {
+        display: flex;
+        gap: 14px;
+        font-size: 13px;
+        color: var(--ink-dim);
+        flex-wrap: wrap;
+      }
+      .btn {
+        appearance: none;
+        border: none;
+        border-radius: 12px;
+        padding: 14px 18px;
+        font-size: 16px;
+        font-weight: 700;
+        background: var(--accent);
+        color: var(--accent-ink);
+        cursor: pointer;
+        min-height: 48px;
+        width: 100%;
+      }
+      .btn.secondary {
+        background: var(--panel-2);
+        color: var(--ink);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn-row {
+        display: flex;
+        gap: 10px;
+      }
+      .btn-row .btn {
+        flex: 1;
+      }
+
+      /* ---- Overlays (start, concept, promotion, checkpoint, recap) ---- */
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 12, 20, 0.72);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        z-index: 20;
+      }
+      .overlay.show {
+        display: flex;
+      }
+      .sheet {
+        background: var(--panel);
+        border-radius: 18px;
+        padding: 22px;
+        width: min(94vw, 460px);
+        max-height: 92vh;
+        overflow: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+      .sheet h1 {
+        margin: 0 0 6px;
+        font-size: 22px;
+      }
+      .sheet h3 {
+        margin: 0 0 4px;
+        font-size: 18px;
+      }
+      .sheet p {
+        margin: 8px 0;
+        font-size: 15px;
+        line-height: 1.45;
+        color: var(--ink);
+      }
+      .muted {
+        color: var(--ink-dim);
+        font-size: 13px;
+      }
+      .concept-badge {
+        display: inline-block;
+        background: var(--panel-2);
+        border-radius: 999px;
+        padding: 4px 12px;
+        font-size: 12px;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+      .promo-row {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .promo-btn {
+        font-size: 40px;
+        background: var(--panel-2);
+        border: none;
+        border-radius: 12px;
+        padding: 8px 12px;
+        cursor: pointer;
+        color: #fff;
+        min-width: 60px;
+        min-height: 60px;
+      }
+      .risk {
+        background: var(--panel-2);
+        border-left: 4px solid var(--sel);
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin: 10px 0;
+        font-size: 15px;
+      }
+      .compare {
+        font-size: 14px;
+        color: var(--ink-dim);
+        margin-top: 8px;
+      }
+      .recap-item {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin: 10px 0;
+      }
+      .recap-item .ic {
+        font-size: 22px;
+      }
+      .link {
+        background: none;
+        border: none;
+        color: var(--ink-dim);
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 8px;
+      }
+      .center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="play">
+        <div class="board-wrap">
+          <div class="board" id="board" aria-label="Chess board"></div>
+        </div>
+        <div class="panel">
+          <div class="card opponent" id="opponent-card">
+            <div class="emoji" id="opp-emoji">🐧</div>
+            <div>
+              <h2 id="opp-name">Pip the Penguin</h2>
+              <p id="opp-blurb"></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="status-line" id="status-line">Your move</div>
+            <div class="meta">
+              <span id="meta-level"></span>
+              <span id="meta-checkpoints"></span>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn secondary" id="new-game-btn">New game</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Start overlay -->
+    <div class="overlay" id="start-overlay">
+      <div class="sheet center">
+        <h1 id="start-title">Chess Coach</h1>
+        <p class="muted" id="start-sub"></p>
+        <div class="card opponent" style="text-align: left; margin: 14px 0">
+          <div class="emoji" id="start-opp-emoji">🐧</div>
+          <div>
+            <h2 id="start-opp-name"></h2>
+            <p id="start-opp-blurb"></p>
+          </div>
+        </div>
+        <button class="btn" id="start-play-btn">Play ▶</button>
+        <div id="resume-wrap" style="margin-top: 10px; display: none">
+          <button class="btn secondary" id="resume-btn">Resume last game</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concept overlay -->
+    <div class="overlay" id="concept-overlay">
+      <div class="sheet">
+        <span class="concept-badge">Today&rsquo;s idea</span>
+        <h3 id="concept-title"></h3>
+        <p id="concept-text"></p>
+        <button class="btn" id="concept-go-btn">Let&rsquo;s play!</button>
+      </div>
+    </div>
+
+    <!-- Promotion overlay -->
+    <div class="overlay" id="promo-overlay">
+      <div class="sheet center">
+        <h3>Your pawn made it! Pick a piece:</h3>
+        <div class="promo-row" id="promo-row"></div>
+      </div>
+    </div>
+
+    <!-- Checkpoint overlay -->
+    <div class="overlay" id="checkpoint-overlay">
+      <div class="sheet">
+        <h3 id="checkpoint-title">Are you sure?</h3>
+        <div class="risk" id="checkpoint-risk"></div>
+        <div class="btn-row">
+          <button class="btn secondary" id="cp-keep-btn">Keep my move</button>
+          <button class="btn" id="cp-better-btn">Show me a better idea</button>
+        </div>
+        <div class="compare" id="checkpoint-compare"></div>
+        <div class="center" id="checkpoint-continue" style="display: none; margin-top: 12px">
+          <button class="btn" id="cp-continue-btn">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recap overlay -->
+    <div class="overlay" id="recap-overlay">
+      <div class="sheet">
+        <h1 id="recap-title">Good game!</h1>
+        <div class="recap-item">
+          <div class="ic">⭐</div>
+          <div>
+            <strong>What went well</strong>
+            <p id="recap-strength" style="margin: 4px 0"></p>
+          </div>
+        </div>
+        <div class="recap-item">
+          <div class="ic">💡</div>
+          <div>
+            <strong>Next idea</strong>
+            <p id="recap-next" style="margin: 4px 0"></p>
+          </div>
+        </div>
+        <p class="muted" id="recap-level"></p>
+        <p class="muted good" id="recap-unlock" style="display: none"></p>
+        <button class="btn" id="recap-again-btn">Play again</button>
+        <div class="center">
+          <button class="link" id="recap-skip-btn">Skip</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="chess-engine.js"></script>
+    <script src="chess-ai.js"></script>
+    <script src="chess-coach.js"></script>
+    <script src="chess-ui.js"></script>
+  </body>
+</html>

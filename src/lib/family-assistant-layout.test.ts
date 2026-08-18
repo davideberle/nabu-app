@@ -22,7 +22,7 @@ import {
 } from "./family-assistant-layout.ts";
 
 const clientSource = readFileSync(
-  new URL("../app/family/assistant/client.tsx", import.meta.url),
+  new URL("../app/family/(shell)/assistant/client.tsx", import.meta.url),
   "utf8",
 );
 

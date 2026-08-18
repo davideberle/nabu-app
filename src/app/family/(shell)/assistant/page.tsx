@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { auth } from "@/auth";
-import { isTrackerOnlyEmail } from "@/lib/access";
 import {
   FAMILY_ASSISTANT_APPLE_ICON,
   FAMILY_ASSISTANT_MANIFEST_PATH,
@@ -25,19 +24,15 @@ export const metadata: Metadata = {
   },
 };
 
-type Props = { searchParams?: Promise<{ child?: string }> };
-
-export default async function FamilyAssistantPage({ searchParams }: Props) {
-  const params = searchParams ? await searchParams : {};
-  const session = await auth();
+// The selected child and the tracker-only capability both come from the
+// persistent `(shell)` layout, whose provider validates the URL `?child=`
+// with `normalizeChildId`; this page only resolves the current week. The
+// `auth()` read keeps the route explicitly session-bound (dynamic) exactly
+// as before.
+export default async function FamilyAssistantPage() {
+  await auth();
   const current = getISOWeek(new Date());
-  const initialChild =
-    params.child === "santiago" || params.child === "isabel" ? params.child : null;
   return (
-    <FamilyAssistantClient
-      weekId={formatWeekId(current.year, current.week)}
-      initialChild={initialChild}
-      trackerOnly={isTrackerOnlyEmail(session?.user?.email)}
-    />
+    <FamilyAssistantClient weekId={formatWeekId(current.year, current.week)} />
   );
 }

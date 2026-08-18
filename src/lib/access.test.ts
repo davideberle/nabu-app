@@ -12,6 +12,7 @@ import {
   getTrackerOnlyEmails,
   isTrackerOnlyEmail,
   isTrackerAllowedApiPath,
+  isTrackerAllowedPath,
   isTrustedRuntimeApiRoute,
 } from "./access.ts";
 
@@ -129,6 +130,44 @@ describe("tracker-only email list", () => {
     equal(isTrackerOnlyEmail("Assistant@DavidEberle.com"), true);
     equal(isTrackerOnlyEmail("info@davideberle.com"), false);
     equal(isTrackerOnlyEmail(null), false);
+  });
+});
+
+describe("isTrackerAllowedPath", () => {
+  it("allows exactly the family board and child-shell surfaces", () => {
+    equal(isTrackerAllowedPath("/family/dashboard"), true);
+    equal(isTrackerAllowedPath("/family/dashboard/santiago"), true);
+    equal(isTrackerAllowedPath("/family/dashboard/isabel"), true);
+    equal(isTrackerAllowedPath("/family/assistant"), true);
+    equal(isTrackerAllowedPath("/family/plan"), true);
+    equal(isTrackerAllowedPath("/family/rewards"), true);
+  });
+
+  it("allows the Chess Coach pilot launch page and its vendored bundle", () => {
+    equal(isTrackerAllowedPath("/family/rewards/chess"), true);
+    equal(isTrackerAllowedPath("/games/adaptive-chess-coach/index.html"), true);
+    equal(isTrackerAllowedPath("/games/adaptive-chess-coach/chess-engine.js"), true);
+    // A different game folder is not implicitly allowed.
+    equal(isTrackerAllowedPath("/games/some-other-game/index.html"), false);
+  });
+
+  it("keeps adult and unrelated surfaces out of the shared-iPad scope", () => {
+    for (const path of [
+      "/",
+      "/meals",
+      "/health",
+      "/recipes",
+      "/music",
+      "/system",
+      "/family",
+      "/family/tracker",
+      "/family/plans",
+      "/family/plan/extra",
+      "/family/rewards/extra",
+      "/family/assistant/extra",
+    ]) {
+      equal(isTrackerAllowedPath(path), false, path);
+    }
   });
 });
 
