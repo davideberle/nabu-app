@@ -102,10 +102,15 @@ const targetRow = (rows: Awaited<ReturnType<typeof allRows>>) =>
 // ---------------------------------------------------------------------------
 
 describe("session-one record contract", () => {
-  it("targets the block the projection actually ships", () => {
-    equal(CURRENT_PROGRAM_ID, PROJECTION_PROGRAM_ID);
-    assertCurrentProgram(PROJECTION_PROGRAM_ID);
+  it("refuses to run now that its block has been retired by the projection", () => {
+    // The kipping-capacity block closed on 2026-08-18 and the projection now
+    // ships the toes-to-bar block — so the guard the script was built with
+    // must make the CLI refuse to run, keeping this one-off script inert.
+    equal(CURRENT_PROGRAM_ID, "gym-kipping-capacity-3wk-v1");
+    ok(CURRENT_PROGRAM_ID !== PROJECTION_PROGRAM_ID);
+    throws(() => assertCurrentProgram(PROJECTION_PROGRAM_ID), /Refusing to record/);
     throws(() => assertCurrentProgram("gym-something-later-v2"), /Refusing to record/);
+    assertCurrentProgram(CURRENT_PROGRAM_ID); // its own block would still pass
   });
 
   it("is week 1 session A, stamped with the reported instant", () => {

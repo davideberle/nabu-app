@@ -11,6 +11,7 @@ import { describe, it } from "node:test";
 import {
   GYMNASTICS_SLOT_ORDER,
   archivedProgramIds,
+  composeSessionFeedbackNote,
   isGymnasticsSessionKey,
   parseProgressUpdate,
   sessionKeysOf,
@@ -35,11 +36,15 @@ const ARCHIVE: GymnasticsArchive = JSON.parse(
 );
 
 /**
- * Blocks this program replaced. Both were completed; progress is keyed by
- * programId in Turso, so a new id is what keeps their completions from marking
- * this block's sessions done.
+ * Blocks this program replaced. Progress is keyed by programId in Turso, so a
+ * new id is what keeps their completions from marking this block's sessions
+ * done.
  */
-const RETIRED_PROGRAM_IDS = ["gym-kip-ttb-10wk-v1", "gym-link-two-kip-2wk-v1"];
+const RETIRED_PROGRAM_IDS = [
+  "gym-kip-ttb-10wk-v1",
+  "gym-link-two-kip-2wk-v1",
+  "gym-kipping-capacity-3wk-v1",
+];
 
 // ---------------------------------------------------------------------------
 // Fixtures
@@ -88,8 +93,8 @@ function row(
 // ---------------------------------------------------------------------------
 
 describe("sessionKeysOf", () => {
-  it("returns the two slots of the current program", () => {
-    deepStrictEqual(sessionKeysOf(PROGRAM), ["A", "B"]);
+  it("returns the single weekly slot of the current program", () => {
+    deepStrictEqual(sessionKeysOf(PROGRAM), ["A"]);
   });
 
   it("returns only the slots a program actually declares", () => {
@@ -120,7 +125,8 @@ describe("isGymnasticsSessionKey", () => {
 
   it("rejects a slot the program does not declare", () => {
     equal(isGymnasticsSessionKey("D", keys), false);
-    // C existed in the retired 3-a-week block; this one has no Session C.
+    // B and C existed in retired blocks; this one runs a single weekly session.
+    equal(isGymnasticsSessionKey("B", keys), false);
     equal(isGymnasticsSessionKey("C", keys), false);
   });
 
@@ -138,7 +144,7 @@ describe("isGymnasticsSessionKey", () => {
 describe("summarizeProgress", () => {
   it("sizes the block from the program, not from stored rows", () => {
     const summary = summarizeProgress(PROGRAM, []);
-    equal(summary.totalSessions, 6); // 3 weeks × A/B
+    equal(summary.totalSessions, 8); // 8 weeks × A
     equal(summary.completedCount, 0);
     equal(summary.firstIncompleteWeek, 1);
   });
@@ -150,33 +156,34 @@ describe("summarizeProgress", () => {
   });
 
   it("ignores rows outside the current block's weeks and slots", () => {
-    // Shape of leftovers from the retired blocks: a Session C slot, and weeks
-    // past three from the 10-week block.
-    const stale = [row(1, "C"), row(2, "C"), row(5, "A"), row(10, "B")];
+    // Shape of leftovers from the retired blocks: B and C slots, and weeks
+    // past eight from the 10-week block.
+    const stale = [row(1, "C"), row(2, "B"), row(9, "A"), row(10, "B")];
     const summary = summarizeProgress(PROGRAM, [...stale, row(1, "A")]);
     equal(summary.completedCount, 1);
-    equal(summary.totalSessions, 6);
-    equal(summary.firstIncompleteWeek, 1);
+    equal(summary.totalSessions, 8);
+    equal(summary.firstIncompleteWeek, 2);
   });
 
   it("does not report the block finished from a fully completed retired block", () => {
-    // The 2-week × A/B/C block David completed, replayed against this program.
-    const retiredRows = [1, 2].flatMap((w) =>
-      (["A", "B", "C"] as GymnasticsSessionKey[]).map((s) => row(w, s)),
+    // The 3-week × A/B capacity block David completed, replayed against this
+    // program: its A rows overlap weeks 1-3, its B rows hit no slot at all.
+    const retiredRows = [1, 2, 3].flatMap((w) =>
+      (["A", "B"] as GymnasticsSessionKey[]).map((s) => row(w, s)),
     );
     const summary = summarizeProgress(PROGRAM, retiredRows);
-    equal(summary.firstIncompleteWeek, 3); // week 3 has no retired rows at all
+    equal(summary.firstIncompleteWeek, 4); // week 4 has no retired rows at all
     ok(summary.completedCount < summary.totalSessions);
   });
 
-  it("counts a completed session and advances only when the week is full", () => {
-    const partial = summarizeProgress(PROGRAM, [row(1, "A")]);
+  it("counts a completed session and advances only past completed weeks", () => {
+    const partial = summarizeProgress(PROGRAM, [row(2, "A")]);
     equal(partial.completedCount, 1);
     equal(partial.firstIncompleteWeek, 1);
 
-    const full = summarizeProgress(PROGRAM, [row(1, "A"), row(1, "B")]);
+    const full = summarizeProgress(PROGRAM, [row(1, "A"), row(2, "A")]);
     equal(full.completedCount, 2);
-    equal(full.firstIncompleteWeek, 2);
+    equal(full.firstIncompleteWeek, 3);
   });
 
   it("reports completion past the last week when every session is done", () => {
@@ -184,7 +191,7 @@ describe("summarizeProgress", () => {
       sessionKeysOf(PROGRAM).map((s) => row(w.week, s)),
     );
     const summary = summarizeProgress(PROGRAM, all);
-    equal(summary.completedCount, 6);
+    equal(summary.completedCount, 8);
     equal(summary.firstIncompleteWeek, PROGRAM.durationWeeks + 1);
   });
 
@@ -195,9 +202,9 @@ describe("summarizeProgress", () => {
   });
 
   it("indexes rows by week and slot", () => {
-    const summary = summarizeProgress(PROGRAM, [row(2, "B")]);
-    equal(summary.byWeek[2]?.B?.completedAt, "2026-07-27T10:00:00Z");
-    equal(summary.byWeek[2]?.A, undefined);
+    const summary = summarizeProgress(PROGRAM, [row(2, "A")]);
+    equal(summary.byWeek[2]?.A?.completedAt, "2026-07-27T10:00:00Z");
+    equal(summary.byWeek[3]?.A, undefined);
   });
 
   it("follows a program with a different shape without code changes", () => {
@@ -349,6 +356,7 @@ describe("summarizeHistory", () => {
 describe("archivedProgramIds", () => {
   it("lists every archived block, most recent first, as the page renders them", () => {
     deepStrictEqual(archivedProgramIds(ARCHIVE, PROGRAM.programId), [
+      "gym-kipping-capacity-3wk-v1",
       "gym-link-two-kip-2wk-v1",
       "gym-kip-ttb-10wk-v1",
     ]);
@@ -367,7 +375,7 @@ describe("archivedProgramIds", () => {
 // The shipped archive is the label sheet the history read depends on, so its
 // contract with the live program and the retired ids is pinned here too.
 describe("live archive", () => {
-  it("describes both retired blocks and never the current one", () => {
+  it("describes all three retired blocks and never the current one", () => {
     deepStrictEqual(
       ARCHIVE.blocks.map((b) => b.programId).slice().sort(),
       RETIRED_PROGRAM_IDS.slice().sort(),
@@ -383,6 +391,23 @@ describe("live archive", () => {
       link.sessions.map((s) => `${s.week}${s.session}`),
       ["1A", "1B", "1C", "2A", "2B", "2C"],
     );
+  });
+
+  it("labels all six sessions of the retired kipping-capacity block", () => {
+    const capacity = ARCHIVE.blocks.find(
+      (b) => b.programId === "gym-kipping-capacity-3wk-v1",
+    );
+    ok(capacity);
+    equal(capacity.sessions.length, 6);
+    deepStrictEqual(
+      capacity.sessions.map((s) => `${s.week}${s.session}`),
+      ["1A", "1B", "2A", "2B", "3A", "3B"],
+    );
+    // The labels only title what Turso rows may later show; W3 A has no
+    // completed row, so labelling it here never makes it read as trained.
+    ok(capacity.sessions.every((s) => s.label.length > 0));
+    ok(capacity.period?.includes("August 2026"));
+    ok(/50-rep WOD application/.test(capacity.outcome ?? ""));
   });
 
   it("records no completion of its own — that only lives in Turso", () => {
@@ -442,12 +467,12 @@ describe("videosByMovement", () => {
 // ---------------------------------------------------------------------------
 
 describe("parseProgressUpdate", () => {
-  const valid = { week: 1, session: "B", completed: true };
+  const valid = { week: 1, session: "A", completed: true };
 
   it("accepts a well-formed toggle", () => {
     const result = parseProgressUpdate(valid, PROGRAM);
     ok(result.ok);
-    deepStrictEqual(result.value, { week: 1, session: "B", completed: true });
+    deepStrictEqual(result.value, { week: 1, session: "A", completed: true });
   });
 
   it("accepts uncompleting", () => {
@@ -467,25 +492,23 @@ describe("parseProgressUpdate", () => {
   });
 
   it("accepts every week of this block and nothing beyond it", () => {
-    for (const week of [1, 2, 3]) {
+    for (const week of [1, 2, 3, 4, 5, 6, 7, 8]) {
       ok(parseProgressUpdate({ ...valid, week }, PROGRAM).ok, `week ${week}`);
     }
-    for (const week of [0, 4, 10, -1, 1.5, "1", null, undefined, NaN]) {
+    for (const week of [0, 9, 10, -1, 1.5, "1", null, undefined, NaN]) {
       const result = parseProgressUpdate({ ...valid, week }, PROGRAM);
       equal(result.ok, false);
-      if (!result.ok) equal(result.error, "week must be an integer 1-3");
+      if (!result.ok) equal(result.error, "week must be an integer 1-8");
     }
   });
 
-  it("accepts only the A/B slots this block declares", () => {
-    for (const s of ["A", "B"]) {
-      ok(parseProgressUpdate({ ...valid, session: s }, PROGRAM).ok, `session ${s}`);
-    }
-    // C came from the retired 3-a-week block and must not be writable now.
-    for (const s of ["C", "D", "a", ""]) {
+  it("accepts only the single A slot this block declares", () => {
+    ok(parseProgressUpdate({ ...valid, session: "A" }, PROGRAM).ok);
+    // B and C came from retired blocks and must not be writable now.
+    for (const s of ["B", "C", "D", "a", ""]) {
       const result = parseProgressUpdate({ ...valid, session: s }, PROGRAM);
       equal(result.ok, false);
-      if (!result.ok) equal(result.error, "session must be one of A, B");
+      if (!result.ok) equal(result.error, "session must be one of A");
     }
   });
 
@@ -523,41 +546,24 @@ describe("parseProgressUpdate", () => {
 
 describe("live program", () => {
   it("is a new program id, so completed retired progress stays hidden", () => {
-    ok(PROGRAM.programId.length > 0);
+    equal(PROGRAM.programId, "gym-ttb-mayhem-scaled-8wk-v1");
     for (const retired of RETIRED_PROGRAM_IDS) ok(PROGRAM.programId !== retired, retired);
   });
 
-  it("is 3 weeks × A/B = 6 sessions, consistently declared", () => {
-    equal(PROGRAM.durationWeeks, 3);
-    equal(PROGRAM.weeks.length, 3);
-    equal(PROGRAM.sessionsPerWeek, 2);
-    equal(PROGRAM.totalSessions, 6);
+  it("is 8 weeks × one weekly session, consistently declared", () => {
+    equal(PROGRAM.durationWeeks, 8);
+    equal(PROGRAM.weeks.length, 8);
+    equal(PROGRAM.sessionsPerWeek, 1);
+    equal(PROGRAM.totalSessions, 8);
     equal(PROGRAM.totalSessions, PROGRAM.weeks.length * sessionKeysOf(PROGRAM).length);
     deepStrictEqual(
       PROGRAM.weeks.map((w) => w.week),
-      [1, 2, 3],
+      [1, 2, 3, 4, 5, 6, 7, 8],
     );
   });
 
-  // The exact progression the Health Dashboard domain owns. The app renders it;
-  // it does not get to drift from it.
-  //
-  // Set length and total capacity are separate qualities and progress on their
-  // own schedules, so the totals run 24, 26, 40, up to 24, 40, 50 rather than
-  // rising evenly. The 10 August EMOM proved forty reps of total capacity but
-  // not a forty-rep kip, so the set-length exposure that follows is capped
-  // below it on purpose and the forty is repeated as a quality gate first.
-  const PLAN = [
-    { week: 1, session: "A", label: /repeat fours/i, prescription: "6×4", rest: /60 seconds/, total: "24 full reps" },
-    { week: 1, session: "B", label: /controlled six/i, prescription: "1×6", rest: /75 seconds/, total: "26 full reps" },
-    { week: 2, session: "A", label: /forty-rep baseline/i, prescription: "8×5", total: "40 full reps" },
-    { week: 2, session: "B", label: /controlled eight/i, prescription: "1×8", rest: /75[–-]90 seconds/, total: "24 full reps" },
-    { week: 3, session: "A", label: /clean-forty gate/i, prescription: "8×5", total: "40 full reps" },
-    { week: 3, session: "B", label: /fifty[- ]rep application/i, prescription: "50-rep application", total: "50 full reps" },
-  ] as const;
-
-  const sessionOf = (week: number, key: string) =>
-    PROGRAM.weeks.find((w) => w.week === week)!.sessions[key as GymnasticsSessionKey];
+  const sessionOf = (week: number) =>
+    PROGRAM.weeks.find((w) => w.week === week)!.sessions.A!;
 
   const textOf = (s: GymnasticsSession) =>
     [
@@ -565,272 +571,202 @@ describe("live program", () => {
       s.goal ?? "",
       ...s.blocks.map((b) => `${b.movement} ${b.prescription} ${b.note ?? ""}`),
       ...(s.notes ?? []),
+      ...(s.primer ?? []),
+      ...(s.qualityRules ?? []),
+      ...(s.stopRules ?? []),
+      s.wodAdjustment ?? "",
+      ...(s.feedback ?? []),
     ].join(" ");
 
-  for (const step of PLAN) {
-    it(`week ${step.week} session ${step.session} prescribes ${step.prescription} for ${step.total}`, () => {
-      const s = sessionOf(step.week, step.session);
-      ok(s, `week ${step.week} session ${step.session} missing`);
-      ok(step.label.test(s.label), `label "${s.label}" does not match ${step.label}`);
-      ok(
-        s.blocks.some((b) => b.prescription === step.prescription),
-        `no block prescribes exactly "${step.prescription}"`,
-      );
-      ok(textOf(s).includes(step.total), `session total "${step.total}" missing`);
-      if ("rest" in step && step.rest) {
-        ok(step.rest.test(textOf(s)), `rest interval ${step.rest} missing`);
-      }
+  const sourceTextOf = (s: GymnasticsSession) => JSON.stringify(s.source ?? {});
+
+  // Every week must carry the full individualized contract: primer, scaled
+  // blocks, quality/contact rules, stop rules, WOD adjustment, feedback, and
+  // the original Mayhem prescription as visible provenance.
+  it("carries the full per-week contract on all eight weeks", () => {
+    for (const week of PROGRAM.weeks) {
+      const s = week.sessions.A!;
+      const where = `week ${week.week}`;
+      ok(s.primer && s.primer.length > 0, `${where} primer missing`);
+      ok(s.blocks.length > 0, `${where} blocks missing`);
+      ok(s.qualityRules && s.qualityRules.length > 0, `${where} quality rules missing`);
+      ok(s.stopRules && s.stopRules.length > 0, `${where} stop rules missing`);
+      ok(!!s.wodAdjustment, `${where} WOD adjustment missing`);
+      ok(s.feedback && s.feedback.length > 0, `${where} feedback missing`);
+      ok(!!s.source && s.source.options.length > 0, `${where} source provenance missing`);
+      ok(/Mayhem/i.test(s.source!.title), `${where} source does not name Mayhem`);
+
+      const quality = (s.qualityRules ?? []).join(" ");
+      ok(/both feet/i.test(quality), `${where} contact standard missing`);
+      ok(/inside the hands/i.test(quality), `${where} hand-position standard missing`);
+      ok(/near contact/i.test(quality), `${where} near-contact separation missing`);
+
+      const stop = (s.stopRules ?? []).join(" ");
+      ok(/shoulder/i.test(stop), `${where} shoulder stop rule missing`);
+      ok(/return swing/i.test(stop), `${where} return-swing stop rule missing`);
+      ok(/grip/i.test(stop), `${where} grip stop rule missing`);
+
+      const feedback = (s.feedback ?? []).join(" ");
+      ok(/full contact/i.test(feedback), `${where} full-contact capture missing`);
+      ok(/near contact/i.test(feedback), `${where} near-contact capture missing`);
+      ok(/set breakdown|per set|sets/i.test(feedback), `${where} set-breakdown capture missing`);
+      ok(/fatigue/i.test(feedback), `${where} fatigue capture missing`);
+      ok(/return swing/i.test(feedback), `${where} return-swing capture missing`);
+    }
+  });
+
+  // The Mayhem source, week by week — the numbers the screenshots actually
+  // show must survive in the provenance, and only as provenance.
+  const SOURCE_PINS: [number, RegExp[]][] = [
+    [1, [/50 Toes to Bar/, /75 Toes to Bar/, /7\/5 Calorie Ski/i, /10 minutes/i, /retest on week 10/i]],
+    [2, [/18\/15 Calorie Ski/i, /Cap at 100/i, /1:15/]],
+    [3, [/50 Double Unders/i, /15 Toes to Bar for Time/i, /10–12/, /Rest 2 minutes/i]],
+    [4, [/5 Wall Walk/i, /35 Toes to Bar/, /50 GHD Sit Ups/i, /50 Toes to Bar/, /total time with rest/i]],
+    [5, [/10 Minute AMRAP/i, /8\/6 Cal Ski/i, /12\/10 Calorie Ski/i, /unbroken each segment/i]],
+    [6, [/3-3-3-4 Intervals/, /15\/12 Cal Ski/i, /15 Box Jump \(24\/20\)/i, /Max Toes to Bar/i]],
+    [7, [/15\/12 Calorie Row \+ 15 Toes to Ring/i, /15\/12 Calorie Bike \+ 15 Toes to Bar/i, /15\/12 Calorie Ski \+ 15 GHD Sit Ups/i, /20\/16 Calorie Row/i]],
+    [8, [/20 Minute EMOM/i, /Odd Minutes: 30 sec Max Calorie Ski/i, /Log reps in notes/i]],
+  ];
+
+  for (const [week, pins] of SOURCE_PINS) {
+    it(`week ${week} preserves its Mayhem source prescription`, () => {
+      const text = sourceTextOf(sessionOf(week));
+      for (const pin of pins) ok(pin.test(text), `week ${week} source missing ${pin}`);
     });
   }
 
-  it("carries each session total on its own block, in the prescribed order", () => {
-    deepStrictEqual(
-      PLAN.map(
-        (step) =>
-          sessionOf(step.week, step.session).blocks.find((b) => b.movement === "Session total")
-            ?.prescription,
-      ),
-      ["24 full reps", "26 full reps", "40 full reps", "Up to 24 full reps", "40 full reps", "50 full reps"],
-    );
+  it("marks week 7's cropped advanced option incomplete instead of reconstructing it", () => {
+    const advanced = sessionOf(7).source!.options.find((o) => /advanced/i.test(o.label));
+    ok(advanced, "advanced option missing");
+    ok(!!advanced!.incomplete && /cropped/i.test(advanced!.incomplete));
+    // Nothing beyond the surviving fragment may appear.
+    deepStrictEqual(advanced!.lines, ["3 Rounds", "20/16 Calorie Row", "…"]);
   });
 
-  it("pairs each controlled top set with its back-off sets", () => {
-    const w1b = sessionOf(1, "B").blocks.map((b) => b.prescription);
-    ok(w1b.includes("1×6") && w1b.includes("4×5"), `week 1 B prescribes ${w1b.join(" + ")}`);
-
-    // Fours, not fives: this exposure sits below the forty already proven so it
-    // does not compete with Thursday's programmed strict chin-up ladder.
-    const w2b = sessionOf(2, "B").blocks.map((b) => b.prescription);
-    ok(w2b.includes("1×8") && w2b.includes("4×4"), `week 2 B prescribes ${w2b.join(" + ")}`);
-  });
-
-  // 10 August: all 40 reps completed, but the kip died on the last one and easy
-  // strict pulling covered for it. The block has to read that as capacity, not
-  // as a passed gate — otherwise the fifty gets unlocked by the wrong evidence.
-  it("records the 10 August forty as a capacity baseline, not a passed gate", () => {
-    const w2a = textOf(sessionOf(2, "A"));
-    ok(/Monday 10 August/.test(w2a), "completion date missing");
-    ok(/EMOM/.test(w2a), "the forty is taken as an EMOM");
-    ok(/kip disappeared on rep 40/i.test(w2a), "the kip failing on rep 40 is not recorded");
-    ok(/strict pulling finished that rep/i.test(w2a), "the strict-strength rescue is not recorded");
-    ok(/not the quality gate/i.test(w2a), "this session is not distinguished from the quality gate");
-  });
-
-  it("repeats the forty as a rhythm gate that a strict rescue cannot pass", () => {
-    const w3a = textOf(sessionOf(3, "A"));
-    ok(/Sunday 16 August/.test(w3a), "gate date missing");
-    ok(/same kip rhythm as rep one/i.test(w3a), "the pass condition on rep 40 is missing");
-    ok(
-      /rescued by strict pulling strength does not pass/i.test(w3a),
-      "a strict-strength rescue is not excluded from passing the gate",
-    );
-    ok(/shoulders, elbows, grip, and hands/i.test(w3a), "readiness check missing");
-  });
-
-  // Thursday's programmed strict chin-up ladder is the week's high-volume
-  // pulling, so Wednesday is capped and Friday/Saturday carry no kipping at all.
-  it("caps the set-length exposure below the forty already proven", () => {
-    const w2b = textOf(sessionOf(2, "B"));
-    ok(/Wednesday 12 August/.test(w2b), "session date missing");
-    ok(/ceiling, not a target/i.test(w2b), "the 24-rep ceiling is stated as a target");
-    ok(
-      /never rescue it with strict pulling strength/i.test(w2b),
-      "the top set may still be rescued with strict strength",
-    );
-    ok(/Friday and Saturday stay kipping-free/i.test(w2b), "the kipping-free days are not stated");
-  });
-
-  it("treats a prescribed top set as a ceiling rather than a test", () => {
-    ok(
-      /A prescribed top set is a ceiling/i.test(PROGRAM.sessionRules.items.join(" ")),
-      "top-set ceiling rule missing from sessionRules",
-    );
-    ok(
-      /not the maximum/i.test(textOf(sessionOf(1, "B"))),
-      "week 1 B does not say to stop the six even when more reps are available",
-    );
-    ok(
-      /do not grind it/i.test(textOf(sessionOf(2, "B"))),
-      "week 2 B does not forbid grinding the set of eight",
-    );
-  });
-
-  // EMOM 8×3 spread the same 24 reps the opening 6×4 already covered over a
-  // longer window, so it raised neither set length nor total capacity. The
-  // clock was never the problem — 8×5 EMOM is how the forty is taken — so only
-  // the retired 24-rep construct stays out.
-  it("has retired the 8×3 that added no overload", () => {
+  it("invents no week 9 or week 10 content beyond the source's retest mention", () => {
     for (const week of PROGRAM.weeks) {
-      for (const key of sessionKeysOf(PROGRAM)) {
-        ok(
-          !/8×3/.test(textOf(week.sessions[key])),
-          `week ${week.week} session ${key} reintroduces the retired 8×3`,
-        );
-      }
+      const text = `${textOf(week.sessions.A!)} ${sourceTextOf(week.sessions.A!)}`;
+      const allowed =
+        /retest on week 10|no week 9 or week 10|week 9 or week 10 screenshots|no week 9 or week 10 material/gi;
+      const stripped = text.replace(allowed, "");
+      ok(!/week ?9|week ?10/i.test(stripped), `week ${week.week} invents week 9/10 content`);
     }
   });
 
-  it("paces the fifty-rep application instead of opening it at the fresh maximum", () => {
-    const w3b = textOf(sessionOf(3, "B"));
-    ok(/not a fresh maximum/i.test(w3b), "open-below-maximum guidance missing");
-    ok(/downshift early/i.test(w3b), "early downshift to fours and threes missing");
-    ok(/10×5 on a 90-second clock/.test(w3b), "standalone fallback missing");
-    ok(
-      /not WOD pacing/i.test(textOf(sessionOf(2, "B"))),
-      "week 2 B does not separate a fresh set of eight from workout pacing",
-    );
-  });
-
-  it("gates the fifty-rep application on a clean week 3 session A", () => {
-    const notes = (sessionOf(3, "B").notes ?? []).join(" ");
-    ok(/only after week 3 session A is clean/i.test(notes), "application gate missing");
-    ok(/shoulders, elbows, grip, and hands/i.test(notes), "readiness check missing");
-    ok(
-      /finished by strict pulling strength is not a clean forty/i.test(notes),
-      "a strict-rescued forty is not excluded from opening the application",
-    );
-  });
-
-  // The FMD runs 17–21 August. Fifty hard kipping reps do not belong inside a
-  // 700 kcal/day week, so the application waits for the refeed instead.
-  it("keeps the fifty-rep application out of the 17–21 August FMD", () => {
-    const notes = (sessionOf(3, "B").notes ?? []).join(" ");
-    ok(/17[–-]21 August FMD/.test(notes), "the FMD window is not named");
-    ok(/after the FMD and its refeed/i.test(notes), "the post-FMD refeed deferral is missing");
-  });
-
-  // Reporting a bare "40" to the coach would overstate the current gate.
-  it("gives the coach the qualified forty rather than a bare number", () => {
-    const wod = [PROGRAM.wodScaling.intro, ...PROGRAM.wodScaling.points].join(" ");
-    ok(/40 reps/.test(wod), "the 40-rep total capacity is missing");
-    ok(/kip disappeared on rep 40/i.test(wod), "the kip failure is not reported");
-    ok(/strict strength finished it/i.test(wod), "the strict-strength rescue is not reported");
-    ok(/clean kipping gate is still below forty/i.test(wod), "the gate is not distinguished from capacity");
-  });
-
-  // The home bar sits ~80 cm from the wall, which rules out a full swing under
-  // fatigue. The substitutions are prescribed so they are not improvised.
-  it("prescribes home-bar substitutions instead of a wall-constrained kip", () => {
-    const card = PROGRAM.homeBarSubstitutions;
-    const text = [card.title, card.intro, ...card.points].join(" ");
-    ok(card.points.length > 0, "home-bar substitution points missing");
-    ok(/80 cm/.test(text), "the 80 cm wall clearance is not stated");
-    ok(/hollow[- ]to[- ]arch/i.test(text), "the blocked hollow-to-arch swing is not stated");
-    ok(/burpee pull-up/i.test(text), "the burpee pull-up substitution is missing");
-    ok(/band-assisted/i.test(text), "the strict or band-assisted substitution is missing");
-    ok(
-      /not kipping-technique volume/i.test(text),
-      "hybrid reps on this bar are not excluded from kipping-technique volume",
-    );
-  });
-
-  it("names set length and total capacity as the two qualities it trains", () => {
-    ok(/set length/i.test(PROGRAM.summary), "set length missing from the summary");
-    ok(/total capacity/i.test(PROGRAM.summary), "total capacity missing from the summary");
-    ok(
-      /separate qualities/i.test(textOf(sessionOf(1, "B"))),
-      "week 1 B does not say only one quality moves there",
-    );
-  });
-
-  it("opens the block with 48 hours clear of dynamic pulling", () => {
-    ok(/48 hours/.test(PROGRAM.spacingNote), "48h entry condition missing from spacingNote");
-    ok(/48[–-]72 hours/.test(PROGRAM.spacingNote), "48–72h session spacing missing");
-    equal(PROGRAM.spacingHours.min, 48);
-    equal(PROGRAM.spacingHours.max, 72);
-    ok(/48 hours/.test((sessionOf(1, "A").notes ?? []).join(" ")), "session 1 entry note missing");
-  });
-
-  it("runs the same warm-up in every session", () => {
-    deepStrictEqual(PROGRAM.warmup.items, [
-      "2×6 scap pull-ups",
-      "2×5 controlled beat swings",
-      "1 easy set of 3 linked kipping pull-ups",
-    ]);
-  });
-
-  // Mirrors scripts/validate-gymnastics.mjs. Deliberately narrow: a bare
-  // "link" only says reps were joined, so it does not satisfy the push-away /
-  // descent / arch / backswing invariant on its own.
-  const PRIMARY_SKILL = /push[- ]?away|\bdescent\b|\barch(?:ed|ing)?\b|\bbackswing\b/i;
-
-  it("does not accept a bare 'link' as training the push-away", () => {
-    equal(PRIMARY_SKILL.test("linked pull-ups, 3 sets of 5 links"), false);
-  });
-
-  it("holds the push-away in every session and adds no butterfly or chest-to-bar volume", () => {
+  it("never prescribes the Mayhem Rx volume as the actionable lane", () => {
+    // No David-lane block may ask for the source's 15+ toes-to-bar sets or the
+    // 50/75-rep tests: the lane caps live at 6 quality reps per set and 30
+    // dynamic attempts per session.
     for (const week of PROGRAM.weeks) {
-      for (const key of sessionKeysOf(PROGRAM)) {
-        const text = textOf(week.sessions[key]);
+      for (const block of week.sessions.A!.blocks) {
         ok(
-          PRIMARY_SKILL.test(text),
-          `week ${week.week} session ${key} does not train the push-away`,
-        );
-        ok(
-          !/butterfly|chest[- ]to[- ]bar/i.test(text),
-          `week ${week.week} session ${key} contains excluded volume`,
+          !/^(15|35|50|75|100) Toes to Bar/i.test(block.prescription),
+          `week ${week.week} block "${block.prescription}" ships an Rx dose`,
         );
       }
     }
+    equal(PROGRAM.prerequisites.repCaps.perSession, 30);
+    ok(/hanging attempts/i.test(PROGRAM.prerequisites.repCaps.label ?? ""));
   });
 
-  it("states the spacing, stop, regression, and exclusion rules the UI renders", () => {
+  it("trains contact acquisition and the return swing in every week", () => {
+    const PRIMARY_SKILL =
+      /toe flick|late knee[- ]extension|return swing|push(?:es|ed)? the bar away|hollow[- ]to[- ]arch/i;
+    for (const week of PROGRAM.weeks) {
+      const text = textOf(week.sessions.A!);
+      ok(PRIMARY_SKILL.test(text), `week ${week.week} does not train the contact skill`);
+      ok(
+        !/butterfly|chest[- ]to[- ]bar/i.test(text),
+        `week ${week.week} contains excluded volume`,
+      );
+    }
+  });
+
+  it("opens only after the 17–21 August FMD and full refeed", () => {
+    ok(/17[–-]21 August FMD/.test(PROGRAM.summary), "summary misses the FMD window");
+    ok(/refeed/i.test(PROGRAM.summary), "summary misses the refeed");
+    ok(/FMD/.test(PROGRAM.spacingNote) && /refeed/i.test(PROGRAM.spacingNote));
+    ok(/FMD/.test(PROGRAM.prerequisites.mustHave.join(" ")));
+    const week1Notes = (sessionOf(1).notes ?? []).join(" ");
+    ok(/FMD/.test(week1Notes) && /refeed/i.test(week1Notes));
+  });
+
+  it("states the verified 18 August starting evidence", () => {
+    ok(/knees[- ]to[- ]elbows/i.test(PROGRAM.summary), "starting point missing from summary");
+    const mustHave = PROGRAM.prerequisites.mustHave.join(" ");
+    ok(/18 August/.test(mustHave), "18 August verification missing");
+    ok(/grips/i.test(mustHave), "grip setup evidence missing");
+  });
+
+  it("makes the Mayhem numbers source context, never the target", () => {
     const rules = PROGRAM.sessionRules.items.join(" ");
-    ok(/30 or more pulling reps/i.test(rules), "30+ pulling reps skip rule missing");
-    ok(/push[- ]?away/i.test(rules) && /arm[- ]dominant/i.test(rules), "stop-the-set rule missing");
-    ok(/two rhythm failures/i.test(rules), "move-back-one-step rule missing");
-    ok(/butterfly/i.test(rules) && /chest[- ]to[- ]bar/i.test(rules), "exclusion missing");
-    ok(/repeat a session/i.test(PROGRAM.progressionRule), "repeat-until-clean rule missing");
+    ok(/source context, not the day's target/i.test(rules));
+    ok(/both feet/i.test(rules) && /inside the hands/i.test(rules));
+    ok(/near contact/i.test(rules));
+    ok(/never buy back failed technique/i.test(rules));
+    ok(/butterfly/i.test(rules) && /chest[- ]to[- ]bar/i.test(rules));
   });
 
-  it("lists the four signals that end a set", () => {
-    const stop = PROGRAM.prerequisites.stopRules.join(" ");
-    ok(/push[- ]?away/i.test(stop), "push-away disappearing missing");
-    ok(/arm[- ]dominant/i.test(stop), "arm-dominant kip missing");
-    ok(/pain/i.test(stop), "pain missing");
-    ok(/hot spot/i.test(stop), "hand hot spot missing");
-    equal(PROGRAM.prerequisites.repCaps.perSession, 50);
+  it("gates progress on contact quality, not the calendar", () => {
+    ok(/contact quality/i.test(PROGRAM.progressionRule));
+    ok(/repeat a week/i.test(PROGRAM.progressionRule));
   });
 
-  it("scales the 50-pull-up WOD that arrives before the benchmark is earned", () => {
+  it("reconciles the weekly dose against WOD pulling/hanging/GHD volume", () => {
     const wod = [PROGRAM.wodScaling.title, PROGRAM.wodScaling.intro, ...PROGRAM.wodScaling.points].join(" ");
-    ok(/\b50\b/.test(wod), "the 50-rep WOD is not named");
-    ok(/from rep one/i.test(wod), "break-from-rep-one guidance missing");
-    ok(/sets of three/i.test(wod), "sets of three for the unassisted portion missing");
-    ok(/coach/i.test(wod), "coach-led volume/movement scaling missing");
-    ok(/time domain/i.test(wod), "intended time domain missing");
-    ok(/below the fresh maximum/i.test(wod), "open-below-maximum guidance missing");
-    ok(/downshift/i.test(wod), "early downshift guidance missing");
+    ok(/pulling|hanging/i.test(wod) && /GHD/i.test(wod));
+    ok(/48 hours/.test(wod));
+    ok(/coach/i.test(wod));
+    ok(/maintenance/i.test(wod), "kipping pull-ups must stay WOD maintenance");
+    for (const week of PROGRAM.weeks) {
+      ok(!!week.sessions.A!.wodAdjustment, `week ${week.week} lacks its own WOD adjustment`);
+    }
   });
 
-  it("holds chest-to-bar and butterfly behind explicit gates", () => {
+  it("keeps chest-to-bar as separate low-volume technique work and butterfly deferred", () => {
     const c2b = PROGRAM.gates.items.find((g) => /chest[- ]to[- ]bar/i.test(g.skill));
     ok(c2b, "chest-to-bar gate missing");
-    ok(/sets of five/i.test(c2b.requirement), "sets of five requirement missing");
-    ok(/8[–-]10/.test(c2b.requirement), "8–10 clean kipping reps requirement missing");
-    ok(/hard final pull/i.test(c2b.requirement), "no-hard-final-pull requirement missing");
+    ok(/low-volume/i.test(c2b!.requirement));
+    ok(/never appended|never mixed/i.test(c2b!.requirement));
 
     const butterfly = PROGRAM.gates.items.find((g) => /butterfly/i.test(g.skill));
     ok(butterfly, "butterfly gate missing");
-    ok(/15[–-]20/.test(butterfly.requirement), "15–20 unbroken reps requirement missing");
-    ok(/coach/i.test(butterfly.requirement), "coach observation requirement missing");
+    ok(/15[–-]20/.test(butterfly!.requirement));
+    ok(/coach/i.test(butterfly!.requirement));
   });
 
-  it("asks for clean sets, where the push-away went, and pain or hot spots", () => {
+  it("keeps dynamic attempts off the 80 cm home bar", () => {
+    const card = PROGRAM.homeBarSubstitutions;
+    const text = [card.title, card.intro, ...card.points].join(" ");
+    ok(/80 cm/.test(text));
+    ok(/hollow[- ]to[- ]arch/i.test(text));
+    ok(/knee raises/i.test(text));
+    ok(/No kipping toes-to-bar attempts/i.test(text));
+  });
+
+  it("asks for contacts, sets, fatigue, return swing, and pain after each session", () => {
     const prompt = PROGRAM.feedbackPrompt.items.join(" ");
-    ok(/sets? *\/ *sets/i.test(prompt), "clean sets / sets prescribed missing");
-    ok(/push[- ]?away/i.test(prompt), "where the push-away went missing");
-    ok(/pain/i.test(prompt) && /hot spots?/i.test(prompt), "pain / hand hot spots missing");
+    ok(/full contacts/i.test(prompt));
+    ok(/near contacts/i.test(prompt));
+    ok(/set breakdown/i.test(prompt));
+    ok(/grip fatigue/i.test(prompt));
+    ok(/return swing/i.test(prompt));
+    ok(/pain/i.test(prompt));
   });
 
-  it("has no butterfly or chest-to-bar video groups", () => {
+  it("groups its movement references as contact and return-swing lanes", () => {
+    deepStrictEqual(
+      PROGRAM.videoGroups.map((g) => g.movement),
+      ["contact", "return"],
+    );
     for (const g of PROGRAM.videoGroups) {
       ok(!/butterfly|chest[- ]to[- ]bar/i.test(`${g.movement} ${g.label}`), g.label);
     }
     ok(PROGRAM.videos.length > 0);
+    ok(PROGRAM.videos.some((v) => /Toes/i.test(v.title)), "no toes-to-bar reference video");
   });
 
-  it("carries no stale copy calling pair acquisition the current limiter", () => {
+  it("carries no stale copy from the closed kipping-capacity block", () => {
     const narrative = [
       PROGRAM.title,
       PROGRAM.subtitle,
@@ -840,6 +776,64 @@ describe("live program", () => {
       PROGRAM.progressionRule,
       ...PROGRAM.prerequisites.mustHave,
     ].join(" ");
-    ok(!/link(ing)? (two|a pair)|linked pair|pair attempts/i.test(narrative));
+    ok(!/clean[- ]forty|50-rep application|kipping capacity/i.test(narrative));
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Structured session feedback serialization
+// ---------------------------------------------------------------------------
+
+describe("composeSessionFeedbackNote", () => {
+  const empty = {
+    fullContacts: null,
+    nearContacts: null,
+    setBreakdown: "",
+    fatigue: null,
+    returnSwing: null,
+    extra: "",
+  } as const;
+
+  it("serializes a full report in the block's capture order", () => {
+    equal(
+      composeSessionFeedbackNote({
+        fullContacts: 9,
+        nearContacts: 4,
+        setBreakdown: "3/3/2/2",
+        fatigue: "noticeable",
+        returnSwing: "intact",
+        extra: "left palm hot spot late",
+      }),
+      "Full contacts 9 · Near contacts 4 · Sets 3/3/2/2 · Shoulder/grip fatigue noticeable · Return swing intact — left palm hot spot late",
+    );
+  });
+
+  it("keeps a zero count — zero contacts is a real result, not a blank", () => {
+    equal(
+      composeSessionFeedbackNote({ ...empty, fullContacts: 0, nearContacts: 6 }),
+      "Full contacts 0 · Near contacts 6",
+    );
+  });
+
+  it("omits empty fields instead of writing placeholders", () => {
+    equal(
+      composeSessionFeedbackNote({ ...empty, returnSwing: "lost" }),
+      "Return swing lost",
+    );
+  });
+
+  it("returns an empty string for an all-empty form so callers refuse the save", () => {
+    equal(composeSessionFeedbackNote({ ...empty }), "");
+  });
+
+  it("uses the free-text alone when it is the only content", () => {
+    equal(composeSessionFeedbackNote({ ...empty, extra: "skipped — WOD had TTB" }), "skipped — WOD had TTB");
+  });
+
+  it("trims the set breakdown and free text", () => {
+    equal(
+      composeSessionFeedbackNote({ ...empty, setBreakdown: "  2/2/2  ", extra: "  fine  " }),
+      "Sets 2/2/2 — fine",
+    );
   });
 });

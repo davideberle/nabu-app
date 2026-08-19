@@ -427,12 +427,20 @@ export async function setGymnasticsProgress(entry: {
   const client = await getDb();
   await ensureGymnasticsTable(client);
   const completedAt = entry.completed ? new Date().toISOString() : null;
+  // A row that is already completed keeps its original completed_at when it is
+  // written again as completed (e.g. a feedback-note save): completed_at is the
+  // instant the session was trained, not the instant of the latest write.
+  // Uncompleting clears it; completing an uncompleted row stamps it fresh.
   await client.execute({
     sql: `INSERT INTO health_gymnastics_progress (program_id, week, session, completed, completed_at, note)
           VALUES (?, ?, ?, ?, ?, ?)
           ON CONFLICT (program_id, week, session) DO UPDATE SET
             completed = excluded.completed,
-            completed_at = excluded.completed_at,
+            completed_at = CASE
+              WHEN excluded.completed = 1 AND health_gymnastics_progress.completed = 1
+                THEN health_gymnastics_progress.completed_at
+              ELSE excluded.completed_at
+            END,
             note = COALESCE(excluded.note, health_gymnastics_progress.note)`,
     args: [
       entry.programId,
@@ -443,6 +451,14 @@ export async function setGymnasticsProgress(entry: {
       entry.note ?? null,
     ],
   });
+  // Read the row back rather than echoing the inputs: the upsert may have kept
+  // an earlier completed_at or an earlier note, and the caller needs the truth.
+  const readBack = await client.execute({
+    sql: "SELECT week, session, completed, completed_at, note FROM health_gymnastics_progress WHERE program_id = ? AND week = ? AND session = ?",
+    args: [entry.programId, entry.week, entry.session],
+  });
+  const row = readBack.rows[0];
+  if (row) return rowToGymnasticsProgress(row as Record<string, unknown>);
   return {
     week: entry.week,
     session: entry.session,

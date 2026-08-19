@@ -2,6 +2,21 @@
   "note": "Health-owned descriptor for retired gymnastics blocks. It carries titles and session labels ONLY — whether a session was actually done, and when, lives in the health_gymnastics_progress rows in Turso. Companion App mirrors this file byte-for-byte into src/data/gymnastics-archive.json and renders it read-only.",
   "blocks": [
     {
+      "programId": "gym-kipping-capacity-3wk-v1",
+      "title": "Ordinary Kipping Pull-Up Capacity",
+      "subtitle": "3-week kipping capacity block",
+      "period": "4 – 18 August 2026",
+      "outcome": "Closed after the 50-rep WOD application: 6×5 plus 5×4 in 8:15 on 18 August, tiring but not near failure, during the FMD and a day after 36 strict chin-ups plus bench press. That practical application superseded the isolated clean-forty gate — repeatable fives and an early downshift to fours are established, so ordinary kipping moved to WOD maintenance and toes-to-bar became the next primary block.",
+      "sessions": [
+        { "week": 1, "session": "A", "label": "Repeat fours" },
+        { "week": 1, "session": "B", "label": "Controlled six + back-off fives" },
+        { "week": 2, "session": "A", "label": "Accumulate fives — forty-rep baseline" },
+        { "week": 2, "session": "B", "label": "Set-length exposure — grips-confirmed ladder" },
+        { "week": 3, "session": "A", "label": "Repeat the clean-forty gate" },
+        { "week": 3, "session": "B", "label": "Fifty-rep application" }
+      ]
+    },
+    {
       "programId": "gym-link-two-kip-2wk-v1",
       "title": "Link Two Kipping Pull-Ups",
       "subtitle": "2-week focused kipping block",

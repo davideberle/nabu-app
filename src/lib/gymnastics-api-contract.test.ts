@@ -220,15 +220,17 @@ describe("POST progress isolation", () => {
   });
 
   it("rejects a slot or week that belongs to a retired block", () => {
-    // Session C and weeks 4+ existed in earlier blocks; neither is writable now.
+    // Sessions B/C and weeks 9+ existed in earlier blocks (or nowhere);
+    // none of them is writable now.
+    equal(post(OWNER, { week: 1, session: "B", completed: true }).status, 400);
     equal(post(OWNER, { week: 1, session: "C", completed: true }).status, 400);
-    equal(post(OWNER, { week: 4, session: "A", completed: true }).status, 400);
-    equal(post(OWNER, { week: 10, session: "B", completed: true }).status, 400);
+    equal(post(OWNER, { week: 9, session: "A", completed: true }).status, 400);
+    equal(post(OWNER, { week: 10, session: "A", completed: true }).status, 400);
   });
 
   it("accepts every real slot of the current block and nothing else", () => {
-    for (const week of [1, 2, 3]) {
-      for (const s of ["A", "B"]) {
+    for (const week of [1, 2, 3, 4, 5, 6, 7, 8]) {
+      for (const s of ["A"]) {
         const r = post(OWNER, { week, session: s, completed: true });
         equal(r.status, 200, `week ${week} session ${s}`);
         if (r.status === 200) equal(r.write.programId, PROGRAM_ID);

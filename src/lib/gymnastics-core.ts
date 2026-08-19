@@ -24,6 +24,31 @@ export type GymnasticsBlock = {
   note?: string;
 };
 
+/** One variant of an original source prescription (e.g. Rx / Advanced). */
+export type GymnasticsSourceOption = {
+  label: string;
+  lines: string[];
+  /**
+   * Present when the source material for this option is incomplete (e.g. a
+   * cropped screenshot). The UI must show it instead of pretending the option
+   * is whole, and nothing may reconstruct the missing content.
+   */
+  incomplete?: string;
+};
+
+/**
+ * The original programming a session was adapted from, kept visible as
+ * provenance. Never the actionable prescription — that is what `blocks` are.
+ */
+export type GymnasticsSessionSource = {
+  title: string;
+  /** Source-stated cycle intent, when the material carries one. */
+  intent?: string;
+  options: GymnasticsSourceOption[];
+  /** Source-stated caps, scoring, or scaling instructions. */
+  notes?: string[];
+};
+
 export type GymnasticsSession = {
   label: string;
   /** One-line statement of what the session is for. */
@@ -31,6 +56,18 @@ export type GymnasticsSession = {
   blocks: GymnasticsBlock[];
   /** Session-specific placement, readiness, or fallback guidance. */
   notes?: string[];
+  /** Low-fatigue skill work that precedes anything metabolic. */
+  primer?: string[];
+  /** The original prescription this session was individualized from. */
+  source?: GymnasticsSessionSource;
+  /** What counts as a rep, and what is recorded separately. */
+  qualityRules?: string[];
+  /** The signals that end the session's dynamic work. */
+  stopRules?: string[];
+  /** How this session bends around the week's WOD volume. */
+  wodAdjustment?: string;
+  /** What to capture after the session, in order. */
+  feedback?: string[];
 };
 
 export type GymnasticsWeek = {
@@ -92,7 +129,8 @@ export type GymnasticsProgram = {
   prerequisites: {
     title: string;
     mustHave: string[];
-    repCaps: { perSession: number; note: string };
+    /** `label` names what the cap counts (e.g. "dynamic hanging attempts"). */
+    repCaps: { perSession: number; label?: string; note: string };
     stopRules: string[];
     notes: string[];
   };
@@ -359,6 +397,61 @@ export function archivedProgramIds(
   return archive.blocks
     .map((b) => b.programId)
     .filter((id) => id !== currentProgramId);
+}
+
+// ---------------------------------------------------------------------------
+// Structured session feedback
+// ---------------------------------------------------------------------------
+//
+// The block's feedback contract (full contacts, near contacts, set breakdown,
+// shoulder/grip fatigue, return-swing quality) is serialized into the existing
+// per-session `note` column, so no schema or API change is needed and the
+// persistent completion path is untouched.
+
+export type GymnasticsFatigueLevel = "none" | "noticeable" | "limiting";
+export type GymnasticsReturnSwing = "intact" | "faded late" | "lost";
+
+export type GymnasticsSessionFeedback = {
+  fullContacts: number | null;
+  nearContacts: number | null;
+  setBreakdown: string;
+  fatigue: GymnasticsFatigueLevel | null;
+  returnSwing: GymnasticsReturnSwing | null;
+  extra: string;
+};
+
+export const GYMNASTICS_FATIGUE_LEVELS: GymnasticsFatigueLevel[] = [
+  "none",
+  "noticeable",
+  "limiting",
+];
+
+export const GYMNASTICS_RETURN_SWING_STATES: GymnasticsReturnSwing[] = [
+  "intact",
+  "faded late",
+  "lost",
+];
+
+/**
+ * Serialize structured feedback into one readable note line. Pure. Empty
+ * fields are omitted; an all-empty form returns "" so callers can refuse to
+ * save a note that says nothing.
+ */
+export function composeSessionFeedbackNote(feedback: GymnasticsSessionFeedback): string {
+  const parts: string[] = [];
+  if (feedback.fullContacts !== null && Number.isFinite(feedback.fullContacts)) {
+    parts.push(`Full contacts ${feedback.fullContacts}`);
+  }
+  if (feedback.nearContacts !== null && Number.isFinite(feedback.nearContacts)) {
+    parts.push(`Near contacts ${feedback.nearContacts}`);
+  }
+  if (feedback.setBreakdown.trim()) parts.push(`Sets ${feedback.setBreakdown.trim()}`);
+  if (feedback.fatigue) parts.push(`Shoulder/grip fatigue ${feedback.fatigue}`);
+  if (feedback.returnSwing) parts.push(`Return swing ${feedback.returnSwing}`);
+  const joined = parts.join(" · ");
+  const extra = feedback.extra.trim();
+  if (!joined) return extra;
+  return extra ? `${joined} — ${extra}` : joined;
 }
 
 /**

@@ -1,205 +1,683 @@
 {
-  "programId": "gym-kipping-capacity-3wk-v1",
-  "title": "Ordinary Kipping Pull-Up Capacity",
-  "subtitle": "3-week kipping capacity block",
-  "summary": "Two short sessions a week for three weeks. This block trains two separate qualities: set length — how long one set stays clean — and total capacity — how many clean reps a session holds. Forty reps are now inside total capacity, but on 10 August the kip disappeared on rep 40 and strict pulling strength finished it. So the block finishes by buying set length at low volume, then requiring the kip itself to survive all forty, before the applied 50.",
+  "programId": "gym-ttb-mayhem-scaled-8wk-v1",
+  "title": "Toes-to-Bar — Individualized Mayhem Block",
+  "subtitle": "8-week technique-first toes-to-bar block",
+  "summary": "Eight weekly sessions built from the uploaded Mayhem TTB/Core Endurance cycle. The source cycle trains high-rep toes-to-bar endurance and assumes the skill already exists; David's kipping attempts currently reach knees-to-elbows, so this lane first buys the missing piece — full toe contact and the return swing — and lets volume grow only as contact becomes ordinary. Every week shows the original Mayhem prescription as source context and a scaled session as the actionable default. Begin only after the 17–21 August FMD is finished and refeeding is complete, and weigh every session against what the week's WODs already took from grip, hanging and trunk.",
   "primarySkill": {
     "title": "The one skill this block trains",
-    "cue": "Same push-away, same tempo, every rep of every set — the last rep of a set of five should look like the first, and the arch after it should still be alive.",
-    "failureSignal": "When the push-away disappears and the next kip turns arm-dominant, the set is finished. Reps taken after that rehearse the wrong descent and buy nothing but hot spots and sore elbows."
+    "cue": "Press the bar away with active lats, ride hollow-to-arch, drive the knees high while the hips close, then finish with a late knee-extension toe flick to the bar — and on the way down drive the feet down and push the bar away into the next arch.",
+    "failureSignal": "When the active shoulder collapses, the return swing dies into a dead hang, or reps become knee lifts with no late flick, the set is over. A near contact is recorded as a near contact — never forced into a rep."
   },
-  "durationWeeks": 3,
-  "sessionsPerWeek": 2,
-  "totalSessions": 6,
-  "spacingHours": { "min": 48, "max": 72 },
-  "spacingNote": "Take at least 48 hours without dynamic pulling before the first session, then keep sessions 48–72 hours apart.",
+  "durationWeeks": 8,
+  "sessionsPerWeek": 1,
+  "totalSessions": 8,
+  "spacingHours": { "min": 48, "max": 168 },
+  "spacingNote": "One toes-to-bar session a week, starting only after the 17–21 August FMD and a full refeed. Keep at least 48 hours between this session and the week's biggest pulling, hanging or GHD day — and when the WODs already delivered that volume, shrink or skip the session rather than stacking it.",
   "warmup": {
-    "title": "Warm-up — every session",
+    "title": "Skill primer — before anything metabolic",
     "items": [
+      "30–45 s active hang, lats pressing the bar down, shoulders away from the ears",
       "2×6 scap pull-ups",
-      "2×5 controlled beat swings",
-      "1 easy set of 3 linked kipping pull-ups"
+      "2×5 controlled beat swings — hollow to arch, feet together",
+      "2×5 slow hanging knee raises — knees high, quiet lower, no borrowed swing",
+      "3–5 knees-high + late toe-flick singles, completely fresh — the best reps of the day"
     ]
   },
   "sessionRules": {
     "title": "Rules for every session",
     "items": [
-      "Skip the extra skill session when the day's WOD already contains roughly 30 or more pulling reps.",
-      "Stop a set when the push-away disappears, the next kip turns arm-dominant, pain appears, or a hand hot spot develops.",
-      "Move back one step after two rhythm failures, and repeat a session until it is clean.",
-      "A prescribed top set is a ceiling, not a test — stop it on the number even when more reps are available.",
-      "No butterfly and no chest-to-bar training volume during these three weeks."
+      "The Mayhem numbers on each card are source context, not the day's target — the scaled lane is the session.",
+      "A full rep needs both feet on the bar together, inside the hands, with the shoulders still active. Anything else is a near contact — count it honestly and separately.",
+      "Skip or shrink the session when the week's WODs already carried roughly 30 or more pulling or hanging reps, or a big GHD dose, inside the previous 48 hours.",
+      "Stop the toes-to-bar portion when the return swing disappears, the shoulders go passive, or grip turns doubtful — then finish the core stimulus with V-ups, GHD sit-ups or toes-to-ring instead.",
+      "Substitutes keep the engine honest, but they never buy back failed technique — a session where the flick died early is logged that way and repeated.",
+      "No butterfly work and no chest-to-bar volume inside this block — chest-to-bar stays a separate low-volume technique exposure."
     ]
   },
-  "progressionRule": "Complete each session cleanly before advancing, and repeat a session as often as it takes. Progress is earned by holding the same push-away at the same tempo through the last set — never by the calendar reaching week three.",
+  "progressionRule": "Advance to the next week only when the current week's contact target arrived with the return swing intact; repeat a week after a session where contacts or the return swing degraded. Progress is earned by contact quality, never by the calendar.",
   "feedbackPrompt": {
     "title": "Tell Nabu after each session",
     "items": [
-      "Clean sets / sets prescribed — e.g. \"6 / 6\"",
-      "Which rep the push-away first disappeared on, if any",
-      "Any pain or hand hot spots",
-      "Did the last set look like the first, or did the final reps turn arm-dominant?"
+      "Full contacts — both feet on the bar, e.g. \"9\"",
+      "Near contacts — knees high with the flick, feet short of the bar",
+      "Set breakdown, e.g. \"3/3/2/2\"",
+      "Shoulder and grip fatigue — none / noticeable / limiting",
+      "Did the return swing stay intact, or did reps start dropping to a dead hang?",
+      "Any shoulder, elbow or hand pain, or a hot spot"
     ]
   },
   "weeks": [
     {
       "week": 1,
-      "phase": "Fours, then a controlled six",
-      "focus": "Make four linked reps ordinary, then take one longer set on purpose rather than discovering it at failure.",
+      "phase": "Contact baseline",
+      "focus": "Find out honestly where contact stands when fresh — a counted baseline, not a race against the source's clock.",
       "sessions": {
         "A": {
-          "label": "Repeat fours",
-          "goal": "Six identical sets of four, each rep ending in the same push-away back into the arch.",
+          "label": "Quality-attempt baseline",
+          "goal": "Replace the Mayhem 50-rep test with a fresh, counted contact baseline: how many full contacts arrive in ten unhurried minutes, and what the return swing does after each one.",
+          "primer": [
+            "Full skill primer, unhurried",
+            "Extra attention on the last piece: 5 knees-high + late toe-flick singles, resting fully between them"
+          ],
+          "source": {
+            "title": "Mayhem Gymnastics: TTB/Core Endurance — Week 1 (optional)",
+            "intent": "Screenshot intent: \"This cycle we will focus on core endurance, with a bias toward toes to bar… We will have an initial test on week one and then retest on week 10.\" Only weeks 1–8 were photographed — no week 9 or week 10 material was supplied, so the retest exists only as this mention.",
+            "options": [
+              {
+                "label": "Initial Test (Rx)",
+                "lines": [
+                  "For time: 50 Toes to Bar",
+                  "Every minute, including at 0:00, perform 7/5 Calorie Ski",
+                  "Time cap: 10 minutes"
+                ]
+              },
+              {
+                "label": "Initial Test (Advanced)",
+                "lines": [
+                  "For time: 75 Toes to Bar",
+                  "Every minute, including at 0:00, perform 7/5 Calorie Ski",
+                  "Time cap: 10 minutes"
+                ]
+              }
+            ]
+          },
           "blocks": [
             {
-              "movement": "Kipping pull-ups",
-              "prescription": "6×4",
-              "note": "Rest 60 seconds between sets. Same push-away after every rep, including rep four."
+              "movement": "Kipping toes-to-bar — quality attempts",
+              "prescription": "10 min · 2/min",
+              "note": "At the top of each minute take 2 unhurried kipping attempts — knees high, late toe flick, feet driven down and the bar pushed away into the next arch. Score full contacts and near contacts separately, and end any set the moment the return swing dies."
             },
             {
-              "movement": "Session total",
-              "prescription": "24 full reps",
-              "note": "The prescription is the ceiling as well as the target — do not add sets because it felt easy."
+              "movement": "Core stimulus",
+              "prescription": "3×12 V-ups",
+              "note": "After the bar work, rest as needed between sets. The source test buys core endurance with 50 toes-to-bar; these buy it without spending the fresh contact practice."
+            },
+            {
+              "movement": "Baseline score",
+              "prescription": "Full + near contacts",
+              "note": "Write both numbers down — week 8 repeats this count as the block's own comparison. No SkiErg interference this week: contact is acquired fresh."
             }
           ],
-          "notes": [
-            "Scheduled for Tuesday 4 August — the block opens here, so take at least 48 hours without dynamic pulling before it.",
-            "If a set breaks rhythm twice, drop to sets of three for the rest of the session and repeat this session next time."
-          ]
-        },
-        "B": {
-          "label": "Controlled six + back-off fives",
-          "goal": "Find out what one longer set costs, at a length chosen in advance instead of discovered at failure.",
-          "blocks": [
-            {
-              "movement": "Kipping pull-ups — top set",
-              "prescription": "1×6",
-              "note": "One set of six, then stop. Six is the prescription, not the maximum — end the set at rep six even if more reps are available."
-            },
-            {
-              "movement": "Kipping pull-ups — back-off sets",
-              "prescription": "4×5",
-              "note": "Rest 75 seconds between all sets, including after the top set. Rep five has to rise off the backswing, not off an extra arm pull."
-            },
-            {
-              "movement": "Session total",
-              "prescription": "26 full reps",
-              "note": "Set length is what moves this session — 26 reps is barely more than the 24 of session 1, and that is deliberate."
-            }
+          "qualityRules": [
+            "A full contact: both feet touch the bar together, inside the hands, shoulders still active.",
+            "A near contact: knees driven high with the late flick, feet short of the bar — counted separately, never forced into a rep.",
+            "A slight lean back behind the bar is allowed — it made the 18 August strict reps distinctly better.",
+            "A straight-leg late flick beats height bought with bent-leg heaving."
+          ],
+          "stopRules": [
+            "Active shoulders collapse or the hang goes passive.",
+            "The return swing disappears — the next rep would start from a dead hang.",
+            "Grip turns insecure, or any shoulder, elbow or hand pain or hot spot appears."
+          ],
+          "wodAdjustment": "Place this baseline at least 48 hours from any WOD that carried toes-to-bar, high-rep pulling or a big hanging dose — the count is only useful fresh. If the week's WODs already took that toll, push the session back rather than counting a tired baseline.",
+          "feedback": [
+            "Full contacts (the baseline number)",
+            "Near contacts",
+            "Set breakdown across the ten minutes",
+            "Shoulder and grip fatigue — none / noticeable / limiting",
+            "Return swing intact, or dropping to dead hang?"
           ],
           "notes": [
-            "Scheduled for Thursday 6 August, at least 48 hours after session 1.",
-            "Set length and total capacity are separate qualities, so only one of them moves here.",
-            "If rep six turns arm-dominant, end that set at five and take the back-off sets in fours."
+            "Open this block only after the 17–21 August FMD is over and refeeding is complete — never fasted or half-refed.",
+            "No 50-rep for-time attempt: the source test measures a skill this block is still building."
           ]
         }
       }
     },
     {
       "week": 2,
-      "phase": "A forty-rep baseline, then a controlled eight",
-      "focus": "Establish what total capacity already holds, then buy set length at the lowest volume that still teaches it.",
+      "phase": "Rhythm under light interference",
+      "focus": "Keep the late flick and the return swing intact when a short ski piece precedes the bar.",
       "sessions": {
         "A": {
-          "label": "Accumulate fives — forty-rep baseline",
-          "goal": "Hold five linked reps on a one-minute clock for eight rounds, and find out where the kip itself actually runs out.",
+          "label": "Intervals — ski, then quality attempts",
+          "goal": "The Mayhem week buys max-rep core work under interval fatigue; David's version shortens the ski to light interference, inserts three quality attempts, and lets V-ups carry the rest of each window.",
+          "primer": [
+            "Full skill primer",
+            "One extra set of 3 toe-flick singles after the first ski preview — feel what the flick does with a raised pulse"
+          ],
+          "source": {
+            "title": "Mayhem Gymnastics: TTB/Core Endurance — Week 2 (optional)",
+            "options": [
+              {
+                "label": "As prescribed",
+                "lines": [
+                  "5 Sets (2:00 on / 1:00 off)",
+                  "18/15 Calorie Ski",
+                  "Max GHD Sit Ups (or V-Ups)",
+                  "Cap at 100 GHDs/V-Ups",
+                  "Cap Ski at 1:15 each set"
+                ]
+              }
+            ]
+          },
           "blocks": [
             {
-              "movement": "Kipping pull-ups",
-              "prescription": "8×5",
-              "note": "Five linked reps at the top of every minute, EMOM, for eight minutes. Every rep still ends in the same push-away."
+              "movement": "Intervals",
+              "prescription": "5×(2:00 on / 1:00 off)",
+              "note": "The source's clock, kept."
             },
             {
-              "movement": "Session total",
-              "prescription": "40 full reps",
-              "note": "A total-capacity baseline, not the quality gate. The gate is week 3 session A."
+              "movement": "SkiErg",
+              "prescription": "8 cal each set",
+              "note": "Deliberately far below the source's 18/15 — the ski raises the pulse for the bar work; it is not the workout."
+            },
+            {
+              "movement": "Toes-to-bar — quality attempts",
+              "prescription": "3 each set",
+              "note": "Straight off the ski, three unhurried attempts: knees high, late flick, push the bar away on the return. Full and near contacts counted separately; skip remaining attempts in a set the moment the return swing dies."
+            },
+            {
+              "movement": "V-ups",
+              "prescription": "max in remaining time · cap 12/set",
+              "note": "Cap 60 across the session against the source's 100 GHD/V-up cap — trunk fatigue must not eat next week's contact work."
             }
           ],
-          "notes": [
-            "Completed Monday 10 August: all 40 reps, comfortable from a pulling-strength perspective. The kip disappeared on rep 40 and easy strict pulling finished that rep.",
-            "That result proves total pulling capacity at forty and nothing more — dynamic kip and grip endurance, not pulling strength, are now the limiters."
-          ]
-        },
-        "B": {
-          "label": "Controlled eight + back-off fours",
-          "goal": "Expose one deliberately stopped set of eight at the lowest total volume that still teaches set length.",
-          "blocks": [
-            {
-              "movement": "Kipping pull-ups — top set",
-              "prescription": "1×8",
-              "note": "One set of eight, then stop. Do not grind it — end the set the moment the push-away changes, and never rescue it with strict pulling strength."
-            },
-            {
-              "movement": "Kipping pull-ups — back-off sets",
-              "prescription": "4×4",
-              "note": "Rest 75–90 seconds between all sets, including after the top set. Fours rather than fives: Thursday's programmed strict chin-up ladder carries the week's high-volume pulling, not this session."
-            },
-            {
-              "movement": "Session total",
-              "prescription": "Up to 24 full reps",
-              "note": "A ceiling, not a target. Set length is the only quality this session buys, so the volume sits deliberately below the forty already proven."
-            }
+          "qualityRules": [
+            "A full contact: both feet touch the bar together, inside the hands, shoulders still active.",
+            "A near contact: knees high with the late flick, feet short of the bar — counted separately, never forced into a rep.",
+            "A slight lean back behind the bar is allowed.",
+            "Attempts taken with a dead return swing teach the wrong rep — skip them and log why."
+          ],
+          "stopRules": [
+            "Active shoulders collapse or the hang goes passive.",
+            "The return swing disappears between attempts.",
+            "Grip turns insecure, or any shoulder, elbow or hand pain or hot spot appears."
+          ],
+          "wodAdjustment": "If the week's WODs left noticeable shoulder or grip fatigue in the primer, drop the ski entirely and run the same session as bar attempts plus V-ups only. If the WODs already programmed toes-to-bar this week, halve the attempts to 2 per set.",
+          "feedback": [
+            "Full contacts across the five sets",
+            "Near contacts",
+            "Set breakdown, e.g. \"3/3/2/2/2\"",
+            "Shoulder and grip fatigue — none / noticeable / limiting",
+            "Return swing intact through the later sets?"
           ],
           "notes": [
-            "Scheduled for Wednesday 12 August.",
-            "A fresh set of eight is a set-length exposure, not WOD pacing — nothing here says to open a 50-rep workout with eight.",
-            "If the top set stops early, run the back-off sets as prescribed rather than making the missing reps up.",
-            "Thursday carries the programmed high-volume strict chin-ups and no extra kipping; Friday and Saturday stay kipping-free."
+            "Fifteen attempts maximum this week — the interference is the new ingredient, not volume."
           ]
         }
       }
     },
     {
       "week": 3,
-      "phase": "Prove the kip, then apply it",
-      "focus": "Require the same kip rhythm on rep forty as on rep one, then take the fifty-rep application after real recovery.",
+      "phase": "Contacts inside mixed-modal work",
+      "focus": "Bring small contact clusters into a double-under and burpee round without letting quality slip.",
       "sessions": {
         "A": {
-          "label": "Repeat the clean-forty gate",
-          "goal": "Forty reps again — but this time passed only if rep forty is still produced by the same kip rhythm as rep one.",
+          "label": "Mixed-modal sets — small contact clusters",
+          "goal": "The source scores 15 toes-to-bar per round for time; David keeps the double-under/burpee lead-in and asks for six quality reps per set in clusters of 2–3 instead.",
+          "primer": [
+            "Full skill primer",
+            "10 easy double-unders and 2 slow burpees to preview the lead-in before set one"
+          ],
+          "source": {
+            "title": "Mayhem Gymnastics: Toes to Bar/Core Endurance — Week 3 (optional)",
+            "options": [
+              {
+                "label": "As prescribed",
+                "lines": [
+                  "5 Sets",
+                  "50 Double Unders",
+                  "10 Burpees to 6\" Target",
+                  "15 Toes to Bar for Time",
+                  "Rest 2 minutes between sets"
+                ]
+              }
+            ],
+            "notes": [
+              "If you cannot complete the 15 Toes to Bar in 3 sets, lower the reps to 10–12 per set.",
+              "Score time to complete each set of Toes to Bar."
+            ]
+          },
           "blocks": [
             {
-              "movement": "Kipping pull-ups",
-              "prescription": "8×5",
-              "note": "Five linked reps at the top of every minute, EMOM, for eight minutes — the same dose as 10 August. Set eight must look like set one, push-away included."
+              "movement": "Sets",
+              "prescription": "4 · rest 2:30",
+              "note": "One fewer set and more rest than the source's 5×2:00 — the extra rest is what keeps the bar work honest."
             },
             {
-              "movement": "Session total",
-              "prescription": "40 full reps",
-              "note": "This session is the gate for the fifty-rep application. It passes only when rep 40 uses the same kip rhythm as rep one; a rep rescued by strict pulling strength does not pass it. Repeat it until it does."
+              "movement": "Double-unders",
+              "prescription": "30",
+              "note": "Source: 50."
+            },
+            {
+              "movement": "Burpees to 6-inch target",
+              "prescription": "6",
+              "note": "Source: 10."
+            },
+            {
+              "movement": "Toes-to-bar — quality clusters",
+              "prescription": "6 per set, as 2s–3s",
+              "note": "Break deliberately into 2s and 3s from the first set. Full contacts scored per set; near contacts logged separately. Knees-to-elbows with the late-flick attempt is the honest fallback when contact fades — not a rep, and not a failure to hide."
             }
           ],
+          "qualityRules": [
+            "A full contact: both feet touch the bar together, inside the hands, shoulders still active.",
+            "A near contact: knees high with the late flick, feet short of the bar — counted separately, never forced into a rep.",
+            "A slight lean back behind the bar is allowed.",
+            "The cluster ends on a dead return swing even when reps remain."
+          ],
+          "stopRules": [
+            "Active shoulders collapse or the hang goes passive.",
+            "The return swing disappears mid-cluster.",
+            "Grip turns insecure, or any shoulder, elbow or hand pain or hot spot appears."
+          ],
+          "wodAdjustment": "Twenty-four attempts is this session's ceiling. If the week's WODs carried toes-to-bar or 30+ pulling reps, cut to 3 sets or drop the burpee/double-under lead-in and keep only fresh clusters.",
+          "feedback": [
+            "Full contacts per set, e.g. \"5/5/4/4\"",
+            "Near contacts",
+            "Set breakdown inside the clusters",
+            "Shoulder and grip fatigue — none / noticeable / limiting",
+            "Return swing intact in set 4?"
+          ],
           "notes": [
-            "Scheduled for Sunday 16 August, and only if shoulders, elbows, grip, and hands feel normal.",
-            "The gap from Wednesday is deliberately longer than the usual 48–72 hours: Thursday's programmed strict chin-up ladder is high-volume pulling, and Friday and Saturday stay kipping-free so the gate is taken fresh.",
-            "Two rhythm failures here means repeating this session before the application, not moving on to it."
+            "The source lowers 15 to 10–12 when it cannot be done in 3 sets; David's numbers sit below that on purpose — do not chase the Rx count."
           ]
-        },
-        "B": {
-          "label": "Fifty-rep application",
-          "goal": "Fifty clean reps under real pacing — opened below the fresh maximum and downshifted before the rhythm goes.",
+        }
+      }
+    },
+    {
+      "week": 4,
+      "phase": "Interval structure without the volume",
+      "focus": "Take the source's 2:00-on/1:00-off engine and wall-walk buy-in, with the bar work capped where quality lives.",
+      "sessions": {
+        "A": {
+          "label": "Wall walks + capped contact intervals",
+          "goal": "Keep the interval shape and the wall-walk buy-in, cap each interval's bar work at four quality attempts, and let V-ups or GHD carry the middle of the sequence.",
+          "primer": [
+            "Full skill primer",
+            "2 slow wall walks with a 2 s nose-to-wall hold — shoulders active before the first interval"
+          ],
+          "source": {
+            "title": "Mayhem Gymnastics Toes to Bar/Core Endurance — Week 4 (optional)",
+            "options": [
+              {
+                "label": "Rx Option",
+                "lines": [
+                  "2:00 On/1:00 Off until workout is completed OR 6 Sets",
+                  "5 Wall Walk",
+                  "Max Reps in remaining time of:",
+                  "35 Toes to Bar",
+                  "50 GHD Sit Ups",
+                  "35 Toes to Bar"
+                ]
+              },
+              {
+                "label": "Advanced Option",
+                "lines": [
+                  "2:00 On/1:00 Off until workout is completed OR 6 Sets",
+                  "5 Wall Walks",
+                  "Max Reps in remaining time of:",
+                  "50 Toes to Bar",
+                  "50 GHD Sit Ups",
+                  "50 Toes to Bar"
+                ]
+              }
+            ],
+            "notes": [
+              "Score is total time with rest."
+            ]
+          },
           "blocks": [
             {
-              "movement": "Kipping pull-ups",
-              "prescription": "50-rep application",
-              "note": "Open with repeatable fives, not a fresh maximum, and downshift early to fours and then threes before the push-away deteriorates. Small sets held together beat one big set followed by singles."
+              "movement": "Intervals",
+              "prescription": "2:00 on / 1:00 off · max 6 sets",
+              "note": "The source's clock and set cap, kept."
             },
             {
-              "movement": "Standalone fallback if no WOD arrives",
-              "prescription": "10×5 on a 90-second clock",
-              "note": "Five linked reps every 90 seconds for ten rounds. Stop the moment the push-away goes — an honest 8 rounds beats a scrappy 10."
+              "movement": "Wall walks",
+              "prescription": "3 each interval",
+              "note": "Source: 5."
             },
             {
-              "movement": "Session total",
-              "prescription": "50 full reps",
-              "note": "This is the capacity the 50-pull-up WOD asks for, taken at workout pace rather than as a fresh-set test."
+              "movement": "Work through, in remaining time",
+              "prescription": "10 contacts → 30 V-ups or 20 GHD → 10 contacts",
+              "note": "Toes-to-bar as quality attempts, capped at 4 per interval. Only full contacts advance the sequence; near contacts are logged but do not count toward the 10. If the second 10 cannot be earned with the return swing intact, stop there and record it — substitutes never complete the bar work."
+            },
+            {
+              "movement": "Score",
+              "prescription": "Total time incl. rest",
+              "note": "The source's scoring shape — but a session ended early by the stop rules is a good session, not a DNF."
             }
           ],
+          "qualityRules": [
+            "A full contact: both feet touch the bar together, inside the hands, shoulders still active.",
+            "A near contact: knees high with the late flick, feet short of the bar — logged, but it does not advance the sequence.",
+            "A slight lean back behind the bar is allowed.",
+            "Wall-walk quality guards the shoulders the flick depends on — slow beats sloppy."
+          ],
+          "stopRules": [
+            "Active shoulders collapse — on the wall or on the bar.",
+            "The return swing disappears — the sequence stops at the count reached.",
+            "Grip turns insecure, or any shoulder, elbow or hand pain or hot spot appears."
+          ],
+          "wodAdjustment": "Wall walks plus bar work is a big shoulder day: keep it at least 48 hours from handstand push-up or high-volume pressing WODs, and skip the wall walks entirely if the week already held them.",
+          "feedback": [
+            "Full contacts (first 10 and second 10 separately)",
+            "Near contacts",
+            "Set breakdown per interval",
+            "Shoulder and grip fatigue — none / noticeable / limiting",
+            "Return swing intact when the second 10 started?"
+          ],
           "notes": [
-            "Take it only after week 3 session A is clean and shoulders, elbows, grip, and hands feel normal — a forty finished by strict pulling strength is not a clean forty.",
-            "Do not schedule it inside the 17–21 August FMD. If Sunday 16 August only passes the clean-forty gate, take the application after the FMD and its refeed rather than forcing it into that week.",
-            "If any of that is not true, repeat week 3 session A instead and take the application 48–72 hours later.",
-            "A programmed 50-rep pull-up workout can be the application itself, once the gate is behind you and the same recovery rules hold."
+            "The source asks for 35/50/35 (advanced 50/50/50) — David's sequence is 10/30/10 by design, and the difference is the technique the block is buying."
+          ]
+        }
+      }
+    },
+    {
+      "week": 5,
+      "phase": "AMRAP flow",
+      "focus": "Move continuously for ten minutes while the bar work stays in small fresh clusters.",
+      "sessions": {
+        "A": {
+          "label": "AMRAP — contacts in motion",
+          "goal": "The source's 10-minute AMRAP shape with the toes-to-bar dose halved into 2+2 clusters, so every attempt still carries the late flick and the pushed-away return.",
+          "primer": [
+            "Full skill primer",
+            "5–10 ft of handstand walking or 1 wall walk to set the inversion before the clock starts"
+          ],
+          "source": {
+            "title": "Mayhem Gymnastics Toes to Bar/Core — Week 5 (optional)",
+            "options": [
+              {
+                "label": "Rx Option",
+                "lines": [
+                  "10 Minute AMRAP",
+                  "10 Toes to Bar (OR 8/6 Cal Ski)",
+                  "15ft Handstand Walk",
+                  "10 GHD Sit Ups",
+                  "15ft Handstand Walk"
+                ]
+              },
+              {
+                "label": "Advanced Option",
+                "lines": [
+                  "10 Minute AMRAP",
+                  "15 Toes to Bar (OR 12/10 Calorie Ski)",
+                  "25ft Handstand Walk",
+                  "15 GHD Sit Ups",
+                  "25ft Handstand Walk"
+                ]
+              }
+            ],
+            "notes": [
+              "Handstand Walk must be unbroken each segment."
+            ]
+          },
+          "blocks": [
+            {
+              "movement": "AMRAP",
+              "prescription": "10 minutes",
+              "note": "The source's window, kept."
+            },
+            {
+              "movement": "Toes-to-bar — quality cluster",
+              "prescription": "4 per round, as 2+2",
+              "note": "Source asks 10 (or a ski swap). Keep the bar and halve the dose; use the source's 8/6-cal ski swap for a round only when the return swing has already died and the stop rules say the bar is done for the day."
+            },
+            {
+              "movement": "Handstand walk",
+              "prescription": "15 ft",
+              "note": "Unbroken, as the source requires. Substitute 2 wall walks when no free lane exists."
+            },
+            {
+              "movement": "GHD sit-ups or V-ups",
+              "prescription": "8",
+              "note": "Source: 10 GHD."
+            },
+            {
+              "movement": "Handstand walk",
+              "prescription": "15 ft",
+              "note": "Unbroken each segment, as the source requires."
+            }
+          ],
+          "qualityRules": [
+            "A full contact: both feet touch the bar together, inside the hands, shoulders still active.",
+            "A near contact: knees high with the late flick, feet short of the bar — counted separately, never forced into a rep.",
+            "A slight lean back behind the bar is allowed.",
+            "Moving continuously is the week's stimulus — but the 2+2 cluster is never rushed to buy a round."
+          ],
+          "stopRules": [
+            "Active shoulders collapse — walking or hanging.",
+            "The return swing disappears — switch remaining rounds to the source's ski swap and log it.",
+            "Grip turns insecure, or any shoulder, elbow or hand pain or hot spot appears."
+          ],
+          "wodAdjustment": "Inversion plus hanging in one piece: keep 48 hours from handstand-heavy WODs. If the week already programmed toes-to-bar, run the AMRAP with the ski swap from the start and keep only the primer's fresh attempts.",
+          "feedback": [
+            "Full contacts across all rounds",
+            "Near contacts",
+            "Set breakdown — did 2+2 hold, or become 2+1+1?",
+            "Shoulder and grip fatigue — none / noticeable / limiting",
+            "Return swing intact in the final round?"
+          ],
+          "notes": [
+            "Expect roughly 4–5 rounds — 16 to 20 attempts. More rounds bought with broken clusters is the wrong trade."
+          ]
+        }
+      }
+    },
+    {
+      "week": 6,
+      "phase": "Capped max sets",
+      "focus": "The first deliberate max-set exposure — after a buy-in, with a hard cap so the last rep is still a real one.",
+      "sessions": {
+        "A": {
+          "label": "Capped max sets after a buy-in",
+          "goal": "The source asks for a max toes-to-bar set after a ski/box-jump buy-in; David takes the same shape with the set capped at five, ending at the first sign the flick is gone.",
+          "primer": [
+            "Full skill primer",
+            "3 toe-flick singles between the ski preview and set one — the day's calibration reps"
+          ],
+          "source": {
+            "title": "Mayhem Gymnastics Toes to Bar/Core — Week 6 (optional)",
+            "options": [
+              {
+                "label": "As prescribed — \"3-3-3-4 Intervals\"",
+                "lines": [
+                  "15/12 Cal Ski",
+                  "15 Box Jump (24/20)",
+                  "Max Toes to Bar",
+                  "Rest 1 minute between sets",
+                  "Cap the Cal Ski / Box Jump buy-in at 2 minutes"
+                ]
+              }
+            ],
+            "notes": [
+              "The interval label \"3-3-3-4 Intervals\" is shown exactly as the screenshot displays it; the screenshots do not explain it further."
+            ]
+          },
+          "blocks": [
+            {
+              "movement": "Intervals",
+              "prescription": "4 sets · rest 1:00",
+              "note": "Buy-in capped at 90 s — below the source's 2:00 because the buy-in itself is shortened."
+            },
+            {
+              "movement": "SkiErg",
+              "prescription": "8 cal",
+              "note": "Source: 15/12."
+            },
+            {
+              "movement": "Box step-ups or jumps",
+              "prescription": "10 at 20 in",
+              "note": "Source: 15 at 24/20. Step-ups are the default — box height and landings are not this block's business."
+            },
+            {
+              "movement": "Toes-to-bar — capped max set",
+              "prescription": "Max full contacts · cap 5",
+              "note": "One set per interval. The set ends at five, at the first near contact after a lost flick, or the moment the return swing dies — whichever comes first. Score full contacts per set."
+            }
+          ],
+          "qualityRules": [
+            "A full contact: both feet touch the bar together, inside the hands, shoulders still active.",
+            "A near contact: knees high with the late flick, feet short of the bar — counted separately, never forced into a rep.",
+            "A slight lean back behind the bar is allowed.",
+            "A capped five with an intact return swing is worth more than seven with two heaves at the end."
+          ],
+          "stopRules": [
+            "Active shoulders collapse or the hang goes passive.",
+            "The return swing disappears — the set is over regardless of the count.",
+            "Grip turns insecure, or any shoulder, elbow or hand pain or hot spot appears."
+          ],
+          "wodAdjustment": "Twenty attempts is the ceiling. After a grip-heavy WOD week (rope, deadlifts, high-rep pulling), replace the max sets with fixed clusters of 3 or postpone the session 48 hours.",
+          "feedback": [
+            "Full contacts per set, e.g. \"5/4/4/3\"",
+            "Near contacts",
+            "Where each set actually ended — cap, flick lost, or swing gone",
+            "Shoulder and grip fatigue — none / noticeable / limiting",
+            "Return swing intact into set 4?"
+          ],
+          "notes": [
+            "This is the block's first deliberate max-set look. If two sets in a row end below three full contacts, close the bar work and finish with V-ups."
+          ]
+        }
+      }
+    },
+    {
+      "week": 7,
+      "phase": "Modal variety",
+      "focus": "Three machines, three flavours of the same skill — rings teach the lean-back, the bar keeps the contact work, GHD keeps the engine.",
+      "sessions": {
+        "A": {
+          "label": "Row + rings, bike + bar, ski + GHD",
+          "goal": "The source rotates row/toes-to-ring, bike/toes-to-bar and ski/GHD; David keeps all three parts with the reps sized to quality — the ring part deliberately rehearses travelling behind the hands.",
+          "primer": [
+            "Full skill primer",
+            "3 slow toes-to-ring reps before part 1 — feel the body travel behind the hands"
+          ],
+          "source": {
+            "title": "Mayhem Gymnastics Toes to Bar/Core — Week 7",
+            "options": [
+              {
+                "label": "Rx Option",
+                "lines": [
+                  "3 Rounds: 15/12 Calorie Row + 15 Toes to Ring",
+                  "— rest 1 min —",
+                  "3 Rounds: 15/12 Calorie Bike + 15 Toes to Bar",
+                  "— rest 1 min —",
+                  "3 Rounds: 15/12 Calorie Ski + 15 GHD Sit Ups"
+                ]
+              },
+              {
+                "label": "Advanced Option",
+                "lines": [
+                  "3 Rounds",
+                  "20/16 Calorie Row",
+                  "…"
+                ],
+                "incomplete": "The screenshot is cropped after \"20/16 Calorie Row\" — the rest of the advanced option was not supplied and is deliberately not reconstructed."
+              }
+            ]
+          },
+          "blocks": [
+            {
+              "movement": "Part 1 — row + toes-to-ring",
+              "prescription": "3×(8 cal + 6)",
+              "note": "Then rest 1 minute. Source: 15/12 cal + 15. The rings let the body travel behind the hands — the exact lean that made the 18 August strict reps better. Slow, controlled reps."
+            },
+            {
+              "movement": "Part 2 — bike + toes-to-bar",
+              "prescription": "3×(8 cal + 4)",
+              "note": "Then rest 1 minute. Source: 15/12 cal + 15. Quality attempts as 2+2 — full contacts scored, near contacts logged separately."
+            },
+            {
+              "movement": "Part 3 — ski + GHD sit-ups",
+              "prescription": "3×(8 cal + 10)",
+              "note": "Source: 15/12 cal + 15 GHD. GHD at moderate depth, or 12 V-ups — the trunk engine closes the session once the skill work is banked."
+            }
+          ],
+          "qualityRules": [
+            "A full contact: both feet touch the bar together, inside the hands, shoulders still active.",
+            "A near contact: knees high with the late flick, feet short of the bar — counted separately, never forced into a rep.",
+            "On the rings, the same standard travels: feet to the rings with active shoulders, body allowed behind the hands.",
+            "A slight lean back behind the bar is allowed."
+          ],
+          "stopRules": [
+            "Active shoulders collapse on rings or bar.",
+            "The return swing disappears — the remaining bar rounds become ski or V-up rounds, logged as such.",
+            "Grip turns insecure, or any shoulder, elbow or hand pain or hot spot appears."
+          ],
+          "wodAdjustment": "Thirty dynamic hanging reps (rings + bar) is the ceiling and assumes a quiet hanging week. After any WOD with toes-to-bar or high-rep pulling, drop part 1's rings to 4 per round or replace part 2's bar work with the primer only.",
+          "feedback": [
+            "Full contacts in part 2",
+            "Near contacts",
+            "Set breakdown — did 2+2 hold on the bike rounds?",
+            "Shoulder and grip fatigue — none / noticeable / limiting",
+            "Return swing intact through part 2, and how the rings felt versus the bar"
+          ],
+          "notes": [
+            "The advanced option exists only as a cropped fragment — it is shown for provenance and is not part of any lane here."
+          ]
+        }
+      }
+    },
+    {
+      "week": 8,
+      "phase": "Density re-baseline",
+      "focus": "Finish by re-counting contact under the source's EMOM shape — against week 1's own baseline.",
+      "sessions": {
+        "A": {
+          "label": "EMOM density + the block's own retest",
+          "goal": "The source's alternating EMOM, shortened, with the dynamic exposure halved by alternating bar minutes with V-up/GHD minutes — then the full-contact count goes up against week 1.",
+          "primer": [
+            "Full skill primer",
+            "3 fresh toe-flick singles — the same calibration the baseline got in week 1"
+          ],
+          "source": {
+            "title": "Mayhem Gymnastics Toes to Bar/Core — Week 8 (optional)",
+            "options": [
+              {
+                "label": "As prescribed",
+                "lines": [
+                  "20 Minute EMOM",
+                  "Odd Minutes: 30 sec Max Calorie Ski",
+                  "Even Minutes: 30 sec Max Toes to Bar (OR GHD Sit Up)"
+                ]
+              }
+            ],
+            "notes": [
+              "Log reps in notes."
+            ]
+          },
+          "blocks": [
+            {
+              "movement": "EMOM",
+              "prescription": "16 minutes",
+              "note": "Source: 20. Odd minutes: 30 s ski at a moderate, repeatable pace — interference, not a score."
+            },
+            {
+              "movement": "Even minutes — alternate",
+              "prescription": "Bar / V-ups",
+              "note": "Minutes 2, 6, 10, 14: 30 s of quality toes-to-bar as 2s and 3s, full contacts scored. Minutes 4, 8, 12, 16: 30 s of V-ups or moderate GHD sit-ups. The source itself allows GHD in place of toes-to-bar; alternating halves the dynamic exposure."
+            },
+            {
+              "movement": "Retest score",
+              "prescription": "Full + near contacts",
+              "note": "Log reps in notes, as the source instructs — then set the full-contact count against week 1's baseline. This comparison is the block's own: no week 9 or week 10 screenshots were supplied, so the Mayhem retest is out of scope."
+            }
+          ],
+          "qualityRules": [
+            "A full contact: both feet touch the bar together, inside the hands, shoulders still active.",
+            "A near contact: knees high with the late flick, feet short of the bar — counted separately, never forced into a rep.",
+            "A slight lean back behind the bar is allowed.",
+            "The retest is honest only at the same standard as week 1 — a looser standard is not progress."
+          ],
+          "stopRules": [
+            "Active shoulders collapse or the hang goes passive.",
+            "The return swing disappears — remaining bar minutes become V-up minutes, logged as such.",
+            "Grip turns insecure, or any shoulder, elbow or hand pain or hot spot appears."
+          ],
+          "wodAdjustment": "Take the retest as fresh as week 1's baseline: at least 48 hours from toes-to-bar, high-rep pulling or big grip work. A tired retest wastes the block's comparison — postpone rather than discount it.",
+          "feedback": [
+            "Full contacts (the retest number, against week 1)",
+            "Near contacts",
+            "Set breakdown across the four bar minutes",
+            "Shoulder and grip fatigue — none / noticeable / limiting",
+            "Return swing intact in minute 14?"
+          ],
+          "notes": [
+            "What comes after week 8 is decided from this count and the season's WOD volume — a capacity lane closer to the Mayhem numbers only opens once full contact is ordinary."
           ]
         }
       }
@@ -208,83 +686,82 @@
   "prerequisites": {
     "title": "Before you start",
     "mustHave": [
-      "Four linked kipping pull-ups that repeat across fresh sets",
-      "A push-away after every rep, including the last one",
-      "At least 5 strict pull-ups",
-      "Pain-free shoulders, elbows, and hands"
+      "The 17–21 August FMD is finished and refeeding is complete — this block never opens fasted or half-refed",
+      "Roughly six smooth strict knees-high reps near or at contact, as verified on 18 August",
+      "A secure grip setup — the fingerless gymnastics grips confirmed on 15 August",
+      "Pain-free shoulders, elbows and hands"
     ],
     "repCaps": {
-      "perSession": 50,
-      "note": "Session volume is prescribed, and it does not climb evenly — 24 in the opening session, 40 at the baseline and again at the gate, a deliberate ceiling of 24 at the set-length exposure, and 50 only at the application. Never add reps beyond the day's prescription because a session felt easy."
+      "perSession": 30,
+      "label": "dynamic hanging attempts — full contacts, near contacts and toes-to-ring together",
+      "note": "Early weeks sit well under this. The Mayhem source asks for 50–100-rep days; David's lane never does — volume grows only as full contact becomes ordinary, and V-ups, GHD and toes-to-ring carry the remaining core stimulus without hiding a technique failure."
     },
     "stopRules": [
-      "The push-away disappears",
-      "The next kip turns arm-dominant",
-      "Sharp shoulder pain or medial (inner) elbow pain",
-      "A hand hot spot — stop before it tears"
+      "The active shoulder collapses or the hang goes passive",
+      "The return swing disappears — reps start from a dead hang",
+      "Grip becomes insecure, or a hand hot spot develops",
+      "Any sharp shoulder, elbow or hand pain"
     ],
     "notes": [
-      "No butterfly and no chest-to-bar work belongs in these three weeks; each has its own gate after the block.",
+      "General abdominal strength is not the limiter — contact mechanics and shoulder/grip endurance are, so the sessions spend their freshness there.",
       "Technique guidance here is not medical advice — your floor coach overrides the app."
     ]
   },
   "wodScaling": {
-    "title": "If the 50-pull-up WOD arrives first",
-    "intro": "Before the clean-forty gate is passed, a 50-rep pull-up workout is a scaling problem, not a test day. Once it is passed the workout can be the application itself — but it is still paced, never attacked.",
+    "title": "Reconcile with the week's WODs",
+    "intro": "The source cycle assumes toes-to-bar endurance already exists. David's training week often already contains pulling, hanging, GHD and trunk volume — so the weekly dose bends around the WODs, never the other way round.",
     "points": [
-      "Tell the coach that total capacity is 8×5 EMOM for 40 reps, but that the kip disappeared on rep 40 and strict strength finished it — so the clean kipping gate is still below forty. Update that after every clean session.",
-      "Break from rep one. Never open with a set near failure and then grind out singles.",
-      "Open below the fresh maximum. A set of eight in a skill session is a set-length exposure, not a workout pace.",
-      "Downshift early — fives to fours to sets of three — before the push-away deteriorates rather than after it has gone.",
-      "Scale the total volume or the movement with the coach so the workout keeps its intended time domain.",
-      "Stop unassisted reps as soon as the push-away or the shoulder position deteriorates, and finish on the coach's scale."
+      "Count the week honestly: kipping pull-ups, toes-to-bar or knees-to-elbows inside WODs, strict pulling, rope work and GHD all draw from the same shoulder-and-grip account.",
+      "After a high-volume pulling or grip day, take at least 48 hours before this session — or run the primer only and bank the session for later in the week.",
+      "When a WOD programs toes-to-bar, scale it to small quality sets from rep one — knees-to-elbows with the late-flick attempt once contact fades — and tell the coach the block is acquiring contact, not capacity.",
+      "Never let a WOD's toes-to-bar volume plus this session's attempts exceed what one week of shoulders and grip can absorb — the session shrinks first.",
+      "Ordinary kipping pull-ups stay WOD maintenance during this block — no separate pull-up capacity work alongside it."
     ]
   },
   "gates": {
-    "title": "Gates after this block",
-    "intro": "Neither of these belongs inside the block. Each has a gate that has to be met first.",
+    "title": "Kept out of this block",
+    "intro": "Both have their own lane. Neither belongs inside these eight weeks.",
     "items": [
       {
         "skill": "Chest-to-bar",
-        "requirement": "Introduce as low-volume technique work only once sets of five are routine and 8–10 clean ordinary kipping reps come without a hard final pull."
+        "requirement": "Remains a separate, low-volume technique exposure — at most one short quality look per week when recovery allows, and never appended to a toes-to-bar session."
       },
       {
         "skill": "Butterfly",
-        "requirement": "Reconsider only after roughly 15–20 clean unbroken ordinary kipping pull-ups, and learn it with a coach directly watching the shoulder path."
+        "requirement": "Stays deferred until ordinary kipping proficiency is substantially higher — roughly 15–20 clean unbroken kipping pull-ups — and is learned under a coach directly watching the shoulder path."
       }
     ]
   },
   "homeBarSubstitutions": {
     "title": "Home bar — 80 cm wall clearance",
-    "intro": "The home pull-up bar sits about 80 cm from the wall. That geometry does not give reliable clearance for a full hollow-to-arch swing under fatigue, so a tucked-knee, arm-heavy hybrid is not useful muscle-up technique. Substitute deliberately instead of forcing the kip.",
+    "intro": "The home bar's 80 cm wall clearance cannot host a full hollow-to-arch toes-to-bar swing under fatigue, so dynamic attempts stay on the gym rig. At home, train the pieces instead.",
     "points": [
-      "Burpee pull-up: take the burpee in open space, move under the bar, then complete the prescribed pull-up reps cleanly.",
-      "Metabolic bar-muscle-up substitution: one burpee plus two strict or band-assisted pull-ups, with enough assistance to preserve the workout's intended pace.",
-      "Technique substitution: use low-bar, feet-assisted muscle-up transitions only on equipment with adequate clearance, and practise dynamic or jumping muscle-ups on a proper rig.",
-      "Hybrid reps taken on this bar are not kipping-technique volume. The 14 burpee double pull-ups of 8 August were 28 extra arm-heavy reps after the capacity work, and they count as neither."
+      "Strict hanging knee raises in small controlled sets — knees high, quiet lower, no swing.",
+      "Hollow rocks and V-ups on the floor for the trunk stimulus.",
+      "Active hangs and scap pull-ups for lat pressure and grip endurance, stopped before hot spots.",
+      "No kipping toes-to-bar attempts on this bar — a cramped swing rehearses the wrong return and is not technique volume."
     ]
   },
   "m60Scaling": {
     "title": "Masters (60+) scaling",
-    "intro": "Skill practice and workout scaling are different jobs. Keep them separate.",
+    "intro": "Skill acquisition and workout scaling are different jobs. Keep them separate.",
     "points": [
-      "Do not rehearse half-kips under fatigue.",
-      "In skill work use the prescribed sets from this block — stop the set the moment the push-away goes.",
-      "Default WOD substitution: about 40–50% of the programmed reps as strict pull-ups, in small sets, when that preserves the stimulus.",
-      "For high-volume or fast metcons, use the coach's intended scale (ring rows, jumping pull-ups, etc.) rather than turning the workout into strict-pull-up failure work.",
-      "Never scale 1:1 from kipping reps to strict reps. Ask the floor coach when the intended stimulus is unclear.",
-      "During these three weeks keep extra metcon kipping volume low, so the skill sessions stay the best reps of the week."
+      "In skill work, run the scaled lane exactly — small fresh sets, never rushed reps under fatigue.",
+      "In metcons, substitute V-ups, hanging knee raises or moderate-depth GHD sit-ups for prescribed toes-to-bar volume rather than chasing Rx numbers.",
+      "Use the lower machine-calorie figure in every source workout, and slow the ski/row/bike pace before letting movement quality slip.",
+      "Never convert prescribed toes-to-bar 1:1 into maximal strict work; ask the floor coach when the intended stimulus is unclear.",
+      "During these eight weeks keep extra metcon hanging volume low, so the weekly session stays the best reps of the week."
     ]
   },
   "videoGroups": [
-    { "movement": "kipping", "label": "Kip shape & beat swing" },
-    { "movement": "linking", "label": "Push-away & linking reps" }
+    { "movement": "contact", "label": "Kip shape & toe contact" },
+    { "movement": "return", "label": "Return swing & linking reps" }
   ],
   "videos": [
-    { "id": "cf-kipping", "movement": "kipping", "title": "The Kipping Pull-up", "source": "CrossFit", "youtubeId": "lzRo-4pq_AY", "url": "https://www.youtube.com/watch?v=lzRo-4pq_AY" },
-    { "id": "wodprep-kipping", "movement": "kipping", "title": "Master This Before Kipping Pull-Ups", "source": "WODprep", "youtubeId": "W-Wkxk0aupc", "url": "https://www.youtube.com/watch?v=W-Wkxk0aupc" },
-    { "id": "invictus-kipping-explained", "movement": "linking", "title": "Kipping Pull-Ups Explained", "source": "CrossFit Invictus", "youtubeId": "JZb7pXn_UTI", "url": "https://www.youtube.com/watch?v=JZb7pXn_UTI" },
-    { "id": "jaakarhu-stringing", "movement": "linking", "title": "How to String Kipping Pull-ups", "source": "CrossFit Jääkarhu", "youtubeId": "P7F4jGGNrcE", "url": "https://www.youtube.com/watch?v=P7F4jGGNrcE" },
-    { "id": "road-to-elite-push-away", "movement": "linking", "title": "Movement: Push away Pull-up", "source": "Road To Elite", "youtubeId": "hqRIxJl8obQ", "url": "https://www.youtube.com/watch?v=hqRIxJl8obQ" }
+    { "id": "cf-kipping-ttb", "movement": "contact", "title": "The Kipping Toes-to-Bar", "source": "CrossFit", "youtubeId": "6dHvTlsMvNY", "url": "https://www.youtube.com/watch?v=6dHvTlsMvNY" },
+    { "id": "wodprep-ttb-progression", "movement": "contact", "title": "Toes To Bar Progression (5 Simple Steps)", "source": "WODprep", "youtubeId": "TRNl0uQ4xNE", "url": "https://www.youtube.com/watch?v=TRNl0uQ4xNE" },
+    { "id": "wodprep-ttb-tutorial", "movement": "contact", "title": "How To Do Toes To Bar (WODprep Tutorial)", "source": "WODprep", "youtubeId": "DVMrILiX_oc", "url": "https://www.youtube.com/watch?v=DVMrILiX_oc" },
+    { "id": "invictus-ttb-tips", "movement": "return", "title": "Kipping Toes-To-Bar Tips", "source": "CrossFit Invictus", "youtubeId": "unoa0i87oho", "url": "https://www.youtube.com/watch?v=unoa0i87oho" },
+    { "id": "invictus-ttb-stringing", "movement": "return", "title": "3 Tips for Stringing Together Toes to Bar", "source": "CrossFit Invictus", "youtubeId": "ImZw_XdrouE", "url": "https://www.youtube.com/watch?v=ImZw_XdrouE" }
   ]
 }

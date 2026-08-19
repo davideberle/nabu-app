@@ -13,19 +13,28 @@ import {
   cn,
 } from "@/components/ui/nabu";
 import {
+  GYMNASTICS_FATIGUE_LEVELS,
+  GYMNASTICS_RETURN_SWING_STATES,
   GYMNASTICS_SESSION_KEYS,
+  composeSessionFeedbackNote,
   summarizeProgress,
   videosByMovement,
+  type GymnasticsFatigueLevel,
   type GymnasticsGuidanceCard,
   type GymnasticsHistoryBlock,
   type GymnasticsProgram,
   type GymnasticsProgressRow,
+  type GymnasticsReturnSwing,
   type GymnasticsSession,
   type GymnasticsSessionKey,
+  type GymnasticsSessionSource,
   type GymnasticsWeek,
 } from "@/lib/gymnastics";
 
-type StatusMap = Record<string, { completed: boolean; completedAt: string | null }>;
+type StatusMap = Record<
+  string,
+  { completed: boolean; completedAt: string | null; note?: string }
+>;
 
 function keyOf(week: number, session: GymnasticsSessionKey): string {
   return `${week}-${session}`;
@@ -65,6 +74,7 @@ export function GymnasticsClient({
       map[keyOf(row.week, row.session)] = {
         completed: row.completed,
         completedAt: row.completedAt,
+        ...(row.note ? { note: row.note } : {}),
       };
     }
     return map;
@@ -103,7 +113,11 @@ export function GymnasticsClient({
       clearSaveError(k);
       setStatus((s) => ({
         ...s,
-        [k]: { completed: nextCompleted, completedAt: nextCompleted ? new Date().toISOString() : null },
+        [k]: {
+          ...s[k],
+          completed: nextCompleted,
+          completedAt: nextCompleted ? new Date().toISOString() : null,
+        },
       }));
       setPending((p) => ({ ...p, [k]: true }));
 
@@ -114,10 +128,16 @@ export function GymnasticsClient({
           body: JSON.stringify({ week, session, completed: nextCompleted }),
         });
         if (!res.ok) throw new Error("save failed");
-        const data = (await res.json()) as { record?: { completedAt: string | null } };
+        const data = (await res.json()) as {
+          record?: { completedAt: string | null; note?: string };
+        };
         setStatus((s) => ({
           ...s,
-          [k]: { completed: nextCompleted, completedAt: data.record?.completedAt ?? null },
+          [k]: {
+            completed: nextCompleted,
+            completedAt: data.record?.completedAt ?? null,
+            ...(data.record?.note ? { note: data.record.note } : {}),
+          },
         }));
       } catch {
         // Revert on failure and surface a visible, retryable error
@@ -137,6 +157,41 @@ export function GymnasticsClient({
       }
     },
     [pending, status, clearSaveError],
+  );
+
+  /**
+   * Save a composed feedback note without changing completion state: the POST
+   * re-sends the session's current `completed`, and the server keeps the
+   * original completed_at for an already-completed row.
+   */
+  const saveFeedback = useCallback(
+    async (week: number, session: GymnasticsSessionKey, note: string): Promise<boolean> => {
+      const k = keyOf(week, session);
+      const completed = status[k]?.completed ?? false;
+      try {
+        const res = await fetch("/api/health/gymnastics", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ week, session, completed, note }),
+        });
+        if (!res.ok) throw new Error("save failed");
+        const data = (await res.json()) as {
+          record?: { completed: boolean; completedAt: string | null; note?: string };
+        };
+        setStatus((s) => ({
+          ...s,
+          [k]: {
+            completed: data.record?.completed ?? completed,
+            completedAt: data.record?.completedAt ?? s[k]?.completedAt ?? null,
+            ...(data.record?.note ? { note: data.record.note } : {}),
+          },
+        }));
+        return true;
+      } catch {
+        return false;
+      }
+    },
+    [status],
   );
 
   if (restricted) {
@@ -255,6 +310,7 @@ export function GymnasticsClient({
           pending={pending}
           saveError={saveError}
           onToggle={toggle}
+          onSaveFeedback={saveFeedback}
         />
 
         {/* After-session feedback */}
@@ -342,12 +398,18 @@ function WeekPanel({
   pending,
   saveError,
   onToggle,
+  onSaveFeedback,
 }: {
   week: GymnasticsWeek;
   status: StatusMap;
   pending: Record<string, boolean>;
   saveError: Record<string, boolean>;
   onToggle: (week: number, session: GymnasticsSessionKey) => void;
+  onSaveFeedback: (
+    week: number,
+    session: GymnasticsSessionKey,
+    note: string,
+  ) => Promise<boolean>;
 }) {
   return (
     <section>
@@ -356,7 +418,12 @@ function WeekPanel({
         eyebrow={`Week ${week.week} · ${week.phase}`}
         title={week.focus}
       />
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div
+        className={cn(
+          "grid gap-3",
+          GYMNASTICS_SESSION_KEYS.length > 1 ? "sm:grid-cols-2" : "",
+        )}
+      >
         {GYMNASTICS_SESSION_KEYS.map((sessionKey) => {
           const session: GymnasticsSession | undefined = week.sessions[sessionKey];
           // `scripts/validate-gymnastics.mjs` runs in prebuild and requires the
@@ -384,9 +451,11 @@ function WeekPanel({
               session={session}
               completed={status[keyOf(week.week, sessionKey)]?.completed ?? false}
               completedAt={status[keyOf(week.week, sessionKey)]?.completedAt ?? null}
+              savedNote={status[keyOf(week.week, sessionKey)]?.note}
               pending={pending[keyOf(week.week, sessionKey)] ?? false}
               saveError={saveError[keyOf(week.week, sessionKey)] ?? false}
               onToggle={() => onToggle(week.week, sessionKey)}
+              onSaveFeedback={(note) => onSaveFeedback(week.week, sessionKey, note)}
             />
           );
         })}
@@ -400,17 +469,21 @@ function SessionCard({
   session,
   completed,
   completedAt,
+  savedNote,
   pending,
   saveError,
   onToggle,
+  onSaveFeedback,
 }: {
   sessionKey: GymnasticsSessionKey;
   session: GymnasticsSession;
   completed: boolean;
   completedAt: string | null;
+  savedNote?: string;
   pending: boolean;
   saveError: boolean;
   onToggle: () => void;
+  onSaveFeedback: (note: string) => Promise<boolean>;
 }) {
   return (
     <NabuCard className="flex flex-col">
@@ -426,6 +499,21 @@ function SessionCard({
         <p className="mt-1.5 text-[11px] leading-relaxed text-tertiary">{session.goal}</p>
       ) : null}
 
+      {/* Low-fatigue skill primer — always before anything metabolic */}
+      {session.primer?.length ? (
+        <div className="mt-3 rounded-lg border border-emerald-200 bg-emerald-50/60 p-2.5 dark:border-emerald-800/50 dark:bg-emerald-950/20">
+          <p className="text-[10px] uppercase tracking-[0.12em] text-quaternary">Skill primer first</p>
+          <ul className="mt-1 space-y-1">
+            {session.primer.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-[11px] leading-relaxed text-secondary">
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-emerald-400" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
       <ul className="mt-3 space-y-2">
         {session.blocks.map((block, i) => (
           <li key={`${block.movement}-${i}`} className="rounded-lg border border-secondary bg-secondary/60 p-2.5">
@@ -438,6 +526,45 @@ function SessionCard({
         ))}
       </ul>
 
+      {/* Quality standard and stop rules for this session */}
+      {session.qualityRules?.length ? (
+        <div className="mt-2.5 rounded-lg border border-secondary bg-secondary/40 p-2.5">
+          <p className="text-[10px] uppercase tracking-[0.12em] text-quaternary">What counts</p>
+          <ul className="mt-1 space-y-1">
+            {session.qualityRules.map((rule) => (
+              <li key={rule} className="flex items-start gap-2 text-[11px] leading-relaxed text-secondary">
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-quaternary" />
+                {rule}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {session.stopRules?.length ? (
+        <div className="mt-2.5 rounded-lg border border-red-200 bg-red-50/50 p-2.5 dark:border-red-900/50 dark:bg-red-950/20">
+          <p className="text-[10px] uppercase tracking-[0.12em] text-quaternary">Stop when</p>
+          <ul className="mt-1 space-y-1">
+            {session.stopRules.map((rule) => (
+              <li key={rule} className="flex items-start gap-2 text-[11px] leading-relaxed text-secondary">
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-red-400" />
+                {rule}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {session.wodAdjustment ? (
+        <div className="mt-2.5 rounded-lg border border-utility-blue-200 bg-utility-blue-50/50 p-2.5 dark:border-utility-blue-800/50 dark:bg-utility-blue-950/20">
+          <p className="text-[10px] uppercase tracking-[0.12em] text-quaternary">Around this week&apos;s WODs</p>
+          <p className="mt-1 text-[11px] leading-relaxed text-secondary">{session.wodAdjustment}</p>
+        </div>
+      ) : null}
+
+      {/* The original Mayhem prescription — provenance, never the target */}
+      {session.source ? <SourceCard source={session.source} /> : null}
+
       {session.notes?.length ? (
         <ul className="mt-2.5 flex-1 space-y-1.5 rounded-lg border border-amber-200 bg-amber-50/60 p-2.5 dark:border-amber-800/50 dark:bg-amber-950/20">
           {session.notes.map((note) => (
@@ -449,6 +576,14 @@ function SessionCard({
       ) : (
         <div className="flex-1" />
       )}
+
+      {/* Structured after-session feedback → stored in the session's note */}
+      <FeedbackForm
+        sessionKey={sessionKey}
+        prompts={session.feedback}
+        savedNote={savedNote}
+        onSave={onSaveFeedback}
+      />
 
       <button
         type="button"
@@ -493,6 +628,275 @@ function formatCompletedAt(iso: string): string {
   } catch {
     return "";
   }
+}
+
+// ---------------------------------------------------------------------------
+// Original source prescription (provenance)
+// ---------------------------------------------------------------------------
+
+function SourceCard({ source }: { source: GymnasticsSessionSource }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="mt-2.5 rounded-lg border border-secondary bg-secondary/40">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between gap-2 p-2.5 text-left"
+      >
+        <span className="min-w-0">
+          <span className="block text-[10px] uppercase tracking-[0.12em] text-quaternary">
+            Source — not the day&apos;s target
+          </span>
+          <span className="mt-0.5 block truncate text-[11px] font-medium text-secondary">
+            {source.title}
+          </span>
+        </span>
+        <svg
+          className={cn("h-3.5 w-3.5 shrink-0 text-quaternary transition-transform", open && "rotate-180")}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open ? (
+        <div className="space-y-2.5 border-t border-secondary p-2.5">
+          {source.intent ? (
+            <p className="text-[11px] leading-relaxed text-tertiary">{source.intent}</p>
+          ) : null}
+          {source.options.map((option) => (
+            <div key={option.label}>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-quaternary">
+                {option.label}
+              </p>
+              <ul className="mt-0.5 space-y-0.5">
+                {option.lines.map((line, i) => (
+                  <li key={`${line}-${i}`} className="text-[11px] leading-relaxed text-secondary">
+                    {line}
+                  </li>
+                ))}
+              </ul>
+              {option.incomplete ? (
+                <p className="mt-1 text-[11px] font-medium leading-relaxed text-amber-700 dark:text-amber-400">
+                  {option.incomplete}
+                </p>
+              ) : null}
+            </div>
+          ))}
+          {source.notes?.length ? (
+            <ul className="space-y-0.5">
+              {source.notes.map((note) => (
+                <li key={note} className="text-[11px] leading-relaxed text-tertiary">
+                  {note}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Structured session feedback (full/near contacts, sets, fatigue, return swing)
+// ---------------------------------------------------------------------------
+
+function FeedbackForm({
+  sessionKey,
+  prompts,
+  savedNote,
+  onSave,
+}: {
+  sessionKey: GymnasticsSessionKey;
+  prompts?: string[];
+  savedNote?: string;
+  onSave: (note: string) => Promise<boolean>;
+}) {
+  const [open, setOpen] = useState(false);
+  const [fullContacts, setFullContacts] = useState("");
+  const [nearContacts, setNearContacts] = useState("");
+  const [setBreakdown, setSetBreakdown] = useState("");
+  const [fatigue, setFatigue] = useState<GymnasticsFatigueLevel | "">("");
+  const [returnSwing, setReturnSwing] = useState<GymnasticsReturnSwing | "">("");
+  const [extra, setExtra] = useState("");
+  const [state, setState] = useState<"idle" | "saving" | "saved" | "error">("idle");
+
+  const composed = composeSessionFeedbackNote({
+    fullContacts: fullContacts.trim() === "" ? null : Number(fullContacts),
+    nearContacts: nearContacts.trim() === "" ? null : Number(nearContacts),
+    setBreakdown,
+    fatigue: fatigue === "" ? null : fatigue,
+    returnSwing: returnSwing === "" ? null : returnSwing,
+    extra,
+  });
+
+  const save = async () => {
+    if (!composed || state === "saving") return;
+    setState("saving");
+    const ok = await onSave(composed);
+    setState(ok ? "saved" : "error");
+  };
+
+  const fieldClass =
+    "w-full rounded-lg border border-secondary bg-primary px-2.5 py-1.5 text-sm text-primary placeholder:text-quaternary focus:outline-none focus:ring-1 focus:ring-emerald-400";
+  const labelClass = "block text-[10px] uppercase tracking-[0.12em] text-quaternary";
+
+  return (
+    <div className="mt-2.5">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="w-full rounded-full border border-secondary bg-secondary/60 px-4 py-1.5 text-[11px] font-medium text-secondary transition-colors hover:text-primary"
+      >
+        {open ? "Hide session feedback" : savedNote ? "Edit session feedback" : "Log session feedback"}
+      </button>
+
+      {!open && savedNote ? (
+        <p className="mt-1.5 rounded-lg border border-secondary bg-secondary/40 p-2 text-[11px] leading-relaxed text-tertiary">
+          <span className="text-[10px] uppercase tracking-[0.12em] text-quaternary">Last feedback · </span>
+          {savedNote}
+        </p>
+      ) : null}
+
+      {open ? (
+        <div className="mt-2 space-y-2 rounded-lg border border-secondary bg-secondary/40 p-2.5">
+          {prompts?.length ? (
+            <ul className="space-y-0.5">
+              {prompts.map((p, i) => (
+                <li key={p} className="text-[10px] leading-relaxed text-quaternary">
+                  {i + 1}. {p}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <label htmlFor={`gym-fb-full-${sessionKey}`} className={labelClass}>
+                Full contacts
+              </label>
+              <input
+                id={`gym-fb-full-${sessionKey}`}
+                type="number"
+                inputMode="numeric"
+                min={0}
+                value={fullContacts}
+                onChange={(e) => setFullContacts(e.target.value)}
+                className={fieldClass}
+                placeholder="e.g. 9"
+              />
+            </div>
+            <div>
+              <label htmlFor={`gym-fb-near-${sessionKey}`} className={labelClass}>
+                Near contacts
+              </label>
+              <input
+                id={`gym-fb-near-${sessionKey}`}
+                type="number"
+                inputMode="numeric"
+                min={0}
+                value={nearContacts}
+                onChange={(e) => setNearContacts(e.target.value)}
+                className={fieldClass}
+                placeholder="e.g. 4"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor={`gym-fb-sets-${sessionKey}`} className={labelClass}>
+              Set breakdown
+            </label>
+            <input
+              id={`gym-fb-sets-${sessionKey}`}
+              type="text"
+              value={setBreakdown}
+              onChange={(e) => setSetBreakdown(e.target.value)}
+              className={fieldClass}
+              placeholder="e.g. 3/3/2/2"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <label htmlFor={`gym-fb-fatigue-${sessionKey}`} className={labelClass}>
+                Shoulder/grip fatigue
+              </label>
+              <select
+                id={`gym-fb-fatigue-${sessionKey}`}
+                value={fatigue}
+                onChange={(e) => setFatigue(e.target.value as GymnasticsFatigueLevel | "")}
+                className={fieldClass}
+              >
+                <option value="">—</option>
+                {GYMNASTICS_FATIGUE_LEVELS.map((level) => (
+                  <option key={level} value={level}>
+                    {level}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor={`gym-fb-swing-${sessionKey}`} className={labelClass}>
+                Return swing
+              </label>
+              <select
+                id={`gym-fb-swing-${sessionKey}`}
+                value={returnSwing}
+                onChange={(e) => setReturnSwing(e.target.value as GymnasticsReturnSwing | "")}
+                className={fieldClass}
+              >
+                <option value="">—</option>
+                {GYMNASTICS_RETURN_SWING_STATES.map((swing) => (
+                  <option key={swing} value={swing}>
+                    {swing}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor={`gym-fb-extra-${sessionKey}`} className={labelClass}>
+              Anything else
+            </label>
+            <input
+              id={`gym-fb-extra-${sessionKey}`}
+              type="text"
+              value={extra}
+              onChange={(e) => setExtra(e.target.value)}
+              className={fieldClass}
+              placeholder="pain, hot spots, how it felt"
+            />
+          </div>
+
+          <button
+            type="button"
+            onClick={save}
+            disabled={!composed || state === "saving"}
+            className="w-full rounded-full border border-primary bg-primary px-4 py-1.5 text-[11px] font-medium text-primary shadow-xs transition-colors hover:bg-primary_hover disabled:opacity-50"
+          >
+            {state === "saving" ? "Saving…" : "Save feedback"}
+          </button>
+          {state === "error" ? (
+            <p role="alert" className="text-center text-[11px] font-medium text-red-600 dark:text-red-400">
+              Couldn&apos;t save — try again.
+            </p>
+          ) : null}
+          {state === "saved" ? (
+            <p className="text-center text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+              Saved.
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -612,8 +1016,8 @@ function PrerequisitesCard({ program }: { program: GymnasticsProgram }) {
       <div className="mt-3 rounded-lg border border-secondary bg-secondary/60 p-3">
         <p className="text-[10px] uppercase tracking-[0.12em] text-quaternary">Rep cap</p>
         <p className="mt-0.5 text-sm text-secondary">
-          Maximum <strong className="font-semibold text-primary">{p.repCaps.perSession}</strong> full unassisted dynamic
-          pull-up reps per session. {p.repCaps.note}
+          Maximum <strong className="font-semibold text-primary">{p.repCaps.perSession}</strong>{" "}
+          {p.repCaps.label ?? "reps"} per session. {p.repCaps.note}
         </p>
       </div>
       <ul className="mt-3 space-y-1.5">
