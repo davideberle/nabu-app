@@ -88,8 +88,12 @@ export function readBridgeOrigin(raw: unknown): string | null {
 
 export type AssistantBlock =
   | { type: "text"; text: string }
-  /** Reserved for Phase 3. Parsed here so a future bridge is renderable. */
-  | { type: "card"; title: string; subtitle?: string; meta?: string }
+  /**
+   * A media candidate or choice. `imageUrl` is optional artwork; it is https
+   * only, checked here rather than trusted, because this is the last hop before
+   * a shared iPad loads it.
+   */
+  | { type: "card"; title: string; subtitle?: string; meta?: string; imageUrl?: string }
   /** Reserved for Phase 3. */
   | { type: "image"; url: string; alt: string }
   /** A block this build does not understand. Renderers skip it silently. */
@@ -177,6 +181,11 @@ export function readAssistantBlocks(value: unknown): AssistantBlock[] {
         title: plainTextForChild(entry.title),
         ...(typeof entry.subtitle === "string" ? { subtitle: plainTextForChild(entry.subtitle) } : {}),
         ...(typeof entry.meta === "string" ? { meta: plainTextForChild(entry.meta) } : {}),
+        // Artwork is optional and https-only. A card with a rejected image URL
+        // still renders — the picture is decoration, the title is the choice.
+        ...(typeof entry.imageUrl === "string" && entry.imageUrl.startsWith("https://")
+          ? { imageUrl: entry.imageUrl }
+          : {}),
       };
     }
     if (entry.type === "image" && typeof entry.url === "string" && typeof entry.alt === "string") {

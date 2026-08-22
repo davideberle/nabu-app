@@ -155,6 +155,7 @@ export function ChildShellLayoutClient({
     active === "assistant" && profile
       ? `with ${profile.companionName} — tap to switch`
       : undefined;
+  const overlayOpen = switcherOpen || (restored && child === null);
 
   return (
     <ChildShellContext.Provider value={value}>
@@ -166,30 +167,36 @@ export function ChildShellLayoutClient({
           active === "assistant" ? "h-dvh min-h-0 overflow-hidden" : "min-h-dvh",
         )}
       >
-        <ChildShellBar
-          active={active}
-          child={child}
-          weekId={weekId}
-          switcherOpen={switcherOpen}
-          onOpenSwitcher={openSwitcher}
-          subtitle={subtitle}
-          extraNav={
-            !trackerOnly ? (
-              <Link
-                href="/"
-                className={cn(
-                  "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
-                  focusRing,
-                )}
-              >
-                Nabu
-              </Link>
-            ) : null
-          }
-        />
-        {children}
+        {/* While the modal switcher is up, everything behind it is `inert`:
+            focus cannot tab out of the dialog and assistive tech does not
+            read the covered surface. `display: contents` keeps the wrapper
+            out of the flex layout. */}
+        <div className="contents" inert={overlayOpen || undefined}>
+          <ChildShellBar
+            active={active}
+            child={child}
+            weekId={weekId}
+            switcherOpen={overlayOpen}
+            onOpenSwitcher={openSwitcher}
+            subtitle={subtitle}
+            extraNav={
+              !trackerOnly ? (
+                <Link
+                  href="/"
+                  className={cn(
+                    "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
+                    focusRing,
+                  )}
+                >
+                  Nabu
+                </Link>
+              ) : null
+            }
+          />
+          {children}
+        </div>
         <ChildSwitcherOverlay
-          open={switcherOpen || (restored && child === null)}
+          open={overlayOpen}
           activeChild={child}
           onPick={applyChild}
           onClose={() => setSwitcherOpen(false)}

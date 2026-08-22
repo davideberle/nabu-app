@@ -1180,6 +1180,9 @@ export function PersonBoardClient({
     () => new Map(),
   );
   const [loaded, setLoaded] = useState(false);
+  const [loadError, setLoadError] = useState(false);
+  /** Bumped by the "Try again" control to re-run the load effect. */
+  const [loadAttempt, setLoadAttempt] = useState(0);
 
   // Redemptions from DB
   const [redemptions, setRedemptions] = useState<RewardRedemption[]>([]);
@@ -1188,33 +1191,46 @@ export function PersonBoardClient({
   const [simpleDraft, setSimpleDraft] = useState<SimpleDone | null>(null);
   const [coachSession, setCoachSession] = useState<CoachSession | null>(null);
 
-  // Load data from API on mount / week change
+  // Load data from API on mount / week change. A failed or refused response
+  // becomes a visible error state with a retry — on the installed shared-iPad
+  // app there is no browser chrome to reload with, so a silent failure would
+  // strand the child on an endless spinner.
   useEffect(() => {
     let cancelled = false;
+    setLoadError(false);
     async function load() {
-      const [compRes, redRes, cfgRes] = await Promise.all([
-        fetch(`/api/family/completions?week=${weekNav.weekId}`),
-        fetch(`/api/family/redemptions?week=${weekNav.weekId}`),
-        fetch("/api/family/config"),
-      ]);
-      if (cancelled) return;
+      try {
+        const [compRes, redRes, cfgRes] = await Promise.all([
+          fetch(`/api/family/completions?week=${weekNav.weekId}`),
+          fetch(`/api/family/redemptions?week=${weekNav.weekId}`),
+          fetch("/api/family/config"),
+        ]);
+        if (cancelled) return;
+        if (!compRes.ok || !redRes.ok || !cfgRes.ok) {
+          setLoadError(true);
+          return;
+        }
 
-      const compData: CompletionRecord[] = await compRes.json();
-      const redData: RewardRedemption[] = await redRes.json();
-      const cfgData: FamilyBoardConfig = await cfgRes.json();
+        const compData: CompletionRecord[] = await compRes.json();
+        const redData: RewardRedemption[] = await redRes.json();
+        const cfgData: FamilyBoardConfig = await cfgRes.json();
+        if (cancelled) return;
 
-      const map = new Map<string, CompletionRecord>();
-      for (const c of compData) {
-        map.set(completionKey(c.routineId, c.personId, c.day), c);
+        const map = new Map<string, CompletionRecord>();
+        for (const c of compData) {
+          map.set(completionKey(c.routineId, c.personId, c.day), c);
+        }
+        setCompletions(map);
+        setRedemptions(redData);
+        setConfig(cfgData);
+        setLoaded(true);
+      } catch {
+        if (!cancelled) setLoadError(true);
       }
-      setCompletions(map);
-      setRedemptions(redData);
-      setConfig(cfgData);
-      setLoaded(true);
     }
     load();
     return () => { cancelled = true; };
-  }, [weekNav.weekId]);
+  }, [weekNav.weekId, loadAttempt]);
 
   // Resolved definitions with config overrides
   const resolvedRoutines = useMemo(() => resolveRoutinesClient(config), [config]);
@@ -1437,15 +1453,33 @@ export function PersonBoardClient({
 
         <WeekNavBar weekNav={weekNav} />
 
+        {/* Load failure: visible and recoverable. The board is hidden rather
+            than left showing another week's data under this week's header. */}
+        {loadError && (
+          <NabuSurface className="flex flex-col items-start gap-3 p-5">
+            <p className="text-base text-primary">
+              The board couldn&rsquo;t load. Check the internet connection, then
+              try again.
+            </p>
+            <button
+              type="button"
+              onClick={() => setLoadAttempt((n) => n + 1)}
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-primary bg-primary px-5 text-base font-semibold text-secondary transition-colors hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500"
+            >
+              ↻ Try again
+            </button>
+          </NabuSurface>
+        )}
+
         {/* Loading state */}
-        {!loaded && (
+        {!loaded && !loadError && (
           <div className="flex items-center gap-3 py-8">
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-stone-300 border-t-stone-600" />
             <span className="text-sm text-secondary">Loading board…</span>
           </div>
         )}
 
-        {loaded && (
+        {loaded && !loadError && (
           <>
             {/* Board grid */}
             <NabuSurface className="overflow-x-auto p-0">

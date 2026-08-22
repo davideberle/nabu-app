@@ -55,10 +55,13 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
   const [config, setConfig] = useState<FamilyBoardConfig>(EMPTY_CONFIG);
   const [loaded, setLoaded] = useState(false);
   const [loadError, setLoadError] = useState(false);
+  /** Bumped by the "Try again" control to re-run the load effect. */
+  const [loadAttempt, setLoadAttempt] = useState(0);
 
   // Load the whole family's week — same contract as the boards.
   useEffect(() => {
     let cancelled = false;
+    setLoadError(false);
     async function load() {
       try {
         const [compRes, redRes, cfgRes] = await Promise.all([
@@ -87,7 +90,7 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
     return () => {
       cancelled = true;
     };
-  }, [weekInfo.weekId]);
+  }, [weekInfo.weekId, loadAttempt]);
 
   const weekNav = child ? buildRewardsWeekNav(weekInfo, child) : null;
   const wallet = useMemo(
@@ -194,9 +197,24 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
           </section>
 
           {loadError ? (
-            <p className="rounded-2xl border border-primary bg-primary px-4 py-3 text-sm text-secondary">
-              The rewards couldn&rsquo;t load. Check the connection and reload.
-            </p>
+            // Recoverable, not a dead end: the installed shared-iPad app has
+            // no browser chrome to reload with, so the retry lives here.
+            <div className="flex flex-col items-start gap-3 rounded-2xl border border-primary bg-primary px-4 py-3">
+              <p className="text-sm text-secondary">
+                The rewards couldn&rsquo;t load. Check the internet connection,
+                then try again.
+              </p>
+              <button
+                type="button"
+                onClick={() => setLoadAttempt((n) => n + 1)}
+                className={cn(
+                  "inline-flex min-h-12 items-center gap-2 rounded-full border border-primary bg-primary px-5 text-sm font-semibold text-secondary transition-colors hover:bg-secondary",
+                  focusRing,
+                )}
+              >
+                ↻ Try again
+              </button>
+            </div>
           ) : !loaded ? (
             <p className="text-sm text-tertiary">Loading rewards…</p>
           ) : wallet ? (

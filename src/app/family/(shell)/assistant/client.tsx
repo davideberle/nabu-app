@@ -272,6 +272,17 @@ function AssistantReply({ blocks }: { blocks: AssistantBlock[] }) {
         if (block.type === "card") {
           return (
             <div key={index} className="rounded-2xl border border-primary bg-primary p-4">
+              {block.imageUrl ? (
+                // Catalog artwork from the bridge, not a build-time asset, so
+                // next/image's optimizer has nothing to do here. `alt` is empty
+                // on purpose: the title below says the same thing, and a screen
+                // reader should not hear it twice.
+                <img
+                  src={block.imageUrl}
+                  alt=""
+                  className="mb-3 aspect-square w-24 rounded-xl object-cover"
+                />
+              ) : null}
               <p className="text-base font-semibold text-primary">{block.title}</p>
               {block.subtitle ? <p className="text-sm text-tertiary">{block.subtitle}</p> : null}
               {block.meta ? (

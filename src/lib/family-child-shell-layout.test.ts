@@ -135,6 +135,39 @@ describe("switcher accessibility", () => {
   it("marks the active destination for assistive tech", () => {
     ok(shellSource.includes("aria-current"));
   });
+
+  it("makes everything behind the open switcher inert", () => {
+    // The bar and the destination content are wrapped together and marked
+    // `inert` while the modal is up, so focus cannot tab behind the dialog
+    // and assistive tech does not read the covered surface. The wrapper is
+    // `display: contents` so it takes no part in the flex layout.
+    match(providerCode, /className="contents"\s+inert=\{overlayOpen/);
+  });
+});
+
+describe("destination load failures are recoverable", () => {
+  // The installed shared-iPad app has no browser chrome, so "reload the
+  // page" is not a recovery path a child can take. A failed family-API load
+  // must surface a visible retry control instead of a dead end (Rewards) or
+  // an endless spinner (the Plan person board).
+  const personBoardSource = readFileSync(
+    new URL("../app/family/dashboard/[person]/client.tsx", import.meta.url),
+    "utf8",
+  );
+
+  it("Rewards offers a retry after a failed load", () => {
+    ok(rewardsSource.includes("Try again"));
+    ok(rewardsSource.includes("setLoadAttempt"));
+  });
+
+  it("the Plan person board fails visibly, with a retry", () => {
+    ok(personBoardSource.includes("loadError"));
+    ok(personBoardSource.includes("Try again"));
+    ok(personBoardSource.includes("setLoadAttempt"));
+    // The load effect checks every response before parsing it, so an API
+    // refusal cannot strand the board on the loading spinner.
+    ok(personBoardSource.includes("if (!compRes.ok || !redRes.ok || !cfgRes.ok)"));
+  });
 });
 
 describe("one persistent shell layout owns chrome and identity", () => {

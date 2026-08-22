@@ -320,6 +320,41 @@ describe("child turn envelope", () => {
     equal(envelopeSpokenText(envelope), "Here is one idea");
   });
 
+  it("reads a media candidate card, artwork included, and only over https", () => {
+    const blocks = readAssistantBlocks([
+      {
+        type: "card",
+        title: "**Kids Dance Party**",
+        subtitle: "Apple Music · playlist",
+        meta: "Living Room · tap or say yes to play",
+        imageUrl: "https://art.invalid/a.jpg",
+      },
+      { type: "card", title: "Ninjago Soundtrack", imageUrl: "http://insecure.invalid/a.jpg" },
+    ]);
+    deepStrictEqual(blocks[0], {
+      type: "card",
+      // Markdown markers are stripped here like everywhere else a reply enters
+      // the app, so the card reads the same as the bubble.
+      title: "Kids Dance Party",
+      subtitle: "Apple Music · playlist",
+      meta: "Living Room · tap or say yes to play",
+      imageUrl: "https://art.invalid/a.jpg",
+    });
+    // Plaintext artwork is dropped; the card still renders without a picture.
+    deepStrictEqual(blocks[1], { type: "card", title: "Ninjago Soundtrack" });
+
+    const envelope = parseChildTurnEnvelope({
+      v: 1,
+      status: "ok",
+      child: "santiago",
+      blocks: [{ type: "text", text: "I found two. Which one?" }, ...blocks],
+      meta: { requestId: "r" },
+    });
+    equal(envelope.status, "ok");
+    // The spoken reply is the text block alone: a card is shown, not read out.
+    equal(envelopeSpokenText(envelope), "I found two. Which one?");
+  });
+
   it("maps failures to child-appropriate wording and a retry decision", () => {
     const cases: [string, boolean][] = [
       ["busy", true],
