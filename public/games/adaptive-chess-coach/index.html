@@ -354,7 +354,7 @@
             </div>
           </div>
           <div class="card">
-            <div class="status-line" id="status-line">Your move</div>
+            <div class="status-line" id="status-line" aria-live="polite">Your move</div>
             <div class="meta">
               <span id="meta-level"></span>
               <span id="meta-checkpoints"></span>
@@ -401,6 +401,7 @@
       <div class="sheet center">
         <h3>Your pawn made it! Pick a piece:</h3>
         <div class="promo-row" id="promo-row"></div>
+        <button class="link" id="promo-cancel-btn">Never mind, pick a different move</button>
       </div>
     </div>
 

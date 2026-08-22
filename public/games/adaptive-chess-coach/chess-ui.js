@@ -22,6 +22,19 @@
     p: "♟", n: "♞", b: "♝", r: "♜", q: "♛", k: "♚",
   };
 
+  const PIECE_NAME = { p: "pawn", n: "knight", b: "bishop", r: "rook", q: "queen", k: "king" };
+  function describeSquare(sq, piece, isTarget) {
+    let label = Engine.squareName(sq);
+    if (piece !== null) {
+      const side = Engine.colorOf(piece) === Engine.WHITE ? "your" : "their";
+      label += `, ${side} ${PIECE_NAME[Engine.typeOf(piece)]}`;
+    } else {
+      label += ", empty";
+    }
+    if (isTarget) label += ", possible move";
+    return label;
+  }
+
   // ---- Child identity from the launch URL (validated) -------------------
   const ALLOWED_CHILDREN = ["santiago", "isabel"];
   function readChildId() {
@@ -72,6 +85,7 @@
         const d = document.createElement("div");
         d.className = "sq " + ((f + r) % 2 === 0 ? "dark" : "light");
         d.dataset.sq = String(sq);
+        d.setAttribute("role", "button");
         boardEl.appendChild(d);
         sqEls[sq] = d;
       }
@@ -102,6 +116,7 @@
         html += `<span class="dot${isCapture ? " capture" : ""}"></span>`;
       }
       d.innerHTML = html;
+      d.setAttribute("aria-label", describeSquare(sq, p, targetSquares.has(sq)));
     }
     updatePanel();
   }
@@ -191,6 +206,12 @@
       };
       row.appendChild(b);
     }
+    el("promo-cancel-btn").onclick = () => {
+      // An accidental tap shouldn't force a promotion — back out, nothing played.
+      hide("promo-overlay");
+      pendingPromotion = null;
+      render();
+    };
     show("promo-overlay");
   }
 
@@ -355,8 +376,26 @@
     }
   }
 
+  // Resume the persisted game. A corrupt blob (bad FEN, tampered storage) must
+  // never strand the child on a broken board: discard it and stay on the start
+  // screen instead.
   function resumeGame(g) {
-    state = Engine.parseFEN(g.fen);
+    let resumedState;
+    try {
+      resumedState = Engine.parseFEN(g.fen);
+      // A position without both kings is not a resumable game.
+      if (
+        Engine.findKing(resumedState.board, Engine.WHITE) < 0 ||
+        Engine.findKing(resumedState.board, Engine.BLACK) < 0
+      ) {
+        throw new Error("kingless position");
+      }
+    } catch {
+      clearPersistedGame();
+      openStart();
+      return;
+    }
+    state = resumedState;
     opponent = Coach.opponentById(g.opponentId) || Coach.opponentForLevel(profile.level);
     const concept = g.conceptId ? Coach.conceptById(g.conceptId) : null;
     session = Coach.startGame(profile, { opponent, concept: concept || undefined, rng: Math.random });
@@ -474,13 +513,8 @@
   // ---- Boot -------------------------------------------------------------
   buildBoard();
   wire();
-  const persisted = readPersistedGame();
-  if (persisted) {
-    // Offer resume from the start screen (also playable immediately).
-    openStart();
-  } else {
-    openStart();
-  }
+  // The start screen offers "Resume last game" itself when one is persisted.
+  openStart();
 
   // ---- Verification hook (no-op unless driven) --------------------------
   window.__chess = {
