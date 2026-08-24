@@ -29,8 +29,9 @@ export function isTrackerAllowedPath(pathname: string): boolean {
     pathname === "/family/dashboard" ||
     pathname.startsWith("/family/dashboard/") ||
     pathname === "/family/assistant" ||
-    // Child-shell destinations: the shared-iPad shell's Plan and Rewards
+    // Child-shell destinations: the shared-iPad shell's Listen, Plan, and Rewards
     // surfaces (the Assistant destination is /family/assistant above).
+    pathname === "/family/listen" ||
     pathname === "/family/plan" ||
     pathname === "/family/rewards" ||
     // Rewards game corner: the Adaptive Chess Coach launch page and its
