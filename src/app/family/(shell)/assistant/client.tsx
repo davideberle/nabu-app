@@ -1465,6 +1465,25 @@ function Workspace({
           <p className="mt-1 text-base text-tertiary">{profile.greetingHint}</p>
         </div>
 
+        {/* The Listening Library (DESIGN §7.4.2) is reached from here rather
+            than adding a fourth shell destination. The link carries the
+            selected child so a deep link stays on the same profile. */}
+        <Link
+          href={`/family/listen?child=${profile.id}`}
+          className={cn(
+            "flex min-h-16 items-center gap-3 rounded-2xl border border-primary bg-primary px-4 py-3 shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md dark:shadow-none",
+            focusRing,
+          )}
+        >
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-secondary text-2xl" aria-hidden>
+            🎧
+          </span>
+          <span className="min-w-0">
+            <span className="block text-base font-semibold text-primary">Stories</span>
+            <span className="block text-sm text-tertiary">Your Hörspiel library — browse, play and continue</span>
+          </span>
+        </Link>
+
         <div>
           <p className="mb-2 text-sm text-quaternary">
             Ask me anything — or start with one of these:
