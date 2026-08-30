@@ -31,6 +31,31 @@ import type {
   RewardRedemption,
 } from "@/lib/family-db";
 
+type BrowserSpeechRecognitionResult = {
+  isFinal: boolean;
+  0: { transcript: string };
+};
+
+type BrowserSpeechRecognitionEvent = {
+  resultIndex: number;
+  results: {
+    length: number;
+    [index: number]: BrowserSpeechRecognitionResult;
+  };
+};
+
+type BrowserSpeechRecognition = {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  onresult: ((event: BrowserSpeechRecognitionEvent) => void) | null;
+  onerror: (() => void) | null;
+  onend: (() => void) | null;
+  start: () => void;
+  stop: () => void;
+  abort: () => void;
+};
+
 // ---------------------------------------------------------------------------
 // Color tokens per person
 // ---------------------------------------------------------------------------
@@ -238,34 +263,46 @@ type SimpleDone = {
 
 function TaskTile({
   routine,
-  isDone,
+  status,
   isToday,
   isScheduled,
   onTap,
 }: {
   routine: RoutineDefinition;
-  isDone: boolean;
+  status: "open" | "done" | "pending_review" | "on_hold";
   isToday: boolean;
   isScheduled: boolean;
   onTap: () => void;
 }) {
+  const isDone = status === "done";
+  const isPending = status === "pending_review";
+  const isOnHold = status === "on_hold";
+  const isLocked = isDone || isPending || isOnHold;
+
   return (
     <button
       type="button"
       onClick={onTap}
-      disabled={isDone}
       aria-label={
         isDone
           ? `${routine.title}: completed`
-          : `${routine.title}: tap to mark done`
+          : isPending
+            ? `${routine.title}: awaiting review`
+            : isOnHold
+              ? `${routine.title}: on hold`
+              : `${routine.title}: tap to mark done`
       }
       className={cn(
         "flex h-full min-h-[56px] w-full items-center justify-center rounded-md border transition-all",
         isDone
-          ? "cursor-default border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30"
-          : "border-stone-200 bg-stone-50 hover:shadow-sm active:scale-[0.98] dark:border-stone-700 dark:bg-stone-800/60",
-        isToday && !isDone && "ring-1 ring-stone-300 dark:ring-stone-600",
-        !isScheduled && !isDone && "border-dashed opacity-65",
+          ? "cursor-pointer border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30"
+          : isPending
+            ? "cursor-pointer border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/30"
+            : isOnHold
+              ? "cursor-pointer border-orange-200 bg-orange-50 dark:border-orange-800 dark:bg-orange-950/30"
+              : "border-stone-200 bg-stone-50 hover:shadow-sm active:scale-[0.98] dark:border-stone-700 dark:bg-stone-800/60",
+        isToday && !isLocked && "ring-1 ring-stone-300 dark:ring-stone-600",
+        !isScheduled && !isLocked && "border-dashed opacity-65",
       )}
     >
       {isDone ? (
@@ -277,10 +314,142 @@ function TaskTile({
             <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
           </svg>
         </span>
+      ) : isPending ? (
+        <span className="flex items-center gap-1">
+          <svg className="h-5 w-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </span>
+      ) : isOnHold ? (
+        <span className="flex items-center gap-1">
+          <svg className="h-5 w-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </span>
       ) : (
         <span className="h-4 w-4 rounded-full border-2 border-stone-300 dark:border-stone-500" aria-hidden="true" />
       )}
     </button>
+  );
+}
+
+function CoinStack({ value, max = 5 }: { value: number; max?: number }) {
+  const visible = Math.max(0, Math.min(value, max));
+  return (
+    <span className="inline-flex items-center gap-0.5" aria-label={`${value} coins`}>
+      {value === 0 && (
+        <span className="text-[10px] font-semibold text-quaternary">0</span>
+      )}
+      {Array.from({ length: visible }).map((_, index) => (
+        <span
+          key={index}
+          className="inline-block h-3.5 w-3.5 rounded-full border border-amber-400 bg-amber-300 shadow-[inset_0_-1px_0_rgba(146,64,14,0.35)]"
+          aria-hidden="true"
+        />
+      ))}
+      {value > max && (
+        <span className="ml-0.5 text-[10px] font-semibold text-amber-700 dark:text-amber-300">
+          +{value - max}
+        </span>
+      )}
+    </span>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Proof detail modal — view what was submitted for a completed/review tile
+// ---------------------------------------------------------------------------
+
+function ProofDetailModal({
+  record,
+  routine,
+  onClose,
+}: {
+  record: CompletionRecord;
+  routine: RoutineDefinition;
+  onClose: () => void;
+}) {
+  const statusLabels: Record<string, { label: string; tone: string }> = {
+    done: { label: "Approved", tone: "text-emerald-700 dark:text-emerald-400" },
+    pending_review: { label: "Awaiting review", tone: "text-amber-700 dark:text-amber-400" },
+    on_hold: { label: "On hold", tone: "text-orange-700 dark:text-orange-400" },
+  };
+  const { label, tone } = statusLabels[record.status] ?? statusLabels.done;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 px-4">
+      <div className="w-full max-w-md rounded-lg border border-secondary bg-primary p-5 shadow-xl">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-[10px] font-medium uppercase tracking-widest text-quaternary">
+              Submission detail
+            </p>
+            <h2 className="mt-1 text-lg font-semibold text-primary">
+              {routine.icon} {routine.title} · {dayLabels[record.day]}
+            </h2>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="grid h-8 w-8 place-items-center rounded-md border border-secondary text-quaternary hover:text-primary"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+
+        <div className="mt-4 space-y-3">
+          <div className="flex items-center gap-2">
+            <span className={cn("text-sm font-semibold", tone)}>{label}</span>
+            {record.submittedAt && (
+              <span className="text-[11px] text-quaternary">
+                · {new Date(record.submittedAt).toLocaleString()}
+              </span>
+            )}
+          </div>
+
+          {record.note && (
+            <div className="rounded-md bg-secondary p-3">
+              <p className="text-[10px] font-medium uppercase tracking-widest text-quaternary">
+                What was submitted
+              </p>
+              <p className="mt-1 text-sm text-primary">{record.note}</p>
+            </div>
+          )}
+
+          {record.challenge && (
+            <div className="rounded-md bg-secondary p-3">
+              <p className="text-[10px] font-medium uppercase tracking-widest text-quaternary">
+                Coach response
+              </p>
+              <p className="mt-1 text-sm text-primary">{record.challenge}</p>
+            </div>
+          )}
+
+          {!record.note && !record.challenge && (
+            <p className="text-xs text-tertiary">
+              No notes or transcript recorded for this completion.
+            </p>
+          )}
+
+          {record.reviewedAt && (
+            <p className="text-[11px] text-quaternary">
+              Reviewed: {new Date(record.reviewedAt).toLocaleString()}
+            </p>
+          )}
+        </div>
+
+        <div className="mt-4 flex justify-end">
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-md border border-secondary px-3 py-2 text-sm font-semibold text-secondary"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -345,13 +514,13 @@ function RewardWalletCard({
               ? `Redeemed x${redeemedCount}`
               : canAfford
                 ? "Available"
-                : `${reward.costPoints - balance} more needed`}
+                : "More coins needed"}
           </p>
         </div>
       </div>
       <div className="mt-3 flex items-center justify-between gap-2">
         <span className="text-xs text-tertiary">
-          Cost: {reward.costPoints} pts
+          <CoinStack value={reward.costPoints} />
         </span>
         <button
           type="button"
@@ -425,11 +594,28 @@ function VoiceCoachModal({
 }) {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const mediaChunksRef = useRef<Blob[]>([]);
+  const stoppingRef = useRef(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const latestSessionRef = useRef(session);
+  const speechRecognitionRef = useRef<BrowserSpeechRecognition | null>(null);
+  const speechFinalTranscriptRef = useRef("");
   const [realtimeStatus, setRealtimeStatus] = useState<RealtimeStatus>({
     state: "checking",
     label: "Checking voice",
   });
+
+  useEffect(() => {
+    latestSessionRef.current = session;
+  }, [session]);
+
+  const updateSession = useCallback(
+    (patch: Partial<CoachSession>) => {
+      const next = { ...latestSessionRef.current, ...patch };
+      latestSessionRef.current = next;
+      onUpdate(next);
+    },
+    [onUpdate],
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -473,52 +659,179 @@ function VoiceCoachModal({
   useEffect(() => {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
+      speechRecognitionRef.current?.abort();
       if (mediaRecorderRef.current?.state === "recording") {
         mediaRecorderRef.current.stop();
       }
     };
   }, []);
 
+  const stopSpeechRecognition = useCallback(() => {
+    const recognition = speechRecognitionRef.current;
+    speechRecognitionRef.current = null;
+    if (!recognition) return;
+    recognition.onend = null;
+    recognition.onerror = null;
+    recognition.onresult = null;
+    try {
+      recognition.stop();
+    } catch {
+      recognition.abort();
+    }
+  }, []);
+
+  const startSpeechRecognition = useCallback(() => {
+    if (typeof window === "undefined") return;
+    const speechWindow = window as typeof window & {
+      SpeechRecognition?: new () => BrowserSpeechRecognition;
+      webkitSpeechRecognition?: new () => BrowserSpeechRecognition;
+    };
+    const SpeechRecognition =
+      speechWindow.SpeechRecognition ?? speechWindow.webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
+
+    try {
+      const recognition = new SpeechRecognition();
+      speechFinalTranscriptRef.current = latestSessionRef.current.transcript.trim();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = navigator.language || "en-US";
+      recognition.onresult = (event) => {
+        let interim = "";
+        let finalText = speechFinalTranscriptRef.current;
+        for (let index = event.resultIndex; index < event.results.length; index += 1) {
+          const result = event.results[index];
+          const text = result[0]?.transcript ?? "";
+          if (result.isFinal) {
+            finalText = `${finalText} ${text}`.trim();
+          } else {
+            interim = `${interim} ${text}`.trim();
+          }
+        }
+        speechFinalTranscriptRef.current = finalText;
+        updateSession({
+          transcript: `${finalText} ${interim}`.trim(),
+          hasVoiceMemo: true,
+        });
+      };
+      recognition.onerror = () => {
+        speechRecognitionRef.current = null;
+      };
+      recognition.onend = () => {
+        speechRecognitionRef.current = null;
+      };
+      speechRecognitionRef.current = recognition;
+      recognition.start();
+    } catch {
+      speechRecognitionRef.current = null;
+    }
+  }, [updateSession]);
+
   const stopRecording = useCallback(() => {
+    // Guard: timer auto-stop at 30s and manual click can race
+    if (stoppingRef.current) return;
+    stoppingRef.current = true;
+
     if (timerRef.current) {
       clearInterval(timerRef.current);
       timerRef.current = null;
     }
-    if (mediaRecorderRef.current?.state === "recording") {
-      mediaRecorderRef.current.stop();
-    }
-    onUpdate({ ...session, phase: "analyzing" });
+    stopSpeechRecognition();
+    updateSession({ phase: "analyzing", hasVoiceMemo: true });
 
-    setTimeout(() => {
-      const result = analyzeForCoach(session.transcript, session.routine, true);
-      if (result.accepted) {
-        onUpdate({
-          ...session,
-          phase: "accepted",
-          coachResponse: result.response,
-          hasVoiceMemo: true,
-        });
-      } else if (result.needsFollowUp) {
-        onUpdate({
-          ...session,
-          phase: "follow-up",
-          coachResponse: result.response,
-          hasVoiceMemo: true,
-        });
-      } else {
-        onUpdate({
-          ...session,
-          phase: "parent-review",
-          coachResponse: result.response,
-          hasVoiceMemo: true,
-        });
+    const recorder = mediaRecorderRef.current;
+
+    // Runs transcription after all dataavailable events have fired
+    function processChunks() {
+      const chunks = mediaChunksRef.current;
+      const mimeType = recorder?.mimeType || "audio/webm";
+
+      async function runTranscription() {
+        const current = latestSessionRef.current;
+        let serverTranscript: string | null = null;
+
+        if (chunks.length > 0) {
+          try {
+            const blob = new Blob(chunks, { type: mimeType });
+            const form = new FormData();
+            form.append("audio", blob, "recording.webm");
+            const res = await fetch("/api/family/transcribe", {
+              method: "POST",
+              body: form,
+            });
+            if (res.ok) {
+              const data: { transcript?: string } = await res.json();
+              serverTranscript = data.transcript?.trim() ?? null;
+            }
+          } catch {
+            // Server transcription failed — fall back to browser transcript
+          }
+        }
+
+        // ElevenLabs transcript is source of truth when available;
+        // browser speech transcript is only a live/fallback draft
+        const transcript = serverTranscript ?? current.transcript;
+        const hasUsableTranscript = transcript.trim().length > 0;
+
+        // No usable transcript → route to parent review with visible gap
+        if (!hasUsableTranscript) {
+          updateSession({
+            phase: "parent-review",
+            transcript,
+            coachResponse:
+              "Could not capture what was said — sending to a parent to verify.",
+            hasVoiceMemo: true,
+          });
+          return;
+        }
+
+        updateSession({ transcript, hasVoiceMemo: true });
+        const result = analyzeForCoach(transcript, current.routine, true);
+        if (result.accepted) {
+          updateSession({
+            phase: "accepted",
+            transcript,
+            coachResponse: result.response,
+            hasVoiceMemo: true,
+          });
+        } else if (result.needsFollowUp) {
+          updateSession({
+            phase: "follow-up",
+            transcript,
+            coachResponse: result.response,
+            hasVoiceMemo: true,
+          });
+        } else {
+          updateSession({
+            phase: "parent-review",
+            transcript,
+            coachResponse: result.response,
+            hasVoiceMemo: true,
+          });
+        }
       }
-    }, 600);
-  }, [session, onUpdate]);
+
+      runTranscription();
+    }
+
+    // Wait for recorder.onstop (fires after final dataavailable) before
+    // reading chunks — reading immediately after .stop() races the async event.
+    if (recorder?.state === "recording") {
+      const prevOnStop = recorder.onstop;
+      recorder.onstop = (ev) => {
+        if (prevOnStop) prevOnStop.call(recorder, ev);
+        processChunks();
+      };
+      recorder.stop();
+    } else {
+      processChunks();
+    }
+  }, [stopSpeechRecognition, updateSession]);
 
   const startRecording = useCallback(async () => {
+    stoppingRef.current = false;
     if (typeof navigator === "undefined" || !navigator.mediaDevices) {
-      onUpdate({ ...session, phase: "typed" });
+      updateSession({ phase: "typed" });
       return;
     }
     try {
@@ -533,8 +846,8 @@ function VoiceCoachModal({
       };
       mediaRecorderRef.current = recorder;
       recorder.start();
-      const updated = { ...session, phase: "recording" as const, seconds: 0 };
-      onUpdate(updated);
+      updateSession({ phase: "recording", seconds: 0, hasVoiceMemo: true });
+      startSpeechRecognition();
       let sec = 0;
       timerRef.current = setInterval(() => {
         sec += 1;
@@ -542,12 +855,12 @@ function VoiceCoachModal({
           stopRecording();
           return;
         }
-        onUpdate({ ...updated, seconds: sec });
+        updateSession({ seconds: sec });
       }, 1000);
     } catch {
-      onUpdate({ ...session, phase: "typed" });
+      updateSession({ phase: "typed" });
     }
-  }, [session, onUpdate, stopRecording]);
+  }, [startSpeechRecognition, stopRecording, updateSession]);
 
   const submitTyped = useCallback(() => {
     const result = analyzeForCoach(session.transcript, session.routine, session.hasVoiceMemo);
@@ -794,7 +1107,9 @@ function SimpleConfirmModal({
           {draft.routine.icon} {draft.routine.title}
         </h2>
         <p className="mt-2 text-sm text-secondary">
-          Mark as done for {dayLabels[draft.day]}?
+          {draft.routine.proofMode === "parent-confirm"
+            ? `Send for parent review for ${dayLabels[draft.day]}?`
+            : `Mark as done for ${dayLabels[draft.day]}?`}
         </p>
         <div className="mt-4 flex justify-end gap-2">
           <button
@@ -809,7 +1124,7 @@ function SimpleConfirmModal({
             onClick={onConfirm}
             className="rounded-md bg-stone-900 px-3 py-2 text-sm font-semibold text-white dark:bg-white dark:text-stone-900"
           >
-            Done
+            {draft.routine.proofMode === "parent-confirm" ? "Send" : "Done"}
           </button>
         </div>
       </div>
@@ -832,6 +1147,7 @@ function ParentControlsPanel({
   saveStatus,
   onUndoCompletion,
   onUndoRedemption,
+  onReviewAction,
   onConfigChange,
 }: {
   personId: string;
@@ -844,6 +1160,7 @@ function ParentControlsPanel({
   saveStatus: "idle" | "saving" | "saved";
   onUndoCompletion: (routineId: string, day: number) => void;
   onUndoRedemption: (redemptionId: string) => void;
+  onReviewAction: (routineId: string, day: number, action: "approve" | "hold") => void;
   onConfigChange: (config: FamilyBoardConfig) => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -853,6 +1170,9 @@ function ParentControlsPanel({
   const personCompletions = Array.from(completions.entries())
     .filter(([, c]) => c.personId === personId)
     .map(([key, c]) => ({ key, ...c }));
+  const reviewItems = personCompletions.filter(
+    (c) => c.status === "pending_review" || c.status === "on_hold",
+  );
 
   // Group routines by category for clearer display
   const routinesByCategory = useMemo(() => {
@@ -929,6 +1249,67 @@ function ParentControlsPanel({
 
       {open && (
         <div className="mt-4 space-y-6">
+          {/* Review queue */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-quaternary">
+              Review queue
+            </h3>
+            <p className="mt-1 text-[11px] text-tertiary">
+              Approve good submissions, or keep them on hold if a parent should talk it through.
+            </p>
+            {reviewItems.length === 0 ? (
+              <p className="mt-2 text-xs text-tertiary">No submissions waiting for review.</p>
+            ) : (
+              <div className="mt-2 space-y-2">
+                {reviewItems.map((c) => {
+                  const routine = routineDefinitions.find((r) => r.id === c.routineId);
+                  return (
+                    <div key={c.key} className="rounded-md border border-secondary bg-primary px-3 py-2">
+                      <div className="flex flex-wrap items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="text-xs font-semibold text-primary">
+                              {routine?.icon} {routine?.title ?? c.routineId} · {dayLabels[c.day]}
+                            </span>
+                            <NabuBadge tone={c.status === "on_hold" ? "amber" : "blue"}>
+                              {c.status === "on_hold" ? "On hold" : "Review"}
+                            </NabuBadge>
+                          </div>
+                          {c.note && (
+                            <p className="mt-1 line-clamp-2 text-xs text-tertiary">
+                              {c.note}
+                            </p>
+                          )}
+                          {c.challenge && (
+                            <p className="mt-1 line-clamp-2 text-[11px] text-quaternary">
+                              Coach: {c.challenge}
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex shrink-0 items-center gap-1.5">
+                          <button
+                            type="button"
+                            onClick={() => onReviewAction(c.routineId, c.day, "approve")}
+                            className="rounded-md bg-emerald-600 px-2.5 py-1.5 text-[11px] font-semibold text-white hover:bg-emerald-700"
+                          >
+                            Approve
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => onReviewAction(c.routineId, c.day, "hold")}
+                            className="rounded-md border border-secondary px-2.5 py-1.5 text-[11px] font-semibold text-secondary hover:bg-secondary"
+                          >
+                            Hold
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
           {/* Undo completions */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-widest text-quaternary">
@@ -1290,14 +1671,22 @@ export function PersonBoardClient({
   }, [routines]);
 
   // Completion handlers — persist to DB
-  const markDone = useCallback(
-    async (routine: RoutineDefinition, day: number, note?: string) => {
+  const submitCompletion = useCallback(
+    async (
+      routine: RoutineDefinition,
+      day: number,
+      status: "done" | "pending_review",
+      note?: string,
+      challenge?: string,
+    ) => {
       const record: CompletionRecord = {
         routineId: routine.id,
         personId,
         day,
-        status: "done",
+        status,
         note,
+        challenge,
+        submittedAt: new Date().toISOString(),
       };
       // Optimistic update
       setCompletions((prev) => {
@@ -1318,10 +1707,18 @@ export function PersonBoardClient({
     [personId, weekNav.weekId],
   );
 
+  // Proof detail modal state
+  const [proofDetail, setProofDetail] = useState<{ record: CompletionRecord; routine: RoutineDefinition } | null>(null);
+
   const handleTileTap = useCallback(
     (routine: RoutineDefinition, day: number) => {
       const key = completionKey(routine.id, personId, day);
-      if (completions.has(key)) return;
+      const existing = completions.get(key);
+
+      if (existing) {
+        setProofDetail({ record: existing, routine });
+        return;
+      }
 
       if (routine.proofMode === "voice-coach") {
         setCoachSession({
@@ -1341,6 +1738,39 @@ export function PersonBoardClient({
     },
     [completions, personId],
   );
+
+  // Parent review action: approve or put on hold
+  const handleReviewAction = useCallback(async (
+    routineId: string,
+    day: number,
+    action: "approve" | "hold",
+  ) => {
+    const key = completionKey(routineId, personId, day);
+    // Optimistic update
+    setCompletions((prev) => {
+      const next = new Map(prev);
+      const existing = next.get(key);
+      if (existing) {
+        next.set(key, {
+          ...existing,
+          status: action === "approve" ? "done" : "on_hold",
+          reviewedAt: new Date().toISOString(),
+        });
+      }
+      return next;
+    });
+    await fetch("/api/family/completions", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        week: weekNav.weekId,
+        personId,
+        routineId,
+        day,
+        action,
+      }),
+    });
+  }, [personId, weekNav.weekId]);
 
   const [redeemingReward, setRedeemingReward] = useState<string | null>(null);
 
@@ -1557,12 +1987,14 @@ export function PersonBoardClient({
                             routine.days === null || routine.days.includes(dayIdx);
                           const key = completionKey(routine.id, personId, dayIdx);
                           const record = completions.get(key);
+                          const tileStatus: "open" | "done" | "pending_review" | "on_hold" =
+                            record ? (record.status as "done" | "pending_review" | "on_hold") : "open";
 
                           return (
                             <div key={dayIdx} className="p-1.5">
                               <TaskTile
                                 routine={routine}
-                                isDone={record?.status === "done"}
+                                status={tileStatus}
                                 isToday={dayIdx === today}
                                 isScheduled={scheduled}
                                 onTap={() => handleTileTap(routine, dayIdx)}
@@ -1584,8 +2016,8 @@ export function PersonBoardClient({
                   <div className="grid grid-cols-[180px_repeat(7,1fr)] border-b border-secondary">
                     <div className="flex flex-col justify-center p-3">
                       <LaneLabel category="job" />
-                      <span className="mt-1 text-[10px] text-quaternary">
-                        0 pts · parent approval
+                      <span className="mt-1 inline-flex items-center gap-1 text-[10px] text-quaternary">
+                        <CoinStack value={0} /> parent approval
                       </span>
                     </div>
                     {dayLabels.map((label, i) => (
@@ -1624,12 +2056,14 @@ export function PersonBoardClient({
                           routine.days === null || routine.days.includes(dayIdx);
                         const key = completionKey(routine.id, personId, dayIdx);
                         const record = completions.get(key);
+                        const tileStatus: "open" | "done" | "pending_review" | "on_hold" =
+                          record ? (record.status as "done" | "pending_review" | "on_hold") : "open";
 
                         return (
                           <div key={dayIdx} className="p-1.5">
                             <TaskTile
                               routine={routine}
-                              isDone={record?.status === "done"}
+                              status={tileStatus}
                               isToday={dayIdx === today}
                               isScheduled={scheduled}
                               onTap={() => handleTileTap(routine, dayIdx)}
@@ -1652,7 +2086,9 @@ export function PersonBoardClient({
                       Reward wallet
                     </p>
                     <h2 className="mt-0.5 text-base font-semibold text-primary">
-                      {balance} pts available
+                      <span className="inline-flex items-center gap-2">
+                        <CoinStack value={Math.max(0, balance)} /> available
+                      </span>
                     </h2>
                     <p className="text-xs text-tertiary">
                       {totalEarned} earned · {totalSpent} spent
@@ -1686,6 +2122,14 @@ export function PersonBoardClient({
                 Completed
               </span>
               <span className="flex items-center gap-1.5">
+                <span className="inline-block h-3 w-3 rounded-sm border border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/30" />
+                In review
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block h-3 w-3 rounded-sm border border-orange-200 bg-orange-50 dark:border-orange-800 dark:bg-orange-950/30" />
+                On hold
+              </span>
+              <span className="flex items-center gap-1.5">
                 <span className="inline-flex h-3 w-3 items-center justify-center rounded-sm border border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-800/60">
                   <span className="h-1.5 w-1.5 rounded-full border border-stone-300 dark:border-stone-500" />
                 </span>
@@ -1710,6 +2154,7 @@ export function PersonBoardClient({
                 saveStatus={configSaveStatus}
                 onUndoCompletion={handleUndoCompletion}
                 onUndoRedemption={handleUndoRedemption}
+                onReviewAction={handleReviewAction}
                 onConfigChange={handleConfigChange}
               />
             )}
@@ -1722,7 +2167,12 @@ export function PersonBoardClient({
         <SimpleConfirmModal
           draft={simpleDraft}
           onConfirm={() => {
-            markDone(simpleDraft.routine, simpleDraft.day);
+            submitCompletion(
+              simpleDraft.routine,
+              simpleDraft.day,
+              simpleDraft.routine.proofMode === "parent-confirm" ? "pending_review" : "done",
+              simpleDraft.routine.proofMode === "parent-confirm" ? "Submitted for parent approval" : undefined,
+            );
             setSimpleDraft(null);
           }}
           onClose={() => setSimpleDraft(null)}
@@ -1736,13 +2186,22 @@ export function PersonBoardClient({
           onUpdate={setCoachSession}
           onClose={() => setCoachSession(null)}
           onComplete={(routine, day, note) => {
-            markDone(routine, day, note);
+            submitCompletion(routine, day, "pending_review", note, coachSession.coachResponse);
             setCoachSession(null);
           }}
           onParentReview={(routine, day, note) => {
-            markDone(routine, day, `[pending review] ${note}`);
+            submitCompletion(routine, day, "pending_review", note, coachSession.coachResponse);
             setCoachSession(null);
           }}
+        />
+      )}
+
+      {/* Proof detail modal */}
+      {proofDetail && (
+        <ProofDetailModal
+          record={proofDetail.record}
+          routine={proofDetail.routine}
+          onClose={() => setProofDetail(null)}
         />
       )}
     </main>

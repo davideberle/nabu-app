@@ -19,7 +19,7 @@ export type RoutineCategory =
 
 export type TaskClass = "routine" | "responsibility" | "privilege" | "job";
 
-export type CompletionStatus = "done";
+export type CompletionStatus = "done" | "pending_review" | "on_hold";
 
 export type RewardStatus = "not-yet" | "earned" | "approved" | "redeemed";
 
@@ -49,8 +49,14 @@ export type CompletionRecord = {
   /** 0-based day index (Mon=0 … Sun=6) */
   day: number;
   status: CompletionStatus;
+  /** Transcript or typed fallback submitted by the child. */
   note?: string;
+  /** Coach response / parent-review reason shown with the submission. */
   challenge?: string;
+  /** ISO timestamp when submitted */
+  submittedAt?: string;
+  /** ISO timestamp when reviewed by parent */
+  reviewedAt?: string;
 };
 
 export type RewardRecord = {
@@ -289,6 +295,7 @@ export function weekSummary(
   );
   const mine = completions.filter((c) => c.personId === personId);
   const done = mine.filter((c) => c.status === "done" && trackedIds.has(c.routineId)).length;
+  const pending = mine.filter((c) => (c.status === "pending_review" || c.status === "on_hold") && trackedIds.has(c.routineId)).length;
   const target = pool
     .filter((r) => r.assignedTo.includes(personId))
     .reduce((sum, routine) => {
@@ -296,7 +303,7 @@ export function weekSummary(
       if (routine.weeklyTarget === null) return sum;
       return sum + routine.weeklyTarget;
     }, 0);
-  return { done, planned: Math.max(0, target - done), submitted: 0, total: target };
+  return { done, planned: Math.max(0, target - done - pending), submitted: pending, total: target };
 }
 
 /** Weekly points from done completion records. Accepts optional resolved routines for config-aware points. */
@@ -369,11 +376,16 @@ export function todayStatusLabel(
         r.weeklyTarget !== null,
     );
   const scheduledIds = new Set(scheduledToday.map((r) => r.id));
-  const todayDone = completions.filter(
-    (c) => c.personId === personId && c.day === today && c.status === "done" && scheduledIds.has(c.routineId),
-  ).length;
+  const todayMine = completions.filter(
+    (c) => c.personId === personId && c.day === today && scheduledIds.has(c.routineId),
+  );
+  const todayDone = todayMine.filter((c) => c.status === "done").length;
+  const todayPending = todayMine.filter((c) => c.status === "pending_review" || c.status === "on_hold").length;
   if (scheduledToday.length === 0) return "Rest day";
-  if (todayDone >= scheduledToday.length) return "All done";
-  const remaining = scheduledToday.length - todayDone;
+  if (todayDone + todayPending >= scheduledToday.length) {
+    if (todayPending > 0) return `${todayPending} in review`;
+    return "All done";
+  }
+  const remaining = scheduledToday.length - todayDone - todayPending;
   return `${remaining} not done`;
 }

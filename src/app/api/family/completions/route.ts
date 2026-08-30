@@ -3,9 +3,11 @@ import {
   getCompletionsForWeek,
   upsertCompletion,
   removeCompletion,
+  updateCompletionStatus,
 } from "@/lib/family-db";
 import { auth } from "@/auth";
 import { isAdminEmail } from "@/lib/access";
+import { notifyFamilyReviewSubmission } from "@/lib/family-telegram";
 
 /**
  * GET /api/family/completions?week=2026-W23
@@ -41,24 +43,68 @@ export async function POST(request: Request) {
   } catch {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
-  const { week, personId, routineId, day, status, note } = body;
+  const { week, personId, routineId, day, status, note, challenge } = body;
+  const validStatuses = ["done", "pending_review"];
   if (
     typeof week !== "string" || !/^\d{4}-W\d{2}$/.test(week) ||
     typeof personId !== "string" || !personId ||
     typeof routineId !== "string" || !routineId ||
     typeof day !== "number" || day < 0 || day > 6 ||
-    status !== "done"
+    typeof status !== "string" || !validStatuses.includes(status)
   ) {
     return NextResponse.json({ error: "Invalid fields" }, { status: 400 });
   }
-  await upsertCompletion(week, {
+  const record = {
     personId,
     routineId,
     day,
-    status,
+    status: status as "done" | "pending_review",
     ...(typeof note === "string" ? { note } : {}),
-  });
+    ...(typeof challenge === "string" ? { challenge } : {}),
+  };
+  await upsertCompletion(week, record);
+  if (record.status === "pending_review") {
+    try {
+      await notifyFamilyReviewSubmission({ week, record });
+    } catch (error) {
+      console.error("[family] review notification failed", error);
+    }
+  }
   return NextResponse.json({ ok: true });
+}
+
+/**
+ * PATCH /api/family/completions
+ * Body: { week, personId, routineId, day, action: "approve" | "hold" }
+ * Parent review action: approve sets status to done, hold sets to on_hold.
+ */
+export async function PATCH(request: Request) {
+  const session = await auth();
+  if (!session?.user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  if (!isAdminEmail(session.user.email)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+  let body: Record<string, unknown>;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
+  const { week, personId, routineId, day, action } = body;
+  if (
+    typeof week !== "string" || !/^\d{4}-W\d{2}$/.test(week) ||
+    typeof personId !== "string" || !personId ||
+    typeof routineId !== "string" || !routineId ||
+    typeof day !== "number" || day < 0 || day > 6 ||
+    (action !== "approve" && action !== "hold")
+  ) {
+    return NextResponse.json({ error: "Invalid fields" }, { status: 400 });
+  }
+  const newStatus = action === "approve" ? "done" : "on_hold";
+  const updated = await updateCompletionStatus(week, personId, routineId, day, newStatus);
+  return NextResponse.json({ ok: true, updated });
 }
 
 /**

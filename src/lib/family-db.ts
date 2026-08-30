@@ -15,16 +15,25 @@ import {
 async function ensureFamilyTables(client: Client): Promise<void> {
   await client.execute(`
     CREATE TABLE IF NOT EXISTS family_completions (
-      person_id  TEXT NOT NULL,
-      routine_id TEXT NOT NULL,
-      week       TEXT NOT NULL,
-      day        INTEGER NOT NULL,
-      status     TEXT NOT NULL DEFAULT 'done',
-      note       TEXT,
-      created_at TEXT NOT NULL,
+      person_id   TEXT NOT NULL,
+      routine_id  TEXT NOT NULL,
+      week        TEXT NOT NULL,
+      day         INTEGER NOT NULL,
+      status      TEXT NOT NULL DEFAULT 'done',
+      note        TEXT,
+      challenge   TEXT,
+      created_at  TEXT NOT NULL,
+      reviewed_at TEXT,
       PRIMARY KEY (person_id, routine_id, week, day)
     )
   `);
+  // Migrate existing tables that lack the new columns
+  try {
+    await client.execute(`ALTER TABLE family_completions ADD COLUMN challenge TEXT`);
+  } catch { /* column already exists */ }
+  try {
+    await client.execute(`ALTER TABLE family_completions ADD COLUMN reviewed_at TEXT`);
+  } catch { /* column already exists */ }
   await client.execute(`
     CREATE INDEX IF NOT EXISTS idx_family_completions_week
       ON family_completions (week, person_id)
@@ -61,16 +70,24 @@ export async function getCompletionsForWeek(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: "SELECT person_id, routine_id, day, status, note FROM family_completions WHERE week = ?",
+    sql: "SELECT person_id, routine_id, day, status, note, challenge, created_at, reviewed_at FROM family_completions WHERE week = ?",
     args: [week],
   });
-  return result.rows.map((row) => ({
-    personId: row["person_id"] as string,
-    routineId: row["routine_id"] as string,
-    day: row["day"] as number,
-    status: "done" as const,
-    ...(row["note"] ? { note: row["note"] as string } : {}),
-  }));
+  return result.rows.map((row) => {
+    const status = row["status"] as string;
+    const validStatus: CompletionRecord["status"] =
+      status === "pending_review" || status === "on_hold" ? status : "done";
+    return {
+      personId: row["person_id"] as string,
+      routineId: row["routine_id"] as string,
+      day: row["day"] as number,
+      status: validStatus,
+      ...(row["note"] ? { note: row["note"] as string } : {}),
+      ...(row["challenge"] ? { challenge: row["challenge"] as string } : {}),
+      ...(row["created_at"] ? { submittedAt: row["created_at"] as string } : {}),
+      ...(row["reviewed_at"] ? { reviewedAt: row["reviewed_at"] as string } : {}),
+    };
+  });
 }
 
 export async function upsertCompletion(
@@ -81,10 +98,10 @@ export async function upsertCompletion(
   await ensureFamilyTables(client);
   const now = new Date().toISOString();
   await client.execute({
-    sql: `INSERT INTO family_completions (person_id, routine_id, week, day, status, note, created_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?)
+    sql: `INSERT INTO family_completions (person_id, routine_id, week, day, status, note, challenge, created_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT (person_id, routine_id, week, day) DO UPDATE SET
-            status = excluded.status, note = excluded.note`,
+            status = excluded.status, note = excluded.note, challenge = excluded.challenge`,
     args: [
       record.personId,
       record.routineId,
@@ -92,9 +109,29 @@ export async function upsertCompletion(
       record.day,
       record.status,
       record.note ?? null,
+      record.challenge ?? null,
       now,
     ],
   });
+}
+
+/** Update a completion's status (for parent review actions). */
+export async function updateCompletionStatus(
+  week: string,
+  personId: string,
+  routineId: string,
+  day: number,
+  newStatus: "done" | "on_hold",
+): Promise<boolean> {
+  const client = await getDb();
+  await ensureFamilyTables(client);
+  const now = new Date().toISOString();
+  const result = await client.execute({
+    sql: `UPDATE family_completions SET status = ?, reviewed_at = ?
+          WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?`,
+    args: [newStatus, now, week, personId, routineId, day],
+  });
+  return result.rowsAffected > 0;
 }
 
 export async function removeCompletion(

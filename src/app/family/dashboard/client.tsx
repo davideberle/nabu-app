@@ -61,6 +61,29 @@ const colorDot: Record<PersonColor, string> = {
   green: "bg-emerald-400",
 };
 
+function CoinStack({ value, max = 5 }: { value: number; max?: number }) {
+  const visible = Math.max(0, Math.min(value, max));
+  return (
+    <span className="inline-flex items-center gap-0.5" aria-label={`${value} coins`}>
+      {value === 0 && (
+        <span className="text-[10px] font-semibold text-quaternary">0</span>
+      )}
+      {Array.from({ length: visible }).map((_, index) => (
+        <span
+          key={index}
+          className="inline-block h-3.5 w-3.5 rounded-full border border-amber-400 bg-amber-300 shadow-[inset_0_-1px_0_rgba(146,64,14,0.35)]"
+          aria-hidden="true"
+        />
+      ))}
+      {value > max && (
+        <span className="ml-0.5 text-[10px] font-semibold text-amber-700 dark:text-amber-300">
+          +{value - max}
+        </span>
+      )}
+    </span>
+  );
+}
+
 type BadgeTone = "stone" | "green" | "amber" | "blue" | "violet" | "red";
 type WeekNav = {
   weekId: string;
@@ -165,7 +188,7 @@ function PersonCard({
             <span className="font-medium text-secondary">
               {nextReward.missing === 0
                 ? "available"
-                : `${nextReward.missing} pts to go`}
+                : "more coins to go"}
             </span>
           </div>
           <div className="h-1.5 w-full overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
@@ -198,7 +221,7 @@ function PersonCard({
             Available
           </p>
           <p className="text-sm font-semibold text-primary">
-            {balance} pts
+            <CoinStack value={Math.max(0, balance)} />
           </p>
         </div>
       )}
@@ -236,18 +259,22 @@ function RewardGoalCard({
             </NabuBadge>
           </div>
           <p className="mt-1 text-xs font-semibold text-secondary">
-            {ready ? "Available" : `${missing} pts to go`}
+            {ready ? "Available" : "More coins needed"}
           </p>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-2 rounded-md bg-secondary p-2">
         <div>
           <p className="text-[10px] uppercase tracking-widest text-quaternary">Cost</p>
-          <p className="text-sm font-semibold text-primary">{reward.costPoints}</p>
+          <p className="text-sm font-semibold text-primary">
+            <CoinStack value={reward.costPoints} />
+          </p>
         </div>
         <div>
           <p className="text-[10px] uppercase tracking-widest text-quaternary">Avg balance</p>
-          <p className="text-sm font-semibold text-primary">{current}</p>
+          <p className="text-sm font-semibold text-primary">
+            <CoinStack value={current} />
+          </p>
         </div>
       </div>
     </div>
@@ -450,7 +477,7 @@ export function FamilyDashboardClient({
             <NabuSurface tone="muted" className="p-4">
               <NabuSectionHeader
                 title="Reward shop"
-                description="Earn points, redeem rewards."
+                description="Earn coins, redeem rewards."
                 className="mb-3"
               />
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
