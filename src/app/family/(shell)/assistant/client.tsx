@@ -187,6 +187,13 @@ type ShowingView =
 type ThinkingPhase = "sending" | "thinking";
 
 type Stage =
+  /**
+   * The child Home (family-assistant DESIGN.md §2.1): four large actions —
+   * Record something I did, Ask Nabu, Music, Hörspiele. The conversation
+   * states below are reached through Ask Nabu / Music; Record and Hörspiele
+   * navigate to their own surfaces.
+   */
+  | { kind: "home" }
   | { kind: "ready" }
   /**
    * `live` is false while the microphone is still opening. Nothing on screen
@@ -373,6 +380,7 @@ function PrototypeDemoPanel({
 
 function avatarStateFor(stage: Stage, isSpeaking: boolean): AvatarState {
   switch (stage.kind) {
+    case "home":
     case "ready":
       return "ready";
     case "listening":
@@ -692,7 +700,13 @@ function Workspace({
   // `key`, so the whole conversation subtree unmounts and its cleanup
   // discards any in-flight turn, recording and speech before the sibling's
   // workspace mounts.
-  const [stage, setStage] = useState<Stage>({ kind: "ready" });
+  const [stage, setStage] = useState<Stage>({ kind: "home" });
+  /**
+   * What the Ask Nabu conversation was opened for. "music" keeps every turn on
+   * the existing child agent + Sonos preview/confirm contract — it only
+   * changes the ready-view framing, never the transport.
+   */
+  const [askFocus, setAskFocus] = useState<"general" | "music">("general");
   const [spokenLine, setSpokenLine] = useState<string>(profile.greeting);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [soundOn, setSoundOn] = useState(true);
@@ -933,12 +947,38 @@ function Workspace({
     setStage({ kind: "ready" });
   }, [cancelSpeech, clearTimers, profile.greeting]);
 
+  /** Open the Ask Nabu conversation from Home, general or music-framed. */
+  const enterConversation = useCallback(
+    (focus: "general" | "music") => {
+      clearTimers();
+      cancelSpeech();
+      setAskFocus(focus);
+      setSpokenLine(profile.greeting);
+      setStage({ kind: "ready" });
+    },
+    [cancelSpeech, clearTimers, profile.greeting],
+  );
+
+  /** Back to the four Home actions, discarding anything in flight. */
+  const goHome = useCallback(() => {
+    discardRecording();
+    clearTimers();
+    cancelSpeech();
+    setTyped("");
+    setSpokenLine(profile.greeting);
+    setStage({ kind: "home" });
+  }, [cancelSpeech, clearTimers, discardRecording, profile.greeting]);
+
   // ------------------------------------------------------------------
   // Points scenario — reads the real family APIs, falls back to a
   // clearly-labeled demo snapshot when they are unreachable.
   // ------------------------------------------------------------------
 
   const loadPoints = useCallback(async () => {
+    // Captured so a navigation away (goHome/backToReady bump the sequence via
+    // clearTimers) makes a slow points reply land silently instead of
+    // yanking the child off whatever screen they moved to.
+    const seq = turnSeqRef.current;
     const wait = new Promise((resolve) => window.setTimeout(resolve, 900));
     let snapshot: PointsSnapshot;
     try {
@@ -993,7 +1033,7 @@ function Workspace({
       };
     }
     await wait;
-    if (!aliveRef.current) return;
+    if (!aliveRef.current || turnSeqRef.current !== seq) return;
     setPoints(snapshot);
     const coinWord = snapshot.balance === 1 ? "coin" : "coins";
     const intro = snapshot.live
@@ -1425,6 +1465,8 @@ function Workspace({
 
   const announcement = useMemo(() => {
     switch (stage.kind) {
+      case "home":
+        return `${profile.greeting} Choose what you want to do.`;
       case "ready":
         return `${profile.companionName} is ready. ${profile.greeting}`;
       case "listening":
@@ -1455,41 +1497,115 @@ function Workspace({
 
   let stageContent: React.ReactNode = null;
 
-  if (stage.kind === "ready") {
+  if (stage.kind === "home") {
+    // The child Home (family-assistant DESIGN.md §2.1): exactly four large
+    // actions. Record and Hörspiele navigate to their own surfaces carrying
+    // the selected child; Ask Nabu and Music open the conversation below.
+    const homeActionClass = cn(
+      "flex min-h-24 items-center gap-4 rounded-2xl border border-primary bg-primary px-5 py-4 text-left shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md dark:shadow-none",
+      focusRing,
+    );
+    const homeActionIconClass =
+      "grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-secondary text-3xl";
     stageContent = (
       <div className="flex min-h-full flex-col justify-center gap-6">
         <div>
           <h2 className="text-3xl font-semibold tracking-[-0.02em] text-primary">
             {profile.greeting}
           </h2>
-          <p className="mt-1 text-base text-tertiary">{profile.greetingHint}</p>
+          <p className="mt-1 text-base text-tertiary">What do you want to do?</p>
         </div>
 
-        {/* The Listening Library (DESIGN §7.4.2) is reached from here rather
-            than adding a fourth shell destination. The link carries the
-            selected child so a deep link stays on the same profile. */}
-        <Link
-          href={`/family/listen?child=${profile.id}`}
-          className={cn(
-            "flex min-h-16 items-center gap-3 rounded-2xl border border-primary bg-primary px-4 py-3 shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md dark:shadow-none",
-            focusRing,
-          )}
-        >
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-secondary text-2xl" aria-hidden>
-            🎧
-          </span>
-          <span className="min-w-0">
-            <span className="block text-base font-semibold text-primary">Stories</span>
-            <span className="block text-sm text-tertiary">Your Hörspiel library — browse, play and continue</span>
-          </span>
-        </Link>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Link
+            href={`/family/assistant/record?child=${profile.id}`}
+            className={homeActionClass}
+          >
+            <span className={homeActionIconClass} aria-hidden>
+              🎙️
+            </span>
+            <span className="min-w-0">
+              <span className="block text-lg font-semibold text-primary">
+                Record something I did
+              </span>
+              <span className="block text-sm text-tertiary">
+                Tell me about Kumon, piano, exercise and more
+              </span>
+            </span>
+          </Link>
+          <button type="button" onClick={() => enterConversation("general")} className={homeActionClass}>
+            <span className={homeActionIconClass} aria-hidden>
+              💬
+            </span>
+            <span className="min-w-0">
+              <span className="block text-lg font-semibold text-primary">Ask Nabu</span>
+              <span className="block text-sm text-tertiary">
+                Questions, ideas and help — talk or type
+              </span>
+            </span>
+          </button>
+          <button type="button" onClick={() => enterConversation("music")} className={homeActionClass}>
+            <span className={homeActionIconClass} aria-hidden>
+              🎵
+            </span>
+            <span className="min-w-0">
+              <span className="block text-lg font-semibold text-primary">Music</span>
+              <span className="block text-sm text-tertiary">
+                Say what you want to hear — you pick before it plays
+              </span>
+            </span>
+          </button>
+          {/* The Listening Library (DESIGN §7.4.2). The link carries the
+              selected child so a deep link stays on the same profile. */}
+          <Link href={`/family/listen?child=${profile.id}`} className={homeActionClass}>
+            <span className={homeActionIconClass} aria-hidden>
+              🎧
+            </span>
+            <span className="min-w-0">
+              <span className="block text-lg font-semibold text-primary">Hörspiele</span>
+              <span className="block text-sm text-tertiary">
+                Your stories — browse, play and continue
+              </span>
+            </span>
+          </Link>
+        </div>
+      </div>
+    );
+  } else if (stage.kind === "ready") {
+    stageContent = (
+      <div className="flex min-h-full flex-col justify-center gap-6">
+        <div>
+          <button
+            type="button"
+            onClick={goHome}
+            className={cn(
+              "mb-3 inline-flex min-h-12 items-center gap-1.5 rounded-full border border-primary bg-primary px-4 py-2 text-sm font-semibold text-secondary",
+              focusRing,
+            )}
+          >
+            <span aria-hidden>←</span> Home
+          </button>
+          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-primary">
+            {askFocus === "music" ? "Music 🎵" : profile.greeting}
+          </h2>
+          <p className="mt-1 text-base text-tertiary">
+            {askFocus === "music"
+              ? "Tell me what you'd like to hear — I'll show you choices before anything plays."
+              : profile.greetingHint}
+          </p>
+        </div>
 
         <div>
           <p className="mb-2 text-sm text-quaternary">
-            Ask me anything — or start with one of these:
+            {askFocus === "music"
+              ? "Tap talk and say it — or start with this:"
+              : "Ask me anything — or start with one of these:"}
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
-          {starterPhrases.map((s) => (
+          {(askFocus === "music"
+            ? starterPhrases.filter((s) => s.intent === "fuzzy-music")
+            : starterPhrases
+          ).map((s) => (
             <button
               key={s.intent}
               type="button"
@@ -1510,11 +1626,13 @@ function Workspace({
           </div>
         </div>
 
-        <PrototypeDemoPanel
-          open={demosOpen}
-          onToggle={() => setDemosOpen((value) => !value)}
-          onRun={runDemo}
-        />
+        {askFocus === "general" && (
+          <PrototypeDemoPanel
+            open={demosOpen}
+            onToggle={() => setDemosOpen((value) => !value)}
+            onRun={runDemo}
+          />
+        )}
       </div>
     );
   } else if (stage.kind === "listening") {
@@ -2063,7 +2181,7 @@ function Workspace({
     stageContent = (
       <div className="flex min-h-full flex-col gap-5">
         <div className="flex-1">{body}</div>
-        <div>
+        <div className="flex flex-wrap gap-3">
           <button
             type="button"
             onClick={backToReady}
@@ -2072,7 +2190,17 @@ function Workspace({
               focusRing,
             )}
           >
-            ✨ Ask something else
+            {askFocus === "music" ? "🎵 More music" : "✨ Ask something else"}
+          </button>
+          <button
+            type="button"
+            onClick={goHome}
+            className={cn(
+              "inline-flex min-h-12 items-center gap-2 rounded-full border border-primary bg-primary px-5 text-base font-medium text-secondary transition-colors hover:bg-secondary",
+              focusRing,
+            )}
+          >
+            <span aria-hidden>←</span> Home
           </button>
         </div>
       </div>
@@ -2138,27 +2266,12 @@ function Workspace({
               {spokenLine}
             </div>
           ) : null}
-          <MicDock
-            className="hidden lg:landscape:flex"
-            variant="rail"
-            tint={tint}
-            micState={micState}
-            speechSupported={speechSupported}
-            typed={typed}
-            onTypedChange={setTyped}
-            onTypedSubmit={onTypedSubmit}
-            onMicToggle={onMicToggle}
-          />
-        </section>
-
-        {/* Stage */}
-        <section aria-label="Conversation" className="flex min-h-0 flex-1 flex-col">
-          <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-6 lg:landscape:py-6">
-            {stageContent}
-          </div>
-          <div className="shrink-0 border-t border-secondary bg-primary/60 px-4 py-3 sm:px-6 lg:landscape:hidden">
+          {/* On Home the four actions are the input surface; the talk dock
+              belongs to the conversation states. */}
+          {stage.kind !== "home" && (
             <MicDock
-              variant="dock"
+              className="hidden lg:landscape:flex"
+              variant="rail"
               tint={tint}
               micState={micState}
               speechSupported={speechSupported}
@@ -2167,7 +2280,28 @@ function Workspace({
               onTypedSubmit={onTypedSubmit}
               onMicToggle={onMicToggle}
             />
+          )}
+        </section>
+
+        {/* Stage */}
+        <section aria-label="Conversation" className="flex min-h-0 flex-1 flex-col">
+          <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-6 lg:landscape:py-6">
+            {stageContent}
           </div>
+          {stage.kind !== "home" && (
+            <div className="shrink-0 border-t border-secondary bg-primary/60 px-4 py-3 sm:px-6 lg:landscape:hidden">
+              <MicDock
+                variant="dock"
+                tint={tint}
+                micState={micState}
+                speechSupported={speechSupported}
+                typed={typed}
+                onTypedChange={setTyped}
+                onTypedSubmit={onTypedSubmit}
+                onMicToggle={onMicToggle}
+              />
+            </div>
+          )}
         </section>
       </div>
     </div>

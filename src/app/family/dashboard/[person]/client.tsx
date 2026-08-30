@@ -255,6 +255,12 @@ function analyzeFollowUp(
 type SimpleDone = {
   routine: RoutineDefinition;
   day: number;
+  /**
+   * Set when the tap reopened a parent-`redo` row. A redo resubmission must
+   * re-enter review — it can never self-approve to `done` — and it keeps the
+   * child's original transcript on the record.
+   */
+  fromRedo?: CompletionRecord;
 };
 
 // ---------------------------------------------------------------------------
@@ -269,7 +275,7 @@ function TaskTile({
   onTap,
 }: {
   routine: RoutineDefinition;
-  status: "open" | "done" | "pending_review" | "on_hold";
+  status: "open" | "done" | "pending_review" | "on_hold" | "redo";
   isToday: boolean;
   isScheduled: boolean;
   onTap: () => void;
@@ -277,6 +283,7 @@ function TaskTile({
   const isDone = status === "done";
   const isPending = status === "pending_review";
   const isOnHold = status === "on_hold";
+  const isRedo = status === "redo";
   const isLocked = isDone || isPending || isOnHold;
 
   return (
@@ -290,7 +297,9 @@ function TaskTile({
             ? `${routine.title}: awaiting review`
             : isOnHold
               ? `${routine.title}: on hold`
-              : `${routine.title}: tap to mark done`
+              : isRedo
+                ? `${routine.title}: please try again`
+                : `${routine.title}: tap to mark done`
       }
       className={cn(
         "flex h-full min-h-[56px] w-full items-center justify-center rounded-md border transition-all",
@@ -300,9 +309,11 @@ function TaskTile({
             ? "cursor-pointer border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/30"
             : isOnHold
               ? "cursor-pointer border-orange-200 bg-orange-50 dark:border-orange-800 dark:bg-orange-950/30"
-              : "border-stone-200 bg-stone-50 hover:shadow-sm active:scale-[0.98] dark:border-stone-700 dark:bg-stone-800/60",
+              : isRedo
+                ? "cursor-pointer border-violet-200 bg-violet-50 dark:border-violet-800 dark:bg-violet-950/30"
+                : "border-stone-200 bg-stone-50 hover:shadow-sm active:scale-[0.98] dark:border-stone-700 dark:bg-stone-800/60",
         isToday && !isLocked && "ring-1 ring-stone-300 dark:ring-stone-600",
-        !isScheduled && !isLocked && "border-dashed opacity-65",
+        !isScheduled && !isLocked && !isRedo && "border-dashed opacity-65",
       )}
     >
       {isDone ? (
@@ -324,6 +335,12 @@ function TaskTile({
         <span className="flex items-center gap-1">
           <svg className="h-5 w-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </span>
+      ) : isRedo ? (
+        <span className="flex items-center gap-1">
+          <svg className="h-5 w-5 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h5M4 9a8 8 0 1 1-2 5" />
           </svg>
         </span>
       ) : (
@@ -373,6 +390,7 @@ function ProofDetailModal({
     done: { label: "Approved", tone: "text-emerald-700 dark:text-emerald-400" },
     pending_review: { label: "Awaiting review", tone: "text-amber-700 dark:text-amber-400" },
     on_hold: { label: "On hold", tone: "text-orange-700 dark:text-orange-400" },
+    redo: { label: "Please try again", tone: "text-violet-700 dark:text-violet-400" },
   };
   const { label, tone } = statusLabels[record.status] ?? statusLabels.done;
 
@@ -1160,7 +1178,13 @@ function ParentControlsPanel({
   saveStatus: "idle" | "saving" | "saved";
   onUndoCompletion: (routineId: string, day: number) => void;
   onUndoRedemption: (redemptionId: string) => void;
-  onReviewAction: (routineId: string, day: number, action: "approve" | "hold") => void;
+  onReviewAction: (
+    routineId: string,
+    day: number,
+    action: "approve" | "hold" | "redo",
+    expectedStatus?: CompletionRecord["status"],
+    expectedSubmittedAt?: string,
+  ) => void;
   onConfigChange: (config: FamilyBoardConfig) => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -1289,17 +1313,24 @@ function ParentControlsPanel({
                         <div className="flex shrink-0 items-center gap-1.5">
                           <button
                             type="button"
-                            onClick={() => onReviewAction(c.routineId, c.day, "approve")}
+                            onClick={() => onReviewAction(c.routineId, c.day, "approve", c.status, c.submittedAt)}
                             className="rounded-md bg-emerald-600 px-2.5 py-1.5 text-[11px] font-semibold text-white hover:bg-emerald-700"
                           >
                             Approve
                           </button>
                           <button
                             type="button"
-                            onClick={() => onReviewAction(c.routineId, c.day, "hold")}
+                            onClick={() => onReviewAction(c.routineId, c.day, "hold", c.status, c.submittedAt)}
                             className="rounded-md border border-secondary px-2.5 py-1.5 text-[11px] font-semibold text-secondary hover:bg-secondary"
                           >
                             Hold
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => onReviewAction(c.routineId, c.day, "redo", c.status, c.submittedAt)}
+                            className="rounded-md border border-secondary px-2.5 py-1.5 text-[11px] font-semibold text-secondary hover:bg-secondary"
+                          >
+                            Redo
                           </button>
                         </div>
                       </div>
@@ -1715,7 +1746,11 @@ export function PersonBoardClient({
       const key = completionKey(routine.id, personId, day);
       const existing = completions.get(key);
 
-      if (existing) {
+      // A `redo` row is the parent's explicit non-earning "please try again":
+      // tapping it reopens the capture flow so the child can resubmit, rather
+      // than showing the read-only detail. The original transcript stays on
+      // the record until the new submission replaces it.
+      if (existing && existing.status !== "redo") {
         setProofDetail({ record: existing, routine });
         return;
       }
@@ -1734,18 +1769,31 @@ export function PersonBoardClient({
         return;
       }
 
-      setSimpleDraft({ routine, day });
+      // Simple-confirm path: mark a redo reopening so the resubmission goes
+      // back to review instead of self-approving to `done`.
+      setSimpleDraft(
+        existing?.status === "redo"
+          ? { routine, day, fromRedo: existing }
+          : { routine, day },
+      );
     },
     [completions, personId],
   );
 
-  // Parent review action: approve or put on hold
+  // Parent review action against the canonical queue contract: approve, hold,
+  // or send back for redo. `expectedStatus` is the status this board displayed;
+  // if the row changed underneath (another device, ad-hoc Nabu), the server
+  // fails closed with 409 and the board reloads instead of mutating blind.
   const handleReviewAction = useCallback(async (
     routineId: string,
     day: number,
-    action: "approve" | "hold",
+    action: "approve" | "hold" | "redo",
+    expectedStatus?: CompletionRecord["status"],
+    expectedSubmittedAt?: string,
   ) => {
     const key = completionKey(routineId, personId, day);
+    const targetStatus =
+      action === "approve" ? "done" : action === "hold" ? "on_hold" : "redo";
     // Optimistic update
     setCompletions((prev) => {
       const next = new Map(prev);
@@ -1753,13 +1801,13 @@ export function PersonBoardClient({
       if (existing) {
         next.set(key, {
           ...existing,
-          status: action === "approve" ? "done" : "on_hold",
+          status: targetStatus,
           reviewedAt: new Date().toISOString(),
         });
       }
       return next;
     });
-    await fetch("/api/family/completions", {
+    const response = await fetch("/api/family/completions", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -1768,8 +1816,15 @@ export function PersonBoardClient({
         routineId,
         day,
         action,
+        ...(expectedStatus ? { expectedStatus } : {}),
+        ...(expectedSubmittedAt ? { expectedSubmittedAt } : {}),
       }),
     });
+    if (response.status === 409) {
+      // Stale action refused — re-read the truth rather than keeping the
+      // optimistic state.
+      setLoadAttempt((n) => n + 1);
+    }
   }, [personId, weekNav.weekId]);
 
   const [redeemingReward, setRedeemingReward] = useState<string | null>(null);
@@ -1987,8 +2042,8 @@ export function PersonBoardClient({
                             routine.days === null || routine.days.includes(dayIdx);
                           const key = completionKey(routine.id, personId, dayIdx);
                           const record = completions.get(key);
-                          const tileStatus: "open" | "done" | "pending_review" | "on_hold" =
-                            record ? (record.status as "done" | "pending_review" | "on_hold") : "open";
+                          const tileStatus: "open" | "done" | "pending_review" | "on_hold" | "redo" =
+                            record ? record.status : "open";
 
                           return (
                             <div key={dayIdx} className="p-1.5">
@@ -2056,8 +2111,8 @@ export function PersonBoardClient({
                           routine.days === null || routine.days.includes(dayIdx);
                         const key = completionKey(routine.id, personId, dayIdx);
                         const record = completions.get(key);
-                        const tileStatus: "open" | "done" | "pending_review" | "on_hold" =
-                          record ? (record.status as "done" | "pending_review" | "on_hold") : "open";
+                        const tileStatus: "open" | "done" | "pending_review" | "on_hold" | "redo" =
+                          record ? record.status : "open";
 
                         return (
                           <div key={dayIdx} className="p-1.5">
@@ -2167,11 +2222,21 @@ export function PersonBoardClient({
         <SimpleConfirmModal
           draft={simpleDraft}
           onConfirm={() => {
+            // A redo resubmission always re-enters review and keeps the
+            // original transcript on the record; only a fresh simple tap on a
+            // no-proof routine goes straight to done.
+            const needsReview =
+              simpleDraft.fromRedo !== undefined ||
+              simpleDraft.routine.proofMode === "parent-confirm";
             submitCompletion(
               simpleDraft.routine,
               simpleDraft.day,
-              simpleDraft.routine.proofMode === "parent-confirm" ? "pending_review" : "done",
-              simpleDraft.routine.proofMode === "parent-confirm" ? "Submitted for parent approval" : undefined,
+              needsReview ? "pending_review" : "done",
+              simpleDraft.fromRedo?.note ??
+                (simpleDraft.routine.proofMode === "parent-confirm"
+                  ? "Submitted for parent approval"
+                  : undefined),
+              simpleDraft.fromRedo ? "Done again after a parent asked to redo" : undefined,
             );
             setSimpleDraft(null);
           }}

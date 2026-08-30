@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { formatWeekId, getISOWeek, getWeekDates, offsetWeek, parseWeekId } from "@/lib/meals";
 import { auth } from "@/auth";
-import { isTrackerOnlyEmail } from "@/lib/access";
+import { isAdminEmail, isTrackerOnlyEmail } from "@/lib/access";
 import { FamilyDashboardClient } from "./client";
 
 export const metadata: Metadata = {
@@ -38,6 +38,7 @@ export default async function FamilyDashboardPage({ searchParams }: Props) {
     <FamilyDashboardClient
       weekNav={weekNavFor(params.week)}
       trackerOnly={isTrackerOnlyEmail(session?.user?.email)}
+      isAdmin={isAdminEmail(session?.user?.email)}
     />
   );
 }

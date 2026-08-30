@@ -34,6 +34,9 @@ async function ensureFamilyTables(client: Client): Promise<void> {
   try {
     await client.execute(`ALTER TABLE family_completions ADD COLUMN reviewed_at TEXT`);
   } catch { /* column already exists */ }
+  try {
+    await client.execute(`ALTER TABLE family_completions ADD COLUMN normalized_summary TEXT`);
+  } catch { /* column already exists */ }
   await client.execute(`
     CREATE INDEX IF NOT EXISTS idx_family_completions_week
       ON family_completions (week, person_id)
@@ -70,24 +73,83 @@ export async function getCompletionsForWeek(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: "SELECT person_id, routine_id, day, status, note, challenge, created_at, reviewed_at FROM family_completions WHERE week = ?",
+    sql: "SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at FROM family_completions WHERE week = ?",
     args: [week],
   });
-  return result.rows.map((row) => {
-    const status = row["status"] as string;
-    const validStatus: CompletionRecord["status"] =
-      status === "pending_review" || status === "on_hold" ? status : "done";
-    return {
-      personId: row["person_id"] as string,
-      routineId: row["routine_id"] as string,
-      day: row["day"] as number,
-      status: validStatus,
-      ...(row["note"] ? { note: row["note"] as string } : {}),
-      ...(row["challenge"] ? { challenge: row["challenge"] as string } : {}),
-      ...(row["created_at"] ? { submittedAt: row["created_at"] as string } : {}),
-      ...(row["reviewed_at"] ? { reviewedAt: row["reviewed_at"] as string } : {}),
-    };
+  return result.rows.map((row) =>
+    rowToCompletionRecord(row as unknown as Record<string, unknown>),
+  );
+}
+
+/**
+ * Non-earning review states are preserved exactly; anything unrecognized
+ * collapses to `done` (the pre-review legacy value). `redo` is a preserved
+ * state: collapsing it would silently turn a requested revision into a coin.
+ */
+function narrowCompletionStatus(status: string): CompletionRecord["status"] {
+  return status === "pending_review" || status === "on_hold" || status === "redo"
+    ? status
+    : "done";
+}
+
+function rowToCompletionRecord(row: Record<string, unknown>): CompletionRecord {
+  return {
+    personId: row["person_id"] as string,
+    routineId: row["routine_id"] as string,
+    day: row["day"] as number,
+    status: narrowCompletionStatus(row["status"] as string),
+    ...(row["note"] ? { note: row["note"] as string } : {}),
+    ...(row["normalized_summary"]
+      ? { normalizedSummary: row["normalized_summary"] as string }
+      : {}),
+    ...(row["challenge"] ? { challenge: row["challenge"] as string } : {}),
+    ...(row["created_at"] ? { submittedAt: row["created_at"] as string } : {}),
+    ...(row["reviewed_at"] ? { reviewedAt: row["reviewed_at"] as string } : {}),
+  };
+}
+
+/** Read one completion by its stable identity, or null when absent. */
+export async function getCompletion(
+  week: string,
+  personId: string,
+  routineId: string,
+  day: number,
+): Promise<CompletionRecord | null> {
+  const client = await getDb();
+  await ensureFamilyTables(client);
+  const result = await client.execute({
+    sql: `SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at
+          FROM family_completions
+          WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?`,
+    args: [week, personId, routineId, day],
   });
+  if (result.rows.length === 0) return null;
+  return rowToCompletionRecord(result.rows[0] as unknown as Record<string, unknown>);
+}
+
+/**
+ * All completions currently awaiting parent review, across every week —
+ * the raw rows behind the canonical queue projection
+ * (`lib/family-review-queue.ts`). Read-only. The ordering that matters is
+ * the one `buildReviewQueueSnapshot` derives — consumers must project
+ * through it rather than trusting this row order (SQL sorts a NULL
+ * `created_at` first while the projection sorts a missing timestamp last).
+ */
+export async function getReviewQueueCompletions(): Promise<
+  (CompletionRecord & { week: string })[]
+> {
+  const client = await getDb();
+  await ensureFamilyTables(client);
+  const result = await client.execute(
+    `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at
+     FROM family_completions
+     WHERE status IN ('pending_review', 'on_hold')
+     ORDER BY created_at ASC, week ASC, person_id ASC, routine_id ASC, day ASC`,
+  );
+  return result.rows.map((row) => ({
+    ...rowToCompletionRecord(row as unknown as Record<string, unknown>),
+    week: row["week"] as string,
+  }));
 }
 
 export async function upsertCompletion(
@@ -97,11 +159,20 @@ export async function upsertCompletion(
   const client = await getDb();
   await ensureFamilyTables(client);
   const now = new Date().toISOString();
+  // A conflict is a resubmission: it carries a fresh submission time and is
+  // no longer reviewed, so `created_at` is refreshed and `reviewed_at`
+  // cleared. This is what makes a resubmitted transcript detectable — the
+  // review-action `expectedSubmittedAt` guard and the queue's oldest-first
+  // ordering both key on it.
   await client.execute({
-    sql: `INSERT INTO family_completions (person_id, routine_id, week, day, status, note, challenge, created_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    sql: `INSERT INTO family_completions (person_id, routine_id, week, day, status, note, normalized_summary, challenge, created_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT (person_id, routine_id, week, day) DO UPDATE SET
-            status = excluded.status, note = excluded.note, challenge = excluded.challenge`,
+            status = excluded.status, note = excluded.note,
+            normalized_summary = excluded.normalized_summary,
+            challenge = excluded.challenge,
+            created_at = excluded.created_at,
+            reviewed_at = NULL`,
     args: [
       record.personId,
       record.routineId,
@@ -109,27 +180,43 @@ export async function upsertCompletion(
       record.day,
       record.status,
       record.note ?? null,
+      record.normalizedSummary ?? null,
       record.challenge ?? null,
       now,
     ],
   });
 }
 
-/** Update a completion's status (for parent review actions). */
+/**
+ * Update a completion's status (for parent review actions). Status-only:
+ * `note`, `normalized_summary` and `challenge` are untouched, which is what
+ * lets `redo` keep the child's original transcript intact.
+ *
+ * `guard` makes the write a compare-and-swap: when provided, the UPDATE
+ * applies only while the row still carries exactly that status and
+ * submission time, so two parents acting on the same item from different
+ * devices cannot silently overwrite each other — the loser's write affects
+ * zero rows and the route reports the conflict.
+ */
 export async function updateCompletionStatus(
   week: string,
   personId: string,
   routineId: string,
   day: number,
-  newStatus: "done" | "on_hold",
+  newStatus: "done" | "on_hold" | "redo",
+  guard?: { status: string; submittedAt: string | null },
 ): Promise<boolean> {
   const client = await getDb();
   await ensureFamilyTables(client);
   const now = new Date().toISOString();
+  const guardSql = guard
+    ? " AND status = ? AND created_at IS ?"
+    : "";
+  const guardArgs = guard ? [guard.status, guard.submittedAt] : [];
   const result = await client.execute({
     sql: `UPDATE family_completions SET status = ?, reviewed_at = ?
-          WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?`,
-    args: [newStatus, now, week, personId, routineId, day],
+          WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?${guardSql}`,
+    args: [newStatus, now, week, personId, routineId, day, ...guardArgs],
   });
   return result.rowsAffected > 0;
 }

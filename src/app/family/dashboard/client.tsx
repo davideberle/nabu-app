@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   NabuBadge,
@@ -26,6 +26,174 @@ import {
   type RewardDefinition,
 } from "@/data/family-routines";
 import type { FamilyBoardConfig, RewardRedemption } from "@/lib/family-db";
+import type { ReviewQueueItem } from "@/lib/family-review-queue";
+
+// ---------------------------------------------------------------------------
+// Canonical review queue panel (admin only)
+//
+// Renders the Family-owned parent queue from GET /api/family/review-queue —
+// the same numbered snapshot contract the morning briefing and ad-hoc Nabu
+// consume (Family DESIGN.md Phase R7). Actions PATCH by explicit identity
+// plus `expectedStatus`; a 409 means the queue moved underneath and the
+// panel re-reads instead of mutating blind.
+// ---------------------------------------------------------------------------
+
+type ReviewQueueView = {
+  snapshotId: string;
+  items: (ReviewQueueItem & {
+    childName: string;
+    activity: string;
+    icon: string;
+    dayLabel: string;
+  })[];
+};
+
+function ReviewQueuePanel() {
+  const [queue, setQueue] = useState<ReviewQueueView | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [attempt, setAttempt] = useState(0);
+  const [acting, setActing] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function load() {
+      try {
+        const res = await fetch("/api/family/review-queue");
+        if (!res.ok) throw new Error("review queue error");
+        const data = (await res.json()) as ReviewQueueView;
+        if (!cancelled) {
+          setQueue(data);
+          setFailed(false);
+        }
+      } catch {
+        if (!cancelled) setFailed(true);
+      }
+    }
+    load();
+    return () => { cancelled = true; };
+  }, [attempt]);
+
+  const act = useCallback(
+    async (item: ReviewQueueView["items"][number], action: "approve" | "hold" | "redo") => {
+      if (acting) return;
+      setActing(item.key);
+      setNotice(null);
+      try {
+        const res = await fetch("/api/family/completions", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            week: item.week,
+            personId: item.personId,
+            routineId: item.routineId,
+            day: item.day,
+            action,
+            expectedStatus: item.status,
+            ...(item.submittedAt ? { expectedSubmittedAt: item.submittedAt } : {}),
+          }),
+        });
+        if (res.status === 409) {
+          setNotice("The queue changed — here is the fresh list.");
+        } else if (!res.ok) {
+          setNotice("That didn't save — try again.");
+        }
+      } catch {
+        setNotice("That didn't save — try again.");
+      } finally {
+        setActing(null);
+        setAttempt((n) => n + 1);
+      }
+    },
+    [acting],
+  );
+
+  return (
+    <NabuSurface tone="muted" className="p-4">
+      <NabuSectionHeader
+        title="Review queue"
+        description="Every submission waiting for a parent, across all weeks."
+        className="mb-2"
+      />
+      {notice && (
+        <p className="mb-2 text-xs font-medium text-amber-700 dark:text-amber-400" role="status">
+          {notice}
+        </p>
+      )}
+      {failed ? (
+        <div className="flex flex-wrap items-center gap-3 py-2">
+          <p className="text-sm text-tertiary">The review queue didn&apos;t load.</p>
+          <button
+            type="button"
+            onClick={() => setAttempt((n) => n + 1)}
+            className="inline-flex min-h-12 items-center rounded-md border border-secondary px-4 text-sm font-semibold text-secondary hover:bg-secondary"
+          >
+            Try again
+          </button>
+        </div>
+      ) : !queue ? (
+        <div className="flex items-center gap-3 py-2">
+          <span className="h-4 w-4 animate-spin rounded-full border-2 border-stone-300 border-t-stone-600" />
+          <span className="text-sm text-secondary">Loading queue…</span>
+        </div>
+      ) : queue.items.length === 0 ? (
+        <p className="py-1 text-sm text-tertiary">Nothing waiting for review.</p>
+      ) : (
+        <div className="space-y-2">
+          {queue.items.map((item) => (
+            <div key={item.key} className="rounded-md border border-secondary bg-primary px-3 py-2">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-xs font-semibold text-quaternary">{item.number}.</span>
+                    <span className="text-xs font-semibold text-primary">
+                      {item.childName} — {item.icon} {item.activity} · {item.dayLabel} · {item.week}
+                    </span>
+                    <NabuBadge tone={item.status === "on_hold" ? "amber" : "blue"}>
+                      {item.status === "on_hold" ? "On hold" : "Review"}
+                    </NabuBadge>
+                  </div>
+                  {(item.normalizedSummary || item.note) && (
+                    <p className="mt-1 line-clamp-2 text-xs text-tertiary">
+                      {item.normalizedSummary || item.note}
+                    </p>
+                  )}
+                </div>
+                <div className="flex shrink-0 items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => act(item, "approve")}
+                    disabled={acting !== null}
+                    className="rounded-md bg-emerald-600 px-2.5 py-1.5 text-[11px] font-semibold text-white hover:bg-emerald-700 disabled:opacity-50"
+                  >
+                    Approve
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => act(item, "hold")}
+                    disabled={acting !== null}
+                    className="rounded-md border border-secondary px-2.5 py-1.5 text-[11px] font-semibold text-secondary hover:bg-secondary disabled:opacity-50"
+                  >
+                    Hold
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => act(item, "redo")}
+                    disabled={acting !== null}
+                    className="rounded-md border border-secondary px-2.5 py-1.5 text-[11px] font-semibold text-secondary hover:bg-secondary disabled:opacity-50"
+                  >
+                    Redo
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+          <p className="text-[10px] text-quaternary">Snapshot {queue.snapshotId}</p>
+        </div>
+      )}
+    </NabuSurface>
+  );
+}
 
 // ---------------------------------------------------------------------------
 // Color helpers
@@ -353,9 +521,11 @@ function resolveRewardsClient(config: FamilyBoardConfig): RewardDefinition[] {
 export function FamilyDashboardClient({
   weekNav,
   trackerOnly,
+  isAdmin = false,
 }: {
   weekNav: WeekNav;
   trackerOnly: boolean;
+  isAdmin?: boolean;
 }) {
   const today = currentDayIndex();
   const [completions, setCompletions] = useState<CompletionRecord[]>([]);
@@ -445,6 +615,9 @@ export function FamilyDashboardClient({
         </header>
 
         <WeekNavBar weekNav={weekNav} />
+
+        {/* Canonical parent review queue — admin only, cross-week */}
+        {isAdmin && <ReviewQueuePanel />}
 
         {/* Week day indicator */}
         <div className="flex items-center gap-1 overflow-x-auto">

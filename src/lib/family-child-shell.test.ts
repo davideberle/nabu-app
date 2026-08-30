@@ -134,14 +134,18 @@ describe("selection persistence", () => {
 // ---------------------------------------------------------------------------
 
 describe("shell destinations", () => {
-  it("are exactly Assistant, Plan and Rewards", () => {
+  it("are exactly Home, Plan and Rewards", () => {
     deepStrictEqual(
       childShellDestinations.map((d) => d.id),
       ["assistant", "plan", "rewards"],
     );
+    // The first destination's child-facing label is Home
+    // (family-assistant DESIGN.md §2.1) while its id and path stay
+    // `assistant` / `/family/assistant` so deep links and the installed PWA
+    // are untouched.
     deepStrictEqual(
       childShellDestinations.map((d) => d.label),
-      ["Assistant", "Plan", "Rewards"],
+      ["Home", "Plan", "Rewards"],
     );
     deepStrictEqual(
       childShellDestinations.map((d) => d.path),

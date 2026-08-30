@@ -115,9 +115,14 @@ export type ChildShellDestination = {
  * The three shell destinations. The shell renders exactly these — adding a
  * fourth is a product decision, not a code convenience
  * (`family-assistant/DESIGN.md` §7.5).
+ *
+ * The child-facing label of the first destination is **Home**
+ * (`family-assistant/DESIGN.md` §2.1) — a product-language change only. Its
+ * id stays `assistant` and its path stays `/family/assistant`, so deep links,
+ * the installed PWA (`start_url`), and the manifest are untouched.
  */
 export const childShellDestinations: readonly ChildShellDestination[] = [
-  { id: "assistant", label: "Assistant", icon: "💬", path: "/family/assistant" },
+  { id: "assistant", label: "Home", icon: "🏠", path: "/family/assistant" },
   { id: "plan", label: "Plan", icon: "📅", path: "/family/plan" },
   { id: "rewards", label: "Rewards", icon: "🏅", path: "/family/rewards" },
 ];

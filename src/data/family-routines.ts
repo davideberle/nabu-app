@@ -19,7 +19,7 @@ export type RoutineCategory =
 
 export type TaskClass = "routine" | "responsibility" | "privilege" | "job";
 
-export type CompletionStatus = "done" | "pending_review" | "on_hold";
+export type CompletionStatus = "done" | "pending_review" | "on_hold" | "redo";
 
 export type RewardStatus = "not-yet" | "earned" | "approved" | "redeemed";
 
@@ -51,6 +51,12 @@ export type CompletionRecord = {
   status: CompletionStatus;
   /** Transcript or typed fallback submitted by the child. */
   note?: string;
+  /**
+   * Short display summary derived from `note` (Family DESIGN.md Phase R7).
+   * Derived server-side, never invented: it may only reuse the transcript's
+   * own words, and it never replaces the transcript or awards credit.
+   */
+  normalizedSummary?: string;
   /** Coach response / parent-review reason shown with the submission. */
   challenge?: string;
   /** ISO timestamp when submitted */
@@ -123,6 +129,10 @@ export const routineDefinitions: RoutineDefinition[] = [
   { id: "s-physio",   title: "Physio exercises", icon: "🏃", taskClass: "routine", category: "body-care", assignedTo: ["santiago"], days: [0,1,2,3,4], weeklyTarget: 5, points: 1, requiresApproval: false, proofMode: "voice-coach" },
   // Santiago — Household (voice-coach: table+dinner can be ambiguous between siblings)
   { id: "s-table-dinner", title: "Table + dinner", icon: "🍽️", taskClass: "responsibility", category: "household", assignedTo: ["santiago"], days: [1,3,5,6], weeklyTarget: 4, points: 1, requiresApproval: false, proofMode: "voice-coach" },
+  // Santiago — Body / Care: free-form sport/movement from the guided capture
+  // flow (Family DESIGN.md Phase R7). No weekly target and no schedule, so it
+  // never counts as missing — it only earns when done and approved.
+  { id: "s-exercise", title: "Exercise", icon: "🤸", taskClass: "routine", category: "body-care", assignedTo: ["santiago"], days: null, weeklyTarget: null, points: 1, requiresApproval: false, proofMode: "voice-coach", description: "Sport or movement beyond physio." },
   // Santiago — Family contribution
   { id: "s-extra-bonus", title: "Extra bonus", icon: "⭐", taskClass: "responsibility", category: "family-contribution", assignedTo: ["santiago"], days: null, weeklyTarget: null, points: 1, requiresApproval: false, proofMode: "none", description: "Useful extra effort that was not on the normal list." },
   // Santiago — Optional job (parent-confirm: paid work)
@@ -133,11 +143,15 @@ export const routineDefinitions: RoutineDefinition[] = [
   { id: "i-piano",    title: "Piano practice", icon: "🎹", taskClass: "routine", category: "practice",   assignedTo: ["isabel"], days: [1,3], weeklyTarget: 2, points: 1, requiresApproval: false, proofMode: "voice-coach" },
   // Isabel — Body / Care
   { id: "i-physio",   title: "Physio exercises", icon: "🏃", taskClass: "routine", category: "body-care", assignedTo: ["isabel"], days: [0,2,4], weeklyTarget: 3, points: 1, requiresApproval: false, proofMode: "voice-coach" },
+  // Isabel — Body / Care: guided-capture exercise, mirroring s-exercise.
+  { id: "i-exercise", title: "Exercise", icon: "🤸", taskClass: "routine", category: "body-care", assignedTo: ["isabel"], days: null, weeklyTarget: null, points: 1, requiresApproval: false, proofMode: "voice-coach", description: "Sport or movement beyond physio." },
   // Isabel — Household (voice-coach for dinner ambiguity; clear table is simple tap-to-done)
   { id: "i-dinner",   title: "Dinner helper",  icon: "🍽️", taskClass: "responsibility", category: "household", assignedTo: ["isabel"], days: [0,2,4], weeklyTarget: 3, points: 1, requiresApproval: false, proofMode: "voice-coach" },
   { id: "i-clear",    title: "Clear table",    icon: "🧽", taskClass: "responsibility", category: "household", assignedTo: ["isabel"], days: null, weeklyTarget: 5, points: 1, requiresApproval: false, proofMode: "none" },
   // Isabel — Family contribution
   { id: "i-tidy",     title: "Room tidy",      icon: "🧺", taskClass: "responsibility", category: "family-contribution", assignedTo: ["isabel"], days: [0,1,2,3,4,5,6], weeklyTarget: 5, points: 1, requiresApproval: false, proofMode: "none" },
+  // Isabel — Family contribution: guided-capture bonus, mirroring s-extra-bonus.
+  { id: "i-extra-bonus", title: "Extra bonus", icon: "⭐", taskClass: "responsibility", category: "family-contribution", assignedTo: ["isabel"], days: null, weeklyTarget: null, points: 1, requiresApproval: false, proofMode: "none", description: "Useful extra effort that was not on the normal list." },
   // Isabel — Optional job
   { id: "i-grocery",  title: "Claim pocket money", icon: "🛒", taskClass: "job", category: "job", assignedTo: ["isabel"], days: [5], weeklyTarget: 1, points: 0, requiresApproval: true, proofMode: "parent-confirm", description: "Weekly grocery shopping job", moneyLabel: "Pocket money" },
 

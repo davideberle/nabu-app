@@ -139,6 +139,7 @@ describe("isTrackerAllowedPath", () => {
     equal(isTrackerAllowedPath("/family/dashboard/santiago"), true);
     equal(isTrackerAllowedPath("/family/dashboard/isabel"), true);
     equal(isTrackerAllowedPath("/family/assistant"), true);
+    equal(isTrackerAllowedPath("/family/assistant/record"), true);
     equal(isTrackerAllowedPath("/family/listen"), true);
     equal(isTrackerAllowedPath("/family/plan"), true);
     equal(isTrackerAllowedPath("/family/rewards"), true);
