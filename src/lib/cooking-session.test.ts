@@ -14,6 +14,7 @@ import {
   isCompleteOverride,
   mergeRelatedRecipes,
   normalizeSession,
+  orderedCookStack,
   recipeProvenanceLabel,
   resolveMainDish,
   resolveSessionCoherence,
@@ -122,6 +123,14 @@ describe("normalizeSession", () => {
     const normalized = normalizeSession(legacy);
     equal(normalized?.main, null);
     equal(normalized?.heroImage, null);
+    equal(normalized?.preparationOrder, undefined);
+  });
+
+  it("preserves an explicit preparation order", () => {
+    const normalized = normalizeSession(
+      makeSession({ preparationOrder: ["crispy-roasted-chickpeas", "main"] }),
+    );
+    deepStrictEqual(normalized?.preparationOrder, ["crispy-roasted-chickpeas", "main"]);
   });
 
   it("drops empty-titled mains and empty-url hero images", () => {
@@ -724,6 +733,63 @@ describe("component status", () => {
   });
 });
 
+describe("orderedCookStack", () => {
+  it("uses the stable main → secondary anchor → active related fallback", () => {
+    const session = makeSession({
+      main: KOREAN_MAIN,
+      relatedRecipes: [
+        { kind: "side", recipeId: "cucumber-salad", title: "Cucumber Salad" },
+        { kind: "side", recipeId: "kimchi-pancakes", title: "Kimchi Pancakes", status: "deferred" },
+        { kind: "dessert", recipeId: "pear-tart", title: "Pear Tart" },
+      ],
+    });
+    deepStrictEqual(orderedCookStack(session), [
+      { kind: "main", ref: "main" },
+      { kind: "anchor", ref: null },
+      { kind: "related", ref: "cucumber-salad" },
+      { kind: "related", ref: "pear-tart" },
+    ]);
+  });
+
+  it("puts explicitly ordered chickpeas before the cauliflower main", () => {
+    const session = makeSession({
+      anchor: {
+        type: "kitchen-recipe",
+        recipeId: "roasted-cauliflower-with-sultanas-and-pecan-brown-butter",
+        title: "Roasted Cauliflower with Sultanas and Pecan Brown Butter",
+        provenance: { source: "Plentiful" },
+      },
+      relatedRecipes: [
+        {
+          kind: "side",
+          recipeId: "crispy-roasted-chickpeas",
+          title: "Crispy Roasted Chickpeas",
+        },
+      ],
+      preparationOrder: ["crispy-roasted-chickpeas", "main"],
+    });
+    deepStrictEqual(orderedCookStack(session), [
+      { kind: "related", ref: "crispy-roasted-chickpeas" },
+      { kind: "main", ref: "main" },
+    ]);
+  });
+
+  it("ignores stale references and appends omitted active dishes in fallback order", () => {
+    const session = makeSession({
+      relatedRecipes: [
+        { kind: "side", recipeId: "first-side", title: "First Side" },
+        { kind: "side", recipeId: "second-side", title: "Second Side" },
+      ],
+      preparationOrder: ["stale-recipe", "second-side"],
+    });
+    deepStrictEqual(orderedCookStack(session), [
+      { kind: "related", ref: "second-side" },
+      { kind: "main", ref: "main" },
+      { kind: "related", ref: "first-side" },
+    ]);
+  });
+});
+
 describe("visibleServeWith", () => {
   it("drops entries restating the main or a listed component, keeps real table items", () => {
     const session = makeSession({ main: KOREAN_MAIN });
@@ -793,12 +859,14 @@ describe("syncSessionWithPlan", () => {
       },
       main: KOREAN_MAIN,
       heroImage: { url: "/recipes/salmon-tonight.jpg" },
+      preparationOrder: ["kimchi-pancakes", "main"],
     });
     const synced = syncSessionWithPlan(existing, planData());
     deepStrictEqual(synced.main, KOREAN_MAIN);
     deepStrictEqual(synced.heroImage, { url: "/recipes/salmon-tonight.jpg" });
     equal(synced.ingredients.session[0].item, "salmon fillets");
     equal(synced.method.session.length, 4);
+    deepStrictEqual(synced.preparationOrder, ["kimchi-pancakes", "main"]);
   });
 
   it("does not reactivate a deferred side on resync", () => {
@@ -942,6 +1010,22 @@ describe("patch validation and application", () => {
         ],
       }),
       null
+    );
+  });
+
+  it("validates and persists preparation order, including an empty reset", () => {
+    equal(validatePatch({ preparationOrder: ["crispy-roasted-chickpeas", "main"] }), null);
+    const updated = applyPatch(makeSession(), {
+      preparationOrder: [" crispy-roasted-chickpeas ", "main"],
+    });
+    deepStrictEqual(updated.preparationOrder, ["crispy-roasted-chickpeas", "main"]);
+    deepStrictEqual(applyPatch(updated, { preparationOrder: [] }).preparationOrder, []);
+
+    notEqual(validatePatch({ preparationOrder: ["main", "main"] }), null);
+    notEqual(validatePatch({ preparationOrder: ["main", "  "] }), null);
+    notEqual(
+      validatePatch({ preparationOrder: "main" as unknown as string[] }),
+      null,
     );
   });
 
@@ -1308,6 +1392,21 @@ describe("validateSessionBody", () => {
     equal(result.session.coachCards.wine, source.coachCards.wine);
   });
 
+  it("normalizes a valid preparation order and rejects invalid shapes", () => {
+    const result = validateSessionBody({
+      ...makeSession(),
+      preparationOrder: [" crispy-roasted-chickpeas ", "main"],
+    });
+    ok(result.ok);
+    if (result.ok) {
+      deepStrictEqual(result.session.preparationOrder, ["crispy-roasted-chickpeas", "main"]);
+    }
+
+    equal(validateSessionBody({ ...makeSession(), preparationOrder: "main" }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), preparationOrder: ["main", ""] }).ok, false);
+    equal(validateSessionBody({ ...makeSession(), preparationOrder: ["main", "main"] }).ok, false);
+  });
+
   it("keeps a validated session readable by the derived review", async () => {
     // The end-to-end property that matters: anything POST accepts, GET can
     // review without throwing.
@@ -1433,6 +1532,7 @@ describe("validateSessionBody", () => {
     if (!result.ok) return;
     equal(result.session.anchor.type, "kitchen-recipe");
     equal(result.session.anchor.provenance.source, "");
+    equal(result.session.preparationOrder, undefined);
     equal(result.session.status, "draft");
     deepStrictEqual(result.session.relatedRecipes, []);
     deepStrictEqual(result.session.serveWith, []);

@@ -49,6 +49,7 @@ function productionBody(): Record<string, unknown> {
       { kind: "side", recipeId: "cg-cucumber-raita", title: "Cucumber raita" },
       { kind: "dessert", recipeId: "rhubarb-tart", title: "Rhubarb tart", status: "deferred" },
     ],
+    preparationOrder: ["cg-cucumber-raita", "main"],
     serveWith: ["Flatbreads", "Riesling"],
     servings: { base: "6", current: "8" },
     ingredients: {
@@ -101,6 +102,9 @@ const HOSTILE_BODIES: [string, unknown][] = [
     ...productionBody(),
     relatedRecipes: [{ kind: "side", recipeId: "x", title: "X", status: "maybe" }],
   }],
+  ["string preparation order", { ...productionBody(), preparationOrder: "main" }],
+  ["blank preparation reference", { ...productionBody(), preparationOrder: ["main", " "] }],
+  ["duplicate preparation reference", { ...productionBody(), preparationOrder: ["main", "main"] }],
   ["missing id", { ...productionBody(), id: "" }],
   ["non-date date", { ...productionBody(), date: "sometime Sunday" }],
   ["not an object", "cook_2026-08-02_lamb"],
@@ -119,6 +123,7 @@ describe("POST accepts a production-shaped session", () => {
     equal(session.anchor.provenance.source, "kitchen");
     equal(session.relatedRecipes.length, 2);
     equal(session.relatedRecipes[1].status, "deferred");
+    equal(session.preparationOrder?.join(","), "cg-cucumber-raita,main");
     equal(session.servings.current, "8");
     equal(session.adaptations[0].kind, "guest-scaling");
     equal(session.coachCards.wine, "Riesling");

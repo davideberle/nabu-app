@@ -23,6 +23,9 @@
 //                 never tells the cook to roast or toss in tomatoes that are
 //                 not in the ingredient list. Must render ONE integrated list
 //                 and ONE method, real provenance, no order-of-attack.
+//   cauliflower   The Plentiful cauliflower main plus Love & Lemons crispy
+//                 chickpeas as a full active side. The explicit preparation
+//                 order puts the chickpeas before the main cook method.
 //   synthesized   The failure shape: synthesized anchor with chat-origin
 //                 provenance. Must render title + lists with NO provenance
 //                 line anywhere ("confirmed by David in Telegram" never shows).
@@ -39,6 +42,7 @@ function arg(name, fallback) {
 const base = arg("base", "http://localhost:3000");
 const variant = arg("variant", "korean");
 const date = arg("date", localToday());
+const cookie = arg("cookie", process.env.COOKING_PAGE_COOKIE ?? "");
 
 if (!/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(base)) {
   console.error(`Refusing to seed a non-local target: ${base}`);
@@ -322,8 +326,104 @@ function synthesizedSession() {
   };
 }
 
+const crispyRoastedChickpeas = {
+  id: "crispy-roasted-chickpeas",
+  name: "Crispy Roasted Chickpeas",
+  source: {
+    cookbook: "My Recipes",
+    publication: "Love & Lemons",
+    author: "Jeanine Donofrio",
+    url: "https://www.loveandlemons.com/roasted-chickpeas/",
+  },
+  servings: "1½ cups",
+  time: { prep: 5, cook: 20, total: 25 },
+  ingredients: [
+    { amount: "1½", unit: "cups", item: "cooked chickpeas, drained and rinsed" },
+    { amount: "", item: "extra-virgin olive oil, for drizzling" },
+    { amount: "", item: "sea salt, generous pinches" },
+    { amount: "", item: "paprika, curry powder, or other spices (optional)" },
+  ],
+  method: [
+    "Preheat the oven to 425°F (220°C) and line a large baking sheet with parchment paper.",
+    "Spread the chickpeas on a kitchen towel and pat them dry. Remove any loose skins.",
+    "Transfer the dried chickpeas to the baking sheet and toss them with a drizzle of olive oil and generous pinches of salt.",
+    "Roast for 20 to 30 minutes, or until golden brown and crisp. Ovens vary; if the chickpeas are not crisp enough, keep roasting until they are.",
+    "Remove from the oven and, while the chickpeas are still warm, toss with pinches of paprika, curry powder, or other spices, if using.",
+    "Store roasted chickpeas in a loosely covered container at room temperature. They are best used within two days.",
+  ],
+  image: "https://cdn.loveandlemons.com/wp-content/uploads/2019/02/roasted-chickpeas-1080x1080.jpg",
+  cuisine: "Modern Vegetarian",
+  category: { dish_type: ["side"], chapter: "Sides", meal_role: "side" },
+  mealRole: "side",
+  dietary: ["vegan", "vegetarian", "gluten-free"],
+};
+
+function cauliflowerSession() {
+  return {
+    id: `cook_${date}_cauliflower_chickpeas`,
+    date,
+    status: "active",
+    source: "telegram",
+    mealPlanRef: null,
+    anchor: {
+      type: "kitchen-recipe",
+      recipeId: "roasted-cauliflower-with-sultanas-and-pecan-brown-butter",
+      title: "Roasted Cauliflower with Sultanas and Pecan Brown Butter",
+      provenance: { source: "Plentiful", author: "Dee Sherwood" },
+    },
+    main: null,
+    heroImage: null,
+    relatedRecipes: [
+      {
+        kind: "side",
+        recipeId: "crispy-roasted-chickpeas",
+        title: "Crispy Roasted Chickpeas",
+      },
+    ],
+    preparationOrder: ["crispy-roasted-chickpeas", "main"],
+    serveWith: [],
+    servings: { base: "serves 2–3", current: "serves 2–3" },
+    ingredients: {
+      base: [
+        { amount: "1", item: "cauliflower, separated into florets" },
+        { amount: "1 tbsp", item: "ground coriander" },
+        { amount: "1 tbsp", item: "garlic granules" },
+        { amount: "1 tsp", item: "cinnamon" },
+        { amount: "1 tsp", item: "ground allspice" },
+        { amount: "100 g", item: "sultanas (golden raisins)" },
+        { amount: "", item: "juice of 2 lemons" },
+        { amount: "50 g", item: "vegan block butter" },
+        { amount: "50 g", item: "pecans" },
+        { amount: "1", item: "garlic clove, very finely chopped" },
+        { amount: "", item: "olive oil, for roasting" },
+        { amount: "", item: "salt and freshly ground black pepper" },
+        { amount: "", item: "roughly chopped flat-leaf parsley leaves, to garnish" },
+      ],
+      session: [],
+    },
+    method: {
+      base: [
+        "Preheat the oven to 170°C (375°F/gas 5).",
+        "Put the cauliflower onto a baking tray (pan), drizzle with olive oil, then sprinkle over the ground coriander, garlic granules, cinnamon and allspice. Season to taste with salt and pepper, toss to coat, then roast in the oven for 30 minutes, or until caramelised.",
+        "Meanwhile, soak the sultanas in the white wine vinegar until tender.",
+        "Heat the butter in a frying pan (skillet) over a medium heat. Add the pecans and brown for 4–5 minutes, then add the garlic and immediately remove from the heat. Season with salt and pepper.",
+        "Arrange the roasted cauliflower over the base of a dish and dress with the browned pecan butter and sprinkle with parsley. Finally scatter the golden raisins around the dish.",
+      ],
+      session: [],
+    },
+    adaptations: [],
+    coachCards: { nextMove: null, upgrade: null, shortcut: null, wine: null },
+    story: null,
+    notes: "",
+    createdAt: now,
+    updatedAt: now,
+  };
+}
+
 const session =
-  variant === "planned"
+  variant === "cauliflower"
+    ? cauliflowerSession()
+    : variant === "planned"
     ? plannedSession()
     : variant === "farfalle"
       ? farfalleSession()
@@ -331,11 +431,35 @@ const session =
         ? synthesizedSession()
         : koreanSession({ withHeroImage: variant === "korean-hero" });
 
+if (variant === "cauliflower") {
+  if (!cookie) {
+    console.error("The cauliflower fixture needs --cookie or COOKING_PAGE_COOKIE to seed its My Recipe side.");
+    process.exit(1);
+  }
+  const recipesResponse = await fetch(`${base}/api/recipes`, { headers: { cookie } });
+  if (!recipesResponse.ok) {
+    console.error(`Recipe lookup failed: ${recipesResponse.status} ${await recipesResponse.text()}`);
+    process.exit(1);
+  }
+  const recipes = await recipesResponse.json();
+  const recipeExists = Array.isArray(recipes) && recipes.some((recipe) => recipe?.id === crispyRoastedChickpeas.id);
+  const recipeResponse = await fetch(`${base}/api/recipes`, {
+    method: recipeExists ? "PUT" : "POST",
+    headers: { "content-type": "application/json", cookie },
+    body: JSON.stringify(crispyRoastedChickpeas),
+  });
+  if (!recipeResponse.ok) {
+    console.error(`Recipe seed failed: ${recipeResponse.status} ${await recipeResponse.text()}`);
+    process.exit(1);
+  }
+}
+
 const runtimeToken = process.env.TRUSTED_RUNTIME_TOKEN?.trim();
 const res = await fetch(`${base}/api/cooking/session`, {
   method: "POST",
   headers: {
     "content-type": "application/json",
+    ...(cookie ? { cookie } : {}),
     ...(runtimeToken ? { authorization: `Bearer ${runtimeToken}` } : {}),
   },
   body: JSON.stringify(session),

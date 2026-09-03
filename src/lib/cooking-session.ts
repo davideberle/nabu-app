@@ -167,6 +167,12 @@ export type CookingSession = {
   main?: SessionMain | null;
   heroImage?: SessionHeroImage | null;
   relatedRecipes: RelatedRecipe[];
+  /**
+   * Chef-authored order for the expanded cook stack. `main` refers to the
+   * resolved main; other values are recipe IDs for active secondary dishes.
+   * Absent on legacy rows, which use the stable fallback order.
+   */
+  preparationOrder?: string[];
   serveWith: string[]; // free-text: "Flatbreads", "Basmati rice", etc.
   servings: {
     base: string;
@@ -301,6 +307,7 @@ export type SessionPatch = {
   main?: SessionMain | null;
   heroImage?: SessionHeroImage | null;
   relatedRecipes?: RelatedRecipe[];
+  preparationOrder?: string[];
   serveWith?: string[];
   servings?: { current: string };
   ingredients?: { session: SessionIngredient[]; sessionMode?: SessionListMode };
@@ -378,6 +385,13 @@ export function validatePatch(patch: SessionPatch): string | null {
       }
     }
   }
+  if (patch.preparationOrder !== undefined) {
+    const preparationOrder = validatePreparationOrder(
+      patch.preparationOrder,
+      "preparationOrder",
+    );
+    if (!Array.isArray(preparationOrder)) return preparationOrder.error;
+  }
   if (patch.ingredients?.session !== undefined) {
     if (!Array.isArray(patch.ingredients.session)) {
       return "ingredients.session must be an array";
@@ -449,6 +463,33 @@ function stringArray(value: unknown, field: string): string[] | { error: string 
     if (typeof entry !== "string") return { error: `${field} must contain only strings` };
   }
   return (value as string[]).filter((entry) => entry.trim().length > 0);
+}
+
+/**
+ * Preparation order is deliberately structural only: it records explicit
+ * dish references and never tries to infer them from titles or recipe prose.
+ * Resolution against the currently active dish set happens when the cook
+ * stack is built, so a stale reference degrades to the stable fallback.
+ */
+function validatePreparationOrder(
+  value: unknown,
+  field: string,
+): string[] | { error: string } {
+  if (!Array.isArray(value)) return { error: `${field} must be an array of strings` };
+  const result: string[] = [];
+  const seen = new Set<string>();
+  for (const entry of value) {
+    if (typeof entry !== "string" || entry.trim().length === 0) {
+      return { error: `${field} must contain only non-empty strings` };
+    }
+    const reference = entry.trim();
+    if (seen.has(reference)) {
+      return { error: `${field} must contain unique references` };
+    }
+    seen.add(reference);
+    result.push(reference);
+  }
+  return result;
 }
 
 function ingredientArray(
@@ -570,6 +611,18 @@ export function validateSessionBody(body: unknown): SessionValidation {
     });
   }
 
+  let preparationOrder: string[] | undefined;
+  if (body.preparationOrder !== undefined) {
+    const validatedOrder = validatePreparationOrder(
+      body.preparationOrder,
+      "Invalid session data: preparationOrder",
+    );
+    if (!Array.isArray(validatedOrder)) {
+      return { ok: false, error: validatedOrder.error };
+    }
+    preparationOrder = validatedOrder;
+  }
+
   const serveWith = stringArray(body.serveWith, "serveWith");
   if (!Array.isArray(serveWith)) return { ok: false, error: serveWith.error };
 
@@ -684,6 +737,7 @@ export function validateSessionBody(body: unknown): SessionValidation {
     main: (body.main as SessionMain | null | undefined) ?? null,
     heroImage: (body.heroImage as SessionHeroImage | null | undefined) ?? null,
     relatedRecipes,
+    ...(preparationOrder ? { preparationOrder } : {}),
     serveWith,
     servings: {
       base: typeof servingsInput.base === "string" ? servingsInput.base : "",
@@ -755,6 +809,10 @@ export function applyPatch(
 
   if (patch.relatedRecipes) {
     updated.relatedRecipes = patch.relatedRecipes;
+  }
+
+  if (patch.preparationOrder !== undefined) {
+    updated.preparationOrder = patch.preparationOrder.map((reference) => reference.trim());
   }
 
   if (patch.serveWith) {
@@ -1262,6 +1320,51 @@ export function resolveWorkingRecipe(
 
 export function activeComponents(session: CookingSession): RelatedRecipe[] {
   return session.relatedRecipes.filter((r) => (r.status ?? "active") === "active");
+}
+
+export type CookStackDish =
+  | { kind: "main"; ref: "main" }
+  | { kind: "anchor"; ref: string | null }
+  | { kind: "related"; ref: string };
+
+/**
+ * Resolve the expanded recipe stack without guessing from recipe text.
+ *
+ * Explicit, currently valid references lead in their authored order. Active
+ * dishes omitted from that list follow in the stable fallback order required
+ * by the design: main, secondary anchor, then active related recipes in
+ * session order. A secondary anchor without a recipe ID cannot be explicitly
+ * addressed, so it remains in its fallback slot.
+ */
+export function orderedCookStack(session: CookingSession): CookStackDish[] {
+  const resolved = resolveMainDish(session);
+  const fallback: CookStackDish[] = [
+    { kind: "main", ref: "main" },
+    ...(resolved.anchorIsSecondary
+      ? [{ kind: "anchor" as const, ref: session.anchor.recipeId ?? null }]
+      : []),
+    ...activeComponents(session).map(
+      (related): CookStackDish => ({ kind: "related", ref: related.recipeId }),
+    ),
+  ];
+
+  const addressable = new Map(
+    fallback
+      .filter((dish): dish is CookStackDish & { ref: string } => dish.ref !== null)
+      .map((dish) => [dish.ref, dish]),
+  );
+  const ordered: CookStackDish[] = [];
+  const used = new Set<CookStackDish>();
+  for (const reference of session.preparationOrder ?? []) {
+    const dish = addressable.get(reference);
+    if (!dish || used.has(dish)) continue;
+    ordered.push(dish);
+    used.add(dish);
+  }
+  for (const dish of fallback) {
+    if (!used.has(dish)) ordered.push(dish);
+  }
+  return ordered;
 }
 
 export function setAsideComponents(session: CookingSession): RelatedRecipe[] {

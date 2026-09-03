@@ -21,6 +21,8 @@ export type Recipe = {
     author: string;
     chapter?: string;
     publication?: string;
+    /** Original web recipe, when this record was imported from a URL. */
+    url?: string;
   };
   introduction?: string | null;
   intro?: string;

@@ -11,6 +11,7 @@ import {
   anchorProvenanceLabel,
   componentStatusLabel,
   firstServingsClause,
+  orderedCookStack,
   recipeProvenanceLabel,
   resolveMainDish,
   resolveSessionHero,
@@ -30,10 +31,12 @@ import type {
   WorkingStep,
 } from "@/lib/cooking-session";
 import {
+  buildCourseMenu,
   buildPairingSuggestion,
   extractTableSides,
   formatRecipeTime,
 } from "@/lib/cooking-guidance";
+import type { MenuCourse } from "@/lib/cooking-guidance";
 import { formatServings, getRecipe } from "@/lib/recipes";
 import type { Recipe } from "@/lib/recipes";
 
@@ -153,20 +156,22 @@ function SessionView({
   const setAside = setAsideComponents(session);
 
   const componentTitles = session.relatedRecipes.map((r) => r.title);
-  const tableSides = extractTableSides(
-    working.ingredients,
-    visibleServeWith(session, componentTitles)
-  );
+  const plainServeWith = visibleServeWith(session, componentTitles);
+  const tableSides = extractTableSides(working.ingredients, plainServeWith);
   const timeLabel = formatRecipeTime(mainRecipe?.time);
 
-  // Every dish cooked alongside the main — including components without a
-  // stored recipe record, which are still on tonight's stove.
-  const alsoCooking = [
-    ...(resolved.anchorIsSecondary ? [session.anchor.title] : []),
-    ...activeComponents(session).map(
-      (related) => sideRecipeById.get(related.recipeId)?.name ?? related.title
-    ),
-  ];
+  // The whole meal, as a menu: course label and dish name only. Components
+  // without a stored recipe record are still on tonight's stove, so they keep
+  // their session title rather than dropping off the menu.
+  const menu = buildCourseMenu({
+    mainTitle: resolved.title,
+    alsoMains: resolved.anchorIsSecondary ? [session.anchor.title] : [],
+    components: activeComponents(session).map((related) => ({
+      kind: related.kind,
+      title: sideRecipeById.get(related.recipeId)?.name ?? related.title,
+    })),
+    tableSides,
+  });
 
   const pairing = buildPairingSuggestion({
     mainTitle: resolved.title,
@@ -182,7 +187,7 @@ function SessionView({
   const mainProvenance = resolved.anchorIsSecondary
     ? mainRecipe
       ? recipeProvenanceLabel({
-          source: mainRecipe.source?.cookbook,
+          source: mainRecipe.source?.publication ?? mainRecipe.source?.cookbook,
           author: mainRecipe.source?.author,
         })
       : null
@@ -197,25 +202,103 @@ function SessionView({
     /^Optional:\s*/i,
     ""
   );
+  const cookStack = orderedCookStack(session);
 
   return (
     <>
-      {/* ── The recipe document: identity, context, one list, one method ── */}
-      <RecipeDocument
-        resolved={resolved}
-        hero={hero}
-        provenance={mainProvenance}
-        provenanceUrl={provenanceUrl}
-        servingLabel={formatServings(session.servings.current)}
-        timeLabel={timeLabel}
-        working={working}
-        alsoCooking={alsoCooking}
-        tableSides={tableSides}
-        drink={drink}
-        notes={notes}
+      {/* ── What the meal is, before any recipe detail ── */}
+      {menu.length > 0 && <CourseMenu courses={menu} />}
+
+      {/* ── One mise-en-place pass: every ingredient before any method ── */}
+      <MealIngredients
+        groups={[
+          { title: resolved.title, roleLabel: "Main", ingredients: working.ingredients },
+          ...(resolved.anchorIsSecondary && session.ingredients.base.length > 0
+            ? [{
+                title: session.anchor.title,
+                roleLabel: "Also tonight",
+                ingredients: session.ingredients.base,
+              }]
+            : []),
+          ...mealComponents
+            .filter(({ recipe }) => recipe.ingredients.length > 0)
+            .map(({ related, recipe }) => ({
+              title: recipe.name,
+              roleLabel: componentRoleLabel(related.kind),
+              ingredients: toSessionIngredients(recipe.ingredients),
+            })),
+        ]}
+        serveWith={plainServeWith}
       />
 
-      {/* ── Support, subordinate to the recipe ── */}
+      {/* ── One uninterrupted cook stack: full methods, all expanded ── */}
+      <section aria-labelledby="cook-heading" className="space-y-4">
+        <div className="px-1">
+          <NabuKicker>Preparation</NabuKicker>
+          <h2 id="cook-heading" className="mt-1 text-xl font-semibold tracking-[-0.02em] text-primary">
+            Cook
+          </h2>
+        </div>
+
+        {cookStack.map((dish) => {
+          if (dish.kind === "main") {
+            return (
+              <div key="main" data-cook-dish={resolved.title}>
+                <MainCookRecipe
+                  resolved={resolved}
+                  hero={hero}
+                  provenance={mainProvenance}
+                  provenanceUrl={provenanceUrl}
+                  servingLabel={formatServings(session.servings.current)}
+                  timeLabel={timeLabel}
+                  working={working}
+                  drink={drink}
+                  notes={notes}
+                />
+              </div>
+            );
+          }
+
+          if (dish.kind === "anchor") {
+            return (
+              <CookRecipeBlock
+                key="secondary-anchor"
+                roleLabel="Also tonight"
+                title={session.anchor.title}
+                sourceLine={anchorProvenanceLabel(session) ?? undefined}
+                sourceUrl={session.anchor.provenance.url}
+                image={anchorRecipe?.image}
+                servings={anchorRecipe?.servings}
+                method={session.method.base}
+              />
+            );
+          }
+
+          const component = mealComponents.find(
+            ({ related }) => related.recipeId === dish.ref,
+          );
+          if (!component) return null;
+          const { related, recipe } = component;
+          return (
+            <CookRecipeBlock
+              key={recipe.id}
+              roleLabel={componentRoleLabel(related.kind)}
+              title={recipe.name}
+              sourceLine={recipeProvenanceLabel({
+                source: recipe.source?.publication ?? recipe.source?.cookbook,
+                author: recipe.source?.author,
+              }) ?? undefined}
+              sourceUrl={recipe.source?.url}
+              image={recipe.image}
+              servings={recipe.servings}
+              timeLabel={formatRecipeTime(recipe.time)}
+              method={recipe.method}
+            />
+          );
+        })}
+      </section>
+
+      {/* ── Support, subordinate to the complete cook stack ── */}
       {coherence && (
         <MealBalancePanel
           sessionId={session.id}
@@ -223,30 +306,6 @@ function SessionView({
           relatedRecipes={session.relatedRecipes}
         />
       )}
-
-      {resolved.anchorIsSecondary && (
-        <CollapsedRecipeBlock
-          roleLabel="Also tonight"
-          title={session.anchor.title}
-          sourceLine={anchorProvenanceLabel(session) ?? undefined}
-          image={anchorRecipe?.image}
-          servings={anchorRecipe?.servings}
-          ingredients={session.ingredients.base}
-          method={session.method.base}
-        />
-      )}
-
-      {mealComponents.map(({ related, recipe }) => (
-        <CollapsedRecipeBlock
-          key={recipe.id}
-          roleLabel={componentRoleLabel(related.kind)}
-          title={recipe.name}
-          image={recipe.image}
-          servings={recipe.servings}
-          ingredients={toSessionIngredients(recipe.ingredients)}
-          method={recipe.method}
-        />
-      ))}
 
       {setAside.length > 0 && <SetAsideRow components={setAside} />}
 
@@ -276,13 +335,43 @@ function SessionView({
 }
 
 // ---------------------------------------------------------------------------
-// The recipe document — one calm surface the cook reads top to bottom:
-// hero, recipe identity (title, source, badges), a compact current-cook
-// context, then the single working ingredient list and the single method.
-// The title renders once; empty context rows render nothing at all.
+// Course menu — the orientation surface above the recipe: course label and
+// dish names in dining order, nothing else. One quiet block of label rows
+// rather than a card per course, so the recipe below stays the anchor.
 // ---------------------------------------------------------------------------
 
-function RecipeDocument({
+function CourseMenu({ courses }: { courses: MenuCourse[] }) {
+  return (
+    <NabuSurface className="p-5">
+      <h2 className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
+        Tonight’s menu
+      </h2>
+      <dl className="mt-3 space-y-2">
+        {courses.map((course) => (
+          <div key={course.kind} className="flex gap-3">
+            <dt className="w-24 shrink-0 pt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-quaternary">
+              {course.label}
+            </dt>
+            <dd className="min-w-0 text-sm leading-relaxed text-secondary">
+              {course.dishes.join(" · ")}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </NabuSurface>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// The main cook card — recipe identity, useful current-cook context, and the
+// resolved working method. Ingredients live in the mise-en-place surface above
+// so every active dish can be gathered before any method begins.
+//
+// The dishes of the meal belong to the menu above, so the context carries only
+// what the menu cannot: the drink and the session notes worth reading.
+// ---------------------------------------------------------------------------
+
+function MainCookRecipe({
   resolved,
   hero,
   provenance,
@@ -290,8 +379,6 @@ function RecipeDocument({
   servingLabel,
   timeLabel,
   working,
-  alsoCooking,
-  tableSides,
   drink,
   notes,
 }: {
@@ -302,16 +389,10 @@ function RecipeDocument({
   servingLabel: string;
   timeLabel: string | null;
   working: WorkingRecipe;
-  alsoCooking: string[];
-  tableSides: string[];
   drink: string;
   notes: string | null;
 }) {
   const contextRows = [
-    alsoCooking.length > 0
-      ? { label: "Also cooking", value: alsoCooking.join(" + ") }
-      : null,
-    tableSides.length > 0 ? { label: "Table", value: tableSides.join(" + ") } : null,
     drink ? { label: "Drink", value: drink } : null,
     notes ? { label: "Notes", value: notes } : null,
   ].filter((row): row is { label: string; value: string } => row !== null);
@@ -371,22 +452,72 @@ function RecipeDocument({
           </div>
         )}
 
-        {working.ingredients.length > 0 && (
-          <div className="mt-5 border-t border-secondary pt-4">
-            <h3 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
-              Ingredients
-            </h3>
-            <IngredientList ingredients={working.ingredients} />
-          </div>
-        )}
-
         {working.method.length > 0 && (
           <div className="mt-5 border-t border-secondary pt-4">
-            <h3 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
+            <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
               Method
-            </h3>
+            </h4>
             <MethodSteps steps={working.method} />
           </div>
+        )}
+      </div>
+    </NabuSurface>
+  );
+}
+
+type IngredientDishGroup = {
+  title: string;
+  roleLabel: string;
+  ingredients: WorkingIngredient[];
+};
+
+function MealIngredients({
+  groups,
+  serveWith,
+}: {
+  groups: IngredientDishGroup[];
+  serveWith: string[];
+}) {
+  const visibleGroups = groups.filter((group) => group.ingredients.length > 0);
+  if (visibleGroups.length === 0 && serveWith.length === 0) return null;
+
+  return (
+    <NabuSurface className="p-5">
+      <NabuKicker>Mise en place</NabuKicker>
+      <h2 className="mt-1 text-xl font-semibold tracking-[-0.02em] text-primary">
+        Ingredients
+      </h2>
+      <div className="mt-5 space-y-6">
+        {visibleGroups.map((group, index) => (
+          <section
+            key={`${group.roleLabel}-${group.title}`}
+            data-ingredient-dish={group.title}
+            className={index > 0 ? "border-t border-secondary pt-5" : undefined}
+          >
+            <NabuKicker>{group.roleLabel}</NabuKicker>
+            <p className="mt-0.5 mb-3 text-base font-semibold tracking-[-0.02em] text-primary">
+              {group.title}
+            </p>
+            <IngredientList ingredients={group.ingredients} />
+          </section>
+        ))}
+        {serveWith.length > 0 && (
+          <section
+            data-ingredient-dish="Serve with"
+            className={visibleGroups.length > 0 ? "border-t border-secondary pt-5" : undefined}
+          >
+            <NabuKicker>At the table</NabuKicker>
+            <p className="mt-0.5 mb-3 text-base font-semibold tracking-[-0.02em] text-primary">
+              Serve with
+            </p>
+            <ul className="space-y-1.5">
+              {serveWith.map((item) => (
+                <li key={item} className="text-sm leading-relaxed text-secondary">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
         )}
       </div>
     </NabuSurface>
@@ -497,24 +628,27 @@ function StoryCard({ story }: { story: CookingSession["story"] }) {
 }
 
 // ---------------------------------------------------------------------------
-// Secondary recipe block — collapsed, subordinate to the main dish
+// Supporting cook recipe — complete and always expanded. Source links are
+// useful provenance, never a substitute for the method on this page.
 // ---------------------------------------------------------------------------
 
-function CollapsedRecipeBlock({
+function CookRecipeBlock({
   roleLabel,
   title,
   sourceLine,
+  sourceUrl,
   image,
   servings,
-  ingredients,
+  timeLabel,
   method,
 }: {
   roleLabel: string;
   title: string;
   sourceLine?: string;
+  sourceUrl?: string;
   image?: string | null;
   servings?: string | number;
-  ingredients: SessionIngredient[];
+  timeLabel?: string | null;
   method: string[];
 }) {
   const servingLabel = servings
@@ -522,55 +656,43 @@ function CollapsedRecipeBlock({
     : "";
 
   return (
-    <NabuSurface className="p-0">
-    <details className="group">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-5 [&::-webkit-details-marker]:hidden">
-        <div className="min-w-0">
-          <NabuKicker>{roleLabel}</NabuKicker>
-          <h3 className="mt-0.5 text-base font-semibold tracking-[-0.02em] text-primary">
-            {title}
-          </h3>
-          {sourceLine && (
-            <p className="mt-0.5 text-xs text-tertiary">{sourceLine}</p>
-          )}
+    <div data-cook-dish={title}>
+    <NabuSurface className="overflow-hidden p-0">
+      {image && (
+        <div className="border-b border-primary bg-secondary">
+          <HeroImage src={image} alt={title} />
         </div>
-        <div className="flex shrink-0 items-center gap-2">
-          {servingLabel && <NabuBadge>{servingLabel}</NabuBadge>}
-          <svg
-            className="h-4 w-4 text-quaternary transition-transform group-open:rotate-180"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19 9l-7 7-7-7" />
-          </svg>
+      )}
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <NabuKicker>{roleLabel}</NabuKicker>
+            <h3 className="mt-0.5 text-base font-semibold tracking-[-0.02em] text-primary">
+              {title}
+            </h3>
+            {sourceLine && (
+              <p className="mt-0.5 text-xs text-tertiary">
+                {isLinkableUrl(sourceUrl) ? (
+                  <a
+                    href={sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline decoration-secondary underline-offset-2 hover:text-secondary"
+                  >
+                    {sourceLine}
+                  </a>
+                ) : sourceLine}
+              </p>
+            )}
+          </div>
+          <div className="flex shrink-0 flex-wrap justify-end gap-2">
+            {servingLabel && <NabuBadge>{servingLabel}</NabuBadge>}
+            {timeLabel && <NabuBadge tone="blue">{timeLabel}</NabuBadge>}
+          </div>
         </div>
-      </summary>
-
-      <div className="space-y-5 border-t border-secondary p-5">
-        {image && (
-          <div className="overflow-hidden rounded-lg border border-secondary bg-secondary">
-            <Image
-              src={image}
-              alt={title}
-              width={960}
-              height={540}
-              className="aspect-[16/9] w-full object-cover"
-            />
-          </div>
-        )}
-
-        {ingredients.length > 0 && (
-          <div>
-            <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
-              Ingredients
-            </h4>
-            <IngredientList ingredients={ingredients} />
-          </div>
-        )}
 
         {method.length > 0 && (
-          <div>
+          <div className="mt-5 border-t border-secondary pt-4">
             <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
               Method
             </h4>
@@ -578,8 +700,8 @@ function CollapsedRecipeBlock({
           </div>
         )}
       </div>
-    </details>
     </NabuSurface>
+    </div>
   );
 }
 

@@ -1,5 +1,5 @@
-// Display support for /cooking that is NOT the recipe: table-side extraction,
-// recipe-time formatting, and the wine pairing fallback.
+// Display support for /cooking that is NOT the recipe: the course menu,
+// table-side extraction, recipe-time formatting, and the wine pairing fallback.
 //
 // The former "order of attack" generator and its successor, the derived meal
 // timeline, are both deliberately gone. However filtered, a generated list of
@@ -23,6 +23,123 @@ export type RecipeTime = {
   cook?: string | number;
   total?: string | number;
 };
+
+// ---------------------------------------------------------------------------
+// Course menu — the compact restaurant-style overview above the recipe.
+//
+// Orientation only: a course label and dish names in dining order. It carries
+// no ingredients, method, timing or planning shorthand, because the page has
+// exactly one procedural sequence (live-cooking DESIGN.md §3 rule 11) and the
+// menu is not it.
+// ---------------------------------------------------------------------------
+
+export type MenuCourseKind = "starter" | "main" | "accompaniments" | "dessert";
+
+export type MenuCourse = {
+  kind: MenuCourseKind;
+  label: string;
+  dishes: string[];
+};
+
+/** A typed related recipe, with the title as it should be displayed. */
+export type MenuComponent = {
+  kind: "starter" | "side" | "dessert";
+  title: string;
+};
+
+export type CourseMenuInput = {
+  /** The resolved main dish — the menu's main lane. */
+  mainTitle: string;
+  /**
+   * Further dishes belonging in the main lane: the anchor when an explicit
+   * main displaced it, which is still cooked tonight.
+   */
+  alsoMains?: string[];
+  /** Active typed related recipes; each lands in the lane of its own `kind`. */
+  components?: MenuComponent[];
+  /** Plain food from `serveWith` and for-serving ingredients. */
+  tableSides?: string[];
+};
+
+/**
+ * The menu lanes in dining order — starter, main, accompaniments, dessert —
+ * with empty lanes omitted and every dish listed once. A typed related side
+ * shares the accompaniments lane with the plain table sides.
+ *
+ * Returns no lanes at all for a single-dish, main-only meal: there the menu
+ * would only restate the recipe title standing directly below it.
+ */
+export function buildCourseMenu({
+  mainTitle,
+  alsoMains = [],
+  components = [],
+  tableSides = [],
+}: CourseMenuInput): MenuCourse[] {
+  const ofKind = (kind: MenuComponent["kind"]) =>
+    components.filter((component) => component.kind === kind).map((c) => c.title);
+
+  // Dedup is shared across lanes and consumed in dining order, so a table side
+  // that restates the starter stays with the starter.
+  const seen = new Set<string>();
+  const take = (titles: string[]): string[] => {
+    const kept: string[] = [];
+    for (const title of titles) {
+      const trimmed = title.trim();
+      if (!trimmed) continue;
+      const key = trimmed.toLowerCase().replace(/\s+/g, " ");
+      if (seen.has(key)) continue;
+      seen.add(key);
+      kept.push(trimmed);
+    }
+    return kept;
+  };
+
+  const lanes: {
+    kind: MenuCourseKind;
+    dishes: string[];
+    label: string;
+    labelPlural: string;
+  }[] = [
+    {
+      kind: "starter",
+      dishes: take(ofKind("starter")),
+      label: "Starter",
+      labelPlural: "Starters",
+    },
+    {
+      kind: "main",
+      dishes: take([mainTitle, ...alsoMains]),
+      label: "Main",
+      labelPlural: "Mains",
+    },
+    {
+      kind: "accompaniments",
+      dishes: take([...ofKind("side"), ...tableSides]),
+      label: "Accompaniments",
+      labelPlural: "Accompaniments",
+    },
+    {
+      kind: "dessert",
+      dishes: take(ofKind("dessert")),
+      label: "Dessert",
+      labelPlural: "Desserts",
+    },
+  ];
+
+  const courses = lanes
+    .filter((lane) => lane.dishes.length > 0)
+    .map(({ kind, dishes, label, labelPlural }) => ({
+      kind,
+      label: dishes.length > 1 ? labelPlural : label,
+      dishes,
+    }));
+
+  const mainOnly =
+    courses.length === 1 &&
+    courses[0].kind === "main" &&
+    courses[0].dishes.length === 1;
+  return mainOnly ? [] : courses;
+}
 
 // ---------------------------------------------------------------------------
 // Table sides
