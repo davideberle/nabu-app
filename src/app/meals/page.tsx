@@ -160,6 +160,7 @@ type MealPlan = {
 
 type DayHistoryStatus =
   | "planned"
+  | "in-progress"
   | "cooked-as-planned"
   | "cooked-other"
   | "planned-unlogged"
@@ -1671,15 +1672,29 @@ function MealsPageInner() {
             const isWeekend = ["Friday", "Saturday", "Sunday"].includes(wd.dayOfWeek);
             const isPastOrToday = wd.date <= todayLocal;
             const hist = dayHistory[wd.date] ?? null;
+            const hasActualMeal = hist?.status === "in-progress" ||
+              hist?.status === "cooked-as-planned" ||
+              hist?.status === "cooked-other";
+            const actualMealName = hasActualMeal ? hist?.cookedRecipeName ?? null : null;
+            const normalizedActualName = actualMealName?.trim().toLowerCase() ?? "";
+            const normalizedPlannedName = hist?.plannedRecipeName?.trim().toLowerCase() ?? "";
+            const actualDiffersFromPlan = Boolean(
+              actualMealName && hist?.plannedRecipeName &&
+              (hist?.cookedRecipeId && hist?.plannedRecipeId
+                ? hist.cookedRecipeId !== hist.plannedRecipeId
+                : normalizedActualName !== normalizedPlannedName),
+            );
+            const actualMealLabel = hist?.status === "in-progress" ? "Current meal" : "Actual meal";
+            const dayIsSkipped = isSkipped && !actualMealName;
             const isCooked = isFilled && cookedSlots.has(`${slot!.recipeId}:${wd.date}`);
-            const isClickable = isSelectable ? !isSkipped : (isFilled && !isSkipped);
+            const isClickable = isSelectable ? !dayIsSkipped : (isFilled && !dayIsSkipped);
             const cardHandlesMainClick = !hasBrunch;
             return (
               <div
                 key={wd.date}
                 onClick={() => cardHandlesMainClick && isClickable && handleSlotClick(i)}
                 className={`rounded-lg border p-3 min-h-[110px] flex flex-col transition-all ${
-                  isSkipped
+                  dayIsSkipped
                     ? "border-secondary bg-secondary opacity-50"
                     : isSelectable
                       ? `${cardHandlesMainClick ? "cursor-pointer " : ""}border-amber-300/80 dark:border-amber-700/60 bg-amber-50/30 dark:bg-amber-950/15 hover:bg-amber-50/50 dark:hover:bg-amber-900/20`
@@ -1715,10 +1730,15 @@ function MealsPageInner() {
                     {(hist?.status === "cooked-as-planned" || (!hist?.status && isCooked)) && (
                       <NabuBadge tone="green" className="px-1.5 py-0.5 text-[9px]">Cooked</NabuBadge>
                     )}
-                    {hist?.status === "cooked-other" && (
-                      <NabuBadge tone="blue" className="px-1.5 py-0.5 text-[9px]" title={hist.cookedRecipeName ? `Cooked: ${hist.cookedRecipeName}` : undefined}>Swapped</NabuBadge>
+                    {hist?.status === "in-progress" && (
+                      <NabuBadge tone="blue" className="px-1.5 py-0.5 text-[9px]">Cooking</NabuBadge>
                     )}
-                    {hist?.status === "skipped" && !isSkipped && (
+                    {hist?.status === "cooked-other" && (
+                      <NabuBadge tone="blue" className="px-1.5 py-0.5 text-[9px]" title={hist.cookedRecipeName ? `Cooked: ${hist.cookedRecipeName}` : undefined}>
+                        {hist.plannedRecipeId ? "Changed" : "Cooked"}
+                      </NabuBadge>
+                    )}
+                    {hist?.status === "skipped" && !dayIsSkipped && (
                       <NabuBadge className="px-1.5 py-0.5 text-[9px]">Skipped</NabuBadge>
                     )}
                     {hist?.status === "planned-unlogged" && (
@@ -1729,7 +1749,7 @@ function MealsPageInner() {
                     )}
                   </div>
                 )}
-                {!isSkipped && hasBrunch && (
+                {!dayIsSkipped && hasBrunch && (
                   <div className="mb-2 rounded-md border border-secondary bg-secondary/60 p-2">
                     <button
                       type="button"
@@ -1767,7 +1787,7 @@ function MealsPageInner() {
                     )}
                   </div>
                 )}
-                {isSkipped ? (
+                {dayIsSkipped ? (
                   <div className="flex-1 flex items-center justify-center">
                     <span className="text-[11px] text-quaternary italic">
                       Skipped
@@ -1783,9 +1803,23 @@ function MealsPageInner() {
                         Main meal
                       </span>
                     )}
-                    <p className="text-[13px] font-serif text-primary line-clamp-2 leading-snug">
-                      {slot?.recipeName}
-                    </p>
+                    {actualDiffersFromPlan ? (
+                      <div className="space-y-1">
+                        <span className="block text-[9px] font-medium uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                          {actualMealLabel}
+                        </span>
+                        <p className="text-[13px] font-serif text-primary line-clamp-2 leading-snug">
+                          {actualMealName}
+                        </p>
+                        <p className="text-[10px] text-quaternary line-clamp-2">
+                          Planned: {hist?.plannedRecipeName ?? slot?.recipeName}
+                        </p>
+                      </div>
+                    ) : (
+                      <p className="text-[13px] font-serif text-primary line-clamp-2 leading-snug">
+                        {slot?.recipeName}
+                      </p>
+                    )}
                     {/* Accepted sides */}
                     {slot?.meal?.sides && slot.meal.sides.length > 0 && (
                       <div className="mt-1 space-y-0.5">
@@ -1871,6 +1905,15 @@ function MealsPageInner() {
                         </button>
                       </div>
                     )}
+                  </div>
+                ) : actualMealName ? (
+                  <div className="flex-1 flex flex-col justify-center">
+                    <span className="mb-0.5 text-[9px] font-medium uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                      {actualMealLabel}
+                    </span>
+                    <p className="text-[13px] font-serif text-primary line-clamp-2 leading-snug">
+                      {actualMealName}
+                    </p>
                   </div>
                 ) : (
                   <div
