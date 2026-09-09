@@ -1825,15 +1825,25 @@ function MealsPageInner() {
                       <div className="mt-1 space-y-0.5">
                         {slot.meal.sides.map((side) => (
                           <div key={side.id} className="flex items-center gap-1">
-                            <span className="text-[10px] text-violet-600 dark:text-violet-400 leading-tight line-clamp-1">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                void handleQuickView(side.id);
+                              }}
+                              aria-label={`View ${side.name} recipe`}
+                              className="min-w-0 flex-1 text-left text-[10px] text-violet-600 dark:text-violet-400 leading-tight line-clamp-1 underline decoration-violet-300/70 underline-offset-2 transition-colors hover:text-violet-800 dark:hover:text-violet-200"
+                            >
                               + {side.name}
-                            </span>
+                            </button>
                             {!isCooked && (
                               <button
+                                type="button"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleRemoveComplement(i, side.id);
                                 }}
+                                aria-label={`Remove ${side.name}`}
                                 className="text-[10px] text-stone-300 dark:text-stone-600 hover:text-red-400 transition-colors shrink-0"
                               >
                                 &times;
