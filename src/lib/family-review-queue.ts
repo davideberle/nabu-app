@@ -36,6 +36,7 @@ export type ReviewQueueRow = {
   note?: string;
   normalizedSummary?: string;
   challenge?: string;
+  creditCount?: number;
   submittedAt?: string;
 };
 
@@ -117,7 +118,7 @@ export function buildReviewQueueSnapshot(
   // a numbered reply held against the old snapshot is refused rather than
   // approving words the parent never read.
   const digest = items
-    .map((item) => `${item.key}=${item.status}=${fnv1a(item.note ?? "")}`)
+    .map((item) => `${item.key}=${item.status}=${item.creditCount ?? 1}=${fnv1a(item.note ?? "")}`)
     .join("|");
   return { snapshotId: `q-${fnv1a(digest)}-${items.length}`, items };
 }

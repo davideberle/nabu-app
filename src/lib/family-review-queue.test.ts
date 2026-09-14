@@ -84,6 +84,9 @@ describe("review queue snapshot", () => {
     const original = buildReviewQueueSnapshot([row({ note: "first try" })]);
     const resubmitted = buildReviewQueueSnapshot([row({ note: "second try" })]);
     notEqual(resubmitted.snapshotId, original.snapshotId);
+
+    const changedCredit = buildReviewQueueSnapshot([row({ note: "first try", creditCount: 4 })]);
+    notEqual(changedCredit.snapshotId, original.snapshotId);
   });
 
   it("drops rows that are not in a review status instead of trusting them", () => {

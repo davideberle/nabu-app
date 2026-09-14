@@ -24,6 +24,7 @@ async function ensureFamilyTables(client: Client): Promise<void> {
       challenge   TEXT,
       created_at  TEXT NOT NULL,
       reviewed_at TEXT,
+      credit_count INTEGER NOT NULL DEFAULT 1,
       PRIMARY KEY (person_id, routine_id, week, day)
     )
   `);
@@ -36,6 +37,9 @@ async function ensureFamilyTables(client: Client): Promise<void> {
   } catch { /* column already exists */ }
   try {
     await client.execute(`ALTER TABLE family_completions ADD COLUMN normalized_summary TEXT`);
+  } catch { /* column already exists */ }
+  try {
+    await client.execute(`ALTER TABLE family_completions ADD COLUMN credit_count INTEGER NOT NULL DEFAULT 1`);
   } catch { /* column already exists */ }
   await client.execute(`
     CREATE INDEX IF NOT EXISTS idx_family_completions_week
@@ -73,7 +77,7 @@ export async function getCompletionsForWeek(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: "SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at FROM family_completions WHERE week = ?",
+    sql: "SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count FROM family_completions WHERE week = ?",
     args: [week],
   });
   return result.rows.map((row) =>
@@ -98,6 +102,7 @@ function rowToCompletionRecord(row: Record<string, unknown>): CompletionRecord {
     routineId: row["routine_id"] as string,
     day: row["day"] as number,
     status: narrowCompletionStatus(row["status"] as string),
+    creditCount: Number(row["credit_count"] ?? 1),
     ...(row["note"] ? { note: row["note"] as string } : {}),
     ...(row["normalized_summary"]
       ? { normalizedSummary: row["normalized_summary"] as string }
@@ -118,7 +123,7 @@ export async function getCompletion(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: `SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at
+    sql: `SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count
           FROM family_completions
           WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?`,
     args: [week, personId, routineId, day],
@@ -141,7 +146,7 @@ export async function getReviewQueueCompletions(): Promise<
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute(
-    `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at
+    `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count
      FROM family_completions
      WHERE status IN ('pending_review', 'on_hold')
      ORDER BY created_at ASC, week ASC, person_id ASC, routine_id ASC, day ASC`,
@@ -165,13 +170,14 @@ export async function upsertCompletion(
   // review-action `expectedSubmittedAt` guard and the queue's oldest-first
   // ordering both key on it.
   await client.execute({
-    sql: `INSERT INTO family_completions (person_id, routine_id, week, day, status, note, normalized_summary, challenge, created_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    sql: `INSERT INTO family_completions (person_id, routine_id, week, day, status, note, normalized_summary, challenge, created_at, credit_count)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT (person_id, routine_id, week, day) DO UPDATE SET
             status = excluded.status, note = excluded.note,
             normalized_summary = excluded.normalized_summary,
             challenge = excluded.challenge,
             created_at = excluded.created_at,
+            credit_count = excluded.credit_count,
             reviewed_at = NULL`,
     args: [
       record.personId,
@@ -183,8 +189,27 @@ export async function upsertCompletion(
       record.normalizedSummary ?? null,
       record.challenge ?? null,
       now,
+      record.creditCount ?? 1,
     ],
   });
+}
+
+/** Parent-only correction of the credited unit count on an approved row. */
+export async function updateCompletionCreditCount(
+  week: string,
+  personId: string,
+  routineId: string,
+  day: number,
+  creditCount: number,
+): Promise<boolean> {
+  const client = await getDb();
+  await ensureFamilyTables(client);
+  const result = await client.execute({
+    sql: `UPDATE family_completions SET credit_count = ?, reviewed_at = ?
+          WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ? AND status = 'done'`,
+    args: [creditCount, new Date().toISOString(), week, personId, routineId, day],
+  });
+  return result.rowsAffected > 0;
 }
 
 /**

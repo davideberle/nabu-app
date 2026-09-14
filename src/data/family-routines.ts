@@ -49,6 +49,8 @@ export type CompletionRecord = {
   /** 0-based day index (Mon=0 … Sun=6) */
   day: number;
   status: CompletionStatus;
+  /** Number of units credited by this completion (for example, Kumon sheets). */
+  creditCount?: number;
   /** Transcript or typed fallback submitted by the child. */
   note?: string;
   /**
@@ -308,8 +310,12 @@ export function weekSummary(
       .map((r) => r.id),
   );
   const mine = completions.filter((c) => c.personId === personId);
-  const done = mine.filter((c) => c.status === "done" && trackedIds.has(c.routineId)).length;
-  const pending = mine.filter((c) => (c.status === "pending_review" || c.status === "on_hold") && trackedIds.has(c.routineId)).length;
+  const done = mine
+    .filter((c) => c.status === "done" && trackedIds.has(c.routineId))
+    .reduce((sum, completion) => sum + completionCreditCount(completion), 0);
+  const pending = mine
+    .filter((c) => (c.status === "pending_review" || c.status === "on_hold") && trackedIds.has(c.routineId))
+    .reduce((sum, completion) => sum + completionCreditCount(completion), 0);
   const target = pool
     .filter((r) => r.assignedTo.includes(personId))
     .reduce((sum, routine) => {
@@ -336,7 +342,7 @@ export function weekPoints(
     )
     .reduce((sum, completion) => {
       const routine = routines.find((r) => r.id === completion.routineId);
-      return sum + (routine?.points ?? 0);
+      return sum + (routine?.points ?? 0) * completionCreditCount(completion);
     }, 0);
 }
 
@@ -349,13 +355,22 @@ export function routineProgress(
 ): { done: number; target: number | null } {
   const pool = resolvedRoutines ?? routineDefinitions;
   const routine = pool.find((r) => r.id === routineId);
-  const done = completions.filter(
-    (c) =>
-      c.personId === personId &&
-      c.routineId === routineId &&
-      c.status === "done",
-  ).length;
+  const done = completions
+    .filter(
+      (c) =>
+        c.personId === personId &&
+        c.routineId === routineId &&
+        c.status === "done",
+    )
+    .reduce((sum, completion) => sum + completionCreditCount(completion), 0);
   return { done, target: routine?.weeklyTarget ?? null };
+}
+
+/** Fail closed to one unit for legacy or malformed rows. */
+export function completionCreditCount(completion: CompletionRecord): number {
+  return Number.isInteger(completion.creditCount) && completion.creditCount! >= 1 && completion.creditCount! <= 20
+    ? completion.creditCount!
+    : 1;
 }
 
 /** Next reachable reward for a person. Accepts optional resolved rewards for config-aware targets. */

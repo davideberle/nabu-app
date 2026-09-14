@@ -158,6 +158,11 @@ function ReviewQueuePanel() {
                       {item.normalizedSummary || item.note}
                     </p>
                   )}
+                  {(item.creditCount ?? 1) > 1 && (
+                    <p className="mt-1 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+                      {item.creditCount} points on approval
+                    </p>
+                  )}
                 </div>
                 <div className="flex shrink-0 items-center gap-1.5">
                   <button

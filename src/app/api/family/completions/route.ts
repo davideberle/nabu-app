@@ -4,6 +4,7 @@ import {
   getCompletionsForWeek,
   upsertCompletion,
   removeCompletion,
+  updateCompletionCreditCount,
   updateCompletionStatus,
 } from "@/lib/family-db";
 import { auth } from "@/auth";
@@ -15,6 +16,7 @@ import {
   resolveReviewAction,
 } from "@/lib/family-review-queue";
 import type { CompletionStatus } from "@/data/family-routines";
+import { guidedCategoryForRoutine, reviewGuidedSubmission } from "@/lib/family-guided-capture";
 
 const COMPLETION_STATUSES: readonly CompletionStatus[] = [
   "done",
@@ -57,7 +59,7 @@ export async function POST(request: Request) {
   } catch {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
-  const { week, personId, routineId, day, status, note, challenge } = body;
+  const { week, personId, routineId, day, status, note, challenge, creditCount } = body;
   const validStatuses = ["done", "pending_review"];
   if (
     typeof week !== "string" || !/^\d{4}-W\d{2}$/.test(week) ||
@@ -88,6 +90,20 @@ export async function POST(request: Request) {
     status === "pending_review" && typeof note === "string"
       ? normalizeGuidedSummary(note)
       : "";
+  const guidedCategory =
+    typeof challenge === "string" && challenge.startsWith('Recorded with the guided "')
+      ? guidedCategoryForRoutine(personId, routineId)
+      : null;
+  const guidedReview = guidedCategory && typeof note === "string"
+    ? reviewGuidedSubmission(guidedCategory, note)
+    : null;
+  if (guidedReview && !guidedReview.ok) {
+    return NextResponse.json({ error: guidedReview.issue }, { status: 422 });
+  }
+  const resolvedCreditCount = guidedReview?.ok ? guidedReview.creditCount : 1;
+  if (creditCount !== undefined && creditCount !== resolvedCreditCount) {
+    return NextResponse.json({ error: "Invalid credit count" }, { status: 400 });
+  }
   const record = {
     personId,
     routineId,
@@ -96,6 +112,7 @@ export async function POST(request: Request) {
     ...(typeof note === "string" ? { note } : {}),
     ...(normalizedSummary ? { normalizedSummary } : {}),
     ...(typeof challenge === "string" ? { challenge } : {}),
+    creditCount: resolvedCreditCount,
   };
   await upsertCompletion(week, record);
   if (record.status === "pending_review") {
@@ -136,18 +153,29 @@ export async function PATCH(request: Request) {
   } catch {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
-  const { week, personId, routineId, day, action, expectedStatus, expectedSubmittedAt } = body;
+  const { week, personId, routineId, day, action, expectedStatus, expectedSubmittedAt, creditCount } = body;
   if (
     typeof week !== "string" || !/^\d{4}-W\d{2}$/.test(week) ||
     typeof personId !== "string" || !personId ||
     typeof routineId !== "string" || !routineId ||
     typeof day !== "number" || day < 0 || day > 6 ||
-    !isReviewAction(action) ||
+    (action !== "set-credit-count" && !isReviewAction(action)) ||
     (expectedStatus !== undefined &&
       !COMPLETION_STATUSES.includes(expectedStatus as CompletionStatus)) ||
     (expectedSubmittedAt !== undefined && typeof expectedSubmittedAt !== "string")
   ) {
     return NextResponse.json({ error: "Invalid fields" }, { status: 400 });
+  }
+  if (action === "set-credit-count") {
+    if (!Number.isInteger(creditCount) || (creditCount as number) < 1 || (creditCount as number) > 20) {
+      return NextResponse.json({ error: "Invalid credit count" }, { status: 400 });
+    }
+    const updated = await updateCompletionCreditCount(
+      week, personId, routineId, day, creditCount as number,
+    );
+    return updated
+      ? NextResponse.json({ ok: true, updated, creditCount })
+      : NextResponse.json({ error: "Approved completion not found" }, { status: 409 });
   }
   const current = await getCompletion(week, personId, routineId, day);
   // `expectedSubmittedAt` is the submission time the caller's queue showed.

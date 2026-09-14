@@ -21,6 +21,7 @@ import {
   guidedCategories,
   guidedRoutineFor,
   guidedSubmissionChallenge,
+  reviewGuidedSubmission,
   type GuidedCategory,
 } from "@/lib/family-guided-capture";
 import { normalizeGuidedSummary } from "@/lib/family-review-queue";
@@ -367,6 +368,11 @@ function RecordWorkspace({ child }: { child: ChildId }) {
         });
         return;
       }
+      const reviewed = reviewGuidedSubmission(category, checked.text);
+      if (!reviewed.ok) {
+        setStep({ kind: "review", category, issue: reviewed.issue });
+        return;
+      }
       setStep({ kind: "submitting", category });
       // Week and day are derived together at submit time so a flow left open
       // across midnight still records a consistent identity.
@@ -384,6 +390,7 @@ function RecordWorkspace({ child }: { child: ChildId }) {
             status: "pending_review",
             note: checked.text,
             challenge: guidedSubmissionChallenge(category),
+            creditCount: reviewed.creditCount,
           }),
         });
         if (!aliveRef.current) return;

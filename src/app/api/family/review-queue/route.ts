@@ -66,6 +66,7 @@ export async function GET(request: Request) {
                 ? { normalizedSummary: row.normalizedSummary }
                 : {}),
               ...(row.challenge ? { challenge: row.challenge } : {}),
+              ...(row.creditCount ? { creditCount: row.creditCount } : {}),
               ...(row.submittedAt ? { submittedAt: row.submittedAt } : {}),
             },
           ]

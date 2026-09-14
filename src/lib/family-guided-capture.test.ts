@@ -5,6 +5,8 @@ import {
   guidedCategoryById,
   guidedRoutineFor,
   guidedSubmissionChallenge,
+  kumonWorksheetCount,
+  reviewGuidedSubmission,
   isGuidedCategoryId,
 } from "./family-guided-capture.ts";
 import { CHILD_IDS } from "./family-assistant-turn.ts";
@@ -37,6 +39,35 @@ describe("guided capture categories", () => {
     equal(isGuidedCategoryId("music"), false);
     equal(guidedCategoryById("kumon")?.label, "Kumon");
     equal(guidedCategoryById("nope"), null);
+  });
+});
+
+describe("guided submission detail", () => {
+  it("counts named Kumon sheets and short ranges", () => {
+    equal(kumonWorksheetCount("I did eight, nine, 10, 11"), 4);
+    equal(kumonWorksheetCount("I finished sheets 8 through 11"), 4);
+    equal(kumonWorksheetCount("I did four sheets"), null);
+    equal(kumonWorksheetCount("I did worksheet eight"), 1);
+    equal(kumonWorksheetCount("I did Kumon"), null);
+  });
+
+  it("pushes back on vague household and practice claims", () => {
+    const household = guidedCategoryById("household");
+    const piano = guidedCategoryById("piano");
+    ok(household);
+    ok(piano);
+    deepStrictEqual(
+      reviewGuidedSubmission(household, "I cooked with my daddy and I made that dish."),
+      { ok: false, issue: "What did you cook or help with? Name the food or household job." },
+    );
+    deepStrictEqual(
+      reviewGuidedSubmission(household, "I cooked pasta with Daddy."),
+      { ok: true, creditCount: 1 },
+    );
+    deepStrictEqual(
+      reviewGuidedSubmission(piano, "I played piano today"),
+      { ok: false, issue: "Which piece or exercise did you practice?" },
+    );
   });
 });
 

@@ -136,3 +136,72 @@ export function guidedRoutineFor(
 export function guidedSubmissionChallenge(category: GuidedCategory): string {
   return `Recorded with the guided "${category.label}" flow`;
 }
+
+export type GuidedSubmissionReview =
+  | { ok: true; creditCount: number }
+  | { ok: false; issue: string };
+
+const NUMBER_WORDS = new Set([
+  "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+  "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
+  "eighteen", "nineteen", "twenty",
+]);
+
+/** Count explicitly named Kumon sheets, including short numeric ranges. */
+export function kumonWorksheetCount(text: string): number | null {
+  const normalized = text.toLowerCase().replace(/[–—]/gu, "-");
+  let count = 0;
+  const ranges: string[] = [];
+  for (const match of normalized.matchAll(/\b(\d{1,3})\s*(?:-|to|through)\s*(\d{1,3})\b/gu)) {
+    const size = Number(match[2]) - Number(match[1]) + 1;
+    if (size >= 1 && size <= 20) {
+      count += size;
+      ranges.push(match[0]);
+    }
+  }
+  let remaining = normalized;
+  for (const range of ranges) remaining = remaining.replace(range, " ");
+  count += new Set(remaining.match(/\b(?:[a-z]{1,2})?\d{1,3}[a-z]?\b/gu) ?? []).size;
+  const wordReferences = remaining.split(/[^a-z]+/u).filter((word) => NUMBER_WORDS.has(word));
+  const namesOneSheet = /\b(?:sheet|worksheet)\s+(?:number\s+)?(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\b/u.test(remaining);
+  if (wordReferences.length > 1 || namesOneSheet) {
+    count += new Set(wordReferences).size;
+  }
+  return count >= 1 && count <= 20 ? count : null;
+}
+
+/** Keep clearly vague claims with the child instead of forwarding them. */
+export function reviewGuidedSubmission(
+  category: GuidedCategory,
+  text: string,
+): GuidedSubmissionReview {
+  const normalized = text.trim().toLowerCase();
+  if (category.id === "kumon") {
+    const creditCount = kumonWorksheetCount(normalized);
+    return creditCount
+      ? { ok: true, creditCount }
+      : { ok: false, issue: "Which worksheet numbers did you complete?" };
+  }
+  if (
+    category.id === "household" &&
+    (/\b(that|the) dish\b/u.test(normalized) || /^(i\s+)?(helped|cooked|made)(\s+with\s+.+)?[.!]?$/u.test(normalized))
+  ) {
+    return { ok: false, issue: "What did you cook or help with? Name the food or household job." };
+  }
+  if (category.id === "piano" && /^(i\s+)?(played|practiced)\s+(the\s+)?piano(\s+today)?[.!]?$/u.test(normalized)) {
+    return { ok: false, issue: "Which piece or exercise did you practice?" };
+  }
+  if (category.id === "exercise" && /^(i\s+)?(did\s+)?(sport|exercise|gymnastics)(\s+today)?[.!]?$/u.test(normalized)) {
+    return { ok: false, issue: "Which sport or exercise did you do?" };
+  }
+  return { ok: true, creditCount: 1 };
+}
+
+export function guidedCategoryForRoutine(
+  personId: string,
+  routineId: string,
+): GuidedCategory | null {
+  if (personId !== "santiago" && personId !== "isabel") return null;
+  const entry = Object.entries(GUIDED_ROUTINE_IDS[personId]).find(([, id]) => id === routineId);
+  return entry ? guidedCategoryById(entry[0]) : null;
+}
