@@ -13,6 +13,8 @@ import {
   type CandidateItem,
 } from "@/lib/meals";
 import { getPlannerRecencyExclusions, getRecentlyCookedRecipeIds, getThumbsDownRecipeIds, getThumbsUpRecipeIds } from "@/lib/db";
+import { classifyPlannerRole } from "@/lib/planner-roles";
+import { qaRecipeForShelf, summarizeQa, type RecipeQaDiagnostic } from "@/lib/recipe-render-qa";
 import type { Recipe } from "@/lib/recipes";
 
 const HOT_WEATHER_CONTEXT_PATTERN = /\b(hot|heat|heatwave|warm|summer|light|no oven|oven off)\b/i;
@@ -126,7 +128,15 @@ export async function GET(request: NextRequest) {
   // vNext quality-gated candidates mode (default)
   const mode = request.nextUrl.searchParams.get("mode");
   if (mode !== "legacy") {
-    const { candidates: taggedCandidates, diagnostics, bucketContract } = selectCandidateMains(allRecipes, excludeIds, hints, preferredIds);
+    const qaDiagnostics: RecipeQaDiagnostic[] = [];
+    const qaQualified = allRecipes.flatMap((recipe) => {
+      const role = classifyPlannerRole(recipe);
+      if (role.role !== "main" && role.role !== "light-meal") return [];
+      const checked = qaRecipeForShelf(recipe, { role: role.role });
+      if (checked.issues.length || checked.fixes.length) qaDiagnostics.push(summarizeQa(recipe, checked));
+      return checked.ok ? [checked.recipe] : [];
+    });
+    const { candidates: taggedCandidates, diagnostics, bucketContract } = selectCandidateMains(qaQualified, excludeIds, hints, preferredIds);
 
     const summarized = taggedCandidates.map(({ recipe, bucket }) => ({
       ...summarize(recipe),
@@ -151,6 +161,7 @@ export async function GET(request: NextRequest) {
         bucket: s.bucket,
       })) satisfies CandidateItem[],
       diagnostics,
+      qaDiagnostics,
     };
 
     return NextResponse.json({
@@ -175,10 +186,16 @@ export async function GET(request: NextRequest) {
 // POST — full recipe detail for Quick View
 export async function POST(request: NextRequest) {
   const { id } = (await request.json()) as { id: string };
-  const recipe = await getRecipe(id);
-  if (!recipe) {
+  const raw = await getRecipe(id);
+  if (!raw) {
     return NextResponse.json({ error: "Recipe not found" }, { status: 404 });
   }
+  const role = classifyPlannerRole(raw);
+  const checked = qaRecipeForShelf(raw, { role: role.role });
+  if (!checked.ok) {
+    return NextResponse.json({ error: "Recipe did not pass recommendation quality checks" }, { status: 422 });
+  }
+  const recipe = checked.recipe;
   return NextResponse.json({
     ...summarize(recipe),
     introduction: recipe.introduction || recipe.intro || null,

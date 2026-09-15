@@ -124,6 +124,10 @@ const resolveRecipe = async (id: string) => RECIPES.get(id);
 const catalogCandidates = SPECS.map((spec) =>
   toShelfCandidate(RECIPES.get(spec.id)!, { origin: "catalog", discovery: "catalog" }, NOW),
 );
+const webCandidates = SPECS.slice(0, 5).map((spec, index) => ({
+  ...toShelfCandidate(RECIPES.get(spec.id)!, { origin: "web", discovery: "editorial", sourceName: `Source ${index}` }, NOW),
+  sourceName: `Source ${index}`,
+}));
 
 /**
  * The real production wiring, minus the two seams a plain-node test cannot
@@ -138,7 +142,7 @@ const deps: PreparationDeps = {
     return result.ok ? { ok: true, plan: result.plan } : { ok: false, reason: result.reason };
   },
   ensureWebInspirations: async () => ({ status: "skipped" }),
-  loadWebCandidates: async () => [],
+  loadWebCandidates: async () => webCandidates,
   loadCatalogCandidates: async () => catalogCandidates,
 };
 

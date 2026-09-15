@@ -17,7 +17,7 @@ import {
 import type { MealCoherenceReview } from "@/lib/meal-coherence";
 import { candidateDisplay, groupShelfItems } from "@/lib/planner-display";
 import type { ShelfDisplay } from "@/lib/planner-display";
-import { shortlistShelf, type ShelfTraits } from "@/lib/planner-shelf";
+import { shortlistShelf, SHELF_POLICY_VERSION, type ShelfTraits } from "@/lib/planner-shelf";
 
 // ----- types -----
 
@@ -126,6 +126,8 @@ type CandidateSet = {
   items: CandidateItem[];
   diagnostics?: CandidateDiagnostics;
   reserves?: CandidateReserve[];
+  notThisWeek?: { recipeId: string; at: string }[];
+  qaDiagnostics?: { recipeId: string; recipeName: string; issues: string[]; fixes: string[] }[];
 };
 
 type MealSlot = {
@@ -767,7 +769,7 @@ function MealsPageInner() {
               .catch(() => {});
           }
           commitPlan(normalized);
-          let seededVisibleForThisWeek = false;
+          let allowLegacyWebMerge = false;
           // Restore saved candidates with full card data for stable reload,
           // then reconcile images against current canonical recipe data to
           // prevent stale persisted images from resurfacing. Ideas are
@@ -781,7 +783,7 @@ function MealsPageInner() {
                 generatedAt: data.candidateSet.generatedAt,
                 policyVersion: data.candidateSet.policyVersion,
               });
-              seededVisibleForThisWeek = true;
+              allowLegacyWebMerge = !data.candidateSet.policyVersion.startsWith(SHELF_POLICY_VERSION);
             }
 
             // Reconcile: fetch current canonical images and patch any stale ones.
@@ -829,7 +831,7 @@ function MealsPageInner() {
               .catch(() => { /* non-critical — stale image is cosmetic */ });
           }
 
-          loadWebInspirations(seededVisibleForThisWeek);
+          loadWebInspirations(allowLegacyWebMerge);
         } else {
           setPlan(null);
           loadWebInspirations(false);
@@ -981,6 +983,8 @@ function MealsPageInner() {
         .map((recipe) => toCandidateItem(recipe, "web-inspiration"));
       const candidateSet: CandidateSet = {
         ...databaseCandidateSet,
+        notThisWeek: plan?.candidateSet?.notThisWeek ?? databaseCandidateSet.notThisWeek,
+        qaDiagnostics: databaseCandidateSet.qaDiagnostics ?? plan?.candidateSet?.qaDiagnostics,
         policyVersion: preservedWebItems.length > 0 && !databaseCandidateSet.policyVersion?.includes("+web")
           ? `${databaseCandidateSet.policyVersion ?? "planner-v2.1"}+web`
           : databaseCandidateSet.policyVersion,
@@ -1045,6 +1049,8 @@ function MealsPageInner() {
           : `${existingPolicyVersion}+web`,
         bucketContract: basePlan.candidateSet?.bucketContract,
         diagnostics: basePlan.candidateSet?.diagnostics,
+        notThisWeek: basePlan.candidateSet?.notThisWeek,
+        qaDiagnostics: basePlan.candidateSet?.qaDiagnostics,
         items: [...existingItems, ...webItems],
       };
       const updatedPlan = touchPlan({ ...basePlan, candidateSet });
@@ -2030,17 +2036,6 @@ function MealsPageInner() {
               <div className="mt-3 flex flex-wrap items-center gap-3">
                 <NabuButton onClick={() => handlePrepareShelf()} disabled={preparing} tone="ghost" size="sm">
                   {preparing ? "Preparing ideas..." : "Prepare / repair ideas"}
-                </NabuButton>
-                <NabuButton onClick={() => handleGenerate()} disabled={loading} tone="ghost" size="sm">
-                  {loading ? "Generating ideas..." : "Generate from recipe book"}
-                </NabuButton>
-                <NabuButton
-                  onClick={() => handleAddWebInspirations()}
-                  disabled={webInspirationLoading}
-                  tone="ghost"
-                  size="sm"
-                >
-                  {webInspirationLoading ? "Researching web ideas..." : "Research web ideas"}
                 </NabuButton>
                 {ideaMetadata?.generatedAt && (
                   <span className="text-[11px] text-quaternary">

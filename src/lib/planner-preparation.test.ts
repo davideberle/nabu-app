@@ -81,6 +81,22 @@ function catalogPool(size = 24): ShelfCandidate[] {
   );
 }
 
+function webPool(size = 5): ShelfCandidate[] {
+  return Array.from({ length: size }, (_, i) =>
+    candidate(`web-${i}`, {
+      origin: "web",
+      discovery: "editorial",
+      sourceName: `Source ${i}`,
+      cuisine: ["Swiss", "Indian", "Greek", "Thai", "French"][i % 5],
+      traits: traits({
+        shape: (["soup", "salad", "stew-curry", "roast-bake", "other"] as const)[i % 5],
+        protein: (["vegan", "vegetarian", "fish", "vegan", "vegetarian"] as const)[i % 5],
+        effort: (["quick", "medium", "project", "quick", "medium"] as const)[i % 5],
+      }),
+    }),
+  );
+}
+
 function emptyPlan(week = WEEK): MealPlan {
   return {
     week,
@@ -138,7 +154,7 @@ function harness(options: {
       h.ensureCalls += 1;
       return options.ensure ? options.ensure() : { status: "succeeded", accepted: 3 };
     },
-    loadWebCandidates: async () => options.web ?? [],
+    loadWebCandidates: async () => options.web ?? webPool(),
     loadCatalogCandidates: async () => options.catalog ?? catalogPool(),
     claim: async (week, kind) => {
       h.claims.push(`${week}:${kind}`);
@@ -178,7 +194,7 @@ describe("shelf health", () => {
           image: "https://img.example/r.jpg",
           traits: {
             shape: "other" as const,
-            protein: "vegetarian" as const,
+            protein: (i < 5 ? "vegan" : i < 9 ? "vegetarian" : i < 11 ? "fish" : "meat") as ShelfTraits["protein"],
             starch: "none" as const,
             effort: (i % 3 === 0 ? "quick" : i % 3 === 1 ? "medium" : "project") as "quick" | "medium" | "project",
             weekdayFit: true,
@@ -264,6 +280,16 @@ describe("weekly preparation", () => {
     deepStrictEqual(h.completions, [{ week: WEEK, kind: "prepare", status: "succeeded" }]);
   });
 
+  it("persists both rejected-record and safe-fix QA diagnostics", async () => {
+    const h = harness();
+    h.deps.qaDiagnostics = () => [
+      { recipeId: "fixed", recipeName: "Fixed", issues: [], fixes: ["ingredients/stranded-unit"] },
+      { recipeId: "rejected", recipeName: "Rejected", issues: ["method/fragment"], fixes: [] },
+    ];
+    await prepareWeek(WEEK, h.deps);
+    deepStrictEqual(h.saved[0].candidateSet?.qaDiagnostics?.map((row) => row.recipeId), ["fixed", "rejected"]);
+  });
+
   it("creates the week record when none exists yet", async () => {
     const h = harness({ plan: null });
     await prepareWeek(WEEK, h.deps);
@@ -285,7 +311,7 @@ describe("weekly preparation", () => {
   });
 
   it("prepares anyway when web discovery fails", async () => {
-    const h = harness({ ensure: async () => ({ status: "failed", error: "surface blocked" }) });
+    const h = harness({ web: [], ensure: async () => ({ status: "failed", error: "surface blocked" }) });
     const outcome = await prepareWeek(WEEK, h.deps);
     equal(outcome.status, "prepared");
     ok((outcome.shelfSize ?? 0) >= 12, "the catalog covers the week on its own");

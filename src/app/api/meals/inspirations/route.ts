@@ -17,6 +17,7 @@ import { currentIsoWeekId, normalizePlannerCuisine, normalizePlannerTitle } from
 import { classifyPlannerRole } from "@/lib/planner-roles";
 import { visibleCapForSource } from "@/lib/planner-sources";
 import { notThisWeekIds } from "@/lib/planner-shelf";
+import { qaRecipeForShelf } from "@/lib/recipe-render-qa";
 import { loadMealPlan } from "@/lib/meals-persistence";
 import {
   DEFAULT_WEB_INSPIRATION_COUNT,
@@ -206,11 +207,15 @@ export async function GET(request: NextRequest) {
     for (const insp of inspirations) {
       if (candidates.length >= limit) break;
       if (exclusionIds.has(insp.recipe_id)) continue;
-      const recipe = await getMyRecipe(insp.recipe_id);
-      if (!recipe) continue;
-      const role = classifyPlannerRole(recipe);
+      const raw = await getMyRecipe(insp.recipe_id);
+      if (!raw) continue;
+      const role = classifyPlannerRole(raw);
       if (role.role === "reject") continue;
-      const card = recipeToCandidate(recipe, {
+      const checked = qaRecipeForShelf(raw, {
+        ...(role.role === "pairing" ? {} : { role: role.role }),
+      });
+      if (!checked.ok) continue;
+      const card = recipeToCandidate(checked.recipe, {
         source_url: insp.source_url,
         source_name: insp.source_name,
         discovery: keepState.get(insp.recipe_id)?.discovery ?? null,

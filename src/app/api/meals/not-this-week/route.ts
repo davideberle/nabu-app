@@ -47,6 +47,9 @@ export async function POST(request: NextRequest) {
     if (applied.protectedAssigned) {
       return NextResponse.json({ error: "That idea is assigned to a day", week, recipeId }, { status: 409 });
     }
+    if (!applied.removed) {
+      return NextResponse.json({ error: "That idea is not on this week's shelf", week, recipeId }, { status: 404 });
+    }
     const dismissedPlan = {
       ...plan,
       candidateSet: { ...plan.candidateSet, items: applied.items, notThisWeek: applied.notThisWeek },

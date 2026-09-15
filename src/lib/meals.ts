@@ -327,8 +327,8 @@ export type CandidateSet = {
    * week's shelf and count as one unselected exposure at rollover.
    */
   notThisWeek?: { recipeId: string; at: string }[];
-  /** Recipes the render-QA pass quarantined while preparing this shelf. */
-  qaQuarantined?: { recipeId: string; recipeName: string; issues: string[]; fixes: string[] }[];
+  /** Rejected records and safe auto-fixes observed while preparing this shelf. */
+  qaDiagnostics?: { recipeId: string; recipeName: string; issues: string[]; fixes: string[] }[];
 };
 
 export type DayPlanningState = "open" | "assigned" | "meal" | "skipped";

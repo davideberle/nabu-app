@@ -109,6 +109,17 @@ export function normalizeIngredient(
   let a = normalizeAmountText((rawAmount ?? "").trim());
   let it = normalizeItemText((rawItem ?? "").trim());
 
+  // A parser may strand a metric unit at the start of the item while keeping
+  // the number in amount: "200" / "g flour". Move it only when a real
+  // ingredient name remains after the unit.
+  {
+    const metric = it.match(/^(g|kg|ml|l|dl|cl)\b\.?\s+(.+)/i);
+    if (metric && /^[\d¼½¾⅓⅔⅛]/.test(a) && !new RegExp(`\\b(?:${METRIC_U})\\b`, "i").test(a)) {
+      a = `${a} ${metric[1].toLowerCase()}`;
+      it = metric[2].trim();
+    }
+  }
+
   // ── 0. If item starts with a container noun and amount is a bare count,
   //    move the container into amount for cleaner display.
   //    e.g. amount "1", item "can chopped tomatoes" → "1 can" / "chopped tomatoes"

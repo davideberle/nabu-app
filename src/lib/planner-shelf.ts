@@ -168,6 +168,8 @@ export const SHELF_LIMITS = {
   maxPerHero: 2,
   /** No display group may hold more than this share of a shelf of 6+ ideas. */
   maxGroupShare: 0.6,
+  /** One broad protein lane must not define the whole shelf. */
+  maxProteinShare: 0.6,
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -545,6 +547,10 @@ export function canAdmit(
   if (inGroup >= maxPerDisplayGroup) {
     return { ok: false, reason: `${group} group already at ${maxPerDisplayGroup}` };
   }
+  const maxPerProteinLane = Math.floor(SHELF_TARGET.min * SHELF_LIMITS.maxProteinShare);
+  if (coverage.proteins[candidate.traits.protein] >= maxPerProteinLane) {
+    return { ok: false, reason: `${candidate.traits.protein} protein lane already at ${maxPerProteinLane}` };
+  }
 
   return { ok: true };
 }
@@ -902,6 +908,7 @@ export type QualityItem = {
   role?: string;
   sourceName?: string | null;
   source?: { cookbook?: string | null } | null;
+  cuisine?: string | null;
   dietary?: string[];
   time?: { total?: number | null } | null;
   traits?: ShelfTraits | null;
@@ -944,10 +951,17 @@ export function assessShelfQuality(items: readonly QualityItem[], context: Shelf
   // Source yield.
   const web = items.filter((item) => item.origin === "web");
   if (web.length < webTarget.min) {
-    const excused = typeof context.webConsidered === "number" && context.webConsidered < webTarget.min;
-    if (!excused) {
-      problems.push(`only ${web.length} web idea(s) on the shelf (target ${webTarget.min}–${webTarget.max})`);
-    }
+    const availability = typeof context.webConsidered === "number" ? `; ${context.webConsidered} qualified considered` : "";
+    problems.push(`only ${web.length} web idea(s) on the shelf (target ${webTarget.min}–${webTarget.max}${availability})`);
+  }
+  const webBySource = new Map<string, number>();
+  for (const item of web) {
+    const source = itemCookbook(item) ?? "Unknown source";
+    webBySource.set(source, (webBySource.get(source) ?? 0) + 1);
+  }
+  for (const [source, count] of webBySource) {
+    const cap = visibleCapForSource(source);
+    if (count > cap) problems.push(`${count} web ideas come from ${source} (cap ${cap})`);
   }
 
   // Cookbook concentration among catalog ideas.
@@ -975,6 +989,25 @@ export function assessShelfQuality(items: readonly QualityItem[], context: Shelf
   for (const [hero, names] of byHero) {
     if (names.length > SHELF_LIMITS.maxPerHero) {
       problems.push(`${names.length} ideas are ${hero}-led (${names.join(", ")})`);
+    }
+  }
+
+  const byCuisine = new Map<string, number>();
+  const byProtein = new Map<string, number>();
+  for (const item of items) {
+    const cuisine = item.cuisine?.trim() || "Other";
+    if (cuisine !== "Other") byCuisine.set(cuisine, (byCuisine.get(cuisine) ?? 0) + 1);
+    const protein = item.traits?.protein;
+    if (protein) byProtein.set(protein, (byProtein.get(protein) ?? 0) + 1);
+  }
+  for (const [cuisine, count] of byCuisine) {
+    if (count > SHELF_LIMITS.maxPerCuisine) problems.push(`${count} ideas use the ${cuisine} cuisine lane (cap ${SHELF_LIMITS.maxPerCuisine})`);
+  }
+  if (items.length >= 6) {
+    for (const [protein, count] of byProtein) {
+      if (count / items.length > SHELF_LIMITS.maxProteinShare) {
+        problems.push(`${count} of ${items.length} ideas sit in the ${protein} protein lane; the shelf needs more protein variation`);
+      }
     }
   }
 
@@ -1075,7 +1108,7 @@ export function completeShelfAgainstPlan(
   shelf: readonly ShelfItem[],
   context: PlanContext,
   replacements: readonly ShelfCandidate[] = [],
-  options: { target?: { min: number; max: number } } = {},
+  options: { target?: { min: number; max: number }; excludeRecipeIds?: ReadonlySet<string> } = {},
 ): CompletionResult {
   const target = options.target ?? SHELF_TARGET;
   const pinned = shelf.filter((item) => item.assigned);
@@ -1098,6 +1131,7 @@ export function completeShelfAgainstPlan(
   const added: ShelfItem[] = [];
   const pool = replacements
     .filter((c) => !shelf.some((item) => item.recipeId === c.recipeId))
+    .filter((c) => !options.excludeRecipeIds?.has(c.recipeId))
     .sort((a, b) => contextScore(b, context) - contextScore(a, context));
   for (const candidate of pool) {
     if (pinned.length + kept.length + added.length >= target.max) break;

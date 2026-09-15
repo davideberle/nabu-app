@@ -10,6 +10,7 @@ import {
   qaTimePlausibility,
   renderIngredientLine,
 } from "./recipe-render-qa.ts";
+import { normalizeIngredient } from "./normalize-ingredients.ts";
 import {
   applyNotThisWeek,
   assembleWeeklyShelf,
@@ -54,6 +55,9 @@ function recipe(overrides: Partial<Recipe> = {}): Recipe {
 }
 
 describe("ingredient unit normalization", () => {
+  it("renders a stranded metric unit with the number in every recipe view", () => {
+    deepStrictEqual(normalizeIngredient("200", "g plain flour"), { amount: "200 g", item: "plain flour" });
+  });
   it("moves a stranded metric unit from the item into unit when an amount is present", () => {
     for (const unit of ["g", "kg", "ml", "l"]) {
       const { ingredient, fix } = normalizeIngredientUnits({ item: `${unit} plain flour`, amount: "200" });
@@ -181,6 +185,7 @@ describe("shelf quality and health", () => {
         traits: traits({
           effort: efforts[index % efforts.length],
           shape: index % 5 === 0 ? "salad" : "other",
+          protein: (["vegan", "vegetarian", "fish", "meat"] as const)[index % 4],
         }),
       }),
     );
@@ -224,10 +229,25 @@ describe("shelf quality and health", () => {
     equal(health.healthy, false);
     ok(health.problems.length >= 5);
   });
-  it("a short web yield is excused only when the eligible pool was short", () => {
+  it("a short web yield remains unhealthy and names the qualified availability", () => {
     const items = Array.from({ length: 12 }, (_, i) => ({ recipeId: `c${i}`, recipeName: `C ${i}`, origin: "catalog", source: { cookbook: `B${i}` }, image: "x", traits: traits({ effort: i % 3 === 0 ? "quick" : i % 3 === 1 ? "medium" : "project" }), time: { total: 40 } }));
     ok(assessShelfQuality(items).some((p) => /web idea/.test(p)));
-    ok(!assessShelfQuality(items, { webConsidered: 2 }).some((p) => /web idea/.test(p)));
+    ok(assessShelfQuality(items, { webConsidered: 2 }).some((p) => /2 qualified considered/.test(p)));
+  });
+  it("reports web-source, cuisine, and protein-lane concentration", () => {
+    const crowded = Array.from({ length: 8 }, (_, i) => ({
+      recipeId: `crowded-${i}`,
+      recipeName: `Crowded ${i}`,
+      origin: "web",
+      sourceName: "Unknown Weekly",
+      cuisine: "Italian",
+      image: "x",
+      traits: traits({ protein: "vegan", effort: i % 3 === 0 ? "project" : "medium" }),
+    }));
+    const problems = assessShelfQuality(crowded);
+    ok(problems.some((p) => /web ideas come from Unknown Weekly/.test(p)), problems.join("\n"));
+    ok(problems.some((p) => /Italian cuisine lane/.test(p)), problems.join("\n"));
+    ok(problems.some((p) => /vegan protein lane/.test(p)), problems.join("\n"));
   });
 });
 
@@ -279,5 +299,16 @@ describe("shortlist and Not this week", () => {
     const kept = applyNotThisWeek(set, "b", new Set(["b"]), NOW);
     equal(kept.protectedAssigned, true);
     equal(kept.items.length, 2);
+  });
+  it("never re-adds an explicitly dismissed recipe during completion", () => {
+    const dismissed = new Set(["a"]);
+    const result = completeShelfAgainstPlan(
+      [item({ recipeId: "b" })],
+      { assignedTraits: [], openWeekdays: 5, openWeekendDays: 2 },
+      [cand({ recipeId: "a" }), cand({ recipeId: "c" })],
+      { target: { min: 2, max: 3 }, excludeRecipeIds: dismissed },
+    );
+    ok(!result.shelf.some((row) => row.recipeId === "a"));
+    ok(result.shelf.some((row) => row.recipeId === "c"));
   });
 });

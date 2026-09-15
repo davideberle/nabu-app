@@ -59,11 +59,11 @@ import { isStagedRecipe } from "@/lib/planner-staging";
  * what the candidate is built from; a quarantined recipe is recorded and
  * never reaches a card.
  */
-function qaGate(recipe: Recipe, quarantine?: RecipeQaDiagnostic[]): Recipe | null {
+function qaGate(recipe: Recipe, diagnostics?: RecipeQaDiagnostic[]): Recipe | null {
   const role = classifyPlannerRole(recipe);
   const result = qaRecipeForShelf(recipe, { role: role.role });
+  if (result.issues.length || result.fixes.length) diagnostics?.push(summarizeQa(recipe, result));
   if (!result.ok) {
-    quarantine?.push(summarizeQa(recipe, result));
     return null;
   }
   return result.recipe;
@@ -176,8 +176,9 @@ export async function completePlanShelf(plan: MealPlan, now: Date): Promise<Meal
   const shelf = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now);
   const context = await planContextFor(plan, shelf, getRecipe, now);
   const onShelf = new Set(shelf.map((item) => item.recipeId));
-  const replacements = await loadReplacementCandidates(plan.week, now, onShelf);
-  const result = completeShelfAgainstPlan(shelf, context, replacements);
+  const excluded = new Set([...onShelf, ...notThisWeekIds(plan.candidateSet)]);
+  const replacements = await loadReplacementCandidates(plan.week, now, excluded);
+  const result = completeShelfAgainstPlan(shelf, context, replacements, { excludeRecipeIds: excluded });
   return {
     ...plan,
     candidateSet: {
@@ -200,10 +201,10 @@ export async function loadReplacementCandidates(
 }
 
 export function buildPreparationDeps(now = new Date()): PreparationDeps {
-  const quarantine: RecipeQaDiagnostic[] = [];
+  const diagnostics: RecipeQaDiagnostic[] = [];
   return {
     now,
-    qaQuarantined: () => quarantine.slice(),
+    qaDiagnostics: () => diagnostics.slice(),
     loadPlan: (week) => loadMealPlan(week),
     // Preparation reports on what was stored, so the refusal and the stored
     // plan both have to survive the crossing from the save boundary.
@@ -224,8 +225,8 @@ export function buildPreparationDeps(now = new Date()): PreparationDeps {
         reason: "reason" in result ? result.reason : undefined,
       };
     },
-    loadWebCandidates: (week) => loadWebCandidatesForWeek(week, now, quarantine),
-    loadCatalogCandidates: (week) => loadCatalogCandidatesForWeek(week, now, quarantine),
+    loadWebCandidates: (week) => loadWebCandidatesForWeek(week, now, diagnostics),
+    loadCatalogCandidates: (week) => loadCatalogCandidatesForWeek(week, now, diagnostics),
   };
 }
 

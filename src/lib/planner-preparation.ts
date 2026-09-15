@@ -383,10 +383,9 @@ export function assessShelfHealth(
 
   // Quality, not just structure: source yield, cookbook and hero
   // concentration, corrupted traits, implausible timing, effort balance.
-  const assigned = assignedRecipeIdsOf(plan);
-  const unassigned = set.items.filter((item) => item?.recipeId && !assigned.has(item.recipeId));
+  const visible = set.items.filter((item) => item?.recipeId);
   problems.push(
-    ...assessShelfQuality(unassigned, {
+    ...assessShelfQuality(visible, {
       webConsidered: set.shelfDiagnostics?.webConsidered,
       cookbookCapRelaxed: set.shelfDiagnostics?.cookbookCapRelaxed,
     }),
@@ -473,8 +472,8 @@ export type PreparationDeps = {
   loadWebCandidates: (week: string) => Promise<ShelfCandidate[]>;
   /** Catalog ideas eligible for gap-fill (recency + exposure already applied). */
   loadCatalogCandidates: (week: string) => Promise<ShelfCandidate[]>;
-  /** Recipes the render-QA pass quarantined while the loaders ran. */
-  qaQuarantined?: () => RecipeQaDiagnostic[];
+  /** Rejected records and safe auto-fixes observed while the loaders ran. */
+  qaDiagnostics?: () => RecipeQaDiagnostic[];
   claim?: (week: string, kind: PreparationKind) => Promise<boolean>;
   complete?: (week: string, kind: PreparationKind, status: "succeeded" | "failed", summary?: unknown) => Promise<void>;
 };
@@ -612,7 +611,7 @@ export async function prepareWeek(
         })),
         shelfDiagnostics: shelf.diagnostics,
         ...(existing?.candidateSet?.notThisWeek?.length ? { notThisWeek: existing.candidateSet.notThisWeek } : {}),
-        ...(deps.qaQuarantined ? { qaQuarantined: deps.qaQuarantined() } : {}),
+        ...(deps.qaDiagnostics ? { qaDiagnostics: deps.qaDiagnostics() } : {}),
       },
       updatedAt: now.toISOString(),
     };
