@@ -101,10 +101,12 @@ describe("ingredient unit normalization", () => {
       { item: "pprox 800g chopped pumpkin", amount: "a" },
       { item: "½ cups water", amount: "3" },
       { item: "&frac14; cup pepitas", amount: "" },
+      { item: "plus 1 Tbsp sesame oil", amount: "1 tsp" },
     ] }));
     const codes = new Set(result.issues.map((issue) => issue.code));
     ok(codes.has("invalid-amount-token"));
     ok(codes.has("html-entity"));
+    ok(codes.has("duplicate-quantity"));
     ok(codes.has("truncated-word"));
   });
 });

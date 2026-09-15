@@ -47,6 +47,7 @@ const METRIC_UNIT_SUFFIX_RE = /^(g|kg|ml|l|dl|cl)\b\.?\s*(.*)$/i;
 const SPLIT_MIXED_UNIT_RE = /^([¼½¾⅓⅔⅛])\s*(g|kg|ml|l|dl|cl|cups?|teaspoons?|tablespoons?|tsp|tbsp|cloves?)\b\.?\s*(.*)$/i;
 const HTML_ENTITY_RE = /&(?:#\d+|#x[0-9a-f]+|[a-z][a-z0-9]+);/i;
 const INVALID_SINGLE_TOKEN_AMOUNT_RE = /^[a-z]$/i;
+const EMBEDDED_SECOND_QUANTITY_RE = /^(?:plus\s+)?\d+(?:[.,]\d+|\/\d+|[¼½¾⅓⅔⅛])?\s*(?:g|kg|ml|l|dl|cl|cups?|teaspoons?|tablespoons?|tsp|tbsp|ounces?|oz|pounds?|lb)\b/i;
 const SUSPICIOUS_TRUNCATION_RE = /^(?:pprox|ubergines)\b/i;
 
 /** Longest step (chars) before it is suspected of being several merged steps. */
@@ -304,6 +305,9 @@ export function qaRecipeForShelf(recipe: Recipe, options: RecipeQaOptions = {}):
     }
     if (HTML_ENTITY_RE.test(`${amount} ${item}`)) {
       issues.push({ field: "ingredients", code: "html-entity", message: `ingredient ${index + 1} contains an undecoded HTML entity` });
+    }
+    if (amount && EMBEDDED_SECOND_QUANTITY_RE.test(item)) {
+      issues.push({ field: "ingredients", code: "duplicate-quantity", message: `ingredient ${index + 1} carries a second quantity in the item name` });
     }
     if (SUSPICIOUS_TRUNCATION_RE.test(item)) {
       issues.push({ field: "ingredients", code: "truncated-word", message: `ingredient ${index + 1} begins with the truncated word "${item.split(/\s+/)[0]}"` });
