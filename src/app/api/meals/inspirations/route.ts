@@ -83,6 +83,19 @@ function recipeToCandidate(
   };
 }
 
+function qualifiedRecipeCandidate(
+  recipe: Recipe,
+  provenance: { source_url: string; source_name: string; discovery?: string | null; kept?: boolean },
+): { candidate: RecipeOption; role: "main" | "light-meal" | "pairing" } | null {
+  const role = classifyPlannerRole(recipe);
+  if (role.role === "reject") return null;
+  const checked = qaRecipeForShelf(recipe, {
+    ...(role.role === "pairing" ? {} : { role: role.role }),
+  });
+  if (!checked.ok) return null;
+  return { candidate: recipeToCandidate(checked.recipe, provenance), role: role.role };
+}
+
 function balanceBySource(candidates: RecipeOption[]): RecipeOption[] {
   if (candidates.length <= 1) return candidates;
   const bySource = new Map<string, RecipeOption[]>();
@@ -209,22 +222,17 @@ export async function GET(request: NextRequest) {
       if (exclusionIds.has(insp.recipe_id)) continue;
       const raw = await getMyRecipe(insp.recipe_id);
       if (!raw) continue;
-      const role = classifyPlannerRole(raw);
-      if (role.role === "reject") continue;
-      const checked = qaRecipeForShelf(raw, {
-        ...(role.role === "pairing" ? {} : { role: role.role }),
-      });
-      if (!checked.ok) continue;
-      const card = recipeToCandidate(checked.recipe, {
+      const qualified = qualifiedRecipeCandidate(raw, {
         source_url: insp.source_url,
         source_name: insp.source_name,
         discovery: keepState.get(insp.recipe_id)?.discovery ?? null,
         kept: Boolean(keepState.get(insp.recipe_id)?.keptAt),
       });
+      if (!qualified) continue;
       // A pairing is returned separately so no caller can mistake a featured
       // seasonal salad for a dinner main.
-      if (role.role === "pairing") pairings.push(card);
-      else candidates.push(card);
+      if (qualified.role === "pairing") pairings.push(qualified.candidate);
+      else candidates.push(qualified.candidate);
     }
 
     return NextResponse.json({ week, candidates: applySourceCaps(candidates, limit), pairings });
@@ -309,11 +317,12 @@ export async function POST(request: NextRequest) {
         if (plannerExclusionIds.has(insp.recipe_id)) continue;
         if (provenance.recentRecipeIds.has(insp.recipe_id) || (insp.source_url && provenance.recentSourceUrls.has(insp.source_url))) continue;
         const recipe = await getMyRecipe(insp.recipe_id);
-        if (recipe && classifyPlannerRole(recipe).role !== "reject") {
-          fallbackPool.push(recipeToCandidate(recipe, {
+        if (recipe) {
+          const qualified = qualifiedRecipeCandidate(recipe, {
             source_url: insp.source_url,
             source_name: insp.source_name,
-          }));
+          });
+          if (qualified && qualified.role !== "pairing") fallbackPool.push(qualified.candidate);
         }
       }
 
@@ -356,12 +365,14 @@ export async function POST(request: NextRequest) {
     // idea is never returned to the planner unless the importer wrote it to
     // the app DB, so quick view/detail resolution stays normal.
     const recorded = await recordEligibleImports(week, report, plannerExclusionIds, provenance);
-    const candidates: RecipeOption[] = recorded.accepted.map(({ recipe, url, source, discovery }) =>
-      recipeToCandidate(recipe, { source_url: url, source_name: source, discovery }),
-    );
-    const pairings: RecipeOption[] = recorded.pairings.map(({ recipe, url, source, discovery }) =>
-      recipeToCandidate(recipe, { source_url: url, source_name: source, discovery }),
-    );
+    const candidates: RecipeOption[] = recorded.accepted.flatMap(({ recipe, url, source, discovery }) => {
+      const qualified = qualifiedRecipeCandidate(recipe, { source_url: url, source_name: source, discovery });
+      return qualified && qualified.role !== "pairing" ? [qualified.candidate] : [];
+    });
+    const pairings: RecipeOption[] = recorded.pairings.flatMap(({ recipe, url, source, discovery }) => {
+      const qualified = qualifiedRecipeCandidate(recipe, { source_url: url, source_name: source, discovery });
+      return qualified?.role === "pairing" ? [qualified.candidate] : [];
+    });
     const { skippedDuplicates, skippedNonMain, missingMyRecipeIds } = recorded;
 
     // If the importer ran out of fresh/new URLs after filtering, top up with
@@ -384,11 +395,12 @@ export async function POST(request: NextRequest) {
         if (provenance.recentRecipeIds.has(insp.recipe_id) || (insp.source_url && provenance.recentSourceUrls.has(insp.source_url))) continue;
         if (candidates.some((c) => c.id === insp.recipe_id)) continue;
         const recipe = await getMyRecipe(insp.recipe_id);
-        if (recipe && classifyPlannerRole(recipe).role !== "reject") {
-          topUpPool.push(recipeToCandidate(recipe, {
+        if (recipe) {
+          const qualified = qualifiedRecipeCandidate(recipe, {
             source_url: insp.source_url,
             source_name: insp.source_name,
-          }));
+          });
+          if (qualified && qualified.role !== "pairing") topUpPool.push(qualified.candidate);
         }
       }
       const slotsNeeded = count - candidates.length;

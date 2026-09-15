@@ -49,8 +49,10 @@ function makeRecipe(id: string, name: string, extra: Partial<Recipe> = {}): Reci
       { item: "olive oil", amount: "2 tbsp" },
       { item: "salt", amount: "" },
     ],
-    method: ["Step one.", "Step two."],
+    method: ["Prepare all ingredients for the recipe.", "Cook everything until it is ready to serve."],
     category: { dish_type: ["main"], chapter: "" },
+    image: `/recipes/${id}.jpg`,
+    time: { total: 30 },
     ...extra,
   };
 }
@@ -244,7 +246,7 @@ describe("saveMealPlan candidate-set boundary", () => {
     deepStrictEqual(removed.map((r) => [r.recipeId, ...r.reasons]), [["gate-fail", "not-main-eligible"]]);
   });
 
-  it("keeps unresolvable candidate items unchanged (backward-compatible reads)", async () => {
+  it("drops unresolvable candidate items because they cannot pass visible-card QA", async () => {
     const ghostItem = { ...candidateItem("fresh-vichyssoise"), recipeId: "ghost-recipe", recipeName: "Ghost", bucket: "fish" as const };
     const plan = makePlan("2026-W46", {
       candidateSet: {
@@ -257,8 +259,11 @@ describe("saveMealPlan candidate-set boundary", () => {
     const result = await saveMealPlan(plan, { resolveRecipe });
     ok(result.ok);
     const stored = await loadMealPlan("2026-W46");
-    equal(stored!.candidateSet!.items[0].recipeId, "ghost-recipe");
-    equal(stored!.candidateSet!.items[0].bucket, "fish", "stale bucket kept when recipe is unresolvable");
+    deepStrictEqual(stored!.candidateSet!.items, []);
+    deepStrictEqual(
+      result.ok ? result.candidateSanitation?.removed.map((row) => [row.recipeId, ...row.reasons]) : [],
+      [["ghost-recipe", "recipe-render-qa"]],
+    );
   });
 
   it("still rejects writes to a locked plan", async () => {

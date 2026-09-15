@@ -18,6 +18,7 @@ import {
   type CandidateRelabel,
 } from "./meals-core.ts";
 import { SHELF_POLICY_VERSION } from "./planner-shelf.ts";
+import { hydrateShelfItems, toCandidateItem } from "./planner-preparation.ts";
 import type { MealPlan } from "./meals";
 import type { Recipe } from "./recipes";
 
@@ -275,20 +276,27 @@ async function enforceCandidateSaveBoundary(
     negativeFeedback: exclusions.negativeFeedback,
   });
 
-  const reclassified = await reclassifyCandidateItems(
-    sanitized.items,
-    deps.resolveRecipe ?? defaultResolveRecipe,
-  );
+  const resolveRecipe = deps.resolveRecipe ?? defaultResolveRecipe;
+  const reclassified = await reclassifyCandidateItems(sanitized.items, resolveRecipe);
+  const hydrated = await hydrateShelfItems(reclassified.items, assignedIds, resolveRecipe, new Date());
+  const hydratedIds = new Set(hydrated.map((item) => item.recipeId));
+  const qaDropped: CandidateRemoval[] = reclassified.items
+    .filter((item) => !hydratedIds.has(item.recipeId))
+    .map((item) => ({
+      recipeId: item.recipeId,
+      recipeName: item.recipeName,
+      reasons: ["recipe-render-qa"],
+    }));
 
   const summary: CandidateSanitationSummary = {
-    removed: [...sanitized.removed, ...reclassified.dropped],
+    removed: [...sanitized.removed, ...reclassified.dropped, ...qaDropped],
     relabeled: reclassified.relabeled,
   };
 
   return {
     plan: {
       ...plan,
-      candidateSet: { ...plan.candidateSet, items: reclassified.items },
+      candidateSet: { ...plan.candidateSet, items: hydrated.map(toCandidateItem) },
     },
     summary,
   };

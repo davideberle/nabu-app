@@ -14,11 +14,14 @@ describe("Phase 4E visible-candidate wiring", () => {
     match(source, /qaRecipeForShelf\(raw, \{ role: role\.role \}\)/);
   });
 
-  it("gates stored web inspirations before returning visible cards", () => {
+  it("gates every stored/imported web path before returning visible cards", () => {
     const source = read("../app/api/meals/inspirations/route.ts");
-    match(source, /const checked = qaRecipeForShelf\(raw,/);
-    match(source, /if \(!checked\.ok\) continue;/);
-    match(source, /recipeToCandidate\(checked\.recipe,/);
+    match(source, /function qualifiedRecipeCandidate/);
+    match(source, /const checked = qaRecipeForShelf\(recipe,/);
+    match(source, /if \(!checked\.ok\) return null;/);
+    match(source, /recipeToCandidate\(checked\.recipe, provenance\)/);
+    doesNotMatch(source, /(?:fallbackPool|topUpPool)\.push\(recipeToCandidate/);
+    doesNotMatch(source, /recorded\.(?:accepted|pairings)\.map\([^]*recipeToCandidate/);
   });
 
   it("preserves the weekly dismissal ledger across both regeneration paths", () => {
@@ -29,7 +32,8 @@ describe("Phase 4E visible-candidate wiring", () => {
 
   it("does not grow a current Phase 4E shelf with supplemental web cards or expose old generators", () => {
     const source = read("../app/meals/page.tsx");
-    match(source, /allowLegacyWebMerge = !data\.candidateSet\.policyVersion\.startsWith\(SHELF_POLICY_VERSION\)/);
+    match(source, /allowLegacyWebMerge = !data\.candidateSet\?\.policyVersion\?\.startsWith\(SHELF_POLICY_VERSION\)/);
+    match(source, /if \(!allowDirectWebSeed\) return;/);
     doesNotMatch(source, />Generate from recipe book</);
     doesNotMatch(source, />Research web ideas</);
   });

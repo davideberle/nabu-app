@@ -30,7 +30,7 @@ import {
   type ShelfTraits,
   type WeeklyShelf,
 } from "./planner-shelf.ts";
-import { MIN_PLAUSIBLE_TOTAL_MINUTES, MAX_PLAUSIBLE_TOTAL_MINUTES, type RecipeQaDiagnostic } from "./recipe-render-qa.ts";
+import { MIN_PLAUSIBLE_TOTAL_MINUTES, MAX_PLAUSIBLE_TOTAL_MINUTES, qaRecipeForShelf, type RecipeQaDiagnostic } from "./recipe-render-qa.ts";
 import { SHELF_TARGET } from "./planner-sources.ts";
 import { classifyPlannerRole } from "./planner-roles.ts";
 import { candidateDisplay, deriveShelfDisplay, type ShelfDisplay } from "./planner-display.ts";
@@ -171,10 +171,10 @@ export function toCandidateItem(item: ShelfItem) {
 /**
  * Rebuild live shelf items from a persisted candidate set.
  *
- * Sets written before `planner-shelf-1` carry no origin/role/traits. Rather
- * than inventing them, the recipe is re-resolved and its traits re-derived; an
- * item whose recipe no longer resolves is kept with neutral traits so a
- * targeted replacement can never silently drop a card it failed to read.
+ * Every item is re-resolved and passed through the same QA gate as a newly
+ * prepared shelf. Persisted metadata is never trusted as proof that the source
+ * recipe is still display-safe. Missing or failing recipes are omitted from
+ * the visible shelf; assigned day data itself remains untouched.
  */
 export async function hydrateShelfItems(
   items: readonly {
@@ -202,62 +202,25 @@ export async function hydrateShelfItems(
     if (!item?.recipeId) continue;
     const assigned = assignedRecipeIds.has(item.recipeId);
 
-    if (item.traits && item.origin && item.role) {
-      hydrated.push({
-        recipeId: item.recipeId,
-        recipeName: item.recipeName ?? item.recipeId,
-        origin: item.origin === "web" ? "web" : "catalog",
-        discovery: (item.discovery as ShelfItem["discovery"]) ?? "catalog",
-        sourceName: item.source?.cookbook ?? null,
-        role: item.role as ShelfItem["role"],
-        bucket: (item.bucket as ShelfItem["bucket"]) ?? "vegetarian",
-        cuisine: item.cuisine ?? "Other",
-        image: item.image ?? null,
-        traits: item.traits,
-        ...(item.completion ? { completion: item.completion } : {}),
-        display: item.display ?? candidateDisplay(item),
-        reason: item.reason ?? "",
-        assigned,
-      });
-      continue;
-    }
-
     const recipe = await resolveRecipe(item.recipeId).catch(() => null);
-    if (recipe) {
-      const candidate = toShelfCandidate(
-        recipe,
-        { origin: item.origin === "web" ? "web" : "catalog", discovery: item.origin === "web" ? "search" : "catalog" },
-        now,
-      );
-      hydrated.push({ ...candidate, reason: item.reason ?? "Saved earlier this week", assigned });
-      continue;
-    }
-
-    hydrated.push({
-      recipeId: item.recipeId,
-      recipeName: item.recipeName ?? item.recipeId,
-      origin: item.origin === "web" ? "web" : "catalog",
-      discovery: "catalog",
-      sourceName: item.source?.cookbook ?? null,
-      role: "main",
-      bucket: (item.bucket as ShelfItem["bucket"]) ?? "vegetarian",
-      cuisine: item.cuisine ?? "Other",
-      image: item.image ?? null,
-      traits: {
-        shape: "other",
-        protein: "vegetarian",
-        starch: "none",
-        effort: "medium",
-        weekdayFit: true,
-        weekendFit: true,
-        vegetableDense: false,
-        seasonalLocal: false,
-        longHaul: false,
+    if (!recipe) continue;
+    const role = classifyPlannerRole(recipe);
+    if (role.role === "reject" || role.role === "pairing") continue;
+    const checked = qaRecipeForShelf(recipe, { role: role.role });
+    if (!checked.ok) continue;
+    const origin = item.origin === "web" ? "web" : "catalog";
+    const candidate = toShelfCandidate(
+      checked.recipe,
+      {
+        origin,
+        discovery: origin === "web"
+          ? (item.discovery === "editorial" ? "editorial" : "search")
+          : "catalog",
+        sourceName: item.source?.cookbook ?? null,
       },
-      display: item.display ?? candidateDisplay(item),
-      reason: item.reason ?? "Saved earlier this week",
-      assigned,
-    });
+      now,
+    );
+    hydrated.push({ ...candidate, reason: item.reason ?? "Saved earlier this week", assigned });
   }
   return hydrated;
 }
@@ -847,7 +810,9 @@ export async function rolloverWeek(week: string, deps: RolloverDeps): Promise<Ro
         .filter((id): id is string => typeof id === "string" && id.length > 0),
       // Dismissed with "Not this week": shown and not chosen, exactly one
       // exposure — never a permanent dislike.
-      ...notThisWeekIds(plan?.candidateSet),
+      ...(plan?.candidateSet?.notThisWeek ?? [])
+        .filter((record) => record?.origin !== "web")
+        .map((record) => record.recipeId),
       ...assignedThisWeek,
     ];
 

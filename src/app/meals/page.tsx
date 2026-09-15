@@ -126,7 +126,7 @@ type CandidateSet = {
   items: CandidateItem[];
   diagnostics?: CandidateDiagnostics;
   reserves?: CandidateReserve[];
-  notThisWeek?: { recipeId: string; at: string }[];
+  notThisWeek?: { recipeId: string; at: string; origin?: "web" | "catalog" }[];
   qaDiagnostics?: { recipeId: string; recipeName: string; issues: string[]; fixes: string[] }[];
 };
 
@@ -726,7 +726,7 @@ function MealsPageInner() {
     // current/future week the server ensures the FOOBY-led weekly set on this
     // GET, so a brand-new week gets its web ideas without a manual research
     // click.
-    const loadWebInspirations = (seededVisibleForThisWeek: boolean) => {
+    const loadWebInspirations = (allowDirectWebSeed: boolean) => {
       fetch(`/api/meals/inspirations?week=${encodeURIComponent(weekId)}`)
         .then((r) => (r.ok ? r.json() : { candidates: [] }))
         .then((inspData: { candidates?: RecipeOption[] }) => {
@@ -741,10 +741,11 @@ function MealsPageInner() {
           });
           if (webCandidates.length === 0) return;
           if (candidatesRef.current.length === 0) {
+            if (!allowDirectWebSeed) return;
             candidatesRef.current = webCandidates;
             setCandidates(webCandidates);
             setIdeaMetadata(null);
-          } else if (seededVisibleForThisWeek) {
+          } else if (allowDirectWebSeed) {
             const visibleCandidates = mergeUniqueCandidates(candidatesRef.current, webCandidates);
             candidatesRef.current = visibleCandidates;
             setCandidates(visibleCandidates);
@@ -769,7 +770,7 @@ function MealsPageInner() {
               .catch(() => {});
           }
           commitPlan(normalized);
-          let allowLegacyWebMerge = false;
+          const allowLegacyWebMerge = !data.candidateSet?.policyVersion?.startsWith(SHELF_POLICY_VERSION);
           // Restore saved candidates with full card data for stable reload,
           // then reconcile images against current canonical recipe data to
           // prevent stale persisted images from resurfacing. Ideas are
@@ -783,7 +784,6 @@ function MealsPageInner() {
                 generatedAt: data.candidateSet.generatedAt,
                 policyVersion: data.candidateSet.policyVersion,
               });
-              allowLegacyWebMerge = !data.candidateSet.policyVersion.startsWith(SHELF_POLICY_VERSION);
             }
 
             // Reconcile: fetch current canonical images and patch any stale ones.
@@ -834,7 +834,7 @@ function MealsPageInner() {
           loadWebInspirations(allowLegacyWebMerge);
         } else {
           setPlan(null);
-          loadWebInspirations(false);
+          loadWebInspirations(true);
         }
         // Load persisted feedback for this week
         fetch(`/api/meals/feedback?week=${weekId}`)

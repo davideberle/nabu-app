@@ -1205,14 +1205,14 @@ export function shortlistShelf<T extends ShortlistItem>(
 // Not this week (Phase 4E)
 // ---------------------------------------------------------------------------
 
-export type NotThisWeekRecord = { recipeId: string; at: string };
+export type NotThisWeekRecord = { recipeId: string; at: string; origin?: "web" | "catalog" };
 
 /**
  * Remove one unassigned idea from the shelf for this week only. The record
  * lives with the week's candidate set — it is exposure state, never a taste
  * preference — and an assigned idea is left where it is.
  */
-export function applyNotThisWeek<T extends { recipeId: string }>(
+export function applyNotThisWeek<T extends { recipeId: string; origin?: string }>(
   set: { items: readonly T[]; notThisWeek?: readonly NotThisWeekRecord[] | null },
   recipeId: string,
   assignedRecipeIds: ReadonlySet<string>,
@@ -1222,11 +1222,15 @@ export function applyNotThisWeek<T extends { recipeId: string }>(
   if (assignedRecipeIds.has(recipeId)) {
     return { items: [...set.items], notThisWeek: existing, removed: false, protectedAssigned: true };
   }
+  const target = set.items.find((item) => item.recipeId === recipeId);
   const items = set.items.filter((item) => item.recipeId !== recipeId);
   const removed = items.length !== set.items.length;
-  const notThisWeek = existing.some((r) => r.recipeId === recipeId)
+  const origin: NotThisWeekRecord["origin"] =
+    target?.origin === "web" || target?.origin === "catalog" ? target.origin : undefined;
+  const record: NotThisWeekRecord = { recipeId, at: now.toISOString(), ...(origin ? { origin } : {}) };
+  const notThisWeek: NotThisWeekRecord[] = existing.some((r) => r.recipeId === recipeId)
     ? existing
-    : [...existing, { recipeId, at: now.toISOString() }];
+    : [...existing, record];
   return { items, notThisWeek, removed, protectedAssigned: false };
 }
 

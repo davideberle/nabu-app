@@ -646,6 +646,20 @@ describe("week rollover", () => {
     ok(!exposed.includes("catalog-assigned"), "a chosen recipe was not ignored");
   });
 
+  it("does not give a dismissed web idea a catalog exposure strike", async () => {
+    const plan = planWithShelf("catalog-assigned");
+    plan.candidateSet!.notThisWeek = [
+      { recipeId: "dismissed-web", at: NOW.toISOString(), origin: "web" },
+      { recipeId: "dismissed-catalog", at: NOW.toISOString(), origin: "catalog" },
+    ];
+    const h = rolloverHarness({ plan, staged: [] });
+    await rolloverWeek("2026-W33", h.deps);
+
+    const exposed = h.written.filter((r) => r.exposureCount > 0).map((r) => r.recipeId);
+    ok(!exposed.includes("dismissed-web"));
+    ok(exposed.includes("dismissed-catalog"));
+  });
+
   it("writes the strikes and their ledger rows in one transactional call", async () => {
     // The branch the deployed runtime takes: planner-runtime supplies
     // `saveExposureWithCountedIds`, so rollover must never fall back to the two
@@ -973,15 +987,16 @@ describe("helpers", () => {
         ? {
             id, name: "Legacy One", servings: "4",
             ingredients: [{ item: "pasta", amount: "300 g" }, { item: "tomato", amount: "4" }, { item: "basil", amount: "" }],
-            method: ["One.", "Two."],
+            method: ["Prepare the vegetables and pasta for cooking.", "Cook the pasta and sauce until ready to serve."],
             category: { dish_type: ["main"], chapter: "" },
+            image: "/recipes/legacy-1.jpg",
+            time: { total: 30 },
           }
         : undefined;
 
     const items = await hydrateShelfItems(legacy, new Set(["legacy-1"]), resolve, NOW);
-    equal(items.length, 2, "an unresolvable card is kept, not silently dropped");
+    equal(items.length, 1, "an unresolvable card is omitted because it cannot pass visible-card QA");
     equal(items[0].traits.starch, "pasta", "traits are re-derived rather than invented");
     equal(items[0].assigned, true);
-    equal(items[1].recipeId, "gone");
   });
 });

@@ -660,7 +660,8 @@ export type CandidateRemovalReason =
   | "recently-planned"
   | "recently-offered"
   | "negative-feedback"
-  | "not-main-eligible";
+  | "not-main-eligible"
+  | "recipe-render-qa";
 
 export type CandidateRemoval = {
   recipeId: string;

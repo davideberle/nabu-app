@@ -3,8 +3,8 @@ import type { NextRequest } from "next/server";
 import { auth } from "@/auth";
 import { isTrackerOnlyEmail } from "@/lib/access";
 import { saveMealPlan, loadMealPlan } from "@/lib/meals-persistence";
-import { reclassifyCandidateItems, type MealPlan } from "@/lib/meals";
-import { assignedRecipeIdsForPlan, withShelfDisplay } from "@/lib/planner-preparation";
+import type { MealPlan } from "@/lib/meals";
+import { assignedRecipeIdsForPlan, hydrateShelfItems, toCandidateItem } from "@/lib/planner-preparation";
 import { completePlanShelf } from "@/lib/planner-runtime";
 import { getRecipe } from "@/lib/recipes";
 
@@ -27,13 +27,9 @@ export async function GET(request: NextRequest) {
     if (!plan) {
       return NextResponse.json(null);
     }
-    // Persisted bucket labels never override the authoritative classifier —
-    // reclassify on the way out so stale stored labels cannot reach the UI.
-    //
-    // The display contract is attached in the same pass. It is a read-time
-    // derivation on purpose: a week prepared before the contract existed gains
-    // its groups, editorial notes and light-meal labels here, without its shelf
-    // being regenerated or any day assignment moving.
+    // Re-resolve and QA every card on the way out. Historical or manually
+    // written metadata is never proof that the underlying recipe is safe to
+    // render; invalid cards disappear while assigned days remain untouched.
     if (plan.candidateSet?.items?.length) {
       // Both passes resolve the same ~13 recipes; memoize so a shelf costs one
       // lookup per recipe rather than two round-trips each.
@@ -46,11 +42,15 @@ export async function GET(request: NextRequest) {
         return pending;
       };
 
-      const { items } = await reclassifyCandidateItems(plan.candidateSet.items, resolveRecipe);
-      const displayed = await withShelfDisplay(items, resolveRecipe, new Date());
+      const items = await hydrateShelfItems(
+        plan.candidateSet.items,
+        assignedRecipeIdsForPlan(plan),
+        resolveRecipe,
+        new Date(),
+      );
       return NextResponse.json({
         ...plan,
-        candidateSet: { ...plan.candidateSet, items: displayed },
+        candidateSet: { ...plan.candidateSet, items: items.map(toCandidateItem) },
       });
     }
     return NextResponse.json(plan);

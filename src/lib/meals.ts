@@ -326,7 +326,7 @@ export type CandidateSet = {
    * state for the week, never a permanent dislike: they stay out of this
    * week's shelf and count as one unselected exposure at rollover.
    */
-  notThisWeek?: { recipeId: string; at: string }[];
+  notThisWeek?: { recipeId: string; at: string; origin?: "web" | "catalog" }[];
   /** Rejected records and safe auto-fixes observed while preparing this shelf. */
   qaDiagnostics?: { recipeId: string; recipeName: string; issues: string[]; fixes: string[] }[];
 };

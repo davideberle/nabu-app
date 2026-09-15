@@ -292,10 +292,11 @@ describe("shortlist and Not this week", () => {
     equal(primary.length + secondary.length, rows.length);
   });
   it("removes the idea for the week only and protects assigned ideas", () => {
-    const set = { items: [{ recipeId: "a" }, { recipeId: "b" }], notThisWeek: [] };
+    const set = { items: [{ recipeId: "a", origin: "web" as const }, { recipeId: "b", origin: "catalog" as const }], notThisWeek: [] };
     const out = applyNotThisWeek(set, "a", new Set<string>(), NOW);
     deepStrictEqual(out.items.map((i) => i.recipeId), ["b"]);
     deepStrictEqual(out.notThisWeek.map((r) => r.recipeId), ["a"]);
+    equal(out.notThisWeek[0].origin, "web");
     const kept = applyNotThisWeek(set, "b", new Set(["b"]), NOW);
     equal(kept.protectedAssigned, true);
     equal(kept.items.length, 2);
