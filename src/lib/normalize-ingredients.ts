@@ -95,6 +95,10 @@ const IMP_WT = "ounces?|oz\\.?|pounds?|lbs?\\.?";
 const IMP_VOL = "cups?|gallons?|pints?|quarts?|fl\\.?\\s*oz\\.?";
 // Combined imperial units
 const IMP_ALL = `${IMP_WT}|${IMP_VOL}`;
+// Count and spoon measures frequently stranded at the start of an item by
+// cookbook/PDF importers. Keeping this list explicit makes the repair safe:
+// a bare quantity plus one of these nouns is unambiguously one measurement.
+const COMMON_ITEM_UNITS = "teaspoons?|tablespoons?|tsp\\.?|tbsp\\.?|cloves?|sprigs?|pinches?|handfuls?";
 // Metric units (includes common misspelling "gr" for grams)
 const METRIC_U = "g|gr|kg|ml|l|L|dl";
 
@@ -134,7 +138,7 @@ export function normalizeIngredient(
   // ── 1. If item starts with an imperial unit word, merge it into the amount.
   //    e.g. amount "9", item "ounces dried soba noodles" → "9 ounces" / "dried soba noodles"
   const itemUnitRe = new RegExp(
-    `^(${IMP_ALL})\\b\\s*(.*)`, "i",
+    `^(${IMP_ALL}|${COMMON_ITEM_UNITS})\\b\\s*(.*)`, "i",
   );
   const itemUnitMatch = it.match(itemUnitRe);
   if (itemUnitMatch && /^[\d½¼¾⅓⅔⅛]/.test(a)) {
@@ -148,6 +152,20 @@ export function normalizeIngredient(
     if (leadingParens) {
       a = `${a} ${leadingParens[1]}`;
       it = leadingParens[2].trim();
+    }
+  }
+
+  // A mixed number can be split across fields by PDF extraction:
+  // amount "3", item "½ cups water". Rejoin it only when the item starts
+  // with a vulgar fraction and an explicit unit, leaving the ingredient name
+  // intact.
+  {
+    const splitMixed = it.match(
+      new RegExp(`^([¼½¾⅓⅔⅛])\\s*(${IMP_ALL}|${COMMON_ITEM_UNITS})\\b\\s*(.*)`, "i"),
+    );
+    if (splitMixed && /^\d+$/.test(a) && splitMixed[3].trim()) {
+      a = `${a}${splitMixed[1]} ${splitMixed[2]}`;
+      it = splitMixed[3].replace(/^of\s+/i, "").trim();
     }
   }
 

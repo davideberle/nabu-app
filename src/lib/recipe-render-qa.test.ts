@@ -58,6 +58,11 @@ describe("ingredient unit normalization", () => {
   it("renders a stranded metric unit with the number in every recipe view", () => {
     deepStrictEqual(normalizeIngredient("200", "g plain flour"), { amount: "200 g", item: "plain flour" });
   });
+  it("rejoins common measures and split mixed quantities in every recipe view", () => {
+    deepStrictEqual(normalizeIngredient("4", "teaspoons olive oil"), { amount: "4 tsp", item: "olive oil" });
+    deepStrictEqual(normalizeIngredient("1", "clove garlic"), { amount: "1 clove", item: "garlic" });
+    deepStrictEqual(normalizeIngredient("3", "½ cups water"), { amount: "3½ cups", item: "water" });
+  });
   it("moves a stranded metric unit from the item into unit when an amount is present", () => {
     for (const unit of ["g", "kg", "ml", "l"]) {
       const { ingredient, fix } = normalizeIngredientUnits({ item: `${unit} plain flour`, amount: "200" });
@@ -72,6 +77,12 @@ describe("ingredient unit normalization", () => {
     const { ingredient } = normalizeIngredientUnits({ item: "250 ml coconut milk", amount: "" });
     deepStrictEqual([ingredient.amount, ingredient.unit, ingredient.item], ["250", "ml", "coconut milk"]);
   });
+  it("safely rejoins a mixed quantity split across amount and item", () => {
+    const { ingredient, fix } = normalizeIngredientUnits({ item: "½ cups water", amount: "3" });
+    deepStrictEqual([ingredient.amount, ingredient.unit, ingredient.item], ["3½", "cups", "water"]);
+    equal(fix?.code, "split-mixed-quantity");
+    equal(renderIngredientLine(ingredient), "3½ cups water");
+  });
   it("leaves ambiguous lines alone and reports them", () => {
     const { ingredient, fix } = normalizeIngredientUnits({ item: "g", amount: "200" });
     equal(fix, null);
@@ -84,6 +95,17 @@ describe("ingredient unit normalization", () => {
     const { ingredient, fix } = normalizeIngredientUnits({ item: "ginger, grated", amount: "2", unit: "cm" });
     equal(fix, null);
     equal(ingredient.item, "ginger, grated");
+  });
+  it("quarantines importer debris that would render as a broken ingredient row", () => {
+    const result = qaRecipeForShelf(recipe({ ingredients: [
+      { item: "pprox 800g chopped pumpkin", amount: "a" },
+      { item: "½ cups water", amount: "3" },
+      { item: "&frac14; cup pepitas", amount: "" },
+    ] }));
+    const codes = new Set(result.issues.map((issue) => issue.code));
+    ok(codes.has("invalid-amount-token"));
+    ok(codes.has("html-entity"));
+    ok(codes.has("truncated-word"));
   });
 });
 

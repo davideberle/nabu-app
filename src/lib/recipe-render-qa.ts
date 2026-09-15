@@ -44,6 +44,10 @@ const STRANDED_UNIT_RE = /^(\d+(?:[.,]\d+)?)\s*(g|kg|ml|l|dl|cl)\b\.?\s+(.+)$/i;
 const AMOUNT_ONLY_RE = /^\s*(\d+(?:[.,]\d+)?|[¼½¾⅓⅔⅛]|\d+\s*[¼½¾⅓⅔⅛]|\d+\s*[-–]\s*\d+)\s*$/;
 const UNIT_ALREADY_RE = /\b(g|kg|ml|l|dl|cl|tsp|tbsp|cups?|oz|lb)\b/i;
 const METRIC_UNIT_SUFFIX_RE = /^(g|kg|ml|l|dl|cl)\b\.?\s*(.*)$/i;
+const SPLIT_MIXED_UNIT_RE = /^([¼½¾⅓⅔⅛])\s*(g|kg|ml|l|dl|cl|cups?|teaspoons?|tablespoons?|tsp|tbsp|cloves?)\b\.?\s*(.*)$/i;
+const HTML_ENTITY_RE = /&(?:#\d+|#x[0-9a-f]+|[a-z][a-z0-9]+);/i;
+const INVALID_SINGLE_TOKEN_AMOUNT_RE = /^[a-z]$/i;
+const SUSPICIOUS_TRUNCATION_RE = /^(?:pprox|ubergines)\b/i;
 
 /** Longest step (chars) before it is suspected of being several merged steps. */
 export const MAX_STEP_CHARS = 1400;
@@ -73,6 +77,23 @@ export function normalizeIngredientUnits(ingredient: Ingredient): { ingredient: 
   const unit = String(ingredient.unit ?? "").trim();
 
   if (unit) return { ingredient, fix: null };
+
+  // Case C: an integer amount and the fractional remainder were split across
+  // fields by a PDF importer: amount "3", item "½ cups water". This is one
+  // unambiguous measurement, so rejoin it without changing the item wording.
+  if (/^\d+$/.test(amount)) {
+    const m = item.trim().match(SPLIT_MIXED_UNIT_RE);
+    if (m && m[3].trim()) {
+      return {
+        ingredient: { ...ingredient, amount: `${amount}${m[1]}`, unit: m[2].toLowerCase(), item: m[3].replace(/^of\s+/i, "").trim() },
+        fix: {
+          field: "ingredients",
+          code: "split-mixed-quantity",
+          message: `rejoined "${amount}${m[1]} ${m[2]}" for "${m[3].trim()}"`,
+        },
+      };
+    }
+  }
 
   // Case A: the amount is a bare number and the item starts with the unit.
   if (amount && AMOUNT_ONLY_RE.test(amount) && !UNIT_ALREADY_RE.test(amount)) {
@@ -268,6 +289,7 @@ export function qaRecipeForShelf(recipe: Recipe, options: RecipeQaOptions = {}):
     if (normalized.fix) fixes.push(normalized.fix);
     const ing = normalized.ingredient;
     const item = ing.item.trim();
+    const amount = ing.amount.trim();
     if (!item) {
       issues.push({ field: "ingredients", code: "empty-item", message: `ingredient ${index + 1} has no item name` });
     } else if (/^(g|kg|ml|l|dl|cl)\b/i.test(item) && ing.amount.trim() && !ing.unit) {
@@ -276,6 +298,15 @@ export function qaRecipeForShelf(recipe: Recipe, options: RecipeQaOptions = {}):
       issues.push({ field: "ingredients", code: "unit-in-item", message: `ingredient ${index + 1} "${item}" carries its unit in the item name` });
     } else if (item.length > 160) {
       issues.push({ field: "ingredients", code: "unreadable", message: `ingredient ${index + 1} is ${item.length} characters long` });
+    }
+    if (INVALID_SINGLE_TOKEN_AMOUNT_RE.test(amount)) {
+      issues.push({ field: "ingredients", code: "invalid-amount-token", message: `ingredient ${index + 1} has the stray amount token "${amount}"` });
+    }
+    if (HTML_ENTITY_RE.test(`${amount} ${item}`)) {
+      issues.push({ field: "ingredients", code: "html-entity", message: `ingredient ${index + 1} contains an undecoded HTML entity` });
+    }
+    if (SUSPICIOUS_TRUNCATION_RE.test(item)) {
+      issues.push({ field: "ingredients", code: "truncated-word", message: `ingredient ${index + 1} begins with the truncated word "${item.split(/\s+/)[0]}"` });
     }
     ingredients.push(ing);
   });
