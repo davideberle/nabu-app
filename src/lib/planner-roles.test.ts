@@ -94,6 +94,28 @@ function recipe(overrides: Partial<Recipe> & { name: string }): Recipe {
   } as Recipe;
 }
 
+const W38_GRAPE_CROSTINI = recipe({
+  id: "roasted-grape-crostini-with-brie-and-fresh-thyme",
+  name: "Roasted Grape Crostini with Brie and Fresh Thyme",
+  category: { dish_type: ["main"], chapter: "" },
+  mealRole: "main",
+  visibility: "planner-candidate",
+  servings: "8",
+  time: { prep: 10, cook: 25, total: 35 },
+  ingredients: [
+    { item: "seedless red grapes", amount: "3 cups" },
+    { item: "olive oil", amount: "2 tablespoons" },
+    { item: "fresh thyme leaves", amount: "2 teaspoons" },
+    { item: "Brie", amount: "8 ounces" },
+    { item: "baguette", amount: "1" },
+    { item: "flaky salt", amount: "to serve" },
+  ],
+  method: [
+    "Roast the grapes with olive oil and thyme until blistered.",
+    "Toast the baguette slices, top with Brie and grapes, and serve.",
+  ],
+});
+
 // ---------------------------------------------------------------------------
 // Non-main rejection
 // ---------------------------------------------------------------------------
@@ -213,6 +235,55 @@ describe("mains and substantial light meals qualify", () => {
     equal(result.role, "pairing");
     equal(result.mainEligible, false);
     equal(result.pairingEligible, true);
+  });
+
+  it("keeps the production-shaped W38 grape-and-Brie crostini out of dinner main slots", () => {
+    const result = classifyPlannerRole(W38_GRAPE_CROSTINI);
+    equal(result.role, "pairing");
+    equal(result.category, "starter");
+    equal(result.mainEligible, false);
+    equal(result.pairingEligible, true);
+  });
+
+  it("also treats bruschetta as a starter while preserving substantial sandwiches and toasts", () => {
+    const bruschetta = recipe({
+      name: "White Bean and Tomato Bruschetta",
+      ingredients: [
+        { item: "cannellini beans", amount: "400 g" },
+        { item: "tomatoes", amount: "4" },
+        { item: "sourdough", amount: "8 slices" },
+        { item: "basil", amount: "1 bunch" },
+        { item: "garlic", amount: "1 clove" },
+        { item: "olive oil", amount: "2 tablespoons" },
+      ],
+    });
+    const sandwich = recipe({
+      name: "Roast Vegetable, White Bean and Feta Sandwich",
+      visibility: "planner-candidate",
+      ingredients: [
+        { item: "sourdough bread", amount: "8 slices" },
+        { item: "white beans", amount: "400 g" },
+        { item: "feta", amount: "150 g" },
+        { item: "aubergine", amount: "1" },
+        { item: "red pepper", amount: "1" },
+        { item: "rocket", amount: "2 handfuls" },
+      ],
+    });
+    const toast = recipe({
+      name: "White Bean and Mushroom Toasts",
+      ingredients: [
+        { item: "sourdough bread", amount: "8 slices" },
+        { item: "white beans", amount: "400 g" },
+        { item: "mushrooms", amount: "500 g" },
+        { item: "spinach", amount: "200 g" },
+        { item: "garlic", amount: "2 cloves" },
+        { item: "olive oil", amount: "2 tablespoons" },
+      ],
+    });
+
+    equal(classifyPlannerRole(bruschetta).mainEligible, false);
+    equal(classifyPlannerRole(sandwich).mainEligible, true);
+    equal(classifyPlannerRole(toast).mainEligible, true);
   });
 
   it("keeps a declared starter as a pairing rather than a main or a loss", () => {

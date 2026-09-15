@@ -18,6 +18,7 @@ import {
   type ShelfItem,
   type ShelfTraits,
 } from "./planner-shelf.ts";
+import { deriveShelfDisplay } from "./planner-display.ts";
 import { SHELF_TARGET } from "./planner-sources.ts";
 
 const NOW = new Date("2026-08-08T05:30:00.000Z"); // summer
@@ -127,6 +128,41 @@ describe("trait derivation", () => {
     equal(derived.protein, "meat");
     equal(derived.weekdayFit, false);
     equal(derived.weekendFit, true);
+  });
+
+  it("classifies explicit Brie in the production-shaped W38 crostini as vegetarian, never vegan", () => {
+    const derived = deriveShelfTraits(
+      {
+        name: "Roasted Grape Crostini with Brie and Fresh Thyme",
+        dietary: ["vegan"],
+        category: { dish_type: ["main"] },
+        time: { prep: 10, cook: 25, total: 35 },
+        ingredients: [
+          { item: "seedless red grapes" },
+          { item: "olive oil" },
+          { item: "fresh thyme leaves" },
+          { item: "Brie" },
+          { item: "baguette" },
+          { item: "flaky salt" },
+        ],
+      },
+      NOW,
+    );
+    equal(derived.protein, "vegetarian");
+    ok(!deriveShelfDisplay({ role: "pairing", traits: derived, time: { total: 35 } }).note.includes("plant-based"));
+  });
+
+  it("detects named dairy in either the title or ingredients", () => {
+    const titleOnly = deriveShelfTraits(
+      { name: "Brie and Grape Toasts", dietary: ["vegan"], ingredients: [{ item: "baguette" }, { item: "grapes" }] },
+      NOW,
+    );
+    const ingredientOnly = deriveShelfTraits(
+      { name: "Roasted Grape Toasts", dietary: ["vegan"], ingredients: [{ item: "baguette" }, { item: "Brie" }] },
+      NOW,
+    );
+    equal(titleOnly.protein, "vegetarian");
+    equal(ingredientOnly.protein, "vegetarian");
   });
 });
 

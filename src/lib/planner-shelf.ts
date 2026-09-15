@@ -232,7 +232,7 @@ const HERO_PATTERNS: [string, RegExp][] = [
 const FISH_WORDS = /\b(salmon|tuna|trout|cod|halibut|sea ?bass|bream|snapper|mackerel|sardines?|anchov\w*|prawns?|shrimps?|scallops?|mussels?|clams?|squid|calamari|octopus|seafood|fish)\b/;
 const MEAT_WORDS = /\b(chicken|beef|steak|pork|bacon|ham|lamb|mutton|duck|turkey|sausage|chorizo|veal|venison|meatballs?|prosciutto|pancetta|guanciale|salami)\b/;
 const VEGAN_MARKERS = /\b(vegan|plant[- ]based)\b/;
-const DAIRY_EGG = /\b(cheese|butter|cream|milk|yog(h)?urt|egg|eggs|parmesan|feta|halloumi|mozzarella|ricotta|mascarpone|honey)\b/;
+const DAIRY_EGG = /\b(cheeses?|butter|cream|milk|yog(h)?urt|eggs?|parmesan|pecorino|feta|halloumi|mozzarella|ricotta|mascarpone|burrata|brie|camembert|cheddar|gruy[eè]re|gorgonzola|stilton|cr[eè]me fra[iî]che|honey)\b/;
 
 const VEGETABLE_WORDS = /\b(tomato|courgette|zucchini|aubergine|eggplant|pepper|spinach|kale|chard|broccoli|cauliflower|carrot|fennel|leek|cabbage|beet|beetroot|celeriac|celery|pumpkin|squash|asparagus|pea|peas|green beans?|mushroom|onion|shallot|garlic|cucumber|radish|artichoke|corn|lettuce|rocket|arugula|herb)\b/g;
 
@@ -305,17 +305,22 @@ export function deriveShelfTraits(recipe: TraitSourceRecipe, now: Date): ShelfTr
     }
   }
 
-  // Dietary facts outrank word-spotting. A declared vegan recipe is vegan even
-  // when it uses vegan fish sauce; "fish sauce" alone never makes a fish dish.
+  // Dietary facts outrank animal-protein word-spotting ("vegan fish sauce" is
+  // still vegan), but explicit dairy/egg evidence outranks a contradictory or
+  // stale vegan label.
   const declaredVegan = dietary.includes("vegan") || VEGAN_MARKERS.test(name);
   const declaredVegetarian = declaredVegan || dietary.includes("vegetarian");
   const proteinText = `${name} ${ingredientText}`.replace(CONDIMENT_NOISE, " ");
   const hasFish = FISH_WORDS.test(proteinText);
   const hasMeat = MEAT_WORDS.test(proteinText);
+  const hasDairyEgg = DAIRY_EGG.test(`${name} ${ingredientText}`);
 
   let protein: ProteinLane;
   if (declaredVegan) {
-    protein = "vegan";
+    // Explicit animal-derived ingredients outrank contradictory or stale
+    // dietary metadata. In particular, named cheeses such as Brie must never
+    // produce the "plant-based" shelf label.
+    protein = hasDairyEgg ? "vegetarian" : "vegan";
   } else if (declaredVegetarian) {
     protein = "vegetarian";
   } else if (hasMeat) {
@@ -323,7 +328,7 @@ export function deriveShelfTraits(recipe: TraitSourceRecipe, now: Date): ShelfTr
   } else if (hasFish) {
     protein = "fish";
   } else {
-    protein = DAIRY_EGG.test(ingredientText) ? "vegetarian" : "vegan";
+    protein = hasDairyEgg ? "vegetarian" : "vegan";
   }
 
   // An implausible total (a "3-minute" tofu braise) is a parser defect and

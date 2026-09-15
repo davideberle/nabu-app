@@ -91,6 +91,9 @@ const COLLECTION_NAME = /^\s*\d+\s+.*\brecipes?\b|\b(recipe roundup|recipe colle
 /** Names that read as a light meal rather than a component or a full main. */
 const LIGHT_MEAL_NAME = /\b(sandwich|sandwiches|wrap|wraps|tartines?|toasties|panini|bruschetta|flatbread|pita pocket|grain bowl|buddha bowl|nourish bowl|salad bowl|frittata|tortilla|omelette|omelet|quiche|galette|savou?ry tart|shakshuka|mezze plate|platter|soup|chowder|broth bowl)\b/i;
 
+/** Small topped-bread formats whose identity is a starter, not a full dinner. */
+const APPETIZER_TOAST_NAME = /\b(crostin[io]|bruschett[ae])\b/i;
+
 /** Protein/legume/substance markers that let a light meal carry a dinner. */
 const SUBSTANCE_MARKERS = /\b(chicken|beef|pork|lamb|duck|turkey|fish|salmon|tuna|cod|prawns?|shrimp|tofu|tempeh|seitan|halloumi|paneer|feta|mozzarella|goat[’']?s? cheese|egg|eggs|lentils?|chickpeas?|beans?|quinoa|farro|bulgur|barley|rice|noodles?|pasta|potato|potatoes|freekeh|couscous)\b/i;
 
@@ -369,6 +372,20 @@ export function classifyPlannerRole(recipe: Recipe): RoleClassification {
       mainEligible: false,
       pairingEligible: true,
       reasons: [`declared ${declaredPairing} — useful as a pairing, not a dinner main`],
+    };
+  }
+
+  // Crostini and bruschetta remain starter/pairing ideas even when an importer
+  // blanket-stamps them as `main` and their bread/cheese passes the broad plate
+  // anchor. This is intentionally narrower than "toast" or "sandwich": a
+  // genuinely substantial topped toast or sandwich can still carry dinner.
+  if (APPETIZER_TOAST_NAME.test(name)) {
+    return {
+      role: "pairing",
+      category: "starter",
+      mainEligible: false,
+      pairingEligible: true,
+      reasons: ["crostini/bruschetta identity — useful as a starter, not a dinner main"],
     };
   }
 
