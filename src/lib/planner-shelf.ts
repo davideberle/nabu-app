@@ -470,7 +470,16 @@ export type AdmissionResult = { ok: true } | AdmissionRefusal;
 export type AdmissionOptions = {
   /** Set only when the eligible catalog pool is demonstrably too small for the cap. */
   relaxCookbookCap?: boolean;
+  /** Bound one display lane so the assembler cannot create a shelf its own health check rejects. */
+  maxPerDisplayGroup?: number;
 };
+
+function displayGroup(item: ShelfCandidate): "easy-light" | "everyday-dinners" | "worth-more-time" {
+  if (item.role === "light-meal") return "easy-light";
+  if (item.traits.effort === "project") return "worth-more-time";
+  if (item.traits.effort === "quick" || item.traits.shape === "salad") return "easy-light";
+  return "everyday-dinners";
+}
 
 export function canAdmit(
   candidate: ShelfCandidate,
@@ -527,6 +536,14 @@ export function canAdmit(
     if (sameHero >= SHELF_LIMITS.maxPerHero) {
       return { ok: false, reason: `${candidate.traits.hero}-led ideas already at ${SHELF_LIMITS.maxPerHero}` };
     }
+  }
+
+  const maxPerDisplayGroup =
+    options.maxPerDisplayGroup ?? Math.floor(SHELF_TARGET.min * SHELF_LIMITS.maxGroupShare);
+  const group = displayGroup(candidate);
+  const inGroup = current.filter((item) => displayGroup(item) === group).length;
+  if (inGroup >= maxPerDisplayGroup) {
+    return { ok: false, reason: `${group} group already at ${maxPerDisplayGroup}` };
   }
 
   return { ok: true };

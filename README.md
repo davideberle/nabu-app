@@ -1,9 +1,3 @@
----
-created: 2026-09-15T11:26:11.017Z
-updated: 2026-09-15T11:26:11.017Z
-status: active
----
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

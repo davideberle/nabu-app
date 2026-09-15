@@ -12,6 +12,7 @@ import {
 } from "./recipe-render-qa.ts";
 import {
   applyNotThisWeek,
+  assembleWeeklyShelf,
   assessShelfQuality,
   canAdmit,
   completeShelfAgainstPlan,
@@ -172,6 +173,25 @@ function item(overrides: Partial<ShelfItem> = {}): ShelfItem {
 }
 
 describe("shelf quality and health", () => {
+  it("the assembler cannot create a shelf its display-group health rule rejects", () => {
+    const efforts = ["quick", "medium", "project"] as const;
+    const pool = Array.from({ length: 24 }, (_, index) =>
+      cand({
+        cuisine: `Cuisine ${index}`,
+        traits: traits({
+          effort: efforts[index % efforts.length],
+          shape: index % 5 === 0 ? "salad" : "other",
+        }),
+      }),
+    );
+    const shelf = assembleWeeklyShelf({ web: [], catalog: pool });
+    const problems = assessShelfQuality(shelf.items, {
+      webConsidered: shelf.diagnostics.webConsidered,
+      cookbookCapRelaxed: shelf.diagnostics.cookbookCapRelaxed,
+    });
+    ok(!problems.some((problem) => /group/.test(problem)), problems.join("\n"));
+  });
+
   it("caps a cookbook at two catalog ideas and a hero ingredient at two", () => {
     const current = [cand({ sourceName: "Vegan Vietnamese" }), cand({ sourceName: "Vegan Vietnamese" })];
     const third = canAdmit(cand({ sourceName: "Vegan Vietnamese" }), current);
@@ -237,7 +257,7 @@ describe("context-aware completion", () => {
 
 describe("shortlist and Not this week", () => {
   it("shows 5–7 strongest first with a weekend idea and group variation", () => {
-    const rows = [
+    const rows: { recipeId: string; traits: ShelfTraits; assigned?: boolean }[] = [
       ...Array.from({ length: 8 }, (_, i) => ({ recipeId: `q${i}`, traits: traits({ effort: "quick" }) })),
       { recipeId: "proj", traits: traits({ effort: "project" }) },
       { recipeId: "mid", traits: traits({ effort: "medium" }) },

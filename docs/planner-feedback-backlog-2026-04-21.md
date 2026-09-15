@@ -1,9 +1,3 @@
----
-created: 2026-09-15T11:26:11.017Z
-updated: 2026-09-15T11:26:11.017Z
-status: active
----
-
 # Planner & UI Feedback Backlog
 
 **Date:** 2026-04-21

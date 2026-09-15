@@ -84,6 +84,9 @@ const SPECS: Spec[] = [
 ];
 
 function recipeFor(spec: Spec): Recipe {
+  const project = /slow braised|tagine|duck legs/.test(spec.name.toLowerCase());
+  const quick = /stir-fry|noodles|chili|dal|soup|fried rice/.test(spec.name.toLowerCase());
+  const total = project ? 120 : quick ? 30 : 45;
   return {
     id: spec.id,
     name: spec.name,
@@ -91,7 +94,7 @@ function recipeFor(spec: Spec): Recipe {
     cuisine: spec.cuisine,
     dietary: spec.dietary ?? [],
     image: `/recipes/${spec.id}.jpg`,
-    time: { prep: 15, cook: 30, total: 45 },
+    time: { prep: 15, cook: total - 15, total },
     category: { dish_type: ["main"], chapter: "" },
     ingredients: [
       { item: spec.protein, amount: "400 g" },
