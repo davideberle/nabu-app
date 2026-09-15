@@ -16,6 +16,7 @@ import { visibleCapForSource, SHELF_TARGET, WEB_TARGET } from "./planner-sources
 import type { PlannerRole } from "./planner-roles.ts";
 import type { ShelfDisplay } from "./planner-display.ts";
 import type { CandidateBucket } from "./meals-core.ts";
+import { MIN_PLAUSIBLE_TOTAL_MINUTES, MAX_PLAUSIBLE_TOTAL_MINUTES } from "./recipe-render-qa.ts";
 
 // ---------------------------------------------------------------------------
 // Shape
@@ -41,6 +42,12 @@ export type ShelfTraits = {
   seasonalLocal: boolean;
   /** Ingredient-led long-haul produce (avocado, mango, …). Soft penalty only. */
   longHaul: boolean;
+  /**
+   * The ingredient the dish is built around (tofu, chickpea, salmon, …), so
+   * two tofu dishes cannot both fill the "vegan" lane unnoticed. Null when the
+   * recipe does not name one.
+   */
+  hero?: string | null;
 };
 
 export type ShelfCandidate = {
@@ -104,6 +111,8 @@ export type ShelfDiagnostics = {
   rejected: { recipeId: string; reason: string }[];
   coverage: ShelfCoverage;
   warnings: string[];
+  /** True when the catalog cookbook cap was relaxed because the pool was too small. */
+  cookbookCapRelaxed?: boolean;
 };
 
 export type ShelfCoverage = {
@@ -153,6 +162,12 @@ export const SHELF_LIMITS = {
   minWeekendProjects: 1,
   /** Weekday cooking needs genuinely quick options. */
   minQuickWeekday: 3,
+  /** No cookbook may supply more than two visible catalog ideas. */
+  maxPerCookbook: 2,
+  /** No hero ingredient (tofu, chickpea, salmon, …) may lead more than two ideas. */
+  maxPerHero: 2,
+  /** No display group may hold more than this share of a shelf of 6+ ideas. */
+  maxGroupShare: 0.6,
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -191,6 +206,27 @@ const STARCH_PATTERNS: [StarchLane, RegExp][] = [
   ["legume", /\b(lentils?|chickpeas?|beans?|dal|dhal|black beans?|cannellini|butter beans?)\b/],
 ];
 
+/** Bread-led dishes. A toast or a steamed bun is never a pasta, whatever the ingredients say. */
+const BREAD_LED_NAME = /\b(toasts?|tartines?|bruschett[ae]|buns?|bao|sandwich(es)?|burgers?|flatbreads?|pizza|pizzas|pide|wraps?|tacos?|quesadillas?)\b/;
+/** Condiments that name an animal without making the dish one. */
+const CONDIMENT_NOISE = /\b(vegan\s+)?(fish|oyster|worcestershire)\s+sauce\b|\boyster\s+mushrooms?\b|\bking\s+oyster\b/g;
+const HERO_PATTERNS: [string, RegExp][] = [
+  ["tofu", /\b(tofu|bean ?curd)\b/],
+  ["tempeh", /\btempeh\b/],
+  ["seitan", /\bseitan\b/],
+  ["chickpea", /\bchickpeas?\b/],
+  ["lentil", /\blentils?\b/],
+  ["mushroom", /\bmushrooms?\b/],
+  ["aubergine", /\b(aubergines?|eggplants?)\b/],
+  ["pumpkin", /\b(pumpkin|squash)\b/],
+  ["salmon", /\bsalmon\b/],
+  ["prawn", /\b(prawns?|shrimps?)\b/],
+  ["chicken", /\bchicken\b/],
+  ["beef", /\b(beef|steak)\b/],
+  ["pork", /\bpork\b/],
+  ["lamb", /\blamb\b/],
+  ["egg", /\beggs?\b/],
+];
 const FISH_WORDS = /\b(salmon|tuna|trout|cod|halibut|sea ?bass|bream|snapper|mackerel|sardines?|anchov\w*|prawns?|shrimps?|scallops?|mussels?|clams?|squid|calamari|octopus|seafood|fish)\b/;
 const MEAT_WORDS = /\b(chicken|beef|steak|pork|bacon|ham|lamb|mutton|duck|turkey|sausage|chorizo|veal|venison|meatballs?|prosciutto|pancetta|guanciale|salami)\b/;
 const VEGAN_MARKERS = /\b(vegan|plant[- ]based)\b/;
@@ -239,28 +275,47 @@ export function deriveShelfTraits(recipe: TraitSourceRecipe, now: Date): ShelfTr
   const dishTypes = (recipe.category?.dish_type ?? []).map((t) => String(t).toLowerCase());
   const dietary = [...(recipe.dietary ?? []), ...(recipe.tags?.dietary ?? [])].map((t) => t.toLowerCase());
 
+  // The name outranks the ingredient list for shape and starch: "Mushroom
+  // Toast" is bread-led even when its topping mentions noodles.
+  const breadLed = BREAD_LED_NAME.test(name);
+
   let shape: MealShape = "other";
   if (dishTypes.includes("salad")) shape = "salad";
   else if (dishTypes.includes("soup")) shape = "soup";
   else {
     for (const [candidate, re] of SHAPE_PATTERNS) {
+      if (candidate === "pasta" && breadLed) continue;
       if (re.test(name)) { shape = candidate; break; }
     }
   }
 
   let starch: StarchLane = "none";
-  for (const [lane, re] of STARCH_PATTERNS) {
-    if (re.test(name) || re.test(ingredientText)) { starch = lane; break; }
+  if (breadLed) {
+    starch = "bread";
+  } else {
+    for (const [lane, re] of STARCH_PATTERNS) {
+      if (re.test(name)) { starch = lane; break; }
+    }
+    if (starch === "none") {
+      for (const [lane, re] of STARCH_PATTERNS) {
+        if (re.test(ingredientText)) { starch = lane; break; }
+      }
+    }
   }
 
+  // Dietary facts outrank word-spotting. A declared vegan recipe is vegan even
+  // when it uses vegan fish sauce; "fish sauce" alone never makes a fish dish.
   const declaredVegan = dietary.includes("vegan") || VEGAN_MARKERS.test(name);
   const declaredVegetarian = declaredVegan || dietary.includes("vegetarian");
-  const hasFish = FISH_WORDS.test(name) || FISH_WORDS.test(ingredientText);
-  const hasMeat = MEAT_WORDS.test(name) || MEAT_WORDS.test(ingredientText);
+  const proteinText = `${name} ${ingredientText}`.replace(CONDIMENT_NOISE, " ");
+  const hasFish = FISH_WORDS.test(proteinText);
+  const hasMeat = MEAT_WORDS.test(proteinText);
 
   let protein: ProteinLane;
-  if (declaredVegetarian && !hasFish && !hasMeat) {
-    protein = declaredVegan ? "vegan" : "vegetarian";
+  if (declaredVegan) {
+    protein = "vegan";
+  } else if (declaredVegetarian) {
+    protein = "vegetarian";
   } else if (hasMeat) {
     protein = "meat";
   } else if (hasFish) {
@@ -269,8 +324,21 @@ export function deriveShelfTraits(recipe: TraitSourceRecipe, now: Date): ShelfTr
     protein = DAIRY_EGG.test(ingredientText) ? "vegetarian" : "vegan";
   }
 
-  const total = minutes(recipe.time?.total) || minutes(recipe.time?.prep) + minutes(recipe.time?.cook);
+  // An implausible total (a "3-minute" tofu braise) is a parser defect and
+  // must never become a quick claim; it reads as an ordinary medium effort.
+  const rawTotal = minutes(recipe.time?.total) || minutes(recipe.time?.prep) + minutes(recipe.time?.cook);
+  const total = rawTotal >= MIN_PLAUSIBLE_TOTAL_MINUTES && rawTotal <= MAX_PLAUSIBLE_TOTAL_MINUTES ? rawTotal : 0;
   const effort: EffortLane = total > 0 && total <= 35 ? "quick" : total >= 90 ? "project" : "medium";
+
+  let hero: string | null = null;
+  for (const [key, re] of HERO_PATTERNS) {
+    if (re.test(name)) { hero = key; break; }
+  }
+  if (!hero) {
+    for (const [key, re] of HERO_PATTERNS) {
+      if (re.test(proteinText)) { hero = key; break; }
+    }
+  }
 
   const vegetableMatches = new Set(ingredientText.match(VEGETABLE_WORDS) ?? []);
   const season = seasonForDate(now);
@@ -285,6 +353,7 @@ export function deriveShelfTraits(recipe: TraitSourceRecipe, now: Date): ShelfTr
     vegetableDense: vegetableMatches.size >= 3,
     seasonalLocal: SEASONAL_BY_SEASON[season].test(all),
     longHaul: LONG_HAUL_WORDS.test(name) || LONG_HAUL_WORDS.test(ingredientText),
+    hero,
   };
 }
 
@@ -398,7 +467,16 @@ export type AdmissionResult = { ok: true } | AdmissionRefusal;
  * identically to web and catalog ideas — a featured pasta still counts against
  * the pasta cap.
  */
-export function canAdmit(candidate: ShelfCandidate, current: readonly ShelfCandidate[]): AdmissionResult {
+export type AdmissionOptions = {
+  /** Set only when the eligible catalog pool is demonstrably too small for the cap. */
+  relaxCookbookCap?: boolean;
+};
+
+export function canAdmit(
+  candidate: ShelfCandidate,
+  current: readonly ShelfCandidate[],
+  options: AdmissionOptions = {},
+): AdmissionResult {
   if (candidate.role !== "main" && candidate.role !== "light-meal") {
     return { ok: false, reason: `role ${candidate.role} cannot occupy a main slot` };
   }
@@ -436,6 +514,18 @@ export function canAdmit(candidate: ShelfCandidate, current: readonly ShelfCandi
     const cap = visibleCapForSource(candidate.sourceName ?? key);
     if ((coverage.sources[key] ?? 0) >= cap) {
       return { ok: false, reason: `${key} already at its cap of ${cap}` };
+    }
+  } else if (candidate.sourceName) {
+    const book = candidate.sourceName.trim();
+    const fromBook = current.filter((item) => item.origin === "catalog" && item.sourceName?.trim() === book).length;
+    if (fromBook >= SHELF_LIMITS.maxPerCookbook && !options.relaxCookbookCap) {
+      return { ok: false, reason: `${book} already supplies ${SHELF_LIMITS.maxPerCookbook} catalog ideas` };
+    }
+  }
+  if (candidate.traits.hero) {
+    const sameHero = current.filter((item) => item.traits.hero === candidate.traits.hero).length;
+    if (sameHero >= SHELF_LIMITS.maxPerHero) {
+      return { ok: false, reason: `${candidate.traits.hero}-led ideas already at ${SHELF_LIMITS.maxPerHero}` };
     }
   }
 
@@ -604,19 +694,27 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
   }
 
   // Top up to the minimum shelf size with the strongest remaining catalog
-  // ideas that still pass the set-level rules.
-  for (const candidate of catalogPool) {
-    if (selected.length >= target.min) break;
-    if (usedCatalog.has(candidate.recipeId)) continue;
-    const verdict = canAdmit(candidate, selected);
-    if (!verdict.ok) {
-      rejected.push({ recipeId: candidate.recipeId, reason: verdict.reason });
-      continue;
+  // ideas that still pass the set-level rules. The cookbook cap is relaxed
+  // only when the eligible pool has demonstrably run out under it, and that
+  // relaxation is recorded so health can tell the difference.
+  let cookbookCapRelaxed = false;
+  const topUp = (relax: boolean) => {
+    for (const candidate of catalogPool) {
+      if (selected.length >= target.min) break;
+      if (usedCatalog.has(candidate.recipeId)) continue;
+      const verdict = canAdmit(candidate, selected, { relaxCookbookCap: relax });
+      if (!verdict.ok) {
+        if (!relax) rejected.push({ recipeId: candidate.recipeId, reason: verdict.reason });
+        continue;
+      }
+      usedCatalog.add(candidate.recipeId);
+      admit(candidate, "From your recipe book to round out the week", false);
+      catalogSelected += 1;
+      if (relax) cookbookCapRelaxed = true;
     }
-    usedCatalog.add(candidate.recipeId);
-    admit(candidate, "From your recipe book to round out the week", false);
-    catalogSelected += 1;
-  }
+  };
+  topUp(false);
+  if (selected.length < target.min) topUp(true);
 
   const coverage = measureCoverage(selected);
   const remainingGaps = coverageGaps(coverage);
@@ -646,6 +744,7 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
       rejected,
       coverage,
       warnings,
+      ...(cookbookCapRelaxed ? { cookbookCapRelaxed: true } : {}),
     },
   };
 }
@@ -772,4 +871,315 @@ export function applyTargetedReplacement(
     remainingGaps: coverageGaps(coverage),
     warnings,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Shelf quality (Phase 4E)
+// ---------------------------------------------------------------------------
+
+/** The minimum a persisted candidate needs for a quality assessment. */
+export type QualityItem = {
+  recipeId: string;
+  recipeName?: string;
+  origin?: "web" | "catalog" | string;
+  role?: string;
+  sourceName?: string | null;
+  source?: { cookbook?: string | null } | null;
+  dietary?: string[];
+  time?: { total?: number | null } | null;
+  traits?: ShelfTraits | null;
+  image?: string | null;
+};
+
+export type ShelfQualityContext = {
+  /** Qualified web ideas that were available. Fewer than the target excuses a short web yield. */
+  webConsidered?: number;
+  /** Recorded when the assembler had to relax the cookbook cap. */
+  cookbookCapRelaxed?: boolean;
+  /** An explicit household preference for a cookbook, if one is recorded. */
+  preferredCookbooks?: readonly string[];
+  webTarget?: { min: number; max: number };
+};
+
+function itemCookbook(item: QualityItem): string | null {
+  const name = item.sourceName ?? item.source?.cookbook ?? null;
+  return name && name.trim() ? name.trim() : null;
+}
+
+function itemGroup(item: QualityItem): "easy-light" | "everyday-dinners" | "worth-more-time" {
+  const t = item.traits;
+  if (item.role === "light-meal") return "easy-light";
+  if (t?.effort === "project") return "worth-more-time";
+  if (t?.effort === "quick" || t?.shape === "salad") return "easy-light";
+  return "everyday-dinners";
+}
+
+/**
+ * Concrete, named problems with a shelf's *quality* — as opposed to its
+ * structure, which `assessShelfHealth` already checks. Every message is
+ * specific enough to act on: which cookbook, which recipe, which lane.
+ */
+export function assessShelfQuality(items: readonly QualityItem[], context: ShelfQualityContext = {}): string[] {
+  const problems: string[] = [];
+  if (items.length === 0) return problems;
+  const webTarget = context.webTarget ?? WEB_TARGET;
+
+  // Source yield.
+  const web = items.filter((item) => item.origin === "web");
+  if (web.length < webTarget.min) {
+    const excused = typeof context.webConsidered === "number" && context.webConsidered < webTarget.min;
+    if (!excused) {
+      problems.push(`only ${web.length} web idea(s) on the shelf (target ${webTarget.min}–${webTarget.max})`);
+    }
+  }
+
+  // Cookbook concentration among catalog ideas.
+  const byBook = new Map<string, number>();
+  for (const item of items) {
+    if (item.origin === "web") continue;
+    const book = itemCookbook(item);
+    if (!book) continue;
+    byBook.set(book, (byBook.get(book) ?? 0) + 1);
+  }
+  for (const [book, count] of byBook) {
+    if (count <= SHELF_LIMITS.maxPerCookbook) continue;
+    if (context.cookbookCapRelaxed) continue;
+    if (context.preferredCookbooks?.includes(book)) continue;
+    problems.push(`${count} catalog ideas come from ${book} (cap ${SHELF_LIMITS.maxPerCookbook})`);
+  }
+
+  // Hero-ingredient / protein concentration.
+  const byHero = new Map<string, string[]>();
+  for (const item of items) {
+    const hero = item.traits?.hero;
+    if (!hero) continue;
+    byHero.set(hero, [...(byHero.get(hero) ?? []), item.recipeName ?? item.recipeId]);
+  }
+  for (const [hero, names] of byHero) {
+    if (names.length > SHELF_LIMITS.maxPerHero) {
+      problems.push(`${names.length} ideas are ${hero}-led (${names.join(", ")})`);
+    }
+  }
+
+  // Corrupted traits and implausible timing, per recipe.
+  for (const item of items) {
+    const name = item.recipeName ?? item.recipeId;
+    const dietary = (item.dietary ?? []).map((d) => String(d).toLowerCase());
+    const t = item.traits;
+    if (t && (dietary.includes("vegan") || dietary.includes("vegetarian")) && (t.protein === "fish" || t.protein === "meat")) {
+      problems.push(`${name} is ${dietary.includes("vegan") ? "vegan" : "vegetarian"} but its traits say ${t.protein}`);
+    }
+    if (t && t.shape === "pasta" && BREAD_LED_NAME.test(String(name).toLowerCase())) {
+      problems.push(`${name} is bread-led but its traits say pasta`);
+    }
+    const total = item.time?.total;
+    if (typeof total === "number" && total > 0 && (total < MIN_PLAUSIBLE_TOTAL_MINUTES || total > MAX_PLAUSIBLE_TOTAL_MINUTES)) {
+      problems.push(`${name} claims a ${total}-minute total, which is not credible`);
+    }
+    if (typeof total === "number" && total > 0 && total < MIN_PLAUSIBLE_TOTAL_MINUTES && t?.effort === "quick") {
+      problems.push(`${name} is marked quick on an implausible ${total}-minute total`);
+    }
+    if (!item.image) problems.push(`${name} has no usable image`);
+  }
+
+  // Effort / display-group balance and weekend appeal.
+  if (items.length >= 6) {
+    const groups = new Map<string, number>();
+    for (const item of items) groups.set(itemGroup(item), (groups.get(itemGroup(item)) ?? 0) + 1);
+    for (const [group, count] of groups) {
+      if (count / items.length > SHELF_LIMITS.maxGroupShare) {
+        problems.push(`${count} of ${items.length} ideas sit in the ${group} group; the shelf needs more effort variation`);
+      }
+    }
+    const projects = items.filter((item) => item.traits?.effort === "project").length;
+    if (projects < SHELF_LIMITS.minWeekendProjects) {
+      problems.push("no idea on the shelf is a real weekend project");
+    }
+  }
+
+  return problems;
+}
+
+// ---------------------------------------------------------------------------
+// Context-aware completion (Phase 4E)
+// ---------------------------------------------------------------------------
+
+export type PlanContext = {
+  /** Traits of every recipe assigned to a day, whether or not it is on the shelf. */
+  assignedTraits: readonly ShelfTraits[];
+  /** Cuisines of the assigned recipes, aligned with `assignedTraits` where known. */
+  assignedCuisines?: readonly string[];
+  /** Days still open for a main. */
+  openWeekdays: number;
+  openWeekendDays: number;
+};
+
+/**
+ * Score an unassigned idea against what the week already holds. Higher is
+ * better; the base household-fit score is adjusted for repetition against the
+ * assigned days and for what the remaining days actually need.
+ */
+export function contextScore(candidate: ShelfCandidate, context: PlanContext): number {
+  let score = scoreCandidate(candidate);
+  const t = candidate.traits;
+  for (const assigned of context.assignedTraits) {
+    if (assigned.hero && assigned.hero === t.hero) score -= 4;
+    if ((assigned.protein === "meat" || assigned.protein === "fish") && assigned.protein === t.protein) score -= 3;
+    if (assigned.shape !== "other" && assigned.shape === t.shape) score -= 2;
+    if (assigned.starch !== "none" && assigned.starch === t.starch) score -= 1;
+  }
+  for (const cuisine of context.assignedCuisines ?? []) {
+    if (cuisine && cuisine !== "Other" && cuisine === candidate.cuisine) score -= 2;
+  }
+  const assignedShapes = new Set(context.assignedTraits.map((a) => a.shape));
+  if (!assignedShapes.has("soup") && t.shape === "soup") score += 1;
+  if (!assignedShapes.has("salad") && t.shape === "salad") score += 1;
+  if (context.openWeekendDays === 0 && t.effort === "project") score -= 3;
+  if (context.openWeekdays === 0 && t.effort === "quick") score -= 1;
+  if (context.openWeekdays > 0 && t.weekdayFit) score += 0.5;
+  if (context.openWeekendDays > 0 && t.effort === "project") score += 1;
+  return score;
+}
+
+export type CompletionResult = {
+  shelf: ShelfItem[];
+  removed: { recipeId: string; reason: string }[];
+  added: ShelfItem[];
+  warnings: string[];
+};
+
+/**
+ * After an assignment, a clear, or a rejection: keep every assigned card
+ * exactly where it is and rerank — or, where the set-level rules now refuse
+ * an idea, replace — only the unassigned recommendations against the actual
+ * plan. Nothing is rerolled.
+ */
+export function completeShelfAgainstPlan(
+  shelf: readonly ShelfItem[],
+  context: PlanContext,
+  replacements: readonly ShelfCandidate[] = [],
+  options: { target?: { min: number; max: number } } = {},
+): CompletionResult {
+  const target = options.target ?? SHELF_TARGET;
+  const pinned = shelf.filter((item) => item.assigned);
+  const removed: { recipeId: string; reason: string }[] = [];
+
+  // Unassigned ideas the assigned days now rule out (a third meat night, a
+  // second tofu dish) are dropped; the rest are kept and reranked.
+  const kept: ShelfItem[] = [];
+  for (const item of shelf) {
+    if (item.assigned) continue;
+    const verdict = canAdmit(item, [...pinned, ...kept]);
+    if (!verdict.ok && verdict.reason !== "already on the shelf") {
+      removed.push({ recipeId: item.recipeId, reason: verdict.reason });
+      continue;
+    }
+    kept.push(item);
+  }
+  kept.sort((a, b) => contextScore(b, context) - contextScore(a, context));
+
+  const added: ShelfItem[] = [];
+  const pool = replacements
+    .filter((c) => !shelf.some((item) => item.recipeId === c.recipeId))
+    .sort((a, b) => contextScore(b, context) - contextScore(a, context));
+  for (const candidate of pool) {
+    if (pinned.length + kept.length + added.length >= target.max) break;
+    if (added.length >= removed.length && pinned.length + kept.length + added.length >= target.min) break;
+    const verdict = canAdmit(candidate, [...pinned, ...kept, ...added]);
+    if (!verdict.ok) continue;
+    added.push({ ...candidate, assigned: false, reason: "Chosen to fit the rest of the week" });
+  }
+
+  const unassigned = [...kept, ...added].sort((a, b) => contextScore(b, context) - contextScore(a, context));
+  const warnings: string[] = [];
+  if (pinned.length + unassigned.length < target.min) {
+    warnings.push(`Shelf has ${pinned.length + unassigned.length} ideas after completion, below the target of ${target.min}`);
+  }
+  return { shelf: [...pinned, ...unassigned], removed, added, warnings };
+}
+
+// ---------------------------------------------------------------------------
+// First-view shortlist (Phase 4E)
+// ---------------------------------------------------------------------------
+
+export const SHORTLIST_TARGET = { min: 5, max: 7 } as const;
+
+export type ShortlistItem = {
+  recipeId: string;
+  role?: string | null;
+  traits?: ShelfTraits | null;
+  assigned?: boolean;
+};
+
+/**
+ * Split a ranked shelf into the strongest 5–7 ideas and the rest.
+ *
+ * Input order is the ranking. The shortlist takes ideas in that order but
+ * guarantees variation: at least one credible weekend idea (a project, or an
+ * oven/grill main that reads as weekend cooking) and at least one idea from
+ * each display group the shelf offers, before filling to the cap. Assigned
+ * cards stay in `primary` so the week is visible, but do not count toward it.
+ */
+export function shortlistShelf<T extends ShortlistItem>(
+  items: readonly T[],
+  target: { min: number; max: number } = SHORTLIST_TARGET,
+): { primary: T[]; secondary: T[] } {
+  const assigned = items.filter((item) => item.assigned);
+  const open = items.filter((item) => !item.assigned);
+  if (open.length <= target.max) return { primary: [...assigned, ...open], secondary: [] };
+
+  const chosen = new Set<string>();
+  const pick = (predicate: (item: T) => boolean) => {
+    const hit = open.find((item) => !chosen.has(item.recipeId) && predicate(item));
+    if (hit) chosen.add(hit.recipeId);
+  };
+  const group = (item: T) => itemGroup({ recipeId: item.recipeId, role: item.role ?? undefined, traits: item.traits ?? null });
+
+  pick((item) => item.traits?.effort === "project");
+  pick((item) => Boolean(item.traits?.weekendFit) && item.traits?.effort !== "quick");
+  for (const g of ["easy-light", "everyday-dinners", "worth-more-time"] as const) {
+    if (open.some((item) => group(item) === g)) pick((item) => group(item) === g);
+  }
+  for (const item of open) {
+    if (chosen.size >= target.max) break;
+    chosen.add(item.recipeId);
+  }
+
+  const primary = [...assigned, ...open.filter((item) => chosen.has(item.recipeId))];
+  const secondary = open.filter((item) => !chosen.has(item.recipeId));
+  return { primary, secondary };
+}
+
+// ---------------------------------------------------------------------------
+// Not this week (Phase 4E)
+// ---------------------------------------------------------------------------
+
+export type NotThisWeekRecord = { recipeId: string; at: string };
+
+/**
+ * Remove one unassigned idea from the shelf for this week only. The record
+ * lives with the week's candidate set — it is exposure state, never a taste
+ * preference — and an assigned idea is left where it is.
+ */
+export function applyNotThisWeek<T extends { recipeId: string }>(
+  set: { items: readonly T[]; notThisWeek?: readonly NotThisWeekRecord[] | null },
+  recipeId: string,
+  assignedRecipeIds: ReadonlySet<string>,
+  now: Date,
+): { items: T[]; notThisWeek: NotThisWeekRecord[]; removed: boolean; protectedAssigned: boolean } {
+  const existing = (set.notThisWeek ?? []).filter((r) => r && r.recipeId);
+  if (assignedRecipeIds.has(recipeId)) {
+    return { items: [...set.items], notThisWeek: existing, removed: false, protectedAssigned: true };
+  }
+  const items = set.items.filter((item) => item.recipeId !== recipeId);
+  const removed = items.length !== set.items.length;
+  const notThisWeek = existing.some((r) => r.recipeId === recipeId)
+    ? existing
+    : [...existing, { recipeId, at: now.toISOString() }];
+  return { items, notThisWeek, removed, protectedAssigned: false };
+}
+
+/** Ids dismissed for the week, for pool exclusion. */
+export function notThisWeekIds(set: { notThisWeek?: readonly NotThisWeekRecord[] | null } | null | undefined): Set<string> {
+  return new Set((set?.notThisWeek ?? []).map((r) => r?.recipeId).filter((id): id is string => typeof id === "string" && id.length > 0));
 }

@@ -162,6 +162,8 @@ describe("shelf health", () => {
       candidateSet: {
         generatedAt: new Date(NOW.getTime() - 86_400_000).toISOString(),
         policyVersion: SHELF_POLICY_VERSION,
+        // A *quality* shelf (Phase 4E): five web ideas, catalog ideas from
+        // distinct cookbooks, images, and real effort variation.
         items: Array.from({ length: 13 }, (_, i) => ({
           recipeId: `r-${i}`,
           recipeName: `R ${i}`,
@@ -171,6 +173,20 @@ describe("shelf health", () => {
           category: "main",
           courseTags: [],
           bucket: "vegetarian" as const,
+          origin: (i < 5 ? "web" : "catalog") as "web" | "catalog",
+          source: { cookbook: `Book ${i}`, author: "" },
+          image: "https://img.example/r.jpg",
+          traits: {
+            shape: "other" as const,
+            protein: "vegetarian" as const,
+            starch: "none" as const,
+            effort: (i % 3 === 0 ? "quick" : i % 3 === 1 ? "medium" : "project") as "quick" | "medium" | "project",
+            weekdayFit: true,
+            weekendFit: true,
+            vegetableDense: true,
+            seasonalLocal: false,
+            longHaul: false,
+          },
         })),
       },
     };

@@ -1,3 +1,14 @@
+---
+created: 2026-09-15T11:26:11.017Z
+updated: 2026-09-15T11:26:11.017Z
+status: active
+tags:
+  - Next.js
+  - Vercel
+  - family technology
+  - household app
+---
+
 # Nabu — Companion App
 
 Personal household companion app for the Eberle family. Deployed on Vercel at

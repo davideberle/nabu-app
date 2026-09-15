@@ -18,15 +18,19 @@
 
 import {
   assembleWeeklyShelf,
+  assessShelfQuality,
   deriveShelfTraits,
   measureCoverage,
   coverageGaps,
+  notThisWeekIds,
   SHELF_POLICY_VERSION,
+  type PlanContext,
   type ShelfCandidate,
   type ShelfItem,
   type ShelfTraits,
   type WeeklyShelf,
 } from "./planner-shelf.ts";
+import { MIN_PLAUSIBLE_TOTAL_MINUTES, MAX_PLAUSIBLE_TOTAL_MINUTES, type RecipeQaDiagnostic } from "./recipe-render-qa.ts";
 import { SHELF_TARGET } from "./planner-sources.ts";
 import { classifyPlannerRole } from "./planner-roles.ts";
 import { candidateDisplay, deriveShelfDisplay, type ShelfDisplay } from "./planner-display.ts";
@@ -68,6 +72,8 @@ function normalizeTime(time: Recipe["time"]): { prep: number; cook: number; tota
   let total = typeof time.total === "number" ? time.total : 0;
   if (total <= 0 && prep + cook > 0) total = prep + cook;
   if (total <= 0) return null;
+  // An implausible total is a parser defect; a card must not render it.
+  if (total < MIN_PLAUSIBLE_TOTAL_MINUTES || total > MAX_PLAUSIBLE_TOTAL_MINUTES) return null;
   return { prep, cook, total };
 }
 
@@ -375,7 +381,55 @@ export function assessShelfHealth(
     problems.push("candidate set contains an item without a recipe id");
   }
 
+  // Quality, not just structure: source yield, cookbook and hero
+  // concentration, corrupted traits, implausible timing, effort balance.
+  const assigned = assignedRecipeIdsOf(plan);
+  const unassigned = set.items.filter((item) => item?.recipeId && !assigned.has(item.recipeId));
+  problems.push(
+    ...assessShelfQuality(unassigned, {
+      webConsidered: set.shelfDiagnostics?.webConsidered,
+      cookbookCapRelaxed: set.shelfDiagnostics?.cookbookCapRelaxed,
+    }),
+  );
+
   return { healthy: problems.length === 0, problems };
+}
+
+/**
+ * What the week already holds, for context-aware completion. Assigned
+ * recipes that are not on the shelf (a cooked-by-hand Monday) still count:
+ * their traits are derived from the recipe itself.
+ */
+export async function planContextFor(
+  plan: MealPlan | null,
+  shelf: readonly ShelfItem[],
+  resolveRecipe: (id: string) => Promise<Recipe | undefined | null>,
+  now: Date,
+): Promise<PlanContext> {
+  const assignedIds = assignedRecipeIdsOf(plan);
+  const assignedTraits: ShelfTraits[] = [];
+  const assignedCuisines: string[] = [];
+  for (const id of assignedIds) {
+    const onShelf = shelf.find((item) => item.recipeId === id);
+    if (onShelf) {
+      assignedTraits.push(onShelf.traits);
+      assignedCuisines.push(onShelf.cuisine);
+      continue;
+    }
+    const recipe = await resolveRecipe(id).catch(() => null);
+    if (!recipe) continue;
+    assignedTraits.push(deriveShelfTraits(recipe, now));
+    assignedCuisines.push(normalizePlannerCuisine(recipe));
+  }
+  let openWeekdays = 0;
+  let openWeekendDays = 0;
+  for (const day of plan?.days ?? []) {
+    const state = day.planningState ?? (day.recipeId || day.meal?.main?.id ? "assigned" : "open");
+    if (state !== "open") continue;
+    if (day.type === "weekend") openWeekendDays += 1;
+    else openWeekdays += 1;
+  }
+  return { assignedTraits, assignedCuisines, openWeekdays, openWeekendDays };
 }
 
 // ---------------------------------------------------------------------------
@@ -419,6 +473,8 @@ export type PreparationDeps = {
   loadWebCandidates: (week: string) => Promise<ShelfCandidate[]>;
   /** Catalog ideas eligible for gap-fill (recency + exposure already applied). */
   loadCatalogCandidates: (week: string) => Promise<ShelfCandidate[]>;
+  /** Recipes the render-QA pass quarantined while the loaders ran. */
+  qaQuarantined?: () => RecipeQaDiagnostic[];
   claim?: (week: string, kind: PreparationKind) => Promise<boolean>;
   complete?: (week: string, kind: PreparationKind, status: "succeeded" | "failed", summary?: unknown) => Promise<void>;
 };
@@ -517,9 +573,14 @@ export async function prepareWeek(
     ]);
 
     const assigned = assignedRecipeIdsOf(existing);
+    // "Not this week" is exposure state for the week and survives a repair:
+    // a dismissed idea must not come back because the watchdog rebuilt the set.
+    const dismissed = notThisWeekIds(existing?.candidateSet);
+    const eligible = (c: ShelfCandidate) =>
+      (c.role === "main" || c.role === "light-meal") && (!dismissed.has(c.recipeId) || assigned.has(c.recipeId));
     const shelf = assembleWeeklyShelf({
-      web: web.filter((c) => c.role === "main" || c.role === "light-meal"),
-      catalog: catalog.filter((c) => c.role === "main" || c.role === "light-meal"),
+      web: web.filter(eligible),
+      catalog: catalog.filter(eligible),
       pairings: [...web, ...catalog].filter((c) => c.role === "pairing"),
       assignedRecipeIds: assigned,
     });
@@ -550,6 +611,8 @@ export async function prepareWeek(
           image: reserve.image ?? null,
         })),
         shelfDiagnostics: shelf.diagnostics,
+        ...(existing?.candidateSet?.notThisWeek?.length ? { notThisWeek: existing.candidateSet.notThisWeek } : {}),
+        ...(deps.qaQuarantined ? { qaQuarantined: deps.qaQuarantined() } : {}),
       },
       updatedAt: now.toISOString(),
     };
@@ -783,6 +846,9 @@ export async function rolloverWeek(week: string, deps: RolloverDeps): Promise<Ro
         .filter((item) => (item as { origin?: string }).origin !== "web")
         .map((item) => item.recipeId)
         .filter((id): id is string => typeof id === "string" && id.length > 0),
+      // Dismissed with "Not this week": shown and not chosen, exactly one
+      // exposure — never a permanent dislike.
+      ...notThisWeekIds(plan?.candidateSet),
       ...assignedThisWeek,
     ];
 
@@ -875,4 +941,5 @@ export function previousWeekId(now = new Date()): string {
 
 /** Re-exported so callers do not need a second import for diagnostics. */
 export { measureCoverage, coverageGaps, SHELF_POLICY_VERSION };
+export { completeShelfAgainstPlan, shortlistShelf, applyNotThisWeek } from "./planner-shelf.ts";
 export type { WeeklyShelf };

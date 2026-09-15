@@ -17,7 +17,7 @@ import {
 import type { MealCoherenceReview } from "@/lib/meal-coherence";
 import { candidateDisplay, groupShelfItems } from "@/lib/planner-display";
 import type { ShelfDisplay } from "@/lib/planner-display";
-import type { ShelfTraits } from "@/lib/planner-shelf";
+import { shortlistShelf, type ShelfTraits } from "@/lib/planner-shelf";
 
 // ----- types -----
 
@@ -562,6 +562,8 @@ function MealsPageInner() {
   // previous update still merges into the current plan rather than a stale one.
   const planRef = useRef<MealPlan | null>(null);
   const [candidates, setCandidates] = useState<RecipeOption[]>([]);
+  /** Secondary disclosure: the eligible ideas beyond the strongest 5–7. */
+  const [showMoreIdeas, setShowMoreIdeas] = useState(false);
   const candidatesRef = useRef<RecipeOption[]>([]);
   const [ideaMetadata, setIdeaMetadata] = useState<{ generatedAt?: string; policyVersion?: string } | null>(null);
   const [selectedRecipe, setSelectedRecipe] = useState<RecipeOption | null>(null);
@@ -1284,6 +1286,40 @@ function MealsPageInner() {
         else delete reverted[recipeId];
         return reverted;
       });
+    }
+  }
+
+  /**
+   * "Not this week": remove the idea immediately for this week only. The
+   * server records it as week exposure state (never a permanent dislike) and
+   * reranks the remaining unassigned ideas around the actual plan.
+   */
+  async function handleNotThisWeek(recipeId: string) {
+    if (plan?.locked) return;
+    const previous = candidatesRef.current;
+    const next = previous.filter((r) => r.id !== recipeId);
+    candidatesRef.current = next;
+    setCandidates(next);
+    try {
+      const res = await fetch("/api/meals/not-this-week", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ week: weekId, recipeId }),
+      });
+      if (!res.ok) throw new Error(`Not this week failed: ${res.status}`);
+      const data = (await res.json()) as { plan?: MealPlan };
+      if (data.plan?.candidateSet?.items) {
+        const restored = data.plan.candidateSet.items.map(restoreCandidateItem);
+        const byId = new Map(next.map((r) => [r.id, r]));
+        const merged = restored.map((r) => ({ ...(byId.get(r.id) ?? {}), ...r, image: byId.get(r.id)?.image ?? r.image }));
+        candidatesRef.current = merged;
+        setCandidates(merged);
+        commitPlan(data.plan);
+      }
+    } catch (err) {
+      console.error("Failed to set Not this week:", err);
+      candidatesRef.current = previous;
+      setCandidates(previous);
     }
   }
 
@@ -2056,41 +2092,68 @@ function MealsPageInner() {
               description="One prepared set: the strongest web finds plus recipe-book ideas that cover what they missed. Web ideas stay out of My Recipes until you keep or cook them."
             />
 
-            {/* Grouped by meal character, never by weekday: a longer cooking
-                project is still perfectly assignable to a Wednesday. Empty
-                groups are omitted rather than shown as empty headings. */}
-            {groupShelfItems(candidates, displayFor).map((section) => (
-              <div key={section.group} className="space-y-4">
-                <div>
-                  <h3 className="font-serif text-[15px] text-primary">{section.label}</h3>
-                  <p className="mt-0.5 text-[11px] text-quaternary">{section.description}</p>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {section.items.map((r) => {
-                    const isAssigned = plan?.days.some((d) => d?.recipeId === r.id || d?.brunch?.main?.id === r.id) ?? false;
-                    return (
-                      <RecipeCard
-                        key={r.id}
-                        recipe={r}
-                        display={displayFor(r)}
-                        isSelected={selectedRecipe?.id === r.id}
-                        isAssigned={isAssigned}
-                        feedback={feedbackMap[r.id] ?? null}
-                        kept={keptMap[r.id] ?? r.kept ?? false}
-                        onSelect={() =>
-                          setSelectedRecipe(
-                            selectedRecipe?.id === r.id ? null : r
-                          )
-                        }
-                        onQuickView={() => handleQuickView(r.id)}
-                        onFeedback={(value) => handleFeedback(r.id, value)}
-                        onKeep={isWebIdea(r) ? (next) => handleKeep(r.id, next) : undefined}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
+            {/* Kitchen's shortlist: the strongest 5–7 ideas first, the rest
+                behind a disclosure. Within each, grouped by meal character,
+                never by weekday: a longer cooking project is still perfectly
+                assignable to a Wednesday. Empty groups are omitted. */}
+            {(() => {
+              const isAssignedId = (id: string) =>
+                plan?.days.some((d) => d?.recipeId === id || d?.meal?.main?.id === id || d?.brunch?.main?.id === id) ?? false;
+              const shortlist = shortlistShelf(
+                candidates.map((r) => ({ recipeId: r.id, role: r.role, traits: r.traits, assigned: isAssignedId(r.id), recipe: r })),
+              );
+              const renderSections = (rows: { recipe: RecipeOption }[]) =>
+                groupShelfItems(rows.map((row) => row.recipe), displayFor).map((section) => (
+                  <div key={section.group} className="space-y-4">
+                    <div>
+                      <h3 className="font-serif text-[15px] text-primary">{section.label}</h3>
+                      <p className="mt-0.5 text-[11px] text-quaternary">{section.description}</p>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                      {section.items.map((r) => (
+                        <RecipeCard
+                          key={r.id}
+                          recipe={r}
+                          display={displayFor(r)}
+                          isSelected={selectedRecipe?.id === r.id}
+                          isAssigned={isAssignedId(r.id)}
+                          feedback={feedbackMap[r.id] ?? null}
+                          kept={keptMap[r.id] ?? r.kept ?? false}
+                          onSelect={() =>
+                            setSelectedRecipe(
+                              selectedRecipe?.id === r.id ? null : r
+                            )
+                          }
+                          onQuickView={() => handleQuickView(r.id)}
+                          onFeedback={(value) => handleFeedback(r.id, value)}
+                          onKeep={isWebIdea(r) ? (next) => handleKeep(r.id, next) : undefined}
+                          onNotThisWeek={() => handleNotThisWeek(r.id)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ));
+              return (
+                <>
+                  {renderSections(shortlist.primary)}
+                  {shortlist.secondary.length > 0 && (
+                    <div className="space-y-4 pt-2 border-t border-secondary">
+                      <button
+                        type="button"
+                        onClick={() => setShowMoreIdeas((v) => !v)}
+                        aria-expanded={showMoreIdeas}
+                        className="text-xs text-quaternary hover:text-secondary transition-colors"
+                      >
+                        {showMoreIdeas
+                          ? "Hide the other ideas"
+                          : `Show ${shortlist.secondary.length} more eligible idea${shortlist.secondary.length === 1 ? "" : "s"}`}
+                      </button>
+                      {showMoreIdeas && renderSections(shortlist.secondary)}
+                    </div>
+                  )}
+                </>
+              );
+            })()}
           </div>
         )}
       </NabuMain>
@@ -2314,6 +2377,7 @@ function RecipeCard({
   onQuickView,
   onFeedback,
   onKeep,
+  onNotThisWeek,
 }: {
   recipe: RecipeOption;
   /** Kitchen's presentation contract for this card. */
@@ -2327,6 +2391,8 @@ function RecipeCard({
   onQuickView: () => void;
   onFeedback: (value: "up" | "down") => void;
   onKeep?: (next: boolean) => void;
+  /** "Not this week": removes the idea for this week only. */
+  onNotThisWeek?: () => void;
 }) {
   const isVeg = recipe.dietary.some(
     (t) => t === "vegan" || t === "vegetarian"
@@ -2486,6 +2552,15 @@ function RecipeCard({
                 }`}
               >
                 {kept ? "Kept" : "Keep"}
+              </button>
+            )}
+            {onNotThisWeek && !isAssigned && (
+              <button
+                onClick={(e) => { e.stopPropagation(); onNotThisWeek(); }}
+                title="Not this week — set aside for this week only, not a dislike"
+                className="ml-0.5 text-[11px] px-2 py-0.5 rounded-full text-quaternary hover:text-secondary transition-colors"
+              >
+                Not this week
               </button>
             )}
           </div>

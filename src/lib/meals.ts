@@ -321,6 +321,14 @@ export type CandidateSet = {
   reserves?: CandidateReserve[];
   /** Coverage/selection diagnostics for a combined shelf. */
   shelfDiagnostics?: ShelfDiagnostics;
+  /**
+   * Ideas David dismissed for this week only ("Not this week"). Exposure
+   * state for the week, never a permanent dislike: they stay out of this
+   * week's shelf and count as one unselected exposure at rollover.
+   */
+  notThisWeek?: { recipeId: string; at: string }[];
+  /** Recipes the render-QA pass quarantined while preparing this shelf. */
+  qaQuarantined?: { recipeId: string; recipeName: string; issues: string[]; fixes: string[] }[];
 };
 
 export type DayPlanningState = "open" | "assigned" | "meal" | "skipped";

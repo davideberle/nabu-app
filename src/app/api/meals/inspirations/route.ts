@@ -16,6 +16,7 @@ import { getWebInspirationsForWeek, getMyRecipe, getStagedWebRecipes } from "@/l
 import { currentIsoWeekId, normalizePlannerCuisine, normalizePlannerTitle } from "@/lib/meals";
 import { classifyPlannerRole } from "@/lib/planner-roles";
 import { visibleCapForSource } from "@/lib/planner-sources";
+import { notThisWeekIds } from "@/lib/planner-shelf";
 import { loadMealPlan } from "@/lib/meals-persistence";
 import {
   DEFAULT_WEB_INSPIRATION_COUNT,
@@ -192,6 +193,8 @@ export async function GET(request: NextRequest) {
     }
 
     const exclusionIds = await getInspirationExclusionIds(week);
+    // "Not this week" dismissals stay out of the week's visible ideas.
+    for (const id of notThisWeekIds((await loadMealPlan(week))?.candidateSet)) exclusionIds.add(id);
     // Keep state and discovery mode come from the staging rows, so a reload
     // renders exactly the Keep David last chose.
     const keepState = new Map(

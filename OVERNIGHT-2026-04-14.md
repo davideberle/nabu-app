@@ -1,3 +1,9 @@
+---
+created: 2026-09-15T11:26:11.017Z
+updated: 2026-09-15T11:26:11.017Z
+status: active
+---
+
 # Overnight Work Plan — 2026-04-14
 
 ## Workstream A: Planner Logic Fixes (`src/lib/meals.ts`)

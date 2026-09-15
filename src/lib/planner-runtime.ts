@@ -29,7 +29,19 @@ import {
 import { getAllRecipes, getRecipe } from "@/lib/recipes";
 import { loadMealPlan, saveMealPlan } from "@/lib/meals-persistence";
 import { resolveWebInspirations } from "@/lib/meal-inspirations";
-import { catalogExclusionIds, toShelfCandidate } from "@/lib/planner-preparation";
+import {
+  assignedRecipeIdsForPlan,
+  catalogExclusionIds,
+  completeShelfAgainstPlan,
+  hydrateShelfItems,
+  planContextFor,
+  toCandidateItem,
+  toShelfCandidate,
+} from "@/lib/planner-preparation";
+import { notThisWeekIds } from "@/lib/planner-shelf";
+import { qaRecipeForShelf, summarizeQa, type RecipeQaDiagnostic } from "@/lib/recipe-render-qa";
+import type { MealPlan } from "@/lib/meals";
+import type { Recipe } from "@/lib/recipes";
 import type { PreparationDeps, RolloverDeps } from "@/lib/planner-preparation";
 import { SHELF_POLICY_VERSION, type ShelfCandidate } from "@/lib/planner-shelf";
 import { getRecentWeekIds, plannerPolicy } from "@/lib/meals-core";
@@ -42,7 +54,26 @@ import { isStagedRecipe } from "@/lib/planner-staging";
  * Order is preserved as the discovery rank, so an editorially prominent pick
  * keeps its position advantage in scoring without being auto-qualified.
  */
-export async function loadWebCandidatesForWeek(week: string, now: Date): Promise<ShelfCandidate[]> {
+/**
+ * Render-QA gate every shelf candidate passes through. The normalized copy is
+ * what the candidate is built from; a quarantined recipe is recorded and
+ * never reaches a card.
+ */
+function qaGate(recipe: Recipe, quarantine?: RecipeQaDiagnostic[]): Recipe | null {
+  const role = classifyPlannerRole(recipe);
+  const result = qaRecipeForShelf(recipe, { role: role.role });
+  if (!result.ok) {
+    quarantine?.push(summarizeQa(recipe, result));
+    return null;
+  }
+  return result.recipe;
+}
+
+export async function loadWebCandidatesForWeek(
+  week: string,
+  now: Date,
+  quarantine?: RecipeQaDiagnostic[],
+): Promise<ShelfCandidate[]> {
   const [inspirations, staged] = await Promise.all([
     getWebInspirationsForWeek(week),
     getStagedWebRecipes([week]),
@@ -52,7 +83,9 @@ export async function loadWebCandidatesForWeek(week: string, now: Date): Promise
   const candidates: ShelfCandidate[] = [];
   let rank = 0;
   for (const inspiration of inspirations) {
-    const recipe = await getMyRecipe(inspiration.recipe_id);
+    const raw = await getMyRecipe(inspiration.recipe_id);
+    if (!raw) continue;
+    const recipe = qaGate(raw, quarantine);
     if (!recipe) continue;
     const discovery = discoveryById.get(inspiration.recipe_id) === "editorial" ? "editorial" : "search";
     candidates.push(
@@ -91,15 +124,21 @@ export async function loadWebCandidatesForWeek(week: string, now: Date): Promise
  *
  * `catalogExclusionIds` states that combination in one pure place.
  */
-export async function loadCatalogCandidatesForWeek(week: string, now: Date): Promise<ShelfCandidate[]> {
+export async function loadCatalogCandidatesForWeek(
+  week: string,
+  now: Date,
+  quarantine?: RecipeQaDiagnostic[],
+): Promise<ShelfCandidate[]> {
   const legacyWeeks = getRecentWeekIds(week, plannerPolicy().recentWeeksLookback);
-  const [recipes, exclusions, legacyOffered, exposureExcluded, stagedWeb] = await Promise.all([
+  const [recipes, exclusions, legacyOffered, exposureExcluded, stagedWeb, plan] = await Promise.all([
     getAllRecipes(),
     getPlannerRecencyExclusions(week),
     getLegacyOfferedRecipeIds(legacyWeeks, SHELF_POLICY_VERSION),
     getExposureExcludedRecipeIds(now),
     getStagedWebRecipes(),
+    loadMealPlan(week),
   ]);
+  const dismissed = notThisWeekIds(plan?.candidateSet);
 
   const excluded = catalogExclusionIds({
     recentlyCooked: exclusions.recentlyCooked,
@@ -111,17 +150,43 @@ export async function loadCatalogCandidatesForWeek(week: string, now: Date): Pro
   });
 
   const candidates: ShelfCandidate[] = [];
-  for (const recipe of recipes) {
-    if (excluded.has(recipe.id)) continue;
-    if (isStagedRecipe(recipe)) continue;
+  for (const raw of recipes) {
+    if (excluded.has(raw.id) || dismissed.has(raw.id)) continue;
+    if (isStagedRecipe(raw)) continue;
     // A planner-visible catalog card must have an image; that rule predates
     // this work and is not weakened here.
-    if (!recipe.image) continue;
-    const role = classifyPlannerRole(recipe);
+    if (!raw.image) continue;
+    const role = classifyPlannerRole(raw);
     if (role.role === "reject") continue;
+    const recipe = qaGate(raw, quarantine);
+    if (!recipe) continue;
     candidates.push(toShelfCandidate(recipe, { origin: "catalog", discovery: "catalog" }, now));
   }
   return candidates;
+}
+
+/**
+ * Context-aware completion for a saved plan: assigned days stay fixed and only
+ * the unassigned recommendations are reranked or replaced against the plan.
+ * Returns the plan to store, or null when there is no shelf to complete.
+ */
+export async function completePlanShelf(plan: MealPlan, now: Date): Promise<MealPlan | null> {
+  if (!plan.candidateSet?.items?.length) return null;
+  const assigned = assignedRecipeIdsForPlan(plan);
+  const shelf = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now);
+  const context = await planContextFor(plan, shelf, getRecipe, now);
+  const onShelf = new Set(shelf.map((item) => item.recipeId));
+  const replacements = await loadReplacementCandidates(plan.week, now, onShelf);
+  const result = completeShelfAgainstPlan(shelf, context, replacements);
+  return {
+    ...plan,
+    candidateSet: {
+      ...plan.candidateSet,
+      policyVersion: SHELF_POLICY_VERSION,
+      items: result.shelf.map(toCandidateItem),
+    },
+    updatedAt: now.toISOString(),
+  };
 }
 
 /** Fresh replacement candidates for a targeted chat-driven swap. */
@@ -135,8 +200,10 @@ export async function loadReplacementCandidates(
 }
 
 export function buildPreparationDeps(now = new Date()): PreparationDeps {
+  const quarantine: RecipeQaDiagnostic[] = [];
   return {
     now,
+    qaQuarantined: () => quarantine.slice(),
     loadPlan: (week) => loadMealPlan(week),
     // Preparation reports on what was stored, so the refusal and the stored
     // plan both have to survive the crossing from the save boundary.
@@ -157,8 +224,8 @@ export function buildPreparationDeps(now = new Date()): PreparationDeps {
         reason: "reason" in result ? result.reason : undefined,
       };
     },
-    loadWebCandidates: (week) => loadWebCandidatesForWeek(week, now),
-    loadCatalogCandidates: (week) => loadCatalogCandidatesForWeek(week, now),
+    loadWebCandidates: (week) => loadWebCandidatesForWeek(week, now, quarantine),
+    loadCatalogCandidates: (week) => loadCatalogCandidatesForWeek(week, now, quarantine),
   };
 }
 
