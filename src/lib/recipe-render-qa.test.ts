@@ -201,6 +201,23 @@ function item(overrides: Partial<ShelfItem> = {}): ShelfItem {
 }
 
 describe("shelf quality and health", () => {
+  it("reserves the only clean web project before a source cap fills with weekday ideas", () => {
+    const shelf = assembleWeeklyShelf({
+      web: [
+        cand({ recipeId: "bbc-assigned", origin: "web", sourceName: "BBC Good Food", traits: traits({ effort: "medium" }) }),
+        cand({ recipeId: "bbc-weekday", origin: "web", sourceName: "BBC Good Food", traits: traits({ effort: "quick" }) }),
+        cand({ recipeId: "bbc-project", origin: "web", sourceName: "BBC Good Food", traits: traits({ effort: "project" }) }),
+        cand({ recipeId: "other-web", origin: "web", sourceName: "Other", traits: traits({ effort: "medium" }) }),
+      ],
+      catalog: [],
+      assignedRecipeIds: new Set(["bbc-assigned"]),
+      target: { min: 3, max: 4 },
+      webTarget: { min: 2, max: 2 },
+    });
+    ok(shelf.items.some((row) => row.recipeId === "bbc-project"));
+    ok(!shelf.items.some((row) => row.recipeId === "bbc-weekday"));
+    ok(!assessShelfQuality(shelf.items, { webTarget: { min: 2, max: 2 } }).some((problem) => /weekend project/.test(problem)));
+  });
   it("the assembler cannot create a shelf its display-group health rule rejects", () => {
     const efforts = ["quick", "medium", "project"] as const;
     const pool = Array.from({ length: 24 }, (_, index) =>

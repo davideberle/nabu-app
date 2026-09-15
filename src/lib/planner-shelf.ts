@@ -663,6 +663,19 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
     .slice()
     .sort(byScoreDesc);
 
+  // Reserve one real weekend project before ordinary scoring can spend a
+  // source's visible cap on easier recipes. This matters when, for example, a
+  // BBC project and two BBC weekday ideas compete: admitting the weekdays
+  // first can make the only project impossible to add later even though the
+  // eventual shelf health contract requires one.
+  if (!selected.some((item) => item.traits.effort === "project")) {
+    const projectIndex = webPool.findIndex((candidate) => candidate.traits.effort === "project");
+    if (projectIndex > 0) {
+      const [project] = webPool.splice(projectIndex, 1);
+      webPool.unshift(project);
+    }
+  }
+
   let webSelected = 0;
   for (const candidate of webPool) {
     if (webSelected >= webTarget.max) break;
