@@ -3,13 +3,13 @@ import {
   getRedemptionsForWeek,
   getBoardConfig,
   resolveRewards,
-  createRedemption,
+  createRedemptionIfAffordable,
   removeRedemption,
 } from "@/lib/family-db";
 import { auth } from "@/auth";
 import { isAdminEmail } from "@/lib/access";
-import { getFamilyWalletProjection } from "@/lib/family-wallet-server";
 import { resolveRedemptionWeek } from "@/lib/family-wallet";
+import { familyMembers } from "@/data/family-routines";
 
 /**
  * GET /api/family/redemptions?week=2026-W23
@@ -61,11 +61,11 @@ export async function POST(request: Request) {
     );
   }
 
-  // Server-side permanent-wallet balance check.
-  const [walletProjection, boardConfig] = await Promise.all([
-    getFamilyWalletProjection(),
-    getBoardConfig(),
-  ]);
+  const person = familyMembers.find((member) => member.id === personId && member.role === "child");
+  if (!person) {
+    return NextResponse.json({ error: "Unknown person" }, { status: 400 });
+  }
+  const boardConfig = await getBoardConfig();
   const resolvedRew = resolveRewards(boardConfig);
   const reward = resolvedRew.find((r) => r.id === rewardId);
   if (!reward) {
@@ -74,23 +74,15 @@ export async function POST(request: Request) {
   if (!reward.assignedTo.includes(personId)) {
     return NextResponse.json({ error: "Reward not assigned to this person" }, { status: 403 });
   }
-  // NOTE: balance check + insert is not atomic — a concurrent request could
-  // double-spend. Acceptable for a single-household iPad app; if needed later,
-  // move to a Turso transaction with a balance sub-query.
-  const balance = walletProjection.wallets[personId]?.balance;
-  if (balance === undefined) {
-    return NextResponse.json({ error: "Unknown person" }, { status: 400 });
-  }
-  if (balance < reward.costPoints) {
-    return NextResponse.json({ error: "Insufficient balance" }, { status: 409 });
-  }
-
-  const redemption = await createRedemption(
+  const redemption = await createRedemptionIfAffordable(
     personId,
     rewardId,
     redemptionWeek.week,
     reward.costPoints,
   );
+  if (!redemption) {
+    return NextResponse.json({ error: "Insufficient balance" }, { status: 409 });
+  }
   return NextResponse.json(redemption);
 }
 

@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 
 const database = readFileSync(new URL("./family-db.ts", import.meta.url), "utf8");
+const ledger = readFileSync(new URL("./family-wallet-ledger.ts", import.meta.url), "utf8");
 const wallet = readFileSync(new URL("./family-wallet.ts", import.meta.url), "utf8");
 
 describe("durable family wallet storage", () => {
@@ -15,9 +16,12 @@ describe("durable family wallet storage", () => {
   });
 
   it("snapshots approval once, deliberately resnapshots a credit correction, and snapshots redemption cost", () => {
-    match(database, /COALESCE\(awarded_points, \?\)/);
+    match(ledger, /COALESCE\(awarded_points, \?\)/);
+    match(database, /family_completions\.awarded_points IS NOT NULL/);
+    match(database, /THEN family_completions\.awarded_points/);
     match(database, /SET credit_count = \?, awarded_points = \?, reviewed_at = \?/);
-    match(database, /VALUES \(\?, \?, \?, \?, \?, \?\)/);
+    match(ledger, /INSERT INTO family_reward_redemptions/);
+    match(ledger, /SELECT \?, \?, \?, \?, \?, \?/);
     match(database, /reward\.costPoints|chargedPoints/);
   });
 

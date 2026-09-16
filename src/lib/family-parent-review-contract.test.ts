@@ -57,15 +57,16 @@ describe("family parent-review regression contract", () => {
 
   it("keeps redo status-only so the original transcript survives", () => {
     const database = readSource("./family-db.ts");
+    const ledger = readSource("./family-wallet-ledger.ts");
 
     // The review-action update writes status + reviewed_at and nothing else —
     // in particular it never touches note/normalized_summary/challenge, which
     // is what "redo preserves the child's original transcript" rests on.
-    match(database, /UPDATE family_completions SET status = \?, reviewed_at = \?,/);
-    match(database, /COALESCE\(awarded_points, \?\)/);
+    match(ledger, /UPDATE family_completions SET status = \?, reviewed_at = \?,/);
+    match(ledger, /COALESCE\(awarded_points, \?\)/);
     // The write is a compare-and-swap so concurrent review actions cannot
     // silently overwrite each other.
-    match(database, /AND status = \? AND created_at IS \?/);
+    match(ledger, /AND status = \? AND created_at IS \?/);
     // A resubmission is a new submission: fresh created_at, review cleared.
     match(database, /created_at = excluded\.created_at/);
     match(database, /reviewed_at = NULL/);

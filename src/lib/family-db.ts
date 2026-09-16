@@ -12,6 +12,10 @@ import {
   FAMILY_WALLET_EPOCH_WEEK,
   snapshotCompletionAward,
 } from "@/lib/family-wallet";
+import {
+  insertRedemptionIfAffordable,
+  transitionCompletionStatus,
+} from "@/lib/family-wallet-ledger";
 
 function routinePoints(config: FamilyBoardConfig, routineId: string): number {
   const definition = routineDefinitions.find((routine) => routine.id === routineId);
@@ -278,7 +282,11 @@ export async function upsertCompletion(
             challenge = excluded.challenge,
             created_at = excluded.created_at,
             credit_count = excluded.credit_count,
-            awarded_points = excluded.awarded_points,
+            awarded_points = CASE
+              WHEN family_completions.awarded_points IS NOT NULL
+                THEN family_completions.awarded_points
+              ELSE excluded.awarded_points
+            END,
             reviewed_at = NULL`,
     args: [
       record.personId,
@@ -362,17 +370,14 @@ export async function updateCompletionStatus(
   });
   const creditCount = Number(current.rows[0]?.["credit_count"] ?? 1);
   const awardedPoints = snapshotCompletionAward(routinePoints(config, routineId), creditCount);
-  const guardSql = guard
-    ? " AND status = ? AND created_at IS ?"
-    : "";
-  const guardArgs = guard ? [guard.status, guard.submittedAt] : [];
-  const result = await client.execute({
-    sql: `UPDATE family_completions SET status = ?, reviewed_at = ?,
-            awarded_points = CASE WHEN ? = 'done' THEN COALESCE(awarded_points, ?) ELSE NULL END
-          WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?${guardSql}`,
-    args: [newStatus, now, newStatus, awardedPoints, week, personId, routineId, day, ...guardArgs],
-  });
-  return result.rowsAffected > 0;
+  return transitionCompletionStatus(
+    client,
+    { week, personId, routineId, day },
+    newStatus,
+    awardedPoints,
+    now,
+    guard,
+  );
 }
 
 export async function removeCompletion(
@@ -443,22 +448,23 @@ export async function getRedemptionsFromWeek(
   }));
 }
 
-export async function createRedemption(
+export async function createRedemptionIfAffordable(
   personId: string,
   rewardId: string,
   week: string,
   chargedPoints: number,
-): Promise<RewardRedemption> {
+): Promise<RewardRedemption | null> {
   const client = await getDb();
   await ensureFamilyTables(client);
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
-  await client.execute({
-    sql: `INSERT INTO family_reward_redemptions (id, person_id, reward_id, week, created_at, charged_points)
-          VALUES (?, ?, ?, ?, ?, ?)`,
-    args: [id, personId, rewardId, week, now, chargedPoints],
-  });
-  return { id, personId, rewardId, week, createdAt: now, chargedPoints };
+  const redemption = { id, personId, rewardId, week, createdAt: now, chargedPoints };
+  const inserted = await insertRedemptionIfAffordable(
+    client,
+    redemption,
+    FAMILY_WALLET_EPOCH_WEEK,
+  );
+  return inserted ? redemption : null;
 }
 
 export async function removeRedemption(id: string): Promise<boolean> {
