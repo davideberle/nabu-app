@@ -41,7 +41,8 @@ describe("family parent-review regression contract", () => {
 
     match(routines, /CompletionStatus = "done" \| "pending_review" \| "on_hold" \| "redo"/);
     match(routines, /c\.status === "done"/);
-    match(wallet, /weekPoints\(personId, \[\.\.\.eligibleCompletions\]/);
+    match(wallet, /row\.status === "done"/);
+    match(wallet, /row\.awardedPoints/);
   });
 
   it("submits voice-coach work for review and renders parent controls", () => {
@@ -60,7 +61,8 @@ describe("family parent-review regression contract", () => {
     // The review-action update writes status + reviewed_at and nothing else —
     // in particular it never touches note/normalized_summary/challenge, which
     // is what "redo preserves the child's original transcript" rests on.
-    match(database, /UPDATE family_completions SET status = \?, reviewed_at = \?\n\s+WHERE week = \?/);
+    match(database, /UPDATE family_completions SET status = \?, reviewed_at = \?,/);
+    match(database, /COALESCE\(awarded_points, \?\)/);
     // The write is a compare-and-swap so concurrent review actions cannot
     // silently overwrite each other.
     match(database, /AND status = \? AND created_at IS \?/);

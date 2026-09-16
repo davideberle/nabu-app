@@ -85,7 +85,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Insufficient balance" }, { status: 409 });
   }
 
-  const redemption = await createRedemption(personId, rewardId, redemptionWeek.week);
+  const redemption = await createRedemption(
+    personId,
+    rewardId,
+    redemptionWeek.week,
+    reward.costPoints,
+  );
   return NextResponse.json(redemption);
 }
 

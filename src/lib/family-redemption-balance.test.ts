@@ -17,6 +17,6 @@ describe("family redemption balance enforcement", () => {
   it("stamps the actual current week and rejects attempted backdating", () => {
     match(routeSource, /resolveRedemptionWeek\(week\)/);
     match(routeSource, /if \(!redemptionWeek\.ok\)/);
-    match(routeSource, /createRedemption\(personId, rewardId, redemptionWeek\.week\)/);
+    match(routeSource, /redemptionWeek\.week,\s+reward\.costPoints,/);
   });
 });

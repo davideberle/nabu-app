@@ -51,6 +51,8 @@ export type CompletionRecord = {
   status: CompletionStatus;
   /** Number of units credited by this completion (for example, Kumon sheets). */
   creditCount?: number;
+  /** Durable wallet credit captured when this completion becomes done. */
+  awardedPoints?: number;
   /** Transcript or typed fallback submitted by the child. */
   note?: string;
   /**

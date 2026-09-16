@@ -7,6 +7,35 @@ import {
   type RoutineDefinition,
   type RewardDefinition,
 } from "@/data/family-routines";
+import {
+  correctedCompletionAward,
+  FAMILY_WALLET_EPOCH_WEEK,
+  snapshotCompletionAward,
+} from "@/lib/family-wallet";
+
+function routinePoints(config: FamilyBoardConfig, routineId: string): number {
+  const definition = routineDefinitions.find((routine) => routine.id === routineId);
+  if (!definition) return 0;
+  return config.routineOverrides[routineId]?.points ?? definition.points;
+}
+
+function rewardCost(config: FamilyBoardConfig, rewardId: string): number {
+  const definition = rewardDefinitions.find((reward) => reward.id === rewardId);
+  if (!definition) return 0;
+  return config.rewardOverrides[rewardId]?.costPoints ?? definition.costPoints;
+}
+
+async function storedBoardConfig(client: Client): Promise<FamilyBoardConfig> {
+  const result = await client.execute(
+    "SELECT data FROM family_board_config WHERE id = 'default'",
+  );
+  if (result.rows.length === 0) return EMPTY_CONFIG;
+  try {
+    return JSON.parse(result.rows[0]["data"] as string) as FamilyBoardConfig;
+  } catch {
+    return EMPTY_CONFIG;
+  }
+}
 
 // ---------------------------------------------------------------------------
 // Idempotent table guard (mirrors ensureTravelItemStatesTable in db.ts)
@@ -25,6 +54,7 @@ async function ensureFamilyTables(client: Client): Promise<void> {
       created_at  TEXT NOT NULL,
       reviewed_at TEXT,
       credit_count INTEGER NOT NULL DEFAULT 1,
+      awarded_points INTEGER,
       PRIMARY KEY (person_id, routine_id, week, day)
     )
   `);
@@ -41,6 +71,9 @@ async function ensureFamilyTables(client: Client): Promise<void> {
   try {
     await client.execute(`ALTER TABLE family_completions ADD COLUMN credit_count INTEGER NOT NULL DEFAULT 1`);
   } catch { /* column already exists */ }
+  try {
+    await client.execute(`ALTER TABLE family_completions ADD COLUMN awarded_points INTEGER`);
+  } catch { /* column already exists */ }
   await client.execute(`
     CREATE INDEX IF NOT EXISTS idx_family_completions_week
       ON family_completions (week, person_id)
@@ -51,9 +84,13 @@ async function ensureFamilyTables(client: Client): Promise<void> {
       person_id  TEXT NOT NULL,
       reward_id  TEXT NOT NULL,
       week       TEXT NOT NULL,
-      created_at TEXT NOT NULL
+      created_at TEXT NOT NULL,
+      charged_points INTEGER
     )
   `);
+  try {
+    await client.execute(`ALTER TABLE family_reward_redemptions ADD COLUMN charged_points INTEGER`);
+  } catch { /* column already exists */ }
   await client.execute(`
     CREATE INDEX IF NOT EXISTS idx_family_redemptions_week
       ON family_reward_redemptions (week, person_id)
@@ -65,6 +102,45 @@ async function ensureFamilyTables(client: Client): Promise<void> {
       updated_at TEXT NOT NULL
     )
   `);
+
+  // One-time, idempotent migration of the real wallet era. Amounts are
+  // captured from the configuration that exists at migration time and are
+  // never recalculated during reads, so later disabling/repricing cannot
+  // rewrite history.
+  const config = await storedBoardConfig(client);
+  const credits = await client.execute({
+    sql: `SELECT person_id, routine_id, week, day, credit_count
+          FROM family_completions
+          WHERE week >= ? AND status = 'done' AND awarded_points IS NULL`,
+    args: [FAMILY_WALLET_EPOCH_WEEK],
+  });
+  for (const row of credits.rows) {
+    const count = Number(row["credit_count"] ?? 1);
+    await client.execute({
+      sql: `UPDATE family_completions SET awarded_points = ?
+            WHERE person_id = ? AND routine_id = ? AND week = ? AND day = ?
+              AND status = 'done' AND awarded_points IS NULL`,
+      args: [
+        snapshotCompletionAward(routinePoints(config, row["routine_id"] as string), count),
+        row["person_id"] as string,
+        row["routine_id"] as string,
+        row["week"] as string,
+        row["day"] as number,
+      ],
+    });
+  }
+  const debits = await client.execute({
+    sql: `SELECT id, reward_id FROM family_reward_redemptions
+          WHERE week >= ? AND charged_points IS NULL`,
+    args: [FAMILY_WALLET_EPOCH_WEEK],
+  });
+  for (const row of debits.rows) {
+    await client.execute({
+      sql: `UPDATE family_reward_redemptions SET charged_points = ?
+            WHERE id = ? AND charged_points IS NULL`,
+      args: [rewardCost(config, row["reward_id"] as string), row["id"] as string],
+    });
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -77,7 +153,7 @@ export async function getCompletionsForWeek(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: "SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count FROM family_completions WHERE week = ?",
+    sql: "SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points FROM family_completions WHERE week = ?",
     args: [week],
   });
   return result.rows.map((row) =>
@@ -92,7 +168,7 @@ export async function getCompletionsFromWeek(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count
+    sql: `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points
           FROM family_completions WHERE week >= ? ORDER BY week ASC`,
     args: [fromWeek],
   });
@@ -120,6 +196,9 @@ function rowToCompletionRecord(row: Record<string, unknown>): CompletionRecord {
     day: row["day"] as number,
     status: narrowCompletionStatus(row["status"] as string),
     creditCount: Number(row["credit_count"] ?? 1),
+    ...(row["awarded_points"] !== null && row["awarded_points"] !== undefined
+      ? { awardedPoints: Number(row["awarded_points"]) }
+      : {}),
     ...(row["note"] ? { note: row["note"] as string } : {}),
     ...(row["normalized_summary"]
       ? { normalizedSummary: row["normalized_summary"] as string }
@@ -140,7 +219,7 @@ export async function getCompletion(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: `SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count
+    sql: `SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points
           FROM family_completions
           WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?`,
     args: [week, personId, routineId, day],
@@ -163,7 +242,7 @@ export async function getReviewQueueCompletions(): Promise<
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute(
-    `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count
+    `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points
      FROM family_completions
      WHERE status IN ('pending_review', 'on_hold')
      ORDER BY created_at ASC, week ASC, person_id ASC, routine_id ASC, day ASC`,
@@ -181,20 +260,25 @@ export async function upsertCompletion(
   const client = await getDb();
   await ensureFamilyTables(client);
   const now = new Date().toISOString();
+  const config = await storedBoardConfig(client);
+  const awardedPoints = record.status === "done"
+    ? snapshotCompletionAward(routinePoints(config, record.routineId), record.creditCount ?? 1)
+    : null;
   // A conflict is a resubmission: it carries a fresh submission time and is
   // no longer reviewed, so `created_at` is refreshed and `reviewed_at`
   // cleared. This is what makes a resubmitted transcript detectable — the
   // review-action `expectedSubmittedAt` guard and the queue's oldest-first
   // ordering both key on it.
   await client.execute({
-    sql: `INSERT INTO family_completions (person_id, routine_id, week, day, status, note, normalized_summary, challenge, created_at, credit_count)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    sql: `INSERT INTO family_completions (person_id, routine_id, week, day, status, note, normalized_summary, challenge, created_at, credit_count, awarded_points)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT (person_id, routine_id, week, day) DO UPDATE SET
             status = excluded.status, note = excluded.note,
             normalized_summary = excluded.normalized_summary,
             challenge = excluded.challenge,
             created_at = excluded.created_at,
             credit_count = excluded.credit_count,
+            awarded_points = excluded.awarded_points,
             reviewed_at = NULL`,
     args: [
       record.personId,
@@ -207,6 +291,7 @@ export async function upsertCompletion(
       record.challenge ?? null,
       now,
       record.creditCount ?? 1,
+      awardedPoints,
     ],
   });
 }
@@ -221,10 +306,28 @@ export async function updateCompletionCreditCount(
 ): Promise<boolean> {
   const client = await getDb();
   await ensureFamilyTables(client);
-  const result = await client.execute({
-    sql: `UPDATE family_completions SET credit_count = ?, reviewed_at = ?
+  const config = await storedBoardConfig(client);
+  const current = await client.execute({
+    sql: `SELECT credit_count, awarded_points FROM family_completions
           WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ? AND status = 'done'`,
-    args: [creditCount, new Date().toISOString(), week, personId, routineId, day],
+    args: [week, personId, routineId, day],
+  });
+  if (current.rows.length === 0) return false;
+  const previousCount = Number(current.rows[0]["credit_count"] ?? 1);
+  const previousAward = current.rows[0]["awarded_points"];
+  // A count correction changes the event deliberately but preserves the
+  // per-unit price captured when it was approved. Today's config must not
+  // reprice an older completion.
+  const awardedPoints = correctedCompletionAward(
+    previousAward !== null && previousAward !== undefined ? Number(previousAward) : null,
+    previousCount,
+    creditCount,
+    routinePoints(config, routineId),
+  );
+  const result = await client.execute({
+    sql: `UPDATE family_completions SET credit_count = ?, awarded_points = ?, reviewed_at = ?
+          WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ? AND status = 'done'`,
+    args: [creditCount, awardedPoints, new Date().toISOString(), week, personId, routineId, day],
   });
   return result.rowsAffected > 0;
 }
@@ -251,14 +354,23 @@ export async function updateCompletionStatus(
   const client = await getDb();
   await ensureFamilyTables(client);
   const now = new Date().toISOString();
+  const config = await storedBoardConfig(client);
+  const current = await client.execute({
+    sql: `SELECT credit_count FROM family_completions
+          WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?`,
+    args: [week, personId, routineId, day],
+  });
+  const creditCount = Number(current.rows[0]?.["credit_count"] ?? 1);
+  const awardedPoints = snapshotCompletionAward(routinePoints(config, routineId), creditCount);
   const guardSql = guard
     ? " AND status = ? AND created_at IS ?"
     : "";
   const guardArgs = guard ? [guard.status, guard.submittedAt] : [];
   const result = await client.execute({
-    sql: `UPDATE family_completions SET status = ?, reviewed_at = ?
+    sql: `UPDATE family_completions SET status = ?, reviewed_at = ?,
+            awarded_points = CASE WHEN ? = 'done' THEN COALESCE(awarded_points, ?) ELSE NULL END
           WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?${guardSql}`,
-    args: [newStatus, now, week, personId, routineId, day, ...guardArgs],
+    args: [newStatus, now, newStatus, awardedPoints, week, personId, routineId, day, ...guardArgs],
   });
   return result.rowsAffected > 0;
 }
@@ -288,6 +400,7 @@ export type RewardRedemption = {
   rewardId: string;
   week: string;
   createdAt: string;
+  chargedPoints: number;
 };
 
 export async function getRedemptionsForWeek(
@@ -296,7 +409,7 @@ export async function getRedemptionsForWeek(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: "SELECT id, person_id, reward_id, week, created_at FROM family_reward_redemptions WHERE week = ?",
+    sql: "SELECT id, person_id, reward_id, week, created_at, charged_points FROM family_reward_redemptions WHERE week = ?",
     args: [week],
   });
   return result.rows.map((row) => ({
@@ -305,6 +418,7 @@ export async function getRedemptionsForWeek(
     rewardId: row["reward_id"] as string,
     week: row["week"] as string,
     createdAt: row["created_at"] as string,
+    chargedPoints: Number(row["charged_points"] ?? 0),
   }));
 }
 
@@ -315,7 +429,7 @@ export async function getRedemptionsFromWeek(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: `SELECT id, person_id, reward_id, week, created_at
+    sql: `SELECT id, person_id, reward_id, week, created_at, charged_points
           FROM family_reward_redemptions WHERE week >= ? ORDER BY created_at ASC`,
     args: [fromWeek],
   });
@@ -325,6 +439,7 @@ export async function getRedemptionsFromWeek(
     rewardId: row["reward_id"] as string,
     week: row["week"] as string,
     createdAt: row["created_at"] as string,
+    chargedPoints: Number(row["charged_points"] ?? 0),
   }));
 }
 
@@ -332,17 +447,18 @@ export async function createRedemption(
   personId: string,
   rewardId: string,
   week: string,
+  chargedPoints: number,
 ): Promise<RewardRedemption> {
   const client = await getDb();
   await ensureFamilyTables(client);
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
   await client.execute({
-    sql: `INSERT INTO family_reward_redemptions (id, person_id, reward_id, week, created_at)
-          VALUES (?, ?, ?, ?, ?)`,
-    args: [id, personId, rewardId, week, now],
+    sql: `INSERT INTO family_reward_redemptions (id, person_id, reward_id, week, created_at, charged_points)
+          VALUES (?, ?, ?, ?, ?, ?)`,
+    args: [id, personId, rewardId, week, now, chargedPoints],
   });
-  return { id, personId, rewardId, week, createdAt: now };
+  return { id, personId, rewardId, week, createdAt: now, chargedPoints };
 }
 
 export async function removeRedemption(id: string): Promise<boolean> {
