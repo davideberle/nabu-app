@@ -187,9 +187,17 @@ export function reconcile({ sourceFiles, appRecipes, bundleIds, excludedDirs }) 
   };
 }
 
-/** Deterministic repair selection: only confirmed low-resolution assignments (min side < 150px). */
-export function selectRepairs(audit) {
+/**
+ * Deterministic repair selection.
+ *
+ * A small image is only a candidate, never proof. Automatic repair requires an
+ * explicit, human-reviewed recipe-id allowlist retained with the audit evidence.
+ */
+export function selectRepairs(audit, reviewedRecipeIds = new Set()) {
   return (audit.confirmed || [])
-    .filter((f) => f.type === "low-resolution" && Math.min(f.width, f.height) < 150 && typeof f.image === "string" && f.image.startsWith("/recipes/"))
-    .map((f) => ({ recipeId: f.recipeId, image: f.image, width: f.width, height: f.height, rule: "R1", reason: f.reasons?.[0] }));
+    .filter((f) => f.type === "low-resolution"
+      && reviewedRecipeIds.has(f.recipeId)
+      && typeof f.image === "string"
+      && f.image.startsWith("/recipes/"))
+    .map((f) => ({ recipeId: f.recipeId, image: f.image, width: f.width, height: f.height, rule: "R1-reviewed-icon", reason: "visually reviewed icon/glyph assignment; not a recipe photograph" }));
 }

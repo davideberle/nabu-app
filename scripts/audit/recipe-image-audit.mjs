@@ -27,6 +27,7 @@ const KITCHEN = resolve(args.kitchen || join(APP_ROOT, "..", "kitchen"));
 const OCR_PATH = args.ocr ? resolve(args.ocr) : null;
 const OUT = resolve(args.out || join(APP_ROOT, "docs", "audits", "recipe-image-audit.json"));
 const SHEET = args["contact-sheet"] ? resolve(args["contact-sheet"]) : null;
+const REPAIRS_PATH = join(APP_ROOT, "docs", "audits", "recipe-image-repairs.json");
 const RECIPES_DIR = join(APP_ROOT, "src", "data", "recipes");
 const BUNDLE = join(APP_ROOT, "src", "data", "recipes-bundle.json");
 const PUBLIC_RECIPES = join(APP_ROOT, "public", "recipes");
@@ -62,6 +63,7 @@ const reconciliation = reconcile({ sourceFiles, appRecipes, bundleIds, excludedD
 
 const publicFiles = readdirSync(PUBLIC_RECIPES).filter((f) => !f.startsWith(".")).sort();
 const publicSet = new Set(publicFiles);
+const reviewedRepairs = existsSync(REPAIRS_PATH) ? JSON.parse(readFileSync(REPAIRS_PATH, "utf8")) : null;
 
 // ---------- image references ----------
 const refs = []; // { recipe, kind: local|external|none, file }
@@ -211,6 +213,18 @@ const summary = {
   generatedAt: new Date().toISOString(),
   appRoot: APP_ROOT, kitchenRoot: KITCHEN, ocrUsed: ocrByFile.size > 0, ocrRows: ocrByFile.size,
   visionEmbeddingModel: "not available locally (no CLIP/open_clip weights); semantic title-vs-image similarity skipped, OCR-based title check used instead",
+  scopeLimitations: [
+    "No local CLIP/open_clip model was available, so semantic title-versus-image comparison was not performed.",
+    "The cookbook EPUB/PDF source files were not compared page-by-page, so source-photo assignment remains incomplete for the heuristic queue.",
+  ],
+  reviewedRepairs: reviewedRepairs ? {
+    count: reviewedRepairs.count,
+    reviewStatus: reviewedRepairs.reviewStatus,
+    rule: reviewedRepairs.rule,
+    before: { withLocalImage: refs.filter((x) => x.kind === "local").length + reviewedRepairs.count, orphans: orphanFiles.length - reviewedRepairs.count },
+    after: { withLocalImage: refs.filter((x) => x.kind === "local").length, orphans: orphanFiles.length },
+    evidenceFile: "docs/audits/recipe-image-repairs.json",
+  } : null,
   recipes: {
     total: appRecipes.length,
     withLocalImage: refs.filter((x) => x.kind === "local").length,
@@ -247,9 +261,15 @@ console.log(JSON.stringify(summary, null, 2));
 if (SHEET) {
   const picks = [];
   const seen = new Set();
-  const push = (label, file) => { if (file && !seen.has(file) && publicSet.has(file)) { seen.add(file); picks.push({ label, file }); } };
-  for (const f of confirmed) { if (f.image) push(`C ${f.type} ${f.recipeId}`, f.image.slice(9)); for (const fl of f.files || []) push(`C ${f.type}`, fl); }
-  for (const f of heuristic.filter((h) => h.type.startsWith("non-food") || h.type === "ocr-names-other-recipe" || h.type === "many-to-one-exact")) { if (f.image) push(`H ${f.type} ${f.recipeId}`, f.image.slice(9)); for (const fl of f.files || []) push(`H ${f.type}`, fl); }
+  const push = (category, label, file, stableIds = []) => { if (file && !seen.has(file) && publicSet.has(file)) { seen.add(file); picks.push({ category, label, file, stableIds }); } };
+  const sample = (items, limit, fn) => items.slice(0, limit).forEach(fn);
+  if (reviewedRepairs) sample(reviewedRepairs.repairs, 12, (r) => push("reviewed-repair", `C reviewed icon ${r.recipeId}`, r.image.slice(9), [r.recipeId]));
+  sample(heuristic.filter((h) => h.type === "many-to-one-exact"), 18, (f) => (f.files || []).slice(0, 1).forEach((fl) => push("many-to-one-exact", `H exact ${f.recipes?.[0]?.id || "group"}`, fl, (f.recipes || []).map((r) => r.id))));
+  sample(heuristic.filter((h) => h.type === "ocr-names-other-recipe"), 12, (f) => push("ocr-mismatch", `H OCR ${f.recipeId}`, f.image?.slice(9), [f.recipeId]));
+  sample(heuristic.filter((h) => h.type === "non-food:text-page" || h.type === "non-food:title-page"), 12, (f) => push("text-or-title-page", `H ${f.type} ${f.recipeId}`, f.image?.slice(9), [f.recipeId]));
+  sample(heuristic.filter((h) => h.type === "low-resolution"), 12, (f) => push("low-resolution", `H low-res ${f.recipeId}`, f.image?.slice(9), [f.recipeId]));
+  sample(heuristic.filter((h) => h.type === "provenance:cookbook-differs"), 8, (f) => push("cookbook-mismatch", `H cookbook ${f.recipeId}`, nameById.get(f.recipeId)?.image?.slice(9), [f.recipeId]));
+  sample(salmon.filter((r) => r.image?.startsWith("/recipes/")), 24, (r) => push("salmon", `S ${r.id}`, r.image.slice(9), [r.id]));
   const cols = 6, cell = 220, labelH = 34, n = Math.min(picks.length, 96);
   const rows = Math.ceil(n / cols);
   const comps = [];
@@ -266,6 +286,7 @@ if (SHEET) {
   }
   if (n > 0) {
     await sharp({ create: { width: cols * cell, height: rows * (cell + labelH), channels: 3, background: "#222" } }).composite(comps).png().toFile(SHEET);
+    writeFileSync(`${SHEET}.json`, JSON.stringify({ generatedAt: summary.generatedAt, sheet: SHEET, tileCount: n, categories: countBy(picks.slice(0, n), "category"), tiles: picks.slice(0, n) }, null, 2));
     log(`contact sheet: ${SHEET} (${n} tiles)`);
   }
 }

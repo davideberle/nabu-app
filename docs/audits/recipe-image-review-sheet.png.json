@@ -1,0 +1,681 @@
+{
+  "generatedAt": "2026-09-16T13:17:12.124Z",
+  "sheet": "/Users/claweberle/.openclaw/workspace/projects/companion-app-image-audit/docs/audits/recipe-image-review-sheet.png",
+  "tileCount": 78,
+  "categories": {
+    "reviewed-repair": 12,
+    "many-to-one-exact": 18,
+    "ocr-mismatch": 9,
+    "text-or-title-page": 8,
+    "low-resolution": 10,
+    "cookbook-mismatch": 2,
+    "salmon": 19
+  },
+  "tiles": [
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon beef-boti-kebabs",
+      "file": "beef-boti-kebabs.jpg",
+      "stableIds": [
+        "beef-boti-kebabs"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon beef-chapli-kebabs",
+      "file": "beef-chapli-kebabs.jpg",
+      "stableIds": [
+        "beef-chapli-kebabs"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon bhatura",
+      "file": "bhatura.jpg",
+      "stableIds": [
+        "bhatura"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon black-bean-and-cheddar-samosas",
+      "file": "black-bean-and-cheddar-samosas.jpg",
+      "stableIds": [
+        "black-bean-and-cheddar-samosas"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon black-pepper-and-lime-rava-mussels",
+      "file": "black-pepper-and-lime-rava-mussels.jpg",
+      "stableIds": [
+        "black-pepper-and-lime-rava-mussels"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon boiled-white-rice",
+      "file": "boiled-white-rice.jpg",
+      "stableIds": [
+        "boiled-white-rice"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon bombay-aloo",
+      "file": "bombay-aloo.jpg",
+      "stableIds": [
+        "bombay-aloo"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon bowl-steamed-chicken-with-salted-fish",
+      "file": "bowl-steamed-chicken-with-salted-fish.jpg",
+      "stableIds": [
+        "bowl-steamed-chicken-with-salted-fish"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon chaat-masala",
+      "file": "chaat-masala.jpg",
+      "stableIds": [
+        "chaat-masala"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon chana-dhal",
+      "file": "chana-dhal.jpg",
+      "stableIds": [
+        "chana-dhal"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon chicken-and-coconut-curry",
+      "file": "chicken-and-coconut-curry.jpg",
+      "stableIds": [
+        "chicken-and-coconut-curry"
+      ]
+    },
+    {
+      "category": "reviewed-repair",
+      "label": "C reviewed icon chicken-lababdar",
+      "file": "chicken-lababdar.jpg",
+      "stableIds": [
+        "chicken-lababdar"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact abacha-ncha-salad",
+      "file": "abacha-ncha-salad.jpg",
+      "stableIds": [
+        "abacha-ncha-salad",
+        "banga-rice",
+        "chapman-cocktail",
+        "vegan-omelette-with-boiled-plantain",
+        "yam-pepper-soup-ji-nmiri-oku"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact basic-hummus",
+      "file": "basic-hummus.jpg",
+      "stableIds": [
+        "basic-hummus",
+        "conchiglie-with-yogurt-peas-and-chile",
+        "hummus-kawarma-lamb-with-lemon-sauce",
+        "musabaha-warm-chickpeas-with-hummus-and-toasted-pita"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact basil-salt",
+      "file": "basil-salt.jpg",
+      "stableIds": [
+        "basil-salt",
+        "berbere-spiced-black-eyed-pea-sliders",
+        "berbere",
+        "jamaican-curry-powder"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact blackened-seasoning",
+      "file": "blackened-seasoning.jpg",
+      "stableIds": [
+        "blackened-seasoning",
+        "creole-spice-blend",
+        "texas-caviar-on-grilled-rustic-bread",
+        "za-atar"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact a-ja-bread-fritters",
+      "file": "a-ja-bread-fritters.jpg",
+      "stableIds": [
+        "a-ja-bread-fritters",
+        "roasted-cauliflower-and-hazelnut-salad",
+        "spicy-carrot-salad"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact asparagus-mimosa",
+      "file": "asparagus-mimosa.jpg",
+      "stableIds": [
+        "asparagus-mimosa",
+        "asparagus-vichyssoise",
+        "char-grilled-asparagus"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact ayamase-ofada-stew",
+      "file": "ayamase-ofada-stew.jpg",
+      "stableIds": [
+        "ayamase-ofada-stew",
+        "banga-soup-ofe-akwu",
+        "bitter-leaf-soup-ofe-onugbu"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact baharat",
+      "file": "baharat.jpg",
+      "stableIds": [
+        "baharat",
+        "ghraybeh",
+        "sweet-filo-cigars"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact basmati-rice-and-orzo",
+      "file": "basmati-rice-and-orzo.jpg",
+      "stableIds": [
+        "basmati-rice-and-orzo",
+        "couscous-with-tomato-and-onion",
+        "wheat-berries-and-swiss-chard-with-pomegranate-molasses"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact beetroot-hard-dough-bread-panzanella",
+      "file": "beetroot-hard-dough-bread-panzanella.jpg",
+      "stableIds": [
+        "beetroot-hard-dough-bread-panzanella",
+        "crunchy-green-house-salad",
+        "zippy-garlicky-cucumber-and-cho-cho-salad"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact butternut-carrot-and-goat-cheese-tartlets",
+      "file": "butternut-carrot-and-goat-cheese-tartlets.jpg",
+      "stableIds": [
+        "butternut-carrot-and-goat-cheese-tartlets",
+        "choka-smoky-tomato-sauce",
+        "roasted-beef-fillet-plus-three-sauces"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact callaloo-pesto-pasta",
+      "file": "callaloo-pesto-pasta.jpg",
+      "stableIds": [
+        "callaloo-pesto-pasta",
+        "roasted-tofu-and-squash-with-green-peanut-sauced-noodles",
+        "white-chocolate-and-stem-ginger-cookies-two-for-now-two-for-"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact cannellini-bean-and-lamb-soup",
+      "file": "cannellini-bean-and-lamb-soup.jpg",
+      "stableIds": [
+        "cannellini-bean-and-lamb-soup",
+        "hot-yogurt-and-barley-soup",
+        "spicy-freekeh-soup-with-meatballs"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact charred-brussels-sprouts-with-coconut",
+      "file": "charred-brussels-sprouts-with-coconut.jpg",
+      "stableIds": [
+        "charred-brussels-sprouts-with-coconut",
+        "vibrant-turmeric-coconut-rice",
+        "zesty-lime-chile-vinaigrette"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact chicken-caesar-salad-with-polenta-croutons",
+      "file": "chicken-caesar-salad-with-polenta-croutons.jpg",
+      "stableIds": [
+        "chicken-caesar-salad-with-polenta-croutons",
+        "goat-cheese-and-beans-with-chive-dressing",
+        "marinated-goat-cheese-salad"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact chile-garlic-chicken-wings",
+      "file": "chile-garlic-chicken-wings.jpg",
+      "stableIds": [
+        "chile-garlic-chicken-wings",
+        "roasted-cauliflower-wings",
+        "smoked-turkey-pho"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact chocolate-krantz-cakes",
+      "file": "chocolate-krantz-cakes.jpg",
+      "stableIds": [
+        "chocolate-krantz-cakes",
+        "helbeh-fenugreek-cake",
+        "tahini-cookies"
+      ]
+    },
+    {
+      "category": "many-to-one-exact",
+      "label": "H exact chunky-zucchini-and-tomato-salad",
+      "file": "chunky-zucchini-and-tomato-salad.jpg",
+      "stableIds": [
+        "chunky-zucchini-and-tomato-salad",
+        "parsley-and-barley-salad",
+        "tabbouleh"
+      ]
+    },
+    {
+      "category": "ocr-mismatch",
+      "label": "H OCR baked-eggs-with-feta-harissa-tomato-sauce-and-coriander",
+      "file": "baked-eggs-with-feta-harissa-tomato-sauce-and-coriander.jpg",
+      "stableIds": [
+        "baked-eggs-with-feta-harissa-tomato-sauce-and-coriander"
+      ]
+    },
+    {
+      "category": "ocr-mismatch",
+      "label": "H OCR bamia",
+      "file": "bamia.jpg",
+      "stableIds": [
+        "bamia"
+      ]
+    },
+    {
+      "category": "ocr-mismatch",
+      "label": "H OCR cinnamon-and-citrus-almond-pastry-cigars",
+      "file": "cinnamon-and-citrus-almond-pastry-cigars.jpg",
+      "stableIds": [
+        "cinnamon-and-citrus-almond-pastry-cigars"
+      ]
+    },
+    {
+      "category": "ocr-mismatch",
+      "label": "H OCR citrus-spiced-salmon",
+      "file": "citrus-spiced-salmon.jpg",
+      "stableIds": [
+        "citrus-spiced-salmon"
+      ]
+    },
+    {
+      "category": "ocr-mismatch",
+      "label": "H OCR puy-lentil-and-quinoa-salad-with-lemon-and-sumac",
+      "file": "puy-lentil-and-quinoa-salad-with-lemon-and-sumac.jpg",
+      "stableIds": [
+        "puy-lentil-and-quinoa-salad-with-lemon-and-sumac"
+      ]
+    },
+    {
+      "category": "ocr-mismatch",
+      "label": "H OCR spiced-lamb",
+      "file": "spiced-lamb.jpg",
+      "stableIds": [
+        "spiced-lamb"
+      ]
+    },
+    {
+      "category": "ocr-mismatch",
+      "label": "H OCR spiced-rack-of-lamb-with-pomegranate-sauce",
+      "file": "spiced-rack-of-lamb-with-pomegranate-sauce.jpg",
+      "stableIds": [
+        "spiced-rack-of-lamb-with-pomegranate-sauce"
+      ]
+    },
+    {
+      "category": "ocr-mismatch",
+      "label": "H OCR turkish-feta-pastry-cigars",
+      "file": "turkish-feta-pastry-cigars.jpg",
+      "stableIds": [
+        "turkish-feta-pastry-cigars"
+      ]
+    },
+    {
+      "category": "ocr-mismatch",
+      "label": "H OCR za-atar-cod-with-relish",
+      "file": "za-atar-cod-with-relish.jpg",
+      "stableIds": [
+        "za-atar-cod-with-relish"
+      ]
+    },
+    {
+      "category": "text-or-title-page",
+      "label": "H non-food:text-page all-time-classic-grilled-octopus",
+      "file": "all-time-classic-grilled-octopus.jpg",
+      "stableIds": [
+        "all-time-classic-grilled-octopus"
+      ]
+    },
+    {
+      "category": "text-or-title-page",
+      "label": "H non-food:text-page banana-cacao-nib-snack-cake",
+      "file": "banana-cacao-nib-snack-cake.jpg",
+      "stableIds": [
+        "banana-cacao-nib-snack-cake"
+      ]
+    },
+    {
+      "category": "text-or-title-page",
+      "label": "H non-food:text-page bittersweet-cashew-cream-truffle-squares",
+      "file": "bittersweet-cashew-cream-truffle-squares.jpg",
+      "stableIds": [
+        "bittersweet-cashew-cream-truffle-squares"
+      ]
+    },
+    {
+      "category": "text-or-title-page",
+      "label": "H non-food:text-page braised-pork-shoulder-with-plums-and-figs",
+      "file": "braised-pork-shoulder-with-plums-and-figs.jpg",
+      "stableIds": [
+        "braised-pork-shoulder-with-plums-and-figs"
+      ]
+    },
+    {
+      "category": "text-or-title-page",
+      "label": "H non-food:title-page coconut-milk-black-rice-pudding",
+      "file": "coconut-milk-black-rice-pudding.jpg",
+      "stableIds": [
+        "coconut-milk-black-rice-pudding"
+      ]
+    },
+    {
+      "category": "text-or-title-page",
+      "label": "H non-food:title-page labneh",
+      "file": "labneh.jpg",
+      "stableIds": [
+        "labneh"
+      ]
+    },
+    {
+      "category": "text-or-title-page",
+      "label": "H non-food:text-page no-mallow-rice-crispy-treats",
+      "file": "no-mallow-rice-crispy-treats.jpg",
+      "stableIds": [
+        "no-mallow-rice-crispy-treats"
+      ]
+    },
+    {
+      "category": "text-or-title-page",
+      "label": "H non-food:title-page white-and-dark-chocolate-cheesecake",
+      "file": "white-and-dark-chocolate-cheesecake.jpg",
+      "stableIds": [
+        "white-and-dark-chocolate-cheesecake"
+      ]
+    },
+    {
+      "category": "low-resolution",
+      "label": "H low-res asaro-yam-porridge",
+      "file": "asaro-yam-porridge.jpg",
+      "stableIds": [
+        "asaro-yam-porridge"
+      ]
+    },
+    {
+      "category": "low-resolution",
+      "label": "H low-res avocado-kimchi-toast",
+      "file": "avocado-kimchi-toast.jpg",
+      "stableIds": [
+        "avocado-kimchi-toast"
+      ]
+    },
+    {
+      "category": "low-resolution",
+      "label": "H low-res bbq-sauce",
+      "file": "bbq-sauce.jpg",
+      "stableIds": [
+        "bbq-sauce"
+      ]
+    },
+    {
+      "category": "low-resolution",
+      "label": "H low-res chocolate-chip-almond-biscotti",
+      "file": "chocolate-chip-almond-biscotti.jpg",
+      "stableIds": [
+        "chocolate-chip-almond-biscotti"
+      ]
+    },
+    {
+      "category": "low-resolution",
+      "label": "H low-res double-chocolate-chunk-cookies",
+      "file": "double-chocolate-chunk-cookies.jpg",
+      "stableIds": [
+        "double-chocolate-chunk-cookies"
+      ]
+    },
+    {
+      "category": "low-resolution",
+      "label": "H low-res falafel",
+      "file": "falafel.jpg",
+      "stableIds": [
+        "falafel"
+      ]
+    },
+    {
+      "category": "low-resolution",
+      "label": "H low-res greek-lemon-olive-oil-dressing",
+      "file": "greek-lemon-olive-oil-dressing.jpg",
+      "stableIds": [
+        "greek-lemon-olive-oil-dressing"
+      ]
+    },
+    {
+      "category": "low-resolution",
+      "label": "H low-res harissa-marinated-asparagus",
+      "file": "harissa-marinated-asparagus.jpg",
+      "stableIds": [
+        "harissa-marinated-asparagus"
+      ]
+    },
+    {
+      "category": "low-resolution",
+      "label": "H low-res japchae",
+      "file": "japchae.jpg",
+      "stableIds": [
+        "japchae"
+      ]
+    },
+    {
+      "category": "low-resolution",
+      "label": "H low-res kimbap",
+      "file": "kimbap.jpg",
+      "stableIds": [
+        "kimbap"
+      ]
+    },
+    {
+      "category": "cookbook-mismatch",
+      "label": "H cookbook hummus",
+      "file": "hummus.jpg",
+      "stableIds": [
+        "hummus"
+      ]
+    },
+    {
+      "category": "cookbook-mismatch",
+      "label": "H cookbook spinach-lasagna",
+      "file": "spinach-lasagna.jpg",
+      "stableIds": [
+        "spinach-lasagna"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S bridget-jones-s-pan-fried-salmon-with-pine-nut-salsa",
+      "file": "bridget-jones-s-pan-fried-salmon-with-pine-nut-salsa.jpg",
+      "stableIds": [
+        "bridget-jones-s-pan-fried-salmon-with-pine-nut-salsa"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S cold-roasted-moroccan-spiced-salmon",
+      "file": "cold-roasted-moroccan-spiced-salmon.jpg",
+      "stableIds": [
+        "cold-roasted-moroccan-spiced-salmon"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S crispy-lemongrass-salmon",
+      "file": "crispy-lemongrass-salmon.jpg",
+      "stableIds": [
+        "crispy-lemongrass-salmon"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S curry-salmon-with-broccoli",
+      "file": "curry-salmon-with-broccoli.jpg",
+      "stableIds": [
+        "curry-salmon-with-broccoli"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S curry-salmon-with-mango",
+      "file": "curry-salmon-with-mango.jpg",
+      "stableIds": [
+        "curry-salmon-with-mango"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S farfalle-with-salmon-sauce",
+      "file": "farfalle-with-salmon-sauce.jpg",
+      "stableIds": [
+        "farfalle-with-salmon-sauce"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S farfalle-with-wild-pacific-northwest-sockeye-salmon-marinated-artichokes-and-fri",
+      "file": "farfalle-with-wild-pacific-northwest-sockeye-salmon-marinated-artichokes-and-fri.jpg",
+      "stableIds": [
+        "farfalle-with-wild-pacific-northwest-sockeye-salmon-marinated-artichokes-and-fri"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S moroccan-s-lm-n-cakes-w-th-g-rl-m-nn",
+      "file": "moroccan-s-lm-n-cakes-w-th-g-rl-m-nn.jpg",
+      "stableIds": [
+        "moroccan-s-lm-n-cakes-w-th-g-rl-m-nn"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S moroccan-salmon-cakes-with-garlic-mayonnaise",
+      "file": "moroccan-salmon-cakes-with-garlic-mayonnaise.jpg",
+      "stableIds": [
+        "moroccan-salmon-cakes-with-garlic-mayonnaise"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S organic-salmon-and-asparagus-bruschetta",
+      "file": "organic-salmon-and-asparagus-bruschetta.jpg",
+      "stableIds": [
+        "organic-salmon-and-asparagus-bruschetta"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S organic-salmon-with-red-pepper-and-hazelnut-salsa",
+      "file": "organic-salmon-with-red-pepper-and-hazelnut-salsa.jpg",
+      "stableIds": [
+        "organic-salmon-with-red-pepper-and-hazelnut-salsa"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S pomegranate-salmon-bites-with-tahini-kale-salad",
+      "file": "pomegranate-salmon-bites-with-tahini-kale-salad.jpg",
+      "stableIds": [
+        "pomegranate-salmon-bites-with-tahini-kale-salad"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S salmon-kofta-bhuna",
+      "file": "salmon-kofta-bhuna.jpg",
+      "stableIds": [
+        "salmon-kofta-bhuna"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S salmon-salad-with-raspberry-dressing",
+      "file": "salmon-salad-with-raspberry-dressing.jpg",
+      "stableIds": [
+        "salmon-salad-with-raspberry-dressing"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S salmon-steaks-in-chraimeh-sauce",
+      "file": "salmon-steaks-in-chraimeh-sauce.jpg",
+      "stableIds": [
+        "salmon-steaks-in-chraimeh-sauce"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S smoked-salmon-pasta",
+      "file": "smoked-salmon-pasta.jpg",
+      "stableIds": [
+        "smoked-salmon-pasta"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S tagliolini-with-salmon-roe-caviar-lemon-and-sichuan-pepper",
+      "file": "tagliolini-with-salmon-roe-caviar-lemon-and-sichuan-pepper.jpg",
+      "stableIds": [
+        "tagliolini-with-salmon-roe-caviar-lemon-and-sichuan-pepper"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S thai-salmon-brown-rice",
+      "file": "thai-salmon-brown-rice.jpg",
+      "stableIds": [
+        "thai-salmon-brown-rice"
+      ]
+    },
+    {
+      "category": "salmon",
+      "label": "S ziti-with-wild-coho-salmon-fava-beans-and-mint",
+      "file": "ziti-with-wild-coho-salmon-fava-beans-and-mint.jpg",
+      "stableIds": [
+        "ziti-with-wild-coho-salmon-fava-beans-and-mint"
+      ]
+    }
+  ]
+}

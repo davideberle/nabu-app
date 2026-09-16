@@ -83,13 +83,15 @@ test("reconcile accounts for every source file and app recipe exactly", () => {
   assert.deepEqual(r.detail.appOnly, ["app-only"]);
 });
 
-test("selectRepairs only picks confirmed sub-150px local images", () => {
+test("selectRepairs requires explicit reviewed ids and never repairs by size alone", () => {
   const picked = selectRepairs({ confirmed: [
     { type: "low-resolution", recipeId: "icon", image: "/recipes/icon.jpg", width: 27, height: 26, reasons: ["min side 26px < 150px"] },
+    { type: "low-resolution", recipeId: "tiny-unreviewed", image: "/recipes/tiny.jpg", width: 20, height: 20 },
     { type: "low-resolution", recipeId: "thumb", image: "/recipes/thumb.jpg", width: 200, height: 300 },
     { type: "broken-missing-file", recipeId: "gone", image: "/recipes/gone.jpg" },
-  ] });
+  ] }, new Set(["icon"]));
   assert.deepEqual(picked.map((p: { recipeId: string }) => p.recipeId), ["icon"]);
+  assert.equal(selectRepairs({ confirmed: [{ type: "low-resolution", recipeId: "icon", image: "/recipes/icon.jpg", width: 27, height: 26 }] }).length, 0);
 });
 
 test("applied repairs are reflected in app recipe data", () => {
@@ -100,6 +102,6 @@ test("applied repairs are reflected in app recipe data", () => {
   for (const r of record.repairs) {
     const rec = JSON.parse(readFileSync(join(process.cwd(), "src", "data", "recipes", `${r.recipeId}.json`), "utf8"));
     assert.equal(rec.image, null, `${r.recipeId} should have image null`);
-    assert.ok(Math.min(r.width, r.height) < 150);
+    assert.equal(record.reviewStatus, "visually-reviewed");
   }
 });
