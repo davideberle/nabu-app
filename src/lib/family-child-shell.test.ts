@@ -17,6 +17,7 @@ import {
   childShellWeekInfo,
   computeChildWallet,
   normalizeChildId,
+  priorWeekEarningsSummary,
   readStoredChild,
   resolveShellRewards,
   resolveShellRoutines,
@@ -338,6 +339,48 @@ describe("computeChildWallet", () => {
   it("is zero across the board for an empty week", () => {
     const wallet = computeChildWallet("santiago", [], [], EMPTY_CONFIG);
     deepStrictEqual(wallet, { earned: 0, spent: 0, balance: 0, redeemedCounts: {} });
+  });
+
+  it("credits every approved unit in the W37 records", () => {
+    const w37 = [
+      completion("i-piano", "isabel", 0),
+      { ...completion("i-kumon", "isabel", 1), creditCount: 4 },
+      completion("i-physio", "isabel", 2),
+      completion("i-dinner", "isabel", 3),
+      completion("s-kumon", "santiago", 0),
+      completion("s-piano", "santiago", 1),
+      completion("s-physio", "santiago", 2),
+      completion("s-table-dinner", "santiago", 3),
+      completion("s-extra-bonus", "santiago", 4),
+    ];
+
+    equal(computeChildWallet("isabel", w37, [], EMPTY_CONFIG).earned, 7);
+    equal(computeChildWallet("santiago", w37, [], EMPTY_CONFIG).earned, 5);
+  });
+});
+
+describe("priorWeekEarningsSummary", () => {
+  const currentWeek = childShellWeekInfo("2026-W38", new Date("2026-09-16T12:00:00Z"));
+  const isabelW37 = [
+    completion("i-piano", "isabel", 0),
+    { ...completion("i-kumon", "isabel", 1), creditCount: 4 },
+    completion("i-physio", "isabel", 2),
+    completion("i-dinner", "isabel", 3),
+  ];
+
+  it("shows last week's earned coins without carrying them into this week", () => {
+    const currentWallet = computeChildWallet("isabel", [], [], EMPTY_CONFIG);
+    deepStrictEqual(currentWallet, { earned: 0, spent: 0, balance: 0, redeemedCounts: {} });
+    deepStrictEqual(
+      priorWeekEarningsSummary(currentWeek, "isabel", isabelW37, EMPTY_CONFIG),
+      { earned: 7, href: "/family/rewards?child=isabel&week=2026-W37" },
+    );
+  });
+
+  it("stays hidden while browsing history or when last week earned nothing", () => {
+    const historicalWeek = childShellWeekInfo("2026-W37", new Date("2026-09-16T12:00:00Z"));
+    equal(priorWeekEarningsSummary(historicalWeek, "isabel", isabelW37, EMPTY_CONFIG), null);
+    equal(priorWeekEarningsSummary(currentWeek, "isabel", [], EMPTY_CONFIG), null);
   });
 });
 

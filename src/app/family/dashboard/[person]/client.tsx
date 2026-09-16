@@ -1656,12 +1656,7 @@ export function PersonBoardClient({
 
   // Points calculation using resolved routines (with config overrides)
   const totalEarned = useMemo(() => {
-    return completionList
-      .filter((c) => c.personId === personId && c.status === "done")
-      .reduce((sum, c) => {
-        const routine = resolvedRoutines.find((r) => r.id === c.routineId);
-        return sum + (routine?.points ?? 0);
-      }, 0);
+    return weekPoints(personId, completionList, resolvedRoutines);
   }, [completionList, personId, resolvedRoutines]);
 
   // Redemption counts per reward

@@ -26,6 +26,7 @@ import {
 import {
   routineDefinitions,
   rewardDefinitions,
+  weekPoints,
   type CompletionRecord,
   type RoutineDefinition,
   type RewardDefinition,
@@ -301,12 +302,7 @@ export function computeChildWallet(
   const routines = resolveShellRoutines(config);
   const rewards = resolveShellRewards(config);
 
-  const earned = completions
-    .filter((c) => c.personId === child && c.status === "done")
-    .reduce((sum, c) => {
-      const routine = routines.find((r) => r.id === c.routineId);
-      return sum + (routine?.points ?? 0);
-    }, 0);
+  const earned = weekPoints(child, [...completions], routines);
 
   const redeemedCounts: Record<string, number> = {};
   for (const r of redemptions) {
@@ -321,6 +317,31 @@ export function computeChildWallet(
   }, 0);
 
   return { earned, spent, balance: earned - spent, redeemedCounts };
+}
+
+export type PriorWeekEarningsSummary = {
+  earned: number;
+  href: string;
+};
+
+/**
+ * A current-week-only pointer to earned coins in the immediately preceding
+ * week. The amount is deliberately informational: it never enters the
+ * current week's wallet or redemption balance.
+ */
+export function priorWeekEarningsSummary(
+  week: ChildShellWeekInfo,
+  child: ChildId,
+  priorWeekCompletions: readonly CompletionRecord[],
+  config: FamilyBoardConfig,
+): PriorWeekEarningsSummary | null {
+  if (week.weekId !== week.currentWeekId) return null;
+  const earned = weekPoints(child, [...priorWeekCompletions], resolveShellRoutines(config));
+  if (earned <= 0) return null;
+  return {
+    earned,
+    href: childShellDestinationHref("rewards", child, week.prevWeekId),
+  };
 }
 
 // ---------------------------------------------------------------------------

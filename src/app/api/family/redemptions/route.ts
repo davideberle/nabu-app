@@ -10,6 +10,7 @@ import {
 } from "@/lib/family-db";
 import { auth } from "@/auth";
 import { isAdminEmail } from "@/lib/access";
+import { weekPoints } from "@/data/family-routines";
 
 /**
  * GET /api/family/redemptions?week=2026-W23
@@ -71,12 +72,7 @@ export async function POST(request: Request) {
   // NOTE: balance check + insert is not atomic — a concurrent request could
   // double-spend. Acceptable for a single-household iPad app; if needed later,
   // move to a Turso transaction with a balance sub-query.
-  const earned = completions
-    .filter((c) => c.personId === personId && c.status === "done")
-    .reduce((sum, c) => {
-      const routine = resolved.find((r) => r.id === c.routineId);
-      return sum + (routine?.points ?? 0);
-    }, 0);
+  const earned = weekPoints(personId, completions, resolved);
   const spent = existingRedemptions
     .filter((r) => r.personId === personId)
     .reduce((sum, r) => {

@@ -32,6 +32,7 @@ import {
   buildRewardsWeekNav,
   childGameIdentity,
   computeChildWallet,
+  priorWeekEarningsSummary,
   resolveShellRewards,
   type ChildShellWeekInfo,
 } from "@/lib/family-child-shell";
@@ -51,6 +52,7 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
   const { child } = useChildShell();
 
   const [completions, setCompletions] = useState<CompletionRecord[]>([]);
+  const [priorWeekCompletions, setPriorWeekCompletions] = useState<CompletionRecord[]>([]);
   const [redemptions, setRedemptions] = useState<RewardRedemption[]>([]);
   const [config, setConfig] = useState<FamilyBoardConfig>(EMPTY_CONFIG);
   const [loaded, setLoaded] = useState(false);
@@ -62,12 +64,16 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
   useEffect(() => {
     let cancelled = false;
     setLoadError(false);
+    setLoaded(false);
     async function load() {
       try {
-        const [compRes, redRes, cfgRes] = await Promise.all([
+        const [compRes, redRes, cfgRes, priorCompRes] = await Promise.all([
           fetch(`/api/family/completions?week=${weekInfo.weekId}`),
           fetch(`/api/family/redemptions?week=${weekInfo.weekId}`),
           fetch("/api/family/config"),
+          weekInfo.weekId === weekInfo.currentWeekId
+            ? fetch(`/api/family/completions?week=${weekInfo.prevWeekId}`)
+            : Promise.resolve(null),
         ]);
         if (cancelled) return;
         if (!compRes.ok || !redRes.ok || !cfgRes.ok) {
@@ -77,8 +83,12 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
         const compData: CompletionRecord[] = await compRes.json();
         const redData: RewardRedemption[] = await redRes.json();
         const cfgData: FamilyBoardConfig = await cfgRes.json();
+        const priorCompData: CompletionRecord[] = priorCompRes?.ok
+          ? await priorCompRes.json()
+          : [];
         if (cancelled) return;
         setCompletions(compData);
+        setPriorWeekCompletions(priorCompData);
         setRedemptions(redData);
         setConfig(cfgData);
         setLoaded(true);
@@ -105,6 +115,13 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
     [child, config],
   );
   const gameIdentity = childGameIdentity(child);
+  const priorWeekSummary = useMemo(
+    () =>
+      child
+        ? priorWeekEarningsSummary(weekInfo, child, priorWeekCompletions, config)
+        : null,
+    [child, config, priorWeekCompletions, weekInfo],
+  );
 
   // Redeem through the existing route; the server re-checks the balance.
   const [redeemingReward, setRedeemingReward] = useState<string | null>(null);
@@ -237,6 +254,31 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
                   <p>{wallet.spent} already spent</p>
                 </div>
               </section>
+
+              {priorWeekSummary ? (
+                <section
+                  aria-label="Last week's coins"
+                  className="flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-primary bg-primary px-5 py-4"
+                >
+                  <div>
+                    <p className="font-semibold">
+                      🪙 {priorWeekSummary.earned} earned last week
+                    </p>
+                    <p className="text-sm text-tertiary">
+                      Those coins stay in last week&rsquo;s wallet and aren&rsquo;t counted in this week&rsquo;s balance.
+                    </p>
+                  </div>
+                  <Link
+                    href={priorWeekSummary.href}
+                    className={cn(
+                      "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-semibold text-secondary transition-colors hover:bg-secondary",
+                      focusRing,
+                    )}
+                  >
+                    See last week
+                  </Link>
+                </section>
+              ) : null}
 
               {redeemNotice ? (
                 <p role="status" className="text-sm font-medium text-secondary">

@@ -40,7 +40,8 @@ describe("family parent-review regression contract", () => {
     const shell = readSource("./family-child-shell.ts");
 
     match(routines, /CompletionStatus = "done" \| "pending_review" \| "on_hold" \| "redo"/);
-    match(shell, /c\.status === "done"/);
+    match(routines, /c\.status === "done"/);
+    match(shell, /weekPoints\(child, \[\.\.\.completions\], routines\)/);
   });
 
   it("submits voice-coach work for review and renders parent controls", () => {
