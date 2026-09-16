@@ -28,6 +28,7 @@ const OCR_PATH = args.ocr ? resolve(args.ocr) : null;
 const OUT = resolve(args.out || join(APP_ROOT, "docs", "audits", "recipe-image-audit.json"));
 const SHEET = args["contact-sheet"] ? resolve(args["contact-sheet"]) : null;
 const REPAIRS_PATH = join(APP_ROOT, "docs", "audits", "recipe-image-repairs.json");
+const ROUND2_PATH = join(APP_ROOT, "docs", "audits", "recipe-image-cleanup-round2.json");
 const RECIPES_DIR = join(APP_ROOT, "src", "data", "recipes");
 const BUNDLE = join(APP_ROOT, "src", "data", "recipes-bundle.json");
 const PUBLIC_RECIPES = join(APP_ROOT, "public", "recipes");
@@ -64,6 +65,8 @@ const reconciliation = reconcile({ sourceFiles, appRecipes, bundleIds, excludedD
 const publicFiles = readdirSync(PUBLIC_RECIPES).filter((f) => !f.startsWith(".")).sort();
 const publicSet = new Set(publicFiles);
 const reviewedRepairs = existsSync(REPAIRS_PATH) ? JSON.parse(readFileSync(REPAIRS_PATH, "utf8")) : null;
+const reviewedRound2 = existsSync(ROUND2_PATH) ? JSON.parse(readFileSync(ROUND2_PATH, "utf8")) : null;
+const round2ImageImpact = reviewedRound2 ? reviewedRound2.imageRepairs.length + reviewedRound2.duplicateRecipes.length : 0;
 
 // ---------- image references ----------
 const refs = []; // { recipe, kind: local|external|none, file }
@@ -221,9 +224,17 @@ const summary = {
     count: reviewedRepairs.count,
     reviewStatus: reviewedRepairs.reviewStatus,
     rule: reviewedRepairs.rule,
-    before: { withLocalImage: refs.filter((x) => x.kind === "local").length + reviewedRepairs.count, orphans: orphanFiles.length - reviewedRepairs.count },
-    after: { withLocalImage: refs.filter((x) => x.kind === "local").length, orphans: orphanFiles.length },
+    before: { withLocalImage: refs.filter((x) => x.kind === "local").length + round2ImageImpact + reviewedRepairs.count, orphans: orphanFiles.length - round2ImageImpact - reviewedRepairs.count },
+    after: { withLocalImage: refs.filter((x) => x.kind === "local").length + round2ImageImpact, orphans: orphanFiles.length - round2ImageImpact },
     evidenceFile: "docs/audits/recipe-image-repairs.json",
+  } : null,
+  reviewedCleanupRound2: reviewedRound2 ? {
+    reviewStatus: reviewedRound2.reviewStatus,
+    imageAssignmentsCleared: reviewedRound2.imageRepairs.length,
+    duplicateRecordsQuarantined: reviewedRound2.duplicateRecipes.length,
+    before: { recipes: appRecipes.length + reviewedRound2.duplicateRecipes.length, withLocalImage: refs.filter((x) => x.kind === "local").length + round2ImageImpact, orphans: orphanFiles.length - round2ImageImpact },
+    after: { recipes: appRecipes.length, withLocalImage: refs.filter((x) => x.kind === "local").length, orphans: orphanFiles.length },
+    evidenceFile: "docs/audits/recipe-image-cleanup-round2.json",
   } : null,
   recipes: {
     total: appRecipes.length,

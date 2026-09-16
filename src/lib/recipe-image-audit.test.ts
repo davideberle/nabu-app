@@ -105,3 +105,19 @@ test("applied repairs are reflected in app recipe data", () => {
     assert.equal(record.reviewStatus, "visually-reviewed");
   }
 });
+
+test("round-2 reviewed cleanup stays applied", () => {
+  const manifestPath = join(process.cwd(), "docs", "audits", "recipe-image-cleanup-round2.json");
+  if (!existsSync(manifestPath)) return;
+  const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+  assert.equal(manifest.reviewStatus, "visually-reviewed");
+  for (const repair of manifest.imageRepairs) {
+    const recipe = JSON.parse(readFileSync(join(process.cwd(), "src", "data", "recipes", `${repair.recipeId}.json`), "utf8"));
+    assert.equal(recipe.image, null, `${repair.recipeId} should not retain a proven-wrong image`);
+  }
+  for (const pair of manifest.duplicateRecipes) {
+    assert.equal(existsSync(join(process.cwd(), "src", "data", "recipes", `${pair.quarantineId}.json`)), false);
+    assert.equal(existsSync(join(process.cwd(), "src", "data", "recipes", `${pair.canonicalId}.json`)), true);
+    assert.equal(existsSync(join(process.cwd(), "docs", "audits", "quarantine", "recipe-duplicates-20260916", `${pair.quarantineId}.json`)), true);
+  }
+});
