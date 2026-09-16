@@ -1,0 +1,720 @@
+{
+ "appliedAt": "2026-09-16T12:50:18.571Z",
+ "dryRun": false,
+ "rule": "R1 min-side<150px assigned image is not a photograph -> image:null",
+ "count": 89,
+ "repairs": [
+  {
+   "recipeId": "beef-boti-kebabs",
+   "image": "/recipes/beef-boti-kebabs.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "beef-chapli-kebabs",
+   "image": "/recipes/beef-chapli-kebabs.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "bhatura",
+   "image": "/recipes/bhatura.jpg",
+   "width": 27,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "black-bean-and-cheddar-samosas",
+   "image": "/recipes/black-bean-and-cheddar-samosas.jpg",
+   "width": 27,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "black-pepper-and-lime-rava-mussels",
+   "image": "/recipes/black-pepper-and-lime-rava-mussels.jpg",
+   "width": 27,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "boiled-white-rice",
+   "image": "/recipes/boiled-white-rice.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "bombay-aloo",
+   "image": "/recipes/bombay-aloo.jpg",
+   "width": 136,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "bowl-steamed-chicken-with-salted-fish",
+   "image": "/recipes/bowl-steamed-chicken-with-salted-fish.jpg",
+   "width": 31,
+   "height": 28,
+   "rule": "R1",
+   "reason": "min side 28px < 150px"
+  },
+  {
+   "recipeId": "chaat-masala",
+   "image": "/recipes/chaat-masala.jpg",
+   "width": 173,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "chana-dhal",
+   "image": "/recipes/chana-dhal.jpg",
+   "width": 135,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "chicken-and-coconut-curry",
+   "image": "/recipes/chicken-and-coconut-curry.jpg",
+   "width": 26,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "chicken-lababdar",
+   "image": "/recipes/chicken-lababdar.jpg",
+   "width": 27,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "chicken-masala-curry",
+   "image": "/recipes/chicken-masala-curry.jpg",
+   "width": 26,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "chole-masala-powder",
+   "image": "/recipes/chole-masala-powder.jpg",
+   "width": 145,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "cold-onion-chutney",
+   "image": "/recipes/cold-onion-chutney.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "coriander-garlic-and-chilli-raita",
+   "image": "/recipes/coriander-garlic-and-chilli-raita.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "curry-house-naans",
+   "image": "/recipes/curry-house-naans.jpg",
+   "width": 106,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "curry-powder",
+   "image": "/recipes/curry-powder.jpg",
+   "width": 192,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "easy-chicken-tortilla-samosas",
+   "image": "/recipes/easy-chicken-tortilla-samosas.jpg",
+   "width": 27,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "easy-mango-pickle",
+   "image": "/recipes/easy-mango-pickle.jpg",
+   "width": 172,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "fried-rice",
+   "image": "/recipes/fried-rice.jpg",
+   "width": 136,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "garam-masala",
+   "image": "/recipes/garam-masala.jpg",
+   "width": 173,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "green-coconut-chutney",
+   "image": "/recipes/green-coconut-chutney.jpg",
+   "width": 99,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "green-pani",
+   "image": "/recipes/green-pani.jpg",
+   "width": 99,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "honey-mustard-raita",
+   "image": "/recipes/honey-mustard-raita.jpg",
+   "width": 136,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "idlis",
+   "image": "/recipes/idlis.jpg",
+   "width": 99,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "kachumber-salad",
+   "image": "/recipes/kachumber-salad.jpg",
+   "width": 137,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "kashmiri-chicken",
+   "image": "/recipes/kashmiri-chicken.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "kashmiri-lamb-cutlets",
+   "image": "/recipes/kashmiri-lamb-cutlets.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "kashmiri-meatball-curry",
+   "image": "/recipes/kashmiri-meatball-curry.jpg",
+   "width": 25,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 25px < 150px"
+  },
+  {
+   "recipeId": "kashmiri-red-chilli-and-garlic-chutney",
+   "image": "/recipes/kashmiri-red-chilli-and-garlic-chutney.jpg",
+   "width": 100,
+   "height": 27,
+   "rule": "R1",
+   "reason": "min side 27px < 150px"
+  },
+  {
+   "recipeId": "keema-naans",
+   "image": "/recipes/keema-naans.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "lamb-dhansak",
+   "image": "/recipes/lamb-dhansak.jpg",
+   "width": 69,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "lamb-karahi",
+   "image": "/recipes/lamb-karahi.jpg",
+   "width": 104,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "lamb-masala-curry",
+   "image": "/recipes/lamb-masala-curry.jpg",
+   "width": 62,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "lamb-or-vegetable-samosas",
+   "image": "/recipes/lamb-or-vegetable-samosas.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "lamb-vindaloo",
+   "image": "/recipes/lamb-vindaloo.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "lime-pickle",
+   "image": "/recipes/lime-pickle.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "mango-lassi",
+   "image": "/recipes/mango-lassi.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "masala-papads",
+   "image": "/recipes/masala-papads.jpg",
+   "width": 136,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "mean-and-green-chicken-tikka-kebabs",
+   "image": "/recipes/mean-and-green-chicken-tikka-kebabs.jpg",
+   "width": 69,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "mint-and-coriander-sauce",
+   "image": "/recipes/mint-and-coriander-sauce.jpg",
+   "width": 99,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "mint-chutney",
+   "image": "/recipes/mint-chutney.jpg",
+   "width": 136,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "mint-coriander-and-mango-chutney",
+   "image": "/recipes/mint-coriander-and-mango-chutney.jpg",
+   "width": 173,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "mixed-powder",
+   "image": "/recipes/mixed-powder.jpg",
+   "width": 173,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "onion-bhajis",
+   "image": "/recipes/onion-bhajis.jpg",
+   "width": 137,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "panch-poran",
+   "image": "/recipes/panch-poran.jpg",
+   "width": 173,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "paneer-shashlik",
+   "image": "/recipes/paneer-shashlik.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "papadams",
+   "image": "/recipes/papadams.jpg",
+   "width": 173,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "papadda-vada",
+   "image": "/recipes/papadda-vada.jpg",
+   "width": 106,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "peshawari-naans",
+   "image": "/recipes/peshawari-naans.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "pilau-rice",
+   "image": "/recipes/pilau-rice.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "plantain-fufu",
+   "image": "/recipes/plantain-fufu.jpg",
+   "width": 444,
+   "height": 133,
+   "rule": "R1",
+   "reason": "min side 133px < 150px"
+  },
+  {
+   "recipeId": "podina-coriander-and-mint-chutney",
+   "image": "/recipes/podina-coriander-and-mint-chutney.jpg",
+   "width": 136,
+   "height": 27,
+   "rule": "R1",
+   "reason": "min side 27px < 150px"
+  },
+  {
+   "recipeId": "posh-bombay-mix",
+   "image": "/recipes/posh-bombay-mix.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "pre-cooked-lamb-keema",
+   "image": "/recipes/pre-cooked-lamb-keema.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "pre-cooked-stewed-chicken-and-cooking-stock",
+   "image": "/recipes/pre-cooked-stewed-chicken-and-cooking-stock.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "pre-cooked-stewed-lamb-meat-and-cooking-stock",
+   "image": "/recipes/pre-cooked-stewed-lamb-meat-and-cooking-stock.jpg",
+   "width": 103,
+   "height": 27,
+   "rule": "R1",
+   "reason": "min side 27px < 150px"
+  },
+  {
+   "recipeId": "pre-cooked-stewed-potatoes",
+   "image": "/recipes/pre-cooked-stewed-potatoes.jpg",
+   "width": 136,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "puris",
+   "image": "/recipes/puris.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "quick-and-easy-base-curry-sauce-cheat-s-method",
+   "image": "/recipes/quick-and-easy-base-curry-sauce-cheat-s-method.jpg",
+   "width": 137,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "red-braised-fish",
+   "image": "/recipes/red-braised-fish.jpg",
+   "width": 31,
+   "height": 28,
+   "rule": "R1",
+   "reason": "min side 28px < 150px"
+  },
+  {
+   "recipeId": "samosa-chaat",
+   "image": "/recipes/samosa-chaat.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "semolina-fried-potatoes",
+   "image": "/recipes/semolina-fried-potatoes.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "shawarma-kebabs",
+   "image": "/recipes/shawarma-kebabs.jpg",
+   "width": 69,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "smoked-toor-dhal-samosas",
+   "image": "/recipes/smoked-toor-dhal-samosas.jpg",
+   "width": 105,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "spice-stock",
+   "image": "/recipes/spice-stock.jpg",
+   "width": 136,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "spicy-mixed-vegetable-pickle",
+   "image": "/recipes/spicy-mixed-vegetable-pickle.jpg",
+   "width": 105,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "sri-lankan-jaffna-crab-curry",
+   "image": "/recipes/sri-lankan-jaffna-crab-curry.jpg",
+   "width": 27,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "sri-lankan-pork-curry",
+   "image": "/recipes/sri-lankan-pork-curry.jpg",
+   "width": 62,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "steamed-white-rice",
+   "image": "/recipes/steamed-white-rice.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "sweet-and-spicy-chicken-wings",
+   "image": "/recipes/sweet-and-spicy-chicken-wings.jpg",
+   "width": 69,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tajah-badam",
+   "image": "/recipes/tajah-badam.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "takeaway-style-pakora-sauce",
+   "image": "/recipes/takeaway-style-pakora-sauce.jpg",
+   "width": 137,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tamarind-black-pani",
+   "image": "/recipes/tamarind-black-pani.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tamarind-chutney",
+   "image": "/recipes/tamarind-chutney.jpg",
+   "width": 137,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tamarind-sauce",
+   "image": "/recipes/tamarind-sauce.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tandoori-cauliflower",
+   "image": "/recipes/tandoori-cauliflower.jpg",
+   "width": 136,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tandoori-chicken-legs",
+   "image": "/recipes/tandoori-chicken-legs.jpg",
+   "width": 105,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tandoori-lamb-tikka",
+   "image": "/recipes/tandoori-lamb-tikka.jpg",
+   "width": 69,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tandoori-masala",
+   "image": "/recipes/tandoori-masala.jpg",
+   "width": 173,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tandoori-methi-chicken-tikka",
+   "image": "/recipes/tandoori-methi-chicken-tikka.jpg",
+   "width": 69,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tawa-chicken-wing-fry",
+   "image": "/recipes/tawa-chicken-wing-fry.jpg",
+   "width": 63,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tomato-onion-and-mint-salad",
+   "image": "/recipes/tomato-onion-and-mint-salad.jpg",
+   "width": 136,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tomato-pur-e",
+   "image": "/recipes/tomato-pur-e.jpg",
+   "width": 173,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "tuwo-masara",
+   "image": "/recipes/tuwo-masara.jpg",
+   "width": 505,
+   "height": 133,
+   "rule": "R1",
+   "reason": "min side 133px < 150px"
+  },
+  {
+   "recipeId": "vegetable-bhaji",
+   "image": "/recipes/vegetable-bhaji.jpg",
+   "width": 173,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "vegetable-pakoras",
+   "image": "/recipes/vegetable-pakoras.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  },
+  {
+   "recipeId": "yoghurt-sauce",
+   "image": "/recipes/yoghurt-sauce.jpg",
+   "width": 100,
+   "height": 26,
+   "rule": "R1",
+   "reason": "min side 26px < 150px"
+  }
+ ]
+}
