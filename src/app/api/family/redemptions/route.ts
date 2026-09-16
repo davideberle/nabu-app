@@ -1,16 +1,15 @@
 import { NextResponse } from "next/server";
 import {
   getRedemptionsForWeek,
-  getCompletionsForWeek,
   getBoardConfig,
-  resolveRoutines,
   resolveRewards,
   createRedemption,
   removeRedemption,
 } from "@/lib/family-db";
 import { auth } from "@/auth";
 import { isAdminEmail } from "@/lib/access";
-import { weekPoints } from "@/data/family-routines";
+import { getFamilyWalletProjection } from "@/lib/family-wallet-server";
+import { resolveRedemptionWeek } from "@/lib/family-wallet";
 
 /**
  * GET /api/family/redemptions?week=2026-W23
@@ -31,7 +30,9 @@ export async function GET(request: Request) {
 
 /**
  * POST /api/family/redemptions
- * Body: { personId, rewardId, week }
+ * Body: { personId, rewardId }. The server always stamps the actual current
+ * ISO week. A supplied week is accepted only when it matches, so an old UI
+ * cannot silently backdate a debit while browsing history.
  * Server-side balance check prevents overspend.
  */
 export async function POST(request: Request) {
@@ -48,19 +49,23 @@ export async function POST(request: Request) {
   const { personId, rewardId, week } = body;
   if (
     typeof personId !== "string" || !personId ||
-    typeof rewardId !== "string" || !rewardId ||
-    typeof week !== "string" || !/^\d{4}-W\d{2}$/.test(week)
+    typeof rewardId !== "string" || !rewardId
   ) {
     return NextResponse.json({ error: "Invalid fields" }, { status: 400 });
   }
+  const redemptionWeek = resolveRedemptionWeek(week);
+  if (!redemptionWeek.ok) {
+    return NextResponse.json(
+      { error: "Redemptions can only be recorded in the current week", currentWeek: redemptionWeek.currentWeek },
+      { status: 409 },
+    );
+  }
 
-  // Server-side balance check
-  const [completions, existingRedemptions, boardConfig] = await Promise.all([
-    getCompletionsForWeek(week),
-    getRedemptionsForWeek(week),
+  // Server-side permanent-wallet balance check.
+  const [walletProjection, boardConfig] = await Promise.all([
+    getFamilyWalletProjection(),
     getBoardConfig(),
   ]);
-  const resolved = resolveRoutines(boardConfig);
   const resolvedRew = resolveRewards(boardConfig);
   const reward = resolvedRew.find((r) => r.id === rewardId);
   if (!reward) {
@@ -72,19 +77,15 @@ export async function POST(request: Request) {
   // NOTE: balance check + insert is not atomic — a concurrent request could
   // double-spend. Acceptable for a single-household iPad app; if needed later,
   // move to a Turso transaction with a balance sub-query.
-  const earned = weekPoints(personId, completions, resolved);
-  const spent = existingRedemptions
-    .filter((r) => r.personId === personId)
-    .reduce((sum, r) => {
-      const rw = resolvedRew.find((x) => x.id === r.rewardId);
-      return sum + (rw?.costPoints ?? 0);
-    }, 0);
-  const balance = earned - spent;
+  const balance = walletProjection.wallets[personId]?.balance;
+  if (balance === undefined) {
+    return NextResponse.json({ error: "Unknown person" }, { status: 400 });
+  }
   if (balance < reward.costPoints) {
     return NextResponse.json({ error: "Insufficient balance" }, { status: 409 });
   }
 
-  const redemption = await createRedemption(personId, rewardId, week);
+  const redemption = await createRedemption(personId, rewardId, redemptionWeek.week);
   return NextResponse.json(redemption);
 }
 

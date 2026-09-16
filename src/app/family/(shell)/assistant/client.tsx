@@ -12,7 +12,8 @@ import {
   type RoutineDefinition,
   type RewardDefinition,
 } from "@/data/family-routines";
-import type { FamilyBoardConfig, RewardRedemption } from "@/lib/family-db";
+import type { FamilyBoardConfig } from "@/lib/family-db";
+import type { FamilyWalletProjection } from "@/lib/family-wallet";
 import {
   assistantProfileById,
   avatarStyleById,
@@ -982,25 +983,19 @@ function Workspace({
     const wait = new Promise((resolve) => window.setTimeout(resolve, 900));
     let snapshot: PointsSnapshot;
     try {
-      const [compRes, redRes, cfgRes] = await Promise.all([
+      const [compRes, walletRes, cfgRes] = await Promise.all([
         fetch(`/api/family/completions?week=${weekId}`),
-        fetch(`/api/family/redemptions?week=${weekId}`),
+        fetch("/api/family/wallet"),
         fetch("/api/family/config"),
       ]);
-      if (!compRes.ok || !redRes.ok || !cfgRes.ok) throw new Error("family API error");
+      if (!compRes.ok || !walletRes.ok || !cfgRes.ok) throw new Error("family API error");
       const completions = (await compRes.json()) as CompletionRecord[];
-      const redemptions = (await redRes.json()) as RewardRedemption[];
+      const walletProjection = (await walletRes.json()) as FamilyWalletProjection;
       const config = (await cfgRes.json()) as FamilyBoardConfig;
       const resolvedRoutines = resolveRoutinesClient(config);
       const resolvedRewards = resolveRewardsClient(config);
       const earned = weekPoints(profile.id, completions, resolvedRoutines);
-      const spent = redemptions
-        .filter((r) => r.personId === profile.id)
-        .reduce((sum, r) => {
-          const reward = resolvedRewards.find((x) => x.id === r.rewardId);
-          return sum + (reward?.costPoints ?? 0);
-        }, 0);
-      const balance = earned - spent;
+      const balance = walletProjection.wallets[profile.id]?.balance ?? 0;
       const next = nextRewardForPerson(profile.id, balance, resolvedRewards);
       snapshot = {
         live: true,

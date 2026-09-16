@@ -4,10 +4,8 @@
 // Rewards — the child shell's rewards destination.
 //
 // Renders the selected child's real reward projection from the existing
-// family model: the same three API reads as the boards
-// (`/api/family/completions?week=`, `/api/family/redemptions?week=`,
-// `/api/family/config`) and the same wallet math (`computeChildWallet`,
-// asserted against `family-db.ts` by test). Redeeming posts to the existing
+// family model: week-scoped activity plus the server-owned permanent wallet
+// projection. Redeeming posts to the existing
 // `/api/family/redemptions` route, whose server-side balance check remains
 // the enforcement point.
 //
@@ -23,7 +21,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/components/ui/nabu";
-import type { CompletionRecord } from "@/data/family-routines";
+import { weekPoints, type CompletionRecord } from "@/data/family-routines";
 import type { FamilyBoardConfig, RewardRedemption } from "@/lib/family-db";
 import { assistantProfileById } from "@/data/family-assistant";
 import { useChildShell } from "@/components/family/child-shell-provider";
@@ -31,11 +29,11 @@ import {
   approvedGameLibrary,
   buildRewardsWeekNav,
   childGameIdentity,
-  computeChildWallet,
-  priorWeekEarningsSummary,
+  resolveShellRoutines,
   resolveShellRewards,
   type ChildShellWeekInfo,
 } from "@/lib/family-child-shell";
+import type { FamilyWalletProjection } from "@/lib/family-wallet";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -52,8 +50,8 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
   const { child } = useChildShell();
 
   const [completions, setCompletions] = useState<CompletionRecord[]>([]);
-  const [priorWeekCompletions, setPriorWeekCompletions] = useState<CompletionRecord[]>([]);
   const [redemptions, setRedemptions] = useState<RewardRedemption[]>([]);
+  const [walletProjection, setWalletProjection] = useState<FamilyWalletProjection | null>(null);
   const [config, setConfig] = useState<FamilyBoardConfig>(EMPTY_CONFIG);
   const [loaded, setLoaded] = useState(false);
   const [loadError, setLoadError] = useState(false);
@@ -67,30 +65,26 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
     setLoaded(false);
     async function load() {
       try {
-        const [compRes, redRes, cfgRes, priorCompRes] = await Promise.all([
+        const [compRes, redRes, cfgRes, walletRes] = await Promise.all([
           fetch(`/api/family/completions?week=${weekInfo.weekId}`),
           fetch(`/api/family/redemptions?week=${weekInfo.weekId}`),
           fetch("/api/family/config"),
-          weekInfo.weekId === weekInfo.currentWeekId
-            ? fetch(`/api/family/completions?week=${weekInfo.prevWeekId}`)
-            : Promise.resolve(null),
+          fetch("/api/family/wallet"),
         ]);
         if (cancelled) return;
-        if (!compRes.ok || !redRes.ok || !cfgRes.ok) {
+        if (!compRes.ok || !redRes.ok || !cfgRes.ok || !walletRes.ok) {
           setLoadError(true);
           return;
         }
         const compData: CompletionRecord[] = await compRes.json();
         const redData: RewardRedemption[] = await redRes.json();
         const cfgData: FamilyBoardConfig = await cfgRes.json();
-        const priorCompData: CompletionRecord[] = priorCompRes?.ok
-          ? await priorCompRes.json()
-          : [];
+        const walletData: FamilyWalletProjection = await walletRes.json();
         if (cancelled) return;
         setCompletions(compData);
-        setPriorWeekCompletions(priorCompData);
         setRedemptions(redData);
         setConfig(cfgData);
+        setWalletProjection(walletData);
         setLoaded(true);
       } catch {
         if (!cancelled) setLoadError(true);
@@ -103,9 +97,10 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
   }, [weekInfo.weekId, loadAttempt]);
 
   const weekNav = child ? buildRewardsWeekNav(weekInfo, child) : null;
-  const wallet = useMemo(
-    () => (child ? computeChildWallet(child, completions, redemptions, config) : null),
-    [child, completions, redemptions, config],
+  const wallet = child ? walletProjection?.wallets[child] ?? null : null;
+  const weeklyEarned = useMemo(
+    () => child ? weekPoints(child, completions, resolveShellRoutines(config)) : 0,
+    [child, completions, config],
   );
   const rewards = useMemo(
     () =>
@@ -115,13 +110,6 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
     [child, config],
   );
   const gameIdentity = childGameIdentity(child);
-  const priorWeekSummary = useMemo(
-    () =>
-      child
-        ? priorWeekEarningsSummary(weekInfo, child, priorWeekCompletions, config)
-        : null,
-    [child, config, priorWeekCompletions, weekInfo],
-  );
 
   // Redeem through the existing route; the server re-checks the balance.
   const [redeemingReward, setRedeemingReward] = useState<string | null>(null);
@@ -135,7 +123,7 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
         const res = await fetch("/api/family/redemptions", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ personId: child, rewardId, week: weekInfo.weekId }),
+          body: JSON.stringify({ personId: child, rewardId }),
         });
         if (!res.ok) {
           setRedeemNotice(
@@ -146,7 +134,11 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
           return;
         }
         const redemption: RewardRedemption = await res.json();
-        setRedemptions((prev) => [...prev, redemption]);
+        if (redemption.week === weekInfo.weekId) {
+          setRedemptions((prev) => [...prev, redemption]);
+        }
+        const walletRes = await fetch("/api/family/wallet");
+        if (walletRes.ok) setWalletProjection(await walletRes.json());
       } catch {
         setRedeemNotice("That didn't work — please try again.");
       } finally {
@@ -250,35 +242,13 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
                   </p>
                 </div>
                 <div className="text-sm text-tertiary">
-                  <p>{wallet.earned} earned this week</p>
-                  <p>{wallet.spent} already spent</p>
+                  <p>{weeklyEarned} earned {weekInfo.weekId === weekInfo.currentWeekId ? "this week" : "in this week"}</p>
+                  <p>{wallet.earned} earned total · {wallet.spent} spent total</p>
+                  {weekInfo.weekId !== weekInfo.currentWeekId ? (
+                    <p>Anything you get now is recorded in this week.</p>
+                  ) : null}
                 </div>
               </section>
-
-              {priorWeekSummary ? (
-                <section
-                  aria-label="Last week's coins"
-                  className="flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-primary bg-primary px-5 py-4"
-                >
-                  <div>
-                    <p className="font-semibold">
-                      🪙 {priorWeekSummary.earned} earned last week
-                    </p>
-                    <p className="text-sm text-tertiary">
-                      Those coins stay in last week&rsquo;s wallet and aren&rsquo;t counted in this week&rsquo;s balance.
-                    </p>
-                  </div>
-                  <Link
-                    href={priorWeekSummary.href}
-                    className={cn(
-                      "inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-semibold text-secondary transition-colors hover:bg-secondary",
-                      focusRing,
-                    )}
-                  >
-                    See last week
-                  </Link>
-                </section>
-              ) : null}
 
               {redeemNotice ? (
                 <p role="status" className="text-sm font-medium text-secondary">
@@ -289,7 +259,9 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
               {/* Rewards */}
               <section aria-label="Rewards to earn" className="grid gap-4 sm:grid-cols-2">
                 {rewards.map((reward) => {
-                  const redeemedCount = wallet.redeemedCounts[reward.id] ?? 0;
+                  const redeemedCount = redemptions.filter(
+                    (redemption) => redemption.personId === child && redemption.rewardId === reward.id,
+                  ).length;
                   const canAfford = wallet.balance >= reward.costPoints;
                   const missing = Math.max(0, reward.costPoints - wallet.balance);
                   return (

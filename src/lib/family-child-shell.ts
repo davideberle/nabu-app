@@ -26,8 +26,6 @@ import {
 import {
   routineDefinitions,
   rewardDefinitions,
-  weekPoints,
-  type CompletionRecord,
   type RoutineDefinition,
   type RewardDefinition,
 } from "../data/family-routines.ts";
@@ -274,74 +272,6 @@ export function resolveShellRewards(config: FamilyBoardConfig): RewardDefinition
       };
     })
     .filter((r): r is RewardDefinition => r !== null);
-}
-
-/** Structural subset of a stored redemption the wallet math needs. */
-export type ChildShellRedemption = { personId: string; rewardId: string };
-
-export type ChildWallet = {
-  earned: number;
-  spent: number;
-  balance: number;
-  redeemedCounts: Record<string, number>;
-};
-
-/**
- * The child's wallet for one week: earned coin total from `done` completions,
- * spent total from redemptions, and the resulting balance. Same formula as
- * the person board (`[person]/client.tsx`) and the server-side balance check
- * in `POST /api/family/redemptions` — display only; the API remains the
- * enforcement point.
- */
-export function computeChildWallet(
-  child: ChildId,
-  completions: readonly CompletionRecord[],
-  redemptions: readonly ChildShellRedemption[],
-  config: FamilyBoardConfig,
-): ChildWallet {
-  const routines = resolveShellRoutines(config);
-  const rewards = resolveShellRewards(config);
-
-  const earned = weekPoints(child, [...completions], routines);
-
-  const redeemedCounts: Record<string, number> = {};
-  for (const r of redemptions) {
-    if (r.personId === child) {
-      redeemedCounts[r.rewardId] = (redeemedCounts[r.rewardId] ?? 0) + 1;
-    }
-  }
-
-  const spent = Object.entries(redeemedCounts).reduce((sum, [rewardId, count]) => {
-    const reward = rewards.find((r) => r.id === rewardId);
-    return sum + (reward ? reward.costPoints * count : 0);
-  }, 0);
-
-  return { earned, spent, balance: earned - spent, redeemedCounts };
-}
-
-export type PriorWeekEarningsSummary = {
-  earned: number;
-  href: string;
-};
-
-/**
- * A current-week-only pointer to earned coins in the immediately preceding
- * week. The amount is deliberately informational: it never enters the
- * current week's wallet or redemption balance.
- */
-export function priorWeekEarningsSummary(
-  week: ChildShellWeekInfo,
-  child: ChildId,
-  priorWeekCompletions: readonly CompletionRecord[],
-  config: FamilyBoardConfig,
-): PriorWeekEarningsSummary | null {
-  if (week.weekId !== week.currentWeekId) return null;
-  const earned = weekPoints(child, [...priorWeekCompletions], resolveShellRoutines(config));
-  if (earned <= 0) return null;
-  return {
-    earned,
-    href: childShellDestinationHref("rewards", child, week.prevWeekId),
-  };
 }
 
 // ---------------------------------------------------------------------------

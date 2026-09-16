@@ -17,7 +17,6 @@ import {
   dayLabels,
   currentDayIndex,
   weekSummary,
-  weekPoints,
   nextRewardForPerson,
   todayStatusLabel,
   type FamilyPerson,
@@ -25,8 +24,9 @@ import {
   type RoutineDefinition,
   type RewardDefinition,
 } from "@/data/family-routines";
-import type { FamilyBoardConfig, RewardRedemption } from "@/lib/family-db";
+import type { FamilyBoardConfig } from "@/lib/family-db";
 import type { ReviewQueueItem } from "@/lib/family-review-queue";
+import type { FamilyWalletProjection } from "@/lib/family-wallet";
 
 // ---------------------------------------------------------------------------
 // Canonical review queue panel (admin only)
@@ -285,7 +285,7 @@ function rewardProgress(points: number, target: number): number {
 function PersonCard({
   person,
   completions,
-  redemptions,
+  walletBalance,
   today,
   weekId,
   resolvedRoutines,
@@ -293,7 +293,7 @@ function PersonCard({
 }: {
   person: FamilyPerson;
   completions: CompletionRecord[];
-  redemptions: RewardRedemption[];
+  walletBalance: number;
   today: number;
   weekId: string;
   resolvedRoutines: RoutineDefinition[];
@@ -302,17 +302,9 @@ function PersonCard({
   const color = person.colorToken as PersonColor;
   const summary = weekSummary(person.id, completions, resolvedRoutines);
   const todayLabel = todayStatusLabel(person.id, completions, today, resolvedRoutines);
-  const earned = weekPoints(person.id, completions, resolvedRoutines);
-  const spent = redemptions
-    .filter((r) => r.personId === person.id)
-    .reduce((sum, r) => {
-      const rw = resolvedRewards.find((x) => x.id === r.rewardId);
-      return sum + (rw?.costPoints ?? 0);
-    }, 0);
-  const balance = earned - spent;
-  const nextReward = nextRewardForPerson(person.id, balance, resolvedRewards);
+  const nextReward = nextRewardForPerson(person.id, walletBalance, resolvedRewards);
   const percent = nextReward
-    ? rewardProgress(balance, nextReward.reward.targetPoints)
+    ? rewardProgress(walletBalance, nextReward.reward.targetPoints)
     : summary.total > 0
       ? Math.round((summary.done / summary.total) * 100)
       : 0;
@@ -394,7 +386,7 @@ function PersonCard({
             Available
           </p>
           <p className="text-sm font-semibold text-primary">
-            <CoinStack value={Math.max(0, balance)} />
+            <CoinStack value={Math.max(0, walletBalance)} />
           </p>
         </div>
       )}
@@ -534,29 +526,29 @@ export function FamilyDashboardClient({
 }) {
   const today = currentDayIndex();
   const [completions, setCompletions] = useState<CompletionRecord[]>([]);
-  const [redemptions, setRedemptions] = useState<RewardRedemption[]>([]);
+  const [walletProjection, setWalletProjection] = useState<FamilyWalletProjection | null>(null);
   const [config, setConfig] = useState<FamilyBoardConfig>({
     routineOverrides: {},
     rewardOverrides: {},
   });
   const [loaded, setLoaded] = useState(false);
 
-  // Load completions, redemptions, and config from DB
+  // Load week activity, config, and the server-owned permanent wallets.
   useEffect(() => {
     let cancelled = false;
     async function load() {
-      const [compRes, redRes, cfgRes] = await Promise.all([
+      const [compRes, cfgRes, walletRes] = await Promise.all([
         fetch(`/api/family/completions?week=${weekNav.weekId}`),
-        fetch(`/api/family/redemptions?week=${weekNav.weekId}`),
         fetch("/api/family/config"),
+        fetch("/api/family/wallet"),
       ]);
       if (cancelled) return;
       const compData: CompletionRecord[] = await compRes.json();
-      const redData: RewardRedemption[] = await redRes.json();
       const cfgData: FamilyBoardConfig = await cfgRes.json();
+      const walletData: FamilyWalletProjection = await walletRes.json();
       setCompletions(compData);
-      setRedemptions(redData);
       setConfig(cfgData);
+      setWalletProjection(walletData);
       setLoaded(true);
     }
     load();
@@ -569,27 +561,13 @@ export function FamilyDashboardClient({
   const children = familyMembers.filter((p) => p.role === "child");
   const parents = familyMembers.filter((p) => p.role === "parent");
 
-  // Per-child redemption spending
-  const childSpent = useMemo(() => {
-    const result: Record<string, number> = {};
-    for (const child of children) {
-      result[child.id] = redemptions
-        .filter((r) => r.personId === child.id)
-        .reduce((sum, r) => {
-          const reward = resolvedRewards.find((rw) => rw.id === r.rewardId);
-          return sum + (reward?.costPoints ?? 0);
-        }, 0);
-    }
-    return result;
-  }, [children, redemptions, resolvedRewards]);
-
   const childProgress = useMemo(
     () =>
       children.map((child) => ({
         name: child.displayName,
-        points: weekPoints(child.id, completions, resolvedRoutines) - (childSpent[child.id] ?? 0),
+        points: walletProjection?.wallets[child.id]?.balance ?? 0,
       })),
-    [children, completions, resolvedRoutines, childSpent],
+    [children, walletProjection],
   );
 
   return (
@@ -678,7 +656,7 @@ export function FamilyDashboardClient({
                     key={person.id}
                     person={person}
                     completions={completions}
-                    redemptions={redemptions}
+                    walletBalance={walletProjection?.wallets[person.id]?.balance ?? 0}
                     today={today}
                     weekId={weekNav.weekId}
                     resolvedRoutines={resolvedRoutines}
@@ -697,7 +675,7 @@ export function FamilyDashboardClient({
                     key={person.id}
                     person={person}
                     completions={completions}
-                    redemptions={redemptions}
+                    walletBalance={walletProjection?.wallets[person.id]?.balance ?? 0}
                     today={today}
                     weekId={weekNav.weekId}
                     resolvedRoutines={resolvedRoutines}

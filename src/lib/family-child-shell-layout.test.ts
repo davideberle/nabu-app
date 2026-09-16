@@ -166,7 +166,7 @@ describe("destination load failures are recoverable", () => {
     ok(personBoardSource.includes("setLoadAttempt"));
     // The load effect checks every response before parsing it, so an API
     // refusal cannot strand the board on the loading spinner.
-    ok(personBoardSource.includes("if (!compRes.ok || !redRes.ok || !cfgRes.ok)"));
+    ok(personBoardSource.includes("if (!compRes.ok || !redRes.ok || !cfgRes.ok || !walletRes.ok)"));
   });
 });
 
@@ -245,11 +245,12 @@ describe("destinations render the real family model", () => {
     doesNotMatch(planSource, /initialCompletions|initialRewards/);
   });
 
-  it("Rewards projects the shared wallet math over the real APIs", () => {
-    ok(rewardsSource.includes("computeChildWallet"));
+  it("Rewards consumes the server-owned permanent wallet projection", () => {
+    ok(rewardsSource.includes("/api/family/wallet"));
     ok(rewardsSource.includes("/api/family/completions?week="));
     ok(rewardsSource.includes("/api/family/redemptions?week="));
     ok(rewardsSource.includes('"/api/family/config"'));
+    doesNotMatch(rewardsSource, /priorWeekEarningsSummary|stay in last week/);
     doesNotMatch(rewardsSource, /initialCompletions|initialRewards/);
   });
 

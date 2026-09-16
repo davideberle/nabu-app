@@ -1,6 +1,6 @@
 // Unit tests for the Family Child Shell contract: strict child-id
 // normalization, UI-owned selection persistence, the three-destination
-// navigation, week identity, the reward wallet projection, and the
+// navigation, week identity, reward definitions, and the
 // fail-closed game-identity seam.
 // Run with: npm test  (node --test; Node strips types natively)
 
@@ -15,9 +15,7 @@ import {
   childShellDestinationHref,
   childShellDestinations,
   childShellWeekInfo,
-  computeChildWallet,
   normalizeChildId,
-  priorWeekEarningsSummary,
   readStoredChild,
   resolveShellRewards,
   resolveShellRoutines,
@@ -25,7 +23,6 @@ import {
   type ChildShellStorage,
 } from "./family-child-shell.ts";
 import { isChildId } from "./family-assistant-turn.ts";
-import type { CompletionRecord } from "../data/family-routines.ts";
 
 // ---------------------------------------------------------------------------
 // Child identity
@@ -242,17 +239,6 @@ describe("plan and rewards week navigation", () => {
 
 const EMPTY_CONFIG = { routineOverrides: {}, rewardOverrides: {} };
 
-const completion = (
-  routineId: string,
-  personId: string,
-  day: number,
-  // Accepts arbitrary status strings on purpose: stored completion rows may
-  // carry statuses this build's CompletionStatus does not model (for example
-  // review states from an older deployment), and the wallet must count only
-  // exact `done` rows rather than trusting the type at the storage boundary.
-  status: string = "done",
-): CompletionRecord => ({ routineId, personId, day, status } as CompletionRecord);
-
 describe("resolveShellRoutines / resolveShellRewards", () => {
   it("returns the full seed definitions for an empty config", () => {
     ok(resolveShellRoutines(EMPTY_CONFIG).some((r) => r.id === "s-kumon"));
@@ -283,104 +269,6 @@ describe("resolveShellRoutines / resolveShellRewards", () => {
     });
     equal(rewards.find((r) => r.id === "friends")?.costPoints, 1);
     equal(rewards.find((r) => r.id === "mini-game"), undefined);
-  });
-});
-
-describe("computeChildWallet", () => {
-  const completions = [
-    completion("s-kumon", "santiago", 0),
-    completion("s-piano", "santiago", 0),
-    completion("s-physio", "santiago", 1, "pending_review"),
-    completion("s-table-dinner", "santiago", 2, "on_hold"),
-    completion("i-kumon", "isabel", 0),
-    completion("no-such-routine", "santiago", 3),
-  ];
-  const redemptions = [
-    { personId: "santiago", rewardId: "friends" },
-    { personId: "isabel", rewardId: "friends" },
-  ];
-
-  it("counts only the child's done completions and own redemptions", () => {
-    const wallet = computeChildWallet("santiago", completions, redemptions, EMPTY_CONFIG);
-    // s-kumon + s-piano (1pt each); pending/on-hold and unknown ids earn 0.
-    equal(wallet.earned, 2);
-    // one `friends` redemption at seed cost 3; Isabel's is not Santiago's.
-    equal(wallet.spent, 3);
-    equal(wallet.balance, -1);
-    deepStrictEqual(wallet.redeemedCounts, { friends: 1 });
-  });
-
-  it("projects nothing across siblings", () => {
-    const wallet = computeChildWallet("isabel", completions, redemptions, EMPTY_CONFIG);
-    equal(wallet.earned, 1);
-    deepStrictEqual(wallet.redeemedCounts, { friends: 1 });
-    equal(wallet.spent, 3);
-  });
-
-  it("respects config overrides exactly like the board and the API", () => {
-    const wallet = computeChildWallet("santiago", completions, redemptions, {
-      routineOverrides: { "s-kumon": { points: 5 } },
-      rewardOverrides: { friends: { costPoints: 1 } },
-    });
-    equal(wallet.earned, 6);
-    equal(wallet.spent, 1);
-    equal(wallet.balance, 5);
-  });
-
-  it("treats a disabled reward's past redemptions as costless, like the board", () => {
-    const wallet = computeChildWallet("santiago", completions, redemptions, {
-      routineOverrides: {},
-      rewardOverrides: { friends: { enabled: false } },
-    });
-    equal(wallet.spent, 0);
-    equal(wallet.balance, 2);
-  });
-
-  it("is zero across the board for an empty week", () => {
-    const wallet = computeChildWallet("santiago", [], [], EMPTY_CONFIG);
-    deepStrictEqual(wallet, { earned: 0, spent: 0, balance: 0, redeemedCounts: {} });
-  });
-
-  it("credits every approved unit in the W37 records", () => {
-    const w37 = [
-      completion("i-piano", "isabel", 0),
-      { ...completion("i-kumon", "isabel", 1), creditCount: 4 },
-      completion("i-physio", "isabel", 2),
-      completion("i-dinner", "isabel", 3),
-      completion("s-kumon", "santiago", 0),
-      completion("s-piano", "santiago", 1),
-      completion("s-physio", "santiago", 2),
-      completion("s-table-dinner", "santiago", 3),
-      completion("s-extra-bonus", "santiago", 4),
-    ];
-
-    equal(computeChildWallet("isabel", w37, [], EMPTY_CONFIG).earned, 7);
-    equal(computeChildWallet("santiago", w37, [], EMPTY_CONFIG).earned, 5);
-  });
-});
-
-describe("priorWeekEarningsSummary", () => {
-  const currentWeek = childShellWeekInfo("2026-W38", new Date("2026-09-16T12:00:00Z"));
-  const isabelW37 = [
-    completion("i-piano", "isabel", 0),
-    { ...completion("i-kumon", "isabel", 1), creditCount: 4 },
-    completion("i-physio", "isabel", 2),
-    completion("i-dinner", "isabel", 3),
-  ];
-
-  it("shows last week's earned coins without carrying them into this week", () => {
-    const currentWallet = computeChildWallet("isabel", [], [], EMPTY_CONFIG);
-    deepStrictEqual(currentWallet, { earned: 0, spent: 0, balance: 0, redeemedCounts: {} });
-    deepStrictEqual(
-      priorWeekEarningsSummary(currentWeek, "isabel", isabelW37, EMPTY_CONFIG),
-      { earned: 7, href: "/family/rewards?child=isabel&week=2026-W37" },
-    );
-  });
-
-  it("stays hidden while browsing history or when last week earned nothing", () => {
-    const historicalWeek = childShellWeekInfo("2026-W37", new Date("2026-09-16T12:00:00Z"));
-    equal(priorWeekEarningsSummary(historicalWeek, "isabel", isabelW37, EMPTY_CONFIG), null);
-    equal(priorWeekEarningsSummary(currentWeek, "isabel", [], EMPTY_CONFIG), null);
   });
 });
 

@@ -37,11 +37,11 @@ describe("family parent-review regression contract", () => {
 
   it("keeps review states out of the coin balance", () => {
     const routines = readSource("../data/family-routines.ts");
-    const shell = readSource("./family-child-shell.ts");
+    const wallet = readSource("./family-wallet.ts");
 
     match(routines, /CompletionStatus = "done" \| "pending_review" \| "on_hold" \| "redo"/);
     match(routines, /c\.status === "done"/);
-    match(shell, /weekPoints\(child, \[\.\.\.completions\], routines\)/);
+    match(wallet, /weekPoints\(personId, \[\.\.\.eligibleCompletions\]/);
   });
 
   it("submits voice-coach work for review and renders parent controls", () => {

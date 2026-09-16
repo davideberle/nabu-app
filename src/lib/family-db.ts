@@ -85,6 +85,23 @@ export async function getCompletionsForWeek(
   );
 }
 
+/** Wallet ledger credits from the permanent-wallet epoch onward. */
+export async function getCompletionsFromWeek(
+  fromWeek: string,
+): Promise<(CompletionRecord & { week: string })[]> {
+  const client = await getDb();
+  await ensureFamilyTables(client);
+  const result = await client.execute({
+    sql: `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count
+          FROM family_completions WHERE week >= ? ORDER BY week ASC`,
+    args: [fromWeek],
+  });
+  return result.rows.map((row) => ({
+    ...rowToCompletionRecord(row as unknown as Record<string, unknown>),
+    week: row["week"] as string,
+  }));
+}
+
 /**
  * Non-earning review states are preserved exactly; anything unrecognized
  * collapses to `done` (the pre-review legacy value). `redo` is a preserved
@@ -281,6 +298,26 @@ export async function getRedemptionsForWeek(
   const result = await client.execute({
     sql: "SELECT id, person_id, reward_id, week, created_at FROM family_reward_redemptions WHERE week = ?",
     args: [week],
+  });
+  return result.rows.map((row) => ({
+    id: row["id"] as string,
+    personId: row["person_id"] as string,
+    rewardId: row["reward_id"] as string,
+    week: row["week"] as string,
+    createdAt: row["created_at"] as string,
+  }));
+}
+
+/** Wallet ledger debits from the permanent-wallet epoch onward. */
+export async function getRedemptionsFromWeek(
+  fromWeek: string,
+): Promise<RewardRedemption[]> {
+  const client = await getDb();
+  await ensureFamilyTables(client);
+  const result = await client.execute({
+    sql: `SELECT id, person_id, reward_id, week, created_at
+          FROM family_reward_redemptions WHERE week >= ? ORDER BY created_at ASC`,
+    args: [fromWeek],
   });
   return result.rows.map((row) => ({
     id: row["id"] as string,

@@ -30,6 +30,7 @@ import type {
   RewardOverride,
   RewardRedemption,
 } from "@/lib/family-db";
+import type { FamilyWalletProjection } from "@/lib/family-wallet";
 
 type BrowserSpeechRecognitionResult = {
   isFinal: boolean;
@@ -1598,6 +1599,12 @@ export function PersonBoardClient({
 
   // Redemptions from DB
   const [redemptions, setRedemptions] = useState<RewardRedemption[]>([]);
+  const [walletProjection, setWalletProjection] = useState<FamilyWalletProjection | null>(null);
+
+  const refreshWallet = useCallback(async () => {
+    const response = await fetch("/api/family/wallet");
+    if (response.ok) setWalletProjection(await response.json());
+  }, []);
 
   // Modal state
   const [simpleDraft, setSimpleDraft] = useState<SimpleDone | null>(null);
@@ -1612,13 +1619,14 @@ export function PersonBoardClient({
     setLoadError(false);
     async function load() {
       try {
-        const [compRes, redRes, cfgRes] = await Promise.all([
+        const [compRes, redRes, cfgRes, walletRes] = await Promise.all([
           fetch(`/api/family/completions?week=${weekNav.weekId}`),
           fetch(`/api/family/redemptions?week=${weekNav.weekId}`),
           fetch("/api/family/config"),
+          fetch("/api/family/wallet"),
         ]);
         if (cancelled) return;
-        if (!compRes.ok || !redRes.ok || !cfgRes.ok) {
+        if (!compRes.ok || !redRes.ok || !cfgRes.ok || !walletRes.ok) {
           setLoadError(true);
           return;
         }
@@ -1626,6 +1634,7 @@ export function PersonBoardClient({
         const compData: CompletionRecord[] = await compRes.json();
         const redData: RewardRedemption[] = await redRes.json();
         const cfgData: FamilyBoardConfig = await cfgRes.json();
+        const walletData: FamilyWalletProjection = await walletRes.json();
         if (cancelled) return;
 
         const map = new Map<string, CompletionRecord>();
@@ -1635,6 +1644,7 @@ export function PersonBoardClient({
         setCompletions(map);
         setRedemptions(redData);
         setConfig(cfgData);
+        setWalletProjection(walletData);
         setLoaded(true);
       } catch {
         if (!cancelled) setLoadError(true);
@@ -1670,14 +1680,9 @@ export function PersonBoardClient({
     return counts;
   }, [redemptions, personId]);
 
-  const totalSpent = useMemo(() => {
-    return Object.entries(redeemedCounts).reduce((sum, [rewardId, count]) => {
-      const reward = resolvedRewards.find((r) => r.id === rewardId);
-      return sum + (reward ? reward.costPoints * count : 0);
-    }, 0);
-  }, [redeemedCounts, resolvedRewards]);
-
-  const balance = totalEarned - totalSpent;
+  const wallet = walletProjection?.wallets[personId] ?? null;
+  const totalSpent = wallet?.spent ?? 0;
+  const balance = wallet?.balance ?? 0;
 
   const rewardGoals = resolvedRewards.filter((reward) =>
     reward.assignedTo.includes(personId),
@@ -1721,7 +1726,7 @@ export function PersonBoardClient({
         return next;
       });
       // Persist
-      await fetch("/api/family/completions", {
+      const response = await fetch("/api/family/completions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -1729,8 +1734,9 @@ export function PersonBoardClient({
           ...record,
         }),
       });
+      if (response.ok) await refreshWallet();
     },
-    [personId, weekNav.weekId],
+    [personId, refreshWallet, weekNav.weekId],
   );
 
   // Proof detail modal state
@@ -1819,8 +1825,10 @@ export function PersonBoardClient({
       // Stale action refused — re-read the truth rather than keeping the
       // optimistic state.
       setLoadAttempt((n) => n + 1);
+    } else if (response.ok) {
+      await refreshWallet();
     }
-  }, [personId, weekNav.weekId]);
+  }, [personId, refreshWallet, weekNav.weekId]);
 
   const [redeemingReward, setRedeemingReward] = useState<string | null>(null);
 
@@ -1831,15 +1839,18 @@ export function PersonBoardClient({
       const res = await fetch("/api/family/redemptions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ personId, rewardId, week: weekNav.weekId }),
+        body: JSON.stringify({ personId, rewardId }),
       });
       if (!res.ok) return; // server rejected (e.g. insufficient balance)
       const redemption: RewardRedemption = await res.json();
-      setRedemptions((prev) => [...prev, redemption]);
+      if (redemption.week === weekNav.weekId) {
+        setRedemptions((prev) => [...prev, redemption]);
+      }
+      await refreshWallet();
     } finally {
       setRedeemingReward(null);
     }
-  }, [personId, weekNav.weekId, redeemingReward]);
+  }, [personId, redeemingReward, refreshWallet, weekNav.weekId]);
 
   // Parent controls: undo completion
   const handleUndoCompletion = useCallback(async (routineId: string, day: number) => {
@@ -1849,22 +1860,24 @@ export function PersonBoardClient({
       next.delete(key);
       return next;
     });
-    await fetch("/api/family/completions", {
+    const response = await fetch("/api/family/completions", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ week: weekNav.weekId, personId, routineId, day }),
     });
-  }, [personId, weekNav.weekId]);
+    if (response.ok) await refreshWallet();
+  }, [personId, refreshWallet, weekNav.weekId]);
 
   // Parent controls: undo redemption
   const handleUndoRedemption = useCallback(async (redemptionId: string) => {
     setRedemptions((prev) => prev.filter((r) => r.id !== redemptionId));
-    await fetch("/api/family/redemptions", {
+    const response = await fetch("/api/family/redemptions", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: redemptionId }),
     });
-  }, []);
+    if (response.ok) await refreshWallet();
+  }, [refreshWallet]);
 
   // Parent controls: save config with status indicator
   const [configSaveStatus, setConfigSaveStatus] = useState<"idle" | "saving" | "saved">("idle");
@@ -1877,15 +1890,16 @@ export function PersonBoardClient({
     if (configSaveTimer.current) clearTimeout(configSaveTimer.current);
     if (savedTimer.current) clearTimeout(savedTimer.current);
     configSaveTimer.current = setTimeout(async () => {
-      await fetch("/api/family/config", {
+      const response = await fetch("/api/family/config", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newConfig),
       });
+      if (response.ok) await refreshWallet();
       setConfigSaveStatus("saved");
       savedTimer.current = setTimeout(() => setConfigSaveStatus("idle"), 2000);
     }, 500);
-  }, []);
+  }, [refreshWallet]);
 
   if (!person) {
     return (
@@ -2141,7 +2155,7 @@ export function PersonBoardClient({
                       </span>
                     </h2>
                     <p className="text-xs text-tertiary">
-                      {totalEarned} earned · {totalSpent} spent
+                      {totalEarned} earned this week · {wallet?.earned ?? 0} earned total · {totalSpent} spent total
                     </p>
                   </div>
                 </div>

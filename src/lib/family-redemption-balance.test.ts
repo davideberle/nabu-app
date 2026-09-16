@@ -8,8 +8,15 @@ const routeSource = readFileSync(
 );
 
 describe("family redemption balance enforcement", () => {
-  it("uses the same credit-count-aware weekly earnings helper as the UIs", () => {
-    match(routeSource, /weekPoints\(personId, completions, resolved\)/);
-    doesNotMatch(routeSource, /return sum \+ \(routine\?\.points \?\? 0\)/);
+  it("enforces the server-owned cumulative wallet projection", () => {
+    match(routeSource, /getFamilyWalletProjection\(\)/);
+    match(routeSource, /walletProjection\.wallets\[personId\]\?\.balance/);
+    doesNotMatch(routeSource, /getCompletionsForWeek/);
+  });
+
+  it("stamps the actual current week and rejects attempted backdating", () => {
+    match(routeSource, /resolveRedemptionWeek\(week\)/);
+    match(routeSource, /if \(!redemptionWeek\.ok\)/);
+    match(routeSource, /createRedemption\(personId, rewardId, redemptionWeek\.week\)/);
   });
 });
