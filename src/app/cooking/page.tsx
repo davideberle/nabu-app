@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactElement } from "react";
 import { CompleteSessionButton } from "./complete-session-button";
 import { MealBalancePanel } from "./meal-balance";
-import { NabuBadge, NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageShell, NabuSurface } from "@/components/ui/nabu";
+import { NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageShell, NabuSurface } from "@/components/ui/nabu";
 import { createSessionFromPlan, deriveSessionCoherence } from "@/lib/cooking";
 import type { MealCoherenceReview } from "@/lib/meal-coherence";
 import { todayInZurich } from "@/lib/date";
@@ -10,8 +11,6 @@ import {
   activeComponents,
   anchorProvenanceLabel,
   componentStatusLabel,
-  firstServingsClause,
-  orderedCookStack,
   recipeProvenanceLabel,
   resolveMainDish,
   resolveSessionHero,
@@ -31,14 +30,12 @@ import type {
   WorkingStep,
 } from "@/lib/cooking-session";
 import {
-  buildCourseMenu,
   buildPairingSuggestion,
   extractTableSides,
-  formatRecipeTime,
+  formatRecipeTotalTime,
 } from "@/lib/cooking-guidance";
-import type { MenuCourse } from "@/lib/cooking-guidance";
 import { formatServings, getRecipe } from "@/lib/recipes";
-import type { Recipe } from "@/lib/recipes";
+import type { Recipe, RecipeMethodSection } from "@/lib/recipes";
 
 export const dynamic = "force-dynamic";
 
@@ -97,8 +94,8 @@ export default async function CookingPage() {
   return (
     <NabuPageShell>
       <NabuHeader
-        title="Live Cooking"
-        eyebrow="Today’s meal"
+        title="Today’s meal"
+        eyebrow="Live Cooking"
         subtitle={formatDateDisplay(date)}
         backHref="/"
         maxWidth="3xl"
@@ -158,20 +155,7 @@ function SessionView({
   const componentTitles = session.relatedRecipes.map((r) => r.title);
   const plainServeWith = visibleServeWith(session, componentTitles);
   const tableSides = extractTableSides(working.ingredients, plainServeWith);
-  const timeLabel = formatRecipeTime(mainRecipe?.time);
-
-  // The whole meal, as a menu: course label and dish name only. Components
-  // without a stored recipe record are still on tonight's stove, so they keep
-  // their session title rather than dropping off the menu.
-  const menu = buildCourseMenu({
-    mainTitle: resolved.title,
-    alsoMains: resolved.anchorIsSecondary ? [session.anchor.title] : [],
-    components: activeComponents(session).map((related) => ({
-      kind: related.kind,
-      title: sideRecipeById.get(related.recipeId)?.name ?? related.title,
-    })),
-    tableSides,
-  });
+  const timeLabel = formatRecipeTotalTime(mainRecipe?.time);
 
   const pairing = buildPairingSuggestion({
     mainTitle: resolved.title,
@@ -193,21 +177,57 @@ function SessionView({
       : null
     : anchorProvenanceLabel(session);
   const provenanceUrl =
-    !resolved.anchorIsSecondary && mainProvenance
-      ? session.anchor.provenance.url
-      : undefined;
+    resolved.anchorIsSecondary
+      ? mainRecipe?.source?.url
+      : mainProvenance
+        ? session.anchor.provenance.url
+        : undefined;
 
   const notes = visibleSessionNotes(session.notes, working, session.adaptations);
   const drink = stripDrinkEmoji(session.coachCards.wine || pairing.wine).replace(
     /^Optional:\s*/i,
     ""
   );
-  const cookStack = orderedCookStack(session);
+  const methodGroups: MethodDishGroup[] = [
+    ...mainMethodGroups(resolved.title, working, mainRecipe),
+    ...(resolved.anchorIsSecondary && session.method.base.length > 0
+      ? recipeMethodGroups({
+          title: session.anchor.title,
+          roleLabel: "Also tonight",
+          sourceLine: anchorProvenanceLabel(session) ?? undefined,
+          sourceUrl: session.anchor.provenance.url,
+          method: session.method.base,
+          methodSections: anchorRecipe?.methodSections,
+        })
+      : []),
+    ...mealComponents.flatMap(({ related, recipe }) =>
+      recipeMethodGroups({
+        title: recipe.name,
+        roleLabel: componentRoleLabel(related.kind),
+        sourceLine: recipeProvenanceLabel({
+          source: recipe.source?.publication ?? recipe.source?.cookbook,
+          author: recipe.source?.author,
+        }) ?? undefined,
+        sourceUrl: recipe.source?.url,
+        method: recipe.method,
+        methodSections: recipe.methodSections,
+      })
+    ),
+  ];
 
   return (
     <>
-      {/* ── What the meal is, before any recipe detail ── */}
-      {menu.length > 0 && <CourseMenu courses={menu} />}
+      {/* ── The meal first: image, identity, source, servings, total time ── */}
+      <MealHero
+        resolved={resolved}
+        hero={hero}
+        provenance={mainProvenance}
+        provenanceUrl={provenanceUrl}
+        servingLabel={formatServings(session.servings.current)}
+        timeLabel={timeLabel}
+        description={resolved.summary || mainRecipe?.intro || mainRecipe?.introduction || undefined}
+        adapted={working.hasSessionChanges}
+      />
 
       {/* ── One mise-en-place pass: every ingredient before any method ── */}
       <MealIngredients
@@ -231,72 +251,8 @@ function SessionView({
         serveWith={plainServeWith}
       />
 
-      {/* ── One uninterrupted cook stack: full methods, all expanded ── */}
-      <section aria-labelledby="cook-heading" className="space-y-4">
-        <div className="px-1">
-          <NabuKicker>Preparation</NabuKicker>
-          <h2 id="cook-heading" className="mt-1 text-xl font-semibold tracking-[-0.02em] text-primary">
-            Cook
-          </h2>
-        </div>
-
-        {cookStack.map((dish) => {
-          if (dish.kind === "main") {
-            return (
-              <div key="main" data-cook-dish={resolved.title}>
-                <MainCookRecipe
-                  resolved={resolved}
-                  hero={hero}
-                  provenance={mainProvenance}
-                  provenanceUrl={provenanceUrl}
-                  servingLabel={formatServings(session.servings.current)}
-                  timeLabel={timeLabel}
-                  working={working}
-                  drink={drink}
-                  notes={notes}
-                />
-              </div>
-            );
-          }
-
-          if (dish.kind === "anchor") {
-            return (
-              <CookRecipeBlock
-                key="secondary-anchor"
-                roleLabel="Also tonight"
-                title={session.anchor.title}
-                sourceLine={anchorProvenanceLabel(session) ?? undefined}
-                sourceUrl={session.anchor.provenance.url}
-                image={anchorRecipe?.image}
-                servings={anchorRecipe?.servings}
-                method={session.method.base}
-              />
-            );
-          }
-
-          const component = mealComponents.find(
-            ({ related }) => related.recipeId === dish.ref,
-          );
-          if (!component) return null;
-          const { related, recipe } = component;
-          return (
-            <CookRecipeBlock
-              key={recipe.id}
-              roleLabel={componentRoleLabel(related.kind)}
-              title={recipe.name}
-              sourceLine={recipeProvenanceLabel({
-                source: recipe.source?.publication ?? recipe.source?.cookbook,
-                author: recipe.source?.author,
-              }) ?? undefined}
-              sourceUrl={recipe.source?.url}
-              image={recipe.image}
-              servings={recipe.servings}
-              timeLabel={formatRecipeTime(recipe.time)}
-              method={recipe.method}
-            />
-          );
-        })}
-      </section>
+      {/* ── One method surface, structured by dish ── */}
+      <MealMethod groups={methodGroups} />
 
       {/* ── Support, subordinate to the complete cook stack ── */}
       {coherence && (
@@ -310,6 +266,8 @@ function SessionView({
       {setAside.length > 0 && <SetAsideRow components={setAside} />}
 
       <StoryCard story={session.story} />
+
+      <MealDetails drink={drink} notes={notes} />
 
       <NabuSurface className="p-5">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -335,52 +293,19 @@ function SessionView({
 }
 
 // ---------------------------------------------------------------------------
-// Course menu — the orientation surface above the recipe: course label and
-// dish names in dining order, nothing else. One quiet block of label rows
-// rather than a card per course, so the recipe below stays the anchor.
+// Hero — one editorial opening for the whole meal. Everything practical follows
+// below in the natural cooking order: ingredients, method, drink, notes.
 // ---------------------------------------------------------------------------
 
-function CourseMenu({ courses }: { courses: MenuCourse[] }) {
-  return (
-    <NabuSurface className="p-5">
-      <h2 className="text-[11px] font-medium uppercase tracking-[0.14em] text-quaternary">
-        Tonight’s menu
-      </h2>
-      <dl className="mt-3 space-y-2">
-        {courses.map((course) => (
-          <div key={course.kind} className="flex gap-3">
-            <dt className="w-24 shrink-0 pt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-quaternary">
-              {course.label}
-            </dt>
-            <dd className="min-w-0 text-sm leading-relaxed text-secondary">
-              {course.dishes.join(" · ")}
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </NabuSurface>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// The main cook card — recipe identity, useful current-cook context, and the
-// resolved working method. Ingredients live in the mise-en-place surface above
-// so every active dish can be gathered before any method begins.
-//
-// The dishes of the meal belong to the menu above, so the context carries only
-// what the menu cannot: the drink and the session notes worth reading.
-// ---------------------------------------------------------------------------
-
-function MainCookRecipe({
+function MealHero({
   resolved,
   hero,
   provenance,
   provenanceUrl,
   servingLabel,
   timeLabel,
-  working,
-  drink,
-  notes,
+  description,
+  adapted,
 }: {
   resolved: ResolvedMain;
   hero: SessionHero;
@@ -388,78 +313,164 @@ function MainCookRecipe({
   provenanceUrl?: string;
   servingLabel: string;
   timeLabel: string | null;
-  working: WorkingRecipe;
-  drink: string;
-  notes: string | null;
+  description?: string;
+  adapted: boolean;
 }) {
-  const contextRows = [
-    drink ? { label: "Drink", value: drink } : null,
-    notes ? { label: "Notes", value: notes } : null,
-  ].filter((row): row is { label: string; value: string } => row !== null);
-
   return (
     <NabuSurface className="overflow-hidden p-0">
       <SessionHeroArea hero={hero} />
 
-      <div className="p-5">
+      <div className="p-5 sm:p-6">
         <NabuKicker>Tonight’s recipe</NabuKicker>
-        <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-          <div className="min-w-0">
-            <h2 className="text-2xl font-semibold leading-tight tracking-[-0.02em] text-primary">
-              {resolved.title}
-            </h2>
-            {resolved.summary && (
-              <p className="mt-1 text-sm text-tertiary">{resolved.summary}</p>
+        <h2 className="mt-2 max-w-2xl text-3xl font-semibold leading-[1.08] tracking-[-0.035em] text-primary sm:text-4xl">
+          {resolved.title}
+        </h2>
+        {description && (
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-tertiary">
+            {description}
+          </p>
+        )}
+        {provenance && (
+          <p className="mt-3 text-xs text-tertiary">
+            {isLinkableUrl(provenanceUrl) ? (
+              <a
+                href={provenanceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-secondary underline-offset-2 hover:text-secondary"
+              >
+                {provenance}
+              </a>
+            ) : (
+              provenance
             )}
-            {provenance && (
+          </p>
+        )}
+        <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-secondary pt-4 text-sm text-secondary">
+          {servingLabel && <span>{servingLabel}</span>}
+          {servingLabel && timeLabel && <span aria-hidden className="text-quaternary">·</span>}
+          {timeLabel && <span>{timeLabel}</span>}
+          {adapted && (
+            <>
+              {(servingLabel || timeLabel) && <span aria-hidden className="text-quaternary">·</span>}
+              <span className="text-utility-orange-600">Adapted tonight</span>
+            </>
+          )}
+        </div>
+      </div>
+    </NabuSurface>
+  );
+}
+
+type MethodDishGroup = {
+  title: string;
+  roleLabel?: string;
+  sourceLine?: string;
+  sourceUrl?: string;
+  steps: (WorkingStep | string)[];
+};
+
+function mainMethodGroups(
+  title: string,
+  working: WorkingRecipe,
+  recipe?: Recipe,
+): MethodDishGroup[] {
+  if (!working.hasSessionChanges) {
+    const sections = validMethodSections(recipe?.methodSections);
+    if (sections.length > 0) {
+      return sections.map((section) => ({
+        title: section.title,
+        steps: section.steps,
+      }));
+    }
+  }
+
+  return working.method.length > 0
+    ? [{ title, roleLabel: "Main", steps: working.method }]
+    : [];
+}
+
+function recipeMethodGroups({
+  title,
+  roleLabel,
+  sourceLine,
+  sourceUrl,
+  method,
+  methodSections,
+}: {
+  title: string;
+  roleLabel: string;
+  sourceLine?: string;
+  sourceUrl?: string;
+  method: string[];
+  methodSections?: RecipeMethodSection[];
+}): MethodDishGroup[] {
+  const sections = validMethodSections(methodSections);
+  if (sections.length > 0) {
+    return sections.map((section, index) => ({
+      title: section.title,
+      roleLabel: index === 0 ? roleLabel : undefined,
+      sourceLine: index === 0 ? sourceLine : undefined,
+      sourceUrl: index === 0 ? sourceUrl : undefined,
+      steps: section.steps,
+    }));
+  }
+
+  return method.length > 0
+    ? [{ title, roleLabel, sourceLine, sourceUrl, steps: method }]
+    : [];
+}
+
+function validMethodSections(
+  sections: RecipeMethodSection[] | undefined,
+): RecipeMethodSection[] {
+  return (sections ?? []).filter(
+    (section) => section.title.trim() && section.steps.some((step) => step.trim()),
+  );
+}
+
+function MealMethod({ groups }: { groups: MethodDishGroup[] }) {
+  const visibleGroups = groups.filter((group) => group.steps.length > 0);
+  if (visibleGroups.length === 0) return null;
+
+  return (
+    <NabuSurface className="p-5 sm:p-6">
+      <NabuKicker>Preparation</NabuKicker>
+      <h2 className="mt-1 text-xl font-semibold tracking-[-0.02em] text-primary">
+        Method
+      </h2>
+      <div className="mt-5 space-y-7">
+        {visibleGroups.map((group, index) => (
+          <section
+            key={`${group.title}-${index}`}
+            data-cook-dish={group.title}
+            className={index > 0 ? "border-t border-secondary pt-6" : undefined}
+          >
+            {group.roleLabel && <NabuKicker>{group.roleLabel}</NabuKicker>}
+            <h3 className="mt-0.5 text-lg font-semibold tracking-[-0.02em] text-primary">
+              {group.title}
+            </h3>
+            {group.sourceLine && (
               <p className="mt-1 text-xs text-tertiary">
-                {isLinkableUrl(provenanceUrl) ? (
+                {isLinkableUrl(group.sourceUrl) ? (
                   <a
-                    href={provenanceUrl}
+                    href={group.sourceUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="underline decoration-secondary underline-offset-2 hover:text-secondary"
                   >
-                    {provenance}
+                    {group.sourceLine}
                   </a>
                 ) : (
-                  provenance
+                  group.sourceLine
                 )}
               </p>
             )}
-          </div>
-          <div className="flex shrink-0 flex-wrap gap-2">
-            {servingLabel && <NabuBadge>{servingLabel}</NabuBadge>}
-            {timeLabel && <NabuBadge tone="blue">{timeLabel}</NabuBadge>}
-            {working.hasSessionChanges && (
-              <NabuBadge tone="amber">Adapted tonight</NabuBadge>
-            )}
-          </div>
-        </div>
-
-        {contextRows.length > 0 && (
-          <div className="mt-5 space-y-2 border-t border-secondary pt-4">
-            {contextRows.map((row) => (
-              <div key={row.label} className="flex gap-3">
-                <span className="w-24 shrink-0 pt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-quaternary">
-                  {row.label}
-                </span>
-                <span className="min-w-0 whitespace-pre-wrap text-sm leading-relaxed text-secondary">
-                  {row.value}
-                </span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {working.method.length > 0 && (
-          <div className="mt-5 border-t border-secondary pt-4">
-            <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
-              Method
-            </h4>
-            <MethodSteps steps={working.method} />
-          </div>
-        )}
+            <div className="mt-4">
+              <MethodSteps steps={group.steps} />
+            </div>
+          </section>
+        ))}
       </div>
     </NabuSurface>
   );
@@ -627,81 +638,55 @@ function StoryCard({ story }: { story: CookingSession["story"] }) {
   );
 }
 
-// ---------------------------------------------------------------------------
-// Supporting cook recipe — complete and always expanded. Source links are
-// useful provenance, never a substitute for the method on this page.
-// ---------------------------------------------------------------------------
+function MealDetails({ drink, notes }: { drink: string; notes: string | null }) {
+  const rows = [
+    drink
+      ? { title: "Drink", text: drink, icon: <WineGlassIcon /> }
+      : null,
+    notes
+      ? { title: "Tonight’s notes", text: notes, icon: <NoteIcon /> }
+      : null,
+  ].filter(
+    (row): row is { title: string; text: string; icon: ReactElement } =>
+      row !== null,
+  );
 
-function CookRecipeBlock({
-  roleLabel,
-  title,
-  sourceLine,
-  sourceUrl,
-  image,
-  servings,
-  timeLabel,
-  method,
-}: {
-  roleLabel: string;
-  title: string;
-  sourceLine?: string;
-  sourceUrl?: string;
-  image?: string | null;
-  servings?: string | number;
-  timeLabel?: string | null;
-  method: string[];
-}) {
-  const servingLabel = servings
-    ? formatServings(firstServingsClause(String(servings)))
-    : "";
+  if (rows.length === 0) return null;
 
   return (
-    <div data-cook-dish={title}>
-    <NabuSurface className="overflow-hidden p-0">
-      {image && (
-        <div className="border-b border-primary bg-secondary">
-          <HeroImage src={image} alt={title} />
-        </div>
-      )}
-      <div className="p-5">
-        <div className="flex items-start justify-between gap-3">
+    <NabuSurface className="divide-y divide-secondary p-0">
+      {rows.map((row) => (
+        <section key={row.title} className="flex gap-4 p-5 sm:p-6">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-tertiary">
+            {row.icon}
+          </div>
           <div className="min-w-0">
-            <NabuKicker>{roleLabel}</NabuKicker>
-            <h3 className="mt-0.5 text-base font-semibold tracking-[-0.02em] text-primary">
-              {title}
-            </h3>
-            {sourceLine && (
-              <p className="mt-0.5 text-xs text-tertiary">
-                {isLinkableUrl(sourceUrl) ? (
-                  <a
-                    href={sourceUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="underline decoration-secondary underline-offset-2 hover:text-secondary"
-                  >
-                    {sourceLine}
-                  </a>
-                ) : sourceLine}
-              </p>
-            )}
+            <h2 className="text-sm font-semibold text-primary">{row.title}</h2>
+            <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-tertiary">
+              {row.text}
+            </p>
           </div>
-          <div className="flex shrink-0 flex-wrap justify-end gap-2">
-            {servingLabel && <NabuBadge>{servingLabel}</NabuBadge>}
-            {timeLabel && <NabuBadge tone="blue">{timeLabel}</NabuBadge>}
-          </div>
-        </div>
-
-        {method.length > 0 && (
-          <div className="mt-5 border-t border-secondary pt-4">
-            <h4 className="mb-3 text-xs uppercase tracking-widest text-quaternary">
-              Method
-            </h4>
-            <MethodSteps steps={method} />
-          </div>
-        )}
-      </div>
+        </section>
+      ))}
     </NabuSurface>
-    </div>
+  );
+}
+
+function WineGlassIcon() {
+  return (
+    <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <path d="M7 3h10l-1 6a4 4 0 0 1-8 0L7 3Z" />
+      <path d="M12 13v6M9 21h6" />
+    </svg>
+  );
+}
+
+function NoteIcon() {
+  return (
+    <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <path d="M6 3h9l3 3v15H6V3Z" />
+      <path d="M15 3v4h4M9 12h6M9 16h6" />
+    </svg>
   );
 }
 

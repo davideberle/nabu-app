@@ -13,6 +13,11 @@ export type Ingredient = {
   group?: string | null;
 };
 
+export type RecipeMethodSection = {
+  title: string;
+  steps: string[];
+};
+
 export type Recipe = {
   id: string;
   name: string;
@@ -36,6 +41,8 @@ export type Recipe = {
   time?: { prep?: number; cook?: number; total?: number };
   ingredients: Ingredient[];
   method: string[];
+  /** Optional editorial grouping for recipes made of several distinct dishes. */
+  methodSections?: RecipeMethodSection[];
   serving?: string;
   related_recipes?: { name: string; page?: number }[];
   tags?: {

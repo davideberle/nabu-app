@@ -12,6 +12,7 @@ import {
   buildPairingSuggestion,
   extractTableSides,
   formatRecipeTime,
+  formatRecipeTotalTime,
 } from "./cooking-guidance.ts";
 
 describe("buildCourseMenu", () => {
@@ -127,6 +128,19 @@ describe("formatRecipeTime", () => {
   it("returns null without usable values", () => {
     equal(formatRecipeTime(undefined), null);
     equal(formatRecipeTime({}), null);
+  });
+});
+
+describe("formatRecipeTotalTime", () => {
+  it("keeps the meal hero to one compact total", () => {
+    equal(
+      formatRecipeTotalTime({ prep: 25, cook: 60, total: 75 }),
+      "1 hr 15 min total"
+    );
+  });
+
+  it("falls back to prep plus cook when total is absent", () => {
+    equal(formatRecipeTotalTime({ prep: 10, cook: 20 }), "30 min total");
   });
 });
 

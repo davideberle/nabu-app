@@ -180,6 +180,15 @@ export function formatRecipeTime(time?: RecipeTime): string | null {
   return `${formatDuration(total)} total`;
 }
 
+/** Compact meal-hero timing: one total, without repeating prep and cook. */
+export function formatRecipeTotalTime(time?: RecipeTime): string | null {
+  if (!time) return null;
+  const prep = minutesFromTimeValue(time.prep);
+  const cook = minutesFromTimeValue(time.cook);
+  const total = minutesFromTimeValue(time.total) || prep + cook;
+  return total ? `${formatDuration(total)} total` : null;
+}
+
 // ---------------------------------------------------------------------------
 // Wine pairing fallback (used only when the session has no coachCards.wine)
 // ---------------------------------------------------------------------------

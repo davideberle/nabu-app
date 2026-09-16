@@ -13,28 +13,24 @@
 // the check logic can be exercised without a running instance.
 //
 // Checks per variant, all on the rendered document (RSC payload stripped):
-//   shared       menu → grouped Ingredients → expanded Cook stack, all
-//                ingredients before any method, stable dish order, no collapsed
-//                active recipe, no timeline/order-of-attack, no chat provenance
+//   shared       meal image/identity → grouped Ingredients → one Method surface
+//                grouped by dish → drink/notes near the end; no duplicate menu,
+//                collapsed active recipe, timeline/order-of-attack, or chat provenance
 //   farfalle     real The Pasta Table anchor linked, integrated substitution
 //                ("instead of cherry tomatoes"), override method (never roast
 //                the tomatoes), "Adapted tonight" badge
-//   synthesized  truthful title, no invented or chat-origin provenance, and a
-//                main-only meal legitimately suppressing the menu
+//   synthesized  truthful title and no invented or chat-origin provenance
 //   korean       explicit main leads; its external anchor is the next complete
-//                recipe with Judy Joo provenance; set-aside line; drink row
+//                method group with Judy Joo provenance; set-aside line; drink row
 //   cauliflower  grouped Plentiful cauliflower + Love & Lemons chickpea
 //                ingredients, then both full methods in explicit chickpeas →
 //                main preparation order
 //
-// The course menu contract (§7): when a meal has more than the single main
-// dish, a compact restaurant-style menu precedes all recipe detail; its lanes
-// run starter → main → accompaniments → dessert with empty lanes omitted; it
-// names dishes only — no ingredients, method, timing or planning shorthand;
-// no dish repeats inside it; and the dishes it carries are not restated as a
-// generic "also cooking" summary in the recipe context below. The meal then
-// gathers ingredients by dish once before an uninterrupted stack of complete,
-// expanded methods. A single-dish, main-only meal may omit the menu.
+// The meal-first contract (§7): the page opens with the image and recipe
+// identity, then gathers every ingredient once before a single complete Method
+// surface. That surface is subdivided by dish, with every active method expanded.
+// Drink guidance and tonight's notes sit near the end rather than interrupting
+// the cooking flow.
 
 import { readFileSync } from "node:fs";
 
@@ -102,99 +98,47 @@ function inOrder(...needles) {
   }
   return true;
 }
-function normalizeDish(text) {
-  return text.trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-// ---------------------------------------------------------------------------
-// Document structure: the course menu, the headings, the recipe context
-// ---------------------------------------------------------------------------
-
-const MENU_HEADING = /<h2\b[^>]*>\s*Tonight['’]s menu\s*<\/h2>/;
-const COURSE_ORDER = ["starter", "main", "accompaniments", "dessert"];
-
-/** The rendered menu, or null when the page presents no menu at all. */
-function parseMenu() {
-  const heading = MENU_HEADING.exec(html);
-  if (!heading) return null;
-
-  const start = heading.index;
-  const listEnd = html.indexOf("</dl>", start);
-  const end = listEnd === -1 ? start + heading[0].length : listEnd + "</dl>".length;
-  const markup = html.slice(start, end);
-
-  const lanes = [
-    ...markup.matchAll(/<dt\b[^>]*>([\s\S]*?)<\/dt>[\s\S]*?<dd\b[^>]*>([\s\S]*?)<\/dd>/g),
-  ].map((match) => {
-    const label = textOf(match[1]).trim();
-    return {
-      label,
-      // "Starters"/"Mains"/"Desserts" are the plural forms of the same lanes.
-      kind: COURSE_ORDER.find((k) => normalizeDish(label).replace(/s$/, "") === k.replace(/s$/, "")),
-      dishes: textOf(match[2])
-        .split("·")
-        .map((dish) => dish.trim())
-        .filter(Boolean),
-    };
-  });
-
-  return { start, end, markup, text: textOf(markup), lanes };
-}
-
-const menu = parseMenu();
-
 const headings = [...html.matchAll(/<h([1-3])\b[^>]*>([\s\S]*?)<\/h\1>/g)].map((match) => ({
   level: Number(match[1]),
   index: match.index,
   text: textOf(match[2]).trim(),
 }));
 
-/** The compact context rows inside the main cook card, before its method. */
-function recipeContextText() {
-  const kicker = visible.indexOf("Tonight’s recipe");
-  const method = visible.indexOf("Method", kicker === -1 ? 0 : kicker);
-  if (kicker === -1 || method === -1) return "";
-  return visible.slice(kicker, method);
-}
-
 const ingredientDishes = [...html.matchAll(/data-ingredient-dish="([^"]+)"/g)]
   .map((match) => textOf(match[1]).trim());
 const cookDishes = [...html.matchAll(/data-cook-dish="([^"]+)"/g)]
   .map((match) => textOf(match[1]).trim());
-const methodHeadings = [...html.matchAll(/<h4\b[^>]*>\s*Method\s*<\/h4>/g)];
 
 function wholeMealChecks({ ingredientGroups, cookOrder }) {
+  const identityIndex = visible.indexOf("Tonight’s recipe");
   const ingredientsIndex = visible.indexOf("Ingredients");
-  const cookIndex = visible.indexOf("Cook", ingredientsIndex + 1);
-  const firstMethod = visible.indexOf("Method", cookIndex + 1);
+  const methodIndex = visible.indexOf("Method", ingredientsIndex + 1);
   const finishIndex = visible.indexOf("Finish session");
 
   check(
-    "hierarchy: menu (when present) → Ingredients → Cook → methods → Finish session",
+    "hierarchy: meal identity → Ingredients → Method → Finish session",
+    identityIndex !== -1 &&
     ingredientsIndex !== -1 &&
-      cookIndex > ingredientsIndex &&
-      firstMethod > cookIndex &&
-      finishIndex > firstMethod &&
-      (!menu || menu.start < html.indexOf(">Ingredients<")),
+      ingredientsIndex > identityIndex &&
+      methodIndex > ingredientsIndex &&
+      finishIndex > methodIndex,
   );
+  check("page is introduced as Today’s meal / Live Cooking", inOrder("Live Cooking", "Today’s meal"));
   check(
     `ingredient groups are stable and dish-grouped [${ingredientGroups.join(" | ")}]`,
     ingredientDishes.join(" | ") === ingredientGroups.join(" | "),
   );
   check(
     "all ingredient groups precede every method",
-    [...html.matchAll(/data-ingredient-dish="/g)].every(
-      (match) => methodHeadings.length > 0 && match.index < methodHeadings[0].index,
-    ),
+    [...html.matchAll(/data-ingredient-dish="/g)].every((match) => match.index < html.indexOf("data-cook-dish=")),
   );
   check(
-    `cook recipes are expanded in stable order [${cookOrder.join(" | ")}]`,
+    `method groups are expanded in stable order [${cookOrder.join(" | ")}]`,
     cookDishes.join(" | ") === cookOrder.join(" | "),
   );
   check(
-    "every cook recipe has one complete numbered method sequence",
-    methodHeadings.length === cookOrder.length &&
-      cookOrder.every((dish) => visible.includes(dish)),
+    "every method group is visible inside one Method surface",
+    count(visible, "Method") === 1 && cookOrder.every((dish) => visible.includes(dish)),
   );
   check("active recipes are never collapsed", !/<details\b/i.test(html));
   check(
@@ -207,93 +151,29 @@ function wholeMealChecks({ ingredientGroups, cookOrder }) {
   );
   const mealBalance = visible.indexOf("Meal balance");
   check(
-    "meal balance follows the complete cook stack when present",
-    mealBalance === -1 || mealBalance > visible.lastIndexOf("Method"),
+    "meal balance follows the complete Method surface when present",
+    mealBalance === -1 || mealBalance > methodIndex,
+  );
+  const drinkIndex = visible.indexOf("Drink", methodIndex + 1);
+  const notesIndex = visible.indexOf("Tonight’s notes", methodIndex + 1);
+  check(
+    "drink and notes stay near the end, in that order when both exist",
+    (drinkIndex === -1 || drinkIndex > methodIndex) &&
+      (notesIndex === -1 || notesIndex > methodIndex) &&
+      (drinkIndex === -1 || notesIndex === -1 || drinkIndex < notesIndex) &&
+      (drinkIndex === -1 || drinkIndex < finishIndex) &&
+      (notesIndex === -1 || notesIndex < finishIndex),
   );
 }
 
-// Instruction-shaped language: quantities, clock/duration timing, procedural
-// connectives and recipe section words. Deliberately not verb-based — real
-// dish names carry cooking verbs ("Slow Roasted…", "Steamed…").
-const INSTRUCTION_PATTERNS = [
-  [/\b\d+([.,/–-]\d+)?\s*(g|kg|mg|ml|cl|l|tbsp|tbs|tsp|oz|lb|lbs|cups?|pinch|cloves?)\b/i, "quantities"],
-  [/\b\d+\s*(seconds?|minutes?|mins?|hours?|hrs?)\b/i, "durations"],
-  [/\b\d{1,2}[:.]\d{2}\b/, "clock times"],
-  [/\b(then|until|meanwhile|whisk together|set the oven)\b/i, "procedural narration"],
-  [/\b(ingredients|method|step \d)\b/i, "recipe section words"],
-];
-
-function menuChecks(title, { expected }) {
-  if (!expected) {
-    // A single-dish, main-only meal may suppress the menu entirely (§7).
-    check("main-only meal suppresses the course menu", menu === null);
-    check(
-      "no other dish on the page to justify a menu (no secondary/set-aside blocks)",
-      !/also tonight/i.test(visible) && !/set aside tonight/i.test(visible),
-    );
-    return;
-  }
-
-  check("a course menu is rendered", menu !== null);
-  if (!menu) return;
-
-  const titleHeading = headings.find((h) => h.text === title);
-  check(
-    "the menu precedes all recipe detail",
-    !!titleHeading &&
-      menu.start < titleHeading.index &&
-      menu.start < html.indexOf(">Ingredients<"),
-  );
-
-  const kinds = menu.lanes.map((lane) => lane.kind);
-  check(`every menu lane is a known course (got: ${menu.lanes.map((l) => l.label).join(", ")})`, kinds.every(Boolean));
-  check(
-    "course lanes run starter → main → accompaniments → dessert",
-    kinds.every(Boolean) &&
-      kinds.every(
-        (kind, i) => i === 0 || COURSE_ORDER.indexOf(kind) > COURSE_ORDER.indexOf(kinds[i - 1]),
-      ),
-  );
-  check("empty course lanes are omitted", menu.lanes.every((lane) => lane.dishes.length > 0));
-
-  const dishes = menu.lanes.flatMap((lane) => lane.dishes);
-  check(
-    "no dish repeats inside the menu",
-    new Set(dishes.map(normalizeDish)).size === dishes.length,
-  );
-  check("the menu's main lane names the resolved main dish", (menu.lanes.find((l) => l.kind === "main")?.dishes ?? []).includes(title));
-
-  for (const [pattern, what] of INSTRUCTION_PATTERNS) {
-    check(`the menu carries no ${what}`, !pattern.test(menu.text));
-  }
-  check("the menu is dish names only, not steps", !/<(ol|li)\b/i.test(menu.markup));
-
-  const expectedLanes = expected.map((lane) => `${lane.kind}: ${lane.dishes.join(" · ")}`);
-  const actualLanes = menu.lanes.map((lane) => `${lane.kind}: ${lane.dishes.join(" · ")}`);
-  check(
-    `menu courses are exactly [${expectedLanes.join(" | ")}]`,
-    actualLanes.join(" | ") === expectedLanes.join(" | "),
-  );
-
-  // The menu is the meal's roll call; the recipe context below carries only
-  // what the menu cannot (drink, session notes) — never an "also cooking" restatement.
-  const context = recipeContextText();
-  const restated = dishes.filter((dish) => dish !== title && context.includes(dish));
-  check(
-    `the recipe context does not restate menu dishes${restated.length ? ` (found: ${restated.join(", ")})` : ""}`,
-    restated.length === 0,
-  );
-  check("no generic 'also cooking' summary alongside the menu", !/also cooking/i.test(visible));
-}
-
-function sharedChecks(title, menuExpectation, wholeMealExpectation) {
+function sharedChecks(title, wholeMealExpectation) {
   check(
     "the main title appears exactly once as a heading",
     headings.filter((h) => h.text === title).length === 1,
   );
 
-  menuChecks(title, menuExpectation);
   wholeMealChecks(wholeMealExpectation);
+  check("the duplicate course menu is gone", !/Tonight['’]s menu/.test(visible));
   check("no second instruction set: 'Meal timeline'", !visible.includes("Meal timeline"));
   check("no second instruction set: 'Order of attack'", !/order of attack/i.test(visible));
   check("no empty default 'Main dish only'", !visible.includes("Main dish only"));
@@ -305,11 +185,6 @@ function sharedChecks(title, menuExpectation, wholeMealExpectation) {
 if (variant === "farfalle") {
   const title = "Slow Roasted Tomato & Mascarpone Farfalle";
   sharedChecks(title, {
-    expected: [
-      { kind: "main", dishes: [title] },
-      { kind: "accompaniments", dishes: ["Green salad"] },
-    ],
-  }, {
     ingredientGroups: [title, "Serve with"],
     cookOrder: [title],
   });
@@ -324,9 +199,8 @@ if (variant === "farfalle") {
   check("one restrained 'Adapted tonight' badge", count(visible, "Adapted tonight") === 1);
 } else if (variant === "synthesized") {
   const title = "Farfalle with Mascarpone, Roasted Peppers and Salmon Steak";
-  // Main only, nothing else on the stove: the menu would restate the title
-  // standing directly below it, so §7 lets the page suppress it.
-  sharedChecks(title, { expected: null }, {
+  // Main only, nothing else on the stove.
+  sharedChecks(title, {
     ingredientGroups: [title],
     cookOrder: [title],
   });
@@ -339,34 +213,21 @@ if (variant === "farfalle") {
   // The title may legitimately recur in prose (meal-balance findings name the
   // dish); the heading contract is pinned by sharedChecks' heading checks.
   sharedChecks(title, {
-    expected: [
-      { kind: "main", dishes: [title, "Savoury Doenjang-Glazed Aubergine"] },
-      {
-        kind: "accompaniments",
-        dishes: ["Spicy cucumber salad (oi-muchim)", "Steamed Korean short-grain or sushi rice"],
-      },
-    ],
-  }, {
     ingredientGroups: [title, "Savoury Doenjang-Glazed Aubergine", "Serve with"],
     cookOrder: [title, "Savoury Doenjang-Glazed Aubergine"],
   });
   check(
-    "set-aside components stay off tonight's menu",
-    !(menu?.text ?? "").includes("Kimchi Pancakes"),
+    "set-aside components stay out of ingredients and methods",
+    !cookDishes.includes("Kimchi Pancakes") && !ingredientDishes.includes("Kimchi Pancakes"),
   );
-  check("current-cook notes render in the context rows", visible.includes("Korean family spread"));
-  check("anchor is the second complete cook recipe", cookDishes[1] === "Savoury Doenjang-Glazed Aubergine");
-  check("anchor provenance (Judy Joo) renders on the subordinate block", visible.includes("Judy Joo"));
+  check("current-cook notes render near the end", inOrder("Method", "Korean family spread", "Finish session"));
+  check("anchor is the second complete method group", cookDishes[1] === "Savoury Doenjang-Glazed Aubergine");
+  check("anchor provenance (Judy Joo) renders on its method group", visible.includes("Judy Joo"));
   check("set-aside line for the optional kimchi pancakes", inOrder("Set aside tonight", "Kimchi Pancakes"));
-  check("drink guidance renders once in the context rows", inOrder("Drink", "Lenz Trio Weiss"));
+  check("drink guidance renders once near the end", inOrder("Method", "Drink", "Lenz Trio Weiss", "Finish session"));
 } else if (variant === "planned") {
   const title = "Ackee Carbonara";
   sharedChecks(title, {
-    expected: [
-      { kind: "main", dishes: [title] },
-      { kind: "accompaniments", dishes: ["A’ja (Bread Fritters)", "Green salad"] },
-    ],
-  }, {
     ingredientGroups: [title, "A’ja (Bread Fritters)", "Serve with"],
     cookOrder: [title, "A’ja (Bread Fritters)"],
   });
@@ -378,11 +239,6 @@ if (variant === "farfalle") {
   const title = "Roasted Cauliflower with Sultanas and Pecan Brown Butter";
   const chickpeas = "Crispy Roasted Chickpeas";
   sharedChecks(title, {
-    expected: [
-      { kind: "main", dishes: [title] },
-      { kind: "accompaniments", dishes: [chickpeas] },
-    ],
-  }, {
     ingredientGroups: [title, chickpeas],
     cookOrder: [chickpeas, title],
   });
