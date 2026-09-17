@@ -119,6 +119,24 @@ Vercel auto-deploys from `main`. The Turso migration runs on first
 function invocation, seeding tables idempotently (CREATE TABLE IF NOT
 EXISTS + INSERT OR IGNORE for seed data).
 
+## Music New plays projection
+
+`sonos-music` owns discovery candidates, ranking, the append-only evidence ledger,
+Apple-library changes, and promotion into the canonical music profile. Companion
+App owns only the authenticated presentation and a durable action outbox:
+
+- `PUT /api/music/new-plays` mirrors the domain's read-only projection.
+- `GET /api/music/new-plays` lists that projection for an authorized browser.
+- `POST /api/music/new-plays/actions` queues one typed browser action.
+- `GET /api/music/new-plays/actions` and `POST .../ack` are consumed by the local
+  Sonos runtime after it applies the action through the domain contract.
+
+Mirror writes, pending-action reads, and acknowledgements require
+`access.via === "trusted-runtime"`. A normal browser session can list rows and
+enqueue feedback but cannot forge domain state or hide an action. The public
+feedback vocabulary is `love`, `more_like_this`, `wrong_context`, and
+`not_for_me`; internal ledger names never leak into the UI.
+
 ## Recipe & Meals UX Refresh (April 2026)
 
 ### Problem statement
