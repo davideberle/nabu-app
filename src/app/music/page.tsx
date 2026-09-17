@@ -12,7 +12,6 @@ import {
   NabuButton,
   NabuLinkButton,
   NabuBadge,
-  NabuStat,
   NabuEmptyState,
 } from "@/components/ui/nabu";
 
@@ -48,32 +47,17 @@ type RoomProjection = {
   lastMedia: LastMedia | null;
 };
 
-type DiscoveryCandidate = {
-  id: string;
-  name: string;
-  artist?: string | null;
-  type?: string;
-  genres?: string[];
-  lane?: string;
-  score?: number;
-  reasons?: string;
-  library_status?: string;
-  artwork_url?: string | null;
-  album_year?: number | null;
-  release_year?: number | null;
-  status?: string;
-  played_count?: number;
+type NewPlayPreview = {
+  playId: string;
+  name: string | null;
+  artist: string | null;
+  playedAt: string;
+  reviewed: boolean;
 };
 
-type DiscoveryData = {
-  summary?: {
-    counts?: Record<"inbox" | "trial" | "promoted" | "rejected", number>;
-    updated_at?: string | null;
-  };
-  inbox?: DiscoveryCandidate[];
-  trial?: DiscoveryCandidate[];
-  promoted?: DiscoveryCandidate[];
-  rejected?: DiscoveryCandidate[];
+type NewPlaysData = {
+  items?: NewPlayPreview[];
+  syncedAt?: string | null;
   error?: string;
 };
 
@@ -105,13 +89,9 @@ function typeLabel(type?: string | null) {
   return type;
 }
 
-function displayYear(candidate: DiscoveryCandidate) {
-  return candidate.album_year ?? candidate.release_year ?? null;
-}
-
 export default function MusicPage() {
   const [rooms, setRooms] = useState<RoomProjection[]>([]);
-  const [discovery, setDiscovery] = useState<DiscoveryData>({});
+  const [newPlays, setNewPlays] = useState<NewPlaysData>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
@@ -126,21 +106,21 @@ export default function MusicPage() {
 
   const refresh = useCallback(async () => {
     try {
-      const [roomsRes, discoveryRes] = await Promise.all([
+      const [roomsRes, newPlaysRes] = await Promise.all([
         fetch("/api/music/rooms", { cache: "no-store" }),
-        fetch("/api/music/discovery?limit=6", { cache: "no-store" }),
+        fetch("/api/music/new-plays?limit=3", { cache: "no-store" }),
       ]);
 
-      const roomsJson = await roomsRes.json();
-      const discoveryJson = await discoveryRes.json();
+      const roomsJson = await roomsRes.json().catch(() => ({}));
+      const newPlaysJson = await newPlaysRes.json().catch(() => ({}));
 
-      if (!roomsRes.ok && !discoveryRes.ok) {
+      if (!roomsRes.ok && !newPlaysRes.ok) {
         throw new Error("Music APIs are unavailable");
       }
 
       setRooms(Array.isArray(roomsJson.rooms) ? roomsJson.rooms : []);
-      setDiscovery(discoveryJson || {});
-      setError(roomsJson.error || discoveryJson.error || null);
+      setNewPlays(newPlaysJson || {});
+      setError(roomsJson.error || newPlaysJson.error || null);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Music surface unavailable");
     } finally {
@@ -181,20 +161,15 @@ export default function MusicPage() {
     }
   }
 
-  const counts = discovery.summary?.counts || {
-    inbox: 0,
-    trial: 0,
-    promoted: 0,
-    rejected: 0,
-  };
-  const inbox = discovery.inbox || [];
+  const latestPlays = Array.isArray(newPlays.items) ? newPlays.items.slice(0, 3) : [];
+  const unreviewed = latestPlays.filter((play) => !play.reviewed).length;
 
   return (
     <NabuPageShell>
       <NabuHeader
         title="Music"
         backHref="/"
-        subtitle="Discovery first, Sonos rooms underneath."
+        subtitle="New plays first, Sonos rooms underneath."
         icon="🎵"
       />
 
@@ -215,110 +190,45 @@ export default function MusicPage() {
               </div>
             )}
 
-            {/* Discovery section */}
+            {/* New plays hero */}
             <NabuSurface as="section">
-              <div className="border-b border-zinc-100 p-6 dark:border-zinc-800">
+              <div className="p-6">
                 <NabuSectionHeader
-                  eyebrow="Discovery inbox"
-                  title={`${counts.inbox} candidates waiting`}
-                  description="New albums, compilations, and playlists from the Sonos music discovery pipeline."
+                  eyebrow="New plays"
+                  title={
+                    latestPlays.length === 0
+                      ? "No unfamiliar plays yet"
+                      : unreviewed > 0
+                        ? `${unreviewed} of the latest ${latestPlays.length} still unreviewed`
+                        : "Latest plays all reviewed"
+                  }
+                  description="Unfamiliar albums and playlists the DJ actually played. Feedback, Apple Music, and DJ-profile changes are applied on the home runtime."
                   action={
-                    <NabuLinkButton href="/music/discovery" tone="secondary" size="sm">
-                      Open full discovery →
+                    <NabuLinkButton href="/music/new-plays" tone="secondary" size="sm">
+                      Open New plays →
                     </NabuLinkButton>
                   }
                 />
 
-                <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  <NabuStat label="Inbox" value={counts.inbox} tone="blue" />
-                  <NabuStat label="Trial" value={counts.trial} tone="amber" />
-                  <NabuStat label="Promoted" value={counts.promoted} tone="green" />
-                  <NabuStat label="Rejected" value={counts.rejected} tone="stone" />
-                </div>
-              </div>
-
-              <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
-                {inbox.length === 0 ? (
-                  <p className="p-6 text-sm text-tertiary">
-                    No discovery candidates waiting right now.
-                  </p>
-                ) : (
-                  inbox.map((candidate) => (
-                    <article
-                      key={candidate.id}
-                      className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between"
-                    >
-                      <div className="flex min-w-0 gap-4">
-                        {candidate.artwork_url ? (
-                          <img
-                            src={candidate.artwork_url}
-                            alt={`${candidate.name} cover`}
-                            className="h-16 w-16 shrink-0 rounded-xl object-cover"
-                          />
-                        ) : (
-                          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
-                            🎵
-                          </div>
-                        )}
-                        <div className="min-w-0">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <h3 className="font-medium text-primary">
-                              {candidate.name}
-                            </h3>
-                            <NabuBadge tone="stone">{typeLabel(candidate.type)}</NabuBadge>
-                            {displayYear(candidate) && (
-                              <NabuBadge tone="stone">{displayYear(candidate)}</NabuBadge>
-                            )}
-                            {candidate.score != null && (
-                              <NabuBadge tone="blue">{candidate.score}</NabuBadge>
-                            )}
-                          </div>
-                          <p className="mt-1 text-sm text-tertiary">
-                            {[candidate.artist, candidate.genres?.join(" · "), candidate.lane]
-                              .filter(Boolean)
-                              .join(" · ")}
-                          </p>
-                          {candidate.reasons && (
-                            <p className="mt-1 line-clamp-2 text-sm text-tertiary">
-                              {candidate.reasons}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                      <div className="flex shrink-0 items-center gap-2">
-                        <NabuButton
-                          tone="primary"
-                          size="sm"
-                          disabled={busy === `discovery-${candidate.id}-try`}
-                          onClick={() =>
-                            postAction(
-                              `discovery-${candidate.id}-try`,
-                              "/api/music/discovery",
-                              { id: candidate.id, action: "try" },
-                              "Added to trial"
-                            )
-                          }
-                        >
-                          Try
-                        </NabuButton>
-                        <NabuButton
-                          tone="ghost"
-                          size="sm"
-                          disabled={busy === `discovery-${candidate.id}-reject`}
-                          onClick={() =>
-                            postAction(
-                              `discovery-${candidate.id}-reject`,
-                              "/api/music/discovery",
-                              { id: candidate.id, action: "reject" },
-                              "Rejected"
-                            )
-                          }
-                        >
-                          Reject
-                        </NabuButton>
-                      </div>
-                    </article>
-                  ))
+                {latestPlays.length > 0 && (
+                  <ul className="mt-5 space-y-2">
+                    {latestPlays.map((play) => (
+                      <li key={play.playId} className="flex items-center justify-between gap-3 text-sm">
+                        <span className="min-w-0 truncate text-primary">
+                          {play.name ?? "Untitled"}
+                          {play.artist ? (
+                            <span className="text-tertiary"> — {play.artist}</span>
+                          ) : null}
+                        </span>
+                        <span className="flex shrink-0 items-center gap-2">
+                          <span className="text-xs text-quaternary">{formatDate(play.playedAt)}</span>
+                          <NabuBadge tone={play.reviewed ? "green" : "amber"}>
+                            {play.reviewed ? "Reviewed" : "Unreviewed"}
+                          </NabuBadge>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
             </NabuSurface>

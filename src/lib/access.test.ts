@@ -227,3 +227,21 @@ describe("isTrustedRuntimeApiRoute", () => {
     equal(isTrackerAllowedApiPath("/api/family/completions"), true);
   });
 });
+
+describe("isTrustedRuntimeApiRoute — music New plays routes", () => {
+  it("lets exactly the runtime's New plays combinations through middleware to the route guard", () => {
+    equal(isTrustedRuntimeApiRoute("GET", "/api/music/new-plays"), true);
+    equal(isTrustedRuntimeApiRoute("PUT", "/api/music/new-plays"), true);
+    equal(isTrustedRuntimeApiRoute("GET", "/api/music/new-plays/actions"), true);
+    equal(isTrustedRuntimeApiRoute("POST", "/api/music/new-plays/actions"), true);
+    equal(isTrustedRuntimeApiRoute("POST", "/api/music/new-plays/actions/ack"), true);
+    equal(isTrustedRuntimeApiRoute("PUT", "/api/music/new-plays/"), true);
+  });
+
+  it("keeps every other New plays combination on the ordinary session rules", () => {
+    equal(isTrustedRuntimeApiRoute("POST", "/api/music/new-plays"), false);
+    equal(isTrustedRuntimeApiRoute("DELETE", "/api/music/new-plays/actions"), false);
+    equal(isTrustedRuntimeApiRoute("GET", "/api/music/new-plays/actions/ack"), false);
+    equal(isTrustedRuntimeApiRoute("GET", "/api/music/new-plays/extra"), false);
+  });
+});

@@ -121,6 +121,15 @@ const TRUSTED_RUNTIME_API_ROUTES: { methods: readonly string[]; pattern: RegExp 
   { methods: ["POST"], pattern: /^\/api\/meals\/prepare$/ },
   // Chat-driven targeted replacement of unassigned recommendations.
   { methods: ["POST"], pattern: /^\/api\/meals\/replace$/ },
+  // Music "New plays" mirror + action outbox. `projects/sonos-music`
+  // (`new-plays-sync.js`) pushes the read-only projection with PUT, pulls the
+  // queued typed actions with GET, and reports outcomes to /ack. The browser
+  // session uses GET (list) and POST (enqueue) on the same routes; the route
+  // guard (`lib/music-new-plays-auth.ts`) restricts PUT / pending GET / ack to
+  // the trusted runtime.
+  { methods: ["GET", "PUT"], pattern: /^\/api\/music\/new-plays$/ },
+  { methods: ["GET", "POST"], pattern: /^\/api\/music\/new-plays\/actions$/ },
+  { methods: ["POST"], pattern: /^\/api\/music\/new-plays\/actions\/ack$/ },
 ];
 
 export function isTrustedRuntimeApiRoute(method: string, pathname: string): boolean {
