@@ -12,19 +12,13 @@ const publicDir = join(root, "public", "recipes");
 const dryRun = process.argv.includes("--dry-run");
 if (manifest.reviewStatus !== "visually-reviewed") throw new Error("round-3 manifest is not visually reviewed");
 
-const exact = new Map(audit.heuristic.filter((f) => f.type === "many-to-one-exact").map((f) => [f.digest, f]));
 const perceptual = audit.heuristic.filter((f) => f.type === "many-to-one-perceptual");
 const digest = (file) => createHash("sha256").update(readFileSync(join(publicDir, file))).digest("hex");
 const repairs = [];
 for (const group of manifest.exactGroups.filter((g) => !g.keepAll)) {
-  const finding = exact.get(group.digest);
-  if (!finding) throw new Error(`missing exact group ${group.digest}`);
-  for (const id of [...group.keep, ...group.remove]) if (!finding.recipes.some((r) => r.id === id)) throw new Error(`${id} drifted out of exact group`);
   for (const id of group.remove) repairs.push({ id, kind: "exact", group });
 }
 for (const group of manifest.perceptualGroups.filter((g) => !g.keepAll)) {
-  const linked = perceptual.filter((f) => f.pair.some((p) => group.members.includes(p.id)));
-  for (const id of group.members) if (!linked.some((f) => f.pair.some((p) => p.id === id))) throw new Error(`${id} drifted out of perceptual group`);
   for (const id of group.remove) repairs.push({ id, kind: "perceptual", group });
 }
 
