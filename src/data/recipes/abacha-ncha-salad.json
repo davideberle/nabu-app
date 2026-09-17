@@ -60,7 +60,7 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/abacha-ncha-salad.jpg",
+  "image": null,
   "time": {
     "prep": 10,
     "cook": 20,

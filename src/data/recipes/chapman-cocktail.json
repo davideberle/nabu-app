@@ -40,7 +40,7 @@
     "chapter": "Drinks",
     "meal_role": "drink"
   },
-  "image": "/recipes/chapman-cocktail.jpg",
+  "image": null,
   "time": {
     "prep": 5,
     "cook": 0,

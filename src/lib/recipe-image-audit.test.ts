@@ -121,3 +121,16 @@ test("round-2 reviewed cleanup stays applied", () => {
     assert.equal(existsSync(join(process.cwd(), "docs", "audits", "quarantine", "recipe-duplicates-20260916", `${pair.quarantineId}.json`)), true);
   }
 });
+
+test("round-3 reviewed shared-image cleanup stays applied", () => {
+  const manifestPath = join(process.cwd(), "docs", "audits", "recipe-image-cleanup-round3.json");
+  if (!existsSync(manifestPath)) return;
+  const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+  assert.equal(manifest.reviewStatus, "visually-reviewed");
+  const removed = [...manifest.exactGroups, ...manifest.perceptualGroups].flatMap((g) => g.remove || []);
+  assert.equal(removed.length, 34);
+  for (const id of removed) {
+    const recipe = JSON.parse(readFileSync(join(process.cwd(), "src", "data", "recipes", `${id}.json`), "utf8"));
+    assert.equal(recipe.image, null, `${id} should not retain a visually disproven shared image`);
+  }
+});

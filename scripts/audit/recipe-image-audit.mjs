@@ -29,6 +29,7 @@ const OUT = resolve(args.out || join(APP_ROOT, "docs", "audits", "recipe-image-a
 const SHEET = args["contact-sheet"] ? resolve(args["contact-sheet"]) : null;
 const REPAIRS_PATH = join(APP_ROOT, "docs", "audits", "recipe-image-repairs.json");
 const ROUND2_PATH = join(APP_ROOT, "docs", "audits", "recipe-image-cleanup-round2.json");
+const ROUND3_PATH = join(APP_ROOT, "docs", "audits", "recipe-image-cleanup-round3.json");
 const RECIPES_DIR = join(APP_ROOT, "src", "data", "recipes");
 const BUNDLE = join(APP_ROOT, "src", "data", "recipes-bundle.json");
 const PUBLIC_RECIPES = join(APP_ROOT, "public", "recipes");
@@ -66,7 +67,11 @@ const publicFiles = readdirSync(PUBLIC_RECIPES).filter((f) => !f.startsWith(".")
 const publicSet = new Set(publicFiles);
 const reviewedRepairs = existsSync(REPAIRS_PATH) ? JSON.parse(readFileSync(REPAIRS_PATH, "utf8")) : null;
 const reviewedRound2 = existsSync(ROUND2_PATH) ? JSON.parse(readFileSync(ROUND2_PATH, "utf8")) : null;
+const reviewedRound3 = existsSync(ROUND3_PATH) ? JSON.parse(readFileSync(ROUND3_PATH, "utf8")) : null;
 const round2ImageImpact = reviewedRound2 ? reviewedRound2.imageRepairs.length + reviewedRound2.duplicateRecipes.length : 0;
+const round3ImageImpact = reviewedRound3
+  ? [...reviewedRound3.exactGroups, ...reviewedRound3.perceptualGroups].reduce((n, g) => n + (g.remove?.length || 0), 0)
+  : 0;
 
 // ---------- image references ----------
 const refs = []; // { recipe, kind: local|external|none, file }
@@ -224,17 +229,25 @@ const summary = {
     count: reviewedRepairs.count,
     reviewStatus: reviewedRepairs.reviewStatus,
     rule: reviewedRepairs.rule,
-    before: { withLocalImage: refs.filter((x) => x.kind === "local").length + round2ImageImpact + reviewedRepairs.count, orphans: orphanFiles.length - round2ImageImpact - reviewedRepairs.count },
-    after: { withLocalImage: refs.filter((x) => x.kind === "local").length + round2ImageImpact, orphans: orphanFiles.length - round2ImageImpact },
+    before: { withLocalImage: refs.filter((x) => x.kind === "local").length + round2ImageImpact + round3ImageImpact + reviewedRepairs.count, orphans: orphanFiles.length - round2ImageImpact - round3ImageImpact - reviewedRepairs.count },
+    after: { withLocalImage: refs.filter((x) => x.kind === "local").length + round2ImageImpact + round3ImageImpact, orphans: orphanFiles.length - round2ImageImpact - round3ImageImpact },
     evidenceFile: "docs/audits/recipe-image-repairs.json",
   } : null,
   reviewedCleanupRound2: reviewedRound2 ? {
     reviewStatus: reviewedRound2.reviewStatus,
     imageAssignmentsCleared: reviewedRound2.imageRepairs.length,
     duplicateRecordsQuarantined: reviewedRound2.duplicateRecipes.length,
-    before: { recipes: appRecipes.length + reviewedRound2.duplicateRecipes.length, withLocalImage: refs.filter((x) => x.kind === "local").length + round2ImageImpact, orphans: orphanFiles.length - round2ImageImpact },
-    after: { recipes: appRecipes.length, withLocalImage: refs.filter((x) => x.kind === "local").length, orphans: orphanFiles.length },
+    before: { recipes: appRecipes.length + reviewedRound2.duplicateRecipes.length, withLocalImage: refs.filter((x) => x.kind === "local").length + round2ImageImpact + round3ImageImpact, orphans: orphanFiles.length - round2ImageImpact - round3ImageImpact },
+    after: { recipes: appRecipes.length, withLocalImage: refs.filter((x) => x.kind === "local").length + round3ImageImpact, orphans: orphanFiles.length - round3ImageImpact },
     evidenceFile: "docs/audits/recipe-image-cleanup-round2.json",
+  } : null,
+  reviewedCleanupRound3: reviewedRound3 ? {
+    reviewStatus: reviewedRound3.reviewStatus,
+    groupsReviewed: reviewedRound3.reviewedGroups,
+    imageAssignmentsCleared: round3ImageImpact,
+    before: { withLocalImage: refs.filter((x) => x.kind === "local").length + round3ImageImpact, orphans: orphanFiles.length - round3ImageImpact },
+    after: { withLocalImage: refs.filter((x) => x.kind === "local").length, orphans: orphanFiles.length },
+    evidenceFile: "docs/audits/recipe-image-cleanup-round3.json",
   } : null,
   recipes: {
     total: appRecipes.length,

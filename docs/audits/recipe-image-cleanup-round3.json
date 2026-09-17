@@ -1,0 +1,30 @@
+{
+  "reviewStatus": "visually-reviewed",
+  "scope": "The 18 largest exact-sharing groups and all four perceptual-pair findings. Clear an assignment only when the picture visibly cannot depict the named recipe; retain shared cookbook spreads and artwork when they plausibly serve every linked recipe.",
+  "reviewedGroups": 21,
+  "exactGroups": [
+    { "digest": "685b28a534c9f3eb70e3b32f4ce52cee648f09bf6199a15ab3a915dcaa6f809b", "keep": [], "remove": ["abacha-ncha-salad", "banga-rice", "chapman-cocktail", "vegan-omelette-with-boiled-plantain", "yam-pepper-soup-ji-nmiri-oku"], "reason": "flat green placeholder, not food" },
+    { "digest": "070033716764fc03e26f92dc0eac82b750e79f459133a47e5a1e9084bcf65b74", "keep": ["conchiglie-with-yogurt-peas-and-chile"], "remove": ["basic-hummus", "hummus-kawarma-lamb-with-lemon-sauce", "musabaha-warm-chickpeas-with-hummus-and-toasted-pita"], "reason": "photo shows conchiglie, peas, yogurt, and chile, not hummus" },
+    { "digest": "4d4ef85ab6272622dd383bffe0952e8f7300765e69662d8649e0711553e04e85", "keep": ["basil-salt", "berbere", "jamaican-curry-powder"], "remove": ["berbere-spiced-black-eyed-pea-sliders"], "reason": "photo is a spread of dry spice blends, not sliders" },
+    { "digest": "3f28e32cff0e36a0beb1ffc559a6f2a3d02921cbfef35e3f4a11ed68f6c5b029", "keep": ["blackened-seasoning", "creole-spice-blend", "za-atar"], "remove": ["texas-caviar-on-grilled-rustic-bread"], "reason": "photo is a spread of dry spice blends, not bread" },
+    { "digest": "a50693ecb45c9d7b5b1359b9e89e60fb40ab93a361bf3884697e4339cdcbab40", "keep": ["roasted-cauliflower-and-hazelnut-salad"], "remove": ["a-ja-bread-fritters", "spicy-carrot-salad"], "reason": "photo shows roasted cauliflower, hazelnuts, and greens" },
+    { "representative": "asparagus-mimosa", "keepAll": true, "reason": "shared asparagus photograph plausibly represents all three asparagus recipes" },
+    { "representative": "ayamase-ofada-stew", "keepAll": true, "reason": "stew photograph cannot be assigned more narrowly without source evidence" },
+    { "digest": "a077aecc42290e8bcb929b3712f3c0be7b4e2058572e5f24b9089291891043b7", "keep": ["sweet-filo-cigars"], "remove": ["baharat", "ghraybeh"], "reason": "photo shows sweet filo cigars, not spice or shortbread" },
+    { "digest": "6090dcea70748d41a01e6f896c9ecec90fe57c268cb1fe5b697506a637581314", "keep": ["wheat-berries-and-swiss-chard-with-pomegranate-molasses"], "remove": ["basmati-rice-and-orzo", "couscous-with-tomato-and-onion"], "reason": "photo shows wheat berries and chard" },
+    { "digest": "3509a27934cbdb315c32d0a1761e8c076f72fb8cdad3bc1a438eaac94d0a457b", "keep": ["beetroot-hard-dough-bread-panzanella"], "remove": ["crunchy-green-house-salad", "zippy-garlicky-cucumber-and-cho-cho-salad"], "reason": "photo shows beetroot and bread panzanella" },
+    { "digest": "684dcfb9de5765daa59300b35793dc895f59de80d319d5a5c0531fd539bd5b2e", "keep": ["roasted-beef-fillet-plus-three-sauces"], "remove": ["butternut-carrot-and-goat-cheese-tartlets", "choka-smoky-tomato-sauce"], "reason": "photo shows roasted beef fillets" },
+    { "digest": "d0f69abbd3790c633b49741374ec30fda2f9fe1959cd6d8244a3301c77622fa9", "keep": ["white-chocolate-and-stem-ginger-cookies-two-for-now-two-for-"], "remove": ["callaloo-pesto-pasta", "roasted-tofu-and-squash-with-green-peanut-sauced-noodles"], "reason": "photo is a cookie lifestyle scene, not pasta or noodles" },
+    { "representative": "cannellini-bean-and-lamb-soup", "keepAll": true, "reason": "three-soup spread plausibly represents the three linked soup recipes" },
+    { "digest": "71d7cf2e8be4e4ebf1512e23bf1c66ed55d40dbb4ef3d186392b143bae11bd51", "keep": [], "remove": ["charred-brussels-sprouts-with-coconut", "vibrant-turmeric-coconut-rice", "zesty-lime-chile-vinaigrette"], "reason": "photo shows an unrelated shredded beet salad" },
+    { "digest": "a2ecffdea5560a7987fc45d20fbab6f201f8a8b5ec16f94401d900e744710290", "keep": ["goat-cheese-and-beans-with-chive-dressing"], "remove": ["chicken-caesar-salad-with-polenta-croutons", "marinated-goat-cheese-salad"], "reason": "photo specifically shows goat cheese, beans, and chive dressing" },
+    { "digest": "34d5e6fc0054015e148e520146cdf8dfed03d282a181563ae103dabff5587ba7", "keep": ["chile-garlic-chicken-wings", "roasted-cauliflower-wings"], "remove": ["smoked-turkey-pho"], "reason": "photo shows both chicken and cauliflower wings, not pho" },
+    { "digest": "5536ff86c44358e4ed8042a99c8f665413497427f08fd04f4465f05dae9d6c40", "keep": ["chocolate-krantz-cakes"], "remove": ["helbeh-fenugreek-cake", "tahini-cookies"], "reason": "photo shows chocolate krantz loaves" },
+    { "digest": "aef99a9efcf4def100d08b2418f719c8548e2bcb228b65e9bca137d15c3ae59e", "keep": ["parsley-and-barley-salad"], "remove": ["chunky-zucchini-and-tomato-salad", "tabbouleh"], "reason": "photo shows parsley, barley, and cheese, not zucchini or tabbouleh" }
+  ],
+  "perceptualGroups": [
+    { "members": ["egg-pasta", "pipe-with-spring-radicchio-pancetta-walnuts-and-gorgonzola-dolce"], "keep": ["pipe-with-spring-radicchio-pancetta-walnuts-and-gorgonzola-dolce"], "remove": ["egg-pasta"], "reason": "shared artwork depicts pipe pasta, not generic egg pasta" },
+    { "members": ["fusilli-with-walla-walla-sweet-onion-and-walnut-puree-twin-sisters-farmhouse-wit", "pappardelle-with-tomato-less-rabbit-ragu-pomegranate-and-pink-pepper", "pappardelle-with-venetian-style-chicken-liver-and-mama-lil-s-spicy-peppers"], "keep": ["pappardelle-with-tomato-less-rabbit-ragu-pomegranate-and-pink-pepper", "pappardelle-with-venetian-style-chicken-liver-and-mama-lil-s-spicy-peppers"], "remove": ["fusilli-with-walla-walla-sweet-onion-and-walnut-puree-twin-sisters-farmhouse-wit"], "reason": "shared artwork depicts flat pappardelle, not fusilli" },
+    { "members": ["tandoori-chicken-tikka", "tandoori-murgh-malai-tikka"], "keepAll": true, "reason": "shared skewer spread visibly contains both red chicken tikka and pale malai tikka" }
+  ]
+}
