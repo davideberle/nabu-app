@@ -18,6 +18,7 @@ import type { MealCoherenceReview } from "@/lib/meal-coherence";
 import { candidateDisplay, groupShelfItems } from "@/lib/planner-display";
 import type { ShelfDisplay } from "@/lib/planner-display";
 import { shortlistShelf, SHELF_POLICY_VERSION, type ShelfTraits } from "@/lib/planner-shelf";
+import { resolvePlannerDayRecipeId } from "@/lib/planner-navigation";
 
 // ----- types -----
 
@@ -1089,7 +1090,7 @@ function MealsPageInner() {
   }
 
   // Assign recipe to a day slot — persists immediately
-  function handleSlotClick(dayIndex: number) {
+  function handleSlotClick(dayIndex: number, navigationRecipeId?: string | null) {
     if (planLoading) return;
     const activePlan = plan ?? (selectedRecipe ? buildEmptyPlan() : null);
     if (!activePlan) return;
@@ -1097,7 +1098,8 @@ function MealsPageInner() {
     // No candidate selected — navigate to recipe page if assigned
     if (!selectedRecipe) {
       const slot = activePlan.days[dayIndex];
-      if (slot?.recipeId) router.push(`/recipes/${slot.recipeId}?from=${encodeURIComponent('/meals')}`);
+      const recipeId = navigationRecipeId ?? slot?.recipeId ?? slot?.meal?.main?.id;
+      if (recipeId) router.push(`/recipes/${recipeId}?from=${encodeURIComponent('/meals')}`);
       return;
     }
     const newDays = [...activePlan.days];
@@ -1729,12 +1731,19 @@ function MealsPageInner() {
             const actualMealLabel = hist?.status === "in-progress" ? "Current meal" : "Actual meal";
             const dayIsSkipped = isSkipped && !actualMealName;
             const isCooked = isFilled && cookedSlots.has(`${slot!.recipeId}:${wd.date}`);
-            const isClickable = isSelectable ? !dayIsSkipped : (isFilled && !dayIsSkipped);
+            const navigationRecipeId = resolvePlannerDayRecipeId({
+              plannedRecipeId: slot?.recipeId,
+              plannedMealRecipeId: slot?.meal?.main?.id,
+              history: hist,
+            });
+            const isClickable = isSelectable
+              ? !dayIsSkipped
+              : Boolean(navigationRecipeId && !dayIsSkipped);
             const cardHandlesMainClick = !hasBrunch;
             return (
               <div
                 key={wd.date}
-                onClick={() => cardHandlesMainClick && isClickable && handleSlotClick(i)}
+                onClick={() => cardHandlesMainClick && isClickable && handleSlotClick(i, navigationRecipeId)}
                 className={`rounded-lg border p-3 min-h-[110px] flex flex-col transition-all ${
                   dayIsSkipped
                     ? "border-secondary bg-secondary opacity-50"
@@ -1837,7 +1846,7 @@ function MealsPageInner() {
                   </div>
                 ) : isFilled ? (
                   <div
-                    onClick={() => hasBrunch && isClickable && handleSlotClick(i)}
+                    onClick={() => hasBrunch && isClickable && handleSlotClick(i, navigationRecipeId)}
                     className={`flex-1 flex flex-col justify-between ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
                   >
                     {hasBrunch && (
@@ -1959,7 +1968,10 @@ function MealsPageInner() {
                     )}
                   </div>
                 ) : actualMealName ? (
-                  <div className="flex-1 flex flex-col justify-center">
+                  <div
+                    onClick={() => hasBrunch && isClickable && handleSlotClick(i, navigationRecipeId)}
+                    className={`flex-1 flex flex-col justify-center ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
+                  >
                     <span className="mb-0.5 text-[9px] font-medium uppercase tracking-wider text-blue-600 dark:text-blue-400">
                       {actualMealLabel}
                     </span>
@@ -1969,7 +1981,7 @@ function MealsPageInner() {
                   </div>
                 ) : (
                   <div
-                    onClick={() => hasBrunch && isClickable && handleSlotClick(i)}
+                    onClick={() => hasBrunch && isClickable && handleSlotClick(i, navigationRecipeId)}
                     className={`flex-1 flex flex-col items-center justify-center ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
                   >
                     {hasBrunch && (
