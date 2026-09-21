@@ -42,7 +42,7 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/scrambled-egg-and-bread-with-sweet-tea.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/scrambled-egg-and-bread-with-sweet-tea.jpg",
   "time": {
     "total": 10
   },

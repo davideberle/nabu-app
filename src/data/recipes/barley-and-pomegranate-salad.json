@@ -65,5 +65,5 @@
     "meal_role": "side"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/barley-and-pomegranate-salad.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/barley-and-pomegranate-salad.jpg"
 }

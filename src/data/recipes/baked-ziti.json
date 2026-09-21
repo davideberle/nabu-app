@@ -80,7 +80,7 @@
     "Create another layer of pasta, sauce, and mozzarella.",
     "Bake for 25 minutes. The cheeses should be bubbly."
   ],
-  "image": "/recipes/baked-ziti.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/baked-ziti.jpg",
   "time": {
     "total": 60
   },

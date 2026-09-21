@@ -69,7 +69,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/zucchini-and-ciabatta-frittata.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/zucchini-and-ciabatta-frittata.jpg",
   "category": {
     "dish_type": [
       "breakfast"

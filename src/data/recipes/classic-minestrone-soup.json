@@ -81,7 +81,7 @@
     "chapter": "Soups & Stews",
     "meal_role": "main"
   },
-  "image": "/recipes/classic-minestrone-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/classic-minestrone-soup.jpg",
   "cuisine": "Italian",
   "servings": "serves 2-3"
 }

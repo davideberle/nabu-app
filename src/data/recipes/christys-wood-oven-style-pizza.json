@@ -76,7 +76,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/christys-wood-oven-style-pizza.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/christys-wood-oven-style-pizza.jpg",
   "cuisine": "Italian",
   "servings": "makes one large 12 inch pizza"
 }

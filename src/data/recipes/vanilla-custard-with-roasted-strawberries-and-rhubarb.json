@@ -59,7 +59,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/vanilla-custard-with-roasted-strawberries-and-rhubarb.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/vanilla-custard-with-roasted-strawberries-and-rhubarb.jpg",
   "category": {
     "dish_type": [
       "dessert"

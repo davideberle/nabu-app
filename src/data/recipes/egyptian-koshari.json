@@ -113,5 +113,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/egyptian-kosharilentils-rice-and-pasta.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/egyptian-kosharilentils-rice-and-pasta.jpg"
 }

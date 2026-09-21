@@ -47,5 +47,5 @@
     "meal_role": "drink"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/chai-bi-na-anamint-black-tea.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chai-bi-na-anamint-black-tea.jpg"
 }

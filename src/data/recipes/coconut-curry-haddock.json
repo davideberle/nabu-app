@@ -75,7 +75,7 @@
   "time": {
     "total": 38
   },
-  "image": "/recipes/coconut-curry-haddock.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/coconut-curry-haddock.jpg",
   "category": {
     "dish_type": [
       "main"

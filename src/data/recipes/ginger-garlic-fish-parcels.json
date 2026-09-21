@@ -66,7 +66,7 @@
     "Bake the fish for 8 minutes, then rotate and swap the baking sheets and bake for another 6 to 7 minutes, until the parcels have puffed.",
     "Serve the fish immediately, letting diners cut open the parcels themselves."
   ],
-  "image": "/recipes/ginger-garlic-fish-parcels.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ginger-garlic-fish-parcels.jpg",
   "category": {
     "dish_type": [
       "main"

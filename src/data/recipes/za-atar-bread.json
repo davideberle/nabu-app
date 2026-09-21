@@ -133,6 +133,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/za-atar-bread.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/za-atar-bread.jpg",
   "cuisine": "Middle Eastern"
 }

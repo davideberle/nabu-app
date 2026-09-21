@@ -146,6 +146,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/carrot-apple-and-pecan.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/carrot-apple-and-pecan.jpg",
   "cuisine": "Middle Eastern"
 }

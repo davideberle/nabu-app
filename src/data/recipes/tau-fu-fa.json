@@ -51,7 +51,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/tau-fu-fa.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tau-fu-fa.jpg",
   "category": {
     "dish_type": [
       "dessert"

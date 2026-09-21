@@ -57,7 +57,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/pasta-all-arrabbiata.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pasta-all-arrabbiata.jpg",
   "cuisine": "Italian",
   "servings": "serves 2-3"
 }

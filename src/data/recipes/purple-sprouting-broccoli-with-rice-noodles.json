@@ -112,5 +112,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/purple-sprouting-broccoli-with-rice-noodles.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/purple-sprouting-broccoli-with-rice-noodles.jpg"
 }

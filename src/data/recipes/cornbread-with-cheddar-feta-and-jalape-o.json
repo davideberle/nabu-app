@@ -104,7 +104,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/cornbread-with-cheddar-feta-and-jalape-o.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/cornbread-with-cheddar-feta-and-jalape-o.jpg",
   "category": {
     "dish_type": [
       "breakfast"

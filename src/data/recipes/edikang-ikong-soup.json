@@ -52,6 +52,6 @@
     "chapter": "Soups & Stews",
     "meal_role": "main"
   },
-  "image": "/recipes/edikang-ikong-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/edikang-ikong-soup.jpg",
   "cuisine": "Nigerian"
 }

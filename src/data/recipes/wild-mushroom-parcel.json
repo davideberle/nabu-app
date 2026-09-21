@@ -67,5 +67,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/wild-mushroom-parcel.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/wild-mushroom-parcel.jpg"
 }

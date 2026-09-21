@@ -61,7 +61,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/dan-wake.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/dan-wake.jpg",
   "time": {
     "prep": 20,
     "cook": 35,

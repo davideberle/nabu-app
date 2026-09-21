@@ -64,7 +64,7 @@
     "chapter": "Drinks",
     "meal_role": "drink"
   },
-  "image": "/recipes/ginger-drink.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ginger-drink.jpg",
   "time": {
     "prep": 5,
     "cook": 0,

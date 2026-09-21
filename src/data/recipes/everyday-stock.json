@@ -40,6 +40,6 @@
     "meal_role": "component"
   },
   "cuisine": "Chinese",
-  "image": "/recipes/everyday-stock.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/everyday-stock.jpg",
   "intro": "For everyday cooking I normally make stock from free-range chicken carcasses, with pork ribs and perhaps chicken wings if I want something a little richer. I either use stock fresh or box it up and freeze it in useful quantities. For recipes such as soups, in which stock is a major ingredient, I’d advise you to do the same, or to buy good stock from a delicatessen or butcher. Where stock is used in smaller amounts as a seasoning, it’s easier to get away with using a little stock made from good chicken or vegetarian stock cubes, but if you do this, keep an eye on the quantities of any other salty seasonings."
 }

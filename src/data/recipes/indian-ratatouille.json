@@ -71,7 +71,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/indian-ratatouille.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/indian-ratatouille.jpg",
   "category": {
     "dish_type": [
       "main"

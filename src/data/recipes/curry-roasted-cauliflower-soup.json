@@ -68,7 +68,7 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/curry-roasted-cauliflower-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curry-roasted-cauliflower-soup.jpg",
   "category": {
     "dish_type": [
       "soup"

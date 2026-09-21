@@ -106,7 +106,7 @@
     "When ready to cook, prepare the barbecue for direct cooking. When the coals are white-hot, thread the chicken tikka onto skewers and place over the coals, turning occasionally until the chicken is cooked through and the edges are blackened. You can also do this on a grill.",
     "Season with salt and serve hot, or use in your curries."
   ],
-  "image": "/recipes/tandoori-chicken-tikka.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tandoori-chicken-tikka.jpg",
   "category": {
     "dish_type": [
       "main"

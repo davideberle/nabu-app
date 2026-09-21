@@ -68,7 +68,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/blueberry-almond-and-lemon-cake.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/blueberry-almond-and-lemon-cake.jpg",
   "category": {
     "dish_type": [
       "dessert"

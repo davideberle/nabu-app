@@ -74,7 +74,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/urad-dal-with-coconut-and-cilantro.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/urad-dal-with-coconut-and-cilantro.jpg",
   "category": {
     "dish_type": [
       "main"

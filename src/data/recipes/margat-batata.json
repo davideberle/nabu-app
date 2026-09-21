@@ -76,5 +76,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/margat-batatacurried-potato-stew.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/margat-batatacurried-potato-stew.jpg"
 }

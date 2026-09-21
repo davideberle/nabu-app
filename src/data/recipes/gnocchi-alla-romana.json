@@ -61,7 +61,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/gnocchi-alla-romana.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/gnocchi-alla-romana.jpg",
   "category": {
     "dish_type": [
       "main"

@@ -59,6 +59,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/thick-fudge-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/thick-fudge-sauce.jpg",
   "cuisine": "Other"
 }

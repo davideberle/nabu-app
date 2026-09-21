@@ -37,7 +37,7 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/semovita-semolina.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/semovita-semolina.jpg",
   "time": {
     "total": 27
   },

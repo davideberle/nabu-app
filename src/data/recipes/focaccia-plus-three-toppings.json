@@ -119,6 +119,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/focaccia-plus-three-toppings.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/focaccia-plus-three-toppings.jpg",
   "cuisine": "Middle Eastern"
 }

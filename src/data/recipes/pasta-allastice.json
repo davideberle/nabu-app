@@ -61,7 +61,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/pasta-allastice.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pasta-allastice.jpg",
   "cuisine": "Italian",
   "servings": "serves 2"
 }

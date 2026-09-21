@@ -77,7 +77,7 @@
     "Add coriander and mint.",
     "Serve with rice and Boston lettuce leaves."
   ],
-  "image": "/recipes/larb-gai.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/larb-gai.jpg",
   "category": {
     "dish_type": [
       "main"

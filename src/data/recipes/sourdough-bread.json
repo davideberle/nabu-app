@@ -150,5 +150,5 @@
     "meal_role": "side"
   },
   "cuisine": "Other",
-  "image": "/recipes/sourdough-bread.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sourdough-bread.jpg"
 }

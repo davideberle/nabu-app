@@ -58,7 +58,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/broccolini-with-soy-sauce-garlic-and-peanuts.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/broccolini-with-soy-sauce-garlic-and-peanuts.jpg",
   "category": {
     "dish_type": [
       "side"

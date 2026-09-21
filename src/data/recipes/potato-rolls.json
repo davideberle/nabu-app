@@ -105,5 +105,5 @@
     "meal_role": "side"
   },
   "cuisine": "Other",
-  "image": "/recipes/potato-rolls.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/potato-rolls.jpg"
 }

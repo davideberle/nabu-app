@@ -77,7 +77,7 @@
   "time": {
     "total": 15
   },
-  "image": "/recipes/coconut-shrimp-curry-with-red-bell-peppers.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/coconut-shrimp-curry-with-red-bell-peppers.jpg",
   "category": {
     "dish_type": [
       "main"

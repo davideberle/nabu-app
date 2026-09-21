@@ -156,6 +156,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/spinach-pies.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/spinach-pies.jpg",
   "cuisine": "Middle Eastern"
 }

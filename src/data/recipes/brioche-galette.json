@@ -110,6 +110,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/brioche-galette.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/brioche-galette.jpg",
   "cuisine": "Middle Eastern"
 }

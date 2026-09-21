@@ -52,7 +52,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/oven-fries-with-oregano-and-feta.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/oven-fries-with-oregano-and-feta.jpg",
   "category": {
     "dish_type": [
       "side"

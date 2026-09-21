@@ -37,7 +37,7 @@
   "method": [
     "Mix all the ingredients in a blender to a smooth consistency."
   ],
-  "image": "/recipes/mylkshake-with-berries.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/mylkshake-with-berries.jpg",
   "category": {
     "dish_type": [
       "drink"

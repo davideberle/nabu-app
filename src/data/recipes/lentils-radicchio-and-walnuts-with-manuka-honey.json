@@ -66,7 +66,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/lentils-radicchio-and-walnuts-with-manuka-honey.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/lentils-radicchio-and-walnuts-with-manuka-honey.jpg",
   "category": {
     "dish_type": [
       "main"

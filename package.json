@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/generate-family-dates.mjs && node scripts/bundle-recipes.mjs && node scripts/check-bundle-hygiene.mjs && node scripts/check-recipe-corruption.mjs && node scripts/validate-gymnastics.mjs && node scripts/check-source-registry.mjs",
+    "prebuild": "node scripts/generate-family-dates.mjs && node scripts/bundle-recipes.mjs && node scripts/verify-static-recipe-image-blobs.mjs && node scripts/check-bundle-hygiene.mjs && node scripts/check-recipe-corruption.mjs && node scripts/validate-gymnastics.mjs && node scripts/check-source-registry.mjs",
     "dev": "node scripts/generate-family-dates.mjs && node scripts/bundle-recipes.mjs && next dev",
     "build": "node scripts/generate-family-dates.mjs && node scripts/bundle-recipes.mjs && next build",
     "start": "next start",
     "test": "node --test src/lib/*.test.ts",
+    "migrate:static-recipe-images": "node scripts/migrate-static-recipe-images-to-blob.mjs",
+    "verify:static-recipe-images": "node scripts/verify-static-recipe-image-blobs.mjs",
     "publish:garden-snapshot": "node scripts/publish-garden-snapshot.mjs"
   },
   "dependencies": {

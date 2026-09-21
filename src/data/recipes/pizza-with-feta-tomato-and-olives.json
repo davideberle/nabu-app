@@ -153,6 +153,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/pizza-with-feta-tomato-and-olives.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pizza-with-feta-tomato-and-olives.jpg",
   "cuisine": "Middle Eastern"
 }

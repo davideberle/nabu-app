@@ -104,5 +104,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/parsnip-dumplings-in-broth.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/parsnip-dumplings-in-broth.jpg"
 }

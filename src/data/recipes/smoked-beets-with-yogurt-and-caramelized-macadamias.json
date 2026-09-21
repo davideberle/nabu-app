@@ -59,7 +59,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/smoked-beets-with-yogurt-and-caramelized-macadamias.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/smoked-beets-with-yogurt-and-caramelized-macadamias.jpg",
   "category": {
     "dish_type": [
       "main"

@@ -33,7 +33,7 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/ogi-akamu-pap.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ogi-akamu-pap.jpg",
   "time": {
     "total": 1
   },

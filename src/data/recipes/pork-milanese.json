@@ -47,7 +47,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/pork-milanese.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pork-milanese.jpg",
   "time": {
     "prep": 20,
     "cook": 35,

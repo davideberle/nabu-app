@@ -57,5 +57,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/summer-pasta-with-pesto.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/summer-pasta-with-pesto.jpg"
 }

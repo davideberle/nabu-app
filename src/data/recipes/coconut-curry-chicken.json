@@ -69,7 +69,7 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/coconut-curry-chicken.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/coconut-curry-chicken.jpg",
   "category": {
     "dish_type": [
       "main"

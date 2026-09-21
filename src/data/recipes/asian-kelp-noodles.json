@@ -51,7 +51,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/asian-kelp-noodles.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/asian-kelp-noodles.jpg",
   "cuisine": "Other",
   "category": {
     "dish_type": [

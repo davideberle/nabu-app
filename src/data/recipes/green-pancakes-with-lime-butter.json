@@ -101,5 +101,5 @@
     "meal_role": "breakfast"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/green-pancakes-with-lime-butter.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/green-pancakes-with-lime-butter.jpg"
 }

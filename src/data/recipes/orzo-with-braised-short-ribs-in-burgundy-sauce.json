@@ -85,5 +85,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/orzo-with-braised-short-ribs-in-burgundy-sauce.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/orzo-with-braised-short-ribs-in-burgundy-sauce.jpg"
 }

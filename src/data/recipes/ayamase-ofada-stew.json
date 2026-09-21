@@ -38,7 +38,7 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/ayamase-ofada-stew.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ayamase-ofada-stew.jpg",
   "time": {
     "total": 50
   },

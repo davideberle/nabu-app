@@ -48,7 +48,7 @@
   "method": [
     "Mix together all the ingredients for the pudding. Let it sit for at least 30 minutes, and top it with chopped nuts, mulberries, and dried buckwheat before serving."
   ],
-  "image": "/recipes/chili-and-cacao-chia.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chili-and-cacao-chia.jpg",
   "time": {
     "total": 30
   },

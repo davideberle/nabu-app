@@ -69,7 +69,7 @@
     "Move the ingredients to one side of the skillet and scramble the eggs on the other side for 5 minutes.",
     "Add the spaghetti and sauce and combine all ingredients for 2 minutes."
   ],
-  "image": "/recipes/shrimp-lo-mein.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/shrimp-lo-mein.jpg",
   "time": {
     "total": 24
   },

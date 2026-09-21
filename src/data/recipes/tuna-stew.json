@@ -72,7 +72,7 @@
     "Taste the stew for salt and pepper, discard the bay leaf, and serve.",
     "This wintry dish is traditionally served with polenta, for soaking up the delicious juices (see Polenta Pasticciata for a basic polenta recipe). It is also great served with mashed potatoes."
   ],
-  "image": "/recipes/tuna-stew.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tuna-stew.jpg",
   "time": {
     "total": 45
   },

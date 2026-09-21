@@ -74,5 +74,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/lemony-globe-artichokes.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/lemony-globe-artichokes.jpg"
 }

@@ -54,7 +54,7 @@
   "time": {
     "total": 35
   },
-  "image": "/recipes/curried-quinoa.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curried-quinoa.jpg",
   "category": {
     "dish_type": [
       "side"

@@ -30,7 +30,7 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/ekuru-white-moin-moin.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ekuru-white-moin-moin.jpg",
   "time": {
     "total": 3
   },

@@ -64,5 +64,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/ground-beef-pasta-with-garlic-yogurt-sauce.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ground-beef-pasta-with-garlic-yogurt-sauce.jpg"
 }

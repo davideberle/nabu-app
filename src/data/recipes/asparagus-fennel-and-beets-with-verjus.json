@@ -50,7 +50,7 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/asparagus-fennel-and-beets-with-verjus.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/asparagus-fennel-and-beets-with-verjus.jpg",
   "category": {
     "chapter": "",
     "dish_type": [

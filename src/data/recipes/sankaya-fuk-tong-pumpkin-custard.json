@@ -49,7 +49,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sankaya-fuk-tong-pumpkin-custard.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sankaya-fuk-tong-pumpkin-custard.jpg",
   "category": {
     "dish_type": [
       "dessert"

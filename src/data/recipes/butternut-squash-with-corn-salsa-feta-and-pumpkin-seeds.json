@@ -64,7 +64,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/butternut-squash-with-corn-salsa-feta-and-pumpkin-seeds.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/butternut-squash-with-corn-salsa-feta-and-pumpkin-seeds.jpg",
   "category": {
     "dish_type": [
       "side"

@@ -70,5 +70,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/mini-shell-bacon-and-pea-pasta.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/mini-shell-bacon-and-pea-pasta.jpg"
 }

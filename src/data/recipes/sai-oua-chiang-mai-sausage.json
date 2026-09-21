@@ -92,7 +92,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/sai-oua-chiang-mai-sausage.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sai-oua-chiang-mai-sausage.jpg",
   "category": {
     "dish_type": [
       "main"

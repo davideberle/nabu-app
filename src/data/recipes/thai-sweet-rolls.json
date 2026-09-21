@@ -30,7 +30,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/thai-sweet-rolls.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/thai-sweet-rolls.jpg",
   "category": {
     "dish_type": [
       "baking"

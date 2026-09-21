@@ -78,7 +78,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/buckwheat-and-haricots-verts-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/buckwheat-and-haricots-verts-salad.jpg",
   "category": {
     "dish_type": [
       "side"

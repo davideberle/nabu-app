@@ -46,7 +46,7 @@
   "time": {
     "total": 25
   },
-  "image": "/recipes/curried-chicken-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curried-chicken-salad.jpg",
   "category": {
     "dish_type": [
       "salad"

@@ -56,7 +56,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/roasted-figs-with-pomegranate-molasses-and-orange-zest.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/roasted-figs-with-pomegranate-molasses-and-orange-zest.jpg",
   "category": {
     "dish_type": [
       "dessert"

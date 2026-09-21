@@ -36,7 +36,7 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/chocolat-chaud.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chocolat-chaud.jpg",
   "time": {
     "prep": 20,
     "cook": 30,

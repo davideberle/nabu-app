@@ -97,7 +97,7 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/curry-chicken-with-potatoes.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curry-chicken-with-potatoes.jpg",
   "category": {
     "dish_type": [
       "main"

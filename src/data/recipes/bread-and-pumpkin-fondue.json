@@ -65,7 +65,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/bread-and-pumpkin-fondue.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/bread-and-pumpkin-fondue.jpg",
   "category": {
     "dish_type": [
       "main"

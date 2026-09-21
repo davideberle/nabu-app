@@ -105,7 +105,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/root-vegetable-pies.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/root-vegetable-pies.jpg",
   "category": {
     "dish_type": [
       "main"

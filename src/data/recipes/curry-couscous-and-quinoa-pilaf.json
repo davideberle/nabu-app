@@ -139,7 +139,7 @@
   "time": {
     "total": 540
   },
-  "image": "/recipes/curry-couscous-and-quinoa-pilaf.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curry-couscous-and-quinoa-pilaf.jpg",
   "category": {
     "dish_type": [
       "side"

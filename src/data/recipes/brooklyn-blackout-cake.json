@@ -88,6 +88,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/brooklyn-blackout-cake.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/brooklyn-blackout-cake.jpg",
   "cuisine": "Other"
 }

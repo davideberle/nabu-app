@@ -49,7 +49,7 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/basic-pasta-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/basic-pasta-sauce.jpg",
   "cuisine": "Italian",
   "servings": "serves 2-3"
 }

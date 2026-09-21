@@ -67,6 +67,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/roasted-garlic-chili-peanuts.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/roasted-garlic-chili-peanuts.jpg",
   "cuisine": "Southeast Asian"
 }

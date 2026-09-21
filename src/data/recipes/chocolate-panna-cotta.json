@@ -82,6 +82,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/chocolate-panna-cotta.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chocolate-panna-cotta.jpg",
   "cuisine": "Other"
 }

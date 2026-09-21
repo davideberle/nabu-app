@@ -109,6 +109,6 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/vermicelli-noodle-salad-bowl-with-fermented-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/vermicelli-noodle-salad-bowl-with-fermented-sauce.jpg",
   "cuisine": "Southeast Asian"
 }

@@ -72,7 +72,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/celery-salad-with-feta-and-soft-boiled-egg.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/celery-salad-with-feta-and-soft-boiled-egg.jpg",
   "intro": null,
   "category": {
     "dish_type": [

@@ -70,5 +70,5 @@
     "meal_role": "side"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/roz-asfarfragrant-yellow-rice.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/roz-asfarfragrant-yellow-rice.jpg"
 }

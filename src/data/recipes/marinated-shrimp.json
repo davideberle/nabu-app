@@ -68,7 +68,7 @@
     "On the second day add cooked shrimp, mushrooms, and artichoke hearts.",
     "Refrigerate overnight and serve on the third day."
   ],
-  "image": "/recipes/marinated-shrimp.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/marinated-shrimp.jpg",
   "category": {
     "dish_type": [
       "main"

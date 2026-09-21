@@ -37,7 +37,7 @@
   "method": [
     "Cut the broccoli florets into smaller chunks. Blend all ingredients into a smooth texture."
   ],
-  "image": "/recipes/exotic-broccoli-bowl.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/exotic-broccoli-bowl.jpg",
   "category": {
     "dish_type": [
       "main"

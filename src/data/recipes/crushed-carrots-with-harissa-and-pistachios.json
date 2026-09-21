@@ -43,7 +43,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/crushed-carrots-with-harissa-and-pistachios.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/crushed-carrots-with-harissa-and-pistachios.jpg",
   "category": {
     "dish_type": [
       "main"

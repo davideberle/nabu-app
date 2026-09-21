@@ -69,6 +69,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/white-chocolate-and-matcha-mousse-pudding.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/white-chocolate-and-matcha-mousse-pudding.jpg",
   "cuisine": "Other"
 }

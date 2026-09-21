@@ -55,7 +55,7 @@
     "Bake for 30 minutes.",
     "Remove the foil and bake for 15 more minutes."
   ],
-  "image": "/recipes/noodle-kugel.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/noodle-kugel.jpg",
   "time": {
     "total": 50
   },

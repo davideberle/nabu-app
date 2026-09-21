@@ -19,7 +19,7 @@
   "method": [
     "Mix the tea leaves with the water inside a bottle. Let it steep at room temperature or in the refrigerator for about 4 to 8 hours."
   ],
-  "image": "/recipes/cold-brewed-green-tea.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/cold-brewed-green-tea.jpg",
   "time": {
     "total": 180
   },

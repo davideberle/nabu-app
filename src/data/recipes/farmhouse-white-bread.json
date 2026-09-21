@@ -49,7 +49,7 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/farmhouse-white-bread.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/farmhouse-white-bread.jpg",
   "cuisine": "Italian",
   "servings": "makes one loaf"
 }

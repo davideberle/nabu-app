@@ -57,5 +57,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/maple-cranberry-sauce.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/maple-cranberry-sauce.jpg"
 }

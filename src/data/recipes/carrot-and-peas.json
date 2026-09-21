@@ -155,6 +155,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/carrot-and-peas.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/carrot-and-peas.jpg",
   "cuisine": "Middle Eastern"
 }

@@ -88,7 +88,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/slow-cooked-chicken-with-a-crisp-corn-crust.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/slow-cooked-chicken-with-a-crisp-corn-crust.jpg",
   "category": {
     "dish_type": [
       "main"

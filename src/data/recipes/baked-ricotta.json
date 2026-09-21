@@ -40,7 +40,7 @@
     "You can eat this dish hot, but it has more flavour when cold.",
     "You can buy fresh ricotta at your deli or supermarket. Make sure you buy the full-cream milk ricotta and not the fat-reduced version."
   ],
-  "image": "/recipes/baked-ricotta.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/baked-ricotta.jpg",
   "time": {
     "total": 25
   },

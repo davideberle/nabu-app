@@ -57,6 +57,6 @@
     "chapter": "Soups & Stews",
     "meal_role": "main"
   },
-  "image": "/recipes/afang-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/afang-soup.jpg",
   "cuisine": "Nigerian"
 }

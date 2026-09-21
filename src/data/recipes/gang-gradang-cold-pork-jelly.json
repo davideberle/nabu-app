@@ -87,7 +87,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/gang-gradang-cold-pork-jelly.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/gang-gradang-cold-pork-jelly.jpg",
   "category": {
     "dish_type": [
       "starter"

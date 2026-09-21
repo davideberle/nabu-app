@@ -61,7 +61,7 @@
     "Simmer for 45 minutes.",
     "Add the spaghetti and toss with the sauce."
   ],
-  "image": "/recipes/easy-spaghetti.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/easy-spaghetti.jpg",
   "time": {
     "total": 60
   },

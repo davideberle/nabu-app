@@ -58,7 +58,7 @@
   "time": {
     "total": 10
   },
-  "image": "/recipes/creamy-turmeric-veggie-curry.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/creamy-turmeric-veggie-curry.jpg",
   "category": {
     "dish_type": [
       "main"

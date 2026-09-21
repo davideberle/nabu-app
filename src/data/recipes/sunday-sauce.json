@@ -65,7 +65,7 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/sunday-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sunday-sauce.jpg",
   "cuisine": "Italian",
   "servings": "serves 2-3"
 }

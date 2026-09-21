@@ -117,6 +117,6 @@
     "chapter": "Soups & Stews",
     "meal_role": "main"
   },
-  "image": "/recipes/thick-noodle-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/thick-noodle-soup.jpg",
   "cuisine": "Southeast Asian"
 }

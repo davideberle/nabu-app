@@ -72,7 +72,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/harissa-beef-sirloin-with-pepper-and-lemon-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/harissa-beef-sirloin-with-pepper-and-lemon-sauce.jpg",
   "category": {
     "dish_type": [
       "main"

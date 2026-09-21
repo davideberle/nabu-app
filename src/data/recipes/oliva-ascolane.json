@@ -81,7 +81,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/oliva-ascolane.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/oliva-ascolane.jpg",
   "cuisine": "Italian",
   "servings": "makes 1 dozen"
 }

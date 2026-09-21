@@ -72,5 +72,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/burnt-eggplant-with-tahini.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/burnt-eggplant-with-tahini.jpg"
 }

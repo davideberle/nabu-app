@@ -47,7 +47,7 @@
     "This cake tastes best if you make it the day before serving it.",
     "For a super-indulgent dessert, put a layer of chocolate mousse over the top of this truffle cake."
   ],
-  "image": "/recipes/chocolate-truffle-cake.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chocolate-truffle-cake.jpg",
   "time": {
     "total": 35
   },

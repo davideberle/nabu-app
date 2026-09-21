@@ -15,7 +15,7 @@
     },
     {
       "item": "lemon juice (or more if you like it very sour)",
-      "amount": "1\u00bd tbsp",
+      "amount": "1½ tbsp",
       "group": "dressing"
     },
     {
@@ -30,7 +30,7 @@
     },
     {
       "item": "watercress, thick stalks removed",
-      "amount": "3\u00bd cups"
+      "amount": "3½ cups"
     },
     {
       "item": "basil leaves",
@@ -38,19 +38,19 @@
     },
     {
       "item": "cilantro leaves",
-      "amount": "1\u00bd cups"
+      "amount": "1½ cups"
     },
     {
       "item": "dill",
-      "amount": "\u00bc cup"
+      "amount": "¼ cup"
     },
     {
       "item": "tarragon leaves",
-      "amount": "\u00bc cup"
+      "amount": "¼ cup"
     },
     {
       "item": "shelled unsalted pistachios, lightly toasted and coarsely crushed",
-      "amount": "\u2153 cup"
+      "amount": "⅓ cup"
     }
   ],
   "method": [
@@ -69,5 +69,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/watercress-pistachio-and-orange-blossom-salad.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/watercress-pistachio-and-orange-blossom-salad.jpg"
 }

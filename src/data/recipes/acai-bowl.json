@@ -45,7 +45,7 @@
   "method": [
     "In a food processor, mix acai and banana to a smooth consistency. Add 2 tablespoons chia seeds, if desired. Pour the mixture into two bowls, dust with lucuma powder, sprinkle with mulberries and pomegranate seeds, and top with lemon balm."
   ],
-  "image": "/recipes/acai-bowl.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/acai-bowl.jpg",
   "category": {
     "dish_type": [
       "main"

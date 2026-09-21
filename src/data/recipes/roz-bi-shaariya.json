@@ -51,5 +51,5 @@
     "meal_role": "side"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/roz-bi-shaariyavermicelli-rice.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/roz-bi-shaariyavermicelli-rice.jpg"
 }

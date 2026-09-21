@@ -51,5 +51,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/watermelon-granita-with-chocolate-seeds.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/watermelon-granita-with-chocolate-seeds.jpg"
 }

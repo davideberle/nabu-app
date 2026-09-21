@@ -78,7 +78,7 @@
   "time": {
     "total": 150
   },
-  "image": "/recipes/quince-and-sweet-gorgonzola-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/quince-and-sweet-gorgonzola-salad.jpg",
   "category": {
     "chapter": "",
     "dish_type": [

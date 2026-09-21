@@ -84,5 +84,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/lentils-with-broiled-eggplant.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/lentils-with-broiled-eggplant.jpg"
 }

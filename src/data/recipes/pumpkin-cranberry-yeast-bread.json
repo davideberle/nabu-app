@@ -129,5 +129,5 @@
     "meal_role": "main"
   },
   "cuisine": "Other",
-  "image": "/recipes/pumpkin-cranberry-yeast-bread.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pumpkin-cranberry-yeast-bread.jpg"
 }

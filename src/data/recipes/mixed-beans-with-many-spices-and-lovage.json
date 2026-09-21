@@ -92,5 +92,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/mixed-beans-with-many-spices-and-lovage.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/mixed-beans-with-many-spices-and-lovage.jpg"
 }

@@ -105,6 +105,6 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/quang-noodle-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/quang-noodle-salad.jpg",
   "cuisine": "Southeast Asian"
 }

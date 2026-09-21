@@ -61,7 +61,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/coconut-crusted-fish-fingers.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/coconut-crusted-fish-fingers.jpg",
   "category": {
     "dish_type": [
       "main"

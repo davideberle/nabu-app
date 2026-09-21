@@ -74,7 +74,7 @@
     "Top with 1 cup of shredded mozzarella cheese.",
     "Cook for 4 hours on low."
   ],
-  "image": "/recipes/slow-cooker-lasagna.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/slow-cooker-lasagna.jpg",
   "time": {
     "total": 10
   },

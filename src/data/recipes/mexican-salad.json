@@ -81,5 +81,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/mexican-salad.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/mexican-salad.jpg"
 }

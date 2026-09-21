@@ -61,7 +61,7 @@
     "Cook for 5 minutes",
     "Serve over the spaghetti."
   ],
-  "image": "/recipes/pesto-shrimp-with-pasta.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pesto-shrimp-with-pasta.jpg",
   "time": {
     "total": 25
   },

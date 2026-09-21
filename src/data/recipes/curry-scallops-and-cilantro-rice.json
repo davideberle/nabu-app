@@ -57,7 +57,7 @@
   "time": {
     "total": 25
   },
-  "image": "/recipes/curry-scallops-and-cilantro-rice.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curry-scallops-and-cilantro-rice.jpg",
   "category": {
     "dish_type": [
       "main"

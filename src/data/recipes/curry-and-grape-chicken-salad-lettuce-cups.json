@@ -64,7 +64,7 @@
   "time": {
     "total": 15
   },
-  "image": "/recipes/curry-and-grape-chicken-salad-lettuce-cups.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curry-and-grape-chicken-salad-lettuce-cups.jpg",
   "category": {
     "dish_type": [
       "starter"

@@ -29,7 +29,7 @@
   "method": [
     "Put the matcha powder, honey, and almond butter in the blender. Add water, and mix."
   ],
-  "image": "/recipes/the-perfect-matcha-latte.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/the-perfect-matcha-latte.jpg",
   "category": {
     "dish_type": [
       "drink"

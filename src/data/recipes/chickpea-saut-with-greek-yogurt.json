@@ -68,5 +68,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/chickpea-saut-with-greek-yogurt.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chickpea-saut-with-greek-yogurt.jpg"
 }

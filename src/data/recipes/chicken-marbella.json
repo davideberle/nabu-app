@@ -71,7 +71,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/chicken-marbella.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chicken-marbella.jpg",
   "category": {
     "dish_type": [
       "main"

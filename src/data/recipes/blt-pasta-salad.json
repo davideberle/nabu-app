@@ -61,7 +61,7 @@
     "Top the salad with the crumbled bacon.",
     "Serve on romaine lettuce."
   ],
-  "image": "/recipes/blt-pasta-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/blt-pasta-salad.jpg",
   "time": {
     "total": 20
   },

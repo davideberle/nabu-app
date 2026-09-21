@@ -81,6 +81,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/blondies.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/blondies.jpg",
   "cuisine": "Other"
 }

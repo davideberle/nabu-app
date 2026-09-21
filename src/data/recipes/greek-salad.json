@@ -52,7 +52,7 @@
   "method": [
     "In a small bowl, whisk together the lemon juice, olive oil, vinegar, and oregano. Season with salt and pepper. In a large bowl, combine the cucumbers, cheese, romaine, tomatoes, and olives. Toss the salad with the dressing and serve at once."
   ],
-  "image": "/recipes/greek-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/greek-salad.jpg",
   "category": {
     "dish_type": [
       "side"

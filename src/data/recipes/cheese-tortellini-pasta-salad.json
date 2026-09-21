@@ -114,5 +114,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/cheese-tortellini-pasta-salad.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/cheese-tortellini-pasta-salad.jpg"
 }

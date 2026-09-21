@@ -43,7 +43,7 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/chao-dipping-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chao-dipping-sauce.jpg",
   "time": {
     "prep": 10,
     "cook": 20,

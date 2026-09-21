@@ -87,5 +87,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/double-chocolate-chunk-cookies.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/double-chocolate-chunk-cookies.jpg"
 }

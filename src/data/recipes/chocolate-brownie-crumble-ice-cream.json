@@ -65,6 +65,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/chocolate-brownie-crumble-ice-cream.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chocolate-brownie-crumble-ice-cream.jpg",
   "cuisine": "Other"
 }

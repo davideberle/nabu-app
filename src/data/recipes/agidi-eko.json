@@ -30,7 +30,7 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/agidi-eko.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/agidi-eko.jpg",
   "time": {
     "total": 132
   },

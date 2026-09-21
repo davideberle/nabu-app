@@ -50,7 +50,7 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/gorgonzola-cheese-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/gorgonzola-cheese-salad.jpg",
   "time": {
     "prep": 10,
     "cook": 20,

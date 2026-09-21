@@ -53,5 +53,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/aish-el-sarayabread-pudding.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/aish-el-sarayabread-pudding.jpg"
 }

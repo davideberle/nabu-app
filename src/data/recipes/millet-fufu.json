@@ -59,5 +59,5 @@
     "meal_role": "main"
   },
   "cuisine": "Nigerian",
-  "image": "/recipes/millet-fufu.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/millet-fufu.jpg"
 }

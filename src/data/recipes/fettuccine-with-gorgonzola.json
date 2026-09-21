@@ -63,5 +63,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/fettuccine-with-gorgonzola.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/fettuccine-with-gorgonzola.jpg"
 }

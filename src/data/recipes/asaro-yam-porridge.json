@@ -44,7 +44,7 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/asaro-yam-porridge.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/asaro-yam-porridge.jpg",
   "category": {
     "dish_type": [
       "main"

@@ -63,7 +63,7 @@
     "Transfer the salmon to the skillet and cook for 3 minutes.",
     "Serve the salmon mixture over the penne pasta."
   ],
-  "image": "/recipes/smoked-salmon-pasta.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/smoked-salmon-pasta.jpg",
   "time": {
     "total": 23
   },

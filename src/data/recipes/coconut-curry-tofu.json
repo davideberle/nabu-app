@@ -89,7 +89,7 @@
   "time": {
     "total": 20
   },
-  "image": "/recipes/coconut-curry-tofu.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/coconut-curry-tofu.jpg",
   "category": {
     "dish_type": [
       "main"

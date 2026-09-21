@@ -61,7 +61,7 @@
     "Bake for 45 minutes, or until a toothpick inserted into the center comes out clean. Let cool for 10 minutes, then carefully flip onto a cake plate or stand. Let cool completely.",
     "Dust with the powdered sugar, slice, and serve."
   ],
-  "image": "/recipes/orange-cake.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/orange-cake.jpg",
   "category": {
     "dish_type": [
       "dessert"

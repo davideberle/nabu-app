@@ -101,5 +101,5 @@
     "meal_role": "component"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/hummus-with-ful.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/hummus-with-ful.jpg"
 }

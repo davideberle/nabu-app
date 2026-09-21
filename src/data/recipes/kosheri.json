@@ -83,6 +83,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/kosheri.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/kosheri.jpg",
   "cuisine": "Middle Eastern"
 }

@@ -96,5 +96,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/hot-yogurt-and-fava-bean-soup.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/hot-yogurt-and-fava-bean-soup.jpg"
 }

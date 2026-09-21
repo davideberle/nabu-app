@@ -46,7 +46,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/buckwheat-oatmeal.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/buckwheat-oatmeal.jpg",
   "cuisine": "Other",
   "category": {
     "dish_type": [

@@ -73,7 +73,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/pasta-e-fagioli-da-napoli.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pasta-e-fagioli-da-napoli.jpg",
   "cuisine": "Italian",
   "servings": "serves 2-4"
 }

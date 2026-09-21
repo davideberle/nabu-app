@@ -79,7 +79,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/curried-egg-and-cauliflower-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curried-egg-and-cauliflower-salad.jpg",
   "category": {
     "dish_type": [
       "side"

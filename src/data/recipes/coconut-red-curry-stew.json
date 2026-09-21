@@ -96,7 +96,7 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/coconut-red-curry-stew.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/coconut-red-curry-stew.jpg",
   "category": {
     "dish_type": [
       "main"

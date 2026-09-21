@@ -48,6 +48,6 @@
     "chapter": "Soups & Stews",
     "meal_role": "main"
   },
-  "image": "/recipes/garden-egg-stew.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/garden-egg-stew.jpg",
   "cuisine": "Nigerian"
 }

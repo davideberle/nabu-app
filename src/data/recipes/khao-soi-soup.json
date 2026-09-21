@@ -109,6 +109,6 @@
     "chapter": "Soups & Stews",
     "meal_role": "main"
   },
-  "image": "/recipes/khao-soi-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/khao-soi-soup.jpg",
   "cuisine": "Southeast Asian"
 }

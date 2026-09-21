@@ -74,7 +74,7 @@
     "Drain the noodles (Step 1), then add to the soup (Step 5). Divide the soup into bowls",
     "Serve each dish with basil and lime wedges."
   ],
-  "image": "/recipes/veggie-thai-curry-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/veggie-thai-curry-soup.jpg",
   "category": {
     "dish_type": [
       "soup"

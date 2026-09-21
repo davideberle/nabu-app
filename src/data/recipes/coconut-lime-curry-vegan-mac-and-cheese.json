@@ -113,7 +113,7 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/coconut-lime-curry-vegan-mac-and-cheese.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/coconut-lime-curry-vegan-mac-and-cheese.jpg",
   "category": {
     "dish_type": [
       "main"

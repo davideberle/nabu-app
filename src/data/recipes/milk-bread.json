@@ -151,7 +151,7 @@
     "baking. In a mixing bowl, whisk together the ingredients for the",
     "egg wash. Egg wash the top of the proofed bread evenly.",
     "Bake for 45 to 50 minutes, or until the top is golden brown and",
-    "the internal temperature of the loaf reaches 195\u00b0. (After 25",
+    "the internal temperature of the loaf reaches 195°. (After 25",
     "minutes, cover loosely with foil if the top of the loaf is turning",
     "too black.)",
     "Take off the heat in the pan for 10 minutes",
@@ -169,5 +169,5 @@
     "meal_role": "main"
   },
   "cuisine": "Other",
-  "image": "/recipes/milk-bread.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/milk-bread.jpg"
 }

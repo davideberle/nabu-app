@@ -86,6 +86,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/ji-mmanu.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ji-mmanu.jpg",
   "cuisine": "Nigerian"
 }

@@ -75,5 +75,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/white-chocolate-cream-filling.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/white-chocolate-cream-filling.jpg"
 }

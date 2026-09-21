@@ -55,6 +55,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/dark-chocolate.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/dark-chocolate.jpg",
   "cuisine": "Middle Eastern"
 }

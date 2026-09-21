@@ -67,7 +67,7 @@
     "Top the third layer with the cheddar cheese.",
     "Bake for 45 minutes."
   ],
-  "image": "/recipes/southwestern-lasagna.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/southwestern-lasagna.jpg",
   "time": {
     "total": 30
   },

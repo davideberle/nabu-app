@@ -69,6 +69,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/banana-cake-with-raisins.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/banana-cake-with-raisins.jpg",
   "cuisine": "Southeast Asian"
 }

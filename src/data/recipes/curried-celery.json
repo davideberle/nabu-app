@@ -42,7 +42,7 @@
   "time": {
     "total": 10
   },
-  "image": "/recipes/curried-celery.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curried-celery.jpg",
   "category": {
     "dish_type": [
       "side"

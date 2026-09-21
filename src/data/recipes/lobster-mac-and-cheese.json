@@ -90,7 +90,7 @@
     "Drizzle the mixture over the mac and cheese.",
     "Bake the mac and cheese for 15 minutes."
   ],
-  "image": "/recipes/lobster-mac-and-cheese.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/lobster-mac-and-cheese.jpg",
   "time": {
     "total": 30
   },

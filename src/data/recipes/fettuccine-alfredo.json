@@ -41,7 +41,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/fettuccine-alfredo.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/fettuccine-alfredo.jpg",
   "cuisine": "Italian",
   "servings": "serves 2-3"
 }

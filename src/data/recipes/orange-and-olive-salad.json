@@ -52,7 +52,7 @@
   "method": [
     "Arrange the oranges, onions, and olives on a platter. Using a mortar and pestle, crush together the garlic, thyme, and peppercorns. Combine the orange juice, vinegar, olive oil and crushed spices in a jar and shake very well. Sprinkle the shredded arugula leaves over the oranges and onion slices, and drizzle with the dressing. Serve immediately."
   ],
-  "image": "/recipes/orange-and-olive-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/orange-and-olive-salad.jpg",
   "category": {
     "dish_type": [
       "side"

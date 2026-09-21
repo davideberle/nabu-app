@@ -69,6 +69,6 @@
     "chapter": "Condiments & Dips",
     "meal_role": "starter"
   },
-  "image": "/recipes/baba-ghanoush.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/baba-ghanoush.jpg",
   "cuisine": "Middle Eastern"
 }

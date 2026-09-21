@@ -74,5 +74,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/chocolate-coconut-ice-cream.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chocolate-coconut-ice-cream.jpg"
 }

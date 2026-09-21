@@ -78,7 +78,7 @@
     "Add 1 cup of water, fish sauce, the rest of the ingredients",
     "Finally, after the herbs have been added to the broth and the vegetables have softened, add 1 cup of water, fish sauce, and mushrooms. Let it simmer for 5 minutes before serving."
   ],
-  "image": "/recipes/tom-kha-gai.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tom-kha-gai.jpg",
   "category": {
     "dish_type": [
       "soup"

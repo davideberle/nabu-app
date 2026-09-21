@@ -71,7 +71,7 @@
     "Top with the remaining cup of shredded mozzarella cheese.",
     "Bake for 45 minutes."
   ],
-  "image": "/recipes/chicken-lasagna.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chicken-lasagna.jpg",
   "time": {
     "total": 30
   },

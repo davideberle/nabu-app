@@ -46,6 +46,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/chocolate-crostini.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chocolate-crostini.jpg",
   "cuisine": "Other"
 }

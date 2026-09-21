@@ -88,5 +88,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/black-bottom-banana-cream-pie.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/black-bottom-banana-cream-pie.jpg"
 }

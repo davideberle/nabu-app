@@ -74,7 +74,7 @@
   "time": {
     "total": 60
   },
-  "image": "/recipes/curry-and-mango-chutney-chicken-wings.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curry-and-mango-chutney-chicken-wings.jpg",
   "category": {
     "dish_type": [
       "starter"

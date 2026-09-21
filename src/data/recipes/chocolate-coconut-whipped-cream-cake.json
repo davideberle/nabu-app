@@ -102,5 +102,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/chocolate-coconut-whipped-cream-cake.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chocolate-coconut-whipped-cream-cake.jpg"
 }

@@ -63,7 +63,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/apricot-walnut-and-lavender-cake.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/apricot-walnut-and-lavender-cake.jpg",
   "category": {
     "dish_type": [
       "dessert"

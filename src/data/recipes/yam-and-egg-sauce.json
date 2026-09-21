@@ -49,7 +49,7 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/yam-and-egg-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/yam-and-egg-sauce.jpg",
   "time": {
     "total": 30
   },

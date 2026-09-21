@@ -60,7 +60,7 @@
   "method": [
     "Whisk together dressing the ingredients in jug or jar and mix together all of the salad ingredients in a large bowl. Toss with the dressing. Season with extra salt, if needed. To serve, sprinkle over extra oregano to taste. Serve with any meat (or without)!"
   ],
-  "image": "/recipes/greek-avocado-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/greek-avocado-salad.jpg",
   "category": {
     "dish_type": [
       "side"

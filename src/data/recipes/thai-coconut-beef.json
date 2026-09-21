@@ -74,7 +74,7 @@
     "Add the beef and beans to the slow cooker. Cover and cook for another 45-60 minutes.",
     "Add coriander and stir. Serve with rice"
   ],
-  "image": "/recipes/thai-coconut-beef.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/thai-coconut-beef.jpg",
   "category": {
     "dish_type": [
       "main"

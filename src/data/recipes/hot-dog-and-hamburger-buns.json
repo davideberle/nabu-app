@@ -113,5 +113,5 @@
     "meal_role": "side"
   },
   "cuisine": "Other",
-  "image": "/recipes/hot-dog-and-hamburger-buns.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/hot-dog-and-hamburger-buns.jpg"
 }

@@ -63,5 +63,5 @@
     "meal_role": "side"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/arugula-and-pomegranate-salad.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/arugula-and-pomegranate-salad.jpg"
 }

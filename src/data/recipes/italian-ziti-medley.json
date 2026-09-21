@@ -73,5 +73,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/italian-ziti-medley.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/italian-ziti-medley.jpg"
 }

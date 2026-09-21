@@ -89,7 +89,7 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/arancini-sicilian-rice-balls.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/arancini-sicilian-rice-balls.jpg",
   "cuisine": "Italian",
   "servings": "makes about 18 rice balls"
 }

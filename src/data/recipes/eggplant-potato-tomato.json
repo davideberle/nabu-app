@@ -85,7 +85,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/eggplant-potato-tomato.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/eggplant-potato-tomato.jpg",
   "category": {
     "dish_type": [
       "main"

@@ -49,7 +49,7 @@
     },
     {
       "item": "shelled cooked edamame",
-      "amount": "2\u00bd cups"
+      "amount": "2½ cups"
     },
     {
       "item": "green onions, thinly sliced (including the green parts)",
@@ -92,5 +92,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/warm-glass-noodles-and-edamame.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/warm-glass-noodles-and-edamame.jpg"
 }

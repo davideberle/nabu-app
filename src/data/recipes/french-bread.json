@@ -56,7 +56,7 @@
     "and cover it with a kitchen towel. Allow 1 hour for the dough to",
     "double in size.",
     "Knead the dough and turn it out onto a floured board. Knead the",
-    "dough several times before rolling it out into a 16\" \u00d7 9\"",
+    "dough several times before rolling it out into a 16\" × 9\"",
     "rectangle. From the long end, begin rolling the dough into a log.",
     "To seal the ends, tuck them under. Wrap with baking paper and",
     "place on a parchment-lined baking pan. Allow a further 45",
@@ -79,5 +79,5 @@
     "meal_role": "main"
   },
   "cuisine": "Other",
-  "image": "/recipes/french-bread.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/french-bread.jpg"
 }

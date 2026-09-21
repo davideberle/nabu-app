@@ -47,7 +47,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/whole-roasted-celery-root-with-coriander-seed-oil.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/whole-roasted-celery-root-with-coriander-seed-oil.jpg",
   "category": {
     "dish_type": [
       "side"

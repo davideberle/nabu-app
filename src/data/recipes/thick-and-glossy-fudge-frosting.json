@@ -67,5 +67,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/thick-and-glossy-fudge-frosting.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/thick-and-glossy-fudge-frosting.jpg"
 }

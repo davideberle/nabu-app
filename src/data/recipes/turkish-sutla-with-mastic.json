@@ -58,5 +58,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/turkish-sutla-with-masticrice-pudding.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/turkish-sutla-with-masticrice-pudding.jpg"
 }

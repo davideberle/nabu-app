@@ -168,6 +168,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/pho.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pho.jpg",
   "cuisine": "Southeast Asian"
 }

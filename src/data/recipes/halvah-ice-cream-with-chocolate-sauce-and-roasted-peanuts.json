@@ -56,7 +56,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/halvah-ice-cream-with-chocolate-sauce-and-roasted-peanuts.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/halvah-ice-cream-with-chocolate-sauce-and-roasted-peanuts.jpg",
   "category": {
     "dish_type": [
       "dessert"

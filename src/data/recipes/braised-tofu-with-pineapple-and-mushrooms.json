@@ -82,6 +82,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/braised-tofu-with-pineapple-and-mushrooms.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/braised-tofu-with-pineapple-and-mushrooms.jpg",
   "cuisine": "Southeast Asian"
 }

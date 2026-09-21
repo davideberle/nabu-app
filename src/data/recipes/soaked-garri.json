@@ -40,7 +40,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/soaked-garri.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/soaked-garri.jpg",
   "time": {
     "prep": 20,
     "cook": 35,

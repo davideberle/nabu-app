@@ -55,7 +55,7 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/gnocchi-with-creamy-cabbage-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/gnocchi-with-creamy-cabbage-sauce.jpg",
   "cuisine": "Italian",
   "servings": "serves 2-3"
 }

@@ -112,6 +112,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/stir-fried-noodles.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/stir-fried-noodles.jpg",
   "cuisine": "Southeast Asian"
 }

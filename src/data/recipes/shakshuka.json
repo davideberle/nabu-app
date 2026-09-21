@@ -90,6 +90,6 @@
     "chapter": "Vegetables",
     "meal_role": "main"
   },
-  "image": "/recipes/shakshuka.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/shakshuka.jpg",
   "cuisine": "Middle Eastern"
 }

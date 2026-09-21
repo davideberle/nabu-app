@@ -119,6 +119,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/parsley-and-olive-topping.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/parsley-and-olive-topping.jpg",
   "cuisine": "Middle Eastern"
 }

@@ -41,7 +41,7 @@
   "method": [
     "Cut the cucumber and the pear into chunks. Scoop out the avocado. Blend all the ingredients to a smooth texture."
   ],
-  "image": "/recipes/soft-green-smoothie-with-almond-mylk.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/soft-green-smoothie-with-almond-mylk.jpg",
   "category": {
     "dish_type": [
       "drink"

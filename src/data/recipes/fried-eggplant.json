@@ -46,7 +46,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/fried-eggplant.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/fried-eggplant.jpg",
   "cuisine": "Italian",
   "servings": "serves 2-3"
 }

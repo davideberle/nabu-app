@@ -56,7 +56,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/steamed-eggplant-with-sesame-and-green-onion.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/steamed-eggplant-with-sesame-and-green-onion.jpg",
   "category": {
     "dish_type": [
       "side"

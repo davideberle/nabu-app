@@ -84,7 +84,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/spicy-chickpea-and-bulgur-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/spicy-chickpea-and-bulgur-soup.jpg",
   "category": {
     "dish_type": [
       "soup"

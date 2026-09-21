@@ -81,5 +81,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/vanilla-chocolate-chip-cupcakes.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/vanilla-chocolate-chip-cupcakes.jpg"
 }

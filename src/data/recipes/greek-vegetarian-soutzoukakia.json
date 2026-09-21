@@ -172,5 +172,5 @@
     "meal_role": "main"
   },
   "cuisine": "Greek",
-  "image": "/recipes/greek-vegetarian-soutzoukakia.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/greek-vegetarian-soutzoukakia.jpg"
 }

@@ -57,7 +57,7 @@
     "Place the linguini in a bowl and cover with the clam sauce.",
     "Serve topped with red pepper flakes."
   ],
-  "image": "/recipes/linguine-and-clam-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/linguine-and-clam-sauce.jpg",
   "time": {
     "total": 45
   },

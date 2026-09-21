@@ -69,7 +69,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/balsamic-chicken.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/balsamic-chicken.jpg",
   "cuisine": "Italian",
   "servings": "serves 2-3"
 }

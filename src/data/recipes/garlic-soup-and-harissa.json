@@ -132,5 +132,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/garlic-soup-and-harissa.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/garlic-soup-and-harissa.jpg"
 }

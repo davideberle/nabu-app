@@ -96,7 +96,7 @@
     "Garnish with chopped parsley, olives, pickles, and any other vegetables desired.",
     "Serve with bread or crackers."
   ],
-  "image": "/recipes/molded-fish-roe-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/molded-fish-roe-salad.jpg",
   "category": {
     "dish_type": [
       "main"

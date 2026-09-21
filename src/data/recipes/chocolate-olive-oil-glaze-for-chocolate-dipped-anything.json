@@ -79,6 +79,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/chocolate-olive-oil-glaze-for-chocolate-dipped-anything.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chocolate-olive-oil-glaze-for-chocolate-dipped-anything.jpg",
   "cuisine": "Other"
 }

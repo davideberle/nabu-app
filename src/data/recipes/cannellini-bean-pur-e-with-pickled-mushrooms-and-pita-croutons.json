@@ -80,7 +80,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/cannellini-bean-pur-e-with-pickled-mushrooms-and-pita-croutons.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/cannellini-bean-pur-e-with-pickled-mushrooms-and-pita-croutons.jpg",
   "category": {
     "dish_type": [
       "bread"

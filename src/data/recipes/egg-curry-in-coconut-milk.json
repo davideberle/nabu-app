@@ -103,7 +103,7 @@
   "time": {
     "total": 50
   },
-  "image": "/recipes/egg-curry-in-coconut-milk.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/egg-curry-in-coconut-milk.jpg",
   "category": {
     "dish_type": [
       "main"

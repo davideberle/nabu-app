@@ -75,6 +75,6 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/young-jackfruit-and-seaweed-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/young-jackfruit-and-seaweed-salad.jpg",
   "cuisine": "Southeast Asian"
 }

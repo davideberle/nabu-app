@@ -41,7 +41,7 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/christy-s-homemade-apple-pie.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/christy-s-homemade-apple-pie.jpg",
   "cuisine": "Italian",
   "servings": "serves 4"
 }

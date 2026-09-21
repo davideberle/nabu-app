@@ -69,5 +69,5 @@
     "meal_role": "main"
   },
   "cuisine": "Mexican",
-  "image": "/recipes/refried-beans.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/refried-beans.jpg"
 }

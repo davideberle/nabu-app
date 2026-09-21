@@ -78,5 +78,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/easy-three-cheese-pasta-with-chicken-and-mushrooms.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/easy-three-cheese-pasta-with-chicken-and-mushrooms.jpg"
 }

@@ -78,5 +78,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/baked-pasta-with-broccoli-olives-and-pancetta.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/baked-pasta-with-broccoli-olives-and-pancetta.jpg"
 }

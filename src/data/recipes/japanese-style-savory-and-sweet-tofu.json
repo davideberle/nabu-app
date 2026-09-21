@@ -67,6 +67,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/japanese-style-savory-and-sweet-tofu.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/japanese-style-savory-and-sweet-tofu.jpg",
   "cuisine": "Southeast Asian"
 }

@@ -58,7 +58,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/ravioli.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ravioli.jpg",
   "cuisine": "Other",
   "category": {
     "dish_type": [

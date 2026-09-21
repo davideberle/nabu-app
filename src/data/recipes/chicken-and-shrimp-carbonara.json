@@ -99,7 +99,7 @@
     "Return the shrimp and chicken to the pan and coat with the sauce.",
     "Serve the shrimp and chicken with the pasta."
   ],
-  "image": "/recipes/chicken-and-shrimp-carbonara.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chicken-and-shrimp-carbonara.jpg",
   "time": {
     "total": 50
   },

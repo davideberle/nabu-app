@@ -119,6 +119,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/green-olive-loaf.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/green-olive-loaf.jpg",
   "cuisine": "Middle Eastern"
 }

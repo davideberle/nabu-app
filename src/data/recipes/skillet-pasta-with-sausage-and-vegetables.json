@@ -72,5 +72,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/skillet-pasta-with-sausage-and-vegetables.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/skillet-pasta-with-sausage-and-vegetables.jpg"
 }

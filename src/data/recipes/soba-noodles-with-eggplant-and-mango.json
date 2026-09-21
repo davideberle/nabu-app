@@ -83,5 +83,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/soba-noodles-with-eggplant-and-mango.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/soba-noodles-with-eggplant-and-mango.jpg"
 }

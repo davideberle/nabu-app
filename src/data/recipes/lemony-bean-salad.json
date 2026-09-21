@@ -49,5 +49,5 @@
     "meal_role": "side"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/lemony-bean-salad.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/lemony-bean-salad.jpg"
 }

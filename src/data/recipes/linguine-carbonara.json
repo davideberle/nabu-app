@@ -67,5 +67,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/linguine-carbonara.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/linguine-carbonara.jpg"
 }

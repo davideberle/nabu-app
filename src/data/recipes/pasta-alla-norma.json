@@ -65,7 +65,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/pasta-alla-norma.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pasta-alla-norma.jpg",
   "category": {
     "dish_type": [
       "main"

@@ -94,6 +94,6 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/party-jollof-rice.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/party-jollof-rice.jpg",
   "cuisine": "Nigerian"
 }

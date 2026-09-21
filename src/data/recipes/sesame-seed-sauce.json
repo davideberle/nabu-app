@@ -48,7 +48,7 @@
     "Pulse briefly.",
     "Add remaining ingredients and blend quickly."
   ],
-  "image": "/recipes/sesame-seed-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sesame-seed-sauce.jpg",
   "category": {
     "dish_type": [
       "side"

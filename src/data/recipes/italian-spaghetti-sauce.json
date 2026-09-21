@@ -72,5 +72,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/italian-spaghetti-sauce.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/italian-spaghetti-sauce.jpg"
 }

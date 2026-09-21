@@ -73,5 +73,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/creamy-chocolate-cupcake-frosting.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/creamy-chocolate-cupcake-frosting.jpg"
 }

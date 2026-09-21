@@ -122,6 +122,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/grilled-eggplant.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/grilled-eggplant.jpg",
   "cuisine": "Southeast Asian"
 }

@@ -96,5 +96,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/linguine-with-spring-vegetables.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/linguine-with-spring-vegetables.jpg"
 }

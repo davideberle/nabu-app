@@ -83,7 +83,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/rocher-torte.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/rocher-torte.jpg",
   "cuisine": "Other",
   "category": {
     "dish_type": [

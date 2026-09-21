@@ -63,5 +63,5 @@
     "meal_role": "breakfast"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/baked-eggs-with-yogurt-and-chile.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/baked-eggs-with-yogurt-and-chile.jpg"
 }

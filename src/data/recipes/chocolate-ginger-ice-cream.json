@@ -56,5 +56,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/chocolate-ginger-ice-cream.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/chocolate-ginger-ice-cream.jpg"
 }

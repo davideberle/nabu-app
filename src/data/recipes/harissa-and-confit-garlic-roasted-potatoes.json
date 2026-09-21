@@ -61,7 +61,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/harissa-and-confit-garlic-roasted-potatoes.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/harissa-and-confit-garlic-roasted-potatoes.jpg",
   "category": {
     "dish_type": [
       "side"

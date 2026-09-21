@@ -124,6 +124,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/h-ti-u.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/h-ti-u.jpg",
   "cuisine": "Southeast Asian"
 }

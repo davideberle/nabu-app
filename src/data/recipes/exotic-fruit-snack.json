@@ -46,7 +46,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/exotic-fruit-snack.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/exotic-fruit-snack.jpg",
   "cuisine": "Other",
   "category": {
     "dish_type": [

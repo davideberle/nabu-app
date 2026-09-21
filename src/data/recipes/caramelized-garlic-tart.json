@@ -80,5 +80,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/caramelized-garlic-tart.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/caramelized-garlic-tart.jpg"
 }

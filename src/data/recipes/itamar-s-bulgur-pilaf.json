@@ -73,5 +73,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/itamar-s-bulgur-pilaf.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/itamar-s-bulgur-pilaf.jpg"
 }

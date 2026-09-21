@@ -52,7 +52,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/crumbs.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/crumbs.jpg",
   "category": {
     "dish_type": [
       "main"

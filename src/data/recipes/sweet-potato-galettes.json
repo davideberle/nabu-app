@@ -96,6 +96,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/sweet-potato-galettes.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sweet-potato-galettes.jpg",
   "cuisine": "Middle Eastern"
 }

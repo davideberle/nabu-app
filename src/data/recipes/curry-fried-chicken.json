@@ -69,7 +69,7 @@
   "time": {
     "total": 45
   },
-  "image": "/recipes/curry-fried-chicken.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curry-fried-chicken.jpg",
   "category": {
     "dish_type": [
       "main"

@@ -43,7 +43,7 @@
     "chapter": "Soups",
     "meal_role": "main"
   },
-  "image": "/recipes/bok-choy-broth-with-pickle.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/bok-choy-broth-with-pickle.jpg",
   "cuisine": "Chinese",
   "intro": "This is a soup I fell in love with during a staff supper at the Dragon Well Manor restaurant in Hangzhou. It is one of those genius Chinese dishes in which humble ingredients yield delightful and sophisticated flavors. In essence, it’s a cabbage-and-cabbage soup, but it matches leaf cabbage with stem cabbage, fresh with fermented, so the refreshing juiciness of the green leaves is lit up by the salty-umami undertones of the pickle. Do try it."
 }

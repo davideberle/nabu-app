@@ -62,6 +62,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/olive-oil-crackers.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/olive-oil-crackers.jpg",
   "cuisine": "Middle Eastern"
 }

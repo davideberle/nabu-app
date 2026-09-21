@@ -54,7 +54,7 @@
     "vegan",
     "vegetarian"
   ],
-  "image": "/recipes/tsamiya-tamarind-juice.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tsamiya-tamarind-juice.jpg",
   "time": {
     "total": 180
   },

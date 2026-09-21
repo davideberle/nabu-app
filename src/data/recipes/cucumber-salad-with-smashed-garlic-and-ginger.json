@@ -75,5 +75,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/cucumber-salad-with-smashed-garlic-and-ginger.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/cucumber-salad-with-smashed-garlic-and-ginger.jpg"
 }

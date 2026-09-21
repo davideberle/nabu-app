@@ -69,7 +69,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/globe-artichoke-and-mozzarella-with-candied-lemon.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/globe-artichoke-and-mozzarella-with-candied-lemon.jpg",
   "category": {
     "dish_type": [
       "main"

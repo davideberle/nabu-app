@@ -53,5 +53,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/farfalle-with-salmon-sauce.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/farfalle-with-salmon-sauce.jpg"
 }

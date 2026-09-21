@@ -61,7 +61,7 @@
   "time": {
     "total": 22
   },
-  "image": "/recipes/curry-fish-stew.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curry-fish-stew.jpg",
   "category": {
     "dish_type": [
       "main"

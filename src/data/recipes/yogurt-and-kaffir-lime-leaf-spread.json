@@ -51,7 +51,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/yogurt-and-kaffir-lime-leaf-spread.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/yogurt-and-kaffir-lime-leaf-spread.jpg",
   "category": {
     "dish_type": [
       "main"

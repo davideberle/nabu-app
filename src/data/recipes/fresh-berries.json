@@ -75,6 +75,6 @@
       "gluten-free"
     ]
   },
-  "image": "/recipes/fresh-berries.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/fresh-berries.jpg",
   "cuisine": "Middle Eastern"
 }

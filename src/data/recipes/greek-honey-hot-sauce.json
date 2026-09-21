@@ -54,7 +54,7 @@
     "Place all the ingredients in the bowl of a food processor and puree until smooth.",
     "Taste and season with more lemon juice, hot sauce, and/or salt as needed."
   ],
-  "image": "/recipes/greek-honey-hot-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/greek-honey-hot-sauce.jpg",
   "category": {
     "dish_type": [
       "side"

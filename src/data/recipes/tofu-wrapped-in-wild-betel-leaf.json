@@ -80,6 +80,6 @@
     "chapter": "Starters & Appetizers",
     "meal_role": "starter"
   },
-  "image": "/recipes/tofu-wrapped-in-wild-betel-leaf.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tofu-wrapped-in-wild-betel-leaf.jpg",
   "cuisine": "Southeast Asian"
 }

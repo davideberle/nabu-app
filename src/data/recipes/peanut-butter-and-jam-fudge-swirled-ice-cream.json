@@ -63,6 +63,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/peanut-butter-and-jam-fudge-swirled-ice-cream.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/peanut-butter-and-jam-fudge-swirled-ice-cream.jpg",
   "cuisine": "Other"
 }

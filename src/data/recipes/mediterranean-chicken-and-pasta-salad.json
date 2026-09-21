@@ -81,5 +81,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/mediterranean-chicken-and-pasta-salad.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/mediterranean-chicken-and-pasta-salad.jpg"
 }

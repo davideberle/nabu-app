@@ -55,7 +55,7 @@
   "time": {
     "total": 20
   },
-  "image": "/recipes/creamy-chickpea-curry.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/creamy-chickpea-curry.jpg",
   "category": {
     "dish_type": [
       "main"

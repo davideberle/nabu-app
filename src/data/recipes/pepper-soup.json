@@ -58,6 +58,6 @@
     "chapter": "Soups & Stews",
     "meal_role": "main"
   },
-  "image": "/recipes/pepper-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pepper-soup.jpg",
   "cuisine": "Nigerian"
 }

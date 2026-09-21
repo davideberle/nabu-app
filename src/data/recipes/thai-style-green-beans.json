@@ -63,7 +63,7 @@
     "Sauté the green beans for 3 minutes.",
     "Add the green bean (Step 3) to the sauce. Stir well. You may want to top it with cilantro and peanuts."
   ],
-  "image": "/recipes/thai-style-green-beans.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/thai-style-green-beans.jpg",
   "category": {
     "dish_type": [
       "vegetable"

@@ -55,7 +55,7 @@
     "Stack the carrots, spinach, mushroom, radish, cucumber, and cooked tofu and roll it up tightly.",
     "Using a sharp knife, cut the roll into bite-size pieces. Repeat this process using the remaining ingredients."
   ],
-  "image": "/recipes/kimbap.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/kimbap.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

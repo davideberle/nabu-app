@@ -61,5 +61,5 @@
     "meal_role": "drink"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/karak-chaispiced-tea-with-milk.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/karak-chaispiced-tea-with-milk.jpg"
 }

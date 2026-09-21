@@ -40,7 +40,7 @@
   "method": [
     "In a blender, mix the avocado, frozen berries, and syrup to a smooth nice cream. Serve in bowls topped with frozen black currants and bee pollen, and some extra syrup if you want more sweetener."
   ],
-  "image": "/recipes/avocado-nice-cream.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/avocado-nice-cream.jpg",
   "category": {
     "dish_type": [
       "dessert"

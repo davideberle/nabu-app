@@ -76,5 +76,5 @@
     "meal_role": "side"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/tahini-cabbage-slaw.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tahini-cabbage-slaw.jpg"
 }

@@ -79,7 +79,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/corsican-pie-with-zucchini-flowers.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/corsican-pie-with-zucchini-flowers.jpg",
   "category": {
     "dish_type": [
       "dessert"

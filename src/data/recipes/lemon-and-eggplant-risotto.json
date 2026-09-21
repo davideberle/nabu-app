@@ -6,7 +6,7 @@
     "author": "Yotam Ottolenghi"
   },
   "servings": "serves 4",
-  "intro": "The crucial component in this dish is the stock, which will make or break it. You can quickly make one by covering some aromatic vegetables and herbs (carrot, celery, onion, bay leaf, parsley, garlic, lemongrass, fennel, thyme, etc.) with water and simmering for half an hour. Look at the Parsnip Dumplings in Broth on page 28 for a lengthier version. Unlike some other risotti, this one (pictured on page 233) feels light as a feather \u2013 or almost.",
+  "intro": "The crucial component in this dish is the stock, which will make or break it. You can quickly make one by covering some aromatic vegetables and herbs (carrot, celery, onion, bay leaf, parsley, garlic, lemongrass, fennel, thyme, etc.) with water and simmering for half an hour. Look at the Parsnip Dumplings in Broth on page 28 for a lengthier version. Unlike some other risotti, this one (pictured on page 233) feels light as a feather – or almost.",
   "ingredients": [
     {
       "item": "medium eggplants",
@@ -14,7 +14,7 @@
     },
     {
       "item": "olive oil",
-      "amount": "\u00bd cup plus 1 tbsp"
+      "amount": "½ cup plus 1 tbsp"
     },
     {
       "item": "coarse sea salt",
@@ -34,11 +34,11 @@
     },
     {
       "item": "white wine",
-      "amount": "\u00bd cup"
+      "amount": "½ cup"
     },
     {
       "item": "hot vegetable stock",
-      "amount": "3\u00bc cups"
+      "amount": "3¼ cups"
     },
     {
       "item": "lemon, zest grated",
@@ -50,11 +50,11 @@
     },
     {
       "item": "butter",
-      "amount": "1\u00bd tbsp"
+      "amount": "1½ tbsp"
     },
     {
       "item": "grated Parmesan (about 2 oz) (or another mature hard cheese)",
-      "amount": "\u00bd cup"
+      "amount": "½ cup"
     },
     {
       "item": "black pepper",
@@ -62,14 +62,14 @@
     },
     {
       "item": "shredded basil leaves",
-      "amount": "\u00bd cup"
+      "amount": "½ cup"
     }
   ],
   "method": [
     "Start by burning one of the eggplants (see page 116). Once ready, remove from the heat and make a long cut through the eggplant. Scoop out the soft flesh while avoiding the skin. Discard the skin. Chop the flesh roughly and set aside.",
-    "Cut the other eggplant into \u00bd-inch dice. Heat up \u2153 cup of the olive oil in a frying pan and fry the eggplant dice in batches until golden and crisp. Transfer to a colander and sprinkle with salt. Leave to cool.",
+    "Cut the other eggplant into ½-inch dice. Heat up ⅓ cup of the olive oil in a frying pan and fry the eggplant dice in batches until golden and crisp. Transfer to a colander and sprinkle with salt. Leave to cool.",
     "Put the onion and remaining oil in a heavy pan and fry slowly until soft and translucent. Add the garlic and cook for a further 3 minutes. Turn up the heat and add the rice, stirring to coat it in the oil. Fry for 2 to 3 minutes. Add the wine (it should hiss) and cook for 2 to 3 minutes, or until nearly evaporated. Turn the heat down to medium.",
-    "Now start adding the hot stock to the rice, a ladleful at a time, waiting until each addition has been fully absorbed before adding the next and stirring all the time. When all the stock has been added, remove the pan from the heat. Add half the lemon zest, the lemon juice, grilled eggplant, butter, most of the Parmesan and \u00be teaspoon salt. Stir well, then cover and set aside for 5 minutes.",
+    "Now start adding the hot stock to the rice, a ladleful at a time, waiting until each addition has been fully absorbed before adding the next and stirring all the time. When all the stock has been added, remove the pan from the heat. Add half the lemon zest, the lemon juice, grilled eggplant, butter, most of the Parmesan and ¾ teaspoon salt. Stir well, then cover and set aside for 5 minutes.",
     "Taste and add more salt, if you like, plus some black pepper.",
     "To serve, spoon the risotto into shallow bowls and sprinkle with the diced eggplant, the remaining Parmesan, the basil and the rest of the lemon zest."
   ],
@@ -84,5 +84,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/lemon-and-eggplant-risotto.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/lemon-and-eggplant-risotto.jpg"
 }

@@ -78,7 +78,7 @@
     "Taste and adjust with more fish sauce, sugar, or tamarind as needed.",
     "Serve with jasmine rice."
   ],
-  "image": "/recipes/massaman-curry.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/massaman-curry.jpg",
   "category": {
     "dish_type": [
       "main"

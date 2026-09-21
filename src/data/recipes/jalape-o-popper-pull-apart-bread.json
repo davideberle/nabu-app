@@ -1,6 +1,6 @@
 {
   "id": "jalape-o-popper-pull-apart-bread",
-  "name": "Jalape\u00f1o Popper Pull-Apart Bread",
+  "name": "Jalapeño Popper Pull-Apart Bread",
   "source": {
     "cookbook": "Bread Cookbook",
     "author": "Various",
@@ -64,5 +64,5 @@
     "meal_role": "main"
   },
   "cuisine": "Other",
-  "image": "/recipes/jalape-o-popper-pull-apart-bread.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/jalape-o-popper-pull-apart-bread.jpg"
 }

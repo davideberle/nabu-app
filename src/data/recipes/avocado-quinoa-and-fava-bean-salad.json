@@ -66,5 +66,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/avocado-quinoa-and-fava-bean-salad.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/avocado-quinoa-and-fava-bean-salad.jpg"
 }

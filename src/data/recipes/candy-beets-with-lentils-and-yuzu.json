@@ -58,7 +58,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/candy-beets-with-lentils-and-yuzu.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/candy-beets-with-lentils-and-yuzu.jpg",
   "category": {
     "dish_type": [
       "main"

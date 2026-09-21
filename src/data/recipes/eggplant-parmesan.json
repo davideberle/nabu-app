@@ -82,7 +82,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/eggplant-parmesan.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/eggplant-parmesan.jpg",
   "cuisine": "Italian",
   "servings": "serves 4"
 }

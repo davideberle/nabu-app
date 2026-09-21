@@ -82,7 +82,7 @@
     "Next add soy milk and salt.",
     "Garnish with julienned cucumber and kimchi.."
   ],
-  "image": "/recipes/mushroom-toast.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/mushroom-toast.jpg",
   "dietary": [
     "vegan",
     "vegetarian"

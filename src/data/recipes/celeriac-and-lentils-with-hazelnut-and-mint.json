@@ -71,5 +71,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/celeriac-and-lentils-with-hazelnut-and-mint.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/celeriac-and-lentils-with-hazelnut-and-mint.jpg"
 }

@@ -108,6 +108,6 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/steamed-rice-cakes.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/steamed-rice-cakes.jpg",
   "cuisine": "Southeast Asian"
 }

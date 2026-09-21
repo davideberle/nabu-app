@@ -57,6 +57,6 @@
     "chapter": "Desserts",
     "meal_role": "dessert"
   },
-  "image": "/recipes/bittersweet-chocolate-ganache-glaze.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/bittersweet-chocolate-ganache-glaze.jpg",
   "cuisine": "Other"
 }

@@ -54,6 +54,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/ofe-owerri.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ofe-owerri.jpg",
   "cuisine": "Nigerian"
 }

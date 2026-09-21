@@ -65,5 +65,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/margat-bamyaokra-stew.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/margat-bamyaokra-stew.jpg"
 }

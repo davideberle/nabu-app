@@ -93,7 +93,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/beet-caraway-and-goat-cheese-bread.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/beet-caraway-and-goat-cheese-bread.jpg",
   "category": {
     "dish_type": [
       "breakfast"

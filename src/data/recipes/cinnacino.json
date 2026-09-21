@@ -29,7 +29,7 @@
   "method": [
     "Heat up the water if you want a warm Cinnacino. Mix water, nut butter, coconut palm sugar, and cinnamon in a blender."
   ],
-  "image": "/recipes/cinnacino.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/cinnacino.jpg",
   "category": {
     "dish_type": [
       "main"

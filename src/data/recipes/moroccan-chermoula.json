@@ -76,5 +76,5 @@
     "meal_role": "component"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/moroccan-chermoula.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/moroccan-chermoula.jpg"
 }

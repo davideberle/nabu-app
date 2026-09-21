@@ -33,7 +33,7 @@
   "time": {
     "total": 120
   },
-  "image": "/recipes/curried-acorn-squash.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curried-acorn-squash.jpg",
   "category": {
     "dish_type": [
       "side"

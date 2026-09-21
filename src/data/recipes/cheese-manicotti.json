@@ -101,5 +101,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/cheese-manicotti.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/cheese-manicotti.jpg"
 }

@@ -10,7 +10,7 @@
   "ingredients": [
     {
       "item": "lime juice",
-      "amount": "6\u00bd tbsp"
+      "amount": "6½ tbsp"
     },
     {
       "item": "lemongrass stalk, chopped into small pieces",
@@ -30,7 +30,7 @@
     },
     {
       "item": "chile flakes",
-      "amount": "\u00bc tsp"
+      "amount": "¼ tsp"
     },
     {
       "item": "light olive oil or sunflower oil",
@@ -38,7 +38,7 @@
     },
     {
       "item": "macadamia nuts",
-      "amount": "1\u00bc cups"
+      "amount": "1¼ cups"
     },
     {
       "item": "butter",
@@ -50,11 +50,11 @@
     },
     {
       "item": "salt",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
       "item": "chile flakes",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     },
     {
       "item": "inner leaves of Savoy cabbage (6 oz in total), finely shredded",
@@ -62,7 +62,7 @@
     },
     {
       "item": "red cabbage (10 oz), finely shredded",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
       "item": "mango, cut into thin strips",
@@ -78,11 +78,11 @@
     },
     {
       "item": "mint, leaves picked and roughly chopped",
-      "amount": "\u00bc cup"
+      "amount": "¼ cup"
     },
     {
       "item": "cilantro, leaves picked and roughly chopped",
-      "amount": "1\u00bd cups"
+      "amount": "1½ cups"
     }
   ],
   "method": [
@@ -102,5 +102,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/sweet-winter-slaw.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sweet-winter-slaw.jpg"
 }

@@ -123,6 +123,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/lemongrass-chili-tofu.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/lemongrass-chili-tofu.jpg",
   "cuisine": "Southeast Asian"
 }

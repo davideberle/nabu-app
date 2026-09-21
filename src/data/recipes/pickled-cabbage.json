@@ -56,7 +56,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/pickled-cabbage.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pickled-cabbage.jpg",
   "time": {
     "prep": 20,
     "cook": 35,

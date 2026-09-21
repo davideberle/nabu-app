@@ -53,5 +53,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/laymoon-w-na-anamint-lemonade.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/laymoon-w-na-anamint-lemonade.jpg"
 }

@@ -61,5 +61,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/tuna-and-mushroom-pasta-salad.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tuna-and-mushroom-pasta-salad.jpg"
 }

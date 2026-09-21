@@ -88,6 +88,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/zucchini-garlic-and-yogurt.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/zucchini-garlic-and-yogurt.jpg",
   "cuisine": "Middle Eastern"
 }

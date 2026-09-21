@@ -59,6 +59,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/plantain-porridge.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/plantain-porridge.jpg",
   "cuisine": "Nigerian"
 }

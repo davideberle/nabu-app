@@ -73,6 +73,6 @@
     "chapter": "Soups & Stews",
     "meal_role": "main"
   },
-  "image": "/recipes/pumpkin-and-peanut-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pumpkin-and-peanut-soup.jpg",
   "cuisine": "Southeast Asian"
 }

@@ -37,7 +37,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/nuea-dat-diew-salted-beef.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/nuea-dat-diew-salted-beef.jpg",
   "category": {
     "dish_type": [
       "side"

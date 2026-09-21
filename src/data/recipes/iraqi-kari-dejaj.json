@@ -81,5 +81,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/iraqi-kari-dejajchicken-curry.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/iraqi-kari-dejajchicken-curry.jpg"
 }

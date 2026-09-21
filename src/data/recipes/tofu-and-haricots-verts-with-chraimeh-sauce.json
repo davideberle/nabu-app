@@ -84,7 +84,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/tofu-and-haricots-verts-with-chraimeh-sauce.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tofu-and-haricots-verts-with-chraimeh-sauce.jpg",
   "category": {
     "dish_type": [
       "side"

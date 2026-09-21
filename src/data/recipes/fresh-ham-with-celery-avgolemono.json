@@ -61,7 +61,7 @@
     "Do not allow sauce to boil.",
     "Serve immediately."
   ],
-  "image": "/recipes/fresh-ham-with-celery-avgolemono.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/fresh-ham-with-celery-avgolemono.jpg",
   "category": {
     "dish_type": [
       "main"

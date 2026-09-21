@@ -56,6 +56,6 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "/recipes/crispy-banana-spring-rolls.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/crispy-banana-spring-rolls.jpg",
   "cuisine": "Southeast Asian"
 }

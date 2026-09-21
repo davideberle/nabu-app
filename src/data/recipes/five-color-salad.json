@@ -99,6 +99,6 @@
     "chapter": "Sides",
     "meal_role": "side"
   },
-  "image": "/recipes/five-color-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/five-color-salad.jpg",
   "cuisine": "Southeast Asian"
 }

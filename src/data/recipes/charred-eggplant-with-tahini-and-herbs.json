@@ -103,6 +103,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/charred-eggplant-with-tahini-and-herbs.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/charred-eggplant-with-tahini-and-herbs.jpg",
   "cuisine": "Middle Eastern"
 }

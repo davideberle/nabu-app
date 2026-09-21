@@ -1,6 +1,6 @@
 {
   "id": "sweet-potato-wedges-with-lemongrass-cr-me-fra-che",
-  "name": "Sweet potato wedges with lemongrass cr\u00e8me fra\u00eeche",
+  "name": "Sweet potato wedges with lemongrass crème fraîche",
   "source": {
     "cookbook": "Plenty",
     "author": "Yotam Ottolenghi"
@@ -18,11 +18,11 @@
     },
     {
       "item": "ground coriander",
-      "amount": "1\u00bd tsp"
+      "amount": "1½ tsp"
     },
     {
       "item": "fine sea salt",
-      "amount": "\u00be tsp"
+      "amount": "¾ tsp"
     },
     {
       "item": "fresh red chile, finely diced",
@@ -34,11 +34,11 @@
     },
     {
       "item": "lemongrass stalk",
-      "amount": "\u00bd"
+      "amount": "½"
     },
     {
-      "item": "cr\u00e8me fra\u00eeche",
-      "amount": "\u00be cup"
+      "item": "crème fraîche",
+      "amount": "¾ cup"
     },
     {
       "item": "grated zest and juice of 2 limes"
@@ -49,11 +49,11 @@
     },
     {
       "item": "fine sea salt",
-      "amount": "\u00bd tsp"
+      "amount": "½ tsp"
     }
   ],
   "method": [
-    "Preheat the oven to 400\u00b0F. Wash the sweet potatoes but don't peel them. Cut each lengthways in half. Cut again lengthways into quarters and then once more in the same way, so you are left in the end with eight long wedges.",
+    "Preheat the oven to 400°F. Wash the sweet potatoes but don't peel them. Cut each lengthways in half. Cut again lengthways into quarters and then once more in the same way, so you are left in the end with eight long wedges.",
     "Place them in a roasting pan that has been lined with parchment paper and brushed lightly with some of the olive oil. Brush the wedges with the remaining oil and sprinkle with a mixture of the ground coriander and salt. Roast for about 25 minutes, or until the sweet potato is tender and golden brown. Remove from the oven and allow to cool down a little. (The wedges can be eaten warm or at room temperature.)",
     "To make the dipping sauce. Very finely chop the lemongrass or grind finely in a spice grinder. Whisk with all of the other ingredients for the dipping sauce and set aside.",
     "When ready to serve, place the wedges on a large, flat serving dish. Sprinkle with the diced chile and cilantro leaves, and serve with the sauce on the side."
@@ -69,5 +69,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/sweet-potato-wedges-with-lemongrass-cr-me-fra-che.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sweet-potato-wedges-with-lemongrass-cr-me-fra-che.jpg"
 }

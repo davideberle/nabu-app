@@ -64,7 +64,7 @@
   "time": {
     "total": 50
   },
-  "image": "/recipes/baked-penne-with-spinach-feta-and-fontina.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/baked-penne-with-spinach-feta-and-fontina.jpg",
   "category": {
     "dish_type": [
       "main"

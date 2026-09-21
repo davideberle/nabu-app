@@ -167,6 +167,6 @@
       "vegetarian"
     ]
   },
-  "image": "/recipes/roast-chicken-and-three-rice-salad.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/roast-chicken-and-three-rice-salad.jpg",
   "cuisine": "Middle Eastern"
 }

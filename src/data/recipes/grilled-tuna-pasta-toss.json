@@ -69,5 +69,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/grilled-tuna-pasta-toss.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/grilled-tuna-pasta-toss.jpg"
 }

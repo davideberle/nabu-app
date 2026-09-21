@@ -81,5 +81,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/broccoli-and-gorgonzola-pie.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/broccoli-and-gorgonzola-pie.jpg"
 }

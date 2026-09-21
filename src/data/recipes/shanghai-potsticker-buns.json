@@ -99,7 +99,7 @@
     "chapter": "Dumplings and Snacks",
     "meal_role": "starter"
   },
-  "image": "/recipes/shanghai-potsticker-buns.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/shanghai-potsticker-buns.jpg",
   "time": {
     "prep": 20,
     "cook": 35,

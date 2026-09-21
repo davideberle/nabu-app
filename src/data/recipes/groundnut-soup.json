@@ -60,6 +60,6 @@
     "chapter": "Soups & Stews",
     "meal_role": "main"
   },
-  "image": "/recipes/groundnut-soup.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/groundnut-soup.jpg",
   "cuisine": "Nigerian"
 }

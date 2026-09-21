@@ -56,7 +56,7 @@
   "method": [
     "Combine all the ingredients and store in the freezer."
   ],
-  "image": "/recipes/michele-s-muesli.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/michele-s-muesli.jpg",
   "category": {
     "dish_type": [
       "main"

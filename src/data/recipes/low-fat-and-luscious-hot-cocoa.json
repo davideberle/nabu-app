@@ -65,5 +65,5 @@
     "meal_role": "dessert"
   },
   "cuisine": "Other",
-  "image": "/recipes/low-fat-and-luscious-hot-cocoa.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/low-fat-and-luscious-hot-cocoa.jpg"
 }

@@ -74,7 +74,7 @@
   "time": {
     "total": 30
   },
-  "image": "/recipes/spicy-scrambled-eggs.jpg",
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/spicy-scrambled-eggs.jpg",
   "category": {
     "dish_type": [
       "main"

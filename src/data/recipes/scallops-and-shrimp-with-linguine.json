@@ -83,5 +83,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/scallops-and-shrimp-with-linguine.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/scallops-and-shrimp-with-linguine.jpg"
 }

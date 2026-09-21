@@ -101,5 +101,5 @@
     "meal_role": "main"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/coconut-rice-with-sambal-and-okra.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/coconut-rice-with-sambal-and-okra.jpg"
 }

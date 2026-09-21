@@ -95,5 +95,5 @@
     "meal_role": "starter"
   },
   "cuisine": "Middle Eastern",
-  "image": "/recipes/lahm-bi-ajeenspiced-ground-beef-flatbread.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/lahm-bi-ajeenspiced-ground-beef-flatbread.jpg"
 }

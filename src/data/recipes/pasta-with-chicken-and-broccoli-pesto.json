@@ -57,5 +57,5 @@
     "meal_role": "main"
   },
   "cuisine": "Italian",
-  "image": "/recipes/pasta-with-chicken-and-broccoli-pesto.jpg"
+  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pasta-with-chicken-and-broccoli-pesto.jpg"
 }
