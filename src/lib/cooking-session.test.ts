@@ -37,6 +37,28 @@ function ing(item: string, amount = "1"): SessionIngredient {
   return { amount, item };
 }
 
+describe("editorial dish grouping", () => {
+  const dishes = [
+    { role: "starter" as const, title: "Simple appetizer platter", ingredientIndices: [1], methodIndices: [0] },
+    { role: "main" as const, title: "Champagne risotto", ingredientIndices: [0], methodIndices: [1] },
+  ];
+  it("round-trips a disjoint, explicitly named grouping", () => {
+    const session = makeSession({ presentationDishes: dishes });
+    const validated = validateSessionBody(session);
+    ok(validated.ok);
+    if (validated.ok) deepStrictEqual(validated.session.presentationDishes, dishes);
+  });
+  it("rejects duplicated indices and clears stale grouping after recipe edits", () => {
+    equal(validatePatch({ presentationDishes: [
+      dishes[0], { ...dishes[1], ingredientIndices: [1] },
+    ] }), "ingredientIndices must not repeat an index across dishes");
+    const patched = applyPatch(makeSession({ presentationDishes: dishes }), {
+      method: { session: ["A new method"] },
+    });
+    equal(patched.presentationDishes, undefined);
+  });
+});
+
 function makeSession(overrides: Partial<CookingSession> = {}): CookingSession {
   return {
     id: "cook_2026-07-26_korean_family",

@@ -154,6 +154,46 @@ export type SessionHeroImage = {
   source?: string;
 };
 
+/** Editorial grouping of tonight's working lists. Indices address the resolved
+ * working recipe, never the canonical anchor. Stale/incomplete groupings are
+ * ignored by the page, leaving the grounded recipe intact. */
+export type PresentationDish = {
+  role: "starter" | "main" | "side" | "dessert";
+  title: string;
+  ingredientIndices: number[];
+  methodIndices: number[];
+};
+
+function validatePresentationDishes(value: unknown): PresentationDish[] | { error: string } {
+  if (!Array.isArray(value)) return { error: "presentationDishes must be an array" };
+  const dishes: PresentationDish[] = [];
+  const usedIngredients = new Set<number>();
+  const usedMethods = new Set<number>();
+  for (const entry of value) {
+    if (!isPlainObject(entry) || !["starter", "main", "side", "dessert"].includes(String(entry.role)) || !requiredString(entry.title)) {
+      return { error: "Each presentation dish needs a role and title" };
+    }
+    const indices = (field: "ingredientIndices" | "methodIndices", used: Set<number>): number[] | { error: string } => {
+      const list = entry[field];
+      if (!Array.isArray(list) || list.some((index) => !Number.isSafeInteger(index) || index < 0)) {
+        return { error: `${field} must contain non-negative integer indices` };
+      }
+      for (const index of list as number[]) {
+        if (used.has(index)) return { error: `${field} must not repeat an index across dishes` };
+        used.add(index);
+      }
+      return list as number[];
+    };
+    const ingredientIndices = indices("ingredientIndices", usedIngredients);
+    if (!Array.isArray(ingredientIndices)) return ingredientIndices;
+    const methodIndices = indices("methodIndices", usedMethods);
+    if (!Array.isArray(methodIndices)) return methodIndices;
+    dishes.push({ role: entry.role as PresentationDish["role"], title: entry.title as string, ingredientIndices, methodIndices });
+  }
+  if (dishes.filter((dish) => dish.role === "main").length !== 1) return { error: "presentationDishes needs exactly one main" };
+  return dishes;
+}
+
 export type CookingSession = {
   id: string;
   date: string; // YYYY-MM-DD
@@ -173,6 +213,9 @@ export type CookingSession = {
    * Absent on legacy rows, which use the stable fallback order.
    */
   preparationOrder?: string[];
+  presentationDishes?: PresentationDish[];
+  /** Optional finishing instruction performed only when plating/serving. */
+  tableFinish?: string;
   serveWith: string[]; // free-text: "Flatbreads", "Basmati rice", etc.
   servings: {
     base: string;
@@ -308,6 +351,8 @@ export type SessionPatch = {
   heroImage?: SessionHeroImage | null;
   relatedRecipes?: RelatedRecipe[];
   preparationOrder?: string[];
+  presentationDishes?: PresentationDish[];
+  tableFinish?: string | null;
   serveWith?: string[];
   servings?: { current: string };
   ingredients?: { session: SessionIngredient[]; sessionMode?: SessionListMode };
@@ -391,6 +436,13 @@ export function validatePatch(patch: SessionPatch): string | null {
       "preparationOrder",
     );
     if (!Array.isArray(preparationOrder)) return preparationOrder.error;
+  }
+  if (patch.presentationDishes !== undefined) {
+    const dishes = validatePresentationDishes(patch.presentationDishes);
+    if (!Array.isArray(dishes)) return dishes.error;
+  }
+  if (patch.tableFinish !== undefined && patch.tableFinish !== null && typeof patch.tableFinish !== "string") {
+    return "tableFinish must be text or null";
   }
   if (patch.ingredients?.session !== undefined) {
     if (!Array.isArray(patch.ingredients.session)) {
@@ -623,6 +675,16 @@ export function validateSessionBody(body: unknown): SessionValidation {
     preparationOrder = validatedOrder;
   }
 
+  let presentationDishes: PresentationDish[] | undefined;
+  if (body.presentationDishes !== undefined) {
+    const validated = validatePresentationDishes(body.presentationDishes);
+    if (!Array.isArray(validated)) return { ok: false, error: validated.error };
+    presentationDishes = validated;
+  }
+  if (body.tableFinish !== undefined && body.tableFinish !== null && typeof body.tableFinish !== "string") {
+    return { ok: false, error: "tableFinish must be text or null" };
+  }
+
   const serveWith = stringArray(body.serveWith, "serveWith");
   if (!Array.isArray(serveWith)) return { ok: false, error: serveWith.error };
 
@@ -738,6 +800,8 @@ export function validateSessionBody(body: unknown): SessionValidation {
     heroImage: (body.heroImage as SessionHeroImage | null | undefined) ?? null,
     relatedRecipes,
     ...(preparationOrder ? { preparationOrder } : {}),
+    ...(presentationDishes ? { presentationDishes } : {}),
+    ...(typeof body.tableFinish === "string" && body.tableFinish.trim() ? { tableFinish: body.tableFinish.trim() } : {}),
     serveWith,
     servings: {
       base: typeof servingsInput.base === "string" ? servingsInput.base : "",
@@ -815,6 +879,13 @@ export function applyPatch(
     updated.preparationOrder = patch.preparationOrder.map((reference) => reference.trim());
   }
 
+  if (patch.presentationDishes !== undefined) {
+    updated.presentationDishes = patch.presentationDishes.map((dish) => ({
+      ...dish, ingredientIndices: [...dish.ingredientIndices], methodIndices: [...dish.methodIndices],
+    }));
+  }
+  if (patch.tableFinish !== undefined) updated.tableFinish = patch.tableFinish?.trim() || undefined;
+
   if (patch.serveWith) {
     updated.serveWith = patch.serveWith;
   }
@@ -844,6 +915,10 @@ export function applyPatch(
     };
   } else if (patch.method?.sessionMode) {
     updated.method = { ...session.method, sessionMode: patch.method.sessionMode };
+  }
+
+  if ((patch.ingredients?.session || patch.method?.session) && patch.presentationDishes === undefined) {
+    updated.presentationDishes = undefined;
   }
 
   return updated;
@@ -913,6 +988,7 @@ export function syncSessionWithPlan(
   const existingDrink = drinkText(existingServeWith.drinks);
   const synced: CookingSession = {
     ...existing,
+    ...(resetSessionLists ? { presentationDishes: undefined } : {}),
     anchor: {
       type: plan.anchorType,
       recipeId: plan.recipe.id,

@@ -2,10 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactElement } from "react";
 import { CompleteSessionButton } from "./complete-session-button";
-import { MealBalancePanel } from "./meal-balance";
 import { NabuEmptyState, NabuHeader, NabuKicker, NabuMain, NabuPageShell, NabuSurface } from "@/components/ui/nabu";
-import { createSessionFromPlan, deriveSessionCoherence } from "@/lib/cooking";
-import type { MealCoherenceReview } from "@/lib/meal-coherence";
+import { createSessionFromPlan } from "@/lib/cooking";
 import { todayInZurich } from "@/lib/date";
 import {
   activeComponents,
@@ -28,6 +26,7 @@ import type {
   WorkingIngredient,
   WorkingRecipe,
   WorkingStep,
+  PresentationDish,
 } from "@/lib/cooking-session";
 import {
   buildPairingSuggestion,
@@ -76,21 +75,6 @@ export default async function CookingPage() {
       if (r) sideRecipes.push(r);
     }
   }
-  // Derived on every render, never stored (live-cooking DESIGN.md §3 rule 16).
-  // A malformed historical row must not blank the page the cook is standing at
-  // the stove with — the balance panel simply does not render for it.
-  let coherence: MealCoherenceReview | null = null;
-  if (session) {
-    try {
-      coherence = await deriveSessionCoherence(session);
-    } catch (error) {
-      console.error(
-        `[cooking] coherence review failed for session ${session.id}:`,
-        error,
-      );
-    }
-  }
-
   return (
     <NabuPageShell>
       <NabuHeader
@@ -109,7 +93,6 @@ export default async function CookingPage() {
             mainRecipe={mainRecipe ?? undefined}
             anchorRecipe={anchorRecipe ?? undefined}
             sideRecipes={sideRecipes}
-            coherence={coherence}
           />
         ) : (
           <EmptyState date={date} />
@@ -129,14 +112,12 @@ function SessionView({
   mainRecipe,
   anchorRecipe,
   sideRecipes,
-  coherence,
 }: {
   session: CookingSession;
   resolved: ResolvedMain;
   mainRecipe?: Recipe;
   anchorRecipe?: Recipe;
   sideRecipes: Recipe[];
-  coherence: MealCoherenceReview | null;
 }) {
   const hero = resolveSessionHero(session, mainRecipe?.image);
   const working = resolveWorkingRecipe(
@@ -188,8 +169,10 @@ function SessionView({
     /^Optional:\s*/i,
     ""
   );
-  const methodGroups: MethodDishGroup[] = [
-    ...mainMethodGroups(resolved.title, working, mainRecipe),
+  const presentation = session.presentationDishes?.length
+    ? resolvePresentationDishes(session.presentationDishes, working)
+    : null;
+  const otherMethodGroups: MethodDishGroup[] = [
     ...(resolved.anchorIsSecondary && session.method.base.length > 0
       ? recipeMethodGroups({
           title: session.anchor.title,
@@ -214,6 +197,12 @@ function SessionView({
       })
     ),
   ];
+  const methodGroups: MethodDishGroup[] = presentation
+    ? [...[...presentation]
+        .filter((dish) => dish.steps.length > 0)
+        .sort((a, b) => Math.min(...a.methodIndices) - Math.min(...b.methodIndices)),
+      ...otherMethodGroups]
+    : [...mainMethodGroups(resolved.title, working, mainRecipe), ...otherMethodGroups];
 
   return (
     <>
@@ -227,11 +216,28 @@ function SessionView({
         timeLabel={timeLabel}
         description={resolved.summary || mainRecipe?.intro || mainRecipe?.introduction || undefined}
         adapted={working.hasSessionChanges}
+        showTitle={!presentation}
       />
+
+      {presentation && <EditorialMenu dishes={presentation} />}
 
       {/* ── One mise-en-place pass: every ingredient before any method ── */}
       <MealIngredients
-        groups={[
+        groups={presentation ? [
+          ...presentation.map((dish) => ({
+            title: dish.title,
+            roleLabel: dish.roleLabel || "",
+            ingredients: dish.ingredients,
+          })),
+          ...(resolved.anchorIsSecondary && session.ingredients.base.length > 0
+            ? [{ title: session.anchor.title, roleLabel: "Also tonight", ingredients: session.ingredients.base }]
+            : []),
+          ...mealComponents.filter(({ recipe }) => recipe.ingredients.length > 0).map(({ related, recipe }) => ({
+            title: recipe.name,
+            roleLabel: componentRoleLabel(related.kind),
+            ingredients: toSessionIngredients(recipe.ingredients),
+          })),
+        ] : [
           { title: resolved.title, roleLabel: "Main", ingredients: working.ingredients },
           ...(resolved.anchorIsSecondary && session.ingredients.base.length > 0
             ? [{
@@ -248,26 +254,23 @@ function SessionView({
               ingredients: toSessionIngredients(recipe.ingredients),
             })),
         ]}
-        serveWith={plainServeWith}
+        serveWith={presentation ? [] : plainServeWith}
+        hideMainTitle={!!presentation}
       />
+
+      {drink && <DrinkNote drink={drink} />}
 
       {/* ── One method surface, structured by dish ── */}
       <MealMethod groups={methodGroups} />
 
       {/* ── Support, subordinate to the complete cook stack ── */}
-      {coherence && (
-        <MealBalancePanel
-          sessionId={session.id}
-          review={coherence}
-          relatedRecipes={session.relatedRecipes}
-        />
-      )}
+      {session.tableFinish && <NabuSurface className="p-5"><NabuKicker>At the table</NabuKicker><p className="mt-2 text-sm leading-relaxed text-secondary">{session.tableFinish}</p></NabuSurface>}
 
       {setAside.length > 0 && <SetAsideRow components={setAside} />}
 
       <StoryCard story={session.story} />
 
-      <MealDetails drink={drink} notes={notes} />
+      {!presentation && <MealDetails drink="" notes={notes} />}
 
       <NabuSurface className="p-5">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -306,6 +309,7 @@ function MealHero({
   timeLabel,
   description,
   adapted,
+  showTitle,
 }: {
   resolved: ResolvedMain;
   hero: SessionHero;
@@ -315,6 +319,7 @@ function MealHero({
   timeLabel: string | null;
   description?: string;
   adapted: boolean;
+  showTitle: boolean;
 }) {
   return (
     <NabuSurface className="overflow-hidden p-0">
@@ -322,9 +327,9 @@ function MealHero({
 
       <div className="p-5 sm:p-6">
         <NabuKicker>Tonight’s recipe</NabuKicker>
-        <h2 className="mt-2 max-w-2xl text-3xl font-semibold leading-[1.08] tracking-[-0.035em] text-primary sm:text-4xl">
+        {showTitle && <h2 className="mt-2 max-w-2xl text-3xl font-semibold leading-[1.08] tracking-[-0.035em] text-primary sm:text-4xl">
           {resolved.title}
-        </h2>
+        </h2>}
         {description && (
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-tertiary">
             {description}
@@ -368,7 +373,49 @@ type MethodDishGroup = {
   sourceLine?: string;
   sourceUrl?: string;
   steps: (WorkingStep | string)[];
+  hideTitle?: boolean;
 };
+
+type EditorialDish = MethodDishGroup & PresentationDish & { ingredients: WorkingIngredient[] };
+
+function presentationRole(role: PresentationDish["role"]): string {
+  return role === "starter" ? "Appetizer" : role === "side" ? "Side" : role === "dessert" ? "Dessert" : "Main";
+}
+
+function resolvePresentationDishes(dishes: PresentationDish[], working: WorkingRecipe): EditorialDish[] | null {
+  if (dishes.some((dish) =>
+    dish.ingredientIndices.some((index) => index >= working.ingredients.length) ||
+    dish.methodIndices.some((index) => index >= working.method.length)
+  )) return null;
+  const usedIngredients = new Set(dishes.flatMap((dish) => dish.ingredientIndices));
+  const usedMethods = new Set(dishes.flatMap((dish) => dish.methodIndices));
+  // Incomplete grouping is stale: show the grounded recipe, never silently
+  // file a new appetizer or side ingredient under the main.
+  if (usedIngredients.size !== working.ingredients.length || usedMethods.size !== working.method.length) return null;
+  return dishes.map((dish) => ({
+    ...dish,
+    roleLabel: presentationRole(dish.role),
+    hideTitle: dish.role === "main",
+    ingredients: dish.ingredientIndices.map((index) => working.ingredients[index]),
+    steps: dish.methodIndices.map((index) => working.method[index]),
+  }));
+}
+
+function EditorialMenu({ dishes }: { dishes: EditorialDish[] }) {
+  return <NabuSurface className="p-5 sm:p-6">
+    <NabuKicker>Tonight’s menu</NabuKicker>
+    <div className="mt-4 space-y-3">
+      {dishes.map((dish, index) => <div key={`${dish.role}-${index}`} className="grid grid-cols-[5.5rem_minmax(0,1fr)] gap-3 border-b border-secondary pb-3 last:border-0 last:pb-0 sm:grid-cols-[7rem_minmax(0,1fr)]">
+        <span className="pt-1 text-[10px] font-medium uppercase tracking-[0.16em] text-quaternary">{dish.roleLabel}</span>
+        <span className={dish.role === "main" ? "font-serif text-lg font-bold leading-snug text-primary" : "font-serif text-base leading-snug text-secondary"}>{dish.title}</span>
+      </div>)}
+    </div>
+  </NabuSurface>;
+}
+
+function DrinkNote({ drink }: { drink: string }) {
+  return <NabuSurface className="flex gap-4 p-5"><NabuKicker>Drink</NabuKicker><p className="min-w-0 text-sm leading-relaxed text-secondary">{drink}</p></NabuSurface>;
+}
 
 function mainMethodGroups(
   title: string,
@@ -447,9 +494,9 @@ function MealMethod({ groups }: { groups: MethodDishGroup[] }) {
             className={index > 0 ? "border-t border-secondary pt-6" : undefined}
           >
             {group.roleLabel && <NabuKicker>{group.roleLabel}</NabuKicker>}
-            <h3 className="mt-0.5 text-lg font-semibold tracking-[-0.02em] text-primary">
+            {!group.hideTitle && <h3 className="mt-0.5 text-lg font-semibold tracking-[-0.02em] text-primary">
               {group.title}
-            </h3>
+            </h3>}
             {group.sourceLine && (
               <p className="mt-1 text-xs text-tertiary">
                 {isLinkableUrl(group.sourceUrl) ? (
@@ -485,9 +532,11 @@ type IngredientDishGroup = {
 function MealIngredients({
   groups,
   serveWith,
+  hideMainTitle = false,
 }: {
   groups: IngredientDishGroup[];
   serveWith: string[];
+  hideMainTitle?: boolean;
 }) {
   const visibleGroups = groups.filter((group) => group.ingredients.length > 0);
   if (visibleGroups.length === 0 && serveWith.length === 0) return null;
@@ -506,20 +555,20 @@ function MealIngredients({
             className={index > 0 ? "border-t border-secondary pt-5" : undefined}
           >
             <NabuKicker>{group.roleLabel}</NabuKicker>
-            <p className="mt-0.5 mb-3 text-base font-semibold tracking-[-0.02em] text-primary">
+            {!(hideMainTitle && group.roleLabel === "Main") && <p className="mt-0.5 mb-3 text-base font-semibold tracking-[-0.02em] text-primary">
               {group.title}
-            </p>
+            </p>}
             <IngredientList ingredients={group.ingredients} />
           </section>
         ))}
         {serveWith.length > 0 && (
           <section
-            data-ingredient-dish="Serve with"
+            data-ingredient-dish="For serving"
             className={visibleGroups.length > 0 ? "border-t border-secondary pt-5" : undefined}
           >
-            <NabuKicker>At the table</NabuKicker>
+            <NabuKicker>For serving</NabuKicker>
             <p className="mt-0.5 mb-3 text-base font-semibold tracking-[-0.02em] text-primary">
-              Serve with
+              Extras
             </p>
             <ul className="space-y-1.5">
               {serveWith.map((item) => (

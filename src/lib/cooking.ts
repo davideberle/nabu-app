@@ -123,7 +123,13 @@ function rowToSession(row: CookingSessionRow): CookingSession | null {
   const parsed = safeParse<CookingSession>(row["data"]) ?? legacyRowToSession(row);
   if (!parsed) return null;
 
-  const validated = validateSessionBody(parsed);
+  let validated = validateSessionBody(parsed);
+  // Optional editorial metadata must never hide an otherwise usable recipe.
+  if (!validated.ok && parsed.presentationDishes !== undefined &&
+      validated.error.includes("presentation")) {
+    const { presentationDishes: _invalid, ...withoutPresentation } = parsed;
+    validated = validateSessionBody(withoutPresentation);
+  }
   if (!validated.ok) {
     console.error(
       `[cooking] unusable session row ${String(row["id"] ?? "<no id>")}: ${validated.error}`,
