@@ -326,7 +326,7 @@ function MealHero({
       <SessionHeroArea hero={hero} />
 
       <div className="p-5 sm:p-6">
-        <NabuKicker>Tonight’s recipe</NabuKicker>
+        {showTitle && <NabuKicker>Tonight’s recipe</NabuKicker>}
         {showTitle && <h2 className="mt-2 max-w-2xl text-3xl font-semibold leading-[1.08] tracking-[-0.035em] text-primary sm:text-4xl">
           {resolved.title}
         </h2>}
@@ -336,7 +336,7 @@ function MealHero({
           </p>
         )}
         {provenance && (
-          <p className="mt-3 text-xs text-tertiary">
+          <p className={showTitle ? "mt-3 text-xs text-tertiary" : "text-xs text-tertiary"}>
             {isLinkableUrl(provenanceUrl) ? (
               <a
                 href={provenanceUrl}
@@ -351,7 +351,7 @@ function MealHero({
             )}
           </p>
         )}
-        <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-secondary pt-4 text-sm text-secondary">
+        <div className={`${showTitle ? "mt-5 border-t border-secondary pt-4" : "mt-2"} flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-secondary`}>
           {servingLabel && <span>{servingLabel}</span>}
           {servingLabel && timeLabel && <span aria-hidden className="text-quaternary">·</span>}
           {timeLabel && <span>{timeLabel}</span>}
