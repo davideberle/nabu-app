@@ -47,6 +47,8 @@ const SILENT_WAV_DATA_URI =
 /** The slice of HTMLAudioElement this controller uses. */
 export type AudioLike = {
   src: string;
+  /** Optional: slower playback for the learning cockpit's "langsam" control. */
+  playbackRate?: number;
   play: () => Promise<void>;
   pause: () => void;
   onended: (() => void) | null;
@@ -66,7 +68,7 @@ export type ChildSpeechPlayer = {
   /** Call from a user tap. Idempotent; never throws. */
   unlock: () => void;
   /** Fetches and plays the reply in the child's voice. See contract above. */
-  speak: (params: { childId: string; text: string }) => Promise<SpeakResult>;
+  speak: (params: { childId: string; text: string; rate?: number }) => Promise<SpeakResult>;
   /** Stops playback and invalidates any in-flight speech. */
   cancel: () => void;
 };
@@ -164,7 +166,7 @@ export function createChildSpeechPlayer(
     }
   }
 
-  async function speak(params: { childId: string; text: string }): Promise<SpeakResult> {
+  async function speak(params: { childId: string; text: string; rate?: number }): Promise<SpeakResult> {
     // Supersede whatever was speaking; that promise resolves "cancelled".
     cancel();
     const mySeq = seq;
@@ -219,6 +221,12 @@ export function createChildSpeechPlayer(
       element.onerror = () => settle("fallback");
       try {
         element.src = url;
+        if (typeof params.rate === "number" && Number.isFinite(params.rate)) {
+          // Clamped: slower for repetition, never faster than natural.
+          element.playbackRate = Math.min(1, Math.max(0.5, params.rate));
+        } else if (element.playbackRate !== undefined) {
+          element.playbackRate = 1;
+        }
         const attempt = element.play();
         attempt?.catch(() => settle("fallback"));
       } catch {

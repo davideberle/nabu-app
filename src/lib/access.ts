@@ -37,6 +37,11 @@ export function isTrackerAllowedPath(pathname: string): boolean {
     pathname === "/family/listen" ||
     pathname === "/family/plan" ||
     pathname === "/family/rewards" ||
+    // Learning cockpit and mission workspace (family-assistant DESIGN §7.6).
+    // The parent evidence cockpit (/family/learn/parent) is deliberately NOT
+    // here: a tracker-only (shared child device) session is redirected away.
+    pathname === "/family/learn" ||
+    pathname === "/family/learn/mission" ||
     // Rewards game corner: the Adaptive Chess Coach launch page and its
     // vendored static bundle (Game Studio-owned pilot). The bundle is pure
     // client-side game code with no secrets; keeping it behind the household
@@ -149,7 +154,100 @@ const ADMIN_ONLY_API_ROUTES: { method: string; path: string }[] = [
   { method: "DELETE", path: "/api/family/redemptions" },
 ];
 
+/**
+ * Whole API prefixes only the owner session may reach, for every method. The
+ * learning parent routes are decided by `evaluateParentLearningAccess` inside
+ * each handler (`lib/family-learning-auth.ts`); middleware additionally keeps
+ * tracker-only sessions out before the handler runs.
+ */
+const ADMIN_ONLY_API_PREFIXES = ["/api/family/learning/parent/"];
+
+/**
+ * Exact inventory of parent learning endpoints (method + path). Tests assert
+ * that every entry is admin-only in middleware terms and that no other
+ * learning endpoint is; adding a parent endpoint means adding it here.
+ */
+export const PARENT_LEARNING_API_INVENTORY: readonly { method: string; path: string }[] = [
+  { method: "GET", path: "/api/family/learning/parent/evidence" },
+  { method: "POST", path: "/api/family/learning/parent/corrections" },
+  { method: "DELETE", path: "/api/family/learning/parent/records" },
+  { method: "GET", path: "/api/family/learning/parent/settings" },
+  { method: "PUT", path: "/api/family/learning/parent/settings" },
+];
+
+/** Parent learning page(s); never in the tracker allow-list. */
+export const PARENT_LEARNING_PAGES: readonly string[] = ["/family/learn/parent"];
+
+export type ParentLearningAccess =
+  | { allowed: true; adminEmail: string }
+  | { allowed: false; status: 401 | 403; error: "Unauthorized" | "Forbidden" };
+
+/**
+ * The one decision for every parent learning page and API, read or write
+ * (account rule settled 2026-09-29): the session must carry exactly the owner
+ * email. The assistant (shared child device) account, any other account,
+ * anonymous callers and anything that is not a NextAuth session are refused.
+ * Nothing but the server-side session is consulted — no cookie, header,
+ * bearer, unlock or challenge exists any more.
+ */
+export function evaluateParentLearningAccess(session: PlannerWriteSession): ParentLearningAccess {
+  const email = session?.user?.email;
+  if (!session?.user || typeof email !== "string" || !email.trim()) {
+    return { allowed: false, status: 401, error: "Unauthorized" };
+  }
+  if (isTrackerOnlyEmail(email) || !isAdminEmail(email)) {
+    return { allowed: false, status: 403, error: "Forbidden" };
+  }
+  return { allowed: true, adminEmail: email.trim().toLowerCase() };
+}
+
+/**
+ * Session-cookie refresh suppression (independent privacy reviews, 2026-09-29).
+ *
+ * The NextAuth middleware wrapper re-signs the JWT session and appends it as
+ * `Set-Cookie` to EVERY response it handles (pages, RSC, all APIs — sliding
+ * expiry); the Auth.js `/api/auth/session` handler does the same. Any response
+ * computed under the owner session but delivered after a sign-out or account
+ * switch therefore re-installs the owner cookie and resurrects the session,
+ * whichever route it came from. The app removes exactly those re-issued
+ * session cookies from every middleware response and from the session
+ * endpoint; the real writers — sign-in callback and sign-out — are route
+ * handlers/server actions whose cookies are merged separately and stay intact.
+ *
+ * Trade-off: sessions no longer slide. A sign-in lasts exactly Auth.js's
+ * `session.maxAge` (default 30 days) from the moment of sign-in, after which
+ * the middleware redirects to login and Google sign-in is required again. No
+ * server-side state, no product decision, no change to who may sign in.
+ */
+const SESSION_COOKIE_HEADER = /^\s*(?:__Secure-|__Host-)?authjs\.session-token(?:\.\d+)?=/i;
+
+/** True for a Set-Cookie header value that (re)writes the Auth.js session cookie or one of its chunks. */
+export function isSessionCookieHeader(value: string): boolean {
+  return SESSION_COOKIE_HEADER.test(value);
+}
+
+/** Split a joined Set-Cookie header on commas that start a new cookie (not the comma inside `Expires`). */
+export function splitSetCookieHeader(joined: string): string[] {
+  return joined.split(/,(?=\s*[^;,\s=]+=)/).map((part) => part.trim()).filter(Boolean);
+}
+
+/**
+ * Copy of `headers` without any Auth.js session-cookie write. Every other
+ * header — including the CSRF and callback-URL cookies Auth.js sets alongside —
+ * is preserved in order.
+ */
+export function withoutSessionRefresh(headers: Headers): Headers {
+  const getSetCookie = (headers as Headers & { getSetCookie?: () => string[] }).getSetCookie;
+  const cookies = typeof getSetCookie === "function" ? getSetCookie.call(headers) : splitSetCookieHeader(headers.get("set-cookie") ?? "");
+  const kept = cookies.filter((value) => !isSessionCookieHeader(value));
+  const next = new Headers(headers);
+  next.delete("set-cookie");
+  for (const value of kept) next.append("set-cookie", value);
+  return next;
+}
+
 export function isAdminOnlyApiRoute(method: string, pathname: string): boolean {
+  if (ADMIN_ONLY_API_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return true;
   return ADMIN_ONLY_API_ROUTES.some(
     (route) => route.method === method.toUpperCase() && route.path === pathname,
   );

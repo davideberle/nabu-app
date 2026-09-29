@@ -1,3 +1,4 @@
+import type { NextFetchEvent, NextRequest } from "next/server";
 import { auth } from "@/auth";
 import {
   isAdminOnlyApiRoute,
@@ -5,9 +6,14 @@ import {
   isTrackerAllowedPath,
   isTrackerOnlyEmail,
   isTrustedRuntimeApiRoute,
+  withoutSessionRefresh,
 } from "@/lib/access";
 
-export default auth((req) => {
+// The wrapper's overloaded return type demands a route-handler context as the
+// second argument; in middleware it is the fetch event.
+type AuthMiddleware = (request: NextRequest, event: NextFetchEvent) => Promise<Response | undefined>;
+
+const withAuth = auth((req) => {
   const isLoggedIn = !!req.auth;
   const isLoginPage = req.nextUrl.pathname === "/login";
   const isApiRoute = req.nextUrl.pathname.startsWith("/api/");
@@ -47,7 +53,24 @@ export default auth((req) => {
   if (isLoggedIn && isTrackerOnly && !isTrackerAllowedPath(req.nextUrl.pathname)) {
     return Response.redirect(new URL("/family/dashboard", req.nextUrl.origin));
   }
-});
+}) as unknown as AuthMiddleware;
+
+/**
+ * The NextAuth wrapper above appends a re-signed session cookie to every
+ * response it handles. No response leaves the middleware with that refresh
+ * (`withoutSessionRefresh`): a page, RSC or API response computed under the
+ * owner session but delivered after a sign-out or account switch must not
+ * re-install the owner session in the browser (independent privacy review,
+ * 2026-09-29). Sign-in and sign-out write their cookies in route handlers and
+ * server actions, which Next merges after this and which stay intact. The
+ * decision itself (403/redirect/next) is unchanged; sessions simply no longer
+ * slide — see the note on `withoutSessionRefresh`.
+ */
+export default async function middleware(request: NextRequest, event: NextFetchEvent) {
+  const response = await withAuth(request, event);
+  if (!response) return response;
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers: withoutSessionRefresh(response.headers) });
+}
 
 export const config = {
   // `family/assistant/manifest.webmanifest` and the two Family Assistant icon

@@ -1563,6 +1563,20 @@ function Workspace({
               </span>
             </span>
           </Link>
+          {/* The learning cockpit (DESIGN §7.6): a prominent learning entry
+              added beside the existing four actions, none of which is removed.
+              The cockpit itself decides what is genuinely available. */}
+          <Link href={`/family/learn?child=${profile.id}`} className={cn(homeActionClass, "sm:col-span-2")}>
+            <span className={homeActionIconClass} aria-hidden>
+              🧭
+            </span>
+            <span className="min-w-0">
+              <span className="block text-lg font-semibold text-primary">Lernen</span>
+              <span className="block text-sm text-tertiary">
+                Deine Expedition — Basis bauen, weitermachen, dem Tutor Fragen stellen
+              </span>
+            </span>
+          </Link>
         </div>
       </div>
     );

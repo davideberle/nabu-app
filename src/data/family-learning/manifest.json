@@ -1,0 +1,13 @@
+{
+  "source": "projects/family-assistant/learning",
+  "files": {
+    "schema.sql": {
+      "sha256": "ef8e0fed7c29f7b8990b4d11a795e5807e95c4319e9809034509d6415fd94641",
+      "bytes": 5938
+    },
+    "content/santiago-expedition-v1.json": {
+      "sha256": "eff6118772566c9a9a068a90de955f8c74a437f5462b17927f08b5d7aeb19734",
+      "bytes": 19429
+    }
+  }
+}

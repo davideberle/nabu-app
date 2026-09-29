@@ -6,6 +6,7 @@
 
 import { deepStrictEqual, equal } from "node:assert/strict";
 import { afterEach, describe, it } from "node:test";
+import { readFileSync } from "node:fs";
 import {
   evaluateHealthAccess,
   evaluatePlannerWriteAccess,
@@ -14,6 +15,13 @@ import {
   isTrackerAllowedApiPath,
   isTrackerAllowedPath,
   isTrustedRuntimeApiRoute,
+  isAdminOnlyApiRoute,
+  evaluateParentLearningAccess,
+  isSessionCookieHeader,
+  splitSetCookieHeader,
+  withoutSessionRefresh,
+  PARENT_LEARNING_API_INVENTORY,
+  PARENT_LEARNING_PAGES,
 } from "./access.ts";
 
 afterEach(() => {
@@ -243,5 +251,111 @@ describe("isTrustedRuntimeApiRoute — music New plays routes", () => {
     equal(isTrustedRuntimeApiRoute("DELETE", "/api/music/new-plays/actions"), false);
     equal(isTrustedRuntimeApiRoute("GET", "/api/music/new-plays/actions/ack"), false);
     equal(isTrustedRuntimeApiRoute("GET", "/api/music/new-plays/extra"), false);
+  });
+});
+
+describe("parent learning access — settled account rule (2026-09-29)", () => {
+  it("grants exactly the owner identity and nothing else", () => {
+    deepStrictEqual(evaluateParentLearningAccess({ user: { email: "info@davideberle.com" } }), { allowed: true, adminEmail: "info@davideberle.com" });
+    deepStrictEqual(evaluateParentLearningAccess({ user: { email: "Info@DavidEberle.com" } }), { allowed: true, adminEmail: "info@davideberle.com" });
+    deepStrictEqual(evaluateParentLearningAccess(null), { allowed: false, status: 401, error: "Unauthorized" });
+    deepStrictEqual(evaluateParentLearningAccess(undefined), { allowed: false, status: 401, error: "Unauthorized" });
+    deepStrictEqual(evaluateParentLearningAccess({ user: null }), { allowed: false, status: 401, error: "Unauthorized" });
+    deepStrictEqual(evaluateParentLearningAccess({ user: { email: "" } }), { allowed: false, status: 401, error: "Unauthorized" });
+    // The shared child device account: child views only.
+    deepStrictEqual(evaluateParentLearningAccess({ user: { email: "assistant@davideberle.com" } }), { allowed: false, status: 403, error: "Forbidden" });
+    // Other or forged identities.
+    deepStrictEqual(evaluateParentLearningAccess({ user: { email: "someone@example.com" } }), { allowed: false, status: 403, error: "Forbidden" });
+    deepStrictEqual(evaluateParentLearningAccess({ user: { email: "info@davideberle.com.evil.example" } }), { allowed: false, status: 403, error: "Forbidden" });
+    deepStrictEqual(evaluateParentLearningAccess({ user: { email: "xinfo@davideberle.com" } }), { allowed: false, status: 403, error: "Forbidden" });
+  });
+  it("an extra tracker-only configuration can never widen parent access", () => {
+    process.env.IPAD_TRACKER_ONLY_EMAILS = "info@davideberle.com";
+    deepStrictEqual(evaluateParentLearningAccess({ user: { email: "info@davideberle.com" } }), { allowed: false, status: 403, error: "Forbidden" });
+  });
+  it("no response re-issues the session cookie: middleware and the session endpoint strip exactly the Auth.js session cookie", () => {
+    // Plain, secure-prefixed and chunked session cookies are all session writes; nothing else is.
+    equal(isSessionCookieHeader("authjs.session-token=abc; Path=/; HttpOnly; SameSite=Lax"), true);
+    equal(isSessionCookieHeader("__Secure-authjs.session-token=abc; Path=/; Secure; HttpOnly"), true);
+    equal(isSessionCookieHeader("__Host-authjs.session-token.1=abc; Path=/; Secure"), true);
+    equal(isSessionCookieHeader("authjs.session-token=; Path=/; Max-Age=0"), true);
+    equal(isSessionCookieHeader("authjs.csrf-token=abc; Path=/; HttpOnly"), false);
+    equal(isSessionCookieHeader("authjs.callback-url=http%3A%2F%2Fx; Path=/"), false);
+    equal(isSessionCookieHeader("family_learning_child=abc"), false);
+    // Joined header splitting keeps the comma inside Expires.
+    deepStrictEqual(splitSetCookieHeader("a=1; Expires=Thu, 29 Oct 2026 09:34:41 GMT; Path=/, b=2; Path=/"), ["a=1; Expires=Thu, 29 Oct 2026 09:34:41 GMT; Path=/", "b=2; Path=/"]);
+    // A middleware response: session refresh removed, CSRF/callback cookies and other headers kept in order.
+    const headers = new Headers({ "cache-control": "no-store", "x-middleware-next": "1" });
+    headers.append("set-cookie", "authjs.csrf-token=c; Path=/; HttpOnly; SameSite=Lax");
+    headers.append("set-cookie", "authjs.callback-url=u; Path=/; HttpOnly; SameSite=Lax");
+    headers.append("set-cookie", "authjs.session-token=eyJ; Path=/; Expires=Thu, 29 Oct 2026 09:34:41 GMT; HttpOnly; SameSite=Lax");
+    headers.append("set-cookie", "__Secure-authjs.session-token.0=eyJ; Path=/; Secure");
+    const stripped = withoutSessionRefresh(headers);
+    deepStrictEqual(stripped.getSetCookie(), ["authjs.csrf-token=c; Path=/; HttpOnly; SameSite=Lax", "authjs.callback-url=u; Path=/; HttpOnly; SameSite=Lax"]);
+    equal(stripped.get("cache-control"), "no-store");
+    equal(stripped.get("x-middleware-next"), "1");
+    // Nothing to strip: headers pass through unchanged.
+    equal(withoutSessionRefresh(new Headers({ "content-type": "application/json" })).get("set-cookie"), null);
+    // The middleware applies it to EVERY response it returns, and the session endpoint to its own reply.
+    const middleware = readFileSync(new URL("../middleware.ts", import.meta.url), "utf8");
+    equal(middleware.includes("headers: withoutSessionRefresh(response.headers)"), true);
+    equal(/suppressesSessionRefresh|pathname\)\) return response/.test(middleware), false);
+    // The Auth.js route: BOTH methods of the session action (GET read, POST update) go through the
+    // strip; no handler is re-exported untouched. Sign-in callback and sign-out are other actions and pass.
+    const authRoute = readFileSync(new URL("../app/api/auth/[...nextauth]/route.ts", import.meta.url), "utf8");
+    equal(authRoute.includes("withoutSessionRefresh(response.headers)"), true);
+    equal(authRoute.includes("return withoutSessionActionRefresh(handlers.GET, request)"), true);
+    equal(authRoute.includes("return withoutSessionActionRefresh(handlers.POST, request)"), true);
+    equal(/export const \{[^}]*\} = handlers/.test(authRoute), false);
+    const sessionAction = /\/api\/auth\/session\/?$/;
+    equal(sessionAction.test("/api/auth/session"), true);
+    equal(sessionAction.test("/api/auth/session/"), true);
+    equal(sessionAction.test("/api/auth/callback/google"), false);
+    equal(sessionAction.test("/api/auth/signout"), false);
+    equal(sessionAction.test("/api/auth/csrf"), false);
+    equal(sessionAction.test("/api/auth/signin/google"), false);
+  });
+
+  it("the parent page and every parent API route decide with the one shared guard (no parallel identity check)", () => {
+    // Source-level alignment: the page must not re-implement the rule with
+    // isAdminEmail or anything else; it calls evaluateParentLearningAccess and
+    // redirects on its decision. Every parent route goes through requireParentOwner.
+    const page = readFileSync(new URL("../app/family/learn/parent/page.tsx", import.meta.url), "utf8");
+    equal(page.includes("evaluateParentLearningAccess(session)"), true);
+    equal(page.includes("isAdminEmail"), false);
+    equal(/unlock|reauth|passkey|step-up/i.test(page), false);
+    const auth = readFileSync(new URL("./family-learning-auth.ts", import.meta.url), "utf8");
+    equal(auth.includes("evaluateParentLearningAccess(session)"), true);
+    for (const route of ["evidence", "corrections", "records", "settings"]) {
+      const source = readFileSync(new URL(`../app/api/family/learning/parent/${route}/route.ts`, import.meta.url), "utf8");
+      equal(source.includes("requireParentOwner()"), true, route);
+      equal(source.includes("isAdminEmail"), false, route);
+    }
+  });
+
+  it("every parent endpoint in the inventory is admin-only for its method, and child endpoints are not", () => {
+    for (const entry of PARENT_LEARNING_API_INVENTORY) equal(isAdminOnlyApiRoute(entry.method, entry.path), true, `${entry.method} ${entry.path}`);
+    for (const entry of PARENT_LEARNING_API_INVENTORY) equal(isAdminOnlyApiRoute("OPTIONS", entry.path), true);
+    equal(isAdminOnlyApiRoute("GET", "/api/family/learning/mission"), false);
+    equal(isAdminOnlyApiRoute("PUT", "/api/family/learning/mission"), false);
+    equal(isAdminOnlyApiRoute("POST", "/api/family/learning/session"), false);
+    for (const page of PARENT_LEARNING_PAGES) equal(isTrackerAllowedPath(page), false, page);
+    // Obsolete step-up endpoints no longer exist; their paths would still be admin-only by prefix.
+    equal(isAdminOnlyApiRoute("POST", "/api/family/learning/parent/unlock"), true);
+  });
+});
+
+describe("learning cockpit access (family-assistant DESIGN §7.6)", () => {
+  it("lets a tracker-only session reach the child cockpit and mission, never the parent cockpit", () => {
+    equal(isTrackerAllowedPath("/family/learn"), true);
+    equal(isTrackerAllowedPath("/family/learn/mission"), true);
+    equal(isTrackerAllowedPath("/family/learn/parent"), false);
+  });
+  it("treats every parent learning API route as admin-only for every method", () => {
+    equal(isAdminOnlyApiRoute("GET", "/api/family/learning/parent/evidence"), true);
+    equal(isAdminOnlyApiRoute("POST", "/api/family/learning/parent/unlock"), true);
+    equal(isAdminOnlyApiRoute("DELETE", "/api/family/learning/parent/records"), true);
+    equal(isAdminOnlyApiRoute("GET", "/api/family/learning/mission"), false);
+    equal(isAdminOnlyApiRoute("POST", "/api/family/learning/session"), false);
   });
 });
