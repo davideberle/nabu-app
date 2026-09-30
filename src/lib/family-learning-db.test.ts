@@ -50,7 +50,7 @@ describe("ensureLearningTables", () => {
     const client = await fresh();
     await ensureLearningTables(client);
     const tables = await client.execute("SELECT name FROM sqlite_master WHERE type = 'table' AND name LIKE 'family_learning_%' ORDER BY name");
-    equal(tables.rows.length, 9);
+    equal(tables.rows.length, 11);
   });
 });
 

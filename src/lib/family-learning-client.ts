@@ -15,6 +15,7 @@ import { isChildView } from "./family-learning-view-guard.ts";
 
 export const LEARNING_SESSION_PATH = "/api/family/learning/session";
 export const LEARNING_MISSION_PATH = "/api/family/learning/mission";
+export const LEARNING_TELEMETRY_PATH = "/api/family/learning/telemetry";
 export const LEARNING_REFRESH_MARGIN_MS = 60_000;
 
 export type LearningSessionInfo = { child: ChildId; token: string; expiresAt: number };
@@ -24,6 +25,9 @@ export type LearningSessionInfo = { child: ChildId; token: string; expiresAt: nu
  * child (`{ view: null, prepared: false }`); "bad-response" is a malformed or
  * mismatched payload and is never evidence of absence.
  */
+/** R5-1: the identity the request was rendered against (erasure generation + running visit instance); the server refuses a mismatch as stale. */
+export type MutationContext = { erasureGeneration: number; visit: { id: string; startedAt: string } | null };
+
 export type LearningFailure = "no-session" | "network" | "bad-response" | "unauthorized" | "unavailable" | "unprepared";
 // Every adopted view — read or write response, applied/replayed/stale/refused —
 // must satisfy the full runtime ChildView contract (family-learning-view-guard);
@@ -45,7 +49,9 @@ export type LearningClientDeps = {
 
 export type LearningClient = {
   read: (childId: ChildId, options?: { signal?: AbortSignal }) => Promise<LearningReadOutcome>;
-  mutate: (childId: ChildId, op: LearningOp, expectedRevision: number, options?: { signal?: AbortSignal; idempotencyKey?: string }) => Promise<LearningMutateOutcome>;
+  mutate: (childId: ChildId, op: LearningOp, expectedRevision: number, options?: { signal?: AbortSignal; idempotencyKey?: string; context?: MutationContext }) => Promise<LearningMutateOutcome>;
+  /** Send one bounded telemetry batch (idempotent by batch id); failures are silent by design. */
+  sendTelemetry: (childId: ChildId, batch: { batchId: string; visitId: string; visitStartedAt: string; erasureGeneration: number; events: unknown[] }, options?: { signal?: AbortSignal; keepalive?: boolean }) => Promise<boolean>;
   reset: () => void;
   peekSession: () => LearningSessionInfo | null;
 };
@@ -139,7 +145,7 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
         response = await doFetch(LEARNING_MISSION_PATH, {
           method: "PUT",
           headers: { Authorization: `Bearer ${info.token}`, "Content-Type": "application/json" },
-          body: JSON.stringify({ op, expectedRevision, idempotencyKey }),
+          body: JSON.stringify({ op, expectedRevision, idempotencyKey, context: options?.context ?? null }),
           signal: options?.signal,
         });
       } catch {
@@ -164,6 +170,17 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
         return { ok: false, status: "refused", code: payload.code, message: typeof payload.message === "string" ? payload.message : "", view };
       }
       return { ok: false, failure: failureFor(response.status), status: response.status };
+    },
+
+    async sendTelemetry(childId, batch, options) {
+      const info = await session(childId, options?.signal);
+      if (!info) return false;
+      try {
+        const response = await doFetch(LEARNING_TELEMETRY_PATH, { method: "POST", headers: { Authorization: `Bearer ${info.token}`, "Content-Type": "application/json" }, body: JSON.stringify(batch), signal: options?.signal, keepalive: options?.keepalive });
+        return response.ok;
+      } catch {
+        return false;
+      }
     },
 
     reset() {

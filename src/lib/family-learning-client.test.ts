@@ -87,7 +87,8 @@ describe("createLearningClient", () => {
     const applied = await client.mutate("santiago", { op: "start-visit" }, 4);
     ok(applied.ok && applied.status === "applied" && applied.view.revision === 5);
     const sent = JSON.parse(String(calls.find((c) => c.url === LEARNING_MISSION_PATH)?.init?.body));
-    deepStrictEqual(sent, { op: { op: "start-visit" }, expectedRevision: 4, idempotencyKey: "key-1" });
+    // R5-1: the wire body always carries the rendered identity context (null when the caller gave none).
+    deepStrictEqual(sent, { op: { op: "start-visit" }, expectedRevision: 4, idempotencyKey: "key-1", context: null });
     const stale = await client.mutate("santiago", { op: "start-visit" }, 4);
     ok(stale.ok && stale.status === "stale" && stale.view.revision === 9);
     const refused = await client.mutate("santiago", { op: "name-base", name: "X" }, 9);

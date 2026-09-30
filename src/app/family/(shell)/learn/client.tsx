@@ -18,6 +18,7 @@ import { NabuBadge, cn } from "@/components/ui/nabu";
 import { useChildShell } from "@/components/family/child-shell-provider";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import { createLearningClient } from "@/lib/family-learning-client";
+import { retireAllDrafts } from "@/lib/family-learning-draft-store";
 import type { ChildView } from "@/lib/family-learning-state";
 import { BaseScene } from "@/components/family/learning/base-scene";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
@@ -72,6 +73,8 @@ function Cockpit({ child }: { child: ChildId }) {
         setLoad({ kind: "unprepared" });
         return;
       }
+      // R5-3: an answered auth loss retires the completed drafts of the ended sign-in.
+      if (outcome.failure === "unauthorized" || outcome.failure === "no-session") retireAllDrafts(window.sessionStorage);
       setLoad({
         kind: "trouble",
         message:
@@ -122,7 +125,7 @@ function Cockpit({ child }: { child: ChildId }) {
   const view = load.view;
   const running = view.visit;
   const canStart = running !== null || view.next.visit !== null;
-  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : "Weiter";
+  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" ? "Neues Kapitel" : view.next.visit === "v3" ? "Kurzer Check" : "Weiter";
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6 sm:py-8">
@@ -135,13 +138,18 @@ function Cockpit({ child }: { child: ChildId }) {
       </header>
 
       <section className="mt-6 overflow-hidden rounded-3xl border border-primary bg-primary shadow-xs dark:shadow-none">
-        <BaseScene base={view.base} locations={view.locations} compact />
+        <BaseScene scene={view.scene} compact />
         <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0">
             <p className="text-lg font-semibold text-primary">
               {view.base.name ? `Basis „${view.base.name}“` : "Noch keine Basis"}
             </p>
             <p className="mt-1 text-base text-tertiary">{view.nextStep}</p>
+            {view.delayedCheck && view.delayedCheck.status === "waiting" && canStart ? (
+              <p className="mt-1 text-sm text-tertiary" data-testid="delayed-check-note">
+                {view.delayedCheck.childText}
+              </p>
+            ) : null}
             {running ? (
               <p className="mt-1 text-sm text-tertiary">
                 {running.title} · Schritt {Math.min(running.stageIndex + 1, running.stageCount)} von {running.stageCount}
@@ -154,8 +162,8 @@ function Cockpit({ child }: { child: ChildId }) {
               <span aria-hidden>→</span>
             </Link>
           ) : view.next.availableAt ? (
-            <div className="rounded-2xl bg-secondary px-4 py-3 text-sm text-primary">
-              Der späte Check öffnet am {formatDate(view.next.availableAt)}.
+            <div className="rounded-2xl bg-secondary px-4 py-3 text-sm text-primary" data-testid="delayed-check-waiting">
+              {view.delayedCheck?.childText ?? `Eine kurze Aufgabe von früher kommt am ${formatDate(view.next.availableAt)} zurück.`}
             </div>
           ) : (
             <NabuBadge tone="green">Alle Besuche geschafft</NabuBadge>

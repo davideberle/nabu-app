@@ -149,3 +149,49 @@ CREATE TABLE IF NOT EXISTS family_learning_parent_audit (
   payload_json TEXT,
   created_at   TEXT NOT NULL
 )
+;;
+-- One row per COMPLETED visit (approved redesign 2026-09-29, F6/R1): the
+-- completion identity is child + mission + visit + the visit's own start
+-- time, so a lost acknowledgement, a retry with the same or a new idempotency
+-- key, a refresh, a stale tab or a process restart can never produce a second
+-- review for the same completed visit (INSERT OR IGNORE on the primary key).
+-- `review_json` is the deterministic parent review (learning claims and UX
+-- hypotheses separated, telemetry missingness explicit). `historical` marks
+-- reviews created after the fact for visits completed before this table
+-- existed (no telemetry). `delivery_json` records where the review was
+-- delivered (the owner cockpit; an adult-side Clavus path only once a
+-- supported contract is verified). Deleted with the child's records.
+CREATE TABLE IF NOT EXISTS family_learning_completions (
+  child_id        TEXT NOT NULL,
+  completion_id   TEXT NOT NULL,
+  mission_id      TEXT NOT NULL,
+  content_version INTEGER NOT NULL,
+  visit_id        TEXT NOT NULL,
+  visit_started_at TEXT NOT NULL,
+  finished_at     TEXT NOT NULL,
+  historical      INTEGER NOT NULL DEFAULT 0,
+  review_json     TEXT NOT NULL,
+  delivery_json   TEXT,
+  created_at      TEXT NOT NULL,
+  PRIMARY KEY (child_id, completion_id)
+)
+;;
+-- Minimal task telemetry batches from the mission workspace (F6/R3): stage
+-- entries/exits, submissions, corrections, hints, retries, save failures,
+-- pause/resume, visibility and foreground-active intervals under an explicit
+-- idle rule. Never a key stream, audio, replay or attention score. One row
+-- per batch id (idempotent), deleted with the child's records.
+CREATE TABLE IF NOT EXISTS family_learning_telemetry (
+  child_id           TEXT NOT NULL,
+  batch_id           TEXT NOT NULL,
+  mission_id         TEXT NOT NULL,
+  visit_id           TEXT NOT NULL,
+  -- Visit instance (the visit's startedAt) and the erasure generation the
+  -- batch was produced under; both are checked inside the write transaction
+  -- so a batch can never attach to a later visit instance or survive erasure.
+  visit_started_at   TEXT NOT NULL,
+  erasure_generation INTEGER NOT NULL,
+  events_json        TEXT NOT NULL,
+  created_at         TEXT NOT NULL,
+  PRIMARY KEY (child_id, batch_id)
+)

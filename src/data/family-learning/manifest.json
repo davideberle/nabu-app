@@ -2,12 +2,16 @@
   "source": "projects/family-assistant/learning",
   "files": {
     "schema.sql": {
-      "sha256": "ef8e0fed7c29f7b8990b4d11a795e5807e95c4319e9809034509d6415fd94641",
-      "bytes": 5938
+      "sha256": "6db99261512a02c90affe0c93c372981567ac4872c96915b07d57fac48081e58",
+      "bytes": 8220
     },
     "content/santiago-expedition-v1.json": {
       "sha256": "eff6118772566c9a9a068a90de955f8c74a437f5462b17927f08b5d7aeb19734",
       "bytes": 19429
+    },
+    "content/santiago-expedition-v2.json": {
+      "sha256": "7122ab24e4d52472695b4b70008d4a335393d1c7e9b05032f27142118f9a47d2",
+      "bytes": 40195
     }
   }
 }

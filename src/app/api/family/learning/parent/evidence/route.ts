@@ -4,6 +4,7 @@ import { isChildId } from "@/lib/family-assistant-turn";
 import { NO_STORE, refuse, requireParentOwner } from "@/lib/family-learning-auth";
 import { loadLearningContent } from "@/lib/family-learning-content-server";
 import { readEvidence } from "@/lib/family-learning-db";
+import { delayedCheckInfo } from "@/lib/family-learning-summary";
 
 /**
  * GET /api/family/learning/parent/evidence?child=santiago|isabel
@@ -23,14 +24,18 @@ export async function GET(request: Request) {
   let contentId = "santiago-expedition";
   let prepared = false;
   let counts: Record<string, number> | null = null;
+  let content: ReturnType<typeof loadLearningContent> | undefined;
   try {
-    const content = loadLearningContent();
+    content = loadLearningContent();
     contentId = content.contentId;
     prepared = content.child === child;
-    counts = { math: content.math.items.length, language: content.language.segments.length, typingLessons: content.typing.lessons.length, typingLabels: content.typing.labelTasks.length };
+    counts = { version: content.contentVersion, math: content.math.items.length, language: content.language.segments.length, typingLessons: content.typing.lessons.length, typingCourse: content.typing.course?.lessons.length ?? 0, typingLabels: content.typing.labelTasks.length };
   } catch {
     /* evidence remains readable even if content fails to load */
   }
-  const bundle = await readEvidence(await getDb(), child, contentId);
-  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail }, { headers: NO_STORE });
+  const bundle = await readEvidence(await getDb(), child, contentId, undefined, prepared ? content : undefined);
+  // The delayed-check date is explained from the stored anchor with the server
+  // clock; the client never computes or simulates it.
+  const delayedCheck = prepared && content && bundle.state ? delayedCheckInfo(bundle.state, content, new Date()) : null;
+  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck }, { headers: NO_STORE });
 }

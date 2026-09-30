@@ -9,6 +9,8 @@
 // Per-line typed text is what is sent; the server computes every metric.
 // ---------------------------------------------------------------------------
 
+import { alignTyping } from "./family-learning-typing-metrics.ts";
+
 export type TypingDraftPhase = "typing" | "completed" | "saving" | "saved";
 
 export type TypingDraft = {
@@ -93,11 +95,8 @@ export function applySaveOutcome(
   }
 }
 
-/** Per-line preview metrics for the UI (server values are authoritative). */
-export function previewLine(expected: string, typed: string): { correct: number; extra: number; omitted: number } {
-  const e = Array.from(expected);
-  const t = Array.from(typed);
-  let correct = 0;
-  for (let i = 0; i < e.length; i += 1) if (t[i] === e[i]) correct += 1;
-  return { correct, extra: Math.max(0, t.length - e.length), omitted: Math.max(0, e.length - t.length) };
+/** Per-line preview metrics for the UI (alignment-aware, metric version 2; server values are authoritative). */
+export function previewLine(expected: string, typed: string): { correct: number; extra: number; omitted: number; substituted: number } {
+  const m = alignTyping(expected, typed);
+  return { correct: m.correctChars, extra: m.extraChars, omitted: m.omittedChars, substituted: m.substitutedChars };
 }

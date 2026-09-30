@@ -60,7 +60,8 @@ describe("content reconciliation by stable ID", () => {
   it("accepts the version-1 inventory with exact counts", () => {
     const r = reconcileLearningContent(raw);
     deepStrictEqual(r.problems, []);
-    deepStrictEqual(r.counts, { math: 5, language: 2, typingLessons: 3, typingLabels: 2 });
+    equal(r.version, 1);
+    deepStrictEqual(r.counts, { math: 5, language: 2, typingLessons: 3, typingLabels: 2, typingCourse: 0, visits: 3 });
   });
   it("refuses a wrong answer key and a missing item", () => {
     const broken = JSON.parse(JSON.stringify(raw));
@@ -104,10 +105,10 @@ describe("visit 1 — independent path", () => {
       ],
       env,
     ));
-    equal(state.language["LANG-EN-WATER"].done, true);
+    equal(state.language["LANG-EN-WATER"]!.done, true);
     equal(state.base.supplies.water, 1);
     // No help was recorded in this segment: the typed production is independent.
-    const production = state.language["LANG-EN-WATER"].records.find((r) => r.stepId === "produce");
+    const production = state.language["LANG-EN-WATER"]!.records.find((r) => r.stepId === "produce");
     deepStrictEqual(production?.support, []);
     const typingView = buildChildView(state, content, env.settings, env.now());
     equal(typingView.visit?.stage, "typing");
@@ -157,10 +158,10 @@ describe("teaching loop and evidence downgrades", () => {
     // Three substantive attempts are the ceiling: no fourth guess is accepted.
     throws(() => applyLearningOp(a3.state, { op: "answer-math", itemId: "EQ-ENTRY", answer: 6, raw: "6", modality: "typed" }, env));
     // Teaching could also have been taken right after the example.
-    ok(applyLearningOp(a2.state, { op: "request-teaching", itemId: "EQ-ENTRY" }, env).state.math["EQ-ENTRY"].outcome === "taught");
+    ok(applyLearningOp(a2.state, { op: "request-teaching", itemId: "EQ-ENTRY" }, env).state.math["EQ-ENTRY"]!.outcome === "taught");
     const taught = applyLearningOp(a3.state, { op: "request-teaching", itemId: "EQ-ENTRY" }, env);
-    equal(taught.state.math["EQ-ENTRY"].exposure, "answer_revealed");
-    equal(taught.state.math["EQ-ENTRY"].outcome, "taught");
+    equal(taught.state.math["EQ-ENTRY"]!.exposure, "answer_revealed");
+    equal(taught.state.math["EQ-ENTRY"]!.outcome, "taught");
     equal(taught.records.exposures[0].kind, "answer_revealed");
     // A correct answer after the example is supported (example + clarification recorded).
     const a3ok = applyLearningOp(back.state, { op: "answer-math", itemId: "EQ-ENTRY", answer: 6, raw: "6", modality: "typed" }, env);
@@ -188,14 +189,14 @@ describe("teaching loop and evidence downgrades", () => {
     const { env, state: s0 } = toEntry();
     const q = applyLearningOp(s0, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_question", payload: { text: "Was heisst gerecht?" } }, env);
     const r = applyLearningOp(q.state, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_reply", payload: { text: "Gerecht heisst gleich viele: jede Person bekommt 6 Pakete." } }, env);
-    equal(r.state.math["EQ-ENTRY"].exposure, "answer_revealed");
+    equal(r.state.math["EQ-ENTRY"]!.exposure, "answer_revealed");
     equal(r.records.exposures[0].source, "tutor_reply");
     const a = applyLearningOp(r.state, { op: "answer-math", itemId: "EQ-ENTRY", answer: 6, raw: "6", modality: "typed" }, env);
     equal(a.result.evidence, "answer_exposed");
     // A reply without the number is only ever "supported".
     const q2 = applyLearningOp(s0, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_question" }, env);
     const r2 = applyLearningOp(q2.state, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_reply", payload: { text: "Teile die Pakete in vier gleich grosse Gruppen." } }, env);
-    equal(r2.state.math["EQ-ENTRY"].exposure, "shown");
+    equal(r2.state.math["EQ-ENTRY"]!.exposure, "shown");
     const a2 = applyLearningOp(r2.state, { op: "answer-math", itemId: "EQ-ENTRY", answer: 6, raw: "6", modality: "typed" }, env);
     equal(a2.result.evidence, "supported");
   });
@@ -212,7 +213,7 @@ describe("teaching loop and evidence downgrades", () => {
     const { env, state: s0 } = toEntry();
     const a = applyLearningOp(s0, { op: "answer-math", itemId: "EQ-ENTRY", answer: null, raw: "sechzehn?", modality: "spoken", uncertain: true }, env);
     equal(a.result.evidence, "unscored");
-    equal(a.state.math["EQ-ENTRY"].phase, "answer");
+    equal(a.state.math["EQ-ENTRY"]!.phase, "answer");
     const b = applyLearningOp(a.state, { op: "answer-math", itemId: "EQ-ENTRY", answer: 6, raw: "6", modality: "spoken" }, env);
     equal(b.result.evidence, "independent");
   });
@@ -225,7 +226,7 @@ describe("teaching loop and evidence downgrades", () => {
     // Simulate: the item was shown, the child left; the visit is stopped and a
     // later visit re-opens it. We model that by mutating shownVisit to v0.
     const stale = JSON.parse(JSON.stringify(state)) as MissionState;
-    stale.math["EQ-ENTRY"].shownVisit = "v3";
+    stale.math["EQ-ENTRY"]!.shownVisit = "v3";
     const a = applyLearningOp(stale, { op: "answer-math", itemId: "EQ-ENTRY", answer: 6, raw: "6", modality: "typed" }, env);
     equal(a.result.evidence, "supported");
     equal(a.records.attempts[0].evidence, "supported");
@@ -374,7 +375,7 @@ describe("regressions from the independent review (2026-09-28)", () => {
     const { env, state: s0 } = toLanguage();
     // Gloss recorded server-side; the later step op carries no flags at all.
     const g = applyLearningOp(s0, { op: "support", taskId: "LANG-EN-WATER", kind: "gloss", payload: { word: "need" } }, env);
-    deepStrictEqual(g.state.language["LANG-EN-WATER"].help.gloss, ["need"]);
+    deepStrictEqual(g.state.language["LANG-EN-WATER"]!.help.gloss, ["need"]);
     let state = g.state;
     ({ state } = run(state, [
       { op: "language-step", segmentId: "LANG-EN-WATER", stepId: "listen", response: "", modality: "listen" },
@@ -406,7 +407,7 @@ describe("regressions from the independent review (2026-09-28)", () => {
       { op: "language-step", segmentId: "LANG-EN-WATER", stepId: "listen", response: "", modality: "listen" },
       { op: "language-step", segmentId: "LANG-EN-WATER", stepId: "pick", response: "water", modality: "word-choice" },
     ], env));
-    equal(s4.language["LANG-EN-WATER"].records[0].response, "listened");
+    equal(s4.language["LANG-EN-WATER"]!.records[0].response, "listened");
     const repeated = applyLearningOp(s4, { op: "language-step", segmentId: "LANG-EN-WATER", stepId: "produce", response: "We need water.", modality: "spoken", transcriptConfirmed: true }, env);
     equal((repeated.records.attempts[0].answer as { productionKind: string }).productionKind, "repetition");
     // An unconfirmed spoken transcript is refused, never scored.
@@ -421,8 +422,8 @@ describe("regressions from the independent review (2026-09-28)", () => {
     // Stage is now EQ-FRESH; the reply for EQ-ENTRY still lands on EQ-ENTRY.
     const r = applyLearningOp(a.state, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_reply", payload: { text: "Es sind 6.", turnId: "t1" } }, env);
     equal(r.records.supports[0].taskId, "EQ-ENTRY");
-    equal(r.state.math["EQ-ENTRY"].exposure, "answer_revealed");
-    equal(r.state.math["EQ-FRESH"].exposure, "none");
+    equal(r.state.math["EQ-ENTRY"]!.exposure, "answer_revealed");
+    equal(r.state.math["EQ-FRESH"]!.exposure, "none");
     throws(() => applyLearningOp(a.state, { op: "support", taskId: "EQ-NOPE", kind: "tutor_reply" }, env), (e: unknown) => e instanceof LearningOpError && e.code === "invalid");
   });
 
@@ -496,7 +497,7 @@ describe("regressions from the independent review, round 2 (2026-09-28)", () => 
       equal(result.status, "answered");
       equal(bridgeCalls.length, 1);
       ok(bridgeCalls[0].includes(`Aufgabe ${segmentId}/listen v1`));
-      equal(state.language[segmentId].help.tutor, 2);
+      equal(state.language[segmentId]!.help.tutor, 2);
       // The tutor help now makes every production in this segment supported.
       ({ state } = run(state, [
         { op: "language-step", segmentId, stepId: "listen", response: "", modality: "listen" },
@@ -532,7 +533,7 @@ describe("regressions from the independent review, round 2 (2026-09-28)", () => 
       "Wie geht das?",
     );
     equal(result.status, "answered");
-    equal(state.math["EQ-ENTRY"].exposure, "answer_revealed");
+    equal(state.math["EQ-ENTRY"]!.exposure, "answer_revealed");
     equal(applyLearningOp(state, { op: "answer-math", itemId: "EQ-ENTRY", answer: 6, raw: "6", modality: "typed" }, env).result.evidence, "answer_exposed");
   });
 
@@ -591,7 +592,7 @@ describe("regressions from the independent review, round 2 (2026-09-28)", () => 
       equal(unclear.evidence, "unscored");
       // A noncanonical response keeps the step open for one clarification try.
       const kept = applyLearningOp(base, { op: "language-step", segmentId: c.segmentId, stepId: "produce", response: c.noncanonical, modality: "typed" }, env);
-      equal(kept.state.language[c.segmentId].stepIndex, base.language[c.segmentId].stepIndex);
+      equal(kept.state.language[c.segmentId]!.stepIndex, base.language[c.segmentId]!.stepIndex);
     }
   });
 
@@ -651,12 +652,12 @@ describe("regressions from the independent review, round 3 (2026-09-28)", () => 
       ok(view.language.feedback.continueOffered && view.language.feedback.retryAllowed);
       // The identical answer again is refused, never silently advanced.
       throws(() => applyLearningOp(non.state, { op: "language-step", segmentId: c.segmentId, stepId: "produce", response: c.noncanonical, modality: "typed" }, env), (e: unknown) => e instanceof LearningOpError && /same-answer/.test(e.message));
-      equal(non.state.language[c.segmentId].stepIndex, state.language[c.segmentId].stepIndex);
+      equal(non.state.language[c.segmentId]!.stepIndex, state.language[c.segmentId]!.stepIndex);
       // Explicit continuation keeps the unscored record and moves on.
       const cont = applyLearningOp(non.state, { op: "language-continue", segmentId: c.segmentId, stepId: "produce" }, env);
-      equal(cont.state.language[c.segmentId].stepIndex, state.language[c.segmentId].stepIndex + 1);
+      equal(cont.state.language[c.segmentId]!.stepIndex, state.language[c.segmentId]!.stepIndex + 1);
       equal(cont.records.supports[0].kind, "step_down");
-      deepStrictEqual(cont.state.language[c.segmentId].records.filter((r) => r.stepId === "produce").map((r) => r.correct), [null]);
+      deepStrictEqual(cont.state.language[c.segmentId]!.records.filter((r) => r.stepId === "produce").map((r) => r.correct), [null]);
       // A canonical phrase after clarification is still scored (supported: retry).
       const fixed = applyLearningOp(non.state, { op: "language-step", segmentId: c.segmentId, stepId: "produce", response: c.phrase, modality: "typed" }, env);
       equal(fixed.records.attempts[0].correct, true);

@@ -1,9 +1,11 @@
+import { RetireLearningDrafts } from "./retire-learning-drafts";
 import { SignInButton } from "./sign-in-button";
 
 export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950">
       <div className="w-full max-w-sm p-8">
+        <RetireLearningDrafts />
         <div className="text-center mb-8">
           <span className="text-5xl mb-4 block">📜</span>
           <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">

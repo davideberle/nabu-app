@@ -1,0 +1,1201 @@
+{
+  "contentId": "santiago-expedition",
+  "contentVersion": 2,
+  "child": "santiago",
+  "reviewed": {
+    "status": "pending-independent-review",
+    "note": "Every prompt, accepted response and gloss below must be independently reviewed by stable ID before child use (DESIGN §7.6). Fixture walkthroughs are not observations about either child. Language scoring is deterministic (accepted / lexical / keywords / distractors lists); plausible noncanonical responses stay unscored pending clarification. Version-2 additions (v4, EQ-STATION, EQ-STATION-MODEL, LANG-ES-STATION, TYPE-CH-COURSE-1…5, spacing rules, station choices) need their own independent review by stable ID before child use."
+  },
+  "theme": {
+    "defaultTitle": "Die Expedition",
+    "defaultHook": "Baue eine kleine Basis und versorge dein Team.",
+    "note": "Starter theme only — not a verified interest. The parent may change title and hook before child use; the app does not generate other worlds."
+  },
+  "anchorLanguage": "de",
+  "visitBudgetMinutes": {
+    "min": 15,
+    "max": 20
+  },
+  "visits": [
+    {
+      "id": "v1",
+      "title": "Besuch 1 — Die Basis entsteht",
+      "stages": [
+        "name-base",
+        "place-base",
+        "EQ-ENTRY",
+        "EQ-FRESH",
+        "explain",
+        "LANG-EN-WATER",
+        "typing",
+        "log",
+        "reflect"
+      ]
+    },
+    {
+      "id": "v2",
+      "title": "Besuch 2 — Zurück auf der Basis",
+      "stages": [
+        "restore",
+        "EQ-RETURN",
+        "LANG-ES-AGUA",
+        "typing",
+        "log",
+        "reflect"
+      ]
+    },
+    {
+      "id": "v3",
+      "title": "Besuch 3 — Der späte Check",
+      "minDaysAfterTeaching": 6,
+      "stages": [
+        "restore",
+        "EQ-DELAY",
+        "log",
+        "reflect"
+      ]
+    },
+    {
+      "id": "v4",
+      "title": "Besuch 4 — Die Beobachtungsstation",
+      "intro": {
+        "who": "Die Biologin Mara vom Küstenteam braucht Hilfe.",
+        "make": "Ihr baut eine kleine Beobachtungsstation neben deiner Basis, mit Beeten und einer Lampe für die Nacht.",
+        "done": "Fertig ist es, wenn die Station steht, die Beete bepflanzt sind, die Lampe brennt und deine Seite im Logbuch ist."
+      },
+      "stages": [
+        "restore",
+        "station-choice",
+        "typing-course",
+        "EQ-STATION",
+        "explain",
+        "LANG-ES-STATION",
+        "station-build",
+        "log",
+        "log-revise",
+        "log-transfer",
+        "summary",
+        "reflect"
+      ]
+    }
+  ],
+  "locations": [
+    {
+      "id": "crater",
+      "label": "Am Kraterrand",
+      "emoji": "🌋"
+    },
+    {
+      "id": "ice",
+      "label": "Auf dem Eisfeld",
+      "emoji": "🧊"
+    },
+    {
+      "id": "forest",
+      "label": "Im Nebelwald",
+      "emoji": "🌲"
+    },
+    {
+      "id": "shore",
+      "label": "An der Küste",
+      "emoji": "🏝️"
+    }
+  ],
+  "math": {
+    "objective": "equal-sharing",
+    "items": [
+      {
+        "id": "EQ-ENTRY",
+        "version": 1,
+        "purpose": "First attempt",
+        "scored": true,
+        "visit": "v1",
+        "quantity": 24,
+        "groups": 4,
+        "answer": 6,
+        "unit": {
+          "singular": "Essenspaket",
+          "plural": "Essenspakete",
+          "emoji": "🥫"
+        },
+        "group": {
+          "singular": "Forscherin/Forscher",
+          "plural": "Forscher",
+          "emoji": "🧑‍🚀"
+        },
+        "prompt": "Vier Forscher teilen 24 Essenspakete gerecht auf. Wie viele Pakete bekommt jede Person?",
+        "clarification": "Schau noch einmal genau: Alle vier bekommen gleich viele. Wie viele sind es dann?",
+        "representation": "Lege die 24 Pakete in die vier Fächer. Jedes Fach soll gleich voll sein.",
+        "scene": "Das Team wartet auf seine Essenspakete."
+      },
+      {
+        "id": "EQ-MODEL",
+        "version": 1,
+        "purpose": "Teaching example",
+        "scored": false,
+        "visit": "v1",
+        "quantity": 12,
+        "groups": 3,
+        "answer": 4,
+        "unit": {
+          "singular": "Paket",
+          "plural": "Pakete",
+          "emoji": "📦"
+        },
+        "group": {
+          "singular": "Fach",
+          "plural": "Fächer",
+          "emoji": "🗄️"
+        },
+        "prompt": "Schau zu: 12 Pakete kommen in 3 gleich grosse Fächer.",
+        "steps": [
+          "Ein Paket in jedes Fach: 3 Pakete sind verteilt, 9 bleiben übrig.",
+          "Noch eine Runde: 6 verteilt, 6 übrig.",
+          "Noch eine Runde: 9 verteilt, 3 übrig.",
+          "Letzte Runde: alle 12 sind verteilt. In jedem Fach liegen 4 Pakete.",
+          "Das passt zu 3 × 4 = 12. Gerecht teilen heisst: gleich viele in jedem Fach."
+        ],
+        "note": "Demonstrated by the tutor. Never counts as independent evidence."
+      },
+      {
+        "id": "EQ-FRESH",
+        "version": 1,
+        "purpose": "After teaching",
+        "scored": true,
+        "visit": "v1",
+        "quantity": 35,
+        "groups": 5,
+        "answer": 7,
+        "unit": {
+          "singular": "Essenspaket",
+          "plural": "Essenspakete",
+          "emoji": "🥫"
+        },
+        "group": {
+          "singular": "Forscherin/Forscher",
+          "plural": "Forscher",
+          "emoji": "🧑‍🚀"
+        },
+        "prompt": "Fünf Forscher teilen 35 Essenspakete gerecht auf. Wie viele Pakete bekommt jede Person?",
+        "clarification": "Alle fünf bekommen gleich viele. Zähle noch einmal nach.",
+        "representation": "Lege die 35 Pakete in die fünf Fächer. Jedes Fach soll gleich voll sein.",
+        "scene": "Das zweite Team kommt an — es braucht auch Vorräte."
+      },
+      {
+        "id": "EQ-RETURN",
+        "version": 1,
+        "purpose": "Next visit / transfer",
+        "scored": true,
+        "visit": "v2",
+        "quantity": 28,
+        "groups": 4,
+        "answer": 7,
+        "unit": {
+          "singular": "Setzling",
+          "plural": "Setzlinge",
+          "emoji": "🌱"
+        },
+        "group": {
+          "singular": "Beet",
+          "plural": "Beete",
+          "emoji": "🪴"
+        },
+        "prompt": "28 Setzlinge werden gerecht auf 4 Beete verteilt. Wie viele Setzlinge kommen in jedes Beet?",
+        "clarification": "In jedem Beet sollen gleich viele wachsen. Wie viele sind das?",
+        "representation": "Setze die 28 Setzlinge in die vier Beete. Jedes Beet bekommt gleich viele.",
+        "scene": "Der Garten der Basis wird angelegt."
+      },
+      {
+        "id": "EQ-DELAY",
+        "version": 1,
+        "purpose": "Delayed check",
+        "scored": true,
+        "visit": "v3",
+        "quantity": 32,
+        "groups": 4,
+        "answer": 8,
+        "unit": {
+          "singular": "Probe",
+          "plural": "Proben",
+          "emoji": "🧪"
+        },
+        "group": {
+          "singular": "Kiste",
+          "plural": "Kisten",
+          "emoji": "🧰"
+        },
+        "prompt": "32 Proben werden gerecht auf 4 Kisten verteilt. Wie viele Proben kommen in jede Kiste?",
+        "clarification": "Jede Kiste soll gleich viele Proben haben. Wie viele sind das?",
+        "representation": "Lege die 32 Proben in die vier Kisten. Jede Kiste bekommt gleich viele.",
+        "scene": "Die Expedition schickt Proben ins Labor."
+      },
+      {
+        "id": "EQ-STATION",
+        "version": 1,
+        "purpose": "Next chapter: sharing with a remainder",
+        "scored": true,
+        "visit": "v4",
+        "kind": "remainder",
+        "quantity": 32,
+        "groups": 5,
+        "perGroup": 6,
+        "answers": {
+          "used": 30,
+          "remaining": 2
+        },
+        "answer": 6,
+        "unit": {
+          "singular": "Setzling",
+          "plural": "Setzlinge",
+          "emoji": "🌱"
+        },
+        "group": {
+          "singular": "Beet",
+          "plural": "Beete",
+          "emoji": "🪴"
+        },
+        "prompt": "Für die Beete der Station gibt es 32 Setzlinge. In jedes der 5 Beete passen genau 6 Setzlinge. Wie viele Setzlinge werden gepflanzt — und wie viele bleiben übrig?",
+        "clarification": "Rechne zuerst die vollen Beete: 5 Beete mit je 6 Setzlingen. Wie viele sind das zusammen? Was dann noch da ist, bleibt übrig.",
+        "representation": "Lege in jedes der 5 Beete genau 6 Setzlinge. Was nicht mehr hineinpasst, bleibt daneben liegen.",
+        "scene": "Die Station bekommt einen Garten.",
+        "note": "Two answers are requested: planted (5 × 6 = 30) and remaining (32 − 30 = 2). 6.4 per bed is never the intended answer; leftovers stay whole and visible."
+      },
+      {
+        "id": "EQ-STATION-MODEL",
+        "version": 1,
+        "purpose": "Teaching example: remainder",
+        "scored": false,
+        "visit": "v4",
+        "kind": "remainder",
+        "quantity": 14,
+        "groups": 3,
+        "perGroup": 4,
+        "answers": {
+          "used": 12,
+          "remaining": 2
+        },
+        "answer": 4,
+        "unit": {
+          "singular": "Setzling",
+          "plural": "Setzlinge",
+          "emoji": "🌱"
+        },
+        "group": {
+          "singular": "Beet",
+          "plural": "Beete",
+          "emoji": "🪴"
+        },
+        "prompt": "Schau zu: 14 Setzlinge, 3 Beete, in jedes passen genau 4.",
+        "steps": [
+          "Ein Beet voll: 4 gepflanzt, 10 übrig.",
+          "Zwei Beete voll: 8 gepflanzt, 6 übrig.",
+          "Drei Beete voll: 12 gepflanzt, 2 übrig.",
+          "Alle Beete sind voll: 3 × 4 = 12 gepflanzt. 14 − 12 = 2 bleiben übrig.",
+          "Übrig heisst: Sie passen in kein Beet mehr. Sie bleiben ganz — es gibt keine halben Setzlinge."
+        ],
+        "note": "Demonstrated only when the remainder idea is new (after an incorrect answer). Never counts as independent evidence."
+      }
+    ],
+    "rules": {
+      "maxSubstantiveAttempts": 2,
+      "clarifyAfterFirstIncorrect": true,
+      "hideModelDuringFresh": true,
+      "answerRevealDowngradesToExposed": true
+    },
+    "recipientKinds": {
+      "EQ-ENTRY": "people",
+      "EQ-MODEL": "container",
+      "EQ-FRESH": "people",
+      "EQ-RETURN": "container",
+      "EQ-DELAY": "container",
+      "EQ-STATION": "container",
+      "EQ-STATION-MODEL": "container"
+    },
+    "recipientKindsNote": "Whether the recipients are people (packs are distributed AMONG explorers) or containers (seedlings are put INTO beds/crates). Drives the control wording only; every retained item's id, numbers, answer and texts are unchanged."
+  },
+  "language": {
+    "segments": [
+      {
+        "id": "LANG-EN-WATER",
+        "version": 1,
+        "language": "en",
+        "visit": "v1",
+        "title": "A supply request",
+        "objective": "Understand and produce 'We need …' in context",
+        "glosses": [
+          {
+            "word": "need",
+            "de": "brauchen",
+            "example": "We need water. — Wir brauchen Wasser."
+          },
+          {
+            "word": "water",
+            "de": "Wasser",
+            "example": "Water for the garden. — Wasser für den Garten."
+          },
+          {
+            "word": "garden",
+            "de": "Garten",
+            "example": "The garden is small. — Der Garten ist klein."
+          },
+          {
+            "word": "tools",
+            "de": "Werkzeug",
+            "example": "We need tools. — Wir brauchen Werkzeug."
+          }
+        ],
+        "steps": [
+          {
+            "id": "listen",
+            "kind": "listen-read",
+            "sentence": "We need water for the garden.",
+            "instruction": "Hör zu oder lies: Was braucht das Team?"
+          },
+          {
+            "id": "pick",
+            "kind": "pick-supply",
+            "sentence": "We need water for the garden.",
+            "instruction": "Wähle die richtige Lieferung für den Garten.",
+            "options": [
+              "water",
+              "tools",
+              "seeds",
+              "lamp"
+            ],
+            "answer": "water",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          },
+          {
+            "id": "produce",
+            "kind": "produce",
+            "instruction": "Sag oder schreib es dem Team: We need …",
+            "frame": "We need ___.",
+            "accepted": [
+              "we need water",
+              "we need water for the garden",
+              "we need some water",
+              "we need the water"
+            ],
+            "target": "We need water.",
+            "evidence": "production",
+            "keywords": [
+              "water"
+            ],
+            "lexical": [
+              "water",
+              "some water",
+              "the water",
+              "fresh water"
+            ],
+            "distractors": [
+              "tools",
+              "tool",
+              "seeds",
+              "seed",
+              "lamp",
+              "light"
+            ],
+            "rubric": "accepted → correct phrase production; lexical → correct lexical completion of the frame (not phrase production); a response with the keyword that matches neither stays unscored pending clarification; a response naming a distractor and no keyword is incorrect; anything else stays unscored.",
+            "clarification": "Das kann gut stimmen. Sag es bitte noch einmal genau mit dem Satzanfang: „We need …“ — oder mach ohne Bewertung weiter.",
+            "correction": "Das war etwas anderes. Der Garten braucht Wasser — schau dir das Wort „water“ an und probier es nochmal.",
+            "unclear": "Ich konnte das keiner Antwort zuordnen. Probier es nochmal mit dem Satzanfang — oder mach ohne Bewertung weiter."
+          },
+          {
+            "id": "reuse",
+            "kind": "pick-supply",
+            "sentence": "The engineer says: We need tools for the base.",
+            "instruction": "Eine neue Anfrage. Was braucht die Ingenieurin?",
+            "options": [
+              "water",
+              "tools",
+              "seeds",
+              "lamp"
+            ],
+            "answer": "tools",
+            "evidence": "recognition",
+            "note": "Fresh use of the same phrase; the gloss is not shown before the choice.",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          }
+        ]
+      },
+      {
+        "id": "LANG-ES-AGUA",
+        "version": 1,
+        "language": "es",
+        "visit": "v2",
+        "title": "La planta necesita agua",
+        "objective": "Understand and produce 'Necesitamos …' in context",
+        "glosses": [
+          {
+            "word": "necesitamos",
+            "de": "wir brauchen",
+            "example": "Necesitamos agua. — Wir brauchen Wasser."
+          },
+          {
+            "word": "agua",
+            "de": "Wasser",
+            "example": "Agua para la planta. — Wasser für die Pflanze."
+          },
+          {
+            "word": "planta",
+            "de": "Pflanze",
+            "example": "La planta necesita agua. — Die Pflanze braucht Wasser."
+          },
+          {
+            "word": "herramientas",
+            "de": "Werkzeug",
+            "example": "Necesitamos herramientas. — Wir brauchen Werkzeug."
+          }
+        ],
+        "steps": [
+          {
+            "id": "listen",
+            "kind": "listen-read",
+            "sentence": "La planta necesita agua.",
+            "instruction": "Hör zu oder lies: Was braucht die Pflanze?"
+          },
+          {
+            "id": "pick",
+            "kind": "pick-supply",
+            "sentence": "La planta necesita agua.",
+            "instruction": "Wähle die richtige Lieferung für die Pflanze.",
+            "options": [
+              "agua",
+              "herramientas",
+              "semillas",
+              "lámpara"
+            ],
+            "answer": "agua",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          },
+          {
+            "id": "produce",
+            "kind": "produce",
+            "instruction": "Sag oder schreib es dem Team: Necesitamos …",
+            "frame": "Necesitamos ___.",
+            "accepted": [
+              "necesitamos agua",
+              "necesitamos el agua",
+              "necesitamos un poco de agua",
+              "la planta necesita agua"
+            ],
+            "target": "Necesitamos agua.",
+            "evidence": "production",
+            "keywords": [
+              "agua"
+            ],
+            "lexical": [
+              "agua",
+              "el agua",
+              "un poco de agua"
+            ],
+            "distractors": [
+              "herramientas",
+              "herramienta",
+              "semillas",
+              "semilla",
+              "lámpara",
+              "lampara",
+              "luz"
+            ],
+            "rubric": "accepted → correct phrase production; lexical → correct lexical completion of the frame (not phrase production); a response with the keyword that matches neither stays unscored pending clarification; a response naming a distractor and no keyword is incorrect; anything else stays unscored.",
+            "clarification": "Das kann gut stimmen. Sag es bitte noch einmal genau mit dem Satzanfang: „Necesitamos …“ — oder mach ohne Bewertung weiter.",
+            "correction": "Das war etwas anderes. Die Pflanze braucht Wasser — schau dir das Wort „agua“ an und probier es nochmal.",
+            "unclear": "Ich konnte das keiner Antwort zuordnen. Probier es nochmal mit dem Satzanfang — oder mach ohne Bewertung weiter."
+          },
+          {
+            "id": "reuse",
+            "kind": "pick-supply",
+            "sentence": "El ingeniero dice: Necesitamos herramientas.",
+            "instruction": "Eine neue Anfrage. Was braucht der Ingenieur?",
+            "options": [
+              "agua",
+              "herramientas",
+              "semillas",
+              "lámpara"
+            ],
+            "answer": "herramientas",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          }
+        ]
+      },
+      {
+        "id": "LANG-ES-STATION",
+        "version": 1,
+        "language": "es",
+        "visit": "v4",
+        "title": "Necesitamos una lámpara",
+        "objective": "Produce the full request 'Necesitamos una lámpara' and recognise the same phrase frame with another object",
+        "glosses": [
+          {
+            "word": "necesitamos",
+            "de": "wir brauchen",
+            "example": "Necesitamos una lámpara. — Wir brauchen eine Lampe."
+          },
+          {
+            "word": "lámpara",
+            "de": "Lampe",
+            "example": "La lámpara está en la estación. — Die Lampe ist in der Station."
+          },
+          {
+            "word": "estación",
+            "de": "Station",
+            "example": "La estación está lista. — Die Station ist fertig."
+          },
+          {
+            "word": "noche",
+            "de": "Nacht",
+            "example": "De noche necesitamos luz. — Nachts brauchen wir Licht."
+          },
+          {
+            "word": "tortugas",
+            "de": "Schildkröten",
+            "example": "Las tortugas nadan. — Die Schildkröten schwimmen."
+          },
+          {
+            "word": "equipo",
+            "de": "Team",
+            "example": "El equipo trabaja de noche. — Das Team arbeitet nachts."
+          }
+        ],
+        "steps": [
+          {
+            "id": "listen",
+            "kind": "listen-read",
+            "sentence": "El biólogo dice: Necesitamos una lámpara para la estación.",
+            "instruction": "Hör zu oder lies: Was braucht die Station?"
+          },
+          {
+            "id": "pick",
+            "kind": "pick-supply",
+            "sentence": "Necesitamos una lámpara para la estación.",
+            "instruction": "Wähle die richtige Lieferung für die Station.",
+            "options": [
+              "agua",
+              "herramientas",
+              "semillas",
+              "lámpara"
+            ],
+            "answer": "lámpara",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          },
+          {
+            "id": "produce",
+            "kind": "produce",
+            "instruction": "Bitte das Team um die Lampe. Sag oder schreib den ganzen Satz: Necesitamos …",
+            "frame": "Necesitamos ___.",
+            "accepted": [
+              "necesitamos una lámpara",
+              "necesitamos una lampara",
+              "necesitamos la lámpara",
+              "necesitamos la lampara",
+              "necesitamos una lámpara para la estación",
+              "necesitamos una lampara para la estacion",
+              "necesitamos una lámpara para la estacion",
+              "necesitamos una lampara para la estación"
+            ],
+            "target": "Necesitamos una lámpara.",
+            "evidence": "production",
+            "keywords": [
+              "lámpara",
+              "lampara"
+            ],
+            "lexical": [
+              "una lámpara",
+              "una lampara",
+              "lámpara",
+              "lampara",
+              "la lámpara",
+              "la lampara"
+            ],
+            "distractors": [
+              "agua",
+              "herramientas",
+              "herramienta",
+              "semillas",
+              "semilla",
+              "luz"
+            ],
+            "rubric": "accepted → correct phrase production; lexical → correct lexical completion of the frame (not phrase production); a response with the keyword that matches neither stays unscored pending clarification; a response naming a distractor and no keyword is incorrect; anything else stays unscored. Article and number are part of the reviewed accepted forms (una/la lámpara).",
+            "clarification": "Das kann gut stimmen. Sag es bitte noch einmal genau mit dem Satzanfang: „Necesitamos …“ — oder mach ohne Bewertung weiter.",
+            "correction": "Das war etwas anderes. Die Station braucht eine Lampe — schau dir das Wort „lámpara“ an und probier es nochmal.",
+            "unclear": "Ich konnte das keiner Antwort zuordnen. Probier es nochmal mit dem Satzanfang — oder mach ohne Bewertung weiter."
+          },
+          {
+            "id": "reuse",
+            "kind": "pick-supply",
+            "sentence": "Es de noche. La bióloga dice: Necesitamos agua para la estación.",
+            "instruction": "Eine neue Anfrage in der Nacht. Was braucht das Team jetzt?",
+            "options": [
+              "agua",
+              "herramientas",
+              "semillas",
+              "lámpara"
+            ],
+            "answer": "agua",
+            "evidence": "recognition",
+            "note": "The reuse sentence follows the child's station choice (turtles / waves / no theme); the request (agua) and the recognition evidence are the same in every variant. No variant asserts a theme the child did not choose.",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal.",
+            "variants": {
+              "turtles": "Es de noche. La bióloga dice: Necesitamos agua para las tortugas.",
+              "waves": "Es de noche. La bióloga dice: Necesitamos agua para el equipo.",
+              "none": "Es de noche. La bióloga dice: Necesitamos agua para la estación."
+            }
+          }
+        ]
+      }
+    ],
+    "supplyLabels": {
+      "water": {
+        "de": "Wasser",
+        "emoji": "💧"
+      },
+      "tools": {
+        "de": "Werkzeug",
+        "emoji": "🔧"
+      },
+      "seeds": {
+        "de": "Samen",
+        "emoji": "🌰"
+      },
+      "lamp": {
+        "de": "Lampe",
+        "emoji": "🔦"
+      },
+      "agua": {
+        "de": "Wasser",
+        "emoji": "💧"
+      },
+      "herramientas": {
+        "de": "Werkzeug",
+        "emoji": "🔧"
+      },
+      "semillas": {
+        "de": "Samen",
+        "emoji": "🌰"
+      },
+      "lámpara": {
+        "de": "Lampe",
+        "emoji": "🔦"
+      }
+    }
+  },
+  "typing": {
+    "note": "Positional drills stay unavailable until the parent confirms the physical keyboard and input layout. The label task records in-task practice accuracy only; keystrokes outside the task are never captured.",
+    "layouts": [
+      {
+        "id": "ch-de-qwertz",
+        "label": "Schweizer Tastatur (QWERTZ, de-CH)"
+      },
+      {
+        "id": "de-qwertz",
+        "label": "Deutsche Tastatur (QWERTZ, de-DE)"
+      },
+      {
+        "id": "us-qwerty",
+        "label": "US-Tastatur (QWERTY)"
+      }
+    ],
+    "lessons": [
+      {
+        "id": "TYPE-CH-QWERTZ-HOME",
+        "version": 1,
+        "layout": "ch-de-qwertz",
+        "title": "Grundstellung: die mittlere Reihe",
+        "homeRow": [
+          "a",
+          "s",
+          "d",
+          "f",
+          "g",
+          "h",
+          "j",
+          "k",
+          "l",
+          "ö",
+          "ä"
+        ],
+        "fingers": {
+          "a": "kleiner Finger links",
+          "s": "Ringfinger links",
+          "d": "Mittelfinger links",
+          "f": "Zeigefinger links",
+          "g": "Zeigefinger links",
+          "h": "Zeigefinger rechts",
+          "j": "Zeigefinger rechts",
+          "k": "Mittelfinger rechts",
+          "l": "Ringfinger rechts",
+          "ö": "kleiner Finger rechts",
+          "ä": "kleiner Finger rechts"
+        },
+        "lines": [
+          "fff jjj fj fj",
+          "ddd kkk dk dk",
+          "asdf jklö"
+        ]
+      },
+      {
+        "id": "TYPE-DE-QWERTZ-HOME",
+        "version": 1,
+        "layout": "de-qwertz",
+        "title": "Grundstellung: die mittlere Reihe",
+        "homeRow": [
+          "a",
+          "s",
+          "d",
+          "f",
+          "g",
+          "h",
+          "j",
+          "k",
+          "l",
+          "ö",
+          "ä"
+        ],
+        "fingers": {
+          "a": "kleiner Finger links",
+          "s": "Ringfinger links",
+          "d": "Mittelfinger links",
+          "f": "Zeigefinger links",
+          "g": "Zeigefinger links",
+          "h": "Zeigefinger rechts",
+          "j": "Zeigefinger rechts",
+          "k": "Mittelfinger rechts",
+          "l": "Ringfinger rechts",
+          "ö": "kleiner Finger rechts",
+          "ä": "kleiner Finger rechts"
+        },
+        "lines": [
+          "fff jjj fj fj",
+          "ddd kkk dk dk",
+          "asdf jklö"
+        ]
+      },
+      {
+        "id": "TYPE-US-QWERTY-HOME",
+        "version": 1,
+        "layout": "us-qwerty",
+        "title": "Grundstellung: die mittlere Reihe",
+        "homeRow": [
+          "a",
+          "s",
+          "d",
+          "f",
+          "g",
+          "h",
+          "j",
+          "k",
+          "l",
+          ";"
+        ],
+        "fingers": {
+          "a": "kleiner Finger links",
+          "s": "Ringfinger links",
+          "d": "Mittelfinger links",
+          "f": "Zeigefinger links",
+          "g": "Zeigefinger links",
+          "h": "Zeigefinger rechts",
+          "j": "Zeigefinger rechts",
+          "k": "Mittelfinger rechts",
+          "l": "Ringfinger rechts",
+          ";": "kleiner Finger rechts"
+        },
+        "lines": [
+          "fff jjj fj fj",
+          "ddd kkk dk dk",
+          "asdf jkl;"
+        ]
+      }
+    ],
+    "labelTasks": [
+      {
+        "id": "TYPE-LABEL-BASE",
+        "version": 1,
+        "visit": "v1",
+        "instruction": "Schreib das Schild für deine Basis.",
+        "targetFrom": "baseName"
+      },
+      {
+        "id": "TYPE-LABEL-GARDEN",
+        "version": 1,
+        "visit": "v2",
+        "instruction": "Schreib das Schild für den Garten.",
+        "target": "Garten der Basis"
+      }
+    ],
+    "course": {
+      "note": "Bounded Swiss-German (ch-de-qwertz) course: orientation, F/J anchors and the thumb on the space bar first, then small key groups, adding reaches only after the progression criteria. The order f/j+space → d/k → s/l → a/ö → g/h is a defensible reviewed opening, not a uniquely evidence-proven sequence. Only this layout has a course; the other layouts keep their single historical starter and never fall back to Swiss lessons. Keystrokes cannot verify finger use.",
+      "layout": "ch-de-qwertz",
+      "homePosition": {
+        "left": [
+          "a",
+          "s",
+          "d",
+          "f"
+        ],
+        "right": [
+          "j",
+          "k",
+          "l",
+          "ö"
+        ],
+        "anchors": [
+          "f",
+          "j"
+        ],
+        "thumb": " "
+      },
+      "reaches": {
+        "g": "Zeigefinger links (nach innen)",
+        "h": "Zeigefinger rechts (nach innen)",
+        "ä": "kleiner Finger rechts (weiter rechts)"
+      },
+      "fingers": {
+        "a": "kleiner Finger links",
+        "s": "Ringfinger links",
+        "d": "Mittelfinger links",
+        "f": "Zeigefinger links",
+        "g": "Zeigefinger links",
+        "h": "Zeigefinger rechts",
+        "j": "Zeigefinger rechts",
+        "k": "Mittelfinger rechts",
+        "l": "Ringfinger rechts",
+        "ö": "kleiner Finger rechts",
+        "ä": "kleiner Finger rechts",
+        " ": "Daumen"
+      },
+      "progression": {
+        "minBursts": 2,
+        "minAccuracy": 0.9,
+        "comfortRequired": "ok",
+        "tunable": true,
+        "note": "Advance only after at least two bursts at or above the accuracy threshold whose comfort was not 'hard'; otherwise offer the same or a smaller burst, or stop. Thresholds are design choices."
+      },
+      "alignmentCheck": {
+        "note": "Non-assessed setup check on the actual device: the parent confirms the PHYSICAL layout in the settings; this check confirms that the computer's INPUT source writes the same characters. F/J alone cannot distinguish CH from DE/US, so three distinguishing keys are pressed.",
+        "keys": [
+          {
+            "id": "right-of-0",
+            "prompt": "Drück die Taste rechts neben der 0 (oben).",
+            "expected": {
+              "ch-de-qwertz": "'",
+              "de-qwertz": "ß",
+              "us-qwerty": "-"
+            }
+          },
+          {
+            "id": "right-of-l",
+            "prompt": "Drück die Taste rechts neben dem L.",
+            "expected": {
+              "ch-de-qwertz": "ö",
+              "de-qwertz": "ö",
+              "us-qwerty": ";"
+            }
+          },
+          {
+            "id": "right-of-t",
+            "prompt": "Drück die Taste rechts neben dem T.",
+            "expected": {
+              "ch-de-qwertz": "z",
+              "de-qwertz": "z",
+              "us-qwerty": "y"
+            }
+          }
+        ]
+      },
+      "lessons": [
+        {
+          "id": "TYPE-CH-COURSE-1",
+          "version": 1,
+          "title": "f, j und die Leertaste",
+          "keys": [
+            "f",
+            "j",
+            " "
+          ],
+          "practiced": [],
+          "lines": [
+            "fff jjj",
+            "fj fj jf"
+          ]
+        },
+        {
+          "id": "TYPE-CH-COURSE-2",
+          "version": 1,
+          "title": "d und k",
+          "keys": [
+            "d",
+            "k"
+          ],
+          "practiced": [
+            "f",
+            "j",
+            " "
+          ],
+          "lines": [
+            "ddd kkk",
+            "fdk jkd"
+          ]
+        },
+        {
+          "id": "TYPE-CH-COURSE-3",
+          "version": 1,
+          "title": "s und l",
+          "keys": [
+            "s",
+            "l"
+          ],
+          "practiced": [
+            "f",
+            "j",
+            " ",
+            "d",
+            "k"
+          ],
+          "lines": [
+            "sss lll",
+            "sdf jkl"
+          ]
+        },
+        {
+          "id": "TYPE-CH-COURSE-4",
+          "version": 1,
+          "title": "a und ö",
+          "keys": [
+            "a",
+            "ö"
+          ],
+          "practiced": [
+            "f",
+            "j",
+            " ",
+            "d",
+            "k",
+            "s",
+            "l"
+          ],
+          "lines": [
+            "aaa ööö",
+            "asdf jklö"
+          ]
+        },
+        {
+          "id": "TYPE-CH-COURSE-5",
+          "version": 1,
+          "title": "g und h: die kurze Reichweite",
+          "keys": [
+            "g",
+            "h"
+          ],
+          "practiced": [
+            "f",
+            "j",
+            " ",
+            "d",
+            "k",
+            "s",
+            "l",
+            "a",
+            "ö"
+          ],
+          "lines": [
+            "ggg hhh",
+            "fgf jhj",
+            "das lag da"
+          ]
+        }
+      ]
+    }
+  },
+  "reflection": {
+    "prompt": "Wie war es heute?",
+    "options": [
+      {
+        "id": "easy",
+        "label": "Zu leicht"
+      },
+      {
+        "id": "right",
+        "label": "Genau richtig"
+      },
+      {
+        "id": "tricky",
+        "label": "Knifflig"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "enjoyment",
+        "prompt": "Hat es dir heute Spass gemacht?",
+        "options": [
+          {
+            "id": "yes",
+            "label": "Ja"
+          },
+          {
+            "id": "partly",
+            "label": "So halb"
+          },
+          {
+            "id": "no",
+            "label": "Nein"
+          }
+        ],
+        "skipLabel": "Lieber nicht sagen"
+      },
+      {
+        "id": "clarity",
+        "prompt": "War klar, was du tun sollst?",
+        "options": [
+          {
+            "id": "clear",
+            "label": "Ja, klar"
+          },
+          {
+            "id": "partly",
+            "label": "Meistens"
+          },
+          {
+            "id": "unclear",
+            "label": "Oft nicht"
+          }
+        ],
+        "skipLabel": "Lieber nicht sagen"
+      }
+    ],
+    "note": "All three dimensions are optional (approved design): difficulty (easy/right/tricky), enjoyment and clarity each have an explicit skip. Explicitly skipped, left open and not-offered dimensions are recorded as such and never turned into a neutral or positive value.",
+    "skipLabel": "Lieber nicht sagen"
+  },
+  "retention": {
+    "policy": "Pilot records stay until a parent deletes them. No raw audio and no keystrokes outside the task are stored. Each finished visit is summarised once for the parents (in the parent view); those summaries and the small task timeline are deleted together with the records. Conversation history with the tutor is kept separately on the family bridge and is not deleted here."
+  },
+  "supersedes": {
+    "contentVersion": 1,
+    "note": "Every version-1 entry below is unchanged in text, answer and version (meaning immutable). Version 2 only ADDS: visit v4, EQ-STATION and its teaching example, LANG-ES-STATION, the Swiss-German typing course with its alignment check, the reviewed spacing rules and the visit-4 station choices. Saved missions are upgraded additively (no reset, no reclassification). Revision of 2026-09-30 (independent repair round 2, still content version 2, never released): visit v4 gains the fresh writing-transfer stage (log-transfer, WRITE-TRANSFER-1), the Spanish reuse step follows the chosen station theme (variants + gloss equipo), reflection gains optional enjoyment/clarity dimensions, and math items carry recipient kinds for control wording. Every version-1 entry is still unchanged. Round 3 (2026-09-30): difficulty became optional (skip label), the transfer instruction invites a number, and transfer records count assessed reviewed boundaries (unassessable sentences stay unscored)."
+  },
+  "station": {
+    "note": "The observation theme is a child CHOICE, never an inferred lasting interest. Declining leads to a coherent alternative, not a dead end.",
+    "themes": [
+      {
+        "id": "turtles",
+        "label": "Schildkröten beobachten",
+        "emoji": "🐢",
+        "purpose": "Die Station zählt nachts die Schildkröten am Strand."
+      },
+      {
+        "id": "waves",
+        "label": "Wellen und Wetter messen",
+        "emoji": "🌊",
+        "purpose": "Die Station misst Wellen und Wind für das Team."
+      }
+    ],
+    "spots": [
+      {
+        "id": "beach",
+        "label": "Am Strand",
+        "emoji": "🏖️"
+      },
+      {
+        "id": "rocks",
+        "label": "Auf den Felsen",
+        "emoji": "🪨"
+      },
+      {
+        "id": "dune",
+        "label": "Auf der Düne",
+        "emoji": "🏜️"
+      }
+    ]
+  },
+  "writing": {
+    "spacing": {
+      "note": "Bounded, reviewed spacing feedback for the child's own log sentence. Two general rules (a letter next to a digit; a letter after sentence punctuation) plus a reviewed list of common German joins. This is NOT a general German word-segmentation engine: joins outside the list are not flagged. Spelling (e.g. Schildkröten) is taught separately and never corrected in this step.",
+      "rules": [
+        "digit-boundary",
+        "punctuation-boundary",
+        "reviewed-joins"
+      ],
+      "joins": [
+        {
+          "joined": "ichhabe",
+          "split": "ich habe"
+        },
+        {
+          "joined": "ichbin",
+          "split": "ich bin"
+        },
+        {
+          "joined": "ichwar",
+          "split": "ich war"
+        },
+        {
+          "joined": "wirhaben",
+          "split": "wir haben"
+        },
+        {
+          "joined": "wirsind",
+          "split": "wir sind"
+        },
+        {
+          "joined": "esgibt",
+          "split": "es gibt"
+        },
+        {
+          "joined": "dasist",
+          "split": "das ist"
+        },
+        {
+          "joined": "daswar",
+          "split": "das war"
+        },
+        {
+          "joined": "undich",
+          "split": "und ich"
+        },
+        {
+          "joined": "unddie",
+          "split": "und die"
+        },
+        {
+          "joined": "undder",
+          "split": "und der"
+        },
+        {
+          "joined": "unddann",
+          "split": "und dann"
+        },
+        {
+          "joined": "aufder",
+          "split": "auf der"
+        },
+        {
+          "joined": "inder",
+          "split": "in der"
+        },
+        {
+          "joined": "mitdem",
+          "split": "mit dem"
+        },
+        {
+          "joined": "fürdie",
+          "split": "für die"
+        },
+        {
+          "joined": "zweischildkröten",
+          "split": "zwei schildkröten"
+        }
+      ]
+    },
+    "transfer": {
+      "id": "WRITE-TRANSFER-1",
+      "version": 1,
+      "prompt": "Schreib einen neuen kurzen Satz für dein Logbuch: Was soll deine Station morgen beobachten?",
+      "instruction": "Ein neuer Satz — nicht der von vorhin. Eine Zeile reicht. Schreib auch eine Zahl hinein (zum Beispiel wie viele), mit Leerzeichen zwischen den Wörtern und zwischen Wort und Zahl.",
+      "note": "Fresh transfer check (approved proposal §2): a NEW short sentence written after the revision, never a copy of the page, the saved revision or the shown correction. Only the three reviewed spacing cases are assessed (digit boundary, punctuation boundary, reviewed joins): the record counts the reviewed boundaries that actually occur in the sentence (assessed) and how many were missing (flagged). A sentence without any reviewed boundary is unassessable and stays unscored — never a success. A clean sentence with at least one assessed boundary is limited evidence of spacing transfer at those cases and never a spelling or general-segmentation judgement. The record keeps whether the revision help had been shown in the same visit (exposure). Skipping is allowed and recorded."
+    }
+  }
+}

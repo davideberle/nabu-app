@@ -35,9 +35,29 @@ import { useChildShell } from "@/components/family/child-shell-provider";
 import { BaseScene } from "@/components/family/learning/base-scene";
 import { createChildTurnClient } from "@/lib/family-assistant-client";
 import { envelopeSpokenText, type ChildId } from "@/lib/family-assistant-turn";
-import { createLearningClient, type LearningMutateOutcome } from "@/lib/family-learning-client";
+import { createLearningClient, type LearningMutateOutcome, type MutationContext } from "@/lib/family-learning-client";
 import { stageLabel, type ChildView, type LearningOp, type SupportKind } from "@/lib/family-learning-state";
 import { createReadAloudController } from "@/lib/family-learning-audio";
+import { createTelemetryBuffer, enterStage, noteControl, noteInput, noteOp, noteSubmit, pause as pauseTelemetry, setHidden, takeBatch } from "@/lib/family-learning-telemetry";
+import { LogRevise, LogTransfer, ReflectFeedback, StationBuild, StationChoice, Summary, TypingCourse, type DraftContext } from "./redesign-stages";
+import { clearChildDrafts, retireAllDrafts, retireMismatched, type DraftIdentity } from "@/lib/family-learning-draft-store";
+
+/** The exact identity a completed draft is bound to: child, content version, visit instance, erasure generation, stage, sign-in. */
+function draftIdentityOf(view: ChildView): DraftIdentity {
+  return { child: view.child, contentVersion: view.contentVersion, visitId: view.visit?.id ?? "none", visitStartedAt: view.visit?.startedAt ?? "none", erasureGeneration: view.erasureGeneration, stage: view.visit?.stage ?? "none", session: view.sessionFingerprint ?? null };
+}
+
+/** R5-1: the request context the server fences on — from the exact identity a form was rendered for, or from a view. */
+function contextOf(identity: DraftIdentity): MutationContext {
+  return { erasureGeneration: identity.erasureGeneration, visit: identity.visitId === "none" ? null : { id: identity.visitId, startedAt: identity.visitStartedAt } };
+}
+function contextOfView(view: ChildView): MutationContext {
+  return { erasureGeneration: view.erasureGeneration, visit: view.visit ? { id: view.visit.id, startedAt: view.visit.startedAt } : null };
+}
+/** A completed form is keyed by the identity it was rendered for: a new generation or visit instance remounts it empty (never rebinds old content). */
+function identityKey(view: ChildView): string {
+  return `${view.erasureGeneration}:${view.visit?.id ?? "none"}:${view.visit?.startedAt ?? "none"}:${view.visit?.stage ?? "none"}`;
+}
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
 import { recordSupportConfirmed, runTutorTurn, type SupportOutcome } from "@/lib/family-learning-tutor";
 import { applySaveOutcome, commitLine, createTypingDraft, lessonPayload, markSaving, previewLine, typeInto, type TypingDraft } from "@/lib/family-learning-typing";
@@ -120,11 +140,45 @@ function Workspace({ child }: { child: ChildId }) {
   const abortRef = useRef<AbortController | null>(null);
   /** The latest rendered view — the only source of `expectedRevision`. */
   const viewRef = useRef<ChildView | null>(null);
+  // Minimal task telemetry (redesign F6/R3): a ref, never state — it must not
+  // re-render the workspace. Batches go out on stage change, every 20 s and
+  // on unmount; the idle rule and the event kinds live in the pure module.
+  const telemetryRef = useRef(createTelemetryBuffer());
+  /**
+   * Flush the buffered events as one batch. A batch belongs to one visit
+   * instance under one erasure generation, both established by the server
+   * view. The identity may be passed explicitly (captured BEFORE a finishing
+   * write, R3-3) together with a deterministic batch id, so the feedback of a
+   * completed visit still attaches to that visit and a replayed retry never
+   * stores it twice (INSERT OR IGNORE by batch id). Without a running visit and
+   * without an explicit identity there is nothing to attach to.
+   */
+  const flushTelemetry = useCallback(
+    (keepalive = false, identity?: { visitId: string; visitStartedAt: string; erasureGeneration: number } | null, batchId?: string) => {
+      const taken = takeBatch(telemetryRef.current, Date.now(), batchId ?? (typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `b-${Date.now()}`));
+      telemetryRef.current = taken.buffer;
+      if (!taken.batch) return;
+      const current = viewRef.current;
+      const target = identity ?? (current?.visit ? { visitId: current.visit.id, visitStartedAt: current.visit.startedAt, erasureGeneration: current.erasureGeneration } : null);
+      if (!target) return;
+      void learning.sendTelemetry(child, { batchId: taken.batch.batchId, ...target, events: taken.batch.events }, { keepalive });
+    },
+    [child, learning],
+  );
+  /** The identity of the running visit as the server view states it (null when no visit runs). */
+  const visitIdentity = () => {
+    const current = viewRef.current;
+    return current?.visit ? { visitId: current.visit.id, visitStartedAt: current.visit.startedAt, erasureGeneration: current.erasureGeneration } : null;
+  };
 
+  // Recoverable completed drafts (R4-2) live in the tab's sessionStorage, bound to the exact identity of the view.
+  const draftStorage = typeof window !== "undefined" ? window.sessionStorage : null;
   const adopt = useCallback((view: ChildView) => {
     viewRef.current = view;
     setLoad({ kind: "ready", view });
-  }, []);
+    // Any completed draft whose identity is not the current one (stage moved on, visit changed, erased, other sign-in) is retired now.
+    retireMismatched(draftStorage, draftIdentityOf(view));
+  }, [draftStorage]);
 
   const refresh = useCallback(async () => {
     const abort = new AbortController();
@@ -143,6 +197,8 @@ function Workspace({ child }: { child: ChildId }) {
       setLoad({ kind: "unprepared" });
       return;
     }
+    // R5-3: an answered auth loss retires the completed drafts of the ended sign-in.
+    if (outcome.failure === "unauthorized" || outcome.failure === "no-session") retireAllDrafts(window.sessionStorage);
     setLoad({
       kind: "trouble",
       message:
@@ -163,21 +219,56 @@ function Workspace({ child }: { child: ChildId }) {
       learning.reset();
       tutorClient.reset();
       speech.cancel();
+      // Leaving the workspace (Stopp, child switch, sign-out navigation) retires this child's recoverable drafts.
+      clearChildDrafts(typeof window !== "undefined" ? window.sessionStorage : null, child);
     };
-  }, [refresh, learning, tutorClient, speech]);
+  }, [refresh, learning, tutorClient, speech, child]);
+
+  const stageForTelemetry = load.kind === "ready" ? load.view.visit?.stage ?? null : null;
+  useEffect(() => {
+    telemetryRef.current = enterStage(telemetryRef.current, stageForTelemetry, Date.now());
+    if (stageForTelemetry) flushTelemetry();
+  }, [stageForTelemetry, flushTelemetry]);
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const onInput = () => {
+      telemetryRef.current = noteInput(telemetryRef.current, Date.now());
+    };
+    const onVisibility = () => {
+      telemetryRef.current = setHidden(telemetryRef.current, document.visibilityState === "hidden", Date.now());
+      if (document.visibilityState === "hidden") flushTelemetry(true);
+    };
+    document.addEventListener("keydown", onInput);
+    document.addEventListener("pointerdown", onInput);
+    document.addEventListener("visibilitychange", onVisibility);
+    const interval = window.setInterval(() => flushTelemetry(), 20_000);
+    return () => {
+      document.removeEventListener("keydown", onInput);
+      document.removeEventListener("pointerdown", onInput);
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.clearInterval(interval);
+      flushTelemetry(true);
+    };
+  }, [flushTelemetry]);
 
   /** One confirmed step, always at the latest revision. */
   const mutate = useCallback(
-    async (op: LearningOp, options?: { idempotencyKey?: string }): Promise<LearningMutateOutcome | null> => {
+    async (op: LearningOp, options?: { idempotencyKey?: string; identity?: DraftIdentity | null }): Promise<LearningMutateOutcome | null> => {
       const current = viewRef.current;
       if (!current) return null;
       setBusy(true);
       setNotice(null);
       const abort = new AbortController();
       abortRef.current = abort;
-      const outcome = await learning.mutate(child, op, current.revision, { signal: abort.signal, idempotencyKey: options?.idempotencyKey });
+      // R5-1: every request names the identity it was rendered against — the completed forms pass the
+      // identity they were mounted for; everything else uses the adopted view. The server fences on it.
+      const context = options?.identity ? contextOf(options.identity) : contextOfView(current);
+      const outcome = await learning.mutate(child, op, current.revision, { signal: abort.signal, idempotencyKey: options?.idempotencyKey, context });
       if (!aliveRef.current) return null;
       setBusy(false);
+      if (!outcome.ok && "failure" in outcome && (outcome.failure === "unauthorized" || outcome.failure === "no-session")) retireAllDrafts(window.sessionStorage);
+      telemetryRef.current = noteSubmit(telemetryRef.current, op.op === "support" ? "hint" : "submit", Date.now(), op.op, outcome.ok, Boolean(options?.idempotencyKey));
+      if (!outcome.ok && !("status" in outcome && outcome.status === "refused")) telemetryRef.current = noteOp(telemetryRef.current, "save-failure", Date.now(), op.op);
       if (outcome.ok) {
         adopt(outcome.view);
         if (outcome.status === "stale") setNotice("Da war schon ein neuerer Stand — ich zeige dir den aktuellen.");
@@ -185,7 +276,7 @@ function Workspace({ child }: { child: ChildId }) {
       }
       if ("status" in outcome && outcome.status === "refused") {
         adopt(outcome.view);
-        setNotice(outcome.code === "not-available" ? "Das ist gerade noch nicht verfügbar." : "Das ging so nicht. Schau nochmal.");
+        setNotice(outcome.code === "not-available" ? "Das ist gerade noch nicht verfügbar." : outcome.code === "copied-text" ? "Das ist der Satz von vorhin oder die gezeigte Korrektur. Schreib einen neuen Satz — oder wähle „Heute nicht“." : "Das ging so nicht. Schau nochmal.");
         return outcome;
       }
       setNotice(outcome.failure === "network" ? "Keine Verbindung. Dein Fortschritt ist bis hierher gespeichert." : "Etwas hat nicht geklappt. Versuch es nochmal.");
@@ -247,11 +338,21 @@ function Workspace({ child }: { child: ChildId }) {
 
   const stage = view.visit.stage;
   const optionalReason = view.visit.overBudget ? "time" : "child";
+  const draftContext: DraftContext = { storage: draftStorage, identity: draftIdentityOf(view) };
 
   return (
     <div className="mx-auto max-w-6xl px-3 py-4 sm:px-4 sm:py-6">
       <header className="flex flex-wrap items-center justify-between gap-3">
-        <Link href={`/family/learn?child=${child}`} className={secondaryButton} aria-label="Stopp und speichern">
+        <Link
+          href={`/family/learn?child=${child}`}
+          className={secondaryButton}
+          aria-label="Stopp und speichern"
+          onClick={() => {
+            // Stopping is the pause: the active interval closes here (C4), then the batch leaves with keepalive.
+            telemetryRef.current = noteControl(pauseTelemetry(telemetryRef.current, Date.now()), Date.now(), "stop");
+            flushTelemetry(true);
+          }}
+        >
           ■ Stopp
         </Link>
         <div className="min-w-0 text-center">
@@ -273,11 +374,26 @@ function Workspace({ child }: { child: ChildId }) {
 
       <div className={cn("mt-4 grid gap-4", tutorOpen && "lg:grid-cols-[minmax(0,1fr)_360px]")}>
         <main className="min-w-0 overflow-hidden rounded-3xl border border-primary bg-primary shadow-xs dark:shadow-none">
-          <BaseScene base={view.base} locations={view.locations} />
+          <BaseScene scene={view.scene} />
           <div className="p-4 sm:p-6">
             {stage === "name-base" ? <NameBase busy={busy} onSubmit={(name) => void mutate({ op: "name-base", name })} /> : null}
             {stage === "place-base" ? <PlaceBase view={view} busy={busy} onSubmit={(locationId) => void mutate({ op: "place-base", locationId })} /> : null}
             {stage === "restore" ? <Restore view={view} busy={busy} onContinue={() => void mutate({ op: "resume-base" })} /> : null}
+            {stage === "station-choice" ? <StationChoice view={view} busy={busy} onChoose={(theme) => void mutate({ op: "choose-station", theme })} /> : null}
+            {stage === "typing-course" && view.typingCourse ? (
+              <TypingCourse
+                key={`course:${view.typingCourse.unavailable ?? "ok"}`}
+                view={view}
+                busy={busy}
+                onCheck={(observed) => void mutate({ op: "typing-check", observed })}
+                onBurst={(op, idempotencyKey) => mutate(op, { idempotencyKey })}
+                onContinue={() => void mutate({ op: "typing-course-continue" })}
+              />
+            ) : null}
+            {stage === "station-build" ? <StationBuild view={view} busy={busy} onBuild={(spot) => void mutate({ op: "build-station", spot })} /> : null}
+            {stage === "log-revise" && view.logRevise ? <LogRevise view={view} busy={busy} onRevise={(text) => void mutate({ op: "revise-log", text })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-revise", reason: optionalReason })} /> : null}
+            {stage === "log-transfer" && view.transfer ? <LogTransfer key={identityKey(view)} view={view} busy={busy} drafts={draftContext} onSubmit={(payload, idempotencyKey, identity) => mutate(payload as LearningOp, { idempotencyKey, identity })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-transfer", reason: optionalReason })} /> : null}
+            {stage === "summary" && view.summary ? <Summary view={view} busy={busy} onNext={() => void mutate({ op: "summary-seen" })} /> : null}
             {view.math ? (
               <MathItem
                 key={view.math.id}
@@ -287,6 +403,7 @@ function Workspace({ child }: { child: ChildId }) {
                 speech={speech}
                 support={support}
                 onAnswer={(answer, raw, modality, uncertain) => void mutate({ op: "answer-math", itemId: view.math!.id, answer, raw, modality, uncertain })}
+                onAnswerRemainder={(used, remaining, raw, modality, uncertain) => void mutate({ op: "answer-remainder", itemId: view.math!.id, used, remaining, raw, modality, uncertain })}
                 onContinue={() => void mutate({ op: "continue-item", itemId: view.math!.id })}
                 onTeach={() => void mutate({ op: "request-teaching", itemId: view.math!.id })}
                 onStop={() => void mutate({ op: "stop-item", itemId: view.math!.id })}
@@ -324,7 +441,22 @@ function Workspace({ child }: { child: ChildId }) {
             ) : null}
             {stage === "log" ? <SaveLog view={view} busy={busy} onSubmit={(text, modality) => void mutate({ op: "save-log", text, modality })} /> : null}
             {stage === "reflect" && view.reflection ? (
-              <Reflect prompt={view.reflection.prompt} options={view.reflection.options} busy={busy} onSubmit={(optionId) => void mutate({ op: "reflect", optionId })} />
+              <ReflectFeedback
+                key={identityKey(view)}
+                view={view}
+                busy={busy}
+                drafts={draftContext}
+                onSubmit={async (payload, idempotencyKey, formIdentity) => {
+                  // The visit identity is captured BEFORE the finishing write: after it the view has no running
+                  // visit, and the remaining buffered UX events would otherwise have nothing to attach to.
+                  const identity = visitIdentity();
+                  const outcome = await mutate(payload as LearningOp, { idempotencyKey, identity: formIdentity });
+                  // The answered feedback dimensions are written by the SERVER inside the finishing transaction
+                  // (R4-1); the client only flushes its remaining UX events for this visit, under its own batch id.
+                  if (outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) flushTelemetry(true, identity, `ui-${idempotencyKey}`);
+                  return outcome;
+                }}
+              />
             ) : null}
           </div>
         </main>
@@ -449,14 +581,19 @@ function StartOrWait({ child, view, busy, onStart, notice }: { child: ChildId; v
         ← Zurück
       </Link>
       <div className="mt-6 overflow-hidden rounded-3xl border border-primary bg-primary">
-        <BaseScene base={view.base} locations={view.locations} />
+        <BaseScene scene={view.scene} />
         <div className="p-6 text-center">
           <h1 className="text-2xl font-semibold text-primary">{view.title}</h1>
           <p className="mt-2 text-base text-tertiary">{view.nextStep}</p>
           {notice ? <p className="mt-2 text-base text-primary">{notice}</p> : null}
+          {view.delayedCheck && (view.delayedCheck.status === "waiting" || view.delayedCheck.status === "open") ? (
+            <p className="mt-2 text-sm text-tertiary" data-testid="delayed-check-text">
+              {view.delayedCheck.childText}
+            </p>
+          ) : null}
           {view.next.visit ? (
-            <button type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-5")}>
-              {view.next.visit === "v1" ? "Los geht's" : "Weiter geht's"}
+            <button type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-5")} data-testid="start-visit">
+              {view.next.visit === "v1" ? "Los geht's" : view.next.visit === "v4" ? "Neues Kapitel starten" : view.next.visit === "v3" ? "Kurzer Check von früher" : "Weiter geht's"}
             </button>
           ) : null}
         </div>
@@ -511,10 +648,19 @@ function PlaceBase({ view, busy, onSubmit }: { view: ChildView; busy: boolean; o
 }
 
 function Restore({ view, busy, onContinue }: { view: ChildView; busy: boolean; onContinue: () => void }) {
+  const intro = view.visit?.intro ?? null;
   return (
     <div className="flex flex-col gap-4">
       <h2 className="text-2xl font-semibold text-primary">Willkommen zurück auf „{view.base.name}“.</h2>
-      <p className="text-base text-tertiary">Deine Vorräte sind noch da. Heute geht die Expedition weiter.</p>
+      {intro ? (
+        <div className="rounded-2xl bg-secondary p-4 text-base text-primary" data-testid="mission-intro">
+          <p>{intro.who}</p>
+          <p className="mt-1">{intro.make}</p>
+          <p className="mt-1 text-tertiary">{intro.done}</p>
+        </div>
+      ) : (
+        <p className="text-base text-tertiary">Deine Vorräte sind noch da. Heute geht die Expedition weiter.</p>
+      )}
       <button type="button" onClick={onContinue} disabled={busy} className={primaryButton}>
         Weiter
       </button>
@@ -533,6 +679,7 @@ function MathItem({
   speech,
   support,
   onAnswer,
+  onAnswerRemainder,
   onContinue,
   onTeach,
   onStop,
@@ -543,15 +690,21 @@ function MathItem({
   speech: ChildSpeechPlayer;
   support: SupportFn;
   onAnswer: (answer: number | null, raw: string, modality: "typed" | "counters" | "spoken", uncertain?: boolean) => void;
+  onAnswerRemainder: (used: number | null, remaining: number | null, raw: string, modality: "typed" | "counters" | "spoken", uncertain?: boolean) => void;
   onContinue: () => void;
   onTeach: () => void;
   onStop: () => void;
 }) {
   const item = view.math!;
+  // Remainder items (EQ-STATION) ask for two numbers; each group has a capacity and leftovers stay visible.
+  const remainderItem = item.kind === "remainder";
+  const capacity = remainderItem ? item.perGroup ?? 0 : null;
+  const [rawUsed, setRawUsed] = useState("");
+  const [rawRemaining, setRawRemaining] = useState("");
   const [raw, setRaw] = useState("");
   const [countersOpen, setCountersOpen] = useState(false);
   const [trays, setTrays] = useState<number[]>(() => Array.from({ length: item.groups }, () => 0));
-  const [spoken, setSpoken] = useState<{ transcript: string; number: number | null } | null>(null);
+  const [spoken, setSpoken] = useState<{ transcript: string; number: number | null; second?: number | null } | null>(null);
   const placed = trays.reduce((a, b) => a + b, 0);
   const remaining = item.quantity - placed;
   const canAnswer = item.phase === "answer" || item.phase === "clarify" || item.phase === "represent";
@@ -572,6 +725,7 @@ function MathItem({
       const next = [...current];
       const value = next[index] + delta;
       if (value < 0) return current;
+      if (capacity !== null && value > capacity) return current;
       const total = next.reduce((a, b) => a + b, 0) - next[index] + value;
       if (total > item.quantity) return current;
       next[index] = value;
@@ -588,7 +742,11 @@ function MathItem({
     return (
       <div className="flex flex-col gap-3">
         <h2 className="text-2xl font-semibold text-primary">{item.scene ?? "Erledigt."}</h2>
-        {item.taughtAnswer !== null ? (
+        {item.taughtAnswers ? (
+          <p className="text-base text-primary">
+            Wir haben es zusammen gemacht: {item.groups} {item.group.plural} × {item.perGroup} = {item.taughtAnswers.used} {item.unit.plural} gepflanzt, {item.quantity} − {item.taughtAnswers.used} = {item.taughtAnswers.remaining} bleiben übrig.
+          </p>
+        ) : item.taughtAnswer !== null ? (
           <p className="text-base text-primary">
             Wir haben es zusammen gemacht: {item.quantity} {item.unit.plural} ÷ {item.groups} = {item.taughtAnswer} pro {item.group.singular}.
           </p>
@@ -606,14 +764,17 @@ function MathItem({
       <div className="flex flex-wrap gap-2">
         <AudioControls child={child} speech={speech} text={item.prompt} label="Vorlesen" disabled={busy} beforePlay={() => support("read_aloud", item.id, { text: "prompt" })} />
         {!countersOpen && canAnswer ? (
-          <button type="button" onClick={() => void openCounters()} className={secondaryButton} disabled={busy}>
-            🥫 Mit Päckchen legen
+          <button type="button" onClick={() => void openCounters()} className={secondaryButton} disabled={busy} data-testid="open-counters">
+            {item.groupKind === "people" ? `${item.unit.emoji} ${item.unit.plural} an die ${item.group.plural} verteilen` : `${item.unit.emoji} ${item.unit.plural} in die ${item.group.plural} legen`}
           </button>
         ) : null}
       </div>
 
       {item.phase === "clarify" && item.clarification ? (
-        <p className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-900 dark:bg-amber-950/40 dark:text-amber-100">{item.clarification}</p>
+        <p className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" role="status" data-testid="clarification">
+          {item.clarification}
+          {item.lastPartial ? (item.lastPartial.usedCorrect && !item.lastPartial.remainingCorrect ? " Die gepflanzten Setzlinge stimmen — schau den Rest noch einmal an." : !item.lastPartial.usedCorrect && item.lastPartial.remainingCorrect ? " Der Rest stimmt — zähle die vollen Beete noch einmal." : "") : ""}
+        </p>
       ) : null}
 
       {item.phase === "example" && item.example ? (
@@ -648,7 +809,11 @@ function MathItem({
 
       {countersOpen && canAnswer ? (
         <div className="rounded-2xl border border-primary p-4">
-          <p className="text-base text-primary">{item.representation ?? "Lege die Päckchen in die Fächer."}</p>
+          <p className="text-base text-primary" data-testid="grouping-instruction">
+            {item.groupKind === "people"
+              ? `${item.representation ? `${item.representation} ` : `Verteile die ${item.unit.plural} an die ${item.group.plural}: alle bekommen gleich viele. `}Jedes Fach unten steht für eine ${item.group.singular.includes("/") ? item.group.singular.replace("/", " oder einen ") : item.group.singular}.`
+              : item.representation ?? `Lege die ${item.unit.plural} in die ${item.group.plural}. Jedes ${item.group.singular} bekommt gleich viele.`}
+          </p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <span className="text-base font-medium text-primary">Übrig: {remaining}</span>
             <span
@@ -681,19 +846,73 @@ function MathItem({
               </div>
             ))}
           </div>
-          <button
-            type="button"
-            disabled={busy || remaining !== 0 || trays.some((t) => t !== trays[0])}
-            onClick={() => onAnswer(trays[0], String(trays[0]), "counters")}
-            className={cn(primaryButton, "mt-4")}
-          >
-            Jede Person bekommt {trays[0]} — fertig
-          </button>
-          {remaining === 0 && trays.some((t) => t !== trays[0]) ? <p className="mt-2 text-sm text-tertiary">Noch nicht überall gleich viele.</p> : null}
+          {remainderItem ? (
+            <>
+              <p className="mt-2 text-sm text-tertiary" data-testid="leftovers">
+                Übrig neben den {item.group.plural}: {remaining} {remaining === 1 ? item.unit.singular : item.unit.plural}
+              </p>
+              <button
+                type="button"
+                disabled={busy || trays.some((t) => t !== capacity)}
+                onClick={() => onAnswerRemainder(placed, remaining, `${placed} gepflanzt, ${remaining} übrig`, "counters")}
+                className={cn(primaryButton, "mt-4")}
+                data-testid="counters-submit"
+              >
+                {item.groups} {item.group.plural} voll (je {capacity}), {remaining} übrig — fertig
+              </button>
+              {trays.some((t) => t !== capacity) ? <p className="mt-2 text-sm text-tertiary">Jedes {item.group.singular} soll genau {capacity} bekommen. Was nicht mehr passt, bleibt daneben.</p> : null}
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                disabled={busy || remaining !== 0 || trays.some((t) => t !== trays[0])}
+                onClick={() => onAnswer(trays[0], String(trays[0]), "counters")}
+                className={cn(primaryButton, "mt-4")}
+                data-testid="counters-submit"
+              >
+                {item.groupKind === "people" ? `Jede ${item.group.singular.split("/")[0]}, jeder ${item.group.singular.split("/").pop()} bekommt ${trays[0]} — fertig` : `${trays[0]} pro ${item.group.singular} — fertig`}
+              </button>
+              {remaining === 0 && trays.some((t) => t !== trays[0]) ? <p className="mt-2 text-sm text-tertiary">Noch nicht überall gleich viele.</p> : null}
+            </>
+          )}
         </div>
       ) : null}
 
-      {canAnswer ? (
+      {canAnswer && remainderItem ? (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const used = parseAnswerNumber(rawUsed);
+            const rem = parseAnswerNumber(rawRemaining);
+            if (used === null || rem === null) return;
+            onAnswerRemainder(used, rem, `${rawUsed.trim()} gepflanzt, ${rawRemaining.trim()} übrig`, "typed");
+            setRawUsed("");
+            setRawRemaining("");
+          }}
+          className="flex flex-wrap items-end gap-3"
+        >
+          <label className="flex flex-col gap-1 text-base font-medium text-primary">
+            Gepflanzt
+            <input inputMode="numeric" pattern="[0-9]*" value={rawUsed} onChange={(e) => setRawUsed(e.target.value)} className={cn("min-h-14 w-32 rounded-2xl border border-primary bg-primary px-4 text-2xl text-primary", focusRing)} aria-label="Gepflanzt" />
+          </label>
+          <label className="flex flex-col gap-1 text-base font-medium text-primary">
+            Übrig
+            <input inputMode="numeric" pattern="[0-9]*" value={rawRemaining} onChange={(e) => setRawRemaining(e.target.value)} className={cn("min-h-14 w-32 rounded-2xl border border-primary bg-primary px-4 text-2xl text-primary", focusRing)} aria-label="Übrig" />
+          </label>
+          <button type="submit" disabled={busy || parseAnswerNumber(rawUsed) === null || parseAnswerNumber(rawRemaining) === null} className={primaryButton}>
+            Fertig
+          </button>
+          <SpokenAnswer
+            disabled={busy}
+            onTranscript={(transcript) => {
+              const numbers = transcript.match(/\d{1,3}/g) ?? [];
+              setSpoken({ transcript, number: numbers.length >= 2 ? Number(numbers[0]) : null, second: numbers.length >= 2 ? Number(numbers[1]) : null });
+            }}
+          />
+        </form>
+      ) : null}
+      {canAnswer && !remainderItem ? (
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -727,12 +946,14 @@ function MathItem({
                 type="button"
                 disabled={busy}
                 onClick={() => {
-                  onAnswer(spoken.number, spoken.transcript, "spoken");
+                  if (remainderItem) onAnswerRemainder(spoken.number, spoken.second ?? null, spoken.transcript, "spoken");
+                  else onAnswer(spoken.number, spoken.transcript, "spoken");
                   setSpoken(null);
                 }}
                 className={primaryButton}
               >
                 Ja, {spoken.number}
+                {remainderItem && spoken.second !== null && spoken.second !== undefined ? ` und ${spoken.second}` : ""}
               </button>
               <button type="button" disabled={busy} onClick={() => setSpoken(null)} className={secondaryButton}>
                 Nein, nochmal
@@ -745,7 +966,8 @@ function MathItem({
                 type="button"
                 disabled={busy}
                 onClick={() => {
-                  onAnswer(null, spoken.transcript, "spoken", true);
+                  if (remainderItem) onAnswerRemainder(null, null, spoken.transcript, "spoken", true);
+                  else onAnswer(null, spoken.transcript, "spoken", true);
                   setSpoken(null);
                 }}
                 className={secondaryButton}
@@ -1344,21 +1566,6 @@ function SaveLog({ view, busy, onSubmit }: { view: ChildView; busy: boolean; onS
   );
 }
 
-function Reflect({ prompt, options, busy, onSubmit }: { prompt: string; options: { id: string; label: string }[]; busy: boolean; onSubmit: (optionId: string) => void }) {
-  return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-semibold text-primary">{prompt}</h2>
-      <div className="grid gap-3 sm:grid-cols-3">
-        {options.map((option) => (
-          <button key={option.id} type="button" disabled={busy} onClick={() => onSubmit(option.id)} className={cn(chipButton, "min-h-16")}>
-            {option.label}
-          </button>
-        ))}
-      </div>
-      <p className="text-sm text-tertiary">Danach ist der Besuch fertig. Deine Seite ist gespeichert.</p>
-    </div>
-  );
-}
 
 // ---------------------------------------------------------------------------
 // Tutor panel: typed or spoken question → bridge, sequenced by the runner

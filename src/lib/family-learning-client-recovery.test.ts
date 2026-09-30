@@ -70,8 +70,10 @@ describe("typing draft (R3-3)", () => {
   });
 
   it("previews per-line extras and omissions", () => {
-    deepStrictEqual(previewLine("fff jjj fj fj", "fff jjj fj fjZZ"), { correct: 13, extra: 2, omitted: 0 });
-    deepStrictEqual(previewLine("ddd kkk dk dk", "ddd kkk dk "), { correct: 11, extra: 0, omitted: 2 });
+    deepStrictEqual(previewLine("fff jjj fj fj", "fff jjj fj fjZZ"), { correct: 13, extra: 2, omitted: 0, substituted: 0 });
+    deepStrictEqual(previewLine("ddd kkk dk dk", "ddd kkk dk "), { correct: 11, extra: 0, omitted: 2, substituted: 0 });
+    // Alignment-aware: one inserted character no longer shifts every later character into an error.
+    deepStrictEqual(previewLine("fff jjj", "fffx jjj"), { correct: 7, extra: 1, omitted: 0, substituted: 0 });
   });
 });
 

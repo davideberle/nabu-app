@@ -11,13 +11,25 @@
 // by the caller from the verified learning credential, and the answer keys are
 // read from the server-side content only. Views built for the browser strip
 // the keys (`buildChildView`).
+//
+// Content version 2 (approved redesign, 2026-09-29) is handled ADDITIVELY:
+// a saved version-1 mission is upgraded in memory by `upgradeMissionState`
+// (missing records get compatible defaults, nothing is reset, reclassified or
+// renumbered), the visit-4 chapter, the remainder item, the Spanish request,
+// the Swiss-German typing course with its input-alignment check, the spacing
+// revision and the visit summary are new stages/ops, and the delayed check
+// keeps its real clock and anchor provenance.
 // ---------------------------------------------------------------------------
 
 import type { ChildId } from "./family-assistant-turn.ts";
 import {
+  hasLanguageSegment,
+  hasMathItem,
+  isLanguageSegmentId,
   isScoredMathItemId,
   languageSegment,
   mathItem,
+  typingCourseForLayout,
   typingLessonForLayout,
   type KeyboardLayoutId,
   type LanguageSegment,
@@ -28,8 +40,12 @@ import {
   type MathItemId,
   type ScoredMathItemId,
   type StageId,
+  type TypingCourseLesson,
   type VisitId,
 } from "./family-learning-content.ts";
+import { buildSceneModel, buildVisitSummary, delayAnchor, delayedCheckInfo, type DelayedCheckInfo, type SceneModel, type VisitSummary } from "./family-learning-summary.ts";
+import { alignTyping, alignedLessonMetrics, TYPING_METRIC_VERSION, type AlignedLineMetrics } from "./family-learning-typing-metrics.ts";
+import { assessSpacing, evaluateRevision, flagSpacing, markSpacing, suggestSpacing, type SpacingFlag } from "./family-learning-writing.ts";
 
 // ---------------------------------------------------------------------------
 // State
@@ -67,7 +83,11 @@ const ANSWER_RELEVANT_SUPPORT: readonly SupportKind[] = [
 
 export type MathAttempt = {
   no: number;
+  /** Visit the attempt was made in (absent on historical records; the time window is used then). */
+  visit?: VisitId;
   answer: number | null;
+  /** Remainder items: the two requested numbers as answered. */
+  remainder?: { used: number | null; remaining: number | null } | null;
   raw: string;
   modality: AnswerModality;
   correct: boolean | null;
@@ -95,6 +115,8 @@ export type MathItemState = {
   supportGiven: SupportKind[];
   /** The child's accepted allocation, once the item is resolved. */
   allocation: number | null;
+  /** Remainder items: the accepted (used, remaining) pair once resolved. */
+  remainderResult?: { used: number; remaining: number } | null;
   resolvedAt: string | null;
   outcome: "pending" | "correct" | "taught" | "stopped";
 };
@@ -107,6 +129,10 @@ export type LanguageStepRecord = {
   response: string;
   modality: AnswerModality | "listen";
   support: ("gloss" | "audio" | "word-choice" | "tutor" | "retry" | "feedback")[];
+  /** Visit the record was made in (absent on historical records). */
+  visit?: VisitId;
+  /** Theme-dependent sentence variant actually shown (round 2). */
+  variant?: string;
   at: string;
 };
 
@@ -123,7 +149,7 @@ export type LanguageSegmentState = {
 
 export type ProductionKind = "independent" | "copying" | "repetition" | "glossed";
 
-export type TypingLineMetrics = { expectedChars: number; typedChars: number; correctChars: number; extraChars: number; omittedChars: number };
+export type TypingLineMetrics = { expectedChars: number; typedChars: number; correctChars: number; extraChars: number; omittedChars: number; substitutedChars?: number; metricVersion?: 1 | 2 };
 
 export type TypingLessonRecord = {
   lessonId: string;
@@ -135,8 +161,11 @@ export type TypingLessonRecord = {
   correctChars: number;
   extraChars: number;
   omittedChars: number;
+  substitutedChars?: number;
   /** Σ max(expected_i, typed_i): the denominator of the accuracy ratio. */
   denominator: number;
+  /** Absent on historical (positional, version-1) records. */
+  metricVersion?: 1 | 2;
   seconds: number;
   at: string;
 };
@@ -150,12 +179,81 @@ export type TypingLabelRecord = {
   correctChars: number;
   extraChars: number;
   omittedChars: number;
+  substitutedChars?: number;
+  metricVersion?: 1 | 2;
   seconds: number;
+  at: string;
+};
+
+export type TypingComfort = "easy" | "ok" | "hard";
+
+/** One short course burst (redesign F1/T2–T4): metric version 2, comfort self-rated. */
+export type TypingBurst = {
+  lessonId: string;
+  visit: VisitId;
+  /** Number of lesson lines typed (a "smaller" burst types a prefix); undefined = all lines (records before 2026-09-30). */
+  lineCount?: number;
+  lines: AlignedLineMetrics[];
+  expectedChars: number;
+  typedChars: number;
+  correctChars: number;
+  extraChars: number;
+  omittedChars: number;
+  substitutedChars: number;
+  denominator: number;
+  accuracy: number;
+  comfort: TypingComfort;
+  metricVersion: 2;
+  seconds: number;
+  at: string;
+};
+
+export type TypingCourseDecision = { lessonId: string; action: "start" | "repeat" | "smaller" | "advance" | "stop"; reason: string; at: string };
+
+export type TypingCourseState = {
+  layout: KeyboardLayoutId;
+  /** Index of the current lesson in the course. */
+  lessonIndex: number;
+  bursts: TypingBurst[];
+  decision: TypingCourseDecision | null;
+  /** Lessons whose progression criteria were met. */
+  completed: string[];
+};
+
+export type TypingAlignment = {
+  layout: KeyboardLayoutId;
+  checkedAt: string;
+  result: "match" | "mismatch";
+  observed: { id: string; expected: string; got: string }[];
+  /** Which layout the observed characters match, if any (parent-readable). */
+  matchesLayout: KeyboardLayoutId | null;
+};
+
+export type StationState = {
+  theme: string | null;
+  chosenAt: string | null;
+  spot: string | null;
+  built: boolean;
+  builtAt: string | null;
+  lampLit: boolean;
+};
+
+export type LogRevision = {
+  visit: VisitId;
+  original: string;
+  revised: string | null;
+  flagged: SpacingFlag[];
+  resolved: number;
+  outcome: "revised" | "partial" | "unchanged" | "skipped" | "no-flags";
+  modality: "typed" | "spoken";
+  helpShown: boolean;
   at: string;
 };
 
 export type ExpeditionPage = {
   visit: VisitId;
+  /** How the page text was entered (absent on pages saved before 2026-09-30 round 3). */
+  modality?: "typed" | "spoken";
   title: string;
   baseName: string;
   locationId: string | null;
@@ -171,7 +269,31 @@ export type VisitRecord = {
   finishedAt: string | null;
   stageIndex: number;
   skippedStages: { stage: StageId; reason: "time" | "child" }[];
+  /** Difficulty self-assessment (content reflection option id). */
   reflection: string | null;
+  /** Optional child feedback (round 2, R2-5): answered dimensions, explicitly skipped dimensions; absent when the content offered none. */
+  feedback?: VisitFeedback;
+};
+
+/** Explicitly skipped ("Lieber nicht sagen") is distinct from left open (unanswered); both are distinct from not offered by the content. */
+export type VisitFeedback = { answers: Record<string, string>; skipped: string[]; unanswered?: string[]; offered: string[] };
+
+/** The fresh writing-transfer check (round 2, R2-3): a NEW sentence after the revision. */
+export type TransferRecord = {
+  id: string;
+  version: number;
+  visit: VisitId;
+  text: string | null;
+  modality: "typed" | "spoken";
+  flagged: SpacingFlag[];
+  /** Reviewed boundaries that actually occur in the sentence (correct + flagged); 0 = unassessable (R3-1). Absent on records written before 2026-09-30 round 3. */
+  assessed?: number;
+  outcome: "clean" | "flagged" | "unassessable" | "skipped";
+  /** Whether the spacing help (revision) had been shown earlier in the same visit. */
+  helpExposed: boolean;
+  /** The revision record this transfer follows, if any. */
+  linkedRevisionAt: string | null;
+  at: string;
 };
 
 export type MissionState = {
@@ -181,17 +303,30 @@ export type MissionState = {
   revision: number;
   createdAt: string;
   updatedAt: string;
+  /** Set once by the additive upgrade to content version 2 (historical reviews are dated before it). */
+  upgradedAt?: string | null;
   base: { name: string | null; locationId: string | null; supplies: Record<string, number> };
   pages: ExpeditionPage[];
   visits: VisitRecord[];
   currentVisit: VisitId | null;
-  math: Record<ScoredMathItemId, MathItemState>;
+  math: Partial<Record<ScoredMathItemId, MathItemState>>;
   modelShownAt: string | null;
+  /** The remainder teaching example (EQ-STATION-MODEL) shown once. */
+  stationModelShownAt?: string | null;
   /** First teaching move in visit 1 — the anchor for the delayed check. */
   teachingFirstAt: string | null;
-  explanations: { visit: VisitId; text: string; modality: AnswerModality; at: string }[];
-  language: Record<LanguageSegmentId, LanguageSegmentState>;
-  typing: { lessons: TypingLessonRecord[]; labels: TypingLabelRecord[]; skipped: { visit: VisitId; reason: "time" | "child" }[] };
+  explanations: { visit: VisitId; text: string; modality: AnswerModality; taskId?: string | null; at: string }[];
+  language: Partial<Record<LanguageSegmentId, LanguageSegmentState>>;
+  typing: {
+    lessons: TypingLessonRecord[];
+    labels: TypingLabelRecord[];
+    skipped: { visit: VisitId; reason: "time" | "child" }[];
+    course?: TypingCourseState | null;
+    alignment?: TypingAlignment | null;
+  };
+  station?: StationState;
+  logRevisions: LogRevision[];
+  transfers?: TransferRecord[];
 };
 
 export type ParentSettings = {
@@ -210,7 +345,7 @@ export const EMPTY_PARENT_SETTINGS: ParentSettings = {
   languageVarietyEs: null,
 };
 
-const SCORED_IDS: readonly ScoredMathItemId[] = ["EQ-ENTRY", "EQ-FRESH", "EQ-RETURN", "EQ-DELAY"];
+const SCORED_IDS: readonly ScoredMathItemId[] = ["EQ-ENTRY", "EQ-FRESH", "EQ-RETURN", "EQ-DELAY", "EQ-STATION"];
 
 function emptyMathState(): MathItemState {
   return {
@@ -221,6 +356,7 @@ function emptyMathState(): MathItemState {
     attempts: [],
     supportGiven: [],
     allocation: null,
+    remainderResult: null,
     resolvedAt: null,
     outcome: "pending",
   };
@@ -230,7 +366,15 @@ function emptyLanguageState(): LanguageSegmentState {
   return { stepIndex: 0, records: [], help: { gloss: [], audio: [], wordChoice: [], tutor: 0 }, done: false, skipped: null };
 }
 
+function emptyStation(): StationState {
+  return { theme: null, chosenAt: null, spot: null, built: false, builtAt: null, lampLit: false };
+}
+
 export function newMissionState(content: LearningContent, child: ChildId, nowIso: string): MissionState {
+  const math: MissionState["math"] = {};
+  for (const id of SCORED_IDS) if (hasMathItem(content, id)) math[id] = emptyMathState();
+  const language: MissionState["language"] = {};
+  for (const segment of content.language.segments) language[segment.id] = emptyLanguageState();
   return {
     missionId: content.contentId,
     contentVersion: content.contentVersion,
@@ -238,22 +382,105 @@ export function newMissionState(content: LearningContent, child: ChildId, nowIso
     revision: 0,
     createdAt: nowIso,
     updatedAt: nowIso,
+    upgradedAt: null,
     base: { name: null, locationId: null, supplies: {} },
     pages: [],
     visits: [],
     currentVisit: null,
-    math: {
-      "EQ-ENTRY": emptyMathState(),
-      "EQ-FRESH": emptyMathState(),
-      "EQ-RETURN": emptyMathState(),
-      "EQ-DELAY": emptyMathState(),
-    },
+    math,
     modelShownAt: null,
+    stationModelShownAt: null,
     teachingFirstAt: null,
     explanations: [],
-    language: { "LANG-EN-WATER": emptyLanguageState(), "LANG-ES-AGUA": emptyLanguageState() },
-    typing: { lessons: [], labels: [], skipped: [] },
+    language,
+    typing: { lessons: [], labels: [], skipped: [], course: null, alignment: null },
+    station: emptyStation(),
+    logRevisions: [],
+    transfers: [],
   };
+}
+
+/**
+ * Additive, idempotent upgrade of a saved mission to the given content
+ * version: missing math/language records, the station, the typing course
+ * slot, the alignment slot and the revision list get compatible defaults;
+ * nothing existing is changed, renumbered or reclassified. In-flight visits
+ * keep their stage index because the version-1 visit stage lists are
+ * unchanged in version 2. Running it twice yields the same state.
+ */
+export function upgradeMissionState(input: MissionState, content: LearningContent, nowIso: string): { state: MissionState; changed: boolean } {
+  let changed = false;
+  const state = clone(input);
+  for (const id of SCORED_IDS) {
+    if (hasMathItem(content, id) && !state.math[id]) {
+      state.math[id] = emptyMathState();
+      changed = true;
+    }
+  }
+  for (const segment of content.language.segments) {
+    if (!state.language[segment.id]) {
+      state.language[segment.id] = emptyLanguageState();
+      changed = true;
+    }
+  }
+  if (!state.station) {
+    state.station = emptyStation();
+    changed = true;
+  }
+  if (!Array.isArray(state.logRevisions)) {
+    state.logRevisions = [];
+    changed = true;
+  }
+  if (!Array.isArray(state.transfers)) {
+    state.transfers = [];
+    changed = true;
+  }
+  // Records written before round 3 (2026-09-30) lack `assessed`: recompute it from the stored text so a sentence
+  // without any reviewed boundary is shown as unassessable instead of keeping a false "clean" credit.
+  for (const t of state.transfers) {
+    if (t.assessed === undefined && typeof t.text === "string") {
+      const a = assessSpacing(t.text, content.writing?.spacing.joins ?? []);
+      t.assessed = a.assessed;
+      if (!a.assessable && t.outcome === "clean") t.outcome = "unassessable";
+      changed = true;
+    }
+  }
+  if (state.typing.course === undefined) {
+    state.typing.course = null;
+    changed = true;
+  }
+  if (state.typing.alignment === undefined) {
+    state.typing.alignment = null;
+    changed = true;
+  }
+  if (state.stationModelShownAt === undefined) {
+    state.stationModelShownAt = null;
+    changed = true;
+  }
+  // Only ever upgrade: under a lower served content version (cap / rollback) the
+  // saved shape is kept as is, so returning to the newer content resumes exactly.
+  if (state.contentVersion < content.contentVersion) {
+    state.contentVersion = content.contentVersion;
+    state.upgradedAt = nowIso;
+    changed = true;
+  }
+  if (state.upgradedAt === undefined) {
+    state.upgradedAt = null;
+    changed = true;
+  }
+  return { state, changed };
+}
+
+function mathState(state: MissionState, id: ScoredMathItemId): MathItemState {
+  const item = state.math[id];
+  if (!item) throw new LearningOpError("not-available", `item ${id} is not part of this mission`);
+  return item;
+}
+
+function languageState(state: MissionState, id: LanguageSegmentId): LanguageSegmentState {
+  const seg = state.language[id];
+  if (!seg) throw new LearningOpError("not-available", `segment ${id} is not part of this mission`);
+  return seg;
 }
 
 // ---------------------------------------------------------------------------
@@ -288,7 +515,7 @@ export type SampleRow = {
   id: string;
   visitId: VisitId;
   taskId: string | null;
-  kind: "explanation" | "expedition_log" | "typed_label" | "language_response" | "typing_practice";
+  kind: "explanation" | "expedition_log" | "expedition_log_revision" | "writing_transfer" | "typed_label" | "language_response" | "typing_practice" | "typing_burst";
   language: string | null;
   modality: string;
   text: string;
@@ -313,6 +540,7 @@ export type LearningOp =
   | { op: "place-base"; locationId: string }
   | { op: "support"; taskId: string | null; kind: SupportKind; payload?: unknown }
   | { op: "answer-math"; itemId: ScoredMathItemId; answer: number | null; raw: string; modality: AnswerModality; uncertain?: boolean }
+  | { op: "answer-remainder"; itemId: ScoredMathItemId; used: number | null; remaining: number | null; raw: string; modality: AnswerModality; uncertain?: boolean }
   | { op: "request-teaching"; itemId: ScoredMathItemId }
   | { op: "stop-item"; itemId: ScoredMathItemId }
   | { op: "continue-item"; itemId: ScoredMathItemId }
@@ -321,21 +549,29 @@ export type LearningOp =
   | { op: "typing-lesson"; lessonId: string; lines: string[]; seconds: number }
   | { op: "language-continue"; segmentId: LanguageSegmentId; stepId: string }
   | { op: "typing-label"; taskId: string; typed: string; seconds: number }
+  | { op: "typing-check"; observed: string[] }
+  | { op: "typing-burst"; lessonId: string; lines: string[]; seconds: number; comfort: TypingComfort }
+  | { op: "typing-course-continue" }
+  | { op: "choose-station"; theme: string }
+  | { op: "build-station"; spot: string }
+  | { op: "revise-log"; text: string }
+  | { op: "summary-seen" }
   | { op: "skip-stage"; stage: StageId; reason: "time" | "child" }
   | { op: "save-log"; text: string; modality?: "typed" | "spoken" }
-  | { op: "reflect"; optionId: string };
+  | { op: "reflect"; optionId: string | null; difficultySkipped?: boolean; feedback?: { enjoyment?: string | null; clarity?: string | null } }
+  | { op: "write-transfer"; text: string; modality?: "typed" | "spoken" };
 
 export type OpEnv = { content: LearningContent; settings: ParentSettings; now: () => Date; newId: () => string };
 
 export class LearningOpError extends Error {
-  readonly code: "invalid" | "not-allowed" | "not-available" | "stale";
-  constructor(code: "invalid" | "not-allowed" | "not-available" | "stale", message: string) {
+  readonly code: "invalid" | "not-allowed" | "not-available" | "stale" | "copied-text";
+  constructor(code: "invalid" | "not-allowed" | "not-available" | "stale" | "copied-text", message: string) {
     super(message);
     this.code = code;
   }
 }
 
-export type OpResult = { state: MissionState; records: Records; result: Record<string, unknown> };
+export type OpResult = { state: MissionState; records: Records; result: Record<string, unknown>; finishedVisit?: VisitId | null };
 
 const ISO = (d: Date) => d.toISOString();
 const MAX_NAME_CHARS = 40;
@@ -351,6 +587,17 @@ function visitDef(content: LearningContent, id: VisitId) {
   return def;
 }
 
+/** Like visitDef but tolerant: a visit the served content does not know (e.g. under a content cap / rollback) yields undefined. */
+function findVisitDef(content: LearningContent, id: VisitId) {
+  return content.visits.find((v) => v.id === id);
+}
+
+/** True when the running visit exists in the state but not in the served content (parked, never touched). */
+export function runningVisitUnavailable(state: MissionState, content: LearningContent): boolean {
+  const running = state.visits.find((v) => v.finishedAt === null);
+  return !!running && !findVisitDef(content, running.id);
+}
+
 function currentVisit(state: MissionState): VisitRecord {
   const visit = state.visits.find((v) => v.id === state.currentVisit && v.finishedAt === null);
   if (!visit) throw new LearningOpError("not-allowed", "no visit is running");
@@ -361,8 +608,8 @@ export function currentStage(state: MissionState, content: LearningContent): Sta
   if (!state.currentVisit) return null;
   const visit = state.visits.find((v) => v.id === state.currentVisit && v.finishedAt === null);
   if (!visit) return null;
-  const def = visitDef(content, visit.id);
-  return def.stages[visit.stageIndex] ?? null;
+  const def = findVisitDef(content, visit.id);
+  return def?.stages[visit.stageIndex] ?? null;
 }
 
 function requireStage(state: MissionState, content: LearningContent, stage: StageId) {
@@ -387,27 +634,35 @@ function advance(state: MissionState, content: LearningContent) {
   }
 }
 
-/** Next visit the child may start, or the reason none can start yet. */
+/**
+ * Next visit the child may start, or the reason none can start yet.
+ * Priority (redesign F4/C3): v1, v2; then the delayed check WHEN it is due
+ * (its eligibility is time-bound), then the next chapter v4 (available from
+ * the moment v1 and v2 are complete — it never waits for the six days);
+ * afterwards the delayed check waits with its real date. Neither hides the
+ * other permanently.
+ */
 export function nextVisitAvailability(
   state: MissionState,
   content: LearningContent,
   now: Date,
 ): { visit: VisitId; availableAt: null } | { visit: VisitId | null; availableAt: string | null; reason: string } {
   const running = state.visits.find((v) => v.finishedAt === null);
+  // A running visit the served content does not define (content cap /
+  // rollback) is parked: nothing else is offered and nothing is changed.
+  if (running && !findVisitDef(content, running.id)) return { visit: null, availableAt: null, reason: "chapter-unavailable" };
   if (running) return { visit: running.id, availableAt: null };
   const finished = state.visits.filter((v) => v.finishedAt !== null).map((v) => v.id);
   if (!finished.includes("v1")) return { visit: "v1", availableAt: null };
   if (!finished.includes("v2")) return { visit: "v2", availableAt: null };
+  const hasV4 = content.visits.some((v) => v.id === "v4");
+  const info = delayedCheckInfo(state, content, now);
+  const v3Open = info?.status === "open";
+  if (!finished.includes("v3") && v3Open) return { visit: "v3", availableAt: null };
+  if (hasV4 && !finished.includes("v4")) return { visit: "v4", availableAt: null };
   if (!finished.includes("v3")) {
-    const def = visitDef(content, "v3");
-    const anchor = delayAnchor(state);
-    const minDays = def.minDaysAfterTeaching ?? 6;
-    if (!anchor) return { visit: null, availableAt: null, reason: "no-anchor" };
-    const availableAt = new Date(new Date(anchor).getTime() + minDays * 24 * 3600 * 1000);
-    if (now.getTime() < availableAt.getTime()) {
-      return { visit: null, availableAt: ISO(availableAt), reason: "delayed-check-waits" };
-    }
-    return { visit: "v3", availableAt: null };
+    if (!info || info.status === "no-anchor") return { visit: null, availableAt: null, reason: "no-anchor" };
+    return { visit: null, availableAt: info.availableAt, reason: "delayed-check-waits" };
   }
   return { visit: null, availableAt: null, reason: "all-visits-done" };
 }
@@ -426,22 +681,20 @@ export function ensureItemShown(state: MissionState, content: LearningContent, n
   const itemId = scoredItemForStage(stage);
   if (!itemId) return { state, records: emptyRecords(), changed: false };
   const item = state.math[itemId];
-  if (item.shownAt) return { state, records: emptyRecords(), changed: false };
+  if (!item || item.shownAt) return { state, records: emptyRecords(), changed: false };
   const next = clone(state);
   const nowIso = ISO(now);
-  next.math[itemId].shownAt = nowIso;
-  next.math[itemId].shownVisit = next.currentVisit;
-  next.math[itemId].exposure = "shown";
+  const nextItem = next.math[itemId]!;
+  nextItem.shownAt = nowIso;
+  nextItem.shownVisit = next.currentVisit;
+  nextItem.exposure = "shown";
   const def = mathItem(content, itemId);
   const records = emptyRecords();
   records.exposures.push({ taskId: itemId, taskVersion: def.version, kind: "shown", source: "render", at: nowIso });
   return { state: next, records, changed: true };
 }
 
-/** Anchor for the delayed check: first teaching move, else the end of visit 1. */
-export function delayAnchor(state: MissionState): string | null {
-  return state.teachingFirstAt ?? state.visits.find((v) => v.id === "v1")?.finishedAt ?? null;
-}
+export { delayAnchor };
 
 function secondsSince(from: string | null, now: Date): number | null {
   if (!from) return null;
@@ -452,18 +705,14 @@ function noteTeaching(state: MissionState, nowIso: string) {
   if (!state.teachingFirstAt && state.currentVisit === "v1") state.teachingFirstAt = nowIso;
 }
 
-/** Deterministic classification of a tutor reply against one item's answer. */
+/** Deterministic classification of a tutor reply against one item's answer(s). */
 export function tutorReplyRevealsAnswer(reply: string, item: MathItem): boolean {
-  const answer = String(item.answer);
+  const answers = item.kind === "remainder" && item.answers ? [String(item.answers.used), String(item.answers.remaining)] : [String(item.answer)];
   const tokens = reply.toLowerCase().match(/\d+|[a-zäöüß]+/g) ?? [];
-  for (let i = 0; i < tokens.length; i += 1) {
-    if (tokens[i] !== answer) continue;
-    // A standalone occurrence of the answer number anywhere in the reply is a
-    // positive exposure signal. Combined phrasings ("je 6", "6 each",
-    // "6 Pakete") are covered by the same token match.
-    return true;
-  }
-  return false;
+  // A standalone occurrence of an answer number anywhere in the reply is a
+  // positive exposure signal. Combined phrasings ("je 6", "6 each",
+  // "6 Pakete") are covered by the same token match.
+  return tokens.some((t) => answers.includes(t));
 }
 
 function evidenceFor(item: MathItemState, correct: boolean | null, fresh: boolean): EvidenceCategory {
@@ -486,9 +735,9 @@ function normalizeText(value: string): string {
 }
 
 /**
- * Typing accuracy over the completed text: positional matches divided by the
- * longer of target and typed length, so inserted or trailing extra characters
- * reduce the score instead of being ignored.
+ * Positional typing accuracy — the historical (metric version 1) comparator,
+ * kept only so old records keep their meaning. New records use the
+ * alignment-aware metrics (`family-learning-typing-metrics.ts`).
  */
 export function typingAccuracy(expected: string, typed: string): { expectedChars: number; typedChars: number; correctChars: number; extraChars: number } {
   const e = Array.from(expected);
@@ -503,21 +752,19 @@ export function accuracyRatio(m: { expectedChars: number; typedChars: number; co
   return denominator ? m.correctChars / denominator : 0;
 }
 
-/** Per-line metrics for a lesson; aggregates keep insertions and omissions separate. */
+/** Per-line metrics for a lesson (alignment-aware, metric version 2); aggregates keep insertions and omissions separate. */
 export function lessonMetrics(expectedLines: string[], typedLines: string[]): Omit<TypingLessonRecord, "lessonId" | "layout" | "seconds" | "at"> {
-  const lines: TypingLineMetrics[] = expectedLines.map((expected, i) => {
-    const m = typingAccuracy(expected, typedLines[i] ?? "");
-    return { ...m, omittedChars: Math.max(0, m.expectedChars - m.typedChars) };
-  });
-  const sum = (f: (l: TypingLineMetrics) => number) => lines.reduce((n, l) => n + f(l), 0);
+  const m = alignedLessonMetrics(expectedLines, typedLines);
   return {
-    lines,
-    expectedChars: sum((l) => l.expectedChars),
-    typedChars: sum((l) => l.typedChars),
-    correctChars: sum((l) => l.correctChars),
-    extraChars: sum((l) => l.extraChars),
-    omittedChars: sum((l) => l.omittedChars),
-    denominator: sum((l) => Math.max(l.expectedChars, l.typedChars)),
+    lines: m.lines,
+    expectedChars: m.expectedChars,
+    typedChars: m.typedChars,
+    correctChars: m.correctChars,
+    extraChars: m.extraChars,
+    omittedChars: m.omittedChars,
+    substitutedChars: m.substitutedChars,
+    denominator: m.denominator,
+    metricVersion: TYPING_METRIC_VERSION,
   };
 }
 
@@ -558,6 +805,59 @@ function findStep(segment: LanguageSegment, stepId: string): { step: LanguageSte
   return { step: segment.steps[index], index };
 }
 
+/** The scored item an explanation refers to: the last item shown and resolved in this visit. */
+function explainTarget(state: MissionState, visit: VisitId): ScoredMathItemId | null {
+  const running = state.visits.find((v) => v.id === visit);
+  if (!running) return null;
+  let best: { id: ScoredMathItemId; at: string } | null = null;
+  for (const [id, item] of Object.entries(state.math)) {
+    if (!item || !item.resolvedAt || item.shownVisit !== visit) continue;
+    if (!best || item.resolvedAt > best.at) best = { id: id as ScoredMathItemId, at: item.resolvedAt };
+  }
+  return best?.id ?? (visit === "v1" ? "EQ-FRESH" : null);
+}
+
+/** The course lesson the child is on, or null when no course applies. */
+export function currentCourseLesson(state: MissionState, content: LearningContent, settings: ParentSettings): TypingCourseLesson | null {
+  const course = typingCourseForLayout(content, settings.keyboardLayout);
+  if (!course) return null;
+  const index = state.typing.course && state.typing.course.layout === course.layout ? state.typing.course.lessonIndex : 0;
+  return course.lessons[Math.min(index, course.lessons.length - 1)] ?? null;
+}
+
+/** Whether positional practice is genuinely available: layout confirmed AND the input source matched it on this device. */
+export function practiceAvailability(state: MissionState, content: LearningContent, settings: ParentSettings): { available: boolean; reason: "layout-unconfirmed" | "alignment-unchecked" | "alignment-mismatch" | "no-course-for-layout" | null } {
+  if (!settings.keyboardLayout) return { available: false, reason: "layout-unconfirmed" };
+  const alignment = state.typing.alignment ?? null;
+  if (!alignment || alignment.layout !== settings.keyboardLayout) return { available: false, reason: "alignment-unchecked" };
+  if (alignment.result !== "match") return { available: false, reason: "alignment-mismatch" };
+  if (!typingCourseForLayout(content, settings.keyboardLayout)) return { available: false, reason: "no-course-for-layout" };
+  return { available: true, reason: null };
+}
+
+/**
+ * Progression decision after a burst (redesign F1/T3): advance only when at
+ * least `minBursts` bursts on this lesson reached `minAccuracy` and none of
+ * those was rated "hard"; a low-accuracy or uncomfortable burst offers the
+ * same lesson again (or a smaller burst after two of them); missing evidence
+ * is not failure. Thresholds are the content's tunable parameters.
+ */
+export function decideProgression(course: TypingCourseState, lesson: TypingCourseLesson, lessonCount: number, progression: { minBursts: number; minAccuracy: number }, nowIso: string): TypingCourseDecision {
+  const onLesson = course.bursts.filter((b) => b.lessonId === lesson.id);
+  // Only full-length bursts count towards promotion; shortened bursts are practice.
+  const good = onLesson.filter((b) => b.accuracy >= progression.minAccuracy && b.comfort !== "hard" && (b.lineCount === undefined || b.lineCount >= lesson.lines.length));
+  const recentBad = onLesson.slice(-2).filter((b) => b.accuracy < progression.minAccuracy || b.comfort === "hard");
+  if (good.length >= progression.minBursts) {
+    const last = course.lessonIndex >= lessonCount - 1;
+    return { lessonId: lesson.id, action: last ? "stop" : "advance", reason: `${good.length} bursts ≥ ${Math.round(progression.minAccuracy * 100)} % and not hard${last ? "; last lesson of the course" : ""}`, at: nowIso };
+  }
+  if (recentBad.length >= 2) return { lessonId: lesson.id, action: "smaller", reason: "two bursts in a row below the threshold or rated hard — a shorter burst or a stop", at: nowIso };
+  if (onLesson.length && (onLesson[onLesson.length - 1].accuracy < progression.minAccuracy || onLesson[onLesson.length - 1].comfort === "hard")) {
+    return { lessonId: lesson.id, action: "repeat", reason: "last burst below the threshold or rated hard — same keys again, no promotion", at: nowIso };
+  }
+  return { lessonId: lesson.id, action: "repeat", reason: `${good.length} of ${progression.minBursts} good bursts — one more on the same keys`, at: nowIso };
+}
+
 /**
  * Apply one operation. Throws `LearningOpError` for anything the current
  * state, stage or settings do not permit; never mutates its input.
@@ -569,6 +869,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
   const state = clone(input);
   const records = emptyRecords();
   let result: Record<string, unknown> = {};
+  let finishedVisit: VisitId | null = null;
 
   switch (op.op) {
     case "start-visit": {
@@ -611,6 +912,29 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       break;
     }
 
+    case "choose-station": {
+      requireStage(state, content, "station-choice");
+      const themes = content.station?.themes ?? [];
+      if (op.theme !== "none" && !themes.some((t) => t.id === op.theme)) throw new LearningOpError("invalid", "unknown station theme");
+      state.station = { ...(state.station ?? emptyStation()), theme: op.theme, chosenAt: nowIso };
+      advance(state, content);
+      result = { theme: op.theme };
+      break;
+    }
+
+    case "build-station": {
+      requireStage(state, content, "station-build");
+      const spots = content.station?.spots ?? [];
+      if (!spots.some((s) => s.id === op.spot)) throw new LearningOpError("invalid", "unknown station spot");
+      const station = state.station ?? emptyStation();
+      // The lamp is lit only if the Spanish request actually supplied one (durable supply).
+      const lamp = (state.base.supplies["lámpara"] ?? 0) > 0;
+      state.station = { ...station, spot: op.spot, built: true, builtAt: nowIso, lampLit: lamp };
+      advance(state, content);
+      result = { spot: op.spot, lampLit: lamp };
+      break;
+    }
+
     case "support": {
       const visit = currentVisit(state);
       const stage = currentStage(state, content);
@@ -619,14 +943,14 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       // requested. It may have advanced meanwhile (another tab, a late tutor
       // reply): the event is still recorded against the ORIGINAL task, so a
       // reply that reveals an answer is bound to that item, never lost.
-      const target = op.taskId ?? activeItem ?? (stage === "LANG-EN-WATER" || stage === "LANG-ES-AGUA" ? stage : null);
-      const targetItem = target !== null && isScoredMathItemId(target) ? target : null;
+      const target = op.taskId ?? activeItem ?? (isLanguageSegmentId(stage) ? stage : null);
+      const targetItem = target !== null && isScoredMathItemId(target) && state.math[target] ? target : null;
       // Language task ids come from the view as "<segment>/<step>" (the tutor
       // context) or as the bare segment id (gloss, audio, word list). Both bind
       // to the segment's durable help ledger; the step is kept on the event.
       const segmentPart = target !== null ? target.split("/")[0] : null;
       const stepPart = target !== null && target.includes("/") ? target.slice(target.indexOf("/") + 1) : null;
-      const targetSegment = segmentPart === "LANG-EN-WATER" || segmentPart === "LANG-ES-AGUA" ? segmentPart : null;
+      const targetSegment = isLanguageSegmentId(segmentPart) && state.language[segmentPart] ? segmentPart : null;
       if (target !== null && targetItem === null && targetSegment === null) {
         throw new LearningOpError("invalid", "support must name a known task");
       }
@@ -636,7 +960,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       let payload: unknown = op.payload ?? null;
       const payloadRecord = (op.payload && typeof op.payload === "object" ? op.payload : {}) as Record<string, unknown>;
       if (targetItem) {
-        const item = state.math[targetItem];
+        const item = mathState(state, targetItem);
         if (ANSWER_RELEVANT_SUPPORT.includes(op.kind) && !item.supportGiven.includes(op.kind)) item.supportGiven.push(op.kind);
         if (op.kind === "tutor_reply") {
           const text = typeof payloadRecord.text === "string" ? payloadRecord.text : "";
@@ -653,7 +977,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         }
       }
       if (targetSegment) {
-        const help = state.language[targetSegment].help;
+        const help = languageState(state, targetSegment).help;
         const word = typeof payloadRecord.word === "string" ? payloadRecord.word.slice(0, 40) : null;
         const text = typeof payloadRecord.text === "string" ? payloadRecord.text.slice(0, 200) : null;
         if (op.kind === "gloss" && word && !help.gloss.includes(word)) help.gloss.push(word);
@@ -669,25 +993,46 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       break;
     }
 
-    case "answer-math": {
+    case "answer-math":
+    case "answer-remainder": {
       requireStage(state, content, op.itemId);
       const def = mathItem(content, op.itemId);
-      const item = state.math[op.itemId];
+      const item = mathState(state, op.itemId);
+      const remainderItem = def.kind === "remainder";
+      if (remainderItem !== (op.op === "answer-remainder")) throw new LearningOpError("invalid", remainderItem ? "this item asks for two numbers (used and remaining)" : "this item asks for one number");
       if (item.outcome !== "pending") throw new LearningOpError("not-allowed", "item already resolved");
       if (item.phase !== "answer" && item.phase !== "represent" && item.phase !== "clarify") {
         throw new LearningOpError("not-allowed", `item is in phase ${item.phase}`);
       }
-      const uncertain = op.uncertain === true || op.answer === null || !Number.isInteger(op.answer);
-      const answer = uncertain ? null : (op.answer as number);
-      const correct = answer === null ? null : answer === def.answer;
+      let uncertain: boolean;
+      let answer: number | null = null;
+      let remainder: MathAttempt["remainder"] = null;
+      let correct: boolean | null;
+      let partial: Record<string, unknown> = {};
+      if (op.op === "answer-remainder") {
+        uncertain = op.uncertain === true || op.used === null || op.remaining === null || !Number.isInteger(op.used) || !Number.isInteger(op.remaining);
+        remainder = { used: uncertain ? null : op.used, remaining: uncertain ? null : op.remaining };
+        const expected = def.answers!;
+        const usedCorrect = remainder.used === expected.used;
+        const remainingCorrect = remainder.remaining === expected.remaining;
+        correct = uncertain ? null : usedCorrect && remainingCorrect;
+        answer = remainder.used;
+        partial = uncertain ? {} : { usedCorrect, remainingCorrect };
+      } else {
+        uncertain = op.uncertain === true || op.answer === null || !Number.isInteger(op.answer);
+        answer = uncertain ? null : (op.answer as number);
+        correct = answer === null ? null : answer === def.answer;
+      }
       if (op.modality === "counters" && !item.supportGiven.includes("counters")) item.supportGiven.push("counters");
       const fresh = item.attempts.every((a) => a.correct === null) && item.exposure !== "answer_revealed" && (item.shownVisit === null || item.shownVisit === state.currentVisit);
       const evidence = evidenceFor(item, correct, fresh);
       const substantiveBefore = item.attempts.filter((a) => a.correct !== null).length;
       const attempt: MathAttempt = {
         no: item.attempts.length + 1,
+        visit: state.currentVisit as VisitId,
         answer,
-        raw: boundedText(op.raw || String(op.answer ?? ""), 80, "answer"),
+        remainder,
+        raw: boundedText(op.raw || String(answer ?? ""), 80, "answer"),
         modality: op.modality,
         correct,
         evidence,
@@ -706,15 +1051,16 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         item.outcome = "correct";
         item.phase = "done";
         item.allocation = answer;
+        if (remainder && remainder.used !== null && remainder.remaining !== null) item.remainderResult = { used: remainder.used, remaining: remainder.remaining };
         item.resolvedAt = nowIso;
         feedback = "done";
       } else if (correct === null) {
         feedback = item.phase; // stays where it was; nothing substantive happened
       } else {
         // CONTRACT rule 4: first incorrect → one clarification; second → a
-        // representation (or the model example for EQ-ENTRY) with direct
-        // teaching already on offer; a third unsuccessful attempt ends the
-        // loop — only "teach" or "stop" remain.
+        // representation (or the model example) with direct teaching already
+        // on offer; a third unsuccessful attempt ends the loop — only "teach"
+        // or "stop" remain.
         const substantive = substantiveBefore + 1;
         if (substantive > content.math.rules.maxSubstantiveAttempts) {
           item.phase = "teach-or-stop";
@@ -727,7 +1073,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
           attempt.teachingReason = "first-incorrect";
           feedback = "clarify";
           noteTeaching(state, nowIso);
-          records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "clarification", payload: { auto: true }, at: nowIso });
+          records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "clarification", payload: { auto: true, ...partial }, at: nowIso });
           if (!item.supportGiven.includes("clarification")) item.supportGiven.push("clarification");
         } else {
           feedback = "represent";
@@ -737,16 +1083,18 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       // model example before the last try (rule 4).
       if (correct === false && feedback === "represent") {
         noteTeaching(state, nowIso);
-        if (op.itemId === "EQ-ENTRY") {
+        const modelId: MathItemId | null = op.itemId === "EQ-ENTRY" ? "EQ-MODEL" : op.itemId === "EQ-STATION" && hasMathItem(content, "EQ-STATION-MODEL") ? "EQ-STATION-MODEL" : null;
+        if (modelId) {
           item.phase = "example";
           attempt.teachingMove = "model-example";
           attempt.teachingReason = "second-incorrect";
-          if (!state.modelShownAt) {
-            state.modelShownAt = nowIso;
-            records.exposures.push({ taskId: "EQ-MODEL", taskVersion: mathItem(content, "EQ-MODEL").version, kind: "example_shown", source: "teaching", at: nowIso });
+          const shownKey = modelId === "EQ-MODEL" ? "modelShownAt" : "stationModelShownAt";
+          if (!state[shownKey]) {
+            state[shownKey] = nowIso;
+            records.exposures.push({ taskId: modelId, taskVersion: mathItem(content, modelId).version, kind: "example_shown", source: "teaching", at: nowIso });
           }
           if (!item.supportGiven.includes("example")) item.supportGiven.push("example");
-          records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "example", payload: { model: "EQ-MODEL" }, at: nowIso });
+          records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "example", payload: { model: modelId }, at: nowIso });
         } else {
           item.phase = "represent";
           attempt.teachingMove = "representation";
@@ -762,9 +1110,9 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         visitId: state.currentVisit as VisitId,
         taskId: op.itemId,
         taskVersion: def.version,
-        objective: content.math.objective,
+        objective: remainderItem ? "equal-sharing-with-remainder" : content.math.objective,
         attemptNo: attempt.no,
-        answer: { value: answer, raw: attempt.raw },
+        answer: remainder ? { value: answer, used: remainder.used, remaining: remainder.remaining, raw: attempt.raw } : { value: answer, raw: attempt.raw },
         correct,
         evidence: attempt.evidence,
         support: attempt.support,
@@ -779,19 +1127,20 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         at: nowIso,
       });
       if (correct === true) {
-        state.base.supplies[def.unit.plural] = (state.base.supplies[def.unit.plural] ?? 0) + def.quantity;
+        const gained = remainderItem && def.answers ? def.answers.used : def.quantity;
+        state.base.supplies[def.unit.plural] = (state.base.supplies[def.unit.plural] ?? 0) + gained;
         advance(state, content);
       }
-      result = { feedback, correct, evidence: attempt.evidence, attemptNo: attempt.no };
+      result = { feedback, correct, evidence: attempt.evidence, attemptNo: attempt.no, ...partial };
       break;
     }
 
     case "continue-item": {
       // After the model example: back to answering (the example stays hidden
-      // for the fresh item by construction — it belongs to EQ-MODEL only).
+      // for the fresh item by construction — it belongs to the model only).
       requireStage(state, content, op.itemId);
-      const item = state.math[op.itemId];
-      if (item.phase === "example" || item.phase === "clarify") item.phase = item.phase === "example" ? "answer" : "answer";
+      const item = mathState(state, op.itemId);
+      if (item.phase === "example" || item.phase === "clarify") item.phase = "answer";
       result = { phase: item.phase };
       break;
     }
@@ -799,7 +1148,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
     case "request-teaching": {
       requireStage(state, content, op.itemId);
       const def = mathItem(content, op.itemId);
-      const item = state.math[op.itemId];
+      const item = mathState(state, op.itemId);
       const substantive = item.attempts.filter((a) => a.correct !== null).length;
       if (item.phase !== "teach-or-stop" && !(substantive >= content.math.rules.maxSubstantiveAttempts && (item.phase === "represent" || item.phase === "example" || item.phase === "answer"))) {
         throw new LearningOpError("not-allowed", "direct teaching is offered only after two unsuccessful attempts");
@@ -809,18 +1158,20 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       item.outcome = "taught";
       item.phase = "done";
       item.allocation = def.answer;
+      if (def.kind === "remainder" && def.answers) item.remainderResult = { ...def.answers };
       item.resolvedAt = nowIso;
       records.exposures.push({ taskId: op.itemId, taskVersion: def.version, kind: "answer_revealed", source: "direct_teaching", at: nowIso });
-      records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "direct_teaching", payload: { answer: def.answer }, at: nowIso });
-      state.base.supplies[def.unit.plural] = (state.base.supplies[def.unit.plural] ?? 0) + def.quantity;
+      records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "direct_teaching", payload: def.kind === "remainder" ? { answers: def.answers } : { answer: def.answer }, at: nowIso });
+      const gained = def.kind === "remainder" && def.answers ? def.answers.used : def.quantity;
+      state.base.supplies[def.unit.plural] = (state.base.supplies[def.unit.plural] ?? 0) + gained;
       advance(state, content);
-      result = { taught: true, answer: def.answer };
+      result = def.kind === "remainder" ? { taught: true, answers: def.answers } : { taught: true, answer: def.answer };
       break;
     }
 
     case "stop-item": {
       requireStage(state, content, op.itemId);
-      const item = state.math[op.itemId];
+      const item = mathState(state, op.itemId);
       if (item.outcome !== "pending") throw new LearningOpError("not-allowed", "item already resolved");
       item.outcome = "stopped";
       item.phase = "done";
@@ -834,8 +1185,10 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
     case "explain": {
       requireStage(state, content, "explain");
       const text = boundedText(op.text, MAX_TEXT_CHARS, "explanation");
-      state.explanations.push({ visit: state.currentVisit as VisitId, text, modality: op.modality, at: nowIso });
-      records.samples.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: "EQ-FRESH", kind: "explanation", language: "de", modality: op.modality, text, metrics: null, at: nowIso });
+      const visit = state.currentVisit as VisitId;
+      const taskId = explainTarget(state, visit);
+      state.explanations.push({ visit, text, modality: op.modality, taskId, at: nowIso });
+      records.samples.push({ id: env.newId(), visitId: visit, taskId, kind: "explanation", language: "de", modality: op.modality, text, metrics: null, at: nowIso });
       advance(state, content);
       break;
     }
@@ -843,7 +1196,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
     case "language-step": {
       requireStage(state, content, op.segmentId);
       const segment = languageSegment(content, op.segmentId);
-      const seg = state.language[op.segmentId];
+      const seg = languageState(state, op.segmentId);
       const { step, index } = findStep(segment, op.stepId);
       if (index !== seg.stepIndex) throw new LearningOpError("not-allowed", `step ${op.stepId} is not the current step`);
       // Support is derived from the durable per-segment help ledger, never from
@@ -890,7 +1243,8 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         if (scored.completion === "lexical") evidence = "completion";
         productionKind = support.includes("word-choice") ? "copying" : support.includes("audio") ? "repetition" : support.length > 0 ? "glossed" : "independent";
       }
-      const record: LanguageStepRecord = { stepId: step.id, evidence, correct, uncertainty, response, modality: op.modality, support, at: nowIso };
+      const variant = step.kind === "pick-supply" && step.variants ? (state.station?.theme ?? "none") : undefined;
+      const record: LanguageStepRecord = { stepId: step.id, evidence, correct, uncertainty, response, modality: op.modality, support, visit: state.currentVisit as VisitId, ...(variant ? { variant } : {}), at: nowIso };
       seg.records.push(record);
       const attemptEvidence: EvidenceCategory =
         correct === null ? "unscored" : !correct ? "incorrect" : support.length > 0 ? "supported" : "independent";
@@ -940,7 +1294,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
     case "language-continue": {
       requireStage(state, content, op.segmentId);
       const segment = languageSegment(content, op.segmentId);
-      const seg = state.language[op.segmentId];
+      const seg = languageState(state, op.segmentId);
       const { step, index } = findStep(segment, op.stepId);
       if (index !== seg.stepIndex) throw new LearningOpError("not-allowed", `step ${op.stepId} is not the current step`);
       const last = seg.records.filter((r) => r.stepId === step.id).pop() ?? null;
@@ -980,8 +1334,8 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const target = task.targetFrom === "baseName" ? state.base.name ?? "" : task.target ?? "";
       if (!target) throw new LearningOpError("not-allowed", "no label target yet");
       const typed = typeof op.typed === "string" ? op.typed.slice(0, 80) : "";
-      const metrics = typingAccuracy(target, typed);
-      const rec: TypingLabelRecord = { taskId: task.id, target, typed, ...metrics, omittedChars: Math.max(0, metrics.expectedChars - metrics.typedChars), seconds: Math.max(0, Math.round(op.seconds)), at: nowIso };
+      const { ops: _ops, ...metrics } = alignTyping(target, typed);
+      const rec: TypingLabelRecord = { taskId: task.id, target, typed, ...metrics, seconds: Math.max(0, Math.round(op.seconds)), at: nowIso };
       state.typing.labels.push(rec);
       records.samples.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: task.id, kind: "typed_label", language: "de", modality: "typed", text: typed, metrics: rec, at: nowIso });
       advance(state, content);
@@ -989,15 +1343,98 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       break;
     }
 
+    case "typing-check": {
+      // Non-assessed setup check on the actual device (redesign F1/T1). The
+      // parent confirmed the PHYSICAL layout in the settings; this compares
+      // what the computer's input source wrote for the distinguishing keys.
+      requireStage(state, content, "typing-course");
+      const layout = env.settings.keyboardLayout;
+      if (!layout) throw new LearningOpError("not-available", "the parent has not confirmed the physical keyboard layout");
+      const course = content.typing.course;
+      if (!course) throw new LearningOpError("not-available", "no alignment check in this content");
+      const keys = course.alignmentCheck.keys;
+      if (!Array.isArray(op.observed) || op.observed.length !== keys.length || op.observed.some((c) => typeof c !== "string" || Array.from(c).length !== 1)) {
+        throw new LearningOpError("invalid", `observed must hold exactly ${keys.length} single characters`);
+      }
+      const observed = keys.map((key, i) => ({ id: key.id, expected: key.expected[layout], got: op.observed[i] }));
+      const result_ = observed.every((o) => o.expected === o.got) ? "match" : "mismatch";
+      const layouts = content.typing.layouts.map((l) => l.id);
+      const matchesLayout = layouts.find((l) => keys.every((key, i) => key.expected[l] === op.observed[i])) ?? null;
+      state.typing.alignment = { layout, checkedAt: nowIso, result: result_, observed, matchesLayout };
+      if (result_ === "match") {
+        const availableCourse = typingCourseForLayout(content, layout);
+        if (availableCourse && (!state.typing.course || state.typing.course.layout !== layout)) {
+          // A course record is bound to its layout; a layout change starts a
+          // separate record — progression never transfers between layouts.
+          state.typing.course = { layout, lessonIndex: 0, bursts: [], decision: { lessonId: availableCourse.lessons[0].id, action: "start", reason: "input alignment confirmed on this device", at: nowIso }, completed: [] };
+        }
+      }
+      result = { result: result_, matchesLayout };
+      break;
+    }
+
+    case "typing-burst": {
+      requireStage(state, content, "typing-course");
+      const availability = practiceAvailability(state, content, env.settings);
+      if (!availability.available) throw new LearningOpError("not-available", `positional practice is unavailable: ${availability.reason}`);
+      const course = typingCourseForLayout(content, env.settings.keyboardLayout)!;
+      const lesson = currentCourseLesson(state, content, env.settings);
+      if (!lesson || lesson.id !== op.lessonId) throw new LearningOpError("not-allowed", `the current lesson is ${lesson?.id ?? "none"}`);
+      if (!Array.isArray(op.lines) || op.lines.length < 1 || op.lines.length > lesson.lines.length || op.lines.some((l) => typeof l !== "string" || Array.from(l).length > 120)) {
+        throw new LearningOpError("invalid", "typing lines must be a non-empty prefix of the lesson");
+      }
+      // A shorter burst (a prefix of the lines) is only offered after a "smaller" decision; it is practice, never promotion evidence.
+      const shortened = op.lines.length < lesson.lines.length;
+      if (shortened && state.typing.course?.decision?.action !== "smaller") throw new LearningOpError("not-allowed", "a shorter burst is only offered after a smaller decision");
+      if (op.comfort !== "easy" && op.comfort !== "ok" && op.comfort !== "hard") throw new LearningOpError("invalid", "comfort must be easy, ok or hard");
+      const metrics = alignedLessonMetrics(lesson.lines.slice(0, op.lines.length), op.lines);
+      const burst: TypingBurst = { lessonId: lesson.id, visit: state.currentVisit as VisitId, lineCount: op.lines.length, ...metrics, comfort: op.comfort, seconds: Math.max(0, Math.round(op.seconds)), at: nowIso };
+      const courseState = state.typing.course!;
+      courseState.bursts.push(burst);
+      const decision = decideProgression(courseState, lesson, course.lessons.length, course.progression, nowIso);
+      courseState.decision = decision;
+      if ((decision.action === "advance" || decision.action === "stop") && !courseState.completed.includes(lesson.id)) courseState.completed.push(lesson.id);
+      if (decision.action === "advance") courseState.lessonIndex = Math.min(courseState.lessonIndex + 1, course.lessons.length - 1);
+      records.samples.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: lesson.id, kind: "typing_burst", language: null, modality: "typed", text: lesson.lines.slice(0, op.lines.length).join(" / "), metrics: burst, at: nowIso });
+      result = { accuracy: burst.accuracy, decision: decision.action, reason: decision.reason, nextLessonId: course.lessons[courseState.lessonIndex]?.id ?? null };
+      break;
+    }
+
+    case "typing-course-continue": {
+      requireStage(state, content, "typing-course");
+      const visit = currentVisit(state);
+      const inVisit = (state.typing.course?.bursts ?? []).some((b) => b.at >= visit.startedAt);
+      if (!inVisit) {
+        // Moving on without practice is recorded as a skip, never as practice.
+        visit.skippedStages.push({ stage: "typing-course", reason: "child" });
+        state.typing.skipped.push({ visit: visit.id, reason: "child" });
+      }
+      advance(state, content);
+      result = { practiced: inVisit };
+      break;
+    }
+
     case "skip-stage": {
       const visit = currentVisit(state);
       const stage = currentStage(state, content);
       if (stage !== op.stage) throw new LearningOpError("not-allowed", "stage is not active");
-      const optional: StageId[] = ["LANG-EN-WATER", "LANG-ES-AGUA", "typing", "explain"];
+      const optional: StageId[] = ["LANG-EN-WATER", "LANG-ES-AGUA", "LANG-ES-STATION", "typing", "typing-course", "explain", "log-revise", "log-transfer"];
       if (!optional.includes(op.stage)) throw new LearningOpError("not-allowed", "only optional segments can be skipped");
       visit.skippedStages.push({ stage: op.stage, reason: op.reason });
-      if (op.stage === "typing") state.typing.skipped.push({ visit: visit.id, reason: op.reason });
-      if (op.stage === "LANG-EN-WATER" || op.stage === "LANG-ES-AGUA") state.language[op.stage].skipped = op.reason;
+      if (op.stage === "typing" || op.stage === "typing-course") state.typing.skipped.push({ visit: visit.id, reason: op.reason });
+      if (isLanguageSegmentId(op.stage)) languageState(state, op.stage).skipped = op.reason;
+      if (op.stage === "log-revise") {
+        const page = [...state.pages].reverse().find((p) => p.visit === visit.id) ?? null;
+        if (page) {
+          const flags = flagSpacing(page.text, content.writing?.spacing.joins ?? []);
+          state.logRevisions.push({ visit: visit.id, original: page.text, revised: null, flagged: flags, resolved: 0, outcome: "skipped", modality: "typed", helpShown: flags.length > 0, at: nowIso });
+        }
+      }
+      if (op.stage === "log-transfer" && content.writing?.transfer) {
+        const t = content.writing.transfer;
+        const revision = [...state.logRevisions].reverse().find((r) => r.visit === visit.id) ?? null;
+        (state.transfers ??= []).push({ id: t.id, version: t.version, visit: visit.id, text: null, modality: "typed", flagged: [], assessed: 0, outcome: "skipped", helpExposed: !!revision?.helpShown, linkedRevisionAt: revision?.at ?? null, at: nowIso });
+      }
       advance(state, content);
       break;
     }
@@ -1010,6 +1447,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const explanation = [...state.explanations].reverse().find((e) => e.visit === visit)?.text ?? null;
       const page: ExpeditionPage = {
         visit,
+        modality: op.modality === "spoken" ? "spoken" : "typed",
         title: `${visitDef(content, visit).title}`,
         baseName: state.base.name,
         locationId: state.base.locationId,
@@ -1024,14 +1462,119 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       break;
     }
 
+    case "revise-log": {
+      requireStage(state, content, "log-revise");
+      const visit = state.currentVisit as VisitId;
+      const page = [...state.pages].reverse().find((p) => p.visit === visit) ?? null;
+      if (!page) throw new LearningOpError("not-allowed", "no page to revise in this visit");
+      const original = page.text;
+      const flags = flagSpacing(original, content.writing?.spacing.joins ?? []);
+      const revised = boundedText(op.text, MAX_TEXT_CHARS, "revision");
+      const evaluated = evaluateRevision(original, revised, flags);
+      const pageSample = [...state.pages].filter((p) => p.visit === visit).length;
+      const revision: LogRevision = { visit, original, revised, flagged: flags, resolved: evaluated.resolved, outcome: evaluated.outcome === "no-flags" ? "no-flags" : evaluated.outcome, modality: "typed", helpShown: flags.length > 0, at: nowIso };
+      state.logRevisions.push(revision);
+      records.samples.push({
+        id: env.newId(),
+        visitId: visit,
+        taskId: null,
+        kind: "expedition_log_revision",
+        language: "de",
+        modality: "typed",
+        text: revised,
+        metrics: { original, flagged: flags.length, resolved: evaluated.resolved, outcome: revision.outcome, rules: flags.map((f) => f.rule), originalPageIndex: pageSample, spellingJudged: false },
+        at: nowIso,
+      });
+      advance(state, content);
+      result = { outcome: revision.outcome, resolved: evaluated.resolved, total: evaluated.total };
+      break;
+    }
+
+    case "summary-seen": {
+      requireStage(state, content, "summary");
+      advance(state, content);
+      break;
+    }
+
+    case "write-transfer": {
+      requireStage(state, content, "log-transfer");
+      const t = content.writing?.transfer;
+      if (!t) throw new LearningOpError("not-available", "no transfer check in this content");
+      const visit = state.currentVisit as VisitId;
+      const text = boundedText(op.text, MAX_TEXT_CHARS, "transfer sentence");
+      const joins = content.writing?.spacing.joins ?? [];
+      const assessment = assessSpacing(text, joins);
+      const flags = assessment.flags;
+      const revision = [...state.logRevisions].reverse().find((r) => r.visit === visit) ?? null;
+      // Copies are not a new sentence (R3-2): the original page, the saved revision, and the correction that
+      // was actually SHOWN (the suggestion, with or without the marker bars) — also when the revision was skipped.
+      const page = [...state.pages].reverse().find((p) => p.visit === visit) ?? null;
+      const norm = (s: string) => s.replace(/\|/g, " ").replace(/[.!?]+\s*$/u, "").replace(/\s+/g, " ").trim().toLowerCase();
+      const shown: string[] = [];
+      if (page) {
+        shown.push(page.text);
+        const pageFlags = flagSpacing(page.text, joins);
+        if (revision || pageFlags.length > 0) shown.push(suggestSpacing(page.text, pageFlags), markSpacing(page.text, pageFlags));
+      }
+      if (revision?.revised) shown.push(revision.revised);
+      if (shown.some((s) => norm(s) === norm(text))) throw new LearningOpError("copied-text", "write a NEW sentence: this is the page or the correction that was shown");
+      const modality = op.modality === "spoken" ? "spoken" : "typed";
+      const outcome: TransferRecord["outcome"] = !assessment.assessable ? "unassessable" : flags.length > 0 ? "flagged" : "clean";
+      const record: TransferRecord = { id: t.id, version: t.version, visit, text, modality, flagged: flags, assessed: assessment.assessed, outcome, helpExposed: !!revision?.helpShown, linkedRevisionAt: revision?.at ?? null, at: nowIso };
+      (state.transfers ??= []).push(record);
+      // Evidence (R3-1): only a sentence with at least one reviewed boundary can be assessed. Clean with assessed
+      // boundaries → limited correct evidence (supported when help was shown earlier, else independent); flagged →
+      // incorrect; no reviewed boundary → unscored (unknown); spoken → unscored (spacing comes from transcription).
+      const unassessable = !assessment.assessable;
+      const evidence: EvidenceCategory = modality === "spoken" || unassessable ? "unscored" : flags.length > 0 ? "incorrect" : record.helpExposed ? "supported" : "independent";
+      const correct = modality === "spoken" || unassessable ? null : flags.length === 0;
+      const uncertainty = modality === "spoken" ? "spoken text: spacing comes from transcription, not the child" : unassessable ? "no reviewed spacing boundary in the sentence: nothing to assess" : null;
+      records.attempts.push({
+        id: env.newId(), visitId: visit, taskId: t.id, taskVersion: t.version, objective: "writing-spacing-transfer",
+        attemptNo: (state.transfers ?? []).filter((x) => x.visit === visit).length, answer: { assessed: assessment.assessed, correct: assessment.correct, flags: flags.length, rules: flags.map((f) => f.rule) },
+        correct, evidence, support: record.helpExposed ? ["revision-help"] : [], exposureBefore: record.helpExposed ? "revision-help-shown" : "none",
+        stimulusLanguage: "de", responseLanguage: "de", modality, uncertainty, teachingMove: null, teachingReason: null, secondsSinceTeaching: null, at: nowIso,
+      });
+      records.samples.push({ id: env.newId(), visitId: visit, taskId: t.id, kind: "writing_transfer", language: "de", modality, text, metrics: { assessed: assessment.assessed, correct: assessment.correct, flagged: flags.length, rules: flags.map((f) => f.rule), outcome: record.outcome, helpExposed: record.helpExposed, linkedRevisionAt: record.linkedRevisionAt, spellingJudged: false }, at: nowIso });
+      advance(state, content);
+      result = { outcome: record.outcome, flags: flags.length, assessed: assessment.assessed };
+      break;
+    }
+
     case "reflect": {
       requireStage(state, content, "reflect");
-      if (!content.reflection.options.some((o) => o.id === op.optionId)) throw new LearningOpError("invalid", "unknown reflection option");
+      const difficultyOptional = typeof content.reflection.skipLabel === "string";
+      if (op.optionId !== null && op.optionId !== undefined && !content.reflection.options.some((o) => o.id === op.optionId)) throw new LearningOpError("invalid", "unknown reflection option");
+      if ((op.optionId === null || op.optionId === undefined) && !difficultyOptional) throw new LearningOpError("invalid", "difficulty is required by this content");
       const visit = currentVisit(state);
-      visit.reflection = op.optionId;
+      visit.reflection = op.optionId ?? null;
+      const dims = content.reflection.dimensions ?? [];
+      if (dims.length || difficultyOptional) {
+        // Three states per dimension (R3-3): answered, explicitly skipped ("Lieber nicht sagen"), left open. Never coerced.
+        const answers: Record<string, string> = {};
+        const skipped: string[] = [];
+        const unanswered: string[] = [];
+        const offered: string[] = [];
+        if (difficultyOptional) {
+          offered.push("difficulty");
+          if (op.optionId) answers.difficulty = op.optionId;
+          else if (op.difficultySkipped) skipped.push("difficulty");
+          else unanswered.push("difficulty");
+        }
+        for (const dim of dims) {
+          offered.push(dim.id);
+          const given = op.feedback?.[dim.id as "enjoyment" | "clarity"];
+          if (given === null || given === "") skipped.push(dim.id);
+          else if (given === undefined) unanswered.push(dim.id);
+          else if (dim.options.some((o) => o.id === given)) answers[dim.id] = given;
+          else throw new LearningOpError("invalid", `unknown ${dim.id} option`);
+        }
+        visit.feedback = { answers, skipped, unanswered, offered };
+      }
       visit.finishedAt = nowIso;
       visit.stageIndex += 1;
       state.currentVisit = null;
+      finishedVisit = visit.id;
       result = { finished: visit.id };
       break;
     }
@@ -1044,7 +1587,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
 
   state.revision = input.revision + 1;
   state.updatedAt = nowIso;
-  return { state, records, result };
+  return { state, records, result, finishedVisit };
 }
 
 // ---------------------------------------------------------------------------
@@ -1054,12 +1597,17 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
 export type MathItemView = {
   id: ScoredMathItemId;
   version: number;
+  kind: "sharing" | "remainder";
   prompt: string;
   scene: string | null;
   quantity: number;
   groups: number;
+  /** Remainder items: how many fit in each group. */
+  perGroup: number | null;
   unit: MathItem["unit"];
   group: MathItem["group"];
+  /** People are distributed AMONG; containers are filled INTO (control wording, R2-6). */
+  groupKind: "people" | "container";
   phase: MathPhase;
   attemptNo: number;
   clarification: string | null;
@@ -1068,9 +1616,12 @@ export type MathItemView = {
   example: { prompt: string; steps: string[]; quantity: number; groups: number; answer: number } | null;
   /** Shown only after the item is resolved by direct teaching. */
   taughtAnswer: number | null;
+  taughtAnswers: { used: number; remaining: number } | null;
   /** True once two substantive attempts failed: "teach" and "stop" are offered. */
   teachingOffered: boolean;
   outcome: MathItemState["outcome"];
+  /** Remainder items: which half of the last incorrect answer was right (for the clarification). */
+  lastPartial: { usedCorrect: boolean; remainingCorrect: boolean } | null;
 };
 
 export type LanguageStepView =
@@ -1081,6 +1632,30 @@ export type LanguageStepView =
 export type TypingView =
   | { available: true; lesson: { id: string; title: string; layout: KeyboardLayoutId; homeRow: string[]; fingers: Record<string, string>; lines: string[] }; label: { taskId: string; instruction: string; target: string } | null; lessonDone: boolean }
   | { available: false; reason: "layout-unconfirmed"; label: { taskId: string; instruction: string; target: string } | null };
+
+export type TypingCourseView = {
+  layoutLabel: string | null;
+  /** Parent-readable labels for every known layout id (for the mismatch explanation). */
+  layoutLabels: Record<string, string>;
+  /** Why practice is unavailable, or null when it is available. */
+  unavailable: "layout-unconfirmed" | "alignment-unchecked" | "alignment-mismatch" | "no-course-for-layout" | null;
+  alignment: { keys: { id: string; prompt: string }[]; result: TypingAlignment | null };
+  lesson: { id: string; title: string; keys: string[]; practiced: string[]; lines: string[]; index: number; count: number } | null;
+  homePosition: { left: string[]; right: string[]; anchors: string[]; thumb: string } | null;
+  fingers: Record<string, string>;
+  progression: { minBursts: number; minAccuracy: number };
+  burstsThisVisit: { lessonId: string; accuracy: number; comfort: TypingComfort; correctChars: number; denominator: number; extraChars: number; omittedChars: number; substitutedChars: number; lineCount: number }[];
+  decision: TypingCourseDecision | null;
+  completed: string[];
+};
+
+export type LogReviseView = {
+  original: string;
+  marked: string;
+  suggested: string;
+  flags: number;
+  rules: string[];
+};
 
 export type TutorContext = {
   taskId: string;
@@ -1093,14 +1668,22 @@ export type TutorContext = {
 export type ChildView = {
   child: ChildId;
   revision: number;
+  /** Server-established erasure generation the view was read under; echoed by telemetry batches (P2). Content-free. */
+  erasureGeneration: number;
+  /** Content-free fingerprint of the current sign-in (set by the route); binds recoverable completed drafts to this sign-in (R4-2). */
+  sessionFingerprint?: string;
+  contentVersion: number;
   title: string;
   hook: string;
   base: { name: string | null; location: { id: string; label: string; emoji: string } | null; supplies: Record<string, number> };
+  scene: SceneModel;
   pages: ExpeditionPage[];
-  visit: { id: VisitId; title: string; startedAt: string; stage: StageId | null; stageIndex: number; stageCount: number; minutesElapsed: number; overBudget: boolean } | null;
+  visit: { id: VisitId; title: string; startedAt: string; stage: StageId | null; stageIndex: number; stageCount: number; minutesElapsed: number; overBudget: boolean; intro: { who: string; make: string; done: string } | null } | null;
   next: { visit: VisitId | null; availableAt: string | null; reason: string | null };
+  delayedCheck: DelayedCheckInfo | null;
   nextStep: string;
   locations: { id: string; label: string; emoji: string }[];
+  station: { themes: { id: string; label: string; emoji: string; purpose: string }[]; spots: { id: string; label: string; emoji: string }[]; theme: string | null; spot: string | null; built: boolean; lampLit: boolean; lampAvailable: boolean; reference: { kind: "turtles-in-log" | "none"; text: string } } | null;
   math: MathItemView | null;
   language: {
     id: LanguageSegmentId;
@@ -1115,7 +1698,12 @@ export type ChildView = {
     feedback: { kind: "clarify" | "incorrect" | "unclear"; message: string; triesUsed: number; retryAllowed: boolean; continueOffered: boolean } | null;
   } | null;
   typing: TypingView | null;
-  reflection: { prompt: string; options: { id: string; label: string }[] } | null;
+  typingCourse: TypingCourseView | null;
+  logRevise: LogReviseView | null;
+  /** The fresh writing-transfer prompt while its stage is active. */
+  transfer: { id: string; version: number; prompt: string; instruction: string; helpExposed: boolean } | null;
+  summary: VisitSummary | null;
+  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[] } | null;
   tutor: TutorContext | null;
   retention: string;
 };
@@ -1130,23 +1718,37 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
       case "EQ-FRESH": return "Das zweite Team braucht Vorräte.";
       case "EQ-RETURN": return "Der Garten wird angelegt.";
       case "EQ-DELAY": return "Proben fürs Labor verpacken.";
+      case "EQ-STATION": return "Die Beete der Station werden bepflanzt — mit Rest.";
       case "explain": return "Erkläre, wie du gerechnet hast.";
       case "LANG-EN-WATER": return "Eine Nachricht auf Englisch ist angekommen.";
       case "LANG-ES-AGUA": return "Eine Nachricht auf Spanisch ist angekommen.";
+      case "LANG-ES-STATION": return "Bitte das Team auf Spanisch um die Lampe.";
       case "typing": return "Ein kurzes Tipp-Training, dann das Schild.";
+      case "typing-course": return "Tastatur-Check, dann kurze Tipp-Runden.";
+      case "station-choice": return "Was soll deine Station beobachten?";
+      case "station-build": return "Baue die Station.";
       case "log": return "Schreib die Expeditionsseite.";
+      case "log-revise": return "Schau deinen Satz noch einmal an.";
+      case "log-transfer": return "Schreib einen neuen kurzen Satz.";
+      case "summary": return "Das hast du heute geschafft.";
       case "reflect": return "Wie war es heute?";
     }
   }
   const availability = nextVisitAvailability(state, content, now);
-  if (availability.visit) return availability.visit === "v1" ? "Baue deine Basis." : "Zurück zur Basis — ein neuer Besuch wartet.";
-  if (availability.availableAt) {
-    return `Der späte Check öffnet am ${new Date(availability.availableAt).toLocaleDateString("de-CH", { day: "numeric", month: "long" })}.`;
+  if ("reason" in availability && availability.reason === "chapter-unavailable") return "Dein angefangenes Kapitel ist gerade nicht verfügbar. Deine Basis, deine Seiten und dein Fortschritt sind gespeichert.";
+  if (availability.visit) {
+    if (availability.visit === "v1") return "Baue deine Basis.";
+    if (availability.visit === "v3") return "Eine kurze Aufgabe von früher ist zurück.";
+    if (availability.visit === "v4") return "Ein neues Kapitel: die Beobachtungsstation.";
+    return "Zurück zur Basis — ein neuer Besuch wartet.";
   }
-  return "Alle drei Besuche sind geschafft.";
+  if (availability.availableAt) {
+    return `Eine kurze Aufgabe von früher kommt am ${new Date(availability.availableAt).toLocaleDateString("de-CH", { day: "numeric", month: "long" })} zurück.`;
+  }
+  return "Alle Besuche sind geschafft.";
 }
 
-export function buildChildView(state: MissionState, content: LearningContent, settings: ParentSettings, now: Date): ChildView {
+export function buildChildView(state: MissionState, content: LearningContent, settings: ParentSettings, now: Date, erasureGeneration = 0): ChildView {
   const stage = currentStage(state, content);
   const running = state.visits.find((v) => v.id === state.currentVisit && v.finishedAt === null) ?? null;
   const availability = nextVisitAvailability(state, content, now);
@@ -1154,43 +1756,52 @@ export function buildChildView(state: MissionState, content: LearningContent, se
 
   let math: MathItemView | null = null;
   const itemId = scoredItemForStage(stage);
-  if (itemId) {
+  if (itemId && state.math[itemId]) {
     const def = mathItem(content, itemId);
-    const item = state.math[itemId];
-    const model = mathItem(content, "EQ-MODEL");
+    const item = state.math[itemId]!;
+    const modelId: MathItemId = def.kind === "remainder" ? "EQ-STATION-MODEL" : "EQ-MODEL";
+    const model = hasMathItem(content, modelId) ? mathItem(content, modelId) : null;
+    const lastIncorrect = [...item.attempts].reverse().find((a) => a.correct === false) ?? null;
     math = {
       id: itemId,
       version: def.version,
+      kind: def.kind === "remainder" ? "remainder" : "sharing",
       prompt: def.prompt,
       scene: def.scene ?? null,
       quantity: def.quantity,
       groups: def.groups,
+      perGroup: def.perGroup ?? null,
       unit: def.unit,
       group: def.group,
       phase: item.phase,
       attemptNo: item.attempts.length + 1,
       clarification: item.phase === "clarify" ? def.clarification ?? null : null,
       representation: item.phase === "represent" || item.phase === "clarify" ? def.representation ?? null : null,
-      example: item.phase === "example" ? { prompt: model.prompt, steps: model.steps ?? [], quantity: model.quantity, groups: model.groups, answer: model.answer } : null,
+      example: item.phase === "example" && model ? { prompt: model.prompt, steps: model.steps ?? [], quantity: model.quantity, groups: model.groups, answer: model.answer } : null,
       taughtAnswer: item.outcome === "taught" ? def.answer : null,
+      taughtAnswers: item.outcome === "taught" && def.kind === "remainder" && def.answers ? { ...def.answers } : null,
       teachingOffered: item.outcome === "pending" && item.attempts.filter((a) => a.correct !== null).length >= content.math.rules.maxSubstantiveAttempts,
       outcome: item.outcome,
+      lastPartial: def.kind === "remainder" && lastIncorrect?.remainder && def.answers ? { usedCorrect: lastIncorrect.remainder.used === def.answers.used, remainingCorrect: lastIncorrect.remainder.remaining === def.answers.remaining } : null,
+      groupKind: content.math.recipientKinds?.[def.id] ?? (/forscher|person|kind|freund|team/i.test(def.group.singular) ? "people" : "container"),
     };
   }
 
   let language: ChildView["language"] = null;
-  if (stage === "LANG-EN-WATER" || stage === "LANG-ES-AGUA") {
+  if (isLanguageSegmentId(stage) && state.language[stage] && hasLanguageSegment(content, stage)) {
     const segment = languageSegment(content, stage);
-    const seg = state.language[stage];
+    const seg = state.language[stage]!;
     const step = segment.steps[seg.stepIndex] ?? null;
     let view: LanguageStepView | null = null;
     if (step) {
       if (step.kind === "listen-read") view = { id: step.id, kind: "listen-read", sentence: step.sentence, instruction: step.instruction };
       else if (step.kind === "pick-supply") {
+        // The sentence follows the child's actual station choice (R2-4); "none" when declined or not chosen.
+        const themeKey = state.station?.theme ?? "none";
         view = {
           id: step.id,
           kind: "pick-supply",
-          sentence: step.sentence,
+          sentence: step.variants?.[themeKey] ?? step.variants?.none ?? step.sentence,
           instruction: step.instruction,
           options: step.options.map((id) => ({ id, label: content.language.supplyLabels[id]?.de ?? id, emoji: content.language.supplyLabels[id]?.emoji ?? "📦" })),
         };
@@ -1230,6 +1841,43 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     }
   }
 
+  let typingCourse: TypingCourseView | null = null;
+  if (stage === "typing-course" && running) {
+    const course = content.typing.course ?? null;
+    const availability_ = practiceAvailability(state, content, settings);
+    const lesson = availability_.available ? currentCourseLesson(state, content, settings) : null;
+    const courseState = state.typing.course && settings.keyboardLayout && state.typing.course.layout === settings.keyboardLayout ? state.typing.course : null;
+    typingCourse = {
+      layoutLabel: content.typing.layouts.find((l) => l.id === settings.keyboardLayout)?.label ?? null,
+      layoutLabels: Object.fromEntries(content.typing.layouts.map((l) => [l.id, l.label])),
+      unavailable: availability_.reason,
+      alignment: { keys: (course?.alignmentCheck.keys ?? []).map((k) => ({ id: k.id, prompt: k.prompt })), result: state.typing.alignment && state.typing.alignment.layout === settings.keyboardLayout ? state.typing.alignment : null },
+      lesson: lesson && course ? { id: lesson.id, title: lesson.title, keys: lesson.keys, practiced: lesson.practiced, lines: lesson.lines, index: course.lessons.findIndex((l) => l.id === lesson.id), count: course.lessons.length } : null,
+      homePosition: course?.homePosition ?? null,
+      fingers: course?.fingers ?? {},
+      progression: { minBursts: course?.progression.minBursts ?? 2, minAccuracy: course?.progression.minAccuracy ?? 0.9 },
+      burstsThisVisit: (courseState?.bursts ?? []).filter((b) => b.at >= running.startedAt).map((b) => ({ lessonId: b.lessonId, accuracy: b.accuracy, comfort: b.comfort, correctChars: b.correctChars, denominator: b.denominator, extraChars: b.extraChars, omittedChars: b.omittedChars, substitutedChars: b.substitutedChars, lineCount: b.lineCount ?? b.lines.length })),
+      decision: courseState?.decision ?? null,
+      completed: courseState?.completed ?? [],
+    };
+  }
+
+  let logRevise: LogReviseView | null = null;
+  if (stage === "log-revise" && state.currentVisit) {
+    const page = [...state.pages].reverse().find((p) => p.visit === state.currentVisit) ?? null;
+    if (page) {
+      const flags = flagSpacing(page.text, content.writing?.spacing.joins ?? []);
+      logRevise = { original: page.text, marked: markSpacing(page.text, flags), suggested: suggestSpacing(page.text, flags), flags: flags.length, rules: [...new Set(flags.map((f) => f.rule))] };
+    }
+  }
+
+  let transfer: ChildView["transfer"] = null;
+  if (stage === "log-transfer" && state.currentVisit && content.writing?.transfer) {
+    const t = content.writing.transfer;
+    const revision = [...state.logRevisions].reverse().find((r) => r.visit === state.currentVisit) ?? null;
+    transfer = { id: t.id, version: t.version, prompt: t.prompt, instruction: t.instruction, helpExposed: !!revision?.helpShown };
+  }
+
   let tutor: TutorContext | null = null;
   if (math && math.outcome === "pending") {
     tutor = { taskId: math.id, taskVersion: math.version, language: "de", prompt: math.prompt, allowedHelp: "Erklären und Fragen beantworten, aber die Lösung nicht verraten." };
@@ -1239,25 +1887,41 @@ export function buildChildView(state: MissionState, content: LearningContent, se
   }
 
   const minutesElapsed = running ? Math.floor((now.getTime() - new Date(running.startedAt).getTime()) / 60000) : 0;
-  const def = running ? visitDef(content, running.id) : null;
+  const def = running ? findVisitDef(content, running.id) ?? null : null;
+  const stationDef = content.station ?? null;
+  const station = state.station ?? emptyStation();
+  // C2: the station prompt may only refer to what the child actually saved.
+  const turtleLog = state.pages.some((p) => /schildkr[öo]t/i.test(p.text));
+  const stationReference = turtleLog
+    ? { kind: "turtles-in-log" as const, text: "In deinem Logbuch hast du Schildkröten erwähnt — du entscheidest, ob die Station sie beobachten soll. Beides ist ein guter Plan, und ohne Thema geht es auch." }
+    : { kind: "none" as const, text: "Du entscheidest, was die Station beobachten soll. Beides ist ein guter Plan, und ohne Thema geht es auch." };
 
   return {
     child: state.child,
     revision: state.revision,
+    erasureGeneration,
+    contentVersion: state.contentVersion,
     title: settings.missionTitle ?? content.theme.defaultTitle,
     hook: settings.missionHook ?? content.theme.defaultHook,
     base: { name: state.base.name, location, supplies: state.base.supplies },
+    scene: buildSceneModel(state, content),
     pages: state.pages,
     visit: running && def
-      ? { id: running.id, title: def.title, startedAt: running.startedAt, stage, stageIndex: running.stageIndex, stageCount: def.stages.length, minutesElapsed, overBudget: minutesElapsed >= content.visitBudgetMinutes.max }
+      ? { id: running.id, title: def.title, startedAt: running.startedAt, stage, stageIndex: running.stageIndex, stageCount: def.stages.length, minutesElapsed, overBudget: minutesElapsed >= content.visitBudgetMinutes.max, intro: def.intro ?? null }
       : null,
     next: { visit: availability.visit, availableAt: availability.availableAt, reason: "reason" in availability ? availability.reason : null },
+    delayedCheck: delayedCheckInfo(state, content, now),
     nextStep: nextStepText(state, content, stage, now),
     locations: content.locations,
+    station: stationDef ? { themes: stationDef.themes, spots: stationDef.spots, theme: station.theme, spot: station.spot, built: station.built, lampLit: station.lampLit, lampAvailable: (state.base.supplies["lámpara"] ?? 0) > 0, reference: stationReference } : null,
     math,
     language,
     typing,
-    reflection: stage === "reflect" ? content.reflection : null,
+    typingCourse,
+    logRevise,
+    summary: stage === "summary" && running ? buildVisitSummary(state, content, running.id) : null,
+    transfer,
+    reflection: stage === "reflect" ? { prompt: content.reflection.prompt, options: content.reflection.options, skipLabel: content.reflection.skipLabel ?? null, dimensions: content.reflection.dimensions ?? [] } : null,
     tutor,
     retention: content.retention.policy,
   };
@@ -1294,11 +1958,19 @@ export function stageLabel(stage: StageId): string {
     case "EQ-FRESH": return "Team 2";
     case "EQ-RETURN": return "Garten";
     case "EQ-DELAY": return "Labor";
+    case "EQ-STATION": return "Beete";
     case "explain": return "Erklären";
     case "LANG-EN-WATER": return "English";
     case "LANG-ES-AGUA": return "Español";
+    case "LANG-ES-STATION": return "Español";
     case "typing": return "Tippen";
+    case "typing-course": return "Tippen";
+    case "station-choice": return "Station";
+    case "station-build": return "Bauen";
     case "log": return "Logbuch";
+    case "log-revise": return "Nochmal lesen";
+    case "log-transfer": return "Neuer Satz";
+    case "summary": return "Geschafft";
     case "reflect": return "Fertig";
   }
 }

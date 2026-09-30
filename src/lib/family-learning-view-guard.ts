@@ -116,6 +116,8 @@ export function isChildView(value: unknown, child?: ChildId): value is ChildView
   if (!oneOf(value.child, CHILD_IDS)) return false;
   if (child !== undefined && value.child !== child) return false;
   if (!isNum(value.revision) || value.revision < 0 || !Number.isInteger(value.revision)) return false;
+  if (!isNum(value.erasureGeneration) || value.erasureGeneration < 0 || !Number.isInteger(value.erasureGeneration)) return false;
+  if (value.sessionFingerprint !== undefined && !isStr(value.sessionFingerprint)) return false;
   if (!isStr(value.title) || !isStr(value.hook) || !isStr(value.nextStep) || !isStr(value.retention)) return false;
   const base = value.base;
   if (!isRec(base) || !isStrOrNull(base.name) || !(base.location === null || isNamed(base.location)) || !isNumRecord(base.supplies)) return false;

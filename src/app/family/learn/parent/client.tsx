@@ -34,6 +34,7 @@ import { NabuBadge, cn } from "@/components/ui/nabu";
 import { CHILD_IDS, type ChildId } from "@/lib/family-assistant-turn";
 import type { EvidenceAttempt, EvidenceBundle } from "@/lib/family-learning-db";
 import type { KeyboardLayoutId } from "@/lib/family-learning-content";
+import type { DelayedCheckInfo, ParentReview } from "@/lib/family-learning-summary";
 import { createSettingsDraft, editSettingsDraft, reconcileSettingsDraft, settingsSaveBody, type SettingsDraft, type SettingsSource } from "@/lib/family-learning-parent-draft";
 import { beginRequest, clearEvidence, createEvidenceStore, describeTypingMetrics, invalidateAuthorization, isCurrentEpoch, receiveEvidence, renderableEvidence, selectChild, type EvidenceStore } from "@/lib/family-learning-parent-evidence";
 
@@ -42,9 +43,9 @@ const primaryButton = cn("inline-flex min-h-12 items-center justify-center gap-2
 const secondaryButton = cn("inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-4 text-base font-medium text-primary hover:bg-secondary disabled:opacity-50", focusRing);
 const dangerButton = cn("inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-red-600 px-4 text-base font-medium text-red-700 hover:bg-red-50 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40", focusRing);
 
-type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string };
+type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null };
 
-type Tab = "math" | "de" | "en" | "es" | "typing" | "settings";
+type Tab = "math" | "de" | "en" | "es" | "typing" | "review" | "settings";
 
 /**
  * A parent operation's ticket: `current()` is true only while the
@@ -241,6 +242,7 @@ export function FamilyLearnParentClient() {
                 ["en", "Englisch"],
                 ["es", "Spanisch"],
                 ["typing", "Tippen"],
+                ["review", "Rückblick"],
                 ["settings", "Einstellungen"],
               ] as [Tab, string][]
             ).map(([id, label]) => (
@@ -264,10 +266,10 @@ export function FamilyLearnParentClient() {
 // ---------------------------------------------------------------------------
 
 function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: Tab; child: ChildId; ops: ParentOps }) {
-  const math = evidence.attempts.filter((a) => a.objective === "equal-sharing");
+  const math = evidence.attempts.filter((a) => a.objective === "equal-sharing" || a.objective === "equal-sharing-with-remainder");
   const lang = (code: string) => evidence.attempts.filter((a) => a.stimulusLanguage === code && a.objective.startsWith("language-"));
-  const samplesDe = evidence.samples.filter((s) => s.kind === "explanation" || s.kind === "expedition_log");
-  const typingSamples = evidence.samples.filter((s) => s.kind === "typing_practice" || s.kind === "typed_label");
+  const samplesDe = evidence.samples.filter((s) => s.kind === "explanation" || s.kind === "expedition_log" || s.kind === "expedition_log_revision" || s.kind === "writing_transfer");
+  const typingSamples = evidence.samples.filter((s) => s.kind === "typing_practice" || s.kind === "typed_label" || s.kind === "typing_burst");
   const state = evidence.state;
 
   if (!evidence.prepared && evidence.attempts.length === 0) {
@@ -283,7 +285,7 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
       {tab === "math" ? (
         <>
           <NextStep evidence={evidence} />
-          <AttemptTable title="Gleichmässig teilen (EQ-Aufgaben)" attempts={math} child={child} ops={ops} empty="Noch kein Mathe-Versuch aufgezeichnet." />
+          <AttemptTable title="Gleichmässig teilen (EQ-Aufgaben, inkl. Rest bei EQ-STATION)" attempts={math} child={child} ops={ops} empty="Noch kein Mathe-Versuch aufgezeichnet." />
           <DelayedCheck evidence={evidence} />
           <SupportList evidence={evidence} filter={(k) => k !== "gloss"} />
         </>
@@ -291,6 +293,8 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
       {tab === "de" ? (
         <>
           <SampleList title="Erklärungen und Logbuch (Deutsch)" samples={samplesDe} empty="Noch keine Erklärung oder Logbuchseite." />
+          <LogRevisions evidence={evidence} />
+          <Transfers evidence={evidence} />
           <p className="text-sm text-tertiary">Deutsch ist die Anker-Sprache: Vorlesen zählt als Zugangs-Hilfe und wird bei den Mathe-Versuchen ausgewiesen, nicht als Lese-Evidenz.</p>
         </>
       ) : null}
@@ -298,11 +302,12 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
       {tab === "es" ? <LanguageView code="es" attempts={lang("es")} samples={evidence.samples.filter((s) => s.language === "es")} child={child} ops={ops} /> : null}
       {tab === "typing" ? (
         <>
-          {!evidence.settings.keyboardLayout ? <p className="rounded-2xl bg-secondary px-4 py-3 text-base text-primary">Tastatur-Layout noch nicht bestätigt — Finger-Übungen sind gesperrt. Bestätigen unter „Einstellungen“.</p> : null}
-          <SampleList title="Tipp-Übungen und Schilder" samples={typingSamples} empty="Noch keine Tipp-Aufzeichnung." showMetrics />
-          <p className="text-sm text-tertiary">Aufgezeichnet wird nur die Genauigkeit innerhalb der Aufgabe. Welche Finger benutzt wurden, kann nur ein Erwachsener beim Zuschauen beurteilen.</p>
+          <TypingSetup evidence={evidence} />
+          <SampleList title="Tipp-Übungen, Kurs-Runden und Schilder" samples={typingSamples} empty="Noch keine Tipp-Aufzeichnung." showMetrics />
+          <p className="text-sm text-tertiary">Aufgezeichnet wird nur die Genauigkeit innerhalb der Aufgabe (Metrik v1: Position für Position; Metrik v2: Zeichen-Ausrichtung — Einfügungen und Auslassungen verschieben nicht die ganze Zeile). Welche Finger benutzt wurden, kann nur ein Erwachsener beim Zuschauen beurteilen.</p>
         </>
       ) : null}
+      {tab === "review" ? <ReviewTab evidence={evidence} /> : null}
       {tab === "settings" ? <Settings key={`${evidence.child}:${evidence.erasureGeneration}`} evidence={evidence} child={evidence.child} ops={ops} /> : null}
       {state ? (
         <p className="text-xs text-tertiary">
@@ -319,12 +324,16 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   const fresh = math.filter((a) => a.taskId === "EQ-FRESH");
   const ret = math.filter((a) => a.taskId === "EQ-RETURN");
   const delay = math.filter((a) => a.taskId === "EQ-DELAY");
+  const station = evidence.attempts.filter((a) => a.taskId === "EQ-STATION");
+  const v4Done = !!state?.visits.some((v) => v.id === "v4" && v.finishedAt);
   let text: string;
   if (!state || state.visits.length === 0) text = "Noch kein Besuch. Der nächste Schritt ist der erste Besuch: Basis bauen, 24 Pakete gerecht teilen.";
   else if (fresh.length === 0) text = "Erster Besuch läuft. Nächster Schritt: der frische Check nach der Erklärung (EQ-FRESH).";
   else if (ret.length === 0) text = "Nächster Schritt: Besuch 2 mit dem Transfer-Check (Setzlinge, EQ-RETURN) — noch nicht geprüft.";
-  else if (delay.length === 0) text = "Nächster Schritt: der späte Check (EQ-DELAY) rund eine Woche nach dem Unterricht — noch nicht geprüft.";
-  else text = "Alle fünf Inhalte sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte.";
+  else if (delay.length === 0 && !v4Done) text = station.length === 0 ? "Nächster Schritt: das neue Kapitel (Besuch 4, Beobachtungsstation mit Rest-Aufgabe EQ-STATION); der späte Check (EQ-DELAY) kommt an seinem Datum dazu — nie vorgezogen." : "Besuch 4 läuft. Der späte Check (EQ-DELAY) kommt an seinem Datum dazu — nie vorgezogen.";
+  else if (delay.length === 0) text = "Nächster Schritt: der späte Check (EQ-DELAY) an seinem Datum — noch nicht geprüft.";
+  else if (!v4Done) text = "Nächster Schritt: das neue Kapitel (Besuch 4, Beobachtungsstation mit Rest-Aufgabe EQ-STATION).";
+  else text = "Alle Inhalte (v1 und Kapitel 4) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte.";
   return (
     <div className="rounded-2xl bg-secondary px-4 py-3">
       <p className="text-sm font-medium text-tertiary">Vorgeschlagener nächster Schritt</p>
@@ -341,7 +350,9 @@ function DelayedCheck({ evidence }: { evidence: Evidence }) {
     <div className="rounded-2xl border border-primary p-4">
       <p className="text-base font-semibold text-primary">Später Check</p>
       {delay.length === 0 ? (
-        <p className="mt-1 text-base text-tertiary">Ausstehend. {anchor ? `Anker: ${fmt(anchor)} — frühestens 6 Tage danach.` : "Noch kein Anker (kein abgeschlossener erster Besuch)."} Die Wartezeit wird nie simuliert.</p>
+        <p className="mt-1 text-base text-tertiary" data-testid="delayed-check-parent">
+          {evidence.delayedCheck ? evidence.delayedCheck.parentText : `Ausstehend. ${anchor ? `Anker: ${fmt(anchor)} — frühestens 6 Tage danach.` : "Noch kein Anker (kein abgeschlossener erster Besuch)."}`} Die Wartezeit wird nie simuliert; das Datum kommt von der Server-Uhr.
+        </p>
       ) : (
         <p className="mt-1 text-base text-primary">
           Beobachtet am {fmt(delay[delay.length - 1].createdAt)} · {Math.round((delay[delay.length - 1].secondsSinceTeaching ?? 0) / 86400)} Tage nach dem Anker · {EVIDENCE_LABEL[delay[delay.length - 1].evidence]?.label}
@@ -474,6 +485,289 @@ function SupportList({ evidence, filter }: { evidence: Evidence; filter: (kind: 
   );
 }
 
+function TypingSetup({ evidence }: { evidence: Evidence }) {
+  const layout = evidence.settings.keyboardLayout;
+  const alignment = evidence.state?.typing.alignment ?? null;
+  const course = evidence.state?.typing.course ?? null;
+  const layoutLabel = LAYOUTS.find((l) => l.id === layout)?.label ?? layout;
+  return (
+    <div className="rounded-2xl border border-primary p-4" data-testid="typing-setup">
+      <p className="text-base font-semibold text-primary">Tastatur-Einrichtung</p>
+      {!layout ? (
+        <p className="mt-1 text-base text-primary">Tastatur-Layout noch nicht bestätigt — Finger-Übungen und Finger-Kurs sind gesperrt. Bestätigen unter „Einstellungen“.</p>
+      ) : (
+        <ul className="mt-1 space-y-1 text-base text-primary">
+          <li>Physische Tastatur (von dir bestätigt): {layoutLabel}</li>
+          <li>
+            Eingabequelle am Gerät:{" "}
+            {!alignment || alignment.layout !== layout
+              ? "noch nicht geprüft — der Kurs bleibt gesperrt, bis das Kind den Tastatur-Check gemacht hat (drei Tasten, keine Punkte)."
+              : alignment.result === "match"
+                ? `passt (geprüft ${fmt(alignment.checkedAt)}).`
+                : `passt NICHT (geprüft ${fmt(alignment.checkedAt)})${alignment.matchesLayout ? ` — die Zeichen sehen aus wie ${LAYOUTS.find((l) => l.id === alignment.matchesLayout)?.label ?? alignment.matchesLayout}` : ""}. Bitte am Mac unter Systemeinstellungen → Tastatur → Eingabequellen „Deutsch (Schweiz)“ wählen und den Check wiederholen. Es wird nichts ersatzweise geübt.`}
+          </li>
+          {alignment && alignment.result === "mismatch" ? <li className="text-sm text-tertiary">{alignment.observed.map((o) => `${o.id}: erwartet „${o.expected}“, bekommen „${o.got}“`).join(" · ")}</li> : null}
+          {course ? (
+            <li>
+              Finger-Kurs: Lektion {course.lessonIndex + 1} · {course.bursts.length} Runden insgesamt · abgeschlossen: {course.completed.length ? course.completed.join(", ") : "—"}
+              {course.decision ? ` · letzte Entscheidung: ${course.decision.action} (${course.decision.reason})` : ""}
+            </li>
+          ) : (
+            <li className="text-sm text-tertiary">Finger-Kurs: noch keine Runde.</li>
+          )}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function LogRevisions({ evidence }: { evidence: Evidence }) {
+  const revisions = evidence.state?.logRevisions ?? [];
+  if (revisions.length === 0) return null;
+  return (
+    <div className="rounded-2xl border border-primary p-4" data-testid="log-revisions">
+      <p className="text-base font-semibold text-primary">Überarbeitung (Leerzeichen)</p>
+      <ul className="mt-1 space-y-2">
+        {revisions.map((r, i) => (
+          <li key={`${r.at}-${i}`} className="text-base text-primary">
+            <p className="text-sm text-tertiary">
+              {fmt(r.at)} · {r.flagged.length} {r.flagged.length === 1 ? "Stelle" : "Stellen"} markiert{r.helpShown ? " (Hilfe gezeigt)" : ""} · Ergebnis: {r.outcome === "revised" ? "alle behoben" : r.outcome === "partial" ? `${r.resolved} von ${r.flagged.length} behoben` : r.outcome === "unchanged" ? "unverändert gelassen" : r.outcome === "skipped" ? "übersprungen („So lassen“)" : "keine geprüfte Stelle betroffen (nur die drei geprüften Fälle, keine Aussage über den ganzen Satz)"}
+            </p>
+            <p>Original: {r.original}</p>
+            {r.revised !== null && r.revised !== r.original ? <p>Überarbeitet: {r.revised}</p> : null}
+            {r.flagged.length ? <p className="text-sm text-tertiary">Markiert: {r.flagged.map((f) => `${f.before}|${f.after}`).join(", ")}</p> : null}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** One of: the answer, "nicht gesagt" (explicit skip), "offen gelassen" (left open), "nicht abgefragt" (content offered nothing). */
+function feedbackWord(fb: ParentReview["experience"]["childFeedback"], dim: "difficulty" | "enjoyment" | "clarity"): string {
+  const value = fb[dim];
+  if (value) return value;
+  if (fb.skipped.includes(dim)) return "nicht gesagt";
+  if ((fb.unanswered ?? []).includes(dim)) return "offen gelassen";
+  if (fb.notOffered.includes(dim)) return "nicht abgefragt";
+  return "—";
+}
+
+function Transfers({ evidence }: { evidence: Evidence }) {
+  const transfers = evidence.state?.transfers ?? [];
+  if (transfers.length === 0) return null;
+  return (
+    <div className="rounded-2xl border border-primary p-4" data-testid="transfers">
+      <p className="text-base font-semibold text-primary">Neuer Satz (Transfer der Leerzeichen-Regel)</p>
+      <ul className="mt-1 space-y-2">
+        {transfers.map((t, i) => (
+          <li key={`${t.at}-${i}`} className="text-base text-primary">
+            <p className="text-sm text-tertiary">
+              {fmt(t.at)} · {t.id} v{t.version} ·{" "}
+              {t.outcome === "skipped"
+                ? "übersprungen"
+                : t.assessed === undefined
+                  ? "Aufzeichnung vor Runde 3 — nicht bewertet"
+                  : t.outcome === "unassessable"
+                    ? "keine geprüfte Stelle im Satz — nicht bewertet (kein Erfolg, kein Fehler)"
+                    : t.outcome === "clean"
+                      ? `${t.assessed} geprüfte ${t.assessed === 1 ? "Stelle" : "Stellen"}, alle richtig`
+                      : `${t.assessed} geprüfte ${t.assessed === 1 ? "Stelle" : "Stellen"}, ${t.flagged.length} ohne Leerzeichen`}{" "}
+              · Hilfe vorher gezeigt: {t.helpExposed ? "ja" : "nein"} · {t.modality}
+            </p>
+            {t.text ? <p>{t.text}</p> : null}
+            {t.flagged.length ? <p className="text-sm text-tertiary">Markiert: {t.flagged.map((f) => `${f.before}|${f.after}`).join(", ")}</p> : null}
+            <p className="text-xs text-tertiary">Nur die drei geprüften Leerzeichen-Fälle; keine Aussage über Rechtschreibung.</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function ReviewTab({ evidence }: { evidence: Evidence }) {
+  const completions = [...evidence.completions].sort((a, b) => (a.finishedAt < b.finishedAt ? 1 : -1));
+  return (
+    <div className="space-y-4" data-testid="review-tab">
+      <p className="text-sm text-tertiary">
+        Ein Rückblick pro abgeschlossenem Besuch, gespeichert genau einmal (Kennung Kind/Mission/Besuch/Start). Zustellung: nur hier im Eltern-Bereich — es gibt keinen belegten Weg, Erwachsenen-Nachrichten über Clavus zu senden. Lernen (Was war, Belege, nächster Unterricht) und Erlebnis (Bedienung, Hypothesen) sind getrennt.
+      </p>
+      {completions.length === 0 ? <p className="text-base text-tertiary">Noch kein abgeschlossener Besuch.</p> : null}
+      {completions.map((c) => (
+        <ReviewCard key={c.completionId} completion={c} />
+      ))}
+    </div>
+  );
+}
+
+function TelemetryLine({ t }: { t: ParentReview["experience"]["telemetry"] }) {
+  if (!t.supported) return <p className="mt-2 text-sm text-tertiary">Keine Bedienungs-Daten für diesen Besuch.</p>;
+  if (!t.uxObserved) {
+    return (
+      <p className="mt-2 text-sm text-primary" data-testid="ux-missing">
+        <span className="font-medium">Bedienungs-Daten: nicht erfasst.</span> Vom Gerät kam keine Beobachtung an — nur die Antworten des Kindes ({t.feedbackEvents} Angabe{t.feedbackEvents === 1 ? "" : "n"}) sind gespeichert. Aktive Zeit, Fenster-Wechsel, Pausen, Speicherfehler und Wiederholungen sind unbekannt, nicht null.
+      </p>
+    );
+  }
+  return (
+    <p className="mt-2 text-sm text-primary" data-testid="ux-observed">
+      {t.batches} Pakete, {t.uxEvents} Bedienungs-Ereignisse{t.feedbackEvents ? ` + ${t.feedbackEvents} Angaben des Kindes` : ""} · aktive Zeit im Vordergrund {t.foregroundActiveSeconds ?? "—"} s (Leerlauf-Regel {t.idleRuleSeconds} s; ein Schätzwert für Eingabe-Aktivität, kein Aufmerksamkeits-Mass) · {t.hiddenIntervals ?? "—"}× Fenster verlassen · {t.pauses ?? "—"}× Stopp/Pause (Pausenzeit zählt nicht als aktiv) · {t.saveFailures ?? "—"} Speicherfehler · {t.retries ?? "—"} Wiederholungen
+      {t.unobservedStages?.length ? <span className="text-tertiary"> · ohne Beobachtung: {t.unobservedStages.join(", ")} (übersprungen oder nicht übermittelt)</span> : null}
+      <span className="text-tertiary"> · nur übermittelte Pakete; nicht angekommene fehlen ohne Hinweis</span>
+    </p>
+  );
+}
+
+function ReviewCard({ completion }: { completion: Evidence["completions"][number] }) {
+  const r: ParentReview | null = completion.review;
+  const derivation = completion.derivation ?? { status: "current" as const };
+  if (derivation.status === "obsolete") {
+    // R5-4: a stored derivation older than the current learning rules that cannot be re-derived under the
+    // served content is not shown as evidence; only raw facts are, and the records stay untouched.
+    const t = derivation.retained.telemetry;
+    const fb = derivation.retained.childFeedback;
+    return (
+      <article className="rounded-3xl border border-amber-300 bg-primary p-5" data-testid={`review-${completion.visitId}`} data-historical={completion.historical ? "true" : "false"} data-derivation="obsolete">
+        <div className="flex flex-wrap items-center gap-2">
+          <h2 className="text-lg font-semibold text-primary">{derivation.retained.title ?? completion.visitId}</h2>
+          <span className="rounded-full bg-secondary px-2 py-0.5 text-xs text-primary">Inhalte v{completion.contentVersion}</span>
+          <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs text-amber-900 dark:bg-amber-950/40 dark:text-amber-100">Auswertung nicht verfügbar — überholte Regelfassung</span>
+        </div>
+        <p className="mt-1 text-sm text-tertiary">
+          Abgeschlossen {fmt(completion.finishedAt)} · Kennung {completion.completionId} · Zustellung: {completion.delivery?.channel === "cockpit" ? "Eltern-Bereich" : "—"} · gespeicherte Regelfassung {derivation.storedVersion}, aktuell {derivation.currentVersion}
+        </p>
+        <div className="mt-3 rounded-2xl bg-amber-50 p-4 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" data-testid="review-obsolete">
+          <p className="font-medium">Rückblick nicht verfügbar.</p>
+          <p className="mt-1">{derivation.note}</p>
+          <p className="mt-1">Sobald die passenden Inhalte wieder bereitgestellt sind, wird der Rückblick aus den Aufzeichnungen neu abgeleitet und die frühere Fassung offengelegt. Die Rohdaten sind unter „Deutsch“, „Mathe“ und „Tippen“ weiterhin einsehbar.</p>
+        </div>
+        <section className="mt-3 rounded-2xl bg-secondary p-4">
+          <h3 className="text-base font-semibold text-primary">Erlebnis und Bedienung</h3>
+          {fb ? (
+            <div className="mt-2 rounded-xl bg-primary p-2 text-sm text-primary" data-testid="child-feedback">
+              <span className="font-medium">Vom Kind gesagt:</span> Schwierigkeit {feedbackWord(fb, "difficulty")} · Spass {feedbackWord(fb, "enjoyment")} · Klarheit {feedbackWord(fb, "clarity")}
+              <span className="text-tertiary"> (Antworten des Kindes, keine Hypothesen; Leerstellen bleiben leer.)</span>
+            </div>
+          ) : null}
+          <TelemetryLine t={t} />
+        </section>
+      </article>
+    );
+  }
+  return (
+    <article className="rounded-3xl border border-primary bg-primary p-5" data-testid={`review-${completion.visitId}`} data-historical={completion.historical ? "true" : "false"}>
+      <div className="flex flex-wrap items-center gap-2">
+        <h2 className="text-lg font-semibold text-primary">{r?.learning.childSummary.title ?? completion.visitId}</h2>
+        <span className="rounded-full bg-secondary px-2 py-0.5 text-xs text-primary">Inhalte v{completion.contentVersion}</span>
+        {completion.historical ? <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs text-amber-900 dark:bg-amber-950/40 dark:text-amber-100">Rückwirkend aus Aufzeichnungen erstellt — keine Bedienungs-Daten</span> : null}
+      </div>
+      <p className="mt-1 text-sm text-tertiary">
+        Abgeschlossen {fmt(completion.finishedAt)} · Kennung {completion.completionId} · Zustellung: {completion.delivery?.channel === "cockpit" ? "Eltern-Bereich" : "—"}
+        {r?.identity.reviewVersion ? ` · Ableitung Fassung ${r.identity.reviewVersion}${r.identity.derivedAt ? ` (${fmt(r.identity.derivedAt)})` : ""}` : ""}
+      </p>
+      {derivation.status === "projected" ? (
+        <p className="mt-2 rounded-xl border border-amber-300 bg-amber-50 p-2 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" data-testid="review-projected">
+          Hinweis: {derivation.note} (gespeicherte Regelfassung {derivation.storedVersion}, aktuell {derivation.currentVersion})
+        </p>
+      ) : null}
+      {r?.previousReviews?.length ? (
+        <div className="mt-2 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" data-testid="review-refreshed">
+          <p className="font-medium">Dieser Rückblick wurde aus den gespeicherten Aufzeichnungen neu abgeleitet (Kennung, Daten und Originaltexte unverändert).</p>
+          <ul className="mt-1 list-disc pl-5">
+            {r.previousReviews.map((prev, i) => {
+              const changed = prev.objectives.filter((po) => {
+                const now = r.learning.objectives.find((o) => o.taskId === po.taskId);
+                return !now || now.evidence !== po.evidence || now.outcome !== po.outcome;
+              });
+              return (
+                <li key={i}>
+                  Frühere Fassung {prev.reviewVersion}
+                  {prev.derivedAt ? ` (${fmt(prev.derivedAt)})` : ""}:{" "}
+                  {changed.length
+                    ? changed.map((po) => {
+                        const now = r.learning.objectives.find((o) => o.taskId === po.taskId);
+                        return `${po.taskId} war „${po.outcome}/${po.evidence}“, jetzt „${now ? `${now.outcome}/${now.evidence}` : "nicht mehr bewertet"}“`;
+                      }).join("; ")
+                    : "keine geänderte Einstufung"}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
+      {r ? (
+        <div className="mt-4 grid gap-4 lg:grid-cols-2">
+          <section className="rounded-2xl bg-secondary p-4">
+            <h3 className="text-base font-semibold text-primary">Lernen</h3>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-base text-primary">
+              {r.learning.whatHappened.map((w, i) => (
+                <li key={i}>{w}</li>
+              ))}
+            </ul>
+            {r.learning.objectives.length ? (
+              <ul className="mt-3 space-y-2 text-sm text-primary">
+                {r.learning.objectives.map((o) => (
+                  <li key={o.taskId} className="rounded-xl bg-primary p-2">
+                    <span className="font-medium">
+                      {o.taskId} v{o.version}
+                    </span>{" "}
+                    · {o.objective} · <span className="font-medium">{EVIDENCE_LABEL[o.outcome]?.label ?? o.outcome}</span>
+                    <br />
+                    {o.evidence}
+                    {o.support.length ? <span className="text-tertiary"> · Hilfe: {o.support.join(", ")}</span> : null}
+                    {o.uncertainty ? <span className="text-tertiary"> · Unsicherheit: {o.uncertainty}</span> : null}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            <p className="mt-3 text-base text-primary">
+              <span className="font-medium">Als Nächstes unterrichten:</span> {r.learning.teachNext.text}
+            </p>
+            <p className="text-sm text-tertiary">Warum: {r.learning.teachNext.why}</p>
+            <p className="text-sm text-tertiary">Unsicherheit: {r.learning.teachNext.uncertainty}</p>
+            <p className="mt-2 text-sm text-tertiary">Empfehlung für das Kind ({r.recommendation.branch}): {r.recommendation.text}</p>
+          </section>
+          <section className="rounded-2xl bg-secondary p-4">
+            <h3 className="text-base font-semibold text-primary">Erlebnis und Bedienung</h3>
+            <div className="mt-2 rounded-xl bg-primary p-2 text-sm text-primary" data-testid="child-feedback">
+              <span className="font-medium">Vom Kind gesagt:</span> Schwierigkeit {feedbackWord(r.experience.childFeedback, "difficulty")} · Spass {feedbackWord(r.experience.childFeedback, "enjoyment")} · Klarheit {feedbackWord(r.experience.childFeedback, "clarity")}
+              <span className="text-tertiary"> (Antworten des Kindes, keine Hypothesen; Leerstellen bleiben leer.)</span>
+            </div>
+            <TelemetryLine t={r.experience.telemetry} />
+            {r.experience.hypotheses.length ? (
+              <ul className="mt-2 space-y-2 text-sm text-primary">
+                {r.experience.hypotheses.map((h, i) => (
+                  <li key={i} className="rounded-xl bg-primary p-2">
+                    <span className="font-medium">Beobachtung:</span> {h.observation}
+                    <br />
+                    <span className="font-medium">Andere Erklärungen:</span> {h.alternatives.join("; ")}
+                    <br />
+                    <span className="font-medium">Vorschlag (Entscheidung liegt bei dir):</span> {h.suggestion}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-2 text-sm text-tertiary">Keine Bedienungs-Hypothese aus diesem Besuch.</p>
+            )}
+            {r.experience.missing.length ? (
+              <div className="mt-3">
+                <p className="text-sm font-medium text-primary">Nicht erfasst</p>
+                <ul className="list-disc pl-5 text-sm text-tertiary">
+                  {r.experience.missing.map((m, i) => (
+                    <li key={i}>{m}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </section>
+        </div>
+      ) : (
+        <p className="mt-2 text-base text-tertiary">Kein Rückblick gespeichert.</p>
+      )}
+    </article>
+  );
+}
+
 function SampleList({ title, samples, empty, showMetrics }: { title: string; samples: Evidence["samples"]; empty: string; showMetrics?: boolean }) {
   return (
     <div>
@@ -493,8 +787,19 @@ function SampleList({ title, samples, empty, showMetrics }: { title: string; sam
                 {showMetrics && typeof m.expectedChars === "number" && typeof m.correctChars === "number" ? (
                   <p className="mt-1 text-sm text-tertiary">
                     {/* Stored per-line denominator for lessons; max(expected, typed) only for single-label records. */}
-                    {describeTypingMetrics(m as { expectedChars: number; typedChars?: number; correctChars: number; extraChars?: number; omittedChars?: number; denominator?: number })} in {String(m.seconds ?? "?")} s
+                    {describeTypingMetrics(m as { expectedChars: number; typedChars?: number; correctChars: number; extraChars?: number; omittedChars?: number; denominator?: number })}
+                    {typeof m.substitutedChars === "number" && m.substitutedChars > 0 ? `, ${m.substitutedChars} vertauscht` : ""} in {String(m.seconds ?? "?")} s · Metrik v{String(m.metricVersion ?? 1)}
+                    {typeof m.comfort === "string" ? ` · Gefühl: ${m.comfort}` : ""}
                   </p>
+                ) : null}
+                {showMetrics && Array.isArray(m.lines) ? (
+                  <ul className="mt-1 text-xs text-tertiary" data-testid="burst-lines">
+                    {(m.lines as { expectedChars: number; typedChars: number; correctChars: number; extraChars: number; omittedChars: number; substitutedChars?: number }[]).map((line, i) => (
+                      <li key={i}>
+                        Zeile {i + 1}: {line.correctChars} von {Math.max(line.expectedChars, line.typedChars)} richtig{line.substitutedChars ? `, ${line.substitutedChars} vertauscht` : ""}{line.extraChars ? `, ${line.extraChars} zu viel` : ""}{line.omittedChars ? `, ${line.omittedChars} fehlen` : ""}
+                      </li>
+                    ))}
+                  </ul>
                 ) : null}
               </li>
             );
@@ -541,7 +846,7 @@ function Settings({ evidence, child, ops }: { evidence: Evidence; child: ChildId
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [child, evidence.erasureGeneration]);
   const counts = evidence.contentCounts;
-  const contentLine = useMemo(() => (counts ? `Inhalte v1: ${counts.math} Mathe-Einträge, ${counts.language} Sprach-Segmente, ${counts.typingLessons} Tipp-Lektionen, ${counts.typingLabels} Schild-Aufgaben.` : null), [counts]);
+  const contentLine = useMemo(() => (counts ? `Inhalte v${counts.version ?? 1}: ${counts.math} Mathe-Einträge, ${counts.language} Sprach-Segmente, ${counts.typingLessons} Tipp-Lektionen, ${counts.typingCourse ?? 0} Kurs-Lektionen (Finger-Kurs), ${counts.typingLabels} Schild-Aufgaben.` : null), [counts]);
   const edit = (field: "layout" | "title" | "hook" | "varietyEn" | "varietyEs") => (value: string) => setDraft((d) => editSettingsDraft(d, field, value));
   const saveBody = settingsSaveBody(draft, source);
 
