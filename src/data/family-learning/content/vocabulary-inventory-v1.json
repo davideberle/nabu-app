@@ -1,0 +1,324 @@
+{
+  "inventoryId": "santiago-vocabulary",
+  "inventoryVersion": 1,
+  "child": "santiago",
+  "contentId": "santiago-expedition",
+  "reviewed": {
+    "status": "independently-reviewed-2026-09-30",
+    "note": "Nabu independently reconciled all 13 stable entries with the released English and Spanish glosses and all 9 context bindings with their task/step/version, prompt, answer and variant. This reviews the inventory, not child knowledge or retention. Entries without a target context have no opportunity in the current tasks and are shown as such (never inferred from a phrase score)."
+  },
+  "policy": {
+    "independentSuccesses": 2,
+    "distinctContexts": 2,
+    "separateVisits": 2,
+    "note": "Advancement to 'wiederholt selbstständig' needs at least this many independent correct observations of one word in one dimension, across at least this many distinct reviewed contexts and separate visits. This is a configurable pilot teaching parameter chosen for the pilot, not a research-proven threshold; a single correct result is an observation, never mastery."
+  },
+  "entries": [
+    {
+      "id": "EN-WATER",
+      "language": "en",
+      "lemma": "water",
+      "partOfSpeech": "noun",
+      "concept": "water",
+      "sense": "water as a supply for the garden (uncountable)",
+      "gloss": "Wasser",
+      "forms": [
+        "water"
+      ],
+      "writtenForms": [
+        "water"
+      ],
+      "contexts": [
+        {
+          "id": "EN-WATER/pick",
+          "taskId": "LANG-EN-WATER",
+          "stepId": "pick",
+          "version": 1,
+          "dimension": "recognition",
+          "stimulus": "We need water for the garden."
+        },
+        {
+          "id": "EN-WATER/produce",
+          "taskId": "LANG-EN-WATER",
+          "stepId": "produce",
+          "version": 1,
+          "dimension": "recall",
+          "stimulus": "We need ___.",
+          "target": "We need water."
+        }
+      ]
+    },
+    {
+      "id": "EN-TOOLS",
+      "language": "en",
+      "lemma": "tools",
+      "partOfSpeech": "noun",
+      "concept": "tools",
+      "sense": "tools as a supply for building (plural)",
+      "gloss": "Werkzeug",
+      "forms": [
+        "tools",
+        "tool"
+      ],
+      "writtenForms": [
+        "tools"
+      ],
+      "contexts": [
+        {
+          "id": "EN-TOOLS/reuse",
+          "taskId": "LANG-EN-WATER",
+          "stepId": "reuse",
+          "version": 1,
+          "dimension": "recognition",
+          "stimulus": "The engineer says: We need tools for the base."
+        }
+      ]
+    },
+    {
+      "id": "EN-NEED",
+      "language": "en",
+      "lemma": "need",
+      "partOfSpeech": "verb",
+      "concept": "to need",
+      "sense": "we need (something)",
+      "gloss": "brauchen",
+      "forms": [
+        "need"
+      ],
+      "writtenForms": [
+        "need"
+      ],
+      "contexts": [],
+      "note": "Frame word: shown in the prompt 'We need ___.' — no independent opportunity in the current tasks."
+    },
+    {
+      "id": "EN-GARDEN",
+      "language": "en",
+      "lemma": "garden",
+      "partOfSpeech": "noun",
+      "concept": "garden",
+      "sense": "the base's garden",
+      "gloss": "Garten",
+      "forms": [
+        "garden"
+      ],
+      "writtenForms": [
+        "garden"
+      ],
+      "contexts": [],
+      "note": "Appears in the stimulus sentence only; never the target of a step — no opportunity in the current tasks."
+    },
+    {
+      "id": "ES-AGUA",
+      "language": "es",
+      "lemma": "agua",
+      "partOfSpeech": "noun",
+      "concept": "water",
+      "sense": "water as a supply (uncountable)",
+      "gloss": "Wasser",
+      "forms": [
+        "agua"
+      ],
+      "writtenForms": [
+        "agua"
+      ],
+      "contexts": [
+        {
+          "id": "ES-AGUA/pick",
+          "taskId": "LANG-ES-AGUA",
+          "stepId": "pick",
+          "version": 1,
+          "dimension": "recognition",
+          "stimulus": "La planta necesita agua."
+        },
+        {
+          "id": "ES-AGUA/produce",
+          "taskId": "LANG-ES-AGUA",
+          "stepId": "produce",
+          "version": 1,
+          "dimension": "recall",
+          "stimulus": "Necesitamos ___.",
+          "target": "Necesitamos agua."
+        },
+        {
+          "id": "ES-AGUA/station-reuse",
+          "taskId": "LANG-ES-STATION",
+          "stepId": "reuse",
+          "version": 1,
+          "dimension": "recognition",
+          "stimulus": "Es de noche. La bióloga dice: Necesitamos agua para la estación.",
+          "variants": {
+            "turtles": "Es de noche. La bióloga dice: Necesitamos agua para las tortugas.",
+            "waves": "Es de noche. La bióloga dice: Necesitamos agua para el equipo.",
+            "none": "Es de noche. La bióloga dice: Necesitamos agua para la estación."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ES-HERRAMIENTAS",
+      "language": "es",
+      "lemma": "herramientas",
+      "partOfSpeech": "noun",
+      "concept": "tools",
+      "sense": "tools as a supply (plural)",
+      "gloss": "Werkzeug",
+      "forms": [
+        "herramientas",
+        "herramienta"
+      ],
+      "writtenForms": [
+        "herramientas"
+      ],
+      "contexts": [
+        {
+          "id": "ES-HERRAMIENTAS/reuse",
+          "taskId": "LANG-ES-AGUA",
+          "stepId": "reuse",
+          "version": 1,
+          "dimension": "recognition",
+          "stimulus": "El ingeniero dice: Necesitamos herramientas."
+        }
+      ]
+    },
+    {
+      "id": "ES-LAMPARA",
+      "language": "es",
+      "lemma": "lámpara",
+      "partOfSpeech": "noun",
+      "concept": "lamp",
+      "sense": "a lamp for the station at night",
+      "gloss": "Lampe",
+      "forms": [
+        "lámpara",
+        "lampara"
+      ],
+      "writtenForms": [
+        "lámpara"
+      ],
+      "contexts": [
+        {
+          "id": "ES-LAMPARA/pick",
+          "taskId": "LANG-ES-STATION",
+          "stepId": "pick",
+          "version": 1,
+          "dimension": "recognition",
+          "stimulus": "Necesitamos una lámpara para la estación."
+        },
+        {
+          "id": "ES-LAMPARA/produce",
+          "taskId": "LANG-ES-STATION",
+          "stepId": "produce",
+          "version": 1,
+          "dimension": "recall",
+          "stimulus": "Necesitamos ___.",
+          "target": "Necesitamos una lámpara."
+        }
+      ]
+    },
+    {
+      "id": "ES-NECESITAMOS",
+      "language": "es",
+      "lemma": "necesitamos",
+      "partOfSpeech": "verb",
+      "concept": "to need (we)",
+      "sense": "we need (something)",
+      "gloss": "wir brauchen",
+      "forms": [
+        "necesitamos"
+      ],
+      "writtenForms": [
+        "necesitamos"
+      ],
+      "contexts": [],
+      "note": "Frame word: shown in the prompt 'Necesitamos ___.' — no independent opportunity in the current tasks."
+    },
+    {
+      "id": "ES-PLANTA",
+      "language": "es",
+      "lemma": "planta",
+      "partOfSpeech": "noun",
+      "concept": "plant",
+      "sense": "the plant in the garden",
+      "gloss": "Pflanze",
+      "forms": [
+        "planta"
+      ],
+      "writtenForms": [
+        "planta"
+      ],
+      "contexts": [],
+      "note": "Stimulus word only — no opportunity in the current tasks."
+    },
+    {
+      "id": "ES-ESTACION",
+      "language": "es",
+      "lemma": "estación",
+      "partOfSpeech": "noun",
+      "concept": "station",
+      "sense": "the observation station",
+      "gloss": "Station",
+      "forms": [
+        "estación",
+        "estacion"
+      ],
+      "writtenForms": [
+        "estación"
+      ],
+      "contexts": [],
+      "note": "Stimulus word only — no opportunity in the current tasks."
+    },
+    {
+      "id": "ES-NOCHE",
+      "language": "es",
+      "lemma": "noche",
+      "partOfSpeech": "noun",
+      "concept": "night",
+      "sense": "night time",
+      "gloss": "Nacht",
+      "forms": [
+        "noche"
+      ],
+      "writtenForms": [
+        "noche"
+      ],
+      "contexts": [],
+      "note": "Gloss word only — no opportunity in the current tasks."
+    },
+    {
+      "id": "ES-TORTUGAS",
+      "language": "es",
+      "lemma": "tortugas",
+      "partOfSpeech": "noun",
+      "concept": "turtles",
+      "sense": "sea turtles (plural)",
+      "gloss": "Schildkröten",
+      "forms": [
+        "tortugas",
+        "tortuga"
+      ],
+      "writtenForms": [
+        "tortugas"
+      ],
+      "contexts": [],
+      "note": "Gloss word only (theme variant) — no opportunity in the current tasks."
+    },
+    {
+      "id": "ES-EQUIPO",
+      "language": "es",
+      "lemma": "equipo",
+      "partOfSpeech": "noun",
+      "concept": "team",
+      "sense": "the expedition team",
+      "gloss": "Team",
+      "forms": [
+        "equipo"
+      ],
+      "writtenForms": [
+        "equipo"
+      ],
+      "contexts": [],
+      "note": "Gloss word only (theme variant) — no opportunity in the current tasks."
+    }
+  ]
+}

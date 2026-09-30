@@ -2,8 +2,9 @@ import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
 import { NO_STORE, refuse, requireChildLearning } from "@/lib/family-learning-auth";
-import { loadLearningContent } from "@/lib/family-learning-content-server";
+import { loadLearningContent, loadVocabularyInventory } from "@/lib/family-learning-content-server";
 import { applyMutation, ExposureUnsettledError, readChildView, type MutationContext } from "@/lib/family-learning-db";
+import { resolveTimeZone } from "@/lib/family-learning-progress";
 import type { LearningOp } from "@/lib/family-learning-state";
 
 /**
@@ -48,6 +49,24 @@ function content() {
   }
 }
 
+/** The reviewed vocabulary inventory; a file that does not reconcile is a 503 like mis-keyed content. */
+function vocabulary() {
+  try {
+    return loadVocabularyInventory();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Learner time zone for the progress strip's Monday–Sunday week (follow-on M2):
+ * `?tz=` on GET, `tz` in the PUT body. Only a valid IANA zone is honoured; anything
+ * else falls back to the household default. Never a client clock.
+ */
+function timeZoneOf(value: unknown): string {
+  return resolveTimeZone(value);
+}
+
 export async function GET(request: Request) {
   const guard = await requireChildLearning(request);
   if (!guard.ok) return guard.response;
@@ -56,8 +75,10 @@ export async function GET(request: Request) {
   if (guard.child !== loaded.child) {
     return NextResponse.json({ view: null, prepared: false, child: guard.child }, { headers: NO_STORE });
   }
+  const inventory = vocabulary();
+  if (!inventory) return refuse(503, "Learning vocabulary inventory is not available");
   try {
-    const view = await readChildView(await getDb(), guard.child, loaded);
+    const view = await readChildView(await getDb(), guard.child, loaded, new Date(), { timeZone: timeZoneOf(new URL(request.url).searchParams.get("tz")), vocabulary: inventory });
     return NextResponse.json({ view: { ...view, sessionFingerprint: sessionFingerprint(request) }, prepared: true }, { headers: NO_STORE });
   } catch (error) {
     if (error instanceof ExposureUnsettledError) return refuse(503, "The task could not be saved as shown; try again");
@@ -114,10 +135,12 @@ export async function PUT(request: Request) {
   }
   const context = readContext(body.context);
   if (!context) return refuse(400, "context is required: { erasureGeneration, visit: { id, startedAt } | null }");
+  const inventory = vocabulary();
+  if (!inventory) return refuse(503, "Learning vocabulary inventory is not available");
 
   let outcome;
   try {
-    outcome = await applyMutation(await getDb(), { child: guard.child, op, idempotencyKey, expectedRevision, context }, loaded);
+    outcome = await applyMutation(await getDb(), { child: guard.child, op, idempotencyKey, expectedRevision, context }, loaded, () => new Date(), { timeZone: timeZoneOf(body.tz), vocabulary: inventory });
   } catch (error) {
     if (error instanceof ExposureUnsettledError) return refuse(503, "The task could not be saved as shown; try again");
     throw error;

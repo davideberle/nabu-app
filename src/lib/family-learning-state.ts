@@ -43,7 +43,9 @@ import {
   type TypingCourseLesson,
   type VisitId,
 } from "./family-learning-content.ts";
-import { buildSceneModel, buildVisitSummary, delayAnchor, delayedCheckInfo, type DelayedCheckInfo, type SceneModel, type VisitSummary } from "./family-learning-summary.ts";
+import { buildSceneModel, buildVisitSummary, delayAnchor, delayedCheckInfo, visitLabel, visitOrdinal, type DelayedCheckInfo, type SceneModel, type VisitSummary } from "./family-learning-summary.ts";
+import { buildProgress, type ProgressStrip, type ProgressSources } from "./family-learning-progress.ts";
+import { buildVocabularyLedger, childVocabularyCue, type VocabularyInventory, type ChildVocabularyCue } from "./family-learning-vocabulary.ts";
 import { alignTyping, alignedLessonMetrics, TYPING_METRIC_VERSION, type AlignedLineMetrics } from "./family-learning-typing-metrics.ts";
 import { assessSpacing, evaluateRevision, flagSpacing, markSpacing, suggestSpacing, type SpacingFlag } from "./family-learning-writing.ts";
 
@@ -636,17 +638,22 @@ function advance(state: MissionState, content: LearningContent) {
 
 /**
  * Next visit the child may start, or the reason none can start yet.
- * Priority (redesign F4/C3): v1, v2; then the delayed check WHEN it is due
- * (its eligibility is time-bound), then the next chapter v4 (available from
- * the moment v1 and v2 are complete — it never waits for the six days);
- * afterwards the delayed check waits with its real date. Neither hides the
- * other permanently.
+ * Progression (DESIGN §7.6 "September 30 follow-on"): v1, v2, then the
+ * observation-station chapter v4 immediately (shown as Visit 3). The pilot's
+ * delayed-check visit `v3` was retired by David on 2026-09-30: it is never
+ * offered from a fresh, two-visit or completed state and never waits with a
+ * date. Existing work is never rewritten: a v3 that was RUNNING before the
+ * retirement resumes to completion (a running visit always takes precedence),
+ * and a FINISHED v3 stays recorded and counted. Under the content cap (no v4
+ * in the served content) nothing further is offered — honestly, not v3.
+ * `now` is kept for signature stability; availability is no longer time-bound.
  */
 export function nextVisitAvailability(
   state: MissionState,
   content: LearningContent,
   now: Date,
 ): { visit: VisitId; availableAt: null } | { visit: VisitId | null; availableAt: string | null; reason: string } {
+  void now;
   const running = state.visits.find((v) => v.finishedAt === null);
   // A running visit the served content does not define (content cap /
   // rollback) is parked: nothing else is offered and nothing is changed.
@@ -656,16 +663,13 @@ export function nextVisitAvailability(
   if (!finished.includes("v1")) return { visit: "v1", availableAt: null };
   if (!finished.includes("v2")) return { visit: "v2", availableAt: null };
   const hasV4 = content.visits.some((v) => v.id === "v4");
-  const info = delayedCheckInfo(state, content, now);
-  const v3Open = info?.status === "open";
-  if (!finished.includes("v3") && v3Open) return { visit: "v3", availableAt: null };
   if (hasV4 && !finished.includes("v4")) return { visit: "v4", availableAt: null };
-  if (!finished.includes("v3")) {
-    if (!info || info.status === "no-anchor") return { visit: null, availableAt: null, reason: "no-anchor" };
-    return { visit: null, availableAt: info.availableAt, reason: "delayed-check-waits" };
-  }
+  if (!hasV4) return { visit: null, availableAt: null, reason: "no-further-visit-served" };
   return { visit: null, availableAt: null, reason: "all-visits-done" };
 }
+
+/** The retired delayed-check visit id (kept readable for historical records; never offered). */
+export const RETIRED_VISIT_IDS: readonly VisitId[] = ["v3"];
 
 function scoredItemForStage(stage: StageId | null): ScoredMathItemId | null {
   return stage && (SCORED_IDS as readonly string[]).includes(stage) ? (stage as ScoredMathItemId) : null;
@@ -1205,7 +1209,10 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const support: ("gloss" | "audio" | "word-choice" | "tutor" | "retry" | "feedback")[] = [];
       if (help.gloss.length > 0) support.push("gloss");
       if (help.audio.length > 0) support.push("audio");
-      if (help.wordChoice.length > 0 || op.modality === "word-choice") support.push("word-choice");
+      // One recognition-support rule (follow-on 2026-09-30, shared with the vocabulary ledger): for a pick-supply step the
+      // labelled supply buttons ARE the task, so the button modality is not help; only an opened word list (durable
+      // per-segment ledger) is. For a produce step, button-selected text stays help — copying, never independent production.
+      if (help.wordChoice.length > 0 || (op.modality === "word-choice" && step.kind !== "pick-supply")) support.push("word-choice");
       if (help.tutor > 0) support.push("tutor");
       if (op.modality === "spoken" && op.transcriptConfirmed !== true) {
         throw new LearningOpError("invalid", "a spoken response must be confirmed by the child before it is scored");
@@ -1678,9 +1685,14 @@ export type ChildView = {
   base: { name: string | null; location: { id: string; label: string; emoji: string } | null; supplies: Record<string, number> };
   scene: SceneModel;
   pages: ExpeditionPage[];
-  visit: { id: VisitId; title: string; startedAt: string; stage: StageId | null; stageIndex: number; stageCount: number; minutesElapsed: number; overBudget: boolean; intro: { who: string; make: string; done: string } | null } | null;
-  next: { visit: VisitId | null; availableAt: string | null; reason: string | null };
+  /** `ordinal` is the learner-facing number (the observation chapter `v4` is Visit 3 since 2026-09-30); `id` stays the stable internal identity. */
+  visit: { id: VisitId; ordinal: number | null; title: string; startedAt: string; stage: StageId | null; stageIndex: number; stageCount: number; minutesElapsed: number; overBudget: boolean; intro: { who: string; make: string; done: string } | null } | null;
+  next: { visit: VisitId | null; ordinal: number | null; availableAt: string | null; reason: string | null };
   delayedCheck: DelayedCheckInfo | null;
+  /** Compact learner-entry progress strip (follow-on M2); server-derived, never a grade. */
+  progress: ProgressStrip;
+  /** Concrete words to practise and what to try next (follow-on M3); no counts, no ranks. `null` when no inventory is served. */
+  vocabulary: ChildVocabularyCue | null;
   nextStep: string;
   locations: { id: string; label: string; emoji: string }[];
   station: { themes: { id: string; label: string; emoji: string; purpose: string }[]; spots: { id: string; label: string; emoji: string }[]; theme: string | null; spot: string | null; built: boolean; lampLit: boolean; lampAvailable: boolean; reference: { kind: "turtles-in-log" | "none"; text: string } } | null;
@@ -1736,19 +1748,20 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
   }
   const availability = nextVisitAvailability(state, content, now);
   if ("reason" in availability && availability.reason === "chapter-unavailable") return "Dein angefangenes Kapitel ist gerade nicht verfügbar. Deine Basis, deine Seiten und dein Fortschritt sind gespeichert.";
+  if ("reason" in availability && availability.reason === "no-further-visit-served") return "Das nächste Kapitel ist gerade nicht verfügbar. Deine Basis, deine Seiten und dein Fortschritt sind gespeichert.";
   if (availability.visit) {
     if (availability.visit === "v1") return "Baue deine Basis.";
-    if (availability.visit === "v3") return "Eine kurze Aufgabe von früher ist zurück.";
-    if (availability.visit === "v4") return "Ein neues Kapitel: die Beobachtungsstation.";
+    if (availability.visit === "v3") return "Deine angefangene Aufgabe von früher wartet auf dich.";
+    if (availability.visit === "v4") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v4") ?? 3}): die Beobachtungsstation.`;
     return "Zurück zur Basis — ein neuer Besuch wartet.";
-  }
-  if (availability.availableAt) {
-    return `Eine kurze Aufgabe von früher kommt am ${new Date(availability.availableAt).toLocaleDateString("de-CH", { day: "numeric", month: "long" })} zurück.`;
   }
   return "Alle Besuche sind geschafft.";
 }
 
-export function buildChildView(state: MissionState, content: LearningContent, settings: ParentSettings, now: Date, erasureGeneration = 0): ChildView {
+/** Optional per-request inputs of the view (follow-on): the learner's time zone, the stored reviews the progress strip may cite and the served vocabulary inventory. */
+export type ChildViewOptions = { timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null };
+
+export function buildChildView(state: MissionState, content: LearningContent, settings: ParentSettings, now: Date, erasureGeneration = 0, options: ChildViewOptions = {}): ChildView {
   const stage = currentStage(state, content);
   const running = state.visits.find((v) => v.id === state.currentVisit && v.finishedAt === null) ?? null;
   const availability = nextVisitAvailability(state, content, now);
@@ -1907,10 +1920,12 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     scene: buildSceneModel(state, content),
     pages: state.pages,
     visit: running && def
-      ? { id: running.id, title: def.title, startedAt: running.startedAt, stage, stageIndex: running.stageIndex, stageCount: def.stages.length, minutesElapsed, overBudget: minutesElapsed >= content.visitBudgetMinutes.max, intro: def.intro ?? null }
+      ? { id: running.id, ordinal: visitOrdinal(state, running.id), title: visitLabel(state, content, running.id), startedAt: running.startedAt, stage, stageIndex: running.stageIndex, stageCount: def.stages.length, minutesElapsed, overBudget: minutesElapsed >= content.visitBudgetMinutes.max, intro: def.intro ?? null }
       : null,
-    next: { visit: availability.visit, availableAt: availability.availableAt, reason: "reason" in availability ? availability.reason : null },
+    next: { visit: availability.visit, ordinal: availability.visit ? visitOrdinal(state, availability.visit) : null, availableAt: availability.availableAt, reason: "reason" in availability ? availability.reason : null },
     delayedCheck: delayedCheckInfo(state, content, now),
+    progress: buildProgress(state, content, { now, timeZone: options.timeZone ?? null, sources: options.progressSources ?? null }),
+    vocabulary: options.vocabulary ? childVocabularyCue(buildVocabularyLedger(state, content, options.vocabulary), content, state) : null,
     nextStep: nextStepText(state, content, stage, now),
     locations: content.locations,
     station: stationDef ? { themes: stationDef.themes, spots: stationDef.spots, theme: station.theme, spot: station.spot, built: station.built, lampLit: station.lampLit, lampAvailable: (state.base.supplies["lámpara"] ?? 0) > 0, reference: stationReference } : null,

@@ -20,10 +20,33 @@
 // removing the cap resumes chapter 4 exactly where it was.
 import contentV2 from "@/data/family-learning/content/santiago-expedition-v2.json";
 import contentV1 from "@/data/family-learning/content/santiago-expedition-v1.json";
+import vocabularyV1 from "@/data/family-learning/content/vocabulary-inventory-v1.json";
 import { asLearningContent, type LearningContent } from "./family-learning-content";
+import { asVocabularyInventory, type VocabularyInventory } from "./family-learning-vocabulary";
 
 let cached: LearningContent | null = null;
 let failure: Error | null = null;
+let cachedVocabulary: VocabularyInventory | null = null;
+let vocabularyFailure: Error | null = null;
+
+/**
+ * The reviewed vocabulary inventory (follow-on M3), reconciled by stable id
+ * against the SERVED content once per server instance. Contexts of segments
+ * the served content does not carry (content cap) are simply not served.
+ * A file that does not reconcile makes the learning routes answer 503, like
+ * mis-keyed content.
+ */
+export function loadVocabularyInventory(): VocabularyInventory {
+  if (cachedVocabulary) return cachedVocabulary;
+  if (vocabularyFailure) throw vocabularyFailure;
+  try {
+    cachedVocabulary = asVocabularyInventory(vocabularyV1, loadLearningContent());
+    return cachedVocabulary;
+  } catch (error) {
+    vocabularyFailure = error instanceof Error ? error : new Error(String(error));
+    throw vocabularyFailure;
+  }
+}
 
 /** The content version this server instance serves (2, or 1 under the rollback cap). */
 export function servedContentVersion(): 1 | 2 {

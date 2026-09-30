@@ -106,6 +106,33 @@ export function isTypingView(v: unknown): v is TypingView {
   return false;
 }
 
+/** The progress strip (follow-on M2): every field the cockpit dereferences. */
+export function isProgressStrip(v: unknown): boolean {
+  if (!isRec(v)) return false;
+  const week = v.week;
+  if (!isStr(v.timeZone) || !isRec(week) || !isStr(week.start) || !isStr(week.end) || !isStr(week.label)) return false;
+  if (!isNum(v.completedThisWeek) || !isNum(v.completedTotal) || !isStr(v.counting)) return false;
+  if (!Array.isArray(v.completed) || !v.completed.every((c) => isRec(c) && isStr(c.visit) && isNumOrNull(c.ordinal) && isStr(c.label) && isStr(c.finishedAt) && isBool(c.thisWeek) && isNum(c.pages))) return false;
+  const next = v.next;
+  if (!isRec(next) || !oneOf(next.kind, ["continue", "start", "none"]) || !isStrOrNull(next.visit) || !isNumOrNull(next.ordinal) || !isStrOrNull(next.label) || !isStr(next.text) || !isStrOrNull(next.reason)) return false;
+  const recent = v.recent;
+  if (recent !== null) {
+    if (!isRec(recent) || !isStr(recent.visit) || !isNumOrNull(recent.ordinal) || !isStr(recent.label) || !isStr(recent.finishedAt) || !isStrOrNull(recent.did) || !isStr(recent.tryNext)) return false;
+    const artifact = recent.artifact;
+    if (!isRec(artifact) || !oneOf(artifact.kind, ["page", "station", "revision", "none"]) || !isStr(artifact.text)) return false;
+    const g = recent.grounding;
+    if (!isRec(g) || !oneOf(g.source, ["review", "review-historical", "none"]) || !isNumOrNull(g.reviewVersion)) return false;
+    if (!(g.suppressed === null || (isRec(g.suppressed) && isStr(g.suppressed.reason) && isStr(g.suppressed.text)))) return false;
+  }
+  return true;
+}
+
+/** The child's vocabulary cue (follow-on M3): words + a try-next line, nothing numeric. */
+export function isChildVocabularyCue(v: unknown): boolean {
+  if (!isRec(v) || !isNum(v.inventoryVersion) || !isStr(v.note) || !Array.isArray(v.words)) return false;
+  return v.words.every((w) => isRec(w) && isStr(w.entryId) && isStr(w.lemma) && isStr(w.gloss) && oneOf(w.language, ["en", "es"]) && isStr(w.try) && isBool(w.upcoming));
+}
+
 /**
  * True only for a complete, self-consistent ChildView for `child` (when
  * given). Every field the surfaces read is checked, so a passing value can
@@ -123,9 +150,11 @@ export function isChildView(value: unknown, child?: ChildId): value is ChildView
   if (!isRec(base) || !isStrOrNull(base.name) || !(base.location === null || isNamed(base.location)) || !isNumRecord(base.supplies)) return false;
   if (!Array.isArray(value.pages) || !value.pages.every((p) => isRec(p) && isStr(p.visit) && isStr(p.title) && isStr(p.baseName) && isStrOrNull(p.locationId) && isNumRecord(p.supplies) && isStrOrNull(p.explanation) && isStr(p.text) && isStr(p.at))) return false;
   const visit = value.visit;
-  if (!(visit === null || (isRec(visit) && isStr(visit.id) && isStr(visit.title) && isStr(visit.startedAt) && isStrOrNull(visit.stage) && isNum(visit.stageIndex) && isNum(visit.stageCount) && isNum(visit.minutesElapsed) && isBool(visit.overBudget)))) return false;
+  if (!(visit === null || (isRec(visit) && isStr(visit.id) && isNumOrNull(visit.ordinal) && isStr(visit.title) && isStr(visit.startedAt) && isStrOrNull(visit.stage) && isNum(visit.stageIndex) && isNum(visit.stageCount) && isNum(visit.minutesElapsed) && isBool(visit.overBudget)))) return false;
   const next = value.next;
-  if (!isRec(next) || !isStrOrNull(next.visit) || !isStrOrNull(next.availableAt) || !isStrOrNull(next.reason)) return false;
+  if (!isRec(next) || !isStrOrNull(next.visit) || !isNumOrNull(next.ordinal) || !isStrOrNull(next.availableAt) || !isStrOrNull(next.reason)) return false;
+  if (!isProgressStrip(value.progress)) return false;
+  if (!(value.vocabulary === null || isChildVocabularyCue(value.vocabulary))) return false;
   if (!Array.isArray(value.locations) || !value.locations.every(isNamed)) return false;
   if (!(value.math === null || isMathItemView(value.math))) return false;
   if (!(value.language === null || isLanguageView(value.language))) return false;

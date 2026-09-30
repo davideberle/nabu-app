@@ -35,7 +35,7 @@ import { useChildShell } from "@/components/family/child-shell-provider";
 import { BaseScene } from "@/components/family/learning/base-scene";
 import { createChildTurnClient } from "@/lib/family-assistant-client";
 import { envelopeSpokenText, type ChildId } from "@/lib/family-assistant-turn";
-import { createLearningClient, type LearningMutateOutcome, type MutationContext } from "@/lib/family-learning-client";
+import { browserTimeZone, createLearningClient, type LearningMutateOutcome, type MutationContext } from "@/lib/family-learning-client";
 import { stageLabel, type ChildView, type LearningOp, type SupportKind } from "@/lib/family-learning-state";
 import { createReadAloudController } from "@/lib/family-learning-audio";
 import { createTelemetryBuffer, enterStage, noteControl, noteInput, noteOp, noteSubmit, pause as pauseTelemetry, setHidden, takeBatch } from "@/lib/family-learning-telemetry";
@@ -183,7 +183,7 @@ function Workspace({ child }: { child: ChildId }) {
   const refresh = useCallback(async () => {
     const abort = new AbortController();
     abortRef.current = abort;
-    const outcome = await learning.read(child, { signal: abort.signal });
+    const outcome = await learning.read(child, { signal: abort.signal, timeZone: browserTimeZone() });
     if (!aliveRef.current) return;
     if (outcome.ok) {
       adopt(outcome.view);
@@ -263,7 +263,7 @@ function Workspace({ child }: { child: ChildId }) {
       // R5-1: every request names the identity it was rendered against — the completed forms pass the
       // identity they were mounted for; everything else uses the adopted view. The server fences on it.
       const context = options?.identity ? contextOf(options.identity) : contextOfView(current);
-      const outcome = await learning.mutate(child, op, current.revision, { signal: abort.signal, idempotencyKey: options?.idempotencyKey, context });
+      const outcome = await learning.mutate(child, op, current.revision, { signal: abort.signal, idempotencyKey: options?.idempotencyKey, context, timeZone: browserTimeZone() });
       if (!aliveRef.current) return null;
       setBusy(false);
       if (!outcome.ok && "failure" in outcome && (outcome.failure === "unauthorized" || outcome.failure === "no-session")) retireAllDrafts(window.sessionStorage);
@@ -586,14 +586,9 @@ function StartOrWait({ child, view, busy, onStart, notice }: { child: ChildId; v
           <h1 className="text-2xl font-semibold text-primary">{view.title}</h1>
           <p className="mt-2 text-base text-tertiary">{view.nextStep}</p>
           {notice ? <p className="mt-2 text-base text-primary">{notice}</p> : null}
-          {view.delayedCheck && (view.delayedCheck.status === "waiting" || view.delayedCheck.status === "open") ? (
-            <p className="mt-2 text-sm text-tertiary" data-testid="delayed-check-text">
-              {view.delayedCheck.childText}
-            </p>
-          ) : null}
           {view.next.visit ? (
-            <button type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-5")} data-testid="start-visit">
-              {view.next.visit === "v1" ? "Los geht's" : view.next.visit === "v4" ? "Neues Kapitel starten" : view.next.visit === "v3" ? "Kurzer Check von früher" : "Weiter geht's"}
+            <button type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-5")} data-testid="start-visit" data-visit={view.next.visit} data-ordinal={view.next.ordinal ?? ""}>
+              {view.next.visit === "v1" ? "Los geht's" : view.next.visit === "v4" ? `Besuch ${view.next.ordinal ?? 3} starten` : view.next.visit === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
             </button>
           ) : null}
         </div>

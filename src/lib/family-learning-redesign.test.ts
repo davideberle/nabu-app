@@ -182,42 +182,83 @@ describe("additive migration of a saved version-1 mission", () => {
   });
 });
 
-describe("availability after two completed visits (F4/C3, M2/M3)", () => {
-  it("offers the new chapter now, before the six days; never forces v1/v2 again; the delayed check keeps its clock", () => {
+describe("availability after two completed visits (F4/C3, M2/M3; superseded 2026-09-30: the delayed check is retired)", () => {
+  it("offers the observation chapter now as Visit 3; never forces v1/v2 again; the delayed check is retired without a date; under v1 content nothing further is offered", () => {
     const { state, env } = completedTwoVisitsUnderV1();
     const s = upgradeMissionState(state, v2, env.now().toISOString()).state;
     const now = env.now();
     deepStrictEqual(nextVisitAvailability(s, v2, now), { visit: "v4", availableAt: null });
     const info = delayedCheckInfo(s, v2, now)!;
-    equal(info.status, "waiting");
-    equal(info.anchor?.kind, "visit1-completion");
-    ok(info.childText.includes("kommt am"));
-    ok(info.parentText.includes("kein Beweis von Können"));
-    // Under version-1 content the same state still waits (v4 does not exist there).
-    equal(nextVisitAvailability(state, v1, now).visit, null);
+    equal(info.status, "retired");
+    equal(info.availableAt, null);
+    equal(info.anchor?.kind, "visit1-completion", "the historical anchor provenance stays readable");
+    equal(info.childText, "", "the child is never told about a pending appointment");
+    ok(info.parentText.includes("zurückgezogen") && info.parentText.includes("30. September 2026") && !/öffnet am/.test(info.parentText), info.parentText);
+    const view = buildChildView(s, v2, env.settings, now);
+    deepStrictEqual(view.next, { visit: "v4", ordinal: 3, availableAt: null, reason: null });
+    ok(/Besuch 3/.test(view.nextStep) && !/von früher/.test(view.nextStep), view.nextStep);
+    // Under version-1 content (cap) the same state offers nothing — honestly, not v3.
+    deepStrictEqual(nextVisitAvailability(state, v1, now), { visit: null, availableAt: null, reason: "no-further-visit-served" });
+    ok(/nicht verfügbar/.test(buildChildView(state, v1, env.settings, now).nextStep));
   });
-  it("after the due date the delayed check comes first, then v4; after v4 the delayed check still waits with its date; both done → all done", () => {
+  it("after the former due date v4 still comes (never v3); a v3 that was RUNNING before the retirement resumes and finishes; then the chapter is Visit 4 for that child; both done → all done", () => {
     const { state, env } = completedTwoVisitsUnderV1();
     let s = upgradeMissionState(state, v2, env.now().toISOString()).state;
     const anchor = new Date(s.visits[0].finishedAt!).getTime();
     env.set(anchor + 6 * 24 * 3600 * 1000 + 1000);
-    equal(nextVisitAvailability(s, v2, env.now()).visit, "v3");
-    equal(delayedCheckInfo(s, v2, env.now())!.status, "open");
-    // Complete v3 (delayed check) — then v4 opens.
+    equal(nextVisitAvailability(s, v2, env.now()).visit, "v4", "past the old due instant: still the chapter, never v3");
+    equal(delayedCheckInfo(s, v2, env.now())!.status, "retired");
     const envV2 = makeEnv(v2, {}, env.now().getTime());
-    s = run(s, [{ op: "start-visit" }, { op: "resume-base" }], envV2);
+    equal(applyLearningOp(s, { op: "start-visit" }, envV2).state.currentVisit, "v4");
+    // In-flight historical work is never rewritten: a v3 started before the retirement resumes by its stable identity.
+    const inflight = JSON.parse(JSON.stringify(s)) as MissionState;
+    inflight.visits.push({ id: "v3", startedAt: envV2.now().toISOString(), finishedAt: null, stageIndex: 0, skippedStages: [], reflection: null });
+    inflight.currentVisit = "v3";
+    deepStrictEqual(nextVisitAvailability(inflight, v2, envV2.now()), { visit: "v3", availableAt: null });
+    equal(delayedCheckInfo(inflight, v2, envV2.now())!.status, "running");
+    equal(buildChildView(inflight, v2, envV2.settings, envV2.now()).visit!.title, "Besuch 3 — Der späte Check", "a real v3 record keeps its number");
+    let r = applyLearningOp(inflight, { op: "start-visit" }, envV2);
+    equal(r.result.resumed, true);
+    s = run(r.state, [{ op: "resume-base" }], envV2);
     s = ensureItemShown(s, v2, envV2.now()).state;
     s = run(s, [{ op: "answer-math", itemId: "EQ-DELAY", answer: 8, raw: "8", modality: "typed" }, { op: "save-log", text: "Proben verpackt." }, { op: "reflect", optionId: "right" }], envV2);
-    equal(nextVisitAvailability(s, v2, envV2.now()).visit, "v4");
-    // Alternative order: v4 first before due, then waiting for v3.
+    equal(delayedCheckInfo(s, v2, envV2.now())!.status, "done");
+    const afterV3 = buildChildView(s, v2, envV2.settings, envV2.now());
+    deepStrictEqual(afterV3.next, { visit: "v4", ordinal: 4, availableAt: null, reason: null }, "for this child the chapter is Visit 4 — nothing historical is renumbered");
+    ok(/Besuch 4/.test(afterV3.nextStep));
+    // Ordinary order: v4 done → all visits done, no date, nothing pending.
     const { state: s0, env: e0 } = completedTwoVisitsUnderV1();
     const early = makeEnv(v2, { keyboardLayout: "ch-de-qwertz" }, e0.now().getTime());
     let t = upgradeMissionState(s0, v2, early.now().toISOString()).state;
     t = completeVisit4(t, early);
     const after = nextVisitAvailability(t, v2, early.now());
-    equal(after.visit, null);
-    equal((after as { reason: string }).reason, "delayed-check-waits");
-    ok(after.availableAt);
+    deepStrictEqual(after, { visit: null, availableAt: null, reason: "all-visits-done" });
+    throws(() => applyLearningOp(t, { op: "start-visit" }, early), /all-visits-done/);
+    equal(buildChildView(t, v2, early.settings, early.now()).nextStep, "Alle Besuche sind geschafft.");
+  });
+  it("the retired v3 cannot start from a fresh, two-visit or completed state, and the observation chapter keeps its stable v4 identity while displayed as Visit 3", () => {
+    const fresh = newMissionState(v2, "santiago", "2026-09-30T12:00:00.000Z");
+    equal(nextVisitAvailability(fresh, v2, new Date("2026-12-01T00:00:00.000Z")).visit, "v1");
+    const { state, env } = completedTwoVisitsUnderV1();
+    const two = upgradeMissionState(state, v2, env.now().toISOString()).state;
+    for (const at of [env.now(), new Date("2026-10-05T12:00:00.000Z"), new Date("2027-01-01T00:00:00.000Z")]) {
+      equal(nextVisitAvailability(two, v2, at).visit, "v4");
+      equal(nextVisitAvailability(two, v1, at).visit, null);
+    }
+    const far = makeEnv(v2, { keyboardLayout: "ch-de-qwertz" }, Date.UTC(2026, 11, 1));
+    let done = completeVisit4(two, far);
+    equal(nextVisitAvailability(done, v2, far.now()).visit, null);
+    ok(!done.visits.some((v) => v.id === "v3"), "no v3 record was ever created");
+    const started = run(two, [{ op: "start-visit" }], far);
+    const view = buildChildView(started, v2, far.settings, far.now());
+    equal(view.visit!.id, "v4");
+    equal(view.visit!.ordinal, 3);
+    equal(view.visit!.title, "Besuch 3 — Die Beobachtungsstation");
+    equal(view.progress.next.kind, "continue");
+    equal(view.progress.next.label, "Besuch 3 — Die Beobachtungsstation");
+    done = completeVisit4(two, far);
+    equal(buildVisitSummary(done, v2, "v4").title, "Besuch 3 — Die Beobachtungsstation");
+    equal(buildParentReview(done, v2, "v4", null, { historical: false }).learning.childSummary.title, "Besuch 3 — Die Beobachtungsstation");
   });
 });
 
@@ -633,7 +674,7 @@ describe("release rollback gate — a started chapter 4 under version-1 content 
     equal(currentStage(up.state, v1), null);
     const view = buildChildView(up.state, v1, capped.settings, capped.now());
     equal(view.visit, null);
-    deepStrictEqual(view.next, { visit: null, availableAt: null, reason: "chapter-unavailable" });
+    deepStrictEqual(view.next, { visit: null, ordinal: null, availableAt: null, reason: "chapter-unavailable" });
     ok(/nicht verfügbar/.test(view.nextStep) && /gespeichert/.test(view.nextStep), view.nextStep);
     equal(view.contentVersion, 2);
     equal(view.pages.length, 2);
@@ -644,13 +685,15 @@ describe("release rollback gate — a started chapter 4 under version-1 content 
     equal(up.state.station!.theme, "turtles");
     equal(up.state.revision, s.revision);
   });
-  it("a finished chapter 4 under v1 content: the delayed check keeps its own rule; the completed v4 stays recorded", () => {
+  it("a finished chapter 4 under v1 content: nothing further is offered (the delayed check stays retired); the completed v4 stays recorded", () => {
     const { s, env } = atV4([{ op: "choose-station", theme: "none" }, { op: "typing-course-continue" }]);
     let t = ensureItemShown(s, v2, env.now()).state;
     t = run(t, [{ op: "answer-remainder", itemId: "EQ-STATION", used: 30, remaining: 2, raw: "30, 2", modality: "typed" }, { op: "skip-stage", stage: "explain", reason: "child" }, { op: "skip-stage", stage: "LANG-ES-STATION", reason: "child" }, { op: "build-station", spot: "rocks" }, { op: "save-log", text: "Fertig." }, { op: "skip-stage", stage: "log-revise", reason: "child" }, { op: "skip-stage", stage: "log-transfer", reason: "child" }, { op: "summary-seen" }, { op: "reflect", optionId: "right" }], env);
     const capped = makeEnv(v1, {}, env.now().getTime());
     const view = buildChildView(t, v1, capped.settings, capped.now());
-    equal(view.next.reason, "delayed-check-waits");
+    equal(view.next.reason, "no-further-visit-served");
+    equal(view.next.availableAt, null);
+    equal(delayedCheckInfo(t, v1, capped.now())!.status, "retired");
     equal(view.pages.length, 3);
     equal(t.visits.find((v) => v.id === "v4")!.finishedAt !== null, true);
   });
@@ -1146,24 +1189,26 @@ describe("partial-gate evidence — W4 summary matrix, C2 exact due-time boundar
     equal(buildVisitSummary(m0, v2, "v4").next.branch, "missing-data");
     void me;
   });
-  it("C2: the delayed check opens exactly at the stored date, not one millisecond earlier — for the teaching anchor and the v1-completion fallback", () => {
+  it("C2 (superseded 2026-09-30): the delayed check never opens — before, at and after the former due instant the chapter is offered and the info is retired without a date, for both anchor kinds", () => {
     const { state } = completedTwoVisitsUnderV1();
     const s = upgradeMissionState(state, v2, "2026-09-29T12:00:00.000Z").state;
     const info = delayedCheckInfo(s, v2, new Date("2026-09-29T12:00:00.000Z"))!;
     equal(info.anchor!.kind, "visit1-completion");
-    const due = new Date(info.availableAt!);
-    equal(delayedCheckInfo(s, v2, new Date(due.getTime() - 1))!.status, "waiting");
-    equal(delayedCheckInfo(s, v2, due)!.status, "open");
-    equal(delayedCheckInfo(s, v2, new Date(due.getTime() + 1))!.status, "open");
-    equal(nextVisitAvailability(s, v2, new Date(due.getTime() - 1)).visit, "v4", "before due: chapter 4, never v3");
-    equal(nextVisitAvailability(s, v2, due).visit, "v3", "exactly at due: the delayed check comes first");
+    equal(info.status, "retired");
+    equal(info.availableAt, null);
+    const formerDue = new Date(new Date(s.visits[0].finishedAt!).getTime() + 6 * 24 * 3600 * 1000);
+    for (const at of [new Date(formerDue.getTime() - 1), formerDue, new Date(formerDue.getTime() + 1)]) {
+      equal(delayedCheckInfo(s, v2, at)!.status, "retired");
+      equal(nextVisitAvailability(s, v2, at).visit, "v4");
+    }
     const taught = JSON.parse(JSON.stringify(s)) as MissionState;
     taught.teachingFirstAt = "2026-09-29T09:00:00.000Z";
     const ti = delayedCheckInfo(taught, v2, new Date("2026-09-29T12:00:00.000Z"))!;
-    equal(ti.anchor!.kind, "teaching");
-    equal(ti.availableAt, "2026-10-05T09:00:00.000Z");
-    equal(delayedCheckInfo(taught, v2, new Date("2026-10-05T08:59:59.999Z"))!.status, "waiting");
-    equal(delayedCheckInfo(taught, v2, new Date("2026-10-05T09:00:00.000Z"))!.status, "open");
+    equal(ti.anchor!.kind, "teaching", "the teaching anchor stays readable for the record");
+    equal(ti.status, "retired");
+    equal(ti.availableAt, null);
+    equal(delayedCheckInfo(taught, v2, new Date("2026-10-05T09:00:00.000Z"))!.status, "retired");
+    equal(nextVisitAvailability(taught, v2, new Date("2026-10-05T09:00:00.000Z")).visit, "v4");
   });
   it("M8: a legacy state missing every new field gets compatible defaults without touching history; a mission of another child never leaks", () => {
     const { state } = completedTwoVisitsUnderV1();

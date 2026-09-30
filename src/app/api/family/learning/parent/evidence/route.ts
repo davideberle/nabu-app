@@ -2,9 +2,11 @@ import { NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
 import { isChildId } from "@/lib/family-assistant-turn";
 import { NO_STORE, refuse, requireParentOwner } from "@/lib/family-learning-auth";
-import { loadLearningContent } from "@/lib/family-learning-content-server";
+import { loadLearningContent, loadVocabularyInventory } from "@/lib/family-learning-content-server";
 import { readEvidence } from "@/lib/family-learning-db";
-import { delayedCheckInfo } from "@/lib/family-learning-summary";
+import { delayedCheckInfo, visitLabel, visitOrdinal } from "@/lib/family-learning-summary";
+import type { VocabularyInventory } from "@/lib/family-learning-vocabulary";
+import type { VisitId } from "@/lib/family-learning-content";
 
 /**
  * GET /api/family/learning/parent/evidence?child=santiago|isabel
@@ -33,9 +35,20 @@ export async function GET(request: Request) {
   } catch {
     /* evidence remains readable even if content fails to load */
   }
-  const bundle = await readEvidence(await getDb(), child, contentId, undefined, prepared ? content : undefined);
+  let inventory: VocabularyInventory | null = null;
+  try {
+    inventory = prepared ? loadVocabularyInventory() : null;
+  } catch {
+    /* the ledger is derived; evidence stays readable without it (the bundle says vocabulary: null) */
+  }
+  const bundle = await readEvidence(await getDb(), child, contentId, undefined, prepared ? content : undefined, inventory);
   // The delayed-check date is explained from the stored anchor with the server
   // clock; the client never computes or simulates it.
   const delayedCheck = prepared && content && bundle.state ? delayedCheckInfo(bundle.state, content, new Date()) : null;
-  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck }, { headers: NO_STORE });
+  // Learner-facing visit labels (follow-on M1): computed here from the state + served content so the parent
+  // cockpit shows "Besuch 3" for the observation chapter exactly like the child sees it; ids stay stable.
+  const visits = prepared && content && bundle.state
+    ? content.visits.map((v) => ({ id: v.id as VisitId, ordinal: visitOrdinal(bundle.state!, v.id), label: visitLabel(bundle.state!, content!, v.id), retired: v.id === "v3" && !bundle.state!.visits.some((r) => r.id === "v3") }))
+    : [];
+  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits }, { headers: NO_STORE });
 }

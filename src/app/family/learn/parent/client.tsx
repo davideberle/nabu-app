@@ -43,7 +43,13 @@ const primaryButton = cn("inline-flex min-h-12 items-center justify-center gap-2
 const secondaryButton = cn("inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-4 text-base font-medium text-primary hover:bg-secondary disabled:opacity-50", focusRing);
 const dangerButton = cn("inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-red-600 px-4 text-base font-medium text-red-700 hover:bg-red-50 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40", focusRing);
 
-type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null };
+type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[] };
+
+/** Learner-facing visit name (server-computed): "Besuch 3 — Die Beobachtungsstation (v4)"; falls back to the id. */
+function visitName(evidence: Evidence, id: string): string {
+  const v = evidence.visits?.find((x) => x.id === id);
+  return v ? `${v.label} (${id})` : id;
+}
 
 type Tab = "math" | "de" | "en" | "es" | "typing" | "review" | "settings";
 
@@ -285,7 +291,7 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
       {tab === "math" ? (
         <>
           <NextStep evidence={evidence} />
-          <AttemptTable title="Gleichmässig teilen (EQ-Aufgaben, inkl. Rest bei EQ-STATION)" attempts={math} child={child} ops={ops} empty="Noch kein Mathe-Versuch aufgezeichnet." />
+          <AttemptTable title="Gleichmässig teilen (EQ-Aufgaben, inkl. Rest bei EQ-STATION)" attempts={math} child={child} ops={ops} empty="Noch kein Mathe-Versuch aufgezeichnet." visits={evidence.visits} />
           <DelayedCheck evidence={evidence} />
           <SupportList evidence={evidence} filter={(k) => k !== "gloss"} />
         </>
@@ -298,8 +304,8 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
           <p className="text-sm text-tertiary">Deutsch ist die Anker-Sprache: Vorlesen zählt als Zugangs-Hilfe und wird bei den Mathe-Versuchen ausgewiesen, nicht als Lese-Evidenz.</p>
         </>
       ) : null}
-      {tab === "en" ? <LanguageView code="en" attempts={lang("en")} samples={evidence.samples.filter((s) => s.language === "en")} child={child} ops={ops} /> : null}
-      {tab === "es" ? <LanguageView code="es" attempts={lang("es")} samples={evidence.samples.filter((s) => s.language === "es")} child={child} ops={ops} /> : null}
+      {tab === "en" ? <LanguageView code="en" attempts={lang("en")} samples={evidence.samples.filter((s) => s.language === "en")} child={child} ops={ops} evidence={evidence} /> : null}
+      {tab === "es" ? <LanguageView code="es" attempts={lang("es")} samples={evidence.samples.filter((s) => s.language === "es")} child={child} ops={ops} evidence={evidence} /> : null}
       {tab === "typing" ? (
         <>
           <TypingSetup evidence={evidence} />
@@ -323,19 +329,20 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   const math = evidence.attempts.filter((a) => a.objective === "equal-sharing");
   const fresh = math.filter((a) => a.taskId === "EQ-FRESH");
   const ret = math.filter((a) => a.taskId === "EQ-RETURN");
-  const delay = math.filter((a) => a.taskId === "EQ-DELAY");
-  const station = evidence.attempts.filter((a) => a.taskId === "EQ-STATION");
   const v4Done = !!state?.visits.some((v) => v.id === "v4" && v.finishedAt);
+  const v4Running = !!state?.visits.some((v) => v.id === "v4" && !v.finishedAt);
+  const v3Running = !!state?.visits.some((v) => v.id === "v3" && !v.finishedAt);
+  const chapter = evidence.visits?.find((v) => v.id === "v4")?.label ?? "Besuch 3 — Die Beobachtungsstation";
   let text: string;
   if (!state || state.visits.length === 0) text = "Noch kein Besuch. Der nächste Schritt ist der erste Besuch: Basis bauen, 24 Pakete gerecht teilen.";
   else if (fresh.length === 0) text = "Erster Besuch läuft. Nächster Schritt: der frische Check nach der Erklärung (EQ-FRESH).";
   else if (ret.length === 0) text = "Nächster Schritt: Besuch 2 mit dem Transfer-Check (Setzlinge, EQ-RETURN) — noch nicht geprüft.";
-  else if (delay.length === 0 && !v4Done) text = station.length === 0 ? "Nächster Schritt: das neue Kapitel (Besuch 4, Beobachtungsstation mit Rest-Aufgabe EQ-STATION); der späte Check (EQ-DELAY) kommt an seinem Datum dazu — nie vorgezogen." : "Besuch 4 läuft. Der späte Check (EQ-DELAY) kommt an seinem Datum dazu — nie vorgezogen.";
-  else if (delay.length === 0) text = "Nächster Schritt: der späte Check (EQ-DELAY) an seinem Datum — noch nicht geprüft.";
-  else if (!v4Done) text = "Nächster Schritt: das neue Kapitel (Besuch 4, Beobachtungsstation mit Rest-Aufgabe EQ-STATION).";
-  else text = "Alle Inhalte (v1 und Kapitel 4) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte.";
+  else if (v3Running) text = "Ein vor dem 30. September angefangener später Check (v3) wartet noch auf seinen Abschluss; danach folgt die Beobachtungsstation. Er wird nicht mehr neu angeboten.";
+  else if (v4Running) text = `${chapter} läuft (intern v4, Rest-Aufgabe EQ-STATION).`;
+  else if (!v4Done) text = `Nächster Schritt: ${chapter} (intern v4, Beobachtungsstation mit Rest-Aufgabe EQ-STATION) — sofort verfügbar. Der frühere späte Check (v3, EQ-DELAY) ist seit dem 30. September zurückgezogen und keine ausstehende Arbeit.`;
+  else text = "Alle Inhalte (Besuche 1–3) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität.";
   return (
-    <div className="rounded-2xl bg-secondary px-4 py-3">
+    <div className="rounded-2xl bg-secondary px-4 py-3" data-testid="parent-next-step">
       <p className="text-sm font-medium text-tertiary">Vorgeschlagener nächster Schritt</p>
       <p className="mt-1 text-base text-primary">{text}</p>
     </div>
@@ -344,14 +351,12 @@ function NextStep({ evidence }: { evidence: Evidence }) {
 
 function DelayedCheck({ evidence }: { evidence: Evidence }) {
   const delay = evidence.attempts.filter((a) => a.taskId === "EQ-DELAY");
-  const state = evidence.state;
-  const anchor = state?.teachingFirstAt ?? state?.visits.find((v) => v.id === "v1")?.finishedAt ?? null;
   return (
     <div className="rounded-2xl border border-primary p-4">
-      <p className="text-base font-semibold text-primary">Später Check</p>
+      <p className="text-base font-semibold text-primary">Später Check (zurückgezogen)</p>
       {delay.length === 0 ? (
-        <p className="mt-1 text-base text-tertiary" data-testid="delayed-check-parent">
-          {evidence.delayedCheck ? evidence.delayedCheck.parentText : `Ausstehend. ${anchor ? `Anker: ${fmt(anchor)} — frühestens 6 Tage danach.` : "Noch kein Anker (kein abgeschlossener erster Besuch)."}`} Die Wartezeit wird nie simuliert; das Datum kommt von der Server-Uhr.
+        <p className="mt-1 text-base text-tertiary" data-testid="delayed-check-parent" data-status={evidence.delayedCheck?.status ?? "none"}>
+          {evidence.delayedCheck ? evidence.delayedCheck.parentText : "Der späte Check (EQ-DELAY, v3) wurde am 30. September 2026 zurückgezogen; er wird nicht mehr angeboten und hat keinen Termin."}
         </p>
       ) : (
         <p className="mt-1 text-base text-primary">
@@ -362,8 +367,12 @@ function DelayedCheck({ evidence }: { evidence: Evidence }) {
   );
 }
 
-function AttemptTable({ title, attempts, child, ops, empty }: { title: string; attempts: EvidenceAttempt[]; child: ChildId; ops: ParentOps; empty: string }) {
+function AttemptTable({ title, attempts, child, ops, empty, visits }: { title: string; attempts: EvidenceAttempt[]; child: ChildId; ops: ParentOps; empty: string; visits?: Evidence["visits"] }) {
   const [open, setOpen] = useState<string | null>(null);
+  const visitName = (id: string) => {
+    const v = visits?.find((x) => x.id === id);
+    return v ? `${v.label} (${id})` : `Besuch ${id}`;
+  };
   return (
     <div>
       <h2 className="text-lg font-semibold text-primary">{title}</h2>
@@ -388,7 +397,7 @@ function AttemptTable({ title, attempts, child, ops, empty }: { title: string; a
                 </button>
                 {open === a.id ? (
                   <div className="mt-3 space-y-1 text-sm text-primary">
-                    <p>Besuch {a.visitId} · Modalität {a.modality} · Sprache {a.stimulusLanguage}{a.responseLanguage ? ` → ${a.responseLanguage}` : ""}</p>
+                    <p>{visitName(a.visitId)} · Modalität {a.modality} · Sprache {a.stimulusLanguage}{a.responseLanguage ? ` → ${a.responseLanguage}` : ""}</p>
                     <p>Korrekt: {a.correct === null ? "nicht bewertet" : a.correct ? "ja" : "nein"} · Exposition vorher: {a.exposureBefore}</p>
                     <p>Hilfe: {a.support.length ? a.support.join(", ") : "keine"}</p>
                     {a.uncertainty ? <p>Unsicherheit: {a.uncertainty}</p> : null}
@@ -594,7 +603,7 @@ function ReviewTab({ evidence }: { evidence: Evidence }) {
       </p>
       {completions.length === 0 ? <p className="text-base text-tertiary">Noch kein abgeschlossener Besuch.</p> : null}
       {completions.map((c) => (
-        <ReviewCard key={c.completionId} completion={c} />
+        <ReviewCard key={c.completionId} completion={c} visitTitle={evidence.visits?.find((v) => v.id === c.visitId)?.label ?? null} />
       ))}
     </div>
   );
@@ -618,7 +627,7 @@ function TelemetryLine({ t }: { t: ParentReview["experience"]["telemetry"] }) {
   );
 }
 
-function ReviewCard({ completion }: { completion: Evidence["completions"][number] }) {
+function ReviewCard({ completion, visitTitle }: { completion: Evidence["completions"][number]; visitTitle: string | null }) {
   const r: ParentReview | null = completion.review;
   const derivation = completion.derivation ?? { status: "current" as const };
   if (derivation.status === "obsolete") {
@@ -629,7 +638,7 @@ function ReviewCard({ completion }: { completion: Evidence["completions"][number
     return (
       <article className="rounded-3xl border border-amber-300 bg-primary p-5" data-testid={`review-${completion.visitId}`} data-historical={completion.historical ? "true" : "false"} data-derivation="obsolete">
         <div className="flex flex-wrap items-center gap-2">
-          <h2 className="text-lg font-semibold text-primary">{derivation.retained.title ?? completion.visitId}</h2>
+          <h2 className="text-lg font-semibold text-primary">{visitTitle ?? derivation.retained.title ?? completion.visitId}</h2>
           <span className="rounded-full bg-secondary px-2 py-0.5 text-xs text-primary">Inhalte v{completion.contentVersion}</span>
           <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs text-amber-900 dark:bg-amber-950/40 dark:text-amber-100">Auswertung nicht verfügbar — überholte Regelfassung</span>
         </div>
@@ -657,8 +666,8 @@ function ReviewCard({ completion }: { completion: Evidence["completions"][number
   return (
     <article className="rounded-3xl border border-primary bg-primary p-5" data-testid={`review-${completion.visitId}`} data-historical={completion.historical ? "true" : "false"}>
       <div className="flex flex-wrap items-center gap-2">
-        <h2 className="text-lg font-semibold text-primary">{r?.learning.childSummary.title ?? completion.visitId}</h2>
-        <span className="rounded-full bg-secondary px-2 py-0.5 text-xs text-primary">Inhalte v{completion.contentVersion}</span>
+        <h2 className="text-lg font-semibold text-primary">{visitTitle ?? r?.learning.childSummary.title ?? completion.visitId}</h2>
+        <span className="rounded-full bg-secondary px-2 py-0.5 text-xs text-primary">Inhalte v{completion.contentVersion} · intern {completion.visitId}</span>
         {completion.historical ? <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs text-amber-900 dark:bg-amber-950/40 dark:text-amber-100">Rückwirkend aus Aufzeichnungen erstellt — keine Bedienungs-Daten</span> : null}
       </div>
       <p className="mt-1 text-sm text-tertiary">
@@ -810,18 +819,129 @@ function SampleList({ title, samples, empty, showMetrics }: { title: string; sam
   );
 }
 
-function LanguageView({ code, attempts, samples, child, ops }: { code: "en" | "es"; attempts: EvidenceAttempt[]; samples: Evidence["samples"]; child: ChildId; ops: ParentOps }) {
+function LanguageView({ code, attempts, samples, child, ops, evidence }: { code: "en" | "es"; attempts: EvidenceAttempt[]; samples: Evidence["samples"]; child: ChildId; ops: ParentOps; evidence: Evidence }) {
   const byKind = (k: string) => attempts.filter((a) => a.objective.endsWith(k));
   const label = code === "en" ? "Englisch" : "Spanisch";
   return (
     <>
       <p className="text-sm text-tertiary">Hören, Erkennen (Bild wählen) und Produzieren (schreiben/sprechen) werden getrennt gezählt. Glossar und Audio sind ausgewiesene Hilfe.</p>
-      <AttemptTable title={`${label}: Hören`} attempts={byKind("listen")} child={child} ops={ops} empty="Noch nicht gehört." />
-      <AttemptTable title={`${label}: Erkennen`} attempts={byKind("recognition")} child={child} ops={ops} empty="Noch keine Erkennungs-Aufgabe." />
-      <AttemptTable title={`${label}: Wort ergänzen (lexikalisch)`} attempts={byKind("completion")} child={child} ops={ops} empty="Noch keine Wort-Ergänzung." />
-      <AttemptTable title={`${label}: Satz produzieren`} attempts={byKind("production")} child={child} ops={ops} empty="Noch keine eigene Satz-Produktion." />
+      <VocabularyView code={code} evidence={evidence} />
+      <AttemptTable title={`${label}: Hören`} attempts={byKind("listen")} child={child} ops={ops} empty="Noch nicht gehört." visits={evidence.visits} />
+      <AttemptTable title={`${label}: Erkennen`} attempts={byKind("recognition")} child={child} ops={ops} empty="Noch keine Erkennungs-Aufgabe." visits={evidence.visits} />
+      <AttemptTable title={`${label}: Wort ergänzen (lexikalisch)`} attempts={byKind("completion")} child={child} ops={ops} empty="Noch keine Wort-Ergänzung." visits={evidence.visits} />
+      <AttemptTable title={`${label}: Satz produzieren`} attempts={byKind("production")} child={child} ops={ops} empty="Noch keine eigene Satz-Produktion." visits={evidence.visits} />
       <SampleList title={`${label}: Arbeitsproben`} samples={samples} empty="Noch keine Probe." />
     </>
+  );
+}
+
+const DIMENSION_LABEL: Record<string, string> = { recognition: "Erkennen", recall: "Abrufen (auf Aufforderung)", writing: "Schreibweise", spontaneous: "Freie Verwendung" };
+const STATUS_LABEL: Record<string, { label: string; tone: "green" | "amber" | "stone" | "blue" | "violet" }> = {
+  "no-opportunity": { label: "keine Aufgabe dafür", tone: "stone" },
+  "not-observed": { label: "nicht beobachtet", tone: "stone" },
+  practice: { label: "üben", tone: "amber" },
+  "supported-only": { label: "nur mit Hilfe", tone: "amber" },
+  independent: { label: "selbständig (einzeln)", tone: "blue" },
+  "independent-repeated": { label: "wiederholt selbständig", tone: "green" },
+  "review-pending": { label: "zur Durchsicht", tone: "violet" },
+};
+const OUTCOME_LABEL: Record<string, string> = { correct: "richtig", incorrect: "falsch", unscored: "unbewertet", review: "zur Durchsicht" };
+
+/**
+ * Vocabulary evidence ledger (follow-on M3): per word, the four dimensions
+ * with counts, distinct contexts and visits, honest missingness, and the
+ * observation rows (task/step/version, stimulus, response, modality, help,
+ * context, visit, time, outcome). Derived from the immutable records;
+ * deleted with them. Never a mastery claim.
+ */
+function VocabularyView({ code, evidence }: { code: "en" | "es"; evidence: Evidence }) {
+  const [openEntry, setOpenEntry] = useState<string | null>(null);
+  const ledger = evidence.vocabulary;
+  if (!ledger) {
+    return (
+      <div className="rounded-2xl border border-primary p-4" data-testid={`vocabulary-${code}`}>
+        <p className="text-base font-semibold text-primary">Wortschatz — Beobachtungen</p>
+        <p className="mt-1 text-base text-tertiary">Kein Wortschatz-Inventar bereitgestellt; es gibt keine abgeleiteten Beobachtungen.</p>
+      </div>
+    );
+  }
+  const entries = ledger.entries.filter((e) => e.language === code);
+  const observations = ledger.observations.filter((o) => o.language === code);
+  return (
+    <div className="rounded-2xl border border-primary p-4" data-testid={`vocabulary-${code}`} data-inventory-version={ledger.inventoryVersion} data-ledger-version={ledger.ledgerVersion}>
+      <p className="text-base font-semibold text-primary">Wortschatz — Beobachtungen (Inventar v{ledger.inventoryVersion}, Ableitung v{ledger.ledgerVersion})</p>
+      <p className="mt-1 text-sm text-tertiary">
+        Regel für „wiederholt selbständig“: mindestens {ledger.policy.independentSuccesses} selbständig richtige Beobachtungen in {ledger.policy.distinctContexts} verschiedenen Kontexten und {ledger.policy.separateVisits} getrennten Besuchen — ein Pilot-Parameter, kein nachgewiesenes Optimum. Status des Inventars: {ledger.reviewed.status}.
+      </p>
+      <ul className="mt-2 text-xs text-tertiary">
+        {ledger.notes.map((n) => (
+          <li key={n}>· {n}</li>
+        ))}
+      </ul>
+      {entries.length === 0 ? <p className="mt-2 text-base text-tertiary">Keine Einträge für diese Sprache.</p> : null}
+      <ul className="mt-3 space-y-2">
+        {entries.map((e) => (
+          <li key={e.entryId} className="rounded-2xl bg-secondary p-3" data-testid={`vocab-entry-${e.entryId}`}>
+            <div className="flex flex-wrap items-center gap-2">
+              <p className="text-base font-semibold text-primary">
+                <span lang={e.language}>{e.lemma}</span> <span className="font-normal text-tertiary">= {e.gloss}</span>
+              </p>
+              <span className="text-xs text-tertiary">{e.sense}</span>
+            </div>
+            <ul className="mt-2 grid gap-1 sm:grid-cols-2">
+              {(["recognition", "recall", "writing", "spontaneous"] as const).map((d) => {
+                const s = e.dimensions[d];
+                const st = STATUS_LABEL[s.status] ?? { label: s.status, tone: "stone" as const };
+                return (
+                  <li key={d} className="flex flex-wrap items-center gap-2 text-sm text-primary" data-testid={`vocab-dim-${e.entryId}-${d}`} data-status={s.status}>
+                    <span className="min-w-40 font-medium">{DIMENSION_LABEL[d]}</span>
+                    <NabuBadge tone={st.tone}>{st.label}</NabuBadge>
+                    {s.observations > 0 ? (
+                      <span className="text-tertiary">
+                        {s.independentCorrect} selbständig richtig · {s.supportedCorrect} mit Hilfe richtig · {s.incorrect} falsch · {s.unscored} unbewertet · {s.review} zur Durchsicht · {s.distinctContexts} Kontext(e) · {s.separateVisits} Besuch(e)
+                      </span>
+                    ) : null}
+                  </li>
+                );
+              })}
+            </ul>
+            {e.missing.length ? (
+              <ul className="mt-2 text-xs text-tertiary" data-testid={`vocab-missing-${e.entryId}`}>
+                {e.missing.map((m) => (
+                  <li key={m}>· {m}</li>
+                ))}
+              </ul>
+            ) : null}
+            {e.note ? <p className="mt-1 text-xs text-tertiary">{e.note}</p> : null}
+            {observations.some((o) => o.entryId === e.entryId) ? (
+              <button type="button" onClick={() => setOpenEntry(openEntry === e.entryId ? null : e.entryId)} className={cn(secondaryButton, "mt-2")} aria-expanded={openEntry === e.entryId}>
+                {openEntry === e.entryId ? "Beobachtungen ausblenden" : `Beobachtungen zeigen (${observations.filter((o) => o.entryId === e.entryId).length})`}
+              </button>
+            ) : null}
+            {openEntry === e.entryId ? (
+              <ul className="mt-2 space-y-1" data-testid={`vocab-observations-${e.entryId}`}>
+                {observations
+                  .filter((o) => o.entryId === e.entryId)
+                  .map((o) => (
+                    <li key={o.id} className="rounded-xl bg-primary p-2 text-xs text-primary" data-testid="vocab-observation" data-dimension={o.dimension} data-outcome={o.outcome} data-independent={o.independent ? "true" : "false"}>
+                      <span className="font-medium">{DIMENSION_LABEL[o.dimension]}</span> · {OUTCOME_LABEL[o.outcome] ?? o.outcome} · {o.independent ? "selbständig" : o.support.length ? `mit Hilfe: ${o.support.join(", ")}` : o.outcome === "correct" ? "nicht selbständig" : "—"}
+                      {o.productionKind ? ` · Produktion: ${o.productionKind}` : ""}
+                      <br />
+                      Aufgabe {o.taskId}
+                      {o.stepId ? `/${o.stepId}` : ""} v{o.taskVersion} · Kontext {o.contextId} · {o.visit ? visitName(evidence, o.visit) : "Besuch unbekannt (alte Aufzeichnung ausserhalb jedes Besuchsfensters)"} · {fmt(o.at)} · {o.modality}
+                      <br />
+                      {o.stimulus ? <>Reiz: „{o.stimulus}“ · </> : null}Antwort: „{o.response}“
+                      {o.uncertainty ? <> · Unsicherheit: {o.uncertainty}</> : null}
+                      {o.correction ? <> · <NabuBadge tone="blue">Eltern-Korrektur: {o.correction.evidence ?? "Notiz"} — nicht gezählt</NabuBadge></> : null}
+                      {!o.countable && !o.correction && o.outcome !== "review" && o.outcome !== "unscored" ? " · nicht gezählt" : ""}
+                    </li>
+                  ))}
+              </ul>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

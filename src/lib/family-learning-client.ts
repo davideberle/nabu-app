@@ -48,8 +48,9 @@ export type LearningClientDeps = {
 };
 
 export type LearningClient = {
-  read: (childId: ChildId, options?: { signal?: AbortSignal }) => Promise<LearningReadOutcome>;
-  mutate: (childId: ChildId, op: LearningOp, expectedRevision: number, options?: { signal?: AbortSignal; idempotencyKey?: string; context?: MutationContext }) => Promise<LearningMutateOutcome>;
+  /** `timeZone` (IANA, from the browser) scopes the progress strip's Monday–Sunday week; the server validates it. */
+  read: (childId: ChildId, options?: { signal?: AbortSignal; timeZone?: string | null }) => Promise<LearningReadOutcome>;
+  mutate: (childId: ChildId, op: LearningOp, expectedRevision: number, options?: { signal?: AbortSignal; idempotencyKey?: string; context?: MutationContext; timeZone?: string | null }) => Promise<LearningMutateOutcome>;
   /** Send one bounded telemetry batch (idempotent by batch id); failures are silent by design. */
   sendTelemetry: (childId: ChildId, batch: { batchId: string; visitId: string; visitStartedAt: string; erasureGeneration: number; events: unknown[] }, options?: { signal?: AbortSignal; keepalive?: boolean }) => Promise<boolean>;
   reset: () => void;
@@ -58,6 +59,16 @@ export type LearningClient = {
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+/** The browser's IANA zone, or null when unavailable (the server then uses the household default). */
+export function browserTimeZone(): string | null {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    return typeof tz === "string" && tz.length > 0 && tz.length <= 64 ? tz : null;
+  } catch {
+    return null;
+  }
 }
 
 export function readLearningSession(value: unknown): LearningSessionInfo | null {
@@ -116,8 +127,9 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
       const info = await session(childId, options?.signal);
       if (!info) return { ok: false, failure: "no-session" };
       let response: Response;
+      const tz = options?.timeZone ?? null;
       try {
-        response = await doFetch(LEARNING_MISSION_PATH, { headers: { Authorization: `Bearer ${info.token}` }, signal: options?.signal });
+        response = await doFetch(tz ? `${LEARNING_MISSION_PATH}?tz=${encodeURIComponent(tz)}` : LEARNING_MISSION_PATH, { headers: { Authorization: `Bearer ${info.token}` }, signal: options?.signal });
       } catch {
         return { ok: false, failure: "network" };
       }
@@ -145,7 +157,7 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
         response = await doFetch(LEARNING_MISSION_PATH, {
           method: "PUT",
           headers: { Authorization: `Bearer ${info.token}`, "Content-Type": "application/json" },
-          body: JSON.stringify({ op, expectedRevision, idempotencyKey, context: options?.context ?? null }),
+          body: JSON.stringify({ op, expectedRevision, idempotencyKey, context: options?.context ?? null, ...(options?.timeZone ? { tz: options.timeZone } : {}) }),
           signal: options?.signal,
         });
       } catch {

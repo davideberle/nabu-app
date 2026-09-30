@@ -5,9 +5,12 @@
 //
 // One primary Start/Continue action, a picture of the saved base, a short next
 // step, the saved expedition pages and access to the tutor (through the
-// mission workspace). Only genuinely available activities are shown: the
-// delayed check appears with its real opening date, never as a fake lock.
-// Isabel gets her own not-yet-prepared state and never sees Santiago's base.
+// mission workspace). Only genuinely available activities are shown; the
+// pilot's delayed check was retired on 2026-09-30 and is never offered or
+// dated. The compact progress strip (follow-on M2) counts completed visit
+// events only and quotes the stored review; the vocabulary cue (M3) names
+// concrete words to practise. Isabel gets her own not-yet-prepared state and
+// never sees Santiago's base.
 //
 // Presentation only: the server view (child-scoped credential) is the truth.
 // ---------------------------------------------------------------------------
@@ -17,9 +20,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { NabuBadge, cn } from "@/components/ui/nabu";
 import { useChildShell } from "@/components/family/child-shell-provider";
 import type { ChildId } from "@/lib/family-assistant-turn";
-import { createLearningClient } from "@/lib/family-learning-client";
+import { browserTimeZone, createLearningClient } from "@/lib/family-learning-client";
 import { retireAllDrafts } from "@/lib/family-learning-draft-store";
 import type { ChildView } from "@/lib/family-learning-state";
+import type { ProgressStrip } from "@/lib/family-learning-progress";
 import { BaseScene } from "@/components/family/learning/base-scene";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
 
@@ -61,7 +65,7 @@ function Cockpit({ child }: { child: ChildId }) {
     aliveRef.current = true;
     const abort = new AbortController();
     (async () => {
-      const outcome = await client.read(child, { signal: abort.signal });
+      const outcome = await client.read(child, { signal: abort.signal, timeZone: browserTimeZone() });
       if (!aliveRef.current) return;
       if (outcome.ok) {
         setLoad({ kind: "ready", view: outcome.view });
@@ -125,7 +129,7 @@ function Cockpit({ child }: { child: ChildId }) {
   const view = load.view;
   const running = view.visit;
   const canStart = running !== null || view.next.visit !== null;
-  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" ? "Neues Kapitel" : view.next.visit === "v3" ? "Kurzer Check" : "Weiter";
+  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" ? `Besuch ${view.next.ordinal ?? 3} starten` : "Weiter";
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6 sm:py-8">
@@ -145,40 +149,56 @@ function Cockpit({ child }: { child: ChildId }) {
               {view.base.name ? `Basis „${view.base.name}“` : "Noch keine Basis"}
             </p>
             <p className="mt-1 text-base text-tertiary">{view.nextStep}</p>
-            {view.delayedCheck && view.delayedCheck.status === "waiting" && canStart ? (
-              <p className="mt-1 text-sm text-tertiary" data-testid="delayed-check-note">
-                {view.delayedCheck.childText}
-              </p>
-            ) : null}
             {running ? (
-              <p className="mt-1 text-sm text-tertiary">
+              <p className="mt-1 text-sm text-tertiary" data-testid="running-visit">
                 {running.title} · Schritt {Math.min(running.stageIndex + 1, running.stageCount)} von {running.stageCount}
               </p>
             ) : null}
           </div>
           {canStart ? (
-            <Link href={`/family/learn/mission?child=${child}`} className={primaryButton}>
+            <Link href={`/family/learn/mission?child=${child}`} className={primaryButton} data-testid="cockpit-start">
               {startLabel}
               <span aria-hidden>→</span>
             </Link>
-          ) : view.next.availableAt ? (
-            <div className="rounded-2xl bg-secondary px-4 py-3 text-sm text-primary" data-testid="delayed-check-waiting">
-              {view.delayedCheck?.childText ?? `Eine kurze Aufgabe von früher kommt am ${formatDate(view.next.availableAt)} zurück.`}
-            </div>
-          ) : (
+          ) : view.next.reason === "all-visits-done" ? (
             <NabuBadge tone="green">Alle Besuche geschafft</NabuBadge>
+          ) : (
+            <div className="rounded-2xl bg-secondary px-4 py-3 text-sm text-primary" data-testid="next-unavailable">
+              Gerade nichts Neues — alles ist gespeichert.
+            </div>
           )}
         </div>
       </section>
 
-      <section className="mt-6">
+      <ProgressStripView progress={view.progress} />
+
+      {view.vocabulary && view.vocabulary.words.length > 0 ? (
+        <section className="mt-6 rounded-3xl border border-primary bg-primary p-5" data-testid="vocabulary-cue" aria-labelledby="vocab-heading">
+          <h2 id="vocab-heading" className="text-lg font-semibold text-primary">
+            Wörter zum Üben
+          </h2>
+          <ul className="mt-3 space-y-3">
+            {view.vocabulary.words.map((w) => (
+              <li key={w.entryId} className="rounded-2xl bg-secondary px-4 py-3" data-testid={`vocab-word-${w.entryId}`}>
+                <p className="text-base font-semibold text-primary">
+                  <span lang={w.language}>{w.lemma}</span> <span className="font-normal text-tertiary">= {w.gloss}</span>
+                </p>
+                <p className="mt-1 text-base text-primary">{w.try}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-xs text-tertiary">{view.vocabulary.note}</p>
+        </section>
+      ) : null}
+
+      <section className="mt-6" id="pages">
         <h2 className="text-lg font-semibold text-primary">Expeditionsseiten</h2>
         {view.pages.length === 0 ? (
           <p className="mt-2 text-base text-tertiary">Noch keine Seite gespeichert. Die erste entsteht am Ende deines Besuchs.</p>
         ) : (
           <ul className="mt-3 grid gap-3 sm:grid-cols-2">
             {view.pages.map((page, index) => (
-              <li key={`${page.visit}-${index}`} className="rounded-2xl border border-primary bg-primary p-4">
+              <li key={`${page.visit}-${index}`} id={index === view.pages.findIndex((p) => p.visit === page.visit) ? `pages-${page.visit}` : undefined} className="rounded-2xl border border-primary bg-primary p-4 target:ring-2 target:ring-stone-400">
                 <p className="text-sm text-tertiary">{formatDate(page.at)}</p>
                 <p className="mt-1 font-semibold text-primary">
                   {page.title} — {page.baseName}
@@ -195,6 +215,74 @@ function Cockpit({ child }: { child: ChildId }) {
         Deine Eltern können sehen, was du hier lernst. {view.retention}
       </p>
     </div>
+  );
+}
+
+/**
+ * Compact, calm progress strip (DESIGN §7.6 follow-on): completed visits this
+ * local week and in total, the one available next step, and an evidence-bound
+ * "You did / Try next" pair quoted from the stored review — or, when that
+ * review is missing or uncertain, the created artifact and an ordinary next
+ * step. Counts are completed visit events only. No grade, no comparison.
+ */
+function ProgressStripView({ progress }: { progress: ProgressStrip }) {
+  const recent = progress.recent;
+  return (
+    <section className="mt-6 rounded-3xl border border-primary bg-primary p-5" data-testid="progress-strip" aria-labelledby="progress-heading">
+      <h2 id="progress-heading" className="text-lg font-semibold text-primary">
+        Mein Fortschritt
+      </h2>
+      <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-base text-primary">
+        <p data-testid="progress-week">
+          Diese Woche fertig: <strong>{progress.completedThisWeek}</strong> {progress.completedThisWeek === 1 ? "Besuch" : "Besuche"}
+        </p>
+        <p data-testid="progress-total">
+          Insgesamt fertig: <strong>{progress.completedTotal}</strong> {progress.completedTotal === 1 ? "Besuch" : "Besuche"}
+        </p>
+      </div>
+      <p className="mt-1 text-xs text-tertiary" data-testid="progress-week-label">
+        Woche: {progress.week.label}. {progress.counting}
+      </p>
+      {progress.completed.length > 0 ? (
+        <ul className="mt-3 flex flex-wrap gap-2" aria-label="Fertige Besuche">
+          {progress.completed.map((c) => (
+            <li key={`${c.visit}-${c.finishedAt}`}>
+              <a href={c.pages > 0 ? `#pages-${c.visit}` : "#pages"} className={cn("inline-flex min-h-10 items-center gap-1 rounded-full border border-primary px-3 text-sm text-primary hover:bg-secondary", focusRing)} data-testid={`progress-visit-${c.visit}`} data-this-week={c.thisWeek ? "true" : "false"}>
+                <span aria-hidden>✓</span> {c.label}
+                <span className="text-tertiary">· {formatDate(c.finishedAt)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      <p className="mt-3 text-base text-primary" data-testid="progress-next" data-kind={progress.next.kind}>
+        <span className="font-medium">Als Nächstes:</span> {progress.next.text}
+      </p>
+      {recent ? (
+        <div className="mt-3 rounded-2xl bg-secondary px-4 py-3" data-testid="progress-recent" data-grounding={recent.grounding.source} data-suppressed={recent.grounding.suppressed?.reason ?? "none"}>
+          <p className="text-sm text-tertiary">Zuletzt: {recent.label}</p>
+          {recent.did ? (
+            <p className="mt-1 text-base text-primary" data-testid="progress-did">
+              <span className="font-medium">Das hast du gemacht:</span> {recent.did}
+            </p>
+          ) : (
+            <p className="mt-1 text-base text-primary" data-testid="progress-artifact">
+              <span className="font-medium">Entstanden:</span> {recent.artifact.text}
+            </p>
+          )}
+          <p className="mt-1 text-base text-primary" data-testid="progress-try-next">
+            {/* The quoted recommendation usually carries its own lead ("Nächstes Mal: …"); no double label then. */}
+            {/^Nächstes Mal/.test(recent.tryNext) ? null : <span className="font-medium">Probier als Nächstes: </span>}
+            {recent.tryNext}
+          </p>
+          {recent.grounding.suppressed ? (
+            <p className="mt-1 text-xs text-tertiary" data-testid="progress-suppressed">
+              {recent.grounding.suppressed.text}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+    </section>
   );
 }
 

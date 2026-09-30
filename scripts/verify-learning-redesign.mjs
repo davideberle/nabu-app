@@ -178,20 +178,20 @@ async function openMission() {
 async function runVisit4(prefix) {
   const before = await view();
   check(`${prefix} chapter 4 is the next visit`, before.next.visit === "v4", before.next);
-  // Cockpit: next chapter + real delayed-check date.
+  // Cockpit (follow-on 2026-09-30): the chapter is Visit 3; the retired delayed check is neither offered nor dated.
   await p.goto(BASE + "/family/learn?child=santiago");
-  await p.getByRole("link", { name: "Neues Kapitel" }).waitFor();
+  await p.getByRole("link", { name: "Besuch 3 starten" }).waitFor();
   const cockpitText = await body();
   const dc = before.delayedCheck;
-  check(`${prefix} cockpit shows the delayed check with its actual date (server-derived), status ${dc?.status}`, dc && dc.status === "waiting" && cockpitText.includes(fmtDate(dc.availableAt)), { availableAt: dc?.availableAt, anchor: dc?.anchor });
+  check(`${prefix} cockpit shows no delayed-check date; the retired check is status ${dc?.status}; the strip names Besuch 3`, dc && dc.status === "retired" && !/kommt am|von früher/.test(cockpitText) && /Besuch 3 — Die Beobachtungsstation/.test(cockpitText), { status: dc?.status });
   await shot(p, `${prefix}-cockpit-desktop`);
   await t.goto(BASE + "/family/learn?child=santiago");
-  await t.getByRole("link", { name: "Neues Kapitel" }).waitFor();
+  await t.getByRole("link", { name: "Besuch 3 starten" }).waitFor();
   await shot(t, `${prefix}-cockpit-tablet`);
 
   await openMission();
   await tid("start-visit").waitFor();
-  check(`${prefix} start screen names the new chapter and explains the delayed check`, (await tid("start-visit").innerText()).includes("Neues Kapitel") && (await tid("delayed-check-text").innerText()).includes(fmtDate(dc.availableAt)));
+  check(`${prefix} start screen names Besuch 3 and shows no delayed-check text`, (await tid("start-visit").innerText()).includes("Besuch 3 starten") && (await tid("delayed-check-text").count()) === 0);
   await shot(p, `${prefix}-start`);
   await tid("start-visit").click();
 
@@ -443,7 +443,7 @@ async function runVisit4(prefix) {
     });
     check(`${prefix} the real workspace delivered exactly the answered dimensions as feedback telemetry for the finished visit (2 events)`, fbEvents.length === 2 && fbEvents.some((e) => e.detail.dimension === "difficulty" && e.detail.option === "right") && fbEvents.some((e) => e.detail.dimension === "enjoyment" && e.detail.option === "yes"), fbEvents);
   }
-  check(`${prefix} chapter 4 finished; the delayed check remains for its date; chapter 4 is not offered again`, after.visit === null && after.visits === undefined && after.next.visit !== "v4" && after.delayedCheck?.status === "waiting", after.next);
+  check(`${prefix} chapter 4 finished; all visits done (the retired check is never offered); chapter 4 is not offered again`, after.visit === null && after.visits === undefined && after.next.visit === null && after.next.reason === "all-visits-done" && after.delayedCheck?.status === "retired", after.next);
   await shot(p, `${prefix}-after-visit4`);
   const revision = (await evidence()).state.logRevisions;
   check(`${prefix} evidence keeps the original log sentence and the revision (support preserved)`, revision.length === 1 && revision[0].original === "Ichhabe2Schildkroten gesehen." && revision[0].revised === "Ich habe 2 Schildkroten gesehen." && revision[0].outcome === "revised", revision[0]);
@@ -455,7 +455,7 @@ async function parentCockpit(prefix, expectHistorical) {
   await pp.getByRole("tab", { name: "Mathe" }).click();
   await tid("delayed-check-parent", pp).waitFor();
   const dcp = await tid("delayed-check-parent", pp).innerText();
-  check(`${prefix} parent math tab explains the delayed-check date from the anchor, server clock`, /öffnet am/.test(dcp) && /Server-Uhr/.test(dcp), dcp);
+  check(`${prefix} parent math tab explains the RETIRED delayed check (retirement date, no opening date)`, /zurückgezogen/.test(dcp) && /30\. September 2026/.test(dcp) && !/öffnet am/.test(dcp), dcp);
   await shot(pp, `${prefix}-parent-math`);
   await pp.getByRole("tab", { name: "Tippen" }).click();
   await tid("typing-setup", pp).waitFor();
@@ -1722,42 +1722,27 @@ try {
   }
 
   if (MODE === "due") {
+    // Follow-on 2026-09-30: even with records 10 days old (server clock untouched) the retired delayed check is NOT
+    // offered; the observation chapter is offered as Visit 3 and runs through the real UI like in "completed" mode.
     const v0 = await view();
-    check("backdated fixture (records 10 days old, server clock untouched): the delayed check is offered before chapter 4", v0.next.visit === "v3" && v0.delayedCheck?.status === "open", { next: v0.next, delayedCheck: v0.delayedCheck });
+    check("backdated fixture (records 10 days old, server clock untouched): the retired delayed check is not offered; the chapter is offered as Visit 3", v0.next.visit === "v4" && v0.next.ordinal === 3 && v0.delayedCheck?.status === "retired" && v0.delayedCheck?.availableAt === null, { next: v0.next, delayedCheck: { status: v0.delayedCheck?.status, availableAt: v0.delayedCheck?.availableAt } });
     await p.goto(BASE + "/family/learn?child=santiago");
-    await p.getByRole("link", { name: "Kurzer Check" }).waitFor();
+    await p.getByRole("link", { name: "Besuch 3 starten" }).waitFor();
+    check("cockpit (backdated): no 'Kurzer Check' link, no date, strip counts 0 this week / 2 total", (await p.getByRole("link", { name: /Kurzer Check/ }).count()) === 0 && !/kommt am|von früher/.test(await body()) && /Insgesamt fertig: 2/.test(await body()), (await body()).slice(0, 100));
     await shot(p, "cockpit-due");
     await openMission();
     await tid("start-visit").waitFor();
-    check("start screen names the short check and explains it is a task from earlier", /Kurzer Check von früher/.test(await tid("start-visit").innerText()) && /früher/.test(await tid("delayed-check-text").innerText()), await tid("delayed-check-text").innerText());
+    check("start screen (backdated) names Besuch 3, never the short check", /Besuch 3 starten/.test(await tid("start-visit").innerText()) && (await tid("delayed-check-text").count()) === 0);
     await shot(p, "due-start");
-    await tid("start-visit").click();
-    await click("Weiter");
-    await p.getByLabel("Antwort", { exact: true }).waitFor();
-    check("EQ-DELAY is shown with its own items (Proben / Kisten)", /Proben/.test(await body()) && /Kisten/.test(await body()));
-    await p.getByLabel("Antwort", { exact: true }).fill("8");
-    await click("Fertig");
-    await p.getByRole("heading", { name: "Deine Expeditionsseite" }).waitFor();
-    await p.locator("textarea").fill("Proben verpackt.");
-    await click("Seite speichern");
-    await tid("difficulty-right").click();
-    await tid("reflect-submit").click();
-    await tid("start-visit").waitFor().catch(() => {});
-    const v3 = await view();
-    const v3fb = (await evidence()).state.visits.find((v) => v.id === "v3")?.feedback;
-    check("delayed check: optional feedback left open is recorded as unanswered (not skipped, never an answer)", v3.visits === undefined && v3fb?.unanswered?.length === 2 && v3fb?.skipped?.length === 0 && v3fb?.answers?.difficulty === "right", v3fb);
-    check("delayed check finished with the true elapsed interval recorded; chapter 4 offered next", v3.next.visit === "v4" && v3.delayedCheck?.status === "done", { next: v3.next, dc: v3.delayedCheck });
+    const startVisit = await api("PUT", "/api/family/learning/mission", { op: { op: "start-visit" }, expectedRevision: v0.revision, idempotencyKey: "due-start-1", context: contextOf(v0) }, assistant, bearer);
+    check("API (backdated): start-visit starts v4, not v3", startVisit.status === 200 && startVisit.json.view.visit?.id === "v4" && startVisit.json.view.visit?.ordinal === 3, startVisit.json?.view?.visit?.id);
     const ev = await evidence();
-    const delay = ev.attempts.find((a) => a.taskId === "EQ-DELAY");
-    check("EQ-DELAY attempt carries seconds since teaching anchor ≥ 6 days (real difference of stored timestamps)", delay && delay.secondsSinceTeaching >= 6 * 86400, { secondsSinceTeaching: delay?.secondsSinceTeaching });
+    check("no EQ-DELAY attempt and no v3 record exist", !ev.attempts.some((a) => a.taskId === "EQ-DELAY") && !ev.state.visits.some((v) => v.id === "v3"));
     await pp.goto(BASE + "/family/learn/parent");
     await pp.getByRole("tab", { name: "Mathe" }).click();
-    await tid("delayed-check-parent", pp).waitFor().catch(() => {});
+    await tid("delayed-check-parent", pp).waitFor();
+    check("parent (backdated): retired delayed check explained, no opening date", (await tid("delayed-check-parent", pp).getAttribute("data-status")) === "retired" && !/öffnet am/.test(await tid("delayed-check-parent", pp).innerText()));
     await shot(pp, "parent-math-due");
-    await p.goto(BASE + "/family/learn?child=santiago");
-    await p.getByRole("link", { name: "Neues Kapitel" }).waitFor();
-    check("after the delayed check the cockpit offers the new chapter", true);
-    await shot(p, "cockpit-after-due");
   }
 } catch (error) {
   check("journey completed without an unexpected exception", false, String(error && error.stack ? error.stack.split("\n").slice(0, 4).join(" | ") : error));

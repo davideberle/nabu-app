@@ -33,6 +33,8 @@ import {
 } from "./family-learning-state.ts";
 import { sanitizeTelemetryEvents } from "./family-learning-telemetry-schema.ts";
 import { buildParentReview, LEARNING_RULES_VERSION, REVIEW_VERSION, completionIdentity, summariseTelemetry, type ParentReview, type TelemetryEvent, type TelemetrySummary } from "./family-learning-summary.ts";
+import type { ProgressSources } from "./family-learning-progress.ts";
+import { buildVocabularyLedger, type ParentCorrectionMap, type VocabularyInventory, type VocabularyLedger } from "./family-learning-vocabulary.ts";
 
 type Db = Client | Transaction;
 
@@ -315,16 +317,51 @@ export class ExposureUnsettledError extends Error {
 }
 
 /** Read the child's current view with the active item's exposure settled first. */
-export async function readChildView(client: Client, child: ChildId, content: LearningContent, now = new Date()): Promise<ChildView> {
+/**
+ * Per-request view inputs (follow-on): the learner's IANA time zone for the
+ * Monday–Sunday week of the progress strip, and the served vocabulary
+ * inventory. Both are optional; nothing here grants authority.
+ */
+export type ViewOptions = { timeZone?: string | null; vocabulary?: VocabularyInventory | null };
+
+/**
+ * The stored parent reviews the progress strip may quote (read-only). Read
+ * from the completion rows of this child and mission; a review is cited by
+ * the exact completion identity (visit id + start), never by position.
+ */
+export async function readProgressSources(db: Db, child: ChildId, missionId: string): Promise<ProgressSources> {
+  const rows = await db.execute({ sql: "SELECT visit_id, visit_started_at, historical, review_json FROM family_learning_completions WHERE child_id = ? AND mission_id = ?", args: [child, missionId] });
+  const reviews: ProgressSources["reviews"] = [];
+  for (const row of rows.rows) {
+    const review = parseJson(row.review_json) as ParentReview | null;
+    reviews.push({
+      visitId: String(row.visit_id),
+      visitStartedAt: String(row.visit_started_at),
+      historical: Number(row.historical) === 1,
+      reviewVersion: typeof review?.identity?.reviewVersion === "number" ? review.identity.reviewVersion : null,
+      childSummary: review?.learning?.childSummary ?? null,
+    });
+  }
+  return { reviews };
+}
+
+/** Build the child view with its per-request inputs; the reviews are read from `db` (a transaction or the client). */
+async function viewOf(db: Db, child: ChildId, state: MissionState, content: LearningContent, settings: ParentSettings, now: Date, erasureGeneration: number, options: ViewOptions): Promise<ChildView> {
+  const progressSources = await readProgressSources(db, child, content.contentId);
+  return buildChildView(state, content, settings, now, erasureGeneration, { timeZone: options.timeZone ?? null, progressSources, vocabulary: options.vocabulary ?? null });
+}
+
+export async function readChildView(client: Client, child: ChildId, content: LearningContent, now = new Date(), options: ViewOptions = {}): Promise<ChildView> {
   await ensureLearningTables(client);
   // The generation the view reports is the one the state was read under
   // (coherent snapshot); the client echoes it with every telemetry batch.
   const { erasureGeneration, value } = await readWithErasureSnapshot(client, child, async () => {
     const settings = await readParentSettings(client, child);
     const state = await settleShown(client, child, content, now, null);
-    return { settings, state };
+    const progressSources = await readProgressSources(client, child, content.contentId);
+    return { settings, state, progressSources };
   });
-  return buildChildView(value.state, content, value.settings, now, erasureGeneration);
+  return buildChildView(value.state, content, value.settings, now, erasureGeneration, { timeZone: options.timeZone ?? null, progressSources: value.progressSources, vocabulary: options.vocabulary ?? null });
 }
 
 /**
@@ -339,6 +376,7 @@ export async function applyMutation(
   input: MutationInput,
   content: LearningContent,
   now: () => Date = () => new Date(),
+  options: ViewOptions = {},
 ): Promise<MutationOutcome> {
   await ensureLearningTables(client);
   const settings = await readParentSettings(client, input.child);
@@ -353,7 +391,7 @@ export async function applyMutation(
       await tx.rollback();
       release(tx);
       const settled = await settleShown(client, input.child, content, now(), null);
-      return { status: "stale", reason: "generation", view: buildChildView(settled, content, settings, now(), await readErasureGeneration(client, input.child)) };
+      return { status: "stale", reason: "generation", view: await viewOf(client, input.child, settled, content, settings, now(), await readErasureGeneration(client, input.child), options) };
     }
     const existing = await tx.execute({
       sql: "SELECT revision_after FROM family_learning_mutations WHERE child_id = ? AND idempotency_key = ?",
@@ -365,7 +403,7 @@ export async function applyMutation(
       await tx.rollback();
       release(tx);
       const settled = await settleShown(client, input.child, content, now(), current);
-      return { status: "replayed", view: buildChildView(settled, content, settings, now(), await readErasureGeneration(client, input.child)), result: { replayed: true, revisionAfter: Number(existing.rows[0].revision_after) } };
+      return { status: "replayed", view: await viewOf(client, input.child, settled, content, settings, now(), await readErasureGeneration(client, input.child), options), result: { replayed: true, revisionAfter: Number(existing.rows[0].revision_after) } };
     }
     if (input.context) {
       // The running visit instance must be the one the client rendered (id AND start); a
@@ -381,14 +419,14 @@ export async function applyMutation(
         await tx.rollback();
         release(tx);
         const settled = await settleShown(client, input.child, content, now(), current);
-        return { status: "stale", reason: "visit", view: buildChildView(settled, content, settings, now(), await readErasureGeneration(client, input.child)) };
+        return { status: "stale", reason: "visit", view: await viewOf(client, input.child, settled, content, settings, now(), await readErasureGeneration(client, input.child), options) };
       }
     }
     if (current.revision !== input.expectedRevision) {
       await tx.rollback();
       release(tx);
       const settled = await settleShown(client, input.child, content, now(), current);
-      return { status: "stale", reason: "revision", view: buildChildView(settled, content, settings, now(), await readErasureGeneration(client, input.child)) };
+      return { status: "stale", reason: "revision", view: await viewOf(client, input.child, settled, content, settings, now(), await readErasureGeneration(client, input.child), options) };
     }
     let applied;
     try {
@@ -398,7 +436,7 @@ export async function applyMutation(
       release(tx);
       if (error instanceof LearningOpError) {
         const settled = await settleShown(client, input.child, content, now(), current);
-        return { status: "refused", code: error.code, message: error.message, view: buildChildView(settled, content, settings, now(), await readErasureGeneration(client, input.child)) };
+        return { status: "refused", code: error.code, message: error.message, view: await viewOf(client, input.child, settled, content, settings, now(), await readErasureGeneration(client, input.child), options) };
       }
       throw error;
     }
@@ -411,7 +449,7 @@ export async function applyMutation(
       await tx.rollback();
       release(tx);
       const settled = await settleShown(client, input.child, content, now(), null);
-      return { status: "stale", view: buildChildView(settled, content, settings, now(), await readErasureGeneration(client, input.child)) };
+      return { status: "stale", view: await viewOf(client, input.child, settled, content, settings, now(), await readErasureGeneration(client, input.child), options) };
     }
     await insertRecords(tx, input.child, content.contentId, applied.records);
     if (shown.changed) await insertRecords(tx, input.child, content.contentId, shown.records);
@@ -433,9 +471,11 @@ export async function applyMutation(
       sql: `INSERT INTO family_learning_mutations (child_id, idempotency_key, mission_id, op, revision_after, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
       args: [input.child, input.idempotencyKey, content.contentId, input.op.op, applied.state.revision, now().toISOString()],
     });
+    // The strip may quote the completion written in this very transaction: read the sources before the commit.
+    const progressSources = await readProgressSources(tx, input.child, content.contentId);
     await tx.commit();
     release(tx);
-    return { status: "applied", view: buildChildView(finalState, content, settings, now(), generation), result: applied.result };
+    return { status: "applied", view: buildChildView(finalState, content, settings, now(), generation, { timeZone: options.timeZone ?? null, progressSources, vocabulary: options.vocabulary ?? null }), result: applied.result };
   } catch (error) {
     try {
       await tx.rollback();
@@ -518,6 +558,8 @@ export type EvidenceBundle = {
   samples: { id: string; visitId: string; taskId: string | null; kind: string; language: string | null; modality: string; text: string; metrics: unknown; createdAt: string }[];
   exposures: { taskId: string; taskVersion: number; kind: string; source: string; firstAt: string }[];
   settings: ParentSettings;
+  /** Vocabulary evidence ledger (follow-on M3): derived from the immutable records above; null when no inventory is served. */
+  vocabulary: VocabularyLedger | null;
 };
 
 function parseJson(value: unknown): unknown {
@@ -529,7 +571,7 @@ function parseJson(value: unknown): unknown {
   }
 }
 
-export async function readEvidence(client: Client, child: ChildId, missionId: string, afterFirstRead?: () => Promise<void>, content?: LearningContent): Promise<EvidenceBundle> {
+export async function readEvidence(client: Client, child: ChildId, missionId: string, afterFirstRead?: () => Promise<void>, content?: LearningContent, vocabulary?: VocabularyInventory | null): Promise<EvidenceBundle> {
   await ensureLearningTables(client);
   // Visits completed before the completion table existed get one clearly
   // marked historical review each (additive, idempotent, no telemetry).
@@ -586,6 +628,12 @@ export async function readEvidence(client: Client, child: ChildId, missionId: st
     const key = row.visit_id === null ? "?" : String(row.visit_id);
     byVisit[key] = (byVisit[key] ?? 0) + n;
   }
+  // Parent corrections on language attempts exclude the linked vocabulary observation from the counts (shown, never hidden).
+  const corrections: ParentCorrectionMap = new Map();
+  for (const row of attempts.rows) {
+    const correction = parseJson(row.parent_correction_json) as { evidence?: string; note?: string; by?: string; at?: string } | null;
+    if (correction) corrections.set(`${String(row.task_id)}#${Number(row.attempt_no)}`, correction);
+  }
   return {
     child,
     erasureGeneration,
@@ -593,6 +641,7 @@ export async function readEvidence(client: Client, child: ChildId, missionId: st
     completions: completionRecords,
     telemetry: { batches: telemetry.rows.length, events, byVisit },
     settings,
+    vocabulary: content && vocabulary ? buildVocabularyLedger(state, content, vocabulary, corrections) : null,
     attempts: attempts.rows.map((row) => ({
       id: String(row.id),
       visitId: String(row.visit_id),

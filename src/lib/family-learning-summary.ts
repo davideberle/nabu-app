@@ -35,7 +35,13 @@ export function delayAnchor(state: MissionState): string | null {
 
 export type DelayedCheckInfo = {
   visit: "v3";
-  status: "done" | "open" | "waiting" | "no-anchor";
+  /**
+   * Since 2026-09-30 the pilot's delayed check is RETIRED: `retired` (never offered, no date),
+   * `running` (a v3 that was in flight before the retirement resumes to completion) or `done`
+   * (a historical completed v3). The former `open` / `waiting` / `no-anchor` statuses no longer occur;
+   * they remain in the type so stored JSON from before the retirement still type-checks.
+   */
+  status: "done" | "running" | "retired" | "open" | "waiting" | "no-anchor";
   availableAt: string | null;
   anchor: DelayAnchor;
   minDays: number;
@@ -45,39 +51,79 @@ export type DelayedCheckInfo = {
   parentText: string;
 };
 
-const DAY_MS = 24 * 3600 * 1000;
-
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("de-CH", { day: "numeric", month: "long" });
 }
 
+/** The date David retired the pilot's delayed-check visit (DESIGN §7.6, September 30 follow-on). */
+export const DELAYED_CHECK_RETIRED_ON = "2026-09-30";
+
+/**
+ * Explains the retired delayed check honestly. The content (`v3`, `EQ-DELAY`) stays readable for
+ * historical records; nothing here computes or shows an opening date any more, and `now` is
+ * unused (kept for signature stability). Historical work (a finished or still-running v3) keeps
+ * its meaning.
+ */
 export function delayedCheckInfo(state: MissionState, content: LearningContent, now: Date): DelayedCheckInfo | null {
+  void now;
   const def = content.visits.find((v) => v.id === "v3");
   if (!def) return null;
   const minDays = def.minDaysAfterTeaching ?? 6;
   const anchor = delayAnchorInfo(state);
-  const done = state.visits.some((v) => v.id === "v3" && v.finishedAt);
-  const anchorText = anchor?.kind === "teaching" ? "seit der Erklärung im ersten Besuch" : anchor?.kind === "visit1-completion" ? "seit dem Ende des ersten Besuchs (es gab keine Erklärung, deshalb zählt der Besuch)" : "";
-  if (done) {
-    return { visit: "v3", status: "done", availableAt: null, anchor, minDays, childText: "Der späte Check ist geschafft.", parentText: `Der späte Check (EQ-DELAY) wurde durchgeführt. Anker: ${anchorText}.` };
+  const record = state.visits.find((v) => v.id === "v3") ?? null;
+  const anchorText = anchor?.kind === "teaching" ? "seit der Erklärung im ersten Besuch" : anchor?.kind === "visit1-completion" ? "seit dem Ende des ersten Besuchs (es gab keine Erklärung, deshalb zählt der Besuch)" : "kein Anker";
+  if (record?.finishedAt) {
+    return { visit: "v3", status: "done", availableAt: null, anchor, minDays, childText: "Der späte Check von früher ist geschafft.", parentText: `Der späte Check (EQ-DELAY, historischer Besuch v3) wurde am ${formatDate(record.finishedAt)} durchgeführt, vor seiner Zurückziehung am 30. September 2026. Anker damals: ${anchorText}. Die Aufzeichnung bleibt unverändert.` };
   }
-  if (!anchor) {
-    return { visit: "v3", status: "no-anchor", availableAt: null, anchor, minDays, childText: "Eine kurze Aufgabe von früher kommt später zurück.", parentText: "Der späte Check hat noch keinen Anker: der erste Besuch ist nicht abgeschlossen." };
+  if (record) {
+    return { visit: "v3", status: "running", availableAt: null, anchor, minDays, childText: "Deine angefangene Aufgabe von früher wartet auf dich.", parentText: `Der späte Check (EQ-DELAY, Besuch v3) war am 30. September 2026 bereits angefangen (seit ${formatDate(record.startedAt)}) und kann zu Ende gebracht werden; danach wird er nicht mehr angeboten.` };
   }
-  const availableAt = new Date(new Date(anchor.at).getTime() + minDays * DAY_MS);
-  const open = now.getTime() >= availableAt.getTime();
-  const date = formatDate(availableAt.toISOString());
   return {
     visit: "v3",
-    status: open ? "open" : "waiting",
-    availableAt: availableAt.toISOString(),
+    status: "retired",
+    availableAt: null,
     anchor,
     minDays,
-    childText: open
-      ? "Eine kurze Aufgabe von früher ist zurück: Wir schauen, was du nach ein paar Tagen noch weisst. Kein Test — nur ein Blick."
-      : `Eine kurze Aufgabe von früher kommt am ${date} zurück. Dann schauen wir, was du nach ein paar Tagen noch weisst. Bis dahin geht die Expedition weiter.`,
-    parentText: `Der späte Check (EQ-DELAY, 32 ÷ 4) öffnet am ${date}: ${minDays} Tage ${anchorText}. Zweck: prüfen, was nach einer Pause bleibt — kein Beweis von Können, kein Kalendereintrag. ${minDays} Tage sind der Pilot-Parameter, kein nachgewiesenes Optimum.`,
+    childText: "",
+    parentText: `Der späte Check (EQ-DELAY, 32 ÷ 4, Besuch v3 der Pilot-Inhalte) wurde am 30. September 2026 zurückgezogen: er wird nicht mehr angeboten, hat keinen Termin und ist keine ausstehende Arbeit. Der Inhalt bleibt unter seiner stabilen Kennung lesbar. Eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität — nie dieser Besuch und nie eine Aufgabe am selben Tag.`,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Learner-facing visit numbering (follow-on, 2026-09-30)
+// ---------------------------------------------------------------------------
+
+/**
+ * The number the child and the parent see for a visit. Internal ids stay
+ * stable (`v4` is the observation chapter); the learner-facing sequence is
+ * v1 → 1, v2 → 2, v4 → 3. The retired `v3` has no number unless this child
+ * actually has a v3 record (started before the retirement): then it keeps 3
+ * and the chapter is 4, so nothing historical is renumbered.
+ */
+export function visitOrdinal(state: MissionState, id: VisitId): number | null {
+  const hasV3Record = state.visits.some((v) => v.id === "v3");
+  switch (id) {
+    case "v1": return 1;
+    case "v2": return 2;
+    case "v3": return hasV3Record ? 3 : null;
+    case "v4": return hasV3Record ? 4 : 3;
+  }
+}
+
+/** The subtitle of a visit as reviewed in the content (the part after the em-dash), or the id. */
+export function visitSubtitle(content: LearningContent, id: VisitId): string {
+  const title = content.visits.find((v) => v.id === id)?.title ?? null;
+  if (!title) return id;
+  const parts = title.split(" — ");
+  return parts.length > 1 ? parts.slice(1).join(" — ") : title;
+}
+
+/** "Besuch 3 — Die Beobachtungsstation" for `v4`; the retired check without a record is labelled as such. */
+export function visitLabel(state: MissionState, content: LearningContent, id: VisitId): string {
+  const ordinal = visitOrdinal(state, id);
+  const subtitle = visitSubtitle(content, id);
+  if (ordinal === null) return `${subtitle} (zurückgezogen)`;
+  return `Besuch ${ordinal} — ${subtitle}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -204,7 +250,7 @@ export function recommendNext(state: MissionState, content: LearningContent, vis
 
 export function buildVisitSummary(state: MissionState, content: LearningContent, visitId: VisitId): VisitSummary {
   const visit = visitRecord(state, visitId);
-  const title = content.visits.find((v) => v.id === visitId)?.title ?? visitId;
+  const title = content.visits.some((v) => v.id === visitId) ? visitLabel(state, content, visitId) : visitId;
   const next = recommendNext(state, content, visitId);
   if (!visit) return { visit: visitId, title, success: null, practiced: null, next, artifact: { kind: "none", text: "Noch nichts erstellt." } };
   const end = visit.finishedAt ?? "9999";

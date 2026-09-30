@@ -10,6 +10,7 @@ import {
   reconcileLearningContent,
   type LearningContent,
 } from "./family-learning-content.ts";
+import { delayedCheckInfo } from "./family-learning-summary.ts";
 import { runTutorTurn } from "./family-learning-tutor.ts";
 import {
   applyLearningOp,
@@ -289,18 +290,28 @@ describe("stage guards, idempotent resume and delayed check", () => {
       ],
       env,
     ));
-    const waiting = nextVisitAvailability(state, content, env.now());
-    equal(waiting.visit, null);
-    ok(waiting.availableAt);
+    // Retired 2026-09-30: under version-1 content nothing further is offered — never the delayed check, not even after six real days.
+    const nothing = nextVisitAvailability(state, content, env.now());
+    equal(nothing.visit, null);
+    equal(nothing.availableAt, null);
+    equal((nothing as { reason: string }).reason, "no-further-visit-served");
     throws(() => applyLearningOp(state, { op: "start-visit" }, env), (e: unknown) => e instanceof LearningOpError && e.code === "not-available");
     env.tick(6 * 24 * 3600 * 1000 + 1000);
-    const v3 = applyLearningOp(state, { op: "start-visit" }, env);
+    throws(() => applyLearningOp(state, { op: "start-visit" }, env), (e: unknown) => e instanceof LearningOpError && e.code === "not-available");
+    equal(delayedCheckInfo(state, content, env.now())!.status, "retired");
+    // Historical in-flight work keeps its meaning: a v3 that was running before the retirement resumes and records elapsed seconds.
+    const inflight = JSON.parse(JSON.stringify(state)) as typeof state;
+    inflight.visits.push({ id: "v3", startedAt: env.now().toISOString(), finishedAt: null, stageIndex: 0, skippedStages: [], reflection: null });
+    inflight.currentVisit = "v3";
+    const v3 = applyLearningOp(inflight, { op: "start-visit" }, env);
+    equal(v3.result.resumed, true);
     equal(v3.state.currentVisit, "v3");
     let s3 = ensureItemShown(applyLearningOp(v3.state, { op: "resume-base" }, env).state, content, env.now()).state;
     const delay = applyLearningOp(s3, { op: "answer-math", itemId: "EQ-DELAY", answer: 8, raw: "8", modality: "typed" }, env);
     ok((delay.records.attempts[0].secondsSinceTeaching ?? 0) >= 6 * 24 * 3600);
     s3 = delay.state;
     equal(buildChildView(s3, content, env.settings, env.now()).visit?.stage, "log");
+    equal(buildChildView(s3, content, env.settings, env.now()).visit?.title, "Besuch 3 — Der späte Check");
   });
 
   it("typing drills become available once the parent confirms the layout", () => {
