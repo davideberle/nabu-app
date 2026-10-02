@@ -106,9 +106,9 @@ describe("trip ordering", () => {
 });
 
 describe("the archived Aare day", () => {
-  it("is past, so the overview leaves Upcoming empty", () => {
+  it("is past, so it does not appear in Upcoming", () => {
     equal(getTripById(AARE_ID)?.status, "past");
-    deepStrictEqual(getUpcomingTrips(), []);
+    ok(!getUpcomingTrips().some((trip) => trip.id === AARE_ID));
   });
 
   it("is the newest entry in the archive, ahead of San Sebastian", () => {
@@ -430,7 +430,7 @@ describe("the trip card survives a phone", () => {
   });
 
   it("renders the empty state when nothing is upcoming", () => {
-    equal(getUpcomingTrips().length, 0);
+    equal(getUpcomingTrips([]).length, 0);
     ok(INDEX_PAGE.includes("<NabuEmptyState"));
   });
 });

@@ -347,6 +347,29 @@ const aareboeoetle: Trip = {
   },
 };
 
+const alpnach: Trip = {
+  id: "alpnach-2026",
+  name: "Alpnach — a few days at the yurt",
+  location: "Alpnach, Obwalden",
+  emoji: "🌲",
+  status: "upcoming",
+  dateLabel: "5–7 October 2026",
+  startDate: "2026-10-05",
+  endDate: "2026-10-07",
+  summary:
+    "An off-grid yurt stay, with the hosts’ woodland walk and Wichelsee on Tuesday. The route map, groceries and packing are all here.",
+  href: "/travel/alpnach-2026",
+  source: {
+    conversationId: "thread-1790693811047-bmgwt5",
+    publishedOn: "2026-10-02",
+    promotion: "explicitly-finalized",
+    factOwners: [
+      { system: "Travel", owns: "The finalized guide at projects/travel/ALPNACH-2026-GUIDE.html and its source-backed route geometry, practical advice and caveats." },
+      { system: "TripIt", owns: "Booking records and confirmations; this guide is a practical plan, not a reservation record." },
+    ],
+  },
+};
+
 /**
  * Fold a publication list into the rendered projection.
  *
@@ -366,7 +389,7 @@ export function publishTrips(published: Trip[]): Trip[] {
   return [...byId.values()];
 }
 
-export const trips: Trip[] = publishTrips([sanSebastian, aareboeoetle]);
+export const trips: Trip[] = publishTrips([sanSebastian, aareboeoetle, alpnach]);
 
 export function getUpcomingTrips(from: Trip[] = trips): Trip[] {
   return from
