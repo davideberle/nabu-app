@@ -33,6 +33,7 @@ import {
 } from "./family-learning-state.ts";
 import { sanitizeTelemetryEvents } from "./family-learning-telemetry-schema.ts";
 import { buildParentReview, LEARNING_RULES_VERSION, REVIEW_VERSION, completionIdentity, summariseTelemetry, type ParentReview, type TelemetryEvent, type TelemetrySummary } from "./family-learning-summary.ts";
+import { visitLessonFeedback } from "./family-learning-feedback.ts";
 import type { ProgressSources } from "./family-learning-progress.ts";
 import { buildVocabularyLedger, type ParentCorrectionMap, type VocabularyInventory, type VocabularyLedger } from "./family-learning-vocabulary.ts";
 
@@ -932,7 +933,8 @@ export async function refreshStaleReviews(client: Client, child: ChildId, conten
       const historical = Number(row.historical) === 1;
       const telemetry = historical ? null : await readTelemetryEvents(tx, child, visitId);
       const batches = telemetry ? Number((await tx.execute({ sql: "SELECT COUNT(*) AS c FROM family_learning_telemetry WHERE child_id = ? AND visit_id = ?", args: [child, visitId] })).rows[0]?.c ?? 0) : 0;
-      const review = buildParentReview(state, content, visitId, telemetry, { historical, contentVersion: Number(row.content_version), telemetryBatches: batches });
+      const visitRecord = state.visits.find((v) => v.id === visitId && v.finishedAt)!;
+      const review = buildParentReview(state, content, visitId, telemetry, { historical, contentVersion: Number(row.content_version), telemetryBatches: batches, lessons: visitLessonFeedback(state, content, visitRecord) });
       const previous = [...(old?.previousReviews ?? [])];
       if (old) previous.push({ reviewVersion: old.identity?.reviewVersion ?? 1, derivedAt: old.identity?.derivedAt ?? null, objectives: old.learning?.objectives ?? [], whatHappened: old.learning?.whatHappened ?? [] });
       review.previousReviews = previous.slice(-3);
@@ -954,7 +956,7 @@ async function insertCompletion(db: Db, child: ChildId, state: MissionState, con
   const telemetry = historical ? null : await readTelemetryEvents(db, child, visitId);
   const batches = telemetry ? Number((await db.execute({ sql: "SELECT COUNT(*) AS c FROM family_learning_telemetry WHERE child_id = ? AND visit_id = ?", args: [child, visitId] })).rows[0]?.c ?? 0) : 0;
   const contentVersion = historical && state.upgradedAt && visit.finishedAt < state.upgradedAt ? 1 : state.contentVersion;
-  const review = buildParentReview(state, content, visitId, telemetry, { historical, contentVersion, telemetryBatches: batches });
+  const review = buildParentReview(state, content, visitId, telemetry, { historical, contentVersion, telemetryBatches: batches, lessons: visitLessonFeedback(state, content, visit) });
   const inserted = await db.execute({
     sql: `INSERT OR IGNORE INTO family_learning_completions (child_id, completion_id, mission_id, content_version, visit_id, visit_started_at, finished_at, historical, review_json, delivery_json, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     args: [child, completionIdentity(state, visit), state.missionId, contentVersion, visit.id, visit.startedAt, visit.finishedAt, historical ? 1 : 0, JSON.stringify(review), JSON.stringify(REVIEW_DELIVERY), now.toISOString()],

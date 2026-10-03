@@ -48,6 +48,38 @@ import { buildProgress, type ProgressStrip, type ProgressSources } from "./famil
 import { buildVocabularyLedger, childVocabularyCue, type VocabularyInventory, type ChildVocabularyCue } from "./family-learning-vocabulary.ts";
 import { alignTyping, alignedLessonMetrics, TYPING_METRIC_VERSION, type AlignedLineMetrics } from "./family-learning-typing-metrics.ts";
 import { assessSpacing, evaluateRevision, flagSpacing, markSpacing, suggestSpacing, type SpacingFlag } from "./family-learning-writing.ts";
+import {
+  acknowledgeLesson,
+  buildVisitReports,
+  closeRepair,
+  emptyFeedbackState,
+  evaluateSentenceRetry,
+  feedbackOf,
+  findRepair,
+  languageWordsOf,
+  lastLessonFeedback,
+  markRepairExplained,
+  nextRetryItem,
+  openLabelRepair,
+  openLanguageRepair,
+  openTypingRepair,
+  openWritingRepair,
+  recordRepairRetry,
+  reminderFor,
+  repairItems,
+  effectiveMaxRetries,
+  typingErrors,
+  updateLanguageFocus,
+  updateMathFocus,
+  updateSpacingFocus,
+  updateTypingFocus,
+  type RepairRetry,
+  type FeedbackState,
+  type LessonFeedback,
+  type ReminderCue,
+  type TypingError,
+  type VisitReport,
+} from "./family-learning-feedback.ts";
 
 // ---------------------------------------------------------------------------
 // State
@@ -69,7 +101,9 @@ export type SupportKind =
   | "tutor_reply"
   | "direct_teaching"
   | "step_down"
-  | "word_choice";
+  | "word_choice"
+  /** UX-5b: the visual worked example of a targeted mini-lesson, recorded before it is shown (never answer-relevant). */
+  | "mini_lesson";
 
 /** Support kinds that make a correct answer `supported` rather than independent. */
 const ANSWER_RELEVANT_SUPPORT: readonly SupportKind[] = [
@@ -168,6 +202,8 @@ export type TypingLessonRecord = {
   denominator: number;
   /** Absent on historical (positional, version-1) records. */
   metricVersion?: 1 | 2;
+  /** Per-character mismatches of the final line text (world-first 2026-10-03); absent on earlier records — never reconstructed. */
+  errors?: TypingError[];
   seconds: number;
   at: string;
 };
@@ -183,6 +219,7 @@ export type TypingLabelRecord = {
   omittedChars: number;
   substitutedChars?: number;
   metricVersion?: 1 | 2;
+  errors?: TypingError[];
   seconds: number;
   at: string;
 };
@@ -206,6 +243,8 @@ export type TypingBurst = {
   accuracy: number;
   comfort: TypingComfort;
   metricVersion: 2;
+  /** Per-character mismatches of the final line text (world-first 2026-10-03); absent on rounds saved before it. */
+  errors?: TypingError[];
   seconds: number;
   at: string;
 };
@@ -329,6 +368,8 @@ export type MissionState = {
   station?: StationState;
   logRevisions: LogRevision[];
   transfers?: TransferRecord[];
+  /** Lesson-end repairs, practice focus and acknowledged lesson feedback (world-first 2026-10-03, additive; absent on earlier rows). */
+  feedback?: FeedbackState;
 };
 
 export type ParentSettings = {
@@ -399,6 +440,7 @@ export function newMissionState(content: LearningContent, child: ChildId, nowIso
     station: emptyStation(),
     logRevisions: [],
     transfers: [],
+    feedback: emptyFeedbackState(),
   };
 }
 
@@ -459,6 +501,10 @@ export function upgradeMissionState(input: MissionState, content: LearningConten
     state.stationModelShownAt = null;
     changed = true;
   }
+  if (!state.feedback) {
+    state.feedback = emptyFeedbackState();
+    changed = true;
+  }
   // Only ever upgrade: under a lower served content version (cap / rollback) the
   // saved shape is kept as is, so returning to the newer content resumes exactly.
   if (state.contentVersion < content.contentVersion) {
@@ -517,7 +563,7 @@ export type SampleRow = {
   id: string;
   visitId: VisitId;
   taskId: string | null;
-  kind: "explanation" | "expedition_log" | "expedition_log_revision" | "writing_transfer" | "typed_label" | "language_response" | "typing_practice" | "typing_burst";
+  kind: "explanation" | "expedition_log" | "expedition_log_revision" | "writing_transfer" | "typed_label" | "language_response" | "typing_practice" | "typing_burst" | "typing_retry" | "writing_retry" | "language_retry";
   language: string | null;
   modality: string;
   text: string;
@@ -561,7 +607,19 @@ export type LearningOp =
   | { op: "skip-stage"; stage: StageId; reason: "time" | "child" }
   | { op: "save-log"; text: string; modality?: "typed" | "spoken" }
   | { op: "reflect"; optionId: string | null; difficultySkipped?: boolean; feedback?: { enjoyment?: string | null; clarity?: string | null } }
-  | { op: "write-transfer"; text: string; modality?: "typed" | "spoken" };
+  | { op: "write-transfer"; text: string; modality?: "typed" | "spoken" }
+  /** UX-5b: record that the mini-lesson's worked example is shown (before it is shown). */
+  | { op: "repair-explain"; repairId: string }
+  /** UX-5b: one targeted retry line of the same reviewed lesson (typing round or label); `retryNo` must be the next retry. */
+  | { op: "typing-retry"; repairId: string; retryNo: number; lineIndex: number; typed: string; seconds: number }
+  /** UX-5b (F2): correct the child's own flagged transfer sentence; evaluated with the reviewed spacing rules. */
+  | { op: "writing-retry"; repairId: string; retryNo: number; text: string }
+  /** UX-5b (F2): the same reviewed language step again (pick an option, or produce the frame). */
+  | { op: "language-retry"; repairId: string; retryNo: number; stepId: string; response: string }
+  /** UX-5b: close the bounded loop honestly (done = outcome from the retries; skip = moved on). */
+  | { op: "repair-close"; repairId: string; reason: "done" | "skip" }
+  /** UX-5a: the child has seen the lesson-end feedback and moves on. */
+  | { op: "lesson-feedback-seen"; id: string };
 
 export type OpEnv = { content: LearningContent; settings: ParentSettings; now: () => Date; newId: () => string };
 
@@ -699,6 +757,17 @@ export function ensureItemShown(state: MissionState, content: LearningContent, n
 }
 
 export { delayAnchor };
+
+/** The retry items of a repair not yet used. */
+function repairItemsLeft(state: MissionState, content: LearningContent, repair: import("./family-learning-feedback.ts").LessonRepair) {
+  const items = repairItems(state, content, repair);
+  return items.slice(repair.retries.length, effectiveMaxRetries(repair, items));
+}
+
+/** The task a repair record names (`typing:<lesson>` → lesson id, `label:<task>` → task id, `writing:<transfer>` → transfer id, `language:<segment>` → segment id). */
+function repairTaskId(lesson: string): string {
+  return lesson.slice(lesson.indexOf(":") + 1);
+}
 
 function secondsSince(from: string | null, now: Date): number | null {
   if (!from) return null;
@@ -1133,6 +1202,8 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       if (correct === true) {
         const gained = remainderItem && def.answers ? def.answers.used : def.quantity;
         state.base.supplies[def.unit.plural] = (state.base.supplies[def.unit.plural] ?? 0) + gained;
+        // UX-5c: a confirmed wrong attempt on the way opens the practice focus; an independent first-try success retires an earlier one.
+        state.feedback = updateMathFocus(feedbackOf(state), content, { id: op.itemId, item, at: nowIso, visit: state.currentVisit as VisitId });
         advance(state, content);
       }
       result = { feedback, correct, evidence: attempt.evidence, attemptNo: attempt.no, ...partial };
@@ -1168,6 +1239,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "direct_teaching", payload: def.kind === "remainder" ? { answers: def.answers } : { answer: def.answer }, at: nowIso });
       const gained = def.kind === "remainder" && def.answers ? def.answers.used : def.quantity;
       state.base.supplies[def.unit.plural] = (state.base.supplies[def.unit.plural] ?? 0) + gained;
+      state.feedback = updateMathFocus(feedbackOf(state), content, { id: op.itemId, item, at: nowIso, visit: state.currentVisit as VisitId });
       advance(state, content);
       result = def.kind === "remainder" ? { taught: true, answers: def.answers } : { taught: true, answer: def.answer };
       break;
@@ -1181,6 +1253,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       item.phase = "done";
       item.resolvedAt = nowIso;
       records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "step_down", payload: { stopped: true }, at: nowIso });
+      state.feedback = updateMathFocus(feedbackOf(state), content, { id: op.itemId, item, at: nowIso, visit: state.currentVisit as VisitId });
       advance(state, content);
       result = { stopped: true };
       break;
@@ -1292,6 +1365,9 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       if (step.kind === "listen-read" || correct === true || (step.kind === "pick-supply" && tries >= 2)) seg.stepIndex += 1;
       if (seg.stepIndex >= segment.steps.length) {
         seg.done = true;
+        const inVisitRecords = seg.records.filter((r) => r.visit === state.currentVisit);
+        state.feedback = updateLanguageFocus(feedbackOf(state), content, { id: op.segmentId, records: inVisitRecords, at: nowIso, visit: state.currentVisit as VisitId });
+        state.feedback = openLanguageRepair(feedbackOf(state), content, { id: op.segmentId, records: inVisitRecords, at: nowIso, visit: state.currentVisit as VisitId });
         advance(state, content);
       }
       result = { correct, evidence, stepIndex: seg.stepIndex, done: seg.done };
@@ -1310,6 +1386,9 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       seg.stepIndex += 1;
       if (seg.stepIndex >= segment.steps.length) {
         seg.done = true;
+        const inVisitRecords = seg.records.filter((r) => r.visit === state.currentVisit);
+        state.feedback = updateLanguageFocus(feedbackOf(state), content, { id: op.segmentId, records: inVisitRecords, at: nowIso, visit: state.currentVisit as VisitId });
+        state.feedback = openLanguageRepair(feedbackOf(state), content, { id: op.segmentId, records: inVisitRecords, at: nowIso, visit: state.currentVisit as VisitId });
         advance(state, content);
       }
       result = { continued: true, stepIndex: seg.stepIndex, done: seg.done };
@@ -1327,10 +1406,14 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       if (!Array.isArray(op.lines) || op.lines.length !== lesson.lines.length || op.lines.some((l) => typeof l !== "string" || Array.from(l).length > 120)) {
         throw new LearningOpError("invalid", "typing lines must match the lesson");
       }
-      const rec: TypingLessonRecord = { lessonId: lesson.id, layout: lesson.layout, ...lessonMetrics(lesson.lines, op.lines), seconds: Math.max(0, Math.round(op.seconds)), at: nowIso };
+      const errors = typingErrors(lesson.lines, op.lines);
+      const rec: TypingLessonRecord = { lessonId: lesson.id, layout: lesson.layout, ...lessonMetrics(lesson.lines, op.lines), errors, seconds: Math.max(0, Math.round(op.seconds)), at: nowIso };
       state.typing.lessons.push(rec);
       records.samples.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: lesson.id, kind: "typing_practice", language: null, modality: "typed", text: lesson.lines.join(" / "), metrics: rec, at: nowIso });
-      result = { accuracy: accuracyRatio(rec) };
+      // UX-5a/5b/5c: the per-key mismatches open the practice focus and, when a pattern warrants it, the bounded repair for this round.
+      state.feedback = updateTypingFocus(feedbackOf(state), { lessonId: lesson.id, lines: lesson.lines, errors, at: nowIso, visit: state.currentVisit as VisitId, fingers: lesson.fingers });
+      state.feedback = openTypingRepair(state.feedback, content, { lessonId: lesson.id, at: nowIso, visit: state.currentVisit as VisitId, lines: lesson.lines, errors });
+      result = { accuracy: accuracyRatio(rec), errors: errors.length };
       break;
     }
 
@@ -1342,9 +1425,11 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       if (!target) throw new LearningOpError("not-allowed", "no label target yet");
       const typed = typeof op.typed === "string" ? op.typed.slice(0, 80) : "";
       const { ops: _ops, ...metrics } = alignTyping(target, typed);
-      const rec: TypingLabelRecord = { taskId: task.id, target, typed, ...metrics, seconds: Math.max(0, Math.round(op.seconds)), at: nowIso };
+      const rec: TypingLabelRecord = { taskId: task.id, target, typed, ...metrics, errors: typingErrors([target], [typed]), seconds: Math.max(0, Math.round(op.seconds)), at: nowIso };
       state.typing.labels.push(rec);
       records.samples.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: task.id, kind: "typed_label", language: "de", modality: "typed", text: typed, metrics: rec, at: nowIso });
+      // F2: a label written wrong at its single step gets a bounded repair (the target shown, up to two attempts).
+      state.feedback = openLabelRepair(feedbackOf(state), { taskId: task.id, target, errors: rec.errors ?? [], at: nowIso, visit: state.currentVisit as VisitId });
       advance(state, content);
       result = { accuracy: accuracyRatio(metrics) };
       break;
@@ -1394,10 +1479,16 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const shortened = op.lines.length < lesson.lines.length;
       if (shortened && state.typing.course?.decision?.action !== "smaller") throw new LearningOpError("not-allowed", "a shorter burst is only offered after a smaller decision");
       if (op.comfort !== "easy" && op.comfort !== "ok" && op.comfort !== "hard") throw new LearningOpError("invalid", "comfort must be easy, ok or hard");
-      const metrics = alignedLessonMetrics(lesson.lines.slice(0, op.lines.length), op.lines);
-      const burst: TypingBurst = { lessonId: lesson.id, visit: state.currentVisit as VisitId, lineCount: op.lines.length, ...metrics, comfort: op.comfort, seconds: Math.max(0, Math.round(op.seconds)), at: nowIso };
+      const roundLines = lesson.lines.slice(0, op.lines.length);
+      const metrics = alignedLessonMetrics(roundLines, op.lines);
+      const errors = typingErrors(roundLines, op.lines);
+      const burst: TypingBurst = { lessonId: lesson.id, visit: state.currentVisit as VisitId, lineCount: op.lines.length, ...metrics, comfort: op.comfort, errors, seconds: Math.max(0, Math.round(op.seconds)), at: nowIso };
       const courseState = state.typing.course!;
       courseState.bursts.push(burst);
+      // UX-5a/5b/5c: a FULL round opens or retires per-key practice focus (a later error-free round is the independent check);
+      // a round with a warranted pattern gets its bounded repair record. Retries (typing-retry) never touch the focus or the progression.
+      state.feedback = updateTypingFocus(feedbackOf(state), { lessonId: lesson.id, lines: roundLines, errors, at: nowIso, visit: state.currentVisit as VisitId, fingers: course.fingers });
+      state.feedback = openTypingRepair(state.feedback, content, { lessonId: lesson.id, at: nowIso, visit: state.currentVisit as VisitId, lines: roundLines, errors });
       const decision = decideProgression(courseState, lesson, course.lessons.length, course.progression, nowIso);
       courseState.decision = decision;
       if ((decision.action === "advance" || decision.action === "stop") && !courseState.completed.includes(lesson.id)) courseState.completed.push(lesson.id);
@@ -1529,6 +1620,9 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const outcome: TransferRecord["outcome"] = !assessment.assessable ? "unassessable" : flags.length > 0 ? "flagged" : "clean";
       const record: TransferRecord = { id: t.id, version: t.version, visit, text, modality, flagged: flags, assessed: assessment.assessed, outcome, helpExposed: !!revision?.helpShown, linkedRevisionAt: revision?.at ?? null, at: nowIso };
       (state.transfers ??= []).push(record);
+      state.feedback = updateSpacingFocus(feedbackOf(state), { outcome: record.outcome, modality, helpExposed: record.helpExposed, flagged: flags.length, text, at: nowIso, visit, lesson: `writing:${t.id}` });
+      // F2: a typed, flagged transfer at the loop's final step gets its own bounded repair of the child's sentence.
+      state.feedback = openWritingRepair(feedbackOf(state), { transferId: t.id, visit, at: nowIso, modality, outcome: record.outcome, flagged: flags.length });
       // Evidence (R3-1): only a sentence with at least one reviewed boundary can be assessed. Clean with assessed
       // boundaries → limited correct evidence (supported when help was shown earlier, else independent); flagged →
       // incorrect; no reviewed boundary → unscored (unknown); spoken → unscored (spacing comes from transcription).
@@ -1583,6 +1677,135 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       state.currentVisit = null;
       finishedVisit = visit.id;
       result = { finished: visit.id };
+      break;
+    }
+
+    case "repair-explain": {
+      // UX-5b: the worked example is help; it is recorded before the client shows it. Idempotent.
+      const visit = currentVisit(state);
+      const repair = findRepair(feedbackOf(state), op.repairId);
+      if (!repair || repair.visit !== visit.id) throw new LearningOpError("invalid", "unknown repair for this visit");
+      if (repair.outcome !== "open") throw new LearningOpError("not-allowed", "the repair is closed");
+      const already = repair.explainedAt !== null;
+      state.feedback = markRepairExplained(feedbackOf(state), op.repairId, nowIso);
+      if (!already) records.supports.push({ id: env.newId(), visitId: visit.id, taskId: repairTaskId(repair.lesson), kind: "mini_lesson", payload: { repairId: op.repairId, focus: repair.focus, kind: repair.kind }, at: nowIso });
+      result = { explained: true, repeated: already };
+      break;
+    }
+
+    case "typing-retry":
+    case "writing-retry":
+    case "language-retry": {
+      // UX-5b: one targeted retry of the SAME reviewed item, bounded by the repair; recorded apart from rounds, labels, transfers and
+      // language records (never progression or ledger evidence, never retires a focus). The original attempt stays untouched.
+      // Exhausting the items closes the repair in this same write (F3): no separate close is needed after the last retry.
+      const visit = currentVisit(state);
+      const fb = feedbackOf(state);
+      const repair = findRepair(fb, op.repairId);
+      if (!repair || repair.visit !== visit.id) throw new LearningOpError("invalid", "unknown repair for this visit");
+      if (repair.outcome !== "open") throw new LearningOpError("not-allowed", "the repair is closed");
+      if (repair.explainedAt === null) throw new LearningOpError("not-allowed", "the worked example comes before the retry");
+      if (!Number.isInteger(op.retryNo) || op.retryNo !== repair.retries.length + 1) throw new LearningOpError("stale", `the next retry is ${repair.retries.length + 1}`);
+      const offered = repairItems(state, content, repair);
+      const maxAttempts = effectiveMaxRetries(repair, offered);
+      if (repair.retries.length >= maxAttempts) throw new LearningOpError("not-allowed", "the retries are used up");
+      const item = nextRetryItem(state, content, repair);
+      if (!item) throw new LearningOpError("not-allowed", "no retry item is left");
+      const expectedOp = repair.kind === "typing" || repair.kind === "label" ? "typing-retry" : repair.kind === "writing" ? "writing-retry" : "language-retry";
+      if (op.op !== expectedOp) throw new LearningOpError("invalid", `this repair takes ${expectedOp}`);
+      let retry: RepairRetry;
+      if (op.op === "typing-retry") {
+        if (item.kind === "typing-line" ? item.lineIndex !== op.lineIndex : item.kind !== "label") throw new LearningOpError("invalid", "the retry line does not match the repair");
+        if (typeof op.typed !== "string" || Array.from(op.typed).length > 120) throw new LearningOpError("invalid", "typed text too long");
+        const errors = typingErrors([item.text], [op.typed]);
+        const focusKey = repair.kind === "typing" ? repair.focus.slice("typing-key:".length) : null;
+        const focusErrors = focusKey ? errors.filter((e) => e.kind !== "extra" && e.expected === focusKey).length : errors.length;
+        retry = { no: op.retryNo, item: item.item, purpose: item.purpose, at: nowIso, result: focusErrors === 0 ? "correct" : "incorrect", focusErrors, lineErrors: errors.length, seconds: Math.max(0, Math.round(op.seconds)), ...(repair.kind === "label" ? { text: op.typed } : {}) };
+        const { ops: _ops, ...metrics } = alignTyping(item.text, op.typed);
+        records.samples.push({ id: env.newId(), visitId: visit.id, taskId: repairTaskId(repair.lesson), kind: "typing_retry", language: null, modality: "typed", text: item.text, metrics: { ...metrics, errors, focus: repair.focus, purpose: item.purpose, retryNo: op.retryNo, repairId: op.repairId, typed: repair.kind === "label" ? op.typed : undefined }, at: nowIso });
+      } else if (op.op === "writing-retry") {
+        if (item.kind !== "sentence") throw new LearningOpError("invalid", "the retry does not match the repair");
+        const text = boundedText(op.text, MAX_TEXT_CHARS, "sentence");
+        const e = evaluateSentenceRetry(item.text, text, content.writing?.spacing.joins ?? []);
+        retry = { no: op.retryNo, item: item.item, purpose: item.purpose, at: nowIso, result: e.remaining === 0 ? "correct" : "incorrect", focusErrors: e.remaining, lineErrors: e.remaining, seconds: 0, text };
+        records.samples.push({ id: env.newId(), visitId: visit.id, taskId: repairTaskId(repair.lesson), kind: "writing_retry", language: "de", modality: "typed", text, metrics: { original: item.text, resolved: e.resolved, total: e.total, purpose: item.purpose, retryNo: op.retryNo, repairId: op.repairId, spellingJudged: false }, at: nowIso });
+      } else {
+        if (item.kind !== "pick" && item.kind !== "produce") throw new LearningOpError("invalid", "the retry does not match the repair");
+        if (item.stepId !== op.stepId) throw new LearningOpError("invalid", "the retry step does not match the repair");
+        const segmentId = repair.lesson.slice("language:".length);
+        if (!isLanguageSegmentId(segmentId)) throw new LearningOpError("invalid", "unknown segment");
+        const segment = languageSegment(content, segmentId);
+        const { step } = findStep(segment, op.stepId);
+        let result_: RepairRetry["result"];
+        let response: string;
+        if (step.kind === "pick-supply") {
+          response = boundedText(op.response, 40, "choice");
+          if (!step.options.includes(response)) throw new LearningOpError("invalid", "choice is not one of the options");
+          result_ = response === step.answer ? "correct" : "incorrect";
+        } else if (step.kind === "produce") {
+          response = boundedText(op.response, 200, "response");
+          const scored = scoreProduction(step, response);
+          result_ = scored.correct === null ? "unscored" : scored.correct ? "correct" : "incorrect";
+        } else throw new LearningOpError("invalid", "this step has no retry");
+        retry = { no: op.retryNo, item: item.item, purpose: item.purpose, at: nowIso, result: result_, focusErrors: result_ === "incorrect" ? 1 : 0, lineErrors: result_ === "incorrect" ? 1 : 0, seconds: 0, text: response };
+        records.samples.push({ id: env.newId(), visitId: visit.id, taskId: `${segmentId}/${op.stepId}`, kind: "language_retry", language: segment.language, modality: "typed", text: response, metrics: { result: result_, purpose: item.purpose, retryNo: op.retryNo, repairId: op.repairId, support: ["retry", "feedback"] }, at: nowIso });
+      }
+      state.feedback = recordRepairRetry(fb, op.repairId, retry);
+      let after = findRepair(feedbackOf(state), op.repairId)!;
+      // Done when the items are used up, or when the attempt succeeded and only repeat attempts of the same item would remain
+      // (a fresh check of another line still follows a correct typing retry).
+      const remainingItems = (nextRetryItem(state, content, after) ? repairItemsLeft(state, content, after) : []);
+      // Early close only when the remaining items are repeat attempts of the item just corrected — another unresolved item (a second
+      // language word) or a fresh check stays reachable (repair round 2, R2-1).
+      const exhausted = after.retries.length >= maxAttempts || remainingItems.length === 0 || (retry.result === "correct" && remainingItems.every((i) => i.purpose === "correct-original" && i.item === retry.item));
+      if (exhausted) {
+        state.feedback = closeRepair(feedbackOf(state), op.repairId, nowIso, "done", offered.map((i) => i.item));
+        after = findRepair(feedbackOf(state), op.repairId)!;
+        records.supports.push({ id: env.newId(), visitId: visit.id, taskId: repairTaskId(repair.lesson), kind: "step_down", payload: { repairId: op.repairId, outcome: after.outcome, retries: after.retries.length, reason: "exhausted" }, at: nowIso });
+      }
+      result = { retryNo: op.retryNo, result: retry.result, focusErrors: retry.focusErrors, lineErrors: retry.lineErrors, remaining: exhausted ? 0 : Math.max(0, maxAttempts - after.retries.length), closed: exhausted, outcome: exhausted ? after.outcome : null };
+      break;
+    }
+
+    case "repair-close": {
+      const visit = currentVisit(state);
+      const repair = findRepair(feedbackOf(state), op.repairId);
+      if (!repair || repair.visit !== visit.id) throw new LearningOpError("invalid", "unknown repair for this visit");
+      if (op.reason !== "done" && op.reason !== "skip") throw new LearningOpError("invalid", "reason must be done or skip");
+      if (repair.outcome !== "open") {
+        result = { outcome: repair.outcome, repeated: true };
+        break;
+      }
+      state.feedback = closeRepair(feedbackOf(state), op.repairId, nowIso, op.reason, repairItems(state, content, repair).map((i) => i.item));
+      const closed = findRepair(feedbackOf(state), op.repairId)!;
+      records.supports.push({ id: env.newId(), visitId: visit.id, taskId: repairTaskId(repair.lesson), kind: "step_down", payload: { repairId: op.repairId, outcome: closed.outcome, retries: closed.retries.length, reason: op.reason }, at: nowIso });
+      result = { outcome: closed.outcome };
+      break;
+    }
+
+    case "lesson-feedback-seen": {
+      currentVisit(state);
+      if (typeof op.id !== "string" || op.id.length === 0 || op.id.length > 120) throw new LearningOpError("invalid", "feedback id");
+      // Only feedback of a lesson that actually ended may be acknowledged; an open repair is closed as skipped first.
+      const pending = lastLessonFeedback(state, content);
+      if (!pending || pending.id !== op.id) {
+        const all = feedbackOf(state).acknowledged.includes(op.id);
+        if (all) {
+          result = { acknowledged: op.id, repeated: true };
+          break;
+        }
+        throw new LearningOpError("not-allowed", "this lesson feedback is not pending");
+      }
+      if (pending.repair.repairId && (pending.repair.status === "open" || pending.repair.status === "available")) {
+        // Repair round 4 (R3-F1): acknowledging an open repair closes it with the SAME complete required-item inventory as the
+        // explicit close and the exhausted close — a record persisted by an earlier round with a shorter inventory (two items, or
+        // none) must not be stored as "corrected" while a currently unresolved step was never attempted.
+        const open = findRepair(feedbackOf(state), pending.repair.repairId);
+        const required = open ? repairItems(state, content, open).map((i) => i.item) : [];
+        state.feedback = closeRepair(feedbackOf(state), pending.repair.repairId, nowIso, "skip", required);
+      }
+      state.feedback = acknowledgeLesson(feedbackOf(state), op.id);
+      result = { acknowledged: op.id };
       break;
     }
 
@@ -1715,6 +1938,12 @@ export type ChildView = {
   /** The fresh writing-transfer prompt while its stage is active. */
   transfer: { id: string; version: number; prompt: string; instruction: string; helpExposed: boolean } | null;
   summary: VisitSummary | null;
+  /** UX-5a/5b: the lesson that just ended in the running visit, until the child has seen it. */
+  lastLesson: LessonFeedback | null;
+  /** UX-5c: one relevant cue for the lesson about to start, or null. */
+  reminder: ReminderCue | null;
+  /** The reopenable visit reports (finished visits complete, the running one partial), oldest first. */
+  reports: VisitReport[];
   reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[] } | null;
   tutor: TutorContext | null;
   retention: string;
@@ -1935,6 +2164,18 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     typingCourse,
     logRevise,
     summary: stage === "summary" && running ? buildVisitSummary(state, content, running.id) : null,
+    lastLesson: lastLessonFeedback(state, content),
+    // The cue belongs to the lesson about to start: while the last lesson's feedback is still pending there is none.
+    reminder: lastLessonFeedback(state, content)
+      ? null
+      : reminderFor(state, content, {
+          stage,
+          typingLines: typingCourse?.lesson?.lines ?? (typing && typing.available ? typing.lesson.lines : null),
+          mathKind: math ? math.kind : null,
+          language: language?.language ?? null,
+          languageWords: language ? languageWordsOf(content, language.id) : null,
+        }),
+    reports: buildVisitReports(state, content),
     transfer,
     reflection: stage === "reflect" ? { prompt: content.reflection.prompt, options: content.reflection.options, skipLabel: content.reflection.skipLabel ?? null, dimensions: content.reflection.dimensions ?? [] } : null,
     tutor,

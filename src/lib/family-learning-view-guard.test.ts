@@ -89,6 +89,12 @@ describe("isChildView — the independent reviewer's exact malformed probes and 
     equal(isChildView(mutate((v) => (v.pages = [{ title: "only" }])), "santiago"), false, "partial page");
     equal(isChildView(mutate((v) => (v.locations = [{ id: "crater" }])), "santiago"), false, "partial location");
     equal(isChildView(mutate((v) => (v.revision = -1)), "santiago"), false, "negative revision");
+    // World-first 2026-10-03: the lesson feedback, the reminder and the reports are part of the contract.
+    equal(isChildView(mutate((v) => delete v.reports), "santiago"), false, "missing reports");
+    equal(isChildView(mutate((v) => (v.reports = [{ visit: "v1" }])), "santiago"), false, "partial report");
+    equal(isChildView(mutate((v) => (v.lastLesson = { id: "x" })), "santiago"), false, "partial lesson feedback");
+    equal(isChildView(mutate((v) => (v.reminder = { focusId: "typing-key:j" })), "santiago"), false, "partial reminder");
+    equal(isChildView(mutate((v) => delete v.lastLesson), "santiago"), false, "missing lastLesson");
     equal(isChildView(mutate((v) => (v.revision = "3")), "santiago"), false, "string revision");
     equal(isChildView(mutate((v) => (v.child = "isabel")), "santiago"), false, "other child");
     equal(isChildView(mutate((v) => (v.child = "nobody")), "santiago"), false, "unknown child");

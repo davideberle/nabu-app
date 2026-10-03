@@ -15,6 +15,7 @@
 import type { LearningContent, ScoredMathItemId, VisitId } from "./family-learning-content.ts";
 import { mathItem } from "./family-learning-content.ts";
 import type { MathAttempt, MissionState, TypingBurst, VisitRecord } from "./family-learning-state.ts";
+import type { LessonFeedback } from "./family-learning-feedback.ts";
 
 // ---------------------------------------------------------------------------
 // Delayed check
@@ -380,7 +381,11 @@ export function summariseTelemetry(events: TelemetryEvent[] | null, batches = 0,
  * reported as unknown when none were delivered (R5-2). A stored review whose
  * version differs is re-derived on read where the served content allows it.
  */
-export const REVIEW_VERSION = 4;
+/**
+ * 5 = world-first 2026-10-03: the review carries the lesson-by-lesson feedback the child saw
+ * (`learning.lessons`), so parent evidence and the child report are the same derivation.
+ */
+export const REVIEW_VERSION = 5;
 /** The review version in which the LEARNING classification rules last changed; older stored learning credit is obsolete. */
 export const LEARNING_RULES_VERSION = 3;
 
@@ -394,6 +399,8 @@ export type ParentReview = {
     objectives: { taskId: string; version: number; objective: string; outcome: string; evidence: string; support: string[]; uncertainty: string | null }[];
     teachNext: { text: string; why: string; uncertainty: string };
     childSummary: VisitSummary;
+    /** The per-lesson feedback exactly as the child's report shows it (world-first 2026-10-03); absent on older stored reviews. */
+    lessons?: LessonFeedback[];
   };
   experience: {
     hypotheses: { observation: string; alternatives: string[]; suggestion: string }[];
@@ -409,7 +416,7 @@ export function completionIdentity(state: MissionState, visit: VisitRecord): str
   return `${state.child}/${state.missionId}/${visit.id}/${visit.startedAt}`;
 }
 
-export function buildParentReview(state: MissionState, content: LearningContent, visitId: VisitId, telemetry: TelemetryEvent[] | null, options: { historical: boolean; contentVersion?: number; telemetryBatches?: number; derivedAt?: string }): ParentReview {
+export function buildParentReview(state: MissionState, content: LearningContent, visitId: VisitId, telemetry: TelemetryEvent[] | null, options: { historical: boolean; contentVersion?: number; telemetryBatches?: number; derivedAt?: string; lessons?: LessonFeedback[] }): ParentReview {
   const visit = visitRecord(state, visitId);
   const summary = buildVisitSummary(state, content, visitId);
   const tele = summariseTelemetry(telemetry, options.telemetryBatches ?? 0, content.visits.find((v) => v.id === visitId)?.stages ?? null);
@@ -516,7 +523,7 @@ export function buildParentReview(state: MissionState, content: LearningContent,
   return {
     identity: { child: state.child, missionId: state.missionId, contentVersion: options.contentVersion ?? state.contentVersion, visit: visitId, startedAt: visit.startedAt, finishedAt: visit.finishedAt, completionId: completionIdentity(state, visit), reviewVersion: REVIEW_VERSION, derivedAt: options.derivedAt ?? new Date().toISOString() },
     historical: options.historical,
-    learning: { whatHappened, objectives, teachNext, childSummary: summary },
+    learning: { whatHappened, objectives, teachNext, childSummary: summary, lessons: options.lessons ?? [] },
     experience: { hypotheses, telemetry: tele, childFeedback, missing },
     recommendation: next,
   };

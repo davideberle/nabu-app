@@ -1,38 +1,38 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// The child learning cockpit — /family/learn (family-assistant DESIGN §7.6).
+// The expedition world — /family/learn (world-first learner experience,
+// 2026-10-03; family-assistant DESIGN §7.6 UX-1/UX-2/UX-5).
 //
-// One primary Start/Continue action, a picture of the saved base, a short next
-// step, the saved expedition pages and access to the tutor (through the
-// mission workspace). Only genuinely available activities are shown; the
-// pilot's delayed check was retired on 2026-09-30 and is never offered or
-// dated. The compact progress strip (follow-on M2) counts completed visit
-// events only and quotes the stored review; the vocabulary cue (M3) names
-// concrete words to practise. Isabel gets her own not-yet-prepared state and
-// never sees Santiago's base.
+// The screen IS the world: an illustrated isometric settlement drawn from the
+// saved mission state, with the three visit sites in their true state, the
+// base, garden, station beds, station and lamp, supply crates and the logbook.
+// One dominant next action sits over it; a minimal HUD shows the two honest
+// counts of the progress rule (completed visits this week / in total). The
+// visit report of every finished visit reopens from its flag (and from
+// `?report=<visit>` after a reload); a running visit opens an honest partial
+// recap. The logbook pages, the vocabulary cue and the full progress strip
+// live in a side panel, not on the map. Isabel gets her own not-yet-prepared
+// state and never sees Santiago's world.
 //
 // Presentation only: the server view (child-scoped credential) is the truth.
 // ---------------------------------------------------------------------------
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { NabuBadge, cn } from "@/components/ui/nabu";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { cn } from "@/components/ui/nabu";
 import { useChildShell } from "@/components/family/child-shell-provider";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import { browserTimeZone, createLearningClient } from "@/lib/family-learning-client";
 import { retireAllDrafts } from "@/lib/family-learning-draft-store";
 import type { ChildView } from "@/lib/family-learning-state";
 import type { ProgressStrip } from "@/lib/family-learning-progress";
-import { BaseScene } from "@/components/family/learning/base-scene";
+import type { VisitReport } from "@/lib/family-learning-feedback";
+import { ExpeditionWorld, supplyRows, type WorldMarker } from "@/components/family/learning/expedition-world";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
-
-const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
-
-const primaryButton = cn(
-  "inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-stone-900 px-6 text-lg font-semibold text-white shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md dark:bg-stone-100 dark:text-stone-900",
-  focusRing,
-);
+import { VisitReportView } from "@/components/family/learning/visit-report";
+import { focusRing, primaryButton, secondaryButton } from "./mission/styles";
 
 type Load =
   | { kind: "loading" }
@@ -43,9 +43,8 @@ type Load =
 export function FamilyLearnClient() {
   const { child, restored } = useChildShell();
   if (!restored || !child) return null;
-  // Keyed by child: switching profiles discards the other child's view
-  // instantly instead of rendering it for a frame.
-  return <Cockpit key={child} child={child} />;
+  // Keyed by child: switching profiles discards the other child's view instantly instead of rendering it for a frame.
+  return <World key={child} child={child} />;
 }
 
 function formatDate(iso: string): string {
@@ -56,10 +55,44 @@ function formatDate(iso: string): string {
   }
 }
 
-function Cockpit({ child }: { child: ChildId }) {
+/** The three visit sites of the reviewed content with their TRUE state; nothing beyond the served content is shown. */
+export function worldMarkers(view: ChildView): WorldMarker[] {
+  const running = view.visit;
+  const completed = new Set(view.progress.completed.map((c) => c.visit));
+  const ordered = ["v1", "v2", "v4"] as const;
+  const markers: WorldMarker[] = [];
+  for (const id of ordered) {
+    const report = view.reports.find((r) => r.visit === id) ?? null;
+    const done = completed.has(id);
+    const isRunning = running?.id === id;
+    const isNext = !isRunning && view.next.visit === id;
+    const ordinal = report?.ordinal ?? view.progress.completed.find((c) => c.visit === id)?.ordinal ?? (id === "v1" ? 1 : id === "v2" ? 2 : view.next.visit === id ? view.next.ordinal : 3);
+    const label = report?.label ?? view.progress.completed.find((c) => c.visit === id)?.label ?? (isRunning ? running!.title : isNext ? view.progress.next.label ?? `Besuch ${ordinal ?? ""}` : `Besuch ${ordinal ?? ""}`);
+    markers.push({
+      visit: id,
+      ordinal,
+      label,
+      caption: `Besuch ${ordinal ?? ""}`.trim(),
+      state: done ? "done" : isRunning ? "running" : isNext ? "next" : "later",
+      progress: isRunning && running ? { done: Math.min(running.stageIndex, running.stageCount), count: running.stageCount } : null,
+    });
+  }
+  // A historical v3 record (the retired delayed check) keeps its label in the reports but has no site on the map.
+  return markers;
+}
+
+type Panel = { kind: "report"; visit: string } | { kind: "logbook" } | { kind: "progress" } | { kind: "supplies" } | null;
+
+function World({ child }: { child: ChildId }) {
   const client = useMemo(() => createLearningClient(), []);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [load, setLoad] = useState<Load>({ kind: "loading" });
   const aliveRef = useRef(true);
+  const reportParam = searchParams.get("report");
+  const [panel, setPanel] = useState<Panel>(() => (reportParam ? { kind: "report", visit: reportParam } : null));
+  const primaryRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
     aliveRef.current = true;
@@ -71,8 +104,7 @@ function Cockpit({ child }: { child: ChildId }) {
         setLoad({ kind: "ready", view: outcome.view });
         return;
       }
-      // Only a confirmed "not prepared" answer (404, or 200 with prepared:false)
-      // is the not-prepared state; a malformed success is a load error (A07).
+      // Only a confirmed "not prepared" answer (404, or 200 with prepared:false) is the not-prepared state; a malformed success is a load error (A07).
       if (outcome.status === 404 || outcome.failure === "unprepared") {
         setLoad({ kind: "unprepared" });
         return;
@@ -96,6 +128,23 @@ function Cockpit({ child }: { child: ChildId }) {
     };
   }, [child, client]);
 
+  // The URL carries the open report so a reload or back/forward reopens it; the child selection stays in the URL too.
+  const setReportParam = useCallback(
+    (visit: string | null) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("child", child);
+      if (visit) params.set("report", visit);
+      else params.delete("report");
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    [child, pathname, router, searchParams],
+  );
+  const openPanel = (next: Panel) => {
+    setPanel(next);
+    setReportParam(next?.kind === "report" ? next.visit : null);
+  };
+  const closePanel = () => openPanel(null);
+
   if (load.kind === "loading") {
     return (
       <div className="mx-auto max-w-3xl px-4 py-10">
@@ -105,20 +154,13 @@ function Cockpit({ child }: { child: ChildId }) {
       </div>
     );
   }
-
-  if (load.kind === "unprepared" || (load.kind === "ready" && load.view.child !== child)) {
-    return <ExpeditionNotPrepared child={child} />;
-  }
-
+  if (load.kind === "unprepared" || (load.kind === "ready" && load.view.child !== child)) return <ExpeditionNotPrepared child={child} />;
   if (load.kind === "trouble") {
     return (
       <div className="mx-auto max-w-3xl px-4 py-8">
         <BackToHome child={child} />
         <div className="mt-6 rounded-3xl border border-primary bg-primary p-8 text-center">
-          <span className="text-5xl" aria-hidden>
-            📡
-          </span>
-          <p className="mt-4 text-lg text-primary" role="status">
+          <p className="text-lg text-primary" role="status">
             {load.message}
           </p>
         </div>
@@ -130,54 +172,155 @@ function Cockpit({ child }: { child: ChildId }) {
   const running = view.visit;
   const canStart = running !== null || view.next.visit !== null;
   const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" ? `Besuch ${view.next.ordinal ?? 3} starten` : "Weiter";
+  const markers = worldMarkers(view);
+  const report: VisitReport | null = panel?.kind === "report" ? view.reports.find((r) => r.visit === panel.visit) ?? null : null;
+  const missionHref = `/family/learn/mission?child=${child}`;
+
+  const onSelectMarker = (m: WorldMarker) => {
+    if (m.state === "done") openPanel({ kind: "report", visit: m.visit });
+    else if (m.state === "running") openPanel({ kind: "report", visit: m.visit });
+    else if (m.state === "next") router.push(missionHref);
+  };
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6 sm:py-8">
-      <BackToHome child={child} />
+    <div className="relative h-[calc(100dvh-4.25rem)] min-h-[560px] w-full overflow-hidden" data-testid="world-screen" data-world-next={view.next.visit ?? ""} data-world-running={running?.id ?? ""}>
+      {/* One continuous world viewport; the HUD and the one action float over it. */}
+      <div className="absolute inset-0">
+        <ExpeditionWorld scene={view.scene} markers={markers} pages={view.pages.length} onSelectMarker={onSelectMarker} onOpenLogbook={() => openPanel({ kind: "logbook" })} onOpenSupplies={() => openPanel({ kind: "supplies" })} />
+      </div>
 
-      <header className="mt-4">
-        <p className="text-sm font-medium uppercase tracking-wide text-tertiary">Lernen</p>
-        <h1 className="mt-1 text-3xl font-semibold tracking-[-0.02em] text-primary">{view.title}</h1>
-        <p className="mt-1 text-base text-tertiary">{view.hook}</p>
-      </header>
+      {/* HUD — top right: the one honest count (the shell bar above already carries Home) */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-end gap-3 p-3 sm:p-4">
+        <button type="button" onClick={() => openPanel({ kind: "progress" })} className={cn("pointer-events-auto inline-flex min-h-12 items-center gap-2 rounded-full border border-primary bg-primary/90 px-4 text-base text-primary shadow-xs backdrop-blur hover:bg-primary", focusRing)} data-testid="hud-progress" aria-label={`Fertige Besuche: ${view.progress.completedTotal}, diese Woche ${view.progress.completedThisWeek}. Fortschritt öffnen`}>
+          <span aria-hidden>✓</span>
+          <span>
+            {view.progress.completedTotal} {view.progress.completedTotal === 1 ? "Besuch" : "Besuche"} fertig
+          </span>
+          <span className="text-tertiary">· Woche {view.progress.completedThisWeek}</span>
+        </button>
+      </div>
 
-      <section className="mt-6 overflow-hidden rounded-3xl border border-primary bg-primary shadow-xs dark:shadow-none">
-        <BaseScene scene={view.scene} compact />
-        <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
-          <div className="min-w-0">
-            <p className="text-lg font-semibold text-primary">
-              {view.base.name ? `Basis „${view.base.name}“` : "Noch keine Basis"}
+      {/* The one dominant action — bottom left, over the world, beside the island */}
+      <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-2 px-3 pb-4 sm:px-6 sm:pb-6">
+        <div className="w-full max-w-md rounded-3xl border border-primary bg-primary/95 p-4 shadow-md backdrop-blur sm:p-5" data-testid="world-action">
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-tertiary">{running ? "Angefangen" : view.next.visit ? "Als Nächstes" : "Alles gespeichert"}</p>
+          <p className="mt-1 text-xl font-semibold leading-tight text-primary sm:text-2xl" data-testid="world-next-step">
+            {view.nextStep}
+          </p>
+          {running ? (
+            <p className="mt-1 text-base text-tertiary" data-testid="running-visit">
+              {running.title} · Schritt {Math.min(running.stageIndex + 1, running.stageCount)} von {running.stageCount}
             </p>
-            <p className="mt-1 text-base text-tertiary">{view.nextStep}</p>
-            {running ? (
-              <p className="mt-1 text-sm text-tertiary" data-testid="running-visit">
-                {running.title} · Schritt {Math.min(running.stageIndex + 1, running.stageCount)} von {running.stageCount}
+          ) : view.base.name ? (
+            <p className="mt-1 text-base text-tertiary">
+              Basis „{view.base.name}“{view.base.location ? ` · ${view.base.location.label}` : ""}
+            </p>
+          ) : null}
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            {canStart ? (
+              <Link ref={primaryRef} href={missionHref} className={cn(primaryButton, "min-h-16 px-8 text-xl")} data-testid="cockpit-start">
+                {startLabel}
+                <span aria-hidden>→</span>
+              </Link>
+            ) : (
+              <p className="sr-only" data-testid="next-unavailable">
+                {view.next.reason === "all-visits-done" ? "Alle Besuche geschafft." : "Gerade nichts Neues — alles ist gespeichert."}
               </p>
+            )}
+            {running ? (
+              <button type="button" onClick={() => openPanel({ kind: "report", visit: running.id })} className={secondaryButton} data-testid="world-partial">
+                Zwischenstand
+              </button>
+            ) : view.progress.recent ? (
+              <button type="button" onClick={() => openPanel({ kind: "report", visit: view.progress.recent!.visit })} className={secondaryButton} data-testid="world-last-report">
+                Letzter Bericht
+              </button>
             ) : null}
           </div>
-          {canStart ? (
-            <Link href={`/family/learn/mission?child=${child}`} className={primaryButton} data-testid="cockpit-start">
-              {startLabel}
-              <span aria-hidden>→</span>
-            </Link>
-          ) : view.next.reason === "all-visits-done" ? (
-            <NabuBadge tone="green">Alle Besuche geschafft</NabuBadge>
-          ) : (
-            <div className="rounded-2xl bg-secondary px-4 py-3 text-sm text-primary" data-testid="next-unavailable">
-              Gerade nichts Neues — alles ist gespeichert.
-            </div>
-          )}
         </div>
+        <p className="rounded-full bg-primary/70 px-3 py-1 text-xs text-stone-800/80 backdrop-blur dark:text-stone-200/80" data-testid="world-retention">
+          Deine Eltern können sehen, was du hier lernst.
+        </p>
+      </div>
+
+      {panel ? (
+        <SidePanel onClose={closePanel} title={panel.kind === "report" ? (report ? (report.partial ? "Zwischenstand" : "Bericht") : "Bericht") : panel.kind === "logbook" ? "Logbuch" : panel.kind === "supplies" ? "Vorräte" : "Mein Fortschritt"}>
+          {panel.kind === "report" ? (
+            report ? (
+              <VisitReportView report={report} scene={view.scene} markers={markers} onBack={closePanel} backLabel="Zur Karte" onNext={report.partial ? () => router.push(missionHref) : undefined} nextLabel={report.partial ? "Weitermachen" : undefined} />
+            ) : (
+              <p className="text-base text-primary" data-testid="report-missing">
+                Zu diesem Besuch gibt es keinen Bericht.
+              </p>
+            )
+          ) : panel.kind === "logbook" ? (
+            <LogbookPanel view={view} />
+          ) : panel.kind === "supplies" ? (
+            <ul className="grid gap-2 sm:grid-cols-2" data-testid="supplies-panel">
+              {supplyRows(view.scene).map((r) => (
+                <li key={r.label} className="rounded-2xl border border-primary bg-primary px-4 py-3 text-lg text-primary">
+                  <strong>{r.count}</strong> {r.label}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <ProgressPanel progress={view.progress} view={view} onOpenReport={(visit) => openPanel({ kind: "report", visit })} />
+          )}
+        </SidePanel>
+      ) : null}
+    </div>
+  );
+}
+
+function SidePanel({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+  return (
+    <div className="absolute inset-0 z-20 flex justify-end bg-stone-900/30" role="presentation" onClick={onClose} data-testid="side-panel">
+      <section role="dialog" aria-modal="true" aria-label={title} className="flex h-full w-full max-w-2xl flex-col overflow-y-auto bg-secondary p-4 shadow-2xl sm:p-6" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-tertiary">{title}</p>
+          <button ref={closeRef} type="button" onClick={onClose} className={cn("inline-flex min-h-12 min-w-12 items-center justify-center rounded-full border border-primary bg-primary text-xl", focusRing)} aria-label="Schliessen" data-testid="panel-close">
+            ×
+          </button>
+        </div>
+        <div className="mt-4 flex-1">{children}</div>
       </section>
+    </div>
+  );
+}
 
-      <ProgressStripView progress={view.progress} />
-
+function LogbookPanel({ view }: { view: ChildView }) {
+  return (
+    <div className="flex flex-col gap-4" data-testid="logbook-panel">
+      {view.pages.length === 0 ? (
+        <p className="text-base text-tertiary">Noch keine Seite gespeichert. Die erste entsteht am Ende deines Besuchs.</p>
+      ) : (
+        <ul className="grid gap-3">
+          {view.pages.map((page, index) => (
+            <li key={`${page.visit}-${index}`} id={index === view.pages.findIndex((p) => p.visit === page.visit) ? `pages-${page.visit}` : undefined} className="rounded-2xl border border-primary bg-primary p-4" data-testid="logbook-page">
+              <p className="text-sm text-tertiary">{formatDate(page.at)}</p>
+              <p className="mt-1 font-semibold text-primary">
+                {page.title} — {page.baseName}
+              </p>
+              <p className="mt-2 text-base text-primary">{page.text}</p>
+              {page.explanation ? <p className="mt-2 text-sm text-tertiary">Meine Erklärung: {page.explanation}</p> : null}
+            </li>
+          ))}
+        </ul>
+      )}
       {view.vocabulary && view.vocabulary.words.length > 0 ? (
-        <section className="mt-6 rounded-3xl border border-primary bg-primary p-5" data-testid="vocabulary-cue" aria-labelledby="vocab-heading">
+        <section className="rounded-3xl border border-primary bg-primary p-4" data-testid="vocabulary-cue" aria-labelledby="vocab-heading">
           <h2 id="vocab-heading" className="text-lg font-semibold text-primary">
             Wörter zum Üben
           </h2>
-          <ul className="mt-3 space-y-3">
+          <ul className="mt-3 space-y-2">
             {view.vocabulary.words.map((w) => (
               <li key={w.entryId} className="rounded-2xl bg-secondary px-4 py-3" data-testid={`vocab-word-${w.entryId}`}>
                 <p className="text-base font-semibold text-primary">
@@ -190,49 +333,20 @@ function Cockpit({ child }: { child: ChildId }) {
           <p className="mt-3 text-xs text-tertiary">{view.vocabulary.note}</p>
         </section>
       ) : null}
-
-      <section className="mt-6" id="pages">
-        <h2 className="text-lg font-semibold text-primary">Expeditionsseiten</h2>
-        {view.pages.length === 0 ? (
-          <p className="mt-2 text-base text-tertiary">Noch keine Seite gespeichert. Die erste entsteht am Ende deines Besuchs.</p>
-        ) : (
-          <ul className="mt-3 grid gap-3 sm:grid-cols-2">
-            {view.pages.map((page, index) => (
-              <li key={`${page.visit}-${index}`} id={index === view.pages.findIndex((p) => p.visit === page.visit) ? `pages-${page.visit}` : undefined} className="rounded-2xl border border-primary bg-primary p-4 target:ring-2 target:ring-stone-400">
-                <p className="text-sm text-tertiary">{formatDate(page.at)}</p>
-                <p className="mt-1 font-semibold text-primary">
-                  {page.title} — {page.baseName}
-                </p>
-                <p className="mt-2 text-base text-primary">{page.text}</p>
-                {page.explanation ? <p className="mt-2 text-sm text-tertiary">Meine Erklärung: {page.explanation}</p> : null}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      <p className="mt-8 text-xs text-tertiary">
-        Deine Eltern können sehen, was du hier lernst. {view.retention}
-      </p>
+      <p className="text-xs text-tertiary">Deine Eltern können sehen, was du hier lernst. {view.retention}</p>
     </div>
   );
 }
 
-/**
- * Compact, calm progress strip (DESIGN §7.6 follow-on): completed visits this
- * local week and in total, the one available next step, and an evidence-bound
- * "You did / Try next" pair quoted from the stored review — or, when that
- * review is missing or uncertain, the created artifact and an ordinary next
- * step. Counts are completed visit events only. No grade, no comparison.
- */
-function ProgressStripView({ progress }: { progress: ProgressStrip }) {
+/** The follow-on progress strip, unchanged in meaning: completed visit EVENTS, one next step, the review-grounded recent pair. */
+function ProgressPanel({ progress, view, onOpenReport }: { progress: ProgressStrip; view: ChildView; onOpenReport: (visit: string) => void }) {
   const recent = progress.recent;
   return (
-    <section className="mt-6 rounded-3xl border border-primary bg-primary p-5" data-testid="progress-strip" aria-labelledby="progress-heading">
+    <section className="flex flex-col gap-3" data-testid="progress-strip" aria-labelledby="progress-heading">
       <h2 id="progress-heading" className="text-lg font-semibold text-primary">
         Mein Fortschritt
       </h2>
-      <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-base text-primary">
+      <div className="flex flex-wrap gap-x-6 gap-y-2 text-base text-primary">
         <p data-testid="progress-week">
           Diese Woche fertig: <strong>{progress.completedThisWeek}</strong> {progress.completedThisWeek === 1 ? "Besuch" : "Besuche"}
         </p>
@@ -240,26 +354,26 @@ function ProgressStripView({ progress }: { progress: ProgressStrip }) {
           Insgesamt fertig: <strong>{progress.completedTotal}</strong> {progress.completedTotal === 1 ? "Besuch" : "Besuche"}
         </p>
       </div>
-      <p className="mt-1 text-xs text-tertiary" data-testid="progress-week-label">
+      <p className="text-xs text-tertiary" data-testid="progress-week-label">
         Woche: {progress.week.label}. {progress.counting}
       </p>
       {progress.completed.length > 0 ? (
-        <ul className="mt-3 flex flex-wrap gap-2" aria-label="Fertige Besuche">
+        <ul className="flex flex-wrap gap-2" aria-label="Fertige Besuche">
           {progress.completed.map((c) => (
             <li key={`${c.visit}-${c.finishedAt}`}>
-              <a href={c.pages > 0 ? `#pages-${c.visit}` : "#pages"} className={cn("inline-flex min-h-10 items-center gap-1 rounded-full border border-primary px-3 text-sm text-primary hover:bg-secondary", focusRing)} data-testid={`progress-visit-${c.visit}`} data-this-week={c.thisWeek ? "true" : "false"}>
+              <button type="button" onClick={() => onOpenReport(c.visit)} className={cn("inline-flex min-h-10 items-center gap-1 rounded-full border border-primary bg-primary px-3 text-sm text-primary hover:bg-secondary", focusRing)} data-testid={`progress-visit-${c.visit}`} data-this-week={c.thisWeek ? "true" : "false"}>
                 <span aria-hidden>✓</span> {c.label}
                 <span className="text-tertiary">· {formatDate(c.finishedAt)}</span>
-              </a>
+              </button>
             </li>
           ))}
         </ul>
       ) : null}
-      <p className="mt-3 text-base text-primary" data-testid="progress-next" data-kind={progress.next.kind}>
+      <p className="text-base text-primary" data-testid="progress-next" data-kind={progress.next.kind}>
         <span className="font-medium">Als Nächstes:</span> {progress.next.text}
       </p>
       {recent ? (
-        <div className="mt-3 rounded-2xl bg-secondary px-4 py-3" data-testid="progress-recent" data-grounding={recent.grounding.source} data-suppressed={recent.grounding.suppressed?.reason ?? "none"}>
+        <div className="rounded-2xl border border-primary bg-primary px-4 py-3" data-testid="progress-recent" data-grounding={recent.grounding.source} data-suppressed={recent.grounding.suppressed?.reason ?? "none"}>
           <p className="text-sm text-tertiary">Zuletzt: {recent.label}</p>
           {recent.did ? (
             <p className="mt-1 text-base text-primary" data-testid="progress-did">
@@ -271,7 +385,6 @@ function ProgressStripView({ progress }: { progress: ProgressStrip }) {
             </p>
           )}
           <p className="mt-1 text-base text-primary" data-testid="progress-try-next">
-            {/* The quoted recommendation usually carries its own lead ("Nächstes Mal: …"); no double label then. */}
             {/^Nächstes Mal/.test(recent.tryNext) ? null : <span className="font-medium">Probier als Nächstes: </span>}
             {recent.tryNext}
           </p>
@@ -282,13 +395,16 @@ function ProgressStripView({ progress }: { progress: ProgressStrip }) {
           ) : null}
         </div>
       ) : null}
+      {view.reports.filter((r) => !r.partial).length ? (
+        <p className="text-xs text-tertiary">Tippe auf einen fertigen Besuch, um seinen Bericht zu öffnen.</p>
+      ) : null}
     </section>
   );
 }
 
 function BackToHome({ child }: { child: ChildId }) {
   return (
-    <Link href={`/family/assistant?child=${child}`} className={cn("inline-flex min-h-12 items-center gap-2 rounded-full px-3 text-base text-tertiary hover:text-primary", focusRing)}>
+    <Link href={`/family/assistant?child=${child}`} className={cn("inline-flex min-h-12 items-center gap-2 rounded-full border border-primary bg-primary/90 px-4 text-base text-primary shadow-xs backdrop-blur hover:bg-primary", focusRing)}>
       <span aria-hidden>←</span> Home
     </Link>
   );

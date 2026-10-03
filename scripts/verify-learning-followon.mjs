@@ -168,6 +168,20 @@ async function makeContext(options) {
   });
   return c;
 }
+// World-first (2026-10-03): the progress strip, the logbook pages and the vocabulary cue live in the world's side panel.
+// `openProgress` / `openLogbook` open the panel before the strip/cue assertions; the assertions themselves are unchanged.
+const openProgress = async (pg) => {
+  await pg.getByTestId("hud-progress").waitFor({ timeout: 20000 });
+  if ((await pg.getByTestId("progress-strip").count()) === 0) await pg.getByTestId("hud-progress").click();
+  await pg.getByTestId("progress-strip").waitFor({ timeout: 20000 });
+};
+const openLogbook = async (pg) => {
+  if ((await pg.getByTestId("logbook-panel").count()) > 0) return;
+  if ((await pg.getByTestId("panel-close").count()) > 0) await pg.getByTestId("panel-close").click();
+  await pg.getByTestId("world-logbook").waitFor({ timeout: 20000 });
+  await pg.getByTestId("world-logbook").click();
+  await pg.getByTestId("logbook-panel").waitFor({ timeout: 20000 });
+};
 const desktop = await makeContext({ viewport: { width: 1280, height: 900 }, timezoneId: TZ, locale: "de-CH" });
 await desktop.addCookies([{ name: COOKIE, value: assistant, url: BASE }]);
 const page = await desktop.newPage();
@@ -176,8 +190,8 @@ page.on("request", (r) => {
   const u = new URL(r.url());
   if (u.pathname === "/api/family/learning/mission" && u.searchParams.get("tz")) seenTz.push(u.searchParams.get("tz"));
 });
-await page.goto(`${BASE}/family/learn?child=santiago`, { waitUntil: "networkidle" });
-await page.getByTestId("progress-strip").waitFor({ timeout: 20000 });
+await page.goto(`${BASE}/family/learn?child=santiago`, { waitUntil: "load" });
+await openProgress(page);
 check("cockpit: the browser sends its IANA zone with the read", seenTz.includes(TZ), seenTz);
 const stripText = await page.getByTestId("progress-strip").innerText();
 check(`cockpit: strip shows ${v0.progress.completedThisWeek} completed this week (as the API says for this fixture) / 2 total, the week label and the counting rule`, new RegExp(`Diese Woche fertig: ${v0.progress.completedThisWeek}`).test(stripText) && /Insgesamt fertig: 2/.test(stripText) && /Montag, .* bis Sonntag/.test(stripText) && /fertige Besuche/.test(stripText), stripText.slice(0, 200));
@@ -185,22 +199,29 @@ check("cockpit: next action names Besuch 3 — Die Beobachtungsstation", /Als N�
 check("cockpit: grounded 'Das hast du gemacht' + 'Probier als Nächstes' from the stored review", (await page.getByTestId("progress-recent").getAttribute("data-grounding")) === "review-historical" && (await page.getByTestId("progress-did").count()) === 1 && (await page.getByTestId("progress-try-next").count()) === 1);
 check("cockpit: no delayed-check note, no 'von früher', no 'kommt am' anywhere", (await page.getByTestId("delayed-check-note").count()) === 0 && !/von früher|kommt am/.test(await page.locator("body").innerText()));
 check("cockpit: start button reads 'Besuch 3 starten'", /Besuch 3 starten/.test(await page.getByTestId("cockpit-start").innerText()));
-check("cockpit: vocabulary cue rendered with met words", (await page.getByTestId("vocabulary-cue").count()) === 1 && (await page.locator('[data-testid^="vocab-word-"]').count()) > 0);
+await openLogbook(page);
+check("cockpit: vocabulary cue rendered with met words (logbook panel)", (await page.getByTestId("vocabulary-cue").count()) === 1 && (await page.locator('[data-testid^="vocab-word-"]').count()) > 0);
+check("cockpit: the logbook panel lists the saved pages with the anchor #pages-v1", (await page.locator("#pages-v1").count()) === 1);
+await page.getByTestId("panel-close").click();
+await openProgress(page);
 await page.getByTestId("progress-visit-v1").click();
-await page.waitForTimeout(300);
-check("cockpit: a completed-visit chip opens the underlying page (anchor #pages-v1 exists and is targeted)", (await page.evaluate(() => location.hash)) === "#pages-v1" && (await page.locator("#pages-v1").count()) === 1);
+await page.getByTestId("visit-report").waitFor({ timeout: 10000 });
+await page.waitForURL(/report=v1/, { timeout: 5000 }).catch(() => null);
+check("cockpit: a completed-visit chip opens the underlying visit (its report for v1, reopenable from the URL)", (await page.getByTestId("visit-report").getAttribute("data-report-visit")) === "v1" && /report=v1/.test(page.url()), page.url());
 await page.screenshot({ path: path.join(OUT, "cockpit-desktop.png"), fullPage: true });
+await page.getByTestId("panel-close").click();
 const tablet = await makeContext({ viewport: { width: 820, height: 1180 }, hasTouch: true, timezoneId: TZ, locale: "de-CH" });
 await tablet.addCookies([{ name: COOKIE, value: assistant, url: BASE }]);
 const tpage = await tablet.newPage();
-await tpage.goto(`${BASE}/family/learn?child=santiago`, { waitUntil: "networkidle" });
-await tpage.getByTestId("progress-strip").waitFor({ timeout: 20000 });
+await tpage.goto(`${BASE}/family/learn?child=santiago`, { waitUntil: "load" });
+await openProgress(tpage);
 await tpage.screenshot({ path: path.join(OUT, "cockpit-tablet.png"), fullPage: true });
+await openLogbook(tpage);
 check("cockpit (tablet): strip and cue render", (await tpage.getByTestId("vocabulary-cue").count()) === 1);
 await tablet.close();
 
 // Mission workspace: start screen and header.
-await page.goto(`${BASE}/family/learn/mission?child=santiago`, { waitUntil: "networkidle" });
+await page.goto(`${BASE}/family/learn/mission?child=santiago`, { waitUntil: "load" });
 await page.getByTestId("start-visit").waitFor({ timeout: 20000 });
 check("mission: start button says 'Besuch 3 starten' with data-visit v4 / ordinal 3; no delayed-check text", /Besuch 3 starten/.test(await page.getByTestId("start-visit").innerText()) && (await page.getByTestId("start-visit").getAttribute("data-visit")) === "v4" && (await page.getByTestId("start-visit").getAttribute("data-ordinal")) === "3" && (await page.getByTestId("delayed-check-text").count()) === 0);
 await page.getByTestId("start-visit").click();
@@ -210,7 +231,7 @@ check("mission: after starting, the workspace header shows 'Besuch 3 — Die Beo
 await page.screenshot({ path: path.join(OUT, "mission-visit3-started.png"), fullPage: true });
 await page.getByRole("link", { name: /Stopp/ }).click();
 await page.waitForTimeout(800);
-await page.getByTestId("progress-strip").waitFor({ timeout: 20000 });
+await openProgress(page);
 const runningText = await page.getByTestId("progress-strip").innerText();
 check("cockpit: a running visit is 'Weiter mit Besuch 3 — …' and does NOT count as completed (still 2)", /Weiter mit Besuch 3 — Die Beobachtungsstation/.test(runningText) && /Insgesamt fertig: 2/.test(runningText));
 
@@ -229,8 +250,8 @@ const fin = await op({ op: "reflect", optionId: "right", feedback: { enjoyment: 
 check("API: finishing Visit 3 → total 3, this week +1, next 'all-visits-done', recent grounded in the just-written review", fin.view.progress.completedTotal === 3 && fin.view.progress.next.reason === "all-visits-done" && fin.view.progress.recent?.visit === "v4" && fin.view.progress.recent.grounding.source === "review" && fin.view.progress.recent.label === "Besuch 3 — Die Beobachtungsstation", fin.view.progress.recent?.grounding);
 const replay = await api("PUT", "/api/family/learning/mission", { op: { op: "reflect", optionId: "right" }, expectedRevision: fin.view.revision - 1, idempotencyKey: finishKey, context: { erasureGeneration: fin.view.erasureGeneration, visit: null }, tz: TZ }, assistant, bearer);
 check("API: lost-ACK retry of the finish replays (same key) with the same counts, nothing doubled", replay.status === 200 && replay.json.status === "replayed" && replay.json.view.progress.completedTotal === 3);
-await page.goto(`${BASE}/family/learn?child=santiago`, { waitUntil: "networkidle" });
-await page.getByTestId("progress-strip").waitFor({ timeout: 20000 });
+await page.goto(`${BASE}/family/learn?child=santiago`, { waitUntil: "load" });
+await openProgress(page);
 const doneText = await page.getByTestId("progress-strip").innerText();
 check("cockpit: after the chapter — 3 total, chip 'Besuch 3 — Die Beobachtungsstation', 'Alle Besuche sind geschafft'", /Insgesamt fertig: 3/.test(doneText) && (await page.getByTestId("progress-visit-v4").innerText()).includes("Besuch 3 — Die Beobachtungsstation") && /Alle Besuche sind geschafft/.test(doneText));
 await page.screenshot({ path: path.join(OUT, "cockpit-after-visit3.png"), fullPage: true });
@@ -241,7 +262,7 @@ await page.screenshot({ path: path.join(OUT, "cockpit-after-visit3.png"), fullPa
 const parentCtx = await makeContext({ viewport: { width: 1280, height: 1000 }, locale: "de-CH" });
 await parentCtx.addCookies([{ name: COOKIE, value: owner, url: BASE }]);
 const ppage = await parentCtx.newPage();
-await ppage.goto(`${BASE}/family/learn/parent`, { waitUntil: "networkidle" });
+await ppage.goto(`${BASE}/family/learn/parent`, { waitUntil: "load" });
 await ppage.getByTestId("parent-next-step").waitFor({ timeout: 20000 });
 const nextStep = await ppage.getByTestId("parent-next-step").innerText();
 check("parent: next step says all visits 1–3 are done; no pending delayed check", /Besuche 1–3/.test(nextStep) && !/an seinem Datum|nie vorgezogen/.test(nextStep), nextStep);
@@ -302,8 +323,8 @@ const eAfter = await evidence();
 check("deletion: parent evidence has no state, no completions, no vocabulary observations", eAfter.state === null && eAfter.completions.length === 0 && eAfter.vocabulary.observations.length === 0);
 const vAfter = await view();
 check("deletion: child strip is empty (0 total, next = start v1), no words, new erasure generation", vAfter.progress.completedTotal === 0 && vAfter.progress.recent === null && vAfter.progress.next.visit === "v1" && vAfter.vocabulary.words.length === 0 && vAfter.erasureGeneration === 1);
-await page.goto(`${BASE}/family/learn?child=santiago`, { waitUntil: "networkidle" });
-await page.getByTestId("progress-strip").waitFor({ timeout: 20000 });
+await page.goto(`${BASE}/family/learn?child=santiago`, { waitUntil: "load" });
+await openProgress(page);
 check("cockpit after deletion: 0 / 0, no vocabulary cue, no completed chips", /Insgesamt fertig: 0/.test(await page.getByTestId("progress-strip").innerText()) && (await page.getByTestId("vocabulary-cue").count()) === 0 && (await page.locator('[data-testid^="progress-visit-"]').count()) === 0);
 await page.screenshot({ path: path.join(OUT, "cockpit-after-deletion.png"), fullPage: true });
 

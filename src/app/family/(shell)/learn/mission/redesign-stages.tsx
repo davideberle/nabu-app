@@ -1,48 +1,61 @@
 "use client";
 
-// Visit-4 stages of the approved learning redesign (2026-09-29): station
-// choice, the Swiss-German typing course with its input-alignment check, the
-// station build, the spacing revision of the child's own sentence and the
-// evidence-bound visit summary. Presentation only: every claim shown here
-// comes from the server view; every decision is made by the state machine.
+// Visit-4 stages of the approved learning redesign (2026-09-29) in the
+// world-first presentation (2026-10-03): station choice, the Swiss-German
+// typing course with its input-alignment check, visible hands and keys, the
+// first-use placement demonstration, the station build, the spacing revision
+// of the child's own sentence, the fresh transfer sentence, the pre-report
+// summary and the reflection. Presentation only: every claim shown here comes
+// from the server view; every decision is made by the state machine. The
+// lesson-end feedback after a typing round is rendered by the workspace from
+// the server's `lastLesson` (lesson-end.tsx), not here.
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
-import { BaseScene } from "@/components/family/learning/base-scene";
+import { isComposing, useDeliberateFocus } from "@/components/family/learning/focus";
+import { HandsKeyboard, PlacementDemo, reachOriginOf } from "@/components/family/learning/hands-keyboard";
+import { StoryBeat } from "@/components/family/learning/story-beat";
 import type { ChildView, LearningOp } from "@/lib/family-learning-state";
 import type { LearningMutateOutcome } from "@/lib/family-learning-client";
-import { applySaveOutcome, commitLine, createTypingDraft, markSaving, previewLine, typeInto, type TypingDraft } from "@/lib/family-learning-typing";
+import { applySaveOutcome, commitLine, createTypingDraft, markSaving, typeInto, type TypingDraft } from "@/lib/family-learning-typing";
 import { nextExpectedChar } from "@/lib/family-learning-typing-metrics";
 import { applySubmitOutcome, canSend, markSending, payloadKeyOf, submitDraftFor, type SubmitDraft } from "@/lib/family-learning-submit-draft";
 import { clearDraft, loadDraft, saveDraft, type DraftIdentity, type DraftStorage } from "@/lib/family-learning-draft-store";
 import { chipButton, focusRing, primaryButton, secondaryButton } from "./styles";
 
 const newKey = () => (typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `k-${Date.now()}`);
+type Gate = () => boolean;
+const alwaysOpen: Gate = () => true;
+
+function Instruction({ children, kicker }: { children: React.ReactNode; kicker?: string }) {
+  return (
+    <div>
+      {kicker ? <p className="text-sm font-semibold uppercase tracking-[0.14em] text-tertiary">{kicker}</p> : null}
+      <h2 className="mt-1 text-2xl font-semibold leading-tight text-primary sm:text-3xl">{children}</h2>
+    </div>
+  );
+}
 
 // ---------------------------------------------------------------------------
 // Station choice — a child choice, never an inferred interest
 // ---------------------------------------------------------------------------
 
-export function StationChoice({ view, busy, onChoose }: { view: ChildView; busy: boolean; onChoose: (theme: string) => void }) {
+export function StationChoice({ view, busy, gate = alwaysOpen, onChoose }: { view: ChildView; busy: boolean; gate?: Gate; onChoose: (theme: string) => void }) {
   const station = view.station;
   const intro = view.visit?.intro ?? null;
+  const firstRef = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(firstRef, "station-choice", { gate });
   if (!station) return null;
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-semibold text-primary">Was soll deine Station beobachten?</h2>
-      {intro ? (
-        <div className="rounded-2xl bg-secondary p-4 text-base text-primary" data-testid="mission-intro">
-          <p>{intro.who}</p>
-          <p className="mt-1">{intro.make}</p>
-          <p className="mt-1 text-tertiary">{intro.done}</p>
-        </div>
-      ) : null}
+      {intro ? <StoryBeat speaker="radio" beats={[{ text: intro.make, scene: "station" }]} testId="mission-intro" compact /> : null}
+      <Instruction kicker="Station">Was soll deine Station beobachten?</Instruction>
       <p className="text-base text-tertiary" data-testid="station-reference" data-reference={station.reference.kind}>
         {station.reference.text}
       </p>
-      <div className="grid gap-3 sm:grid-cols-2">
-        {station.themes.map((theme) => (
-          <button key={theme.id} type="button" disabled={busy} onClick={() => onChoose(theme.id)} className={cn(chipButton, "min-h-24 flex-col items-start text-left")} data-testid={`station-theme-${theme.id}`}>
+      <div className="grid gap-3 sm:grid-cols-2" role="group" aria-label="Thema wählen">
+        {station.themes.map((theme, i) => (
+          <button key={theme.id} ref={i === 0 ? firstRef : undefined} type="button" disabled={busy} onClick={() => onChoose(theme.id)} className={cn(chipButton, "min-h-24 flex-col items-start text-left")} data-testid={`station-theme-${theme.id}`}>
             <span className="text-2xl" aria-hidden>
               {theme.emoji}
             </span>
@@ -62,21 +75,22 @@ export function StationChoice({ view, busy, onChoose }: { view: ChildView; busy:
 // Station build — click/keyboard, visibly consequential
 // ---------------------------------------------------------------------------
 
-export function StationBuild({ view, busy, onBuild }: { view: ChildView; busy: boolean; onBuild: (spot: string) => void }) {
+export function StationBuild({ view, busy, gate = alwaysOpen, onBuild }: { view: ChildView; busy: boolean; gate?: Gate; onBuild: (spot: string) => void }) {
   const station = view.station;
+  const firstRef = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(firstRef, "station-build", { gate });
   if (!station) return null;
   const theme = station.themes.find((t) => t.id === station.theme) ?? null;
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-semibold text-primary">Wo soll die Station stehen?</h2>
+      <Instruction kicker="Bauen">Wo soll die Station stehen?</Instruction>
       <p className="text-base text-tertiary">
         {theme ? `${theme.emoji} ${theme.label}. ` : ""}
-        Tippe auf einen Platz oder wähle ihn mit der Tastatur. Nach dem Bauen siehst du die Station oben in deiner Basis
-        {station.lampAvailable ? " — mit der Lampe, die du bestellt hast." : ". Ohne Lampe: das Team hat keine bekommen — sie bleibt dunkel."}
+        Nach dem Bauen siehst du die Station in deiner Welt{station.lampAvailable ? " — mit der Lampe, die du bestellt hast." : ". Ohne Lampe: das Team hat keine bekommen — sie bleibt dunkel."}
       </p>
       <div className="grid gap-3 sm:grid-cols-3" role="group" aria-label="Platz für die Station">
-        {station.spots.map((spot) => (
-          <button key={spot.id} type="button" disabled={busy} onClick={() => onBuild(spot.id)} className={cn(chipButton, "min-h-20 flex-col")} data-testid={`station-spot-${spot.id}`}>
+        {station.spots.map((spot, i) => (
+          <button key={spot.id} ref={i === 0 ? firstRef : undefined} type="button" disabled={busy} onClick={() => onBuild(spot.id)} className={cn(chipButton, "min-h-20 flex-col")} data-testid={`station-spot-${spot.id}`}>
             <span className="text-3xl" aria-hidden>
               {spot.emoji}
             </span>
@@ -89,7 +103,7 @@ export function StationBuild({ view, busy, onBuild }: { view: ChildView; busy: b
 }
 
 // ---------------------------------------------------------------------------
-// Typing course — setup check first, then short bursts with next-key guidance
+// Typing course — setup check first, hands and keys, then short rounds
 // ---------------------------------------------------------------------------
 
 const UNAVAILABLE_TEXT: Record<string, string> = {
@@ -97,22 +111,22 @@ const UNAVAILABLE_TEXT: Record<string, string> = {
   "no-course-for-layout": "Für diese Tastatur gibt es noch keinen Kurs. Es wird nichts anderes ersatzweise geübt.",
 };
 
-function AlignmentCheck({ view, busy, onCheck }: { view: ChildView; busy: boolean; onCheck: (observed: string[]) => void }) {
+function AlignmentCheck({ view, busy, gate, onCheck }: { view: ChildView; busy: boolean; gate: Gate; onCheck: (observed: string[]) => void }) {
   const course = view.typingCourse!;
   const [observed, setObserved] = useState<string[]>(() => course.alignment.keys.map(() => ""));
   const result = course.alignment.result;
   const complete = observed.every((c) => Array.from(c).length === 1);
+  const refs = useRef<(HTMLInputElement | null)[]>([]);
+  const submitRef = useRef<HTMLButtonElement | null>(null);
+  const firstRef = useRef<HTMLInputElement | null>(null);
+  useDeliberateFocus(firstRef, "alignment", { gate });
   return (
-    <div className="rounded-2xl bg-secondary p-4" data-testid="alignment-check">
-      <p className="text-base font-semibold text-primary">Tastatur-Check</p>
-      <p className="mt-1 text-sm text-tertiary">
-        Deine Eltern haben bestätigt: {course.layoutLabel ?? "?"}. Jetzt prüfen wir, ob der Computer dieselben Zeichen schreibt. Drück einfach die Taste — es gibt keine Punkte.
-      </p>
+    <div className="flex flex-col gap-3" data-testid="alignment-check">
+      <Instruction kicker="Tastatur-Check">Drück die drei Tasten — es gibt keine Punkte.</Instruction>
+      <p className="text-base text-tertiary">Deine Eltern haben bestätigt: {course.layoutLabel ?? "?"}. Jetzt prüfen wir, ob der Computer dieselben Zeichen schreibt.</p>
       {result && result.result === "mismatch" ? (
-        <div className="mt-3 rounded-xl border border-amber-400 bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" role="status" data-testid="alignment-mismatch">
-          <p>
-            Der Computer schreibt andere Zeichen als die bestätigte Tastatur{result.matchesLayout ? ` (es sieht aus wie „${course.layoutLabels[result.matchesLayout] ?? result.matchesLayout}“)` : ""}. Das Finger-Training bleibt gesperrt, bis die Eingabequelle passt.
-          </p>
+        <div className="rounded-2xl border border-amber-400 bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" role="status" data-testid="alignment-mismatch">
+          <p>Der Computer schreibt andere Zeichen als die bestätigte Tastatur{result.matchesLayout ? ` (es sieht aus wie „${course.layoutLabels[result.matchesLayout] ?? result.matchesLayout}“)` : ""}. Das Finger-Training bleibt gesperrt, bis die Eingabequelle passt.</p>
           <p className="mt-1">Für die Eltern: Systemeinstellungen → Tastatur → Eingabequellen → „Deutsch (Schweiz)“ wählen, dann den Check wiederholen.</p>
           <ul className="mt-1 list-disc pl-5">
             {result.observed.map((o) => (
@@ -123,25 +137,36 @@ function AlignmentCheck({ view, busy, onCheck }: { view: ChildView; busy: boolea
           </ul>
         </div>
       ) : null}
-      <ol className="mt-3 space-y-2">
+      <ol className="space-y-2">
         {course.alignment.keys.map((key, i) => (
-          <li key={key.id} className="flex flex-wrap items-center gap-2">
-            <span className="text-base text-primary">{key.prompt}</span>
+          <li key={key.id} className="flex flex-wrap items-center gap-3">
             <input
+              ref={(el) => {
+                refs.current[i] = el;
+                if (i === 0) firstRef.current = el;
+              }}
               value={observed[i]}
-              onChange={(e) => setObserved((o) => o.map((v, j) => (j === i ? Array.from(e.target.value).slice(-1).join("") : v)))}
+              onChange={(e) => {
+                const ch = Array.from(e.target.value).slice(-1).join("");
+                setObserved((o) => o.map((v, j) => (j === i ? ch : v)));
+                // One key typed → the next field, then the check button: the whole check runs without a mouse.
+                if (ch) window.requestAnimationFrame(() => (i + 1 < course.alignment.keys.length ? refs.current[i + 1]?.focus() : submitRef.current?.focus()));
+              }}
+              onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)}
               maxLength={2}
               autoCapitalize="off"
               autoCorrect="off"
               spellCheck={false}
-              className={cn("min-h-12 w-16 rounded-xl border border-primary bg-primary text-center font-mono text-2xl text-primary", focusRing)}
+              autoComplete="off"
+              className={cn("min-h-14 w-16 rounded-xl border-2 border-primary bg-primary text-center font-mono text-3xl text-primary", focusRing)}
               aria-label={key.prompt}
               data-testid={`alignment-key-${key.id}`}
             />
+            <span className="text-lg text-primary">{key.prompt}</span>
           </li>
         ))}
       </ol>
-      <button type="button" disabled={busy || !complete} onClick={() => onCheck(observed)} className={cn(primaryButton, "mt-3")} data-testid="alignment-submit">
+      <button ref={submitRef} type="button" disabled={busy || !complete} onClick={() => onCheck(observed)} className={cn(primaryButton, "self-start")} data-testid="alignment-submit">
         {result ? "Nochmal prüfen" : "Prüfen"}
       </button>
     </div>
@@ -149,16 +174,14 @@ function AlignmentCheck({ view, busy, onCheck }: { view: ChildView; busy: boolea
 }
 
 const COMFORT_LABEL: Record<string, string> = { easy: "Leicht", ok: "Ging gut", hard: "Anstrengend" };
+const DEMO_SEEN_KEY = "family-learning-placement-demo-seen";
 
-export function TypingCourse({
-  view,
-  busy,
-  onCheck,
-  onBurst,
-  onContinue,
-}: {
+export function TypingCourse({ view, busy, gate = alwaysOpen, reminder = null, onCheck, onBurst, onContinue }: {
   view: ChildView;
   busy: boolean;
+  gate?: Gate;
+  /** The one next-lesson cue (UX-5c), shown before and during a round — not while the finished round is being rated or saved. */
+  reminder?: React.ReactNode;
   onCheck: (observed: string[]) => void;
   onBurst: (op: LearningOp & { op: "typing-burst" }, idempotencyKey: string) => Promise<LearningMutateOutcome | null>;
   onContinue: () => void;
@@ -169,17 +192,21 @@ export function TypingCourse({
   const draftRef = useRef(draft);
   draftRef.current = draft;
   const [comfort, setComfort] = useState<"easy" | "ok" | "hard" | null>(null);
-  // The durable server decision is restored on mount, reload, after a lost
-  // acknowledgement (replayed outcome) and across the lesson change of an
-  // "advance" (R2-2): the child sees the decision and its next-step choice
-  // instead of a silently restarted full burst. A previous lesson's advance
-  // stays visible until the child deliberately starts the next lesson.
   const savedDecision = durableDecision(course, lesson);
   const [lastDecision, setLastDecision] = useState<{ action: string; reason: string } | null>(savedDecision ? { action: savedDecision.action, reason: savedDecision.reason } : null);
   const [choosing, setChoosing] = useState<boolean>(savedDecision !== null);
+  // First use: the short placement demonstration before the first ever round; replayable any time.
+  const firstUse = course.burstsThisVisit.length === 0 && course.completed.length === 0 && (!course.decision || course.decision.action === "start");
+  const [demoOpen, setDemoOpen] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    try {
+      return firstUse && window.sessionStorage.getItem(DEMO_SEEN_KEY) !== "1";
+    } catch {
+      return firstUse;
+    }
+  });
   const lessonId = lesson?.id ?? null;
   useEffect(() => {
-    // A new lesson (after "advance") gets a fresh draft; the decision card stays until the child chooses.
     setDraft(lesson ? createTypingDraft(lesson.id, lesson.lines) : null);
     setComfort(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -190,6 +217,14 @@ export function TypingCourse({
     setComfort(null);
     setLastDecision(null);
     setChoosing(false);
+  };
+  const closeDemo = () => {
+    setDemoOpen(false);
+    try {
+      window.sessionStorage.setItem(DEMO_SEEN_KEY, "1");
+    } catch {
+      /* ignore */
+    }
   };
 
   const save = useCallback(async () => {
@@ -206,8 +241,6 @@ export function TypingCourse({
     }
     if (outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) {
       setDraft(applySaveOutcome(latest, { kind: outcome.status }));
-      // The decision comes from the server VIEW (durable state), so a replayed
-      // retry after a lost acknowledgement restores it exactly like an applied one.
       const d = outcome.view.typingCourse?.decision ?? null;
       if (d && d.action !== "start") {
         setLastDecision({ action: d.action, reason: d.reason });
@@ -226,17 +259,25 @@ export function TypingCourse({
     setDraft(applySaveOutcome(latest, { kind: "network" }));
   }, [lesson, onBurst, comfort]);
 
-  // A completed draft with a comfort rating saves exactly once; retries are explicit.
   useEffect(() => {
     if (draft?.phase === "completed" && draft.failure === null && comfort) void save();
   }, [draft?.phase, draft?.failure, comfort, save]);
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const comfortRef = useRef<HTMLButtonElement | null>(null);
+  const retryRef = useRef<HTMLButtonElement | null>(null);
+  const continueRef = useRef<HTMLButtonElement | null>(null);
+  const typing = !demoOpen && !choosing && draft?.phase === "typing";
+  useDeliberateFocus(inputRef, typing && draft ? `course:${lesson?.id}:${draft.lineIndex}:${draft.typedLines.length}` : null, { gate, enabled: typing });
+  useDeliberateFocus(comfortRef, draft?.phase === "completed" && !comfort && draft.failure === null ? "comfort" : null, { gate, enabled: draft?.phase === "completed" && !comfort && draft.failure === null });
+  useDeliberateFocus(retryRef, draft?.failure && draft.failure !== "refused" ? `failure:${draft.failure}` : null, { gate, enabled: !!draft?.failure && draft.failure !== "refused" });
+  useDeliberateFocus(continueRef, course.unavailable && course.unavailable !== "alignment-unchecked" && course.unavailable !== "alignment-mismatch" ? "unavailable" : null, { gate, enabled: !!course.unavailable && course.unavailable !== "alignment-unchecked" && course.unavailable !== "alignment-mismatch" });
+
   if (course.unavailable === "alignment-unchecked" || course.unavailable === "alignment-mismatch") {
     return (
       <div className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-primary">Tippen</h2>
-        <AlignmentCheck view={view} busy={busy} onCheck={onCheck} />
-        <button type="button" onClick={onContinue} disabled={busy} className={cn(secondaryButton, "self-start")}>
+        <AlignmentCheck view={view} busy={busy} gate={gate} onCheck={onCheck} />
+        <button type="button" onClick={onContinue} disabled={busy} className={cn("inline-flex min-h-12 items-center self-start rounded-full px-4 text-base text-tertiary hover:text-primary", focusRing)}>
           Ohne Tipp-Training weiter
         </button>
       </div>
@@ -245,13 +286,24 @@ export function TypingCourse({
   if (course.unavailable || !lesson) {
     return (
       <div className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-primary">Tippen</h2>
+        <Instruction kicker="Tippen">Heute ohne Finger-Training.</Instruction>
         <p className="rounded-2xl bg-secondary px-4 py-3 text-base text-primary" role="status" data-testid="typing-unavailable">
           {UNAVAILABLE_TEXT[course.unavailable ?? ""] ?? "Das Tipp-Training ist gerade nicht verfügbar."}
         </p>
-        <button type="button" onClick={onContinue} disabled={busy} className={cn(primaryButton, "self-start")}>
+        <button ref={continueRef} type="button" onClick={onContinue} disabled={busy} className={cn(primaryButton, "self-start")}>
           Weiter
         </button>
+      </div>
+    );
+  }
+
+  const home = course.homePosition ?? { left: ["a", "s", "d", "f"], right: ["j", "k", "l", "ö"], anchors: ["f", "j"], thumb: " " };
+  const lessonKeys = Array.from(new Set(lesson.lines.join("").split("")));
+  if (demoOpen) {
+    return (
+      <div className="flex flex-col gap-4" data-testid="typing-course">
+        <Instruction kicker={`Tippen · Lektion ${lesson.index + 1} von ${lesson.count}`}>So liegen die Hände.</Instruction>
+        <PlacementDemo fingers={course.fingers} home={home} lessonKeys={lessonKeys} onDone={closeDemo} autoFocus={gate()} />
       </div>
     );
   }
@@ -259,64 +311,57 @@ export function TypingCourse({
   const currentLine = draft && draft.phase === "typing" ? draft.lines[draft.lineIndex] ?? null : null;
   const nextChar = currentLine ? nextExpectedChar(currentLine, draft!.current) : null;
   const nextFinger = nextChar ? course.fingers[nextChar] ?? null : null;
-  const home = course.homePosition;
-  const keyChip = (key: string, mark: boolean) => (
-    <span key={key} className={cn("flex min-w-11 flex-col items-center rounded-lg border border-primary bg-primary px-1.5 py-1", mark && "ring-2 ring-stone-600 dark:ring-stone-200")} data-key={key} data-next={mark ? "true" : undefined}>
-      <span className="text-lg font-semibold text-primary">{key === " " ? "␣" : key}</span>
-      <span className="text-[10px] text-tertiary">{(course.fingers[key] ?? "").replace("Finger ", "").replace("kleiner", "klein")}</span>
-    </span>
-  );
   const commit = () => {
     const current = draftRef.current;
     if (!current) return;
     const next = commitLine(current, { busy: busy || current.phase !== "typing", nowMs: Date.now(), newKey });
     if (next !== current) setDraft(next);
   };
+  const wrongNow = currentLine && draft ? (() => {
+    const typed = Array.from(draft.current);
+    const expected = Array.from(currentLine);
+    const i = typed.length - 1;
+    return i >= 0 && i < expected.length && typed[i] !== expected[i] ? typed[i] : null;
+  })() : null;
 
   return (
-    <div className="flex flex-col gap-4">
-      <div>
-        <h2 className="text-2xl font-semibold text-primary">Tippen: {lesson.title}</h2>
-        <p className="mt-1 text-sm text-tertiary">
-          Lektion {lesson.index + 1} von {lesson.count} · neu: {lesson.keys.map((k) => (k === " " ? "Leertaste" : k)).join(", ")}
-          {lesson.practiced.length ? ` · schon geübt: ${lesson.practiced.map((k) => (k === " " ? "␣" : k)).join(" ")}` : ""}
-        </p>
-      </div>
-      {home ? (
-        <div className="rounded-2xl bg-secondary p-3" aria-label="Grundstellung">
-          <p className="text-sm text-tertiary">Grundstellung: linke Finger auf a s d f, rechte auf j k l ö. Zeigefinger fühlen f und j. Daumen liegt auf der Leertaste. Langsam und genau — Tempo zählt nicht.</p>
-          <div className="mt-2 flex flex-wrap items-end gap-1">
-            {home.left.map((k) => keyChip(k, nextChar === k))}
-            <span className="mx-1 text-tertiary" aria-hidden>
-              ·
-            </span>
-            {home.right.map((k) => keyChip(k, nextChar === k))}
-            {["g", "h"].filter((k) => lesson.keys.includes(k) || lesson.practiced.includes(k)).map((k) => keyChip(k, nextChar === k))}
-            {keyChip(" ", nextChar === " ")}
-          </div>
+    <div className="flex flex-col gap-4" data-testid="typing-course" data-lesson={lesson.id}>
+      {reminder && (typing || (choosing && lastDecision)) ? reminder : null}
+      {/* The replay button keeps its place at the right; a longer instruction wraps inside its own column (no extra row, the practice screen keeps fitting 900 px). */}
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+        <Instruction kicker={`Tippen · Lektion ${lesson.index + 1} von ${lesson.count} · ${lesson.title}`}>
+          {choosing && lastDecision ? "Runde gespeichert." : typing ? (nextChar === null ? "Zeile fertig — Enter." : nextChar === " " ? "Jetzt: Leertaste mit dem Daumen." : reachOriginOf(nextChar) ? `„${nextChar}“ mit dem ${nextFinger ?? "Finger"} — zurück auf „${reachOriginOf(nextChar)}“.` : `Jetzt: „${nextChar}“ mit dem ${nextFinger ?? "Finger"}.`) : draft?.phase === "completed" && !comfort ? "Wie war das für deine Finger?" : "Tippen"}
+        </Instruction>
         </div>
+        <button type="button" onClick={() => setDemoOpen(true)} className={cn("inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full border border-primary px-4 text-base text-primary hover:bg-secondary", focusRing)} data-testid="demo-replay-open">
+          ✋ Hände zeigen
+        </button>
+      </div>
+
+      {choosing && lastDecision && (!draft || draft.phase === "typing" || draft.phase === "saved") ? (
+        <DecisionChoice action={lastDecision.action} lesson={lesson} busy={busy} gate={gate} onFull={() => startBurst(lesson.lines)} onShorter={() => startBurst(lesson.lines.slice(0, 1))} onContinue={onContinue} />
       ) : null}
 
-      {choosing && lastDecision && (!draft || draft.phase === "typing") ? (
-        <DecisionChoice action={lastDecision.action} lesson={lesson} busy={busy} onFull={() => startBurst(lesson.lines)} onShorter={() => startBurst(lesson.lines.slice(0, 1))} onContinue={onContinue} />
-      ) : null}
-      {!choosing && draft && draft.phase === "typing" && currentLine ? (
-        <div className="rounded-2xl border border-primary p-4">
-          <p className="text-sm text-tertiary" aria-live="polite" data-testid="next-key">
-            {nextChar === null ? "Zeile fertig — Enter oder „Zeile fertig“." : nextChar === " " ? "Jetzt: Leertaste mit dem Daumen." : `Jetzt: „${nextChar}“ mit dem ${nextFinger ?? "Finger"}.`}
-          </p>
-          <p className="mt-2 font-mono text-2xl tracking-widest text-primary" aria-label="Zeile zum Abtippen">
-            {Array.from(currentLine).map((ch, i) => (
-              <span key={i} className={cn(i < draft.current.length && (Array.from(draft.current)[i] === ch ? "text-green-700 dark:text-green-300" : "text-red-700 dark:text-red-300"), i === Array.from(draft.current).length && "underline")}>
-                {ch === " " ? "␣" : ch}
-              </span>
-            ))}
+      {typing && draft && currentLine ? (
+        <>
+          <p className="font-mono text-3xl tracking-widest text-primary sm:text-4xl" aria-label="Zeile zum Abtippen" data-testid="course-line">
+            {Array.from(currentLine).map((ch, i) => {
+              const typedChars = Array.from(draft.current);
+              const state = i < typedChars.length ? (typedChars[i] === ch ? "ok" : "bad") : i === typedChars.length ? "next" : "todo";
+              return (
+                <span key={i} className={cn(state === "ok" && "text-green-700 dark:text-green-300", state === "bad" && "text-red-700 underline decoration-wavy dark:text-red-300", state === "next" && "underline decoration-4 underline-offset-4")}>
+                  {ch === " " ? "␣" : ch}
+                </span>
+              );
+            })}
           </p>
           <input
+            ref={inputRef}
             value={draft.current}
             onChange={(e) => setDraft((d) => (d ? typeInto(d, e.target.value, Date.now()) : d))}
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
+              if (e.key === "Enter" && !isComposing(e)) {
                 e.preventDefault();
                 commit();
               }
@@ -324,82 +369,64 @@ export function TypingCourse({
             autoCapitalize="off"
             autoCorrect="off"
             spellCheck={false}
-            className={cn("mt-2 min-h-14 w-full rounded-2xl border border-primary bg-primary px-4 font-mono text-2xl text-primary", focusRing)}
+            autoComplete="off"
+            className={cn("min-h-16 w-full rounded-2xl border-2 border-primary bg-primary px-4 font-mono text-3xl text-primary", focusRing)}
             aria-label="Hier tippen"
             data-testid="course-input"
           />
-          <div className="mt-3 flex flex-wrap gap-2">
-            <button type="button" disabled={busy || draft.current.length === 0} onClick={commit} className={primaryButton}>
+          <div className="mx-auto w-full max-w-[680px] rounded-3xl border border-primary bg-white p-1 dark:bg-stone-900" data-testid="practice-cue">
+            <HandsKeyboard fingers={course.fingers} home={home} nextKey={nextChar} wrongKey={wrongNow} introduced={lessonKeys} compact />
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <button type="button" disabled={busy || draft.current.length === 0} onClick={commit} className={primaryButton} data-testid="course-commit">
               Zeile fertig ({draft.lineIndex + 1}/{draft.lines.length})
             </button>
-            <button type="button" disabled={busy} onClick={onContinue} className={secondaryButton}>
+            <button type="button" disabled={busy} onClick={onContinue} className={cn("inline-flex min-h-12 items-center rounded-full px-4 text-base text-tertiary hover:text-primary", focusRing)} data-testid="course-enough">
               Für heute genug
             </button>
           </div>
-        </div>
+        </>
       ) : null}
 
-      {draft && draft.phase !== "typing" ? (
-        <div className="rounded-2xl border border-primary p-4" data-testid="burst-result">
-          <ul className="space-y-1 font-mono text-sm text-primary">
-            {draft.lines.map((line, i) => {
-              const m = previewLine(line, draft.typedLines[i] ?? "");
-              return (
-                <li key={`${line}-${i}`}>
-                  {line} — {m.correct}/{Array.from(line).length} richtig{m.substituted ? `, ${m.substituted} vertauscht` : ""}{m.extra ? `, ${m.extra} zu viel` : ""}{m.omitted ? `, ${m.omitted} fehlen` : ""}
-                </li>
-              );
-            })}
-          </ul>
+      {draft && draft.phase !== "typing" && !(choosing && draft.phase === "saved") ? (
+        <div className="rounded-3xl border border-primary p-4" data-testid="burst-result">
           {!comfort && draft.phase === "completed" && draft.failure === null ? (
-            <div className="mt-3" role="group" aria-label="Wie war das?">
-              <p className="text-base text-primary">Wie war diese Runde für deine Finger?</p>
+            <div role="group" aria-label="Wie war das?">
+              <p className="text-base text-primary">Deine Runde ist fertig. Wie war sie für deine Finger?</p>
               <div className="mt-2 flex flex-wrap gap-2">
                 {(["easy", "ok", "hard"] as const).map((c) => (
-                  <button key={c} type="button" disabled={busy} onClick={() => setComfort(c)} className={chipButton} data-testid={`comfort-${c}`}>
+                  <button key={c} ref={c === "ok" ? comfortRef : undefined} type="button" disabled={busy} onClick={() => setComfort(c)} className={chipButton} data-testid={`comfort-${c}`}>
                     {COMFORT_LABEL[c]}
                   </button>
                 ))}
               </div>
             </div>
           ) : null}
-          {draft.phase === "saving" ? <p className="mt-2 text-sm text-tertiary" role="status">… wird gespeichert</p> : null}
+          {draft.phase === "saving" ? <p className="text-sm text-tertiary" role="status">… wird gespeichert</p> : null}
           {draft.failure ? (
             <div className="mt-2 flex flex-wrap items-center gap-2" role="status">
               <span className="text-sm text-primary">{draft.failure === "refused" ? "Das konnte so nicht gespeichert werden." : "Speichern hat nicht geklappt. Deine Runde ist noch da."}</span>
               {draft.failure !== "refused" ? (
-                <button type="button" disabled={busy} onClick={() => void save()} className={secondaryButton}>
+                <button ref={retryRef} type="button" disabled={busy} onClick={() => void save()} className={secondaryButton} data-testid="burst-retry-save">
                   Nochmal speichern
                 </button>
               ) : null}
             </div>
           ) : null}
-          {draft.phase === "saved" && lastDecision ? (
-            <DecisionChoice action={lastDecision.action} lesson={lesson} busy={busy} onFull={() => startBurst(lesson.lines)} onShorter={() => startBurst(lesson.lines.slice(0, 1))} onContinue={onContinue} />
-          ) : null}
         </div>
       ) : null}
 
       {course.burstsThisVisit.length ? (
-        <ul className="text-sm text-tertiary" data-testid="bursts-this-visit">
-          {course.burstsThisVisit.map((b, i) => (
-            <li key={i}>
-              Runde {i + 1} ({b.lessonId.replace("TYPE-CH-COURSE-", "L")}{b.lineCount < (lesson.id === b.lessonId ? lesson.lines.length : b.lineCount) ? ", kurz" : ""}): {b.correctChars} von {b.denominator} richtig{b.substitutedChars ? `, ${b.substitutedChars} vertauscht` : ""}{b.extraChars ? `, ${b.extraChars} zu viel` : ""}{b.omittedChars ? `, ${b.omittedChars} fehlen` : ""} · {COMFORT_LABEL[b.comfort]}
-            </li>
-          ))}
-        </ul>
-      ) : null}
-      <p className="text-xs text-tertiary">Gezählt wird nur der fertige Text jeder Zeile. Welche Finger du benutzt, sieht nur ein Mensch beim Zuschauen.</p>
+        <p className="text-sm text-tertiary" data-testid="bursts-this-visit">
+          Runden heute: {course.burstsThisVisit.length} · Gezählt wird nur der fertige Text jeder Zeile — welche Finger du benutzt, sieht nur ein Mensch beim Zuschauen.
+        </p>
+      ) : (
+        <p className="text-sm text-tertiary">Gezählt wird nur der fertige Text jeder Zeile — welche Finger du benutzt, sieht nur ein Mensch beim Zuschauen.</p>
+      )}
     </div>
   );
 }
 
-/**
- * The durable decision that applies to the lesson on screen: the decision made
- * on this lesson, or an "advance" made on the previous lesson as long as the
- * child has not yet started a burst on the new one (so the lesson change never
- * hides the decision).
- */
 function durableDecision(course: NonNullable<ChildView["typingCourse"]>, lesson: NonNullable<ChildView["typingCourse"]>["lesson"]) {
   const d = course.decision;
   if (!d || !lesson || d.action === "start") return null;
@@ -409,7 +436,7 @@ function durableDecision(course: NonNullable<ChildView["typingCourse"]>, lesson:
 }
 
 /** The server's progression decision with the matching next-step choice (never a silent restart). */
-function DecisionChoice({ action, lesson, busy, onFull, onShorter, onContinue }: { action: string; lesson: { title?: string; lines: string[] }; busy: boolean; onFull: () => void; onShorter: () => void; onContinue: () => void }) {
+function DecisionChoice({ action, lesson, busy, gate, onFull, onShorter, onContinue }: { action: string; lesson: { title?: string; lines: string[] }; busy: boolean; gate: Gate; onFull: () => void; onShorter: () => void; onContinue: () => void }) {
   const text =
     action === "advance"
       ? `Zwei gute Runden — die nächste Lektion${lesson.title ? ` (${lesson.title})` : ""} ist frei. Du entscheidest, ob du sie jetzt anfängst.`
@@ -418,23 +445,27 @@ function DecisionChoice({ action, lesson, busy, onFull, onShorter, onContinue }:
         : action === "smaller"
           ? "Das war anstrengend. Jetzt eine kürzere Runde mit denselben Tasten — oder für heute genug."
           : "Noch eine Runde mit denselben Tasten, dann sehen wir weiter.";
+  const primaryRef = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(primaryRef, `decision:${action}`, { gate });
+  const focusOnFull = action === "repeat" || action === "advance";
+  const focusOnShorter = action === "smaller";
   return (
-    <div className="rounded-2xl border border-primary p-4" data-testid="decision-card" data-decision={action}>
+    <div className="rounded-3xl border border-primary p-4" data-testid="decision-card" data-decision={action}>
       <p className="rounded-xl bg-secondary p-3 text-base text-primary" role="status" data-testid="decision">
         {text}
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         {action === "smaller" && lesson.lines.length > 1 ? (
-          <button type="button" disabled={busy} onClick={onShorter} className={secondaryButton} data-testid="shorter-burst">
+          <button ref={focusOnShorter ? primaryRef : undefined} type="button" disabled={busy} onClick={onShorter} className={primaryButton} data-testid="shorter-burst">
             Kürzere Runde (nur Zeile 1)
           </button>
         ) : null}
         {action === "repeat" || action === "smaller" || action === "advance" ? (
-          <button type="button" disabled={busy} onClick={onFull} className={secondaryButton} data-testid="another-burst">
+          <button ref={focusOnFull ? primaryRef : undefined} type="button" disabled={busy} onClick={onFull} className={focusOnFull ? primaryButton : secondaryButton} data-testid="another-burst">
             {action === "smaller" ? "Ganze Runde" : action === "advance" ? "Nächste Lektion starten" : "Noch eine Runde"}
           </button>
         ) : null}
-        <button type="button" disabled={busy} onClick={onContinue} className={primaryButton} data-testid="course-continue">
+        <button ref={action === "stop" ? primaryRef : undefined} type="button" disabled={busy} onClick={onContinue} className={action === "stop" ? primaryButton : secondaryButton} data-testid="course-continue">
           {action === "stop" || action === "advance" ? "Weiter" : "Für heute genug"}
         </button>
       </div>
@@ -446,11 +477,15 @@ function DecisionChoice({ action, lesson, busy, onFull, onShorter, onContinue }:
 // Log revision — the child's original stays; spacing only
 // ---------------------------------------------------------------------------
 
-export function LogRevise({ view, busy, onRevise, onSkip }: { view: ChildView; busy: boolean; onRevise: (text: string) => void; onSkip: () => void }) {
+export function LogRevise({ view, busy, gate = alwaysOpen, onRevise, onSkip }: { view: ChildView; busy: boolean; gate?: Gate; onRevise: (text: string) => void; onSkip: () => void }) {
   const revise = view.logRevise;
   const [text, setText] = useState(revise?.original ?? "");
+  const ref = useRef<HTMLTextAreaElement | null>(null);
+  const continueRef = useRef<HTMLButtonElement | null>(null);
+  const nothing = !revise || revise.flags === 0;
+  useDeliberateFocus(ref, !nothing ? "revise" : null, { gate, enabled: !nothing });
+  useDeliberateFocus(continueRef, nothing ? "revise-none" : null, { gate, enabled: nothing });
   if (!revise) return null;
-  const nothing = revise.flags === 0;
   return (
     <form
       onSubmit={(e) => {
@@ -459,7 +494,7 @@ export function LogRevise({ view, busy, onRevise, onSkip }: { view: ChildView; b
       }}
       className="flex flex-col gap-4"
     >
-      <h2 className="text-2xl font-semibold text-primary">Schau deinen Satz noch einmal an</h2>
+      <Instruction kicker="Schreiben">{nothing ? "Dein Satz passt." : "Schau deinen Satz noch einmal an."}</Instruction>
       {nothing ? (
         <p className="rounded-2xl bg-secondary px-4 py-3 text-base text-primary" role="status" data-testid="revise-none">
           An den Stellen, die wir prüfen (Wort neben Zahl, nach einem Punkt oder Komma und ein paar bekannte Wortpaare), fehlt kein Leerzeichen. Andere Stellen haben wir nicht geprüft — dein Satz bleibt so, wie du ihn geschrieben hast.
@@ -473,12 +508,12 @@ export function LogRevise({ view, busy, onRevise, onSkip }: { view: ChildView; b
           <p className="mt-2 text-sm text-tertiary">Rechtschreibung schauen wir ein andermal an — heute nur die Leerzeichen. Dein erster Satz bleibt gespeichert.</p>
         </div>
       )}
-      <label className="text-base font-medium text-primary" htmlFor="revise-text">
+      <label className="sr-only" htmlFor="revise-text">
         Dein Satz
       </label>
-      <textarea id="revise-text" value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border border-primary bg-primary px-4 py-3 text-lg text-primary", focusRing)} data-testid="revise-input" />
+      <textarea ref={ref} id="revise-text" value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="revise-input" />
       <div className="flex flex-wrap gap-2">
-        <button type="submit" disabled={busy || !text.trim()} className={primaryButton} data-testid="revise-save">
+        <button ref={nothing ? continueRef : undefined} type="submit" disabled={busy || !text.trim()} className={primaryButton} data-testid="revise-save">
           {nothing ? "Weiter" : "Überarbeitung speichern"}
         </button>
         {!nothing ? (
@@ -495,13 +530,10 @@ export function LogRevise({ view, busy, onRevise, onSkip }: { view: ChildView; b
 // Fresh transfer sentence — a NEW sentence, never the shown correction (R2-3)
 // ---------------------------------------------------------------------------
 
-/** The form passes the identity it was mounted for (R5-1): the request is fenced on it server-side. */
 export type SubmitHandler = (payload: Record<string, unknown>, idempotencyKey: string, identity: DraftIdentity | null) => Promise<LearningMutateOutcome | null>;
 
-/** R5-3: an answered auth loss — the draft belongs to the ended sign-in and must not be kept or re-saved. */
 const authLost = (outcome: LearningMutateOutcome | null): boolean => !!outcome && !outcome.ok && "failure" in outcome && (outcome.failure === "unauthorized" || outcome.failure === "no-session");
 
-/** Outcome mapping shared by the transfer and reflection drafts (R3-4). */
 function outcomeToDraft(outcome: LearningMutateOutcome | null): Parameters<typeof applySubmitOutcome>[1] {
   if (!outcome) return { kind: "network" };
   if (outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) return { kind: outcome.status };
@@ -514,26 +546,22 @@ const REFUSAL_TEXT: Record<string, string> = {
   "copied-text": "Das ist der Satz von vorhin oder die gezeigte Korrektur. Schreib einen neuen Satz — oder wähle „Heute nicht“.",
 };
 
-/** The recoverable-draft context the workspace hands to the single-shot forms (null = no recovery available). */
 export type DraftContext = { storage: DraftStorage | null; identity: DraftIdentity | null };
 
-/** A completed submission normalises the sentence exactly as its identity does: one space between words, trimmed. */
 export const normaliseSentence = (text: string): string => text.replace(/\s+/g, " ").trim();
 
-export function LogTransfer({ view, busy, onSubmit, onSkip, drafts }: { view: ChildView; busy: boolean; onSubmit: SubmitHandler; onSkip: () => void; drafts?: DraftContext }) {
+export function LogTransfer({ view, busy, gate = alwaysOpen, onSubmit, onSkip, drafts }: { view: ChildView; busy: boolean; gate?: Gate; onSubmit: SubmitHandler; onSkip: () => void; drafts?: DraftContext }) {
   const transfer = view.transfer;
   const [text, setText] = useState("");
-  // One completed sentence keeps one idempotency key across failed saves, lost acknowledgements and refusals
-  // (R3-4) — and across a reload, because the completed draft is kept in the tab until reconciled (R4-2).
   const draftRef = useRef<SubmitDraft | null>(null);
   const [draft, setDraft] = useState<SubmitDraft | null>(null);
   const [restored, setRestored] = useState(false);
   const storage = drafts?.storage ?? null;
   const identity = drafts?.identity ?? null;
-  // The identity this form was mounted for (the workspace remounts it when that identity changes) and
-  // whether it is still mounted: a late outcome never re-saves a draft after the form is gone (R5-3).
   const mountIdentityRef = useRef<DraftIdentity | null>(identity);
   const mountedRef = useRef(true);
+  const ref = useRef<HTMLTextAreaElement | null>(null);
+  useDeliberateFocus(ref, "transfer", { gate });
   useEffect(() => {
     mountedRef.current = true;
     return () => {
@@ -572,11 +600,10 @@ export function LogTransfer({ view, busy, onSubmit, onSkip, drafts }: { view: Ch
     const sending = markSending(next);
     draftRef.current = sending;
     setDraft(sending);
-    // The completed draft is kept BEFORE the request leaves: a failure or a lost acknowledgement is recoverable after a reload.
     persist(sending, payload);
     const outcome = await onSubmit(payload, sending.idempotencyKey, mountIdentityRef.current);
     const settled = applySubmitOutcome(sending, outcomeToDraft(outcome));
-    if (!mountedRef.current) return; // the form is gone (left, signed out, remounted for a new identity): nothing is kept or re-saved
+    if (!mountedRef.current) return;
     draftRef.current = settled;
     setDraft(settled);
     if (settled.phase === "saved" || settled.failure === "stale" || authLost(outcome)) {
@@ -594,12 +621,12 @@ export function LogTransfer({ view, busy, onSubmit, onSkip, drafts }: { view: Ch
       className="flex flex-col gap-4"
       data-testid="transfer"
     >
-      <h2 className="text-2xl font-semibold text-primary">{transfer.prompt}</h2>
+      <Instruction kicker="Neuer Satz">{transfer.prompt}</Instruction>
       <p className="text-base text-tertiary">{transfer.instruction}</p>
-      <label className="text-base font-medium text-primary" htmlFor="transfer-text">
+      <label className="sr-only" htmlFor="transfer-text">
         Dein neuer Satz
       </label>
-      <textarea id="transfer-text" value={text} onChange={(e) => setText(e.target.value)} rows={2} maxLength={600} className={cn("rounded-2xl border border-primary bg-primary px-4 py-3 text-lg text-primary", focusRing)} data-testid="transfer-input" />
+      <textarea ref={ref} id="transfer-text" value={text} onChange={(e) => setText(e.target.value)} rows={2} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="transfer-input" />
       {failed ? (
         <p className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" role="status" data-testid="transfer-notice" data-failure={failed.failure} data-code={failed.refusalCode ?? ""} data-restored={restored ? "true" : "false"}>
           {failed.failure === "refused"
@@ -630,14 +657,11 @@ export function LogTransfer({ view, busy, onSubmit, onSkip, drafts }: { view: Ch
 }
 
 // ---------------------------------------------------------------------------
-// Reflection with optional feedback — all three dimensions optional, each
-// with an explicit "rather not" (R3-3); one completed answer set keeps one
-// idempotency key across retries (R3-4) and across a reload (R4-2)
+// Reflection with optional feedback — all three dimensions optional
 // ---------------------------------------------------------------------------
 
-export function ReflectFeedback({ view, busy, onSubmit, drafts }: { view: ChildView; busy: boolean; onSubmit: SubmitHandler; drafts?: DraftContext }) {
+export function ReflectFeedback({ view, busy, gate = alwaysOpen, onSubmit, drafts }: { view: ChildView; busy: boolean; gate?: Gate; onSubmit: SubmitHandler; drafts?: DraftContext }) {
   const reflection = view.reflection;
-  // undefined = left open, null = explicitly skipped, string = answered
   const [answers, setAnswers] = useState<Record<string, string | null | undefined>>({});
   const draftRef = useRef<SubmitDraft | null>(null);
   const [draft, setDraft] = useState<SubmitDraft | null>(null);
@@ -646,6 +670,8 @@ export function ReflectFeedback({ view, busy, onSubmit, drafts }: { view: ChildV
   const identity = drafts?.identity ?? null;
   const mountIdentityRef = useRef<DraftIdentity | null>(identity);
   const mountedRef = useRef(true);
+  const firstRef = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(firstRef, "reflect", { gate });
   useEffect(() => {
     mountedRef.current = true;
     return () => {
@@ -710,8 +736,8 @@ export function ReflectFeedback({ view, busy, onSubmit, drafts }: { view: ChildV
       <p className={big ? "text-2xl font-semibold text-primary" : "text-lg font-medium text-primary"}>{prompt}</p>
       <p className="text-sm text-tertiary">Freiwillig — du musst nichts sagen.</p>
       <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label={prompt}>
-        {options.map((option) => (
-          <button key={option.id} type="button" disabled={busy || draft?.phase === "saving"} aria-pressed={answers[id] === option.id} onClick={() => setAnswers((a) => ({ ...a, [id]: option.id }))} className={cn(chipButton, big && "min-h-16", answers[id] === option.id && "ring-2 ring-stone-600 dark:ring-stone-200")} data-testid={`${id}-${option.id}`}>
+        {options.map((option, i) => (
+          <button key={option.id} ref={big && i === 0 ? firstRef : undefined} type="button" disabled={busy || draft?.phase === "saving"} aria-pressed={answers[id] === option.id} onClick={() => setAnswers((a) => ({ ...a, [id]: option.id }))} className={cn(chipButton, big && "min-h-16", answers[id] === option.id && "ring-2 ring-stone-600 dark:ring-stone-200")} data-testid={`${id}-${option.id}`}>
             {option.label}
           </button>
         ))}
@@ -725,6 +751,7 @@ export function ReflectFeedback({ view, busy, onSubmit, drafts }: { view: ChildV
   );
   return (
     <div className="flex flex-col gap-5" data-testid="reflect">
+      <Instruction kicker="Zum Schluss">Wie war es heute?</Instruction>
       {row("difficulty", reflection.prompt, reflection.options, reflection.skipLabel, true)}
       {dims.map((dim) => row(dim.id, dim.prompt, dim.options, dim.skipLabel, false))}
       {failed ? (
@@ -734,7 +761,7 @@ export function ReflectFeedback({ view, busy, onSubmit, drafts }: { view: ChildV
       ) : null}
       <div className="flex flex-wrap gap-2">
         <button type="button" disabled={busy || draft?.phase === "saving" || (!difficultyOptional && !difficulty)} onClick={() => void send()} className={primaryButton} data-testid="reflect-submit">
-          {failed && failed.failure === "network" ? "Nochmal speichern" : "Fertig"}
+          {failed && failed.failure === "network" ? "Nochmal speichern" : "Fertig — zum Bericht"}
         </button>
         {failed && failed.failure === "network" ? (
           <button type="button" onClick={discard} disabled={busy || draft?.phase === "saving"} className={secondaryButton} data-testid="reflect-discard">
@@ -742,39 +769,41 @@ export function ReflectFeedback({ view, busy, onSubmit, drafts }: { view: ChildV
           </button>
         ) : null}
       </div>
-      <p className="text-sm text-tertiary">Danach ist der Besuch fertig. Deine Seite ist gespeichert. Was du nicht sagst, bleibt einfach offen.</p>
+      <p className="text-sm text-tertiary">Danach siehst du deinen Bericht. Deine Seite ist gespeichert. Was du nicht sagst, bleibt einfach offen.</p>
     </div>
   );
 }
 
 // ---------------------------------------------------------------------------
-// Summary — one success, one practice focus, one next step, the artifact
+// Summary stage (content stage of chapter 4) — the pre-report glance; the full
+// reopenable report follows the reflection
 // ---------------------------------------------------------------------------
 
-// The server sentences carry their own label ("Geübt: …", "Nächstes Mal: …"); the card already shows it.
 const unlabel = (text: string) => text.replace(/^(Geschafft|Geübt|Nächstes Mal): /, "");
 
-export function Summary({ view, busy, onNext }: { view: ChildView; busy: boolean; onNext: () => void }) {
+export function Summary({ view, busy, gate = alwaysOpen, onNext }: { view: ChildView; busy: boolean; gate?: Gate; onNext: () => void }) {
   const summary = view.summary;
+  const ref = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(ref, "summary", { gate });
   if (!summary) return null;
   return (
     <div className="flex flex-col gap-4" data-testid="summary">
-      <h2 className="text-2xl font-semibold text-primary">Das hast du heute geschafft</h2>
-      <ul className="space-y-2">
-        <li className="rounded-2xl bg-secondary px-4 py-3 text-base text-primary" data-testid="summary-success">
-          <span className="text-sm text-tertiary">Geschafft</span>
+      <Instruction kicker="Fast fertig">Das hast du heute geschafft.</Instruction>
+      <ul className="grid gap-2 sm:grid-cols-3">
+        <li className="rounded-2xl bg-green-50 px-4 py-3 text-base text-primary dark:bg-green-950/30" data-testid="summary-success">
+          <span className="text-sm font-semibold uppercase tracking-wide text-tertiary">Geschafft</span>
           <br />
           {summary.success ? unlabel(summary.success.text) : "Du hast die Basis besucht."}
         </li>
         {summary.practiced ? (
-          <li className="rounded-2xl bg-secondary px-4 py-3 text-base text-primary" data-testid="summary-practiced">
-            <span className="text-sm text-tertiary">Geübt</span>
+          <li className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-primary dark:bg-amber-950/30" data-testid="summary-practiced">
+            <span className="text-sm font-semibold uppercase tracking-wide text-tertiary">Geübt</span>
             <br />
             {unlabel(summary.practiced.text)}
           </li>
         ) : null}
         <li className="rounded-2xl bg-secondary px-4 py-3 text-base text-primary" data-testid="summary-next">
-          <span className="text-sm text-tertiary">Nächstes Mal</span>
+          <span className="text-sm font-semibold uppercase tracking-wide text-tertiary">Nächstes Mal</span>
           <br />
           {unlabel(summary.next.text)}
         </li>
@@ -785,10 +814,8 @@ export function Summary({ view, busy, onNext }: { view: ChildView; busy: boolean
           <p className="mt-1 text-base text-primary">{summary.artifact.text}</p>
         </div>
       ) : null}
-      <div className="overflow-hidden rounded-2xl border border-primary">
-        <BaseScene scene={view.scene} compact />
-      </div>
-      <button type="button" onClick={onNext} disabled={busy} className={cn(primaryButton, "self-start")} data-testid="summary-next-button">
+      <p className="text-sm text-tertiary">Noch eine Frage, dann kommt dein ganzer Bericht.</p>
+      <button ref={ref} type="button" onClick={onNext} disabled={busy} className={cn(primaryButton, "self-start")} data-testid="summary-next-button">
         Weiter
       </button>
     </div>

@@ -275,7 +275,7 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
   const math = evidence.attempts.filter((a) => a.objective === "equal-sharing" || a.objective === "equal-sharing-with-remainder");
   const lang = (code: string) => evidence.attempts.filter((a) => a.stimulusLanguage === code && a.objective.startsWith("language-"));
   const samplesDe = evidence.samples.filter((s) => s.kind === "explanation" || s.kind === "expedition_log" || s.kind === "expedition_log_revision" || s.kind === "writing_transfer");
-  const typingSamples = evidence.samples.filter((s) => s.kind === "typing_practice" || s.kind === "typed_label" || s.kind === "typing_burst");
+  const typingSamples = evidence.samples.filter((s) => s.kind === "typing_practice" || s.kind === "typed_label" || s.kind === "typing_burst" || s.kind === "typing_retry");
   const state = evidence.state;
 
   if (!evidence.prepared && evidence.attempts.length === 0) {
@@ -728,6 +728,22 @@ function ReviewCard({ completion, visitTitle }: { completion: Evidence["completi
                   </li>
                 ))}
               </ul>
+            ) : null}
+            {r.learning.lessons?.length ? (
+              <div className="mt-3" data-testid="review-lessons">
+                <p className="text-sm font-medium text-primary">Schritt für Schritt — genau so, wie das Kind es im Bericht sieht</p>
+                <ul className="mt-1 space-y-1 text-sm text-primary">
+                  {r.learning.lessons.map((l) => (
+                    <li key={l.id} className="rounded-xl bg-primary p-2" data-lesson-kind={l.lesson.kind} data-close={l.close.kind}>
+                      <span className="font-medium">{l.lesson.title}</span> · {l.close.text}
+                      {l.success ? <span className="text-tertiary"> · Erfolg: {l.success.text}</span> : null}
+                      {l.mistakes.length ? <span className="text-tertiary"> · Fehler: {l.mistakes.map((m) => `${m.given} → ${m.expected}${m.count > 1 ? ` (${m.count}×)` : ""}`).join("; ")}</span> : null}
+                      {l.unscored.length ? <span className="text-tertiary"> · Unbewertet: {l.unscored.map((m) => m.given).join("; ")}</span> : null}
+                      {l.repair.retries.length ? <span className="text-tertiary"> · {l.lesson.kind === "typing" ? "Wiederholungen" : "Weitere Versuche"}: {l.repair.retries.map((x) => (x.result === "correct" ? "richtig" : "noch nicht")).join(", ")}{l.repair.explanation?.recorded ? " · Beispiel gezeigt" : ""}</span> : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ) : null}
             <p className="mt-3 text-base text-primary">
               <span className="font-medium">Als Nächstes unterrichten:</span> {r.learning.teachNext.text}

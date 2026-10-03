@@ -133,6 +133,49 @@ export function isChildVocabularyCue(v: unknown): boolean {
   return v.words.every((w) => isRec(w) && isStr(w.entryId) && isStr(w.lemma) && isStr(w.gloss) && oneOf(w.language, ["en", "es"]) && isStr(w.try) && isBool(w.upcoming));
 }
 
+/** A mistake entry of the lesson feedback (world-first 2026-10-03). */
+function isMistake(v: unknown): boolean {
+  if (!isRec(v)) return false;
+  const vis = v.visual;
+  const visualOk = vis === null || (isRec(vis) && isStr(vis.kind));
+  return isStr(v.id) && oneOf(v.evidence, ["incorrect", "unscored"]) && isStrOrNull(v.focus) && isNum(v.count) && isStr(v.given) && isStr(v.expected) && isStr(v.correction) && visualOk && isStrArray(v.refs);
+}
+
+/** One lesson's end-of-lesson feedback with its repair view (UX-5a/5b). */
+export function isLessonFeedback(v: unknown): boolean {
+  if (!isRec(v)) return false;
+  const lesson = v.lesson;
+  if (!isStr(v.id) || !isStr(v.visit) || !isRec(lesson) || !oneOf(lesson.kind, ["math", "language", "typing", "writing"]) || !isStr(lesson.ref) || !isStr(lesson.title) || !isStr(v.at)) return false;
+  if (!(v.success === null || (isRec(v.success) && isStr(v.success.text) && isStr(v.success.basis)))) return false;
+  if (!Array.isArray(v.mistakes) || !v.mistakes.every(isMistake) || !Array.isArray(v.unscored) || !v.unscored.every(isMistake)) return false;
+  if (!(v.pattern === null || isMistake(v.pattern))) return false;
+  const r = v.repair;
+  if (!isRec(r) || !oneOf(r.status, ["none-needed", "available", "open", "closed"]) || !(r.kind === null || oneOf(r.kind, ["typing", "label", "writing", "language"])) || !isStrOrNull(r.repairId) || !isStrOrNull(r.focus) || !isNum(r.remaining) || !isNum(r.used)) return false;
+  if (!(r.explanation === null || (isRec(r.explanation) && isStr(r.explanation.title) && isStr(r.explanation.text) && isBool(r.explanation.recorded)))) return false;
+  if (!Array.isArray(r.items) || !r.items.every((i) => isRec(i) && isNum(i.no) && isStr(i.item) && oneOf(i.purpose, ["correct-original", "fresh-check"]) && oneOf(i.kind, ["typing-line", "label", "sentence", "pick", "produce"]) && isStr(i.text) && (!(i.kind === "pick" || i.kind === "produce") || (isRec(i.cue) && isStr(i.cue.word) && isStr(i.cue.title) && isStr(i.cue.text))))) return false;
+  if (!Array.isArray(r.retries) || !r.retries.every((x) => isRec(x) && isNum(x.no) && isStr(x.item) && oneOf(x.result, ["correct", "incorrect", "unscored"]) && isNum(x.focusErrors))) return false;
+  if (!(r.outcome === null || oneOf(r.outcome, ["open", "corrected-with-practice", "practice-again", "skipped"]))) return false;
+  const c = v.close;
+  if (!isRec(c) || !oneOf(c.kind, ["none-needed", "corrected-with-practice", "corrected-with-help", "practice-again", "pending", "unscored"]) || !isStr(c.text)) return false;
+  return isBool(v.acknowledged);
+}
+
+/** The next-lesson reminder cue (UX-5c). */
+export function isReminderCue(v: unknown): boolean {
+  if (!isRec(v)) return false;
+  const o = v.openedIn;
+  return isStr(v.focusId) && oneOf(v.kind, ["typing-key", "math", "language", "spacing"]) && isStr(v.key) && isStr(v.cue) && isStr(v.grounding) && isRec(o) && isStr(o.visit) && isStr(o.lesson) && isStr(o.label) && (v.visual === null || (isRec(v.visual) && isStr(v.visual.kind)));
+}
+
+/** A reopenable visit report (complete or honestly partial). */
+export function isVisitReport(v: unknown): boolean {
+  if (!isRec(v)) return false;
+  const s = v.summary;
+  if (!isStr(v.visit) || !isNumOrNull(v.ordinal) || !isStr(v.label) || !isStr(v.startedAt) || !isStrOrNull(v.finishedAt) || !isBool(v.partial) || !isNum(v.stagesDone) || !isNum(v.stageCount)) return false;
+  if (!isRec(s) || !isStr(s.visit) || !isStr(s.title) || !(s.success === null || (isRec(s.success) && isStr(s.success.text))) || !(s.practiced === null || (isRec(s.practiced) && isStr(s.practiced.text))) || !isRec(s.next) || !isStr(s.next.text) || !isRec(s.artifact) || !oneOf(s.artifact.kind, ["page", "station", "revision", "none"]) || !isStr(s.artifact.text)) return false;
+  return Array.isArray(v.lessons) && v.lessons.every(isLessonFeedback) && isStrArray(v.worldChanges);
+}
+
 /**
  * True only for a complete, self-consistent ChildView for `child` (when
  * given). Every field the surfaces read is checked, so a passing value can
@@ -159,6 +202,9 @@ export function isChildView(value: unknown, child?: ChildId): value is ChildView
   if (!(value.math === null || isMathItemView(value.math))) return false;
   if (!(value.language === null || isLanguageView(value.language))) return false;
   if (!(value.typing === null || isTypingView(value.typing))) return false;
+  if (!(value.lastLesson === null || isLessonFeedback(value.lastLesson))) return false;
+  if (!(value.reminder === null || isReminderCue(value.reminder))) return false;
+  if (!Array.isArray(value.reports) || !value.reports.every(isVisitReport)) return false;
   const reflection = value.reflection;
   if (!(reflection === null || (isRec(reflection) && isStr(reflection.prompt) && Array.isArray(reflection.options) && reflection.options.every((o) => isRec(o) && isStr(o.id) && isStr(o.label))))) return false;
   const tutor = value.tutor;

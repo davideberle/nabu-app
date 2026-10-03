@@ -1,12 +1,19 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// The mission workspace — /family/learn/mission (family-assistant DESIGN §7.6).
+// The mission workspace — /family/learn/mission (family-assistant DESIGN §7.6;
+// world-first learner experience 2026-10-03).
 //
-// Scene central, tutor panel collapsible beside it. The child names and
-// places the base, shares supplies (typed number = unaided; moving counters =
-// supported, recorded as such), explains a decision, completes one language
-// scene, types a label, saves the expedition log and reflects.
+// A calm notebook under a thin strip of the child's world: one task at a time,
+// a short imperative instruction, the story as a separate illustrated beat.
+// Every lesson closes immediately with its evidence-backed feedback and, when
+// warranted, the bounded visual mini-lesson with one to three targeted retries
+// (UX-5a/5b); the one relevant reminder appears before the next matching
+// lesson (UX-5c); a completed visit leads straight into the reopenable report
+// before the map (UX-5). Focus moves deliberately to the active answer field
+// at task transitions and never steals from the tutor panel or a dialog; Enter
+// never submits during IME composition (UX-3). Finger placement is taught with
+// the visible hand/keyboard diagram (UX-4).
 //
 // Truthfulness rules implemented here (CONTRACT.md; independent review 2026-09-28):
 //  - every confirmed step is a server mutation with an idempotency key and the
@@ -14,9 +21,10 @@
 //    server settles duplicates and stale tabs and always returns the view to
 //    render next;
 //  - help is recorded durably BEFORE it is shown or played: read-aloud, a
-//    gloss, the counters, the word-choice list, a tutor question. "Recorded"
-//    means the server answered applied or replayed — a stale or refused
-//    answer never counts, and the help is then not shown;
+//    gloss, the counters, the word-choice list, a tutor question, the worked
+//    example of a mini-lesson. "Recorded" means the server answered applied or
+//    replayed — a stale or refused answer never counts, and the help is then
+//    not shown;
 //  - the tutor reply is classified and persisted before it is displayed or
 //    spoken (`lib/family-learning-tutor.ts`); an unrecorded reply is withheld;
 //  - a spoken answer is shown as text and confirmed by the child before it is
@@ -29,18 +37,35 @@
 // ---------------------------------------------------------------------------
 
 import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import { useChildShell } from "@/components/family/child-shell-provider";
-import { BaseScene } from "@/components/family/learning/base-scene";
+import { ExpeditionWorld } from "@/components/family/learning/expedition-world";
+import { isComposing, useDeliberateFocus, useRestoreFocus } from "@/components/family/learning/focus";
+import { HandsKeyboard, reachOriginOf } from "@/components/family/learning/hands-keyboard";
+import { LessonEnd } from "@/components/family/learning/lesson-end";
+import { ReminderCueView } from "@/components/family/learning/reminder-cue";
+import { StoryBeat } from "@/components/family/learning/story-beat";
+import { VisitReportView } from "@/components/family/learning/visit-report";
 import { createChildTurnClient } from "@/lib/family-assistant-client";
 import { envelopeSpokenText, type ChildId } from "@/lib/family-assistant-turn";
 import { browserTimeZone, createLearningClient, type LearningMutateOutcome, type MutationContext } from "@/lib/family-learning-client";
+import type { RetryItem } from "@/lib/family-learning-feedback";
+import type { RetryOutcome, RetryPayload } from "@/components/family/learning/lesson-end";
 import { stageLabel, type ChildView, type LearningOp, type SupportKind } from "@/lib/family-learning-state";
 import { createReadAloudController } from "@/lib/family-learning-audio";
 import { createTelemetryBuffer, enterStage, noteControl, noteInput, noteOp, noteSubmit, pause as pauseTelemetry, setHidden, takeBatch } from "@/lib/family-learning-telemetry";
 import { LogRevise, LogTransfer, ReflectFeedback, StationBuild, StationChoice, Summary, TypingCourse, type DraftContext } from "./redesign-stages";
 import { clearChildDrafts, retireAllDrafts, retireMismatched, type DraftIdentity } from "@/lib/family-learning-draft-store";
+import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
+import { recordSupportConfirmed, runTutorTurn, type SupportOutcome } from "@/lib/family-learning-tutor";
+import { applySaveOutcome, commitLine, createTypingDraft, lessonPayload, markSaving, typeInto, type TypingDraft } from "@/lib/family-learning-typing";
+import { nextExpectedChar } from "@/lib/family-learning-typing-metrics";
+import { createChildSpeechPlayer, type ChildSpeechPlayer } from "@/lib/family-speech";
+import { checkChildUtterance, startPushToTalk, type RecorderControl, type RecorderHandlers } from "@/lib/family-voice";
+import { worldMarkers } from "../client";
+import { chipButton, focusRing, primaryButton, secondaryButton } from "./styles";
 
 /** The exact identity a completed draft is bound to: child, content version, visit instance, erasure generation, stage, sign-in. */
 function draftIdentityOf(view: ChildView): DraftIdentity {
@@ -58,25 +83,7 @@ function contextOfView(view: ChildView): MutationContext {
 function identityKey(view: ChildView): string {
   return `${view.erasureGeneration}:${view.visit?.id ?? "none"}:${view.visit?.startedAt ?? "none"}:${view.visit?.stage ?? "none"}`;
 }
-import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
-import { recordSupportConfirmed, runTutorTurn, type SupportOutcome } from "@/lib/family-learning-tutor";
-import { applySaveOutcome, commitLine, createTypingDraft, lessonPayload, markSaving, previewLine, typeInto, type TypingDraft } from "@/lib/family-learning-typing";
-import { createChildSpeechPlayer, type ChildSpeechPlayer } from "@/lib/family-speech";
-import { checkChildUtterance, startPushToTalk, type RecorderControl, type RecorderHandlers } from "@/lib/family-voice";
 
-const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
-const primaryButton = cn(
-  "inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-stone-900 px-6 text-lg font-semibold text-white shadow-xs transition-all hover:-translate-y-0.5 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50 dark:bg-stone-100 dark:text-stone-900",
-  focusRing,
-);
-const secondaryButton = cn(
-  "inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-5 text-base font-medium text-primary transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50",
-  focusRing,
-);
-const chipButton = cn(
-  "inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-primary bg-primary px-4 text-lg font-medium text-primary transition-colors hover:bg-secondary disabled:opacity-50",
-  focusRing,
-);
 const TRANSCRIBE_PATH = "/api/family/transcribe";
 const TUTOR_SESSION_SUFFIX = "learn";
 const SLOW_RATE = 0.75;
@@ -88,6 +95,7 @@ const AUDIO_UNAVAILABLE = "Vorlesen geht gerade nicht. Du kannst den Text lesen 
 
 /** Records one support op; true only when the server confirmed it (applied/replayed). */
 type SupportFn = (kind: SupportKind, taskId: string | null, payload?: unknown) => Promise<boolean>;
+type Gate = () => boolean;
 
 export function FamilyMissionClient() {
   const { child, restored } = useChildShell();
@@ -128,31 +136,30 @@ function numberFromTranscript(text: string): number | null {
   return word ? NUMBER_WORDS[word] : null;
 }
 
+const HOME_FALLBACK = { left: ["a", "s", "d", "f"], right: ["j", "k", "l", "ö"], anchors: ["f", "j"], thumb: " " };
+
 function Workspace({ child }: { child: ChildId }) {
   const learning = useMemo(() => createLearningClient(), []);
   const tutorClient = useMemo(() => createChildTurnClient(), []);
   const speech = useMemo(() => createChildSpeechPlayer(), []);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [load, setLoad] = useState<Load>({ kind: "loading" });
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [tutorOpen, setTutorOpen] = useState(false);
+  /** The visit whose report is shown (just finished, or reopened through `?report=`). */
+  const [reportVisit, setReportVisit] = useState<string | null>(() => searchParams.get("report"));
   const aliveRef = useRef(true);
   const abortRef = useRef<AbortController | null>(null);
   /** The latest rendered view — the only source of `expectedRevision`. */
   const viewRef = useRef<ChildView | null>(null);
+  const rootRef = useRef<HTMLDivElement | null>(null);
   // Minimal task telemetry (redesign F6/R3): a ref, never state — it must not
   // re-render the workspace. Batches go out on stage change, every 20 s and
   // on unmount; the idle rule and the event kinds live in the pure module.
   const telemetryRef = useRef(createTelemetryBuffer());
-  /**
-   * Flush the buffered events as one batch. A batch belongs to one visit
-   * instance under one erasure generation, both established by the server
-   * view. The identity may be passed explicitly (captured BEFORE a finishing
-   * write, R3-3) together with a deterministic batch id, so the feedback of a
-   * completed visit still attaches to that visit and a replayed retry never
-   * stores it twice (INSERT OR IGNORE by batch id). Without a running visit and
-   * without an explicit identity there is nothing to attach to.
-   */
   const flushTelemetry = useCallback(
     (keepalive = false, identity?: { visitId: string; visitStartedAt: string; erasureGeneration: number } | null, batchId?: string) => {
       const taken = takeBatch(telemetryRef.current, Date.now(), batchId ?? (typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `b-${Date.now()}`));
@@ -165,7 +172,6 @@ function Workspace({ child }: { child: ChildId }) {
     },
     [child, learning],
   );
-  /** The identity of the running visit as the server view states it (null when no visit runs). */
   const visitIdentity = () => {
     const current = viewRef.current;
     return current?.visit ? { visitId: current.visit.id, visitStartedAt: current.visit.startedAt, erasureGeneration: current.erasureGeneration } : null;
@@ -176,7 +182,6 @@ function Workspace({ child }: { child: ChildId }) {
   const adopt = useCallback((view: ChildView) => {
     viewRef.current = view;
     setLoad({ kind: "ready", view });
-    // Any completed draft whose identity is not the current one (stage moved on, visit changed, erased, other sign-in) is retired now.
     retireMismatched(draftStorage, draftIdentityOf(view));
   }, [draftStorage]);
 
@@ -189,15 +194,11 @@ function Workspace({ child }: { child: ChildId }) {
       adopt(outcome.view);
       return;
     }
-    // No mission prepared for this child — the server SAID so (404, or a
-    // 200 with prepared:false): the same honest state as the cockpit. A
-    // malformed success is a load error below, never evidence of absence.
     if (outcome.status === 404 || outcome.failure === "unprepared") {
       viewRef.current = null;
       setLoad({ kind: "unprepared" });
       return;
     }
-    // R5-3: an answered auth loss retires the completed drafts of the ended sign-in.
     if (outcome.failure === "unauthorized" || outcome.failure === "no-session") retireAllDrafts(window.sessionStorage);
     setLoad({
       kind: "trouble",
@@ -219,7 +220,6 @@ function Workspace({ child }: { child: ChildId }) {
       learning.reset();
       tutorClient.reset();
       speech.cancel();
-      // Leaving the workspace (Stopp, child switch, sign-out navigation) retires this child's recoverable drafts.
       clearChildDrafts(typeof window !== "undefined" ? window.sessionStorage : null, child);
     };
   }, [refresh, learning, tutorClient, speech, child]);
@@ -251,6 +251,18 @@ function Workspace({ child }: { child: ChildId }) {
     };
   }, [flushTelemetry]);
 
+  // Escape closes the tutor panel; focus returns to where it was (UX-3: deliberate restoration).
+  useRestoreFocus(tutorOpen);
+  useEffect(() => {
+    if (!tutorOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setTutorOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [tutorOpen]);
+  const gate: Gate = useCallback(() => !tutorOpen, [tutorOpen]);
+
   /** One confirmed step, always at the latest revision. */
   const mutate = useCallback(
     async (op: LearningOp, options?: { idempotencyKey?: string; identity?: DraftIdentity | null }): Promise<LearningMutateOutcome | null> => {
@@ -260,8 +272,6 @@ function Workspace({ child }: { child: ChildId }) {
       setNotice(null);
       const abort = new AbortController();
       abortRef.current = abort;
-      // R5-1: every request names the identity it was rendered against — the completed forms pass the
-      // identity they were mounted for; everything else uses the adopted view. The server fences on it.
       const context = options?.identity ? contextOf(options.identity) : contextOfView(current);
       const outcome = await learning.mutate(child, op, current.revision, { signal: abort.signal, idempotencyKey: options?.idempotencyKey, context, timeZone: browserTimeZone() });
       if (!aliveRef.current) return null;
@@ -306,6 +316,20 @@ function Workspace({ child }: { child: ChildId }) {
     [recordSupportRaw],
   );
 
+  /** The URL carries the report so a reload shows it again; the child stays in the URL. */
+  const setReportParam = useCallback(
+    (visit: string | null) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("child", child);
+      if (visit) params.set("report", visit);
+      else params.delete("report");
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    [child, pathname, router, searchParams],
+  );
+
+  const applied = (outcome: LearningMutateOutcome | null) => !!outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed");
+
   if (load.kind === "loading") {
     return (
       <div className="mx-auto max-w-5xl px-4 py-10">
@@ -315,14 +339,12 @@ function Workspace({ child }: { child: ChildId }) {
       </div>
     );
   }
-  if (load.kind === "unprepared") {
-    return <ExpeditionNotPrepared child={child} />;
-  }
+  if (load.kind === "unprepared") return <ExpeditionNotPrepared child={child} />;
   if (load.kind === "trouble") {
     return (
       <div className="mx-auto max-w-3xl px-4 py-8">
         <Link href={`/family/learn?child=${child}`} className={secondaryButton}>
-          ← Zurück
+          ← Zur Karte
         </Link>
         <p className="mt-6 text-lg text-primary" role="status">
           {load.message}
@@ -332,132 +354,217 @@ function Workspace({ child }: { child: ChildId }) {
   }
 
   const view = load.view;
+  const worldHref = `/family/learn?child=${child}`;
+  const markers = worldMarkers(view);
+  const fingers = view.typingCourse?.fingers ?? (view.typing && view.typing.available ? view.typing.lesson.fingers : {});
+  const home = view.typingCourse?.homePosition ?? (view.typing && view.typing.available ? { left: view.typing.lesson.homeRow.slice(0, 4), right: view.typing.lesson.homeRow.slice(4, 8), anchors: ["f", "j"], thumb: " " } : HOME_FALLBACK);
+
+  // The report of a just-finished (or reopened) visit comes before the map.
+  const report = reportVisit ? view.reports.find((r) => r.visit === reportVisit) ?? null : null;
+  if (report && (!view.visit || view.visit.id !== report.visit || report.partial)) {
+    return (
+      <div ref={rootRef} className="mx-auto flex min-h-[calc(100dvh-4.25rem)] w-full max-w-5xl flex-col px-3 py-4 sm:px-4 sm:py-6" data-testid="mission-report-screen">
+        {/* The world appears once, inside the report's own "In deiner Welt" block (V3/V4: no cropped strip above focused content). */}
+        <VisitReportView
+          report={report}
+          scene={view.scene}
+          markers={markers}
+          onBack={() => {
+            setReportVisit(null);
+            router.push(worldHref);
+          }}
+          backLabel="Zur Karte"
+          onNext={report.partial ? () => { setReportVisit(null); setReportParam(null); } : undefined}
+          nextLabel={report.partial ? "Weitermachen" : undefined}
+        />
+      </div>
+    );
+  }
+
   if (!view.visit) {
-    return <StartOrWait child={child} view={view} busy={busy} onStart={() => void mutate({ op: "start-visit" })} notice={notice} />;
+    return <StartOrWait child={child} view={view} busy={busy} onStart={() => void mutate({ op: "start-visit" })} notice={notice} markers={markers} />;
   }
 
   const stage = view.visit.stage;
   const optionalReason = view.visit.overBudget ? "time" : "child";
   const draftContext: DraftContext = { storage: draftStorage, identity: draftIdentityOf(view) };
+  const lastLesson = view.lastLesson;
+
+  const lessonEndActions = {
+    onExplain: async (repairId: string) => applied(await mutate({ op: "repair-explain", repairId })),
+    onRetry: async (repairId: string, item: RetryItem, payload: RetryPayload, idempotencyKey: string): Promise<RetryOutcome> => {
+      // One retry item → one op of its kind; the same idempotency key is reused after a failed save (exactly-once on the server).
+      const op: LearningOp =
+        item.kind === "typing-line" || item.kind === "label"
+          ? { op: "typing-retry", repairId, retryNo: item.no, lineIndex: item.kind === "typing-line" ? item.lineIndex : 0, typed: payload.typed ?? "", seconds: payload.seconds }
+          : item.kind === "sentence"
+            ? { op: "writing-retry", repairId, retryNo: item.no, text: payload.text ?? "" }
+            : { op: "language-retry", repairId, retryNo: item.no, stepId: item.stepId, response: payload.response ?? "" };
+      const outcome = await mutate(op, { idempotencyKey });
+      if (!outcome) return { ok: false, remaining: null };
+      if (outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) {
+        const r = outcome.result as { result?: "correct" | "incorrect" | "unscored"; remaining?: number; closed?: boolean };
+        const repair = outcome.view.lastLesson?.repair;
+        const last = repair?.retries[repair.retries.length - 1];
+        return { ok: true, result: r.result ?? last?.result, remaining: typeof r.remaining === "number" ? r.remaining : repair?.remaining ?? null, closed: r.closed ?? repair?.status === "closed" };
+      }
+      return { ok: false, remaining: null, refused: !outcome.ok && "status" in outcome && outcome.status === "refused" };
+    },
+    onCloseRepair: async (repairId: string, reason: "done" | "skip") => applied(await mutate({ op: "repair-close", repairId, reason })),
+    onAcknowledge: async (id: string) => applied(await mutate({ op: "lesson-feedback-seen", id })),
+  };
+
+  const dots = Array.from({ length: view.visit.stageCount }, (_, i) => i);
 
   return (
-    <div className="mx-auto max-w-6xl px-3 py-4 sm:px-4 sm:py-6">
-      <header className="flex flex-wrap items-center justify-between gap-3">
+    <div ref={rootRef} className="mx-auto flex min-h-[calc(100dvh-4.25rem)] w-full max-w-6xl flex-col px-3 py-3 sm:px-4 sm:py-4" data-testid="mission-screen" data-stage={stage ?? ""} data-lesson-end={lastLesson ? "true" : "false"}>
+      {/* HUD: Save/Exit · where am I · tutor */}
+      <header className="flex items-center justify-between gap-3">
         <Link
-          href={`/family/learn?child=${child}`}
+          href={worldHref}
           className={secondaryButton}
           aria-label="Stopp und speichern"
+          data-testid="hud-stop"
           onClick={() => {
-            // Stopping is the pause: the active interval closes here (C4), then the batch leaves with keepalive.
             telemetryRef.current = noteControl(pauseTelemetry(telemetryRef.current, Date.now()), Date.now(), "stop");
             flushTelemetry(true);
           }}
         >
           ■ Stopp
         </Link>
-        <div className="min-w-0 text-center">
-          <p className="truncate text-sm font-medium text-tertiary">{view.visit.title}</p>
-          <p className="truncate text-xs text-tertiary">
-            {stage ? stageLabel(stage) : ""} · {view.visit.minutesElapsed} min
-          </p>
+        <div className="min-w-0 flex-1 text-center">
+          <p className="truncate text-sm font-semibold text-primary">{view.visit.title}</p>
+          <ol className="mt-1 flex items-center justify-center gap-1" aria-label={`Schritt ${Math.min(view.visit.stageIndex + 1, view.visit.stageCount)} von ${view.visit.stageCount}${stage ? `: ${stageLabel(stage)}` : ""}`} data-testid="hud-steps">
+            {dots.map((i) => (
+              <li key={i} className={cn("h-2 rounded-full", i < view.visit!.stageIndex ? "w-2 bg-stone-900 dark:bg-stone-100" : i === view.visit!.stageIndex ? "w-6 bg-amber-500" : "w-2 bg-stone-300 dark:bg-stone-700")} aria-hidden />
+            ))}
+          </ol>
         </div>
-        <button type="button" onClick={() => setTutorOpen((v) => !v)} className={secondaryButton} aria-expanded={tutorOpen} aria-controls="tutor-panel">
+        <button type="button" onClick={() => setTutorOpen((v) => !v)} className={secondaryButton} aria-expanded={tutorOpen} aria-controls="tutor-panel" data-testid="hud-tutor">
           💬 Tutor
         </button>
       </header>
 
+      {view.base.name ? (
+        <p className="mt-2 text-center text-sm text-tertiary" data-testid="hud-location">
+          Basis „{view.base.name}“{view.base.location ? ` · ${view.base.location.label}` : ""}
+        </p>
+      ) : null}
+
       {notice ? (
-        <p className="mt-3 rounded-2xl bg-secondary px-4 py-2 text-base text-primary" role="status">
+        <p className="mt-3 rounded-2xl bg-secondary px-4 py-2 text-base text-primary" role="status" data-testid="notice">
           {notice}
         </p>
       ) : null}
 
-      <div className={cn("mt-4 grid gap-4", tutorOpen && "lg:grid-cols-[minmax(0,1fr)_360px]")}>
-        <main className="min-w-0 overflow-hidden rounded-3xl border border-primary bg-primary shadow-xs dark:shadow-none">
-          <BaseScene scene={view.scene} />
-          <div className="p-4 sm:p-6">
-            {stage === "name-base" ? <NameBase busy={busy} onSubmit={(name) => void mutate({ op: "name-base", name })} /> : null}
-            {stage === "place-base" ? <PlaceBase view={view} busy={busy} onSubmit={(locationId) => void mutate({ op: "place-base", locationId })} /> : null}
-            {stage === "restore" ? <Restore view={view} busy={busy} onContinue={() => void mutate({ op: "resume-base" })} /> : null}
-            {stage === "station-choice" ? <StationChoice view={view} busy={busy} onChoose={(theme) => void mutate({ op: "choose-station", theme })} /> : null}
-            {stage === "typing-course" && view.typingCourse ? (
-              <TypingCourse
-                key={`course:${view.typingCourse.unavailable ?? "ok"}`}
-                view={view}
-                busy={busy}
-                onCheck={(observed) => void mutate({ op: "typing-check", observed })}
-                onBurst={(op, idempotencyKey) => mutate(op, { idempotencyKey })}
-                onContinue={() => void mutate({ op: "typing-course-continue" })}
-              />
-            ) : null}
-            {stage === "station-build" ? <StationBuild view={view} busy={busy} onBuild={(spot) => void mutate({ op: "build-station", spot })} /> : null}
-            {stage === "log-revise" && view.logRevise ? <LogRevise view={view} busy={busy} onRevise={(text) => void mutate({ op: "revise-log", text })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-revise", reason: optionalReason })} /> : null}
-            {stage === "log-transfer" && view.transfer ? <LogTransfer key={identityKey(view)} view={view} busy={busy} drafts={draftContext} onSubmit={(payload, idempotencyKey, identity) => mutate(payload as LearningOp, { idempotencyKey, identity })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-transfer", reason: optionalReason })} /> : null}
-            {stage === "summary" && view.summary ? <Summary view={view} busy={busy} onNext={() => void mutate({ op: "summary-seen" })} /> : null}
-            {view.math ? (
-              <MathItem
-                key={view.math.id}
-                child={child}
-                view={view}
-                busy={busy}
-                speech={speech}
-                support={support}
-                onAnswer={(answer, raw, modality, uncertain) => void mutate({ op: "answer-math", itemId: view.math!.id, answer, raw, modality, uncertain })}
-                onAnswerRemainder={(used, remaining, raw, modality, uncertain) => void mutate({ op: "answer-remainder", itemId: view.math!.id, used, remaining, raw, modality, uncertain })}
-                onContinue={() => void mutate({ op: "continue-item", itemId: view.math!.id })}
-                onTeach={() => void mutate({ op: "request-teaching", itemId: view.math!.id })}
-                onStop={() => void mutate({ op: "stop-item", itemId: view.math!.id })}
-              />
-            ) : null}
-            {stage === "explain" ? (
-              <Explain
-                busy={busy}
-                overBudget={view.visit.overBudget}
-                onSubmit={(text, modality) => void mutate({ op: "explain", text, modality })}
-                onSkip={() => void mutate({ op: "skip-stage", stage: "explain", reason: optionalReason })}
-              />
-            ) : null}
-            {view.language ? (
-              <LanguageSegment
-                key={`${view.language.id}-${view.language.stepIndex}`}
-                child={child}
-                view={view}
-                busy={busy}
-                speech={speech}
-                support={support}
-                onStep={(stepId, response, modality, transcriptConfirmed) => void mutate({ op: "language-step", segmentId: view.language!.id, stepId, response, modality, transcriptConfirmed })}
-                onContinue={(stepId) => void mutate({ op: "language-continue", segmentId: view.language!.id, stepId })}
-                onSkip={() => void mutate({ op: "skip-stage", stage: view.language!.id, reason: optionalReason })}
-              />
-            ) : null}
-            {view.typing ? (
-              <TypingSegment
-                view={view}
-                busy={busy}
-                onLesson={(op, idempotencyKey) => mutate(op, { idempotencyKey })}
-                onLabel={(taskId, typed, seconds) => void mutate({ op: "typing-label", taskId, typed, seconds })}
-                onSkip={() => void mutate({ op: "skip-stage", stage: "typing", reason: optionalReason })}
-              />
-            ) : null}
-            {stage === "log" ? <SaveLog view={view} busy={busy} onSubmit={(text, modality) => void mutate({ op: "save-log", text, modality })} /> : null}
-            {stage === "reflect" && view.reflection ? (
-              <ReflectFeedback
-                key={identityKey(view)}
-                view={view}
-                busy={busy}
-                drafts={draftContext}
-                onSubmit={async (payload, idempotencyKey, formIdentity) => {
-                  // The visit identity is captured BEFORE the finishing write: after it the view has no running
-                  // visit, and the remaining buffered UX events would otherwise have nothing to attach to.
-                  const identity = visitIdentity();
-                  const outcome = await mutate(payload as LearningOp, { idempotencyKey, identity: formIdentity });
-                  // The answered feedback dimensions are written by the SERVER inside the finishing transaction
-                  // (R4-1); the client only flushes its remaining UX events for this visit, under its own batch id.
-                  if (outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) flushTelemetry(true, identity, `ui-${idempotencyKey}`);
-                  return outcome;
-                }}
-              />
-            ) : null}
+      <div className={cn("mt-3 grid flex-1 gap-4", tutorOpen && "lg:grid-cols-[minmax(0,1fr)_360px]")}>
+        <main className="min-w-0 rounded-3xl border border-primary bg-primary p-4 shadow-xs dark:shadow-none sm:p-6">
+          <div className="mx-auto w-full max-w-3xl">
+            {lastLesson ? (
+              <LessonEnd key={lastLesson.id} feedback={lastLesson} actions={lessonEndActions} busy={busy} fingers={fingers} home={home} gate={gate} />
+            ) : (
+              <>
+                {view.reminder && stage !== "typing-course" ? (
+                  <div className="mb-4">
+                    <ReminderCueView reminder={view.reminder} fingers={fingers} home={home} compact />
+                  </div>
+                ) : null}
+                {stage === "name-base" ? <NameBase busy={busy} gate={gate} onSubmit={(name) => void mutate({ op: "name-base", name })} /> : null}
+                {stage === "place-base" ? <PlaceBase view={view} busy={busy} gate={gate} onSubmit={(locationId) => void mutate({ op: "place-base", locationId })} /> : null}
+                {stage === "restore" ? <Restore view={view} busy={busy} gate={gate} onContinue={() => void mutate({ op: "resume-base" })} /> : null}
+                {stage === "station-choice" ? <StationChoice view={view} busy={busy} gate={gate} onChoose={(theme) => void mutate({ op: "choose-station", theme })} /> : null}
+                {stage === "typing-course" && view.typingCourse ? (
+                  <TypingCourse
+                    key={`course:${view.typingCourse.unavailable ?? "ok"}`}
+                    view={view}
+                    busy={busy}
+                    gate={gate}
+                    reminder={view.reminder ? <ReminderCueView reminder={view.reminder} fingers={fingers} home={home} compact /> : null}
+                    onCheck={(observed) => void mutate({ op: "typing-check", observed })}
+                    onBurst={(op, idempotencyKey) => mutate(op, { idempotencyKey })}
+                    onContinue={() => void mutate({ op: "typing-course-continue" })}
+                  />
+                ) : null}
+                {stage === "station-build" ? <StationBuild view={view} busy={busy} gate={gate} onBuild={(spot) => void mutate({ op: "build-station", spot })} /> : null}
+                {stage === "log-revise" && view.logRevise ? <LogRevise view={view} busy={busy} gate={gate} onRevise={(text) => void mutate({ op: "revise-log", text })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-revise", reason: optionalReason })} /> : null}
+                {stage === "log-transfer" && view.transfer ? <LogTransfer key={identityKey(view)} view={view} busy={busy} gate={gate} drafts={draftContext} onSubmit={(payload, idempotencyKey, identity) => mutate(payload as LearningOp, { idempotencyKey, identity })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-transfer", reason: optionalReason })} /> : null}
+                {stage === "summary" && view.summary ? <Summary view={view} busy={busy} gate={gate} onNext={() => void mutate({ op: "summary-seen" })} /> : null}
+                {view.math ? (
+                  <MathItem
+                    key={view.math.id}
+                    child={child}
+                    view={view}
+                    busy={busy}
+                    gate={gate}
+                    speech={speech}
+                    support={support}
+                    onAnswer={(answer, raw, modality, uncertain) => void mutate({ op: "answer-math", itemId: view.math!.id, answer, raw, modality, uncertain })}
+                    onAnswerRemainder={(used, remaining, raw, modality, uncertain) => void mutate({ op: "answer-remainder", itemId: view.math!.id, used, remaining, raw, modality, uncertain })}
+                    onContinue={() => void mutate({ op: "continue-item", itemId: view.math!.id })}
+                    onTeach={() => void mutate({ op: "request-teaching", itemId: view.math!.id })}
+                    onStop={() => void mutate({ op: "stop-item", itemId: view.math!.id })}
+                  />
+                ) : null}
+                {stage === "explain" ? (
+                  <Explain
+                    busy={busy}
+                    gate={gate}
+                    overBudget={view.visit.overBudget}
+                    onSubmit={(text, modality) => void mutate({ op: "explain", text, modality })}
+                    onSkip={() => void mutate({ op: "skip-stage", stage: "explain", reason: optionalReason })}
+                  />
+                ) : null}
+                {view.language ? (
+                  <LanguageSegment
+                    key={`${view.language.id}-${view.language.stepIndex}`}
+                    child={child}
+                    view={view}
+                    busy={busy}
+                    gate={gate}
+                    speech={speech}
+                    support={support}
+                    onStep={(stepId, response, modality, transcriptConfirmed) => void mutate({ op: "language-step", segmentId: view.language!.id, stepId, response, modality, transcriptConfirmed })}
+                    onContinue={(stepId) => void mutate({ op: "language-continue", segmentId: view.language!.id, stepId })}
+                    onSkip={() => void mutate({ op: "skip-stage", stage: view.language!.id, reason: optionalReason })}
+                  />
+                ) : null}
+                {view.typing ? (
+                  <TypingSegment
+                    view={view}
+                    busy={busy}
+                    gate={gate}
+                    onLesson={(op, idempotencyKey) => mutate(op, { idempotencyKey })}
+                    onLabel={(taskId, typed, seconds) => void mutate({ op: "typing-label", taskId, typed, seconds })}
+                    onSkip={() => void mutate({ op: "skip-stage", stage: "typing", reason: optionalReason })}
+                  />
+                ) : null}
+                {stage === "log" ? <SaveLog view={view} busy={busy} gate={gate} onSubmit={(text, modality) => void mutate({ op: "save-log", text, modality })} /> : null}
+                {stage === "reflect" && view.reflection ? (
+                  <ReflectFeedback
+                    key={identityKey(view)}
+                    view={view}
+                    busy={busy}
+                    gate={gate}
+                    drafts={draftContext}
+                    onSubmit={async (payload, idempotencyKey, formIdentity) => {
+                      // The visit identity is captured BEFORE the finishing write: after it the view has no running
+                      // visit, and the remaining buffered UX events would otherwise have nothing to attach to.
+                      const identity = visitIdentity();
+                      const outcome = await mutate(payload as LearningOp, { idempotencyKey, identity: formIdentity });
+                      if (outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) {
+                        flushTelemetry(true, identity, `ui-${idempotencyKey}`);
+                        // The completed visit leads directly to its report (UX-5); the URL keeps it across a reload.
+                        if (identity) {
+                          setReportVisit(identity.visitId);
+                          setReportParam(identity.visitId);
+                        }
+                      }
+                      return outcome;
+                    }}
+                  />
+                ) : null}
+              </>
+            )}
           </div>
         </main>
 
@@ -482,34 +589,12 @@ function Workspace({ child }: { child: ChildId }) {
 // Audio controls: play / repeat / slow / stop for one text
 // ---------------------------------------------------------------------------
 
-function AudioControls({
-  child,
-  speech,
-  text,
-  label,
-  disabled,
-  beforePlay,
-}: {
-  child: ChildId;
-  speech: ChildSpeechPlayer;
-  text: string;
-  label: string;
-  disabled: boolean;
-  /** Records the read-aloud support; playing happens only when it returns true. */
-  beforePlay: () => Promise<boolean>;
-}) {
+function AudioControls({ child, speech, text, label, disabled, beforePlay }: { child: ChildId; speech: ChildSpeechPlayer; text: string; label: string; disabled: boolean; beforePlay: () => Promise<boolean> }) {
   const [playing, setPlaying] = useState(false);
   const [recorded, setRecorded] = useState(false);
-  // Set only when the controller reported "unavailable" for the CURRENT
-  // request; cleared when a new request starts. Stop/dispose/superseded never
-  // show it (a stale failure must not appear for a control that moved on).
   const [unavailable, setUnavailable] = useState(false);
   const beforePlayRef = useRef(beforePlay);
   beforePlayRef.current = beforePlay;
-  // One controller per mounted control (the parent keys controls by text and
-  // task). Unmount disposes it, so a support acknowledgement that arrives after
-  // the control was removed — task change, selected-word change — can never
-  // start old audio; stop() invalidates a pending acknowledgement the same way.
   const controller = useMemo(
     () =>
       createReadAloudController({
@@ -527,11 +612,6 @@ function AudioControls({
     setPlaying(true);
     const result = await controller.play(text, rate);
     if (controller.isRecorded(text)) setRecorded(true);
-    // "superseded": this control's own stop() or a newer request on it already
-    // owns the state (an older request never clears a newer one). "disposed":
-    // unmounted. Everything else — played, unavailable, not-recorded, or
-    // "interrupted" by another speaker (e.g. the tutor reading its reply) —
-    // is the current request settling, so the control returns to idle.
     if (result === "superseded" || result === "disposed") return;
     setPlaying(false);
     if (result === "unavailable") setUnavailable(true);
@@ -571,24 +651,34 @@ function AudioControls({
 }
 
 // ---------------------------------------------------------------------------
-// Start / wait
+// Start / wait — the story beat and one action
 // ---------------------------------------------------------------------------
 
-function StartOrWait({ child, view, busy, onStart, notice }: { child: ChildId; view: ChildView; busy: boolean; onStart: () => void; notice: string | null }) {
+function StartOrWait({ child, view, busy, onStart, notice, markers }: { child: ChildId; view: ChildView; busy: boolean; onStart: () => void; notice: string | null; markers: ReturnType<typeof worldMarkers> }) {
+  const startRef = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(startRef, `start:${view.next.visit ?? "none"}`);
+  const nextDef = view.next.visit;
+  // The chapter's story (who / make / done) comes from the reviewed content once the visit runs; before that the hook is the one line.
+  const lines = [view.hook];
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <Link href={`/family/learn?child=${child}`} className={secondaryButton}>
-        ← Zurück
-      </Link>
-      <div className="mt-6 overflow-hidden rounded-3xl border border-primary bg-primary">
-        <BaseScene scene={view.scene} />
-        <div className="p-6 text-center">
-          <h1 className="text-2xl font-semibold text-primary">{view.title}</h1>
-          <p className="mt-2 text-base text-tertiary">{view.nextStep}</p>
+    <div className="mx-auto flex min-h-[calc(100dvh-4.25rem)] w-full max-w-4xl flex-col px-3 py-4 sm:px-4 sm:py-6" data-testid="start-screen">
+      <div className="flex items-center justify-between">
+        <Link href={`/family/learn?child=${child}`} className={secondaryButton}>
+          ← Zur Karte
+        </Link>
+      </div>
+      <div className="mt-3 h-40 shrink-0 overflow-hidden rounded-3xl border border-primary sm:h-56">
+        <ExpeditionWorld scene={view.scene} markers={markers} pages={view.pages.length} variant="strip" />
+      </div>
+      <div className="mt-4 flex flex-col gap-4">
+        <StoryBeat speaker="radio" beats={[{ text: lines[0], scene: view.base.name ? "base" : "team" }]} compact />
+        <div className="rounded-3xl border border-primary bg-primary p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-tertiary">{nextDef ? "Jetzt" : "Gespeichert"}</p>
+          <h1 className="mt-1 text-2xl font-semibold leading-tight text-primary sm:text-3xl">{view.nextStep}</h1>
           {notice ? <p className="mt-2 text-base text-primary">{notice}</p> : null}
-          {view.next.visit ? (
-            <button type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-5")} data-testid="start-visit" data-visit={view.next.visit} data-ordinal={view.next.ordinal ?? ""}>
-              {view.next.visit === "v1" ? "Los geht's" : view.next.visit === "v4" ? `Besuch ${view.next.ordinal ?? 3} starten` : view.next.visit === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
+          {nextDef ? (
+            <button ref={startRef} type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-4 min-h-16 px-8 text-xl")} data-testid="start-visit" data-visit={nextDef} data-ordinal={view.next.ordinal ?? ""}>
+              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" ? `Besuch ${view.next.ordinal ?? 3} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
             </button>
           ) : null}
         </div>
@@ -601,8 +691,39 @@ function StartOrWait({ child, view, busy, onStart, notice }: { child: ChildId; v
 // Base setup
 // ---------------------------------------------------------------------------
 
-function NameBase({ busy, onSubmit }: { busy: boolean; onSubmit: (name: string) => void }) {
+function Instruction({ children, kicker }: { children: React.ReactNode; kicker?: string }) {
+  return (
+    <div>
+      {kicker ? <p className="text-sm font-semibold uppercase tracking-[0.14em] text-tertiary">{kicker}</p> : null}
+      <h2 className="mt-1 text-2xl font-semibold leading-tight text-primary sm:text-3xl">{children}</h2>
+    </div>
+  );
+}
+
+/** The reviewed word problem, split by hierarchy: its setup sentences, then the actual question as the heading (words unchanged). */
+function MathPrompt({ prompt }: { prompt: string }) {
+  const sentences = prompt.split(/(?<=[.!?])\s+/).filter(Boolean);
+  const question = sentences.length > 1 && /\?$/.test(sentences[sentences.length - 1]) ? sentences[sentences.length - 1] : null;
+  const setup = question ? sentences.slice(0, -1).join(" ") : null;
+  return (
+    <div data-testid="math-prompt">
+      <p className="text-sm font-semibold uppercase tracking-[0.14em] text-tertiary">Mathe</p>
+      {setup ? (
+        <p className="mt-1 text-lg leading-snug text-primary" data-testid="math-setup">
+          {setup}
+        </p>
+      ) : null}
+      <h2 className="mt-2 text-2xl font-semibold leading-tight text-primary sm:text-3xl" data-testid="math-question">
+        {question ?? prompt}
+      </h2>
+    </div>
+  );
+}
+
+function NameBase({ busy, gate, onSubmit }: { busy: boolean; gate: Gate; onSubmit: (name: string) => void }) {
   const [name, setName] = useState("");
+  const ref = useRef<HTMLInputElement | null>(null);
+  useDeliberateFocus(ref, "name-base", { gate });
   return (
     <form
       onSubmit={(e) => {
@@ -611,12 +732,12 @@ function NameBase({ busy, onSubmit }: { busy: boolean; onSubmit: (name: string) 
       }}
       className="flex flex-col gap-4"
     >
-      <h2 className="text-2xl font-semibold text-primary">Lass uns eine Basis bauen.</h2>
-      <p className="text-base text-tertiary">Du entscheidest, wo sie steht. Zuerst: Wie soll sie heissen?</p>
-      <label className="text-base font-medium text-primary" htmlFor="base-name">
+      <StoryBeat speaker="radio" beats={[{ text: "Hier baust du deine Basis. Du entscheidest, wo sie steht.", scene: "base" }]} compact />
+      <Instruction kicker="Zuerst">Wie soll deine Basis heissen?</Instruction>
+      <label className="sr-only" htmlFor="base-name">
         Name der Basis
       </label>
-      <input id="base-name" value={name} onChange={(e) => setName(e.target.value)} maxLength={40} autoComplete="off" className={cn("min-h-14 rounded-2xl border border-primary bg-primary px-4 text-xl text-primary", focusRing)} />
+      <input ref={ref} id="base-name" value={name} onChange={(e) => setName(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={40} autoComplete="off" className={cn("min-h-16 rounded-2xl border-2 border-primary bg-primary px-4 text-2xl text-primary", focusRing)} data-testid="base-name" />
       <button type="submit" disabled={busy || !name.trim()} className={primaryButton}>
         Weiter
       </button>
@@ -624,13 +745,15 @@ function NameBase({ busy, onSubmit }: { busy: boolean; onSubmit: (name: string) 
   );
 }
 
-function PlaceBase({ view, busy, onSubmit }: { view: ChildView; busy: boolean; onSubmit: (locationId: string) => void }) {
+function PlaceBase({ view, busy, gate, onSubmit }: { view: ChildView; busy: boolean; gate: Gate; onSubmit: (locationId: string) => void }) {
+  const firstRef = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(firstRef, "place-base", { gate });
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-semibold text-primary">Wo steht „{view.base.name}“?</h2>
-      <div className="grid gap-3 sm:grid-cols-2">
-        {view.locations.map((location) => (
-          <button key={location.id} type="button" disabled={busy} onClick={() => onSubmit(location.id)} className={cn(chipButton, "min-h-20 justify-start")}>
+      <Instruction kicker="Standort">Wo steht „{view.base.name}“?</Instruction>
+      <div className="grid gap-3 sm:grid-cols-2" role="group" aria-label="Standort wählen">
+        {view.locations.map((location, i) => (
+          <button key={location.id} ref={i === 0 ? firstRef : undefined} type="button" disabled={busy} onClick={() => onSubmit(location.id)} className={cn(chipButton, "min-h-20 justify-start")} data-testid={`location-${location.id}`}>
             <span className="text-3xl" aria-hidden>
               {location.emoji}
             </span>
@@ -642,21 +765,15 @@ function PlaceBase({ view, busy, onSubmit }: { view: ChildView; busy: boolean; o
   );
 }
 
-function Restore({ view, busy, onContinue }: { view: ChildView; busy: boolean; onContinue: () => void }) {
+function Restore({ view, busy, gate, onContinue }: { view: ChildView; busy: boolean; gate: Gate; onContinue: () => void }) {
   const intro = view.visit?.intro ?? null;
+  const ref = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(ref, "restore", { gate });
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-semibold text-primary">Willkommen zurück auf „{view.base.name}“.</h2>
-      {intro ? (
-        <div className="rounded-2xl bg-secondary p-4 text-base text-primary" data-testid="mission-intro">
-          <p>{intro.who}</p>
-          <p className="mt-1">{intro.make}</p>
-          <p className="mt-1 text-tertiary">{intro.done}</p>
-        </div>
-      ) : (
-        <p className="text-base text-tertiary">Deine Vorräte sind noch da. Heute geht die Expedition weiter.</p>
-      )}
-      <button type="button" onClick={onContinue} disabled={busy} className={primaryButton}>
+      <Instruction kicker="Willkommen zurück">Auf „{view.base.name}“ geht es weiter.</Instruction>
+      {intro ? <StoryBeat speaker="radio" beats={[{ text: intro.who, scene: "team" }, { text: intro.make, scene: "station" }, { text: intro.done, scene: "lamp" }]} testId="mission-intro" /> : <StoryBeat speaker="team" beats={[{ text: "Deine Vorräte sind noch da. Heute geht die Expedition weiter.", scene: "base" }]} compact />}
+      <button ref={ref} type="button" onClick={onContinue} disabled={busy} className={primaryButton} data-testid="stage-continue">
         Weiter
       </button>
     </div>
@@ -667,21 +784,11 @@ function Restore({ view, busy, onContinue }: { view: ChildView; busy: boolean; o
 // Math item: typed answer (unaided) or counters (supported), teaching phases
 // ---------------------------------------------------------------------------
 
-function MathItem({
-  child,
-  view,
-  busy,
-  speech,
-  support,
-  onAnswer,
-  onAnswerRemainder,
-  onContinue,
-  onTeach,
-  onStop,
-}: {
+function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswerRemainder, onContinue, onTeach, onStop }: {
   child: ChildId;
   view: ChildView;
   busy: boolean;
+  gate: Gate;
   speech: ChildSpeechPlayer;
   support: SupportFn;
   onAnswer: (answer: number | null, raw: string, modality: "typed" | "counters" | "spoken", uncertain?: boolean) => void;
@@ -691,7 +798,6 @@ function MathItem({
   onStop: () => void;
 }) {
   const item = view.math!;
-  // Remainder items (EQ-STATION) ask for two numbers; each group has a capacity and leftovers stay visible.
   const remainderItem = item.kind === "remainder";
   const capacity = remainderItem ? item.perGroup ?? 0 : null;
   const [rawUsed, setRawUsed] = useState("");
@@ -703,15 +809,19 @@ function MathItem({
   const placed = trays.reduce((a, b) => a + b, 0);
   const remaining = item.quantity - placed;
   const canAnswer = item.phase === "answer" || item.phase === "clarify" || item.phase === "represent";
+  const answerRef = useRef<HTMLInputElement | null>(null);
+  const continueRef = useRef<HTMLButtonElement | null>(null);
+  const formRef = useRef<HTMLFormElement | null>(null);
+  // Focus the answer field on the item and again after each attempt (clarification, representation) — deliberate transitions only;
+  // the item's own second number field may hand focus back to the first one.
+  useDeliberateFocus(answerRef, canAnswer && !countersOpen ? `${item.id}:${item.phase}:${item.attemptNo}` : null, { gate, within: formRef, enabled: canAnswer && !countersOpen });
+  useDeliberateFocus(continueRef, item.phase === "example" ? `${item.id}:example` : null, { gate, enabled: item.phase === "example" });
 
   useEffect(() => {
-    // The representation phase IS the counters (the tutor's move, already
-    // recorded server-side as support for this item).
     if (item.phase === "represent") setCountersOpen(true);
   }, [item.phase]);
 
   const openCounters = async () => {
-    // Recorded first; shown only when the server confirmed the support.
     if (await support("counters", item.id)) setCountersOpen(true);
   };
 
@@ -736,7 +846,7 @@ function MathItem({
   if (item.outcome !== "pending") {
     return (
       <div className="flex flex-col gap-3">
-        <h2 className="text-2xl font-semibold text-primary">{item.scene ?? "Erledigt."}</h2>
+        <Instruction>{item.scene ?? "Erledigt."}</Instruction>
         {item.taughtAnswers ? (
           <p className="text-base text-primary">
             Wir haben es zusammen gemacht: {item.groups} {item.group.plural} × {item.perGroup} = {item.taughtAnswers.used} {item.unit.plural} gepflanzt, {item.quantity} − {item.taughtAnswers.used} = {item.taughtAnswers.remaining} bleiben übrig.
@@ -750,12 +860,17 @@ function MathItem({
     );
   }
 
+  const numberInput = (props: { value: string; onChange: (v: string) => void; label: string; testId: string; ref?: React.RefObject<HTMLInputElement | null> }) => (
+    <label className="flex flex-col gap-1 text-base font-medium text-primary">
+      {props.label}
+      <input ref={props.ref} inputMode="numeric" pattern="[0-9]*" value={props.value} onChange={(e) => props.onChange(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} className={cn("min-h-16 w-32 rounded-2xl border-2 border-primary bg-primary px-4 text-3xl text-primary", focusRing)} aria-label={props.label} data-testid={props.testId} autoComplete="off" />
+    </label>
+  );
+
   return (
     <div className="flex flex-col gap-4">
-      <div>
-        <p className="text-sm text-tertiary">{item.scene}</p>
-        <h2 className="mt-1 text-2xl font-semibold leading-snug text-primary">{item.prompt}</h2>
-      </div>
+      {item.scene ? <StoryBeat speaker="team" beats={[{ text: item.scene, scene: remainderItem ? "garden" : "team" }]} compact /> : null}
+      <MathPrompt prompt={item.prompt} />
       <div className="flex flex-wrap gap-2">
         <AudioControls child={child} speech={speech} text={item.prompt} label="Vorlesen" disabled={busy} beforePlay={() => support("read_aloud", item.id, { text: "prompt" })} />
         {!countersOpen && canAnswer ? (
@@ -780,7 +895,7 @@ function MathItem({
               <li key={step}>{step}</li>
             ))}
           </ol>
-          <button type="button" onClick={onContinue} disabled={busy} className={cn(primaryButton, "mt-4")}>
+          <button ref={continueRef} type="button" onClick={onContinue} disabled={busy} className={cn(primaryButton, "mt-4")}>
             Jetzt nochmal probieren
           </button>
         </div>
@@ -788,9 +903,7 @@ function MathItem({
 
       {item.teachingOffered ? (
         <div className="rounded-2xl bg-secondary p-4">
-          <p className="text-base text-primary">
-            {item.phase === "teach-or-stop" ? "Das war knifflig. Sollen wir es zusammen lösen, oder machst du hier Pause?" : "Du kannst es noch einmal probieren — oder wir lösen es zusammen."}
-          </p>
+          <p className="text-base text-primary">{item.phase === "teach-or-stop" ? "Das war knifflig. Sollen wir es zusammen lösen, oder machst du hier Pause?" : "Du kannst es noch einmal probieren — oder wir lösen es zusammen."}</p>
           <div className="mt-3 flex flex-wrap gap-2">
             <button type="button" onClick={onTeach} disabled={busy} className={item.phase === "teach-or-stop" ? primaryButton : secondaryButton}>
               Zusammen lösen
@@ -811,12 +924,7 @@ function MathItem({
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <span className="text-base font-medium text-primary">Übrig: {remaining}</span>
-            <span
-              draggable={remaining > 0}
-              onDragStart={(e) => e.dataTransfer.setData("text/plain", "1")}
-              className={cn("inline-flex min-h-12 min-w-12 cursor-grab items-center justify-center rounded-xl bg-primary text-3xl shadow-xs", remaining === 0 && "opacity-40")}
-              aria-label={`${item.unit.singular} ziehen`}
-            >
+            <span draggable={remaining > 0} onDragStart={(e) => e.dataTransfer.setData("text/plain", "1")} className={cn("inline-flex min-h-12 min-w-12 cursor-grab items-center justify-center rounded-xl bg-primary text-3xl shadow-xs", remaining === 0 && "opacity-40")} aria-label={`${item.unit.singular} ziehen`}>
               {item.unit.emoji}
             </span>
             <span className="text-sm text-tertiary">Ziehe, oder tippe auf + / −.</span>
@@ -846,26 +954,14 @@ function MathItem({
               <p className="mt-2 text-sm text-tertiary" data-testid="leftovers">
                 Übrig neben den {item.group.plural}: {remaining} {remaining === 1 ? item.unit.singular : item.unit.plural}
               </p>
-              <button
-                type="button"
-                disabled={busy || trays.some((t) => t !== capacity)}
-                onClick={() => onAnswerRemainder(placed, remaining, `${placed} gepflanzt, ${remaining} übrig`, "counters")}
-                className={cn(primaryButton, "mt-4")}
-                data-testid="counters-submit"
-              >
+              <button type="button" disabled={busy || trays.some((t) => t !== capacity)} onClick={() => onAnswerRemainder(placed, remaining, `${placed} gepflanzt, ${remaining} übrig`, "counters")} className={cn(primaryButton, "mt-4")} data-testid="counters-submit">
                 {item.groups} {item.group.plural} voll (je {capacity}), {remaining} übrig — fertig
               </button>
               {trays.some((t) => t !== capacity) ? <p className="mt-2 text-sm text-tertiary">Jedes {item.group.singular} soll genau {capacity} bekommen. Was nicht mehr passt, bleibt daneben.</p> : null}
             </>
           ) : (
             <>
-              <button
-                type="button"
-                disabled={busy || remaining !== 0 || trays.some((t) => t !== trays[0])}
-                onClick={() => onAnswer(trays[0], String(trays[0]), "counters")}
-                className={cn(primaryButton, "mt-4")}
-                data-testid="counters-submit"
-              >
+              <button type="button" disabled={busy || remaining !== 0 || trays.some((t) => t !== trays[0])} onClick={() => onAnswer(trays[0], String(trays[0]), "counters")} className={cn(primaryButton, "mt-4")} data-testid="counters-submit">
                 {item.groupKind === "people" ? `Jede ${item.group.singular.split("/")[0]}, jeder ${item.group.singular.split("/").pop()} bekommt ${trays[0]} — fertig` : `${trays[0]} pro ${item.group.singular} — fertig`}
               </button>
               {remaining === 0 && trays.some((t) => t !== trays[0]) ? <p className="mt-2 text-sm text-tertiary">Noch nicht überall gleich viele.</p> : null}
@@ -876,6 +972,7 @@ function MathItem({
 
       {canAnswer && remainderItem ? (
         <form
+          ref={formRef}
           onSubmit={(e) => {
             e.preventDefault();
             const used = parseAnswerNumber(rawUsed);
@@ -887,15 +984,9 @@ function MathItem({
           }}
           className="flex flex-wrap items-end gap-3"
         >
-          <label className="flex flex-col gap-1 text-base font-medium text-primary">
-            Gepflanzt
-            <input inputMode="numeric" pattern="[0-9]*" value={rawUsed} onChange={(e) => setRawUsed(e.target.value)} className={cn("min-h-14 w-32 rounded-2xl border border-primary bg-primary px-4 text-2xl text-primary", focusRing)} aria-label="Gepflanzt" />
-          </label>
-          <label className="flex flex-col gap-1 text-base font-medium text-primary">
-            Übrig
-            <input inputMode="numeric" pattern="[0-9]*" value={rawRemaining} onChange={(e) => setRawRemaining(e.target.value)} className={cn("min-h-14 w-32 rounded-2xl border border-primary bg-primary px-4 text-2xl text-primary", focusRing)} aria-label="Übrig" />
-          </label>
-          <button type="submit" disabled={busy || parseAnswerNumber(rawUsed) === null || parseAnswerNumber(rawRemaining) === null} className={primaryButton}>
+          {numberInput({ value: rawUsed, onChange: setRawUsed, label: "Gepflanzt", testId: "math-answer-used", ref: answerRef })}
+          {numberInput({ value: rawRemaining, onChange: setRawRemaining, label: "Übrig", testId: "math-answer-remaining" })}
+          <button type="submit" disabled={busy || parseAnswerNumber(rawUsed) === null || parseAnswerNumber(rawRemaining) === null} className={primaryButton} data-testid="math-submit">
             Fertig
           </button>
           <SpokenAnswer
@@ -909,6 +1000,7 @@ function MathItem({
       ) : null}
       {canAnswer && !remainderItem ? (
         <form
+          ref={formRef}
           onSubmit={(e) => {
             e.preventDefault();
             const n = parseAnswerNumber(raw);
@@ -918,14 +1010,8 @@ function MathItem({
           }}
           className="flex flex-wrap items-end gap-3"
         >
-          <label className="flex flex-col gap-1 text-base font-medium text-primary">
-            Antwort
-            <input inputMode="numeric" pattern="[0-9]*" value={raw} onChange={(e) => setRaw(e.target.value)} className={cn("min-h-14 w-32 rounded-2xl border border-primary bg-primary px-4 text-2xl text-primary", focusRing)} aria-describedby="answer-help" />
-          </label>
-          <span id="answer-help" className="sr-only">
-            Zahl eingeben und bestätigen
-          </span>
-          <button type="submit" disabled={busy || parseAnswerNumber(raw) === null} className={primaryButton}>
+          {numberInput({ value: raw, onChange: setRaw, label: "Antwort", testId: "math-answer", ref: answerRef })}
+          <button type="submit" disabled={busy || parseAnswerNumber(raw) === null} className={primaryButton} data-testid="math-submit">
             Fertig
           </button>
           <SpokenAnswer disabled={busy} onTranscript={(transcript) => setSpoken({ transcript, number: numberFromTranscript(transcript) })} />
@@ -1077,9 +1163,11 @@ function ConfirmTranscript({ transcript, busy, onConfirm, onReject }: { transcri
 // Explain (work sample)
 // ---------------------------------------------------------------------------
 
-function Explain({ busy, overBudget, onSubmit, onSkip }: { busy: boolean; overBudget: boolean; onSubmit: (text: string, modality: "typed" | "spoken") => void; onSkip: () => void }) {
+function Explain({ busy, gate, overBudget, onSubmit, onSkip }: { busy: boolean; gate: Gate; overBudget: boolean; onSubmit: (text: string, modality: "typed" | "spoken") => void; onSkip: () => void }) {
   const [text, setText] = useState("");
   const [spokenText, setSpokenText] = useState<string | null>(null);
+  const ref = useRef<HTMLTextAreaElement | null>(null);
+  useDeliberateFocus(ref, "explain", { gate });
   const modality: "typed" | "spoken" = spokenText !== null && text === spokenText ? "spoken" : "typed";
   return (
     <form
@@ -1089,9 +1177,9 @@ function Explain({ busy, overBudget, onSubmit, onSkip }: { busy: boolean; overBu
       }}
       className="flex flex-col gap-4"
     >
-      <h2 className="text-2xl font-semibold text-primary">Wie hast du das gerechnet?</h2>
-      <p className="text-base text-tertiary">Ein Satz reicht. Du kannst schreiben oder sprechen.</p>
-      <textarea value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border border-primary bg-primary px-4 py-3 text-lg text-primary", focusRing)} />
+      <Instruction kicker="Erklären">Wie hast du das gerechnet?</Instruction>
+      <p className="text-base text-tertiary">Ein Satz reicht — schreiben oder sprechen.</p>
+      <textarea ref={ref} value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="explain-input" />
       <div className="flex flex-wrap gap-2">
         <button type="submit" disabled={busy || !text.trim()} className={primaryButton}>
           Speichern
@@ -1103,7 +1191,7 @@ function Explain({ busy, overBudget, onSubmit, onSkip }: { busy: boolean; overBu
             setSpokenText(t);
           }}
         />
-        <button type="button" onClick={onSkip} disabled={busy} className={secondaryButton}>
+        <button type="button" onClick={onSkip} disabled={busy} className={secondaryButton} data-testid="stage-skip">
           {overBudget ? "Heute überspringen (Zeit)" : "Überspringen"}
         </button>
       </div>
@@ -1115,19 +1203,11 @@ function Explain({ busy, overBudget, onSubmit, onSkip }: { busy: boolean; overBu
 // Language segment
 // ---------------------------------------------------------------------------
 
-function LanguageSegment({
-  child,
-  view,
-  busy,
-  speech,
-  support,
-  onStep,
-  onContinue,
-  onSkip,
-}: {
+function LanguageSegment({ child, view, busy, gate, speech, support, onStep, onContinue, onSkip }: {
   child: ChildId;
   view: ChildView;
   busy: boolean;
+  gate: Gate;
   speech: ChildSpeechPlayer;
   support: SupportFn;
   onStep: (stepId: string, response: string, modality: "typed" | "spoken" | "word-choice" | "listen", transcriptConfirmed?: boolean) => void;
@@ -1143,13 +1223,20 @@ function LanguageSegment({
   const [choicesOpen, setChoicesOpen] = useState(false);
   const [pendingTranscript, setPendingTranscript] = useState<string | null>(null);
   const languageLabel = segment.language === "en" ? "English" : "Español";
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const continueRef = useRef<HTMLButtonElement | null>(null);
+  const firstOptionRef = useRef<HTMLButtonElement | null>(null);
+  const canAnswer = !feedback || feedback.retryAllowed;
+  const focusKey = step ? `${segment.id}:${step.id}:${feedback?.triesUsed ?? 0}` : null;
+  useDeliberateFocus(inputRef, step?.kind === "produce" && canAnswer && pendingTranscript === null ? focusKey : null, { gate, enabled: step?.kind === "produce" && canAnswer && pendingTranscript === null });
+  useDeliberateFocus(continueRef, step?.kind === "listen-read" ? focusKey : null, { gate, enabled: step?.kind === "listen-read" });
+  useDeliberateFocus(firstOptionRef, step?.kind === "pick-supply" ? focusKey : null, { gate, enabled: step?.kind === "pick-supply" });
 
   const openGloss = async (word: string) => {
     if (glossOpen === word) {
       setGlossOpen(null);
       return;
     }
-    // Recorded first (durable per segment); shown only when confirmed.
     if (await support("gloss", segment.id, { word, language: segment.language })) setGlossOpen(word);
   };
 
@@ -1163,27 +1250,19 @@ function LanguageSegment({
   const sentence = "sentence" in step ? step.sentence : null;
   const words = sentence ? sentence.replace(/[.,!?¡¿]/g, "").split(" ") : [];
   const glossFor = (word: string) => segment.glosses.find((g) => g.word.toLowerCase() === word.toLowerCase());
-  // Feedback is bounded and reviewed (content), neutral about plausible wording;
-  // after the retry allowance only the explicit continuation remains.
-  const canAnswer = !feedback || feedback.retryAllowed;
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center justify-between gap-3">
-        <div>
-          <p className="text-sm font-medium text-tertiary">
-            {languageLabel} · {segment.title}
-          </p>
-          <h2 className="mt-1 text-2xl font-semibold text-primary">{step.instruction}</h2>
-        </div>
-        <span className="text-sm text-tertiary">
+      <div className="flex items-start justify-between gap-3">
+        <Instruction kicker={`${languageLabel} · ${segment.title}`}>{step.instruction}</Instruction>
+        <span className="shrink-0 text-sm text-tertiary">
           {segment.stepIndex + 1}/{segment.stepCount}
         </span>
       </div>
 
       {sentence ? (
-        <div className="rounded-2xl bg-secondary p-4">
-          <p className="flex flex-wrap gap-x-2 gap-y-1 text-2xl leading-relaxed text-primary" lang={segment.language}>
+        <div className="rounded-3xl border border-amber-300/70 bg-[linear-gradient(135deg,#fff7e6,#fde8c4)] p-4 dark:border-amber-700/50 dark:bg-[linear-gradient(135deg,#3b2a12,#4a3416)]" data-testid="language-sentence">
+          <p className="flex flex-wrap gap-x-2 gap-y-1 text-2xl leading-relaxed text-stone-900 dark:text-amber-50 sm:text-3xl" lang={segment.language}>
             {words.map((word, index) => {
               const gloss = glossFor(word);
               const selected = selectedWord === word;
@@ -1195,7 +1274,7 @@ function LanguageSegment({
                     setSelectedWord(selected ? null : word);
                     if (gloss) void openGloss(gloss.word);
                   }}
-                  className={cn("rounded-lg px-1", focusRing, gloss && "underline decoration-dotted underline-offset-4", selected && "bg-primary ring-2 ring-stone-400")}
+                  className={cn("rounded-lg px-1", focusRing, gloss && "underline decoration-dotted underline-offset-4", selected && "bg-white/80 ring-2 ring-stone-400 dark:bg-stone-900/60")}
                   aria-pressed={selected}
                 >
                   {word}
@@ -1204,7 +1283,7 @@ function LanguageSegment({
             })}
           </p>
           {glossOpen ? (
-            <p className="mt-2 rounded-xl bg-primary px-3 py-2 text-base text-primary" lang="de">
+            <p className="mt-2 rounded-xl bg-white/80 px-3 py-2 text-base text-stone-900 dark:bg-stone-900/70 dark:text-amber-50" lang="de" data-testid="gloss">
               <strong>{glossOpen}</strong> = {glossFor(glossOpen)?.de}. {glossFor(glossOpen)?.example}
             </p>
           ) : null}
@@ -1214,25 +1293,19 @@ function LanguageSegment({
               <AudioControls key={`word:${step.id}:${selectedWord}`} child={child} speech={speech} text={selectedWord} label={`„${selectedWord}“ anhören`} disabled={busy} beforePlay={() => support("read_aloud", segment.id, { text: selectedWord, word: selectedWord, language: segment.language })} />
             ) : null}
           </div>
-          <p className="mt-2 text-sm text-tertiary">Tippe auf ein Wort, um es zu hören; unterstrichene Wörter zeigen die Bedeutung.</p>
+          <p className="mt-2 text-sm text-stone-700 dark:text-amber-100/80">Tippe auf ein Wort, um es zu hören; unterstrichene Wörter zeigen die Bedeutung.</p>
         </div>
       ) : null}
 
       {feedback ? (
-        <div
-          role="status"
-          className={cn(
-            "rounded-2xl px-4 py-3 text-base",
-            feedback.kind === "incorrect" ? "bg-amber-50 text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" : "bg-secondary text-primary",
-          )}
-        >
+        <div role="status" className={cn("rounded-2xl px-4 py-3 text-base", feedback.kind === "incorrect" ? "bg-amber-50 text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" : "bg-secondary text-primary")} data-testid="language-feedback" data-kind={feedback.kind}>
           <p>{feedback.message}</p>
           <p className="mt-1 text-sm text-tertiary">
             {feedback.kind === "incorrect" ? "Das wurde als „nicht richtig“ gespeichert." : "Deine Antwort ist gespeichert, aber nicht bewertet."}
             {feedback.retryAllowed ? " Du kannst es noch einmal versuchen." : " Ein weiterer Versuch ist hier nicht mehr möglich."}
           </p>
           {feedback.continueOffered ? (
-            <button type="button" disabled={busy} onClick={() => onContinue(step.id)} className={cn(secondaryButton, "mt-2")}>
+            <button type="button" disabled={busy} onClick={() => onContinue(step.id)} className={cn(secondaryButton, "mt-2")} data-testid="language-continue-unscored">
               Weiter ohne Bewertung
             </button>
           ) : null}
@@ -1240,15 +1313,15 @@ function LanguageSegment({
       ) : null}
 
       {step.kind === "listen-read" ? (
-        <button type="button" disabled={busy} onClick={() => onStep(step.id, "", "listen")} className={primaryButton}>
+        <button ref={continueRef} type="button" disabled={busy} onClick={() => onStep(step.id, "", "listen")} className={primaryButton} data-testid="language-continue-step">
           Verstanden — weiter
         </button>
       ) : null}
 
       {step.kind === "pick-supply" ? (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {step.options.map((option) => (
-            <button key={option.id} type="button" disabled={busy} onClick={() => onStep(step.id, option.id, "word-choice")} className={cn(chipButton, "min-h-24 flex-col")}>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4" role="group" aria-label="Lieferung wählen">
+          {step.options.map((option, i) => (
+            <button key={option.id} ref={i === 0 ? firstOptionRef : undefined} type="button" disabled={busy} onClick={() => onStep(step.id, option.id, "word-choice")} className={cn(chipButton, "min-h-24 flex-col")} data-testid={`pick-${option.id}`}>
               <span className="text-3xl" aria-hidden>
                 {option.emoji}
               </span>
@@ -1260,7 +1333,7 @@ function LanguageSegment({
 
       {step.kind === "produce" && canAnswer ? (
         <div className="flex flex-col gap-3">
-          <p className="text-xl text-primary" lang={segment.language}>
+          <p className="text-2xl text-primary" lang={segment.language}>
             {step.frame}
           </p>
           {pendingTranscript !== null ? (
@@ -1278,14 +1351,13 @@ function LanguageSegment({
               onSubmit={(e) => {
                 e.preventDefault();
                 if (busy || !typed.trim()) return;
-                // Text assembled from the word list is copying, and is sent as such.
                 onStep(step.id, typed.trim(), choicesOpen ? "word-choice" : "typed");
                 setTyped("");
               }}
               className="flex flex-wrap items-end gap-2"
             >
-              <input value={typed} onChange={(e) => setTyped(e.target.value)} maxLength={200} lang={segment.language} className={cn("min-h-14 min-w-0 flex-1 rounded-2xl border border-primary bg-primary px-4 text-xl text-primary", focusRing)} aria-label="Antwort" />
-              <button type="submit" disabled={busy || !typed.trim()} className={primaryButton}>
+              <input ref={inputRef} value={typed} onChange={(e) => setTyped(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={200} lang={segment.language} className={cn("min-h-16 min-w-0 flex-1 rounded-2xl border-2 border-primary bg-primary px-4 text-2xl text-primary", focusRing)} aria-label="Antwort" autoComplete="off" autoCapitalize="off" data-testid="language-input" />
+              <button type="submit" disabled={busy || !typed.trim()} className={primaryButton} data-testid="language-send">
                 Senden
               </button>
               <SpokenAnswer disabled={busy} onTranscript={(t) => setPendingTranscript(t)} />
@@ -1308,7 +1380,7 @@ function LanguageSegment({
         </div>
       ) : null}
 
-      <button type="button" onClick={onSkip} disabled={busy} className={cn(secondaryButton, "self-start")}>
+      <button type="button" onClick={onSkip} disabled={busy} className={cn("inline-flex min-h-12 items-center self-start rounded-full px-4 text-base text-tertiary hover:text-primary", focusRing)} data-testid="stage-skip">
         {view.visit?.overBudget ? "Heute überspringen (Zeit)" : "Überspringen"}
       </button>
     </div>
@@ -1316,19 +1388,13 @@ function LanguageSegment({
 }
 
 // ---------------------------------------------------------------------------
-// Typing: home-row lesson (only with a confirmed layout) + a useful label
+// Typing (visits 1–2): home-row lesson (only with a confirmed layout) + a useful label
 // ---------------------------------------------------------------------------
 
-function TypingSegment({
-  view,
-  busy,
-  onLesson,
-  onLabel,
-  onSkip,
-}: {
+function TypingSegment({ view, busy, gate, onLesson, onLabel, onSkip }: {
   view: ChildView;
   busy: boolean;
-  /** Sends the completed lesson; the same key is reused on every retry. */
+  gate: Gate;
   onLesson: (op: { op: "typing-lesson"; lessonId: string; lines: string[]; seconds: number }, idempotencyKey: string) => Promise<LearningMutateOutcome | null>;
   onLabel: (taskId: string, typed: string, seconds: number) => void;
   onSkip: () => void;
@@ -1341,13 +1407,19 @@ function TypingSegment({
   const [skippedLesson, setSkippedLesson] = useState(false);
   const [labelTyped, setLabelTyped] = useState("");
   const labelStartRef = useRef<number | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const labelRef = useRef<HTMLInputElement | null>(null);
+  const retryRef = useRef<HTMLButtonElement | null>(null);
   const newKey = () => (typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `k-${Date.now()}`);
 
   const lessonSaved = draft?.phase === "saved" || lessonDoneOnServer;
   const showLesson = typing.available && !lessonSaved && !skippedLesson && draft !== null;
   const saving = draft?.phase === "saving";
+  const home = typing.available ? { left: typing.lesson.homeRow.slice(0, 4), right: typing.lesson.homeRow.slice(4, 8), anchors: ["f", "j"], thumb: " " } : HOME_FALLBACK;
+  useDeliberateFocus(inputRef, showLesson && draft?.phase === "typing" ? `lesson:${draft.lineIndex}` : null, { gate, enabled: showLesson && draft?.phase === "typing" });
+  useDeliberateFocus(labelRef, !showLesson && typing.label ? "label" : null, { gate, enabled: !showLesson && !!typing.label });
+  useDeliberateFocus(retryRef, draft?.failure ? `failure:${draft.failure}` : null, { gate, enabled: !!draft?.failure });
 
-  /** Save (or retry) the completed lesson with its one payload and key. */
   const save = useCallback(async () => {
     const current = draftRef.current;
     const payload = current ? lessonPayload(current) : null;
@@ -1384,42 +1456,38 @@ function TypingSegment({
     setDraft(next);
   };
 
-  // Completing the last line triggers exactly one save; retries are explicit.
   useEffect(() => {
     if (draft?.phase === "completed" && draft.failure === null) void save();
   }, [draft?.phase, draft?.failure, save]);
 
   const currentLine = draft && typing.available ? typing.lesson.lines[draft.lineIndex] ?? null : null;
+  const nextChar = currentLine && draft ? nextExpectedChar(currentLine, draft.current) : null;
+  const nextFinger = nextChar && typing.available ? typing.lesson.fingers[nextChar] ?? null : null;
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-semibold text-primary">Tippen</h2>
       {showLesson && typing.available && draft ? (
-        <div className="rounded-2xl bg-secondary p-4">
-          <p className="text-base font-medium text-primary">{typing.lesson.title}</p>
-          <p className="mt-1 text-sm text-tertiary">Finger auf die Grundstellung. Langsam und genau ist besser als schnell.</p>
+        <>
+          <Instruction kicker={`Tippen · ${typing.lesson.title}`}>{draft.phase === "typing" ? (nextChar === null ? "Zeile fertig — Enter." : nextChar === " " ? "Jetzt: Leertaste mit dem Daumen." : reachOriginOf(nextChar) ? `„${nextChar}“ mit dem ${nextFinger ?? "Finger"} — zurück auf „${reachOriginOf(nextChar)}“.` : `Jetzt: „${nextChar}“ mit dem ${nextFinger ?? "Finger"}.`) : "Runde gespeichert."}</Instruction>
           {draft.phase === "typing" && currentLine ? (
             <>
-              <div className="mt-3 flex flex-wrap gap-1" aria-label="Grundstellung">
-                {typing.lesson.homeRow.map((key) => (
-                  <span key={key} className={cn("flex min-w-12 flex-col items-center rounded-lg border border-primary bg-primary px-2 py-1", currentLine[draft.current.length] === key && "ring-2 ring-stone-500")}>
-                    <span className="text-lg font-semibold text-primary">{key}</span>
-                    <span className="text-[10px] text-tertiary">{typing.lesson.fingers[key]?.replace("Finger ", "").replace("kleiner", "klein")}</span>
-                  </span>
-                ))}
-              </div>
-              <p className="mt-3 font-mono text-2xl tracking-widest text-primary" aria-label="Zeile zum Abtippen">
-                {Array.from(currentLine).map((ch, i) => (
-                  <span key={i} className={cn(i < draft.current.length && (draft.current[i] === ch ? "text-green-700 dark:text-green-300" : "text-red-700 dark:text-red-300"), i === draft.current.length && "underline")}>
-                    {ch === " " ? "␣" : ch}
-                  </span>
-                ))}
+              <p className="font-mono text-3xl tracking-widest text-primary sm:text-4xl" aria-label="Zeile zum Abtippen">
+                {Array.from(currentLine).map((ch, i) => {
+                  const typedChars = Array.from(draft.current);
+                  const state = i < typedChars.length ? (typedChars[i] === ch ? "ok" : "bad") : i === typedChars.length ? "next" : "todo";
+                  return (
+                    <span key={i} className={cn(state === "ok" && "text-green-700 dark:text-green-300", state === "bad" && "text-red-700 underline decoration-wavy dark:text-red-300", state === "next" && "underline decoration-4 underline-offset-4")}>
+                      {ch === " " ? "␣" : ch}
+                    </span>
+                  );
+                })}
               </p>
               <input
+                ref={inputRef}
                 value={draft.current}
                 onChange={(e) => setDraft((d) => (d ? typeInto(d, e.target.value, Date.now()) : d))}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") {
+                  if (e.key === "Enter" && !isComposing(e)) {
                     e.preventDefault();
                     commit();
                   }
@@ -1427,10 +1495,15 @@ function TypingSegment({
                 autoCapitalize="off"
                 autoCorrect="off"
                 spellCheck={false}
-                className={cn("mt-2 min-h-14 w-full rounded-2xl border border-primary bg-primary px-4 font-mono text-2xl text-primary", focusRing)}
+                autoComplete="off"
+                className={cn("min-h-16 w-full rounded-2xl border-2 border-primary bg-primary px-4 font-mono text-3xl text-primary", focusRing)}
                 aria-label="Hier tippen"
+                data-testid="lesson-input"
               />
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="mx-auto w-full max-w-[680px] rounded-3xl border border-primary bg-white p-2 dark:bg-stone-900">
+                <HandsKeyboard fingers={typing.lesson.fingers} home={home} nextKey={nextChar} introduced={Array.from(new Set(typing.lesson.lines.join("").split("")))} compact />
+              </div>
+              <div className="flex flex-wrap gap-2">
                 <button type="button" disabled={busy || draft.current.length === 0} onClick={commit} className={primaryButton}>
                   Zeile fertig ({draft.lineIndex + 1}/{typing.lesson.lines.length})
                 </button>
@@ -1441,25 +1514,13 @@ function TypingSegment({
             </>
           ) : null}
           {draft.phase !== "typing" ? (
-            <div className="mt-3">
-              <ul className="space-y-1 font-mono text-sm text-primary">
-                {typing.lesson.lines.map((line, i) => {
-                  const m = previewLine(line, draft.typedLines[i] ?? "");
-                  return (
-                    <li key={line}>
-                      {line} — {m.correct}/{Array.from(line).length} richtig{m.extra ? `, ${m.extra} zu viel` : ""}{m.omitted ? `, ${m.omitted} fehlen` : ""}
-                    </li>
-                  );
-                })}
-              </ul>
-              {saving ? <p className="mt-2 text-sm text-tertiary" role="status">… wird gespeichert</p> : null}
+            <div>
+              {saving ? <p className="text-sm text-tertiary" role="status">… wird gespeichert</p> : null}
               {draft.failure ? (
-                <div className="mt-2 flex flex-wrap items-center gap-2" role="status">
-                  <span className="text-sm text-primary">
-                    {draft.failure === "refused" ? "Das konnte so nicht gespeichert werden." : "Speichern hat nicht geklappt. Dein Training ist noch da."}
-                  </span>
+                <div className="flex flex-wrap items-center gap-2" role="status">
+                  <span className="text-sm text-primary">{draft.failure === "refused" ? "Das konnte so nicht gespeichert werden." : "Speichern hat nicht geklappt. Dein Training ist noch da."}</span>
                   {draft.failure !== "refused" ? (
-                    <button type="button" disabled={busy} onClick={() => void save()} className={secondaryButton}>
+                    <button ref={retryRef} type="button" disabled={busy} onClick={() => void save()} className={secondaryButton}>
                       Nochmal speichern
                     </button>
                   ) : null}
@@ -1470,13 +1531,11 @@ function TypingSegment({
               ) : null}
             </div>
           ) : null}
-        </div>
+        </>
       ) : null}
 
       {!typing.available ? (
-        <p className="rounded-2xl bg-secondary px-4 py-3 text-base text-primary">
-          Das Finger-Training kommt, sobald deine Eltern die Tastatur bestätigt haben. Das Schild kannst du trotzdem schreiben.
-        </p>
+        <p className="rounded-2xl bg-secondary px-4 py-3 text-base text-primary">Das Finger-Training kommt, sobald deine Eltern die Tastatur bestätigt haben. Das Schild kannst du trotzdem schreiben.</p>
       ) : null}
 
       {!showLesson && typing.label ? (
@@ -1489,24 +1548,28 @@ function TypingSegment({
           }}
           className="flex flex-col gap-3"
         >
-          <p className="text-lg text-primary">{typing.label.instruction}</p>
-          <p className="font-mono text-2xl text-primary" aria-label="Vorlage">
+          <Instruction kicker="Schild">{typing.label.instruction}</Instruction>
+          <p className="font-mono text-3xl text-primary" aria-label="Vorlage">
             {typing.label.target}
           </p>
           <input
+            ref={labelRef}
             value={labelTyped}
             onChange={(e) => {
               if (labelStartRef.current === null) labelStartRef.current = Date.now();
               setLabelTyped(e.target.value.slice(0, 80));
             }}
+            onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)}
             autoCapitalize="off"
             autoCorrect="off"
             spellCheck={false}
-            className={cn("min-h-14 rounded-2xl border border-primary bg-primary px-4 font-mono text-2xl text-primary", focusRing)}
+            autoComplete="off"
+            className={cn("min-h-16 rounded-2xl border-2 border-primary bg-primary px-4 font-mono text-3xl text-primary", focusRing)}
             aria-label="Schild tippen"
+            data-testid="label-input"
           />
           <div className="flex flex-wrap gap-2">
-            <button type="submit" disabled={busy || labelTyped.length === 0} className={primaryButton}>
+            <button type="submit" disabled={busy || labelTyped.length === 0} className={primaryButton} data-testid="label-save">
               Schild aufhängen
             </button>
             <button type="button" onClick={onSkip} disabled={busy} className={secondaryButton}>
@@ -1525,12 +1588,14 @@ function TypingSegment({
 }
 
 // ---------------------------------------------------------------------------
-// Log + reflection
+// Log
 // ---------------------------------------------------------------------------
 
-function SaveLog({ view, busy, onSubmit }: { view: ChildView; busy: boolean; onSubmit: (text: string, modality: "typed" | "spoken") => void }) {
+function SaveLog({ view, busy, gate, onSubmit }: { view: ChildView; busy: boolean; gate: Gate; onSubmit: (text: string, modality: "typed" | "spoken") => void }) {
   const [text, setText] = useState("");
   const [spokenText, setSpokenText] = useState<string | null>(null);
+  const ref = useRef<HTMLTextAreaElement | null>(null);
+  useDeliberateFocus(ref, "log", { gate });
   const modality: "typed" | "spoken" = spokenText !== null && text === spokenText ? "spoken" : "typed";
   return (
     <form
@@ -1540,13 +1605,11 @@ function SaveLog({ view, busy, onSubmit }: { view: ChildView; busy: boolean; onS
       }}
       className="flex flex-col gap-4"
     >
-      <h2 className="text-2xl font-semibold text-primary">Deine Expeditionsseite</h2>
-      <p className="text-base text-tertiary">
-        Basis „{view.base.name}“ {view.base.location ? `· ${view.base.location.label}` : ""}. Was ist heute passiert? Ein, zwei Sätze für deine Eltern.
-      </p>
-      <textarea value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border border-primary bg-primary px-4 py-3 text-lg text-primary", focusRing)} />
+      <StoryBeat speaker="logbook" beats={[{ text: `Basis „${view.base.name}“${view.base.location ? ` · ${view.base.location.label}` : ""}`, scene: "page" }]} compact />
+      <Instruction kicker="Logbuch">Was ist heute passiert? Ein, zwei Sätze.</Instruction>
+      <textarea ref={ref} value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="log-input" />
       <div className="flex flex-wrap gap-2">
-        <button type="submit" disabled={busy || !text.trim()} className={primaryButton}>
+        <button type="submit" disabled={busy || !text.trim()} className={primaryButton} data-testid="log-save">
           Seite speichern
         </button>
         <SpokenAnswer
@@ -1561,21 +1624,11 @@ function SaveLog({ view, busy, onSubmit }: { view: ChildView; busy: boolean; onS
   );
 }
 
-
 // ---------------------------------------------------------------------------
 // Tutor panel: typed or spoken question → bridge, sequenced by the runner
 // ---------------------------------------------------------------------------
 
-function TutorPanel({
-  child,
-  view,
-  speech,
-  tutorClient,
-  recordSupport,
-  currentRevision,
-  isAlive,
-  onClose,
-}: {
+function TutorPanel({ child, view, speech, tutorClient, recordSupport, currentRevision, isAlive, onClose }: {
   child: ChildId;
   view: ChildView;
   speech: ChildSpeechPlayer;
@@ -1591,8 +1644,11 @@ function TutorPanel({
   const [pending, setPending] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
   const panelAlive = useRef(true);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   useEffect(() => {
     panelAlive.current = true;
+    // Opening the tutor is the child's deliberate choice: its field takes focus once.
+    inputRef.current?.focus();
     return () => {
       panelAlive.current = false;
       abortRef.current?.abort();
@@ -1602,8 +1658,6 @@ function TutorPanel({
   const ask = async (text: string) => {
     const check = checkChildUtterance(text);
     if (!check.ok) return;
-    // The context is captured NOW, so a reply binds to the task the child
-    // asked about even if the workspace advances meanwhile.
     const context = view.tutor;
     setPending(true);
     setThread((t) => [...t, { role: "child", text: check.text }]);
@@ -1627,12 +1681,8 @@ function TutorPanel({
     setPending(false);
     switch (result.status) {
       case "answered":
-        // Persisted and classified before this line runs.
         setThread((t) => [...t, { role: "tutor", text: result.text }]);
         speech.unlock();
-        // Read the reply aloud; if speech cannot be fetched or played, say so
-        // (the reply text stays readable above). A cancelled/superseded speech
-        // is not a failure and shows nothing.
         void speech
           .speak({ childId: child, text: result.text })
           .then((spoken) => {
@@ -1655,25 +1705,17 @@ function TutorPanel({
   };
 
   return (
-    <aside id="tutor-panel" className="flex max-h-[70vh] flex-col rounded-3xl border border-primary bg-primary p-4 shadow-xs dark:shadow-none lg:max-h-none" aria-label="Tutor">
+    <aside id="tutor-panel" className="flex max-h-[70vh] flex-col rounded-3xl border border-primary bg-primary p-4 shadow-xs dark:shadow-none lg:max-h-none" aria-label="Tutor" data-testid="tutor-panel">
       <div className="flex items-center justify-between">
         <p className="text-base font-semibold text-primary">Tutor</p>
-        <button type="button" onClick={onClose} className={cn("min-h-12 min-w-12 rounded-full text-xl", focusRing)} aria-label="Tutor schliessen">
+        <button type="button" onClick={onClose} className={cn("min-h-12 min-w-12 rounded-full text-xl", focusRing)} aria-label="Tutor schliessen" data-testid="tutor-close">
           ×
         </button>
       </div>
       {view.tutor ? <p className="mt-1 text-sm text-tertiary">Zur Aufgabe: „{view.tutor.prompt}“</p> : <p className="mt-1 text-sm text-tertiary">Frag, was du willst.</p>}
       <div className="mt-3 flex-1 space-y-2 overflow-y-auto" aria-live="polite">
         {thread.map((entry, index) => (
-          <p
-            key={index}
-            className={cn(
-              "rounded-2xl px-3 py-2 text-base",
-              entry.role === "child" && "bg-secondary text-primary",
-              entry.role === "tutor" && "bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900",
-              entry.role === "note" && "border border-primary text-tertiary",
-            )}
-          >
+          <p key={index} className={cn("rounded-2xl px-3 py-2 text-base", entry.role === "child" && "bg-secondary text-primary", entry.role === "tutor" && "bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900", entry.role === "note" && "border border-primary text-tertiary")}>
             {entry.text}
           </p>
         ))}
@@ -1703,7 +1745,7 @@ function TutorPanel({
           }}
           className="mt-3 flex flex-col gap-2"
         >
-          <input value={question} onChange={(e) => setQuestion(e.target.value)} maxLength={1500} placeholder="Was heisst …? Warum …?" className={cn("min-h-14 rounded-2xl border border-primary bg-primary px-4 text-lg text-primary", focusRing)} aria-label="Frage an den Tutor" />
+          <input ref={inputRef} value={question} onChange={(e) => setQuestion(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={1500} placeholder="Was heisst …? Warum …?" className={cn("min-h-14 rounded-2xl border border-primary bg-primary px-4 text-lg text-primary", focusRing)} aria-label="Frage an den Tutor" data-testid="tutor-input" />
           <div className="flex flex-wrap gap-2">
             <button type="submit" disabled={pending || !question.trim()} className={primaryButton}>
               Fragen

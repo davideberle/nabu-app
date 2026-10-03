@@ -19,6 +19,7 @@ export const TELEMETRY_OPS = [
   "answer-math", "answer-remainder", "build-station", "choose-station", "continue-item", "explain", "language-continue", "language-step",
   "name-base", "place-base", "reflect", "request-teaching", "resume-base", "revise-log", "save-log", "skip-stage", "start-visit", "stop-item",
   "summary-seen", "support", "typing-burst", "typing-check", "typing-course-continue", "typing-label", "typing-lesson", "write-transfer",
+  "repair-explain", "typing-retry", "writing-retry", "language-retry", "repair-close", "lesson-feedback-seen",
 ] as const;
 export type TelemetryOp = (typeof TELEMETRY_OPS)[number];
 
