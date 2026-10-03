@@ -6,9 +6,11 @@
 //   $KITCHEN_PLANNER_EVIDENCE_DIR/reviewed-planner-evidence.json
 //   (default ~/.openclaw/workspace/projects/kitchen/planner-evidence)
 // The deployable mirror lives in this repo under src/data/kitchen/:
-//   reviewed-planner-evidence.json          verbatim copy
+//   reviewed-planner-evidence.json          verbatim copy of the ledger
 //   reviewed-planner-evidence.generated.ts  the module the runtime imports
-//   manifest.json                           SHA-256 of the copy + generated module
+//   manifest.json                           SHA-256 of every mirrored file
+// and the RULE itself (Kitchen-owned code) is projected verbatim to
+//   src/lib/kitchen/planner-evidence-rule.ts
 //
 //   node scripts/sync-planner-evidence.mjs          # copy canonical → mirror, regenerate, write manifest
 //   node scripts/sync-planner-evidence.mjs --check  # verify mirror == manifest and generated == f(copy);
@@ -25,8 +27,10 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const mirrorDir = resolve(here, "..", "src", "data", "kitchen");
+const ruleMirrorDir = resolve(here, "..", "src", "lib", "kitchen");
 const FILE = "reviewed-planner-evidence.json";
 const GENERATED = "reviewed-planner-evidence.generated.ts";
+const RULE = "planner-evidence-rule.ts";
 const manifestPath = join(mirrorDir, "manifest.json");
 const canonicalDir =
   process.env.KITCHEN_PLANNER_EVIDENCE_DIR ||
@@ -64,9 +68,14 @@ if (!check) {
   writeFileSync(join(mirrorDir, FILE), bytes);
   const generated = renderModule(bytes.toString("utf8"));
   writeFileSync(join(mirrorDir, GENERATED), generated);
+  const ruleSource = join(canonicalDir, RULE);
+  if (!existsSync(ruleSource)) fail(`canonical rule not found: ${ruleSource}`);
+  const rule = readFileSync(ruleSource);
+  mkdirSync(ruleMirrorDir, { recursive: true });
+  writeFileSync(join(ruleMirrorDir, RULE), rule);
   const manifest = {
-    source: "projects/kitchen/planner-evidence/" + FILE,
-    files: { [FILE]: sha256(bytes), [GENERATED]: sha256(generated) },
+    source: "projects/kitchen/planner-evidence/",
+    files: { [FILE]: sha256(bytes), [GENERATED]: sha256(generated), ["../../lib/kitchen/" + RULE]: sha256(rule) },
   };
   writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
   console.log(`sync-planner-evidence: mirrored ${FILE} (${manifest.files[FILE].slice(0, 12)}…) and regenerated ${GENERATED}`);
@@ -76,7 +85,7 @@ if (!check) {
 if (!existsSync(manifestPath)) fail(`mirror manifest missing: ${manifestPath}`);
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 const problems = [];
-for (const name of [FILE, GENERATED]) {
+for (const name of [FILE, GENERATED, "../../lib/kitchen/" + RULE]) {
   const path = join(mirrorDir, name);
   if (!existsSync(path)) {
     problems.push(`mirror file missing: ${name}`);
@@ -98,6 +107,11 @@ if (existsSync(canonicalDir)) {
     problems.push(`canonical dir present but ${FILE} missing: ${source}`);
   } else if (sha256(readFileSync(source)) !== sha256(readFileSync(copyPath))) {
     problems.push(`canonical ${FILE} differs from the mirror — run node scripts/sync-planner-evidence.mjs`);
+  }
+  const ruleSource = join(canonicalDir, RULE);
+  if (!existsSync(ruleSource)) problems.push(`canonical rule missing: ${ruleSource}`);
+  else if (sha256(readFileSync(ruleSource)) !== sha256(readFileSync(join(ruleMirrorDir, RULE)))) {
+    problems.push(`canonical ${RULE} differs from the app projection src/lib/kitchen/${RULE} — edit the Kitchen rule and run node scripts/sync-planner-evidence.mjs`);
   }
 } else {
   console.log(`sync-planner-evidence: canonical dir not present (${canonicalDir}); verified mirror integrity only.`);
