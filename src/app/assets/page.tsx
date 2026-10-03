@@ -8,7 +8,8 @@ import {
   NabuKicker,
   NabuStat,
 } from "@/components/ui/nabu";
-import { houseAssets } from "@/data/house-assets";
+import { connection } from "next/server";
+import { getHouseAssets } from "@/lib/house-assets";
 import type { HouseAsset } from "@/data/house-assets";
 
 const statusTone = {
@@ -36,18 +37,26 @@ function AssetCard({ asset }: { asset: HouseAsset }) {
             {asset.description}
           </p>
         </div>
-        <NabuBadge tone="stone">{asset.acquiredYear}</NabuBadge>
+        {asset.acquiredYear !== undefined && (
+          <NabuBadge tone="stone">{asset.acquiredYear}</NabuBadge>
+        )}
       </div>
 
       {/* Status areas */}
       <div className="mb-5 grid grid-cols-2 gap-3">
         {asset.statusAreas.map((area) => (
-          <NabuStat
-            key={area.label}
-            label={area.label}
-            value={statusLabel[area.status]}
-            tone={statusTone[area.status]}
-          />
+          <div key={area.label} className="min-w-0">
+            <NabuStat
+              label={area.label}
+              value={statusLabel[area.status]}
+              tone={statusTone[area.status]}
+            />
+            {area.detail && (
+              <p className="mt-1.5 whitespace-pre-line break-words text-xs leading-5 text-tertiary">
+                {area.detail}
+              </p>
+            )}
+          </div>
         ))}
       </div>
 
@@ -96,7 +105,10 @@ function AssetCard({ asset }: { asset: HouseAsset }) {
   );
 }
 
-export default function AssetsPage() {
+export default async function AssetsPage() {
+  await connection();
+  const houseAssets = await getHouseAssets();
+
   return (
     <NabuPageShell>
       <NabuHeader

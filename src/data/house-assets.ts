@@ -2,7 +2,8 @@
  * House asset seed data.
  *
  * This is a bundled mirror for the companion-app MVP.
- * Canonical domain ownership: projects/house-assets/
+ * Private reference source: projects/home/appliances/
+ * Runtime Turso house_assets records are authoritative for the app inventory.
  */
 
 export interface MaintenanceTask {
@@ -24,7 +25,7 @@ export interface HouseAsset {
   brand: string;
   model: string;
   description: string;
-  acquiredYear: number;
+  acquiredYear?: number;
   maintenance: MaintenanceTask[];
   statusAreas: StatusArea[];
   warnings?: string[];

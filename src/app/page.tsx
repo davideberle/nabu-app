@@ -1,8 +1,9 @@
 import { auth, signOut } from "@/auth";
+import { connection } from "next/server";
 import { NabuCard, NabuHeader, NabuIconFrame, NabuMain, NabuPageShell, NabuPill, NabuSectionHeader, NabuSurface } from "@/components/ui/nabu";
 import { initialTodos } from "@/lib/todos";
 import { getRecipesByCookbook } from "@/lib/recipes";
-import { houseAssets } from "@/data/house-assets";
+import { getHouseAssets } from "@/lib/house-assets";
 import { wineBottles } from "@/data/wine-cellar";
 import { getNextPlanningMilestone, getNextMilestone, formatMilestoneDate, getComputedMilestones } from "@/data/family";
 
@@ -32,6 +33,7 @@ async function getTileCategories(): Promise<TileCategory[]> {
   const activeTodos = initialTodos.filter((t) => !t.completed).length;
   const myRecipes = await getRecipesByCookbook("my-recipes");
   const myRecipesCount = myRecipes.length;
+  const houseAssets = await getHouseAssets();
   const family = getFamilySummary();
 
   return [
@@ -178,6 +180,7 @@ async function getTileCategories(): Promise<TileCategory[]> {
 }
 
 export default async function Home() {
+  await connection();
   const session = await auth();
   const categories = await getTileCategories();
   const family = getFamilySummary();
