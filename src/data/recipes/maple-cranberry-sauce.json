@@ -51,10 +51,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "condiment"
     ],
     "chapter": "Desserts",
-    "meal_role": "dessert"
+    "meal_role": "condiment"
   },
   "cuisine": "Other",
   "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/maple-cranberry-sauce.jpg"

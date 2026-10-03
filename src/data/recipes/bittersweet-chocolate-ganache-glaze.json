@@ -52,10 +52,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "component"
     ],
     "chapter": "Desserts",
-    "meal_role": "dessert"
+    "meal_role": "component"
   },
   "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/bittersweet-chocolate-ganache-glaze.jpg",
   "cuisine": "Other"

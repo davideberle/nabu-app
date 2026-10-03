@@ -60,10 +60,10 @@
   },
   "category": {
     "dish_type": [
-      "side"
+      "main"
     ],
     "chapter": "Sides",
-    "meal_role": "side"
+    "meal_role": "main"
   },
   "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sunday-sauce.jpg",
   "cuisine": "Italian",

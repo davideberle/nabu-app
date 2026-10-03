@@ -32,10 +32,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "base"
     ],
     "chapter": "Pasta Primer",
-    "meal_role": "main"
+    "meal_role": "component"
   },
   "cuisine": "Italian"
 }

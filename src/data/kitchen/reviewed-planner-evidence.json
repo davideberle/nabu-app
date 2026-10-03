@@ -1,0 +1,577 @@
+{
+  "version": 1,
+  "owner": "projects/kitchen",
+  "reviewRecordSha256": "2afcc5bf85dd153b3d75b5e08fafa4f02afffdcbef4c1a81dec171cb483a7961",
+  "canonicalization": "sha256(canonicalJson(record)) — keys sorted at every depth, no whitespace, undefined dropped, UTF-8; src/lib/planner-evidence.ts canonicalRecipeDigest",
+  "categoryCorrections": [
+    {
+      "id": "acha-pudding",
+      "category": {
+        "dish_type": [
+          "breakfast"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "breakfast"
+      }
+    },
+    {
+      "id": "almond-cookie-crust",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "basic-pasta-sauce",
+      "category": {
+        "dish_type": [
+          "main"
+        ],
+        "chapter": "Sides",
+        "meal_role": "main"
+      }
+    },
+    {
+      "id": "bittersweet-chocolate-ganache-glaze",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "cg-cucumber-raita",
+      "category": {
+        "dish_type": [
+          "condiment"
+        ],
+        "chapter": "Accompaniments",
+        "meal_role": "condiment"
+      }
+    },
+    {
+      "id": "chocolate-avocado-buttercream",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "chocolate-coconut-ganache-glaze",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "chocolate-confectioners-sugar-glaze",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "chocolate-dulce-de-leche",
+      "category": {
+        "dish_type": [
+          "condiment"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "condiment"
+      }
+    },
+    {
+      "id": "chocolate-ice-cream-shell",
+      "category": {
+        "dish_type": [
+          "condiment"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "condiment"
+      }
+    },
+    {
+      "id": "chocolate-orange-glaze",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "coffee-squares",
+      "category": {
+        "dish_type": [
+          "snack"
+        ],
+        "chapter": "Balls & Bars",
+        "meal_role": "snack"
+      }
+    },
+    {
+      "id": "coriander-garlic-and-chilli-raita",
+      "category": {
+        "dish_type": [
+          "condiment"
+        ],
+        "chapter": "Base Sauces",
+        "meal_role": "condiment"
+      }
+    },
+    {
+      "id": "creamy-chocolate-cupcake-frosting",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "egg-pasta",
+      "category": {
+        "dish_type": [
+          "base"
+        ],
+        "chapter": "Pasta Primer",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "eggless-pasta",
+      "category": {
+        "dish_type": [
+          "base"
+        ],
+        "chapter": "Pasta Primer",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "green-pani",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Base Sauces",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "homemade-egg-pasta-fettuccine",
+      "category": {
+        "dish_type": [
+          "base"
+        ],
+        "chapter": "Main Dishes",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "honey-mustard-raita",
+      "category": {
+        "dish_type": [
+          "condiment"
+        ],
+        "chapter": "Base Sauces",
+        "meal_role": "condiment"
+      }
+    },
+    {
+      "id": "maple-cranberry-sauce",
+      "category": {
+        "dish_type": [
+          "condiment"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "condiment"
+      }
+    },
+    {
+      "id": "maple-glazed-banana-johnnycakes",
+      "category": {
+        "dish_type": [
+          "breakfast"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "breakfast"
+      }
+    },
+    {
+      "id": "maple-glazed-mixed-nuts",
+      "category": {
+        "dish_type": [
+          "snack"
+        ],
+        "chapter": "Appetizers & Snacks",
+        "meal_role": "snack"
+      }
+    },
+    {
+      "id": "marzipan",
+      "category": {
+        "dish_type": [
+          "base"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "nice-cream-chocolate-sauce",
+      "category": {
+        "dish_type": [
+          "condiment"
+        ],
+        "chapter": "Nice Cream",
+        "meal_role": "condiment"
+      }
+    },
+    {
+      "id": "sunday-sauce",
+      "category": {
+        "dish_type": [
+          "main"
+        ],
+        "chapter": "Sides",
+        "meal_role": "main"
+      }
+    },
+    {
+      "id": "sweet-potato-granola-and-molasses-glazed-walnuts",
+      "category": {
+        "dish_type": [
+          "breakfast"
+        ],
+        "meal_role": "breakfast"
+      }
+    },
+    {
+      "id": "sweet-potato-granola-with-molasses-glazed-walnuts",
+      "category": {
+        "dish_type": [
+          "breakfast"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "breakfast"
+      }
+    },
+    {
+      "id": "vatana-gajar-handvo",
+      "category": {
+        "dish_type": [
+          "snack"
+        ],
+        "chapter": "Small Plates",
+        "meal_role": "snack"
+      }
+    },
+    {
+      "id": "watercress-salad-with-quail-eggs-ricotta-and-seeds",
+      "category": {
+        "dish_type": [
+          "salad"
+        ],
+        "chapter": "Tossed",
+        "meal_role": "starter"
+      }
+    },
+    {
+      "id": "white-chocolate-cream-filling",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "component"
+      }
+    }
+  ],
+  "categoryHolds": [
+    {
+      "id": "a-quick-cup-of-chocolate-instant-chocolate-drink-powder",
+      "decision": "unresolved",
+      "category": {
+        "dish_type": [
+          "drink"
+        ],
+        "chapter": "Smoothies, Mylkshakes & Drinks",
+        "meal_role": "drink"
+      }
+    },
+    {
+      "id": "anchovies-with-salsa-verde",
+      "decision": "keep",
+      "category": {
+        "dish_type": [
+          "starter"
+        ],
+        "chapter": "Autumn",
+        "meal_role": "starter"
+      }
+    },
+    {
+      "id": "bittersweet-ganache-glazed-chocolate-torte-to-live-for",
+      "decision": "keep",
+      "category": {
+        "dish_type": [
+          "dessert"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "dessert"
+      }
+    },
+    {
+      "id": "carrot-juice",
+      "decision": "keep",
+      "category": {
+        "dish_type": [
+          "drink"
+        ],
+        "chapter": "Smoothies, Mylkshakes & Drinks",
+        "meal_role": "drink"
+      }
+    },
+    {
+      "id": "chana-dhal",
+      "decision": "unresolved",
+      "category": {
+        "dish_type": [
+          "dessert"
+        ],
+        "chapter": "Desserts & Drinks",
+        "meal_role": "dessert"
+      }
+    },
+    {
+      "id": "chocolate-coconut-whipped-cream",
+      "decision": "unresolved",
+      "category": {
+        "dish_type": [
+          "dessert"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "dessert"
+      }
+    },
+    {
+      "id": "chocolate-cranberry-cream-filling",
+      "decision": "unresolved",
+      "category": {
+        "dish_type": [
+          "dessert"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "dessert"
+      }
+    },
+    {
+      "id": "chocolate-olive-oil-glaze-for-chocolate-dipped-anything",
+      "decision": "unresolved",
+      "category": {
+        "dish_type": [
+          "dessert"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "dessert"
+      }
+    },
+    {
+      "id": "dulce-de-leche",
+      "decision": "unresolved",
+      "category": {
+        "dish_type": [
+          "dessert"
+        ],
+        "chapter": "Mexican Desserts",
+        "meal_role": "dessert"
+      }
+    },
+    {
+      "id": "licorice-leather",
+      "decision": "keep",
+      "category": {
+        "dish_type": [
+          "snack"
+        ],
+        "chapter": "Balls & Bars",
+        "meal_role": "snack"
+      }
+    },
+    {
+      "id": "molasses-glazed-walnuts",
+      "decision": "keep",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Soups & Stews",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "not-so-southern-sausage-gravy",
+      "decision": "unresolved",
+      "category": {
+        "dish_type": [
+          "main"
+        ],
+        "chapter": "Main Dishes",
+        "meal_role": "main"
+      }
+    },
+    {
+      "id": "passion-fruit-glazed-doughnuts",
+      "decision": "keep",
+      "category": {
+        "dish_type": [
+          "dessert"
+        ],
+        "chapter": "Desserts",
+        "meal_role": "dessert"
+      }
+    },
+    {
+      "id": "savory-grits-with-slow-cooked-collard-greens",
+      "decision": "unresolved",
+      "category": {
+        "dish_type": [
+          "main"
+        ],
+        "chapter": "Grains & Legumes",
+        "meal_role": "main"
+      }
+    },
+    {
+      "id": "spiced-persimmon-bundt-cake-and-orange-glaze",
+      "decision": "keep",
+      "category": {
+        "dish_type": [
+          "dessert"
+        ],
+        "meal_role": "dessert"
+      }
+    },
+    {
+      "id": "spiced-persimmon-bundt-cake-with-orange-glaze",
+      "decision": "keep",
+      "category": {
+        "dish_type": [
+          "dessert"
+        ],
+        "chapter": "Beverages",
+        "meal_role": "dessert"
+      }
+    },
+    {
+      "id": "spicy-bacon",
+      "decision": "unresolved",
+      "category": {
+        "dish_type": [
+          "component"
+        ],
+        "chapter": "Main Dishes",
+        "meal_role": "component"
+      }
+    },
+    {
+      "id": "spicy-broccoli-and-herb-slaw",
+      "decision": "keep",
+      "category": {
+        "dish_type": [
+          "side"
+        ],
+        "chapter": "Salads and Vegetable Sides",
+        "meal_role": "side"
+      }
+    },
+    {
+      "id": "tomato-salad-in-coconut-broth",
+      "decision": "keep",
+      "category": {
+        "dish_type": [
+          "side"
+        ],
+        "chapter": "Small Plates",
+        "meal_role": "side"
+      }
+    },
+    {
+      "id": "yogurt-with-cucumber-garlic-and-dill",
+      "decision": "unresolved",
+      "category": {
+        "dish_type": [
+          "starter"
+        ],
+        "chapter": "Mezze & sharing plates",
+        "meal_role": "starter"
+      }
+    }
+  ],
+  "plannerExceptions": [
+    {
+      "id": "basic-pasta-sauce",
+      "reviewedRole": "main",
+      "projectedRecipeSha256": "156d48e051f386448327465506e8c50a9c5f28ac517355ad78f3289fb74ec0bb",
+      "reviewRecordSha256": "2afcc5bf85dd153b3d75b5e08fafa4f02afffdcbef4c1a81dec171cb483a7961",
+      "completedPlatedMain": true,
+      "multiActionSingleParagraph": true,
+      "cookingReady": false,
+      "cookingBlockReason": "ingredient list of the reviewed record omits items the method uses; a staged source-backed candidate exists but adopting it is a content change that needs a fresh review and fresh hashes",
+      "evidence": [
+        {
+          "json_pointer": "/method/0",
+          "quote": "Add pasta directly to the sauce."
+        }
+      ]
+    },
+    {
+      "id": "sunday-sauce",
+      "reviewedRole": "main",
+      "projectedRecipeSha256": "567e466a705fa5c3701b172a4fe4527173b85dcbe2989f8c6364c9e45662969f",
+      "reviewRecordSha256": "2afcc5bf85dd153b3d75b5e08fafa4f02afffdcbef4c1a81dec171cb483a7961",
+      "completedPlatedMain": true,
+      "multiActionSingleParagraph": true,
+      "cookingReady": false,
+      "cookingBlockReason": "ingredient list of the reviewed record omits items the method uses; a staged source-backed candidate exists but adopting it is a content change that needs a fresh review and fresh hashes",
+      "evidence": [
+        {
+          "json_pointer": "/method/0",
+          "quote": "Put the pasta directly into the sauce and manticare."
+        }
+      ]
+    },
+    {
+      "id": "watercress-salad-with-quail-eggs-ricotta-and-seeds",
+      "reviewedRole": "starter",
+      "projectedRecipeSha256": "b1387625ffe0097a5dec19ba0a4155bdf0d5d705257181136b7515ed81802144",
+      "reviewRecordSha256": "2afcc5bf85dd153b3d75b5e08fafa4f02afffdcbef4c1a81dec171cb483a7961",
+      "completedPlatedMain": false,
+      "multiActionSingleParagraph": false,
+      "cookingReady": true,
+      "evidence": [
+        {
+          "json_pointer": "/method/4",
+          "quote": "divide half of the salad among 4 starter plates."
+        }
+      ]
+    }
+  ]
+}

@@ -65,10 +65,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "component"
     ],
     "chapter": "Desserts",
-    "meal_role": "dessert"
+    "meal_role": "component"
   },
   "cuisine": "Other",
   "image": null

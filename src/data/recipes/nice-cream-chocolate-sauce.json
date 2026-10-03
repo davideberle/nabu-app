@@ -27,10 +27,10 @@
   "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/nice-cream-chocolate-sauce.jpg",
   "category": {
     "dish_type": [
-      "dessert"
+      "condiment"
     ],
     "chapter": "Nice Cream",
-    "meal_role": "dessert"
+    "meal_role": "condiment"
   },
   "time": {
     "prep": 20,

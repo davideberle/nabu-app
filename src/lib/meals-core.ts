@@ -15,6 +15,7 @@
  */
 
 import type { Recipe } from "./recipes.ts";
+import { hasReviewedPlatedMainEvidence, hasReviewedStarterEvidence } from "./planner-evidence.ts";
 
 // ---------------------------------------------------------------------------
 // Recipe metadata helpers (moved here from recipes.ts so the gate/classifier
@@ -225,6 +226,11 @@ export function isDinnerWorthy(recipe: Recipe): boolean {
   if (lowTypes.some((t) => EXCLUDED_DISH_TYPES.has(t))) return false;
   if (categoryValues.some((t) => EXCLUDED_DISH_TYPES.has(t))) return false;
 
+  // Reviewed starter evidence (Kitchen-owned, digest-bound) outranks the
+  // legacy salad-as-main path below: a starter plated as a salad course is a
+  // pairing, not a dinner main. No global side/starter policy change.
+  if (hasReviewedStarterEvidence(recipe)) return false;
+
   // Exclude by chapter name
   const chapter = (
     recipe.source?.chapter ||
@@ -318,7 +324,16 @@ export function isDinnerWorthy(recipe: Recipe): boolean {
   }
 
   // Exclude sauces/dressings/condiments unless the recipe is clearly a full main.
-  if (NON_MAIN_NAME_PATTERNS.test(nameLower) && !hasSubstantialMainNameSignal(recipe)) return false;
+  // A reviewed completed plated main ("Sunday Sauce" that finishes the
+  // fettuccine in the pan) may carry a condiment title; only Kitchen-owned,
+  // digest-bound evidence says so — never the record's own labels.
+  if (
+    NON_MAIN_NAME_PATTERNS.test(nameLower) &&
+    !hasSubstantialMainNameSignal(recipe) &&
+    !hasReviewedPlatedMainEvidence(recipe)
+  ) {
+    return false;
+  }
 
   // Exclude meal_role mismatches
   if (role === "breakfast" || role === "brunch" || role === "lunch" || role === "drink" || role === "beverage" || role === "snack" || role === "dessert") return false;
@@ -326,8 +341,10 @@ export function isDinnerWorthy(recipe: Recipe): boolean {
   // Must have a reasonable number of ingredients (not just a sauce/dip)
   if (recipe.ingredients.length < 3) return false;
 
-  // Must have method steps
-  if (!recipe.method || recipe.method.length < 2) return false;
+  // Must have method steps. A reviewed plated main whose several cooking
+  // actions sit in one paragraph is a formatting trait, not missing structure;
+  // the same evidence (and only it) narrows this cardinality check.
+  if ((!recipe.method || recipe.method.length < 2) && !hasReviewedPlatedMainEvidence(recipe)) return false;
 
   return true;
 }

@@ -40,10 +40,10 @@
   "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/coffee-squares.jpg",
   "category": {
     "dish_type": [
-      "drink"
+      "snack"
     ],
     "chapter": "Balls & Bars",
-    "meal_role": "drink"
+    "meal_role": "snack"
   },
   "time": {
     "prep": 5,

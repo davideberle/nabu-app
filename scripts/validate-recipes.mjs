@@ -14,13 +14,18 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const RECIPES_DIR = join(__dirname, "..", "src", "data", "recipes");
 
+// Kitchen DESIGN.md §4.1: the deployable data carries `snack` and `condiment`
+// meal roles and `snack`/`component` dish types. They are explicit vocabulary,
+// not silently remapped; every other unknown value still errors/warns below.
 const VALID_MEAL_ROLES = new Set([
   "main", "side", "starter", "dessert", "component", "breakfast", "drink",
+  "snack", "condiment",
 ]);
 
 const VALID_DISH_TYPES = new Set([
   "main", "soup", "stew", "salad", "side", "vegetable", "bread", "starter",
   "dessert", "baking", "condiment", "base", "breakfast", "drink",
+  "snack", "component",
 ]);
 
 const files = readdirSync(RECIPES_DIR).filter(

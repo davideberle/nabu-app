@@ -35,10 +35,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "base"
     ],
     "chapter": "Main Dishes",
-    "meal_role": "main"
+    "meal_role": "component"
   },
   "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/homemade-egg-pasta-fettuccine.jpg",
   "cuisine": "Italian",

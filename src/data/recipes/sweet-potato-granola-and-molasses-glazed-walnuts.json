@@ -68,9 +68,9 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "breakfast"
     ],
-    "meal_role": "dessert"
+    "meal_role": "breakfast"
   },
   "cuisine": "African & Caribbean"
 }

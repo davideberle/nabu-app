@@ -39,10 +39,10 @@
   },
   "category": {
     "dish_type": [
-      "dessert"
+      "breakfast"
     ],
     "chapter": "Desserts",
-    "meal_role": "dessert"
+    "meal_role": "breakfast"
   },
   "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/acha-pudding.jpg",
   "cuisine": "Nigerian"

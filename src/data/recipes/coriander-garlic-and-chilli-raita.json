@@ -50,10 +50,10 @@
   ],
   "category": {
     "dish_type": [
-      "side"
+      "condiment"
     ],
     "chapter": "Base Sauces",
-    "meal_role": "side"
+    "meal_role": "condiment"
   },
   "cuisine": "Indian"
 }

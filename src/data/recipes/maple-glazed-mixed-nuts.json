@@ -40,10 +40,10 @@
   ],
   "category": {
     "dish_type": [
-      "starter"
+      "snack"
     ],
     "chapter": "Appetizers & Snacks",
-    "meal_role": "starter"
+    "meal_role": "snack"
   },
   "cuisine": "Other",
   "tags": {

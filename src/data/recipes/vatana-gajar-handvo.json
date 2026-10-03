@@ -95,10 +95,10 @@
   },
   "category": {
     "dish_type": [
-      "main"
+      "snack"
     ],
     "chapter": "Small Plates",
-    "meal_role": "main"
+    "meal_role": "snack"
   },
   "cuisine": "Indian"
 }

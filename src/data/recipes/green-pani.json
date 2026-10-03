@@ -70,10 +70,10 @@
   ],
   "category": {
     "dish_type": [
-      "main"
+      "component"
     ],
     "chapter": "Base Sauces",
-    "meal_role": "main"
+    "meal_role": "component"
   },
   "cuisine": "Indian"
 }

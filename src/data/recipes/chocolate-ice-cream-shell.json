@@ -33,10 +33,10 @@
   ],
   "category": {
     "dish_type": [
-      "dessert"
+      "condiment"
     ],
     "chapter": "Desserts",
-    "meal_role": "dessert"
+    "meal_role": "condiment"
   },
   "time": {
     "prep": 20,

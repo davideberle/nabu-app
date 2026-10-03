@@ -23,6 +23,7 @@
  */
 
 import { isDinnerWorthy, hasExplicitMainCategory, hasSubstantialMainNameSignal } from "./meals-core.ts";
+import { hasReviewedPlatedMainEvidence, reviewedMainCookingBlock } from "./planner-evidence.ts";
 import type { Recipe } from "./recipes";
 
 export type PlannerRole = "main" | "light-meal" | "pairing" | "reject";
@@ -343,14 +344,26 @@ export function classifyPlannerRole(recipe: Recipe): RoleClassification {
   // that label and are still not dinner. "Chicken with pesto" keeps its
   // chicken and survives. This mirrors `NON_MAIN_NAME_PATTERNS` in the
   // production main gate rather than inventing a second rule.
-  if ((DIP_NAME.test(name) || CONDIMENT_NAME.test(name)) && !hasSubstantialMainNameSignal(recipe)) {
+  //
+  // The one further escape is Kitchen-owned reviewed evidence bound to the
+  // full record digest (planner-evidence.ts): the same rule the dinner gate
+  // applies, so a reviewed plated main is never "main" here and "reject" there.
+  if (
+    (DIP_NAME.test(name) || CONDIMENT_NAME.test(name)) &&
+    !hasSubstantialMainNameSignal(recipe) &&
+    !hasReviewedPlatedMainEvidence(recipe)
+  ) {
     const category: RoleCategory = DIP_NAME.test(name) ? "dip" : "condiment";
+    const cookingBlock = reviewedMainCookingBlock(recipe);
     return {
       role: "reject",
       category,
       mainEligible: false,
       pairingEligible: false,
-      reasons: [`name reads as ${category} with no substantial main signal`],
+      reasons: [
+        `name reads as ${category} with no substantial main signal`,
+        ...(cookingBlock ? [`reviewed main; planner availability blocked: ${cookingBlock}`] : []),
+      ],
     };
   }
 
@@ -433,15 +446,21 @@ export function classifyPlannerRole(recipe: Recipe): RoleClassification {
     return { role: "main", category: "main", mainEligible: true, pairingEligible: false, reasons };
   }
 
-  // Refused by the main gate. A salad/side/starter identity with usable
-  // structure is still worth keeping as a pairing idea; anything else is out.
+  // Refused by the main gate. A reviewed main whose ingredient list is not
+  // yet source-complete says so: semantic role is settled, planner cooking
+  // availability is not, and nothing here overrides that completeness gate.
+  const cookingBlock = reviewedMainCookingBlock(recipe);
+  if (cookingBlock) reasons.push(`reviewed main; planner availability blocked: ${cookingBlock}`);
+
+  // A salad/side/starter identity with usable structure is still worth
+  // keeping as a pairing idea; anything else is out.
   if (PAIRING_NAME.test(name) || values.some((v) => DECLARED_PAIRING_TYPES.has(v))) {
     return {
       role: "pairing",
       category: name.includes("salad") ? "salad" : "side",
       mainEligible: false,
       pairingEligible: true,
-      reasons: ["not a dinner main, but usable as a pairing/serve-with idea"],
+      reasons: ["not a dinner main, but usable as a pairing/serve-with idea", ...reasons],
     };
   }
 
@@ -450,7 +469,7 @@ export function classifyPlannerRole(recipe: Recipe): RoleClassification {
     category: "unstructured",
     mainEligible: false,
     pairingEligible: false,
-    reasons: ["refused by the planner main gate and not usable as a pairing"],
+    reasons: ["refused by the planner main gate and not usable as a pairing", ...reasons],
   };
 }
 
