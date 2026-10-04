@@ -286,10 +286,24 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     const dOver = await settlePlayLease({ leaseId: d.lease.id, consumedSeconds: 500, end: true, now: at(103) }, client2);
     if (!dOver.ok) throw new Error("settle failed");
     ok(dOver.lease.consumedSeconds === 101 && dOver.refusedSeconds === 399 && dOver.lease.finalSettled && dOver.lease.state === "ended", JSON.stringify({ consumed: dOver.lease.consumedSeconds, refused: dOver.refusedSeconds }));
-    // Beyond the window the lease is immutable: refused in full.
+    // Beyond the window the lease is immutable: refused in full. The window is judged by the reading's own time
+    // (`measuredAt`, the meter's observation instant, never later than now): a correction observed inside the window
+    // but delivered after it is accepted; one observed after the window is refused even if delivered at once.
     const dLate = await settlePlayLease({ leaseId: d.lease.id, consumedSeconds: 500, end: true, now: at(101 + LATE_TERMINAL_CORRECTION_SECONDS + 1) }, client2);
     if (!dLate.ok) throw new Error("settle failed");
     ok(dLate.lease.consumedSeconds === 101 && dLate.refusedSeconds === 399, JSON.stringify({ consumed: dLate.lease.consumedSeconds, refused: dLate.refusedSeconds }));
+    const e2 = await fresh({ santiagoCoins: 7 });
+    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-watermark-3", purchaseId: id("p"), redemptionId: id("r"), now: at(0) }, e2);
+    const f = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "F", now: at(0) }, e2);
+    if (!f.ok) throw new Error("issue failed");
+    await recordLeaseActivation(f.lease.id, at(0), e2);
+    await endPlayLease({ leaseId: f.lease.id, personId: "santiago", reason: "left", now: at(10) }, e2);
+    const fFinal = await settlePlayLease({ leaseId: f.lease.id, consumedSeconds: 2, end: true, measuredAt: at(10).getTime(), now: at(11) }, e2);
+    ok(fFinal.ok && fFinal.lease.finalSettled);
+    const observedInside = await settlePlayLease({ leaseId: f.lease.id, consumedSeconds: 3, end: true, measuredAt: at(10 + LATE_TERMINAL_CORRECTION_SECONDS).getTime(), now: at(10 + LATE_TERMINAL_CORRECTION_SECONDS + 40) }, e2);
+    ok(observedInside.ok && observedInside.lease.consumedSeconds === 3, "observed at end+120 s inclusive, delivered 40 s later: accepted");
+    const observedOutside = await settlePlayLease({ leaseId: f.lease.id, consumedSeconds: 4, end: true, measuredAt: at(10 + LATE_TERMINAL_CORRECTION_SECONDS).getTime() + 1, now: at(10 + LATE_TERMINAL_CORRECTION_SECONDS + 41) }, e2);
+    ok(observedOutside.ok && observedOutside.lease.consumedSeconds === 3 && observedOutside.refusedSeconds === 1, "observed 1 ms past the window: refused in full");
     // A non-terminal report after finalization never corrects anything.
     const dInterim = await settlePlayLease({ leaseId: d.lease.id, consumedSeconds: 101, end: false, now: at(104) }, client2);
     ok(dInterim.ok && dInterim.delta === 0);

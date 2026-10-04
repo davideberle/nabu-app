@@ -15,7 +15,7 @@ const ADAPTER = "/Users/claweberle/.openclaw/workspace/projects/game-studio/serv
 const available = existsSync(ADAPTER);
 
 type Adapter = {
-  sessionEligibleUntil: (session: unknown) => number;
+  observationEligibleUntil: (lease: unknown) => number;
   createChildPlayAdapter: (opts: Record<string, unknown>) => import("node:http").Server & { store: { loadLease: (id: string) => { consumed: number; state: string; endReason: string | null; lastActive: boolean; session: { measured?: boolean; observed?: number; closed?: boolean; base?: number } | null; closedSessions?: { grants?: Record<string, unknown>; deadline?: number }[]; previousSession?: { observed?: number } | null; frame?: { grant: number | null; ranMs: number; running: boolean } | null } | null }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
   derivePlayKey: (secret: string) => Buffer;
   mintPlayCredential: (key: Buffer, claims: Record<string, unknown>) => string;
@@ -1582,8 +1582,8 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const bAfter = (await getLease("lease-joined-r14-late-b", client))!;
       equal(bAfter.budgetSeconds, 899, "the successor's live budget is re-derived, nothing overlaps");
       equal(bAfter.state, "active");
-      // Beyond the late window — the observed SESSION's own horizon (its last handed deadline + 120 s; round 17) — refused, discarded, unchanged.
-      clock = (mod.sessionEligibleUntil(server.store.loadLease("lease-joined-r14-late")!.session) as number) + 1;
+      // Beyond the lease's window (end + 120 s, inclusive; the final contract of round 18): refused, discarded, unchanged.
+      clock = (mod.observationEligibleUntil(server.store.loadLease("lease-joined-r14-late")!) as number) + 1;
       const tooLate = await fetch(`${base}/v1/play/lease-joined-r14-late/frame`, { method: "POST", headers, body: JSON.stringify({ grant: g1, session: g1, ranMs: 700, running: false }) });
       equal(tooLate.status, 410);
       await server.settler.flush();
@@ -1681,12 +1681,12 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     }
   });
 
-  it("R17-1 paired controls through Family: three stale sessions, the oldest final delivered at its horizon (accepted) or 1 ms past it (refused, counted), with or without a zero-run resume — identical totals either way; successor conserves what Family settled", async () => {
-    for (const [offset, expectTotal, expectFamily, expectB] of [[0, 3, 3, 897], [1, 2.5, 3, 897]] as const) {
+  it("R18-1 paired controls through Family: three stale sessions, a long pause, an end; the finals delivered at end+120 s (accepted → meter 3, Family 3, B 897) or 1 ms past it (refused and counted → meter 1.5, Family 2, B 898), with or without a zero-run resume — identical either way; Family judges the correction by the observation instant", async () => {
+    for (const [offset, expectTotal, expectFamily, expectB] of [[0, 3, 3, 897], [1, 1.5, 2, 898]] as const) {
       for (const resume of [false, true]) {
         await allowance();
         clock = t0;
-        const lid = `lease-joined-r17-${offset}-${resume ? "r" : "n"}`;
+        const lid = `lease-joined-r18-${offset}-${resume ? "r" : "n"}`;
         await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: lid, takeover: true, deviceLabel: null, now: at(0) }, client);
         const { server, base } = await stack();
         try {
@@ -1701,18 +1701,28 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
             clock = t0 + (i + 1) * 1000;
             equal((await post("tick", { active: false, foreground: false, grant: g, runMs: 500 })).status, 200);
           }
-          const stored = server.store.loadLease(lid)!;
-          const oldest = stored.closedSessions!.find((c) => c.grants && c.grants[grants[0]])!;
-          const horizon = mod.sessionEligibleUntil(oldest) as number;
-          clock = horizon + offset;
+          clock = t0 + 200_000; // a long pause: every session's own deadline is long past; nothing is forgotten
           if (resume) equal((await post("tick", { active: false, foreground: true, grant: null, runMs: 0 })).status, 200);
-          for (const g of grants.slice().reverse()) await post("frame", { grant: g, session: g, ranMs: 1000, running: false });
-          equal(server.store.loadLease(lid)!.consumed, expectTotal, `${resume ? "resume" : "no resume"} at horizon+${offset}`);
-          const ended = await post("end", { reason: "left", frameStopped: true, grant: grants[2], runMs: 0 });
+          const ended = await post("end", { reason: "left", frameStopped: true, grant: grants[2], runMs: 500 });
           equal(ended.status, 200);
+          equal(ended.json.consumedSeconds, 1.5);
+          await server.settler.flush();
+          equal((await getLease(lid, client))!.consumedSeconds, 2, "terminal report rounds 1.5 up");
+          const horizon = mod.observationEligibleUntil(server.store.loadLease(lid)!) as number;
+          clock = horizon + offset;
+          for (const g of grants.slice().reverse()) {
+            const r = await post("frame", { grant: g, session: g, ranMs: 1000, running: false });
+            equal(r.json.known, true);
+            equal(Boolean(r.json.accepted), offset === 0, `${resume ? "resume" : "no resume"} at end+120 s+${offset} ms: ${JSON.stringify(r.json)}`);
+          }
+          equal(server.store.loadLease(lid)!.consumed, expectTotal);
+          equal(server.store.loadLease(lid)!.state, "ended", "nothing reopened");
+          // The corrections reach Family AFTER the window on the wall clock; Family judges them by the meter's observation instant.
+          clock = horizon + 30_000;
           await server.settler.flush();
           const fam = (await getLease(lid, client))!;
-          equal(fam.consumedSeconds, expectFamily, "terminal report rounds up");
+          equal(fam.consumedSeconds, expectFamily, "Family accepted exactly the corrections the meter lawfully observed inside the window");
+          equal(fam.finalSettled, true);
           const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: `${lid}-b`, takeover: true, deviceLabel: null, now: new Date(clock + 5000) }, client);
           ok(b.ok);
           equal(b.lease.budgetSeconds, expectB, "conservation: settled + usable = 900");

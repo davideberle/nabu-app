@@ -207,9 +207,10 @@ function rowToPurchase(row: Record<string, unknown>): PlayPurchase {
 export const CAP_OVERLAP_TOLERANCE_SECONDS = 15;
 
 /**
- * Late terminal correction window (round 14). A meter's terminal report is final, but an authenticated observation the
- * meter received only after it had to finalize (a frame's final beacon overtaken by the end, a sweep) is still genuine
- * evidence: for this long after the lease's end, a LATER terminal report may raise consumption — never above the
+ * Late terminal correction window (rounds 14–18; the same horizon as the meter's `LATE_OBSERVATION_SECONDS`). A meter's
+ * terminal report is final, but an authenticated observation the meter received only after it had to finalize (a
+ * frame's final beacon overtaken by the end, a sweep) is still genuine evidence: for this long after the lease's end
+ * (judged by the reading's own time, inclusive), a LATER terminal report may raise consumption — never above the
  * ceiling that applied at finalization (`fence_cap_seconds`: the frozen cap plus bounded overlap), never above the
  * allowance room, never reviving the lease or touching its successor's fence (the successor's live budget is simply
  * re-derived, as for any late report). After the window the lease is immutable and such a report is refused in full.
@@ -680,7 +681,11 @@ export async function settlePlayLease(
     const measuredOverlap = Number.isFinite(reportMeasuredMs) && Number.isFinite(endedMs) ? Math.max(0, Math.ceil((reportMeasuredMs - endedMs) / 1000)) : 0;
     const overlapAllowance = lease.state === "ended" && !lease.finalSettled ? Math.min(CAP_OVERLAP_TOLERANCE_SECONDS, measuredOverlap) : 0;
     const nowForWindow = Date.parse(at);
-    const lateCorrection = lease.state === "ended" && lease.finalSettled && input.end === true && Number.isFinite(endedMs) && nowForWindow - endedMs <= LATE_TERMINAL_CORRECTION_SECONDS * 1000;
+    // The correction window is judged by the reading's own time (the meter's observation instant, carried as
+    // `measuredAt`; never later than now) — the same end + window horizon the meter applies on delivery — so a
+    // correction the meter lawfully accepted is not refused here for transit time, and nothing after the window counts.
+    const correctionObservedAt = Number.isFinite(reportMeasuredMs) ? Math.min(reportMeasuredMs, nowForWindow) : nowForWindow;
+    const lateCorrection = lease.state === "ended" && lease.finalSettled && input.end === true && Number.isFinite(endedMs) && correctionObservedAt - endedMs <= LATE_TERMINAL_CORRECTION_SECONDS * 1000;
     const ceiling = lease.state === "ended" && !lease.finalSettled
       ? lease.capSeconds + overlapAllowance
       : lateCorrection
