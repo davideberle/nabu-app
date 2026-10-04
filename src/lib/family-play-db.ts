@@ -22,6 +22,7 @@ import type { Client, Transaction } from "@libsql/client";
 import { getDb } from "./db.ts";
 import type { ChildId } from "./family-assistant-turn.ts";
 import type { LeaseState } from "./family-play.ts";
+import { AUTHORITY_WINDOW_SECONDS } from "./family-play.ts";
 import {
   FAMILY_WALLET_EPOCH_WEEK,
 } from "./family-wallet.ts";
@@ -88,7 +89,7 @@ export async function ensurePlayTables(client: Db): Promise<void> {
       reserve_seconds  INTEGER NOT NULL DEFAULT 0
     )
   `);
-  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0", "cap_seconds INTEGER", "final_settled INTEGER NOT NULL DEFAULT 0", "activated_at TEXT", "measured_at TEXT"]) {
+  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0", "cap_seconds INTEGER", "final_settled INTEGER NOT NULL DEFAULT 0", "activated_at TEXT", "measured_at TEXT", "authority_until TEXT"]) {
     try {
       await client.execute(`ALTER TABLE family_play_leases ADD COLUMN ${column}`);
     } catch {
@@ -163,6 +164,7 @@ function rowToLease(row: Record<string, unknown>): PlayLease {
     finalSettled: Number(row["final_settled"] ?? 0) === 1,
     activatedAt: (row["activated_at"] as string | null) ?? null,
     measuredAt: (row["measured_at"] as string | null) ?? null,
+    authorityUntil: (row["authority_until"] as string | null) ?? null,
   };
 }
 
@@ -260,12 +262,44 @@ async function reconcileActiveBudgets(db: Db, personId: ChildId, now: Date): Pro
   }
 }
 
-/** End a lease now: freeze its cap so a late report can never exceed what it could lawfully have measured. */
+/**
+ * The instant a Family-side end of this lease takes effect: now, or the end of
+ * the exclusive authority window its meter currently holds, whichever is
+ * later (the cross-service fence — see AUTHORITY_WINDOW_SECONDS).
+ */
+export function fenceInstant(lease: Pick<PlayLease, "authorityUntil">, now: Date): Date {
+  const until = lease.authorityUntil ? Date.parse(lease.authorityUntil) : Number.NaN;
+  return Number.isFinite(until) && until > now.getTime() ? new Date(until) : now;
+}
+
+/**
+ * The instant until which a successor of this child is `pending`: the latest
+ * fence of any unresolved metered lease that Family ended but whose meter has
+ * not yet reported its end. Null when nothing fences (or the fences passed).
+ */
+async function handoverUntil(db: Db, personId: ChildId, exceptId: string | null, now: Date): Promise<string | null> {
+  const result = await db.execute({
+    sql: "SELECT MAX(ended_at) AS until FROM family_play_leases WHERE person_id = ? AND id <> ? AND state = 'ended' AND metered = 1 AND final_settled = 0 AND ended_at > ?",
+    args: [personId, exceptId ?? "", now.toISOString()],
+  });
+  const until = result.rows[0]?.["until"];
+  return typeof until === "string" && until ? until : null;
+}
+
+/**
+ * End a lease (Family-initiated: takeover, stale replacement, release, refund).
+ * The end takes effect at the fence instant — now, or the end of the authority
+ * window its meter holds — and the cap is frozen at what the meter may
+ * lawfully still measure up to that instant, so a late report can never
+ * exceed it and a successor is held `pending` until then (or until the
+ * meter's terminal report arrives first).
+ */
 async function endLeaseRow(db: Db, lease: PlayLease, reason: string, now: Date): Promise<void> {
-  const cap = endedCapSeconds(lease, now);
+  const effective = fenceInstant(lease, now);
+  const cap = endedCapSeconds(lease, effective);
   await db.execute({
     sql: "UPDATE family_play_leases SET state = 'ended', ended_at = ?, end_reason = ?, cap_seconds = ?, budget_seconds = MIN(budget_seconds, ?) WHERE id = ? AND state = 'active'",
-    args: [now.toISOString(), reason, cap, cap, lease.id],
+    args: [effective.toISOString(), reason, cap, cap, lease.id],
   });
 }
 
@@ -488,7 +522,7 @@ export async function refundPlayPurchase(
       if (lease.budgetSeconds <= lease.consumedSeconds) {
         await tx.execute({
           sql: "UPDATE family_play_leases SET state = 'ended', ended_at = ?, end_reason = 'refunded', cap_seconds = consumed_seconds, budget_seconds = consumed_seconds WHERE id = ? AND state = 'active'",
-          args: [at, lease.id],
+          args: [fenceInstant(lease, input.now ?? new Date()).toISOString(), lease.id],
         });
       }
     }
@@ -512,7 +546,7 @@ export async function refundPlayPurchase(
 // ---------------------------------------------------------------------------
 
 export type IssueLeaseOutcome =
-  | { ok: true; lease: PlayLease; replaced: string | null; remainingSeconds: number }
+  | { ok: true; lease: PlayLease; replaced: string | null; remainingSeconds: number; handoverAt: string | null }
   | { ok: false; reason: "no-allowance" | "lease-held"; remainingSeconds: number; heldBy?: { leaseId: string; gameId: string; deviceLabel: string | null } };
 
 export async function issuePlayLease(
@@ -562,6 +596,7 @@ export async function issuePlayLease(
       finalSettled: !metered,
       activatedAt: null,
       measuredAt: null,
+      authorityUntil: null,
     };
     await tx.execute({
       sql: `INSERT INTO family_play_leases
@@ -569,8 +604,12 @@ export async function issuePlayLease(
             VALUES (?, ?, ?, ?, ?, ?, 0, 'active', ?, ?, ?, ?, ?, ?)`,
       args: [lease.id, lease.personId, lease.gameId, lease.mode, metered ? 1 : 0, lease.budgetSeconds, lease.issuedAt, lease.deviceLabel, lease.predecessorId, lease.reserveSeconds, lease.capSeconds, metered ? 0 : 1],
     });
+    // A predecessor whose meter still holds an authority window fences this
+    // lease: the meter is told `pending` until that window lapses or the
+    // predecessor's terminal report arrives, whichever is first.
+    const handoverAt = metered ? await handoverUntil(tx, input.personId, lease.id, now) : null;
     await tx.commit();
-    return { ok: true, lease, replaced: decision.replaces, remainingSeconds: remaining };
+    return { ok: true, lease, replaced: decision.replaces, remainingSeconds: remaining, handoverAt };
   } catch (error) {
     try {
       await tx.rollback();
@@ -730,7 +769,8 @@ export type LeaseStatus = {
   gameId: string;
   mode: PlayMode;
   metered: boolean;
-  state: LeaseState;
+  /** `pending`: issued, but a predecessor's authority window has not lapsed and its meter has not reported its end — the meter must not run it yet. */
+  state: LeaseState | "pending";
   endReason: string | null;
   budgetSeconds: number;
   consumedSeconds: number;
@@ -741,8 +781,20 @@ export type LeaseStatus = {
   finalSettled: boolean;
   /** Family's recorded end instant (ISO), or null while active; the meter counts no authorized time past it. */
   endedAt: string | null;
-  /** Family server time when this answer was produced (ISO); the meter treats answers that aged past its freshness window as history. */
+  /** Family server time when this answer was produced (ISO). */
   asOf: string;
+  /**
+   * Exclusive authority window granted to the meter by THIS read (seconds,
+   * relative to the read; null unless the lease is active and runnable): Family
+   * will not activate a successor of the child before it lapses unless the
+   * meter reports this lease's end first. The meter commits on this answer only
+   * inside its own copy of the window, measured from the instant it sent the request.
+   */
+  authorizedForSeconds: number | null;
+  /** End of the granted window on Family's clock (ISO), informational. */
+  authorizedUntil: string | null;
+  /** While `pending`: the instant the fence lapses (ISO); the meter retries by then or on the predecessor's end. */
+  startsAt: string | null;
 };
 
 /**
@@ -763,15 +815,25 @@ export async function recordLeaseActivation(leaseId: string, now = new Date(), c
       return;
     }
     const at = now.toISOString();
-    if (lease.state === "active" && !lease.activatedAt) {
-      await tx.execute({ sql: "UPDATE family_play_leases SET activated_at = ? WHERE id = ? AND activated_at IS NULL", args: [at, lease.id] });
-    }
     // Ended and never activated ⇒ its meter can never report: resolve it (the asked lease included).
     await tx.execute({
       sql: `UPDATE family_play_leases SET final_settled = 1, cap_seconds = consumed_seconds
             WHERE person_id = ? AND state = 'ended' AND activated_at IS NULL AND final_settled = 0 AND metered = 1`,
       args: [lease.personId],
     });
+    if (lease.state === "active") {
+      const pendingUntil = await handoverUntil(tx, lease.personId, lease.id, now);
+      if (pendingUntil === null) {
+        // Grant (or extend) the exclusive authority window for this read. A
+        // Family-side end of this lease now takes effect no earlier than the
+        // window's end, and successors issued meanwhile are `pending` until then.
+        const until = new Date(now.getTime() + AUTHORITY_WINDOW_SECONDS * 1000).toISOString();
+        await tx.execute({
+          sql: "UPDATE family_play_leases SET activated_at = COALESCE(activated_at, ?), authority_until = CASE WHEN authority_until IS NULL OR authority_until < ? THEN ? ELSE authority_until END WHERE id = ? AND state = 'active'",
+          args: [at, until, until, lease.id],
+        });
+      }
+    }
     await reconcileActiveBudgets(tx, lease.personId, now);
     await tx.commit();
   } catch (error) {
@@ -787,19 +849,22 @@ export async function recordLeaseActivation(leaseId: string, now = new Date(), c
 }
 
 /** Authoritative lease state for the Game Studio meter (status endpoint). */
-export async function getLeaseStatus(leaseId: string, client?: Client): Promise<LeaseStatus | null> {
+export async function getLeaseStatus(leaseId: string, client?: Client, now: Date = new Date()): Promise<LeaseStatus | null> {
   const db = client ?? (await getDb());
   await ensurePlayTables(db);
   const lease = await readLease(db, leaseId);
   if (!lease) return null;
   const allowance = await readAllowance(db, lease.personId);
+  const startsAt = lease.state === "active" ? await handoverUntil(db, lease.personId, lease.id, now) : null;
+  const pending = startsAt !== null;
+  const granted = lease.state === "active" && !pending && lease.authorityUntil !== null;
   return {
     leaseId: lease.id,
     personId: lease.personId,
     gameId: lease.gameId,
     mode: lease.mode,
     metered: lease.metered,
-    state: lease.state,
+    state: pending ? "pending" : lease.state,
     endReason: lease.endReason,
     budgetSeconds: lease.budgetSeconds,
     consumedSeconds: lease.consumedSeconds,
@@ -809,7 +874,10 @@ export async function getLeaseStatus(leaseId: string, client?: Client): Promise<
     capSeconds: lease.capSeconds,
     finalSettled: lease.finalSettled,
     endedAt: lease.endedAt,
-    asOf: new Date().toISOString(),
+    asOf: now.toISOString(),
+    authorizedForSeconds: granted ? AUTHORITY_WINDOW_SECONDS : null,
+    authorizedUntil: granted ? lease.authorityUntil : null,
+    startsAt,
   };
 }
 

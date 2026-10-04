@@ -47,7 +47,7 @@ type Phase =
   | { kind: "starting" }
   | { kind: "needs-time"; balance: number | null; remaining: number }
   | { kind: "held"; heldBy: { gameId: string; deviceLabel: string | null } }
-  | { kind: "playing"; grant: LeaseGrant; studio: StudioAccess; tick: TickView | null; paused: boolean; hidden: boolean; offline: boolean }
+  | { kind: "playing"; grant: LeaseGrant; studio: StudioAccess; tick: TickView | null; paused: boolean; hidden: boolean; offline: boolean; handover: boolean }
   | { kind: "ended"; reason: "exhausted" | "ended" | "replaced" | "left" | "expired"; remaining: number | null }
   | { kind: "unavailable"; message: string };
 
@@ -95,7 +95,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         setPhase({ kind: "unavailable", message: "Game Studio isn't connected on this server yet. Your time is kept." });
         return;
       }
-      setPhase({ kind: "playing", grant: grant.value, studio: grant.value.studio, tick: null, paused: false, hidden: typeof document !== "undefined" && document.visibilityState === "hidden", offline: false });
+      setPhase({ kind: "playing", grant: grant.value, studio: grant.value.studio, tick: null, paused: false, hidden: typeof document !== "undefined" && document.visibilityState === "hidden", offline: false, handover: false });
     })();
     return () => controller.abort();
   }, [child, gameId, client, attempt, takeover]);
@@ -177,8 +177,11 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
             return;
           }
           // Meter unreachable or refusing: fail closed — freeze the frame NOW, count nothing, keep retrying.
-          setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, offline: true } : p));
-          phaseRef.current = current.kind === "playing" ? { ...current, offline: true } : current;
+          // 409 = handover pending: Family still fences this lease behind the previous session's
+          // authority window; the meter retries by itself on the next beat (nothing counted meanwhile).
+          const handover = outcome.status === 409;
+          setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, offline: true, handover } : p));
+          phaseRef.current = current.kind === "playing" ? { ...current, offline: true, handover } : current;
           postFrameState("offline", current.tick?.remainingSeconds ?? 0, false);
           return;
         }
@@ -190,8 +193,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
           void client.release(child, leaseId, tick.endReason ?? "exhausted");
           return;
         }
-        setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, tick, offline: false } : p));
-        phaseRef.current = current.kind === "playing" ? { ...current, tick, offline: false } : current;
+        setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, tick, offline: false, handover: false } : p));
+        phaseRef.current = current.kind === "playing" ? { ...current, tick, offline: false, handover: false } : current;
         postFrameState(tick.phase, tick.remainingSeconds, false);
       },
     });
@@ -320,9 +323,9 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
               allow="fullscreen"
             />
             {phase.paused || phase.hidden || phase.offline ? (
-              <div role="dialog" aria-label={phase.offline ? "Reconnecting" : "Paused"} className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-secondary/95 p-6 text-center backdrop-blur-sm">
-                <p className="text-xl font-semibold">{phase.offline ? "Reconnecting to Game Studio…" : "Paused"}</p>
-                <p className="max-w-sm text-sm text-secondary">{phase.offline ? "Your play time isn't counting while the connection is down. We'll continue when it's back." : "Your play time isn't counting while paused."}</p>
+              <div role="dialog" aria-label={phase.offline ? (phase.handover ? "Starting" : "Reconnecting") : "Paused"} className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-secondary/95 p-6 text-center backdrop-blur-sm">
+                <p className="text-xl font-semibold">{phase.offline ? (phase.handover ? "Closing your other session…" : "Reconnecting to Game Studio…") : "Paused"}</p>
+                <p className="max-w-sm text-sm text-secondary">{phase.offline ? (phase.handover ? "Your game starts here in a moment. Your play time isn't counting yet." : "Your play time isn't counting while the connection is down. We'll continue when it's back.") : "Your play time isn't counting while paused."}</p>
                 {phase.paused ? (
                   <button type="button" onClick={() => applyPlayFlags({ paused: false })} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>▶ Continue</button>
                 ) : null}

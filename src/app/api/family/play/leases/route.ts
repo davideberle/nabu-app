@@ -56,6 +56,8 @@ export async function POST(request: Request) {
       lease: outcome.lease,
       replaced: outcome.replaced,
       remainingSeconds: outcome.remainingSeconds,
+      // Non-null while a predecessor's authority window fences this lease: the Studio meter reports it `pending` until then.
+      handoverAt: outcome.handoverAt,
       price,
       warnSeconds: PLAY_WARN_SECONDS,
       graceSeconds: PLAY_GRACE_SECONDS,

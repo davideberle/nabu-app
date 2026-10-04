@@ -32,6 +32,19 @@ export const PLAY_PURCHASE_REWARD_ID = "game-play-15min";
 export const FREE_GAME_IDS: readonly string[] = ["adaptive-chess-coach"];
 /** A lease without any settlement for this long is considered abandoned. */
 export const LEASE_STALE_SECONDS = 10 * 60;
+/**
+ * Authority window (cross-service fence, GP-03/GP-08). Every signed status
+ * read that answers "active" grants the meter an EXCLUSIVE authority window of
+ * this many seconds: Family promises that no successor lease of the child
+ * becomes active before the window lapses, unless the meter acknowledges the
+ * predecessor's end first (its terminal report). A Family-side end of a lease
+ * that holds a window takes effect at the window's end, and a successor issued
+ * meanwhile is reported `pending` to the meter until then. The meter, in turn,
+ * commits on a status answer only inside its own (shorter) copy of the window,
+ * measured from the instant it sent the request. So an answer delivered late
+ * — by any delay — can never authorize play while a successor is active.
+ */
+export const AUTHORITY_WINDOW_SECONDS = 2;
 /** Idempotency keys are client-generated UUID-like opaque strings. */
 export const IDEMPOTENCY_KEY_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]{7,99}$/;
 /** Stable Game Studio game/project ids (same grammar as the owner adapter). */
@@ -121,6 +134,8 @@ export type PlayLease = {
   activatedAt: string | null;
   /** Meter time of the last reading that advanced consumption (the measurement watermark); null = none yet. */
   measuredAt: string | null;
+  /** End of the exclusive authority window granted by the latest status read (ISO), or null if none was granted. */
+  authorityUntil: string | null;
 };
 
 /**

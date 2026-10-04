@@ -39,6 +39,7 @@ const lease = (over: Partial<PlayLease> = {}): PlayLease => ({
   finalSettled: false,
   activatedAt: null,
   measuredAt: null,
+  authorityUntil: null,
   ...over,
 });
 

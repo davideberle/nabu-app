@@ -289,12 +289,14 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     const a = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "A", now: at(0) }, client);
     if (!a.ok) throw new Error("issue failed");
     await recordLeaseActivation(a.lease.id, at(0), client);
-    // Family ends A at t=1 and issues B with 899 (A may still report its 1 s).
+    // Family ends A at t=1; A's meter holds an authority window until t=2 (its status read at t=0), so the
+    // end takes effect at t=2 and B is issued with 898 (A may lawfully still report up to its 2 s).
     equal(await endPlayLease({ leaseId: a.lease.id, personId: "santiago", reason: "left", now: at(1) }, client), true);
     const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "B", now: at(1) }, client);
     if (!b.ok) throw new Error("issue failed");
-    equal(b.lease.budgetSeconds, 899);
-    // A's meter genuinely measured 3 s (bounded overlap): accepted in full, B shrinks to 897 — total stays 900.
+    equal(b.lease.budgetSeconds, 898);
+    equal(b.handoverAt, at(2).toISOString(), "B is fenced by A's window");
+    // A's meter genuinely measured 3 s (1 s of bounded overlap past the fence): accepted in full, B shrinks to 897 — total stays 900.
     const final = await settlePlayLease({ leaseId: a.lease.id, consumedSeconds: 3, end: true, measuredAt: at(3).getTime(), now: at(4) }, client);
     if (!final.ok) throw new Error("settle failed");
     equal(final.lease.consumedSeconds, 3);
@@ -338,6 +340,69 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     const late = await settlePlayLease({ leaseId: lease.lease.id, consumedSeconds: 60, end: true, measuredAt: at(60).getTime(), now: at(61) }, client);
     ok(late.ok && late.lease.consumedSeconds === 10 && late.refusedSeconds === 50);
     equal(state.remainingSeconds, 0);
+  });
+
+  it("GP-03/08 authority fence: a Family-side end takes effect at the window's end, the successor is pending until then or until the predecessor's terminal report, and only one lease is ever runnable", async () => {
+    const client = await fresh({ santiagoCoins: 7 });
+    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-fence-1", purchaseId: id("p"), redemptionId: id("r"), now: at(0) }, client);
+    const a = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "A", now: at(0) }, client);
+    if (!a.ok) throw new Error("issue failed");
+    // Before any status read nothing fences: an end would take effect at once.
+    equal((await getLeaseStatus(a.lease.id, client, at(0)))!.authorizedForSeconds, null, "no window before the meter's first read");
+    // The meter's status read at t=2 grants an exclusive window until t=4.
+    await recordLeaseActivation(a.lease.id, at(2), client);
+    const granted = (await getLeaseStatus(a.lease.id, client, at(2)))!;
+    equal(granted.state, "active");
+    equal(granted.authorizedForSeconds, 2);
+    equal(granted.authorizedUntil, at(4).toISOString());
+    // Family ends A at t=2.5 (release/takeover): effective at the fence t=4, cap frozen at 4 s.
+    equal(await endPlayLease({ leaseId: a.lease.id, personId: "santiago", reason: "left", now: at(2.5) }, client), true);
+    const aEnded = (await getLeasesForPerson("santiago", client)).find((l) => l.id === a.lease.id)!;
+    equal(aEnded.endedAt, at(4).toISOString());
+    equal(aEnded.capSeconds, 4);
+    const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "B", now: at(2.5) }, client);
+    if (!b.ok) throw new Error("issue failed");
+    equal(b.handoverAt, at(4).toISOString());
+    equal(b.lease.budgetSeconds, 896, "A may lawfully still report up to its fence");
+    // Inside the window B is pending for the meter and gets NO window; A's status says ended at the fence.
+    await recordLeaseActivation(b.lease.id, at(3), client);
+    const pending = (await getLeaseStatus(b.lease.id, client, at(3)))!;
+    equal(pending.state, "pending");
+    equal(pending.startsAt, at(4).toISOString());
+    equal(pending.authorizedForSeconds, null);
+    const aStatus = (await getLeaseStatus(a.lease.id, client, at(3)))!;
+    equal(aStatus.state, "ended");
+    equal(aStatus.endedAt, at(4).toISOString());
+    // Once the fence lapses B is active and gets its own window.
+    await recordLeaseActivation(b.lease.id, at(4), client);
+    const active = (await getLeaseStatus(b.lease.id, client, at(4)))!;
+    equal(active.state, "active");
+    equal(active.authorizedForSeconds, 2);
+    // A's terminal report (4 s, measured at the fence) is accepted in full; totals are conserved.
+    const final = await settlePlayLease({ leaseId: a.lease.id, consumedSeconds: 4, end: true, endReason: "replaced", measuredAt: at(4).getTime(), now: at(7) }, client);
+    if (!final.ok) throw new Error("settle failed");
+    equal(final.refusedSeconds, 0);
+    const bAfter = (await getLeasesForPerson("santiago", client)).find((l) => l.id === b.lease.id)!;
+    equal(4 + bAfter.budgetSeconds, 900);
+
+    // Acknowledgement path: the predecessor's terminal report inside the window releases the fence at once.
+    const client2 = await fresh({ santiagoCoins: 7 });
+    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-fence-2", purchaseId: id("p"), redemptionId: id("r"), now: at(0) }, client2);
+    const c = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "C", now: at(0) }, client2);
+    if (!c.ok) throw new Error("issue failed");
+    await recordLeaseActivation(c.lease.id, at(10), client2);
+    const d = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "D", now: at(10.5) }, client2);
+    if (!d.ok) throw new Error("issue failed");
+    equal(d.handoverAt, at(12).toISOString());
+    equal((await getLeaseStatus(d.lease.id, client2, at(10.6)))!.state, "pending");
+    const ack = await settlePlayLease({ leaseId: c.lease.id, consumedSeconds: 11, end: true, endReason: "replaced", measuredAt: at(10.6).getTime(), now: at(10.7) }, client2);
+    if (!ack.ok) throw new Error("settle failed");
+    equal(ack.lease.finalSettled, true);
+    const dNow = (await getLeaseStatus(d.lease.id, client2, at(10.8)))!;
+    equal(dNow.state, "active", "the predecessor's end was acknowledged: no fence remains");
+    equal(dNow.startsAt, null);
+    const dLease = (await getLeasesForPerson("santiago", client2)).find((l) => l.id === d.lease.id)!;
+    equal(11 + dLease.budgetSeconds, 900);
   });
 
   it("GP-03 a never-activated lease releases its reserve once the meter's status read proves it can no longer report", async () => {
