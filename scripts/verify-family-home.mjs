@@ -360,7 +360,8 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   let auto = false;
   const reply = (route, status, body) => route.fulfill({ status, contentType: "application/json", body: JSON.stringify(body) });
   // Like the real meter, every successful answer carries the authority deadline (the Family-granted window).
-  const tickBody = (remaining, authorizedForMs = 2000) => ({ leaseId: "lease-race-wrapper1", phase: "playing", remainingSeconds: remaining, consumedSeconds: 900 - remaining, graceRemainingSeconds: null, warn: false, ended: false, endReason: null, authorizedForMs });
+  let grantSeq = 0;
+  const tickBody = (remaining, authorizedForMs = 2000) => ({ leaseId: "lease-race-wrapper1", phase: "playing", remainingSeconds: remaining, consumedSeconds: 900 - remaining, graceRemainingSeconds: null, warn: false, ended: false, endReason: null, authorizedForMs, billing: authorizedForMs > 0 ? "armed" : "stopped", ...(authorizedForMs > 0 ? { grant: (grantSeq += 1) } : {}) });
   const mockStudio = `${base}/mock-studio`;
   await page.route("**/api/family/games/session", (route) => reply(route, 200, { child: "santiago", token: "synthetic-browser-token", expiresAt: Date.now() + 3600000, studio: { url: mockStudio, token: "synthetic-studio-token", expiresAt: Date.now() + 3600000 } }));
   await page.route("**/api/family/play/leases", (route) => reply(route, 201, { child: "santiago", lease: { id: "lease-race-wrapper1", personId: "santiago", gameId: SNAKE, mode: "play", metered: true, budgetSeconds: 900 }, replaced: null, remainingSeconds: 900, warnSeconds: 120, graceSeconds: 30, studio: { url: mockStudio, token: "synthetic-studio-token", expiresAt: Date.now() + 3600000 } }));
