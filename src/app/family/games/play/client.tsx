@@ -31,7 +31,7 @@ import type { ChildId } from "@/lib/family-assistant-turn";
 import { childShellDestinationHref, guardedPlayHref } from "@/lib/family-child-shell";
 import { createGamesClient, deviceLabel, newIdempotencyKey, type LeaseGrant, type StudioAccess, type TickView } from "@/lib/family-games-client";
 import { PLAY_BLOCK_COINS, PLAY_BLOCK_SECONDS, formatPlayClock, isFreeGame } from "@/lib/family-play";
-import { createHeartbeat } from "@/lib/family-play-heartbeat";
+import { createHeartbeat, type HeartbeatInput } from "@/lib/family-play-heartbeat";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -57,7 +57,7 @@ type Phase =
   | { kind: "starting" }
   | { kind: "needs-time"; balance: number | null; remaining: number }
   | { kind: "held"; heldBy: { gameId: string; deviceLabel: string | null } }
-  | { kind: "playing"; grant: LeaseGrant; studio: StudioAccess; tick: TickView | null; paused: boolean; hidden: boolean; offline: boolean; handover: boolean; lapsed: boolean }
+  | { kind: "playing"; grant: LeaseGrant; studio: StudioAccess; tick: TickView | null; paused: boolean; hidden: boolean; offline: boolean; handover: boolean; lapsed: boolean; armed: boolean }
   | { kind: "ended"; reason: "exhausted" | "ended" | "replaced" | "left" | "expired"; remaining: number | null }
   | { kind: "unavailable"; message: string };
 
@@ -105,7 +105,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         setPhase({ kind: "unavailable", message: "Game Studio isn't connected on this server yet. Your time is kept." });
         return;
       }
-      setPhase({ kind: "playing", grant: grant.value, studio: grant.value.studio, tick: null, paused: false, hidden: typeof document !== "undefined" && document.visibilityState === "hidden", offline: false, handover: false, lapsed: false });
+      setPhase({ kind: "playing", grant: grant.value, studio: grant.value.studio, tick: null, paused: false, hidden: typeof document !== "undefined" && document.visibilityState === "hidden", offline: false, handover: false, lapsed: false, armed: false });
     })();
     return () => controller.abort();
   }, [child, gameId, client, attempt, takeover]);
@@ -160,7 +160,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
   const applyPlayFlags = useCallback((flags: { paused?: boolean; hidden?: boolean }) => {
     const current = phaseRef.current;
     if (current.kind !== "playing") return;
-    const next = { ...current, ...flags };
+    // Any change disarms the frame: it thaws again only when the meter has answered a foreground report (billing restarts there).
+    const next = { ...current, ...flags, armed: false };
     phaseRef.current = next;
     setPhase(next);
     frameStateRef.current?.(next.tick?.phase ?? "playing", next.tick?.remainingSeconds ?? 0, false);
@@ -189,7 +190,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
     const postFrameState = (phaseName: string, remainingSeconds: number, ended: boolean) => {
       const current = phaseRef.current;
       const live = current.kind === "playing" && current.grant.lease.id === leaseId;
-      const paused = live ? current.paused || current.hidden || current.offline || current.lapsed : true;
+      // The frame runs only while ARMED: the meter answered a foreground report with a grant that is still open.
+      const paused = live ? current.paused || current.hidden || current.offline || current.lapsed || !current.armed : true;
       const reason = live && current.offline ? "offline" : live && current.hidden ? "hidden" : "paused";
       // The frame freezes itself at the deadline whatever the wrapper does (fail-closed); here the same deadline is handed over.
       const authorizedForMs = ended || paused ? 0 : Math.max(0, authorizedUntil - Date.now());
@@ -207,14 +209,16 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         deadlineTimer = null;
         const current = phaseRef.current;
         if (current.kind !== "playing" || current.grant.lease.id !== leaseId || Date.now() < authorizedUntil) return;
-        const next = { ...current, lapsed: true };
+        const next = { ...current, lapsed: true, armed: false };
         phaseRef.current = next;
         setPhase(next);
         postFrameState(current.tick?.phase ?? "playing", current.tick?.remainingSeconds ?? 0, false);
+        // Renew at once: the next answered foreground report re-arms the frame.
+        heartbeat.request();
       }, Math.max(0, authorizedUntil - Date.now()));
     };
 
-    type Outcome = { outcome: Awaited<ReturnType<typeof client.tick>>; sentAt: number };
+    type Outcome = { outcome: Awaited<ReturnType<typeof client.tick>>; sentAt: number; input: HeartbeatInput };
     const heartbeat = createHeartbeat<Outcome>({
       intervalMs: TICK_MS,
       input: () => {
@@ -222,15 +226,16 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         const live = current.kind === "playing" && current.grant.lease.id === leaseId;
         const paused = live ? current.paused : true;
         const hidden = live ? current.hidden : true;
-        // Frozen is frozen: while the frame is offline or its deadline lapsed, the heartbeat reports no foreground.
-        const frozen = live ? current.offline || current.lapsed : true;
-        return { active: live && !paused && !hidden && !frozen, hidden, paused };
+        // `active` is the child's intent (not paused, not hidden). Frozen-by-deadline or offline time is never billed:
+        // the meter clamps to the deadline it handed and suspends on outages, and the frame thaws only once a
+        // foreground report has been answered — so billing and play restart at the same instant.
+        return { active: live && !paused && !hidden, hidden, paused };
       },
       send: async (input) => {
         const sentAt = Date.now();
-        return { outcome: await client.tick(studio, leaseId, input), sentAt };
+        return { outcome: await client.tick(studio, leaseId, input), sentAt, input };
       },
-      onOutcome: ({ outcome, sentAt }) => {
+      onOutcome: ({ outcome, sentAt, input }) => {
         const current = phaseRef.current;
         if (current.kind !== "playing" || current.grant.lease.id !== leaseId) return;
         if (!outcome.ok) {
@@ -249,8 +254,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
           // 409 = handover pending: Family still fences this lease behind the previous session's
           // authority window; the meter retries by itself on the next beat (nothing counted meanwhile).
           const handover = outcome.status === 409;
-          setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, offline: true, handover } : p));
-          phaseRef.current = current.kind === "playing" ? { ...current, offline: true, handover } : current;
+          setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, offline: true, handover, armed: false } : p));
+          phaseRef.current = current.kind === "playing" ? { ...current, offline: true, handover, armed: false } : current;
           postFrameState("offline", current.tick?.remainingSeconds ?? 0, false);
           return;
         }
@@ -267,10 +272,14 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         // so delivery delay only shortens it; a missing grant authorizes nothing.
         authorizedUntil = sentAt + Math.max(0, tick.authorizedForMs ?? 0);
         const lapsed = Date.now() >= authorizedUntil;
-        setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, tick, offline: false, handover: false, lapsed } : p));
-        phaseRef.current = current.kind === "playing" ? { ...current, tick, offline: false, handover: false, lapsed } : current;
+        // Arm (thaw) only on the answer to a FOREGROUND report with an open grant: the meter started billing at this
+        // answer, so the frame starts here too — never on the answer to a pause/background report or a lapsed grant.
+        const armed = input.active && !lapsed;
+        setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, tick, offline: false, handover: false, lapsed, armed } : p));
+        phaseRef.current = current.kind === "playing" ? { ...current, tick, offline: false, handover: false, lapsed, armed } : current;
         postFrameState(tick.phase, tick.remainingSeconds, false);
-        armDeadline();
+        if (armed) armDeadline();
+        else if (!current.paused && !current.hidden) heartbeat.request(); // the child wants to play: send the foreground report that arms the frame
       },
     });
     beatRef.current = () => heartbeat.request();
@@ -400,9 +409,9 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
               sandbox="allow-scripts allow-same-origin"
               allow="fullscreen"
             />
-            {phase.paused || phase.hidden || phase.offline || phase.lapsed ? (
+            {phase.paused || phase.hidden || phase.offline || phase.lapsed || !phase.armed ? (
               <div role="dialog" aria-label={phase.offline ? (phase.handover ? "Starting" : "Reconnecting") : phase.paused || phase.hidden ? "Paused" : "Checking"} className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-secondary/95 p-6 text-center backdrop-blur-sm">
-                <p className="text-xl font-semibold">{phase.offline ? (phase.handover ? "Closing your other session…" : "Reconnecting to Game Studio…") : phase.paused || phase.hidden ? "Paused" : "Checking your play time…"}</p>
+                <p className="text-xl font-semibold">{phase.offline ? (phase.handover ? "Closing your other session…" : "Reconnecting to Game Studio…") : phase.paused || phase.hidden ? "Paused" : phase.lapsed ? "Checking your play time…" : "Starting…"}</p>
                 <p className="max-w-sm text-sm text-secondary">{phase.offline ? (phase.handover ? "Your game starts here in a moment. Your play time isn't counting yet." : "Your play time isn't counting while the connection is down. We'll continue when it's back.") : phase.paused || phase.hidden ? "Your play time isn't counting while paused." : "Waiting for Game Studio to confirm your time. Nothing is counted meanwhile."}</p>
                 {phase.paused ? (
                   <button type="button" onClick={() => applyPlayFlags({ paused: false })} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>▶ Continue</button>

@@ -2,13 +2,14 @@
 // adapter through its fetch seam, on one fake clock — the independent reviewer's round-4 timelines plus delayed
 // status/settlement variants. Skipped when the Game Studio workspace is not present on this machine. Run: npm test
 
-import { equal, ok } from "node:assert/strict";
+import { deepEqual, equal, ok } from "node:assert/strict";
 import { existsSync, mkdtempSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { after, before, beforeEach, describe, it } from "node:test";
 import { createClient, type Client } from "@libsql/client";
 import { ensurePlayTables, endPlayLease, getLease, getLeaseStatus, getPlayState, issuePlayLease, recordLeaseActivation, settlePlayLease } from "./family-play-db.ts";
+import { createHeartbeat, type HeartbeatInput } from "./family-play-heartbeat.ts";
 
 const ADAPTER = "/Users/claweberle/.openclaw/workspace/projects/game-studio/server/child-play-adapter.mjs";
 const available = existsSync(ADAPTER);
@@ -569,6 +570,144 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const next = (await getLease("lease-joined-b011", client))!;
       ok(old.consumedSeconds <= 1);
       equal(old.consumedSeconds + next.budgetSeconds, 900);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+  // ---- round 9: prompt stop boundaries, closed segments survive later receipts, recovery thaw = billing restart ----
+
+  it("R9-1 the real heartbeat controller: a pause at t1 behind a foreground renewal held t0.8→t5 is reported at once; the meter bills 1, B gets 899", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r9-sf", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r9-sf");
+      equal((await tick(base, "lease-joined-r9-sf", a)).status, 200);
+      let paused = false;
+      const sends: { at: number; active: boolean; seq: number }[] = [];
+      const outcomes: number[] = [];
+      let done!: () => void;
+      const completed = new Promise<void>((r) => { done = r; });
+      const hb = createHeartbeat<{ status: number }>({
+        input: (): HeartbeatInput => ({ active: !paused, paused, hidden: false }),
+        send: async (input, seq) => {
+          sends.push({ at: (clock - t0) / 1000, active: input.active, seq });
+          try {
+            const r = await fetch(`${base}/v1/play/lease-joined-r9-sf/tick`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: JSON.stringify(input) });
+            return { status: r.status };
+          } catch {
+            return { status: 0 }; // like the wrapper's client: a transport failure is an outcome, never a throw
+          }
+        },
+        onOutcome: (_r, seq) => { outcomes.push(seq); if (seq === 2) done(); },
+        intervalMs: 800,
+        setTimer: () => 1,
+        clearTimer: () => undefined,
+      });
+      clock = t0 + 800;
+      let release!: () => void;
+      statusGate = { lid: "lease-joined-r9-sf", gate: new Promise<void>((r) => { release = r; }) };
+      hb.request(); // the foreground renewal, held at Family
+      await new Promise((r) => setTimeout(r, 60));
+      clock = t0 + 1000;
+      paused = true;
+      hb.request(); // the child pauses: the stop boundary must go out NOW
+      await new Promise((r) => setTimeout(r, 60));
+      deepEqual(sends.map((x) => [x.at, x.active]), [[0.8, true], [1, false]], "the stop boundary was sent at t1, not after the renewal");
+      equal(server.store.loadLease("lease-joined-r9-sf")!.consumed, 1, "closed and counted at the receipt");
+      clock = t0 + 5000;
+      release();
+      statusGate = null;
+      await completed;
+      await new Promise((r) => setTimeout(r, 60)); // let the coalesced follow-up (paused) settle before stopping
+      hb.stop();
+      equal(server.store.loadLease("lease-joined-r9-sf")!.consumed, 1);
+      const r = await fetch(`${base}/v1/play/lease-joined-r9-sf/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
+      equal(r.status, 200);
+      await server.settler.flush();
+      const old = (await getLease("lease-joined-r9-sf", client))!;
+      equal(old.consumedSeconds, 1);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r9-sf-b", takeover: true, deviceLabel: null, now: at(5) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 899);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R9-2 pause received t1 and resume received t4 while a renewal is held t0.8→t5: the closed segment is counted once, 1 + 899", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r9-pr", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r9-pr");
+      const post = (body: string) => fetch(`${base}/v1/play/lease-joined-r9-pr/tick`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body }).then(async (r) => ({ status: r.status, body: (await r.json()) as { consumedSeconds: number; authorizedForMs?: number } }));
+      equal((await tick(base, "lease-joined-r9-pr", a)).status, 200);
+      clock = t0 + 800;
+      let release!: () => void;
+      statusGate = { lid: "lease-joined-r9-pr", gate: new Promise<void>((r) => { release = r; }) };
+      const renewal = post('{"active":true}');
+      await new Promise((r) => setTimeout(r, 40));
+      clock = t0 + 1000;
+      const paused = post('{"active":false,"paused":true}');
+      await new Promise((r) => setTimeout(r, 40));
+      equal(server.store.loadLease("lease-joined-r9-pr")!.consumed, 1);
+      clock = t0 + 4000;
+      const resumed = post('{"active":true}');
+      await new Promise((r) => setTimeout(r, 40));
+      equal(server.store.loadLease("lease-joined-r9-pr")!.consumed, 1, "the resume receipt does not reopen the closed segment");
+      clock = t0 + 5000;
+      release();
+      statusGate = null;
+      const [ren, pau, res] = await Promise.all([renewal, paused, resumed]);
+      equal(ren.status, 200);
+      equal(pau.body.consumedSeconds, 1);
+      equal(res.body.consumedSeconds, 1, "the resume answer bills 1, not 2");
+      ok((res.body.authorizedForMs ?? 0) > 0);
+      const r = await fetch(`${base}/v1/play/lease-joined-r9-pr/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
+      equal(((await r.json()) as { consumedSeconds: number }).consumedSeconds, 1);
+      await server.settler.flush();
+      equal((await getLease("lease-joined-r9-pr", client))!.consumedSeconds, 1);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r9-pr-b", takeover: true, deviceLabel: null, now: at(5) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 899);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R9-3 recovery: outage at t1, recovery at t5 with the child's foreground intent, play t5→t7 — three runnable seconds bill 3, B gets 897", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r9-rec", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r9-rec");
+      equal((await tick(base, "lease-joined-r9-rec", a)).status, 200);
+      clock = t0 + 1000;
+      outage = true;
+      equal((await tick(base, "lease-joined-r9-rec", a)).status, 503);
+      outage = false;
+      clock = t0 + 5000;
+      const recovery = await tick(base, "lease-joined-r9-rec", a); // the wrapper reports the child's intent (foreground); the frame thaws on this answer
+      equal(recovery.status, 200);
+      equal(recovery.body.consumedSeconds, 1);
+      clock = t0 + 6000;
+      equal((await tick(base, "lease-joined-r9-rec", a)).body.consumedSeconds, 2);
+      clock = t0 + 7000;
+      const r = await fetch(`${base}/v1/play/lease-joined-r9-rec/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
+      equal(((await r.json()) as { consumedSeconds: number }).consumedSeconds, 3);
+      await server.settler.flush();
+      equal((await getLease("lease-joined-r9-rec", client))!.consumedSeconds, 3);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r9-rec-b", takeover: true, deviceLabel: null, now: at(7) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 897);
+      equal(3 + b.lease.budgetSeconds, 900);
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));

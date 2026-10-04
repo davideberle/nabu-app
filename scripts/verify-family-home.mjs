@@ -382,14 +382,22 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   await page.getByRole("dialog", { name: "Paused" }).waitFor();
   await page.getByRole("dialog", { name: "Paused" }).getByRole("button", { name: /Continue/ }).click();
   await page.waitForTimeout(300);
-  record("W-01", "pause + continue while the first tick is pending keep exactly ONE request in flight (coalesced)", held.length === 1 && calls.length === 1, `${calls.length} requests, ${held.length} held`);
-  // The first (and only) in-flight tick now fails: Reconnecting must show and the frame must be told to freeze.
+  // Round 9: a STOP boundary (pause) while a foreground renewal is pending is reported at once as its own request
+  // (active:false); the continue that follows is coalesced behind the pending renewal — two requests, not one, not three.
+  record("W-01", "pause while the first tick is pending sends the stop boundary at once (active:false); continue is coalesced — exactly two requests", held.length === 2 && calls.length === 2 && calls[0].body.active === true && calls[1].body.active === false, `${calls.length} requests, ${held.length} held, bodies ${JSON.stringify(calls.map((c) => c.body.active))}`);
+  // Answer the stop boundary (the newest request) with a paused answer (no grant), then fail the OLDER renewal:
+  // its failure cannot speak over the newer boundary — no Reconnecting from a stale failure.
+  await reply(held.pop(), 200, tickBody(690, 0));
+  await reply(held.shift(), 503, { error: "stale renewal failed" });
+  await page.waitForTimeout(250);
+  record("W-01b", "an older renewal's failure cannot override the newer boundary's answer", (await page.getByRole("dialog", { name: "Reconnecting" }).count()) === 0, "no Reconnecting dialog");
+  // The coalesced follow-up (the continue → foreground report) is issued now; fail it: Reconnecting must show and the frame freezes.
+  while (held.length < 1) await page.waitForTimeout(25);
   await reply(held.shift(), 503, { error: "latest request failed" });
   await page.getByRole("dialog", { name: "Reconnecting" }).waitFor({ timeout: 5000 });
-  // Its follow-up (coalesced) tick is issued; hold it, then answer with a stale-looking success. Since it is the ONLY
-  // in-flight request it is legitimately the newest — there is no older response left to clear a newer failure.
+  // Its retry is issued; hold it. It is the ONLY in-flight request and legitimately the newest.
   while (held.length < 1) await page.waitForTimeout(25);
-  record("W-02", "after a failure the wrapper issues exactly one retry, not three", held.length === 1 && calls.length === 2, `${calls.length} requests`);
+  record("W-02", "after a failure the wrapper issues exactly one retry, not three", held.length === 1 && calls.length === 4, `${calls.length} requests`);
   const frame = page.frames().find((f) => f.url().includes("/mock-studio/"));
   const pingsDuringOffline = await frame.evaluate(() => window.pings.filter((p) => p.type === "family-play:alive").map((p) => ({ paused: p.paused, reason: p.reason })));
   record("W-03", "while offline every heartbeat to the frame says paused (frozen), none playable", pingsDuringOffline.length > 0 && pingsDuringOffline.slice(-1)[0].paused === true, JSON.stringify(pingsDuringOffline.slice(-2)));
