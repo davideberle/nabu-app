@@ -1593,6 +1593,50 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     }
   });
 
+  it("R15-1 three pause/resume sessions of 1 s with stale 0.5 stop reports, finals delivered newest-first after the end: every closed session's final is applied as a bounded terminal correction — meter 3, Family 3, B gets 897", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r15-three", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r15-three");
+      const headers = { authorization: `Bearer ${a}`, "content-type": "application/json" };
+      const post = async (action: string, body: Record<string, unknown>) => { const r = await fetch(`${base}/v1/play/lease-joined-r15-three/${action}`, { method: "POST", headers, body: JSON.stringify(body) }); return { status: r.status, json: (await r.json()) as { grant?: number; consumedSeconds: number; accepted?: boolean; known?: boolean; late?: boolean } }; };
+      const grants: number[] = [];
+      for (let i = 0; i < 3; i += 1) {
+        const g = (await post("tick", { active: false, foreground: true, grant: null, runMs: 0 })).json.grant!;
+        grants.push(g);
+        equal((await post("tick", { active: true, foreground: true, grant: g, runMs: 0 })).status, 200);
+        clock = t0 + (i + 1) * 1000;
+        equal((await post("tick", { active: false, foreground: false, grant: g, runMs: 500 })).json.consumedSeconds, (i + 1) * 0.5);
+      }
+      const ended = await post("end", { reason: "left", frameStopped: true, grant: grants[2], runMs: 500 });
+      equal(ended.json.consumedSeconds, 1.5);
+      await server.settler.flush();
+      equal((await getLease("lease-joined-r15-three", client))!.consumedSeconds, 2, "terminal report rounds 1.5 up");
+      for (const i of [2, 1, 0]) {
+        const r = await post("frame", { grant: grants[i], session: grants[i], ranMs: 1000, running: false });
+        equal(r.status, 200, JSON.stringify(r.json));
+        ok(r.json.accepted && r.json.known && r.json.late, JSON.stringify(r.json));
+      }
+      equal(server.store.loadLease("lease-joined-r15-three")!.consumed, 3);
+      equal(server.store.loadLease("lease-joined-r15-three")!.state, "ended", "nothing reopened");
+      await server.settler.flush();
+      const fam = (await getLease("lease-joined-r15-three", client))!;
+      equal(fam.consumedSeconds, 3, "every late final reached Family as a bounded terminal correction");
+      equal(fam.finalSettled, true);
+      for (const i of [0, 1, 2]) equal((await post("frame", { grant: grants[i], session: grants[i], ranMs: 1000, running: false })).json.accepted, false, "duplicates add nothing");
+      await server.settler.flush();
+      equal((await getLease("lease-joined-r15-three", client))!.consumedSeconds, 3);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r15-three-b", takeover: true, deviceLabel: null, now: at(4) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 897, "conservation: 3 + 897 = 900");
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
   it("R13-1 control: an alive wrapper whose frame never ran keeps reporting intent — 0 billed, B gets 900", async () => {
     await allowance();
     clock = t0;
