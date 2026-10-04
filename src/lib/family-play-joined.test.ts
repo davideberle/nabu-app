@@ -428,7 +428,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       // but B is NOT activated while A's frame deadline (t4, the window handed to A's wrapper) is open: 409, retry.
       const blocked = await tick(base, "lease-joined-b010", cred("lease-joined-b010"));
       equal(blocked.status, 409, JSON.stringify(blocked.body));
-      ok((blocked.body as { retryAfterMs?: number }).retryAfterMs! <= 1000);
+      ok((blocked.body as { retryAfterMs?: number }).retryAfterMs! <= 1500);
       const meter = server.store.loadLease("lease-joined-a010")!;
       equal(meter.state, "ended");
       equal(meter.consumed, 3, "A: 2 s confirmed + 1 s up to the successor's read (inside A's own window)");
@@ -438,6 +438,8 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       equal((await getLeaseStatus("lease-joined-b010", client, new Date(clock)))!.state, "active");
       equal(server.store.loadLease("lease-joined-b010"), null, "not activated while A's frame may still run");
       clock = t0 + 4000;
+      equal((await tick(base, "lease-joined-b010", cred("lease-joined-b010"))).status, 409, "at A's deadline itself the guard timer margin still fences B");
+      clock = t0 + 4500;
       const started = await tick(base, "lease-joined-b010", cred("lease-joined-b010"));
       equal(started.status, 200, JSON.stringify(started.body));
       ok((started.body as { authorizedForMs?: number }).authorizedForMs! > 0, "the answer carries the authority deadline for the frame");

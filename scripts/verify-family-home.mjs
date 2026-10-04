@@ -132,8 +132,9 @@ await sleep(2100);
 const t2 = await call("POST", `${studio.url}/v1/play/${leaseId}/tick`, { bearer: studio.token, body: { active: false, hidden: true } });
 await sleep(2100);
 const t3 = await call("POST", `${studio.url}/v1/play/${leaseId}/tick`, { bearer: studio.token, body: { active: false, hidden: true } });
-record("H-38", "GP-04/05 server clock: foreground seconds count, hidden seconds do not", t0.json.remainingSeconds === 900 && t1.json.remainingSeconds <= 898 && t1.json.remainingSeconds >= 896 && t2.json.remainingSeconds <= t1.json.remainingSeconds && t3.json.remainingSeconds === t2.json.remainingSeconds, JSON.stringify([t0.json.remainingSeconds, t1.json.remainingSeconds, t2.json.remainingSeconds, t3.json.remainingSeconds]));
-const ended = await call("POST", `${studio.url}/v1/play/${leaseId}/end`, { bearer: studio.token, body: { reason: "harness" } });
+record("H-38", "GP-04/05 server clock: foreground seconds count, hidden seconds do not", t0.json.remainingSeconds === 900 && t1.json.remainingSeconds <= 898.5 && t1.json.remainingSeconds >= 896 && t2.json.remainingSeconds <= t1.json.remainingSeconds && t3.json.remainingSeconds === t2.json.remainingSeconds, JSON.stringify([t0.json.remainingSeconds, t1.json.remainingSeconds, t2.json.remainingSeconds, t3.json.remainingSeconds]));
+// Like the wrapper: the end attests the frame was stopped first (guard acknowledgment), so a successor need not wait out the handed deadline.
+const ended = await call("POST", `${studio.url}/v1/play/${leaseId}/end`, { bearer: studio.token, body: { reason: "harness", frameStopped: true } });
 await sleep(400);
 const stateAfter = (await call("GET", "/api/family/play/state", { cookie: assistant, bearer: mintS.token })).json;
 record("H-39", "GP-07 settlement reached Family: allowance consumed by the measured seconds, lease closed", ended.json.ended && stateAfter.activeLease === null && stateAfter.remainingSeconds < 900 && stateAfter.remainingSeconds >= 893, JSON.stringify({ remaining: stateAfter.remainingSeconds, consumed: ended.json.consumedSeconds }));
@@ -159,7 +160,7 @@ record("H-42", "GP-03 the next lease carries the remaining allowance as its budg
   const retarget = await call("POST", `/api/family/play/leases/${lease3.json.lease.id}/settle`, { body: { leaseId: lease4.json.lease.id, consumedSeconds: 1, end: false }, headers: { "x-family-play-timestamp": String(Math.floor(Date.now() / 1000)), "x-family-play-signature": "v2=deadbeef" } });
   const anonStatus = await call("GET", `/api/family/play/leases/${lease4.json.lease.id}/status`);
   record("H-47", "settlement/status endpoints refuse unbound or unsigned requests", retarget.status === 401 && anonStatus.status === 401, `${retarget.status}/${anonStatus.status}`);
-  await call("POST", `${lease4.json.studio.url}/v1/play/${lease4.json.lease.id}/end`, { bearer: lease4.json.studio.token, body: { reason: "harness" } });
+  await call("POST", `${lease4.json.studio.url}/v1/play/${lease4.json.lease.id}/end`, { bearer: lease4.json.studio.token, body: { reason: "harness", frameStopped: true } });
   await call("POST", `/api/family/play/leases/${lease4.json.lease.id}/release`, { cookie: assistant, bearer: mintS.token, body: { reason: "harness" } });
 }
 const editLease = await call("POST", "/api/family/play/leases", { cookie: assistant, bearer: mintI.token, body: { gameId: SNAKE, mode: "edit" } });
