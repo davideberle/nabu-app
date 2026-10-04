@@ -358,7 +358,8 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   const held = [];
   let auto = false;
   const reply = (route, status, body) => route.fulfill({ status, contentType: "application/json", body: JSON.stringify(body) });
-  const tickBody = (remaining) => ({ leaseId: "lease-race-wrapper1", phase: "playing", remainingSeconds: remaining, consumedSeconds: 900 - remaining, graceRemainingSeconds: null, warn: false, ended: false, endReason: null });
+  // Like the real meter, every successful answer carries the authority deadline (the Family-granted window).
+  const tickBody = (remaining, authorizedForMs = 2000) => ({ leaseId: "lease-race-wrapper1", phase: "playing", remainingSeconds: remaining, consumedSeconds: 900 - remaining, graceRemainingSeconds: null, warn: false, ended: false, endReason: null, authorizedForMs });
   const mockStudio = `${base}/mock-studio`;
   await page.route("**/api/family/games/session", (route) => reply(route, 200, { child: "santiago", token: "synthetic-browser-token", expiresAt: Date.now() + 3600000, studio: { url: mockStudio, token: "synthetic-studio-token", expiresAt: Date.now() + 3600000 } }));
   await page.route("**/api/family/play/leases", (route) => reply(route, 201, { child: "santiago", lease: { id: "lease-race-wrapper1", personId: "santiago", gameId: SNAKE, mode: "play", metered: true, budgetSeconds: 900 }, replaced: null, remainingSeconds: 900, warnSeconds: 120, graceSeconds: 30, studio: { url: mockStudio, token: "synthetic-studio-token", expiresAt: Date.now() + 3600000 } }));
@@ -398,7 +399,7 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   const before = calls.length;
   await page.waitForTimeout(11000);
   const after = calls.length - before;
-  record("W-05", "exactly one heartbeat loop survives (≈2 ticks in 11 s at a 5 s cadence, not 6+)", after >= 1 && after <= 3, `${after} ticks in 11 s`);
+  record("W-05", "exactly one heartbeat loop survives (≈13 ticks in 11 s at the 0.8 s renewal cadence, not 2 loops' worth)", after >= 8 && after <= 18, `${after} ticks in 11 s`);
   await page.getByRole("button", { name: "⏸ Pause", exact: true }).click();
   await page.waitForTimeout(200);
   const lastPing = await frame.evaluate(() => window.pings.filter((p) => p.type === "family-play:alive").slice(-1)[0]);

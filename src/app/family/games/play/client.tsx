@@ -39,7 +39,13 @@ const pillClass = cn(
   "inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary px-5 py-2 text-sm font-semibold transition-colors",
   focusRing,
 );
-export const TICK_MS = 5_000;
+/**
+ * Heartbeat cadence. Every successful heartbeat carries an authority deadline
+ * (the meter's Family-granted window, 2 s): the frame is authorized only until
+ * then and freezes itself without a renewal, so the wrapper renews well inside
+ * the window. Pause/visibility/offline changes still beat immediately.
+ */
+export const TICK_MS = 800;
 /** Child-visible frame-to-game handshake; the adapter's injected guard expects it. */
 export const FRAME_PING_TYPE = "family-play:alive";
 
@@ -47,7 +53,7 @@ type Phase =
   | { kind: "starting" }
   | { kind: "needs-time"; balance: number | null; remaining: number }
   | { kind: "held"; heldBy: { gameId: string; deviceLabel: string | null } }
-  | { kind: "playing"; grant: LeaseGrant; studio: StudioAccess; tick: TickView | null; paused: boolean; hidden: boolean; offline: boolean; handover: boolean }
+  | { kind: "playing"; grant: LeaseGrant; studio: StudioAccess; tick: TickView | null; paused: boolean; hidden: boolean; offline: boolean; handover: boolean; lapsed: boolean }
   | { kind: "ended"; reason: "exhausted" | "ended" | "replaced" | "left" | "expired"; remaining: number | null }
   | { kind: "unavailable"; message: string };
 
@@ -95,7 +101,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         setPhase({ kind: "unavailable", message: "Game Studio isn't connected on this server yet. Your time is kept." });
         return;
       }
-      setPhase({ kind: "playing", grant: grant.value, studio: grant.value.studio, tick: null, paused: false, hidden: typeof document !== "undefined" && document.visibilityState === "hidden", offline: false, handover: false });
+      setPhase({ kind: "playing", grant: grant.value, studio: grant.value.studio, tick: null, paused: false, hidden: typeof document !== "undefined" && document.visibilityState === "hidden", offline: false, handover: false, lapsed: false });
     })();
     return () => controller.abort();
   }, [child, gameId, client, attempt, takeover]);
@@ -139,20 +145,38 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
     const { studio, grant } = phase;
     const leaseId = grant.lease.id;
     const origin = new URL(studio.url).origin;
+    /** Authority deadline (Date.now() ms) from the newest successful heartbeat: play is not authorized past it. */
+    let authorizedUntil = 0;
+    let deadlineTimer: ReturnType<typeof setTimeout> | null = null;
     const postFrameState = (phaseName: string, remainingSeconds: number, ended: boolean) => {
       const current = phaseRef.current;
       const live = current.kind === "playing" && current.grant.lease.id === leaseId;
-      const paused = live ? current.paused || current.hidden || current.offline : true;
+      const paused = live ? current.paused || current.hidden || current.offline || current.lapsed : true;
       const reason = live && current.offline ? "offline" : live && current.hidden ? "hidden" : "paused";
+      // The frame freezes itself at the deadline whatever the wrapper does (fail-closed); here the same deadline is handed over.
+      const authorizedForMs = ended || paused ? 0 : Math.max(0, authorizedUntil - Date.now());
       try {
-        frameRef.current?.contentWindow?.postMessage({ type: FRAME_PING_TYPE, leaseId, remainingSeconds, phase: phaseName, paused, reason, ended }, origin);
+        frameRef.current?.contentWindow?.postMessage({ type: FRAME_PING_TYPE, leaseId, remainingSeconds, phase: phaseName, paused, reason, ended, authorizedForMs }, origin);
       } catch {
         /* frame not ready */
       }
     };
     frameStateRef.current = postFrameState;
+    /** Enforce the deadline in the wrapper too: no renewal by then → frozen frame and an honest "checking" state until the next good answer. */
+    const armDeadline = () => {
+      if (deadlineTimer) clearTimeout(deadlineTimer);
+      deadlineTimer = setTimeout(() => {
+        deadlineTimer = null;
+        const current = phaseRef.current;
+        if (current.kind !== "playing" || current.grant.lease.id !== leaseId || Date.now() < authorizedUntil) return;
+        const next = { ...current, lapsed: true };
+        phaseRef.current = next;
+        setPhase(next);
+        postFrameState(current.tick?.phase ?? "playing", current.tick?.remainingSeconds ?? 0, false);
+      }, Math.max(0, authorizedUntil - Date.now()));
+    };
 
-    type Outcome = Awaited<ReturnType<typeof client.tick>>;
+    type Outcome = { outcome: Awaited<ReturnType<typeof client.tick>>; sentAt: number };
     const heartbeat = createHeartbeat<Outcome>({
       intervalMs: TICK_MS,
       input: () => {
@@ -162,8 +186,11 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         const hidden = live ? current.hidden : true;
         return { active: live && !paused && !hidden, hidden, paused };
       },
-      send: (input) => client.tick(studio, leaseId, input),
-      onOutcome: (outcome) => {
+      send: async (input) => {
+        const sentAt = Date.now();
+        return { outcome: await client.tick(studio, leaseId, input), sentAt };
+      },
+      onOutcome: ({ outcome, sentAt }) => {
         const current = phaseRef.current;
         if (current.kind !== "playing" || current.grant.lease.id !== leaseId) return;
         if (!outcome.ok) {
@@ -187,21 +214,28 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         }
         const tick = outcome.value;
         if (tick.ended || tick.phase === "exhausted") {
+          authorizedUntil = 0;
           postFrameState("exhausted", 0, true);
           heartbeat.stop();
           setPhase({ kind: "ended", reason: tick.endReason === "replaced" ? "replaced" : "exhausted", remaining: tick.remainingSeconds });
           void client.release(child, leaseId, tick.endReason ?? "exhausted");
           return;
         }
-        setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, tick, offline: false, handover: false } : p));
-        phaseRef.current = current.kind === "playing" ? { ...current, tick, offline: false, handover: false } : current;
+        // The deadline counts from the instant THIS request was sent (the meter's own window started no earlier),
+        // so delivery delay only shortens it; a missing grant authorizes nothing.
+        authorizedUntil = sentAt + Math.max(0, tick.authorizedForMs ?? 0);
+        const lapsed = Date.now() >= authorizedUntil;
+        setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, tick, offline: false, handover: false, lapsed } : p));
+        phaseRef.current = current.kind === "playing" ? { ...current, tick, offline: false, handover: false, lapsed } : current;
         postFrameState(tick.phase, tick.remainingSeconds, false);
+        armDeadline();
       },
     });
     beatRef.current = () => heartbeat.request();
     heartbeat.request();
     return () => {
       heartbeat.stop();
+      if (deadlineTimer) clearTimeout(deadlineTimer);
       beatRef.current = null;
       frameStateRef.current = null;
     };
@@ -322,10 +356,10 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
               sandbox="allow-scripts allow-same-origin"
               allow="fullscreen"
             />
-            {phase.paused || phase.hidden || phase.offline ? (
-              <div role="dialog" aria-label={phase.offline ? (phase.handover ? "Starting" : "Reconnecting") : "Paused"} className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-secondary/95 p-6 text-center backdrop-blur-sm">
-                <p className="text-xl font-semibold">{phase.offline ? (phase.handover ? "Closing your other session…" : "Reconnecting to Game Studio…") : "Paused"}</p>
-                <p className="max-w-sm text-sm text-secondary">{phase.offline ? (phase.handover ? "Your game starts here in a moment. Your play time isn't counting yet." : "Your play time isn't counting while the connection is down. We'll continue when it's back.") : "Your play time isn't counting while paused."}</p>
+            {phase.paused || phase.hidden || phase.offline || phase.lapsed ? (
+              <div role="dialog" aria-label={phase.offline ? (phase.handover ? "Starting" : "Reconnecting") : phase.paused || phase.hidden ? "Paused" : "Checking"} className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-secondary/95 p-6 text-center backdrop-blur-sm">
+                <p className="text-xl font-semibold">{phase.offline ? (phase.handover ? "Closing your other session…" : "Reconnecting to Game Studio…") : phase.paused || phase.hidden ? "Paused" : "Checking your play time…"}</p>
+                <p className="max-w-sm text-sm text-secondary">{phase.offline ? (phase.handover ? "Your game starts here in a moment. Your play time isn't counting yet." : "Your play time isn't counting while the connection is down. We'll continue when it's back.") : phase.paused || phase.hidden ? "Your play time isn't counting while paused." : "Waiting for Game Studio to confirm your time. Nothing is counted meanwhile."}</p>
                 {phase.paused ? (
                   <button type="button" onClick={() => applyPlayFlags({ paused: false })} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>▶ Continue</button>
                 ) : null}

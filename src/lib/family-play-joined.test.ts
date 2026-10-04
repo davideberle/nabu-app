@@ -52,7 +52,9 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     rmSync(dir, { recursive: true, force: true });
   });
 
-  async function stack(dataDirName = "adapter") {
+  let stacks = 0;
+  /** One fresh meter data dir per instance: the fake clock restarts at t0 in every case, so no earlier session's deadline may leak in. */
+  async function stack(dataDirName = `adapter-${(stacks += 1)}`) {
     const dataDir = join(dir, dataDirName);
     if (!existsSync(dataDir)) {
       mkdirSync(dataDir);
@@ -407,20 +409,27 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       equal(b.handoverAt, at(4).toISOString());
       clock = t0 + 3000;
       equal((await getLeaseStatus("lease-joined-b010", client, new Date(clock)))!.state, "pending");
-      const started = await tick(base, "lease-joined-b010", cred("lease-joined-b010"));
-      equal(started.status, 200, JSON.stringify(started.body));
+      // B's read acknowledges A on this meter (A's meter ends, 3 s counted and reported, Family releases its fence) —
+      // but B is NOT activated while A's frame deadline (t4, the window handed to A's wrapper) is open: 409, retry.
+      const blocked = await tick(base, "lease-joined-b010", cred("lease-joined-b010"));
+      equal(blocked.status, 409, JSON.stringify(blocked.body));
+      ok((blocked.body as { retryAfterMs?: number }).retryAfterMs! <= 1000);
       const meter = server.store.loadLease("lease-joined-a010")!;
       equal(meter.state, "ended");
-      equal(meter.consumed, 3, "A: 2 s confirmed + 1 s up to the successor's read");
+      equal(meter.consumed, 3, "A: 2 s confirmed + 1 s up to the successor's read (inside A's own window)");
       const old = (await getLease("lease-joined-a010", client))!;
       equal(old.consumedSeconds, 3);
-      equal(old.finalSettled, true, "A's terminal report released the fence before t4");
+      equal(old.finalSettled, true, "A's terminal report released Family's fence before t4");
+      equal((await getLeaseStatus("lease-joined-b010", client, new Date(clock)))!.state, "active");
+      equal(server.store.loadLease("lease-joined-b010"), null, "not activated while A's frame may still run");
+      clock = t0 + 4000;
+      const started = await tick(base, "lease-joined-b010", cred("lease-joined-b010"));
+      equal(started.status, 200, JSON.stringify(started.body));
+      ok((started.body as { authorizedForMs?: number }).authorizedForMs! > 0, "the answer carries the authority deadline for the frame");
       const next = (await getLease("lease-joined-b010", client))!;
       equal(next.budgetSeconds, 897);
       equal(old.consumedSeconds + next.budgetSeconds, 900);
       equal((await tick(base, "lease-joined-a010", a)).status, 410);
-      // Leave no live local lease behind (the shared fake clock restarts at t0 in the next case).
-      await fetch(`${base}/v1/play/lease-joined-b010/end`, { method: "POST", headers: { authorization: `Bearer ${cred("lease-joined-b010")}`, "content-type": "application/json" }, body: '{"reason":"left"}' });
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));

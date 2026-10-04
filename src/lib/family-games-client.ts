@@ -57,6 +57,8 @@ export type TickView = {
   warn: boolean;
   ended: boolean;
   endReason: string | null;
+  /** How long (ms from this answer) play is authorized without a renewal; the wrapper and the frame freeze at that deadline. */
+  authorizedForMs?: number;
 };
 
 export type LeaseGrant = {
