@@ -57,6 +57,7 @@ export const STOP_ACK_TIMEOUT_MS = 400;
 
 type Phase =
   | { kind: "starting" }
+  | { kind: "rolling-over" }
   | { kind: "needs-time"; balance: number | null; remaining: number }
   | { kind: "held"; heldBy: { gameId: string; deviceLabel: string | null } }
   | { kind: "playing"; grant: LeaseGrant; studio: StudioAccess; tick: TickView | null; paused: boolean; hidden: boolean; offline: boolean; handover: boolean; lapsed: boolean; armed: boolean }
@@ -76,8 +77,13 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
   const beatRef = useRef<(() => void) | null>(null);
   /** The frame's observed running session as last reported by the guard: carried on every end request (round 12). */
   const observationRef = useRef<{ grant: number | null; runMs: number }>({ grant: null, runMs: 0 });
-  /** True while the meter refuses a new session because earlier sessions' final observations are still pending (409 unresolved-evidence). */
-  const catchingUpRef = useRef(false);
+  /**
+   * Set while the wrapper rolls a lease over (round 20): the meter holds as many earlier sessions of this lease as it
+   * keeps (its evidence ledger is full) and will not open another — so the wrapper ends THIS lease with the stop
+   * acknowledgment, releases it, and acquires a fresh lease on the same allowance. No repurchase, no parallel
+   * authority: the old lease's evidence stays with it through its window, the new lease starts from the remainder.
+   */
+  const rolloverRef = useRef<string | null>(null);
   /** Pushes the current paused/ended state into the guarded frame (freezes/thaws the game). */
   const frameStateRef = useRef<((phase: string, remaining: number, ended: boolean) => void) | null>(null);
   const free = isFreeGame(gameId);
@@ -325,11 +331,25 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
           // 409 = handover pending: Family still fences this lease behind the previous session's
           // authority window; the meter retries by itself on the next beat (nothing counted meanwhile).
           const handover = outcome.status === 409;
-          // 409 `reason: "unresolved-evidence"` (round 16): the meter still holds earlier sessions of THIS lease whose
-          // final observations may arrive; it hands no new authority until that evidence can no longer change. Same
-          // wait, different words.
-          const catchingUp = handover && (outcome.detail as { reason?: string } | undefined)?.reason === "unresolved-evidence";
-          catchingUpRef.current = catchingUp;
+          // 409 `reason: "unresolved-evidence"` (round 20): the meter keeps every earlier session of THIS lease until
+          // the lease's window closes and holds as many as it can — it will not open another one, however long we
+          // wait. Recovery is a ROLLOVER: stop the frame with the guard's acknowledgment, end and release this lease
+          // (its evidence stays with it), then acquire a fresh lease on the same allowance. Exactly once per lease.
+          const capacity = handover && (outcome.detail as { reason?: string; recovery?: string } | undefined)?.reason === "unresolved-evidence";
+          if (capacity) {
+            if (rolloverRef.current === leaseId) return;
+            rolloverRef.current = leaseId;
+            authorizedUntil = 0;
+            heartbeat.stop();
+            stopRunning();
+            setPhase({ kind: "rolling-over" });
+            void (async () => {
+              const stopped = await stopFrame(leaseId, origin);
+              await Promise.all([client.end(studio, leaseId, "rollover", stopped, observationRef.current), client.release(child, leaseId, "rollover")]);
+              setAttempt((n) => n + 1);
+            })();
+            return;
+          }
           stopRunning();
           setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, offline: true, handover, armed: false } : p));
           phaseRef.current = current.kind === "playing" ? { ...current, offline: true, handover, armed: false } : current;
@@ -429,6 +449,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
 
       {phase.kind === "starting" ? (
         <p className="p-6 text-sm text-tertiary">Getting your game ready…</p>
+      ) : phase.kind === "rolling-over" ? (
+        <p className="p-6 text-sm text-tertiary">Starting a fresh play session on your remaining time…</p>
       ) : phase.kind === "needs-time" ? (
         <section aria-label="Buy play time" className="m-6 flex max-w-md flex-col gap-3 rounded-3xl border border-primary bg-primary p-5">
           <h2 className="text-xl font-semibold">No play time left</h2>
@@ -494,8 +516,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
             />
             {phase.paused || phase.hidden || phase.offline || phase.lapsed || !phase.armed ? (
               <div role="dialog" aria-label={phase.offline ? (phase.handover ? "Starting" : "Reconnecting") : phase.paused || phase.hidden ? "Paused" : "Checking"} className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-secondary/95 p-6 text-center backdrop-blur-sm">
-                <p className="text-xl font-semibold">{phase.offline ? (phase.handover ? (catchingUpRef.current ? "Catching up on your play time…" : "Closing your other session…") : "Reconnecting to Game Studio…") : phase.paused || phase.hidden ? "Paused" : phase.lapsed ? "Checking your play time…" : "Starting…"}</p>
-                <p className="max-w-sm text-sm text-secondary">{phase.offline ? (phase.handover ? (catchingUpRef.current ? "Your earlier sessions are still being counted. Your game continues in a moment; your play time isn't counting yet." : "Your game starts here in a moment. Your play time isn't counting yet.") : "Your play time isn't counting while the connection is down. We'll continue when it's back.") : phase.paused || phase.hidden ? "Your play time isn't counting while paused." : "Waiting for Game Studio to confirm your time. Nothing is counted meanwhile."}</p>
+                <p className="text-xl font-semibold">{phase.offline ? (phase.handover ? "Closing your other session…" : "Reconnecting to Game Studio…") : phase.paused || phase.hidden ? "Paused" : phase.lapsed ? "Checking your play time…" : "Starting…"}</p>
+                <p className="max-w-sm text-sm text-secondary">{phase.offline ? (phase.handover ? "Your game starts here in a moment. Your play time isn't counting yet." : "Your play time isn't counting while the connection is down. We'll continue when it's back.") : phase.paused || phase.hidden ? "Your play time isn't counting while paused." : "Waiting for Game Studio to confirm your time. Nothing is counted meanwhile."}</p>
                 {phase.paused ? (
                   <button type="button" onClick={() => applyPlayFlags({ paused: false })} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>▶ Continue</button>
                 ) : null}

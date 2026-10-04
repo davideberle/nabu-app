@@ -431,6 +431,65 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   record("W-07", "leaving the game stops the loop: no heartbeats after unmount", calls.length === afterLeave, `${calls.length - afterLeave} late ticks`);
   await ctx.close();
 }
+
+// ---------------------------------------------------------------------------
+// W-09 (round 20): the real wrapper rolls a lease over when the meter's evidence ledger is full — ends the lease with
+// the guard's stop acknowledgment, releases it, acquires a fresh lease on the same allowance, and resumes. No purchase.
+// ---------------------------------------------------------------------------
+{
+  const ctx = await browser.newContext({ viewport: { width: 1024, height: 768 }, baseURL: base });
+  await ctx.addCookies([{ name: COOKIE, value: assistant.split("=").slice(1).join("="), url: base }]);
+  const page = await ctx.newPage();
+  const calls = [];
+  const leases = [];
+  const ends = [];
+  const releases = [];
+  let purchases = 0;
+  const reply = (route, status, body) => route.fulfill({ status, contentType: "application/json", body: JSON.stringify(body) });
+  let grantSeq = 0;
+  const tickBody = (leaseId, remaining) => ({ leaseId, phase: "playing", remainingSeconds: remaining, consumedSeconds: 900 - remaining, graceRemainingSeconds: null, warn: false, ended: false, endReason: null, authorizedForMs: 2000, billing: "armed", grant: (grantSeq += 1) });
+  const mockStudio = `${base}/mock-studio-rollover`;
+  await page.route("**/api/family/games/session", (route) => reply(route, 200, { child: "santiago", token: "synthetic-browser-token", expiresAt: Date.now() + 3600000, studio: { url: mockStudio, token: "synthetic-studio-token", expiresAt: Date.now() + 3600000 } }));
+  await page.route("**/api/family/play/purchases", (route) => { purchases += 1; return reply(route, 500, { error: "no purchase expected" }); });
+  await page.route("**/api/family/play/leases", (route) => {
+    const id = `lease-rollover-${leases.length + 1}`;
+    leases.push({ id, body: route.request().postDataJSON() });
+    return reply(route, 201, { child: "santiago", lease: { id, personId: "santiago", gameId: SNAKE, mode: "play", metered: true, budgetSeconds: leases.length === 1 ? 900 : 893 }, replaced: null, remainingSeconds: leases.length === 1 ? 900 : 893, warnSeconds: 120, graceSeconds: 30, studio: { url: mockStudio, token: `synthetic-studio-token-${id}`, expiresAt: Date.now() + 3600000 } });
+  });
+  await page.route("**/api/family/play/leases/*/release", (route) => { releases.push({ url: route.request().url(), body: route.request().postDataJSON() }); return reply(route, 200, { ok: true, ended: true }); });
+  await page.route("**/mock-studio-rollover/**", async (route) => {
+    const url = route.request().url();
+    const leaseId = (url.match(/\/v1\/play\/([^/]+)\//) || [])[1];
+    if (url.endsWith("/tick")) {
+      const body = route.request().postDataJSON();
+      calls.push({ leaseId, body });
+      // The first lease: intent and running acknowledgment are answered; its next intent (after a pause) is refused
+      // for capacity — the ledger is full — with the rollover instruction. The second lease is answered normally.
+      const refuse = leaseId === "lease-rollover-1" && calls.filter((c) => c.leaseId === leaseId).length >= 3 && body.active === false && body.foreground === true;
+      if (refuse) await reply(route, 409, { error: "ledger full", pending: false, reason: "unresolved-evidence", recovery: "rollover", held: 64, releasedBy: "lease-end", consumedSeconds: 6.5 });
+      else await reply(route, 200, tickBody(leaseId, leaseId === "lease-rollover-1" ? 893.5 : 893));
+    } else if (url.endsWith("/end")) {
+      ends.push({ leaseId, body: route.request().postDataJSON() });
+      await reply(route, 200, { leaseId, phase: "exhausted", remainingSeconds: 893.5, consumedSeconds: 6.5, ended: true, endReason: "rollover", authorizedForMs: 0 });
+    } else if (url.includes("index.html")) {
+      await route.fulfill({ status: 200, contentType: "text/html", body: "<html><body>Synthetic inert game<script>window.pings=[];window.addEventListener('message',e=>{window.pings.push(e.data);if(e.data&&e.data.type==='family-play:alive'&&e.source){var run=!e.data.paused&&!e.data.ended;if(run&&!window.runSince)window.runSince=Date.now();if(!run&&window.runSince){window.ran=(window.ran||0)+Date.now()-window.runSince;window.runSince=0;}var ranMs=(window.ran||0)+(window.runSince?Date.now()-window.runSince:0);e.source.postMessage({type:'family-play:running',leaseId:e.data.leaseId,grant:e.data.grant===undefined?null:e.data.grant,session:e.data.session===undefined?null:e.data.session,running:run,ranMs:ranMs},e.origin);if(e.data.ended){e.source.postMessage({type:'family-play:stopped',leaseId:e.data.leaseId,frozen:true,dead:true,ranMs:ranMs},e.origin)}}})</script></body></html>" });
+    } else await reply(route, 200, {});
+  });
+  await page.goto(`/family/games/play?child=santiago&game=${SNAKE}`);
+  await page.getByRole("button", { name: "⏸ Pause", exact: true }).waitFor({ timeout: 15000 });
+  while (calls.filter((c) => c.leaseId === "lease-rollover-1").length < 2) await page.waitForTimeout(25);
+  await page.getByRole("button", { name: "⏸ Pause", exact: true }).click();
+  await page.getByRole("dialog", { name: "Paused" }).waitFor();
+  await page.getByRole("dialog", { name: "Paused" }).getByRole("button", { name: /Continue/ }).click();
+  // The continue intent is refused for capacity → rollover → a second lease → play resumes on it.
+  await page.getByRole("button", { name: "⏸ Pause", exact: true }).waitFor({ timeout: 15000 });
+  while (calls.filter((c) => c.leaseId === "lease-rollover-2" && c.body.active === true).length < 1) await page.waitForTimeout(25);
+  const refusedCalls = calls.filter((c) => c.leaseId === "lease-rollover-1").length;
+  record("W-09", "a capacity refusal rolls the lease over: one end with the guard's stop acknowledgment, one release, one fresh lease on the same allowance, play resumes there — no purchase, no second refusal loop", ends.length === 1 && ends[0].leaseId === "lease-rollover-1" && ends[0].body.reason === "rollover" && ends[0].body.frameStopped === true && releases.length === 1 && releases[0].url.includes("lease-rollover-1") && leases.length === 2 && purchases === 0 && calls.some((c) => c.leaseId === "lease-rollover-2" && c.body.active === true), JSON.stringify({ ends, releases: releases.length, leases: leases.map((l) => l.id), purchases, refusedCalls }));
+  const frameSrc = await page.locator("iframe").getAttribute("src");
+  record("W-09b", "the frame is reloaded under the new lease's credential, never the old one", typeof frameSrc === "string" && frameSrc.includes("lease-rollover-2") && !frameSrc.includes("lease-rollover-1"), String(frameSrc));
+  await ctx.close();
+}
 await browser.close();
 
 const summary = { base, at: new Date().toISOString(), total: results.length, passed: results.filter((r) => r.ok).length, failed: results.filter((r) => !r.ok).map((r) => r.id), results };

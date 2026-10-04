@@ -725,8 +725,13 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
    * alive message reaches the loaded frame (null = the frame never loads). The wrapper only forwards the guard's
    * measurement: it never claims running before the guard's word and flushes the guard's final word after a stop.
    */
-  function wrapperModel(base: string, lid: string, token: string, opts: { deliverAt?: () => number | null | undefined; frameReplyAt?: () => number | null | undefined; holdRunningUntil?: () => number | null | undefined; guardReplyDelayMs?: () => number; beacons?: boolean } = {}) {
+  function wrapperModel(base: string, lid0: string, token0: string, opts: { deliverAt?: () => number | null | undefined; frameReplyAt?: () => number | null | undefined; holdRunningUntil?: () => number | null | undefined; guardReplyDelayMs?: () => number; beacons?: boolean; rollover?: () => Promise<{ lid: string; token: string }> } = {}) {
     const beacons = opts.beacons !== false;
+    // The lease the wrapper plays under; a ROLLOVER (round 20) replaces it with a fresh one on the same allowance.
+    let lid = lid0;
+    let token = token0;
+    const rollovers: { from: string; to: string; at: number }[] = [];
+    let rollingOver: string | null = null;
     const guard = { loaded: false, thawedAt: 0, ranMs: 0, running: false, sessionKey: null as number | null };
     const guardRanMs = () => guard.ranMs + (guard.running ? Math.max(0, clock - guard.thawedAt) : 0);
     const beaconLog: { at: number; grant: number | null; ranMs: number; running: boolean; status?: number }[] = [];
@@ -823,6 +828,24 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
         return { status, body, sentAt, input };
       },
       onOutcome: ({ status, body, sentAt, input }) => {
+        // The wrapper's rollover rule (client.tsx): a capacity refusal ends THIS lease with the stop acknowledgment,
+        // releases it and acquires a fresh lease; exactly once per lease; then the loop continues on the new lease.
+        if (status === 409 && (body as { reason?: string }).reason === "unresolved-evidence" && opts.rollover) {
+          if (rollingOver === lid) return;
+          rollingOver = lid;
+          st.armed = false; stopRunning();
+          void (async () => {
+            const from = lid;
+            await end("rollover", true);
+            const next = await opts.rollover!();
+            rollovers.push({ from, to: next.lid, at: (clock - t0) / 1000 });
+            lid = next.lid; token = next.token;
+            st.sessionGrant = null; st.sessionClosed = false; st.observedMs = 0; st.reportedMs = 0; st.grantSeq = null; st.offline = false; st.lapsed = false; st.paused = false;
+            guard.loaded = false; guard.running = false; guard.ranMs = 0; guard.sessionKey = null;
+            hb.request();
+          })();
+          return;
+        }
         if (status !== 200) { st.offline = true; st.armed = false; stopRunning(); postFrameState(); return; }
         st.authorizedUntil = sentAt + Math.max(0, body.authorizedForMs ?? 0);
         st.lapsed = clock >= st.authorizedUntil;
@@ -850,7 +873,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const r = await fetch(`${base}/v1/play/${lid}/end`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ reason: "left", frameStopped: true, grant: st.sessionGrant, runMs: st.observedMs }) });
       return { status: r.status, body: (await r.json()) as { consumedSeconds: number } };
     };
-    return { hb, st, sends, pause, watchdog, end, unmount, guardRanMs, beacon: () => beacon(), beaconLog, guard };
+    return { hb, st, sends, pause, watchdog, end, unmount, guardRanMs, beacon: () => beacon(), beaconLog, guard, rollovers, lease: () => lid };
   }
 
   async function settle(ms = 60) { await new Promise((r) => setTimeout(r, ms)); }
@@ -1777,6 +1800,89 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: `${lid}-b`, takeover: true, deviceLabel: null, now: new Date(clock + 5000) }, client);
       ok(b.ok);
       equal(b.lease.budgetSeconds, 896, "conservation: 4 + 896 = 900");
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R20-1 rollover at capacity through the real controller, Family and the adapter: 64 closed sessions, the next intent is refused, the wrapper ends A with the stop acknowledgment, releases it, acquires B on the same allowance and plays on; A's delayed old-key correction still lands; a duplicate refusal and a restart change nothing; no purchase, totals conserve", async () => {
+    await allowance();
+    clock = t0;
+    const lidA = "lease-joined-r20-a";
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: lidA, takeover: true, deviceLabel: null, now: at(0) }, client);
+    let { server, base } = await stack();
+    try {
+      const a = cred(lidA, 3600);
+      const headers = { authorization: `Bearer ${a}`, "content-type": "application/json" };
+      const post = async (action: string, body: Record<string, unknown>) => { const r = await fetch(`${base}/v1/play/${lidA}/${action}`, { method: "POST", headers, body: JSON.stringify(body) }); return { status: r.status, json: (await r.json()) as { grant?: number; consumedSeconds: number; accepted?: boolean; reason?: string; recovery?: string } }; };
+      const grants: number[] = [];
+      for (let i = 0; i < 65; i += 1) { // 64 ledgered closed sessions plus the closed current one: the bound
+        const g = (await post("tick", { active: false, foreground: true, grant: null, runMs: 0 })).json.grant!;
+        grants.push(g);
+        equal((await post("tick", { active: true, foreground: true, grant: g, runMs: 0 })).status, 200);
+        clock = t0 + (i + 1) * 1000;
+        equal((await post("tick", { active: false, foreground: false, grant: g, runMs: 100 })).status, 200);
+        await post("frame", { grant: g, session: g, ranMs: 100, running: false });
+      }
+      ok(Math.abs(server.store.loadLease(lidA)!.consumed - 6.5) < 1e-9);
+      equal(server.store.loadLease(lidA)!.closedSessions!.length, 64);
+      const purchasesBefore = (await client.execute("SELECT COUNT(*) AS n FROM family_play_purchases")).rows[0]!["n"];
+      // The real controller on A: its intent is refused for capacity → the model performs the wrapper's rollover.
+      let issued = 0;
+      const w = wrapperModel(base, lidA, a, {
+        beacons: false,
+        rollover: async () => {
+          // client.release → Family ends A (the fence is released by A's terminal report); client.lease → B on the remainder.
+          await endPlayLease({ leaseId: lidA, personId: "santiago", reason: "rollover", now: new Date(clock) }, client);
+          await server.settler.flush();
+          const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r20-b", takeover: false, deviceLabel: null, now: new Date(clock) }, client);
+          ok(b.ok, JSON.stringify(b));
+          issued += 1;
+          return { lid: "lease-joined-r20-b", token: cred("lease-joined-r20-b", 3600) };
+        },
+      });
+      clock = t0 + 70_000;
+      w.hb.request();
+      await waitFor(() => w.rollovers.length === 1 && w.st.running, "the rollover and the thaw on B", 8000);
+      equal(w.lease(), "lease-joined-r20-b");
+      equal(issued, 1, "exactly one fresh lease");
+      const oldA = server.store.loadLease(lidA)!;
+      equal(oldA.state, "ended");
+      equal(oldA.endReason, "rollover");
+      const famA = (await getLease(lidA, client))!;
+      equal(famA.state, "ended");
+      equal(famA.consumedSeconds, 7, "terminal report rounds 6.5 up");
+      const famB = (await getLease("lease-joined-r20-b", client))!;
+      equal(famB.budgetSeconds, 893, "B starts from the remainder: 900 − 7, no purchase, no parallel authority");
+      // Play one second on B, then A's delayed old-key correction lands inside A's window.
+      clock = t0 + 71_000; w.hb.request(); await settle();
+      clock = t0 + 72_000; w.hb.request(); await settle();
+      ok(server.store.loadLease("lease-joined-r20-b")!.consumed >= 1, `B is metered (${server.store.loadLease("lease-joined-r20-b")!.consumed})`);
+      const late = await post("frame", { grant: grants[0], session: grants[0], ranMs: 1000, running: false });
+      equal(late.status, 200, JSON.stringify(late.json));
+      equal(late.json.accepted, true);
+      ok(Math.abs(server.store.loadLease(lidA)!.consumed - 7.4) < 1e-9, "A's old key adds 0.9 under its own window as a terminal correction");
+      await server.settler.flush();
+      equal((await getLease(lidA, client))!.consumedSeconds, 8, "Family accepted the correction (ceil 7.4)");
+      // A duplicate refusal race: a stale 409 for A arriving now changes nothing (the rollover ran once).
+      equal((await post("tick", { active: false, foreground: true, grant: null, runMs: 0 })).status, 410, "A is over: no second rollover, no revival");
+      equal(w.rollovers.length, 1);
+      // Restart the adapter: B continues, A stays ended.
+      const ended = await w.end("left", true);
+      w.hb.stop();
+      ok(ended.body.consumedSeconds >= 1);
+      await server.settler.flush();
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+      ({ server, base } = await stack("adapter-r20-restart"));
+      const rA = await fetch(`${base}/v1/play/${lidA}/frame`, { method: "POST", headers, body: JSON.stringify({ grant: grants[0], session: grants[0], ranMs: 1000, running: false }) });
+      equal(rA.status, 404, "a fresh data dir does not know A; nothing revives it at Family either");
+      equal(((await client.execute("SELECT COUNT(*) AS n FROM family_play_purchases")).rows[0]!["n"]), purchasesBefore, "no purchase happened");
+      const famBFinal = (await getLease("lease-joined-r20-b", client))!;
+      const c = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r20-c", takeover: true, deviceLabel: null, now: new Date(clock + 5000) }, client);
+      ok(c.ok);
+      equal(c.lease.budgetSeconds, 900 - 8 - famBFinal.consumedSeconds, `conservation: A 8 + B ${famBFinal.consumedSeconds} + C ${c.lease.budgetSeconds} = 900`);
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));
