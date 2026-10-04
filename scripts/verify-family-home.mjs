@@ -490,6 +490,110 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   record("W-09b", "the frame is reloaded under the new lease's credential, never the old one", typeof frameSrc === "string" && frameSrc.includes("lease-rollover-2") && !frameSrc.includes("lease-rollover-1"), String(frameSrc));
   await ctx.close();
 }
+
+// ---------------------------------------------------------------------------
+// W-10…W-12 (round 21): a rollover whose end or release stalls or is refused never leaves a silent wait — after the
+// bound the wrapper shows an honest retry; a retry forwards the first stop acknowledgment and completes; a stale
+// completion after the real router navigated to another child never re-acquires for that child.
+// ---------------------------------------------------------------------------
+for (const scenario of ["hung-end", "hung-release", "rejected-end", "stale-navigation"]) {
+  const ctx = await browser.newContext({ viewport: { width: 1024, height: 768 }, baseURL: base });
+  await ctx.addCookies([{ name: COOKIE, value: assistant.split("=").slice(1).join("="), url: base }]);
+  const page = await ctx.newPage();
+  await page.clock.install();
+  const calls = [];
+  const leases = [];
+  const ends = [];
+  const releases = [];
+  let purchases = 0;
+  let holdRelease = null;
+  let unhold = null;
+  const hold = new Promise((r) => { unhold = r; });
+  const reply = (route, status, body) => route.fulfill({ status, contentType: "application/json", body: JSON.stringify(body) });
+  let grantSeq = 0;
+  const tickBody = (leaseId, remaining) => ({ leaseId, phase: "playing", remainingSeconds: remaining, consumedSeconds: 900 - remaining, graceRemainingSeconds: null, warn: false, ended: false, endReason: null, authorizedForMs: 2000, billing: "armed", grant: (grantSeq += 1) });
+  const mockStudio = `${base}/mock-studio-rollover`;
+  await page.route("**/api/family/games/session", (route) => { const childId = route.request().postDataJSON().childId; return reply(route, 200, { child: childId, token: `synthetic-browser-token-${childId}`, expiresAt: Date.now() + 3600000, studio: { url: mockStudio, token: "synthetic-studio-token", expiresAt: Date.now() + 3600000 } }); });
+  await page.route("**/api/family/play/purchases", (route) => { purchases += 1; return reply(route, 500, { error: "no purchase expected" }); });
+  await page.route("**/api/family/play/leases", (route) => {
+    const id = `lease-rollover-${leases.length + 1}`;
+    const who = String(route.request().headers().authorization || "").endsWith("isabel") ? "isabel" : "santiago";
+    leases.push({ id, who, body: route.request().postDataJSON() });
+    if (leases.length >= 3) return reply(route, 409, { error: "lease-held", heldBy: { leaseId: "lease-rollover-2", gameId: SNAKE, deviceLabel: "computer" } });
+    return reply(route, 201, { child: who, lease: { id, personId: who, gameId: SNAKE, mode: "play", metered: true, budgetSeconds: leases.length === 1 ? 900 : 893 }, replaced: null, remainingSeconds: leases.length === 1 ? 900 : 893, warnSeconds: 120, graceSeconds: 30, studio: { url: mockStudio, token: `synthetic-studio-token-${id}`, expiresAt: Date.now() + 3600000 } });
+  });
+  await page.route("**/api/family/play/leases/*/release", async (route) => {
+    releases.push({ url: route.request().url(), body: route.request().postDataJSON() });
+    if (scenario === "hung-release" && releases.length === 1) { holdRelease = route; return; }
+    return reply(route, 200, { ok: true, ended: true });
+  });
+  await page.route("**/mock-studio-rollover/**", async (route) => {
+    const url = route.request().url();
+    const leaseId = (url.match(/\/v1\/play\/([^/]+)\//) || [])[1];
+    if (url.endsWith("/tick")) {
+      const body = route.request().postDataJSON();
+      calls.push({ leaseId, body });
+      const refuse = leaseId === "lease-rollover-1" && calls.filter((c) => c.leaseId === leaseId).length >= 3 && body.active === false && body.foreground === true;
+      if (refuse) await reply(route, 409, { error: "ledger full", pending: false, reason: "unresolved-evidence", recovery: "rollover", held: 64, releasedBy: "lease-end", consumedSeconds: 6.5 });
+      else await reply(route, 200, tickBody(leaseId, leaseId === "lease-rollover-1" ? 893.5 : 893));
+    } else if (url.endsWith("/end")) {
+      ends.push({ leaseId, body: route.request().postDataJSON() });
+      if ((scenario === "hung-end" || scenario === "stale-navigation") && ends.length === 1) { await hold; return reply(route, 200, { leaseId, phase: "exhausted", remainingSeconds: 893.5, consumedSeconds: 6.5, ended: true, endReason: "rollover", authorizedForMs: 0 }); }
+      if (scenario === "rejected-end" && ends.length === 1) return reply(route, 503, { error: "meter unavailable" });
+      await reply(route, 200, { leaseId, phase: "exhausted", remainingSeconds: 893.5, consumedSeconds: 6.5, ended: true, endReason: "rollover", authorizedForMs: 0 });
+    } else if (url.includes("index.html")) {
+      await route.fulfill({ status: 200, contentType: "text/html", body: "<html><body>Synthetic inert game<script>window.pings=[];window.addEventListener('message',e=>{window.pings.push(e.data);if(e.data&&e.data.type==='family-play:alive'&&e.source){var run=!e.data.paused&&!e.data.ended;if(run&&!window.runSince)window.runSince=Date.now();if(!run&&window.runSince){window.ran=(window.ran||0)+Date.now()-window.runSince;window.runSince=0;}var ranMs=(window.ran||0)+(window.runSince?Date.now()-window.runSince:0);e.source.postMessage({type:'family-play:running',leaseId:e.data.leaseId,grant:e.data.grant===undefined?null:e.data.grant,session:e.data.session===undefined?null:e.data.session,running:run,ranMs:ranMs},e.origin);if(e.data.ended){e.source.postMessage({type:'family-play:stopped',leaseId:e.data.leaseId,frozen:true,dead:true,ranMs:ranMs},e.origin)}}})</script></body></html>" });
+    } else await reply(route, 200, {});
+  });
+  await page.goto(`/family/games/play?child=santiago&game=${SNAKE}`);
+  await page.getByRole("button", { name: "⏸ Pause", exact: true }).waitFor({ timeout: 15000 });
+  while (calls.filter((c) => c.leaseId === "lease-rollover-1").length < 2) await page.waitForTimeout(25);
+  await page.getByRole("button", { name: "⏸ Pause", exact: true }).click();
+  await page.getByRole("dialog", { name: "Paused" }).waitFor();
+  await page.getByRole("dialog", { name: "Paused" }).getByRole("button", { name: /Continue/ }).click();
+  // A refused end fails at once (no bound to wait out), so the "Starting…" state may already have given way to the
+  // failed state; the held scenarios show it until the bound passes.
+  if (scenario !== "rejected-end") await page.getByText("Starting a fresh play session on your remaining time…", { exact: true }).waitFor({ timeout: 15000 });
+  if (scenario === "stale-navigation") {
+    // The actual Next router navigates to Isabel's game while Santiago's end is still held (the parent's probe).
+    await page.evaluate(() => {
+      const anchor = document.querySelector("a");
+      const k = Object.keys(anchor).find((key) => key.startsWith("__reactFiber$"));
+      let f = anchor[k];
+      let router = null;
+      for (let level = 0; f && level < 100; level += 1, f = f.return) {
+        for (let d = f.dependencies?.firstContext; d; d = d.next) { const v = d.memoizedValue; if (v && typeof v.push === "function" && typeof v.refresh === "function") { router = v; break; } }
+        if (router) break;
+      }
+      if (!router) throw new Error("AppRouter not found");
+      router.push(`/family/games/play?child=isabel&game=${new URLSearchParams(location.search).get("game")}`);
+    });
+    await page.getByRole("button", { name: "⏸ Pause", exact: true }).waitFor({ timeout: 15000 });
+    const before = leases.length;
+    unhold();
+    await page.waitForTimeout(1500);
+    await page.clock.runFor(2000);
+    await page.waitForTimeout(500);
+    const stillPlaying = await page.getByRole("button", { name: "⏸ Pause", exact: true }).count();
+    record("W-12", "a stale rollover completion after the real router moved to another child never re-acquires: Isabel keeps playing on her lease, no third lease request, no lease-held screen, no purchase", before === 2 && leases.length === 2 && leases[1].who === "isabel" && stillPlaying === 1 && (await page.getByRole("heading", { name: /already playing/ }).count()) === 0 && purchases === 0, JSON.stringify({ leases: leases.map((l) => `${l.id}:${l.who}`), ends: ends.length, releases: releases.length, stillPlaying, purchases }));
+    await ctx.close();
+    continue;
+  }
+  // The bound passes with the end (or the release) still unanswered: an honest, actionable state — not a wait.
+  if (scenario !== "rejected-end") await page.clock.runFor(9000);
+  await page.getByRole("heading", { name: "We couldn't close your last play session" }).waitFor({ timeout: 15000 });
+  const leasesAtFailure = leases.length;
+  const tag = scenario === "hung-end" ? "W-10" : scenario === "hung-release" ? "W-10b" : "W-11";
+  record(tag, `${scenario}: after the bound the wrapper shows the failed-rollover state with a retry and Back to Games — one lease, no re-acquisition, no purchase`, leasesAtFailure === 1 && purchases === 0 && (await page.getByRole("button", { name: "↻ Try again" }).count()) === 1 && (await page.getByRole("link", { name: "Back to Games" }).count()) === 1, JSON.stringify({ leases: leasesAtFailure, ends: ends.length, releases: releases.length, purchases }));
+  // Retry: the stalled answer is delivered (or the meter is back); the retry forwards the FIRST stop acknowledgment and completes.
+  if (scenario === "hung-release" && holdRelease) await reply(holdRelease, 200, { ok: true, ended: true });
+  unhold();
+  await page.getByRole("button", { name: "↻ Try again" }).click();
+  await page.getByRole("button", { name: "⏸ Pause", exact: true }).waitFor({ timeout: 15000 });
+  while (calls.filter((c) => c.leaseId === "lease-rollover-2" && c.body.active === true).length < 1) await page.waitForTimeout(25);
+  record(`${tag}r`, `${scenario}: the retry completes the rollover — the end carries the same stop acknowledgment as the first attempt, exactly one fresh lease, play resumes on it, no purchase`, leases.length === 2 && ends.length >= 2 && ends.every((e) => e.leaseId === "lease-rollover-1" && e.body.reason === "rollover" && e.body.frameStopped === ends[0].body.frameStopped) && purchases === 0, JSON.stringify({ leases: leases.map((l) => l.id), ends: ends.map((e) => e.body.frameStopped), releases: releases.length, purchases }));
+  await ctx.close();
+}
 await browser.close();
 
 const summary = { base, at: new Date().toISOString(), total: results.length, passed: results.filter((r) => r.ok).length, failed: results.filter((r) => !r.ok).map((r) => r.id), results };

@@ -53,11 +53,14 @@ export const FRAME_STOPPED_TYPE = "family-play:stopped";
 /** The guard's report of what the frame is actually doing after an alive message: running (thawed) or not. */
 export const FRAME_RUNNING_TYPE = "family-play:running";
 /** How long to wait for the guard's stop acknowledgment before ending without it (the meter then waits out the handed deadline). */
-export const STOP_ACK_TIMEOUT_MS = 400;
+export /** Bound on the rollover's end + release requests: past it the wrapper shows an honest retry, never a silent wait. */
+const ROLLOVER_REQUEST_TIMEOUT_MS = 8000;
+const STOP_ACK_TIMEOUT_MS = 400;
 
 type Phase =
   | { kind: "starting" }
   | { kind: "rolling-over" }
+  | { kind: "rollover-failed"; leaseId: string; why: "timeout" | "rejected" }
   | { kind: "needs-time"; balance: number | null; remaining: number }
   | { kind: "held"; heldBy: { gameId: string; deviceLabel: string | null } }
   | { kind: "playing"; grant: LeaseGrant; studio: StudioAccess; tick: TickView | null; paused: boolean; hidden: boolean; offline: boolean; handover: boolean; lapsed: boolean; armed: boolean }
@@ -77,13 +80,6 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
   const beatRef = useRef<(() => void) | null>(null);
   /** The frame's observed running session as last reported by the guard: carried on every end request (round 12). */
   const observationRef = useRef<{ grant: number | null; runMs: number }>({ grant: null, runMs: 0 });
-  /**
-   * Set while the wrapper rolls a lease over (round 20): the meter holds as many earlier sessions of this lease as it
-   * keeps (its evidence ledger is full) and will not open another — so the wrapper ends THIS lease with the stop
-   * acknowledgment, releases it, and acquires a fresh lease on the same allowance. No repurchase, no parallel
-   * authority: the old lease's evidence stays with it through its window, the new lease starts from the remainder.
-   */
-  const rolloverRef = useRef<string | null>(null);
   /** Pushes the current paused/ended state into the guarded frame (freezes/thaws the game). */
   const frameStateRef = useRef<((phase: string, remaining: number, ended: boolean) => void) | null>(null);
   const free = isFreeGame(gameId);
@@ -156,6 +152,58 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
     });
   }, []);
 
+  /**
+   * Rollover (rounds 20–21): the meter holds as many earlier sessions of this lease as it keeps (its evidence ledger
+   * is full) and will not open another — so the wrapper ends THIS lease with the stop acknowledgment, releases it, and
+   * acquires a fresh lease on the same allowance. No repurchase, no parallel authority: the old lease's evidence stays
+   * with it through its window, the new lease starts from the remainder. The end and release requests are BOUNDED
+   * (`ROLLOVER_REQUEST_TIMEOUT_MS`) and FENCED by child, game, lease and generation: a stale completion (after
+   * navigation, a retry, or unmount) can never re-acquire for another child or game. Re-acquisition happens only once
+   * the end is confirmed (answered, or already over) AND the release is confirmed; anything else — a timeout, a network
+   * failure, a refusal — is shown truthfully with a retry, never treated as proof that the frame stopped or that the
+   * old authority ended. The guard's stop acknowledgment from the first attempt is what every retry forwards.
+   */
+  const rolloverRef = useRef<{ leaseId: string; child: ChildId; gameId: string; generation: number; controller: AbortController; studio: StudioAccess; origin: string; stopped: boolean | null } | null>(null);
+  const rolloverGenerationRef = useRef(0);
+  const identityRef = useRef({ child, gameId });
+  identityRef.current = { child, gameId };
+  const runRollover = useCallback(async (leaseId: string, studio: StudioAccess, origin: string, stoppedKnown: boolean | null) => {
+    const generation = (rolloverGenerationRef.current += 1);
+    const controller = new AbortController();
+    const started = { child, gameId };
+    rolloverRef.current = { leaseId, child, gameId, generation, controller, studio, origin, stopped: stoppedKnown };
+    const live = () => rolloverRef.current?.generation === generation && identityRef.current.child === started.child && identityRef.current.gameId === started.gameId;
+    setPhase({ kind: "rolling-over" });
+    // The guard's acknowledgment is asked for exactly once (the frame is gone after that); retries forward what it said.
+    const stopped = stoppedKnown ?? (await stopFrame(leaseId, origin));
+    if (!live()) return;
+    if (rolloverRef.current) rolloverRef.current.stopped = stopped;
+    const timer = setTimeout(() => controller.abort(), ROLLOVER_REQUEST_TIMEOUT_MS);
+    const [endOutcome, releaseOutcome] = await Promise.all([
+      client.end(studio, leaseId, "rollover", stopped, observationRef.current, controller.signal),
+      client.release(child, leaseId, "rollover", controller.signal),
+    ]);
+    clearTimeout(timer);
+    if (!live()) return;
+    // The end is confirmed when the meter answered it or says the lease is already over; the release when Family answered.
+    const endConfirmed = endOutcome.ok || endOutcome.status === 410 || endOutcome.status === 404;
+    const releaseConfirmed = releaseOutcome.ok;
+    if (endConfirmed && releaseConfirmed) {
+      rolloverRef.current = null;
+      setAttempt((n) => n + 1);
+      return;
+    }
+    setPhase({ kind: "rollover-failed", leaseId, why: controller.signal.aborted ? "timeout" : "rejected" });
+  }, [child, gameId, client, stopFrame]);
+  // Any change of child or game, and unmount, cancels an in-flight rollover: its completion must not act for another game.
+  useEffect(() => {
+    return () => {
+      rolloverGenerationRef.current += 1;
+      rolloverRef.current?.controller.abort();
+      rolloverRef.current = null;
+    };
+  }, [child, gameId]);
+
   // ---- release on leave -------------------------------------------------
   useEffect(() => {
     return () => {
@@ -164,6 +212,10 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         // The frame is unmounted with this component: nothing can run it any more.
         void client.end(current.studio, current.grant.lease.id, "left", true, observationRef.current);
         void client.release(child, current.grant.lease.id, "left");
+      } else if (current.kind === "rollover-failed") {
+        // Leaving after a failed rollover: ask Family once more to release the old lease (idempotent); the meter's end
+        // was already attempted with the guard's acknowledgment and is retried by the sweeper's finalization rules.
+        void client.release(child, current.leaseId, "left");
       }
     };
   }, [child, client]);
@@ -337,17 +389,11 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
           // (its evidence stays with it), then acquire a fresh lease on the same allowance. Exactly once per lease.
           const capacity = handover && (outcome.detail as { reason?: string; recovery?: string } | undefined)?.reason === "unresolved-evidence";
           if (capacity) {
-            if (rolloverRef.current === leaseId) return;
-            rolloverRef.current = leaseId;
+            if (rolloverRef.current?.leaseId === leaseId) return;
             authorizedUntil = 0;
             heartbeat.stop();
             stopRunning();
-            setPhase({ kind: "rolling-over" });
-            void (async () => {
-              const stopped = await stopFrame(leaseId, origin);
-              await Promise.all([client.end(studio, leaseId, "rollover", stopped, observationRef.current), client.release(child, leaseId, "rollover")]);
-              setAttempt((n) => n + 1);
-            })();
+            void runRollover(leaseId, studio, origin, null);
             return;
           }
           stopRunning();
@@ -451,6 +497,15 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         <p className="p-6 text-sm text-tertiary">Getting your game ready…</p>
       ) : phase.kind === "rolling-over" ? (
         <p className="p-6 text-sm text-tertiary">Starting a fresh play session on your remaining time…</p>
+      ) : phase.kind === "rollover-failed" ? (
+        <section aria-label="Session not closed" className="m-6 flex max-w-md flex-col gap-3 rounded-3xl border border-primary bg-primary p-5">
+          <h2 className="text-lg font-semibold">We couldn't close your last play session</h2>
+          <p className="text-sm text-secondary">{phase.why === "timeout" ? "Game Studio didn't answer in time." : "Game Studio or Family refused the request."} Nothing was charged and your time is kept. Try again, or go back to Games and open the game again.</p>
+          <div className="flex flex-wrap gap-2">
+            <button type="button" onClick={() => { const r = rolloverRef.current; if (r && r.leaseId === phase.leaseId) void runRollover(r.leaseId, r.studio, r.origin, r.stopped); }} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>↻ Try again</button>
+            <Link href={gamesHref} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>Back to Games</Link>
+          </div>
+        </section>
       ) : phase.kind === "needs-time" ? (
         <section aria-label="Buy play time" className="m-6 flex max-w-md flex-col gap-3 rounded-3xl border border-primary bg-primary p-5">
           <h2 className="text-xl font-semibold">No play time left</h2>

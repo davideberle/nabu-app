@@ -725,7 +725,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
    * alive message reaches the loaded frame (null = the frame never loads). The wrapper only forwards the guard's
    * measurement: it never claims running before the guard's word and flushes the guard's final word after a stop.
    */
-  function wrapperModel(base: string, lid0: string, token0: string, opts: { deliverAt?: () => number | null | undefined; frameReplyAt?: () => number | null | undefined; holdRunningUntil?: () => number | null | undefined; guardReplyDelayMs?: () => number; beacons?: boolean; rollover?: () => Promise<{ lid: string; token: string }> } = {}) {
+  function wrapperModel(base: string, lid0: string, token0: string, opts: { deliverAt?: () => number | null | undefined; frameReplyAt?: () => number | null | undefined; holdRunningUntil?: () => number | null | undefined; guardReplyDelayMs?: () => number; beacons?: boolean; rollover?: () => Promise<{ lid: string; token: string } | null>; rolloverEnd?: (lid: string, stopped: boolean | null) => Promise<{ status: number }> } = {}) {
     const beacons = opts.beacons !== false;
     // The lease the wrapper plays under; a ROLLOVER (round 20) replaces it with a fresh one on the same allowance.
     let lid = lid0;
@@ -834,16 +834,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
           if (rollingOver === lid) return;
           rollingOver = lid;
           st.armed = false; stopRunning();
-          void (async () => {
-            const from = lid;
-            await end("rollover", true);
-            const next = await opts.rollover!();
-            rollovers.push({ from, to: next.lid, at: (clock - t0) / 1000 });
-            lid = next.lid; token = next.token;
-            st.sessionGrant = null; st.sessionClosed = false; st.observedMs = 0; st.reportedMs = 0; st.grantSeq = null; st.offline = false; st.lapsed = false; st.paused = false;
-            guard.loaded = false; guard.running = false; guard.ranMs = 0; guard.sessionKey = null;
-            hb.request();
-          })();
+          void attemptRollover();
           return;
         }
         if (status !== 200) { st.offline = true; st.armed = false; stopRunning(); postFrameState(); return; }
@@ -857,6 +848,32 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       },
     });
     /** applyPlayFlags({ paused: true }) (client.tsx): flags, the frame freeze, then one beat. */
+    /**
+     * The wrapper's rollover (client.tsx, rounds 20–21): the guard's stop acknowledgment is asked for once; end and
+     * release are bounded and fenced by a generation; re-acquisition only once the end is confirmed (answered, or the
+     * lease already over) AND the release is confirmed — otherwise the model enters `failed` and a retry forwards the
+     * first acknowledgment. A stale completion (generation moved on) acts on nothing.
+     */
+    const rolloverState = { generation: 0, failed: null as null | { lid: string; why: string }, stopped: null as boolean | null, attempts: 0 };
+    const attemptRollover = async () => {
+      const generation = (rolloverState.generation += 1);
+      const from = lid;
+      rolloverState.attempts += 1;
+      if (rolloverState.stopped === null) { stopRunning(); if (guard.loaded) { guardFreeze(); st.observedMs = Math.max(st.observedMs, guardRanMs()); } rolloverState.stopped = guard.loaded; }
+      const endOutcome = await (opts.rolloverEnd ? opts.rolloverEnd(from, rolloverState.stopped) : fetch(`${base}/v1/play/${from}/end`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ reason: "rollover", frameStopped: rolloverState.stopped, grant: st.sessionGrant, runMs: st.observedMs }) }).then((r) => ({ status: r.status })).catch(() => ({ status: 0 })));
+      if (rolloverState.generation !== generation) return; // stale completion: fenced
+      const endConfirmed = endOutcome.status === 200 || endOutcome.status === 410 || endOutcome.status === 404;
+      if (!endConfirmed) { rolloverState.failed = { lid: from, why: endOutcome.status === 0 ? "timeout" : "rejected" }; return; }
+      const next = await opts.rollover!();
+      if (rolloverState.generation !== generation) return;
+      if (!next) { rolloverState.failed = { lid: from, why: "rejected" }; return; }
+      rolloverState.failed = null;
+      rollovers.push({ from, to: next.lid, at: (clock - t0) / 1000 });
+      lid = next.lid; token = next.token;
+      st.sessionGrant = null; st.sessionClosed = false; st.observedMs = 0; st.reportedMs = 0; st.grantSeq = null; st.offline = false; st.lapsed = false; st.paused = false;
+      guard.loaded = false; guard.running = false; guard.ranMs = 0; guard.sessionKey = null;
+      hb.request();
+    };
     const pause = () => { st.paused = true; st.armed = false; postFrameState(); hb.request(); };
     const watchdog = () => { if (st.armed && clock >= st.authorizedUntil) { st.lapsed = true; st.armed = false; postFrameState(); hb.request(); } };
     /** leaveAndGo: stopFrame (the guard's stop acknowledgment carries its final measurement) then the real client.end contract. */
@@ -873,7 +890,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const r = await fetch(`${base}/v1/play/${lid}/end`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ reason: "left", frameStopped: true, grant: st.sessionGrant, runMs: st.observedMs }) });
       return { status: r.status, body: (await r.json()) as { consumedSeconds: number } };
     };
-    return { hb, st, sends, pause, watchdog, end, unmount, guardRanMs, beacon: () => beacon(), beaconLog, guard, rollovers, lease: () => lid };
+    return { hb, st, sends, pause, watchdog, end, unmount, guardRanMs, beacon: () => beacon(), beaconLog, guard, rollovers, lease: () => lid, rolloverState, retryRollover: () => attemptRollover(), invalidate: () => { rolloverState.generation += 1; } };
   }
 
   async function settle(ms = 60) { await new Promise((r) => setTimeout(r, ms)); }
@@ -1883,6 +1900,83 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const c = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r20-c", takeover: true, deviceLabel: null, now: new Date(clock + 5000) }, client);
       ok(c.ok);
       equal(c.lease.budgetSeconds, 900 - 8 - famBFinal.consumedSeconds, `conservation: A 8 + B ${famBFinal.consumedSeconds} + C ${c.lease.budgetSeconds} = 900`);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R21-1 a stalled or refused rollover end never re-acquires: the model enters the failed state, Family issues nothing, a retry forwards the first stop acknowledgment and completes against the real adapter; a stale completion after the generation moved on acts on nothing", async () => {
+    await allowance();
+    clock = t0;
+    const lidA = "lease-joined-r21-a";
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: lidA, takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred(lidA, 3600);
+      const headers = { authorization: `Bearer ${a}`, "content-type": "application/json" };
+      const post = async (action: string, body: Record<string, unknown>) => { const r = await fetch(`${base}/v1/play/${lidA}/${action}`, { method: "POST", headers, body: JSON.stringify(body) }); return { status: r.status, json: (await r.json()) as { grant?: number; consumedSeconds: number } }; };
+      const grants: number[] = [];
+      for (let i = 0; i < 65; i += 1) {
+        const g = (await post("tick", { active: false, foreground: true, grant: null, runMs: 0 })).json.grant!;
+        grants.push(g);
+        equal((await post("tick", { active: true, foreground: true, grant: g, runMs: 0 })).status, 200);
+        clock = t0 + (i + 1) * 1000;
+        equal((await post("tick", { active: false, foreground: false, grant: g, runMs: 100 })).status, 200);
+        await post("frame", { grant: g, session: g, ranMs: 100, running: false });
+      }
+      let endMode: "stall" | "refuse" | "real" = "stall";
+      let issued = 0;
+      const realEnd = (lid: string, stopped: boolean | null) => fetch(`${base}/v1/play/${lid}/end`, { method: "POST", headers, body: JSON.stringify({ reason: "rollover", frameStopped: stopped, grant: null, runMs: 0 }) }).then((r) => ({ status: r.status }));
+      const w = wrapperModel(base, lidA, a, {
+        beacons: false,
+        rolloverEnd: async (lid, stopped) => (endMode === "stall" ? { status: 0 } : endMode === "refuse" ? { status: 503 } : realEnd(lid, stopped)),
+        rollover: async () => {
+          await endPlayLease({ leaseId: lidA, personId: "santiago", reason: "rollover", now: new Date(clock) }, client);
+          await server.settler.flush();
+          const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r21-b", takeover: false, deviceLabel: null, now: new Date(clock) }, client);
+          if (!b.ok) return null;
+          issued += 1;
+          return { lid: "lease-joined-r21-b", token: cred("lease-joined-r21-b", 3600) };
+        },
+      });
+      clock = t0 + 70_000;
+      w.hb.request();
+      await waitFor(() => w.rolloverState.failed !== null, "the stalled end bounds out into the failed state");
+      equal(w.rolloverState.failed!.why, "timeout");
+      equal(issued, 0, "no re-acquisition while the end is unconfirmed");
+      equal((await getLease(lidA, client))!.state, "active", "A is still the active lease at Family: no parallel authority, nothing forgotten");
+      equal(server.store.loadLease(lidA)!.state, "active");
+      // A refusal is honest too: still no re-acquisition.
+      endMode = "refuse";
+      await w.retryRollover();
+      equal(w.rolloverState.failed!.why, "rejected");
+      equal(issued, 0);
+      // A stale completion: the generation moved on (navigation / unmount) before the end answered — it acts on nothing.
+      endMode = "real";
+      const stale = w.retryRollover();
+      w.invalidate();
+      await stale;
+      equal(issued, 0, "the stale completion did not acquire");
+      equal(w.lease(), lidA);
+      ok(server.store.loadLease(lidA)!.state === "ended", "the real end did reach the meter (idempotent: a later retry sees 410 and treats it as confirmed)");
+      // The genuine retry: the end is already over (410 → confirmed), the release and the fresh lease follow.
+      await w.retryRollover();
+      await waitFor(() => w.rollovers.length === 1 && w.st.running, "the retry completes the rollover and B thaws", 8000);
+      equal(issued, 1);
+      equal(w.lease(), "lease-joined-r21-b");
+      equal(w.rolloverState.attempts, 4);
+      equal((await getLease(lidA, client))!.state, "ended");
+      equal((await getLease(lidA, client))!.consumedSeconds, 7);
+      equal((await getLease("lease-joined-r21-b", client))!.budgetSeconds, 893, "same allowance remainder, no purchase");
+      clock = t0 + 72_000; w.hb.request(); await settle();
+      const ended = await w.end("left", true);
+      w.hb.stop();
+      ok(ended.body.consumedSeconds >= 0);
+      await server.settler.flush();
+      const c = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r21-c", takeover: true, deviceLabel: null, now: new Date(clock + 5000) }, client);
+      ok(c.ok);
+      equal(c.lease.budgetSeconds, 900 - 7 - (await getLease("lease-joined-r21-b", client))!.consumedSeconds, "conservation across the failed, stale and successful attempts");
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));
