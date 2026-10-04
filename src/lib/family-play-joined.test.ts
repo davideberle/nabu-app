@@ -15,7 +15,8 @@ const ADAPTER = "/Users/claweberle/.openclaw/workspace/projects/game-studio/serv
 const available = existsSync(ADAPTER);
 
 type Adapter = {
-  createChildPlayAdapter: (opts: Record<string, unknown>) => import("node:http").Server & { store: { loadLease: (id: string) => { consumed: number; state: string; endReason: string | null; lastActive: boolean; session: { measured?: boolean; observed?: number; closed?: boolean; base?: number } | null; previousSession?: { observed?: number } | null; frame?: { grant: number | null; ranMs: number; running: boolean } | null } | null }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
+  sessionEligibleUntil: (session: unknown) => number;
+  createChildPlayAdapter: (opts: Record<string, unknown>) => import("node:http").Server & { store: { loadLease: (id: string) => { consumed: number; state: string; endReason: string | null; lastActive: boolean; session: { measured?: boolean; observed?: number; closed?: boolean; base?: number } | null; closedSessions?: { grants?: Record<string, unknown>; deadline?: number }[]; previousSession?: { observed?: number } | null; frame?: { grant: number | null; ranMs: number; running: boolean } | null } | null }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
   derivePlayKey: (secret: string) => Buffer;
   mintPlayCredential: (key: Buffer, claims: Record<string, unknown>) => string;
   signSettlement: (key: Buffer, ts: number, leaseId: string, body: string) => string;
@@ -1677,6 +1678,49 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R17-1 paired controls through Family: three stale sessions, the oldest final delivered at its horizon (accepted) or 1 ms past it (refused, counted), with or without a zero-run resume — identical totals either way; successor conserves what Family settled", async () => {
+    for (const [offset, expectTotal, expectFamily, expectB] of [[0, 3, 3, 897], [1, 2.5, 3, 897]] as const) {
+      for (const resume of [false, true]) {
+        await allowance();
+        clock = t0;
+        const lid = `lease-joined-r17-${offset}-${resume ? "r" : "n"}`;
+        await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: lid, takeover: true, deviceLabel: null, now: at(0) }, client);
+        const { server, base } = await stack();
+        try {
+          const a = cred(lid, 3600);
+          const headers = { authorization: `Bearer ${a}`, "content-type": "application/json" };
+          const post = async (action: string, body: Record<string, unknown>) => { const r = await fetch(`${base}/v1/play/${lid}/${action}`, { method: "POST", headers, body: JSON.stringify(body) }); return { status: r.status, json: (await r.json()) as { grant?: number; consumedSeconds: number; accepted?: boolean; known?: boolean; expired?: boolean } }; };
+          const grants: number[] = [];
+          for (let i = 0; i < 3; i += 1) {
+            const g = (await post("tick", { active: false, foreground: true, grant: null, runMs: 0 })).json.grant!;
+            grants.push(g);
+            equal((await post("tick", { active: true, foreground: true, grant: g, runMs: 0 })).status, 200);
+            clock = t0 + (i + 1) * 1000;
+            equal((await post("tick", { active: false, foreground: false, grant: g, runMs: 500 })).status, 200);
+          }
+          const stored = server.store.loadLease(lid)!;
+          const oldest = stored.closedSessions!.find((c) => c.grants && c.grants[grants[0]])!;
+          const horizon = mod.sessionEligibleUntil(oldest) as number;
+          clock = horizon + offset;
+          if (resume) equal((await post("tick", { active: false, foreground: true, grant: null, runMs: 0 })).status, 200);
+          for (const g of grants.slice().reverse()) await post("frame", { grant: g, session: g, ranMs: 1000, running: false });
+          equal(server.store.loadLease(lid)!.consumed, expectTotal, `${resume ? "resume" : "no resume"} at horizon+${offset}`);
+          const ended = await post("end", { reason: "left", frameStopped: true, grant: grants[2], runMs: 0 });
+          equal(ended.status, 200);
+          await server.settler.flush();
+          const fam = (await getLease(lid, client))!;
+          equal(fam.consumedSeconds, expectFamily, "terminal report rounds up");
+          const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: `${lid}-b`, takeover: true, deviceLabel: null, now: new Date(clock + 5000) }, client);
+          ok(b.ok);
+          equal(b.lease.budgetSeconds, expectB, "conservation: settled + usable = 900");
+        } finally {
+          server.settler.stop();
+          await new Promise((r) => server.close(r));
+        }
+      }
     }
   });
 
