@@ -739,6 +739,10 @@ export type LeaseStatus = {
   lastSettledAt: string | null;
   capSeconds: number;
   finalSettled: boolean;
+  /** Family's recorded end instant (ISO), or null while active; the meter counts no authorized time past it. */
+  endedAt: string | null;
+  /** Family server time when this answer was produced (ISO); the meter treats answers that aged past its freshness window as history. */
+  asOf: string;
 };
 
 /**
@@ -804,6 +808,8 @@ export async function getLeaseStatus(leaseId: string, client?: Client): Promise<
     lastSettledAt: lease.lastSettledAt,
     capSeconds: lease.capSeconds,
     finalSettled: lease.finalSettled,
+    endedAt: lease.endedAt,
+    asOf: new Date().toISOString(),
   };
 }
 

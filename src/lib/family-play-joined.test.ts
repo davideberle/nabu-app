@@ -100,12 +100,38 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       clock = t0 + 3000;
       const cached = await tick(base, "lease-joined-a001", a);
       equal(cached.status, 410, "no cached authority: refused at t3");
-      equal(cached.body.consumedSeconds, 0);
+      equal(cached.body.consumedSeconds, 1, "the authorized foreground second before Family's end is charged exactly once");
       await server.settler.flush();
       const meter = server.store.loadLease("lease-joined-a001")!;
       const next = (await getLease("lease-joined-b001", client))!;
-      ok(meter.consumed + next.budgetSeconds <= 900, `measured ${meter.consumed} + usable ${next.budgetSeconds}`);
+      equal(meter.consumed, 1);
+      equal(next.budgetSeconds, 899);
+      equal(meter.consumed + next.budgetSeconds, 900, "known foreground + usable = purchased");
       equal((await getPlayState("santiago", client)).activeLease?.id, "lease-joined-b001");
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("explicit end: the foreground seconds before a Studio /end are charged once and the successor gets exactly the rest", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-a004", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-a004");
+      equal((await tick(base, "lease-joined-a004", a)).status, 200);
+      clock = t0 + 5000;
+      const r = await fetch(`${base}/v1/play/lease-joined-a004/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left"}' });
+      const body = (await r.json()) as { consumedSeconds: number };
+      equal(r.status, 200);
+      equal(body.consumedSeconds, 5);
+      await server.settler.flush();
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-b004", takeover: true, deviceLabel: null, now: at(5) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 895);
+      equal(5 + b.lease.budgetSeconds, 900);
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));
@@ -133,14 +159,22 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       release();
       statusGate = null;
       const late = await pending;
-      equal(late.status, 200);
-      equal(late.body.consumedSeconds, 2, "counted only up to t2, the instant Family confirmed");
+      // The t2 snapshot is 4 s old when it arrives: it is history, not authority. The adapter re-reads,
+      // learns Family ended A at t2.5, charges the authorized interval up to that end and refuses play.
+      equal(late.status, 410, JSON.stringify(late.body));
+      equal(late.body.ended, true);
+      equal(late.body.consumedSeconds, 2.5, "counted exactly up to Family's end at t2.5, never thawed");
+      equal(server.store.loadLease("lease-joined-a002")!.state, "ended");
       clock = t0 + 7000;
       equal((await tick(base, "lease-joined-a002", a)).status, 410);
       await server.settler.flush();
       const meter = server.store.loadLease("lease-joined-a002")!;
       const next = (await getLease("lease-joined-b002", client))!;
+      equal(meter.consumed, 2.5);
+      // The terminal report rounds the fractional last second up (3): the child is charged for it, B gets 897.
+      equal(next.budgetSeconds, 897, `successor ${next.budgetSeconds}`);
       ok(meter.consumed + next.budgetSeconds <= 900, `measured ${meter.consumed} + usable ${next.budgetSeconds}`);
+      equal((await getPlayState("santiago", client)).activeLease?.id, "lease-joined-b002");
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));
@@ -175,9 +209,9 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const meter = server.store.loadLease("lease-joined-a003")!;
       const next = (await getLease("lease-joined-b003", client))!;
       const old = (await getLease("lease-joined-a003", client))!;
-      equal(old.consumedSeconds, 40, "the 40 measured seconds are charged, none refused");
-      equal(next.budgetSeconds, 860, "B is reconciled to the real remaining allowance");
-      ok(meter.consumed + next.budgetSeconds <= 900);
+      equal(old.consumedSeconds, 41, "the 40 reported seconds plus the authorized second up to Family's end at t41 are charged, none refused");
+      equal(next.budgetSeconds, 859, "B is reconciled to the real remaining allowance");
+      equal(meter.consumed + next.budgetSeconds, 900);
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));
