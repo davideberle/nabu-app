@@ -26,13 +26,13 @@ export function ChessCoachClient({ child }: { child: ChildId }) {
     <div className="flex h-dvh flex-col bg-secondary text-primary">
       <header className="flex items-center justify-between gap-3 border-b border-primary px-3 py-2">
         <Link
-          href={childShellDestinationHref("rewards", child)}
+          href={childShellDestinationHref("games", child)}
           className={cn(
             "inline-flex min-h-11 items-center gap-2 rounded-full border border-primary bg-primary px-4 py-2 text-sm font-medium text-secondary transition-colors hover:bg-secondary",
             focusRing,
           )}
         >
-          ← Rewards
+          ← Games
         </Link>
         <p className="text-sm font-semibold">
           {profile ? `${profile.displayName}'s Chess Coach` : "Chess Coach"}

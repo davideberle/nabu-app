@@ -1,5 +1,8 @@
 import type { Client, InValue } from "@libsql/client";
 
+/** Any handle that can run one statement: a client or an open transaction. */
+export type LedgerDb = Pick<Client, "execute">;
+
 export type CompletionIdentity = {
   week: string;
   personId: string;
@@ -19,7 +22,7 @@ export type CompletionTransitionGuard = {
  * still-null snapshot exactly once.
  */
 export async function transitionCompletionStatus(
-  client: Client,
+  client: LedgerDb,
   identity: CompletionIdentity,
   newStatus: "done" | "on_hold" | "redo",
   firstApprovalAward: number,
@@ -59,6 +62,8 @@ export type RedemptionInsert = {
   week: string;
   createdAt: string;
   chargedPoints: number;
+  /** Optional client key: a duplicate tap/retry with the same key never debits twice. */
+  idempotencyKey?: string | null;
 };
 
 /**
@@ -67,14 +72,14 @@ export type RedemptionInsert = {
  * cannot both spend the same coins.
  */
 export async function insertRedemptionIfAffordable(
-  client: Client,
+  client: LedgerDb,
   redemption: RedemptionInsert,
   epochWeek: string,
 ): Promise<boolean> {
-  const result = await client.execute({
-    sql: `INSERT INTO family_reward_redemptions
-            (id, person_id, reward_id, week, created_at, charged_points)
-          SELECT ?, ?, ?, ?, ?, ?
+  // The idempotency column is only named when a key is supplied, so the
+  // statement stays valid on a ledger that predates the column.
+  const withKey = typeof redemption.idempotencyKey === "string" && redemption.idempotencyKey.length > 0;
+  const affordable = `
           WHERE
             COALESCE((
               SELECT SUM(awarded_points)
@@ -85,7 +90,15 @@ export async function insertRedemptionIfAffordable(
               SELECT SUM(charged_points)
               FROM family_reward_redemptions
               WHERE person_id = ? AND week >= ?
-            ), 0) >= ?`,
+            ), 0) >= ?`;
+  const result = await client.execute({
+    sql: withKey
+      ? `INSERT INTO family_reward_redemptions
+            (id, person_id, reward_id, week, created_at, charged_points, idempotency_key)
+          SELECT ?, ?, ?, ?, ?, ?, ?${affordable}`
+      : `INSERT INTO family_reward_redemptions
+            (id, person_id, reward_id, week, created_at, charged_points)
+          SELECT ?, ?, ?, ?, ?, ?${affordable}`,
     args: [
       redemption.id,
       redemption.personId,
@@ -93,6 +106,7 @@ export async function insertRedemptionIfAffordable(
       redemption.week,
       redemption.createdAt,
       redemption.chargedPoints,
+      ...(withKey ? [redemption.idempotencyKey as string] : []),
       redemption.personId,
       epochWeek,
       redemption.personId,

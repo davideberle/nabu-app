@@ -37,6 +37,14 @@ export function isTrackerAllowedPath(pathname: string): boolean {
     pathname === "/family/listen" ||
     pathname === "/family/plan" ||
     pathname === "/family/rewards" ||
+    // Unified Family Home (family-assistant DESIGN §7.5, accepted 2026-10-04):
+    // the shared chooser/Home, the Activity chronology and the approved-game
+    // library with its guarded play and scoped edit surfaces.
+    pathname === "/family/home" ||
+    pathname === "/family/activity" ||
+    pathname === "/family/games" ||
+    pathname === "/family/games/play" ||
+    pathname === "/family/games/edit" ||
     // Learning cockpit and mission workspace (family-assistant DESIGN §7.6).
     // The parent evidence cockpit (/family/learn/parent) is deliberately NOT
     // here: a tracker-only (shared child device) session is redirected away.
@@ -160,7 +168,13 @@ const ADMIN_ONLY_API_ROUTES: { method: string; path: string }[] = [
  * each handler (`lib/family-learning-auth.ts`); middleware additionally keeps
  * tracker-only sessions out before the handler runs.
  */
-const ADMIN_ONLY_API_PREFIXES = ["/api/family/learning/parent/"];
+const ADMIN_ONLY_API_PREFIXES = [
+  "/api/family/learning/parent/",
+  // Parent-only compensation for paid play (`…/purchases/:id/refund`); the
+  // child's own `POST /api/family/play/purchases` has no trailing segment and
+  // therefore stays outside this prefix.
+  "/api/family/play/purchases/",
+];
 
 /**
  * Exact inventory of parent learning endpoints (method + path). Tests assert

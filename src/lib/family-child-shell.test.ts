@@ -21,6 +21,9 @@ import {
   resolveShellRoutines,
   storeSelectedChild,
   type ChildShellStorage,
+  activeShellDestination,
+  childShellHeaderDestinations,
+  guardedPlayHref,
 } from "./family-child-shell.ts";
 import { isChildId } from "./family-assistant-turn.ts";
 
@@ -132,23 +135,37 @@ describe("selection persistence", () => {
 // ---------------------------------------------------------------------------
 
 describe("shell destinations", () => {
-  it("are exactly Home, Plan and Rewards", () => {
+  it("address every child surface, with Home first and the legacy paths unchanged (DESIGN §7.5)", () => {
     deepStrictEqual(
       childShellDestinations.map((d) => d.id),
-      ["assistant", "plan", "rewards"],
-    );
-    // The first destination's child-facing label is Home
-    // (family-assistant DESIGN.md §2.1) while its id and path stay
-    // `assistant` / `/family/assistant` so deep links and the installed PWA
-    // are untouched.
-    deepStrictEqual(
-      childShellDestinations.map((d) => d.label),
-      ["Home", "Plan", "Rewards"],
+      ["home", "assistant", "record", "activity", "plan", "rewards", "learn", "games", "listen"],
     );
     deepStrictEqual(
       childShellDestinations.map((d) => d.path),
-      ["/family/assistant", "/family/plan", "/family/rewards"],
+      [
+        "/family/home",
+        "/family/assistant",
+        "/family/assistant/record",
+        "/family/activity",
+        "/family/plan",
+        "/family/rewards",
+        "/family/learn",
+        "/family/games",
+        "/family/listen",
+      ],
     );
+    // The persistent header shows Home only; everything else is reached from Home.
+    deepStrictEqual(childShellHeaderDestinations.map((d) => d.id), ["home"]);
+    equal(childShellDestinations.find((d) => d.id === "home")!.label, "Home");
+  });
+
+  it("maps every pathname to its destination", () => {
+    equal(activeShellDestination("/family/home"), "home");
+    equal(activeShellDestination("/family/activity"), "activity");
+    equal(activeShellDestination("/family/games/edit"), "games");
+    equal(activeShellDestination("/family/assistant/record"), "record");
+    equal(activeShellDestination("/family/assistant"), "assistant");
+    equal(activeShellDestination("/family/learn/mission"), "learn");
   });
 
   it("builds hrefs that carry the validated child", () => {
@@ -174,11 +191,20 @@ describe("shell destinations", () => {
     equal(childShellDestinationHref("rewards", 42, null), "/family/rewards");
   });
 
-  it("never carries a week on the Assistant destination", () => {
+  it("never carries a week on the Assistant or Home destinations", () => {
     equal(
       childShellDestinationHref("assistant", "isabel", "2026-W34"),
       "/family/assistant?child=isabel",
     );
+    equal(childShellDestinationHref("home", "isabel", "2026-W34"), "/family/home?child=isabel");
+    equal(childShellDestinationHref("activity", "isabel", "2026-W34"), "/family/activity?child=isabel&week=2026-W34");
+  });
+
+  it("builds guarded play/edit hrefs only from a validated identity and a stable game id", () => {
+    const identity = childGameIdentity("santiago")!;
+    equal(guardedPlayHref(identity, "6bd56478-5ea0-4f2a-a2db-be8549a88d05"), "/family/games/play?game=6bd56478-5ea0-4f2a-a2db-be8549a88d05&child=santiago");
+    equal(guardedPlayHref(identity, "own-1", "edit"), "/family/games/edit?game=own-1&child=santiago");
+    equal(guardedPlayHref(identity, "../etc"), "/family/games?child=santiago");
   });
 });
 

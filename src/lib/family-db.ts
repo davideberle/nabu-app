@@ -448,23 +448,56 @@ export async function getRedemptionsFromWeek(
   }));
 }
 
+export type CreateRedemptionResult =
+  | { kind: "created"; redemption: RewardRedemption }
+  | { kind: "replayed"; redemption: RewardRedemption }
+  | { kind: "insufficient" };
+
+/**
+ * Append a debit if affordable. With an `idempotencyKey`, a duplicate tap or
+ * a retry after a lost response returns the already-committed redemption
+ * instead of debiting again (proposal "Spend once, confirm clearly").
+ */
 export async function createRedemptionIfAffordable(
   personId: string,
   rewardId: string,
   week: string,
   chargedPoints: number,
-): Promise<RewardRedemption | null> {
+  idempotencyKey: string | null = null,
+): Promise<CreateRedemptionResult> {
   const client = await getDb();
   await ensureFamilyTables(client);
+  const replay = async (): Promise<RewardRedemption | null> => {
+    if (!idempotencyKey) return null;
+    const existing = await client.execute({
+      sql: "SELECT id, person_id, reward_id, week, created_at, charged_points FROM family_reward_redemptions WHERE person_id = ? AND idempotency_key = ?",
+      args: [personId, idempotencyKey],
+    });
+    const row = existing.rows[0];
+    return row
+      ? { id: row["id"] as string, personId: row["person_id"] as string, rewardId: row["reward_id"] as string, week: row["week"] as string, createdAt: row["created_at"] as string, chargedPoints: Number(row["charged_points"] ?? 0) }
+      : null;
+  };
+  const replayed = await replay();
+  if (replayed) return { kind: "replayed", redemption: replayed };
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
   const redemption = { id, personId, rewardId, week, createdAt: now, chargedPoints };
-  const inserted = await insertRedemptionIfAffordable(
-    client,
-    redemption,
-    FAMILY_WALLET_EPOCH_WEEK,
-  );
-  return inserted ? redemption : null;
+  try {
+    const inserted = await insertRedemptionIfAffordable(
+      client,
+      { ...redemption, idempotencyKey },
+      FAMILY_WALLET_EPOCH_WEEK,
+    );
+    return inserted ? { kind: "created", redemption } : { kind: "insufficient" };
+  } catch (error) {
+    // The same key committed concurrently: hand back that redemption.
+    if (/UNIQUE|constraint/i.test(String((error as Error).message))) {
+      const again = await replay();
+      if (again) return { kind: "replayed", redemption: again };
+    }
+    throw error;
+  }
 }
 
 export async function removeRedemption(id: string): Promise<boolean> {

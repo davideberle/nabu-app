@@ -57,6 +57,7 @@ import {
   TALK_BUTTON_SIZE_CLASS,
 } from "@/lib/family-assistant-layout";
 import { childShellDestinationHref } from "@/lib/family-child-shell";
+import { useSearchParams } from "next/navigation";
 import { useChildShell } from "@/components/family/child-shell-provider";
 import { AssistantAvatar, type AvatarState } from "./avatar";
 
@@ -969,6 +970,17 @@ function Workspace({
     setSpokenLine(profile.greeting);
     setStage({ kind: "home" });
   }, [cancelSpeech, clearTimers, discardRecording, profile.greeting]);
+
+  /**
+   * Home (DESIGN §7.5) links straight into a conversation with `?focus=`;
+   * the in-page menu stays the default for the legacy `/family/assistant`
+   * entry and installed shortcuts.
+   */
+  const focusParam = useSearchParams().get("focus");
+  useEffect(() => {
+    if (focusParam === "general" || focusParam === "music") enterConversation(focusParam);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- mount/param only
+  }, [focusParam]);
 
   // ------------------------------------------------------------------
   // Points scenario — reads the real family APIs, falls back to a

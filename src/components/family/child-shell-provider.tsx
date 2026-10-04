@@ -2,24 +2,33 @@
 
 // ---------------------------------------------------------------------------
 // Family Child Shell provider — the one persistent owner of the selected
-// child and the shell chrome.
+// child, the shared wallet projection and the shell chrome.
 //
 // Mounted from the `(shell)` route-group layout, so it survives navigation
-// between Assistant, Plan and Rewards: the top-corner avatar and the
-// destination tabs never remount, and the selected child cannot
-// desynchronize between destinations because exactly one copy of it exists.
+// between Home, Ask Nabu, Activity, Redeem, Learn, Games and Hörspiele: the
+// header never remounts, and the selected child cannot desynchronize between
+// surfaces because exactly one copy of it exists.
 //
-// Identity rules (unchanged from the per-page era, now in one place):
-// - the URL's `?child=` is the strongest signal (deep links, back/forward
-//   re-entry, and the shell's own destination hrefs);
-// - otherwise the persisted localStorage selection is restored once on mount;
-// - otherwise the non-dismissable switcher asks who is playing.
+// Identity rules (family-assistant DESIGN.md §7.5, accepted 2026-10-04):
+// - the URL's `?child=` is the only signal (deep links, child shortcuts,
+//   back/forward re-entry, and the shell's own hrefs);
+// - a bare entry — no `?child=` — always shows the profile chooser. Nothing
+//   is restored from local storage, so a fresh entry never silently reopens
+//   the sibling's profile (FH-02);
+// - picking the other profile cancels the current surface (it unmounts, which
+//   releases microphone/speech and aborts pending work) and opens that
+//   child's Home.
 //
-// The selected child stays UI-owned projection state. It is never an API
-// authority: the family APIs return whole-family data and project
-// client-side, and the assistant bridge token is minted server-side from its
-// own allowlist, so a tampered stored/URL value can at worst re-open the
+// The selected profile stays UI-owned projection state. It is never an API
+// authority: family APIs return whole-family data and project client-side,
+// and every scoped credential (bridge, learning, games) is minted server-side
+// from its own allowlist, so a tampered URL value can at worst re-open the
 // chooser (`normalizeChildId` is the strict gate on every read).
+//
+// The wallet lives here too (FH-06): one fetch of the server projection per
+// child, shared by the header chip, Home and Redeem, refreshed after every
+// committed write and on return to Home. A failed fetch is an explicit
+// "unknown" state with retry — never a zero, never a demo balance.
 // ---------------------------------------------------------------------------
 
 import {
@@ -28,39 +37,48 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/components/ui/nabu";
 import { assistantProfileById } from "@/data/family-assistant";
 import { ChildShellBar, ChildSwitcherOverlay } from "./child-shell";
 import {
   WEEK_ID_PATTERN,
-  browserChildShellStorage,
+  activeShellDestination,
   childShellDestinationHref,
   normalizeChildId,
-  readStoredChild,
-  storeSelectedChild,
   type ChildId,
-  type ChildShellDestinationId,
 } from "@/lib/family-child-shell";
+import type { FamilyWallet, FamilyWalletProjection } from "@/lib/family-wallet";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
 
+export type ShellWalletState =
+  | { status: "idle" }
+  | { status: "loading"; wallet: FamilyWallet | null }
+  | { status: "ready"; wallet: FamilyWallet; projection: FamilyWalletProjection }
+  | { status: "error"; wallet: FamilyWallet | null };
+
 export type ChildShellContextValue = {
   /** The active child, or null while the chooser is deciding. */
   child: ChildId | null;
-  /** True once the persisted selection has been checked (anti-flash gate). */
+  /** True once the URL has been read (kept for API compatibility; always true after mount). */
   restored: boolean;
-  /** Whether the session is a tracker-only (shared iPad) account. */
+  /** Whether the session is a tracker-only (shared child device) account. */
   trackerOnly: boolean;
-  /** Open the two-child switcher overlay. */
+  /** Open the two-profile switcher overlay. */
   openSwitcher: () => void;
-  /** Atomically select a child for every destination at once. */
+  /** Atomically select a child for every surface at once. */
   applyChild: (id: ChildId) => void;
+  /** The authoritative wallet projection for the selected child. */
+  wallet: ShellWalletState;
+  /** Re-read the wallet from the server (after a committed write, on return to Home). */
+  refreshWallet: () => void;
 };
 
 const ChildShellContext = createContext<ChildShellContextValue | null>(null);
@@ -73,12 +91,7 @@ export function useChildShell(): ChildShellContextValue {
   return value;
 }
 
-/** Map the current pathname to the shell destination it belongs to. */
-export function activeShellDestination(pathname: string): ChildShellDestinationId {
-  if (pathname.startsWith("/family/plan")) return "plan";
-  if (pathname.startsWith("/family/rewards")) return "rewards";
-  return "assistant";
-}
+export { activeShellDestination };
 
 export function ChildShellLayoutClient({
   trackerOnly,
@@ -88,6 +101,7 @@ export function ChildShellLayoutClient({
   children: ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const active = activeShellDestination(pathname);
   const urlChild = normalizeChildId(searchParams.get("child"));
@@ -95,16 +109,22 @@ export function ChildShellLayoutClient({
   const weekId = weekParam && WEEK_ID_PATTERN.test(weekParam) ? weekParam : null;
 
   const [child, setChild] = useState<ChildId | null>(urlChild);
-  const [restored, setRestored] = useState(urlChild !== null);
   const [switcherOpen, setSwitcherOpen] = useState(false);
 
   const applyChild = useCallback(
     (id: ChildId) => {
       const applied = normalizeChildId(id);
       if (!applied) return;
-      setChild(applied);
       setSwitcherOpen(false);
-      storeSelectedChild(browserChildShellStorage(), applied);
+      if (child !== null && applied !== child) {
+        // A profile switch: leave the current surface (unmounting it cancels
+        // recordings, speech, leases and in-flight loads) and open that
+        // child's Home with the explicit child context.
+        setChild(applied);
+        router.push(childShellDestinationHref("home", applied));
+        return;
+      }
+      setChild(applied);
       try {
         window.history.replaceState(
           null,
@@ -115,47 +135,70 @@ export function ChildShellLayoutClient({
         /* history not writable — selection still works */
       }
     },
-    [active, weekId],
+    [active, child, router, weekId],
   );
 
-  // Follow the URL when navigation or back/forward names a different child.
+  // Follow the URL when navigation or back/forward names a different child;
+  // a navigation to a bare URL re-opens the chooser.
   useEffect(() => {
-    if (urlChild && urlChild !== child) {
-      setChild(urlChild);
-      storeSelectedChild(browserChildShellStorage(), urlChild);
-    }
-  }, [urlChild, child]);
-
-  // Restore the persisted selection once, when nothing named a child. This
-  // must not re-run on navigation — the provider outlives the pages, so a
-  // selection made anywhere in the shell survives every route change.
-  useEffect(() => {
-    if (child === null) {
-      const stored = readStoredChild(browserChildShellStorage());
-      if (stored) applyChild(stored);
-    } else {
-      // The URL named the child (deep link / installed Home Screen shortcut):
-      // persist it so a later param-less open keeps the same child instead of
-      // re-opening the chooser.
-      storeSelectedChild(browserChildShellStorage(), child);
-    }
-    setRestored(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- mount-only restore
-  }, []);
+    if (urlChild !== child) setChild(urlChild);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- URL is the only source
+  }, [urlChild, pathname]);
 
   const openSwitcher = useCallback(() => setSwitcherOpen(true), []);
 
+  // ------------------------------------------------------------------
+  // Wallet — one server projection per child, shared by every surface
+  // ------------------------------------------------------------------
+  const [wallet, setWallet] = useState<ShellWalletState>({ status: "idle" });
+  const walletSeq = useRef(0);
+  const [walletAttempt, setWalletAttempt] = useState(0);
+  const refreshWallet = useCallback(() => setWalletAttempt((n) => n + 1), []);
+
+  useEffect(() => {
+    if (!child) {
+      setWallet({ status: "idle" });
+      return;
+    }
+    const seq = (walletSeq.current += 1);
+    const controller = new AbortController();
+    setWallet((prev) => ({ status: "loading", wallet: prev.status === "ready" || prev.status === "loading" || prev.status === "error" ? prev.wallet : null }));
+    (async () => {
+      try {
+        const res = await fetch("/api/family/wallet", { signal: controller.signal, cache: "no-store" });
+        if (seq !== walletSeq.current) return;
+        if (!res.ok) throw new Error(`wallet ${res.status}`);
+        const projection = (await res.json()) as FamilyWalletProjection;
+        if (seq !== walletSeq.current) return;
+        const entry = projection.wallets[child];
+        if (!entry) throw new Error("wallet missing");
+        setWallet({ status: "ready", wallet: entry, projection });
+      } catch {
+        if (seq !== walletSeq.current || controller.signal.aborted) return;
+        setWallet((prev) => ({ status: "error", wallet: prev.status === "loading" ? prev.wallet : null }));
+      }
+    })();
+    return () => {
+      controller.abort();
+    };
+  }, [child, walletAttempt]);
+
+  // Returning to Home re-reads the balance (proposal: wallet contract 5).
+  useEffect(() => {
+    if (active === "home" && child) setWalletAttempt((n) => n + 1);
+  }, [active, child]);
+
   const value = useMemo<ChildShellContextValue>(
-    () => ({ child, restored, trackerOnly, openSwitcher, applyChild }),
-    [child, restored, trackerOnly, openSwitcher, applyChild],
+    () => ({ child, restored: true, trackerOnly, openSwitcher, applyChild, wallet, refreshWallet }),
+    [child, trackerOnly, openSwitcher, applyChild, wallet, refreshWallet],
   );
 
   const profile = child ? assistantProfileById(child) : null;
   const subtitle =
     active === "assistant" && profile
-      ? `with ${profile.companionName} — tap to switch`
+      ? `with ${profile.companionName} — switch profile`
       : undefined;
-  const overlayOpen = switcherOpen || (restored && child === null);
+  const overlayOpen = switcherOpen || child === null;
 
   return (
     <ChildShellContext.Provider value={value}>
@@ -163,7 +206,7 @@ export function ChildShellLayoutClient({
         className={cn(
           "flex w-full flex-col bg-secondary text-primary",
           // The Assistant is a viewport-locked conversation surface with its
-          // own internal scrolling; Plan and Rewards scroll as normal pages.
+          // own internal scrolling; every other surface scrolls as a page.
           active === "assistant" ? "h-dvh min-h-0 overflow-hidden" : "min-h-dvh",
         )}
       >
@@ -179,6 +222,8 @@ export function ChildShellLayoutClient({
             switcherOpen={overlayOpen}
             onOpenSwitcher={openSwitcher}
             subtitle={subtitle}
+            wallet={wallet}
+            onRetryWallet={refreshWallet}
             extraNav={
               !trackerOnly ? (
                 <Link

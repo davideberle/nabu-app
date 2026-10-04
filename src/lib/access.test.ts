@@ -153,6 +153,22 @@ describe("isTrackerAllowedPath", () => {
     equal(isTrackerAllowedPath("/family/rewards"), true);
   });
 
+  it("allows the unified Family Home, Activity and the approved-game surfaces (DESIGN §7.5)", () => {
+    for (const path of ["/family/home", "/family/activity", "/family/games", "/family/games/play", "/family/games/edit"]) {
+      equal(isTrackerAllowedPath(path), true, path);
+    }
+    equal(isTrackerAllowedPath("/family/games/extra"), false);
+    equal(isTrackerAllowedPath("/family/home/extra"), false);
+  });
+
+  it("keeps paid-play compensation parent-only while the child's purchase and lease routes stay reachable", () => {
+    equal(isAdminOnlyApiRoute("POST", "/api/family/play/purchases/abc/refund"), true);
+    equal(isAdminOnlyApiRoute("POST", "/api/family/play/purchases"), false);
+    equal(isAdminOnlyApiRoute("POST", "/api/family/play/leases"), false);
+    equal(isAdminOnlyApiRoute("GET", "/api/family/play/state"), false);
+    equal(isAdminOnlyApiRoute("GET", "/api/family/activity"), false);
+  });
+
   it("allows the Chess Coach pilot launch page and its vendored bundle", () => {
     equal(isTrackerAllowedPath("/family/rewards/chess"), true);
     equal(isTrackerAllowedPath("/games/adaptive-chess-coach/index.html"), true);

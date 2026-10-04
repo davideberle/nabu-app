@@ -1,9 +1,12 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Family Child Shell chrome — the persistent avatar profile switch and the
-// three-destination navigation (Assistant / Plan / Rewards) shared by every
-// child-shell surface on the iPad.
+// Family Child Shell chrome — the persistent profile switch, the Home link
+// and the wallet chip shared by every child surface (Home, Ask Nabu, Record,
+// Activity, Redeem, Learn, Games, Hörspiele) on any authorized device.
+//
+// Wording is device-independent on purpose (FH-03): "Choose your profile",
+// never a question about which device is in use.
 //
 // Layout invariants (asserted by family-child-shell-layout.test.ts):
 // - every control presents at least a 48 CSS px target (h-12 / min-h-12);
@@ -30,11 +33,12 @@ import {
   assistantProfileById,
 } from "@/data/family-assistant";
 import {
-  childShellDestinations,
+  childShellHeaderDestinations,
   childShellDestinationHref,
   type ChildId,
   type ChildShellDestinationId,
 } from "@/lib/family-child-shell";
+import type { ShellWalletState } from "./child-shell-provider";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -55,7 +59,7 @@ const tintText = {
 } as const;
 
 // ---------------------------------------------------------------------------
-// Destination tabs
+// Header navigation — Home only; everything else is reached from Home
 // ---------------------------------------------------------------------------
 
 export function ChildShellNav({
@@ -65,12 +69,11 @@ export function ChildShellNav({
 }: {
   active: ChildShellDestinationId;
   child: ChildId | null;
-  /** Carried on the week-scoped destinations (Plan, Rewards) only. */
   weekId?: string | null;
 }) {
   return (
     <nav aria-label="Family shell" className="flex flex-wrap items-center gap-2">
-      {childShellDestinations.map((destination) => {
+      {childShellHeaderDestinations.map((destination) => {
         const isActive = destination.id === active;
         return (
           <Link
@@ -95,7 +98,52 @@ export function ChildShellNav({
 }
 
 // ---------------------------------------------------------------------------
-// Active-child avatar button — the profile switch
+// Wallet chip — the same server projection Home and Redeem show (FH-06)
+// ---------------------------------------------------------------------------
+
+export function ChildShellWalletChip({
+  child,
+  wallet,
+  onRetry,
+}: {
+  child: ChildId | null;
+  wallet: ShellWalletState;
+  onRetry: () => void;
+}) {
+  if (!child) return null;
+  const base =
+    "inline-flex min-h-12 items-center gap-1.5 rounded-full border border-primary bg-primary px-4 py-2 text-sm font-semibold text-secondary transition-colors hover:bg-secondary";
+  if (wallet.status === "error" && !wallet.wallet) {
+    return (
+      <button
+        type="button"
+        onClick={onRetry}
+        aria-label="Couldn't load your wallet — try again"
+        title="Couldn't load your wallet — try again"
+        className={cn(base, focusRing)}
+      >
+        <span aria-hidden="true">🪙</span>
+        <span>?</span>
+        <span className="sr-only">coins unknown, tap to retry</span>
+      </button>
+    );
+  }
+  const known = wallet.status === "ready" ? wallet.wallet : wallet.status === "loading" || wallet.status === "error" ? wallet.wallet : null;
+  const stale = wallet.status !== "ready" && known !== null;
+  return (
+    <Link
+      href={childShellDestinationHref("rewards", child)}
+      aria-label={known ? `${known.balance} coins${stale ? " (updating)" : ""} — redeem` : "Loading your coins"}
+      className={cn(base, stale && "opacity-70", focusRing)}
+    >
+      <span aria-hidden="true">🪙</span>
+      <span>{known ? known.balance : "…"}</span>
+    </Link>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Active-profile avatar button — the profile switch
 // ---------------------------------------------------------------------------
 
 export function ChildShellAvatarButton({
@@ -114,7 +162,7 @@ export function ChildShellAvatarButton({
       type="button"
       onClick={onOpenSwitcher}
       aria-haspopup="dialog"
-      aria-label={`${profile.displayName} is using the iPad — switch child`}
+      aria-label={`${profile.displayName}'s profile — switch profile`}
       className={cn(
         "flex min-h-12 min-w-0 items-center gap-3 rounded-full border py-1 pl-1 pr-4 text-left transition-colors",
         tintBorder[profile.tint],
@@ -134,7 +182,7 @@ export function ChildShellAvatarButton({
           {profile.displayName}
         </span>
         <span className={cn("block text-[11px] font-medium", tintText[profile.tint])}>
-          {subtitle ?? "Tap to switch"}
+          {subtitle ?? "Switch profile"}
         </span>
       </span>
     </button>
@@ -142,7 +190,7 @@ export function ChildShellAvatarButton({
 }
 
 // ---------------------------------------------------------------------------
-// The large one-tap two-child switcher
+// The large one-tap two-profile chooser
 // ---------------------------------------------------------------------------
 
 export function ChildSwitcherOverlay({
@@ -178,13 +226,11 @@ export function ChildSwitcherOverlay({
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Choose who is using the iPad"
+      aria-label="Choose your profile"
       onKeyDown={onKeyDown}
       className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 bg-secondary/95 p-5 backdrop-blur-sm"
     >
-      <h2 className="text-xl font-semibold text-primary">
-        Who&rsquo;s using the iPad?
-      </h2>
+      <h2 className="text-xl font-semibold text-primary">Choose your profile</h2>
       <div className="grid w-full max-w-2xl gap-4 sm:grid-cols-2">
         {assistantProfiles.map((profile, index) => {
           const isActive = profile.id === activeChild;
@@ -213,7 +259,7 @@ export function ChildSwitcherOverlay({
                 {profile.displayName}
               </span>
               <span className={cn("text-sm font-medium", tintText[profile.tint])}>
-                {isActive ? "Already you — tap to stay" : `Switch to ${profile.displayName}`}
+                {isActive ? "That's you — tap to stay" : `Open ${profile.displayName}'s Home`}
               </span>
             </button>
           );
@@ -236,8 +282,7 @@ export function ChildSwitcherOverlay({
 }
 
 // ---------------------------------------------------------------------------
-// The shell bar used by the Plan and Rewards destinations
-// (the Assistant embeds the same pieces inside its own header)
+// The persistent shell bar: profile · Home · wallet
 // ---------------------------------------------------------------------------
 
 export function ChildShellBar({
@@ -247,6 +292,8 @@ export function ChildShellBar({
   switcherOpen,
   onOpenSwitcher,
   subtitle,
+  wallet,
+  onRetryWallet,
   extraNav,
 }: {
   active: ChildShellDestinationId;
@@ -256,6 +303,8 @@ export function ChildShellBar({
   onOpenSwitcher: () => void;
   /** Optional avatar-button subtitle (e.g. the assistant's companion name). */
   subtitle?: string;
+  wallet: ShellWalletState;
+  onRetryWallet: () => void;
   extraNav?: ReactNode;
 }) {
   return (
@@ -271,11 +320,12 @@ export function ChildShellBar({
             subtitle={subtitle}
           />
         ) : (
-          <p className="text-sm font-medium text-tertiary">Choose who is playing</p>
+          <p className="text-sm font-medium text-tertiary">Choose your profile</p>
         )}
       </div>
       <div className="flex flex-wrap items-center gap-2">
         <ChildShellNav active={active} child={child} weekId={weekId} />
+        <ChildShellWalletChip child={child} wallet={wallet} onRetry={onRetryWallet} />
         {extraNav}
       </div>
     </header>

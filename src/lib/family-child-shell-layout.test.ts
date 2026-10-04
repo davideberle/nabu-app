@@ -201,10 +201,11 @@ describe("one persistent shell layout owns chrome and identity", () => {
     }
   });
 
-  it("the provider is the single owner of selection persistence", () => {
-    ok(providerSource.includes("storeSelectedChild"));
-    ok(providerSource.includes("readStoredChild"));
+  it("the provider is the single owner of the selected profile, read from the URL only (FH-02)", () => {
     ok(providerSource.includes("normalizeChildId"));
+    // A bare entry must open the chooser: nothing is restored from storage.
+    doesNotMatch(providerSource, /readStoredChild|storeSelectedChild|localStorage/);
+    ok(providerSource.includes("searchParams.get(\"child\")"));
     for (const [name, source] of [
       ["plan", planSource],
       ["rewards", rewardsSource],
@@ -216,6 +217,18 @@ describe("one persistent shell layout owns chrome and identity", () => {
         `${name} client duplicates selection persistence`,
       );
     }
+  });
+
+  it("the provider owns the one wallet projection and switching profiles opens that child's Home", () => {
+    ok(providerSource.includes("/api/family/wallet"));
+    ok(providerSource.includes("refreshWallet"));
+    ok(providerSource.includes('childShellDestinationHref("home", applied)'));
+  });
+
+  it("uses device-independent wording (FH-03)", () => {
+    doesNotMatch(shellSource, /iPad/);
+    ok(shellSource.includes("Choose your profile"));
+    ok(shellSource.includes("Switch profile"));
   });
 
   it("every destination consumes the shared child context", () => {

@@ -18,7 +18,7 @@
 // `ChildGameIdentity`, never from a free-form string.
 // ---------------------------------------------------------------------------
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/components/ui/nabu";
 import { weekPoints, type CompletionRecord } from "@/data/family-routines";
@@ -29,11 +29,13 @@ import {
   approvedGameLibrary,
   buildRewardsWeekNav,
   childGameIdentity,
+  childShellDestinationHref,
   resolveShellRoutines,
   resolveShellRewards,
   type ChildShellWeekInfo,
 } from "@/lib/family-child-shell";
 import type { FamilyWalletProjection } from "@/lib/family-wallet";
+import { newIdempotencyKey } from "@/lib/family-games-client";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -47,7 +49,7 @@ const periodLabel = {
 } as const;
 
 export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo }) {
-  const { child } = useChildShell();
+  const { child, refreshWallet } = useChildShell();
 
   const [completions, setCompletions] = useState<CompletionRecord[]>([]);
   const [redemptions, setRedemptions] = useState<RewardRedemption[]>([]);
@@ -111,41 +113,51 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
   );
   const gameIdentity = childGameIdentity(child);
 
-  // Redeem through the existing route; the server re-checks the balance.
+  // Redeem through the existing route; the server re-checks the balance
+  // atomically. The exact reward and cost are confirmed first; the confirmed
+  // tap carries an idempotency key, so a duplicate tap or a retry after a
+  // lost response can only replay, never debit twice (wallet contract 5).
   const [redeemingReward, setRedeemingReward] = useState<string | null>(null);
+  const [confirmingReward, setConfirmingReward] = useState<string | null>(null);
   const [redeemNotice, setRedeemNotice] = useState<string | null>(null);
+  const redeemKeyRef = useRef<string | null>(null);
   const handleRedeem = useCallback(
     async (rewardId: string) => {
       if (!child || redeemingReward) return;
       setRedeemingReward(rewardId);
       setRedeemNotice(null);
+      if (!redeemKeyRef.current) redeemKeyRef.current = newIdempotencyKey();
       try {
         const res = await fetch("/api/family/redemptions", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ personId: child, rewardId }),
+          body: JSON.stringify({ personId: child, rewardId, idempotencyKey: redeemKeyRef.current }),
         });
         if (!res.ok) {
+          if (res.status === 409) redeemKeyRef.current = null;
           setRedeemNotice(
             res.status === 409
               ? "Not enough coins yet — keep going!"
-              : "That didn't work — please try again.",
+              : "That didn't work — tap again; you won't be charged twice.",
           );
           return;
         }
-        const redemption: RewardRedemption = await res.json();
-        if (redemption.week === weekInfo.weekId) {
+        redeemKeyRef.current = null;
+        setConfirmingReward(null);
+        const redemption: RewardRedemption & { replayed?: boolean } = await res.json();
+        if (redemption.week === weekInfo.weekId && !redemption.replayed) {
           setRedemptions((prev) => [...prev, redemption]);
         }
         const walletRes = await fetch("/api/family/wallet");
         if (walletRes.ok) setWalletProjection(await walletRes.json());
+        refreshWallet();
       } catch {
-        setRedeemNotice("That didn't work — please try again.");
+        setRedeemNotice("That didn't work — tap again; you won't be charged twice.");
       } finally {
         setRedeemingReward(null);
       }
     },
-    [child, redeemingReward, weekInfo.weekId],
+    [child, redeemingReward, refreshWallet, weekInfo.weekId],
   );
 
   const profile = child ? assistantProfileById(child) : null;
@@ -290,33 +302,55 @@ export function FamilyRewardsClient({ weekInfo }: { weekInfo: ChildShellWeekInfo
                             </span>
                           ) : null}
                         </p>
-                        <button
-                          type="button"
-                          onClick={() => handleRedeem(reward.id)}
-                          disabled={!canAfford || redeemingReward !== null}
-                          className={cn(
-                            "inline-flex min-h-12 items-center rounded-full border border-primary px-5 py-2 text-sm font-semibold transition-colors",
-                            canAfford
-                              ? "bg-secondary text-primary hover:bg-primary"
-                              : "cursor-not-allowed bg-primary text-quaternary",
-                            focusRing,
-                          )}
-                        >
-                          {canAfford
-                            ? redeemingReward === reward.id
-                              ? "Getting it…"
-                              : "Get it"
-                            : `${missing} more`}
-                        </button>
+                        {confirmingReward === reward.id ? (
+                          <div role="group" aria-label={`Confirm ${reward.title}`} className="flex flex-wrap items-center gap-2">
+                            <span className="text-sm font-medium">Spend 🪙 {reward.costPoints} of {wallet.balance}?</span>
+                            <button
+                              type="button"
+                              onClick={() => { setConfirmingReward(null); redeemKeyRef.current = null; }}
+                              className={cn("inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-semibold text-secondary", focusRing)}
+                            >
+                              Not now
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleRedeem(reward.id)}
+                              disabled={redeemingReward !== null}
+                              className={cn("inline-flex min-h-12 items-center rounded-full border border-primary bg-secondary px-5 py-2 text-sm font-semibold text-primary hover:bg-primary", focusRing)}
+                            >
+                              {redeemingReward === reward.id ? "Getting it…" : `Yes, get it for 🪙 ${reward.costPoints}`}
+                            </button>
+                          </div>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => { setConfirmingReward(reward.id); setRedeemNotice(null); }}
+                            disabled={!canAfford || redeemingReward !== null}
+                            className={cn(
+                              "inline-flex min-h-12 items-center rounded-full border border-primary px-5 py-2 text-sm font-semibold transition-colors",
+                              canAfford
+                                ? "bg-secondary text-primary hover:bg-primary"
+                                : "cursor-not-allowed bg-primary text-quaternary",
+                              focusRing,
+                            )}
+                          >
+                            {canAfford ? "Get it" : `${missing} more`}
+                          </button>
+                        )}
                       </div>
                     </article>
                   );
                 })}
               </section>
 
-              {/* Game corner — the approved-game seam */}
+              {/* Game corner — the approved-game seam; the full library lives on Games */}
               <section aria-label="Game corner" className="flex flex-col gap-3">
-                <h2 className="text-lg font-semibold">Game corner</h2>
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <h2 className="text-lg font-semibold">Game corner</h2>
+                  <Link href={childShellDestinationHref("games", child)} className={cn("inline-flex min-h-12 items-center rounded-full border border-primary bg-primary px-4 py-2 text-sm font-semibold text-secondary hover:bg-secondary", focusRing)}>
+                    All games →
+                  </Link>
+                </div>
                 {gameIdentity && approvedGameLibrary.length > 0 ? (
                   <div className="grid gap-4 sm:grid-cols-2">
                     {approvedGameLibrary.map((game) => (

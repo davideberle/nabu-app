@@ -96,14 +96,23 @@ export function storeSelectedChild(storage: ChildShellStorage | null, value: unk
 }
 
 // ---------------------------------------------------------------------------
-// Destinations — exactly three, by design
+// Destinations — every child surface the shell can address
 // ---------------------------------------------------------------------------
 
-export type ChildShellDestinationId = "assistant" | "plan" | "rewards";
+export type ChildShellDestinationId =
+  | "home"
+  | "assistant"
+  | "plan"
+  | "rewards"
+  | "activity"
+  | "games"
+  | "learn"
+  | "listen"
+  | "record";
 
 export type ChildShellDestination = {
   id: ChildShellDestinationId;
-  /** Child-readable label rendered on the shell tab. */
+  /** Child-readable label. */
   label: string;
   /** Decorative icon beside the label (aria-hidden in the UI). */
   icon: string;
@@ -111,20 +120,43 @@ export type ChildShellDestination = {
 };
 
 /**
- * The three shell destinations. The shell renders exactly these — adding a
- * fourth is a product decision, not a code convenience
- * (`family-assistant/DESIGN.md` §7.5).
- *
- * The child-facing label of the first destination is **Home**
- * (`family-assistant/DESIGN.md` §2.1) — a product-language change only. Its
- * id stays `assistant` and its path stays `/family/assistant`, so deep links,
- * the installed PWA (`start_url`), and the manifest are untouched.
+ * The child surfaces (family-assistant DESIGN.md §7.5, accepted 2026-10-04).
+ * Home is the menu; the persistent header shows only Home, the profile and
+ * the wallet — the other destinations are reached from Home, never from a
+ * growing tab row. Legacy paths (`/family/assistant`, `/family/plan`,
+ * `/family/rewards`) keep their URLs so installed shortcuts and deep links
+ * resolve unchanged.
  */
 export const childShellDestinations: readonly ChildShellDestination[] = [
-  { id: "assistant", label: "Home", icon: "🏠", path: "/family/assistant" },
-  { id: "plan", label: "Plan", icon: "📅", path: "/family/plan" },
-  { id: "rewards", label: "Rewards", icon: "🏅", path: "/family/rewards" },
+  { id: "home", label: "Home", icon: "🏠", path: "/family/home" },
+  { id: "assistant", label: "Ask Nabu", icon: "💬", path: "/family/assistant" },
+  { id: "record", label: "Record something I did", icon: "🎙️", path: "/family/assistant/record" },
+  { id: "activity", label: "Activity", icon: "🗓️", path: "/family/activity" },
+  { id: "plan", label: "This week's plan", icon: "📅", path: "/family/plan" },
+  { id: "rewards", label: "Redeem", icon: "🏅", path: "/family/rewards" },
+  { id: "learn", label: "Lernen", icon: "🧭", path: "/family/learn" },
+  { id: "games", label: "Games", icon: "🎮", path: "/family/games" },
+  { id: "listen", label: "Hörspiele", icon: "🎧", path: "/family/listen" },
 ];
+
+/** The destinations rendered in the persistent header: Home only. */
+export const childShellHeaderDestinations: readonly ChildShellDestination[] = childShellDestinations.filter((d) => d.id === "home");
+
+/** Destinations whose URL carries the viewed week. */
+const WEEK_SCOPED: readonly ChildShellDestinationId[] = ["plan", "rewards", "activity"];
+
+/** Map a pathname to the shell destination it belongs to. */
+export function activeShellDestination(pathname: string): ChildShellDestinationId {
+  if (pathname === "/family/home" || pathname.startsWith("/family/home/")) return "home";
+  if (pathname.startsWith("/family/activity")) return "activity";
+  if (pathname.startsWith("/family/plan")) return "plan";
+  if (pathname.startsWith("/family/rewards")) return "rewards";
+  if (pathname.startsWith("/family/learn")) return "learn";
+  if (pathname.startsWith("/family/games")) return "games";
+  if (pathname.startsWith("/family/listen")) return "listen";
+  if (pathname.startsWith("/family/assistant/record")) return "record";
+  return "assistant";
+}
 
 /** Mirrors the family API route validation (`/^\d{4}-W\d{2}$/`). */
 export const WEEK_ID_PATTERN = /^\d{4}-W\d{2}$/;
@@ -141,12 +173,12 @@ export function childShellDestinationHref(
   weekId?: string | null,
 ): string {
   const dest = childShellDestinations.find((d) => d.id === destination);
-  if (!dest) return "/family/assistant";
+  if (!dest) return "/family/home";
   const params = new URLSearchParams();
   const childId = normalizeChildId(child);
   if (childId) params.set("child", childId);
   if (
-    destination !== "assistant" &&
+    WEEK_SCOPED.includes(destination) &&
     typeof weekId === "string" &&
     WEEK_ID_PATTERN.test(weekId)
   ) {
@@ -293,13 +325,24 @@ export function childGameIdentity(value: unknown): ChildGameIdentity | null {
 }
 
 export type ApprovedGameProjection = {
-  /** Stable Game Studio game id, once one exists. */
+  /** Stable Game Studio game id. */
   gameId: string;
   title: string;
   tagline: string;
   /** Builds the launch href from a validated identity — never from a string. */
   hrefFor: (identity: ChildGameIdentity) => string;
 };
+
+/**
+ * Launch href for any approved game through the guarded play surface. The
+ * child comes from a validated identity, the game id from the stable Game
+ * Studio id grammar; anything else falls back to the library.
+ */
+export function guardedPlayHref(identity: ChildGameIdentity, gameId: string, mode: "play" | "edit" = "play"): string {
+  if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/.test(gameId)) return `/family/games?child=${encodeURIComponent(identity.childId)}`;
+  const base = mode === "edit" ? "/family/games/edit" : "/family/games/play";
+  return `${base}?game=${encodeURIComponent(gameId)}&child=${encodeURIComponent(identity.childId)}`;
+}
 
 /**
  * Parent-approved games shown on the Rewards destination.

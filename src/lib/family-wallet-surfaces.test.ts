@@ -22,7 +22,8 @@ describe("family wallet consumer contract", () => {
   }
 
   it("redemption clients omit viewed week so the server stamps today", () => {
-    match(rewards, /JSON\.stringify\(\{ personId: child, rewardId \}\)/);
+    // The confirmed tap carries an idempotency key (wallet contract 5) and never a week.
+    match(rewards, /JSON\.stringify\(\{ personId: child, rewardId, idempotencyKey: redeemKeyRef\.current \}\)/);
     match(person, /JSON\.stringify\(\{ personId, rewardId \}\)/);
     doesNotMatch(rewards, /personId: child, rewardId, week/);
     doesNotMatch(person, /personId, rewardId, week: weekNav\.weekId/);
@@ -32,6 +33,8 @@ describe("family wallet consumer contract", () => {
     match(rewards, /if \(!child \|\| redeemingReward\) return/);
     match(person, /if \(redeemingReward\) return/);
     match(rewards, /disabled=\{!canAfford \|\| redeemingReward !== null\}/);
+    // Spend once, confirm clearly: the exact cost is confirmed before the write.
+    match(rewards, /Yes, get it for 🪙 \$\{reward\.costPoints\}/);
   });
 
   it("keeps weekly completion context separate from wallet balance", () => {

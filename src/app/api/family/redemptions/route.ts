@@ -9,6 +9,7 @@ import {
 import { auth } from "@/auth";
 import { isAdminEmail } from "@/lib/access";
 import { resolveRedemptionWeek } from "@/lib/family-wallet";
+import { isValidIdempotencyKey } from "@/lib/family-play";
 import { familyMembers } from "@/data/family-routines";
 
 /**
@@ -30,7 +31,7 @@ export async function GET(request: Request) {
 
 /**
  * POST /api/family/redemptions
- * Body: { personId, rewardId }. The server always stamps the actual current
+ * Body: { personId, rewardId, idempotencyKey? }. The server always stamps the actual current
  * ISO week. A supplied week is accepted only when it matches, so an old UI
  * cannot silently backdate a debit while browsing history.
  * Server-side balance check prevents overspend.
@@ -46,7 +47,10 @@ export async function POST(request: Request) {
   } catch {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
-  const { personId, rewardId, week } = body;
+  const { personId, rewardId, week, idempotencyKey } = body;
+  if (idempotencyKey !== undefined && !isValidIdempotencyKey(idempotencyKey)) {
+    return NextResponse.json({ error: "Invalid idempotency key" }, { status: 400 });
+  }
   if (
     typeof personId !== "string" || !personId ||
     typeof rewardId !== "string" || !rewardId
@@ -74,16 +78,17 @@ export async function POST(request: Request) {
   if (!reward.assignedTo.includes(personId)) {
     return NextResponse.json({ error: "Reward not assigned to this person" }, { status: 403 });
   }
-  const redemption = await createRedemptionIfAffordable(
+  const result = await createRedemptionIfAffordable(
     personId,
     rewardId,
     redemptionWeek.week,
     reward.costPoints,
+    typeof idempotencyKey === "string" ? idempotencyKey : null,
   );
-  if (!redemption) {
+  if (result.kind === "insufficient") {
     return NextResponse.json({ error: "Insufficient balance" }, { status: 409 });
   }
-  return NextResponse.json(redemption);
+  return NextResponse.json({ ...result.redemption, replayed: result.kind === "replayed" });
 }
 
 /**

@@ -46,12 +46,13 @@ const withAuth = auth((req) => {
 
   // Redirect to home if logged in and on login page
   if (isLoggedIn && isLoginPage) {
-    return Response.redirect(new URL(isTrackerOnly ? "/family/dashboard" : "/", req.nextUrl.origin));
+    return Response.redirect(new URL(isTrackerOnly ? "/family/home" : "/", req.nextUrl.origin));
   }
 
-  // Shared-iPad / tracker-only accounts stay inside the family dashboard.
+  // Shared child-device / tracker-only accounts stay inside the family
+  // surfaces; anything else lands on the Family Home chooser.
   if (isLoggedIn && isTrackerOnly && !isTrackerAllowedPath(req.nextUrl.pathname)) {
-    return Response.redirect(new URL("/family/dashboard", req.nextUrl.origin));
+    return Response.redirect(new URL("/family/home", req.nextUrl.origin));
   }
 }) as unknown as AuthMiddleware;
 
