@@ -192,6 +192,18 @@ function rowToPurchase(row: Record<string, unknown>): PlayPurchase {
  * allowance is conserved across every unresolved lease, however old.
  */
 /**
+ * Genuine measured time may exceed an ended lease's frozen cap by a small,
+ * bounded amount: the meter confirms authority before every heartbeat and
+ * counts only up to the confirming instant, so the overlap is at most the
+ * Family round-trip plus clock skew between the Mac mini and Family. Such a
+ * report is ACCEPTED (charged to the child) and the successor's live budget is
+ * re-derived to shrink by the same amount — measured overlap is never refused
+ * and handed back as usable time. Anything beyond the tolerance is refused and
+ * surfaced as `refusedSeconds` (an inflated report).
+ */
+export const CAP_OVERLAP_TOLERANCE_SECONDS = 15;
+
+/**
  * The measurement watermark: the meter's own time of the last reading that
  * advanced this lease (`measured_at`, carried in the signed report), falling
  * back to the issue time. Arrival time is never used — a delayed or duplicate
@@ -607,20 +619,33 @@ export async function settlePlayLease(
     // leases: excess is refused (recorded), never absorbed by saturating totals.
     const requested = Number.isFinite(input.consumedSeconds) ? Math.floor(input.consumedSeconds) : 0;
     const requestedDelta = Math.max(0, requested - lease.consumedSeconds);
-    const applied = applySettlement({ ...lease, budgetSeconds: Math.min(lease.budgetSeconds, lease.capSeconds) }, input.consumedSeconds);
+    // Frozen cap, plus — for an ended lease that has not yet reported its end —
+    // only the overlap its meter GENUINELY measured after the end: the report's
+    // own measurement time minus the end time, bounded by the tolerance. A
+    // report without a measurement time, or measured before the end, gets no
+    // overlap at all (the frozen cap never grows for it).
+    const reportMeasuredMs = typeof input.measuredAt === "number" ? input.measuredAt : typeof input.measuredAt === "string" ? Date.parse(input.measuredAt) : Number.NaN;
+    const endedMs = lease.endedAt ? Date.parse(lease.endedAt) : Number.NaN;
+    const measuredOverlap = Number.isFinite(reportMeasuredMs) && Number.isFinite(endedMs) ? Math.max(0, Math.ceil((reportMeasuredMs - endedMs) / 1000)) : 0;
+    const overlapAllowance = lease.state === "ended" && !lease.finalSettled ? Math.min(CAP_OVERLAP_TOLERANCE_SECONDS, measuredOverlap) : 0;
+    const ceiling = lease.state === "ended" && !lease.finalSettled ? lease.capSeconds + overlapAllowance : Math.min(lease.budgetSeconds, lease.capSeconds);
+    const applied = applySettlement({ ...lease, budgetSeconds: ceiling }, input.consumedSeconds);
     let delta = applied.delta;
     let consumedNext = applied.consumedSeconds;
     if (delta > 0) {
+      // Bounded by what the allowance can still give at all: the sum of per-lease
+      // consumption then equals the allowance's consumption and never exceeds the
+      // grant. Live budgets of other leases are re-derived right after (they
+      // shrink by what this report took), so measured overlap is charged, not
+      // refused and handed back.
       const allowanceNow = await readAllowance(tx, lease.personId);
-      const others = await unresolvedLeases(tx, lease.personId, lease.id);
-      const liveClaims = others.filter((o) => o.state === "active").reduce((sum, o) => sum + Math.max(0, o.budgetSeconds - o.consumedSeconds), 0);
-      const room = Math.max(0, allowanceRemaining(allowanceNow) - liveClaims);
+      const room = Math.max(0, allowanceRemaining(allowanceNow));
       if (delta > room) {
         delta = room;
         consumedNext = lease.consumedSeconds + room;
       }
     }
-    const ends = input.end || (lease.metered && consumedNext >= Math.min(lease.budgetSeconds, lease.capSeconds));
+    const ends = input.end || (lease.metered && consumedNext >= ceiling);
     const finalReport = input.end === true;
     // The watermark moves only with a reading that advances consumption, and only
     // to the meter's own measurement time (bounded by now) — never on a duplicate

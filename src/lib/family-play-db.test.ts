@@ -185,14 +185,14 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     const leases = await getLeasesForPerson("santiago", client);
     deepEqual(leases.map((l) => l.state), ["ended", "active"]);
     equal(leases[0].endReason, "replaced-by-takeover");
-    // A late report from the replaced lease is bounded by the cap frozen when Family ended it (200 settled + 5 s elapsed = 205):
-    // claiming 250 is clamped to 205, so the iPad can never bill more than it could lawfully have measured.
+    // A late report from the replaced lease is bounded by the cap frozen when Family ended it (200 settled + 5 s elapsed = 205)
+    // plus the bounded overlap tolerance (15 s): claiming 250 is clamped to 220 and the 30 s beyond are refused and surfaced.
     const late = await settlePlayLease({ leaseId: ipad.lease.id, consumedSeconds: 250, end: true, measuredAt: at(230).getTime(), now: at(230) }, client);
-    ok(late.ok && late.delta === 5 && late.lease.consumedSeconds === 205, JSON.stringify(late));
-    equal((await getPlayState("santiago", client)).remainingSeconds, 695);
+    ok(late.ok && late.delta === 20 && late.lease.consumedSeconds === 220 && late.refusedSeconds === 30, JSON.stringify(late));
+    equal((await getPlayState("santiago", client)).remainingSeconds, 680);
     // …and the successor's budget is reconciled to the real remaining allowance once the predecessor is final.
     const succ = (await getLeasesForPerson("santiago", client)).find((l) => l.id === takeover.lease.id)!;
-    equal(succ.budgetSeconds, 695);
+    equal(succ.budgetSeconds, 680);
     equal(succ.reserveSeconds, 0);
   });
 
@@ -281,6 +281,43 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     const dOver = await settlePlayLease({ leaseId: d.lease.id, consumedSeconds: 500, end: true, now: at(103) }, client2);
     if (!dOver.ok) throw new Error("settle failed");
     ok(dOver.lease.consumedSeconds === 100 && dOver.refusedSeconds === 400, JSON.stringify({ consumed: dOver.lease.consumedSeconds, refused: dOver.refusedSeconds }));
+  });
+
+  it("GP-03/07 bounded measured overlap after Family's end is charged to the child and taken from the successor, never refused and handed back", async () => {
+    const client = await fresh({ santiagoCoins: 7 });
+    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-overlap-1", purchaseId: id("p"), redemptionId: id("r"), now: at(0) }, client);
+    const a = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "A", now: at(0) }, client);
+    if (!a.ok) throw new Error("issue failed");
+    await recordLeaseActivation(a.lease.id, at(0), client);
+    // Family ends A at t=1 and issues B with 899 (A may still report its 1 s).
+    equal(await endPlayLease({ leaseId: a.lease.id, personId: "santiago", reason: "left", now: at(1) }, client), true);
+    const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "B", now: at(1) }, client);
+    if (!b.ok) throw new Error("issue failed");
+    equal(b.lease.budgetSeconds, 899);
+    // A's meter genuinely measured 3 s (bounded overlap): accepted in full, B shrinks to 897 — total stays 900.
+    const final = await settlePlayLease({ leaseId: a.lease.id, consumedSeconds: 3, end: true, measuredAt: at(3).getTime(), now: at(4) }, client);
+    if (!final.ok) throw new Error("settle failed");
+    equal(final.lease.consumedSeconds, 3);
+    equal(final.refusedSeconds, 0);
+    const bAfter = (await getLeasesForPerson("santiago", client)).find((l) => l.id === b.lease.id)!;
+    equal(bAfter.budgetSeconds, 897);
+    equal(3 + bAfter.budgetSeconds, 900);
+    // An inflated report far beyond the tolerance is refused and surfaced; a report measured BEFORE the end gets no overlap at all.
+    const client2 = await fresh({ santiagoCoins: 7 });
+    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-overlap-2", purchaseId: id("p"), redemptionId: id("r"), now: at(0) }, client2);
+    const c = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "C", now: at(0) }, client2);
+    if (!c.ok) throw new Error("issue failed");
+    await endPlayLease({ leaseId: c.lease.id, personId: "santiago", reason: "left", now: at(1) }, client2);
+    const bogus = await settlePlayLease({ leaseId: c.lease.id, consumedSeconds: 200, end: false, measuredAt: at(200).getTime(), now: at(201) }, client2);
+    if (!bogus.ok) throw new Error("settle failed");
+    equal(bogus.lease.consumedSeconds, 1 + 15);
+    equal(bogus.refusedSeconds, 200 - 16);
+    const d = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "D", now: at(300) }, client2);
+    if (!d.ok) throw new Error("issue failed");
+    await endPlayLease({ leaseId: d.lease.id, personId: "santiago", reason: "left", now: at(330) }, client2);
+    const noMeasure = await settlePlayLease({ leaseId: d.lease.id, consumedSeconds: 900, end: true, now: at(2000) }, client2);
+    if (!noMeasure.ok) throw new Error("settle failed");
+    equal(noMeasure.lease.consumedSeconds, 30, "without a measurement time the frozen cap never grows");
   });
 
   it("GP-07 a parent refund revokes the usable budget at once: the live lease is ended and capped in the same transaction", async () => {
