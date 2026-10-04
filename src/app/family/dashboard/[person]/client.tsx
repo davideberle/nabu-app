@@ -1391,7 +1391,7 @@ function ParentControlsPanel({
                   return (
                     <div key={r.id} className="flex items-center justify-between rounded-md border border-secondary bg-primary px-3 py-2">
                       <span className="text-xs text-primary">
-                        {reward?.icon} {reward?.title ?? r.rewardId}
+                        {reward?.icon ?? (r.rewardId === "game-play-15min" ? "🎮" : null)} {reward?.title ?? (r.rewardId === "game-play-15min" ? "Game time · 15 minutes" : r.rewardId)}
                       </span>
                       <button
                         type="button"

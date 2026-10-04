@@ -10,6 +10,7 @@ import { auth } from "@/auth";
 import { isAdminEmail } from "@/lib/access";
 import { resolveRedemptionWeek } from "@/lib/family-wallet";
 import { isValidIdempotencyKey } from "@/lib/family-play";
+import { getPurchaseByRedemptionId, refundPlayPurchase } from "@/lib/family-play-db";
 import { familyMembers } from "@/data/family-routines";
 
 /**
@@ -112,6 +113,14 @@ export async function DELETE(request: Request) {
   const { id } = body;
   if (typeof id !== "string" || !id) {
     return NextResponse.json({ error: "id required (string)" }, { status: 400 });
+  }
+  // A game-time purchase is undone through Family's exactly-once compensation,
+  // so the debit and its allowance grant are withdrawn together (GP-07); the
+  // parent board's existing Undo keeps working for it.
+  const purchase = await getPurchaseByRedemptionId(id);
+  if (purchase) {
+    const refunded = await refundPlayPurchase({ purchaseId: purchase.id, reason: "parent undo" });
+    return NextResponse.json({ ok: true, removed: refunded.ok, refundedPurchase: refunded.ok ? refunded.purchase.id : null });
   }
   const removed = await removeRedemption(id);
   return NextResponse.json({ ok: true, removed });

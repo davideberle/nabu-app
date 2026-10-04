@@ -238,6 +238,13 @@ export async function getPurchasesFromWeek(fromWeek: string, client?: Client): P
   return result.rows.map((row) => ({ ...rowToPurchase(row as Record<string, unknown>), week: String((row as Record<string, unknown>)["week"] ?? "") }));
 }
 
+export async function getPurchaseByRedemptionId(redemptionId: string, client?: Client): Promise<PlayPurchase | null> {
+  const db = client ?? (await getDb());
+  await ensurePlayTables(db);
+  const result = await db.execute({ sql: "SELECT * FROM family_play_purchases WHERE redemption_id = ?", args: [redemptionId] });
+  return result.rows[0] ? rowToPurchase(result.rows[0] as Record<string, unknown>) : null;
+}
+
 // ---------------------------------------------------------------------------
 // Purchase — GP-02
 // ---------------------------------------------------------------------------

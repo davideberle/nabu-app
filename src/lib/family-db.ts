@@ -95,6 +95,13 @@ async function ensureFamilyTables(client: Client): Promise<void> {
   try {
     await client.execute(`ALTER TABLE family_reward_redemptions ADD COLUMN charged_points INTEGER`);
   } catch { /* column already exists */ }
+  try {
+    await client.execute(`ALTER TABLE family_reward_redemptions ADD COLUMN idempotency_key TEXT`);
+  } catch { /* column already exists */ }
+  await client.execute(`
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_family_redemptions_idempotency
+      ON family_reward_redemptions (person_id, idempotency_key) WHERE idempotency_key IS NOT NULL
+  `);
   await client.execute(`
     CREATE INDEX IF NOT EXISTS idx_family_redemptions_week
       ON family_reward_redemptions (week, person_id)

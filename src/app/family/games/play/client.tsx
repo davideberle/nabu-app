@@ -59,6 +59,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
   const frameRef = useRef<HTMLIFrameElement | null>(null);
   const phaseRef = useRef<Phase>(phase);
   phaseRef.current = phase;
+  /** The running heartbeat; called directly on pause/continue so the clock settles at once. */
+  const beatRef = useRef<(() => void) | null>(null);
   const free = isFreeGame(gameId);
 
   // ---- lease acquisition ----------------------------------------------
@@ -151,9 +153,15 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
       }
       timer = window.setTimeout(beat, TICK_MS);
     };
+    beatRef.current = () => {
+      if (timer !== null) window.clearTimeout(timer);
+      timer = null;
+      void beat();
+    };
     void beat();
     return () => {
       cancelled = true;
+      beatRef.current = null;
       if (timer !== null) window.clearTimeout(timer);
     };
     // The tick loop restarts only when the lease changes, not on every tick.
@@ -278,7 +286,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
                 <p className="text-xl font-semibold">{phase.offline ? "Reconnecting to Game Studio…" : "Paused"}</p>
                 <p className="max-w-sm text-sm text-secondary">{phase.offline ? "Your play time isn't counting while the connection is down. We'll continue when it's back." : "Your play time isn't counting while paused."}</p>
                 {phase.paused ? (
-                  <button type="button" onClick={() => setPhase((p) => (p.kind === "playing" ? { ...p, paused: false } : p))} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>▶ Continue</button>
+                  <button type="button" onClick={() => { setPhase((p) => (p.kind === "playing" ? { ...p, paused: false } : p)); window.setTimeout(() => beatRef.current?.(), 0); }} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>▶ Continue</button>
                 ) : null}
               </div>
             ) : null}
@@ -286,7 +294,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
           <footer className="flex flex-wrap items-center justify-between gap-2 border-t border-primary px-3 py-2">
             <div className="flex gap-2">
               {!free ? (
-                <button type="button" onClick={() => setPhase((p) => (p.kind === "playing" ? { ...p, paused: !p.paused } : p))} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>
+                <button type="button" onClick={() => { setPhase((p) => (p.kind === "playing" ? { ...p, paused: !p.paused } : p)); window.setTimeout(() => beatRef.current?.(), 0); }} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>
                   {phase.paused ? "▶ Continue" : "⏸ Pause"}
                 </button>
               ) : null}
