@@ -48,6 +48,10 @@ const pillClass = cn(
 export const TICK_MS = 800;
 /** Child-visible frame-to-game handshake; the adapter's injected guard expects it. */
 export const FRAME_PING_TYPE = "family-play:alive";
+/** The guard's acknowledgment that it froze (and killed) the game after an ended message. */
+export const FRAME_STOPPED_TYPE = "family-play:stopped";
+/** How long to wait for the guard's stop acknowledgment before ending without it (the meter then waits out the handed deadline). */
+export const STOP_ACK_TIMEOUT_MS = 400;
 
 type Phase =
   | { kind: "starting" }
@@ -106,12 +110,46 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
     return () => controller.abort();
   }, [child, gameId, client, attempt, takeover]);
 
+  /**
+   * Stop the game frame with evidence: post the terminal message and wait for the guard's acknowledgment that it
+   * froze and killed the game. Resolves true only on that acknowledgment (or when no frame exists any more); on a
+   * timeout it resolves false and the meter keeps the handed-frame fence until the deadline lapses.
+   */
+  const stopFrame = useCallback((leaseId: string, origin: string): Promise<boolean> => {
+    const frame = frameRef.current;
+    const target = frame?.contentWindow ?? null;
+    if (!target) return Promise.resolve(true);
+    return new Promise<boolean>((resolve) => {
+      let done = false;
+      const finish = (value: boolean) => {
+        if (done) return;
+        done = true;
+        window.removeEventListener("message", onMessage);
+        clearTimeout(timer);
+        resolve(value);
+      };
+      const onMessage = (event: MessageEvent) => {
+        const data = event.data as { type?: string; leaseId?: string; frozen?: boolean } | null;
+        if (event.origin !== origin || event.source !== target || !data || data.type !== FRAME_STOPPED_TYPE || data.leaseId !== leaseId) return;
+        finish(data.frozen === true);
+      };
+      const timer = setTimeout(() => finish(false), STOP_ACK_TIMEOUT_MS);
+      window.addEventListener("message", onMessage);
+      try {
+        target.postMessage({ type: FRAME_PING_TYPE, leaseId, remainingSeconds: 0, phase: "exhausted", paused: true, reason: "ended", ended: true, authorizedForMs: 0 }, origin);
+      } catch {
+        finish(false);
+      }
+    });
+  }, []);
+
   // ---- release on leave -------------------------------------------------
   useEffect(() => {
     return () => {
       const current = phaseRef.current;
       if (current.kind === "playing") {
-        void client.end(current.studio, current.grant.lease.id, "left");
+        // The frame is unmounted with this component: nothing can run it any more.
+        void client.end(current.studio, current.grant.lease.id, "left", true);
         void client.release(child, current.grant.lease.id, "left");
       }
     };
@@ -184,7 +222,9 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         const live = current.kind === "playing" && current.grant.lease.id === leaseId;
         const paused = live ? current.paused : true;
         const hidden = live ? current.hidden : true;
-        return { active: live && !paused && !hidden, hidden, paused };
+        // Frozen is frozen: while the frame is offline or its deadline lapsed, the heartbeat reports no foreground.
+        const frozen = live ? current.offline || current.lapsed : true;
+        return { active: live && !paused && !hidden && !frozen, hidden, paused };
       },
       send: async (input) => {
         const sentAt = Date.now();
@@ -197,8 +237,10 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
           if (outcome.failure === "no-allowance" || outcome.status === 410 || outcome.status === 404 || outcome.status === 401) {
             const detail = outcome.detail as { endReason?: string; remainingSeconds?: number; ended?: boolean } | undefined;
             const reason = detail?.endReason === "replaced" || detail?.endReason === "revoked" || detail?.endReason === "superseded" ? "replaced" : detail?.endReason === "credential-expired" || outcome.status === 401 ? "expired" : "exhausted";
-            postFrameState("exhausted", 0, true);
+            authorizedUntil = 0;
             heartbeat.stop();
+            // Stop the frame with the guard's acknowledgment, then tell the meter (so a successor need not wait out the deadline).
+            void stopFrame(leaseId, origin).then((stopped) => client.end(studio, leaseId, "stopped", stopped));
             setPhase({ kind: "ended", reason, remaining: detail?.remainingSeconds ?? null });
             void client.release(child, leaseId, detail?.endReason ?? "ended");
             return;
@@ -215,8 +257,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         const tick = outcome.value;
         if (tick.ended || tick.phase === "exhausted") {
           authorizedUntil = 0;
-          postFrameState("exhausted", 0, true);
           heartbeat.stop();
+          void stopFrame(leaseId, origin).then((stopped) => client.end(studio, leaseId, "stopped", stopped));
           setPhase({ kind: "ended", reason: tick.endReason === "replaced" ? "replaced" : "exhausted", remaining: tick.remainingSeconds });
           void client.release(child, leaseId, tick.endReason ?? "exhausted");
           return;
@@ -271,11 +313,13 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
     async (reason: string) => {
       const current = phaseRef.current;
       if (current.kind === "playing") {
+        // Evidence first: freeze the frame and wait for the guard's acknowledgment, then end at the meter and release at Family.
+        const stopped = await stopFrame(current.grant.lease.id, new URL(current.studio.url).origin);
         setPhase({ kind: "ended", reason: "left", remaining: current.tick?.remainingSeconds ?? null });
-        await Promise.all([client.end(current.studio, current.grant.lease.id, reason), client.release(child, current.grant.lease.id, reason)]);
+        await Promise.all([client.end(current.studio, current.grant.lease.id, reason, stopped), client.release(child, current.grant.lease.id, reason)]);
       }
     },
-    [child, client],
+    [child, client, stopFrame],
   );
 
   const gamesHref = childShellDestinationHref("games", child);

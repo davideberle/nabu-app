@@ -6,7 +6,7 @@ import { equal, ok } from "node:assert/strict";
 import { existsSync, mkdtempSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { after, before, describe, it } from "node:test";
+import { after, before, beforeEach, describe, it } from "node:test";
 import { createClient, type Client } from "@libsql/client";
 import { ensurePlayTables, endPlayLease, getLease, getLeaseStatus, getPlayState, issuePlayLease, recordLeaseActivation, settlePlayLease } from "./family-play-db.ts";
 
@@ -51,6 +51,13 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     client?.close();
     rmSync(dir, { recursive: true, force: true });
   });
+  // A failed case must not leak a held gate into the next one (a held settle gate would hang every later flush).
+  beforeEach(() => {
+    statusGate = null;
+    settleGate = null;
+    settleObserved = null;
+    outage = false;
+  });
 
   let stacks = 0;
   /** One fresh meter data dir per instance: the fake clock restarts at t0 in every case, so no earlier session's deadline may leak in. */
@@ -93,6 +100,16 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
   const tick = async (base: string, lid: string, token: string) => {
     const r = await fetch(`${base}/v1/play/${lid}/tick`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: '{"active":true}' });
     return { status: r.status, body: (await r.json()) as { consumedSeconds: number; ended: boolean } };
+  };
+  /** Play at the wrapper's cadence: one live heartbeat per second from `fromSec`+1 to `toSec` (each inside the 2 s grant handed before it). */
+  const playUntil = async (base: string, lid: string, token: string, fromSec: number, toSec: number) => {
+    let last: Awaited<ReturnType<typeof tick>> | null = null;
+    for (let sec = fromSec + 1; sec <= toSec; sec += 1) {
+      clock = t0 + sec * 1000;
+      last = await tick(base, lid, token);
+      equal(last.status, 200, `heartbeat at t${sec}: ${JSON.stringify(last.body)}`);
+    }
+    return last;
   };
   async function allowance(seconds = 900) {
     await client.execute("DELETE FROM family_play_leases");
@@ -140,6 +157,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     try {
       const a = cred("lease-joined-a004");
       equal((await tick(base, "lease-joined-a004", a)).status, 200);
+      await playUntil(base, "lease-joined-a004", a, 0, 4);
       clock = t0 + 5000;
       const r = await fetch(`${base}/v1/play/lease-joined-a004/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left"}' });
       const body = (await r.json()) as { consumedSeconds: number };
@@ -181,15 +199,15 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       // The adapter re-reads, learns Family ended A at the fence t4, charges the interval up to it and refuses play.
       equal(late.status, 410, JSON.stringify(late.body));
       equal(late.body.ended, true);
-      equal(late.body.consumedSeconds, 4, "counted exactly up to Family's effective end (the fence at t4), never thawed");
+      equal(late.body.consumedSeconds, 2, "counted up to the frame deadline handed at t0 (t2): the frame froze there, before Family's fence at t4");
       equal(server.store.loadLease("lease-joined-a002")!.state, "ended");
       clock = t0 + 7000;
       equal((await tick(base, "lease-joined-a002", a)).status, 410);
       await server.settler.flush();
       const meter = server.store.loadLease("lease-joined-a002")!;
       const next = (await getLease("lease-joined-b002", client))!;
-      equal(meter.consumed, 4);
-      equal(next.budgetSeconds, 896, `successor ${next.budgetSeconds}`);
+      equal(meter.consumed, 2);
+      equal(next.budgetSeconds, 898, `successor ${next.budgetSeconds}`);
       ok(meter.consumed + next.budgetSeconds <= 900, `measured ${meter.consumed} + usable ${next.budgetSeconds}`);
       equal((await getPlayState("santiago", client)).activeLease?.id, "lease-joined-b002");
     } finally {
@@ -208,10 +226,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       equal((await tick(base, "lease-joined-a003", a)).status, 200);
       let releaseSettle!: () => void;
       settleGate = new Promise<void>((r) => { releaseSettle = r; });
-      for (let i = 1; i <= 8; i += 1) {
-        clock = t0 + i * 5000;
-        equal((await tick(base, "lease-joined-a003", a)).status, 200);
-      }
+      await playUntil(base, "lease-joined-a003", a, 0, 40);
       // 40 s measured; the 30 s report is stuck in flight. Family ends A at t41 and issues B.
       clock = t0 + 41000;
       await endPlayLease({ leaseId: "lease-joined-a003", personId: "santiago", reason: "left", now: new Date(clock) }, client);
@@ -245,6 +260,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     try {
       const a = cred("lease-joined-a005", 5);
       equal((await tick(base, "lease-joined-a005", a)).status, 200);
+      await playUntil(base, "lease-joined-a005", a, 0, 4);
       clock = t0 + 5000;
       const refused = await tick(base, "lease-joined-a005", a);
       equal(refused.status, 401);
@@ -270,6 +286,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     try {
       const a = cred("lease-joined-a006");
       equal((await tick(base, "lease-joined-a006", a)).status, 200);
+      await playUntil(base, "lease-joined-a006", a, 0, 4);
       clock = t0 + 5000;
       outage = true;
       const r = await fetch(`${base}/v1/play/lease-joined-a006/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left"}' });
@@ -302,17 +319,15 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       let releaseSettle!: () => void;
       settleGate = new Promise<void>((r) => { releaseSettle = r; });
       const seen = new Promise<void>((r) => { settleObserved = r; });
-      for (let i = 1; i <= 6; i += 1) {
-        clock = t0 + i * 5000;
-        equal((await tick(base, "lease-joined-a007", a)).status, 200);
-      }
+      await playUntil(base, "lease-joined-a007", a, 0, 30);
       await seen;
       settleObserved = null;
+      await playUntil(base, "lease-joined-a007", a, 30, 34);
       clock = t0 + 35000;
       equal(await endPlayLease({ leaseId: "lease-joined-a007", personId: "santiago", reason: "left", now: at(35) }, client), true);
       const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-b007", takeover: true, deviceLabel: null, now: at(35) }, client);
       ok(b.ok);
-      equal(b.lease.budgetSeconds, 865, "A's 35 s since issue are reserved until it reports");
+      equal(b.lease.budgetSeconds, 864, "A's 35 s since issue plus its open window (its t34 read reaches t36) are reserved until it reports");
       releaseSettle();
       settleGate = null;
       await server.settler.flush();
@@ -371,7 +386,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       clock = t0 + 5000;
       const after = await tick(base, "lease-joined-a008", a);
       equal(after.status, 410, JSON.stringify(after.body));
-      equal(after.body.consumedSeconds, 4);
+      equal(after.body.consumedSeconds, 2, "A's frame froze at the deadline handed at t0 (t2); the t3 answer handed none it could use");
       // ...and B is runnable: the other meter activates it.
       equal((await getLeaseStatus("lease-joined-b008", client, new Date(clock)))!.state, "active");
       const started = await tick(other.base, "lease-joined-b008", bCred);
@@ -379,9 +394,9 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       await server.settler.flush();
       const old = (await getLease("lease-joined-a008", client))!;
       const next = (await getLease("lease-joined-b008", client))!;
-      equal(old.consumedSeconds, 4);
+      equal(old.consumedSeconds, 2);
       equal(old.finalSettled, true);
-      equal(next.budgetSeconds, 896);
+      equal(next.budgetSeconds, 898);
       equal(old.consumedSeconds + next.budgetSeconds, 900);
       equal((await getPlayState("santiago", client)).activeLease?.id, "lease-joined-b008");
     } finally {
@@ -458,7 +473,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       statusGate = null;
       const late = await pending;
       equal(late.status, 410, JSON.stringify(late.body));
-      equal(late.body.consumedSeconds, 4, "counted up to Family's effective end (the fence at t4), never past it");
+      equal(late.body.consumedSeconds, 2, "counted up to the frame deadline handed at t0 (t2), before Family's fence at t4; never past it");
       equal((await getLeaseStatus("lease-joined-b009", client, new Date(clock)))!.state, "active", "the fence lapsed: B is runnable");
       await server.settler.flush();
       const meter = server.store.loadLease("lease-joined-a009")!;
@@ -466,6 +481,92 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       equal(meter.consumed + next.budgetSeconds, 900, `measured ${meter.consumed} + usable ${next.budgetSeconds}`);
       const bTick = await tick(base, "lease-joined-b009", cred("lease-joined-b009"));
       equal(bTick.status, 200, JSON.stringify(bTick.body));
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+  // ---- round 8: foreground bounded by the handed frame deadline; receipts before the lock; stop acknowledgment --------
+
+  for (const variant of ["expiry", "outage", "success", "queued-pause"] as const) {
+    it(`R8-1 ${variant}: a renewal whose authority answer is withheld t1→t5 bills only to the frame deadline handed at t0 (2 s); B gets 898`, async () => {
+      await allowance();
+      clock = t0;
+      const lid = `lease-joined-r8-${variant}`;
+      await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: lid, takeover: true, deviceLabel: null, now: at(0) }, client);
+      const { server, base } = await stack();
+      try {
+        const a = cred(lid, variant === "expiry" ? 5 : 1200);
+        const first = await tick(base, lid, a);
+        equal(first.status, 200);
+        equal((first.body as { authorizedForMs?: number }).authorizedForMs, 2000);
+        clock = t0 + 1000;
+        let release!: () => void;
+        statusGate = { lid, gate: new Promise<void>((r) => { release = r; }) };
+        const renewal = tick(base, lid, a);
+        await new Promise((r) => setTimeout(r, 40));
+        let paused: Promise<Awaited<ReturnType<typeof tick>>> | null = null;
+        if (variant === "queued-pause") {
+          clock = t0 + 2000;
+          paused = fetch(`${base}/v1/play/${lid}/tick`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"active":false,"paused":true}' }).then(async (r) => ({ status: r.status, body: (await r.json()) as { consumedSeconds: number; ended: boolean } }));
+          await new Promise((r) => setTimeout(r, 40));
+          equal((server.store.loadLease(lid) as unknown as { foregroundUntil: number }).foregroundUntil, t0 + 2000, "the pause receipt is persisted while the renewal still holds the lock");
+        }
+        clock = t0 + 5000;
+        if (variant === "outage") outage = true;
+        release();
+        statusGate = null;
+        const answer = await renewal;
+        if (paused) await paused;
+        outage = false;
+        equal(answer.status, variant === "expiry" ? 401 : variant === "outage" ? 503 : 200, JSON.stringify(answer.body));
+        equal(server.store.loadLease(lid)!.consumed, 2, "foreground stopped at the handed deadline t2");
+        const r = await fetch(`${base}/v1/play/${lid}/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
+        ok([200, 410, 401].includes(r.status), `${variant}: end ${r.status}`);
+        await server.settler.flush();
+        const old = (await getLease(lid, client))!;
+        equal(old.consumedSeconds, 2);
+        equal(old.finalSettled, true);
+        const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: `${lid}-b`, takeover: true, deviceLabel: null, now: at(5) }, client);
+        ok(b.ok);
+        equal(b.lease.budgetSeconds, 898);
+        equal(old.consumedSeconds + b.lease.budgetSeconds, 900);
+      } finally {
+        server.settler.stop();
+        await new Promise((r) => server.close(r));
+      }
+    });
+  }
+
+  it("R8-2 a terminal answer in flight is no acknowledgment: B is refused until A's handed deadline lapses; A's wrapper end with the guard's stop attestation releases it at once", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-a011", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-a011");
+      equal((await tick(base, "lease-joined-a011", a)).status, 200); // A's frame may run until t2
+      clock = t0 + 500;
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-b011", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      ok(b.ok);
+      const bCred = cred("lease-joined-b011");
+      equal((await tick(base, "lease-joined-b011", bCred)).status, 409, "B pending behind A's fence");
+      clock = t0 + 800;
+      const denied = await tick(base, "lease-joined-a011", a); // 410 written — assume it never reaches A's wrapper
+      equal(denied.status, 410);
+      await server.settler.flush(); // A's terminal report lands: Family's fence is released — only the frame fence remains
+      clock = t0 + 1000;
+      equal((await getLeaseStatus("lease-joined-b011", client, new Date(clock)))!.state, "active", "Family would let B run now");
+      equal((await tick(base, "lease-joined-b011", bCred)).status, 409, "a written 410 is not a frame-stop acknowledgment");
+      const ack = await fetch(`${base}/v1/play/lease-joined-a011/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"stopped","frameStopped":true}' });
+      equal(ack.status, 410);
+      const started = await tick(base, "lease-joined-b011", bCred);
+      equal(started.status, 200, JSON.stringify(started.body));
+      await server.settler.flush();
+      const old = (await getLease("lease-joined-a011", client))!;
+      const next = (await getLease("lease-joined-b011", client))!;
+      ok(old.consumedSeconds <= 1);
+      equal(old.consumedSeconds + next.budgetSeconds, 900);
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));

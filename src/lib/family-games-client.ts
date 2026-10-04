@@ -172,8 +172,9 @@ export function createGamesClient(deps: GamesClientDeps = {}) {
       `${studio.url}/v1/play/${encodeURIComponent(leaseId)}/${encodeURIComponent(gameId)}/index.html?credential=${encodeURIComponent(studio.token)}`,
     tick: (studio: StudioAccess, leaseId: string, input: { active: boolean; hidden: boolean; paused: boolean }, signal?: AbortSignal) =>
       studioCall<TickView>(studio, `/v1/play/${encodeURIComponent(leaseId)}/tick`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(input), signal }),
-    end: (studio: StudioAccess, leaseId: string, reason: string) =>
-      studioCall<TickView>(studio, `/v1/play/${encodeURIComponent(leaseId)}/end`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ reason }), keepalive: true }),
+    /** `frameStopped`: the wrapper attests the game frame was frozen/removed (guard acknowledgment received) BEFORE this request — the meter may then let a successor start without waiting out the handed deadline. */
+    end: (studio: StudioAccess, leaseId: string, reason: string, frameStopped = false) =>
+      studioCall<TickView>(studio, `/v1/play/${encodeURIComponent(leaseId)}/end`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ reason, frameStopped }), keepalive: true }),
     projects: (studio: StudioAccess, signal?: AbortSignal) => studioCall<{ projects: StudioProject[] }>(studio, "/v1/studio/projects", { signal }),
     project: (studio: StudioAccess, id: string, signal?: AbortSignal) => studioCall<StudioProject>(studio, `/v1/studio/projects/${encodeURIComponent(id)}`, { signal }),
     createProject: (studio: StudioAccess, prompt: string) =>
