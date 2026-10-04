@@ -280,7 +280,8 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   const paused2 = await page.locator("header [data-remaining-seconds]").getAttribute("data-remaining-seconds");
   record("T-06", "GP-04 an explicit pause stops the clock", Number(paused2) >= Number(paused1) - 1, `${paused1} → ${paused2}`);
   await shot(page, "tablet-03-paused");
-  await page.getByRole("button", { name: /Continue/ }).tap();
+  await page.getByRole("dialog", { name: "Paused" }).getByRole("button", { name: /Continue/ }).tap();
+  await page.getByRole("dialog", { name: "Paused" }).waitFor({ state: "hidden" });
   await page.getByRole("link", { name: /Games/ }).first().tap();
   await page.waitForURL(/\/family\/games\?child=santiago/);
   await sleep(600);
