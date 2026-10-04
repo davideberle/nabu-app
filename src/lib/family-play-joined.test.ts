@@ -15,7 +15,7 @@ const ADAPTER = "/Users/claweberle/.openclaw/workspace/projects/game-studio/serv
 const available = existsSync(ADAPTER);
 
 type Adapter = {
-  createChildPlayAdapter: (opts: Record<string, unknown>) => import("node:http").Server & { store: { loadLease: (id: string) => { consumed: number; state: string; endReason: string | null; lastActive: boolean; session: { evidenced?: boolean } | null } | null }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
+  createChildPlayAdapter: (opts: Record<string, unknown>) => import("node:http").Server & { store: { loadLease: (id: string) => { consumed: number; state: string; endReason: string | null; lastActive: boolean; session: { measured?: boolean; observed?: number; closed?: boolean; base?: number } | null; previousSession?: { observed?: number } | null; frame?: { grant: number | null; ranMs: number; running: boolean } | null } | null }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
   derivePlayKey: (secret: string) => Buffer;
   mintPlayCredential: (key: Buffer, claims: Record<string, unknown>) => string;
   signSettlement: (key: Buffer, ts: number, leaseId: string, body: string) => string;
@@ -716,20 +716,76 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
   // ---- round 10: billing starts at the wrapper's running acknowledgment, never at the server's answer ------------
 
   /**
-   * The wrapper's exact rules (client.tsx) over the real heartbeat controller, with a controllable transport and a
-   * modelled guard: the frame is reported running only after the guard's reply (`frameReplyAt`, null = frame never
-   * loads); every report names the session grant and the observed running duration.
+   * The wrapper's exact rules (client.tsx, round 13) over the real heartbeat controller, with a controllable transport
+   * and a modelled guard that behaves like the injected one: it thaws/freezes on the wrapper's alive message, measures
+   * its own running time per session, replies (possibly late: `guardReplyDelayMs`), and — unless `beacons: false` —
+   * POSTs its measurement straight to the meter at thaw and at every freeze (the real guard also beacons every
+   * second while running: `w.beacon()` sends such a periodic beacon at the current clock). `frameReplyAt` = when the
+   * alive message reaches the loaded frame (null = the frame never loads). The wrapper only forwards the guard's
+   * measurement: it never claims running before the guard's word and flushes the guard's final word after a stop.
    */
-  function wrapperModel(base: string, lid: string, token: string, opts: { deliverAt?: () => number | null | undefined; frameReplyAt?: () => number | null | undefined; holdRunningUntil?: () => number | null | undefined; guardReplyDelayMs?: () => number } = {}) {
-    // The modelled GUARD measures its own running time (thaw instant → freeze), like the real one; its reply to the
-    // wrapper may be delayed. The wrapper only forwards the guard's measurement.
-    const guard = { thawedAt: 0, ranMs: 0, running: false };
-    const guardFreeze = () => { if (guard.running) { guard.ranMs += Math.max(0, clock - guard.thawedAt); guard.running = false; } };
+  function wrapperModel(base: string, lid: string, token: string, opts: { deliverAt?: () => number | null | undefined; frameReplyAt?: () => number | null | undefined; holdRunningUntil?: () => number | null | undefined; guardReplyDelayMs?: () => number; beacons?: boolean } = {}) {
+    const beacons = opts.beacons !== false;
+    const guard = { loaded: false, thawedAt: 0, ranMs: 0, running: false, sessionKey: null as number | null };
     const guardRanMs = () => guard.ranMs + (guard.running ? Math.max(0, clock - guard.thawedAt) : 0);
-    const st = { armed: false, lapsed: false, offline: false, paused: false, authorizedUntil: 0, grantSeq: null as number | null, running: false, thawAt: 0, sessionGrant: null as number | null, lastRunMs: 0, observedMs: 0 };
+    const beaconLog: { at: number; grant: number | null; ranMs: number; running: boolean; status?: number }[] = [];
+    /** The guard's beacon: its own measurement, authenticated with the credential the page was served with. */
+    const beacon = async (final = false) => {
+      const body = { grant: guard.sessionKey, session: guard.sessionKey, ranMs: guardRanMs(), running: guard.running };
+      const entry = { at: (clock - t0) / 1000, grant: body.grant, ranMs: body.ranMs, running: body.running } as (typeof beaconLog)[number];
+      beaconLog.push(entry);
+      try {
+        const r = await fetch(`${base}/v1/play/${lid}/frame${final ? `?credential=${encodeURIComponent(token)}` : ""}`, { method: "POST", headers: { ...(final ? {} : { authorization: `Bearer ${token}` }), "content-type": "application/json" }, body: JSON.stringify(body) });
+        entry.status = r.status;
+      } catch { entry.status = 0; }
+    };
+    const guardFreeze = () => { if (guard.running) { guard.ranMs += Math.max(0, clock - guard.thawedAt); guard.running = false; if (beacons) void beacon(); } };
+    const guardThaw = () => { if (!guard.running) { guard.running = true; guard.thawedAt = clock; if (beacons) void beacon(); } };
+    const st = { armed: false, lapsed: false, offline: false, paused: false, authorizedUntil: 0, grantSeq: null as number | null, running: false, sessionGrant: null as number | null, sessionClosed: false, observedMs: 0, reportedMs: 0, lastRunMs: 0 };
     const sends: { at: number; active: boolean; foreground: boolean; grant: number | null; runMs: number }[] = [];
-    const stopRunning = () => { st.running = false; guardFreeze(); st.observedMs = Math.max(st.observedMs, guardRanMs()); };
-    const runMs = () => st.observedMs;
+    const stopRunning = () => { if (st.running) st.sessionClosed = true; st.running = false; };
+    const schedule = (fn: () => void, when: number) => { const poll = () => (clock >= when ? fn() : setTimeout(poll, 5)); poll(); };
+    const wantsRunning = () => st.armed && !st.paused && !st.offline && !st.lapsed;
+    /** onFrameRunning (client.tsx): the guard's reply. */
+    const onFrameRunning = (data: { grant: number | null; session: number | null; running: boolean; ranMs: number }) => {
+      const replySession = data.session ?? data.grant ?? null;
+      const opensNewSession = data.running === true && (st.sessionGrant === null || st.sessionClosed) && replySession !== null && replySession !== st.sessionGrant;
+      if (!opensNewSession && st.sessionGrant !== null && replySession !== null && replySession !== st.sessionGrant) return;
+      if (data.running === true && wantsRunning() && st.grantSeq !== null && (data.grant === st.grantSeq || replySession === st.sessionGrant || opensNewSession)) {
+        const started = !st.running;
+        if (started) {
+          st.running = true;
+          if (opensNewSession || st.sessionGrant === null) { st.sessionGrant = replySession ?? st.grantSeq; st.observedMs = 0; st.reportedMs = 0; }
+          st.sessionClosed = false;
+        }
+        st.observedMs = Math.max(st.observedMs, data.ranMs);
+        if (started) hb.request();
+      } else {
+        if (st.sessionGrant === null || replySession === st.sessionGrant || replySession === null) st.observedMs = Math.max(st.observedMs, data.ranMs);
+        if (st.running) { stopRunning(); hb.request(); }
+        else if (st.observedMs > st.reportedMs) hb.request(); // the guard's final word after our stop report: flush it
+      }
+    };
+    /** postFrameState (client.tsx) → the guard's message handler (the injected script) → its reply. */
+    const postFrameState = () => {
+      const paused = st.paused || st.offline || st.lapsed || !st.armed;
+      if (paused) stopRunning();
+      const msg = { paused, grant: st.grantSeq, session: st.sessionClosed ? null : st.sessionGrant };
+      const replyAt = opts.frameReplyAt ? opts.frameReplyAt() : clock;
+      if (replyAt === null && !guard.loaded) return; // frame not loaded: no guard, no reply, nothing runs
+      const handle = () => {
+        guard.loaded = true;
+        // The guard: session naming, then freeze/thaw, then its reply with its own measurement.
+        if (msg.session !== null && msg.session !== guard.sessionKey) { guardFreeze(); guard.sessionKey = msg.session; guard.ranMs = 0; if (!paused) guardThaw(); }
+        else if (msg.session === null && !guard.running && guard.sessionKey !== null) guard.sessionKey = null;
+        if (paused) guardFreeze();
+        else { if (guard.sessionKey === null && msg.grant !== null) { guard.sessionKey = msg.grant; guard.ranMs = 0; } guardThaw(); }
+        const reply = { grant: msg.grant, session: guard.sessionKey, running: guard.running, ranMs: guardRanMs() };
+        const delay = opts.guardReplyDelayMs ? opts.guardReplyDelayMs() : 0;
+        schedule(() => onFrameRunning(reply), clock + delay);
+      };
+      schedule(handle, typeof replyAt === "number" ? replyAt : clock);
+    };
     const hb = createHeartbeat<{ status: number; body: { authorizedForMs?: number; billing?: string; grant?: number; consumedSeconds: number }; sentAt: number; input: HeartbeatInput }>({
       intervalMs: 800,
       setTimer: () => 1,
@@ -738,7 +794,9 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
         const foreground = !st.paused;
         const active = foreground && st.running && st.armed && !st.offline && !st.lapsed;
         if (!active) stopRunning();
-        return { active, foreground, paused: st.paused, hidden: false, grant: st.sessionGrant, runMs: runMs() };
+        st.reportedMs = Math.max(st.reportedMs, st.observedMs);
+        st.lastRunMs = st.observedMs;
+        return { active, foreground, paused: st.paused, hidden: false, grant: st.sessionGrant, runMs: st.observedMs };
       },
       send: async (input) => {
         const sentAt = clock;
@@ -764,47 +822,34 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
         return { status, body, sentAt, input };
       },
       onOutcome: ({ status, body, sentAt, input }) => {
-        if (status !== 200) { st.offline = true; st.armed = false; stopRunning(); return; }
+        if (status !== 200) { st.offline = true; st.armed = false; stopRunning(); postFrameState(); return; }
         st.authorizedUntil = sentAt + Math.max(0, body.authorizedForMs ?? 0);
         st.lapsed = clock >= st.authorizedUntil;
         st.armed = Boolean(input.foreground) && !st.lapsed && (body.authorizedForMs ?? 0) > 0;
-        if (st.armed && typeof body.grant === "number") {
-          st.grantSeq = body.grant;
-          // A stop report carrying the final duration has been answered: the next thaw opens a new session (client.tsx).
-          if (!st.running && body.billing !== "running" && !input.active && st.sessionGrant !== null && input.grant === st.sessionGrant) { st.sessionGrant = null; st.observedMs = 0; guard.ranMs = 0; }
-        }
+        if (st.armed && typeof body.grant === "number") st.grantSeq = body.grant;
         if (!st.armed) stopRunning();
         st.offline = false;
-        // postFrameState → the guard replies (if the frame is loaded) → running starts on its word.
-        if (st.armed) {
-          const replyAt = opts.frameReplyAt ? opts.frameReplyAt() : clock;
-          if (replyAt === null) return; // frame not loaded: no reply, nothing runs, nothing is reported running
-          // The guard thaws when the alive message arrives (replyAt) and starts its own clock there.
-          const thaw = () => { if (!guard.running) { guard.running = true; guard.thawedAt = clock; } };
-          const confirm = () => {
-            if (!st.armed || st.paused || st.offline || st.lapsed) return;
-            const started = !st.running;
-            if (st.sessionGrant === null) { st.sessionGrant = st.grantSeq; st.observedMs = 0; }
-            st.running = true;
-            st.observedMs = Math.max(st.observedMs, guardRanMs());
-            if (started) hb.request(); // only the transition reports at once (client.tsx)
-          };
-          const delay = opts.guardReplyDelayMs ? opts.guardReplyDelayMs() : 0;
-          const schedule = (fn: () => void, when: number) => { const poll = () => (clock >= when ? fn() : setTimeout(poll, 5)); poll(); };
-          const thawAt = typeof replyAt === "number" ? replyAt : clock;
-          schedule(() => { thaw(); schedule(confirm, thawAt + delay); }, thawAt);
-        }
+        postFrameState();
       },
     });
-    const pause = () => { st.paused = true; st.armed = false; stopRunning(); hb.request(); };
-    const watchdog = () => { if (st.armed && clock >= st.authorizedUntil) { st.lapsed = true; st.armed = false; stopRunning(); hb.request(); } };
-    /** The actual client.end contract: reason, frameStopped and the wrapper's current observation. */
+    /** applyPlayFlags({ paused: true }) (client.tsx): flags, the frame freeze, then one beat. */
+    const pause = () => { st.paused = true; st.armed = false; postFrameState(); hb.request(); };
+    const watchdog = () => { if (st.armed && clock >= st.authorizedUntil) { st.lapsed = true; st.armed = false; postFrameState(); hb.request(); } };
+    /** leaveAndGo: stopFrame (the guard's stop acknowledgment carries its final measurement) then the real client.end contract. */
     const end = async (reason: string, frameStopped: boolean) => {
       stopRunning();
+      if (frameStopped && guard.loaded) { guardFreeze(); st.observedMs = Math.max(st.observedMs, guardRanMs()); }
       const r = await fetch(`${base}/v1/play/${lid}/end`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ reason, frameStopped, grant: st.sessionGrant, runMs: st.observedMs }) });
       return { status: r.status, body: (await r.json()) as { consumedSeconds: number } };
     };
-    return { hb, st, sends, pause, watchdog, end, guardRanMs };
+    /** Component unmount: the iframe is removed (the guard's pagehide beacon leaves), then cleanup ends with whatever observation it holds. */
+    const unmount = async () => {
+      if (guard.loaded) { guardFreeze(); if (beacons) void beacon(true); }
+      guard.loaded = false;
+      const r = await fetch(`${base}/v1/play/${lid}/end`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ reason: "left", frameStopped: true, grant: st.sessionGrant, runMs: st.observedMs }) });
+      return { status: r.status, body: (await r.json()) as { consumedSeconds: number } };
+    };
+    return { hb, st, sends, pause, watchdog, end, unmount, guardRanMs, beacon: () => beacon(), beaconLog, guard };
   }
 
   async function settle(ms = 60) { await new Promise((r) => setTimeout(r, ms)); }
@@ -1117,7 +1162,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       clock = t0 + 6800;
       await waitFor(() => w.st.running && server.store.loadLease("lease-joined-r12-guard")!.lastActive, "the guard's delayed reply at t6.8");
       equal(w.st.running, true);
-      equal(w.sends.at(-1)!.runMs, 800, "the first running report carries the guard's own 0.8 s, not the wrapper's arrival time");
+      equal(w.sends.at(-1)!.runMs, 0, "the running report carries the guard's measurement AT ITS REPLY (t6: 0), never the wrapper's arrival time");
       clock = t0 + 7600;
       const ended = await w.end("left", true);
       w.hb.stop();
@@ -1160,37 +1205,98 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     }
   });
 
-  it("R12-3 lost running report and tab crash: the frame ran 0→2 on a valid grant, nothing was ever reported — the successor's activation reconciles the bounded window (2) before releasing the reserve: 2 + 898 = 900", async () => {
+  // ---- round 13: observation only — never the authorized maximum; the frame's own beacons; flushed final observations --
+
+  it("R13-1 never-loaded crash: intent → grant, the frame never loads, the tab dies — the successor at t3 settles 0 and gets 900 (a grant proves permission, not execution)", async () => {
     await allowance();
     clock = t0;
-    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-crash", takeover: true, deviceLabel: null, now: at(0) }, client);
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-unload", takeover: true, deviceLabel: null, now: at(0) }, client);
     const { server, base } = await stack();
     try {
-      const a = cred("lease-joined-r12-crash");
-      let holdRunningUntil: number | null | undefined = null; // every running report is lost
-      const w = wrapperModel(base, "lease-joined-r12-crash", a, { holdRunningUntil: () => holdRunningUntil });
-      w.hb.request(); // intent → grant (deadline t2) → guard thaws → running report lost
-      await waitFor(() => w.st.running, "the thaw");
-      equal(w.st.running, true);
-      equal(server.store.loadLease("lease-joined-r12-crash")!.session!.evidenced, false, "no report after the grant");
-      w.hb.stop(); // the tab crashes at t0.5: nothing is ever sent again
-      clock = t0 + 500;
-      // Family side: the child starts on another device at t3; A's reserve was held back.
+      const a = cred("lease-joined-r13-unload");
+      const w = wrapperModel(base, "lease-joined-r13-unload", a, { frameReplyAt: () => null });
+      w.hb.request();
+      await settle();
+      equal(server.store.loadLease("lease-joined-r13-unload")!.session!.measured, undefined, "no running report, no beacon");
+      w.hb.stop(); // crash at t0.5
       clock = t0 + 3000;
-      await endPlayLease({ leaseId: "lease-joined-r12-crash", personId: "santiago", reason: "takeover", now: new Date(clock) }, client);
-      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-crash-b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      await endPlayLease({ leaseId: "lease-joined-r13-unload", personId: "santiago", reason: "takeover", now: new Date(clock) }, client);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-unload-b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
       ok(b.ok);
-      ok(b.lease.budgetSeconds < 900, `A's possible play is reserved (${b.lease.budgetSeconds})`);
-      const successor = await fetch(`${base}/v1/play/lease-joined-r12-crash-b/tick`, { method: "POST", headers: { authorization: `Bearer ${cred("lease-joined-r12-crash-b")}`, "content-type": "application/json" }, body: '{"active":false,"foreground":true}' });
+      const successor = await fetch(`${base}/v1/play/lease-joined-r13-unload-b/tick`, { method: "POST", headers: { authorization: `Bearer ${cred("lease-joined-r13-unload-b")}`, "content-type": "application/json" }, body: '{"active":false,"foreground":true}' });
       ok([200, 409].includes(successor.status));
       await server.settler.flush();
-      const old = server.store.loadLease("lease-joined-r12-crash")!;
+      const old = server.store.loadLease("lease-joined-r13-unload")!;
       equal(old.state, "ended");
-      equal(old.consumed, 2, "reconciled to the window the frame could have run: grant answered at t0, deadline t2");
-      const oldFamily = (await getLease("lease-joined-r12-crash", client))!;
+      equal(old.consumed, 0);
+      equal((await getLease("lease-joined-r13-unload", client))!.consumedSeconds, 0);
+      equal((await getLease("lease-joined-r13-unload-b", client))!.budgetSeconds, 900);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R13-1 lost-answer crash: the grant's answer never reaches the wrapper, the frame never thaws, the tab dies — 0 settled, B gets 900", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-lostans", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r13-lostans");
+      const w = wrapperModel(base, "lease-joined-r13-lostans", a, { deliverAt: () => null });
+      w.hb.request();
+      await settle();
+      ok(server.store.loadLease("lease-joined-r13-lostans")!.session, "the meter handed a grant");
+      equal(w.st.armed, false, "the answer never arrived: nothing armed, nothing thawed");
+      w.hb.stop();
+      clock = t0 + 3000;
+      await endPlayLease({ leaseId: "lease-joined-r13-lostans", personId: "santiago", reason: "takeover", now: new Date(clock) }, client);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-lostans-b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      ok(b.ok);
+      await fetch(`${base}/v1/play/lease-joined-r13-lostans-b/tick`, { method: "POST", headers: { authorization: `Bearer ${cred("lease-joined-r13-lostans-b")}`, "content-type": "application/json" }, body: '{"active":false,"foreground":true}' });
+      await server.settler.flush();
+      equal(server.store.loadLease("lease-joined-r13-lostans")!.consumed, 0);
+      equal((await getLease("lease-joined-r13-lostans", client))!.consumedSeconds, 0);
+      equal((await getLease("lease-joined-r13-lostans-b", client))!.budgetSeconds, 900);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R13-1 lost running report and tab crash, with the frame's beacons: the frame ran 0→2 (thaw beacon, one per second), every wrapper report lost — 2 billed from the frame's own word, B gets 898, total 900", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-crash", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r13-crash");
+      const w = wrapperModel(base, "lease-joined-r13-crash", a, { holdRunningUntil: () => null });
+      w.hb.request(); // intent → grant (deadline t2) → guard thaws (thaw beacon) → running report lost
+      await waitFor(() => w.st.running && server.store.loadLease("lease-joined-r13-crash")!.frame !== null, "the thaw and its beacon");
+      equal(server.store.loadLease("lease-joined-r13-crash")!.frame!.running, true);
+      clock = t0 + 1000;
+      await w.beacon();
+      equal(server.store.loadLease("lease-joined-r13-crash")!.consumed, 1);
+      clock = t0 + 2000;
+      await w.beacon(); // the last word before the crash (the frame froze itself at its deadline t2)
+      equal(server.store.loadLease("lease-joined-r13-crash")!.consumed, 2);
+      w.hb.stop(); // crash
+      clock = t0 + 3000;
+      await endPlayLease({ leaseId: "lease-joined-r13-crash", personId: "santiago", reason: "takeover", now: new Date(clock) }, client);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-crash-b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      ok(b.ok);
+      const successor = await fetch(`${base}/v1/play/lease-joined-r13-crash-b/tick`, { method: "POST", headers: { authorization: `Bearer ${cred("lease-joined-r13-crash-b")}`, "content-type": "application/json" }, body: '{"active":false,"foreground":true}' });
+      ok([200, 409].includes(successor.status));
+      await server.settler.flush();
+      const old = server.store.loadLease("lease-joined-r13-crash")!;
+      equal(old.state, "ended");
+      equal(old.consumed, 2, "what the frame reported, nothing inferred on top");
+      const oldFamily = (await getLease("lease-joined-r13-crash", client))!;
       equal(oldFamily.consumedSeconds, 2);
       equal(oldFamily.finalSettled, true);
-      const next = (await getLease("lease-joined-r12-crash-b", client))!;
+      const next = (await getLease("lease-joined-r13-crash-b", client))!;
       equal(next.budgetSeconds, 898);
       equal(oldFamily.consumedSeconds + next.budgetSeconds, 900);
     } finally {
@@ -1199,30 +1305,197 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     }
   });
 
-  it("R12-3 control: an alive wrapper whose frame never ran reports exactly that and is never reconciled — 0 billed, B gets 900", async () => {
+  it("R13-2 intent retry, then the frame runs 0.5→2.5 on the second grant with every wrapper report lost, then a crash — the frame's beacons bill 2, B gets 898", async () => {
     await allowance();
     clock = t0;
-    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-alive", takeover: true, deviceLabel: null, now: at(0) }, client);
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-retry", takeover: true, deviceLabel: null, now: at(0) }, client);
     const { server, base } = await stack();
     try {
-      const a = cred("lease-joined-r12-alive");
-      const w = wrapperModel(base, "lease-joined-r12-alive", a, { frameReplyAt: () => null });
+      const a = cred("lease-joined-r13-retry");
+      let frameReplyAt: number | null | undefined = null; // the frame is not loaded for the first grant
+      const w = wrapperModel(base, "lease-joined-r13-retry", a, { frameReplyAt: () => frameReplyAt, holdRunningUntil: () => null });
+      w.hb.request(); // intent t0 → grant 1; the frame answers nothing
+      await settle();
+      clock = t0 + 500;
+      frameReplyAt = t0 + 500; // the frame is loaded now: the retry's grant thaws it at t0.5
+      w.hb.request(); // intent retry t0.5 → grant 2 (same session)
+      await waitFor(() => w.st.running && server.store.loadLease("lease-joined-r13-retry")!.frame !== null, "the thaw at t0.5");
+      equal(w.st.sessionGrant, 2);
+      clock = t0 + 1500;
+      await w.beacon();
+      clock = t0 + 2500;
+      await w.beacon();
+      equal(server.store.loadLease("lease-joined-r13-retry")!.consumed, 2);
+      w.hb.stop(); // crash
+      clock = t0 + 3000;
+      await endPlayLease({ leaseId: "lease-joined-r13-retry", personId: "santiago", reason: "takeover", now: new Date(clock) }, client);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-retry-b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      ok(b.ok);
+      await fetch(`${base}/v1/play/lease-joined-r13-retry-b/tick`, { method: "POST", headers: { authorization: `Bearer ${cred("lease-joined-r13-retry-b")}`, "content-type": "application/json" }, body: '{"active":false,"foreground":true}' });
+      await server.settler.flush();
+      equal(server.store.loadLease("lease-joined-r13-retry")!.consumed, 2);
+      equal((await getLease("lease-joined-r13-retry", client))!.consumedSeconds, 2);
+      equal((await getLease("lease-joined-r13-retry-b", client))!.budgetSeconds, 898);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R13-3 the real pause: the stop report leaves with the previous observation (2400), the guard's final reply (2600) arrives after it — the wrapper flushes it as a follow-up report, 2.6 billed, B gets 897 (no beacons: the wrapper-side flush alone)", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-pause", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r13-pause");
+      let guardDelay = 0;
+      const w = wrapperModel(base, "lease-joined-r13-pause", a, { guardReplyDelayMs: () => guardDelay, beacons: false });
+      w.hb.request();
+      await waitFor(() => w.st.running, "the thaw at t0");
+      for (const t of [800, 1600, 2400]) { clock = t0 + t; w.hb.request(); await settle(); }
+      // A renewal carries the guard's measurement as of its last reply (the reply to the previous answer): one beat behind.
+      equal(w.sends.at(-1)!.runMs, 1600);
+      equal(server.store.loadLease("lease-joined-r13-pause")!.consumed, 1.6);
+      equal(w.st.observedMs, 2400, "the reply to the t2.4 answer brought 2400");
+      clock = t0 + 2600;
+      guardDelay = 100; // the guard freezes at t2.6; its reply reaches the wrapper at t2.7
+      w.pause();
+      await settle();
+      const stop = w.sends.find((x) => x.at === 2.6 && !x.active)!;
+      equal(stop.runMs, 2400, "the stop report carries the PREVIOUS observation (the guard has not replied yet)");
+      clock = t0 + 2700;
+      await waitFor(() => w.sends.some((x) => x.at === 2.7 && !x.active && x.runMs === 2600), "the flush report with the guard's final 2600");
+      await waitFor(() => server.store.loadLease("lease-joined-r13-pause")!.consumed === 2.6, "the meter applied the flush to the closed session");
+      clock = t0 + 3000;
+      const ended = await w.end("left", true);
+      w.hb.stop();
+      equal(ended.body.consumedSeconds, 2.6);
+      await server.settler.flush();
+      equal((await getLease("lease-joined-r13-pause", client))!.consumedSeconds, 3, "terminal report rounds up");
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-pause-b", takeover: true, deviceLabel: null, now: at(3) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 897);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R13-3 pause then resume: the flushed observation of the closed session survives the next session (the guard restarts its counter, the wrapper adopts the new session), totals add up", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-resume", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r13-resume");
+      let guardDelay = 0;
+      const w = wrapperModel(base, "lease-joined-r13-resume", a, { guardReplyDelayMs: () => guardDelay, beacons: false });
+      w.hb.request();
+      await waitFor(() => w.st.running, "the thaw at t0");
+      clock = t0 + 800; w.hb.request(); await settle();
+      clock = t0 + 1000;
+      guardDelay = 100;
+      w.pause(); // the guard freezes at t1.0 (final 1000); the stop report carries 800
+      await settle();
+      clock = t0 + 1100;
+      await waitFor(() => server.store.loadLease("lease-joined-r13-resume")!.consumed === 1, "the flush");
+      const first = w.st.sessionGrant;
+      // Resume at t2: a new grant, the guard starts a new counter, the wrapper adopts the new session.
+      clock = t0 + 2000;
+      guardDelay = 0;
+      w.st.paused = false;
+      w.hb.request();
+      await waitFor(() => w.st.running && w.st.sessionGrant !== first, "the new session");
+      equal(w.st.observedMs, 0, "the new session's counter started at zero");
+      clock = t0 + 2500; w.hb.request(); await settle();
+      equal(w.st.observedMs, 500, "the guard's reply to the t2.5 answer");
+      clock = t0 + 3000; w.hb.request(); await settle();
+      equal(server.store.loadLease("lease-joined-r13-resume")!.consumed, 1.5, "1.0 (flushed) + 0.5 reported at t3");
+      const ended = await w.end("left", true);
+      w.hb.stop();
+      equal(ended.body.consumedSeconds, 2);
+      await server.settler.flush();
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-resume-b", takeover: true, deviceLabel: null, now: at(3) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 898);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R13-3 unmount: the frame is removed with a stale wrapper observation (800 of 1254 ms run) — the frame's pagehide beacon carries the final 1254 and the end is finalized on it, whether the beacon or the end arrives first", async () => {
+    for (const order of ["beacon-first", "end-first"] as const) {
+      await allowance();
+      clock = t0;
+      const lid = `lease-joined-r13-um-${order === "beacon-first" ? "a" : "b"}`;
+      await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: lid, takeover: true, deviceLabel: null, now: at(0) }, client);
+      const { server, base } = await stack();
+      try {
+        const a = cred(lid);
+        const w = wrapperModel(base, lid, a, { beacons: false });
+        w.hb.request();
+        await waitFor(() => w.st.running, "the thaw at t0");
+        clock = t0 + 800; w.hb.request(); await settle();
+        equal(w.st.observedMs, 800);
+        clock = t0 + 1254;
+        // The guard's pagehide beacon (sendBeacon with the credential in the query) and the cleanup's end with the stale 800.
+        w.guard.ranMs = w.guardRanMs(); w.guard.running = false;
+        const beaconBody = JSON.stringify({ grant: w.st.sessionGrant, session: w.st.sessionGrant, ranMs: 1254, running: false });
+        const sendBeacon = () => fetch(`${base}/v1/play/${lid}/frame?credential=${encodeURIComponent(a)}`, { method: "POST", headers: { "content-type": "application/json" }, body: beaconBody });
+        const sendEnd = () => fetch(`${base}/v1/play/${lid}/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: JSON.stringify({ reason: "left", frameStopped: true, grant: w.st.sessionGrant, runMs: 800 }) });
+        let ended: Response;
+        if (order === "beacon-first") {
+          // The running beacon at thaw told the meter the frame runs; the pagehide beacon lands before the end.
+          await fetch(`${base}/v1/play/${lid}/frame`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: JSON.stringify({ grant: w.st.sessionGrant, session: w.st.sessionGrant, ranMs: 0, running: true }) });
+          await sendBeacon();
+          ended = await sendEnd();
+        } else {
+          await fetch(`${base}/v1/play/${lid}/frame`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: JSON.stringify({ grant: w.st.sessionGrant, session: w.st.sessionGrant, ranMs: 0, running: true }) });
+          const endP = sendEnd(); // arrives first: the frame's last word was "running", so the end waits for its final beacon
+          await new Promise((r) => setTimeout(r, 80));
+          equal(server.store.loadLease(lid)!.state, "active", "not finalized yet");
+          await sendBeacon();
+          ended = await endP;
+        }
+        w.hb.stop();
+        equal(((await ended.json()) as { consumedSeconds: number }).consumedSeconds, 1.254, `${order}: the frame's final observation, not the stale 0.8`);
+        await server.settler.flush();
+        equal((await getLease(lid, client))!.consumedSeconds, 2, "terminal report rounds up");
+        const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: `${lid}-b`, takeover: true, deviceLabel: null, now: at(2) }, client);
+        ok(b.ok);
+        equal(b.lease.budgetSeconds, 898);
+      } finally {
+        server.settler.stop();
+        await new Promise((r) => server.close(r));
+      }
+    }
+  });
+
+  it("R13-1 control: an alive wrapper whose frame never ran keeps reporting intent — 0 billed, B gets 900", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-alive", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r13-alive");
+      const w = wrapperModel(base, "lease-joined-r13-alive", a, { frameReplyAt: () => null });
       w.hb.request();
       await settle();
       clock = t0 + 800;
       w.hb.request(); // the wrapper keeps reporting intent: the frame never confirmed running
       await settle();
-      equal(server.store.loadLease("lease-joined-r12-alive")!.session!.evidenced, true);
       clock = t0 + 3000;
-      await endPlayLease({ leaseId: "lease-joined-r12-alive", personId: "santiago", reason: "takeover", now: new Date(clock) }, client);
-      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-alive-b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      await endPlayLease({ leaseId: "lease-joined-r13-alive", personId: "santiago", reason: "takeover", now: new Date(clock) }, client);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r13-alive-b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
       ok(b.ok);
-      await fetch(`${base}/v1/play/lease-joined-r12-alive-b/tick`, { method: "POST", headers: { authorization: `Bearer ${cred("lease-joined-r12-alive-b")}`, "content-type": "application/json" }, body: '{"active":false,"foreground":true}' });
+      await fetch(`${base}/v1/play/lease-joined-r13-alive-b/tick`, { method: "POST", headers: { authorization: `Bearer ${cred("lease-joined-r13-alive-b")}`, "content-type": "application/json" }, body: '{"active":false,"foreground":true}' });
       w.hb.stop();
       await server.settler.flush();
-      equal(server.store.loadLease("lease-joined-r12-alive")!.consumed, 0);
-      equal((await getLease("lease-joined-r12-alive", client))!.consumedSeconds, 0);
-      equal((await getLease("lease-joined-r12-alive-b", client))!.budgetSeconds, 900);
+      equal(server.store.loadLease("lease-joined-r13-alive")!.consumed, 0);
+      equal((await getLease("lease-joined-r13-alive", client))!.consumedSeconds, 0);
+      equal((await getLease("lease-joined-r13-alive-b", client))!.budgetSeconds, 900);
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));
