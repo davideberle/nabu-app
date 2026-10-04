@@ -346,6 +346,70 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   await shot(p2, "tablet-04-games-isabel");
   await ctx.close();
 }
+// ---------------------------------------------------------------------------
+// Wrapper heartbeat race (review round 3): the REAL wrapper against routed Family/Studio responses,
+// with held and out-of-order tick responses and an inert frame. Mirrors parent/round3-evidence/home/wrapper-race.mjs.
+// ---------------------------------------------------------------------------
+{
+  const ctx = await browser.newContext({ viewport: { width: 1024, height: 768 }, baseURL: base });
+  await ctx.addCookies([{ name: COOKIE, value: assistant.split("=").slice(1).join("="), url: base }]);
+  const page = await ctx.newPage();
+  const calls = [];
+  const held = [];
+  let auto = false;
+  const reply = (route, status, body) => route.fulfill({ status, contentType: "application/json", body: JSON.stringify(body) });
+  const tickBody = (remaining) => ({ leaseId: "lease-race-wrapper1", phase: "playing", remainingSeconds: remaining, consumedSeconds: 900 - remaining, graceRemainingSeconds: null, warn: false, ended: false, endReason: null });
+  const mockStudio = `${base}/mock-studio`;
+  await page.route("**/api/family/games/session", (route) => reply(route, 200, { child: "santiago", token: "synthetic-browser-token", expiresAt: Date.now() + 3600000, studio: { url: mockStudio, token: "synthetic-studio-token", expiresAt: Date.now() + 3600000 } }));
+  await page.route("**/api/family/play/leases", (route) => reply(route, 201, { child: "santiago", lease: { id: "lease-race-wrapper1", personId: "santiago", gameId: SNAKE, mode: "play", metered: true, budgetSeconds: 900 }, replaced: null, remainingSeconds: 900, warnSeconds: 120, graceSeconds: 30, studio: { url: mockStudio, token: "synthetic-studio-token", expiresAt: Date.now() + 3600000 } }));
+  await page.route("**/api/family/play/leases/*/release", (route) => reply(route, 200, { ok: true, ended: true }));
+  await page.route("**/mock-studio/**", async (route) => {
+    const url = route.request().url();
+    if (url.endsWith("/tick")) {
+      calls.push({ at: Date.now(), body: route.request().postDataJSON() });
+      if (auto) await reply(route, 200, tickBody(690));
+      else held.push(route);
+    } else if (url.includes("index.html")) {
+      await route.fulfill({ status: 200, contentType: "text/html", body: "<html><body>Synthetic inert game<script>window.pings=[];window.addEventListener('message',e=>window.pings.push(e.data))</script></body></html>" });
+    } else await reply(route, 200, {});
+  });
+  await page.goto(`/family/games/play?child=santiago&game=${SNAKE}`);
+  await page.getByRole("button", { name: "⏸ Pause", exact: true }).waitFor({ timeout: 15000 });
+  while (held.length < 1) await page.waitForTimeout(25);
+  await page.getByRole("button", { name: "⏸ Pause", exact: true }).click();
+  await page.getByRole("dialog", { name: "Paused" }).waitFor();
+  await page.getByRole("dialog", { name: "Paused" }).getByRole("button", { name: /Continue/ }).click();
+  await page.waitForTimeout(300);
+  record("W-01", "pause + continue while the first tick is pending keep exactly ONE request in flight (coalesced)", held.length === 1 && calls.length === 1, `${calls.length} requests, ${held.length} held`);
+  // The first (and only) in-flight tick now fails: Reconnecting must show and the frame must be told to freeze.
+  await reply(held.shift(), 503, { error: "latest request failed" });
+  await page.getByRole("dialog", { name: "Reconnecting" }).waitFor({ timeout: 5000 });
+  // Its follow-up (coalesced) tick is issued; hold it, then answer with a stale-looking success. Since it is the ONLY
+  // in-flight request it is legitimately the newest — there is no older response left to clear a newer failure.
+  while (held.length < 1) await page.waitForTimeout(25);
+  record("W-02", "after a failure the wrapper issues exactly one retry, not three", held.length === 1 && calls.length === 2, `${calls.length} requests`);
+  const frame = page.frames().find((f) => f.url().includes("/mock-studio/"));
+  const pingsDuringOffline = await frame.evaluate(() => window.pings.filter((p) => p.type === "family-play:alive").map((p) => ({ paused: p.paused, reason: p.reason })));
+  record("W-03", "while offline every heartbeat to the frame says paused (frozen), none playable", pingsDuringOffline.length > 0 && pingsDuringOffline.slice(-1)[0].paused === true, JSON.stringify(pingsDuringOffline.slice(-2)));
+  await reply(held.shift(), 200, tickBody(800));
+  await page.waitForTimeout(300);
+  record("W-04", "the newest response governs: reconnecting clears and the clock shows ITS value, never a stale 900", (await page.getByRole("dialog", { name: "Reconnecting" }).count()) === 0 && (await page.locator("header [data-remaining-seconds]").getAttribute("data-remaining-seconds")) === "800");
+  auto = true;
+  const before = calls.length;
+  await page.waitForTimeout(11000);
+  const after = calls.length - before;
+  record("W-05", "exactly one heartbeat loop survives (≈2 ticks in 11 s at a 5 s cadence, not 6+)", after >= 1 && after <= 3, `${after} ticks in 11 s`);
+  await page.getByRole("button", { name: "⏸ Pause", exact: true }).click();
+  await page.waitForTimeout(200);
+  const lastPing = await frame.evaluate(() => window.pings.filter((p) => p.type === "family-play:alive").slice(-1)[0]);
+  record("W-06", "pausing freezes the frame synchronously before any heartbeat answer", lastPing && lastPing.paused === true, JSON.stringify(lastPing));
+  await page.getByRole("link", { name: /Games/ }).first().click();
+  await page.waitForTimeout(6000);
+  const afterLeave = calls.length;
+  await page.waitForTimeout(6000);
+  record("W-07", "leaving the game stops the loop: no heartbeats after unmount", calls.length === afterLeave, `${calls.length - afterLeave} late ticks`);
+  await ctx.close();
+}
 await browser.close();
 
 const summary = { base, at: new Date().toISOString(), total: results.length, passed: results.filter((r) => r.ok).length, failed: results.filter((r) => !r.ok).map((r) => r.id), results };

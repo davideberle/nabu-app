@@ -88,7 +88,7 @@ export async function ensurePlayTables(client: Db): Promise<void> {
       reserve_seconds  INTEGER NOT NULL DEFAULT 0
     )
   `);
-  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0", "cap_seconds INTEGER", "final_settled INTEGER NOT NULL DEFAULT 0", "activated_at TEXT"]) {
+  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0", "cap_seconds INTEGER", "final_settled INTEGER NOT NULL DEFAULT 0", "activated_at TEXT", "measured_at TEXT"]) {
     try {
       await client.execute(`ALTER TABLE family_play_leases ADD COLUMN ${column}`);
     } catch {
@@ -162,6 +162,7 @@ function rowToLease(row: Record<string, unknown>): PlayLease {
     capSeconds: row["cap_seconds"] === null || row["cap_seconds"] === undefined ? Number(row["budget_seconds"]) : Number(row["cap_seconds"]),
     finalSettled: Number(row["final_settled"] ?? 0) === 1,
     activatedAt: (row["activated_at"] as string | null) ?? null,
+    measuredAt: (row["measured_at"] as string | null) ?? null,
   };
 }
 
@@ -190,18 +191,30 @@ function rowToPurchase(row: Record<string, unknown>): PlayPurchase {
  * learns it was never activated, see `recordLeaseActivation`). No expiry:
  * allowance is conserved across every unresolved lease, however old.
  */
-export function outstandingSeconds(lease: Pick<PlayLease, "metered" | "budgetSeconds" | "capSeconds" | "consumedSeconds" | "finalSettled" | "lastSettledAt" | "issuedAt" | "state" | "endedAt">, now: Date): number {
+/**
+ * The measurement watermark: the meter's own time of the last reading that
+ * advanced this lease (`measured_at`, carried in the signed report), falling
+ * back to the issue time. Arrival time is never used — a delayed or duplicate
+ * report would otherwise pretend the meter had measured up to its arrival.
+ */
+function measurementWatermark(lease: Pick<PlayLease, "measuredAt" | "issuedAt">): number {
+  const measured = lease.measuredAt ? Date.parse(lease.measuredAt) : Number.NaN;
+  const issued = Date.parse(lease.issuedAt);
+  return Number.isFinite(measured) ? Math.max(measured, Number.isFinite(issued) ? issued : measured) : issued;
+}
+
+export function outstandingSeconds(lease: Pick<PlayLease, "metered" | "budgetSeconds" | "capSeconds" | "consumedSeconds" | "finalSettled" | "measuredAt" | "issuedAt" | "state" | "endedAt">, now: Date): number {
   if (!lease.metered || lease.finalSettled) return 0;
   if (lease.state === "ended") return Math.max(0, Math.min(lease.capSeconds, lease.budgetSeconds) - lease.consumedSeconds);
-  const since = Date.parse(lease.lastSettledAt ?? lease.issuedAt);
+  const since = measurementWatermark(lease);
   const elapsed = Number.isFinite(since) ? Math.max(0, Math.ceil((now.getTime() - since) / 1000)) : LEASE_STALE_SECONDS;
   return Math.max(0, Math.min(lease.budgetSeconds - lease.consumedSeconds, elapsed));
 }
 
-/** Freeze the cap of a lease Family is ending now: consumed so far plus what its meter may lawfully still report. */
-export function endedCapSeconds(lease: Pick<PlayLease, "metered" | "budgetSeconds" | "consumedSeconds" | "lastSettledAt" | "issuedAt">, now: Date): number {
+/** Freeze the cap of a lease Family is ending now: consumed so far plus what its meter may lawfully still report since its last MEASUREMENT. */
+export function endedCapSeconds(lease: Pick<PlayLease, "metered" | "budgetSeconds" | "consumedSeconds" | "measuredAt" | "issuedAt">, now: Date): number {
   if (!lease.metered) return 0;
-  const since = Date.parse(lease.lastSettledAt ?? lease.issuedAt);
+  const since = measurementWatermark(lease);
   const elapsed = Number.isFinite(since) ? Math.max(0, Math.ceil((now.getTime() - since) / 1000)) : LEASE_STALE_SECONDS;
   return Math.max(lease.consumedSeconds, Math.min(lease.budgetSeconds, lease.consumedSeconds + elapsed));
 }
@@ -453,6 +466,21 @@ export async function refundPlayPurchase(
             WHERE person_id = ?`,
       args: [purchase.grantedSeconds, at, purchase.personId],
     });
+    // The withdrawn grant must not stay usable: live budgets are re-derived at
+    // once, and an active lease left with no room is ended and capped here, in
+    // the same transaction — the meter learns on its next authority check.
+    await reconcileActiveBudgets(tx, purchase.personId, input.now ?? new Date());
+    const live = await tx.execute({ sql: "SELECT * FROM family_play_leases WHERE person_id = ? AND state = 'active' AND metered = 1", args: [purchase.personId] });
+    for (const row of live.rows) {
+      const lease = rowToLease(row as Record<string, unknown>);
+      if (lease.budgetSeconds <= lease.consumedSeconds) {
+        await tx.execute({
+          sql: "UPDATE family_play_leases SET state = 'ended', ended_at = ?, end_reason = 'refunded', cap_seconds = consumed_seconds, budget_seconds = consumed_seconds WHERE id = ? AND state = 'active'",
+          args: [at, lease.id],
+        });
+      }
+    }
+    await reconcileActiveBudgets(tx, purchase.personId, input.now ?? new Date());
     await tx.commit();
     return { ok: true, purchase: { ...purchase, state: "refunded", refundedAt: at, refundReason: input.reason } };
   } catch (error) {
@@ -521,6 +549,7 @@ export async function issuePlayLease(
       capSeconds: metered ? Math.max(0, remaining - reserve) : 0,
       finalSettled: !metered,
       activatedAt: null,
+      measuredAt: null,
     };
     await tx.execute({
       sql: `INSERT INTO family_play_leases
@@ -560,7 +589,7 @@ export type SettleOutcome =
  * recomputed from the predecessor's actual, now-known consumption (GP-03/07).
  */
 export async function settlePlayLease(
-  input: { leaseId: string; consumedSeconds: number; end: boolean; endReason?: string | null; now?: Date },
+  input: { leaseId: string; consumedSeconds: number; end: boolean; endReason?: string | null; measuredAt?: number | string | null; now?: Date },
   client?: Client,
 ): Promise<SettleOutcome> {
   const db = client ?? (await getDb());
@@ -576,6 +605,8 @@ export async function settlePlayLease(
     // Bounded by the frozen cap of an ended lease, then by what the allowance
     // can still give without touching the live budgets of other active
     // leases: excess is refused (recorded), never absorbed by saturating totals.
+    const requested = Number.isFinite(input.consumedSeconds) ? Math.floor(input.consumedSeconds) : 0;
+    const requestedDelta = Math.max(0, requested - lease.consumedSeconds);
     const applied = applySettlement({ ...lease, budgetSeconds: Math.min(lease.budgetSeconds, lease.capSeconds) }, input.consumedSeconds);
     let delta = applied.delta;
     let consumedNext = applied.consumedSeconds;
@@ -591,15 +622,22 @@ export async function settlePlayLease(
     }
     const ends = input.end || (lease.metered && consumedNext >= Math.min(lease.budgetSeconds, lease.capSeconds));
     const finalReport = input.end === true;
+    // The watermark moves only with a reading that advances consumption, and only
+    // to the meter's own measurement time (bounded by now) — never on a duplicate
+    // or reordered report, never to the arrival time.
+    const measuredMs = typeof input.measuredAt === "number" ? input.measuredAt : typeof input.measuredAt === "string" ? Date.parse(input.measuredAt) : Number.NaN;
+    const nowMs = Date.parse(at);
+    const watermarkCandidate = delta > 0 && Number.isFinite(measuredMs) ? Math.min(measuredMs, nowMs) : null;
+    const nextMeasuredAt = watermarkCandidate !== null && watermarkCandidate > measurementWatermark(lease) ? new Date(watermarkCandidate).toISOString() : lease.measuredAt;
     await tx.execute({
-      sql: `UPDATE family_play_leases SET consumed_seconds = ?, last_settled_at = ?,
+      sql: `UPDATE family_play_leases SET consumed_seconds = ?, last_settled_at = ?, measured_at = ?,
               state = CASE WHEN ? THEN 'ended' ELSE state END,
               ended_at = CASE WHEN ? AND ended_at IS NULL THEN ? ELSE ended_at END,
               end_reason = CASE WHEN ? AND end_reason IS NULL THEN ? ELSE end_reason END,
               final_settled = CASE WHEN ? THEN 1 ELSE final_settled END,
               cap_seconds = CASE WHEN ? THEN ? ELSE cap_seconds END
             WHERE id = ?`,
-      args: [consumedNext, at, ends ? 1 : 0, ends ? 1 : 0, at, ends ? 1 : 0, input.endReason ?? (applied.exhausted ? "exhausted" : "ended"), finalReport ? 1 : 0, finalReport ? 1 : 0, consumedNext, lease.id],
+      args: [consumedNext, at, nextMeasuredAt, ends ? 1 : 0, ends ? 1 : 0, at, ends ? 1 : 0, input.endReason ?? (applied.exhausted ? "exhausted" : "ended"), finalReport ? 1 : 0, finalReport ? 1 : 0, consumedNext, lease.id],
     });
     if (delta > 0) {
       await tx.execute({
@@ -616,7 +654,8 @@ export async function settlePlayLease(
     const allowance = await readAllowance(tx, lease.personId);
     const updated = await readLease(tx, lease.id);
     await tx.commit();
-    return { ok: true, lease: updated!, remainingSeconds: allowanceRemaining(allowance), delta, budgetSeconds: updated!.budgetSeconds, state: updated!.state, endReason: updated!.endReason, refusedSeconds: applied.delta - delta };
+    // Every second the meter reported beyond what was accepted — cap truncation and allowance clamping alike — is surfaced.
+    return { ok: true, lease: updated!, remainingSeconds: allowanceRemaining(allowance), delta, budgetSeconds: updated!.budgetSeconds, state: updated!.state, endReason: updated!.endReason, refusedSeconds: requestedDelta - delta };
   } catch (error) {
     try {
       await tx.rollback();

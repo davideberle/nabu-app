@@ -31,6 +31,7 @@ import type { ChildId } from "@/lib/family-assistant-turn";
 import { childShellDestinationHref, guardedPlayHref } from "@/lib/family-child-shell";
 import { createGamesClient, deviceLabel, newIdempotencyKey, type LeaseGrant, type StudioAccess, type TickView } from "@/lib/family-games-client";
 import { PLAY_BLOCK_COINS, PLAY_BLOCK_SECONDS, formatPlayClock, isFreeGame } from "@/lib/family-play";
+import { createHeartbeat } from "@/lib/family-play-heartbeat";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -111,85 +112,97 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
   }, [child, client]);
 
   // ---- visibility ---------------------------------------------------------
+  /** Apply a pause/hidden change synchronously (ref first, so the frame freeze and the next beat see it), then beat once. */
+  const applyPlayFlags = useCallback((flags: { paused?: boolean; hidden?: boolean }) => {
+    const current = phaseRef.current;
+    if (current.kind !== "playing") return;
+    const next = { ...current, ...flags };
+    phaseRef.current = next;
+    setPhase(next);
+    frameStateRef.current?.(next.tick?.phase ?? "playing", next.tick?.remainingSeconds ?? 0, false);
+    beatRef.current?.();
+  }, []);
   useEffect(() => {
-    const onVisibility = () => {
-      setPhase((p) => (p.kind === "playing" ? { ...p, hidden: document.visibilityState === "hidden" } : p));
-      window.setTimeout(() => { frameStateRef.current?.("visibility", 0, false); beatRef.current?.(); }, 0);
-    };
+    const onVisibility = () => applyPlayFlags({ hidden: document.visibilityState === "hidden" });
     document.addEventListener("visibilitychange", onVisibility);
     return () => document.removeEventListener("visibilitychange", onVisibility);
-  }, []);
-  // Any pause/continue/offline change is pushed into the frame at once.
-  useEffect(() => {
-    if (phase.kind !== "playing") return;
-    frameStateRef.current?.(phase.tick?.phase ?? "playing", phase.tick?.remainingSeconds ?? 0, false);
-  }, [phase.kind === "playing" ? `${phase.paused}|${phase.hidden}|${phase.offline}` : "x"]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [applyPlayFlags]);
 
   // ---- heartbeat ----------------------------------------------------------
+  // One controller per lease: single-flight, coalesced, fenced outcomes, one
+  // timer (GP-04/05/07). Pause/visibility/offline changes freeze the frame
+  // synchronously and ask for ONE follow-up beat; a stale success can never
+  // clear a newer failure or raise the clock, and leaving the page stops
+  // every pending callback.
   useEffect(() => {
     if (phase.kind !== "playing") return;
     const { studio, grant } = phase;
-    let cancelled = false;
-    let timer: number | null = null;
-    const beat = async () => {
-      const current = phaseRef.current;
-      if (cancelled || current.kind !== "playing") return;
-      const active = !current.paused && !current.hidden;
-      const outcome = await client.tick(studio, grant.lease.id, { active, hidden: current.hidden, paused: current.paused });
-      if (cancelled) return;
-      if (!outcome.ok) {
-        if (outcome.failure === "no-allowance" || outcome.status === 410 || outcome.status === 404 || outcome.status === 401) {
-          const detail = outcome.detail as { endReason?: string; remainingSeconds?: number; ended?: boolean } | undefined;
-          const reason = detail?.endReason === "replaced" || detail?.endReason === "revoked" ? "replaced" : detail?.endReason === "credential-expired" || outcome.status === 401 ? "expired" : "exhausted";
-          setPhase({ kind: "ended", reason, remaining: detail?.remainingSeconds ?? null });
-          void client.release(child, grant.lease.id, detail?.endReason ?? "ended");
-          return;
-        }
-        // Meter unreachable: fail closed — suspend play; nothing is counted meanwhile.
-        setPhase((p) => (p.kind === "playing" ? { ...p, offline: true } : p));
-        window.setTimeout(() => frameStateRef.current?.("offline", 0, false), 0);
-      } else {
-        const tick = outcome.value;
-        if (tick.ended || tick.phase === "exhausted") {
-          postFrameState("exhausted", 0, true);
-          setPhase({ kind: "ended", reason: tick.endReason === "replaced" ? "replaced" : "exhausted", remaining: tick.remainingSeconds });
-          void client.release(child, grant.lease.id, tick.endReason ?? "exhausted");
-          return;
-        }
-        setPhase((p) => (p.kind === "playing" ? { ...p, tick, offline: false } : p));
-        postFrameState(tick.phase, tick.remainingSeconds, false);
-      }
-      timer = window.setTimeout(beat, TICK_MS);
-    };
-    /**
-     * Frame handshake: tells the guarded page it is inside the wrapper and
-     * whether gameplay must be frozen (pause, hidden tab, meter unreachable).
-     * The injected guard stops the game loop, timers, audio and input on
-     * `paused` — enforcement in the frame, not only an overlay above it.
-     */
+    const leaseId = grant.lease.id;
+    const origin = new URL(studio.url).origin;
     const postFrameState = (phaseName: string, remainingSeconds: number, ended: boolean) => {
       const current = phaseRef.current;
-      const paused = current.kind === "playing" ? current.paused || current.hidden || current.offline : false;
-      const reason = current.kind === "playing" && current.offline ? "offline" : current.kind === "playing" && current.hidden ? "hidden" : "paused";
+      const live = current.kind === "playing" && current.grant.lease.id === leaseId;
+      const paused = live ? current.paused || current.hidden || current.offline : true;
+      const reason = live && current.offline ? "offline" : live && current.hidden ? "hidden" : "paused";
       try {
-        frameRef.current?.contentWindow?.postMessage({ type: FRAME_PING_TYPE, leaseId: grant.lease.id, remainingSeconds, phase: phaseName, paused, reason, ended }, new URL(studio.url).origin);
+        frameRef.current?.contentWindow?.postMessage({ type: FRAME_PING_TYPE, leaseId, remainingSeconds, phase: phaseName, paused, reason, ended }, origin);
       } catch {
         /* frame not ready */
       }
     };
     frameStateRef.current = postFrameState;
-    beatRef.current = () => {
-      if (timer !== null) window.clearTimeout(timer);
-      timer = null;
-      void beat();
-    };
-    void beat();
+
+    type Outcome = Awaited<ReturnType<typeof client.tick>>;
+    const heartbeat = createHeartbeat<Outcome>({
+      intervalMs: TICK_MS,
+      input: () => {
+        const current = phaseRef.current;
+        const live = current.kind === "playing" && current.grant.lease.id === leaseId;
+        const paused = live ? current.paused : true;
+        const hidden = live ? current.hidden : true;
+        return { active: live && !paused && !hidden, hidden, paused };
+      },
+      send: (input) => client.tick(studio, leaseId, input),
+      onOutcome: (outcome) => {
+        const current = phaseRef.current;
+        if (current.kind !== "playing" || current.grant.lease.id !== leaseId) return;
+        if (!outcome.ok) {
+          if (outcome.failure === "no-allowance" || outcome.status === 410 || outcome.status === 404 || outcome.status === 401) {
+            const detail = outcome.detail as { endReason?: string; remainingSeconds?: number; ended?: boolean } | undefined;
+            const reason = detail?.endReason === "replaced" || detail?.endReason === "revoked" || detail?.endReason === "superseded" ? "replaced" : detail?.endReason === "credential-expired" || outcome.status === 401 ? "expired" : "exhausted";
+            postFrameState("exhausted", 0, true);
+            heartbeat.stop();
+            setPhase({ kind: "ended", reason, remaining: detail?.remainingSeconds ?? null });
+            void client.release(child, leaseId, detail?.endReason ?? "ended");
+            return;
+          }
+          // Meter unreachable or refusing: fail closed — freeze the frame NOW, count nothing, keep retrying.
+          setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, offline: true } : p));
+          phaseRef.current = current.kind === "playing" ? { ...current, offline: true } : current;
+          postFrameState("offline", current.tick?.remainingSeconds ?? 0, false);
+          return;
+        }
+        const tick = outcome.value;
+        if (tick.ended || tick.phase === "exhausted") {
+          postFrameState("exhausted", 0, true);
+          heartbeat.stop();
+          setPhase({ kind: "ended", reason: tick.endReason === "replaced" ? "replaced" : "exhausted", remaining: tick.remainingSeconds });
+          void client.release(child, leaseId, tick.endReason ?? "exhausted");
+          return;
+        }
+        setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, tick, offline: false } : p));
+        phaseRef.current = current.kind === "playing" ? { ...current, tick, offline: false } : current;
+        postFrameState(tick.phase, tick.remainingSeconds, false);
+      },
+    });
+    beatRef.current = () => heartbeat.request();
+    heartbeat.request();
     return () => {
-      cancelled = true;
+      heartbeat.stop();
       beatRef.current = null;
-      if (timer !== null) window.clearTimeout(timer);
+      frameStateRef.current = null;
     };
-    // The tick loop restarts only when the lease changes, not on every tick.
+    // The loop restarts only when the lease changes, not on every tick.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase.kind === "playing" ? phase.grant.lease.id : null, client, child]);
 
@@ -311,7 +324,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
                 <p className="text-xl font-semibold">{phase.offline ? "Reconnecting to Game Studio…" : "Paused"}</p>
                 <p className="max-w-sm text-sm text-secondary">{phase.offline ? "Your play time isn't counting while the connection is down. We'll continue when it's back." : "Your play time isn't counting while paused."}</p>
                 {phase.paused ? (
-                  <button type="button" onClick={() => { setPhase((p) => (p.kind === "playing" ? { ...p, paused: false } : p)); window.setTimeout(() => beatRef.current?.(), 0); }} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>▶ Continue</button>
+                  <button type="button" onClick={() => applyPlayFlags({ paused: false })} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>▶ Continue</button>
                 ) : null}
               </div>
             ) : null}
@@ -319,7 +332,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
           <footer className="flex flex-wrap items-center justify-between gap-2 border-t border-primary px-3 py-2">
             <div className="flex gap-2">
               {!free ? (
-                <button type="button" onClick={() => { setPhase((p) => (p.kind === "playing" ? { ...p, paused: !p.paused } : p)); window.setTimeout(() => beatRef.current?.(), 0); }} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>
+                <button type="button" onClick={() => applyPlayFlags({ paused: !(phaseRef.current.kind === "playing" && phaseRef.current.paused) })} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>
                   {phase.paused ? "▶ Continue" : "⏸ Pause"}
                 </button>
               ) : null}

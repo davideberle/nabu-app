@@ -119,6 +119,8 @@ export type PlayLease = {
   finalSettled: boolean;
   /** When the meter first validated this lease with Family (null = never activated). */
   activatedAt: string | null;
+  /** Meter time of the last reading that advanced consumption (the measurement watermark); null = none yet. */
+  measuredAt: string | null;
 };
 
 /**
