@@ -1582,8 +1582,8 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const bAfter = (await getLease("lease-joined-r14-late-b", client))!;
       equal(bAfter.budgetSeconds, 899, "the successor's live budget is re-derived, nothing overlaps");
       equal(bAfter.state, "active");
-      // Beyond the late window: refused, discarded, unchanged.
-      clock = t0 + 700 + 121_000;
+      // Beyond the late window — the observed SESSION's own horizon (its last handed deadline + 120 s; round 17) — refused, discarded, unchanged.
+      clock = (mod.sessionEligibleUntil(server.store.loadLease("lease-joined-r14-late")!.session) as number) + 1;
       const tooLate = await fetch(`${base}/v1/play/lease-joined-r14-late/frame`, { method: "POST", headers, body: JSON.stringify({ grant: g1, session: g1, ranMs: 700, running: false }) });
       equal(tooLate.status, 410);
       await server.settler.flush();
