@@ -38,9 +38,9 @@ export function SharingVisual({ quantity, groups, answer, unit, group }: { quant
   );
 }
 
-export function RemainderVisual({ quantity, groups, perGroup, used, remaining, unit, group }: { quantity: number; groups: number; perGroup: number; used: number; remaining: number; unit: string; group: string }) {
+export function RemainderVisual({ quantity, groups, perGroup, used, remaining, unit, group, usedWord = "gepflanzt" }: { quantity: number; groups: number; perGroup: number; used: number; remaining: number; unit: string; group: string; usedWord?: string }) {
   return (
-    <figure className="rounded-2xl bg-white p-3 dark:bg-stone-900" data-testid="visual-remainder" aria-label={`${groups} ${group} mit je ${perGroup}: ${used} ${unit} gepflanzt, ${remaining} übrig`}>
+    <figure className="rounded-2xl bg-white p-3 dark:bg-stone-900" data-testid="visual-remainder" aria-label={`${groups} ${group} mit je ${perGroup}: ${used} ${unit} ${usedWord}, ${remaining} übrig`}>
       <div className="flex flex-wrap items-end gap-2">
         {Array.from({ length: groups }).map((_, g) => (
           <div key={g} className="flex flex-col items-center gap-1 rounded-xl bg-amber-50 p-2 dark:bg-amber-950/40">
@@ -63,7 +63,7 @@ export function RemainderVisual({ quantity, groups, perGroup, used, remaining, u
         </div>
       </div>
       <figcaption className="mt-2 text-base text-primary">
-        {groups} × {perGroup} = <strong>{used}</strong> gepflanzt · {quantity} − {used} = <strong>{remaining}</strong> übrig
+        {groups} × {perGroup} = <strong>{used}</strong> {usedWord} · {quantity} − {used} = <strong>{remaining}</strong> übrig
       </figcaption>
     </figure>
   );

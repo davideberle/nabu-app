@@ -280,12 +280,13 @@ describe("follow-on persistence — old rows, new reads", () => {
     equal(evidence.vocabulary!.entries.find((e) => e.entryId === "ES-AGUA")!.dimensions.recognition.opportunities, 1);
     // Reads under the cap wrote nothing to the child's rows (the two additive historical completions aside).
     equal(await snapshot(client), before);
-    // A row written by this candidate has the released build's state keys plus exactly ONE additive key, `feedback`
+    // A row written by this candidate has the released build's state keys plus the additive keys `feedback` (2026-10-03) and
+    // `pier` (Visit 4, 2026-10-04)
     // (world-first 2026-10-03: lesson repairs, practice focus, acknowledged lesson feedback). The previous build clones
     // the parsed JSON and keeps unknown keys, so it reads and re-writes this row unchanged apart from its own fields.
     const started = await step(client, { op: "start-visit" });
     const keys = Object.keys(JSON.parse(String((await stateRow(client)).state_json))).sort();
-    deepStrictEqual(keys, ["base", "child", "contentVersion", "createdAt", "currentVisit", "explanations", "feedback", "language", "logRevisions", "math", "missionId", "modelShownAt", "pages", "revision", "station", "stationModelShownAt", "teachingFirstAt", "transfers", "typing", "updatedAt", "upgradedAt", "visits"]);
+    deepStrictEqual(keys, ["base", "child", "contentVersion", "createdAt", "currentVisit", "explanations", "feedback", "language", "logRevisions", "math", "missionId", "modelShownAt", "pages", "pier", "revision", "station", "stationModelShownAt", "teachingFirstAt", "transfers", "typing", "updatedAt", "upgradedAt", "visits"]);
     equal(started.view.visit!.id, "v4");
   });
 });

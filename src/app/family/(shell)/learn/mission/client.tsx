@@ -56,7 +56,7 @@ import type { RetryOutcome, RetryPayload } from "@/components/family/learning/le
 import { stageLabel, type ChildView, type LearningOp, type SupportKind } from "@/lib/family-learning-state";
 import { createReadAloudController } from "@/lib/family-learning-audio";
 import { createTelemetryBuffer, enterStage, noteControl, noteInput, noteOp, noteSubmit, pause as pauseTelemetry, setHidden, takeBatch } from "@/lib/family-learning-telemetry";
-import { LogRevise, LogTransfer, ReflectFeedback, StationBuild, StationChoice, Summary, TypingCourse, type DraftContext } from "./redesign-stages";
+import { LogRevise, LogTransfer, PierBuild, ReflectFeedback, StationBuild, StationChoice, Summary, TypingCourse, type DraftContext } from "./redesign-stages";
 import { clearChildDrafts, retireAllDrafts, retireMismatched, type DraftIdentity } from "@/lib/family-learning-draft-store";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
 import { recordSupportConfirmed, runTutorTurn, type SupportOutcome } from "@/lib/family-learning-tutor";
@@ -486,6 +486,7 @@ function Workspace({ child }: { child: ChildId }) {
                   />
                 ) : null}
                 {stage === "station-build" ? <StationBuild view={view} busy={busy} gate={gate} onBuild={(spot) => void mutate({ op: "build-station", spot })} /> : null}
+                {stage === "pier-build" ? <PierBuild view={view} busy={busy} gate={gate} onBuild={(spot) => void mutate({ op: "build-pier", spot })} /> : null}
                 {stage === "log-revise" && view.logRevise ? <LogRevise view={view} busy={busy} gate={gate} onRevise={(text) => void mutate({ op: "revise-log", text })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-revise", reason: optionalReason })} /> : null}
                 {stage === "log-transfer" && view.transfer ? <LogTransfer key={identityKey(view)} view={view} busy={busy} gate={gate} drafts={draftContext} onSubmit={(payload, idempotencyKey, identity) => mutate(payload as LearningOp, { idempotencyKey, identity })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-transfer", reason: optionalReason })} /> : null}
                 {stage === "summary" && view.summary ? <Summary view={view} busy={busy} gate={gate} onNext={() => void mutate({ op: "summary-seen" })} /> : null}
@@ -678,7 +679,7 @@ function StartOrWait({ child, view, busy, onStart, notice, markers }: { child: C
           {notice ? <p className="mt-2 text-base text-primary">{notice}</p> : null}
           {nextDef ? (
             <button ref={startRef} type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-4 min-h-16 px-8 text-xl")} data-testid="start-visit" data-visit={nextDef} data-ordinal={view.next.ordinal ?? ""}>
-              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" ? `Besuch ${view.next.ordinal ?? 3} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
+              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" ? `Besuch ${view.next.ordinal ?? (nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
             </button>
           ) : null}
         </div>
@@ -772,7 +773,7 @@ function Restore({ view, busy, gate, onContinue }: { view: ChildView; busy: bool
   return (
     <div className="flex flex-col gap-4">
       <Instruction kicker="Willkommen zurück">Auf „{view.base.name}“ geht es weiter.</Instruction>
-      {intro ? <StoryBeat speaker="radio" beats={[{ text: intro.who, scene: "team" }, { text: intro.make, scene: "station" }, { text: intro.done, scene: "lamp" }]} testId="mission-intro" /> : <StoryBeat speaker="team" beats={[{ text: "Deine Vorräte sind noch da. Heute geht die Expedition weiter.", scene: "base" }]} compact />}
+      {intro ? <StoryBeat speaker="radio" beats={view.visit?.id === "v5" ? [{ text: intro.who, scene: "boat" }, { text: intro.make, scene: "pier" }, { text: intro.done, scene: "boat" }] : [{ text: intro.who, scene: "team" }, { text: intro.make, scene: "station" }, { text: intro.done, scene: "lamp" }]} testId="mission-intro" /> : <StoryBeat speaker="team" beats={[{ text: "Deine Vorräte sind noch da. Heute geht die Expedition weiter.", scene: "base" }]} compact />}
       <button ref={ref} type="button" onClick={onContinue} disabled={busy} className={primaryButton} data-testid="stage-continue">
         Weiter
       </button>
@@ -849,7 +850,7 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
         <Instruction>{item.scene ?? "Erledigt."}</Instruction>
         {item.taughtAnswers ? (
           <p className="text-base text-primary">
-            Wir haben es zusammen gemacht: {item.groups} {item.group.plural} × {item.perGroup} = {item.taughtAnswers.used} {item.unit.plural} gepflanzt, {item.quantity} − {item.taughtAnswers.used} = {item.taughtAnswers.remaining} bleiben übrig.
+            Wir haben es zusammen gemacht: {item.groups} {item.group.plural} × {item.perGroup} = {item.taughtAnswers.used} {item.unit.plural} {item.usedWord.past}, {item.quantity} − {item.taughtAnswers.used} = {item.taughtAnswers.remaining} bleiben übrig.
           </p>
         ) : item.taughtAnswer !== null ? (
           <p className="text-base text-primary">
@@ -869,7 +870,7 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
 
   return (
     <div className="flex flex-col gap-4">
-      {item.scene ? <StoryBeat speaker="team" beats={[{ text: item.scene, scene: remainderItem ? "garden" : "team" }]} compact /> : null}
+      {item.scene ? <StoryBeat speaker="team" beats={[{ text: item.scene, scene: item.id === "EQ-PIER" ? "boat" : remainderItem ? "garden" : "team" }]} compact /> : null}
       <MathPrompt prompt={item.prompt} />
       <div className="flex flex-wrap gap-2">
         <AudioControls child={child} speech={speech} text={item.prompt} label="Vorlesen" disabled={busy} beforePlay={() => support("read_aloud", item.id, { text: "prompt" })} />
@@ -883,7 +884,7 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
       {item.phase === "clarify" && item.clarification ? (
         <p className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" role="status" data-testid="clarification">
           {item.clarification}
-          {item.lastPartial ? (item.lastPartial.usedCorrect && !item.lastPartial.remainingCorrect ? " Die gepflanzten Setzlinge stimmen — schau den Rest noch einmal an." : !item.lastPartial.usedCorrect && item.lastPartial.remainingCorrect ? " Der Rest stimmt — zähle die vollen Beete noch einmal." : "") : ""}
+          {item.lastPartial ? (item.lastPartial.usedCorrect && !item.lastPartial.remainingCorrect ? ` Die ${item.usedWord.past}en ${item.unit.plural} stimmen — schau den Rest noch einmal an.` : !item.lastPartial.usedCorrect && item.lastPartial.remainingCorrect ? ` Der Rest stimmt — zähle die vollen ${item.group.plural} noch einmal.` : "") : ""}
         </p>
       ) : null}
 
@@ -954,7 +955,7 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
               <p className="mt-2 text-sm text-tertiary" data-testid="leftovers">
                 Übrig neben den {item.group.plural}: {remaining} {remaining === 1 ? item.unit.singular : item.unit.plural}
               </p>
-              <button type="button" disabled={busy || trays.some((t) => t !== capacity)} onClick={() => onAnswerRemainder(placed, remaining, `${placed} gepflanzt, ${remaining} übrig`, "counters")} className={cn(primaryButton, "mt-4")} data-testid="counters-submit">
+              <button type="button" disabled={busy || trays.some((t) => t !== capacity)} onClick={() => onAnswerRemainder(placed, remaining, `${placed} ${item.usedWord.past}, ${remaining} übrig`, "counters")} className={cn(primaryButton, "mt-4")} data-testid="counters-submit">
                 {item.groups} {item.group.plural} voll (je {capacity}), {remaining} übrig — fertig
               </button>
               {trays.some((t) => t !== capacity) ? <p className="mt-2 text-sm text-tertiary">Jedes {item.group.singular} soll genau {capacity} bekommen. Was nicht mehr passt, bleibt daneben.</p> : null}
@@ -978,13 +979,13 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
             const used = parseAnswerNumber(rawUsed);
             const rem = parseAnswerNumber(rawRemaining);
             if (used === null || rem === null) return;
-            onAnswerRemainder(used, rem, `${rawUsed.trim()} gepflanzt, ${rawRemaining.trim()} übrig`, "typed");
+            onAnswerRemainder(used, rem, `${rawUsed.trim()} ${item.usedWord.past}, ${rawRemaining.trim()} übrig`, "typed");
             setRawUsed("");
             setRawRemaining("");
           }}
           className="flex flex-wrap items-end gap-3"
         >
-          {numberInput({ value: rawUsed, onChange: setRawUsed, label: "Gepflanzt", testId: "math-answer-used", ref: answerRef })}
+          {numberInput({ value: rawUsed, onChange: setRawUsed, label: item.usedWord.label, testId: "math-answer-used", ref: answerRef })}
           {numberInput({ value: rawRemaining, onChange: setRawRemaining, label: "Übrig", testId: "math-answer-remaining" })}
           <button type="submit" disabled={busy || parseAnswerNumber(rawUsed) === null || parseAnswerNumber(rawRemaining) === null} className={primaryButton} data-testid="math-submit">
             Fertig

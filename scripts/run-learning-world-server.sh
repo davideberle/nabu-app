@@ -28,7 +28,8 @@ if lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
   lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >&2
   exit 3
 fi
-env -i PATH="$PATH" HOME="$HOME" AUTH_SECRET="$SECRET" AUTH_URL=http://127.0.0.1:$PORT GOOGLE_CLIENT_ID=synthetic GOOGLE_CLIENT_SECRET=synthetic \
+# FAMILY_LEARNING_CONTENT_CAP is forwarded when set (Visit 4 rollback checks start a capped second instance).
+env -i PATH="$PATH" HOME="$HOME" AUTH_SECRET="$SECRET" AUTH_URL=http://127.0.0.1:$PORT GOOGLE_CLIENT_ID=synthetic GOOGLE_CLIENT_SECRET=synthetic ${FAMILY_LEARNING_CONTENT_CAP:+FAMILY_LEARNING_CONTENT_CAP="$FAMILY_LEARNING_CONTENT_CAP"} \
   NABU_DB_DIR="$DIR" NEXT_TELEMETRY_DISABLED=1 node node_modules/next/dist/bin/next start -p $PORT -H 127.0.0.1 > "$DIR/server.log" 2>&1 &
 SERVER=$!
 echo "$SERVER" > "$DIR/server.pid"

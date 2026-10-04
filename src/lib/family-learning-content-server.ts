@@ -18,9 +18,13 @@
 // a started chapter 4 is parked untouched (nothing offered in its place,
 // nothing rewritten), every record stays readable in the parent cockpit, and
 // removing the cap resumes chapter 4 exactly where it was.
+// Content version 3 (Visit 4, 2026-10-04) is the served version: version 2 plus the pier chapter `v5`. Rollback to the
+// released chapter set is this build with FAMILY_LEARNING_CONTENT_CAP=2 (a started v5 is parked untouched, nothing
+// rewritten, every record readable); CAP=1 keeps the pilot content as before.
+import contentV3 from "@/data/family-learning/content/santiago-expedition-v3.json";
 import contentV2 from "@/data/family-learning/content/santiago-expedition-v2.json";
 import contentV1 from "@/data/family-learning/content/santiago-expedition-v1.json";
-import vocabularyV1 from "@/data/family-learning/content/vocabulary-inventory-v1.json";
+import vocabularyV2 from "@/data/family-learning/content/vocabulary-inventory-v2.json";
 import { asLearningContent, type LearningContent } from "./family-learning-content";
 import { asVocabularyInventory, type VocabularyInventory } from "./family-learning-vocabulary";
 
@@ -40,7 +44,7 @@ export function loadVocabularyInventory(): VocabularyInventory {
   if (cachedVocabulary) return cachedVocabulary;
   if (vocabularyFailure) throw vocabularyFailure;
   try {
-    cachedVocabulary = asVocabularyInventory(vocabularyV1, loadLearningContent());
+    cachedVocabulary = asVocabularyInventory(vocabularyV2, loadLearningContent());
     return cachedVocabulary;
   } catch (error) {
     vocabularyFailure = error instanceof Error ? error : new Error(String(error));
@@ -48,16 +52,18 @@ export function loadVocabularyInventory(): VocabularyInventory {
   }
 }
 
-/** The content version this server instance serves (2, or 1 under the rollback cap). */
-export function servedContentVersion(): 1 | 2 {
-  return process.env.FAMILY_LEARNING_CONTENT_CAP === "1" ? 1 : 2;
+/** The content version this server instance serves (3; 2 or 1 under the rollback cap). */
+export function servedContentVersion(): 1 | 2 | 3 {
+  const cap = process.env.FAMILY_LEARNING_CONTENT_CAP;
+  return cap === "1" ? 1 : cap === "2" ? 2 : 3;
 }
 
 export function loadLearningContent(): LearningContent {
   if (cached) return cached;
   if (failure) throw failure;
   try {
-    cached = asLearningContent(servedContentVersion() === 1 ? contentV1 : contentV2);
+    const served = servedContentVersion();
+    cached = asLearningContent(served === 1 ? contentV1 : served === 2 ? contentV2 : contentV3);
     return cached;
   } catch (error) {
     failure = error instanceof Error ? error : new Error(String(error));

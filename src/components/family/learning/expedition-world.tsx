@@ -103,7 +103,8 @@ const PALETTES: Record<string, Palette> = {
   none: { skyTop: "#e7e5e4", skyBottom: "#f5f3f0", far: "#cfcac6", farDetail: "#ffffff", plateTop: "#d6d0c8", plateSide: "#b8b0a6", plateDeep: "#9a9087", beach: "#e7e5e4", grass: "#c8ccb8", soil: "#8b5a2b", rock: "#a8a29e", accent: "#78716c", sea: false, label: "Noch kein Standort" },
 };
 
-const SUPPLY_LABEL: Record<string, string> = { Essenspakete: "Essenspakete", Setzlinge: "Setzlinge", Proben: "Proben", water: "Wasser", agua: "Wasser", tools: "Werkzeug", herramientas: "Werkzeug", seeds: "Samen", semillas: "Samen", lamp: "Lampe", lámpara: "Lampe" };
+const SUPPLY_LABEL: Record<string, string> = { Essenspakete: "Essenspakete", Setzlinge: "Setzlinge", Proben: "Proben", Bretter: "Bretter", water: "Wasser", agua: "Wasser", tools: "Werkzeug", herramientas: "Werkzeug", seeds: "Samen", semillas: "Samen", lamp: "Lampe", lámpara: "Lampe", wood: "Holz", rope: "Seil" };
+const PIER_SPOT_LABEL: Record<string, string> = { bay: "in der Bucht", beach: "am Südstrand" };
 const LOCATION_LABEL: Record<string, string> = { crater: "Am Kraterrand", ice: "Auf dem Eisfeld", forest: "Im Nebelwald", shore: "An der Küste" };
 const SPOT_LABEL: Record<string, string> = { beach: "am Strand", rocks: "auf den Felsen", dune: "auf der Düne" };
 
@@ -125,6 +126,8 @@ export function describeWorld(scene: SceneModel, markers: WorldMarker[], pages: 
     if (garden.length) parts.push(`${garden.length} Gartenbeete mit je ${garden[0].filled} Setzlingen.`);
     if (station.length) parts.push(`${station.length} Stationsbeete mit je ${station[0].filled} Setzlingen${scene.leftovers ? `, ${scene.leftovers} übrig daneben` : ""}.`);
     if (scene.station.built) parts.push(`Beobachtungsstation ${scene.station.spot ? SPOT_LABEL[scene.station.spot] ?? scene.station.spot : ""}${scene.station.lamp ? ", die Lampe brennt" : ", ohne Lampe"}.`);
+    if (scene.pier.sections && !scene.pier.built) parts.push(`${scene.pier.sections} Steg-Abschnitte vorbereitet${scene.pier.planksLeft ? `, ${scene.pier.planksLeft} Bretter übrig daneben` : ""}.`);
+    if (scene.pier.built) parts.push(`Steg ${scene.pier.spot ? PIER_SPOT_LABEL[scene.pier.spot] ?? scene.pier.spot : ""}${scene.pier.boat ? ", das Boot hat angelegt" : ", das Boot wartet noch draussen"}${scene.pier.planksLeft ? `, ${scene.pier.planksLeft} Bretter übrig` : ""}.`);
     const rows = supplyRows(scene);
     if (rows.length) parts.push(`Vorräte: ${rows.map((r) => `${r.count} ${r.label}`).join(", ")}.`);
     parts.push(`${pages} ${pages === 1 ? "Seite" : "Seiten"} im Logbuch.`);
@@ -231,6 +234,56 @@ function Store({ gx, gy, kinds, onOpen }: { gx: number; gy: number; kinds: numbe
   return (
     <g role="button" tabIndex={0} aria-label={`Vorräte ansehen, ${kinds} Arten`} className="cursor-pointer outline-none" onClick={onOpen} onKeyDown={(e) => (e.key === "Enter" || e.key === " " ? (e.preventDefault(), onOpen()) : undefined)} data-testid="world-supplies">
       {body}
+    </g>
+  );
+}
+
+/** The pier of Visit 4: posts and a plank deck running from the shore into the water; the boat moors at its end only when wood was supplied. */
+function Pier({ gx, gy, along, boat, sections }: { gx: number; gy: number; along: "x" | "y"; boat: boolean; sections: number }) {
+  const length = 0.55 * Math.max(sections, 4);
+  const w = along === "x" ? length : 0.5;
+  const h = along === "y" ? length : 0.5;
+  const posts: [number, number][] = [];
+  for (let i = 0; i <= Math.max(sections, 4); i += 1) posts.push(along === "x" ? [gx + i * 0.55, gy + 0.25] : [gx + 0.25, gy + i * 0.55]);
+  const [ex, ey] = along === "x" ? iso(gx + length + 0.3, gy + 0.9, 0) : iso(gx + 0.9, gy + length + 0.3, 0);
+  return (
+    <g data-part="pier" data-boat={boat ? "moored" : "none"} data-sections={sections}>
+      {posts.map(([px, py], i) => (
+        <Box key={i} x={px - 0.06} y={py - 0.06} w={0.12} h={0.12} z={-6} height={22} top="#7c4a2a" left="#5b3a12" right="#4a2f10" />
+      ))}
+      <Box x={gx} y={gy} w={w} h={h} z={12} height={5} top="#c58a4a" left="#8b5a2b" right="#7c4a2a" />
+      {Array.from({ length: Math.max(sections, 4) * 2 }).map((_, i) => {
+        const t = (i + 0.5) * 0.275;
+        const [ax, ay] = along === "x" ? iso(gx + t, gy, 17) : iso(gx, gy + t, 17);
+        const [bx, by] = along === "x" ? iso(gx + t, gy + 0.5, 17) : iso(gx + 0.5, gy + t, 17);
+        return <line key={i} x1={ax} y1={ay} x2={bx} y2={by} stroke="#8b5a2b" strokeWidth={1.2} opacity={0.7} />;
+      })}
+      {boat ? (
+        <g transform={`translate(${ex} ${ey})`} aria-hidden data-part="boat">
+          <path d="M-46 -4 h88 l-16 22 h-56 z" fill="#0ea5e9" stroke="#0c4a6e" strokeWidth={3} />
+          <path d="M-40 -4 h76" stroke="#fff7e6" strokeWidth={3} />
+          <rect x={-2} y={-62} width={4} height={58} fill="#1c1917" />
+          <polygon points="2,-60 44,-18 2,-18" fill="#fde68a" stroke="#1c1917" strokeWidth={2} />
+          <polygon points="-2,-54 -30,-22 -2,-22" fill="#fff7e6" stroke="#1c1917" strokeWidth={2} />
+        </g>
+      ) : null}
+    </g>
+  );
+}
+
+/** Planks stacked beside the future pier once the sections were counted (EQ-PIER), with the leftovers named. */
+function PlankPile({ gx, gy, sections, planksLeft }: { gx: number; gy: number; sections: number; planksLeft: number }) {
+  const [tx, ty] = iso(gx + 1.2, gy + 0.4, 0);
+  return (
+    <g data-part="plank-pile" data-sections={sections}>
+      {Array.from({ length: Math.min(sections, 6) }).map((_, i) => (
+        <Box key={i} x={gx + (i % 3) * 0.42} y={gy + Math.floor(i / 3) * 0.5} w={0.38} h={0.42} z={i >= 3 ? 10 : 0} height={10} top="#c58a4a" left="#8b5a2b" right="#7c4a2a" />
+      ))}
+      {planksLeft > 0 ? (
+        <text x={tx + 10} y={ty + 6} textAnchor="start" fontSize={13} fontWeight={600} fill="#3b2a12" fontFamily="var(--font-geist-sans), Arial, sans-serif">
+          {planksLeft} übrig
+        </text>
+      ) : null}
     </g>
   );
 }
@@ -516,6 +569,8 @@ function Path({ points }: { points: [number, number][] }) {
 const SITE_BASE: [number, number] = [-3.0, -3.2];
 const SITE_GARDEN: [number, number] = [1.2, -3.3];
 const SITE_STATION: Record<string, [number, number]> = { beach: [-2.2, 1.6], rocks: [3.0, -0.6], dune: [-0.2, 2.6] };
+/** Visit 4: where the pier runs into the water — the bay cut (SE, along x) or the south beach edge (along y). */
+const SITE_PIER: Record<string, { gx: number; gy: number; along: "x" | "y" }> = { bay: { gx: 1.4, gy: 2.7, along: "x" }, beach: { gx: -2.4, gy: 3.5, along: "y" } };
 
 export function ExpeditionWorld({ scene, markers, pages, variant = "full", onSelectMarker, onOpenLogbook, onOpenSupplies, description, className, children }: ExpeditionWorldProps) {
   const p = PALETTES[scene.location ?? "none"] ?? PALETTES.none;
@@ -529,12 +584,14 @@ export function ExpeditionWorld({ scene, markers, pages, variant = "full", onSel
   const m1 = byVisit("v1");
   const m2 = byVisit("v2");
   const m4 = byVisit("v4");
+  const m5 = byVisit("v5");
+  const pierSite = SITE_PIER[scene.pier.spot ?? ""] ?? SITE_PIER.bay;
   const [baseX, baseY] = SITE_BASE;
   const hasBase = Boolean(scene.name);
   const kinds = supplyRows(scene).length;
 
   return (
-    <div className={cn("relative h-full w-full overflow-hidden", className)} data-world-variant={variant} data-world-base={scene.base} data-world-station={scene.station.built ? "built" : "none"} data-world-lamp={scene.station.lamp ? "on" : "off"} data-world-beds={scene.beds.length} data-world-pages={pages}>
+    <div className={cn("relative h-full w-full overflow-hidden", className)} data-world-variant={variant} data-world-base={scene.base} data-world-station={scene.station.built ? "built" : "none"} data-world-lamp={scene.station.lamp ? "on" : "off"} data-world-beds={scene.beds.length} data-world-pages={pages} data-world-pier={scene.pier.built ? "built" : scene.pier.sections ? "planks" : "none"} data-world-boat={scene.pier.boat ? "moored" : "none"}>
       <svg viewBox={viewBox} preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full select-none" role="img" aria-label={text} focusable="false">
         <defs>
           <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
@@ -608,10 +665,15 @@ export function ExpeditionWorld({ scene, markers, pages, variant = "full", onSel
         ) : null}
         {scene.station.built ? <Station gx={stationSite[0]} gy={stationSite[1]} lamp={scene.station.lamp} theme={scene.station.theme} /> : <polygon points={tile(stationSite[0], stationSite[1], 1.2, 1.2, 6)} fill="rgba(255,247,230,0.35)" stroke="#64748b" strokeWidth={2} strokeDasharray="8 8" />}
 
+        {/* site 4: the pier (EQ-PIER planks, then the pier itself after the build) */}
+        {scene.pier.built ? <Pier gx={pierSite.gx} gy={pierSite.gy} along={pierSite.along} boat={scene.pier.boat} sections={scene.pier.sections} /> : scene.pier.sections ? <PlankPile gx={SITE_PIER.bay.gx - 0.2} gy={SITE_PIER.bay.gy - 1.3} sections={scene.pier.sections} planksLeft={scene.pier.planksLeft} /> : null}
+        {scene.pier.built && scene.pier.planksLeft ? <PlankPile gx={pierSite.along === "x" ? pierSite.gx - 0.3 : pierSite.gx - 1.4} gy={pierSite.along === "x" ? pierSite.gy - 1.3 : pierSite.gy - 0.2} sections={Math.min(scene.pier.planksLeft, 3)} planksLeft={scene.pier.planksLeft} /> : null}
+
         {/* flags: the true state of each visit site */}
         {m1 ? <Flag gx={baseX + 2.3} gy={baseY + 2.4} marker={m1} onSelect={onSelectMarker} /> : null}
         {m2 ? <Flag gx={SITE_GARDEN[0] + 2.6} gy={SITE_GARDEN[1] + 1.6} marker={m2} onSelect={onSelectMarker} /> : null}
         {m4 ? <Flag gx={stationSite[0] + 1.9} gy={stationSite[1] + 0.1} marker={m4} onSelect={onSelectMarker} /> : null}
+        {m5 ? <Flag gx={pierSite.along === "x" ? pierSite.gx - 0.6 : pierSite.gx + 1.0} gy={pierSite.along === "x" ? pierSite.gy + 1.2 : pierSite.gy - 0.6} marker={m5} onSelect={onSelectMarker} /> : null}
       </svg>
       {children}
     </div>

@@ -333,6 +333,10 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   const v4Running = !!state?.visits.some((v) => v.id === "v4" && !v.finishedAt);
   const v3Running = !!state?.visits.some((v) => v.id === "v3" && !v.finishedAt);
   const chapter = evidence.visits?.find((v) => v.id === "v4")?.label ?? "Besuch 3 — Die Beobachtungsstation";
+  const v5Served = !!evidence.visits?.some((v) => v.id === "v5");
+  const v5Done = !!state?.visits.some((v) => v.id === "v5" && v.finishedAt);
+  const v5Running = !!state?.visits.some((v) => v.id === "v5" && !v.finishedAt);
+  const chapter5 = evidence.visits?.find((v) => v.id === "v5")?.label ?? "Besuch 4 — Der Steg in der Bucht";
   let text: string;
   if (!state || state.visits.length === 0) text = "Noch kein Besuch. Der nächste Schritt ist der erste Besuch: Basis bauen, 24 Pakete gerecht teilen.";
   else if (fresh.length === 0) text = "Erster Besuch läuft. Nächster Schritt: der frische Check nach der Erklärung (EQ-FRESH).";
@@ -340,6 +344,9 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   else if (v3Running) text = "Ein vor dem 30. September angefangener später Check (v3) wartet noch auf seinen Abschluss; danach folgt die Beobachtungsstation. Er wird nicht mehr neu angeboten.";
   else if (v4Running) text = `${chapter} läuft (intern v4, Rest-Aufgabe EQ-STATION).`;
   else if (!v4Done) text = `Nächster Schritt: ${chapter} (intern v4, Beobachtungsstation mit Rest-Aufgabe EQ-STATION) — sofort verfügbar. Der frühere späte Check (v3, EQ-DELAY) ist seit dem 30. September zurückgezogen und keine ausstehende Arbeit.`;
+  else if (v5Running) text = `${chapter5} läuft (intern v5, Rest-Aufgabe EQ-PIER, englische Anfrage LANG-EN-PIER).`;
+  else if (v5Served && !v5Done) text = `Nächster Schritt: ${chapter5} (intern v5: Rest-Aufgabe EQ-PIER mit 45 Brettern, englische Anfrage LANG-EN-PIER, Steg bauen, neuer Satz WRITE-TRANSFER-2) — sofort verfügbar.`;
+  else if (v5Done) text = "Alle Inhalte (Besuche 1–4) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität.";
   else text = "Alle Inhalte (Besuche 1–3) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität.";
   return (
     <div className="rounded-2xl bg-secondary px-4 py-3" data-testid="parent-next-step">

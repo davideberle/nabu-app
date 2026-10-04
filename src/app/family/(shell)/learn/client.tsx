@@ -59,14 +59,14 @@ function formatDate(iso: string): string {
 export function worldMarkers(view: ChildView): WorldMarker[] {
   const running = view.visit;
   const completed = new Set(view.progress.completed.map((c) => c.visit));
-  const ordered = ["v1", "v2", "v4"] as const;
+  const ordered = ["v1", "v2", "v4", "v5"] as const;
   const markers: WorldMarker[] = [];
   for (const id of ordered) {
     const report = view.reports.find((r) => r.visit === id) ?? null;
     const done = completed.has(id);
     const isRunning = running?.id === id;
     const isNext = !isRunning && view.next.visit === id;
-    const ordinal = report?.ordinal ?? view.progress.completed.find((c) => c.visit === id)?.ordinal ?? (id === "v1" ? 1 : id === "v2" ? 2 : view.next.visit === id ? view.next.ordinal : 3);
+    const ordinal = report?.ordinal ?? view.progress.completed.find((c) => c.visit === id)?.ordinal ?? (id === "v1" ? 1 : id === "v2" ? 2 : view.next.visit === id ? view.next.ordinal : id === "v5" ? 4 : 3);
     const label = report?.label ?? view.progress.completed.find((c) => c.visit === id)?.label ?? (isRunning ? running!.title : isNext ? view.progress.next.label ?? `Besuch ${ordinal ?? ""}` : `Besuch ${ordinal ?? ""}`);
     markers.push({
       visit: id,
@@ -171,7 +171,7 @@ function World({ child }: { child: ChildId }) {
   const view = load.view;
   const running = view.visit;
   const canStart = running !== null || view.next.visit !== null;
-  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" ? `Besuch ${view.next.ordinal ?? 3} starten` : "Weiter";
+  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" || view.next.visit === "v5" ? `Besuch ${view.next.ordinal ?? (view.next.visit === "v5" ? 4 : 3)} starten` : "Weiter";
   const markers = worldMarkers(view);
   const report: VisitReport | null = panel?.kind === "report" ? view.reports.find((r) => r.visit === panel.visit) ?? null : null;
   const missionHref = `/family/learn/mission?child=${child}`;
@@ -201,8 +201,9 @@ function World({ child }: { child: ChildId }) {
       </div>
 
       {/* The one dominant action — bottom left, over the world, beside the island */}
-      <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-2 px-3 pb-4 sm:px-6 sm:pb-6">
-        <div className="w-full max-w-md rounded-3xl border border-primary bg-primary/95 p-4 shadow-md backdrop-blur sm:p-5" data-testid="world-action">
+      {/* The full-width band itself lets clicks through to the map (flags in the lower band stay reachable); only the card and the chip catch them. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-2 px-3 pb-4 sm:px-6 sm:pb-6">
+        <div className="pointer-events-auto w-full max-w-md rounded-3xl border border-primary bg-primary/95 p-4 shadow-md backdrop-blur sm:p-5" data-testid="world-action">
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-tertiary">{running ? "Angefangen" : view.next.visit ? "Als Nächstes" : "Alles gespeichert"}</p>
           <p className="mt-1 text-xl font-semibold leading-tight text-primary sm:text-2xl" data-testid="world-next-step">
             {view.nextStep}

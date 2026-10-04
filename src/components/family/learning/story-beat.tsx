@@ -13,7 +13,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/components/ui/nabu";
 
 export type StoryBeatSpeaker = "radio" | "team" | "logbook" | "mara";
-export type StoryScene = "station" | "garden" | "lamp" | "base" | "team" | "page" | "none";
+export type StoryScene = "station" | "garden" | "lamp" | "base" | "team" | "page" | "pier" | "boat" | "none";
 
 function Speaker({ speaker }: { speaker: StoryBeatSpeaker }) {
   return (
@@ -103,6 +103,23 @@ export function SceneArt({ scene, className }: { scene: StoryScene; className?: 
               <path d={`M${x - 14} 80 c 2 -14 10 -18 14 -18 s 12 4 14 18 Z`} fill={["#0ea5e9", "#f97316", "#15803d"][i]} stroke="#1c1917" strokeWidth={1.5} />
             </g>
           ))}
+        </>
+      ) : null}
+      {scene === "pier" || scene === "boat" ? (
+        <>
+          {[0, 1, 2, 3].map((i) => (
+            <rect key={i} x={46 + i * 20} y={62} width={18} height={6} rx={1.5} fill="#b5742f" stroke="#7c4a2a" strokeWidth={1} />
+          ))}
+          {[52, 86, 120].map((x) => (
+            <rect key={x} x={x} y={66} width={4} height={18} fill="#7c4a2a" />
+          ))}
+          {scene === "boat" ? (
+            <g>
+              <path d="M96 92 h44 l-8 12 h-30 z" fill="#0ea5e9" stroke="#0c4a6e" strokeWidth={1.5} />
+              <rect x={114} y={74} width={3} height={18} fill="#1c1917" />
+              <polygon points="117,74 134,86 117,86" fill="#fde68a" stroke="#1c1917" strokeWidth={1} />
+            </g>
+          ) : null}
         </>
       ) : null}
       {scene === "page" ? (

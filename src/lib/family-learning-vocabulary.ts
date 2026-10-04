@@ -163,7 +163,7 @@ export function reconcileVocabularyInventory(raw: unknown, content: LearningCont
   const counts = { entries: 0, contexts: 0, served: 0 };
   if (!isRecord(raw)) return { ok: false, problems: ["inventory is not an object"], counts };
   if (typeof raw.inventoryId !== "string" || !raw.inventoryId) problems.push("inventoryId missing");
-  if (raw.inventoryVersion !== 1) problems.push(`inventoryVersion must be 1, got ${String(raw.inventoryVersion)}`);
+  if (raw.inventoryVersion !== 1 && raw.inventoryVersion !== 2) problems.push(`inventoryVersion must be 1 or 2, got ${String(raw.inventoryVersion)}`);
   if (raw.child !== content.child) problems.push(`inventory child ${String(raw.child)} does not match content child ${content.child}`);
   if (raw.contentId !== content.contentId) problems.push(`inventory contentId ${String(raw.contentId)} does not match ${content.contentId}`);
   if (!isRecord(raw.reviewed) || typeof raw.reviewed.status !== "string" || typeof raw.reviewed.note !== "string") problems.push("reviewed.status/note missing");

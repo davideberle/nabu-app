@@ -119,7 +119,7 @@ export function isProgressStrip(v: unknown): boolean {
   if (recent !== null) {
     if (!isRec(recent) || !isStr(recent.visit) || !isNumOrNull(recent.ordinal) || !isStr(recent.label) || !isStr(recent.finishedAt) || !isStrOrNull(recent.did) || !isStr(recent.tryNext)) return false;
     const artifact = recent.artifact;
-    if (!isRec(artifact) || !oneOf(artifact.kind, ["page", "station", "revision", "none"]) || !isStr(artifact.text)) return false;
+    if (!isRec(artifact) || !oneOf(artifact.kind, ["page", "station", "pier", "revision", "none"]) || !isStr(artifact.text)) return false;
     const g = recent.grounding;
     if (!isRec(g) || !oneOf(g.source, ["review", "review-historical", "none"]) || !isNumOrNull(g.reviewVersion)) return false;
     if (!(g.suppressed === null || (isRec(g.suppressed) && isStr(g.suppressed.reason) && isStr(g.suppressed.text)))) return false;
@@ -172,7 +172,7 @@ export function isVisitReport(v: unknown): boolean {
   if (!isRec(v)) return false;
   const s = v.summary;
   if (!isStr(v.visit) || !isNumOrNull(v.ordinal) || !isStr(v.label) || !isStr(v.startedAt) || !isStrOrNull(v.finishedAt) || !isBool(v.partial) || !isNum(v.stagesDone) || !isNum(v.stageCount)) return false;
-  if (!isRec(s) || !isStr(s.visit) || !isStr(s.title) || !(s.success === null || (isRec(s.success) && isStr(s.success.text))) || !(s.practiced === null || (isRec(s.practiced) && isStr(s.practiced.text))) || !isRec(s.next) || !isStr(s.next.text) || !isRec(s.artifact) || !oneOf(s.artifact.kind, ["page", "station", "revision", "none"]) || !isStr(s.artifact.text)) return false;
+  if (!isRec(s) || !isStr(s.visit) || !isStr(s.title) || !(s.success === null || (isRec(s.success) && isStr(s.success.text))) || !(s.practiced === null || (isRec(s.practiced) && isStr(s.practiced.text))) || !isRec(s.next) || !isStr(s.next.text) || !isRec(s.artifact) || !oneOf(s.artifact.kind, ["page", "station", "pier", "revision", "none"]) || !isStr(s.artifact.text)) return false;
   return Array.isArray(v.lessons) && v.lessons.every(isLessonFeedback) && isStrArray(v.worldChanges);
 }
 

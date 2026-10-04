@@ -45,7 +45,7 @@ export type ProgressRecent = {
   did: string | null;
   /** "Try next …" sentence (the review's recommendation, or an ordinary next step when suppressed). */
   tryNext: string;
-  artifact: { kind: "page" | "station" | "revision" | "none"; text: string };
+  artifact: { kind: "page" | "station" | "pier" | "revision" | "none"; text: string };
   /** Where the sentences come from; `suppressed` explains why no success claim is shown. */
   grounding: { source: "review" | "review-historical" | "none"; reviewVersion: number | null; suppressed: { reason: "review-missing" | "review-obsolete" | "no-success-line" | "visit-not-served"; text: string } | null };
 };
@@ -145,7 +145,7 @@ export function buildProgress(state: MissionState, content: LearningContent, inp
   else if (running) next = { kind: "continue", visit: running.id, ordinal: visitOrdinal(state, running.id), label: visitLabel(state, content, running.id), text: `Weiter mit ${visitLabel(state, content, running.id)}.`, reason: null };
   else {
     const done = new Set(finished.map((v) => v.id));
-    const candidate: VisitId | null = !done.has("v1") ? "v1" : !done.has("v2") ? "v2" : served("v4") && !done.has("v4") ? "v4" : null;
+    const candidate: VisitId | null = !done.has("v1") ? "v1" : !done.has("v2") ? "v2" : served("v4") && !done.has("v4") ? "v4" : served("v5") && !done.has("v5") ? "v5" : null;
     if (candidate) next = { kind: "start", visit: candidate, ordinal: visitOrdinal(state, candidate), label: visitLabel(state, content, candidate), text: candidate === "v1" ? "Start: Baue deine Basis." : `Start: ${visitLabel(state, content, candidate)}.`, reason: null };
     else if (!served("v4")) next = { kind: "none", visit: null, ordinal: null, label: null, text: "Das nächste Kapitel ist gerade nicht verfügbar. Alles ist gespeichert.", reason: "no-further-visit-served" };
     else next = { kind: "none", visit: null, ordinal: null, label: null, text: "Alle Besuche sind geschafft. Neue Aufgaben kommen erst nach einer Prüfung dazu.", reason: "all-visits-done" };

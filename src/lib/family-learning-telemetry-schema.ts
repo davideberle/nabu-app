@@ -10,13 +10,13 @@
 // a typed word, a transcript or an attention score could be stored.
 // ---------------------------------------------------------------------------
 
-import { EXPECTED_RETAINED_STAGES, EXPECTED_V4_STAGES, type StageId } from "./family-learning-content.ts";
+import { EXPECTED_RETAINED_STAGES, EXPECTED_V4_STAGES, EXPECTED_V5_STAGES, type StageId } from "./family-learning-content.ts";
 
-export const TELEMETRY_STAGES: readonly StageId[] = [...new Set<StageId>([...Object.values(EXPECTED_RETAINED_STAGES).flat(), ...EXPECTED_V4_STAGES])];
+export const TELEMETRY_STAGES: readonly StageId[] = [...new Set<StageId>([...Object.values(EXPECTED_RETAINED_STAGES).flat(), ...EXPECTED_V4_STAGES, ...EXPECTED_V5_STAGES])];
 
 /** Every op name of the state machine (kept in sync by a unit test). */
 export const TELEMETRY_OPS = [
-  "answer-math", "answer-remainder", "build-station", "choose-station", "continue-item", "explain", "language-continue", "language-step",
+  "answer-math", "answer-remainder", "build-pier", "build-station", "choose-station", "continue-item", "explain", "language-continue", "language-step",
   "name-base", "place-base", "reflect", "request-teaching", "resume-base", "revise-log", "save-log", "skip-stage", "start-visit", "stop-item",
   "summary-seen", "support", "typing-burst", "typing-check", "typing-course-continue", "typing-label", "typing-lesson", "write-transfer",
   "repair-explain", "typing-retry", "writing-retry", "language-retry", "repair-close", "lesson-feedback-seen",

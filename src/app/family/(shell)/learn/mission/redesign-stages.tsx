@@ -103,6 +103,36 @@ export function StationBuild({ view, busy, gate = alwaysOpen, onBuild }: { view:
 }
 
 // ---------------------------------------------------------------------------
+// Pier build (Visit 4) — one choice of the reviewed spot, visibly consequential in the world
+// ---------------------------------------------------------------------------
+
+export function PierBuild({ view, busy, gate = alwaysOpen, onBuild }: { view: ChildView; busy: boolean; gate?: Gate; onBuild: (spot: string) => void }) {
+  const pier = view.pier;
+  const firstRef = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(firstRef, "pier-build", { gate });
+  if (!pier) return null;
+  return (
+    <div className="flex flex-col gap-4" data-testid="pier-build">
+      <StoryBeat speaker="radio" beats={[{ text: pier.woodAvailable ? "Das Holz ist da. Der Kapitän wartet mit dem Boot vor der Bucht." : "Der Kapitän wartet mit dem Boot vor der Bucht — Holz ist keins gekommen, ihr baut mit den Brettern, die da sind.", scene: pier.woodAvailable ? "boat" : "pier" }]} compact />
+      <Instruction kicker="Steg bauen">Wo soll der Steg ins Wasser gehen?</Instruction>
+      <p className="text-base text-tertiary">
+        Nach dem Bauen siehst du den Steg in deiner Welt{pier.woodAvailable ? " — und das Boot macht am Steg fest." : ". Ohne das Holz vom Team bleibt das Boot noch draussen — der Steg steht trotzdem."}
+      </p>
+      <div className="grid gap-3 sm:grid-cols-2" role="group" aria-label="Platz für den Steg">
+        {pier.spots.map((spot, i) => (
+          <button key={spot.id} ref={i === 0 ? firstRef : undefined} type="button" disabled={busy || pier.built} onClick={() => onBuild(spot.id)} className={cn(chipButton, "min-h-20 flex-col")} data-testid={`pier-spot-${spot.id}`}>
+            <span className="text-3xl" aria-hidden>
+              {spot.emoji}
+            </span>
+            {spot.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Typing course — setup check first, hands and keys, then short rounds
 // ---------------------------------------------------------------------------
 

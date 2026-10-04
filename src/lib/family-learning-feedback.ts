@@ -48,7 +48,7 @@
 // ---------------------------------------------------------------------------
 
 import type { LanguageSegmentId, LearningContent, ScoredMathItemId, TypingCourseLesson, TypingLesson, VisitId, StageId, LanguageStep } from "./family-learning-content.ts";
-import { hasLanguageSegment, hasMathItem, isLanguageSegmentId, isScoredMathItemId, languageSegment, mathItem } from "./family-learning-content.ts";
+import { hasLanguageSegment, hasMathItem, isLanguageSegmentId, isScoredMathItemId, languageSegment, mathItem, usedWordOf } from "./family-learning-content.ts";
 import type { LanguageStepRecord, MathAttempt, MathItemState, MissionState, TypingBurst, TypingLabelRecord, TypingLessonRecord, VisitRecord } from "./family-learning-state.ts";
 import { buildVisitSummary, visitLabel, visitOrdinal, type VisitSummary } from "./family-learning-summary.ts";
 import { alignTyping } from "./family-learning-typing-metrics.ts";
@@ -171,7 +171,7 @@ export type LessonKind = "math" | "language" | "typing" | "writing";
 export type MistakeVisual =
   | { kind: "key"; key: string; finger: string | null; typed: string | null }
   | { kind: "sharing"; quantity: number; groups: number; answer: number; unit: string; group: string }
-  | { kind: "remainder"; quantity: number; groups: number; perGroup: number; used: number; remaining: number; unit: string; group: string }
+  | { kind: "remainder"; quantity: number; groups: number; perGroup: number; used: number; remaining: number; unit: string; group: string; usedWord: string }
   | { kind: "word"; word: string; gloss: string; emoji: string | null; language: "en" | "es" }
   | { kind: "spacing"; marked: string }
   | { kind: "label"; target: string; typed: string };
@@ -527,19 +527,19 @@ const MATH_EXPLAIN_SUPPORT = ["clarification", "representation", "example", "dir
 
 function mathVisual(content: LearningContent, id: ScoredMathItemId): MistakeVisual {
   const def = mathItem(content, id);
-  if (def.kind === "remainder" && def.answers && def.perGroup) return { kind: "remainder", quantity: def.quantity, groups: def.groups, perGroup: def.perGroup, used: def.answers.used, remaining: def.answers.remaining, unit: def.unit.plural, group: def.group.plural };
+  if (def.kind === "remainder" && def.answers && def.perGroup) return { kind: "remainder", quantity: def.quantity, groups: def.groups, perGroup: def.perGroup, used: def.answers.used, remaining: def.answers.remaining, unit: def.unit.plural, group: def.group.plural, usedWord: usedWordOf(def).past };
   return { kind: "sharing", quantity: def.quantity, groups: def.groups, answer: def.answer, unit: def.unit.plural, group: def.group.singular };
 }
 
 function mathCorrection(content: LearningContent, id: ScoredMathItemId): string {
   const def = mathItem(content, id);
-  if (def.kind === "remainder" && def.answers && def.perGroup) return `${def.groups} ${def.group.plural} × ${def.perGroup} = ${def.answers.used} ${def.unit.plural} gepflanzt, ${def.quantity} − ${def.answers.used} = ${def.answers.remaining} übrig.`;
+  if (def.kind === "remainder" && def.answers && def.perGroup) return `${def.groups} ${def.group.plural} × ${def.perGroup} = ${def.answers.used} ${def.unit.plural} ${usedWordOf(def).past}, ${def.quantity} − ${def.answers.used} = ${def.answers.remaining} übrig.`;
   return `${def.quantity} ${def.unit.plural} ÷ ${def.groups} = ${def.answer} pro ${def.group.singular.split("/")[0]}.`;
 }
 
-function mathAnswerText(a: MathAttempt, isRemainder: boolean): string {
+function mathAnswerText(a: MathAttempt, isRemainder: boolean, usedWord = "gepflanzt"): string {
   if (a.correct === null) return a.raw ? `„${a.raw}“` : "(unklar)";
-  if (isRemainder && a.remainder) return `${a.remainder.used ?? "?"} gepflanzt, ${a.remainder.remaining ?? "?"} übrig`;
+  if (isRemainder && a.remainder) return `${a.remainder.used ?? "?"} ${usedWord}, ${a.remainder.remaining ?? "?"} übrig`;
   return String(a.answer ?? a.raw);
 }
 
@@ -553,27 +553,28 @@ function mathLessonFeedback(state: MissionState, content: LearningContent, visit
   const incorrect = attempts.filter((a) => a.correct === false);
   const unscoredAttempts = attempts.filter((a) => a.correct === null);
   const correct = attempts.find((a) => a.correct === true) ?? null;
-  const expected = isRemainder && def.answers ? `${def.answers.used} gepflanzt, ${def.answers.remaining} übrig` : `${def.answer} pro ${def.group.singular.split("/")[0]}`;
+  const usedWord = usedWordOf(def).past;
+  const expected = isRemainder && def.answers ? `${def.answers.used} ${usedWord}, ${def.answers.remaining} übrig` : `${def.answer} pro ${def.group.singular.split("/")[0]}`;
   const focus = FOCUS_MATH(isRemainder ? "remainder" : "sharing");
   const grouped = new Map<string, { count: number; refs: string[] }>();
   for (const a of incorrect) {
-    const text = mathAnswerText(a, isRemainder);
+    const text = mathAnswerText(a, isRemainder, usedWord);
     const g = grouped.get(text) ?? { count: 0, refs: [] };
     g.count += 1;
     g.refs.push(`Versuch ${a.no}`);
     grouped.set(text, g);
   }
   const mistakes: Mistake[] = [...grouped.entries()].map(([given, g]) => ({ id: `answer:${given}`, evidence: "incorrect" as const, focus, count: g.count, given, expected, correction: def.clarification ?? mathCorrection(content, id), visual: mathVisual(content, id), refs: g.refs }));
-  const unscored: Mistake[] = unscoredAttempts.map((a) => ({ id: `unscored:${a.no}`, evidence: "unscored" as const, focus: null, count: 1, given: mathAnswerText(a, isRemainder), expected: "—", correction: a.uncertainty === "transcript" ? "Da war keine klare Zahl dabei — nicht bewertet." : "Nicht bewertet.", visual: null, refs: [`Versuch ${a.no}`] }));
+  const unscored: Mistake[] = unscoredAttempts.map((a) => ({ id: `unscored:${a.no}`, evidence: "unscored" as const, focus: null, count: 1, given: mathAnswerText(a, isRemainder, usedWord), expected: "—", correction: a.uncertainty === "transcript" ? "Da war keine klare Zahl dabei — nicht bewertet." : "Nicht bewertet.", visual: null, refs: [`Versuch ${a.no}`] }));
   let success: LessonFeedback["success"] = null;
-  const unit = isRemainder && def.answers ? `${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural}: ${def.answers.used} gepflanzt, ${def.answers.remaining} übrig` : `${def.quantity} ${def.unit.plural} gerecht auf ${def.groups} ${def.group.plural} verteilt`;
+  const unit = isRemainder && def.answers ? `${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural}: ${def.answers.used} ${usedWord}, ${def.answers.remaining} übrig` : `${def.quantity} ${def.unit.plural} gerecht auf ${def.groups} ${def.group.plural} verteilt`;
   if (correct && correct.evidence === "independent") success = { text: `${unit} — ohne Hilfe${correct.no === 1 ? ", beim ersten Versuch" : ""}.`, basis: `attempt ${id}#${correct.no} independent` };
   else if (correct) success = { text: `${unit} — ${correct.support.length ? "mit Hilfe" : "nach einem neuen Versuch"} gelöst.`, basis: `attempt ${id}#${correct.no} ${correct.evidence}` };
   else if (item.outcome === "taught") success = { text: `${unit} — zusammen gelöst.`, basis: `${id} taught` };
   // The in-item loop (clarification → representation/example → teach or stop) IS the bounded repair for math; its explanation is
   // "recorded" only when a durable support event of that kind exists on the item (never from the mere existence of the texts).
   const explained = item.supportGiven.some((k) => (MATH_EXPLAIN_SUPPORT as readonly string[]).includes(k)) || item.outcome === "taught";
-  const explanation = { title: isRemainder ? "Erst die vollen Beete, dann der Rest" : "Gleich viele für alle", text: def.representation ?? mathCorrection(content, id), visual: mathVisual(content, id), recorded: explained };
+  const explanation = { title: isRemainder ? `Erst die vollen ${def.group.plural}, dann der Rest` : "Gleich viele für alle", text: def.representation ?? mathCorrection(content, id), visual: mathVisual(content, id), recorded: explained };
   const retriesAfterFirstWrong: RepairRetry[] = incorrect.length ? attempts.filter((a) => a.no > incorrect[0].no).map((a, i) => ({ no: i + 1, item: id, purpose: "correct-original" as const, at: a.at, result: a.correct === null ? ("unscored" as const) : a.correct ? ("correct" as const) : ("incorrect" as const), focusErrors: a.correct === false ? 1 : 0, lineErrors: a.correct === false ? 1 : 0, seconds: 0 })) : [];
   const repair: RepairView = mistakes.length === 0 ? NO_REPAIR : { status: "closed", kind: null, repairId: fid, focus, explanation, items: [], retries: retriesAfterFirstWrong, used: 0, remaining: 0, outcome: correct ? "corrected-with-practice" : "practice-again" };
   let close: LessonFeedback["close"];
@@ -862,6 +863,7 @@ function worldChanges(state: MissionState, content: LearningContent, visit: Visi
     const def = mathItem(content, id);
     if (id === "EQ-RETURN") out.push("Vier Gartenbeete bepflanzt.");
     else if (id === "EQ-STATION") out.push(`Fünf Stationsbeete bepflanzt${item.remainderResult ? `, ${item.remainderResult.remaining} Setzlinge übrig` : ""}.`);
+    else if (id === "EQ-PIER") out.push(`${def.groups} Steg-Abschnitte mit Brettern belegt${item.remainderResult ? `, ${item.remainderResult.remaining} Bretter übrig` : ""}.`);
     else out.push(`${def.quantity} ${def.unit.plural} verteilt.`);
   }
   for (const [id, seg] of Object.entries(state.language)) {
@@ -872,6 +874,7 @@ function worldChanges(state: MissionState, content: LearningContent, visit: Visi
     }
   }
   if (state.station?.built && within(state.station.builtAt)) out.push(`Beobachtungsstation gebaut${state.station.lampLit ? " — die Lampe brennt" : " — ohne Lampe"}.`);
+  if (state.pier?.built && within(state.pier.builtAt)) out.push(`Steg gebaut${state.pier.boatMoored ? " — das Boot hat angelegt" : " — das Boot wartet noch (kein Holz geliefert)"}.`);
   const labels = state.typing.labels.filter((l) => within(l.at));
   for (const l of labels) out.push(`Schild aufgehängt: „${l.typed}“.`);
   const pages = state.pages.filter((p) => p.visit === visit.id && within(p.at));
@@ -965,8 +968,8 @@ export function updateMathFocus(fb: FeedbackState, content: LearningContent, inp
   const incorrect = attempts.filter((a) => a.correct === false);
   if (incorrect.length > 0 || input.item.outcome === "taught" || input.item.outcome === "stopped") {
     const first = incorrect[0] ?? null;
-    const expected = def.kind === "remainder" && def.answers ? `${def.answers.used} gepflanzt, ${def.answers.remaining} übrig` : `${def.answer}`;
-    const evidence = first ? `Letztes Mal (${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural}): du hattest ${mathAnswerText(first, def.kind === "remainder")}, richtig war ${expected}.` : `Letztes Mal (${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural}) haben wir ${input.item.outcome === "taught" ? "zusammen gelöst" : "pausiert"}.`;
+    const expected = def.kind === "remainder" && def.answers ? `${def.answers.used} ${usedWordOf(def).past}, ${def.answers.remaining} übrig` : `${def.answer}`;
+    const evidence = first ? `Letztes Mal (${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural}): du hattest ${mathAnswerText(first, def.kind === "remainder", usedWordOf(def).past)}, richtig war ${expected}.` : `Letztes Mal (${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural}) haben wir ${input.item.outcome === "taught" ? "zusammen gelöst" : "pausiert"}.`;
     return openFocus(fb, { id: focusId, kind: "math", key: kind, nowIso: input.at, visit: input.visit, lesson: `math:${input.id}`, evidence });
   }
   const correct = attempts.find((a) => a.correct === true) ?? null;
@@ -1041,7 +1044,7 @@ export function reminderFor(state: MissionState, content: LearningContent, input
   if (isScoredMathItemId(input.stage) && input.mathKind) {
     const f = open.find((x) => x.kind === "math" && x.key === input.mathKind);
     if (!f) return null;
-    return make(f, f.key === "remainder" ? "Erst die vollen Beete rechnen, dann den Rest." : "Alle bekommen gleich viele — am Ende nachzählen.", null);
+    return make(f, f.key === "remainder" ? "Erst alle vollen Gruppen rechnen (Beete, Abschnitte …), dann den Rest." : "Alle bekommen gleich viele — am Ende nachzählen.", null);
   }
   if (isLanguageSegmentId(input.stage) && input.language && input.languageWords) {
     const lang = input.language;

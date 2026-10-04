@@ -13,7 +13,7 @@
 // ---------------------------------------------------------------------------
 
 import type { LearningContent, ScoredMathItemId, VisitId } from "./family-learning-content.ts";
-import { mathItem } from "./family-learning-content.ts";
+import { mathItem, usedWordOf } from "./family-learning-content.ts";
 import type { MathAttempt, MissionState, TypingBurst, VisitRecord } from "./family-learning-state.ts";
 import type { LessonFeedback } from "./family-learning-feedback.ts";
 
@@ -108,6 +108,7 @@ export function visitOrdinal(state: MissionState, id: VisitId): number | null {
     case "v2": return 2;
     case "v3": return hasV3Record ? 3 : null;
     case "v4": return hasV3Record ? 4 : 3;
+    case "v5": return hasV3Record ? 5 : 4;
   }
 }
 
@@ -141,6 +142,8 @@ export type SceneModel = {
   beds: { id: string; filled: number; capacity: number | null }[];
   leftovers: number;
   station: { theme: string | null; spot: string | null; built: boolean; lamp: boolean };
+  /** Visit 4 (content v3): the pier — its sections appear once EQ-PIER is resolved (planks left beside), the pier itself after `build-pier`, the boat only with wood supplied. */
+  pier: { spot: string | null; built: boolean; boat: boolean; sections: number; planksLeft: number };
   pagesSaved: number;
 };
 
@@ -163,6 +166,16 @@ export function buildSceneModel(state: MissionState, content: LearningContent): 
     for (let i = 0; i < (def?.groups ?? 5); i += 1) beds.push({ id: `station-${i + 1}`, filled: per, capacity: per });
     leftovers = stationItem.remainderResult?.remaining ?? def?.answers?.remaining ?? 0;
   }
+  const pierItem = state.math["EQ-PIER"];
+  const pierDef = content.math.items.find((m) => m.id === "EQ-PIER");
+  const pierSectionsDone = !!pierItem && (pierItem.outcome === "correct" || pierItem.outcome === "taught");
+  const pier = {
+    spot: state.pier?.spot ?? null,
+    built: state.pier?.built ?? false,
+    boat: state.pier?.boatMoored ?? false,
+    sections: pierSectionsDone ? pierDef?.groups ?? 0 : 0,
+    planksLeft: pierSectionsDone ? pierItem?.remainderResult?.remaining ?? pierDef?.answers?.remaining ?? 0 : 0,
+  };
   return {
     location: state.base.locationId,
     base: !state.base.name ? "none" : !v1Done ? "tent" : garden ? "hut-garden" : "hut",
@@ -171,6 +184,7 @@ export function buildSceneModel(state: MissionState, content: LearningContent): 
     beds,
     leftovers,
     station: { theme: station?.theme ?? null, spot: station?.spot ?? null, built: station?.built ?? false, lamp: station?.lampLit ?? false },
+    pier,
     pagesSaved: state.pages.length,
   };
 }
@@ -188,7 +202,7 @@ export type VisitSummary = {
   success: SummaryLine | null;
   practiced: SummaryLine | null;
   next: SummaryLine & { branch: RecommendationBranch };
-  artifact: { kind: "page" | "station" | "revision" | "none"; text: string };
+  artifact: { kind: "page" | "station" | "pier" | "revision" | "none"; text: string };
 };
 
 function visitRecord(state: MissionState, visitId: VisitId): VisitRecord | null {
@@ -218,7 +232,7 @@ function burstsInVisit(state: MissionState, visit: VisitRecord): TypingBurst[] {
 
 function unitPhrase(content: LearningContent, id: ScoredMathItemId, item: MathAttempt): string {
   const def = mathItem(content, id);
-  if (def.kind === "remainder" && item.remainder) return `${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural} — ${item.remainder.used} gepflanzt, ${item.remainder.remaining} übrig`;
+  if (def.kind === "remainder" && item.remainder) return `${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural} — ${item.remainder.used} ${usedWordOf(def).past}, ${item.remainder.remaining} übrig`;
   return `${def.quantity} ${def.unit.plural} gerecht auf ${def.groups} ${def.group.plural} verteilt`;
 }
 
@@ -286,7 +300,7 @@ export function buildVisitSummary(state: MissionState, content: LearningContent,
   const unscored = attempts.find((a) => a.attempt.correct === null);
   const lowBurst = bursts.find((b) => b.accuracy < minAccuracy || b.comfort === "hard");
   const langWrong = langRecords.find((x) => x.r.correct === false || (x.r.evidence === "production" && x.r.correct === null));
-  if (incorrect) practiced = { text: incorrect.id === "EQ-STATION" ? "Geübt: erst die vollen Beete rechnen, dann den Rest." : "Geübt: gerecht teilen — noch einmal genau nachzählen.", basis: `attempt ${incorrect.id}#${incorrect.attempt.no} incorrect` };
+  if (incorrect) practiced = { text: mathItem(content, incorrect.id).kind === "remainder" ? `Geübt: erst die vollen ${mathItem(content, incorrect.id).group.plural} rechnen, dann den Rest.` : "Geübt: gerecht teilen — noch einmal genau nachzählen.", basis: `attempt ${incorrect.id}#${incorrect.attempt.no} incorrect` };
   else if (lowBurst) practiced = { text: `Geübt: die Tasten aus ${lowBurst.lessonId.replace("TYPE-CH-COURSE-", "Lektion ")} — langsam und genau${lowBurst.comfort === "hard" ? ", das war anstrengend" : ""}.`, basis: `burst ${lowBurst.lessonId} accuracy ${lowBurst.accuracy.toFixed(2)} comfort ${lowBurst.comfort}` };
   else if (revision && (revision.outcome === "partial" || revision.outcome === "unchanged")) practiced = { text: `Geübt: Leerzeichen zwischen den Wörtern (${revision.resolved} von ${revision.flagged.length} Stellen).`, basis: `log revision ${revision.outcome}` };
   else if (transfer && transfer.outcome === "flagged") practiced = { text: `Geübt: Leerzeichen im neuen Satz (${transfer.flagged.length} ${transfer.flagged.length === 1 ? "Stelle" : "Stellen"} fehlten noch).`, basis: `transfer ${transfer.id} flagged ${transfer.flagged.length}` };
@@ -299,6 +313,7 @@ export function buildVisitSummary(state: MissionState, content: LearningContent,
   if (revision && revision.revised) artifact = { kind: "revision", text: revision.revised };
   else if (page) artifact = { kind: "page", text: page.modality === "spoken" ? `${page.text} (gesprochen, dann gespeichert)` : page.text };
   else if (state.station?.built && state.station.builtAt && inVisit(state.station.builtAt)) artifact = { kind: "station", text: `Die Station steht${state.station.lampLit ? " und die Lampe brennt" : ""}.` };
+  else if (state.pier?.built && state.pier.builtAt && inVisit(state.pier.builtAt)) artifact = { kind: "pier", text: `Der Steg steht${state.pier.boatMoored ? " und das Boot hat angelegt" : ""}.` };
 
   return { visit: visitId, title, success, practiced, next, artifact };
 }

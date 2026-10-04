@@ -22,7 +22,7 @@
 
 import type { ChildId } from "./family-assistant-turn.ts";
 
-export type VisitId = "v1" | "v2" | "v3" | "v4";
+export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5";
 
 export type StageId =
   | "name-base"
@@ -33,23 +33,26 @@ export type StageId =
   | "EQ-RETURN"
   | "EQ-DELAY"
   | "EQ-STATION"
+  | "EQ-PIER"
   | "explain"
   | "LANG-EN-WATER"
   | "LANG-ES-AGUA"
   | "LANG-ES-STATION"
+  | "LANG-EN-PIER"
   | "typing"
   | "typing-course"
   | "station-choice"
   | "station-build"
+  | "pier-build"
   | "log-transfer"
   | "log"
   | "log-revise"
   | "summary"
   | "reflect";
 
-export type MathItemId = "EQ-ENTRY" | "EQ-MODEL" | "EQ-FRESH" | "EQ-RETURN" | "EQ-DELAY" | "EQ-STATION" | "EQ-STATION-MODEL";
+export type MathItemId = "EQ-ENTRY" | "EQ-MODEL" | "EQ-FRESH" | "EQ-RETURN" | "EQ-DELAY" | "EQ-STATION" | "EQ-STATION-MODEL" | "EQ-PIER";
 export type ScoredMathItemId = Exclude<MathItemId, "EQ-MODEL" | "EQ-STATION-MODEL">;
-export type LanguageSegmentId = "LANG-EN-WATER" | "LANG-ES-AGUA" | "LANG-ES-STATION";
+export type LanguageSegmentId = "LANG-EN-WATER" | "LANG-ES-AGUA" | "LANG-ES-STATION" | "LANG-EN-PIER";
 export type KeyboardLayoutId = "ch-de-qwertz" | "de-qwertz" | "us-qwerty";
 export type TargetLanguage = "de" | "en" | "es";
 
@@ -67,6 +70,8 @@ export type MathItem = {
   perGroup?: number;
   /** Remainder items: the two requested numbers. */
   answers?: { used: number; remaining: number };
+  /** Remainder items: the verb for the used part ("gepflanzt" for seedlings, "verbaut" for planks); default gepflanzt/Gepflanzt. */
+  usedWord?: { past: string; label: string };
   answer: number;
   unit: { singular: string; plural: string; emoji: string };
   group: { singular: string; plural: string; emoji: string };
@@ -175,6 +180,9 @@ export type TypingLabelTask = {
 export type StationTheme = { id: string; label: string; emoji: string; purpose: string };
 export type StationSpot = { id: string; label: string; emoji: string };
 
+/** A fresh writing-transfer check bound to one visit (content v3 carries one per chapter: WRITE-TRANSFER-1 → v4, WRITE-TRANSFER-2 → v5). */
+export type TransferDef = { id: string; version: number; visit: VisitId; prompt: string; instruction: string; note: string };
+
 export type SpacingJoin = { joined: string; split: string };
 
 export type LearningContent = {
@@ -213,7 +221,9 @@ export type LearningContent = {
     course?: TypingCourse;
     labelTasks: TypingLabelTask[];
   };
-  writing?: { spacing: { note: string; rules: string[]; joins: SpacingJoin[] }; transfer?: { id: string; version: number; prompt: string; instruction: string; note: string } };
+  writing?: { spacing: { note: string; rules: string[]; joins: SpacingJoin[] }; transfer?: { id: string; version: number; prompt: string; instruction: string; note: string }; transfers?: TransferDef[] };
+  /** Content version 3: the pier of visit v5 (two reviewed spots, a child choice). */
+  pier?: { note: string; spots: { id: string; label: string; emoji: string }[] };
   reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel?: string; dimensions?: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; note?: string };
   retention: { policy: string };
 };
@@ -241,13 +251,23 @@ export const EXPECTED_RETAINED_STAGES: Readonly<Record<"v1" | "v2" | "v3", reado
   v2: ["restore", "EQ-RETURN", "LANG-ES-AGUA", "typing", "log", "reflect"],
   v3: ["restore", "EQ-DELAY", "log", "reflect"],
 };
-export const EXPECTED_V4_STAGES: readonly StageId[] = ["restore", "station-choice", "typing-course", "EQ-STATION", "explain", "LANG-ES-STATION", "station-build", "log", "log-revise", "log-transfer", "summary", "reflect"];
+export const EXPECTED_V4_STAGES: readonly StageId[] = ["restore", "station-choice", "typing-course", "EQ-STATION", "explain", "LANG-ES-STATION", "station-build", "log", "log-revise", "log-transfer", "summary", "reflect"]
+/**
+ * Content version 3 (Visit 4, 2026-10-04): version 2 plus the pier chapter. The v4 stage list is now frozen too (saved
+ * missions index it numerically); v5 adds the remainder item EQ-PIER, the English request LANG-EN-PIER, the pier build
+ * and the second transfer check. Learner-visible label: "Besuch 4".
+ */
+export const EXPECTED_VISIT_IDS_V3: readonly VisitId[] = [...EXPECTED_VISIT_IDS_V2, "v5"];
+export const EXPECTED_MATH_ITEM_IDS_V3: readonly MathItemId[] = [...EXPECTED_MATH_ITEM_IDS_V2, "EQ-PIER"];
+export const EXPECTED_LANGUAGE_SEGMENT_IDS_V3: readonly LanguageSegmentId[] = [...EXPECTED_LANGUAGE_SEGMENT_IDS_V2, "LANG-EN-PIER"];
+export const EXPECTED_V5_STAGES: readonly StageId[] = ["restore", "typing-course", "EQ-PIER", "explain", "LANG-EN-PIER", "pier-build", "log", "log-revise", "log-transfer", "summary", "reflect"];
+export const EXPECTED_TRANSFER_ID_V5 = "WRITE-TRANSFER-2";;
 /** Stable identity of the fresh writing-transfer check (content v2, round 2). */
 export const EXPECTED_TRANSFER_ID = "WRITE-TRANSFER-1";
 export const EXPECTED_FEEDBACK_DIMENSIONS: readonly string[] = ["enjoyment", "clarity"];
 export type RecipientKind = "people" | "container";
 export const KEYBOARD_LAYOUT_IDS: readonly KeyboardLayoutId[] = ["ch-de-qwertz", "de-qwertz", "us-qwerty"];
-export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2];
+export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3];
 
 export type ContentReconciliation = {
   ok: boolean;
@@ -447,11 +467,12 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
   const version = typeof raw.contentVersion === "number" && SUPPORTED_CONTENT_VERSIONS.includes(raw.contentVersion) ? raw.contentVersion : null;
   if (version === null) problems.push(`contentVersion must be one of ${SUPPORTED_CONTENT_VERSIONS.join(", ")}, got ${String(raw.contentVersion)}`);
   if (raw.child !== "santiago") problems.push("content.child must be santiago for this build");
-  const v2 = version === 2;
+  const v3 = version === 3;
+  const v2 = version === 2 || v3; // every version-2 rule also holds for version 3
 
   const visitIds = idsOf(raw.visits);
   counts.visits = visitIds.length;
-  sameSet(visitIds, v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
+  sameSet(visitIds, v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
   if (Array.isArray(raw.visits)) {
     for (const [id, expected] of Object.entries(EXPECTED_RETAINED_STAGES)) {
       const visit = raw.visits.find((v) => isRecord(v) && v.id === id);
@@ -466,11 +487,33 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
     const intro = isRecord(v4) && isRecord(v4.intro) ? v4.intro : null;
     if (!intro || typeof intro.who !== "string" || typeof intro.make !== "string" || typeof intro.done !== "string") problems.push("visit v4: intro must say who needs help, what is made and what counts as done");
   }
+  if (v3 && Array.isArray(raw.visits)) {
+    const v5 = raw.visits.find((v) => isRecord(v) && v.id === "v5");
+    const stages = isRecord(v5) && Array.isArray(v5.stages) ? (v5.stages as unknown[]) : [];
+    if (stages.join(",") !== EXPECTED_V5_STAGES.join(",")) problems.push(`visit v5: stages must be exactly ${EXPECTED_V5_STAGES.join(" → ")}`);
+    const intro = isRecord(v5) && isRecord(v5.intro) ? v5.intro : null;
+    if (!intro || typeof intro.who !== "string" || typeof intro.make !== "string" || typeof intro.done !== "string") problems.push("visit v5: intro must say who needs help, what is made and what counts as done");
+    const pier = isRecord(raw.pier) ? raw.pier : null;
+    const spots = Array.isArray(pier?.spots) ? pier.spots : [];
+    if (spots.length < 2) problems.push("pier: at least two reviewed spots");
+    for (const sp of spots) if (!isRecord(sp) || typeof sp.id !== "string" || typeof sp.label !== "string" || typeof sp.emoji !== "string") problems.push("pier: malformed spot");
+    const transfers = isRecord(raw.writing) && Array.isArray(raw.writing.transfers) ? raw.writing.transfers : [];
+    const byVisit = new Map<string, Record<string, unknown>>();
+    for (const t of transfers) if (isRecord(t) && typeof t.visit === "string") byVisit.set(t.visit, t);
+    const t4 = byVisit.get("v4");
+    const t5 = byVisit.get("v5");
+    const base = isRecord(raw.writing) && isRecord(raw.writing.transfer) ? raw.writing.transfer : null;
+    if (!t4 || !base || t4.id !== EXPECTED_TRANSFER_ID || t4.prompt !== base.prompt || t4.instruction !== base.instruction || t4.version !== base.version) problems.push(`writing.transfers: the v4 entry must be ${EXPECTED_TRANSFER_ID} unchanged from writing.transfer`);
+    if (!t5 || t5.id !== EXPECTED_TRANSFER_ID_V5 || t5.version !== 1 || typeof t5.prompt !== "string" || typeof t5.instruction !== "string") problems.push(`writing.transfers: the v5 entry must be ${EXPECTED_TRANSFER_ID_V5} (version 1) with a prompt and an instruction`);
+    if (transfers.length !== 2) problems.push("writing.transfers: exactly one transfer check per chapter (v4, v5)");
+    const supplies = isRecord(raw.language) && isRecord(raw.language.supplyLabels) ? raw.language.supplyLabels : null;
+    for (const key of ["wood", "rope"]) if (!supplies || !isRecord(supplies[key])) problems.push(`language.supplyLabels: ${key} (visit v5) missing`);
+  }
 
   const math = isRecord(raw.math) ? raw.math : null;
   const mathIds = idsOf(math?.items);
   counts.math = mathIds.length;
-  sameSet(mathIds, v2 ? EXPECTED_MATH_ITEM_IDS_V2 : EXPECTED_MATH_ITEM_IDS, "math items", problems);
+  sameSet(mathIds, v3 ? EXPECTED_MATH_ITEM_IDS_V3 : v2 ? EXPECTED_MATH_ITEM_IDS_V2 : EXPECTED_MATH_ITEM_IDS, "math items", problems);
   if (Array.isArray(math?.items)) {
     for (const item of math.items) {
       if (!isRecord(item)) continue;
@@ -490,7 +533,7 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
   const language = isRecord(raw.language) ? raw.language : null;
   const segmentIds = idsOf(language?.segments);
   counts.language = segmentIds.length;
-  sameSet(segmentIds, v2 ? EXPECTED_LANGUAGE_SEGMENT_IDS_V2 : EXPECTED_LANGUAGE_SEGMENT_IDS, "language segments", problems);
+  sameSet(segmentIds, v3 ? EXPECTED_LANGUAGE_SEGMENT_IDS_V3 : v2 ? EXPECTED_LANGUAGE_SEGMENT_IDS_V2 : EXPECTED_LANGUAGE_SEGMENT_IDS, "language segments", problems);
   if (Array.isArray(language?.segments)) {
     for (const segment of language.segments) if (isRecord(segment)) checkLanguageSegment(segment, problems);
   }
@@ -586,13 +629,27 @@ export function isKeyboardLayoutId(value: unknown): value is KeyboardLayoutId {
 }
 
 export function isScoredMathItemId(value: unknown): value is ScoredMathItemId {
-  return value === "EQ-ENTRY" || value === "EQ-FRESH" || value === "EQ-RETURN" || value === "EQ-DELAY" || value === "EQ-STATION";
+  return value === "EQ-ENTRY" || value === "EQ-FRESH" || value === "EQ-RETURN" || value === "EQ-DELAY" || value === "EQ-STATION" || value === "EQ-PIER";
 }
 
 export function isLanguageSegmentId(value: unknown): value is LanguageSegmentId {
-  return value === "LANG-EN-WATER" || value === "LANG-ES-AGUA" || value === "LANG-ES-STATION";
+  return value === "LANG-EN-WATER" || value === "LANG-ES-AGUA" || value === "LANG-ES-STATION" || value === "LANG-EN-PIER";
 }
 
 export function isVisitId(value: unknown): value is VisitId {
-  return value === "v1" || value === "v2" || value === "v3" || value === "v4";
+  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5";
+}
+
+/** The fresh transfer check of a visit: content v3 binds one per chapter; content v2 has the single v4 check. */
+export function transferDefFor(content: LearningContent, visit: VisitId | null): TransferDef | null {
+  if (!visit || !content.writing) return null;
+  const bound = content.writing.transfers?.find((t) => t.visit === visit) ?? null;
+  if (bound) return bound;
+  if (visit === "v4" && content.writing.transfer) return { ...content.writing.transfer, visit: "v4" };
+  return null;
+}
+
+/** The verb for the used part of a remainder item ("30 gepflanzt" / "42 verbaut"). */
+export function usedWordOf(item: Pick<MathItem, "usedWord">): { past: string; label: string } {
+  return item.usedWord ?? { past: "gepflanzt", label: "Gepflanzt" };
 }

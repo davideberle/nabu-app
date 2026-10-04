@@ -29,8 +29,10 @@ import {
   isScoredMathItemId,
   languageSegment,
   mathItem,
+  transferDefFor,
   typingCourseForLayout,
   typingLessonForLayout,
+  usedWordOf,
   type KeyboardLayoutId,
   type LanguageSegment,
   type LanguageSegmentId,
@@ -279,6 +281,14 @@ export type StationState = {
   lampLit: boolean;
 };
 
+/** The pier of visit v5 (content v3): built at a chosen spot; the boat is moored only when the English request supplied wood. */
+export type PierState = {
+  spot: string | null;
+  built: boolean;
+  builtAt: string | null;
+  boatMoored: boolean;
+};
+
 export type LogRevision = {
   visit: VisitId;
   original: string;
@@ -366,6 +376,8 @@ export type MissionState = {
     alignment?: TypingAlignment | null;
   };
   station?: StationState;
+  /** Visit 4 (content v3, 2026-10-04): the pier in the bay — additive; absent on earlier rows. */
+  pier?: PierState;
   logRevisions: LogRevision[];
   transfers?: TransferRecord[];
   /** Lesson-end repairs, practice focus and acknowledged lesson feedback (world-first 2026-10-03, additive; absent on earlier rows). */
@@ -388,7 +400,7 @@ export const EMPTY_PARENT_SETTINGS: ParentSettings = {
   languageVarietyEs: null,
 };
 
-const SCORED_IDS: readonly ScoredMathItemId[] = ["EQ-ENTRY", "EQ-FRESH", "EQ-RETURN", "EQ-DELAY", "EQ-STATION"];
+const SCORED_IDS: readonly ScoredMathItemId[] = ["EQ-ENTRY", "EQ-FRESH", "EQ-RETURN", "EQ-DELAY", "EQ-STATION", "EQ-PIER"];
 
 function emptyMathState(): MathItemState {
   return {
@@ -411,6 +423,10 @@ function emptyLanguageState(): LanguageSegmentState {
 
 function emptyStation(): StationState {
   return { theme: null, chosenAt: null, spot: null, built: false, builtAt: null, lampLit: false };
+}
+
+function emptyPier(): PierState {
+  return { spot: null, built: false, builtAt: null, boatMoored: false };
 }
 
 export function newMissionState(content: LearningContent, child: ChildId, nowIso: string): MissionState {
@@ -438,6 +454,7 @@ export function newMissionState(content: LearningContent, child: ChildId, nowIso
     language,
     typing: { lessons: [], labels: [], skipped: [], course: null, alignment: null },
     station: emptyStation(),
+    pier: emptyPier(),
     logRevisions: [],
     transfers: [],
     feedback: emptyFeedbackState(),
@@ -469,6 +486,10 @@ export function upgradeMissionState(input: MissionState, content: LearningConten
   }
   if (!state.station) {
     state.station = emptyStation();
+    changed = true;
+  }
+  if (!state.pier) {
+    state.pier = emptyPier();
     changed = true;
   }
   if (!Array.isArray(state.logRevisions)) {
@@ -508,8 +529,10 @@ export function upgradeMissionState(input: MissionState, content: LearningConten
   // Only ever upgrade: under a lower served content version (cap / rollback) the
   // saved shape is kept as is, so returning to the newer content resumes exactly.
   if (state.contentVersion < content.contentVersion) {
+    // `upgradedAt` dates the ONE upgrade from the pilot content (version 1): historical reviews of pilot visits are
+    // labelled by it. A later additive upgrade (2 → 3, Visit 4) never moves it, so chapter reviews keep their version.
+    if (state.contentVersion === 1) state.upgradedAt = nowIso;
     state.contentVersion = content.contentVersion;
-    state.upgradedAt = nowIso;
     changed = true;
   }
   if (state.upgradedAt === undefined) {
@@ -602,6 +625,7 @@ export type LearningOp =
   | { op: "typing-course-continue" }
   | { op: "choose-station"; theme: string }
   | { op: "build-station"; spot: string }
+  | { op: "build-pier"; spot: string }
   | { op: "revise-log"; text: string }
   | { op: "summary-seen" }
   | { op: "skip-stage"; stage: StageId; reason: "time" | "child" }
@@ -723,6 +747,10 @@ export function nextVisitAvailability(
   const hasV4 = content.visits.some((v) => v.id === "v4");
   if (hasV4 && !finished.includes("v4")) return { visit: "v4", availableAt: null };
   if (!hasV4) return { visit: null, availableAt: null, reason: "no-further-visit-served" };
+  // Visit 4 (content v3, 2026-10-04): the pier chapter `v5` follows the finished station chapter immediately — no replay,
+  // no wait, no retired v3. Under content version 2 (cap / rollback) nothing further is offered and a running v5 is parked.
+  const hasV5 = content.visits.some((v) => v.id === "v5");
+  if (hasV5 && !finished.includes("v5")) return { visit: "v5", availableAt: null };
   return { visit: null, availableAt: null, reason: "all-visits-done" };
 }
 
@@ -1008,6 +1036,20 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       break;
     }
 
+    case "build-pier": {
+      requireStage(state, content, "pier-build");
+      const spots = content.pier?.spots ?? [];
+      if (!spots.some((s) => s.id === op.spot)) throw new LearningOpError("invalid", "unknown pier spot");
+      const pier = state.pier ?? emptyPier();
+      if (pier.built) throw new LearningOpError("not-allowed", "the pier is already built");
+      // The boat is moored only if the English request actually supplied wood (durable supply), like the station's lamp.
+      const boat = (state.base.supplies["wood"] ?? 0) > 0;
+      state.pier = { ...pier, spot: op.spot, built: true, builtAt: nowIso, boatMoored: boat };
+      advance(state, content);
+      result = { spot: op.spot, boatMoored: boat };
+      break;
+    }
+
     case "support": {
       const visit = currentVisit(state);
       const stage = currentStage(state, content);
@@ -1156,7 +1198,8 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       // model example before the last try (rule 4).
       if (correct === false && feedback === "represent") {
         noteTeaching(state, nowIso);
-        const modelId: MathItemId | null = op.itemId === "EQ-ENTRY" ? "EQ-MODEL" : op.itemId === "EQ-STATION" && hasMathItem(content, "EQ-STATION-MODEL") ? "EQ-STATION-MODEL" : null;
+        // The sharing example belongs to EQ-ENTRY; the remainder example (EQ-STATION-MODEL) serves every remainder item.
+        const modelId: MathItemId | null = op.itemId === "EQ-ENTRY" ? "EQ-MODEL" : def.kind === "remainder" && hasMathItem(content, "EQ-STATION-MODEL") ? "EQ-STATION-MODEL" : null;
         if (modelId) {
           item.phase = "example";
           attempt.teachingMove = "model-example";
@@ -1516,7 +1559,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const visit = currentVisit(state);
       const stage = currentStage(state, content);
       if (stage !== op.stage) throw new LearningOpError("not-allowed", "stage is not active");
-      const optional: StageId[] = ["LANG-EN-WATER", "LANG-ES-AGUA", "LANG-ES-STATION", "typing", "typing-course", "explain", "log-revise", "log-transfer"];
+      const optional: StageId[] = ["LANG-EN-WATER", "LANG-ES-AGUA", "LANG-ES-STATION", "LANG-EN-PIER", "typing", "typing-course", "explain", "log-revise", "log-transfer"];
       if (!optional.includes(op.stage)) throw new LearningOpError("not-allowed", "only optional segments can be skipped");
       visit.skippedStages.push({ stage: op.stage, reason: op.reason });
       if (op.stage === "typing" || op.stage === "typing-course") state.typing.skipped.push({ visit: visit.id, reason: op.reason });
@@ -1528,8 +1571,9 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
           state.logRevisions.push({ visit: visit.id, original: page.text, revised: null, flagged: flags, resolved: 0, outcome: "skipped", modality: "typed", helpShown: flags.length > 0, at: nowIso });
         }
       }
-      if (op.stage === "log-transfer" && content.writing?.transfer) {
-        const t = content.writing.transfer;
+      const skippedTransfer = op.stage === "log-transfer" ? transferDefFor(content, visit.id) : null;
+      if (skippedTransfer) {
+        const t = skippedTransfer;
         const revision = [...state.logRevisions].reverse().find((r) => r.visit === visit.id) ?? null;
         (state.transfers ??= []).push({ id: t.id, version: t.version, visit: visit.id, text: null, modality: "typed", flagged: [], assessed: 0, outcome: "skipped", helpExposed: !!revision?.helpShown, linkedRevisionAt: revision?.at ?? null, at: nowIso });
       }
@@ -1596,9 +1640,9 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
 
     case "write-transfer": {
       requireStage(state, content, "log-transfer");
-      const t = content.writing?.transfer;
-      if (!t) throw new LearningOpError("not-available", "no transfer check in this content");
       const visit = state.currentVisit as VisitId;
+      const t = transferDefFor(content, visit);
+      if (!t) throw new LearningOpError("not-available", "no transfer check in this content");
       const text = boundedText(op.text, MAX_TEXT_CHARS, "transfer sentence");
       const joins = content.writing?.spacing.joins ?? [];
       const assessment = assessSpacing(text, joins);
@@ -1852,6 +1896,8 @@ export type MathItemView = {
   outcome: MathItemState["outcome"];
   /** Remainder items: which half of the last incorrect answer was right (for the clarification). */
   lastPartial: { usedCorrect: boolean; remainingCorrect: boolean } | null;
+  /** Remainder items: the verb of the used part ("gepflanzt" / "verbaut") and its field label. */
+  usedWord: { past: string; label: string };
 };
 
 export type LanguageStepView =
@@ -1919,6 +1965,8 @@ export type ChildView = {
   nextStep: string;
   locations: { id: string; label: string; emoji: string }[];
   station: { themes: { id: string; label: string; emoji: string; purpose: string }[]; spots: { id: string; label: string; emoji: string }[]; theme: string | null; spot: string | null; built: boolean; lampLit: boolean; lampAvailable: boolean; reference: { kind: "turtles-in-log" | "none"; text: string } } | null;
+  /** Visit 4 (content v3): the pier's reviewed spots, the chosen spot, whether it stands and whether the boat is moored (wood supplied). */
+  pier: { spots: { id: string; label: string; emoji: string }[]; spot: string | null; built: boolean; boatMoored: boolean; woodAvailable: boolean } | null;
   math: MathItemView | null;
   language: {
     id: LanguageSegmentId;
@@ -1960,14 +2008,17 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
       case "EQ-RETURN": return "Der Garten wird angelegt.";
       case "EQ-DELAY": return "Proben fürs Labor verpacken.";
       case "EQ-STATION": return "Die Beete der Station werden bepflanzt — mit Rest.";
+      case "EQ-PIER": return "Die Bretter für den Steg — Abschnitt für Abschnitt, mit Rest.";
       case "explain": return "Erkläre, wie du gerechnet hast.";
       case "LANG-EN-WATER": return "Eine Nachricht auf Englisch ist angekommen.";
       case "LANG-ES-AGUA": return "Eine Nachricht auf Spanisch ist angekommen.";
       case "LANG-ES-STATION": return "Bitte das Team auf Spanisch um die Lampe.";
+      case "LANG-EN-PIER": return "Bitte das Team auf Englisch um Holz für den Steg.";
       case "typing": return "Ein kurzes Tipp-Training, dann das Schild.";
       case "typing-course": return "Tastatur-Check, dann kurze Tipp-Runden.";
       case "station-choice": return "Was soll deine Station beobachten?";
       case "station-build": return "Baue die Station.";
+      case "pier-build": return "Baue den Steg ins Wasser.";
       case "log": return "Schreib die Expeditionsseite.";
       case "log-revise": return "Schau deinen Satz noch einmal an.";
       case "log-transfer": return "Schreib einen neuen kurzen Satz.";
@@ -1982,6 +2033,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
     if (availability.visit === "v1") return "Baue deine Basis.";
     if (availability.visit === "v3") return "Deine angefangene Aufgabe von früher wartet auf dich.";
     if (availability.visit === "v4") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v4") ?? 3}): die Beobachtungsstation.`;
+    if (availability.visit === "v5") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v5") ?? 4}): der Steg in der Bucht.`;
     return "Zurück zur Basis — ein neuer Besuch wartet.";
   }
   return "Alle Besuche sind geschafft.";
@@ -2026,6 +2078,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
       outcome: item.outcome,
       lastPartial: def.kind === "remainder" && lastIncorrect?.remainder && def.answers ? { usedCorrect: lastIncorrect.remainder.used === def.answers.used, remainingCorrect: lastIncorrect.remainder.remaining === def.answers.remaining } : null,
       groupKind: content.math.recipientKinds?.[def.id] ?? (/forscher|person|kind|freund|team/i.test(def.group.singular) ? "people" : "container"),
+      usedWord: usedWordOf(def),
     };
   }
 
@@ -2114,8 +2167,9 @@ export function buildChildView(state: MissionState, content: LearningContent, se
   }
 
   let transfer: ChildView["transfer"] = null;
-  if (stage === "log-transfer" && state.currentVisit && content.writing?.transfer) {
-    const t = content.writing.transfer;
+  const transferDef = transferDefFor(content, state.currentVisit);
+  if (stage === "log-transfer" && state.currentVisit && transferDef) {
+    const t = transferDef;
     const revision = [...state.logRevisions].reverse().find((r) => r.visit === state.currentVisit) ?? null;
     transfer = { id: t.id, version: t.version, prompt: t.prompt, instruction: t.instruction, helpExposed: !!revision?.helpShown };
   }
@@ -2131,6 +2185,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
   const minutesElapsed = running ? Math.floor((now.getTime() - new Date(running.startedAt).getTime()) / 60000) : 0;
   const def = running ? findVisitDef(content, running.id) ?? null : null;
   const stationDef = content.station ?? null;
+  const pier = state.pier ?? emptyPier();
   const station = state.station ?? emptyStation();
   // C2: the station prompt may only refer to what the child actually saved.
   const turtleLog = state.pages.some((p) => /schildkr[öo]t/i.test(p.text));
@@ -2158,6 +2213,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     nextStep: nextStepText(state, content, stage, now),
     locations: content.locations,
     station: stationDef ? { themes: stationDef.themes, spots: stationDef.spots, theme: station.theme, spot: station.spot, built: station.built, lampLit: station.lampLit, lampAvailable: (state.base.supplies["lámpara"] ?? 0) > 0, reference: stationReference } : null,
+    pier: content.pier ? { spots: content.pier.spots, spot: pier.spot, built: pier.built, boatMoored: pier.boatMoored, woodAvailable: (state.base.supplies["wood"] ?? 0) > 0 } : null,
     math,
     language,
     typing,
@@ -2215,14 +2271,17 @@ export function stageLabel(stage: StageId): string {
     case "EQ-RETURN": return "Garten";
     case "EQ-DELAY": return "Labor";
     case "EQ-STATION": return "Beete";
+    case "EQ-PIER": return "Steg";
     case "explain": return "Erklären";
     case "LANG-EN-WATER": return "English";
     case "LANG-ES-AGUA": return "Español";
     case "LANG-ES-STATION": return "Español";
+    case "LANG-EN-PIER": return "English";
     case "typing": return "Tippen";
     case "typing-course": return "Tippen";
     case "station-choice": return "Station";
     case "station-build": return "Bauen";
+    case "pier-build": return "Steg bauen";
     case "log": return "Logbuch";
     case "log-revise": return "Nochmal lesen";
     case "log-transfer": return "Neuer Satz";

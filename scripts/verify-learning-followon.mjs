@@ -247,13 +247,14 @@ for (const o of [
 ]) await op(o);
 const finishKey = "fo-finish";
 const fin = await op({ op: "reflect", optionId: "right", feedback: { enjoyment: "yes", clarity: "clear" } }, finishKey);
-check("API: finishing Visit 3 → total 3, this week +1, next 'all-visits-done', recent grounded in the just-written review", fin.view.progress.completedTotal === 3 && fin.view.progress.next.reason === "all-visits-done" && fin.view.progress.recent?.visit === "v4" && fin.view.progress.recent.grounding.source === "review" && fin.view.progress.recent.label === "Besuch 3 — Die Beobachtungsstation", fin.view.progress.recent?.grounding);
+// Content version 3 (Visit 4, 2026-10-04): after the station chapter the next action is the pier chapter (v5, "Besuch 4"), no longer all-visits-done.
+check("API: finishing Visit 3 → total 3, this week +1, next 'Besuch 4' (v5) offered, recent grounded in the just-written review", fin.view.progress.completedTotal === 3 && fin.view.progress.next.kind === "start" && fin.view.progress.next.visit === "v5" && fin.view.next.ordinal === 4 && fin.view.progress.recent?.visit === "v4" && fin.view.progress.recent.grounding.source === "review" && fin.view.progress.recent.label === "Besuch 3 — Die Beobachtungsstation", fin.view.progress.recent?.grounding);
 const replay = await api("PUT", "/api/family/learning/mission", { op: { op: "reflect", optionId: "right" }, expectedRevision: fin.view.revision - 1, idempotencyKey: finishKey, context: { erasureGeneration: fin.view.erasureGeneration, visit: null }, tz: TZ }, assistant, bearer);
 check("API: lost-ACK retry of the finish replays (same key) with the same counts, nothing doubled", replay.status === 200 && replay.json.status === "replayed" && replay.json.view.progress.completedTotal === 3);
 await page.goto(`${BASE}/family/learn?child=santiago`, { waitUntil: "load" });
 await openProgress(page);
 const doneText = await page.getByTestId("progress-strip").innerText();
-check("cockpit: after the chapter — 3 total, chip 'Besuch 3 — Die Beobachtungsstation', 'Alle Besuche sind geschafft'", /Insgesamt fertig: 3/.test(doneText) && (await page.getByTestId("progress-visit-v4").innerText()).includes("Besuch 3 — Die Beobachtungsstation") && /Alle Besuche sind geschafft/.test(doneText));
+check("cockpit: after the chapter — 3 total, chip 'Besuch 3 — Die Beobachtungsstation', next 'Besuch 4 — Der Steg in der Bucht'", /Insgesamt fertig: 3/.test(doneText) && (await page.getByTestId("progress-visit-v4").innerText()).includes("Besuch 3 — Die Beobachtungsstation") && /Besuch 4 — Der Steg in der Bucht/.test(doneText));
 await page.screenshot({ path: path.join(OUT, "cockpit-after-visit3.png"), fullPage: true });
 
 // ---------------------------------------------------------------------------
@@ -265,7 +266,7 @@ const ppage = await parentCtx.newPage();
 await ppage.goto(`${BASE}/family/learn/parent`, { waitUntil: "load" });
 await ppage.getByTestId("parent-next-step").waitFor({ timeout: 20000 });
 const nextStep = await ppage.getByTestId("parent-next-step").innerText();
-check("parent: next step says all visits 1–3 are done; no pending delayed check", /Besuche 1–3/.test(nextStep) && !/an seinem Datum|nie vorgezogen/.test(nextStep), nextStep);
+check("parent: next step names Besuch 4 (v5, EQ-PIER, LANG-EN-PIER) as available now; no pending delayed check", /Besuch 4 — Der Steg in der Bucht/.test(nextStep) && /EQ-PIER/.test(nextStep) && !/an seinem Datum|nie vorgezogen/.test(nextStep), nextStep);
 check("parent: retired delayed-check panel (status retired, retirement date)", (await ppage.getByTestId("delayed-check-parent").getAttribute("data-status")) === "retired" && /30\. September 2026/.test(await ppage.getByTestId("delayed-check-parent").innerText()));
 const mathText = await ppage.locator("body").innerText();
 check("parent (math tab): attempts are labelled 'Besuch 3 — Die Beobachtungsstation (v4)'", /Besuch 3 — Die Beobachtungsstation \(v4\)/.test(mathText) || (await (async () => { await ppage.getByRole("button", { name: /EQ-STATION|Beete|Rest/ }).first().click().catch(() => {}); return /Besuch 3 — Die Beobachtungsstation \(v4\)/.test(await ppage.locator("body").innerText()); })()));
