@@ -148,21 +148,25 @@ export function ChildShellLayoutClient({
   const openSwitcher = useCallback(() => setSwitcherOpen(true), []);
 
   // ------------------------------------------------------------------
-  // Wallet — one server projection per child, shared by every surface
+  // Wallet — one server projection per child, shared by every surface.
+  //
+  // The stored state is keyed by the child it was read for. The value handed
+  // to consumers is derived SYNCHRONOUSLY from (stored, selected child): a
+  // projection read for the sibling is never exposed — not as a stale
+  // "updating…" number, not for a frame — so a profile switch with a slow or
+  // failing wallet read shows "loading"/"unknown", never the other child's
+  // coins (FH-06, cross-child regression gate).
   // ------------------------------------------------------------------
-  const [wallet, setWallet] = useState<ShellWalletState>({ status: "idle" });
+  const [storedWallet, setStoredWallet] = useState<{ child: ChildId; state: ShellWalletState } | null>(null);
   const walletSeq = useRef(0);
   const [walletAttempt, setWalletAttempt] = useState(0);
   const refreshWallet = useCallback(() => setWalletAttempt((n) => n + 1), []);
 
   useEffect(() => {
-    if (!child) {
-      setWallet({ status: "idle" });
-      return;
-    }
+    if (!child) return;
     const seq = (walletSeq.current += 1);
     const controller = new AbortController();
-    setWallet((prev) => ({ status: "loading", wallet: prev.status === "ready" || prev.status === "loading" || prev.status === "error" ? prev.wallet : null }));
+    setStoredWallet((prev) => ({ child, state: { status: "loading", wallet: prev && prev.child === child && prev.state.status !== "idle" ? prev.state.wallet : null } }));
     (async () => {
       try {
         const res = await fetch("/api/family/wallet", { signal: controller.signal, cache: "no-store" });
@@ -172,16 +176,22 @@ export function ChildShellLayoutClient({
         if (seq !== walletSeq.current) return;
         const entry = projection.wallets[child];
         if (!entry) throw new Error("wallet missing");
-        setWallet({ status: "ready", wallet: entry, projection });
+        setStoredWallet({ child, state: { status: "ready", wallet: entry, projection } });
       } catch {
         if (seq !== walletSeq.current || controller.signal.aborted) return;
-        setWallet((prev) => ({ status: "error", wallet: prev.status === "loading" ? prev.wallet : null }));
+        setStoredWallet((prev) => ({ child, state: { status: "error", wallet: prev && prev.child === child && prev.state.status === "loading" ? prev.state.wallet : null } }));
       }
     })();
     return () => {
       controller.abort();
     };
   }, [child, walletAttempt]);
+
+  const wallet: ShellWalletState = useMemo(() => {
+    if (!child) return { status: "idle" };
+    if (!storedWallet || storedWallet.child !== child) return { status: "loading", wallet: null };
+    return storedWallet.state;
+  }, [child, storedWallet]);
 
   // Returning to Home re-reads the balance (proposal: wallet contract 5).
   useEffect(() => {

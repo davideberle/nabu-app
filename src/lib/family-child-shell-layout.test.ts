@@ -225,6 +225,14 @@ describe("one persistent shell layout owns chrome and identity", () => {
     ok(providerSource.includes('childShellDestinationHref("home", applied)'));
   });
 
+  it("the exposed wallet is derived synchronously from the selected child — a sibling's projection is never handed to any consumer (FH-06)", () => {
+    ok(providerSource.includes("storedWallet.child !== child"));
+    ok(providerSource.includes('return { status: "loading", wallet: null }'));
+    // No consumer reads the raw stored state; everyone goes through the derived value.
+    doesNotMatch(shellSource, /storedWallet/);
+    doesNotMatch(readFileSync(new URL("../app/family/(shell)/home/client.tsx", import.meta.url), "utf8"), /storedWallet/);
+  });
+
   it("uses device-independent wording (FH-03)", () => {
     doesNotMatch(shellSource, /iPad/);
     ok(shellSource.includes("Choose your profile"));

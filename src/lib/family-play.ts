@@ -111,8 +111,14 @@ export type PlayLease = {
   deviceLabel: string | null;
   /** The lease this one replaced (device switch / stale takeover), if any. */
   predecessorId: string | null;
-  /** Seconds held back from this budget for the predecessor's still-unsettled consumption. */
+  /** Seconds held back from this budget for other unresolved leases' possible reports. */
   reserveSeconds: number;
+  /** Hard ceiling for this lease's total reported consumption; frozen when Family ends the lease. */
+  capSeconds: number;
+  /** True once the meter reported this lease's end (its reserve is released). */
+  finalSettled: boolean;
+  /** When the meter first validated this lease with Family (null = never activated). */
+  activatedAt: string | null;
 };
 
 /**

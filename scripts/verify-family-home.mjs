@@ -227,11 +227,32 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   const weekItems = await page.locator("[data-activity-id]").count();
   record("B-08", "weekly filter narrows the list and keeps the wallet chip", weekItems < items && (await chip.isVisible()), `${weekItems} < ${items}`);
   await shot(page, "desktop-03-activity");
-  // Profile switch → the other child's Home
+  // Profile switch → the other child's Home, with the wallet read HELD: no frame may show Santiago's number.
+  let holdWallet = true;
+  const heldRoutes = [];
+  await page.route("**/api/family/wallet", async (route) => {
+    if (holdWallet) heldRoutes.push(route);
+    else await route.continue();
+  });
   await page.getByRole("button", { name: /switch profile/ }).click();
   await page.getByRole("button", { name: /Open Isabel/ }).click();
   await page.waitForURL(/\/family\/home\?child=isabel/, { timeout: 10000 });
   await page.getByRole("heading", { name: /Hi Isabel/ }).waitFor();
+  const frames = [];
+  for (let i = 0; i < 6; i += 1) {
+    frames.push(await page.locator("body").innerText());
+    await page.waitForTimeout(80);
+  }
+  const siblingShown = frames.some((t) => t.includes(`You have ${walletNow} coins`) || new RegExp(`^${walletNow} coins`, "m").test(t));
+  record("B-09a", "FH-06 while Isabel's wallet read is delayed, no frame shows Santiago's balance (Home or header)", !siblingShown && frames.every((t) => /Hi Isabel/.test(t)), frames[0].split("\n").filter((l) => /coins|Hi Isabel/.test(l)).join(" | "));
+  // …and when that read FAILS, still no sibling number: unknown + retry.
+  for (const r of heldRoutes.splice(0)) await r.fulfill({ status: 503, contentType: "application/json", body: '{"error":"harness outage"}' });
+  await page.getByText("Couldn’t load your wallet").waitFor({ timeout: 10000 });
+  const failedText = await page.locator("body").innerText();
+  record("B-09b", "FH-06 a failed sibling wallet read shows unknown + retry, never Santiago's or a zero balance", !failedText.includes(`You have ${walletNow} coins`) && !failedText.includes("You have 0 coins") && (await page.getByRole("button", { name: /Try again/ }).isVisible()));
+  holdWallet = false;
+  await page.unroute("**/api/family/wallet");
+  await page.getByRole("button", { name: /Try again/ }).first().click();
   const isabelNow = (await call("GET", "/api/family/wallet", { cookie: assistant })).json.wallets.isabel.balance;
   await page.getByText(`You have ${isabelNow} coins`).waitFor({ timeout: 10000 });
   const headings = await page.getByRole("heading", { level: 1 }).allInnerTexts();

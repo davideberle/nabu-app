@@ -12,6 +12,7 @@ import {
   ensurePlayTables,
   getLeaseStatus,
   getLeasesForPerson,
+  recordLeaseActivation,
   getPlayState,
   issuePlayLease,
   purchasePlayBlock,
@@ -179,18 +180,19 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     const mac = await issuePlayLease({ personId: "santiago", gameId: "other-paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "Mac", now: at(205) }, client);
     ok(!mac.ok && mac.reason === "lease-held" && mac.heldBy?.leaseId === ipad.lease.id);
     const takeover = await issuePlayLease({ personId: "santiago", gameId: "other-paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "Mac", now: at(206) }, client);
-    // 700 remain, but the iPad may still report up to the 5 s since its last settlement: budget 695, reserve 5.
-    ok(takeover.ok && takeover.replaced === ipad.lease.id && takeover.lease.budgetSeconds === 695 && takeover.lease.reserveSeconds === 5);
+    // 700 remain, but the iPad may still report the 5 s since its last settlement: budget 695, reserve 5 (exact wall time, no slack).
+    ok(takeover.ok && takeover.replaced === ipad.lease.id && takeover.lease.budgetSeconds === 695 && takeover.lease.reserveSeconds === 5, JSON.stringify(takeover));
     const leases = await getLeasesForPerson("santiago", client);
     deepEqual(leases.map((l) => l.state), ["ended", "active"]);
     equal(leases[0].endReason, "replaced-by-takeover");
-    // A late report from the replaced lease is still bounded by its own budget and the shared allowance.
+    // A late report from the replaced lease is bounded by the cap frozen when Family ended it (200 settled + 5 s elapsed = 205):
+    // claiming 250 is clamped to 205, so the iPad can never bill more than it could lawfully have measured.
     const late = await settlePlayLease({ leaseId: ipad.lease.id, consumedSeconds: 250, end: true, now: at(230) }, client);
-    ok(late.ok && late.delta === 50);
-    equal((await getPlayState("santiago", client)).remainingSeconds, 650);
+    ok(late.ok && late.delta === 5 && late.lease.consumedSeconds === 205, JSON.stringify(late));
+    equal((await getPlayState("santiago", client)).remainingSeconds, 695);
     // …and the successor's budget is reconciled to the real remaining allowance once the predecessor is final.
     const succ = (await getLeasesForPerson("santiago", client)).find((l) => l.id === takeover.lease.id)!;
-    equal(succ.budgetSeconds, 650);
+    equal(succ.budgetSeconds, 695);
     equal(succ.reserveSeconds, 0);
   });
 
@@ -216,6 +218,75 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     equal((await getPlayState("santiago", client)).remainingSeconds, 775);
     // Sum of what both devices could ever consume never exceeds the purchase.
     ok(125 + succ.budgetSeconds <= 900);
+  });
+
+  it("GP-03/07 conservation over a chain A→B→C: ancestor reserves persist, a late ancestor report shrinks the live cap, totals never exceed the grant", async () => {
+    const client = await fresh({ santiagoCoins: 7 });
+    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-chain-1", purchaseId: id("p"), redemptionId: id("r"), now: at(0) }, client);
+    const a = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "A", now: at(1) }, client);
+    const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "B", now: at(31) }, client);
+    const c = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "C", now: at(36) }, client);
+    if (!a.ok || !b.ok || !c.ok) throw new Error("lease issue failed");
+    // A never settled: it may still report its 30 s; B likewise its 5 s. C must leave both untouched — ancestors included.
+    equal(b.lease.budgetSeconds, 870);
+    equal(c.lease.budgetSeconds, 865);
+    // A's late final report (an hour later) is applied within its frozen cap; B's 5 s stay reserved (no expiry) so C is 865, not 870.
+    const lateA = await settlePlayLease({ leaseId: a.lease.id, consumedSeconds: 30, end: true, endReason: "left", now: at(3601) }, client);
+    ok(lateA.ok && lateA.delta === 30);
+    const cAfter = (await getLeasesForPerson("santiago", client)).find((l) => l.id === c.lease.id)!;
+    equal(cAfter.budgetSeconds, 865);
+    // C reports more than everything: clamped to its cap and to the allowance; the sum of accepted per-lease seconds never exceeds 900.
+    const cFinal = await settlePlayLease({ leaseId: c.lease.id, consumedSeconds: 895, end: true, now: at(4000) }, client);
+    ok(cFinal.ok);
+    const total = Number((await client.execute("SELECT SUM(consumed_seconds) AS n FROM family_play_leases WHERE person_id = 'santiago'")).rows[0].n);
+    ok(total <= 900, `total accepted ${total}`);
+    // B's very late report is clamped to its frozen cap (5 s) and fits exactly the reserved room: the total lands on 900, never above.
+    const lateB = await settlePlayLease({ leaseId: b.lease.id, consumedSeconds: 20, end: true, now: at(4100) }, client);
+    ok(lateB.ok && lateB.delta === 5 && lateB.lease.consumedSeconds === 5, JSON.stringify(lateB));
+    equal(Number((await client.execute("SELECT SUM(consumed_seconds) AS n FROM family_play_leases WHERE person_id = 'santiago'")).rows[0].n), 900);
+    equal((await getPlayState("santiago", client)).remainingSeconds, 0);
+  });
+
+  it("GP-03 a never-activated lease releases its reserve once the meter's status read proves it can no longer report", async () => {
+    const client = await fresh({ santiagoCoins: 7 });
+    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-neveract-1", purchaseId: id("p"), redemptionId: id("r"), now: at(0) }, client);
+    const a = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "A", now: at(1) }, client);
+    // The frame never loaded on A; ten minutes later the child plays on B.
+    const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "B", now: at(601) }, client);
+    if (!a.ok || !b.ok) throw new Error("issue failed");
+    equal(b.lease.budgetSeconds, 300, "A's unknown 600 s are reserved until Family knows A never ran");
+    // The adapter validates B (status read): Family learns A was never activated and releases its reserve.
+    await recordLeaseActivation(b.lease.id, at(602), client);
+    const bAfter = (await getLeasesForPerson("santiago", client)).find((l) => l.id === b.lease.id)!;
+    equal(bAfter.budgetSeconds, 900);
+    equal(bAfter.reserveSeconds, 0);
+    // An activated-then-replaced lease keeps its reserve until its meter reports.
+    await recordLeaseActivation(b.lease.id, at(603), client);
+    const c = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "C", now: at(650) }, client);
+    if (!c.ok) throw new Error("issue failed");
+    equal(c.lease.budgetSeconds, 900 - 49, "B ran from 601 to 650: 49 s reserved");
+    await recordLeaseActivation(c.lease.id, at(651), client);
+    equal((await getLeasesForPerson("santiago", client)).find((l) => l.id === c.lease.id)!.budgetSeconds, 900 - 49, "B was activated: its reserve stays until it reports");
+  });
+
+  it("GP-03/07 an ordinary release followed by a fresh lease reserves the released meter's pending report", async () => {
+    const client = await fresh({ santiagoCoins: 7 });
+    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-release-1", purchaseId: id("p"), redemptionId: id("r"), now: at(0) }, client);
+    const a = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "A", now: at(1) }, client);
+    if (!a.ok) throw new Error("lease issue failed");
+    equal(await endPlayLease({ leaseId: a.lease.id, personId: "santiago", reason: "left", now: at(31) }, client), true);
+    const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "B", now: at(31) }, client);
+    if (!b.ok) throw new Error("lease issue failed");
+    ok(b.lease.budgetSeconds <= 870, `B ${b.lease.budgetSeconds}`);
+    const lateA = await settlePlayLease({ leaseId: a.lease.id, consumedSeconds: 30, end: true, now: at(3600) }, client);
+    ok(lateA.ok && lateA.delta === 30);
+    const bAfter = (await getLeasesForPerson("santiago", client)).find((l) => l.id === b.lease.id)!;
+    equal(bAfter.budgetSeconds, 870);
+    equal((await getPlayState("santiago", client)).remainingSeconds, 870);
+    // A's cap was frozen at release (30 s): a report claiming far more than it could have measured is clamped to that cap.
+    const bogus = await settlePlayLease({ leaseId: a.lease.id, consumedSeconds: 800, end: true, now: at(3700) }, client);
+    if (!bogus.ok) throw new Error("settle failed");
+    equal(bogus.lease.consumedSeconds, 30);
   });
 
   it("GP-07 a report that arrives long after a lease ended (offline/restart) is applied, bounded, and the status read reflects it", async () => {

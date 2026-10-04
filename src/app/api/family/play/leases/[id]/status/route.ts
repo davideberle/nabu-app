@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { NO_STORE, refuse, requireStudioSettlement } from "@/lib/family-games-auth";
-import { getLeaseStatus } from "@/lib/family-play-db";
+import { getLeaseStatus, recordLeaseActivation } from "@/lib/family-play-db";
 import { isValidLeaseId } from "@/lib/family-play";
 
 /**
@@ -16,6 +16,7 @@ export async function GET(request: Request, context: { params: Promise<{ id: str
   if (!isValidLeaseId(id)) return refuse(400, "Invalid lease id");
   const authz = await requireStudioSettlement(request, id);
   if (!authz.ok) return authz.response;
+  await recordLeaseActivation(id);
   const status = await getLeaseStatus(id);
   if (!status) return refuse(404, "not-found");
   return NextResponse.json(status, { headers: NO_STORE });

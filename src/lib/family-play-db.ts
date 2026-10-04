@@ -88,7 +88,7 @@ export async function ensurePlayTables(client: Db): Promise<void> {
       reserve_seconds  INTEGER NOT NULL DEFAULT 0
     )
   `);
-  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0"]) {
+  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0", "cap_seconds INTEGER", "final_settled INTEGER NOT NULL DEFAULT 0", "activated_at TEXT"]) {
     try {
       await client.execute(`ALTER TABLE family_play_leases ADD COLUMN ${column}`);
     } catch {
@@ -159,35 +159,10 @@ function rowToLease(row: Record<string, unknown>): PlayLease {
     deviceLabel: (row["device_label"] as string | null) ?? null,
     predecessorId: (row["predecessor_id"] as string | null) ?? null,
     reserveSeconds: Number(row["reserve_seconds"] ?? 0),
+    capSeconds: row["cap_seconds"] === null || row["cap_seconds"] === undefined ? Number(row["budget_seconds"]) : Number(row["cap_seconds"]),
+    finalSettled: Number(row["final_settled"] ?? 0) === 1,
+    activatedAt: (row["activated_at"] as string | null) ?? null,
   };
-}
-
-/**
- * Seconds a predecessor lease may still report after it was replaced: its
- * unsettled consumption can never exceed the wall time since its last
- * settlement (or issue), nor its own remaining budget. Zero once it reported
- * its end. This upper bound is what the successor's budget is reduced by, so
- * a device switch can never create allowance that does not exist (GP-03).
- */
-export function outstandingPredecessorSeconds(pred: Pick<PlayLease, "metered" | "budgetSeconds" | "consumedSeconds" | "endReason" | "lastSettledAt" | "issuedAt" | "state">, now: Date): number {
-  if (!pred.metered) return 0;
-  if (pred.state === "ended" && pred.endReason && pred.endReason !== "replaced-by-takeover" && pred.endReason !== "replaced-stale") return 0;
-  const since = Date.parse(pred.lastSettledAt ?? pred.issuedAt);
-  const elapsed = Number.isFinite(since) ? Math.max(0, Math.ceil((now.getTime() - since) / 1000)) : LEASE_STALE_SECONDS;
-  return Math.max(0, Math.min(pred.budgetSeconds - pred.consumedSeconds, elapsed, LEASE_STALE_SECONDS));
-}
-
-async function recomputeSuccessorBudget(db: Db, predecessorId: string, now: Date): Promise<void> {
-  const succ = await db.execute({ sql: "SELECT * FROM family_play_leases WHERE predecessor_id = ? AND state = 'active' AND metered = 1", args: [predecessorId] });
-  const row = succ.rows[0];
-  if (!row) return;
-  const successor = rowToLease(row as Record<string, unknown>);
-  const pred = await readLease(db, predecessorId);
-  if (!pred) return;
-  const allowance = await readAllowance(db, successor.personId);
-  const reserve = outstandingPredecessorSeconds(pred, now);
-  const budget = Math.max(successor.consumedSeconds, allowanceRemaining(allowance) + successor.consumedSeconds - reserve);
-  await db.execute({ sql: "UPDATE family_play_leases SET budget_seconds = ?, reserve_seconds = ? WHERE id = ?", args: [budget, reserve, successor.id] });
 }
 
 function rowToPurchase(row: Record<string, unknown>): PlayPurchase {
@@ -203,6 +178,70 @@ function rowToPurchase(row: Record<string, unknown>): PlayPurchase {
     refundedAt: (row["refunded_at"] as string | null) ?? null,
     refundReason: (row["refund_reason"] as string | null) ?? null,
   };
+}
+
+/**
+ * The most a lease can still report beyond what Family has already applied.
+ * The meter re-checks Family's authority before it counts any interval and
+ * suspends when it cannot, so after Family ends a lease nothing more is
+ * measured: the bound is the wall time since the lease's last settlement (or
+ * issue) up to its end — exactly, with no slack — capped by its budget. An
+ * ended lease keeps that reserve until its meter reports the end (or Family
+ * learns it was never activated, see `recordLeaseActivation`). No expiry:
+ * allowance is conserved across every unresolved lease, however old.
+ */
+export function outstandingSeconds(lease: Pick<PlayLease, "metered" | "budgetSeconds" | "capSeconds" | "consumedSeconds" | "finalSettled" | "lastSettledAt" | "issuedAt" | "state" | "endedAt">, now: Date): number {
+  if (!lease.metered || lease.finalSettled) return 0;
+  if (lease.state === "ended") return Math.max(0, Math.min(lease.capSeconds, lease.budgetSeconds) - lease.consumedSeconds);
+  const since = Date.parse(lease.lastSettledAt ?? lease.issuedAt);
+  const elapsed = Number.isFinite(since) ? Math.max(0, Math.ceil((now.getTime() - since) / 1000)) : LEASE_STALE_SECONDS;
+  return Math.max(0, Math.min(lease.budgetSeconds - lease.consumedSeconds, elapsed));
+}
+
+/** Freeze the cap of a lease Family is ending now: consumed so far plus what its meter may lawfully still report. */
+export function endedCapSeconds(lease: Pick<PlayLease, "metered" | "budgetSeconds" | "consumedSeconds" | "lastSettledAt" | "issuedAt">, now: Date): number {
+  if (!lease.metered) return 0;
+  const since = Date.parse(lease.lastSettledAt ?? lease.issuedAt);
+  const elapsed = Number.isFinite(since) ? Math.max(0, Math.ceil((now.getTime() - since) / 1000)) : LEASE_STALE_SECONDS;
+  return Math.max(lease.consumedSeconds, Math.min(lease.budgetSeconds, lease.consumedSeconds + elapsed));
+}
+
+async function unresolvedLeases(db: Db, personId: ChildId, exceptId: string | null): Promise<PlayLease[]> {
+  const result = await db.execute({ sql: "SELECT * FROM family_play_leases WHERE person_id = ? AND metered = 1 AND final_settled = 0", args: [personId] });
+  return result.rows.map((row) => rowToLease(row as Record<string, unknown>)).filter((lease) => lease.id !== exceptId);
+}
+
+/** Sum of what every other unresolved lease of the child may still report. */
+async function reserveFor(db: Db, personId: ChildId, exceptId: string | null, now: Date): Promise<number> {
+  const others = await unresolvedLeases(db, personId, exceptId);
+  return others.reduce((sum, lease) => sum + outstandingSeconds(lease, now), 0);
+}
+
+/**
+ * Re-derive the budget of every ACTIVE metered lease of the child from the
+ * current allowance and the reserves of all other unresolved leases. Called
+ * after every settlement and every lease end, so a late ancestor report or a
+ * finished predecessor moves the live cap in the right direction at once.
+ */
+async function reconcileActiveBudgets(db: Db, personId: ChildId, now: Date): Promise<void> {
+  const active = await db.execute({ sql: "SELECT * FROM family_play_leases WHERE person_id = ? AND state = 'active' AND metered = 1", args: [personId] });
+  if (active.rows.length === 0) return;
+  const allowance = await readAllowance(db, personId);
+  for (const row of active.rows) {
+    const lease = rowToLease(row as Record<string, unknown>);
+    const reserve = await reserveFor(db, personId, lease.id, now);
+    const budget = Math.max(lease.consumedSeconds, allowanceRemaining(allowance) + lease.consumedSeconds - reserve);
+    await db.execute({ sql: "UPDATE family_play_leases SET budget_seconds = ?, cap_seconds = ?, reserve_seconds = ? WHERE id = ?", args: [budget, budget, reserve, lease.id] });
+  }
+}
+
+/** End a lease now: freeze its cap so a late report can never exceed what it could lawfully have measured. */
+async function endLeaseRow(db: Db, lease: PlayLease, reason: string, now: Date): Promise<void> {
+  const cap = endedCapSeconds(lease, now);
+  await db.execute({
+    sql: "UPDATE family_play_leases SET state = 'ended', ended_at = ?, end_reason = ?, cap_seconds = ?, budget_seconds = MIN(budget_seconds, ?) WHERE id = ? AND state = 'active'",
+    args: [now.toISOString(), reason, cap, cap, lease.id],
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -456,17 +495,12 @@ export async function issuePlayLease(
         ? { ok: false, reason: "lease-held", remainingSeconds: remaining, heldBy: decision.heldBy }
         : { ok: false, reason: "no-allowance", remainingSeconds: remaining };
     }
-    let reserve = 0;
-    if (decision.replaces) {
-      const endReason = input.takeover ? "replaced-by-takeover" : "replaced-stale";
-      await tx.execute({
-        sql: "UPDATE family_play_leases SET state = 'ended', ended_at = ?, end_reason = ? WHERE id = ? AND state = 'active'",
-        args: [now.toISOString(), endReason, decision.replaces],
-      });
-      // Hold back what the replaced lease may still report (its unsettled
-      // consumption is bounded by the wall time since its last settlement).
-      if (existing) reserve = outstandingPredecessorSeconds({ ...existing, state: "ended", endReason }, now);
+    if (decision.replaces && existing) {
+      await endLeaseRow(tx, existing, input.takeover ? "replaced-by-takeover" : "replaced-stale", now);
     }
+    // Hold back everything every unresolved lease of this child (replaced,
+    // released, stale — any that has not reported its end) may still report.
+    const reserve = await reserveFor(tx, input.personId, null, now);
     const metered = price.kind === "metered";
     const lease: PlayLease = {
       id: input.leaseId,
@@ -484,12 +518,15 @@ export async function issuePlayLease(
       deviceLabel: input.deviceLabel,
       predecessorId: decision.replaces,
       reserveSeconds: metered ? reserve : 0,
+      capSeconds: metered ? Math.max(0, remaining - reserve) : 0,
+      finalSettled: !metered,
+      activatedAt: null,
     };
     await tx.execute({
       sql: `INSERT INTO family_play_leases
-              (id, person_id, game_id, mode, metered, budget_seconds, consumed_seconds, state, issued_at, device_label, predecessor_id, reserve_seconds)
-            VALUES (?, ?, ?, ?, ?, ?, 0, 'active', ?, ?, ?, ?)`,
-      args: [lease.id, lease.personId, lease.gameId, lease.mode, metered ? 1 : 0, lease.budgetSeconds, lease.issuedAt, lease.deviceLabel, lease.predecessorId, lease.reserveSeconds],
+              (id, person_id, game_id, mode, metered, budget_seconds, consumed_seconds, state, issued_at, device_label, predecessor_id, reserve_seconds, cap_seconds, final_settled)
+            VALUES (?, ?, ?, ?, ?, ?, 0, 'active', ?, ?, ?, ?, ?, ?)`,
+      args: [lease.id, lease.personId, lease.gameId, lease.mode, metered ? 1 : 0, lease.budgetSeconds, lease.issuedAt, lease.deviceLabel, lease.predecessorId, lease.reserveSeconds, lease.capSeconds, metered ? 0 : 1],
     });
     await tx.commit();
     return { ok: true, lease, replaced: decision.replaces, remainingSeconds: remaining };
@@ -511,7 +548,7 @@ export async function issuePlayLease(
 }
 
 export type SettleOutcome =
-  | { ok: true; lease: PlayLease; remainingSeconds: number; delta: number; budgetSeconds: number }
+  | { ok: true; lease: PlayLease; remainingSeconds: number; delta: number; budgetSeconds: number; state: LeaseState; endReason: string | null; refusedSeconds: number }
   | { ok: false; reason: "not-found" };
 
 /**
@@ -536,32 +573,50 @@ export async function settlePlayLease(
       await tx.rollback();
       return { ok: false, reason: "not-found" };
     }
-    const applied = applySettlement(lease, input.consumedSeconds);
-    const ends = input.end || (lease.metered && applied.exhausted);
+    // Bounded by the frozen cap of an ended lease, then by what the allowance
+    // can still give without touching the live budgets of other active
+    // leases: excess is refused (recorded), never absorbed by saturating totals.
+    const applied = applySettlement({ ...lease, budgetSeconds: Math.min(lease.budgetSeconds, lease.capSeconds) }, input.consumedSeconds);
+    let delta = applied.delta;
+    let consumedNext = applied.consumedSeconds;
+    if (delta > 0) {
+      const allowanceNow = await readAllowance(tx, lease.personId);
+      const others = await unresolvedLeases(tx, lease.personId, lease.id);
+      const liveClaims = others.filter((o) => o.state === "active").reduce((sum, o) => sum + Math.max(0, o.budgetSeconds - o.consumedSeconds), 0);
+      const room = Math.max(0, allowanceRemaining(allowanceNow) - liveClaims);
+      if (delta > room) {
+        delta = room;
+        consumedNext = lease.consumedSeconds + room;
+      }
+    }
+    const ends = input.end || (lease.metered && consumedNext >= Math.min(lease.budgetSeconds, lease.capSeconds));
+    const finalReport = input.end === true;
     await tx.execute({
       sql: `UPDATE family_play_leases SET consumed_seconds = ?, last_settled_at = ?,
               state = CASE WHEN ? THEN 'ended' ELSE state END,
               ended_at = CASE WHEN ? AND ended_at IS NULL THEN ? ELSE ended_at END,
-              end_reason = CASE WHEN ? AND end_reason IS NULL THEN ? ELSE end_reason END
+              end_reason = CASE WHEN ? AND end_reason IS NULL THEN ? ELSE end_reason END,
+              final_settled = CASE WHEN ? THEN 1 ELSE final_settled END,
+              cap_seconds = CASE WHEN ? THEN ? ELSE cap_seconds END
             WHERE id = ?`,
-      args: [applied.consumedSeconds, at, ends ? 1 : 0, ends ? 1 : 0, at, ends ? 1 : 0, input.endReason ?? (applied.exhausted ? "exhausted" : "ended"), lease.id],
+      args: [consumedNext, at, ends ? 1 : 0, ends ? 1 : 0, at, ends ? 1 : 0, input.endReason ?? (applied.exhausted ? "exhausted" : "ended"), finalReport ? 1 : 0, finalReport ? 1 : 0, consumedNext, lease.id],
     });
-    if (applied.delta > 0) {
+    if (delta > 0) {
       await tx.execute({
         sql: `INSERT INTO family_play_allowances (person_id, granted_seconds, consumed_seconds, updated_at)
               VALUES (?, 0, ?, ?)
               ON CONFLICT(person_id) DO UPDATE SET
                 consumed_seconds = MIN(granted_seconds, consumed_seconds + excluded.consumed_seconds),
                 updated_at = excluded.updated_at`,
-        args: [lease.personId, applied.delta, at],
+        args: [lease.personId, delta, at],
       });
     }
-    // A replaced predecessor's report shrinks or releases the successor's reserve.
-    await recomputeSuccessorBudget(tx, lease.id, input.now ?? new Date());
+    // Any report changes what the other leases may still claim: re-derive every live budget.
+    await reconcileActiveBudgets(tx, lease.personId, input.now ?? new Date());
     const allowance = await readAllowance(tx, lease.personId);
     const updated = await readLease(tx, lease.id);
     await tx.commit();
-    return { ok: true, lease: updated!, remainingSeconds: allowanceRemaining(allowance), delta: applied.delta, budgetSeconds: updated!.budgetSeconds };
+    return { ok: true, lease: updated!, remainingSeconds: allowanceRemaining(allowance), delta, budgetSeconds: updated!.budgetSeconds, state: updated!.state, endReason: updated!.endReason, refusedSeconds: applied.delta - delta };
   } catch (error) {
     try {
       await tx.rollback();
@@ -581,12 +636,28 @@ export async function endPlayLease(
 ): Promise<boolean> {
   const db = client ?? (await getDb());
   await ensurePlayTables(db);
-  const at = (input.now ?? new Date()).toISOString();
-  const result = await db.execute({
-    sql: "UPDATE family_play_leases SET state = 'ended', ended_at = ?, end_reason = ? WHERE id = ? AND person_id = ? AND state = 'active'",
-    args: [at, input.reason, input.leaseId, input.personId],
-  });
-  return result.rowsAffected > 0;
+  const now = input.now ?? new Date();
+  const tx = await beginWrite(db);
+  try {
+    const lease = await readLease(tx, input.leaseId);
+    if (!lease || lease.personId !== input.personId || lease.state !== "active") {
+      await tx.rollback();
+      return false;
+    }
+    await endLeaseRow(tx, lease, input.reason, now);
+    await reconcileActiveBudgets(tx, lease.personId, now);
+    await tx.commit();
+    return true;
+  } catch (error) {
+    try {
+      await tx.rollback();
+    } catch {
+      /* already finished */
+    }
+    throw error;
+  } finally {
+    release(tx);
+  }
 }
 
 export type LeaseStatus = {
@@ -602,7 +673,50 @@ export type LeaseStatus = {
   remainingSeconds: number;
   issuedAt: string;
   lastSettledAt: string | null;
+  capSeconds: number;
+  finalSettled: boolean;
 };
+
+/**
+ * The meter's signed status read is the moment a lease becomes "activated"
+ * (the adapter never meters a lease it did not validate first). It also lets
+ * Family resolve leases that can no longer produce any report: an ended lease
+ * whose meter was never activated — the adapter would refuse it now — releases
+ * its reserve. Runs in one transaction and re-derives live budgets.
+ */
+export async function recordLeaseActivation(leaseId: string, now = new Date(), client?: Client): Promise<void> {
+  const db = client ?? (await getDb());
+  await ensurePlayTables(db);
+  const tx = await beginWrite(db);
+  try {
+    const lease = await readLease(tx, leaseId);
+    if (!lease) {
+      await tx.rollback();
+      return;
+    }
+    const at = now.toISOString();
+    if (lease.state === "active" && !lease.activatedAt) {
+      await tx.execute({ sql: "UPDATE family_play_leases SET activated_at = ? WHERE id = ? AND activated_at IS NULL", args: [at, lease.id] });
+    }
+    // Ended and never activated ⇒ its meter can never report: resolve it (the asked lease included).
+    await tx.execute({
+      sql: `UPDATE family_play_leases SET final_settled = 1, cap_seconds = consumed_seconds
+            WHERE person_id = ? AND state = 'ended' AND activated_at IS NULL AND final_settled = 0 AND metered = 1`,
+      args: [lease.personId],
+    });
+    await reconcileActiveBudgets(tx, lease.personId, now);
+    await tx.commit();
+  } catch (error) {
+    try {
+      await tx.rollback();
+    } catch {
+      /* already finished */
+    }
+    throw error;
+  } finally {
+    release(tx);
+  }
+}
 
 /** Authoritative lease state for the Game Studio meter (status endpoint). */
 export async function getLeaseStatus(leaseId: string, client?: Client): Promise<LeaseStatus | null> {
@@ -624,6 +738,8 @@ export async function getLeaseStatus(leaseId: string, client?: Client): Promise<
     remainingSeconds: allowanceRemaining(allowance),
     issuedAt: lease.issuedAt,
     lastSettledAt: lease.lastSettledAt,
+    capSeconds: lease.capSeconds,
+    finalSettled: lease.finalSettled,
   };
 }
 

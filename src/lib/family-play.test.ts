@@ -35,6 +35,9 @@ const lease = (over: Partial<PlayLease> = {}): PlayLease => ({
   deviceLabel: null,
   predecessorId: null,
   reserveSeconds: 0,
+  capSeconds: 900,
+  finalSettled: false,
+  activatedAt: null,
   ...over,
 });
 
