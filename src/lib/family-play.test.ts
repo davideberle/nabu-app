@@ -23,6 +23,7 @@ const lease = (over: Partial<PlayLease> = {}): PlayLease => ({
   id: "lease-00000001",
   personId: "santiago",
   gameId: "6bd56478",
+  fenceCapSeconds: null,
   mode: "play",
   metered: true,
   budgetSeconds: 900,

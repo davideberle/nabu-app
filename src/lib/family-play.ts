@@ -130,6 +130,8 @@ export type PlayLease = {
   capSeconds: number;
   /** True once the meter reported this lease's end (its reserve is released). */
   finalSettled: boolean;
+  /** The ceiling that applied when the terminal report was accepted (null until then): the bound for a late terminal correction within LATE_TERMINAL_CORRECTION_SECONDS of the end. */
+  fenceCapSeconds: number | null;
   /** When the meter first validated this lease with Family (null = never activated). */
   activatedAt: string | null;
   /** Meter time of the last reading that advanced consumption (the measurement watermark); null = none yet. */

@@ -89,7 +89,7 @@ export async function ensurePlayTables(client: Db): Promise<void> {
       reserve_seconds  INTEGER NOT NULL DEFAULT 0
     )
   `);
-  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0", "cap_seconds INTEGER", "final_settled INTEGER NOT NULL DEFAULT 0", "activated_at TEXT", "measured_at TEXT", "authority_until TEXT"]) {
+  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0", "cap_seconds INTEGER", "final_settled INTEGER NOT NULL DEFAULT 0", "activated_at TEXT", "measured_at TEXT", "authority_until TEXT", "fence_cap_seconds INTEGER"]) {
     try {
       await client.execute(`ALTER TABLE family_play_leases ADD COLUMN ${column}`);
     } catch {
@@ -165,6 +165,7 @@ function rowToLease(row: Record<string, unknown>): PlayLease {
     activatedAt: (row["activated_at"] as string | null) ?? null,
     measuredAt: (row["measured_at"] as string | null) ?? null,
     authorityUntil: (row["authority_until"] as string | null) ?? null,
+    fenceCapSeconds: row["fence_cap_seconds"] === null || row["fence_cap_seconds"] === undefined ? null : Number(row["fence_cap_seconds"]),
   };
 }
 
@@ -204,6 +205,16 @@ function rowToPurchase(row: Record<string, unknown>): PlayPurchase {
  * surfaced as `refusedSeconds` (an inflated report).
  */
 export const CAP_OVERLAP_TOLERANCE_SECONDS = 15;
+
+/**
+ * Late terminal correction window (round 14). A meter's terminal report is final, but an authenticated observation the
+ * meter received only after it had to finalize (a frame's final beacon overtaken by the end, a sweep) is still genuine
+ * evidence: for this long after the lease's end, a LATER terminal report may raise consumption — never above the
+ * ceiling that applied at finalization (`fence_cap_seconds`: the frozen cap plus bounded overlap), never above the
+ * allowance room, never reviving the lease or touching its successor's fence (the successor's live budget is simply
+ * re-derived, as for any late report). After the window the lease is immutable and such a report is refused in full.
+ */
+export const LATE_TERMINAL_CORRECTION_SECONDS = 120;
 
 /**
  * The measurement watermark: the meter's own time of the last reading that
@@ -587,6 +598,7 @@ export async function issuePlayLease(
       state: "active",
       issuedAt: now.toISOString(),
       lastSettledAt: null,
+      fenceCapSeconds: null,
       endedAt: null,
       endReason: null,
       deviceLabel: input.deviceLabel,
@@ -667,7 +679,13 @@ export async function settlePlayLease(
     const endedMs = lease.endedAt ? Date.parse(lease.endedAt) : Number.NaN;
     const measuredOverlap = Number.isFinite(reportMeasuredMs) && Number.isFinite(endedMs) ? Math.max(0, Math.ceil((reportMeasuredMs - endedMs) / 1000)) : 0;
     const overlapAllowance = lease.state === "ended" && !lease.finalSettled ? Math.min(CAP_OVERLAP_TOLERANCE_SECONDS, measuredOverlap) : 0;
-    const ceiling = lease.state === "ended" && !lease.finalSettled ? lease.capSeconds + overlapAllowance : Math.min(lease.budgetSeconds, lease.capSeconds);
+    const nowForWindow = Date.parse(at);
+    const lateCorrection = lease.state === "ended" && lease.finalSettled && input.end === true && Number.isFinite(endedMs) && nowForWindow - endedMs <= LATE_TERMINAL_CORRECTION_SECONDS * 1000;
+    const ceiling = lease.state === "ended" && !lease.finalSettled
+      ? lease.capSeconds + overlapAllowance
+      : lateCorrection
+        ? Math.max(lease.consumedSeconds, lease.fenceCapSeconds ?? Math.min(lease.budgetSeconds, lease.capSeconds))
+        : Math.min(lease.budgetSeconds, lease.capSeconds);
     const applied = applySettlement({ ...lease, budgetSeconds: ceiling }, input.consumedSeconds);
     let delta = applied.delta;
     let consumedNext = applied.consumedSeconds;
@@ -699,9 +717,10 @@ export async function settlePlayLease(
               ended_at = CASE WHEN ? AND ended_at IS NULL THEN ? ELSE ended_at END,
               end_reason = CASE WHEN ? AND end_reason IS NULL THEN ? ELSE end_reason END,
               final_settled = CASE WHEN ? THEN 1 ELSE final_settled END,
+              fence_cap_seconds = CASE WHEN ? THEN COALESCE(fence_cap_seconds, ?) ELSE fence_cap_seconds END,
               cap_seconds = CASE WHEN ? THEN ? ELSE cap_seconds END
             WHERE id = ?`,
-      args: [consumedNext, at, nextMeasuredAt, ends ? 1 : 0, ends ? 1 : 0, at, ends ? 1 : 0, input.endReason ?? (applied.exhausted ? "exhausted" : "ended"), finalReport ? 1 : 0, finalReport ? 1 : 0, consumedNext, lease.id],
+      args: [consumedNext, at, nextMeasuredAt, ends ? 1 : 0, ends ? 1 : 0, at, ends ? 1 : 0, input.endReason ?? (applied.exhausted ? "exhausted" : "ended"), finalReport ? 1 : 0, finalReport ? 1 : 0, Math.floor(ceiling), finalReport ? 1 : 0, consumedNext, lease.id],
     });
     if (delta > 0) {
       await tx.execute({

@@ -8,6 +8,7 @@ import { join } from "node:path";
 import { after, describe, it } from "node:test";
 import { createClient, type Client } from "@libsql/client";
 import {
+  LATE_TERMINAL_CORRECTION_SECONDS,
   endPlayLease,
   ensurePlayTables,
   getLeaseStatus,
@@ -277,10 +278,21 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     await endPlayLease({ leaseId: d.lease.id, personId: "santiago", reason: "left", now: at(101) }, client2);
     const dFinal = await settlePlayLease({ leaseId: d.lease.id, consumedSeconds: 100, end: true, measuredAt: at(100).getTime(), now: at(102) }, client2);
     ok(dFinal.ok && dFinal.lease.consumedSeconds === 100, JSON.stringify(dFinal));
-    // After the final report the cap is frozen at the accepted total; a later inflated report is refused in full and the refusal is surfaced.
+    // After the final report the cap is frozen at the accepted total. Inside the late-correction window a LATER
+    // terminal report may still raise consumption (round 14: a frame's final observation delivered after the meter
+    // had to finalize) — bounded by the ceiling that applied at finalization (101 here: cap at the end), the rest
+    // refused and surfaced; the lease stays ended and final-settled.
+    equal(dFinal.lease.fenceCapSeconds, 101, "the ceiling at finalization is remembered");
     const dOver = await settlePlayLease({ leaseId: d.lease.id, consumedSeconds: 500, end: true, now: at(103) }, client2);
     if (!dOver.ok) throw new Error("settle failed");
-    ok(dOver.lease.consumedSeconds === 100 && dOver.refusedSeconds === 400, JSON.stringify({ consumed: dOver.lease.consumedSeconds, refused: dOver.refusedSeconds }));
+    ok(dOver.lease.consumedSeconds === 101 && dOver.refusedSeconds === 399 && dOver.lease.finalSettled && dOver.lease.state === "ended", JSON.stringify({ consumed: dOver.lease.consumedSeconds, refused: dOver.refusedSeconds }));
+    // Beyond the window the lease is immutable: refused in full.
+    const dLate = await settlePlayLease({ leaseId: d.lease.id, consumedSeconds: 500, end: true, now: at(101 + LATE_TERMINAL_CORRECTION_SECONDS + 1) }, client2);
+    if (!dLate.ok) throw new Error("settle failed");
+    ok(dLate.lease.consumedSeconds === 101 && dLate.refusedSeconds === 399, JSON.stringify({ consumed: dLate.lease.consumedSeconds, refused: dLate.refusedSeconds }));
+    // A non-terminal report after finalization never corrects anything.
+    const dInterim = await settlePlayLease({ leaseId: d.lease.id, consumedSeconds: 101, end: false, now: at(104) }, client2);
+    ok(dInterim.ok && dInterim.delta === 0);
   });
 
   it("GP-03/07 bounded measured overlap after Family's end is charged to the child and taken from the successor, never refused and handed back", async () => {

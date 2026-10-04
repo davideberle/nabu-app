@@ -1473,6 +1473,126 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     }
   });
 
+  // ---- round 14: additive session deltas; delivered final observations survive the end ------------------------
+
+  it("R14-1 a late final for the OLD session lands after the NEW session consumed: old 1.0 (reported 0.5) + new 1.0 = 2 at the meter and at Family, B gets 898", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r14-old", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r14-old");
+      const frame = (body: Record<string, unknown>) => fetch(`${base}/v1/play/lease-joined-r14-old/frame`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: JSON.stringify(body) }).then((r) => r.json() as Promise<{ consumedSeconds: number; accepted: boolean }>);
+      let guardDelay = 0;
+      const w = wrapperModel(base, "lease-joined-r14-old", a, { beacons: false, guardReplyDelayMs: () => guardDelay });
+      w.hb.request();
+      await waitFor(() => w.st.running, "the thaw at t0");
+      const g1 = w.st.sessionGrant!;
+      clock = t0 + 500; w.hb.request(); await settle(); // the renewal carries 0 (one beat behind); the guard's periodic beacon says 500
+      equal((await frame({ grant: g1, session: g1, ranMs: 500, running: true })).consumedSeconds, 0.5);
+      clock = t0 + 1000;
+      guardDelay = 1500; // the guard's freeze reply (its final 1000) is delayed past the resume: the wrapper will have moved on and fences it
+      w.pause(); // the stop report carries 500; the guard froze at 1000 — its freeze beacon is delayed in the network too
+      await settle();
+      equal(server.store.loadLease("lease-joined-r14-old")!.consumed, 0.5);
+      guardDelay = 0;
+      w.st.paused = false;
+      w.hb.request(); // resume at t1: a new grant, a new session (the guard restarts its counter)
+      await waitFor(() => w.st.running && w.st.sessionGrant !== g1, "the new session");
+      const g2 = w.st.sessionGrant!;
+      clock = t0 + 2000;
+      equal((await frame({ grant: g2, session: g2, ranMs: 1000, running: true })).consumedSeconds, 1.5, "the new session reported its full second first");
+      const late = await frame({ grant: g1, session: g1, ranMs: 1000, running: false }); // the old guard's final word arrives only now
+      equal(late.accepted, true);
+      equal(late.consumedSeconds, 2, "the old session's missing 0.5 is added, not masked by the new consumption");
+      const ended = await w.end("left", true);
+      w.hb.stop();
+      equal(ended.body.consumedSeconds, 2);
+      await server.settler.flush();
+      equal((await getLease("lease-joined-r14-old", client))!.consumedSeconds, 2);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r14-old-b", takeover: true, deviceLabel: null, now: at(3) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 898);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R14-2 unmount with the thaw beacon lost: the cleanup's end carries 0, the frame's final 0.5 lands 40 ms later — the end waits for it and settles 0.5 (terminal 1), B gets 899", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r14-lost", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r14-lost");
+      const headers = { authorization: `Bearer ${a}`, "content-type": "application/json" };
+      const intent = await fetch(`${base}/v1/play/lease-joined-r14-lost/tick`, { method: "POST", headers, body: '{"active":false,"foreground":true,"grant":null,"runMs":0}' });
+      const g1 = ((await intent.json()) as { grant: number }).grant;
+      clock = t0 + 500;
+      const ending = fetch(`${base}/v1/play/lease-joined-r14-lost/end`, { method: "POST", headers, body: JSON.stringify({ reason: "left", frameStopped: true, grant: g1, runMs: 0 }) });
+      await new Promise((r) => setTimeout(r, 40));
+      const final = await fetch(`${base}/v1/play/lease-joined-r14-lost/frame?credential=${encodeURIComponent(a)}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ grant: g1, session: g1, ranMs: 500, running: false }) });
+      equal(final.status, 200);
+      const ended = (await (await ending).json()) as { consumedSeconds: number };
+      equal(ended.consumedSeconds, 0.5);
+      await server.settler.flush();
+      const fam = (await getLease("lease-joined-r14-lost", client))!;
+      equal(fam.consumedSeconds, 1);
+      equal(fam.finalSettled, true);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r14-lost-b", takeover: true, deviceLabel: null, now: at(2) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 899);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R14-2 a final observation delivered AFTER finalization (end already settled 0, successor already issued 900) is a bounded terminal correction: the meter re-reports, Family raises A to 1 within its fence cap and B shrinks to 899; beyond the window it is refused", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r14-late", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r14-late");
+      const headers = { authorization: `Bearer ${a}`, "content-type": "application/json" };
+      const g1 = ((await (await fetch(`${base}/v1/play/lease-joined-r14-late/tick`, { method: "POST", headers, body: '{"active":false,"foreground":true,"grant":null,"runMs":0}' })).json()) as { grant: number }).grant;
+      clock = t0 + 700;
+      const ended = (await (await fetch(`${base}/v1/play/lease-joined-r14-late/end`, { method: "POST", headers, body: JSON.stringify({ reason: "left", frameStopped: true, grant: g1, runMs: 0 }) })).json()) as { consumedSeconds: number };
+      equal(ended.consumedSeconds, 0, "no observation reached the meter in time: finalized at 0");
+      await server.settler.flush();
+      equal((await getLease("lease-joined-r14-late", client))!.finalSettled, true);
+      clock = t0 + 3000;
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r14-late-b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 900);
+      // The frame's final word (0.7 s ran before the end) is delivered now — late, authenticated, bounded by the end instant.
+      const late = await fetch(`${base}/v1/play/lease-joined-r14-late/frame`, { method: "POST", headers, body: JSON.stringify({ grant: g1, session: g1, ranMs: 700, running: false }) });
+      equal(late.status, 200);
+      const lateBody = (await late.json()) as { consumedSeconds: number; late: boolean; accepted: boolean };
+      equal(lateBody.late, true);
+      equal(lateBody.consumedSeconds, 0.7);
+      await server.settler.flush();
+      const corrected = (await getLease("lease-joined-r14-late", client))!;
+      equal(corrected.consumedSeconds, 1, "the terminal correction (ceil 0.7) was accepted within the fence cap");
+      equal(corrected.state, "ended");
+      equal(corrected.finalSettled, true);
+      const bAfter = (await getLease("lease-joined-r14-late-b", client))!;
+      equal(bAfter.budgetSeconds, 899, "the successor's live budget is re-derived, nothing overlaps");
+      equal(bAfter.state, "active");
+      // Beyond the late window: refused, discarded, unchanged.
+      clock = t0 + 700 + 121_000;
+      const tooLate = await fetch(`${base}/v1/play/lease-joined-r14-late/frame`, { method: "POST", headers, body: JSON.stringify({ grant: g1, session: g1, ranMs: 700, running: false }) });
+      equal(tooLate.status, 410);
+      await server.settler.flush();
+      equal((await getLease("lease-joined-r14-late", client))!.consumedSeconds, 1);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
   it("R13-1 control: an alive wrapper whose frame never ran keeps reporting intent — 0 billed, B gets 900", async () => {
     await allowance();
     clock = t0;
