@@ -235,13 +235,16 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
       const live = current.kind === "playing" && current.grant.lease.id === leaseId;
       const wantsRunning = live && current.armed && !current.paused && !current.hidden && !current.offline && !current.lapsed;
       if (data.running === true && wantsRunning && grantSeq !== null && (data.grant === grantSeq || replySession === sessionGrant)) {
-        if (!running) {
+        const started = !running;
+        if (started) {
           running = true;
           if (sessionGrant === null) { sessionGrant = replySession ?? grantSeq; observedMs = 0; }
         }
         if (typeof data.ranMs === "number") observedMs = Math.max(observedMs, data.ranMs);
         publishObservation();
-        heartbeat.request(); // the frame is observed running: report the guard's measured duration now
+        // Report at once only on the TRANSITION to running (billing starts there); while running, the regular
+        // renewals carry the guard's latest measurement — a report per reply would feed back into itself.
+        if (started) heartbeat.request();
       } else {
         // The guard's complete interval for this session (it also tells us about its own deadline/orphan freezes).
         if (typeof data.ranMs === "number" && (sessionGrant === null || replySession === sessionGrant || replySession === null)) observedMs = Math.max(observedMs, data.ranMs);

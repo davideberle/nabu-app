@@ -783,10 +783,11 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
           const thaw = () => { if (!guard.running) { guard.running = true; guard.thawedAt = clock; } };
           const confirm = () => {
             if (!st.armed || st.paused || st.offline || st.lapsed) return;
+            const started = !st.running;
             if (st.sessionGrant === null) { st.sessionGrant = st.grantSeq; st.observedMs = 0; }
             st.running = true;
             st.observedMs = Math.max(st.observedMs, guardRanMs());
-            hb.request();
+            if (started) hb.request(); // only the transition reports at once (client.tsx)
           };
           const delay = opts.guardReplyDelayMs ? opts.guardReplyDelayMs() : 0;
           const schedule = (fn: () => void, when: number) => { const poll = () => (clock >= when ? fn() : setTimeout(poll, 5)); poll(); };
@@ -807,6 +808,15 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
   }
 
   async function settle(ms = 60) { await new Promise((r) => setTimeout(r, ms)); }
+  /** Wait for a condition instead of a fixed pause: the model polls real time, so a loaded machine must not change outcomes. */
+  async function waitFor(cond: () => boolean, label: string, timeoutMs = 4000) {
+    const started = Date.now();
+    while (!cond()) {
+      if (Date.now() - started > timeoutMs) throw new Error(`timed out waiting for ${label}`);
+      await new Promise((r) => setTimeout(r, 10));
+    }
+    await settle(40);
+  }
 
   it("R10-1 transit: the recovery answer (t5) reaches the wrapper at t6 — billing starts at the running acknowledgment (t6), end t7 bills 2, B gets 898", async () => {
     await allowance();
@@ -838,9 +848,9 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       equal(server.store.loadLease("lease-joined-r10-transit")!.consumed, 1, "the server answered but bills nothing while the answer is in transit");
       clock = t0 + 6000;
       deliverAt = undefined;
-      await settle(80); // delivered: the wrapper arms and acknowledges with a running report at t6
+      await waitFor(() => w.st.running && server.store.loadLease("lease-joined-r10-transit")!.lastActive, "the running acknowledgment at t6");
       equal(w.st.armed, true);
-      equal(w.sends[4].active, true, "the acknowledgment is a running report");
+      ok(w.sends.some((x) => x.at === 6 && x.active), "the acknowledgment is a running report");
       clock = t0 + 7000;
       const r = await fetch(`${base}/v1/play/lease-joined-r10-transit/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
       const ended = (await r.json()) as { consumedSeconds: number };
@@ -878,7 +888,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       await settle();
       clock = t0 + 8000;
       deliverAt = undefined;
-      await settle(80);
+      await waitFor(() => w.sends.length >= 4 && !w.st.armed, "the late delivery");
       equal(w.st.armed, false, "a grant that arrives after its deadline arms nothing");
       equal(w.st.lapsed, true);
       ok(!w.sends.some((x) => x.at >= 5 && x.active), "no running report was ever sent after the outage");
@@ -919,7 +929,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       clock = t0 + 5500;
       release();
       statusGate = null;
-      await settle(80); // answered at t5.5 with a 1.5 s grant (window from the t5 request): armed, acknowledged at t5.5 — the acknowledgment renews the grant
+      await waitFor(() => w.st.running && server.store.loadLease("lease-joined-r10-latency")!.lastActive, "the acknowledgment at t5.5");
       equal(w.st.armed, true);
       equal(w.sends.at(-1)!.at, 5.5, "the running acknowledgment was sent at the thaw instant");
       equal(w.sends.at(-1)!.active, true);
@@ -965,13 +975,13 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       clock = t0 + 6000;
       deliverAt = undefined;
       holdRunningUntil = t0 + 6800; // the guard confirms the thaw at t6; the running acknowledgment is held in the uplink until t6.8
-      await settle(80);
+      await waitFor(() => w.st.running, "the thaw at t6");
       equal(w.st.running, true);
       equal(w.sends.at(-1)!.at, 6);
       equal(w.sends.at(-1)!.active, true);
       clock = t0 + 6800;
       holdRunningUntil = undefined;
-      await settle(80);
+      await waitFor(() => server.store.loadLease("lease-joined-r11-uplink")!.lastActive, "the acknowledgment's receipt at t6.8");
       ok(server.store.loadLease("lease-joined-r11-uplink")!.consumed >= 1 && server.store.loadLease("lease-joined-r11-uplink")!.consumed <= 1.8, `only guard-measured time is billed, never a guess about the uplink (${server.store.loadLease("lease-joined-r11-uplink")!.consumed})`);
       clock = t0 + 7400;
       w.hb.request(); // renewal: runMs 1.4 s under the session grant
@@ -1020,11 +1030,11 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       clock = t0 + 6000;
       deliverAt = undefined;
       holdRunningUntil = null; // the acknowledgment is lost in the uplink
-      await settle(80);
+      await waitFor(() => w.st.running, "the thaw at t6");
       equal(w.st.running, true);
       clock = t0 + 7000;
       w.watchdog(); // the frame froze itself at the deadline handed at t5 (t7): the stop report carries runMs 1000 under the session grant
-      await settle(80);
+      await waitFor(() => server.store.loadLease("lease-joined-r11-lost")!.consumed >= 2, "the stop report's receipt");
       equal(server.store.loadLease("lease-joined-r11-lost")!.consumed, 2, `0→1 plus the lost acknowledgment's 6→7, recovered from the next report (sends ${JSON.stringify(w.sends)}, session ${JSON.stringify(server.store.loadLease("lease-joined-r11-lost")!.session)})`);
       const r = await fetch(`${base}/v1/play/lease-joined-r11-lost/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: JSON.stringify({ reason: "left", frameStopped: true, grant: w.st.sessionGrant, runMs: w.st.lastRunMs }) });
       const ended = (await r.json()) as { consumedSeconds: number };
@@ -1102,10 +1112,10 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       await settle();
       clock = t0 + 6000;
       deliverAt = undefined;
-      await settle(80);
+      await settle(120);
       equal(w.st.running, false, "no reply yet: the wrapper does not claim running");
       clock = t0 + 6800;
-      await settle(80);
+      await waitFor(() => w.st.running && server.store.loadLease("lease-joined-r12-guard")!.lastActive, "the guard's delayed reply at t6.8");
       equal(w.st.running, true);
       equal(w.sends.at(-1)!.runMs, 800, "the first running report carries the guard's own 0.8 s, not the wrapper's arrival time");
       clock = t0 + 7600;
@@ -1131,7 +1141,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const a = cred("lease-joined-r12-end");
       const w = wrapperModel(base, "lease-joined-r12-end", a);
       w.hb.request();
-      await settle();
+      await waitFor(() => w.st.running, "the thaw");
       equal(w.st.running, true);
       clock = t0 + 1000;
       w.st.paused = true; w.st.armed = false; w.pause(); // the guard freezes at t1 (observed 1.0 s)
@@ -1160,7 +1170,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       let holdRunningUntil: number | null | undefined = null; // every running report is lost
       const w = wrapperModel(base, "lease-joined-r12-crash", a, { holdRunningUntil: () => holdRunningUntil });
       w.hb.request(); // intent → grant (deadline t2) → guard thaws → running report lost
-      await settle(80);
+      await waitFor(() => w.st.running, "the thaw");
       equal(w.st.running, true);
       equal(server.store.loadLease("lease-joined-r12-crash")!.session!.evidenced, false, "no report after the grant");
       w.hb.stop(); // the tab crashes at t0.5: nothing is ever sent again
