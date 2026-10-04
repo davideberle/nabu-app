@@ -50,6 +50,8 @@ export const TICK_MS = 800;
 export const FRAME_PING_TYPE = "family-play:alive";
 /** The guard's acknowledgment that it froze (and killed) the game after an ended message. */
 export const FRAME_STOPPED_TYPE = "family-play:stopped";
+/** The guard's report of what the frame is actually doing after an alive message: running (thawed) or not. */
+export const FRAME_RUNNING_TYPE = "family-play:running";
 /** How long to wait for the guard's stop acknowledgment before ending without it (the meter then waits out the handed deadline). */
 export const STOP_ACK_TIMEOUT_MS = 400;
 
@@ -187,6 +189,23 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
     /** Authority deadline (Date.now() ms) from the newest successful heartbeat: play is not authorized past it. */
     let authorizedUntil = 0;
     let deadlineTimer: ReturnType<typeof setTimeout> | null = null;
+    /**
+     * Observed running window (round 11). `running` is true only after the GUARD confirmed it thawed on the grant
+     * we posted (`grantSeq`); `thawAt` is that instant; `runMs()` is how long the frame has actually run under the
+     * session grant. Every report carries the session grant and the duration, so the meter can bill the genuine
+     * run even when a running report is delayed or lost — bounded by the window the meter itself vouches for.
+     */
+    let grantSeq: number | null = null;
+    let running = false;
+    let thawAt = 0;
+    let sessionGrant: number | null = null;
+    let lastRunMs = 0;
+    const runMs = () => (running ? Math.max(0, Date.now() - thawAt) : lastRunMs);
+    /** The frame stopped running (pause, hidden, offline, lapse, disarm): fix the observed duration. */
+    const stopRunning = () => {
+      if (running) lastRunMs = Math.max(0, Date.now() - thawAt);
+      running = false;
+    };
     const postFrameState = (phaseName: string, remainingSeconds: number, ended: boolean) => {
       const current = phaseRef.current;
       const live = current.kind === "playing" && current.grant.lease.id === leaseId;
@@ -195,13 +214,33 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
       const reason = live && current.offline ? "offline" : live && current.hidden ? "hidden" : "paused";
       // The frame freezes itself at the deadline whatever the wrapper does (fail-closed); here the same deadline is handed over.
       const authorizedForMs = ended || paused ? 0 : Math.max(0, authorizedUntil - Date.now());
+      if (paused || ended) stopRunning();
       try {
-        frameRef.current?.contentWindow?.postMessage({ type: FRAME_PING_TYPE, leaseId, remainingSeconds, phase: phaseName, paused, reason, ended, authorizedForMs }, origin);
+        frameRef.current?.contentWindow?.postMessage({ type: FRAME_PING_TYPE, leaseId, remainingSeconds, phase: phaseName, paused, reason, ended, authorizedForMs, grant: grantSeq }, origin);
       } catch {
         /* frame not ready */
       }
     };
     frameStateRef.current = postFrameState;
+    /** The guard answers every alive message with what the frame is actually doing: running starts (and is billed) only on its word. */
+    const onFrameRunning = (event: MessageEvent) => {
+      const data = event.data as { type?: string; leaseId?: string; grant?: number | null; running?: boolean } | null;
+      const target = frameRef.current?.contentWindow ?? null;
+      if (event.origin !== origin || !target || event.source !== target || !data || data.type !== FRAME_RUNNING_TYPE || data.leaseId !== leaseId) return;
+      const current = phaseRef.current;
+      const live = current.kind === "playing" && current.grant.lease.id === leaseId;
+      if (data.running === true && live && current.armed && !current.paused && !current.hidden && !current.offline && !current.lapsed && data.grant === grantSeq && grantSeq !== null) {
+        if (!running) {
+          running = true;
+          thawAt = Date.now();
+          sessionGrant = grantSeq;
+          heartbeat.request(); // the frame is observed running: report it now so billing starts here
+        }
+      } else {
+        stopRunning();
+      }
+    };
+    window.addEventListener("message", onFrameRunning);
     /** Enforce the deadline in the wrapper too: no renewal by then → frozen frame and an honest "checking" state until the next good answer. */
     const armDeadline = () => {
       if (deadlineTimer) clearTimeout(deadlineTimer);
@@ -212,6 +251,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         const next = { ...current, lapsed: true, armed: false };
         phaseRef.current = next;
         setPhase(next);
+        stopRunning();
         postFrameState(current.tick?.phase ?? "playing", current.tick?.remainingSeconds ?? 0, false);
         // Renew at once: the next answered foreground report re-arms the frame.
         heartbeat.request();
@@ -231,8 +271,9 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         // lapsed, offline — is never billed, and the first running report after a grant is the acknowledgment that
         // starts billing (sent the moment the frame thaws).
         const foreground = live && !paused && !hidden;
-        const running = foreground && current.armed && !current.offline && !current.lapsed;
-        return { active: running, hidden, paused, foreground };
+        const active = foreground && running && current.armed && !current.offline && !current.lapsed;
+        if (!active) stopRunning();
+        return { active, hidden, paused, foreground, grant: sessionGrant, runMs: runMs() };
       },
       send: async (input) => {
         const sentAt = Date.now();
@@ -257,6 +298,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
           // 409 = handover pending: Family still fences this lease behind the previous session's
           // authority window; the meter retries by itself on the next beat (nothing counted meanwhile).
           const handover = outcome.status === 409;
+          stopRunning();
           setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, offline: true, handover, armed: false } : p));
           phaseRef.current = current.kind === "playing" ? { ...current, offline: true, handover, armed: false } : current;
           postFrameState("offline", current.tick?.remainingSeconds ?? 0, false);
@@ -278,21 +320,23 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         // Arm (thaw) only on the answer to a report with foreground intent whose grant is still open — never on the
         // answer to a pause/background report or a lapsed grant. The meter is NOT billing yet on an intent answer
         // (`billing: "armed"`): the running report sent right after the thaw is the acknowledgment that starts it.
-        const wasArmed = current.armed;
         const armed = Boolean(input.foreground ?? input.active) && !lapsed && (tick.authorizedForMs ?? 0) > 0;
+        if (armed && typeof tick.grant === "number") grantSeq = tick.grant;
+        if (!armed) stopRunning();
         setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, tick, offline: false, handover: false, lapsed, armed } : p));
         phaseRef.current = current.kind === "playing" ? { ...current, tick, offline: false, handover: false, lapsed, armed } : current;
+        // Post the grant to the frame. The guard answers with what the frame is actually doing; only its "running"
+        // answer makes the wrapper report running (billing starts there) — a frame that has not loaded answers nothing.
         postFrameState(tick.phase, tick.remainingSeconds, false);
-        if (armed) {
-          armDeadline();
-          if (!wasArmed || !input.active) heartbeat.request(); // the frame just thawed: acknowledge with a running report so billing starts now
-        } else if (!current.paused && !current.hidden) heartbeat.request(); // the child wants to play: send the intent report that arms the frame
+        if (armed) armDeadline();
+        else if (!current.paused && !current.hidden) heartbeat.request(); // the child wants to play: send the intent report that arms the frame
       },
     });
     beatRef.current = () => heartbeat.request();
     heartbeat.request();
     return () => {
       heartbeat.stop();
+      window.removeEventListener("message", onFrameRunning);
       if (deadlineTimer) clearTimeout(deadlineTimer);
       beatRef.current = null;
       frameStateRef.current = null;

@@ -21,7 +21,16 @@
  * reports). `foreground`: the child wants to play (not paused, not hidden) even if the frame is still frozen — the
  * meter answers such a report with a grant; the wrapper then arms the frame and sends a running report at once.
  */
-export type HeartbeatInput = { active: boolean; hidden: boolean; paused: boolean; foreground?: boolean };
+export type HeartbeatInput = {
+  active: boolean;
+  hidden: boolean;
+  paused: boolean;
+  foreground?: boolean;
+  /** The grant the frame thawed on (echoed by the guard), naming the running session this report belongs to. */
+  grant?: number | null;
+  /** How long the frame has actually run under that grant, measured by the wrapper from the guard-confirmed thaw (ms). */
+  runMs?: number | null;
+};
 
 export type HeartbeatDeps<T> = {
   /** Perform one heartbeat with the CURRENT input; must never throw (return a result). */
