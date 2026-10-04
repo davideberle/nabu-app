@@ -1734,6 +1734,55 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     }
   });
 
+  it("R19-1 through Family: a session with an unnamed issued grant keeps reporting after other sessions — its delayed final is applied while active and again as a terminal correction after the end; Family settles the total and the successor conserves it", async () => {
+    await allowance();
+    clock = t0;
+    const lid = "lease-joined-r19-key";
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: lid, takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred(lid, 3600);
+      const headers = { authorization: `Bearer ${a}`, "content-type": "application/json" };
+      const post = async (action: string, body: Record<string, unknown>) => { const r = await fetch(`${base}/v1/play/${lid}/${action}`, { method: "POST", headers, body: JSON.stringify(body) }); return { status: r.status, json: (await r.json()) as { grant?: number; consumedSeconds: number; accepted?: boolean } }; };
+      const first = (await post("tick", { active: false, foreground: true, grant: null, runMs: 0 })).json.grant!;
+      clock = t0 + 100;
+      const second = (await post("tick", { active: false, foreground: true, grant: null, runMs: 0 })).json.grant!;
+      clock = t0 + 600;
+      equal((await post("tick", { active: true, foreground: true, grant: first, runMs: 100 })).status, 200);
+      equal((await post("tick", { active: false, foreground: false, grant: first, runMs: 100 })).json.consumedSeconds, 0.1);
+      await post("frame", { grant: first, session: first, ranMs: 100, running: false });
+      for (let i = 0; i < 5; i += 1) {
+        clock = t0 + 1000 + i * 1000;
+        const g = (await post("tick", { active: false, foreground: true, grant: null, runMs: 0 })).json.grant!;
+        equal((await post("tick", { active: true, foreground: true, grant: g, runMs: 0 })).status, 200);
+        clock += 500;
+        equal((await post("tick", { active: false, foreground: false, grant: g, runMs: 500 })).status, 200);
+        await post("frame", { grant: g, session: g, ranMs: 500, running: false });
+      }
+      equal(server.store.loadLease(lid)!.consumed, 2.6);
+      clock = t0 + 60_000;
+      const delayed = await post("frame", { grant: second, session: second, ranMs: 500, running: false });
+      equal(delayed.json.accepted, true, JSON.stringify(delayed.json));
+      equal(server.store.loadLease(lid)!.consumed, 3.1, "the unnamed issued key's delayed final adds 0.5 while the lease is active");
+      const ended = await post("end", { reason: "left", frameStopped: true, grant: first, runMs: 100 });
+      equal(ended.json.consumedSeconds, 3.1);
+      await server.settler.flush();
+      equal((await getLease(lid, client))!.consumedSeconds, 4, "terminal report rounds 3.1 up");
+      clock = t0 + 60_000 + 90_000;
+      const terminal = await post("frame", { grant: second, session: second, ranMs: 900, running: false });
+      equal(terminal.json.accepted, true, JSON.stringify(terminal.json));
+      equal(server.store.loadLease(lid)!.consumed, 3.5, "0.4 more under the same key, bounded by its own deadline, 90 s after the end");
+      await server.settler.flush();
+      equal((await getLease(lid, client))!.consumedSeconds, 4, "ceil(3.5) = 4: the correction changes nothing at Family");
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: `${lid}-b`, takeover: true, deviceLabel: null, now: new Date(clock + 5000) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 896, "conservation: 4 + 896 = 900");
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
   it("R13-1 control: an alive wrapper whose frame never ran keeps reporting intent — 0 billed, B gets 900", async () => {
     await allowance();
     clock = t0;
