@@ -226,10 +226,13 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         const live = current.kind === "playing" && current.grant.lease.id === leaseId;
         const paused = live ? current.paused : true;
         const hidden = live ? current.hidden : true;
-        // `active` is the child's intent (not paused, not hidden). Frozen-by-deadline or offline time is never billed:
-        // the meter clamps to the deadline it handed and suspends on outages, and the frame thaws only once a
-        // foreground report has been answered — so billing and play restart at the same instant.
-        return { active: live && !paused && !hidden, hidden, paused };
+        // `foreground` is the child's intent (not paused, not hidden); `active` attests that the frame is armed and
+        // running RIGHT NOW. The meter bills only between running reports: a frozen frame — waiting for an answer,
+        // lapsed, offline — is never billed, and the first running report after a grant is the acknowledgment that
+        // starts billing (sent the moment the frame thaws).
+        const foreground = live && !paused && !hidden;
+        const running = foreground && current.armed && !current.offline && !current.lapsed;
+        return { active: running, hidden, paused, foreground };
       },
       send: async (input) => {
         const sentAt = Date.now();
@@ -272,14 +275,18 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         // so delivery delay only shortens it; a missing grant authorizes nothing.
         authorizedUntil = sentAt + Math.max(0, tick.authorizedForMs ?? 0);
         const lapsed = Date.now() >= authorizedUntil;
-        // Arm (thaw) only on the answer to a FOREGROUND report with an open grant: the meter started billing at this
-        // answer, so the frame starts here too — never on the answer to a pause/background report or a lapsed grant.
-        const armed = input.active && !lapsed;
+        // Arm (thaw) only on the answer to a report with foreground intent whose grant is still open — never on the
+        // answer to a pause/background report or a lapsed grant. The meter is NOT billing yet on an intent answer
+        // (`billing: "armed"`): the running report sent right after the thaw is the acknowledgment that starts it.
+        const wasArmed = current.armed;
+        const armed = Boolean(input.foreground ?? input.active) && !lapsed && (tick.authorizedForMs ?? 0) > 0;
         setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, tick, offline: false, handover: false, lapsed, armed } : p));
         phaseRef.current = current.kind === "playing" ? { ...current, tick, offline: false, handover: false, lapsed, armed } : current;
         postFrameState(tick.phase, tick.remainingSeconds, false);
-        if (armed) armDeadline();
-        else if (!current.paused && !current.hidden) heartbeat.request(); // the child wants to play: send the foreground report that arms the frame
+        if (armed) {
+          armDeadline();
+          if (!wasArmed || !input.active) heartbeat.request(); // the frame just thawed: acknowledge with a running report so billing starts now
+        } else if (!current.paused && !current.hidden) heartbeat.request(); // the child wants to play: send the intent report that arms the frame
       },
     });
     beatRef.current = () => heartbeat.request();

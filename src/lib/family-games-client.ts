@@ -59,6 +59,8 @@ export type TickView = {
   endReason: string | null;
   /** How long (ms from this answer) play is authorized without a renewal; the wrapper and the frame freeze at that deadline. */
   authorizedForMs?: number;
+  /** `running`: the meter is counting (between running reports); `armed`: a grant was handed, counting starts with the wrapper's running report; `stopped`: not counting. */
+  billing?: "running" | "armed" | "stopped";
 };
 
 export type LeaseGrant = {
@@ -170,7 +172,7 @@ export function createGamesClient(deps: GamesClientDeps = {}) {
     library: (studio: StudioAccess, signal?: AbortSignal) => studioCall<LibraryView>(studio, "/v1/library", { signal }),
     contentUrl: (studio: StudioAccess, leaseId: string, gameId: string) =>
       `${studio.url}/v1/play/${encodeURIComponent(leaseId)}/${encodeURIComponent(gameId)}/index.html?credential=${encodeURIComponent(studio.token)}`,
-    tick: (studio: StudioAccess, leaseId: string, input: { active: boolean; hidden: boolean; paused: boolean }, signal?: AbortSignal) =>
+    tick: (studio: StudioAccess, leaseId: string, input: { active: boolean; hidden: boolean; paused: boolean; foreground?: boolean }, signal?: AbortSignal) =>
       studioCall<TickView>(studio, `/v1/play/${encodeURIComponent(leaseId)}/tick`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(input), signal }),
     /** `frameStopped`: the wrapper attests the game frame was frozen/removed (guard acknowledgment received) BEFORE this request — the meter may then let a successor start without waiting out the handed deadline. */
     end: (studio: StudioAccess, leaseId: string, reason: string, frameStopped = false) =>

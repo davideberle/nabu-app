@@ -15,7 +15,7 @@ const ADAPTER = "/Users/claweberle/.openclaw/workspace/projects/game-studio/serv
 const available = existsSync(ADAPTER);
 
 type Adapter = {
-  createChildPlayAdapter: (opts: Record<string, unknown>) => import("node:http").Server & { store: { loadLease: (id: string) => { consumed: number; state: string; endReason: string | null } | null }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
+  createChildPlayAdapter: (opts: Record<string, unknown>) => import("node:http").Server & { store: { loadLease: (id: string) => { consumed: number; state: string; endReason: string | null; lastActive: boolean } | null }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
   derivePlayKey: (secret: string) => Buffer;
   mintPlayCredential: (key: Buffer, claims: Record<string, unknown>) => string;
   signSettlement: (key: Buffer, ts: number, leaseId: string, body: string) => string;
@@ -708,6 +708,185 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       ok(b.ok);
       equal(b.lease.budgetSeconds, 897);
       equal(3 + b.lease.budgetSeconds, 900);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+  // ---- round 10: billing starts at the wrapper's running acknowledgment, never at the server's answer ------------
+
+  /** The wrapper's exact arm/input rules (client.tsx) over the real heartbeat controller, with a controllable transport. */
+  function wrapperModel(base: string, lid: string, token: string, opts: { deliverAt?: () => number | null | undefined } = {}) {
+    const st = { armed: false, lapsed: false, offline: false, paused: false, authorizedUntil: 0 };
+    const sends: { at: number; active: boolean; foreground: boolean }[] = [];
+    const arrivals: { at: number; status: number; billing?: string }[] = [];
+    const hb = createHeartbeat<{ status: number; body: { authorizedForMs?: number; billing?: string; consumedSeconds: number }; sentAt: number; input: HeartbeatInput }>({
+      intervalMs: 800,
+      setTimer: () => 1,
+      clearTimer: () => undefined,
+      input: () => {
+        const foreground = !st.paused;
+        const running = foreground && st.armed && !st.offline && !st.lapsed;
+        return { active: running, foreground, paused: st.paused, hidden: false };
+      },
+      send: async (input) => {
+        const sentAt = clock;
+        sends.push({ at: (sentAt - t0) / 1000, active: input.active, foreground: Boolean(input.foreground) });
+        let status = 0;
+        let body = { consumedSeconds: 0 } as { authorizedForMs?: number; billing?: string; consumedSeconds: number };
+        try {
+          const r = await fetch(`${base}/v1/play/${lid}/tick`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify(input) });
+          status = r.status;
+          body = (await r.json()) as typeof body;
+        } catch {
+          status = 0;
+        }
+        // Transport: the answer reaches the wrapper only when the fixture says so (null = lost).
+        const deliverAt = opts.deliverAt?.();
+        if (deliverAt === null) await new Promise<never>(() => undefined);
+        if (typeof deliverAt === "number") await new Promise<void>((r) => { const poll = () => (clock >= deliverAt ? r() : setTimeout(poll, 5)); poll(); });
+        return { status, body, sentAt, input };
+      },
+      onOutcome: ({ status, body, sentAt, input }) => {
+        arrivals.push({ at: (clock - t0) / 1000, status, billing: body.billing });
+        if (status !== 200) { st.offline = true; st.armed = false; return; }
+        st.authorizedUntil = sentAt + Math.max(0, body.authorizedForMs ?? 0);
+        st.lapsed = clock >= st.authorizedUntil;
+        const wasArmed = st.armed;
+        st.armed = Boolean(input.foreground) && !st.lapsed && (body.authorizedForMs ?? 0) > 0;
+        st.offline = false;
+        if (st.armed && (!wasArmed || !input.active)) hb.request(); // acknowledge the thaw with a running report
+      },
+    });
+    /** The wrapper's deadline watchdog: the frame freezes itself at the deadline and asks for a renewal. */
+    const watchdog = () => { if (st.armed && clock >= st.authorizedUntil) { st.lapsed = true; st.armed = false; hb.request(); } };
+    return { hb, st, sends, arrivals, watchdog };
+  }
+
+  async function settle(ms = 60) { await new Promise((r) => setTimeout(r, ms)); }
+
+  it("R10-1 transit: the recovery answer (t5) reaches the wrapper at t6 — billing starts at the running acknowledgment (t6), end t7 bills 2, B gets 898", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r10-transit", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r10-transit");
+      let deliverAt: number | null | undefined;
+      const w = wrapperModel(base, "lease-joined-r10-transit", a, { deliverAt: () => deliverAt });
+      w.hb.request(); // intent at t0 → grant → acknowledgment at t0
+      await settle();
+      deepEqual(w.sends.map((x) => [x.at, x.active, x.foreground]), [[0, false, true], [0, true, true]]);
+      clock = t0 + 1000;
+      outage = true;
+      w.hb.request(); // running renewal → 503: frozen, offline
+      await settle();
+      outage = false;
+      equal(server.store.loadLease("lease-joined-r10-transit")!.consumed, 1);
+      clock = t0 + 5000;
+      deliverAt = t0 + 6000; // the recovery answer is held in transit until t6
+      w.hb.request(); // recovery INTENT (active:false, foreground:true)
+      await settle();
+      equal(w.sends[3].active, false);
+      equal(w.sends[3].foreground, true);
+      equal(server.store.loadLease("lease-joined-r10-transit")!.consumed, 1, "the server answered but bills nothing while the answer is in transit");
+      clock = t0 + 6000;
+      deliverAt = undefined;
+      await settle(80); // delivered: the wrapper arms and acknowledges with a running report at t6
+      equal(w.st.armed, true);
+      equal(w.sends[4].active, true, "the acknowledgment is a running report");
+      clock = t0 + 7000;
+      const r = await fetch(`${base}/v1/play/lease-joined-r10-transit/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
+      const ended = (await r.json()) as { consumedSeconds: number };
+      w.hb.stop();
+      equal(ended.consumedSeconds, 2, "0→1 and 6→7: transit t5→t6 is never billed");
+      await server.settler.flush();
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r10-transit-b", takeover: true, deviceLabel: null, now: at(7) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 898);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R10-1 expired delivery: the recovery answer (t5) reaches the wrapper at t8, after its own deadline — the frame never thaws, nothing after t1 is billed, B gets 899", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r10-expired", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r10-expired");
+      let deliverAt: number | null | undefined;
+      const w = wrapperModel(base, "lease-joined-r10-expired", a, { deliverAt: () => deliverAt });
+      w.hb.request();
+      await settle();
+      clock = t0 + 1000;
+      outage = true;
+      w.hb.request();
+      await settle();
+      outage = false;
+      clock = t0 + 5000;
+      deliverAt = t0 + 8000;
+      w.hb.request();
+      await settle();
+      clock = t0 + 8000;
+      deliverAt = undefined;
+      await settle(80);
+      equal(w.st.armed, false, "a grant that arrives after its deadline arms nothing");
+      equal(w.st.lapsed, true);
+      ok(!w.sends.slice(3).some((x) => x.active), "no running report was ever sent after the outage");
+      const r = await fetch(`${base}/v1/play/lease-joined-r10-expired/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
+      const ended = (await r.json()) as { consumedSeconds: number };
+      w.hb.stop();
+      equal(ended.consumedSeconds, 1);
+      await server.settler.flush();
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r10-expired-b", takeover: true, deviceLabel: null, now: at(8) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 899);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R10-1 authority latency: Family answers the recovery read at t5.5 — the frame runs t5.5→t6.5 (shortened grant) and exactly that is billed: 2 total, B gets 898", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r10-latency", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r10-latency");
+      const w = wrapperModel(base, "lease-joined-r10-latency", a);
+      w.hb.request();
+      await settle();
+      clock = t0 + 1000;
+      outage = true;
+      w.hb.request();
+      await settle();
+      outage = false;
+      clock = t0 + 5000;
+      let release!: () => void;
+      statusGate = { lid: "lease-joined-r10-latency", gate: new Promise<void>((r) => { release = r; }) };
+      w.hb.request(); // recovery intent; Family's authority answer is held
+      await settle();
+      clock = t0 + 5500;
+      release();
+      statusGate = null;
+      await settle(80); // answered at t5.5 with a 1.5 s grant (window from the t5 request): armed, acknowledged at t5.5 — the acknowledgment renews the grant
+      equal(w.st.armed, true);
+      equal(w.sends.at(-1)!.at, 5.5, "the running acknowledgment was sent at the thaw instant");
+      equal(w.sends.at(-1)!.active, true);
+      equal(server.store.loadLease("lease-joined-r10-latency")!.lastActive, true, "billing starts at the acknowledgment (t5.5), not at the t5 request");
+      clock = t0 + 6500;
+      const r = await fetch(`${base}/v1/play/lease-joined-r10-latency/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
+      const ended = (await r.json()) as { consumedSeconds: number };
+      w.hb.stop();
+      equal(ended.consumedSeconds, 2, "0→1 and 5.5→6.5: the half second of authority latency is never billed");
+      await server.settler.flush();
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r10-latency-b", takeover: true, deviceLabel: null, now: at(6.5) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 898);
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));

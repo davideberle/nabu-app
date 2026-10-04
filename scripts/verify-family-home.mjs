@@ -375,8 +375,14 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
       await route.fulfill({ status: 200, contentType: "text/html", body: "<html><body>Synthetic inert game<script>window.pings=[];window.addEventListener('message',e=>window.pings.push(e.data))</script></body></html>" });
     } else await reply(route, 200, {});
   });
+  // Round 10: the first heartbeat is an INTENT (active:false, foreground:true); its grant arms the frame and the wrapper
+  // acknowledges the thaw at once with a RUNNING report (active:true). Let both through, then hold the next renewal.
+  auto = true;
   await page.goto(`/family/games/play?child=santiago&game=${SNAKE}`);
   await page.getByRole("button", { name: "⏸ Pause", exact: true }).waitFor({ timeout: 15000 });
+  while (calls.length < 2) await page.waitForTimeout(25);
+  record("W-08", "the first heartbeat carries intent only; the running report follows the grant as the acknowledgment that starts billing", calls[0].body.active === false && calls[0].body.foreground === true && calls[1].body.active === true, JSON.stringify(calls.slice(0, 2).map((c) => c.body)));
+  auto = false;
   while (held.length < 1) await page.waitForTimeout(25);
   await page.getByRole("button", { name: "⏸ Pause", exact: true }).click();
   await page.getByRole("dialog", { name: "Paused" }).waitFor();
@@ -384,7 +390,7 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   await page.waitForTimeout(300);
   // Round 9: a STOP boundary (pause) while a foreground renewal is pending is reported at once as its own request
   // (active:false); the continue that follows is coalesced behind the pending renewal — two requests, not one, not three.
-  record("W-01", "pause while the first tick is pending sends the stop boundary at once (active:false); continue is coalesced — exactly two requests", held.length === 2 && calls.length === 2 && calls[0].body.active === true && calls[1].body.active === false, `${calls.length} requests, ${held.length} held, bodies ${JSON.stringify(calls.map((c) => c.body.active))}`);
+  record("W-01", "pause while a running renewal is pending sends the stop boundary at once (active:false); continue is coalesced — exactly two requests in flight", held.length === 2 && calls.length === 4 && calls[2].body.active === true && calls[3].body.active === false, `${calls.length} requests, ${held.length} held, bodies ${JSON.stringify(calls.map((c) => c.body.active))}`);
   // Answer the stop boundary (the newest request) with a paused answer (no grant), then fail the OLDER renewal:
   // its failure cannot speak over the newer boundary — no Reconnecting from a stale failure.
   await reply(held.pop(), 200, tickBody(690, 0));
@@ -397,12 +403,16 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   await page.getByRole("dialog", { name: "Reconnecting" }).waitFor({ timeout: 5000 });
   // Its retry is issued; hold it. It is the ONLY in-flight request and legitimately the newest.
   while (held.length < 1) await page.waitForTimeout(25);
-  record("W-02", "after a failure the wrapper issues exactly one retry, not three", held.length === 1 && calls.length === 4, `${calls.length} requests`);
+  record("W-02", "after a failure the wrapper issues exactly one retry, not three", held.length === 1 && calls.length === 6, `${calls.length} requests`);
   const frame = page.frames().find((f) => f.url().includes("/mock-studio/"));
   const pingsDuringOffline = await frame.evaluate(() => window.pings.filter((p) => p.type === "family-play:alive").map((p) => ({ paused: p.paused, reason: p.reason })));
   record("W-03", "while offline every heartbeat to the frame says paused (frozen), none playable", pingsDuringOffline.length > 0 && pingsDuringOffline.slice(-1)[0].paused === true, JSON.stringify(pingsDuringOffline.slice(-2)));
   await reply(held.shift(), 200, tickBody(800));
   await page.waitForTimeout(300);
+  // The retry was an intent report: its grant arms the frame and the running acknowledgment follows; let it through.
+  auto = true;
+  while (held.length) await reply(held.shift(), 200, tickBody(800));
+  await page.waitForTimeout(200);
   record("W-04", "the newest response governs: reconnecting clears and the clock shows ITS value, never a stale 900", (await page.getByRole("dialog", { name: "Reconnecting" }).count()) === 0 && (await page.locator("header [data-remaining-seconds]").getAttribute("data-remaining-seconds")) === "800");
   auto = true;
   const before = calls.length;

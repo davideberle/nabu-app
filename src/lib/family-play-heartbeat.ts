@@ -16,7 +16,12 @@
 // Pure: timers are injected so the unit tests drive it with fake time.
 // ---------------------------------------------------------------------------
 
-export type HeartbeatInput = { active: boolean; hidden: boolean; paused: boolean };
+/**
+ * `active`: the frame is armed and running right now (attested to the meter — billing happens only between such
+ * reports). `foreground`: the child wants to play (not paused, not hidden) even if the frame is still frozen — the
+ * meter answers such a report with a grant; the wrapper then arms the frame and sends a running report at once.
+ */
+export type HeartbeatInput = { active: boolean; hidden: boolean; paused: boolean; foreground?: boolean };
 
 export type HeartbeatDeps<T> = {
   /** Perform one heartbeat with the CURRENT input; must never throw (return a result). */
