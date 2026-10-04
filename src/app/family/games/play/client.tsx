@@ -47,7 +47,7 @@ type Phase =
   | { kind: "needs-time"; balance: number | null; remaining: number }
   | { kind: "held"; heldBy: { gameId: string; deviceLabel: string | null } }
   | { kind: "playing"; grant: LeaseGrant; studio: StudioAccess; tick: TickView | null; paused: boolean; hidden: boolean; offline: boolean }
-  | { kind: "ended"; reason: "exhausted" | "ended" | "replaced" | "left"; remaining: number | null }
+  | { kind: "ended"; reason: "exhausted" | "ended" | "replaced" | "left" | "expired"; remaining: number | null }
   | { kind: "unavailable"; message: string };
 
 export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: string }) {
@@ -61,6 +61,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
   phaseRef.current = phase;
   /** The running heartbeat; called directly on pause/continue so the clock settles at once. */
   const beatRef = useRef<(() => void) | null>(null);
+  /** Pushes the current paused/ended state into the guarded frame (freezes/thaws the game). */
+  const frameStateRef = useRef<((phase: string, remaining: number, ended: boolean) => void) | null>(null);
   const free = isFreeGame(gameId);
 
   // ---- lease acquisition ----------------------------------------------
@@ -110,10 +112,18 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
 
   // ---- visibility ---------------------------------------------------------
   useEffect(() => {
-    const onVisibility = () => setPhase((p) => (p.kind === "playing" ? { ...p, hidden: document.visibilityState === "hidden" } : p));
+    const onVisibility = () => {
+      setPhase((p) => (p.kind === "playing" ? { ...p, hidden: document.visibilityState === "hidden" } : p));
+      window.setTimeout(() => { frameStateRef.current?.("visibility", 0, false); beatRef.current?.(); }, 0);
+    };
     document.addEventListener("visibilitychange", onVisibility);
     return () => document.removeEventListener("visibilitychange", onVisibility);
   }, []);
+  // Any pause/continue/offline change is pushed into the frame at once.
+  useEffect(() => {
+    if (phase.kind !== "playing") return;
+    frameStateRef.current?.(phase.tick?.phase ?? "playing", phase.tick?.remainingSeconds ?? 0, false);
+  }, [phase.kind === "playing" ? `${phase.paused}|${phase.hidden}|${phase.offline}` : "x"]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ---- heartbeat ----------------------------------------------------------
   useEffect(() => {
@@ -128,31 +138,46 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
       const outcome = await client.tick(studio, grant.lease.id, { active, hidden: current.hidden, paused: current.paused });
       if (cancelled) return;
       if (!outcome.ok) {
-        if (outcome.failure === "no-allowance" || outcome.status === 410 || outcome.status === 404) {
-          const detail = outcome.detail as { endReason?: string; remainingSeconds?: number } | undefined;
-          setPhase({ kind: "ended", reason: detail?.endReason === "replaced" ? "replaced" : "exhausted", remaining: detail?.remainingSeconds ?? 0 });
+        if (outcome.failure === "no-allowance" || outcome.status === 410 || outcome.status === 404 || outcome.status === 401) {
+          const detail = outcome.detail as { endReason?: string; remainingSeconds?: number; ended?: boolean } | undefined;
+          const reason = detail?.endReason === "replaced" || detail?.endReason === "revoked" ? "replaced" : detail?.endReason === "credential-expired" || outcome.status === 401 ? "expired" : "exhausted";
+          setPhase({ kind: "ended", reason, remaining: detail?.remainingSeconds ?? null });
           void client.release(child, grant.lease.id, detail?.endReason ?? "ended");
           return;
         }
         // Meter unreachable: fail closed — suspend play; nothing is counted meanwhile.
         setPhase((p) => (p.kind === "playing" ? { ...p, offline: true } : p));
+        window.setTimeout(() => frameStateRef.current?.("offline", 0, false), 0);
       } else {
         const tick = outcome.value;
         if (tick.ended || tick.phase === "exhausted") {
+          postFrameState("exhausted", 0, true);
           setPhase({ kind: "ended", reason: tick.endReason === "replaced" ? "replaced" : "exhausted", remaining: tick.remainingSeconds });
           void client.release(child, grant.lease.id, tick.endReason ?? "exhausted");
           return;
         }
         setPhase((p) => (p.kind === "playing" ? { ...p, tick, offline: false } : p));
-        // Frame handshake: tells the guarded page it is inside the wrapper.
-        try {
-          frameRef.current?.contentWindow?.postMessage({ type: FRAME_PING_TYPE, leaseId: grant.lease.id, remainingSeconds: tick.remainingSeconds, phase: tick.phase }, new URL(studio.url).origin);
-        } catch {
-          /* frame not ready */
-        }
+        postFrameState(tick.phase, tick.remainingSeconds, false);
       }
       timer = window.setTimeout(beat, TICK_MS);
     };
+    /**
+     * Frame handshake: tells the guarded page it is inside the wrapper and
+     * whether gameplay must be frozen (pause, hidden tab, meter unreachable).
+     * The injected guard stops the game loop, timers, audio and input on
+     * `paused` — enforcement in the frame, not only an overlay above it.
+     */
+    const postFrameState = (phaseName: string, remainingSeconds: number, ended: boolean) => {
+      const current = phaseRef.current;
+      const paused = current.kind === "playing" ? current.paused || current.hidden || current.offline : false;
+      const reason = current.kind === "playing" && current.offline ? "offline" : current.kind === "playing" && current.hidden ? "hidden" : "paused";
+      try {
+        frameRef.current?.contentWindow?.postMessage({ type: FRAME_PING_TYPE, leaseId: grant.lease.id, remainingSeconds, phase: phaseName, paused, reason, ended }, new URL(studio.url).origin);
+      } catch {
+        /* frame not ready */
+      }
+    };
+    frameStateRef.current = postFrameState;
     beatRef.current = () => {
       if (timer !== null) window.clearTimeout(timer);
       timer = null;
@@ -250,7 +275,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         </section>
       ) : phase.kind === "ended" ? (
         <section aria-label="Play ended" className="m-6 flex max-w-md flex-col gap-3 rounded-3xl border border-primary bg-primary p-5">
-          <h2 className="text-xl font-semibold">{phase.reason === "exhausted" ? "Time's up!" : phase.reason === "replaced" ? "You continued on another screen" : "Game closed"}</h2>
+          <h2 className="text-xl font-semibold">{phase.reason === "exhausted" ? "Time's up!" : phase.reason === "replaced" ? "You continued on another screen" : phase.reason === "expired" ? "This play session timed out" : "Game closed"}</h2>
           <p className="text-sm text-secondary">
             {phase.reason === "exhausted" ? `Your play time is used up. Buying another ${PLAY_BLOCK_SECONDS / 60} minutes costs 🪙 ${PLAY_BLOCK_COINS} — only if you choose to.` : "Your remaining time is kept."}
           </p>

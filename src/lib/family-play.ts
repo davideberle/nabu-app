@@ -109,6 +109,10 @@ export type PlayLease = {
   endedAt: string | null;
   endReason: string | null;
   deviceLabel: string | null;
+  /** The lease this one replaced (device switch / stale takeover), if any. */
+  predecessorId: string | null;
+  /** Seconds held back from this budget for the predecessor's still-unsettled consumption. */
+  reserveSeconds: number;
 };
 
 /**

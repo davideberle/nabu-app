@@ -50,16 +50,20 @@ export async function requireChildGames(request: Request): Promise<ChildGamesAut
 
 export type SettlementAuth = { ok: true; rawBody: string } | { ok: false; response: NextResponse };
 
-/** No session: the Game Studio meter is a server, authenticated by signature alone. */
-export async function requireStudioSettlement(request: Request): Promise<SettlementAuth> {
+/**
+ * No session: the Game Studio meter is a server, authenticated by a signature
+ * bound to this exact lease id (from the URL) and the raw body.
+ */
+export async function requireStudioSettlement(request: Request, leaseId: string): Promise<SettlementAuth> {
   const key = derivePlayKey();
   if (!key) return { ok: false, response: refuse(503, "Play settlement is not configured on this server") };
-  const rawBody = await request.text();
+  const rawBody = request.method === "GET" || request.method === "HEAD" ? "" : await request.text();
   if (rawBody.length > 4096) return { ok: false, response: refuse(413, "Settlement too large") };
   const verified = verifySettlementSignature(
     key,
     request.headers.get(SETTLEMENT_SIGNATURE_HEADER),
     request.headers.get(SETTLEMENT_TIMESTAMP_HEADER),
+    leaseId,
     rawBody,
     Math.floor(Date.now() / 1000),
   );

@@ -21,12 +21,14 @@
 import type { Client, Transaction } from "@libsql/client";
 import { getDb } from "./db.ts";
 import type { ChildId } from "./family-assistant-turn.ts";
+import type { LeaseState } from "./family-play.ts";
 import {
   FAMILY_WALLET_EPOCH_WEEK,
 } from "./family-wallet.ts";
 import { insertRedemptionIfAffordable } from "./family-wallet-ledger.ts";
 import { isoWeekIdInZurich } from "./date.ts";
 import {
+  LEASE_STALE_SECONDS,
   PLAY_BLOCK_COINS,
   PLAY_BLOCK_SECONDS,
   PLAY_PURCHASE_REWARD_ID,
@@ -81,9 +83,18 @@ export async function ensurePlayTables(client: Db): Promise<void> {
       last_settled_at  TEXT,
       ended_at         TEXT,
       end_reason       TEXT,
-      device_label     TEXT
+      device_label     TEXT,
+      predecessor_id   TEXT,
+      reserve_seconds  INTEGER NOT NULL DEFAULT 0
     )
   `);
+  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0"]) {
+    try {
+      await client.execute(`ALTER TABLE family_play_leases ADD COLUMN ${column}`);
+    } catch {
+      /* column already exists */
+    }
+  }
   await client.execute(`
     CREATE UNIQUE INDEX IF NOT EXISTS idx_family_play_leases_active
       ON family_play_leases (person_id) WHERE state = 'active'
@@ -146,7 +157,37 @@ function rowToLease(row: Record<string, unknown>): PlayLease {
     endedAt: (row["ended_at"] as string | null) ?? null,
     endReason: (row["end_reason"] as string | null) ?? null,
     deviceLabel: (row["device_label"] as string | null) ?? null,
+    predecessorId: (row["predecessor_id"] as string | null) ?? null,
+    reserveSeconds: Number(row["reserve_seconds"] ?? 0),
   };
+}
+
+/**
+ * Seconds a predecessor lease may still report after it was replaced: its
+ * unsettled consumption can never exceed the wall time since its last
+ * settlement (or issue), nor its own remaining budget. Zero once it reported
+ * its end. This upper bound is what the successor's budget is reduced by, so
+ * a device switch can never create allowance that does not exist (GP-03).
+ */
+export function outstandingPredecessorSeconds(pred: Pick<PlayLease, "metered" | "budgetSeconds" | "consumedSeconds" | "endReason" | "lastSettledAt" | "issuedAt" | "state">, now: Date): number {
+  if (!pred.metered) return 0;
+  if (pred.state === "ended" && pred.endReason && pred.endReason !== "replaced-by-takeover" && pred.endReason !== "replaced-stale") return 0;
+  const since = Date.parse(pred.lastSettledAt ?? pred.issuedAt);
+  const elapsed = Number.isFinite(since) ? Math.max(0, Math.ceil((now.getTime() - since) / 1000)) : LEASE_STALE_SECONDS;
+  return Math.max(0, Math.min(pred.budgetSeconds - pred.consumedSeconds, elapsed, LEASE_STALE_SECONDS));
+}
+
+async function recomputeSuccessorBudget(db: Db, predecessorId: string, now: Date): Promise<void> {
+  const succ = await db.execute({ sql: "SELECT * FROM family_play_leases WHERE predecessor_id = ? AND state = 'active' AND metered = 1", args: [predecessorId] });
+  const row = succ.rows[0];
+  if (!row) return;
+  const successor = rowToLease(row as Record<string, unknown>);
+  const pred = await readLease(db, predecessorId);
+  if (!pred) return;
+  const allowance = await readAllowance(db, successor.personId);
+  const reserve = outstandingPredecessorSeconds(pred, now);
+  const budget = Math.max(successor.consumedSeconds, allowanceRemaining(allowance) + successor.consumedSeconds - reserve);
+  await db.execute({ sql: "UPDATE family_play_leases SET budget_seconds = ?, reserve_seconds = ? WHERE id = ?", args: [budget, reserve, successor.id] });
 }
 
 function rowToPurchase(row: Record<string, unknown>): PlayPurchase {
@@ -415,11 +456,16 @@ export async function issuePlayLease(
         ? { ok: false, reason: "lease-held", remainingSeconds: remaining, heldBy: decision.heldBy }
         : { ok: false, reason: "no-allowance", remainingSeconds: remaining };
     }
+    let reserve = 0;
     if (decision.replaces) {
+      const endReason = input.takeover ? "replaced-by-takeover" : "replaced-stale";
       await tx.execute({
         sql: "UPDATE family_play_leases SET state = 'ended', ended_at = ?, end_reason = ? WHERE id = ? AND state = 'active'",
-        args: [now.toISOString(), input.takeover ? "replaced-by-takeover" : "replaced-stale", decision.replaces],
+        args: [now.toISOString(), endReason, decision.replaces],
       });
+      // Hold back what the replaced lease may still report (its unsettled
+      // consumption is bounded by the wall time since its last settlement).
+      if (existing) reserve = outstandingPredecessorSeconds({ ...existing, state: "ended", endReason }, now);
     }
     const metered = price.kind === "metered";
     const lease: PlayLease = {
@@ -428,7 +474,7 @@ export async function issuePlayLease(
       gameId: input.gameId,
       mode: input.mode,
       metered,
-      budgetSeconds: metered ? remaining : 0,
+      budgetSeconds: metered ? Math.max(0, remaining - reserve) : 0,
       consumedSeconds: 0,
       state: "active",
       issuedAt: now.toISOString(),
@@ -436,12 +482,14 @@ export async function issuePlayLease(
       endedAt: null,
       endReason: null,
       deviceLabel: input.deviceLabel,
+      predecessorId: decision.replaces,
+      reserveSeconds: metered ? reserve : 0,
     };
     await tx.execute({
       sql: `INSERT INTO family_play_leases
-              (id, person_id, game_id, mode, metered, budget_seconds, consumed_seconds, state, issued_at, device_label)
-            VALUES (?, ?, ?, ?, ?, ?, 0, 'active', ?, ?)`,
-      args: [lease.id, lease.personId, lease.gameId, lease.mode, metered ? 1 : 0, lease.budgetSeconds, lease.issuedAt, lease.deviceLabel],
+              (id, person_id, game_id, mode, metered, budget_seconds, consumed_seconds, state, issued_at, device_label, predecessor_id, reserve_seconds)
+            VALUES (?, ?, ?, ?, ?, ?, 0, 'active', ?, ?, ?, ?)`,
+      args: [lease.id, lease.personId, lease.gameId, lease.mode, metered ? 1 : 0, lease.budgetSeconds, lease.issuedAt, lease.deviceLabel, lease.predecessorId, lease.reserveSeconds],
     });
     await tx.commit();
     return { ok: true, lease, replaced: decision.replaces, remainingSeconds: remaining };
@@ -463,14 +511,16 @@ export async function issuePlayLease(
 }
 
 export type SettleOutcome =
-  | { ok: true; lease: PlayLease; remainingSeconds: number; delta: number }
-  | { ok: false; reason: "not-found" | "ended" };
+  | { ok: true; lease: PlayLease; remainingSeconds: number; delta: number; budgetSeconds: number }
+  | { ok: false; reason: "not-found" };
 
 /**
  * Apply a measured-consumption report from the Game Studio meter. Monotonic
- * and bounded (`applySettlement`); the allowance moves by exactly the delta.
- * `end` closes the lease; an ended lease still accepts its final report once
- * so a late last tick is not lost, but never re-opens.
+ * and bounded by the lease budget (`applySettlement`); the allowance moves by
+ * exactly the delta. `end` closes the lease. An ended lease keeps accepting
+ * late reports (offline/restart recovery) — they can only move forward within
+ * its own budget and never re-open it — and a successor lease's budget is
+ * recomputed from the predecessor's actual, now-known consumption (GP-03/07).
  */
 export async function settlePlayLease(
   input: { leaseId: string; consumedSeconds: number; end: boolean; endReason?: string | null; now?: Date },
@@ -485,10 +535,6 @@ export async function settlePlayLease(
     if (!lease) {
       await tx.rollback();
       return { ok: false, reason: "not-found" };
-    }
-    if (lease.state === "ended" && lease.endedAt && Date.parse(at) - Date.parse(lease.endedAt) > 60_000) {
-      await tx.rollback();
-      return { ok: false, reason: "ended" };
     }
     const applied = applySettlement(lease, input.consumedSeconds);
     const ends = input.end || (lease.metered && applied.exhausted);
@@ -510,10 +556,12 @@ export async function settlePlayLease(
         args: [lease.personId, applied.delta, at],
       });
     }
+    // A replaced predecessor's report shrinks or releases the successor's reserve.
+    await recomputeSuccessorBudget(tx, lease.id, input.now ?? new Date());
     const allowance = await readAllowance(tx, lease.personId);
     const updated = await readLease(tx, lease.id);
     await tx.commit();
-    return { ok: true, lease: updated!, remainingSeconds: allowanceRemaining(allowance), delta: applied.delta };
+    return { ok: true, lease: updated!, remainingSeconds: allowanceRemaining(allowance), delta: applied.delta, budgetSeconds: updated!.budgetSeconds };
   } catch (error) {
     try {
       await tx.rollback();
@@ -539,6 +587,44 @@ export async function endPlayLease(
     args: [at, input.reason, input.leaseId, input.personId],
   });
   return result.rowsAffected > 0;
+}
+
+export type LeaseStatus = {
+  leaseId: string;
+  personId: ChildId;
+  gameId: string;
+  mode: PlayMode;
+  metered: boolean;
+  state: LeaseState;
+  endReason: string | null;
+  budgetSeconds: number;
+  consumedSeconds: number;
+  remainingSeconds: number;
+  issuedAt: string;
+  lastSettledAt: string | null;
+};
+
+/** Authoritative lease state for the Game Studio meter (status endpoint). */
+export async function getLeaseStatus(leaseId: string, client?: Client): Promise<LeaseStatus | null> {
+  const db = client ?? (await getDb());
+  await ensurePlayTables(db);
+  const lease = await readLease(db, leaseId);
+  if (!lease) return null;
+  const allowance = await readAllowance(db, lease.personId);
+  return {
+    leaseId: lease.id,
+    personId: lease.personId,
+    gameId: lease.gameId,
+    mode: lease.mode,
+    metered: lease.metered,
+    state: lease.state,
+    endReason: lease.endReason,
+    budgetSeconds: lease.budgetSeconds,
+    consumedSeconds: lease.consumedSeconds,
+    remainingSeconds: allowanceRemaining(allowance),
+    issuedAt: lease.issuedAt,
+    lastSettledAt: lease.lastSettledAt,
+  };
 }
 
 export async function getLeasesForPerson(personId: ChildId, client?: Client): Promise<PlayLease[]> {

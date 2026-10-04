@@ -143,7 +143,25 @@ const replaySettle = await call("POST", "/api/family/play/leases/" + leaseId + "
 record("H-41", "a forged settlement is refused", replaySettle.status === 401, `${replaySettle.status}`);
 const lease3 = await call("POST", "/api/family/play/leases", { cookie: assistant, bearer: mintS.token, body: { gameId: SNAKE, mode: "play", device: "harness-c" } });
 record("H-42", "GP-03 the next lease carries the remaining allowance as its budget", lease3.status === 201 && lease3.json.lease.budgetSeconds === stateAfter.remainingSeconds, `${lease3.json?.lease?.budgetSeconds}`);
-await call("POST", `/api/family/play/leases/${lease3.json.lease.id}/release`, { cookie: assistant, bearer: mintS.token, body: { reason: "harness" } });
+{
+  // Repair check (review finding 1): an issued-but-never-used credential (lease3) is replaced by a takeover (lease4);
+  // its first use afterwards must be refused by the adapter after asking Family, and must not touch lease4.
+  const lease4 = await call("POST", "/api/family/play/leases", { cookie: assistant, bearer: mintS.token, body: { gameId: SNAKE, mode: "play", takeover: true, device: "harness-d" } });
+  record("H-44", "takeover replaces the unused lease and holds back nothing (it never settled, elapsed is tiny)", lease4.status === 201 && lease4.json.replaced === lease3.json.lease.id && lease4.json.lease.reserveSeconds <= 5, JSON.stringify({ reserve: lease4.json?.lease?.reserveSeconds, budget: lease4.json?.lease?.budgetSeconds }));
+  const t4 = await call("POST", `${lease4.json.studio.url}/v1/play/${lease4.json.lease.id}/tick`, { bearer: lease4.json.studio.token, body: { active: true } });
+  const staleContent = await call("GET", `${lease3.json.studio.url}/v1/play/${lease3.json.lease.id}/${SNAKE}/index.html?credential=${encodeURIComponent(lease3.json.studio.token)}`);
+  const staleTick = await call("POST", `${lease3.json.studio.url}/v1/play/${lease3.json.lease.id}/tick`, { bearer: lease3.json.studio.token, body: { active: true } });
+  const t4b = await call("POST", `${lease4.json.studio.url}/v1/play/${lease4.json.lease.id}/tick`, { bearer: lease4.json.studio.token, body: { active: true } });
+  record("H-45", "GP-03/08 the stale unused credential gets 410 from Family's authority and the newer lease keeps playing", t4.status === 200 && staleContent.status === 410 && staleTick.status === 410 && t4b.status === 200, `${staleContent.status}/${staleTick.status}/${t4b.status}`);
+  const status = (await call("GET", "/api/family/play/state", { cookie: assistant, bearer: mintS.token })).json;
+  record("H-46", "Family still shows exactly the newer lease as active", status.activeLease?.id === lease4.json.lease.id);
+  // Signature retargeting: a report signed for lease4 posted to lease3's URL is refused; anonymous status read is refused.
+  const retarget = await call("POST", `/api/family/play/leases/${lease3.json.lease.id}/settle`, { body: { leaseId: lease4.json.lease.id, consumedSeconds: 1, end: false }, headers: { "x-family-play-timestamp": String(Math.floor(Date.now() / 1000)), "x-family-play-signature": "v2=deadbeef" } });
+  const anonStatus = await call("GET", `/api/family/play/leases/${lease4.json.lease.id}/status`);
+  record("H-47", "settlement/status endpoints refuse unbound or unsigned requests", retarget.status === 401 && anonStatus.status === 401, `${retarget.status}/${anonStatus.status}`);
+  await call("POST", `${lease4.json.studio.url}/v1/play/${lease4.json.lease.id}/end`, { bearer: lease4.json.studio.token, body: { reason: "harness" } });
+  await call("POST", `/api/family/play/leases/${lease4.json.lease.id}/release`, { cookie: assistant, bearer: mintS.token, body: { reason: "harness" } });
+}
 const editLease = await call("POST", "/api/family/play/leases", { cookie: assistant, bearer: mintI.token, body: { gameId: SNAKE, mode: "edit" } });
 record("H-43", "GP-04 Edit mode is an unmetered lease even without allowance", editLease.status === 201 && editLease.json.lease.metered === false, `${editLease.status}`);
 await call("POST", `/api/family/play/leases/${editLease.json?.lease?.id}/release`, { cookie: assistant, bearer: mintI.token, body: { reason: "harness" } });
@@ -272,9 +290,17 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   const clock2 = await page.locator("header [data-remaining-seconds]").getAttribute("data-remaining-seconds");
   record("T-05", "GP-05 the play clock is the server's and moves while playing in the foreground", Number(clock2) < Number(clock1), `${clock1} → ${clock2}`);
   await shot(page, "tablet-02-playing");
+  const gameFrame = page.frames().find((f) => f.url().includes("/v1/play/"));
+  const frozenBefore = gameFrame ? await gameFrame.evaluate(() => window.__familyPlayGuard?.isFrozen() ?? null).catch(() => null) : null;
   await page.getByRole("button", { name: /Pause/ }).tap();
   await page.getByRole("dialog", { name: "Paused" }).waitFor();
   await page.waitForTimeout(1500); // the immediate pause tick settles the last active interval
+  const frozenAfter = gameFrame ? await gameFrame.evaluate(() => window.__familyPlayGuard?.isFrozen() ?? null).catch(() => null) : null;
+  // Timers inside the frozen frame are deferred by the guard itself, so the probe sets a flag and the PARENT waits.
+  if (gameFrame) await gameFrame.evaluate(() => { window.__probeFired = false; requestAnimationFrame(() => { window.__probeFired = true; }); }).catch(() => null);
+  await page.waitForTimeout(600);
+  const rafHeld = gameFrame ? await gameFrame.evaluate(() => window.__probeFired).catch(() => null) : null;
+  record("T-06a", "GP-04 pausing freezes the game inside the frame (loop held, not only an overlay)", frozenBefore === false && frozenAfter === true && rafHeld === false, JSON.stringify({ frozenBefore, frozenAfter, rafFiredWhileFrozen: rafHeld }));
   const paused1 = await page.locator("header [data-remaining-seconds]").getAttribute("data-remaining-seconds");
   await page.waitForTimeout(6000);
   const paused2 = await page.locator("header [data-remaining-seconds]").getAttribute("data-remaining-seconds");
@@ -282,6 +308,9 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   await shot(page, "tablet-03-paused");
   await page.getByRole("dialog", { name: "Paused" }).getByRole("button", { name: /Continue/ }).tap();
   await page.getByRole("dialog", { name: "Paused" }).waitFor({ state: "hidden" });
+  await page.waitForTimeout(500);
+  const thawed = gameFrame ? await gameFrame.evaluate(() => window.__familyPlayGuard?.isFrozen() ?? null).catch(() => null) : null;
+  record("T-06b", "continuing thaws the game inside the frame", thawed === false, `${thawed}`);
   await page.getByRole("link", { name: /Games/ }).first().tap();
   await page.waitForURL(/\/family\/games\?child=santiago/);
   await sleep(600);

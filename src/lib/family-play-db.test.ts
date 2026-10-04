@@ -10,6 +10,7 @@ import { createClient, type Client } from "@libsql/client";
 import {
   endPlayLease,
   ensurePlayTables,
+  getLeaseStatus,
   getLeasesForPerson,
   getPlayState,
   issuePlayLease,
@@ -178,7 +179,8 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     const mac = await issuePlayLease({ personId: "santiago", gameId: "other-paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "Mac", now: at(205) }, client);
     ok(!mac.ok && mac.reason === "lease-held" && mac.heldBy?.leaseId === ipad.lease.id);
     const takeover = await issuePlayLease({ personId: "santiago", gameId: "other-paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "Mac", now: at(206) }, client);
-    ok(takeover.ok && takeover.replaced === ipad.lease.id && takeover.lease.budgetSeconds === 700);
+    // 700 remain, but the iPad may still report up to the 5 s since its last settlement: budget 695, reserve 5.
+    ok(takeover.ok && takeover.replaced === ipad.lease.id && takeover.lease.budgetSeconds === 695 && takeover.lease.reserveSeconds === 5);
     const leases = await getLeasesForPerson("santiago", client);
     deepEqual(leases.map((l) => l.state), ["ended", "active"]);
     equal(leases[0].endReason, "replaced-by-takeover");
@@ -186,6 +188,47 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     const late = await settlePlayLease({ leaseId: ipad.lease.id, consumedSeconds: 250, end: true, now: at(230) }, client);
     ok(late.ok && late.delta === 50);
     equal((await getPlayState("santiago", client)).remainingSeconds, 650);
+    // …and the successor's budget is reconciled to the real remaining allowance once the predecessor is final.
+    const succ = (await getLeasesForPerson("santiago", client)).find((l) => l.id === takeover.lease.id)!;
+    equal(succ.budgetSeconds, 650);
+    equal(succ.reserveSeconds, 0);
+  });
+
+  it("GP-03 a takeover holds back the predecessor's possible unsettled time, so two devices never share more than the allowance", async () => {
+    const client = await fresh({ santiagoCoins: 7 });
+    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-takeover-2", purchaseId: id("p"), redemptionId: id("r"), now: at(0) }, client);
+    const first = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: "iPad", now: at(1) }, client);
+    ok(first.ok);
+    // 100 s settled, then 40 more seconds of play that the meter has NOT settled yet.
+    await settlePlayLease({ leaseId: first.lease.id, consumedSeconds: 100, end: false, now: at(101) }, client);
+    const second = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: true, deviceLabel: "Mac", now: at(141) }, client);
+    ok(second.ok);
+    // remaining 800, but up to 40 s may still be reported by the iPad → successor budget 760, reserve 40
+    equal(second.lease.budgetSeconds, 760);
+    equal(second.lease.reserveSeconds, 40);
+    equal(second.lease.predecessorId, first.lease.id);
+    // The iPad's final report says it actually played 25 of those 40 seconds: the successor gets the 15 back.
+    const final = await settlePlayLease({ leaseId: first.lease.id, consumedSeconds: 125, end: true, endReason: "ended", now: at(150) }, client);
+    ok(final.ok && final.delta === 25);
+    const succ = (await getLeasesForPerson("santiago", client)).find((l) => l.id === second.lease.id)!;
+    equal(succ.budgetSeconds, 775);
+    equal(succ.reserveSeconds, 0);
+    equal((await getPlayState("santiago", client)).remainingSeconds, 775);
+    // Sum of what both devices could ever consume never exceeds the purchase.
+    ok(125 + succ.budgetSeconds <= 900);
+  });
+
+  it("GP-07 a report that arrives long after a lease ended (offline/restart) is applied, bounded, and the status read reflects it", async () => {
+    const client = await fresh({ santiagoCoins: 7 });
+    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-late-1", purchaseId: id("p"), redemptionId: id("r"), now: at(0) }, client);
+    const lease = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: null, now: at(1) }, client);
+    ok(lease.ok);
+    equal(await endPlayLease({ leaseId: lease.lease.id, personId: "santiago", reason: "released", now: at(60) }, client), true);
+    const late = await settlePlayLease({ leaseId: lease.lease.id, consumedSeconds: 50, end: true, now: at(60 + 3600) }, client);
+    ok(late.ok && late.delta === 50 && late.lease.state === "ended");
+    const status = await getLeaseStatus(lease.lease.id, client);
+    ok(status && status.state === "ended" && status.consumedSeconds === 50 && status.remainingSeconds === 850);
+    equal(await getLeaseStatus("lease-nope", client), null);
   });
 
   it("settlement is monotonic, exhaustion ends the lease, and the allowance never goes below zero", async () => {
@@ -199,9 +242,9 @@ describe("leases — one consuming lease per child, shared across paid games (GP
     const c = await settlePlayLease({ leaseId: lease.lease.id, consumedSeconds: 5000, end: false, now: at(900) }, client);
     ok(c.ok && c.lease.state === "ended" && c.lease.consumedSeconds === 900 && c.remainingSeconds === 0);
     equal(c.lease.endReason, "exhausted");
-    // A replayed report minutes after the end is refused and changes nothing.
+    // A late/replayed report minutes after the end is accepted but can only move forward within the budget: nothing changes.
     const replay = await settlePlayLease({ leaseId: lease.lease.id, consumedSeconds: 900, end: true, now: at(1000) }, client);
-    deepEqual(replay, { ok: false, reason: "ended" });
+    ok(replay.ok && replay.delta === 0 && replay.lease.state === "ended");
     equal((await getPlayState("santiago", client)).remainingSeconds, 0);
     deepEqual(await settlePlayLease({ leaseId: "nope", consumedSeconds: 1, end: false }, client), { ok: false, reason: "not-found" });
   });

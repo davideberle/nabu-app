@@ -222,22 +222,24 @@ export function readBearer(header: string | null): string | null {
 }
 
 // ---------------------------------------------------------------------------
-// Settlement signatures (Studio meter → Family), shared-secret HMAC over
-// `${timestamp}.${rawBody}`; the timestamp bounds replay of an old report.
+// Studio → Family request signatures (settlement reports and lease status
+// reads): shared-secret HMAC over `${timestamp}.${leaseId}.${rawBody}`. The
+// lease id in the signed string binds a report to exactly one lease URL, so a
+// captured report cannot be retargeted; the timestamp bounds replay.
 // ---------------------------------------------------------------------------
 
-export function signSettlement(key: Buffer, timestampSeconds: number, rawBody: string): string {
-  return `v1=${createHmac("sha256", key).update(`${timestampSeconds}.${rawBody}`).digest("hex")}`;
+export function signSettlement(key: Buffer, timestampSeconds: number, leaseId: string, rawBody: string): string {
+  return `v2=${createHmac("sha256", key).update(`${timestampSeconds}.${leaseId}.${rawBody}`).digest("hex")}`;
 }
 
 export type SettlementVerify = { ok: true } | { ok: false; reason: "missing" | "bad-timestamp" | "skew" | "bad-signature" };
 
-export function verifySettlementSignature(key: Buffer, signatureHeader: string | null, timestampHeader: string | null, rawBody: string, nowSeconds: number): SettlementVerify {
+export function verifySettlementSignature(key: Buffer, signatureHeader: string | null, timestampHeader: string | null, leaseId: string, rawBody: string, nowSeconds: number): SettlementVerify {
   if (!signatureHeader || !timestampHeader) return { ok: false, reason: "missing" };
   if (!/^\d{1,12}$/.test(timestampHeader)) return { ok: false, reason: "bad-timestamp" };
   const ts = Number(timestampHeader);
   if (Math.abs(nowSeconds - ts) > SETTLEMENT_MAX_SKEW_SECONDS) return { ok: false, reason: "skew" };
-  const expected = Buffer.from(signSettlement(key, ts, rawBody));
+  const expected = Buffer.from(signSettlement(key, ts, leaseId, rawBody));
   const given = Buffer.from(signatureHeader);
   if (expected.length !== given.length || !timingSafeEqual(expected, given)) return { ok: false, reason: "bad-signature" };
   return { ok: true };

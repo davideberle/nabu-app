@@ -177,7 +177,12 @@ export function createGamesClient(deps: GamesClientDeps = {}) {
     createProject: (studio: StudioAccess, prompt: string) =>
       studioCall<{ project: StudioProject; job: StudioJob }>(studio, "/v1/studio/projects", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ prompt }) }),
     iterateProject: (studio: StudioAccess, id: string, prompt: string) =>
-      studioCall<Record<string, unknown>>(studio, `/v1/studio/projects/${encodeURIComponent(id)}/iterate`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ prompt }) }),
+      studioCall<{ plan: StudioPlan }>(studio, `/v1/studio/projects/${encodeURIComponent(id)}/iterate`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ prompt }) }),
+    plan: (studio: StudioAccess, id: string, signal?: AbortSignal) => studioCall<StudioPlan>(studio, `/v1/studio/plans/${encodeURIComponent(id)}`, { signal }),
+    clarifyPlan: (studio: StudioAccess, id: string, answers: { question: string; answer: string }[]) =>
+      studioCall<{ plan: StudioPlan }>(studio, `/v1/studio/plans/${encodeURIComponent(id)}/clarify`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers }) }),
+    approvePlan: (studio: StudioAccess, id: string) =>
+      studioCall<{ plan: StudioPlan; job: StudioJob | null }>(studio, `/v1/studio/plans/${encodeURIComponent(id)}/approve`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ confirmPlanId: id }) }),
     job: (studio: StudioAccess, id: string, signal?: AbortSignal) => studioCall<StudioJob>(studio, `/v1/studio/jobs/${encodeURIComponent(id)}`, { signal }),
   };
 }
@@ -193,6 +198,22 @@ export type StudioProject = {
   latestPlanId: string | null;
   updatedAt: string;
   latestJob?: StudioJob | null;
+};
+
+export type StudioPlan = {
+  id: string;
+  projectId: string;
+  /** analyzing | analysis_failed | awaiting_clarification | awaiting_approval | running | failed | completed */
+  status: string;
+  request: string;
+  approvedAt: string | null;
+  planningError: string | null;
+  requirements: string[];
+  assumptions: string[];
+  questions: { text: string; kind: "material" | "informational" }[];
+  materialQuestionsOpen: boolean;
+  clarifications: { question: string; answer: string }[];
+  steps: { index: number; title: string | null; instruction: string | null; status: string }[];
 };
 
 export type StudioJob = { id: string; projectId: string; status: string; error: string | null; versionId: string | null; createdAt: string; completedAt: string | null };

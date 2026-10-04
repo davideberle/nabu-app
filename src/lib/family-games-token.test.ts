@@ -90,11 +90,12 @@ describe("Studio play credential", () => {
 describe("settlement signature", () => {
   const key = derivePlayKey(env)!;
   const body = JSON.stringify({ consumedSeconds: 120, end: false });
-  it("verifies a fresh signature and rejects skew, tampering and a missing header", () => {
-    const sig = signSettlement(key, now, body);
-    equal(verifySettlementSignature(key, sig, String(now), body, now + 5).ok, true);
-    equal(verifySettlementSignature(key, sig, String(now), body + " ", now + 5).ok, false);
-    equal(verifySettlementSignature(key, sig, String(now), body, now + 1000).ok, false);
-    equal(verifySettlementSignature(key, null, String(now), body, now).ok, false);
+  it("verifies a fresh signature and rejects skew, tampering, retargeting to another lease and a missing header", () => {
+    const sig = signSettlement(key, now, "lease-aaaaaaaaaaaa", body);
+    equal(verifySettlementSignature(key, sig, String(now), "lease-aaaaaaaaaaaa", body, now + 5).ok, true);
+    equal(verifySettlementSignature(key, sig, String(now), "lease-bbbbbbbbbbbb", body, now + 5).ok, false);
+    equal(verifySettlementSignature(key, sig, String(now), "lease-aaaaaaaaaaaa", body + " ", now + 5).ok, false);
+    equal(verifySettlementSignature(key, sig, String(now), "lease-aaaaaaaaaaaa", body, now + 1000).ok, false);
+    equal(verifySettlementSignature(key, null, String(now), "lease-aaaaaaaaaaaa", body, now).ok, false);
   });
 });
