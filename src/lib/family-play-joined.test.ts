@@ -15,7 +15,7 @@ const ADAPTER = "/Users/claweberle/.openclaw/workspace/projects/game-studio/serv
 const available = existsSync(ADAPTER);
 
 type Adapter = {
-  createChildPlayAdapter: (opts: Record<string, unknown>) => import("node:http").Server & { store: { loadLease: (id: string) => { consumed: number; state: string; endReason: string | null; lastActive: boolean } | null }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
+  createChildPlayAdapter: (opts: Record<string, unknown>) => import("node:http").Server & { store: { loadLease: (id: string) => { consumed: number; state: string; endReason: string | null; lastActive: boolean; session: { evidenced?: boolean } | null } | null }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
   derivePlayKey: (secret: string) => Buffer;
   mintPlayCredential: (key: Buffer, claims: Record<string, unknown>) => string;
   signSettlement: (key: Buffer, ts: number, leaseId: string, body: string) => string;
@@ -720,11 +720,16 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
    * modelled guard: the frame is reported running only after the guard's reply (`frameReplyAt`, null = frame never
    * loads); every report names the session grant and the observed running duration.
    */
-  function wrapperModel(base: string, lid: string, token: string, opts: { deliverAt?: () => number | null | undefined; frameReplyAt?: () => number | null | undefined; holdRunningUntil?: () => number | null | undefined } = {}) {
-    const st = { armed: false, lapsed: false, offline: false, paused: false, authorizedUntil: 0, grantSeq: null as number | null, running: false, thawAt: 0, sessionGrant: null as number | null, lastRunMs: 0 };
+  function wrapperModel(base: string, lid: string, token: string, opts: { deliverAt?: () => number | null | undefined; frameReplyAt?: () => number | null | undefined; holdRunningUntil?: () => number | null | undefined; guardReplyDelayMs?: () => number } = {}) {
+    // The modelled GUARD measures its own running time (thaw instant → freeze), like the real one; its reply to the
+    // wrapper may be delayed. The wrapper only forwards the guard's measurement.
+    const guard = { thawedAt: 0, ranMs: 0, running: false };
+    const guardFreeze = () => { if (guard.running) { guard.ranMs += Math.max(0, clock - guard.thawedAt); guard.running = false; } };
+    const guardRanMs = () => guard.ranMs + (guard.running ? Math.max(0, clock - guard.thawedAt) : 0);
+    const st = { armed: false, lapsed: false, offline: false, paused: false, authorizedUntil: 0, grantSeq: null as number | null, running: false, thawAt: 0, sessionGrant: null as number | null, lastRunMs: 0, observedMs: 0 };
     const sends: { at: number; active: boolean; foreground: boolean; grant: number | null; runMs: number }[] = [];
-    const stopRunning = () => { if (st.running) st.lastRunMs = Math.max(0, clock - st.thawAt); st.running = false; };
-    const runMs = () => (st.running ? Math.max(0, clock - st.thawAt) : st.lastRunMs);
+    const stopRunning = () => { st.running = false; guardFreeze(); st.observedMs = Math.max(st.observedMs, guardRanMs()); };
+    const runMs = () => st.observedMs;
     const hb = createHeartbeat<{ status: number; body: { authorizedForMs?: number; billing?: string; grant?: number; consumedSeconds: number }; sentAt: number; input: HeartbeatInput }>({
       intervalMs: 800,
       setTimer: () => 1,
@@ -763,30 +768,42 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
         st.authorizedUntil = sentAt + Math.max(0, body.authorizedForMs ?? 0);
         st.lapsed = clock >= st.authorizedUntil;
         st.armed = Boolean(input.foreground) && !st.lapsed && (body.authorizedForMs ?? 0) > 0;
-        if (st.armed && typeof body.grant === "number") st.grantSeq = body.grant;
+        if (st.armed && typeof body.grant === "number") {
+          st.grantSeq = body.grant;
+          // A stop report carrying the final duration has been answered: the next thaw opens a new session (client.tsx).
+          if (!st.running && body.billing !== "running" && !input.active && st.sessionGrant !== null && input.grant === st.sessionGrant) { st.sessionGrant = null; st.observedMs = 0; guard.ranMs = 0; }
+        }
         if (!st.armed) stopRunning();
         st.offline = false;
         // postFrameState → the guard replies (if the frame is loaded) → running starts on its word.
         if (st.armed) {
           const replyAt = opts.frameReplyAt ? opts.frameReplyAt() : clock;
           if (replyAt === null) return; // frame not loaded: no reply, nothing runs, nothing is reported running
+          // The guard thaws when the alive message arrives (replyAt) and starts its own clock there.
+          const thaw = () => { if (!guard.running) { guard.running = true; guard.thawedAt = clock; } };
           const confirm = () => {
-            if (!st.armed || st.paused || st.offline || st.lapsed || st.running) return;
+            if (!st.armed || st.paused || st.offline || st.lapsed) return;
+            if (st.sessionGrant === null) { st.sessionGrant = st.grantSeq; st.observedMs = 0; }
             st.running = true;
-            st.thawAt = clock;
-            st.sessionGrant = st.grantSeq;
+            st.observedMs = Math.max(st.observedMs, guardRanMs());
             hb.request();
           };
-          if (typeof replyAt === "number" && replyAt > clock) {
-            const poll = () => (clock >= replyAt ? confirm() : setTimeout(poll, 5));
-            poll();
-          } else confirm();
+          const delay = opts.guardReplyDelayMs ? opts.guardReplyDelayMs() : 0;
+          const schedule = (fn: () => void, when: number) => { const poll = () => (clock >= when ? fn() : setTimeout(poll, 5)); poll(); };
+          const thawAt = typeof replyAt === "number" ? replyAt : clock;
+          schedule(() => { thaw(); schedule(confirm, thawAt + delay); }, thawAt);
         }
       },
     });
     const pause = () => { st.paused = true; st.armed = false; stopRunning(); hb.request(); };
     const watchdog = () => { if (st.armed && clock >= st.authorizedUntil) { st.lapsed = true; st.armed = false; stopRunning(); hb.request(); } };
-    return { hb, st, sends, pause, watchdog };
+    /** The actual client.end contract: reason, frameStopped and the wrapper's current observation. */
+    const end = async (reason: string, frameStopped: boolean) => {
+      stopRunning();
+      const r = await fetch(`${base}/v1/play/${lid}/end`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ reason, frameStopped, grant: st.sessionGrant, runMs: st.observedMs }) });
+      return { status: r.status, body: (await r.json()) as { consumedSeconds: number } };
+    };
+    return { hb, st, sends, pause, watchdog, end, guardRanMs };
   }
 
   async function settle(ms = 60) { await new Promise((r) => setTimeout(r, ms)); }
@@ -802,7 +819,8 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const w = wrapperModel(base, "lease-joined-r10-transit", a, { deliverAt: () => deliverAt });
       w.hb.request(); // intent at t0 → grant → acknowledgment at t0
       await settle();
-      deepEqual(w.sends.map((x) => [x.at, x.active, x.foreground]), [[0, false, true], [0, true, true]]);
+      deepEqual(w.sends.slice(0, 2).map((x) => [x.at, x.active, x.foreground]), [[0, false, true], [0, true, true]]);
+      ok(w.sends.slice(2).every((x) => x.at === 0 && x.active), "any further report at t0 is a running one");
       clock = t0 + 1000;
       outage = true;
       w.hb.request(); // running renewal → 503: frozen, offline
@@ -813,8 +831,10 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       deliverAt = t0 + 6000; // the recovery answer is held in transit until t6
       w.hb.request(); // recovery INTENT (active:false, foreground:true)
       await settle();
-      equal(w.sends[3].active, false);
-      equal(w.sends[3].foreground, true);
+      const recoverySend = w.sends.at(-1)!;
+      equal(recoverySend.at, 5);
+      equal(recoverySend.active, false);
+      equal(recoverySend.foreground, true);
       equal(server.store.loadLease("lease-joined-r10-transit")!.consumed, 1, "the server answered but bills nothing while the answer is in transit");
       clock = t0 + 6000;
       deliverAt = undefined;
@@ -861,7 +881,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       await settle(80);
       equal(w.st.armed, false, "a grant that arrives after its deadline arms nothing");
       equal(w.st.lapsed, true);
-      ok(!w.sends.slice(3).some((x) => x.active), "no running report was ever sent after the outage");
+      ok(!w.sends.some((x) => x.at >= 5 && x.active), "no running report was ever sent after the outage");
       const r = await fetch(`${base}/v1/play/lease-joined-r10-expired/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
       const ended = (await r.json()) as { consumedSeconds: number };
       w.hb.stop();
@@ -952,11 +972,11 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       clock = t0 + 6800;
       holdRunningUntil = undefined;
       await settle(80);
-      equal(server.store.loadLease("lease-joined-r11-uplink")!.consumed, 1, "the acknowledgment measured 0 at its send; nothing is guessed about the uplink");
+      ok(server.store.loadLease("lease-joined-r11-uplink")!.consumed >= 1 && server.store.loadLease("lease-joined-r11-uplink")!.consumed <= 1.8, `only guard-measured time is billed, never a guess about the uplink (${server.store.loadLease("lease-joined-r11-uplink")!.consumed})`);
       clock = t0 + 7400;
       w.hb.request(); // renewal: runMs 1.4 s under the session grant
       await settle();
-      equal(server.store.loadLease("lease-joined-r11-uplink")!.consumed, 2.4, "the whole observed run since the thaw is billed, uplink included");
+      ok(server.store.loadLease("lease-joined-r11-uplink")!.consumed >= 1.8, `the renewal carries the guard's last reported duration (${server.store.loadLease("lease-joined-r11-uplink")!.consumed})`);
       clock = t0 + 7600;
       w.pause(); // the stop report closes the session at 1.6 s
       await settle();
@@ -1005,7 +1025,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       clock = t0 + 7000;
       w.watchdog(); // the frame froze itself at the deadline handed at t5 (t7): the stop report carries runMs 1000 under the session grant
       await settle(80);
-      equal(server.store.loadLease("lease-joined-r11-lost")!.consumed, 2, "0→1 plus the lost acknowledgment's 6→7, recovered from the next report");
+      equal(server.store.loadLease("lease-joined-r11-lost")!.consumed, 2, `0→1 plus the lost acknowledgment's 6→7, recovered from the next report (sends ${JSON.stringify(w.sends)}, session ${JSON.stringify(server.store.loadLease("lease-joined-r11-lost")!.session)})`);
       const r = await fetch(`${base}/v1/play/lease-joined-r11-lost/end`, { method: "POST", headers: { authorization: `Bearer ${a}`, "content-type": "application/json" }, body: JSON.stringify({ reason: "left", frameStopped: true, grant: w.st.sessionGrant, runMs: w.st.lastRunMs }) });
       const ended = (await r.json()) as { consumedSeconds: number };
       w.hb.stop();
@@ -1050,6 +1070,149 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       equal(b.lease.budgetSeconds, 900);
       // When the frame finally loads and the guard confirms, running starts and billing starts there.
       void frameReplyAt;
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+  // ---- round 12: guard-measured intervals, the real end contract, and bounded reconciliation after a crash --------
+
+  it("R12-1 delayed guard confirmation: the frame runs from t6, the guard's running reply reaches the wrapper only at t6.8 — the guard's own measurement is billed, 2.6 total, B gets 897", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-guard", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r12-guard");
+      let deliverAt: number | null | undefined;
+      let guardDelay = 0;
+      const w = wrapperModel(base, "lease-joined-r12-guard", a, { deliverAt: () => deliverAt, guardReplyDelayMs: () => guardDelay });
+      w.hb.request();
+      await settle();
+      clock = t0 + 1000;
+      outage = true;
+      w.hb.request();
+      await settle();
+      outage = false;
+      equal(server.store.loadLease("lease-joined-r12-guard")!.consumed, 1);
+      clock = t0 + 5000;
+      deliverAt = t0 + 6000;
+      guardDelay = 800; // the guard thaws at t6 but its reply reaches the wrapper at t6.8
+      w.hb.request();
+      await settle();
+      clock = t0 + 6000;
+      deliverAt = undefined;
+      await settle(80);
+      equal(w.st.running, false, "no reply yet: the wrapper does not claim running");
+      clock = t0 + 6800;
+      await settle(80);
+      equal(w.st.running, true);
+      equal(w.sends.at(-1)!.runMs, 800, "the first running report carries the guard's own 0.8 s, not the wrapper's arrival time");
+      clock = t0 + 7600;
+      const ended = await w.end("left", true);
+      w.hb.stop();
+      equal(ended.body.consumedSeconds, 2.6, "0→1 and the guard-measured 6→7.6");
+      await server.settler.flush();
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-guard-b", takeover: true, deviceLabel: null, now: at(8) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 897);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R12-2 the real end contract: the guard freezes at t1, the end request (reason, frameStopped, grant, runMs) reaches the meter at t1.6 — 1 billed, B gets 899", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-end", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r12-end");
+      const w = wrapperModel(base, "lease-joined-r12-end", a);
+      w.hb.request();
+      await settle();
+      equal(w.st.running, true);
+      clock = t0 + 1000;
+      w.st.paused = true; w.st.armed = false; w.pause(); // the guard freezes at t1 (observed 1.0 s)
+      await settle();
+      clock = t0 + 1600; // the end request is delivered 0.6 s later
+      const ended = await w.end("left", true);
+      w.hb.stop();
+      equal(ended.body.consumedSeconds, 1, "the observed second, never the delivery time");
+      await server.settler.flush();
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-end-b", takeover: true, deviceLabel: null, now: at(2) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 899);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R12-3 lost running report and tab crash: the frame ran 0→2 on a valid grant, nothing was ever reported — the successor's activation reconciles the bounded window (2) before releasing the reserve: 2 + 898 = 900", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-crash", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r12-crash");
+      let holdRunningUntil: number | null | undefined = null; // every running report is lost
+      const w = wrapperModel(base, "lease-joined-r12-crash", a, { holdRunningUntil: () => holdRunningUntil });
+      w.hb.request(); // intent → grant (deadline t2) → guard thaws → running report lost
+      await settle(80);
+      equal(w.st.running, true);
+      equal(server.store.loadLease("lease-joined-r12-crash")!.session!.evidenced, false, "no report after the grant");
+      w.hb.stop(); // the tab crashes at t0.5: nothing is ever sent again
+      clock = t0 + 500;
+      // Family side: the child starts on another device at t3; A's reserve was held back.
+      clock = t0 + 3000;
+      await endPlayLease({ leaseId: "lease-joined-r12-crash", personId: "santiago", reason: "takeover", now: new Date(clock) }, client);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-crash-b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      ok(b.ok);
+      ok(b.lease.budgetSeconds < 900, `A's possible play is reserved (${b.lease.budgetSeconds})`);
+      const successor = await fetch(`${base}/v1/play/lease-joined-r12-crash-b/tick`, { method: "POST", headers: { authorization: `Bearer ${cred("lease-joined-r12-crash-b")}`, "content-type": "application/json" }, body: '{"active":false,"foreground":true}' });
+      ok([200, 409].includes(successor.status));
+      await server.settler.flush();
+      const old = server.store.loadLease("lease-joined-r12-crash")!;
+      equal(old.state, "ended");
+      equal(old.consumed, 2, "reconciled to the window the frame could have run: grant answered at t0, deadline t2");
+      const oldFamily = (await getLease("lease-joined-r12-crash", client))!;
+      equal(oldFamily.consumedSeconds, 2);
+      equal(oldFamily.finalSettled, true);
+      const next = (await getLease("lease-joined-r12-crash-b", client))!;
+      equal(next.budgetSeconds, 898);
+      equal(oldFamily.consumedSeconds + next.budgetSeconds, 900);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("R12-3 control: an alive wrapper whose frame never ran reports exactly that and is never reconciled — 0 billed, B gets 900", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-alive", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r12-alive");
+      const w = wrapperModel(base, "lease-joined-r12-alive", a, { frameReplyAt: () => null });
+      w.hb.request();
+      await settle();
+      clock = t0 + 800;
+      w.hb.request(); // the wrapper keeps reporting intent: the frame never confirmed running
+      await settle();
+      equal(server.store.loadLease("lease-joined-r12-alive")!.session!.evidenced, true);
+      clock = t0 + 3000;
+      await endPlayLease({ leaseId: "lease-joined-r12-alive", personId: "santiago", reason: "takeover", now: new Date(clock) }, client);
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r12-alive-b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      ok(b.ok);
+      await fetch(`${base}/v1/play/lease-joined-r12-alive-b/tick`, { method: "POST", headers: { authorization: `Bearer ${cred("lease-joined-r12-alive-b")}`, "content-type": "application/json" }, body: '{"active":false,"foreground":true}' });
+      w.hb.stop();
+      await server.settler.flush();
+      equal(server.store.loadLease("lease-joined-r12-alive")!.consumed, 0);
+      equal((await getLease("lease-joined-r12-alive", client))!.consumedSeconds, 0);
+      equal((await getLease("lease-joined-r12-alive-b", client))!.budgetSeconds, 900);
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));

@@ -373,7 +373,7 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
       if (auto) await reply(route, 200, tickBody(690));
       else held.push(route);
     } else if (url.includes("index.html")) {
-      await route.fulfill({ status: 200, contentType: "text/html", body: "<html><body>Synthetic inert game<script>window.pings=[];window.addEventListener('message',e=>{window.pings.push(e.data);if(e.data&&e.data.type==='family-play:alive'&&e.source){e.source.postMessage({type:'family-play:running',leaseId:e.data.leaseId,grant:e.data.grant===undefined?null:e.data.grant,running:!e.data.paused&&!e.data.ended},e.origin)}})</script></body></html>" });
+      await route.fulfill({ status: 200, contentType: "text/html", body: "<html><body>Synthetic inert game<script>window.pings=[];window.addEventListener('message',e=>{window.pings.push(e.data);if(e.data&&e.data.type==='family-play:alive'&&e.source){var run=!e.data.paused&&!e.data.ended;if(run&&!window.runSince)window.runSince=Date.now();if(!run&&window.runSince){window.ran=(window.ran||0)+Date.now()-window.runSince;window.runSince=0;}var ranMs=(window.ran||0)+(window.runSince?Date.now()-window.runSince:0);e.source.postMessage({type:'family-play:running',leaseId:e.data.leaseId,grant:e.data.grant===undefined?null:e.data.grant,session:e.data.session===undefined?null:e.data.session,running:run,ranMs:ranMs},e.origin)}})</script></body></html>" });
     } else await reply(route, 200, {});
   });
   // Round 10: the first heartbeat is an INTENT (active:false, foreground:true); its grant arms the frame and the wrapper

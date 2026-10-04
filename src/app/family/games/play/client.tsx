@@ -74,6 +74,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
   phaseRef.current = phase;
   /** The running heartbeat; called directly on pause/continue so the clock settles at once. */
   const beatRef = useRef<(() => void) | null>(null);
+  /** The frame's observed running session as last reported by the guard: carried on every end request (round 12). */
+  const observationRef = useRef<{ grant: number | null; runMs: number }>({ grant: null, runMs: 0 });
   /** Pushes the current paused/ended state into the guarded frame (freezes/thaws the game). */
   const frameStateRef = useRef<((phase: string, remaining: number, ended: boolean) => void) | null>(null);
   const free = isFreeGame(gameId);
@@ -131,8 +133,9 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         resolve(value);
       };
       const onMessage = (event: MessageEvent) => {
-        const data = event.data as { type?: string; leaseId?: string; frozen?: boolean } | null;
+        const data = event.data as { type?: string; leaseId?: string; frozen?: boolean; ranMs?: number } | null;
         if (event.origin !== origin || event.source !== target || !data || data.type !== FRAME_STOPPED_TYPE || data.leaseId !== leaseId) return;
+        if (typeof data.ranMs === "number") observationRef.current = { ...observationRef.current, runMs: Math.max(observationRef.current.runMs, data.ranMs) };
         finish(data.frozen === true);
       };
       const timer = setTimeout(() => finish(false), STOP_ACK_TIMEOUT_MS);
@@ -151,7 +154,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
       const current = phaseRef.current;
       if (current.kind === "playing") {
         // The frame is unmounted with this component: nothing can run it any more.
-        void client.end(current.studio, current.grant.lease.id, "left", true);
+        void client.end(current.studio, current.grant.lease.id, "left", true, observationRef.current);
         void client.release(child, current.grant.lease.id, "left");
       }
     };
@@ -197,15 +200,13 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
      */
     let grantSeq: number | null = null;
     let running = false;
-    let thawAt = 0;
     let sessionGrant: number | null = null;
-    let lastRunMs = 0;
-    const runMs = () => (running ? Math.max(0, Date.now() - thawAt) : lastRunMs);
-    /** The frame stopped running (pause, hidden, offline, lapse, disarm): fix the observed duration. */
-    const stopRunning = () => {
-      if (running) lastRunMs = Math.max(0, Date.now() - thawAt);
-      running = false;
-    };
+    /** The guard's own measurement of how long the game has run under the session (monotonic; never an arrival-time estimate). */
+    let observedMs = 0;
+    const runMs = () => observedMs;
+    const publishObservation = () => { observationRef.current = { grant: sessionGrant, runMs: observedMs }; };
+    /** The wrapper no longer believes the frame runs (pause, hidden, offline, lapse, disarm); the guard's next reply fixes the duration. */
+    const stopRunning = () => { running = false; };
     const postFrameState = (phaseName: string, remainingSeconds: number, ended: boolean) => {
       const current = phaseRef.current;
       const live = current.kind === "playing" && current.grant.lease.id === leaseId;
@@ -216,7 +217,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
       const authorizedForMs = ended || paused ? 0 : Math.max(0, authorizedUntil - Date.now());
       if (paused || ended) stopRunning();
       try {
-        frameRef.current?.contentWindow?.postMessage({ type: FRAME_PING_TYPE, leaseId, remainingSeconds, phase: phaseName, paused, reason, ended, authorizedForMs, grant: grantSeq }, origin);
+        frameRef.current?.contentWindow?.postMessage({ type: FRAME_PING_TYPE, leaseId, remainingSeconds, phase: phaseName, paused, reason, ended, authorizedForMs, grant: grantSeq, session: sessionGrant }, origin);
       } catch {
         /* frame not ready */
       }
@@ -224,20 +225,31 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
     frameStateRef.current = postFrameState;
     /** The guard answers every alive message with what the frame is actually doing: running starts (and is billed) only on its word. */
     const onFrameRunning = (event: MessageEvent) => {
-      const data = event.data as { type?: string; leaseId?: string; grant?: number | null; running?: boolean } | null;
+      const data = event.data as { type?: string; leaseId?: string; grant?: number | null; session?: number | null; running?: boolean; ranMs?: number } | null;
       const target = frameRef.current?.contentWindow ?? null;
       if (event.origin !== origin || !target || event.source !== target || !data || data.type !== FRAME_RUNNING_TYPE || data.leaseId !== leaseId) return;
+      // Fence: a reply about an earlier session (a stale reorder) cannot touch the current observation.
+      const replySession = data.session ?? data.grant ?? null;
+      if (sessionGrant !== null && replySession !== null && replySession !== sessionGrant) return;
       const current = phaseRef.current;
       const live = current.kind === "playing" && current.grant.lease.id === leaseId;
-      if (data.running === true && live && current.armed && !current.paused && !current.hidden && !current.offline && !current.lapsed && data.grant === grantSeq && grantSeq !== null) {
+      const wantsRunning = live && current.armed && !current.paused && !current.hidden && !current.offline && !current.lapsed;
+      if (data.running === true && wantsRunning && grantSeq !== null && (data.grant === grantSeq || replySession === sessionGrant)) {
         if (!running) {
           running = true;
-          thawAt = Date.now();
-          sessionGrant = grantSeq;
-          heartbeat.request(); // the frame is observed running: report it now so billing starts here
+          if (sessionGrant === null) { sessionGrant = replySession ?? grantSeq; observedMs = 0; }
         }
+        if (typeof data.ranMs === "number") observedMs = Math.max(observedMs, data.ranMs);
+        publishObservation();
+        heartbeat.request(); // the frame is observed running: report the guard's measured duration now
       } else {
-        stopRunning();
+        // The guard's complete interval for this session (it also tells us about its own deadline/orphan freezes).
+        if (typeof data.ranMs === "number" && (sessionGrant === null || replySession === sessionGrant || replySession === null)) observedMs = Math.max(observedMs, data.ranMs);
+        publishObservation();
+        if (running) {
+          stopRunning();
+          heartbeat.request(); // the frame stopped on its own (deadline): report the stop and the final duration now
+        }
       }
     };
     window.addEventListener("message", onFrameRunning);
@@ -289,7 +301,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
             authorizedUntil = 0;
             heartbeat.stop();
             // Stop the frame with the guard's acknowledgment, then tell the meter (so a successor need not wait out the deadline).
-            void stopFrame(leaseId, origin).then((stopped) => client.end(studio, leaseId, "stopped", stopped));
+            void stopFrame(leaseId, origin).then((stopped) => client.end(studio, leaseId, "stopped", stopped, observationRef.current));
             setPhase({ kind: "ended", reason, remaining: detail?.remainingSeconds ?? null });
             void client.release(child, leaseId, detail?.endReason ?? "ended");
             return;
@@ -308,7 +320,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         if (tick.ended || tick.phase === "exhausted") {
           authorizedUntil = 0;
           heartbeat.stop();
-          void stopFrame(leaseId, origin).then((stopped) => client.end(studio, leaseId, "stopped", stopped));
+          void stopFrame(leaseId, origin).then((stopped) => client.end(studio, leaseId, "stopped", stopped, observationRef.current));
           setPhase({ kind: "ended", reason: tick.endReason === "replaced" ? "replaced" : "exhausted", remaining: tick.remainingSeconds });
           void client.release(child, leaseId, tick.endReason ?? "exhausted");
           return;
@@ -321,7 +333,12 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         // answer to a pause/background report or a lapsed grant. The meter is NOT billing yet on an intent answer
         // (`billing: "armed"`): the running report sent right after the thaw is the acknowledgment that starts it.
         const armed = Boolean(input.foreground ?? input.active) && !lapsed && (tick.authorizedForMs ?? 0) > 0;
-        if (armed && typeof tick.grant === "number") grantSeq = tick.grant;
+        if (armed && typeof tick.grant === "number") {
+          grantSeq = tick.grant;
+          // A stop report with the final duration has been answered (billing "stopped"/"armed", not running): the next
+          // thaw opens a new session, so the guard's counter and ours start afresh on the next running reply.
+          if (!running && tick.billing !== "running" && !input.active && sessionGrant !== null && input.grant === sessionGrant) { sessionGrant = null; observedMs = 0; publishObservation(); }
+        }
         if (!armed) stopRunning();
         setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, tick, offline: false, handover: false, lapsed, armed } : p));
         phaseRef.current = current.kind === "playing" ? { ...current, tick, offline: false, handover: false, lapsed, armed } : current;
@@ -376,7 +393,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         // Evidence first: freeze the frame and wait for the guard's acknowledgment, then end at the meter and release at Family.
         const stopped = await stopFrame(current.grant.lease.id, new URL(current.studio.url).origin);
         setPhase({ kind: "ended", reason: "left", remaining: current.tick?.remainingSeconds ?? null });
-        await Promise.all([client.end(current.studio, current.grant.lease.id, reason, stopped), client.release(child, current.grant.lease.id, reason)]);
+        await Promise.all([client.end(current.studio, current.grant.lease.id, reason, stopped, observationRef.current), client.release(child, current.grant.lease.id, reason)]);
       }
     },
     [child, client, stopFrame],
