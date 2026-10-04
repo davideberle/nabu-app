@@ -1637,6 +1637,49 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     }
   });
 
+  it("R16-1 crossing the ledger capacity: 65 pause/resume sessions are granted, the 66th opening is refused (409 unresolved-evidence) rather than forgetting evidence; after the end every final newest-first is a terminal correction — meter 65, Family 65, B gets 835", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r16-cap", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const a = cred("lease-joined-r16-cap", 3600);
+      const headers = { authorization: `Bearer ${a}`, "content-type": "application/json" };
+      const post = async (action: string, body: Record<string, unknown>) => { const r = await fetch(`${base}/v1/play/lease-joined-r16-cap/${action}`, { method: "POST", headers, body: JSON.stringify(body) }); return { status: r.status, json: (await r.json()) as { grant?: number; consumedSeconds: number; accepted?: boolean; known?: boolean; late?: boolean; reason?: string; retryAfterMs?: number } }; };
+      const grants: number[] = [];
+      let refused: { status: number; json: { reason?: string; retryAfterMs?: number } } | null = null;
+      for (let i = 0; i < 66; i += 1) {
+        const opened = await post("tick", { active: false, foreground: true, grant: null, runMs: 0 });
+        if (opened.status !== 200) { refused = opened; break; }
+        grants.push(opened.json.grant!);
+        equal((await post("tick", { active: true, foreground: true, grant: opened.json.grant, runMs: 0 })).status, 200);
+        clock = t0 + (i + 1) * 1000;
+        equal((await post("tick", { active: false, foreground: false, grant: opened.json.grant, runMs: 500 })).status, 200);
+      }
+      equal(grants.length, 65);
+      ok(refused && refused.status === 409 && refused.json.reason === "unresolved-evidence", JSON.stringify(refused));
+      const ended = await post("end", { reason: "left", frameStopped: true, grant: grants[64], runMs: 500 });
+      equal(ended.json.consumedSeconds, 32.5);
+      await server.settler.flush();
+      equal((await getLease("lease-joined-r16-cap", client))!.consumedSeconds, 33, "terminal report rounds 32.5 up");
+      for (const g of grants.slice().reverse()) {
+        const r = await post("frame", { grant: g, session: g, ranMs: 1000, running: false });
+        ok(r.status === 200 && r.json.accepted && r.json.known && r.json.late, JSON.stringify(r));
+      }
+      equal(server.store.loadLease("lease-joined-r16-cap")!.consumed, 65);
+      await server.settler.flush();
+      const fam = (await getLease("lease-joined-r16-cap", client))!;
+      equal(fam.consumedSeconds, 65, "every late final reached Family within its fence cap");
+      equal(fam.state, "ended");
+      const b = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-r16-cap-b", takeover: true, deviceLabel: null, now: at(70) }, client);
+      ok(b.ok);
+      equal(b.lease.budgetSeconds, 835, "conservation: 65 + 835 = 900");
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
   it("R13-1 control: an alive wrapper whose frame never ran keeps reporting intent — 0 billed, B gets 900", async () => {
     await allowance();
     clock = t0;

@@ -76,6 +76,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
   const beatRef = useRef<(() => void) | null>(null);
   /** The frame's observed running session as last reported by the guard: carried on every end request (round 12). */
   const observationRef = useRef<{ grant: number | null; runMs: number }>({ grant: null, runMs: 0 });
+  /** True while the meter refuses a new session because earlier sessions' final observations are still pending (409 unresolved-evidence). */
+  const catchingUpRef = useRef(false);
   /** Pushes the current paused/ended state into the guarded frame (freezes/thaws the game). */
   const frameStateRef = useRef<((phase: string, remaining: number, ended: boolean) => void) | null>(null);
   const free = isFreeGame(gameId);
@@ -323,6 +325,11 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
           // 409 = handover pending: Family still fences this lease behind the previous session's
           // authority window; the meter retries by itself on the next beat (nothing counted meanwhile).
           const handover = outcome.status === 409;
+          // 409 `reason: "unresolved-evidence"` (round 16): the meter still holds earlier sessions of THIS lease whose
+          // final observations may arrive; it hands no new authority until that evidence can no longer change. Same
+          // wait, different words.
+          const catchingUp = handover && (outcome.detail as { reason?: string } | undefined)?.reason === "unresolved-evidence";
+          catchingUpRef.current = catchingUp;
           stopRunning();
           setPhase((p) => (p.kind === "playing" && p.grant.lease.id === leaseId ? { ...p, offline: true, handover, armed: false } : p));
           phaseRef.current = current.kind === "playing" ? { ...current, offline: true, handover, armed: false } : current;
@@ -487,8 +494,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
             />
             {phase.paused || phase.hidden || phase.offline || phase.lapsed || !phase.armed ? (
               <div role="dialog" aria-label={phase.offline ? (phase.handover ? "Starting" : "Reconnecting") : phase.paused || phase.hidden ? "Paused" : "Checking"} className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-secondary/95 p-6 text-center backdrop-blur-sm">
-                <p className="text-xl font-semibold">{phase.offline ? (phase.handover ? "Closing your other session…" : "Reconnecting to Game Studio…") : phase.paused || phase.hidden ? "Paused" : phase.lapsed ? "Checking your play time…" : "Starting…"}</p>
-                <p className="max-w-sm text-sm text-secondary">{phase.offline ? (phase.handover ? "Your game starts here in a moment. Your play time isn't counting yet." : "Your play time isn't counting while the connection is down. We'll continue when it's back.") : phase.paused || phase.hidden ? "Your play time isn't counting while paused." : "Waiting for Game Studio to confirm your time. Nothing is counted meanwhile."}</p>
+                <p className="text-xl font-semibold">{phase.offline ? (phase.handover ? (catchingUpRef.current ? "Catching up on your play time…" : "Closing your other session…") : "Reconnecting to Game Studio…") : phase.paused || phase.hidden ? "Paused" : phase.lapsed ? "Checking your play time…" : "Starting…"}</p>
+                <p className="max-w-sm text-sm text-secondary">{phase.offline ? (phase.handover ? (catchingUpRef.current ? "Your earlier sessions are still being counted. Your game continues in a moment; your play time isn't counting yet." : "Your game starts here in a moment. Your play time isn't counting yet.") : "Your play time isn't counting while the connection is down. We'll continue when it's back.") : phase.paused || phase.hidden ? "Your play time isn't counting while paused." : "Waiting for Game Studio to confirm your time. Nothing is counted meanwhile."}</p>
                 {phase.paused ? (
                   <button type="button" onClick={() => applyPlayFlags({ paused: false })} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>▶ Continue</button>
                 ) : null}
