@@ -5,6 +5,7 @@ import { isTrackerOnlyEmail } from "@/lib/access";
 import { saveMealPlan, loadMealPlan } from "@/lib/meals-persistence";
 import type { MealPlan } from "@/lib/meals";
 import { assignedRecipeIdsForPlan, hydrateShelfItems, toCandidateItem } from "@/lib/planner-preparation";
+import { getCandidateReviews } from "@/lib/db";
 import { completePlanShelf } from "@/lib/planner-runtime";
 import { getRecipe } from "@/lib/recipes";
 
@@ -42,11 +43,15 @@ export async function GET(request: NextRequest) {
         return pending;
       };
 
+      // Read-only: the planned week binds seasonality and persisted reviews
+      // re-bind each card (a stale pass drops, a current hold shows). No
+      // inference is ever triggered by a page load.
       const items = await hydrateShelfItems(
         plan.candidateSet.items,
         assignedRecipeIdsForPlan(plan),
         resolveRecipe,
         new Date(),
+        { week: plan.week, resolveReviews: (bindings) => getCandidateReviews(bindings) },
       );
       return NextResponse.json({
         ...plan,

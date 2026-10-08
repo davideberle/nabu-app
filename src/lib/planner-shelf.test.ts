@@ -54,6 +54,9 @@ function candidate(overrides: Partial<ShelfCandidate> = {}): ShelfCandidate {
     cuisine: "Other",
     image: "/recipes/x.jpg",
     traits: traits(),
+    // Fixtures arrive with a binding attached, as every runtime path does;
+    // the replacement paths refuse a candidate nobody bound.
+    review: { state: "unreviewed", reason: "fixture" },
     ...overrides,
   };
 }

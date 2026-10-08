@@ -194,7 +194,8 @@ function traits(overrides: Partial<ShelfTraits> = {}): ShelfTraits {
 let seq = 0;
 function cand(overrides: Partial<ShelfCandidate> = {}): ShelfCandidate {
   seq += 1;
-  return { recipeId: `c${seq}`, recipeName: `Candidate ${seq}`, origin: "catalog", discovery: "catalog", role: "main", bucket: "vegetarian", cuisine: "Other", image: "x.jpg", traits: traits(), ...overrides };
+  // Bound on arrival, as every runtime path guarantees; the replacement paths refuse an unbound candidate.
+  return { recipeId: `c${seq}`, recipeName: `Candidate ${seq}`, origin: "catalog", discovery: "catalog", role: "main", bucket: "vegetarian", cuisine: "Other", image: "x.jpg", traits: traits(), review: { state: "unreviewed", reason: "fixture" }, ...overrides };
 }
 function item(overrides: Partial<ShelfItem> = {}): ShelfItem {
   return { ...cand(), reason: "", assigned: false, ...overrides };

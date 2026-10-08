@@ -131,6 +131,7 @@ const REVIEWS_TABLE_SQL = `
     usage              TEXT NOT NULL,
     source             TEXT NOT NULL,
     reviewed_at        TEXT NOT NULL,
+    evidence           TEXT,
     PRIMARY KEY (recipe_id, content_sha256, rubric_sha256)
   )
 `;
@@ -156,6 +157,10 @@ const RUNS_TABLE_SQL = `
 async function ensureTables(client) {
   await client.execute(REVIEWS_TABLE_SQL);
   await client.execute(RUNS_TABLE_SQL);
+  const columns = await client.execute("PRAGMA table_info(planner_candidate_reviews)");
+  if (!columns.rows.some((row) => String(row.name) === "evidence")) await client.execute("ALTER TABLE planner_candidate_reviews ADD COLUMN evidence TEXT");
+  const runColumns = await client.execute("PRAGMA table_info(planner_review_runs)");
+  if (!runColumns.rows.some((row) => String(row.name) === "deferred")) await client.execute("ALTER TABLE planner_review_runs ADD COLUMN deferred INTEGER NOT NULL DEFAULT 0");
 }
 
 function rowToRecord(row) {
@@ -174,6 +179,7 @@ function rowToRecord(row) {
       usage: JSON.parse(String(row.usage)),
       source: String(row.source),
       reviewedAt: String(row.reviewed_at),
+      ...(row.evidence ? { evidence: JSON.parse(String(row.evidence)) } : {}),
     };
   } catch {
     return null;
@@ -205,18 +211,18 @@ async function saveReviews(client, records) {
   for (const record of records) {
     await client.execute({
       sql: `INSERT INTO planner_candidate_reviews
-              (recipe_id, content_sha256, rubric_sha256, model_requested, model_resolved, provider, request_sha256, response_sha256, verdict, interpretation, answers, usage, source, reviewed_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+              (recipe_id, content_sha256, rubric_sha256, model_requested, model_resolved, provider, request_sha256, response_sha256, verdict, interpretation, answers, usage, source, reviewed_at, evidence)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT (recipe_id, content_sha256, rubric_sha256) DO UPDATE SET
               model_resolved = excluded.model_resolved, provider = excluded.provider,
               request_sha256 = excluded.request_sha256, response_sha256 = excluded.response_sha256,
               verdict = excluded.verdict, interpretation = excluded.interpretation, answers = excluded.answers,
-              usage = excluded.usage, source = excluded.source, reviewed_at = excluded.reviewed_at`,
+              usage = excluded.usage, source = excluded.source, reviewed_at = excluded.reviewed_at, evidence = excluded.evidence`,
       args: [
         record.recipeId, record.contentSha256, record.rubricSha256, record.modelRequested, record.modelResolved,
         record.provider, record.requestSha256, record.responseSha256, record.interpretation.verdict,
         JSON.stringify(record.interpretation), JSON.stringify(record.answers), JSON.stringify(record.usage),
-        record.source, record.reviewedAt,
+        record.source, record.reviewedAt, record.evidence ? JSON.stringify(record.evidence) : null,
       ],
     });
   }
@@ -226,16 +232,16 @@ async function saveRun(client, run) {
   await ensureTables(client);
   await client.execute({
     sql: `INSERT INTO planner_review_runs
-            (week, run_id, started_at, status, calls, succeeded, failed, reused, input_tokens, output_tokens, cost_usd, over_budget, detail)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (week, run_id, started_at, status, calls, succeeded, failed, reused, input_tokens, output_tokens, cost_usd, over_budget, detail, deferred)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT (week, run_id) DO UPDATE SET
             status = excluded.status, calls = excluded.calls, succeeded = excluded.succeeded, failed = excluded.failed,
             reused = excluded.reused, input_tokens = excluded.input_tokens, output_tokens = excluded.output_tokens,
-            cost_usd = excluded.cost_usd, over_budget = excluded.over_budget, detail = excluded.detail`,
+            cost_usd = excluded.cost_usd, over_budget = excluded.over_budget, detail = excluded.detail, deferred = excluded.deferred`,
     args: [
       run.week, run.runId, run.startedAt, run.status, run.usage.calls, run.usage.succeeded, run.usage.failed,
       run.usage.reused, run.usage.inputTokens, run.usage.outputTokens, run.usage.costUsd, run.usage.overBudget ? 1 : 0,
-      run.detail ?? null,
+      run.detail ?? null, run.usage.deferred ?? 0,
     ],
   });
 }
@@ -292,11 +298,11 @@ export async function exportBatch({ week, dir, client, candidates }) {
 // run — Gateway exec only
 // ---------------------------------------------------------------------------
 
-async function postDecision(item, context, fetchImpl) {
+async function postDecision(item, context, fetchImpl, timeoutMs) {
   const body = encodeReviewJson(item.request);
   if (sha256(body) !== item.requestSha256) throw new Error(`request bytes drifted for ${item.recipeId}`);
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), PLANNER_REVIEW_LIMITS.requestTimeoutMs);
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const response = await fetchImpl(PLANNER_REVIEW_ENDPOINT, {
       method: "POST",
@@ -306,7 +312,14 @@ async function postDecision(item, context, fetchImpl) {
     });
     const raw = await response.text();
     if (response.status !== 200) return { ok: false, httpStatus: response.status, errorClass: "HTTPError" };
-    return { ok: true, httpStatus: 200, raw, responseSha256: sha256(raw), response: JSON.parse(raw) };
+    let parsed;
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      return { ok: false, httpStatus: 200, errorClass: "MalformedJSON" };
+    }
+    const cost = Number(parsed?.usage?.cost);
+    return { ok: true, httpStatus: 200, raw, responseSha256: sha256(raw), response: parsed, cost: Number.isFinite(cost) && cost >= 0 ? cost : 0 };
   } catch (error) {
     return { ok: false, httpStatus: null, errorClass: error?.name ?? "Error" };
   } finally {
@@ -326,73 +339,177 @@ async function gatewayFetch(context) {
   return (url, init) => undiciFetch(url, { ...init, dispatcher });
 }
 
-export async function runBatch({ week, dir, env = process.env, fetchImpl, log = () => {} }) {
+/**
+ * Send the batch under the bounds in `PLANNER_REVIEW_LIMITS`, checked before
+ * every single request: total attempts (retries included), observed cost,
+ * and the run deadline. A response can only disclose its cost after it has
+ * happened, so the cost bound stops the *next* request; it cannot un-spend
+ * the one that crossed it. Every attempt is counted and persisted; items the
+ * bounds prevented are recorded as deferred with the bound that stopped them.
+ * The exact response bytes are retained so an import can verify the digest.
+ */
+export async function runBatch({ week, dir, env = process.env, fetchImpl, log = () => {}, limits = PLANNER_REVIEW_LIMITS, clock = () => Date.now() }) {
   const context = gatewayContext(env);
   if (!context.ok) {
     return { ok: false, refused: true, problems: context.problems };
   }
   const weekDir = path.join(dir, week);
-  const batch = JSON.parse(await readFile(path.join(weekDir, "batch.json"), "utf8"));
+  const batchBytes = await readFile(path.join(weekDir, "batch.json"), "utf8");
+  const batch = JSON.parse(batchBytes);
   if (batch.model !== PLANNER_REVIEW_MODEL || batch.endpoint !== PLANNER_REVIEW_ENDPOINT || batch.rubricSha256 !== PLANNER_REVIEW_RUBRIC_SHA256) {
     throw new Error("batch route/rubric does not match the pinned review contract");
   }
   const doFetch = fetchImpl ?? (await gatewayFetch(context));
-  const startedAt = new Date().toISOString();
+  const startedMs = clock();
+  const startedAt = new Date(startedMs).toISOString();
   const results = [];
-  let calls = 0;
-  for (const item of batch.items.slice(0, PLANNER_REVIEW_LIMITS.maxCallsPerRun)) {
+  let attempts = 0;
+  let costUsd = 0;
+  let stoppedBy = null;
+  const bound = () => {
+    if (attempts >= limits.maxCallsPerRun) return `call bound ${limits.maxCallsPerRun} reached`;
+    if (costUsd >= limits.maxCostUsdPerRun) return `cost bound ${limits.maxCostUsdPerRun} USD reached (observed ${costUsd.toFixed(6)})`;
+    if (clock() - startedMs >= limits.maxRunMs) return `run deadline ${limits.maxRunMs} ms reached`;
+    return null;
+  };
+  for (const item of batch.items) {
+    const stop = bound();
+    if (stop) {
+      stoppedBy = stoppedBy ?? stop;
+      results.push({ recipeId: item.recipeId, contentSha256: item.contentSha256, requestSha256: item.requestSha256, status: "deferred", reason: stop });
+      continue;
+    }
     let outcome = null;
-    for (let attempt = 1; attempt <= PLANNER_REVIEW_LIMITS.maxAttemptsPerItem; attempt++) {
-      calls += 1;
-      outcome = await postDecision(item, context, doFetch);
-      if (outcome.ok) break;
+    let itemAttempts = 0;
+    for (let attempt = 1; attempt <= limits.maxAttemptsPerItem; attempt++) {
+      if (attempt > 1 && bound()) break;
+      attempts += 1;
+      itemAttempts += 1;
+      outcome = await postDecision(item, context, doFetch, limits.requestTimeoutMs);
+      if (outcome.ok) {
+        costUsd += outcome.cost;
+        break;
+      }
     }
     results.push({
       recipeId: item.recipeId,
       contentSha256: item.contentSha256,
       requestSha256: item.requestSha256,
-      ...(outcome.ok
-        ? { status: "result", httpStatus: 200, responseSha256: outcome.responseSha256, response: outcome.response, completedAt: new Date().toISOString() }
-        : { status: "failed", httpStatus: outcome.httpStatus, errorClass: outcome.errorClass }),
+      attempts: itemAttempts,
+      ...(outcome?.ok
+        ? { status: "result", httpStatus: 200, responseSha256: outcome.responseSha256, responseRaw: outcome.raw, response: outcome.response, costUsd: outcome.cost, completedAt: new Date(clock()).toISOString() }
+        : { status: "failed", httpStatus: outcome?.httpStatus ?? null, errorClass: outcome?.errorClass ?? "NotAttempted" }),
     });
-    log(`    review ${item.recipeId}: ${outcome.ok ? "result" : `failed (${outcome.errorClass})`}`);
+    log(`    review ${item.recipeId}: ${outcome?.ok ? "result" : `failed (${outcome?.errorClass})`} after ${itemAttempts} attempt(s)`);
   }
-  const serialized = encodeReviewJson({ week, startedAt, finishedAt: new Date().toISOString(), batchSha256: sha256(await readFile(path.join(weekDir, "batch.json"), "utf8")), calls, results });
-  await writeFile(path.join(weekDir, "results.json"), serialized);
-  return { ok: true, file: path.join(weekDir, "results.json"), calls, results: results.length, failed: results.filter((r) => r.status === "failed").length };
+  const summary = {
+    week,
+    startedAt,
+    finishedAt: new Date(clock()).toISOString(),
+    batchSha256: sha256(batchBytes),
+    limits,
+    attempts,
+    calls: attempts,
+    costUsd,
+    stoppedBy,
+    sourceCount: batch.items.length,
+    outputCount: results.length,
+    results,
+  };
+  await writeFile(path.join(weekDir, "results.json"), encodeReviewJson(summary));
+  return {
+    ok: true,
+    file: path.join(weekDir, "results.json"),
+    attempts,
+    calls: attempts,
+    costUsd,
+    stoppedBy,
+    results: results.filter((r) => r.status === "result").length,
+    failed: results.filter((r) => r.status === "failed").length,
+    deferred: results.filter((r) => r.status === "deferred").length,
+  };
 }
 
 // ---------------------------------------------------------------------------
 // import — bind and persist
 // ---------------------------------------------------------------------------
 
+/**
+ * Bind and persist a run's results — or refuse the whole run.
+ *
+ * Accepted persistence needs: the pinned route/model/rubric on the batch; the
+ * results bound to the exact batch bytes; one disposition (result / failed /
+ * deferred) for every batch item and none for anything else; per result the
+ * item's content and request hashes, the retained response bytes hashing to
+ * the recorded digest and parsing to the recorded object, the response
+ * contract with bounded probabilities; and a finite attempt count no lower
+ * than the outcomes it explains. Any evidence defect fails the import and
+ * persists nothing — a transport failure is a failed item, not a defect.
+ */
 export async function importResults({ week, dir, client, results: given, batch: givenBatch, runId = randomUUID(), log = () => {} }) {
   const weekDir = path.join(dir, week);
-  const batch = givenBatch ?? JSON.parse(await readFile(path.join(weekDir, "batch.json"), "utf8"));
+  const batchBytes = givenBatch ? encodeReviewJson(givenBatch) : await readFile(path.join(weekDir, "batch.json"), "utf8");
+  const batch = givenBatch ?? JSON.parse(batchBytes);
   const results = given ?? JSON.parse(await readFile(path.join(weekDir, "results.json"), "utf8"));
-  const byId = new Map(batch.items.map((item) => [item.recipeId, item]));
-  const records = [];
+  const defects = [];
   const rejected = [];
+  const records = [];
   let failed = 0;
-  for (const result of results.results) {
-    const item = byId.get(result.recipeId);
+  let deferred = 0;
+
+  if (batch.model !== PLANNER_REVIEW_MODEL || batch.endpoint !== PLANNER_REVIEW_ENDPOINT || batch.rubricSha256 !== PLANNER_REVIEW_RUBRIC_SHA256) {
+    defects.push("batch route/model/rubric does not match the pinned review contract");
+  }
+  if (!results || typeof results !== "object" || !Array.isArray(results.results)) {
+    defects.push("results file has no results array");
+  }
+  if (results?.batchSha256 !== sha256(batchBytes)) {
+    defects.push("results are not bound to this batch (batch hash mismatch or absent)");
+  }
+  const attempts = Number(results?.attempts ?? results?.calls);
+  if (!Number.isInteger(attempts) || attempts < 0) defects.push("results carry no finite attempt count");
+
+  const byId = new Map((batch.items ?? []).map((item) => [item.recipeId, item]));
+  const seen = new Set();
+  for (const result of results?.results ?? []) {
+    const item = byId.get(result?.recipeId);
     if (!item) {
-      rejected.push({ recipeId: result.recipeId, problems: ["result for a recipe that is not in the batch"] });
+      defects.push(`result for ${String(result?.recipeId)} which is not in the batch`);
       continue;
     }
-    if (result.status !== "result") {
+    if (seen.has(item.recipeId)) {
+      defects.push(`duplicate result for ${item.recipeId}`);
+      continue;
+    }
+    seen.add(item.recipeId);
+    if (result.status === "failed") {
       failed += 1;
       continue;
     }
-    const bound = bindReviewResult({
-      recipeId: item.recipeId,
-      payload: item.payload,
-      response: result.response,
-      responseSha256: result.responseSha256,
-      requestSha256: result.requestSha256,
-      source: "weekly-review",
-      reviewedAt: result.completedAt ?? results.finishedAt,
-    });
+    if (result.status === "deferred") {
+      deferred += 1;
+      continue;
+    }
+    if (result.status !== "result") {
+      defects.push(`${item.recipeId}: unknown disposition ${String(result.status)}`);
+      continue;
+    }
+    const problems = [];
+    if (result.contentSha256 !== item.contentSha256) problems.push("content hash differs from the batch item");
+    if (result.requestSha256 !== item.requestSha256) problems.push("request hash differs from the batch item");
+    if (typeof result.responseRaw !== "string") problems.push("no retained response bytes to verify the response digest");
+    const bound = problems.length
+      ? { ok: false, problems }
+      : bindReviewResult({
+          recipeId: item.recipeId,
+          payload: item.payload,
+          response: result.response,
+          responseRaw: result.responseRaw,
+          responseSha256: result.responseSha256,
+          requestSha256: result.requestSha256,
+          source: "weekly-review",
+          reviewedAt: result.completedAt ?? results.finishedAt ?? new Date().toISOString(),
+        });
     if (!bound.ok) {
       rejected.push({ recipeId: item.recipeId, problems: bound.problems });
       continue;
@@ -403,8 +520,26 @@ export async function importResults({ week, dir, client, results: given, batch: 
     }
     records.push(bound.record);
   }
-  const usage = summarizeReviewUsage({ records, failed, reused: batch.reused?.length ?? 0 });
-  const status = records.length === 0 && failed > 0 ? "failed" : failed > 0 || rejected.length > 0 ? "partial" : "succeeded";
+  const missing = [...byId.keys()].filter((id) => !seen.has(id));
+  if (missing.length) defects.push(`no disposition for ${missing.length} batch item(s): ${missing.slice(0, 8).join(", ")}`);
+  if (Number.isInteger(attempts) && attempts < records.length + failed + rejected.length) defects.push("attempt count is lower than the outcomes it must explain");
+  if (rejected.length) defects.push(`${rejected.length} result(s) failed evidence binding`);
+
+  const inventory = { sourceCount: byId.size, outputCount: records.length + failed + deferred + rejected.length, results: records.length, failed, deferred, rejected: rejected.length, missing: missing.length };
+  const observedCost = Number(results?.costUsd);
+  const usage = summarizeReviewUsage({ records, failed, reused: batch.reused?.length ?? 0, attempts: Number.isInteger(attempts) ? attempts : undefined, deferred, costUsd: Number.isFinite(observedCost) ? observedCost : undefined });
+
+  if (defects.length) {
+    // Fail closed: nothing is persisted, the run is recorded as failed with the defects.
+    await saveRun(client, { week, runId, startedAt: results?.startedAt ?? new Date().toISOString(), status: "failed", usage: { ...usage, succeeded: 0 }, detail: `evidence defects: ${defects.join("; ")}` });
+    const summary = { week, runId, status: "failed", persisted: 0, failed, deferred, rejected, defects, inventory, usage: { ...usage, succeeded: 0 }, verdicts: {} };
+    await mkdir(weekDir, { recursive: true });
+    await writeFile(path.join(weekDir, "import.json"), encodeReviewJson(summary));
+    log(`    review import refused: ${defects.join("; ")}`);
+    return summary;
+  }
+
+  const status = records.length === 0 && (failed > 0 || deferred > 0) ? "failed" : failed > 0 || deferred > 0 ? "partial" : "succeeded";
   await saveReviews(client, records);
   await saveRun(client, {
     week,
@@ -412,12 +547,12 @@ export async function importResults({ week, dir, client, results: given, batch: 
     startedAt: results.startedAt ?? new Date().toISOString(),
     status,
     usage,
-    detail: rejected.length ? `rejected: ${rejected.map((r) => `${r.recipeId} (${r.problems.join("; ")})`).join(", ")}` : null,
+    detail: [results.stoppedBy ? `stopped by: ${results.stoppedBy}` : null, deferred ? `${deferred} deferred` : null].filter(Boolean).join("; ") || null,
   });
-  const summary = { week, runId, status, persisted: records.length, failed, rejected, usage, verdicts: Object.fromEntries(records.map((r) => [r.recipeId, r.interpretation.verdict])) };
+  const summary = { week, runId, status, persisted: records.length, failed, deferred, rejected, defects, inventory, usage, stoppedBy: results.stoppedBy ?? null, verdicts: Object.fromEntries(records.map((r) => [r.recipeId, r.interpretation.verdict])) };
   await mkdir(weekDir, { recursive: true });
   await writeFile(path.join(weekDir, "import.json"), encodeReviewJson(summary));
-  log(`    review import: ${records.length} bound, ${failed} failed, ${rejected.length} rejected (${status})`);
+  log(`    review import: ${records.length} bound, ${failed} failed, ${deferred} deferred (${status}; ${usage.calls} attempt(s), ${usage.costUsd.toFixed(6)} USD)`);
   return summary;
 }
 
@@ -447,9 +582,14 @@ export async function importSweep({ client, recipes, auditDir = V2_AUDIT_DIR, lo
       continue;
     }
     for (const file of files) {
-      const result = JSON.parse(await readFile(path.join(folder, file), "utf8"));
+      const fileBytes = await readFile(path.join(folder, file), "utf8");
+      const result = JSON.parse(fileBytes);
       if (result.status !== "result") {
         skipped.excluded += 1;
+        continue;
+      }
+      if (result.rubric_sha256 !== PLANNER_REVIEW_RUBRIC_SHA256 || result.model_requested !== PLANNER_REVIEW_MODEL || result.endpoint !== PLANNER_REVIEW_ENDPOINT) {
+        skipped.unbound += 1;
         continue;
       }
       const recipe = await recipes(result.id);
@@ -462,6 +602,10 @@ export async function importSweep({ client, recipes, auditDir = V2_AUDIT_DIR, lo
         skipped.contentChanged += 1;
         continue;
       }
+      // The audit retained no raw wire bytes, only their digest; what is
+      // verified here is the request reproduction, the rubric/model/endpoint
+      // pins and the response contract. That is recorded on the record as
+      // such, with the per-ID file hash, rather than claimed as byte proof.
       const bound = bindReviewResult({
         recipeId: result.id,
         payload: minimized.payload,
@@ -470,6 +614,7 @@ export async function importSweep({ client, recipes, auditDir = V2_AUDIT_DIR, lo
         requestSha256: result.request_sha256,
         source,
         reviewedAt: result.completed_at,
+        evidence: { responseBytesVerified: false, sourcePath: path.join(folder, file), sourceFileSha256: sha256(fileBytes) },
       });
       if (!bound.ok) {
         skipped.unbound += 1;
@@ -511,7 +656,7 @@ export async function prepareWeeklyReview({ week, outDir = DEFAULT_DIR, dryRun =
         runId: `pending-${new Date().toISOString().slice(0, 10)}`,
         startedAt: new Date().toISOString(),
         status: "skipped",
-        usage: { calls: 0, succeeded: 0, failed: 0, reused: exported.reused, inputTokens: 0, outputTokens: 0, costUsd: 0, overBudget: false },
+        usage: { calls: 0, succeeded: 0, failed: 0, deferred: exported.items, reused: exported.reused, inputTokens: 0, outputTokens: 0, costUsd: 0, overBudget: false },
         detail: `review pending: ${exported.items} item(s) exported; protected Gateway route not available in this runtime (${context.problems.join("; ")})`,
       });
       log(`  review: pending — ${context.problems.join("; ")}. Execute 'run' + 'import' for ${week} under Gateway exec.`);
@@ -519,7 +664,7 @@ export async function prepareWeeklyReview({ week, outDir = DEFAULT_DIR, dryRun =
     }
     const ran = await runBatch({ week, dir: outDir, env, log });
     const imported = await importResults({ week, dir: outDir, client, log });
-    return { exported: exported.items, reused: exported.reused, excluded: exported.excluded, state: "reviewed", calls: ran.calls, ...imported };
+    return { exported: exported.items, reused: exported.reused, excluded: exported.excluded, state: imported.status === "failed" ? "review-failed" : "reviewed", attempts: ran.attempts, stoppedBy: ran.stoppedBy, ...imported };
   } finally {
     await close?.();
   }
@@ -540,14 +685,45 @@ function parseArgs(argv) {
     else if (a === "--json") args.json = true;
     else throw new Error(`Unknown argument: ${a}`);
   }
-  if (!["export", "run", "import", "import-sweep"].includes(args.command)) throw new Error("Usage: review-planner-candidates.mjs <export|run|import|import-sweep> --week YYYY-Www [--dir <path>]");
-  if (args.command !== "import-sweep" && !/^\d{4}-W\d{2}$/.test(args.week ?? "")) throw new Error("--week must look like YYYY-Www");
+  if (!["export", "run", "import", "import-sweep", "diagnose"].includes(args.command)) throw new Error("Usage: review-planner-candidates.mjs <export|run|import|import-sweep|diagnose> --week YYYY-Www [--dir <path>]");
+  if (!["import-sweep", "diagnose"].includes(args.command) && !/^\d{4}-W\d{2}$/.test(args.week ?? "")) throw new Error("--week must look like YYYY-Www");
   return args;
+}
+
+/**
+ * Zero-call, zero-database diagnostic: does *this* process carry the
+ * protected route? Prints only presence and shape, never a value. Run it
+ * from any runtime (a cron command payload, a Gateway exec, a shell) to learn
+ * whether that runtime could execute `run`; it is the evidence the scheduled
+ * question needs and the only honest way to get it.
+ */
+export function diagnoseGatewayContext(env = process.env) {
+  const context = gatewayContext(env);
+  return {
+    ok: context.ok,
+    problems: context.problems,
+    required: {
+      OPENROUTER_API_KEY: "Gateway credential sentinel (starts with oc-sent-); a raw key is refused",
+      HTTPS_PROXY: "Gateway egress proxy URL that substitutes the sentinel on the way out",
+      SSL_CERT_FILE: "CA bundle the egress proxy presents",
+    },
+    observed: {
+      OPENROUTER_API_KEY: env.OPENROUTER_API_KEY ? (env.OPENROUTER_API_KEY.startsWith("oc-sent-") ? "sentinel" : "present-not-sentinel") : "absent",
+      HTTPS_PROXY: env.HTTPS_PROXY ? "present" : "absent",
+      SSL_CERT_FILE: env.SSL_CERT_FILE ? "present" : "absent",
+    },
+    networkCalls: 0,
+  };
 }
 
 async function main(argv) {
   const args = parseArgs(argv);
   const log = args.json ? () => {} : (m) => console.log(m);
+  if (args.command === "diagnose") {
+    const diagnosis = diagnoseGatewayContext();
+    console.log(JSON.stringify(diagnosis, null, 2));
+    return diagnosis.ok ? 0 : 2;
+  }
   if (args.command === "run") {
     // No database, no env file: a run is network only, under Gateway context only.
     const outcome = await runBatch({ week: args.week, dir: args.dir, log });
@@ -556,7 +732,7 @@ async function main(argv) {
       return 2;
     }
     console.log(JSON.stringify({ week: args.week, ...outcome }, null, 2));
-    return outcome.failed > 0 ? 1 : 0;
+    return outcome.failed > 0 || outcome.deferred > 0 ? 1 : 0;
   }
   await loadEnv(args.envFile);
   const { client, close } = await dbClient();

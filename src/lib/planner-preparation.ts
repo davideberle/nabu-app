@@ -34,6 +34,7 @@ import {
 import { monthForWeek, seasonCalendarVersion, type RecipeSeasonality } from "./planner-seasonality.ts";
 import {
   combineEligibility,
+  isCurrentReviewSummary,
   minimizeRecipeForReview,
   reviewMatches,
   type CandidateReviewRecord,
@@ -75,6 +76,8 @@ export type CandidateOrigin = {
   rank?: number;
   /** The planned week; seasonality is bound to its month. Defaults to the month of `now`. */
   week?: string;
+  /** The planned month, when the caller already resolved it (1–12). Wins over `week`. */
+  month?: number;
 };
 
 function normalizeTime(time: Recipe["time"]): { prep: number; cook: number; total: number } | null {
@@ -97,7 +100,7 @@ function normalizeTime(time: Recipe["time"]): { prep: number; cook: number; tota
  */
 export function toShelfCandidate(recipe: Recipe, origin: CandidateOrigin, now: Date): ShelfCandidate {
   const role = classifyPlannerRole(recipe);
-  const month = origin.week ? monthForWeek(origin.week, now) : now.getUTCMonth() + 1;
+  const month = origin.month ?? (origin.week ? monthForWeek(origin.week, now) : now.getUTCMonth() + 1);
   const traits = deriveShelfTraits(recipe, now, { month });
   const seasonality = deriveShelfSeasonality(recipe, now, { month });
   const time = normalizeTime(recipe.time);
@@ -273,9 +276,10 @@ export async function hydrateShelfItems(
   assignedRecipeIds: ReadonlySet<string>,
   resolveRecipe: (id: string) => Promise<Recipe | undefined | null>,
   now: Date,
-  options: { week?: string } = {},
+  options: HydrateOptions = {},
 ): Promise<ShelfItem[]> {
   const hydrated: ShelfItem[] = [];
+  const candidates: { item: (typeof items)[number]; candidate: ShelfCandidate; assigned: boolean }[] = [];
   for (const item of items) {
     if (!item?.recipeId) continue;
     const assigned = assignedRecipeIds.has(item.recipeId);
@@ -287,6 +291,10 @@ export async function hydrateShelfItems(
     const checked = qaRecipeForShelf(recipe, { role: role.role });
     if (!checked.ok) continue;
     const origin = item.origin === "web" ? "web" : "catalog";
+    // The planned month: the caller's week wins; otherwise the month the
+    // item was prepared for, which is what a save-boundary re-hydration
+    // without a week must keep — never the month of the clock.
+    const month = options.week ? monthForWeek(options.week, now) : item.seasonality?.month;
     const candidate = toShelfCandidate(
       checked.recipe,
       {
@@ -295,21 +303,54 @@ export async function hydrateShelfItems(
           ? (item.discovery === "editorial" ? "editorial" : "search")
           : "catalog",
         sourceName: item.source?.cookbook ?? null,
-        ...(options.week ? { week: options.week } : {}),
+        ...(month ? { month } : {}),
       },
       now,
     );
-    // The persisted review state survives a read as long as it is bound to the
-    // same content; changed content drops it to "unreviewed" rather than
-    // carrying a stale pass. Reads never trigger inference.
-    const review =
-      item.review && item.contentSha256 && item.contentSha256 === candidate.contentSha256
-        ? item.review
-        : candidate.review ?? { state: "unreviewed" as const, reason: "no bound review for this content" };
-    hydrated.push({ ...candidate, review, reason: item.reason ?? "Saved earlier this week", assigned });
+    candidates.push({ item, candidate, assigned });
   }
+
+  // Review binding on read. When persisted records are available they are the
+  // authority (a hold written since the shelf was saved applies now; a pass
+  // written under another rubric or model is gone). Without them, a stored
+  // summary survives only while it is bound to the same content, rubric,
+  // model and interpretation. Reads never trigger inference.
+  let resolved: Map<string, CandidateReviewRecord> | null = null;
+  if (options.resolveReviews) {
+    const bindings = reviewBindingsFor(candidates.map((c) => c.candidate));
+    resolved = await options.resolveReviews(bindings).catch(() => null);
+  } else if (options.reviews) {
+    resolved = new Map(options.reviews);
+  }
+  const attached = resolved
+    ? attachReviews(candidates.map((c) => c.candidate), resolved, options.providerStatus ?? { kind: "ok" }).candidates
+    : null;
+
+  candidates.forEach(({ item, candidate, assigned }, index) => {
+    let review: CandidateReviewSummary;
+    if (attached) {
+      review = attached[index].review ?? { state: "unreviewed", reason: "no bound review for this content" };
+    } else if (candidate.review?.state === "excluded-private") {
+      review = candidate.review;
+    } else if (isCurrentReviewSummary(item.review, candidate.contentSha256)) {
+      review = item.review as CandidateReviewSummary;
+    } else {
+      review = { state: "unreviewed", reason: item.review ? "stored review is not bound to the current content, rubric, model and interpretation" : "no bound review for this content" };
+    }
+    hydrated.push({ ...candidate, review, reason: item.reason ?? "Saved earlier this week", assigned });
+  });
   return hydrated;
 }
+
+export type HydrateOptions = {
+  /** The planned week; its month binds the seasonality verdict. */
+  week?: string;
+  /** Persisted reviews keyed by `${recipeId}:${contentSha256}`; the read authority when given. */
+  reviews?: ReadonlyMap<string, CandidateReviewRecord>;
+  /** Loads persisted reviews for the hydrated bindings (runtime wiring). */
+  resolveReviews?: (bindings: readonly { recipeId: string; contentSha256: string }[]) => Promise<Map<string, CandidateReviewRecord>>;
+  providerStatus?: { kind: "ok" } | { kind: "provider-unavailable"; reason: string };
+};
 
 /**
  * Attach the shelf presentation contract to persisted candidate items on read.
@@ -532,6 +573,14 @@ export type PreparationDeps = {
   loadReviews?: (bindings: readonly { recipeId: string; contentSha256: string }[]) => Promise<Map<string, CandidateReviewRecord>>;
   /** What the last review run reported, so an outage is labelled as one. */
   reviewProviderStatus?: () => Promise<{ kind: "ok" } | { kind: "provider-unavailable"; reason: string }>;
+  /**
+   * Re-resolve the previously saved shelf items against the live corpus and
+   * gates (runtime: `hydrateShelfItems` with the recipe resolver). Used only
+   * when a source, loader or provider failure means the fresh pools cannot
+   * be trusted to replace a valid shelf. Without it, prior items are checked
+   * structurally (role, traits, image) and carried with their saved data.
+   */
+  revalidatePrior?: (items: NonNullable<MealPlan["candidateSet"]>["items"], assigned: ReadonlySet<string>) => Promise<ShelfCandidate[]>;
   claim?: (week: string, kind: PreparationKind) => Promise<boolean>;
   complete?: (week: string, kind: PreparationKind, status: "succeeded" | "failed", summary?: unknown) => Promise<void>;
 };
@@ -560,8 +609,59 @@ export type PreparationOutcome = {
   reviewStates?: Partial<Record<string, number>>;
   /** Candidates the content review held out of the automatic shelf. */
   held?: { recipeId: string; reason: string }[];
+  /** Loaders that failed; the run carried on with what it had (§4.3.1 "provider failures preserve the prior valid shelf"). */
+  loadFailures?: string[];
+  /** Previously saved choices carried over after a failure, and prior choices found invalid. */
+  retainedPrior?: number;
+  invalidPrior?: { recipeId: string; reason: string }[];
   error?: string;
 };
+
+/**
+ * Structural re-validation of previously saved shelf items, for a run that
+ * cannot resolve recipes. A prior item is carried only when it still looks
+ * like a dinner-eligible candidate (main/light-meal role, traits, an image,
+ * no hold); anything else is reported as invalid rather than kept quietly.
+ */
+export function priorShelfCandidates(
+  items: ReadonlyArray<NonNullable<MealPlan["candidateSet"]>["items"][number]>,
+  invalid: { recipeId: string; reason: string }[] = [],
+): ShelfCandidate[] {
+  const out: ShelfCandidate[] = [];
+  for (const item of items) {
+    if (!item || typeof item.recipeId !== "string" || !item.recipeId) continue;
+    const reasons: string[] = [];
+    if (item.role !== "main" && item.role !== "light-meal") reasons.push(`role ${item.role ?? "unknown"} is not dinner-eligible`);
+    if (!item.traits) reasons.push("no saved traits");
+    if (!item.image) reasons.push("no image");
+    if (item.review?.state === "checked-hold") reasons.push("held by the content review");
+    if (reasons.length) {
+      invalid.push({ recipeId: item.recipeId, reason: reasons.join("; ") });
+      continue;
+    }
+    out.push({
+      recipeId: item.recipeId,
+      recipeName: item.recipeName,
+      origin: item.origin === "web" ? "web" : "catalog",
+      discovery: item.origin === "web" ? (item.discovery === "editorial" ? "editorial" : "search") : "catalog",
+      sourceName: item.source?.cookbook ?? null,
+      role: item.role as ShelfCandidate["role"],
+      bucket: item.bucket,
+      cuisine: item.cuisine ?? "Other",
+      image: item.image ?? null,
+      dietary: item.dietary ?? [],
+      time: item.time ?? null,
+      category: item.category,
+      courseTags: item.courseTags ?? [],
+      traits: item.traits as ShelfTraits,
+      ...(item.completion ? { completion: item.completion } : {}),
+      ...(item.display ? { display: item.display } : {}),
+      ...(item.seasonality ? { seasonality: item.seasonality } : {}),
+      ...(item.contentSha256 ? { contentSha256: item.contentSha256 } : {}),
+    });
+  }
+  return out;
+}
 
 function weekDaysFor(week: string): MealPlan["days"] {
   const parsed = parseWeekId(week);
@@ -627,11 +727,58 @@ export async function prepareWeek(
       );
     }
 
-    const [existing, rawWeb, rawCatalog] = await Promise.all([
-      deps.loadPlan(week),
-      deps.loadWebCandidates(week),
-      deps.loadCatalogCandidates(week),
+    // The saved plan is read first: it is what a failure must preserve. A
+    // loader that throws is a failure like a failed discovery, not a reason
+    // to replace a valid shelf with nothing.
+    const existing = await deps.loadPlan(week);
+    const loadFailures: string[] = [];
+    const loadSafely = async (label: string, load: () => Promise<ShelfCandidate[]>): Promise<ShelfCandidate[]> => {
+      try {
+        return await load();
+      } catch (error) {
+        loadFailures.push(`${label}: ${error instanceof Error ? error.message : String(error)}`);
+        return [];
+      }
+    };
+    const [freshWeb, freshCatalog] = await Promise.all([
+      loadSafely("web candidates", () => deps.loadWebCandidates(week)),
+      loadSafely("catalog candidates", () => deps.loadCatalogCandidates(week)),
     ]);
+    const sourceFailure = ensured.status === "failed" || loadFailures.length > 0;
+
+    const assigned = assignedRecipeIdsOf(existing);
+    // "Not this week" is exposure state for the week and survives a repair:
+    // a dismissed idea must not come back because the watchdog rebuilt the set.
+    const dismissed = notThisWeekIds(existing?.candidateSet);
+
+    // On a source or loader failure the previously saved choices stay in the
+    // running: re-validated (structurally here, against the corpus when the
+    // runtime supplies `revalidatePrior`), ranked behind fresh candidates,
+    // and labelled as retained. Nothing is retained after a clean run — a
+    // refresh is a refresh — and nothing invalid is retained after a failure.
+    let retained: ShelfCandidate[] = [];
+    const invalidPrior: { recipeId: string; reason: string }[] = [];
+    if (sourceFailure && existing?.candidateSet?.items?.length) {
+      const prior = existing.candidateSet.items;
+      const revalidated = deps.revalidatePrior
+        ? await deps.revalidatePrior(prior, assigned).catch((error) => {
+            loadFailures.push(`prior revalidation: ${error instanceof Error ? error.message : String(error)}`);
+            return null;
+          })
+        : null;
+      const structural = priorShelfCandidates(prior, invalidPrior);
+      const pool = revalidated ?? structural;
+      if (revalidated) {
+        const kept = new Set(revalidated.map((c) => c.recipeId));
+        for (const item of prior) if (item?.recipeId && !kept.has(item.recipeId)) invalidPrior.push({ recipeId: item.recipeId, reason: "no longer resolves or passes the gates" });
+      }
+      const freshIds = new Set([...freshWeb, ...freshCatalog].map((c) => c.recipeId));
+      retained = pool
+        .filter((c) => !freshIds.has(c.recipeId))
+        .map((c, index) => ({ ...c, rank: 1_000 + index, review: undefined, retained: true as const }));
+    }
+    const rawWeb = [...freshWeb, ...retained.filter((c) => c.origin === "web")];
+    const rawCatalog = [...freshCatalog, ...retained.filter((c) => c.origin === "catalog")];
 
     // Content reviews are read, never requested, here. A candidate whose
     // review holds it is kept out of the automatic shelf; everything else is
@@ -639,18 +786,16 @@ export async function prepareWeek(
     // provider-unavailable / excluded) and decided by the deterministic gates.
     const providerStatus = deps.reviewProviderStatus ? await deps.reviewProviderStatus() : { kind: "ok" as const };
     const reviews = deps.loadReviews
-      ? await deps.loadReviews(reviewBindingsFor([...rawWeb, ...rawCatalog]))
+      ? await deps.loadReviews(reviewBindingsFor([...rawWeb, ...rawCatalog])).catch((error) => {
+          loadFailures.push(`reviews: ${error instanceof Error ? error.message : String(error)}`);
+          return new Map<string, CandidateReviewRecord>();
+        })
       : new Map<string, CandidateReviewRecord>();
     const reviewedWeb = attachReviews(rawWeb, reviews, providerStatus);
     const reviewedCatalog = attachReviews(rawCatalog, reviews, providerStatus);
     const web = reviewedWeb.candidates;
     const catalog = reviewedCatalog.candidates;
     const held = [...reviewedWeb.held, ...reviewedCatalog.held];
-
-    const assigned = assignedRecipeIdsOf(existing);
-    // "Not this week" is exposure state for the week and survives a repair:
-    // a dismissed idea must not come back because the watchdog rebuilt the set.
-    const dismissed = notThisWeekIds(existing?.candidateSet);
     const eligible = (c: ShelfCandidate) =>
       (c.role === "main" || c.role === "light-meal") &&
       c.review?.state !== "checked-hold" &&
@@ -661,6 +806,14 @@ export async function prepareWeek(
       pairings: [...web, ...catalog].filter((c) => c.role === "pairing"),
       assignedRecipeIds: assigned,
     });
+
+    // A load failure that leaves nothing to save is a failed preparation, not
+    // an empty shelf: the saved plan (if any) stays exactly as it was.
+    if (loadFailures.length > 0 && shelf.items.length === 0) {
+      const message = `preparation could not load candidates (${loadFailures.join("; ")})`;
+      await deps.complete?.(week, kind, "failed", { error: message, loadFailures });
+      return { week, kind, status: "failed", error: message, loadFailures, webStatus: ensured.status };
+    }
 
     const base: MealPlan = existing ?? {
       week,
@@ -714,8 +867,11 @@ export async function prepareWeek(
     const storedPlan = saved.plan;
     const shelfSize = storedPlan.candidateSet?.items?.length ?? 0;
     const health = assessShelfHealth(storedPlan, now);
+    const retainedCount = shelf.items.filter((item) => (item as { retained?: boolean }).retained).length;
     const warnings = [
       ...webWarnings,
+      ...loadFailures.map((failure) => `load failed: ${failure}`),
+      ...(retainedCount > 0 ? [`retained ${retainedCount} previously saved choice(s) after a failure; ${invalidPrior.length} prior choice(s) no longer valid`] : []),
       ...(shelf.diagnostics.warnings ?? []),
       ...(health.healthy ? [] : health.problems.map((problem) => `saved shelf: ${problem}`)),
     ];
@@ -743,6 +899,8 @@ export async function prepareWeek(
       webStatus: ensured.status,
       reviewStates: shelf.diagnostics.reviewStates,
       ...(held.length ? { held } : {}),
+      ...(loadFailures.length ? { loadFailures } : {}),
+      ...(sourceFailure ? { retainedPrior: retainedCount, invalidPrior } : {}),
     };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);

@@ -38,6 +38,9 @@ import { SWISS_SEASON_CALENDAR } from "../data/kitchen/swiss-season-calendar.gen
 
 export type SeasonStatus = "fresh" | "storage" | "out-of-season" | "preserved" | "pantry-neutral" | "uncertain";
 
+/** The named form of a produce line. Only `fresh`/`unspecified` are ranked against the calendar. */
+export type ProduceForm = "fresh" | "unspecified" | "frozen" | "canned" | "dried" | "pickled" | "derived";
+
 export type SeasonCalendarRow = { name: string; slug: string | null; months: string[] };
 
 export type SeasonCalendar = {
@@ -58,8 +61,14 @@ export type DefiningIngredient = {
   /** The calendar's English cooking term for the produce ("pumpkin", "kale"). */
   label: string;
   status: SeasonStatus;
-  /** Where the ingredient was found. */
+  /** Where the ingredient was found. A title produce that also has an ingredient line reports that line's form. */
   from: "name" | "ingredients";
+  /** Named form on the line ("canned", "frozen", "fresh" …). */
+  form: ProduceForm;
+  /** Approximate grams, from the stated amount; the title mention counts half again. */
+  weight: number;
+  /** Named in the recipe title. */
+  inTitle: boolean;
 };
 
 export type RecipeSeasonality = {
@@ -83,8 +92,27 @@ const MONTH_NAMES = [
 /** Marked months in this window count as stored harvest for storage produce. */
 const STORAGE_WINDOW = new Set(["nov", "dec", "jan", "feb", "mar"]);
 
-/** Ingredient lines that are preserved produce, whatever the produce word says. */
-const PRESERVED_RE = /\b(canned|tinned|tin of|can of|cans? |tins? |jarred|jar of|dried|sun-dried|sundried|frozen|pickled|preserved|passata|pur[ée]e|paste|chopped tomatoes|crushed tomatoes|tomato sauce|ketchup|chutney|powder|flakes|stock|broth|juice|oil\b|vinegar)\b/i;
+/**
+ * Named forms. A line that names a preserved form is never ranked against
+ * the calendar, whatever produce word it carries; a line that says "fresh"
+ * is ranked even when the produce is usually bought preserved.
+ */
+const FORM_PATTERNS: [ProduceForm, RegExp][] = [
+  ["frozen", /\bfrozen\b|\bfreezer\b/i],
+  ["canned", /\b(canned|tinned|tin of|can of|cans?|tins?|jarred|jar of|passata|chopped tomatoes|crushed tomatoes|plum tomatoes in juice|tomato sauce|ketchup)\b/i],
+  ["dried", /\b(dried|sun-dried|sundried|dehydrated|powder|flakes)\b/i],
+  ["pickled", /\b(pickled|preserved|fermented|brined|sauerkraut|kimchi|chutney)\b/i],
+  ["derived", /\b(pur[ée]e|paste|stock|broth|juice|oil|vinegar|concentrate|syrup|jam)\b/i],
+  ["fresh", /\bfresh(ly)?\b|\bripe\b/i],
+];
+
+export function produceFormOf(line: string): ProduceForm {
+  for (const [form, re] of FORM_PATTERNS) if (re.test(line)) return form;
+  return "unspecified";
+}
+
+/** Share of the defining weight an out-of-season ingredient needs to decide the dish. */
+const OUT_OF_SEASON_SHARE = 0.25;
 
 /**
  * Produce the VSGP vegetable calendar does not cover: no Swiss-origin claim
@@ -252,6 +280,31 @@ function matchProduce(text: string): { produce: string; label: string } | null {
   return matchAllProduce(text)[0] ?? null;
 }
 
+/**
+ * Approximate grams for a line, so a 600 g tomato base outweighs one
+ * courgette. Pieces, cups and bunches use household averages; a line with no
+ * readable amount counts as one piece. Deterministic and only used for
+ * ranking shares, never shown.
+ */
+export function approximateGrams(ingredient: IngredientLike): number {
+  const amount = String(ingredient.amount ?? "").trim();
+  const unit = String(ingredient.unit ?? "").trim().toLowerCase() || (amount.match(/[a-zA-Z]+\s*$/)?.[0] ?? "").toLowerCase();
+  const quantity = parseQuantity(amount) ?? 1;
+  if (/^(g|gram|grams)$/.test(unit)) return quantity;
+  if (/^(kg|kilo\w*)$/.test(unit)) return quantity * 1000;
+  if (/^(ml|millilit\w*)$/.test(unit)) return quantity;
+  if (/^(l|litre|liter|litres|liters)$/.test(unit)) return quantity * 1000;
+  if (/^(lb|lbs|pound|pounds)$/.test(unit)) return quantity * 454;
+  if (/^(oz|ounce|ounces)$/.test(unit)) return quantity * 28;
+  if (/^(cups?)$/.test(unit)) return quantity * 150;
+  if (/^(bunch(es)?)$/.test(unit)) return quantity * 200;
+  if (/^(heads?)$/.test(unit)) return quantity * 500;
+  if (/^(handfuls?)$/.test(unit)) return quantity * 30;
+  if (/^(tbsp|tablespoons?)$/.test(unit)) return quantity * 15;
+  if (/^(tsp|teaspoons?)$/.test(unit)) return quantity * 5;
+  return quantity * 120;
+}
+
 /** Every calendar row named in `text`, in text order (first match wins per row). */
 function matchAllProduce(text: string): { produce: string; label: string; index: number }[] {
   const hits: { produce: string; label: string; index: number }[] = [];
@@ -274,50 +327,66 @@ function statusFor(produce: string, monthKey: string): SeasonStatus {
 /**
  * The defining ingredients of a recipe and their evidence class for `month`.
  *
- * Produce named in the title always defines (an onion soup is about onions,
- * however minor onions are elsewhere). In the list, only substantial lines
- * near the top define, and the calendar's minor produce never does.
+ * Ingredient lines are read first, because they carry the named form
+ * (canned, frozen, fresh) and the amount. Produce named in the title always
+ * defines; when the title produce also has an ingredient line, that line's
+ * form decides — "Tomato soup" made from canned tomatoes is preserved, not
+ * out of season in January. Only substantial lines near the top define, and
+ * the calendar's minor produce never does.
  */
 export function definingIngredients(recipe: SeasonalityRecipe, month: number): DefiningIngredient[] {
   const monthKey = MONTH_KEYS[Math.min(12, Math.max(1, month)) - 1];
   const { calendar } = compiledCalendar();
   const out: DefiningIngredient[] = [];
   const seenProduce = new Set<string>();
-
   const name = String(recipe.name ?? "");
-  for (const named of matchAllProduce(name)) {
-    seenProduce.add(named.produce);
-    out.push({ ingredient: name, produce: named.produce, label: named.label, status: statusFor(named.produce, monthKey), from: "name" });
-  }
+  const titleProduce = new Map(matchAllProduce(name).map((hit) => [hit.produce, hit]));
+
+  const statusForForm = (produce: string | null, form: ProduceForm): SeasonStatus => {
+    if (form !== "fresh" && form !== "unspecified") return "preserved";
+    return produce ? statusFor(produce, monthKey) : "uncertain";
+  };
 
   (recipe.ingredients ?? []).forEach((ingredient, index) => {
     const item = String(ingredient?.item ?? "").trim();
     if (!item) return;
     const line = `${String(ingredient?.amount ?? "")} ${String(ingredient?.unit ?? "")} ${item}`;
-    const preserved = PRESERVED_RE.test(line);
+    const form = produceFormOf(line);
     const match = matchProduce(item);
     if (match) {
       if (seenProduce.has(match.produce)) return;
-      if (calendar.minorProduce.includes(match.produce)) return;
-      if (!preserved && !isSubstantialLine(ingredient, index)) return;
+      const inTitle = titleProduce.has(match.produce);
+      if (calendar.minorProduce.includes(match.produce) && !inTitle) return;
+      if (!inTitle && !isSubstantialLine(ingredient, index)) return;
       seenProduce.add(match.produce);
       out.push({
         ingredient: item,
         produce: match.produce,
         label: match.label,
-        status: preserved ? "preserved" : statusFor(match.produce, monthKey),
+        status: statusForForm(match.produce, form),
         from: "ingredients",
+        form,
+        weight: approximateGrams(ingredient) * (inTitle ? 1.5 : 1),
+        inTitle,
       });
       return;
     }
     const uncovered = UNCOVERED_PRODUCE_RE.exec(item);
-    if (uncovered && !preserved && isSubstantialLine(ingredient, index)) {
+    if (uncovered && (form === "fresh" || form === "unspecified") && isSubstantialLine(ingredient, index)) {
       const label = uncovered[0].toLowerCase();
       if (seenProduce.has(`~${label}`)) return;
       seenProduce.add(`~${label}`);
-      out.push({ ingredient: item, produce: null, label, status: "uncertain", from: "ingredients" });
+      out.push({ ingredient: item, produce: null, label, status: "uncertain", from: "ingredients", form, weight: approximateGrams(ingredient), inTitle: false });
     }
   });
+
+  // Title produce with no ingredient line of its own: form unspecified,
+  // ranked against the calendar, weighted like one substantial piece.
+  for (const [produce, hit] of titleProduce) {
+    if (seenProduce.has(produce)) continue;
+    seenProduce.add(produce);
+    out.push({ ingredient: name, produce, label: hit.label, status: statusFor(produce, monthKey), from: "name", form: "unspecified", weight: 180, inTitle: true });
+  }
 
   return out;
 }
@@ -354,8 +423,16 @@ export function seasonalityForRecipe(recipe: SeasonalityRecipe, month: number): 
   const storage = by("storage");
   const preserved = by("preserved");
   const uncertain = by("uncertain");
+  const weightOf = (items: DefiningIngredient[]) => items.reduce((sum, d) => sum + d.weight, 0);
+  const rankedWeight = weightOf([...outOfSeason, ...fresh, ...storage]);
+  // An out-of-season ingredient decides the dish when it is named in the
+  // title or carries a real share of the ranked produce; a trace that slipped
+  // past the substantial-line rule does not overturn a seasonal dish.
+  const outOfSeasonDecides =
+    outOfSeason.length > 0 &&
+    (outOfSeason.some((d) => d.inTitle) || rankedWeight === 0 || weightOf(outOfSeason) / rankedWeight >= OUT_OF_SEASON_SHARE);
 
-  if (outOfSeason.length > 0) {
+  if (outOfSeasonDecides) {
     status = "out-of-season";
     const labels = joinLabels(outOfSeason.map((d) => d.label));
     reasons.push(`defining fresh ${labels} outside the Swiss season in ${monthLabel} (${cite})`);
@@ -363,6 +440,11 @@ export function seasonalityForRecipe(recipe: SeasonalityRecipe, month: number): 
       reasons.push(`in-season ${joinLabels(fresh.map((d) => d.label))} does not cancel an out-of-season defining ingredient`);
     }
     note = `Fresh ${labels} ${plural(outOfSeason.map((d) => d.label)) ? "are" : "is"} out of the Swiss season in ${monthLabel}.`;
+  } else if (outOfSeason.length > 0 && fresh.length > 0) {
+    status = "fresh";
+    const labels = joinLabels(fresh.map((d) => d.label));
+    reasons.push(`defining ${labels} in the Swiss season in ${monthLabel} (${cite}); a minor share of ${joinLabels(outOfSeason.map((d) => d.label))} is out of season`);
+    note = `${capitalize(labels)} ${plural(fresh.map((d) => d.label)) ? "are" : "is"} in season in Switzerland in ${monthLabel}.`;
   } else if (fresh.length > 0) {
     status = "fresh";
     const labels = joinLabels(fresh.map((d) => d.label));
@@ -378,7 +460,7 @@ export function seasonalityForRecipe(recipe: SeasonalityRecipe, month: number): 
     reasons.push(`defining ${joinLabels(uncertain.map((d) => d.label))} not covered by the ${cite}; no origin claimed`);
   } else if (preserved.length > 0) {
     status = "preserved";
-    reasons.push(`defining produce is preserved (${joinLabels(preserved.map((d) => d.label))}); seasonality neutral`);
+    reasons.push(`defining produce is ${joinLabels([...new Set(preserved.map((d) => `${d.form} ${d.label}`))])}; seasonality neutral`);
   } else {
     status = "pantry-neutral";
     reasons.push("no defining fresh produce; seasonality neutral");

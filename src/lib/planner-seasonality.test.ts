@@ -56,9 +56,11 @@ describe("defining ingredients", () => {
       },
       OCTOBER,
     );
+    // The title produce resolves to its own ingredient line (which carries the
+    // form and amount), so it reports `from: "ingredients"` with `inTitle`.
     deepStrictEqual(
-      defining.map((d) => [d.produce, d.status, d.from]),
-      [["Kürbis", "fresh", "name"], ["Federkohl", "fresh", "ingredients"]],
+      defining.map((d) => [d.produce, d.status, d.from, d.inTitle, d.form]),
+      [["Kürbis", "fresh", "ingredients", true, "unspecified"], ["Federkohl", "fresh", "ingredients", false, "unspecified"]],
     );
   });
 
@@ -153,6 +155,40 @@ describe("recipe verdicts (WP08)", () => {
     equal(result.status, "uncertain");
     equal(result.note, undefined);
     ok(result.reasons[0].includes("no origin claimed"));
+  });
+
+  it("R5: a title produce takes the form of its ingredient line — canned tomatoes in January are preserved", () => {
+    const canned = seasonalityForRecipe({ name: "Tomato soup", ingredients: [{ item: "canned tomatoes", amount: "800", unit: "g" }, { item: "onion", amount: "1" }] }, JANUARY);
+    equal(canned.status, "preserved");
+    equal(canned.note, undefined);
+    equal(canned.defining[0].form, "canned");
+    const fresh = seasonalityForRecipe({ name: "Tomato soup", ingredients: [{ item: "fresh tomatoes", amount: "800", unit: "g" }, { item: "onion", amount: "1" }] }, JANUARY);
+    equal(fresh.status, "out-of-season");
+    equal(fresh.defining[0].form, "fresh");
+    const frozen = seasonalityForRecipe({ name: "Pea soup", ingredients: [{ item: "frozen peas", amount: "500", unit: "g" }, { item: "stock", amount: "1", unit: "l" }] }, JANUARY);
+    equal(frozen.status, "preserved");
+    equal(frozen.defining[0].form, "frozen");
+    const dried = seasonalityForRecipe({ name: "Mushroom risotto", ingredients: [{ item: "dried porcini", amount: "30", unit: "g" }, { item: "risotto rice", amount: "300", unit: "g" }] }, JANUARY);
+    equal(dried.status, "pantry-neutral", "dried uncovered produce neither claims nor denies a season");
+  });
+
+  it("R5: the verdict weighs defining produce by amount; a trace out-of-season line does not overturn a seasonal dish", () => {
+    const mostlySeasonal = seasonalityForRecipe(
+      { name: "Winter vegetable bake", ingredients: [{ item: "carrots", amount: "600", unit: "g" }, { item: "celeriac", amount: "500", unit: "g" }, { item: "courgette", amount: "100", unit: "g" }] },
+      JANUARY,
+    );
+    equal(mostlySeasonal.status, "storage", "100 g of courgette against 1.1 kg of stored roots does not decide the dish");
+    ok(mostlySeasonal.defining.every((d) => d.weight > 0));
+    const half = seasonalityForRecipe(
+      { name: "Vegetable bake", ingredients: [{ item: "carrots", amount: "300", unit: "g" }, { item: "courgettes", amount: "300", unit: "g" }] },
+      JANUARY,
+    );
+    equal(half.status, "out-of-season", "an equal share of out-of-season produce decides");
+    const titled = seasonalityForRecipe(
+      { name: "Courgette and carrot bake", ingredients: [{ item: "carrots", amount: "900", unit: "g" }, { item: "courgettes", amount: "100", unit: "g" }] },
+      JANUARY,
+    );
+    equal(titled.status, "out-of-season", "produce in the title always decides, whatever its amount");
   });
 
   it("is bound to the calendar version and the month, not to the recipe content hash", () => {

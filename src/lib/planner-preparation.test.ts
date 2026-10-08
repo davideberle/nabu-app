@@ -18,6 +18,7 @@ import {
   rolloverWeek,
   runWatchdog,
   toShelfCandidate,
+  toCandidateItem,
   weekSpanEndingAt,
   SHELF_STALE_DAYS,
   type PlanSaveOutcome,
@@ -372,13 +373,114 @@ describe("weekly preparation", () => {
     equal(h.ensureCalls, 0);
   });
 
-  it("reports a failure instead of throwing, and records it", async () => {
+  it("records a thrown loader instead of throwing, and carries on with what it has (R1)", async () => {
     const h = harness();
     h.deps.loadCatalogCandidates = async () => { throw new Error("catalog unavailable"); };
     const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    deepStrictEqual(outcome.loadFailures, ["catalog candidates: catalog unavailable"]);
+    ok(outcome.warnings?.some((w) => w.includes("load failed: catalog candidates")));
+    equal(outcome.catalogSelected, 0);
+    ok((outcome.webSelected ?? 0) > 0, "the web pool still loaded, so the week is not left empty");
+    deepStrictEqual(h.completions, [{ week: WEEK, kind: "prepare", status: "succeeded" }]);
+  });
+
+  it("fails closed when every loader throws and there is no prior shelf to keep (R1)", async () => {
+    const h = harness({ plan: null });
+    h.deps.loadCatalogCandidates = async () => { throw new Error("catalog unavailable"); };
+    h.deps.loadWebCandidates = async () => { throw new Error("web unavailable"); };
+    const outcome = await prepareWeek(WEEK, h.deps);
     equal(outcome.status, "failed");
-    equal(outcome.error, "catalog unavailable");
+    ok(outcome.error?.includes("catalog unavailable") && outcome.error?.includes("web unavailable"));
+    equal(h.saved.length, 0, "nothing is written");
     deepStrictEqual(h.completions, [{ week: WEEK, kind: "prepare", status: "failed" }]);
+  });
+
+  it("R1: a source failure keeps a valid twenty-item shelf, re-validated, and reports it", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const before = h.saved[0];
+    equal(before.candidateSet!.items.length, SHELF_TARGET.min);
+    // Discovery fails, both loaders come back empty (or throw): the prior
+    // shelf stays, labelled as retained, nothing is lost.
+    h.deps.ensureWebInspirations = async () => ({ status: "failed", error: "synthetic outage" });
+    h.deps.loadWebCandidates = async () => [];
+    h.deps.loadCatalogCandidates = async () => { throw new Error("catalog unavailable"); };
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    const after = h.saved[1];
+    equal(after.candidateSet!.items.length, SHELF_TARGET.min);
+    deepStrictEqual(after.candidateSet!.items.map((i) => i.recipeId).sort(), before.candidateSet!.items.map((i) => i.recipeId).sort());
+    equal(outcome.retainedPrior, SHELF_TARGET.min);
+    ok(after.candidateSet!.items.every((i) => i.reason?.includes("kept from the previous shelf after a failure")));
+    ok(outcome.warnings?.some((w) => w.startsWith("retained 20 previously saved choice(s)")));
+    deepStrictEqual(outcome.loadFailures, ["catalog candidates: catalog unavailable"]);
+  });
+
+  it("R1: invalid prior choices are dropped on retention and the shortfall is stated", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const plan = h.saved[0];
+    // Corrupt two prior items: one lost its role, one is now held by a review.
+    plan.candidateSet!.items[0] = { ...plan.candidateSet!.items[0], role: "pairing" as never };
+    plan.candidateSet!.items[1] = { ...plan.candidateSet!.items[1], review: { state: "checked-hold", reason: "reads as side" } };
+    const h2 = harness({ plan });
+    h2.deps.ensureWebInspirations = async () => ({ status: "failed", error: "synthetic outage" });
+    h2.deps.loadWebCandidates = async () => [];
+    h2.deps.loadCatalogCandidates = async () => [];
+    const outcome = await prepareWeek(WEEK, h2.deps);
+    equal(outcome.status, "prepared");
+    equal(outcome.shelfSize, SHELF_TARGET.min - 2);
+    equal(outcome.retainedPrior, SHELF_TARGET.min - 2);
+    deepStrictEqual(outcome.invalidPrior?.map((i) => i.recipeId).sort(), [plan.candidateSet!.items[0].recipeId, plan.candidateSet!.items[1].recipeId].sort());
+    ok(outcome.warnings?.some((w) => w.startsWith("Qualified shortfall")));
+  });
+
+  it("R1: a clean run does not retain anything from the previous shelf", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    h.deps.loadWebCandidates = async () => webPool().map((c) => ({ ...c, recipeId: `fresh-${c.recipeId}` }));
+    h.deps.loadCatalogCandidates = async () => catalogPool().map((c) => ({ ...c, recipeId: `fresh-${c.recipeId}` }));
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.retainedPrior, undefined);
+    ok(h.saved[1].candidateSet!.items.every((i) => i.recipeId.startsWith("fresh-")));
+  });
+
+  it("R4: a stale pass is dropped and a current hold applies on hydration", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const items = h.saved[0].candidateSet!.items;
+    const stale = { ...items[0], review: { state: "checked-pass" as const, reason: "old", contentSha256: items[0].contentSha256, rubricSha256: "old-rubric", modelRequested: "old-model", interpretationVersion: "planner-review-0" } };
+    const resolve = async () => ({ id: stale.recipeId, name: "Lentil and pumpkin stew", servings: "4", ingredients: [{ item: "lentils", amount: "250", unit: "g" }, { item: "pumpkin", amount: "500", unit: "g" }, { item: "oil", amount: "1", unit: "tbsp" }], method: ["Simmer the lentils and pumpkin until tender.", "Stir in the oil and serve hot."], category: { dish_type: ["main"] }, image: "/x.jpg" }) as unknown as Recipe;
+    const hydrated = await hydrateShelfItems([stale], new Set(), resolve, NOW, { week: WEEK });
+    equal(hydrated[0].review?.state, "unreviewed");
+    ok(hydrated[0].review?.reason.includes("not bound"));
+    // With persisted records supplied, a current hold wins on read.
+    const minimized = (await import("./planner-review.ts")).minimizeRecipeForReview(await resolve());
+    ok(minimized.ok);
+    const held = await hydrateShelfItems([stale], new Set(), resolve, NOW, {
+      week: WEEK,
+      reviews: new Map([[`${stale.recipeId}:${minimized.contentSha256}`, {
+        recipeId: stale.recipeId, contentSha256: minimized.contentSha256, rubricSha256: (await import("./planner-review.ts")).PLANNER_REVIEW_RUBRIC_SHA256,
+        modelRequested: "typesafe/jev-1.13", modelResolved: "typesafe/jev-1.13-20260917", provider: "TypeSafe", requestSha256: "r", responseSha256: "s",
+        interpretation: { interpretationVersion: "planner-review-1", verdict: "no", role: "side", mainProbability: 0.02, contentSufficient: 0.9, recipeForm: "finished_dish", physical: {}, reasons: ["reads as side"] },
+        answers: {}, usage: { inputTokens: 0, outputTokens: 0, costUsd: 0 }, source: "fixture", reviewedAt: NOW.toISOString(),
+      }]]),
+    });
+    equal(held[0].review?.state, "checked-hold");
+  });
+
+  it("R5: hydration without a week keeps the month the item was prepared for", async () => {
+    const recipe = { id: "gratin", name: "Pumpkin gratin", servings: "4", ingredients: [{ item: "pumpkin", amount: "800", unit: "g" }, { item: "cream", amount: "200", unit: "ml" }, { item: "cheese", amount: "100", unit: "g" }], method: ["Bake the pumpkin in the cream until soft.", "Top with the cheese and serve hot."], category: { dish_type: ["main"] }, image: "/x.jpg" } as unknown as Recipe;
+    const prepared = toShelfCandidate(recipe, { origin: "catalog", discovery: "catalog", week: "2026-W49" }, NOW);
+    equal(prepared.seasonality?.month, 12);
+    const stored = toCandidateItem({ ...prepared, reason: "", assigned: false });
+    const october = new Date("2026-10-08T00:00:00Z");
+    const hydrated = await hydrateShelfItems([stored], new Set(), async () => recipe, october);
+    equal(hydrated[0].seasonality?.month, 12, "December stays December on a save without a week");
+    equal(hydrated[0].traits.season, "storage", "pumpkin in December is stored Swiss harvest, not the October clock's fresh");
+    const withWeek = await hydrateShelfItems([stored], new Set(), async () => recipe, october, { week: "2026-W49" });
+    equal(withWeek[0].seasonality?.month, 12);
   });
 
   it("reports a failure when the save boundary refuses the write", async () => {

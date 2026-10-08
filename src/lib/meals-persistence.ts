@@ -1,9 +1,11 @@
 // Explicit .ts extensions: meals-persistence.ts is loaded directly by
 // node --test, whose ESM resolver does not add extensions.
 import {
+  getCandidateReviews,
   getDb,
   getLegacyOfferedRecipeIds,
   getPlannerRecencyExclusions,
+  getPlannerReviewRuns,
   saveMealPlanRowWithInvalidation,
   type PlannerRecencyExclusions,
   type ShoppingInvalidation,
@@ -207,6 +209,8 @@ export type SaveMealPlanDeps = {
   /** Ids offered by *older-policy* shelves in the recent-week window. */
   getLegacyOffered?: (week: string) => Promise<Set<string>>;
   resolveRecipe?: (id: string) => Promise<Recipe | undefined | null>;
+  /** Test seam: persisted review lookup for the save-boundary re-binding. */
+  resolveReviews?: (bindings: readonly { recipeId: string; contentSha256: string }[]) => Promise<Map<string, import("./planner-review.ts").CandidateReviewRecord>>;
 };
 
 function defaultLegacyOffered(week: string): Promise<Set<string>> {
@@ -278,7 +282,15 @@ async function enforceCandidateSaveBoundary(
 
   const resolveRecipe = deps.resolveRecipe ?? defaultResolveRecipe;
   const reclassified = await reclassifyCandidateItems(sanitized.items, resolveRecipe);
-  const hydrated = await hydrateShelfItems(reclassified.items, assignedIds, resolveRecipe, new Date());
+  // The planned week binds seasonality; persisted reviews re-bind every item
+  // on the way to disk (a hold written since the shelf was built applies, a
+  // pass under another rubric/model drops). Reads only; no inference.
+  const latestRun = (await getPlannerReviewRuns(plan.week).catch(() => []))[0];
+  const hydrated = await hydrateShelfItems(reclassified.items, assignedIds, resolveRecipe, new Date(), {
+    week: plan.week,
+    resolveReviews: deps.resolveReviews ?? ((bindings) => getCandidateReviews(bindings)),
+    providerStatus: latestRun?.status === "failed" ? { kind: "provider-unavailable", reason: latestRun.detail ?? `review run ${latestRun.runId} failed` } : { kind: "ok" },
+  });
   const hydratedIds = new Set(hydrated.map((item) => item.recipeId));
   const qaDropped: CandidateRemoval[] = reclassified.items
     .filter((item) => !hydratedIds.has(item.recipeId))

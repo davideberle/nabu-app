@@ -2403,6 +2403,7 @@ export const PLANNER_CANDIDATE_REVIEWS_TABLE_SQL = `
     usage              TEXT NOT NULL,
     source             TEXT NOT NULL,
     reviewed_at        TEXT NOT NULL,
+    evidence           TEXT,
     PRIMARY KEY (recipe_id, content_sha256, rubric_sha256)
   )
 `;
@@ -2422,6 +2423,7 @@ export const PLANNER_REVIEW_RUNS_TABLE_SQL = `
     cost_usd      REAL NOT NULL DEFAULT 0,
     over_budget   INTEGER NOT NULL DEFAULT 0,
     detail        TEXT,
+    deferred      INTEGER NOT NULL DEFAULT 0,
     PRIMARY KEY (week, run_id)
   )
 `;
@@ -2429,6 +2431,8 @@ export const PLANNER_REVIEW_RUNS_TABLE_SQL = `
 async function ensureReviewTables(client: Client): Promise<void> {
   await client.execute(PLANNER_CANDIDATE_REVIEWS_TABLE_SQL);
   await client.execute(PLANNER_REVIEW_RUNS_TABLE_SQL);
+  await addColumnIfMissing(client, "planner_candidate_reviews", "evidence", "TEXT");
+  await addColumnIfMissing(client, "planner_review_runs", "deferred", "INTEGER NOT NULL DEFAULT 0");
 }
 
 function rowToReviewRecord(row: Record<string, unknown>): CandidateReviewRecord | null {
@@ -2449,6 +2453,7 @@ function rowToReviewRecord(row: Record<string, unknown>): CandidateReviewRecord 
       usage: JSON.parse(String(row.usage)),
       source: String(row.source) as CandidateReviewRecord["source"],
       reviewedAt: String(row.reviewed_at),
+      ...(row.evidence ? { evidence: JSON.parse(String(row.evidence)) } : {}),
     };
   } catch {
     return null;
@@ -2494,8 +2499,8 @@ export async function saveCandidateReviews(records: readonly CandidateReviewReco
   for (const record of records) {
     await client.execute({
       sql: `INSERT INTO planner_candidate_reviews
-              (recipe_id, content_sha256, rubric_sha256, model_requested, model_resolved, provider, request_sha256, response_sha256, verdict, interpretation, answers, usage, source, reviewed_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+              (recipe_id, content_sha256, rubric_sha256, model_requested, model_resolved, provider, request_sha256, response_sha256, verdict, interpretation, answers, usage, source, reviewed_at, evidence)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT (recipe_id, content_sha256, rubric_sha256) DO UPDATE SET
               model_requested = excluded.model_requested,
               model_resolved = excluded.model_resolved,
@@ -2507,7 +2512,8 @@ export async function saveCandidateReviews(records: readonly CandidateReviewReco
               answers = excluded.answers,
               usage = excluded.usage,
               source = excluded.source,
-              reviewed_at = excluded.reviewed_at`,
+              reviewed_at = excluded.reviewed_at,
+              evidence = excluded.evidence`,
       args: [
         record.recipeId,
         record.contentSha256,
@@ -2523,6 +2529,7 @@ export async function saveCandidateReviews(records: readonly CandidateReviewReco
         JSON.stringify(record.usage),
         record.source,
         record.reviewedAt,
+        record.evidence ? JSON.stringify(record.evidence) : null,
       ],
     });
     written += 1;
@@ -2545,12 +2552,12 @@ export async function savePlannerReviewRun(run: ReviewRunRecord): Promise<void> 
   await ensureReviewTables(client);
   await client.execute({
     sql: `INSERT INTO planner_review_runs
-            (week, run_id, started_at, status, calls, succeeded, failed, reused, input_tokens, output_tokens, cost_usd, over_budget, detail)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (week, run_id, started_at, status, calls, succeeded, failed, reused, input_tokens, output_tokens, cost_usd, over_budget, detail, deferred)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
           ON CONFLICT (week, run_id) DO UPDATE SET
             status = excluded.status, calls = excluded.calls, succeeded = excluded.succeeded, failed = excluded.failed,
             reused = excluded.reused, input_tokens = excluded.input_tokens, output_tokens = excluded.output_tokens,
-            cost_usd = excluded.cost_usd, over_budget = excluded.over_budget, detail = excluded.detail`,
+            cost_usd = excluded.cost_usd, over_budget = excluded.over_budget, detail = excluded.detail, deferred = excluded.deferred`,
     args: [
       run.week,
       run.runId,
@@ -2565,6 +2572,7 @@ export async function savePlannerReviewRun(run: ReviewRunRecord): Promise<void> 
       run.usage.costUsd,
       run.usage.overBudget ? 1 : 0,
       run.detail ?? null,
+      run.usage.deferred ?? 0,
     ],
   });
 }
@@ -2587,6 +2595,7 @@ export async function getPlannerReviewRuns(week: string): Promise<ReviewRunRecor
       outputTokens: Number(row.output_tokens),
       costUsd: Number(row.cost_usd),
       overBudget: Number(row.over_budget) === 1,
+      deferred: Number(row.deferred ?? 0),
     },
     detail: (row.detail as string | null) ?? null,
   }));

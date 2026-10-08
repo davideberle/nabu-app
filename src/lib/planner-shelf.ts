@@ -97,6 +97,8 @@ export type ShelfCandidate = {
   contentSha256?: string;
   /** Content-review state. Never a qualification on its own. */
   review?: CandidateReviewSummary;
+  /** Carried over from the previously saved shelf after a source/provider failure. */
+  retained?: boolean;
 };
 
 export type ShelfItem = ShelfCandidate & {
@@ -692,7 +694,7 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
   const closedGaps: string[] = [];
 
   const admit = (candidate: ShelfCandidate, reason: string, isAssigned: boolean) => {
-    selected.push({ ...candidate, reason, assigned: isAssigned });
+    selected.push({ ...candidate, reason: candidate.retained ? `${reason} (kept from the previous shelf after a failure)` : reason, assigned: isAssigned });
   };
 
   // --- 1. Assigned recipes are fixed. They never compete for a slot and no
@@ -945,10 +947,18 @@ export function applyTargetedReplacement(
   const ceiling = swapped ? target.max : target.min;
 
   const added: ShelfItem[] = [];
+  const unbound: string[] = [];
   const pool = request.replacements.slice().sort(byScoreDesc);
   for (const candidate of pool) {
     if (kept.length + added.length >= ceiling) break;
     if (swapped && added.length >= removed.length && kept.length + added.length >= target.min) break;
+    // A replacement must arrive with its review binding attached (any state,
+    // including "unreviewed"). A candidate nobody bound could carry a hold
+    // the caller never looked up, so it is refused here rather than trusted.
+    if (!candidate.review) {
+      unbound.push(candidate.recipeId);
+      continue;
+    }
     const verdict = canAdmit(candidate, [...kept, ...added]);
     if (!verdict.ok) continue;
     const item: ShelfItem = {
@@ -976,6 +986,9 @@ export function applyTargetedReplacement(
     warnings.push(
       `Nothing was replaced: every idea you named is assigned to a day (${protectedAssigned.join(", ")})`,
     );
+  }
+  if (unbound.length > 0) {
+    warnings.push(`${unbound.length} replacement(s) refused: review binding not attached (${unbound.join(", ")})`);
   }
 
   return {
@@ -1227,6 +1240,7 @@ export function completeShelfAgainstPlan(
   kept.sort((a, b) => contextScore(b, context) - contextScore(a, context));
 
   const added: ShelfItem[] = [];
+  const unbound: string[] = [];
   const pool = replacements
     .filter((c) => !shelf.some((item) => item.recipeId === c.recipeId))
     .filter((c) => !options.excludeRecipeIds?.has(c.recipeId))
@@ -1234,6 +1248,11 @@ export function completeShelfAgainstPlan(
   for (const candidate of pool) {
     if (pinned.length + kept.length + added.length >= target.max) break;
     if (added.length >= removed.length && pinned.length + kept.length + added.length >= target.min) break;
+    // Same rule as targeted replacement: no attached review binding, no seat.
+    if (!candidate.review) {
+      unbound.push(candidate.recipeId);
+      continue;
+    }
     const verdict = canAdmit(candidate, [...pinned, ...kept, ...added]);
     if (!verdict.ok) continue;
     added.push({ ...candidate, assigned: false, reason: "Chosen to fit the rest of the week" });
@@ -1241,6 +1260,7 @@ export function completeShelfAgainstPlan(
 
   const unassigned = [...kept, ...added].sort((a, b) => contextScore(b, context) - contextScore(a, context));
   const warnings: string[] = [];
+  if (unbound.length > 0) warnings.push(`${unbound.length} replacement(s) refused: review binding not attached`);
   if (pinned.length + unassigned.length < target.min) {
     warnings.push(`Shelf has ${pinned.length + unassigned.length} ideas after completion, below the target of ${target.min}`);
   }

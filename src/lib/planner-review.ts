@@ -49,18 +49,23 @@ export const PLANNER_REVIEW_PROVIDER = "TypeSafe";
 export const PLANNER_REVIEW_INTERPRETATION_VERSION = "planner-review-1";
 
 export type ReviewLimits = {
+  /** Total HTTP attempts per run, retries included. */
   maxCallsPerRun: number;
+  /** Once the observed cost reaches this, no further request is made. A single response may disclose its cost only after it happened. */
   maxCostUsdPerRun: number;
   maxAttemptsPerItem: number;
   requestTimeoutMs: number;
+  /** Total run deadline; no request starts after it has passed. */
+  maxRunMs: number;
 };
 
-/** Hard ceilings per preparation. Persisted usage is compared against them. */
+/** Hard ceilings per preparation. Every actual attempt counts; usage is persisted as observed. */
 export const PLANNER_REVIEW_LIMITS: Readonly<ReviewLimits> = {
   maxCallsPerRun: 24,
   maxCostUsdPerRun: 0.05,
   maxAttemptsPerItem: 2,
   requestTimeoutMs: 60_000,
+  maxRunMs: 10 * 60_000,
 };
 
 // ---------------------------------------------------------------------------
@@ -342,13 +347,43 @@ export function validateReviewResponse(response: unknown, questions: Record<stri
     }
     if (contract.type === "noul") {
       const value = (answer as { noul?: unknown }).noul;
-      if (typeof value !== "number" || Number.isNaN(value) || value < 0 || value > 1) problems.push(`answer ${key}: probability invalid`);
+      if (!isUnitInterval(value)) problems.push(`answer ${key}: probability invalid`);
     } else {
       const choice = (answer as { choice?: unknown }).choice;
       if (typeof choice !== "string" || !(choice in contract.criteria)) problems.push(`answer ${key}: choice invalid`);
+      const confidence = (answer as { confidence?: unknown }).confidence;
+      if (confidence !== undefined && !isUnitInterval(confidence)) problems.push(`answer ${key}: confidence invalid`);
+      const probabilities = (answer as { probabilities?: unknown }).probabilities;
+      if (probabilities !== undefined) {
+        if (!probabilities || typeof probabilities !== "object" || Array.isArray(probabilities)) {
+          problems.push(`answer ${key}: probabilities invalid`);
+        } else {
+          let sum = 0;
+          for (const [option, value] of Object.entries(probabilities as Record<string, unknown>)) {
+            if (!(option in contract.criteria)) problems.push(`answer ${key}: probability for unknown option ${option}`);
+            if (!isUnitInterval(value)) problems.push(`answer ${key}: probability ${option} out of range`);
+            else sum += value as number;
+          }
+          if (sum > 1.0001) problems.push(`answer ${key}: probabilities sum to ${sum.toFixed(3)}`);
+        }
+      }
+    }
+  }
+  const usage = decoded.usage;
+  if (usage !== undefined) {
+    if (!usage || typeof usage !== "object") problems.push("usage invalid");
+    else {
+      for (const key of ["input_tokens", "output_tokens", "cost"] as const) {
+        const value = usage[key];
+        if (value !== undefined && (typeof value !== "number" || !Number.isFinite(value) || value < 0)) problems.push(`usage.${key} invalid`);
+      }
     }
   }
   return problems;
+}
+
+function isUnitInterval(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value) && value >= 0 && value <= 1;
 }
 
 export type ReviewVerdict = "yes" | "no" | "uncertain";
@@ -456,6 +491,17 @@ export type CandidateReviewRecord = {
   usage: { inputTokens: number; outputTokens: number; costUsd: number };
   source: ReviewSource;
   reviewedAt: string;
+  /**
+   * What was actually verified when the record was written. Wire bytes are
+   * verified when the retained raw response hashed to `responseSha256`;
+   * audit-sweep reuse carries the per-ID file hash instead, since the sweep
+   * retained no raw bytes.
+   */
+  evidence?: {
+    responseBytesVerified: boolean;
+    sourcePath?: string;
+    sourceFileSha256?: string;
+  };
 };
 
 export type ReviewBinding = { recipeId: string; contentSha256: string; rubricSha256?: string; modelRequested?: string };
@@ -485,10 +531,29 @@ export function bindReviewResult(input: {
   requestSha256: string;
   source: ReviewSource;
   reviewedAt: string;
+  /** The exact wire bytes, when retained. Verified against `responseSha256` and parsed against `response`. */
+  responseRaw?: string;
+  evidence?: CandidateReviewRecord["evidence"];
 }): { ok: true; record: CandidateReviewRecord } | { ok: false; problems: string[] } {
   const problems: string[] = [];
   const built = buildReviewRequest(input.payload);
   if (built.requestSha256 !== input.requestSha256) problems.push("request hash does not match the minimized payload and frozen questions");
+  if (typeof input.responseSha256 !== "string" || !input.responseSha256) problems.push("response digest missing");
+  let bytesVerified = false;
+  if (input.responseRaw !== undefined) {
+    if (typeof input.responseRaw !== "string") problems.push("retained response bytes are not text");
+    else if (sha256Hex(input.responseRaw) !== input.responseSha256) problems.push("retained response bytes do not hash to the recorded response digest");
+    else {
+      let parsed: unknown;
+      try {
+        parsed = JSON.parse(input.responseRaw);
+      } catch {
+        problems.push("retained response bytes are not JSON");
+      }
+      if (parsed !== undefined && encodeReviewJson(parsed) !== encodeReviewJson(input.response)) problems.push("response object differs from the retained response bytes");
+      else if (parsed !== undefined) bytesVerified = true;
+    }
+  }
   problems.push(...validateReviewResponse(input.response, built.request.questions));
   if (problems.length > 0) return { ok: false, problems };
   const response = input.response as JevResponse;
@@ -512,6 +577,7 @@ export function bindReviewResult(input: {
       },
       source: input.source,
       reviewedAt: input.reviewedAt,
+      evidence: { ...(input.evidence ?? {}), responseBytesVerified: bytesVerified || Boolean(input.evidence?.responseBytesVerified) },
     },
   };
 }
@@ -534,10 +600,30 @@ export type CandidateReviewSummary = {
   role?: string;
   mainProbability?: number;
   contentSha256?: string;
+  /** The bindings a record-derived state was written under. A read re-checks them. */
+  rubricSha256?: string;
+  modelRequested?: string;
+  interpretationVersion?: string;
   reviewedAt?: string;
   source?: ReviewSource;
   reason: string;
 };
+
+/**
+ * Is a persisted summary still a current, content-bound opinion? False for
+ * the no-record states (they carry no binding) and for any record-derived
+ * state written under another rubric, model, interpretation or content.
+ */
+export function isCurrentReviewSummary(summary: CandidateReviewSummary | null | undefined, contentSha256: string | undefined): boolean {
+  if (!summary || !contentSha256) return false;
+  if (summary.state !== "checked-pass" && summary.state !== "checked-hold" && summary.state !== "uncertain") return false;
+  return (
+    summary.contentSha256 === contentSha256 &&
+    summary.rubricSha256 === PLANNER_REVIEW_RUBRIC_SHA256 &&
+    summary.modelRequested === PLANNER_REVIEW_MODEL &&
+    summary.interpretationVersion === PLANNER_REVIEW_INTERPRETATION_VERSION
+  );
+}
 
 export type EligibilityDecision = {
   /** May the candidate occupy a dinner slot on the automatic shelf? */
@@ -576,6 +662,9 @@ export function combineEligibility(input: {
         role: record.interpretation.role,
         mainProbability: record.interpretation.mainProbability,
         contentSha256: record.contentSha256,
+        rubricSha256: record.rubricSha256,
+        modelRequested: record.modelRequested,
+        interpretationVersion: record.interpretation.interpretationVersion,
         reviewedAt: record.reviewedAt,
         source: record.source,
       };
@@ -813,9 +902,12 @@ export function buildReviewBatch(input: {
 }
 
 export type ReviewUsageSummary = {
+  /** Every HTTP attempt actually made, retries included. */
   calls: number;
   succeeded: number;
   failed: number;
+  /** Items never sent because a bound was reached first. */
+  deferred: number;
   reused: number;
   inputTokens: number;
   outputTokens: number;
@@ -827,19 +919,27 @@ export function summarizeReviewUsage(input: {
   records: readonly CandidateReviewRecord[];
   failed: number;
   reused: number;
+  /** Actual attempt count from the run; defaults to one attempt per outcome when unknown. */
+  attempts?: number;
+  deferred?: number;
+  /** Observed cost from the run, including responses that were not persisted. */
+  costUsd?: number;
   limits?: Partial<ReviewLimits>;
 }): ReviewUsageSummary {
   const limits = { ...PLANNER_REVIEW_LIMITS, ...(input.limits ?? {}) };
   const fresh = input.records.filter((record) => record.source === "weekly-review");
-  const costUsd = fresh.reduce((sum, record) => sum + record.usage.costUsd, 0);
+  const recordCost = fresh.reduce((sum, record) => sum + record.usage.costUsd, 0);
+  const costUsd = typeof input.costUsd === "number" && Number.isFinite(input.costUsd) ? Math.max(input.costUsd, recordCost) : recordCost;
+  const calls = typeof input.attempts === "number" && Number.isFinite(input.attempts) ? Math.max(input.attempts, fresh.length + input.failed) : fresh.length + input.failed;
   return {
-    calls: fresh.length + input.failed,
+    calls,
     succeeded: fresh.length,
     failed: input.failed,
+    deferred: input.deferred ?? 0,
     reused: input.reused,
     inputTokens: fresh.reduce((sum, record) => sum + record.usage.inputTokens, 0),
     outputTokens: fresh.reduce((sum, record) => sum + record.usage.outputTokens, 0),
     costUsd,
-    overBudget: fresh.length + input.failed > limits.maxCallsPerRun || costUsd > limits.maxCostUsdPerRun,
+    overBudget: calls > limits.maxCallsPerRun || costUsd > limits.maxCostUsdPerRun,
   };
 }

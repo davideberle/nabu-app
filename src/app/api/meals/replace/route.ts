@@ -31,6 +31,7 @@ import {
 } from "@/lib/planner-preparation";
 import { loadMealPlan, saveMealPlan } from "@/lib/meals-persistence";
 import { loadReplacementCandidates } from "@/lib/planner-runtime";
+import { getCandidateReviews } from "@/lib/db";
 import { getRecipe } from "@/lib/recipes";
 
 const WEEK_PATTERN = /^\d{4}-W\d{2}$/;
@@ -88,7 +89,10 @@ export async function POST(request: NextRequest) {
 
     const now = new Date();
     const assigned = assignedRecipeIdsForPlan(plan);
-    const shelf = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now);
+    const shelf = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now, {
+      week,
+      resolveReviews: (bindings) => getCandidateReviews(bindings),
+    });
     const onShelf = new Set(shelf.map((item) => item.recipeId));
     const replacements = await loadReplacementCandidates(week, now, onShelf);
 

@@ -33,10 +33,12 @@ import { loadMealPlan, saveMealPlan } from "@/lib/meals-persistence";
 import { resolveWebInspirations } from "@/lib/meal-inspirations";
 import {
   assignedRecipeIdsForPlan,
+  attachReviews,
   catalogExclusionIds,
   completeShelfAgainstPlan,
   hydrateShelfItems,
   planContextFor,
+  reviewBindingsFor,
   toCandidateItem,
   toShelfCandidate,
 } from "@/lib/planner-preparation";
@@ -191,7 +193,12 @@ export async function reviewProviderStatusFor(week: string): Promise<{ kind: "ok
 export async function completePlanShelf(plan: MealPlan, now: Date): Promise<MealPlan | null> {
   if (!plan.candidateSet?.items?.length) return null;
   const assigned = assignedRecipeIdsForPlan(plan);
-  const shelf = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now, { week: plan.week });
+  const providerStatus = await reviewProviderStatusFor(plan.week);
+  const shelf = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now, {
+    week: plan.week,
+    resolveReviews: (bindings) => getCandidateReviews(bindings),
+    providerStatus,
+  });
   const context = await planContextFor(plan, shelf, getRecipe, now);
   const onShelf = new Set(shelf.map((item) => item.recipeId));
   const excluded = new Set([...onShelf, ...notThisWeekIds(plan.candidateSet)]);
@@ -208,14 +215,38 @@ export async function completePlanShelf(plan: MealPlan, now: Date): Promise<Meal
   };
 }
 
-/** Fresh replacement candidates for a targeted chat-driven swap. */
+/**
+ * Fresh replacement candidates for a targeted chat-driven swap or a plan
+ * completion, with their persisted review bindings attached. A candidate
+ * without an attached binding is refused by the replacement paths, so this
+ * is the one place catalog ideas acquire theirs outside preparation.
+ */
 export async function loadReplacementCandidates(
   week: string,
   now: Date,
   excludeRecipeIds: ReadonlySet<string>,
 ): Promise<ShelfCandidate[]> {
-  const catalog = await loadCatalogCandidatesForWeek(week, now);
-  return catalog.filter((candidate) => !excludeRecipeIds.has(candidate.recipeId));
+  const catalog = (await loadCatalogCandidatesForWeek(week, now)).filter((candidate) => !excludeRecipeIds.has(candidate.recipeId));
+  const [reviews, providerStatus] = await Promise.all([
+    getCandidateReviews(reviewBindingsFor(catalog)),
+    reviewProviderStatusFor(week),
+  ]);
+  return attachReviews(catalog, reviews, providerStatus).candidates;
+}
+
+/** Runtime re-validation of previously saved shelf items for failure retention (`PreparationDeps.revalidatePrior`). */
+export async function revalidatePriorShelf(
+  week: string,
+  items: NonNullable<MealPlan["candidateSet"]>["items"],
+  assigned: ReadonlySet<string>,
+  now: Date,
+): Promise<ShelfCandidate[]> {
+  const providerStatus = await reviewProviderStatusFor(week);
+  return hydrateShelfItems(items, assigned, getRecipe, now, {
+    week,
+    resolveReviews: (bindings) => getCandidateReviews(bindings),
+    providerStatus,
+  });
 }
 
 export function buildPreparationDeps(now = new Date()): PreparationDeps {
@@ -249,6 +280,7 @@ export function buildPreparationDeps(now = new Date()): PreparationDeps {
     // arrive through the local protected-egress script.
     loadReviews: (bindings) => getCandidateReviews(bindings),
     reviewProviderStatus: () => reviewProviderStatusFor(nextWeekFor(now)),
+    revalidatePrior: (items, assigned) => revalidatePriorShelf(nextWeekFor(now), items, assigned, now),
   };
 }
 
