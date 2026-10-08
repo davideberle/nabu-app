@@ -45,6 +45,18 @@ import type { Recipe } from "./recipes";
 export const PLANNER_REVIEW_ENDPOINT = "https://openrouter.ai/api/alpha/decisions";
 export const PLANNER_REVIEW_MODEL = "typesafe/jev-1.13";
 export const PLANNER_REVIEW_PROVIDER = "TypeSafe";
+
+/**
+ * The resolved model a response may name: the pinned model itself or the
+ * pinned model with a dated snapshot suffix (`typesafe/jev-1.13-20260917`,
+ * the form every legitimate v2 audit response carried). A plain prefix test
+ * would also accept `typesafe/jev-1.130-other`; this does not.
+ */
+const RESOLVED_MODEL_RE = /^typesafe\/jev-1\.13(?:-\d{8})?$/;
+
+export function isAcceptedResolvedModel(model: unknown): model is string {
+  return typeof model === "string" && RESOLVED_MODEL_RE.test(model);
+}
 /** Version of the *interpretation* (thresholds + combination rule), separate from the rubric. */
 export const PLANNER_REVIEW_INTERPRETATION_VERSION = "planner-review-1";
 
@@ -334,7 +346,7 @@ export function validateReviewResponse(response: unknown, questions: Record<stri
   const decoded = response as JevResponse;
   if (!decoded || typeof decoded !== "object") return ["response is not an object"];
   if (decoded.provider !== PLANNER_REVIEW_PROVIDER) problems.push(`provider ${String(decoded.provider)} is not ${PLANNER_REVIEW_PROVIDER}`);
-  if (typeof decoded.model !== "string" || !decoded.model.startsWith(PLANNER_REVIEW_MODEL)) problems.push(`model ${String(decoded.model)} is not ${PLANNER_REVIEW_MODEL}`);
+  if (!isAcceptedResolvedModel(decoded.model)) problems.push(`model ${String(decoded.model)} is not ${PLANNER_REVIEW_MODEL} or a dated snapshot of it`);
   if (!decoded.answers || typeof decoded.answers !== "object") return [...problems, "answers missing"];
   const expected = Object.keys(questions).sort().join(",");
   const actual = Object.keys(decoded.answers).sort().join(",");
@@ -509,13 +521,23 @@ export type ReviewBinding = { recipeId: string; contentSha256: string; rubricSha
 /** A record is reusable only when every binding matches exactly. */
 export function reviewMatches(record: CandidateReviewRecord | null | undefined, binding: ReviewBinding): boolean {
   if (!record) return false;
-  return (
-    record.recipeId === binding.recipeId &&
-    record.contentSha256 === binding.contentSha256 &&
-    record.rubricSha256 === (binding.rubricSha256 ?? PLANNER_REVIEW_RUBRIC_SHA256) &&
-    record.modelRequested === (binding.modelRequested ?? PLANNER_REVIEW_MODEL) &&
-    record.interpretation?.interpretationVersion === PLANNER_REVIEW_INTERPRETATION_VERSION
-  );
+  if (
+    record.recipeId !== binding.recipeId ||
+    record.contentSha256 !== binding.contentSha256 ||
+    record.rubricSha256 !== (binding.rubricSha256 ?? PLANNER_REVIEW_RUBRIC_SHA256) ||
+    record.modelRequested !== (binding.modelRequested ?? PLANNER_REVIEW_MODEL) ||
+    record.interpretation?.interpretationVersion !== PLANNER_REVIEW_INTERPRETATION_VERSION
+  ) {
+    return false;
+  }
+  // Defence in depth on a cached row: the retained evidence must still be
+  // coherent — the pinned provider, an accepted resolved model, a request
+  // digest, and a verdict that the retained answers actually produce. An
+  // edited row is simply not a review.
+  if (record.provider !== PLANNER_REVIEW_PROVIDER || !isAcceptedResolvedModel(record.modelResolved)) return false;
+  if (typeof record.requestSha256 !== "string" || !/^[0-9a-f]{64}$/.test(record.requestSha256)) return false;
+  if (!record.answers || typeof record.answers !== "object" || validateReviewResponse({ provider: record.provider, model: record.modelResolved, answers: record.answers }).length > 0) return false;
+  return interpretReviewAnswers(record.answers).verdict === record.interpretation.verdict;
 }
 
 /**
@@ -634,6 +656,8 @@ export type EligibilityDecision = {
 
 export type ReviewAvailability =
   | { kind: "record"; record: CandidateReviewRecord }
+  /** A current content-bound hold the candidate already carries, kept when the record cannot be re-read. */
+  | { kind: "held-summary"; summary: CandidateReviewSummary }
   | { kind: "none" }
   | { kind: "excluded"; reason: string }
   | { kind: "provider-unavailable"; reason: string };
@@ -673,6 +697,9 @@ export function combineEligibility(input: {
       else review = { state: "uncertain", ...base, reason: record.interpretation.reasons.join("; ") };
       break;
     }
+    case "held-summary":
+      review = { ...input.availability.summary, state: "checked-hold" };
+      break;
     case "excluded":
       review = { state: "excluded-private", reason: input.availability.reason };
       break;

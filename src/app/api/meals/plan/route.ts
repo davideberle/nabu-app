@@ -6,7 +6,7 @@ import { saveMealPlan, loadMealPlan } from "@/lib/meals-persistence";
 import type { MealPlan } from "@/lib/meals";
 import { assignedRecipeIdsForPlan, hydrateShelfItems, toCandidateItem } from "@/lib/planner-preparation";
 import { getCandidateReviews } from "@/lib/db";
-import { completePlanShelf } from "@/lib/planner-runtime";
+import { completePlanShelf, reviewProviderStatusFor } from "@/lib/planner-runtime";
 import { getRecipe } from "@/lib/recipes";
 
 function sameIds(a: Set<string>, b: Set<string>): boolean {
@@ -51,7 +51,13 @@ export async function GET(request: NextRequest) {
         assignedRecipeIdsForPlan(plan),
         resolveRecipe,
         new Date(),
-        { week: plan.week, resolveReviews: (bindings) => getCandidateReviews(bindings) },
+        {
+          week: plan.week,
+          resolveReviews: (bindings) => getCandidateReviews(bindings),
+          // The latest review run's outcome keeps an outage distinct from
+          // "never reviewed" on the actual read as well.
+          providerStatus: await reviewProviderStatusFor(plan.week),
+        },
       );
       return NextResponse.json({
         ...plan,

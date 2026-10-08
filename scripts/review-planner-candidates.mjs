@@ -21,13 +21,15 @@
  *            into the app database, and write <dir>/<week>/import.json.
  *
  * `scripts/prepare-weekly-shelf.mjs` calls `prepareWeeklyReview`, which
- * exports, then runs + imports only when the Gateway context is present.
- * A scheduled run on this Mac has no Gateway context (OpenClaw cron command
- * payloads spawn without the secret sentinel), so it leaves the batch on
- * disk, records the pending state, and the shelf is prepared with its
- * unreviewed ideas labelled as such. The parent executes `run` and `import`
- * under Gateway exec; a later preparation or watchdog then picks the bound
- * reviews up from the database. No key is copied anywhere.
+ * exports, then runs + imports only when the Gateway context is present in
+ * the running process. Whether the scheduled Thursday/Friday runtime carries
+ * that context is UNPROVEN either way (not impossible, not established);
+ * `diagnose` is the zero-call way to find out from the real runtime. When
+ * the context is absent the run leaves the batch on disk, records the
+ * pending state, and the shelf is prepared with its unreviewed ideas
+ * labelled as such. The parent executes `run` and `import` under Gateway
+ * exec; a later preparation or watchdog then picks the bound reviews up from
+ * the database. No key is copied anywhere.
  *
  *   node scripts/review-planner-candidates.mjs export --week 2026-W42
  *   node scripts/review-planner-candidates.mjs run    --week 2026-W42     # Gateway exec only
@@ -50,6 +52,7 @@ import {
   PLANNER_REVIEW_MODEL,
   PLANNER_REVIEW_RUBRIC_SHA256,
   bindReviewResult,
+  isAcceptedResolvedModel,
   buildReviewBatch,
   encodeReviewJson,
   minimizeRecipeForReview,
@@ -359,6 +362,7 @@ export async function runBatch({ week, dir, env = process.env, fetchImpl, log = 
   if (batch.model !== PLANNER_REVIEW_MODEL || batch.endpoint !== PLANNER_REVIEW_ENDPOINT || batch.rubricSha256 !== PLANNER_REVIEW_RUBRIC_SHA256) {
     throw new Error("batch route/rubric does not match the pinned review contract");
   }
+  if (batch.week !== week) throw new Error(`batch is for ${String(batch.week)}, not the requested ${week}`);
   const doFetch = fetchImpl ?? (await gatewayFetch(context));
   const startedMs = clock();
   const startedAt = new Date(startedMs).toISOString();
@@ -383,13 +387,27 @@ export async function runBatch({ week, dir, env = process.env, fetchImpl, log = 
     let itemAttempts = 0;
     for (let attempt = 1; attempt <= limits.maxAttemptsPerItem; attempt++) {
       if (attempt > 1 && bound()) break;
+      // The request (and its body read) may live no longer than the run has
+      // left: the per-request timeout is capped by the remaining deadline.
+      const remainingMs = limits.maxRunMs - (clock() - startedMs);
+      if (remainingMs <= 0) break;
       attempts += 1;
       itemAttempts += 1;
-      outcome = await postDecision(item, context, doFetch, limits.requestTimeoutMs);
+      outcome = await postDecision(item, context, doFetch, Math.min(limits.requestTimeoutMs, remainingMs));
       if (outcome.ok) {
         costUsd += outcome.cost;
         break;
       }
+      if (outcome.errorClass === "AbortError" && bound()) break;
+    }
+    if (!outcome && itemAttempts === 0) {
+      const stop = bound() ?? `run deadline ${limits.maxRunMs} ms reached`;
+      stoppedBy = stoppedBy ?? stop;
+      results.push({ recipeId: item.recipeId, contentSha256: item.contentSha256, requestSha256: item.requestSha256, status: "deferred", reason: stop });
+      continue;
+    }
+    if (!outcome?.ok && outcome?.errorClass === "AbortError" && clock() - startedMs >= limits.maxRunMs) {
+      stoppedBy = stoppedBy ?? `run deadline ${limits.maxRunMs} ms reached (request aborted in flight)`;
     }
     results.push({
       recipeId: item.recipeId,
@@ -398,7 +416,7 @@ export async function runBatch({ week, dir, env = process.env, fetchImpl, log = 
       attempts: itemAttempts,
       ...(outcome?.ok
         ? { status: "result", httpStatus: 200, responseSha256: outcome.responseSha256, responseRaw: outcome.raw, response: outcome.response, costUsd: outcome.cost, completedAt: new Date(clock()).toISOString() }
-        : { status: "failed", httpStatus: outcome?.httpStatus ?? null, errorClass: outcome?.errorClass ?? "NotAttempted" }),
+        : { status: "failed", httpStatus: outcome?.httpStatus ?? null, errorClass: outcome?.errorClass ?? "NotAttempted", ...(outcome?.errorClass === "AbortError" ? { reason: "aborted at the request or run deadline" } : {}) }),
     });
     log(`    review ${item.recipeId}: ${outcome?.ok ? "result" : `failed (${outcome?.errorClass})`} after ${itemAttempts} attempt(s)`);
   }
@@ -469,7 +487,22 @@ export async function importResults({ week, dir, client, results: given, batch: 
   const attempts = Number(results?.attempts ?? results?.calls);
   if (!Number.isInteger(attempts) || attempts < 0) defects.push("results carry no finite attempt count");
 
-  const byId = new Map((batch.items ?? []).map((item) => [item.recipeId, item]));
+  // Run context: the command's week, the batch's week and (when recorded)
+  // the results' week must be one and the same. Content reviews are not
+  // week-specific — an unchanged content hash is reused across weeks — but
+  // a run's evidence is accounted under the week it was made for.
+  if (batch.week !== week) defects.push(`batch week ${String(batch.week)} does not match the run week ${week}`);
+  if (results && results.week !== undefined && results.week !== week) defects.push(`results week ${String(results.week)} does not match the run week ${week}`);
+
+  // Source identities are validated before anything collapses them: a batch
+  // that names the same recipe twice is not one source item.
+  const sourceItems = Array.isArray(batch.items) ? batch.items : [];
+  const sourceIds = sourceItems.map((item) => item?.recipeId);
+  const duplicateSources = [...new Set(sourceIds.filter((id, index) => sourceIds.indexOf(id) !== index))];
+  if (duplicateSources.length) defects.push(`duplicate source identities in the batch: ${duplicateSources.join(", ")}`);
+  if (sourceIds.some((id) => typeof id !== "string" || !id)) defects.push("a batch item has no recipe id");
+
+  const byId = new Map(sourceItems.map((item) => [item.recipeId, item]));
   const seen = new Set();
   for (const result of results?.results ?? []) {
     const item = byId.get(result?.recipeId);
@@ -525,7 +558,7 @@ export async function importResults({ week, dir, client, results: given, batch: 
   if (Number.isInteger(attempts) && attempts < records.length + failed + rejected.length) defects.push("attempt count is lower than the outcomes it must explain");
   if (rejected.length) defects.push(`${rejected.length} result(s) failed evidence binding`);
 
-  const inventory = { sourceCount: byId.size, outputCount: records.length + failed + deferred + rejected.length, results: records.length, failed, deferred, rejected: rejected.length, missing: missing.length };
+  const inventory = { sourceCount: sourceItems.length, uniqueSourceCount: byId.size, duplicateSources: duplicateSources.length, outputCount: records.length + failed + deferred + rejected.length, results: records.length, failed, deferred, rejected: rejected.length, missing: missing.length };
   const observedCost = Number(results?.costUsd);
   const usage = summarizeReviewUsage({ records, failed, reused: batch.reused?.length ?? 0, attempts: Number.isInteger(attempts) ? attempts : undefined, deferred, costUsd: Number.isFinite(observedCost) ? observedCost : undefined });
 
@@ -588,7 +621,7 @@ export async function importSweep({ client, recipes, auditDir = V2_AUDIT_DIR, lo
         skipped.excluded += 1;
         continue;
       }
-      if (result.rubric_sha256 !== PLANNER_REVIEW_RUBRIC_SHA256 || result.model_requested !== PLANNER_REVIEW_MODEL || result.endpoint !== PLANNER_REVIEW_ENDPOINT) {
+      if (result.rubric_sha256 !== PLANNER_REVIEW_RUBRIC_SHA256 || result.model_requested !== PLANNER_REVIEW_MODEL || result.endpoint !== PLANNER_REVIEW_ENDPOINT || !isAcceptedResolvedModel(result.response?.model)) {
         skipped.unbound += 1;
         continue;
       }
@@ -693,9 +726,9 @@ function parseArgs(argv) {
 /**
  * Zero-call, zero-database diagnostic: does *this* process carry the
  * protected route? Prints only presence and shape, never a value. Run it
- * from any runtime (a cron command payload, a Gateway exec, a shell) to learn
- * whether that runtime could execute `run`; it is the evidence the scheduled
- * question needs and the only honest way to get it.
+ * from any runtime (the scheduled job's own process, a Gateway exec, a
+ * shell) to learn whether that runtime could execute `run`; it is the
+ * evidence the scheduled question needs and the only honest way to get it.
  */
 export function diagnoseGatewayContext(env = process.env) {
   const context = gatewayContext(env);

@@ -436,6 +436,70 @@ describe("weekly preparation", () => {
     ok(outcome.warnings?.some((w) => w.startsWith("Qualified shortfall")));
   });
 
+  it("repair 2: a provider outage alone keeps a valid twenty when the pools come back empty", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const before = h.saved[0].candidateSet!.items.map((i) => i.recipeId).sort();
+    h.deps.ensureWebInspirations = async () => ({ status: "ready" });
+    h.deps.loadWebCandidates = async () => [];
+    h.deps.loadCatalogCandidates = async () => [];
+    h.deps.reviewProviderStatus = async () => ({ kind: "provider-unavailable", reason: "fixture provider outage" });
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    equal(h.saved[1].candidateSet!.items.length, SHELF_TARGET.min);
+    deepStrictEqual(h.saved[1].candidateSet!.items.map((i) => i.recipeId).sort(), before);
+    equal(outcome.retainedPrior, SHELF_TARGET.min);
+    ok(h.saved[1].candidateSet!.items.every((i) => i.review?.state === "provider-unavailable"), "retained ideas are labelled with the outage, never as checked");
+  });
+
+  it("repair 2: a re-validated hold is not re-admitted when the review store cannot be read again", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const prior = h.saved[0];
+    const heldId = prior.candidateSet!.items[3].recipeId;
+    h.deps.ensureWebInspirations = async () => ({ status: "failed", error: "fixture" });
+    h.deps.loadWebCandidates = async () => [];
+    h.deps.loadCatalogCandidates = async () => [];
+    h.deps.revalidatePrior = async (items) =>
+      items.map((item, index) => ({
+        ...candidate(item.recipeId, { origin: item.origin as "web" | "catalog", traits: item.traits, cuisine: item.cuisine, sourceName: item.source?.cookbook ?? null }),
+        contentSha256: item.contentSha256,
+        ...(index === 3 ? { review: { state: "checked-hold" as const, reason: "persisted current hold", contentSha256: item.contentSha256 } } : {}),
+      }));
+    h.deps.loadReviews = async () => { throw new Error("fixture DB unavailable"); };
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    const ids = h.saved[1].candidateSet!.items.map((i) => i.recipeId);
+    ok(!ids.includes(heldId), "the hold survives the failed review load");
+    equal(h.saved[1].candidateSet!.items.length, SHELF_TARGET.min - 1);
+    ok(outcome.held?.some((x) => x.recipeId === heldId));
+    ok(h.saved[1].candidateSet!.items.every((i) => i.review?.state === "provider-unavailable"), "everything else is labelled with the outage");
+  });
+
+  it("repair 2: a carried positive summary never survives a missing record", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    h.deps.ensureWebInspirations = async () => ({ status: "failed", error: "fixture" });
+    h.deps.loadWebCandidates = async () => [];
+    h.deps.loadCatalogCandidates = async () => [];
+    h.deps.revalidatePrior = async (items) => items.map((item) => ({ ...candidate(item.recipeId, { origin: item.origin as "web" | "catalog", traits: item.traits, cuisine: item.cuisine }), contentSha256: item.contentSha256, review: { state: "checked-pass" as const, reason: "carried", contentSha256: item.contentSha256 } }));
+    h.deps.loadReviews = async () => new Map();
+    await prepareWeek(WEEK, h.deps);
+    ok(h.saved[1].candidateSet!.items.every((i) => i.review?.state === "unreviewed"));
+  });
+
+  it("repair 2: the requested week reaches the revalidation and provider-status dependencies", async () => {
+    const weeks: { prior?: string; status?: string } = {};
+    const h = harness();
+    await prepareWeek("2026-W44", h.deps);
+    h.deps.ensureWebInspirations = async () => ({ status: "failed", error: "fixture" });
+    h.deps.reviewProviderStatus = async (week) => { weeks.status = week; return { kind: "ok" }; };
+    h.deps.revalidatePrior = async (items, _assigned, week) => { weeks.prior = week; return []; };
+    await prepareWeek("2026-W44", h.deps);
+    equal(weeks.prior, "2026-W44");
+    equal(weeks.status, "2026-W44");
+  });
+
   it("R1: a clean run does not retain anything from the previous shelf", async () => {
     const h = harness();
     await prepareWeek(WEEK, h.deps);
@@ -456,17 +520,18 @@ describe("weekly preparation", () => {
     equal(hydrated[0].review?.state, "unreviewed");
     ok(hydrated[0].review?.reason.includes("not bound"));
     // With persisted records supplied, a current hold wins on read.
-    const minimized = (await import("./planner-review.ts")).minimizeRecipeForReview(await resolve());
+    const RV = await import("./planner-review.ts");
+    const minimized = RV.minimizeRecipeForReview(await resolve());
     ok(minimized.ok);
-    const held = await hydrateShelfItems([stale], new Set(), resolve, NOW, {
-      week: WEEK,
-      reviews: new Map([[`${stale.recipeId}:${minimized.contentSha256}`, {
-        recipeId: stale.recipeId, contentSha256: minimized.contentSha256, rubricSha256: (await import("./planner-review.ts")).PLANNER_REVIEW_RUBRIC_SHA256,
-        modelRequested: "typesafe/jev-1.13", modelResolved: "typesafe/jev-1.13-20260917", provider: "TypeSafe", requestSha256: "r", responseSha256: "s",
-        interpretation: { interpretationVersion: "planner-review-1", verdict: "no", role: "side", mainProbability: 0.02, contentSufficient: 0.9, recipeForm: "finished_dish", physical: {}, reasons: ["reads as side"] },
-        answers: {}, usage: { inputTokens: 0, outputTokens: 0, costUsd: 0 }, source: "fixture", reviewedAt: NOW.toISOString(),
-      }]]),
-    });
+    const answers: Record<string, unknown> = {};
+    for (const [key, question] of Object.entries(RV.buildReviewQuestions())) {
+      answers[key] = question.type === "noul"
+        ? { type: "noul", noul: key === "content_sufficient" ? 0.95 : 0.02 }
+        : { type: "choice", choice: key === "meal_role" ? "side" : "finished_dish", confidence: 0.95, probabilities: key === "meal_role" ? { main: 0.02, side: 0.98 } : { finished_dish: 1 } };
+    }
+    const bound = RV.bindReviewResult({ recipeId: stale.recipeId, payload: minimized.payload, requestSha256: RV.buildReviewRequest(minimized.payload).requestSha256, response: { model: "typesafe/jev-1.13-20260917", provider: "TypeSafe", answers, usage: { cost: 0, input_tokens: 0, output_tokens: 0 } }, responseSha256: "s", source: "fixture", reviewedAt: NOW.toISOString() });
+    ok(bound.ok);
+    const held = await hydrateShelfItems([stale], new Set(), resolve, NOW, { week: WEEK, reviews: new Map([[`${stale.recipeId}:${minimized.contentSha256}`, bound.record]]) });
     equal(held[0].review?.state, "checked-hold");
   });
 

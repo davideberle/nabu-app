@@ -19,7 +19,7 @@ import { saveMealPlan, loadMealPlan } from "./meals-persistence.ts";
 import { getDb, saveCandidateReviews, savePlannerReviewRun } from "./db.ts";
 import { toCandidateItem, toShelfCandidate } from "./planner-preparation.ts";
 import { SHELF_POLICY_VERSION } from "./planner-shelf.ts";
-import { minimizeRecipeForReview, PLANNER_REVIEW_MODEL, PLANNER_REVIEW_RUBRIC_SHA256, type CandidateReviewRecord } from "./planner-review.ts";
+import { bindReviewResult, buildReviewQuestions, buildReviewRequest, minimizeRecipeForReview, PLANNER_REVIEW_MODEL, PLANNER_REVIEW_RUBRIC_SHA256, type CandidateReviewRecord } from "./planner-review.ts";
 import type { MealPlan } from "./meals.ts";
 import type { Recipe } from "./recipes.ts";
 
@@ -46,25 +46,28 @@ const RECIPES: Record<string, Recipe> = {
 };
 const resolveRecipe = async (id: string) => RECIPES[id];
 
+/** A persisted record built the way the import path builds one: bound answers, real request digest. */
 function record(id: string, verdict: "yes" | "no", overrides: Partial<CandidateReviewRecord> = {}): CandidateReviewRecord {
   const minimized = minimizeRecipeForReview(RECIPES[id]);
   if (!minimized.ok) throw new Error("fixture must minimize");
-  return {
+  const main = verdict === "yes" ? 0.9 : 0.03;
+  const answers: Record<string, unknown> = {};
+  for (const [key, question] of Object.entries(buildReviewQuestions())) {
+    answers[key] = question.type === "noul"
+      ? { type: "noul", noul: key === "content_sufficient" ? 0.95 : 0.02 }
+      : { type: "choice", choice: key === "meal_role" ? (verdict === "yes" ? "main" : "side") : "finished_dish", confidence: 0.95, probabilities: key === "meal_role" ? { main, side: 1 - main } : { finished_dish: 1 } };
+  }
+  const bound = bindReviewResult({
     recipeId: id,
-    contentSha256: minimized.contentSha256,
-    rubricSha256: PLANNER_REVIEW_RUBRIC_SHA256,
-    modelRequested: PLANNER_REVIEW_MODEL,
-    modelResolved: "typesafe/jev-1.13-20260917",
-    provider: "TypeSafe",
-    requestSha256: "r",
+    payload: minimized.payload,
+    requestSha256: buildReviewRequest(minimized.payload).requestSha256,
+    response: { model: "typesafe/jev-1.13-20260917", provider: "TypeSafe", answers, usage: { cost: 0.0001, input_tokens: 100, output_tokens: 20 } },
     responseSha256: "s",
-    interpretation: { interpretationVersion: "planner-review-1", verdict, role: verdict === "yes" ? "main" : "side", mainProbability: verdict === "yes" ? 0.9 : 0.03, contentSufficient: 0.95, recipeForm: "finished_dish", physical: {}, reasons: ["fixture"] },
-    answers: {},
-    usage: { inputTokens: 0, outputTokens: 0, costUsd: 0 },
     source: "fixture",
     reviewedAt: NOW.toISOString(),
-    ...overrides,
-  };
+  });
+  if (!bound.ok) throw new Error(bound.problems.join("; "));
+  return { ...bound.record, ...overrides };
 }
 
 function planFor(week: string, items: MealPlan["candidateSet"] extends infer S ? (S extends { items: infer I } ? I : never) : never): MealPlan {

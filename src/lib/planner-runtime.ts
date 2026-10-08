@@ -236,14 +236,16 @@ export async function loadReplacementCandidates(
 
 /** Runtime re-validation of previously saved shelf items for failure retention (`PreparationDeps.revalidatePrior`). */
 export async function revalidatePriorShelf(
-  week: string,
+  week: string | undefined,
   items: NonNullable<MealPlan["candidateSet"]>["items"],
   assigned: ReadonlySet<string>,
   now: Date,
 ): Promise<ShelfCandidate[]> {
-  const providerStatus = await reviewProviderStatusFor(week);
+  // Without a requested week, each item keeps the month it was prepared for
+  // (hydration rule) and the provider status is read for the next week.
+  const providerStatus = await reviewProviderStatusFor(week ?? nextWeekFor(now));
   return hydrateShelfItems(items, assigned, getRecipe, now, {
-    week,
+    ...(week ? { week } : {}),
     resolveReviews: (bindings) => getCandidateReviews(bindings),
     providerStatus,
   });
@@ -279,8 +281,10 @@ export function buildPreparationDeps(now = new Date()): PreparationDeps {
     // Reads only. The provider is never called from the app runtime; reviews
     // arrive through the local protected-egress script.
     loadReviews: (bindings) => getCandidateReviews(bindings),
-    reviewProviderStatus: () => reviewProviderStatusFor(nextWeekFor(now)),
-    revalidatePrior: (items, assigned) => revalidatePriorShelf(nextWeekFor(now), items, assigned, now),
+    // The requested week is threaded through by preparation; the next-week
+    // default only covers a caller that passes none.
+    reviewProviderStatus: (week) => reviewProviderStatusFor(week ?? nextWeekFor(now)),
+    revalidatePrior: (items, assigned, week) => revalidatePriorShelf(week, items, assigned, now),
   };
 }
 

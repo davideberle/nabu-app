@@ -195,7 +195,7 @@ describe("fail-closed evidence import (R3)", () => {
     const lowAttempts = await script.importResults({ week: WEEK, dir: tmpdir(), client: fakeClient(), batch, results: { ...base, attempts: 1, results: [result(batch.items[0]), result(batch.items[1])] }, runId: "r3-attempts" });
     equal(lowAttempts.status, "failed");
     ok(lowAttempts.defects.some((d: string) => /attempt count/.test(d)));
-    deepStrictEqual(lowAttempts.inventory, { sourceCount: 2, outputCount: 2, results: 2, failed: 0, deferred: 0, rejected: 0, missing: 0 });
+    deepStrictEqual(lowAttempts.inventory, { sourceCount: 2, uniqueSourceCount: 2, duplicateSources: 0, outputCount: 2, results: 2, failed: 0, deferred: 0, rejected: 0, missing: 0 });
   });
 
   it("a pinned-route mismatch on the batch is refused before anything else", async () => {
@@ -204,6 +204,97 @@ describe("fail-closed evidence import (R3)", () => {
     const imported = await script.importResults({ week: WEEK, dir: tmpdir(), client: fakeClient(), batch, results: { batchSha256: sha(encodeReviewJson(batch)), attempts: 0, results: [] }, runId: "r3-route" });
     equal(imported.status, "failed");
     ok(imported.defects.some((d: string) => /pinned review contract/.test(d)));
+  });
+});
+
+describe("repair 2: run context, identities, model syntax and the in-flight deadline", () => {
+  it("refuses a batch that names the same recipe twice before anything is collapsed", async () => {
+    await load();
+    const batch = batchOf(1);
+    batch.items.push(structuredClone(batch.items[0]));
+    const good = response();
+    const raw = JSON.stringify(good);
+    const env = { batchSha256: sha(encodeReviewJson(batch)), attempts: 1, results: [{ recipeId: batch.items[0].recipeId, contentSha256: batch.items[0].contentSha256, requestSha256: batch.items[0].requestSha256, status: "result", responseSha256: sha(raw), responseRaw: raw, response: good }] };
+    const client = fakeClient();
+    const imported = await script.importResults({ week: WEEK, dir: tmpdir(), client, batch, results: env, runId: "r2-dup-source" });
+    equal(imported.status, "failed");
+    equal(imported.persisted, 0);
+    ok(imported.defects.some((d: string) => /duplicate source identities/.test(d)));
+    equal(imported.inventory.sourceCount, 2, "both inputs are counted as source items");
+    equal(imported.inventory.uniqueSourceCount, 1);
+    equal(imported.inventory.duplicateSources, 1);
+  });
+
+  it("refuses a batch or results whose week differs from the run week", async () => {
+    await load();
+    const batch = { ...batchOf(1), week: "2026-W43" } as ReviewBatch;
+    const good = response();
+    const raw = JSON.stringify(good);
+    const env = { batchSha256: sha(encodeReviewJson(batch)), attempts: 1, results: [{ recipeId: batch.items[0].recipeId, contentSha256: batch.items[0].contentSha256, requestSha256: batch.items[0].requestSha256, status: "result", responseSha256: sha(raw), responseRaw: raw, response: good }] };
+    const imported = await script.importResults({ week: WEEK, dir: tmpdir(), client: fakeClient(), batch, results: env, runId: "r2-week" });
+    equal(imported.status, "failed");
+    ok(imported.defects.some((d: string) => /batch week 2026-W43 does not match the run week 2026-W42/.test(d)));
+    const right = batchOf(1);
+    const env2 = { ...env, week: "2026-W43", batchSha256: sha(encodeReviewJson(right)), results: [{ ...env.results[0], recipeId: right.items[0].recipeId, contentSha256: right.items[0].contentSha256, requestSha256: right.items[0].requestSha256 }] };
+    const imported2 = await script.importResults({ week: WEEK, dir: tmpdir(), client: fakeClient(), batch: right, results: env2, runId: "r2-results-week" });
+    equal(imported2.status, "failed");
+    ok(imported2.defects.some((d: string) => /results week/.test(d)));
+    // And the run step refuses to even start on a mismatched batch.
+    const dir = dirWith(batch);
+    await script.runBatch({ week: WEEK, dir: join(dir), env: ENV, fetchImpl: async () => ({ status: 200, text: async () => "{}" }) }).then(
+      () => ok(false, "run must refuse a batch for another week"),
+      (error: Error) => ok(/not the requested 2026-W42/.test(error.message)),
+    );
+    rmSync(dir, { recursive: true, force: true });
+  });
+
+  it("accepts the pinned model and its dated snapshot only; a prefix collision is refused", async () => {
+    await load();
+    const { isAcceptedResolvedModel, validateReviewResponse } = await import("./planner-review.ts");
+    ok(isAcceptedResolvedModel("typesafe/jev-1.13"));
+    ok(isAcceptedResolvedModel("typesafe/jev-1.13-20260917"));
+    ok(!isAcceptedResolvedModel("typesafe/jev-1.130-other"));
+    ok(!isAcceptedResolvedModel("typesafe/jev-1.13-other"));
+    ok(!isAcceptedResolvedModel("typesafe/jev-1.13x"));
+    ok(!isAcceptedResolvedModel("openai/typesafe/jev-1.13"));
+    ok(validateReviewResponse({ ...response(), model: "typesafe/jev-1.130-other" }).some((p) => /model/.test(p)));
+    const batch = batchOf(1);
+    const bad = { ...response(), model: "typesafe/jev-1.130-other" };
+    const raw = JSON.stringify(bad);
+    const env = { batchSha256: sha(encodeReviewJson(batch)), attempts: 1, results: [{ recipeId: batch.items[0].recipeId, contentSha256: batch.items[0].contentSha256, requestSha256: batch.items[0].requestSha256, status: "result", responseSha256: sha(raw), responseRaw: raw, response: bad }] };
+    const imported = await script.importResults({ week: WEEK, dir: tmpdir(), client: fakeClient(), batch, results: env, runId: "r2-model" });
+    equal(imported.persisted, 0);
+    equal(imported.status, "failed");
+  });
+
+  it("aborts an in-flight request at the total run deadline and records it honestly", async () => {
+    await load();
+    const dir = dirWith(batchOf(2));
+    let aborted = 0;
+    const started = Date.now();
+    const ran = await script.runBatch({
+      week: WEEK,
+      dir,
+      env: ENV,
+      limits: { ...PLANNER_REVIEW_LIMITS, maxRunMs: 40, requestTimeoutMs: 500, maxAttemptsPerItem: 2 },
+      fetchImpl: (_url: string, init: { signal: AbortSignal }) =>
+        new Promise((resolve, reject) => {
+          const timer = setTimeout(() => resolve({ status: 200, text: async () => JSON.stringify(response()) }), 300);
+          init.signal.addEventListener("abort", () => {
+            clearTimeout(timer);
+            aborted += 1;
+            reject(Object.assign(new Error("aborted"), { name: "AbortError" }));
+          });
+        }),
+    });
+    const elapsed = Date.now() - started;
+    equal(aborted, 1, "the first request is aborted when the run deadline passes; no retry and no second request");
+    ok(elapsed < 250, `the run returned at the deadline, not after the request timeout (${elapsed} ms)`);
+    equal(ran.attempts, 1);
+    equal(ran.failed, 1);
+    equal(ran.deferred, 1, "the second item never started");
+    ok(/deadline/.test(ran.stoppedBy));
+    rmSync(dir, { recursive: true, force: true });
   });
 });
 

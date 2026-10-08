@@ -20,9 +20,10 @@
  *      minimized payloads for the staged web ideas, reused results where the
  *      content hash already has a bound review. The batch is *written*, never
  *      sent, unless this process runs under the protected Gateway egress
- *      route — see `scripts/review-planner-candidates.mjs`. A scheduled run
- *      has no such route, so it records the pending batch and carries on:
- *      the shelf is still valid, its unreviewed ideas are labelled as such
+ *      route — see `scripts/review-planner-candidates.mjs`. Whether the
+ *      scheduled runtime carries that route is unproven either way; when it
+ *      is absent the run records the pending batch and carries on: the
+ *      shelf is still valid, its unreviewed ideas are labelled as such
  *   5. call the trusted `/api/meals/prepare` endpoint with the runtime token,
  *      read natively out of the macOS Keychain
  *   6. verify the stored shelf: twenty combined ideas, healthy, and — the whole

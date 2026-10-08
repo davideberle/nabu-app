@@ -154,6 +154,12 @@ export function attachReviews(
       const record = reviews.get(`${candidate.recipeId}:${candidate.contentSha256}`);
       if (record && reviewMatches(record, { recipeId: candidate.recipeId, contentSha256: candidate.contentSha256 })) {
         availability = { kind: "record", record };
+      } else if (candidate.review?.state === "checked-hold" && candidate.review.contentSha256 === candidate.contentSha256) {
+        // A negative decision already carried by the candidate for this exact
+        // content (a re-validated prior item) is kept when the record cannot
+        // be read again. Only the hold is carried — the conservative
+        // direction; a positive summary never survives a missing record.
+        availability = { kind: "held-summary", summary: candidate.review };
       } else if (providerStatus.kind === "provider-unavailable") {
         availability = { kind: "provider-unavailable", reason: providerStatus.reason };
       } else {
@@ -572,7 +578,7 @@ export type PreparationDeps = {
    */
   loadReviews?: (bindings: readonly { recipeId: string; contentSha256: string }[]) => Promise<Map<string, CandidateReviewRecord>>;
   /** What the last review run reported, so an outage is labelled as one. */
-  reviewProviderStatus?: () => Promise<{ kind: "ok" } | { kind: "provider-unavailable"; reason: string }>;
+  reviewProviderStatus?: (week?: string) => Promise<{ kind: "ok" } | { kind: "provider-unavailable"; reason: string }>;
   /**
    * Re-resolve the previously saved shelf items against the live corpus and
    * gates (runtime: `hydrateShelfItems` with the recipe resolver). Used only
@@ -580,7 +586,7 @@ export type PreparationDeps = {
    * be trusted to replace a valid shelf. Without it, prior items are checked
    * structurally (role, traits, image) and carried with their saved data.
    */
-  revalidatePrior?: (items: NonNullable<MealPlan["candidateSet"]>["items"], assigned: ReadonlySet<string>) => Promise<ShelfCandidate[]>;
+  revalidatePrior?: (items: NonNullable<MealPlan["candidateSet"]>["items"], assigned: ReadonlySet<string>, week?: string) => Promise<ShelfCandidate[]>;
   claim?: (week: string, kind: PreparationKind) => Promise<boolean>;
   complete?: (week: string, kind: PreparationKind, status: "succeeded" | "failed", summary?: unknown) => Promise<void>;
 };
@@ -744,7 +750,13 @@ export async function prepareWeek(
       loadSafely("web candidates", () => deps.loadWebCandidates(week)),
       loadSafely("catalog candidates", () => deps.loadCatalogCandidates(week)),
     ]);
-    const sourceFailure = ensured.status === "failed" || loadFailures.length > 0;
+    // Provider status is read before the fallback decision: an outage of the
+    // review provider is a failure that must keep a valid shelf as much as a
+    // failed discovery or a thrown loader.
+    let providerStatus: { kind: "ok" } | { kind: "provider-unavailable"; reason: string } = deps.reviewProviderStatus
+      ? await deps.reviewProviderStatus(week).catch((error) => ({ kind: "provider-unavailable" as const, reason: `review status unavailable: ${error instanceof Error ? error.message : String(error)}` }))
+      : { kind: "ok" as const };
+    const sourceFailure = ensured.status === "failed" || loadFailures.length > 0 || providerStatus.kind === "provider-unavailable";
 
     const assigned = assignedRecipeIdsOf(existing);
     // "Not this week" is exposure state for the week and survives a repair:
@@ -761,7 +773,7 @@ export async function prepareWeek(
     if (sourceFailure && existing?.candidateSet?.items?.length) {
       const prior = existing.candidateSet.items;
       const revalidated = deps.revalidatePrior
-        ? await deps.revalidatePrior(prior, assigned).catch((error) => {
+        ? await deps.revalidatePrior(prior, assigned, week).catch((error) => {
             loadFailures.push(`prior revalidation: ${error instanceof Error ? error.message : String(error)}`);
             return null;
           })
@@ -773,9 +785,17 @@ export async function prepareWeek(
         for (const item of prior) if (item?.recipeId && !kept.has(item.recipeId)) invalidPrior.push({ recipeId: item.recipeId, reason: "no longer resolves or passes the gates" });
       }
       const freshIds = new Set([...freshWeb, ...freshCatalog].map((c) => c.recipeId));
+      // A re-validated hold is a current content-bound negative decision and
+      // travels with the candidate; every other review state is re-resolved
+      // below so a stale positive can never ride along.
       retained = pool
         .filter((c) => !freshIds.has(c.recipeId))
-        .map((c, index) => ({ ...c, rank: 1_000 + index, review: undefined, retained: true as const }));
+        .map((c, index) => ({
+          ...c,
+          rank: 1_000 + index,
+          review: c.review?.state === "checked-hold" ? { ...c.review, contentSha256: c.review.contentSha256 ?? c.contentSha256 } : undefined,
+          retained: true as const,
+        }));
     }
     const rawWeb = [...freshWeb, ...retained.filter((c) => c.origin === "web")];
     const rawCatalog = [...freshCatalog, ...retained.filter((c) => c.origin === "catalog")];
@@ -784,10 +804,11 @@ export async function prepareWeek(
     // review holds it is kept out of the automatic shelf; everything else is
     // labelled with its actual state (pass / uncertain / unreviewed /
     // provider-unavailable / excluded) and decided by the deterministic gates.
-    const providerStatus = deps.reviewProviderStatus ? await deps.reviewProviderStatus() : { kind: "ok" as const };
+    // A review store that cannot be read is a provider-side outage for this
+    // run: nothing is held or passed on its account, everything is labelled.
     const reviews = deps.loadReviews
       ? await deps.loadReviews(reviewBindingsFor([...rawWeb, ...rawCatalog])).catch((error) => {
-          loadFailures.push(`reviews: ${error instanceof Error ? error.message : String(error)}`);
+          providerStatus = { kind: "provider-unavailable", reason: `reviews unavailable: ${error instanceof Error ? error.message : String(error)}` };
           return new Map<string, CandidateReviewRecord>();
         })
       : new Map<string, CandidateReviewRecord>();

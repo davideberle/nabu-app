@@ -30,7 +30,7 @@ import {
   SHELF_POLICY_VERSION,
 } from "@/lib/planner-preparation";
 import { loadMealPlan, saveMealPlan } from "@/lib/meals-persistence";
-import { loadReplacementCandidates } from "@/lib/planner-runtime";
+import { loadReplacementCandidates, reviewProviderStatusFor } from "@/lib/planner-runtime";
 import { getCandidateReviews } from "@/lib/db";
 import { getRecipe } from "@/lib/recipes";
 
@@ -92,6 +92,7 @@ export async function POST(request: NextRequest) {
     const shelf = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now, {
       week,
       resolveReviews: (bindings) => getCandidateReviews(bindings),
+      providerStatus: await reviewProviderStatusFor(week),
     });
     const onShelf = new Set(shelf.map((item) => item.recipeId));
     const replacements = await loadReplacementCandidates(week, now, onShelf);
