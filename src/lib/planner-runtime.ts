@@ -61,8 +61,10 @@ import { isStagedRecipe } from "@/lib/planner-staging";
  */
 /**
  * Render-QA gate every shelf candidate passes through. The normalized copy is
- * what the candidate is built from; a quarantined recipe is recorded and
- * never reaches a card.
+ * what the candidate's traits and display are built from; a quarantined
+ * recipe is recorded and never reaches a card. The content review stays bound
+ * to the persisted source (`contentSource`), which is what the weekly export
+ * hashed and sent — the QA copy is a display projection, not new content.
  */
 function qaGate(recipe: Recipe, diagnostics?: RecipeQaDiagnostic[]): Recipe | null {
   const role = classifyPlannerRole(recipe);
@@ -102,6 +104,7 @@ export async function loadWebCandidatesForWeek(
           sourceName: inspiration.source_name,
           rank: rank++,
           week,
+          contentSource: raw,
         },
         now,
       ),
@@ -166,7 +169,7 @@ export async function loadCatalogCandidatesForWeek(
     if (role.role === "reject") continue;
     const recipe = qaGate(raw, quarantine);
     if (!recipe) continue;
-    candidates.push(toShelfCandidate(recipe, { origin: "catalog", discovery: "catalog", week }, now));
+    candidates.push(toShelfCandidate(recipe, { origin: "catalog", discovery: "catalog", week, contentSource: raw }, now));
   }
   return candidates;
 }

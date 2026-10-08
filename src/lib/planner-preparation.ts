@@ -78,6 +78,15 @@ export type CandidateOrigin = {
   week?: string;
   /** The planned month, when the caller already resolved it (1–12). Wins over `week`. */
   month?: number;
+  /**
+   * The recipe as persisted — before render QA — whose minimized projection
+   * the content review is bound to. Review export, import and reuse hash the
+   * persisted source, so the shelf must hash the same bytes: a deterministic
+   * display fix (a unit moved out of an item name, a split fraction rejoined)
+   * must not change the binding of an unchanged recipe. When absent, the
+   * given recipe is hashed as is.
+   */
+  contentSource?: Pick<Recipe, "name" | "servings" | "ingredients">;
 };
 
 function normalizeTime(time: Recipe["time"]): { prep: number; cook: number; total: number } | null {
@@ -104,7 +113,8 @@ export function toShelfCandidate(recipe: Recipe, origin: CandidateOrigin, now: D
   const traits = deriveShelfTraits(recipe, now, { month });
   const seasonality = deriveShelfSeasonality(recipe, now, { month });
   const time = normalizeTime(recipe.time);
-  const minimized = minimizeRecipeForReview(recipe);
+  // The review binding hashes the persisted source, never the QA copy.
+  const minimized = minimizeRecipeForReview(origin.contentSource ?? recipe);
   return {
     recipeId: recipe.id,
     recipeName: normalizePlannerTitle(recipe.name) || recipe.name,
@@ -310,6 +320,7 @@ export async function hydrateShelfItems(
           : "catalog",
         sourceName: item.source?.cookbook ?? null,
         ...(month ? { month } : {}),
+        contentSource: recipe,
       },
       now,
     );

@@ -18,6 +18,7 @@ import { describe, it, before } from "node:test";
 import { saveMealPlan, loadMealPlan } from "./meals-persistence.ts";
 import { getDb, saveCandidateReviews, savePlannerReviewRun } from "./db.ts";
 import { toCandidateItem, toShelfCandidate } from "./planner-preparation.ts";
+import { qaRecipeForShelf } from "./recipe-render-qa.ts";
 import { SHELF_POLICY_VERSION } from "./planner-shelf.ts";
 import { bindReviewResult, buildReviewQuestions, buildReviewRequest, minimizeRecipeForReview, PLANNER_REVIEW_MODEL, PLANNER_REVIEW_RUBRIC_SHA256, type CandidateReviewRecord } from "./planner-review.ts";
 import type { MealPlan } from "./meals.ts";
@@ -43,6 +44,8 @@ const RECIPES: Record<string, Recipe> = {
   gratin: recipe("gratin", "Pumpkin gratin", [{ item: "pumpkin", amount: "800", unit: "g" }, { item: "cream", amount: "200", unit: "ml" }, { item: "gruyère", amount: "100", unit: "g" }]),
   salad: recipe("salad", "Tomato salad plate", [{ item: "ripe tomatoes", amount: "600", unit: "g" }, { item: "mozzarella", amount: "250", unit: "g" }, { item: "basil", amount: "1", unit: "bunch" }]),
   stew: recipe("stew", "Lentil and chard stew", [{ item: "lentils", amount: "300", unit: "g" }, { item: "chard", amount: "300", unit: "g" }, { item: "stock", amount: "1", unit: "l" }]),
+  // Observed live shape (W42, FOOBY): the unit sits in the item name; render QA moves it. The binding must not move with it.
+  bouillon: recipe("bouillon", "Squash gnocchi with squash cream", [{ item: "dl vegetable bouillon", amount: "2 ¼" }, { item: "squash", amount: "600", unit: "g" }, { item: "gnocchi", amount: "500", unit: "g" }]),
 };
 const resolveRecipe = async (id: string) => RECIPES[id];
 
@@ -123,6 +126,25 @@ describe("save boundary binding (R4/R5)", () => {
     ok(result.ok);
     const stored = await loadMealPlan("2026-W51");
     equal(stored!.candidateSet!.items[0].review?.state, "provider-unavailable");
+  });
+
+  it("repair 5: a record bound to the persisted source survives render QA through save and read, for a yes and then a no", async () => {
+    const raw = RECIPES.bouillon;
+    const checked = qaRecipeForShelf(raw, { role: "main" });
+    ok(checked.ok && checked.fixes.some((f) => f.code === "stranded-unit"), "the fixture exercises the QA seam");
+    const prepared = toShelfCandidate(checked.recipe, { origin: "web", discovery: "search", week: "2026-W53", contentSource: raw }, NOW);
+    const source = minimizeRecipeForReview(raw);
+    ok(source.ok);
+    equal(prepared.contentSha256, source.contentSha256, "the shelf binding is the persisted source, as exported");
+    await saveCandidateReviews([record("bouillon", "yes")]);
+    const first = await saveMealPlan(planFor("2026-W53", [toCandidateItem({ ...prepared, reason: "", assigned: false })]), { resolveRecipe });
+    ok(first.ok);
+    equal((await loadMealPlan("2026-W53"))!.candidateSet!.items[0].review?.state, "checked-pass");
+    // A later no for the same source is the authority on the next read.
+    await saveCandidateReviews([record("bouillon", "no")]);
+    const second = await saveMealPlan(planFor("2026-W53", [toCandidateItem({ ...prepared, reason: "", assigned: false })]), { resolveRecipe });
+    ok(second.ok);
+    equal((await loadMealPlan("2026-W53"))!.candidateSet!.items[0].review?.state, "checked-hold");
   });
 
   it("a current pass survives the round trip and carries its binding", async () => {
