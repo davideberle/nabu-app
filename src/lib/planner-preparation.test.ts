@@ -500,6 +500,112 @@ describe("weekly preparation", () => {
     equal(weeks.status, "2026-W44");
   });
 
+  it("repair 3: a review-store outage discovered after the pools loaded keeps a valid twenty (empty pools)", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const before = h.saved[0].candidateSet!.items.map((i) => i.recipeId).sort();
+    h.deps.ensureWebInspirations = async () => ({ status: "ready" });
+    h.deps.reviewProviderStatus = async () => ({ kind: "ok" });
+    h.deps.loadWebCandidates = async () => [];
+    h.deps.loadCatalogCandidates = async () => [];
+    h.deps.loadReviews = async () => { throw new Error("review store read outage"); };
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    equal(h.saved[1].candidateSet!.items.length, SHELF_TARGET.min);
+    deepStrictEqual(h.saved[1].candidateSet!.items.map((i) => i.recipeId).sort(), before);
+    equal(outcome.retainedPrior, SHELF_TARGET.min);
+    ok(h.saved[1].candidateSet!.items.every((i) => i.review?.state === "provider-unavailable"));
+  });
+
+  it("repair 3: a late review-store outage with a partial fresh pool fills from fresh first, then retained", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const prior = h.saved[0].candidateSet!.items.map((i) => i.recipeId);
+    h.deps.reviewProviderStatus = async () => ({ kind: "ok" });
+    // Seven fresh ideas whose profiles do not collide with any set-level cap
+    // (cuisines absent from the pools, plant-forward, not easy-light), so a
+    // full twenty exists and the only question is the order of seating.
+    const freshProfile = (i: number) => ({
+      cuisine: ["Korean", "Peruvian", "Lebanese", "Turkish", "Vietnamese", "Spanish", "Ethiopian"][i],
+      traits: traits({ shape: (["stew-curry", "bowl", "roast-bake", "stir-fry", "grill", "stew-curry", "bowl"] as const)[i], protein: (["vegan", "vegetarian"] as const)[i % 2], effort: (["medium", "project", "medium", "medium", "medium", "project", "medium"] as const)[i] }),
+    });
+    h.deps.loadWebCandidates = async () => webPool().slice(0, 3).map((c, i) => ({ ...c, recipeId: `fresh-${c.recipeId}`, ...freshProfile(i) }));
+    h.deps.loadCatalogCandidates = async () => catalogPool().slice(0, 4).map((c, i) => ({ ...c, recipeId: `fresh-${c.recipeId}`, ...freshProfile(3 + i) }));
+    h.deps.loadReviews = async () => { throw new Error("review store read outage"); };
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    const ids = h.saved[1].candidateSet!.items.map((i) => i.recipeId);
+    equal(ids.length, SHELF_TARGET.min);
+    equal(ids.filter((id) => id.startsWith("fresh-")).length, 7, "every fresh candidate is seated first");
+    equal(ids.filter((id) => prior.includes(id)).length, SHELF_TARGET.min - 7, "the rest is retained from the prior shelf");
+    equal(outcome.retainedPrior, SHELF_TARGET.min - 7);
+    ok(h.saved[1].candidateSet!.items.every((i) => i.review?.state === "provider-unavailable"));
+  });
+
+  it("repair 3: a current hold crosses to the identical fresh twin (web and catalog) when the store cannot be re-read", async () => {
+    for (const origin of ["web", "catalog"] as const) {
+      const h = harness();
+      await prepareWeek(WEEK, h.deps);
+      const prior = h.saved[0].candidateSet!.items;
+      const twin = prior.find((i) => i.origin === origin)!;
+      const fresh = candidate(twin.recipeId, { origin, discovery: origin === "web" ? "editorial" : "catalog", traits: twin.traits, cuisine: twin.cuisine, sourceName: twin.source?.cookbook ?? null });
+      fresh.contentSha256 = twin.contentSha256;
+      h.deps.ensureWebInspirations = async () => ({ status: "failed", error: "fixture" });
+      h.deps.loadWebCandidates = async () => (origin === "web" ? [fresh] : []);
+      h.deps.loadCatalogCandidates = async () => (origin === "catalog" ? [fresh] : []);
+      h.deps.revalidatePrior = async (items) =>
+        items.map((item) => ({
+          ...candidate(item.recipeId, { origin: item.origin as "web" | "catalog", traits: item.traits, cuisine: item.cuisine, sourceName: item.source?.cookbook ?? null }),
+          contentSha256: item.contentSha256,
+          ...(item.recipeId === twin.recipeId ? { review: { state: "checked-hold" as const, reason: "persisted current hold", contentSha256: item.contentSha256 } } : {}),
+        }));
+      h.deps.loadReviews = async () => { throw new Error("fixture DB unavailable"); };
+      const outcome = await prepareWeek(WEEK, h.deps);
+      const ids = h.saved[1].candidateSet!.items.map((i) => i.recipeId);
+      ok(!ids.includes(twin.recipeId), `${origin}: the fresh twin inherits the hold and stays out`);
+      ok(outcome.held?.some((x) => x.recipeId === twin.recipeId), `${origin}: the hold is reported`);
+      equal(ids.length, SHELF_TARGET.min - 1);
+    }
+  });
+
+  it("repair 3: a hold does not cross onto changed content, and a carried positive never does", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const prior = h.saved[0].candidateSet!.items;
+    const twin = prior[2];
+    const changed = candidate(twin.recipeId, { origin: twin.origin as "web" | "catalog", traits: twin.traits, cuisine: twin.cuisine, sourceName: twin.source?.cookbook ?? null });
+    changed.contentSha256 = "sha-changed-content";
+    h.deps.ensureWebInspirations = async () => ({ status: "failed", error: "fixture" });
+    h.deps.loadWebCandidates = async () => (twin.origin === "web" ? [changed] : []);
+    h.deps.loadCatalogCandidates = async () => (twin.origin === "catalog" ? [changed] : []);
+    h.deps.revalidatePrior = async (items) =>
+      items.map((item) => ({
+        ...candidate(item.recipeId, { origin: item.origin as "web" | "catalog", traits: item.traits, cuisine: item.cuisine, sourceName: item.source?.cookbook ?? null }),
+        contentSha256: item.contentSha256,
+        review: item.recipeId === twin.recipeId
+          ? { state: "checked-hold" as const, reason: "hold on the old content", contentSha256: item.contentSha256 }
+          : { state: "checked-pass" as const, reason: "carried positive", contentSha256: item.contentSha256 },
+      }));
+    h.deps.loadReviews = async () => { throw new Error("fixture DB unavailable"); };
+    await prepareWeek(WEEK, h.deps);
+    const items = h.saved[1].candidateSet!.items;
+    const freshTwin = items.find((i) => i.recipeId === twin.recipeId);
+    ok(freshTwin, "changed content is re-evaluated, not held on the old content's decision");
+    equal(freshTwin!.review?.state, "provider-unavailable");
+    ok(items.every((i) => i.review?.state !== "checked-pass"), "no carried positive survives the missing store");
+  });
+
+  it("repair 3: carryCurrentHolds is keyed by id and content, nothing else", async () => {
+    const { carryCurrentHolds } = await import("./planner-preparation.ts");
+    const hold = { state: "checked-hold" as const, reason: "h", contentSha256: "c1" };
+    const prior = [candidate("a", { contentSha256: "c1", review: hold }), candidate("b", { contentSha256: "c2", review: { state: "checked-pass", reason: "p", contentSha256: "c2" } })];
+    const fresh = [candidate("a", { contentSha256: "c1" }), candidate("a", { contentSha256: "c9" }), candidate("b", { contentSha256: "c2" })];
+    const out = carryCurrentHolds(prior, fresh);
+    equal(out[0].review?.state, "checked-hold");
+    equal(out[1].review, undefined, "different content: no inherited decision");
+    equal(out[2].review, undefined, "a positive is never carried");
+  });
+
   it("R1: a clean run does not retain anything from the previous shelf", async () => {
     const h = harness();
     await prepareWeek(WEEK, h.deps);

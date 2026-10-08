@@ -624,6 +624,30 @@ export type PreparationOutcome = {
 };
 
 /**
+ * Transfer a current content-bound hold from a prior candidate onto its fresh
+ * twin (same recipe id, same minimized content hash). The fresh candidate
+ * stays the one in play; only the negative decision crosses over, and only
+ * when the content is identical — changed content gets no inherited review,
+ * and a positive summary is never carried. Pure; exported for tests.
+ */
+export function carryCurrentHolds(prior: readonly ShelfCandidate[], fresh: readonly ShelfCandidate[]): ShelfCandidate[] {
+  const holds = new Map<string, CandidateReviewSummary>();
+  for (const candidate of prior) {
+    const review = candidate.review;
+    if (review?.state !== "checked-hold") continue;
+    const contentSha256 = review.contentSha256 ?? candidate.contentSha256;
+    if (!contentSha256) continue;
+    holds.set(`${candidate.recipeId}:${contentSha256}`, { ...review, contentSha256 });
+  }
+  if (holds.size === 0) return [...fresh];
+  return fresh.map((candidate) => {
+    if (!candidate.contentSha256) return candidate;
+    const hold = holds.get(`${candidate.recipeId}:${candidate.contentSha256}`);
+    return hold ? { ...candidate, review: hold } : candidate;
+  });
+}
+
+/**
  * Structural re-validation of previously saved shelf items, for a run that
  * cannot resolve recipes. A prior item is carried only when it still looks
  * like a dinner-eligible candidate (main/light-meal role, traits, an image,
@@ -750,12 +774,25 @@ export async function prepareWeek(
       loadSafely("web candidates", () => deps.loadWebCandidates(week)),
       loadSafely("catalog candidates", () => deps.loadCatalogCandidates(week)),
     ]);
-    // Provider status is read before the fallback decision: an outage of the
-    // review provider is a failure that must keep a valid shelf as much as a
-    // failed discovery or a thrown loader.
+    // The failure decision covers the complete review-loading boundary:
+    // discovery, both loaders, the provider status and the review-store read
+    // for the fresh candidates. Only then is retention decided, so a
+    // review store that fails late cannot empty a valid shelf.
     let providerStatus: { kind: "ok" } | { kind: "provider-unavailable"; reason: string } = deps.reviewProviderStatus
       ? await deps.reviewProviderStatus(week).catch((error) => ({ kind: "provider-unavailable" as const, reason: `review status unavailable: ${error instanceof Error ? error.message : String(error)}` }))
       : { kind: "ok" as const };
+    const reviews = new Map<string, CandidateReviewRecord>();
+    const loadReviewsSafely = async (candidates: readonly ShelfCandidate[]): Promise<void> => {
+      if (!deps.loadReviews) return;
+      try {
+        for (const [key, record] of await deps.loadReviews(reviewBindingsFor(candidates))) reviews.set(key, record);
+      } catch (error) {
+        // A review store that cannot be read is an outage for this run:
+        // nothing is held or passed on its account, everything is labelled.
+        providerStatus = { kind: "provider-unavailable", reason: `reviews unavailable: ${error instanceof Error ? error.message : String(error)}` };
+      }
+    };
+    await loadReviewsSafely([...freshWeb, ...freshCatalog]);
     const sourceFailure = ensured.status === "failed" || loadFailures.length > 0 || providerStatus.kind === "provider-unavailable";
 
     const assigned = assignedRecipeIdsOf(existing);
@@ -763,13 +800,16 @@ export async function prepareWeek(
     // a dismissed idea must not come back because the watchdog rebuilt the set.
     const dismissed = notThisWeekIds(existing?.candidateSet);
 
-    // On a source or loader failure the previously saved choices stay in the
-    // running: re-validated (structurally here, against the corpus when the
-    // runtime supplies `revalidatePrior`), ranked behind fresh candidates,
-    // and labelled as retained. Nothing is retained after a clean run — a
-    // refresh is a refresh — and nothing invalid is retained after a failure.
+    // On any failure above, the previously saved choices stay in the running:
+    // re-validated (structurally here, against the corpus and persisted
+    // reviews when the runtime supplies `revalidatePrior`), ranked behind
+    // fresh candidates and labelled as retained. Nothing is retained after a
+    // clean run — a refresh is a refresh — and nothing invalid is retained
+    // after a failure.
     let retained: ShelfCandidate[] = [];
     const invalidPrior: { recipeId: string; reason: string }[] = [];
+    let rawWeb: ShelfCandidate[] = freshWeb;
+    let rawCatalog: ShelfCandidate[] = freshCatalog;
     if (sourceFailure && existing?.candidateSet?.items?.length) {
       const prior = existing.candidateSet.items;
       const revalidated = deps.revalidatePrior
@@ -784,10 +824,14 @@ export async function prepareWeek(
         const kept = new Set(revalidated.map((c) => c.recipeId));
         for (const item of prior) if (item?.recipeId && !kept.has(item.recipeId)) invalidPrior.push({ recipeId: item.recipeId, reason: "no longer resolves or passes the gates" });
       }
-      const freshIds = new Set([...freshWeb, ...freshCatalog].map((c) => c.recipeId));
-      // A re-validated hold is a current content-bound negative decision and
-      // travels with the candidate; every other review state is re-resolved
-      // below so a stale positive can never ride along.
+      // De-duplication keeps the fresh candidate, but a current content-bound
+      // hold on its prior twin is the one review state that must survive the
+      // swap: it is transferred when id and content are identical, and never
+      // onto changed content. Positive states are never carried either way.
+      const carried = carryCurrentHolds(pool, [...freshWeb, ...freshCatalog]);
+      rawWeb = carried.filter((c) => freshWeb.includes(c) || freshWeb.some((f) => f.recipeId === c.recipeId));
+      rawCatalog = carried.filter((c) => !rawWeb.includes(c));
+      const freshIds = new Set(carried.map((c) => c.recipeId));
       retained = pool
         .filter((c) => !freshIds.has(c.recipeId))
         .map((c, index) => ({
@@ -796,22 +840,17 @@ export async function prepareWeek(
           review: c.review?.state === "checked-hold" ? { ...c.review, contentSha256: c.review.contentSha256 ?? c.contentSha256 } : undefined,
           retained: true as const,
         }));
+      rawWeb = [...rawWeb, ...retained.filter((c) => c.origin === "web")];
+      rawCatalog = [...rawCatalog, ...retained.filter((c) => c.origin === "catalog")];
+      // Retained items need their persisted reviews too; a second failure
+      // here is the same outage and labels them, it does not reset anything.
+      await loadReviewsSafely(retained);
     }
-    const rawWeb = [...freshWeb, ...retained.filter((c) => c.origin === "web")];
-    const rawCatalog = [...freshCatalog, ...retained.filter((c) => c.origin === "catalog")];
 
     // Content reviews are read, never requested, here. A candidate whose
     // review holds it is kept out of the automatic shelf; everything else is
     // labelled with its actual state (pass / uncertain / unreviewed /
     // provider-unavailable / excluded) and decided by the deterministic gates.
-    // A review store that cannot be read is a provider-side outage for this
-    // run: nothing is held or passed on its account, everything is labelled.
-    const reviews = deps.loadReviews
-      ? await deps.loadReviews(reviewBindingsFor([...rawWeb, ...rawCatalog])).catch((error) => {
-          providerStatus = { kind: "provider-unavailable", reason: `reviews unavailable: ${error instanceof Error ? error.message : String(error)}` };
-          return new Map<string, CandidateReviewRecord>();
-        })
-      : new Map<string, CandidateReviewRecord>();
     const reviewedWeb = attachReviews(rawWeb, reviews, providerStatus);
     const reviewedCatalog = attachReviews(rawCatalog, reviews, providerStatus);
     const web = reviewedWeb.candidates;
