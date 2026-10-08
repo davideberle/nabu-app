@@ -1,6 +1,6 @@
 // The prepared shelf has to survive being written down.
 //
-// Preparation assembles a 12–14 idea shelf and hands it to the canonical save
+// Preparation assembles a twenty-idea shelf and hands it to the canonical save
 // boundary, which then applies the planner's exclusion rules to it. Those two
 // halves disagreed: the shelf is built with exposure memory applied (a 12-week
 // rest, written at rollover), while the save boundary re-applied the *older*
@@ -35,6 +35,7 @@ import {
   type PreparationDeps,
 } from "./planner-preparation.ts";
 import { SHELF_POLICY_VERSION } from "./planner-shelf.ts";
+import { SHELF_TARGET } from "./planner-sources.ts";
 import { loadMealPlan, saveMealPlan } from "./meals-persistence.ts";
 import { createCookEvent, getDb, setRecipeFeedback } from "./db.ts";
 import type { MealPlan } from "./meals.ts";
@@ -81,6 +82,20 @@ const SPECS: Spec[] = [
   { id: "pork-cabbage", name: "Braised pork with cabbage", cuisine: "Swiss", protein: "pork shoulder", starch: "potatoes" },
   { id: "halloumi-traybake", name: "Halloumi and pepper traybake", cuisine: "Greek", protein: "halloumi", starch: "quinoa", dietary: ["vegetarian"] },
   { id: "duck-lentils", name: "Duck legs with green lentils", cuisine: "French", protein: "duck legs", starch: "green lentils" },
+  // §4.3.1: a twenty-idea shelf needs a pool that survives the cuisine,
+  // protein and starch caps with room to spare, in both consecutive weeks.
+  { id: "mushroom-wellington", name: "Slow braised mushroom wellington", cuisine: "British", protein: "chestnut mushrooms", starch: "puff pastry", dietary: ["vegetarian"] },
+  { id: "falafel-plate", name: "Falafel plate with tahini", cuisine: "Lebanese", protein: "chickpeas", starch: "flatbread", dietary: ["vegan"] },
+  { id: "tortilla-espanola", name: "Spanish tortilla", cuisine: "Spanish", protein: "eggs", starch: "potatoes", dietary: ["vegetarian"] },
+  { id: "imam-bayildi", name: "Imam bayildi", cuisine: "Turkish", protein: "aubergine", starch: "bulgur", dietary: ["vegan"] },
+  { id: "banh-xeo", name: "Crispy tofu banh xeo", cuisine: "Vietnamese", protein: "tofu", starch: "rice flour", dietary: ["vegan"] },
+  { id: "misir-wot", name: "Misir wot", cuisine: "Ethiopian", protein: "red lentils", starch: "injera", dietary: ["vegan"] },
+  { id: "enchiladas-verdes", name: "Bean enchiladas verdes", cuisine: "Mexican", protein: "pinto beans", starch: "corn tortillas", dietary: ["vegetarian"] },
+  { id: "bibimbap", name: "Vegetable bibimbap", cuisine: "Korean", protein: "eggs", starch: "rice", dietary: ["vegetarian"] },
+  { id: "kaesespaetzle", name: "Käsespätzle with onions", cuisine: "German", protein: "emmental", starch: "spaetzle", dietary: ["vegetarian"] },
+  { id: "shakshuka-dinner", name: "Shakshuka with white beans", cuisine: "Israeli", protein: "eggs", starch: "white beans", dietary: ["vegetarian"] },
+  { id: "pad-krapow-tofu", name: "Pad krapow tofu", cuisine: "Thai", protein: "tofu", starch: "jasmine rice", dietary: ["vegan"] },
+  { id: "gado-gado", name: "Gado gado", cuisine: "Indonesian", protein: "tempeh", starch: "potatoes", dietary: ["vegan"] },
 ];
 
 function recipeFor(spec: Spec): Recipe {
@@ -124,7 +139,7 @@ const resolveRecipe = async (id: string) => RECIPES.get(id);
 const catalogCandidates = SPECS.map((spec) =>
   toShelfCandidate(RECIPES.get(spec.id)!, { origin: "catalog", discovery: "catalog" }, NOW),
 );
-const webCandidates = SPECS.slice(0, 5).map((spec, index) => ({
+const webCandidates = SPECS.slice(0, 10).map((spec, index) => ({
   ...toShelfCandidate(RECIPES.get(spec.id)!, { origin: "web", discovery: "editorial", sourceName: `Source ${index}` }, NOW),
   sourceName: `Source ${index}`,
 }));
@@ -213,15 +228,12 @@ before(async () => {
 // ---------------------------------------------------------------------------
 
 describe("preparing two weeks in a row", () => {
-  it("W34 stores a healthy 12–14 idea shelf", async () => {
+  it("W34 stores a healthy twenty-idea shelf", async () => {
     const outcome = await prepareWeek("2026-W34", deps);
 
     equal(outcome.status, "prepared");
-    equal(outcome.healthy, true);
-    ok(
-      (outcome.shelfSize ?? 0) >= 12 && (outcome.shelfSize ?? 0) <= 14,
-      `stored shelf size ${outcome.shelfSize} is outside 12–14`,
-    );
+    equal(outcome.healthy, true, JSON.stringify(outcome.warnings));
+    equal(outcome.shelfSize, SHELF_TARGET.min, `stored shelf size ${outcome.shelfSize} is not ${SHELF_TARGET.min}`);
 
     const stored = await loadMealPlan("2026-W34");
     equal(stored?.candidateSet?.policyVersion, SHELF_POLICY_VERSION);
@@ -233,11 +245,8 @@ describe("preparing two weeks in a row", () => {
     const outcome = await prepareWeek("2026-W35", deps);
 
     equal(outcome.status, "prepared");
-    equal(outcome.healthy, true, "the second week is not left short by its own save");
-    ok(
-      (outcome.shelfSize ?? 0) >= 12 && (outcome.shelfSize ?? 0) <= 14,
-      `stored shelf size ${outcome.shelfSize} is outside 12–14`,
-    );
+    equal(outcome.healthy, true, `the second week is not left short by its own save: ${JSON.stringify(outcome.warnings)}`);
+    equal(outcome.shelfSize, SHELF_TARGET.min, `stored shelf size ${outcome.shelfSize} is not ${SHELF_TARGET.min}`);
 
     const w34 = await loadMealPlan("2026-W34");
     const w35 = await loadMealPlan("2026-W35");

@@ -1,22 +1,32 @@
 /**
  * The combined weekly idea shelf (Kitchen DESIGN.md §4.3, "Weekly preparation
- * and combined-set selection" and "Weekly food-pattern policy").
+ * and combined-set selection", "Weekly food-pattern policy" and §4.3.1
+ * "twenty-choice weekly selection").
  *
- * One persisted set of roughly 12–14 ideas, not two shelves. Web research runs
- * first and its strongest ~5–7 qualified ideas survive; the local catalog then
- * fills only the coverage gaps the web set actually left. Source quotas are
- * caps, never obligations — a weak editorial week contributes fewer ideas and
- * the catalog covers more.
+ * One persisted set of twenty distinct qualified ideas, normally 12 from the
+ * recipe library and 8 fresh web discoveries. Web research runs first and its
+ * strongest qualified ideas survive under the per-source caps; the library is
+ * then selected as a first-class pool — coverage gaps first, then the
+ * strongest remaining library ideas up to the library target, and only then a
+ * top-up from either pool. Source mix is a target, never permission to admit
+ * weak recipes: a real shortage is recorded as a shortfall.
+ *
+ * Every candidate carries two further bindings (§4.3.1): a seasonality
+ * verdict bound to the planned month and the cited Swiss calendar, and a
+ * content-review state bound to the exact recipe content. A review can only
+ * hold a deterministic pass out of the automatic shelf, never grant one.
  *
  * Everything here is pure and deterministic: no clock beyond an injected `now`,
  * no randomness, no database. `node --test` loads it directly.
  */
 
-import { visibleCapForSource, SHELF_TARGET, WEB_TARGET } from "./planner-sources.ts";
+import { visibleCapForSource, LIBRARY_TARGET, SHELF_TARGET, WEB_TARGET } from "./planner-sources.ts";
 import type { PlannerRole } from "./planner-roles.ts";
 import type { ShelfDisplay } from "./planner-display.ts";
 import type { CandidateBucket } from "./meals-core.ts";
 import { MIN_PLAUSIBLE_TOTAL_MINUTES, MAX_PLAUSIBLE_TOTAL_MINUTES } from "./recipe-render-qa.ts";
+import { seasonalityForRecipe, seasonalityScore, type RecipeSeasonality, type SeasonStatus } from "./planner-seasonality.ts";
+import type { CandidateReviewSummary, ReviewState } from "./planner-review.ts";
 
 // ---------------------------------------------------------------------------
 // Shape
@@ -38,8 +48,10 @@ export type ShelfTraits = {
   weekdayFit: boolean;
   weekendFit: boolean;
   vegetableDense: boolean;
-  /** Reads as Swiss/European seasonal produce for the week's season. */
+  /** Defining fresh produce is in the Swiss season for the planned month (calendar-backed). */
   seasonalLocal: boolean;
+  /** The full seasonality class behind `seasonalLocal`; absent on older saved shelves. */
+  season?: SeasonStatus;
   /** Ingredient-led long-haul produce (avocado, mango, …). Soft penalty only. */
   longHaul: boolean;
   /**
@@ -79,6 +91,12 @@ export type ShelfCandidate = {
   display?: ShelfDisplay;
   /** Ranking hint from the caller (editorial order, catalog score). Lower first. */
   rank?: number;
+  /** Seasonality verdict, bound to the planned month and the calendar version (§4.3.1). */
+  seasonality?: RecipeSeasonality;
+  /** SHA-256 of the minimized review content; what a content review is bound to. */
+  contentSha256?: string;
+  /** Content-review state. Never a qualification on its own. */
+  review?: CandidateReviewSummary;
 };
 
 export type ShelfItem = ShelfCandidate & {
@@ -103,6 +121,14 @@ export type ShelfDiagnostics = {
   catalogConsidered: number;
   catalogSelected: number;
   assignedPinned: number;
+  /** Target shortfalls, stated rather than papered over (§4.3.1). */
+  shortfall?: { shelf: number; web: number; library: number };
+  /** Count of selected ideas per content-review state. */
+  reviewStates?: Partial<Record<ReviewState, number>>;
+  /** Count of selected ideas per seasonality class. */
+  seasonality?: Partial<Record<SeasonStatus, number>>;
+  /** Per-source counts among selected web ideas. */
+  webSources?: Record<string, number>;
   /** Coverage gaps that were still open when the catalog fill finished. */
   remainingGaps: string[];
   /** Gaps the catalog fill closed, in the order they were closed. */
@@ -137,7 +163,9 @@ export type WeeklyShelf = {
   diagnostics: ShelfDiagnostics;
 };
 
-export const SHELF_POLICY_VERSION = "planner-shelf-1";
+export const SHELF_POLICY_VERSION = "planner-shelf-2";
+/** The previous policy. Saved shelves under it still read; health reports them for repair. */
+export const PREVIOUS_SHELF_POLICY_VERSION = "planner-shelf-1";
 
 // ---------------------------------------------------------------------------
 // Set-level caps (Kitchen "Weekly food-pattern policy")
@@ -146,16 +174,16 @@ export const SHELF_POLICY_VERSION = "planner-shelf-1";
 export const SHELF_LIMITS = {
   /** "normally offer at most two pasta ideas across the combined shelf" */
   maxPasta: 2,
-  /** No single cuisine may define the week. */
-  maxPerCuisine: 3,
+  /** No single cuisine may define the week (one fifth of a twenty-idea shelf). */
+  maxPerCuisine: 4,
   /** Repeated non-pasta bases stay bounded too. */
-  maxPerStarch: 3,
+  maxPerStarch: 4,
   /** Meat is occasional rather than a standing quota. */
-  maxMeat: 2,
+  maxMeat: 3,
   /** Fish is a useful weekly lane, not a filler. */
-  maxFish: 2,
+  maxFish: 3,
   /** Long-haul-produce-led ideas should not accumulate across the week. */
-  maxLongHaul: 2,
+  maxLongHaul: 3,
   /** Most dinners should be vegetarian or vegan. */
   minPlantForwardShare: 0.5,
   /** At least one longer weekend idea when the pool offers one. */
@@ -238,13 +266,10 @@ const VEGETABLE_WORDS = /\b(tomato|courgette|zucchini|aubergine|eggplant|pepper|
 
 const LONG_HAUL_WORDS = /\b(avocado|mango|papaya|pineapple|passion ?fruit|banana|coconut milk|coconut cream|lime|lychee|dragon ?fruit|macadamia|cashew|quinoa)\b/;
 
-const SEASONAL_BY_SEASON: Record<string, RegExp> = {
-  spring: /\b(asparagus|rhubarb|radish|spring onion|wild garlic|ramp|pea|peas|new potato|morel|spinach|chard|nettle)\b/,
-  summer: /\b(tomato|courgette|zucchini|aubergine|eggplant|pepper|cucumber|green beans?|corn|apricot|peach|plum|berry|berries|basil|melon|watermelon|fennel|chanterelle)\b/,
-  fall: /\b(pumpkin|squash|mushroom|chestnut|apple|pear|grape|kale|cabbage|leek|celeriac|beet|beetroot|quince|walnut)\b/,
-  winter: /\b(cabbage|kale|leek|parsnip|turnip|celeriac|beet|beetroot|potato|carrot|onion|chicory|endive|swede|salsify)\b/,
-};
-
+// The coarse keyword season table that used to decide `seasonalLocal` is
+// gone: §4.3.1 binds seasonality to the cited VSGP monthly calendar
+// (`planner-seasonality.ts`). `seasonForDate` stays for callers that only
+// need a quarter.
 export function seasonForDate(now: Date): "spring" | "summer" | "fall" | "winter" {
   const m = now.getUTCMonth();
   if (m >= 2 && m <= 4) return "spring";
@@ -267,13 +292,16 @@ function minutes(value: unknown): number {
  * analysis over name + ingredients + intro; nothing is invented that the recipe
  * does not state.
  */
-export function deriveShelfTraits(recipe: TraitSourceRecipe, now: Date): ShelfTraits {
+export type TraitOptions = {
+  /** 1–12: the planned month. Defaults to the month of `now`. */
+  month?: number;
+};
+
+export function deriveShelfTraits(recipe: TraitSourceRecipe, now: Date, options: TraitOptions = {}): ShelfTraits {
   const name = String(recipe.name ?? "").toLowerCase();
   const ingredientText = (recipe.ingredients ?? [])
     .map((ing) => String(ing?.item ?? "").toLowerCase())
     .join(" ");
-  const intro = String(recipe.introduction ?? recipe.intro ?? "").toLowerCase();
-  const all = `${name} ${ingredientText} ${intro}`;
   const dishTypes = (recipe.category?.dish_type ?? []).map((t) => String(t).toLowerCase());
   const dietary = [...(recipe.dietary ?? []), ...(recipe.tags?.dietary ?? [])].map((t) => t.toLowerCase());
 
@@ -348,7 +376,7 @@ export function deriveShelfTraits(recipe: TraitSourceRecipe, now: Date): ShelfTr
   }
 
   const vegetableMatches = new Set(ingredientText.match(VEGETABLE_WORDS) ?? []);
-  const season = seasonForDate(now);
+  const seasonality = seasonalityForRecipe(recipe, options.month ?? now.getUTCMonth() + 1);
 
   return {
     shape,
@@ -358,10 +386,16 @@ export function deriveShelfTraits(recipe: TraitSourceRecipe, now: Date): ShelfTr
     weekdayFit: effort !== "project",
     weekendFit: effort !== "quick" || shape === "roast-bake" || shape === "grill",
     vegetableDense: vegetableMatches.size >= 3,
-    seasonalLocal: SEASONAL_BY_SEASON[season].test(all),
+    seasonalLocal: seasonality.status === "fresh",
+    season: seasonality.status,
     longHaul: LONG_HAUL_WORDS.test(name) || LONG_HAUL_WORDS.test(ingredientText),
     hero,
   };
+}
+
+/** The seasonality verdict a candidate carries, for the same month the traits used. */
+export function deriveShelfSeasonality(recipe: TraitSourceRecipe, now: Date, options: TraitOptions = {}): RecipeSeasonality {
+  return seasonalityForRecipe(recipe, options.month ?? now.getUTCMonth() + 1);
 }
 
 // ---------------------------------------------------------------------------
@@ -496,6 +530,9 @@ export function canAdmit(
   if (candidate.role !== "main" && candidate.role !== "light-meal") {
     return { ok: false, reason: `role ${candidate.role} cannot occupy a main slot` };
   }
+  if (candidate.review?.state === "checked-hold") {
+    return { ok: false, reason: `held out of the automatic shelf by the content review (${candidate.review.role ?? "non-main"})` };
+  }
   if (current.some((item) => item.recipeId === candidate.recipeId)) {
     return { ok: false, reason: "already on the shelf" };
   }
@@ -591,8 +628,14 @@ export function scoreCandidate(candidate: ShelfCandidate): number {
   else score -= 1;
 
   if (t.vegetableDense) score += 2;
-  if (t.seasonalLocal) score += 3;
+  // Calendar-backed seasonality: fresh +3, storage +1, out of season −3, the
+  // neutral classes nothing. Older items without a class keep the boolean.
+  score += seasonalityScore(t.season ?? (t.seasonalLocal ? "fresh" : null));
   if (t.longHaul) score -= 2;
+  // A checked pass is a mild tiebreak in favour of reviewed content. Nothing
+  // here rewards an unreviewed or uncertain idea, and a hold never reaches
+  // scoring: admission refuses it.
+  if (candidate.review?.state === "checked-pass") score += 1;
   if (t.effort === "quick") score += 2;
   else if (t.effort === "project") score += 1;
 
@@ -615,7 +658,7 @@ function byScoreDesc(a: ShelfCandidate, b: ShelfCandidate): number {
 export type AssembleShelfInput = {
   /** Qualified web ideas, already role-classified. Oversized pool expected. */
   web: readonly ShelfCandidate[];
-  /** Catalog ideas available for gap-fill, already exposure/recency filtered. */
+  /** Library (recipe-book) ideas, already exposure/recency filtered. */
   catalog: readonly ShelfCandidate[];
   /** Pairing/serve-with ideas kept as reserve metadata. */
   pairings?: readonly ShelfCandidate[];
@@ -623,20 +666,25 @@ export type AssembleShelfInput = {
   assignedRecipeIds?: ReadonlySet<string>;
   target?: { min: number; max: number };
   webTarget?: { min: number; max: number };
+  libraryTarget?: { min: number };
 };
 
 /**
  * Assemble the persisted weekly shelf.
  *
- * Order matters and is the contract:
+ * Order matters and is the contract (§4.3.1):
  *   1. pin assigned recipes (they are fixed, and visible-but-disabled)
- *   2. take the strongest qualified web ideas, subject to caps
- *   3. measure what the web set actually covers
- *   4. fill only the open gaps from the catalog, then top up to the target
+ *   2. take the strongest qualified web ideas, subject to caps, up to the web target
+ *   3. measure what the web set actually covers and fill the open gaps from the library
+ *   4. select the strongest remaining library ideas up to the library target
+ *   5. top up to the shelf target from the library, relaxing only the cookbook cap
+ * Every target that is not met is reported as a shortfall, never filled by
+ * admitting something a gate refused.
  */
 export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
   const target = input.target ?? SHELF_TARGET;
   const webTarget = input.webTarget ?? WEB_TARGET;
+  const libraryTarget = input.libraryTarget ?? LIBRARY_TARGET;
   const assigned = input.assignedRecipeIds ?? new Set<string>();
 
   const rejected: { recipeId: string; reason: string }[] = [];
@@ -734,14 +782,16 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
     if (!filledAny) break;
   }
 
-  // Top up to the minimum shelf size with the strongest remaining catalog
-  // ideas that still pass the set-level rules. The cookbook cap is relaxed
-  // only when the eligible pool has demonstrably run out under it, and that
-  // relaxation is recorded so health can tell the difference.
+  // The library is a first-class pool, not backfill: after the gaps, the
+  // strongest remaining library ideas are selected up to the library target
+  // on household fit alone, under the same set-level rules. Only then does a
+  // top-up to the shelf target run, and the cookbook cap is relaxed only when
+  // the eligible pool has demonstrably run out under it — recorded so health
+  // can tell the difference.
   let cookbookCapRelaxed = false;
-  const topUp = (relax: boolean) => {
+  const takeFromLibrary = (ceiling: number, reason: string, relax: boolean) => {
     for (const candidate of catalogPool) {
-      if (selected.length >= target.min) break;
+      if (selected.length >= ceiling) break;
       if (usedCatalog.has(candidate.recipeId)) continue;
       const verdict = canAdmit(candidate, selected, { relaxCookbookCap: relax });
       if (!verdict.ok) {
@@ -749,25 +799,46 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
         continue;
       }
       usedCatalog.add(candidate.recipeId);
-      admit(candidate, "From your recipe book to round out the week", false);
+      admit(candidate, reason, false);
       catalogSelected += 1;
       if (relax) cookbookCapRelaxed = true;
     }
   };
-  topUp(false);
-  if (selected.length < target.min) topUp(true);
+  const libraryCeiling = Math.min(target.max, selected.length - catalogSelected + libraryTarget.min);
+  takeFromLibrary(libraryCeiling, "From your recipe book: one of this week's strongest library ideas", false);
+  takeFromLibrary(target.min, "From your recipe book to round out the week", false);
+  if (selected.length < target.min) takeFromLibrary(target.min, "From your recipe book to round out the week", true);
 
   const coverage = measureCoverage(selected);
   const remainingGaps = coverageGaps(coverage);
   const warnings: string[] = [];
-  if (selected.length < target.min) {
-    warnings.push(`Shelf has ${selected.length} ideas, below the target of ${target.min}`);
+  const shortfall = {
+    shelf: Math.max(0, target.min - selected.length),
+    web: Math.max(0, webTarget.min - webSelected),
+    library: Math.max(0, libraryTarget.min - catalogSelected),
+  };
+  if (shortfall.shelf > 0) {
+    warnings.push(`Qualified shortfall: ${selected.length} ideas, ${shortfall.shelf} below the target of ${target.min}`);
   }
-  if (webSelected < webTarget.min) {
-    warnings.push(`Only ${webSelected} qualified web ideas survived (target ${webTarget.min}–${webTarget.max})`);
+  if (shortfall.web > 0) {
+    warnings.push(`Only ${webSelected} qualified web ideas survived (target ${webTarget.min}–${webTarget.max}; ${input.web.length} considered)`);
+  }
+  if (shortfall.library > 0 && shortfall.shelf > 0) {
+    warnings.push(`Only ${catalogSelected} qualified library ideas survived (target ${libraryTarget.min}; ${input.catalog.length} considered)`);
   }
   if (coverage.plantForwardShare < SHELF_LIMITS.minPlantForwardShare) {
     warnings.push("Shelf is not plant-forward enough for a normal week");
+  }
+
+  const reviewStates: Partial<Record<ReviewState, number>> = {};
+  const seasonality: Partial<Record<SeasonStatus, number>> = {};
+  const webSources: Record<string, number> = {};
+  for (const item of selected) {
+    const state = item.review?.state ?? "unreviewed";
+    reviewStates[state] = (reviewStates[state] ?? 0) + 1;
+    const season = item.seasonality?.status ?? item.traits.season ?? (item.traits.seasonalLocal ? "fresh" : "pantry-neutral");
+    seasonality[season] = (seasonality[season] ?? 0) + 1;
+    if (item.origin === "web") bump(webSources, sourceKey(item));
   }
 
   return {
@@ -780,6 +851,10 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
       catalogConsidered: input.catalog.length,
       catalogSelected,
       assignedPinned: pinnedIds.size,
+      shortfall,
+      reviewStates,
+      seasonality,
+      webSources,
       remainingGaps,
       closedGaps,
       rejected,
@@ -971,6 +1046,11 @@ export function assessShelfQuality(items: readonly QualityItem[], context: Shelf
   if (web.length < webTarget.min) {
     const availability = typeof context.webConsidered === "number" ? `; ${context.webConsidered} qualified considered` : "";
     problems.push(`only ${web.length} web idea(s) on the shelf (target ${webTarget.min}–${webTarget.max}${availability})`);
+  }
+  const ids = new Set<string>();
+  for (const item of items) {
+    if (ids.has(item.recipeId)) problems.push(`${item.recipeId} appears twice on the shelf`);
+    ids.add(item.recipeId);
   }
   const webBySource = new Map<string, number>();
   for (const item of web) {
@@ -1168,8 +1248,12 @@ export function completeShelfAgainstPlan(
 }
 
 // ---------------------------------------------------------------------------
-// First-view shortlist (Phase 4E)
+// First-view shortlist (Phase 4E) — retired from the UI by §4.3.1
 // ---------------------------------------------------------------------------
+//
+// The twenty-choice contract shows every qualified idea in its group with no
+// secondary disclosure. `shortlistShelf` is kept for callers that want a
+// ranked subset (diagnostics, tests); `/meals` no longer uses it.
 
 export const SHORTLIST_TARGET = { min: 5, max: 7 } as const;
 

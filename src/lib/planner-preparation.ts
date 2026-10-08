@@ -19,6 +19,7 @@
 import {
   assembleWeeklyShelf,
   assessShelfQuality,
+  deriveShelfSeasonality,
   deriveShelfTraits,
   measureCoverage,
   coverageGaps,
@@ -30,6 +31,15 @@ import {
   type ShelfTraits,
   type WeeklyShelf,
 } from "./planner-shelf.ts";
+import { monthForWeek, seasonCalendarVersion, type RecipeSeasonality } from "./planner-seasonality.ts";
+import {
+  combineEligibility,
+  minimizeRecipeForReview,
+  reviewMatches,
+  type CandidateReviewRecord,
+  type CandidateReviewSummary,
+  type ReviewAvailability,
+} from "./planner-review.ts";
 import { MIN_PLAUSIBLE_TOTAL_MINUTES, MAX_PLAUSIBLE_TOTAL_MINUTES, qaRecipeForShelf, type RecipeQaDiagnostic } from "./recipe-render-qa.ts";
 import { SHELF_TARGET } from "./planner-sources.ts";
 import { classifyPlannerRole } from "./planner-roles.ts";
@@ -63,6 +73,8 @@ export type CandidateOrigin = {
   discovery: "editorial" | "search" | "catalog";
   sourceName?: string | null;
   rank?: number;
+  /** The planned week; seasonality is bound to its month. Defaults to the month of `now`. */
+  week?: string;
 };
 
 function normalizeTime(time: Recipe["time"]): { prep: number; cook: number; total: number } | null {
@@ -79,12 +91,17 @@ function normalizeTime(time: Recipe["time"]): { prep: number; cook: number; tota
 
 /**
  * Turn a resolved recipe into a shelf candidate: role first, then bucket,
- * cuisine, and the coverage traits the shelf reasons about.
+ * cuisine, the coverage traits the shelf reasons about, the month-bound
+ * seasonality verdict, and the content hash a review is bound to. The review
+ * state itself is attached later by `attachReviews`, from persisted records.
  */
 export function toShelfCandidate(recipe: Recipe, origin: CandidateOrigin, now: Date): ShelfCandidate {
   const role = classifyPlannerRole(recipe);
-  const traits = deriveShelfTraits(recipe, now);
+  const month = origin.week ? monthForWeek(origin.week, now) : now.getUTCMonth() + 1;
+  const traits = deriveShelfTraits(recipe, now, { month });
+  const seasonality = deriveShelfSeasonality(recipe, now, { month });
   const time = normalizeTime(recipe.time);
+  const minimized = minimizeRecipeForReview(recipe);
   return {
     recipeId: recipe.id,
     recipeName: normalizePlannerTitle(recipe.name) || recipe.name,
@@ -100,10 +117,64 @@ export function toShelfCandidate(recipe: Recipe, origin: CandidateOrigin, now: D
     category: recipe.category?.dish_type?.[0] ?? "main",
     courseTags: recipe.category?.dish_type ?? [],
     traits,
+    seasonality,
+    ...(minimized.ok
+      ? { contentSha256: minimized.contentSha256 }
+      : { review: { state: "excluded-private" as const, reason: minimized.reasons.join("; ") } }),
     ...(role.completion ? { completion: role.completion } : {}),
-    display: deriveShelfDisplay({ role: role.role, traits, time, completion: role.completion }),
+    display: deriveShelfDisplay({ role: role.role, traits, time, completion: role.completion, seasonality }),
     ...(origin.rank !== undefined ? { rank: origin.rank } : {}),
   };
+}
+
+/**
+ * Attach persisted content reviews to candidates and decide eligibility.
+ *
+ * `reviews` is keyed by `${recipeId}:${contentSha256}`, so a record for other
+ * content can never match. The combination rule lives in `planner-review.ts`:
+ * deterministic gates decide, a review can only hold. `providerStatus`
+ * labels the no-review case honestly — an outage is not the same as "never
+ * reviewed", and neither is a pass.
+ */
+export function attachReviews(
+  candidates: readonly ShelfCandidate[],
+  reviews: ReadonlyMap<string, CandidateReviewRecord>,
+  providerStatus: { kind: "ok" } | { kind: "provider-unavailable"; reason: string } = { kind: "ok" },
+): { candidates: ShelfCandidate[]; held: { recipeId: string; reason: string }[] } {
+  const held: { recipeId: string; reason: string }[] = [];
+  const out: ShelfCandidate[] = [];
+  for (const candidate of candidates) {
+    let availability: ReviewAvailability;
+    if (candidate.review?.state === "excluded-private") {
+      availability = { kind: "excluded", reason: candidate.review.reason };
+    } else if (candidate.contentSha256) {
+      const record = reviews.get(`${candidate.recipeId}:${candidate.contentSha256}`);
+      if (record && reviewMatches(record, { recipeId: candidate.recipeId, contentSha256: candidate.contentSha256 })) {
+        availability = { kind: "record", record };
+      } else if (providerStatus.kind === "provider-unavailable") {
+        availability = { kind: "provider-unavailable", reason: providerStatus.reason };
+      } else {
+        availability = { kind: "none" };
+      }
+    } else {
+      availability = { kind: "none" };
+    }
+    const decision = combineEligibility({
+      deterministicMainEligible: candidate.role === "main" || candidate.role === "light-meal",
+      availability,
+    });
+    const review: CandidateReviewSummary = decision.review;
+    out.push({ ...candidate, review });
+    if (!decision.eligible && review.state === "checked-hold") held.push({ recipeId: candidate.recipeId, reason: review.reason });
+  }
+  return { candidates: out, held };
+}
+
+/** The bindings a candidate set needs reviews for. */
+export function reviewBindingsFor(candidates: readonly ShelfCandidate[]): { recipeId: string; contentSha256: string }[] {
+  return candidates
+    .filter((candidate): candidate is ShelfCandidate & { contentSha256: string } => typeof candidate.contentSha256 === "string")
+    .map((candidate) => ({ recipeId: candidate.recipeId, contentSha256: candidate.contentSha256 }));
 }
 
 /**
@@ -163,6 +234,9 @@ export function toCandidateItem(item: ShelfItem) {
     // card renders `display` instead.
     reason: item.reason,
     traits: item.traits,
+    ...(item.seasonality ? { seasonality: item.seasonality } : {}),
+    ...(item.contentSha256 ? { contentSha256: item.contentSha256 } : {}),
+    ...(item.review ? { review: item.review } : {}),
     ...(item.completion ? { completion: item.completion } : {}),
     display: item.display ?? candidateDisplay(item),
   };
@@ -192,10 +266,14 @@ export async function hydrateShelfItems(
     time?: { prep: number; cook: number; total: number } | null;
     completion?: string | null;
     display?: ShelfDisplay | null;
+    seasonality?: RecipeSeasonality | null;
+    contentSha256?: string | null;
+    review?: CandidateReviewSummary | null;
   }[],
   assignedRecipeIds: ReadonlySet<string>,
   resolveRecipe: (id: string) => Promise<Recipe | undefined | null>,
   now: Date,
+  options: { week?: string } = {},
 ): Promise<ShelfItem[]> {
   const hydrated: ShelfItem[] = [];
   for (const item of items) {
@@ -217,10 +295,18 @@ export async function hydrateShelfItems(
           ? (item.discovery === "editorial" ? "editorial" : "search")
           : "catalog",
         sourceName: item.source?.cookbook ?? null,
+        ...(options.week ? { week: options.week } : {}),
       },
       now,
     );
-    hydrated.push({ ...candidate, reason: item.reason ?? "Saved earlier this week", assigned });
+    // The persisted review state survives a read as long as it is bound to the
+    // same content; changed content drops it to "unreviewed" rather than
+    // carrying a stale pass. Reads never trigger inference.
+    const review =
+      item.review && item.contentSha256 && item.contentSha256 === candidate.contentSha256
+        ? item.review
+        : candidate.review ?? { state: "unreviewed" as const, reason: "no bound review for this content" };
+    hydrated.push({ ...candidate, review, reason: item.reason ?? "Saved earlier this week", assigned });
   }
   return hydrated;
 }
@@ -278,13 +364,14 @@ export async function withShelfDisplay<
     const traits = item.traits ?? deriveShelfTraits(recipe, now);
     const time = item.time ?? normalizeTime(recipe.time);
     const completion = classification.completion ?? item.completion ?? null;
+    const seasonality = (item as { seasonality?: RecipeSeasonality | null }).seasonality ?? null;
 
     out.push({
       ...item,
       role,
       traits,
       ...(completion ? { completion } : {}),
-      display: deriveShelfDisplay({ role, traits, time, completion }),
+      display: deriveShelfDisplay({ role, traits, time, completion, seasonality }),
     });
   }
   return out;
@@ -437,6 +524,14 @@ export type PreparationDeps = {
   loadCatalogCandidates: (week: string) => Promise<ShelfCandidate[]>;
   /** Rejected records and safe auto-fixes observed while the loaders ran. */
   qaDiagnostics?: () => RecipeQaDiagnostic[];
+  /**
+   * Persisted content reviews for the given bindings, keyed by
+   * `${recipeId}:${contentSha256}`. Reads only; preparation never calls a
+   * provider. Absent means every candidate is "unreviewed".
+   */
+  loadReviews?: (bindings: readonly { recipeId: string; contentSha256: string }[]) => Promise<Map<string, CandidateReviewRecord>>;
+  /** What the last review run reported, so an outage is labelled as one. */
+  reviewProviderStatus?: () => Promise<{ kind: "ok" } | { kind: "provider-unavailable"; reason: string }>;
   claim?: (week: string, kind: PreparationKind) => Promise<boolean>;
   complete?: (week: string, kind: PreparationKind, status: "succeeded" | "failed", summary?: unknown) => Promise<void>;
 };
@@ -461,6 +556,10 @@ export type PreparationOutcome = {
    * behind its web half is not.
    */
   webStatus?: string;
+  /** Content-review coverage of the stored shelf (§4.3.1). */
+  reviewStates?: Partial<Record<string, number>>;
+  /** Candidates the content review held out of the automatic shelf. */
+  held?: { recipeId: string; reason: string }[];
   error?: string;
 };
 
@@ -528,18 +627,34 @@ export async function prepareWeek(
       );
     }
 
-    const [existing, web, catalog] = await Promise.all([
+    const [existing, rawWeb, rawCatalog] = await Promise.all([
       deps.loadPlan(week),
       deps.loadWebCandidates(week),
       deps.loadCatalogCandidates(week),
     ]);
+
+    // Content reviews are read, never requested, here. A candidate whose
+    // review holds it is kept out of the automatic shelf; everything else is
+    // labelled with its actual state (pass / uncertain / unreviewed /
+    // provider-unavailable / excluded) and decided by the deterministic gates.
+    const providerStatus = deps.reviewProviderStatus ? await deps.reviewProviderStatus() : { kind: "ok" as const };
+    const reviews = deps.loadReviews
+      ? await deps.loadReviews(reviewBindingsFor([...rawWeb, ...rawCatalog]))
+      : new Map<string, CandidateReviewRecord>();
+    const reviewedWeb = attachReviews(rawWeb, reviews, providerStatus);
+    const reviewedCatalog = attachReviews(rawCatalog, reviews, providerStatus);
+    const web = reviewedWeb.candidates;
+    const catalog = reviewedCatalog.candidates;
+    const held = [...reviewedWeb.held, ...reviewedCatalog.held];
 
     const assigned = assignedRecipeIdsOf(existing);
     // "Not this week" is exposure state for the week and survives a repair:
     // a dismissed idea must not come back because the watchdog rebuilt the set.
     const dismissed = notThisWeekIds(existing?.candidateSet);
     const eligible = (c: ShelfCandidate) =>
-      (c.role === "main" || c.role === "light-meal") && (!dismissed.has(c.recipeId) || assigned.has(c.recipeId));
+      (c.role === "main" || c.role === "light-meal") &&
+      c.review?.state !== "checked-hold" &&
+      (!dismissed.has(c.recipeId) || assigned.has(c.recipeId));
     const shelf = assembleWeeklyShelf({
       web: web.filter(eligible),
       catalog: catalog.filter(eligible),
@@ -564,6 +679,7 @@ export async function prepareWeek(
       candidateSet: {
         generatedAt: now.toISOString(),
         policyVersion: SHELF_POLICY_VERSION,
+        calendarVersion: seasonCalendarVersion(),
         items: shelf.items.map(toCandidateItem),
         reserves: shelf.reserves.map((reserve) => ({
           recipeId: reserve.recipeId,
@@ -572,7 +688,7 @@ export async function prepareWeek(
           sourceName: reserve.sourceName ?? null,
           image: reserve.image ?? null,
         })),
-        shelfDiagnostics: shelf.diagnostics,
+        shelfDiagnostics: { ...shelf.diagnostics, ...(held.length ? { held } : {}) },
         ...(existing?.candidateSet?.notThisWeek?.length ? { notThisWeek: existing.candidateSet.notThisWeek } : {}),
         ...(deps.qaDiagnostics ? { qaDiagnostics: deps.qaDiagnostics() } : {}),
       },
@@ -610,6 +726,8 @@ export async function prepareWeek(
       catalogSelected: shelf.diagnostics.catalogSelected,
       webStatus: ensured.status,
       healthy: health.healthy,
+      reviewStates: shelf.diagnostics.reviewStates,
+      shortfall: shelf.diagnostics.shortfall,
     });
 
     return {
@@ -623,6 +741,8 @@ export async function prepareWeek(
       remainingGaps: shelf.diagnostics.remainingGaps,
       warnings,
       webStatus: ensured.status,
+      reviewStates: shelf.diagnostics.reviewStates,
+      ...(held.length ? { held } : {}),
     };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);

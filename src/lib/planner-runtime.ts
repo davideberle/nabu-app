@@ -9,6 +9,7 @@
  */
 
 import {
+  getCandidateReviews,
   getCountedExposureRecipeIds,
   getExposureExcludedRecipeIds,
   getExposureRecords,
@@ -25,6 +26,7 @@ import {
   saveCountedExposureRecipeIds,
   saveExposureRecords,
   saveExposureWithCountedIds,
+  getPlannerReviewRuns,
 } from "@/lib/db";
 import { getAllRecipes, getRecipe } from "@/lib/recipes";
 import { loadMealPlan, saveMealPlan } from "@/lib/meals-persistence";
@@ -39,6 +41,7 @@ import {
   toShelfCandidate,
 } from "@/lib/planner-preparation";
 import { notThisWeekIds } from "@/lib/planner-shelf";
+import { nextWeekId } from "@/lib/planner-preparation";
 import { qaRecipeForShelf, summarizeQa, type RecipeQaDiagnostic } from "@/lib/recipe-render-qa";
 import type { MealPlan } from "@/lib/meals";
 import type { Recipe } from "@/lib/recipes";
@@ -96,6 +99,7 @@ export async function loadWebCandidatesForWeek(
           discovery,
           sourceName: inspiration.source_name,
           rank: rank++,
+          week,
         },
         now,
       ),
@@ -160,9 +164,23 @@ export async function loadCatalogCandidatesForWeek(
     if (role.role === "reject") continue;
     const recipe = qaGate(raw, quarantine);
     if (!recipe) continue;
-    candidates.push(toShelfCandidate(recipe, { origin: "catalog", discovery: "catalog" }, now));
+    candidates.push(toShelfCandidate(recipe, { origin: "catalog", discovery: "catalog", week }, now));
   }
   return candidates;
+}
+
+/**
+ * What the most recent local review run for the week reported. A failed run
+ * labels this preparation's unreviewed candidates as "provider-unavailable"
+ * rather than "unreviewed"; a succeeded or absent run leaves them honest.
+ */
+export async function reviewProviderStatusFor(week: string): Promise<{ kind: "ok" } | { kind: "provider-unavailable"; reason: string }> {
+  const runs = await getPlannerReviewRuns(week).catch(() => []);
+  const latest = runs[0];
+  if (latest && latest.status === "failed") {
+    return { kind: "provider-unavailable", reason: latest.detail ?? `review run ${latest.runId} failed` };
+  }
+  return { kind: "ok" };
 }
 
 /**
@@ -173,7 +191,7 @@ export async function loadCatalogCandidatesForWeek(
 export async function completePlanShelf(plan: MealPlan, now: Date): Promise<MealPlan | null> {
   if (!plan.candidateSet?.items?.length) return null;
   const assigned = assignedRecipeIdsForPlan(plan);
-  const shelf = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now);
+  const shelf = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now, { week: plan.week });
   const context = await planContextFor(plan, shelf, getRecipe, now);
   const onShelf = new Set(shelf.map((item) => item.recipeId));
   const excluded = new Set([...onShelf, ...notThisWeekIds(plan.candidateSet)]);
@@ -227,7 +245,16 @@ export function buildPreparationDeps(now = new Date()): PreparationDeps {
     },
     loadWebCandidates: (week) => loadWebCandidatesForWeek(week, now, diagnostics),
     loadCatalogCandidates: (week) => loadCatalogCandidatesForWeek(week, now, diagnostics),
+    // Reads only. The provider is never called from the app runtime; reviews
+    // arrive through the local protected-egress script.
+    loadReviews: (bindings) => getCandidateReviews(bindings),
+    reviewProviderStatus: () => reviewProviderStatusFor(nextWeekFor(now)),
   };
+}
+
+/** The week `buildPreparationDeps` is being built for, when the caller did not say. */
+function nextWeekFor(now: Date): string {
+  return nextWeekId(now);
 }
 
 export function buildRolloverDeps(now = new Date()): RolloverDeps {

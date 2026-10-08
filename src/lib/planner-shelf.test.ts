@@ -1,5 +1,6 @@
-// The combined 12–14 idea shelf: web-first selection, catalog gap-fill,
-// duplication limits, assigned pinning, and targeted replacement.
+// The combined twenty-idea shelf (Kitchen DESIGN.md §4.3.1): web-first
+// selection under caps, library as a first-class pool, duplication limits,
+// assigned pinning, review holds, and targeted replacement.
 //
 // Run with: npm test  (node --test; Node 24 strips types natively)
 
@@ -186,11 +187,23 @@ describe("set-level admission rules", () => {
     equal(SHELF_LIMITS.maxPasta, 2);
   });
 
-  it("caps one cuisine at three", () => {
+  it("caps one cuisine at a fifth of the shelf", () => {
     const greek = () => candidate({ cuisine: "Greek" });
-    const verdict = canAdmit(greek(), [greek(), greek(), greek()]);
+    const full = Array.from({ length: SHELF_LIMITS.maxPerCuisine }, greek);
+    equal(canAdmit(greek(), full.slice(0, -1)).ok, true);
+    const verdict = canAdmit(greek(), full);
     equal(verdict.ok, false);
     ok(!verdict.ok && verdict.reason.includes("Greek"));
+    equal(SHELF_LIMITS.maxPerCuisine, 4);
+  });
+
+  it("refuses a candidate the content review holds, whatever the gates said", () => {
+    const held = candidate({ review: { state: "checked-hold", role: "condiment", reason: "reads as condiment (0.95)" } });
+    const verdict = canAdmit(held, []);
+    equal(verdict.ok, false);
+    ok(!verdict.ok && verdict.reason.includes("content review"));
+    equal(canAdmit(candidate({ review: { state: "uncertain", reason: "x" } }), []).ok, true, "uncertain is not a hold");
+    equal(canAdmit(candidate({ review: { state: "provider-unavailable", reason: "x" } }), []).ok, true, "an outage is not a hold");
   });
 
   it("applies the registry source cap to web ideas", () => {
@@ -205,14 +218,16 @@ describe("set-level admission rules", () => {
   });
 
   it("bounds meat, fish and long-haul lanes", () => {
+    const fill = (make: () => ShelfCandidate, n: number) => Array.from({ length: n }, make);
     const meat = () => candidate({ traits: traits({ protein: "meat" }) });
-    equal(canAdmit(meat(), [meat(), meat()]).ok, false);
+    equal(canAdmit(meat(), fill(meat, SHELF_LIMITS.maxMeat - 1)).ok, true);
+    equal(canAdmit(meat(), fill(meat, SHELF_LIMITS.maxMeat)).ok, false);
 
     const fish = () => candidate({ traits: traits({ protein: "fish" }) });
-    equal(canAdmit(fish(), [fish(), fish()]).ok, false);
+    equal(canAdmit(fish(), fill(fish, SHELF_LIMITS.maxFish)).ok, false);
 
     const longHaul = () => candidate({ traits: traits({ longHaul: true }) });
-    equal(canAdmit(longHaul(), [longHaul(), longHaul()]).ok, false);
+    equal(canAdmit(longHaul(), fill(longHaul, SHELF_LIMITS.maxLongHaul)).ok, false);
   });
 
   it("refuses a duplicate", () => {
@@ -226,7 +241,7 @@ describe("set-level admission rules", () => {
 // ---------------------------------------------------------------------------
 
 describe("web-first assembly with catalog gap-fill", () => {
-  it("builds one combined 12–14 idea shelf", () => {
+  it("builds one combined twenty-idea shelf, normally 12 library and 8 web", () => {
     const shelf = assembleWeeklyShelf({
       web: [
         web("FOOBY", { traits: traits({ shape: "salad", protein: "vegan", effort: "quick", seasonalLocal: true }) }),
@@ -312,11 +327,38 @@ describe("web-first assembly with catalog gap-fill", () => {
         web("FOOBY", { role: "pairing" }),
         web("Serious Eats", { role: "pairing" }),
       ],
-      catalog: catalogPool(20),
+      catalog: catalogPool(40),
     });
     equal(shelf.diagnostics.webSelected, 0, "no FOOBY quota is forced");
     ok(shelf.items.length >= SHELF_TARGET.min, "the catalog covers the whole week instead");
     ok(shelf.diagnostics.warnings.some((w) => w.includes("qualified web ideas")));
+    deepStrictEqual(shelf.diagnostics.shortfall, { shelf: 0, web: 8, library: 0 }, "the web shortfall is stated, not hidden");
+  });
+
+  it("states a qualified shortfall instead of weakening a gate when both pools are thin", () => {
+    const shelf = assembleWeeklyShelf({
+      web: [web("FOOBY"), web("FOOBY"), web("FOOBY"), web("FOOBY", { recipeId: "fooby-4" })],
+      catalog: catalogPool(6),
+    });
+    equal(shelf.diagnostics.webSelected, 3, "the FOOBY cap of three holds even when the shelf is short");
+    ok(shelf.items.length < SHELF_TARGET.min);
+    ok(shelf.diagnostics.shortfall!.shelf > 0);
+    ok(shelf.diagnostics.warnings.some((w) => w.startsWith("Qualified shortfall")));
+    ok(shelf.diagnostics.rejected.some((r) => /FOOBY already at its cap of 3/.test(r.reason)));
+    equal(shelf.diagnostics.webSources?.FOOBY, 3);
+  });
+
+  it("never seats a review-held idea and counts review states on the shelf", () => {
+    const held = web("BBC Good Food", { recipeId: "held", review: { state: "checked-hold", role: "side", reason: "reads as side" } });
+    const passed = web("BBC Good Food", { recipeId: "passed", review: { state: "checked-pass", reason: "main 0.9" } });
+    const shelf = assembleWeeklyShelf({ web: [held, passed], catalog: catalogPool(40).map((c, i) => (i % 2 ? { ...c, review: { state: "uncertain" as const, reason: "x" } } : c)) });
+    ok(!shelf.items.some((i) => i.recipeId === "held"));
+    ok(shelf.items.some((i) => i.recipeId === "passed"));
+    ok(shelf.diagnostics.rejected.some((r) => r.recipeId === "held" && /content review/.test(r.reason)));
+    const states = shelf.diagnostics.reviewStates!;
+    equal(states["checked-pass"], 1);
+    ok((states.uncertain ?? 0) > 0 && (states.unreviewed ?? 0) > 0, "uncertain and unreviewed are counted apart");
+    equal(states["checked-hold"] ?? 0, 0);
   });
 
   it("keeps pairings as reserves, never as shelf items", () => {
@@ -389,7 +431,7 @@ describe("targeted replacement", () => {
       { ...candidate({ recipeId: "free-meat", traits: traits({ protein: "meat" }) }), reason: "From your recipe book", assigned: false },
       { ...candidate({ recipeId: "free-veg-1" }), reason: "From your recipe book", assigned: false },
       { ...candidate({ recipeId: "free-veg-2" }), reason: "From your recipe book", assigned: false },
-      ...catalogPool(9).map((c) => ({ ...c, reason: "From your recipe book", assigned: false })),
+      ...catalogPool(SHELF_TARGET.min - 4).map((c) => ({ ...c, reason: "From your recipe book", assigned: false })),
     ];
   }
 
@@ -480,8 +522,10 @@ describe("targeted replacement", () => {
   it("adds nothing when dropWhere matches only assigned ideas", () => {
     const before: ShelfItem[] = [
       { ...candidate({ recipeId: "assigned-fish", traits: traits({ protein: "fish" }) }), reason: "Assigned to a day this week", assigned: true },
-      ...catalogPool(16).map((c) => ({ ...c, reason: "From your recipe book", assigned: false })),
-    ].filter((item, index) => index === 0 || item.traits.protein !== "fish");
+      ...catalogPool(24).map((c) => ({ ...c, reason: "From your recipe book", assigned: false })),
+    ]
+      .filter((item, index) => index === 0 || item.traits.protein !== "fish")
+      .slice(0, SHELF_TARGET.min);
 
     const result = applyTargetedReplacement(before, {
       dropWhere: { protein: "fish" },
@@ -502,13 +546,13 @@ describe("targeted replacement", () => {
     ];
     const result = applyTargetedReplacement(short, {
       removeRecipeIds: ["assigned-meat"],
-      replacements: catalogPool(20).map((c, i) => ({ ...c, recipeId: `fill-${i}` })),
+      replacements: catalogPool(40).map((c, i) => ({ ...c, recipeId: `fill-${i}` })),
       wish: "less meat",
     });
 
     deepStrictEqual(result.removed, []);
     ok(result.added.length > 0, "a five-idea shelf is short and is topped up");
-    equal(result.shelf.length, 12, "but only as far as the minimum, never to the maximum");
+    equal(result.shelf.length, SHELF_TARGET.min, "but only as far as the minimum, never beyond the target");
     ok(
       result.added.every((i) => i.reason === "From your recipe book to round out the week"),
       "topping up is not a swap and does not borrow the wish",

@@ -2371,3 +2371,223 @@ export async function saveMealPlanRowWithInvalidation(input: {
     cancelledItems: Number(cancelled.rowsAffected ?? 0),
   };
 }
+
+// ---------------------------------------------------------------------------
+// Planner candidate reviews (Kitchen DESIGN.md §4.3.1, content-bound second opinion)
+// ---------------------------------------------------------------------------
+
+import {
+  PLANNER_REVIEW_INTERPRETATION_VERSION,
+  type CandidateReviewRecord,
+  type ReviewUsageSummary,
+} from "./planner-review.ts";
+
+/**
+ * One row per (recipe, exact content hash, rubric hash). Created on first use
+ * rather than in the migration list, like the preparation tables, so an older
+ * database and a fresh fixture both work without a version bump.
+ */
+export const PLANNER_CANDIDATE_REVIEWS_TABLE_SQL = `
+  CREATE TABLE IF NOT EXISTS planner_candidate_reviews (
+    recipe_id          TEXT NOT NULL,
+    content_sha256     TEXT NOT NULL,
+    rubric_sha256      TEXT NOT NULL,
+    model_requested    TEXT NOT NULL,
+    model_resolved     TEXT NOT NULL,
+    provider           TEXT NOT NULL,
+    request_sha256     TEXT NOT NULL,
+    response_sha256    TEXT NOT NULL,
+    verdict            TEXT NOT NULL CHECK (verdict IN ('yes', 'no', 'uncertain')),
+    interpretation     TEXT NOT NULL,
+    answers            TEXT NOT NULL,
+    usage              TEXT NOT NULL,
+    source             TEXT NOT NULL,
+    reviewed_at        TEXT NOT NULL,
+    PRIMARY KEY (recipe_id, content_sha256, rubric_sha256)
+  )
+`;
+
+export const PLANNER_REVIEW_RUNS_TABLE_SQL = `
+  CREATE TABLE IF NOT EXISTS planner_review_runs (
+    week          TEXT NOT NULL,
+    run_id        TEXT NOT NULL,
+    started_at    TEXT NOT NULL,
+    status        TEXT NOT NULL CHECK (status IN ('succeeded', 'partial', 'failed', 'skipped')),
+    calls         INTEGER NOT NULL DEFAULT 0,
+    succeeded     INTEGER NOT NULL DEFAULT 0,
+    failed        INTEGER NOT NULL DEFAULT 0,
+    reused        INTEGER NOT NULL DEFAULT 0,
+    input_tokens  INTEGER NOT NULL DEFAULT 0,
+    output_tokens INTEGER NOT NULL DEFAULT 0,
+    cost_usd      REAL NOT NULL DEFAULT 0,
+    over_budget   INTEGER NOT NULL DEFAULT 0,
+    detail        TEXT,
+    PRIMARY KEY (week, run_id)
+  )
+`;
+
+async function ensureReviewTables(client: Client): Promise<void> {
+  await client.execute(PLANNER_CANDIDATE_REVIEWS_TABLE_SQL);
+  await client.execute(PLANNER_REVIEW_RUNS_TABLE_SQL);
+}
+
+function rowToReviewRecord(row: Record<string, unknown>): CandidateReviewRecord | null {
+  try {
+    const interpretation = JSON.parse(String(row.interpretation));
+    if (interpretation?.interpretationVersion !== PLANNER_REVIEW_INTERPRETATION_VERSION) return null;
+    return {
+      recipeId: String(row.recipe_id),
+      contentSha256: String(row.content_sha256),
+      rubricSha256: String(row.rubric_sha256),
+      modelRequested: String(row.model_requested),
+      modelResolved: String(row.model_resolved),
+      provider: String(row.provider),
+      requestSha256: String(row.request_sha256),
+      responseSha256: String(row.response_sha256),
+      interpretation,
+      answers: JSON.parse(String(row.answers)),
+      usage: JSON.parse(String(row.usage)),
+      source: String(row.source) as CandidateReviewRecord["source"],
+      reviewedAt: String(row.reviewed_at),
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Reviews for a set of (recipe, content hash) bindings. Keyed by
+ * `${recipeId}:${contentSha256}`; a review for other content is never
+ * returned, so a recipe edit invalidates its review by construction.
+ */
+export async function getCandidateReviews(
+  bindings: readonly { recipeId: string; contentSha256: string }[],
+): Promise<Map<string, CandidateReviewRecord>> {
+  const out = new Map<string, CandidateReviewRecord>();
+  if (bindings.length === 0) return out;
+  const client = await getDb();
+  await ensureReviewTables(client);
+  const ids = [...new Set(bindings.map((b) => b.recipeId))];
+  const wanted = new Set(bindings.map((b) => `${b.recipeId}:${b.contentSha256}`));
+  for (let offset = 0; offset < ids.length; offset += 200) {
+    const chunk = ids.slice(offset, offset + 200);
+    const result = await client.execute({
+      sql: `SELECT * FROM planner_candidate_reviews WHERE recipe_id IN (${chunk.map(() => "?").join(", ")})`,
+      args: chunk,
+    });
+    for (const row of result.rows) {
+      const record = rowToReviewRecord(row as unknown as Record<string, unknown>);
+      if (!record) continue;
+      const key = `${record.recipeId}:${record.contentSha256}`;
+      if (wanted.has(key)) out.set(key, record);
+    }
+  }
+  return out;
+}
+
+/** Idempotent upsert: the same binding is refreshed, never duplicated. */
+export async function saveCandidateReviews(records: readonly CandidateReviewRecord[]): Promise<number> {
+  if (records.length === 0) return 0;
+  const client = await getDb();
+  await ensureReviewTables(client);
+  let written = 0;
+  for (const record of records) {
+    await client.execute({
+      sql: `INSERT INTO planner_candidate_reviews
+              (recipe_id, content_sha256, rubric_sha256, model_requested, model_resolved, provider, request_sha256, response_sha256, verdict, interpretation, answers, usage, source, reviewed_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (recipe_id, content_sha256, rubric_sha256) DO UPDATE SET
+              model_requested = excluded.model_requested,
+              model_resolved = excluded.model_resolved,
+              provider = excluded.provider,
+              request_sha256 = excluded.request_sha256,
+              response_sha256 = excluded.response_sha256,
+              verdict = excluded.verdict,
+              interpretation = excluded.interpretation,
+              answers = excluded.answers,
+              usage = excluded.usage,
+              source = excluded.source,
+              reviewed_at = excluded.reviewed_at`,
+      args: [
+        record.recipeId,
+        record.contentSha256,
+        record.rubricSha256,
+        record.modelRequested,
+        record.modelResolved,
+        record.provider,
+        record.requestSha256,
+        record.responseSha256,
+        record.interpretation.verdict,
+        JSON.stringify(record.interpretation),
+        JSON.stringify(record.answers),
+        JSON.stringify(record.usage),
+        record.source,
+        record.reviewedAt,
+      ],
+    });
+    written += 1;
+  }
+  return written;
+}
+
+export type ReviewRunRecord = {
+  week: string;
+  runId: string;
+  startedAt: string;
+  status: "succeeded" | "partial" | "failed" | "skipped";
+  usage: ReviewUsageSummary;
+  detail?: string | null;
+};
+
+/** Persist one run's usage so limits are inspectable after the fact. */
+export async function savePlannerReviewRun(run: ReviewRunRecord): Promise<void> {
+  const client = await getDb();
+  await ensureReviewTables(client);
+  await client.execute({
+    sql: `INSERT INTO planner_review_runs
+            (week, run_id, started_at, status, calls, succeeded, failed, reused, input_tokens, output_tokens, cost_usd, over_budget, detail)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          ON CONFLICT (week, run_id) DO UPDATE SET
+            status = excluded.status, calls = excluded.calls, succeeded = excluded.succeeded, failed = excluded.failed,
+            reused = excluded.reused, input_tokens = excluded.input_tokens, output_tokens = excluded.output_tokens,
+            cost_usd = excluded.cost_usd, over_budget = excluded.over_budget, detail = excluded.detail`,
+    args: [
+      run.week,
+      run.runId,
+      run.startedAt,
+      run.status,
+      run.usage.calls,
+      run.usage.succeeded,
+      run.usage.failed,
+      run.usage.reused,
+      run.usage.inputTokens,
+      run.usage.outputTokens,
+      run.usage.costUsd,
+      run.usage.overBudget ? 1 : 0,
+      run.detail ?? null,
+    ],
+  });
+}
+
+export async function getPlannerReviewRuns(week: string): Promise<ReviewRunRecord[]> {
+  const client = await getDb();
+  await ensureReviewTables(client);
+  const result = await client.execute({ sql: "SELECT * FROM planner_review_runs WHERE week = ? ORDER BY started_at DESC", args: [week] });
+  return result.rows.map((row) => ({
+    week: String(row.week),
+    runId: String(row.run_id),
+    startedAt: String(row.started_at),
+    status: String(row.status) as ReviewRunRecord["status"],
+    usage: {
+      calls: Number(row.calls),
+      succeeded: Number(row.succeeded),
+      failed: Number(row.failed),
+      reused: Number(row.reused),
+      inputTokens: Number(row.input_tokens),
+      outputTokens: Number(row.output_tokens),
+      costUsd: Number(row.cost_usd),
+      overBudget: Number(row.over_budget) === 1,
+    },
+    detail: (row.detail as string | null) ?? null,
+  }));
+}

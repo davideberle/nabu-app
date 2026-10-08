@@ -25,6 +25,7 @@
 
 import type { EffortLane, MealShape, ProteinLane, ShelfTraits, StarchLane } from "./planner-shelf.ts";
 import type { PlannerRole } from "./planner-roles.ts";
+import type { RecipeSeasonality } from "./planner-seasonality.ts";
 
 // ---------------------------------------------------------------------------
 // Groups
@@ -63,6 +64,12 @@ export type ShelfDisplay = {
   lightMeal: boolean;
   /** One concrete accompaniment. Present only when there is a real one. */
   makeItDinner?: string;
+  /**
+   * The calendar-backed seasonality reason (§4.3.1), present only when the
+   * verdict is supported by named produce: "Pumpkin and kale are in season in
+   * Switzerland in October." Neutral and uncertain verdicts carry none.
+   */
+  seasonNote?: string;
 };
 
 // ---------------------------------------------------------------------------
@@ -136,6 +143,8 @@ export type ShelfDisplayInput = {
   time?: { total?: number | null } | null;
   /** Kitchen-supplied accompaniment, from the recipe's own serving guidance. */
   completion?: string | null;
+  /** Month-bound seasonality verdict; its `note` is shown only when present. */
+  seasonality?: Pick<RecipeSeasonality, "status" | "note"> | null;
 };
 
 const DEFAULT_TRAITS: ShelfTraits = {
@@ -208,6 +217,7 @@ export function deriveShelfDisplay(input: ShelfDisplayInput): ShelfDisplay {
     note: editorialNoteFor(input.role, traits, total),
     lightMeal,
     ...(lightMeal && input.completion ? { makeItDinner: input.completion } : {}),
+    ...(input.seasonality?.note ? { seasonNote: input.seasonality.note } : {}),
   };
 }
 
@@ -221,6 +231,7 @@ type DisplayableCandidateItem = {
   time?: { total?: number | null } | null;
   completion?: string | null;
   display?: Partial<ShelfDisplay> | null;
+  seasonality?: Pick<RecipeSeasonality, "status" | "note"> | null;
   /** A persisted candidate carries much more than this; the rest is ignored. */
   [key: string]: unknown;
 };
@@ -242,6 +253,7 @@ export function candidateDisplay(item: DisplayableCandidateItem | null | undefin
       note: stored.note,
       lightMeal: Boolean(stored.lightMeal),
       ...(stored.makeItDinner ? { makeItDinner: stored.makeItDinner } : {}),
+      ...(stored.seasonNote ? { seasonNote: stored.seasonNote } : item?.seasonality?.note ? { seasonNote: item.seasonality.note } : {}),
     };
   }
   return deriveShelfDisplay({
@@ -249,6 +261,7 @@ export function candidateDisplay(item: DisplayableCandidateItem | null | undefin
     traits: item?.traits ?? null,
     time: item?.time ?? null,
     completion: item?.completion ?? null,
+    seasonality: item?.seasonality ?? null,
   });
 }
 

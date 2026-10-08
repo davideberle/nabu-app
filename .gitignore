@@ -64,3 +64,6 @@ src/data/recipes-bundle.json
 *.db-shm
 .env.vercel
 /tmp-vercel-env
+
+# Weekly content-review batches (local handoff for Gateway execution)
+.planner-review/

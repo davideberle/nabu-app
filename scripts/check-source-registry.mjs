@@ -21,12 +21,17 @@
 import { readFileSync, existsSync } from "fs";
 import { join, dirname, resolve } from "path";
 import { fileURLToPath } from "url";
-import { PLANNER_SOURCES, SOURCE_REGISTRY_VERSION, SHELF_TARGET, WEB_TARGET } from "../src/lib/planner-sources.ts";
+import { PLANNER_SOURCES, SOURCE_REGISTRY_VERSION, SHELF_TARGET, WEB_TARGET, LIBRARY_TARGET } from "../src/lib/planner-sources.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const APP_DIR = resolve(__dirname, "..");
 const WORKSPACE_DIR = resolve(APP_DIR, "../../..");
-const CANONICAL = join(WORKSPACE_DIR, "projects/kitchen/web-inspiration/source-registry.json");
+// A candidate build may point at a staged Kitchen registry (the isolated
+// candidate flow in Kitchen weekly-planner-2026-10-03) until the parent adopts
+// it into the canonical location.
+const CANONICAL =
+  process.env.KITCHEN_SOURCE_REGISTRY ||
+  join(WORKSPACE_DIR, "projects/kitchen/web-inspiration/source-registry.json");
 
 if (!existsSync(CANONICAL)) {
   console.log(`source-registry: kitchen project not present at ${CANONICAL} — skipping projection check.`);
@@ -47,6 +52,9 @@ if (canonical.policy?.shelfTarget?.min !== SHELF_TARGET.min || canonical.policy?
 if (canonical.policy?.webTarget?.min !== WEB_TARGET.min || canonical.policy?.webTarget?.max !== WEB_TARGET.max) {
   problems.push("webTarget mismatch between kitchen policy and projection");
 }
+if (canonical.policy?.libraryTarget?.min !== LIBRARY_TARGET.min) {
+  problems.push("libraryTarget mismatch between kitchen policy and projection");
+}
 
 /**
  * Every field that changes what discovery actually *does*. A URL match alone
@@ -66,6 +74,7 @@ const BEHAVIOUR_FIELDS = [
   "searchStrategy",
   "extraction",
   "seasons",
+  "targetedFallback",
 ];
 
 /** Editorial surfaces, compared whole and in order. */

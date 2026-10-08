@@ -42,7 +42,8 @@ import {
   resolvePreparationMode,
 } from "@/lib/planner-preparation-response";
 import { buildPreparationDeps, buildRolloverDeps } from "@/lib/planner-runtime";
-import { claimPlannerPreparation, completePlannerPreparation, getPlannerPreparationRuns } from "@/lib/db";
+import { claimPlannerPreparation, completePlannerPreparation, getPlannerPreparationRuns, getPlannerReviewRuns } from "@/lib/db";
+import { SHELF_TARGET, WEB_TARGET, LIBRARY_TARGET } from "@/lib/planner-sources";
 import { loadMealPlan } from "@/lib/meals-persistence";
 
 const WEEK_PATTERN = /^\d{4}-W\d{2}$/;
@@ -107,13 +108,28 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Invalid week format (expected YYYY-Wnn)" }, { status: 400 });
   }
   try {
-    const [plan, runs] = await Promise.all([loadMealPlan(week), getPlannerPreparationRuns(week)]);
+    const [plan, runs, reviewRuns] = await Promise.all([
+      loadMealPlan(week),
+      getPlannerPreparationRuns(week),
+      getPlannerReviewRuns(week).catch(() => []),
+    ]);
     const health = assessShelfHealth(plan, new Date());
     const items = plan?.candidateSet?.items ?? [];
     // Counted from the *stored* shelf rather than read back off the last run's
     // summary. A verifier asking "did web research reach this week's shelf?"
     // should be answered by the shelf, not by a report about it.
     const webSelected = items.filter((item) => (item as { origin?: string }).origin === "web").length;
+    // Review coverage and source mix, also from the stored shelf (§4.3.1).
+    const reviewStates: Record<string, number> = {};
+    const webSources: Record<string, number> = {};
+    for (const item of items) {
+      const state = (item as { review?: { state?: string } }).review?.state ?? "unreviewed";
+      reviewStates[state] = (reviewStates[state] ?? 0) + 1;
+      if ((item as { origin?: string }).origin === "web") {
+        const source = (item as { source?: { cookbook?: string } }).source?.cookbook ?? "Unknown source";
+        webSources[source] = (webSources[source] ?? 0) + 1;
+      }
+    }
     return NextResponse.json({
       week,
       healthy: health.healthy,
@@ -121,9 +137,14 @@ export async function GET(request: NextRequest) {
       shelfSize: items.length,
       webSelected,
       catalogSelected: items.length - webSelected,
+      target: { shelf: SHELF_TARGET, web: WEB_TARGET, library: LIBRARY_TARGET },
+      reviewStates,
+      webSources,
+      calendarVersion: (plan?.candidateSet as { calendarVersion?: string } | null | undefined)?.calendarVersion ?? null,
       policyVersion: plan?.candidateSet?.policyVersion ?? null,
       generatedAt: plan?.candidateSet?.generatedAt ?? null,
       runs,
+      reviewRuns,
     });
   } catch (error) {
     console.error(`Failed to read preparation status for ${week}:`, error);

@@ -16,9 +16,16 @@
  *   3. run the Kitchen importer editorial-first, writing images, My Recipes
  *      rows, and `web_recipe_inspirations` week provenance
  *   4. verify from the database that qualified web ideas were actually staged
+ *   4b. assemble the week's content-review batch (Kitchen DESIGN.md §4.3.1):
+ *      minimized payloads for the staged web ideas, reused results where the
+ *      content hash already has a bound review. The batch is *written*, never
+ *      sent, unless this process runs under the protected Gateway egress
+ *      route — see `scripts/review-planner-candidates.mjs`. A scheduled run
+ *      has no such route, so it records the pending batch and carries on:
+ *      the shelf is still valid, its unreviewed ideas are labelled as such
  *   5. call the trusted `/api/meals/prepare` endpoint with the runtime token,
  *      read natively out of the macOS Keychain
- *   6. verify the stored shelf: 12–14 combined ideas, healthy, and — the whole
+ *   6. verify the stored shelf: twenty combined ideas, healthy, and — the whole
  *      point — `webSelected > 0`
  *
  * Safe to re-run. The importer refuses duplicate URLs and titles, provenance is
@@ -37,7 +44,8 @@
  *
  * Flags:
  *   --week <YYYY-Www>  target week. Default: next ISO week.
- *   --count <n>        ideas to ask the importer for. Default: 8.
+ *   --count <n>        ideas to ask the importer for. Default: 10 (an oversized web pool).
+ *   --review-dir <dir> where the review batch/handoff is written. Default: <app>/.planner-review
  *   --base-url <url>   default https://app.davideberle.com
  *   --env <path>       default <app>/.env.vercel
  *   --skip-import      skip step 3; verify what is already staged, then prepare.
@@ -60,6 +68,7 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 
 import { classifyPlannerRole } from "../src/lib/planner-roles.ts";
+import { SHELF_TARGET, WEB_TARGET } from "../src/lib/planner-sources.ts";
 
 const execFileAsync = promisify(execFile);
 
@@ -68,11 +77,12 @@ const WORKSPACE_ROOT = path.resolve(APP_DIR, "../../..");
 
 const DEFAULT_BASE_URL = "https://app.davideberle.com";
 const DEFAULT_ENV_FILE = path.join(APP_DIR, ".env.vercel");
-const DEFAULT_COUNT = 8;
+const DEFAULT_COUNT = 10;
+const DEFAULT_REVIEW_DIR = path.join(APP_DIR, ".planner-review");
 
-/** The combined shelf contract: 12 minimum, 14 the most that is useful. */
-const SHELF_MIN = 12;
-const SHELF_MAX = 14;
+/** The combined shelf contract (§4.3.1): twenty ideas, normally 12 library + 8 web. */
+const SHELF_MIN = SHELF_TARGET.min;
+const SHELF_MAX = SHELF_TARGET.max;
 
 /** Credentials the staging half needs. Presence is checked; values are not shown. */
 const REQUIRED_ENV = ["TURSO_DATABASE_URL", "TURSO_AUTH_TOKEN", "BLOB_READ_WRITE_TOKEN"];
@@ -392,6 +402,10 @@ export function assessShelf({ shelfSize, healthy, webSelected }) {
   if (!healthy) problems.push("stored shelf is not healthy");
   if (!(webSelected > 0)) {
     problems.push("no web ideas reached the shelf (webSelected: 0) — staging did not land");
+  } else if (webSelected < WEB_TARGET.min) {
+    // Stated, not hidden: the shelf can still be a valid twenty with a web
+    // shortfall, and production health already reports it as a problem.
+    problems.push(`only ${webSelected} web ideas reached the shelf (target ${WEB_TARGET.min})`);
   }
   return { ok: problems.length === 0, problems };
 }
@@ -415,6 +429,7 @@ export function parseArgs(argv) {
     dryRun: false,
     json: false,
     help: false,
+    reviewDir: DEFAULT_REVIEW_DIR,
   };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
@@ -424,6 +439,7 @@ export function parseArgs(argv) {
     // `--env`, because Node owns `--env-file` and would swallow it first.
     else if (a === "--env") args.envFile = path.resolve(requireValue(a, argv[++i]));
     else if (a === "--skip-import") args.skipImport = true;
+    else if (a === "--review-dir") args.reviewDir = path.resolve(requireValue(a, argv[++i]));
     else if (a === "--dry-run") args.dryRun = true;
     else if (a === "--json") args.json = true;
     else if (a === "--help" || a === "-h") args.help = true;
@@ -437,8 +453,8 @@ export function parseArgs(argv) {
   if (args.week && !/^\d{4}-W\d{2}$/.test(args.week)) {
     throw new Error(`--week must look like YYYY-Www, got: ${args.week}`);
   }
-  if (!Number.isFinite(args.count) || args.count < 1 || args.count > 12) {
-    throw new Error("--count must be a number from 1 to 12");
+  if (!Number.isFinite(args.count) || args.count < 1 || args.count > 16) {
+    throw new Error("--count must be a number from 1 to 16");
   }
   return args;
 }
@@ -492,12 +508,23 @@ async function main(argv) {
         `${report.stagedProvenance.length} provenance row(s), ${report.skipped.length} skipped`,
     );
     for (const error of report.errors.slice(0, 5)) log(`    ! ${error.url}: ${error.message}`);
+    // Per-source stage counts (§4.3.1): a zero is explained, not guessed at.
+    for (const stage of report.sourceStages ?? []) {
+      log(
+        `    ${stage.source}: ${stage.editorialLinks} editorial link(s), ${stage.usableLinks} usable, ` +
+          `${stage.fallbackSearched ? `${stage.fallbackLinks} from targeted fallback, ` : ""}` +
+          `${stage.fetched} fetched, ${stage.extracted} extracted, ${stage.duplicates} duplicate(s), ` +
+          `${stage.reviewExcluded} excluded, ${stage.selected} selected` +
+          (stage.reasons.length ? ` — ${stage.reasons.map((r) => `${r.reason} ×${r.count}`).join("; ")}` : ""),
+      );
+    }
     result.steps.import = {
       imported: report.imported.length,
       pairings: report.pairings.length,
       staged: report.stagedProvenance.length,
       skipped: report.skipped.length,
       errors: report.errors.length,
+      sourceStages: report.sourceStages ?? [],
     };
   }
 
@@ -527,6 +554,13 @@ async function main(argv) {
         "or check the importer's skip reasons above.",
     );
   }
+
+  // 4b. Content review (§4.3.1). Export always; run only under the protected
+  //     Gateway route; never from a raw key. The outcome is recorded either
+  //     way so the stored shelf can say which ideas were actually checked.
+  const { prepareWeeklyReview } = await import("./review-planner-candidates.mjs");
+  const review = await prepareWeeklyReview({ week, outDir: args.reviewDir, dryRun: args.dryRun, log });
+  result.steps.review = review;
 
   // 5. Prepare, over the trusted-runtime endpoint.
   if (args.dryRun) {

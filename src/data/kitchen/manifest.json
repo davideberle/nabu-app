@@ -3,6 +3,10 @@
   "files": {
     "reviewed-planner-evidence.json": "0f566b87ae186da44bf1823214bd0e6b011b678ba0f76ff91b9f68d3638bd7a5",
     "reviewed-planner-evidence.generated.ts": "9a3159c2733995eb52e197dd8cfcdc6c1ffe262e413d034a8138498371c192fe",
-    "../../lib/kitchen/planner-evidence-rule.ts": "58548d301439304260ea114666a47af38bfca2df399a73aca917fc424335b706"
+    "../../lib/kitchen/planner-evidence-rule.ts": "58548d301439304260ea114666a47af38bfca2df399a73aca917fc424335b706",
+    "swiss-season-calendar.json": "eb10ca62200a42e937a6de7d9fcecb781be6127d6096493d58e4ddb349ad9cb5",
+    "swiss-season-calendar.generated.ts": "1b870f514745ed0203429c4b1472b5fcd08196ea1084e7c682c7e5118be9d2d2",
+    "jev-taxonomy-rubric-v2.json": "826f3fb08e94ce59508e07158755e0feca65e2965889f765418d54c9ecf68d6e",
+    "jev-taxonomy-rubric-v2.generated.ts": "e20b76aa5ad30bb7c93ecdb5ed2b582306e55054cbc8c7cec7e216c6a6b06dc5"
   }
 }

@@ -30,6 +30,12 @@ export type EditorialSurface = {
   linkPattern?: string;
 };
 
+export type TargetedFallback = {
+  strategy: "fooby-json" | "wordpress" | "homepage-search";
+  when: string;
+  target: { min: number; max: number };
+};
+
 export type PlannerSource = {
   id: string;
   name: string;
@@ -46,15 +52,28 @@ export type PlannerSource = {
   editorialSurfaces: readonly EditorialSurface[];
   searchStrategy: "fooby-json" | "wordpress" | "homepage-search";
   extraction: { primary: "json-ld"; fallback?: "fooby-embedded-json" };
+  /**
+   * Source-specific targeted fallback when the editorial surface yields
+   * nothing usable (§4.3.1, FOOBY). Bounded to this source; never a generic
+   * fan-out across the registry.
+   */
+  targetedFallback?: TargetedFallback;
   notes: string;
 };
 
-export const SOURCE_REGISTRY_VERSION = "kitchen-sources-1";
+export const SOURCE_REGISTRY_VERSION = "kitchen-sources-2";
 
-/** Combined shelf size the weekly preparation aims for. */
-export const SHELF_TARGET = { min: 12, max: 14 } as const;
+/**
+ * Combined shelf size the weekly preparation aims for (Kitchen DESIGN.md
+ * §4.3.1): twenty distinct qualified choices, normally 12 library and 8 web.
+ * Targets, never permission to admit weak recipes — a real shortage is
+ * reported as a shortfall, not filled by weakening a gate.
+ */
+export const SHELF_TARGET = { min: 20, max: 20 } as const;
 /** How many qualified web ideas normally survive into the shelf. */
-export const WEB_TARGET = { min: 5, max: 7 } as const;
+export const WEB_TARGET = { min: 8, max: 8 } as const;
+/** How many library (recipe-book) ideas the shelf normally carries. */
+export const LIBRARY_TARGET = { min: 12 } as const;
 /** Cap applied to a source the registry does not name. */
 export const DEFAULT_VISIBLE_CAP = 2;
 
@@ -79,8 +98,13 @@ export const PLANNER_SOURCES: readonly PlannerSource[] = [
     ],
     searchStrategy: "fooby-json",
     extraction: { primary: "json-ld", fallback: "fooby-embedded-json" },
+    targetedFallback: {
+      strategy: "fooby-json",
+      when: "editorial surface yields zero usable links or zero qualified mains",
+      target: { min: 2, max: 3 },
+    },
     notes:
-      "Swiss/seasonal anchor. Featured pages regularly ship Recipe JSON-LD with one collapsed instruction step, which structured extraction rejects; the source-specific fallback reads the page's own embedded recipeJSON. Cap is a ceiling, never a quota.",
+      "Swiss/seasonal anchor. Featured pages regularly ship Recipe JSON-LD with one collapsed instruction step, which structured extraction rejects; the source-specific fallback reads the page's own embedded recipeJSON. Cap is a ceiling, never a quota. §4.3.1: aim for 2–3 qualified ideas per preparation; when the homepage section yields nothing usable, one bounded source-specific seasonal search runs before the shelf is built. Never a generic fan-out.",
   },
   {
     id: "serious-eats",
@@ -388,8 +412,8 @@ function seasonFor(now: Date): "spring" | "summer" | "fall" | "winter" {
 
 export type DiscoveryStep = {
   source: PlannerSource;
-  /** `editorial` reads a curated surface; `search` issues a targeted query. */
-  mode: "editorial" | "search";
+  /** `editorial` reads a curated surface; `search` issues a targeted query; `targeted-fallback` is the registry's own zero-yield fallback for one source. */
+  mode: "editorial" | "search" | "targeted-fallback";
   surface?: EditorialSurface;
   /** Concrete URL for an editorial step (placeholders already resolved). */
   url?: string;
@@ -405,6 +429,12 @@ export type DiscoveryPlanOptions = {
   laneGaps?: readonly string[];
   /** Include a manual-only source because David explicitly asked for it. */
   includeManualSourceIds?: readonly string[];
+  /**
+   * Sources whose editorial surfaces produced nothing usable this run. A
+   * source with a registry `targetedFallback` gets one bounded search step
+   * of its own; sources without one get nothing (no generic fan-out).
+   */
+  zeroYieldSourceIds?: readonly string[];
 };
 
 /**
@@ -438,6 +468,17 @@ export function buildDiscoveryPlan(options: DiscoveryPlanOptions = {}): Discover
     if (source.tier === "manual" && manual.has(source.id)) {
       steps.push({ source, mode: "search" });
     }
+  }
+
+  // A tier-A/B source whose editorial surface yielded nothing usable gets the
+  // registry's own targeted fallback — FOOBY's seasonal recipe search — before
+  // any lane-gap search. Without this the editorial exclusion below was an
+  // accidental dead end: zero editorial links meant zero FOOBY, every week.
+  const zeroYield = new Set(options.zeroYieldSourceIds ?? []);
+  for (const source of eligible) {
+    if (!zeroYield.has(source.id) || !source.targetedFallback) continue;
+    if (source.tier === "manual") continue;
+    steps.push({ source, mode: "targeted-fallback" });
   }
 
   // Tier C is opened only against a concrete lane gap. Tier A/B sources with no

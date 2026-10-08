@@ -17,7 +17,9 @@ import {
 import type { MealCoherenceReview } from "@/lib/meal-coherence";
 import { candidateDisplay, groupShelfItems } from "@/lib/planner-display";
 import type { ShelfDisplay } from "@/lib/planner-display";
-import { shortlistShelf, SHELF_POLICY_VERSION, type ShelfTraits } from "@/lib/planner-shelf";
+import { SHELF_POLICY_VERSION, type ShelfTraits } from "@/lib/planner-shelf";
+import type { RecipeSeasonality } from "@/lib/planner-seasonality";
+import type { CandidateReviewSummary } from "@/lib/planner-review";
 import { resolvePlannerDayRecipeId } from "@/lib/planner-navigation";
 
 // ----- types -----
@@ -42,6 +44,11 @@ type RecipeOption = {
   traits?: ShelfTraits;
   /** For a light meal: the concrete thing that turns it into dinner. */
   completion?: string;
+  /** Month-bound Swiss seasonality verdict (planner-shelf-2). */
+  seasonality?: RecipeSeasonality;
+  /** Content-review state (planner-shelf-2). A label, never a qualification. */
+  review?: CandidateReviewSummary;
+  contentSha256?: string;
   /**
    * Kitchen's presentation contract for the card: group, editorial note,
    * light-meal label, completion suggestion.
@@ -100,6 +107,9 @@ type CandidateItem = {
   traits?: ShelfTraits;
   completion?: string;
   display?: ShelfDisplay;
+  seasonality?: RecipeSeasonality;
+  review?: CandidateReviewSummary;
+  contentSha256?: string;
 };
 
 type CandidateDiagnostics = {
@@ -341,6 +351,9 @@ function toCandidateItem(recipe: RecipeOption, bucket?: string): CandidateItem {
     ...(recipe.traits ? { traits: recipe.traits } : {}),
     ...(recipe.completion ? { completion: recipe.completion } : {}),
     ...(recipe.display ? { display: recipe.display } : {}),
+    ...(recipe.seasonality ? { seasonality: recipe.seasonality } : {}),
+    ...(recipe.review ? { review: recipe.review } : {}),
+    ...(recipe.contentSha256 ? { contentSha256: recipe.contentSha256 } : {}),
   };
 }
 
@@ -360,6 +373,9 @@ function restoreCandidateItem(item: CandidateItem): RecipeOption {
     role: item.role,
     traits: item.traits,
     completion: item.completion,
+    seasonality: item.seasonality,
+    review: item.review,
+    contentSha256: item.contentSha256,
     // Kitchen fills this in on read; deriving here is the fallback for a card
     // that arrived from one of the manual repair paths.
     display: candidateDisplay(item),
@@ -374,7 +390,34 @@ function displayFor(recipe: RecipeOption): ShelfDisplay {
     time: recipe.time,
     completion: recipe.completion,
     display: recipe.display,
+    seasonality: recipe.seasonality,
   });
+}
+
+/** Short source label for the card: publication for web ideas, cookbook for library ideas. */
+function sourceLabelFor(recipe: RecipeOption): string {
+  if (isWebIdea(recipe)) {
+    return (recipe.source?.publication ?? recipe.source?.cookbook ?? "Web").replace(/\s*·\s*Web inspiration\s*$/i, "");
+  }
+  return recipe.source?.cookbook ?? "Recipe book";
+}
+
+/** What the review badge says. Only a bound pass reads as checked. */
+function reviewLabelFor(review: CandidateReviewSummary | undefined): { text: string; title: string } | null {
+  if (!review) return null;
+  switch (review.state) {
+    case "checked-pass":
+      return { text: "checked", title: "Content review agrees this reads as a dinner main" };
+    case "uncertain":
+      return { text: "review open", title: "Content review was uncertain; the recipe-book rules decide" };
+    case "provider-unavailable":
+      return { text: "unreviewed", title: "Content review was unavailable this week; the recipe-book rules decide" };
+    case "unreviewed":
+    case "excluded-private":
+      return { text: "unreviewed", title: "No content review for this version; the recipe-book rules decide" };
+    default:
+      return null;
+  }
 }
 
 function applyRecipeLookup(recipe: RecipeOption, canonical?: RecipeLookupValue): RecipeOption {
@@ -566,7 +609,6 @@ function MealsPageInner() {
   const planRef = useRef<MealPlan | null>(null);
   const [candidates, setCandidates] = useState<RecipeOption[]>([]);
   /** Secondary disclosure: the eligible ideas beyond the strongest 5–7. */
-  const [showMoreIdeas, setShowMoreIdeas] = useState(false);
   const candidatesRef = useRef<RecipeOption[]>([]);
   const [ideaMetadata, setIdeaMetadata] = useState<{ generatedAt?: string; policyVersion?: string } | null>(null);
   const [selectedRecipe, setSelectedRecipe] = useState<RecipeOption | null>(null);
@@ -2094,21 +2136,25 @@ function MealsPageInner() {
         {/* Candidate mains */}
         {hasCandidates && (
           <div className="space-y-6">
-            <NabuSectionHeader
-              eyebrow="Ideas for this week"
-              description="One prepared set: the strongest web finds plus recipe-book ideas that cover what they missed. Web ideas stay out of My Recipes until you keep or cook them."
-            />
+            {(() => {
+              const webCount = candidates.filter(isWebIdea).length;
+              const libraryCount = candidates.length - webCount;
+              const checkedCount = candidates.filter((r) => r.review?.state === "checked-pass").length;
+              return (
+                <NabuSectionHeader
+                  eyebrow="Ideas for this week"
+                  description={`${candidates.length} ideas — ${libraryCount} from your recipe books, ${webCount} from the web${checkedCount ? `, ${checkedCount} content-checked` : ""}. Every idea is shown in its group; web ideas stay out of My Recipes until you keep or cook them.`}
+                />
+              );
+            })()}
 
-            {/* Kitchen's shortlist: the strongest 5–7 ideas first, the rest
-                behind a disclosure. Within each, grouped by meal character,
-                never by weekday: a longer cooking project is still perfectly
-                assignable to a Wednesday. Empty groups are omitted. */}
+            {/* Every qualified idea, grouped by meal character — never by
+                weekday: a longer cooking project is still perfectly assignable
+                to a Wednesday. There is no hidden second page (Kitchen
+                DESIGN.md §4.3.1). Empty groups are omitted. */}
             {(() => {
               const isAssignedId = (id: string) =>
                 plan?.days.some((d) => d?.recipeId === id || d?.meal?.main?.id === id || d?.brunch?.main?.id === id) ?? false;
-              const shortlist = shortlistShelf(
-                candidates.map((r) => ({ recipeId: r.id, role: r.role, traits: r.traits, assigned: isAssignedId(r.id), recipe: r })),
-              );
               const renderSections = (rows: { recipe: RecipeOption }[]) =>
                 groupShelfItems(rows.map((row) => row.recipe), displayFor).map((section) => (
                   <div key={section.group} className="space-y-4">
@@ -2140,26 +2186,7 @@ function MealsPageInner() {
                     </div>
                   </div>
                 ));
-              return (
-                <>
-                  {renderSections(shortlist.primary)}
-                  {shortlist.secondary.length > 0 && (
-                    <div className="space-y-4 pt-2 border-t border-secondary">
-                      <button
-                        type="button"
-                        onClick={() => setShowMoreIdeas((v) => !v)}
-                        aria-expanded={showMoreIdeas}
-                        className="text-xs text-quaternary hover:text-secondary transition-colors"
-                      >
-                        {showMoreIdeas
-                          ? "Hide the other ideas"
-                          : `Show ${shortlist.secondary.length} more eligible idea${shortlist.secondary.length === 1 ? "" : "s"}`}
-                      </button>
-                      {showMoreIdeas && renderSections(shortlist.secondary)}
-                    </div>
-                  )}
-                </>
-              );
+              return <>{renderSections(candidates.map((recipe) => ({ recipe })))}</>;
             })()}
           </div>
         )}
@@ -2413,6 +2440,7 @@ function RecipeCard({
       : recipe.discovery === "search"
         ? "found by search"
         : null;
+  const reviewLabel = reviewLabelFor(recipe.review);
 
   return (
     <div
@@ -2453,14 +2481,18 @@ function RecipeCard({
           {recipe.name}
         </h3>
         <div className="mt-1 flex items-center gap-2">
-          <p className="text-[11px] text-quaternary truncate italic">
-            {isWebInspiration ? recipe.source?.publication : recipe.source?.cookbook}
+          <p className="text-[11px] text-quaternary truncate italic" title={isWebInspiration ? recipe.source?.publication : recipe.source?.cookbook}>
+            {sourceLabelFor(recipe)}
           </p>
-          {isWebInspiration && (
-            <span className="shrink-0 text-[9px] uppercase tracking-[0.14em] px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400">
-              web
-            </span>
-          )}
+          <span
+            className={`shrink-0 text-[9px] uppercase tracking-[0.14em] px-1.5 py-0.5 rounded ${
+              isWebInspiration
+                ? "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400"
+                : "bg-secondary text-quaternary"
+            }`}
+          >
+            {isWebInspiration ? "web" : "recipe book"}
+          </span>
           {isWebInspiration && discoveryLabel && (
             <span className="shrink-0 text-[9px] uppercase tracking-[0.14em] text-quaternary">
               {discoveryLabel}
@@ -2469,6 +2501,16 @@ function RecipeCard({
           {display.lightMeal && (
             <span className="shrink-0 text-[9px] uppercase tracking-[0.14em] px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400">
               light meal
+            </span>
+          )}
+          {reviewLabel && (
+            <span
+              title={reviewLabel.title}
+              className={`shrink-0 text-[9px] uppercase tracking-[0.14em] ${
+                reviewLabel.text === "checked" ? "text-emerald-600 dark:text-emerald-400" : "text-quaternary"
+              }`}
+            >
+              {reviewLabel.text}
             </span>
           )}
         </div>
@@ -2480,6 +2522,12 @@ function RecipeCard({
         {display.makeItDinner && (
           <p className="mt-1 text-[11px] text-tertiary leading-snug">
             <span className="text-quaternary">Make it dinner:</span> {display.makeItDinner}
+          </p>
+        )}
+        {/* Calendar-backed seasonality, only when Kitchen could support it. */}
+        {display.seasonNote && (
+          <p className="mt-1 text-[11px] text-tertiary leading-snug">
+            <span className="text-quaternary">Season:</span> {display.seasonNote}
           </p>
         )}
         <div className="flex flex-wrap items-center gap-1 mt-2">

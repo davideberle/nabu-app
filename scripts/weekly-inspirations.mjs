@@ -87,7 +87,7 @@ export const TRUSTED_SOURCES = PLANNER_SOURCES.map(toImporterSource);
 export const AUTOMATIC_SOURCES = TRUSTED_SOURCES.filter((s) => s.automatic);
 
 const TRUSTED_HOSTS = new Set(TRUSTED_SOURCES.map((s) => s.host));
-const DEFAULT_COUNT = 8;
+const DEFAULT_COUNT = 10;
 /** Pairing/serve-with ideas staged per week. They never occupy a main slot. */
 const MAX_PAIRING_IMPORTS = 3;
 const USER_AGENT = "NabuKitchenWeeklyInspiration/0.1 (+https://app.davideberle.com)";
@@ -99,7 +99,7 @@ function usage() {
 Options:
   --query <text>              Search query. Default: season-aware dinner query.
   --week <YYYY-Www>           Week id for provenance. Default: current ISO week.
-  --count <n>                 Number of inspirations. Default: ${DEFAULT_COUNT} (aims for 4-6 FOOBY + 2-3 other sources).
+  --count <n>                 Number of inspirations. Default: ${DEFAULT_COUNT} (an oversized web pool; the shelf keeps 8, 2–3 of them FOOBY when it qualifies).
   --source <host-or-name>     Limit to one trusted source. May be repeated.
   --url <recipe-url>          Import explicit trusted recipe URL. May be repeated.
   --write-kitchen             Save Kitchen recipe JSON under projects/kitchen/recipes/<slug>/recipe.json.
@@ -199,16 +199,32 @@ async function runWeeklyInspirationsInner(opts) {
   const known = await loadKnownRecipes();
   const sourceFilter = buildSourceFilter(opts.sources);
   const discoveryLimit = Math.max(opts.count * 12, 72);
+  // Per-source stage counts (§4.3.1): how many links each source offered, how
+  // many were usable, fetched, extracted, refused and finally imported — so a
+  // repeated zero yield (FOOBY on 2026-09-25) is diagnosable from the report
+  // rather than a guess.
+  const stages = new SourceStages();
+  const eligibleLanes = new Set();
+  const eligibleSources = new Set();
+  const discoveryDiagnostics = [];
   const discovered = opts.urls.length > 0
-    ? opts.urls.map((url) => ({ url, source: sourceForUrl(url), discovery: "search" })).filter((c) => c.source)
-    : await discoverCandidates(opts.query, discoveryLimit, { sources: sourceFilter });
+    ? opts.urls.map((url) => ({ url, source: sourceForUrl(url), discovery: "search" })).filter((c) => c.source).slice(0, discoveryLimit)
+    : iterateDiscoveryCandidates(opts.query, discoveryLimit, {
+        sources: sourceFilter,
+        knownSourceUrls: known.sourceUrls,
+        eligibleLanes: () => eligibleLanes,
+        eligibleSources: () => eligibleSources,
+        diagnostics: discoveryDiagnostics,
+        stages,
+      });
 
   const report = {
     week: opts.week,
     query: opts.query,
     requestedCount: opts.count,
     dryRun: !(opts.writeKitchen || opts.writeAppFiles || opts.writeAppDb),
-    considered: discovered.length,
+    considered: 0,
+    discoveryDiagnostics,
     discoveryLimit,
     imported: [],
     pairings: [],
@@ -218,6 +234,8 @@ async function runWeeklyInspirationsInner(opts) {
     // manual one-off import never silently becomes "the week's staged set".
     stageWeek: !!opts.stageWeek,
     stagedProvenance: [],
+    /** Filled after the loop: per-source stage counts and concise reasons. */
+    sourceStages: [],
   };
 
   const picked = [];
@@ -228,10 +246,12 @@ async function runWeeklyInspirationsInner(opts) {
   const perSourceCount = new Map();
   let pairingCount = 0;
 
-  for (const candidate of discovered) {
+  for await (const candidate of discovered) {
     if (picked.length >= opts.count) break;
+    report.considered += 1;
     if (!candidate?.url || seenUrls.has(candidate.url)) continue;
     seenUrls.add(candidate.url);
+    const stage = stages.for(candidate.source ?? sourceForUrl(candidate.url));
 
     try {
       assertTrustedUrl(candidate.url);
@@ -244,19 +264,25 @@ async function runWeeklyInspirationsInner(opts) {
       const used = perSourceCount.get(source.host) ?? 0;
       const cap = source.visibleCap ?? 2;
       if (used >= cap) {
+        stage.capReached += 1;
         report.skipped.push({ url: candidate.url, reason: `source cap reached (${source.name}: ${cap})` });
         continue;
       }
 
+      stage.fetched += 1;
       const html = await fetchText(candidate.url);
       const extracted = extractRecipeFromHtml(html, candidate.url, source);
       if (!extracted) {
+        stage.extractionFailed += 1;
+        stage.note("no usable recipe structure");
         report.skipped.push({ url: candidate.url, reason: "no usable recipe structure found" });
         continue;
       }
+      stage.extracted += 1;
 
       const duplicate = findDuplicate(extracted, known);
       if (duplicate) {
+        stage.duplicates += 1;
         report.skipped.push({
           url: candidate.url,
           name: extracted.name,
@@ -276,6 +302,8 @@ async function runWeeklyInspirationsInner(opts) {
         toCompanionRecipe(extracted, { slug, week: opts.week, image: extracted.image ?? null }),
       );
       if (role.role === "reject") {
+        stage.reviewExcluded += 1;
+        stage.note(`non-main: ${role.category}`);
         report.skipped.push({
           url: candidate.url,
           name: extracted.name,
@@ -289,6 +317,7 @@ async function runWeeklyInspirationsInner(opts) {
       }
       const isPairing = role.role === "pairing";
       if (isPairing && pairingCount >= MAX_PAIRING_IMPORTS) {
+        stage.reviewExcluded += 1;
         report.skipped.push({ url: candidate.url, name: extracted.name, reason: "pairing cap reached" });
         continue;
       }
@@ -302,6 +331,8 @@ async function runWeeklyInspirationsInner(opts) {
       const image = resolvedImage.image;
 
       if (!image) {
+        stage.reviewExcluded += 1;
+        stage.note(resolvedImage.rejectedTooSmall ? "image below the card floor" : "missing usable image");
         report.skipped.push({
           url: candidate.url,
           name: extracted.name,
@@ -385,18 +416,27 @@ async function runWeeklyInspirationsInner(opts) {
       // A pairing is staged so the planner can offer it as a serve-with idea,
       // but it never counts toward the main target and never fills a main slot.
       if (isPairing) {
+        stage.pairings += 1;
         report.pairings.push(imported);
         pairingCount += 1;
       } else {
+        stage.selected += 1;
         report.imported.push(imported);
         picked.push(imported);
         perSourceCount.set(source.host, used + 1);
+        // Feedback for discovery: a lane and a source count as covered only by
+        // a main that survived every import gate, never by a raw link.
+        eligibleLanes.add(source.lane);
+        eligibleSources.add(source.id);
       }
 
       known.ids.add(slug);
       known.normalizedTitles.add(normalizeTitle(extracted.name));
       known.sourceUrls.add(normalizeUrl(candidate.url));
+      if (picked.length >= opts.count) break;
     } catch (err) {
+      stage.errors += 1;
+      stage.note(err instanceof Error ? err.message : String(err));
       report.errors.push({
         url: candidate?.url,
         message: err instanceof Error ? err.message : String(err),
@@ -404,7 +444,67 @@ async function runWeeklyInspirationsInner(opts) {
     }
   }
 
+  report.sourceStages = stages.report();
   return report;
+}
+
+/**
+ * Per-source stage counts and concise failure reasons (§4.3.1).
+ *
+ * `editorialLinks` is what the editorial surface offered; `usableLinks` what
+ * survived URL hygiene and known-URL exclusion; `fallbackLinks` what the
+ * source's own targeted fallback added; then the import gates in order.
+ * `selected` counts mains that reached the week. The whole point is that a
+ * zero can be explained: "0 editorial links" is a different problem from
+ * "7 fetched, 7 extracted, 7 duplicates".
+ */
+export class SourceStages {
+  constructor() {
+    this.bySource = new Map();
+  }
+
+  for(source) {
+    const key = source?.id ?? source?.host ?? "unknown";
+    let stage = this.bySource.get(key);
+    if (!stage) {
+      stage = {
+        source: source?.name ?? key,
+        sourceId: key,
+        tier: source?.tier ?? null,
+        editorialSurfaces: 0,
+        editorialLinks: 0,
+        usableLinks: 0,
+        fallbackSearched: false,
+        fallbackLinks: 0,
+        searchLinks: 0,
+        fetched: 0,
+        extracted: 0,
+        extractionFailed: 0,
+        duplicates: 0,
+        reviewExcluded: 0,
+        capReached: 0,
+        pairings: 0,
+        selected: 0,
+        errors: 0,
+        reasons: new Map(),
+        note(reason) {
+          const text = String(reason).slice(0, 120);
+          this.reasons.set(text, (this.reasons.get(text) ?? 0) + 1);
+        },
+      };
+      this.bySource.set(key, stage);
+    }
+    return stage;
+  }
+
+  report() {
+    return [...this.bySource.values()].map(({ reasons, note: _note, ...stage }) => ({
+      ...stage,
+      reasons: [...reasons.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6).map(([reason, count]) => ({ reason, count })),
+      yield: stage.selected,
+      zeroYield: stage.selected === 0,
+    }));
+  }
 }
 
 function buildSourceFilter(filters) {
@@ -437,102 +537,162 @@ export function assertTrustedUrl(url) {
 }
 
 /**
- * Ordered weekly discovery: editorial surfaces first, targeted search second.
+ * Ordered weekly discovery, as an async iterator.
  *
- * This is the behaviour AC1 asks for and the old implementation did not have.
- * Previously every source got the same generic seasonal query and the first
- * parseable pages won. Now:
- *
- *   1. every tier-A editorial surface is read (FOOBY's "Inspiration for this
- *      week", the monthly editor collections), plus seasonally relevant tier-B
- *      surfaces. Those candidates are marked `discovery: "editorial"`
- *   2. the lanes those candidates already cover are measured
- *   3. only the *uncovered* lanes justify a targeted search step, which is what
- *      opens tier C at all
+ *   1. every tier-A editorial surface, plus seasonally relevant tier-B
+ *      surfaces, is read; links are filtered for URL hygiene and already-known
+ *      URLs *before* they consume the candidate budget (the September 25
+ *      discovery-budget repair). Two thirds of the budget is yielded now, in
+ *      per-source round robin, so one large editorial surface cannot front
+ *      the whole queue
+ *   2. the caller has now applied the real import gates. Lanes and sources
+ *      count as covered only by mains that survived them, never by raw links
+ *   3. a tier-A/B source whose editorial surface yielded nothing usable — or
+ *      nothing that qualified — gets the registry's own targeted fallback
+ *      (FOOBY's seasonal recipe search). This is the accidental dead end
+ *      `buildDiscoveryPlan` used to have: tier-A sources with an editorial
+ *      surface were excluded from every search step, so zero FOOBY links
+ *      meant zero FOOBY, every week. It is bounded to that source and never
+ *      a generic fan-out
+ *   4. only the still-uncovered lanes justify a targeted search step, which is
+ *      what opens tier C at all; the remaining editorial links follow
  *
  * A source contributes nothing when its surface is broken or its picks do not
  * qualify. There is no FOOBY quota: its cap is a ceiling applied later, during
- * selection.
+ * selection, and its 2–3 target is an aim, not a fill.
  */
-export async function discoverCandidates(query, limit = 24, options = {}) {
+export async function* iterateDiscoveryCandidates(query, limit = 24, options = {}) {
   const now = options.now ?? new Date();
-  const sourceFilter = options.sources ?? null;
-  const allow = sourceFilter ? new Set(sourceFilter.map((s) => s.host)) : null;
-  const keep = (step) => !allow || allow.has(step.source.host);
-
-  const editorialSteps = buildDiscoveryPlan({ now }).filter((step) => step.mode === "editorial").filter(keep);
+  const sourceFilter = options.sources ?? AUTOMATIC_SOURCES;
+  const allow = new Set(sourceFilter.map((s) => s.host));
+  const keep = (step) => allow.has(step.source.host);
+  const diagnostics = options.diagnostics ?? [];
+  const stages = options.stages ?? new SourceStages();
+  const readEditorial = options.readEditorial ?? scrapeEditorialSurface;
+  const search = options.search ?? searchSource;
+  const seen = new Set();
+  let considered = 0;
+  const usableLink = (link) => {
+    if (!link?.url || !isProbablyRecipeUrl(link.url)) return false;
+    const key = normalizeUrl(link.url);
+    if (seen.has(key) || options.knownSourceUrls?.has(key)) return false;
+    seen.add(key);
+    return true;
+  };
   const editorial = [];
-  const byHost = new Map();
-
-  for (const step of editorialSteps) {
+  const editorialSources = new Map();
+  for (const step of buildDiscoveryPlan({ now }).filter((s) => s.mode === "editorial").filter(keep)) {
     const source = toImporterSource(step.source);
-    let links = [];
+    const stage = stages.for(source);
+    stage.editorialSurfaces += 1;
+    editorialSources.set(source.id, source);
     try {
-      links = await scrapeEditorialSurface(step, source);
-    } catch {
-      // A broken editorial surface reduces this source's yield for the week.
-      // It must never fail the run.
-    }
-    for (const link of links) {
-      if (!link?.url || !isProbablyRecipeUrl(link.url)) continue;
-      const candidate = { ...link, source, discovery: "editorial" };
-      editorial.push(candidate);
-      if (!byHost.has(source.host)) byHost.set(source.host, []);
-      byHost.get(source.host).push(candidate);
+      for (const link of await readEditorial(step, source)) {
+        stage.editorialLinks += 1;
+        if (!usableLink(link)) continue;
+        stage.usableLinks += 1;
+        editorial.push({ ...link, source, discovery: "editorial" });
+      }
+    } catch (err) {
+      stage.note(`editorial: ${String(err.message ?? err)}`);
+      diagnostics.push({ source: source.name, phase: "editorial", message: String(err.message ?? err) });
     }
   }
+  const orderedEditorial = interleaveBySource(editorial, (c) => c.source.host);
+  const editorialBudget = Math.ceil(limit * 2 / 3);
+  for (const candidate of orderedEditorial.slice(0, editorialBudget)) {
+    considered += 1;
+    yield candidate;
+  }
 
-  // Which lanes did the editorial pool actually cover?
-  const coveredLanes = new Set(editorial.map((c) => c.source.lane));
-  const laneGaps = [
-    ...new Set(
-      PLANNER_SOURCES
-        .filter((source) => source.automatic && !coveredLanes.has(source.lane))
-        .map((source) => source.lane),
-    ),
-  ];
+  // These are read after yields: the caller has now applied the real import
+  // gates. Without feedback no lane is assumed qualified (safe dry discovery).
+  const coveredLanes = options.eligibleLanes?.() ?? new Set();
+  const coveredSources = options.eligibleSources?.() ?? new Set();
 
-  const searchCandidates = [];
-  if (editorial.length < limit && laneGaps.length > 0) {
-    const searchSteps = buildDiscoveryPlan({ now, laneGaps }).filter((step) => step.mode === "search").filter(keep);
-    const perSource = Math.max(4, Math.ceil(limit / Math.max(1, searchSteps.length)));
-    for (const step of searchSteps) {
+  // Zero-yield targeted fallback, per source, before any lane search.
+  const zeroYieldSourceIds = [...editorialSources.values()]
+    .filter((source) => !coveredSources.has(source.id))
+    .filter((source) => stages.for(source).usableLinks === 0 || stages.for(source).selected === 0)
+    .map((source) => source.id);
+  const fallbackCandidates = [];
+  if (considered < limit && zeroYieldSourceIds.length > 0) {
+    for (const step of buildDiscoveryPlan({ now, zeroYieldSourceIds }).filter((s) => s.mode === "targeted-fallback").filter(keep)) {
       const source = toImporterSource(step.source);
+      const stage = stages.for(source);
+      stage.fallbackSearched = true;
+      const perSource = Math.max(4, step.source.targetedFallback?.target?.max ?? 3) * 2;
       try {
-        const results = await searchSource(source, query, perSource);
-        for (const result of results) {
-          if (!result?.url || !isProbablyRecipeUrl(result.url)) continue;
-          const candidate = { ...result, source, discovery: "search" };
-          searchCandidates.push(candidate);
-          if (!byHost.has(source.host)) byHost.set(source.host, []);
-          byHost.get(source.host).push(candidate);
+        const targetedQuery = queryForLane(source.lane, query);
+        for (const result of (await search(source, targetedQuery, perSource)).slice(0, perSource)) {
+          if (!usableLink(result)) continue;
+          stage.fallbackLinks += 1;
+          fallbackCandidates.push({ ...result, source, discovery: "search" });
         }
-      } catch {
-        // One source failing must not kill the weekly run.
+        if (stage.fallbackLinks === 0) stage.note("targeted fallback returned no usable links");
+      } catch (err) {
+        stage.note(`targeted fallback: ${String(err.message ?? err)}`);
+        diagnostics.push({ source: source.name, phase: "targeted-fallback", message: String(err.message ?? err) });
       }
     }
   }
+  for (const candidate of fallbackCandidates) {
+    if (considered >= limit) break;
+    considered += 1;
+    yield candidate;
+  }
 
-  // Interleave by host inside each phase so no single site fronts the queue.
-  const ordered = [
-    ...interleaveBySource(editorial, (c) => c.source.host),
+  const laneGaps = [...new Set(sourceFilter
+    .filter((source) => source.automatic && !coveredLanes.has(source.lane) && source.lane !== "heritage-technique")
+    .map((source) => source.lane))];
+  const searchSteps = buildDiscoveryPlan({ now, laneGaps }).filter((step) => step.mode === "search").filter(keep);
+  const perSource = Math.max(4, Math.ceil(limit / Math.max(1, searchSteps.length)));
+  const searchCandidates = [];
+  if (considered < limit) {
+    for (const step of searchSteps) {
+      const source = toImporterSource(step.source);
+      const stage = stages.for(source);
+      try {
+        // WordPress full-phrase searches commonly yield zero. A concrete lane
+        // ingredient/dish closes the measured gap without broad site fan-out.
+        const targetedQuery = queryForLane(source.lane, query);
+        for (const result of (await search(source, targetedQuery, perSource)).slice(0, perSource)) {
+          if (!usableLink(result)) continue;
+          stage.searchLinks += 1;
+          searchCandidates.push({ ...result, source, discovery: "search" });
+        }
+      } catch (err) {
+        stage.note(`search: ${String(err.message ?? err)}`);
+        diagnostics.push({ source: source.name, phase: "search", message: String(err.message ?? err) });
+      }
+    }
+  }
+  for (const candidate of [
     ...interleaveBySource(searchCandidates, (c) => c.source.host),
-  ];
+    ...orderedEditorial.slice(editorialBudget),
+  ]) {
+    if (considered >= limit) break;
+    considered += 1;
+    yield candidate;
+  }
+}
 
-  const seen = new Set();
-  return ordered
-    .filter((r) => {
-      const key = normalizeUrl(r.url);
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    })
-    .slice(0, limit);
+export async function discoverCandidates(query, limit = 24, options = {}) {
+  const candidates = [];
+  for await (const candidate of iterateDiscoveryCandidates(query, limit, options)) candidates.push(candidate);
+  return candidates;
 }
 
 /** Backwards-compatible alias; discovery is registry-driven now. */
-export async function searchTrustedSources(query, limit = 24, sources = TRUSTED_SOURCES) {
+export async function searchTrustedSources(query, limit = 24, sources = AUTOMATIC_SOURCES) {
   return discoverCandidates(query, limit, { sources });
+}
+
+export function queryForLane(lane, query) {
+  // Only specialize the generated default query family; preserve targeted requests.
+  if (!/^(spring|summer|fall|winter) vegetarian dinner recipe$/.test(query)) return query;
+  const seasonal = /fall|autumn|winter|pumpkin|squash/i.test(query) ? "squash" : "vegetable";
+  return ({ indian: "curry", "asian-vegan": "tofu", "global-technique": seasonal, "european-seasonal": seasonal, "swiss-seasonal": seasonal })[lane] ?? query;
 }
 
 /**
@@ -673,20 +833,25 @@ async function searchHomepageLinks(source, query, limit) {
   return links.slice(0, limit);
 }
 
-function isProbablyRecipeUrl(url) {
+export function isProbablyRecipeUrl(url) {
   try {
     const u = new URL(url);
-    if (!sourceForUrl(url)) return false;
+    const source = sourceForUrl(url);
+    if (!source || u.protocol !== "https:") return false;
     const p = u.pathname.toLowerCase().replace(/\/+$/, "");
-    if (p === "" || p === "/" || p.includes("/category/") || p.includes("/tag/") || p.includes("/author/")) return false;
-    if (p.includes("/shop") || p.includes("/about") || p.includes("/privacy")) return false;
-    if (p.includes("/page/")) return false;
-    // Reject roundup / list pages — these have no recipe JSON-LD but
-    // dominate WP search results for broad queries like "spring dinner".
-    const slug = p.split("/").filter(Boolean).pop() || "";
-    if (/^\d+-/.test(slug)) return false;                       // "29-vegan-dinner-recipes"
-    if (/-ideas$|-recipes$|-roundup$|-collection$/.test(slug)) return false;  // "spring-dinner-ideas"
-    if (/best-.*-recipes|easy-.*-ideas/.test(slug)) return false;
+    const parts = p.split("/").filter(Boolean);
+    if (!parts.length || /\/(category|tag|author|page|shop|about|privacy|search|subscribe|videos|ingredient-index|affiliate-discretion)(\/|$)/.test(p)) return false;
+    const host = source.host.replace(/^www\./, "");
+    // These publishers expose both recipe collections and recipe pages under
+    // /recipes/. Accept only their individual-recipe path shape.
+    if (host === "bbcgoodfood.com" && (parts.length !== 2 || parts[0] !== "recipes" || parts[1] === "collection")) return false;
+    if (host === "forksoverknives.com" && (parts.length !== 3 || parts[0] !== "recipes" || parts[1] === "vegan-menus-collections")) return false;
+    if (host === "fooby.ch") return /^\/(en|de|fr|it)\/recipes\/\d+\/[^/]+$/.test(p);
+    if (host === "kitchenstories.com" && !/^\/[a-z]{2}\/recipes\/[^/]+$/.test(p)) return false;
+    if (host === "essen-und-trinken.de" && !/\/rezepte\/\d+[-_]/.test(p)) return false;
+    const slug = parts.at(-1) || "";
+    if (/^\d+-/.test(slug) || /-ideas$|-recipes$|-roundup$|-collection$/.test(slug)) return false;
+    if (/best-.*-recipes|easy-.*-ideas|^what-to-cook-this-|cookbook|cooking-club/.test(slug)) return false;
     return true;
   } catch {
     return false;
@@ -1145,12 +1310,12 @@ function dishTypesFromDeclaredCategory(category) {
   if (!declared) return null;
   if (/\b(dessert|sweets?|s(ü|ue)ss|patisserie|pastry)\b/.test(declared)) return ["dessert"];
   if (/\b(drink|drinks|beverage|cocktail|getr(ä|ae)nk)\b/.test(declared)) return ["drink"];
-  if (/\b(bak(e|ing)|bread|brot|geb(ä|ae)ck)\b/.test(declared)) return ["baking"];
+  if (/\b(bak(e|ed goods?|ing)|bread|brot|geb(ä|ae)ck)\b/.test(declared)) return ["baking"];
   if (/\b(breakfast|brunch|fr(ü|ue)hst(ü|ue)ck)\b/.test(declared)) return ["breakfast"];
   if (/\b(snack|apero|ap(é|e)ritif|finger food)\b/.test(declared)) return ["snack"];
   if (/\b(condiment|sauce|dressing|dip|chutney|pickle)\b/.test(declared)) return ["condiment", "side"];
   if (/\b(starter|appetiz|appetis|vorspeise|entr(é|e)e froide)\b/.test(declared)) return ["starter"];
-  if (/\b(side|side dish|beilage)\b/.test(declared)) return ["side"];
+  if (/\b(sides?|side dishes?|beilage)\b/.test(declared)) return ["side"];
   if (/\b(salad|salat)\b/.test(declared)) return ["salad"];
   if (/\b(soup|suppe)\b/.test(declared)) return ["soup", "main"];
   if (/\b(main|main course|main dish|dinner|supper|hauptgang|hauptspeise)\b/.test(declared)) return ["main"];
@@ -1623,6 +1788,12 @@ function stripTags(value) {
 function decodeHtml(value) {
   return String(value)
     .replace(/&amp;/g, "&")
+    // Recipe JSON-LD may retain named fractions (observed in Cookie and Kate).
+    // Decode before ingredient parsing so quantities are not quarantined as HTML.
+    .replace(/&frac(14|12|34|13|23|18|38|58|78);/g, (_, fraction) => ({
+      "14": "¼", "12": "½", "34": "¾", "13": "⅓", "23": "⅔",
+      "18": "⅛", "38": "⅜", "58": "⅝", "78": "⅞",
+    })[fraction])
     .replace(/&quot;/g, '"')
     .replace(/&#039;|&apos;/g, "'")
     .replace(/&lt;/g, "<")

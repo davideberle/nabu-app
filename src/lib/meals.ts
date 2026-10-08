@@ -75,6 +75,8 @@ import type { PlannerRole as PlannerRoleType } from "./planner-roles.ts";
 // completion suggestion) lives in planner-display.ts; re-exported here so app
 // code keeps one import site.
 import type { ShelfDisplay } from "./planner-display.ts";
+import type { RecipeSeasonality } from "./planner-seasonality.ts";
+import type { CandidateReviewSummary } from "./planner-review.ts";
 export type { ShelfDisplay, ShelfGroup, ShelfGroupSection } from "./planner-display.ts";
 export {
   SHELF_GROUP_ORDER,
@@ -275,6 +277,13 @@ export type CandidateItem = {
    * saved week gains it without being regenerated.
    */
   display?: ShelfDisplay;
+  // --- twenty-choice contract (planner-shelf-2, Kitchen DESIGN.md §4.3.1) ---
+  /** Seasonality verdict bound to the planned month and the cited Swiss calendar. */
+  seasonality?: RecipeSeasonality;
+  /** SHA-256 of the minimized review content the review state is bound to. */
+  contentSha256?: string;
+  /** Content-review state. Rendered as a label; never a qualification on its own. */
+  review?: CandidateReviewSummary;
 };
 
 /** Pairing/serve-with idea kept as reserve metadata, never a main slot. */
@@ -329,6 +338,8 @@ export type CandidateSet = {
   notThisWeek?: { recipeId: string; at: string; origin?: "web" | "catalog" }[];
   /** Rejected records and safe auto-fixes observed while preparing this shelf. */
   qaDiagnostics?: { recipeId: string; recipeName: string; issues: string[]; fixes: string[] }[];
+  /** Version of the Swiss produce calendar the seasonality notes were derived from. */
+  calendarVersion?: string;
 };
 
 export type DayPlanningState = "open" | "assigned" | "meal" | "skipped";

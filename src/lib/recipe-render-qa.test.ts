@@ -307,10 +307,10 @@ describe("context-aware completion", () => {
     ok(open.indexOf("soup2") > open.indexOf("fish"));
   });
   it("replaces an idea the assigned days now rule out", () => {
-    const meats = [item({ recipeId: "m1", assigned: true, traits: traits({ protein: "meat" }) }), item({ recipeId: "m2", assigned: true, traits: traits({ protein: "meat" }) })];
-    const thirdMeat = item({ recipeId: "m3", traits: traits({ protein: "meat" }) });
-    const result = completeShelfAgainstPlan([...meats, thirdMeat], { assignedTraits: meats.map((m) => m.traits), openWeekdays: 4, openWeekendDays: 1 }, [cand({ recipeId: "veg" })], { target: { min: 3, max: 4 } });
-    ok(result.removed.some((r) => r.recipeId === "m3"));
+    const meats = Array.from({ length: SHELF_LIMITS.maxMeat }, (_, i) => item({ recipeId: `m${i + 1}`, assigned: true, traits: traits({ protein: "meat" }) }));
+    const extraMeat = item({ recipeId: "m-extra", traits: traits({ protein: "meat" }) });
+    const result = completeShelfAgainstPlan([...meats, extraMeat], { assignedTraits: meats.map((m) => m.traits), openWeekdays: 4, openWeekendDays: 1 }, [cand({ recipeId: "veg" })], { target: { min: meats.length + 1, max: meats.length + 2 } });
+    ok(result.removed.some((r) => r.recipeId === "m-extra"));
     ok(result.added.some((a) => a.recipeId === "veg"));
     ok(result.shelf.some((i) => i.recipeId === "m1" && i.assigned));
   });

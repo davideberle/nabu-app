@@ -25,6 +25,8 @@ import {
   type RolloverDeps,
 } from "./planner-preparation.ts";
 import { SHELF_POLICY_VERSION, type ShelfCandidate, type ShelfTraits } from "./planner-shelf.ts";
+import { SHELF_TARGET, WEB_TARGET } from "./planner-sources.ts";
+import { seasonCalendarVersion } from "./planner-seasonality.ts";
 import { recordUnselectedExposure, type ExposureRecord } from "./planner-exposure.ts";
 import type { StagedWebRecipe } from "./planner-staging.ts";
 import type { MealPlan } from "./meals.ts";
@@ -51,6 +53,7 @@ function traits(overrides: Partial<ShelfTraits> = {}): ShelfTraits {
 function candidate(id: string, overrides: Partial<ShelfCandidate> = {}): ShelfCandidate {
   return {
     recipeId: id,
+    contentSha256: `sha-${id}`,
     recipeName: `Recipe ${id}`,
     origin: "catalog",
     discovery: "catalog",
@@ -63,7 +66,7 @@ function candidate(id: string, overrides: Partial<ShelfCandidate> = {}): ShelfCa
   };
 }
 
-function catalogPool(size = 24): ShelfCandidate[] {
+function catalogPool(size = 48): ShelfCandidate[] {
   const shapes = ["soup", "salad", "stew-curry", "bowl", "roast-bake", "grill", "stir-fry", "other"] as const;
   const proteins = ["vegan", "vegetarian", "fish", "vegetarian", "meat", "vegan", "vegetarian", "vegan"] as const;
   const efforts = ["quick", "medium", "project", "quick", "medium", "quick", "quick", "medium"] as const;
@@ -81,7 +84,7 @@ function catalogPool(size = 24): ShelfCandidate[] {
   );
 }
 
-function webPool(size = 5): ShelfCandidate[] {
+function webPool(size = 10): ShelfCandidate[] {
   return Array.from({ length: size }, (_, i) =>
     candidate(`web-${i}`, {
       origin: "web",
@@ -178,9 +181,10 @@ describe("shelf health", () => {
       candidateSet: {
         generatedAt: new Date(NOW.getTime() - 86_400_000).toISOString(),
         policyVersion: SHELF_POLICY_VERSION,
-        // A *quality* shelf (Phase 4E): five web ideas, catalog ideas from
-        // distinct cookbooks, images, and real effort variation.
-        items: Array.from({ length: 13 }, (_, i) => ({
+        // A *quality* shelf (Phase 4E / §4.3.1): eight web ideas, twelve
+        // catalog ideas from distinct cookbooks, images, real effort and
+        // protein variation.
+        items: Array.from({ length: 20 }, (_, i) => ({
           recipeId: `r-${i}`,
           recipeName: `R ${i}`,
           dietary: [],
@@ -189,12 +193,12 @@ describe("shelf health", () => {
           category: "main",
           courseTags: [],
           bucket: "vegetarian" as const,
-          origin: (i < 5 ? "web" : "catalog") as "web" | "catalog",
+          origin: (i < 8 ? "web" : "catalog") as "web" | "catalog",
           source: { cookbook: `Book ${i}`, author: "" },
           image: "https://img.example/r.jpg",
           traits: {
             shape: "other" as const,
-            protein: (i < 5 ? "vegan" : i < 9 ? "vegetarian" : i < 11 ? "fish" : "meat") as ShelfTraits["protein"],
+            protein: (i < 7 ? "vegan" : i < 14 ? "vegetarian" : i < 17 ? "fish" : "meat") as ShelfTraits["protein"],
             starch: "none" as const,
             effort: (i % 3 === 0 ? "quick" : i % 3 === 1 ? "medium" : "project") as "quick" | "medium" | "project",
             weekdayFit: true,
@@ -262,12 +266,7 @@ describe("shelf health", () => {
 
 describe("weekly preparation", () => {
   it("runs discovery, assembles a shelf, and persists it", async () => {
-    const h = harness({
-      web: [
-        candidate("web-1", { origin: "web", discovery: "editorial", sourceName: "FOOBY" }),
-        candidate("web-2", { origin: "web", discovery: "editorial", sourceName: "Cookie and Kate" }),
-      ],
-    });
+    const h = harness();
     const outcome = await prepareWeek(WEEK, h.deps);
 
     equal(outcome.status, "prepared");
@@ -275,7 +274,11 @@ describe("weekly preparation", () => {
     equal(h.saved.length, 1);
     const set = h.saved[0].candidateSet!;
     equal(set.policyVersion, SHELF_POLICY_VERSION);
-    ok(set.items.length >= 12 && set.items.length <= 14);
+    equal(set.items.length, SHELF_TARGET.min, "a sufficient pool yields exactly twenty");
+    equal(new Set(set.items.map((item) => item.recipeId)).size, SHELF_TARGET.min, "no duplicate ids");
+    equal(set.shelfDiagnostics?.webSelected, WEB_TARGET.max);
+    equal(set.shelfDiagnostics?.catalogSelected, SHELF_TARGET.min - WEB_TARGET.max);
+    equal(set.calendarVersion, seasonCalendarVersion());
     ok(set.shelfDiagnostics, "diagnostics are persisted with the shelf");
     deepStrictEqual(h.completions, [{ week: WEEK, kind: "prepare", status: "succeeded" }]);
   });
@@ -288,6 +291,50 @@ describe("weekly preparation", () => {
     ];
     await prepareWeek(WEEK, h.deps);
     deepStrictEqual(h.saved[0].candidateSet?.qaDiagnostics?.map((row) => row.recipeId), ["fixed", "rejected"]);
+  });
+
+  it("WP10: a refresh leaves days, lock, status, notes and context byte-identical and keeps dismissals", async () => {
+    const plan = emptyPlan();
+    plan.status = "draft";
+    plan.notes = "guests on Friday";
+    plan.context = [{ id: "ctx-1", kind: "guests", note: "4 guests", date: "2026-08-21" }];
+    plan.days = [
+      { ...plan.days[0], planningState: "assigned", recipeId: "catalog-3", recipeName: "Recipe catalog-3" },
+      { ...plan.days[1], planningState: "meal", recipeId: "catalog-5", recipeName: "Recipe catalog-5", meal: { main: { id: "catalog-5", name: "Recipe catalog-5" }, sides: [{ id: "catalog-7", name: "Side" }] } },
+      { date: "2026-08-19", dayOfWeek: "Wednesday", type: "weekday", planningState: "skipped", recipeId: null, recipeName: null },
+      { date: "2026-08-20", dayOfWeek: "Thursday", type: "weekday", planningState: "open", recipeId: null, recipeName: null },
+    ];
+    plan.locked = true;
+    plan.candidateSet = {
+      generatedAt: NOW.toISOString(),
+      policyVersion: SHELF_POLICY_VERSION,
+      items: [],
+      notThisWeek: [{ recipeId: "catalog-9", at: NOW.toISOString(), origin: "catalog" }],
+    };
+    const before = JSON.stringify({ days: plan.days, locked: plan.locked, status: plan.status, notes: plan.notes, context: plan.context, createdAt: plan.createdAt });
+
+    const h = harness({ plan });
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    const after = h.saved[0];
+    equal(JSON.stringify({ days: after.days, locked: after.locked, status: after.status, notes: after.notes, context: after.context, createdAt: after.createdAt }), before);
+    const ids = after.candidateSet!.items.map((item) => item.recipeId);
+    ok(ids.includes("catalog-3") && ids.includes("catalog-5"), "assigned recipes are pinned on the shelf");
+    ok(after.candidateSet!.items.filter((item) => ["catalog-3", "catalog-5"].includes(item.recipeId)).every((item) => (item as { assigned?: boolean }).assigned !== false));
+    ok(!ids.includes("catalog-9"), "Not this week survives the refresh");
+    deepStrictEqual(after.candidateSet!.notThisWeek, plan.candidateSet.notThisWeek);
+  });
+
+  it("WP07: provider trouble never produces a checked pass and never loses the shelf", async () => {
+    const h = harness();
+    h.deps.reviewProviderStatus = async () => ({ kind: "provider-unavailable", reason: "HTTP 503 from the review route" });
+    h.deps.loadReviews = async () => new Map();
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    equal(outcome.shelfSize, SHELF_TARGET.min);
+    const states = h.saved[0].candidateSet!.items.map((item) => item.review?.state);
+    ok(states.every((state) => state === "provider-unavailable"), JSON.stringify(outcome.reviewStates));
+    equal(outcome.reviewStates?.["checked-pass"] ?? 0, 0);
   });
 
   it("creates the week record when none exists yet", async () => {
@@ -314,7 +361,7 @@ describe("weekly preparation", () => {
     const h = harness({ web: [], ensure: async () => ({ status: "failed", error: "surface blocked" }) });
     const outcome = await prepareWeek(WEEK, h.deps);
     equal(outcome.status, "prepared");
-    ok((outcome.shelfSize ?? 0) >= 12, "the catalog covers the week on its own");
+    ok((outcome.shelfSize ?? 0) >= SHELF_TARGET.min, "the catalog covers the week on its own");
   });
 
   it("does nothing when the claim is lost, so two runs cannot collide", async () => {
@@ -469,7 +516,7 @@ describe("Friday watchdog", () => {
     const h = harness({ plan: emptyPlan() });
     const outcome = await runWatchdog(WEEK, h.deps);
     equal(outcome.status, "repaired");
-    ok((outcome.shelfSize ?? 0) >= 12);
+    ok((outcome.shelfSize ?? 0) >= SHELF_TARGET.min);
     ok(outcome.warnings?.some((w) => w.includes("no saved candidate set")));
   });
 
@@ -483,7 +530,7 @@ describe("Friday watchdog", () => {
     const outcome = await runWatchdog(WEEK, h.deps);
     equal(outcome.status, "repaired");
     ok(outcome.warnings?.some((w) => w.includes("only 4 ideas")));
-    ok((h.saved[0].candidateSet?.items.length ?? 0) >= 12);
+    ok((h.saved[0].candidateSet?.items.length ?? 0) >= SHELF_TARGET.min);
   });
 
   it("running twice in a row is a no-op the second time", async () => {
