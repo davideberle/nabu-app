@@ -620,6 +620,8 @@ export type PreparationOutcome = {
   /** Previously saved choices carried over after a failure, and prior choices found invalid. */
   retainedPrior?: number;
   invalidPrior?: { recipeId: string; reason: string }[];
+  /** The fresh-first mix was set aside for the re-validated prior shelf (see ShelfDiagnostics.priorShelfKept). */
+  priorShelfKept?: { freshOffered: number; freshSeated: number; mixedSize: number; mixedProblems: string[] };
   error?: string;
 };
 
@@ -810,6 +812,9 @@ export async function prepareWeek(
     const invalidPrior: { recipeId: string; reason: string }[] = [];
     let rawWeb: ShelfCandidate[] = freshWeb;
     let rawCatalog: ShelfCandidate[] = freshCatalog;
+    // Identity of the re-validated prior shelf (current instances included):
+    // the set a failure run may fall back to when mixing degrades it.
+    let priorIds: Set<string> | null = null;
     if (sourceFailure && existing?.candidateSet?.items?.length) {
       const prior = existing.candidateSet.items;
       const revalidated = deps.revalidatePrior
@@ -820,6 +825,7 @@ export async function prepareWeek(
         : null;
       const structural = priorShelfCandidates(prior, invalidPrior);
       const pool = revalidated ?? structural;
+      priorIds = new Set(pool.map((c) => c.recipeId));
       if (revalidated) {
         const kept = new Set(revalidated.map((c) => c.recipeId));
         for (const item of prior) if (item?.recipeId && !kept.has(item.recipeId)) invalidPrior.push({ recipeId: item.recipeId, reason: "no longer resolves or passes the gates" });
@@ -860,12 +866,62 @@ export async function prepareWeek(
       (c.role === "main" || c.role === "light-meal") &&
       c.review?.state !== "checked-hold" &&
       (!dismissed.has(c.recipeId) || assigned.has(c.recipeId));
-    const shelf = assembleWeeklyShelf({
+    const pairings = [...web, ...catalog].filter((c) => c.role === "pairing");
+    let shelf = assembleWeeklyShelf({
       web: web.filter(eligible),
       catalog: catalog.filter(eligible),
-      pairings: [...web, ...catalog].filter((c) => c.role === "pairing"),
+      pairings,
       assignedRecipeIds: assigned,
     });
+
+    // Under a failure the fresh candidates are seated first and the prior
+    // shelf fills in behind them. When the fresh profiles overlap the prior
+    // ones, that order can saturate the set-level caps and leave a shorter
+    // or less balanced shelf than the re-validated prior set alone — a loss
+    // of selection, not of eligible choices. A bounded comparison keeps the
+    // prior set in that case: the same gates, the same current instances,
+    // holds, dismissals and assignments already applied; nothing invalid
+    // and nothing held comes back, and a genuine shortfall stays visible
+    // because the prior set is only preferred when it is actually better.
+    if (priorIds && retained.length > 0 && freshWeb.length + freshCatalog.length > 0 && shelf.items.length > 0) {
+      const ids = priorIds;
+      const fromPrior = (c: ShelfCandidate) => eligible(c) && (ids.has(c.recipeId) || assigned.has(c.recipeId));
+      const priorOnly = assembleWeeklyShelf({
+        web: web.filter(fromPrior),
+        catalog: catalog.filter(fromPrior),
+        pairings,
+        assignedRecipeIds: assigned,
+      });
+      const probe = (candidate: WeeklyShelf) =>
+        assessShelfHealth(
+          {
+            ...(existing ?? { week, status: "draft", plannerVersion: "vNext-1", days: [], context: [], notes: "", locked: false, createdAt: now.toISOString() }),
+            candidateSet: {
+              generatedAt: now.toISOString(),
+              policyVersion: SHELF_POLICY_VERSION,
+              calendarVersion: seasonCalendarVersion(),
+              items: candidate.items.map(toCandidateItem),
+              shelfDiagnostics: candidate.diagnostics,
+            },
+          },
+          now,
+        );
+      const mixedHealth = probe(shelf);
+      const priorHealth = probe(priorOnly);
+      const priorIsBetter =
+        priorOnly.items.length > shelf.items.length ||
+        (priorOnly.items.length === shelf.items.length && !mixedHealth.healthy && priorHealth.healthy);
+      if (priorIsBetter) {
+        const freshIds = new Set([...freshWeb, ...freshCatalog].map((c) => c.recipeId));
+        const priorShelfKept = {
+          freshOffered: freshIds.size,
+          freshSeated: priorOnly.items.filter((item) => freshIds.has(item.recipeId)).length,
+          mixedSize: shelf.items.length,
+          mixedProblems: [...(shelf.diagnostics.warnings ?? []), ...mixedHealth.problems],
+        };
+        shelf = { ...priorOnly, diagnostics: { ...priorOnly.diagnostics, priorShelfKept } };
+      }
+    }
 
     // A load failure that leaves nothing to save is a failed preparation, not
     // an empty shelf: the saved plan (if any) stays exactly as it was.
@@ -932,6 +988,11 @@ export async function prepareWeek(
       ...webWarnings,
       ...loadFailures.map((failure) => `load failed: ${failure}`),
       ...(retainedCount > 0 ? [`retained ${retainedCount} previously saved choice(s) after a failure; ${invalidPrior.length} prior choice(s) no longer valid`] : []),
+      ...(shelf.diagnostics.priorShelfKept
+        ? [
+            `kept the previous valid shelf: seating ${shelf.diagnostics.priorShelfKept.freshOffered} fresh idea(s) first would have left ${shelf.diagnostics.priorShelfKept.mixedSize} idea(s) (${shelf.diagnostics.priorShelfKept.mixedProblems.join("; ") || "no problems recorded"})`,
+          ]
+        : []),
       ...(shelf.diagnostics.warnings ?? []),
       ...(health.healthy ? [] : health.problems.map((problem) => `saved shelf: ${problem}`)),
     ];
@@ -961,6 +1022,7 @@ export async function prepareWeek(
       ...(held.length ? { held } : {}),
       ...(loadFailures.length ? { loadFailures } : {}),
       ...(sourceFailure ? { retainedPrior: retainedCount, invalidPrior } : {}),
+      ...(shelf.diagnostics.priorShelfKept ? { priorShelfKept: shelf.diagnostics.priorShelfKept } : {}),
     };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);

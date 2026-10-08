@@ -595,6 +595,136 @@ describe("weekly preparation", () => {
     ok(items.every((i) => i.review?.state !== "checked-pass"), "no carried positive survives the missing store");
   });
 
+  // The original overlapping profiles from REPAIR-3/4: seven fresh ideas that
+  // duplicate prior cuisine / protein / effort profiles, so fresh-first
+  // seating saturates the set-level caps.
+  const collidingFresh = () => ({
+    web: webPool().slice(0, 3).map((c) => ({ ...c, recipeId: `fresh-${c.recipeId}` })),
+    catalog: catalogPool().slice(0, 4).map((c) => ({ ...c, recipeId: `fresh-${c.recipeId}` })),
+  });
+  const revalidatedFrom = (item: { recipeId: string; origin?: string; traits?: ShelfTraits; cuisine?: string; contentSha256?: string; source?: { cookbook?: string | null } | null }) => ({
+    ...candidate(item.recipeId, { origin: item.origin as "web" | "catalog", traits: item.traits ?? traits(), cuisine: item.cuisine ?? "Other", sourceName: item.source?.cookbook ?? null }),
+    contentSha256: item.contentSha256,
+  });
+
+  it("repair 4: an overlapping partial fresh pool under a review-store outage keeps the valid twenty", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const before = h.saved[0].candidateSet!.items.map((i) => i.recipeId).sort();
+    const fresh = collidingFresh();
+    h.deps.reviewProviderStatus = async () => ({ kind: "ok" });
+    h.deps.loadWebCandidates = async () => fresh.web;
+    h.deps.loadCatalogCandidates = async () => fresh.catalog;
+    h.deps.loadReviews = async () => { throw new Error("review store read outage"); };
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    const items = h.saved[1].candidateSet!.items;
+    equal(items.length, SHELF_TARGET.min);
+    deepStrictEqual(items.map((i) => i.recipeId).sort(), before);
+    equal(outcome.healthy, true);
+    equal(outcome.retainedPrior, SHELF_TARGET.min, "retention diagnostics describe the persisted set");
+    deepStrictEqual(outcome.invalidPrior, []);
+    ok(items.every((i) => i.review?.state === "provider-unavailable"));
+    equal(outcome.priorShelfKept?.freshOffered, 7);
+    equal(outcome.priorShelfKept?.freshSeated, 0);
+    equal(outcome.priorShelfKept?.mixedSize, SHELF_TARGET.min - 1);
+    ok(outcome.priorShelfKept!.mixedProblems.some((p) => p.includes("shortfall")));
+    equal(h.saved[1].candidateSet!.shelfDiagnostics?.priorShelfKept?.mixedSize, SHELF_TARGET.min - 1);
+    ok(outcome.warnings?.some((w) => w.startsWith("kept the previous valid shelf")));
+    ok(!outcome.warnings?.some((w) => w.startsWith("Qualified shortfall")), "the persisted set has no shortfall and none is reported");
+  });
+
+  it("repair 4: the kept prior shelf still excludes newly invalid, currently held and dismissed prior ideas", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const prior = h.saved[0].candidateSet!.items;
+    const invalidId = prior[5].recipeId;
+    const heldId = prior[9].recipeId;
+    const dismissedId = prior[14].recipeId;
+    h.saved[0].candidateSet!.notThisWeek = [{ recipeId: dismissedId, at: NOW.toISOString(), origin: prior[14].origin as "web" | "catalog" }];
+    const fresh = collidingFresh();
+    h.deps.reviewProviderStatus = async () => ({ kind: "ok" });
+    h.deps.loadWebCandidates = async () => fresh.web;
+    h.deps.loadCatalogCandidates = async () => fresh.catalog;
+    h.deps.revalidatePrior = async (items) =>
+      items
+        .filter((item) => item.recipeId !== invalidId)
+        .map((item) => ({
+          ...revalidatedFrom(item),
+          ...(item.recipeId === heldId ? { review: { state: "checked-hold" as const, reason: "persisted current hold", contentSha256: item.contentSha256 } } : {}),
+        }));
+    h.deps.loadReviews = async () => { throw new Error("review store read outage"); };
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    const ids = h.saved[1].candidateSet!.items.map((i) => i.recipeId);
+    for (const id of [invalidId, heldId, dismissedId]) ok(!ids.includes(id), `${id} stays out`);
+    ok(outcome.invalidPrior?.some((x) => x.recipeId === invalidId));
+    ok(outcome.held?.some((x) => x.recipeId === heldId));
+    equal(outcome.shelfSize, ids.length, "the reported size is the persisted set");
+    if (ids.length < SHELF_TARGET.min) ok(outcome.warnings?.some((w) => w.includes(`only ${ids.length} ideas saved`)), "a genuine shortfall is reported");
+    ok(h.saved[1].candidateSet!.items.every((i) => i.review?.state === "provider-unavailable"));
+  });
+
+  it("repair 4: a genuine shortfall after revalidation is reported, not hidden by the fallback", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const fresh = collidingFresh();
+    h.deps.reviewProviderStatus = async () => ({ kind: "ok" });
+    h.deps.loadWebCandidates = async () => fresh.web;
+    h.deps.loadCatalogCandidates = async () => fresh.catalog;
+    h.deps.revalidatePrior = async (items) => items.slice(0, 10).map(revalidatedFrom);
+    h.deps.loadReviews = async () => { throw new Error("review store read outage"); };
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    const ids = h.saved[1].candidateSet!.items.map((i) => i.recipeId);
+    ok(ids.length < SHELF_TARGET.min, "only seventeen distinct eligible ideas exist");
+    equal(outcome.priorShelfKept, undefined, "the smaller prior set is not preferred");
+    ok(ids.filter((id) => id.startsWith("fresh-")).length > 0, "fresh ideas are seated when they do not degrade the shelf");
+    equal(outcome.invalidPrior?.length, 10);
+    equal(outcome.shelfSize, ids.length);
+    equal(outcome.healthy, false);
+    ok(outcome.warnings?.some((w) => w.startsWith("Qualified shortfall")));
+  });
+
+  it("repair 4: an assigned fresh idea stays pinned when the prior shelf is kept", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const fresh = collidingFresh();
+    const assignedFresh = fresh.catalog[0];
+    h.saved[0].days[0] = { ...h.saved[0].days[0], planningState: "assigned", recipeId: assignedFresh.recipeId, recipeName: assignedFresh.recipeName };
+    h.deps.reviewProviderStatus = async () => ({ kind: "ok" });
+    h.deps.loadWebCandidates = async () => fresh.web;
+    h.deps.loadCatalogCandidates = async () => fresh.catalog;
+    h.deps.loadReviews = async () => { throw new Error("review store read outage"); };
+    const outcome = await prepareWeek(WEEK, h.deps);
+    equal(outcome.status, "prepared");
+    const items = h.saved[1].candidateSet!.items;
+    equal(items.length, SHELF_TARGET.min);
+    const pinned = items.find((i) => i.recipeId === assignedFresh.recipeId);
+    ok(pinned, "the assigned idea is on the shelf");
+    ok((pinned as { assigned?: boolean }).assigned !== false);
+    equal(h.saved[1].days[0].recipeId, assignedFresh.recipeId, "the day is untouched");
+  });
+
+  it("repair 4: a healthy fresh-first mix is kept as it is (no fallback without degradation)", async () => {
+    const h = harness();
+    await prepareWeek(WEEK, h.deps);
+    const freshProfile = (i: number) => ({
+      cuisine: ["Korean", "Peruvian", "Lebanese", "Turkish", "Vietnamese", "Spanish", "Ethiopian"][i],
+      traits: traits({ shape: (["stew-curry", "bowl", "roast-bake", "stir-fry", "grill", "stew-curry", "bowl"] as const)[i], protein: (["vegan", "vegetarian"] as const)[i % 2], effort: (["medium", "project", "medium", "medium", "medium", "project", "medium"] as const)[i] }),
+    });
+    h.deps.reviewProviderStatus = async () => ({ kind: "ok" });
+    h.deps.loadWebCandidates = async () => webPool().slice(0, 3).map((c, i) => ({ ...c, recipeId: `fresh-${c.recipeId}`, ...freshProfile(i) }));
+    h.deps.loadCatalogCandidates = async () => catalogPool().slice(0, 4).map((c, i) => ({ ...c, recipeId: `fresh-${c.recipeId}`, ...freshProfile(3 + i) }));
+    h.deps.loadReviews = async () => { throw new Error("review store read outage"); };
+    const outcome = await prepareWeek(WEEK, h.deps);
+    const ids = h.saved[1].candidateSet!.items.map((i) => i.recipeId);
+    equal(ids.length, SHELF_TARGET.min);
+    equal(ids.filter((id) => id.startsWith("fresh-")).length, 7);
+    equal(outcome.priorShelfKept, undefined);
+    equal(outcome.retainedPrior, SHELF_TARGET.min - 7);
+  });
+
   it("repair 3: carryCurrentHolds is keyed by id and content, nothing else", async () => {
     const { carryCurrentHolds } = await import("./planner-preparation.ts");
     const hold = { state: "checked-hold" as const, reason: "h", contentSha256: "c1" };

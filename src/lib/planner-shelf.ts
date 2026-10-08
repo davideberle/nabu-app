@@ -141,6 +141,13 @@ export type ShelfDiagnostics = {
   warnings: string[];
   /** True when the catalog cookbook cap was relaxed because the pool was too small. */
   cookbookCapRelaxed?: boolean;
+  /**
+   * Set when a preparation under a failure kept the re-validated prior shelf
+   * instead of the fresh-first mix, because the mix would have been shorter
+   * or less healthy (§4.3.1 "provider failures preserve the prior valid
+   * shelf"). Records what the mix would have produced.
+   */
+  priorShelfKept?: { freshOffered: number; freshSeated: number; mixedSize: number; mixedProblems: string[] };
 };
 
 export type ShelfCoverage = {
