@@ -41,16 +41,18 @@ async function getTileCategories(): Promise<TileCategory[]> {
       label: "Planning & Family",
       tiles: [
         {
-          id: "family",
-          name: "Family",
+          // October 8, 2026: ONE Family entry. Routines board, iPad tracker and the
+          // separate dates page are retired into Family Home (parent tools inside).
+          id: "family-home",
+          name: "Family Home",
           emoji: "👨‍👩‍👧‍👦",
-          description: "Birthdays, anniversaries, planning",
-          href: "/family",
+          description: "Santiago & Isabel: coins, learning, Nabu, games, stories — and the parent tools",
+          href: "/family/home",
           stats: family.planningCount > 0
             ? `${family.planningCount} planning`
             : family.next
               ? `${family.next.daysUntil}d`
-              : "View",
+              : "Home",
         },
         {
           id: "travel",
@@ -59,22 +61,6 @@ async function getTileCategories(): Promise<TileCategory[]> {
           description: "Upcoming and past trips",
           href: "/travel",
           stats: "Trips",
-        },
-        {
-          id: "routines",
-          name: "Routines",
-          emoji: "📋",
-          description: "Family board, weekly routines, rewards",
-          href: "/family/dashboard",
-          stats: "Board",
-        },
-        {
-          id: "family-home",
-          name: "Family Home",
-          emoji: "🪄",
-          description: "Santiago & Isabel: wallet, learning, Nabu, games, stories",
-          href: "/family/home",
-          stats: "Home",
         },
         {
           id: "todos",

@@ -1,44 +1,11 @@
-import type { Metadata } from "next";
-import { formatWeekId, getISOWeek, getWeekDates, offsetWeek, parseWeekId } from "@/lib/meals";
+import { redirect } from "next/navigation";
 import { auth } from "@/auth";
-import { isAdminEmail, isTrackerOnlyEmail } from "@/lib/access";
-import { FamilyDashboardClient } from "./client";
+import { isAdminEmail } from "@/lib/access";
 
-export const metadata: Metadata = {
-  title: "Family Routines — Nabu",
-  description: "iPad family routines dashboard",
-};
-
-type Props = { searchParams?: Promise<{ week?: string }> };
-
-function weekNavFor(weekParam?: string) {
-  const current = getISOWeek(new Date());
-  const parsed = weekParam ? parseWeekId(weekParam) : null;
-  const active = parsed ?? current;
-  const weekId = formatWeekId(active.year, active.week);
-  const currentWeekId = formatWeekId(current.year, current.week);
-  const prev = offsetWeek(active.year, active.week, -1);
-  const next = offsetWeek(active.year, active.week, 1);
-  const dates = getWeekDates(active.year, active.week);
-
-  return {
-    weekId,
-    currentWeekId,
-    rangeLabel: `${dates[0].dayOfWeek.slice(0, 3)} ${dates[0].date.slice(5)} - ${dates[6].dayOfWeek.slice(0, 3)} ${dates[6].date.slice(5)}`,
-    prevHref: `/family/dashboard?week=${formatWeekId(prev.year, prev.week)}`,
-    currentHref: `/family/dashboard?week=${currentWeekId}`,
-    nextHref: `/family/dashboard?week=${formatWeekId(next.year, next.week)}`,
-  };
-}
-
-export default async function FamilyDashboardPage({ searchParams }: Props) {
-  const params = searchParams ? await searchParams : {};
+// Legacy family board (UI-06): retired after its parent review queue moved to
+// the compact parent tools. The owner lands there; everyone else in Family
+// Home. The `?week=` context is dropped — the queue is cross-week now.
+export default async function FamilyDashboardPage() {
   const session = await auth();
-  return (
-    <FamilyDashboardClient
-      weekNav={weekNavFor(params.week)}
-      trackerOnly={isTrackerOnlyEmail(session?.user?.email)}
-      isAdmin={isAdminEmail(session?.user?.email)}
-    />
-  );
+  redirect(isAdminEmail(session?.user?.email) ? "/family/parent" : "/family/home");
 }

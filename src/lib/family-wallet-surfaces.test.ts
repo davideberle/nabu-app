@@ -1,46 +1,43 @@
-import { doesNotMatch, match } from "node:assert/strict";
+import { doesNotMatch, match, ok } from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 
 const source = (path: string) => readFileSync(new URL(path, import.meta.url), "utf8");
 
-describe("family wallet consumer contract", () => {
-  const rewards = source("../app/family/(shell)/rewards/client.tsx");
-  const person = source("../app/family/dashboard/[person]/client.tsx");
-  const overview = source("../app/family/dashboard/client.tsx");
+describe("family wallet consumer contract (October 8, 2026)", () => {
+  const coins = source("../app/family/(shell)/rewards/client.tsx");
+  const provider = source("../components/family/child-shell-provider.tsx");
   const assistant = source("../app/family/(shell)/assistant/client.tsx");
+  const parent = source("../app/family/parent/client.tsx");
+  const games = source("../app/family/(shell)/games/client.tsx");
 
-  for (const [name, consumer] of [
-    ["child Rewards", rewards],
-    ["person board", person],
-    ["overview", overview],
-    ["child Home", assistant],
-  ] as const) {
-    it(`${name} reads the authenticated permanent-wallet projection`, () => {
-      match(consumer, /fetch\("\/api\/family\/wallet"\)/);
-    });
-  }
-
-  it("redemption clients omit viewed week so the server stamps today", () => {
-    // The confirmed tap carries an idempotency key (wallet contract 5) and never a week.
-    match(rewards, /JSON\.stringify\(\{ personId: child, rewardId, idempotencyKey: redeemKeyRef\.current \}\)/);
-    match(person, /JSON\.stringify\(\{ personId, rewardId \}\)/);
-    doesNotMatch(rewards, /personId: child, rewardId, week/);
-    doesNotMatch(person, /personId, rewardId, week: weekNav\.weekId/);
+  it("the shell provider is the one reader of the authenticated permanent-wallet projection for every child surface", () => {
+    match(provider, /fetch\("\/api\/family\/wallet"/);
+    match(coins, /useChildShell\(\)/);
+    doesNotMatch(coins, /fetch\(/);
   });
 
-  it("preserves both redemption buttons' double-submit guards", () => {
-    match(rewards, /if \(!child \|\| redeemingReward\) return/);
-    match(person, /if \(redeemingReward\) return/);
-    match(rewards, /disabled=\{!canAfford \|\| redeemingReward !== null\}/);
-    // Spend once, confirm clearly: the exact cost is confirmed before the write.
-    match(rewards, /Yes, get it for 🪙 \$\{reward\.costPoints\}/);
+  it("the assistant reads the authenticated permanent-wallet projection", () => {
+    match(assistant, /fetch\("\/api\/family\/wallet"\)/);
   });
 
-  it("keeps weekly completion context separate from wallet balance", () => {
-    match(rewards, /weekPoints\(child, completions, resolveShellRoutines\(config\)\)/);
-    match(rewards, /walletProjection\?\.wallets\[child\]/);
-    match(person, /weekPoints\(personId, completionList, resolvedRoutines\)/);
-    match(person, /walletProjection\?\.wallets\[personId\]/);
+  it("no child surface posts a catalog redemption any more; the only purchase is the Studio block with an idempotency key", () => {
+    doesNotMatch(coins, /\/api\/family\/redemptions/);
+    doesNotMatch(games, /\/api\/family\/redemptions/);
+    match(games, /client\.purchase\(child, keyRef\.current\)/);
+    match(games, /Yes, buy for 🪙 \$\{price\.coins\}/);
+    match(games, /if \(buying\) return/);
+  });
+
+  it("the parent tools undo spending by redemption id (play purchases refund exactly once through the same route)", () => {
+    match(parent, /method: "DELETE", headers: \{ "Content-Type": "application\/json" \}, body: JSON\.stringify\(\{ id: r\.id \}\)/);
+    ok(parent.includes("PLAY_PURCHASE_REWARD_ID"));
+  });
+
+  it("Coins shows W, E and S from the projection and never a weekly number", () => {
+    match(coins, /data-wallet-balance/);
+    match(coins, /data-wallet-earned/);
+    match(coins, /data-wallet-spent/);
+    doesNotMatch(coins.replace(/^\s*\/\/.*$/gm, ""), /weekPoints|this week/);
   });
 });

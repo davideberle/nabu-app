@@ -1494,9 +1494,9 @@ function Workspace({
     }
   }, [profile.companionName, profile.greeting, spokenLine, stage]);
 
-  // The routine-progress fixture links into the shell's own Plan destination,
-  // which renders the same person board without leaving the child shell.
-  const boardHref = childShellDestinationHref("plan", profile.id, weekId);
+  // The routine-progress fixture links into the shell's Activity history (the
+  // weekly grid is retired, October 8, 2026) without leaving the child shell.
+  const boardHref = childShellDestinationHref("activity", profile.id);
 
   // ------------------------------------------------------------------
   // Stage content

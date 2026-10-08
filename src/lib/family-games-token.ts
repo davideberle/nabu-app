@@ -48,8 +48,14 @@ export type ChildGamesClaims = {
   jti: string;
 };
 
-/** Scope of a Studio credential: a game lease, or the child's library/editor. */
-export type PlayCredentialScope = "lease" | "library";
+/**
+ * Scope of a Studio credential:
+ *   - `lease`   one game under one lease (play; chess runs on the daily budget);
+ *   - `library` read-only: list, read projects/plans/jobs — never a mutation;
+ *   - `studio`  the paid interactive editor lease (create/iterate/clarify/approve),
+ *               game id `*` because creation happens before a game has an id.
+ */
+export type PlayCredentialScope = "lease" | "library" | "studio";
 
 export type PlayCredentialClaims = {
   v: 1;
@@ -57,9 +63,9 @@ export type PlayCredentialClaims = {
   aud: typeof PLAY_CREDENTIAL_AUDIENCE;
   sub: ChildId;
   scope: PlayCredentialScope;
-  /** Stable game id for a lease credential; "*" for the library scope. */
+  /** Stable game id for a lease credential; "*" for the library and studio scopes. */
   gid: string;
-  /** Lease id for a lease credential; "-" for the library scope. */
+  /** Lease id for lease/studio credentials; "-" for the library scope. */
   lid: string;
   mode: PlayMode;
   /** Whether the lease consumes allowance and how much it may consume at most. */
@@ -189,7 +195,7 @@ export function mintPlayCredential(
     aud: PLAY_CREDENTIAL_AUDIENCE,
     sub: input.child,
     scope: input.scope,
-    gid: input.scope === "library" ? "*" : input.gameId,
+    gid: input.scope === "lease" ? input.gameId : "*",
     lid: input.scope === "library" ? "-" : input.leaseId,
     mode: input.mode,
     metered: input.metered,
@@ -205,10 +211,12 @@ export function verifyPlayCredential(key: Buffer, token: string, nowSeconds: num
   const result = verify(key, token, PLAY_CREDENTIAL_AUDIENCE, PLAY_ORDER, nowSeconds);
   if (!result.ok) return result;
   const c = result.claims;
-  const scopeOk = c.scope === "lease" || c.scope === "library";
-  const gidOk = c.scope === "library" ? c.gid === "*" : typeof c.gid === "string" && GAME_ID_PATTERN.test(c.gid);
+  const scopeOk = c.scope === "lease" || c.scope === "library" || c.scope === "studio";
+  const gidOk = c.scope === "lease" ? typeof c.gid === "string" && GAME_ID_PATTERN.test(c.gid) : c.gid === "*";
   const lidOk = c.scope === "library" ? c.lid === "-" : typeof c.lid === "string" && LEASE_ID_PATTERN.test(c.lid);
-  if (!isChildId(c.sub) || !scopeOk || !gidOk || !lidOk || !isPlayMode(c.mode) || typeof c.metered !== "boolean" || typeof c.budget !== "number" || typeof c.jti !== "string" || !JTI.test(c.jti)) {
+  // A studio credential is always the paid editor: edit mode, metered.
+  const studioOk = c.scope !== "studio" || (c.mode === "edit" && c.metered === true);
+  if (!isChildId(c.sub) || !scopeOk || !gidOk || !lidOk || !studioOk || !isPlayMode(c.mode) || typeof c.metered !== "boolean" || typeof c.budget !== "number" || typeof c.jti !== "string" || !JTI.test(c.jti)) {
     return { ok: false, reason: "bad-subject" };
   }
   return { ok: true, claims: c as unknown as PlayCredentialClaims };

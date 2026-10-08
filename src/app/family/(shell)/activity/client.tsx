@@ -1,10 +1,12 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Activity — source-linked chronology for the selected child (FH-08).
+// Activity — source-linked chronology for the selected child (FH-08; UI-04).
 // Presentation only: the server composes the list from canonical claims,
-// reviews and redemptions by stable id; weekly filtering is a view and the
-// balance always comes from the shared wallet projection (FH-06).
+// reviews and redemptions by stable id; the "This week" filter is a view that
+// never alters stored occurrence dates, and the balance always comes from the
+// shared wallet projection (FH-06). The weekly plan grid is retired: there is
+// no obligation grid here, only dated history.
 // ---------------------------------------------------------------------------
 
 import Link from "next/link";
@@ -15,7 +17,7 @@ import { useChildShell } from "@/components/family/child-shell-provider";
 import type { ActivityFilter, ActivityItem } from "@/lib/family-activity";
 import { filterActivity } from "@/lib/family-activity";
 import type { ChildId } from "@/lib/family-assistant-turn";
-import { childShellDestinationHref, type ChildShellWeekInfo } from "@/lib/family-child-shell";
+import { childShellDestinationHref } from "@/lib/family-child-shell";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -38,10 +40,10 @@ const STATUS_TONE: Record<ActivityItem["status"], string> = {
   refunded: "border-stone-300 text-stone-700 dark:border-stone-600 dark:text-stone-300",
 };
 
-export function FamilyActivityClient({ weekInfo }: { weekInfo: ChildShellWeekInfo }) {
+export function FamilyActivityClient() {
   const { child } = useChildShell();
   if (!child) return null;
-  return <Activity key={child} child={child} weekInfo={weekInfo} />;
+  return <Activity key={child} child={child} />;
 }
 
 function formatWhen(iso: string | null): string | null {
@@ -53,7 +55,7 @@ function formatWhen(iso: string | null): string | null {
   }
 }
 
-function Activity({ child, weekInfo }: { child: ChildId; weekInfo: ChildShellWeekInfo }) {
+function Activity({ child }: { child: ChildId }) {
   const { wallet } = useChildShell();
   const profile = assistantProfileById(child)!;
   const [load, setLoad] = useState<Load>({ kind: "loading" });
@@ -91,8 +93,8 @@ function Activity({ child, weekInfo }: { child: ChildId; weekInfo: ChildShellWee
             {balance !== null ? `You have 🪙 ${balance} coins — the same wallet everywhere.` : wallet.status === "error" ? "Couldn't load your wallet." : "Loading your coins…"}
           </p>
         </div>
-        <Link href={childShellDestinationHref("plan", child, weekInfo.weekId)} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>
-          📅 This week&rsquo;s plan
+        <Link href={childShellDestinationHref("record", child)} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>
+          🎙️ Record something I did
         </Link>
       </section>
 

@@ -45,3 +45,18 @@ export function isoWeekIdInZurich(now = new Date()): string {
   const week = Math.ceil(((wallDate.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
   return `${isoYear}-W${String(week).padStart(2, "0")}`;
 }
+
+/**
+ * Monday-zero weekday of the Europe/Zurich wall date (0 = Monday … 6 = Sunday),
+ * the same day index the family completion identity uses.
+ */
+export function weekdayIndexInZurich(now = new Date()): number {
+  const { year, month, day } = partsForTimeZone(now, ZURICH_TZ);
+  const jsDay = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day))).getUTCDay();
+  return jsDay === 0 ? 6 : jsDay - 1;
+}
+
+/** The Zurich wall date's identity in family terms: `{ date, week, day }`. */
+export function familyTodayInZurich(now = new Date()): { date: string; week: string; day: number } {
+  return { date: todayInZurich(now), week: isoWeekIdInZurich(now), day: weekdayIndexInZurich(now) };
+}

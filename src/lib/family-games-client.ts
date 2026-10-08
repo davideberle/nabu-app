@@ -22,6 +22,17 @@ export const SESSION_REFRESH_MARGIN_MS = 60_000;
 export type StudioAccess = { url: string; token: string; expiresAt: number };
 export type GamesSession = { child: ChildId; token: string; expiresAt: number; studio: StudioAccess | null };
 
+export type ChessStateView = {
+  gameId: string;
+  dailySeconds: number;
+  date: string;
+  eligible: boolean;
+  grantedSeconds: number;
+  remainingSeconds: number;
+  consumedSeconds: number;
+  qualifiedBy: { week: string; routineId: string; day: number } | null;
+};
+
 export type PlayStateView = {
   child: ChildId;
   balance: number;
@@ -31,6 +42,8 @@ export type PlayStateView = {
   warnSeconds: number;
   graceSeconds: number;
   activeLease: PlayLease | null;
+  /** Today's chess status (server date and eligibility). */
+  chess: ChessStateView;
 };
 
 export type LibraryGame = {
@@ -48,6 +61,9 @@ export type LibraryGame = {
 
 export type LibraryView = { child: ChildId; games: LibraryGame[]; canCreate: boolean };
 
+/** A studio heartbeat's wait claim: the plan analysis or build the editor is waiting on (verified upstream by the meter). */
+export type WaitClaim = { kind: "plan" | "job"; id: string };
+
 export type TickView = {
   leaseId: string;
   phase: PlayPhase;
@@ -63,6 +79,8 @@ export type TickView = {
   billing?: "running" | "armed" | "stopped";
   /** Sequence number of the grant handed with this answer; the wrapper names it in its running reports. */
   grant?: number;
+  /** Studio leases only: the meter's verdict on the heartbeat's wait claim (false = the editor must resume or pause). */
+  waiting?: WaitClaim & { attested: boolean; status: string };
 };
 
 export type LeaseGrant = {
@@ -73,9 +91,11 @@ export type LeaseGrant = {
   warnSeconds: number;
   graceSeconds: number;
   studio: StudioAccess | null;
+  /** Chess only: the same-origin gated bundle path for the frame (null for Studio games). */
+  content?: { path: string; expiresAt: number } | null;
 };
 
-export type Failure = "no-session" | "network" | "unauthorized" | "unavailable" | "bad-response" | "insufficient" | "lease-held" | "no-allowance";
+export type Failure = "no-session" | "network" | "unauthorized" | "unavailable" | "bad-response" | "insufficient" | "lease-held" | "no-allowance" | "chess-not-earned";
 export type Outcome<T> = { ok: true; value: T } | { ok: false; failure: Failure; status?: number; detail?: unknown };
 
 export type GamesClientDeps = { fetchImpl?: typeof fetch; now?: () => number };
@@ -125,6 +145,7 @@ export function createGamesClient(deps: GamesClientDeps = {}) {
       if (res.status === 401) cached = null;
       const reason = typeof body === "object" && body !== null ? (body as { error?: unknown; reason?: unknown }).error ?? (body as { reason?: unknown }).reason : null;
       if (res.status === 409 && reason === "lease-held") return { ok: false, failure: "lease-held", status: 409, detail: body };
+      if (reason === "chess-not-earned") return { ok: false, failure: "chess-not-earned", status: res.status, detail: body };
       if (res.status === 402 || reason === "no-allowance") return { ok: false, failure: "no-allowance", status: res.status, detail: body };
       if (res.status === 409) return { ok: false, failure: "insufficient", status: 409, detail: body };
       return { ok: false, failure: failureFor(res.status), status: res.status, detail: body };
@@ -162,7 +183,7 @@ export function createGamesClient(deps: GamesClientDeps = {}) {
         body: JSON.stringify({ idempotencyKey }),
         signal,
       }),
-    lease: (child: ChildId, input: { gameId: string; mode: "play" | "edit"; takeover?: boolean; device?: string }, signal?: AbortSignal) =>
+    lease: (child: ChildId, input: { gameId?: string; mode: "play" | "edit"; takeover?: boolean; device?: string }, signal?: AbortSignal) =>
       familyCall<LeaseGrant>(child, PLAY_LEASES_PATH, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(input), signal }),
     release: (child: ChildId, leaseId: string, reason: string, signal?: AbortSignal) =>
       familyCall<{ ok: true; ended: boolean }>(child, `${PLAY_LEASES_PATH}/${encodeURIComponent(leaseId)}/release`, {
@@ -175,7 +196,7 @@ export function createGamesClient(deps: GamesClientDeps = {}) {
     library: (studio: StudioAccess, signal?: AbortSignal) => studioCall<LibraryView>(studio, "/v1/library", { signal }),
     contentUrl: (studio: StudioAccess, leaseId: string, gameId: string) =>
       `${studio.url}/v1/play/${encodeURIComponent(leaseId)}/${encodeURIComponent(gameId)}/index.html?credential=${encodeURIComponent(studio.token)}`,
-    tick: (studio: StudioAccess, leaseId: string, input: { active: boolean; hidden: boolean; paused: boolean; foreground?: boolean; grant?: number | null; runMs?: number | null }, signal?: AbortSignal) =>
+    tick: (studio: StudioAccess, leaseId: string, input: { active: boolean; hidden: boolean; paused: boolean; foreground?: boolean; grant?: number | null; runMs?: number | null; waiting?: WaitClaim | null }, signal?: AbortSignal) =>
       studioCall<TickView>(studio, `/v1/play/${encodeURIComponent(leaseId)}/tick`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(input), signal }),
     /** `frameStopped`: the wrapper attests the game frame was frozen/removed (guard acknowledgment received) BEFORE this request — the meter may then let a successor start without waiting out the handed deadline. */
     end: (studio: StudioAccess, leaseId: string, reason: string, frameStopped = false, observed: { grant: number | null; runMs: number } | null = null, signal?: AbortSignal) =>

@@ -1,0 +1,25 @@
+{
+  "generatedBy": "scripts/bundle-chess-pilot.mjs",
+  "files": {
+    "index.html": {
+      "sha256": "fc685e894e617554d0f5a4da52a93ef7b3c92532d36df5052b644cf16e0337ef",
+      "bytes": 12097
+    },
+    "chess-engine.js": {
+      "sha256": "a4cd1c24833368102f293900f9f191d66037dfe6a3175e786cb851343187bfb9",
+      "bytes": 20891
+    },
+    "chess-ai.js": {
+      "sha256": "f736a38232425be9a58f79272a63086d0a490674dfb6665588d68e6d8972cf36",
+      "bytes": 10843
+    },
+    "chess-coach.js": {
+      "sha256": "bebbde334ff2c94e996c2de22f1fb965b42dd8986c4ef21679dc82a179fb0601",
+      "bytes": 18092
+    },
+    "chess-ui.js": {
+      "sha256": "21deec09f0fb7dbdfa37a5d27e184b297f8a94ead80a007eb021c4f0a58d4fb8",
+      "bytes": 18050
+    }
+  }
+}

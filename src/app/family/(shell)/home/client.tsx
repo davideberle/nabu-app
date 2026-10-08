@@ -107,7 +107,7 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
         </div>
         <div className="grid gap-2 sm:grid-cols-3">
           <Link href={href("record")} className={pillClass}>🎙️ Record something I did</Link>
-          <Link href={href("rewards")} className={pillClass}>🏅 Redeem</Link>
+          <Link href={href("rewards")} className={pillClass}>🪙 My coins</Link>
           <Link href={href("activity")} className={pillClass}>🗓️ See activity</Link>
         </div>
       </section>
@@ -120,7 +120,7 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
           Questions, ideas and help — talk or type
         </HomeAction>
         <HomeAction href={href("games")} icon="🎮" title="Games">
-          Approved games — chess is free, others cost coins to play
+          Chess: 15 free minutes a day once a parent approves something you did today · Game Studio uses coins
         </HomeAction>
       </div>
 
@@ -139,8 +139,7 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
 
       {canSeeFamilyOverview ? (
         <nav aria-label="Parent links" className="flex flex-wrap gap-2 pt-2 text-sm">
-          <Link href="/family" className={pillClass}>Family overview</Link>
-          <Link href="/family/dashboard" className={pillClass}>Family board</Link>
+          <Link href="/family/parent" className={pillClass}>Parent tools</Link>
           <Link href="/family/learn/parent" className={pillClass}>Learning (parent)</Link>
         </nav>
       ) : null}
@@ -162,6 +161,26 @@ function HomeAction({ href, icon, title, className, children }: { href: string; 
   );
 }
 
+/**
+ * Human copy for a "nothing to start right now" answer (UI-02). The learning
+ * state hands back short machine reasons; a child must never read a state
+ * code, so every known one maps to a sentence and unknown ones fall back.
+ */
+export function waitingCopy(reason: string | null): string {
+  switch (reason) {
+    case "all-visits-done":
+      return "Du hast alle Besuche geschafft — ein neuer wird vorbereitet.";
+    case "no-further-visit-served":
+    case "chapter-unavailable":
+      return "Dein nächster Besuch ist noch nicht freigeschaltet — deine Basis bleibt gespeichert.";
+    case null:
+    case "":
+      return "Heute ist Pause — deine Basis bleibt gespeichert.";
+    default:
+      return /^[a-z0-9-]+$/i.test(reason) ? "Heute ist Pause — deine Basis bleibt gespeichert." : reason;
+  }
+}
+
 function LearnCaption({ label }: { label: LearnLabel }) {
   switch (label.kind) {
     case "loading":
@@ -171,7 +190,7 @@ function LearnCaption({ label }: { label: LearnLabel }) {
     case "start":
       return <>Starten: {label.label ?? (label.ordinal ? `Besuch ${label.ordinal}` : "nächster Besuch")}</>;
     case "waiting":
-      return <>{label.reason ?? "Heute ist Pause — deine Basis bleibt gespeichert."}</>;
+      return <>{waitingCopy(label.reason)}</>;
     case "unprepared":
       return <>Deine Expedition ist noch nicht vorbereitet.</>;
     case "trouble":

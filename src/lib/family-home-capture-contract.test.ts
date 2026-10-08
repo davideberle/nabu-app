@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 import { doesNotMatch, match, ok } from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 
 const readSource = (relativePath: string) =>
@@ -127,18 +127,24 @@ describe("guided record flow contract", () => {
 });
 
 describe("canonical review queue consumers", () => {
-  it("the overview parent queue renders from the canonical endpoint and acts by identity", () => {
-    const overview = readSource("../app/family/dashboard/client.tsx");
-    match(overview, /\/api\/family\/review-queue/);
-    match(overview, /snapshotId/);
-    match(overview, /expectedStatus: item\.status/);
-    match(overview, /409/);
+  it("the compact parent tools render the canonical cross-week queue and act by identity with the expected status and submission time", () => {
+    const parent = readSource("../app/family/parent/client.tsx");
+    match(parent, /\/api\/family\/review-queue/);
+    match(parent, /snapshotId/);
+    match(parent, /expectedStatus: item\.status, expectedSubmittedAt: item\.submittedAt \?\? null/);
+    match(parent, /res\.status === 409/);
+    // Every retained parent action lives here (PR-01): approve/hold/redo, undo, count correction, config, parent-assisted capture.
+    match(parent, /action: "set-credit-count"/);
+    match(parent, /method: "DELETE"/);
+    match(parent, /"\/api\/family\/config", \{ method: "PUT"/);
+    match(parent, /parentAssisted: true/);
   });
 
-  it("the person board review panel sends expectedStatus and reloads on conflict", () => {
-    const board = readSource("../app/family/dashboard/[person]/client.tsx");
-    match(board, /expectedStatus \? \{ expectedStatus \} : \{\}/);
-    match(board, /response\.status === 409/);
+  it("the legacy board and person grid are gone; only redirects remain", () => {
+    ok(!existsSync(new URL("../app/family/dashboard/client.tsx", import.meta.url)));
+    ok(!existsSync(new URL("../app/family/dashboard/[person]/client.tsx", import.meta.url)));
+    const board = readSource("../app/family/dashboard/page.tsx");
+    match(board, /redirect\(/);
   });
 
   it("the queue route is read-only and never cached", () => {

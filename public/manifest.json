@@ -1,8 +1,8 @@
 {
-  "name": "Nabu Family Board",
-  "short_name": "Family Board",
-  "description": "Family routines and milestone dashboard",
-  "start_url": "/family/dashboard",
+  "name": "Nabu Family Home",
+  "short_name": "Family Home",
+  "description": "Family Home: coins, learning, Nabu, games and stories",
+  "start_url": "/family/home",
   "display": "standalone",
   "background_color": "#f5f3f0",
   "theme_color": "#f5f3f0",

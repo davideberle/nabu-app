@@ -48,10 +48,6 @@ function stripComments(source: string): string {
 }
 const shellCode = stripComments(shellSource);
 const providerCode = stripComments(providerSource);
-const planSource = readFileSync(
-  new URL("../app/family/(shell)/plan/client.tsx", import.meta.url),
-  "utf8",
-);
 const planPageSource = readFileSync(
   new URL("../app/family/(shell)/plan/page.tsx", import.meta.url),
   "utf8",
@@ -70,10 +66,6 @@ const assistantPageSource = readFileSync(
 );
 const chessPageSource = readFileSync(
   new URL("../app/family/rewards/chess/page.tsx", import.meta.url),
-  "utf8",
-);
-const chessClientSource = readFileSync(
-  new URL("../app/family/rewards/chess/client.tsx", import.meta.url),
   "utf8",
 );
 const rootManifest = readFileSync(
@@ -119,7 +111,6 @@ describe("shell bar never covers the talk dock", () => {
   it("takes no part in the assistant's landscape split (no bare lg:)", () => {
     doesNotMatch(shellCode, /\blg:(?!landscape:)/);
     doesNotMatch(providerCode, /\blg:(?!landscape:)/);
-    doesNotMatch(stripComments(planSource), /\blg:(?!landscape:)/);
     doesNotMatch(stripComments(rewardsSource), /\blg:(?!landscape:)/);
   });
 });
@@ -150,23 +141,14 @@ describe("destination load failures are recoverable", () => {
   // page" is not a recovery path a child can take. A failed family-API load
   // must surface a visible retry control instead of a dead end (Rewards) or
   // an endless spinner (the Plan person board).
-  const personBoardSource = readFileSync(
-    new URL("../app/family/dashboard/[person]/client.tsx", import.meta.url),
-    "utf8",
-  );
-
-  it("Rewards offers a retry after a failed load", () => {
+  it("Coins offers a retry after a failed wallet load", () => {
     ok(rewardsSource.includes("Try again"));
-    ok(rewardsSource.includes("setLoadAttempt"));
+    ok(rewardsSource.includes("refreshWallet"));
   });
 
-  it("the Plan person board fails visibly, with a retry", () => {
-    ok(personBoardSource.includes("loadError"));
-    ok(personBoardSource.includes("Try again"));
-    ok(personBoardSource.includes("setLoadAttempt"));
-    // The load effect checks every response before parsing it, so an API
-    // refusal cannot strand the board on the loading spinner.
-    ok(personBoardSource.includes("if (!compRes.ok || !redRes.ok || !cfgRes.ok || !walletRes.ok)"));
+  it("the legacy Plan page redirects into Activity with the child kept and the week dropped (UI-05)", () => {
+    ok(planPageSource.includes('redirect(child ? `/family/activity?child=${encodeURIComponent(child)}` : "/family/activity")'));
+    doesNotMatch(stripComments(planPageSource), /PersonBoardClient|week=/);
   });
 });
 
@@ -188,7 +170,6 @@ describe("one persistent shell layout owns chrome and identity", () => {
     // Destination clients must not mount their own chrome — a second copy
     // would reintroduce per-page remounting and identity desync.
     for (const [name, source] of [
-      ["plan", planSource],
       ["rewards", rewardsSource],
       ["assistant", assistantSource],
     ] as const) {
@@ -207,7 +188,6 @@ describe("one persistent shell layout owns chrome and identity", () => {
     doesNotMatch(providerSource, /readStoredChild|storeSelectedChild|localStorage/);
     ok(providerSource.includes("searchParams.get(\"child\")"));
     for (const [name, source] of [
-      ["plan", planSource],
       ["rewards", rewardsSource],
       ["assistant", assistantSource],
     ] as const) {
@@ -240,7 +220,6 @@ describe("one persistent shell layout owns chrome and identity", () => {
   });
 
   it("every destination consumes the shared child context", () => {
-    ok(planSource.includes("useChildShell"));
     ok(rewardsSource.includes("useChildShell"));
     ok(assistantSource.includes("useChildShell"));
   });
@@ -254,46 +233,45 @@ describe("atomic child switching", () => {
     ok(assistantSource.includes("key={profile.id}"));
   });
 
-  it("keys the Plan board by the selected child", () => {
-    ok(planSource.includes("key={child}"));
+  it("keys the Coins surface by the selected child", () => {
+    ok(rewardsSource.includes("key={child}"));
   });
 });
 
 describe("destinations render the real family model", () => {
-  it("Plan reuses the real person board, not a duplicate", () => {
-    ok(planSource.includes("PersonBoardClient"));
-    ok(planSource.includes('from "../../dashboard/[person]/client"'));
-    doesNotMatch(planSource, /initialCompletions|initialRewards/);
-  });
-
-  it("Rewards consumes the server-owned permanent wallet projection", () => {
-    ok(rewardsSource.includes("/api/family/wallet"));
-    ok(rewardsSource.includes("/api/family/completions?week="));
-    ok(rewardsSource.includes("/api/family/redemptions?week="));
-    ok(rewardsSource.includes('"/api/family/config"'));
-    doesNotMatch(rewardsSource, /priorWeekEarningsSummary|stay in last week/);
+  it("Coins consumes the server-owned permanent wallet projection and nothing weekly (UI-03)", () => {
+    ok(rewardsSource.includes("useChildShell"));
+    ok(rewardsSource.includes("wallet.projection.epochWeek"));
+    const coinsCode = stripComments(rewardsSource);
+    for (const forbidden of ["/api/family/completions?week=", "/api/family/redemptions?week=", "weekPoints", "Previous week", "Next week", "earned this week", "redeemedCount", "Get it", "daily", "weekly", "long-term"]) {
+      ok(!coinsCode.includes(forbidden), `Coins must not contain ${JSON.stringify(forbidden)}`);
+    }
     doesNotMatch(rewardsSource, /initialCompletions|initialRewards/);
   });
 
-  it("Rewards keeps the game corner behind the fail-closed identity seam", () => {
-    ok(rewardsSource.includes("childGameIdentity"));
-    ok(rewardsSource.includes("approvedGameLibrary"));
+  it("Coins points game spending at the one Studio purchase flow on Games", () => {
+    ok(rewardsSource.includes('childShellDestinationHref("games", child)'));
+    ok(rewardsSource.includes("PLAY_BLOCK_COINS"));
   });
 
-  it("the chess launch surface validates the child strictly on the server", () => {
+  it("guarded play hosts chess itself — no bounce back to the legacy launch page (a loop the self-check caught)", () => {
+    const playPage = readFileSync(new URL("../app/family/games/play/page.tsx", import.meta.url), "utf8");
+    doesNotMatch(stripComments(playPage), /rewards\/chess/);
+    ok(playPage.includes("<GuardedPlayClient child={child} gameId={params.game} />"));
+  });
+
+  it("the legacy chess launch page redirects into guarded play with the child validated on the server (DA-04)", () => {
     ok(chessPageSource.includes("normalizeChildId"));
-    ok(chessPageSource.includes('redirect("/family/rewards")'));
-  });
-
-  it("chess stays full-screen outside the shell group", () => {
+    ok(chessPageSource.includes('redirect("/family/home")'));
+    ok(chessPageSource.includes("/family/games/play?game=${DAILY_CHESS_GAME_ID}&child="));
     ok(
-      existsSync(
+      !existsSync(
         fileURLToPath(
-          new URL("../app/family/rewards/chess/page.tsx", import.meta.url),
+          new URL("../app/family/rewards/chess/client.tsx", import.meta.url),
         ),
       ),
+      "no separate chess launch client remains",
     );
-    doesNotMatch(chessClientSource, /ChildShellBar|ChildSwitcherOverlay/);
   });
 });
 
@@ -302,8 +280,12 @@ describe("route compatibility", () => {
     ok(assistantPageSource.includes("FAMILY_ASSISTANT_MANIFEST_PATH"));
   });
 
-  it("keeps the Family Board Home Screen start URL", () => {
+  it("the root Home Screen manifest starts in Family Home; the legacy board start URL still redirects there (UI-09)", () => {
     const manifest = JSON.parse(rootManifest) as { start_url?: string };
-    equal(manifest.start_url, "/family/dashboard");
+    equal(manifest.start_url, "/family/home");
+    const dashboardPage = readFileSync(new URL("../app/family/dashboard/page.tsx", import.meta.url), "utf8");
+    ok(dashboardPage.includes('"/family/parent" : "/family/home"'));
+    const trackerPage = readFileSync(new URL("../app/family/tracker/page.tsx", import.meta.url), "utf8");
+    ok(trackerPage.includes('redirect("/family/home")'));
   });
 });

@@ -102,7 +102,6 @@ export function storeSelectedChild(storage: ChildShellStorage | null, value: unk
 export type ChildShellDestinationId =
   | "home"
   | "assistant"
-  | "plan"
   | "rewards"
   | "activity"
   | "games"
@@ -120,20 +119,20 @@ export type ChildShellDestination = {
 };
 
 /**
- * The child surfaces (family-assistant DESIGN.md §7.5, accepted 2026-10-04).
- * Home is the menu; the persistent header shows only Home, the profile and
- * the wallet — the other destinations are reached from Home, never from a
- * growing tab row. Legacy paths (`/family/assistant`, `/family/plan`,
- * `/family/rewards`) keep their URLs so installed shortcuts and deep links
- * resolve unchanged.
+ * The child surfaces (family-assistant DESIGN.md §7.5, accepted 2026-10-04;
+ * simplified October 8, 2026). Home is the menu; the persistent header shows
+ * only Home, the profile and the wallet — the other destinations are reached
+ * from Home, never from a growing tab row. The weekly plan grid is retired:
+ * `/family/plan` redirects to Activity. `/family/rewards` keeps its URL (an
+ * installed shortcut may point at it) but is the one Coins surface — wallet,
+ * earned, spent — not a shop.
  */
 export const childShellDestinations: readonly ChildShellDestination[] = [
   { id: "home", label: "Home", icon: "🏠", path: "/family/home" },
   { id: "assistant", label: "Ask Nabu", icon: "💬", path: "/family/assistant" },
   { id: "record", label: "Record something I did", icon: "🎙️", path: "/family/assistant/record" },
   { id: "activity", label: "Activity", icon: "🗓️", path: "/family/activity" },
-  { id: "plan", label: "This week's plan", icon: "📅", path: "/family/plan" },
-  { id: "rewards", label: "Redeem", icon: "🏅", path: "/family/rewards" },
+  { id: "rewards", label: "Coins", icon: "🪙", path: "/family/rewards" },
   { id: "learn", label: "Lernen", icon: "🧭", path: "/family/learn" },
   { id: "games", label: "Games", icon: "🎮", path: "/family/games" },
   { id: "listen", label: "Hörspiele", icon: "🎧", path: "/family/listen" },
@@ -142,14 +141,15 @@ export const childShellDestinations: readonly ChildShellDestination[] = [
 /** The destinations rendered in the persistent header: Home only. */
 export const childShellHeaderDestinations: readonly ChildShellDestination[] = childShellDestinations.filter((d) => d.id === "home");
 
-/** Destinations whose URL carries the viewed week. */
-const WEEK_SCOPED: readonly ChildShellDestinationId[] = ["plan", "rewards", "activity"];
+/** Destinations whose URL may carry a viewed week (history filters only; nothing is gated by it). */
+const WEEK_SCOPED: readonly ChildShellDestinationId[] = ["activity"];
 
 /** Map a pathname to the shell destination it belongs to. */
 export function activeShellDestination(pathname: string): ChildShellDestinationId {
   if (pathname === "/family/home" || pathname.startsWith("/family/home/")) return "home";
   if (pathname.startsWith("/family/activity")) return "activity";
-  if (pathname.startsWith("/family/plan")) return "plan";
+  // Legacy plan URLs redirect to Activity; until they do, they belong there.
+  if (pathname.startsWith("/family/plan")) return "activity";
   if (pathname.startsWith("/family/rewards")) return "rewards";
   if (pathname.startsWith("/family/learn")) return "learn";
   if (pathname.startsWith("/family/games")) return "games";
@@ -189,7 +189,7 @@ export function childShellDestinationHref(
 }
 
 // ---------------------------------------------------------------------------
-// Plan week navigation — the person board's WeekNav shape, scoped to the shell
+// Week identity — history filters only (no surface is gated by a week)
 // ---------------------------------------------------------------------------
 
 /** Server-derived week identity handed to the shell clients. */
@@ -222,46 +222,6 @@ export function childShellWeekInfo(
     rangeLabel: `${dates[0].dayOfWeek.slice(0, 3)} ${dates[0].date.slice(5)} - ${dates[6].dayOfWeek.slice(0, 3)} ${dates[6].date.slice(5)}`,
     prevWeekId: formatWeekId(prev.year, prev.week),
     nextWeekId: formatWeekId(next.year, next.week),
-  };
-}
-
-export type ChildShellWeekNav = {
-  weekId: string;
-  currentWeekId: string;
-  rangeLabel: string;
-  prevHref: string;
-  currentHref: string;
-  nextHref: string;
-  overviewHref: string;
-};
-
-/**
- * Week navigation for the Plan destination: identical semantics to the
- * `/family/dashboard/[person]` board, but every href stays inside the shell
- * and carries the selected child.
- */
-export function buildPlanWeekNav(week: ChildShellWeekInfo, child: ChildId): ChildShellWeekNav {
-  return {
-    weekId: week.weekId,
-    currentWeekId: week.currentWeekId,
-    rangeLabel: week.rangeLabel,
-    prevHref: childShellDestinationHref("plan", child, week.prevWeekId),
-    currentHref: childShellDestinationHref("plan", child, week.currentWeekId),
-    nextHref: childShellDestinationHref("plan", child, week.nextWeekId),
-    overviewHref: `/family/dashboard?week=${week.weekId}`,
-  };
-}
-
-/** Week navigation for the Rewards destination, same pattern as Plan. */
-export function buildRewardsWeekNav(week: ChildShellWeekInfo, child: ChildId): ChildShellWeekNav {
-  return {
-    weekId: week.weekId,
-    currentWeekId: week.currentWeekId,
-    rangeLabel: week.rangeLabel,
-    prevHref: childShellDestinationHref("rewards", child, week.prevWeekId),
-    currentHref: childShellDestinationHref("rewards", child, week.currentWeekId),
-    nextHref: childShellDestinationHref("rewards", child, week.nextWeekId),
-    overviewHref: `/family/dashboard?week=${week.weekId}`,
   };
 }
 
@@ -345,23 +305,20 @@ export function guardedPlayHref(identity: ChildGameIdentity, gameId: string, mod
 }
 
 /**
- * Parent-approved games shown on the Rewards destination.
+ * The chess pilot card on Games (October 8, 2026).
  *
- * The Adaptive Chess Coach is the first pilot game (Game Studio-owned; the
- * runtime bundle is vendored under `public/games/adaptive-chess-coach/` because
- * Vercel cannot reach the Mac-mini Game Studio service yet — see
- * `game-studio/DESIGN.md` §"G1.1"). It launches directly (no reward gate) via a
- * child-shell page that embeds the game in a sandboxed iframe. The launch href
- * is built only from a validated `ChildGameIdentity`, so a child can never
- * hand-craft a sibling id into the launch. Family owns any later gating policy
- * (`family-assistant/DESIGN.md` §7.5.1).
+ * The Adaptive Chess Coach is Game Studio-owned; its bundle is embedded in this
+ * app and served ONLY by the credential-gated route behind the guarded play
+ * surface, which issues the child's daily chess lease (15 free minutes after a
+ * parent approves something the child did today). The launch href is built
+ * only from a validated `ChildGameIdentity`, so a child can never hand-craft a
+ * sibling id into the launch. Family owns the gate (`family-play.ts`).
  */
 export const approvedGameLibrary: readonly ApprovedGameProjection[] = [
   {
     gameId: "adaptive-chess-coach",
     title: "Chess Coach ♟️",
     tagline: "Learn chess with friendly opponents who grow with you.",
-    hrefFor: (identity) =>
-      `/family/rewards/chess?child=${encodeURIComponent(identity.childId)}`,
+    hrefFor: (identity) => guardedPlayHref(identity, "adaptive-chess-coach", "play"),
   },
 ];

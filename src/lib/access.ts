@@ -26,6 +26,9 @@ export function isTrackerOnlyEmail(email: string | null | undefined): boolean {
 
 export function isTrackerAllowedPath(pathname: string): boolean {
   return (
+    // Legacy board/tracker/plan URLs stay allowed so installed shortcuts and old
+    // bookmarks on the shared device still resolve — each one now redirects
+    // into Family Home (October 8, 2026).
     pathname === "/family/dashboard" ||
     pathname.startsWith("/family/dashboard/") ||
     pathname === "/family/assistant" ||
@@ -50,11 +53,9 @@ export function isTrackerAllowedPath(pathname: string): boolean {
     // here: a tracker-only (shared child device) session is redirected away.
     pathname === "/family/learn" ||
     pathname === "/family/learn/mission" ||
-    // Rewards game corner: the Adaptive Chess Coach launch page and its
-    // vendored static bundle (Game Studio-owned pilot). The bundle is pure
-    // client-side game code with no secrets; keeping it behind the household
-    // login (rather than excluding it from middleware) is the conservative
-    // choice for a child-facing surface.
+    // Chess: the legacy launch page (now a redirect into guarded play) and the
+    // gated bundle route. The route itself demands a valid lease credential;
+    // the household login is only the outer layer.
     pathname === "/family/rewards/chess" ||
     pathname.startsWith("/games/adaptive-chess-coach/")
   );
@@ -170,6 +171,8 @@ const ADMIN_ONLY_API_ROUTES: { method: string; path: string }[] = [
  */
 const ADMIN_ONLY_API_PREFIXES = [
   "/api/family/learning/parent/",
+  // Compact parent tools (October 8, 2026): cross-week records for the owner only.
+  "/api/family/parent/",
   // Parent-only compensation for paid play (`…/purchases/:id/refund`); the
   // child's own `POST /api/family/play/purchases` has no trailing segment and
   // therefore stays outside this prefix.
@@ -191,6 +194,8 @@ export const PARENT_LEARNING_API_INVENTORY: readonly { method: string; path: str
 
 /** Parent learning page(s); never in the tracker allow-list. */
 export const PARENT_LEARNING_PAGES: readonly string[] = ["/family/learn/parent"];
+/** The compact parent tools page (October 8, 2026); owner session only, never in the tracker allow-list. */
+export const PARENT_TOOLS_PAGE = "/family/parent";
 
 export type ParentLearningAccess =
   | { allowed: true; adminEmail: string }

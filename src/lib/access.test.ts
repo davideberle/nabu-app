@@ -142,7 +142,7 @@ describe("tracker-only email list", () => {
 });
 
 describe("isTrackerAllowedPath", () => {
-  it("allows exactly the family board and child-shell surfaces", () => {
+  it("allows the legacy board/plan URLs (which now redirect into Family Home) and the child-shell surfaces", () => {
     equal(isTrackerAllowedPath("/family/dashboard"), true);
     equal(isTrackerAllowedPath("/family/dashboard/santiago"), true);
     equal(isTrackerAllowedPath("/family/dashboard/isabel"), true);
@@ -169,12 +169,20 @@ describe("isTrackerAllowedPath", () => {
     equal(isAdminOnlyApiRoute("GET", "/api/family/activity"), false);
   });
 
-  it("allows the Chess Coach pilot launch page and its vendored bundle", () => {
+  it("allows the legacy chess launch page (a redirect) and the credential-gated bundle route", () => {
     equal(isTrackerAllowedPath("/family/rewards/chess"), true);
     equal(isTrackerAllowedPath("/games/adaptive-chess-coach/index.html"), true);
+    // The route itself refuses anything but index.html under a valid lease credential.
     equal(isTrackerAllowedPath("/games/adaptive-chess-coach/chess-engine.js"), true);
     // A different game folder is not implicitly allowed.
     equal(isTrackerAllowedPath("/games/some-other-game/index.html"), false);
+  });
+
+  it("keeps the compact parent tools owner-only (October 8, 2026)", () => {
+    equal(isTrackerAllowedPath("/family/parent"), false);
+    equal(isAdminOnlyApiRoute("GET", "/api/family/parent/records"), true);
+    equal(isAdminOnlyApiRoute("GET", "/api/family/parent/anything"), true);
+    equal(isAdminOnlyApiRoute("GET", "/api/family/review-queue"), false, "the queue route decides admin itself");
   });
 
   it("keeps adult and unrelated surfaces out of the shared-iPad scope", () => {

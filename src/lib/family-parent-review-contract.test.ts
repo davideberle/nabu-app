@@ -45,14 +45,14 @@ describe("family parent-review regression contract", () => {
     match(wallet, /row\.awardedPoints/);
   });
 
-  it("submits voice-coach work for review and renders parent controls", () => {
-    const board = readSource("../app/family/dashboard/[person]/client.tsx");
+  it("the guided record flow submits for review and the parent tools render approve/hold/redo", () => {
+    const record = readSource("../app/family/(shell)/assistant/record/client.tsx");
+    const parent = readSource("../app/family/parent/client.tsx");
 
-    match(board, /submitCompletion\(routine, day, "pending_review"/);
-    match(board, /onReviewAction/);
-    match(board, /Approve/);
-    match(board, /Hold/);
-    match(board, /Redo/);
+    match(record, /status: "pending_review"/);
+    match(parent, /review\(item, "approve"\)/);
+    match(parent, /review\(item, "hold"\)/);
+    match(parent, /review\(item, "redo"\)/);
   });
 
   it("keeps redo status-only so the original transcript survives", () => {
@@ -72,10 +72,13 @@ describe("family parent-review regression contract", () => {
     match(database, /reviewed_at = NULL/);
   });
 
-  it("a redo reopening can never self-approve on the child board", () => {
-    const board = readSource("../app/family/dashboard/[person]/client.tsx");
+  it("a child session can never write done directly; approval provenance is explicit (October 8, 2026)", () => {
+    const route = readSource("../app/api/family/completions/route.ts");
+    const ledger = readSource("./family-wallet-ledger.ts");
 
-    match(board, /fromRedo/);
-    match(board, /needsReview \? "pending_review" : "done"/);
+    match(route, /\(status === "done" \|\| parentAssisted === true\) && !admin/);
+    match(route, /"parent-review",\n/);
+    match(route, /"parent-assisted",\n/);
+    match(ledger, /approval_source = CASE WHEN \? = 'done' THEN \? ELSE NULL END/);
   });
 });

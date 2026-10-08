@@ -78,6 +78,12 @@ async function ensureFamilyTables(client: Client): Promise<void> {
   try {
     await client.execute(`ALTER TABLE family_completions ADD COLUMN awarded_points INTEGER`);
   } catch { /* column already exists */ }
+  // October 8, 2026: explicit, additive parent-approval provenance. Written only
+  // by admin-guarded review paths; never backfilled (a legacy row keeps the
+  // `reviewed_at`-based derivation, see family-play.ts `isParentApproved`).
+  try {
+    await client.execute(`ALTER TABLE family_completions ADD COLUMN approval_source TEXT`);
+  } catch { /* column already exists */ }
   await client.execute(`
     CREATE INDEX IF NOT EXISTS idx_family_completions_week
       ON family_completions (week, person_id)
@@ -164,7 +170,7 @@ export async function getCompletionsForWeek(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: "SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points FROM family_completions WHERE week = ?",
+    sql: "SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points, approval_source FROM family_completions WHERE week = ?",
     args: [week],
   });
   return result.rows.map((row) =>
@@ -179,7 +185,7 @@ export async function getCompletionsFromWeek(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points
+    sql: `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points, approval_source
           FROM family_completions WHERE week >= ? ORDER BY week ASC`,
     args: [fromWeek],
   });
@@ -217,6 +223,7 @@ function rowToCompletionRecord(row: Record<string, unknown>): CompletionRecord {
     ...(row["challenge"] ? { challenge: row["challenge"] as string } : {}),
     ...(row["created_at"] ? { submittedAt: row["created_at"] as string } : {}),
     ...(row["reviewed_at"] ? { reviewedAt: row["reviewed_at"] as string } : {}),
+    ...(row["approval_source"] ? { approvalSource: row["approval_source"] as string } : {}),
   };
 }
 
@@ -230,7 +237,7 @@ export async function getCompletion(
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute({
-    sql: `SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points
+    sql: `SELECT person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points, approval_source
           FROM family_completions
           WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?`,
     args: [week, personId, routineId, day],
@@ -253,7 +260,7 @@ export async function getReviewQueueCompletions(): Promise<
   const client = await getDb();
   await ensureFamilyTables(client);
   const result = await client.execute(
-    `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points
+    `SELECT week, person_id, routine_id, day, status, note, normalized_summary, challenge, created_at, reviewed_at, credit_count, awarded_points, approval_source
      FROM family_completions
      WHERE status IN ('pending_review', 'on_hold')
      ORDER BY created_at ASC, week ASC, person_id ASC, routine_id ASC, day ASC`,
@@ -294,7 +301,8 @@ export async function upsertCompletion(
                 THEN family_completions.awarded_points
               ELSE excluded.awarded_points
             END,
-            reviewed_at = NULL`,
+            reviewed_at = NULL,
+            approval_source = NULL`,
     args: [
       record.personId,
       record.routineId,
@@ -365,6 +373,8 @@ export async function updateCompletionStatus(
   day: number,
   newStatus: "done" | "on_hold" | "redo",
   guard?: { status: string; submittedAt: string | null },
+  /** Provenance written with an approval (`done`); ignored for hold/redo, which clear it. */
+  approvalSource: "parent-review" | "parent-assisted" = "parent-review",
 ): Promise<boolean> {
   const client = await getDb();
   await ensureFamilyTables(client);
@@ -384,6 +394,7 @@ export async function updateCompletionStatus(
     awardedPoints,
     now,
     guard,
+    approvalSource,
   );
 }
 

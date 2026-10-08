@@ -20,6 +20,7 @@ async function freshLedger(): Promise<Client> {
     created_at TEXT,
     reviewed_at TEXT,
     awarded_points INTEGER,
+    approval_source TEXT,
     PRIMARY KEY (person_id, routine_id, week, day)
   )`);
   await client.execute(`CREATE TABLE family_reward_redemptions (

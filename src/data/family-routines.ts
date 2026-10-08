@@ -67,6 +67,8 @@ export type CompletionRecord = {
   submittedAt?: string;
   /** ISO timestamp when reviewed by parent */
   reviewedAt?: string;
+  /** Explicit parent-approval provenance (`parent-review` | `parent-assisted`), October 8, 2026; absent on legacy/self-marked rows. */
+  approvalSource?: string;
 };
 
 export type RewardRecord = {
@@ -86,6 +88,8 @@ export type RewardDefinition = {
   /** Points deducted from wallet when redeemed. */
   costPoints: number;
   description: string;
+  /** Retired October 8, 2026: kept for history labels only; the server refuses new redemptions. */
+  retired?: true;
 };
 
 // ---------------------------------------------------------------------------
@@ -175,6 +179,7 @@ export const routineDefinitions: RoutineDefinition[] = [
 export const rewardDefinitions: RewardDefinition[] = [
   {
     id: "friends",
+    retired: true,
     title: "Play with friends",
     icon: "🤝",
     period: "daily",
@@ -185,6 +190,7 @@ export const rewardDefinitions: RewardDefinition[] = [
   },
   {
     id: "mini-game",
+    retired: true,
     title: "Mini-game",
     icon: "🎮",
     period: "daily",
@@ -195,6 +201,7 @@ export const rewardDefinitions: RewardDefinition[] = [
   },
   {
     id: "movie-night",
+    retired: true,
     title: "Movie night",
     icon: "🎬",
     period: "weekly",
@@ -205,6 +212,7 @@ export const rewardDefinitions: RewardDefinition[] = [
   },
   {
     id: "afternoon-excursion",
+    retired: true,
     title: "Afternoon excursion",
     icon: "🧭",
     period: "long-term",
@@ -215,6 +223,7 @@ export const rewardDefinitions: RewardDefinition[] = [
   },
   {
     id: "proper-trip",
+    retired: true,
     title: "Proper trip",
     icon: "🗺️",
     period: "long-term",

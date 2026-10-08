@@ -1,18 +1,27 @@
-// Joined stack (GP-03/07/08): the REAL Family persistence (isolated SQLite) wired to the REAL Game Studio child
-// adapter through its fetch seam, on one fake clock — the independent reviewer's round-4 timelines plus delayed
-// status/settlement variants. Skipped when the Game Studio workspace is not present on this machine. Run: npm test
+// Joined stack (GP-03/07/08; October 8, 2026 SC-03/SC-06/DA-03): the REAL Family persistence (isolated SQLite)
+// wired to the Game Studio child adapter CANDIDATE through its fetch seam, on one fake clock — the independent
+// reviewer's round-4 timelines plus delayed status/settlement variants, and the studio/chess joined cases.
+//
+// The adapter under test is the candidate named by `candidate-adapter.json` (or FAMILY_STUDIO_ADAPTER[_SHA256]),
+// NEVER the canonical live file: a pointer whose file hashes differently FAILS the suite (VR-01). Skipped only when
+// no candidate is named at all. Run: npm test
 
 import { deepEqual, equal, ok } from "node:assert/strict";
 import { existsSync, mkdtempSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
+import http from "node:http";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { after, before, beforeEach, describe, it } from "node:test";
 import { createClient, type Client } from "@libsql/client";
 import { ensurePlayTables, endPlayLease, getLease, getLeaseStatus, getPlayState, issuePlayLease, recordLeaseActivation, settlePlayLease } from "./family-play-db.ts";
 import { createHeartbeat, type HeartbeatInput } from "./family-play-heartbeat.ts";
+import { resolveStudioCandidate } from "./family-studio-candidate.ts";
+import { guardScript as mirroredGuardScript } from "./family-play-guard.ts";
+import { DAILY_CHESS_GAME_ID } from "./family-play.ts";
 
-const ADAPTER = "/Users/claweberle/.openclaw/workspace/projects/game-studio/server/child-play-adapter.mjs";
-const available = existsSync(ADAPTER);
+const candidate = resolveStudioCandidate();
+const ADAPTER = candidate?.path ?? "";
+const available = candidate !== null;
 
 type Adapter = {
   observationEligibleUntil: (lease: unknown) => number;
@@ -20,6 +29,7 @@ type Adapter = {
   derivePlayKey: (secret: string) => Buffer;
   mintPlayCredential: (key: Buffer, claims: Record<string, unknown>) => string;
   signSettlement: (key: Buffer, ts: number, leaseId: string, body: string) => string;
+  guardScript: (opts: { allowedOrigin: string; leaseId: string; beaconBase?: string }) => string;
 };
 
 describe("joined Family + Studio stack", { skip: !available && "game-studio workspace not present" }, () => {
@@ -38,19 +48,38 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
   /** Resolves when the next settlement report is observed by the gate (before it is held). */
   let settleObserved: (() => void) | null = null;
 
+  /** Fake Studio upstream for the studio-scope cases: records every provider-triggering POST. */
+  let upstream: http.Server;
+  let upstreamOrigin: string;
+  const upstreamPosts: string[] = [];
+
   before(async () => {
+    // VR-01: the candidate named by the pointer must be byte-identical to the accepted hash.
+    ok(candidate, "candidate pointer present");
+    equal(candidate!.actualSha256, candidate!.sha256, `adapter candidate at ${candidate!.path} hashes ${candidate!.actualSha256}, expected ${candidate!.sha256}`);
     mod = (await import(ADAPTER)) as Adapter;
     dir = mkdtempSync(join(tmpdir(), "family-joined-"));
     client = createClient({ url: `file:${join(dir, "db.sqlite")}` });
-    await client.execute("CREATE TABLE family_completions (person_id TEXT, week TEXT, status TEXT, awarded_points INTEGER)");
+    await client.execute("CREATE TABLE family_completions (person_id TEXT NOT NULL, routine_id TEXT NOT NULL, week TEXT NOT NULL, day INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'done', note TEXT, challenge TEXT, created_at TEXT NOT NULL, reviewed_at TEXT, credit_count INTEGER NOT NULL DEFAULT 1, awarded_points INTEGER, normalized_summary TEXT, approval_source TEXT, PRIMARY KEY (person_id, routine_id, week, day))");
     await client.execute("CREATE TABLE family_reward_redemptions (id TEXT PRIMARY KEY, person_id TEXT, reward_id TEXT, week TEXT, created_at TEXT, charged_points INTEGER)");
     await ensurePlayTables(client);
+    upstream = http.createServer((req, res) => {
+      const send = (status: number, body: unknown) => { res.writeHead(status, { "content-type": "application/json" }); res.end(JSON.stringify(body)); };
+      if (req.method === "POST") upstreamPosts.push(req.url ?? "");
+      if (req.url === "/api/projects" && req.method === "POST") return send(201, { project: { id: "own-j1", title: "Joined Game", prompt: "p", status: "creating", currentVersionId: null, versionCount: 0, latestJobId: "job-j1", latestPlanId: null, updatedAt: "x" }, job: { id: "job-j1", projectId: "own-j1", status: "queued", error: null, versionId: null, createdAt: "x", completedAt: null } });
+      if (req.url === "/api/projects/own-j1") return send(200, { id: "own-j1", title: "Joined Game", prompt: "p", status: "ready", currentVersionId: "v1", versionCount: 1, latestJobId: "job-j1", latestPlanId: null, updatedAt: "x" });
+      if (req.url === "/api/jobs/job-j1") return send(200, { id: "job-j1", projectId: "own-j1", status: "running", error: null, versionId: null, createdAt: "x", completedAt: null });
+      send(404, { error: "not found" });
+    });
+    await new Promise<void>((r) => upstream.listen(0, "127.0.0.1", () => r()));
+    upstreamOrigin = `http://127.0.0.1:${(upstream.address() as { port: number }).port}`;
     key = mod.derivePlayKey("isolated-fixture-secret-0123456789012345");
     mkdirSync(join(dir, "adapter"));
     writeFileSync(join(dir, "adapter", "approvals.json"), JSON.stringify({ version: 1, approvals: [{ gameId: "paid-game-1", children: ["santiago"] }] }));
   });
-  after(() => {
+  after(async () => {
     client?.close();
+    await new Promise((r) => upstream?.close(r));
     rmSync(dir, { recursive: true, force: true });
   });
   // A failed case must not leak a held gate into the next one (a held settle gate would hang every later flush).
@@ -67,11 +96,12 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     const dataDir = join(dir, dataDirName);
     if (!existsSync(dataDir)) {
       mkdirSync(dataDir);
-      writeFileSync(join(dataDir, "approvals.json"), JSON.stringify({ version: 1, approvals: [{ gameId: "paid-game-1", children: ["santiago"] }] }));
+      writeFileSync(join(dataDir, "approvals.json"), JSON.stringify({ version: 1, approvals: [{ gameId: "paid-game-1", children: ["santiago"] }, { gameId: DAILY_CHESS_GAME_ID, children: ["santiago", "isabel"] }] }));
     }
     const server = mod.createChildPlayAdapter({
       key,
       dataDir,
+      upstreamOrigin,
       settleBase: "http://127.0.0.1:1",
       now: () => clock,
       log: () => {},
@@ -2006,6 +2036,124 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       equal(server.store.loadLease("lease-joined-r13-alive")!.consumed, 0);
       equal((await getLease("lease-joined-r13-alive", client))!.consumedSeconds, 0);
       equal((await getLease("lease-joined-r13-alive-b", client))!.budgetSeconds, 900);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  // ---- October 8, 2026: studio scope and daily chess through the REAL Family persistence ----------------------
+
+  it("VR-01 guard mirror: the app's chess route injects exactly the candidate adapter's guard (same bytes for the same arguments)", () => {
+    for (const args of [{ allowedOrigin: "https://app.davideberle.com", leaseId: "lease-mirror-000001" }, { allowedOrigin: "http://127.0.0.1:3181", leaseId: "lease-mirror-000002", beaconBase: "https://dae-macmini.tail4f656e.ts.net:8444" }]) {
+      equal(mirroredGuardScript(args), mod.guardScript(args));
+    }
+    ok(mirroredGuardScript({ allowedOrigin: "x", leaseId: "y", beaconBase: "https://studio.test" }).includes('"https://studio.test"+\'/v1/play/\''));
+  });
+
+  it("SC-06 joined: a studio credential whose Family lease is active may create; after Family ends the lease (takeover elsewhere) the same credential is refused at the adapter before any provider call; a library credential never creates", async () => {
+    await allowance();
+    clock = t0;
+    const issued = await issuePlayLease({ personId: "santiago", gameId: "x", mode: "edit", leaseId: "lease-joined-stud01", takeover: true, deviceLabel: "iPad", now: at(0) }, client);
+    ok(issued.ok && issued.lease.gameId === "*" && issued.lease.metered);
+    const { server, base } = await stack();
+    try {
+      const studio = mod.mintPlayCredential(key, { sub: "santiago", scope: "studio", gid: "*", lid: "lease-joined-stud01", mode: "edit", metered: true, budget: 900, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + 1200, jti: "stud01" });
+      const library = mod.mintPlayCredential(key, { sub: "santiago", scope: "library", gid: "*", lid: "-", mode: "edit", metered: false, budget: 0, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + 1200, jti: "lib01" });
+      const postsBefore = upstreamPosts.length;
+      const lib = await fetch(`${base}/v1/studio/projects`, { method: "POST", headers: { authorization: `Bearer ${library}`, "content-type": "application/json" }, body: '{"prompt":"a game"}' });
+      equal(lib.status, 403, "library scope never submits");
+      equal(upstreamPosts.length, postsBefore);
+      const created = await fetch(`${base}/v1/studio/projects`, { method: "POST", headers: { authorization: `Bearer ${studio}`, "content-type": "application/json" }, body: '{"prompt":"a space game"}' });
+      equal(created.status, 201, await created.text());
+      equal(upstreamPosts.length, postsBefore + 1);
+      const meter = server.store.loadLease("lease-joined-stud01")!;
+      equal(meter.state, "active");
+      equal(meter.lastActive, true, "the submission is billed as foreground");
+      // Family ends the lease (the child took over on another screen): the next submission is refused before the upstream.
+      clock = t0 + 3000;
+      await endPlayLease({ leaseId: "lease-joined-stud01", personId: "santiago", reason: "replaced-by-takeover", now: new Date(clock) }, client);
+      clock = t0 + 6000;
+      const refused = await fetch(`${base}/v1/studio/projects/own-j1/iterate`, { method: "POST", headers: { authorization: `Bearer ${studio}`, "content-type": "application/json" }, body: '{"prompt":"slower"}' });
+      equal(refused.status, 410, await refused.text());
+      equal(upstreamPosts.length, postsBefore + 1, "no provider call after revocation");
+      await server.settler.flush();
+      const family = (await getLease("lease-joined-stud01", client))!;
+      equal(family.state, "ended");
+      ok(family.consumedSeconds >= 0 && family.consumedSeconds <= 3, `editing billed ${family.consumedSeconds}`);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("SC-05 joined: a studio heartbeat waiting on the child's own running job is attested and not billed; the paid allowance only moves for interactive seconds", async () => {
+    await allowance();
+    clock = t0;
+    await issuePlayLease({ personId: "santiago", gameId: "x", mode: "edit", leaseId: "lease-joined-stud02", takeover: true, deviceLabel: null, now: at(0) }, client);
+    const { server, base } = await stack();
+    try {
+      const studio = mod.mintPlayCredential(key, { sub: "santiago", scope: "studio", gid: "*", lid: "lease-joined-stud02", mode: "edit", metered: true, budget: 900, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + 1200, jti: "stud02" });
+      const beat = async (body: Record<string, unknown>) => {
+        const r = await fetch(`${base}/v1/play/lease-joined-stud02/tick`, { method: "POST", headers: { authorization: `Bearer ${studio}`, "content-type": "application/json" }, body: JSON.stringify(body) });
+        return { status: r.status, body: (await r.json()) as { consumedSeconds: number; waiting?: { attested: boolean; status: string }; billing?: string } };
+      };
+      // the project must be owned to attest a wait on its job
+      const created = await fetch(`${base}/v1/studio/projects`, { method: "POST", headers: { authorization: `Bearer ${studio}`, "content-type": "application/json" }, body: '{"prompt":"a space game"}' });
+      equal(created.status, 201);
+      for (let sec = 1; sec <= 5; sec += 1) { clock = t0 + sec * 1000; equal((await beat({ active: true })).status, 200); }
+      clock = t0 + 6000;
+      const wait = await beat({ active: false, waiting: { kind: "job", id: "job-j1" } });
+      equal(wait.status, 200);
+      deepEqual(wait.body.waiting, { kind: "job", id: "job-j1", attested: true, status: "running" });
+      const billedAtWait = wait.body.consumedSeconds;
+      clock = t0 + 60000;
+      const stillWaiting = await beat({ active: false, waiting: { kind: "job", id: "job-j1" } });
+      equal(stillWaiting.body.consumedSeconds, billedAtWait, "an attested wait bills nothing");
+      const foreign = await beat({ active: false, waiting: { kind: "job", id: "job-nope" } });
+      equal(foreign.body.waiting?.attested, false);
+      clock = t0 + 61000;
+      const end = await fetch(`${base}/v1/play/lease-joined-stud02/end`, { method: "POST", headers: { authorization: `Bearer ${studio}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
+      equal(end.status, 200);
+      await server.settler.flush();
+      const state = await getPlayState("santiago", client, new Date(clock));
+      ok(state.remainingSeconds >= 893 && state.remainingSeconds <= 895, `paid remaining ${state.remainingSeconds}: ~6 interactive seconds, 54 waiting seconds free`);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("DA-03 joined: a chess lease is metered by the adapter like any game, settles into the day's chess grant only, and stops within one heartbeat once Family locks it", async () => {
+    await allowance(0);
+    await client.execute("DELETE FROM family_completions");
+    await client.execute("DELETE FROM family_chess_allowances");
+    // 2026-10-04 12:00Z = 14:00 Zurich, Sunday = ISO 2026-W40 day 6; a parent-reviewed activity today.
+    await client.execute("INSERT INTO family_completions (person_id, routine_id, week, day, status, created_at, reviewed_at, awarded_points, approval_source) VALUES ('santiago', 's-kumon', '2026-W40', 6, 'done', 'x', 'y', 1, 'parent-review')");
+    clock = t0;
+    const issued = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-joined-chess01", takeover: true, deviceLabel: null, now: at(0) }, client);
+    ok(issued.ok && issued.lease.budgetKind === "chess" && issued.lease.budgetSeconds === 900, JSON.stringify(issued));
+    const { server, base } = await stack();
+    try {
+      const token = mod.mintPlayCredential(key, { sub: "santiago", scope: "lease", gid: DAILY_CHESS_GAME_ID, lid: "lease-joined-chess01", mode: "play", metered: true, budget: 900, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + 1200, jti: "chess01" });
+      equal((await tick(base, "lease-joined-chess01", token)).status, 200);
+      await playUntil(base, "lease-joined-chess01", token, 0, 10);
+      await server.settler.flush();
+      // Parent takes the approval back: the next authority read ends the lease; no coin row anywhere.
+      await client.execute("UPDATE family_completions SET status = 'on_hold', approval_source = NULL");
+      clock = t0 + 11000;
+      const refused = await tick(base, "lease-joined-chess01", token);
+      equal(refused.status, 410, JSON.stringify(refused.body));
+      await server.settler.flush();
+      const lease = (await getLease("lease-joined-chess01", client))!;
+      equal(lease.state, "ended");
+      equal(lease.endReason, "chess-locked");
+      ok(lease.consumedSeconds >= 10 && lease.consumedSeconds <= 11, `chess consumed ${lease.consumedSeconds}`);
+      const chessRow = (await client.execute("SELECT granted_seconds, consumed_seconds FROM family_chess_allowances WHERE person_id = 'santiago' AND date = '2026-10-04'")).rows[0];
+      equal(Number(chessRow.granted_seconds), 900);
+      ok(Number(chessRow.consumed_seconds) >= 10);
+      equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_reward_redemptions")).rows[0].n), 0, "no coin movement for chess");
+      equal((await getPlayState("santiago", client, new Date(clock))).remainingSeconds, 0, "paid allowance untouched (none purchased)");
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));

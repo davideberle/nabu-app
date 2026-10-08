@@ -1,11 +1,17 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Games — the approved library and the shared play-time allowance (GP-01,
-// GP-02, GP-09). The chess pilot is free and local; Studio games come from the
-// Game Studio child adapter on the tailnet and cost 3 coins per shared
-// 15-minute allowance. Buying is an explicit confirmation showing the exact
-// price and the authoritative balance; the server commits or refuses.
+// Games — October 8, 2026 policy (UI-10, DA-02, SC-01).
+//
+// Two clearly separate things, one page:
+//   1. Chess: free, 15 minutes a day, unlocked by a parent approving something
+//      the child did TODAY. The status here is the server's (date, eligibility,
+//      remaining); the launch goes through the guarded play surface.
+//   2. Game Studio: the approved library plus the child's own games, all on ONE
+//      paid allowance (3 coins → 15 minutes) that covers making, changing and
+//      playing. Buying is an explicit confirmation showing the exact price and
+//      the authoritative balance; the server commits or refuses.
+// No shop, no generic mini-game checkout, no duplicate chess card.
 // ---------------------------------------------------------------------------
 
 import Link from "next/link";
@@ -16,7 +22,7 @@ import { useChildShell } from "@/components/family/child-shell-provider";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import { approvedGameLibrary, childGameIdentity, childShellDestinationHref, guardedPlayHref } from "@/lib/family-child-shell";
 import { createGamesClient, newIdempotencyKey, type LibraryGame, type PlayStateView, type StudioAccess } from "@/lib/family-games-client";
-import { formatPlayClock } from "@/lib/family-play";
+import { DAILY_CHESS_GAME_ID, formatPlayClock } from "@/lib/family-play";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -33,6 +39,20 @@ export function FamilyGamesClient() {
   const { child } = useChildShell();
   if (!child) return null;
   return <Games key={child} child={child} />;
+}
+
+/** Child-readable chess status from the server numbers only. */
+export function chessStatusCopy(chess: PlayStateView["chess"]): { headline: string; detail: string; playable: boolean } {
+  if (chess.eligible && chess.remainingSeconds > 0) {
+    return { headline: `Unlocked today · ${formatPlayClock(chess.remainingSeconds)} left`, detail: "A parent approved something you did today. Your chess time follows you on every screen.", playable: true };
+  }
+  if (chess.eligible) {
+    return { headline: "Today's chess time is used up", detail: "You get 15 new minutes tomorrow, after a parent approves something you did tomorrow.", playable: false };
+  }
+  if (chess.grantedSeconds > 0) {
+    return { headline: "Locked right now", detail: `Today's approval was taken back. If a parent approves something you did today, your remaining ${formatPlayClock(Math.max(0, chess.grantedSeconds - chess.consumedSeconds))} comes back.`, playable: false };
+  }
+  return { headline: "Locked — earn it today", detail: "Do something useful, record it, and once a parent approves it you get 15 minutes of chess today. Chess on the real board is always free.", playable: false };
 }
 
 function Games({ child }: { child: ChildId }) {
@@ -75,7 +95,8 @@ function Games({ child }: { child: ChildId }) {
         return;
       }
       if (lib.value.child !== child) return;
-      setLibrary({ kind: "ready", games: lib.value.games, canCreate: lib.value.canCreate, studio: session.studio });
+      // Chess has its own card above; it is never listed twice.
+      setLibrary({ kind: "ready", games: lib.value.games.filter((g) => g.gameId !== DAILY_CHESS_GAME_ID), canCreate: lib.value.canCreate, studio: session.studio });
     })();
     return () => controller.abort();
   }, [child, client, attempt]);
@@ -115,31 +136,64 @@ function Games({ child }: { child: ChildId }) {
   }, [buying, child, client, refreshWallet]);
 
   const price = state.kind === "ready" ? state.state.price : { coins: 3, seconds: 900 };
+  const chess = state.kind === "ready" ? chessStatusCopy(state.state.chess) : null;
+  const chessCard = approvedGameLibrary[0];
 
   return (
     <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-6 px-4 py-5 pb-[max(3rem,env(safe-area-inset-bottom))] sm:px-6">
       <div>
         <p className="text-xs font-medium uppercase tracking-[0.14em] text-quaternary">Games</p>
         <h1 className="text-2xl font-semibold">{profile.displayName}&rsquo;s games</h1>
-        <p className="text-sm text-tertiary">Chess is free. Other approved games use play time: {price.coins} coins buy {Math.round(price.seconds / 60)} minutes of active play, shared across them.</p>
+        <p className="text-sm text-tertiary">Chess is free for 15 minutes a day once a parent approves something you did today. Game Studio uses coins: {price.coins} coins buy {Math.round(price.seconds / 60)} minutes of making, changing and playing your games.</p>
       </div>
 
-      {/* Allowance — server numbers only (GP-05). */}
+      {/* Chess — the free daily allowance (server status only). */}
+      <section aria-label="Chess" className={cn(cardClass)} data-chess-eligible={state.kind === "ready" ? String(state.state.chess.eligible) : ""} data-chess-remaining={state.kind === "ready" ? state.state.chess.remainingSeconds : ""}>
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h2 className="text-lg font-semibold">{chessCard.title}</h2>
+            <p className="text-sm text-tertiary">{chessCard.tagline}</p>
+          </div>
+          <span className="shrink-0 rounded-full border border-secondary px-3 py-1 text-xs font-medium text-tertiary">Free · 15 min a day</span>
+        </div>
+        {state.kind === "loading" ? (
+          <p className="text-sm text-tertiary">Checking today&rsquo;s chess time…</p>
+        ) : state.kind === "error" || !chess ? (
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-sm text-secondary">Couldn&rsquo;t check your chess time.</p>
+            <button type="button" onClick={() => setAttempt((n) => n + 1)} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>↻ Try again</button>
+          </div>
+        ) : (
+          <>
+            <p role="status" className="text-base font-semibold text-primary">{chess.headline}</p>
+            <p className="text-sm text-secondary">{chess.detail}</p>
+            <div className="flex flex-wrap gap-2">
+              {chess.playable ? (
+                <Link href={chessCard.hrefFor(identity)} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")} data-chess-play>♟️ Play chess</Link>
+              ) : (
+                <Link href={childShellDestinationHref("record", child)} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>🎙️ Record something I did</Link>
+              )}
+            </div>
+          </>
+        )}
+      </section>
+
+      {/* Game Studio — one paid allowance for making, changing and playing (server numbers only). */}
       <section aria-label="Play time" className="flex flex-col gap-3 rounded-3xl border border-primary bg-primary px-5 py-4">
         {state.kind === "loading" ? (
-          <p className="text-sm text-tertiary">Checking your play time…</p>
+          <p className="text-sm text-tertiary">Checking your Game Studio time…</p>
         ) : state.kind === "error" ? (
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm text-secondary">Couldn&rsquo;t load your play time.</p>
+            <p className="text-sm text-secondary">Couldn&rsquo;t load your Game Studio time.</p>
             <button type="button" onClick={() => setAttempt((n) => n + 1)} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>↻ Try again</button>
           </div>
         ) : (
           <>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-medium uppercase tracking-[0.14em] text-quaternary">Play time left</p>
+                <p className="text-xs font-medium uppercase tracking-[0.14em] text-quaternary">Game Studio time left</p>
                 <p className="text-3xl font-semibold" data-remaining-seconds={state.state.remainingSeconds}>⏱️ {formatPlayClock(state.state.remainingSeconds)}</p>
-                <p className="text-sm text-tertiary">You have 🪙 {state.state.balance} coins.</p>
+                <p className="text-sm text-tertiary">You have 🪙 {state.state.balance} coins. Making, changing and playing all use this time.</p>
               </div>
               {!confirming ? (
                 <button type="button" onClick={() => { setConfirming(true); setNotice(null); }} disabled={state.state.balance < price.coins} className={cn(pillClass, state.state.balance >= price.coins ? "bg-secondary text-primary hover:bg-primary" : "cursor-not-allowed bg-primary text-quaternary")}>
@@ -147,7 +201,7 @@ function Games({ child }: { child: ChildId }) {
                 </button>
               ) : (
                 <div role="group" aria-label="Confirm purchase" className="flex flex-col items-end gap-2 rounded-2xl border border-primary bg-secondary px-4 py-3">
-                  <p className="text-sm font-medium text-primary">Spend 🪙 {price.coins} of your {state.state.balance} coins for {Math.round(price.seconds / 60)} minutes of play?</p>
+                  <p className="text-sm font-medium text-primary">Spend 🪙 {price.coins} of your {state.state.balance} coins for {Math.round(price.seconds / 60)} minutes of Game Studio?</p>
                   <div className="flex gap-2">
                     <button type="button" onClick={() => { setConfirming(false); keyRef.current = null; }} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>Not now</button>
                     <button type="button" onClick={buy} disabled={buying} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>{buying ? "Buying…" : `Yes, buy for 🪙 ${price.coins}`}</button>
@@ -157,40 +211,27 @@ function Games({ child }: { child: ChildId }) {
             </div>
             {notice ? <p role="status" className="text-sm font-medium text-secondary">{notice}</p> : null}
             {state.state.activeLease ? (
-              <p className="text-xs text-tertiary">A game is open on {state.state.activeLease.deviceLabel ? `another ${state.state.activeLease.deviceLabel}` : "another screen"}. Opening a game here continues the same time.</p>
+              <p className="text-xs text-tertiary">{state.state.activeLease.mode === "edit" ? "The studio is open" : "A game is open"} on {state.state.activeLease.deviceLabel ? `another ${state.state.activeLease.deviceLabel}` : "another screen"}. Opening one here continues the same time.</p>
             ) : null}
           </>
         )}
       </section>
 
-      {/* Free pilot — local, ungated (GP-01). */}
-      <section aria-label="Free games" className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">Free</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {approvedGameLibrary.map((game) => (
-            <Link key={game.gameId} href={game.hrefFor(identity)} className={cn(cardClass, "transition-colors hover:bg-secondary", focusRing)}>
-              <span className="flex items-center justify-between gap-2"><span className="text-lg font-semibold">{game.title}</span><span className="rounded-full border border-secondary px-3 py-1 text-xs font-medium text-tertiary">Free</span></span>
-              <span className="text-sm text-tertiary">{game.tagline}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
       {/* Studio library — through the child adapter only (G1). */}
       <section aria-label="Approved games" className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-lg font-semibold">Approved games</h2>
+          <h2 className="text-lg font-semibold">Game Studio</h2>
           {library.kind === "ready" && library.canCreate ? (
-            <Link href={`/family/games/edit?child=${encodeURIComponent(child)}`} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>✨ Make or change a game</Link>
+            <Link href={`/family/games/edit?child=${encodeURIComponent(child)}`} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>✨ Make or change a game (uses Game Studio time)</Link>
           ) : null}
         </div>
         {library.kind === "loading" ? (
           <p className="text-sm text-tertiary">Loading the library…</p>
         ) : library.kind === "unconfigured" ? (
-          <p className="rounded-3xl border border-dashed border-primary bg-primary/60 px-5 py-4 text-sm text-tertiary">The game library isn&rsquo;t connected on this server yet. Chess works; other games come here once Game Studio is linked.</p>
+          <p className="rounded-3xl border border-dashed border-primary bg-primary/60 px-5 py-4 text-sm text-tertiary">Game Studio isn&rsquo;t connected on this server yet. Games and timed chess come here once it is linked.</p>
         ) : library.kind === "unreachable" ? (
           <div className="flex flex-col items-start gap-3 rounded-3xl border border-primary bg-primary px-5 py-4">
-            <p className="text-sm text-secondary">Game Studio isn&rsquo;t reachable from this device right now — it needs the home network connection. Chess still works.</p>
+            <p className="text-sm text-secondary">Game Studio isn&rsquo;t reachable from this device right now — it needs the home network connection. Chess on the real board still works.</p>
             <button type="button" onClick={() => setAttempt((n) => n + 1)} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>↻ Try again</button>
           </div>
         ) : library.kind === "error" ? (
@@ -199,7 +240,7 @@ function Games({ child }: { child: ChildId }) {
             <button type="button" onClick={() => setAttempt((n) => n + 1)} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>↻ Try again</button>
           </div>
         ) : library.games.length === 0 ? (
-          <p className="rounded-3xl border border-dashed border-primary bg-primary/60 px-5 py-4 text-sm text-tertiary">No approved games yet. A parent approves games in Game Studio.</p>
+          <p className="rounded-3xl border border-dashed border-primary bg-primary/60 px-5 py-4 text-sm text-tertiary">No approved Studio games yet. A parent approves games in Game Studio; your own games appear here once you make one.</p>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2">
             {library.games.map((game) => (
@@ -210,7 +251,7 @@ function Games({ child }: { child: ChildId }) {
                     {game.tagline ? <p className="text-sm text-tertiary">{game.tagline}</p> : null}
                     <p className="text-xs text-quaternary">{game.source === "own" ? "Your own game" : "Approved by a parent"}</p>
                   </div>
-                  <span className="shrink-0 rounded-full border border-secondary px-3 py-1 text-xs font-medium text-tertiary">{game.free ? "Free" : `🪙 ${price.coins} / ${Math.round(price.seconds / 60)} min`}</span>
+                  <span className="shrink-0 rounded-full border border-secondary px-3 py-1 text-xs font-medium text-tertiary">🪙 {price.coins} / {Math.round(price.seconds / 60)} min</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {game.playable ? (
@@ -219,7 +260,7 @@ function Games({ child }: { child: ChildId }) {
                     <span className="text-sm text-tertiary">Not playable yet ({game.status})</span>
                   )}
                   {game.source === "own" ? (
-                    <Link href={guardedPlayHref(identity, game.gameId, "edit")} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>✏️ Edit</Link>
+                    <Link href={guardedPlayHref(identity, game.gameId, "edit")} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>✏️ Change</Link>
                   ) : null}
                 </div>
               </article>
@@ -229,7 +270,7 @@ function Games({ child }: { child: ChildId }) {
       </section>
 
       <p className="text-xs text-tertiary">
-        <Link href={childShellDestinationHref("home", child)} className="underline">Back to Home</Link> · Game saves stay on the device you play on; play time follows you across devices, saves don&rsquo;t.
+        <Link href={childShellDestinationHref("home", child)} className="underline">Back to Home</Link> · Game saves stay on the device you play on; your time follows you across devices, saves don&rsquo;t.
       </p>
     </main>
   );

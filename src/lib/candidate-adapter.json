@@ -1,0 +1,5 @@
+{
+  "_comment": "The Game Studio child adapter candidate the joined suite and the guard mirror are bound to (VR-01). Path to the isolated Studio candidate on this machine; the SHA-256 is the accepted candidate's hash \u2014 a differing file fails the joined tests instead of silently testing the wrong adapter.",
+  "path": "/private/tmp/nabu-studio-simplification-20261008/server/child-play-adapter.mjs",
+  "sha256": "f4d13b930e0db91c1911668e66447226e8b2ec202a90b259f1f687c01b0fddce"
+}

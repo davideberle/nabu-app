@@ -9,8 +9,6 @@ import { describe, it } from "node:test";
 import {
   CHILD_SHELL_STORAGE_KEY,
   approvedGameLibrary,
-  buildPlanWeekNav,
-  buildRewardsWeekNav,
   childGameIdentity,
   childShellDestinationHref,
   childShellDestinations,
@@ -138,7 +136,7 @@ describe("shell destinations", () => {
   it("address every child surface, with Home first and the legacy paths unchanged (DESIGN §7.5)", () => {
     deepStrictEqual(
       childShellDestinations.map((d) => d.id),
-      ["home", "assistant", "record", "activity", "plan", "rewards", "learn", "games", "listen"],
+      ["home", "assistant", "record", "activity", "rewards", "learn", "games", "listen"],
     );
     deepStrictEqual(
       childShellDestinations.map((d) => d.path),
@@ -147,7 +145,6 @@ describe("shell destinations", () => {
         "/family/assistant",
         "/family/assistant/record",
         "/family/activity",
-        "/family/plan",
         "/family/rewards",
         "/family/learn",
         "/family/games",
@@ -157,6 +154,9 @@ describe("shell destinations", () => {
     // The persistent header shows Home only; everything else is reached from Home.
     deepStrictEqual(childShellHeaderDestinations.map((d) => d.id), ["home"]);
     equal(childShellDestinations.find((d) => d.id === "home")!.label, "Home");
+    // October 8, 2026: the weekly grid is retired; /family/rewards is the Coins surface, not a shop.
+    equal(childShellDestinations.some((d) => d.path === "/family/plan"), false);
+    equal(childShellDestinations.find((d) => d.id === "rewards")!.label, "Coins");
   });
 
   it("maps every pathname to its destination", () => {
@@ -166,6 +166,7 @@ describe("shell destinations", () => {
     equal(activeShellDestination("/family/assistant/record"), "record");
     equal(activeShellDestination("/family/assistant"), "assistant");
     equal(activeShellDestination("/family/learn/mission"), "learn");
+    equal(activeShellDestination("/family/plan"), "activity", "legacy plan URLs belong to Activity");
   });
 
   it("builds hrefs that carry the validated child", () => {
@@ -174,20 +175,21 @@ describe("shell destinations", () => {
       "/family/assistant?child=santiago",
     );
     equal(
-      childShellDestinationHref("plan", "isabel", "2026-W34"),
-      "/family/plan?child=isabel&week=2026-W34",
+      childShellDestinationHref("activity", "isabel", "2026-W34"),
+      "/family/activity?child=isabel&week=2026-W34",
     );
+    // Coins carries no week: there is no weekly view of the wallet (UI-03).
     equal(
       childShellDestinationHref("rewards", "santiago", "2026-W34"),
-      "/family/rewards?child=santiago&week=2026-W34",
+      "/family/rewards?child=santiago",
     );
   });
 
   it("drops invalid child and week values instead of forwarding them", () => {
-    equal(childShellDestinationHref("plan", "Santiago", "2026-W34"), "/family/plan?week=2026-W34");
-    equal(childShellDestinationHref("plan", null, "2026-W34"), "/family/plan?week=2026-W34");
-    equal(childShellDestinationHref("plan", "isabel", "banana"), "/family/plan?child=isabel");
-    equal(childShellDestinationHref("plan", "isabel", "2026-W3"), "/family/plan?child=isabel");
+    equal(childShellDestinationHref("activity", "Santiago", "2026-W34"), "/family/activity?week=2026-W34");
+    equal(childShellDestinationHref("activity", null, "2026-W34"), "/family/activity?week=2026-W34");
+    equal(childShellDestinationHref("activity", "isabel", "banana"), "/family/activity?child=isabel");
+    equal(childShellDestinationHref("activity", "isabel", "2026-W3"), "/family/activity?child=isabel");
     equal(childShellDestinationHref("rewards", 42, null), "/family/rewards");
   });
 
@@ -242,20 +244,8 @@ describe("plan and rewards week navigation", () => {
     nextWeekId: "2026-W35",
   };
 
-  it("keeps every Plan href inside the shell and scoped to the child", () => {
-    const nav = buildPlanWeekNav(info, "santiago");
-    equal(nav.prevHref, "/family/plan?child=santiago&week=2026-W33");
-    equal(nav.currentHref, "/family/plan?child=santiago&week=2026-W34");
-    equal(nav.nextHref, "/family/plan?child=santiago&week=2026-W35");
-    equal(nav.overviewHref, "/family/dashboard?week=2026-W34");
-    equal(nav.weekId, "2026-W34");
-    equal(nav.rangeLabel, info.rangeLabel);
-  });
-
-  it("does the same for Rewards", () => {
-    const nav = buildRewardsWeekNav(info, "isabel");
-    equal(nav.prevHref, "/family/rewards?child=isabel&week=2026-W33");
-    equal(nav.nextHref, "/family/rewards?child=isabel&week=2026-W35");
+  it("no destination builds week navigation any more (the weekly grid and weekly shop are retired)", () => {
+    equal(info.weekId, "2026-W34");
   });
 });
 
@@ -316,8 +306,8 @@ describe("game identity seam", () => {
 
   it("ships the Adaptive Chess Coach pilot as the first approved game", () => {
     // The first real Game Studio integration (family-assistant/DESIGN.md
-    // §7.5.1). It has its own launch route (/family/rewards/chess), the
-    // vendored bundle under public/games, and the middleware allowlist entry.
+    // §7.5.1). Since October 8, 2026 it launches through the guarded play
+    // surface on the daily chess lease; the bundle is embedded and gated.
     const chess = approvedGameLibrary.find((g) => g.gameId === "adaptive-chess-coach");
     equal(!!chess, true);
     equal(typeof chess!.title, "string");
@@ -331,7 +321,7 @@ describe("game identity seam", () => {
     // is always one of the real ids, never a browser-crafted string.
     const santi = childGameIdentity("santiago")!;
     const isabel = childGameIdentity("isabel")!;
-    equal(chess.hrefFor(santi), "/family/rewards/chess?child=santiago");
-    equal(chess.hrefFor(isabel), "/family/rewards/chess?child=isabel");
+    equal(chess.hrefFor(santi), "/family/games/play?game=adaptive-chess-coach&child=santiago");
+    equal(chess.hrefFor(isabel), "/family/games/play?game=adaptive-chess-coach&child=isabel");
   });
 });

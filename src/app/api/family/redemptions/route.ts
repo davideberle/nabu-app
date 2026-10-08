@@ -9,7 +9,7 @@ import {
 import { auth } from "@/auth";
 import { isAdminEmail } from "@/lib/access";
 import { resolveRedemptionWeek } from "@/lib/family-wallet";
-import { isValidIdempotencyKey } from "@/lib/family-play";
+import { isRetiredRewardId, isValidIdempotencyKey } from "@/lib/family-play";
 import { getPurchaseByRedemptionId, refundPlayPurchase } from "@/lib/family-play-db";
 import { familyMembers } from "@/data/family-routines";
 
@@ -57,6 +57,12 @@ export async function POST(request: Request) {
     typeof rewardId !== "string" || !rewardId
   ) {
     return NextResponse.json({ error: "Invalid fields" }, { status: 400 });
+  }
+  // October 8, 2026: the five catalog rewards are retired. A direct POST, a
+  // stale client or a stale configuration cannot create a NEW debit for them;
+  // every historical redemption, its charged snapshot and the parent undo stay.
+  if (isRetiredRewardId(rewardId)) {
+    return NextResponse.json({ error: "reward-retired", rewardId }, { status: 410 });
   }
   const redemptionWeek = resolveRedemptionWeek(week);
   if (!redemptionWeek.ok) {

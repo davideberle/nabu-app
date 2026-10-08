@@ -28,6 +28,8 @@ export async function transitionCompletionStatus(
   firstApprovalAward: number,
   reviewedAt: string,
   guard?: CompletionTransitionGuard,
+  /** Explicit provenance of an approval (October 8, 2026); hold/redo clear it so a later approval must re-assert it. */
+  approvalSource: string = "parent-review",
 ): Promise<boolean> {
   const guardSql = guard
     ? " AND status = ? AND created_at IS ?"
@@ -38,13 +40,16 @@ export async function transitionCompletionStatus(
             awarded_points = CASE
               WHEN ? = 'done' THEN COALESCE(awarded_points, ?)
               ELSE awarded_points
-            END
+            END,
+            approval_source = CASE WHEN ? = 'done' THEN ? ELSE NULL END
           WHERE week = ? AND person_id = ? AND routine_id = ? AND day = ?${guardSql}`,
     args: [
       newStatus,
       reviewedAt,
       newStatus,
       firstApprovalAward,
+      newStatus,
+      approvalSource,
       identity.week,
       identity.personId,
       identity.routineId,

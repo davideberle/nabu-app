@@ -7,7 +7,12 @@
 //                           normal `family_reward_redemptions` row.
 //   family_play_allowances  one row per child: granted vs consumed seconds.
 //   family_play_leases      the single consuming lease per child (partial
-//                           unique index on active rows) and its settlements.
+//                           unique index on active rows) and its settlements;
+//                           `budget_kind` says which allowance it consumes.
+//   family_chess_allowances one row per child and Europe/Zurich date: the free
+//                           daily chess allowance (October 8, 2026). Written on
+//                           the first eligible chess lease of the day, debited
+//                           by settlement, never by a coin.
 //
 // Every write that must be all-or-nothing runs inside one write transaction
 // (purchase = debit + purchase + grant; settlement = lease + allowance), so a
@@ -27,16 +32,26 @@ import {
   FAMILY_WALLET_EPOCH_WEEK,
 } from "./family-wallet.ts";
 import { insertRedemptionIfAffordable } from "./family-wallet-ledger.ts";
-import { isoWeekIdInZurich } from "./date.ts";
+import { familyTodayInZurich, isoWeekIdInZurich } from "./date.ts";
 import {
+  DAILY_CHESS_SECONDS,
   LEASE_STALE_SECONDS,
   PLAY_BLOCK_COINS,
   PLAY_BLOCK_SECONDS,
   PLAY_PURCHASE_REWARD_ID,
+  STUDIO_SCOPE_GAME_ID,
   allowanceRemaining,
   applySettlement,
+  budgetKindFor,
+  chessRemaining,
   decideLeaseIssue,
+  isParentApproved,
+  occurrenceDateOf,
   playPriceFor,
+  type BudgetKind,
+  type ChessAllowance,
+  type ChessStatusView,
+  type LeaseRefusal,
   type PlayAllowance,
   type PlayLease,
   type PlayMode,
@@ -89,7 +104,7 @@ export async function ensurePlayTables(client: Db): Promise<void> {
       reserve_seconds  INTEGER NOT NULL DEFAULT 0
     )
   `);
-  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0", "cap_seconds INTEGER", "final_settled INTEGER NOT NULL DEFAULT 0", "activated_at TEXT", "measured_at TEXT", "authority_until TEXT", "fence_cap_seconds INTEGER"]) {
+  for (const column of ["predecessor_id TEXT", "reserve_seconds INTEGER NOT NULL DEFAULT 0", "cap_seconds INTEGER", "final_settled INTEGER NOT NULL DEFAULT 0", "activated_at TEXT", "measured_at TEXT", "authority_until TEXT", "fence_cap_seconds INTEGER", "budget_kind TEXT NOT NULL DEFAULT 'paid'", "budget_date TEXT"]) {
     try {
       await client.execute(`ALTER TABLE family_play_leases ADD COLUMN ${column}`);
     } catch {
@@ -103,6 +118,24 @@ export async function ensurePlayTables(client: Db): Promise<void> {
   await client.execute(`
     CREATE INDEX IF NOT EXISTS idx_family_play_leases_person
       ON family_play_leases (person_id, issued_at)
+  `);
+  // The chess eligibility read needs the provenance column on family_completions;
+  // the family schema guard adds it too, this keeps the play layer self-sufficient.
+  try {
+    await client.execute(`ALTER TABLE family_completions ADD COLUMN approval_source TEXT`);
+  } catch {
+    /* column already exists (or the table is created by the family guard first) */
+  }
+  await client.execute(`
+    CREATE TABLE IF NOT EXISTS family_chess_allowances (
+      person_id        TEXT NOT NULL,
+      date             TEXT NOT NULL,
+      granted_seconds  INTEGER NOT NULL DEFAULT 0,
+      consumed_seconds INTEGER NOT NULL DEFAULT 0,
+      created_at       TEXT NOT NULL,
+      updated_at       TEXT NOT NULL,
+      PRIMARY KEY (person_id, date)
+    )
   `);
 }
 
@@ -166,7 +199,14 @@ function rowToLease(row: Record<string, unknown>): PlayLease {
     measuredAt: (row["measured_at"] as string | null) ?? null,
     authorityUntil: (row["authority_until"] as string | null) ?? null,
     fenceCapSeconds: row["fence_cap_seconds"] === null || row["fence_cap_seconds"] === undefined ? null : Number(row["fence_cap_seconds"]),
+    budgetKind: row["budget_kind"] === "chess" ? "chess" : "paid",
+    budgetDate: (row["budget_date"] as string | null) ?? null,
   };
+}
+
+function rowToChessAllowance(row: Record<string, unknown> | undefined, personId: ChildId, date: string): ChessAllowance | null {
+  if (!row) return null;
+  return { personId, date, grantedSeconds: Number(row["granted_seconds"] ?? 0), consumedSeconds: Number(row["consumed_seconds"] ?? 0) };
 }
 
 function rowToPurchase(row: Record<string, unknown>): PlayPurchase {
@@ -245,31 +285,51 @@ export function endedCapSeconds(lease: Pick<PlayLease, "metered" | "budgetSecond
   return Math.max(lease.consumedSeconds, Math.min(lease.budgetSeconds, lease.consumedSeconds + elapsed));
 }
 
-async function unresolvedLeases(db: Db, personId: ChildId, exceptId: string | null): Promise<PlayLease[]> {
-  const result = await db.execute({ sql: "SELECT * FROM family_play_leases WHERE person_id = ? AND metered = 1 AND final_settled = 0", args: [personId] });
-  return result.rows.map((row) => rowToLease(row as Record<string, unknown>)).filter((lease) => lease.id !== exceptId);
+/** A budget identity: the paid allowance, or one child's chess allowance for one Zurich date. */
+type BudgetRef = { kind: "paid" } | { kind: "chess"; date: string };
+
+function budgetOf(lease: Pick<PlayLease, "budgetKind" | "budgetDate">): BudgetRef {
+  return lease.budgetKind === "chess" ? { kind: "chess", date: lease.budgetDate ?? "" } : { kind: "paid" };
 }
 
-/** Sum of what every other unresolved lease of the child may still report. */
-async function reserveFor(db: Db, personId: ChildId, exceptId: string | null, now: Date): Promise<number> {
-  const others = await unresolvedLeases(db, personId, exceptId);
+function sameBudget(a: BudgetRef, b: BudgetRef): boolean {
+  return a.kind === b.kind && (a.kind !== "chess" || b.kind !== "chess" || a.date === b.date);
+}
+
+async function unresolvedLeases(db: Db, personId: ChildId, exceptId: string | null, budget: BudgetRef): Promise<PlayLease[]> {
+  const result = await db.execute({ sql: "SELECT * FROM family_play_leases WHERE person_id = ? AND metered = 1 AND final_settled = 0", args: [personId] });
+  return result.rows.map((row) => rowToLease(row as Record<string, unknown>)).filter((lease) => lease.id !== exceptId && sameBudget(budgetOf(lease), budget));
+}
+
+/** Sum of what every other unresolved lease of the child ON THE SAME BUDGET may still report. */
+async function reserveFor(db: Db, personId: ChildId, exceptId: string | null, now: Date, budget: BudgetRef): Promise<number> {
+  const others = await unresolvedLeases(db, personId, exceptId, budget);
   return others.reduce((sum, lease) => sum + outstandingSeconds(lease, now), 0);
+}
+
+/** Remaining seconds of one budget (the paid allowance, or today's chess grant — eligibility aside). */
+async function budgetRemaining(db: Db, personId: ChildId, budget: BudgetRef): Promise<number> {
+  if (budget.kind === "paid") return allowanceRemaining(await readAllowance(db, personId));
+  return chessRemaining(await readChessAllowance(db, personId, budget.date), true);
 }
 
 /**
  * Re-derive the budget of every ACTIVE metered lease of the child from the
- * current allowance and the reserves of all other unresolved leases. Called
- * after every settlement and every lease end, so a late ancestor report or a
- * finished predecessor moves the live cap in the right direction at once.
+ * current allowance of ITS budget and the reserves of all other unresolved
+ * leases on that budget. Called after every settlement and every lease end,
+ * so a late ancestor report or a finished predecessor moves the live cap in
+ * the right direction at once. Budgets never mix: a chess reserve never
+ * shrinks a paid lease and vice versa.
  */
 async function reconcileActiveBudgets(db: Db, personId: ChildId, now: Date): Promise<void> {
   const active = await db.execute({ sql: "SELECT * FROM family_play_leases WHERE person_id = ? AND state = 'active' AND metered = 1", args: [personId] });
   if (active.rows.length === 0) return;
-  const allowance = await readAllowance(db, personId);
   for (const row of active.rows) {
     const lease = rowToLease(row as Record<string, unknown>);
-    const reserve = await reserveFor(db, personId, lease.id, now);
-    const budget = Math.max(lease.consumedSeconds, allowanceRemaining(allowance) + lease.consumedSeconds - reserve);
+    const budgetRef = budgetOf(lease);
+    const remaining = await budgetRemaining(db, personId, budgetRef);
+    const reserve = await reserveFor(db, personId, lease.id, now, budgetRef);
+    const budget = Math.max(lease.consumedSeconds, remaining + lease.consumedSeconds - reserve);
     await db.execute({ sql: "UPDATE family_play_leases SET budget_seconds = ?, cap_seconds = ?, reserve_seconds = ? WHERE id = ?", args: [budget, budget, reserve, lease.id] });
   }
 }
@@ -324,6 +384,73 @@ async function readAllowance(db: Db, personId: ChildId): Promise<PlayAllowance> 
   return rowToAllowance(result.rows[0] as Record<string, unknown> | undefined, personId);
 }
 
+async function readChessAllowance(db: Db, personId: ChildId, date: string): Promise<ChessAllowance | null> {
+  const result = await db.execute({ sql: "SELECT granted_seconds, consumed_seconds FROM family_chess_allowances WHERE person_id = ? AND date = ?", args: [personId, date] });
+  return rowToChessAllowance(result.rows[0] as Record<string, unknown> | undefined, personId, date);
+}
+
+/**
+ * Today's qualifying approval (DA-01): a trustworthy parent-approved completion
+ * whose OCCURRENCE date (ISO week + Monday-zero day) is the server's Europe/Zurich
+ * wall date. Submission and review timestamps are not consulted; a row for
+ * yesterday approved today never qualifies today, a malformed identity never
+ * qualifies at all. Returns the first such identity, or null.
+ */
+export async function chessQualifyingApproval(db: Db, personId: ChildId, now: Date): Promise<{ week: string; routineId: string; day: number } | null> {
+  const today = familyTodayInZurich(now);
+  const result = await db.execute({
+    sql: `SELECT week, routine_id, day, status, reviewed_at, approval_source FROM family_completions
+          WHERE person_id = ? AND week = ? AND day = ? AND status = 'done'
+          ORDER BY routine_id ASC`,
+    args: [personId, today.week, today.day],
+  });
+  for (const raw of result.rows) {
+    const row = raw as Record<string, unknown>;
+    const week = String(row["week"]);
+    const day = Number(row["day"]);
+    if (occurrenceDateOf(week, day) !== today.date) continue;
+    if (!isParentApproved({ status: String(row["status"]), reviewedAt: (row["reviewed_at"] as string | null) ?? null, approvalSource: (row["approval_source"] as string | null) ?? null })) continue;
+    return { week, routineId: String(row["routine_id"]), day };
+  }
+  return null;
+}
+
+/** Server-derived chess status for one child (never trusts a client date, flag or balance). */
+export async function chessStatusFor(db: Db, personId: ChildId, now: Date): Promise<ChessStatusView> {
+  const today = familyTodayInZurich(now);
+  const qualifiedBy = await chessQualifyingApproval(db, personId, now);
+  const allowance = await readChessAllowance(db, personId, today.date);
+  const eligible = qualifiedBy !== null;
+  // Before the first chess lease of the day no row exists yet: an eligible child
+  // has the whole daily allowance ahead (the row is created, once, on that lease).
+  const granted = allowance ? allowance.grantedSeconds : eligible ? DAILY_CHESS_SECONDS : 0;
+  return {
+    date: today.date,
+    eligible,
+    grantedSeconds: granted,
+    consumedSeconds: allowance?.consumedSeconds ?? 0,
+    remainingSeconds: eligible ? (allowance ? chessRemaining(allowance, true) : DAILY_CHESS_SECONDS) : 0,
+    qualifiedBy,
+  };
+}
+
+/**
+ * A chess lease is runnable only on its own Zurich date and only while the
+ * child is eligible. Ends it otherwise (no coin, no refund; consumed seconds
+ * stay consumed). Returns the end reason applied, or null when nothing changed.
+ */
+async function enforceChessLease(db: Db, lease: PlayLease, now: Date): Promise<string | null> {
+  if (lease.budgetKind !== "chess" || lease.state !== "active") return null;
+  const today = familyTodayInZurich(now);
+  let reason: string | null = null;
+  if (lease.budgetDate !== today.date) reason = "day-ended";
+  else if ((await chessQualifyingApproval(db, lease.personId, now)) === null) reason = "chess-locked";
+  if (!reason) return null;
+  await endLeaseRow(db, lease, reason, now);
+  await reconcileActiveBudgets(db, lease.personId, now);
+  return reason;
+}
+
 async function readWalletBalance(db: Db, personId: ChildId): Promise<number> {
   const result = await db.execute({
     sql: `SELECT
@@ -351,15 +478,18 @@ export type PlayState = {
   remainingSeconds: number;
   price: { coins: number; seconds: number };
   activeLease: PlayLease | null;
+  /** Today's chess status (server date, server eligibility). */
+  chess: ChessStatusView;
 };
 
-export async function getPlayState(personId: ChildId, client?: Client): Promise<PlayState> {
+export async function getPlayState(personId: ChildId, client?: Client, now: Date = new Date()): Promise<PlayState> {
   const db = client ?? (await getDb());
   await ensurePlayTables(db);
-  const [allowance, balance, activeLease] = await Promise.all([
+  const [allowance, balance, activeLease, chess] = await Promise.all([
     readAllowance(db, personId),
     readWalletBalance(db, personId),
     readActiveLease(db, personId),
+    chessStatusFor(db, personId, now),
   ]);
   return {
     personId,
@@ -368,7 +498,35 @@ export async function getPlayState(personId: ChildId, client?: Client): Promise<
     remainingSeconds: allowanceRemaining(allowance),
     price: { coins: PLAY_BLOCK_COINS, seconds: PLAY_BLOCK_SECONDS },
     activeLease,
+    chess,
   };
+}
+
+/**
+ * Called right after any completion mutation for a child: if the child's
+ * active lease is a chess lease and today's qualifying approval is gone, the
+ * lease ends now (the meter learns on its next authority read, within one
+ * heartbeat). Idempotent; never touches coins or consumed seconds.
+ */
+export async function lockChessIfIneligible(personId: ChildId, now: Date = new Date(), client?: Client): Promise<string | null> {
+  const db = client ?? (await getDb());
+  await ensurePlayTables(db);
+  const tx = await beginWrite(db);
+  try {
+    const active = await readActiveLease(tx, personId);
+    const reason = active ? await enforceChessLease(tx, active, now) : null;
+    await tx.commit();
+    return reason;
+  } catch (error) {
+    try {
+      await tx.rollback();
+    } catch {
+      /* already finished */
+    }
+    throw error;
+  } finally {
+    release(tx);
+  }
 }
 
 export async function getLease(leaseId: string, client?: Client): Promise<PlayLease | null> {
@@ -528,7 +686,7 @@ export async function refundPlayPurchase(
     // once, and an active lease left with no room is ended and capped here, in
     // the same transaction — the meter learns on its next authority check.
     await reconcileActiveBudgets(tx, purchase.personId, input.now ?? new Date());
-    const live = await tx.execute({ sql: "SELECT * FROM family_play_leases WHERE person_id = ? AND state = 'active' AND metered = 1", args: [purchase.personId] });
+    const live = await tx.execute({ sql: "SELECT * FROM family_play_leases WHERE person_id = ? AND state = 'active' AND metered = 1 AND budget_kind = 'paid'", args: [purchase.personId] });
     for (const row of live.rows) {
       const lease = rowToLease(row as Record<string, unknown>);
       if (lease.budgetSeconds <= lease.consumedSeconds) {
@@ -559,8 +717,20 @@ export async function refundPlayPurchase(
 
 export type IssueLeaseOutcome =
   | { ok: true; lease: PlayLease; replaced: string | null; remainingSeconds: number; handoverAt: string | null }
-  | { ok: false; reason: "no-allowance" | "lease-held"; remainingSeconds: number; heldBy?: { leaseId: string; gameId: string; deviceLabel: string | null } };
+  | { ok: false; reason: LeaseRefusal; remainingSeconds: number; heldBy?: { leaseId: string; gameId: string; deviceLabel: string | null } };
 
+/**
+ * Issue the child's single interactive lease. Three shapes, one ledger:
+ *   - paid play of an approved game (`mode: "play"`, a Studio game id);
+ *   - the paid Studio editor (`mode: "edit"`; the game id is normalized to the
+ *     `*` sentinel — creation happens before a game has an id);
+ *   - digital chess (`mode: "play"`, the chess id) on today's earned allowance:
+ *     refused `chess-not-earned` without a qualifying approval today; the
+ *     daily row is created at most once (INSERT OR IGNORE), so repeated
+ *     approvals or concurrent first entries cannot stack grants.
+ * A metered lease needs remaining seconds on ITS budget; a live lease on
+ * another device/mode blocks issuance unless the child takes over.
+ */
 export async function issuePlayLease(
   input: { personId: ChildId; gameId: string; mode: PlayMode; leaseId: string; takeover: boolean; deviceLabel: string | null; now?: Date },
   client?: Client,
@@ -568,33 +738,49 @@ export async function issuePlayLease(
   const db = client ?? (await getDb());
   await ensurePlayTables(db);
   const now = input.now ?? new Date();
-  const price = playPriceFor(input.gameId, input.mode);
+  const gameId = input.mode === "edit" ? STUDIO_SCOPE_GAME_ID : input.gameId;
+  const price = playPriceFor(gameId, input.mode);
+  const kind: BudgetKind = budgetKindFor(gameId, input.mode);
+  const today = familyTodayInZurich(now);
+  const budgetRef: BudgetRef = kind === "chess" ? { kind: "chess", date: today.date } : { kind: "paid" };
   const tx = await beginWrite(db);
   try {
-    const allowance = await readAllowance(tx, input.personId);
-    const remaining = allowanceRemaining(allowance);
+    let chessEligible = false;
+    if (kind === "chess") {
+      chessEligible = (await chessQualifyingApproval(tx, input.personId, now)) !== null;
+      if (chessEligible) {
+        // One grant per child and date; a second row can never be inserted.
+        await tx.execute({
+          sql: "INSERT OR IGNORE INTO family_chess_allowances (person_id, date, granted_seconds, consumed_seconds, created_at, updated_at) VALUES (?, ?, ?, 0, ?, ?)",
+          args: [input.personId, today.date, DAILY_CHESS_SECONDS, now.toISOString(), now.toISOString()],
+        });
+      }
+    }
+    const remaining = kind === "chess" ? chessRemaining(await readChessAllowance(tx, input.personId, today.date), chessEligible) : allowanceRemaining(await readAllowance(tx, input.personId));
     const existing = await readActiveLease(tx, input.personId);
-    const decision = decideLeaseIssue({ price, remainingSeconds: remaining, existing, takeover: input.takeover, now });
+    const decision = decideLeaseIssue({ price, remainingSeconds: remaining, existing, takeover: input.takeover, now, chessEligible });
     if (!decision.ok) {
       await tx.rollback();
       return decision.reason === "lease-held"
         ? { ok: false, reason: "lease-held", remainingSeconds: remaining, heldBy: decision.heldBy }
-        : { ok: false, reason: "no-allowance", remainingSeconds: remaining };
+        : { ok: false, reason: decision.reason, remainingSeconds: remaining };
     }
     if (decision.replaces && existing) {
       await endLeaseRow(tx, existing, input.takeover ? "replaced-by-takeover" : "replaced-stale", now);
     }
-    // Hold back everything every unresolved lease of this child (replaced,
-    // released, stale — any that has not reported its end) may still report.
-    const reserve = await reserveFor(tx, input.personId, null, now);
-    const metered = price.kind === "metered";
+    // Hold back everything every unresolved lease of this child ON THIS BUDGET
+    // (replaced, released, stale — any that has not reported its end) may still report.
+    const reserve = await reserveFor(tx, input.personId, null, now, budgetRef);
+    const metered = true;
     const lease: PlayLease = {
       id: input.leaseId,
       personId: input.personId,
-      gameId: input.gameId,
+      gameId,
       mode: input.mode,
       metered,
-      budgetSeconds: metered ? Math.max(0, remaining - reserve) : 0,
+      budgetKind: kind,
+      budgetDate: kind === "chess" ? today.date : null,
+      budgetSeconds: Math.max(0, remaining - reserve),
       consumedSeconds: 0,
       state: "active",
       issuedAt: now.toISOString(),
@@ -604,23 +790,23 @@ export async function issuePlayLease(
       endReason: null,
       deviceLabel: input.deviceLabel,
       predecessorId: decision.replaces,
-      reserveSeconds: metered ? reserve : 0,
-      capSeconds: metered ? Math.max(0, remaining - reserve) : 0,
-      finalSettled: !metered,
+      reserveSeconds: reserve,
+      capSeconds: Math.max(0, remaining - reserve),
+      finalSettled: false,
       activatedAt: null,
       measuredAt: null,
       authorityUntil: null,
     };
     await tx.execute({
       sql: `INSERT INTO family_play_leases
-              (id, person_id, game_id, mode, metered, budget_seconds, consumed_seconds, state, issued_at, device_label, predecessor_id, reserve_seconds, cap_seconds, final_settled)
-            VALUES (?, ?, ?, ?, ?, ?, 0, 'active', ?, ?, ?, ?, ?, ?)`,
-      args: [lease.id, lease.personId, lease.gameId, lease.mode, metered ? 1 : 0, lease.budgetSeconds, lease.issuedAt, lease.deviceLabel, lease.predecessorId, lease.reserveSeconds, lease.capSeconds, metered ? 0 : 1],
+              (id, person_id, game_id, mode, metered, budget_seconds, consumed_seconds, state, issued_at, device_label, predecessor_id, reserve_seconds, cap_seconds, final_settled, budget_kind, budget_date)
+            VALUES (?, ?, ?, ?, 1, ?, 0, 'active', ?, ?, ?, ?, ?, 0, ?, ?)`,
+      args: [lease.id, lease.personId, lease.gameId, lease.mode, lease.budgetSeconds, lease.issuedAt, lease.deviceLabel, lease.predecessorId, lease.reserveSeconds, lease.capSeconds, lease.budgetKind, lease.budgetDate],
     });
     // A predecessor whose meter still holds an authority window fences this
     // lease: the meter is told `pending` until that window lapses or the
     // predecessor's terminal report arrives, whichever is first.
-    const handoverAt = metered ? await handoverUntil(tx, input.personId, lease.id, now) : null;
+    const handoverAt = await handoverUntil(tx, input.personId, lease.id, now);
     await tx.commit();
     return { ok: true, lease, replaced: decision.replaces, remainingSeconds: remaining, handoverAt };
   } catch (error) {
@@ -694,14 +880,14 @@ export async function settlePlayLease(
     const applied = applySettlement({ ...lease, budgetSeconds: ceiling }, input.consumedSeconds);
     let delta = applied.delta;
     let consumedNext = applied.consumedSeconds;
+    const budgetRef = budgetOf(lease);
     if (delta > 0) {
-      // Bounded by what the allowance can still give at all: the sum of per-lease
+      // Bounded by what ITS allowance can still give at all: the sum of per-lease
       // consumption then equals the allowance's consumption and never exceeds the
       // grant. Live budgets of other leases are re-derived right after (they
       // shrink by what this report took), so measured overlap is charged, not
       // refused and handed back.
-      const allowanceNow = await readAllowance(tx, lease.personId);
-      const room = Math.max(0, allowanceRemaining(allowanceNow));
+      const room = Math.max(0, await budgetRemaining(tx, lease.personId, budgetRef));
       if (delta > room) {
         delta = room;
         consumedNext = lease.consumedSeconds + room;
@@ -727,7 +913,17 @@ export async function settlePlayLease(
             WHERE id = ?`,
       args: [consumedNext, at, nextMeasuredAt, ends ? 1 : 0, ends ? 1 : 0, at, ends ? 1 : 0, input.endReason ?? (applied.exhausted ? "exhausted" : "ended"), finalReport ? 1 : 0, finalReport ? 1 : 0, Math.floor(ceiling), finalReport ? 1 : 0, consumedNext, lease.id],
     });
-    if (delta > 0) {
+    if (delta > 0 && budgetRef.kind === "chess") {
+      // Chess time is debited from that day's grant only — never from the coin block.
+      await tx.execute({
+        sql: `INSERT INTO family_chess_allowances (person_id, date, granted_seconds, consumed_seconds, created_at, updated_at)
+              VALUES (?, ?, 0, ?, ?, ?)
+              ON CONFLICT(person_id, date) DO UPDATE SET
+                consumed_seconds = MIN(granted_seconds, consumed_seconds + excluded.consumed_seconds),
+                updated_at = excluded.updated_at`,
+        args: [lease.personId, budgetRef.date, delta, at, at],
+      });
+    } else if (delta > 0) {
       await tx.execute({
         sql: `INSERT INTO family_play_allowances (person_id, granted_seconds, consumed_seconds, updated_at)
               VALUES (?, 0, ?, ?)
@@ -739,11 +935,11 @@ export async function settlePlayLease(
     }
     // Any report changes what the other leases may still claim: re-derive every live budget.
     await reconcileActiveBudgets(tx, lease.personId, input.now ?? new Date());
-    const allowance = await readAllowance(tx, lease.personId);
+    const remainingAfter = await budgetRemaining(tx, lease.personId, budgetRef);
     const updated = await readLease(tx, lease.id);
     await tx.commit();
     // Every second the meter reported beyond what was accepted — cap truncation and allowance clamping alike — is surfaced.
-    return { ok: true, lease: updated!, remainingSeconds: allowanceRemaining(allowance), delta, budgetSeconds: updated!.budgetSeconds, state: updated!.state, endReason: updated!.endReason, refusedSeconds: requestedDelta - delta };
+    return { ok: true, lease: updated!, remainingSeconds: remainingAfter, delta, budgetSeconds: updated!.budgetSeconds, state: updated!.state, endReason: updated!.endReason, refusedSeconds: requestedDelta - delta };
   } catch (error) {
     try {
       await tx.rollback();
@@ -793,6 +989,8 @@ export type LeaseStatus = {
   gameId: string;
   mode: PlayMode;
   metered: boolean;
+  /** Which allowance the lease consumes; informational for the meter. */
+  budgetKind: BudgetKind;
   /** `pending`: issued, but a predecessor's authority window has not lapsed and its meter has not reported its end — the meter must not run it yet. */
   state: LeaseState | "pending";
   endReason: string | null;
@@ -845,7 +1043,10 @@ export async function recordLeaseActivation(leaseId: string, now = new Date(), c
             WHERE person_id = ? AND state = 'ended' AND activated_at IS NULL AND final_settled = 0 AND metered = 1`,
       args: [lease.personId],
     });
-    if (lease.state === "active") {
+    // A chess lease is authority only on its own date and while today's
+    // approval still stands: re-checked on every signed read, before any window.
+    const chessEnd = await enforceChessLease(tx, lease, now);
+    if (lease.state === "active" && chessEnd === null) {
       const pendingUntil = await handoverUntil(tx, lease.personId, lease.id, now);
       if (pendingUntil === null) {
         // Grant (or extend) the exclusive authority window for this read. A
@@ -878,7 +1079,7 @@ export async function getLeaseStatus(leaseId: string, client?: Client, now: Date
   await ensurePlayTables(db);
   const lease = await readLease(db, leaseId);
   if (!lease) return null;
-  const allowance = await readAllowance(db, lease.personId);
+  const remaining = await budgetRemaining(db, lease.personId, budgetOf(lease));
   const startsAt = lease.state === "active" ? await handoverUntil(db, lease.personId, lease.id, now) : null;
   const pending = startsAt !== null;
   const granted = lease.state === "active" && !pending && lease.authorityUntil !== null;
@@ -892,7 +1093,8 @@ export async function getLeaseStatus(leaseId: string, client?: Client, now: Date
     endReason: lease.endReason,
     budgetSeconds: lease.budgetSeconds,
     consumedSeconds: lease.consumedSeconds,
-    remainingSeconds: allowanceRemaining(allowance),
+    remainingSeconds: remaining,
+    budgetKind: lease.budgetKind,
     issuedAt: lease.issuedAt,
     lastSettledAt: lease.lastSettledAt,
     capSeconds: lease.capSeconds,
