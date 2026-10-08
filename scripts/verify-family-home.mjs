@@ -219,6 +219,32 @@ const chessCred = chessS.json.studio.token;
 }
 
 // ---------------------------------------------------------------------------
+// H: daily chess exhaustion — no grace, no grant, content denied (REPAIR-1 / DA-03, SC-07 distinction)
+// ---------------------------------------------------------------------------
+{
+  await db.execute({ sql: "UPDATE family_chess_allowances SET consumed_seconds = granted_seconds - 2 WHERE person_id = 'santiago' AND date = ?", args: [today.date] });
+  const lease = await call("POST", "/api/family/play/leases", { cookie: assistant, bearer: mintS.token, body: { gameId: CHESS, mode: "play", takeover: true, device: "harness-x" } });
+  record("H-48", "DA-03 a chess lease on the last 2 daily seconds has budget 2", lease.status === 201 && lease.json.lease.budgetSeconds === 2 && lease.json.lease.budgetKind === "chess", `${lease.status} ${lease.json?.lease?.budgetSeconds}`);
+  const url = mintS.studio.url; const lid = lease.json.lease.id; const cred = lease.json.studio.token;
+  const t0 = await call("POST", `${url}/v1/play/${lid}/tick`, { bearer: cred, body: { active: true } });
+  // Live heartbeats until the 2 s budget is crossed (real wall clock): the FIRST answer at/after the boundary must be
+  // the end — never a grace phase, never a grant — and nothing after it is authority.
+  const ticks = [];
+  for (let i = 0; i < 6 && !(ticks.at(-1)?.json?.ended); i += 1) { await sleep(800); ticks.push(await call("POST", `${url}/v1/play/${lid}/tick`, { bearer: cred, body: { active: true } })); }
+  const fin = ticks.find((t) => t.json?.ended) ?? ticks.at(-1);
+  const sawGrace = ticks.some((t) => t.json?.phase === "grace" || (t.json?.graceRemainingSeconds ?? null) !== null);
+  const after = await call("POST", `${url}/v1/play/${lid}/tick`, { bearer: cred, body: { active: true } });
+  const content = await call("GET", lease.json.content.path, { cookie: assistant });
+  const st = (await call("GET", "/api/family/play/state", { cookie: assistant, bearer: mintS.token })).json;
+  const again = await call("POST", "/api/family/play/leases", { cookie: assistant, bearer: mintS.token, body: { gameId: CHESS, mode: "play", takeover: true } });
+  record("H-49", "DA-03/SC-07 at zero daily seconds chess ENDS (ended, exhausted, no grace phase ever, authorizedForMs 0), the content route refuses, no new lease, no coins", t0.status === 200 && fin?.json?.ended === true && fin.json.endReason === "exhausted" && !sawGrace && (fin.json.graceRemainingSeconds ?? null) === null && (fin.json.authorizedForMs ?? 0) === 0 && after.status === 410 && [403, 410].includes(content.status) && st.chess.remainingSeconds === 0 && st.chess.consumedSeconds === 900 && again.status === 402 && again.json?.error === "no-allowance" && st.balance === santiago0, JSON.stringify({ ticks: ticks.map((t) => [t.status, t.json?.phase, t.json?.ended]), fin: fin?.json, after: after.status, content: content.status, chess: st.chess, again: again.status }));
+  if (again.status === 201) await call("POST", `/api/family/play/leases/${again.json.lease.id}/release`, { cookie: assistant, bearer: mintS.token, body: { reason: "harness-cleanup" } });
+  await sleep(2600);
+  // Restore the day's grant for the browser journeys (synthetic DB only): consumed back to what the earlier checks used.
+  await db.execute({ sql: "UPDATE family_chess_allowances SET consumed_seconds = 10 WHERE person_id = 'santiago' AND date = ?", args: [today.date] });
+}
+
+// ---------------------------------------------------------------------------
 // H: paid Studio clock — purchase, studio lease, adapter authority (SC-01..SC-07)
 // ---------------------------------------------------------------------------
 {
@@ -414,26 +440,41 @@ const shot = async (page, name) => page.screenshot({ path: path.join(out, `${nam
   const src = await frame.getAttribute("src");
   record("T-03", "DA-04 chess loads from the same-origin gated route with the lease credential (never a raw static path)", src?.startsWith(`/games/${CHESS}/index.html?child=santiago&credential=`), src?.slice(0, 80));
   await page.waitForFunction(() => /\d+:\d\d/.test(document.querySelector("[data-remaining-seconds]")?.textContent || ""), null, { timeout: 20000 });
-  const gameFrame = page.frames().find((f) => f.url().includes(`/games/${CHESS}/`));
+  // The child frame is resolved from the iframe ELEMENT (never by scanning page.frames() before its navigation
+  // committed) and its guard is awaited explicitly; a null probe is a failure, never a pass.
+  const consoleErrors = [];
+  page.on("console", (m) => { if (m.type() === "error") consoleErrors.push(m.text()); });
+  page.on("pageerror", (e) => consoleErrors.push(`pageerror: ${e.message}`));
+  const frameHandle = await frame.elementHandle();
+  const gameFrame = frameHandle ? await frameHandle.contentFrame() : null;
+  if (!gameFrame) throw new Error("chess iframe has no content frame");
+  await gameFrame.waitForURL(new RegExp(`/games/${CHESS}/index\\.html`), { timeout: 20000 });
+  await gameFrame.waitForFunction(() => Boolean(window.__familyPlayGuard), null, { timeout: 20000 });
   await page.waitForTimeout(1500);
-  const frameOrigin = gameFrame ? await gameFrame.evaluate(() => location.origin).catch(() => null) : null;
-  const stored = gameFrame ? await gameFrame.evaluate(() => localStorage.getItem("chess-coach:v1:santiago")).catch(() => null) : null;
-  const guardPresent = gameFrame ? await gameFrame.evaluate(() => Boolean(window.__familyPlayGuard) && document.querySelectorAll("script[data-chess-asset]").length).catch(() => null) : null;
-  record("T-04", "DA-04 origin compatibility: the frame runs on the app origin and reads the pre-existing per-child save key; the guard and the inlined scripts are present", frameOrigin === base && typeof stored === "string" && stored.includes("origin-check") && guardPresent === 4, JSON.stringify({ frameOrigin, stored: stored?.slice(0, 40), guardPresent }));
+  const frameOrigin = await gameFrame.evaluate(() => location.origin).catch((e) => `error: ${e.message}`);
+  const stored = await gameFrame.evaluate(() => localStorage.getItem("chess-coach:v1:santiago")).catch((e) => `error: ${e.message}`);
+  const guardPresent = await gameFrame.evaluate(() => Boolean(window.__familyPlayGuard) && document.querySelectorAll("script[data-chess-asset]").length).catch((e) => `error: ${e.message}`);
+  record("T-04", "DA-04 origin compatibility: the frame runs on the app origin and reads the pre-existing per-child save key; the guard and the inlined scripts are present (null probes fail)", frameOrigin === base && typeof stored === "string" && stored.includes("origin-check") && guardPresent === 4, JSON.stringify({ frameOrigin, stored: typeof stored === "string" ? stored.slice(0, 40) : stored, guardPresent, frameUrl: gameFrame.url().slice(0, 70), consoleErrors: consoleErrors.slice(0, 3) }));
   const clock1 = await page.locator("header [data-remaining-seconds]").getAttribute("data-remaining-seconds");
   await page.waitForTimeout(6000);
   const clock2 = await page.locator("header [data-remaining-seconds]").getAttribute("data-remaining-seconds");
   record("T-05", "DA-03 the chess clock is the server's daily remaining and moves while playing", Number(clock2) < Number(clock1) && Number(clock1) <= 900, `${clock1} → ${clock2}`);
   await shot(page, "tablet-02-chess-playing");
-  const frozenBefore = gameFrame ? await gameFrame.evaluate(() => window.__familyPlayGuard?.isFrozen() ?? null).catch(() => null) : null;
+  // The game must actually be running (thawed) before the pause; a frozen-before-pause reading is a failure.
+  await gameFrame.waitForFunction(() => window.__familyPlayGuard?.isFrozen() === false, null, { timeout: 15000 }).catch(() => null);
+  const frozenBefore = await gameFrame.evaluate(() => window.__familyPlayGuard?.isFrozen() ?? null).catch((e) => `error: ${e.message}`);
+  // Input freeze probe: a keydown inside the frame reaches the page only while thawed.
+  await gameFrame.evaluate(() => { window.__keys = 0; window.addEventListener("keydown", () => { window.__keys += 1; }); }).catch(() => null);
   await page.getByRole("button", { name: /Pause/ }).tap();
   await page.getByRole("dialog", { name: "Paused" }).waitFor();
   await page.waitForTimeout(1500);
-  const frozenAfter = gameFrame ? await gameFrame.evaluate(() => window.__familyPlayGuard?.isFrozen() ?? null).catch(() => null) : null;
+  const frozenAfter = await gameFrame.evaluate(() => window.__familyPlayGuard?.isFrozen() ?? null).catch((e) => `error: ${e.message}`);
+  await gameFrame.evaluate(() => { window.focus(); document.body.dispatchEvent(new KeyboardEvent("keydown", { key: "a", bubbles: true })); }).catch(() => null);
+  const keysWhileFrozen = await gameFrame.evaluate(() => window.__keys).catch(() => null);
   const paused1 = await page.locator("header [data-remaining-seconds]").getAttribute("data-remaining-seconds");
   await page.waitForTimeout(4000);
   const paused2 = await page.locator("header [data-remaining-seconds]").getAttribute("data-remaining-seconds");
-  record("T-06", "SC-04 pausing freezes the chess frame and stops the daily clock", frozenBefore === false && frozenAfter === true && Number(paused2) >= Number(paused1) - 1, JSON.stringify({ frozenBefore, frozenAfter, paused1, paused2 }));
+  record("T-06", "SC-04 pausing freezes the chess frame (guard frozen, input swallowed) and stops the daily clock (null probes fail)", frozenBefore === false && frozenAfter === true && keysWhileFrozen === 0 && Number(paused2) >= Number(paused1) - 1, JSON.stringify({ frozenBefore, frozenAfter, keysWhileFrozen, paused1, paused2, consoleErrors: consoleErrors.slice(0, 3) }));
   await page.getByRole("link", { name: /Games/ }).first().tap();
   await page.waitForURL(/\/family\/games\?child=santiago/);
   await sleep(800);

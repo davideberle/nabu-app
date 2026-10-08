@@ -2159,4 +2159,59 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       await new Promise((r) => server.close(r));
     }
   });
+
+  it("REPAIR-1 joined: a chess lease plays its full 900 s against the real Family persistence and ENDS at the boundary — 410 exhausted, no grace, no grant; Family's day row is fully consumed; a fresh chess lease is refused and a fresh PAID lease still gets its own grace", async () => {
+    await allowance(900);
+    await client.execute("DELETE FROM family_completions");
+    await client.execute("DELETE FROM family_chess_allowances");
+    await client.execute("INSERT INTO family_completions (person_id, routine_id, week, day, status, created_at, reviewed_at, awarded_points, approval_source) VALUES ('santiago', 's-kumon', '2026-W40', 6, 'done', 'x', 'y', 1, 'parent-review')");
+    clock = t0;
+    const issued = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-joined-chessfull", takeover: true, deviceLabel: null, now: at(0) }, client);
+    ok(issued.ok && issued.lease.budgetSeconds === 900, JSON.stringify(issued));
+    const { server, base } = await stack();
+    try {
+      const token = mod.mintPlayCredential(key, { sub: "santiago", scope: "lease", gid: DAILY_CHESS_GAME_ID, lid: "lease-joined-chessfull", mode: "play", metered: true, budget: 900, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + 1800, jti: "chessfull" });
+      equal((await tick(base, "lease-joined-chessfull", token)).status, 200);
+      const last = await playUntil(base, "lease-joined-chessfull", token, 0, 899);
+      equal(last!.body.consumedSeconds, 899);
+      clock = t0 + 900_000;
+      const end = await tick(base, "lease-joined-chessfull", token);
+      equal(end.status, 410, JSON.stringify(end.body));
+      const view = end.body as { ended: boolean; endReason?: string; graceRemainingSeconds?: number | null; authorizedForMs?: number; consumedSeconds: number };
+      equal(view.ended, true);
+      equal(view.endReason, "exhausted");
+      equal(view.graceRemainingSeconds ?? null, null);
+      equal(view.authorizedForMs ?? 0, 0);
+      equal(view.consumedSeconds, 900);
+      await server.settler.flush();
+      const lease = (await getLease("lease-joined-chessfull", client))!;
+      equal(lease.state, "ended");
+      equal(lease.consumedSeconds, 900);
+      const row = (await client.execute("SELECT consumed_seconds FROM family_chess_allowances WHERE person_id = 'santiago' AND date = '2026-10-04'")).rows[0];
+      equal(Number(row.consumed_seconds), 900);
+      const state = await getPlayState("santiago", client, new Date(clock));
+      equal(state.chess.remainingSeconds, 0);
+      equal(state.remainingSeconds, 900, "the purchased allowance is untouched by chess");
+      // reconnect/refresh with the same credential: no authority
+      clock = t0 + 905_000;
+      equal((await tick(base, "lease-joined-chessfull", token)).status, 410);
+      // a fresh chess lease today: refused by Family (no daily seconds left)
+      const again = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-joined-chessfull2", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      deepEqual(again, { ok: false, reason: "no-allowance", remainingSeconds: 0 });
+      // the PAID clock keeps its once-only tail: a 2 s paid lease reaches grace, not an immediate end
+      await client.execute("UPDATE family_play_allowances SET consumed_seconds = granted_seconds - 2 WHERE person_id = 'santiago'");
+      const paid = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-paidtail", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      ok(paid.ok && paid.lease.budgetSeconds === 2, JSON.stringify(paid));
+      const ptoken = mod.mintPlayCredential(key, { sub: "santiago", scope: "lease", gid: "paid-game-1", lid: "lease-joined-paidtail", mode: "play", metered: true, budget: 2, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + 1200, jti: "paidtail" });
+      clock += 3000;
+      equal((await tick(base, "lease-joined-paidtail", ptoken)).status, 200);
+      clock += 2000;
+      const tail = await tick(base, "lease-joined-paidtail", ptoken);
+      equal(tail.status, 200, JSON.stringify(tail.body));
+      equal((tail.body as { phase: string }).phase, "grace");
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
 });
