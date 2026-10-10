@@ -25,15 +25,19 @@ import type { ChildId } from "./family-assistant-turn.ts";
 import {
   hasLanguageSegment,
   hasMathItem,
+  isHarborWorkplaceId,
   isLanguageSegmentId,
   isScoredMathItemId,
   languageSegment,
+  logDefFor,
   mathItem,
   transferDefFor,
   typingCourseForLayout,
   typingLessonForLayout,
   usedWordOf,
+  type HarborWorkplaceId,
   type KeyboardLayoutId,
+  type TargetLanguage,
   type LanguageSegment,
   type LanguageSegmentId,
   type LanguageStep,
@@ -47,9 +51,11 @@ import {
 } from "./family-learning-content.ts";
 import { buildSceneModel, buildVisitSummary, delayAnchor, delayedCheckInfo, visitLabel, visitOrdinal, type DelayedCheckInfo, type SceneModel, type VisitSummary } from "./family-learning-summary.ts";
 import { buildProgress, type ProgressStrip, type ProgressSources } from "./family-learning-progress.ts";
-import { buildVocabularyLedger, childVocabularyCue, type VocabularyInventory, type ChildVocabularyCue } from "./family-learning-vocabulary.ts";
+import { buildVocabularyLedger, childVocabularyCue, childWordbook, type VocabularyInventory, type ChildVocabularyCue, type ChildWordbook } from "./family-learning-vocabulary.ts";
 import { alignTyping, alignedLessonMetrics, TYPING_METRIC_VERSION, type AlignedLineMetrics } from "./family-learning-typing-metrics.ts";
 import { assessSpacing, evaluateRevision, flagSpacing, markSpacing, suggestSpacing, type SpacingFlag } from "./family-learning-writing.ts";
+import { evaluateLogRevision, reviewLogSentence, type LogRevisionEvaluation, type WritingReview } from "./family-learning-writing-review.ts";
+import { applyReasoningChoice, applyReasoningTurn, childExplanationText, methodLabel, newReasoningState, reopenAfterCounters, type ReasoningState } from "./family-learning-reasoning.ts";
 import {
   acknowledgeLesson,
   buildVisitReports,
@@ -126,6 +132,10 @@ export type MathAttempt = {
   answer: number | null;
   /** Remainder items: the two requested numbers as answered. */
   remainder?: { used: number | null; remaining: number | null } | null;
+  /** Quotient items (content v4): part A (full groups, remaining) or part B (groups needed for all) as answered. */
+  quotient?: { full: number | null; remaining: number | null; needed: number | null } | null;
+  /** Quotient items: which part the attempt answered. */
+  part?: "full-remaining" | "needed";
   raw: string;
   modality: AnswerModality;
   correct: boolean | null;
@@ -155,6 +165,10 @@ export type MathItemState = {
   allocation: number | null;
   /** Remainder items: the accepted (used, remaining) pair once resolved. */
   remainderResult?: { used: number; remaining: number } | null;
+  /** Quotient items (content v4): the accepted (full, remaining) once part A is correct; `needed` once part B is resolved. */
+  quotientResult?: { full: number; remaining: number; needed: number | null } | null;
+  /** Quotient items: the part currently asked (`needed` after part A is correct). Absent on other items. */
+  part?: "full-remaining" | "needed";
   resolvedAt: string | null;
   outcome: "pending" | "correct" | "taught" | "stopped";
 };
@@ -319,6 +333,11 @@ export type VisitRecord = {
   startedAt: string;
   finishedAt: string | null;
   stageIndex: number;
+  /**
+   * Content v4: the EFFECTIVE stage order of this visit (the harbor chapter lets the child choose which workplace comes
+   * first). Absent on every earlier visit — then the frozen content stage list applies. `stageIndex` indexes this route.
+   */
+  route?: StageId[];
   skippedStages: { stage: StageId; reason: "time" | "child" }[];
   /** Difficulty self-assessment (content reflection option id). */
   reflection: string | null;
@@ -347,6 +366,34 @@ export type TransferRecord = {
   at: string;
 };
 
+/** The harbor of visit v6 (content v4): the plan is saved once; boats are tied only when the Spanish request supplied cuerdas. */
+export type HarborState = {
+  destination: string | null;
+  planned: boolean;
+  plannedAt: string | null;
+  roped: boolean;
+  /** Workplaces the child has entered, in order (first entry decides the route). */
+  entered: HarborWorkplaceId[];
+};
+
+/** The reviewed writing review of the child's own log sentence and the bounded revision (content v4, log-review stage). */
+export type LogReviewRecord = {
+  visit: VisitId;
+  logId: string;
+  original: string;
+  /** The review as shown (findings, taught points, clean aspects, unknown words, suggestion) — immutable once recorded. */
+  review: WritingReview;
+  revised: string | null;
+  evaluation: LogRevisionEvaluation | null;
+  /** The child's answers to "Was meinst du mit …?" (unknown words), verbatim, unscored. */
+  clarifications: Record<string, string>;
+  outcome: "revised" | "partial" | "unchanged" | "none-needed" | "skipped";
+  /** Whether the suggestion (help) was shown before the revision. */
+  helpShown: boolean;
+  modality: "typed";
+  at: string;
+};
+
 export type MissionState = {
   missionId: string;
   contentVersion: number;
@@ -364,6 +411,8 @@ export type MissionState = {
   modelShownAt: string | null;
   /** The remainder teaching example (EQ-STATION-MODEL) shown once. */
   stationModelShownAt?: string | null;
+  /** The quotient teaching example (EQ-HARBOR-MODEL, content v4) shown once. */
+  harborModelShownAt?: string | null;
   /** First teaching move in visit 1 — the anchor for the delayed check. */
   teachingFirstAt: string | null;
   explanations: { visit: VisitId; text: string; modality: AnswerModality; taskId?: string | null; at: string }[];
@@ -378,6 +427,12 @@ export type MissionState = {
   station?: StationState;
   /** Visit 4 (content v3, 2026-10-04): the pier in the bay — additive; absent on earlier rows. */
   pier?: PierState;
+  /** Visit 5 (content v4, 2026-10-10): the harbor — additive; absent on earlier rows. */
+  harbor?: HarborState;
+  /** Visit 5: the reasoning conversation per scored item (additive). */
+  reasoning?: Partial<Record<ScoredMathItemId, ReasoningState>>;
+  /** Visit 5: the reviewed writing review + revision of the captain's log (additive). */
+  logReviews?: LogReviewRecord[];
   logRevisions: LogRevision[];
   transfers?: TransferRecord[];
   /** Lesson-end repairs, practice focus and acknowledged lesson feedback (world-first 2026-10-03, additive; absent on earlier rows). */
@@ -400,7 +455,7 @@ export const EMPTY_PARENT_SETTINGS: ParentSettings = {
   languageVarietyEs: null,
 };
 
-const SCORED_IDS: readonly ScoredMathItemId[] = ["EQ-ENTRY", "EQ-FRESH", "EQ-RETURN", "EQ-DELAY", "EQ-STATION", "EQ-PIER"];
+const SCORED_IDS: readonly ScoredMathItemId[] = ["EQ-ENTRY", "EQ-FRESH", "EQ-RETURN", "EQ-DELAY", "EQ-STATION", "EQ-PIER", "EQ-HARBOR", "EQ-HARBOR-CHECK"];
 
 function emptyMathState(): MathItemState {
   return {
@@ -429,6 +484,10 @@ function emptyPier(): PierState {
   return { spot: null, built: false, builtAt: null, boatMoored: false };
 }
 
+function emptyHarbor(): HarborState {
+  return { destination: null, planned: false, plannedAt: null, roped: false, entered: [] };
+}
+
 export function newMissionState(content: LearningContent, child: ChildId, nowIso: string): MissionState {
   const math: MissionState["math"] = {};
   for (const id of SCORED_IDS) if (hasMathItem(content, id)) math[id] = emptyMathState();
@@ -455,6 +514,9 @@ export function newMissionState(content: LearningContent, child: ChildId, nowIso
     typing: { lessons: [], labels: [], skipped: [], course: null, alignment: null },
     station: emptyStation(),
     pier: emptyPier(),
+    harbor: emptyHarbor(),
+    reasoning: {},
+    logReviews: [],
     logRevisions: [],
     transfers: [],
     feedback: emptyFeedbackState(),
@@ -490,6 +552,18 @@ export function upgradeMissionState(input: MissionState, content: LearningConten
   }
   if (!state.pier) {
     state.pier = emptyPier();
+    changed = true;
+  }
+  if (!state.harbor) {
+    state.harbor = emptyHarbor();
+    changed = true;
+  }
+  if (!state.reasoning) {
+    state.reasoning = {};
+    changed = true;
+  }
+  if (!Array.isArray(state.logReviews)) {
+    state.logReviews = [];
     changed = true;
   }
   if (!Array.isArray(state.logRevisions)) {
@@ -586,7 +660,7 @@ export type SampleRow = {
   id: string;
   visitId: VisitId;
   taskId: string | null;
-  kind: "explanation" | "expedition_log" | "expedition_log_revision" | "writing_transfer" | "typed_label" | "language_response" | "typing_practice" | "typing_burst" | "typing_retry" | "writing_retry" | "language_retry";
+  kind: "explanation" | "expedition_log" | "expedition_log_revision" | "writing_transfer" | "typed_label" | "language_response" | "typing_practice" | "typing_burst" | "typing_retry" | "writing_retry" | "language_retry" | "reasoning_turn" | "writing_review" | "writing_clarification";
   language: string | null;
   modality: string;
   text: string;
@@ -626,6 +700,18 @@ export type LearningOp =
   | { op: "choose-station"; theme: string }
   | { op: "build-station"; spot: string }
   | { op: "build-pier"; spot: string }
+  /** Content v4 (Visit 5): enter a harbor workplace from the island; the first entry decides the route. */
+  | { op: "enter-workplace"; workplace: HarborWorkplaceId }
+  /** Content v4: quotient item part A (full groups + remaining) and part B (groups needed for all). */
+  | { op: "answer-quotient"; itemId: ScoredMathItemId; full: number | null; remaining: number | null; raw: string; modality: AnswerModality; uncertain?: boolean }
+  | { op: "answer-needed"; itemId: ScoredMathItemId; needed: number | null; raw: string; modality: AnswerModality; uncertain?: boolean }
+  /** Content v4: one child turn of the reasoning conversation (typed, or a confirmed transcript), and the scaffold choice. */
+  | { op: "reasoning-turn"; text: string; modality: "typed" | "spoken" }
+  | { op: "reasoning-choice"; choice: "counters" | "teach" | "continue" }
+  /** Content v4: the harbor plan (a reviewed destination), exactly once. */
+  | { op: "plan-harbor"; destination: string }
+  /** Content v4: the bounded revision of the child's own log sentence after the writing review (+ answers to unknown-word questions). */
+  | { op: "review-log"; text: string; clarifications?: Record<string, string> }
   | { op: "revise-log"; text: string }
   | { op: "summary-seen" }
   | { op: "skip-stage"; stage: StageId; reason: "time" | "child" }
@@ -688,12 +774,19 @@ function currentVisit(state: MissionState): VisitRecord {
   return visit;
 }
 
+/** The effective stage list of a visit: its own route (content v4, free workplace order) or the frozen content list. */
+export function visitStages(visit: VisitRecord, content: LearningContent): readonly StageId[] | null {
+  // A visit the served content does not define (content cap / rollback) is parked: no stage, whatever its saved route says.
+  const def = findVisitDef(content, visit.id);
+  if (!def) return null;
+  return visit.route ?? def.stages;
+}
+
 export function currentStage(state: MissionState, content: LearningContent): StageId | null {
   if (!state.currentVisit) return null;
   const visit = state.visits.find((v) => v.id === state.currentVisit && v.finishedAt === null);
   if (!visit) return null;
-  const def = findVisitDef(content, visit.id);
-  return def?.stages[visit.stageIndex] ?? null;
+  return visitStages(visit, content)?.[visit.stageIndex] ?? null;
 }
 
 function requireStage(state: MissionState, content: LearningContent, stage: StageId) {
@@ -706,10 +799,11 @@ function requireStage(state: MissionState, content: LearningContent, stage: Stag
 function advance(state: MissionState, content: LearningContent) {
   const visit = currentVisit(state);
   visit.stageIndex += 1;
-  const def = visitDef(content, visit.id);
+  visitDef(content, visit.id);
+  const stages = visitStages(visit, content) ?? [];
   // Stages that can no longer apply are skipped honestly, never faked.
-  while (visit.stageIndex < def.stages.length) {
-    const stage = def.stages[visit.stageIndex];
+  while (visit.stageIndex < stages.length) {
+    const stage = stages[visit.stageIndex];
     if (stage === "restore" && !state.base.name) {
       visit.stageIndex += 1;
       continue;
@@ -751,6 +845,11 @@ export function nextVisitAvailability(
   // no wait, no retired v3. Under content version 2 (cap / rollback) nothing further is offered and a running v5 is parked.
   const hasV5 = content.visits.some((v) => v.id === "v5");
   if (hasV5 && !finished.includes("v5")) return { visit: "v5", availableAt: null };
+  if (!hasV5) return { visit: null, availableAt: null, reason: "all-visits-done" };
+  // Visit 5 (content v4, 2026-10-10): the harbor chapter `v6` follows the finished pier chapter immediately. Under content
+  // version 3 (cap / rollback) nothing further is offered and a running v6 is parked.
+  const hasV6 = content.visits.some((v) => v.id === "v6");
+  if (hasV6 && !finished.includes("v6")) return { visit: "v6", availableAt: null };
   return { visit: null, availableAt: null, reason: "all-visits-done" };
 }
 
@@ -816,11 +915,12 @@ export function tutorReplyRevealsAnswer(reply: string, item: MathItem): boolean 
   return tokens.some((t) => answers.includes(t));
 }
 
-function evidenceFor(item: MathItemState, correct: boolean | null, fresh: boolean): EvidenceCategory {
+function evidenceFor(item: MathItemState, correct: boolean | null, fresh: boolean, part?: "full-remaining" | "needed"): EvidenceCategory {
   if (correct === null) return "unscored";
   if (!correct) return "incorrect";
   if (item.exposure === "answer_revealed") return "answer_exposed";
-  const substantive = item.attempts.filter((a) => a.correct !== null).length;
+  // Quotient items: each part is its own question — only substantive attempts of the SAME part count against freshness.
+  const substantive = item.attempts.filter((a) => a.correct !== null && (part === undefined || (a.part ?? "full-remaining") === part)).length;
   const supported = item.supportGiven.some((k) => ANSWER_RELEVANT_SUPPORT.includes(k));
   if (substantive > 0 || supported || !fresh) return "supported";
   return "independent";
@@ -918,6 +1018,45 @@ function explainTarget(state: MissionState, visit: VisitId): ScoredMathItemId | 
   return best?.id ?? (visit === "v1" ? "EQ-FRESH" : null);
 }
 
+/** Position of a contiguous block inside a stage list, or -1. */
+function indexOfBlock(list: readonly StageId[], block: readonly StageId[]): number {
+  outer: for (let i = 0; i + block.length <= list.length; i += 1) {
+    for (let k = 0; k < block.length; k += 1) if (list[i + k] !== block[k]) continue outer;
+    return i;
+  }
+  return -1;
+}
+
+export type WorkplaceStatus = "open" | "done" | "locked" | "current";
+
+/** The harbor workplaces of a routed visit with their honest status: done when its block lies behind the stage index, current when inside it, locked for the closing check until every other block is behind, open otherwise. */
+export function workplaceStatuses(state: MissionState, content: LearningContent, visit: VisitRecord): { id: HarborWorkplaceId; status: WorkplaceStatus }[] {
+  void state;
+  const harborDef = content.harbor;
+  if (!harborDef || !visit.route) return [];
+  const route = visit.route;
+  return harborDef.workplaces.map((w) => {
+    const start = indexOfBlock(route, w.stages);
+    const end = start + w.stages.length; // exclusive
+    let status: WorkplaceStatus;
+    if (start < 0) status = "locked";
+    else if (visit.stageIndex >= end) status = "done";
+    else if (visit.stageIndex >= start) status = "current";
+    else if (w.afterAllOthers) {
+      const othersDone = harborDef.workplaces.filter((o) => o.id !== w.id).every((o) => {
+        const oStart = indexOfBlock(route, o.stages);
+        return oStart >= 0 && visit.stageIndex >= oStart + o.stages.length;
+      });
+      status = othersDone ? "open" : "locked";
+    } else status = "open";
+    return { id: w.id, status };
+  });
+}
+
+function openWorkplaces(state: MissionState, content: LearningContent, visit: VisitRecord): { id: HarborWorkplaceId; status: WorkplaceStatus }[] {
+  return workplaceStatuses(state, content, visit).filter((w) => w.status === "open" || w.status === "current");
+}
+
 /** The course lesson the child is on, or null when no course applies. */
 export function currentCourseLesson(state: MissionState, content: LearningContent, settings: ParentSettings): TypingCourseLesson | null {
   const course = typingCourseForLayout(content, settings.keyboardLayout);
@@ -983,10 +1122,12 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         result = { visit: availability.visit, resumed: true };
         break;
       }
-      state.visits.push({ id: availability.visit, startedAt: nowIso, finishedAt: null, stageIndex: 0, skippedStages: [], reflection: null });
+      const def = visitDef(content, availability.visit);
+      // Content v4: a chapter with free workplace order carries its own route (initially the frozen default order).
+      const routed = content.harbor && def.stages.includes("island");
+      state.visits.push({ id: availability.visit, startedAt: nowIso, finishedAt: null, stageIndex: 0, skippedStages: [], reflection: null, ...(routed ? { route: [...def.stages] } : {}) });
       state.currentVisit = availability.visit;
       // `restore` is only meaningful when a base exists.
-      const def = visitDef(content, availability.visit);
       if (def.stages[0] === "restore" && !state.base.name) currentVisit(state).stageIndex = 1;
       result = { visit: availability.visit, resumed: false };
       break;
@@ -1047,6 +1188,276 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       state.pier = { ...pier, spot: op.spot, built: true, builtAt: nowIso, boatMoored: boat };
       advance(state, content);
       result = { spot: op.spot, boatMoored: boat };
+      break;
+    }
+
+    case "enter-workplace": {
+      requireStage(state, content, "island");
+      const visit = currentVisit(state);
+      const harborDef = content.harbor;
+      if (!harborDef || !visit.route) throw new LearningOpError("not-available", "this chapter has no workplaces");
+      if (!isHarborWorkplaceId(op.workplace)) throw new LearningOpError("invalid", "unknown workplace");
+      const workplace = harborDef.workplaces.find((w) => w.id === op.workplace);
+      if (!workplace) throw new LearningOpError("invalid", "unknown workplace");
+      const harbor = state.harbor ?? emptyHarbor();
+      const open = openWorkplaces(state, content, visit);
+      if (!open.some((w) => w.id === op.workplace)) throw new LearningOpError("not-allowed", `the ${op.workplace} workplace is not open`);
+      // Move the chosen block to the front of the remaining route (the blocks keep their internal order; nothing done is touched).
+      const rest = visit.route.slice(visit.stageIndex + 1);
+      const block = [...workplace.stages];
+      const start = indexOfBlock(rest, block);
+      if (start > 0) {
+        const without = [...rest.slice(0, start), ...rest.slice(start + block.length)];
+        // The island stop that preceded the block in the default order moves with it: remove the first "island" after the moved block.
+        const nextIsland = without.indexOf("island");
+        if (nextIsland >= 0) without.splice(nextIsland, 1);
+        visit.route = [...visit.route.slice(0, visit.stageIndex + 1), ...block, "island", ...without];
+      }
+      harbor.entered.push(op.workplace);
+      state.harbor = harbor;
+      advance(state, content);
+      result = { workplace: op.workplace, route: visit.route };
+      break;
+    }
+
+    case "plan-harbor": {
+      requireStage(state, content, "harbor-build");
+      const destinations = content.harbor?.destinations ?? [];
+      if (!destinations.some((d) => d.id === op.destination)) throw new LearningOpError("invalid", "unknown destination");
+      const harbor = state.harbor ?? emptyHarbor();
+      if (harbor.planned) throw new LearningOpError("not-allowed", "the harbor plan is already saved");
+      // The boats are tied only if the Spanish request actually supplied ropes (durable supply), like the pier's boat and the station's lamp.
+      const roped = (state.base.supplies["cuerdas"] ?? 0) > 0;
+      state.harbor = { ...harbor, destination: op.destination, planned: true, plannedAt: nowIso, roped };
+      advance(state, content);
+      result = { destination: op.destination, roped };
+      break;
+    }
+
+    case "answer-quotient":
+    case "answer-needed": {
+      requireStage(state, content, op.itemId);
+      const def = mathItem(content, op.itemId);
+      const item = mathState(state, op.itemId);
+      if (def.kind !== "quotient" || !def.answers || def.answers.full === undefined || def.answers.needed === undefined) throw new LearningOpError("invalid", "this item is not a quotient item");
+      if (item.outcome !== "pending") throw new LearningOpError("not-allowed", "item already resolved");
+      if (item.phase !== "answer" && item.phase !== "represent" && item.phase !== "clarify") throw new LearningOpError("not-allowed", `item is in phase ${item.phase}`);
+      const part: "full-remaining" | "needed" = item.part ?? "full-remaining";
+      if ((part === "needed") !== (op.op === "answer-needed")) throw new LearningOpError("invalid", part === "needed" ? "this part asks how many groups are needed for all" : "this part asks for the full groups and the remaining");
+      let uncertain: boolean;
+      let correct: boolean | null;
+      let quotient: MathAttempt["quotient"];
+      let partial: Record<string, unknown> = {};
+      if (op.op === "answer-quotient") {
+        uncertain = op.uncertain === true || op.full === null || op.remaining === null || !Number.isInteger(op.full) || !Number.isInteger(op.remaining);
+        quotient = { full: uncertain ? null : op.full, remaining: uncertain ? null : op.remaining, needed: null };
+        const fullCorrect = quotient.full === def.answers.full;
+        const remainingCorrect = quotient.remaining === def.answers.remaining;
+        correct = uncertain ? null : fullCorrect && remainingCorrect;
+        partial = uncertain ? {} : { fullCorrect, remainingCorrect };
+      } else {
+        uncertain = op.uncertain === true || op.needed === null || !Number.isInteger(op.needed);
+        quotient = { full: null, remaining: null, needed: uncertain ? null : op.needed };
+        correct = uncertain ? null : quotient.needed === def.answers.needed;
+      }
+      if (op.modality === "counters" && !item.supportGiven.includes("counters")) item.supportGiven.push("counters");
+      const partAttempts = item.attempts.filter((a) => (a.part ?? "full-remaining") === part);
+      const fresh = partAttempts.every((a) => a.correct === null) && item.exposure !== "answer_revealed" && (item.shownVisit === null || item.shownVisit === state.currentVisit);
+      const evidence = evidenceFor(item, correct, fresh, part);
+      const substantiveBefore = partAttempts.filter((a) => a.correct !== null).length;
+      const attempt: MathAttempt = {
+        no: item.attempts.length + 1,
+        visit: state.currentVisit as VisitId,
+        answer: op.op === "answer-quotient" ? quotient.full : quotient.needed,
+        quotient,
+        part,
+        raw: boundedText(op.raw || "", 80, "answer"),
+        modality: op.modality,
+        correct,
+        evidence,
+        support: [...item.supportGiven],
+        exposureBefore: item.exposure,
+        fresh,
+        uncertainty: uncertain ? "transcript" : null,
+        teachingMove: null,
+        teachingReason: null,
+        at: nowIso,
+      };
+      if (attempt.support.includes("counters") && attempt.evidence === "independent") attempt.evidence = "supported";
+      let feedback: MathPhase;
+      if (correct === true && part === "full-remaining") {
+        // Part A done: the decision question (part B) follows on the same item; nothing is resolved yet.
+        item.quotientResult = { full: quotient.full as number, remaining: quotient.remaining as number, needed: null };
+        item.part = "needed";
+        item.phase = "answer";
+        feedback = "answer";
+      } else if (correct === true) {
+        item.outcome = "correct";
+        item.phase = "done";
+        item.allocation = def.answers.full;
+        item.quotientResult = { full: item.quotientResult?.full ?? def.answers.full, remaining: item.quotientResult?.remaining ?? def.answers.remaining, needed: quotient.needed as number };
+        item.resolvedAt = nowIso;
+        feedback = "done";
+      } else if (correct === null) {
+        feedback = item.phase;
+      } else {
+        const substantive = substantiveBefore + 1;
+        if (substantive > content.math.rules.maxSubstantiveAttempts) {
+          item.phase = "teach-or-stop";
+          attempt.teachingMove = "offer-direct-teaching";
+          attempt.teachingReason = "attempts-exhausted-after-representation";
+          feedback = "teach-or-stop";
+        } else if (substantive === 1 && content.math.rules.clarifyAfterFirstIncorrect) {
+          item.phase = "clarify";
+          attempt.teachingMove = "clarification";
+          attempt.teachingReason = "first-incorrect";
+          feedback = "clarify";
+          noteTeaching(state, nowIso);
+          records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "clarification", payload: { auto: true, part, ...partial }, at: nowIso });
+          if (!item.supportGiven.includes("clarification")) item.supportGiven.push("clarification");
+        } else feedback = "represent";
+      }
+      if (correct === false && feedback === "represent") {
+        noteTeaching(state, nowIso);
+        // Part A: the quotient example (EQ-HARBOR-MODEL) before the last try; part B: the counters (the full boats and the leftover crates).
+        if (part === "full-remaining" && hasMathItem(content, "EQ-HARBOR-MODEL")) {
+          item.phase = "example";
+          attempt.teachingMove = "model-example";
+          attempt.teachingReason = "second-incorrect";
+          if (!state.harborModelShownAt) {
+            state.harborModelShownAt = nowIso;
+            records.exposures.push({ taskId: "EQ-HARBOR-MODEL", taskVersion: mathItem(content, "EQ-HARBOR-MODEL").version, kind: "example_shown", source: "teaching", at: nowIso });
+          }
+          if (!item.supportGiven.includes("example")) item.supportGiven.push("example");
+          records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "example", payload: { model: "EQ-HARBOR-MODEL", part }, at: nowIso });
+        } else {
+          item.phase = "represent";
+          attempt.teachingMove = "representation";
+          attempt.teachingReason = "second-incorrect";
+          if (!item.supportGiven.includes("representation")) item.supportGiven.push("representation");
+          records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "representation", payload: { counters: true, part }, at: nowIso });
+        }
+        feedback = item.phase;
+      }
+      item.attempts.push(attempt);
+      records.attempts.push({
+        id: env.newId(),
+        visitId: state.currentVisit as VisitId,
+        taskId: op.itemId,
+        taskVersion: def.version,
+        objective: part === "needed" ? "quotient-groups-needed" : "quotient-with-remainder",
+        attemptNo: attempt.no,
+        answer: { part, full: quotient.full, remaining: quotient.remaining, needed: quotient.needed, raw: attempt.raw },
+        correct,
+        evidence: attempt.evidence,
+        support: attempt.support,
+        exposureBefore: attempt.exposureBefore,
+        stimulusLanguage: "de",
+        responseLanguage: null,
+        modality: op.modality,
+        uncertainty: attempt.uncertainty,
+        teachingMove: attempt.teachingMove,
+        teachingReason: attempt.teachingReason,
+        secondsSinceTeaching: null,
+        at: nowIso,
+      });
+      if (item.outcome === "correct") {
+        state.base.supplies[def.unit.plural] = (state.base.supplies[def.unit.plural] ?? 0) + def.quantity;
+        state.feedback = updateMathFocus(feedbackOf(state), content, { id: op.itemId, item, at: nowIso, visit: state.currentVisit as VisitId });
+        advance(state, content);
+      }
+      result = { feedback, correct, evidence: attempt.evidence, attemptNo: attempt.no, part, nextPart: item.part ?? null, ...partial };
+      break;
+    }
+
+    case "reasoning-turn":
+    case "reasoning-choice": {
+      requireStage(state, content, "explain");
+      const visit = state.currentVisit as VisitId;
+      const def = content.reasoning;
+      if (!def) throw new LearningOpError("not-available", "this content has no reasoning conversation");
+      const itemId = explainTarget(state, visit);
+      if (!itemId) throw new LearningOpError("not-allowed", "no resolved item to explain");
+      const item = mathItem(content, itemId);
+      const reasoning = state.reasoning ?? (state.reasoning = {});
+      const current = reasoning[itemId] ?? newReasoningState(itemId, def, nowIso);
+      let step;
+      if (op.op === "reasoning-turn") {
+        const text = boundedText(op.text, MAX_TEXT_CHARS, "explanation");
+        if (op.modality !== "typed" && op.modality !== "spoken") throw new LearningOpError("invalid", "modality must be typed or spoken");
+        if (current.status === "scaffold") throw new LearningOpError("not-allowed", "choose first: counters, teaching or continue");
+        if (current.status === "done") throw new LearningOpError("not-allowed", "the explanation is finished");
+        step = applyReasoningTurn(current, text, op.modality, item, def, nowIso);
+        const child = step.state.turns.filter((t) => t.role === "child");
+        records.samples.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "reasoning_turn", language: "de", modality: op.modality, text, metrics: { turn: child.length, classification: child[child.length - 1]?.classification ?? null, nabu: step.nabu.kind, probe: step.nabu.probe ?? null, probesUsed: step.state.probesUsed, spellingJudged: false }, at: nowIso });
+      } else {
+        if (op.choice !== "counters" && op.choice !== "teach" && op.choice !== "continue") throw new LearningOpError("invalid", "choice must be counters, teach or continue");
+        step = applyReasoningChoice(current, op.choice, def, nowIso);
+        if (op.choice === "counters") {
+          // Answer-revealing support inside the conversation: recorded on the item (already resolved) and in the support events.
+          const target = mathState(state, itemId);
+          if (!target.supportGiven.includes("representation")) target.supportGiven.push("representation");
+          records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "representation", payload: { counters: true, reasoning: true }, at: nowIso });
+          step = { ...step, state: reopenAfterCounters(step.state) };
+        } else if (op.choice === "teach") {
+          records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "direct_teaching", payload: { reasoning: true, text: def.teach }, at: nowIso });
+        } else {
+          records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "step_down", payload: { reasoning: true, method: "not-yet-established" }, at: nowIso });
+        }
+      }
+      reasoning[itemId] = step.state;
+      if (step.done) {
+        const text = childExplanationText(step.state) || "(keine eigene Erklärung)";
+        const spoken = step.state.turns.some((t) => t.role === "child" && t.modality === "spoken");
+        const typed = step.state.turns.some((t) => t.role === "child" && t.modality === "typed");
+        state.explanations.push({ visit, text, modality: spoken && !typed ? "spoken" : "typed", taskId: itemId, at: nowIso });
+        records.samples.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "explanation", language: "de", modality: spoken && typed ? "spoken" : spoken ? "spoken" : "typed", text, metrics: { method: step.state.method, strategy: step.state.strategy, probesUsed: step.state.probesUsed, support: step.state.support, turns: step.state.turns.length, spellingJudged: false }, at: nowIso });
+        advance(state, content);
+      }
+      result = { nabu: step.nabu.text, kind: step.nabu.kind, status: step.state.status, method: step.state.method, methodLabel: methodLabel(def, step.state.method), probesLeft: Math.max(0, def.maxProbes - step.state.probesUsed), done: step.done };
+      break;
+    }
+
+    case "review-log": {
+      requireStage(state, content, "log-review");
+      const visit = state.currentVisit as VisitId;
+      const logDef = logDefFor(content, visit);
+      const reviewDef = content.writing?.review;
+      if (!logDef || !reviewDef) throw new LearningOpError("not-available", "no writing review in this content");
+      const page = [...state.pages].reverse().find((p) => p.visit === visit) ?? null;
+      if (!page) throw new LearningOpError("not-allowed", "no log sentence to review in this visit");
+      if (page.modality === "spoken") throw new LearningOpError("not-allowed", "a spoken page is not reviewed for spelling");
+      const joins = content.writing?.spacing.joins ?? [];
+      const review = reviewLogSentence(page.text, reviewDef, joins);
+      const revised = boundedText(op.text, MAX_TEXT_CHARS, "revision");
+      const evaluation = evaluateLogRevision(review, revised, reviewDef, joins);
+      const clarifications: Record<string, string> = {};
+      if (op.clarifications && typeof op.clarifications === "object") {
+        for (const [word, meaning] of Object.entries(op.clarifications)) {
+          if (review.unknownWords.includes(word) && typeof meaning === "string" && meaning.trim()) clarifications[word] = meaning.replace(/\s+/g, " ").trim().slice(0, 200);
+        }
+      }
+      const record: LogReviewRecord = { visit, logId: logDef.id, original: page.text, review, revised, evaluation, clarifications, outcome: evaluation.outcome, helpShown: review.suggestion !== null, modality: "typed", at: nowIso };
+      (state.logReviews ??= []).push(record);
+      const taught = review.taught.length;
+      const correct = taught === 0 ? null : evaluation.outcome === "revised";
+      const evidence: EvidenceCategory = taught === 0 ? "unscored" : evaluation.outcome === "revised" ? (evaluation.copiedSuggestion || record.helpShown ? "supported" : "independent") : "incorrect";
+      records.attempts.push({
+        id: env.newId(), visitId: visit, taskId: logDef.id, taskVersion: logDef.version, objective: "writing-review-revision",
+        attemptNo: (state.logReviews ?? []).filter((r) => r.visit === visit).length,
+        answer: { taught: review.taught.map((f) => f.id), resolved: evaluation.resolved, unresolved: evaluation.unresolved, introduced: evaluation.introduced, copiedSuggestion: evaluation.copiedSuggestion, aspectsClean: review.clean, unknownWords: review.unknownWords },
+        correct, evidence, support: record.helpShown ? ["suggestion-shown"] : [], exposureBefore: record.helpShown ? "suggestion-shown" : "none",
+        stimulusLanguage: "de", responseLanguage: "de", modality: "typed",
+        uncertainty: taught === 0 ? "nothing to teach at the six reviewed aspects — not scored" : evaluation.copiedSuggestion ? "the suggestion was copied verbatim — copying, never independent" : null,
+        teachingMove: taught ? "writing-review" : null, teachingReason: taught ? review.taught.map((f) => f.aspect).join(",") : null, secondsSinceTeaching: null, at: nowIso,
+      });
+      records.samples.push({ id: env.newId(), visitId: visit, taskId: logDef.id, kind: "writing_review", language: "de", modality: "typed", text: revised, metrics: { original: page.text, findings: review.findings.map((f) => f.id), taught: review.taught.map((f) => f.id), clean: review.clean, unknownWords: review.unknownWords, suggestion: review.suggestion, outcome: evaluation.outcome, resolved: evaluation.resolved, unresolved: evaluation.unresolved, introduced: evaluation.introduced, copiedSuggestion: evaluation.copiedSuggestion, helpShown: record.helpShown }, at: nowIso });
+      for (const [word, meaning] of Object.entries(clarifications)) records.samples.push({ id: env.newId(), visitId: visit, taskId: logDef.id, kind: "writing_clarification", language: "de", modality: "typed", text: meaning, metrics: { word, unscored: true }, at: nowIso });
+      // The spacing focus follows the reviewed spacing finding of the ORIGINAL (typed): flagged opens it; a helped revision never retires it.
+      const spacingFlags = flagSpacing(page.text, joins);
+      state.feedback = updateSpacingFocus(feedbackOf(state), { outcome: spacingFlags.length ? "flagged" : assessSpacing(page.text, joins).assessable ? "clean" : "unassessable", modality: "typed", helpExposed: true, flagged: spacingFlags.length, text: page.text, at: nowIso, visit, lesson: `writing:${logDef.id}` });
+      advance(state, content);
+      result = { outcome: evaluation.outcome, resolved: evaluation.resolved.length, unresolved: evaluation.unresolved.length, taught, introduced: evaluation.introduced.length };
       break;
     }
 
@@ -1268,7 +1679,8 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const def = mathItem(content, op.itemId);
       const item = mathState(state, op.itemId);
       const substantive = item.attempts.filter((a) => a.correct !== null).length;
-      if (item.phase !== "teach-or-stop" && !(substantive >= content.math.rules.maxSubstantiveAttempts && (item.phase === "represent" || item.phase === "example" || item.phase === "answer"))) {
+      const partSubstantive = def.kind === "quotient" ? item.attempts.filter((a) => a.correct !== null && (a.part ?? "full-remaining") === (item.part ?? "full-remaining")).length : substantive;
+      if (item.phase !== "teach-or-stop" && !(partSubstantive >= content.math.rules.maxSubstantiveAttempts && (item.phase === "represent" || item.phase === "example" || item.phase === "answer"))) {
         throw new LearningOpError("not-allowed", "direct teaching is offered only after two unsuccessful attempts");
       }
       noteTeaching(state, nowIso);
@@ -1276,15 +1688,16 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       item.outcome = "taught";
       item.phase = "done";
       item.allocation = def.answer;
-      if (def.kind === "remainder" && def.answers) item.remainderResult = { ...def.answers };
+      if (def.kind === "remainder" && def.answers) item.remainderResult = { used: def.answers.used, remaining: def.answers.remaining };
+      if (def.kind === "quotient" && def.answers) item.quotientResult = { full: def.answers.full ?? def.answer, remaining: def.answers.remaining, needed: def.answers.needed ?? null };
       item.resolvedAt = nowIso;
       records.exposures.push({ taskId: op.itemId, taskVersion: def.version, kind: "answer_revealed", source: "direct_teaching", at: nowIso });
-      records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "direct_teaching", payload: def.kind === "remainder" ? { answers: def.answers } : { answer: def.answer }, at: nowIso });
+      records.supports.push({ id: env.newId(), visitId: state.currentVisit as VisitId, taskId: op.itemId, kind: "direct_teaching", payload: def.kind === "remainder" || def.kind === "quotient" ? { answers: def.answers } : { answer: def.answer }, at: nowIso });
       const gained = def.kind === "remainder" && def.answers ? def.answers.used : def.quantity;
       state.base.supplies[def.unit.plural] = (state.base.supplies[def.unit.plural] ?? 0) + gained;
       state.feedback = updateMathFocus(feedbackOf(state), content, { id: op.itemId, item, at: nowIso, visit: state.currentVisit as VisitId });
       advance(state, content);
-      result = def.kind === "remainder" ? { taught: true, answers: def.answers } : { taught: true, answer: def.answer };
+      result = def.kind === "remainder" || def.kind === "quotient" ? { taught: true, answers: def.answers } : { taught: true, answer: def.answer };
       break;
     }
 
@@ -1306,6 +1719,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       requireStage(state, content, "explain");
       const text = boundedText(op.text, MAX_TEXT_CHARS, "explanation");
       const visit = state.currentVisit as VisitId;
+      if (content.reasoning && visit === "v6") throw new LearningOpError("not-allowed", "this chapter explains in the conversation (reasoning-turn)");
       const taskId = explainTarget(state, visit);
       state.explanations.push({ visit, text, modality: op.modality, taskId, at: nowIso });
       records.samples.push({ id: env.newId(), visitId: visit, taskId, kind: "explanation", language: "de", modality: op.modality, text, metrics: null, at: nowIso });
@@ -1559,7 +1973,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const visit = currentVisit(state);
       const stage = currentStage(state, content);
       if (stage !== op.stage) throw new LearningOpError("not-allowed", "stage is not active");
-      const optional: StageId[] = ["LANG-EN-WATER", "LANG-ES-AGUA", "LANG-ES-STATION", "LANG-EN-PIER", "typing", "typing-course", "explain", "log-revise", "log-transfer"];
+      const optional: StageId[] = ["LANG-EN-WATER", "LANG-ES-AGUA", "LANG-ES-STATION", "LANG-EN-PIER", "LANG-ES-HARBOR", "LANG-ES-HARBOR-CHECK", "typing", "typing-course", "explain", "log-revise", "log-transfer", "log-review"];
       if (!optional.includes(op.stage)) throw new LearningOpError("not-allowed", "only optional segments can be skipped");
       visit.skippedStages.push({ stage: op.stage, reason: op.reason });
       if (op.stage === "typing" || op.stage === "typing-course") state.typing.skipped.push({ visit: visit.id, reason: op.reason });
@@ -1569,6 +1983,20 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         if (page) {
           const flags = flagSpacing(page.text, content.writing?.spacing.joins ?? []);
           state.logRevisions.push({ visit: visit.id, original: page.text, revised: null, flagged: flags, resolved: 0, outcome: "skipped", modality: "typed", helpShown: flags.length > 0, at: nowIso });
+        }
+      }
+      if (op.stage === "explain" && content.reasoning && state.reasoning?.[explainTarget(state, visit.id) ?? "EQ-HARBOR"]) {
+        // A skipped conversation stays recorded as it was; the method is honestly open.
+        const target = explainTarget(state, visit.id);
+        const open = target ? state.reasoning?.[target] : null;
+        if (open && open.status !== "done") state.reasoning![target!] = { ...open, status: "done", method: "not-yet-established", closedAt: nowIso };
+      }
+      if (op.stage === "log-review") {
+        const logDef = logDefFor(content, visit.id);
+        const page = [...state.pages].reverse().find((p) => p.visit === visit.id) ?? null;
+        if (logDef && page && content.writing?.review) {
+          const review = reviewLogSentence(page.text, content.writing.review, content.writing.spacing.joins);
+          (state.logReviews ??= []).push({ visit: visit.id, logId: logDef.id, original: page.text, review, revised: null, evaluation: null, clarifications: {}, outcome: "skipped", helpShown: review.suggestion !== null, modality: "typed", at: nowIso });
         }
       }
       const skippedTransfer = op.stage === "log-transfer" ? transferDefFor(content, visit.id) : null;
@@ -1871,7 +2299,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
 export type MathItemView = {
   id: ScoredMathItemId;
   version: number;
-  kind: "sharing" | "remainder";
+  kind: "sharing" | "remainder" | "quotient";
   prompt: string;
   scene: string | null;
   quantity: number;
@@ -1898,6 +2326,12 @@ export type MathItemView = {
   lastPartial: { usedCorrect: boolean; remainingCorrect: boolean } | null;
   /** Remainder items: the verb of the used part ("gepflanzt" / "verbaut") and its field label. */
   usedWord: { past: string; label: string };
+  /** Quotient items (content v4): the part asked now, its labels, the decision prompt (part B) and the accepted part-A result. */
+  part: "full-remaining" | "needed" | null;
+  quotientWords: { fullLabel: string; remainingLabel: string; neededLabel: string } | null;
+  decisionPrompt: string | null;
+  partA: { full: number; remaining: number } | null;
+  taughtQuotient: { full: number; remaining: number; needed: number } | null;
 };
 
 export type LanguageStepView =
@@ -1939,6 +2373,70 @@ export type TutorContext = {
   language: "de" | "en" | "es";
   prompt: string;
   allowedHelp: string;
+  /** Content v4 (Nabu sidebar, F4): the validated page/task binding of the turn — content-free of adult or sibling data. */
+  page?: "map" | "mission";
+  stage?: StageId | null;
+  /** The child's current work on the task (last answer / typed text), bounded. */
+  childWork?: string | null;
+  /** One line of saved island state in words. */
+  islandState?: string;
+  /** The reviewed objective of the current task. */
+  objective?: string | null;
+  /** Prior attempts and recorded help on this task, in words (never the key). */
+  priorAttempts?: string[];
+  /** The open practice focus relevant here, if any. */
+  focus?: string | null;
+};
+
+export type HarborWorkplaceView = {
+  id: HarborWorkplaceId;
+  label: string;
+  building: string;
+  status: WorkplaceStatus;
+  character: { id: string; name: string; role: string; language: TargetLanguage; lines: { id: string; text: string; de: string | null }[] } | null;
+  stages: StageId[];
+};
+
+export type HarborView = {
+  destinations: { id: string; label: string; emoji: string }[];
+  destination: string | null;
+  planned: boolean;
+  roped: boolean;
+  ropesAvailable: boolean;
+  /** Saved arithmetic of the harbor item once it is resolved: crates per boat, full boats, leftovers, boats needed. */
+  load: { crates: number; perBoat: number; fullBoats: number; remaining: number; boatsNeeded: number | null } | null;
+  workplaces: HarborWorkplaceView[];
+  /** Every reviewed character (the supplier Rosa keeps the shop, not a workplace). */
+  characters: NonNullable<HarborWorkplaceView["character"]>[];
+  /** Workplaces the child entered so far (route order). */
+  entered: HarborWorkplaceId[];
+};
+
+export type ReasoningView = {
+  itemId: ScoredMathItemId;
+  status: ReasoningState["status"];
+  turns: { role: "nabu" | "child"; text: string; kind: string | null; modality: "typed" | "spoken" | null; at: string }[];
+  probesLeft: number;
+  method: ReasoningState["method"];
+  methodLabel: string;
+  /** The scaffold's choices, when offered. */
+  choices: { counters: boolean; teach: boolean; continue: boolean } | null;
+  /** The resolved item for the counters (quantity, perGroup, groups, labels). */
+  item: { quantity: number; perGroup: number; groups: number; unit: MathItem["unit"]; group: MathItem["group"]; prompt: string };
+};
+
+export type LogReviewView = {
+  logId: string;
+  original: string;
+  summary: string;
+  taught: { id: string; aspect: string; aspectLabel: string; given: string; expected: string | null; teaching: string }[];
+  clean: string[];
+  cleanLabels: string[];
+  unknownWords: string[];
+  suggestion: string | null;
+  marked: string | null;
+  /** The recorded review/revision of this visit, once made. */
+  record: { outcome: LogReviewRecord["outcome"]; revised: string | null; resolved: number; unresolved: number } | null;
 };
 
 export type ChildView = {
@@ -1962,11 +2460,21 @@ export type ChildView = {
   progress: ProgressStrip;
   /** Concrete words to practise and what to try next (follow-on M3); no counts, no ranks. `null` when no inventory is served. */
   vocabulary: ChildVocabularyCue | null;
+  /** Visit 5 (F3): the simple wordbook — words met, per language, with picture/meaning/example; exposure, never a score. `null` when no inventory is served. */
+  wordbook: ChildWordbook | null;
   nextStep: string;
   locations: { id: string; label: string; emoji: string }[];
   station: { themes: { id: string; label: string; emoji: string; purpose: string }[]; spots: { id: string; label: string; emoji: string }[]; theme: string | null; spot: string | null; built: boolean; lampLit: boolean; lampAvailable: boolean; reference: { kind: "turtles-in-log" | "none"; text: string } } | null;
   /** Visit 4 (content v3): the pier's reviewed spots, the chosen spot, whether it stands and whether the boat is moored (wood supplied). */
   pier: { spots: { id: string; label: string; emoji: string }[]; spot: string | null; built: boolean; boatMoored: boolean; woodAvailable: boolean } | null;
+  /** Visit 5 (content v4): the harbor — workplaces with their status, the saved plan and the loaded boats. Present whenever the served content has a harbor. */
+  harbor: HarborView | null;
+  /** Visit 5: the reasoning conversation while its stage is active (or the finished one of the running visit). */
+  reasoning: ReasoningView | null;
+  /** Visit 5: the captain's-log prompt while the `log` stage of a routed chapter is active. */
+  log: { id: string; prompt: string; instruction: string } | null;
+  /** Visit 5: the writing review of the child's own sentence while `log-review` is active. */
+  logReview: LogReviewView | null;
   math: MathItemView | null;
   language: {
     id: LanguageSegmentId;
@@ -2019,7 +2527,14 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
       case "station-choice": return "Was soll deine Station beobachten?";
       case "station-build": return "Baue die Station.";
       case "pier-build": return "Baue den Steg ins Wasser.";
-      case "log": return "Schreib die Expeditionsseite.";
+      case "island": return "Geh zu einer Werkstatt — du wählst, wo du anfängst.";
+      case "EQ-HARBOR": return "Die Kisten kommen in die Boote — wie viele werden voll?";
+      case "EQ-HARBOR-CHECK": return "Noch eine Ladung — ein kurzer Check.";
+      case "LANG-ES-HARBOR": return "Bitte Rosa auf Spanisch um das Werkzeug.";
+      case "LANG-ES-HARBOR-CHECK": return "Ein Wort zum Schluss — auf Spanisch.";
+      case "harbor-build": return "Wohin fahren die Boote? Dein Plan.";
+      case "log-review": return "Schau deinen Satz im Kapitänslogbuch noch einmal an.";
+      case "log": return state.currentVisit === "v6" ? "Schreib einen Satz ins Kapitänslogbuch." : "Schreib die Expeditionsseite.";
       case "log-revise": return "Schau deinen Satz noch einmal an.";
       case "log-transfer": return "Schreib einen neuen kurzen Satz.";
       case "summary": return "Das hast du heute geschafft.";
@@ -2034,6 +2549,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
     if (availability.visit === "v3") return "Deine angefangene Aufgabe von früher wartet auf dich.";
     if (availability.visit === "v4") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v4") ?? 3}): die Beobachtungsstation.`;
     if (availability.visit === "v5") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v5") ?? 4}): der Steg in der Bucht.`;
+    if (availability.visit === "v6") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v6") ?? 5}): der Hafen.`;
     return "Zurück zur Basis — ein neuer Besuch wartet.";
   }
   return "Alle Besuche sind geschafft.";
@@ -2053,13 +2569,15 @@ export function buildChildView(state: MissionState, content: LearningContent, se
   if (itemId && state.math[itemId]) {
     const def = mathItem(content, itemId);
     const item = state.math[itemId]!;
-    const modelId: MathItemId = def.kind === "remainder" ? "EQ-STATION-MODEL" : "EQ-MODEL";
+    const modelId: MathItemId = def.kind === "quotient" ? "EQ-HARBOR-MODEL" : def.kind === "remainder" ? "EQ-STATION-MODEL" : "EQ-MODEL";
     const model = hasMathItem(content, modelId) ? mathItem(content, modelId) : null;
-    const lastIncorrect = [...item.attempts].reverse().find((a) => a.correct === false) ?? null;
+    const part = def.kind === "quotient" ? item.part ?? "full-remaining" : null;
+    const partAttempts = part ? item.attempts.filter((a) => (a.part ?? "full-remaining") === part) : item.attempts;
+    const lastIncorrect = [...partAttempts].reverse().find((a) => a.correct === false) ?? null;
     math = {
       id: itemId,
       version: def.version,
-      kind: def.kind === "remainder" ? "remainder" : "sharing",
+      kind: def.kind === "quotient" ? "quotient" : def.kind === "remainder" ? "remainder" : "sharing",
       prompt: def.prompt,
       scene: def.scene ?? null,
       quantity: def.quantity,
@@ -2069,16 +2587,26 @@ export function buildChildView(state: MissionState, content: LearningContent, se
       group: def.group,
       phase: item.phase,
       attemptNo: item.attempts.length + 1,
-      clarification: item.phase === "clarify" ? def.clarification ?? null : null,
+      clarification: item.phase === "clarify" ? (part === "needed" ? def.decisionClarification ?? def.clarification ?? null : def.clarification ?? null) : null,
       representation: item.phase === "represent" || item.phase === "clarify" ? def.representation ?? null : null,
       example: item.phase === "example" && model ? { prompt: model.prompt, steps: model.steps ?? [], quantity: model.quantity, groups: model.groups, answer: model.answer } : null,
       taughtAnswer: item.outcome === "taught" ? def.answer : null,
       taughtAnswers: item.outcome === "taught" && def.kind === "remainder" && def.answers ? { ...def.answers } : null,
-      teachingOffered: item.outcome === "pending" && item.attempts.filter((a) => a.correct !== null).length >= content.math.rules.maxSubstantiveAttempts,
+      teachingOffered: item.outcome === "pending" && partAttempts.filter((a) => a.correct !== null).length >= content.math.rules.maxSubstantiveAttempts,
       outcome: item.outcome,
-      lastPartial: def.kind === "remainder" && lastIncorrect?.remainder && def.answers ? { usedCorrect: lastIncorrect.remainder.used === def.answers.used, remainingCorrect: lastIncorrect.remainder.remaining === def.answers.remaining } : null,
+      lastPartial:
+        def.kind === "remainder" && lastIncorrect?.remainder && def.answers
+          ? { usedCorrect: lastIncorrect.remainder.used === def.answers.used, remainingCorrect: lastIncorrect.remainder.remaining === def.answers.remaining }
+          : def.kind === "quotient" && part === "full-remaining" && lastIncorrect?.quotient && def.answers
+            ? { usedCorrect: lastIncorrect.quotient.full === def.answers.full, remainingCorrect: lastIncorrect.quotient.remaining === def.answers.remaining }
+            : null,
       groupKind: content.math.recipientKinds?.[def.id] ?? (/forscher|person|kind|freund|team/i.test(def.group.singular) ? "people" : "container"),
       usedWord: usedWordOf(def),
+      part,
+      quotientWords: def.quotientWords ?? null,
+      decisionPrompt: part === "needed" ? def.decisionPrompt ?? null : null,
+      partA: item.quotientResult ? { full: item.quotientResult.full, remaining: item.quotientResult.remaining } : null,
+      taughtQuotient: item.outcome === "taught" && def.kind === "quotient" && def.answers && def.answers.full !== undefined && def.answers.needed !== undefined ? { full: def.answers.full, remaining: def.answers.remaining, needed: def.answers.needed } : null,
     };
   }
 
@@ -2174,12 +2702,99 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     transfer = { id: t.id, version: t.version, prompt: t.prompt, instruction: t.instruction, helpExposed: !!revision?.helpShown };
   }
 
+  // --- Visit 5 (content v4): the harbor, the reasoning conversation, the captain's log and its review
+  const harborDef = content.harbor ?? null;
+  const harborState = state.harbor ?? emptyHarbor();
+  let harbor: HarborView | null = null;
+  if (harborDef) {
+    const harborItem = state.math["EQ-HARBOR"];
+    const harborItemDef = hasMathItem(content, "EQ-HARBOR") ? mathItem(content, "EQ-HARBOR") : null;
+    const resolved = !!harborItem && (harborItem.outcome === "correct" || harborItem.outcome === "taught") && harborItemDef;
+    const q = harborItem?.quotientResult ?? null;
+    const statuses = running && running.route ? workplaceStatuses(state, content, running) : [];
+    harbor = {
+      destinations: harborDef.destinations,
+      destination: harborState.destination,
+      planned: harborState.planned,
+      roped: harborState.roped,
+      ropesAvailable: (state.base.supplies["cuerdas"] ?? 0) > 0,
+      load: resolved && harborItemDef ? { crates: harborItemDef.quantity, perBoat: harborItemDef.perGroup ?? 0, fullBoats: q?.full ?? harborItemDef.answers?.full ?? 0, remaining: q?.remaining ?? harborItemDef.answers?.remaining ?? 0, boatsNeeded: q?.needed ?? (harborItem?.outcome === "taught" ? harborItemDef.answers?.needed ?? null : null) } : null,
+      workplaces: harborDef.workplaces.map((w) => {
+        const ch = harborDef.characters.find((c) => c.id === w.character) ?? null;
+        const st = statuses.find((x) => x.id === w.id)?.status ?? (running && running.id === "v6" ? "locked" : "locked");
+        return { id: w.id, label: w.label, building: w.building, status: st, character: ch ? { id: ch.id, name: ch.name, role: ch.role, language: ch.language, lines: ch.lines } : null, stages: [...w.stages] };
+      }),
+      characters: harborDef.characters.map((ch) => ({ id: ch.id, name: ch.name, role: ch.role, language: ch.language, lines: ch.lines })),
+      entered: [...harborState.entered],
+    };
+  }
+
+  let reasoning: ReasoningView | null = null;
+  if (stage === "explain" && content.reasoning && state.currentVisit === "v6") {
+    const target = explainTarget(state, state.currentVisit);
+    if (target && hasMathItem(content, target)) {
+      const def = mathItem(content, target);
+      const r = state.reasoning?.[target] ?? newReasoningState(target, content.reasoning, now.toISOString());
+      reasoning = {
+        itemId: target,
+        status: r.status,
+        turns: r.turns.map((t) => ({ role: t.role, text: t.text, kind: t.kind ?? null, modality: t.modality ?? null, at: t.at })),
+        probesLeft: Math.max(0, content.reasoning.maxProbes - r.probesUsed),
+        method: r.method,
+        methodLabel: methodLabel(content.reasoning, r.method),
+        choices: r.status === "scaffold" ? { counters: !r.support.includes("counters"), teach: true, continue: true } : null,
+        item: { quantity: def.quantity, perGroup: def.perGroup ?? def.answer, groups: def.groups, unit: def.unit, group: def.group, prompt: def.prompt },
+      };
+    }
+  }
+
+  const logDef = logDefFor(content, state.currentVisit);
+  const log = stage === "log" && logDef ? { id: logDef.id, prompt: logDef.prompt, instruction: logDef.instruction } : null;
+
+  let logReview: LogReviewView | null = null;
+  if (stage === "log-review" && state.currentVisit && logDef && content.writing?.review) {
+    const page = [...state.pages].reverse().find((p) => p.visit === state.currentVisit) ?? null;
+    if (page && page.modality !== "spoken") {
+      const review = reviewLogSentence(page.text, content.writing.review, content.writing.spacing.joins);
+      const record = [...(state.logReviews ?? [])].reverse().find((r) => r.visit === state.currentVisit) ?? null;
+      const label = (a: string) => ({ meaning: "Inhalt", completeness: "ganzer Satz", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" })[a] ?? a;
+      logReview = {
+        logId: logDef.id,
+        original: page.text,
+        summary: review.summary,
+        taught: review.taught.map((f) => ({ id: f.id, aspect: f.aspect, aspectLabel: label(f.aspect), given: f.given, expected: f.expected, teaching: f.teaching })),
+        clean: review.clean,
+        cleanLabels: review.clean.map(label),
+        unknownWords: review.unknownWords,
+        suggestion: review.suggestion,
+        marked: review.marked,
+        record: record ? { outcome: record.outcome, revised: record.revised, resolved: record.evaluation?.resolved.length ?? 0, unresolved: record.evaluation?.unresolved.length ?? 0 } : null,
+      };
+    }
+  }
+
+  // --- the assistant context (Nabu sidebar): page/task binding, the child's current work, island state, objective, prior attempts, open focus
+  const islandWords = describeIslandState(state, content);
+  const openFocus = (state.feedback?.focus ?? []).filter((f) => f.status === "open").map((f) => f.evidence);
   let tutor: TutorContext | null = null;
   if (math && math.outcome === "pending") {
-    tutor = { taskId: math.id, taskVersion: math.version, language: "de", prompt: math.prompt, allowedHelp: "Erklären und Fragen beantworten, aber die Lösung nicht verraten." };
+    const itemState = state.math[math.id]!;
+    const prior = itemState.attempts.map((a) => `Versuch ${a.no}${a.part ? ` (${a.part === "needed" ? "Boote für alle" : "volle Boote/übrig"})` : ""}: „${a.raw}“ — ${a.correct === null ? "unklar" : a.correct ? "richtig" : "nicht richtig"}${a.support.length ? `, Hilfe: ${a.support.join(", ")}` : ""}`);
+    tutor = { taskId: math.id, taskVersion: math.version, language: "de", prompt: math.part === "needed" && math.decisionPrompt ? math.decisionPrompt : math.prompt, allowedHelp: "Erklären und Fragen beantworten, aber die Lösung nicht verraten.", page: "mission", stage, childWork: itemState.attempts.length ? itemState.attempts[itemState.attempts.length - 1].raw : null, islandState: islandWords, objective: mathItem(content, math.id).purpose, priorAttempts: prior, focus: openFocus[0] ?? null };
   } else if (language?.step) {
     const sentence = "sentence" in language.step ? language.step.sentence : language.step.frame;
-    tutor = { taskId: `${language.id}/${language.step.id}`, taskVersion: 1, language: language.language, prompt: sentence, allowedHelp: "Wörter erklären (auf Deutsch), Beispiele geben, dann zurück zur Aufgabe." };
+    const seg = state.language[language.id];
+    const prior = (seg?.records ?? []).filter((r) => r.stepId === language.step!.id).map((r) => `„${r.response}“ — ${r.correct === null ? "unbewertet" : r.correct ? "richtig" : "nicht richtig"}${r.support.length ? `, Hilfe: ${r.support.join(", ")}` : ""}`);
+    tutor = { taskId: `${language.id}/${language.step.id}`, taskVersion: 1, language: language.language, prompt: sentence, allowedHelp: "Wörter erklären (auf Deutsch), Beispiele geben, dann zurück zur Aufgabe.", page: "mission", stage, childWork: prior.length ? (seg?.records ?? []).filter((r) => r.stepId === language.step!.id).slice(-1)[0]?.response ?? null : null, islandState: islandWords, objective: languageSegment(content, language.id).objective, priorAttempts: prior, focus: openFocus[0] ?? null };
+  } else if (reasoning) {
+    const def = mathItem(content, reasoning.itemId);
+    const itemState = state.math[reasoning.itemId]!;
+    tutor = { taskId: reasoning.itemId, taskVersion: def.version, language: "de", prompt: def.prompt, allowedHelp: "Nachfragen stellen, Begriffe erklären, aber keine fertige Erklärung vorsagen.", page: "mission", stage, childWork: itemState.attempts.length ? itemState.attempts[itemState.attempts.length - 1].raw : null, islandState: islandWords, objective: "Den eigenen Rechenweg erklären.", priorAttempts: reasoning.turns.filter((t) => t.role === "child").map((t) => `„${t.text}“ (${t.modality ?? "typed"})`), focus: openFocus[0] ?? null };
+  } else if (stage) {
+    const current = stage === "log-review" && logReview ? logReview.original : stage === "typing-course" ? "Tipp-Runde" : null;
+    tutor = { taskId: stage, taskVersion: 1, language: "de", prompt: nextStepText(state, content, stage, now), allowedHelp: "Erklären, was zu tun ist; nichts vorsagen, was bewertet wird.", page: "mission", stage, childWork: current, islandState: islandWords, objective: null, priorAttempts: [], focus: openFocus[0] ?? null };
+  } else {
+    tutor = { taskId: "map", taskVersion: 1, language: "de", prompt: nextStepText(state, content, null, now), allowedHelp: "Erklären, was auf der Insel zu sehen ist und was als Nächstes kommt.", page: "map", stage: null, childWork: null, islandState: islandWords, objective: null, priorAttempts: [], focus: openFocus[0] ?? null };
   }
 
   const minutesElapsed = running ? Math.floor((now.getTime() - new Date(running.startedAt).getTime()) / 60000) : 0;
@@ -2204,16 +2819,21 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     scene: buildSceneModel(state, content),
     pages: state.pages,
     visit: running && def
-      ? { id: running.id, ordinal: visitOrdinal(state, running.id), title: visitLabel(state, content, running.id), startedAt: running.startedAt, stage, stageIndex: running.stageIndex, stageCount: def.stages.length, minutesElapsed, overBudget: minutesElapsed >= content.visitBudgetMinutes.max, intro: def.intro ?? null }
+      ? { id: running.id, ordinal: visitOrdinal(state, running.id), title: visitLabel(state, content, running.id), startedAt: running.startedAt, stage, stageIndex: running.stageIndex, stageCount: (visitStages(running, content) ?? def.stages).length, minutesElapsed, overBudget: minutesElapsed >= content.visitBudgetMinutes.max, intro: def.intro ?? null }
       : null,
     next: { visit: availability.visit, ordinal: availability.visit ? visitOrdinal(state, availability.visit) : null, availableAt: availability.availableAt, reason: "reason" in availability ? availability.reason : null },
     delayedCheck: delayedCheckInfo(state, content, now),
     progress: buildProgress(state, content, { now, timeZone: options.timeZone ?? null, sources: options.progressSources ?? null }),
     vocabulary: options.vocabulary ? childVocabularyCue(buildVocabularyLedger(state, content, options.vocabulary), content, state) : null,
+    wordbook: options.vocabulary ? childWordbook(buildVocabularyLedger(state, content, options.vocabulary), content, state, options.vocabulary) : null,
     nextStep: nextStepText(state, content, stage, now),
     locations: content.locations,
     station: stationDef ? { themes: stationDef.themes, spots: stationDef.spots, theme: station.theme, spot: station.spot, built: station.built, lampLit: station.lampLit, lampAvailable: (state.base.supplies["lámpara"] ?? 0) > 0, reference: stationReference } : null,
     pier: content.pier ? { spots: content.pier.spots, spot: pier.spot, built: pier.built, boatMoored: pier.boatMoored, woodAvailable: (state.base.supplies["wood"] ?? 0) > 0 } : null,
+    harbor,
+    reasoning,
+    log,
+    logReview,
     math,
     language,
     typing,
@@ -2227,7 +2847,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
       : reminderFor(state, content, {
           stage,
           typingLines: typingCourse?.lesson?.lines ?? (typing && typing.available ? typing.lesson.lines : null),
-          mathKind: math ? math.kind : null,
+          mathKind: math ? (math.kind === "quotient" ? "remainder" : math.kind) : null,
           language: language?.language ?? null,
           languageWords: language ? languageWordsOf(content, language.id) : null,
         }),
@@ -2245,6 +2865,24 @@ function records_uncertainty(seg: LanguageSegmentState, stepId: string): string 
   return last?.uncertainty ?? null;
 }
 
+/** One line of saved island state in words (for the assistant context and the parent); durable records only. */
+export function describeIslandState(state: MissionState, content: LearningContent): string {
+  const scene = buildSceneModel(state, content);
+  const parts: string[] = [];
+  if (scene.name) parts.push(`Basis „${scene.name}“ (${scene.base === "tent" ? "Zelt" : "Hütte"})`);
+  const garden = scene.beds.filter((b) => b.id.startsWith("garden")).length;
+  const station = scene.beds.filter((b) => b.id.startsWith("station")).length;
+  if (garden) parts.push(`${garden} Gartenbeete`);
+  if (station) parts.push(`${station} Stationsbeete${scene.leftovers ? `, ${scene.leftovers} übrig` : ""}`);
+  if (scene.station.built) parts.push(`Station${scene.station.lamp ? " mit Lampe" : ""}`);
+  if (scene.pier.built) parts.push(`Steg${scene.pier.boat ? ", Boot angelegt" : ""}`);
+  if (scene.harbor.fullBoats) parts.push(`Hafen: ${scene.harbor.fullBoats} volle Boote, ${scene.harbor.remaining} Kisten übrig${scene.harbor.boatsNeeded ? `, ${scene.harbor.boatsNeeded} Boote nötig` : ""}${scene.harbor.destination ? `, Ziel gewählt` : ""}${scene.harbor.roped ? ", Seile da" : ""}`);
+  const stores = Object.entries(state.base.supplies).filter(([, n]) => n > 0).map(([k, n]) => `${n} ${k}`);
+  if (stores.length) parts.push(`Vorräte: ${stores.join(", ")}`);
+  parts.push(`${state.pages.length} Logbuchseite${state.pages.length === 1 ? "" : "n"}`);
+  return parts.join(" · ");
+}
+
 /** Bounded tutor message: reviewed context first, child text verbatim after. */
 export const TUTOR_CONTEXT_SEPARATOR = "\n---\nFrage des Kindes:\n";
 export const MAX_TUTOR_QUESTION_CHARS = 1500;
@@ -2256,6 +2894,13 @@ export function buildTutorMessage(context: TutorContext, childText: string): str
     `Aufgabe ${context.taskId} v${context.taskVersion}, Sprache: ${context.language}.`,
     `Aufgabentext: ${context.prompt}`,
     `Erlaubte Hilfe: ${context.allowedHelp}`,
+    ...(context.page ? [`Seite: ${context.page === "map" ? "Insel-Karte" : "Aufgabe"}${context.stage ? ` (${context.stage})` : ""}.`] : []),
+    ...(context.objective ? [`Lernziel: ${context.objective}`] : []),
+    ...(context.childWork ? [`Aktuelle Arbeit des Kindes: ${context.childWork.slice(0, 300)}`] : []),
+    ...(context.priorAttempts && context.priorAttempts.length ? [`Bisherige Versuche/Hilfe: ${context.priorAttempts.slice(-4).join(" | ").slice(0, 600)}`] : []),
+    ...(context.islandState ? [`Gespeicherte Insel: ${context.islandState.slice(0, 300)}`] : []),
+    ...(context.focus ? [`Offener Übungsfokus: ${context.focus.slice(0, 200)}`] : []),
+    "Regeln: Antworte dem Kind kurz und freundlich auf Deutsch. Verrate keine Lösung einer bewerteten Aufgabe. Keine Daten anderer Personen.",
   ].join("\n");
   return `${header}${TUTOR_CONTEXT_SEPARATOR}${question}`;
 }
@@ -2282,6 +2927,13 @@ export function stageLabel(stage: StageId): string {
     case "station-choice": return "Station";
     case "station-build": return "Bauen";
     case "pier-build": return "Steg bauen";
+    case "island": return "Insel";
+    case "EQ-HARBOR": return "Boote";
+    case "EQ-HARBOR-CHECK": return "Check";
+    case "LANG-ES-HARBOR": return "Español";
+    case "LANG-ES-HARBOR-CHECK": return "Español";
+    case "harbor-build": return "Plan";
+    case "log-review": return "Dein Satz";
     case "log": return "Logbuch";
     case "log-revise": return "Nochmal lesen";
     case "log-transfer": return "Neuer Satz";

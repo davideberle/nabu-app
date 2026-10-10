@@ -291,16 +291,19 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
       {tab === "math" ? (
         <>
           <NextStep evidence={evidence} />
-          <AttemptTable title="Gleichmässig teilen (EQ-Aufgaben, inkl. Rest bei EQ-STATION)" attempts={math} child={child} ops={ops} empty="Noch kein Mathe-Versuch aufgezeichnet." visits={evidence.visits} />
+          <AttemptTable title="Gleichmässig teilen (EQ-Aufgaben, inkl. Rest bei EQ-STATION/EQ-PIER und Boote bei EQ-HARBOR: Teil A volle Boote/übrig, Teil B Boote für alle)" attempts={math} child={child} ops={ops} empty="Noch kein Mathe-Versuch aufgezeichnet." visits={evidence.visits} />
           <DelayedCheck evidence={evidence} />
           <SupportList evidence={evidence} filter={(k) => k !== "gloss"} />
         </>
       ) : null}
       {tab === "de" ? (
         <>
+          <Reasoning evidence={evidence} />
+          <LogReviews evidence={evidence} />
           <SampleList title="Erklärungen und Logbuch (Deutsch)" samples={samplesDe} empty="Noch keine Erklärung oder Logbuchseite." />
           <LogRevisions evidence={evidence} />
           <Transfers evidence={evidence} />
+          <VocabularyView code="de" evidence={evidence} />
           <p className="text-sm text-tertiary">Deutsch ist die Anker-Sprache: Vorlesen zählt als Zugangs-Hilfe und wird bei den Mathe-Versuchen ausgewiesen, nicht als Lese-Evidenz.</p>
         </>
       ) : null}
@@ -337,6 +340,10 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   const v5Done = !!state?.visits.some((v) => v.id === "v5" && v.finishedAt);
   const v5Running = !!state?.visits.some((v) => v.id === "v5" && !v.finishedAt);
   const chapter5 = evidence.visits?.find((v) => v.id === "v5")?.label ?? "Besuch 4 — Der Steg in der Bucht";
+  const v6Served = !!evidence.visits?.some((v) => v.id === "v6");
+  const v6Done = !!state?.visits.some((v) => v.id === "v6" && v.finishedAt);
+  const v6Running = !!state?.visits.some((v) => v.id === "v6" && !v.finishedAt);
+  const chapter6 = evidence.visits?.find((v) => v.id === "v6")?.label ?? "Besuch 5 — Der Hafen";
   let text: string;
   if (!state || state.visits.length === 0) text = "Noch kein Besuch. Der nächste Schritt ist der erste Besuch: Basis bauen, 24 Pakete gerecht teilen.";
   else if (fresh.length === 0) text = "Erster Besuch läuft. Nächster Schritt: der frische Check nach der Erklärung (EQ-FRESH).";
@@ -346,6 +353,9 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   else if (!v4Done) text = `Nächster Schritt: ${chapter} (intern v4, Beobachtungsstation mit Rest-Aufgabe EQ-STATION) — sofort verfügbar. Der frühere späte Check (v3, EQ-DELAY) ist seit dem 30. September zurückgezogen und keine ausstehende Arbeit.`;
   else if (v5Running) text = `${chapter5} läuft (intern v5, Rest-Aufgabe EQ-PIER, englische Anfrage LANG-EN-PIER).`;
   else if (v5Served && !v5Done) text = `Nächster Schritt: ${chapter5} (intern v5: Rest-Aufgabe EQ-PIER mit 45 Brettern, englische Anfrage LANG-EN-PIER, Steg bauen, neuer Satz WRITE-TRANSFER-2) — sofort verfügbar.`;
+  else if (v6Running) text = `${chapter6} läuft (intern v6: Hafen-Aufgabe EQ-HARBOR, Erklärgespräch, spanische Anfrage LANG-ES-HARBOR, Hafenplan, Kapitänslogbuch mit Durchsicht, kurzer Check).`;
+  else if (v5Done && v6Served && !v6Done) text = `Nächster Schritt: ${chapter6} (intern v6: 38 Kisten zu je 6 pro Boot — volle Boote, Rest und Boote für alle; Erklärgespräch mit Nabu; spanische Anfrage LANG-ES-HARBOR; Hafenplan; Kapitänslogbuch mit Durchsicht; Tipp-Kurs ab der gespeicherten Lektion; kurzer Check) — sofort verfügbar, Werkstatt-Reihenfolge frei.`;
+  else if (v6Done) text = "Alle Inhalte (Besuche 1–5) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität. Die Anwendung am selben Tag (EQ-HARBOR-CHECK) ist keine Behaltensleistung.";
   else if (v5Done) text = "Alle Inhalte (Besuche 1–4) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität.";
   else text = "Alle Inhalte (Besuche 1–3) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität.";
   return (
@@ -877,7 +887,81 @@ const OUTCOME_LABEL: Record<string, string> = { correct: "richtig", incorrect: "
  * context, visit, time, outcome). Derived from the immutable records;
  * deleted with them. Never a mastery claim.
  */
-function VocabularyView({ code, evidence }: { code: "en" | "es"; evidence: Evidence }) {
+/** Visit 5: the reasoning conversation per item — the child's words verbatim with modality, Nabu's reviewed lines, probes, the recorded method and any answer-revealing support. */
+function Reasoning({ evidence }: { evidence: Evidence }) {
+  const entries = Object.entries(evidence.state?.reasoning ?? {}).filter(([, r]) => r && r.turns.length);
+  if (entries.length === 0) return null;
+  const labels: Record<string, string> = { "explained-independently": "selbst erklärt (ohne Nachfrage)", "explained-after-probing": "nach neutralen Nachfragen selbst erklärt", "explained-with-support": "mit antwortnaher Hilfe erklärt (Material oder Vorrechnen)", "not-yet-established": "Weg noch nicht klar — kein Urteil über das Verständnis", unscored: "nicht bewertet" };
+  return (
+    <div className="rounded-2xl border border-primary p-4" data-testid="parent-reasoning">
+      <h2 className="text-lg font-semibold text-primary">Erklärgespräch (Rechenweg)</h2>
+      <p className="mt-1 text-sm text-tertiary">Antwort und Begründung getrennt: der Versuch steht in der Mathe-Tabelle, hier steht nur der erklärte Weg. Nachfragen sind neutral (verraten nichts); Material und Vorrechnen sind antwortnahe Hilfe. Gesprochenes stammt aus der Transkription — keine Schreibweise-Evidenz.</p>
+      {entries.map(([itemId, r]) => (
+        <section key={itemId} className="mt-3 rounded-2xl bg-secondary p-3" data-testid={`reasoning-${itemId}`} data-method={r!.method ?? ""}>
+          <p className="text-base font-semibold text-primary">
+            {itemId} · {labels[r!.method ?? ""] ?? (r!.status === "done" ? r!.method : "offen")}
+            {r!.strategy ? <span className="font-normal text-tertiary"> · erkannte Strategie: {r!.strategy}</span> : null}
+          </p>
+          <p className="text-xs text-tertiary">
+            {r!.probesUsed} Nachfrage(n){r!.support.length ? ` · Hilfe: ${r!.support.join(", ")}` : " · keine antwortnahe Hilfe"}
+          </p>
+          <ol className="mt-2 space-y-1 text-base">
+            {r!.turns.map((t, i) => (
+              <li key={i} className={t.role === "child" ? "text-primary" : "text-tertiary"}>
+                <span className="font-medium">{t.role === "child" ? "Kind" : "Nabu"}:</span> „{t.text}“{t.role === "child" ? ` (${t.modality === "spoken" ? "gesprochen" : "getippt"})` : t.probe ? ` [${t.probe}]` : t.kind ? ` [${t.kind}]` : ""}
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+/** Visit 5: the writing review of the captain's log — original, findings, the one or two taught points, the suggestion (help), the revision and its evaluation, unknown-word clarifications. */
+function LogReviews({ evidence }: { evidence: Evidence }) {
+  const reviews = evidence.state?.logReviews ?? [];
+  if (reviews.length === 0) return null;
+  const label: Record<string, string> = { meaning: "Inhalt", completeness: "ganzer Satz", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" };
+  return (
+    <div className="rounded-2xl border border-primary p-4" data-testid="parent-log-reviews">
+      <h2 className="text-lg font-semibold text-primary">Kapitänslogbuch — Durchsicht und Überarbeitung</h2>
+      <p className="mt-1 text-sm text-tertiary">Sechs geprüfte Aspekte, höchstens zwei gelehrt. Original, Vorschlag (Hilfe) und Überarbeitung bleiben getrennt; ein kopierter Vorschlag zählt nie als selbständig. Was nicht geprüft wurde, wird nicht beurteilt.</p>
+      {reviews.map((lr, i) => (
+        <section key={`${lr.visit}-${i}`} className="mt-3 rounded-2xl bg-secondary p-3" data-testid="parent-log-review" data-outcome={lr.outcome}>
+          <p className="text-sm text-tertiary">
+            {visitName(evidence, lr.visit)} · {fmt(lr.at)} · {lr.logId}
+          </p>
+          <p className="mt-1 text-base text-primary">
+            <span className="text-tertiary">Original:</span> <span className="font-mono">{lr.original}</span>
+          </p>
+          <p className="mt-1 text-base text-primary">
+            <span className="text-tertiary">Befunde:</span> {lr.review.findings.length ? lr.review.findings.map((f) => `${label[f.aspect] ?? f.aspect}: ${f.given}${f.expected ? ` → ${f.expected}` : ""}`).join("; ") : "keine an den geprüften Stellen"}
+          </p>
+          <p className="mt-1 text-base text-primary">
+            <span className="text-tertiary">Gelehrt:</span> {[...new Set(lr.review.taught.map((f) => label[f.aspect] ?? f.aspect))].join(", ") || "nichts"} · <span className="text-tertiary">ohne Befund:</span> {lr.review.clean.map((a) => label[a] ?? a).join(", ") || "—"}
+          </p>
+          {lr.review.suggestion ? (
+            <p className="mt-1 text-base text-primary">
+              <span className="text-tertiary">Vorschlag (Hilfe, gezeigt):</span> <span className="font-mono">{lr.review.suggestion}</span>
+            </p>
+          ) : null}
+          <p className="mt-1 text-base text-primary">
+            <span className="text-tertiary">Überarbeitung:</span> {lr.revised ? <span className="font-mono">{lr.revised}</span> : "übersprungen"} · {lr.outcome}
+            {lr.evaluation ? ` (gelöst ${lr.evaluation.resolved.length}/${lr.review.taught.length}${lr.evaluation.introduced.length ? `, neu aufgefallen: ${lr.evaluation.introduced.join(", ")}` : ""}${lr.evaluation.copiedSuggestion ? ", Vorschlag kopiert" : ""})` : ""}
+          </p>
+          {lr.review.unknownWords.length ? (
+            <p className="mt-1 text-base text-primary">
+              <span className="text-tertiary">Nachgefragt:</span> {lr.review.unknownWords.map((w) => `„${w}“${lr.clarifications[w] ? ` = „${lr.clarifications[w]}“` : " (keine Antwort)"}`).join(", ")} — unbewertet
+            </p>
+          ) : null}
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function VocabularyView({ code, evidence }: { code: "en" | "es" | "de"; evidence: Evidence }) {
   const [openEntry, setOpenEntry] = useState<string | null>(null);
   const ledger = evidence.vocabulary;
   if (!ledger) {

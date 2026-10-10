@@ -41,7 +41,9 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import { useChildShell } from "@/components/family/child-shell-provider";
-import { ExpeditionWorld } from "@/components/family/learning/expedition-world";
+import { HarborIsland } from "@/components/family/learning/harbor-island";
+import { CharacterBeat, HarborPlan, IslandStage, LogReview, WordbookPanel } from "@/components/family/learning/harbor-stages";
+import { NabuSidebar } from "@/components/family/learning/nabu-sidebar";
 import { isComposing, useDeliberateFocus, useRestoreFocus } from "@/components/family/learning/focus";
 import { HandsKeyboard, reachOriginOf } from "@/components/family/learning/hands-keyboard";
 import { LessonEnd } from "@/components/family/learning/lesson-end";
@@ -49,7 +51,7 @@ import { ReminderCueView } from "@/components/family/learning/reminder-cue";
 import { StoryBeat } from "@/components/family/learning/story-beat";
 import { VisitReportView } from "@/components/family/learning/visit-report";
 import { createChildTurnClient } from "@/lib/family-assistant-client";
-import { envelopeSpokenText, type ChildId } from "@/lib/family-assistant-turn";
+import type { ChildId } from "@/lib/family-assistant-turn";
 import { browserTimeZone, createLearningClient, type LearningMutateOutcome, type MutationContext } from "@/lib/family-learning-client";
 import type { RetryItem } from "@/lib/family-learning-feedback";
 import type { RetryOutcome, RetryPayload } from "@/components/family/learning/lesson-end";
@@ -59,11 +61,10 @@ import { createTelemetryBuffer, enterStage, noteControl, noteInput, noteOp, note
 import { LogRevise, LogTransfer, PierBuild, ReflectFeedback, StationBuild, StationChoice, Summary, TypingCourse, type DraftContext } from "./redesign-stages";
 import { clearChildDrafts, retireAllDrafts, retireMismatched, type DraftIdentity } from "@/lib/family-learning-draft-store";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
-import { recordSupportConfirmed, runTutorTurn, type SupportOutcome } from "@/lib/family-learning-tutor";
+import { recordSupportConfirmed, type SupportOutcome } from "@/lib/family-learning-tutor";
 import { applySaveOutcome, commitLine, createTypingDraft, lessonPayload, markSaving, typeInto, type TypingDraft } from "@/lib/family-learning-typing";
 import { nextExpectedChar } from "@/lib/family-learning-typing-metrics";
 import { createChildSpeechPlayer, type ChildSpeechPlayer } from "@/lib/family-speech";
-import { checkChildUtterance, startPushToTalk, type RecorderControl, type RecorderHandlers } from "@/lib/family-voice";
 import { worldMarkers } from "../client";
 import { chipButton, focusRing, primaryButton, secondaryButton } from "./styles";
 
@@ -84,8 +85,6 @@ function identityKey(view: ChildView): string {
   return `${view.erasureGeneration}:${view.visit?.id ?? "none"}:${view.visit?.startedAt ?? "none"}:${view.visit?.stage ?? "none"}`;
 }
 
-const TRANSCRIBE_PATH = "/api/family/transcribe";
-const TUTOR_SESSION_SUFFIX = "learn";
 const SLOW_RATE = 0.75;
 
 type Load = { kind: "loading" } | { kind: "ready"; view: ChildView } | { kind: "unprepared" } | { kind: "trouble"; message: string };
@@ -103,37 +102,10 @@ export function FamilyMissionClient() {
   return <Workspace key={child} child={child} />;
 }
 
-function adaptMediaRecorder(recorder: MediaRecorder, handlers: RecorderHandlers): RecorderControl {
-  recorder.ondataavailable = (event) => handlers.onData(event.data);
-  recorder.onstop = () => handlers.onStop();
-  recorder.onerror = () => handlers.onError();
-  return {
-    start: () => recorder.start(),
-    stop: () => recorder.stop(),
-    mimeType: () => recorder.mimeType || null,
-    detach: () => {
-      recorder.ondataavailable = null;
-      recorder.onstop = null;
-      recorder.onerror = null;
-    },
-  };
-}
-
 function parseAnswerNumber(raw: string): number | null {
   const cleaned = raw.trim().replace(",", ".");
   if (!/^\d{1,3}$/.test(cleaned)) return null;
   return Number(cleaned);
-}
-
-/** German number words a child might say; anything else stays uncertain. */
-const NUMBER_WORDS: Record<string, number> = {
-  null: 0, eins: 1, ein: 1, eine: 1, zwei: 2, drei: 3, vier: 4, fünf: 5, sechs: 6, sieben: 7, acht: 8, neun: 9, zehn: 10, elf: 11, zwölf: 12,
-};
-function numberFromTranscript(text: string): number | null {
-  const m = text.match(/\d{1,3}/);
-  if (m) return Number(m[0]);
-  const word = text.toLowerCase().match(/[a-zäöü]+/g)?.find((w) => w in NUMBER_WORDS);
-  return word ? NUMBER_WORDS[word] : null;
 }
 
 const HOME_FALLBACK = { left: ["a", "s", "d", "f"], right: ["j", "k", "l", "ö"], anchors: ["f", "j"], thumb: " " };
@@ -148,7 +120,8 @@ function Workspace({ child }: { child: ChildId }) {
   const [load, setLoad] = useState<Load>({ kind: "loading" });
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
-  const [tutorOpen, setTutorOpen] = useState(false);
+  const [nabuOpen, setNabuOpen] = useState(false);
+  const [overlay, setOverlay] = useState<"wordbook" | "logbook" | "supplies" | null>(null);
   /** The visit whose report is shown (just finished, or reopened through `?report=`). */
   const [reportVisit, setReportVisit] = useState<string | null>(() => searchParams.get("report"));
   const aliveRef = useRef(true);
@@ -251,17 +224,19 @@ function Workspace({ child }: { child: ChildId }) {
     };
   }, [flushTelemetry]);
 
-  // Escape closes the tutor panel; focus returns to where it was (UX-3: deliberate restoration).
-  useRestoreFocus(tutorOpen);
+  // The Nabu sidebar: focus returns to where it was when it closes (UX-3); it opens by itself for the reasoning conversation.
+  useRestoreFocus(nabuOpen);
+  // Only once the previous lesson's feedback is acknowledged: the conversation never opens over the lesson end.
+  const reasoningOpen = load.kind === "ready" && !!load.view.reasoning && load.view.reasoning.status !== "done" && !load.view.lastLesson;
+  const reasoningKey = load.kind === "ready" && load.view.reasoning ? `${load.view.reasoning.itemId}:${load.view.visit?.startedAt ?? ""}` : null;
+  const openedForRef = useRef<string | null>(null);
   useEffect(() => {
-    if (!tutorOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setTutorOpen(false);
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [tutorOpen]);
-  const gate: Gate = useCallback(() => !tutorOpen, [tutorOpen]);
+    if (reasoningOpen && reasoningKey && openedForRef.current !== reasoningKey) {
+      openedForRef.current = reasoningKey;
+      setNabuOpen(true);
+    }
+  }, [reasoningOpen, reasoningKey]);
+  const gate: Gate = useCallback(() => !nabuOpen && overlay === null, [nabuOpen, overlay]);
 
   /** One confirmed step, always at the latest revision. */
   const mutate = useCallback(
@@ -440,8 +415,8 @@ function Workspace({ child }: { child: ChildId }) {
             ))}
           </ol>
         </div>
-        <button type="button" onClick={() => setTutorOpen((v) => !v)} className={secondaryButton} aria-expanded={tutorOpen} aria-controls="tutor-panel" data-testid="hud-tutor">
-          💬 Tutor
+        <button type="button" onClick={() => setOverlay("wordbook")} className={secondaryButton} aria-haspopup="dialog" data-testid="hud-wordbook">
+          📖 Wörter
         </button>
       </header>
 
@@ -457,7 +432,7 @@ function Workspace({ child }: { child: ChildId }) {
         </p>
       ) : null}
 
-      <div className={cn("mt-3 grid flex-1 gap-4", tutorOpen && "lg:grid-cols-[minmax(0,1fr)_360px]")}>
+      <div className={cn("mt-3 grid flex-1 gap-4", nabuOpen && "lg:mr-[420px]")}>
         <main className="min-w-0 rounded-3xl border border-primary bg-primary p-4 shadow-xs dark:shadow-none sm:p-6">
           <div className="mx-auto w-full max-w-3xl">
             {lastLesson ? (
@@ -472,7 +447,11 @@ function Workspace({ child }: { child: ChildId }) {
                 {stage === "name-base" ? <NameBase busy={busy} gate={gate} onSubmit={(name) => void mutate({ op: "name-base", name })} /> : null}
                 {stage === "place-base" ? <PlaceBase view={view} busy={busy} gate={gate} onSubmit={(locationId) => void mutate({ op: "place-base", locationId })} /> : null}
                 {stage === "restore" ? <Restore view={view} busy={busy} gate={gate} onContinue={() => void mutate({ op: "resume-base" })} /> : null}
+                {stage === "island" && view.harbor ? <IslandStage view={view} markers={markers} busy={busy} gate={gate} onEnter={(workplace) => void mutate({ op: "enter-workplace", workplace })} onOpenWordbook={() => setOverlay("wordbook")} onOpenLogbook={() => setOverlay("logbook")} onOpenSupplies={() => setOverlay("supplies")} /> : null}
+                {stage === "harbor-build" && view.harbor ? <HarborPlan view={view} busy={busy} gate={gate} onPlan={(destination) => void mutate({ op: "plan-harbor", destination })} /> : null}
+                {stage === "log-review" && view.logReview ? <LogReview key={identityKey(view)} view={view} busy={busy} gate={gate} onSubmit={(text, clarifications) => void mutate({ op: "review-log", text, clarifications })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-review", reason: optionalReason })} /> : null}
                 {stage === "station-choice" ? <StationChoice view={view} busy={busy} gate={gate} onChoose={(theme) => void mutate({ op: "choose-station", theme })} /> : null}
+                {stage === "typing-course" && view.typingCourse && view.harbor && view.visit.id === "v6" ? <KeeperBeat view={view} workplace="typing" lineId="welcome" /> : null}
                 {stage === "typing-course" && view.typingCourse ? (
                   <TypingCourse
                     key={`course:${view.typingCourse.unavailable ?? "ok"}`}
@@ -501,12 +480,16 @@ function Workspace({ child }: { child: ChildId }) {
                     support={support}
                     onAnswer={(answer, raw, modality, uncertain) => void mutate({ op: "answer-math", itemId: view.math!.id, answer, raw, modality, uncertain })}
                     onAnswerRemainder={(used, remaining, raw, modality, uncertain) => void mutate({ op: "answer-remainder", itemId: view.math!.id, used, remaining, raw, modality, uncertain })}
+                    onAnswerQuotient={(full, remaining, raw, modality, uncertain) => void mutate({ op: "answer-quotient", itemId: view.math!.id, full, remaining, raw, modality, uncertain })}
+                    onAnswerNeeded={(needed, raw, modality, uncertain) => void mutate({ op: "answer-needed", itemId: view.math!.id, needed, raw, modality, uncertain })}
                     onContinue={() => void mutate({ op: "continue-item", itemId: view.math!.id })}
                     onTeach={() => void mutate({ op: "request-teaching", itemId: view.math!.id })}
                     onStop={() => void mutate({ op: "stop-item", itemId: view.math!.id })}
                   />
                 ) : null}
-                {stage === "explain" ? (
+                {stage === "explain" && view.reasoning ? (
+                  <ReasoningStage view={view} busy={busy} gate={gate} open={nabuOpen} onOpen={() => setNabuOpen(true)} onSkip={() => void mutate({ op: "skip-stage", stage: "explain", reason: optionalReason })} />
+                ) : stage === "explain" ? (
                   <Explain
                     busy={busy}
                     gate={gate}
@@ -515,6 +498,7 @@ function Workspace({ child }: { child: ChildId }) {
                     onSkip={() => void mutate({ op: "skip-stage", stage: "explain", reason: optionalReason })}
                   />
                 ) : null}
+                {view.language && view.harbor && view.language.id === "LANG-ES-HARBOR" ? <KeeperBeat view={view} workplace="supplier" lineId="welcome" onTranslate={() => support("gloss", view.language!.id, { word: "rosa-welcome", language: "es" })} /> : null}
                 {view.language ? (
                   <LanguageSegment
                     key={`${view.language.id}-${view.language.stepIndex}`}
@@ -569,19 +553,81 @@ function Workspace({ child }: { child: ChildId }) {
           </div>
         </main>
 
-        {tutorOpen ? (
-          <TutorPanel
-            child={child}
-            view={view}
-            speech={speech}
-            tutorClient={tutorClient}
-            recordSupport={recordSupportRaw}
-            currentRevision={() => viewRef.current?.revision ?? 0}
-            isAlive={() => aliveRef.current}
-            onClose={() => setTutorOpen(false)}
-          />
-        ) : null}
       </div>
+      <NabuSidebar
+        child={child}
+        view={view}
+        page="mission"
+        speech={speech}
+        tutorClient={tutorClient}
+        recordSupport={recordSupportRaw}
+        currentRevision={() => viewRef.current?.revision ?? 0}
+        isAlive={() => aliveRef.current}
+        onReasoningTurn={(text, modality) => mutate({ op: "reasoning-turn", text, modality })}
+        onReasoningChoice={(choice) => mutate({ op: "reasoning-choice", choice })}
+        open={nabuOpen}
+        onOpenChange={setNabuOpen}
+        busy={busy}
+      />
+      {overlay ? (
+        <Overlay title={overlay === "wordbook" ? "Wörterbuch" : overlay === "logbook" ? "Logbuch" : "Vorräte"} onClose={() => setOverlay(null)}>
+          {overlay === "wordbook" ? (
+            <WordbookPanel
+              view={view}
+              onSay={(text) => {
+                speech.unlock();
+                void speech.speak({ childId: child, text });
+              }}
+            />
+          ) : overlay === "logbook" ? (
+            <ul className="grid gap-3" data-testid="logbook-panel">
+              {view.pages.map((page, index) => (
+                <li key={`${page.visit}-${index}`} className="rounded-2xl border border-primary bg-primary p-4" data-testid="logbook-page">
+                  <p className="font-semibold text-primary">{page.title}</p>
+                  <p className="mt-2 text-base text-primary">{page.text}</p>
+                </li>
+              ))}
+              {view.pages.length === 0 ? <li className="text-base text-tertiary">Noch keine Seite.</li> : null}
+            </ul>
+          ) : (
+            <ul className="grid gap-2 sm:grid-cols-2" data-testid="supplies-panel">
+              {Object.entries(view.base.supplies)
+                .filter(([, n]) => n > 0)
+                .map(([k, n]) => (
+                  <li key={k} className="rounded-2xl border border-primary bg-primary px-4 py-3 text-lg text-primary">
+                    <strong>{n}</strong> {k}
+                  </li>
+                ))}
+            </ul>
+          )}
+        </Overlay>
+      ) : null}
+    </div>
+  );
+}
+
+/** A dismissable overlay panel (wordbook, logbook, supplies) — Escape closes, focus lands on the close control. */
+function Overlay({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    closeRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+  return (
+    <div className="fixed inset-0 z-40 flex justify-end bg-stone-900/30" role="presentation" onClick={onClose} data-testid="mission-overlay">
+      <section role="dialog" aria-modal="true" aria-label={title} className="flex h-full w-full max-w-2xl flex-col overflow-y-auto bg-secondary p-4 shadow-2xl sm:p-6" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-tertiary">{title}</p>
+          <button ref={closeRef} type="button" onClick={onClose} className={cn("inline-flex min-h-12 min-w-12 items-center justify-center rounded-full border border-primary bg-primary text-xl", focusRing)} aria-label="Schliessen" data-testid="overlay-close">
+            ×
+          </button>
+        </div>
+        <div className="mt-4 flex-1">{children}</div>
+      </section>
     </div>
   );
 }
@@ -669,7 +715,7 @@ function StartOrWait({ child, view, busy, onStart, notice, markers }: { child: C
         </Link>
       </div>
       <div className="mt-3 h-40 shrink-0 overflow-hidden rounded-3xl border border-primary sm:h-56">
-        <ExpeditionWorld scene={view.scene} markers={markers} pages={view.pages.length} variant="strip" />
+        <HarborIsland scene={view.scene} markers={markers} pages={view.pages.length} harbor={view.harbor} variant="strip" />
       </div>
       <div className="mt-4 flex flex-col gap-4">
         <StoryBeat speaker="radio" beats={[{ text: lines[0], scene: view.base.name ? "base" : "team" }]} compact />
@@ -679,7 +725,7 @@ function StartOrWait({ child, view, busy, onStart, notice, markers }: { child: C
           {notice ? <p className="mt-2 text-base text-primary">{notice}</p> : null}
           {nextDef ? (
             <button ref={startRef} type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-4 min-h-16 px-8 text-xl")} data-testid="start-visit" data-visit={nextDef} data-ordinal={view.next.ordinal ?? ""}>
-              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" ? `Besuch ${view.next.ordinal ?? (nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
+              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" || nextDef === "v6" ? `Besuch ${view.next.ordinal ?? (nextDef === "v6" ? 5 : nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
             </button>
           ) : null}
         </div>
@@ -773,7 +819,7 @@ function Restore({ view, busy, gate, onContinue }: { view: ChildView; busy: bool
   return (
     <div className="flex flex-col gap-4">
       <Instruction kicker="Willkommen zurück">Auf „{view.base.name}“ geht es weiter.</Instruction>
-      {intro ? <StoryBeat speaker="radio" beats={view.visit?.id === "v5" ? [{ text: intro.who, scene: "boat" }, { text: intro.make, scene: "pier" }, { text: intro.done, scene: "boat" }] : [{ text: intro.who, scene: "team" }, { text: intro.make, scene: "station" }, { text: intro.done, scene: "lamp" }]} testId="mission-intro" /> : <StoryBeat speaker="team" beats={[{ text: "Deine Vorräte sind noch da. Heute geht die Expedition weiter.", scene: "base" }]} compact />}
+      {intro ? <StoryBeat speaker="radio" beats={view.visit?.id === "v6" ? [{ text: intro.who, scene: "boat" }, { text: intro.make, scene: "team" }, { text: intro.done, scene: "page" }] : view.visit?.id === "v5" ? [{ text: intro.who, scene: "boat" }, { text: intro.make, scene: "pier" }, { text: intro.done, scene: "boat" }] : [{ text: intro.who, scene: "team" }, { text: intro.make, scene: "station" }, { text: intro.done, scene: "lamp" }]} testId="mission-intro" /> : <StoryBeat speaker="team" beats={[{ text: "Deine Vorräte sind noch da. Heute geht die Expedition weiter.", scene: "base" }]} compact />}
       <button ref={ref} type="button" onClick={onContinue} disabled={busy} className={primaryButton} data-testid="stage-continue">
         Weiter
       </button>
@@ -785,7 +831,7 @@ function Restore({ view, busy, gate, onContinue }: { view: ChildView; busy: bool
 // Math item: typed answer (unaided) or counters (supported), teaching phases
 // ---------------------------------------------------------------------------
 
-function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswerRemainder, onContinue, onTeach, onStop }: {
+function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswerRemainder, onAnswerQuotient, onAnswerNeeded, onContinue, onTeach, onStop }: {
   child: ChildId;
   view: ChildView;
   busy: boolean;
@@ -794,28 +840,32 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
   support: SupportFn;
   onAnswer: (answer: number | null, raw: string, modality: "typed" | "counters" | "spoken", uncertain?: boolean) => void;
   onAnswerRemainder: (used: number | null, remaining: number | null, raw: string, modality: "typed" | "counters" | "spoken", uncertain?: boolean) => void;
+  onAnswerQuotient: (full: number | null, remaining: number | null, raw: string, modality: "typed" | "counters", uncertain?: boolean) => void;
+  onAnswerNeeded: (needed: number | null, raw: string, modality: "typed", uncertain?: boolean) => void;
   onContinue: () => void;
   onTeach: () => void;
   onStop: () => void;
 }) {
   const item = view.math!;
+  const quotientItem = item.kind === "quotient";
   const remainderItem = item.kind === "remainder";
-  const capacity = remainderItem ? item.perGroup ?? 0 : null;
+  const capacity = remainderItem || quotientItem ? item.perGroup ?? 0 : null;
   const [rawUsed, setRawUsed] = useState("");
   const [rawRemaining, setRawRemaining] = useState("");
   const [raw, setRaw] = useState("");
   const [countersOpen, setCountersOpen] = useState(false);
   const [trays, setTrays] = useState<number[]>(() => Array.from({ length: item.groups }, () => 0));
-  const [spoken, setSpoken] = useState<{ transcript: string; number: number | null; second?: number | null } | null>(null);
   const placed = trays.reduce((a, b) => a + b, 0);
   const remaining = item.quantity - placed;
+  const partB = quotientItem && item.part === "needed";
+  const fullTrays = trays.filter((t) => capacity !== null && t === capacity).length;
   const canAnswer = item.phase === "answer" || item.phase === "clarify" || item.phase === "represent";
   const answerRef = useRef<HTMLInputElement | null>(null);
   const continueRef = useRef<HTMLButtonElement | null>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
   // Focus the answer field on the item and again after each attempt (clarification, representation) — deliberate transitions only;
   // the item's own second number field may hand focus back to the first one.
-  useDeliberateFocus(answerRef, canAnswer && !countersOpen ? `${item.id}:${item.phase}:${item.attemptNo}` : null, { gate, within: formRef, enabled: canAnswer && !countersOpen });
+  useDeliberateFocus(answerRef, canAnswer && !countersOpen ? `${item.id}:${item.part ?? ""}:${item.phase}:${item.attemptNo}` : null, { gate, within: formRef, enabled: canAnswer && !countersOpen });
   useDeliberateFocus(continueRef, item.phase === "example" ? `${item.id}:example` : null, { gate, enabled: item.phase === "example" });
 
   useEffect(() => {
@@ -848,7 +898,11 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
     return (
       <div className="flex flex-col gap-3">
         <Instruction>{item.scene ?? "Erledigt."}</Instruction>
-        {item.taughtAnswers ? (
+        {item.taughtQuotient ? (
+          <p className="text-base text-primary">
+            Wir haben es zusammen gemacht: {item.taughtQuotient.full} {item.group.plural} voll ({item.taughtQuotient.full} × {item.perGroup} = {item.taughtQuotient.full * (item.perGroup ?? 0)}), {item.quantity} − {item.taughtQuotient.full * (item.perGroup ?? 0)} = {item.taughtQuotient.remaining} übrig; für alle {item.unit.plural} braucht es {item.taughtQuotient.needed} {item.group.plural}.
+          </p>
+        ) : item.taughtAnswers ? (
           <p className="text-base text-primary">
             Wir haben es zusammen gemacht: {item.groups} {item.group.plural} × {item.perGroup} = {item.taughtAnswers.used} {item.unit.plural} {item.usedWord.past}, {item.quantity} − {item.taughtAnswers.used} = {item.taughtAnswers.remaining} bleiben übrig.
           </p>
@@ -870,11 +924,24 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
 
   return (
     <div className="flex flex-col gap-4">
-      {item.scene ? <StoryBeat speaker="team" beats={[{ text: item.scene, scene: item.id === "EQ-PIER" ? "boat" : remainderItem ? "garden" : "team" }]} compact /> : null}
-      <MathPrompt prompt={item.prompt} />
+      {quotientItem && view.harbor && item.id === "EQ-HARBOR" && !partB ? <KeeperBeat view={view} workplace="planning" lineId="welcome" /> : null}
+      {item.scene && !partB ? <StoryBeat speaker="team" beats={[{ text: item.scene, scene: item.id === "EQ-PIER" || quotientItem ? "boat" : remainderItem ? "garden" : "team" }]} compact /> : null}
+      {partB && item.decisionPrompt ? (
+        <div data-testid="math-decision">
+          <p className="rounded-2xl bg-green-50 px-4 py-2 text-base text-primary dark:bg-green-950/30" data-testid="math-part-a">
+            ✓ {item.partA?.full} {item.group.plural} voll, {item.partA?.remaining} {item.unit.plural} übrig.
+          </p>
+          <p className="mt-3 text-sm font-semibold uppercase tracking-[0.14em] text-tertiary">Mathe · Teil 2</p>
+          <h2 className="mt-1 text-2xl font-semibold leading-tight text-primary sm:text-3xl" data-testid="math-question">
+            {item.decisionPrompt}
+          </h2>
+        </div>
+      ) : (
+        <MathPrompt prompt={item.prompt} />
+      )}
       <div className="flex flex-wrap gap-2">
-        <AudioControls child={child} speech={speech} text={item.prompt} label="Vorlesen" disabled={busy} beforePlay={() => support("read_aloud", item.id, { text: "prompt" })} />
-        {!countersOpen && canAnswer ? (
+        <AudioControls child={child} speech={speech} text={partB && item.decisionPrompt ? item.decisionPrompt : item.prompt} label="Vorlesen" disabled={busy} beforePlay={() => support("read_aloud", item.id, { text: partB ? "decision" : "prompt" })} />
+        {!countersOpen && canAnswer && !partB ? (
           <button type="button" onClick={() => void openCounters()} className={secondaryButton} disabled={busy} data-testid="open-counters">
             {item.groupKind === "people" ? `${item.unit.emoji} ${item.unit.plural} an die ${item.group.plural} verteilen` : `${item.unit.emoji} ${item.unit.plural} in die ${item.group.plural} legen`}
           </button>
@@ -884,7 +951,7 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
       {item.phase === "clarify" && item.clarification ? (
         <p className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" role="status" data-testid="clarification">
           {item.clarification}
-          {item.lastPartial ? (item.lastPartial.usedCorrect && !item.lastPartial.remainingCorrect ? ` Die ${item.usedWord.past}en ${item.unit.plural} stimmen — schau den Rest noch einmal an.` : !item.lastPartial.usedCorrect && item.lastPartial.remainingCorrect ? ` Der Rest stimmt — zähle die vollen ${item.group.plural} noch einmal.` : "") : ""}
+          {item.lastPartial ? (item.lastPartial.usedCorrect && !item.lastPartial.remainingCorrect ? (quotientItem ? ` Die vollen ${item.group.plural} stimmen — schau den Rest noch einmal an.` : ` Die ${item.usedWord.past}en ${item.unit.plural} stimmen — schau den Rest noch einmal an.`) : !item.lastPartial.usedCorrect && item.lastPartial.remainingCorrect ? ` Der Rest stimmt — zähle die vollen ${item.group.plural} noch einmal.` : "") : ""}
         </p>
       ) : null}
 
@@ -916,7 +983,7 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
         </div>
       ) : null}
 
-      {countersOpen && canAnswer ? (
+      {countersOpen && canAnswer && !partB ? (
         <div className="rounded-2xl border border-primary p-4">
           <p className="text-base text-primary" data-testid="grouping-instruction">
             {item.groupKind === "people"
@@ -950,7 +1017,17 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
               </div>
             ))}
           </div>
-          {remainderItem ? (
+          {quotientItem ? (
+            <>
+              <p className="mt-2 text-sm text-tertiary" data-testid="leftovers">
+                Volle {item.group.plural}: {fullTrays} · am Kai: {remaining} {remaining === 1 ? item.unit.singular : item.unit.plural}
+              </p>
+              <button type="button" disabled={busy || trays.some((t) => t !== 0 && t !== capacity) || remaining >= (capacity ?? 1)} onClick={() => onAnswerQuotient(fullTrays, remaining, `${fullTrays} voll, ${remaining} übrig`, "counters")} className={cn(primaryButton, "mt-4")} data-testid="counters-submit">
+                {fullTrays} {item.group.plural} voll (je {capacity}), {remaining} übrig — fertig
+              </button>
+              {trays.some((t) => t !== 0 && t !== capacity) || remaining >= (capacity ?? 1) ? <p className="mt-2 text-sm text-tertiary">Mach jedes {item.group.singular} ganz voll (genau {capacity}), bis weniger als {capacity} übrig sind. Was nicht mehr passt, bleibt am Kai.</p> : null}
+            </>
+          ) : remainderItem ? (
             <>
               <p className="mt-2 text-sm text-tertiary" data-testid="leftovers">
                 Übrig neben den {item.group.plural}: {remaining} {remaining === 1 ? item.unit.singular : item.unit.plural}
@@ -971,6 +1048,47 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
         </div>
       ) : null}
 
+      {canAnswer && quotientItem && !partB ? (
+        <form
+          ref={formRef}
+          onSubmit={(e) => {
+            e.preventDefault();
+            const full = parseAnswerNumber(rawUsed);
+            const rem = parseAnswerNumber(rawRemaining);
+            if (full === null || rem === null) return;
+            onAnswerQuotient(full, rem, `${rawUsed.trim()} voll, ${rawRemaining.trim()} übrig`, "typed");
+            setRawUsed("");
+            setRawRemaining("");
+          }}
+          className="flex flex-wrap items-end gap-3"
+          data-testid="math-form-quotient"
+        >
+          {numberInput({ value: rawUsed, onChange: setRawUsed, label: item.quotientWords?.fullLabel ?? "Voll", testId: "math-answer-full", ref: answerRef })}
+          {numberInput({ value: rawRemaining, onChange: setRawRemaining, label: item.quotientWords?.remainingLabel ?? "Übrig", testId: "math-answer-remaining" })}
+          <button type="submit" disabled={busy || parseAnswerNumber(rawUsed) === null || parseAnswerNumber(rawRemaining) === null} className={primaryButton} data-testid="math-submit">
+            Fertig
+          </button>
+        </form>
+      ) : null}
+      {canAnswer && partB ? (
+        <form
+          ref={formRef}
+          onSubmit={(e) => {
+            e.preventDefault();
+            const n = parseAnswerNumber(raw);
+            if (n === null) return;
+            onAnswerNeeded(n, raw.trim(), "typed");
+            setRaw("");
+          }}
+          className="flex flex-wrap items-end gap-3"
+          data-testid="math-form-needed"
+        >
+          {numberInput({ value: raw, onChange: setRaw, label: item.quotientWords?.neededLabel ?? "Für alle", testId: "math-answer-needed", ref: answerRef })}
+          <button type="submit" disabled={busy || parseAnswerNumber(raw) === null} className={primaryButton} data-testid="math-submit">
+            Fertig
+          </button>
+        </form>
+      ) : null}
       {canAnswer && remainderItem ? (
         <form
           ref={formRef}
@@ -990,16 +1108,9 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
           <button type="submit" disabled={busy || parseAnswerNumber(rawUsed) === null || parseAnswerNumber(rawRemaining) === null} className={primaryButton} data-testid="math-submit">
             Fertig
           </button>
-          <SpokenAnswer
-            disabled={busy}
-            onTranscript={(transcript) => {
-              const numbers = transcript.match(/\d{1,3}/g) ?? [];
-              setSpoken({ transcript, number: numbers.length >= 2 ? Number(numbers[0]) : null, second: numbers.length >= 2 ? Number(numbers[1]) : null });
-            }}
-          />
         </form>
       ) : null}
-      {canAnswer && !remainderItem ? (
+      {canAnswer && !remainderItem && !quotientItem ? (
         <form
           ref={formRef}
           onSubmit={(e) => {
@@ -1015,145 +1126,38 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
           <button type="submit" disabled={busy || parseAnswerNumber(raw) === null} className={primaryButton} data-testid="math-submit">
             Fertig
           </button>
-          <SpokenAnswer disabled={busy} onTranscript={(transcript) => setSpoken({ transcript, number: numberFromTranscript(transcript) })} />
         </form>
       ) : null}
-
-      {spoken && canAnswer ? (
-        <div className="rounded-2xl bg-secondary p-4">
-          <p className="text-base text-primary">Ich habe verstanden: „{spoken.transcript}“</p>
-          {spoken.number !== null ? (
-            <div className="mt-2 flex flex-wrap gap-2">
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => {
-                  if (remainderItem) onAnswerRemainder(spoken.number, spoken.second ?? null, spoken.transcript, "spoken");
-                  else onAnswer(spoken.number, spoken.transcript, "spoken");
-                  setSpoken(null);
-                }}
-                className={primaryButton}
-              >
-                Ja, {spoken.number}
-                {remainderItem && spoken.second !== null && spoken.second !== undefined ? ` und ${spoken.second}` : ""}
-              </button>
-              <button type="button" disabled={busy} onClick={() => setSpoken(null)} className={secondaryButton}>
-                Nein, nochmal
-              </button>
-            </div>
-          ) : (
-            <div className="mt-2 flex flex-wrap gap-2">
-              <p className="text-sm text-tertiary">Da war keine Zahl dabei — sag sie nochmal oder tippe sie ein.</p>
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => {
-                  if (remainderItem) onAnswerRemainder(null, null, spoken.transcript, "spoken", true);
-                  else onAnswer(null, spoken.transcript, "spoken", true);
-                  setSpoken(null);
-                }}
-                className={secondaryButton}
-              >
-                Unklar lassen
-              </button>
-            </div>
-          )}
-        </div>
-      ) : null}
+      <p className="text-xs text-tertiary">Fragen oder laut erklären kannst du unten rechts bei Nabu.</p>
     </div>
   );
 }
 
-// ---------------------------------------------------------------------------
-// Push-to-talk (records → transcribe → the child confirms the text)
-// ---------------------------------------------------------------------------
-
-function SpokenAnswer({ disabled, onTranscript, label = "🎙️ Sagen" }: { disabled: boolean; onTranscript: (transcript: string) => void; label?: string }) {
-  const [mic, setMic] = useState<"idle" | "starting" | "live" | "transcribing" | "trouble">("idle");
-  const sessionRef = useRef<ReturnType<typeof startPushToTalk> | null>(null);
-  const seqRef = useRef(0);
-  const aliveRef = useRef(true);
-  useEffect(() => {
-    aliveRef.current = true;
-    return () => {
-      aliveRef.current = false;
-      sessionRef.current?.cancel();
-    };
-  }, []);
-
-  const start = () => {
-    if (typeof navigator === "undefined" || !navigator.mediaDevices || typeof MediaRecorder === "undefined") {
-      setMic("trouble");
-      return;
-    }
-    const seq = (seqRef.current += 1);
-    setMic("starting");
-    sessionRef.current = startPushToTalk({
-      getUserMedia: () => navigator.mediaDevices.getUserMedia({ audio: true }),
-      isTypeSupported: (type) => MediaRecorder.isTypeSupported(type),
-      createRecorder: (stream, mimeType, handlers) => adaptMediaRecorder(mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream), handlers),
-      onLive: () => {
-        if (seqRef.current === seq && aliveRef.current) setMic("live");
-      },
-      onSettle: async (outcome) => {
-        if (seqRef.current !== seq || !aliveRef.current) return;
-        sessionRef.current = null;
-        if (outcome.kind !== "recorded") {
-          setMic(outcome.kind === "cancelled" ? "idle" : "trouble");
-          return;
-        }
-        setMic("transcribing");
-        try {
-          const form = new FormData();
-          form.append("audio", outcome.blob, outcome.fileName);
-          const response = await fetch(TRANSCRIBE_PATH, { method: "POST", body: form });
-          if (!aliveRef.current || seqRef.current !== seq) return;
-          if (!response.ok) {
-            setMic("trouble");
-            return;
-          }
-          const payload = (await response.json()) as { transcript?: string };
-          const transcript = (payload.transcript ?? "").trim();
-          setMic("idle");
-          if (transcript) onTranscript(transcript);
-          else setMic("trouble");
-        } catch {
-          if (aliveRef.current) setMic("trouble");
-        }
-      },
-    });
-  };
-
-  const stop = () => sessionRef.current?.stop();
-
-  if (mic === "live" || mic === "starting") {
-    return (
-      <button type="button" onClick={stop} className={cn(secondaryButton, "border-red-500 text-red-700 dark:text-red-300")} aria-live="polite">
-        {mic === "live" ? "■ Stopp (ich höre zu)" : "… Mikrofon startet"}
-      </button>
-    );
-  }
-  return (
-    <div className="flex flex-col gap-1">
-      <button type="button" onClick={start} disabled={disabled || mic === "transcribing"} className={secondaryButton}>
-        {mic === "transcribing" ? "… ich schreibe mit" : label}
-      </button>
-      {mic === "trouble" ? <span className="text-sm text-tertiary">Mikrofon geht gerade nicht — tippen klappt.</span> : null}
-    </div>
-  );
+/** One keeper's reviewed line for the current workplace (English keeper, German planner, Spanish supplier). */
+function KeeperBeat({ view, workplace, lineId, onTranslate }: { view: ChildView; workplace: "typing" | "planning" | "supplier"; lineId: string; onTranslate?: () => Promise<boolean> }) {
+  const character = workplace === "supplier" ? view.harbor?.characters.find((c) => c.id === "supplier") ?? null : view.harbor?.workplaces.find((w) => w.id === workplace)?.character ?? null;
+  if (!character) return null;
+  return <CharacterBeat character={character} lineId={lineId} onTranslate={onTranslate} compact testId={`keeper-${character.id}`} />;
 }
 
-/** Shows a transcript and asks the child to confirm it before it is used. */
-function ConfirmTranscript({ transcript, busy, onConfirm, onReject }: { transcript: string; busy: boolean; onConfirm: () => void; onReject: () => void }) {
+/** The explanation stage of Visit 5: the conversation lives in the Nabu sidebar; this card opens it and keeps skipping possible. */
+function ReasoningStage({ view, busy, gate, open, onOpen, onSkip }: { view: ChildView; busy: boolean; gate: Gate; open: boolean; onOpen: () => void; onSkip: () => void }) {
+  const reasoning = view.reasoning!;
+  const ref = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(ref, !open ? `reasoning:${reasoning.itemId}` : null, { gate, enabled: !open });
+  const childTurns = reasoning.turns.filter((t) => t.role === "child").length;
   return (
-    <div className="rounded-2xl bg-secondary p-4">
-      <p className="text-base text-primary">Ich habe verstanden: „{transcript}“ — stimmt das?</p>
-      <div className="mt-2 flex flex-wrap gap-2">
-        <button type="button" disabled={busy} onClick={onConfirm} className={primaryButton}>
-          Ja, so
+    <div className="flex flex-col gap-4" data-testid="reasoning-stage" data-status={reasoning.status}>
+      <StoryBeat speaker="team" beats={[{ text: view.harbor?.load ? `${view.harbor.load.fullBoats} Boote voll, ${view.harbor.load.remaining} Kisten übrig, ${view.harbor.load.boatsNeeded ?? "?"} Boote für alle — gut gerechnet.` : "Gut gerechnet.", scene: "boat" }]} compact />
+      <Instruction kicker="Erklären">Erzähl Nabu, wie du gerechnet hast.</Instruction>
+      <p className="text-base text-tertiary">Nabu fragt dich unten rechts — du kannst sprechen oder schreiben. Nabu hört nur zu, wenn du das Mikrofon startest.</p>
+      {childTurns ? <p className="text-sm text-tertiary" data-testid="reasoning-progress">Bis jetzt: {childTurns} {childTurns === 1 ? "Antwort" : "Antworten"} von dir.</p> : null}
+      <div className="flex flex-wrap gap-2">
+        <button ref={ref} type="button" onClick={onOpen} disabled={busy} className={primaryButton} data-testid="reasoning-open">
+          {open ? "Nabu ist offen" : childTurns ? "Weiter mit Nabu" : "Mit Nabu sprechen"}
         </button>
-        <button type="button" disabled={busy} onClick={onReject} className={secondaryButton}>
-          Nein, nochmal
+        <button type="button" onClick={onSkip} disabled={busy} className={secondaryButton} data-testid="stage-skip">
+          {view.visit?.overBudget ? "Heute überspringen (Zeit)" : "Überspringen"}
         </button>
       </div>
     </div>
@@ -1166,10 +1170,9 @@ function ConfirmTranscript({ transcript, busy, onConfirm, onReject }: { transcri
 
 function Explain({ busy, gate, overBudget, onSubmit, onSkip }: { busy: boolean; gate: Gate; overBudget: boolean; onSubmit: (text: string, modality: "typed" | "spoken") => void; onSkip: () => void }) {
   const [text, setText] = useState("");
-  const [spokenText, setSpokenText] = useState<string | null>(null);
   const ref = useRef<HTMLTextAreaElement | null>(null);
   useDeliberateFocus(ref, "explain", { gate });
-  const modality: "typed" | "spoken" = spokenText !== null && text === spokenText ? "spoken" : "typed";
+  const modality: "typed" | "spoken" = "typed";
   return (
     <form
       onSubmit={(e) => {
@@ -1179,19 +1182,12 @@ function Explain({ busy, gate, overBudget, onSubmit, onSkip }: { busy: boolean; 
       className="flex flex-col gap-4"
     >
       <Instruction kicker="Erklären">Wie hast du das gerechnet?</Instruction>
-      <p className="text-base text-tertiary">Ein Satz reicht — schreiben oder sprechen.</p>
+      <p className="text-base text-tertiary">Ein Satz reicht. Laut erklären kannst du unten rechts bei Nabu.</p>
       <textarea ref={ref} value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="explain-input" />
       <div className="flex flex-wrap gap-2">
         <button type="submit" disabled={busy || !text.trim()} className={primaryButton}>
           Speichern
         </button>
-        <SpokenAnswer
-          disabled={busy}
-          onTranscript={(t) => {
-            setText(t);
-            setSpokenText(t);
-          }}
-        />
         <button type="button" onClick={onSkip} disabled={busy} className={secondaryButton} data-testid="stage-skip">
           {overBudget ? "Heute überspringen (Zeit)" : "Überspringen"}
         </button>
@@ -1222,14 +1218,13 @@ function LanguageSegment({ child, view, busy, gate, speech, support, onStep, onC
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [typed, setTyped] = useState("");
   const [choicesOpen, setChoicesOpen] = useState(false);
-  const [pendingTranscript, setPendingTranscript] = useState<string | null>(null);
   const languageLabel = segment.language === "en" ? "English" : "Español";
   const inputRef = useRef<HTMLInputElement | null>(null);
   const continueRef = useRef<HTMLButtonElement | null>(null);
   const firstOptionRef = useRef<HTMLButtonElement | null>(null);
   const canAnswer = !feedback || feedback.retryAllowed;
   const focusKey = step ? `${segment.id}:${step.id}:${feedback?.triesUsed ?? 0}` : null;
-  useDeliberateFocus(inputRef, step?.kind === "produce" && canAnswer && pendingTranscript === null ? focusKey : null, { gate, enabled: step?.kind === "produce" && canAnswer && pendingTranscript === null });
+  useDeliberateFocus(inputRef, step?.kind === "produce" && canAnswer ? focusKey : null, { gate, enabled: step?.kind === "produce" && canAnswer });
   useDeliberateFocus(continueRef, step?.kind === "listen-read" ? focusKey : null, { gate, enabled: step?.kind === "listen-read" });
   useDeliberateFocus(firstOptionRef, step?.kind === "pick-supply" ? focusKey : null, { gate, enabled: step?.kind === "pick-supply" });
 
@@ -1337,33 +1332,20 @@ function LanguageSegment({ child, view, busy, gate, speech, support, onStep, onC
           <p className="text-2xl text-primary" lang={segment.language}>
             {step.frame}
           </p>
-          {pendingTranscript !== null ? (
-            <ConfirmTranscript
-              transcript={pendingTranscript}
-              busy={busy}
-              onConfirm={() => {
-                onStep(step.id, pendingTranscript, "spoken", true);
-                setPendingTranscript(null);
-              }}
-              onReject={() => setPendingTranscript(null)}
-            />
-          ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (busy || !typed.trim()) return;
-                onStep(step.id, typed.trim(), choicesOpen ? "word-choice" : "typed");
-                setTyped("");
-              }}
-              className="flex flex-wrap items-end gap-2"
-            >
-              <input ref={inputRef} value={typed} onChange={(e) => setTyped(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={200} lang={segment.language} className={cn("min-h-16 min-w-0 flex-1 rounded-2xl border-2 border-primary bg-primary px-4 text-2xl text-primary", focusRing)} aria-label="Antwort" autoComplete="off" autoCapitalize="off" data-testid="language-input" />
-              <button type="submit" disabled={busy || !typed.trim()} className={primaryButton} data-testid="language-send">
-                Senden
-              </button>
-              <SpokenAnswer disabled={busy} onTranscript={(t) => setPendingTranscript(t)} />
-            </form>
-          )}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (busy || !typed.trim()) return;
+              onStep(step.id, typed.trim(), choicesOpen ? "word-choice" : "typed");
+              setTyped("");
+            }}
+            className="flex flex-wrap items-end gap-2"
+          >
+            <input ref={inputRef} value={typed} onChange={(e) => setTyped(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={200} lang={segment.language} className={cn("min-h-16 min-w-0 flex-1 rounded-2xl border-2 border-primary bg-primary px-4 text-2xl text-primary", focusRing)} aria-label="Antwort" autoComplete="off" autoCapitalize="off" data-testid="language-input" />
+            <button type="submit" disabled={busy || !typed.trim()} className={primaryButton} data-testid="language-send">
+              Senden
+            </button>
+          </form>
           {choicesOpen ? (
             <div className="flex flex-wrap gap-2">
               {step.choices.map((word) => (
@@ -1594,10 +1576,10 @@ function TypingSegment({ view, busy, gate, onLesson, onLabel, onSkip }: {
 
 function SaveLog({ view, busy, gate, onSubmit }: { view: ChildView; busy: boolean; gate: Gate; onSubmit: (text: string, modality: "typed" | "spoken") => void }) {
   const [text, setText] = useState("");
-  const [spokenText, setSpokenText] = useState<string | null>(null);
   const ref = useRef<HTMLTextAreaElement | null>(null);
   useDeliberateFocus(ref, "log", { gate });
-  const modality: "typed" | "spoken" = spokenText !== null && text === spokenText ? "spoken" : "typed";
+  const modality: "typed" | "spoken" = "typed";
+  const captain = view.log;
   return (
     <form
       onSubmit={(e) => {
@@ -1606,158 +1588,15 @@ function SaveLog({ view, busy, gate, onSubmit }: { view: ChildView; busy: boolea
       }}
       className="flex flex-col gap-4"
     >
-      <StoryBeat speaker="logbook" beats={[{ text: `Basis „${view.base.name}“${view.base.location ? ` · ${view.base.location.label}` : ""}`, scene: "page" }]} compact />
-      <Instruction kicker="Logbuch">Was ist heute passiert? Ein, zwei Sätze.</Instruction>
+      {captain && view.harbor ? <KeeperBeat view={view} workplace="planning" lineId="log" /> : <StoryBeat speaker="logbook" beats={[{ text: `Basis „${view.base.name}“${view.base.location ? ` · ${view.base.location.label}` : ""}`, scene: "page" }]} compact />}
+      <Instruction kicker={captain ? "Kapitänslogbuch" : "Logbuch"}>{captain ? captain.prompt : "Was ist heute passiert? Ein, zwei Sätze."}</Instruction>
+      {captain ? <p className="text-base text-tertiary" data-testid="log-instruction">{captain.instruction}</p> : null}
       <textarea ref={ref} value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="log-input" />
       <div className="flex flex-wrap gap-2">
         <button type="submit" disabled={busy || !text.trim()} className={primaryButton} data-testid="log-save">
-          Seite speichern
+          {captain ? "Ins Logbuch eintragen" : "Seite speichern"}
         </button>
-        <SpokenAnswer
-          disabled={busy}
-          onTranscript={(t) => {
-            setText(t);
-            setSpokenText(t);
-          }}
-        />
       </div>
     </form>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Tutor panel: typed or spoken question → bridge, sequenced by the runner
-// ---------------------------------------------------------------------------
-
-function TutorPanel({ child, view, speech, tutorClient, recordSupport, currentRevision, isAlive, onClose }: {
-  child: ChildId;
-  view: ChildView;
-  speech: ChildSpeechPlayer;
-  tutorClient: ReturnType<typeof createChildTurnClient>;
-  recordSupport: (op: LearningOp & { op: "support" }, expectedRevision: number) => Promise<{ outcome: SupportOutcome; revision: number }>;
-  currentRevision: () => number;
-  isAlive: () => boolean;
-  onClose: () => void;
-}) {
-  const [question, setQuestion] = useState("");
-  const [pendingTranscript, setPendingTranscript] = useState<string | null>(null);
-  const [thread, setThread] = useState<{ role: "child" | "tutor" | "note"; text: string }[]>([]);
-  const [pending, setPending] = useState(false);
-  const abortRef = useRef<AbortController | null>(null);
-  const panelAlive = useRef(true);
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  useEffect(() => {
-    panelAlive.current = true;
-    // Opening the tutor is the child's deliberate choice: its field takes focus once.
-    inputRef.current?.focus();
-    return () => {
-      panelAlive.current = false;
-      abortRef.current?.abort();
-    };
-  }, []);
-
-  const ask = async (text: string) => {
-    const check = checkChildUtterance(text);
-    if (!check.ok) return;
-    const context = view.tutor;
-    setPending(true);
-    setThread((t) => [...t, { role: "child", text: check.text }]);
-    const result = await runTutorTurn(
-      {
-        recordSupport,
-        currentRevision,
-        newTurnId: () => (typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `t-${Date.now()}`),
-        isAlive: () => isAlive() && panelAlive.current,
-        ask: async (message) => {
-          const abort = new AbortController();
-          abortRef.current = abort;
-          const outcome = await tutorClient.ask({ childId: child, sessionSuffix: TUTOR_SESSION_SUFFIX, message }, { signal: abort.signal });
-          return { ok: outcome.ok, text: outcome.ok ? envelopeSpokenText(outcome.envelope) : "" };
-        },
-      },
-      context,
-      check.text,
-    );
-    if (!panelAlive.current) return;
-    setPending(false);
-    switch (result.status) {
-      case "answered":
-        setThread((t) => [...t, { role: "tutor", text: result.text }]);
-        speech.unlock();
-        void speech
-          .speak({ childId: child, text: result.text })
-          .then((spoken) => {
-            if (spoken === "fallback" && panelAlive.current) setThread((t) => [...t, { role: "note", text: "Vorlesen geht gerade nicht — die Antwort steht oben zum Lesen." }]);
-          })
-          .catch(() => {
-            if (panelAlive.current) setThread((t) => [...t, { role: "note", text: "Vorlesen geht gerade nicht — die Antwort steht oben zum Lesen." }]);
-          });
-        return;
-      case "question-not-recorded":
-        setThread((t) => [...t, { role: "note", text: "Ich konnte die Frage nicht speichern, darum habe ich sie nicht gestellt. Versuch es gleich nochmal." }]);
-        return;
-      case "reply-withheld":
-        setThread((t) => [...t, { role: "note", text: "Die Antwort konnte nicht gespeichert werden, darum zeige ich sie nicht. Frag gleich nochmal." }]);
-        return;
-      case "bridge-unavailable":
-        setThread((t) => [...t, { role: "note", text: "Der Tutor ist gerade nicht erreichbar. Deine Aufgabe bleibt wie sie ist." }]);
-        return;
-    }
-  };
-
-  return (
-    <aside id="tutor-panel" className="flex max-h-[70vh] flex-col rounded-3xl border border-primary bg-primary p-4 shadow-xs dark:shadow-none lg:max-h-none" aria-label="Tutor" data-testid="tutor-panel">
-      <div className="flex items-center justify-between">
-        <p className="text-base font-semibold text-primary">Tutor</p>
-        <button type="button" onClick={onClose} className={cn("min-h-12 min-w-12 rounded-full text-xl", focusRing)} aria-label="Tutor schliessen" data-testid="tutor-close">
-          ×
-        </button>
-      </div>
-      {view.tutor ? <p className="mt-1 text-sm text-tertiary">Zur Aufgabe: „{view.tutor.prompt}“</p> : <p className="mt-1 text-sm text-tertiary">Frag, was du willst.</p>}
-      <div className="mt-3 flex-1 space-y-2 overflow-y-auto" aria-live="polite">
-        {thread.map((entry, index) => (
-          <p key={index} className={cn("rounded-2xl px-3 py-2 text-base", entry.role === "child" && "bg-secondary text-primary", entry.role === "tutor" && "bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900", entry.role === "note" && "border border-primary text-tertiary")}>
-            {entry.text}
-          </p>
-        ))}
-        {pending ? <p className="text-sm text-tertiary">… der Tutor überlegt</p> : null}
-      </div>
-      {pendingTranscript !== null ? (
-        <div className="mt-3">
-          <ConfirmTranscript
-            transcript={pendingTranscript}
-            busy={pending}
-            onConfirm={() => {
-              const t = pendingTranscript;
-              setPendingTranscript(null);
-              void ask(t);
-            }}
-            onReject={() => setPendingTranscript(null)}
-          />
-        </div>
-      ) : (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (question.trim() && !pending) {
-              void ask(question.trim());
-              setQuestion("");
-            }
-          }}
-          className="mt-3 flex flex-col gap-2"
-        >
-          <input ref={inputRef} value={question} onChange={(e) => setQuestion(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={1500} placeholder="Was heisst …? Warum …?" className={cn("min-h-14 rounded-2xl border border-primary bg-primary px-4 text-lg text-primary", focusRing)} aria-label="Frage an den Tutor" data-testid="tutor-input" />
-          <div className="flex flex-wrap gap-2">
-            <button type="submit" disabled={pending || !question.trim()} className={primaryButton}>
-              Fragen
-            </button>
-            <SpokenAnswer disabled={pending} onTranscript={(t) => setPendingTranscript(t)} label="🎙️ Frage sagen" />
-            <button type="button" onClick={() => speech.cancel()} className={secondaryButton}>
-              🔇 Stopp
-            </button>
-          </div>
-        </form>
-      )}
-    </aside>
   );
 }

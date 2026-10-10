@@ -286,7 +286,8 @@ describe("follow-on persistence — old rows, new reads", () => {
     // the parsed JSON and keeps unknown keys, so it reads and re-writes this row unchanged apart from its own fields.
     const started = await step(client, { op: "start-visit" });
     const keys = Object.keys(JSON.parse(String((await stateRow(client)).state_json))).sort();
-    deepStrictEqual(keys, ["base", "child", "contentVersion", "createdAt", "currentVisit", "explanations", "feedback", "language", "logRevisions", "math", "missionId", "modelShownAt", "pages", "pier", "revision", "station", "stationModelShownAt", "teachingFirstAt", "transfers", "typing", "updatedAt", "upgradedAt", "visits"]);
+    // Visit 5 (content v4, 2026-10-10) adds the additive keys `harbor`, `reasoning` and `logReviews`; a previous build keeps them unchanged.
+    deepStrictEqual(keys, ["base", "child", "contentVersion", "createdAt", "currentVisit", "explanations", "feedback", "harbor", "language", "logReviews", "logRevisions", "math", "missionId", "modelShownAt", "pages", "pier", "reasoning", "revision", "station", "stationModelShownAt", "teachingFirstAt", "transfers", "typing", "updatedAt", "upgradedAt", "visits"]);
     equal(started.view.visit!.id, "v4");
   });
 });

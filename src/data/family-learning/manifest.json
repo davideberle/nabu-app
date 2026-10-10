@@ -17,6 +17,10 @@
       "sha256": "60a7499edd4d9c9cbf7608d21517180f33bc08663770fcdf517cd96f68bda827",
       "bytes": 49814
     },
+    "content/santiago-expedition-v4.json": {
+      "sha256": "7daa03fcae88e52873a9abbad11a9318e7a2c280f7d5b18f980f244924de8a2b",
+      "bytes": 84056
+    },
     "content/vocabulary-inventory-v1.json": {
       "sha256": "52db9a44964b435d6b69a599c1527b9abf1f5ec10169f492f56b187f86b18389",
       "bytes": 8912
@@ -24,6 +28,10 @@
     "content/vocabulary-inventory-v2.json": {
       "sha256": "372e6b47543d28c9bcbbdabc280221c0b7566665649f8a7b5ba1eeefd2f1b953",
       "bytes": 11202
+    },
+    "content/vocabulary-inventory-v3.json": {
+      "sha256": "da9e2ea4e81deac602adf9ba0e2b2e36233c4c22ffe7ec92ee9e46b42a7b3418",
+      "bytes": 21758
     }
   }
 }

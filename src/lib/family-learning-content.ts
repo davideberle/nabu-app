@@ -22,7 +22,7 @@
 
 import type { ChildId } from "./family-assistant-turn.ts";
 
-export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5";
+export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5" | "v6";
 
 export type StageId =
   | "name-base"
@@ -48,11 +48,19 @@ export type StageId =
   | "log"
   | "log-revise"
   | "summary"
-  | "reflect";
+  | "reflect"
+  /** Content version 4 (Visit 5, 2026-10-10): the harbor chapter v6. */
+  | "island"
+  | "EQ-HARBOR"
+  | "EQ-HARBOR-CHECK"
+  | "LANG-ES-HARBOR"
+  | "LANG-ES-HARBOR-CHECK"
+  | "harbor-build"
+  | "log-review";
 
-export type MathItemId = "EQ-ENTRY" | "EQ-MODEL" | "EQ-FRESH" | "EQ-RETURN" | "EQ-DELAY" | "EQ-STATION" | "EQ-STATION-MODEL" | "EQ-PIER";
-export type ScoredMathItemId = Exclude<MathItemId, "EQ-MODEL" | "EQ-STATION-MODEL">;
-export type LanguageSegmentId = "LANG-EN-WATER" | "LANG-ES-AGUA" | "LANG-ES-STATION" | "LANG-EN-PIER";
+export type MathItemId = "EQ-ENTRY" | "EQ-MODEL" | "EQ-FRESH" | "EQ-RETURN" | "EQ-DELAY" | "EQ-STATION" | "EQ-STATION-MODEL" | "EQ-PIER" | "EQ-HARBOR" | "EQ-HARBOR-MODEL" | "EQ-HARBOR-CHECK";
+export type ScoredMathItemId = Exclude<MathItemId, "EQ-MODEL" | "EQ-STATION-MODEL" | "EQ-HARBOR-MODEL">;
+export type LanguageSegmentId = "LANG-EN-WATER" | "LANG-ES-AGUA" | "LANG-ES-STATION" | "LANG-EN-PIER" | "LANG-ES-HARBOR" | "LANG-ES-HARBOR-CHECK";
 export type KeyboardLayoutId = "ch-de-qwertz" | "de-qwertz" | "us-qwerty";
 export type TargetLanguage = "de" | "en" | "es";
 
@@ -62,16 +70,25 @@ export type MathItem = {
   purpose: string;
   scored: boolean;
   visit: VisitId;
-  /** `sharing` (default): quantity ÷ groups = answer. `remainder`: groups × perGroup used, the rest remains whole. */
-  kind?: "sharing" | "remainder";
+  /**
+   * `sharing` (default): quantity ÷ groups = answer. `remainder`: groups × perGroup used, the rest remains whole.
+   * `quotient` (content v4): how many FULL groups of perGroup fit (full), what remains, and how many groups are needed
+   * for everything (needed = full + 1 when something remains); `groups` is the number of groups needed (the trays).
+   */
+  kind?: "sharing" | "remainder" | "quotient";
   quantity: number;
   groups: number;
-  /** Remainder items: how many fit in each group. */
+  /** Remainder / quotient items: how many fit in each group. */
   perGroup?: number;
-  /** Remainder items: the two requested numbers. */
-  answers?: { used: number; remaining: number };
+  /** Remainder items: the two requested numbers. Quotient items add `full` and `needed` (used = full × perGroup). */
+  answers?: { used: number; remaining: number; full?: number; needed?: number };
   /** Remainder items: the verb for the used part ("gepflanzt" for seedlings, "verbaut" for planks); default gepflanzt/Gepflanzt. */
   usedWord?: { past: string; label: string };
+  /** Quotient items: the field labels of the three requested numbers. */
+  quotientWords?: { fullLabel: string; remainingLabel: string; neededLabel: string };
+  /** Quotient items: part B — the decision question (how many groups for ALL) and its clarification after a wrong first answer. */
+  decisionPrompt?: string;
+  decisionClarification?: string;
   answer: number;
   unit: { singular: string; plural: string; emoji: string };
   group: { singular: string; plural: string; emoji: string };
@@ -185,6 +202,50 @@ export type TransferDef = { id: string; version: number; visit: VisitId; prompt:
 
 export type SpacingJoin = { joined: string; split: string };
 
+/** Content v4: the self-authored German log sentence of a chapter (the captain's log of v6), reviewed by `writing.review`. */
+export type LogDef = { id: string; version: number; visit: VisitId; prompt: string; instruction: string; note: string };
+
+/** Content v4: the reviewed, deterministic writing review (lexicon and rules; the app's `family-learning-writing-review.ts` executes it). */
+export type WritingReviewAspect = "meaning" | "completeness" | "spacing" | "capitalization" | "spelling" | "punctuation";
+export type WritingReviewDef = {
+  note: string;
+  maxTeachingPoints: number;
+  priority: WritingReviewAspect[];
+  /** Lowercase stems/words that show the sentence speaks about what was built or transported. */
+  taskWords: string[];
+  /** Lowercase verb forms a complete sentence may carry. */
+  verbs: string[];
+  /** Lowercase subject words (pronouns, articles, names). */
+  subjects: string[];
+  /** Nouns the capitalisation check knows (capitalised written forms). */
+  nouns: { lemma: string; forms: string[] }[];
+  /** Reviewed common misspellings (lowercase) with the right form; `right: null` marks a form the review must NOT flag. */
+  misspellings: { wrong: string; right: string | null }[];
+  /** Lowercase function words / adjectives / numerals that are known and never flagged. */
+  functionWords: string[];
+};
+
+/** Content v4: the harbor of visit v6 — destinations (a child choice), workplaces (free order) and their characters. */
+export type HarborWorkplaceId = "typing" | "planning" | "closing";
+export type HarborWorkplace = { id: HarborWorkplaceId; label: string; building: string; character: string; stages: StageId[]; required: boolean; afterAllOthers?: boolean };
+export type HarborCharacter = { id: string; name: string; role: string; language: TargetLanguage; lines: { id: string; text: string; de: string | null }[] };
+export type HarborDef = { note: string; destinations: { id: string; label: string; emoji: string }[]; workplaces: HarborWorkplace[]; characters: HarborCharacter[] };
+
+/** Content v4: the reviewed probe script of the spoken/typed explanation (the app's `family-learning-reasoning.ts` executes it). */
+export type ReasoningDef = {
+  id: string;
+  version: number;
+  note: string;
+  maxProbes: number;
+  prompt: string;
+  probes: { vague: string; vagueMultiply?: string; vagueAgain: string; numbersNoMeaning: string; remainder: string; needed: string; contradiction: string };
+  accept: string;
+  acceptPartial: string;
+  scaffold: string;
+  teach: string;
+  methodLabels: Record<string, string>;
+};
+
 export type LearningContent = {
   contentId: string;
   contentVersion: number;
@@ -221,9 +282,13 @@ export type LearningContent = {
     course?: TypingCourse;
     labelTasks: TypingLabelTask[];
   };
-  writing?: { spacing: { note: string; rules: string[]; joins: SpacingJoin[] }; transfer?: { id: string; version: number; prompt: string; instruction: string; note: string }; transfers?: TransferDef[] };
+  writing?: { spacing: { note: string; rules: string[]; joins: SpacingJoin[] }; transfer?: { id: string; version: number; prompt: string; instruction: string; note: string }; transfers?: TransferDef[]; logs?: LogDef[]; review?: WritingReviewDef };
   /** Content version 3: the pier of visit v5 (two reviewed spots, a child choice). */
   pier?: { note: string; spots: { id: string; label: string; emoji: string }[] };
+  /** Content version 4: the harbor of visit v6. */
+  harbor?: HarborDef;
+  /** Content version 4: the reviewed reasoning probe script. */
+  reasoning?: ReasoningDef;
   reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel?: string; dimensions?: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; note?: string };
   retention: { policy: string };
 };
@@ -261,13 +326,28 @@ export const EXPECTED_VISIT_IDS_V3: readonly VisitId[] = [...EXPECTED_VISIT_IDS_
 export const EXPECTED_MATH_ITEM_IDS_V3: readonly MathItemId[] = [...EXPECTED_MATH_ITEM_IDS_V2, "EQ-PIER"];
 export const EXPECTED_LANGUAGE_SEGMENT_IDS_V3: readonly LanguageSegmentId[] = [...EXPECTED_LANGUAGE_SEGMENT_IDS_V2, "LANG-EN-PIER"];
 export const EXPECTED_V5_STAGES: readonly StageId[] = ["restore", "typing-course", "EQ-PIER", "explain", "LANG-EN-PIER", "pier-build", "log", "log-revise", "log-transfer", "summary", "reflect"];
-export const EXPECTED_TRANSFER_ID_V5 = "WRITE-TRANSFER-2";;
+export const EXPECTED_TRANSFER_ID_V5 = "WRITE-TRANSFER-2";
+/**
+ * Content version 4 (Visit 5, 2026-10-10): version 3 plus the harbor chapter. The v5 stage list is frozen too; v6 adds the
+ * quotient items EQ-HARBOR / EQ-HARBOR-CHECK with the example EQ-HARBOR-MODEL, the Spanish supplier LANG-ES-HARBOR and its
+ * closing recall LANG-ES-HARBOR-CHECK, the harbor plan, the captain's log WRITE-LOG-HARBOR with the writing review and the
+ * reasoning probe script. Learner-visible label: "Besuch 5". The default stage order below is FROZEN; the child's actual
+ * order is the per-visit route (typing first or planning first).
+ */
+export const EXPECTED_VISIT_IDS_V4: readonly VisitId[] = [...EXPECTED_VISIT_IDS_V3, "v6"];
+export const EXPECTED_MATH_ITEM_IDS_V4: readonly MathItemId[] = [...EXPECTED_MATH_ITEM_IDS_V3, "EQ-HARBOR", "EQ-HARBOR-MODEL", "EQ-HARBOR-CHECK"];
+export const EXPECTED_LANGUAGE_SEGMENT_IDS_V4: readonly LanguageSegmentId[] = [...EXPECTED_LANGUAGE_SEGMENT_IDS_V3, "LANG-ES-HARBOR", "LANG-ES-HARBOR-CHECK"];
+export const EXPECTED_V6_STAGES: readonly StageId[] = ["restore", "island", "typing-course", "island", "EQ-HARBOR", "explain", "LANG-ES-HARBOR", "harbor-build", "log", "island", "EQ-HARBOR-CHECK", "LANG-ES-HARBOR-CHECK", "log-review", "summary", "reflect"];
+export const EXPECTED_HARBOR_WORKPLACES: Readonly<Record<HarborWorkplaceId, readonly StageId[]>> = { typing: ["typing-course"], planning: ["EQ-HARBOR", "explain", "LANG-ES-HARBOR", "harbor-build", "log"], closing: ["EQ-HARBOR-CHECK", "LANG-ES-HARBOR-CHECK", "log-review"] };
+export const EXPECTED_LOG_ID_V6 = "WRITE-LOG-HARBOR";
+export const EXPECTED_REASONING_ID = "REASON-HARBOR";
+export const WRITING_REVIEW_ASPECTS: readonly WritingReviewAspect[] = ["meaning", "completeness", "spacing", "capitalization", "spelling", "punctuation"];
 /** Stable identity of the fresh writing-transfer check (content v2, round 2). */
 export const EXPECTED_TRANSFER_ID = "WRITE-TRANSFER-1";
 export const EXPECTED_FEEDBACK_DIMENSIONS: readonly string[] = ["enjoyment", "clarity"];
 export type RecipientKind = "people" | "container";
 export const KEYBOARD_LAYOUT_IDS: readonly KeyboardLayoutId[] = ["ch-de-qwertz", "de-qwertz", "us-qwerty"];
-export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3];
+export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4];
 
 export type ContentReconciliation = {
   ok: boolean;
@@ -301,7 +381,25 @@ function checkMathItem(item: Record<string, unknown>, problems: string[]) {
     problems.push(`${label}: quantity/groups/answer must be numbers`);
     return;
   }
-  if (item.kind === "remainder") {
+  if (item.kind === "quotient") {
+    // Content v4: how many FULL groups fit (full), what remains (smaller than one group), and how many groups are needed
+    // for everything (one more when something remains). `groups` = needed (the trays), `answer` = full.
+    const perGroup = item.perGroup;
+    const answers = isRecord(item.answers) ? item.answers : null;
+    if (typeof perGroup !== "number" || perGroup <= 0 || !answers || typeof answers.full !== "number" || typeof answers.remaining !== "number" || typeof answers.needed !== "number" || typeof answers.used !== "number") {
+      problems.push(`${label}: quotient item needs perGroup and answers {used, full, remaining, needed}`);
+      return;
+    }
+    if (Math.floor(quantity / perGroup) !== answers.full) problems.push(`${label}: ${quantity} holds ${Math.floor(quantity / perGroup)} full groups of ${perGroup}, not ${answers.full}`);
+    if (answers.full * perGroup !== answers.used) problems.push(`${label}: ${answers.full} × ${perGroup} is not ${answers.used}`);
+    if (quantity - answers.used !== answers.remaining) problems.push(`${label}: ${quantity} − ${answers.used} is not ${answers.remaining}`);
+    if (answers.remaining < 0 || answers.remaining >= perGroup) problems.push(`${label}: remainder ${answers.remaining} must be smaller than one group of ${perGroup}`);
+    if (answers.needed !== answers.full + (answers.remaining > 0 ? 1 : 0)) problems.push(`${label}: ${answers.needed} groups are not needed for ${quantity} (full ${answers.full}, remaining ${answers.remaining})`);
+    if (groups !== answers.needed) problems.push(`${label}: groups must equal the needed groups for a quotient item`);
+    if (answer !== answers.full) problems.push(`${label}: answer must equal the full groups for a quotient item`);
+    if (!isRecord(item.quotientWords) || typeof item.quotientWords.fullLabel !== "string" || typeof item.quotientWords.remainingLabel !== "string" || typeof item.quotientWords.neededLabel !== "string") problems.push(`${label}: quotient item needs quotientWords {fullLabel, remainingLabel, neededLabel}`);
+    if (item.scored === true && (typeof item.decisionPrompt !== "string" || typeof item.decisionClarification !== "string")) problems.push(`${label}: scored quotient item needs decisionPrompt and decisionClarification`);
+  } else if (item.kind === "remainder") {
     // Deliberate change of the validator for the remainder item: groups × perGroup
     // are used, the rest remains whole and must be smaller than one group.
     const perGroup = item.perGroup;
@@ -319,7 +417,7 @@ function checkMathItem(item: Record<string, unknown>, problems: string[]) {
   }
   if (version !== 1) problems.push(`${label}: version must be 1`);
   if (typeof prompt !== "string" || !prompt.trim()) problems.push(`${label}: prompt missing`);
-  const teaching = id === "EQ-MODEL" || id === "EQ-STATION-MODEL";
+  const teaching = id === "EQ-MODEL" || id === "EQ-STATION-MODEL" || id === "EQ-HARBOR-MODEL";
   if (teaching && scored !== false) problems.push(`${String(id)} must be unscored`);
   if (!teaching && scored !== true) problems.push(`${label} must be scored`);
 }
@@ -454,9 +552,100 @@ function checkTypingCourse(course: unknown, problems: string[]): number {
   return lessons.length;
 }
 
+/** Content v4: the harbor chapter — frozen v6 stage list composed of the workplace blocks, destinations, characters, log, review and reasoning. */
+function checkHarborChapter(raw: Record<string, unknown>, problems: string[]) {
+  const visits = Array.isArray(raw.visits) ? raw.visits : [];
+  const v5 = visits.find((v) => isRecord(v) && v.id === "v5");
+  const v5Stages = isRecord(v5) && Array.isArray(v5.stages) ? (v5.stages as unknown[]) : [];
+  if (v5Stages.join(",") !== EXPECTED_V5_STAGES.join(",")) problems.push(`visit v5: stage list is frozen from content version 4 on; must be exactly ${EXPECTED_V5_STAGES.join(" → ")}`);
+  const v6 = visits.find((v) => isRecord(v) && v.id === "v6");
+  const stages = isRecord(v6) && Array.isArray(v6.stages) ? (v6.stages as unknown[]) : [];
+  if (stages.join(",") !== EXPECTED_V6_STAGES.join(",")) problems.push(`visit v6: stages must be exactly ${EXPECTED_V6_STAGES.join(" → ")}`);
+  const intro = isRecord(v6) && isRecord(v6.intro) ? v6.intro : null;
+  if (!intro || typeof intro.who !== "string" || typeof intro.make !== "string" || typeof intro.done !== "string") problems.push("visit v6: intro must say who needs help, what is made and what counts as done");
+  const harbor = isRecord(raw.harbor) ? raw.harbor : null;
+  if (!harbor) {
+    problems.push("harbor: missing (content version 4)");
+  } else {
+    const destinations = Array.isArray(harbor.destinations) ? harbor.destinations : [];
+    if (destinations.length < 2) problems.push("harbor: at least two reviewed destinations");
+    for (const d of destinations) if (!isRecord(d) || typeof d.id !== "string" || typeof d.label !== "string" || typeof d.emoji !== "string") problems.push("harbor: malformed destination");
+    const workplaces = Array.isArray(harbor.workplaces) ? harbor.workplaces : [];
+    sameSet(idsOf(workplaces), Object.keys(EXPECTED_HARBOR_WORKPLACES), "harbor workplaces", problems);
+    const characterIds = new Set(idsOf(Array.isArray(harbor.characters) ? harbor.characters : []));
+    for (const w of workplaces) {
+      if (!isRecord(w) || typeof w.id !== "string" || typeof w.label !== "string" || typeof w.building !== "string" || typeof w.character !== "string" || !Array.isArray(w.stages)) {
+        problems.push("harbor: malformed workplace");
+        continue;
+      }
+      const expected = EXPECTED_HARBOR_WORKPLACES[w.id as HarborWorkplaceId];
+      if (expected && w.stages.join(",") !== expected.join(",")) problems.push(`harbor workplace ${w.id}: stages must be exactly ${expected.join(" → ")}`);
+      if (!characterIds.has(w.character)) problems.push(`harbor workplace ${w.id}: character ${w.character} is not defined`);
+      if (w.required !== true) problems.push(`harbor workplace ${w.id}: every workplace of the compact checklist is required`);
+    }
+    // The frozen default order is the composition restore → island → typing → island → planning → island → closing → summary → reflect.
+    const composed = ["restore", "island", ...EXPECTED_HARBOR_WORKPLACES.typing, "island", ...EXPECTED_HARBOR_WORKPLACES.planning, "island", ...EXPECTED_HARBOR_WORKPLACES.closing, "summary", "reflect"];
+    if (composed.join(",") !== EXPECTED_V6_STAGES.join(",")) problems.push("harbor: the frozen v6 stage list does not compose from the workplace blocks");
+    const characters = Array.isArray(harbor.characters) ? harbor.characters : [];
+    const languages = new Set<string>();
+    for (const ch of characters) {
+      if (!isRecord(ch) || typeof ch.id !== "string" || typeof ch.name !== "string" || typeof ch.role !== "string" || (ch.language !== "de" && ch.language !== "en" && ch.language !== "es") || !Array.isArray(ch.lines) || ch.lines.length === 0) {
+        problems.push("harbor: malformed character");
+        continue;
+      }
+      languages.add(ch.language);
+      for (const line of ch.lines) {
+        if (!isRecord(line) || typeof line.id !== "string" || typeof line.text !== "string" || !line.text.trim()) problems.push(`harbor character ${ch.id}: malformed line`);
+        else if (ch.language !== "de" && typeof line.de !== "string") problems.push(`harbor character ${ch.id}: line ${String(line.id)} needs a German translation (recorded help)`);
+      }
+    }
+    if (languages.size !== 3) problems.push("harbor: the three characters must speak German, English and Spanish (one each)");
+  }
+  const supplies = isRecord(raw.language) && isRecord(raw.language.supplyLabels) ? raw.language.supplyLabels : null;
+  for (const key of ["cuerdas", "cajas"]) if (!supplies || !isRecord(supplies[key])) problems.push(`language.supplyLabels: ${key} (visit v6) missing`);
+  const writing = isRecord(raw.writing) ? raw.writing : null;
+  const logs = Array.isArray(writing?.logs) ? writing.logs : [];
+  if (logs.length !== 1) problems.push("writing.logs: exactly one captain's log (v6)");
+  const log = logs[0];
+  if (!isRecord(log) || log.id !== EXPECTED_LOG_ID_V6 || log.version !== 1 || log.visit !== "v6" || typeof log.prompt !== "string" || typeof log.instruction !== "string") problems.push(`writing.logs: the v6 entry must be ${EXPECTED_LOG_ID_V6} (version 1, visit v6) with a prompt and an instruction`);
+  const review = isRecord(writing?.review) ? writing.review : null;
+  if (!review) problems.push("writing.review: missing (content version 4)");
+  else {
+    if (typeof review.maxTeachingPoints !== "number" || review.maxTeachingPoints < 1 || review.maxTeachingPoints > 2) problems.push("writing.review: maxTeachingPoints must be 1 or 2 (teach one or two points per visit)");
+    const priority = Array.isArray(review.priority) ? review.priority : [];
+    sameSet(priority.map(String), WRITING_REVIEW_ASPECTS, "writing.review.priority", problems);
+    for (const key of ["taskWords", "verbs", "subjects", "functionWords"]) {
+      const list = Array.isArray(review[key]) ? (review[key] as unknown[]) : [];
+      if (list.length === 0 || list.some((w) => typeof w !== "string" || !w.trim() || w !== w.toLowerCase())) problems.push(`writing.review.${key}: non-empty list of lowercase words`);
+    }
+    const nouns = Array.isArray(review.nouns) ? review.nouns : [];
+    if (nouns.length === 0) problems.push("writing.review.nouns: reviewed noun lexicon missing");
+    for (const n of nouns) {
+      if (!isRecord(n) || typeof n.lemma !== "string" || !Array.isArray(n.forms) || n.forms.length === 0) problems.push("writing.review.nouns: malformed entry");
+      else for (const f of n.forms) if (typeof f !== "string" || f[0] !== f[0].toUpperCase()) problems.push(`writing.review.nouns: form "${String(f)}" must be capitalised`);
+    }
+    const misspellings = Array.isArray(review.misspellings) ? review.misspellings : [];
+    for (const m of misspellings) {
+      if (!isRecord(m) || typeof m.wrong !== "string" || m.wrong !== m.wrong.toLowerCase() || !(typeof m.right === "string" || m.right === null)) problems.push("writing.review.misspellings: malformed entry");
+      else if (typeof m.right === "string" && /ß/.test(m.right)) problems.push(`writing.review.misspellings: "${m.right}" must use Swiss spelling (ss)`);
+    }
+  }
+  const reasoning = isRecord(raw.reasoning) ? raw.reasoning : null;
+  if (!reasoning) problems.push("reasoning: missing (content version 4)");
+  else {
+    if (reasoning.id !== EXPECTED_REASONING_ID || reasoning.version !== 1) problems.push(`reasoning: must be ${EXPECTED_REASONING_ID} version 1`);
+    if (typeof reasoning.maxProbes !== "number" || reasoning.maxProbes < 2 || reasoning.maxProbes > 3) problems.push("reasoning: maxProbes must be 2 or 3 (bounded probing)");
+    for (const key of ["prompt", "accept", "acceptPartial", "scaffold", "teach"]) if (typeof reasoning[key] !== "string" || !(reasoning[key] as string).trim()) problems.push(`reasoning.${key}: missing`);
+    const probes = isRecord(reasoning.probes) ? reasoning.probes : null;
+    for (const key of ["vague", "vagueAgain", "numbersNoMeaning", "remainder", "needed", "contradiction"]) if (!probes || typeof probes[key] !== "string") problems.push(`reasoning.probes.${key}: missing`);
+    if (probes && typeof probes.numbersNoMeaning === "string" && !/\{a\}/.test(probes.numbersNoMeaning)) problems.push("reasoning.probes.numbersNoMeaning must name the numbers ({a}, {b})");
+    if (probes && typeof probes.contradiction === "string" && !/\{claim\}/.test(probes.contradiction)) problems.push("reasoning.probes.contradiction must quote the claim ({claim})");
+  }
+}
+
 /**
  * Reconciles a parsed content document against the inventory of its declared
- * content version (1 or 2) and checks every scored item's arithmetic against
+ * content version (1 to 4) and checks every scored item's arithmetic against
  * its stated answer, so a typo in the answer key cannot reach a child.
  * Deterministic: the same document always yields the same problems list.
  */
@@ -467,12 +656,13 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
   const version = typeof raw.contentVersion === "number" && SUPPORTED_CONTENT_VERSIONS.includes(raw.contentVersion) ? raw.contentVersion : null;
   if (version === null) problems.push(`contentVersion must be one of ${SUPPORTED_CONTENT_VERSIONS.join(", ")}, got ${String(raw.contentVersion)}`);
   if (raw.child !== "santiago") problems.push("content.child must be santiago for this build");
-  const v3 = version === 3;
+  const v4 = version === 4;
+  const v3 = version === 3 || v4; // every version-3 rule also holds for version 4
   const v2 = version === 2 || v3; // every version-2 rule also holds for version 3
 
   const visitIds = idsOf(raw.visits);
   counts.visits = visitIds.length;
-  sameSet(visitIds, v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
+  sameSet(visitIds, v4 ? EXPECTED_VISIT_IDS_V4 : v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
   if (Array.isArray(raw.visits)) {
     for (const [id, expected] of Object.entries(EXPECTED_RETAINED_STAGES)) {
       const visit = raw.visits.find((v) => isRecord(v) && v.id === id);
@@ -509,15 +699,17 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
     const supplies = isRecord(raw.language) && isRecord(raw.language.supplyLabels) ? raw.language.supplyLabels : null;
     for (const key of ["wood", "rope"]) if (!supplies || !isRecord(supplies[key])) problems.push(`language.supplyLabels: ${key} (visit v5) missing`);
   }
+  if (v4 && Array.isArray(raw.visits)) checkHarborChapter(raw, problems);
 
   const math = isRecord(raw.math) ? raw.math : null;
   const mathIds = idsOf(math?.items);
   counts.math = mathIds.length;
-  sameSet(mathIds, v3 ? EXPECTED_MATH_ITEM_IDS_V3 : v2 ? EXPECTED_MATH_ITEM_IDS_V2 : EXPECTED_MATH_ITEM_IDS, "math items", problems);
+  sameSet(mathIds, v4 ? EXPECTED_MATH_ITEM_IDS_V4 : v3 ? EXPECTED_MATH_ITEM_IDS_V3 : v2 ? EXPECTED_MATH_ITEM_IDS_V2 : EXPECTED_MATH_ITEM_IDS, "math items", problems);
   if (Array.isArray(math?.items)) {
     for (const item of math.items) {
       if (!isRecord(item)) continue;
       if (!v2 && item.kind === "remainder") problems.push(`math ${String(item.id)}: remainder items exist only from content version 2`);
+      if (!v4 && item.kind === "quotient") problems.push(`math ${String(item.id)}: quotient items exist only from content version 4`);
       checkMathItem(item, problems);
     }
   }
@@ -533,7 +725,7 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
   const language = isRecord(raw.language) ? raw.language : null;
   const segmentIds = idsOf(language?.segments);
   counts.language = segmentIds.length;
-  sameSet(segmentIds, v3 ? EXPECTED_LANGUAGE_SEGMENT_IDS_V3 : v2 ? EXPECTED_LANGUAGE_SEGMENT_IDS_V2 : EXPECTED_LANGUAGE_SEGMENT_IDS, "language segments", problems);
+  sameSet(segmentIds, v4 ? EXPECTED_LANGUAGE_SEGMENT_IDS_V4 : v3 ? EXPECTED_LANGUAGE_SEGMENT_IDS_V3 : v2 ? EXPECTED_LANGUAGE_SEGMENT_IDS_V2 : EXPECTED_LANGUAGE_SEGMENT_IDS, "language segments", problems);
   if (Array.isArray(language?.segments)) {
     for (const segment of language.segments) if (isRecord(segment)) checkLanguageSegment(segment, problems);
   }
@@ -629,15 +821,31 @@ export function isKeyboardLayoutId(value: unknown): value is KeyboardLayoutId {
 }
 
 export function isScoredMathItemId(value: unknown): value is ScoredMathItemId {
-  return value === "EQ-ENTRY" || value === "EQ-FRESH" || value === "EQ-RETURN" || value === "EQ-DELAY" || value === "EQ-STATION" || value === "EQ-PIER";
+  return value === "EQ-ENTRY" || value === "EQ-FRESH" || value === "EQ-RETURN" || value === "EQ-DELAY" || value === "EQ-STATION" || value === "EQ-PIER" || value === "EQ-HARBOR" || value === "EQ-HARBOR-CHECK";
 }
 
 export function isLanguageSegmentId(value: unknown): value is LanguageSegmentId {
-  return value === "LANG-EN-WATER" || value === "LANG-ES-AGUA" || value === "LANG-ES-STATION" || value === "LANG-EN-PIER";
+  return value === "LANG-EN-WATER" || value === "LANG-ES-AGUA" || value === "LANG-ES-STATION" || value === "LANG-EN-PIER" || value === "LANG-ES-HARBOR" || value === "LANG-ES-HARBOR-CHECK";
 }
 
 export function isVisitId(value: unknown): value is VisitId {
-  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5";
+  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5" || value === "v6";
+}
+
+export function isHarborWorkplaceId(value: unknown): value is HarborWorkplaceId {
+  return value === "typing" || value === "planning" || value === "closing";
+}
+
+/** The self-authored log definition of a visit (content v4 binds the captain's log to v6), or null. */
+export function logDefFor(content: LearningContent, visit: VisitId | null): LogDef | null {
+  if (!visit || !content.writing?.logs) return null;
+  return content.writing.logs.find((l) => l.visit === visit) ?? null;
+}
+
+/** The harbor character a workplace is kept by, or null. */
+export function harborCharacter(content: LearningContent, id: string | null | undefined): HarborCharacter | null {
+  if (!id || !content.harbor) return null;
+  return content.harbor.characters.find((c) => c.id === id) ?? null;
 }
 
 /** The fresh transfer check of a visit: content v3 binds one per chapter; content v2 has the single v4 check. */

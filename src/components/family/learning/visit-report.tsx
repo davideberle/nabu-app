@@ -17,7 +17,8 @@ import { cn } from "@/components/ui/nabu";
 import type { LessonFeedback, VisitReport } from "@/lib/family-learning-feedback";
 import type { SceneModel } from "@/lib/family-learning-summary";
 import { focusRing, primaryButton, secondaryButton } from "@/app/family/(shell)/learn/mission/styles";
-import { ExpeditionWorld, type WorldMarker } from "./expedition-world";
+import type { WorldMarker } from "./expedition-world";
+import { HarborIsland } from "./harbor-island";
 import { useDeliberateFocus } from "./focus";
 
 const unlabel = (text: string) => text.replace(/^(Geschafft|Geübt|Nächstes Mal): /, "");
@@ -123,7 +124,7 @@ export function VisitReportView({ report, scene, markers, onBack, backLabel = "Z
       <section className="overflow-hidden rounded-3xl border border-primary bg-primary" data-testid="report-world">
         {scene && markers ? (
           <div className="h-36 sm:h-44">
-            <ExpeditionWorld scene={scene} markers={markers} pages={scene.pagesSaved} variant="strip" />
+            <HarborIsland scene={scene} markers={markers} pages={scene.pagesSaved} variant="strip" />
           </div>
         ) : null}
         <div className="p-4">
@@ -141,7 +142,7 @@ export function VisitReportView({ report, scene, markers, onBack, backLabel = "Z
           )}
           {s.artifact.kind !== "none" ? (
             <p className="mt-2 text-base text-primary" data-testid="report-artifact" data-artifact-kind={s.artifact.kind}>
-              <span className="text-tertiary">{s.artifact.kind === "station" ? "Gebaut: " : "Deine Seite: "}</span>
+              <span className="text-tertiary">{s.artifact.kind === "station" || s.artifact.kind === "pier" || s.artifact.kind === "harbor" ? "Gebaut: " : s.artifact.kind === "log-review" ? "Dein Satz, überarbeitet: " : "Deine Seite: "}</span>
               {s.artifact.text}
             </p>
           ) : (

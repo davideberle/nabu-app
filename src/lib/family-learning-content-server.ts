@@ -21,10 +21,16 @@
 // Content version 3 (Visit 4, 2026-10-04) is the served version: version 2 plus the pier chapter `v5`. Rollback to the
 // released chapter set is this build with FAMILY_LEARNING_CONTENT_CAP=2 (a started v5 is parked untouched, nothing
 // rewritten, every record readable); CAP=1 keeps the pilot content as before.
+// Content version 4 (Visit 5, 2026-10-10) is the served version: version 3 plus the harbor chapter `v6`. Rollback to the
+// released chapter set is this build with FAMILY_LEARNING_CONTENT_CAP=3 (a started v6 is parked untouched); CAP=2 / CAP=1
+// keep the earlier behaviour. The vocabulary inventory follows the served content version (v3 adds German and the harbor
+// words; a capped content serves the matching earlier inventory so every context reconciles).
+import contentV4 from "@/data/family-learning/content/santiago-expedition-v4.json";
 import contentV3 from "@/data/family-learning/content/santiago-expedition-v3.json";
 import contentV2 from "@/data/family-learning/content/santiago-expedition-v2.json";
 import contentV1 from "@/data/family-learning/content/santiago-expedition-v1.json";
 import vocabularyV2 from "@/data/family-learning/content/vocabulary-inventory-v2.json";
+import vocabularyV3 from "@/data/family-learning/content/vocabulary-inventory-v3.json";
 import { asLearningContent, type LearningContent } from "./family-learning-content";
 import { asVocabularyInventory, type VocabularyInventory } from "./family-learning-vocabulary";
 
@@ -44,7 +50,7 @@ export function loadVocabularyInventory(): VocabularyInventory {
   if (cachedVocabulary) return cachedVocabulary;
   if (vocabularyFailure) throw vocabularyFailure;
   try {
-    cachedVocabulary = asVocabularyInventory(vocabularyV2, loadLearningContent());
+    cachedVocabulary = asVocabularyInventory(servedContentVersion() === 4 ? vocabularyV3 : vocabularyV2, loadLearningContent());
     return cachedVocabulary;
   } catch (error) {
     vocabularyFailure = error instanceof Error ? error : new Error(String(error));
@@ -52,10 +58,10 @@ export function loadVocabularyInventory(): VocabularyInventory {
   }
 }
 
-/** The content version this server instance serves (3; 2 or 1 under the rollback cap). */
-export function servedContentVersion(): 1 | 2 | 3 {
+/** The content version this server instance serves (4; 3, 2 or 1 under the rollback cap). */
+export function servedContentVersion(): 1 | 2 | 3 | 4 {
   const cap = process.env.FAMILY_LEARNING_CONTENT_CAP;
-  return cap === "1" ? 1 : cap === "2" ? 2 : 3;
+  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : 4;
 }
 
 export function loadLearningContent(): LearningContent {
@@ -63,7 +69,7 @@ export function loadLearningContent(): LearningContent {
   if (failure) throw failure;
   try {
     const served = servedContentVersion();
-    cached = asLearningContent(served === 1 ? contentV1 : served === 2 ? contentV2 : contentV3);
+    cached = asLearningContent(served === 1 ? contentV1 : served === 2 ? contentV2 : served === 3 ? contentV3 : contentV4);
     return cached;
   } catch (error) {
     failure = error instanceof Error ? error : new Error(String(error));

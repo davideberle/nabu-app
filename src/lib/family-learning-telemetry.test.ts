@@ -89,11 +89,12 @@ describe("closed telemetry schema (P4)", () => {
     const source = readFileSync(new URL("./family-learning-state.ts", import.meta.url), "utf8");
     const ops = new Set([...source.matchAll(/\| \{ op: "([a-z-]+)"/g)].map((m) => m[1]));
     deepStrictEqual([...ops].sort(), [...TELEMETRY_OPS].sort());
-    // Content version 3 (Visit 4, 2026-10-04) adds EQ-PIER, LANG-EN-PIER and pier-build: 21 → 24 stage ids.
-    const content = JSON.parse(readFileSync(new URL("../data/family-learning/content/santiago-expedition-v3.json", import.meta.url), "utf8")) as { visits: { stages: string[] }[] };
+    // Content version 3 (Visit 4, 2026-10-04) adds EQ-PIER, LANG-EN-PIER and pier-build: 21 → 24 stage ids; version 4 (Visit 5,
+    // 2026-10-10) adds island, EQ-HARBOR, EQ-HARBOR-CHECK, LANG-ES-HARBOR, LANG-ES-HARBOR-CHECK, harbor-build, log-review: 24 → 31.
+    const content = JSON.parse(readFileSync(new URL("../data/family-learning/content/santiago-expedition-v4.json", import.meta.url), "utf8")) as { visits: { stages: string[] }[] };
     const allStages = [...new Set(content.visits.flatMap((v) => v.stages))].sort();
     deepStrictEqual([...TELEMETRY_STAGES].sort(), allStages);
-    equal(allStages.length, 24);
+    equal(allStages.length, 31);
   });
   it("the client buffer only produces schema events (a malformed producer call is dropped, not stored)", () => {
     let b = enterStage(createTelemetryBuffer(), "log", 0);

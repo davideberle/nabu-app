@@ -51,8 +51,42 @@ export function isMathItemView(v: unknown): v is MathItemView {
     (example === null || (isRec(example) && isStr(example.prompt) && isStrArray(example.steps) && isNum(example.quantity) && isNum(example.groups) && isNum(example.answer))) &&
     isNumOrNull(v.taughtAnswer) &&
     isBool(v.teachingOffered) &&
-    oneOf(v.outcome, ["pending", "correct", "taught", "stopped"])
+    oneOf(v.outcome, ["pending", "correct", "taught", "stopped"]) &&
+    (v.part === undefined || v.part === null || oneOf(v.part, ["full-remaining", "needed"])) &&
+    (v.quotientWords === undefined || v.quotientWords === null || (isRec(v.quotientWords) && isStr(v.quotientWords.fullLabel) && isStr(v.quotientWords.remainingLabel) && isStr(v.quotientWords.neededLabel))) &&
+    (v.decisionPrompt === undefined || isStrOrNull(v.decisionPrompt)) &&
+    (v.partA === undefined || v.partA === null || (isRec(v.partA) && isNum(v.partA.full) && isNum(v.partA.remaining)))
   );
+}
+
+/** Visit 5 (content v4): the harbor view — workplaces with status and characters, the plan, the loaded boats. */
+export function isHarborView(v: unknown): boolean {
+  if (!isRec(v)) return false;
+  if (!Array.isArray(v.destinations) || !v.destinations.every(isNamed) || !isStrOrNull(v.destination) || !isBool(v.planned) || !isBool(v.roped) || !isBool(v.ropesAvailable)) return false;
+  const load = v.load;
+  if (!(load === null || (isRec(load) && isNum(load.crates) && isNum(load.perBoat) && isNum(load.fullBoats) && isNum(load.remaining) && isNumOrNull(load.boatsNeeded)))) return false;
+  if (!Array.isArray(v.entered) || !v.entered.every((e) => oneOf(e, ["typing", "planning", "closing"]))) return false;
+  if (v.characters !== undefined && (!Array.isArray(v.characters) || !v.characters.every((c) => isRec(c) && isStr(c.id) && isStr(c.name) && oneOf(c.language, ["de", "en", "es"]) && Array.isArray(c.lines)))) return false;
+  return Array.isArray(v.workplaces) && v.workplaces.every((w) => isRec(w) && oneOf(w.id, ["typing", "planning", "closing"]) && isStr(w.label) && isStr(w.building) && oneOf(w.status, ["open", "done", "locked", "current"]) && isStrArray(w.stages) && (w.character === null || (isRec(w.character) && isStr(w.character.id) && isStr(w.character.name) && isStr(w.character.role) && oneOf(w.character.language, ["de", "en", "es"]) && Array.isArray(w.character.lines) && w.character.lines.every((l) => isRec(l) && isStr(l.id) && isStr(l.text) && isStrOrNull(l.de)))));
+}
+
+/** Visit 5: the reasoning conversation view. */
+export function isReasoningView(v: unknown): boolean {
+  if (!isRec(v)) return false;
+  if (!isStr(v.itemId) || !oneOf(v.status, ["open", "scaffold", "done"]) || !isNum(v.probesLeft) || !isStrOrNull(v.method) || !isStr(v.methodLabel)) return false;
+  if (!Array.isArray(v.turns) || !v.turns.every((t) => isRec(t) && oneOf(t.role, ["nabu", "child"]) && isStr(t.text) && isStrOrNull(t.kind) && (t.modality === null || oneOf(t.modality, ["typed", "spoken"])) && isStr(t.at))) return false;
+  if (!(v.choices === null || (isRec(v.choices) && isBool(v.choices.counters) && isBool(v.choices.teach) && isBool(v.choices.continue)))) return false;
+  const item = v.item;
+  return isRec(item) && isNum(item.quantity) && isNum(item.perGroup) && isNum(item.groups) && isUnitLike(item.unit) && isUnitLike(item.group) && isStr(item.prompt);
+}
+
+/** Visit 5: the writing review view. */
+export function isLogReviewView(v: unknown): boolean {
+  if (!isRec(v)) return false;
+  if (!isStr(v.logId) || !isStr(v.original) || !isStr(v.summary) || !isStrArray(v.clean) || !isStrArray(v.cleanLabels) || !isStrArray(v.unknownWords) || !isStrOrNull(v.suggestion) || !isStrOrNull(v.marked)) return false;
+  if (!Array.isArray(v.taught) || !v.taught.every((t) => isRec(t) && isStr(t.id) && isStr(t.aspect) && isStr(t.aspectLabel) && isStr(t.given) && isStrOrNull(t.expected) && isStr(t.teaching))) return false;
+  const r = v.record;
+  return r === null || (isRec(r) && oneOf(r.outcome, ["revised", "partial", "unchanged", "none-needed", "skipped"]) && isStrOrNull(r.revised) && isNum(r.resolved) && isNum(r.unresolved));
 }
 
 export function isLanguageStepView(v: unknown): v is LanguageStepView {
@@ -119,7 +153,7 @@ export function isProgressStrip(v: unknown): boolean {
   if (recent !== null) {
     if (!isRec(recent) || !isStr(recent.visit) || !isNumOrNull(recent.ordinal) || !isStr(recent.label) || !isStr(recent.finishedAt) || !isStrOrNull(recent.did) || !isStr(recent.tryNext)) return false;
     const artifact = recent.artifact;
-    if (!isRec(artifact) || !oneOf(artifact.kind, ["page", "station", "pier", "revision", "none"]) || !isStr(artifact.text)) return false;
+    if (!isRec(artifact) || !oneOf(artifact.kind, ["page", "station", "pier", "revision", "harbor", "log-review", "none"]) || !isStr(artifact.text)) return false;
     const g = recent.grounding;
     if (!isRec(g) || !oneOf(g.source, ["review", "review-historical", "none"]) || !isNumOrNull(g.reviewVersion)) return false;
     if (!(g.suppressed === null || (isRec(g.suppressed) && isStr(g.suppressed.reason) && isStr(g.suppressed.text)))) return false;
@@ -130,7 +164,7 @@ export function isProgressStrip(v: unknown): boolean {
 /** The child's vocabulary cue (follow-on M3): words + a try-next line, nothing numeric. */
 export function isChildVocabularyCue(v: unknown): boolean {
   if (!isRec(v) || !isNum(v.inventoryVersion) || !isStr(v.note) || !Array.isArray(v.words)) return false;
-  return v.words.every((w) => isRec(w) && isStr(w.entryId) && isStr(w.lemma) && isStr(w.gloss) && oneOf(w.language, ["en", "es"]) && isStr(w.try) && isBool(w.upcoming));
+  return v.words.every((w) => isRec(w) && isStr(w.entryId) && isStr(w.lemma) && isStr(w.gloss) && oneOf(w.language, ["en", "es", "de"]) && isStr(w.try) && isBool(w.upcoming));
 }
 
 /** A mistake entry of the lesson feedback (world-first 2026-10-03). */
@@ -172,7 +206,7 @@ export function isVisitReport(v: unknown): boolean {
   if (!isRec(v)) return false;
   const s = v.summary;
   if (!isStr(v.visit) || !isNumOrNull(v.ordinal) || !isStr(v.label) || !isStr(v.startedAt) || !isStrOrNull(v.finishedAt) || !isBool(v.partial) || !isNum(v.stagesDone) || !isNum(v.stageCount)) return false;
-  if (!isRec(s) || !isStr(s.visit) || !isStr(s.title) || !(s.success === null || (isRec(s.success) && isStr(s.success.text))) || !(s.practiced === null || (isRec(s.practiced) && isStr(s.practiced.text))) || !isRec(s.next) || !isStr(s.next.text) || !isRec(s.artifact) || !oneOf(s.artifact.kind, ["page", "station", "pier", "revision", "none"]) || !isStr(s.artifact.text)) return false;
+  if (!isRec(s) || !isStr(s.visit) || !isStr(s.title) || !(s.success === null || (isRec(s.success) && isStr(s.success.text))) || !(s.practiced === null || (isRec(s.practiced) && isStr(s.practiced.text))) || !isRec(s.next) || !isStr(s.next.text) || !isRec(s.artifact) || !oneOf(s.artifact.kind, ["page", "station", "pier", "revision", "harbor", "log-review", "none"]) || !isStr(s.artifact.text)) return false;
   return Array.isArray(v.lessons) && v.lessons.every(isLessonFeedback) && isStrArray(v.worldChanges);
 }
 
@@ -209,5 +243,11 @@ export function isChildView(value: unknown, child?: ChildId): value is ChildView
   if (!(reflection === null || (isRec(reflection) && isStr(reflection.prompt) && Array.isArray(reflection.options) && reflection.options.every((o) => isRec(o) && isStr(o.id) && isStr(o.label))))) return false;
   const tutor = value.tutor;
   if (!(tutor === null || (isRec(tutor) && isStr(tutor.taskId) && isNum(tutor.taskVersion) && oneOf(tutor.language, ["de", "en", "es"]) && isStr(tutor.prompt) && isStr(tutor.allowedHelp)))) return false;
+  // Visit 5 (content v4) fields: present (possibly null) on every view of this build; a view from an older server (field absent) is still a view.
+  if (value.harbor !== undefined && !(value.harbor === null || isHarborView(value.harbor))) return false;
+  if (value.reasoning !== undefined && !(value.reasoning === null || isReasoningView(value.reasoning))) return false;
+  if (value.log !== undefined && !(value.log === null || (isRec(value.log) && isStr(value.log.id) && isStr(value.log.prompt) && isStr(value.log.instruction)))) return false;
+  if (value.logReview !== undefined && !(value.logReview === null || isLogReviewView(value.logReview))) return false;
+  if (value.wordbook !== undefined && !(value.wordbook === null || (isRec(value.wordbook) && Array.isArray(value.wordbook.languages)))) return false;
   return true;
 }

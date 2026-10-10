@@ -23,7 +23,7 @@
 
 import type { ChildId } from "./family-assistant-turn.ts";
 import { isLanguageSegmentId, type LanguageSegmentId, type LearningContent, type VisitId } from "./family-learning-content.ts";
-import type { LanguageStepRecord, MissionState } from "./family-learning-state.ts";
+import type { LanguageStepRecord, LogReviewRecord, MissionState } from "./family-learning-state.ts";
 import { visitOrdinal } from "./family-learning-summary.ts";
 
 export const VOCABULARY_LEDGER_VERSION = 1;
@@ -33,18 +33,24 @@ export const VOCABULARY_DIMENSIONS: readonly VocabularyDimension[] = ["recogniti
 
 export type VocabularyContext = {
   id: string;
-  taskId: LanguageSegmentId;
+  /** A language segment id (recognition / recall), or — inventory v3, dimension `writing` — a reviewed log task id (`WRITE-LOG-HARBOR`). */
+  taskId: LanguageSegmentId | string;
   stepId: string;
   version: number;
-  dimension: "recognition" | "recall";
+  dimension: "recognition" | "recall" | "writing";
   stimulus: string;
   target?: string;
   variants?: Record<string, string>;
 };
 
+export type VocabularyLanguage = "en" | "es" | "de";
+
 export type VocabularyEntry = {
   id: string;
-  language: "en" | "es";
+  language: VocabularyLanguage;
+  /** Inventory v3: a picture and a familiar example for the child's wordbook (optional on earlier entries). */
+  emoji?: string;
+  example?: string;
   lemma: string;
   partOfSpeech: string;
   concept: string;
@@ -76,7 +82,7 @@ export type VocabularyObservation = {
   /** Stable: entry / task / step / attempt number / dimension (free texts: entry / kind / index / spontaneous). */
   id: string;
   entryId: string;
-  language: "en" | "es";
+  language: VocabularyLanguage;
   lemma: string;
   dimension: VocabularyDimension;
   taskId: string;
@@ -125,7 +131,7 @@ export type VocabularyDimensionSummary = {
 
 export type VocabularyEntrySummary = {
   entryId: string;
-  language: "en" | "es";
+  language: VocabularyLanguage;
   lemma: string;
   gloss: string;
   sense: string;
@@ -163,7 +169,7 @@ export function reconcileVocabularyInventory(raw: unknown, content: LearningCont
   const counts = { entries: 0, contexts: 0, served: 0 };
   if (!isRecord(raw)) return { ok: false, problems: ["inventory is not an object"], counts };
   if (typeof raw.inventoryId !== "string" || !raw.inventoryId) problems.push("inventoryId missing");
-  if (raw.inventoryVersion !== 1 && raw.inventoryVersion !== 2) problems.push(`inventoryVersion must be 1 or 2, got ${String(raw.inventoryVersion)}`);
+  if (raw.inventoryVersion !== 1 && raw.inventoryVersion !== 2 && raw.inventoryVersion !== 3) problems.push(`inventoryVersion must be 1, 2 or 3, got ${String(raw.inventoryVersion)}`);
   if (raw.child !== content.child) problems.push(`inventory child ${String(raw.child)} does not match content child ${content.child}`);
   if (raw.contentId !== content.contentId) problems.push(`inventory contentId ${String(raw.contentId)} does not match ${content.contentId}`);
   if (!isRecord(raw.reviewed) || typeof raw.reviewed.status !== "string" || typeof raw.reviewed.note !== "string") problems.push("reviewed.status/note missing");
@@ -186,7 +192,10 @@ export function reconcileVocabularyInventory(raw: unknown, content: LearningCont
     const id = String(e.id);
     if (ids.has(id)) problems.push(`duplicate entry id ${id}`);
     ids.add(id);
-    if (e.language !== "en" && e.language !== "es") problems.push(`${id}: language must be en or es`);
+    if (e.language !== "en" && e.language !== "es" && e.language !== "de") problems.push(`${id}: language must be en, es or de`);
+    if (e.language === "de" && raw.inventoryVersion !== 3) problems.push(`${id}: German entries exist only from inventory version 3`);
+    if (e.emoji !== undefined && (typeof e.emoji !== "string" || !e.emoji)) problems.push(`${id}: emoji must be a non-empty string when given`);
+    if (e.example !== undefined && (typeof e.example !== "string" || !e.example)) problems.push(`${id}: example must be a non-empty string when given`);
     for (const key of ["lemma", "partOfSpeech", "concept", "sense", "gloss"]) if (typeof e[key] !== "string" || !(e[key] as string).length) problems.push(`${id}: ${key} missing`);
     if (!isStrArray(e.forms) || e.forms.length === 0) problems.push(`${id}: forms missing`);
     else {
@@ -209,11 +218,27 @@ export function reconcileVocabularyInventory(raw: unknown, content: LearningCont
       const cid = String(c.id);
       if (ctxIds.has(cid)) problems.push(`duplicate context id ${cid}`);
       ctxIds.add(cid);
+      if (c.dimension === "writing") {
+        // Inventory v3: a writing context binds the entry to a reviewed self-authored log task (the captain's log); the
+        // observation comes from the TYPED original of that log, judged by the reviewed written forms. Served only when the
+        // content carries the log.
+        if (typeof c.taskId !== "string" || c.stepId !== "log" || typeof c.stimulus !== "string" || typeof c.target !== "string") {
+          problems.push(`${cid}: writing context needs a log taskId, stepId "log", the prompt as stimulus and the lemma as target`);
+          continue;
+        }
+        const log = content.writing?.logs?.find((l) => l.id === c.taskId) ?? null;
+        if (!log) continue;
+        counts.served += 1;
+        if (log.version !== c.version) problems.push(`${cid}: version ${String(c.version)} does not match served log version ${log.version}`);
+        if (log.prompt !== c.stimulus) problems.push(`${cid}: stimulus differs from the reviewed log prompt`);
+        if (typeof e.lemma === "string" && c.target !== e.lemma) problems.push(`${cid}: target must be the entry's lemma`);
+        continue;
+      }
       if (!isLanguageSegmentId(c.taskId)) {
         problems.push(`${cid}: taskId ${String(c.taskId)} is not a language segment id`);
         continue;
       }
-      if (c.dimension !== "recognition" && c.dimension !== "recall") problems.push(`${cid}: dimension must be recognition or recall`);
+      if (c.dimension !== "recognition" && c.dimension !== "recall") problems.push(`${cid}: dimension must be recognition, recall or writing`);
       if (typeof c.stimulus !== "string" || !c.stimulus) problems.push(`${cid}: stimulus missing`);
       // Contexts of a segment the served content does not carry (content cap) are not served; they must still be well-formed.
       const segment = content.language.segments.find((s) => s.id === c.taskId);
@@ -283,6 +308,67 @@ function correctionKey(taskId: string, attemptNo: number): string {
   return `${taskId}#${attemptNo}`;
 }
 
+/** One writing observation of a German entry from the typed ORIGINAL of the captain's log (inventory v3), or null when the word does not occur. */
+function writingObservation(entry: VocabularyEntry, ctx: VocabularyContext, lr: LogReviewRecord, state: MissionState, content: LearningContent): VocabularyObservation | null {
+  const raw = lr.original.match(/[\p{L}\p{N}]+/gu) ?? [];
+  const lower = raw.map((t) => t.toLowerCase());
+  const review = content.writing?.review ?? null;
+  const misspelled = review ? review.misspellings.filter((m) => typeof m.right === "string" && entry.forms.includes(m.right.toLowerCase())).map((m) => m.wrong) : [];
+  const isNoun = entry.partOfSpeech === "noun";
+  let outcome: VocabularyOutcome | null = null;
+  let response = "";
+  let uncertainty: string | null = null;
+  for (let i = 0; i < raw.length; i += 1) {
+    const t = lower[i];
+    if (entry.writtenForms.includes(t)) {
+      response = raw[i];
+      if (isNoun && !/^\p{Lu}/u.test(raw[i])) {
+        outcome = "review";
+        uncertainty = "Wort richtig geschrieben, aber klein — Grossschreibung ist ein eigener Punkt der Durchsicht.";
+      } else outcome = "correct";
+      break;
+    }
+    if (misspelled.includes(t)) {
+      response = raw[i];
+      outcome = "incorrect";
+      break;
+    }
+    if (entry.forms.includes(t)) {
+      response = raw[i];
+      outcome = "review";
+      uncertainty = "Schreibweise weicht von der geprüften Form ab — zur Durchsicht, nicht bewertet.";
+      break;
+    }
+  }
+  if (outcome === null) return null;
+  const visit = lr.visit;
+  return {
+    id: `${entry.id}/${ctx.taskId}/${lr.at}/writing`,
+    entryId: entry.id,
+    language: entry.language,
+    lemma: entry.lemma,
+    dimension: "writing",
+    taskId: ctx.taskId,
+    stepId: ctx.stepId,
+    taskVersion: ctx.version,
+    contextId: ctx.id,
+    stimulus: ctx.stimulus,
+    response: bounded(response),
+    modality: "typed",
+    visit,
+    visitOrdinal: visitOrdinal(state, visit),
+    at: lr.at,
+    support: [],
+    productionKind: "independent",
+    outcome,
+    independent: outcome === "correct",
+    attemptRef: null,
+    correction: null,
+    countable: outcome === "correct" || outcome === "incorrect",
+    uncertainty,
+  };
+}
+
 export function buildVocabularyLedger(state: MissionState | null, content: LearningContent, inventory: VocabularyInventory, corrections: ParentCorrectionMap | null = null): VocabularyLedger {
   const observations: VocabularyObservation[] = [];
   const notes: string[] = [
@@ -297,11 +383,21 @@ export function buildVocabularyLedger(state: MissionState | null, content: Learn
   if (state) {
     for (const entry of inventory.entries) {
       for (const ctx of entry.contexts) {
+        if (ctx.dimension === "writing") {
+          // Writing from the child's own TYPED log sentence (inventory v3): the canonical written form (and, for a noun, its
+          // capital) → correct; a reviewed misspelling of the word → incorrect; a form variant → review. Nothing is credited
+          // from a suggestion copied back, and the ORIGINAL — never the revision — is the observation.
+          for (const lr of (state.logReviews ?? []).filter((r) => r.logId === ctx.taskId && r.modality === "typed")) {
+            const obs = writingObservation(entry, ctx, lr, state, content);
+            if (obs) observations.push(obs);
+          }
+          continue;
+        }
         const segment = content.language.segments.find((s) => s.id === ctx.taskId);
         if (!segment) continue;
         const step = segment.steps.find((s) => s.id === ctx.stepId);
         if (!step) continue;
-        const records = recordsOf(state, ctx.taskId);
+        const records = recordsOf(state, ctx.taskId as LanguageSegmentId);
         let attemptNo = 0;
         for (const rec of records) {
           if (rec.stepId !== ctx.stepId) continue;
@@ -401,7 +497,10 @@ export function buildVocabularyLedger(state: MissionState | null, content: Learn
     const dims = {} as Record<VocabularyDimension, VocabularyDimensionSummary>;
     for (const dimension of VOCABULARY_DIMENSIONS) {
       const obs = own.filter((o) => o.dimension === dimension);
-      const opportunities = dimension === "spontaneous" ? 0 : entry.contexts.filter((c) => (dimension === "writing" ? c.dimension === "recall" : c.dimension === dimension) && content.language.segments.some((s) => s.id === c.taskId)).length;
+      const opportunities =
+        dimension === "spontaneous"
+          ? 0
+          : entry.contexts.filter((c) => (dimension === "writing" ? c.dimension === "recall" || c.dimension === "writing" : c.dimension === dimension) && (c.dimension === "writing" ? (content.writing?.logs ?? []).some((l) => l.id === c.taskId) : content.language.segments.some((s) => s.id === c.taskId))).length;
       const counted = obs.filter((o) => o.countable);
       const indep = counted.filter((o) => o.outcome === "correct" && o.independent);
       const summary: VocabularyDimensionSummary = {
@@ -459,7 +558,42 @@ export function buildVocabularyLedger(state: MissionState | null, content: Learn
 // Child cue — concrete words and what to try next; no counts, no ranks
 // ---------------------------------------------------------------------------
 
-export type ChildVocabularyWord = { entryId: string; lemma: string; gloss: string; language: "en" | "es"; try: string; upcoming: boolean };
+export type ChildVocabularyWord = { entryId: string; lemma: string; gloss: string; language: VocabularyLanguage; try: string; upcoming: boolean };
+
+// ---------------------------------------------------------------------------
+// Child wordbook (Visit 5, F3): the words the child has MET, per language, with picture, meaning, example and the text to
+// pronounce. Being listed is exposure, never knowledge: no status, no count, no rank is shown to the child.
+// ---------------------------------------------------------------------------
+
+export type WordbookWord = { entryId: string; lemma: string; gloss: string; emoji: string; example: string; language: VocabularyLanguage; /** The text the pronounce button speaks (the lemma). */ say: string };
+export type ChildWordbook = { inventoryVersion: number; languages: { language: VocabularyLanguage; label: string; words: WordbookWord[] }[]; note: string };
+
+const LANGUAGE_LABEL: Record<VocabularyLanguage, string> = { en: "English", es: "Español", de: "Deutsch" };
+
+/** A word counts as met when the child has an observation for it (any dimension incl. free use) or a served segment that glosses it has records. */
+export function childWordbook(ledger: VocabularyLedger, content: LearningContent, state: MissionState, inventory: VocabularyInventory): ChildWordbook {
+  const observed = new Set(ledger.observations.map((o) => o.entryId));
+  const segmentsWithRecords = new Set(Object.entries(state.language).filter(([, seg]) => seg && seg.records.length > 0).map(([id]) => id));
+  const glossed = new Set<string>();
+  for (const seg of content.language.segments) {
+    if (!segmentsWithRecords.has(seg.id)) continue;
+    for (const g of seg.glosses) glossed.add(`${seg.language}:${g.word.toLowerCase()}`);
+  }
+  const supplyEmoji = (lemma: string) => content.language.supplyLabels[lemma]?.emoji ?? null;
+  const languages: ChildWordbook["languages"] = [];
+  for (const language of ["de", "en", "es"] as VocabularyLanguage[]) {
+    const words: WordbookWord[] = [];
+    for (const entry of inventory.entries) {
+      if (entry.language !== language) continue;
+      const met = observed.has(entry.id) || entry.forms.some((f) => glossed.has(`${language}:${f}`));
+      if (!met) continue;
+      const example = entry.example ?? content.language.segments.flatMap((s) => s.glosses).find((g) => g.word.toLowerCase() === entry.lemma.toLowerCase())?.example ?? `${entry.lemma} — ${entry.gloss}`;
+      words.push({ entryId: entry.id, lemma: entry.lemma, gloss: entry.gloss, emoji: entry.emoji ?? supplyEmoji(entry.lemma) ?? (language === "de" ? "📖" : "🗣️"), example, language, say: entry.lemma });
+    }
+    if (words.length) languages.push({ language, label: LANGUAGE_LABEL[language], words: words.sort((a, b) => a.lemma.localeCompare(b.lemma)) });
+  }
+  return { inventoryVersion: inventory.inventoryVersion, languages, note: "Wörter, die dir begegnet sind — zum Nachschauen und Anhören. Keine Noten." };
+}
 export type ChildVocabularyCue = { inventoryVersion: number; words: ChildVocabularyWord[]; note: string };
 
 const STATUS_ORDER: Record<VocabularyStatus, number> = { practice: 0, "supported-only": 1, independent: 2, "not-observed": 3, "independent-repeated": 4, "review-pending": 5, "no-opportunity": 6 };

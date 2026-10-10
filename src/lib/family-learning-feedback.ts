@@ -49,7 +49,7 @@
 
 import type { LanguageSegmentId, LearningContent, ScoredMathItemId, TypingCourseLesson, TypingLesson, VisitId, StageId, LanguageStep } from "./family-learning-content.ts";
 import { hasLanguageSegment, hasMathItem, isLanguageSegmentId, isScoredMathItemId, languageSegment, mathItem, usedWordOf } from "./family-learning-content.ts";
-import type { LanguageStepRecord, MathAttempt, MathItemState, MissionState, TypingBurst, TypingLabelRecord, TypingLessonRecord, VisitRecord } from "./family-learning-state.ts";
+import type { LogReviewRecord, LanguageStepRecord, MathAttempt, MathItemState, MissionState, TypingBurst, TypingLabelRecord, TypingLessonRecord, VisitRecord } from "./family-learning-state.ts";
 import { buildVisitSummary, visitLabel, visitOrdinal, type VisitSummary } from "./family-learning-summary.ts";
 import { alignTyping } from "./family-learning-typing-metrics.ts";
 import { evaluateRevision, flagSpacing, markSpacing, type SpacingFlag } from "./family-learning-writing.ts";
@@ -315,8 +315,10 @@ function lessonEvents(state: MissionState, content: LearningContent, visit: Visi
   // The writing lesson ends with the fresh transfer sentence (written or skipped) when the content has one; otherwise with the revision.
   const transfer = (state.transfers ?? []).find((t) => t.visit === visit.id && inVisit(visit, t.at)) ?? null;
   const revision = state.logRevisions.find((r) => r.visit === visit.id && inVisit(visit, r.at)) ?? null;
+  const logReview = (state.logReviews ?? []).find((r) => r.visit === visit.id && inVisit(visit, r.at)) ?? null;
   if (transfer && (transfer.outcome !== "skipped" || (revision && revision.outcome !== "skipped"))) events.push({ kind: "writing", at: transfer.at });
   else if (!content.writing?.transfer && revision && revision.outcome !== "skipped") events.push({ kind: "writing", at: revision.at });
+  else if (logReview) events.push({ kind: "writing", at: logReview.at });
   return events.sort((a, b) => (a.at < b.at ? -1 : a.at > b.at ? 1 : 0));
 }
 
@@ -527,18 +529,21 @@ const MATH_EXPLAIN_SUPPORT = ["clarification", "representation", "example", "dir
 
 function mathVisual(content: LearningContent, id: ScoredMathItemId): MistakeVisual {
   const def = mathItem(content, id);
+  if (def.kind === "quotient" && def.answers && def.perGroup) return { kind: "remainder", quantity: def.quantity, groups: def.answers.full ?? def.answer, perGroup: def.perGroup, used: def.answers.used, remaining: def.answers.remaining, unit: def.unit.plural, group: def.group.plural, usedWord: usedWordOf(def).past };
   if (def.kind === "remainder" && def.answers && def.perGroup) return { kind: "remainder", quantity: def.quantity, groups: def.groups, perGroup: def.perGroup, used: def.answers.used, remaining: def.answers.remaining, unit: def.unit.plural, group: def.group.plural, usedWord: usedWordOf(def).past };
   return { kind: "sharing", quantity: def.quantity, groups: def.groups, answer: def.answer, unit: def.unit.plural, group: def.group.singular };
 }
 
 function mathCorrection(content: LearningContent, id: ScoredMathItemId): string {
   const def = mathItem(content, id);
+  if (def.kind === "quotient" && def.answers && def.perGroup) return `${def.answers.full} ${def.group.plural} voll (${def.answers.full} × ${def.perGroup} = ${def.answers.used}), ${def.quantity} − ${def.answers.used} = ${def.answers.remaining} übrig; für alle ${def.unit.plural} braucht es ${def.answers.needed} ${def.group.plural}.`;
   if (def.kind === "remainder" && def.answers && def.perGroup) return `${def.groups} ${def.group.plural} × ${def.perGroup} = ${def.answers.used} ${def.unit.plural} ${usedWordOf(def).past}, ${def.quantity} − ${def.answers.used} = ${def.answers.remaining} übrig.`;
   return `${def.quantity} ${def.unit.plural} ÷ ${def.groups} = ${def.answer} pro ${def.group.singular.split("/")[0]}.`;
 }
 
 function mathAnswerText(a: MathAttempt, isRemainder: boolean, usedWord = "gepflanzt"): string {
   if (a.correct === null) return a.raw ? `„${a.raw}“` : "(unklar)";
+  if (a.quotient) return a.part === "needed" ? `${a.quotient.needed ?? "?"} für alle` : `${a.quotient.full ?? "?"} voll, ${a.quotient.remaining ?? "?"} übrig`;
   if (isRemainder && a.remainder) return `${a.remainder.used ?? "?"} ${usedWord}, ${a.remainder.remaining ?? "?"} übrig`;
   return String(a.answer ?? a.raw);
 }
@@ -547,6 +552,7 @@ function mathLessonFeedback(state: MissionState, content: LearningContent, visit
   const fb = feedbackOf(state);
   const def = mathItem(content, id);
   const isRemainder = def.kind === "remainder";
+  const isQuotient = def.kind === "quotient";
   const at = item.resolvedAt ?? visit.startedAt;
   const fid = `math:${id}@${at}`;
   const attempts = item.attempts.filter((a) => belongsTo(visit, a));
@@ -554,27 +560,35 @@ function mathLessonFeedback(state: MissionState, content: LearningContent, visit
   const unscoredAttempts = attempts.filter((a) => a.correct === null);
   const correct = attempts.find((a) => a.correct === true) ?? null;
   const usedWord = usedWordOf(def).past;
-  const expected = isRemainder && def.answers ? `${def.answers.used} ${usedWord}, ${def.answers.remaining} übrig` : `${def.answer} pro ${def.group.singular.split("/")[0]}`;
-  const focus = FOCUS_MATH(isRemainder ? "remainder" : "sharing");
-  const grouped = new Map<string, { count: number; refs: string[] }>();
+  const expectedFor = (part: "full-remaining" | "needed" | undefined): string =>
+    isQuotient && def.answers
+      ? part === "needed"
+        ? `${def.answers.needed} ${def.group.plural} für alle`
+        : `${def.answers.full} ${def.group.plural} voll, ${def.answers.remaining} übrig`
+      : isRemainder && def.answers
+        ? `${def.answers.used} ${usedWord}, ${def.answers.remaining} übrig`
+        : `${def.answer} pro ${def.group.singular.split("/")[0]}`;
+  const expected = isQuotient && def.answers ? `${def.answers.full} ${def.group.plural} voll, ${def.answers.remaining} übrig; ${def.answers.needed} für alle` : expectedFor(undefined);
+  const focus = FOCUS_MATH(isRemainder || isQuotient ? "remainder" : "sharing");
+  const grouped = new Map<string, { count: number; refs: string[]; part?: "full-remaining" | "needed" }>();
   for (const a of incorrect) {
     const text = mathAnswerText(a, isRemainder, usedWord);
-    const g = grouped.get(text) ?? { count: 0, refs: [] };
+    const g = grouped.get(text) ?? { count: 0, refs: [], part: a.part };
     g.count += 1;
     g.refs.push(`Versuch ${a.no}`);
     grouped.set(text, g);
   }
-  const mistakes: Mistake[] = [...grouped.entries()].map(([given, g]) => ({ id: `answer:${given}`, evidence: "incorrect" as const, focus, count: g.count, given, expected, correction: def.clarification ?? mathCorrection(content, id), visual: mathVisual(content, id), refs: g.refs }));
+  const mistakes: Mistake[] = [...grouped.entries()].map(([given, g]) => ({ id: `answer:${given}`, evidence: "incorrect" as const, focus, count: g.count, given, expected: expectedFor(g.part), correction: (isQuotient && g.part === "needed" ? def.decisionClarification : def.clarification) ?? mathCorrection(content, id), visual: mathVisual(content, id), refs: g.refs }));
   const unscored: Mistake[] = unscoredAttempts.map((a) => ({ id: `unscored:${a.no}`, evidence: "unscored" as const, focus: null, count: 1, given: mathAnswerText(a, isRemainder, usedWord), expected: "—", correction: a.uncertainty === "transcript" ? "Da war keine klare Zahl dabei — nicht bewertet." : "Nicht bewertet.", visual: null, refs: [`Versuch ${a.no}`] }));
   let success: LessonFeedback["success"] = null;
-  const unit = isRemainder && def.answers ? `${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural}: ${def.answers.used} ${usedWord}, ${def.answers.remaining} übrig` : `${def.quantity} ${def.unit.plural} gerecht auf ${def.groups} ${def.group.plural} verteilt`;
+  const unit = isQuotient && def.answers ? `${def.quantity} ${def.unit.plural}, je ${def.perGroup} pro ${def.group.singular}: ${def.answers.full} ${def.group.plural} voll, ${def.answers.remaining} übrig, ${def.answers.needed} ${def.group.plural} für alle` : isRemainder && def.answers ? `${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural}: ${def.answers.used} ${usedWord}, ${def.answers.remaining} übrig` : `${def.quantity} ${def.unit.plural} gerecht auf ${def.groups} ${def.group.plural} verteilt`;
   if (correct && correct.evidence === "independent") success = { text: `${unit} — ohne Hilfe${correct.no === 1 ? ", beim ersten Versuch" : ""}.`, basis: `attempt ${id}#${correct.no} independent` };
   else if (correct) success = { text: `${unit} — ${correct.support.length ? "mit Hilfe" : "nach einem neuen Versuch"} gelöst.`, basis: `attempt ${id}#${correct.no} ${correct.evidence}` };
   else if (item.outcome === "taught") success = { text: `${unit} — zusammen gelöst.`, basis: `${id} taught` };
   // The in-item loop (clarification → representation/example → teach or stop) IS the bounded repair for math; its explanation is
   // "recorded" only when a durable support event of that kind exists on the item (never from the mere existence of the texts).
   const explained = item.supportGiven.some((k) => (MATH_EXPLAIN_SUPPORT as readonly string[]).includes(k)) || item.outcome === "taught";
-  const explanation = { title: isRemainder ? `Erst die vollen ${def.group.plural}, dann der Rest` : "Gleich viele für alle", text: def.representation ?? mathCorrection(content, id), visual: mathVisual(content, id), recorded: explained };
+  const explanation = { title: isQuotient ? `Volle ${def.group.plural} zählen, den Rest nicht vergessen` : isRemainder ? `Erst die vollen ${def.group.plural}, dann der Rest` : "Gleich viele für alle", text: def.representation ?? mathCorrection(content, id), visual: mathVisual(content, id), recorded: explained };
   const retriesAfterFirstWrong: RepairRetry[] = incorrect.length ? attempts.filter((a) => a.no > incorrect[0].no).map((a, i) => ({ no: i + 1, item: id, purpose: "correct-original" as const, at: a.at, result: a.correct === null ? ("unscored" as const) : a.correct ? ("correct" as const) : ("incorrect" as const), focusErrors: a.correct === false ? 1 : 0, lineErrors: a.correct === false ? 1 : 0, seconds: 0 })) : [];
   const repair: RepairView = mistakes.length === 0 ? NO_REPAIR : { status: "closed", kind: null, repairId: fid, focus, explanation, items: [], retries: retriesAfterFirstWrong, used: 0, remaining: 0, outcome: correct ? "corrected-with-practice" : "practice-again" };
   let close: LessonFeedback["close"];
@@ -584,7 +598,7 @@ function mathLessonFeedback(state: MissionState, content: LearningContent, visit
   else if (correct) close = { kind: "corrected-with-help", text: `Korrigiert${correct.support.length ? " — mit Hilfe" : ""}: ${expected}. Beim nächsten Mal gibt es einen kurzen Hinweis.` };
   else if (item.outcome === "taught") close = { kind: "practice-again", text: "Wir haben es zusammen gelöst — so eine Aufgabe üben wir nochmal." };
   else close = { kind: "practice-again", text: "Hier hast du pausiert — so eine Aufgabe üben wir nochmal." };
-  const title = `Mathe: ${def.quantity} ${def.unit.plural} · ${def.groups} ${def.group.plural}${isRemainder ? " (mit Rest)" : ""}`;
+  const title = isQuotient ? `Mathe: ${def.quantity} ${def.unit.plural} · je ${def.perGroup} pro ${def.group.singular}` : `Mathe: ${def.quantity} ${def.unit.plural} · ${def.groups} ${def.group.plural}${isRemainder ? " (mit Rest)" : ""}`;
   return { id: fid, visit: visit.id, lesson: { kind: "math", ref: id, title }, at, success, mistakes, unscored, pattern: mistakes[0] ?? null, repair, close, acknowledged: fb.acknowledged.includes(fid) };
 }
 
@@ -760,7 +774,35 @@ export function languageRetryItems(content: LearningContent, id: LanguageSegment
 
 const FOCUS_SPACING = "spacing:rule";
 
+const ASPECT_DE: Record<string, string> = { meaning: "Inhalt", completeness: "ganzer Satz", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" };
+
+/** Visit 5 (content v4): the writing lesson of the captain's log — the reviewed review of the child's OWN sentence and its bounded revision. No repair loop here (the revision IS the bounded loop); the honest close names the taught points. */
+function logReviewLessonFeedback(state: MissionState, visit: VisitRecord, lr: LogReviewRecord): LessonFeedback {
+  const fb = feedbackOf(state);
+  const fid = `writing:${visit.id}@${lr.at}`;
+  const taughtAspects = [...new Set(lr.review.taught.map((f) => f.aspect))];
+  const mistakes: Mistake[] = lr.review.taught.map((f) => ({ id: f.id, evidence: "incorrect" as const, focus: f.aspect === "spacing" ? FOCUS_SPACING : null, count: 1, given: f.given, expected: f.expected ?? "—", correction: f.teaching, visual: f.aspect === "spacing" && lr.review.marked ? { kind: "spacing" as const, marked: lr.review.marked } : null, refs: ["Kapitänslogbuch"] }));
+  const unscored: Mistake[] = [];
+  const notTaught = lr.review.findings.filter((f) => !lr.review.taught.some((t) => t.id === f.id));
+  if (notTaught.length) unscored.push({ id: "review:later", evidence: "unscored", focus: null, count: notTaught.length, given: [...new Set(notTaught.map((f) => ASPECT_DE[f.aspect] ?? f.aspect))].join(", "), expected: "—", correction: "Kommt ein andermal — heute nur ein oder zwei Dinge.", visual: null, refs: ["Kapitänslogbuch"] });
+  for (const w of lr.review.unknownWords) unscored.push({ id: `unknown:${w}`, evidence: "unscored", focus: null, count: 1, given: w, expected: "—", correction: lr.clarifications[w] ? `Du meinst: „${lr.clarifications[w]}“ — nicht bewertet.` : "Dieses Wort kenne ich nicht — nicht bewertet.", visual: null, refs: ["Kapitänslogbuch"] });
+  let success: LessonFeedback["success"] = null;
+  if (lr.outcome === "revised" && lr.review.taught.length) success = { text: `Du hast deinen Satz selbst verbessert: ${taughtAspects.map((a) => ASPECT_DE[a] ?? a).join(" und ")}${lr.evaluation?.copiedSuggestion ? " (mit dem Vorschlag)" : lr.helpShown ? " (nach dem Hinweis)" : ""}.`, basis: `log review revised ${lr.evaluation?.resolved.length ?? 0}/${lr.review.taught.length}${lr.evaluation?.copiedSuggestion ? " copied" : ""}` };
+  else if (lr.review.clean.length) success = { text: `Geprüft und in Ordnung: ${lr.review.clean.map((a) => ASPECT_DE[a] ?? a).join(", ")}.`, basis: `log review clean aspects ${lr.review.clean.join(",")}` };
+  const retries: RepairRetry[] = lr.revised !== null && lr.outcome !== "skipped" ? [{ no: 1, item: "log-review", purpose: "correct-original", at: lr.at, result: lr.outcome === "revised" ? "correct" : lr.outcome === "none-needed" ? "unscored" : "incorrect", focusErrors: lr.evaluation?.unresolved.length ?? 0, lineErrors: lr.evaluation?.unresolved.length ?? 0, seconds: 0, text: lr.revised }] : [];
+  const repair: RepairView = mistakes.length === 0 ? NO_REPAIR : { status: "closed", kind: null, repairId: fid, focus: FOCUS_SPACING, explanation: { title: "Dein Satz, Schritt für Schritt", text: lr.review.summary, visual: lr.review.marked ? { kind: "spacing", marked: lr.review.marked } : null, recorded: lr.helpShown }, items: [], retries, used: 0, remaining: 0, outcome: lr.outcome === "revised" ? "corrected-with-practice" : lr.outcome === "skipped" ? "skipped" : "practice-again" };
+  const close = closeOf(repair, mistakes, unscored, null, {
+    none: lr.review.clean.length ? `An den geprüften Stellen (${lr.review.clean.map((a) => ASPECT_DE[a] ?? a).join(", ")}) nichts zu verbessern. Anderes wurde nicht geprüft.` : "Heute nichts zu lehren an den geprüften Stellen.",
+    unscored: "Nicht bewertet.",
+    corrected: `Mit Üben korrigiert: ${taughtAspects.map((a) => ASPECT_DE[a] ?? a).join(" und ")} in deinem Satz.`,
+    again: `${taughtAspects.map((a) => ASPECT_DE[a] ?? a).join(" und ")} üben wir nochmal — dein Satz bleibt so gespeichert, wie du ihn geschrieben hast.`,
+  });
+  return { id: fid, visit: visit.id, lesson: { kind: "writing", ref: lr.logId, title: "Schreiben: dein Satz im Kapitänslogbuch" }, at: lr.at, success, mistakes, unscored, pattern: mistakes[0] ?? null, repair, close, acknowledged: fb.acknowledged.includes(fid) };
+}
+
 function writingLessonFeedback(state: MissionState, content: LearningContent, visit: VisitRecord, at: string): LessonFeedback {
+  const logReview = (state.logReviews ?? []).find((r) => r.visit === visit.id && r.at === at) ?? null;
+  if (logReview) return logReviewLessonFeedback(state, visit, logReview);
   const fb = feedbackOf(state);
   const fid = `writing:${visit.id}@${at}`;
   const revision = state.logRevisions.find((r) => r.visit === visit.id && inVisit(visit, r.at)) ?? null;
@@ -864,6 +906,8 @@ function worldChanges(state: MissionState, content: LearningContent, visit: Visi
     if (id === "EQ-RETURN") out.push("Vier Gartenbeete bepflanzt.");
     else if (id === "EQ-STATION") out.push(`Fünf Stationsbeete bepflanzt${item.remainderResult ? `, ${item.remainderResult.remaining} Setzlinge übrig` : ""}.`);
     else if (id === "EQ-PIER") out.push(`${def.groups} Steg-Abschnitte mit Brettern belegt${item.remainderResult ? `, ${item.remainderResult.remaining} Bretter übrig` : ""}.`);
+    else if (id === "EQ-HARBOR") out.push(`${item.quotientResult?.full ?? def.answers?.full ?? "?"} Boote voll beladen${item.quotientResult ? `, ${item.quotientResult.remaining} Kisten übrig${item.quotientResult.needed ? `, ${item.quotientResult.needed} Boote für alle` : ""}` : ""}.`);
+    else if (id === "EQ-HARBOR-CHECK") out.push(`Zweite Ladung geprüft: ${item.quotientResult?.full ?? "?"} Boote voll, ${item.quotientResult?.remaining ?? "?"} übrig.`);
     else out.push(`${def.quantity} ${def.unit.plural} verteilt.`);
   }
   for (const [id, seg] of Object.entries(state.language)) {
@@ -875,6 +919,8 @@ function worldChanges(state: MissionState, content: LearningContent, visit: Visi
   }
   if (state.station?.built && within(state.station.builtAt)) out.push(`Beobachtungsstation gebaut${state.station.lampLit ? " — die Lampe brennt" : " — ohne Lampe"}.`);
   if (state.pier?.built && within(state.pier.builtAt)) out.push(`Steg gebaut${state.pier.boatMoored ? " — das Boot hat angelegt" : " — das Boot wartet noch (kein Holz geliefert)"}.`);
+  if (state.harbor?.planned && within(state.harbor.plannedAt)) out.push(`Hafenplan gespeichert: Ziel ${content.harbor?.destinations.find((d) => d.id === state.harbor?.destination)?.label ?? state.harbor.destination}${state.harbor.roped ? " — die Boote sind mit Seilen festgemacht" : " — ohne Seile (keine cuerdas geliefert)"}.`);
+  for (const lr of (state.logReviews ?? []).filter((r) => r.visit === visit.id && within(r.at) && r.revised)) out.push(`Kapitänslogbuch überarbeitet: „${lr.revised}“.`);
   const labels = state.typing.labels.filter((l) => within(l.at));
   for (const l of labels) out.push(`Schild aufgehängt: „${l.typed}“.`);
   const pages = state.pages.filter((p) => p.visit === visit.id && within(p.at));
@@ -962,13 +1008,13 @@ export function updateTypingFocus(fb: FeedbackState, input: { lessonId: string; 
 /** After a scored math item is resolved: a confirmed wrong attempt opens the focus; a later item OF THE SAME KIND solved independently (first attempt, no support) retires it. */
 export function updateMathFocus(fb: FeedbackState, content: LearningContent, input: { id: ScoredMathItemId; item: MathItemState; at: string; visit: VisitId }): FeedbackState {
   const def = mathItem(content, input.id);
-  const kind: "sharing" | "remainder" = def.kind === "remainder" ? "remainder" : "sharing";
+  const kind: "sharing" | "remainder" = def.kind === "remainder" || def.kind === "quotient" ? "remainder" : "sharing";
   const focusId = FOCUS_MATH(kind);
   const attempts = input.item.attempts;
   const incorrect = attempts.filter((a) => a.correct === false);
   if (incorrect.length > 0 || input.item.outcome === "taught" || input.item.outcome === "stopped") {
     const first = incorrect[0] ?? null;
-    const expected = def.kind === "remainder" && def.answers ? `${def.answers.used} ${usedWordOf(def).past}, ${def.answers.remaining} übrig` : `${def.answer}`;
+    const expected = def.kind === "quotient" && def.answers ? `${def.answers.full} ${def.group.plural} voll, ${def.answers.remaining} übrig, ${def.answers.needed} für alle` : def.kind === "remainder" && def.answers ? `${def.answers.used} ${usedWordOf(def).past}, ${def.answers.remaining} übrig` : `${def.answer}`;
     const evidence = first ? `Letztes Mal (${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural}): du hattest ${mathAnswerText(first, def.kind === "remainder", usedWordOf(def).past)}, richtig war ${expected}.` : `Letztes Mal (${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural}) haben wir ${input.item.outcome === "taught" ? "zusammen gelöst" : "pausiert"}.`;
     return openFocus(fb, { id: focusId, kind: "math", key: kind, nowIso: input.at, visit: input.visit, lesson: `math:${input.id}`, evidence });
   }

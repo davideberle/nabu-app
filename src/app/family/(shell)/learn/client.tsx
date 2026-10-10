@@ -29,7 +29,14 @@ import { retireAllDrafts } from "@/lib/family-learning-draft-store";
 import type { ChildView } from "@/lib/family-learning-state";
 import type { ProgressStrip } from "@/lib/family-learning-progress";
 import type { VisitReport } from "@/lib/family-learning-feedback";
-import { ExpeditionWorld, supplyRows, type WorldMarker } from "@/components/family/learning/expedition-world";
+import type { WorldMarker } from "@/components/family/learning/expedition-world";
+import { HarborIsland, islandSupplyRows } from "@/components/family/learning/harbor-island";
+import { WordbookPanel } from "@/components/family/learning/harbor-stages";
+import { NabuSidebar } from "@/components/family/learning/nabu-sidebar";
+import { createChildSpeechPlayer } from "@/lib/family-speech";
+import { createChildTurnClient } from "@/lib/family-assistant-client";
+import type { LearningOp } from "@/lib/family-learning-state";
+import type { SupportOutcome } from "@/lib/family-learning-tutor";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
 import { VisitReportView } from "@/components/family/learning/visit-report";
 import { focusRing, primaryButton, secondaryButton } from "./mission/styles";
@@ -59,14 +66,14 @@ function formatDate(iso: string): string {
 export function worldMarkers(view: ChildView): WorldMarker[] {
   const running = view.visit;
   const completed = new Set(view.progress.completed.map((c) => c.visit));
-  const ordered = ["v1", "v2", "v4", "v5"] as const;
+  const ordered = ["v1", "v2", "v4", "v5", "v6"] as const;
   const markers: WorldMarker[] = [];
   for (const id of ordered) {
     const report = view.reports.find((r) => r.visit === id) ?? null;
     const done = completed.has(id);
     const isRunning = running?.id === id;
     const isNext = !isRunning && view.next.visit === id;
-    const ordinal = report?.ordinal ?? view.progress.completed.find((c) => c.visit === id)?.ordinal ?? (id === "v1" ? 1 : id === "v2" ? 2 : view.next.visit === id ? view.next.ordinal : id === "v5" ? 4 : 3);
+    const ordinal = report?.ordinal ?? view.progress.completed.find((c) => c.visit === id)?.ordinal ?? (id === "v1" ? 1 : id === "v2" ? 2 : view.next.visit === id ? view.next.ordinal : id === "v6" ? 5 : id === "v5" ? 4 : 3);
     const label = report?.label ?? view.progress.completed.find((c) => c.visit === id)?.label ?? (isRunning ? running!.title : isNext ? view.progress.next.label ?? `Besuch ${ordinal ?? ""}` : `Besuch ${ordinal ?? ""}`);
     markers.push({
       visit: id,
@@ -81,10 +88,15 @@ export function worldMarkers(view: ChildView): WorldMarker[] {
   return markers;
 }
 
-type Panel = { kind: "report"; visit: string } | { kind: "logbook" } | { kind: "progress" } | { kind: "supplies" } | null;
+type Panel = { kind: "report"; visit: string } | { kind: "logbook" } | { kind: "progress" } | { kind: "supplies" } | { kind: "wordbook" } | null;
 
 function World({ child }: { child: ChildId }) {
   const client = useMemo(() => createLearningClient(), []);
+  const speech = useMemo(() => createChildSpeechPlayer(), []);
+  const tutorClient = useMemo(() => createChildTurnClient(), []);
+  const [nabuOpen, setNabuOpen] = useState(false);
+  const viewRef = useRef<ChildView | null>(null);
+  const aliveMapRef = useRef(true);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -101,6 +113,7 @@ function World({ child }: { child: ChildId }) {
       const outcome = await client.read(child, { signal: abort.signal, timeZone: browserTimeZone() });
       if (!aliveRef.current) return;
       if (outcome.ok) {
+        viewRef.current = outcome.view;
         setLoad({ kind: "ready", view: outcome.view });
         return;
       }
@@ -123,10 +136,34 @@ function World({ child }: { child: ChildId }) {
     })();
     return () => {
       aliveRef.current = false;
+      aliveMapRef.current = false;
       abort.abort();
       client.reset();
+      tutorClient.reset();
+      speech.cancel();
     };
-  }, [child, client]);
+  }, [child, client, tutorClient, speech]);
+
+  /** Free questions on the map are recorded as support only while a visit is running (the contract binds help to a visit); otherwise Nabu only listens. */
+  const recordSupportOnMap = useCallback(
+    async (op: LearningOp & { op: "support" }, expectedRevision: number): Promise<{ outcome: SupportOutcome; revision: number }> => {
+      const current = viewRef.current;
+      if (!current || !current.visit) return { outcome: "refused", revision: current?.revision ?? 0 };
+      const outcome = await client.mutate(child, { ...op, taskId: null }, expectedRevision, { context: { erasureGeneration: current.erasureGeneration, visit: { id: current.visit.id, startedAt: current.visit.startedAt } }, timeZone: browserTimeZone() });
+      if (outcome.ok) {
+        viewRef.current = outcome.view;
+        setLoad({ kind: "ready", view: outcome.view });
+        return { outcome: outcome.status, revision: outcome.view.revision };
+      }
+      if ("status" in outcome && outcome.status === "refused") {
+        viewRef.current = outcome.view;
+        setLoad({ kind: "ready", view: outcome.view });
+        return { outcome: "refused", revision: outcome.view.revision };
+      }
+      return { outcome: "failed", revision: current.revision };
+    },
+    [child, client],
+  );
 
   // The URL carries the open report so a reload or back/forward reopens it; the child selection stays in the URL too.
   const setReportParam = useCallback(
@@ -171,7 +208,7 @@ function World({ child }: { child: ChildId }) {
   const view = load.view;
   const running = view.visit;
   const canStart = running !== null || view.next.visit !== null;
-  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" || view.next.visit === "v5" ? `Besuch ${view.next.ordinal ?? (view.next.visit === "v5" ? 4 : 3)} starten` : "Weiter";
+  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" || view.next.visit === "v5" || view.next.visit === "v6" ? `Besuch ${view.next.ordinal ?? (view.next.visit === "v6" ? 5 : view.next.visit === "v5" ? 4 : 3)} starten` : "Weiter";
   const markers = worldMarkers(view);
   const report: VisitReport | null = panel?.kind === "report" ? view.reports.find((r) => r.visit === panel.visit) ?? null : null;
   const missionHref = `/family/learn/mission?child=${child}`;
@@ -186,11 +223,15 @@ function World({ child }: { child: ChildId }) {
     <div className="relative h-[calc(100dvh-4.25rem)] min-h-[560px] w-full overflow-hidden" data-testid="world-screen" data-world-next={view.next.visit ?? ""} data-world-running={running?.id ?? ""}>
       {/* One continuous world viewport; the HUD and the one action float over it. */}
       <div className="absolute inset-0">
-        <ExpeditionWorld scene={view.scene} markers={markers} pages={view.pages.length} onSelectMarker={onSelectMarker} onOpenLogbook={() => openPanel({ kind: "logbook" })} onOpenSupplies={() => openPanel({ kind: "supplies" })} />
+        <HarborIsland scene={view.scene} markers={markers} pages={view.pages.length} harbor={view.harbor} onSelectMarker={onSelectMarker} onOpenLogbook={() => openPanel({ kind: "logbook" })} onOpenSupplies={() => openPanel({ kind: "supplies" })} onOpenWordbook={() => openPanel({ kind: "wordbook" })} />
       </div>
 
       {/* HUD — top right: the one honest count (the shell bar above already carries Home) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-end gap-3 p-3 sm:p-4">
+        <button type="button" onClick={() => openPanel({ kind: "wordbook" })} className={cn("pointer-events-auto inline-flex min-h-12 items-center gap-2 rounded-full border border-primary bg-primary/90 px-4 text-base text-primary shadow-xs backdrop-blur hover:bg-primary", focusRing)} data-testid="hud-wordbook" aria-label="Wörterbuch öffnen">
+          <span aria-hidden>📖</span>
+          <span>Wörter</span>
+        </button>
         <button type="button" onClick={() => openPanel({ kind: "progress" })} className={cn("pointer-events-auto inline-flex min-h-12 items-center gap-2 rounded-full border border-primary bg-primary/90 px-4 text-base text-primary shadow-xs backdrop-blur hover:bg-primary", focusRing)} data-testid="hud-progress" aria-label={`Fertige Besuche: ${view.progress.completedTotal}, diese Woche ${view.progress.completedThisWeek}. Fortschritt öffnen`}>
           <span aria-hidden>✓</span>
           <span>
@@ -245,7 +286,7 @@ function World({ child }: { child: ChildId }) {
       </div>
 
       {panel ? (
-        <SidePanel onClose={closePanel} title={panel.kind === "report" ? (report ? (report.partial ? "Zwischenstand" : "Bericht") : "Bericht") : panel.kind === "logbook" ? "Logbuch" : panel.kind === "supplies" ? "Vorräte" : "Mein Fortschritt"}>
+        <SidePanel onClose={closePanel} title={panel.kind === "report" ? (report ? (report.partial ? "Zwischenstand" : "Bericht") : "Bericht") : panel.kind === "logbook" ? "Logbuch" : panel.kind === "supplies" ? "Vorräte" : panel.kind === "wordbook" ? "Wörterbuch" : "Mein Fortschritt"}>
           {panel.kind === "report" ? (
             report ? (
               <VisitReportView report={report} scene={view.scene} markers={markers} onBack={closePanel} backLabel="Zur Karte" onNext={report.partial ? () => router.push(missionHref) : undefined} nextLabel={report.partial ? "Weitermachen" : undefined} />
@@ -256,9 +297,17 @@ function World({ child }: { child: ChildId }) {
             )
           ) : panel.kind === "logbook" ? (
             <LogbookPanel view={view} />
+          ) : panel.kind === "wordbook" ? (
+            <WordbookPanel
+              view={view}
+              onSay={(text) => {
+                speech.unlock();
+                void speech.speak({ childId: child, text });
+              }}
+            />
           ) : panel.kind === "supplies" ? (
             <ul className="grid gap-2 sm:grid-cols-2" data-testid="supplies-panel">
-              {supplyRows(view.scene).map((r) => (
+              {islandSupplyRows(view.scene).map((r) => (
                 <li key={r.label} className="rounded-2xl border border-primary bg-primary px-4 py-3 text-lg text-primary">
                   <strong>{r.count}</strong> {r.label}
                 </li>
@@ -269,6 +318,7 @@ function World({ child }: { child: ChildId }) {
           )}
         </SidePanel>
       ) : null}
+      <NabuSidebar child={child} view={view} page="map" speech={speech} tutorClient={running ? tutorClient : null} recordSupport={recordSupportOnMap} currentRevision={() => viewRef.current?.revision ?? 0} isAlive={() => aliveMapRef.current} open={nabuOpen} onOpenChange={setNabuOpen} />
     </div>
   );
 }

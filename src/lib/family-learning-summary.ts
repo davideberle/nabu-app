@@ -109,6 +109,7 @@ export function visitOrdinal(state: MissionState, id: VisitId): number | null {
     case "v3": return hasV3Record ? 3 : null;
     case "v4": return hasV3Record ? 4 : 3;
     case "v5": return hasV3Record ? 5 : 4;
+    case "v6": return hasV3Record ? 6 : 5;
   }
 }
 
@@ -144,6 +145,8 @@ export type SceneModel = {
   station: { theme: string | null; spot: string | null; built: boolean; lamp: boolean };
   /** Visit 4 (content v3): the pier — its sections appear once EQ-PIER is resolved (planks left beside), the pier itself after `build-pier`, the boat only with wood supplied. */
   pier: { spot: string | null; built: boolean; boat: boolean; sections: number; planksLeft: number };
+  /** Visit 5 (content v4): the harbor — the loaded boats once EQ-HARBOR is resolved, the destination once planned, ropes only with cuerdas supplied. */
+  harbor: { crates: number; perBoat: number; fullBoats: number; remaining: number; boatsNeeded: number | null; planned: boolean; destination: string | null; roped: boolean; workplaces: { typing: boolean; planning: boolean; closing: boolean } };
   pagesSaved: number;
 };
 
@@ -176,6 +179,28 @@ export function buildSceneModel(state: MissionState, content: LearningContent): 
     sections: pierSectionsDone ? pierDef?.groups ?? 0 : 0,
     planksLeft: pierSectionsDone ? pierItem?.remainderResult?.remaining ?? pierDef?.answers?.remaining ?? 0 : 0,
   };
+  const harborItem = state.math["EQ-HARBOR"];
+  const harborDef = content.math.items.find((m) => m.id === "EQ-HARBOR");
+  const harborDone = !!harborItem && (harborItem.outcome === "correct" || harborItem.outcome === "taught");
+  const q = harborItem?.quotientResult ?? null;
+  const v6 = state.visits.find((v) => v.id === "v6") ?? null;
+  const workplaceDone = (stages: readonly string[]) => {
+    if (!v6) return false;
+    const route = v6.route ?? content.visits.find((v) => v.id === "v6")?.stages ?? [];
+    const start = (route as readonly string[]).indexOf(stages[0]);
+    return start >= 0 && (v6.finishedAt !== null || v6.stageIndex >= start + stages.length);
+  };
+  const harbor: SceneModel["harbor"] = {
+    crates: harborDone && harborDef ? harborDef.quantity : 0,
+    perBoat: harborDone && harborDef ? harborDef.perGroup ?? 0 : 0,
+    fullBoats: harborDone ? q?.full ?? harborDef?.answers?.full ?? 0 : 0,
+    remaining: harborDone ? q?.remaining ?? harborDef?.answers?.remaining ?? 0 : 0,
+    boatsNeeded: harborDone ? q?.needed ?? (harborItem?.outcome === "taught" ? harborDef?.answers?.needed ?? null : null) : null,
+    planned: state.harbor?.planned ?? false,
+    destination: state.harbor?.destination ?? null,
+    roped: state.harbor?.roped ?? false,
+    workplaces: { typing: workplaceDone(["typing-course"]), planning: workplaceDone(["EQ-HARBOR", "explain", "LANG-ES-HARBOR", "harbor-build", "log"]), closing: workplaceDone(["EQ-HARBOR-CHECK", "LANG-ES-HARBOR-CHECK", "log-review"]) },
+  };
   return {
     location: state.base.locationId,
     base: !state.base.name ? "none" : !v1Done ? "tent" : garden ? "hut-garden" : "hut",
@@ -185,6 +210,7 @@ export function buildSceneModel(state: MissionState, content: LearningContent): 
     leftovers,
     station: { theme: station?.theme ?? null, spot: station?.spot ?? null, built: station?.built ?? false, lamp: station?.lampLit ?? false },
     pier,
+    harbor,
     pagesSaved: state.pages.length,
   };
 }
@@ -202,7 +228,7 @@ export type VisitSummary = {
   success: SummaryLine | null;
   practiced: SummaryLine | null;
   next: SummaryLine & { branch: RecommendationBranch };
-  artifact: { kind: "page" | "station" | "pier" | "revision" | "none"; text: string };
+  artifact: { kind: "page" | "station" | "pier" | "revision" | "harbor" | "log-review" | "none"; text: string };
 };
 
 function visitRecord(state: MissionState, visitId: VisitId): VisitRecord | null {
@@ -232,6 +258,10 @@ function burstsInVisit(state: MissionState, visit: VisitRecord): TypingBurst[] {
 
 function unitPhrase(content: LearningContent, id: ScoredMathItemId, item: MathAttempt): string {
   const def = mathItem(content, id);
+  if (def.kind === "quotient" && item.quotient) {
+    if (item.part === "needed") return `herausgefunden, dass es ${item.quotient.needed} ${def.group.plural} für alle ${def.quantity} ${def.unit.plural} braucht`;
+    return `${def.quantity} ${def.unit.plural} in ${def.group.plural} zu je ${def.perGroup} verteilt — ${item.quotient.full} ${def.group.plural} voll, ${item.quotient.remaining} übrig`;
+  }
   if (def.kind === "remainder" && item.remainder) return `${def.quantity} ${def.unit.plural} auf ${def.groups} ${def.group.plural} — ${item.remainder.used} ${usedWordOf(def).past}, ${item.remainder.remaining} übrig`;
   return `${def.quantity} ${def.unit.plural} gerecht auf ${def.groups} ${def.group.plural} verteilt`;
 }
@@ -277,6 +307,7 @@ export function buildVisitSummary(state: MissionState, content: LearningContent,
   const transfer = (state.transfers ?? []).find((r) => r.visit === visitId && inVisit(r.at)) ?? null;
   const page = [...state.pages].reverse().find((p) => p.visit === visitId && inVisit(p.at)) ?? null;
   const langRecords = Object.entries(state.language).flatMap(([id, seg]) => (seg ? seg.records.map((r) => ({ id, r })) : [])).filter((x) => belongsTo(visit, x.r));
+  const logReview = (state.logReviews ?? []).find((r) => r.visit === visitId && inVisit(r.at)) ?? null;
 
   // --- success: the strongest actual record, in a fixed order
   let success: SummaryLine | null = null;
@@ -292,6 +323,7 @@ export function buildVisitSummary(state: MissionState, content: LearningContent,
   else if (goodBurst) success = { text: `Beim Tippen hast du ${Math.round(goodBurst.accuracy * 100)} % der Zeichen richtig getroffen (${goodBurst.lessonId.replace("TYPE-CH-COURSE-", "Lektion ")}).`, basis: `burst ${goodBurst.lessonId} accuracy ${goodBurst.accuracy.toFixed(2)}` };
   else if (transfer && transfer.outcome === "clean" && (transfer.assessed ?? 0) > 0 && transfer.modality === "typed") success = { text: transfer.helpExposed ? `Dein neuer Satz hatte an ${transfer.assessed} geprüften ${transfer.assessed === 1 ? "Stelle" : "Stellen"} das Leerzeichen richtig — nach der Hilfe von vorhin.` : `Dein neuer Satz hatte an ${transfer.assessed} geprüften ${transfer.assessed === 1 ? "Stelle" : "Stellen"} das Leerzeichen richtig — ganz ohne Hilfe.`, basis: `transfer ${transfer.id} clean, ${transfer.assessed} assessed (${transfer.helpExposed ? "revision help shown earlier" : "no help"})` };
   else if (revision && revision.outcome === "revised") success = { text: "Du hast die Leerzeichen in deinem Satz selbst eingesetzt.", basis: `log revision resolved ${revision.resolved}/${revision.flagged.length}` };
+  else if (logReview && logReview.outcome === "revised" && logReview.review.taught.length) success = { text: `Du hast deinen Satz selbst verbessert (${[...new Set(logReview.review.taught.map((f) => f.aspect))].map((a) => ({ meaning: "Inhalt", completeness: "ganzer Satz", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" })[a] ?? a).join(" und ")})${logReview.evaluation?.copiedSuggestion ? " — mit dem Vorschlag" : logReview.helpShown ? " — nach dem Hinweis" : ""}.`, basis: `log review revised${logReview.evaluation?.copiedSuggestion ? " (copied suggestion)" : logReview.helpShown ? " (suggestion shown)" : ""}` };
   else if (page) success = { text: "Du hast eine Seite ins Logbuch geschrieben.", basis: "expedition page saved" };
 
   // --- practiced: the first actual difficulty, in a fixed order
@@ -303,6 +335,7 @@ export function buildVisitSummary(state: MissionState, content: LearningContent,
   if (incorrect) practiced = { text: mathItem(content, incorrect.id).kind === "remainder" ? `Geübt: erst die vollen ${mathItem(content, incorrect.id).group.plural} rechnen, dann den Rest.` : "Geübt: gerecht teilen — noch einmal genau nachzählen.", basis: `attempt ${incorrect.id}#${incorrect.attempt.no} incorrect` };
   else if (lowBurst) practiced = { text: `Geübt: die Tasten aus ${lowBurst.lessonId.replace("TYPE-CH-COURSE-", "Lektion ")} — langsam und genau${lowBurst.comfort === "hard" ? ", das war anstrengend" : ""}.`, basis: `burst ${lowBurst.lessonId} accuracy ${lowBurst.accuracy.toFixed(2)} comfort ${lowBurst.comfort}` };
   else if (revision && (revision.outcome === "partial" || revision.outcome === "unchanged")) practiced = { text: `Geübt: Leerzeichen zwischen den Wörtern (${revision.resolved} von ${revision.flagged.length} Stellen).`, basis: `log revision ${revision.outcome}` };
+  else if (logReview && (logReview.outcome === "partial" || logReview.outcome === "unchanged") && logReview.review.taught.length) practiced = { text: `Geübt: ${[...new Set(logReview.review.taught.map((f) => f.aspect))].map((a) => ({ meaning: "Inhalt", completeness: "ganzer Satz", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" })[a] ?? a).join(" und ")} in deinem Satz.`, basis: `log review ${logReview.outcome}: ${logReview.evaluation?.unresolved.join(",") ?? ""}` };
   else if (transfer && transfer.outcome === "flagged") practiced = { text: `Geübt: Leerzeichen im neuen Satz (${transfer.flagged.length} ${transfer.flagged.length === 1 ? "Stelle" : "Stellen"} fehlten noch).`, basis: `transfer ${transfer.id} flagged ${transfer.flagged.length}` };
   else if (langWrong) practiced = { text: "Geübt: das richtige Wort für die Lieferung.", basis: `${langWrong.id}/${langWrong.r.stepId} ${langWrong.r.correct === false ? "incorrect" : "unscored"}` };
   else if (unscored) practiced = { text: "Geübt: die Antwort klar sagen oder tippen.", basis: `attempt ${unscored.id}#${unscored.attempt.no} unscored (${unscored.attempt.uncertainty ?? "?"})` };
@@ -310,10 +343,12 @@ export function buildVisitSummary(state: MissionState, content: LearningContent,
 
   // --- artifact
   let artifact: VisitSummary["artifact"] = { kind: "none", text: "Heute ist keine Seite entstanden." };
-  if (revision && revision.revised) artifact = { kind: "revision", text: revision.revised };
+  if (logReview && logReview.revised && logReview.outcome !== "skipped") artifact = { kind: "log-review", text: logReview.revised };
+  else if (revision && revision.revised) artifact = { kind: "revision", text: revision.revised };
   else if (page) artifact = { kind: "page", text: page.modality === "spoken" ? `${page.text} (gesprochen, dann gespeichert)` : page.text };
   else if (state.station?.built && state.station.builtAt && inVisit(state.station.builtAt)) artifact = { kind: "station", text: `Die Station steht${state.station.lampLit ? " und die Lampe brennt" : ""}.` };
   else if (state.pier?.built && state.pier.builtAt && inVisit(state.pier.builtAt)) artifact = { kind: "pier", text: `Der Steg steht${state.pier.boatMoored ? " und das Boot hat angelegt" : ""}.` };
+  else if (state.harbor?.planned && state.harbor.plannedAt && inVisit(state.harbor.plannedAt)) artifact = { kind: "harbor", text: `Die Boote sind beladen${state.harbor.roped ? " und festgemacht" : ""}.` };
 
   return { visit: visitId, title, success, practiced, next, artifact };
 }
@@ -453,7 +488,7 @@ export function buildParentReview(state: MissionState, content: LearningContent,
     if (!item) continue;
     for (const a of item.attempts.filter((x) => belongsTo(visit, x))) {
       const def = mathItem(content, id as ScoredMathItemId);
-      objectives.push({ taskId: id, version: def.version, objective: def.kind === "remainder" ? "equal-sharing-with-remainder" : "equal-sharing", outcome: a.correct === null ? "unscored" : a.correct ? "correct" : "incorrect", evidence: a.evidence, support: a.support, uncertainty: a.uncertainty });
+      objectives.push({ taskId: a.part ? `${id}/${a.part}` : id, version: def.version, objective: def.kind === "quotient" ? (a.part === "needed" ? "quotient-groups-needed" : "quotient-with-remainder") : def.kind === "remainder" ? "equal-sharing-with-remainder" : "equal-sharing", outcome: a.correct === null ? "unscored" : a.correct ? "correct" : "incorrect", evidence: a.evidence, support: a.support, uncertainty: a.uncertainty });
     }
     if (item.attempts.some((x) => belongsTo(visit, x))) {
       const last = item.attempts.filter((x) => belongsTo(visit, x)).pop()!;
@@ -487,6 +522,17 @@ export function buildParentReview(state: MissionState, content: LearningContent,
           ? `Neuer Satz (Transfer, ${t.id}): keine geprüfte Leerzeichen-Stelle im Satz — nicht bewertet; Hilfe vorher gezeigt: ${t.helpExposed ? "ja" : "nein"}; Modalität ${t.modality}.`
           : `Neuer Satz (Transfer, ${t.id}): ${t.assessed} geprüfte ${t.assessed === 1 ? "Stelle" : "Stellen"}, davon ${t.flagged.length === 0 ? "alle richtig" : `${t.flagged.length} ohne Leerzeichen`}; Hilfe vorher gezeigt: ${t.helpExposed ? "ja" : "nein"}; Modalität ${t.modality}.`,
     );
+  }
+  for (const [id, r] of Object.entries(state.reasoning ?? {})) {
+    if (!r || !r.turns.some((t) => inVisit(t.at))) continue;
+    const child = r.turns.filter((t) => t.role === "child");
+    objectives.push({ taskId: `${id}/reasoning`, version: 1, objective: "explain-own-method", outcome: r.method ?? "open", evidence: r.method === "explained-independently" ? "independent" : r.method === "explained-after-probing" ? "independent" : r.method === "explained-with-support" ? "supported" : "unscored", support: [...(r.probesUsed ? [`${r.probesUsed} Nachfrage(n) (neutral)`] : []), ...r.support], uncertainty: r.method === "not-yet-established" ? "Weg nach den Nachfragen nicht klar — kein Urteil über das Verständnis" : child.some((t) => t.modality === "spoken") ? "gesprochene Erklärung: Schreibweise stammt aus der Transkription" : null });
+    whatHappened.push(`${id} Erklärung: ${child.length} Antwort(en) des Kindes${r.probesUsed ? `, ${r.probesUsed} Nachfrage(n)` : ""}; Weg: ${r.method ?? "offen"}${r.strategy ? ` (${r.strategy})` : ""}${r.support.length ? `; Hilfe: ${r.support.join(", ")}` : ""}. Wörtlich: ${child.map((t) => `„${t.text}“${t.modality === "spoken" ? " (gesprochen)" : ""}`).join(" · ")}`);
+  }
+  for (const lr of (state.logReviews ?? []).filter((r) => r.visit === visitId && inVisit(r.at))) {
+    const taughtAspects = [...new Set(lr.review.taught.map((f) => f.aspect))];
+    objectives.push({ taskId: lr.logId, version: 1, objective: "writing-review-revision", outcome: lr.outcome, evidence: lr.outcome === "skipped" || lr.review.taught.length === 0 ? "unscored" : lr.outcome === "revised" ? (lr.evaluation?.copiedSuggestion || lr.helpShown ? "supported" : "independent") : "incorrect", support: lr.helpShown ? ["suggestion-shown"] : [], uncertainty: lr.review.taught.length === 0 ? "an den sechs geprüften Stellen nichts zu lehren — keine Aussage über den ganzen Satz" : lr.review.unknownWords.length ? `unbekannte Wörter nachgefragt: ${lr.review.unknownWords.join(", ")}` : null });
+    whatHappened.push(`Kapitänslogbuch (${lr.logId}): Original „${lr.original}“; Befunde: ${lr.review.findings.length ? lr.review.findings.map((f) => f.id).join(", ") : "keine an den geprüften Stellen"}; gelehrt: ${taughtAspects.join(", ") || "nichts"}; ohne Befund: ${lr.review.clean.join(", ") || "—"}; Überarbeitung: ${lr.revised ? `„${lr.revised}“ (${lr.outcome}${lr.evaluation ? `, gelöst ${lr.evaluation.resolved.length}/${lr.review.taught.length}` : ""}${lr.evaluation?.copiedSuggestion ? ", Vorschlag kopiert" : ""})` : "übersprungen"}${Object.keys(lr.clarifications).length ? `; Erklärungen: ${Object.entries(lr.clarifications).map(([w, m]) => `${w} = „${m}“`).join(", ")}` : ""}. Keine Aussage über Stellen, die nicht geprüft wurden.`);
   }
   const spokenPages = state.pages.filter((p) => p.visit === visitId && inVisit(p.at) && p.modality === "spoken");
   if (spokenPages.length) whatHappened.push(`Logbuchseite gesprochen (${spokenPages.length}): Rechtschreibung und Leerzeichen stammen aus der Transkription, nicht vom Kind.`);
