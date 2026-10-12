@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "fixtureHash": "47489cf850e61b2ed0eefef3be2fa4ff1bad29141c9be504f9954efdfd511725",
+  "pages": {
+    "Family:home": {
+      "activity": "family-check-in",
+      "title": "Fictional family check-in",
+      "items": [
+        "Choose a pretend weekend activity."
+      ]
+    },
+    "Learning:lesson": {
+      "activity": "pattern-practice",
+      "title": "Fictional pattern lesson",
+      "items": [
+        "Continue the visible pattern: circle, square, circle, \u2026"
+      ]
+    },
+    "Learning:reading": {
+      "activity": "reading-practice",
+      "title": "Fictional reading lesson",
+      "items": [
+        "A fictional fox looks for a blue kite."
+      ]
+    }
+  }
+}

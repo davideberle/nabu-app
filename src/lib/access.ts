@@ -170,6 +170,7 @@ const ADMIN_ONLY_API_ROUTES: { method: string; path: string }[] = [
  * tracker-only sessions out before the handler runs.
  */
 const ADMIN_ONLY_API_PREFIXES = [
+  "/api/family/runtime-test/",
   "/api/family/learning/parent/",
   // Compact parent tools (October 8, 2026): cross-week records for the owner only.
   "/api/family/parent/",
