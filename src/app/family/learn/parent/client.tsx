@@ -32,8 +32,11 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { NabuBadge, cn } from "@/components/ui/nabu";
 import { CHILD_IDS, type ChildId } from "@/lib/family-assistant-turn";
+import { effectiveLevel } from "@/lib/family-learning-reasoning";
+import { provenanceLabel, tutorReplyDelivery } from "@/lib/family-learning-trust";
+import { LIVE_TUTOR_DEFERRED_PARENT_NOTE, liveTutorDeferred } from "@/lib/family-learning-deferral";
 import type { EvidenceAttempt, EvidenceBundle } from "@/lib/family-learning-db";
-import type { KeyboardLayoutId } from "@/lib/family-learning-content";
+import { MATH_OBJECTIVES, isMathObjective, type KeyboardLayoutId } from "@/lib/family-learning-content";
 import type { DelayedCheckInfo, ParentReview } from "@/lib/family-learning-summary";
 import { createSettingsDraft, editSettingsDraft, reconcileSettingsDraft, settingsSaveBody, type SettingsDraft, type SettingsSource } from "@/lib/family-learning-parent-draft";
 import { beginRequest, clearEvidence, createEvidenceStore, describeTypingMetrics, invalidateAuthorization, isCurrentEpoch, receiveEvidence, renderableEvidence, selectChild, type EvidenceStore } from "@/lib/family-learning-parent-evidence";
@@ -272,7 +275,8 @@ export function FamilyLearnParentClient() {
 // ---------------------------------------------------------------------------
 
 function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: Tab; child: ChildId; ops: ParentOps }) {
-  const math = evidence.attempts.filter((a) => a.objective === "equal-sharing" || a.objective === "equal-sharing-with-remainder");
+  // every canonical math objective (equal sharing, remainder items, both harbor parts) — ID27
+  const math = evidence.attempts.filter((a) => isMathObjective(a.objective));
   const lang = (code: string) => evidence.attempts.filter((a) => a.stimulusLanguage === code && a.objective.startsWith("language-"));
   const samplesDe = evidence.samples.filter((s) => s.kind === "explanation" || s.kind === "expedition_log" || s.kind === "expedition_log_revision" || s.kind === "writing_transfer");
   const typingSamples = evidence.samples.filter((s) => s.kind === "typing_practice" || s.kind === "typed_label" || s.kind === "typing_burst" || s.kind === "typing_retry");
@@ -353,8 +357,8 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   else if (!v4Done) text = `Nächster Schritt: ${chapter} (intern v4, Beobachtungsstation mit Rest-Aufgabe EQ-STATION) — sofort verfügbar. Der frühere späte Check (v3, EQ-DELAY) ist seit dem 30. September zurückgezogen und keine ausstehende Arbeit.`;
   else if (v5Running) text = `${chapter5} läuft (intern v5, Rest-Aufgabe EQ-PIER, englische Anfrage LANG-EN-PIER).`;
   else if (v5Served && !v5Done) text = `Nächster Schritt: ${chapter5} (intern v5: Rest-Aufgabe EQ-PIER mit 45 Brettern, englische Anfrage LANG-EN-PIER, Steg bauen, neuer Satz WRITE-TRANSFER-2) — sofort verfügbar.`;
-  else if (v6Running) text = `${chapter6} läuft (intern v6: Hafen-Aufgabe EQ-HARBOR, Erklärgespräch, spanische Anfrage LANG-ES-HARBOR, Hafenplan, Kapitänslogbuch mit Durchsicht, kurzer Check).`;
-  else if (v5Done && v6Served && !v6Done) text = `Nächster Schritt: ${chapter6} (intern v6: 38 Kisten zu je 6 pro Boot — volle Boote, Rest und Boote für alle; Erklärgespräch mit Nabu; spanische Anfrage LANG-ES-HARBOR; Hafenplan; Kapitänslogbuch mit Durchsicht; Tipp-Kurs ab der gespeicherten Lektion; kurzer Check) — sofort verfügbar, Werkstatt-Reihenfolge frei.`;
+  else if (v6Running) text = `${chapter6} läuft (intern v6: Hafen-Aufgabe EQ-HARBOR, ${liveTutorDeferred("v6") ? "Erklärgespräch in dieser Übergangsversion ausgesetzt" : "Erklärgespräch"}, spanische Anfrage LANG-ES-HARBOR, Hafenplan, Kapitänslogbuch mit ${liveTutorDeferred("v6") ? "mechanischer Durchsicht (Inhalt und Satzbau nicht beurteilt)" : "Durchsicht"}, kurzer Check).`;
+  else if (v5Done && v6Served && !v6Done) text = `Nächster Schritt: ${chapter6} (intern v6: 38 Kisten zu je 6 pro Boot — volle Boote, Rest und Boote für alle; ${liveTutorDeferred("v6") ? "Erklärgespräch in dieser Übergangsversion ausgesetzt" : "Erklärgespräch mit Nabu"}; spanische Anfrage LANG-ES-HARBOR; Hafenplan; Kapitänslogbuch mit Durchsicht; Tipp-Kurs ab der gespeicherten Lektion; kurzer Check) — sofort verfügbar, Werkstatt-Reihenfolge frei.`;
   else if (v6Done) text = "Alle Inhalte (Besuche 1–5) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität. Die Anwendung am selben Tag (EQ-HARBOR-CHECK) ist keine Behaltensleistung.";
   else if (v5Done) text = "Alle Inhalte (Besuche 1–4) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität.";
   else text = "Alle Inhalte (Besuche 1–3) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität.";
@@ -407,6 +411,7 @@ function AttemptTable({ title, attempts, child, ops, empty, visits }: { title: s
                   <span className="font-mono text-sm text-tertiary">
                     {a.taskId} v{a.taskVersion} · #{a.attemptNo}
                   </span>
+                  {MATH_OBJECTIVES[a.objective] ? <span className="text-sm text-tertiary" data-objective={a.objective} data-part={MATH_OBJECTIVES[a.objective].part ?? ""}>{MATH_OBJECTIVES[a.objective].label}</span> : null}
                   <span className="text-base text-primary">Antwort: {String(shown)}</span>
                   <NabuBadge tone={tone.tone}>{tone.label}</NabuBadge>
                   {a.parentCorrection ? <NabuBadge tone="blue">Korrektur: {a.parentCorrection.evidence ? EVIDENCE_LABEL[a.parentCorrection.evidence]?.label : "Notiz"}</NabuBadge> : null}
@@ -500,7 +505,21 @@ function SupportList({ evidence, filter }: { evidence: Evidence; filter: (kind: 
             return (
               <li key={s.id} className="rounded-xl bg-secondary px-3 py-2">
                 <span className="font-mono text-tertiary">{fmt(s.createdAt)}</span> · {s.kind} {s.taskId ? `(${s.taskId})` : ""}
-                {typeof payload.text === "string" && payload.text ? <span className="block text-tertiary">„{payload.text.slice(0, 240)}“</span> : null}
+                {s.kind === "tutor_reply" ? (() => {
+                  // ID28: origin AND delivery together — displayed / reviewed prompt / used in the review / failed / withheld / unknown
+                  const d = tutorReplyDelivery(payload);
+                  const text = typeof payload.text === "string" ? payload.text : "";
+                  const shownText = typeof payload.shown === "string" ? payload.shown : "";
+                  // run metadata: the free-question event carries it itself; a reasoning reply's is stored on its assessment, a writing
+                  // reply's on the semantic record (both keyed by the turn id) — read-only lookups, nothing is invented
+                  const turnId = typeof payload.turnId === "string" ? payload.turnId : null;
+                  const storedProv = payload.provenance && typeof payload.provenance === "object" ? (payload.provenance as { model: string; runId: string }) : payload.reasoning === true && turnId && s.taskId ? ((evidence.state?.reasoning as Record<string, { assessments?: { turnId: string; model: { model: string; runId: string } | null }[] }> | undefined)?.[s.taskId]?.assessments?.find((a) => a.turnId === turnId)?.model ?? null) : payload.writingReview === true && turnId ? (evidence.state?.logReviewSemantics?.find((r) => r.turnId === turnId)?.provenance ?? null) : null;
+                  const prov = provenanceLabel(storedProv);
+                  if (d.delivery === "displayed" && (shownText || text)) return <span className="block text-tertiary" data-delivery={d.delivery} data-origin={d.origin}>„{(shownText || text).slice(0, 240)}“ ({d.label}; {prov})</span>;
+                  if (d.delivery === "reviewed-prompt") return <span className="block text-tertiary" data-delivery={d.delivery} data-origin={d.origin}>Dem Kind gezeigt: „{shownText.slice(0, 240)}“ ({d.label}; {prov}){text ? <span className="block">Rohantwort des Assistenten (nicht gezeigt): „{text.slice(0, 240)}“</span> : null}</span>;
+                  if (d.delivery === "used-in-review") return <span className="block text-tertiary" data-delivery={d.delivery} data-origin={d.origin}>{d.label} ({prov}){text ? <span className="block">Rohantwort des Assistenten (nicht gezeigt): „{text.slice(0, 240)}“</span> : null}</span>;
+                  return <span className="block text-tertiary" data-delivery={d.delivery} data-origin={d.origin} data-withheld={d.origin}>{d.label}</span>;
+                })() : typeof payload.text === "string" && payload.text ? <span className="block text-tertiary">„{payload.text.slice(0, 240)}“</span> : null}
                 {payload.classification ? <span className="block text-tertiary">Einstufung: {String(payload.classification)}</span> : null}
               </li>
             );
@@ -887,33 +906,51 @@ const OUTCOME_LABEL: Record<string, string> = { correct: "richtig", incorrect: "
  * context, visit, time, outcome). Derived from the immutable records;
  * deleted with them. Never a mastery claim.
  */
-/** Visit 5: the reasoning conversation per item — the child's words verbatim with modality, Nabu's reviewed lines, probes, the recorded method and any answer-revealing support. */
+/** Visit 5: the reasoning conversation per item — observed facts (the child's words verbatim with modality, support mode and events, origins, narrow contradictions) beside NABU'S ASSESSMENT (per criterion, labelled, with passages and revisions). Never a mastery claim. */
 function Reasoning({ evidence }: { evidence: Evidence }) {
   const entries = Object.entries(evidence.state?.reasoning ?? {}).filter(([, r]) => r && r.turns.length);
   if (entries.length === 0) return null;
-  const labels: Record<string, string> = { "explained-independently": "selbst erklärt (ohne Nachfrage)", "explained-after-probing": "nach neutralen Nachfragen selbst erklärt", "explained-with-support": "mit antwortnaher Hilfe erklärt (Material oder Vorrechnen)", "not-yet-established": "Weg noch nicht klar — kein Urteil über das Verständnis", unscored: "nicht bewertet" };
+  const labels: Record<string, string> = { "explained-independently": "Nabus Einschätzung: Weg gezeigt — ohne Hilfe", "explained-after-probing": "Nabus Einschätzung: Weg gezeigt — nach Klärungsfragen, ohne Hilfe", "explained-with-support": "Nabus Einschätzung: Weg gezeigt — mit Hilfe", "not-yet-established": "Nabus Einschätzung: Weg noch nicht ganz gezeigt", unscored: "nicht eingeschätzt (kein beglaubigtes Gespräch)" };
+  const levelLabel: Record<string, string> = { demonstrated: "gezeigt", partial: "teilweise", "not-yet-demonstrated": "noch nicht", uncertain: "unsicher" };
+  const criterionLabel: Record<string, string> = { strategy: "Rechenweg", quantities: "Volle Boote und Rest", meaning: "Bedeutung der Zahlen" };
+  // the ONE criterion projection (shared with summaries and views): effectiveLevel — never a local re-implementation
+  const effective = (a: NonNullable<(typeof entries)[number][1]>["final"], id: "strategy" | "quantities" | "meaning") => effectiveLevel(a, id);
   return (
     <div className="rounded-2xl border border-primary p-4" data-testid="parent-reasoning">
       <h2 className="text-lg font-semibold text-primary">Erklärgespräch (Rechenweg)</h2>
-      <p className="mt-1 text-sm text-tertiary">Antwort und Begründung getrennt: der Versuch steht in der Mathe-Tabelle, hier steht nur der erklärte Weg. Nachfragen sind neutral (verraten nichts); Material und Vorrechnen sind antwortnahe Hilfe. Gesprochenes stammt aus der Transkription — keine Schreibweise-Evidenz.</p>
-      {entries.map(([itemId, r]) => (
-        <section key={itemId} className="mt-3 rounded-2xl bg-secondary p-3" data-testid={`reasoning-${itemId}`} data-method={r!.method ?? ""}>
-          <p className="text-base font-semibold text-primary">
-            {itemId} · {labels[r!.method ?? ""] ?? (r!.status === "done" ? r!.method : "offen")}
-            {r!.strategy ? <span className="font-normal text-tertiary"> · erkannte Strategie: {r!.strategy}</span> : null}
-          </p>
-          <p className="text-xs text-tertiary">
-            {r!.probesUsed} Nachfrage(n){r!.support.length ? ` · Hilfe: ${r!.support.join(", ")}` : " · keine antwortnahe Hilfe"}
-          </p>
-          <ol className="mt-2 space-y-1 text-base">
-            {r!.turns.map((t, i) => (
-              <li key={i} className={t.role === "child" ? "text-primary" : "text-tertiary"}>
-                <span className="font-medium">{t.role === "child" ? "Kind" : "Nabu"}:</span> „{t.text}“{t.role === "child" ? ` (${t.modality === "spoken" ? "gesprochen" : "getippt"})` : t.probe ? ` [${t.probe}]` : t.kind ? ` [${t.kind}]` : ""}
-              </li>
-            ))}
-          </ol>
-        </section>
-      ))}
+      <p className="mt-1 text-sm text-tertiary">Beobachtet und eingeschätzt getrennt: die Antwort auf die Aufgabe steht in der Mathe-Tabelle und wird vom Gespräch nie verändert. Hier stehen die Worte des Kindes, die Hilfe (Modus und Ereignisse) und Nabus Einschätzung je Kriterium — eine Einschätzung des isolierten Assistenten mit ihren Belegstellen, kein Nachweis von Verständnis. Klärungsfragen aus der geprüften Liste verraten nichts; freie Erklärungen, Material und Vorrechnen sind Hilfe. Gesprochenes stammt aus der Transkription.</p>
+      {entries.map(([itemId, r]) => {
+        const fin = r!.final ?? r!.assessments?.[r!.assessments.length - 1] ?? null;
+        return (
+          <section key={itemId} className="mt-3 rounded-2xl bg-secondary p-3" data-testid={`reasoning-${itemId}`} data-method={r!.method ?? ""} data-support-mode={r!.supportMode}>
+            <p className="text-base font-semibold text-primary">
+              {itemId} · {labels[r!.method ?? ""] ?? (r!.status === "done" ? r!.method : "offen")}
+            </p>
+            {fin ? (
+              <ul className="mt-1 text-sm text-primary" data-testid={`assessment-${itemId}`}>
+                {(["strategy", "quantities", "meaning"] as const).map((c) => (
+                  <li key={c}>
+                    <span className="font-medium">{criterionLabel[c]}:</span> {levelLabel[effective(fin, c) ?? "uncertain"]}{fin.criteria[c].level !== effective(fin, c) ? ` (Nabu: ${levelLabel[fin.criteria[c].level]}; gilt als unsicher: ${fin.stale ? "Rücknahme/Widerspruch danach" : "ein Beleg stammt von vor der Rücknahme oder aus einer zurückgewiesenen Antwort"})` : ""}{fin.criteria[c].downgraded ? ` (von Nabu als ${levelLabel[fin.criteria[c].downgraded!.from]} genannt, ${fin.criteria[c].downgraded!.reason} — als unsicher gewertet)` : ""}{fin.criteria[c].passages.length ? ` — Belegstellen: ${fin.criteria[c].passages.map((p) => `„${p}“`).join(", ")}` : " — ohne Belegstelle"}{fin.criteria[c].rationale ? ` — ${fin.criteria[c].rationale}` : ""}
+                  </li>
+                ))}
+                <li className="text-xs text-tertiary">Einschätzung {fin.revision} von {r!.assessments.length} (Schema v{fin.schemaVersion}, Assistent über die Bridge) · {provenanceLabel(fin.model)}{fin.ungrounded ? " · ein Beleg steht so nicht in den Worten des Kindes" : ""}</li>
+              </ul>
+            ) : (
+              <p className="mt-1 text-sm text-tertiary">Keine Einschätzung: kein beglaubigtes Gespräch.</p>
+            )}
+            <p className="text-xs text-tertiary">
+              Hilfe: {r!.supportMode === "supported" ? `ja — ${r!.supportEvents.map((e) => e.kind + (e.promptId ? `:${e.promptId}` : "")).join(", ")}` : `keine (${r!.clarificationsUsed} Klärungsfrage(n) aus der Liste)`} · {r!.assistantTurns} beglaubigte Gesprächsrunde(n){Object.entries(r!.origins ?? {}).filter(([k, n]) => k !== "verified" && n > 0).map(([k, n]) => ` · ${n} Antwort(en) mit Herkunft ${k} — zurückgehalten, nicht gezeigt`).join("")}{r!.screen?.contradictions?.length ? ` · ausdrücklich genannte falsche Rechnung: ${r!.screen.contradictions.join("; ")}` : ""}{r!.screen?.retractionInLastTurn ? " · letzte Antwort nimmt etwas zurück" : ""}{r!.closeReason ? ` · Abschluss: ${r!.closeReason}` : ""}
+            </p>
+            <ol className="mt-2 space-y-1 text-base">
+              {r!.turns.map((t, i) => (
+                <li key={i} className={t.role === "child" ? "text-primary" : "text-tertiary"}>
+                  <span className="font-medium">{t.role === "child" ? "Kind" : t.source === "assistant" ? "Nabu (Assistent, beglaubigt)" : t.source === "local" ? "Lernsystem (statt nicht beglaubigter Antwort)" : t.source === "reviewed" ? "Lernsystem (geprüfter Text)" : "Herkunft unbekannt"}:</span> {t.role === "nabu" && !t.source ? "(Zeile aus der Zeit vor der Herkunftsprüfung — zurückgehalten)" : `„${t.text}“`}{t.role === "child" ? ` (${t.modality === "spoken" ? "gesprochen" : "getippt"})` : ` [${t.kind ?? "—"}${t.origin && t.origin !== "verified" ? `, Herkunft ${t.origin}` : ""}]`}
+                </li>
+              ))}
+            </ol>
+          </section>
+        );
+      })}
     </div>
   );
 }
@@ -922,11 +959,11 @@ function Reasoning({ evidence }: { evidence: Evidence }) {
 function LogReviews({ evidence }: { evidence: Evidence }) {
   const reviews = evidence.state?.logReviews ?? [];
   if (reviews.length === 0) return null;
-  const label: Record<string, string> = { meaning: "Inhalt", completeness: "ganzer Satz", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" };
+  const label: Record<string, string> = { meaning: "Inhalt", completeness: "ganzer Satz", grammar: "Satzbau", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" };
   return (
     <div className="rounded-2xl border border-primary p-4" data-testid="parent-log-reviews">
       <h2 className="text-lg font-semibold text-primary">Kapitänslogbuch — Durchsicht und Überarbeitung</h2>
-      <p className="mt-1 text-sm text-tertiary">Sechs geprüfte Aspekte, höchstens zwei gelehrt. Original, Vorschlag (Hilfe) und Überarbeitung bleiben getrennt; ein kopierter Vorschlag zählt nie als selbständig. Was nicht geprüft wurde, wird nicht beurteilt.</p>
+      <p className="mt-1 text-sm text-tertiary">Mechanische Prüfung (Leerzeichen, Grossschreibung, Schreibweise, Satzzeichen) durch das Lernsystem; Inhalt, ganzer Satz und Satzbau durch den isolierten Kind-Assistenten (unsicher, an die Stelle im Satz gebunden). Höchstens zwei Punkte gelehrt. Original (genau wie getippt), Vorschlag (Hilfe) und Überarbeitung bleiben getrennt; ein kopierter Vorschlag zählt nie als selbständig. Was nicht geprüft wurde, wird nicht beurteilt.</p>
       {reviews.map((lr, i) => (
         <section key={`${lr.visit}-${i}`} className="mt-3 rounded-2xl bg-secondary p-3" data-testid="parent-log-review" data-outcome={lr.outcome}>
           <p className="text-sm text-tertiary">
@@ -936,7 +973,18 @@ function LogReviews({ evidence }: { evidence: Evidence }) {
             <span className="text-tertiary">Original:</span> <span className="font-mono">{lr.original}</span>
           </p>
           <p className="mt-1 text-base text-primary">
-            <span className="text-tertiary">Befunde:</span> {lr.review.findings.length ? lr.review.findings.map((f) => `${label[f.aspect] ?? f.aspect}: ${f.given}${f.expected ? ` → ${f.expected}` : ""}`).join("; ") : "keine an den geprüften Stellen"}
+            <span className="text-tertiary">Befunde:</span> {lr.review.findings.length ? lr.review.findings.map((f) => `${label[f.aspect] ?? f.aspect}${f.source === "assistant" ? " (Assistent, unsicher)" : ""}: ${f.given}${f.expected ? ` → ${f.expected}` : ""}`).join("; ") : "keine an den geprüften Stellen"}
+            {lr.review.unchecked.length ? ` · nicht geprüft: ${lr.review.unchecked.map((a) => label[a] ?? a).join(", ")}` : ""}
+            {lr.review.uncheckedWords.length ? ` · Wörter ausserhalb des Lexikons (ungeprüft): ${lr.review.uncheckedWords.join(", ")}` : ""}
+            {(() => {
+              const rec = evidence.state?.logReviewSemantics?.find((r) => r.visit === lr.visit && r.logId === lr.logId) ?? null;
+              // legacy records without a persisted origin are UNKNOWN and withheld — a "done" status alone never implies verification (R5-06)
+              const origin = rec?.origin ?? (lr.review.semantic?.status === "unverified" ? "missing" : null);
+              if (!lr.review.semantic) return liveTutorDeferred(lr.visit) ? ` · Prüfung von Bedeutung, Vollständigkeit und Satzbau ${LIVE_TUTOR_DEFERRED_PARENT_NOTE}` : " · keine Antwort des Assistenten";
+              if (origin === "verified" && lr.review.semantic.raw) return ` · Assistent (beglaubigt; ${provenanceLabel(rec?.provenance ?? null)}): „${lr.review.semantic.raw.slice(0, 300)}“`;
+              if (lr.review.semantic.status === "unavailable") return ` · keine verwertbare Antwort${lr.review.semantic.problem ? ` (${lr.review.semantic.problem})` : ""}`;
+              return ` · Antwort ohne Beglaubigung (Herkunft: ${origin ?? "unbekannt"}) — zurückgehalten, nicht als Assistent gewertet`;
+            })()}
           </p>
           <p className="mt-1 text-base text-primary">
             <span className="text-tertiary">Gelehrt:</span> {[...new Set(lr.review.taught.map((f) => label[f.aspect] ?? f.aspect))].join(", ") || "nichts"} · <span className="text-tertiary">ohne Befund:</span> {lr.review.clean.map((a) => label[a] ?? a).join(", ") || "—"}
@@ -948,11 +996,13 @@ function LogReviews({ evidence }: { evidence: Evidence }) {
           ) : null}
           <p className="mt-1 text-base text-primary">
             <span className="text-tertiary">Überarbeitung:</span> {lr.revised ? <span className="font-mono">{lr.revised}</span> : "übersprungen"} · {lr.outcome}
-            {lr.evaluation ? ` (gelöst ${lr.evaluation.resolved.length}/${lr.review.taught.length}${lr.evaluation.introduced.length ? `, neu aufgefallen: ${lr.evaluation.introduced.join(", ")}` : ""}${lr.evaluation.copiedSuggestion ? ", Vorschlag kopiert" : ""})` : ""}
+            {lr.evidence ? ` · Hilfe-Modus der korrigierten Stellen: ${lr.evidence} (keine Aussage über Richtigkeit)` : ""}
+            {(lr.criteria ?? lr.evaluation?.criteria ?? []).length ? ` · je Kriterium: ${(lr.criteria ?? lr.evaluation?.criteria ?? []).map((c) => `${label[c.aspect] ?? c.aspect} ${c.status}${c.detail ? ` (${c.detail})` : ""}`).join("; ")}` : ""}
+            {lr.evaluation ? ` (gelöst ${lr.evaluation.resolved.length}/${lr.review.taught.length}${lr.evaluation.unverified.length ? `, geändert aber nicht erneut beurteilt: ${lr.evaluation.unverified.join(", ")}` : ""}${lr.evaluation.introduced.length ? `, neu aufgefallen: ${lr.evaluation.introduced.join(", ")}` : ""}${lr.evaluation.copiedSuggestion ? ", Vorschlag kopiert" : ""})` : ""}
           </p>
-          {lr.review.unknownWords.length ? (
+          {lr.review.clarify ? (
             <p className="mt-1 text-base text-primary">
-              <span className="text-tertiary">Nachgefragt:</span> {lr.review.unknownWords.map((w) => `„${w}“${lr.clarifications[w] ? ` = „${lr.clarifications[w]}“` : " (keine Antwort)"}`).join(", ")} — unbewertet
+              <span className="text-tertiary">Nachgefragt:</span> {lr.review.clarify.words.length ? lr.review.clarify.words.map((w) => `„${w}“${lr.clarifications[w] ? ` = „${lr.clarifications[w]}“` : " (keine Antwort)"}`).join(", ") : `${lr.review.clarify.question}${lr.clarifications.question ? ` → „${lr.clarifications.question}“` : " (keine Antwort)"}`} — unbewertet
             </p>
           ) : null}
         </section>

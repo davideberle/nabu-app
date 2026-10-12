@@ -35,6 +35,7 @@ import {
   typingCourseForLayout,
   typingLessonForLayout,
   usedWordOf,
+  type HarborWorkplace,
   type HarborWorkplaceId,
   type KeyboardLayoutId,
   type TargetLanguage,
@@ -44,18 +45,21 @@ import {
   type LearningContent,
   type MathItem,
   type MathItemId,
+  type ReasoningDef,
   type ScoredMathItemId,
   type StageId,
   type TypingCourseLesson,
-  type VisitId,
-} from "./family-learning-content.ts";
+  type VisitId, type WritingReviewAspect } from "./family-learning-content.ts";
 import { buildSceneModel, buildVisitSummary, delayAnchor, delayedCheckInfo, visitLabel, visitOrdinal, type DelayedCheckInfo, type SceneModel, type VisitSummary } from "./family-learning-summary.ts";
 import { buildProgress, type ProgressStrip, type ProgressSources } from "./family-learning-progress.ts";
 import { buildVocabularyLedger, childVocabularyCue, childWordbook, type VocabularyInventory, type ChildVocabularyCue, type ChildWordbook } from "./family-learning-vocabulary.ts";
 import { alignTyping, alignedLessonMetrics, TYPING_METRIC_VERSION, type AlignedLineMetrics } from "./family-learning-typing-metrics.ts";
 import { assessSpacing, evaluateRevision, flagSpacing, markSpacing, suggestSpacing, type SpacingFlag } from "./family-learning-writing.ts";
-import { evaluateLogRevision, reviewLogSentence, type LogRevisionEvaluation, type WritingReview } from "./family-learning-writing-review.ts";
-import { applyReasoningChoice, applyReasoningTurn, childExplanationText, methodLabel, newReasoningState, reopenAfterCounters, type ReasoningState } from "./family-learning-reasoning.ts";
+import { buildWritingReviewDispatch, evaluateLogRevision, parseWritingReviewReply, reviewLogSentence, revisionEvidence, unavailableSemanticReview, unverifiedSemanticReview, writingAspectLabel, type LogRevisionEvaluation, type SemanticReview, type TeachingPoint, type WritingReview } from "./family-learning-writing-review.ts";
+import { applyReasoningChoice, applyReasoningReply, applyReasoningTurn, childExplanationText, closeReasoningUnresolved, effectiveLevel, levelLabel, MAX_REPLY_CHARS, methodLabel, newReasoningState, pendingDispatch, turnsLeft, type AssessmentLevel, type ReasoningDispatchContext, type ReasoningState, type ReplyOrigin } from "./family-learning-reasoning.ts";
+import { sha256Hex } from "./family-learning-hash.ts";
+import { liveTutorDeferred } from "./family-learning-deferral.ts";
+import { originWithoutBinding, provenanceOf, receiptOrigin as bindReceipt, type InvalidReceipt, type ReceiptInput, type VerifiedReceipt } from "./family-learning-trust.ts";
 import {
   acknowledgeLesson,
   buildVisitReports,
@@ -338,7 +342,9 @@ export type VisitRecord = {
    * first). Absent on every earlier visit — then the frozen content stage list applies. `stageIndex` indexes this route.
    */
   route?: StageId[];
-  skippedStages: { stage: StageId; reason: "time" | "child" }[];
+  /** Every skip stays recorded; `undone` marks a skip the child later caught up by re-entering the workplace (repair round 3). */
+  /** `deferred` = the live tutor hop is deferred for this visit (owner scope reduction, 2026-10-11): not the child's skip, never caught up, never credited. */
+  skippedStages: { stage: StageId; reason: "time" | "child" | "deferred"; undone?: true }[];
   /** Difficulty self-assessment (content reflection option id). */
   reflection: string | null;
   /** Optional child feedback (round 2, R2-5): answered dimensions, explicitly skipped dimensions; absent when the content offered none. */
@@ -374,9 +380,36 @@ export type HarborState = {
   roped: boolean;
   /** Workplaces the child has entered, in order (first entry decides the route). */
   entered: HarborWorkplaceId[];
+  /** Workplaces the child re-entered after skipping them ("nachholen"); additive (repair round 3). */
+  reentered?: HarborWorkplaceId[];
 };
 
 /** The reviewed writing review of the child's own log sentence and the bounded revision (content v4, log-review stage). */
+/**
+ * The VERIFIED claims of a bridge response receipt, as decoded by the route (signature checked with the shared secret).
+ * The state machine never sees a raw receipt and never trusts a caller-supplied origin: it binds these claims to the
+ * pending dispatch (turn id, dispatch hash, reply hash, child, session). Repair round 2, IV5-03.
+ */
+export type { InvalidReceipt, ReceiptInput, VerifiedReceipt };
+
+export type LogReviewSemanticRecord = {
+  visit: VisitId;
+  logId: string;
+  /** Deterministic binding to the sentence: `wr-<visit>-<digits of page.at>`. */
+  turnId: string;
+  /** `pending` = dispatch recorded, reply not yet applied. */
+  status: SemanticReview["status"] | "pending";
+  semantic: SemanticReview | null;
+  /** Four-way origin of the applied reply (R4-08); absent while pending. */
+  origin?: ReplyOrigin;
+  /** Authenticated run metadata from the receipt (v2), or null. */
+  provenance?: { model: string; runId: string } | null;
+  /** sha256 of the dispatch message (the receipt's `req`). */
+  reqHash: string;
+  dispatchedAt: string;
+  at: string;
+};
+
 export type LogReviewRecord = {
   visit: VisitId;
   logId: string;
@@ -390,6 +423,12 @@ export type LogReviewRecord = {
   outcome: "revised" | "partial" | "unchanged" | "none-needed" | "skipped";
   /** Whether the suggestion (help) was shown before the revision. */
   helpShown: boolean;
+  /** Recorded in-app help for the corrected mechanical criteria (assessment reset §6): never a correctness claim; absent on a skipped record. */
+  evidence?: "independent" | "supported" | "incorrect" | "unscored";
+  /** Always null since the assessment reset (no global revision-correct claim). */
+  correct?: boolean | null;
+  /** Per-criterion findings of the revision (corrected / changed / unresolved / unassessed / introduced). */
+  criteria?: import("./family-learning-writing-review.ts").CriterionFinding[];
   modality: "typed";
   at: string;
 };
@@ -433,6 +472,15 @@ export type MissionState = {
   reasoning?: Partial<Record<ScoredMathItemId, ReasoningState>>;
   /** Visit 5: the reviewed writing review + revision of the captain's log (additive). */
   logReviews?: LogReviewRecord[];
+  /** Visit 5 (repair round 1): the assistant's semantic review of the captain's log, per sentence (additive). */
+  logReviewSemantics?: LogReviewSemanticRecord[];
+  /**
+   * Free-question dispatches the SERVER built (assessment reset §7, R4-01; consumed pending contexts since R5-01/02): the immutable
+   * context a tutor reply's receipt must bind to — child, session, visit, task, turn, request hash — and its consumption state.
+   * `pending` → exactly one reply consumes it (`consumed` when bound and verified, `failed` on a transport failure or untrusted
+   * reply); a consumed/failed context never accepts another reply. Bounded, additive.
+   */
+  tutorDispatches?: { turnId: string; taskId: string | null; visitId: VisitId; child: ChildId; sessionSuffix: "learn"; childText: string; reqHash: string; at: string; status: "pending" | "consumed" | "failed"; consumedAt?: string; outcome?: { origin: ReplyOrigin; resHash: string | null; shown: boolean } }[];
   logRevisions: LogRevision[];
   transfers?: TransferRecord[];
   /** Lesson-end repairs, practice focus and acknowledged lesson feedback (world-first 2026-10-03, additive; absent on earlier rows). */
@@ -517,6 +565,7 @@ export function newMissionState(content: LearningContent, child: ChildId, nowIso
     harbor: emptyHarbor(),
     reasoning: {},
     logReviews: [],
+    logReviewSemantics: [],
     logRevisions: [],
     transfers: [],
     feedback: emptyFeedbackState(),
@@ -564,6 +613,10 @@ export function upgradeMissionState(input: MissionState, content: LearningConten
   }
   if (!Array.isArray(state.logReviews)) {
     state.logReviews = [];
+    changed = true;
+  }
+  if (!Array.isArray(state.logReviewSemantics)) {
+    state.logReviewSemantics = [];
     changed = true;
   }
   if (!Array.isArray(state.logRevisions)) {
@@ -683,7 +736,7 @@ export type LearningOp =
   | { op: "resume-base" }
   | { op: "name-base"; name: string }
   | { op: "place-base"; locationId: string }
-  | { op: "support"; taskId: string | null; kind: SupportKind; payload?: unknown }
+  | { op: "support"; taskId: string | null; kind: SupportKind; payload?: unknown; receipt?: ReceiptInput }
   | { op: "answer-math"; itemId: ScoredMathItemId; answer: number | null; raw: string; modality: AnswerModality; uncertain?: boolean }
   | { op: "answer-remainder"; itemId: ScoredMathItemId; used: number | null; remaining: number | null; raw: string; modality: AnswerModality; uncertain?: boolean }
   | { op: "request-teaching"; itemId: ScoredMathItemId }
@@ -705,16 +758,22 @@ export type LearningOp =
   /** Content v4: quotient item part A (full groups + remaining) and part B (groups needed for all). */
   | { op: "answer-quotient"; itemId: ScoredMathItemId; full: number | null; remaining: number | null; raw: string; modality: AnswerModality; uncertain?: boolean }
   | { op: "answer-needed"; itemId: ScoredMathItemId; needed: number | null; raw: string; modality: AnswerModality; uncertain?: boolean }
-  /** Content v4: one child turn of the reasoning conversation (typed, or a confirmed transcript), and the scaffold choice. */
+  /** Content v4 (repair round 1): one child turn of the reasoning conversation (typed, or a confirmed transcript) — recorded, validated and prepared as a bridge dispatch; the assistant's reply bound to that turn; the scaffold choice. */
   | { op: "reasoning-turn"; text: string; modality: "typed" | "spoken" }
+  /** `receipt`: set ONLY by the server route after verifying the bridge's signature (never from the client); absent = unverified origin. */
+  | { op: "reasoning-reply"; turnId: string; ok: boolean; text: string; receipt?: ReceiptInput }
   | { op: "reasoning-choice"; choice: "counters" | "teach" | "continue" }
   /** Content v4: the harbor plan (a reviewed destination), exactly once. */
   | { op: "plan-harbor"; destination: string }
   /** Content v4: the bounded revision of the child's own log sentence after the writing review (+ answers to unknown-word questions). */
   | { op: "review-log"; text: string; clarifications?: Record<string, string> }
+  /** Content v4 (repair round 1): the assistant's semantic review of the captain's log sentence, bound to the sentence. */
+  | { op: "review-log-dispatch"; turnId: string }
+  | { op: "review-log-semantic"; turnId: string; ok: boolean; text: string; receipt?: ReceiptInput }
   | { op: "revise-log"; text: string }
   | { op: "summary-seen" }
-  | { op: "skip-stage"; stage: StageId; reason: "time" | "child" }
+  /** `deferred` (D1, 2026-10-11): the owner-deferral transition for an ALREADY-ACTIVE `explain` stage of a deferred visit — not the child's skip; accepted only there. */
+  | { op: "skip-stage"; stage: StageId; reason: "time" | "child" | "deferred" }
   | { op: "save-log"; text: string; modality?: "typed" | "spoken" }
   | { op: "reflect"; optionId: string | null; difficultySkipped?: boolean; feedback?: { enjoyment?: string | null; clarity?: string | null } }
   | { op: "write-transfer"; text: string; modality?: "typed" | "spoken" }
@@ -805,6 +864,13 @@ function advance(state: MissionState, content: LearningContent) {
   while (visit.stageIndex < stages.length) {
     const stage = stages[visit.stageIndex];
     if (stage === "restore" && !state.base.name) {
+      visit.stageIndex += 1;
+      continue;
+    }
+    if (stage === "explain" && liveTutorDeferred(visit.id)) {
+      // Temporary Visit 5 scope reduction: the live reasoning conversation is deferred. The stage is passed with the explicit
+      // non-child reason `deferred` — no reasoning state, no work sample, no method credit, no tutor call.
+      if (!visit.skippedStages.some((s) => s.stage === "explain" && s.reason === "deferred")) visit.skippedStages.push({ stage: "explain", reason: "deferred" });
       visit.stageIndex += 1;
       continue;
     }
@@ -992,6 +1058,15 @@ export function scoreProduction(
   return { correct: null, completion: null, uncertainty: "unclear-pending-clarification" };
 }
 
+/** Text kept EXACTLY as typed (only \r removed): the child's own writing is evidence and is never normalised. */
+function exactText(value: unknown, max: number, label: string): string {
+  if (typeof value !== "string") throw new LearningOpError("invalid", `${label} must be text`);
+  const text = value.replace(/\r/g, "");
+  if (!text.trim()) throw new LearningOpError("invalid", `${label} must not be empty`);
+  if (text.length > max) throw new LearningOpError("invalid", `${label} is too long`);
+  return text;
+}
+
 function boundedText(value: unknown, max: number, label: string): string {
   if (typeof value !== "string") throw new LearningOpError("invalid", `${label} must be text`);
   const trimmed = value.replace(/\s+/g, " ").trim();
@@ -1004,6 +1079,32 @@ function findStep(segment: LanguageSegment, stepId: string): { step: LanguageSte
   const index = segment.steps.findIndex((s) => s.id === stepId);
   if (index < 0) throw new LearningOpError("invalid", `unknown step ${stepId}`);
   return { step: segment.steps[index], index };
+}
+
+/** Deterministic binding of the semantic review to one sentence. */
+function semanticTurnId(visit: VisitId, page: ExpeditionPage): string {
+  return `wr-${visit}-${page.at.replace(/\D/g, "")}`;
+}
+
+/** The ONE binding step of the trusted-reply boundary (`family-learning-trust.ts`): mismatching claims are a forgery and refused. */
+function receiptOrigin(receipt: ReceiptInput, expected: { child: string; turnId: string; reqHash: string; text: string }): ReplyOrigin {
+  try {
+    return bindReceipt(receipt, expected);
+  } catch {
+    throw new LearningOpError("not-allowed", "the receipt does not match this turn");
+  }
+}
+
+/** Nabu's assessment as shown (effective levels: a stale or pre-retraction-grounded assessment reads as uncertain). */
+export function reasoningAssessmentView(r: ReasoningState, def: ReasoningDef): ReasoningAssessmentView | null {
+  const a = r.final ?? r.assessments[r.assessments.length - 1] ?? null;
+  if (!a) return null;
+  return { by: a.by, revision: a.revision, revisions: r.assessments.length, stale: a.stale, ungrounded: a.ungrounded, preRetractionGrounding: a.preRetractionGrounding, criteria: def.criteria.map((c) => ({ id: c.id, label: c.label, level: effectiveLevel(a, c.id)!, levelLabel: levelLabel(def, effectiveLevel(a, c.id)), passages: a.criteria[c.id].passages, rationale: a.criteria[c.id].rationale })) };
+}
+
+function semanticReviewFor(state: MissionState, visit: VisitId, page: ExpeditionPage): LogReviewSemanticRecord | null {
+  const id = semanticTurnId(visit, page);
+  return (state.logReviewSemantics ?? []).find((r) => r.visit === visit && r.turnId === id) ?? null;
 }
 
 /** The scored item an explanation refers to: the last item shown and resolved in this visit. */
@@ -1027,34 +1128,60 @@ function indexOfBlock(list: readonly StageId[], block: readonly StageId[]): numb
   return -1;
 }
 
-export type WorkplaceStatus = "open" | "done" | "locked" | "current";
+/** Position of the LAST occurrence of a contiguous block (a re-entered workplace appears twice in the route), or -1. */
+function lastIndexOfBlock(list: readonly StageId[], block: readonly StageId[]): number {
+  let found = -1;
+  outer: for (let i = 0; i + block.length <= list.length; i += 1) {
+    for (let k = 0; k < block.length; k += 1) if (list[i + k] !== block[k]) continue outer;
+    found = i;
+  }
+  return found;
+}
 
-/** The harbor workplaces of a routed visit with their honest status: done when its block lies behind the stage index, current when inside it, locked for the closing check until every other block is behind, open otherwise. */
+/** A skip that still stands (not caught up by re-entering the workplace). */
+function standingSkip(visit: VisitRecord, stage: StageId): boolean {
+  return visit.skippedStages.some((sk) => sk.stage === stage && !sk.undone);
+}
+
+export type WorkplaceStatus = "open" | "done" | "locked" | "current" | "skipped";
+
+/**
+ * The harbor workplaces of a routed visit with their honest status: done when its (last) block lies behind the stage
+ * index and real work happened there, SKIPPED when every required stage of the passed block was skipped (the child may
+ * re-enter it: "nachholen"), current when inside it, open otherwise. The closing check stays LOCKED until every other
+ * workplace is DONE — a skipped block never unlocks it (completion semantics, repair round 3).
+ */
 export function workplaceStatuses(state: MissionState, content: LearningContent, visit: VisitRecord): { id: HarborWorkplaceId; status: WorkplaceStatus }[] {
   void state;
   const harborDef = content.harbor;
   if (!harborDef || !visit.route) return [];
   const route = visit.route;
-  return harborDef.workplaces.map((w) => {
-    const start = indexOfBlock(route, w.stages);
+  const plain = (w: HarborWorkplace): WorkplaceStatus => {
+    const start = lastIndexOfBlock(route, w.stages);
     const end = start + w.stages.length; // exclusive
-    let status: WorkplaceStatus;
-    if (start < 0) status = "locked";
-    else if (visit.stageIndex >= end) status = "done";
-    else if (visit.stageIndex >= start) status = "current";
-    else if (w.afterAllOthers) {
-      const othersDone = harborDef.workplaces.filter((o) => o.id !== w.id).every((o) => {
-        const oStart = indexOfBlock(route, o.stages);
-        return oStart >= 0 && visit.stageIndex >= oStart + o.stages.length;
-      });
+    if (start < 0) return "locked";
+    if (visit.stageIndex >= end) {
+      // Passed, but a block whose every required stage was SKIPPED is not done work (IV5-10): honest "skipped".
+      const required = w.stages.filter((st) => st !== "island");
+      const allSkipped = required.length > 0 && required.every((st) => standingSkip(visit, st));
+      return allSkipped ? "skipped" : "done";
+    }
+    if (visit.stageIndex >= start) return "current";
+    return "open";
+  };
+  return harborDef.workplaces.map((w) => {
+    let status = plain(w);
+    if (status === "open" && w.afterAllOthers) {
+      const othersDone = harborDef.workplaces.filter((o) => o.id !== w.id).every((o) => plain(o) === "done");
       status = othersDone ? "open" : "locked";
-    } else status = "open";
+    }
     return { id: w.id, status };
   });
 }
 
+/** Workplaces the child may enter from the island: open ones and skipped ones (to catch up). */
 function openWorkplaces(state: MissionState, content: LearningContent, visit: VisitRecord): { id: HarborWorkplaceId; status: WorkplaceStatus }[] {
-  return workplaceStatuses(state, content, visit).filter((w) => w.status === "open" || w.status === "current");
+  return workplaceStatuses(state, content, visit).filter((w) => w.status === "open" || w.status === "current" || w.status === "skipped");
 }
 
 /** The course lesson the child is on, or null when no course applies. */
@@ -1201,12 +1328,20 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       if (!workplace) throw new LearningOpError("invalid", "unknown workplace");
       const harbor = state.harbor ?? emptyHarbor();
       const open = openWorkplaces(state, content, visit);
-      if (!open.some((w) => w.id === op.workplace)) throw new LearningOpError("not-allowed", `the ${op.workplace} workplace is not open`);
-      // Move the chosen block to the front of the remaining route (the blocks keep their internal order; nothing done is touched).
+      const chosen = open.find((w) => w.id === op.workplace);
+      if (!chosen) throw new LearningOpError("not-allowed", `the ${op.workplace} workplace is not open`);
       const rest = visit.route.slice(visit.stageIndex + 1);
       const block = [...workplace.stages];
       const start = indexOfBlock(rest, block);
-      if (start > 0) {
+      if (chosen.status === "skipped") {
+        // Catching up a skipped workplace: its block is inserted again right after this island stop (nothing passed is
+        // rewritten; the earlier skips stay recorded and are marked as caught up so the status can become "done" only
+        // through real work in the re-entered block).
+        visit.route = [...visit.route.slice(0, visit.stageIndex + 1), ...block, "island", ...rest];
+        for (const sk of visit.skippedStages) if (block.includes(sk.stage) && !sk.undone && sk.reason !== "deferred") sk.undone = true;
+        (harbor.reentered ??= []).push(op.workplace);
+      } else if (start > 0) {
+        // Move the chosen block to the front of the remaining route (the blocks keep their internal order; nothing done is touched).
         const without = [...rest.slice(0, start), ...rest.slice(start + block.length)];
         // The island stop that preceded the block in the default order moves with it: remove the first "island" after the moved block.
         const nextIsland = without.indexOf("island");
@@ -1216,7 +1351,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       harbor.entered.push(op.workplace);
       state.harbor = harbor;
       advance(state, content);
-      result = { workplace: op.workplace, route: visit.route };
+      result = { workplace: op.workplace, route: visit.route, reentered: chosen.status === "skipped" };
       break;
     }
 
@@ -1371,7 +1506,9 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
     }
 
     case "reasoning-turn":
+    case "reasoning-reply":
     case "reasoning-choice": {
+      if (liveTutorDeferred(state.currentVisit)) throw new LearningOpError("not-available", "the live reasoning conversation is deferred for this visit (owner scope reduction)");
       requireStage(state, content, "explain");
       const visit = state.currentVisit as VisitId;
       const def = content.reasoning;
@@ -1379,30 +1516,67 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const itemId = explainTarget(state, visit);
       if (!itemId) throw new LearningOpError("not-allowed", "no resolved item to explain");
       const item = mathItem(content, itemId);
+      const itemState = mathState(state, itemId);
       const reasoning = state.reasoning ?? (state.reasoning = {});
       const current = reasoning[itemId] ?? newReasoningState(itemId, def, nowIso);
-      let step;
+      const q = itemState.quotientResult ?? null;
+      const childAnswer = q ? `${q.full} volle ${item.group.plural}, ${q.remaining} übrig${typeof q.needed === "number" ? `, ${q.needed} für alle` : ""} (${itemState.outcome === "correct" ? "richtig" : "mit Hilfe gelöst"})` : itemState.attempts.length ? `„${itemState.attempts[itemState.attempts.length - 1].raw}“` : "gelöst";
+      const ctx: ReasoningDispatchContext = { item, def, childAnswer, page: "mission" };
       if (op.op === "reasoning-turn") {
-        const text = boundedText(op.text, MAX_TEXT_CHARS, "explanation");
+        const text = exactText(op.text, MAX_TEXT_CHARS, "explanation");
         if (op.modality !== "typed" && op.modality !== "spoken") throw new LearningOpError("invalid", "modality must be typed or spoken");
         if (current.status === "scaffold") throw new LearningOpError("not-allowed", "choose first: counters, teaching or continue");
         if (current.status === "done") throw new LearningOpError("not-allowed", "the explanation is finished");
-        step = applyReasoningTurn(current, text, op.modality, item, def, nowIso);
-        const child = step.state.turns.filter((t) => t.role === "child");
-        records.samples.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "reasoning_turn", language: "de", modality: op.modality, text, metrics: { turn: child.length, classification: child[child.length - 1]?.classification ?? null, nabu: step.nabu.kind, probe: step.nabu.probe ?? null, probesUsed: step.state.probesUsed, spellingJudged: false }, at: nowIso });
+        if (current.status === "awaiting") throw new LearningOpError("not-allowed", "the assistant's reply is pending — send it or wait");
+        if (turnsLeft(current, def) <= 0) throw new LearningOpError("not-allowed", "no turns left in this conversation");
+        const turnId = env.newId();
+        let dispatch;
+        try {
+          dispatch = applyReasoningTurn(current, text, op.modality, ctx, turnId, nowIso);
+        } catch (error) {
+          if (error instanceof Error && /too long/.test(error.message)) throw new LearningOpError("invalid", def.fallback.tooLong);
+          throw error;
+        }
+        reasoning[itemId] = dispatch.state;
+        const childTurn = dispatch.state.turns[dispatch.state.turns.length - 1];
+        records.samples.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "reasoning_turn", language: "de", modality: op.modality, text, metrics: { turn: dispatch.state.childTurns, screen: childTurn.screen ?? null, turnId, reqHash: dispatch.reqHash, afterTeach: dispatch.state.afterTeach, supportMode: dispatch.state.supportMode, assessmentsStale: dispatch.state.assessments.some((a) => a.stale), spellingJudged: false }, at: nowIso });
+        // Provenance: the dispatch is recorded BEFORE the browser sends it — the question exists even if the reply never arrives.
+        records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "tutor_question", payload: { reasoning: true, turnId, reqHash: dispatch.reqHash, text: text.slice(0, 500), message: dispatch.message }, at: nowIso });
+        result = { status: "awaiting", dispatch: { turnId: dispatch.turnId, message: dispatch.message, reqHash: dispatch.reqHash }, turnsLeft: turnsLeft(dispatch.state, def), done: false };
+        break;
+      }
+      let step;
+      if (op.op === "reasoning-reply") {
+        if (typeof op.turnId !== "string" || !op.turnId) throw new LearningOpError("invalid", "turnId is required");
+        if (current.status !== "awaiting" || !current.pending) throw new LearningOpError("not-allowed", "no reply is pending");
+        if (current.pending.turnId !== op.turnId) throw new LearningOpError("not-allowed", "the reply belongs to another turn");
+        const ok = op.ok === true;
+        // The reply's EXACT wire text: never normalised or sliced before hashing (R2-02); an overlong reply is refused.
+        const text = ok && typeof op.text === "string" ? op.text : "";
+        if (text.length > MAX_REPLY_CHARS) throw new LearningOpError("invalid", `reply too long (${text.length} > ${MAX_REPLY_CHARS})`);
+        // One discriminated origin from here to the report: verified / missing / malformed / invalid (assessment reset, trust).
+        const origin: ReplyOrigin = ok && text.trim() ? receiptOrigin(op.receipt, { child: state.child, turnId: op.turnId, reqHash: current.pending.reqHash, text }) : originWithoutBinding(op.receipt);
+        step = applyReasoningReply(current, { turnId: op.turnId, ok, text, origin, provenance: provenanceOf(op.receipt) }, ctx, nowIso);
+        // The reply is recorded BEFORE anything is shown: the exact text with its origin (an untrusted text is kept in the evidence only, never in the transcript),
+        // the support event if one was recorded, and the assessment revision it produced (Nabu's assessment, labelled as such).
+        const latest = step.state.assessments[step.state.assessments.length - 1] ?? null;
+        records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "tutor_reply", payload: { reasoning: true, turnId: op.turnId, ok, origin, receiptProblem: op.receipt && "invalid" in op.receipt ? op.receipt.invalid : null, text, shown: step.nabu.kind === "dialogue" || step.nabu.kind === "prompt-bank" ? step.nabu.text : null, shownKind: step.nabu.kind ?? null, source: step.nabu.source ?? null, malformed: step.malformed, supportRecorded: step.supportRecorded, supportMode: step.state.supportMode, assessment: latest && latest.turnId === op.turnId ? { revision: latest.revision, schemaVersion: latest.schemaVersion, kind: latest.kind, criteria: latest.criteria, ungrounded: latest.ungrounded, preRetractionGrounding: latest.preRetractionGrounding } : null, screen: step.state.screen, classification: origin !== "verified" ? `origin-${origin}` : !ok || !text.trim() ? "unavailable" : step.malformed ? "malformed" : step.nabu.kind === "prompt-bank" ? "clarification-prompt" : step.done && step.nabu.kind === "dialogue" ? "closing" : step.supportRecorded === "tutor-content" ? "tutor-content" : "neutral", supportPhase: step.state.supportEvents.at(-1)?.turnId === op.turnId ? step.state.supportEvents.at(-1)?.phase ?? null : null }, at: nowIso });
       } else {
         if (op.choice !== "counters" && op.choice !== "teach" && op.choice !== "continue") throw new LearningOpError("invalid", "choice must be counters, teach or continue");
-        step = applyReasoningChoice(current, op.choice, def, nowIso);
+        if (current.status !== "scaffold") throw new LearningOpError("not-allowed", "no scaffold is offered");
+        try {
+          step = applyReasoningChoice(current, op.choice, def, nowIso);
+        } catch (error) {
+          throw new LearningOpError("not-allowed", error instanceof Error ? error.message : "choice not available");
+        }
+        // Support in the conversation is recorded on the CONVERSATION (support mode + event log); the item's own answer record is an
+        // observed fact that later help never rewrites (assessment reset, observed facts).
         if (op.choice === "counters") {
-          // Answer-revealing support inside the conversation: recorded on the item (already resolved) and in the support events.
-          const target = mathState(state, itemId);
-          if (!target.supportGiven.includes("representation")) target.supportGiven.push("representation");
-          records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "representation", payload: { counters: true, reasoning: true }, at: nowIso });
-          step = { ...step, state: reopenAfterCounters(step.state) };
+          records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "representation", payload: { counters: true, reasoning: true, supportMode: step.state.supportMode }, at: nowIso });
         } else if (op.choice === "teach") {
-          records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "direct_teaching", payload: { reasoning: true, text: def.teach }, at: nowIso });
+          records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "direct_teaching", payload: { reasoning: true, text: def.teach, recordsMethod: false, supportMode: step.state.supportMode }, at: nowIso });
         } else {
-          records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "step_down", payload: { reasoning: true, method: "not-yet-established" }, at: nowIso });
+          records.supports.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "step_down", payload: { reasoning: true, method: step.state.method, closeReason: step.state.closeReason }, at: nowIso });
         }
       }
       reasoning[itemId] = step.state;
@@ -1411,10 +1585,11 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         const spoken = step.state.turns.some((t) => t.role === "child" && t.modality === "spoken");
         const typed = step.state.turns.some((t) => t.role === "child" && t.modality === "typed");
         state.explanations.push({ visit, text, modality: spoken && !typed ? "spoken" : "typed", taskId: itemId, at: nowIso });
-        records.samples.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "explanation", language: "de", modality: spoken && typed ? "spoken" : spoken ? "spoken" : "typed", text, metrics: { method: step.state.method, strategy: step.state.strategy, probesUsed: step.state.probesUsed, support: step.state.support, turns: step.state.turns.length, spellingJudged: false }, at: nowIso });
+        const fin = step.state.final;
+        records.samples.push({ id: env.newId(), visitId: visit, taskId: itemId, kind: "explanation", language: "de", modality: spoken ? "spoken" : "typed", text, metrics: { method: step.state.method, assessment: fin ? { by: fin.by, revision: fin.revision, schemaVersion: fin.schemaVersion, stale: fin.stale, ungrounded: fin.ungrounded, preRetractionGrounding: fin.preRetractionGrounding, levels: { strategy: effectiveLevel(fin, "strategy"), quantities: effectiveLevel(fin, "quantities"), meaning: effectiveLevel(fin, "meaning") }, criteria: fin.criteria } : null, revisions: step.state.assessments.length, supportMode: step.state.supportMode, supportEvents: step.state.supportEvents, clarificationsUsed: step.state.clarificationsUsed, childTurns: step.state.childTurns, assistantTurns: step.state.assistantTurns, origins: step.state.origins, support: step.state.support, screen: step.state.screen, closeReason: step.state.closeReason, turns: step.state.turns.length, spellingJudged: false }, at: nowIso });
         advance(state, content);
       }
-      result = { nabu: step.nabu.text, kind: step.nabu.kind, status: step.state.status, method: step.state.method, methodLabel: methodLabel(def, step.state.method), probesLeft: Math.max(0, def.maxProbes - step.state.probesUsed), done: step.done };
+      result = { nabu: step.nabu.text, kind: step.nabu.kind, source: step.nabu.source ?? null, origin: step.nabu.origin ?? null, status: step.state.status, method: step.state.method, methodLabel: methodLabel(def, step.state.method), supportMode: step.state.supportMode, supportRecorded: step.supportRecorded, turnsLeft: turnsLeft(step.state, def), done: step.done, malformed: step.malformed, closeReason: step.state.closeReason, assessment: step.state.final ? reasoningAssessmentView(step.state, def) : null };
       break;
     }
 
@@ -1428,36 +1603,81 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       if (!page) throw new LearningOpError("not-allowed", "no log sentence to review in this visit");
       if (page.modality === "spoken") throw new LearningOpError("not-allowed", "a spoken page is not reviewed for spelling");
       const joins = content.writing?.spacing.joins ?? [];
-      const review = reviewLogSentence(page.text, reviewDef, joins);
-      const revised = boundedText(op.text, MAX_TEXT_CHARS, "revision");
+      const review = reviewLogSentence(page.text, reviewDef, joins, semanticReviewFor(state, visit, page)?.semantic ?? null);
+      const revised = exactText(op.text, MAX_TEXT_CHARS, "revision");
       const evaluation = evaluateLogRevision(review, revised, reviewDef, joins);
       const clarifications: Record<string, string> = {};
       if (op.clarifications && typeof op.clarifications === "object") {
         for (const [word, meaning] of Object.entries(op.clarifications)) {
-          if (review.unknownWords.includes(word) && typeof meaning === "string" && meaning.trim()) clarifications[word] = meaning.replace(/\s+/g, " ").trim().slice(0, 200);
+          if ((review.clarify?.words.includes(word) || (word === "question" && review.clarify)) && typeof meaning === "string" && meaning.trim()) clarifications[word] = meaning.replace(/\s+/g, " ").trim().slice(0, 200);
         }
       }
-      const record: LogReviewRecord = { visit, logId: logDef.id, original: page.text, review, revised, evaluation, clarifications, outcome: evaluation.outcome, helpShown: review.suggestion !== null, modality: "typed", at: nowIso };
+      const helpShown = review.suggestion !== null;
+      const verdict = revisionEvidence(review, evaluation, helpShown);
+      const record: LogReviewRecord = { visit, logId: logDef.id, original: page.text, review, revised, evaluation, clarifications, outcome: evaluation.outcome, helpShown, evidence: verdict.evidence, correct: null, criteria: evaluation.criteria, modality: "typed", at: nowIso };
       (state.logReviews ??= []).push(record);
       const taught = review.taught.length;
-      const correct = taught === 0 ? null : evaluation.outcome === "revised";
-      const evidence: EvidenceCategory = taught === 0 ? "unscored" : evaluation.outcome === "revised" ? (evaluation.copiedSuggestion || record.helpShown ? "supported" : "independent") : "incorrect";
+      const correct = null;
+      const evidence: EvidenceCategory = verdict.evidence;
       records.attempts.push({
         id: env.newId(), visitId: visit, taskId: logDef.id, taskVersion: logDef.version, objective: "writing-review-revision",
         attemptNo: (state.logReviews ?? []).filter((r) => r.visit === visit).length,
-        answer: { taught: review.taught.map((f) => f.id), resolved: evaluation.resolved, unresolved: evaluation.unresolved, introduced: evaluation.introduced, copiedSuggestion: evaluation.copiedSuggestion, aspectsClean: review.clean, unknownWords: review.unknownWords },
+        answer: { taught: review.taught.map((f) => f.id), criteria: evaluation.criteria, resolved: evaluation.resolved, unresolved: evaluation.unresolved, unverified: evaluation.unverified, introduced: evaluation.introduced, unassessed: evaluation.unassessed, boundaries: evaluation.boundaries, copiedSuggestion: evaluation.copiedSuggestion, aspectsClean: review.clean, aspectsUnchecked: review.unchecked, uncheckedWords: review.uncheckedWords, semantic: review.semantic?.status ?? "none" },
         correct, evidence, support: record.helpShown ? ["suggestion-shown"] : [], exposureBefore: record.helpShown ? "suggestion-shown" : "none",
         stimulusLanguage: "de", responseLanguage: "de", modality: "typed",
-        uncertainty: taught === 0 ? "nothing to teach at the six reviewed aspects — not scored" : evaluation.copiedSuggestion ? "the suggestion was copied verbatim — copying, never independent" : null,
+        uncertainty: verdict.uncertainty,
         teachingMove: taught ? "writing-review" : null, teachingReason: taught ? review.taught.map((f) => f.aspect).join(",") : null, secondsSinceTeaching: null, at: nowIso,
       });
-      records.samples.push({ id: env.newId(), visitId: visit, taskId: logDef.id, kind: "writing_review", language: "de", modality: "typed", text: revised, metrics: { original: page.text, findings: review.findings.map((f) => f.id), taught: review.taught.map((f) => f.id), clean: review.clean, unknownWords: review.unknownWords, suggestion: review.suggestion, outcome: evaluation.outcome, resolved: evaluation.resolved, unresolved: evaluation.unresolved, introduced: evaluation.introduced, copiedSuggestion: evaluation.copiedSuggestion, helpShown: record.helpShown }, at: nowIso });
+      records.samples.push({ id: env.newId(), visitId: visit, taskId: logDef.id, kind: "writing_review", language: "de", modality: "typed", text: revised, metrics: { original: page.text, findings: review.findings.map((f) => ({ id: f.id, source: f.source, certainty: f.certainty })), taught: review.taught.map((f) => f.id), clean: review.clean, unchecked: review.unchecked, uncheckedWords: review.uncheckedWords, clarify: review.clarify, semantic: review.semantic?.status ?? "none", suggestion: review.suggestion, outcome: evaluation.outcome, criteria: evaluation.criteria, resolved: evaluation.resolved, unresolved: evaluation.unresolved, unverified: evaluation.unverified, introduced: evaluation.introduced, unassessed: evaluation.unassessed, boundaries: evaluation.boundaries, copiedSuggestion: evaluation.copiedSuggestion, helpShown: record.helpShown }, at: nowIso });
       for (const [word, meaning] of Object.entries(clarifications)) records.samples.push({ id: env.newId(), visitId: visit, taskId: logDef.id, kind: "writing_clarification", language: "de", modality: "typed", text: meaning, metrics: { word, unscored: true }, at: nowIso });
       // The spacing focus follows the reviewed spacing finding of the ORIGINAL (typed): flagged opens it; a helped revision never retires it.
       const spacingFlags = flagSpacing(page.text, joins);
       state.feedback = updateSpacingFocus(feedbackOf(state), { outcome: spacingFlags.length ? "flagged" : assessSpacing(page.text, joins).assessable ? "clean" : "unassessable", modality: "typed", helpExposed: true, flagged: spacingFlags.length, text: page.text, at: nowIso, visit, lesson: `writing:${logDef.id}` });
       advance(state, content);
-      result = { outcome: evaluation.outcome, resolved: evaluation.resolved.length, unresolved: evaluation.unresolved.length, taught, introduced: evaluation.introduced.length };
+      result = { outcome: evaluation.outcome, evidence: verdict.evidence, criteria: evaluation.criteria, resolved: evaluation.resolved.length, unresolved: evaluation.unresolved.length, unverified: evaluation.unverified.length, unassessed: evaluation.unassessed, taught, introduced: evaluation.introduced.length, uncertainty: verdict.uncertainty };
+      break;
+    }
+
+    case "review-log-dispatch":
+    case "review-log-semantic": {
+      if (liveTutorDeferred(state.currentVisit)) throw new LearningOpError("not-available", "the live semantic writing review is deferred for this visit (owner scope reduction)");
+      requireStage(state, content, "log-review");
+      const visit = state.currentVisit as VisitId;
+      const logDef = logDefFor(content, visit);
+      const reviewDef = content.writing?.review;
+      if (!logDef || !reviewDef) throw new LearningOpError("not-available", "no writing review in this content");
+      const page = [...state.pages].reverse().find((p) => p.visit === visit) ?? null;
+      if (!page) throw new LearningOpError("not-allowed", "no log sentence to review in this visit");
+      if (page.modality === "spoken") throw new LearningOpError("not-allowed", "a spoken page is not reviewed");
+      if (typeof op.turnId !== "string" || op.turnId !== semanticTurnId(visit, page)) throw new LearningOpError("not-allowed", "the semantic review belongs to another sentence");
+      const existing = semanticReviewFor(state, visit, page);
+      const message = buildWritingReviewDispatch(reviewDef, logDef, page.text);
+      const reqHash = sha256Hex(message);
+      if (op.op === "review-log-dispatch") {
+        // The durable question receipt BEFORE the browser sends anything (IV5-12); idempotent while pending.
+        if (existing && existing.status !== "pending") throw new LearningOpError("not-allowed", "the semantic review is already recorded");
+        if (!existing) {
+          (state.logReviewSemantics ??= []).push({ visit, logId: logDef.id, turnId: op.turnId, status: "pending", semantic: null, reqHash, dispatchedAt: nowIso, at: nowIso });
+          records.supports.push({ id: env.newId(), visitId: visit, taskId: logDef.id, kind: "tutor_question", payload: { writingReview: true, turnId: op.turnId, reqHash, message }, at: nowIso });
+        }
+        result = { status: "pending", turnId: op.turnId, reqHash, message };
+        break;
+      }
+      if (!existing || existing.status !== "pending") throw new LearningOpError("not-allowed", existing ? "the semantic review is already recorded" : "the dispatch was not recorded first (review-log-dispatch)");
+      const ok = op.ok === true;
+      // The reply's EXACT wire text (R2-02): hashed as received; overlong replies are refused, never sliced.
+      const text = ok && typeof op.text === "string" ? op.text : "";
+      if (text.length > MAX_REPLY_CHARS) throw new LearningOpError("invalid", `reply too long (${text.length} > ${MAX_REPLY_CHARS})`);
+      const origin: ReplyOrigin = ok && text.trim() ? receiptOrigin(op.receipt, { child: state.child, turnId: op.turnId, reqHash: existing.reqHash, text }) : originWithoutBinding(op.receipt);
+      const semantic = !ok || !text.trim() ? unavailableSemanticReview() : origin === "invalid" || origin === "malformed" ? unavailableSemanticReview(`receipt ${origin}: ${(op.receipt as InvalidReceipt).invalid}`) : origin !== "verified" ? unverifiedSemanticReview(text) : parseWritingReviewReply(text, page.text);
+      existing.status = semantic.status;
+      existing.semantic = semantic;
+      existing.origin = origin;
+      existing.provenance = provenanceOf(op.receipt);
+      existing.at = nowIso;
+      records.supports.push({ id: env.newId(), visitId: visit, taskId: logDef.id, kind: "tutor_reply", payload: { writingReview: true, turnId: op.turnId, ok, origin, receiptProblem: op.receipt && "invalid" in op.receipt ? op.receipt.invalid : null, text, status: semantic.status, problem: semantic.problem, findings: { taskFulfilled: semantic.taskFulfilled, reason: semantic.reason, complete: semantic.complete, grammarChecked: semantic.grammarChecked, unclearWords: semantic.unclearWords, grammar: semantic.grammar, question: semantic.question }, classification: origin !== "verified" ? `origin-${origin}` : "semantic-review" }, at: nowIso });
+      const review = reviewLogSentence(page.text, reviewDef, content.writing?.spacing.joins ?? [], semantic);
+      result = { status: semantic.status, origin, taught: review.taught.map((f) => f.id), points: review.points.length, unchecked: review.unchecked, clarify: review.clarify };
       break;
     }
 
@@ -1469,7 +1689,8 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       // requested. It may have advanced meanwhile (another tab, a late tutor
       // reply): the event is still recorded against the ORIGINAL task, so a
       // reply that reveals an answer is bound to that item, never lost.
-      const target = op.taskId ?? activeItem ?? (isLanguageSegmentId(stage) ? stage : null);
+      const replyEntry = op.kind === "tutor_reply" && op.payload && typeof op.payload === "object" && typeof (op.payload as { turnId?: unknown }).turnId === "string" ? (state.tutorDispatches ?? []).find((d) => d.turnId === (op.payload as { turnId: string }).turnId) ?? null : null;
+      const target = op.taskId ?? replyEntry?.taskId ?? activeItem ?? (isLanguageSegmentId(stage) ? stage : null);
       const targetItem = target !== null && isScoredMathItemId(target) && state.math[target] ? target : null;
       // Language task ids come from the view as "<segment>/<step>" (the tutor
       // context) or as the bare segment id (gloss, audio, word list). Both bind
@@ -1485,18 +1706,81 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       }
       let payload: unknown = op.payload ?? null;
       const payloadRecord = (op.payload && typeof op.payload === "object" ? op.payload : {}) as Record<string, unknown>;
+      let dispatch: { turnId: string; message: string; reqHash: string; replayed: boolean } | null = null;
+      let tutorOrigin: ReplyOrigin | null = null;
+      let tutorShown = false;
+      let transportFailure = false;
+      if ((op.kind === "tutor_question" || op.kind === "tutor_reply") && liveTutorDeferred(state.currentVisit)) {
+        // Temporary Visit 5 scope reduction: no free question leaves the app for a deferred visit — nothing is dispatched or recorded.
+        throw new LearningOpError("not-available", "the live tutor is deferred for this visit (owner scope reduction)");
+      }
+      if (op.kind === "tutor_question") {
+        // The free question goes through the SAME trusted boundary as every other reply: the server builds the exact message
+        // from its own view of the task and records an IMMUTABLE pending context (child, session, visit, task, turn, request hash)
+        // before the send. A duplicate turn id with the same text/task/visit replays that context; anything else is a conflict.
+        const turnId = typeof payloadRecord.turnId === "string" && /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(payloadRecord.turnId) ? payloadRecord.turnId : null;
+        const childText = typeof payloadRecord.text === "string" ? payloadRecord.text.slice(0, 500) : "";
+        if (turnId && childText.trim()) {
+          const ledger = (state.tutorDispatches ??= []);
+          const existing = ledger.find((d) => d.turnId === turnId) ?? null;
+          const tutor = buildChildView(state, content, env.settings, env.now(), 0).tutor;
+          const message = tutor ? buildTutorMessage(tutor, childText) : childText;
+          const taskKey = target ?? stage ?? null;
+          if (existing) {
+            if (existing.childText !== childText || existing.taskId !== taskKey || existing.visitId !== visit.id) throw new LearningOpError("not-allowed", "this turn id was already used for a different question, task or visit");
+            // stable replay of the SAME question: the recorded context stands; the message is rebuilt only if it still hashes the same
+            dispatch = { turnId, message: sha256Hex(message) === existing.reqHash ? message : "", reqHash: existing.reqHash, replayed: true };
+            if (!dispatch.message) throw new LearningOpError("not-allowed", "the context of this question changed since it was dispatched");
+          } else {
+            const reqHash = sha256Hex(message);
+            dispatch = { turnId, message, reqHash, replayed: false };
+            ledger.push({ turnId, taskId: taskKey, visitId: visit.id, child: state.child, sessionSuffix: "learn", childText, reqHash, at: nowIso, status: "pending" });
+            while (ledger.length > 24) ledger.shift();
+          }
+          payload = { ...payloadRecord, text: childText, turnId, reqHash: dispatch.reqHash, message: dispatch.message, replayed: dispatch.replayed };
+        }
+      }
+      if (op.kind === "tutor_reply") {
+        // ONE consumed pending-dispatch transition (R5-01/02). Every reply, whatever the client's ok flag says, must satisfy ALL of:
+        // a pending (not consumed, not failed) context for this turn; matching child/session/visit/task; usable reply text;
+        // a receipt bound to that context's request hash and these reply bytes. Only then is it verified/shown/provenanced.
+        // An unusable reply (ok:false / empty) records a TRANSPORT FAILURE only — never authenticated prose — and consumes the context.
+        const turnId = typeof payloadRecord.turnId === "string" ? payloadRecord.turnId : null;
+        const text = typeof payloadRecord.text === "string" ? payloadRecord.text : "";
+        if (text.length > MAX_REPLY_CHARS) throw new LearningOpError("invalid", `reply too long (${text.length} > ${MAX_REPLY_CHARS})`);
+        const entry = turnId ? (state.tutorDispatches ?? []).find((d) => d.turnId === turnId) ?? null : null;
+        if (!entry) throw new LearningOpError("not-allowed", "no pending dispatch for this turn");
+        if (entry.status !== "pending") throw new LearningOpError("not-allowed", "this dispatch was already consumed");
+        if (entry.child !== state.child || entry.visitId !== visit.id || entry.sessionSuffix !== "learn") throw new LearningOpError("not-allowed", "the reply belongs to another child, session or visit");
+        if (op.taskId !== null && op.taskId !== undefined && op.taskId !== entry.taskId) throw new LearningOpError("not-allowed", "the reply names a different task than its question");
+        const usable = payloadRecord.ok === true && text.trim().length > 0;
+        if (!usable) {
+          transportFailure = true;
+          tutorOrigin = originWithoutBinding(op.receipt);
+          entry.status = "failed";
+          entry.consumedAt = nowIso;
+          entry.outcome = { origin: tutorOrigin, resHash: null, shown: false };
+        } else {
+          tutorOrigin = receiptOrigin(op.receipt, { child: entry.child, turnId: entry.turnId, reqHash: entry.reqHash, text });
+          tutorShown = tutorOrigin === "verified";
+          entry.status = tutorShown ? "consumed" : "failed";
+          entry.consumedAt = nowIso;
+          entry.outcome = { origin: tutorOrigin, resHash: sha256Hex(text), shown: tutorShown };
+        }
+      }
       if (targetItem) {
         const item = mathState(state, targetItem);
         if (ANSWER_RELEVANT_SUPPORT.includes(op.kind) && !item.supportGiven.includes(op.kind)) item.supportGiven.push(op.kind);
         if (op.kind === "tutor_reply") {
           const text = typeof payloadRecord.text === "string" ? payloadRecord.text : "";
-          const revealed = tutorReplyRevealsAnswer(text, mathItem(content, targetItem));
-          const classified = text.trim().length > 0;
+          // Only a VERIFIED, bound, consumed reply is shown, so only that can reveal an answer; untrusted text is evidence only.
+          const shown = tutorShown;
+          const revealed = shown && tutorReplyRevealsAnswer(text, mathItem(content, targetItem));
           if (revealed && item.exposure !== "answer_revealed") {
             item.exposure = "answer_revealed";
             records.exposures.push({ taskId: targetItem, taskVersion: mathItem(content, targetItem).version, kind: "answer_revealed", source: "tutor_reply", at: nowIso });
           }
-          payload = { ...payloadRecord, text: text.slice(0, 2000), revealed, classification: classified ? (revealed ? "answer_revealed" : "supported") : "unclassified" };
+          payload = { ...payloadRecord, text, origin: tutorOrigin, shown, transportFailure, provenance: shown ? provenanceOf(op.receipt) : null, revealed, classification: transportFailure ? "transport-failure" : !shown ? `origin-${tutorOrigin}` : revealed ? "answer_revealed" : "supported" };
         }
         if (op.kind === "clarification" || op.kind === "representation" || op.kind === "example" || op.kind === "direct_teaching" || op.kind === "step_down") {
           noteTeaching(state, nowIso);
@@ -1511,11 +1795,14 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         if (op.kind === "word_choice") help.wordChoice.push(text ?? "opened");
         if (op.kind === "tutor_question" || op.kind === "tutor_reply") help.tutor += 1;
         if (op.kind === "tutor_reply") {
-          payload = { ...payloadRecord, text: (text ?? "").slice(0, 2000), classification: "supported" };
+          payload = { ...payloadRecord, text: typeof payloadRecord.text === "string" ? payloadRecord.text : "", origin: tutorOrigin, shown: tutorShown, transportFailure, provenance: tutorShown ? provenanceOf(op.receipt) : null, classification: transportFailure ? "transport-failure" : !tutorShown ? `origin-${tutorOrigin}` : "supported" };
         }
       }
+      if (op.kind === "tutor_reply" && !targetItem && !targetSegment) {
+        payload = { ...payloadRecord, text: typeof payloadRecord.text === "string" ? payloadRecord.text : "", origin: tutorOrigin, shown: tutorShown, transportFailure, provenance: tutorShown ? provenanceOf(op.receipt) : null, classification: transportFailure ? "transport-failure" : !tutorShown ? `origin-${tutorOrigin}` : "supported" };
+      }
       records.supports.push({ id: env.newId(), visitId: visit.id, taskId: target ?? stage, kind: op.kind, payload, at: nowIso });
-      result = { recorded: op.kind, taskId: target ?? stage };
+      result = { recorded: op.kind, taskId: target ?? stage, ...(dispatch ? { dispatch: { turnId: dispatch.turnId, message: dispatch.message, reqHash: dispatch.reqHash }, replayed: dispatch.replayed } : {}), ...(tutorOrigin ? { origin: tutorOrigin, shown: tutorShown, transportFailure } : {}) };
       break;
     }
 
@@ -1975,9 +2262,10 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       if (stage !== op.stage) throw new LearningOpError("not-allowed", "stage is not active");
       const optional: StageId[] = ["LANG-EN-WATER", "LANG-ES-AGUA", "LANG-ES-STATION", "LANG-EN-PIER", "LANG-ES-HARBOR", "LANG-ES-HARBOR-CHECK", "typing", "typing-course", "explain", "log-revise", "log-transfer", "log-review"];
       if (!optional.includes(op.stage)) throw new LearningOpError("not-allowed", "only optional segments can be skipped");
+      if (op.reason === "deferred" && !(op.stage === "explain" && liveTutorDeferred(visit.id))) throw new LearningOpError("not-allowed", "the deferred reason is the owner's rule for the explain stage of a deferred visit only");
       visit.skippedStages.push({ stage: op.stage, reason: op.reason });
-      if (op.stage === "typing" || op.stage === "typing-course") state.typing.skipped.push({ visit: visit.id, reason: op.reason });
-      if (isLanguageSegmentId(op.stage)) languageState(state, op.stage).skipped = op.reason;
+      if (op.stage === "typing" || op.stage === "typing-course") state.typing.skipped.push({ visit: visit.id, reason: op.reason as "time" | "child" });
+      if (isLanguageSegmentId(op.stage)) languageState(state, op.stage).skipped = op.reason as "time" | "child";
       if (op.stage === "log-revise") {
         const page = [...state.pages].reverse().find((p) => p.visit === visit.id) ?? null;
         if (page) {
@@ -1989,13 +2277,14 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         // A skipped conversation stays recorded as it was; the method is honestly open.
         const target = explainTarget(state, visit.id);
         const open = target ? state.reasoning?.[target] : null;
-        if (open && open.status !== "done") state.reasoning![target!] = { ...open, status: "done", method: "not-yet-established", closedAt: nowIso };
+        // D1: an owner-deferred transition closes the captured conversation as it was (turns, assessments, origins kept; no new credit) with its own reason
+        if (open && open.status !== "done") state.reasoning![target!] = closeReasoningUnresolved(open, nowIso, op.reason === "deferred" ? "owner-deferred" : "stage-skipped");
       }
       if (op.stage === "log-review") {
         const logDef = logDefFor(content, visit.id);
         const page = [...state.pages].reverse().find((p) => p.visit === visit.id) ?? null;
         if (logDef && page && content.writing?.review) {
-          const review = reviewLogSentence(page.text, content.writing.review, content.writing.spacing.joins);
+          const review = reviewLogSentence(page.text, content.writing.review, content.writing.spacing.joins, semanticReviewFor(state, visit.id, page)?.semantic ?? null);
           (state.logReviews ??= []).push({ visit: visit.id, logId: logDef.id, original: page.text, review, revised: null, evaluation: null, clarifications: {}, outcome: "skipped", helpShown: review.suggestion !== null, modality: "typed", at: nowIso });
         }
       }
@@ -2012,7 +2301,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
     case "save-log": {
       requireStage(state, content, "log");
       if (!state.base.name) throw new LearningOpError("not-allowed", "name the base first");
-      const text = boundedText(op.text, MAX_TEXT_CHARS, "log");
+      const text = exactText(op.text, MAX_TEXT_CHARS, "log");
       const visit = state.currentVisit as VisitId;
       const explanation = [...state.explanations].reverse().find((e) => e.visit === visit)?.text ?? null;
       const page: ExpeditionPage = {
@@ -2412,15 +2701,28 @@ export type HarborView = {
   entered: HarborWorkplaceId[];
 };
 
+/** Nabu's assessment as shown: per criterion the effective level with its label, the passages and the rationale; always labelled as Nabu's. */
+export type ReasoningAssessmentView = { by: "nabu-child-assistant"; revision: number; revisions: number; stale: boolean; ungrounded: boolean; preRetractionGrounding: boolean; criteria: { id: string; label: string; level: AssessmentLevel; levelLabel: string; passages: string[]; rationale: string }[] };
+
 export type ReasoningView = {
   itemId: ScoredMathItemId;
   status: ReasoningState["status"];
-  turns: { role: "nabu" | "child"; text: string; kind: string | null; modality: "typed" | "spoken" | null; at: string }[];
-  probesLeft: number;
+  /** `source`: `assistant` = verified Nabu line (may be spoken); `reviewed` = reviewed app text; `local` = local guidance shown instead of untrusted content. `origin` on reply lines. */
+  turns: { role: "nabu" | "child"; text: string; kind: string | null; source: "assistant" | "reviewed" | "local" | null; origin: ReplyOrigin | null; modality: "typed" | "spoken" | null; at: string }[];
+  supportMode: "unsupported" | "supported";
+  clarificationsLeft: number;
+  /** Nabu's assessment at close (or the latest revision while open), labelled; null when none exists. */
+  assessment: ReasoningAssessmentView | null;
+  /** Child turns still possible in this bounded conversation. */
+  turnsLeft: number;
+  /** A child turn whose assistant reply is still pending: the browser sends `message` through the bridge with `turnId` as the idempotency key and posts `reasoning-reply` with the reply and its receipt. */
+  pending: { turnId: string; message: string } | null;
   method: ReasoningState["method"];
   methodLabel: string;
   /** The scaffold's choices, when offered. */
   choices: { counters: boolean; teach: boolean; continue: boolean } | null;
+  /** D1 (temporary scope reduction): the explain stage is already active on a deferred visit (saved before the deferral, or a legacy pending dispatch) — no live invitation, no pending send; the one way on is `skip-stage` with reason `deferred`. */
+  deferred: boolean;
   /** The resolved item for the counters (quantity, perGroup, groups, labels). */
   item: { quantity: number; perGroup: number; groups: number; unit: MathItem["unit"]; group: MathItem["group"]; prompt: string };
 };
@@ -2429,10 +2731,25 @@ export type LogReviewView = {
   logId: string;
   original: string;
   summary: string;
-  taught: { id: string; aspect: string; aspectLabel: string; given: string; expected: string | null; teaching: string }[];
+  taught: { id: string; aspect: string; aspectLabel: string; given: string; expected: string | null; teaching: string; source: "rule" | "assistant"; certainty: "certain" | "uncertain" }[];
+  /** The at most two TEACHING POINTS shown (one per aspect, occurrences grouped). */
+  points: TeachingPoint[];
   clean: string[];
   cleanLabels: string[];
-  unknownWords: string[];
+  /** Aspects not checked (no semantic reply). */
+  unchecked: string[];
+  uncheckedLabels: string[];
+  /** Words outside the lexicon — unchecked, never a finding. */
+  uncheckedWords: string[];
+  /** The one question to the child, if any. */
+  clarify: { words: string[]; question: string } | null;
+  /** The semantic review the browser still has to fetch: record the dispatch (`review-log-dispatch`), send `message` through the bridge with `turnId` as the idempotency key, then post `review-log-semantic` with the reply and its receipt. `recorded` = the dispatch event exists. */
+  pending: { turnId: string; message: string; recorded: boolean } | null;
+  semanticStatus: "pending" | "done" | "unavailable" | "unverified";
+  /** Temporary Visit 5 scope reduction: the semantic hop is deferred — meaning, completeness and grammar are reported as not assessed, nothing is dispatched. */
+  semanticDeferred: boolean;
+  /** Four-way origin of the applied semantic reply (R4-08); null while pending. */
+  semanticOrigin: ReplyOrigin | null;
   suggestion: string | null;
   marked: string | null;
   /** The recorded review/revision of this visit, once made. */
@@ -2738,11 +3055,16 @@ export function buildChildView(state: MissionState, content: LearningContent, se
       reasoning = {
         itemId: target,
         status: r.status,
-        turns: r.turns.map((t) => ({ role: t.role, text: t.text, kind: t.kind ?? null, modality: t.modality ?? null, at: t.at })),
-        probesLeft: Math.max(0, content.reasoning.maxProbes - r.probesUsed),
+        turns: r.turns.map((t) => ({ role: t.role, text: t.text, kind: t.kind ?? null, source: t.source ?? null, origin: t.origin ?? null, modality: t.modality ?? null, at: t.at })),
+        supportMode: r.supportMode,
+        clarificationsLeft: Math.max(0, content.reasoning.maxClarifications - r.clarificationsUsed),
+        assessment: reasoningAssessmentView(r, content.reasoning),
+        turnsLeft: turnsLeft(r, content.reasoning),
+        pending: liveTutorDeferred(state.currentVisit) ? null : pendingDispatch(r) ? { turnId: pendingDispatch(r)!.turnId, message: pendingDispatch(r)!.message } : null,
+        deferred: liveTutorDeferred(state.currentVisit),
         method: r.method,
         methodLabel: methodLabel(content.reasoning, r.method),
-        choices: r.status === "scaffold" ? { counters: !r.support.includes("counters"), teach: true, continue: true } : null,
+        choices: !liveTutorDeferred(state.currentVisit) && r.status === "scaffold" ? { counters: !r.support.includes("counters"), teach: !r.support.includes("teaching"), continue: true } : null,
         item: { quantity: def.quantity, perGroup: def.perGroup ?? def.answer, groups: def.groups, unit: def.unit, group: def.group, prompt: def.prompt },
       };
     }
@@ -2755,17 +3077,26 @@ export function buildChildView(state: MissionState, content: LearningContent, se
   if (stage === "log-review" && state.currentVisit && logDef && content.writing?.review) {
     const page = [...state.pages].reverse().find((p) => p.visit === state.currentVisit) ?? null;
     if (page && page.modality !== "spoken") {
-      const review = reviewLogSentence(page.text, content.writing.review, content.writing.spacing.joins);
+      const semanticRecord = semanticReviewFor(state, state.currentVisit, page);
+      const review = reviewLogSentence(page.text, content.writing.review, content.writing.spacing.joins, semanticRecord?.semantic ?? null);
       const record = [...(state.logReviews ?? [])].reverse().find((r) => r.visit === state.currentVisit) ?? null;
-      const label = (a: string) => ({ meaning: "Inhalt", completeness: "ganzer Satz", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" })[a] ?? a;
+      const label = (a: string) => writingAspectLabel(a as WritingReviewAspect);
       logReview = {
         logId: logDef.id,
         original: page.text,
         summary: review.summary,
-        taught: review.taught.map((f) => ({ id: f.id, aspect: f.aspect, aspectLabel: label(f.aspect), given: f.given, expected: f.expected, teaching: f.teaching })),
+        taught: review.taught.map((f) => ({ id: f.id, aspect: f.aspect, aspectLabel: label(f.aspect), given: f.given, expected: f.expected, teaching: f.teaching, source: f.source, certainty: f.certainty })),
+        points: review.points,
         clean: review.clean,
         cleanLabels: review.clean.map(label),
-        unknownWords: review.unknownWords,
+        unchecked: review.unchecked,
+        uncheckedLabels: review.unchecked.map(label),
+        uncheckedWords: review.uncheckedWords,
+        clarify: review.clarify,
+        pending: liveTutorDeferred(state.currentVisit) ? null : semanticRecord && semanticRecord.status !== "pending" ? null : { turnId: semanticTurnId(state.currentVisit, page), message: buildWritingReviewDispatch(content.writing.review, logDef, page.text), recorded: !!semanticRecord },
+        semanticStatus: liveTutorDeferred(state.currentVisit) ? "unavailable" : semanticRecord ? semanticRecord.status : "pending",
+        semanticDeferred: liveTutorDeferred(state.currentVisit),
+        semanticOrigin: semanticRecord?.origin ?? null,
         suggestion: review.suggestion,
         marked: review.marked,
         record: record ? { outcome: record.outcome, revised: record.revised, resolved: record.evaluation?.resolved.length ?? 0, unresolved: record.evaluation?.unresolved.length ?? 0 } : null,

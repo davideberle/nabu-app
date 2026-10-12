@@ -19,6 +19,7 @@ import type { SceneModel } from "@/lib/family-learning-summary";
 import { focusRing, primaryButton, secondaryButton } from "@/app/family/(shell)/learn/mission/styles";
 import type { WorldMarker } from "./expedition-world";
 import { HarborIsland } from "./harbor-island";
+import { deferredReportScope } from "@/lib/family-learning-deferral";
 import { useDeliberateFocus } from "./focus";
 
 const unlabel = (text: string) => text.replace(/^(Geschafft|Geübt|Nächstes Mal): /, "");
@@ -105,6 +106,11 @@ export function VisitReportView({ report, scene, markers, onBack, backLabel = "Z
           {report.partial ? `Angefangen, Schritt ${report.stagesDone} von ${report.stageCount} — noch nicht fertig. Alles bis hier ist gespeichert.` : `Fertig am ${formatDate(report.finishedAt ?? report.startedAt)}.`}
         </p>
       </header>
+      {report.deferred ? (
+        <p className="text-base text-tertiary" data-testid="report-deferred-scope" data-reasoning-earlier={report.deferred.reasoningAssessedEarlier ? "true" : "false"} data-semantic-earlier={report.deferred.semanticAssessedEarlier ? "true" : "false"}>
+          {deferredReportScope(report.deferred.reasoningAssessedEarlier, report.deferred.semanticAssessedEarlier)}
+        </p>
+      ) : null}
 
       <div className="grid gap-3 sm:grid-cols-3">
         <section className="rounded-3xl bg-green-50 p-4 dark:bg-green-950/30" data-testid="report-success">

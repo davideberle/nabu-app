@@ -6,6 +6,8 @@ import { loadLearningContent, loadVocabularyInventory } from "@/lib/family-learn
 import { applyMutation, ExposureUnsettledError, readChildView, type MutationContext } from "@/lib/family-learning-db";
 import { resolveTimeZone } from "@/lib/family-learning-progress";
 import type { LearningOp } from "@/lib/family-learning-state";
+import { resolveBridgeMintConfig, verifyBridgeReceipt } from "@/lib/family-assistant-bridge";
+import { verifiedReceiptFromClaims } from "@/lib/family-learning-trust";
 
 /**
  * GET  /api/family/learning/mission  — the child's current view (marks the
@@ -125,6 +127,29 @@ export async function PUT(request: Request) {
   if (!isPlainObject(body)) return refuse(400, "Body must be an object");
   const op = readOp(body.op);
   if (!op) return refuse(400, "op is required");
+  // Bridge response receipts (repair round 2, IV5-03; round 3, R2-01/R2-02): the client carries the bridge's receipt as it
+  // came; the server verifies it with the shared secret and hands the state machine ONLY verified claims, or an explicit
+  // INVALID marker when a receipt was present but failed (distinct from absent: the reply is then withheld and recorded as
+  // receipt-invalid), or nothing when none came. A caller-supplied claims object is never trusted. The reply text is passed
+  // through EXACTLY (no normalisation, no slicing); an overlong reply is refused explicitly.
+  // ONE boundary for every reply-carrying op (assessment reset §7, R4-01): reasoning-reply, review-log-semantic and the
+  // free-question tutor_reply (its receipt travels in the support payload and is moved here before the state sees it).
+  const tutorReply = op.op === "support" && op.kind === "tutor_reply";
+  if (op.op === "reasoning-reply" || op.op === "review-log-semantic" || tutorReply) {
+    const carrier = tutorReply ? ((op.payload && typeof op.payload === "object" ? op.payload : {}) as Record<string, unknown>) : (op as { receipt?: unknown });
+    const raw = carrier.receipt;
+    delete carrier.receipt;
+    delete (op as { receipt?: unknown }).receipt;
+    const text = tutorReply ? (carrier as Record<string, unknown>).text : (op as { text?: unknown }).text;
+    if (text !== undefined && typeof text !== "string") return refuse(400, "text must be a string");
+    if (typeof text === "string" && text.length > 4000) return refuse(422, `Reply too long (${text.length} > 4000 characters); it is refused, never truncated`);
+    if (raw !== undefined) {
+      const configured = resolveBridgeMintConfig();
+      if (!configured.ok) return refuse(503, "The family assistant bridge is not configured");
+      const verified = typeof raw === "string" ? verifyBridgeReceipt(raw, configured.config.secret) : ({ ok: false, reason: "not-a-string" } as const);
+      (op as { receipt?: unknown }).receipt = verified.ok ? verifiedReceiptFromClaims(verified.claims) : { invalid: verified.reason };
+    }
+  }
   const expectedRevision = body.expectedRevision;
   if (typeof expectedRevision !== "number" || !Number.isInteger(expectedRevision) || expectedRevision < 0) {
     return refuse(400, "expectedRevision must be a non-negative integer");

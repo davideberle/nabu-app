@@ -2208,7 +2208,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       clock += 2000;
       const tail = await tick(base, "lease-joined-paidtail", ptoken);
       equal(tail.status, 200, JSON.stringify(tail.body));
-      equal((tail.body as { phase: string }).phase, "grace");
+      equal((tail.body as unknown as { phase: string }).phase, "grace");
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));

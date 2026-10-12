@@ -20,7 +20,7 @@ export const TELEMETRY_OPS = [
   "name-base", "place-base", "reflect", "request-teaching", "resume-base", "revise-log", "save-log", "skip-stage", "start-visit", "stop-item",
   "summary-seen", "support", "typing-burst", "typing-check", "typing-course-continue", "typing-label", "typing-lesson", "write-transfer",
   "repair-explain", "typing-retry", "writing-retry", "language-retry", "repair-close", "lesson-feedback-seen",
-  "enter-workplace", "answer-quotient", "answer-needed", "reasoning-turn", "reasoning-choice", "plan-harbor", "review-log",
+  "enter-workplace", "answer-quotient", "answer-needed", "reasoning-turn", "reasoning-reply", "reasoning-choice", "plan-harbor", "review-log", "review-log-dispatch", "review-log-semantic",
 ] as const;
 export type TelemetryOp = (typeof TELEMETRY_OPS)[number];
 

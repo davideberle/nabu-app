@@ -9,7 +9,7 @@ import { recordSupportConfirmed, runTutorTurn, type SupportOutcome, type TutorRu
 
 const context = { taskId: "EQ-ENTRY", taskVersion: 1, language: "de" as const, prompt: "Vier Forscher …", allowedHelp: "erklären" };
 
-function harness(script: SupportOutcome[], replyText = "Teile in vier gleich grosse Gruppen.") {
+function harness(script: SupportOutcome[], replyText = "Teile in vier gleich grosse Gruppen.", originForReply = "verified") {
   const log: string[] = [];
   let revision = 7;
   let n = 0;
@@ -20,12 +20,14 @@ function harness(script: SupportOutcome[], replyText = "Teile in vier gleich gro
       log.push(`${op.kind}@${expectedRevision}:${outcome}`);
       if (outcome === "applied" || outcome === "replayed") revision += 1;
       if (outcome === "stale") revision += 2; // the server view moved on; caller adopts it
-      return { outcome, revision };
+      // the server's op result: the dispatch it built for the question; the origin it bound for the reply
+      const result = op.kind === "tutor_question" ? { dispatch: { turnId: (op.payload as { turnId: string }).turnId, message: `SERVER-MESSAGE for ${(op.payload as { text: string }).text}`, reqHash: "h" } } : { origin: originForReply, shown: originForReply === "verified" };
+      return { outcome, revision, result };
     },
     currentRevision: () => revision,
-    ask: async (message) => {
-      log.push(`ask:${message.includes("Frage des Kindes") ? "framed" : "raw"}`);
-      return { ok: true, text: replyText };
+    ask: async (message, turnId) => {
+      log.push(`ask:${message.startsWith("SERVER-MESSAGE") ? "server" : "client"}:${turnId}`);
+      return { ok: true, text: replyText, receipt: "fcr1.x.y" };
     },
     newTurnId: () => "turn-1",
     isAlive: () => true,
@@ -38,7 +40,7 @@ describe("runTutorTurn", () => {
     const { deps, log } = harness([]);
     const result = await runTutorTurn(deps, context, "Was heisst gerecht?");
     deepStrictEqual(result, { status: "answered", turnId: "turn-1", text: "Teile in vier gleich grosse Gruppen." });
-    deepStrictEqual(log, ["tutor_question@7:applied", "ask:framed", "tutor_reply@8:applied"]);
+    deepStrictEqual(log, ["tutor_question@7:applied", "ask:server:turn-1", "tutor_reply@8:applied"]);
   });
 
   it("uses the latest revision after the question was recorded (no stale closure)", async () => {
@@ -51,7 +53,7 @@ describe("runTutorTurn", () => {
     const { deps, log } = harness(["stale", "applied", "stale", "stale", "stale"]);
     const result = await runTutorTurn(deps, context, "?");
     equal(result.status, "reply-withheld");
-    deepStrictEqual(log.slice(0, 3), ["tutor_question@7:stale", "tutor_question@9:applied", "ask:framed"]);
+    deepStrictEqual(log.slice(0, 3), ["tutor_question@7:stale", "tutor_question@9:applied", "ask:server:turn-1"]);
     equal(log.filter((l) => l.startsWith("tutor_reply")).length, 3);
   });
 
@@ -70,7 +72,7 @@ describe("runTutorTurn", () => {
     gone.deps.isAlive = () => alive;
     gone.deps.ask = async () => {
       alive = false;
-      return { ok: true, text: "x" };
+      return { ok: true, text: "x", receipt: null };
     };
     const result = await runTutorTurn(gone.deps, context, "?");
     deepStrictEqual(result, { status: "reply-withheld", turnId: "turn-1", reason: "gone" });
@@ -92,9 +94,27 @@ describe("runTutorTurn", () => {
 
   it("reports a bridge failure only after recording the empty reply", async () => {
     const { deps, log } = harness([], "");
-    deps.ask = async () => ({ ok: false, text: "" });
+    deps.ask = async () => ({ ok: false, text: "", receipt: null });
     equal((await runTutorTurn(deps, context, "?")).status, "bridge-unavailable");
     ok(log.some((l) => l.startsWith("tutor_reply@8:applied")));
+  });
+
+  it("assessment reset §7 (R4-01): the reply is recorded with its receipt, and only a server-VERIFIED origin is answered — missing / malformed / invalid are withheld as untrusted (never shown or spoken as Nabu)", async () => {
+    for (const origin of ["missing", "malformed", "invalid"]) {
+      const { deps, log } = harness([], "Unsigned prose.", origin);
+      const result = await runTutorTurn(deps, context, "?");
+      deepStrictEqual(result, { status: "reply-withheld", turnId: "turn-1", reason: "untrusted", origin });
+      ok(log.some((l) => l.startsWith("tutor_reply@8:applied")), "the reply event is recorded (evidence) before it is withheld");
+    }
+    const seen: unknown[] = [];
+    const { deps } = harness([]);
+    const inner = deps.recordSupport;
+    deps.recordSupport = async (op, rev) => {
+      if (op.kind === "tutor_reply") seen.push((op.payload as { receipt?: string }).receipt);
+      return inner(op, rev);
+    };
+    equal((await runTutorTurn(deps, context, "?")).status, "answered");
+    deepStrictEqual(seen, ["fcr1.x.y"], "the receipt travels to the server as it came");
   });
 });
 

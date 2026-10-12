@@ -287,7 +287,7 @@ describe("follow-on persistence — old rows, new reads", () => {
     const started = await step(client, { op: "start-visit" });
     const keys = Object.keys(JSON.parse(String((await stateRow(client)).state_json))).sort();
     // Visit 5 (content v4, 2026-10-10) adds the additive keys `harbor`, `reasoning` and `logReviews`; a previous build keeps them unchanged.
-    deepStrictEqual(keys, ["base", "child", "contentVersion", "createdAt", "currentVisit", "explanations", "feedback", "harbor", "language", "logReviews", "logRevisions", "math", "missionId", "modelShownAt", "pages", "pier", "reasoning", "revision", "station", "stationModelShownAt", "teachingFirstAt", "transfers", "typing", "updatedAt", "upgradedAt", "visits"]);
+    deepStrictEqual(keys, ["base", "child", "contentVersion", "createdAt", "currentVisit", "explanations", "feedback", "harbor", "language", "logReviewSemantics", "logReviews", "logRevisions", "math", "missionId", "modelShownAt", "pages", "pier", "reasoning", "revision", "station", "stationModelShownAt", "teachingFirstAt", "transfers", "typing", "updatedAt", "upgradedAt", "visits"]);
     equal(started.view.visit!.id, "v4");
   });
 });

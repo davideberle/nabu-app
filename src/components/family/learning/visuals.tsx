@@ -38,26 +38,56 @@ export function SharingVisual({ quantity, groups, answer, unit, group }: { quant
   );
 }
 
-export function RemainderVisual({ quantity, groups, perGroup, used, remaining, unit, group, usedWord = "gepflanzt" }: { quantity: number; groups: number; perGroup: number; used: number; remaining: number; unit: string; group: string; usedWord?: string }) {
+/** A small wooden crate glyph (2.5D: lighter top face, three planks, corner nails) for the crate/boat items. */
+function CrateGlyph({ x, y, w = 8, h = 8 }: { x: number; y: number; w?: number; h?: number }) {
   return (
-    <figure className="rounded-2xl bg-white p-3 dark:bg-stone-900" data-testid="visual-remainder" aria-label={`${groups} ${group} mit je ${perGroup}: ${used} ${unit} ${usedWord}, ${remaining} übrig`}>
+    <g transform={`translate(${x} ${y})`}>
+      <rect x={0} y={0} width={w} height={h} fill="#c98f52" stroke="#6b4423" strokeWidth={0.9} />
+      <polygon points={`0,0 ${w * 0.3},${-h * 0.3} ${w * 1.3},${-h * 0.3} ${w},0`} fill="#e0ad73" stroke="#6b4423" strokeWidth={0.9} />
+      <line x1={0} y1={h / 2} x2={w} y2={h / 2} stroke="#6b4423" strokeWidth={0.8} />
+      <circle cx={1.4} cy={1.4} r={0.5} fill="#3b2a12" />
+      <circle cx={w - 1.4} cy={h - 1.4} r={0.5} fill="#3b2a12" />
+    </g>
+  );
+}
+
+export function RemainderVisual({ quantity, groups, perGroup, used, remaining, unit, group, usedWord = "gepflanzt", glyph }: { quantity: number; groups: number; perGroup: number; used: number; remaining: number; unit: string; group: string; usedWord?: string; glyph?: "seedling" | "crate" }) {
+  // Crates in boats (the harbor items) are drawn as crates in boats — never as seedlings in a bed.
+  const kind: "seedling" | "crate" = glyph ?? (/kiste|caja|box/i.test(unit) ? "crate" : "seedling");
+  const cols = Math.min(perGroup, 3);
+  return (
+    <figure className="rounded-2xl bg-white p-3 dark:bg-stone-900" data-testid="visual-remainder" data-glyph={kind} aria-label={`${groups} ${group} mit je ${perGroup}: ${used} ${unit} ${usedWord}, ${remaining} übrig`}>
       <div className="flex flex-wrap items-end gap-2">
         {Array.from({ length: groups }).map((_, g) => (
           <div key={g} className="flex flex-col items-center gap-1 rounded-xl bg-amber-50 p-2 dark:bg-amber-950/40">
             <svg viewBox="0 0 60 44" className="h-12 w-14" aria-hidden>
-              <rect x={2} y={28} width={56} height={12} rx={3} fill="#7c4a2a" />
-              {Array.from({ length: perGroup }).map((_, i) => (
-                <path key={i} d={`M${8 + i * 9} 28 c 0 -6 1 -10 2 -14 m -2 8 c -6 -1 -8 -5 -6 -9 c 4 1 6 4 6 9 m 2 -4 c 6 -1 8 -5 6 -9 c -4 1 -6 4 -6 9`} stroke="#2f7d32" strokeWidth={1.8} fill="none" strokeLinecap="round" />
-              ))}
+              {kind === "crate" ? (
+                <>
+                  <path d="M4 30 h 52 l -8 11 h -36 z" fill="#1d7fb5" stroke="#0c4a6e" strokeWidth={1.5} />
+                  <path d="M7 30 h 46" stroke="#fff7e6" strokeWidth={1.5} />
+                  {Array.from({ length: perGroup }).map((_, i) => (
+                    <CrateGlyph key={i} x={12 + (i % cols) * 12} y={21 - Math.floor(i / cols) * 9} />
+                  ))}
+                </>
+              ) : (
+                <>
+                  <rect x={2} y={28} width={56} height={12} rx={3} fill="#7c4a2a" />
+                  {Array.from({ length: perGroup }).map((_, i) => (
+                    <path key={i} d={`M${8 + i * 9} 28 c 0 -6 1 -10 2 -14 m -2 8 c -6 -1 -8 -5 -6 -9 c 4 1 6 4 6 9 m 2 -4 c 6 -1 8 -5 6 -9 c -4 1 -6 4 -6 9`} stroke="#2f7d32" strokeWidth={1.8} fill="none" strokeLinecap="round" />
+                  ))}
+                </>
+              )}
             </svg>
             <span className="text-base font-semibold text-primary">{perGroup}</span>
           </div>
         ))}
         <div className="flex flex-col items-center gap-1 rounded-xl border-2 border-dashed border-stone-400 p-2">
           <svg viewBox="0 0 60 44" className="h-12 w-14" aria-hidden>
-            {Array.from({ length: Math.min(remaining, 6) }).map((_, i) => (
-              <path key={i} d={`M${12 + i * 9} 40 c 0 -6 1 -10 2 -14 m -2 8 c -6 -1 -8 -5 -6 -9 c 4 1 6 4 6 9`} stroke="#2f7d32" strokeWidth={1.8} fill="none" strokeLinecap="round" />
-            ))}
+            {kind === "crate"
+              ? Array.from({ length: Math.min(remaining, 6) }).map((_, i) => <CrateGlyph key={i} x={10 + (i % 3) * 13} y={30 - Math.floor(i / 3) * 11} w={10} h={10} />)
+              : Array.from({ length: Math.min(remaining, 6) }).map((_, i) => (
+                  <path key={i} d={`M${12 + i * 9} 40 c 0 -6 1 -10 2 -14 m -2 8 c -6 -1 -8 -5 -6 -9 c 4 1 6 4 6 9`} stroke="#2f7d32" strokeWidth={1.8} fill="none" strokeLinecap="round" />
+                ))}
           </svg>
           <span className="text-base font-semibold text-primary">{remaining} übrig</span>
         </div>

@@ -67,14 +67,16 @@ export function isHarborView(v: unknown): boolean {
   if (!(load === null || (isRec(load) && isNum(load.crates) && isNum(load.perBoat) && isNum(load.fullBoats) && isNum(load.remaining) && isNumOrNull(load.boatsNeeded)))) return false;
   if (!Array.isArray(v.entered) || !v.entered.every((e) => oneOf(e, ["typing", "planning", "closing"]))) return false;
   if (v.characters !== undefined && (!Array.isArray(v.characters) || !v.characters.every((c) => isRec(c) && isStr(c.id) && isStr(c.name) && oneOf(c.language, ["de", "en", "es"]) && Array.isArray(c.lines)))) return false;
-  return Array.isArray(v.workplaces) && v.workplaces.every((w) => isRec(w) && oneOf(w.id, ["typing", "planning", "closing"]) && isStr(w.label) && isStr(w.building) && oneOf(w.status, ["open", "done", "locked", "current"]) && isStrArray(w.stages) && (w.character === null || (isRec(w.character) && isStr(w.character.id) && isStr(w.character.name) && isStr(w.character.role) && oneOf(w.character.language, ["de", "en", "es"]) && Array.isArray(w.character.lines) && w.character.lines.every((l) => isRec(l) && isStr(l.id) && isStr(l.text) && isStrOrNull(l.de)))));
+  return Array.isArray(v.workplaces) && v.workplaces.every((w) => isRec(w) && oneOf(w.id, ["typing", "planning", "closing"]) && isStr(w.label) && isStr(w.building) && oneOf(w.status, ["open", "done", "locked", "current", "skipped"]) && isStrArray(w.stages) && (w.character === null || (isRec(w.character) && isStr(w.character.id) && isStr(w.character.name) && isStr(w.character.role) && oneOf(w.character.language, ["de", "en", "es"]) && Array.isArray(w.character.lines) && w.character.lines.every((l) => isRec(l) && isStr(l.id) && isStr(l.text) && isStrOrNull(l.de)))));
 }
 
 /** Visit 5: the reasoning conversation view. */
 export function isReasoningView(v: unknown): boolean {
   if (!isRec(v)) return false;
-  if (!isStr(v.itemId) || !oneOf(v.status, ["open", "scaffold", "done"]) || !isNum(v.probesLeft) || !isStrOrNull(v.method) || !isStr(v.methodLabel)) return false;
-  if (!Array.isArray(v.turns) || !v.turns.every((t) => isRec(t) && oneOf(t.role, ["nabu", "child"]) && isStr(t.text) && isStrOrNull(t.kind) && (t.modality === null || oneOf(t.modality, ["typed", "spoken"])) && isStr(t.at))) return false;
+  if (!isStr(v.itemId) || !oneOf(v.status, ["open", "awaiting", "scaffold", "done"]) || !isNum(v.turnsLeft) || !isStrOrNull(v.method) || !isStr(v.methodLabel) || !oneOf(v.supportMode, ["unsupported", "supported"]) || !isNum(v.clarificationsLeft)) return false;
+  if (!(v.assessment === null || (isRec(v.assessment) && v.assessment.by === "nabu-child-assistant" && isNum(v.assessment.revision) && isNum(v.assessment.revisions) && isBool(v.assessment.stale) && isBool(v.assessment.ungrounded) && isBool(v.assessment.preRetractionGrounding) && Array.isArray(v.assessment.criteria) && v.assessment.criteria.every((c) => isRec(c) && isStr(c.id) && isStr(c.label) && oneOf(c.level, ["demonstrated", "partial", "not-yet-demonstrated", "uncertain"]) && isStr(c.levelLabel) && isStrArray(c.passages) && isStr(c.rationale))))) return false;
+  if (!(v.pending === null || (isRec(v.pending) && isStr(v.pending.turnId) && isStr(v.pending.message)))) return false;
+  if (!Array.isArray(v.turns) || !v.turns.every((t) => isRec(t) && oneOf(t.role, ["nabu", "child"]) && isStr(t.text) && isStrOrNull(t.kind) && (t.source === null || oneOf(t.source, ["assistant", "reviewed", "local"])) && (t.origin === null || oneOf(t.origin, ["verified", "missing", "malformed", "invalid"])) && (t.modality === null || oneOf(t.modality, ["typed", "spoken"])) && isStr(t.at))) return false;
   if (!(v.choices === null || (isRec(v.choices) && isBool(v.choices.counters) && isBool(v.choices.teach) && isBool(v.choices.continue)))) return false;
   const item = v.item;
   return isRec(item) && isNum(item.quantity) && isNum(item.perGroup) && isNum(item.groups) && isUnitLike(item.unit) && isUnitLike(item.group) && isStr(item.prompt);
@@ -83,8 +85,11 @@ export function isReasoningView(v: unknown): boolean {
 /** Visit 5: the writing review view. */
 export function isLogReviewView(v: unknown): boolean {
   if (!isRec(v)) return false;
-  if (!isStr(v.logId) || !isStr(v.original) || !isStr(v.summary) || !isStrArray(v.clean) || !isStrArray(v.cleanLabels) || !isStrArray(v.unknownWords) || !isStrOrNull(v.suggestion) || !isStrOrNull(v.marked)) return false;
-  if (!Array.isArray(v.taught) || !v.taught.every((t) => isRec(t) && isStr(t.id) && isStr(t.aspect) && isStr(t.aspectLabel) && isStr(t.given) && isStrOrNull(t.expected) && isStr(t.teaching))) return false;
+  if (!isStr(v.logId) || !isStr(v.original) || !isStr(v.summary) || !isStrArray(v.clean) || !isStrArray(v.cleanLabels) || !isStrArray(v.unchecked) || !isStrArray(v.uncheckedLabels) || !isStrArray(v.uncheckedWords) || !isStrOrNull(v.suggestion) || !isStrOrNull(v.marked)) return false;
+  if (!(v.clarify === null || (isRec(v.clarify) && isStrArray(v.clarify.words) && isStr(v.clarify.question)))) return false;
+  if (!(v.pending === null || (isRec(v.pending) && isStr(v.pending.turnId) && isStr(v.pending.message) && isBool(v.pending.recorded))) || !oneOf(v.semanticStatus, ["pending", "done", "unavailable", "unverified"]) || !(v.semanticOrigin === null || oneOf(v.semanticOrigin, ["verified", "missing", "malformed", "invalid"]))) return false;
+  if (!Array.isArray(v.points) || !v.points.every((pt) => isRec(pt) && isStr(pt.aspect) && isStr(pt.aspectLabel) && isStr(pt.teaching) && Array.isArray(pt.examples) && Array.isArray(pt.ids))) return false;
+  if (!Array.isArray(v.taught) || !v.taught.every((t) => isRec(t) && isStr(t.id) && isStr(t.aspect) && isStr(t.aspectLabel) && isStr(t.given) && isStrOrNull(t.expected) && isStr(t.teaching) && oneOf(t.source, ["rule", "assistant"]) && oneOf(t.certainty, ["certain", "uncertain"]))) return false;
   const r = v.record;
   return r === null || (isRec(r) && oneOf(r.outcome, ["revised", "partial", "unchanged", "none-needed", "skipped"]) && isStrOrNull(r.revised) && isNum(r.resolved) && isNum(r.unresolved));
 }

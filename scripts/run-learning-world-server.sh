@@ -29,7 +29,9 @@ if lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
   exit 3
 fi
 # FAMILY_LEARNING_CONTENT_CAP is forwarded when set (Visit 4 rollback checks start a capped second instance).
-env -i PATH="$PATH" HOME="$HOME" AUTH_SECRET="$SECRET" AUTH_URL=http://127.0.0.1:$PORT GOOGLE_CLIENT_ID=synthetic GOOGLE_CLIENT_SECRET=synthetic ${FAMILY_LEARNING_CONTENT_CAP:+FAMILY_LEARNING_CONTENT_CAP="$FAMILY_LEARNING_CONTENT_CAP"} \
+# FAMILY_ASSISTANT_BRIDGE_URL / FAMILY_BRIDGE_TOKEN_SECRET are forwarded when set (Visit 5 repair round 1: the harness runs a
+# loopback STUB bridge for the plumbing; never the real bridge, never a real secret).
+env -i PATH="$PATH" HOME="$HOME" AUTH_SECRET="$SECRET" AUTH_URL=http://127.0.0.1:$PORT GOOGLE_CLIENT_ID=synthetic GOOGLE_CLIENT_SECRET=synthetic ${FAMILY_LEARNING_CONTENT_CAP:+FAMILY_LEARNING_CONTENT_CAP="$FAMILY_LEARNING_CONTENT_CAP"} ${FAMILY_ASSISTANT_BRIDGE_URL:+FAMILY_ASSISTANT_BRIDGE_URL="$FAMILY_ASSISTANT_BRIDGE_URL"} ${FAMILY_BRIDGE_TOKEN_SECRET:+FAMILY_BRIDGE_TOKEN_SECRET="$FAMILY_BRIDGE_TOKEN_SECRET"} \
   NABU_DB_DIR="$DIR" NEXT_TELEMETRY_DISABLED=1 node node_modules/next/dist/bin/next start -p $PORT -H 127.0.0.1 > "$DIR/server.log" 2>&1 &
 SERVER=$!
 echo "$SERVER" > "$DIR/server.pid"

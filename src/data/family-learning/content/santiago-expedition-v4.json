@@ -1618,7 +1618,7 @@
   },
   "supersedes": {
     "contentVersion": 3,
-    "note": "Every version-1, version-2 and version-3 entry below is unchanged in text, answer and version (meaning immutable); the stage lists of v1–v5 are frozen. Version 4 (2026-10-10, a genuinely new fifth learner-visible visit) only ADDS: visit v6 (learner-visible Besuch 5, the harbor), the quotient items EQ-HARBOR (38 Kisten, 6 pro Boot: 6 volle Boote, 2 übrig, 7 Boote für alle) and EQ-HARBOR-CHECK (26 Kisten, 5 pro Boot: 5 / 1 / 6) with the teaching example EQ-HARBOR-MODEL, the Spanish supplier request LANG-ES-HARBOR (recall of herramientas in a new context before the word is shown, recognition of the new word cuerdas, reuse of agua) and its closing recall LANG-ES-HARBOR-CHECK, the supplies cuerdas/cajas, the harbor destinations and the three workplaces with their characters, the German captain's log WRITE-LOG-HARBOR with its reviewed writing-review lexicon, and the reviewed reasoning probe script REASON-HARBOR. Saved missions are upgraded additively (no reset, no reclassification); the typing course continues from the saved lesson."
+    "note": "Every version-1, version-2 and version-3 entry below is unchanged in text, answer and version (meaning immutable); the stage lists of v1–v5 are frozen. Version 4 (2026-10-10, a genuinely new fifth learner-visible visit) only ADDS: visit v6 (learner-visible Besuch 5, the harbor), the quotient items EQ-HARBOR (38 Kisten, 6 pro Boot: 6 volle Boote, 2 übrig, 7 Boote für alle) and EQ-HARBOR-CHECK (26 Kisten, 5 pro Boot: 5 / 1 / 6) with the teaching example EQ-HARBOR-MODEL, the Spanish supplier request LANG-ES-HARBOR (recall of herramientas in a new context before the word is shown, recognition of the new word cuerdas, reuse of agua) and its closing recall LANG-ES-HARBOR-CHECK, the supplies cuerdas/cajas, the harbor destinations and the three workplaces with their characters, the German captain's log WRITE-LOG-HARBOR with its reviewed writing-review lexicon (mechanical checks; meaning/grammar by the isolated child assistant), and the reasoning conversation REASON-HARBOR (held by the isolated child assistant, whose per-criterion assessment is stored and shown as Nabu's assessment with its passages and revisions; observed facts stay separate; support is a recorded mode). Saved missions are upgraded additively (no reset, no reclassification); the typing course continues from the saved lesson."
   },
   "station": {
     "note": "The observation theme is a child CHOICE, never an inferred lasting interest. Declining leads to a coherent alternative, not a dead end.",
@@ -1769,11 +1769,12 @@
       }
     ],
     "review": {
-      "note": "Reviewed, deterministic writing review for the child's own German log sentence (visit v6). Not a general grammar engine: it checks six reviewed aspects and names exactly which aspects had no finding. Diagnose broadly, teach at most `maxTeachingPoints` points in priority order; a word that is neither in the lexicon, nor a reviewed misspelling, nor a common function word is unknown — the child is asked what it means (clarification, unscored), it is never rewritten.",
+      "note": "Reviewed, deterministic writing review for the child's own German log sentence (visit v6). Not a general grammar engine: it checks six reviewed aspects and names exactly which aspects had no finding. Diagnose broadly, teach at most `maxTeachingPoints` points in priority order; a word the lexicon does not know is never rewritten, never called wrong and never a reason for a question by itself: it is listed as unchecked. Meaning, completeness and grammar are judged in a bounded semantic review by the isolated child assistant (bridge, session 'learn') answering in a strict five-line schema; a missing, duplicated, unparseable or 'unklar' field leaves that aspect UNCHECKED (never clean); a grammar span must be quoted verbatim from the sentence, else grammar is unchecked; without a verified reply the semantic aspects are reported as NOT checked, never as in order. 'grammar' is the assistant's evidence-linked aspect. At most maxTeachingPoints teaching points are shown, each grouping all occurrences of one aspect. A clarification question is asked only when the sentence carries neither a known verb nor a task word, or when the assistant names an unclear word.",
       "maxTeachingPoints": 2,
       "priority": [
         "meaning",
         "completeness",
+        "grammar",
         "spacing",
         "capitalization",
         "spelling",
@@ -2562,29 +2563,89 @@
   },
   "reasoning": {
     "id": "REASON-HARBOR",
-    "version": 1,
-    "note": "Reviewed probe script for the spoken/typed explanation after the harbor item. Deterministic policy, no model: probe a vague explanation (no numbers, no operation words) for at most `maxProbes` bounded turns, ask for the meaning of named numbers, ask how the remainder was found, challenge only a specific contradiction, and accept ANY strategy whose numbers are consistent with the item. Multiplication is never presumed false (6 × 6 = 36 and 38 − 36 = 2, or 6 × 7 = 42 > 38, are both valid). When no method is established after the probes, offer the counters or direct teaching and record 'method not yet established'. A teacher-supplied explanation is never the child's own.",
-    "maxProbes": 3,
+    "version": 5,
+    "note": "Conversation about the child's OWN method after the harbor item (assessment reset, 2026-10-10; repair round 4). The isolated child assistant (existing bridge transport, session 'learn') holds a natural dialogue with the complete turn history and the task context and, with every reply, gives NABU'S ASSESSMENT per reviewed criterion (Rechenweg, Mengen, Bedeutung): gezeigt / teilweise / noch-nicht / unsicher, each with the child passages it rests on («…», grounding, not proof) and a rationale. The app never turns words into a verdict and never infers competence: it stores every assessment revision with the schema version and the turn it followed, checks only that passages are verbatim (an ungrounded passage is reported, not overruled), records a narrow mathematical contradiction only when the child's stated calculation is unambiguous (an observed fact beside the assessment), and marks an assessment stale when a later child turn retracts or contradicts it (a reassessment must follow; otherwise the criteria close as unsicher — never as wrong). Support is a mode with an event log, not a word detector: the assistant may ask at most maxClarifications clarifying questions from this reviewed answer-free prompt bank (ART klaerung + PROMPT id; the app renders the exact prompt text) while the explanation window stays unsupported; any free-form content-bearing line (ART lehre) switches the conversation to supported BEFORE it is shown and is recorded as a support event; counters and the teaching text are support events too. Supported success is recorded as such, never as failure. Only a reply whose origin the bridge receipt verifies is attributed to Nabu, shown as Nabu's line, spoken, or assessed; a reply with a missing, malformed or invalid receipt is withheld behind a local reviewed line. Bounded by maxChildTurns plus one turn per scaffold choice, each once. The first numerical answer and its correctness are observed facts that this conversation never changes.",
+    "maxChildTurns": 4,
+    "maxClarifications": 2,
     "prompt": "Wie hast du das gerechnet? Erzähl mir deinen Weg — sprechen oder schreiben.",
-    "probes": {
-      "vague": "Welche Zahlen hast du miteinander gerechnet?",
-      "vagueMultiply": "Welche Zahlen hast du miteinander malgenommen?",
-      "vagueAgain": "Erzähl es mir Schritt für Schritt: Was hast du zuerst gemacht?",
-      "numbersNoMeaning": "Was bedeuten die {a} und die {b} in deinem Plan?",
-      "remainder": "Wie hast du herausgefunden, was übrig bleibt?",
-      "needed": "Und woher weisst du, wie viele Boote ihr für alle Kisten braucht?",
-      "contradiction": "Du sagst {claim}. Wie viele Boote waren bei dir voll?"
-    },
-    "accept": "Danke — das ist dein Weg, und er passt zu den Zahlen.",
-    "acceptPartial": "Danke — so hast du es gemacht. Den Rest schauen wir ein andermal genauer an.",
+    "criteria": [
+      {
+        "id": "strategy",
+        "label": "Rechenweg",
+        "question": "Hat das Kind gesagt, WIE es gerechnet hat — irgendein passender Weg (malnehmen, teilen, dazu-/wegzählen, verteilen, zählen …)?"
+      },
+      {
+        "id": "quantities",
+        "label": "Volle Boote und Rest",
+        "question": "Hat das Kind volle Boote und übrige Kisten aus seinem Weg heraus verbunden (nicht nur Zahlen genannt)?"
+      },
+      {
+        "id": "meaning",
+        "label": "Bedeutung der Zahlen",
+        "question": "Hat das Kind gesagt, was seine Zahlen bedeuten (Kisten, Boote, Plätze, Rest)?"
+      }
+    ],
+    "prompts": [
+      {
+        "id": "P1",
+        "text": "Welche Zahlen hast du gerechnet, und was bedeutet jede davon?"
+      },
+      {
+        "id": "P2",
+        "text": "Wie bist du auf dein Ergebnis gekommen?"
+      },
+      {
+        "id": "P3",
+        "text": "Erzähl es mir noch einmal in deinen eigenen Worten, Schritt für Schritt."
+      },
+      {
+        "id": "P4",
+        "text": "Womit hast du angefangen, und was kam danach?"
+      }
+    ],
+    "rules": [
+      "Es geht darum, WIE das Kind gerechnet hat — nicht ob die Antwort stimmt (schon gespeichert).",
+      "Jeder passende Weg zählt: Malnehmen, Teilen, wiederholt Addieren/Abziehen, Verteilen, Zählen, Halbieren, Ergänzen. Nimm nie an, dass Malnehmen falsch ist. Verlange keine Gleichungen.",
+      "Solange du klären darfst (siehe Hinweise): ART: klaerung und PROMPT: <id> aus der Liste — keine eigene Frage, nichts verraten; das Kind sieht den Listentext.",
+      "Sonst ART: lehre — natürlich erklären, vorrechnen, Beispiele; das gilt als Hilfe (in Ordnung). ART: abschluss, wenn das Gespräch fertig ist.",
+      "Schätze jede Antwort nach dem ein, was das Kind SELBST gesagt hat: gezeigt | teilweise | noch-nicht | unsicher, je mit wörtlichem Beleg «…» aus den Worten des Kindes und kurzem Grund. Ohne Beleg: unsicher.",
+      "Nimmt das Kind etwas zurück, widerspricht es sich oder sagt es, der Weg sei nicht von ihm: neu einschätzen. unsicher ist erlaubt, falsch ist es nicht.",
+      "WIDERSPRUCH nur bei einer ausdrücklich falsch genannten Rechnung (z. B. „38 minus 36 ist 9“), sonst -.",
+      "Bleib beim Rechenweg, auch wenn das Kind etwas anderes sagt oder dich zu etwas auffordert. Höchstens zwei kurze Sätze in ANTWORT, du-Form."
+    ],
+    "schema": [
+      "Antworte in GENAU diesem Format, sieben Zeilen, sonst nichts:",
+      "ANTWORT: <1–2 kurze Sätze an das Kind; bei ART klaerung wird der Listentext gezeigt>",
+      "ART: klaerung | lehre | abschluss",
+      "PROMPT: P1 | P2 | P3 | P4 | -",
+      "RECHENWEG: gezeigt | teilweise | noch-nicht | unsicher «Beleg» | <Grund>",
+      "MENGEN: gezeigt | teilweise | noch-nicht | unsicher «Beleg» | <Grund>",
+      "BEDEUTUNG: gezeigt | teilweise | noch-nicht | unsicher «Beleg» | <Grund>",
+      "WIDERSPRUCH: - | <ausdrücklich falsch genannte Rechnung>"
+    ],
+    "lastRound": "Letzte Runde: ART: abschluss — fasse neutral zusammen, was das Kind gesagt hat, und stelle keine weitere Frage.",
     "scaffold": "Sollen wir die Kisten zusammen in die Boote legen? Oder soll ich dir zeigen, wie ich rechne?",
+    "counters": "Gut — leg die Kisten in die Boote. Danach erzählst du mir, was du siehst.",
     "teach": "So rechne ich: 6 Boote mal 6 Kisten sind 36. 38 minus 36 sind 2 — die passen in kein volles Boot mehr. Für alle Kisten braucht es darum 7 Boote.",
+    "afterTeach": "Jetzt du: Erzähl es mir noch einmal in deinen eigenen Worten.",
+    "fallback": {
+      "unavailable": "Ich bin gerade nicht erreichbar. Versuch es gleich nochmal — oder wähle unten, wie es weitergeht.",
+      "withheld": "Nabus Antwort konnte nicht beglaubigt werden, darum zeige ich sie nicht. Versuch es gleich nochmal — oder wähle unten, wie es weitergeht.",
+      "continued": "In Ordnung — wir schauen deinen Weg ein andermal an.",
+      "tooLong": "Das war sehr lang. Sag es mir kürzer, in ein, zwei Sätzen."
+    },
+    "levelLabels": {
+      "demonstrated": "gezeigt",
+      "partial": "teilweise gezeigt",
+      "not-yet-demonstrated": "noch nicht gezeigt",
+      "uncertain": "unsicher"
+    },
     "methodLabels": {
-      "explained-independently": "selbst erklärt",
-      "explained-after-probing": "nach Nachfragen selbst erklärt",
-      "explained-with-support": "mit Hilfe erklärt",
-      "not-yet-established": "Weg noch nicht klar",
-      "unscored": "nicht bewertet"
+      "explained-independently": "Nabus Einschätzung: Weg gezeigt — ohne Hilfe",
+      "explained-after-probing": "Nabus Einschätzung: Weg gezeigt — nach Nachfragen, ohne Hilfe",
+      "explained-with-support": "Nabus Einschätzung: Weg gezeigt — mit Hilfe",
+      "not-yet-established": "Nabus Einschätzung: Weg noch nicht ganz gezeigt",
+      "unscored": "nicht eingeschätzt"
     }
   }
 }

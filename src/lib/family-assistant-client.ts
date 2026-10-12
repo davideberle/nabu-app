@@ -82,8 +82,8 @@ export function readSessionInfo(value: unknown): ChildBridgeSessionInfo | null {
   return { child, sessionSuffix, token, expiresAt, bridgeUrl: origin };
 }
 
-/** Reason a turn could not even be attempted. Mapped to a child-facing line. */
-export type ChildTurnTransportFailure = "no-session" | "network" | "bad-response";
+/** Reason a turn could not even be attempted. Mapped to a child-facing line. `too-long`: the caller refused silent truncation (repair round 2, IV5-05). */
+export type ChildTurnTransportFailure = "no-session" | "network" | "bad-response" | "too-long";
 
 export type ChildTurnOutcome =
   | { ok: true; envelope: ChildTurnEnvelope }
@@ -112,7 +112,8 @@ export type ChildTurnClient = {
   /** Sends one free-form utterance to the selected child agent. */
   ask: (
     params: { childId: ChildId; sessionSuffix: string; message: string },
-    options?: { signal?: AbortSignal },
+    /** `idempotencyKey`: the server's turn id, so the bridge receipt binds to that turn. `noTruncate`: send the message exactly as given (no trim) and fail with `too-long` instead of slicing it. */
+    options?: { signal?: AbortSignal; idempotencyKey?: string; noTruncate?: boolean },
   ) => Promise<ChildTurnOutcome>;
   /** Drops the cached session, e.g. when the child profile changes. */
   reset: () => void;
@@ -196,7 +197,16 @@ export function createChildTurnClient(deps: ChildTurnClientDeps = {}): ChildTurn
     },
     peekSession: () => cached,
     async ask({ childId, sessionSuffix, message }, options = {}) {
-      const trimmed = message.trim().slice(0, MAX_CHILD_TURN_CHARS);
+      if (options.noTruncate && message.length > MAX_CHILD_TURN_CHARS) {
+        return {
+          ok: false,
+          failure: "too-long",
+          envelope: transportEnvelope(childId, "bad_request", "the message exceeds the bridge limit and must not be truncated"),
+        };
+      }
+      // `noTruncate` callers (the learning dispatches) send the message EXACTLY: the server hashed these bytes before the send
+      // and the bridge's receipt binds to them (repair round 3, R2-02). Free conversation keeps the trim and the cap.
+      const trimmed = options.noTruncate ? message : message.trim().slice(0, MAX_CHILD_TURN_CHARS);
       if (!trimmed) {
         return {
           ok: false,
@@ -204,7 +214,7 @@ export function createChildTurnClient(deps: ChildTurnClientDeps = {}): ChildTurn
           envelope: transportEnvelope(childId, "bad_request", "there was nothing to ask"),
         };
       }
-      const idempotencyKey = newKey();
+      const idempotencyKey = options.idempotencyKey && /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(options.idempotencyKey) ? options.idempotencyKey : newKey();
 
       let info = await session(childId, sessionSuffix, options.signal, false).catch(() => null);
       if (!info) {

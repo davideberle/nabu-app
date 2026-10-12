@@ -35,7 +35,7 @@
 // This module must stay server-only: it imports `node:crypto` and reads the
 // secret, so importing it from a client component is a build error by design.
 
-import { createHmac } from "node:crypto";
+import { createHmac, timingSafeEqual } from "node:crypto";
 import {
   CHILD_SESSION_SUFFIX_PATTERN,
   isChildId,
@@ -262,4 +262,98 @@ export function buildChildBridgeSession(params: {
     expiresAt: claims.exp * 1000,
     bridgeUrl: params.config.bridgeUrl,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Bridge response receipts (repair round 2, IV5-03)
+//
+// The browser is the only party that talks to the bridge, so a reply it posts
+// back to the learning routes could be authored by the browser itself. The
+// bridge therefore signs every child-turn reply with the SAME shared secret it
+// already verifies session tokens with (no new secret, no new privilege):
+//
+//   fcr1.<payload>.<sig>   payload = base64url(canonical JSON of the claims)
+//                          sig     = base64url(HMAC-SHA256(secret, "fcr1.<payload>"))
+//   claims (declared order): v=1, iss="family-child-bridge", sub=<child>, sid=<session suffix>,
+//                            key=<the request's idempotencyKey>, req=sha256hex(message),
+//                            res=sha256hex(text blocks joined by "\n\n"), iat=<epoch seconds>
+//
+// This module only VERIFIES; nothing here can mint a receipt. The learning
+// state machine then checks the binding (key = its turn id, req = its stored
+// dispatch hash, res = the posted text, sub = the authenticated child). Until
+// the bridge signs (a separately authorized bridge change + LaunchAgent
+// restart), replies arrive without a receipt and are treated as UNVERIFIED
+// origin: shown, recorded, never authority for a learning verdict.
+// ---------------------------------------------------------------------------
+
+export const BRIDGE_RECEIPT_PREFIX = "fcr1";
+export const BRIDGE_RECEIPT_ISSUER = "family-child-bridge";
+export const BRIDGE_RECEIPT_CLAIMS = ["v", "iss", "sub", "sid", "key", "req", "res", "iat"] as const;
+/** Receipt v2 (repair round 5, R4-06): the same claims plus the AUTHENTICATED run metadata the executor reported — `mdl` = "<provider>/<model>" or "unknown", `run` = the run id or "unknown". Never a configured default. */
+export const BRIDGE_RECEIPT_CLAIMS_V2 = ["v", "iss", "sub", "sid", "key", "req", "res", "iat", "mdl", "run"] as const;
+export const BRIDGE_RECEIPT_UNKNOWN = "unknown";
+/** A receipt older than this is not accepted (the learning turn is minutes, never hours). */
+export const BRIDGE_RECEIPT_MAX_AGE_SECONDS = 15 * 60;
+
+export type BridgeReceiptClaims = { v: 1; iss: string; sub: ChildId; sid: string; key: string; req: string; res: string; iat: number } | { v: 2; iss: string; sub: ChildId; sid: string; key: string; req: string; res: string; iat: number; mdl: string; run: string };
+
+export type BridgeReceiptVerification =
+  | { ok: true; claims: BridgeReceiptClaims }
+  | { ok: false; reason: "malformed" | "bad-signature" | "bad-claims" | "expired" | "future" };
+
+/** Canonical claim serialization: declared order, no whitespace (the bridge must serialize identically). */
+export function serializeBridgeReceiptClaims(claims: BridgeReceiptClaims): string {
+  const keys: readonly string[] = claims.v === 2 ? BRIDGE_RECEIPT_CLAIMS_V2 : BRIDGE_RECEIPT_CLAIMS;
+  const record = claims as unknown as Record<string, unknown>;
+  return `{${keys.map((claim) => `${JSON.stringify(claim)}:${JSON.stringify(record[claim])}`).join(",")}}`;
+}
+
+/** The authenticated run metadata of a verified receipt, or null when the receipt (v1) carries none. "unknown" values are kept as reported. */
+export function receiptProvenance(claims: BridgeReceiptClaims): { model: string; runId: string } | null {
+  return claims.v === 2 ? { model: claims.mdl, runId: claims.run } : null;
+}
+
+function decodeBase64url(input: string): Buffer | null {
+  if (!/^[A-Za-z0-9_-]+$/.test(input)) return null;
+  const padded = input.replace(/-/g, "+").replace(/_/g, "/") + "=".repeat((4 - (input.length % 4)) % 4);
+  try {
+    return Buffer.from(padded, "base64");
+  } catch {
+    return null;
+  }
+}
+
+/** Verify a receipt's signature and claim shape. Pure apart from the clock. The caller checks the binding. */
+export function verifyBridgeReceipt(receipt: unknown, secret: string, nowSeconds: number = Math.floor(Date.now() / 1000)): BridgeReceiptVerification {
+  if (typeof receipt !== "string" || receipt.length > 2048) return { ok: false, reason: "malformed" };
+  const parts = receipt.split(".");
+  if (parts.length !== 3 || parts[0] !== BRIDGE_RECEIPT_PREFIX || !parts[1] || !parts[2]) return { ok: false, reason: "malformed" };
+  const signingInput = `${parts[0]}.${parts[1]}`;
+  const expected = base64url(createHmac("sha256", secret).update(signingInput).digest());
+  const a = Buffer.from(expected);
+  const b = Buffer.from(parts[2]);
+  if (a.length !== b.length || !timingSafeEqual(a, b)) return { ok: false, reason: "bad-signature" };
+  const raw = decodeBase64url(parts[1]);
+  if (!raw) return { ok: false, reason: "malformed" };
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw.toString("utf8"));
+  } catch {
+    return { ok: false, reason: "malformed" };
+  }
+  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) return { ok: false, reason: "bad-claims" };
+  const c = parsed as Record<string, unknown>;
+  if ((c.v !== 1 && c.v !== 2) || c.iss !== BRIDGE_RECEIPT_ISSUER || !isChildId(c.sub) || typeof c.sid !== "string" || !CHILD_SESSION_SUFFIX_PATTERN.test(c.sid)) return { ok: false, reason: "bad-claims" };
+  if (typeof c.key !== "string" || !c.key || c.key.length > 128 || typeof c.req !== "string" || !/^[0-9a-f]{64}$/.test(c.req) || typeof c.res !== "string" || !/^[0-9a-f]{64}$/.test(c.res)) return { ok: false, reason: "bad-claims" };
+  if (typeof c.iat !== "number" || !Number.isInteger(c.iat)) return { ok: false, reason: "bad-claims" };
+  let claims: BridgeReceiptClaims;
+  if (c.v === 2) {
+    if (typeof c.mdl !== "string" || !c.mdl || c.mdl.length > 120 || !/^[A-Za-z0-9][A-Za-z0-9._:/-]*$/.test(c.mdl) || typeof c.run !== "string" || !c.run || c.run.length > 160 || !/^[A-Za-z0-9][A-Za-z0-9._:-]*$/.test(c.run)) return { ok: false, reason: "bad-claims" };
+    claims = { v: 2, iss: BRIDGE_RECEIPT_ISSUER, sub: c.sub, sid: c.sid, key: c.key, req: c.req, res: c.res, iat: c.iat, mdl: c.mdl, run: c.run };
+  } else claims = { v: 1, iss: BRIDGE_RECEIPT_ISSUER, sub: c.sub, sid: c.sid, key: c.key, req: c.req, res: c.res, iat: c.iat };
+  // The serialization must round-trip exactly: a receipt with extra or reordered claims is not the bridge's.
+  if (serializeBridgeReceiptClaims(claims) !== raw.toString("utf8")) return { ok: false, reason: "bad-claims" };
+  if (claims.iat > nowSeconds + 60) return { ok: false, reason: "future" };
+  if (nowSeconds - claims.iat > BRIDGE_RECEIPT_MAX_AGE_SECONDS) return { ok: false, reason: "expired" };
+  return { ok: true, claims };
 }

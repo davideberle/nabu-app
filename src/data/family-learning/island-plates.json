@@ -1,0 +1,175 @@
+{
+  "note": "Painted plates for the Visit 5 island (owned scene layers). Regenerate with `node scripts/island-plates.mjs` after dropping PNGs into src/assets/family-learning/island/ (build-time static assets, outside the auth gate). Empty = the vector scene draws everything. Live state (crates, boats, ropes, flags, badges, labels, avatar) is never part of a plate.",
+  "plates": [
+    {
+      "id": "backdrop",
+      "file": "src/assets/family-learning/island/backdrop.png",
+      "sha256": "d6acc4ef4948c540120df273617f029ccd3a08e3dcb4e341cb8fcd81d56beebf"
+    },
+    {
+      "id": "boat-hull",
+      "file": "src/assets/family-learning/island/boat-hull.png",
+      "sha256": "9795093155e501cb5d33cc81c727faed25282bab6c1be80f47c64aaf8d8e0530"
+    },
+    {
+      "id": "boat-sail",
+      "file": "src/assets/family-learning/island/boat-sail.png",
+      "sha256": "c86e1eccb365621dac76972904eda1a757e871e9dfaabcd43561317736c8ed55"
+    },
+    {
+      "id": "child",
+      "file": "src/assets/family-learning/island/child.png",
+      "sha256": "51cb2821f3aba6e7148f7a37a438728f883ae943526b1de45c58a1c52c6a85b0"
+    },
+    {
+      "id": "crate",
+      "file": "src/assets/family-learning/island/crate.png",
+      "sha256": "cb628e7771e33e70140504bdeb3db39d6ac475efe7d94947291fc1c9f2dbe813"
+    },
+    {
+      "id": "far-lighthouse",
+      "file": "src/assets/family-learning/island/far-lighthouse.png",
+      "sha256": "81d205d4eb51b7bfea01ea9d728a8625b6b96d1b15dbc378a3402dc2df7bec15"
+    },
+    {
+      "id": "far-mainland",
+      "file": "src/assets/family-learning/island/far-mainland.png",
+      "sha256": "e8d16f3a27b997cc45c6e5948e060c3b530f1b9fa225d368a6f7a726031c5dd1"
+    },
+    {
+      "id": "far-ship",
+      "file": "src/assets/family-learning/island/far-ship.png",
+      "sha256": "cb9e8b0d4cd6c2445b2757ac63aecd0fb13deb5e8e06cce322aa7038efd43ea7"
+    },
+    {
+      "id": "garden-bed",
+      "file": "src/assets/family-learning/island/garden-bed.png",
+      "sha256": "a02eeb1cb8c95d4bdb9c0207b9456ce2fe28d7bb6cf5481be7d07ffa3c09b445"
+    },
+    {
+      "id": "harbormaster",
+      "file": "src/assets/family-learning/island/harbormaster.png",
+      "sha256": "47a3d39c8123288cb4970a6d6678c663bf4daf7150b8450dc7291c9e114622b4"
+    },
+    {
+      "id": "hut",
+      "file": "src/assets/family-learning/island/hut.png",
+      "sha256": "326ceb5b1a84271e643391e01186dadd03d8720d4e4b2ae23b0fd2df42496b42"
+    },
+    {
+      "id": "keeper",
+      "file": "src/assets/family-learning/island/keeper.png",
+      "sha256": "0ca47b3b5c64bb80e8b6760e97ba52bd76ad4a3595ac06e9d13c5abda3f7dce3"
+    },
+    {
+      "id": "logbook-stand",
+      "file": "src/assets/family-learning/island/logbook-stand.png",
+      "sha256": "6cd3ac28e97f52b0e321b5698bf85ea9e5a51af454ca02d1642527805a0c84a1"
+    },
+    {
+      "id": "marker-turtle",
+      "file": "src/assets/family-learning/island/marker-turtle.png",
+      "sha256": "0cc6726fed0172976b602c014dc4b9552735617e2f3c62ee4dacfd2e8121a9b5"
+    },
+    {
+      "id": "marker-waves",
+      "file": "src/assets/family-learning/island/marker-waves.png",
+      "sha256": "d291e877a86ed097e8f28d85476042df982438e0425d8bf2eb925d16bf7440b6"
+    },
+    {
+      "id": "office",
+      "file": "src/assets/family-learning/island/office.png",
+      "sha256": "4e7e5cd6d5b7cd62e3e42c0e6a27cc25fdeeb94ee6aefdde317d7699c6f03def"
+    },
+    {
+      "id": "overlay-crater",
+      "file": "src/assets/family-learning/island/overlay-crater.png",
+      "sha256": "efaf779935c8d5cd43348b5a6098efc159fa94befc3fea2ca9b7f366fccaf6c9"
+    },
+    {
+      "id": "overlay-forest",
+      "file": "src/assets/family-learning/island/overlay-forest.png",
+      "sha256": "3ece5f631db3f09551acfffa24fc34623d0665678db2a28e0a83f3b3a7b26b06"
+    },
+    {
+      "id": "overlay-ice",
+      "file": "src/assets/family-learning/island/overlay-ice.png",
+      "sha256": "413080d22cad0f38c413be733a71d405ad08cbf9688d64ea664dedfd57d90ca8"
+    },
+    {
+      "id": "pier-head",
+      "file": "src/assets/family-learning/island/pier-head.png",
+      "sha256": "4e1cc37c40c3a937262c5b484c92777567e12ca9a74840bcb003c2d50d33164a"
+    },
+    {
+      "id": "pier-module",
+      "file": "src/assets/family-learning/island/pier-module.png",
+      "sha256": "c25100a0aa124fc20adad1dbb5a3f5ae16c67b780874437c244805ad3ba37d73"
+    },
+    {
+      "id": "plank-pile",
+      "file": "src/assets/family-learning/island/plank-pile.png",
+      "sha256": "43d5d7b46fd86cdc87e66fdd6814cde853e556686dd6395b7e98faff033b7e8d"
+    },
+    {
+      "id": "planner",
+      "file": "src/assets/family-learning/island/planner.png",
+      "sha256": "a345c55cdc1a0f457375630dc4356f14d3a6c7263c30bdb6c54cb79372b0d7d2"
+    },
+    {
+      "id": "sea",
+      "file": "src/assets/family-learning/island/sea.png",
+      "sha256": "7ed27f3af17eec809bcca22c699b6323ddb9665da22e18a26cc0f5964fe1ed05"
+    },
+    {
+      "id": "seedling",
+      "file": "src/assets/family-learning/island/seedling.png",
+      "sha256": "51fdab48a1d6b4e04348bac2de6a0bc6ef51f5752a9498112d200ce35d708250"
+    },
+    {
+      "id": "shop",
+      "file": "src/assets/family-learning/island/shop.png",
+      "sha256": "e00d258c2365f951127f36d12a2bad2a297711140c7db0bda1d65b986bd32e81"
+    },
+    {
+      "id": "sky",
+      "file": "src/assets/family-learning/island/sky.png",
+      "sha256": "afa9b0b70ebe588e3b51f980bed08d99afec9fd632d7546165559226ba351fa0"
+    },
+    {
+      "id": "station-bed",
+      "file": "src/assets/family-learning/island/station-bed.png",
+      "sha256": "065847abd9537c285020114bd9cae5b239654ed628ff408e70b3cccef8d270d6"
+    },
+    {
+      "id": "station",
+      "file": "src/assets/family-learning/island/station.png",
+      "sha256": "70db2e9011e6ed41d2878e8ca3dcd9c7a40dbd67c543504bca296c08f01da898"
+    },
+    {
+      "id": "supplier",
+      "file": "src/assets/family-learning/island/supplier.png",
+      "sha256": "f9aef89b3bb33f97010156c634c73f08f2e3181d47b870221c8f9ff72724d7a2"
+    },
+    {
+      "id": "supply-store",
+      "file": "src/assets/family-learning/island/supply-store.png",
+      "sha256": "ea942333cd971a72ce48dbd024d2346abf9b9fc73b8ac34a6ac81e1bd214f46a"
+    },
+    {
+      "id": "tent",
+      "file": "src/assets/family-learning/island/tent.png",
+      "sha256": "7f0d97dfe09e10d4c50367164971fcc1bfadd86da8632f596b221a6a69482cdb"
+    },
+    {
+      "id": "wordbook-stand",
+      "file": "src/assets/family-learning/island/wordbook-stand.png",
+      "sha256": "12220e3046b23cf17e63cf2366472a939f5100e34e0ec295d82e860b6163f7d9"
+    },
+    {
+      "id": "workshop",
+      "file": "src/assets/family-learning/island/workshop.png",
+      "sha256": "8405d8f5366ab7eacce44656aad8ec05282e3ba3e511cfbabd95eee60c70bcd0"
+    }
+  ]
+}

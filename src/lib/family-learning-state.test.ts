@@ -3,6 +3,7 @@
 // Run with: npm test
 
 import { deepStrictEqual, equal, ok, throws } from "node:assert/strict";
+import { sha256Hex } from "./family-learning-hash.ts";
 import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 import {
@@ -186,17 +187,25 @@ describe("teaching loop and evidence downgrades", () => {
     equal(a.result.evidence, "supported");
   });
 
-  it("a tutor question marks the attempt supported; a reply with the answer marks it exposed", () => {
+  it("a tutor question marks the attempt supported; a VERIFIED reply with the answer marks it exposed; an unsigned reply is withheld and reveals nothing", () => {
     const { env, state: s0 } = toEntry();
-    const q = applyLearningOp(s0, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_question", payload: { text: "Was heisst gerecht?" } }, env);
-    const r = applyLearningOp(q.state, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_reply", payload: { text: "Gerecht heisst gleich viele: jede Person bekommt 6 Pakete." } }, env);
+    const q = applyLearningOp(s0, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_question", payload: { text: "Was heisst gerecht?", turnId: "t-q1" } }, env);
+    const dispatch = q.result.dispatch as { turnId: string; message: string; reqHash: string };
+    ok(dispatch && dispatch.turnId === "t-q1" && dispatch.reqHash === sha256Hex(dispatch.message), "the server built and recorded the dispatch");
+    const text = "Gerecht heisst gleich viele: jede Person bekommt 6 Pakete.";
+    const unsigned = applyLearningOp(q.state, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_reply", payload: { text, turnId: "t-q1", ok: true } }, env);
+    deepStrictEqual({ exposure: unsigned.state.math["EQ-ENTRY"]!.exposure, origin: unsigned.result.origin, shown: unsigned.result.shown, cls: (unsigned.records.supports[0].payload as { classification: string }).classification }, { exposure: "shown", origin: "missing", shown: false, cls: "origin-missing" });
+    const r = applyLearningOp(q.state, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_reply", payload: { text, turnId: "t-q1", ok: true }, receipt: { sub: "santiago", sid: "learn", key: "t-q1", req: dispatch.reqHash, res: sha256Hex(text), iat: 1 } }, env);
+    equal(r.result.origin, "verified");
     equal(r.state.math["EQ-ENTRY"]!.exposure, "answer_revealed");
     equal(r.records.exposures[0].source, "tutor_reply");
     const a = applyLearningOp(r.state, { op: "answer-math", itemId: "EQ-ENTRY", answer: 6, raw: "6", modality: "typed" }, env);
     equal(a.result.evidence, "answer_exposed");
     // A reply without the number is only ever "supported".
-    const q2 = applyLearningOp(s0, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_question" }, env);
-    const r2 = applyLearningOp(q2.state, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_reply", payload: { text: "Teile die Pakete in vier gleich grosse Gruppen." } }, env);
+    const q2 = applyLearningOp(s0, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_question", payload: { text: "?", turnId: "t-q2" } }, env);
+    const d2 = q2.result.dispatch as { reqHash: string };
+    const t2 = "Teile die Pakete in vier gleich grosse Gruppen.";
+    const r2 = applyLearningOp(q2.state, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_reply", payload: { text: t2, turnId: "t-q2", ok: true }, receipt: { sub: "santiago", sid: "learn", key: "t-q2", req: d2.reqHash, res: sha256Hex(t2), iat: 1 } }, env);
     equal(r2.state.math["EQ-ENTRY"]!.exposure, "shown");
     const a2 = applyLearningOp(r2.state, { op: "answer-math", itemId: "EQ-ENTRY", answer: 6, raw: "6", modality: "typed" }, env);
     equal(a2.result.evidence, "supported");
@@ -427,11 +436,12 @@ describe("regressions from the independent review (2026-09-28)", () => {
 
   it("#4 a late tutor reply binds to the original task even after it advanced", () => {
     const { env, state: s0 } = toEntry();
-    const q = applyLearningOp(s0, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_question" }, env);
+    const q = applyLearningOp(s0, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_question", payload: { text: "?", turnId: "t1" } }, env);
     const a = applyLearningOp(q.state, { op: "answer-math", itemId: "EQ-ENTRY", answer: 6, raw: "6", modality: "typed" }, env);
     equal(a.result.evidence, "supported");
-    // Stage is now EQ-FRESH; the reply for EQ-ENTRY still lands on EQ-ENTRY.
-    const r = applyLearningOp(a.state, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_reply", payload: { text: "Es sind 6.", turnId: "t1" } }, env);
+    // Stage is now EQ-FRESH; the (verified) reply for EQ-ENTRY still lands on EQ-ENTRY.
+    const d = q.result.dispatch as { reqHash: string };
+    const r = applyLearningOp(a.state, { op: "support", taskId: "EQ-ENTRY", kind: "tutor_reply", payload: { text: "Es sind 6.", turnId: "t1", ok: true }, receipt: { sub: "santiago", sid: "learn", key: "t1", req: d.reqHash, res: sha256Hex("Es sind 6."), iat: 1 } }, env);
     equal(r.records.supports[0].taskId, "EQ-ENTRY");
     equal(r.state.math["EQ-ENTRY"]!.exposure, "answer_revealed");
     equal(r.state.math["EQ-FRESH"]!.exposure, "none");
@@ -488,8 +498,9 @@ describe("regressions from the independent review, round 2 (2026-09-28)", () => 
           recordSupport: async (op, expectedRevision) => {
             equal(expectedRevision, state.revision);
             try {
-              state = applyLearningOp(state, op, env).state;
-              return { outcome: "applied", revision: state.revision };
+              const applied = applyLearningOp(state, op, env);
+              state = applied.state;
+              return { outcome: "applied", revision: state.revision, result: applied.result };
             } catch {
               return { outcome: "refused", revision: state.revision };
             }
@@ -497,7 +508,7 @@ describe("regressions from the independent review, round 2 (2026-09-28)", () => 
           currentRevision: () => state.revision,
           ask: async (message) => {
             bridgeCalls.push(message);
-            return { ok: true, text: "Das heisst brauchen." };
+            return { ok: true, text: "Das heisst brauchen.", receipt: null };
           },
           newTurnId: () => "turn-x",
           isAlive: () => true,
@@ -505,9 +516,11 @@ describe("regressions from the independent review, round 2 (2026-09-28)", () => 
         view.tutor,
         "Was heisst need?",
       );
-      equal(result.status, "answered");
+      // assessment reset §7: without a bridge receipt the reply is recorded with origin "missing" and WITHHELD — never answered as Nabu
+      deepStrictEqual(result, { status: "reply-withheld", turnId: "turn-x", reason: "untrusted", origin: "missing" });
       equal(bridgeCalls.length, 1);
-      ok(bridgeCalls[0].includes(`Aufgabe ${segmentId}/listen v1`));
+      ok(bridgeCalls[0].includes(`Aufgabe ${segmentId}/listen v1`), "the SERVER built the message");
+      ok(state.tutorDispatches?.some((d) => d.turnId === "turn-x"), "the dispatch is recorded before the send");
       equal(state.language[segmentId]!.help.tutor, 2);
       // The tutor help now makes every production in this segment supported.
       ({ state } = run(state, [
@@ -532,11 +545,19 @@ describe("regressions from the independent review, round 2 (2026-09-28)", () => 
     const result = await runTutorTurn(
       {
         recordSupport: async (op) => {
-          state = applyLearningOp(state, op, env).state;
-          return { outcome: "applied", revision: state.revision };
+          // the route's job in this test: a receipt string on the reply becomes VERIFIED claims bound to the server's dispatch
+          if (op.kind === "tutor_reply" && op.payload && typeof op.payload === "object" && "receipt" in op.payload) {
+            const p = op.payload as { text: string; turnId: string; receipt?: string };
+            const d = state.tutorDispatches!.find((x) => x.turnId === p.turnId)!;
+            delete p.receipt;
+            op = { ...op, receipt: { sub: "santiago", sid: "learn", key: d.turnId, req: d.reqHash, res: sha256Hex(p.text), iat: 1 } };
+          }
+          const applied = applyLearningOp(state, op, env);
+          state = applied.state;
+          return { outcome: "applied", revision: state.revision, result: applied.result };
         },
         currentRevision: () => state.revision,
-        ask: async () => ({ ok: true, text: "Jede Person bekommt 6." }),
+        ask: async () => ({ ok: true, text: "Jede Person bekommt 6.", receipt: "fcr1.signed.by-the-bridge" }),
         newTurnId: () => "turn-m",
         isAlive: () => true,
       },

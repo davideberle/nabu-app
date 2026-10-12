@@ -1,3 +1,5 @@
+import { effectiveLevel } from "./family-learning-reasoning.ts";
+import { LIVE_TUTOR_DEFERRED_PARENT_NOTE } from "./family-learning-deferral.ts";
 // ---------------------------------------------------------------------------
 // Evidence-bound visit summary, scene model, delayed-check explanation and
 // parent review (approved redesign 2026-09-29: F2/W4, F3a/V1, F4/C2, F6/R3).
@@ -13,6 +15,7 @@
 // ---------------------------------------------------------------------------
 
 import type { LearningContent, ScoredMathItemId, VisitId } from "./family-learning-content.ts";
+import { writingAspectLabel } from "./family-learning-writing-review.ts";
 import { mathItem, usedWordOf } from "./family-learning-content.ts";
 import type { MathAttempt, MissionState, TypingBurst, VisitRecord } from "./family-learning-state.ts";
 import type { LessonFeedback } from "./family-learning-feedback.ts";
@@ -187,8 +190,12 @@ export function buildSceneModel(state: MissionState, content: LearningContent): 
   const workplaceDone = (stages: readonly string[]) => {
     if (!v6) return false;
     const route = v6.route ?? content.visits.find((v) => v.id === "v6")?.stages ?? [];
-    const start = (route as readonly string[]).indexOf(stages[0]);
-    return start >= 0 && (v6.finishedAt !== null || v6.stageIndex >= start + stages.length);
+    // The LAST occurrence: a re-entered (caught-up) workplace appears twice in the route (repair round 3).
+    const start = (route as readonly string[]).lastIndexOf(stages[0]);
+    const passed = start >= 0 && (v6.finishedAt !== null || v6.stageIndex >= start + stages.length);
+    // A block whose every required stage was skipped (and not caught up) is not completed work (IV5-10).
+    const allSkipped = stages.every((st) => v6.skippedStages.some((sk) => sk.stage === st && !sk.undone));
+    return passed && !allSkipped;
   };
   const harbor: SceneModel["harbor"] = {
     crates: harborDone && harborDef ? harborDef.quantity : 0,
@@ -323,7 +330,7 @@ export function buildVisitSummary(state: MissionState, content: LearningContent,
   else if (goodBurst) success = { text: `Beim Tippen hast du ${Math.round(goodBurst.accuracy * 100)} % der Zeichen richtig getroffen (${goodBurst.lessonId.replace("TYPE-CH-COURSE-", "Lektion ")}).`, basis: `burst ${goodBurst.lessonId} accuracy ${goodBurst.accuracy.toFixed(2)}` };
   else if (transfer && transfer.outcome === "clean" && (transfer.assessed ?? 0) > 0 && transfer.modality === "typed") success = { text: transfer.helpExposed ? `Dein neuer Satz hatte an ${transfer.assessed} geprüften ${transfer.assessed === 1 ? "Stelle" : "Stellen"} das Leerzeichen richtig — nach der Hilfe von vorhin.` : `Dein neuer Satz hatte an ${transfer.assessed} geprüften ${transfer.assessed === 1 ? "Stelle" : "Stellen"} das Leerzeichen richtig — ganz ohne Hilfe.`, basis: `transfer ${transfer.id} clean, ${transfer.assessed} assessed (${transfer.helpExposed ? "revision help shown earlier" : "no help"})` };
   else if (revision && revision.outcome === "revised") success = { text: "Du hast die Leerzeichen in deinem Satz selbst eingesetzt.", basis: `log revision resolved ${revision.resolved}/${revision.flagged.length}` };
-  else if (logReview && logReview.outcome === "revised" && logReview.review.taught.length) success = { text: `Du hast deinen Satz selbst verbessert (${[...new Set(logReview.review.taught.map((f) => f.aspect))].map((a) => ({ meaning: "Inhalt", completeness: "ganzer Satz", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" })[a] ?? a).join(" und ")})${logReview.evaluation?.copiedSuggestion ? " — mit dem Vorschlag" : logReview.helpShown ? " — nach dem Hinweis" : ""}.`, basis: `log review revised${logReview.evaluation?.copiedSuggestion ? " (copied suggestion)" : logReview.helpShown ? " (suggestion shown)" : ""}` };
+  else if (logReview && logReview.outcome === "revised" && logReview.review.taught.length) success = { text: `Du hast deinen Satz selbst verbessert (${[...new Set(logReview.review.taught.map((f) => f.aspect))].map((a) => writingAspectLabel(a)).join(" und ")})${logReview.evaluation?.copiedSuggestion ? " — mit dem Vorschlag" : logReview.helpShown ? " — nach dem Hinweis" : ""}.`, basis: `log review revised${logReview.evaluation?.copiedSuggestion ? " (copied suggestion)" : logReview.helpShown ? " (suggestion shown)" : ""}` };
   else if (page) success = { text: "Du hast eine Seite ins Logbuch geschrieben.", basis: "expedition page saved" };
 
   // --- practiced: the first actual difficulty, in a fixed order
@@ -335,11 +342,12 @@ export function buildVisitSummary(state: MissionState, content: LearningContent,
   if (incorrect) practiced = { text: mathItem(content, incorrect.id).kind === "remainder" ? `Geübt: erst die vollen ${mathItem(content, incorrect.id).group.plural} rechnen, dann den Rest.` : "Geübt: gerecht teilen — noch einmal genau nachzählen.", basis: `attempt ${incorrect.id}#${incorrect.attempt.no} incorrect` };
   else if (lowBurst) practiced = { text: `Geübt: die Tasten aus ${lowBurst.lessonId.replace("TYPE-CH-COURSE-", "Lektion ")} — langsam und genau${lowBurst.comfort === "hard" ? ", das war anstrengend" : ""}.`, basis: `burst ${lowBurst.lessonId} accuracy ${lowBurst.accuracy.toFixed(2)} comfort ${lowBurst.comfort}` };
   else if (revision && (revision.outcome === "partial" || revision.outcome === "unchanged")) practiced = { text: `Geübt: Leerzeichen zwischen den Wörtern (${revision.resolved} von ${revision.flagged.length} Stellen).`, basis: `log revision ${revision.outcome}` };
-  else if (logReview && (logReview.outcome === "partial" || logReview.outcome === "unchanged") && logReview.review.taught.length) practiced = { text: `Geübt: ${[...new Set(logReview.review.taught.map((f) => f.aspect))].map((a) => ({ meaning: "Inhalt", completeness: "ganzer Satz", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" })[a] ?? a).join(" und ")} in deinem Satz.`, basis: `log review ${logReview.outcome}: ${logReview.evaluation?.unresolved.join(",") ?? ""}` };
+  else if (logReview && (logReview.outcome === "partial" || logReview.outcome === "unchanged") && logReview.review.taught.length) practiced = { text: `Geübt: ${[...new Set(logReview.review.taught.map((f) => f.aspect))].map((a) => writingAspectLabel(a)).join(" und ")} in deinem Satz.`, basis: `log review ${logReview.outcome}: ${logReview.evaluation?.unresolved.join(",") ?? ""}` };
   else if (transfer && transfer.outcome === "flagged") practiced = { text: `Geübt: Leerzeichen im neuen Satz (${transfer.flagged.length} ${transfer.flagged.length === 1 ? "Stelle" : "Stellen"} fehlten noch).`, basis: `transfer ${transfer.id} flagged ${transfer.flagged.length}` };
   else if (langWrong) practiced = { text: "Geübt: das richtige Wort für die Lieferung.", basis: `${langWrong.id}/${langWrong.r.stepId} ${langWrong.r.correct === false ? "incorrect" : "unscored"}` };
   else if (unscored) practiced = { text: "Geübt: die Antwort klar sagen oder tippen.", basis: `attempt ${unscored.id}#${unscored.attempt.no} unscored (${unscored.attempt.uncertainty ?? "?"})` };
-  else if (visit.skippedStages.length) practiced = { text: `Heute ausgelassen: ${visit.skippedStages.map((s) => s.stage).join(", ")}.`, basis: "skipped stages" };
+  else if (visit.skippedStages.some((s) => !s.undone && s.reason !== "deferred")) practiced = { text: `Heute ausgelassen: ${visit.skippedStages.filter((s) => !s.undone && s.reason !== "deferred").map((s) => s.stage).join(", ")}.${visit.skippedStages.some((s) => s.undone) ? ` Nachgeholt: ${visit.skippedStages.filter((s) => s.undone).map((s) => s.stage).join(", ")}.` : ""}`, basis: "skipped stages (standing)" };
+  else if (visit.skippedStages.some((s) => s.undone)) practiced = { text: `Zuerst ausgelassen, dann nachgeholt: ${visit.skippedStages.filter((s) => s.undone).map((s) => s.stage).join(", ")}.`, basis: "skipped stages caught up" };
 
   // --- artifact
   let artifact: VisitSummary["artifact"] = { kind: "none", text: "Heute ist keine Seite entstanden." };
@@ -526,12 +534,36 @@ export function buildParentReview(state: MissionState, content: LearningContent,
   for (const [id, r] of Object.entries(state.reasoning ?? {})) {
     if (!r || !r.turns.some((t) => inVisit(t.at))) continue;
     const child = r.turns.filter((t) => t.role === "child");
-    objectives.push({ taskId: `${id}/reasoning`, version: 1, objective: "explain-own-method", outcome: r.method ?? "open", evidence: r.method === "explained-independently" ? "independent" : r.method === "explained-after-probing" ? "independent" : r.method === "explained-with-support" ? "supported" : "unscored", support: [...(r.probesUsed ? [`${r.probesUsed} Nachfrage(n) (neutral)`] : []), ...r.support], uncertainty: r.method === "not-yet-established" ? "Weg nach den Nachfragen nicht klar — kein Urteil über das Verständnis" : child.some((t) => t.modality === "spoken") ? "gesprochene Erklärung: Schreibweise stammt aus der Transkription" : null });
-    whatHappened.push(`${id} Erklärung: ${child.length} Antwort(en) des Kindes${r.probesUsed ? `, ${r.probesUsed} Nachfrage(n)` : ""}; Weg: ${r.method ?? "offen"}${r.strategy ? ` (${r.strategy})` : ""}${r.support.length ? `; Hilfe: ${r.support.join(", ")}` : ""}. Wörtlich: ${child.map((t) => `„${t.text}“${t.modality === "spoken" ? " (gesprochen)" : ""}`).join(" · ")}`);
+    // Assessment reset: the objective carries NABU'S ASSESSMENT (per criterion, effective level) and the support mode as separate facts.
+    // `evidence` is "nabu-assessment" (never independent/supported as a correctness claim) or "unscored" when no verified assessment exists.
+    const fin = r.final ?? r.assessments?.[r.assessments.length - 1] ?? null;
+    const levels = fin ? { strategy: effectiveLevel(fin, "strategy"), quantities: effectiveLevel(fin, "quantities"), meaning: effectiveLevel(fin, "meaning") } : null;
+    const levelText = levels ? `Nabus Einschätzung — Rechenweg: ${levels.strategy}, Mengen: ${levels.quantities}, Bedeutung: ${levels.meaning}` : "keine Einschätzung (kein beglaubigtes Gespräch)";
+    const facts: string[] = [`Hilfe: ${r.supportMode === "supported" ? "ja (" + r.supportEvents.map((e) => e.kind + (e.promptId ? ":" + e.promptId : "")).join(", ") + ")" : "keine — nur " + r.clarificationsUsed + " Klärungsfrage(n) aus der Liste"}`, ...(r.screen?.contradictions?.length ? [`ausdrücklich genannte falsche Rechnung: ${r.screen.contradictions.join("; ")}`] : []), ...(r.screen?.retractionInLastTurn ? ["letzte Antwort nimmt etwas zurück"] : []), ...(fin?.stale ? ["Einschätzung veraltet (Rücknahme/Widerspruch danach, keine neue Einschätzung)"] : []), ...(fin?.preRetractionGrounding ? ["Belege stammen nur von vor der Rücknahme"] : []), ...(fin?.ungrounded ? ["ein Beleg steht so nicht in den Worten des Kindes"] : []), ...(Object.entries(r.origins ?? {}).filter(([k, n]) => k !== "verified" && n > 0).map(([k, n]) => `${n} Antwort(en) mit Herkunft ${k} — zurückgehalten`))];
+    objectives.push({ taskId: `${id}/reasoning`, version: 1, objective: "explain-own-method", outcome: levels ? `strategy:${levels.strategy};quantities:${levels.quantities};meaning:${levels.meaning}` : "unassessed", evidence: fin ? "nabu-assessment" : "unscored", support: facts, uncertainty: `${levelText} — eine Einschätzung des Assistenten, kein Nachweis von Verständnis${fin && Object.values(levels!).some((l) => l === "uncertain") ? "; mindestens ein Kriterium unsicher" : ""}${child.some((t) => t.modality === "spoken") ? "; gesprochene Erklärung: Schreibweise stammt aus der Transkription" : ""}` });
+    whatHappened.push(`${id} Erklärung: ${child.length} Antwort(en) des Kindes${r.assistantTurns ? `, ${r.assistantTurns} Gesprächsrunde(n)` : ", kein Gespräch"}; Nabus Einschätzung: ${r.final ? ["strategy", "quantities", "meaning"].map((c) => `${c}=${effectiveLevel(r.final!, c as "strategy" | "quantities" | "meaning")}`).join(" ") : "keine"}; Hilfe: ${r.supportMode === "supported" ? r.supportEvents.map((e) => e.kind).join(", ") : "keine"}. Wörtlich: ${child.map((t) => `„${t.text}“${t.modality === "spoken" ? " (gesprochen)" : ""}`).join(" · ")}`);
+  }
+  // Temporary Visit 5 scope reduction: a deferred explanation stage is reported as exactly that — not performed, not assessed, no credit, no failure.
+  if (visit.skippedStages.some((s) => s.stage === "explain" && s.reason === "deferred")) {
+    const target = state.reasoning && Object.keys(state.reasoning).find((id) => state.reasoning?.[id as keyof typeof state.reasoning]?.turns.some((t) => inVisit(t.at)));
+    if (!target) {
+      objectives.push({ taskId: "EQ-HARBOR/reasoning", version: 1, objective: "explain-own-method", outcome: "deferred-by-owner", evidence: "unscored", support: [], uncertainty: `Erklärgespräch ${LIVE_TUTOR_DEFERRED_PARENT_NOTE}` });
+      whatHappened.push(`EQ-HARBOR Erklärung: ${LIVE_TUTOR_DEFERRED_PARENT_NOTE}.`);
+    } else {
+      // round 3: a conversation captured BEFORE the deferral keeps its record (objective above); the parent reads that no further live assessment occurred
+      const r = (state.reasoning as Record<string, { final?: unknown; assessments?: unknown[] } | undefined>)[target];
+      const assessed = !!(r && (r.final || (r.assessments?.length ?? 0) > 0));
+      whatHappened.push(assessed ? `${target} Erklärung: Gespräch in dieser Übergangsversion durch den Eigentümer ausgesetzt — Nabus frühere Einschätzung bleibt gespeichert (Stand und Gültigkeit stehen bei den Kriterien); heute kam keine neue dazu.` : `${target} Erklärung: Gespräch in dieser Übergangsversion durch den Eigentümer ausgesetzt — die gespeicherten Antworten bleiben, eine Einschätzung gab es nicht.`);
+    }
   }
   for (const lr of (state.logReviews ?? []).filter((r) => r.visit === visitId && inVisit(r.at))) {
     const taughtAspects = [...new Set(lr.review.taught.map((f) => f.aspect))];
-    objectives.push({ taskId: lr.logId, version: 1, objective: "writing-review-revision", outcome: lr.outcome, evidence: lr.outcome === "skipped" || lr.review.taught.length === 0 ? "unscored" : lr.outcome === "revised" ? (lr.evaluation?.copiedSuggestion || lr.helpShown ? "supported" : "independent") : "incorrect", support: lr.helpShown ? ["suggestion-shown"] : [], uncertainty: lr.review.taught.length === 0 ? "an den sechs geprüften Stellen nichts zu lehren — keine Aussage über den ganzen Satz" : lr.review.unknownWords.length ? `unbekannte Wörter nachgefragt: ${lr.review.unknownWords.join(", ")}` : null });
+    // Assessment reset §6: per-criterion outcome; `evidence` = recorded help for the corrected mechanical criteria (never correctness); uncertainty always names what was not assessed.
+    const crit = lr.criteria ?? lr.evaluation?.criteria ?? [];
+    const byStatus = (st: string) => [...new Set(crit.filter((c) => c.status === st).map((c) => c.aspect))];
+    const unassessedAspects = [...new Set([...byStatus("unassessed"), ...lr.review.unchecked])];
+    const outcomeText = lr.outcome === "skipped" ? "skipped" : crit.length ? `corrected:${byStatus("corrected").join("+") || "-"};changed:${byStatus("changed").join("+") || "-"};unresolved:${byStatus("unresolved").join("+") || "-"};introduced:${byStatus("introduced").join("+") || "-"};unassessed:${unassessedAspects.join("+") || "-"}` : lr.outcome;
+    objectives.push({ taskId: lr.logId, version: 1, objective: "writing-review-revision", outcome: outcomeText, evidence: lr.outcome === "skipped" ? "unscored" : lr.evidence ?? "unscored", support: lr.helpShown ? ["suggestion-shown"] : [], uncertainty: [lr.review.taught.length === 0 ? "an den geprüften Stellen nichts zu lehren — keine Aussage über den ganzen Satz" : null, unassessedAspects.length ? `nicht beurteilt: ${unassessedAspects.join(", ")}` : null, byStatus("changed").length ? `geändert, nicht erneut beurteilt: ${byStatus("changed").join(", ")}` : null, lr.evaluation?.boundaries && (lr.evaluation.boundaries.joins.length || lr.evaluation.boundaries.splits.length) ? `Wortgrenzen geändert: ${[...lr.evaluation.boundaries.joins, ...lr.evaluation.boundaries.splits].join("; ")}` : null, lr.review.clarify ? `nachgefragt: ${lr.review.clarify.words.length ? lr.review.clarify.words.join(", ") : lr.review.clarify.question}` : null, "keine Aussage über Richtigkeit des ganzen Satzes"].filter(Boolean).join(" · ") });
     whatHappened.push(`Kapitänslogbuch (${lr.logId}): Original „${lr.original}“; Befunde: ${lr.review.findings.length ? lr.review.findings.map((f) => f.id).join(", ") : "keine an den geprüften Stellen"}; gelehrt: ${taughtAspects.join(", ") || "nichts"}; ohne Befund: ${lr.review.clean.join(", ") || "—"}; Überarbeitung: ${lr.revised ? `„${lr.revised}“ (${lr.outcome}${lr.evaluation ? `, gelöst ${lr.evaluation.resolved.length}/${lr.review.taught.length}` : ""}${lr.evaluation?.copiedSuggestion ? ", Vorschlag kopiert" : ""})` : "übersprungen"}${Object.keys(lr.clarifications).length ? `; Erklärungen: ${Object.entries(lr.clarifications).map(([w, m]) => `${w} = „${m}“`).join(", ")}` : ""}. Keine Aussage über Stellen, die nicht geprüft wurden.`);
   }
   const spokenPages = state.pages.filter((p) => p.visit === visitId && inVisit(p.at) && p.modality === "spoken");

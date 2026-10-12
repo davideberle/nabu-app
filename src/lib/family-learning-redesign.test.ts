@@ -4,6 +4,7 @@
 
 import { deepStrictEqual, equal, ok, throws } from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { sha256Hex } from "./family-learning-hash.ts";
 import { describe, it } from "node:test";
 import { asLearningContent, reconcileLearningContent, type LearningContent } from "./family-learning-content.ts";
 import {
@@ -362,7 +363,12 @@ describe("visit 4 — the next chapter", () => {
     let u = upgradeMissionState(s3, v2, env3.now().toISOString()).state;
     u = run(u, [{ op: "start-visit" }, { op: "resume-base" }, { op: "choose-station", theme: "none" }, { op: "typing-course-continue" }], env3);
     u = ensureItemShown(u, v2, env3.now()).state;
-    u = run(u, [{ op: "support", taskId: "EQ-STATION", kind: "tutor_reply", payload: { text: "Es bleiben 2 übrig." } }], env3);
+    // Assessment reset §7 (round 5): only a VERIFIED reply is shown and can reveal; an unsigned reply is withheld and reveals nothing.
+    const q = applyLearningOp(u, { op: "support", taskId: "EQ-STATION", kind: "tutor_question", payload: { text: "?", turnId: "t-rev" } }, env3);
+    const d = q.result.dispatch as { reqHash: string };
+    const unsigned = run(q.state, [{ op: "support", taskId: "EQ-STATION", kind: "tutor_reply", payload: { text: "Es bleiben 2 übrig.", turnId: "t-rev", ok: true } }], env3);
+    ok(unsigned.math["EQ-STATION"]!.exposure !== "answer_revealed", "unsigned: withheld, nothing revealed");
+    u = run(q.state, [{ op: "support", taskId: "EQ-STATION", kind: "tutor_reply", payload: { text: "Es bleiben 2 übrig.", turnId: "t-rev", ok: true }, receipt: { sub: "santiago", sid: "learn", key: "t-rev", req: d.reqHash, res: sha256Hex("Es bleiben 2 übrig."), iat: 1 } }], env3);
     equal(u.math["EQ-STATION"]!.exposure, "answer_revealed");
   });
   it("Spanish request: lexical completion is not phrase production; the other construction stays a different claim; plausible longer wording is unscored; a distractor is wrong", () => {

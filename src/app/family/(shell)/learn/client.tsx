@@ -31,6 +31,7 @@ import type { ProgressStrip } from "@/lib/family-learning-progress";
 import type { VisitReport } from "@/lib/family-learning-feedback";
 import type { WorldMarker } from "@/components/family/learning/expedition-world";
 import { HarborIsland, islandSupplyRows } from "@/components/family/learning/harbor-island";
+import { liveTutorDeferred } from "@/lib/family-learning-deferral";
 import { WordbookPanel } from "@/components/family/learning/harbor-stages";
 import { NabuSidebar } from "@/components/family/learning/nabu-sidebar";
 import { createChildSpeechPlayer } from "@/lib/family-speech";
@@ -172,7 +173,11 @@ function World({ child }: { child: ChildId }) {
       params.set("child", child);
       if (visit) params.set("report", visit);
       else params.delete("report");
-      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+      const href = `${pathname}?${params.toString()}`;
+      // commit the URL synchronously (a reload issued before the router transition lands would otherwise lose the open report —
+      // independent functional review 2026-10-11), then let the router adopt the same URL
+      if (typeof window !== "undefined") window.history.replaceState(window.history.state, "", href);
+      router.replace(href, { scroll: false });
     },
     [child, pathname, router, searchParams],
   );
@@ -318,7 +323,7 @@ function World({ child }: { child: ChildId }) {
           )}
         </SidePanel>
       ) : null}
-      <NabuSidebar child={child} view={view} page="map" speech={speech} tutorClient={running ? tutorClient : null} recordSupport={recordSupportOnMap} currentRevision={() => viewRef.current?.revision ?? 0} isAlive={() => aliveMapRef.current} open={nabuOpen} onOpenChange={setNabuOpen} />
+      <NabuSidebar child={child} view={view} page="map" speech={speech} tutorClient={running && !liveTutorDeferred(running.id) ? tutorClient : null} recordSupport={recordSupportOnMap} currentRevision={() => viewRef.current?.revision ?? 0} isAlive={() => aliveMapRef.current} open={nabuOpen} onOpenChange={setNabuOpen} />
     </div>
   );
 }

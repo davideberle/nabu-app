@@ -8,11 +8,18 @@
 // pane on wide screens (the task stays visible) and a bottom sheet on narrow
 // ones. Two modes, both bound to the SERVER view:
 //
-//  - reasoning: after the harbor item the server runs the reviewed probe
-//    script (`reasoning-turn` / `reasoning-choice`); the thread shown here IS
-//    the server's record, Nabu's lines are spoken through the existing child
-//    TTS route, and the child answers by explicit push-to-talk (visible start,
-//    stop, confirmed transcript) or by typing. Nothing is scored here.
+//  - reasoning (repair round 1): after the harbor item the child's turn is
+//    recorded by the server (`reasoning-turn`, which validates the numbers and
+//    returns the bridge dispatch: validated context + complete history + the
+//    deterministic findings + the rules), the browser sends that dispatch to
+//    the isolated child assistant over the existing bridge transport (session
+//    "learn"), and posts the reply as `reasoning-reply` bound to the turn id.
+//    The server classifies the reply (verdict tag, revealed method, overruling
+//    when the numbers do not carry an acceptance) BEFORE anything is shown;
+//    the thread shown here IS the server's record. Nabu's lines are spoken
+//    through the existing child TTS route; the child answers by explicit
+//    push-to-talk (visible start, stop, confirmed transcript) or by typing.
+//    A pending dispatch survives a reload and is resent from the view.
 //  - free: a question goes to the isolated child assistant (existing bridge
 //    transport) with the server-built context block (page, task, the child's
 //    own work, island state, objective, prior attempts, open focus) prepended
@@ -27,8 +34,9 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
+import { LIVE_TUTOR_DEFERRED_CHILD_NOTICE, liveTutorDeferred } from "@/lib/family-learning-deferral";
 import { createChildTurnClient } from "@/lib/family-assistant-client";
-import { envelopeSpokenText, type ChildId } from "@/lib/family-assistant-turn";
+import { envelopeRawText, envelopeSpokenText, plainTextForChild, type ChildId } from "@/lib/family-assistant-turn";
 import type { LearningMutateOutcome } from "@/lib/family-learning-client";
 import type { ChildView, LearningOp } from "@/lib/family-learning-state";
 import { recordSupportConfirmed, runTutorTurn, type SupportOutcome } from "@/lib/family-learning-tutor";
@@ -47,11 +55,13 @@ export type NabuSidebarProps = {
   speech: ChildSpeechPlayer;
   /** Free questions (bridge). Omit on surfaces without a tutor client. */
   tutorClient?: ReturnType<typeof createChildTurnClient> | null;
-  recordSupport?: (op: LearningOp & { op: "support" }, expectedRevision: number) => Promise<{ outcome: SupportOutcome; revision: number }>;
+  recordSupport?: (op: LearningOp & { op: "support" }, expectedRevision: number) => Promise<{ outcome: SupportOutcome; revision: number; result?: unknown }>;
   currentRevision?: () => number;
   isAlive?: () => boolean;
   /** Reasoning conversation ops (mission page only). */
   onReasoningTurn?: (text: string, modality: "typed" | "spoken") => Promise<LearningMutateOutcome | null>;
+  /** The assistant's reply (or its absence) for a dispatched turn. */
+  onReasoningReply?: (turnId: string, ok: boolean, text: string, receipt: string | null) => Promise<LearningMutateOutcome | null>;
   onReasoningChoice?: (choice: "counters" | "teach" | "continue") => Promise<LearningMutateOutcome | null>;
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -60,7 +70,8 @@ export type NabuSidebarProps = {
   busy?: boolean;
 };
 
-type Entry = { role: "child" | "nabu" | "note"; text: string; modality?: "typed" | "spoken"; key: string };
+/** `source`: assistant = verified Nabu (spoken); reviewed = reviewed app text (spoken); local = local guidance shown instead of untrusted content (shown with its label, never spoken as Nabu). */
+type Entry = { role: "child" | "nabu" | "note"; text: string; modality?: "typed" | "spoken"; source?: "assistant" | "reviewed" | "local" | null; kind?: string | null; key: string };
 /** The finished conversation, kept on the client until the child taps "Weiter" (the server moved the stage on in the same write). */
 type Finished = { turns: Entry[]; method: string; methodLabel: string };
 
@@ -180,9 +191,9 @@ export function PushToTalk({ disabled, onTranscript, onStateChange, label = "�
   );
 }
 
-export function NabuSidebar({ child, view, page, speech, tutorClient = null, recordSupport, currentRevision, isAlive, onReasoningTurn, onReasoningChoice, open, onOpenChange, onReasoningDone, busy = false }: NabuSidebarProps) {
+export function NabuSidebar({ child, view, page, speech, tutorClient = null, recordSupport, currentRevision, isAlive, onReasoningTurn, onReasoningReply, onReasoningChoice, open, onOpenChange, onReasoningDone, busy = false }: NabuSidebarProps) {
   const reasoning = view.reasoning;
-  const mode: "reasoning" | "free" = reasoning && page === "mission" ? "reasoning" : "free";
+  const mode: "reasoning" | "free" = reasoning && !reasoning.deferred && page === "mission" ? "reasoning" : "free";
   const binding = bindingOf(child, page, view);
   const [freeThread, setFreeThread] = useState<Entry[]>([]);
   const [pendingChild, setPendingChild] = useState<string | null>(null);
@@ -260,11 +271,56 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
   const lastNabu = reasoning ? [...reasoning.turns].reverse().find((t) => t.role === "nabu") ?? null : null;
   useEffect(() => {
     if (!open || mode !== "reasoning" || !lastNabu) return;
+    if (lastNabu.source !== "assistant" && lastNabu.source !== "reviewed") return; // only verified Nabu lines and reviewed app lines are spoken (assessment reset, trust)
     const key = `${reasoning?.itemId}:${lastNabu.at}:${lastNabu.text}`;
     if (spokenRef.current === key) return;
     spokenRef.current = key;
     void speak(lastNabu.text);
   }, [open, mode, lastNabu, reasoning?.itemId, speak]);
+
+  /** Apply a closed conversation from an op result: keep the thread and the honest method until "Weiter". */
+  const finishFrom = (entriesBefore: Entry[], r: { nabu?: string; kind?: string | null; source?: "assistant" | "reviewed" | "local" | null; method?: string | null; methodLabel?: string }) => {
+    if (typeof r.nabu !== "string") return;
+    // The closing line keeps the trust type the server gave it; local guidance is shown with its label and never spoken as Nabu.
+    const source = r.source ?? "local";
+    setFinished({ turns: [...entriesBefore, { role: "nabu", text: r.nabu, source, kind: r.kind ?? null, key: `a-${Date.now()}` }], method: r.method ?? "unscored", methodLabel: r.methodLabel ?? (r.method ?? "") });
+    if (source === "assistant" || source === "reviewed") void speak(r.nabu);
+  };
+
+  /**
+   * Send one dispatched turn to the isolated child assistant and post the reply to the server. The reply is withheld when
+   * the binding changed meanwhile (the server keeps the dispatch pending; it is resent from the view). Without a tutor
+   * client the server is told at once that no reply is available.
+   */
+  const sendDispatch = async (dispatch: { turnId: string; message: string }, entriesBefore: Entry[]) => {
+    if (!onReasoningReply) return;
+    const sentBinding = bindingRef.current;
+    let ok = false;
+    let text = "";
+    let receipt: string | null = null;
+    if (tutorClient) {
+      const abort = new AbortController();
+      abortRef.current = abort;
+      try {
+        // The server's turn id is the bridge idempotency key, so the bridge's signed receipt binds to this turn; never truncate.
+        const outcome = await tutorClient.ask({ childId: child, sessionSuffix: TUTOR_SESSION_SUFFIX, message: dispatch.message }, { signal: abort.signal, idempotencyKey: dispatch.turnId, noTruncate: true });
+        ok = outcome.ok;
+        // The EXACT wire text goes to the server (its hash is what the receipt signs); display formatting happens there/here separately.
+        text = outcome.ok ? envelopeRawText(outcome.envelope) : "";
+        receipt = outcome.ok ? outcome.envelope.meta.receipt ?? null : null;
+      } catch {
+        ok = false;
+      }
+    }
+    if (!aliveRef.current) return;
+    if (bindingRef.current !== sentBinding) return; // stale: the dispatch stays pending on the server and is resent from the view
+    const outcome = await onReasoningReply(dispatch.turnId, ok, text, receipt);
+    if (!aliveRef.current) return;
+    if (outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) {
+      const r = outcome.result as { done?: boolean; nabu?: string; kind?: string | null; source?: "assistant" | "reviewed" | "local" | null; method?: string | null; methodLabel?: string };
+      if (r.done) finishFrom(entriesBefore, r);
+    }
+  };
 
   const submitReasoning = async (text: string, modality: "typed" | "spoken") => {
     if (!onReasoningTurn || sending) return;
@@ -272,21 +328,48 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
     if (!check.ok) return;
     setSending(true);
     setPendingChild(check.text);
-    const before: Entry[] = reasoning ? reasoning.turns.map((t, i) => ({ role: t.role, text: t.text, modality: t.modality ?? undefined, key: `r-${i}` })) : [];
+    const before: Entry[] = reasoning ? reasoning.turns.map((t, i) => ({ role: t.role, text: t.text, modality: t.modality ?? undefined, source: t.source ?? null, key: `r-${i}` })) : [];
     const outcome = await onReasoningTurn(check.text, modality);
+    if (!aliveRef.current) return;
+    if (outcome && !outcome.ok && "failure" in outcome) {
+      setSending(false);
+      setPendingChild(null);
+      setFreeThread((t) => [...t, { role: "note", text: "Das konnte ich gerade nicht speichern. Sag es gleich nochmal.", key: `n-${Date.now()}` }]);
+      return;
+    }
+    if (outcome && !outcome.ok && "status" in outcome && outcome.status === "refused") {
+      // e.g. too long for one message: the turn was NOT recorded; the child is asked to say it shorter.
+      setSending(false);
+      setPendingChild(null);
+      setFreeThread((t) => [...t, { role: "note", text: outcome.message, key: `n-${Date.now()}` }]);
+      return;
+    }
+    const entries = [...before, { role: "child" as const, text: check.text, modality, key: `c-${Date.now()}` }];
+    if (outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) {
+      const r = outcome.result as { dispatch?: { turnId: string; message: string } };
+      if (r.dispatch) await sendDispatch(r.dispatch, entries);
+    }
     if (!aliveRef.current) return;
     setSending(false);
     setPendingChild(null);
-    if (outcome && !outcome.ok && "failure" in outcome) setFreeThread((t) => [...t, { role: "note", text: "Das konnte ich gerade nicht speichern. Sag es gleich nochmal.", key: `n-${Date.now()}` }]);
-    if (outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) {
-      const r = outcome.result as { done?: boolean; nabu?: string; method?: string | null; methodLabel?: string };
-      if (r.done && typeof r.nabu === "string") {
-        // The server closed the conversation and moved the stage on in the same write; keep the thread and the honest method until "Weiter".
-        setFinished({ turns: [...before, { role: "child", text: check.text, modality, key: `c-${Date.now()}` }, { role: "nabu", text: r.nabu, key: `a-${Date.now()}` }], method: r.method ?? "unscored", methodLabel: r.methodLabel ?? (r.method ?? "") });
-        void speak(r.nabu);
-      }
-    }
   };
+
+  // A dispatch left pending (reload, lost reply) is resent once per turn id from the server's view.
+  const pendingTurn = reasoning?.pending ?? null;
+  const resentRef = useRef<string | null>(null);
+  const resend = async () => {
+    if (!pendingTurn || sending) return;
+    setSending(true);
+    const before: Entry[] = reasoning ? reasoning.turns.map((t, i) => ({ role: t.role, text: t.text, modality: t.modality ?? undefined, source: t.source ?? null, key: `r-${i}` })) : [];
+    await sendDispatch(pendingTurn, before);
+    if (aliveRef.current) setSending(false);
+  };
+  useEffect(() => {
+    if (!open || mode !== "reasoning" || !pendingTurn || resentRef.current === pendingTurn.turnId) return;
+    resentRef.current = pendingTurn.turnId;
+    void resend();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, mode, pendingTurn?.turnId]);
 
   const askFree = async (text: string) => {
     if (!tutorClient || !recordSupport || !currentRevision || sending) return;
@@ -303,9 +386,10 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
         currentRevision,
         newTurnId: () => (typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `t-${Date.now()}`),
         isAlive: () => (isAlive ? isAlive() : true) && aliveRef.current && bindingRef.current === sentBinding,
-        ask: async (message) => {
-          const outcome = await tutorClient.ask({ childId: child, sessionSuffix: TUTOR_SESSION_SUFFIX, message }, { signal: abort.signal });
-          return { ok: outcome.ok, text: outcome.ok ? envelopeSpokenText(outcome.envelope) : "" };
+        ask: async (message, turnId) => {
+          // the exact server-built message with the turn id as the idempotency key; the exact reply bytes and the receipt as it came
+          const outcome = await tutorClient.ask({ childId: child, sessionSuffix: TUTOR_SESSION_SUFFIX, message }, { signal: abort.signal, idempotencyKey: turnId, noTruncate: true });
+          return { ok: outcome.ok, text: outcome.ok ? envelopeRawText(outcome.envelope) : "", receipt: outcome.ok ? outcome.envelope.meta.receipt ?? null : null };
         },
       },
       view.tutor,
@@ -316,13 +400,19 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
     if (bindingRef.current !== sentBinding) return; // stale: already noted by the binding effect
     switch (result.status) {
       case "answered":
-        setFreeThread((t) => [...t, { role: "nabu", text: result.text, key: `a-${Date.now()}` }]);
-        void speak(result.text);
+        // verified by the server (the one trusted boundary): attributable to Nabu and speakable
+        setFreeThread((t) => [...t, { role: "nabu", text: plainTextForChild(result.text), source: "assistant", key: `a-${Date.now()}` }]);
+        void speak(plainTextForChild(result.text));
         return;
       case "question-not-recorded":
         setFreeThread((t) => [...t, { role: "note", text: "Ich konnte die Frage nicht speichern, darum habe ich sie nicht gestellt. Versuch es gleich nochmal.", key: `n-${Date.now()}` }]);
         return;
       case "reply-withheld":
+        if (result.reason === "untrusted") {
+          // untrusted origin (missing / malformed / invalid receipt): local guidance, labelled, never spoken as Nabu
+          setFreeThread((t) => [...t, { role: "nabu", source: "local", text: "Nabus Antwort konnte nicht beglaubigt werden, darum zeige ich sie nicht. Frag gleich nochmal.", key: `l-${Date.now()}` }]);
+          return;
+        }
         setFreeThread((t) => [...t, { role: "note", text: result.reason === "gone" ? "Die Aufgabe hat gewechselt — die alte Antwort zeige ich nicht mehr." : "Die Antwort konnte nicht gespeichert werden, darum zeige ich sie nicht. Frag gleich nochmal.", key: `n-${Date.now()}` }]);
         return;
       case "bridge-unavailable":
@@ -339,7 +429,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
   const entries: Entry[] = useMemo(() => {
     if (finished) return finished.turns;
     if (mode === "reasoning" && reasoning) {
-      const base: Entry[] = reasoning.turns.map((t, i) => ({ role: t.role, text: t.text, modality: t.modality ?? undefined, key: `r-${i}` }));
+      const base: Entry[] = reasoning.turns.map((t, i) => ({ role: t.role, text: t.text, modality: t.modality ?? undefined, source: t.source ?? null, key: `r-${i}` }));
       return pendingChild ? [...base, { role: "child", text: pendingChild, key: "pending" }] : base;
     }
     return freeThread;
@@ -347,6 +437,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
 
   const contextLine = finished ? "Dein Rechenweg ist gespeichert." : mode === "reasoning" ? "Erzähl mir deinen Rechenweg — sprechen oder schreiben." : view.tutor ? (view.tutor.page === "map" ? "Frag mich zur Insel oder zum nächsten Schritt." : `Zur Aufgabe: „${view.tutor.prompt.length > 90 ? `${view.tutor.prompt.slice(0, 88)}…` : view.tutor.prompt}“`) : "Frag, was du willst.";
   const canType = finished ? false : mode === "reasoning" ? !!onReasoningTurn && reasoning?.status === "open" : !!tutorClient;
+  const awaiting = !finished && mode === "reasoning" && reasoning?.status === "awaiting";
   const done = !!finished || (mode === "reasoning" && reasoning?.status === "done");
   const doneMethod = finished?.method ?? reasoning?.method ?? "";
   const doneLabel = finished?.methodLabel ?? reasoning?.methodLabel ?? "";
@@ -393,14 +484,16 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
             {contextLine}
           </p>
           <div className="mt-3 min-h-24 flex-1 space-y-2 overflow-y-auto" aria-live="polite" data-testid="nabu-thread">
-            {entries.length === 0 ? <p className="text-sm text-tertiary">{shownMode === "free" ? "Ich kenne deine aktuelle Aufgabe und deine Insel. Was möchtest du wissen?" : ""}</p> : null}
+            {entries.length === 0 ? <p className="text-sm text-tertiary">{shownMode === "free" && !liveTutorDeferred(view.visit?.id) ? "Ich kenne deine aktuelle Aufgabe und deine Insel. Was möchtest du wissen?" : ""}</p> : null}
             {entries.map((entry) => (
-              <p key={entry.key} className={cn("rounded-2xl px-3 py-2 text-base", entry.role === "child" && "ml-6 bg-secondary text-primary", entry.role === "nabu" && "mr-6 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900", entry.role === "note" && "border border-primary text-tertiary")} data-testid={`nabu-${entry.role}`} data-modality={entry.modality ?? ""}>
-                {entry.text}
+              <p key={entry.key} className={cn("rounded-2xl px-3 py-2 text-base", entry.role === "child" && "ml-6 bg-secondary text-primary", entry.role === "nabu" && entry.source !== "local" && !!entry.source && "mr-6 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900", entry.role === "nabu" && (entry.source === "local" || !entry.source) && "mr-6 border-2 border-dashed border-amber-600 bg-amber-50 text-stone-900 dark:bg-amber-950 dark:text-amber-100", entry.role === "note" && "border border-primary text-tertiary")} data-testid={`nabu-${entry.role}`} data-modality={entry.modality ?? ""} data-source={entry.source ?? ""}>
+                {entry.source === "local" ? <span className="mb-1 block text-xs font-semibold uppercase tracking-[0.12em]" data-testid="nabu-local-label">Hinweis vom Lernsystem — Nabus Antwort wurde nicht beglaubigt</span> : null}
+                {entry.role === "nabu" && !entry.source ? <span className="mb-1 block text-xs font-semibold uppercase tracking-[0.12em]" data-testid="nabu-unknown-label">Herkunft unbekannt — nicht als Nabu gewertet</span> : null}
+                {entry.role === "nabu" && !entry.source ? "(zurückgehalten)" : entry.text}
                 {entry.role === "child" && entry.modality === "spoken" ? <span className="ml-2 text-xs opacity-70">(gesprochen)</span> : null}
               </p>
             ))}
-            {sending ? <p className="text-sm text-tertiary">… Nabu überlegt</p> : null}
+            {sending || awaiting ? <p className="text-sm text-tertiary" data-testid="nabu-thinking">… Nabu überlegt</p> : null}
           </div>
           {speechNote ? (
             <p className="mt-2 text-xs text-tertiary" role="status">
@@ -409,7 +502,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
           ) : null}
           <div className="mt-2 flex flex-wrap gap-2">
             {(finished || (lastNabu && mode === "reasoning")) ? (
-              <button type="button" onClick={() => void speak(finished ? finished.turns[finished.turns.length - 1].text : lastNabu!.text)} disabled={speaking} className={secondaryButton} data-testid="nabu-repeat">
+              <button type="button" onClick={() => { const last = finished ? finished.turns[finished.turns.length - 1] : lastNabu!; if (last.source === "assistant" || last.source === "reviewed") void speak(last.text); }} disabled={speaking} className={secondaryButton} data-testid="nabu-repeat">
                 🔊 Nochmal
               </button>
             ) : null}
@@ -420,6 +513,11 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
             ) : null}
           </div>
 
+          {awaiting && !sending && pendingTurn ? (
+            <button type="button" onClick={() => void resend()} className={cn(secondaryButton, "mt-2")} data-testid="reasoning-resend">
+              Nochmal an Nabu senden
+            </button>
+          ) : null}
           {mode === "reasoning" && reasoning?.choices && onReasoningChoice ? (
             <div className="mt-3 flex flex-wrap gap-2" data-testid="reasoning-choices">
               {reasoning.choices.counters ? (
@@ -427,9 +525,11 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
                   📦 Zusammen legen
                 </button>
               ) : null}
-              <button type="button" disabled={busy} onClick={() => void onReasoningChoice("teach")} className={secondaryButton} data-testid="reasoning-teach">
-                Zeig mir, wie du rechnest
-              </button>
+              {reasoning.choices.teach ? (
+                <button type="button" disabled={busy} onClick={() => void onReasoningChoice("teach")} className={secondaryButton} data-testid="reasoning-teach">
+                  Zeig mir, wie du rechnest
+                </button>
+              ) : null}
               <button type="button" disabled={busy} onClick={() => void onReasoningChoice("continue")} className={secondaryButton} data-testid="reasoning-continue">
                 Weiter ohne Erklärung
               </button>
@@ -503,8 +603,9 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
               </form>
             )
           ) : null}
-          {shownMode === "free" && !tutorClient ? <p className="mt-3 text-sm text-tertiary">Hier kann ich nur zuhören — Fragen stellst du in der Aufgabe.</p> : null}
-          <p className="mt-2 text-xs text-tertiary">Das Mikrofon läuft nur, wenn du es startest. Gesprochenes wird nicht als Schreibweise bewertet.</p>
+          {shownMode === "free" && !tutorClient && liveTutorDeferred(view.visit?.id) ? <p className="mt-3 text-sm text-tertiary" data-testid="nabu-deferred">{LIVE_TUTOR_DEFERRED_CHILD_NOTICE}</p> : null}
+          {shownMode === "free" && !tutorClient && !liveTutorDeferred(view.visit?.id) ? <p className="mt-3 text-sm text-tertiary">Hier kann ich nur zuhören — Fragen stellst du in der Aufgabe.</p> : null}
+          {liveTutorDeferred(view.visit?.id) ? null : <p className="mt-2 text-xs text-tertiary">Das Mikrofon läuft nur, wenn du es startest. Gesprochenes wird nicht als Schreibweise bewertet.</p>}
         </aside>
       ) : null}
     </>

@@ -62,6 +62,21 @@ export type MathItemId = "EQ-ENTRY" | "EQ-MODEL" | "EQ-FRESH" | "EQ-RETURN" | "E
 export type ScoredMathItemId = Exclude<MathItemId, "EQ-MODEL" | "EQ-STATION-MODEL" | "EQ-HARBOR-MODEL">;
 export type LanguageSegmentId = "LANG-EN-WATER" | "LANG-ES-AGUA" | "LANG-ES-STATION" | "LANG-EN-PIER" | "LANG-ES-HARBOR" | "LANG-ES-HARBOR-CHECK";
 export type KeyboardLayoutId = "ch-de-qwertz" | "de-qwertz" | "us-qwerty";
+
+/**
+ * Canonical math objectives as the state machine records them on attempts (correction ID27, 2026-10-11): equal sharing (visits
+ * 1–3), the remainder items (station, pier) and the two PARTS of a quotient item (harbor, visit 5). The parent cockpit filters
+ * and labels its math table from this map, never from a hard-coded objective name; old records keep their names.
+ */
+export const MATH_OBJECTIVES: Readonly<Record<string, { label: string; part: "A" | "B" | null }>> = {
+  "equal-sharing": { label: "Gleichmässig teilen", part: null },
+  "equal-sharing-with-remainder": { label: "Teilen mit Rest", part: null },
+  "quotient-with-remainder": { label: "Teil A — volle Boote und Kisten übrig", part: "A" },
+  "quotient-groups-needed": { label: "Teil B — Boote für alle Kisten", part: "B" },
+};
+export function isMathObjective(objective: string): boolean {
+  return Object.prototype.hasOwnProperty.call(MATH_OBJECTIVES, objective);
+}
 export type TargetLanguage = "de" | "en" | "es";
 
 export type MathItem = {
@@ -206,7 +221,7 @@ export type SpacingJoin = { joined: string; split: string };
 export type LogDef = { id: string; version: number; visit: VisitId; prompt: string; instruction: string; note: string };
 
 /** Content v4: the reviewed, deterministic writing review (lexicon and rules; the app's `family-learning-writing-review.ts` executes it). */
-export type WritingReviewAspect = "meaning" | "completeness" | "spacing" | "capitalization" | "spelling" | "punctuation";
+export type WritingReviewAspect = "meaning" | "completeness" | "grammar" | "spacing" | "capitalization" | "spelling" | "punctuation";
 export type WritingReviewDef = {
   note: string;
   maxTeachingPoints: number;
@@ -231,18 +246,40 @@ export type HarborWorkplace = { id: HarborWorkplaceId; label: string; building: 
 export type HarborCharacter = { id: string; name: string; role: string; language: TargetLanguage; lines: { id: string; text: string; de: string | null }[] };
 export type HarborDef = { note: string; destinations: { id: string; label: string; emoji: string }[]; workplaces: HarborWorkplace[]; characters: HarborCharacter[] };
 
-/** Content v4: the reviewed probe script of the spoken/typed explanation (the app's `family-learning-reasoning.ts` executes it). */
+/**
+ * Content v4 (repair round 1): the explanation conversation. The dialogue is held by the isolated child assistant
+ * (bridge); the app's `family-learning-reasoning.ts` builds each message (context, complete history, deterministic
+ * findings, these rules), validates numeric claims and gates the recorded method. The strings below are the reviewed
+ * lines the app itself may show (prompt, scaffold, teaching, fallbacks) — never a scripted judgement.
+ */
+export type ReasoningCriterionId = "strategy" | "quantities" | "meaning";
+export type ReasoningCriterionDef = { id: ReasoningCriterionId; label: string; question: string };
+export type ReasoningPromptDef = { id: string; text: string };
 export type ReasoningDef = {
   id: string;
   version: number;
   note: string;
-  maxProbes: number;
+  /** Bounded exchanges: child turns per conversation. */
+  maxChildTurns: number;
+  /** Assessment reset: at most this many clarification prompts (from `prompts`) keep the explanation window unsupported. */
+  maxClarifications: number;
   prompt: string;
-  probes: { vague: string; vagueMultiply?: string; vagueAgain: string; numbersNoMeaning: string; remainder: string; needed: string; contradiction: string };
-  accept: string;
-  acceptPartial: string;
+  /** The reviewed criteria Nabu assesses (labelled as Nabu's assessment, never a deterministic verdict). */
+  criteria: ReasoningCriterionDef[];
+  /** The reviewed answer-free prompt bank: the model selects an id, the app renders the exact text. */
+  prompts: ReasoningPromptDef[];
+  /** Rules sent to the assistant with every message. */
+  rules: string[];
+  /** The strict reply schema sent to the assistant with every message (repair round 3: eight lines, ART, «citations»). */
+  schema: string[];
+  /** Appended in the last round. */
+  lastRound: string;
   scaffold: string;
+  counters: string;
   teach: string;
+  afterTeach: string;
+  fallback: { unavailable: string; withheld: string; continued: string; tooLong: string };
+  levelLabels: Record<string, string>;
   methodLabels: Record<string, string>;
 };
 
@@ -341,7 +378,7 @@ export const EXPECTED_V6_STAGES: readonly StageId[] = ["restore", "island", "typ
 export const EXPECTED_HARBOR_WORKPLACES: Readonly<Record<HarborWorkplaceId, readonly StageId[]>> = { typing: ["typing-course"], planning: ["EQ-HARBOR", "explain", "LANG-ES-HARBOR", "harbor-build", "log"], closing: ["EQ-HARBOR-CHECK", "LANG-ES-HARBOR-CHECK", "log-review"] };
 export const EXPECTED_LOG_ID_V6 = "WRITE-LOG-HARBOR";
 export const EXPECTED_REASONING_ID = "REASON-HARBOR";
-export const WRITING_REVIEW_ASPECTS: readonly WritingReviewAspect[] = ["meaning", "completeness", "spacing", "capitalization", "spelling", "punctuation"];
+export const WRITING_REVIEW_ASPECTS: readonly WritingReviewAspect[] = ["meaning", "completeness", "grammar", "spacing", "capitalization", "spelling", "punctuation"];
 /** Stable identity of the fresh writing-transfer check (content v2, round 2). */
 export const EXPECTED_TRANSFER_ID = "WRITE-TRANSFER-1";
 export const EXPECTED_FEEDBACK_DIMENSIONS: readonly string[] = ["enjoyment", "clarity"];
@@ -633,13 +670,26 @@ function checkHarborChapter(raw: Record<string, unknown>, problems: string[]) {
   const reasoning = isRecord(raw.reasoning) ? raw.reasoning : null;
   if (!reasoning) problems.push("reasoning: missing (content version 4)");
   else {
-    if (reasoning.id !== EXPECTED_REASONING_ID || reasoning.version !== 1) problems.push(`reasoning: must be ${EXPECTED_REASONING_ID} version 1`);
-    if (typeof reasoning.maxProbes !== "number" || reasoning.maxProbes < 2 || reasoning.maxProbes > 3) problems.push("reasoning: maxProbes must be 2 or 3 (bounded probing)");
-    for (const key of ["prompt", "accept", "acceptPartial", "scaffold", "teach"]) if (typeof reasoning[key] !== "string" || !(reasoning[key] as string).trim()) problems.push(`reasoning.${key}: missing`);
-    const probes = isRecord(reasoning.probes) ? reasoning.probes : null;
-    for (const key of ["vague", "vagueAgain", "numbersNoMeaning", "remainder", "needed", "contradiction"]) if (!probes || typeof probes[key] !== "string") problems.push(`reasoning.probes.${key}: missing`);
-    if (probes && typeof probes.numbersNoMeaning === "string" && !/\{a\}/.test(probes.numbersNoMeaning)) problems.push("reasoning.probes.numbersNoMeaning must name the numbers ({a}, {b})");
-    if (probes && typeof probes.contradiction === "string" && !/\{claim\}/.test(probes.contradiction)) problems.push("reasoning.probes.contradiction must quote the claim ({claim})");
+    if (reasoning.id !== EXPECTED_REASONING_ID || reasoning.version !== 5) problems.push(`reasoning: must be ${EXPECTED_REASONING_ID} version 5 (assessment reset: Nabu's per-criterion assessment with passages, prompt bank, support mode)`);
+    const schemaLines: unknown[] = Array.isArray(reasoning.schema) ? reasoning.schema : [];
+    if (schemaLines.length < 8 || !schemaLines.some((l) => typeof l === "string" && /^ANTWORT:/.test(l)) || !schemaLines.some((l) => typeof l === "string" && /^ART: klaerung/.test(l)) || !schemaLines.some((l) => typeof l === "string" && /^PROMPT:/.test(l)) || !["RECHENWEG", "MENGEN", "BEDEUTUNG", "WIDERSPRUCH"].every((k) => schemaLines.some((l) => typeof l === "string" && l.startsWith(`${k}:`)))) problems.push("reasoning.schema: the strict seven-line assessment schema (ANTWORT, ART, PROMPT, RECHENWEG, MENGEN, BEDEUTUNG, WIDERSPRUCH) is required");
+    const criteria: unknown[] = Array.isArray(reasoning.criteria) ? reasoning.criteria : [];
+    if (criteria.length !== 3 || !["strategy", "quantities", "meaning"].every((id) => criteria.some((cr) => isRecord(cr) && cr.id === id && typeof cr.label === "string" && typeof cr.question === "string"))) problems.push("reasoning.criteria: exactly the three reviewed criteria strategy, quantities, meaning");
+    if (!Array.isArray(reasoning.prompts) || reasoning.prompts.length < 2 || reasoning.prompts.length > 6 || reasoning.prompts.some((p) => !isRecord(p) || typeof p.id !== "string" || !/^P[1-9]$/.test(p.id) || typeof p.text !== "string" || !p.text.trim() || /\d/.test(p.text))) problems.push("reasoning.prompts: two to six reviewed answer-free prompts P1..P9 (no digits)");
+    if (typeof reasoning.maxClarifications !== "number" || reasoning.maxClarifications < 1 || reasoning.maxClarifications > 2) problems.push("reasoning.maxClarifications must be 1 or 2");
+    if (!isRecord(reasoning.levelLabels) || !["demonstrated", "partial", "not-yet-demonstrated", "uncertain"].every((k) => typeof (reasoning.levelLabels as Record<string, unknown>)[k] === "string")) problems.push("reasoning.levelLabels: the four assessment levels");
+    if (typeof reasoning.maxChildTurns !== "number" || reasoning.maxChildTurns < 3 || reasoning.maxChildTurns > 5) problems.push("reasoning: maxChildTurns must be 3 to 5 (bounded conversation)");
+    for (const key of ["prompt", "lastRound", "scaffold", "counters", "teach", "afterTeach"]) if (typeof reasoning[key] !== "string" || !(reasoning[key] as string).trim()) problems.push(`reasoning.${key}: missing`);
+    if (!Array.isArray(reasoning.rules) || reasoning.rules.length < 4 || reasoning.rules.some((r) => typeof r !== "string" || !r.trim())) problems.push("reasoning.rules: at least four reviewed rules for the assistant");
+    if (Array.isArray(reasoning.rules) && !reasoning.rules.some((r) => typeof r === "string" && /Malnehmen/.test(r) && /nie/.test(r))) problems.push("reasoning.rules must state that multiplication is never presumed false");
+    if (Array.isArray(reasoning.rules) && !reasoning.rules.some((r) => typeof r === "string" && /ART: klaerung/.test(r) && /PROMPT/.test(r))) problems.push("reasoning.rules must route clarifications through the prompt bank");
+    if (Array.isArray(reasoning.rules) && !reasoning.rules.some((r) => typeof r === "string" && /ART: lehre/.test(r) && /Hilfe/.test(r))) problems.push("reasoning.rules must state that free teaching is recorded as help");
+    if (Array.isArray(reasoning.rules) && !reasoning.rules.some((r) => typeof r === "string" && /unsicher/.test(r) && /falsch/.test(r))) problems.push("reasoning.rules must state that uncertainty is allowed and is not 'wrong'");
+    const fallback = isRecord(reasoning.fallback) ? reasoning.fallback : null;
+    for (const key of ["unavailable", "withheld", "continued", "tooLong"]) if (!fallback || typeof fallback[key] !== "string" || !(fallback[key] as string).trim()) problems.push(`reasoning.fallback.${key}: missing`);
+    if (typeof reasoning.probes !== "undefined" || typeof reasoning.accept !== "undefined") problems.push("reasoning: a scripted probe/accept policy is not allowed (the dialogue is the assistant's)");
+    const labels = isRecord(reasoning.methodLabels) ? reasoning.methodLabels : null;
+    for (const key of ["explained-independently", "explained-after-probing", "explained-with-support", "not-yet-established", "unscored"]) if (!labels || typeof labels[key] !== "string") problems.push(`reasoning.methodLabels.${key}: missing`);
   }
 }
 

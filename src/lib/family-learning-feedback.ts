@@ -258,6 +258,8 @@ export type VisitReport = {
   finishedAt: string | null;
   /** True for the running visit: an honest partial recap, never a completed report. */
   partial: boolean;
+  /** Temporary scope reduction: this visit's own record carries the owner-deferred explain stage (never inferred from the rule alone, so historical reports stay as they were); the two flags say what WAS assessed earlier in this visit (retained), so the report never claims an assessment did not happen when it did. */
+  deferred: { reasoningAssessedEarlier: boolean; semanticAssessedEarlier: boolean } | null;
   stagesDone: number;
   stageCount: number;
   summary: VisitSummary;
@@ -774,20 +776,26 @@ export function languageRetryItems(content: LearningContent, id: LanguageSegment
 
 const FOCUS_SPACING = "spacing:rule";
 
-const ASPECT_DE: Record<string, string> = { meaning: "Inhalt", completeness: "ganzer Satz", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" };
+const ASPECT_DE: Record<string, string> = { meaning: "Inhalt", completeness: "ganzer Satz", grammar: "Satzbau", spacing: "Leerzeichen", capitalization: "Grossschreibung", spelling: "Schreibweise", punctuation: "Satzzeichen" };
 
 /** Visit 5 (content v4): the writing lesson of the captain's log — the reviewed review of the child's OWN sentence and its bounded revision. No repair loop here (the revision IS the bounded loop); the honest close names the taught points. */
 function logReviewLessonFeedback(state: MissionState, visit: VisitRecord, lr: LogReviewRecord): LessonFeedback {
   const fb = feedbackOf(state);
   const fid = `writing:${visit.id}@${lr.at}`;
   const taughtAspects = [...new Set(lr.review.taught.map((f) => f.aspect))];
-  const mistakes: Mistake[] = lr.review.taught.map((f) => ({ id: f.id, evidence: "incorrect" as const, focus: f.aspect === "spacing" ? FOCUS_SPACING : null, count: 1, given: f.given, expected: f.expected ?? "—", correction: f.teaching, visual: f.aspect === "spacing" && lr.review.marked ? { kind: "spacing" as const, marked: lr.review.marked } : null, refs: ["Kapitänslogbuch"] }));
+  // One card per TEACHING POINT (one aspect, occurrences grouped) — never one card per occurrence (IV5-09).
+  const points = lr.review.points ?? [];
+  const mistakes: Mistake[] = points.length
+    ? points.map((pt) => ({ id: `point:${pt.aspect}`, evidence: "incorrect" as const, focus: pt.aspect === "spacing" ? FOCUS_SPACING : null, count: pt.ids.length, given: pt.examples.length ? pt.examples.map((e) => e.given).join(", ") : lr.original, expected: pt.examples.length ? pt.examples.map((e) => e.expected ?? "—").join(", ") : "—", correction: pt.teaching, visual: pt.aspect === "spacing" && lr.review.marked ? { kind: "spacing" as const, marked: lr.review.marked } : null, refs: ["Kapitänslogbuch"] }))
+    : lr.review.taught.map((f) => ({ id: f.id, evidence: "incorrect" as const, focus: f.aspect === "spacing" ? FOCUS_SPACING : null, count: 1, given: f.given, expected: f.expected ?? "—", correction: f.teaching, visual: f.aspect === "spacing" && lr.review.marked ? { kind: "spacing" as const, marked: lr.review.marked } : null, refs: ["Kapitänslogbuch"] }));
   const unscored: Mistake[] = [];
   const notTaught = lr.review.findings.filter((f) => !lr.review.taught.some((t) => t.id === f.id));
   if (notTaught.length) unscored.push({ id: "review:later", evidence: "unscored", focus: null, count: notTaught.length, given: [...new Set(notTaught.map((f) => ASPECT_DE[f.aspect] ?? f.aspect))].join(", "), expected: "—", correction: "Kommt ein andermal — heute nur ein oder zwei Dinge.", visual: null, refs: ["Kapitänslogbuch"] });
-  for (const w of lr.review.unknownWords) unscored.push({ id: `unknown:${w}`, evidence: "unscored", focus: null, count: 1, given: w, expected: "—", correction: lr.clarifications[w] ? `Du meinst: „${lr.clarifications[w]}“ — nicht bewertet.` : "Dieses Wort kenne ich nicht — nicht bewertet.", visual: null, refs: ["Kapitänslogbuch"] });
+  for (const w of lr.review.clarify?.words ?? []) unscored.push({ id: `unknown:${w}`, evidence: "unscored", focus: null, count: 1, given: w, expected: "—", correction: lr.clarifications[w] ? `Du meinst: „${lr.clarifications[w]}“ — nicht bewertet.` : "Nachgefragt — nicht bewertet.", visual: null, refs: ["Kapitänslogbuch"] });
+  if (lr.review.unchecked.length) unscored.push({ id: "review:unchecked", evidence: "unscored", focus: null, count: lr.review.unchecked.length, given: lr.review.unchecked.map((a) => ASPECT_DE[a] ?? a).join(", "), expected: "—", correction: "Nicht geprüft — darüber sage ich nichts.", visual: null, refs: ["Kapitänslogbuch"] });
   let success: LessonFeedback["success"] = null;
-  if (lr.outcome === "revised" && lr.review.taught.length) success = { text: `Du hast deinen Satz selbst verbessert: ${taughtAspects.map((a) => ASPECT_DE[a] ?? a).join(" und ")}${lr.evaluation?.copiedSuggestion ? " (mit dem Vorschlag)" : lr.helpShown ? " (nach dem Hinweis)" : ""}.`, basis: `log review revised ${lr.evaluation?.resolved.length ?? 0}/${lr.review.taught.length}${lr.evaluation?.copiedSuggestion ? " copied" : ""}` };
+  const correctedAspects = [...new Set((lr.criteria ?? lr.evaluation?.criteria ?? []).filter((c) => c.status === "corrected").map((c) => c.aspect))];
+  if (correctedAspects.length && lr.evidence !== "unscored") success = { text: `Verbessert: ${correctedAspects.map((a) => ASPECT_DE[a] ?? a).join(" und ")}${lr.review.unchecked.length ? ` (nicht geprüft: ${lr.review.unchecked.map((a) => ASPECT_DE[a] ?? a).join(", ")})` : ""}${lr.evaluation?.copiedSuggestion ? " (mit dem Vorschlag)" : lr.helpShown ? " (nach dem Hinweis)" : ""}.`, basis: `log review revised ${lr.evaluation?.resolved.length ?? 0}/${lr.review.taught.length}${lr.evaluation?.copiedSuggestion ? " copied" : ""}` };
   else if (lr.review.clean.length) success = { text: `Geprüft und in Ordnung: ${lr.review.clean.map((a) => ASPECT_DE[a] ?? a).join(", ")}.`, basis: `log review clean aspects ${lr.review.clean.join(",")}` };
   const retries: RepairRetry[] = lr.revised !== null && lr.outcome !== "skipped" ? [{ no: 1, item: "log-review", purpose: "correct-original", at: lr.at, result: lr.outcome === "revised" ? "correct" : lr.outcome === "none-needed" ? "unscored" : "incorrect", focusErrors: lr.evaluation?.unresolved.length ?? 0, lineErrors: lr.evaluation?.unresolved.length ?? 0, seconds: 0, text: lr.revised }] : [];
   const repair: RepairView = mistakes.length === 0 ? NO_REPAIR : { status: "closed", kind: null, repairId: fid, focus: FOCUS_SPACING, explanation: { title: "Dein Satz, Schritt für Schritt", text: lr.review.summary, visual: lr.review.marked ? { kind: "spacing", marked: lr.review.marked } : null, recorded: lr.helpShown }, items: [], retries, used: 0, remaining: 0, outcome: lr.outcome === "revised" ? "corrected-with-practice" : lr.outcome === "skipped" ? "skipped" : "practice-again" };
@@ -942,6 +950,12 @@ export function buildVisitReports(state: MissionState, content: LearningContent)
       startedAt: visit.startedAt,
       finishedAt: visit.finishedAt,
       partial,
+      deferred: visit.skippedStages.some((s) => s.stage === "explain" && s.reason === "deferred")
+        ? {
+            reasoningAssessedEarlier: (() => { const r = state.reasoning?.["EQ-HARBOR"]; return !!(r && (r.final || (r.assessments?.length ?? 0) > 0)); })(),
+            semanticAssessedEarlier: (state.logReviewSemantics ?? []).some((x) => x.visit === visit.id && x.status === "done" && x.origin === "verified"),
+          }
+        : null,
       stagesDone: Math.min(visit.stageIndex, def.stages.length),
       stageCount: def.stages.length,
       summary: buildVisitSummary(state, content, visit.id),

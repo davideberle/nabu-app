@@ -44,6 +44,7 @@ import { useChildShell } from "@/components/family/child-shell-provider";
 import { HarborIsland } from "@/components/family/learning/harbor-island";
 import { CharacterBeat, HarborPlan, IslandStage, LogReview, WordbookPanel } from "@/components/family/learning/harbor-stages";
 import { NabuSidebar } from "@/components/family/learning/nabu-sidebar";
+import { LIVE_TUTOR_DEFERRED_CHILD_NOTICE, liveTutorDeferred } from "@/lib/family-learning-deferral";
 import { isComposing, useDeliberateFocus, useRestoreFocus } from "@/components/family/learning/focus";
 import { HandsKeyboard, reachOriginOf } from "@/components/family/learning/hands-keyboard";
 import { LessonEnd } from "@/components/family/learning/lesson-end";
@@ -51,7 +52,7 @@ import { ReminderCueView } from "@/components/family/learning/reminder-cue";
 import { StoryBeat } from "@/components/family/learning/story-beat";
 import { VisitReportView } from "@/components/family/learning/visit-report";
 import { createChildTurnClient } from "@/lib/family-assistant-client";
-import type { ChildId } from "@/lib/family-assistant-turn";
+import { envelopeRawText, envelopeSpokenText, type ChildId } from "@/lib/family-assistant-turn";
 import { browserTimeZone, createLearningClient, type LearningMutateOutcome, type MutationContext } from "@/lib/family-learning-client";
 import type { RetryItem } from "@/lib/family-learning-feedback";
 import type { RetryOutcome, RetryPayload } from "@/components/family/learning/lesson-end";
@@ -113,6 +114,15 @@ const HOME_FALLBACK = { left: ["a", "s", "d", "f"], right: ["j", "k", "l", "ö"]
 function Workspace({ child }: { child: ChildId }) {
   const learning = useMemo(() => createLearningClient(), []);
   const tutorClient = useMemo(() => createChildTurnClient(), []);
+  // The semantic review of the captain's log goes through the same isolated child transport (session "learn") as every Nabu question.
+  const semanticAsk = useCallback(
+    async (message: string, signal: AbortSignal, idempotencyKey: string) => {
+      const outcome = await tutorClient.ask({ childId: child, sessionSuffix: "learn", message }, { signal, idempotencyKey, noTruncate: true });
+      // The EXACT wire text (the receipt signs it); the review never displays it as Nabu's words.
+      return { ok: outcome.ok, text: outcome.ok ? envelopeRawText(outcome.envelope) : "", receipt: outcome.ok ? outcome.envelope.meta.receipt ?? null : null };
+    },
+    [tutorClient, child],
+  );
   const speech = useMemo(() => createChildSpeechPlayer(), []);
   const router = useRouter();
   const pathname = usePathname();
@@ -227,7 +237,7 @@ function Workspace({ child }: { child: ChildId }) {
   // The Nabu sidebar: focus returns to where it was when it closes (UX-3); it opens by itself for the reasoning conversation.
   useRestoreFocus(nabuOpen);
   // Only once the previous lesson's feedback is acknowledged: the conversation never opens over the lesson end.
-  const reasoningOpen = load.kind === "ready" && !!load.view.reasoning && load.view.reasoning.status !== "done" && !load.view.lastLesson;
+  const reasoningOpen = load.kind === "ready" && !!load.view.reasoning && !load.view.reasoning.deferred && load.view.reasoning.status !== "done" && !load.view.lastLesson;
   const reasoningKey = load.kind === "ready" && load.view.reasoning ? `${load.view.reasoning.itemId}:${load.view.visit?.startedAt ?? ""}` : null;
   const openedForRef = useRef<string | null>(null);
   useEffect(() => {
@@ -272,11 +282,11 @@ function Workspace({ child }: { child: ChildId }) {
 
   /** Support op → confirmed/not, retrying once on a stale revision. */
   const recordSupportRaw = useCallback(
-    async (op: LearningOp & { op: "support" }): Promise<{ outcome: SupportOutcome; revision: number }> => {
+    async (op: LearningOp & { op: "support" }): Promise<{ outcome: SupportOutcome; revision: number; result?: unknown }> => {
       const result = await mutate(op);
       const revision = viewRef.current?.revision ?? 0;
       if (!result) return { outcome: "failed", revision };
-      if (result.ok) return { outcome: result.status, revision };
+      if (result.ok) return { outcome: result.status, revision, result: "result" in result ? result.result : undefined };
       if ("status" in result && result.status === "refused") return { outcome: "refused", revision };
       return { outcome: "failed", revision };
     },
@@ -415,7 +425,19 @@ function Workspace({ child }: { child: ChildId }) {
             ))}
           </ol>
         </div>
-        <button type="button" onClick={() => setOverlay("wordbook")} className={secondaryButton} aria-haspopup="dialog" data-testid="hud-wordbook">
+        <button
+          type="button"
+          onClick={() => {
+            // During a recall step the wordbook SHOWS the target word: opening it is recorded as help on the segment first (IV5-11).
+            const recallStep = view.language?.step?.kind === "produce" ? view.language : null;
+            if (recallStep) void support("word_choice", recallStep.id, { text: "wordbook-opened" }).then((ok) => ok && setOverlay("wordbook"));
+            else setOverlay("wordbook");
+          }}
+          className={secondaryButton}
+          aria-haspopup="dialog"
+          data-testid="hud-wordbook"
+          data-help={view.language?.step?.kind === "produce" ? "true" : "false"}
+        >
           📖 Wörter
         </button>
       </header>
@@ -449,7 +471,7 @@ function Workspace({ child }: { child: ChildId }) {
                 {stage === "restore" ? <Restore view={view} busy={busy} gate={gate} onContinue={() => void mutate({ op: "resume-base" })} /> : null}
                 {stage === "island" && view.harbor ? <IslandStage view={view} markers={markers} busy={busy} gate={gate} onEnter={(workplace) => void mutate({ op: "enter-workplace", workplace })} onOpenWordbook={() => setOverlay("wordbook")} onOpenLogbook={() => setOverlay("logbook")} onOpenSupplies={() => setOverlay("supplies")} /> : null}
                 {stage === "harbor-build" && view.harbor ? <HarborPlan view={view} busy={busy} gate={gate} onPlan={(destination) => void mutate({ op: "plan-harbor", destination })} /> : null}
-                {stage === "log-review" && view.logReview ? <LogReview key={identityKey(view)} view={view} busy={busy} gate={gate} onSubmit={(text, clarifications) => void mutate({ op: "review-log", text, clarifications })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-review", reason: optionalReason })} /> : null}
+                {stage === "log-review" && view.logReview ? <LogReview key={identityKey(view)} view={view} busy={busy} gate={gate} onSubmit={(text, clarifications) => void mutate({ op: "review-log", text, clarifications })} onSkip={() => void mutate({ op: "skip-stage", stage: "log-review", reason: optionalReason })} ask={semanticAsk} onDispatch={async (turnId) => { const r = await mutate({ op: "review-log-dispatch", turnId }); return !!r && r.ok && (r.status === "applied" || r.status === "replayed"); }} onSemantic={(turnId, ok, text, receipt) => mutate({ op: "review-log-semantic", turnId, ok, text, ...(receipt !== null && receipt !== undefined ? { receipt } : {}) } as LearningOp)} /> : null}
                 {stage === "station-choice" ? <StationChoice view={view} busy={busy} gate={gate} onChoose={(theme) => void mutate({ op: "choose-station", theme })} /> : null}
                 {stage === "typing-course" && view.typingCourse && view.harbor && view.visit.id === "v6" ? <KeeperBeat view={view} workplace="typing" lineId="welcome" /> : null}
                 {stage === "typing-course" && view.typingCourse ? (
@@ -487,7 +509,9 @@ function Workspace({ child }: { child: ChildId }) {
                     onStop={() => void mutate({ op: "stop-item", itemId: view.math!.id })}
                   />
                 ) : null}
-                {stage === "explain" && view.reasoning ? (
+                {stage === "explain" && view.reasoning?.deferred ? (
+                  <DeferredExplain busy={busy} gate={gate} childTurns={view.reasoning.turns.filter((t) => t.role === "child").length} onContinue={() => void mutate({ op: "skip-stage", stage: "explain", reason: "deferred" })} />
+                ) : stage === "explain" && view.reasoning ? (
                   <ReasoningStage view={view} busy={busy} gate={gate} open={nabuOpen} onOpen={() => setNabuOpen(true)} onSkip={() => void mutate({ op: "skip-stage", stage: "explain", reason: optionalReason })} />
                 ) : stage === "explain" ? (
                   <Explain
@@ -559,11 +583,12 @@ function Workspace({ child }: { child: ChildId }) {
         view={view}
         page="mission"
         speech={speech}
-        tutorClient={tutorClient}
+        tutorClient={liveTutorDeferred(view.visit?.id) ? null : tutorClient}
         recordSupport={recordSupportRaw}
         currentRevision={() => viewRef.current?.revision ?? 0}
         isAlive={() => aliveRef.current}
         onReasoningTurn={(text, modality) => mutate({ op: "reasoning-turn", text, modality })}
+        onReasoningReply={(turnId, ok, text, receipt) => mutate({ op: "reasoning-reply", turnId, ok, text, ...(receipt !== null && receipt !== undefined ? { receipt } : {}) } as LearningOp)}
         onReasoningChoice={(choice) => mutate({ op: "reasoning-choice", choice })}
         open={nabuOpen}
         onOpenChange={setNabuOpen}
@@ -1128,7 +1153,7 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
           </button>
         </form>
       ) : null}
-      <p className="text-xs text-tertiary">Fragen oder laut erklären kannst du unten rechts bei Nabu.</p>
+      {liveTutorDeferred(view.visit?.id) ? null : <p className="text-xs text-tertiary">Fragen oder laut erklären kannst du unten rechts bei Nabu.</p>}
     </div>
   );
 }
@@ -1141,6 +1166,23 @@ function KeeperBeat({ view, workplace, lineId, onTranslate }: { view: ChildView;
 }
 
 /** The explanation stage of Visit 5: the conversation lives in the Nabu sidebar; this card opens it and keeps skipping possible. */
+/** D1 (temporary scope reduction): an explain stage that is ALREADY active on a deferred visit (saved before the deferral or resumed) — no live invitation; one honest line and Weiter. */
+function DeferredExplain({ busy, gate, childTurns, onContinue }: { busy: boolean; gate: Gate; childTurns: number; onContinue: () => void }) {
+  const ref = useRef<HTMLButtonElement | null>(null);
+  useDeliberateFocus(ref, "reasoning-deferred", { gate });
+  return (
+    <div className="flex flex-col gap-4" data-testid="reasoning-deferred" data-child-turns={childTurns}>
+      <Instruction kicker="Erklären">{LIVE_TUTOR_DEFERRED_CHILD_NOTICE}</Instruction>
+      {childTurns ? <p className="text-sm text-tertiary" data-testid="reasoning-deferred-kept">Deine {childTurns === 1 ? "Antwort" : `${childTurns} Antworten`} von vorhin {childTurns === 1 ? "bleibt" : "bleiben"} gespeichert.</p> : null}
+      <div className="flex flex-wrap gap-2">
+        <button ref={ref} type="button" onClick={onContinue} disabled={busy} className={primaryButton} data-testid="reasoning-deferred-continue">
+          Weiter
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function ReasoningStage({ view, busy, gate, open, onOpen, onSkip }: { view: ChildView; busy: boolean; gate: Gate; open: boolean; onOpen: () => void; onSkip: () => void }) {
   const reasoning = view.reasoning!;
   const ref = useRef<HTMLButtonElement | null>(null);
@@ -1250,7 +1292,7 @@ function LanguageSegment({ child, view, busy, gate, speech, support, onStep, onC
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-start justify-between gap-3">
-        <Instruction kicker={`${languageLabel} · ${segment.title}`}>{step.instruction}</Instruction>
+        <Instruction kicker={`${languageLabel} · ${step.kind === "produce" ? "Deine Antwort" : step.kind === "pick-supply" ? "Auswählen" : "Zuhören"}`}>{step.instruction}</Instruction>
         <span className="shrink-0 text-sm text-tertiary">
           {segment.stepIndex + 1}/{segment.stepCount}
         </span>

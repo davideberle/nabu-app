@@ -10,6 +10,7 @@
 // ---------------------------------------------------------------------------
 
 import { useEffect, useRef, useState } from "react";
+import { LIVE_TUTOR_DEFERRED_WRITING_FOOTER } from "@/lib/family-learning-deferral";
 import { cn } from "@/components/ui/nabu";
 import type { ChildView, HarborWorkplaceView } from "@/lib/family-learning-state";
 import { chipButton, focusRing, primaryButton, secondaryButton } from "@/app/family/(shell)/learn/mission/styles";
@@ -124,8 +125,9 @@ const PLACE_WORKPLACE: Partial<Record<IslandPlace, HarborWorkplaceView["id"]>> =
 const STATUS_TEXT: Record<string, string> = {
   open: "Offen — du kannst hier anfangen.",
   done: "Schon erledigt — gut gemacht.",
+  skipped: "Übersprungen — hier wurde noch nichts geübt. Du kannst es jetzt nachholen.",
   current: "Angefangen — hier geht es weiter.",
-  locked: "Noch zu: zuerst die Tipp-Werkstatt und das Planungsbüro.",
+  locked: "Noch zu: zuerst die Tipp-Werkstatt und das Planungsbüro wirklich machen.",
 };
 
 export function IslandStage({ view, markers, busy, gate = alwaysOpen, onEnter, onOpenWordbook, onOpenLogbook, onOpenSupplies }: { view: ChildView; markers: WorldMarker[]; busy: boolean; gate?: Gate; onEnter: (workplace: HarborWorkplaceView["id"]) => void; onOpenWordbook?: () => void; onOpenLogbook?: () => void; onOpenSupplies?: () => void }) {
@@ -161,12 +163,14 @@ export function IslandStage({ view, markers, busy, gate = alwaysOpen, onEnter, o
     if (d.id === "wordbook") onOpenWordbook?.();
   };
   const openOnes = harbor.workplaces.filter((w) => w.status === "open" || w.status === "current");
+  const skippedOnes = harbor.workplaces.filter((w) => w.status === "skipped");
+  const headline = openOnes.length === 1 && openOnes[0].id === "closing" ? "Beides geschafft — jetzt der kurze Check beim Hafenmeister." : skippedOnes.length && openOnes.every((w) => w.id === "closing") ? `Der Check beim Hafenmeister wartet, bis du ${skippedOnes.map((w) => w.label).join(" und ")} nachgeholt hast — oder du machst heute hier Schluss.` : skippedOnes.length ? "Etwas ist noch offen — du kannst es nachholen." : "Wohin gehst du zuerst?";
   return (
     <div className="flex flex-col gap-4" data-testid="island-stage">
-      <Instruction kicker="Auf der Insel">{openOnes.length === 1 && openOnes[0].id === "closing" ? "Beides geschafft — jetzt der kurze Check beim Hafenmeister." : "Wohin gehst du zuerst?"}</Instruction>
+      <Instruction kicker="Auf der Insel">{headline}</Instruction>
       <p className="text-base text-tertiary">Geh mit den Pfeiltasten oder tippe auf ein Ziel. Oder geh direkt hinein — die Knöpfe unten gehen immer.</p>
       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-primary bg-sky-200" data-testid="island-stage-frame">
-        <HarborIsland scene={view.scene} markers={markers} pages={view.pages.length} harbor={harbor} variant="stage" destinations={destinations} avatarAt={avatarAt} onArrive={arrive} onOpenLogbook={onOpenLogbook} onOpenSupplies={onOpenSupplies} onOpenWordbook={onOpenWordbook} arriveHint={arrived ? null : "Wohin gehst du?"} />
+        <HarborIsland scene={view.scene} markers={markers} pages={view.pages.length} harbor={harbor} variant="stage" destinations={destinations} avatarAt={avatarAt} onArrive={arrive} onOpenLogbook={onOpenLogbook} onOpenSupplies={onOpenSupplies} onOpenWordbook={onOpenWordbook} arriveHint={null} />
       </div>
       {arrived ? (
         <div className="rounded-3xl border border-primary bg-primary p-4" role="status" data-testid="island-arrived" data-place={arrived.id} data-status={arrived.status ?? ""}>
@@ -178,9 +182,9 @@ export function IslandStage({ view, markers, busy, gate = alwaysOpen, onEnter, o
               <p className="mt-2 text-base text-primary" data-testid="island-arrived-status">
                 {STATUS_TEXT[arrived.status ?? "locked"]}
               </p>
-              {arrived.status === "open" || arrived.status === "current" ? (
+              {arrived.status === "open" || arrived.status === "current" || arrived.status === "skipped" ? (
                 <button ref={enterRef} type="button" disabled={busy} onClick={() => onEnter(arrived.workplace!)} className={cn(primaryButton, "mt-3")} data-testid={`island-enter-${arrived.workplace}`}>
-                  {arrived.action}
+                  {arrived.status === "skipped" ? "Jetzt nachholen" : arrived.action}
                 </button>
               ) : null}
             </>
@@ -193,10 +197,10 @@ export function IslandStage({ view, markers, busy, gate = alwaysOpen, onEnter, o
       ) : null}
       <div className="flex flex-wrap gap-2" role="group" aria-label="Direkt eintreten" data-testid="island-direct">
         {harbor.workplaces.map((w, i) => {
-          const enabled = w.status === "open" || w.status === "current";
+          const enabled = w.status === "open" || w.status === "current" || w.status === "skipped";
           return (
             <button key={w.id} ref={i === 0 ? firstDirectRef : undefined} type="button" disabled={busy || !enabled} onClick={() => onEnter(w.id)} className={cn(chipButton, "min-h-14")} data-testid={`island-direct-${w.id}`} data-status={w.status} aria-label={`${w.label}: ${STATUS_TEXT[w.status]}`}>
-              <span aria-hidden>{w.status === "done" ? "✓" : w.status === "locked" ? "🔒" : "→"}</span> {w.label}
+              <span aria-hidden>{w.status === "done" ? "✓" : w.status === "skipped" ? "↺" : w.status === "locked" ? "🔒" : "→"}</span> {w.label}{w.status === "skipped" ? " nachholen" : ""}
             </button>
           );
         })}
@@ -269,17 +273,87 @@ export function HarborPlan({ view, busy, gate = alwaysOpen, onPlan }: { view: Ch
 // The writing review of the child's own sentence — teach one or two points, keep the original
 // ---------------------------------------------------------------------------
 
-export function LogReview({ view, busy, gate = alwaysOpen, onSubmit, onSkip }: { view: ChildView; busy: boolean; gate?: Gate; onSubmit: (text: string, clarifications: Record<string, string>) => void; onSkip: () => void }) {
+export type SemanticAsk = (message: string, signal: AbortSignal, idempotencyKey: string) => Promise<{ ok: boolean; text: string; receipt: string | null }>;
+
+/** How long the browser waits for the assistant's semantic review before proceeding with the mechanical checks only. */
+export const SEMANTIC_REVIEW_TIMEOUT_MS = 25_000;
+
+export function LogReview({ view, busy, gate = alwaysOpen, onSubmit, onSkip, ask, onDispatch, onSemantic }: { view: ChildView; busy: boolean; gate?: Gate; onSubmit: (text: string, clarifications: Record<string, string>) => void; onSkip: () => void; ask?: SemanticAsk | null; onDispatch?: (turnId: string) => Promise<boolean>; onSemantic?: (turnId: string, ok: boolean, text: string, receipt: string | null) => Promise<unknown> }) {
   const review = view.logReview;
   const [text, setText] = useState(review?.original ?? "");
   const [clarifications, setClarifications] = useState<Record<string, string>>({});
   const ref = useRef<HTMLTextAreaElement | null>(null);
   const continueRef = useRef<HTMLButtonElement | null>(null);
-  const nothing = !review || review.taught.length === 0;
-  useDeliberateFocus(ref, !nothing ? "log-review" : null, { gate, enabled: !nothing });
-  useDeliberateFocus(continueRef, nothing ? "log-review-none" : null, { gate, enabled: nothing });
+  const pending = review?.pending ?? null;
+  const waiting = !!review && review.semanticStatus === "pending";
+  const nothing = !review || (review.points.length === 0 && !review.clarify);
+  useDeliberateFocus(ref, !nothing && !waiting ? "log-review" : null, { gate, enabled: !nothing && !waiting });
+  useDeliberateFocus(continueRef, nothing && !waiting ? "log-review-none" : null, { gate, enabled: nothing && !waiting });
+  // The semantic review is fetched ONCE per sentence through the bridge (session "learn") and recorded before anything is shown;
+  // when the assistant cannot be reached (or the wait runs out) the review proceeds with the mechanical checks only.
+  const dispatchedRef = useRef<string | null>(null);
+  // The bridge hop is aborted on a REAL unmount only (F4-01) — never on a re-render: the dispatch op updates the view (and
+  // therefore the `pending` object) while the hop is in flight, and that must not cancel it.
+  const semanticAbortRef = useRef<AbortController | null>(null);
+  const unmountedRef = useRef(false);
+  useEffect(() => {
+    unmountedRef.current = false;
+    return () => {
+      unmountedRef.current = true;
+      semanticAbortRef.current?.abort();
+    };
+  }, []);
+  useEffect(() => {
+    if (!pending || !onSemantic || dispatchedRef.current === pending.turnId) return;
+    dispatchedRef.current = pending.turnId;
+    const abort = new AbortController();
+    semanticAbortRef.current = abort;
+    const timer = setTimeout(() => abort.abort(), SEMANTIC_REVIEW_TIMEOUT_MS);
+    (async () => {
+      // 1. the durable question receipt on the server (idempotent) — nothing is sent before it exists
+      const recorded = pending.recorded || (onDispatch ? await onDispatch(pending.turnId) : false);
+      let ok = false;
+      let reply = "";
+      let receipt: string | null = null;
+      if (recorded && ask) {
+        try {
+          // 2. the bridge hop with the turn id as the idempotency key (the receipt binds to it)
+          const r = await ask(pending.message, abort.signal, pending.turnId);
+          ok = r.ok;
+          reply = r.text;
+          receipt = r.receipt;
+        } catch {
+          ok = false;
+        }
+      }
+      clearTimeout(timer);
+      // 3. the reply with its receipt; without a dispatch record the server refuses and the review proceeds unchecked.
+      //    After an unmount nothing is posted: the dispatch stays pending on the server and is re-fetched from the view.
+      if (unmountedRef.current) return;
+      await onSemantic(pending.turnId, ok, reply, receipt);
+    })();
+  }, [pending, ask, onDispatch, onSemantic]);
   if (!review) return null;
-  const aspects = [...new Set(review.taught.map((t) => t.aspect))];
+  if (waiting) {
+    return (
+      <div className="flex flex-col gap-4" data-testid="log-review-waiting">
+        <Instruction kicker="Dein Satz im Kapitänslogbuch">Nabu liest deinen Satz …</Instruction>
+        <div className="rounded-2xl bg-secondary p-4">
+          <p className="text-sm text-tertiary">Du hast geschrieben</p>
+          <p className="mt-1 whitespace-pre-wrap font-mono text-xl text-primary" data-testid="log-review-original">
+            {review.original}
+          </p>
+        </div>
+        <p className="text-base text-tertiary">Inhalt und Satzbau schaut Nabu an; Leerzeichen, Grossschreibung, Schreibweise und Satzzeichen prüft die Expedition selbst.</p>
+        <div className="flex flex-wrap gap-2">
+          <button type="button" disabled={busy} onClick={() => pending && onSemantic && void onSemantic(pending.turnId, false, "", null)} className={secondaryButton} data-testid="log-review-without-nabu">
+            Ohne Nabu weiter
+          </button>
+        </div>
+      </div>
+    );
+  }
+  const aspects = review.points.map((pt) => pt.aspect);
   return (
     <form
       onSubmit={(e) => {
@@ -290,27 +364,39 @@ export function LogReview({ view, busy, gate = alwaysOpen, onSubmit, onSkip }: {
       data-testid="log-review"
       data-taught={aspects.join(",")}
     >
-      <Instruction kicker="Dein Satz im Kapitänslogbuch">{nothing ? "An den geprüften Stellen gibt es nichts zu verbessern." : aspects.length === 1 ? `Heute schauen wir eins an: ${review.taught[0].aspectLabel}.` : `Heute schauen wir zwei Dinge an: ${aspects.map((a) => review.taught.find((t) => t.aspect === a)!.aspectLabel).join(" und ")}.`}</Instruction>
+      <Instruction kicker="Dein Satz im Kapitänslogbuch">{nothing ? "An den geprüften Stellen gibt es nichts zu verbessern." : aspects.length === 1 ? `Heute schauen wir eins an: ${review.points[0].aspectLabel}.` : `Heute schauen wir zwei Dinge an: ${review.points.map((pt) => pt.aspectLabel).join(" und ")}.`}</Instruction>
       <div className="rounded-2xl bg-secondary p-4">
         <p className="text-sm text-tertiary">Du hast geschrieben</p>
-        <p className="mt-1 font-mono text-xl text-primary" data-testid="log-review-original">
+        <p className="mt-1 whitespace-pre-wrap font-mono text-xl text-primary" data-testid="log-review-original">
           {review.original}
         </p>
       </div>
-      <p className="text-base text-primary" data-testid="log-review-summary">
+      <p className="text-base text-primary" data-testid="log-review-summary" data-semantic={review.semanticStatus} data-unchecked={review.unchecked.join(",")}>
         {review.summary}
       </p>
-      {review.taught.length ? (
+      {review.semanticDeferred ? (
+        <p className="text-sm text-tertiary" data-testid="log-review-deferred">
+          Inhalt und Satzbau schaut in diesem Besuch niemand an — das wird nicht bewertet. Leerzeichen, Grossschreibung, Schreibweise und Satzzeichen prüft die Expedition selbst.
+        </p>
+      ) : null}
+      {review.points.length ? (
         <ul className="space-y-2" data-testid="log-review-points">
-          {review.taught.map((t) => (
-            <li key={t.id} className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-950 dark:bg-amber-950/40 dark:text-amber-50" data-testid="log-review-point" data-aspect={t.aspect}>
-              <span className="text-sm font-semibold uppercase tracking-wide text-amber-900/80 dark:text-amber-200/80">{t.aspectLabel}</span>
+          {review.points.map((pt) => (
+            <li key={pt.aspect} className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-950 dark:bg-amber-950/40 dark:text-amber-50" data-testid="log-review-point" data-aspect={pt.aspect} data-source={pt.source} data-occurrences={pt.ids.length}>
+              <span className="text-sm font-semibold uppercase tracking-wide text-amber-900/80 dark:text-amber-200/80">{pt.aspectLabel}{pt.source === "assistant" ? " · Nabu meint" : ""}</span>
               <br />
-              {t.teaching}
-              {t.expected && t.aspect !== "spacing" ? (
+              {pt.teaching}
+              {pt.examples.length ? (
                 <>
                   {" "}
-                  <span className="text-tertiary">Du:</span> <strong className="font-mono">{t.given}</strong> <span className="text-tertiary">→</span> <strong className="font-mono">{t.expected}</strong>
+                  <span className="text-tertiary">Du:</span>{" "}
+                  {pt.examples.slice(0, 4).map((e, i) => (
+                    <span key={i}>
+                      {i ? ", " : ""}
+                      <strong className="font-mono">{e.given}</strong> <span className="text-tertiary">→</span> <strong className="font-mono">{e.expected}</strong>
+                    </span>
+                  ))}
+                  {pt.examples.length > 4 ? <span className="text-tertiary"> … und {pt.examples.length - 4} weitere</span> : null}
                 </>
               ) : null}
             </li>
@@ -324,15 +410,22 @@ export function LogReview({ view, busy, gate = alwaysOpen, onSubmit, onSkip }: {
           <p className="mt-1 font-mono text-xl text-primary">{review.suggestion}</p>
         </div>
       ) : null}
-      {review.unknownWords.length ? (
-        <div className="rounded-2xl bg-secondary p-4" data-testid="log-review-unknown">
-          <p className="text-base text-primary">Ein Wort kenne ich nicht. Sag mir, was du meinst — das wird nicht bewertet.</p>
-          {review.unknownWords.map((w) => (
-            <label key={w} className="mt-2 flex flex-col gap-1 text-base text-primary">
-              Was meinst du mit „{w}“?
-              <input value={clarifications[w] ?? ""} onChange={(e) => setClarifications((c) => ({ ...c, [w]: e.target.value }))} maxLength={200} className={cn("min-h-12 rounded-2xl border-2 border-primary bg-primary px-4 text-lg text-primary", focusRing)} data-testid={`log-review-clarify-${w}`} autoComplete="off" />
+      {review.clarify ? (
+        <div className="rounded-2xl bg-secondary p-4" data-testid="log-review-clarify">
+          <p className="text-base text-primary">{review.clarify.words.length ? "Sag mir, was du meinst — das wird nicht bewertet." : "Eine Frage — das wird nicht bewertet."}</p>
+          {review.clarify.words.length ? (
+            review.clarify.words.map((w) => (
+              <label key={w} className="mt-2 flex flex-col gap-1 text-base text-primary">
+                Was meinst du mit „{w}“?
+                <input value={clarifications[w] ?? ""} onChange={(e) => setClarifications((c) => ({ ...c, [w]: e.target.value }))} maxLength={200} className={cn("min-h-12 rounded-2xl border-2 border-primary bg-primary px-4 text-lg text-primary", focusRing)} data-testid={`log-review-clarify-${w}`} autoComplete="off" />
+              </label>
+            ))
+          ) : (
+            <label className="mt-2 flex flex-col gap-1 text-base text-primary">
+              {review.clarify.question}
+              <input value={clarifications.question ?? ""} onChange={(e) => setClarifications((c) => ({ ...c, question: e.target.value }))} maxLength={200} className={cn("min-h-12 rounded-2xl border-2 border-primary bg-primary px-4 text-lg text-primary", focusRing)} data-testid="log-review-clarify-question" autoComplete="off" />
             </label>
-          ))}
+          )}
         </div>
       ) : null}
       <label className="sr-only" htmlFor="log-review-text">
@@ -349,7 +442,7 @@ export function LogReview({ view, busy, gate = alwaysOpen, onSubmit, onSkip }: {
           </button>
         ) : null}
       </div>
-      <p className="text-xs text-tertiary">Dein erster Satz bleibt gespeichert. Geprüft werden sechs Dinge (Inhalt, ganzer Satz, Leerzeichen, Grossschreibung, Schreibweise, Satzzeichen) — und nur die. Mehr als zwei Dinge üben wir heute nicht.</p>
+      <p className="text-xs text-tertiary" data-testid="log-review-footer">Dein erster Satz bleibt genau so gespeichert, wie du ihn geschrieben hast. {review.semanticDeferred ? `${LIVE_TUTOR_DEFERRED_WRITING_FOOTER} Die Expedition prüft` : "Nabu schaut Inhalt, ganzen Satz und Satzbau an; die Expedition prüft"} Leerzeichen, Grossschreibung, Schreibweise und Satzzeichen — und nur das. Mehr als zwei Dinge üben wir heute nicht.{review.unchecked.length ? ` Heute nicht geprüft: ${review.uncheckedLabels.join(", ")}.` : ""}</p>
     </form>
   );
 }

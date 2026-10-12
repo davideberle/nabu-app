@@ -87,7 +87,8 @@ export function readBridgeOrigin(raw: unknown): string | null {
 }
 
 export type AssistantBlock =
-  | { type: "text"; text: string }
+  /** `text` is normalised for display and speech; `raw` is the EXACT wire string (repair round 3, R2-02) — the bridge's receipt signs the raw bytes, so the server must hash exactly those. */
+  | { type: "text"; text: string; raw?: string }
   /**
    * A media candidate or choice. `imageUrl` is optional artwork; it is https
    * only, checked here rather than trusted, because this is the last hop before
@@ -104,7 +105,13 @@ export type ChildTurnEnvelope = {
   status: ChildTurnStatus;
   child: string;
   blocks: AssistantBlock[];
-  meta: { requestId: string; durationMs?: number };
+  /**
+   * `receipt` (repair round 2, IV5-03): the bridge's signed response receipt (`fcr1.<payload>.<sig>`), kept VERBATIM for the
+   * server to verify; absent on older bridges. Repair round 3 (R2-01): a present but malformed receipt is kept as it came
+   * (any string, bounded) or as the empty string when it was not a string — the server records it as INVALID, distinct from
+   * absent. The client never judges a receipt.
+   */
+  meta: { requestId: string; durationMs?: number; receipt?: string };
   error?: { code: string; message: string; retryable?: boolean };
 };
 
@@ -173,7 +180,7 @@ export function readAssistantBlocks(value: unknown): AssistantBlock[] {
   return value.map((entry): AssistantBlock => {
     if (!isRecord(entry)) return { type: "unknown", raw: entry };
     if (entry.type === "text" && typeof entry.text === "string") {
-      return { type: "text", text: plainTextForChild(entry.text) };
+      return { type: "text", text: plainTextForChild(entry.text), raw: entry.text };
     }
     if (entry.type === "card" && typeof entry.title === "string") {
       return {
@@ -225,6 +232,7 @@ export function parseChildTurnEnvelope(value: unknown): ChildTurnEnvelope {
     meta: {
       requestId: typeof meta.requestId === "string" ? meta.requestId : "unknown",
       ...(typeof meta.durationMs === "number" ? { durationMs: meta.durationMs } : {}),
+      ...(typeof meta.receipt === "string" ? { receipt: meta.receipt.length <= 4096 ? meta.receipt : meta.receipt.slice(0, 4096) } : meta.receipt !== undefined ? { receipt: "" } : {}),
     },
     ...(effectiveStatus === "ok"
       ? {}
@@ -240,6 +248,18 @@ export function parseChildTurnEnvelope(value: unknown): ChildTurnEnvelope {
 }
 
 /** Concatenates the renderable text of an envelope, for speech and for aria. */
+/**
+ * The EXACT wire text of the reply (repair round 3, R2-02): the raw text blocks joined by a blank line, nothing trimmed,
+ * no markdown removed, CR kept. This is what the bridge's receipt signs (`res`) and what the server hashes; display and
+ * speech use `envelopeSpokenText` instead. A block that reached this build without its raw string falls back to its text.
+ */
+export function envelopeRawText(envelope: ChildTurnEnvelope): string {
+  return envelope.blocks
+    .filter((block): block is Extract<AssistantBlock, { type: "text" }> => block.type === "text")
+    .map((block) => block.raw ?? block.text)
+    .join("\n\n");
+}
+
 export function envelopeSpokenText(envelope: ChildTurnEnvelope): string {
   return envelope.blocks
     .filter((block): block is Extract<AssistantBlock, { type: "text" }> => block.type === "text")
