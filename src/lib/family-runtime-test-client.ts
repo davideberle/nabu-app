@@ -23,3 +23,12 @@ export function withOperationDeadline<T>(run:(signal:AbortSignal)=>Promise<T>,si
   Promise.resolve().then(()=>run(controller.signal)).then(value=>finish(null,value),error=>finish(error));
  });
 }
+
+// Only a verified Mini receipt may classify an expired scope for control recovery.
+export class ScopeExpiredError extends Error { constructor(){super("Fictional context expired");this.name="ScopeExpiredError";} }
+// Presentation only, after signature verification. Original signed/stored text is retained.
+// JSX still escapes every character; there is no HTML renderer, link or image execution.
+export function plainReply(text:string){
+ const unfenced=text.replace(/^```[^\n]*$/gm,"").replace(/^#{1,6}\s+/gm,"");
+ return unfenced.split(/(`[^`\n]+`)/g).map(part=>part.startsWith("`")&&part.endsWith("`")?part.slice(1,-1):part.replace(/\*\*([^*\n]+)\*\*/g,"$1").replace(/\*([^*\n]+)\*/g,"$1").replace(/(^|[\s(])__([^_\n]+)__(?=$|[\s.,!?;)])/g,"$1$2").replace(/(^|[\s(])_([^_\n]+)_(?=$|[\s.,!?;)])/g,"$1$2")).join("");
+}
