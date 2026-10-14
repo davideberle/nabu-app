@@ -1,39 +1,6 @@
-// Server-side minting of the child-scoped Family Assistant bridge credential.
-//
-// ## The credential boundary, stated plainly
-//
-// The OpenClaw Gateway's operator bearer grants owner scope over the whole
-// household — every agent, every session, config mutation, exec approvals. It
-// lives on the Mac mini and nowhere else. It is NOT in this repository, NOT in
-// a Vercel environment variable, and NOT reachable from a browser.
-//
-// What this module mints instead is a much smaller thing: a short-lived,
-// HMAC-signed token whose subject is exactly one child agent and whose session
-// is exactly one surface. Everything it can express is fixed at mint time. A
-// stolen one buys a few minutes of one child's conversation on a tailnet-only
-// listener, and nothing else.
-//
-// Family Assistant DESIGN §7 authorizes exactly this split: "Vercel may mint a
-// short-lived signed token whose subject is `santiago` or `isabel`, but neither
-// Vercel nor the browser receives the shared Gateway bearer credential."
-//
-// ## Fail closed
-//
-// The shared secret comes from runtime configuration only. When it is missing,
-// blank, or under the length floor, `resolveBridgeMintConfig` reports "not
-// configured" and the session route returns 503 — it never falls back to an
-// unsigned token, a default secret, or a direct Gateway call.
-//
-// ## Interoperability
-//
-// The verifying half lives in
-// `projects/family-assistant/openclaw-plugin/src/bridge/token.ts`. Both sides
-// assert the same golden vector (`CHILD_BRIDGE_TOKEN_GOLDEN_VECTOR` here and
-// there), so a drift in claim serialization fails a test in whichever
-// repository caused it rather than 401ing a child at runtime.
-//
-// This module must stay server-only: it imports `node:crypto` and reads the
-// secret, so importing it from a client component is a build error by design.
+// Non-AI media session minting. The fcm1/family-child-media wire cannot
+// authorize the retired child-turn bridge. Historical reply receipt verification
+// below is retained solely to validate already stored learning evidence.
 
 import { createHmac, timingSafeEqual } from "node:crypto";
 import {
@@ -52,10 +19,10 @@ export const BRIDGE_TOKEN_SECRET_ENV = "FAMILY_BRIDGE_TOKEN_SECRET";
 export const BRIDGE_URL_ENV = "FAMILY_ASSISTANT_BRIDGE_URL";
 
 /** Token construction id. There is no negotiable algorithm field, by design. */
-export const BRIDGE_TOKEN_PREFIX = "fct1";
+export const BRIDGE_TOKEN_PREFIX = "fcm1";
 
 export const BRIDGE_TOKEN_ISSUER = "companion-app";
-export const BRIDGE_TOKEN_AUDIENCE = "family-child-bridge";
+export const BRIDGE_TOKEN_AUDIENCE = "family-child-media";
 
 /**
  * Shortest usable shared secret.
@@ -212,14 +179,14 @@ export function mintBridgeToken(input: MintBridgeTokenInput): { token: string; c
 export const CHILD_BRIDGE_TOKEN_GOLDEN_VECTOR = {
   secret: "family-child-bridge-golden-vector-secret-0001",
   childId: "santiago",
-  sessionSuffix: "ipad",
+  sessionSuffix: "listening",
   jti: "golden-0001",
   issuedAtSeconds: 1_770_000_000,
   ttlSeconds: 600,
   serializedClaims:
-    '{"v":1,"iss":"companion-app","aud":"family-child-bridge","sub":"santiago","sid":"ipad","iat":1770000000,"exp":1770000600,"jti":"golden-0001"}',
+    '{"v":1,"iss":"companion-app","aud":"family-child-media","sub":"santiago","sid":"listening","iat":1770000000,"exp":1770000600,"jti":"golden-0001"}',
   token:
-    "fct1.eyJ2IjoxLCJpc3MiOiJjb21wYW5pb24tYXBwIiwiYXVkIjoiZmFtaWx5LWNoaWxkLWJyaWRnZSIsInN1YiI6InNhbnRpYWdvIiwic2lkIjoiaXBhZCIsImlhdCI6MTc3MDAwMDAwMCwiZXhwIjoxNzcwMDAwNjAwLCJqdGkiOiJnb2xkZW4tMDAwMSJ9.ST0qb3Bqjai4ZAV0V0tplcyYMiBseiv0_GMjf-l2Zfk",
+    "fcm1.eyJ2IjoxLCJpc3MiOiJjb21wYW5pb24tYXBwIiwiYXVkIjoiZmFtaWx5LWNoaWxkLW1lZGlhIiwic3ViIjoic2FudGlhZ28iLCJzaWQiOiJsaXN0ZW5pbmciLCJpYXQiOjE3NzAwMDAwMDAsImV4cCI6MTc3MDAwMDYwMCwianRpIjoiZ29sZGVuLTAwMDEifQ.4c1mcB73KOqJWSyNhs8o7DeZHofzsJ5nnFRgLMI6Vfo",
 } as const;
 
 /** Shape returned by `POST /api/family/assistant/session`. */

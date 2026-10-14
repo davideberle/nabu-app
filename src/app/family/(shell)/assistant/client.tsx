@@ -59,6 +59,7 @@ import {
 import { childShellDestinationHref } from "@/lib/family-child-shell";
 import { useSearchParams } from "next/navigation";
 import { useChildShell } from "@/components/family/child-shell-provider";
+import { CHILD_ASSISTANT_AI_ENABLED, CHILD_ASSISTANT_UNAVAILABLE } from "@/lib/family-assistant-availability";
 import { AssistantAvatar, type AvatarState } from "./avatar";
 
 // ---------------------------------------------------------------------------
@@ -954,6 +955,10 @@ function Workspace({
     (focus: "general" | "music") => {
       clearTimers();
       cancelSpeech();
+      if (!CHILD_ASSISTANT_AI_ENABLED) {
+        setStage({ kind: "home" });
+        return;
+      }
       setAskFocus(focus);
       setSpokenLine(profile.greeting);
       setStage({ kind: "ready" });
@@ -1540,25 +1545,26 @@ function Workspace({
               </span>
             </span>
           </Link>
-          <button type="button" onClick={() => enterConversation("general")} className={homeActionClass}>
+          <p className="text-sm text-tertiary" role="status" data-testid="assistant-retirement-notice">{CHILD_ASSISTANT_UNAVAILABLE}</p>
+          <button type="button" disabled={!CHILD_ASSISTANT_AI_ENABLED} onClick={() => enterConversation("general")} className={homeActionClass}>
             <span className={homeActionIconClass} aria-hidden>
               💬
             </span>
             <span className="min-w-0">
               <span className="block text-lg font-semibold text-primary">Ask Nabu</span>
               <span className="block text-sm text-tertiary">
-                Questions, ideas and help — talk or type
+                Chat temporarily unavailable
               </span>
             </span>
           </button>
-          <button type="button" onClick={() => enterConversation("music")} className={homeActionClass}>
+          <button type="button" disabled={!CHILD_ASSISTANT_AI_ENABLED} onClick={() => enterConversation("music")} className={homeActionClass}>
             <span className={homeActionIconClass} aria-hidden>
               🎵
             </span>
             <span className="min-w-0">
               <span className="block text-lg font-semibold text-primary">Music</span>
               <span className="block text-sm text-tertiary">
-                Say what you want to hear — you pick before it plays
+                Music requests temporarily unavailable; Hörspiele still works
               </span>
             </span>
           </button>

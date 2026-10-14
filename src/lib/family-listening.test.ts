@@ -159,8 +159,8 @@ function sessionHandler() {
     status: 200,
     body: {
       child: "santiago",
-      sessionSuffix: "ipad",
-      token: "fct1.payload.signature",
+      sessionSuffix: "listening",
+      token: "fcm1.payload.signature",
       expiresAt: NOW_MS + 600_000,
       bridgeUrl: BRIDGE_URL,
     },
@@ -168,7 +168,7 @@ function sessionHandler() {
 }
 
 describe("listening client", () => {
-  it("mints the same child session and carries only the bearer to the bridge", async () => {
+  it("mints a separate listening-only child session and carries only the bearer", async () => {
     const { fetchImpl, calls } = makeFetch({
       "/api/family/assistant/session": sessionHandler,
       [`${LISTENING_BASE_PATH}/library`]: () => ({ status: 200, body: libraryPayload() }),
@@ -179,10 +179,10 @@ describe("listening client", () => {
     equal(outcome.value.stories["ninjago-f01"]?.badge, "new");
 
     const mint = calls[0]!;
-    deepStrictEqual(JSON.parse(String(mint.init.body)), { childId: "santiago", sessionSuffix: "ipad" });
+    deepStrictEqual(JSON.parse(String(mint.init.body)), { childId: "santiago", sessionSuffix: "listening", purpose: "listening" });
     const library = calls[1]!;
     equal(library.url, `${BRIDGE_URL}${LISTENING_BASE_PATH}/library`);
-    equal((library.init.headers as Record<string, string>).Authorization, "Bearer fct1.payload.signature");
+    equal((library.init.headers as Record<string, string>).Authorization, "Bearer fcm1.payload.signature");
     equal(library.init.method, "GET");
     equal(library.init.body, undefined);
   });

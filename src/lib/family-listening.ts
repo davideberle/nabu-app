@@ -1,19 +1,14 @@
 // The Listening Library wire contract and browser transport.
 //
-// Client half of the `/v1/listening/*` surface the family-assistant bridge
-// serves (family-assistant DESIGN §7.4.2; server:
-// `openclaw-plugin/src/listening/http.ts`). Same two hops and the same
-// authority chain as a child turn: this module mints the *same* child-scoped
-// session token via `POST /api/family/assistant/session` and carries it to
-// the tailnet bridge, which composes the library from the family-assistant
-// catalog + per-child state and the sonos-music editions. The browser renders;
-// it never ranks, resolves, or names a provider URI — playback happens by
-// handing back the one-use confirmation token from a preview, exactly like
-// the spoken Sonos flow.
+// Client half of the standalone, non-AI `/v1/listening/*` media service.
+// It mints a purpose:listening credential in a distinct session/token namespace.
+// Preview confirmation and child-owned library state remain independent of AI.
+// The legacy runtime and conversational turn endpoint are never used here.
 //
 // Isomorphic and dependency-free on purpose: imported by a client component
 // and loaded directly by `node --test` (hence the explicit `.ts` extensions).
 
+import { LISTENING_SESSION_SUFFIX } from "./family-assistant-availability.ts";
 import {
   readBridgeOrigin,
   type ChildId,
@@ -343,18 +338,17 @@ export function createListeningClient(deps: ListeningClientDeps = {}): Listening
       cached.child === childId &&
       cached.expiresAt - now() > SESSION_REFRESH_MARGIN_MS;
     if (usable && cached) return cached;
-    // Same surface session as the conversation ("ipad"), so a confirmation
-    // minted here is bound to the same session key the spoken flow uses.
+    // A separate media-only session cannot authorize a conversational AI turn.
     const response = await doFetch(SESSION_MINT_PATH, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ childId, sessionSuffix: "ipad" }),
+      body: JSON.stringify({ childId, sessionSuffix: LISTENING_SESSION_SUFFIX, purpose: "listening" }),
       cache: "no-store",
       ...(signal ? { signal } : {}),
     });
     if (!response.ok) return null;
     const info = readSessionInfo(await response.json());
-    if (!info || info.child !== childId) return null;
+    if (!info || info.child !== childId || info.sessionSuffix !== LISTENING_SESSION_SUFFIX) return null;
     cached = info;
     return info;
   }

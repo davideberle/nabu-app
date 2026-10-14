@@ -279,6 +279,8 @@ export function envelopeSpokenText(envelope: ChildTurnEnvelope): string {
 export function childFacingRecovery(envelope: ChildTurnEnvelope): string {
   const code = envelope.error?.code;
   switch (code) {
+    case "temporarily_unavailable":
+      return "Nabu’s chat is temporarily unavailable while we replace the assistant. Your saved work stays safe.";
     case "busy":
       return "I'm still thinking about your last question — give me a moment and ask again.";
     case "timeout":

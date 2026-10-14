@@ -35,6 +35,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import { LIVE_TUTOR_DEFERRED_CHILD_NOTICE, liveTutorDeferred } from "@/lib/family-learning-deferral";
+import { CHILD_ASSISTANT_AI_ENABLED, CHILD_TUTOR_UNAVAILABLE } from "@/lib/family-assistant-availability";
 import { createChildTurnClient } from "@/lib/family-assistant-client";
 import { envelopeRawText, envelopeSpokenText, plainTextForChild, type ChildId } from "@/lib/family-assistant-turn";
 import type { LearningMutateOutcome } from "@/lib/family-learning-client";
@@ -270,7 +271,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
   // Reasoning mode: speak each NEW Nabu line once the sidebar is open (never twice for the same line).
   const lastNabu = reasoning ? [...reasoning.turns].reverse().find((t) => t.role === "nabu") ?? null : null;
   useEffect(() => {
-    if (!open || mode !== "reasoning" || !lastNabu) return;
+    if (!CHILD_ASSISTANT_AI_ENABLED || !open || mode !== "reasoning" || !lastNabu) return;
     if (lastNabu.source !== "assistant" && lastNabu.source !== "reviewed") return; // only verified Nabu lines and reviewed app lines are spoken (assessment reset, trust)
     const key = `${reasoning?.itemId}:${lastNabu.at}:${lastNabu.text}`;
     if (spokenRef.current === key) return;
@@ -293,7 +294,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
    * client the server is told at once that no reply is available.
    */
   const sendDispatch = async (dispatch: { turnId: string; message: string }, entriesBefore: Entry[]) => {
-    if (!onReasoningReply) return;
+    if (!CHILD_ASSISTANT_AI_ENABLED || !onReasoningReply) return;
     const sentBinding = bindingRef.current;
     let ok = false;
     let text = "";
@@ -323,7 +324,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
   };
 
   const submitReasoning = async (text: string, modality: "typed" | "spoken") => {
-    if (!onReasoningTurn || sending) return;
+    if (!CHILD_ASSISTANT_AI_ENABLED || !onReasoningTurn || sending) return;
     const check = checkChildUtterance(text);
     if (!check.ok) return;
     setSending(true);
@@ -358,7 +359,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
   const pendingTurn = reasoning?.pending ?? null;
   const resentRef = useRef<string | null>(null);
   const resend = async () => {
-    if (!pendingTurn || sending) return;
+    if (!CHILD_ASSISTANT_AI_ENABLED || !pendingTurn || sending) return;
     setSending(true);
     const before: Entry[] = reasoning ? reasoning.turns.map((t, i) => ({ role: t.role, text: t.text, modality: t.modality ?? undefined, source: t.source ?? null, key: `r-${i}` })) : [];
     await sendDispatch(pendingTurn, before);
@@ -372,7 +373,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
   }, [open, mode, pendingTurn?.turnId]);
 
   const askFree = async (text: string) => {
-    if (!tutorClient || !recordSupport || !currentRevision || sending) return;
+    if (!CHILD_ASSISTANT_AI_ENABLED || !tutorClient || !recordSupport || !currentRevision || sending) return;
     const check = checkChildUtterance(text);
     if (!check.ok) return;
     const sentBinding = bindingRef.current;
@@ -435,9 +436,9 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
     return freeThread;
   }, [mode, reasoning, pendingChild, freeThread, finished]);
 
-  const contextLine = finished ? "Dein Rechenweg ist gespeichert." : mode === "reasoning" ? "Erzähl mir deinen Rechenweg — sprechen oder schreiben." : view.tutor ? (view.tutor.page === "map" ? "Frag mich zur Insel oder zum nächsten Schritt." : `Zur Aufgabe: „${view.tutor.prompt.length > 90 ? `${view.tutor.prompt.slice(0, 88)}…` : view.tutor.prompt}“`) : "Frag, was du willst.";
-  const canType = finished ? false : mode === "reasoning" ? !!onReasoningTurn && reasoning?.status === "open" : !!tutorClient;
-  const awaiting = !finished && mode === "reasoning" && reasoning?.status === "awaiting";
+  const contextLine = !CHILD_ASSISTANT_AI_ENABLED ? "Dein gespeicherter Lernstand bleibt erhalten." : finished ? "Dein Rechenweg ist gespeichert." : mode === "reasoning" ? "Erzähl mir deinen Rechenweg — sprechen oder schreiben." : view.tutor ? (view.tutor.page === "map" ? "Frag mich zur Insel oder zum nächsten Schritt." : `Zur Aufgabe: „${view.tutor.prompt.length > 90 ? `${view.tutor.prompt.slice(0, 88)}…` : view.tutor.prompt}“`) : "Frag, was du willst.";
+  const canType = CHILD_ASSISTANT_AI_ENABLED && (finished ? false : mode === "reasoning" ? !!onReasoningTurn && reasoning?.status === "open" : !!tutorClient);
+  const awaiting = CHILD_ASSISTANT_AI_ENABLED && !finished && mode === "reasoning" && reasoning?.status === "awaiting";
   const done = !!finished || (mode === "reasoning" && reasoning?.status === "done");
   const doneMethod = finished?.method ?? reasoning?.method ?? "";
   const doneLabel = finished?.methodLabel ?? reasoning?.methodLabel ?? "";
@@ -483,8 +484,9 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
           <p className="mt-1 text-sm text-tertiary" data-testid="nabu-context">
             {contextLine}
           </p>
+          <p className="mt-2 text-sm text-tertiary" data-testid="nabu-retirement-notice">{CHILD_TUTOR_UNAVAILABLE}</p>
           <div className="mt-3 min-h-24 flex-1 space-y-2 overflow-y-auto" aria-live="polite" data-testid="nabu-thread">
-            {entries.length === 0 ? <p className="text-sm text-tertiary">{shownMode === "free" && !liveTutorDeferred(view.visit?.id) ? "Ich kenne deine aktuelle Aufgabe und deine Insel. Was möchtest du wissen?" : ""}</p> : null}
+            {CHILD_ASSISTANT_AI_ENABLED && entries.length === 0 ? <p className="text-sm text-tertiary">{shownMode === "free" && !liveTutorDeferred(view.visit?.id) ? "Ich kenne deine aktuelle Aufgabe und deine Insel. Was möchtest du wissen?" : ""}</p> : null}
             {entries.map((entry) => (
               <p key={entry.key} className={cn("rounded-2xl px-3 py-2 text-base", entry.role === "child" && "ml-6 bg-secondary text-primary", entry.role === "nabu" && entry.source !== "local" && !!entry.source && "mr-6 bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900", entry.role === "nabu" && (entry.source === "local" || !entry.source) && "mr-6 border-2 border-dashed border-amber-600 bg-amber-50 text-stone-900 dark:bg-amber-950 dark:text-amber-100", entry.role === "note" && "border border-primary text-tertiary")} data-testid={`nabu-${entry.role}`} data-modality={entry.modality ?? ""} data-source={entry.source ?? ""}>
                 {entry.source === "local" ? <span className="mb-1 block text-xs font-semibold uppercase tracking-[0.12em]" data-testid="nabu-local-label">Hinweis vom Lernsystem — Nabus Antwort wurde nicht beglaubigt</span> : null}
@@ -501,7 +503,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
             </p>
           ) : null}
           <div className="mt-2 flex flex-wrap gap-2">
-            {(finished || (lastNabu && mode === "reasoning")) ? (
+            {CHILD_ASSISTANT_AI_ENABLED && (finished || (lastNabu && mode === "reasoning")) ? (
               <button type="button" onClick={() => { const last = finished ? finished.turns[finished.turns.length - 1] : lastNabu!; if (last.source === "assistant" || last.source === "reviewed") void speak(last.text); }} disabled={speaking} className={secondaryButton} data-testid="nabu-repeat">
                 🔊 Nochmal
               </button>
@@ -605,7 +607,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
           ) : null}
           {shownMode === "free" && !tutorClient && liveTutorDeferred(view.visit?.id) ? <p className="mt-3 text-sm text-tertiary" data-testid="nabu-deferred">{LIVE_TUTOR_DEFERRED_CHILD_NOTICE}</p> : null}
           {shownMode === "free" && !tutorClient && !liveTutorDeferred(view.visit?.id) ? <p className="mt-3 text-sm text-tertiary">Hier kann ich nur zuhören — Fragen stellst du in der Aufgabe.</p> : null}
-          {liveTutorDeferred(view.visit?.id) ? null : <p className="mt-2 text-xs text-tertiary">Das Mikrofon läuft nur, wenn du es startest. Gesprochenes wird nicht als Schreibweise bewertet.</p>}
+          {!CHILD_ASSISTANT_AI_ENABLED || liveTutorDeferred(view.visit?.id) ? null : <p className="mt-2 text-xs text-tertiary">Das Mikrofon läuft nur, wenn du es startest. Gesprochenes wird nicht als Schreibweise bewertet.</p>}
         </aside>
       ) : null}
     </>

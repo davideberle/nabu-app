@@ -1,36 +1,8 @@
-// Browser-side transport for one child turn.
-//
-// Isomorphic and dependency-free on purpose: it is imported by a client
-// component, so it must not pull in `node:crypto` (that lives in the
-// server-only `family-assistant-bridge.ts`) and must not import React.
-//
-// ## The two hops, and why the browser makes both
-//
-//   1. `POST /api/family/assistant/session` on the Companion App origin, which
-//      checks the household session and returns a minutes-long token naming one
-//      child plus the bridge's tailnet origin;
-//   2. `POST <bridgeUrl>/v1/child-turn` on the Mac mini, carrying that token.
-//
-// The second hop does not go through Vercel because the Gateway is loopback
-// bound on the Mac mini and its operator bearer must never leave that machine.
-// Proxying the turn through the Companion App server would mean either putting
-// that bearer in Vercel or putting the Mac mini on the public internet; the
-// canonical design (DESIGN §7) chooses neither and keeps the browser on the
-// tailnet instead.
-//
-// ## What this module guarantees
-//
-// - the child is chosen once, when the token is minted, and is never a field in
-//   a turn request. The bridge takes it from the token subject, so a tampered
-//   request body cannot re-aim a turn at the sibling;
-// - the session token is refreshed before it expires and re-minted exactly once
-//   on a 401, so a child never sees an auth error for an ordinary expiry;
-// - every request is abortable, so leaving the page or tapping stop does not
-//   leave a turn running.
+// Real-child AI is temporarily disabled during the runtime retirement.
+// Session parsing remains shared by the independent non-AI Listening Library.
 
+import { childAssistantUnavailable } from "./family-assistant-availability.ts";
 import {
-  MAX_CHILD_TURN_CHARS,
-  parseChildTurnEnvelope,
   readBridgeOrigin,
   type ChildId,
   type ChildTurnEnvelope,
@@ -74,7 +46,7 @@ export function readSessionInfo(value: unknown): ChildBridgeSessionInfo | null {
   const { child, sessionSuffix, token, expiresAt, bridgeUrl } = value;
   if (child !== "santiago" && child !== "isabel") return null;
   if (typeof sessionSuffix !== "string" || !sessionSuffix) return null;
-  if (typeof token !== "string" || !token) return null;
+  if (typeof token !== "string" || !/^fcm1\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(token)) return null;
   if (typeof expiresAt !== "number" || !Number.isFinite(expiresAt)) return null;
   // `https:` for every non-loopback host; plaintext only to this machine.
   const origin = readBridgeOrigin(bridgeUrl);
@@ -83,22 +55,11 @@ export function readSessionInfo(value: unknown): ChildBridgeSessionInfo | null {
 }
 
 /** Reason a turn could not even be attempted. Mapped to a child-facing line. `too-long`: the caller refused silent truncation (repair round 2, IV5-05). */
-export type ChildTurnTransportFailure = "no-session" | "network" | "bad-response" | "too-long";
+export type ChildTurnTransportFailure = "no-session" | "network" | "bad-response" | "too-long" | "unavailable";
 
 export type ChildTurnOutcome =
   | { ok: true; envelope: ChildTurnEnvelope }
   | { ok: false; failure: ChildTurnTransportFailure; envelope: ChildTurnEnvelope };
-
-function transportEnvelope(child: string, code: string, message: string): ChildTurnEnvelope {
-  return {
-    v: 1,
-    status: "error",
-    child,
-    blocks: [],
-    meta: { requestId: "client" },
-    error: { code, message, retryable: true },
-  };
-}
 
 export type ChildTurnClientDeps = {
   /** Injected so the tests never touch the network. */
@@ -109,10 +70,10 @@ export type ChildTurnClientDeps = {
 };
 
 export type ChildTurnClient = {
-  /** Sends one free-form utterance to the selected child agent. */
+  /** Returns the explicit retirement notice; never transmits the utterance. */
   ask: (
     params: { childId: ChildId; sessionSuffix: string; message: string },
-    /** `idempotencyKey`: the server's turn id, so the bridge receipt binds to that turn. `noTruncate`: send the message exactly as given (no trim) and fail with `too-long` instead of slicing it. */
+    /** Compatibility options retained for callers; none can enable AI transport. */
     options?: { signal?: AbortSignal; idempotencyKey?: string; noTruncate?: boolean },
   ) => Promise<ChildTurnOutcome>;
   /** Drops the cached session, e.g. when the child profile changes. */
@@ -121,148 +82,18 @@ export type ChildTurnClient = {
   peekSession: () => ChildBridgeSessionInfo | null;
 };
 
-export function createChildTurnClient(deps: ChildTurnClientDeps = {}): ChildTurnClient {
-  const doFetch = deps.fetchImpl ?? ((...args: Parameters<typeof fetch>) => fetch(...args));
-  const now = deps.now ?? (() => Date.now());
-  const newKey =
-    deps.newIdempotencyKey ??
-    (() =>
-      typeof crypto !== "undefined" && "randomUUID" in crypto
-        ? crypto.randomUUID()
-        : `k-${now()}-${Math.random().toString(36).slice(2, 10)}`);
-
-  let cached: ChildBridgeSessionInfo | null = null;
-
-  async function mint(
-    childId: ChildId,
-    sessionSuffix: string,
-    signal: AbortSignal | undefined,
-  ): Promise<ChildBridgeSessionInfo | null> {
-    const response = await doFetch(SESSION_MINT_PATH, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ childId, sessionSuffix }),
-      cache: "no-store",
-      ...(signal ? { signal } : {}),
-    });
-    if (!response.ok) return null;
-    const info = readSessionInfo(await response.json());
-    // A mint that answers about a different child is a server bug, not
-    // something to work around: refuse it rather than talk to the sibling.
-    if (!info || info.child !== childId || info.sessionSuffix !== sessionSuffix) return null;
-    cached = info;
-    return info;
-  }
-
-  async function session(
-    childId: ChildId,
-    sessionSuffix: string,
-    signal: AbortSignal | undefined,
-    force: boolean,
-  ): Promise<ChildBridgeSessionInfo | null> {
-    const usable =
-      !force &&
-      cached !== null &&
-      cached.child === childId &&
-      cached.sessionSuffix === sessionSuffix &&
-      cached.expiresAt - now() > SESSION_REFRESH_MARGIN_MS;
-    if (usable && cached) return cached;
-    return await mint(childId, sessionSuffix, signal);
-  }
-
-  async function postTurn(
-    info: ChildBridgeSessionInfo,
-    message: string,
-    idempotencyKey: string,
-    signal: AbortSignal | undefined,
-  ): Promise<Response> {
-    return await doFetch(`${info.bridgeUrl}${BRIDGE_TURN_PATH}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${info.token}`,
-      },
-      // The body is exactly what the bridge accepts. Notably absent: childId,
-      // sessionSuffix, model, tools — all of which come from the token or the
-      // bridge's own configuration.
-      body: JSON.stringify({ message, idempotencyKey }),
-      cache: "no-store",
-      ...(signal ? { signal } : {}),
-    });
-  }
-
+// Retirement boundary: never mint, forward, refresh, or reuse a legacy child token.
+// Dependencies remain accepted for callers/tests, but cannot activate transport.
+export function createChildTurnClient(_deps: ChildTurnClientDeps = {}): ChildTurnClient {
   return {
-    reset() {
-      cached = null;
-    },
-    peekSession: () => cached,
-    async ask({ childId, sessionSuffix, message }, options = {}) {
-      if (options.noTruncate && message.length > MAX_CHILD_TURN_CHARS) {
-        return {
-          ok: false,
-          failure: "too-long",
-          envelope: transportEnvelope(childId, "bad_request", "the message exceeds the bridge limit and must not be truncated"),
-        };
-      }
-      // `noTruncate` callers (the learning dispatches) send the message EXACTLY: the server hashed these bytes before the send
-      // and the bridge's receipt binds to them (repair round 3, R2-02). Free conversation keeps the trim and the cap.
-      const trimmed = options.noTruncate ? message : message.trim().slice(0, MAX_CHILD_TURN_CHARS);
-      if (!trimmed) {
-        return {
-          ok: false,
-          failure: "bad-response",
-          envelope: transportEnvelope(childId, "bad_request", "there was nothing to ask"),
-        };
-      }
-      const idempotencyKey = options.idempotencyKey && /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(options.idempotencyKey) ? options.idempotencyKey : newKey();
-
-      let info = await session(childId, sessionSuffix, options.signal, false).catch(() => null);
-      if (!info) {
-        return {
-          ok: false,
-          failure: "no-session",
-          envelope: transportEnvelope(childId, "not_configured", "could not start an assistant session"),
-        };
-      }
-
-      let response: Response;
-      try {
-        response = await postTurn(info, trimmed, idempotencyKey, options.signal);
-        if (response.status === 401) {
-          // One re-mint, then one retry. Beyond that it is not an expiry.
-          const refreshed = await session(childId, sessionSuffix, options.signal, true).catch(() => null);
-          if (!refreshed) {
-            return {
-              ok: false,
-              failure: "no-session",
-              envelope: transportEnvelope(childId, "unauthorized", "the assistant session expired"),
-            };
-          }
-          info = refreshed;
-          response = await postTurn(info, trimmed, idempotencyKey, options.signal);
-        }
-      } catch {
-        return {
-          ok: false,
-          failure: "network",
-          envelope: transportEnvelope(childId, "upstream_unavailable", "could not reach the assistant"),
-        };
-      }
-
-      let body: unknown;
-      try {
-        body = await response.json();
-      } catch {
-        return {
-          ok: false,
-          failure: "bad-response",
-          envelope: transportEnvelope(childId, "turn_failed", "the assistant sent something unreadable"),
-        };
-      }
-
-      const envelope = parseChildTurnEnvelope(body);
-      if (response.ok && envelope.status === "ok") return { ok: true, envelope };
-      return { ok: false, failure: "bad-response", envelope };
+    reset() {},
+    peekSession: () => null,
+    async ask({ childId }) {
+      return {
+        ok: false,
+        failure: "unavailable",
+        envelope: childAssistantUnavailable(childId),
+      };
     },
   };
 }

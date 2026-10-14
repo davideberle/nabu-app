@@ -79,7 +79,7 @@ describe("bridge token — interoperability", () => {
     const [prefix, payload, signature] = token.split(".");
     const expected = createHmac("sha256", SECRET).update(`${prefix}.${payload}`).digest("base64url");
     equal(signature, expected);
-    equal(prefix, "fct1");
+    equal(prefix, "fcm1");
   });
 });
 
