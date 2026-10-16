@@ -51,6 +51,7 @@ import type { LanguageSegmentId, LearningContent, ScoredMathItemId, TypingCourse
 import { hasLanguageSegment, hasMathItem, isLanguageSegmentId, isScoredMathItemId, languageSegment, mathItem, usedWordOf } from "./family-learning-content.ts";
 import type { LogReviewRecord, LanguageStepRecord, MathAttempt, MathItemState, MissionState, TypingBurst, TypingLabelRecord, TypingLessonRecord, VisitRecord } from "./family-learning-state.ts";
 import { buildVisitSummary, visitLabel, visitOrdinal, type VisitSummary } from "./family-learning-summary.ts";
+import { missionReport } from "./family-learning-mission.ts";
 import { alignTyping } from "./family-learning-typing-metrics.ts";
 import { evaluateRevision, flagSpacing, markSpacing, type SpacingFlag } from "./family-learning-writing.ts";
 
@@ -266,6 +267,10 @@ export type VisitReport = {
   lessons: LessonFeedback[];
   /** What changed in the world during this visit, in saved-state terms. */
   worldChanges: string[];
+  /** Content v5: the mission of this visit — every step with its honest status (no grade, no score). */
+  mission?: { title: string; steps: { id: string; title: string; status: string; outcome: string | null }[]; typing: { planned: number; attempted: number; activeSeconds: number; accuracy: number | null } | null } | null;
+  /** Content v5: what the child said they want next time (own words), or null when not (yet) answered. */
+  interest?: { kind: string; text: string | null } | null;
 };
 
 // ---------------------------------------------------------------------------
@@ -306,7 +311,8 @@ function lessonEvents(state: MissionState, content: LearningContent, visit: Visi
     if (seg.records[seg.records.length - 1] === last) events.push({ kind: "language", id, at: last.at });
   }
   (state.typing.course?.bursts ?? []).forEach((burst, index) => {
-    if (burst.visit === visit.id && inVisit(visit, burst.at)) events.push({ kind: "typing-burst", burst, index, at: burst.at });
+    // Visit 6: drills of a mission typing block feed the course but are not separate lessons (no per-round card, no decision).
+    if (burst.visit === visit.id && inVisit(visit, burst.at) && !burst.blockId) events.push({ kind: "typing-burst", burst, index, at: burst.at });
   });
   state.typing.lessons.forEach((record, index) => {
     if (inVisit(visit, record.at)) events.push({ kind: "typing-lesson", record, index, at: record.at });
@@ -679,7 +685,7 @@ function languageLessonFeedback(state: MissionState, content: LearningContent, v
         if (r.correct === true) continue;
         const ref = `${step.id} #${onStep.indexOf(r) + 1}`;
         if (r.correct === false) mistakes.push({ id: `produce:${step.id}:${r.response}`, evidence: "incorrect", focus, count: 1, given: `„${r.response}“`, expected: step.target, correction: step.correction ?? `Gesucht: ${step.target}`, visual: gloss ? { kind: "word", word: gloss.word, gloss: gloss.de, emoji: emoji(step.keywords[0] ?? ""), language: segment.language } : null, refs: [ref] });
-        else unscored.push({ id: `unscored:${step.id}:${onStep.indexOf(r) + 1}`, evidence: "unscored", focus: null, count: 1, given: `„${r.response}“`, expected: step.target, correction: /^unclear/.test(r.uncertainty ?? "") ? step.unclear ?? "Das konnte keiner Antwort zugeordnet werden — nicht bewertet." : step.clarification ?? "Fast — nicht bewertet.", visual: null, refs: [ref] });
+        else unscored.push({ id: `unscored:${step.id}:${onStep.indexOf(r) + 1}`, evidence: "unscored", focus: null, count: 1, given: `„${r.response}“`, expected: step.target, correction: /^unclear/.test(r.uncertainty ?? "") ? childFacingUnclear(step.unclear) : step.clarification ?? "Fast — nicht bewertet.", visual: null, refs: [ref] });
       }
     }
   }
@@ -906,6 +912,8 @@ export function lastLessonFeedback(state: MissionState, content: LearningContent
 
 function worldChanges(state: MissionState, content: LearningContent, visit: VisitRecord): string[] {
   const out: string[] = [];
+  const m = missionReport(state, content, visit.id);
+  if (m) for (const w of m.def.world) if (["done", "practiced", "taught", "unresolved"].includes(m.statuses[w.after])) out.push(`${w.label}.`);
   const within = (at: string | null | undefined) => typeof at === "string" && inVisit(visit, at);
   if (visit.id === "v1" && state.base.name) out.push(`Basis „${state.base.name}“ gebaut${state.base.locationId ? ` (${content.locations.find((l) => l.id === state.base.locationId)?.label ?? state.base.locationId})` : ""}.`);
   for (const [id, item] of Object.entries(state.math)) {
@@ -937,6 +945,15 @@ function worldChanges(state: MissionState, content: LearningContent, visit: Visi
 }
 
 /** One report per visit the served content knows: finished visits (complete) and the running one (partial). Oldest first. */
+/**
+ * V6-10 (2026-10-16): child-facing text never exposes matcher wording. Frozen content of earlier visits carries such a
+ * sentence in `unclear`; the projection replaces it (the stored records and the reviewed content stay as they are).
+ */
+export const FRIENDLY_UNCLEAR = "Das war noch nicht eindeutig — darum ohne Bewertung. Mit dem Satzanfang klappt es beim nächsten Mal leichter.";
+export function childFacingUnclear(text: string | null | undefined): string {
+  return !text || /zuordnen|zugeordnet/i.test(text) ? FRIENDLY_UNCLEAR : text;
+}
+
 export function buildVisitReports(state: MissionState, content: LearningContent): VisitReport[] {
   const reports: VisitReport[] = [];
   for (const visit of state.visits) {
@@ -961,6 +978,15 @@ export function buildVisitReports(state: MissionState, content: LearningContent)
       summary: buildVisitSummary(state, content, visit.id),
       lessons: visitLessonFeedback(state, content, visit),
       worldChanges: worldChanges(state, content, visit),
+      mission: (() => {
+        const m = missionReport(state, content, visit.id);
+        if (!m) return null;
+        return { title: m.def.title, steps: m.def.steps.filter((s) => m.statuses[s.id] !== "not-needed" || m.run.steps[s.id]).map((s) => ({ id: s.id, title: s.title, status: m.statuses[s.id], outcome: m.run.steps[s.id]?.outcome ?? null })), typing: m.typing ? { planned: m.typing.planned, attempted: m.typing.attempted, activeSeconds: m.typing.activeSeconds, accuracy: m.typing.accuracy } : null };
+      })(),
+      interest: (() => {
+        const i = (state.interests ?? []).filter((x) => x.visit === visit.id).pop();
+        return i ? { kind: i.kind, text: i.text } : null;
+      })(),
     });
   }
   return reports.sort((a, b) => (a.startedAt < b.startedAt ? -1 : a.startedAt > b.startedAt ? 1 : 0));

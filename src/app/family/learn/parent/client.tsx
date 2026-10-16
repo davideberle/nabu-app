@@ -46,7 +46,16 @@ const primaryButton = cn("inline-flex min-h-12 items-center justify-center gap-2
 const secondaryButton = cn("inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-4 text-base font-medium text-primary hover:bg-secondary disabled:opacity-50", focusRing);
 const dangerButton = cn("inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-red-600 px-4 text-base font-medium text-red-700 hover:bg-red-50 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40", focusRing);
 
-type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[] };
+/** Next-visit planning input (Visit 6, V6-11/V6-09): the child's verbatim answers, open retrieval and the typing calibration. */
+type PlanningInput = {
+  interests: { visit: string; source: string; kind: string; text: string | null; at: string }[];
+  pendingInterest: string | null;
+  openFocus: { id: string; evidence: string; openedIn: { visit: string; lesson: string } }[];
+  retrieval: { mission: string; step: string; title: string; status: string; outcome: string | null }[];
+  typing: { planned: number; attempted: number; activeSeconds: number; idleSeconds: number; wallSeconds: number | null; accuracy: number | null; paceCps: number; paceBasis: string } | null;
+  note: string;
+};
+type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null };
 
 /** Learner-facing visit name (server-computed): "Besuch 3 — Die Beobachtungsstation (v4)"; falls back to the id. */
 function visitName(evidence: Evidence, id: string): string {
@@ -295,6 +304,7 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
       {tab === "math" ? (
         <>
           <NextStep evidence={evidence} />
+          {evidence.planningInput ? <PlanningPanel input={evidence.planningInput} /> : null}
           <AttemptTable title="Gleichmässig teilen (EQ-Aufgaben, inkl. Rest bei EQ-STATION/EQ-PIER und Boote bei EQ-HARBOR: Teil A volle Boote/übrig, Teil B Boote für alle)" attempts={math} child={child} ops={ops} empty="Noch kein Mathe-Versuch aufgezeichnet." visits={evidence.visits} />
           <DelayedCheck evidence={evidence} />
           <SupportList evidence={evidence} filter={(k) => k !== "gloss"} />
@@ -348,6 +358,10 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   const v6Done = !!state?.visits.some((v) => v.id === "v6" && v.finishedAt);
   const v6Running = !!state?.visits.some((v) => v.id === "v6" && !v.finishedAt);
   const chapter6 = evidence.visits?.find((v) => v.id === "v6")?.label ?? "Besuch 5 — Der Hafen";
+  const v7Served = !!evidence.visits?.some((v) => v.id === "v7");
+  const v7Done = !!state?.visits.some((v) => v.id === "v7" && v.finishedAt);
+  const v7Running = !!state?.visits.some((v) => v.id === "v7" && !v.finishedAt);
+  const chapter7 = evidence.visits?.find((v) => v.id === "v7")?.label ?? "Besuch 6 — Die Fahrt zum Forschungsschiff";
   let text: string;
   if (!state || state.visits.length === 0) text = "Noch kein Besuch. Der nächste Schritt ist der erste Besuch: Basis bauen, 24 Pakete gerecht teilen.";
   else if (fresh.length === 0) text = "Erster Besuch läuft. Nächster Schritt: der frische Check nach der Erklärung (EQ-FRESH).";
@@ -359,6 +373,9 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   else if (v5Served && !v5Done) text = `Nächster Schritt: ${chapter5} (intern v5: Rest-Aufgabe EQ-PIER mit 45 Brettern, englische Anfrage LANG-EN-PIER, Steg bauen, neuer Satz WRITE-TRANSFER-2) — sofort verfügbar.`;
   else if (v6Running) text = `${chapter6} läuft (intern v6: Hafen-Aufgabe EQ-HARBOR, ${liveTutorDeferred("v6") ? "Erklärgespräch in dieser Übergangsversion ausgesetzt" : "Erklärgespräch"}, spanische Anfrage LANG-ES-HARBOR, Hafenplan, Kapitänslogbuch mit ${liveTutorDeferred("v6") ? "mechanischer Durchsicht (Inhalt und Satzbau nicht beurteilt)" : "Durchsicht"}, kurzer Check).`;
   else if (v5Done && v6Served && !v6Done) text = `Nächster Schritt: ${chapter6} (intern v6: 38 Kisten zu je 6 pro Boot — volle Boote, Rest und Boote für alle; ${liveTutorDeferred("v6") ? "Erklärgespräch in dieser Übergangsversion ausgesetzt" : "Erklärgespräch mit Nabu"}; spanische Anfrage LANG-ES-HARBOR; Hafenplan; Kapitänslogbuch mit Durchsicht; Tipp-Kurs ab der gespeicherten Lektion; kurzer Check) — sofort verfügbar, Werkstatt-Reihenfolge frei.`;
+  else if (v7Running) text = `${chapter7} läuft (intern v7: begehbare Mission MISSION-SHIP-SUPPLY — Hafentafel lesen, englischer Funkspruch zum Hören, vier verbundene Rechnungen, Bestellung bei Rosa auf Spanisch mit Schreibhilfe, Planwahl, Tippblock von etwa fünf Minuten).`;
+  else if (v6Done && v7Served && !v7Done) text = `Nächster Schritt: ${chapter7} (intern v7: begehbare Mission; das Thema setzt Santiagos eigene Wahl «Forschungsschiff» aus Besuch 5 fort — kein angenommenes Interesse) — sofort verfügbar.`;
+  else if (v7Done) text = "Alle Inhalte (Besuche 1–6) sind durchlaufen. Für die nächste Mission zählt Santiagos eigene Antwort auf «Was möchtest du nächstes Mal?» (siehe Planung unten).";
   else if (v6Done) text = "Alle Inhalte (Besuche 1–5) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität. Die Anwendung am selben Tag (EQ-HARBOR-CHECK) ist keine Behaltensleistung.";
   else if (v5Done) text = "Alle Inhalte (Besuche 1–4) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität.";
   else text = "Alle Inhalte (Besuche 1–3) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität.";
@@ -793,6 +810,11 @@ function ReviewCard({ completion, visitTitle }: { completion: Evidence["completi
             <div className="mt-2 rounded-xl bg-primary p-2 text-sm text-primary" data-testid="child-feedback">
               <span className="font-medium">Vom Kind gesagt:</span> Schwierigkeit {feedbackWord(r.experience.childFeedback, "difficulty")} · Spass {feedbackWord(r.experience.childFeedback, "enjoyment")} · Klarheit {feedbackWord(r.experience.childFeedback, "clarity")}
               <span className="text-tertiary"> (Antworten des Kindes, keine Hypothesen; Leerstellen bleiben leer.)</span>
+              {"nextInterest" in r.experience.childFeedback ? (
+                <span className="mt-1 block" data-testid="child-next-interest">
+                  <span className="font-medium">Wunsch fürs nächste Mal:</span> {interestText(r.experience.childFeedback.nextInterest ?? null)}
+                </span>
+              ) : null}
             </div>
             <TelemetryLine t={r.experience.telemetry} />
             {r.experience.hypotheses.length ? (
@@ -1243,5 +1265,39 @@ function Settings({ evidence, child, ops }: { evidence: Evidence; child: ChildId
         )}
       </div>
     </div>
+  );
+}
+
+function interestText(i: { kind: string; text: string | null } | null): string {
+  if (!i) return "noch nicht beantwortet (wird beim nächsten Öffnen gefragt; nichts angenommen)";
+  if (i.kind === "text") return `„${i.text}“ (wörtlich)`;
+  if (i.kind === "unsure") return "weiss es noch nicht";
+  if (i.kind === "no-preference") return "ist egal";
+  return "wollte es lieber nicht sagen";
+}
+
+/** Planning input for the next visit — the child's own words first, then open retrieval items and the typing calibration. */
+function PlanningPanel({ input }: { input: PlanningInput }) {
+  return (
+    <section className="rounded-2xl border border-primary bg-primary p-4" data-testid="parent-planning">
+      <h3 className="text-base font-semibold text-primary">Für die Planung des nächsten Besuchs</h3>
+      <p className="mt-1 text-sm text-tertiary">{input.note}</p>
+      <div className="mt-2 grid gap-2 text-sm text-primary">
+        <div data-testid="planning-interests">
+          <span className="font-medium">Santiagos Wünsche (wörtlich):</span>{" "}
+          {input.interests.length ? input.interests.map((i) => `${interestText(i)} — ${i.visit}, ${i.source === "entry" ? "beim nächsten Öffnen" : "am Schluss"}, ${new Date(i.at).toLocaleString("de-CH")}`).join(" · ") : "noch keine Antwort"}
+          {input.pendingInterest ? <span className="text-tertiary"> · offen für {input.pendingInterest} (wird beim nächsten Öffnen gefragt)</span> : null}
+        </div>
+        <div data-testid="planning-retrieval">
+          <span className="font-medium">Wiederholen:</span> {input.retrieval.length ? input.retrieval.map((r) => `${r.title} (${r.status}${r.outcome ? ", " + r.outcome : ""})`).join(" · ") : "nichts offen aus der Mission"}
+          {input.openFocus.length ? <span> · Offene Übungsschwerpunkte: {input.openFocus.map((f) => `${f.id} (${f.evidence})`).join(" · ")}</span> : null}
+        </div>
+        {input.typing ? (
+          <div data-testid="planning-typing">
+            <span className="font-medium">Tippblock:</span> {input.typing.attempted}/{input.typing.planned} Übungen · aktive Tippzeit {input.typing.activeSeconds} s · Pausen zwischen Tasten {input.typing.idleSeconds} s · Gesamtzeit inkl. Lesen/Menüs {input.typing.wallSeconds ?? "—"} s · Genauigkeit {input.typing.accuracy === null ? "—" : `${Math.round(input.typing.accuracy * 100)} %`} · Tempo-Basis {input.typing.paceBasis} ({input.typing.paceCps} Zeichen/s). Fünf Minuten sind eine Kalibrierung, kein erwiesenes Optimum; Handhaltung und Ermüdung bitte selbst beobachten — der Text zeigt sie nicht.
+          </div>
+        ) : null}
+      </div>
+    </section>
   );
 }

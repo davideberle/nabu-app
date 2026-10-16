@@ -148,7 +148,7 @@ export function VisitReportView({ report, scene, markers, onBack, backLabel = "Z
           )}
           {s.artifact.kind !== "none" ? (
             <p className="mt-2 text-base text-primary" data-testid="report-artifact" data-artifact-kind={s.artifact.kind}>
-              <span className="text-tertiary">{s.artifact.kind === "station" || s.artifact.kind === "pier" || s.artifact.kind === "harbor" ? "Gebaut: " : s.artifact.kind === "log-review" ? "Dein Satz, überarbeitet: " : "Deine Seite: "}</span>
+              <span className="text-tertiary">{s.artifact.kind === "mission" ? "Deine Mission: " : s.artifact.kind === "station" || s.artifact.kind === "pier" || s.artifact.kind === "harbor" ? "Gebaut: " : s.artifact.kind === "log-review" ? "Dein Satz, überarbeitet: " : "Deine Seite: "}</span>
               {s.artifact.text}
             </p>
           ) : (
@@ -158,6 +158,31 @@ export function VisitReportView({ report, scene, markers, onBack, backLabel = "Z
           )}
         </div>
       </section>
+
+      {report.mission ? (
+        <section className="rounded-3xl border border-primary bg-primary p-4" data-testid="report-mission">
+          <p className="text-sm font-semibold uppercase tracking-wide text-tertiary">Deine Mission: {report.mission.title}</p>
+          <ul className="mt-2 grid gap-1 sm:grid-cols-2">
+            {report.mission.steps.map((st) => (
+              <li key={st.id} className="text-base text-primary" data-testid={`report-step-${st.id}`} data-status={st.status}>
+                {st.status === "done" ? "✓" : st.status === "practiced" || st.status === "taught" ? "◐" : st.status === "unresolved" ? "↺" : "·"} {st.title}
+                <span className="text-sm text-tertiary">{st.status === "practiced" ? " — mit Hilfe geübt" : st.status === "taught" ? " — zusammen gelöst" : st.status === "unresolved" ? " — fürs nächste Mal aufgehoben" : st.status === "done" ? (st.outcome === "supported" || st.outcome === "answer_exposed" ? " — mit Hilfe" : "") : " — noch offen"}</span>
+              </li>
+            ))}
+          </ul>
+          {report.mission.typing ? (
+            <p className="mt-2 text-base text-primary" data-testid="report-typing">
+              Tippblock: {report.mission.typing.attempted} von {report.mission.typing.planned} Übungen
+              {report.mission.typing.accuracy !== null ? ` · ${Math.round(report.mission.typing.accuracy * 100)} % der Zeichen getroffen` : ""}.
+            </p>
+          ) : null}
+        </section>
+      ) : null}
+      {report.interest ? (
+        <p className="rounded-3xl bg-secondary px-4 py-3 text-base text-primary" data-testid="report-interest">
+          Dein Wunsch fürs nächste Mal: {report.interest.kind === "text" ? `„${report.interest.text}“` : report.interest.kind === "unsure" ? "Du weisst es noch nicht — das ist in Ordnung." : report.interest.kind === "no-preference" ? "Dir ist es egal." : "Du wolltest es lieber nicht sagen."}
+        </p>
+      ) : null}
 
       {children}
 
@@ -172,7 +197,7 @@ export function VisitReportView({ report, scene, markers, onBack, backLabel = "Z
         ) : null}
       </div>
 
-      <details className="rounded-2xl border border-primary px-4 py-2" data-testid="report-lessons">
+      {report.mission ? null : <details className="rounded-2xl border border-primary px-4 py-2" data-testid="report-lessons">
         <summary className={cn("cursor-pointer text-base text-primary", focusRing)}>
           Schritt für Schritt
           <span className="ml-2 text-sm text-tertiary">{report.lessons.length === 0 ? "noch keine Aufgabe fertig" : `${good} von ${report.lessons.length} ohne offene Übung${openPractice ? ` · ${openPractice} zum Üben` : ""}`}</span>
@@ -185,7 +210,7 @@ export function VisitReportView({ report, scene, markers, onBack, backLabel = "Z
           </ul>
         ) : null}
         <p className="mt-2 text-xs text-tertiary">Jede Zeile hier stammt aus deinen gespeicherten Antworten. Was nicht aufgezeichnet wurde, steht auch nicht hier.</p>
-      </details>
+      </details>}
     </article>
   );
 }

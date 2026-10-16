@@ -158,7 +158,7 @@ export function isProgressStrip(v: unknown): boolean {
   if (recent !== null) {
     if (!isRec(recent) || !isStr(recent.visit) || !isNumOrNull(recent.ordinal) || !isStr(recent.label) || !isStr(recent.finishedAt) || !isStrOrNull(recent.did) || !isStr(recent.tryNext)) return false;
     const artifact = recent.artifact;
-    if (!isRec(artifact) || !oneOf(artifact.kind, ["page", "station", "pier", "revision", "harbor", "log-review", "none"]) || !isStr(artifact.text)) return false;
+    if (!isRec(artifact) || !oneOf(artifact.kind, ["page", "station", "pier", "revision", "harbor", "log-review", "mission", "none"]) || !isStr(artifact.text)) return false;
     const g = recent.grounding;
     if (!isRec(g) || !oneOf(g.source, ["review", "review-historical", "none"]) || !isNumOrNull(g.reviewVersion)) return false;
     if (!(g.suppressed === null || (isRec(g.suppressed) && isStr(g.suppressed.reason) && isStr(g.suppressed.text)))) return false;
@@ -211,7 +211,7 @@ export function isVisitReport(v: unknown): boolean {
   if (!isRec(v)) return false;
   const s = v.summary;
   if (!isStr(v.visit) || !isNumOrNull(v.ordinal) || !isStr(v.label) || !isStr(v.startedAt) || !isStrOrNull(v.finishedAt) || !isBool(v.partial) || !isNum(v.stagesDone) || !isNum(v.stageCount)) return false;
-  if (!isRec(s) || !isStr(s.visit) || !isStr(s.title) || !(s.success === null || (isRec(s.success) && isStr(s.success.text))) || !(s.practiced === null || (isRec(s.practiced) && isStr(s.practiced.text))) || !isRec(s.next) || !isStr(s.next.text) || !isRec(s.artifact) || !oneOf(s.artifact.kind, ["page", "station", "pier", "revision", "harbor", "log-review", "none"]) || !isStr(s.artifact.text)) return false;
+  if (!isRec(s) || !isStr(s.visit) || !isStr(s.title) || !(s.success === null || (isRec(s.success) && isStr(s.success.text))) || !(s.practiced === null || (isRec(s.practiced) && isStr(s.practiced.text))) || !isRec(s.next) || !isStr(s.next.text) || !isRec(s.artifact) || !oneOf(s.artifact.kind, ["page", "station", "pier", "revision", "harbor", "log-review", "mission", "none"]) || !isStr(s.artifact.text)) return false;
   return Array.isArray(v.lessons) && v.lessons.every(isLessonFeedback) && isStrArray(v.worldChanges);
 }
 
@@ -254,5 +254,30 @@ export function isChildView(value: unknown, child?: ChildId): value is ChildView
   if (value.log !== undefined && !(value.log === null || (isRec(value.log) && isStr(value.log.id) && isStr(value.log.prompt) && isStr(value.log.instruction)))) return false;
   if (value.logReview !== undefined && !(value.logReview === null || isLogReviewView(value.logReview))) return false;
   if (value.wordbook !== undefined && !(value.wordbook === null || (isRec(value.wordbook) && Array.isArray(value.wordbook.languages)))) return false;
+  // Visit 6 (content v5) fields: present (possibly null) on every view of this build; absent on an older server's view.
+  if (value.mission !== undefined && !(value.mission === null || isMissionView(value.mission))) return false;
+  if (value.interestPrompt !== undefined && !(value.interestPrompt === null || (isRec(value.interestPrompt) && isStr(value.interestPrompt.visit) && isStr(value.interestPrompt.prompt) && isStr(value.interestPrompt.entryPrompt) && isStr(value.interestPrompt.unsureLabel) && isStr(value.interestPrompt.noPreferenceLabel) && isStr(value.interestPrompt.declineLabel)))) return false;
+  if (value.latestInterest !== undefined && !(value.latestInterest === null || (isRec(value.latestInterest) && isStr(value.latestInterest.visit) && oneOf(value.latestInterest.kind, ["text", "unsure", "no-preference", "declined"]) && isStrOrNull(value.latestInterest.text)))) return false;
+  return true;
+}
+
+/** The running mission (content v5): map, steps, the open step, facts and world changes — every field a surface reads. */
+export function isMissionView(v: unknown): boolean {
+  if (!isRec(v) || !isStr(v.id) || !isStr(v.title) || !isStr(v.position) || !isBool(v.canFinish) || !isBool(v.finished)) return false;
+  if (!Array.isArray(v.places) || !v.places.every((p) => isRec(p) && isStr(p.id) && isStr(p.label) && isNum(p.x) && isNum(p.y) && oneOf(p.kind, ["place", "waypoint"]))) return false;
+  if (!Array.isArray(v.paths) || !v.paths.every((e) => Array.isArray(e) && e.length === 2 && isStr(e[0]) && isStr(e[1]))) return false;
+  if (!Array.isArray(v.characters) || !v.characters.every((c) => isRec(c) && isStr(c.id) && isStr(c.name) && isStr(c.plate))) return false;
+  if (!Array.isArray(v.steps) || !v.steps.every((s) => isRec(s) && isStr(s.id) && isStr(s.title) && isStr(s.place) && isStr(s.status) && isStr(s.kind))) return false;
+  if (!isStrArray(v.here) || !Array.isArray(v.facts) || !Array.isArray(v.world)) return false;
+  if (!isRec(v.progress) || !isNum(v.progress.required) || !isNum(v.progress.resolved)) return false;
+  const a = v.active;
+  if (a !== null) {
+    if (!isRec(a) || !isStr(a.id) || !isStr(a.kind) || !isStr(a.title) || !isStr(a.status) || !isStr(a.phase) || !Array.isArray(a.intro) || !Array.isArray(a.done) || !Array.isArray(a.questions)) return false;
+    if (!(a.calc === null || (isRec(a.calc) && isStr(a.calc.prompt) && Array.isArray(a.calc.fields)))) return false;
+    if (!(a.choice === null || (isRec(a.choice) && isStr(a.choice.prompt) && Array.isArray(a.choice.options)))) return false;
+    if (!(a.produce === null || (isRec(a.produce) && isStr(a.produce.frame) && isStr(a.produce.instruction)))) return false;
+    if (!(a.listen === null || (isRec(a.listen) && isNum(a.listen.plays) && isStrOrNull(a.listen.script)))) return false;
+    if (!(a.typing === null || (isRec(a.typing) && isStr(a.typing.phase) && isNum(a.typing.planned) && isNum(a.typing.completed)))) return false;
+  }
   return true;
 }

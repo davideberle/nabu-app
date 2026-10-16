@@ -42,6 +42,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import { useChildShell } from "@/components/family/child-shell-provider";
 import { HarborIsland } from "@/components/family/learning/harbor-island";
+import { MissionWorld } from "@/components/family/learning/mission-world";
+import type { MissionAction } from "@/lib/family-learning-mission";
 import { CharacterBeat, HarborPlan, IslandStage, LogReview, WordbookPanel } from "@/components/family/learning/harbor-stages";
 import { NabuSidebar } from "@/components/family/learning/nabu-sidebar";
 import { LIVE_TUTOR_DEFERRED_CHILD_NOTICE, liveTutorDeferred } from "@/lib/family-learning-deferral";
@@ -425,7 +427,7 @@ function Workspace({ child }: { child: ChildId }) {
             ))}
           </ol>
         </div>
-        <button
+        {view.mission?.active?.produce ? <span className="w-[6.5rem]" aria-hidden /> : <button
           type="button"
           onClick={() => {
             // During a recall step the wordbook SHOWS the target word: opening it is recorded as help on the segment first (IV5-11).
@@ -439,7 +441,7 @@ function Workspace({ child }: { child: ChildId }) {
           data-help={view.language?.step?.kind === "produce" ? "true" : "false"}
         >
           📖 Wörter
-        </button>
+        </button>}
       </header>
 
       {view.base.name ? (
@@ -454,7 +456,27 @@ function Workspace({ child }: { child: ChildId }) {
         </p>
       ) : null}
 
-      <div className={cn("mt-3 grid flex-1 gap-4", nabuOpen && "lg:mr-[420px]")}>
+      {stage === "mission" && view.mission && !lastLesson ? (
+        // Visit 6 (content v5): the mission is ONE walkable scene with its own scene panels — not the worksheet card.
+        <div className="mt-3" data-testid="mission-stage">
+          <MissionWorld
+            child={child}
+            view={view}
+            mission={view.mission}
+            markers={markers}
+            busy={busy}
+            speech={speech}
+            onWalk={() => {
+              telemetryRef.current = noteControl(telemetryRef.current, Date.now(), "walk");
+            }}
+            act={async (action: MissionAction) => {
+              const outcome = await mutate({ op: "mission", action });
+              return outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed") ? ((outcome.result as Record<string, unknown> | undefined) ?? {}) : null;
+            }}
+          />
+        </div>
+      ) : null}
+      <div className={cn("mt-3 grid flex-1 gap-4", nabuOpen && "lg:mr-[420px]", stage === "mission" && view.mission && !lastLesson && "hidden")}>
         <main className="min-w-0 rounded-3xl border border-primary bg-primary p-4 shadow-xs dark:shadow-none sm:p-6">
           <div className="mx-auto w-full max-w-3xl">
             {lastLesson ? (
@@ -578,7 +600,7 @@ function Workspace({ child }: { child: ChildId }) {
         </main>
 
       </div>
-      <NabuSidebar
+      {stage === "mission" ? null : <NabuSidebar
         child={child}
         view={view}
         page="mission"
@@ -593,7 +615,7 @@ function Workspace({ child }: { child: ChildId }) {
         open={nabuOpen}
         onOpenChange={setNabuOpen}
         busy={busy}
-      />
+      />}
       {overlay ? (
         <Overlay title={overlay === "wordbook" ? "Wörterbuch" : overlay === "logbook" ? "Logbuch" : "Vorräte"} onClose={() => setOverlay(null)}>
           {overlay === "wordbook" ? (
@@ -750,7 +772,7 @@ function StartOrWait({ child, view, busy, onStart, notice, markers }: { child: C
           {notice ? <p className="mt-2 text-base text-primary">{notice}</p> : null}
           {nextDef ? (
             <button ref={startRef} type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-4 min-h-16 px-8 text-xl")} data-testid="start-visit" data-visit={nextDef} data-ordinal={view.next.ordinal ?? ""}>
-              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" || nextDef === "v6" ? `Besuch ${view.next.ordinal ?? (nextDef === "v6" ? 5 : nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
+              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" || nextDef === "v6" || nextDef === "v7" ? `Besuch ${view.next.ordinal ?? (nextDef === "v7" ? 6 : nextDef === "v6" ? 5 : nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
             </button>
           ) : null}
         </div>

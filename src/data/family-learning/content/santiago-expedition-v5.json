@@ -1,0 +1,3785 @@
+{
+  "contentId": "santiago-expedition",
+  "contentVersion": 5,
+  "child": "santiago",
+  "reviewed": {
+    "status": "pending-independent-review",
+    "note": "Version-5 additions (2026-10-16, Visit 6 = internal v7, mission MISSION-SHIP-SUPPLY with steps S1-BRIEF … S14-LAUNCH, typing block TYPE-BLOCK-V7 and reflection.nextInterest) await independent review by Nabu by stable ID. Version-1 to version-4 entries are unchanged; their earlier review status is recorded in the version-4 file: pending-independent-review."
+  },
+  "theme": {
+    "defaultTitle": "Die Expedition",
+    "defaultHook": "Baue eine kleine Basis und versorge dein Team.",
+    "note": "Starter theme only — not a verified interest. The parent may change title and hook before child use; the app does not generate other worlds."
+  },
+  "anchorLanguage": "de",
+  "visitBudgetMinutes": {
+    "min": 15,
+    "max": 20
+  },
+  "visits": [
+    {
+      "id": "v1",
+      "title": "Besuch 1 — Die Basis entsteht",
+      "stages": [
+        "name-base",
+        "place-base",
+        "EQ-ENTRY",
+        "EQ-FRESH",
+        "explain",
+        "LANG-EN-WATER",
+        "typing",
+        "log",
+        "reflect"
+      ]
+    },
+    {
+      "id": "v2",
+      "title": "Besuch 2 — Zurück auf der Basis",
+      "stages": [
+        "restore",
+        "EQ-RETURN",
+        "LANG-ES-AGUA",
+        "typing",
+        "log",
+        "reflect"
+      ]
+    },
+    {
+      "id": "v3",
+      "title": "Besuch 3 — Der späte Check",
+      "minDaysAfterTeaching": 6,
+      "stages": [
+        "restore",
+        "EQ-DELAY",
+        "log",
+        "reflect"
+      ]
+    },
+    {
+      "id": "v4",
+      "title": "Besuch 4 — Die Beobachtungsstation",
+      "intro": {
+        "who": "Die Biologin Mara vom Küstenteam braucht Hilfe.",
+        "make": "Ihr baut eine kleine Beobachtungsstation neben deiner Basis, mit Beeten und einer Lampe für die Nacht.",
+        "done": "Fertig ist es, wenn die Station steht, die Beete bepflanzt sind, die Lampe brennt und deine Seite im Logbuch ist."
+      },
+      "stages": [
+        "restore",
+        "station-choice",
+        "typing-course",
+        "EQ-STATION",
+        "explain",
+        "LANG-ES-STATION",
+        "station-build",
+        "log",
+        "log-revise",
+        "log-transfer",
+        "summary",
+        "reflect"
+      ]
+    },
+    {
+      "id": "v5",
+      "title": "Besuch 4 — Der Steg in der Bucht",
+      "intro": {
+        "who": "Der Kapitän vom Versorgungsboot funkt: Das Boot kann in der Bucht nicht anlegen.",
+        "make": "Ihr baut einen Steg ins Wasser — aus Brettern, Abschnitt für Abschnitt — und bestellt beim Team Holz und ein Seil für das Boot.",
+        "done": "Fertig ist es, wenn der Steg steht, das Boot festgemacht ist und deine Seite im Logbuch ist."
+      },
+      "stages": [
+        "restore",
+        "typing-course",
+        "EQ-PIER",
+        "explain",
+        "LANG-EN-PIER",
+        "pier-build",
+        "log",
+        "log-revise",
+        "log-transfer",
+        "summary",
+        "reflect"
+      ]
+    },
+    {
+      "id": "v6",
+      "title": "Besuch 5 — Der Hafen",
+      "intro": {
+        "who": "Der Stadtplaner Herr Baumann funkt: Die Expedition braucht einen Hafen — 38 Kisten warten am Kai.",
+        "make": "Ihr ladet die Kisten in Boote, bestellt bei Rosa im Hafenladen auf Spanisch, was den Booten fehlt, und übt in der Tipp-Werkstatt die nächsten Tasten.",
+        "done": "Fertig ist es, wenn die Boote beladen sind, dein Satz im Kapitänslogbuch steht und der kurze Check am Ende gemacht ist."
+      },
+      "stages": [
+        "restore",
+        "island",
+        "typing-course",
+        "island",
+        "EQ-HARBOR",
+        "explain",
+        "LANG-ES-HARBOR",
+        "harbor-build",
+        "log",
+        "island",
+        "EQ-HARBOR-CHECK",
+        "LANG-ES-HARBOR-CHECK",
+        "log-review",
+        "summary",
+        "reflect"
+      ]
+    },
+    {
+      "id": "v7",
+      "title": "Besuch 6 — Die Fahrt zum Forschungsschiff",
+      "stages": [
+        "mission",
+        "summary",
+        "reflect"
+      ],
+      "intro": {
+        "who": "Das Forschungsschiff, zu dem deine Boote fahren sollen, braucht Hilfe.",
+        "make": "Du findest heraus, was das Schiff braucht, rechnest die Ladung aus, bestellst bei Rosa auf Spanisch und planst den Weg.",
+        "done": "Fertig ist es, wenn die Boote zum Schiff fahren und dein Tippblock geschafft ist."
+      }
+    }
+  ],
+  "locations": [
+    {
+      "id": "crater",
+      "label": "Am Kraterrand",
+      "emoji": "🌋"
+    },
+    {
+      "id": "ice",
+      "label": "Auf dem Eisfeld",
+      "emoji": "🧊"
+    },
+    {
+      "id": "forest",
+      "label": "Im Nebelwald",
+      "emoji": "🌲"
+    },
+    {
+      "id": "shore",
+      "label": "An der Küste",
+      "emoji": "🏝️"
+    }
+  ],
+  "math": {
+    "objective": "equal-sharing",
+    "items": [
+      {
+        "id": "EQ-ENTRY",
+        "version": 1,
+        "purpose": "First attempt",
+        "scored": true,
+        "visit": "v1",
+        "quantity": 24,
+        "groups": 4,
+        "answer": 6,
+        "unit": {
+          "singular": "Essenspaket",
+          "plural": "Essenspakete",
+          "emoji": "🥫"
+        },
+        "group": {
+          "singular": "Forscherin/Forscher",
+          "plural": "Forscher",
+          "emoji": "🧑‍🚀"
+        },
+        "prompt": "Vier Forscher teilen 24 Essenspakete gerecht auf. Wie viele Pakete bekommt jede Person?",
+        "clarification": "Schau noch einmal genau: Alle vier bekommen gleich viele. Wie viele sind es dann?",
+        "representation": "Lege die 24 Pakete in die vier Fächer. Jedes Fach soll gleich voll sein.",
+        "scene": "Das Team wartet auf seine Essenspakete."
+      },
+      {
+        "id": "EQ-MODEL",
+        "version": 1,
+        "purpose": "Teaching example",
+        "scored": false,
+        "visit": "v1",
+        "quantity": 12,
+        "groups": 3,
+        "answer": 4,
+        "unit": {
+          "singular": "Paket",
+          "plural": "Pakete",
+          "emoji": "📦"
+        },
+        "group": {
+          "singular": "Fach",
+          "plural": "Fächer",
+          "emoji": "🗄️"
+        },
+        "prompt": "Schau zu: 12 Pakete kommen in 3 gleich grosse Fächer.",
+        "steps": [
+          "Ein Paket in jedes Fach: 3 Pakete sind verteilt, 9 bleiben übrig.",
+          "Noch eine Runde: 6 verteilt, 6 übrig.",
+          "Noch eine Runde: 9 verteilt, 3 übrig.",
+          "Letzte Runde: alle 12 sind verteilt. In jedem Fach liegen 4 Pakete.",
+          "Das passt zu 3 × 4 = 12. Gerecht teilen heisst: gleich viele in jedem Fach."
+        ],
+        "note": "Demonstrated by the tutor. Never counts as independent evidence."
+      },
+      {
+        "id": "EQ-FRESH",
+        "version": 1,
+        "purpose": "After teaching",
+        "scored": true,
+        "visit": "v1",
+        "quantity": 35,
+        "groups": 5,
+        "answer": 7,
+        "unit": {
+          "singular": "Essenspaket",
+          "plural": "Essenspakete",
+          "emoji": "🥫"
+        },
+        "group": {
+          "singular": "Forscherin/Forscher",
+          "plural": "Forscher",
+          "emoji": "🧑‍🚀"
+        },
+        "prompt": "Fünf Forscher teilen 35 Essenspakete gerecht auf. Wie viele Pakete bekommt jede Person?",
+        "clarification": "Alle fünf bekommen gleich viele. Zähle noch einmal nach.",
+        "representation": "Lege die 35 Pakete in die fünf Fächer. Jedes Fach soll gleich voll sein.",
+        "scene": "Das zweite Team kommt an — es braucht auch Vorräte."
+      },
+      {
+        "id": "EQ-RETURN",
+        "version": 1,
+        "purpose": "Next visit / transfer",
+        "scored": true,
+        "visit": "v2",
+        "quantity": 28,
+        "groups": 4,
+        "answer": 7,
+        "unit": {
+          "singular": "Setzling",
+          "plural": "Setzlinge",
+          "emoji": "🌱"
+        },
+        "group": {
+          "singular": "Beet",
+          "plural": "Beete",
+          "emoji": "🪴"
+        },
+        "prompt": "28 Setzlinge werden gerecht auf 4 Beete verteilt. Wie viele Setzlinge kommen in jedes Beet?",
+        "clarification": "In jedem Beet sollen gleich viele wachsen. Wie viele sind das?",
+        "representation": "Setze die 28 Setzlinge in die vier Beete. Jedes Beet bekommt gleich viele.",
+        "scene": "Der Garten der Basis wird angelegt."
+      },
+      {
+        "id": "EQ-DELAY",
+        "version": 1,
+        "purpose": "Delayed check",
+        "scored": true,
+        "visit": "v3",
+        "quantity": 32,
+        "groups": 4,
+        "answer": 8,
+        "unit": {
+          "singular": "Probe",
+          "plural": "Proben",
+          "emoji": "🧪"
+        },
+        "group": {
+          "singular": "Kiste",
+          "plural": "Kisten",
+          "emoji": "🧰"
+        },
+        "prompt": "32 Proben werden gerecht auf 4 Kisten verteilt. Wie viele Proben kommen in jede Kiste?",
+        "clarification": "Jede Kiste soll gleich viele Proben haben. Wie viele sind das?",
+        "representation": "Lege die 32 Proben in die vier Kisten. Jede Kiste bekommt gleich viele.",
+        "scene": "Die Expedition schickt Proben ins Labor."
+      },
+      {
+        "id": "EQ-STATION",
+        "version": 1,
+        "purpose": "Next chapter: sharing with a remainder",
+        "scored": true,
+        "visit": "v4",
+        "kind": "remainder",
+        "quantity": 32,
+        "groups": 5,
+        "perGroup": 6,
+        "answers": {
+          "used": 30,
+          "remaining": 2
+        },
+        "answer": 6,
+        "unit": {
+          "singular": "Setzling",
+          "plural": "Setzlinge",
+          "emoji": "🌱"
+        },
+        "group": {
+          "singular": "Beet",
+          "plural": "Beete",
+          "emoji": "🪴"
+        },
+        "prompt": "Für die Beete der Station gibt es 32 Setzlinge. In jedes der 5 Beete passen genau 6 Setzlinge. Wie viele Setzlinge werden gepflanzt — und wie viele bleiben übrig?",
+        "clarification": "Rechne zuerst die vollen Beete: 5 Beete mit je 6 Setzlingen. Wie viele sind das zusammen? Was dann noch da ist, bleibt übrig.",
+        "representation": "Lege in jedes der 5 Beete genau 6 Setzlinge. Was nicht mehr hineinpasst, bleibt daneben liegen.",
+        "scene": "Die Station bekommt einen Garten.",
+        "note": "Two answers are requested: planted (5 × 6 = 30) and remaining (32 − 30 = 2). 6.4 per bed is never the intended answer; leftovers stay whole and visible."
+      },
+      {
+        "id": "EQ-STATION-MODEL",
+        "version": 1,
+        "purpose": "Teaching example: remainder",
+        "scored": false,
+        "visit": "v4",
+        "kind": "remainder",
+        "quantity": 14,
+        "groups": 3,
+        "perGroup": 4,
+        "answers": {
+          "used": 12,
+          "remaining": 2
+        },
+        "answer": 4,
+        "unit": {
+          "singular": "Setzling",
+          "plural": "Setzlinge",
+          "emoji": "🌱"
+        },
+        "group": {
+          "singular": "Beet",
+          "plural": "Beete",
+          "emoji": "🪴"
+        },
+        "prompt": "Schau zu: 14 Setzlinge, 3 Beete, in jedes passen genau 4.",
+        "steps": [
+          "Ein Beet voll: 4 gepflanzt, 10 übrig.",
+          "Zwei Beete voll: 8 gepflanzt, 6 übrig.",
+          "Drei Beete voll: 12 gepflanzt, 2 übrig.",
+          "Alle Beete sind voll: 3 × 4 = 12 gepflanzt. 14 − 12 = 2 bleiben übrig.",
+          "Übrig heisst: Sie passen in kein Beet mehr. Sie bleiben ganz — es gibt keine halben Setzlinge."
+        ],
+        "note": "Demonstrated only when the remainder idea is new (after an incorrect answer). Never counts as independent evidence."
+      },
+      {
+        "id": "EQ-PIER",
+        "version": 1,
+        "purpose": "Visit 4: sharing with a remainder, larger product and larger remainder than EQ-STATION",
+        "scored": true,
+        "visit": "v5",
+        "kind": "remainder",
+        "quantity": 45,
+        "groups": 6,
+        "perGroup": 7,
+        "answers": {
+          "used": 42,
+          "remaining": 3
+        },
+        "answer": 7,
+        "unit": {
+          "singular": "Brett",
+          "plural": "Bretter",
+          "emoji": "🪵"
+        },
+        "group": {
+          "singular": "Abschnitt",
+          "plural": "Abschnitte",
+          "emoji": "🪜"
+        },
+        "usedWord": {
+          "past": "verbaut",
+          "label": "Verbaut"
+        },
+        "prompt": "Für den Steg liegen 45 Bretter bereit. Der Steg hat 6 Abschnitte, und in jeden Abschnitt passen genau 7 Bretter. Wie viele Bretter werden verbaut — und wie viele bleiben übrig?",
+        "clarification": "Rechne zuerst die vollen Abschnitte: 6 Abschnitte mit je 7 Brettern. Wie viele Bretter sind das zusammen? Was dann noch da ist, bleibt übrig.",
+        "representation": "Lege in jeden der 6 Abschnitte genau 7 Bretter. Was nicht mehr hineinpasst, bleibt daneben liegen.",
+        "scene": "Das Versorgungsboot braucht einen Steg.",
+        "note": "Two answers are requested: used (6 × 7 = 42) and remaining (45 − 42 = 3). A larger product and a larger remainder than EQ-STATION (5 × 6, remainder 2), still inside the 1×1 table, with the counters representation and the remainder example (EQ-STATION-MODEL) available as help. The item stays scored like any other; mastery is never inferred from completing earlier items. 7.5 per section is never the intended answer; leftovers stay whole and visible."
+      },
+      {
+        "id": "EQ-HARBOR",
+        "version": 1,
+        "purpose": "Visit 5: how many full boats, how many crates remain, and how many boats are needed for ALL crates (interpretation of the remainder)",
+        "scored": true,
+        "visit": "v6",
+        "kind": "quotient",
+        "quantity": 38,
+        "groups": 7,
+        "perGroup": 6,
+        "answers": {
+          "used": 36,
+          "full": 6,
+          "remaining": 2,
+          "needed": 7
+        },
+        "answer": 6,
+        "unit": {
+          "singular": "Kiste",
+          "plural": "Kisten",
+          "emoji": "📦"
+        },
+        "group": {
+          "singular": "Boot",
+          "plural": "Boote",
+          "emoji": "⛵"
+        },
+        "usedWord": {
+          "past": "verladen",
+          "label": "Volle Boote"
+        },
+        "quotientWords": {
+          "fullLabel": "Volle Boote",
+          "remainingLabel": "Kisten übrig",
+          "neededLabel": "Boote für alle Kisten"
+        },
+        "prompt": "Am Kai stehen 38 Kisten für die Expedition. In jedes Boot passen genau 6 Kisten. Wie viele Boote werden voll — und wie viele Kisten bleiben übrig?",
+        "decisionPrompt": "Alle 38 Kisten müssen mit. Wie viele Boote braucht ihr dafür insgesamt?",
+        "clarification": "Zähle die vollen Boote: immer 6 Kisten in ein Boot. Wie oft geht das, bis weniger als 6 Kisten übrig sind?",
+        "decisionClarification": "Die übrigen Kisten müssen auch mit. Passen sie noch in ein volles Boot — oder braucht es ein Boot mehr?",
+        "representation": "Lege je 6 Kisten in ein Boot, Boot für Boot. Was in kein volles Boot mehr passt, bleibt am Kai liegen.",
+        "scene": "Die Boote für die Expedition werden beladen.",
+        "note": "Two parts, both reviewed: (A) full boats and remaining crates (6 × 6 = 36, 38 − 36 = 2); (B) boats needed for all crates (6 full + 1 for the remainder = 7). Part B checks the interpretation of a remainder, not a larger number. Any strategy whose numbers are consistent with the item is valid (6 × 6, 6 × 7 = 42 > 38, repeated addition, 38 : 6 = 6 R 2, counting); 6.33 boats is never the intended answer. The item stays scored like any other; mastery is never inferred from completing earlier items."
+      },
+      {
+        "id": "EQ-HARBOR-MODEL",
+        "version": 1,
+        "purpose": "Teaching example: quotient with remainder, and one more group for the leftovers",
+        "scored": false,
+        "visit": "v6",
+        "kind": "quotient",
+        "quantity": 14,
+        "groups": 4,
+        "perGroup": 4,
+        "answers": {
+          "used": 12,
+          "full": 3,
+          "remaining": 2,
+          "needed": 4
+        },
+        "answer": 3,
+        "unit": {
+          "singular": "Kiste",
+          "plural": "Kisten",
+          "emoji": "📦"
+        },
+        "group": {
+          "singular": "Karren",
+          "plural": "Karren",
+          "emoji": "🛒"
+        },
+        "usedWord": {
+          "past": "verladen",
+          "label": "Volle Karren"
+        },
+        "quotientWords": {
+          "fullLabel": "Volle Karren",
+          "remainingLabel": "Kisten übrig",
+          "neededLabel": "Karren für alle Kisten"
+        },
+        "prompt": "Schau zu: 14 Kisten, und in jeden Karren passen genau 4.",
+        "steps": [
+          "Ein Karren voll: 4 verladen, 10 übrig.",
+          "Zwei Karren voll: 8 verladen, 6 übrig.",
+          "Drei Karren voll: 12 verladen, 2 übrig.",
+          "3 × 4 = 12 — mehr volle Karren gehen nicht, denn 2 Kisten sind weniger als 4.",
+          "Die 2 übrigen Kisten müssen trotzdem mit: ein Karren mehr. 3 volle + 1 für den Rest = 4 Karren für alle."
+        ],
+        "note": "Demonstrated only when the quotient idea is new (after an incorrect answer). Never counts as independent evidence."
+      },
+      {
+        "id": "EQ-HARBOR-CHECK",
+        "version": 1,
+        "purpose": "Visit 5 closing check: a fresh small variation of the quotient idea in the same visit (same-day application, never retention)",
+        "scored": true,
+        "visit": "v6",
+        "kind": "quotient",
+        "quantity": 26,
+        "groups": 6,
+        "perGroup": 5,
+        "answers": {
+          "used": 25,
+          "full": 5,
+          "remaining": 1,
+          "needed": 6
+        },
+        "answer": 5,
+        "unit": {
+          "singular": "Kiste",
+          "plural": "Kisten",
+          "emoji": "📦"
+        },
+        "group": {
+          "singular": "Boot",
+          "plural": "Boote",
+          "emoji": "⛵"
+        },
+        "usedWord": {
+          "past": "verladen",
+          "label": "Volle Boote"
+        },
+        "quotientWords": {
+          "fullLabel": "Volle Boote",
+          "remainingLabel": "Kisten übrig",
+          "neededLabel": "Boote für alle Kisten"
+        },
+        "prompt": "Noch eine Ladung kommt an: 26 Kisten mit Proviant. In jedes Boot passen genau 5 Kisten. Wie viele Boote werden voll — und wie viele Kisten bleiben übrig?",
+        "decisionPrompt": "Alle 26 Kisten sollen mit. Wie viele Boote braucht ihr insgesamt?",
+        "clarification": "Zähle die vollen Boote: immer 5 Kisten in ein Boot. Wie oft geht das, bis weniger als 5 Kisten übrig sind?",
+        "decisionClarification": "Die übrige Kiste muss auch mit. Passt sie noch in ein volles Boot — oder braucht es ein Boot mehr?",
+        "representation": "Lege je 5 Kisten in ein Boot, Boot für Boot. Was in kein volles Boot mehr passt, bleibt am Kai liegen.",
+        "scene": "Die zweite Ladung wartet am Kai.",
+        "note": "Fresh variation in the SAME visit (different divisor, remainder 1): same-day application of the quotient idea, explicitly not retention. Scored like any other item; a correct answer here is an observation."
+      }
+    ],
+    "rules": {
+      "maxSubstantiveAttempts": 2,
+      "clarifyAfterFirstIncorrect": true,
+      "hideModelDuringFresh": true,
+      "answerRevealDowngradesToExposed": true
+    },
+    "recipientKinds": {
+      "EQ-ENTRY": "people",
+      "EQ-MODEL": "container",
+      "EQ-FRESH": "people",
+      "EQ-RETURN": "container",
+      "EQ-DELAY": "container",
+      "EQ-STATION": "container",
+      "EQ-STATION-MODEL": "container",
+      "EQ-PIER": "container",
+      "EQ-HARBOR": "container",
+      "EQ-HARBOR-MODEL": "container",
+      "EQ-HARBOR-CHECK": "container"
+    },
+    "recipientKindsNote": "Whether the recipients are people (packs are distributed AMONG explorers) or containers (seedlings are put INTO beds/crates). Drives the control wording only; every retained item's id, numbers, answer and texts are unchanged."
+  },
+  "language": {
+    "segments": [
+      {
+        "id": "LANG-EN-WATER",
+        "version": 1,
+        "language": "en",
+        "visit": "v1",
+        "title": "A supply request",
+        "objective": "Understand and produce 'We need …' in context",
+        "glosses": [
+          {
+            "word": "need",
+            "de": "brauchen",
+            "example": "We need water. — Wir brauchen Wasser."
+          },
+          {
+            "word": "water",
+            "de": "Wasser",
+            "example": "Water for the garden. — Wasser für den Garten."
+          },
+          {
+            "word": "garden",
+            "de": "Garten",
+            "example": "The garden is small. — Der Garten ist klein."
+          },
+          {
+            "word": "tools",
+            "de": "Werkzeug",
+            "example": "We need tools. — Wir brauchen Werkzeug."
+          }
+        ],
+        "steps": [
+          {
+            "id": "listen",
+            "kind": "listen-read",
+            "sentence": "We need water for the garden.",
+            "instruction": "Hör zu oder lies: Was braucht das Team?"
+          },
+          {
+            "id": "pick",
+            "kind": "pick-supply",
+            "sentence": "We need water for the garden.",
+            "instruction": "Wähle die richtige Lieferung für den Garten.",
+            "options": [
+              "water",
+              "tools",
+              "seeds",
+              "lamp"
+            ],
+            "answer": "water",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          },
+          {
+            "id": "produce",
+            "kind": "produce",
+            "instruction": "Sag oder schreib es dem Team: We need …",
+            "frame": "We need ___.",
+            "accepted": [
+              "we need water",
+              "we need water for the garden",
+              "we need some water",
+              "we need the water"
+            ],
+            "target": "We need water.",
+            "evidence": "production",
+            "keywords": [
+              "water"
+            ],
+            "lexical": [
+              "water",
+              "some water",
+              "the water",
+              "fresh water"
+            ],
+            "distractors": [
+              "tools",
+              "tool",
+              "seeds",
+              "seed",
+              "lamp",
+              "light"
+            ],
+            "rubric": "accepted → correct phrase production; lexical → correct lexical completion of the frame (not phrase production); a response with the keyword that matches neither stays unscored pending clarification; a response naming a distractor and no keyword is incorrect; anything else stays unscored.",
+            "clarification": "Das kann gut stimmen. Sag es bitte noch einmal genau mit dem Satzanfang: „We need …“ — oder mach ohne Bewertung weiter.",
+            "correction": "Das war etwas anderes. Der Garten braucht Wasser — schau dir das Wort „water“ an und probier es nochmal.",
+            "unclear": "Ich konnte das keiner Antwort zuordnen. Probier es nochmal mit dem Satzanfang — oder mach ohne Bewertung weiter."
+          },
+          {
+            "id": "reuse",
+            "kind": "pick-supply",
+            "sentence": "The engineer says: We need tools for the base.",
+            "instruction": "Eine neue Anfrage. Was braucht die Ingenieurin?",
+            "options": [
+              "water",
+              "tools",
+              "seeds",
+              "lamp"
+            ],
+            "answer": "tools",
+            "evidence": "recognition",
+            "note": "Fresh use of the same phrase; the gloss is not shown before the choice.",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          }
+        ]
+      },
+      {
+        "id": "LANG-ES-AGUA",
+        "version": 1,
+        "language": "es",
+        "visit": "v2",
+        "title": "La planta necesita agua",
+        "objective": "Understand and produce 'Necesitamos …' in context",
+        "glosses": [
+          {
+            "word": "necesitamos",
+            "de": "wir brauchen",
+            "example": "Necesitamos agua. — Wir brauchen Wasser."
+          },
+          {
+            "word": "agua",
+            "de": "Wasser",
+            "example": "Agua para la planta. — Wasser für die Pflanze."
+          },
+          {
+            "word": "planta",
+            "de": "Pflanze",
+            "example": "La planta necesita agua. — Die Pflanze braucht Wasser."
+          },
+          {
+            "word": "herramientas",
+            "de": "Werkzeug",
+            "example": "Necesitamos herramientas. — Wir brauchen Werkzeug."
+          }
+        ],
+        "steps": [
+          {
+            "id": "listen",
+            "kind": "listen-read",
+            "sentence": "La planta necesita agua.",
+            "instruction": "Hör zu oder lies: Was braucht die Pflanze?"
+          },
+          {
+            "id": "pick",
+            "kind": "pick-supply",
+            "sentence": "La planta necesita agua.",
+            "instruction": "Wähle die richtige Lieferung für die Pflanze.",
+            "options": [
+              "agua",
+              "herramientas",
+              "semillas",
+              "lámpara"
+            ],
+            "answer": "agua",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          },
+          {
+            "id": "produce",
+            "kind": "produce",
+            "instruction": "Sag oder schreib es dem Team: Necesitamos …",
+            "frame": "Necesitamos ___.",
+            "accepted": [
+              "necesitamos agua",
+              "necesitamos el agua",
+              "necesitamos un poco de agua",
+              "la planta necesita agua"
+            ],
+            "target": "Necesitamos agua.",
+            "evidence": "production",
+            "keywords": [
+              "agua"
+            ],
+            "lexical": [
+              "agua",
+              "el agua",
+              "un poco de agua"
+            ],
+            "distractors": [
+              "herramientas",
+              "herramienta",
+              "semillas",
+              "semilla",
+              "lámpara",
+              "lampara",
+              "luz"
+            ],
+            "rubric": "accepted → correct phrase production; lexical → correct lexical completion of the frame (not phrase production); a response with the keyword that matches neither stays unscored pending clarification; a response naming a distractor and no keyword is incorrect; anything else stays unscored.",
+            "clarification": "Das kann gut stimmen. Sag es bitte noch einmal genau mit dem Satzanfang: „Necesitamos …“ — oder mach ohne Bewertung weiter.",
+            "correction": "Das war etwas anderes. Die Pflanze braucht Wasser — schau dir das Wort „agua“ an und probier es nochmal.",
+            "unclear": "Ich konnte das keiner Antwort zuordnen. Probier es nochmal mit dem Satzanfang — oder mach ohne Bewertung weiter."
+          },
+          {
+            "id": "reuse",
+            "kind": "pick-supply",
+            "sentence": "El ingeniero dice: Necesitamos herramientas.",
+            "instruction": "Eine neue Anfrage. Was braucht der Ingenieur?",
+            "options": [
+              "agua",
+              "herramientas",
+              "semillas",
+              "lámpara"
+            ],
+            "answer": "herramientas",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          }
+        ]
+      },
+      {
+        "id": "LANG-ES-STATION",
+        "version": 1,
+        "language": "es",
+        "visit": "v4",
+        "title": "Necesitamos una lámpara",
+        "objective": "Produce the full request 'Necesitamos una lámpara' and recognise the same phrase frame with another object",
+        "glosses": [
+          {
+            "word": "necesitamos",
+            "de": "wir brauchen",
+            "example": "Necesitamos una lámpara. — Wir brauchen eine Lampe."
+          },
+          {
+            "word": "lámpara",
+            "de": "Lampe",
+            "example": "La lámpara está en la estación. — Die Lampe ist in der Station."
+          },
+          {
+            "word": "estación",
+            "de": "Station",
+            "example": "La estación está lista. — Die Station ist fertig."
+          },
+          {
+            "word": "noche",
+            "de": "Nacht",
+            "example": "De noche necesitamos luz. — Nachts brauchen wir Licht."
+          },
+          {
+            "word": "tortugas",
+            "de": "Schildkröten",
+            "example": "Las tortugas nadan. — Die Schildkröten schwimmen."
+          },
+          {
+            "word": "equipo",
+            "de": "Team",
+            "example": "El equipo trabaja de noche. — Das Team arbeitet nachts."
+          }
+        ],
+        "steps": [
+          {
+            "id": "listen",
+            "kind": "listen-read",
+            "sentence": "El biólogo dice: Necesitamos una lámpara para la estación.",
+            "instruction": "Hör zu oder lies: Was braucht die Station?"
+          },
+          {
+            "id": "pick",
+            "kind": "pick-supply",
+            "sentence": "Necesitamos una lámpara para la estación.",
+            "instruction": "Wähle die richtige Lieferung für die Station.",
+            "options": [
+              "agua",
+              "herramientas",
+              "semillas",
+              "lámpara"
+            ],
+            "answer": "lámpara",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          },
+          {
+            "id": "produce",
+            "kind": "produce",
+            "instruction": "Bitte das Team um die Lampe. Sag oder schreib den ganzen Satz: Necesitamos …",
+            "frame": "Necesitamos ___.",
+            "accepted": [
+              "necesitamos una lámpara",
+              "necesitamos una lampara",
+              "necesitamos la lámpara",
+              "necesitamos la lampara",
+              "necesitamos una lámpara para la estación",
+              "necesitamos una lampara para la estacion",
+              "necesitamos una lámpara para la estacion",
+              "necesitamos una lampara para la estación"
+            ],
+            "target": "Necesitamos una lámpara.",
+            "evidence": "production",
+            "keywords": [
+              "lámpara",
+              "lampara"
+            ],
+            "lexical": [
+              "una lámpara",
+              "una lampara",
+              "lámpara",
+              "lampara",
+              "la lámpara",
+              "la lampara"
+            ],
+            "distractors": [
+              "agua",
+              "herramientas",
+              "herramienta",
+              "semillas",
+              "semilla",
+              "luz"
+            ],
+            "rubric": "accepted → correct phrase production; lexical → correct lexical completion of the frame (not phrase production); a response with the keyword that matches neither stays unscored pending clarification; a response naming a distractor and no keyword is incorrect; anything else stays unscored. Article and number are part of the reviewed accepted forms (una/la lámpara).",
+            "clarification": "Das kann gut stimmen. Sag es bitte noch einmal genau mit dem Satzanfang: „Necesitamos …“ — oder mach ohne Bewertung weiter.",
+            "correction": "Das war etwas anderes. Die Station braucht eine Lampe — schau dir das Wort „lámpara“ an und probier es nochmal.",
+            "unclear": "Ich konnte das keiner Antwort zuordnen. Probier es nochmal mit dem Satzanfang — oder mach ohne Bewertung weiter."
+          },
+          {
+            "id": "reuse",
+            "kind": "pick-supply",
+            "sentence": "Es de noche. La bióloga dice: Necesitamos agua para la estación.",
+            "instruction": "Eine neue Anfrage in der Nacht. Was braucht das Team jetzt?",
+            "options": [
+              "agua",
+              "herramientas",
+              "semillas",
+              "lámpara"
+            ],
+            "answer": "agua",
+            "evidence": "recognition",
+            "note": "The reuse sentence follows the child's station choice (turtles / waves / no theme); the request (agua) and the recognition evidence are the same in every variant. No variant asserts a theme the child did not choose.",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal.",
+            "variants": {
+              "turtles": "Es de noche. La bióloga dice: Necesitamos agua para las tortugas.",
+              "waves": "Es de noche. La bióloga dice: Necesitamos agua para el equipo.",
+              "none": "Es de noche. La bióloga dice: Necesitamos agua para la estación."
+            }
+          }
+        ]
+      },
+      {
+        "id": "LANG-EN-PIER",
+        "version": 1,
+        "language": "en",
+        "visit": "v5",
+        "title": "We need wood for the pier",
+        "objective": "Produce the full request 'We need wood.' (phrase production, not only the bare word) and recognise the same frame with another object (rope)",
+        "glosses": [
+          {
+            "word": "need",
+            "de": "brauchen",
+            "example": "We need wood. — Wir brauchen Holz."
+          },
+          {
+            "word": "wood",
+            "de": "Holz",
+            "example": "We need wood for the pier. — Wir brauchen Holz für den Steg."
+          },
+          {
+            "word": "pier",
+            "de": "Steg",
+            "example": "The pier is in the bay. — Der Steg ist in der Bucht."
+          },
+          {
+            "word": "boat",
+            "de": "Boot",
+            "example": "The boat comes tomorrow. — Das Boot kommt morgen."
+          },
+          {
+            "word": "rope",
+            "de": "Seil",
+            "example": "The captain needs a rope. — Der Kapitän braucht ein Seil."
+          }
+        ],
+        "steps": [
+          {
+            "id": "listen",
+            "kind": "listen-read",
+            "sentence": "The captain says: We need wood for the pier.",
+            "instruction": "Hör zu oder lies: Was braucht das Team für den Steg?"
+          },
+          {
+            "id": "pick",
+            "kind": "pick-supply",
+            "sentence": "We need wood for the pier.",
+            "instruction": "Wähle die richtige Lieferung für den Steg.",
+            "options": [
+              "water",
+              "tools",
+              "wood",
+              "rope"
+            ],
+            "answer": "wood",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          },
+          {
+            "id": "produce",
+            "kind": "produce",
+            "instruction": "Bitte das Team um das Holz. Sag oder schreib den ganzen Satz, nicht nur das Wort: We need …",
+            "frame": "We need ___.",
+            "accepted": [
+              "we need wood",
+              "we need wood for the pier",
+              "we need the wood",
+              "we need some wood",
+              "we need wood for the jetty",
+              "we need more wood"
+            ],
+            "target": "We need wood.",
+            "evidence": "production",
+            "keywords": [
+              "wood"
+            ],
+            "lexical": [
+              "wood",
+              "the wood",
+              "some wood",
+              "more wood"
+            ],
+            "distractors": [
+              "water",
+              "tools",
+              "tool",
+              "seeds",
+              "seed",
+              "lamp",
+              "rope",
+              "nails"
+            ],
+            "rubric": "accepted → correct phrase production; lexical → correct lexical completion of the frame (not phrase production); a response with the keyword that matches neither stays unscored pending clarification; a response naming a distractor and no keyword is incorrect; anything else stays unscored. Phrase production is the objective of this step, so the instruction asks explicitly for the whole sentence; the evidence category still records what was actually produced.",
+            "clarification": "Das kann gut stimmen. Sag es bitte noch einmal genau mit dem Satzanfang: „We need …“ — oder mach ohne Bewertung weiter.",
+            "correction": "Das war etwas anderes. Der Steg braucht Holz — schau dir das Wort „wood“ an und probier es nochmal.",
+            "unclear": "Ich konnte das keiner Antwort zuordnen. Probier es nochmal mit dem Satzanfang — oder mach ohne Bewertung weiter."
+          },
+          {
+            "id": "reuse",
+            "kind": "pick-supply",
+            "sentence": "The boat is here. The captain says: We need rope for the boat.",
+            "instruction": "Eine neue Anfrage vom Boot. Was braucht das Team jetzt?",
+            "options": [
+              "water",
+              "tools",
+              "wood",
+              "rope"
+            ],
+            "answer": "rope",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          }
+        ]
+      },
+      {
+        "id": "LANG-ES-HARBOR",
+        "version": 1,
+        "language": "es",
+        "visit": "v6",
+        "title": "Necesitamos herramientas",
+        "objective": "Recall the previously met word herramientas in a NEW context (production before the word is shown), recognise the new word cuerdas in a sentence, and recognise agua in a third context",
+        "glosses": [
+          {
+            "word": "necesitamos",
+            "de": "wir brauchen",
+            "example": "Necesitamos herramientas. — Wir brauchen Werkzeug."
+          },
+          {
+            "word": "herramientas",
+            "de": "Werkzeug",
+            "example": "Las herramientas están en el puerto. — Das Werkzeug ist im Hafen."
+          },
+          {
+            "word": "cuerdas",
+            "de": "Seile",
+            "example": "Necesitamos cuerdas para los barcos. — Wir brauchen Seile für die Boote."
+          },
+          {
+            "word": "cajas",
+            "de": "Kisten",
+            "example": "Las cajas están en el barco. — Die Kisten sind im Boot."
+          },
+          {
+            "word": "barcos",
+            "de": "Boote",
+            "example": "Los barcos salen mañana. — Die Boote fahren morgen los."
+          },
+          {
+            "word": "puerto",
+            "de": "Hafen",
+            "example": "El puerto está listo. — Der Hafen ist fertig."
+          },
+          {
+            "word": "agua",
+            "de": "Wasser",
+            "example": "Necesitamos agua para el viaje. — Wir brauchen Wasser für die Reise."
+          }
+        ],
+        "steps": [
+          {
+            "id": "listen",
+            "kind": "listen-read",
+            "sentence": "Rosa, la proveedora, dice: ¡Hola, capitán! ¿Qué necesitan para el puerto?",
+            "instruction": "Hör zu oder lies: Rosa fragt, was ihr für den Hafen braucht."
+          },
+          {
+            "id": "produce",
+            "kind": "produce",
+            "instruction": "Das Team braucht Werkzeug, um die Kisten festzumachen. Bitte Rosa auf Spanisch darum — schreib den ganzen Satz: Necesitamos …",
+            "frame": "Necesitamos ___.",
+            "accepted": [
+              "necesitamos herramientas",
+              "necesitamos las herramientas",
+              "necesitamos herramientas para las cajas",
+              "necesitamos herramientas para el puerto",
+              "necesitamos herramientas para los barcos",
+              "necesitamos unas herramientas"
+            ],
+            "target": "Necesitamos herramientas.",
+            "evidence": "production",
+            "keywords": [
+              "herramientas",
+              "herramienta"
+            ],
+            "lexical": [
+              "herramientas",
+              "las herramientas",
+              "herramienta",
+              "una herramienta",
+              "unas herramientas"
+            ],
+            "distractors": [
+              "agua",
+              "lámpara",
+              "lampara",
+              "semillas",
+              "semilla",
+              "cuerdas",
+              "cuerda",
+              "cajas",
+              "caja",
+              "luz",
+              "madera"
+            ],
+            "rubric": "accepted → correct phrase production; lexical → correct lexical completion of the frame (not phrase production); a response with the keyword that matches neither stays unscored pending clarification; a response naming a distractor and no keyword is incorrect; anything else stays unscored. The word herramientas was met before only as a recognition pick; this step records whether it is recalled WITHOUT the sentence or options showing it (opening the word list or a gloss is recorded help).",
+            "clarification": "Das kann gut stimmen. Schreib es bitte noch einmal genau mit dem Satzanfang: „Necesitamos …“ — oder mach ohne Bewertung weiter.",
+            "correction": "Das war etwas anderes. Das Team braucht Werkzeug — schau dir das Wort „herramientas“ an und probier es nochmal.",
+            "unclear": "Ich konnte das keiner Antwort zuordnen. Probier es nochmal mit dem Satzanfang — oder mach ohne Bewertung weiter."
+          },
+          {
+            "id": "pick",
+            "kind": "pick-supply",
+            "sentence": "Rosa dice: Necesitamos cuerdas para los barcos.",
+            "instruction": "Wähle die richtige Lieferung für die Boote.",
+            "options": [
+              "agua",
+              "herramientas",
+              "cuerdas",
+              "cajas"
+            ],
+            "answer": "cuerdas",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          },
+          {
+            "id": "reuse",
+            "kind": "pick-supply",
+            "sentence": "El capitán dice: Necesitamos agua para el viaje.",
+            "instruction": "Eine neue Anfrage vom Kapitän. Was braucht das Team jetzt?",
+            "options": [
+              "agua",
+              "herramientas",
+              "cuerdas",
+              "cajas"
+            ],
+            "answer": "agua",
+            "evidence": "recognition",
+            "correction": "Das war nicht diese Lieferung. Hör den Satz noch einmal an oder tippe auf das unterstrichene Wort — dann wähle nochmal."
+          }
+        ]
+      },
+      {
+        "id": "LANG-ES-HARBOR-CHECK",
+        "version": 1,
+        "language": "es",
+        "visit": "v6",
+        "title": "Necesitamos cuerdas",
+        "objective": "Closing check: recall the word met earlier in this visit (cuerdas) in a request, without the sentence that showed it",
+        "glosses": [
+          {
+            "word": "necesitamos",
+            "de": "wir brauchen",
+            "example": "Necesitamos cuerdas. — Wir brauchen Seile."
+          },
+          {
+            "word": "cuerdas",
+            "de": "Seile",
+            "example": "Las cuerdas están en el barco. — Die Seile sind im Boot."
+          },
+          {
+            "word": "barcos",
+            "de": "Boote",
+            "example": "Los barcos están en el puerto. — Die Boote sind im Hafen."
+          }
+        ],
+        "steps": [
+          {
+            "id": "produce",
+            "kind": "produce",
+            "instruction": "Zum Schluss: Die Boote müssen festgemacht werden. Sag Rosa auf Spanisch, was ihr braucht — der ganze Satz: Necesitamos …",
+            "frame": "Necesitamos ___.",
+            "accepted": [
+              "necesitamos cuerdas",
+              "necesitamos las cuerdas",
+              "necesitamos cuerdas para los barcos",
+              "necesitamos una cuerda",
+              "necesitamos unas cuerdas"
+            ],
+            "target": "Necesitamos cuerdas.",
+            "evidence": "production",
+            "keywords": [
+              "cuerdas",
+              "cuerda"
+            ],
+            "lexical": [
+              "cuerdas",
+              "las cuerdas",
+              "cuerda",
+              "una cuerda",
+              "unas cuerdas"
+            ],
+            "distractors": [
+              "agua",
+              "herramientas",
+              "herramienta",
+              "cajas",
+              "caja",
+              "lámpara",
+              "lampara",
+              "madera"
+            ],
+            "rubric": "accepted → correct phrase production; lexical → correct lexical completion (not phrase production); keyword without a list match → unscored pending clarification; distractor and no keyword → incorrect; else unscored. Same-visit recall of a word first met today is immediate application, never retention.",
+            "clarification": "Das kann gut stimmen. Schreib es bitte noch einmal genau mit dem Satzanfang: „Necesitamos …“ — oder mach ohne Bewertung weiter.",
+            "correction": "Das war etwas anderes. Die Boote brauchen Seile — schau dir das Wort „cuerdas“ an und probier es nochmal.",
+            "unclear": "Ich konnte das keiner Antwort zuordnen. Probier es nochmal mit dem Satzanfang — oder mach ohne Bewertung weiter."
+          }
+        ]
+      }
+    ],
+    "supplyLabels": {
+      "water": {
+        "de": "Wasser",
+        "emoji": "💧"
+      },
+      "tools": {
+        "de": "Werkzeug",
+        "emoji": "🔧"
+      },
+      "seeds": {
+        "de": "Samen",
+        "emoji": "🌰"
+      },
+      "lamp": {
+        "de": "Lampe",
+        "emoji": "🔦"
+      },
+      "agua": {
+        "de": "Wasser",
+        "emoji": "💧"
+      },
+      "herramientas": {
+        "de": "Werkzeug",
+        "emoji": "🔧"
+      },
+      "semillas": {
+        "de": "Samen",
+        "emoji": "🌰"
+      },
+      "lámpara": {
+        "de": "Lampe",
+        "emoji": "🔦"
+      },
+      "wood": {
+        "de": "Holz",
+        "emoji": "🪵"
+      },
+      "rope": {
+        "de": "Seil",
+        "emoji": "🪢"
+      },
+      "cuerdas": {
+        "de": "Seile",
+        "emoji": "🪢"
+      },
+      "cajas": {
+        "de": "Kisten",
+        "emoji": "📦"
+      }
+    }
+  },
+  "typing": {
+    "note": "Positional drills stay unavailable until the parent confirms the physical keyboard and input layout. The label task records in-task practice accuracy only; keystrokes outside the task are never captured.",
+    "layouts": [
+      {
+        "id": "ch-de-qwertz",
+        "label": "Schweizer Tastatur (QWERTZ, de-CH)"
+      },
+      {
+        "id": "de-qwertz",
+        "label": "Deutsche Tastatur (QWERTZ, de-DE)"
+      },
+      {
+        "id": "us-qwerty",
+        "label": "US-Tastatur (QWERTY)"
+      }
+    ],
+    "lessons": [
+      {
+        "id": "TYPE-CH-QWERTZ-HOME",
+        "version": 1,
+        "layout": "ch-de-qwertz",
+        "title": "Grundstellung: die mittlere Reihe",
+        "homeRow": [
+          "a",
+          "s",
+          "d",
+          "f",
+          "g",
+          "h",
+          "j",
+          "k",
+          "l",
+          "ö",
+          "ä"
+        ],
+        "fingers": {
+          "a": "kleiner Finger links",
+          "s": "Ringfinger links",
+          "d": "Mittelfinger links",
+          "f": "Zeigefinger links",
+          "g": "Zeigefinger links",
+          "h": "Zeigefinger rechts",
+          "j": "Zeigefinger rechts",
+          "k": "Mittelfinger rechts",
+          "l": "Ringfinger rechts",
+          "ö": "kleiner Finger rechts",
+          "ä": "kleiner Finger rechts"
+        },
+        "lines": [
+          "fff jjj fj fj",
+          "ddd kkk dk dk",
+          "asdf jklö"
+        ]
+      },
+      {
+        "id": "TYPE-DE-QWERTZ-HOME",
+        "version": 1,
+        "layout": "de-qwertz",
+        "title": "Grundstellung: die mittlere Reihe",
+        "homeRow": [
+          "a",
+          "s",
+          "d",
+          "f",
+          "g",
+          "h",
+          "j",
+          "k",
+          "l",
+          "ö",
+          "ä"
+        ],
+        "fingers": {
+          "a": "kleiner Finger links",
+          "s": "Ringfinger links",
+          "d": "Mittelfinger links",
+          "f": "Zeigefinger links",
+          "g": "Zeigefinger links",
+          "h": "Zeigefinger rechts",
+          "j": "Zeigefinger rechts",
+          "k": "Mittelfinger rechts",
+          "l": "Ringfinger rechts",
+          "ö": "kleiner Finger rechts",
+          "ä": "kleiner Finger rechts"
+        },
+        "lines": [
+          "fff jjj fj fj",
+          "ddd kkk dk dk",
+          "asdf jklö"
+        ]
+      },
+      {
+        "id": "TYPE-US-QWERTY-HOME",
+        "version": 1,
+        "layout": "us-qwerty",
+        "title": "Grundstellung: die mittlere Reihe",
+        "homeRow": [
+          "a",
+          "s",
+          "d",
+          "f",
+          "g",
+          "h",
+          "j",
+          "k",
+          "l",
+          ";"
+        ],
+        "fingers": {
+          "a": "kleiner Finger links",
+          "s": "Ringfinger links",
+          "d": "Mittelfinger links",
+          "f": "Zeigefinger links",
+          "g": "Zeigefinger links",
+          "h": "Zeigefinger rechts",
+          "j": "Zeigefinger rechts",
+          "k": "Mittelfinger rechts",
+          "l": "Ringfinger rechts",
+          ";": "kleiner Finger rechts"
+        },
+        "lines": [
+          "fff jjj fj fj",
+          "ddd kkk dk dk",
+          "asdf jkl;"
+        ]
+      }
+    ],
+    "labelTasks": [
+      {
+        "id": "TYPE-LABEL-BASE",
+        "version": 1,
+        "visit": "v1",
+        "instruction": "Schreib das Schild für deine Basis.",
+        "targetFrom": "baseName"
+      },
+      {
+        "id": "TYPE-LABEL-GARDEN",
+        "version": 1,
+        "visit": "v2",
+        "instruction": "Schreib das Schild für den Garten.",
+        "target": "Garten der Basis"
+      }
+    ],
+    "course": {
+      "note": "Bounded Swiss-German (ch-de-qwertz) course: orientation, F/J anchors and the thumb on the space bar first, then small key groups, adding reaches only after the progression criteria. The order f/j+space → d/k → s/l → a/ö → g/h is a defensible reviewed opening, not a uniquely evidence-proven sequence. Only this layout has a course; the other layouts keep their single historical starter and never fall back to Swiss lessons. Keystrokes cannot verify finger use.",
+      "layout": "ch-de-qwertz",
+      "homePosition": {
+        "left": [
+          "a",
+          "s",
+          "d",
+          "f"
+        ],
+        "right": [
+          "j",
+          "k",
+          "l",
+          "ö"
+        ],
+        "anchors": [
+          "f",
+          "j"
+        ],
+        "thumb": " "
+      },
+      "reaches": {
+        "g": "Zeigefinger links (nach innen)",
+        "h": "Zeigefinger rechts (nach innen)",
+        "ä": "kleiner Finger rechts (weiter rechts)"
+      },
+      "fingers": {
+        "a": "kleiner Finger links",
+        "s": "Ringfinger links",
+        "d": "Mittelfinger links",
+        "f": "Zeigefinger links",
+        "g": "Zeigefinger links",
+        "h": "Zeigefinger rechts",
+        "j": "Zeigefinger rechts",
+        "k": "Mittelfinger rechts",
+        "l": "Ringfinger rechts",
+        "ö": "kleiner Finger rechts",
+        "ä": "kleiner Finger rechts",
+        " ": "Daumen"
+      },
+      "progression": {
+        "minBursts": 2,
+        "minAccuracy": 0.9,
+        "comfortRequired": "ok",
+        "tunable": true,
+        "note": "Advance only after at least two bursts at or above the accuracy threshold whose comfort was not 'hard'; otherwise offer the same or a smaller burst, or stop. Thresholds are design choices."
+      },
+      "alignmentCheck": {
+        "note": "Non-assessed setup check on the actual device: the parent confirms the PHYSICAL layout in the settings; this check confirms that the computer's INPUT source writes the same characters. F/J alone cannot distinguish CH from DE/US, so three distinguishing keys are pressed.",
+        "keys": [
+          {
+            "id": "right-of-0",
+            "prompt": "Drück die Taste rechts neben der 0 (oben).",
+            "expected": {
+              "ch-de-qwertz": "'",
+              "de-qwertz": "ß",
+              "us-qwerty": "-"
+            }
+          },
+          {
+            "id": "right-of-l",
+            "prompt": "Drück die Taste rechts neben dem L.",
+            "expected": {
+              "ch-de-qwertz": "ö",
+              "de-qwertz": "ö",
+              "us-qwerty": ";"
+            }
+          },
+          {
+            "id": "right-of-t",
+            "prompt": "Drück die Taste rechts neben dem T.",
+            "expected": {
+              "ch-de-qwertz": "z",
+              "de-qwertz": "z",
+              "us-qwerty": "y"
+            }
+          }
+        ]
+      },
+      "lessons": [
+        {
+          "id": "TYPE-CH-COURSE-1",
+          "version": 1,
+          "title": "f, j und die Leertaste",
+          "keys": [
+            "f",
+            "j",
+            " "
+          ],
+          "practiced": [],
+          "lines": [
+            "fff jjj",
+            "fj fj jf"
+          ]
+        },
+        {
+          "id": "TYPE-CH-COURSE-2",
+          "version": 1,
+          "title": "d und k",
+          "keys": [
+            "d",
+            "k"
+          ],
+          "practiced": [
+            "f",
+            "j",
+            " "
+          ],
+          "lines": [
+            "ddd kkk",
+            "fdk jkd"
+          ]
+        },
+        {
+          "id": "TYPE-CH-COURSE-3",
+          "version": 1,
+          "title": "s und l",
+          "keys": [
+            "s",
+            "l"
+          ],
+          "practiced": [
+            "f",
+            "j",
+            " ",
+            "d",
+            "k"
+          ],
+          "lines": [
+            "sss lll",
+            "sdf jkl"
+          ]
+        },
+        {
+          "id": "TYPE-CH-COURSE-4",
+          "version": 1,
+          "title": "a und ö",
+          "keys": [
+            "a",
+            "ö"
+          ],
+          "practiced": [
+            "f",
+            "j",
+            " ",
+            "d",
+            "k",
+            "s",
+            "l"
+          ],
+          "lines": [
+            "aaa ööö",
+            "asdf jklö"
+          ]
+        },
+        {
+          "id": "TYPE-CH-COURSE-5",
+          "version": 1,
+          "title": "g und h: die kurze Reichweite",
+          "keys": [
+            "g",
+            "h"
+          ],
+          "practiced": [
+            "f",
+            "j",
+            " ",
+            "d",
+            "k",
+            "s",
+            "l",
+            "a",
+            "ö"
+          ],
+          "lines": [
+            "ggg hhh",
+            "fgf jhj",
+            "das lag da"
+          ]
+        }
+      ]
+    }
+  },
+  "reflection": {
+    "prompt": "Wie war es heute?",
+    "options": [
+      {
+        "id": "easy",
+        "label": "Zu leicht"
+      },
+      {
+        "id": "right",
+        "label": "Genau richtig"
+      },
+      {
+        "id": "tricky",
+        "label": "Knifflig"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "enjoyment",
+        "prompt": "Hat es dir heute Spass gemacht?",
+        "options": [
+          {
+            "id": "yes",
+            "label": "Ja"
+          },
+          {
+            "id": "partly",
+            "label": "So halb"
+          },
+          {
+            "id": "no",
+            "label": "Nein"
+          }
+        ],
+        "skipLabel": "Lieber nicht sagen"
+      },
+      {
+        "id": "clarity",
+        "prompt": "War klar, was du tun sollst?",
+        "options": [
+          {
+            "id": "clear",
+            "label": "Ja, klar"
+          },
+          {
+            "id": "partly",
+            "label": "Meistens"
+          },
+          {
+            "id": "unclear",
+            "label": "Oft nicht"
+          }
+        ],
+        "skipLabel": "Lieber nicht sagen"
+      }
+    ],
+    "note": "All three dimensions are optional (approved design): difficulty (easy/right/tricky), enjoyment and clarity each have an explicit skip. Explicitly skipped, left open and not-offered dimensions are recorded as such and never turned into a neutral or positive value.",
+    "skipLabel": "Lieber nicht sagen",
+    "nextInterest": {
+      "prompt": "Was möchtest du beim nächsten Besuch machen oder lernen?",
+      "hint": "Schreib es mit deinen Worten — ein Thema, ein Spiel, eine Idee. «Weiss ich nicht» ist auch eine Antwort.",
+      "unsureLabel": "Weiss ich noch nicht",
+      "noPreferenceLabel": "Ist mir egal",
+      "declineLabel": "Lieber nicht sagen",
+      "entryPrompt": "Beim letzten Mal ging es zu Ende, bevor du sagen konntest, was du als Nächstes machen möchtest. Magst du es jetzt sagen?",
+      "note": "Saved verbatim in the child's evidence (work sample next_interest and MissionState.interests) and exposed to the parent report and next-visit planning input. Never inferred: uncertainty, no preference and declining are kept as such; leaving early leads to a prompt on the next entry, never to a guessed interest."
+    }
+  },
+  "retention": {
+    "policy": "Pilot records stay until a parent deletes them. No raw audio and no keystrokes outside the task are stored. Each finished visit is summarised once for the parents (in the parent view); those summaries and the small task timeline are deleted together with the records. Conversation history with the tutor is kept separately on the family bridge and is not deleted here."
+  },
+  "supersedes": {
+    "contentVersion": 4,
+    "note": "Strict additive superset of version 4 (2026-10-16, Visit 6 proposal accepted by David): every version-1 to version-4 entry is unchanged in text, answer and version; the v6 stage list is frozen. Version 5 adds visit v7 (learner-visible Besuch 6), the reviewed mission MISSION-SHIP-SUPPLY with its finite typing block, and the closing next-visit interest question."
+  },
+  "station": {
+    "note": "The observation theme is a child CHOICE, never an inferred lasting interest. Declining leads to a coherent alternative, not a dead end.",
+    "themes": [
+      {
+        "id": "turtles",
+        "label": "Schildkröten beobachten",
+        "emoji": "🐢",
+        "purpose": "Die Station zählt nachts die Schildkröten am Strand."
+      },
+      {
+        "id": "waves",
+        "label": "Wellen und Wetter messen",
+        "emoji": "🌊",
+        "purpose": "Die Station misst Wellen und Wind für das Team."
+      }
+    ],
+    "spots": [
+      {
+        "id": "beach",
+        "label": "Am Strand",
+        "emoji": "🏖️"
+      },
+      {
+        "id": "rocks",
+        "label": "Auf den Felsen",
+        "emoji": "🪨"
+      },
+      {
+        "id": "dune",
+        "label": "Auf der Düne",
+        "emoji": "🏜️"
+      }
+    ]
+  },
+  "writing": {
+    "spacing": {
+      "note": "Bounded, reviewed spacing feedback for the child's own log sentence. Two general rules (a letter next to a digit; a letter after sentence punctuation) plus a reviewed list of common German joins. This is NOT a general German word-segmentation engine: joins outside the list are not flagged. Spelling (e.g. Schildkröten) is taught separately and never corrected in this step.",
+      "rules": [
+        "digit-boundary",
+        "punctuation-boundary",
+        "reviewed-joins"
+      ],
+      "joins": [
+        {
+          "joined": "ichhabe",
+          "split": "ich habe"
+        },
+        {
+          "joined": "ichbin",
+          "split": "ich bin"
+        },
+        {
+          "joined": "ichwar",
+          "split": "ich war"
+        },
+        {
+          "joined": "wirhaben",
+          "split": "wir haben"
+        },
+        {
+          "joined": "wirsind",
+          "split": "wir sind"
+        },
+        {
+          "joined": "esgibt",
+          "split": "es gibt"
+        },
+        {
+          "joined": "dasist",
+          "split": "das ist"
+        },
+        {
+          "joined": "daswar",
+          "split": "das war"
+        },
+        {
+          "joined": "undich",
+          "split": "und ich"
+        },
+        {
+          "joined": "unddie",
+          "split": "und die"
+        },
+        {
+          "joined": "undder",
+          "split": "und der"
+        },
+        {
+          "joined": "unddann",
+          "split": "und dann"
+        },
+        {
+          "joined": "aufder",
+          "split": "auf der"
+        },
+        {
+          "joined": "inder",
+          "split": "in der"
+        },
+        {
+          "joined": "mitdem",
+          "split": "mit dem"
+        },
+        {
+          "joined": "fürdie",
+          "split": "für die"
+        },
+        {
+          "joined": "zweischildkröten",
+          "split": "zwei schildkröten"
+        }
+      ]
+    },
+    "transfer": {
+      "id": "WRITE-TRANSFER-1",
+      "version": 1,
+      "prompt": "Schreib einen neuen kurzen Satz für dein Logbuch: Was soll deine Station morgen beobachten?",
+      "instruction": "Ein neuer Satz — nicht der von vorhin. Eine Zeile reicht. Schreib auch eine Zahl hinein (zum Beispiel wie viele), mit Leerzeichen zwischen den Wörtern und zwischen Wort und Zahl.",
+      "note": "Fresh transfer check (approved proposal §2): a NEW short sentence written after the revision, never a copy of the page, the saved revision or the shown correction. Only the three reviewed spacing cases are assessed (digit boundary, punctuation boundary, reviewed joins): the record counts the reviewed boundaries that actually occur in the sentence (assessed) and how many were missing (flagged). A sentence without any reviewed boundary is unassessable and stays unscored — never a success. A clean sentence with at least one assessed boundary is limited evidence of spacing transfer at those cases and never a spelling or general-segmentation judgement. The record keeps whether the revision help had been shown in the same visit (exposure). Skipping is allowed and recorded."
+    },
+    "transfers": [
+      {
+        "id": "WRITE-TRANSFER-1",
+        "version": 1,
+        "prompt": "Schreib einen neuen kurzen Satz für dein Logbuch: Was soll deine Station morgen beobachten?",
+        "instruction": "Ein neuer Satz — nicht der von vorhin. Eine Zeile reicht. Schreib auch eine Zahl hinein (zum Beispiel wie viele), mit Leerzeichen zwischen den Wörtern und zwischen Wort und Zahl.",
+        "note": "Fresh transfer check (approved proposal §2): a NEW short sentence written after the revision, never a copy of the page, the saved revision or the shown correction. Only the three reviewed spacing cases are assessed (digit boundary, punctuation boundary, reviewed joins): the record counts the reviewed boundaries that actually occur in the sentence (assessed) and how many were missing (flagged). A sentence without any reviewed boundary is unassessable and stays unscored — never a success. A clean sentence with at least one assessed boundary is limited evidence of spacing transfer at those cases and never a spelling or general-segmentation judgement. The record keeps whether the revision help had been shown in the same visit (exposure). Skipping is allowed and recorded.",
+        "visit": "v4"
+      },
+      {
+        "id": "WRITE-TRANSFER-2",
+        "version": 1,
+        "visit": "v5",
+        "prompt": "Schreib einen neuen kurzen Satz für dein Logbuch: Was soll das Boot beim nächsten Mal bringen — und wie viele davon?",
+        "instruction": "Ein neuer Satz — nicht der von vorhin. Eine Zeile reicht. Schreib eine Zahl hinein (wie viele), mit Leerzeichen zwischen den Wörtern und zwischen Wort und Zahl.",
+        "note": "Second fresh transfer check (visit v5), same reviewed rules as WRITE-TRANSFER-1: a NEW short sentence after the revision, never a copy of the page, the saved revision or the shown correction; only the three reviewed spacing cases are assessed. The prompt asks for a number explicitly so that a reviewed digit boundary can occur — a sentence without any reviewed boundary still stays unscored, never a success."
+      }
+    ],
+    "logs": [
+      {
+        "id": "WRITE-LOG-HARBOR",
+        "version": 1,
+        "visit": "v6",
+        "prompt": "Kapitänslogbuch: Was habt ihr heute im Hafen gebaut oder transportiert?",
+        "instruction": "Ein eigener Satz, ein oder zwei Zeilen. Schreib hinein, was gebaut oder transportiert wurde — gern mit einer Zahl.",
+        "note": "One self-authored German sentence, then a bounded revision in the closing check (log-review). The review diagnoses meaning/task fulfilment, completeness, spelling, capitalisation, punctuation and spacing but TEACHES at most two points per visit; an unknown word is asked about, never rewritten; no 'everything correct' claim after a narrow check; Swiss spelling (ss, never ß)."
+      }
+    ],
+    "review": {
+      "note": "Reviewed, deterministic writing review for the child's own German log sentence (visit v6). Not a general grammar engine: it checks six reviewed aspects and names exactly which aspects had no finding. Diagnose broadly, teach at most `maxTeachingPoints` points in priority order; a word the lexicon does not know is never rewritten, never called wrong and never a reason for a question by itself: it is listed as unchecked. Meaning, completeness and grammar are judged in a bounded semantic review by the isolated child assistant (bridge, session 'learn') answering in a strict five-line schema; a missing, duplicated, unparseable or 'unklar' field leaves that aspect UNCHECKED (never clean); a grammar span must be quoted verbatim from the sentence, else grammar is unchecked; without a verified reply the semantic aspects are reported as NOT checked, never as in order. 'grammar' is the assistant's evidence-linked aspect. At most maxTeachingPoints teaching points are shown, each grouping all occurrences of one aspect. A clarification question is asked only when the sentence carries neither a known verb nor a task word, or when the assistant names an unclear word.",
+      "maxTeachingPoints": 2,
+      "priority": [
+        "meaning",
+        "completeness",
+        "grammar",
+        "spacing",
+        "capitalization",
+        "spelling",
+        "punctuation"
+      ],
+      "taskWords": [
+        "boot",
+        "boote",
+        "kiste",
+        "kisten",
+        "hafen",
+        "steg",
+        "kai",
+        "seil",
+        "seile",
+        "werkzeug",
+        "gebaut",
+        "geladen",
+        "verladen",
+        "beladen",
+        "transportiert",
+        "gebracht",
+        "gefahren",
+        "bestellt",
+        "gezählt",
+        "gerechnet"
+      ],
+      "verbs": [
+        "habe",
+        "haben",
+        "hat",
+        "hast",
+        "ist",
+        "sind",
+        "war",
+        "waren",
+        "bin",
+        "bist",
+        "baue",
+        "baut",
+        "bauen",
+        "baute",
+        "bauten",
+        "gebaut",
+        "lade",
+        "laden",
+        "geladen",
+        "verladen",
+        "beladen",
+        "bringe",
+        "bringt",
+        "bringen",
+        "gebracht",
+        "brachte",
+        "brachten",
+        "fahre",
+        "fährt",
+        "fahren",
+        "fuhr",
+        "fuhren",
+        "gefahren",
+        "transportiere",
+        "transportiert",
+        "transportieren",
+        "bestelle",
+        "bestellt",
+        "bestellen",
+        "zähle",
+        "zählt",
+        "zählen",
+        "gezählt",
+        "rechne",
+        "rechnet",
+        "rechnen",
+        "gerechnet",
+        "steht",
+        "stehen",
+        "stand",
+        "standen",
+        "liegt",
+        "liegen",
+        "lag",
+        "lagen",
+        "kommt",
+        "kommen",
+        "kam",
+        "kamen",
+        "braucht",
+        "brauchen",
+        "brauchte",
+        "gibt",
+        "gab",
+        "hatte",
+        "hatten",
+        "wurde",
+        "wurden",
+        "soll",
+        "sollen",
+        "muss",
+        "müssen",
+        "kann",
+        "können",
+        "will",
+        "wollen",
+        "passt",
+        "passen",
+        "bleibt",
+        "bleiben",
+        "blieb",
+        "blieben",
+        "fehlt",
+        "fehlen",
+        "geht",
+        "gehen",
+        "ging",
+        "gingen",
+        "macht",
+        "machen",
+        "gemacht",
+        "legt",
+        "legen",
+        "gelegt",
+        "sehe",
+        "sieht",
+        "sehen",
+        "gesehen",
+        "beobachten",
+        "beobachtet",
+        "warten",
+        "wartet",
+        "gewartet",
+        "schreibe",
+        "schreibt",
+        "geschrieben",
+        "wirft",
+        "werfen",
+        "geworfen",
+        "hole",
+        "holt",
+        "holen",
+        "geholt",
+        "stellt",
+        "stellen",
+        "gestellt"
+      ],
+      "subjects": [
+        "ich",
+        "wir",
+        "du",
+        "er",
+        "sie",
+        "es",
+        "ihr",
+        "man",
+        "das",
+        "der",
+        "die",
+        "ein",
+        "eine",
+        "unser",
+        "unsere",
+        "mein",
+        "meine",
+        "alle",
+        "team",
+        "boot",
+        "boote",
+        "kapitän",
+        "santiago",
+        "rosa",
+        "herr",
+        "wer",
+        "jemand",
+        "niemand"
+      ],
+      "nouns": [
+        {
+          "lemma": "Boot",
+          "forms": [
+            "Boot",
+            "Boote",
+            "Booten",
+            "Bootes"
+          ]
+        },
+        {
+          "lemma": "Kiste",
+          "forms": [
+            "Kiste",
+            "Kisten"
+          ]
+        },
+        {
+          "lemma": "Hafen",
+          "forms": [
+            "Hafen",
+            "Häfen",
+            "Hafens"
+          ]
+        },
+        {
+          "lemma": "Steg",
+          "forms": [
+            "Steg",
+            "Stege",
+            "Steges",
+            "Stegs"
+          ]
+        },
+        {
+          "lemma": "Kai",
+          "forms": [
+            "Kai",
+            "Kais"
+          ]
+        },
+        {
+          "lemma": "Kapitän",
+          "forms": [
+            "Kapitän",
+            "Kapitäne",
+            "Kapitäns"
+          ]
+        },
+        {
+          "lemma": "Seil",
+          "forms": [
+            "Seil",
+            "Seile",
+            "Seilen"
+          ]
+        },
+        {
+          "lemma": "Werkzeug",
+          "forms": [
+            "Werkzeug",
+            "Werkzeuge"
+          ]
+        },
+        {
+          "lemma": "Insel",
+          "forms": [
+            "Insel",
+            "Inseln"
+          ]
+        },
+        {
+          "lemma": "Team",
+          "forms": [
+            "Team",
+            "Teams"
+          ]
+        },
+        {
+          "lemma": "Wasser",
+          "forms": [
+            "Wasser"
+          ]
+        },
+        {
+          "lemma": "Expedition",
+          "forms": [
+            "Expedition",
+            "Expeditionen"
+          ]
+        },
+        {
+          "lemma": "Ladung",
+          "forms": [
+            "Ladung",
+            "Ladungen"
+          ]
+        },
+        {
+          "lemma": "Proviant",
+          "forms": [
+            "Proviant"
+          ]
+        },
+        {
+          "lemma": "Schiff",
+          "forms": [
+            "Schiff",
+            "Schiffe",
+            "Schiffen"
+          ]
+        },
+        {
+          "lemma": "Leuchtturm",
+          "forms": [
+            "Leuchtturm",
+            "Leuchttürme"
+          ]
+        },
+        {
+          "lemma": "Festland",
+          "forms": [
+            "Festland"
+          ]
+        },
+        {
+          "lemma": "Station",
+          "forms": [
+            "Station",
+            "Stationen"
+          ]
+        },
+        {
+          "lemma": "Basis",
+          "forms": [
+            "Basis"
+          ]
+        },
+        {
+          "lemma": "Garten",
+          "forms": [
+            "Garten",
+            "Gärten"
+          ]
+        },
+        {
+          "lemma": "Logbuch",
+          "forms": [
+            "Logbuch",
+            "Logbücher"
+          ]
+        },
+        {
+          "lemma": "Werkstatt",
+          "forms": [
+            "Werkstatt",
+            "Werkstätten"
+          ]
+        },
+        {
+          "lemma": "Planer",
+          "forms": [
+            "Planer",
+            "Stadtplaner"
+          ]
+        },
+        {
+          "lemma": "Laden",
+          "forms": [
+            "Laden",
+            "Hafenladen"
+          ]
+        },
+        {
+          "lemma": "Rest",
+          "forms": [
+            "Rest",
+            "Reste"
+          ]
+        },
+        {
+          "lemma": "Tag",
+          "forms": [
+            "Tag",
+            "Tage",
+            "Tagen"
+          ]
+        },
+        {
+          "lemma": "Holz",
+          "forms": [
+            "Holz"
+          ]
+        },
+        {
+          "lemma": "Schildkröte",
+          "forms": [
+            "Schildkröte",
+            "Schildkröten"
+          ]
+        }
+      ],
+      "misspellings": [
+        {
+          "wrong": "ales",
+          "right": "alles"
+        },
+        {
+          "wrong": "sol",
+          "right": "soll"
+        },
+        {
+          "wrong": "solen",
+          "right": "sollen"
+        },
+        {
+          "wrong": "wier",
+          "right": "wir"
+        },
+        {
+          "wrong": "fil",
+          "right": "viel"
+        },
+        {
+          "wrong": "fol",
+          "right": "voll"
+        },
+        {
+          "wrong": "fole",
+          "right": "volle"
+        },
+        {
+          "wrong": "bot",
+          "right": "Boot"
+        },
+        {
+          "wrong": "bote",
+          "right": "Boote"
+        },
+        {
+          "wrong": "kisste",
+          "right": "Kiste"
+        },
+        {
+          "wrong": "kissten",
+          "right": "Kisten"
+        },
+        {
+          "wrong": "schif",
+          "right": "Schiff"
+        },
+        {
+          "wrong": "schife",
+          "right": "Schiffe"
+        },
+        {
+          "wrong": "wasa",
+          "right": "Wasser"
+        },
+        {
+          "wrong": "waser",
+          "right": "Wasser"
+        },
+        {
+          "wrong": "kapitan",
+          "right": "Kapitän"
+        },
+        {
+          "wrong": "kapiten",
+          "right": "Kapitän"
+        },
+        {
+          "wrong": "seel",
+          "right": "Seil"
+        },
+        {
+          "wrong": "seele",
+          "right": "Seile"
+        },
+        {
+          "wrong": "gebauht",
+          "right": "gebaut"
+        },
+        {
+          "wrong": "gebaud",
+          "right": "gebaut"
+        },
+        {
+          "wrong": "geladn",
+          "right": "geladen"
+        },
+        {
+          "wrong": "transportirt",
+          "right": "transportiert"
+        },
+        {
+          "wrong": "stazion",
+          "right": "Station"
+        },
+        {
+          "wrong": "stazino",
+          "right": "Station"
+        },
+        {
+          "wrong": "schildkroten",
+          "right": "Schildkröten"
+        },
+        {
+          "wrong": "hafn",
+          "right": "Hafen"
+        },
+        {
+          "wrong": "übrich",
+          "right": "übrig"
+        },
+        {
+          "wrong": "übrik",
+          "right": "übrig"
+        },
+        {
+          "wrong": "ferladen",
+          "right": "verladen"
+        },
+        {
+          "wrong": "fahrn",
+          "right": "fahren"
+        },
+        {
+          "wrong": "fert",
+          "right": "fährt"
+        },
+        {
+          "wrong": "heutte",
+          "right": "heute"
+        },
+        {
+          "wrong": "dan",
+          "right": "dann"
+        },
+        {
+          "wrong": "den",
+          "right": null
+        }
+      ],
+      "functionWords": [
+        "ich",
+        "wir",
+        "du",
+        "er",
+        "sie",
+        "es",
+        "ihr",
+        "man",
+        "und",
+        "oder",
+        "aber",
+        "dann",
+        "danach",
+        "heute",
+        "morgen",
+        "gestern",
+        "jetzt",
+        "mit",
+        "ohne",
+        "für",
+        "in",
+        "im",
+        "ins",
+        "an",
+        "am",
+        "auf",
+        "aus",
+        "bei",
+        "beim",
+        "zu",
+        "zum",
+        "zur",
+        "nach",
+        "von",
+        "vom",
+        "vor",
+        "über",
+        "unter",
+        "durch",
+        "um",
+        "bis",
+        "der",
+        "die",
+        "das",
+        "den",
+        "dem",
+        "des",
+        "ein",
+        "eine",
+        "einen",
+        "einem",
+        "einer",
+        "eines",
+        "kein",
+        "keine",
+        "mein",
+        "meine",
+        "unser",
+        "unsere",
+        "sein",
+        "seine",
+        "ihre",
+        "alle",
+        "alles",
+        "viele",
+        "viel",
+        "noch",
+        "schon",
+        "auch",
+        "nur",
+        "sehr",
+        "ganz",
+        "nicht",
+        "ja",
+        "nein",
+        "da",
+        "dort",
+        "hier",
+        "wo",
+        "wohin",
+        "weil",
+        "dass",
+        "wenn",
+        "als",
+        "wie",
+        "so",
+        "übrig",
+        "voll",
+        "volle",
+        "vollen",
+        "leer",
+        "neu",
+        "neue",
+        "gross",
+        "grosse",
+        "klein",
+        "kleine",
+        "lang",
+        "lange",
+        "fertig",
+        "zusammen",
+        "zuerst",
+        "zuletzt",
+        "wieder",
+        "weiter",
+        "zwei",
+        "drei",
+        "vier",
+        "fünf",
+        "sechs",
+        "sieben",
+        "acht",
+        "neun",
+        "zehn",
+        "elf",
+        "zwölf",
+        "zwanzig",
+        "dreissig",
+        "pro",
+        "je",
+        "jedes",
+        "jeder",
+        "jede",
+        "mal",
+        "plus",
+        "minus",
+        "gleich",
+        "rest"
+      ]
+    }
+  },
+  "pier": {
+    "note": "The pier's place is a child CHOICE between two reviewed spots in the saved world (the bay cut at the south-east of the island, or the south beach). Both lead to the same mission; nothing is inferred from the choice. The boat is moored only when the English request actually supplied wood (durable supply), like the station's lamp.",
+    "spots": [
+      {
+        "id": "bay",
+        "label": "In der Bucht",
+        "emoji": "🌊"
+      },
+      {
+        "id": "beach",
+        "label": "Am Südstrand",
+        "emoji": "🏖️"
+      }
+    ]
+  },
+  "harbor": {
+    "note": "The harbor of visit v6. The destination is a child CHOICE between three reviewed options; nothing is inferred from it. The boats appear when EQ-HARBOR is resolved (full boats and the partial boat with the leftovers), the plan is saved with harbor-build; the boats are tied with ropes only when the Spanish request actually supplied cuerdas (durable supply). The three workplaces may be visited in either order (typing first or planning first); the closing check opens after both. Dialogue lines are reviewed content; opening a German translation is recorded as support.",
+    "destinations": [
+      {
+        "id": "lighthouse",
+        "label": "Zur Leuchtturm-Insel",
+        "emoji": "🗼"
+      },
+      {
+        "id": "mainland",
+        "label": "Zum Festland",
+        "emoji": "⛰️"
+      },
+      {
+        "id": "ship",
+        "label": "Zum Forschungsschiff",
+        "emoji": "🚢"
+      }
+    ],
+    "workplaces": [
+      {
+        "id": "typing",
+        "label": "Tipp-Werkstatt",
+        "building": "workshop",
+        "character": "keeper",
+        "stages": [
+          "typing-course"
+        ],
+        "required": true
+      },
+      {
+        "id": "planning",
+        "label": "Planungsbüro & Hafen",
+        "building": "office",
+        "character": "planner",
+        "stages": [
+          "EQ-HARBOR",
+          "explain",
+          "LANG-ES-HARBOR",
+          "harbor-build",
+          "log"
+        ],
+        "required": true
+      },
+      {
+        "id": "closing",
+        "label": "Kurzer Check am Hafenmeister-Tisch",
+        "building": "harbormaster",
+        "character": "planner",
+        "stages": [
+          "EQ-HARBOR-CHECK",
+          "LANG-ES-HARBOR-CHECK",
+          "log-review"
+        ],
+        "required": true,
+        "afterAllOthers": true
+      }
+    ],
+    "characters": [
+      {
+        "id": "keeper",
+        "name": "Mrs Finley",
+        "role": "Tipp-Werkstatt",
+        "language": "en",
+        "lines": [
+          {
+            "id": "welcome",
+            "text": "Welcome back! Your next keys are ready. Fingers on the home row?",
+            "de": "Willkommen zurück! Deine nächsten Tasten sind bereit. Finger auf die Grundreihe?"
+          },
+          {
+            "id": "done",
+            "text": "Nice round. See you next time!",
+            "de": "Gute Runde. Bis zum nächsten Mal!"
+          }
+        ]
+      },
+      {
+        "id": "planner",
+        "name": "Herr Baumann",
+        "role": "Stadtplaner",
+        "language": "de",
+        "lines": [
+          {
+            "id": "welcome",
+            "text": "Guter Plan braucht gutes Rechnen: 38 Kisten, 6 pro Boot. Dann entscheiden wir, wohin die Boote fahren.",
+            "de": null
+          },
+          {
+            "id": "log",
+            "text": "Trag ins Kapitänslogbuch ein, was ihr heute gebaut oder transportiert habt — ein Satz genügt.",
+            "de": null
+          },
+          {
+            "id": "closing",
+            "text": "Zum Schluss ein kurzer Check: eine kleine Rechnung, ein Wort und dein Satz.",
+            "de": null
+          }
+        ]
+      },
+      {
+        "id": "supplier",
+        "name": "Rosa",
+        "role": "Hafenladen",
+        "language": "es",
+        "lines": [
+          {
+            "id": "welcome",
+            "text": "¡Hola, capitán! Bienvenido al puerto.",
+            "de": "Hallo, Kapitän! Willkommen im Hafen."
+          },
+          {
+            "id": "done",
+            "text": "¡Gracias! Hasta pronto.",
+            "de": "Danke! Bis bald."
+          }
+        ]
+      }
+    ]
+  },
+  "reasoning": {
+    "id": "REASON-HARBOR",
+    "version": 5,
+    "note": "Conversation about the child's OWN method after the harbor item (assessment reset, 2026-10-10; repair round 4). The isolated child assistant (existing bridge transport, session 'learn') holds a natural dialogue with the complete turn history and the task context and, with every reply, gives NABU'S ASSESSMENT per reviewed criterion (Rechenweg, Mengen, Bedeutung): gezeigt / teilweise / noch-nicht / unsicher, each with the child passages it rests on («…», grounding, not proof) and a rationale. The app never turns words into a verdict and never infers competence: it stores every assessment revision with the schema version and the turn it followed, checks only that passages are verbatim (an ungrounded passage is reported, not overruled), records a narrow mathematical contradiction only when the child's stated calculation is unambiguous (an observed fact beside the assessment), and marks an assessment stale when a later child turn retracts or contradicts it (a reassessment must follow; otherwise the criteria close as unsicher — never as wrong). Support is a mode with an event log, not a word detector: the assistant may ask at most maxClarifications clarifying questions from this reviewed answer-free prompt bank (ART klaerung + PROMPT id; the app renders the exact prompt text) while the explanation window stays unsupported; any free-form content-bearing line (ART lehre) switches the conversation to supported BEFORE it is shown and is recorded as a support event; counters and the teaching text are support events too. Supported success is recorded as such, never as failure. Only a reply whose origin the bridge receipt verifies is attributed to Nabu, shown as Nabu's line, spoken, or assessed; a reply with a missing, malformed or invalid receipt is withheld behind a local reviewed line. Bounded by maxChildTurns plus one turn per scaffold choice, each once. The first numerical answer and its correctness are observed facts that this conversation never changes.",
+    "maxChildTurns": 4,
+    "maxClarifications": 2,
+    "prompt": "Wie hast du das gerechnet? Erzähl mir deinen Weg — sprechen oder schreiben.",
+    "criteria": [
+      {
+        "id": "strategy",
+        "label": "Rechenweg",
+        "question": "Hat das Kind gesagt, WIE es gerechnet hat — irgendein passender Weg (malnehmen, teilen, dazu-/wegzählen, verteilen, zählen …)?"
+      },
+      {
+        "id": "quantities",
+        "label": "Volle Boote und Rest",
+        "question": "Hat das Kind volle Boote und übrige Kisten aus seinem Weg heraus verbunden (nicht nur Zahlen genannt)?"
+      },
+      {
+        "id": "meaning",
+        "label": "Bedeutung der Zahlen",
+        "question": "Hat das Kind gesagt, was seine Zahlen bedeuten (Kisten, Boote, Plätze, Rest)?"
+      }
+    ],
+    "prompts": [
+      {
+        "id": "P1",
+        "text": "Welche Zahlen hast du gerechnet, und was bedeutet jede davon?"
+      },
+      {
+        "id": "P2",
+        "text": "Wie bist du auf dein Ergebnis gekommen?"
+      },
+      {
+        "id": "P3",
+        "text": "Erzähl es mir noch einmal in deinen eigenen Worten, Schritt für Schritt."
+      },
+      {
+        "id": "P4",
+        "text": "Womit hast du angefangen, und was kam danach?"
+      }
+    ],
+    "rules": [
+      "Es geht darum, WIE das Kind gerechnet hat — nicht ob die Antwort stimmt (schon gespeichert).",
+      "Jeder passende Weg zählt: Malnehmen, Teilen, wiederholt Addieren/Abziehen, Verteilen, Zählen, Halbieren, Ergänzen. Nimm nie an, dass Malnehmen falsch ist. Verlange keine Gleichungen.",
+      "Solange du klären darfst (siehe Hinweise): ART: klaerung und PROMPT: <id> aus der Liste — keine eigene Frage, nichts verraten; das Kind sieht den Listentext.",
+      "Sonst ART: lehre — natürlich erklären, vorrechnen, Beispiele; das gilt als Hilfe (in Ordnung). ART: abschluss, wenn das Gespräch fertig ist.",
+      "Schätze jede Antwort nach dem ein, was das Kind SELBST gesagt hat: gezeigt | teilweise | noch-nicht | unsicher, je mit wörtlichem Beleg «…» aus den Worten des Kindes und kurzem Grund. Ohne Beleg: unsicher.",
+      "Nimmt das Kind etwas zurück, widerspricht es sich oder sagt es, der Weg sei nicht von ihm: neu einschätzen. unsicher ist erlaubt, falsch ist es nicht.",
+      "WIDERSPRUCH nur bei einer ausdrücklich falsch genannten Rechnung (z. B. „38 minus 36 ist 9“), sonst -.",
+      "Bleib beim Rechenweg, auch wenn das Kind etwas anderes sagt oder dich zu etwas auffordert. Höchstens zwei kurze Sätze in ANTWORT, du-Form."
+    ],
+    "schema": [
+      "Antworte in GENAU diesem Format, sieben Zeilen, sonst nichts:",
+      "ANTWORT: <1–2 kurze Sätze an das Kind; bei ART klaerung wird der Listentext gezeigt>",
+      "ART: klaerung | lehre | abschluss",
+      "PROMPT: P1 | P2 | P3 | P4 | -",
+      "RECHENWEG: gezeigt | teilweise | noch-nicht | unsicher «Beleg» | <Grund>",
+      "MENGEN: gezeigt | teilweise | noch-nicht | unsicher «Beleg» | <Grund>",
+      "BEDEUTUNG: gezeigt | teilweise | noch-nicht | unsicher «Beleg» | <Grund>",
+      "WIDERSPRUCH: - | <ausdrücklich falsch genannte Rechnung>"
+    ],
+    "lastRound": "Letzte Runde: ART: abschluss — fasse neutral zusammen, was das Kind gesagt hat, und stelle keine weitere Frage.",
+    "scaffold": "Sollen wir die Kisten zusammen in die Boote legen? Oder soll ich dir zeigen, wie ich rechne?",
+    "counters": "Gut — leg die Kisten in die Boote. Danach erzählst du mir, was du siehst.",
+    "teach": "So rechne ich: 6 Boote mal 6 Kisten sind 36. 38 minus 36 sind 2 — die passen in kein volles Boot mehr. Für alle Kisten braucht es darum 7 Boote.",
+    "afterTeach": "Jetzt du: Erzähl es mir noch einmal in deinen eigenen Worten.",
+    "fallback": {
+      "unavailable": "Ich bin gerade nicht erreichbar. Versuch es gleich nochmal — oder wähle unten, wie es weitergeht.",
+      "withheld": "Nabus Antwort konnte nicht beglaubigt werden, darum zeige ich sie nicht. Versuch es gleich nochmal — oder wähle unten, wie es weitergeht.",
+      "continued": "In Ordnung — wir schauen deinen Weg ein andermal an.",
+      "tooLong": "Das war sehr lang. Sag es mir kürzer, in ein, zwei Sätzen."
+    },
+    "levelLabels": {
+      "demonstrated": "gezeigt",
+      "partial": "teilweise gezeigt",
+      "not-yet-demonstrated": "noch nicht gezeigt",
+      "uncertain": "unsicher"
+    },
+    "methodLabels": {
+      "explained-independently": "Nabus Einschätzung: Weg gezeigt — ohne Hilfe",
+      "explained-after-probing": "Nabus Einschätzung: Weg gezeigt — nach Nachfragen, ohne Hilfe",
+      "explained-with-support": "Nabus Einschätzung: Weg gezeigt — mit Hilfe",
+      "not-yet-established": "Nabus Einschätzung: Weg noch nicht ganz gezeigt",
+      "unscored": "nicht eingeschätzt"
+    }
+  },
+  "missions": [
+    {
+      "id": "MISSION-SHIP-SUPPLY",
+      "version": 1,
+      "visit": "v7",
+      "title": "Die Fahrt zum Forschungsschiff",
+      "objective": "Find out what the research ship needs (English radio message, harbor rules), calculate and pack the load, request ropes and tools in Spanish, plan a safe route under the rules and send the boats; a finite typing block in the workshop.",
+      "theme": {
+        "basis": "continues-saved-choice",
+        "source": "MissionState.harbor.destination (plan-harbor, Visit 5, 2026-10-14)",
+        "value": "ship",
+        "note": "Continues the destination Santiago himself chose and saved at the end of Visit 5 (Zum Forschungsschiff). It is not a claimed interest; the next theme waits for his own answer to the closing question."
+      },
+      "map": {
+        "start": "harbor",
+        "places": [
+          {
+            "id": "harbor",
+            "label": "Kai",
+            "x": 760,
+            "y": 700,
+            "kind": "place"
+          },
+          {
+            "id": "workshop",
+            "label": "Tipp-Werkstatt",
+            "x": 582,
+            "y": 413,
+            "kind": "place",
+            "character": "keeper"
+          },
+          {
+            "id": "office",
+            "label": "Planungsbüro · Herr Baumann",
+            "x": 1004,
+            "y": 369,
+            "kind": "place",
+            "character": "planner"
+          },
+          {
+            "id": "shop",
+            "label": "Hafenladen · Rosa",
+            "x": 639,
+            "y": 640,
+            "kind": "place",
+            "character": "supplier"
+          },
+          {
+            "id": "harbormaster",
+            "label": "Hafentafel",
+            "x": 872,
+            "y": 571,
+            "kind": "place"
+          },
+          {
+            "id": "pier",
+            "label": "Steg",
+            "x": 1074,
+            "y": 562,
+            "kind": "place"
+          },
+          {
+            "id": "base",
+            "label": "Basis",
+            "x": 459,
+            "y": 300,
+            "kind": "place"
+          },
+          {
+            "id": "garden",
+            "label": "Weg beim Garten",
+            "x": 389,
+            "y": 413,
+            "kind": "waypoint"
+          },
+          {
+            "id": "crossing",
+            "label": "Wegkreuzung",
+            "x": 980,
+            "y": 505,
+            "kind": "waypoint"
+          }
+        ],
+        "paths": [
+          [
+            "base",
+            "garden"
+          ],
+          [
+            "garden",
+            "workshop"
+          ],
+          [
+            "garden",
+            "shop"
+          ],
+          [
+            "workshop",
+            "office"
+          ],
+          [
+            "workshop",
+            "harbormaster"
+          ],
+          [
+            "shop",
+            "harbor"
+          ],
+          [
+            "harbor",
+            "harbormaster"
+          ],
+          [
+            "harbormaster",
+            "crossing"
+          ],
+          [
+            "crossing",
+            "office"
+          ],
+          [
+            "crossing",
+            "pier"
+          ],
+          [
+            "office",
+            "pier"
+          ]
+        ]
+      },
+      "characters": [
+        {
+          "id": "planner",
+          "name": "Herr Baumann",
+          "role": "Stadtplaner",
+          "language": "de",
+          "plate": "planner"
+        },
+        {
+          "id": "keeper",
+          "name": "Mrs Finley",
+          "role": "Funkerin in der Tipp-Werkstatt",
+          "language": "en",
+          "plate": "keeper"
+        },
+        {
+          "id": "supplier",
+          "name": "Rosa",
+          "role": "Hafenladen",
+          "language": "es",
+          "plate": "supplier"
+        }
+      ],
+      "steps": [
+        {
+          "id": "S1-BRIEF",
+          "version": 1,
+          "kind": "story",
+          "title": "Der Auftrag",
+          "place": "office",
+          "character": "planner",
+          "requires": [],
+          "required": true,
+          "objective": "story",
+          "intro": [
+            {
+              "speaker": "planner",
+              "text": "Willkommen zurück, Kapitän! Dein Plan vom letzten Mal steht: Die Boote fahren zum Forschungsschiff.",
+              "language": "de"
+            },
+            {
+              "speaker": "planner",
+              "text": "Aber wir wissen noch nicht, was das Schiff braucht. Mrs Finley hat in der Tipp-Werkstatt ein Funkgerät — dort kommt die Nachricht vom Schiff an.",
+              "language": "de"
+            },
+            {
+              "speaker": "planner",
+              "text": "Lies auch die Hafentafel. Darauf stehen die Regeln für die Boote.",
+              "language": "de"
+            }
+          ],
+          "done": [
+            {
+              "speaker": null,
+              "text": "Dein Ziel: alles, was das Schiff braucht, sicher hinbringen.",
+              "language": "de"
+            }
+          ]
+        },
+        {
+          "id": "S2-BOARD",
+          "version": 1,
+          "kind": "read",
+          "title": "Die Hafentafel",
+          "place": "harbormaster",
+          "character": null,
+          "requires": [
+            "S1-BRIEF"
+          ],
+          "required": true,
+          "objective": "reading-for-information",
+          "intro": [
+            {
+              "speaker": null,
+              "text": "Lies die Hafentafel genau. Die Regeln brauchst du später für deinen Plan.",
+              "language": "de"
+            }
+          ],
+          "done": [
+            {
+              "speaker": null,
+              "text": "Die Regeln stehen jetzt in deinem Notizbuch.",
+              "language": "de"
+            }
+          ],
+          "text": {
+            "language": "de",
+            "body": "HAFENREGELN\n1. Ein Boot trägt höchstens 6 Kisten.\n2. Durch die Riff-Passage kommen nur Boote mit höchstens 4 Kisten.\n3. Der Weg um die Insel ist sicher, aber er dauert doppelt so lange."
+          },
+          "questions": [
+            {
+              "id": "boat-max",
+              "prompt": "Wie viele Kisten trägt ein Boot höchstens?",
+              "kind": "number",
+              "answer": "6",
+              "fact": {
+                "key": "boatMax",
+                "label": "Ein Boot trägt höchstens 6 Kisten."
+              },
+              "retryHint": "Lies die erste Regel auf der Tafel noch einmal."
+            },
+            {
+              "id": "reef-max",
+              "prompt": "Wie viele Kisten darf ein Boot in der Riff-Passage höchstens haben?",
+              "kind": "number",
+              "answer": "4",
+              "fact": {
+                "key": "reefMax",
+                "label": "Riff-Passage: höchstens 4 Kisten pro Boot."
+              },
+              "retryHint": "Lies die zweite Regel noch einmal."
+            }
+          ]
+        },
+        {
+          "id": "S3-RADIO",
+          "version": 1,
+          "kind": "listen",
+          "title": "Funkspruch vom Schiff",
+          "place": "workshop",
+          "character": "keeper",
+          "requires": [
+            "S1-BRIEF"
+          ],
+          "required": true,
+          "objective": "listening-for-information",
+          "intro": [
+            {
+              "speaker": "keeper",
+              "text": "Hello, captain! The research ship is calling on the radio. Listen carefully!",
+              "language": "en",
+              "de": "Hallo, Kapitän! Das Forschungsschiff funkt. Hör gut zu!"
+            }
+          ],
+          "done": [
+            {
+              "speaker": "keeper",
+              "text": "Great listening! Now you know what the ship needs.",
+              "language": "en",
+              "de": "Gut zugehört! Jetzt weisst du, was das Schiff braucht."
+            }
+          ],
+          "text": {
+            "language": "en",
+            "body": "Hello, harbor! This is the research ship. We are seven scientists. Each of us needs four bottles of water. And please bring ropes for the boats. Thank you!",
+            "de": "Hallo, Hafen! Hier ist das Forschungsschiff. Wir sind sieben Forscherinnen und Forscher. Jede Person braucht vier Flaschen Wasser. Und bringt bitte Seile für die Boote mit. Danke!"
+          },
+          "questions": [
+            {
+              "id": "crew",
+              "prompt": "Wie viele Forscherinnen und Forscher sind auf dem Schiff?",
+              "kind": "pick",
+              "options": [
+                "5",
+                "7",
+                "9"
+              ],
+              "answer": "7",
+              "fact": {
+                "key": "crew",
+                "label": "Auf dem Schiff sind 7 Personen."
+              },
+              "retryHint": "Hör noch einmal genau hin, wie viele sie sind."
+            },
+            {
+              "id": "bottles",
+              "prompt": "Wie viele Flaschen Wasser braucht jede Person?",
+              "kind": "pick",
+              "options": [
+                "2",
+                "4",
+                "6"
+              ],
+              "answer": "4",
+              "fact": {
+                "key": "bottlesEach",
+                "label": "Jede Person braucht 4 Flaschen Wasser."
+              },
+              "retryHint": "Hör noch einmal genau hin, wie viele Flaschen jede Person braucht."
+            },
+            {
+              "id": "ask",
+              "prompt": "Was sollt ihr ausserdem mitbringen?",
+              "kind": "pick",
+              "options": [
+                "Seile",
+                "Bretter",
+                "Lampen"
+              ],
+              "answer": "Seile",
+              "fact": {
+                "key": "ask",
+                "label": "Das Schiff möchte Seile."
+              },
+              "retryHint": "Hör noch einmal auf das Ende der Nachricht."
+            }
+          ]
+        },
+        {
+          "id": "S4-WATER",
+          "version": 1,
+          "kind": "calc",
+          "title": "Wie viel Wasser?",
+          "place": "office",
+          "character": "planner",
+          "requires": [
+            "S3-RADIO"
+          ],
+          "required": true,
+          "objective": "multiplication-in-context",
+          "intro": [
+            {
+              "speaker": "planner",
+              "text": "Rechnen wir aus, wie viel Wasser das Schiff braucht.",
+              "language": "de"
+            }
+          ],
+          "done": [
+            {
+              "speaker": "planner",
+              "text": "Gut. Jetzt müssen die Flaschen in Kisten.",
+              "language": "de"
+            }
+          ],
+          "calc": {
+            "prompt": "7 Personen brauchen je 4 Flaschen Wasser. Wie viele Flaschen braucht das Schiff zusammen?",
+            "fields": [
+              {
+                "key": "total",
+                "label": "Flaschen zusammen",
+                "answer": 28
+              }
+            ],
+            "clarification": "Jede der 7 Personen bekommt 4 Flaschen. Du kannst 7-mal 4 Flaschen zusammenzählen.",
+            "representation": {
+              "text": "7 Personen, jede mit 4 Flaschen",
+              "total": 28,
+              "perGroup": 4,
+              "unit": "Flaschen"
+            },
+            "teach": "7 × 4 = 28. Das Schiff braucht 28 Flaschen Wasser."
+          }
+        },
+        {
+          "id": "S5-CRATES",
+          "version": 1,
+          "kind": "calc",
+          "title": "Flaschen in Kisten",
+          "place": "harbor",
+          "character": null,
+          "requires": [
+            "S4-WATER"
+          ],
+          "required": true,
+          "objective": "quotient-full-rest-needed",
+          "intro": [
+            {
+              "speaker": null,
+              "text": "Am Kai liegen leere Kisten. In jede Kiste passen 6 Flaschen.",
+              "language": "de"
+            }
+          ],
+          "done": [
+            {
+              "speaker": null,
+              "text": "Die Wasserkisten stehen am Kai bereit.",
+              "language": "de"
+            }
+          ],
+          "calc": {
+            "prompt": "In eine Kiste passen 6 Flaschen. Ihr packt die 28 Flaschen in Kisten.",
+            "fields": [
+              {
+                "key": "full",
+                "label": "Kisten ganz voll",
+                "answer": 4
+              },
+              {
+                "key": "rest",
+                "label": "Flaschen übrig",
+                "answer": 4
+              },
+              {
+                "key": "needed",
+                "label": "Kisten für alle 28 Flaschen",
+                "answer": 5
+              }
+            ],
+            "clarification": "Pack immer 6 Flaschen in eine Kiste. Wie oft geht das ganz? Was bleibt dann übrig? Auch die übrigen Flaschen brauchen eine Kiste.",
+            "representation": {
+              "text": "28 Flaschen, immer 6 in eine Kiste",
+              "total": 28,
+              "perGroup": 6,
+              "unit": "Flaschen"
+            },
+            "teach": "4 Kisten mit je 6 Flaschen sind 24 Flaschen. Von 28 bleiben 4 Flaschen übrig. Für alle Flaschen braucht ihr 5 Kisten."
+          }
+        },
+        {
+          "id": "S6-ROSA",
+          "version": 1,
+          "kind": "produce",
+          "title": "Bei Rosa bestellen",
+          "place": "shop",
+          "character": "supplier",
+          "requires": [
+            "S3-RADIO"
+          ],
+          "required": true,
+          "objective": "language-es-request",
+          "intro": [
+            {
+              "speaker": "supplier",
+              "text": "¡Hola, capitán! ¿Qué necesitan para el barco?",
+              "language": "es",
+              "de": "Hallo, Kapitän! Was braucht ihr für das Schiff?"
+            }
+          ],
+          "done": [
+            {
+              "speaker": "supplier",
+              "text": "¡Claro que sí!",
+              "language": "es",
+              "de": "Aber sicher!"
+            }
+          ],
+          "produce": {
+            "language": "es",
+            "frame": "Necesitamos ___.",
+            "instruction": "Das Schiff möchte Seile. Sag Rosa auf Spanisch, was ihr braucht. Beginne mit «Necesitamos …».",
+            "accepted": [
+              "Necesitamos cuerdas",
+              "Necesitamos cuerdas por favor",
+              "Necesitamos unas cuerdas"
+            ],
+            "lexical": [
+              "cuerdas"
+            ],
+            "keywords": [
+              "cuerdas",
+              "cuerda"
+            ],
+            "distractors": [
+              "agua",
+              "herramientas",
+              "cajas",
+              "madera",
+              "lámpara"
+            ],
+            "sentenceDe": "Wir brauchen Seile.",
+            "repairWords": [
+              {
+                "word": "necesitamos",
+                "meaningDe": "wir brauchen",
+                "spellingNote": "„Wir brauchen“ heisst auf Spanisch necesitamos — mit c nach dem e: ne-ce-si-ta-mos.",
+                "misspellings": [
+                  "nesesitamos",
+                  "necessitamos",
+                  "nececitamos",
+                  "necesitamo",
+                  "nesecitamos"
+                ]
+              },
+              {
+                "word": "cuerdas",
+                "meaningDe": "Seile",
+                "spellingNote": "„Seile“ schreibt man auf Spanisch cuerdas, mit c.",
+                "misspellings": [
+                  "querdas",
+                  "kuerdas",
+                  "cuerdes",
+                  "querda",
+                  "cuerdaz",
+                  "qerdas"
+                ]
+              }
+            ],
+            "feedback": {
+              "distractor": "Rosa hat dich verstanden — aber jetzt geht es um die Seile. Wie heisst «Seile» auf Spanisch? Versuch es noch einmal.",
+              "unclear": "Das habe ich noch nicht verstanden. Rosa braucht einen Satz, der mit «Necesitamos …» beginnt. Du kannst auch die Wörter-Hilfe öffnen.",
+              "lexical": "Das Wort stimmt! Sag Rosa jetzt den ganzen Satz mit «Necesitamos …»."
+            },
+            "wordBank": [
+              "necesitamos",
+              "cuerdas",
+              "agua",
+              "cajas",
+              "herramientas"
+            ]
+          },
+          "supplies": {
+            "cuerdas": 1
+          }
+        },
+        {
+          "id": "S7-ROSA-REPLY",
+          "version": 1,
+          "kind": "listen",
+          "title": "Rosas Antwort",
+          "place": "shop",
+          "character": "supplier",
+          "requires": [
+            "S6-ROSA"
+          ],
+          "required": true,
+          "objective": "listening-for-information",
+          "intro": [
+            {
+              "speaker": null,
+              "text": "Rosa antwortet dir auf Spanisch. Hör zu, wie viele Seile sie dir gibt.",
+              "language": "de"
+            }
+          ],
+          "done": [
+            {
+              "speaker": "supplier",
+              "text": "¡Hasta luego!",
+              "language": "es",
+              "de": "Bis später!"
+            }
+          ],
+          "text": {
+            "language": "es",
+            "body": "Aquí tienes cinco cuerdas. ¡Buen viaje!",
+            "de": "Hier hast du fünf Seile. Gute Reise!"
+          },
+          "questions": [
+            {
+              "id": "ropes",
+              "prompt": "Wie viele Seile gibt dir Rosa?",
+              "kind": "pick",
+              "options": [
+                "3",
+                "5",
+                "10"
+              ],
+              "answer": "5",
+              "fact": {
+                "key": "ropes",
+                "label": "Rosa gibt dir 5 Seile."
+              },
+              "retryHint": "Hör noch einmal hin, welche Zahl Rosa sagt."
+            }
+          ],
+          "supplies": {
+            "cuerdas": 4
+          }
+        },
+        {
+          "id": "S8-TOOLS",
+          "version": 1,
+          "kind": "recall",
+          "title": "Werkzeug bestellen",
+          "place": "shop",
+          "character": "supplier",
+          "requires": [
+            "S7-ROSA-REPLY"
+          ],
+          "required": true,
+          "objective": "language-es-retrieval",
+          "intro": [
+            {
+              "speaker": null,
+              "text": "Herr Baumann hat noch einen Wunsch: Das Schiff braucht auch Werkzeug. Dieses Wort hast du letztes Mal bei Rosa geübt.",
+              "language": "de"
+            },
+            {
+              "speaker": "supplier",
+              "text": "¿Algo más?",
+              "language": "es",
+              "de": "Noch etwas?"
+            }
+          ],
+          "done": [
+            {
+              "speaker": "supplier",
+              "text": "¡Aquí están las herramientas!",
+              "language": "es",
+              "de": "Hier ist das Werkzeug!"
+            }
+          ],
+          "produce": {
+            "language": "es",
+            "frame": "Necesitamos ___.",
+            "instruction": "Sag Rosa auf Spanisch: Wir brauchen Werkzeug. Beginne mit «Necesitamos …».",
+            "accepted": [
+              "Necesitamos herramientas",
+              "Necesitamos herramientas por favor",
+              "Necesitamos unas herramientas"
+            ],
+            "lexical": [
+              "herramientas"
+            ],
+            "keywords": [
+              "herramientas",
+              "herramienta"
+            ],
+            "distractors": [
+              "cuerdas",
+              "agua",
+              "cajas",
+              "madera",
+              "lámpara"
+            ],
+            "sentenceDe": "Wir brauchen Werkzeug.",
+            "repairWords": [
+              {
+                "word": "necesitamos",
+                "meaningDe": "wir brauchen",
+                "spellingNote": "„Wir brauchen“ heisst auf Spanisch necesitamos — mit c nach dem e: ne-ce-si-ta-mos.",
+                "misspellings": [
+                  "nesesitamos",
+                  "necessitamos",
+                  "nececitamos",
+                  "necesitamo",
+                  "nesecitamos"
+                ]
+              },
+              {
+                "word": "herramientas",
+                "meaningDe": "Werkzeug",
+                "spellingNote": "„Werkzeug“ heisst auf Spanisch herramientas — vorne mit h, das man nicht spricht.",
+                "misspellings": [
+                  "erramientas",
+                  "herramientes",
+                  "heramientas",
+                  "herramiendas",
+                  "herrammientas"
+                ]
+              }
+            ],
+            "feedback": {
+              "distractor": "Rosa hat dich verstanden — aber jetzt geht es um das Werkzeug. Wie heisst «Werkzeug» auf Spanisch? Versuch es noch einmal.",
+              "unclear": "Das habe ich noch nicht verstanden. Rosa braucht einen Satz, der mit «Necesitamos …» beginnt. Du kannst auch die Wörter-Hilfe öffnen.",
+              "lexical": "Das Wort stimmt! Sag Rosa jetzt den ganzen Satz mit «Necesitamos …»."
+            },
+            "wordBank": [
+              "necesitamos",
+              "herramientas",
+              "cuerdas",
+              "agua",
+              "cajas"
+            ]
+          },
+          "retrieval": {
+            "focus": "language:es:herramientas",
+            "note": "Visit 5 (LANG-ES-HARBOR/produce): «cuerdas» was given when «herramientas» was asked; the practice focus is open. This is a recall in a later visit; it counts as fresh only when the word was not shown in this mission before the attempt (word bank, repair line)."
+          },
+          "supplies": {
+            "herramientas": 3
+          }
+        },
+        {
+          "id": "S9-LOAD",
+          "version": 1,
+          "kind": "calc",
+          "title": "Wie viele Boote?",
+          "place": "harbor",
+          "character": null,
+          "requires": [
+            "S5-CRATES",
+            "S8-TOOLS",
+            "S2-BOARD"
+          ],
+          "required": true,
+          "objective": "add-and-group",
+          "intro": [
+            {
+              "speaker": null,
+              "text": "Am Kai stehen jetzt die Wasserkisten und Rosas Werkzeugkisten.",
+              "language": "de"
+            }
+          ],
+          "done": [
+            {
+              "speaker": null,
+              "text": "Die Boote liegen beladen am Kai.",
+              "language": "de"
+            }
+          ],
+          "calc": {
+            "prompt": "Am Kai stehen 5 Kisten Wasser und 3 Kisten Werkzeug. Ein Boot trägt höchstens 6 Kisten.",
+            "fields": [
+              {
+                "key": "total",
+                "label": "Kisten zusammen",
+                "answer": 8
+              },
+              {
+                "key": "boats",
+                "label": "Boote, die ihr mindestens braucht",
+                "answer": 2
+              }
+            ],
+            "clarification": "Zähle zuerst alle Kisten zusammen. Dann: In ein Boot passen höchstens 6 Kisten. Reicht ein Boot, oder braucht ihr noch eins?",
+            "representation": {
+              "text": "8 Kisten, höchstens 6 in ein Boot",
+              "total": 8,
+              "perGroup": 6,
+              "unit": "Kisten"
+            },
+            "teach": "5 + 3 = 8 Kisten. Ein Boot trägt höchstens 6 Kisten, also braucht ihr 2 Boote."
+          }
+        },
+        {
+          "id": "S10-ROPES",
+          "version": 1,
+          "kind": "calc",
+          "title": "Reichen die Seile?",
+          "place": "pier",
+          "character": null,
+          "requires": [
+            "S9-LOAD",
+            "S7-ROSA-REPLY"
+          ],
+          "required": true,
+          "objective": "multiply-and-compare",
+          "intro": [
+            {
+              "speaker": null,
+              "text": "Am Steg werden die Boote festgebunden.",
+              "language": "de"
+            }
+          ],
+          "done": [
+            {
+              "speaker": null,
+              "text": "Beide Boote sind festgebunden.",
+              "language": "de"
+            }
+          ],
+          "calc": {
+            "prompt": "Jedes Boot wird mit 2 Seilen festgebunden. Ihr habt 2 Boote und Rosas 5 Seile.",
+            "fields": [
+              {
+                "key": "need",
+                "label": "Seile, die ihr braucht",
+                "answer": 4
+              },
+              {
+                "key": "left",
+                "label": "Seile, die übrig bleiben",
+                "answer": 1
+              }
+            ],
+            "clarification": "Jedes Boot braucht 2 Seile. Rechne für beide Boote. Vergleiche dann mit Rosas Seilen.",
+            "representation": {
+              "text": "2 Boote mit je 2 Seilen",
+              "total": 4,
+              "perGroup": 2,
+              "unit": "Seile"
+            },
+            "teach": "2 × 2 = 4 Seile. Rosa hat 5 Seile gegeben, also bleibt 1 Seil übrig."
+          }
+        },
+        {
+          "id": "S11-ROUTE",
+          "version": 1,
+          "kind": "choice",
+          "title": "Den Weg planen",
+          "place": "office",
+          "character": "planner",
+          "requires": [
+            "S9-LOAD",
+            "S2-BOARD"
+          ],
+          "required": true,
+          "objective": "plan-under-constraints",
+          "intro": [
+            {
+              "speaker": "planner",
+              "text": "Jetzt brauchen wir einen Plan für die Fahrt. Denk an die Regeln von der Hafentafel.",
+              "language": "de"
+            }
+          ],
+          "done": [
+            {
+              "speaker": "planner",
+              "text": "Ein guter Plan! So machen wir es.",
+              "language": "de"
+            }
+          ],
+          "choice": {
+            "prompt": "Ihr habt 8 Kisten und 2 Boote. Die Riff-Passage ist kurz, aber dort darf jedes Boot höchstens 4 Kisten haben. Der Weg um die Insel dauert doppelt so lange. Welcher Plan bringt alle Kisten sicher und am schnellsten zum Schiff?",
+            "options": [
+              {
+                "id": "reef-6-2",
+                "label": "6 und 2 Kisten — beide Boote durch die Riff-Passage",
+                "valid": false,
+                "best": false,
+                "feedback": "Ein Boot hätte 6 Kisten. In der Riff-Passage sind höchstens 4 erlaubt."
+              },
+              {
+                "id": "reef-4-4",
+                "label": "4 und 4 Kisten — beide Boote durch die Riff-Passage",
+                "valid": true,
+                "best": true,
+                "feedback": "Beide Boote haben genau 4 Kisten. So dürfen beide durch die kurze Riff-Passage."
+              },
+              {
+                "id": "around-6-2",
+                "label": "6 und 2 Kisten — beide Boote um die Insel",
+                "valid": true,
+                "best": false,
+                "feedback": "Das ist sicher. Aber der Weg um die Insel dauert doppelt so lange. Gibt es einen schnelleren Plan, der auch erlaubt ist?"
+              },
+              {
+                "id": "one-boat-8",
+                "label": "Alle 8 Kisten in ein Boot",
+                "valid": false,
+                "best": false,
+                "feedback": "Ein Boot trägt höchstens 6 Kisten."
+              }
+            ],
+            "teach": "Beide Boote bekommen 4 Kisten: 4 + 4 = 8. Mehr als 4 ist es in keinem Boot — so dürfen beide durch die kurze Riff-Passage."
+          }
+        },
+        {
+          "id": "S12-TYPING",
+          "version": 1,
+          "kind": "typing-block",
+          "title": "Tippblock in der Werkstatt",
+          "place": "workshop",
+          "character": null,
+          "requires": [
+            "S1-BRIEF"
+          ],
+          "required": true,
+          "objective": "typing-motor-practice",
+          "intro": [
+            {
+              "speaker": null,
+              "text": "Tipp-Werkstatt: Finger auf die Grundreihe.",
+              "language": "de"
+            }
+          ],
+          "done": [
+            {
+              "speaker": null,
+              "text": "Tippblock geschafft.",
+              "language": "de"
+            }
+          ]
+        },
+        {
+          "id": "S13-RECALL-CUERDAS",
+          "version": 1,
+          "kind": "recall",
+          "title": "Rosa am Steg",
+          "place": "pier",
+          "character": "supplier",
+          "requires": [
+            "S10-ROPES"
+          ],
+          "required": false,
+          "objective": "language-es-retrieval",
+          "when": {
+            "step": "S6-ROSA",
+            "unlessEvidence": "independent"
+          },
+          "intro": [
+            {
+              "speaker": null,
+              "text": "Rosa ist zum Steg gekommen, um zu helfen.",
+              "language": "de"
+            },
+            {
+              "speaker": "supplier",
+              "text": "¿Qué necesitan para atar los barcos?",
+              "language": "es",
+              "de": "Was braucht ihr, um die Boote festzubinden?"
+            }
+          ],
+          "done": [
+            {
+              "speaker": "supplier",
+              "text": "¡Muy bien, capitán!",
+              "language": "es",
+              "de": "Sehr gut, Kapitän!"
+            }
+          ],
+          "produce": {
+            "language": "es",
+            "frame": "Necesitamos ___.",
+            "instruction": "Antworte Rosa auf Spanisch. Beginne mit «Necesitamos …».",
+            "accepted": [
+              "Necesitamos cuerdas",
+              "Necesitamos cuerdas por favor",
+              "Necesitamos unas cuerdas"
+            ],
+            "lexical": [
+              "cuerdas"
+            ],
+            "keywords": [
+              "cuerdas",
+              "cuerda"
+            ],
+            "distractors": [
+              "agua",
+              "herramientas",
+              "cajas",
+              "madera",
+              "lámpara"
+            ],
+            "sentenceDe": "Wir brauchen Seile.",
+            "repairWords": [
+              {
+                "word": "necesitamos",
+                "meaningDe": "wir brauchen",
+                "spellingNote": "„Wir brauchen“ heisst auf Spanisch necesitamos — mit c nach dem e: ne-ce-si-ta-mos.",
+                "misspellings": [
+                  "nesesitamos",
+                  "necessitamos",
+                  "nececitamos",
+                  "necesitamo",
+                  "nesecitamos"
+                ]
+              },
+              {
+                "word": "cuerdas",
+                "meaningDe": "Seile",
+                "spellingNote": "„Seile“ schreibt man auf Spanisch cuerdas, mit c.",
+                "misspellings": [
+                  "querdas",
+                  "kuerdas",
+                  "cuerdes",
+                  "querda",
+                  "cuerdaz",
+                  "qerdas"
+                ]
+              }
+            ],
+            "feedback": {
+              "distractor": "Rosa hat dich verstanden — aber jetzt geht es um die Seile. Wie heisst «Seile» auf Spanisch? Versuch es noch einmal.",
+              "unclear": "Das habe ich noch nicht verstanden. Rosa braucht einen Satz, der mit «Necesitamos …» beginnt. Du kannst auch die Wörter-Hilfe öffnen.",
+              "lexical": "Das Wort stimmt! Sag Rosa jetzt den ganzen Satz mit «Necesitamos …»."
+            },
+            "wordBank": [
+              "necesitamos",
+              "cuerdas",
+              "agua",
+              "cajas",
+              "herramientas"
+            ]
+          },
+          "retrieval": {
+            "step": "S6-ROSA",
+            "note": "Later in the same mission, offered only when the first request did not end independent. If the word was supplied earlier (repair line, word bank), the answer is recorded as after-supplied, never as fresh independent recall."
+          }
+        },
+        {
+          "id": "S14-LAUNCH",
+          "version": 1,
+          "kind": "outcome",
+          "title": "Boote losschicken",
+          "place": "pier",
+          "character": null,
+          "requires": [
+            "S10-ROPES",
+            "S11-ROUTE",
+            "S12-TYPING",
+            "S13-RECALL-CUERDAS"
+          ],
+          "required": true,
+          "objective": "outcome",
+          "intro": [
+            {
+              "speaker": null,
+              "text": "Alles ist bereit: 8 Kisten, 2 Boote, die Seile und dein Plan.",
+              "language": "de"
+            }
+          ],
+          "done": [
+            {
+              "speaker": "keeper",
+              "text": "Radio from the ship: The boats have arrived. Thank you, captain!",
+              "language": "en",
+              "de": "Funk vom Schiff: Die Boote sind angekommen. Danke, Kapitän!"
+            }
+          ]
+        }
+      ],
+      "world": [
+        {
+          "id": "W-RADIO",
+          "after": "S3-RADIO",
+          "prop": "radio",
+          "place": "workshop",
+          "count": 1,
+          "label": "Funkspruch empfangen"
+        },
+        {
+          "id": "W-CRATES",
+          "after": "S5-CRATES",
+          "prop": "crates",
+          "place": "harbor",
+          "count": 5,
+          "label": "5 Kisten Wasser"
+        },
+        {
+          "id": "W-ROPES",
+          "after": "S7-ROSA-REPLY",
+          "prop": "ropes",
+          "place": "shop",
+          "count": 5,
+          "label": "5 Seile von Rosa"
+        },
+        {
+          "id": "W-TOOLS",
+          "after": "S8-TOOLS",
+          "prop": "tool-crates",
+          "place": "harbor",
+          "count": 3,
+          "label": "3 Kisten Werkzeug"
+        },
+        {
+          "id": "W-BOATS",
+          "after": "S9-LOAD",
+          "prop": "boats",
+          "place": "harbor",
+          "count": 2,
+          "label": "2 Boote beladen"
+        },
+        {
+          "id": "W-ROPED",
+          "after": "S10-ROPES",
+          "prop": "ropes",
+          "place": "pier",
+          "count": 4,
+          "label": "Boote festgebunden"
+        },
+        {
+          "id": "W-ROUTE",
+          "after": "S11-ROUTE",
+          "prop": "route",
+          "place": "pier",
+          "count": 1,
+          "label": "Plan: durch die Riff-Passage"
+        },
+        {
+          "id": "W-SAIL",
+          "after": "S14-LAUNCH",
+          "prop": "sail",
+          "place": "pier",
+          "count": 2,
+          "label": "Boote fahren zum Schiff"
+        }
+      ],
+      "typingBlock": {
+        "id": "TYPE-BLOCK-V7",
+        "version": 1,
+        "targetActiveSeconds": 300,
+        "minDrills": 3,
+        "maxDrills": 6,
+        "fallbackCharsPerSecond": 0.3,
+        "idleGapSeconds": 5,
+        "extraDrills": 1,
+        "minTypedShare": 0.5,
+        "pattern": [
+          "current",
+          "review",
+          "current",
+          "focus",
+          "current",
+          "review"
+        ],
+        "announce": "Heute gibt es {n} kurze Tippübungen hintereinander — zusammen etwa {minutes} Minuten. Danach geht die Mission weiter. Du kannst jederzeit Stopp drücken; was du geschafft hast, bleibt gespeichert.",
+        "note": "About five minutes of focused typing is a first calibration step from the owner-reported one minute (Visit 6 proposal, typing duration), not a research-proven optimum. The number of drills is chosen from the observed pace and reviewed after real use; time alone never completes the block."
+      },
+      "estimatedMinutes": {
+        "min": 20,
+        "max": 30
+      },
+      "rules": {
+        "maxCalcAttempts": 3,
+        "maxQuestionAttempts": 2,
+        "maxProduceAttempts": 3,
+        "maxChoiceAttempts": 2
+      }
+    }
+  ]
+}

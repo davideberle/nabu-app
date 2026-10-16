@@ -21,8 +21,9 @@
 // ---------------------------------------------------------------------------
 
 import type { ChildId } from "./family-assistant-turn.ts";
+import { checkMissions, checkNextInterest, type MissionDef, type NextInterestDef } from "./family-learning-mission-spec.ts";
 
-export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5" | "v6";
+export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7";
 
 export type StageId =
   | "name-base"
@@ -56,7 +57,9 @@ export type StageId =
   | "LANG-ES-HARBOR"
   | "LANG-ES-HARBOR-CHECK"
   | "harbor-build"
-  | "log-review";
+  | "log-review"
+  /** Content version 5 (Visit 6, 2026-10-16): the reviewed, data-driven mission of v7 (`missions[]`). */
+  | "mission";
 
 export type MathItemId = "EQ-ENTRY" | "EQ-MODEL" | "EQ-FRESH" | "EQ-RETURN" | "EQ-DELAY" | "EQ-STATION" | "EQ-STATION-MODEL" | "EQ-PIER" | "EQ-HARBOR" | "EQ-HARBOR-MODEL" | "EQ-HARBOR-CHECK";
 export type ScoredMathItemId = Exclude<MathItemId, "EQ-MODEL" | "EQ-STATION-MODEL" | "EQ-HARBOR-MODEL">;
@@ -73,6 +76,12 @@ export const MATH_OBJECTIVES: Readonly<Record<string, { label: string; part: "A"
   "equal-sharing-with-remainder": { label: "Teilen mit Rest", part: null },
   "quotient-with-remainder": { label: "Teil A — volle Boote und Kisten übrig", part: "A" },
   "quotient-groups-needed": { label: "Teil B — Boote für alle Kisten", part: "B" },
+  // Visit 6 (content v5): the mission's connected calculations and its plan choice, each with its own purpose.
+  "multiplication-in-context": { label: "Mission: Bedarf ausrechnen (mal)", part: null },
+  "quotient-full-rest-needed": { label: "Mission: volle Kisten, Rest und Kisten für alle", part: null },
+  "add-and-group": { label: "Mission: zusammenzählen und auf Boote verteilen", part: null },
+  "multiply-and-compare": { label: "Mission: brauchen und übrig (mal, vergleichen)", part: null },
+  "plan-under-constraints": { label: "Mission: Plan mit Regeln (Logik)", part: null },
 };
 export function isMathObjective(objective: string): boolean {
   return Object.prototype.hasOwnProperty.call(MATH_OBJECTIVES, objective);
@@ -326,7 +335,9 @@ export type LearningContent = {
   harbor?: HarborDef;
   /** Content version 4: the reviewed reasoning probe script. */
   reasoning?: ReasoningDef;
-  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel?: string; dimensions?: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; note?: string };
+  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel?: string; dimensions?: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; note?: string; nextInterest?: NextInterestDef };
+  /** Content version 5: reviewed missions (one per mission visit), executed by `family-learning-mission.ts`. */
+  missions?: MissionDef[];
   retention: { policy: string };
 };
 
@@ -384,7 +395,15 @@ export const EXPECTED_TRANSFER_ID = "WRITE-TRANSFER-1";
 export const EXPECTED_FEEDBACK_DIMENSIONS: readonly string[] = ["enjoyment", "clarity"];
 export type RecipientKind = "people" | "container";
 export const KEYBOARD_LAYOUT_IDS: readonly KeyboardLayoutId[] = ["ch-de-qwertz", "de-qwertz", "us-qwerty"];
-export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4];
+/**
+ * Content version 5 (Visit 6, 2026-10-16): version 4 plus the mission visit v7 (learner-visible "Besuch 6"). The v6 stage list
+ * stays frozen; v7 is one data-driven `mission` stage followed by the summary and the reflection (which from version 5 always
+ * carries the next-visit interest question). Math items and language segments are unchanged: the mission's calculations,
+ * questions and requests live in its reviewed document (`missions[]`, `family-learning-mission-spec.ts`).
+ */
+export const EXPECTED_VISIT_IDS_V5: readonly VisitId[] = [...EXPECTED_VISIT_IDS_V4, "v7"];
+export const EXPECTED_V7_STAGES: readonly StageId[] = ["mission", "summary", "reflect"];
+export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5];
 
 export type ContentReconciliation = {
   ok: boolean;
@@ -706,13 +725,14 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
   const version = typeof raw.contentVersion === "number" && SUPPORTED_CONTENT_VERSIONS.includes(raw.contentVersion) ? raw.contentVersion : null;
   if (version === null) problems.push(`contentVersion must be one of ${SUPPORTED_CONTENT_VERSIONS.join(", ")}, got ${String(raw.contentVersion)}`);
   if (raw.child !== "santiago") problems.push("content.child must be santiago for this build");
-  const v4 = version === 4;
+  const v5 = version === 5;
+  const v4 = version === 4 || v5; // every version-4 rule also holds for version 5
   const v3 = version === 3 || v4; // every version-3 rule also holds for version 4
   const v2 = version === 2 || v3; // every version-2 rule also holds for version 3
 
   const visitIds = idsOf(raw.visits);
   counts.visits = visitIds.length;
-  sameSet(visitIds, v4 ? EXPECTED_VISIT_IDS_V4 : v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
+  sameSet(visitIds, v5 ? EXPECTED_VISIT_IDS_V5 : v4 ? EXPECTED_VISIT_IDS_V4 : v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
   if (Array.isArray(raw.visits)) {
     for (const [id, expected] of Object.entries(EXPECTED_RETAINED_STAGES)) {
       const visit = raw.visits.find((v) => isRecord(v) && v.id === id);
@@ -750,6 +770,20 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
     for (const key of ["wood", "rope"]) if (!supplies || !isRecord(supplies[key])) problems.push(`language.supplyLabels: ${key} (visit v5) missing`);
   }
   if (v4 && Array.isArray(raw.visits)) checkHarborChapter(raw, problems);
+  if (v5 && Array.isArray(raw.visits)) {
+    const v7 = raw.visits.find((v) => isRecord(v) && v.id === "v7");
+    const stages = isRecord(v7) && Array.isArray(v7.stages) ? (v7.stages as unknown[]) : [];
+    if (stages.join(",") !== EXPECTED_V7_STAGES.join(",")) problems.push(`visit v7: stages must be exactly ${EXPECTED_V7_STAGES.join(" → ")}`);
+    const intro = isRecord(v7) && isRecord(v7.intro) ? v7.intro : null;
+    if (!intro || typeof intro.who !== "string" || typeof intro.make !== "string" || typeof intro.done !== "string") problems.push("visit v7: intro must say who needs help, what is made and what counts as done");
+    checkMissions(raw.missions, problems);
+    const missions = Array.isArray(raw.missions) ? raw.missions : [];
+    if (!missions.some((m) => isRecord(m) && m.visit === "v7")) problems.push("missions: visit v7 needs its mission");
+    checkNextInterest(isRecord(raw.reflection) ? raw.reflection.nextInterest : null, problems);
+  } else {
+    if ("missions" in raw) problems.push("missions exist only from content version 5");
+    if (isRecord(raw.reflection) && "nextInterest" in raw.reflection) problems.push("reflection.nextInterest exists only from content version 5");
+  }
 
   const math = isRecord(raw.math) ? raw.math : null;
   const mathIds = idsOf(math?.items);
@@ -879,7 +913,7 @@ export function isLanguageSegmentId(value: unknown): value is LanguageSegmentId 
 }
 
 export function isVisitId(value: unknown): value is VisitId {
-  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5" || value === "v6";
+  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5" || value === "v6" || value === "v7";
 }
 
 export function isHarborWorkplaceId(value: unknown): value is HarborWorkplaceId {
@@ -910,4 +944,9 @@ export function transferDefFor(content: LearningContent, visit: VisitId | null):
 /** The verb for the used part of a remainder item ("30 gepflanzt" / "42 verbaut"). */
 export function usedWordOf(item: Pick<MathItem, "usedWord">): { past: string; label: string } {
   return item.usedWord ?? { past: "gepflanzt", label: "Gepflanzt" };
+}
+
+/** The reviewed mission of a visit (content v5), or null. */
+export function missionForVisit(content: LearningContent, visit: VisitId): MissionDef | null {
+  return content.missions?.find((m) => m.visit === visit) ?? null;
 }

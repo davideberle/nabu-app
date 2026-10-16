@@ -19,6 +19,7 @@ import { writingAspectLabel } from "./family-learning-writing-review.ts";
 import { mathItem, usedWordOf } from "./family-learning-content.ts";
 import type { MathAttempt, MissionState, TypingBurst, VisitRecord } from "./family-learning-state.ts";
 import type { LessonFeedback } from "./family-learning-feedback.ts";
+import { missionReport, missionVisitSummary, pendingInterest } from "./family-learning-mission.ts";
 
 // ---------------------------------------------------------------------------
 // Delayed check
@@ -113,6 +114,7 @@ export function visitOrdinal(state: MissionState, id: VisitId): number | null {
     case "v4": return hasV3Record ? 4 : 3;
     case "v5": return hasV3Record ? 5 : 4;
     case "v6": return hasV3Record ? 6 : 5;
+    case "v7": return hasV3Record ? 7 : 6;
   }
 }
 
@@ -151,6 +153,8 @@ export type SceneModel = {
   /** Visit 5 (content v4): the harbor — the loaded boats once EQ-HARBOR is resolved, the destination once planned, ropes only with cuerdas supplied. */
   harbor: { crates: number; perBoat: number; fullBoats: number; remaining: number; boatsNeeded: number | null; planned: boolean; destination: string | null; roped: boolean; workplaces: { typing: boolean; planning: boolean; closing: boolean } };
   pagesSaved: number;
+  /** Visit 6 (content v5): the mission's visible world changes caused by finished steps (durable records only); absent before. */
+  missionWorld?: { id: string; prop: string; place: string; count: number; label: string }[];
 };
 
 export function buildSceneModel(state: MissionState, content: LearningContent): SceneModel {
@@ -219,6 +223,11 @@ export function buildSceneModel(state: MissionState, content: LearningContent): 
     pier,
     harbor,
     pagesSaved: state.pages.length,
+    missionWorld: (content.missions ?? []).flatMap((def) => {
+      const rep = missionReport(state, content, def.visit as VisitId);
+      if (!rep) return [];
+      return def.world.filter((w) => ["done", "practiced", "taught", "unresolved"].includes(rep.statuses[w.after])).map((w) => ({ id: w.id, prop: w.prop, place: w.place, count: w.count, label: w.label }));
+    }),
   };
 }
 
@@ -235,7 +244,7 @@ export type VisitSummary = {
   success: SummaryLine | null;
   practiced: SummaryLine | null;
   next: SummaryLine & { branch: RecommendationBranch };
-  artifact: { kind: "page" | "station" | "pier" | "revision" | "harbor" | "log-review" | "none"; text: string };
+  artifact: { kind: "page" | "station" | "pier" | "revision" | "harbor" | "log-review" | "mission" | "none"; text: string };
 };
 
 function visitRecord(state: MissionState, visitId: VisitId): VisitRecord | null {
@@ -305,6 +314,9 @@ export function buildVisitSummary(state: MissionState, content: LearningContent,
   const title = content.visits.some((v) => v.id === visitId) ? visitLabel(state, content, visitId) : visitId;
   const next = recommendNext(state, content, visitId);
   if (!visit) return { visit: visitId, title, success: null, practiced: null, next, artifact: { kind: "none", text: "Noch nichts erstellt." } };
+  // Content v5: a mission visit is summarised from its own run (no math items, language segments or pages of its own).
+  const mission = missionVisitSummary(state, content, visitId);
+  if (mission) return { visit: visitId, title, success: mission.success, practiced: mission.practiced, next: mission.next, artifact: mission.artifact ?? { kind: "none", text: "Die Mission ist noch nicht fertig." } };
   const end = visit.finishedAt ?? "9999";
   const inVisit = (at: string) => at >= visit.startedAt && at <= end;
   const attempts = attemptsInVisit(state, visit);
@@ -464,7 +476,7 @@ export type ParentReview = {
     hypotheses: { observation: string; alternatives: string[]; suggestion: string }[];
     telemetry: TelemetrySummary;
     /** What the child actually said (difficulty, enjoyment, clarity); explicitly skipped, left open and not-offered dimensions stay distinct. */
-    childFeedback: { difficulty: string | null; enjoyment: string | null; clarity: string | null; skipped: string[]; unanswered: string[]; notOffered: string[] };
+    childFeedback: { difficulty: string | null; enjoyment: string | null; clarity: string | null; skipped: string[]; unanswered: string[]; notOffered: string[]; nextInterest?: { kind: string; text: string | null; source: string; at: string } | null; nextInterestPending?: boolean };
     missing: string[];
   };
   recommendation: VisitSummary["next"];
@@ -566,6 +578,13 @@ export function buildParentReview(state: MissionState, content: LearningContent,
     objectives.push({ taskId: lr.logId, version: 1, objective: "writing-review-revision", outcome: outcomeText, evidence: lr.outcome === "skipped" ? "unscored" : lr.evidence ?? "unscored", support: lr.helpShown ? ["suggestion-shown"] : [], uncertainty: [lr.review.taught.length === 0 ? "an den geprüften Stellen nichts zu lehren — keine Aussage über den ganzen Satz" : null, unassessedAspects.length ? `nicht beurteilt: ${unassessedAspects.join(", ")}` : null, byStatus("changed").length ? `geändert, nicht erneut beurteilt: ${byStatus("changed").join(", ")}` : null, lr.evaluation?.boundaries && (lr.evaluation.boundaries.joins.length || lr.evaluation.boundaries.splits.length) ? `Wortgrenzen geändert: ${[...lr.evaluation.boundaries.joins, ...lr.evaluation.boundaries.splits].join("; ")}` : null, lr.review.clarify ? `nachgefragt: ${lr.review.clarify.words.length ? lr.review.clarify.words.join(", ") : lr.review.clarify.question}` : null, "keine Aussage über Richtigkeit des ganzen Satzes"].filter(Boolean).join(" · ") });
     whatHappened.push(`Kapitänslogbuch (${lr.logId}): Original „${lr.original}“; Befunde: ${lr.review.findings.length ? lr.review.findings.map((f) => f.id).join(", ") : "keine an den geprüften Stellen"}; gelehrt: ${taughtAspects.join(", ") || "nichts"}; ohne Befund: ${lr.review.clean.join(", ") || "—"}; Überarbeitung: ${lr.revised ? `„${lr.revised}“ (${lr.outcome}${lr.evaluation ? `, gelöst ${lr.evaluation.resolved.length}/${lr.review.taught.length}` : ""}${lr.evaluation?.copiedSuggestion ? ", Vorschlag kopiert" : ""})` : "übersprungen"}${Object.keys(lr.clarifications).length ? `; Erklärungen: ${Object.entries(lr.clarifications).map(([w, m]) => `${w} = „${m}“`).join(", ")}` : ""}. Keine Aussage über Stellen, die nicht geprüft wurden.`);
   }
+  // Content v5: the mission's attempts, help and typing block, verbatim and per step (original and supported attempts apart).
+  const missionPart = missionReport(state, content, visitId);
+  if (missionPart) {
+    objectives.push(...missionPart.objectives);
+    whatHappened.push(...missionPart.whatHappened);
+    if (missionPart.retrieval.length) whatHappened.push(`Wiederholen beim nächsten Mal: ${missionPart.retrieval.map((r) => `${r.step} (${r.status}${r.outcome ? ", " + r.outcome : ""})`).join("; ")}.`);
+  }
   const spokenPages = state.pages.filter((p) => p.visit === visitId && inVisit(p.at) && p.modality === "spoken");
   if (spokenPages.length) whatHappened.push(`Logbuchseite gesprochen (${spokenPages.length}): Rechtschreibung und Leerzeichen stammen aus der Transkription, nicht vom Kind.`);
   if (state.typing.alignment && inVisit(state.typing.alignment.checkedAt)) whatHappened.push(`Tastatur-Check: ${state.typing.alignment.result === "match" ? "Eingabequelle passt zur bestätigten Tastatur" : "Eingabequelle passt NICHT — Übungen blieben gesperrt"}.`);
@@ -603,7 +622,18 @@ export function buildParentReview(state: MissionState, content: LearningContent,
     skipped: fb?.skipped ?? [],
     unanswered: fb?.unanswered ?? [],
     notOffered: fb ? ["difficulty", "enjoyment", "clarity"].filter((d) => !fb.offered.includes(d)) : ["enjoyment", "clarity"],
+    // Content v5 only: earlier content never asked, so earlier reviews keep their exact shape.
+    ...(content.reflection.nextInterest
+      ? {
+          nextInterest: (() => {
+            const i = (state.interests ?? []).filter((x) => x.visit === visitId).pop();
+            return i ? { kind: i.kind, text: i.text, source: i.source, at: i.at } : null;
+          })(),
+          nextInterestPending: pendingInterest(state, content) === visitId,
+        }
+      : {}),
   };
+  if (content.reflection.nextInterest && missionPart && !childFeedback.nextInterest) missing.push("Wunsch fürs nächste Mal: noch nicht beantwortet (wird beim nächsten Öffnen gefragt, nichts wird angenommen).");
   if (!visit.reflection) missing.push(fb?.skipped.includes("difficulty") ? "Schwierigkeit: vom Kind bewusst nicht gesagt." : fb?.unanswered?.includes("difficulty") ? "Schwierigkeit: offen gelassen." : "Keine Selbsteinschätzung (Schwierigkeit).");
   if (!fb) missing.push("Spass und Klarheit wurden in diesem Besuch nicht abgefragt (Inhalte ohne Feedback-Dimensionen).");
   else {

@@ -10,6 +10,7 @@
 // lesson-end feedback after a typing round is rendered by the workspace from
 // the server's `lastLesson` (lesson-end.tsx), not here.
 
+import { NextInterestQuestion, interestReady, type InterestAnswer } from "@/components/family/learning/next-interest";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import { isComposing, useDeliberateFocus } from "@/components/family/learning/focus";
@@ -693,6 +694,8 @@ export function LogTransfer({ view, busy, gate = alwaysOpen, onSubmit, onSkip, d
 export function ReflectFeedback({ view, busy, gate = alwaysOpen, onSubmit, drafts }: { view: ChildView; busy: boolean; gate?: Gate; onSubmit: SubmitHandler; drafts?: DraftContext }) {
   const reflection = view.reflection;
   const [answers, setAnswers] = useState<Record<string, string | null | undefined>>({});
+  // Content v5 (V6-11): the closing always asks what comes next; the answer is required (own words or one of its buttons).
+  const [interest, setInterest] = useState<InterestAnswer | null>(null);
   const draftRef = useRef<SubmitDraft | null>(null);
   const [draft, setDraft] = useState<SubmitDraft | null>(null);
   const [restored, setRestored] = useState(false);
@@ -712,7 +715,8 @@ export function ReflectFeedback({ view, busy, gate = alwaysOpen, onSubmit, draft
     if (!identity) return;
     const stored = loadDraft(storage, identity, "reflect");
     if (!stored) return;
-    const body = stored.payload as { optionId?: string | null; difficultySkipped?: boolean; feedback?: Record<string, string | null | undefined> };
+    const body = stored.payload as { optionId?: string | null; difficultySkipped?: boolean; feedback?: Record<string, string | null | undefined>; interest?: InterestAnswer };
+    if (body.interest) setInterest(body.interest);
     const next: Record<string, string | null | undefined> = { ...(body.feedback ?? {}) };
     next.difficulty = body.optionId ?? (body.difficultySkipped ? null : undefined);
     setAnswers(next);
@@ -729,7 +733,7 @@ export function ReflectFeedback({ view, busy, gate = alwaysOpen, onSubmit, draft
   const payload = () => {
     const feedback: Record<string, string | null | undefined> = {};
     for (const dim of dims) feedback[dim.id] = answers[dim.id];
-    return { op: "reflect", optionId: difficulty ?? null, difficultySkipped: difficulty === null, feedback };
+    return { op: "reflect", optionId: difficulty ?? null, difficultySkipped: difficulty === null, feedback, ...(reflection.nextInterest && interest ? { interest } : {}) };
   };
   const persist = (d: SubmitDraft, body: Record<string, unknown>) => {
     if (!identity) return;
@@ -741,9 +745,11 @@ export function ReflectFeedback({ view, busy, gate = alwaysOpen, onSubmit, draft
     setDraft(null);
     setRestored(false);
     setAnswers({});
+    setInterest(null);
   };
   const send = async () => {
     if (!difficultyOptional && !difficulty) return;
+    if (reflection.nextInterest && !interestReady(interest)) return;
     const body = payload();
     const next = submitDraftFor(draftRef.current, payloadKeyOf(body), newKey);
     if (!canSend(next)) return;
@@ -784,13 +790,18 @@ export function ReflectFeedback({ view, busy, gate = alwaysOpen, onSubmit, draft
       <Instruction kicker="Zum Schluss">Wie war es heute?</Instruction>
       {row("difficulty", reflection.prompt, reflection.options, reflection.skipLabel, true)}
       {dims.map((dim) => row(dim.id, dim.prompt, dim.options, dim.skipLabel, false))}
+      {reflection.nextInterest ? (
+        <div className="rounded-3xl border border-primary bg-secondary/40 p-4">
+          <NextInterestQuestion labels={reflection.nextInterest} value={interest} onChange={setInterest} disabled={busy || draft?.phase === "saving"} />
+        </div>
+      ) : null}
       {failed ? (
         <p className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" role="status" data-testid="reflect-notice" data-failure={failed.failure} data-restored={restored ? "true" : "false"}>
           {failed.failure === "refused" ? "Das ging so nicht. Schau deine Antworten nochmal an." : failed.failure === "stale" ? "Da war schon ein neuerer Stand — schau, wo du jetzt bist." : restored ? "Deine Antworten von vorhin sind noch da — sie wurden noch nicht gespeichert. Nochmal speichern oder verwerfen?" : "Speichern hat nicht geklappt. Deine Antworten sind noch da — nochmal speichern?"}
         </p>
       ) : null}
       <div className="flex flex-wrap gap-2">
-        <button type="button" disabled={busy || draft?.phase === "saving" || (!difficultyOptional && !difficulty)} onClick={() => void send()} className={primaryButton} data-testid="reflect-submit">
+        <button type="button" disabled={busy || draft?.phase === "saving" || (!difficultyOptional && !difficulty) || (!!reflection.nextInterest && !interestReady(interest))} onClick={() => void send()} className={primaryButton} data-testid="reflect-submit">
           {failed && failed.failure === "network" ? "Nochmal speichern" : "Fertig — zum Bericht"}
         </button>
         {failed && failed.failure === "network" ? (
@@ -799,7 +810,7 @@ export function ReflectFeedback({ view, busy, gate = alwaysOpen, onSubmit, draft
           </button>
         ) : null}
       </div>
-      <p className="text-sm text-tertiary">Danach siehst du deinen Bericht. Deine Seite ist gespeichert. Was du nicht sagst, bleibt einfach offen.</p>
+      <p className="text-sm text-tertiary">Danach siehst du deinen Bericht. Alles ist gespeichert. Was du nicht sagst, bleibt einfach offen.</p>
     </div>
   );
 }
@@ -840,7 +851,7 @@ export function Summary({ view, busy, gate = alwaysOpen, onNext }: { view: Child
       </ul>
       {summary.artifact.kind !== "none" ? (
         <div className="rounded-2xl border border-primary p-4" data-testid="summary-artifact">
-          <p className="text-sm text-tertiary">{summary.artifact.kind === "station" ? "Gebaut" : "Deine Seite"}</p>
+          <p className="text-sm text-tertiary">{summary.artifact.kind === "station" ? "Gebaut" : summary.artifact.kind === "mission" ? "Auf der Insel" : "Deine Seite"}</p>
           <p className="mt-1 text-base text-primary">{summary.artifact.text}</p>
         </div>
       ) : null}

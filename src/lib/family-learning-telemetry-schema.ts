@@ -10,9 +10,9 @@
 // a typed word, a transcript or an attention score could be stored.
 // ---------------------------------------------------------------------------
 
-import { EXPECTED_RETAINED_STAGES, EXPECTED_V4_STAGES, EXPECTED_V5_STAGES, EXPECTED_V6_STAGES, type StageId } from "./family-learning-content.ts";
+import { EXPECTED_RETAINED_STAGES, EXPECTED_V4_STAGES, EXPECTED_V5_STAGES, EXPECTED_V6_STAGES, EXPECTED_V7_STAGES, type StageId } from "./family-learning-content.ts";
 
-export const TELEMETRY_STAGES: readonly StageId[] = [...new Set<StageId>([...Object.values(EXPECTED_RETAINED_STAGES).flat(), ...EXPECTED_V4_STAGES, ...EXPECTED_V5_STAGES, ...EXPECTED_V6_STAGES])];
+export const TELEMETRY_STAGES: readonly StageId[] = [...new Set<StageId>([...Object.values(EXPECTED_RETAINED_STAGES).flat(), ...EXPECTED_V4_STAGES, ...EXPECTED_V5_STAGES, ...EXPECTED_V6_STAGES, ...EXPECTED_V7_STAGES])];
 
 /** Every op name of the state machine (kept in sync by a unit test). */
 export const TELEMETRY_OPS = [
@@ -21,11 +21,12 @@ export const TELEMETRY_OPS = [
   "summary-seen", "support", "typing-burst", "typing-check", "typing-course-continue", "typing-label", "typing-lesson", "write-transfer",
   "repair-explain", "typing-retry", "writing-retry", "language-retry", "repair-close", "lesson-feedback-seen",
   "enter-workplace", "answer-quotient", "answer-needed", "reasoning-turn", "reasoning-reply", "reasoning-choice", "plan-harbor", "review-log", "review-log-dispatch", "review-log-semantic",
+  "mission", "record-interest",
 ] as const;
 export type TelemetryOp = (typeof TELEMETRY_OPS)[number];
 
 /** Named controls whose activation may be counted (never their payload). */
-export const TELEMETRY_CONTROLS = ["stop", "tutor-open", "tutor-close", "read-aloud", "another-burst", "shorter-burst", "course-continue", "mic-start", "mic-stop", "walk", "direct-enter"] as const;
+export const TELEMETRY_CONTROLS = ["stop", "tutor-open", "tutor-close", "read-aloud", "another-burst", "shorter-burst", "course-continue", "mic-start", "mic-stop", "walk", "direct-enter", "typing-pause"] as const;
 export type TelemetryControl = (typeof TELEMETRY_CONTROLS)[number];
 
 /** Child feedback dimensions and their option ids (content `reflection`). */

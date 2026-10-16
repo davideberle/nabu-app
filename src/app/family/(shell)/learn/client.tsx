@@ -41,6 +41,7 @@ import type { SupportOutcome } from "@/lib/family-learning-tutor";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
 import { VisitReportView } from "@/components/family/learning/visit-report";
 import { focusRing, primaryButton, secondaryButton } from "./mission/styles";
+import { NextInterestQuestion, interestReady, type InterestAnswer } from "@/components/family/learning/next-interest";
 
 type Load =
   | { kind: "loading" }
@@ -67,14 +68,14 @@ function formatDate(iso: string): string {
 export function worldMarkers(view: ChildView): WorldMarker[] {
   const running = view.visit;
   const completed = new Set(view.progress.completed.map((c) => c.visit));
-  const ordered = ["v1", "v2", "v4", "v5", "v6"] as const;
+  const ordered = ["v1", "v2", "v4", "v5", "v6", "v7"] as const;
   const markers: WorldMarker[] = [];
   for (const id of ordered) {
     const report = view.reports.find((r) => r.visit === id) ?? null;
     const done = completed.has(id);
     const isRunning = running?.id === id;
     const isNext = !isRunning && view.next.visit === id;
-    const ordinal = report?.ordinal ?? view.progress.completed.find((c) => c.visit === id)?.ordinal ?? (id === "v1" ? 1 : id === "v2" ? 2 : view.next.visit === id ? view.next.ordinal : id === "v6" ? 5 : id === "v5" ? 4 : 3);
+    const ordinal = report?.ordinal ?? view.progress.completed.find((c) => c.visit === id)?.ordinal ?? (id === "v1" ? 1 : id === "v2" ? 2 : view.next.visit === id ? view.next.ordinal : id === "v7" ? 6 : id === "v6" ? 5 : id === "v5" ? 4 : 3);
     const label = report?.label ?? view.progress.completed.find((c) => c.visit === id)?.label ?? (isRunning ? running!.title : isNext ? view.progress.next.label ?? `Besuch ${ordinal ?? ""}` : `Besuch ${ordinal ?? ""}`);
     markers.push({
       visit: id,
@@ -106,6 +107,22 @@ function World({ child }: { child: ChildId }) {
   const reportParam = searchParams.get("report");
   const [panel, setPanel] = useState<Panel>(() => (reportParam ? { kind: "report", visit: reportParam } : null));
   const primaryRef = useRef<HTMLAnchorElement | null>(null);
+  // V6-11: the next-visit question after an early exit — asked once per entry, "Später" hides it for this page only.
+  const [interest, setInterest] = useState<InterestAnswer | null>(null);
+  const [interestBusy, setInterestBusy] = useState(false);
+  const [interestDismissed, setInterestDismissed] = useState(false);
+  const saveInterest = async () => {
+    const current = viewRef.current;
+    if (!current || !interest || !interestReady(interest)) return;
+    setInterestBusy(true);
+    const op = { op: "record-interest", kind: interest.kind, text: interest.kind === "text" ? interest.text ?? "" : null } as LearningOp;
+    const outcome = await client.mutate(child, op, current.revision, { context: { erasureGeneration: current.erasureGeneration, visit: current.visit ? { id: current.visit.id, startedAt: current.visit.startedAt } : null }, timeZone: browserTimeZone() });
+    setInterestBusy(false);
+    if (outcome.ok || ("status" in outcome && outcome.status === "refused")) {
+      viewRef.current = outcome.view;
+      setLoad({ kind: "ready", view: outcome.view });
+    }
+  };
 
   useEffect(() => {
     aliveRef.current = true;
@@ -213,7 +230,7 @@ function World({ child }: { child: ChildId }) {
   const view = load.view;
   const running = view.visit;
   const canStart = running !== null || view.next.visit !== null;
-  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" || view.next.visit === "v5" || view.next.visit === "v6" ? `Besuch ${view.next.ordinal ?? (view.next.visit === "v6" ? 5 : view.next.visit === "v5" ? 4 : 3)} starten` : "Weiter";
+  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" || view.next.visit === "v5" || view.next.visit === "v6" || view.next.visit === "v7" ? `Besuch ${view.next.ordinal ?? (view.next.visit === "v7" ? 6 : view.next.visit === "v6" ? 5 : view.next.visit === "v5" ? 4 : 3)} starten` : "Weiter";
   const markers = worldMarkers(view);
   const report: VisitReport | null = panel?.kind === "report" ? view.reports.find((r) => r.visit === panel.visit) ?? null : null;
   const missionHref = `/family/learn/mission?child=${child}`;
@@ -228,7 +245,7 @@ function World({ child }: { child: ChildId }) {
     <div className="relative h-[calc(100dvh-4.25rem)] min-h-[560px] w-full overflow-hidden" data-testid="world-screen" data-world-next={view.next.visit ?? ""} data-world-running={running?.id ?? ""}>
       {/* One continuous world viewport; the HUD and the one action float over it. */}
       <div className="absolute inset-0">
-        <HarborIsland scene={view.scene} markers={markers} pages={view.pages.length} harbor={view.harbor} onSelectMarker={onSelectMarker} onOpenLogbook={() => openPanel({ kind: "logbook" })} onOpenSupplies={() => openPanel({ kind: "supplies" })} onOpenWordbook={() => openPanel({ kind: "wordbook" })} />
+        <HarborIsland scene={view.scene} markers={markers} pages={view.pages.length} harbor={view.harbor} chips={view.visit?.id === "v6" || view.next.visit === "v6"} onSelectMarker={onSelectMarker} onOpenLogbook={() => openPanel({ kind: "logbook" })} onOpenSupplies={() => openPanel({ kind: "supplies" })} onOpenWordbook={() => openPanel({ kind: "wordbook" })} />
       </div>
 
       {/* HUD — top right: the one honest count (the shell bar above already carries Home) */}
@@ -249,6 +266,19 @@ function World({ child }: { child: ChildId }) {
       {/* The one dominant action — bottom left, over the world, beside the island */}
       {/* The full-width band itself lets clicks through to the map (flags in the lower band stay reachable); only the card and the chip catch them. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-2 px-3 pb-4 sm:px-6 sm:pb-6">
+        {view.interestPrompt && !interestDismissed ? (
+          <div className="pointer-events-auto w-full max-w-md rounded-3xl border border-primary bg-primary/95 p-4 shadow-md backdrop-blur sm:p-5" data-testid="entry-interest">
+            <NextInterestQuestion labels={view.interestPrompt} value={interest} onChange={setInterest} disabled={interestBusy} intro={view.interestPrompt.entryPrompt} />
+            <div className="mt-3 flex flex-wrap gap-2">
+              <button type="button" className={primaryButton} disabled={interestBusy || !interestReady(interest)} onClick={() => void saveInterest()} data-testid="entry-interest-save">
+                Speichern
+              </button>
+              <button type="button" className={secondaryButton} disabled={interestBusy} onClick={() => setInterestDismissed(true)} data-testid="entry-interest-later">
+                Später
+              </button>
+            </div>
+          </div>
+        ) : null}
         <div className="pointer-events-auto w-full max-w-md rounded-3xl border border-primary bg-primary/95 p-4 shadow-md backdrop-blur sm:p-5" data-testid="world-action">
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-tertiary">{running ? "Angefangen" : view.next.visit ? "Als Nächstes" : "Alles gespeichert"}</p>
           <p className="mt-1 text-xl font-semibold leading-tight text-primary sm:text-2xl" data-testid="world-next-step">

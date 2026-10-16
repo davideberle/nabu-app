@@ -79,6 +79,8 @@ export type HarborIslandProps = {
   labels?: "focused" | "all";
   /** Whether the on-stage toggle between the two label modes is offered (default: everywhere but the strip). */
   labelsToggle?: boolean;
+  /** Visit 6: false hides the screen-space workplace chips (the walkable mission draws its own place labels). */
+  chips?: boolean;
 };
 
 // ---------------------------------------------------------------------------
@@ -105,6 +107,7 @@ const LOCATION_LABEL: Record<string, string> = { crater: "Am Kraterrand", ice: "
 const DESTINATION_LABEL: Record<string, string> = { lighthouse: "Leuchtturm-Insel", mainland: "Festland", ship: "Forschungsschiff" };
 
 import { B3_ANCHORS, ISLAND_NODES, PLATE_BOXES, STATION_SPOTS, plateFor, type PlateId } from "./harbor-island-plates";
+import { DEFAULT_MISSION_POS, MissionWorldChanges } from "./mission-world-changes";
 
 /** Label mode shared with the drawing helpers: `all` shows every in-stage caption; `hub` = a walkable stage (no "where next" callouts there). */
 const LabelsCtx = createContext<{ all: boolean; hub: boolean }>({ all: true, hub: false });
@@ -1017,7 +1020,7 @@ function neighbourInDirection(from: IslandPlace, dir: "left" | "right" | "up" | 
 
 const STEP_MS = 520;
 
-export function HarborIsland({ scene, markers, pages, harbor = null, variant = "full", destinations, avatarAt = null, onArrive, onSelectMarker, onOpenLogbook, onOpenSupplies, onOpenWordbook, description, className, children, arriveHint = null, labels = "focused", labelsToggle = variant !== "strip" }: HarborIslandProps) {
+export function HarborIsland({ scene, markers, pages, harbor = null, variant = "full", destinations, avatarAt = null, onArrive, onSelectMarker, onOpenLogbook, onOpenSupplies, onOpenWordbook, description, className, children, arriveHint = null, labels = "focused", labelsToggle = variant !== "strip", chips: showChips = true }: HarborIslandProps) {
   const [allLabels, setAllLabels] = useState(labels === "all");
   useEffect(() => setAllLabels(labels === "all"), [labels]);
   // screen-space mapping of the stage (viewBox → container px) for the label chips: computed from the actual box, so the chips keep a
@@ -1144,6 +1147,7 @@ export function HarborIsland({ scene, markers, pages, harbor = null, variant = "
   const m4 = byVisit("v4");
   const m5 = byVisit("v5");
   const m6 = byVisit("v6");
+  const m7 = byVisit("v7");
   const dest = (id: IslandPlace) => destinations?.find((d) => d.id === id) ?? null;
   // Label chips (screen space): the three workplaces always, the selected arrival when it is another place. Anchored just above
   // each roof; the workshop chip follows the painted plate's box when the plate is mounted (the plate is door-anchored, so its
@@ -1425,6 +1429,9 @@ export function HarborIsland({ scene, markers, pages, harbor = null, variant = "
             showed the root position stacking the station, pier and harbormaster flags on top of each other on the tablet) */}
         {m5 ? <Flag x={POS.pier[0] + 150} y={POS.pier[1] + 46} marker={m5} onSelect={onSelectMarker} /> : null}
         {m6 ? <Flag x={POS.harbormaster[0] + 170} y={POS.harbormaster[1] + 70} marker={m6} onSelect={onSelectMarker} /> : null}
+        {/* Visit 6 (content v5): the mission's world changes stay on the island; its flag stands on the quay's west end */}
+        {scene.missionWorld?.length ? <MissionWorldChanges world={scene.missionWorld} pos={DEFAULT_MISSION_POS} testId="island-mission-world" /> : null}
+        {m7 ? <Flag x={POS.harbor[0] - 190} y={POS.harbor[1] + 30} marker={m7} onSelect={onSelectMarker} /> : null}
 
         {/* destination hotspots (click/tap to walk) */}
         {hotspot("workshop", "Tipp-Werkstatt", workshopPlate ? PLATE_BOXES.workshop.width + 4 : 190, workshopPlate ? PLATE_BOXES.workshop.height : 170, workshopPlate ? workshopChipX - POS.workshop[0] : 0)}
@@ -1456,7 +1463,7 @@ export function HarborIsland({ scene, markers, pages, harbor = null, variant = "
       </LabelsCtx.Provider>
       {/* screen-space labels: fixed font size, positioned from the measured stage box; never a hit target (the SVG hotspots below take the taps) */}
       <div className="pointer-events-none absolute inset-0" data-testid="island-labels" data-labels={allLabels ? "all" : "focused"} aria-hidden>
-        {fit
+        {fit && showChips
           ? chips.map((c) => {
               const [x, y] = CHIP_ANCHOR[c.id];
               const px = x * fit.scale + fit.ox;

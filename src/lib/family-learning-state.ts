@@ -59,8 +59,10 @@ import { buildWritingReviewDispatch, evaluateLogRevision, parseWritingReviewRepl
 import { applyReasoningChoice, applyReasoningReply, applyReasoningTurn, childExplanationText, closeReasoningUnresolved, effectiveLevel, levelLabel, MAX_REPLY_CHARS, methodLabel, newReasoningState, pendingDispatch, turnsLeft, type AssessmentLevel, type ReasoningDispatchContext, type ReasoningState, type ReplyOrigin } from "./family-learning-reasoning.ts";
 import { sha256Hex } from "./family-learning-hash.ts";
 import { liveTutorDeferred } from "./family-learning-deferral.ts";
+import { applyMissionAction, buildMissionView, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
 import { originWithoutBinding, provenanceOf, receiptOrigin as bindReceipt, type InvalidReceipt, type ReceiptInput, type VerifiedReceipt } from "./family-learning-trust.ts";
 import {
+  childFacingUnclear,
   acknowledgeLesson,
   buildVisitReports,
   closeRepair,
@@ -115,7 +117,9 @@ export type SupportKind =
   | "step_down"
   | "word_choice"
   /** UX-5b: the visual worked example of a targeted mini-lesson, recorded before it is shown (never answer-relevant). */
-  | "mini_lesson";
+  | "mini_lesson"
+  /** Content v5 (Visit 6): mission help and listening plays, namespaced (`mission_transcript`, `mission_language_repair`, …). */
+  | `mission_${string}`;
 
 /** Support kinds that make a correct answer `supported` rather than independent. */
 const ANSWER_RELEVANT_SUPPORT: readonly SupportKind[] = [
@@ -265,6 +269,8 @@ export type TypingBurst = {
   metricVersion: 2;
   /** Per-character mismatches of the final line text (world-first 2026-10-03); absent on rounds saved before it. */
   errors?: TypingError[];
+  /** Visit 6: the mission typing block this drill came from (comfort = the block's one answer); absent on course rounds. */
+  blockId?: string;
   seconds: number;
   at: string;
 };
@@ -485,6 +491,10 @@ export type MissionState = {
   transfers?: TransferRecord[];
   /** Lesson-end repairs, practice focus and acknowledged lesson feedback (world-first 2026-10-03, additive; absent on earlier rows). */
   feedback?: FeedbackState;
+  /** Content v5 (Visit 6, 2026-10-16): the run of each reviewed mission (`family-learning-mission.ts`) — additive; absent on earlier rows. */
+  missions?: Record<string, MissionRun>;
+  /** Content v5: the child's own answers to "what next?" (verbatim, append-only) — additive; absent on earlier rows. */
+  interests?: InterestRecord[];
 };
 
 export type ParentSettings = {
@@ -713,7 +723,7 @@ export type SampleRow = {
   id: string;
   visitId: VisitId;
   taskId: string | null;
-  kind: "explanation" | "expedition_log" | "expedition_log_revision" | "writing_transfer" | "typed_label" | "language_response" | "typing_practice" | "typing_burst" | "typing_retry" | "writing_retry" | "language_retry" | "reasoning_turn" | "writing_review" | "writing_clarification";
+  kind: "explanation" | "expedition_log" | "expedition_log_revision" | "writing_transfer" | "typed_label" | "language_response" | "typing_practice" | "typing_burst" | "typing_retry" | "writing_retry" | "language_retry" | "reasoning_turn" | "writing_review" | "writing_clarification" | "next_interest";
   language: string | null;
   modality: string;
   text: string;
@@ -775,7 +785,11 @@ export type LearningOp =
   /** `deferred` (D1, 2026-10-11): the owner-deferral transition for an ALREADY-ACTIVE `explain` stage of a deferred visit — not the child's skip; accepted only there. */
   | { op: "skip-stage"; stage: StageId; reason: "time" | "child" | "deferred" }
   | { op: "save-log"; text: string; modality?: "typed" | "spoken" }
-  | { op: "reflect"; optionId: string | null; difficultySkipped?: boolean; feedback?: { enjoyment?: string | null; clarity?: string | null } }
+  | { op: "reflect"; optionId: string | null; difficultySkipped?: boolean; feedback?: { enjoyment?: string | null; clarity?: string | null }; interest?: { kind: InterestRecord["kind"]; text?: string | null } }
+  /** Content v5 (Visit 6): one action of the reviewed mission (stage `mission`). */
+  | { op: "mission"; action: MissionAction }
+  /** Content v5: the next-visit interest asked at the next entry after an early exit (only while one is pending). */
+  | { op: "record-interest"; kind: InterestRecord["kind"]; text?: string | null }
   | { op: "write-transfer"; text: string; modality?: "typed" | "spoken" }
   /** UX-5b: record that the mini-lesson's worked example is shown (before it is shown). */
   | { op: "repair-explain"; repairId: string }
@@ -916,6 +930,10 @@ export function nextVisitAvailability(
   // version 3 (cap / rollback) nothing further is offered and a running v6 is parked.
   const hasV6 = content.visits.some((v) => v.id === "v6");
   if (hasV6 && !finished.includes("v6")) return { visit: "v6", availableAt: null };
+  // Visit 6 (content v5, 2026-10-16): the mission chapter `v7` follows the finished harbor chapter immediately. Under content
+  // version 4 (cap / rollback) nothing further is offered and a running v7 is parked.
+  const hasV7 = content.visits.some((v) => v.id === "v7");
+  if (hasV7 && !finished.includes("v7")) return { visit: "v7", availableAt: null };
   return { visit: null, availableAt: null, reason: "all-visits-done" };
 }
 
@@ -1254,6 +1272,9 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const routed = content.harbor && def.stages.includes("island");
       state.visits.push({ id: availability.visit, startedAt: nowIso, finishedAt: null, stageIndex: 0, skippedStages: [], reflection: null, ...(routed ? { route: [...def.stages] } : {}) });
       state.currentVisit = availability.visit;
+      // Content v5: a mission visit starts its reviewed mission run (position at the map start, nothing done).
+      const missionDef = missionDefFor(content, availability.visit);
+      if (missionDef) state.missions = { ...(state.missions ?? {}), [missionDef.id]: newMissionRun(missionDef, availability.visit, nowIso) };
       // `restore` is only meaningful when a base exists.
       if (def.stages[0] === "restore" && !state.base.name) currentVisit(state).stageIndex = 1;
       result = { visit: availability.visit, resumed: false };
@@ -2433,11 +2454,53 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
         }
         visit.feedback = { answers, skipped, unanswered, offered };
       }
+      // Content v5 (V6-11): every normal closing asks what the child wants next; the answer (own words, "weiss nicht", "egal" or
+      // "lieber nicht sagen") is stored verbatim in the child's evidence. Nothing is inferred when no answer is given.
+      if (content.reflection.nextInterest) {
+        if (!op.interest) throw new LearningOpError("invalid", "the closing asks what comes next — answer it or choose one of its buttons");
+        try {
+          recordInterest(state, records, op.interest, visit.id, "closing", nowIso, env.newId);
+        } catch (error) {
+          if (error instanceof MissionOpError) throw new LearningOpError(error.code, error.message);
+          throw error;
+        }
+      }
       visit.finishedAt = nowIso;
       visit.stageIndex += 1;
       state.currentVisit = null;
       finishedVisit = visit.id;
       result = { finished: visit.id };
+      break;
+    }
+
+    case "mission": {
+      requireStage(state, content, "mission");
+      const visit = currentVisit(state);
+      try {
+        const out = applyMissionAction(state, op.action, { content, settings: env.settings, nowIso, newId: env.newId, visit: visit.id });
+        records.attempts.push(...out.records.attempts);
+        records.exposures.push(...out.records.exposures);
+        records.supports.push(...out.records.supports);
+        records.samples.push(...out.records.samples);
+        result = out.result;
+        if (out.finished) advance(state, content);
+      } catch (error) {
+        if (error instanceof MissionOpError) throw new LearningOpError(error.code, error.message);
+        throw error;
+      }
+      break;
+    }
+
+    case "record-interest": {
+      const pending = pendingInterest(state, content);
+      if (!pending) throw new LearningOpError("not-allowed", "no next-visit question is waiting");
+      try {
+        const rec = recordInterest(state, records, { kind: op.kind, text: op.text ?? null }, pending, "entry", nowIso, env.newId);
+        result = { interest: rec.id };
+      } catch (error) {
+        if (error instanceof MissionOpError) throw new LearningOpError(error.code, error.message);
+        throw error;
+      }
       break;
     }
 
@@ -2817,7 +2880,13 @@ export type ChildView = {
   reminder: ReminderCue | null;
   /** The reopenable visit reports (finished visits complete, the running one partial), oldest first. */
   reports: VisitReport[];
-  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[] } | null;
+  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; nextInterest: import("./family-learning-mission-spec.ts").NextInterestDef | null } | null;
+  /** Content v5 (Visit 6): the running mission (stage `mission`), answer keys stripped. */
+  mission: MissionView | null;
+  /** Content v5 (V6-11): the next-visit question is still unanswered for this visit (asked at the next entry, never inferred). */
+  interestPrompt: { visit: VisitId; prompt: string; entryPrompt: string; hint: string; unsureLabel: string; noPreferenceLabel: string; declineLabel: string } | null;
+  /** Content v5: the child's latest own answer to "what next?" (shown back in the report). */
+  latestInterest: { visit: VisitId; kind: InterestRecord["kind"]; text: string | null; at: string } | null;
   tutor: TutorContext | null;
   retention: string;
 };
@@ -2856,6 +2925,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
       case "log-transfer": return "Schreib einen neuen kurzen Satz.";
       case "summary": return "Das hast du heute geschafft.";
       case "reflect": return "Wie war es heute?";
+      case "mission": return "Geh über die Insel: Finde heraus, was das Schiff braucht.";
     }
   }
   const availability = nextVisitAvailability(state, content, now);
@@ -2867,6 +2937,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
     if (availability.visit === "v4") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v4") ?? 3}): die Beobachtungsstation.`;
     if (availability.visit === "v5") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v5") ?? 4}): der Steg in der Bucht.`;
     if (availability.visit === "v6") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v6") ?? 5}): der Hafen.`;
+    if (availability.visit === "v7") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v7") ?? 6}): die Fahrt zum Forschungsschiff.`;
     return "Zurück zur Basis — ein neuer Besuch wartet.";
   }
   return "Alle Besuche sind geschafft.";
@@ -2955,9 +3026,9 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     let feedback: NonNullable<ChildView["language"]>["feedback"] = null;
     if (step && last && last.stepId === step.id && last.correct !== true) {
       const triesUsed = seg.records.filter((r) => r.stepId === step.id).length;
-      const fallback = { clarify: "Sag es bitte noch einmal mit dem Satzanfang — oder mach ohne Bewertung weiter.", incorrect: "Das war etwas anderes. Schau dir das Wort an und probier es nochmal.", unclear: "Ich konnte das keiner Antwort zuordnen. Probier es nochmal — oder mach ohne Bewertung weiter." };
+      const fallback = { clarify: "Sag es bitte noch einmal mit dem Satzanfang — oder mach ohne Bewertung weiter.", incorrect: "Das war etwas anderes. Schau dir das Wort an und probier es nochmal.", unclear: "Das habe ich noch nicht verstanden. Probier es nochmal mit dem Satzanfang — oder mach ohne Bewertung weiter." };
       const kind: "clarify" | "incorrect" | "unclear" = last.correct === false ? "incorrect" : /^unclear/.test(String(records_uncertainty(seg, step.id))) ? "unclear" : "clarify";
-      const text = step.kind === "produce" ? (kind === "incorrect" ? step.correction : kind === "unclear" ? step.unclear : step.clarification) : step.kind === "pick-supply" ? step.correction : undefined;
+      const text = step.kind === "produce" ? (kind === "incorrect" ? step.correction : kind === "unclear" ? childFacingUnclear(step.unclear) : step.clarification) : step.kind === "pick-supply" ? step.correction : undefined;
       feedback = { kind, message: text ?? fallback[kind], triesUsed, retryAllowed: triesUsed < 2, continueOffered: step.kind === "produce" };
     }
     language = { id: segment.id, language: segment.language, title: segment.title, step: view, stepIndex: seg.stepIndex, stepCount: segment.steps.length, glosses: segment.glosses, lastCorrect: last?.correct ?? null, feedback };
@@ -3184,7 +3255,19 @@ export function buildChildView(state: MissionState, content: LearningContent, se
         }),
     reports: buildVisitReports(state, content),
     transfer,
-    reflection: stage === "reflect" ? { prompt: content.reflection.prompt, options: content.reflection.options, skipLabel: content.reflection.skipLabel ?? null, dimensions: content.reflection.dimensions ?? [] } : null,
+    reflection: stage === "reflect" ? { prompt: content.reflection.prompt, options: content.reflection.options, skipLabel: content.reflection.skipLabel ?? null, dimensions: content.reflection.dimensions ?? [], nextInterest: content.reflection.nextInterest ?? null } : null,
+    mission: stage === "mission" && running ? buildMissionView(state, content, running.id) : null,
+    interestPrompt: (() => {
+      const ni = content.reflection.nextInterest;
+      const pending = ni && stage !== "reflect" ? pendingInterest(state, content) : null;
+      // Asked at the next entry only when the visit was LEFT before its closing: a running mission visit counts once the child
+      // is outside it (the hub shows the prompt), a finished one when its closing answer is missing.
+      return ni && pending ? { visit: pending, prompt: ni.prompt, entryPrompt: ni.entryPrompt, hint: ni.hint, unsureLabel: ni.unsureLabel, noPreferenceLabel: ni.noPreferenceLabel, declineLabel: ni.declineLabel } : null;
+    })(),
+    latestInterest: (() => {
+      const last = (state.interests ?? [])[(state.interests ?? []).length - 1];
+      return last ? { visit: last.visit, kind: last.kind, text: last.text, at: last.at } : null;
+    })(),
     tutor,
     retention: content.retention.policy,
   };
@@ -3270,6 +3353,7 @@ export function stageLabel(stage: StageId): string {
     case "log-transfer": return "Neuer Satz";
     case "summary": return "Geschafft";
     case "reflect": return "Fertig";
+    case "mission": return "Mission";
   }
 }
 
