@@ -232,11 +232,11 @@ describe("V6-07 listening playback that failed — recoverable, never listening 
     refused(() => m(s, { a: "listen-outcome", step: "S3-RADIO", outcome: "browser" }, env), "not-allowed"); // one outcome per play
     s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "failed" }, env);
     const v = buildMissionView(s, v5, "v7")!.active!.listen!;
-    deepStrictEqual([v.plays, v.heard, v.failures], [2, 0, 2]);
+    deepStrictEqual([v.plays, v.completedPlays, v.failures], [2, 0, 2]);
     s = m(s, { a: "support", step: "S3-RADIO", kind: "transcript" }, env);
     s = m(s, { a: "answer-question", step: "S3-RADIO", question: "crew", value: "7" }, env);
     equal(run(s).steps["S3-RADIO"].attempts[0].evidence, "supported");
-    ok(review(s).learning.whatHappened.some((l) => l.includes("davon laut Gerät gehört 0×, ohne Ton 2×")));
+    ok(review(s).learning.whatHappened.some((l) => l.includes("davon mit gemeldetem Abspiel-Ende 0×, ohne Abspiel-Ende 2×")));
   });
   it("an answer after a confirmed play without help stays independent even if an earlier play failed", () => {
     const env = makeEnv();

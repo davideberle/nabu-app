@@ -286,6 +286,26 @@ async function waitIdle(page) {
   await page.waitForFunction(() => !document.querySelector("[data-testid='mission-world'] button[disabled][data-testid^='go-']") || true);
   await settle(250);
 }
+/** What is actually on screen (viewport, not full page): the boxes of the given test ids, the scroll offset, hidden map/lists. */
+async function viewportFit(page, selectors) {
+  return page.evaluate((sels) => {
+    const vh = window.innerHeight;
+    const vw = window.innerWidth;
+    const boxes = sels.map((sel) => {
+      const el = document.querySelector(sel);
+      if (!el) return { sel, present: false };
+      const r = el.getBoundingClientRect();
+      return { sel, present: true, top: Math.round(r.top), bottom: Math.round(r.bottom), inView: r.top >= 0 && r.bottom <= vh && r.left >= 0 && r.right <= vw && r.height > 0 };
+    });
+    const map = document.querySelector("[data-testid='mission-map']");
+    return { vh, scrollY: Math.round(window.scrollY), boxes, mapHidden: !map || map.getBoundingClientRect().height === 0, questHidden: !document.querySelector("[data-testid='quest-log']"), notebookHidden: !document.querySelector("[data-testid='notebook']") };
+  }, selectors);
+}
+async function viewportShot(page, name) {
+  shotN += 1;
+  await page.screenshot({ path: path.join(OUT, `${String(shotN).padStart(2, "0")}-VIEWPORT-${name}.png`), fullPage: false });
+}
+const TYPING_PARTS = ["[data-testid='typing-line']", "[data-testid='typing-input']", "[data-testid='typing-block'] [data-testid='hands-keyboard']"];
 async function walkTo(page, step) {
   // The accessible route: the quest list walks the avatar there (animated on desktop, a jump under reduced motion).
   await page.locator(`[data-testid='go-${step}']`).click();
@@ -392,10 +412,19 @@ await walkTo(p, "S1-BRIEF");
 await p.locator("[data-testid='mission-map']").focus();
 await p.keyboard.press("Enter");
 await p.waitForSelector("[data-testid='scene-panel'][data-step='S1-BRIEF']");
+{
+  const f = await viewportFit(p, ["[data-testid='scene-bar']", "[data-testid='scene-header']", "[data-testid='story-done']"]);
+  check("J1.scene-mode.story-desktop-map-and-lists-hidden-content-in-view", f.mapHidden && f.questHidden && f.notebookHidden && f.boxes.every((b) => b.inView), f);
+  await viewportShot(p, "desktop-S1-scene-mode");
+}
 check("J1.S1.scene-is-painted-close-up-of-the-place", (await p.locator("[data-testid='scene-header'][data-place='office']").count()) === 1 && (await p.locator("[data-testid='scene-header'] image[href*='office']").count()) >= 1 && (await p.locator("[data-testid='scene-header'] image[href*='planner']").count()) >= 1);
 await shot(p, "desktop-S1-brief-scene");
 await p.locator("[data-testid='story-done']").click();
 await cont(p);
+{
+  const back = await p.evaluate(() => ({ at: document.querySelector("[data-testid='mission-world']")?.getAttribute("data-walker-at"), x: document.querySelector("[data-testid='mission-avatar']")?.getAttribute("data-x"), y: document.querySelector("[data-testid='mission-avatar']")?.getAttribute("data-y"), focus: document.activeElement?.getAttribute("data-testid") }));
+  check("J1.scene-mode.return-restores-avatar-and-map-focus", back.at === "office" && back.x === "1004" && back.y === "369" && back.focus === "mission-map", back);
+}
 
 // --- S2 reading: text shown, no audio of any kind
 await openStep(p, "S2-BOARD");
@@ -424,7 +453,7 @@ await p.locator("[data-testid='listen-play']").click();
 await settle(1200);
 check("J1.S3.play-requests-reviewed-speech-not-ai", speechRequests.length === speechBefore + 1 && JSON.parse(speechRequests.at(-1).body).text.startsWith("Hello, harbor! This is the research ship."), speechRequests.at(-1)?.body?.slice(0, 120));
 await p.waitForFunction(() => document.querySelector("[data-testid='listen-box']")?.getAttribute("data-voice") !== "none", null, { timeout: 25000 });
-check("J1.S3.mocked-browser-speech-confirmed-unlocks-answers", (await p.locator("[data-testid='listen-box']").getAttribute("data-voice")) === "browser" && !(await p.locator("[data-testid='pick-crew-7']").isDisabled()) && (await p.locator("[data-testid='listen-failed']").count()) === 0);
+check("J1.S3.mocked-browser-speech-completion-event-unlocks-answers", (await p.locator("[data-testid='listen-box']").getAttribute("data-voice")) === "browser" && !(await p.locator("[data-testid='pick-crew-7']").isDisabled()) && (await p.locator("[data-testid='listen-failed']").count()) === 0);
 await p.locator("[data-testid='pick-crew-7']").click();
 await p.waitForSelector("[data-testid='question-crew'][data-status='correct']");
 await p.locator("[data-testid='pick-bottles-2']").click();
@@ -524,12 +553,17 @@ await cont(p);
 await openStep(p, "S12-TYPING");
 check("J1.S12.no-scene-picture-in-typing", (await p.locator("[data-testid='scene-header']").count()) === 0);
 check("J1.S12.no-character-in-typing", (await p.locator("[data-testid='scene-character']").count()) === 0 && !/Mrs Finley/.test(await p.locator("[data-testid='scene-panel']").innerText()));
+const announce = await p.locator("[data-testid='typing-intro']").innerText();
 await p.locator("[data-testid='typing-start']").click();
 await p.waitForSelector("[data-testid='typing-block'][data-phase='drill']");
-const announce = await p.locator("[data-testid='typing-announce']").innerText();
 const planned = Number((announce.match(/(\d+) kurze Tippübungen/) ?? [])[1]);
 check("J1.S12.finite-announced-block", planned >= 3 && planned <= 6 && /etwa \d+ Minuten/.test(announce), announce);
 await shot(p, "desktop-S12-typing-drill");
+{
+  const f = await viewportFit(p, TYPING_PARTS);
+  check("J1.scene-mode.typing-desktop-lines-input-hands-in-one-view", f.mapHidden && f.questHidden && f.scrollY === 0 && f.boxes.every((b) => b.present && b.inView) && (await focused(p)).testid === "typing-input", f);
+  await viewportShot(p, "desktop-S12-typing");
+}
 async function typeDrill(page) {
   const no = await page.locator("[data-testid='typing-block']").getAttribute("data-drill");
   const lines = await page.evaluate(() => [...document.querySelectorAll("[data-testid='typing-block'] p.font-mono")].map((el) => el.textContent.replace(/␣/g, " ")));
@@ -538,6 +572,7 @@ async function typeDrill(page) {
   return lines;
 }
 await typeDrill(p);
+check("J1.S12.keyboard-focus-kept-between-drills", (await focused(p)).testid === "typing-input" && (await p.evaluate(() => Math.round(window.scrollY))) === 0);
 check("J1.S12.no-decision-between-drills", (await p.locator("[data-testid='decision-card']").count()) === 0 && (await p.locator("[data-testid='typing-block']").getAttribute("data-phase")) === "drill");
 // global pause mid-drill
 await p.locator("[data-testid='typing-input']").focus();
@@ -663,6 +698,11 @@ check("J2.tap-walk.arrived-office", (await t.locator("[data-testid='mission-worl
 await t.locator("[data-testid='open-S1-BRIEF']").tap();
 await t.waitForSelector("[data-testid='scene-panel'][data-step='S1-BRIEF']");
 await shot(t, "tablet-S1-scene");
+{
+  const f = await viewportFit(t, ["[data-testid='scene-bar']", "[data-testid='scene-header']", "[data-testid='story-done']"]);
+  check("J2.scene-mode.story-tablet-map-and-lists-hidden-content-in-view", f.mapHidden && f.questHidden && f.boxes.every((b) => b.inView), f);
+  await viewportShot(t, "tablet-S1-scene-mode");
+}
 await t.locator("[data-testid='story-done']").tap();
 await t.locator("[data-testid='scene-continue']").tap();
 await t.waitForSelector("[data-testid='quest-log']");
@@ -702,6 +742,18 @@ await t.locator("[data-testid='open-S12-TYPING']").tap();
 await t.locator("[data-testid='typing-start']").tap();
 await t.waitForSelector("[data-testid='typing-block'][data-phase='drill']");
 await shot(t, "tablet-S12-typing");
+{
+  const f = await viewportFit(t, TYPING_PARTS);
+  check("J2.scene-mode.typing-tablet-lines-input-hands-in-one-view", f.mapHidden && f.questHidden && f.scrollY === 0 && f.boxes.every((b) => b.present && b.inView), f);
+  await viewportShot(t, "tablet-S12-typing");
+  // a hardware keyboard on the tablet: typing a whole line keeps the focus on the input and the page does not jump
+  await t.locator("[data-testid='typing-input']").focus();
+  const line = (await t.locator("[data-testid='typing-line']").innerText()).replace(/␣/g, " ");
+  await t.keyboard.type(line, { delay: 30 });
+  await t.keyboard.press("Enter");
+  await settle(300);
+  check("J2.scene-mode.typing-tablet-focus-and-scroll-stable", (await focused(t)).testid === "typing-input" && (await t.evaluate(() => Math.round(window.scrollY))) === 0);
+}
 await t.locator("[data-testid='scene-leave']").tap();
 await t.waitForSelector("[data-testid='quest-log']");
 await shot(t, "tablet-quest-log");
@@ -757,13 +809,14 @@ async function kbOpen(page, step) {
     await page.waitForSelector(`[data-testid='scene-panel'][data-step='${step}']`);
     return;
   }
+  const beforeEnter = { disabled: await page.locator(`[data-testid='go-${step}']`).isDisabled(), attrs: await page.locator("[data-testid='mission-world']").evaluate((el) => ({ ...el.dataset })) };
   await page.keyboard.press("Enter");
   try {
     await page.waitForSelector(`[data-testid='open-${step}']`, { timeout: 15000 });
   } catch (e) {
     const attrs = await page.locator("[data-testid='mission-world']").evaluate((el) => ({ ...el.dataset }));
     const avatar = await page.locator("[data-testid='mission-avatar']").evaluate((el) => ({ ...el.dataset }));
-    console.log("kbOpen failure", step, JSON.stringify(attrs), JSON.stringify(avatar), JSON.stringify(await focused(page)), JSON.stringify(consoleLines.slice(-10)));
+    console.log("kbOpen failure", step, "before Enter:", JSON.stringify(beforeEnter), "after:", JSON.stringify(attrs), JSON.stringify(avatar), JSON.stringify(await focused(page)), JSON.stringify(consoleLines.slice(-10)));
     throw e;
   }
   await page.waitForFunction((st) => (document.querySelector(`[data-testid='go-${st}']`)?.textContent || "").includes("Starten"), step);
@@ -807,7 +860,7 @@ await k.keyboard.press("Enter");
 await k.waitForFunction(async () => true);
 await settle(800);
 let r3 = (await rawRow()).state.missions["MISSION-SHIP-SUPPLY"].steps["S3-RADIO"];
-check("J3.S3.retry-recorded-as-failed-not-heard", r3.plays === 2 && (r3.heard ?? 0) === 0 && r3.playFailures === 2, { plays: r3.plays, heard: r3.heard, failures: r3.playFailures });
+check("J3.S3.retry-recorded-as-failed-no-completion-event", r3.plays === 2 && (r3.completedPlays ?? 0) === 0 && r3.playFailures === 2, { plays: r3.plays, completedPlays: r3.completedPlays, failures: r3.playFailures });
 await tabTo(k, "listen-transcript");
 await k.keyboard.press("Enter");
 await k.waitForSelector("[data-testid='listen-script']");
@@ -893,8 +946,8 @@ await vp.waitForSelector("[data-testid='question-crew'][data-status='correct']")
 await vp.locator("[data-testid='listen-play']").click();
 await settle(900);
 const r4 = (await rawRow()).state.missions["MISSION-SHIP-SUPPLY"].steps["S3-RADIO"];
-check("J4.child-voice-confirmed-counts-as-heard", r4.heard === 2 && (r4.playFailures ?? 0) === 0 && r4.plays === 2, { plays: r4.plays, heard: r4.heard });
-check("J4.listening-answer-independent-after-confirmed-play", r4.attempts[0].evidence === "independent");
+check("J4.child-voice-completion-event-counts-as-completed-play", r4.completedPlays === 2 && (r4.playFailures ?? 0) === 0 && r4.plays === 2, { plays: r4.plays, completedPlays: r4.completedPlays });
+check("J4.listening-answer-independent-after-completed-play", r4.attempts[0].evidence === "independent");
 await shot(vp, "voice-mock-child-voice-played");
 
 } catch (e) {

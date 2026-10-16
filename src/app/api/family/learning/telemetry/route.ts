@@ -1,3 +1,4 @@
+import { isVisitId } from "@/lib/family-learning-content";
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
 import { NO_STORE, refuse, requireChildLearning } from "@/lib/family-learning-auth";
@@ -41,7 +42,8 @@ export async function POST(request: Request) {
   if (typeof body !== "object" || body === null || Array.isArray(body)) return refuse(400, "Body must be an object");
   const record = body as Record<string, unknown>;
   if (typeof record.batchId !== "string" || !BATCH_PATTERN.test(record.batchId)) return refuse(400, "batchId is required");
-  if (typeof record.visitId !== "string" || !/^v[1-4]$/.test(record.visitId)) return refuse(400, "visitId is required");
+  // Every visit id the content model knows (was v1–v4 only: telemetry of the later chapters was refused).
+  if (typeof record.visitId !== "string" || !isVisitId(record.visitId)) return refuse(400, "visitId is required");
   if (typeof record.visitStartedAt !== "string" || record.visitStartedAt.length > 40) return refuse(400, "visitStartedAt is required");
   if (typeof record.erasureGeneration !== "number" || !Number.isInteger(record.erasureGeneration) || record.erasureGeneration < 0) return refuse(400, "erasureGeneration is required");
   if (!Array.isArray(record.events)) return refuse(400, "events must be a list");

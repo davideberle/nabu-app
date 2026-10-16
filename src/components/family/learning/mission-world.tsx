@@ -133,6 +133,10 @@ function useWalker(g: Graph, start: string, onArrive: (place: string) => void) {
   const [facingLeft, setFacingLeft] = useState(false);
   const held = useRef<Pt | null>(null);
   const route = useRef<string[]>([]);
+  /** Diagnostics: how many routed walks were requested (exposed as a data attribute for the rendered checks). */
+  const walkRequests = useRef(0);
+  const lastRoute = useRef("");
+  const ticks = useRef(0);
   /** True while a click/tap/list route is being walked (its last segment keeps animating after the queue is empty). */
   const routing = useRef(false);
   const raf = useRef<number | null>(null);
@@ -174,6 +178,7 @@ function useWalker(g: Graph, start: string, onArrive: (place: string) => void) {
   const tick = useCallback(
     (now: number) => {
       lastTick.current = performance.now();
+      ticks.current += 1;
       try {
         step(now);
       } catch (error) {
@@ -187,7 +192,9 @@ function useWalker(g: Graph, start: string, onArrive: (place: string) => void) {
   );
   const step = useCallback(
     (now: number) => {
-      const dt = Math.min(0.05, (now - last.current) / 1000);
+      // The first frame's timestamp can be EARLIER than the moment the walk was requested (rAF stamps the frame start):
+      // never let time run backwards — a negative step used to put the avatar "back" at its start and end the walk.
+      const dt = Math.max(0, Math.min(0.05, (now - last.current) / 1000));
       last.current = now;
       const s = state.current;
       let moving = false;
@@ -211,7 +218,7 @@ function useWalker(g: Graph, start: string, onArrive: (place: string) => void) {
         }
         s.seg.t += (sign * SPEED * dt) / len;
         moving = true;
-        if (s.seg.t <= 0) {
+        if (sign < 0 && s.seg.t <= 0) {
           s.node = s.seg.from;
           s.seg = null;
         } else if (s.seg.t >= 1) {
@@ -271,6 +278,8 @@ function useWalker(g: Graph, start: string, onArrive: (place: string) => void) {
       }
       route.current = path.slice(1);
       routing.current = route.current.length > 0;
+      walkRequests.current += 1;
+      lastRoute.current = `${from}>${path.join("-")}`;
       if (!route.current.length) {
         if (g.kind[target] === "place") arriveRef.current(target);
         return;
@@ -320,7 +329,7 @@ function useWalker(g: Graph, start: string, onArrive: (place: string) => void) {
   }, []);
 
   const pos: Pt = seg ? { x: g.pos[seg.from].x + (g.pos[seg.to].x - g.pos[seg.from].x) * seg.t, y: g.pos[seg.from].y + (g.pos[seg.to].y - g.pos[seg.from].y) * seg.t } : g.pos[node] ?? { x: 0, y: 0 };
-  return { node, seg, pos, facingLeft, walking: !!seg, walkTo, press, release };
+  return { node, seg, pos, facingLeft, walking: !!seg, walkTo, press, release, walkRequests: walkRequests.current, rafActive: raf.current !== null, lastRoute: lastRoute.current, ticks: ticks.current };
 }
 
 function useStageFit(ref: React.RefObject<HTMLDivElement | null>) {
@@ -412,7 +421,11 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
   // Keyboard flow: when a scene closes, focus returns to the map (where the avatar stands), never to the page top.
   const wasActive = useRef<string | null>(active?.id ?? null);
   useEffect(() => {
-    if (wasActive.current && !active) stageRef.current?.focus({ preventScroll: true });
+    if (!wasActive.current && active && typeof window !== "undefined") window.scrollTo({ top: 0 });
+    if (wasActive.current && !active) {
+      stageRef.current?.focus({ preventScroll: true });
+      stageRef.current?.scrollIntoView({ block: "nearest" });
+    }
     wasActive.current = active?.id ?? null;
   }, [active]);
   // The latest mission change at each place, in words (no icon pretends to be painted world art).
@@ -427,11 +440,15 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
   const launched = worldProps.some((w) => w.prop === "sail");
 
   return (
-    <div className="flex w-full flex-col gap-3" data-testid="mission-world" data-position={mission.position} data-walker-at={walker.node} data-walking={walker.walking ? "true" : "false"} data-active={active?.id ?? ""}>
-      <div className={cn("grid gap-3", active ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]" : "grid-cols-1")}>
+    <div className="flex w-full flex-col gap-3" data-testid="mission-world" data-position={mission.position} data-walker-at={walker.node} data-walking={walker.walking ? "true" : "false"} data-active={active?.id ?? ""} data-walk-requests={walker.walkRequests} data-raf={walker.rafActive ? "on" : "off"} data-last-route={walker.lastRoute} data-ticks={walker.ticks}>
+      {/* Scene mode: an open activity takes the screen — the island, the task list and the notebook step aside (they stay mounted,
+          so the avatar's position and the map measurements survive); a compact bar keeps the place, the way back and the progress. */}
+      {active ? <SceneBar placeLabel={placeOf(mission.position)?.label ?? ""} title={active.title} finished={active.status !== "active"} progress={mission.progress} busy={busy} onBack={() => void act({ a: "leave" })} /> : null}
+      <div className="grid grid-cols-1 gap-3">
         {/* --- the walkable island --- */}
         <div
           ref={stageRef}
+          hidden={!!active}
           className="relative w-full overflow-hidden rounded-3xl border-2 outline-none focus-visible:outline-3 focus-visible:outline-solid focus-visible:outline-amber-500"
           style={{ borderColor: BARK, aspectRatio: "16 / 9", background: SEA }}
           tabIndex={0}
@@ -701,23 +718,36 @@ function Lines({ lines, mission, act, step, busy, offset }: { lines: MissionActi
   );
 }
 
+/** The compact bar of scene mode: where you are, which activity, the way back to the island and the mission progress. */
+function SceneBar({ placeLabel, title, finished, progress, busy, onBack }: { placeLabel: string; title: string; finished: boolean; progress: { required: number; resolved: number }; busy: boolean; onBack: () => void }) {
+  return (
+    <nav aria-label="Ort und Rückweg" className={cn(card, "flex flex-wrap items-center justify-between gap-2 px-3 py-2")} style={cardStyle} data-testid="scene-bar">
+      <p className="min-w-0 text-base">
+        <span className="font-semibold">Insel</span> <span aria-hidden>›</span> <span className="font-semibold">{placeLabel}</span> <span aria-hidden>›</span> {title}
+        <span className="ml-2 text-sm" data-testid="scene-bar-progress">
+          · {progress.resolved} von {progress.required} erledigt
+        </span>
+      </p>
+      <button type="button" className={btn} style={btnSecondaryStyle} disabled={busy} onClick={onBack} data-testid="scene-leave">
+        {finished ? "Weiter auf der Insel →" : "← Zurück zur Insel"}
+      </button>
+    </nav>
+  );
+}
+
 function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabel }: { child: ChildId; view: ChildView; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; placeLabel: string }) {
   const finished = active.status !== "active";
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
-    headingRef.current?.focus();
-  }, [active.id]);
+    // the typing block keeps the physical keyboard on its input; other scenes start reading at their heading
+    if (active.kind !== "typing-block") headingRef.current?.focus({ preventScroll: true });
+  }, [active.id, active.kind]);
   return (
     <section className={cn(card, "flex min-w-0 flex-col gap-3 p-3 sm:p-4")} style={cardStyle} aria-labelledby="mw-scene-title" data-testid="scene-panel" data-step={active.id} data-kind={active.kind} data-status={active.status} data-phase={active.phase}>
       {active.kind === "typing-block" ? null : <SceneHeader view={view} mission={mission} active={active} placeLabel={placeLabel} />}
-      <div className="flex items-center justify-between gap-2">
-        <h2 id="mw-scene-title" ref={headingRef} tabIndex={-1} className="text-xl font-bold outline-none">
-          {active.title}
-        </h2>
-        <button type="button" className={btn} style={btnSecondaryStyle} disabled={busy} onClick={() => void act({ a: "leave" })} data-testid="scene-leave">
-          {finished ? "Weiter auf der Insel →" : "Zurück zur Insel"}
-        </button>
-      </div>
+      <h2 id="mw-scene-title" ref={headingRef} tabIndex={-1} className={cn("font-bold outline-none", active.kind === "typing-block" ? "sr-only" : "text-xl")}>
+        {active.title}
+      </h2>
       {active.kind !== "typing-block" ? <Lines lines={active.intro} mission={mission} act={act} step={active.id} busy={busy} offset={0} /> : null}
       {active.kind === "story" || active.kind === "outcome" ? <StoryTask active={active} busy={busy} act={act} /> : null}
       {active.kind === "read" || active.kind === "listen" ? <QuestionTask child={child} active={active} busy={busy} act={act} speech={speech} /> : null}
@@ -733,7 +763,7 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
           </button>
         </div>
       ) : null}
-      <p className="text-sm">Du kannst jederzeit oben «Stopp» drücken. Was du gemacht hast, bleibt gespeichert.</p>
+      {active.kind === "typing-block" ? null : <p className="text-sm">Du kannst jederzeit oben «Stopp» drücken. Was du gemacht hast, bleibt gespeichert.</p>}
     </section>
   );
 }
@@ -757,7 +787,7 @@ function QuestionTask({ child, active, busy, act, speech }: { child: ChildId; ac
     if (!listen) return;
     speech.unlock();
     // 1) the play request is recorded (not help) and returns the reviewed text; 2) it is spoken — child voice, else the browser's
-    // own speech; 3) the device reports whether sound was CONFIRMED. Only a confirmed play unlocks answers as listening.
+    // own speech; 3) the device reports whether playback reached its completion event. Only such a play unlocks answers as listening.
     const res = await act({ a: "support", step: active.id, kind: "play" });
     if (!res) return;
     setPlaying(true);
@@ -768,7 +798,7 @@ function QuestionTask({ child, active, busy, act, speech }: { child: ChildId; ac
     setVoice(outcome);
     await act({ a: "listen-outcome", step: active.id, outcome });
   };
-  const canAnswer = !listen || listen.heard > 0 || listen.transcriptShown;
+  const canAnswer = !listen || listen.completedPlays > 0 || listen.transcriptShown;
   const open = active.questions.filter((q) => q.status === "open");
   return (
     <div className="grid gap-3" data-testid="question-task" data-mode={listen ? "listening" : "reading"}>
@@ -800,9 +830,9 @@ function QuestionTask({ child, active, busy, act, speech }: { child: ChildId; ac
               </button>
             ) : null}
           </div>
-          {listen.failures > 0 && listen.heard === 0 && !listen.transcriptShown ? (
+          {listen.failures > 0 && listen.completedPlays === 0 && !listen.transcriptShown ? (
             <p className="mt-2 text-base" role="status" data-testid="listen-failed">
-              Der Ton kam nicht an. Versuch es nochmal — oder lass dir den Text zeigen (zählt als Hilfe). Antworten geht erst, wenn du es gehört oder gelesen hast.
+              Das Abspielen hat nicht geklappt. Versuch es nochmal — oder lass dir den Text zeigen (zählt als Hilfe). Antworten geht, sobald es bis zum Ende abgespielt wurde oder du den Text gelesen hast.
             </p>
           ) : null}
           {listen.script ? (
@@ -1113,7 +1143,7 @@ function TypingBlock({ block, stepId, busy, act }: { block: TypingBlockView; ste
     setTyped([]);
     setCurrent("");
     stamps.current = [];
-    inputRef.current?.focus();
+    inputRef.current?.focus({ preventScroll: true });
   }, [drillKey]);
   // Global pause: leaving mid-drill saves the partial text (never completion).
   const partialRef = useRef({ drill, typed, current });
@@ -1131,7 +1161,8 @@ function TypingBlock({ block, stepId, busy, act }: { block: TypingBlockView; ste
   if (block.phase === "not-started") {
     return (
       <div className="grid gap-3" data-testid="typing-block" data-phase="not-started">
-        <p className="text-lg">Gleich kommt dein Tippblock. Du siehst nur die Tasten und deine Hände.</p>
+        <p className="text-lg" data-testid="typing-intro">{block.announce}</p>
+        <p className="text-base">Du siehst nur die Zeilen, die Tasten und deine Hände.</p>
         <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "typing-start" })} data-testid="typing-start" autoFocus>
           Tippblock beginnen
         </button>
@@ -1218,7 +1249,9 @@ function TypingBlock({ block, stepId, busy, act }: { block: TypingBlockView; ste
   };
   return (
     <div className="grid gap-3" data-testid="typing-block" data-phase="drill" data-drill={drill.no} data-extra={drill.extra ? "true" : "false"}>
-      <p className="text-base" data-testid="typing-announce">{block.announce}</p>
+      <p className="text-base font-semibold" data-testid="typing-announce" title={block.announce}>
+        {drill.extra ? "Extra-Übung (freiwillig)" : `Übung ${Math.min(block.completed + 1, block.planned)} von ${block.planned}`} · Stopp oben speichert alles
+      </p>
       <ol className="flex flex-wrap items-center gap-1.5" aria-label={`Übung ${Math.min(block.completed + 1, block.planned)} von ${block.planned}`} data-testid="typing-dots">
         {Array.from({ length: block.planned }, (_, i) => (
           <li key={i} className="h-3 rounded-full" style={{ width: i === block.completed && !drill.extra ? 28 : 12, background: i < block.completed ? OK : i === block.completed && !drill.extra ? SIGNAL : "#d6c3a3" }} aria-hidden />
@@ -1257,7 +1290,12 @@ function TypingBlock({ block, stepId, busy, act }: { block: TypingBlockView; ste
         />
         <p className="mt-1 text-sm">Enter: Zeile fertig · Fehler sind erlaubt — tipp einfach weiter.</p>
       </form>
-      {block.guide ? <HandsKeyboard fingers={block.guide.fingers} home={block.guide.home} nextKey={nextKey} wrongKey={wrongKey} compact ariaLabel="Tastatur mit Händen" /> : null}
+      {/* capped width: on a wide screen the guide stays fully visible together with the lines and the input (key labels stay large) */}
+      {block.guide ? (
+        <div className="mx-auto w-full max-w-[600px]">
+          <HandsKeyboard fingers={block.guide.fingers} home={block.guide.home} nextKey={nextKey} wrongKey={wrongKey} compact ariaLabel="Tastatur mit Händen" />
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -9,16 +9,16 @@ const voice = (r: VoiceResult | "throw") => async () => {
 const browser = (r: BrowserSpeechResult) => async () => r;
 
 describe("V6-07 listening playback — mocked outcomes (no audio)", () => {
-  it("child voice played → heard via the child voice; the browser is not used", async () => {
+  it("child voice played → completedPlays via the child voice; the browser is not used", async () => {
     let used = false;
     equal(await playListening("x", "en", { voice: voice("played"), browser: async () => ((used = true), "ended") }), "child-voice");
     equal(used, false);
   });
-  it("child voice fails → browser speech that ends → heard via the browser", async () => {
+  it("child voice fails → browser speech that ends → completedPlays via the browser", async () => {
     equal(await playListening("x", "en", { voice: voice("fallback"), browser: browser("ended") }), "browser");
     equal(await playListening("x", "en", { voice: voice("throw"), browser: browser("ended") }), "browser");
   });
-  it("both fail, no speech engine, or no end confirmation → failed (never heard)", async () => {
+  it("both fail, no speech engine, or no end confirmation → failed (never completedPlays)", async () => {
     for (const b of ["error", "unavailable", "timeout"] as const) equal(await playListening("x", "es", { voice: voice("fallback"), browser: browser(b) }), "failed");
   });
   it("a superseded play is cancelled and reports nothing", async () => {

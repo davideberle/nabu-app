@@ -444,7 +444,7 @@ function Workspace({ child }: { child: ChildId }) {
         </button>}
       </header>
 
-      {view.base.name ? (
+      {view.base.name && stage !== "mission" ? (
         <p className="mt-2 text-center text-sm text-tertiary" data-testid="hud-location">
           Basis „{view.base.name}“{view.base.location ? ` · ${view.base.location.label}` : ""}
         </p>

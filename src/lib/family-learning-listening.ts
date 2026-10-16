@@ -1,8 +1,10 @@
-// Visit 6 (V6-07): playing a reviewed listening text and reporting honestly whether sound was confirmed.
+// Visit 6 (V6-07): playing a reviewed listening text and reporting honestly whether playback reached its completion event.
 //
 // Order: the child voice route (via the shared speech player) → the browser's own speech in the text's language → "failed".
-// Only an `ended` confirmation counts as heard; an error, a missing speech engine or a timeout without `end` is "failed" —
-// the child may try again or open the text (recorded help), and an unconfirmed play never counts as listening.
+// Only the playback completion event (`ended` / `end`) counts as a completed play; an error, a missing speech engine or a timeout
+// without it is "failed" —
+// the child may try again or open the text (recorded help), and a play without a completion event never counts as listening.
+// A completion event proves that playback ran to its end on the device — not that sound was audible or that the child listened.
 // Isomorphic and dependency-free so `node --test` covers it with mocks.
 
 export type ListenOutcome = "child-voice" | "browser" | "failed" | "cancelled";

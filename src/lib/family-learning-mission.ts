@@ -66,9 +66,9 @@ export type MissionStepRun = {
   support: { kind: string; at: string; detail?: string }[];
   /** Listening: how often the recording was played (the task itself, not help). */
   plays: number;
-  /** Listening: plays the device reported as actually heard (child voice or browser speech); absent on older runs = 0. */
-  heard?: number;
-  /** Listening: plays the device reported as failed (no sound confirmed). */
+  /** Listening: plays for which the device reported the playback completion event (child voice or browser speech) — not proof of audible sound or of listening. */
+  completedPlays?: number;
+  /** Listening: plays the device reported as failed (no completion event). */
   playFailures?: number;
   /** Per question: resolved and how. */
   questions: Record<string, { status: "open" | "correct" | "given"; evidence: EvidenceCategory | null }>;
@@ -182,7 +182,7 @@ export type MissionAction =
   | { a: "produce"; step: string; response: string; modality: "typed" | "word-bank" }
   | { a: "meaning"; step: string; word: string }
   | { a: "support"; step: string; kind: "play" | "transcript" | "translation" | "word-bank" | "line-translation"; line?: number }
-  /** Listening: what the device reported for the last requested play (`child-voice` / `browser` = sound confirmed; `failed` = not). */
+  /** Listening: what the device reported for the last requested play (`child-voice` / `browser` = playback completion event reported; `failed` = none). */
   | { a: "listen-outcome"; step: string; outcome: "child-voice" | "browser" | "failed" }
   | { a: "practice"; step: string; response: string }
   | { a: "later"; step: string }
@@ -582,21 +582,21 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       const { step, r } = requireActive(run, def, action.step);
       if (step.kind !== "listen") throw new MissionOpError("invalid", "only listening steps report playback");
       if (!["child-voice", "browser", "failed"].includes(action.outcome)) throw new MissionOpError("invalid", "unknown playback outcome");
-      const reported = (r.heard ?? 0) + (r.playFailures ?? 0);
+      const reported = (r.completedPlays ?? 0) + (r.playFailures ?? 0);
       if (reported >= r.plays) throw new MissionOpError("not-allowed", "no requested play is waiting for its outcome");
       if (action.outcome === "failed") r.playFailures = (r.playFailures ?? 0) + 1;
-      else r.heard = (r.heard ?? 0) + 1;
+      else r.completedPlays = (r.completedPlays ?? 0) + 1;
       // Device-reported (the server cannot hear): recorded for the parent, never as answer help.
       support(records, env, def, step, "listen-outcome", { outcome: action.outcome, play: reported + 1, reportedBy: "device" });
-      result = { heard: r.heard ?? 0, failures: r.playFailures ?? 0 };
+      result = { completedPlays: r.completedPlays ?? 0, failures: r.playFailures ?? 0 };
       break;
     }
     case "answer-question": {
       const { step, r } = requireActive(run, def, action.step);
       if (step.kind !== "read" && step.kind !== "listen") throw new MissionOpError("invalid", "not a question step");
-      // A listening answer needs a play the device confirmed as heard — or the text, which is recorded help. A failed playback
+      // A listening answer needs a play with a reported completion event — or the text, which is recorded help. A failed playback
       // never unlocks answering on its own and never counts as listening.
-      if (step.kind === "listen" && (r.heard ?? 0) < 1 && !r.support.some((s) => s.kind === "transcript")) throw new MissionOpError("not-allowed", "listen to the recording first (or open the text, which counts as help)");
+      if (step.kind === "listen" && (r.completedPlays ?? 0) < 1 && !r.support.some((s) => s.kind === "transcript")) throw new MissionOpError("not-allowed", "listen to the recording first (or open the text, which counts as help)");
       const q: MissionQuestion | undefined = step.questions?.find((x) => x.id === action.question);
       if (!q) throw new MissionOpError("invalid", "unknown question");
       const qs = (r.questions[q.id] = r.questions[q.id] ?? { status: "open", evidence: null });
@@ -605,7 +605,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (q.kind === "pick" && !(q.options ?? []).includes(raw)) throw new MissionOpError("invalid", "unknown option");
       const tries = r.attempts.filter((a) => a.questionId === q.id);
       const correct = normalizeAnswer(raw) === normalizeAnswer(q.answer);
-      const helped = r.support.some((s) => ["transcript", "translation"].includes(s.kind)) || (step.kind === "listen" && (r.heard ?? 0) < 1);
+      const helped = r.support.some((s) => ["transcript", "translation"].includes(s.kind)) || (step.kind === "listen" && (r.completedPlays ?? 0) < 1);
       const evidence: EvidenceCategory = !correct ? "incorrect" : tries.length === 0 && !helped ? "independent" : "supported";
       const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: q.id, raw, correct, evidence, support: [...supportKinds(r), ...(tries.length ? ["retry"] : [])], modality: q.kind === "pick" ? "pick" : "typed", kind: "answer" };
       r.attempts.push(attempt);
@@ -966,7 +966,7 @@ export type MissionActiveView = {
   done: { speaker: string | null; text: string; language: string; translated: string | null }[];
   /** Reading tasks: the text to read (never audio). Listening: the text ONLY after the transcript support was recorded. */
   readText: string | null;
-  listen: { language: string; plays: number; heard: number; failures: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean } | null;
+  listen: { language: string; plays: number; completedPlays: number; failures: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean } | null;
   questions: { id: string; prompt: string; kind: "pick" | "number"; options: string[] | null; status: "open" | "correct" | "given"; tries: number; hint: string | null; shownAnswer: string | null; lastWrong: string | null }[];
   calc: { prompt: string; fields: { key: string; label: string; correct: boolean | null; last: number | null }[]; clarification: string | null; representation: { text: string; total: number; perGroup: number; unit: string } | null; teach: string | null; tries: number } | null;
   choice: { prompt: string; options: { id: string; label: string }[]; picked: { id: string; feedback: string; best: boolean }[]; teach: string | null } | null;
@@ -1014,11 +1014,13 @@ function lineView(step: MissionStep, r: MissionStepRun | undefined, lines: Missi
   return lines.map((l, i) => ({ speaker: l.speaker, text: l.text, language: l.language, translated: l.language !== "de" && r?.support.some((s) => s.kind === "line-translation" && s.detail === String(i + offset)) ? l.de ?? null : null }));
 }
 
-export function typingBlockView(def: MissionDef, run: MissionRun, content?: LearningContent): TypingBlockView {
+export function typingBlockView(def: MissionDef, run: MissionRun, content?: LearningContent, preview?: TypingBlockRun["plan"] | null): TypingBlockView {
   const block = run.typing;
   const tb = def.typingBlock;
-  const planned = block?.plan.drills.length ?? 0;
-  const minutes = block ? Math.max(1, Math.round(block.plan.estimatedSeconds / 60)) : Math.round(tb.targetActiveSeconds / 60);
+  // Before the start the block is announced from the same pace rule it will use (a preview; it is fixed at typing-start).
+  const plan = block?.plan ?? preview ?? null;
+  const planned = plan?.drills.length ?? 0;
+  const minutes = plan && plan.estimatedSeconds ? Math.max(1, Math.round(plan.estimatedSeconds / 60)) : Math.round(tb.targetActiveSeconds / 60);
   const announce = tb.announce.replace("{n}", String(planned || "einige")).replace("{minutes}", String(minutes));
   const phase: TypingBlockView["phase"] = !block ? "not-started" : block.unavailable ? "unavailable" : !block.completedAt ? "drill" : block.comfort === undefined ? "comfort" : block.extra === "offered" ? "extra-offer" : block.extra === "taken" ? "drill" : "done";
   const nd = block ? nextDrill(block) : null;
@@ -1026,7 +1028,7 @@ export function typingBlockView(def: MissionDef, run: MissionRun, content?: Lear
   return { announce, planned, completed: block?.drills.filter((d) => d.attempted && !d.extra).length ?? 0, nextDrill: nd && phase === "drill" ? { no: nd.no, lines: nd.lines, source: nd.source, extra: !!nd.extra } : null, phase, unavailable: block?.unavailable ?? null, lessonId: block?.plan.lessonId || null, last: last ? { accuracy: last.accuracy, attempted: last.attempted } : null, idleGapSeconds: tb.idleGapSeconds, minTypedShare: tb.minTypedShare, guide: content?.typing.course ? { fingers: content.typing.course.fingers, home: content.typing.course.homePosition } : null };
 }
 
-function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: MissionStepRun, content: LearningContent): MissionActiveView {
+function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: MissionStepRun, content: LearningContent, state?: MissionState): MissionActiveView {
   const has = (k: string) => r.support.some((s) => s.kind === k);
   const questions = (step.questions ?? []).map((q) => {
     const qs = r.questions[q.id];
@@ -1062,7 +1064,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     produce = { language: p.language, frame: p.frame, instruction: p.instruction, wordBank: has("word-bank") ? p.wordBank : null, feedback, repairLine: r.repairLine ?? null, askMeaning: r.phase === "ask-meaning" ? r.pendingMeaning ?? null : null, shownSentence: has("answer-shown") ? p.accepted[0] : null, tries: answers.filter((x) => x.correct !== true).length, maxTries: def.rules.maxProduceAttempts, lastResponse: lastAnswer?.raw ?? null };
   }
   const listen = step.kind === "listen" && step.text
-    ? { language: step.text.language, plays: r.plays, heard: r.heard ?? 0, failures: r.playFailures ?? 0, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation") }
+    ? { language: step.text.language, plays: r.plays, completedPlays: r.completedPlays ?? 0, failures: r.playFailures ?? 0, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation") }
     : null;
   return {
     id: step.id,
@@ -1079,7 +1081,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     calc,
     choice,
     produce,
-    typing: step.kind === "typing-block" ? typingBlockView(def, run, content) : null,
+    typing: step.kind === "typing-block" ? typingBlockView(def, run, content, !run.typing && state && state.typing.alignment?.result === "match" ? planTypingBlock(state, content, def.typingBlock, (state.feedback?.focus ?? []).filter((f) => f.kind === "typing-key" && f.status === "open").map((f) => f.key)) : null) : null,
   };
 }
 
@@ -1090,7 +1092,7 @@ export function buildMissionView(state: MissionState, content: LearningContent, 
   const st = stepStatuses(def, run);
   const steps = def.steps.map((s) => ({ id: s.id, kind: s.kind, title: s.title, place: s.place, character: s.character, required: s.required, status: st[s.id] }));
   const activeStep = run.active ? def.steps.find((s) => s.id === run.active) : null;
-  const active = activeStep && run.steps[activeStep.id] ? activeView(def, run, activeStep, run.steps[activeStep.id], content) : null;
+  const active = activeStep && run.steps[activeStep.id] ? activeView(def, run, activeStep, run.steps[activeStep.id], content, state) : null;
   const shownStatus = (id: string) => ["done", "practiced", "taught", "unresolved"].includes(st[id]);
   const required = def.steps.filter((s) => s.required || (st[s.id] !== "not-needed" && st[s.id] !== "locked"));
   const finishBlocked = def.steps.some((s) => (s.required ? !isResolved(st[s.id]) : st[s.id] === "available" || st[s.id] === "active"));
@@ -1139,7 +1141,7 @@ export function missionReport(state: MissionState, content: LearningContent, vis
       objectives.push({ taskId: taskId(def, step, a.questionId), version: step.version, objective: a.kind === "practice" ? `${step.objective}-practice` : step.objective, outcome, evidence: a.evidence, support: a.support, uncertainty: a.recall ? `recall: ${a.recall}` : a.analysis?.kind === "spelling" ? `verstanden als „${a.analysis.understood}“` : null });
     }
     const raws = r.attempts.map((a) => `„${a.raw}“${a.correct === true ? " ✓" : a.correct === false ? " ✗" : " ?"}${a.analysis?.kind === "spelling" ? ` (verstanden: ${a.analysis.corrections.map((c) => `${c.given}→${c.meant}`).join(", ")})` : ""}${a.kind === "practice" ? " [nach gezeigter Antwort]" : ""}`);
-    whatHappened.push(`${step.id} ${step.title}: ${STATUS_DE[st[step.id]] ?? st[step.id]}${r.outcome ? ` (${r.outcome})` : ""}${raws.length ? ` — Versuche: ${raws.join("; ")}` : ""}${r.support.length ? ` — Hilfe: ${supportKinds(r).join(", ")}` : ""}${step.kind === "listen" ? ` — abgespielt: ${r.plays}×, davon laut Gerät gehört ${r.heard ?? 0}×, ohne Ton ${r.playFailures ?? 0}×` : ""}.`);
+    whatHappened.push(`${step.id} ${step.title}: ${STATUS_DE[st[step.id]] ?? st[step.id]}${r.outcome ? ` (${r.outcome})` : ""}${raws.length ? ` — Versuche: ${raws.join("; ")}` : ""}${r.support.length ? ` — Hilfe: ${supportKinds(r).join(", ")}` : ""}${step.kind === "listen" ? ` — abgespielt: ${r.plays}×, davon mit gemeldetem Abspiel-Ende ${r.completedPlays ?? 0}×, ohne Abspiel-Ende ${r.playFailures ?? 0}× (Gerätemeldung, kein Nachweis, dass es zu hören war)` : ""}.`);
   }
   for (const step of def.steps) if (st[step.id] === "not-needed") whatHappened.push(`${step.id} ${step.title}: nicht nötig (die erste Bitte war ohne Hilfe richtig).`);
   const typing = run.typing ? typingSummary(run.typing) : null;
