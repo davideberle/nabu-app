@@ -54,6 +54,7 @@ function started(env: Env = makeEnv()) {
   return op(fiveVisitsDone(env), { op: "start-visit" }, env).state;
 }
 const view = (s: MissionState, env: Env) => buildChildView(s, env.content, env.settings, env.now(), 0);
+const review = (s: MissionState) => buildParentReview(s, v5, "v7", null, { historical: false });
 const run = (s: MissionState) => s.missions![mission.id];
 function walkOpen(s: MissionState, step: string, env: Env) {
   const place = mission.steps.find((x) => x.id === step)!.place;
@@ -85,7 +86,7 @@ function wholeMission(env: Env, s = started(env), rosa = "Necesitamos cuerdas") 
   s = m(s, { a: "answer-question", step: "S2-BOARD", question: "boat-max", value: "6" }, env);
   s = m(s, { a: "answer-question", step: "S2-BOARD", question: "reef-max", value: "4" }, env);
   s = walkOpen(s, "S3-RADIO", env);
-  s = m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env);
+  s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "browser" }, env);
   for (const [q, v] of [["crew", "7"], ["bottles", "4"], ["ask", "Seile"]]) s = m(s, { a: "answer-question", step: "S3-RADIO", question: q, value: v }, env);
   s = walkOpen(s, "S4-WATER", env);
   s = m(s, { a: "answer-calc", step: "S4-WATER", values: { total: 28 }, raw: "28" }, env);
@@ -95,7 +96,7 @@ function wholeMission(env: Env, s = started(env), rosa = "Necesitamos cuerdas") 
   s = m(s, { a: "produce", step: "S6-ROSA", response: rosa, modality: "typed" }, env);
   if (run(s).steps["S6-ROSA"].status === "active") s = m(s, { a: "produce", step: "S6-ROSA", response: "Necesitamos cuerdas", modality: "typed" }, env);
   s = walkOpen(s, "S7-ROSA-REPLY", env);
-  s = m(s, { a: "support", step: "S7-ROSA-REPLY", kind: "play" }, env);
+  s = m(m(s, { a: "support", step: "S7-ROSA-REPLY", kind: "play" }, env), { a: "listen-outcome", step: "S7-ROSA-REPLY", outcome: "browser" }, env);
   s = m(s, { a: "answer-question", step: "S7-ROSA-REPLY", question: "ropes", value: "5" }, env);
   s = walkOpen(s, "S8-TOOLS", env);
   s = m(s, { a: "produce", step: "S8-TOOLS", response: "Necesitamos herramientas.", modality: "typed" }, env);
@@ -218,6 +219,38 @@ describe("V6-01 walkable island — steps live at places, reached on foot", () =
   });
 });
 
+describe("V6-07 listening playback that failed — recoverable, never listening evidence", () => {
+  it("a failed play unlocks nothing; retries are allowed; the text (help) unlocks answers that are supported, never independent", () => {
+    const env = makeEnv();
+    let s = started(env);
+    s = walkOpen(s, "S1-BRIEF", env);
+    s = m(s, { a: "story-done", step: "S1-BRIEF" }, env);
+    s = walkOpen(s, "S3-RADIO", env);
+    refused(() => m(s, { a: "listen-outcome", step: "S3-RADIO", outcome: "browser" }, env), "not-allowed"); // nothing was requested
+    s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "failed" }, env);
+    refused(() => m(s, { a: "answer-question", step: "S3-RADIO", question: "crew", value: "7" }, env), "not-allowed");
+    refused(() => m(s, { a: "listen-outcome", step: "S3-RADIO", outcome: "browser" }, env), "not-allowed"); // one outcome per play
+    s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "failed" }, env);
+    const v = buildMissionView(s, v5, "v7")!.active!.listen!;
+    deepStrictEqual([v.plays, v.heard, v.failures], [2, 0, 2]);
+    s = m(s, { a: "support", step: "S3-RADIO", kind: "transcript" }, env);
+    s = m(s, { a: "answer-question", step: "S3-RADIO", question: "crew", value: "7" }, env);
+    equal(run(s).steps["S3-RADIO"].attempts[0].evidence, "supported");
+    ok(review(s).learning.whatHappened.some((l) => l.includes("davon laut Gerät gehört 0×, ohne Ton 2×")));
+  });
+  it("an answer after a confirmed play without help stays independent even if an earlier play failed", () => {
+    const env = makeEnv();
+    let s = started(env);
+    s = walkOpen(s, "S1-BRIEF", env);
+    s = m(s, { a: "story-done", step: "S1-BRIEF" }, env);
+    s = walkOpen(s, "S3-RADIO", env);
+    s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "failed" }, env);
+    s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "child-voice" }, env);
+    s = m(s, { a: "answer-question", step: "S3-RADIO", question: "crew", value: "7" }, env);
+    equal(run(s).steps["S3-RADIO"].attempts[0].evidence, "independent");
+  });
+});
+
 describe("V6-07 reading versus listening", () => {
   it("listening: no answer and no transcript before listening; replays are allowed and are not help; the transcript is recorded support before it is shown", () => {
     const env = makeEnv();
@@ -232,7 +265,10 @@ describe("V6-07 reading versus listening", () => {
     refused(() => m(s, { a: "support", step: "S3-RADIO", kind: "transcript" }, env), "not-allowed");
     let r = mr(s, { a: "support", step: "S3-RADIO", kind: "play" }, env);
     equal(r.records.supports[0].kind, "mission_listen_play");
-    s = m(r.state, { a: "support", step: "S3-RADIO", kind: "play" }, env);
+    equal(r.result.script, mission.steps.find((x) => x.id === "S3-RADIO")!.text!.body, "the script travels only in the result of a recorded play");
+    refused(() => m(r.state, { a: "answer-question", step: "S3-RADIO", question: "crew", value: "7" }, env), "not-allowed");
+    s = m(r.state, { a: "listen-outcome", step: "S3-RADIO", outcome: "child-voice" }, env);
+    s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "browser" }, env);
     s = m(s, { a: "answer-question", step: "S3-RADIO", question: "crew", value: "7" }, env);
     equal(run(s).steps["S3-RADIO"].attempts[0].evidence, "independent", "two plays, no transcript: still independent listening");
     r = mr(s, { a: "support", step: "S3-RADIO", kind: "transcript" }, env);
@@ -274,7 +310,7 @@ describe("V6-06 connected calculations and the plan choice", () => {
     s = walkOpen(s, "S1-BRIEF", env);
     s = m(s, { a: "story-done", step: "S1-BRIEF" }, env);
     s = walkOpen(s, "S3-RADIO", env);
-    s = m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env);
+    s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "browser" }, env);
     for (const [q, v] of [["crew", "7"], ["bottles", "4"], ["ask", "Seile"]]) s = m(s, { a: "answer-question", step: "S3-RADIO", question: q, value: v }, env);
     return walkOpen(s, "S4-WATER", env);
   }
@@ -361,7 +397,7 @@ describe("V6-10 helpful language repair (bounded, reviewed — no live inference
     s = walkOpen(s, "S1-BRIEF", env);
     s = m(s, { a: "story-done", step: "S1-BRIEF" }, env);
     s = walkOpen(s, "S3-RADIO", env);
-    s = m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env);
+    s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "browser" }, env);
     for (const [q, v] of [["crew", "7"], ["bottles", "4"], ["ask", "Seile"]]) s = m(s, { a: "answer-question", step: "S3-RADIO", question: q, value: v }, env);
     s = walkOpen(s, "S6-ROSA", env);
     const r = mr(s, { a: "produce", step: "S6-ROSA", response: "Necesitamos querdas", modality: "typed" }, env);
@@ -385,7 +421,7 @@ describe("V6-10 helpful language repair (bounded, reviewed — no live inference
     s = walkOpen(s, "S1-BRIEF", env);
     s = m(s, { a: "story-done", step: "S1-BRIEF" }, env);
     s = walkOpen(s, "S3-RADIO", env);
-    s = m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env);
+    s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "browser" }, env);
     for (const [q, v] of [["crew", "7"], ["bottles", "4"], ["ask", "Seile"]]) s = m(s, { a: "answer-question", step: "S3-RADIO", question: q, value: v }, env);
     s = walkOpen(s, "S6-ROSA", env);
     s = m(s, { a: "produce", step: "S6-ROSA", response: "hola", modality: "typed" }, env);
@@ -432,13 +468,13 @@ describe("V6-09 retrieval practice — later in the mission and across visits", 
     s = walkOpen(s, "S1-BRIEF", env);
     s = m(s, { a: "story-done", step: "S1-BRIEF" }, env);
     s = walkOpen(s, "S3-RADIO", env);
-    s = m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env);
+    s = m(m(s, { a: "support", step: "S3-RADIO", kind: "play" }, env), { a: "listen-outcome", step: "S3-RADIO", outcome: "browser" }, env);
     for (const [q, v] of [["crew", "7"], ["bottles", "4"], ["ask", "Seile"]]) s = m(s, { a: "answer-question", step: "S3-RADIO", question: q, value: v }, env);
     s = walkOpen(s, "S6-ROSA", env);
     s = m(s, { a: "support", step: "S6-ROSA", kind: "word-bank" }, env);
     s = m(s, { a: "produce", step: "S6-ROSA", response: "Necesitamos cuerdas", modality: "word-bank" }, env);
     s = walkOpen(s, "S7-ROSA-REPLY", env);
-    s = m(s, { a: "support", step: "S7-ROSA-REPLY", kind: "play" }, env);
+    s = m(m(s, { a: "support", step: "S7-ROSA-REPLY", kind: "play" }, env), { a: "listen-outcome", step: "S7-ROSA-REPLY", outcome: "browser" }, env);
     s = m(s, { a: "answer-question", step: "S7-ROSA-REPLY", question: "ropes", value: "5" }, env);
     s = walkOpen(s, "S8-TOOLS", env);
     s = m(s, { a: "produce", step: "S8-TOOLS", response: "Necesitamos herramientas", modality: "typed" }, env);

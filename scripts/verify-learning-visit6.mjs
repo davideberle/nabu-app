@@ -232,8 +232,26 @@ const sha = (x) => createHash("sha256").update(JSON.stringify(x)).digest("hex");
 const browser = await chromium.launch(audioSafeChromiumLaunchOptions({ headless: true }));
 const blocked = [];
 const speechRequests = [];
-async function makeContext(options, cookie = assistant) {
+/** Silent playback mocks, installed BEFORE the audio guard (the guard then cannot replace them; nothing ever reaches a speaker):
+ *  speech "end" | "error" — the browser speech engine confirms the end, or reports an error; voice "ok" — the child voice route
+ *  answers with bytes and the media element reports `ended` without playing; voice "fail" — the route answers 503. */
+const speechMockScript = (mode) => `(() => {
+  const s = globalThis.speechSynthesis;
+  if (!s) return;
+  const speak = (u) => setTimeout(() => { globalThis.__speechCalls = (globalThis.__speechCalls || 0) + 1; ${mode === "end" ? "u.onend && u.onend()" : "u.onerror && u.onerror()"}; }, 30);
+  try { Object.defineProperty(s, "speak", { configurable: false, writable: false, value: speak }); } catch {}
+  try { Object.defineProperty(s, "cancel", { configurable: false, writable: false, value: () => {} }); } catch {}
+})();`;
+const mediaEndedMockScript = `(() => {
+  const proto = globalThis.HTMLMediaElement && globalThis.HTMLMediaElement.prototype;
+  if (!proto) return;
+  const play = function () { const el = this; setTimeout(() => { if (typeof el.onended === "function") el.onended(); }, 40); return Promise.resolve(); };
+  try { Object.defineProperty(proto, "play", { configurable: false, writable: false, value: play }); } catch {}
+})();`;
+async function makeContext(options, cookie = assistant, mocks = {}) {
   const c = await browser.newContext(options);
+  if (mocks.speech) await c.addInitScript(speechMockScript(mocks.speech));
+  if (mocks.voice === "ok") await c.addInitScript(mediaEndedMockScript);
   await installBrowserAudioGuard(c);
   await c.route("**/*", async (r) => {
     const u = new URL(r.request().url());
@@ -243,7 +261,10 @@ async function makeContext(options, cookie = assistant) {
     }
     if (/\/api\/family\/assistant\/tts/.test(u.pathname)) {
       // The child voice route is the listening path (reviewed text → speech). It is aborted here: no audible playback in tests.
-      speechRequests.push({ at: Date.now(), body: r.request().postData() });
+      speechRequests.push({ at: Date.now(), body: r.request().postData(), mock: mocks.voice ?? "abort" });
+      // a valid, silent WAV (one zero sample) — decodable, so the element reports no error; play() itself is the silent mock
+      if (mocks.voice === "ok") return r.fulfill({ status: 200, contentType: "audio/wav", body: Buffer.from("UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQIAAAAAAA==", "base64") });
+      if (mocks.voice === "fail") return r.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ error: "Text-to-speech is not configured" }) });
       return r.abort("blockedbyclient");
     }
     if (/\/api\/family\/(transcribe|assistant\/session)/.test(u.pathname)) return r.abort("blockedbyclient");
@@ -309,8 +330,11 @@ const historicalVisitsHash = sha(before.state.visits);
 check("fixture.production-shape", before.state.contentVersion === 4 && !("missions" in before.state) && !("interests" in before.state) && before.state.visits.filter((v) => v.finishedAt).length === 5, { contentVersion: before.state.contentVersion, finished: before.state.visits.filter((v) => v.finishedAt).length });
 const historicalRows = { attempts: (await rows("family_learning_attempts")).length, samples: (await rows("family_learning_work_samples")).length, completions: (await rows("family_learning_completions")).length };
 
+const ONLY_LATER = args.includes("--only-j3j4");
+if (!ONLY_LATER) {
 // ============================================================ J1 desktop ============================================================
-const desk = await makeContext({ viewport: { width: 1280, height: 900 } });
+// J1: the child voice is unreachable (aborted) and the browser speech engine confirms the end (mocked, silent).
+const desk = await makeContext({ viewport: { width: 1280, height: 900 } }, assistant, { speech: "end" });
 const p = await desk.newPage();
 openPages.push(p);
 p.setDefaultTimeout(15000);
@@ -368,7 +392,7 @@ await walkTo(p, "S1-BRIEF");
 await p.locator("[data-testid='mission-map']").focus();
 await p.keyboard.press("Enter");
 await p.waitForSelector("[data-testid='scene-panel'][data-step='S1-BRIEF']");
-check("J1.S1.scene-uses-painted-character", (await p.locator("[data-testid='scene-character']").count()) === 1);
+check("J1.S1.scene-is-painted-close-up-of-the-place", (await p.locator("[data-testid='scene-header'][data-place='office']").count()) === 1 && (await p.locator("[data-testid='scene-header'] image[href*='office']").count()) >= 1 && (await p.locator("[data-testid='scene-header'] image[href*='planner']").count()) >= 1);
 await shot(p, "desktop-S1-brief-scene");
 await p.locator("[data-testid='story-done']").click();
 await cont(p);
@@ -400,7 +424,7 @@ await p.locator("[data-testid='listen-play']").click();
 await settle(1200);
 check("J1.S3.play-requests-reviewed-speech-not-ai", speechRequests.length === speechBefore + 1 && JSON.parse(speechRequests.at(-1).body).text.startsWith("Hello, harbor! This is the research ship."), speechRequests.at(-1)?.body?.slice(0, 120));
 await p.waitForFunction(() => document.querySelector("[data-testid='listen-box']")?.getAttribute("data-voice") !== "none", null, { timeout: 25000 });
-check("J1.S3.voice-fallback-to-browser-speech", (await p.locator("[data-testid='listen-box']").getAttribute("data-voice")) === "browser" && !(await text(p)).includes("Der Ton kam gerade nicht"));
+check("J1.S3.mocked-browser-speech-confirmed-unlocks-answers", (await p.locator("[data-testid='listen-box']").getAttribute("data-voice")) === "browser" && !(await p.locator("[data-testid='pick-crew-7']").isDisabled()) && (await p.locator("[data-testid='listen-failed']").count()) === 0);
 await p.locator("[data-testid='pick-crew-7']").click();
 await p.waitForSelector("[data-testid='question-crew'][data-status='correct']");
 await p.locator("[data-testid='pick-bottles-2']").click();
@@ -439,6 +463,8 @@ await p.locator("[data-testid='calc-submit']").click();
 await p.waitForSelector("[data-testid='scene-done']");
 await cont(p);
 check("J1.world.crates-on-quay", ((await p.locator("[data-testid='mission-world-changes']").getAttribute("data-changes")) ?? "").includes("W-CRATES"));
+check("J1.world.change-told-in-words-at-its-place", (await p.locator("[data-testid='world-chip-harbor']").innerText()) === "5 Kisten Wasser" && (await p.locator("[data-testid='world-chip-workshop']").innerText()) === "Funkspruch empfangen");
+check("J1.world.no-icon-props", (await p.locator("[data-part='radio'], [data-part='rope-coils']").count()) === 0);
 
 // --- S6 Rosa: «Necesitamos querdas» → the reviewed repair line, then a supported retry
 await openStep(p, "S6-ROSA");
@@ -496,6 +522,7 @@ await cont(p);
 
 // --- S12 typing block: clean screen, announced finite block, no decision between drills, global Stopp mid-drill, resume
 await openStep(p, "S12-TYPING");
+check("J1.S12.no-scene-picture-in-typing", (await p.locator("[data-testid='scene-header']").count()) === 0);
 check("J1.S12.no-character-in-typing", (await p.locator("[data-testid='scene-character']").count()) === 0 && !/Mrs Finley/.test(await p.locator("[data-testid='scene-panel']").innerText()));
 await p.locator("[data-testid='typing-start']").click();
 await p.waitForSelector("[data-testid='typing-block'][data-phase='drill']");
@@ -552,8 +579,10 @@ await p.waitForSelector("[data-testid='scene-done']");
 await shot(p, "desktop-S14-launch-done");
 await cont(p);
 await settle(800);
+check("J1.world.no-stale-quay-label-after-loading", (await p.locator("[data-testid='world-chip-harbor']").count()) === 0);
 check("J1.world.boats-sailing", ((await p.locator("[data-testid='mission-world-changes']").getAttribute("data-changes")) ?? "").includes("W-SAIL") && (await p.locator("[data-testid='launched-banner']").count()) === 1);
 await shot(p, "desktop-mission-complete-map");
+check("J1.no-emoji-in-mission-surface", !/\p{Extended_Pictographic}/u.test(await p.locator("[data-testid='mission-world']").innerText()), (await p.locator("[data-testid='mission-world']").innerText()).match(/\p{Extended_Pictographic}/gu));
 await p.locator("[data-testid='mission-finish']").click();
 await p.waitForSelector("[data-testid='summary']");
 await shot(p, "desktop-summary");
@@ -677,6 +706,197 @@ await t.locator("[data-testid='scene-leave']").tap();
 await t.waitForSelector("[data-testid='quest-log']");
 await shot(t, "tablet-quest-log");
 
+}
+// ============================================================ J3 keyboard only + failed playback + practice / later ===============
+// Desktop, no mouse at all: Tab / Enter / typing. The child voice route fails (503) and the browser speech engine reports an error
+// (both mocked, silent) — listening must stay locked, be retryable, and only the text (help) unlocks answers, never as listening.
+await fiveVisitsDone();
+const kbCtx = await makeContext({ viewport: { width: 1280, height: 900 } }, assistant, { speech: "error", voice: "fail" });
+const k = await kbCtx.newPage();
+const consoleLines = [];
+k.on("console", (m) => consoleLines.push(m.text().slice(0, 200)));
+k.on("response", (r) => { if (r.status() >= 400) consoleLines.push(`HTTP ${r.status()} ${r.request().method()} ${new URL(r.url()).pathname}`); });
+openPages.push(k);
+k.setDefaultTimeout(15000);
+k.on("pageerror", (e) => pageErrors.push({ page: "keyboard", message: String(e) }));
+const sweep = [];
+async function focused(page) {
+  return page.evaluate(() => {
+    const el = document.activeElement;
+    if (!el || el === document.body) return { testid: null, tag: "body", visible: false, ring: false, text: "" };
+    const r = el.getBoundingClientRect();
+    const cs = getComputedStyle(el);
+    return { testid: el.getAttribute("data-testid"), tag: el.tagName.toLowerCase(), text: (el.getAttribute("aria-label") || el.textContent || "").trim().slice(0, 40), visible: r.width > 0 && r.height > 0 && cs.visibility !== "hidden", ring: cs.outlineStyle !== "none" || (cs.boxShadow && cs.boxShadow !== "none") };
+  });
+}
+async function tabSweep(page, label, n) {
+  const seen = [];
+  for (let i = 0; i < n; i += 1) {
+    await page.keyboard.press("Tab");
+    const f = await focused(page);
+    seen.push(f);
+    sweep.push({ label, ...f });
+  }
+  return seen;
+}
+async function tabTo(page, testid, max = 80) {
+  // a control that is disabled while a save is in flight is skipped by Tab — wait until it can take focus
+  await page.waitForSelector(`[data-testid='${testid}']:not([disabled])`, { timeout: 15000 });
+  for (let i = 0; i < max; i += 1) {
+    const f = await focused(page);
+    if (f.testid === testid) return f;
+    await page.keyboard.press("Tab");
+  }
+  throw new Error(`keyboard: ${testid} not reachable with Tab`);
+}
+async function kbOpen(page, step) {
+  await tabTo(page, `go-${step}`);
+  if ((await page.locator(`[data-testid='go-${step}']`).innerText()).includes("Starten")) {
+    // already standing at the place: Enter on the quest entry starts the step directly
+    await page.keyboard.press("Enter");
+    await page.waitForSelector(`[data-testid='scene-panel'][data-step='${step}']`);
+    return;
+  }
+  await page.keyboard.press("Enter");
+  try {
+    await page.waitForSelector(`[data-testid='open-${step}']`, { timeout: 15000 });
+  } catch (e) {
+    const attrs = await page.locator("[data-testid='mission-world']").evaluate((el) => ({ ...el.dataset }));
+    const avatar = await page.locator("[data-testid='mission-avatar']").evaluate((el) => ({ ...el.dataset }));
+    console.log("kbOpen failure", step, JSON.stringify(attrs), JSON.stringify(avatar), JSON.stringify(await focused(page)), JSON.stringify(consoleLines.slice(-10)));
+    throw e;
+  }
+  await page.waitForFunction((st) => (document.querySelector(`[data-testid='go-${st}']`)?.textContent || "").includes("Starten"), step);
+  await tabTo(page, `go-${step}`);
+  await page.keyboard.press("Enter");
+  await page.waitForSelector(`[data-testid='scene-panel'][data-step='${step}']`);
+}
+async function kbContinue(page) {
+  await tabTo(page, "scene-continue");
+  await page.keyboard.press("Enter");
+  await page.waitForSelector("[data-testid='quest-log']");
+  await settle(200);
+}
+await k.goto(`${BASE}/family/learn/mission?child=santiago`);
+await k.waitForSelector("[data-testid='start-visit']");
+await tabTo(k, "start-visit");
+await k.keyboard.press("Enter");
+await k.waitForSelector("[data-testid='mission-world']");
+await settle(600);
+await k.locator("body").evaluate(() => document.activeElement && document.activeElement.blur && document.activeElement.blur());
+const mapSweep = await tabSweep(k, "map", 22);
+check("J3.sweep.map-controls-reachable", ["hud-stop", "mission-map", "go-S1-BRIEF"].every((id) => mapSweep.some((f) => f.testid === id)), mapSweep.map((f) => f.testid ?? f.tag));
+await kbOpen(k, "S1-BRIEF");
+check("J3.focus.scene-heading-on-open", (await k.evaluate(() => document.activeElement?.id)) === "mw-scene-title");
+await shot(k, "keyboard-S1-scene-focus");
+const sceneSweep = await tabSweep(k, "scene-S1", 8);
+check("J3.sweep.scene-controls-reachable", ["scene-leave", "story-done"].every((id) => sceneSweep.some((f) => f.testid === id)), sceneSweep.map((f) => f.testid ?? f.tag));
+await tabTo(k, "story-done");
+await k.keyboard.press("Enter");
+await kbContinue(k);
+check("J3.focus.returns-to-map-after-scene", (await focused(k)).testid === "mission-map");
+// S3 listening — playback fails twice (mocked); answers stay locked; the text is help and unlocks supported answers
+await kbOpen(k, "S3-RADIO");
+await tabTo(k, "listen-play");
+await k.keyboard.press("Enter");
+await k.waitForSelector("[data-testid='listen-failed']");
+check("J3.S3.failed-play-keeps-answers-locked", (await k.locator("[data-testid='listen-box']").getAttribute("data-voice")) === "failed" && (await k.locator("[data-testid='pick-crew-7']").isDisabled()));
+await shot(k, "keyboard-S3-playback-failed");
+await tabTo(k, "listen-play");
+await k.keyboard.press("Enter");
+await k.waitForFunction(async () => true);
+await settle(800);
+let r3 = (await rawRow()).state.missions["MISSION-SHIP-SUPPLY"].steps["S3-RADIO"];
+check("J3.S3.retry-recorded-as-failed-not-heard", r3.plays === 2 && (r3.heard ?? 0) === 0 && r3.playFailures === 2, { plays: r3.plays, heard: r3.heard, failures: r3.playFailures });
+await tabTo(k, "listen-transcript");
+await k.keyboard.press("Enter");
+await k.waitForSelector("[data-testid='listen-script']");
+for (const id of ["pick-crew-7", "pick-bottles-4", "pick-ask-Seile"]) {
+  await tabTo(k, id);
+  await k.keyboard.press("Enter");
+  await settle(500);
+}
+await k.waitForSelector("[data-testid='scene-done']");
+r3 = (await rawRow()).state.missions["MISSION-SHIP-SUPPLY"].steps["S3-RADIO"];
+check("J3.S3.answers-after-text-are-supported-not-listening", r3.attempts.every((a) => a.evidence === "supported") && r3.outcome === "supported", r3.attempts.map((a) => a.evidence));
+await kbContinue(k);
+// S6 — tries used up → the sentence is shown → supported practice (typed)
+await kbOpen(k, "S6-ROSA");
+for (const wrong of ["hola", "no sé", "Necesitamos agua"]) {
+  await k.locator("[data-testid='produce-input']").waitFor();
+  await tabTo(k, "produce-input");
+  await k.keyboard.type(wrong, { delay: 15 });
+  await k.keyboard.press("Enter");
+  await settle(700);
+}
+await k.waitForSelector("[data-testid='produce-exhausted']");
+await shot(k, "keyboard-S6-tries-used-up");
+await tabTo(k, "practice-input");
+await k.keyboard.type("Necesitamos cuerdas", { delay: 15 });
+await k.keyboard.press("Enter");
+await k.waitForSelector("[data-testid='scene-done']");
+await kbContinue(k);
+// S7 — playback fails again; the text unlocks a supported answer
+await kbOpen(k, "S7-ROSA-REPLY");
+await tabTo(k, "listen-play");
+await k.keyboard.press("Enter");
+await k.waitForSelector("[data-testid='listen-failed']");
+await tabTo(k, "listen-transcript");
+await k.keyboard.press("Enter");
+await k.waitForSelector("[data-testid='listen-script']");
+await tabTo(k, "pick-ropes-5");
+await k.keyboard.press("Enter");
+await k.waitForSelector("[data-testid='scene-done']");
+await kbContinue(k);
+// S8 — tries used up → kept for next time (explicitly unresolved)
+await kbOpen(k, "S8-TOOLS");
+for (const wrong of ["hola", "no sé", "Necesitamos agua"]) {
+  await tabTo(k, "produce-input");
+  await k.keyboard.type(wrong, { delay: 15 });
+  await k.keyboard.press("Enter");
+  await settle(700);
+}
+await k.waitForSelector("[data-testid='produce-exhausted']");
+await tabTo(k, "produce-later");
+await k.keyboard.press("Enter");
+await k.waitForSelector("[data-testid='scene-done']");
+await shot(k, "keyboard-S8-kept-for-later");
+await kbContinue(k);
+const r6 = (await rawRow()).state.missions["MISSION-SHIP-SUPPLY"].steps;
+check("J3.S6.practice-recorded-as-supported-practice", r6["S6-ROSA"].status === "practiced" && r6["S6-ROSA"].attempts.at(-1).kind === "practice" && r6["S6-ROSA"].attempts.at(-1).evidence === "answer_exposed");
+check("J3.S8.later-recorded-unresolved", r6["S8-TOOLS"].status === "unresolved" && r6["S8-TOOLS"].outcome === "unresolved");
+await shot(k, "keyboard-map-after-practice-and-later");
+await k.goto(`${BASE}/family/learn?child=santiago&report=v7`);
+await k.waitForSelector("[data-testid='visit-report'][data-report-visit='v7']");
+const partial = await k.locator("[data-testid='visit-report']").innerText();
+check("J3.report.partial-shows-practice-and-later-honestly", partial.includes("mit Hilfe geübt") && partial.includes("fürs nächste Mal aufgehoben") && (await k.locator("[data-testid='visit-report']").getAttribute("data-report-partial")) === "true");
+await shot(k, "keyboard-partial-report");
+check("J3.sweep.every-focus-visible-with-indicator", sweep.filter((f) => f.tag !== "body").every((f) => f.visible && f.ring), sweep.filter((f) => !(f.visible && f.ring)).slice(0, 6));
+fs.writeFileSync(path.join(OUT, "focus-sweep.json"), JSON.stringify(sweep, null, 2));
+
+// ============================================================ J4 mocked child voice success + replay =============================
+await fiveVisitsDone();
+await op({ op: "start-visit" });
+for (const action of [{ a: "arrive", place: "office" }, { a: "open", step: "S1-BRIEF" }, { a: "story-done", step: "S1-BRIEF" }, { a: "leave" }, { a: "arrive", place: "workshop" }]) await op({ op: "mission", action });
+const voiceCtx = await makeContext({ viewport: { width: 1280, height: 900 } }, assistant, { voice: "ok" });
+const vp = await voiceCtx.newPage();
+openPages.push(vp);
+vp.setDefaultTimeout(15000);
+vp.on("pageerror", (e) => pageErrors.push({ page: "voice", message: String(e) }));
+await vp.goto(`${BASE}/family/learn/mission?child=santiago`);
+await vp.waitForSelector("[data-testid='open-S3-RADIO']");
+await vp.locator("[data-testid='open-S3-RADIO']").click();
+await vp.locator("[data-testid='listen-play']").click();
+await vp.waitForFunction(() => document.querySelector("[data-testid='listen-box']")?.getAttribute("data-voice") === "child-voice");
+await vp.locator("[data-testid='pick-crew-7']").click();
+await vp.waitForSelector("[data-testid='question-crew'][data-status='correct']");
+await vp.locator("[data-testid='listen-play']").click();
+await settle(900);
+const r4 = (await rawRow()).state.missions["MISSION-SHIP-SUPPLY"].steps["S3-RADIO"];
+check("J4.child-voice-confirmed-counts-as-heard", r4.heard === 2 && (r4.playFailures ?? 0) === 0 && r4.plays === 2, { plays: r4.plays, heard: r4.heard });
+check("J4.listening-answer-independent-after-confirmed-play", r4.attempts[0].evidence === "independent");
+await shot(vp, "voice-mock-child-voice-played");
+
 } catch (e) {
   check("journey.completed-without-exception", false, String(e).slice(0, 400));
   for (const pg of openPages) {
@@ -689,7 +909,7 @@ await shot(t, "tablet-quest-log");
 // ============================================================ global =================================================================
 check("global.no-external-requests", blocked.length === 0, [...new Set(blocked)]);
 check("global.no-page-errors", pageErrors.length === 0, pageErrors.slice(0, 5));
-check("global.speech-never-reached-server", speechRequests.length >= 2, speechRequests.length);
+check("global.speech-never-reached-server", speechRequests.length >= 6 && speechRequests.every((r) => ["abort", "ok", "fail"].includes(r.mock)), speechRequests.map((r) => r.mock));
 await browser.close();
 const passed = results.filter((r) => r.ok).length;
 fs.writeFileSync(path.join(OUT, "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, passed, total: results.length, results, speechRequests: speechRequests.length, blocked: [...new Set(blocked)], pageErrors }, null, 2));

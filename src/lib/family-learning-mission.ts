@@ -66,6 +66,10 @@ export type MissionStepRun = {
   support: { kind: string; at: string; detail?: string }[];
   /** Listening: how often the recording was played (the task itself, not help). */
   plays: number;
+  /** Listening: plays the device reported as actually heard (child voice or browser speech); absent on older runs = 0. */
+  heard?: number;
+  /** Listening: plays the device reported as failed (no sound confirmed). */
+  playFailures?: number;
   /** Per question: resolved and how. */
   questions: Record<string, { status: "open" | "correct" | "given"; evidence: EvidenceCategory | null }>;
   /** Calc/choice/produce phase shown to the child. */
@@ -178,6 +182,8 @@ export type MissionAction =
   | { a: "produce"; step: string; response: string; modality: "typed" | "word-bank" }
   | { a: "meaning"; step: string; word: string }
   | { a: "support"; step: string; kind: "play" | "transcript" | "translation" | "word-bank" | "line-translation"; line?: number }
+  /** Listening: what the device reported for the last requested play (`child-voice` / `browser` = sound confirmed; `failed` = not). */
+  | { a: "listen-outcome"; step: string; outcome: "child-voice" | "browser" | "failed" }
   | { a: "practice"; step: string; response: string }
   | { a: "later"; step: string }
   | { a: "typing-start" }
@@ -572,10 +578,25 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       result = { support: kind };
       break;
     }
+    case "listen-outcome": {
+      const { step, r } = requireActive(run, def, action.step);
+      if (step.kind !== "listen") throw new MissionOpError("invalid", "only listening steps report playback");
+      if (!["child-voice", "browser", "failed"].includes(action.outcome)) throw new MissionOpError("invalid", "unknown playback outcome");
+      const reported = (r.heard ?? 0) + (r.playFailures ?? 0);
+      if (reported >= r.plays) throw new MissionOpError("not-allowed", "no requested play is waiting for its outcome");
+      if (action.outcome === "failed") r.playFailures = (r.playFailures ?? 0) + 1;
+      else r.heard = (r.heard ?? 0) + 1;
+      // Device-reported (the server cannot hear): recorded for the parent, never as answer help.
+      support(records, env, def, step, "listen-outcome", { outcome: action.outcome, play: reported + 1, reportedBy: "device" });
+      result = { heard: r.heard ?? 0, failures: r.playFailures ?? 0 };
+      break;
+    }
     case "answer-question": {
       const { step, r } = requireActive(run, def, action.step);
       if (step.kind !== "read" && step.kind !== "listen") throw new MissionOpError("invalid", "not a question step");
-      if (step.kind === "listen" && r.plays < 1) throw new MissionOpError("not-allowed", "listen to the recording first");
+      // A listening answer needs a play the device confirmed as heard — or the text, which is recorded help. A failed playback
+      // never unlocks answering on its own and never counts as listening.
+      if (step.kind === "listen" && (r.heard ?? 0) < 1 && !r.support.some((s) => s.kind === "transcript")) throw new MissionOpError("not-allowed", "listen to the recording first (or open the text, which counts as help)");
       const q: MissionQuestion | undefined = step.questions?.find((x) => x.id === action.question);
       if (!q) throw new MissionOpError("invalid", "unknown question");
       const qs = (r.questions[q.id] = r.questions[q.id] ?? { status: "open", evidence: null });
@@ -584,7 +605,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (q.kind === "pick" && !(q.options ?? []).includes(raw)) throw new MissionOpError("invalid", "unknown option");
       const tries = r.attempts.filter((a) => a.questionId === q.id);
       const correct = normalizeAnswer(raw) === normalizeAnswer(q.answer);
-      const helped = r.support.some((s) => ["transcript", "translation"].includes(s.kind));
+      const helped = r.support.some((s) => ["transcript", "translation"].includes(s.kind)) || (step.kind === "listen" && (r.heard ?? 0) < 1);
       const evidence: EvidenceCategory = !correct ? "incorrect" : tries.length === 0 && !helped ? "independent" : "supported";
       const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: q.id, raw, correct, evidence, support: [...supportKinds(r), ...(tries.length ? ["retry"] : [])], modality: q.kind === "pick" ? "pick" : "typed", kind: "answer" };
       r.attempts.push(attempt);
@@ -945,7 +966,7 @@ export type MissionActiveView = {
   done: { speaker: string | null; text: string; language: string; translated: string | null }[];
   /** Reading tasks: the text to read (never audio). Listening: the text ONLY after the transcript support was recorded. */
   readText: string | null;
-  listen: { language: string; plays: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean } | null;
+  listen: { language: string; plays: number; heard: number; failures: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean } | null;
   questions: { id: string; prompt: string; kind: "pick" | "number"; options: string[] | null; status: "open" | "correct" | "given"; tries: number; hint: string | null; shownAnswer: string | null; lastWrong: string | null }[];
   calc: { prompt: string; fields: { key: string; label: string; correct: boolean | null; last: number | null }[]; clarification: string | null; representation: { text: string; total: number; perGroup: number; unit: string } | null; teach: string | null; tries: number } | null;
   choice: { prompt: string; options: { id: string; label: string }[]; picked: { id: string; feedback: string; best: boolean }[]; teach: string | null } | null;
@@ -1041,7 +1062,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     produce = { language: p.language, frame: p.frame, instruction: p.instruction, wordBank: has("word-bank") ? p.wordBank : null, feedback, repairLine: r.repairLine ?? null, askMeaning: r.phase === "ask-meaning" ? r.pendingMeaning ?? null : null, shownSentence: has("answer-shown") ? p.accepted[0] : null, tries: answers.filter((x) => x.correct !== true).length, maxTries: def.rules.maxProduceAttempts, lastResponse: lastAnswer?.raw ?? null };
   }
   const listen = step.kind === "listen" && step.text
-    ? { language: step.text.language, plays: r.plays, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation") }
+    ? { language: step.text.language, plays: r.plays, heard: r.heard ?? 0, failures: r.playFailures ?? 0, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation") }
     : null;
   return {
     id: step.id,
@@ -1118,7 +1139,7 @@ export function missionReport(state: MissionState, content: LearningContent, vis
       objectives.push({ taskId: taskId(def, step, a.questionId), version: step.version, objective: a.kind === "practice" ? `${step.objective}-practice` : step.objective, outcome, evidence: a.evidence, support: a.support, uncertainty: a.recall ? `recall: ${a.recall}` : a.analysis?.kind === "spelling" ? `verstanden als „${a.analysis.understood}“` : null });
     }
     const raws = r.attempts.map((a) => `„${a.raw}“${a.correct === true ? " ✓" : a.correct === false ? " ✗" : " ?"}${a.analysis?.kind === "spelling" ? ` (verstanden: ${a.analysis.corrections.map((c) => `${c.given}→${c.meant}`).join(", ")})` : ""}${a.kind === "practice" ? " [nach gezeigter Antwort]" : ""}`);
-    whatHappened.push(`${step.id} ${step.title}: ${STATUS_DE[st[step.id]] ?? st[step.id]}${r.outcome ? ` (${r.outcome})` : ""}${raws.length ? ` — Versuche: ${raws.join("; ")}` : ""}${r.support.length ? ` — Hilfe: ${supportKinds(r).join(", ")}` : ""}${step.kind === "listen" ? ` — angehört: ${r.plays}×` : ""}.`);
+    whatHappened.push(`${step.id} ${step.title}: ${STATUS_DE[st[step.id]] ?? st[step.id]}${r.outcome ? ` (${r.outcome})` : ""}${raws.length ? ` — Versuche: ${raws.join("; ")}` : ""}${r.support.length ? ` — Hilfe: ${supportKinds(r).join(", ")}` : ""}${step.kind === "listen" ? ` — abgespielt: ${r.plays}×, davon laut Gerät gehört ${r.heard ?? 0}×, ohne Ton ${r.playFailures ?? 0}×` : ""}.`);
   }
   for (const step of def.steps) if (st[step.id] === "not-needed") whatHappened.push(`${step.id} ${step.title}: nicht nötig (die erste Bitte war ohne Hilfe richtig).`);
   const typing = run.typing ? typingSummary(run.typing) : null;

@@ -30,6 +30,7 @@ import type { MissionAction, MissionActiveView, MissionView, TypingBlockView } f
 import type { ChildId } from "@/lib/family-assistant-turn";
 import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import { nextExpectedChar } from "@/lib/family-learning-typing-metrics";
+import { browserSpeech, playListening } from "@/lib/family-learning-listening";
 import { HarborIsland } from "./harbor-island";
 import { plateFor, type PlateId } from "./harbor-island-plates";
 import { HandsKeyboard } from "./hands-keyboard";
@@ -169,7 +170,22 @@ function useWalker(g: Graph, start: string, onArrive: (place: string) => void) {
     return best;
   };
 
+  const lastTick = useRef<number>(0);
   const tick = useCallback(
+    (now: number) => {
+      lastTick.current = performance.now();
+      try {
+        step(now);
+      } catch (error) {
+        // never leave a dead frame id behind: the next walk must always be able to start
+        raf.current = null;
+        console.error("[mission-walk]", error);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [g],
+  );
+  const step = useCallback(
     (now: number) => {
       const dt = Math.min(0.05, (now - last.current) / 1000);
       last.current = now;
@@ -224,6 +240,12 @@ function useWalker(g: Graph, start: string, onArrive: (place: string) => void) {
   );
 
   const kick = () => {
+    // A frame id that has not ticked for a while belongs to a loop that is gone (unmounted page state, a crashed frame,
+    // a throttled tab): start a fresh loop instead of waiting for it.
+    if (raf.current !== null && performance.now() - lastTick.current > 250) {
+      cancelAnimationFrame(raf.current);
+      raf.current = null;
+    }
     if (raf.current === null) {
       last.current = performance.now();
       raf.current = requestAnimationFrame(tick);
@@ -387,6 +409,19 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
     }
   };
 
+  // Keyboard flow: when a scene closes, focus returns to the map (where the avatar stands), never to the page top.
+  const wasActive = useRef<string | null>(active?.id ?? null);
+  useEffect(() => {
+    if (wasActive.current && !active) stageRef.current?.focus({ preventScroll: true });
+    wasActive.current = active?.id ?? null;
+  }, [active]);
+  // The latest mission change at each place, in words (no icon pretends to be painted world art).
+  const worldByPlace = new Map<string, string>();
+  // where each place's change label sits (stage units from the ground point), clear of the place labels and beacons
+  const CHIP_OFFSET: Record<string, { dx: number; dy: number }> = { workshop: { dx: -150, dy: 0 }, shop: { dx: -150, dy: 20 }, harbor: { dx: 40, dy: 40 }, pier: { dx: 60, dy: 70 }, office: { dx: 150, dy: 0 }, harbormaster: { dx: 0, dy: 40 } };
+  // once the boats are loaded, the crates are on board: their quay label goes with them (words never describe what is not shown)
+  const loaded = mission.world.some((w) => w.prop === "boats");
+  for (const w of mission.world) if (!(loaded && (w.prop === "crates" || w.prop === "tool-crates"))) worldByPlace.set(w.place, w.label);
   const avatarPlate = plateFor("child");
   const worldProps = mission.world;
   const launched = worldProps.some((w) => w.prop === "sail");
@@ -397,7 +432,7 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
         {/* --- the walkable island --- */}
         <div
           ref={stageRef}
-          className="relative w-full overflow-hidden rounded-3xl border-2 outline-none focus-visible:outline-3 focus-visible:outline-amber-500"
+          className="relative w-full overflow-hidden rounded-3xl border-2 outline-none focus-visible:outline-3 focus-visible:outline-solid focus-visible:outline-amber-500"
           style={{ borderColor: BARK, aspectRatio: "16 / 9", background: SEA }}
           tabIndex={0}
           role="application"
@@ -460,6 +495,17 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
                   );
                 })
             : null}
+          {fit
+            ? [...worldByPlace.entries()].map(([place, label]) => {
+                const p = graph.pos[place];
+                if (!p) return null;
+                return (
+                  <span key={`w-${place}`} className="pointer-events-none absolute -translate-x-1/2 whitespace-nowrap rounded-full border px-2 text-[13px] font-semibold shadow-sm" style={{ left: (p.x + (CHIP_OFFSET[place]?.dx ?? 0)) * fit.scale + fit.ox, top: (p.y + (CHIP_OFFSET[place]?.dy ?? 18)) * fit.scale + fit.oy, lineHeight: "20px", background: "#fffdf6", color: INK, borderColor: "#d6c3a3" }} data-testid={`world-chip-${place}`}>
+                    {label}
+                  </span>
+                );
+              })
+            : null}
           {/* arrival card: who is here and what to do — Enter or tap */}
           {!active && here.length && fit ? (
             <div className={cn(card, "absolute z-10 w-[min(92%,360px)] -translate-x-1/2 p-3")} style={{ ...cardStyle, left: Math.min(Math.max(walker.pos.x * fit.scale + fit.ox, 190), fit.w - 190), top: Math.min(walker.pos.y * fit.scale + fit.oy + 24, fit.h - 130) }} data-testid="arrive-card">
@@ -473,14 +519,14 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
           ) : null}
           {launched && !active ? (
             <div className="pointer-events-none absolute left-1/2 top-3 -translate-x-1/2 rounded-full border-2 px-4 py-1 text-base font-bold shadow" style={{ ...cardStyle }} data-testid="launched-banner">
-              ⛵ Die Boote fahren zum Forschungsschiff
+              Die Boote fahren zum Forschungsschiff
             </div>
           ) : null}
         </div>
 
         {/* --- the open scene (same palette, same plates) --- */}
         {active ? (
-          <ScenePanel child={child} mission={mission} active={active} busy={busy} act={act} speech={speech} placeLabel={placeOf(mission.position)?.label ?? ""} />
+          <ScenePanel child={child} view={view} mission={mission} active={active} busy={busy} act={act} speech={speech} placeLabel={placeOf(mission.position)?.label ?? ""} />
         ) : null}
       </div>
 
@@ -569,23 +615,53 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
 const CHARACTER_PLATE: Record<string, PlateId> = { keeper: "keeper", planner: "planner", supplier: "supplier" };
 const PLACE_PLATE: Record<string, PlateId> = { workshop: "workshop", office: "office", shop: "shop", harbormaster: "harbormaster" };
 
-function SceneHeader({ mission, active, placeLabel }: { mission: MissionView; active: MissionActiveView; placeLabel: string }) {
+/** Where the scene camera looks for each place (stage units): the building or the stretch of shore that makes the place recognisable. */
+const SCENE_FOCUS: Record<string, { x: number; y: number }> = {
+  office: { x: 1010, y: 300 },
+  workshop: { x: 600, y: 335 },
+  shop: { x: 655, y: 560 },
+  harbormaster: { x: 872, y: 500 },
+  pier: { x: 1110, y: 585 },
+  harbor: { x: 740, y: 690 },
+  base: { x: 470, y: 250 },
+};
+
+/**
+ * The scene is a camera close-up of the SAME painted island at the place the child is standing: the painted building, the
+ * person who works there (drawn at their door), the saved world and the mission's own changes — one artwork, no separate
+ * illustration style, nothing composited on an empty crop.
+ */
+function SceneHeader({ view, mission, active, placeLabel }: { view: ChildView; mission: MissionView; active: MissionActiveView; placeLabel: string }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [box, setBox] = useState<{ w: number; h: number } | null>(null);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const measure = () => setBox({ w: el.clientWidth, h: el.clientHeight });
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   const place = mission.places.find((p) => p.id === mission.position);
-  const backdrop = plateFor("backdrop");
-  const building = place ? PLACE_PLATE[place.id] : undefined;
-  const buildingPlate = building ? plateFor(building) : null;
+  const focus = (place && SCENE_FOCUS[place.id]) ?? { x: place?.x ?? 800, y: (place?.y ?? 450) - 70 };
   const ch = active.character ? mission.characters.find((c) => c.id === active.character) : null;
-  const chPlate = ch ? plateFor(CHARACTER_PLATE[ch.plate] ?? (ch.plate as PlateId)) : null;
-  // The scene is a close-up of the same painting: backdrop zoomed around the place, its building and its person.
-  const bx = place ? (place.x / 1600) * 100 : 50;
-  const by = place ? (place.y / 900) * 100 : 50;
+  // ~1.15 painted pixels per stage unit: the building fills most of the frame height; never below the map's own scale.
+  const scale = box ? Math.max(box.h / 200, box.w / 620) : 1;
+  const tx = box ? box.w / 2 - focus.x * scale : 0;
+  const ty = box ? box.h * 0.56 - focus.y * scale : 0;
   return (
-    <div className="relative h-40 overflow-hidden rounded-2xl border-2 sm:h-48" style={{ borderColor: BARK, backgroundImage: backdrop ? `url(${backdrop.href})` : undefined, backgroundSize: "330%", backgroundPosition: `${bx}% ${by}%`, backgroundColor: SEA }} data-testid="scene-header">
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(255,248,232,0) 45%, rgba(43,33,24,0.55) 100%)" }} />
-      {buildingPlate ? <img src={buildingPlate.href} alt="" aria-hidden className="absolute bottom-2 left-3 h-[80%] w-auto drop-shadow" /> : null}
-      {chPlate ? <img src={chPlate.href} alt="" aria-hidden className="absolute bottom-0 right-6 h-[96%] w-auto drop-shadow-lg" data-testid="scene-character" /> : null}
-      <div className="absolute bottom-2 left-3 right-28 sm:left-auto sm:right-28">
-        <p className="inline-block rounded-full border px-3 text-sm font-bold" style={{ ...cardStyle }}>
+    <div ref={ref} className="relative h-48 overflow-hidden rounded-2xl border-2 sm:h-56" style={{ borderColor: BARK, background: SEA }} data-testid="scene-header" data-place={place?.id ?? ""} data-character={ch?.id ?? ""}>
+      {box ? (
+        <div aria-hidden className="pointer-events-none absolute left-0 top-0" style={{ width: 1600, height: 900, transform: `translate(${tx}px, ${ty}px) scale(${scale})`, transformOrigin: "0 0" }}>
+          <HarborIsland scene={{ ...view.scene, missionWorld: [] }} markers={[]} pages={view.pages.length} harbor={null} variant="stage" labelsToggle={false} chips={false} className="absolute inset-0" />
+          <svg viewBox="0 0 1600 900" className="absolute inset-0 h-full w-full">
+            <MissionWorldChanges world={mission.world} pos={Object.fromEntries(mission.places.map((p) => [p.id, { x: p.x, y: p.y }]))} testId="scene-world-changes" />
+          </svg>
+        </div>
+      ) : null}
+      <div className="absolute bottom-2 left-3">
+        <p className="inline-block rounded-full border px-3 text-sm font-bold shadow-sm" style={{ ...cardStyle }}>
           {placeLabel}
           {ch && !placeLabel.includes(ch.name) ? ` · ${ch.name}` : ""}
         </p>
@@ -625,7 +701,7 @@ function Lines({ lines, mission, act, step, busy, offset }: { lines: MissionActi
   );
 }
 
-function ScenePanel({ child, mission, active, busy, act, speech, placeLabel }: { child: ChildId; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; placeLabel: string }) {
+function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabel }: { child: ChildId; view: ChildView; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; placeLabel: string }) {
   const finished = active.status !== "active";
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
@@ -633,7 +709,7 @@ function ScenePanel({ child, mission, active, busy, act, speech, placeLabel }: {
   }, [active.id]);
   return (
     <section className={cn(card, "flex min-w-0 flex-col gap-3 p-3 sm:p-4")} style={cardStyle} aria-labelledby="mw-scene-title" data-testid="scene-panel" data-step={active.id} data-kind={active.kind} data-status={active.status} data-phase={active.phase}>
-      <SceneHeader mission={mission} active={active} placeLabel={placeLabel} />
+      {active.kind === "typing-block" ? null : <SceneHeader view={view} mission={mission} active={active} placeLabel={placeLabel} />}
       <div className="flex items-center justify-between gap-2">
         <h2 id="mw-scene-title" ref={headingRef} tabIndex={-1} className="text-xl font-bold outline-none">
           {active.title}
@@ -652,7 +728,7 @@ function ScenePanel({ child, mission, active, busy, act, speech, placeLabel }: {
       {finished ? (
         <div className="grid gap-2" data-testid="scene-done">
           <Lines lines={active.done} mission={mission} act={act} step={active.id} busy={busy} offset={active.intro.length} />
-          <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "leave" })} data-testid="scene-continue">
+          <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "leave" })} data-testid="scene-continue" autoFocus>
             Weiter auf der Insel →
           </button>
         </div>
@@ -666,7 +742,7 @@ function StoryTask({ active, busy, act }: { active: MissionActiveView; busy: boo
   if (active.status !== "active") return null;
   return (
     <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "story-done", step: active.id })} data-testid="story-done" autoFocus>
-      {active.kind === "outcome" ? "⛵ Boote losschicken" : "Verstanden"}
+      {active.kind === "outcome" ? "Boote losschicken" : "Verstanden"}
     </button>
   );
 }
@@ -676,25 +752,23 @@ function StoryTask({ active, busy, act }: { active: MissionActiveView; busy: boo
 function QuestionTask({ child, active, busy, act, speech }: { child: ChildId; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer }) {
   const listen = active.listen;
   const [playing, setPlaying] = useState(false);
-  const [audioNote, setAudioNote] = useState<string | null>(null);
-  const [voice, setVoice] = useState<"none" | "child-voice" | "browser">("none");
+  const [voice, setVoice] = useState<"none" | "child-voice" | "browser" | "failed">("none");
   const play = async () => {
     if (!listen) return;
     speech.unlock();
-    // The play is recorded first (listening record, not help); the reviewed text is then spoken in the child's voice.
+    // 1) the play request is recorded (not help) and returns the reviewed text; 2) it is spoken — child voice, else the browser's
+    // own speech; 3) the device reports whether sound was CONFIRMED. Only a confirmed play unlocks answers as listening.
     const res = await act({ a: "support", step: active.id, kind: "play" });
     if (!res) return;
     setPlaying(true);
-    setAudioNote(null);
-    const script = typeof res.script === "string" ? res.script : null;
-    const outcome = script ? await speech.speak({ childId: child, text: script }) : "fallback";
-    // The player's contract: "fallback" = the child voice could not be fetched or played → the browser's own speech reads the
-    // same reviewed text, in the text's language. Nothing here involves any assistant or inference.
-    const viaBrowser = outcome === "fallback" && script ? await speakWithBrowser(script, listen.language) : false;
-    setVoice(outcome === "played" ? "child-voice" : viaBrowser ? "browser" : "none");
+    const script = typeof res.script === "string" ? res.script : "";
+    const outcome = await playListening(script, listen.language, { voice: (text) => speech.speak({ childId: child, text }), browser: browserSpeech() });
     setPlaying(false);
-    if (outcome !== "played" && !viaBrowser) setAudioNote("Der Ton kam gerade nicht. Versuch es noch einmal — oder lass dir danach den Text zeigen (zählt als Hilfe).");
+    if (outcome === "cancelled") return;
+    setVoice(outcome);
+    await act({ a: "listen-outcome", step: active.id, outcome });
   };
+  const canAnswer = !listen || listen.heard > 0 || listen.transcriptShown;
   const open = active.questions.filter((q) => q.status === "open");
   return (
     <div className="grid gap-3" data-testid="question-task" data-mode={listen ? "listening" : "reading"}>
@@ -712,7 +786,8 @@ function QuestionTask({ child, active, busy, act, speech }: { child: ChildId; ac
           <p className="text-base font-semibold">Hör genau zu — du kannst so oft anhören, wie du willst.</p>
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" autoFocus>
-              {playing ? "… spielt" : listen.plays ? "🔊 Nochmal anhören" : "🔊 Anhören"}
+              <SpeakerIcon />
+              {playing ? "… spielt" : listen.plays ? "Nochmal anhören" : "Anhören"}
             </button>
             {listen.plays > 0 && !listen.transcriptShown ? (
               <button type="button" className={btn} style={btnSecondaryStyle} disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "transcript" })} data-testid="listen-transcript">
@@ -725,7 +800,11 @@ function QuestionTask({ child, active, busy, act, speech }: { child: ChildId; ac
               </button>
             ) : null}
           </div>
-          {audioNote ? <p className="mt-2 text-base" role="status">{audioNote}</p> : null}
+          {listen.failures > 0 && listen.heard === 0 && !listen.transcriptShown ? (
+            <p className="mt-2 text-base" role="status" data-testid="listen-failed">
+              Der Ton kam nicht an. Versuch es nochmal — oder lass dir den Text zeigen (zählt als Hilfe). Antworten geht erst, wenn du es gehört oder gelesen hast.
+            </p>
+          ) : null}
           {listen.script ? (
             <p className="mt-2 text-lg" lang={listen.language} data-testid="listen-script">
               {listen.script}
@@ -735,38 +814,21 @@ function QuestionTask({ child, active, busy, act, speech }: { child: ChildId; ac
         </div>
       ) : null}
       {active.questions.map((q) => (
-        <QuestionRow key={q.id} q={q} step={active.id} busy={busy || (!!listen && listen.plays === 0)} act={act} first={q.id === open[0]?.id} />
+        <QuestionRow key={q.id} q={q} step={active.id} busy={busy || !canAnswer} act={act} first={q.id === open[0]?.id} />
       ))}
-      {listen && listen.plays === 0 ? <p className="text-base">Zuerst anhören, dann antworten.</p> : null}
+      {listen && !canAnswer && listen.failures === 0 ? <p className="text-base">Zuerst anhören, dann antworten.</p> : null}
     </div>
   );
 }
 
-/** Browser speech for the reviewed listening text (fallback of the child voice). Resolves true when it was handed to the browser. */
-function speakWithBrowser(text: string, language: string): Promise<boolean> {
-  const synth = typeof window !== "undefined" ? window.speechSynthesis : undefined;
-  if (!synth || typeof SpeechSynthesisUtterance === "undefined") return Promise.resolve(false);
-  return new Promise((resolve) => {
-    try {
-      synth.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = language === "en" ? "en-GB" : language === "es" ? "es-ES" : "de-CH";
-      u.rate = 0.9;
-      // Bounded wait: some browsers never fire `end` (or a muted test browser never speaks).
-      const timer = window.setTimeout(() => resolve(true), Math.min(20000, 1500 + text.length * 70));
-      u.onend = () => {
-        window.clearTimeout(timer);
-        resolve(true);
-      };
-      u.onerror = () => {
-        window.clearTimeout(timer);
-        resolve(true);
-      };
-      synth.speak(u);
-    } catch {
-      resolve(false);
-    }
-  });
+function SpeakerIcon() {
+  return (
+    <svg aria-hidden viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 9v6h4l5 4V5L8 9H4z" />
+      <path d="M16.5 8.5a5 5 0 0 1 0 7" />
+      <path d="M19 6a8.5 8.5 0 0 1 0 12" />
+    </svg>
+  );
 }
 
 function QuestionRow({ q, step, busy, act, first }: { q: MissionActiveView["questions"][number]; step: string; busy: boolean; act: Act; first: boolean }) {
@@ -873,7 +935,7 @@ function CalcTask({ active, busy, act }: { active: MissionActiveView; busy: bool
       </div>
       {c.clarification && !done ? (
         <p className="rounded-2xl border-2 border-dashed px-4 py-2 text-lg" style={{ borderColor: SIGNAL }} data-testid="calc-clarification">
-          💡 {c.clarification}
+          Tipp: {c.clarification}
         </p>
       ) : null}
       {c.representation && !done ? (

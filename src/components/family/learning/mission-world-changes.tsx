@@ -9,7 +9,6 @@ import { plateFor, type PlateId } from "./harbor-island-plates";
 type Pt = { x: number; y: number };
 const PARCHMENT = "#fff8e8";
 const INK = "#2b2118";
-const SIGNAL = "#f59e0b";
 
 export type MissionWorldChange = { id: string; prop: string; place: string; count: number; label: string };
 
@@ -36,63 +35,35 @@ function Boat({ x, y }: { x: number; y: number }) {
 }
 
 export function MissionWorldChanges({ world, pos, testId = "mission-world-changes" }: { world: MissionWorldChange[]; pos: Record<string, Pt>; testId?: string }) {
+  // Only what the painted set can show is drawn: crates and boats (painted plates) and the planned route as a map annotation in
+  // the same style as the walking-path marks. Changes without painted art (radio message, ropes, what is inside a crate) are
+  // told in words by the surfaces (place chips, notebook, report) — never drawn as an icon pretending to be world art.
   const has = (prop: string) => world.find((w) => w.prop === prop);
   const crates = has("crates");
   const tools = has("tool-crates");
   const boats = has("boats");
-  const roped = world.find((w) => w.prop === "ropes" && w.place === "pier");
-  const ropesShop = world.find((w) => w.prop === "ropes" && w.place === "shop");
   const route = has("route");
   const sail = has("sail");
-  const radio = has("radio");
   const quay = pos.harbor;
   const pier = pos.pier;
-  const shop = pos.shop;
-  const ws = pos.workshop;
   const moor = [
     { x: pier.x + 110, y: pier.y + 70 },
     { x: pier.x + 230, y: pier.y + 92 },
   ];
+  const onQuay = (crates?.count ?? 0) + (tools?.count ?? 0);
   return (
-    <g data-part="mission-world" data-testid={testId} data-changes={world.map((w) => w.id).join(",")}>
-      {radio ? (
-        <g transform={`translate(${ws.x + 46} ${ws.y - 150})`} data-part="radio" aria-hidden>
-          <line x1={0} y1={0} x2={0} y2={-48} stroke={INK} strokeWidth={4} />
-          <circle cy={-52} r={6} fill={SIGNAL} />
-          {[16, 28, 40].map((r) => (
-            <path key={r} d={`M ${-r} ${-52 - r * 0.6} A ${r} ${r} 0 0 1 ${r} ${-52 - r * 0.6}`} fill="none" stroke={SIGNAL} strokeWidth={3} opacity={0.8} />
-          ))}
-        </g>
-      ) : null}
-      {crates && !boats
-        ? Array.from({ length: crates.count }, (_, i) => <PlateImg key={`c${i}`} id="crate" x={quay.x - 120 + (i % 3) * 44} y={quay.y - 40 - Math.floor(i / 3) * 34} width={44} height={40} />)
+    <g data-part="mission-world" data-testid={testId} data-changes={world.map((w) => w.id).join(",")} aria-hidden>
+      {onQuay && !boats
+        ? Array.from({ length: onQuay }, (_, i) => <PlateImg key={`c${i}`} id="crate" x={quay.x - 150 + (i % 4) * 46} y={quay.y - 44 - Math.floor(i / 4) * 34} width={46} height={42} />)
         : null}
-      {tools && !boats
-        ? Array.from({ length: tools.count }, (_, i) => (
-            <g key={`t${i}`}>
-              <PlateImg id="crate" x={quay.x + 30 + i * 44} y={quay.y - 40} width={44} height={40} />
-              <text x={quay.x + 52 + i * 44} y={quay.y - 46} textAnchor="middle" fontSize={20} aria-hidden>
-                🔧
-              </text>
-            </g>
-          ))
-        : null}
-      {ropesShop ? (
-        <g transform={`translate(${shop.x + 70} ${shop.y - 10})`} data-part="rope-coils" aria-hidden>
-          {Array.from({ length: Math.min(ropesShop.count, 5) }, (_, i) => (
-            <g key={i} transform={`translate(${i * 16} ${-(i % 2) * 8})`}>
-              <ellipse rx={13} ry={8} fill="none" stroke="#b45309" strokeWidth={5} />
-              <ellipse rx={6} ry={3.5} fill="none" stroke="#b45309" strokeWidth={4} />
-            </g>
-          ))}
-        </g>
-      ) : null}
-      {route ? <path d={`M ${pier.x + 160} ${pier.y + 60} C ${pier.x + 120} ${pier.y - 220}, 880 260, 690 150`} fill="none" stroke={PARCHMENT} strokeWidth={6} strokeDasharray="14 12" strokeLinecap="round" opacity={0.9} data-part="route" /> : null}
+      {route ? <path d={`M ${pier.x + 160} ${pier.y + 60} C ${pier.x + 120} ${pier.y - 220}, 880 260, 690 150`} fill="none" stroke={PARCHMENT} strokeWidth={6} strokeDasharray="2 14" strokeLinecap="round" opacity={0.85} data-part="route" /> : null}
       {boats && !sail
         ? moor.map((b, i) => (
             <g key={`b${i}`} data-part="mission-boat">
               <Boat x={b.x} y={b.y} />
-              {roped ? <line x1={b.x - 50} y1={b.y - 8} x2={pier.x + 20 + i * 40} y2={pier.y + 8} stroke="#b45309" strokeWidth={4} /> : null}
+              {[0, 1].map((k) => (
+                <PlateImg key={k} id="crate" x={b.x - 40 + k * 30} y={b.y - 46} width={30} height={28} />
+              ))}
             </g>
           ))
         : null}
@@ -112,4 +83,3 @@ export function MissionWorldChanges({ world, pos, testId = "mission-world-change
     </g>
   );
 }
-

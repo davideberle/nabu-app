@@ -3720,7 +3720,7 @@
           "id": "W-BOATS",
           "after": "S9-LOAD",
           "prop": "boats",
-          "place": "harbor",
+          "place": "pier",
           "count": 2,
           "label": "2 Boote beladen"
         },
