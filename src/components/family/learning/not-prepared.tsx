@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { AssistantPortrait } from "@/components/family/assistant-portrait";
+import { assistantProfileById } from "@/data/family-assistant";
 import { cn } from "@/components/ui/nabu";
 import type { ChildId } from "@/lib/family-assistant-turn";
 
@@ -17,11 +19,10 @@ export function ExpeditionNotPrepared({ child }: { child: ChildId }) {
         <span aria-hidden>←</span> Home
       </Link>
       <div className="mt-6 rounded-3xl border border-primary bg-primary p-8 text-center" role="status">
-        <span className="text-5xl" aria-hidden>
-          🧭
-        </span>
+        <AssistantPortrait child={child} className="h-24 w-24" />
+        <p className="mt-2 font-semibold">{assistantProfileById(child)!.companionName} · Dein Assistent</p>
         <h1 className="mt-4 text-2xl font-semibold text-primary">Deine Expedition ist noch nicht vorbereitet</h1>
-        <p className="mt-2 text-base text-tertiary">Für dich gibt es hier bald eine eigene Mission. Bis dahin kannst du Nabu Fragen stellen oder Hörspiele hören.</p>
+        <p className="mt-2 text-base text-tertiary">Für dich gibt es hier bald eine eigene Mission. Bis dahin kannst du Hörspiele hören. Dein Assistent ist vorübergehend nicht verfügbar.</p>
       </div>
     </div>
   );

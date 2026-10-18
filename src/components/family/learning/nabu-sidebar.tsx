@@ -32,6 +32,8 @@
 // the recording is transient and never stored (family-voice contract).
 // ---------------------------------------------------------------------------
 
+import { AssistantPortrait } from "@/components/family/assistant-portrait";
+import { assistantProfileById } from "@/data/family-assistant";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import { LIVE_TUTOR_DEFERRED_CHILD_NOTICE, liveTutorDeferred } from "@/lib/family-learning-deferral";
@@ -193,6 +195,7 @@ export function PushToTalk({ disabled, onTranscript, onStateChange, label = "�
 }
 
 export function NabuSidebar({ child, view, page, speech, tutorClient = null, recordSupport, currentRevision, isAlive, onReasoningTurn, onReasoningReply, onReasoningChoice, open, onOpenChange, onReasoningDone, busy = false }: NabuSidebarProps) {
+  const assistantName = assistantProfileById(child)!.companionName;
   const reasoning = view.reasoning;
   const mode: "reasoning" | "free" = reasoning && !reasoning.deferred && page === "mission" ? "reasoning" : "free";
   const binding = bindingOf(child, page, view);
@@ -456,8 +459,8 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
         data-testid="nabu-bubble"
         data-mode={shownMode}
       >
-        <NabuFace />
-        Nabu
+        <AssistantPortrait child={child} label="" />
+        {assistantName}
         {mode === "reasoning" && !done ? <span className="ml-1 inline-block h-2.5 w-2.5 rounded-full bg-red-600" aria-label="wartet auf dich" /> : null}
       </button>
 
@@ -466,7 +469,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
           id="nabu-sidebar"
           role="dialog"
           aria-modal="false"
-          aria-label="Nabu"
+          aria-label={`${assistantName}, dein Assistent`}
           className="fixed inset-x-0 bottom-0 z-30 flex max-h-[72vh] flex-col rounded-t-3xl border-t border-primary bg-primary p-4 shadow-2xl lg:inset-x-auto lg:bottom-4 lg:right-4 lg:top-20 lg:max-h-none lg:w-[400px] lg:rounded-3xl lg:border"
           data-testid="nabu-sidebar"
           data-mode={shownMode}
@@ -474,17 +477,17 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
         >
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <NabuFace />
-              <p className="text-base font-semibold text-primary">Nabu</p>
+              <AssistantPortrait child={child} label="" />
+              <p className="text-base font-semibold text-primary">{assistantName}</p>
             </div>
-            <button ref={closeRef} type="button" onClick={() => onOpenChange(false)} className={cn("min-h-12 min-w-12 rounded-full text-xl", focusRing)} aria-label="Nabu schliessen" data-testid="nabu-close">
+            <button ref={closeRef} type="button" onClick={() => onOpenChange(false)} className={cn("min-h-12 min-w-12 rounded-full text-xl", focusRing)} aria-label={`${assistantName} schliessen`} data-testid="nabu-close">
               ×
             </button>
           </div>
           <p className="mt-1 text-sm text-tertiary" data-testid="nabu-context">
             {contextLine}
           </p>
-          <p className="mt-2 text-sm text-tertiary" data-testid="nabu-retirement-notice">{CHILD_TUTOR_UNAVAILABLE}</p>
+          <p className="mt-2 text-sm text-tertiary" data-testid="nabu-retirement-notice">{CHILD_TUTOR_UNAVAILABLE.replace("Nabus", `${assistantName}s`)}</p>
           <div className="mt-3 min-h-24 flex-1 space-y-2 overflow-y-auto" aria-live="polite" data-testid="nabu-thread">
             {CHILD_ASSISTANT_AI_ENABLED && entries.length === 0 ? <p className="text-sm text-tertiary">{shownMode === "free" && !liveTutorDeferred(view.visit?.id) ? "Ich kenne deine aktuelle Aufgabe und deine Insel. Was möchtest du wissen?" : ""}</p> : null}
             {entries.map((entry) => (
@@ -495,7 +498,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
                 {entry.role === "child" && entry.modality === "spoken" ? <span className="ml-2 text-xs opacity-70">(gesprochen)</span> : null}
               </p>
             ))}
-            {sending || awaiting ? <p className="text-sm text-tertiary" data-testid="nabu-thinking">… Nabu überlegt</p> : null}
+            {sending || awaiting ? <p className="text-sm text-tertiary" data-testid="nabu-thinking">… {assistantName} überlegt</p> : null}
           </div>
           {speechNote ? (
             <p className="mt-2 text-xs text-tertiary" role="status">
@@ -517,7 +520,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
 
           {awaiting && !sending && pendingTurn ? (
             <button type="button" onClick={() => void resend()} className={cn(secondaryButton, "mt-2")} data-testid="reasoning-resend">
-              Nochmal an Nabu senden
+              Nochmal an {assistantName} senden
             </button>
           ) : null}
           {mode === "reasoning" && reasoning?.choices && onReasoningChoice ? (
@@ -594,7 +597,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
                   <PushToTalk disabled={sending || busy} onTranscript={(t) => setPendingTranscript(t)} label={mode === "reasoning" ? "🎙️ Sprechen" : "🎙️ Frage sagen"} />
                 </div>
                 <label className="sr-only" htmlFor="nabu-input">
-                  {mode === "reasoning" ? "Deine Erklärung" : "Frage an Nabu"}
+                  {mode === "reasoning" ? "Deine Erklärung" : `Frage an ${assistantName}`}
                 </label>
                 <div className="flex gap-2">
                   <input ref={inputRef} id="nabu-input" value={question} onChange={(e) => setQuestion(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={600} placeholder={mode === "reasoning" ? "… oder schreib es hier" : "Was heisst …? Warum …?"} className={cn("min-h-14 min-w-0 flex-1 rounded-2xl border border-primary bg-primary px-4 text-lg text-primary", focusRing)} data-testid="nabu-input" autoComplete="off" />
@@ -611,18 +614,6 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
         </aside>
       ) : null}
     </>
-  );
-}
-
-function NabuFace() {
-  return (
-    <svg viewBox="0 0 40 40" className="h-8 w-8 shrink-0" aria-hidden>
-      <circle cx={20} cy={20} r={18} fill="#fde68a" stroke="#1c1917" strokeWidth={2} />
-      <circle cx={14} cy={17} r={2.6} fill="#1c1917" />
-      <circle cx={26} cy={17} r={2.6} fill="#1c1917" />
-      <path d="M12 25 q 8 7 16 0" stroke="#1c1917" strokeWidth={2.2} fill="none" strokeLinecap="round" />
-      <path d="M8 10 q 12 -10 24 0" stroke="#1c1917" strokeWidth={2} fill="none" />
-    </svg>
   );
 }
 

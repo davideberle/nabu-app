@@ -1,3 +1,6 @@
+// Presentation projection of Family Assistant assets/avatars/identities.json.
+import identities from "./family-assistant-identities.json" with { type: "json" };
+
 // ---------------------------------------------------------------------------
 // Family Assistant — prototype-only content for the /family/assistant
 // interaction prototype. Mock media/continuity data lives here so the UI
@@ -12,7 +15,7 @@ export type AssistantTint = "amber" | "emerald";
 export type AssistantProfile = {
   id: AssistantChildId;
   displayName: string;
-  /** Placeholder companion name — final naming is an open design question. */
+  /** Approved assistant identity; distinct from the child displayName and id. */
   companionName: string;
   tint: AssistantTint;
   /** Drives the avatar silhouette + chest mark so the two feel distinct. */
@@ -25,7 +28,7 @@ export const assistantProfiles: AssistantProfile[] = [
   {
     id: "santiago",
     displayName: "Santiago",
-    companionName: "Ziggy",
+    companionName: identities.santiago.name,
     tint: "amber",
     crest: "bolt",
     greeting: "Hey Santiago!",
@@ -34,7 +37,7 @@ export const assistantProfiles: AssistantProfile[] = [
   {
     id: "isabel",
     displayName: "Isabel",
-    companionName: "Lumi",
+    companionName: identities.isabel.name,
     tint: "emerald",
     crest: "leaf",
     greeting: "Hi Isabel!",

@@ -29,6 +29,9 @@ export function isTrackerAllowedPath(pathname: string): boolean {
     // Legacy board/tracker/plan URLs stay allowed so installed shortcuts and old
     // bookmarks on the shared device still resolve — each one now redirects
     // into Family Home (October 8, 2026).
+    // Exact approved presentation assets; no broader route or account access.
+    pathname === "/family-assistant/avatars/nokt.webp" ||
+    pathname === "/family-assistant/avatars/old-lila.webp" ||
     pathname === "/family/dashboard" ||
     pathname.startsWith("/family/dashboard/") ||
     pathname === "/family/assistant" ||

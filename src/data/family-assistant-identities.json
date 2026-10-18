@@ -1,0 +1,14 @@
+{
+  "santiago": {
+    "name": "Nokt",
+    "image": "/family-assistant/avatars/nokt.webp",
+    "background": "#becfbd",
+    "sha256": "f1ce057ee230af45b363d7e9657305249fa24f0a4b343f1e5afefa77b2f0400e"
+  },
+  "isabel": {
+    "name": "Old Lila",
+    "image": "/family-assistant/avatars/old-lila.webp",
+    "background": "#dfc7f5",
+    "sha256": "0a92fe7193c456f7ac5877bba2388b1e96e5d9badefb3255d2849688eef65d70"
+  }
+}

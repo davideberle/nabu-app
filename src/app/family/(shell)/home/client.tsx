@@ -10,6 +10,7 @@
 // ---------------------------------------------------------------------------
 
 import Link from "next/link";
+import { AssistantPortrait } from "@/components/family/assistant-portrait";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { cn } from "@/components/ui/nabu";
 import { assistantProfileById } from "@/data/family-assistant";
@@ -116,8 +117,8 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
         <HomeAction href={href("learn")} icon="🧭" title="Lernen" className="sm:col-span-2">
           <LearnCaption label={learn} />
         </HomeAction>
-        <HomeAction href={`${href("assistant")}&focus=general`} icon="💬" title="Ask Nabu">
-          Questions, ideas and help — talk or type
+        <HomeAction href={`${href("assistant")}&focus=general`} icon={<AssistantPortrait child={child} label="" className="h-14 w-14" />} title={`Ask ${profile.companionName}`}>
+          Chat temporarily unavailable — your saved work stays safe
         </HomeAction>
         <HomeAction href={href("games")} icon="🎮" title="Games">
           Chess: 15 free minutes a day once a parent approves something you did today · Game Studio uses coins
@@ -147,7 +148,7 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
   );
 }
 
-function HomeAction({ href, icon, title, className, children }: { href: string; icon: string; title: string; className?: string; children: ReactNode }) {
+function HomeAction({ href, icon, title, className, children }: { href: string; icon: ReactNode; title: string; className?: string; children: ReactNode }) {
   return (
     <Link href={href} className={cn(actionClass, className)}>
       <span className={actionIconClass} aria-hidden>

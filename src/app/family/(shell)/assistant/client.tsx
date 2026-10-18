@@ -16,7 +16,6 @@ import type { FamilyBoardConfig } from "@/lib/family-db";
 import type { FamilyWalletProjection } from "@/lib/family-wallet";
 import {
   assistantProfileById,
-  avatarStyleById,
   avatarStyles,
   dragonSongChoices,
   podcastChoices,
@@ -60,7 +59,8 @@ import { childShellDestinationHref } from "@/lib/family-child-shell";
 import { useSearchParams } from "next/navigation";
 import { useChildShell } from "@/components/family/child-shell-provider";
 import { CHILD_ASSISTANT_AI_ENABLED, CHILD_ASSISTANT_UNAVAILABLE } from "@/lib/family-assistant-availability";
-import { AssistantAvatar, type AvatarState } from "./avatar";
+import { type AvatarState } from "./avatar";
+import { AssistantPortrait } from "@/components/family/assistant-portrait";
 
 // ---------------------------------------------------------------------------
 // Voice input/output
@@ -775,10 +775,6 @@ function Workspace({
   const [confirmDraft, setConfirmDraft] = useState("");
   const [confirmIssue, setConfirmIssue] = useState<string | null>(null);
   const tint = profile.tint;
-  const avatarLook = useMemo(() => {
-    const style = avatarStyleById(avatarStyle);
-    return style ? { id: style.id, colors: style.colors } : null;
-  }, [avatarStyle]);
 
   useEffect(() => {
     soundOnRef.current = soundOn;
@@ -1545,13 +1541,13 @@ function Workspace({
               </span>
             </span>
           </Link>
-          <p className="text-sm text-tertiary" role="status" data-testid="assistant-retirement-notice">{CHILD_ASSISTANT_UNAVAILABLE}</p>
+          <p className="text-sm text-tertiary" role="status" data-testid="assistant-retirement-notice">{CHILD_ASSISTANT_UNAVAILABLE.replace("Nabu", profile.companionName)}</p>
           <button type="button" disabled={!CHILD_ASSISTANT_AI_ENABLED} onClick={() => enterConversation("general")} className={homeActionClass}>
             <span className={homeActionIconClass} aria-hidden>
               💬
             </span>
             <span className="min-w-0">
-              <span className="block text-lg font-semibold text-primary">Ask Nabu</span>
+              <span className="block text-lg font-semibold text-primary">Ask {profile.companionName}</span>
               <span className="block text-sm text-tertiary">
                 Chat temporarily unavailable
               </span>
@@ -2254,17 +2250,14 @@ function Workspace({
           aria-label={`${profile.companionName}, your companion`}
           className="flex shrink-0 flex-col items-center gap-2 px-4 pb-1 pt-4 lg:landscape:w-[380px] lg:landscape:justify-center lg:landscape:gap-5 lg:landscape:border-r lg:landscape:border-secondary lg:landscape:px-6 lg:landscape:py-8"
         >
-          <AssistantAvatar
-            state={avatarState}
-            tint={tint}
-            crest={profile.crest}
-            look={avatarLook}
-            label={`${profile.companionName} is ${avatarStateLabel(avatarState)}`}
+          <AssistantPortrait
+            child={profile.id}
+            label={CHILD_ASSISTANT_AI_ENABLED ? `${profile.companionName} is ${avatarStateLabel(avatarState)}` : `${profile.companionName}, your assistant`}
             className="h-24 w-24 lg:landscape:h-44 lg:landscape:w-44"
           />
           <div className="flex items-center gap-3">
             <p className="text-sm font-medium text-tertiary">
-              {profile.companionName} · {avatarStateLabel(avatarState)}
+              {profile.companionName} · {CHILD_ASSISTANT_AI_ENABLED ? avatarStateLabel(avatarState) : "Your assistant"}
             </p>
             <button
               type="button"
