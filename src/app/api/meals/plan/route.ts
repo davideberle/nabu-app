@@ -5,7 +5,8 @@ import { isTrackerOnlyEmail } from "@/lib/access";
 import { saveMealPlan, loadMealPlan } from "@/lib/meals-persistence";
 import type { MealPlan } from "@/lib/meals";
 import { assignedRecipeIdsForPlan, hydrateShelfItems, toCandidateItem } from "@/lib/planner-preparation";
-import { getCandidateReviews } from "@/lib/db";
+import { getCandidateReviews, getPlannerRecencyExclusions } from "@/lib/db";
+import { sanitizeCandidateItems } from "@/lib/meals-core";
 import { completePlanShelf, reviewProviderStatusFor } from "@/lib/planner-runtime";
 import { getRecipe } from "@/lib/recipes";
 
@@ -43,12 +44,34 @@ export async function GET(request: NextRequest) {
         return pending;
       };
 
+      // A shelf persisted before a recent cook or plan was recorded must not
+      // keep offering it: the hard recency rules (cooked within the window,
+      // planned in recent prior weeks, including explicit adaptation aliases)
+      // and active thumbs-down apply on the way out too. Read-only — the stored
+      // shelf is cleaned by the save boundary on its next write, and the
+      // offered/exposure rules stay where the shelf builder applied them.
+      // If the exclusion read fails, show the stored shelf rather than fail
+      // the whole planner load.
+      const assigned = assignedRecipeIdsForPlan(plan);
+      let current = plan.candidateSet.items;
+      try {
+        const exclusions = await getPlannerRecencyExclusions(plan.week);
+        current = sanitizeCandidateItems(plan.candidateSet.items, assigned, {
+          recentlyCooked: exclusions.recentlyCooked,
+          recentlyPlanned: exclusions.recentlyPlanned,
+          recentlyOffered: new Set<string>(),
+          negativeFeedback: exclusions.negativeFeedback,
+        }).items;
+      } catch (error) {
+        console.error(`Recency filter failed for ${plan.week}:`, error);
+      }
+
       // Read-only: the planned week binds seasonality and persisted reviews
       // re-bind each card (a stale pass drops, a current hold shows). No
       // inference is ever triggered by a page load.
       const items = await hydrateShelfItems(
-        plan.candidateSet.items,
-        assignedRecipeIdsForPlan(plan),
+        current,
+        assigned,
         resolveRecipe,
         new Date(),
         {
@@ -115,15 +138,13 @@ export async function POST(request: NextRequest) {
       }
     }
     // Return the plan *as stored*, not as sent. The save boundary can change
-    // it — a meal-changing edit to a finalized week returns that week to
-    // `draft` server-side, and stale-save preservation can keep a stored
-    // assignment the client did not have. A client that keeps rendering what
-    // it sent would show a "Week finalized" badge for a week that is no longer
-    // finalized until the next reload.
+    // it — stale-save preservation can keep a stored assignment the client did
+    // not have, and candidate sanitation can drop ideas. There is no week
+    // finalization any more: a save never changes shopping eligibility beyond
+    // marking an existing draft out of date.
     return NextResponse.json({
       ok: true,
       plan: result.plan,
-      status: result.plan.status ?? "draft",
       ...(result.candidateSanitation ? { candidateSanitation: result.candidateSanitation } : {}),
       ...(result.shoppingInvalidated ? { shoppingInvalidated: result.shoppingInvalidated } : {}),
     });

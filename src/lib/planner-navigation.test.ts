@@ -69,4 +69,45 @@ describe("planner day navigation", () => {
       null,
     );
   });
+
+  // W42 (2026-10-12…18) saved meals out and improvised dinners under ids that
+  // were never recipes; every one of those cards used to link to a 404.
+  it("does not link a planned meal whose id is not a saved recipe", () => {
+    const recipes = new Set(["kohlrabi-curry", "meal-2026-10-15-pumpkin-risotto"]);
+    const isRecipe = (id: string) => recipes.has(id);
+    for (const id of [
+      "meal-2026-10-14-burgers",
+      "restaurant-2026-10-17-taverna-saint-johan",
+      "meal-2026-10-16-bratwurst",
+    ]) {
+      assert.equal(
+        resolvePlannerDayRecipeId({
+          plannedRecipeId: id,
+          history: { status: "cooked-as-planned", cookedRecipeId: id },
+          isRecipe,
+        }),
+        null,
+        id,
+      );
+    }
+    assert.equal(
+      resolvePlannerDayRecipeId({
+        plannedRecipeId: "meal-2026-10-15-pumpkin-risotto",
+        history: { status: "cooked-as-planned", cookedRecipeId: "meal-2026-10-15-pumpkin-risotto" },
+        isRecipe,
+      }),
+      "meal-2026-10-15-pumpkin-risotto",
+    );
+  });
+
+  it("links nothing while recipe resolution is still unknown", () => {
+    assert.equal(
+      resolvePlannerDayRecipeId({
+        plannedRecipeId: "kohlrabi-curry",
+        history: null,
+        isRecipe: () => false,
+      }),
+      null,
+    );
+  });
 });

@@ -185,18 +185,16 @@ export type SaveResult =
        * The plan exactly as it was stored, after the save boundary applied
        * stale-save preservation, planning-state normalization, candidate
        * sanitation, and the shopping safety rule. Callers must reconcile their
-       * local state to this rather than to what they sent: a meal-changing save
-       * can return the week to `draft` server-side, and a client that keeps
-       * showing "finalized" is showing a state that no longer exists.
+       * local state to this rather than to what they sent: stale-save
+       * preservation and candidate sanitation can both change it.
        */
       plan: MealPlan;
       /**
-       * Set when the save invalidated the week's shopping state — either
-       * because it changed which recipes the week plans, or because it
-       * explicitly reopened a finalized week.
+       * Set when the save invalidated an existing shopping draft for the week
+       * because it changed which recipes the week plans.
        */
       shoppingInvalidated?: {
-        cause: "meals-changed" | "reopened";
+        cause: "meals-changed";
         returnedToDraft: boolean;
         cancelledOutboxItems: number;
       };
@@ -348,35 +346,29 @@ export async function saveMealPlan(plan: MealPlan, deps: SaveMealPlanDeps = {}):
   const boundary = await enforceCandidateSaveBoundary(planToSave, deps);
   planToSave = boundary.plan;
 
-  // Shopping safety boundary (kitchen DESIGN.md §"Phase 4C").
+  // Week finalization was retired on 2026-10-19 (kitchen DESIGN.md §"Phase 4C",
+  // retirement note): planning saves are plain saves, with no finalize/reopen
+  // gate. The status a client sends is ignored; a week keeps whatever status is
+  // stored (`draft` for every week written since), so no save can make a week
+  // look ready for shopping.
   //
-  // Two things invalidate a week's shopping state, and both are decided here so
-  // there is one place that knows:
-  //
-  //   meals-changed — the set of planned recipes differs from what is stored,
-  //     so a generated draft is about a meal that is no longer happening. The
-  //     week returns to `draft`, the draft is marked stale, and its pending
-  //     outbox rows are cancelled.
-  //   reopened — a finalized week is explicitly returned to draft without any
-  //     meal edit. The draft still describes the right meals, so it is *not*
-  //     staled, but the approval it was syncing under is withdrawn: its queued
-  //     rows are cancelled, and it must be approved again after re-finalizing.
-  //
-  // Finalizing a draft week changes nothing about the shopping state.
-  const storedStatus = storedPlan?.status ?? "draft";
+  // The one shopping rule that stays is the fail-closed half: when the set of
+  // planned recipes changes, any shopping draft for the week is marked stale and
+  // its still-queued outbox rows are cancelled, and a historically finalized
+  // week returns to `draft`. Nothing here creates, approves or enqueues
+  // shopping; with no draft for the week the invalidation touches no rows.
   const mealsChanged =
     storedPlan !== null &&
     computePlanShoppingFingerprint(storedPlan) !== computePlanShoppingFingerprint(planToSave);
-  if (mealsChanged && planToSave.status === "finalized") {
-    planToSave = { ...planToSave, status: "draft" };
-  }
-  const reopened = storedStatus === "finalized" && (planToSave.status ?? "draft") === "draft";
+  const storedStatus = storedPlan?.status ?? "draft";
+  planToSave = {
+    ...planToSave,
+    status: mealsChanged || storedStatus !== "finalized" ? "draft" : "finalized",
+  };
 
   const invalidation: ShoppingInvalidation | null = mealsChanged
-    ? { markStale: true, reason: "planned meals changed after approval" }
-    : reopened
-      ? { markStale: false, reason: "week reopened after approval" }
-      : null;
+    ? { markStale: true, reason: "planned meals changed" }
+    : null;
 
   const updatedPlan: MealPlan = {
     ...planToSave,
@@ -407,7 +399,7 @@ export async function saveMealPlan(plan: MealPlan, deps: SaveMealPlanDeps = {}):
     ...(invalidation && (result.invalidatedDraft || result.cancelledItems > 0)
       ? {
           shoppingInvalidated: {
-            cause: mealsChanged ? ("meals-changed" as const) : ("reopened" as const),
+            cause: "meals-changed" as const,
             returnedToDraft: result.invalidatedDraft,
             cancelledOutboxItems: result.cancelledItems,
           },

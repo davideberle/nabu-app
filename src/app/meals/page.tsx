@@ -160,6 +160,7 @@ type DaySlot = {
 
 type MealPlan = {
   week: string;
+  /** Legacy, read-only: week finalization was retired on 2026-10-19. */
   status?: "draft" | "finalized";
   plannerVersion?: string;
   candidateSet?: CandidateSet | null;
@@ -187,6 +188,14 @@ type DayHistory = {
   plannedRecipeName: string | null;
   cookedRecipeId: string | null;
   cookedRecipeName: string | null;
+  /** Weekend brunch, projected separately from the main meal. */
+  brunch?: {
+    status: "planned" | "in-progress" | "cooked-as-planned" | "planned-unlogged";
+    plannedRecipeId: string;
+    plannedRecipeName: string;
+    cookedRecipeId: string | null;
+    cookedRecipeName: string | null;
+  };
 };
 
 // ----- slot helpers -----
@@ -290,15 +299,6 @@ const CONTEXT_KIND_OPTIONS: { value: WeekContextItem["kind"]; label: string }[] 
   { value: "leftovers", label: "Leftovers" },
   { value: "custom", label: "Other" },
 ];
-
-const KIND_TO_EFFECT: Record<string, WeekContextItem["effect"]> = {
-  restaurant: "skip-meal",
-  skip: "skip-meal",
-  guests: "guest-friendly",
-  quick: "quick-meal",
-  light: "light-meal",
-  leftovers: "skip-meal",
-};
 
 const KIND_COLORS: Record<string, string> = {
   restaurant: "bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300",
@@ -518,53 +518,9 @@ async function savePlanNow(plan: MealPlan): Promise<SavePlanResponse> {
   if (!res.ok) {
     throw new Error(`Failed to save meal plan: ${res.status}`);
   }
-  // The response is authoritative: the save boundary can return the week to
-  // draft and invalidate its shopping list. See lib/meal-plan-save.ts.
+  // The response is authoritative: the save boundary can change the plan on
+  // the way in. See lib/meal-plan-save.ts.
   return (await res.json()) as SavePlanResponse;
-}
-
-/** Debounced autosave for non-critical changes (notes, context). */
-function useAutosave(
-  plan: MealPlan | null,
-  onSaved: (sent: MealPlan, response: SavePlanResponse) => void,
-  delayMs = 1500,
-) {
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const lastSavedRef = useRef<string>("");
-  const onSavedRef = useRef(onSaved);
-  useEffect(() => {
-    onSavedRef.current = onSaved;
-  }, [onSaved]);
-
-  const save = useCallback((p: MealPlan) => {
-    // `updatedAt` is stamped by both sides on every write, so it is excluded
-    // from the "has anything actually changed" key. Without that, reconciling
-    // to the server's saved plan would look like a new edit and autosave would
-    // bounce back and forth with the server forever.
-    const serialized = JSON.stringify({ ...p, updatedAt: "" });
-    if (serialized === lastSavedRef.current) return;
-    lastSavedRef.current = serialized;
-    savePlanNow(p)
-      .then((response) => onSavedRef.current(p, response))
-      .catch((err) => console.error("Autosave failed:", err));
-  }, []);
-
-  useEffect(() => {
-    if (!plan) return;
-    if (timerRef.current) clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => save(plan), delayMs);
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, [plan, delayMs, save]);
-
-  const weekRef = useRef(plan?.week);
-  useEffect(() => {
-    if (plan?.week !== weekRef.current) {
-      weekRef.current = plan?.week;
-      lastSavedRef.current = "";
-    }
-  }, [plan?.week]);
 }
 
 // ----- component -----
@@ -616,10 +572,7 @@ function MealsPageInner() {
   const [webInspirationLoading, setWebInspirationLoading] = useState(false);
   const [quickViewRecipe, setQuickViewRecipe] = useState<RecipeDetail | null>(null);
   const [quickViewLoading, setQuickViewLoading] = useState(false);
-  const [showContextEditor, setShowContextEditor] = useState(false);
-  const [weekStatusSaving, setWeekStatusSaving] = useState(false);
-  const [weekStatusError, setWeekStatusError] = useState<string | null>(null);
-  // Set when a save reopened the week or invalidated its shopping list.
+  // Set when a save marked an existing shopping draft out of date.
   const [shoppingNotice, setShoppingNotice] = useState<string | null>(null);
   const [planLoading, setPlanLoading] = useState(true);
   const [generateError, setGenerateError] = useState<string | null>(null);
@@ -634,7 +587,11 @@ function MealsPageInner() {
   const [dayHistory, setDayHistory] = useState<Record<string, DayHistory>>({});
   const [editingServeWith, setEditingServeWith] = useState<number | null>(null);
   const [cookedSlots, setCookedSlots] = useState<Set<string>>(new Set());
+  // Day ids that resolve to a saved recipe. Meals out and improvised dinners
+  // are stored under ids that are not recipes; those must not become links.
+  const [recipeIdsOnFile, setRecipeIdsOnFile] = useState<Set<string>>(new Set());
   const [markingCooked, setMarkingCooked] = useState<number | null>(null);
+  const [markingBrunchCooked, setMarkingBrunchCooked] = useState<number | null>(null);
   const [expandingDay, setExpandingDay] = useState<number | null>(null);
   const [expandLoading, setExpandLoading] = useState(false);
   // Guards against out-of-order expansion/review responses.
@@ -664,10 +621,10 @@ function MealsPageInner() {
   /**
    * Adopt what the server actually stored.
    *
-   * The save boundary can change the plan on the way in: a meal-changing edit
-   * to a finalized week returns it to `draft` and invalidates the generated
-   * shopping list. Rendering the object that was *sent* would leave a "Week
-   * finalized" badge on a week the server has already reopened, until a reload.
+   * The save boundary can change the plan on the way in: stale-save
+   * preservation can keep a stored assignment this page did not have, and
+   * candidate sanitation can drop ideas. Rendering the object that was *sent*
+   * would show a plan the server did not store, until a reload.
    *
    * Only adopted when nothing newer is pending locally — an earlier save's
    * response must never overwrite a later edit. That applies to *everything*
@@ -710,9 +667,6 @@ function MealsPageInner() {
     [commitPlan, saveAndReconcile],
   );
 
-  // Autosave for notes/context changes only
-  useAutosave(plan, reconcileSavedPlan);
-
   // Load recipe feedback on mount
   useEffect(() => {
     fetch("/api/meals/feedback")
@@ -750,7 +704,7 @@ function MealsPageInner() {
 
   // Load existing plan when week changes
   useEffect(() => {
-    // Clear stale plan and candidates immediately to prevent autosave
+    // Clear stale plan and candidates immediately to prevent a save
     // from writing old/empty data over a saved plan while the fetch is
     // in flight, and to avoid leaking one week's candidates into another.
     setPlan(null);
@@ -759,7 +713,6 @@ function MealsPageInner() {
     setKeptMap({});
     setIdeaMetadata(null);
     setPlanLoading(true);
-    setShowContextEditor(false);
     setExpandingDay(null);
     setExpandComplements(null);
 
@@ -932,6 +885,52 @@ function MealsPageInner() {
       .catch(() => { if (!cancelled) setCookedSlots(new Set()); });
     return () => { cancelled = true; };
   }, [plan?.week, plan?.days]);
+
+  // Resolve every recipe id the week's cards could link to (dinner, sides,
+  // brunch, and actual-meal history) against the same lookup the shelf uses.
+  useEffect(() => {
+    const ids = new Set<string>();
+    for (const day of plan?.days ?? []) {
+      for (const id of [
+        day.recipeId,
+        day.meal?.main?.id,
+        ...(day.meal?.sides ?? []).map((side) => side.id),
+        day.brunch?.main?.id,
+        ...(day.brunch?.sides ?? []).map((side) => side.id),
+      ]) {
+        if (id) ids.add(id);
+      }
+    }
+    for (const hist of Object.values(dayHistory)) {
+      if (hist.cookedRecipeId) ids.add(hist.cookedRecipeId);
+      if (hist.brunch?.cookedRecipeId) ids.add(hist.brunch.cookedRecipeId);
+    }
+    if (ids.size === 0) { setRecipeIdsOnFile(new Set()); return; }
+
+    let cancelled = false;
+    // The lookup route answers at most 50 ids per request.
+    const all = [...ids];
+    const chunks: string[][] = [];
+    for (let i = 0; i < all.length; i += 50) chunks.push(all.slice(i, i + 50));
+    Promise.all(chunks.map((chunk) =>
+      fetch(`/api/meals/lookup?ids=${encodeURIComponent(chunk.join(","))}`)
+        .then((r) => (r.ok ? r.json() : {}) as Promise<Record<string, { name?: string }>>),
+    ))
+      .then((lookups) => {
+        if (cancelled) return;
+        setRecipeIdsOnFile(new Set(
+          lookups.flatMap((lookup) =>
+            Object.entries(lookup).filter(([, value]) => Boolean(value?.name)).map(([id]) => id)),
+        ));
+      })
+      .catch(() => { if (!cancelled) setRecipeIdsOnFile(new Set()); });
+    return () => { cancelled = true; };
+  }, [plan?.week, plan?.days, dayHistory]);
+
+  const isRecipeOnFile = useCallback(
+    (recipeId: string) => recipeIdsOnFile.has(recipeId),
+    [recipeIdsOnFile],
+  );
 
   /**
    * Ask Kitchen to prepare (or repair) this week's shelf.
@@ -1140,8 +1139,12 @@ function MealsPageInner() {
     // No candidate selected — navigate to recipe page if assigned
     if (!selectedRecipe) {
       const slot = activePlan.days[dayIndex];
-      const recipeId = navigationRecipeId ?? slot?.recipeId ?? slot?.meal?.main?.id;
-      if (recipeId) router.push(`/recipes/${recipeId}?from=${encodeURIComponent('/meals')}`);
+      const recipeId = navigationRecipeId !== undefined
+        ? navigationRecipeId
+        : slot?.recipeId ?? slot?.meal?.main?.id;
+      if (recipeId && isRecipeOnFile(recipeId)) {
+        router.push(`/recipes/${recipeId}?from=${encodeURIComponent('/meals')}`);
+      }
       return;
     }
     const newDays = [...activePlan.days];
@@ -1174,7 +1177,9 @@ function MealsPageInner() {
     // No candidate selected — navigate to brunch recipe page if assigned
     if (!selectedRecipe) {
       const recipeId = slot.brunch?.main?.id;
-      if (recipeId) router.push(`/recipes/${recipeId}?from=${encodeURIComponent('/meals')}`);
+      if (recipeId && isRecipeOnFile(recipeId)) {
+        router.push(`/recipes/${recipeId}?from=${encodeURIComponent('/meals')}`);
+      }
       return;
     }
 
@@ -1253,6 +1258,7 @@ function MealsPageInner() {
       setDayHistory((prev) => ({
         ...prev,
         [slot.date]: {
+          ...prev[slot.date],
           date: slot.date,
           status: "cooked-as-planned",
           plannedRecipeId: slot.recipeId,
@@ -1265,6 +1271,52 @@ function MealsPageInner() {
       console.error("Failed to mark cooked:", err);
     } finally {
       setMarkingCooked(null);
+    }
+  }
+
+  // Mark a past weekend brunch as cooked: its main and every structured side,
+  // on the brunch's own date, through the same idempotent cook-events API.
+  async function handleMarkBrunchCooked(dayIndex: number) {
+    if (!plan || plan.locked) return;
+    const slot = plan.days[dayIndex];
+    const main = slot?.brunch?.main;
+    if (!main?.id) return;
+    const recipeIds = Array.from(new Set([
+      main.id,
+      ...(slot.brunch?.sides ?? []).map((side) => side.id).filter(Boolean),
+    ]));
+    setMarkingBrunchCooked(dayIndex);
+    try {
+      const res = await fetch("/api/cook-events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ recipeIds, cookedOn: slot.date, source: "meal-planner" }),
+      });
+      if (!res.ok) {
+        console.error("Failed to mark brunch cooked:", res.status);
+        return;
+      }
+      setDayHistory((prev) => {
+        const existing = prev[slot.date];
+        if (!existing) return prev;
+        return {
+          ...prev,
+          [slot.date]: {
+            ...existing,
+            brunch: {
+              status: "cooked-as-planned",
+              plannedRecipeId: main.id,
+              plannedRecipeName: main.name,
+              cookedRecipeId: main.id,
+              cookedRecipeName: main.name,
+            },
+          },
+        };
+      });
+    } catch (err) {
+      console.error("Failed to mark brunch cooked:", err);
+    } finally {
+      setMarkingBrunchCooked(null);
     }
   }
 
@@ -1503,67 +1555,8 @@ function MealsPageInner() {
     refreshMealReview(dayIndex, updatedPlan);
   }
 
-  // ----- context/notes helpers -----
-
-  function handleNotesChange(notes: string) {
-    if (!plan || plan.locked) return;
-    setPlan({ ...plan, notes });
-  }
-
-  function handleAddContext(item: Omit<WeekContextItem, "id">) {
-    if (!plan || plan.locked) return;
-    const newItem: WeekContextItem = {
-      ...item,
-      id: `ctx_${Date.now()}`,
-      effect: item.effect || KIND_TO_EFFECT[item.kind],
-    };
-    setPlan({ ...plan, context: [...(plan.context || []), newItem] });
-  }
-
-  function handleRemoveContext(id: string) {
-    if (!plan || plan.locked) return;
-    setPlan({
-      ...plan,
-      context: (plan.context || []).filter((c) => c.id !== id),
-    });
-  }
-
-  // ----- finalize / reopen -----
-  //
-  // Finalization is the gate downstream of the planner: only a finalized week
-  // can generate a shopping draft (kitchen DESIGN.md §"Phase 4C"). It is
-  // deliberately *not* the old lock — the week stays fully editable, and any
-  // edit that changes which recipes are planned returns it to draft on the
-  // server and invalidates the generated draft, so stale ingredients can never
-  // be synced.
-  async function handleWeekStatusChange(next: "draft" | "finalized") {
-    if (!plan || plan.locked || weekStatusSaving) return;
-    setWeekStatusSaving(true);
-    setWeekStatusError(null);
-    const updatedPlan = touchPlan({ ...plan, status: next });
-    try {
-      // No optimistic success: nothing local changes until the server has
-      // stored the new status, and what is then rendered is the status the
-      // server stored — which for a reopen also cancels the queued Bring rows.
-      const response = await savePlanNow(updatedPlan);
-      commitPlan(response.plan);
-      setShoppingNotice(
-        response.shoppingInvalidated
-          ? shoppingInvalidationNotice(response.shoppingInvalidated)
-          : null,
-      );
-    } catch {
-      setWeekStatusError(
-        next === "finalized" ? "Could not finalize the week" : "Could not reopen the week",
-      );
-    } finally {
-      setWeekStatusSaving(false);
-    }
-  }
-
   const hasCandidates = candidates.length > 0;
   const contextItems = plan?.context || [];
-  const hasContext = contextItems.length > 0 || (plan?.notes && plan.notes.trim().length > 0);
   const prevWeek = offsetWeek(activeWeek.year, activeWeek.week, -1);
   const nextWeek = offsetWeek(activeWeek.year, activeWeek.week, 1);
   const prevWeekHref = getWeekHref(prevWeek.year, prevWeek.week);
@@ -1628,103 +1621,14 @@ function MealsPageInner() {
           </div>
         </NabuSurface>
 
-        {/* Week status — finalize/reopen gate for shopping generation */}
-        {plan && !plan.locked && (
+        {/* Only shown when a save marked an existing shopping draft out of date.
+            Week finalization and the Week notes editor were retired on
+            2026-10-19; stored notes and context are kept, not edited here. */}
+        {shoppingNotice && (
           <NabuSurface className="mb-6 p-4">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium text-primary">
-                    {plan.status === "finalized" ? "Week finalized" : "Week in draft"}
-                  </span>
-                  <NabuBadge tone={plan.status === "finalized" ? "green" : "stone"}>
-                    {plan.status === "finalized" ? "finalized" : "draft"}
-                  </NabuBadge>
-                </div>
-                <p className="mt-1 text-xs leading-relaxed text-tertiary">
-                  {plan.status === "finalized"
-                    ? "Shopping can be generated from this week. Changing a planned meal returns the week to draft and invalidates the shopping list."
-                    : "Finalize the week to generate its shopping list. The week stays editable either way."}
-                </p>
-              </div>
-              <div className="flex shrink-0 flex-wrap items-center gap-2">
-                <NabuButton
-                  onClick={() =>
-                    handleWeekStatusChange(plan.status === "finalized" ? "draft" : "finalized")
-                  }
-                  disabled={weekStatusSaving || planLoading}
-                  tone={plan.status === "finalized" ? "secondary" : "primary"}
-                  size="sm"
-                >
-                  {weekStatusSaving
-                    ? "Saving…"
-                    : plan.status === "finalized"
-                      ? "Reopen week"
-                      : "Finalize week"}
-                </NabuButton>
-              </div>
-            </div>
-            {shoppingNotice && (
-              <p className="mt-3 border-t border-secondary pt-3 text-xs leading-relaxed text-tertiary">
-                {shoppingNotice}
-              </p>
-            )}
-            {weekStatusError && (
-              <p className="mt-2 text-xs text-red-500 dark:text-red-400">{weekStatusError}</p>
-            )}
+            <p className="text-xs leading-relaxed text-tertiary">{shoppingNotice}</p>
           </NabuSurface>
         )}
-
-        {/* Week context summary + toggle */}
-        <div className="mb-4">
-          <div className="flex items-center gap-2 mb-2">
-            <button
-              onClick={() => {
-                if (planLoading) return;
-                if (!plan) setPlan(buildEmptyPlan());
-                setShowContextEditor(!showContextEditor);
-              }}
-              disabled={planLoading}
-              className="text-xs text-tertiary hover:text-secondary flex items-center gap-1.5 transition-colors disabled:opacity-50"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-              </svg>
-              {showContextEditor ? "Hide notes" : "Week notes"}
-              {hasContext && !showContextEditor && (
-                <span className="ml-1 px-1.5 py-0.5 text-xs rounded bg-secondary text-tertiary">
-                  {contextItems.length + (plan?.notes?.trim() ? 1 : 0)}
-                </span>
-              )}
-            </button>
-          </div>
-
-          {/* Inline context badges on calendar days */}
-          {!showContextEditor && contextItems.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mb-2">
-              {contextItems.map((ctx) => (
-                <span
-                  key={ctx.id}
-                  className={`text-xs px-2 py-0.5 rounded-full ${KIND_COLORS[ctx.kind] || KIND_COLORS.custom}`}
-                >
-                  {ctx.date ? `${formatDateShort(ctx.date)}: ` : ""}{ctx.note}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Context editor */}
-          {showContextEditor && (
-            <WeekContextEditor
-              plan={plan || buildEmptyPlan()}
-              weekDates={weekDates}
-              onNotesChange={handleNotesChange}
-              onAddContext={handleAddContext}
-              onRemoveContext={handleRemoveContext}
-              locked={plan?.locked ?? false}
-            />
-          )}
-        </div>
 
         {/* Calendar grid — 7-day week */}
         {planLoading ? (
@@ -1771,15 +1675,19 @@ function MealsPageInner() {
                 : normalizedActualName !== normalizedPlannedName),
             );
             const actualMealLabel = hist?.status === "in-progress" ? "Current meal" : "Actual meal";
-            const dayIsSkipped = isSkipped && !actualMealName;
+            // An assignment wins over stored skip context (the save boundary
+            // applies the same rule); the Week notes editor that could remove
+            // a stale skip entry is retired, so it must never lock a day.
+            const dayIsSkipped = isSkipped && !actualMealName && !isFilled && !isBrunchFilled;
             const isCooked = isFilled && cookedSlots.has(`${slot!.recipeId}:${wd.date}`);
             const navigationRecipeId = resolvePlannerDayRecipeId({
               plannedRecipeId: slot?.recipeId,
               plannedMealRecipeId: slot?.meal?.main?.id,
               history: hist,
+              isRecipe: isRecipeOnFile,
             });
             const isClickable = isSelectable
-              ? !dayIsSkipped
+              ? true
               : Boolean(navigationRecipeId && !dayIsSkipped);
             const cardHandlesMainClick = !hasBrunch;
             return (
@@ -1855,6 +1763,15 @@ function MealsPageInner() {
                       <span className="mb-0.5 block text-[9px] font-medium uppercase tracking-wider text-quaternary">
                         Breakfast/brunch
                       </span>
+                      {isBrunchFilled && hist?.brunch?.status === "cooked-as-planned" && (
+                        <NabuBadge tone="green" className="mb-0.5 px-1.5 py-0.5 text-[9px]">Cooked</NabuBadge>
+                      )}
+                      {isBrunchFilled && hist?.brunch?.status === "in-progress" && (
+                        <NabuBadge tone="blue" className="mb-0.5 px-1.5 py-0.5 text-[9px]">Cooking</NabuBadge>
+                      )}
+                      {isBrunchFilled && hist?.brunch?.status === "planned-unlogged" && (
+                        <NabuBadge className="mb-0.5 px-1.5 py-0.5 text-[9px]">Not logged</NabuBadge>
+                      )}
                       {isBrunchFilled ? (
                         <span className="block text-[12px] font-serif leading-snug text-primary line-clamp-2">
                           {brunchSlot?.main.name}
@@ -1865,8 +1782,38 @@ function MealsPageInner() {
                         </span>
                       )}
                     </button>
+                    {isBrunchFilled && brunchSlot?.sides && brunchSlot.sides.length > 0 && (
+                      <div className="mt-1 space-y-0.5">
+                        {brunchSlot.sides.map((side) => (
+                          <button
+                            key={side.id}
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              void handleQuickView(side.id);
+                            }}
+                            aria-label={`View ${side.name} recipe`}
+                            className="block w-full min-w-0 text-left text-[10px] text-violet-600 dark:text-violet-400 leading-tight line-clamp-1 underline decoration-violet-300/70 underline-offset-2 transition-colors hover:text-violet-800 dark:hover:text-violet-200"
+                          >
+                            + {side.name}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                     {isBrunchFilled && !isSelectable && (
-                      <div className="mt-1 flex justify-end">
+                      <div className="mt-1 flex justify-end gap-2">
+                        {isPastOrToday && hist?.brunch?.status !== "cooked-as-planned" && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleMarkBrunchCooked(i);
+                            }}
+                            disabled={markingBrunchCooked === i}
+                            className="text-[10px] text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors disabled:opacity-50"
+                          >
+                            {markingBrunchCooked === i ? "saving..." : "mark cooked"}
+                          </button>
+                        )}
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
@@ -2204,151 +2151,6 @@ function MealsPageInner() {
         />
       )}
     </NabuPageShell>
-  );
-}
-
-// ----- Week Context Editor -----
-
-function WeekContextEditor({
-  plan,
-  weekDates,
-  onNotesChange,
-  onAddContext,
-  onRemoveContext,
-  locked,
-}: {
-  plan: MealPlan;
-  weekDates: { date: string; dayOfWeek: string }[];
-  onNotesChange: (notes: string) => void;
-  onAddContext: (item: Omit<WeekContextItem, "id">) => void;
-  onRemoveContext: (id: string) => void;
-  locked: boolean;
-}) {
-  const [newKind, setNewKind] = useState<WeekContextItem["kind"]>("restaurant");
-  const [newDate, setNewDate] = useState("");
-  const [newNote, setNewNote] = useState("");
-
-  function handleAdd() {
-    if (!newNote.trim()) return;
-    onAddContext({
-      date: newDate || undefined,
-      kind: newKind,
-      note: newNote.trim(),
-    });
-    setNewNote("");
-    setNewDate("");
-  }
-
-  return (
-    <div className="min-w-0 rounded-lg border border-primary bg-primary p-4 shadow-xs sm:p-5 dark:shadow-none space-y-5">
-      {/* Free-text notes */}
-      <div>
-        <label className="text-[11px] text-quaternary uppercase tracking-widest block mb-1.5">
-          Week Notes
-        </label>
-        <textarea
-          value={plan.notes || ""}
-          onChange={(e) => onNotesChange(e.target.value)}
-          disabled={locked}
-          placeholder="General notes for this week..."
-          rows={2}
-          className="w-full text-sm rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-3 py-2 placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-400 disabled:opacity-50 resize-none"
-        />
-      </div>
-
-      {/* Existing context items */}
-      {(plan.context || []).length > 0 && (
-        <div>
-          <label className="text-[11px] text-quaternary uppercase tracking-widest block mb-2">
-            Context Items
-          </label>
-          <div className="space-y-2">
-            {(plan.context || []).map((ctx) => (
-              <div
-                key={ctx.id}
-                className="flex min-w-0 flex-wrap items-center gap-2 text-sm"
-              >
-                <span
-                  className={`shrink-0 text-xs px-2 py-0.5 rounded-full ${KIND_COLORS[ctx.kind] || KIND_COLORS.custom}`}
-                >
-                  {CONTEXT_KIND_OPTIONS.find((o) => o.value === ctx.kind)?.label || ctx.kind}
-                </span>
-                {ctx.date && (
-                  <span className="text-xs text-zinc-400 shrink-0">
-                    {formatDateShort(ctx.date)}
-                  </span>
-                )}
-                <span className="text-secondary flex-1 min-w-0 truncate">
-                  {ctx.note}
-                </span>
-                {ctx.effect && (
-                  <span className="text-[10px] text-quaternary shrink-0">
-                    {ctx.effect}
-                  </span>
-                )}
-                {!locked && (
-                  <button
-                    onClick={() => onRemoveContext(ctx.id)}
-                    className="shrink-0 text-xs text-quaternary hover:text-red-500 transition-colors"
-                  >
-                    &times;
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Add new context item */}
-      {!locked && (
-        <div>
-          <label className="text-[11px] text-quaternary uppercase tracking-widest block mb-2">
-            Add Context
-          </label>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-[auto_auto_minmax(0,1fr)_auto]">
-            <select
-              value={newKind}
-              onChange={(e) => setNewKind(e.target.value as WeekContextItem["kind"])}
-              className="text-sm rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
-            >
-              {CONTEXT_KIND_OPTIONS.map((o) => (
-                <option key={o.value} value={o.value}>
-                  {o.label}
-                </option>
-              ))}
-            </select>
-            <select
-              value={newDate}
-              onChange={(e) => setNewDate(e.target.value)}
-              className="text-sm rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
-            >
-              <option value="">Any day</option>
-              {weekDates.map((wd) => (
-                <option key={wd.date} value={wd.date}>
-                  {wd.dayOfWeek.slice(0, 3)} {formatDateShort(wd.date)}
-                </option>
-              ))}
-            </select>
-            <input
-              type="text"
-              value={newNote}
-              onChange={(e) => setNewNote(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleAdd()}
-              placeholder="Note..."
-              className="min-w-0 rounded-lg border border-stone-200 bg-stone-50 px-3 py-1.5 text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500/20 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-500"
-            />
-            <button
-              onClick={handleAdd}
-              disabled={!newNote.trim()}
-              className="px-3 py-1.5 rounded-full text-sm font-medium bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 disabled:opacity-30 transition-colors"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
   );
 }
 

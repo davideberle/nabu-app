@@ -55,6 +55,12 @@ export type Recipe = {
   cuisine?: string | string[];
   mealRole?: string;
   visibility?: "personal" | "planner-candidate";
+  /**
+   * A household adaptation of another recipe (what was actually cooked, kept
+   * distinct from the original). The planner treats the two ids as one dish for
+   * recent-cook and recent-plan exclusions; the original stays unchanged.
+   */
+  adaptedFrom?: { recipeId: string; name?: string; url?: string; note?: string };
   madeHistory?: { date: string; note: string }[];
   lastMade?: string;
 };

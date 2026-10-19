@@ -1,10 +1,6 @@
-// Unit tests for the user-facing notice /meals shows when a save changed the
-// week's shopping state under the planner's feet.
-//
-// The gap this closes: the server could reopen a finalized week (or withdraw
-// its shopping approval) and the page said nothing — the badge simply went
-// stale until a reload. The two causes need different words because they need
-// different next actions.
+// Unit tests for the user-facing notice /meals shows when a save marked an
+// existing shopping draft out of date, and for the save-response reconciliation
+// guard. Week finalization was retired on 2026-10-19, so there is one cause.
 //
 // Run with: npm test  (node --test; Node 24 strips types natively)
 
@@ -18,31 +14,27 @@ import {
 import type { MealPlan } from "./meals.ts";
 
 describe("shoppingInvalidationNotice", () => {
-  it("says a meal change reopened the week and the list needs regenerating", () => {
+  it("says a meal change marked the shopping list out of date", () => {
     const notice = shoppingInvalidationNotice({
       cause: "meals-changed",
       returnedToDraft: true,
       cancelledOutboxItems: 0,
     });
-    ok(/reopened the week/.test(notice));
     ok(/out of date/.test(notice));
-    ok(/regenerate/i.test(notice));
   });
 
-  it("says a reopen only withdrew the approval", () => {
+  it("never asks anyone to finalize or re-approve — that workflow is retired", () => {
     const notice = shoppingInvalidationNotice({
-      cause: "reopened",
+      cause: "meals-changed",
       returnedToDraft: true,
-      cancelledOutboxItems: 0,
+      cancelledOutboxItems: 2,
     });
-    ok(/withdrew its shopping approval/.test(notice));
-    ok(/re-approve/i.test(notice));
-    equal(/regenerate/i.test(notice), false, "a reopen does not need a regenerate");
+    equal(/finali[sz]e|re-approve|reopen/i.test(notice), false);
   });
 
   it("reports cancelled Bring items, with correct singular and plural", () => {
     const one = shoppingInvalidationNotice({
-      cause: "reopened",
+      cause: "meals-changed",
       returnedToDraft: true,
       cancelledOutboxItems: 1,
     });
@@ -57,30 +49,20 @@ describe("shoppingInvalidationNotice", () => {
   });
 
   it("says nothing about Bring when nothing was queued", () => {
-    for (const cause of ["meals-changed", "reopened"] as const) {
-      const notice = shoppingInvalidationNotice({
-        cause,
-        returnedToDraft: true,
-        cancelledOutboxItems: 0,
-      });
-      equal(/Bring item/.test(notice), false, `cause=${cause}`);
-    }
-  });
-
-  it("gives the two causes different text, so the next action is unambiguous", () => {
-    const base = { returnedToDraft: true, cancelledOutboxItems: 2 };
-    ok(
-      shoppingInvalidationNotice({ ...base, cause: "meals-changed" }) !==
-        shoppingInvalidationNotice({ ...base, cause: "reopened" }),
-    );
+    const notice = shoppingInvalidationNotice({
+      cause: "meals-changed",
+      returnedToDraft: true,
+      cancelledOutboxItems: 0,
+    });
+    equal(/Bring item/.test(notice), false);
   });
 });
 
 describe("reconcileSavedPlanResponse", () => {
-  function planFor(week: string, status: "draft" | "finalized" = "draft"): MealPlan {
+  function planFor(week: string): MealPlan {
     return {
       week,
-      status,
+      status: "draft",
       plannerVersion: "vNext-1",
       candidateSet: null,
       days: [],
@@ -99,11 +81,10 @@ describe("reconcileSavedPlanResponse", () => {
 
   it("adopts the stored plan and its notice when nothing newer is pending", () => {
     const sent = planFor("2026-W41");
-    const stored = planFor("2026-W41", "finalized");
+    const stored = { ...planFor("2026-W41"), notes: "stored" };
     const outcome = reconcileSavedPlanResponse(sent, sent, {
       ok: true,
       plan: stored,
-      status: "finalized",
     });
     equal(outcome.stale, false);
     ok(!outcome.stale && outcome.plan === stored);
@@ -115,7 +96,6 @@ describe("reconcileSavedPlanResponse", () => {
     const outcome = reconcileSavedPlanResponse(sent, sent, {
       ok: true,
       plan: sent,
-      status: "draft",
       shoppingInvalidated: INVALIDATED,
     });
     ok(!outcome.stale);
@@ -127,11 +107,10 @@ describe("reconcileSavedPlanResponse", () => {
     // slow save could raise an invalidation banner for an edit the planner had
     // already replaced.
     const sent = planFor("2026-W41");
-    const newer = planFor("2026-W41", "finalized");
+    const newer = planFor("2026-W41");
     const outcome = reconcileSavedPlanResponse(sent, newer, {
       ok: true,
       plan: sent,
-      status: "draft",
       shoppingInvalidated: INVALIDATED,
     });
     equal(outcome.stale, true);
@@ -144,20 +123,18 @@ describe("reconcileSavedPlanResponse", () => {
     const outcome = reconcileSavedPlanResponse(sent, newer, {
       ok: true,
       plan: sent,
-      status: "draft",
     });
     equal(outcome.stale, true);
   });
 
   it("treats an unloaded page as superseding — identity, not deep equality", () => {
     const sent = planFor("2026-W41");
-    equal(reconcileSavedPlanResponse(sent, null, { ok: true, plan: sent, status: "draft" }).stale, true);
+    equal(reconcileSavedPlanResponse(sent, null, { ok: true, plan: sent }).stale, true);
     // A structurally identical but distinct object is still a later commit.
     equal(
       reconcileSavedPlanResponse(sent, planFor("2026-W41"), {
         ok: true,
         plan: sent,
-        status: "draft",
       }).stale,
       true,
     );

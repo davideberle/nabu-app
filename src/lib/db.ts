@@ -3,9 +3,11 @@ import { createClient, type Client } from "@libsql/client";
 // repair/backfill script, whose ESM resolver does not add extensions.
 import { assertRecipeImageValid } from "./recipe-image-validation.ts";
 import {
+  expandRecipeAliases,
   getRecentWeekIds,
   plannerPolicy,
   type PlannerPolicy,
+  type RecipeAliasLink,
 } from "./meals-core.ts";
 import {
   resetExposure,
@@ -1465,15 +1467,37 @@ export async function getPlannerRecencyExclusions(
   policy: PlannerPolicy = plannerPolicy(),
 ): Promise<PlannerRecencyExclusions> {
   const priorWeeks = getRecentWeekIds(week, policy.recentWeeksLookback);
-  const [recentlyCooked, recentlyPlanned, recentlyOffered, currentWeekOffered, negativeFeedback] =
+  const [recentlyCooked, recentlyPlanned, recentlyOffered, currentWeekOffered, negativeFeedback, aliasLinks] =
     await Promise.all([
       getRecentlyCookedRecipeIds(policy.recentlyCookedDays),
       getPlannedRecipeIdsForWeeks(priorWeeks),
       getPlannerCandidateRecipeIdsForWeeks(priorWeeks),
       getPlannerCandidateRecipeIdsForWeeks([week]),
       getThumbsDownRecipeIds(policy.negativeFeedbackDays),
+      getRecipeAliasLinks(),
     ]);
-  return { recentlyCooked, recentlyPlanned, recentlyOffered, currentWeekOffered, negativeFeedback };
+  // A household adaptation and its original are one dish for recency: cooking
+  // or planning either keeps both off the shelf (kitchen DESIGN.md §4.3).
+  return {
+    recentlyCooked: expandRecipeAliases(recentlyCooked, aliasLinks),
+    recentlyPlanned: expandRecipeAliases(recentlyPlanned, aliasLinks),
+    recentlyOffered,
+    currentWeekOffered,
+    negativeFeedback,
+  };
+}
+
+/** Explicit adaptation links stored on My Recipes (`data.adaptedFrom.recipeId`). */
+export async function getRecipeAliasLinks(): Promise<RecipeAliasLink[]> {
+  const client = await getDb();
+  const result = await client.execute(
+    `SELECT id, json_extract(data, '$.adaptedFrom.recipeId') AS adapted_from
+       FROM recipes
+      WHERE json_extract(data, '$.adaptedFrom.recipeId') IS NOT NULL`,
+  );
+  return result.rows
+    .map((row) => ({ recipeId: String(row["id"]), adaptedFromId: String(row["adapted_from"]) }))
+    .filter((link) => link.recipeId && link.adaptedFromId);
 }
 
 // ---------------------------------------------------------------------------
@@ -2265,13 +2289,11 @@ export async function setTravelItemStatus(
 /**
  * Why a week's shopping state is being invalidated, and how far.
  *
- * `markStale` distinguishes the two cases:
- *
- * - a meal-changing edit (`markStale: true`) — the draft is now about a meal
- *   that is not happening, so it must be regenerated before it can be approved;
- * - an explicit reopen (`markStale: false`) — the planned meals are unchanged,
- *   so the draft still describes the right week, but the approval it was
- *   syncing under is withdrawn and its queued rows are cancelled.
+ * `markStale: true` is a meal-changing edit: the draft is now about a meal
+ * that is not happening, so it must be regenerated before it can be approved.
+ * `markStale: false` (withdraw approval only) was the explicit-reopen case;
+ * week finalization was retired on 2026-10-19, so the planner no longer sends
+ * it. Both only ever reduce what is shoppable.
  */
 export type ShoppingInvalidation = { markStale: boolean; reason: string };
 

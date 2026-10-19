@@ -691,6 +691,46 @@ type SanitizableCandidateItem = {
   recipeName?: string;
 };
 
+/** One explicit "same dish" link: a recipe and the recipe it adapts. */
+export type RecipeAliasLink = { recipeId: string; adaptedFromId: string };
+
+/**
+ * Expand a set of recipe ids with every recipe linked to them through an
+ * explicit adaptation (`Recipe.adaptedFrom`), in both directions and through
+ * siblings that adapt the same original.
+ *
+ * This is what keeps a just-cooked household adaptation from bringing its
+ * original back as next week's idea (and vice versa). Only explicit links
+ * count; similar names never do.
+ */
+export function expandRecipeAliases(
+  ids: ReadonlySet<string>,
+  links: readonly RecipeAliasLink[],
+): Set<string> {
+  const expanded = new Set(ids);
+  if (links.length === 0 || ids.size === 0) return expanded;
+  const neighbours = new Map<string, Set<string>>();
+  const connect = (a: string, b: string) => {
+    if (!neighbours.has(a)) neighbours.set(a, new Set());
+    neighbours.get(a)!.add(b);
+  };
+  for (const link of links) {
+    if (!link.recipeId || !link.adaptedFromId || link.recipeId === link.adaptedFromId) continue;
+    connect(link.recipeId, link.adaptedFromId);
+    connect(link.adaptedFromId, link.recipeId);
+  }
+  const queue = [...ids];
+  while (queue.length > 0) {
+    const id = queue.pop()!;
+    for (const next of neighbours.get(id) ?? []) {
+      if (expanded.has(next)) continue;
+      expanded.add(next);
+      queue.push(next);
+    }
+  }
+  return expanded;
+}
+
 /**
  * Enforce recent cooked/planned/offered and negative-feedback exclusions on a
  * candidate set at the save boundary. Positive feedback is deliberately not an

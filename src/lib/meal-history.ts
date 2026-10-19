@@ -21,15 +21,40 @@ export type DayHistory = {
   plannedRecipeName: string | null;
   cookedRecipeId: string | null;
   cookedRecipeName: string | null;
+  /**
+   * The weekend breakfast/brunch, projected on its own so a brunch and a
+   * dinner on the same date never stand in for each other. Present only when
+   * the day plans a brunch.
+   */
+  brunch?: BrunchHistory;
+};
+
+export type BrunchHistory = {
+  status: Extract<DayHistoryStatus, "planned" | "in-progress" | "cooked-as-planned" | "planned-unlogged">;
+  plannedRecipeId: string;
+  plannedRecipeName: string;
+  cookedRecipeId: string | null;
+  cookedRecipeName: string | null;
 };
 
 type DaySlot = MealPlan["days"][number];
 
+function uniqueIds(ids: (string | null | undefined)[]): string[] {
+  return ids
+    .filter((id): id is string => Boolean(id))
+    .filter((id, index, all) => all.indexOf(id) === index);
+}
+
+/** The day's main-meal recipe ids (dinner main as saved on either field). */
 export function getPlannedRecipeIds(slot: DaySlot | null): string[] {
   if (!slot) return [];
-  return [slot.recipeId, slot.meal?.main?.id, slot.brunch?.main?.id]
-    .filter((id): id is string => Boolean(id))
-    .filter((id, index, ids) => ids.indexOf(id) === index);
+  return uniqueIds([slot.recipeId, slot.meal?.main?.id]);
+}
+
+/** The day's brunch recipe ids: its main and every structured side. */
+export function getBrunchRecipeIds(slot: DaySlot | null): string[] {
+  if (!slot?.brunch?.main?.id) return [];
+  return uniqueIds([slot.brunch.main.id, ...(slot.brunch.sides ?? []).map((side) => side.id)]);
 }
 
 /**
@@ -67,7 +92,16 @@ export function projectDayHistory(input: {
   const isToday = date === today;
   const isFuture = date > today;
 
+  // Brunch evidence belongs to the brunch projection below. A recipe that is
+  // planned as both (rare) stays visible to the main meal as well.
+  const brunchOnlyIds = new Set(
+    getBrunchRecipeIds(slot).filter((id) => !plannedIds.includes(id)),
+  );
+  const brunchProjection = projectBrunch({ slot, cookEvents, sessions, isPast, isToday, isFuture });
+  const mainEvents = cookEvents.filter((event) => !brunchOnlyIds.has(event.recipeId));
+
   const eligibleSessions = sessions
+    .filter((session) => !brunchOnlyIds.has(resolveMainDish(session).recipeId ?? ""))
     .filter((session) =>
       session.status !== "abandoned" &&
       !isFuture &&
@@ -88,9 +122,9 @@ export function projectDayHistory(input: {
       .filter((id): id is string => Boolean(id)),
   );
   const explicitEvent =
-    cookEvents.find((event) => inferredMainIds.has(event.recipeId)) ??
-    cookEvents.find((event) => plannedIds.includes(event.recipeId)) ??
-    cookEvents[0] ??
+    mainEvents.find((event) => inferredMainIds.has(event.recipeId)) ??
+    mainEvents.find((event) => plannedIds.includes(event.recipeId)) ??
+    mainEvents[0] ??
     null;
 
   let cookedRecipeId: string | null = null;
@@ -105,7 +139,7 @@ export function projectDayHistory(input: {
       recipeNames.get(explicitEvent.recipeId) ??
       matchingSession?.main.title ??
       (plannedIds.includes(explicitEvent.recipeId)
-        ? slot?.recipeName ?? slot?.meal?.main?.name ?? slot?.brunch?.main?.name ?? null
+        ? slot?.recipeName ?? slot?.meal?.main?.name ?? null
         : null);
   } else if (resolvedSessions.length > 0) {
     const { main } = resolvedSessions[0];
@@ -145,5 +179,58 @@ export function projectDayHistory(input: {
     plannedRecipeName: slot?.recipeName ?? slot?.meal?.main?.name ?? null,
     cookedRecipeId,
     cookedRecipeName,
+    ...(brunchProjection ? { brunch: brunchProjection } : {}),
+  };
+}
+
+/**
+ * The brunch counterpart of the main-meal projection: cooked only on an
+ * explicit cook event for one of its recipes, or an eligible session whose main
+ * is the brunch main. Import or preparation alone is never cooking evidence.
+ */
+function projectBrunch(input: {
+  slot: DaySlot | null;
+  cookEvents: Pick<CookEvent, "recipeId">[];
+  sessions: CookingSession[];
+  isPast: boolean;
+  isToday: boolean;
+  isFuture: boolean;
+}): BrunchHistory | null {
+  const { slot, cookEvents, sessions, isPast, isToday, isFuture } = input;
+  const main = slot?.brunch?.main;
+  if (!main?.id) return null;
+  // A side shared with the main meal (a green salad, say) is the main meal's
+  // evidence, not the brunch's; only the brunch main and its own sides count.
+  const mainMealIds = new Set([
+    ...getPlannedRecipeIds(slot),
+    ...(slot?.meal?.sides ?? []).map((side) => side.id),
+  ]);
+  const brunchIds = getBrunchRecipeIds(slot).filter((id) => id === main.id || !mainMealIds.has(id));
+
+  const event =
+    cookEvents.find((candidate) => candidate.recipeId === main.id) ??
+    cookEvents.find((candidate) => brunchIds.includes(candidate.recipeId)) ??
+    null;
+  const session = isFuture
+    ? null
+    : sessions.find((candidate) =>
+        candidate.status !== "abandoned" &&
+        (candidate.status === "completed" || candidate.source !== "meal-plan") &&
+        resolveMainDish(candidate).recipeId === main.id,
+      ) ?? null;
+
+  let status: BrunchHistory["status"];
+  if (event) status = "cooked-as-planned";
+  else if (session && isToday && session.status !== "completed") status = "in-progress";
+  else if (session) status = "cooked-as-planned";
+  else status = isPast ? "planned-unlogged" : "planned";
+
+  const cooked = Boolean(event || session);
+  return {
+    status,
+    plannedRecipeId: main.id,
+    plannedRecipeName: main.name,
+    cookedRecipeId: cooked ? main.id : null,
+    cookedRecipeName: cooked ? main.name : null,
   };
 }

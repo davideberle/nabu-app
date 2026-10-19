@@ -2,25 +2,23 @@
 //
 // It exists because the planner UI cannot render what it *sent*. The save
 // boundary can change the plan on the way in (kitchen DESIGN.md §"Phase 4C"):
-// a meal-changing edit to a finalized week returns that week to `draft` and
-// invalidates the shopping list generated from it. A client that keeps showing
-// its optimistic copy shows a "Week finalized" badge for a week the server has
-// already reopened, and a shopping list that can no longer be approved, until
-// someone reloads.
+// stale-save preservation can keep a stored assignment the client did not
+// have, candidate sanitation can drop or relabel ideas, and a meal-changing
+// edit marks any existing shopping draft for the week out of date.
 //
 // So the route answers with the plan as stored plus what the save did to the
-// week's shopping state, and the page reconciles to that.
+// week's shopping state, and the page reconciles to that. Week finalization
+// was retired on 2026-10-19; there is no finalize/reopen transition any more.
 
 import type { MealPlan } from "./meals";
 
 export type ShoppingInvalidationSummary = {
   /**
-   * `meals-changed` — the set of planned recipes differs, so the week was
-   * returned to draft and its shopping list marked out of date.
-   * `reopened` — a finalized week was explicitly reopened; the list still
-   * describes the right meals, but its approval was withdrawn.
+   * `meals-changed` — the set of planned recipes differs from an existing
+   * shopping draft's, so that draft was marked out of date and any of its
+   * still-queued rows were cancelled. Nothing is ever enqueued by a save.
    */
-  cause: "meals-changed" | "reopened";
+  cause: "meals-changed";
   returnedToDraft: boolean;
   cancelledOutboxItems: number;
 };
@@ -29,17 +27,13 @@ export type SavePlanResponse = {
   ok: true;
   /** The plan exactly as stored — not as sent. */
   plan: MealPlan;
-  status: "draft" | "finalized";
   shoppingInvalidated?: ShoppingInvalidationSummary;
 };
 
 /**
- * One sentence for the week-status card when a save changed the week's
- * shopping state under the planner's feet.
- *
- * It names what happened and what to do about it, because the user's next
- * action differs: a meal change needs the list regenerated, a reopen only needs
- * it re-approved.
+ * One sentence for the planner when a save marked an existing shopping draft
+ * out of date. Only reachable for a week that already had a draft; shopping
+ * generation is parked, so new weeks never do.
  */
 export function shoppingInvalidationNotice(
   invalidation: ShoppingInvalidationSummary,
@@ -49,16 +43,7 @@ export function shoppingInvalidationNotice(
     cancelled > 0
       ? ` ${cancelled} queued Bring item${cancelled === 1 ? "" : "s"} cancelled.`
       : "";
-  if (invalidation.cause === "meals-changed") {
-    return (
-      "That meal change reopened the week and marked its shopping list out of date." +
-      `${queued} Finalize the week again and regenerate the list.`
-    );
-  }
-  return (
-    "Reopening the week withdrew its shopping approval." +
-    `${queued} Finalize again and re-approve to queue Bring.`
-  );
+  return `That meal change marked this week's shopping list out of date.${queued}`;
 }
 
 /**
