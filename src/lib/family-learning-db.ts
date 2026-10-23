@@ -328,7 +328,7 @@ export type ViewOptions = {
   timeZone?: string | null;
   vocabulary?: VocabularyInventory | null;
   /** Content v6: set ONLY by the Nokt turn route — tutor availability and the reply origin it verified. Never from a client payload. */
-  tutor?: { available: boolean; origin: import("./family-learning-trust.ts").ReplyOrigin };
+  tutor?: { available: boolean; origin?: import("./family-learning-trust.ts").ReplyOrigin; receipt?: import("./family-learning-trust.ts").ReceiptInput };
 };
 
 /**
@@ -387,7 +387,7 @@ export async function applyMutation(
 ): Promise<MutationOutcome> {
   await ensureLearningTables(client);
   const settings = await readParentSettings(client, input.child);
-  const env = { content, settings, now, newId: () => randomUUID(), ...(options.tutor ? { tutorAvailable: options.tutor.available, tutorOrigin: options.tutor.origin } : {}) };
+  const env = { content, settings, now, newId: () => randomUUID(), ...(options.tutor ? { tutorAvailable: options.tutor.available, ...(options.tutor.origin ? { tutorOrigin: options.tutor.origin } : {}), ...(options.tutor.receipt !== undefined ? { tutorReceipt: options.tutor.receipt } : {}) } : {}) };
   const tx = await beginWrite(client);
   try {
     // R5-1: the generation is read FIRST, inside the write transaction (a deletion is a

@@ -9,7 +9,7 @@
 // this file. Isomorphic and dependency-free so `node --test` covers it.
 // ---------------------------------------------------------------------------
 
-import type { ChildId } from "./family-assistant-turn.ts";
+import { readBridgeOrigin, type ChildId } from "./family-assistant-turn.ts";
 import type { ChildView, LearningOp } from "./family-learning-state.ts";
 import { isChildView } from "./family-learning-view-guard.ts";
 
@@ -17,7 +17,10 @@ export const LEARNING_SESSION_PATH = "/api/family/learning/session";
 export const LEARNING_MISSION_PATH = "/api/family/learning/mission";
 export const LEARNING_TELEMETRY_PATH = "/api/family/learning/telemetry";
 export const LEARNING_NOKT_TRANSCRIBE_PATH = "/api/family/learning/nokt/transcribe";
-export const LEARNING_NOKT_TURN_PATH = "/api/family/learning/nokt/turn";
+export const LEARNING_NOKT_DISPATCH_PATH = "/api/family/learning/nokt/turn/dispatch";
+export const LEARNING_NOKT_REPLY_PATH = "/api/family/learning/nokt/turn/reply";
+/** The family runtime's Nokt route (bridge origin + this path), reached by the BROWSER — the hosted app cannot reach it. */
+export const BRIDGE_NOKT_PATH = "/v1/nokt/turn";
 
 /** One Nokt turn as the panel sends it; the server builds everything else (context, request, binding). */
 export type NoktTurnInput = { step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; sessionId: string; turnId: string; text: string; via: "voice" | "typed" };
@@ -202,23 +205,42 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
     },
 
     async noktTurn(childId, turn, expectedRevision, options) {
+      // 1. Dispatch: the server records his line and returns the request it built (never the answer key) + a `learn` token.
       const info = await session(childId, options.signal);
       if (options.signal.aborted) return { ok: false, failure: "cancelled" };
       if (!info) return { ok: false, failure: "no-session" };
-      let response: Response;
-      try {
-        response = await doFetch(LEARNING_NOKT_TURN_PATH, {
-          method: "POST",
-          headers: { Authorization: `Bearer ${info.token}`, "Content-Type": "application/json" },
-          body: JSON.stringify({ ...turn, expectedRevision, context: options.context, ...(options.timeZone ? { tz: options.timeZone } : {}) }),
-          signal: options.signal,
-          cache: "no-store",
-        });
-      } catch {
-        return { ok: false, failure: options.signal.aborted ? "cancelled" : "network" };
+      const post = async (path: string, body: Record<string, unknown>, revision: number): Promise<LearningMutateOutcome | { ok: false; failure: "cancelled" }> => {
+        let response: Response;
+        try {
+          response = await doFetch(path, { method: "POST", headers: { Authorization: `Bearer ${info.token}`, "Content-Type": "application/json" }, body: JSON.stringify({ ...body, expectedRevision: revision, context: options.context, ...(options.timeZone ? { tz: options.timeZone } : {}) }), signal: options.signal, cache: "no-store" });
+        } catch {
+          return { ok: false, failure: options.signal.aborted ? "cancelled" : "network" };
+        }
+        return readMutation(response, childId);
+      };
+      const dispatched = await post(LEARNING_NOKT_DISPATCH_PATH, { ...turn }, expectedRevision);
+      if (!dispatched.ok || dispatched.status !== "applied") return dispatched;
+      const r = dispatched.result as { turnId?: unknown; request?: unknown; bridge?: { url?: unknown; token?: unknown } };
+      const origin = readBridgeOrigin(r.bridge?.url);
+      // 2. The browser (on the Mac mini) asks the family runtime; bearer only, no cookies, nothing else is sent.
+      let reply: string | null = null;
+      let receipt: string | null = null;
+      if (origin && typeof r.bridge?.token === "string" && r.request && r.turnId === turn.turnId) {
+        try {
+          const res = await doFetch(`${origin}${BRIDGE_NOKT_PATH}`, { method: "POST", headers: { Authorization: `Bearer ${r.bridge.token}`, "Content-Type": "application/json" }, body: JSON.stringify({ turnId: turn.turnId, request: r.request }), signal: options.signal, cache: "no-store", credentials: "omit", mode: "cors" });
+          if (res.ok) {
+            const body = (await res.json()) as { reply?: unknown; receipt?: unknown };
+            if (typeof body.reply === "string") reply = body.reply;
+            if (typeof body.receipt === "string") receipt = body.receipt;
+          }
+        } catch {
+          if (options.signal.aborted) return { ok: false, failure: "cancelled" };
+        }
       }
-      if (response.status === 499) return { ok: false, failure: "cancelled" };
-      return readMutation(response, childId);
+      // Cancelled (closed, navigated, task changed) after dispatch: nothing more is sent; his line stays without a reply.
+      if (options.signal.aborted) return { ok: false, failure: "cancelled" };
+      // 3. The reply EXACTLY as received (or none); the server checks the receipt and the engine binds and guards it.
+      return post(LEARNING_NOKT_REPLY_PATH, { step: turn.step, turnId: turn.turnId, reply: reply ?? null, receipt: reply === null ? null : receipt }, dispatched.view.revision);
     },
 
     async sendTelemetry(childId, batch, options) {

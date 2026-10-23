@@ -60,7 +60,7 @@ import { typingErrors, type TypingError, feedbackOf, updateSpacingFocus } from "
 import { assessSpacing, flagSpacing, markSpacing, evaluateRevision, type SpacingFlag } from "./family-learning-writing.ts";
 import type { MissionPart, MissionHint, MissionLine, MissionDiagram } from "./family-learning-mission-spec.ts";
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
-import type { ReplyOrigin } from "./family-learning-trust.ts";
+import { receiptOrigin, type ReceiptInput, type ReplyOrigin } from "./family-learning-trust.ts";
 import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktPhase, noktTaskContext, parseNoktReply, type NoktTurnText } from "./family-learning-nokt-contract.ts";
 
 // ---------------------------------------------------------------------------
@@ -338,7 +338,7 @@ export type MissionEnv = {
   newId: () => string;
   visit: VisitId;
   /** Content v6: whether a verified tutor route is available for this child right now (production: never, CHILD_ASSISTANT_AI_ENABLED = false). */
-  tutor?: { available: boolean; child?: string; origin?: ReplyOrigin };
+  tutor?: { available: boolean; child?: string; origin?: ReplyOrigin; receipt?: ReceiptInput };
 };
 
 // ---------------------------------------------------------------------------
@@ -1415,7 +1415,16 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       const part = step.solve!.parts.find((x) => x.id === dispatch.part)!;
       const pr = r.parts![part.id];
       const talk = talkOf(r, part.id, dispatch.sessionId);
-      const origin: ReplyOrigin = env.tutor.origin ?? "missing";
+      // The receipt the reply route verified (signature only) is bound HERE to this dispatch: child, turn, the request hash
+      // stored at dispatch and the exact reply bytes. A signed receipt for anything else is a forgery or a replay.
+      let origin: ReplyOrigin;
+      if (env.tutor.receipt !== undefined) {
+        try {
+          origin = receiptOrigin(env.tutor.receipt, { child: env.tutor.child ?? "", turnId: dispatch.turnId, reqHash: dispatch.reqHash, text: action.reply });
+        } catch {
+          origin = "invalid";
+        }
+      } else origin = env.tutor.origin ?? "missing";
       let reason: string | null = null;
       let parsed: ReturnType<typeof parseNoktReply> = null;
       if (origin !== "verified") reason = `origin-${origin}`;
@@ -1454,7 +1463,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         if (!fit.ok) outcome = { refused: fit.reason };
         else {
           try {
-            outcome = applyTutorOutcome(records, env, def, step, r, parsed!.outcome);
+            outcome = applyTutorOutcome(records, { ...env, tutor: { ...env.tutor, origin } }, def, step, r, parsed!.outcome);
           } catch (error) {
             outcome = { refused: error instanceof MissionOpError ? error.message.replace("tutor result refused: ", "") : "invalid" };
           }

@@ -437,7 +437,7 @@ async function makeCtx(base, options, cookie = assistant, mocks = {}) {
   await installBrowserAudioGuard(c);
   await c.route("**/*", async (r) => {
     const u = new URL(r.request().url());
-    if (u.origin !== base) {
+    if (u.origin !== base && !(mocks.allowOrigins ?? []).includes(u.origin)) {
       blocked.push(u.origin);
       return r.abort("blockedbyclient");
     }
@@ -556,6 +556,9 @@ const STUB_FAULT = args.includes("--stub-fault");
 /** J4: the Nokt turn route on a FRESH synthetic DB, server started in stub mode with the loopback stub bridge (scripts/visit7-nokt-stub-bridge.mjs). */
 const TURN = args.includes("--turn");
 const BRIDGE_LOG = opt("--bridge-log", null);
+/** J4: the loopback stub bridge origin the BROWSER may reach (the turn is browser-mediated; the app server never calls it). */
+const BRIDGE_ORIGIN = (opt("--bridge-origin", "") || "").replace(/\/$/, "");
+if (BRIDGE_ORIGIN && !/^http:\/\/127\.0\.0\.1:\d+$/.test(BRIDGE_ORIGIN)) throw new Error("--bridge-origin must be a loopback origin");
 try {
   if (!ONLY_STUB) {
   await sixVisitsDone();
@@ -960,9 +963,15 @@ try {
   }
   // ============================================================ J3 fictional Nokt stub (separate server) ============================================================
   if (STUB_BASE && ONLY_STUB && TURN) {
-    // ============================================================ J4 Nokt turn route: dispatch → stub backend → verified reply ============================================================
+    // ============================================================ J4 Nokt turn: dispatch → the BROWSER asks the (stub) bridge → verified reply ============================================================
+    // Desktop viewport: Santiago uses Visit 7 in the Mac mini's browser (owner correction, October 23 14:51).
     await sixVisitsDone();
-    const tctx = await makeCtx(STUB_BASE, { viewport: { width: 1180, height: 820 }, hasTouch: true }, assistant, { speech: "end", voice: "fail" });
+    const tctx = await makeCtx(STUB_BASE, { viewport: { width: 1280, height: 900 } }, assistant, { speech: "end", voice: "fail", allowOrigins: BRIDGE_ORIGIN ? [BRIDGE_ORIGIN] : [] });
+    const appRequests = [];
+    tctx.on("request", (r) => {
+      const u = new URL(r.url());
+      if (u.pathname.startsWith("/api/family/learning/nokt/turn/")) appRequests.push(u.pathname);
+    });
     const t = await tctx.newPage();
     openPages.push(t);
     t.on("pageerror", (e) => pageErrors.push({ page: "turn", message: String(e) }));
@@ -989,19 +998,31 @@ try {
     const r3 = await sendTyped("Geraten.");
     check("J4.forged-receipt-withheld", (await r3.getAttribute("data-role")) === "app");
     await shotScene(t, "turn-nokt-verified-and-withheld", "Nokt turn route (stub backend): a verified line shown as Nokt; a «teach» reply with the answer and a forged receipt withheld behind the reviewed app line");
-    // cancel: the 4th reply is delayed by the stub; closing Nokt aborts the turn before it lands
+    // replay: the FIRST turn's reply posted again with different text and no receipt is not applied a second time
+    const before = (await rawRow()).state.missions["MISSION-ISLAND-GARDEN"].steps["G2-PACK"].tutorTurns;
+    const firstTurnId = before.find((x) => x.role === "nokt" && x.shown).turnId;
+    const replay = await t.evaluate(async (turnId) => {
+      const s = await (await fetch("/api/family/learning/session", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ childId: "santiago" }) })).json();
+      const v = (await (await fetch("/api/family/learning/mission", { headers: { authorization: "Bearer " + s.token } })).json()).view;
+      const r = await fetch("/api/family/learning/nokt/turn/reply", { method: "POST", headers: { authorization: "Bearer " + s.token, "content-type": "application/json" }, body: JSON.stringify({ step: "G2-PACK", turnId, reply: JSON.stringify({ v: 1, say: "Ersetzt.", intent: "clarify", outcome: null }), receipt: null, expectedRevision: v.revision, context: { erasureGeneration: v.erasureGeneration, visit: v.visit ? { id: v.visit.id, startedAt: v.visit.startedAt } : null } }) });
+      return { status: r.status, body: await r.json() };
+    }, firstTurnId);
+    const after = (await rawRow()).state.missions["MISSION-ISLAND-GARDEN"].steps["G2-PACK"].tutorTurns;
+    check("J4.replayed-reply-not-applied-twice", after.length === before.length && !JSON.stringify(after).includes("Ersetzt."), { status: replay.status, result: replay.body?.status ?? replay.body?.error, lines: [before.length, after.length] });
+    // stale navigation: the 4th reply is delayed by the stub; leaving the mission page aborts the turn before it lands
     await t.locator("[data-testid='nokt-input']").fill("Noch eine Frage.");
     await t.locator("[data-testid='nokt-send']").click();
     await settle(600);
-    await t.locator("[data-testid='nokt-close']").click();
+    await t.goto(`${STUB_BASE}/family/learn?child=santiago`);
     await settle(4500);
     const st = (await rawRow()).state.missions["MISSION-ISLAND-GARDEN"].steps["G2-PACK"];
     const turns = st.tutorTurns ?? [];
-    check("J4.cancelled-turn-never-recorded-as-nokt", turns.filter((x) => x.role === "child").length === 4 && turns.filter((x) => x.role === "nokt").length === 3, turns.map((x) => [x.role, x.shown, x.reason ?? null]));
+    check("J4.navigated-away-turn-never-recorded-as-nokt", turns.filter((x) => x.role === "child").length === 4 && turns.filter((x) => x.role === "nokt").length === 3, turns.map((x) => [x.role, x.shown, x.reason ?? null]));
     check("J4.withheld-reasons-recorded", JSON.stringify(turns.filter((x) => x.role === "nokt").map((x) => [x.shown, x.reason ?? null, x.origin])) === JSON.stringify([[true, null, "verified"], [false, "intent-not-in-phase", "verified"], [false, "origin-invalid", "invalid"]]), turns.filter((x) => x.role === "nokt").map((x) => [x.shown, x.reason ?? null, x.origin]));
     check("J4.no-false-completion", st.parts.full.status === "open" && st.status === "active" && (st.tutorOutcomes ?? []).length === 0 && st.parts.full.exposed.length === 0 && (st.parts.full.inheritedSupport ?? []).length === 0);
     const calls = BRIDGE_LOG && fs.existsSync(BRIDGE_LOG) ? fs.readFileSync(BRIDGE_LOG, "utf8").trim().split("\n").map((l) => JSON.parse(l)) : [];
-    check("J4.backend-got-bearer-no-answer-key-app-phase", calls.length === 4 && calls.every((c) => c.bearer && !c.answerField && c.phase === "nachfragen"), calls);
+    check("J4.browser-mediated-learn-token-no-cookie-no-answer-key", calls.length === 4 && calls.every((c) => c.origin === STUB_BASE && c.child === "santiago" && !c.cookie && !c.answerField && c.phase === "nachfragen") && !calls.some((c) => c.refused), calls);
+    check("J4.app-routes-dispatch-then-reply-per-answered-turn", appRequests.filter((x) => x.endsWith("/dispatch")).length === 4 && appRequests.filter((x) => x.endsWith("/reply")).length === 3 + 1, appRequests); // 3 answered turns + the replay probe; the navigated-away turn posts none
     // the parent sees the talk: his lines, Nokt's verified line, and the withheld replies with their reason
     const pctx = await makeCtx(STUB_BASE, { viewport: { width: 1280, height: 900 } }, owner);
     const pp = await pctx.newPage();

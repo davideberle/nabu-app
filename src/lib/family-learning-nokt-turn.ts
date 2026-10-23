@@ -1,67 +1,26 @@
 // ---------------------------------------------------------------------------
-// Nokt turn — the server's hop to the tutor backend and the receipt binding (content v6, N7-03/N7-06).
+// Nokt turn — the reply receipt, as the reply route hands it to the engine (content v6, N7-03/N7-06).
 //
-// **Server-only** (node:crypto via the bridge verifier). No backend is chosen
-// here: the request goes to `<FAMILY_ASSISTANT_BRIDGE_URL>/nokt/turn` with a
-// minted bridge token (the existing app → bridge credential), and the reply
-// must come back with an `fcr1` receipt signed by the bridge with the existing
-// shared secret. The real runtime has no such endpoint yet; the isolated tests
-// use a loopback stub that signs with a synthetic secret. This module only
-// VERIFIES receipts — nothing here can mint one.
-//
-// Binding (unchanged trust boundary, `receiptOrigin`): sub = the child, sid =
-// "learn", key = the turn id, req = the hash of the request the app built at
-// dispatch, res = sha256 of the exact reply bytes. Anything else is not Nokt's.
+// **Server-only** (node:crypto via the bridge verifier). The hosted app cannot
+// reach the family runtime on the private network, so the turn is
+// browser-mediated, exactly like listening: the dispatch route returns the
+// server-built request and a minted `learn` bridge token; the browser on the
+// Mac mini sends `{ turnId, request }` to `<bridge>/v1/nokt/turn`; the reply
+// route receives `{ reply, receipt }` back. Here the receipt's SIGNATURE is
+// checked with the existing shared secret; the engine then binds the claims to
+// its own dispatch record (child, sid "learn", turn, request hash, exact reply
+// bytes — `receiptOrigin`). Nothing here mints a receipt.
 // ---------------------------------------------------------------------------
 
-import { buildChildBridgeSession, verifyBridgeReceipt, type BridgeMintConfig } from "./family-assistant-bridge.ts";
-import { originWithoutBinding, receiptOrigin, verifiedReceiptFromClaims, type ReplyOrigin } from "./family-learning-trust.ts";
+import { verifyBridgeReceipt } from "./family-assistant-bridge.ts";
+import { verifiedReceiptFromClaims, type ReceiptInput } from "./family-learning-trust.ts";
 
-export const NOKT_BACKEND_PATH = "/nokt/turn";
-export const NOKT_BACKEND_TIMEOUT_MS = 30_000;
+/** Session suffix of the bridge token the dispatch route mints for a Nokt turn (the runtime accepts only this on its turn route). */
 export const NOKT_SESSION_SUFFIX = "learn";
 
-/** The origin of one reply: verified only when the signature checks AND the claims bind to this turn's dispatch and bytes. */
-export function noktReplyOrigin(receipt: unknown, secret: string, expected: { child: string; turnId: string; reqHash: string; text: string }, nowSeconds?: number): ReplyOrigin {
-  if (receipt === undefined || receipt === null) return "missing";
-  const verified = verifyBridgeReceipt(receipt, secret, nowSeconds);
-  if (!verified.ok) return originWithoutBinding({ invalid: verified.reason });
-  try {
-    return receiptOrigin(verifiedReceiptFromClaims(verified.claims), expected);
-  } catch {
-    // Signed, but for another child, turn, request or text: a forgery or a replay, never Nokt's line.
-    return "invalid";
-  }
-}
-
-export type NoktBackendAnswer = { ok: true; reply: string; receipt: unknown } | { ok: false; reason: "cancelled" | "transport" };
-
-/** One request to the tutor backend; the caller's signal (he cancelled, closed Nokt or changed task) and a timeout abort it. */
-export async function askNoktBackend(
-  config: BridgeMintConfig,
-  input: { child: string; turnId: string; request: unknown },
-  deps: { signal: AbortSignal; jti: string; nowMs?: number; fetchImpl?: typeof fetch; timeoutMs?: number },
-): Promise<NoktBackendAnswer> {
-  const doFetch = deps.fetchImpl ?? fetch;
-  const { token } = buildChildBridgeSession({ config, childId: input.child, sessionSuffix: NOKT_SESSION_SUFFIX, jti: deps.jti, nowMs: deps.nowMs ?? Date.now() });
-  let response: Response;
-  try {
-    response = await doFetch(`${config.bridgeUrl.replace(/\/$/, "")}${NOKT_BACKEND_PATH}`, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ turnId: input.turnId, request: input.request }),
-      signal: AbortSignal.any([deps.signal, AbortSignal.timeout(deps.timeoutMs ?? NOKT_BACKEND_TIMEOUT_MS)]),
-      cache: "no-store",
-    });
-  } catch {
-    return { ok: false, reason: deps.signal.aborted ? "cancelled" : "transport" };
-  }
-  if (!response.ok) return { ok: false, reason: "transport" };
-  try {
-    const body = (await response.json()) as { reply?: unknown; receipt?: unknown };
-    if (typeof body.reply !== "string") return { ok: false, reason: "transport" };
-    return { ok: true, reply: body.reply, receipt: body.receipt };
-  } catch {
-    return { ok: false, reason: deps.signal.aborted ? "cancelled" : "transport" };
-  }
+/** The receipt as the engine needs it: verified claims, an explicit invalid marker, or null when none came. */
+export function noktReceiptInput(receipt: unknown, secret: string, nowSeconds?: number): ReceiptInput {
+  if (receipt === undefined || receipt === null) return null;
+  const verified = typeof receipt === "string" ? verifyBridgeReceipt(receipt, secret, nowSeconds) : ({ ok: false, reason: "not-a-string" } as const);
+  return verified.ok ? verifiedReceiptFromClaims(verified.claims) : { invalid: verified.reason };
 }

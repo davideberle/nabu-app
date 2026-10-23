@@ -813,6 +813,8 @@ export type OpEnv = {
   tutorAvailable?: boolean;
   /** Content v6: the origin of a tutor result as verified by the ROUTE (bridge receipt); never taken from the client payload. */
   tutorOrigin?: import("./family-learning-trust.ts").ReplyOrigin;
+  /** Content v6: the reply receipt as verified by the Nokt reply ROUTE (signature checked; the engine binds it to its dispatch). */
+  tutorReceipt?: import("./family-learning-trust.ts").ReceiptInput;
 };
 
 export class LearningOpError extends Error {
@@ -2490,7 +2492,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       requireStage(state, content, "mission");
       const visit = currentVisit(state);
       try {
-        const out = applyMissionAction(state, op.action, { content, settings: env.settings, nowIso, newId: env.newId, visit: visit.id, tutor: { available: env.tutorAvailable === true, child: state.child, origin: env.tutorOrigin ?? "missing" } });
+        const out = applyMissionAction(state, op.action, { content, settings: env.settings, nowIso, newId: env.newId, visit: visit.id, tutor: { available: env.tutorAvailable === true, child: state.child, origin: env.tutorOrigin ?? "missing", ...(env.tutorReceipt !== undefined ? { receipt: env.tutorReceipt } : {}) } });
         records.attempts.push(...out.records.attempts);
         records.exposures.push(...out.records.exposures);
         records.supports.push(...out.records.supports);

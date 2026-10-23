@@ -760,6 +760,23 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     ok(talk.some((t) => t.who === "zurückgehalten" && t.detail === "passte nicht zur Gesprächsphase"));
   });
 
+  it("the reply route's receipt is bound by the ENGINE to its dispatch: right turn/request/bytes verified; anything else withheld", async () => {
+    const { sha256Hex } = await import("./family-learning-hash.ts");
+    const env = makeEnv(v6, { tutorAvailable: true });
+    const d = dispatchTurn(atG2(env), env, "turn-r00001", "fünf");
+    const reqHash = (d.result as unknown as Turn).reqHash;
+    const json = reply("Was sollst du bei dieser Frage herausfinden?", "clarify");
+    const rec = (over: Record<string, unknown> = {}) => ({ sub: "santiago", sid: "learn", key: "turn-r00001", req: reqHash, res: sha256Hex(json), iat: 1, mdl: "openai/fictional", run: "resp_1", ...over });
+    const withReceipt = (receipt: unknown) => mr(d.state, { a: "tutor-reply", step: "G2-PACK", turnId: "turn-r00001", reply: json }, { ...env, tutorReceipt: receipt as never });
+    equal((withReceipt(rec()).result as { shown: boolean }).shown, true);
+    equal((withReceipt(rec({ key: "turn-other1" })).result as { reason: string }).reason, "origin-invalid", "another turn's receipt");
+    equal((withReceipt(rec({ sub: "isabel" })).result as { reason: string }).reason, "origin-invalid", "cross-child");
+    equal((withReceipt(rec({ req: sha256Hex("changed in the browser") })).result as { reason: string }).reason, "origin-invalid", "request changed");
+    equal((withReceipt(rec({ sid: "listening" })).result as { reason: string }).reason, "origin-invalid", "listening session");
+    equal((withReceipt({ invalid: "bad-signature" }).result as { reason: string }).reason, "origin-invalid");
+    equal((withReceipt(null).result as { reason: string }).reason, "origin-missing");
+  });
+
   it("the generic mission route cannot reach any of it: without the Nokt route's env the tutor is unavailable", () => {
     const env = makeEnv(v6);
     const s = atG2(env);
