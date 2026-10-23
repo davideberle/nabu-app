@@ -41,7 +41,7 @@ export function NoktButton({ child, onOpen }: { child: ChildId; onOpen: () => vo
   );
 }
 
-export function NoktPanel({ child, mode, step, part, speech, onClose }: { child: ChildId; mode: NoktMode; step: string | null; part: string | null; speech: ChildSpeechPlayer; onClose: () => void }) {
+export function NoktPanel({ child, mode, step, part, speech, offer = null, onClose }: { child: ChildId; mode: NoktMode; step: string | null; part: string | null; speech: ChildSpeechPlayer; offer?: { onAccept: () => void; onDismiss: () => void } | null; onClose: () => void }) {
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: false });
@@ -60,6 +60,16 @@ export function NoktPanel({ child, mode, step, part, speech, onClose }: { child:
           Nokt
         </h2>
       </div>
+      {offer ? (
+        // Shown only when a verified tutor exists (never in this build): a dismissible offer, never a microphone start.
+        <div className="mt-4 grid gap-2" data-testid="nokt-offer">
+          <p className="text-lg">Möchtest du mit mir anschauen, was die Frage meint?</p>
+          <div className="flex flex-wrap gap-2">
+            <button type="button" className={btn} style={{ background: "#215c60", color: "white" }} onClick={offer.onAccept}>Ja</button>
+            <button type="button" className={btn} style={{ background: "#e6eee7", color: "#21484b" }} onClick={offer.onDismiss}>Nein, danke</button>
+          </div>
+        </div>
+      ) : null}
       {mode === "unavailable" ? (
         <div className="mt-4 grid gap-3" data-testid="nokt-unavailable">
           <p className="text-lg leading-relaxed">Nokt kann im Moment nicht mit dir sprechen.</p>

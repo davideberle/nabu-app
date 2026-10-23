@@ -513,13 +513,27 @@ async function bubbleClearsRosa(page) {
     return { ok: below || b.right <= rosaLeft, below, bubbleRight: Math.round(b.right), rosaLeft: Math.round(rosaLeft), imgBottom: Math.round(img.bottom), bubbleTop: Math.round(b.top) };
   });
 }
+async function simpleLayout(page) {
+  // approved layout: one amber line, the answer controls, ONE hint control; no choice rows, no Nokt advert inside the exercise
+  return page.evaluate(() => {
+    const task = document.querySelector("[data-testid='scene-task']");
+    const feedback = task?.querySelectorAll("[data-testid='scene-feedback']").length ?? 0;
+    const hintControls = task?.querySelectorAll("[data-testid='hint-open'], [data-testid='hint-solution']").length ?? 0;
+    const choiceRows = task?.querySelectorAll("[data-testid='stuck-choices'], [data-testid^='choice-']").length ?? 0;
+    const noktInTask = /Nokt/.test(task?.textContent ?? "");
+    const input = document.querySelector("[data-testid='part-input']");
+    return { ok: feedback === 1 && hintControls <= 1 && choiceRows === 0 && !noktInTask && !!input && !input.disabled, feedback, hintControls, choiceRows, noktInTask, inputEnabled: !!input && !input.disabled };
+  });
+}
 async function readable(page) {
   // task text never smaller than 16 px, the question at least 20 px, and the task card at least 300 px wide
   return page.evaluate(() => {
-    const q = document.querySelector("[data-testid='part-question']") ?? document.querySelector("#scene-task-title");
+    const question = document.querySelector("[data-testid='part-question']");
+    const q = question ?? document.querySelector("#scene-task-title");
+    const minPx = question ? 20 : 16;
     const card = document.querySelector("[data-testid='scene-task']")?.getBoundingClientRect();
     const small = [...document.querySelectorAll("[data-testid='scene-task'] p, [data-testid='scene-task'] label, [data-testid='scene-task'] button")].filter((el) => el.offsetParent && parseFloat(getComputedStyle(el).fontSize) < 16).length;
-    return { ok: !!q && parseFloat(getComputedStyle(q).fontSize) >= 20 && (card?.width ?? 0) >= 300 && small === 0, questionPx: q ? parseFloat(getComputedStyle(q).fontSize) : null, cardWidth: Math.round(card?.width ?? 0), smallTexts: small };
+    return { ok: !!q && parseFloat(getComputedStyle(q).fontSize) >= minPx && (card?.width ?? 0) >= 300 && small === 0, questionPx: q ? parseFloat(getComputedStyle(q).fontSize) : null, cardWidth: Math.round(card?.width ?? 0), smallTexts: small };
   });
 }
 
@@ -565,7 +579,7 @@ try {
   await nextBeat(p, "G2-PACK");
 
   // --- G2: per-question, accidental input, recheck, hint, stuck, success
-  check("J1.G2.one-question-with-unit", (await p.locator("[data-testid='part-question']").innerText()) === "Wie viele Tragen kannst du mit je 4 Setzlingen ganz füllen?" && (await p.locator("[data-testid='solve-progress']").innerText()).includes("Frage 1 von 3") && (await p.locator("#unit-full").innerText()) === "Tragen");
+  check("J1.G2.one-question-with-unit", (await p.locator("[data-testid='part-question']").innerText()) === "Wie viele Tragen kannst du mit je 4 Setzlingen ganz füllen?" && (await p.locator("[data-testid='scene-beat']").innerText()).includes("Frage 1 von 3") && (await p.locator("#unit-full").innerText()) === "Tragen");
   check("J1.G2.facts-visible-in-bubble", (await p.locator("[data-testid='scene-facts']").innerText()).includes("18 Setzlinge"));
   {
     const qBox = await p.locator("[data-testid='part-question']").boundingBox();
@@ -593,16 +607,16 @@ try {
     const full = (await missionRun()).steps["G2-PACK"].attempts.filter((a) => a.questionId === "full");
     check("J1.G2.deliberate-repeat-recorded", full.length === 2 && full[1].repeatOf === full[0].no && (await p.locator("[data-testid='scene-feedback']").innerText()).startsWith("Das ist wieder 5."));
   }
-  check("J1.G2.second-miss-honest-choices-no-auto-hint", (await p.locator("[data-testid='stuck-choices']").count()) === 1 && (await p.locator("[data-testid='stuck-nokt-unavailable']").count()) === 1 && (await p.locator("[data-testid='hint']").count()) === 0 && (await p.locator("[data-testid='choice-solution']").count()) === 0);
+  check("J1.G2.second-error-simple-layout", (await simpleLayout(p)).ok && (await p.locator("[data-testid='hint']").count()) === 0, await simpleLayout(p));
   check("J1.G2.no-exposure-after-two-misses", (await rows("family_learning_exposures")).filter((x) => x.kind === "answer_revealed" && String(x.task_id).includes("ISLAND")).length === 0);
-  await shotScene(p, "desktop-G2-second-miss-choices", "Second miss: honest note that the Nokt talk is unavailable; the child chooses retry, guided steps or later");
-  await p.locator("[data-testid='choice-guided']").click();
+  await shotScene(p, "desktop-G2-second-error", "Second error: one short amber line, the answer controls, one hint control — nothing opened for him");
+  await p.locator("[data-testid='hint-open']").click();
   await p.waitForSelector("[data-testid='hint'][data-hint='G2-full-H1']");
   check("J1.G2.next-step-waits-for-response", (await p.locator("[data-testid='hint-pending']").count()) === 1);
   await p.locator("[data-testid='hint-check-input']").fill("12");
   await p.locator("[data-testid='hint-check-send']").click();
   await p.waitForSelector("[data-testid='hint'] [data-testid='trays']");
-  await shotScene(p, "desktop-G2-hint-check-wrong-representation", "Guided step 1 (grouping), chosen by the child; a wrong reply to its small question shows a different representation");
+  await shotScene(p, "desktop-G2-hint-expanded", "Hint expanded directly beneath the hint control (asked for by the child); a wrong reply to its small question shows a different representation");
   await p.locator("[data-testid='hint-check-input']").fill("16");
   await p.locator("[data-testid='hint-check-send']").click();
   await settle(400);
@@ -612,12 +626,16 @@ try {
   await p.locator("[data-testid='solve-next-question']").click();
   await settle(300);
   check("J1.G2.correct-part-preserved", (await p.locator("[data-testid='solve-answered']").innerText()).includes("4 Tragen") && (await p.locator("[data-testid='part-question']").innerText()).startsWith("Wie viele Setzlinge"));
+  for (const v of ["1", "3", "5"]) await answerPart(p, v);
+  check("J1.G2.third-error-not-blocked-simple", (await simpleLayout(p)).ok && (await p.locator("[data-testid='part-teach']").count()) === 0, await simpleLayout(p));
   await answerPart(p, "2");
+  check("J1.G2.third-error-then-correct-accepted", (await missionRun()).steps["G2-PACK"].parts.left.status === "correct" && (await missionRun()).steps["G2-PACK"].parts.left.hints.length === 0 && (await p.locator("[data-testid='scene-feedback']").getAttribute("data-tone")) === "success");
+  await shotScene(p, "desktop-G2-third-error-then-correct", "Three errors, then he finds 2 himself: accepted, no hint required, nothing exposed; success with a distinct next action");
   await p.locator("[data-testid='solve-next-question']").click();
   await settle(300);
   await answerPart(p, "4");
   await answerPart(p, "28");
-  check("J1.G2.total-second-miss-choices", (await p.locator("[data-testid='scene-feedback']").getAttribute("data-tone")) === "stuck" && (await p.locator("[data-testid='stuck-choices']").count()) === 1 && (await p.locator("[data-testid='nokt-offer']").count()) === 0);
+  check("J1.G2.total-second-error-simple", (await p.locator("[data-testid='scene-feedback']").getAttribute("data-tone")) === "stuck" && (await simpleLayout(p)).ok && (await p.locator("[data-testid='nokt-offer']").count()) === 0 && (await p.locator("[data-testid='nokt-panel']").count()) === 0);
   // Nokt (manual): side panel BESIDE the task, not over it
   await p.locator("[data-testid='nokt-button']").click();
   await p.waitForSelector("[data-testid='nokt-panel'][data-mode='unavailable']");
@@ -629,7 +647,7 @@ try {
   await p.locator("[data-testid='nokt-close']").click();
   const tutorRows = (await rows("family_learning_support_events")).filter((r) => r.kind === "mission_tutor_open");
   check("J1.nokt.open-recorded-not-help", tutorRows.length >= 1 && JSON.parse(String(tutorRows.at(-1).payload_json)).help === false && JSON.parse(String(tutorRows.at(-1).payload_json)).available === false);
-  await p.locator("[data-testid='choice-guided']").click();
+  await p.locator("[data-testid='hint-open']").click();
   await p.locator("[data-testid='hint-pick-Ja']").click();
   await settle(400);
   await answerPart(p, "5");
@@ -640,7 +658,7 @@ try {
     const hintRows = (await rows("family_learning_support_events")).filter((x) => x.kind === "mission_hint").map((x) => JSON.parse(String(x.payload_json)));
     check("J1.G2.exact-hints-recorded-in-order", JSON.stringify(hintRows.map((h) => [h.hint, h.level, h.afterAttempts])) === JSON.stringify([["G2-full-H1", 1, 2], ["G2-total-H1", 1, 2]]), hintRows);
     const choiceRows = (await rows("family_learning_support_events")).filter((x) => x.kind === "mission_stuck_choice").map((x) => JSON.parse(String(x.payload_json)).choice);
-    check("J1.G2.choices-recorded-not-help", JSON.stringify(choiceRows) === JSON.stringify(["guided", "guided"]), choiceRows);
+    check("J1.G2.no-choice-ui-events", choiceRows.length === 0, choiceRows);
   }
   check("J1.G2.done-line-not-praise-after-help", !/Super|Perfekt|ohne Hilfe/i.test(await p.locator("[data-testid='scene-bubble']").innerText()));
   await shotScene(p, "desktop-G2-done-diagram", "Problem resolved: exact tray diagram (4 full + 1 with 2) from data; Rosa's closing line; next action");
@@ -752,7 +770,7 @@ try {
   const parentText = await pp.locator("[data-testid='parent-mission-evidence']").innerText();
   check("J1.parent.separates-observed-help-tutor-missing-later", parentText.includes("Antworten (in Reihenfolge)") && parentText.includes("G2-full-H1") && parentText.includes("Nokt nicht aktiv") && parentText.includes("nicht erhoben") && parentText.includes("Frische Anwendung am selben Tag"));
   check("J1.parent.time-per-step-with-rule", parentText.includes("Zeit pro Aufgabe") && parentText.includes("keine Aussage über Aufmerksamkeit") && /Min\. aktiv|nicht gemessen/.test(await pp.locator("[data-testid='time-G2-PACK']").innerText()), await pp.locator("[data-testid='time-G2-PACK']").innerText());
-  check("J1.parent.choices-and-repeat-readable", parentText.includes("absichtlich wiederholt") && parentText.includes("Gewählt: Schritt für Schritt") && !/earlier-hint:|hint-check:/.test(parentText));
+  check("J1.parent.choices-and-repeat-readable", parentText.includes("absichtlich wiederholt") && !/earlier-hint:|hint-check:/.test(parentText));
   {
     const main = await pp.locator("main").innerText().catch(async () => await pp.locator("body").innerText());
     check("J1.parent.no-raw-kinds-in-main-view", !/mission_[a-z_]+/.test(main), (main.match(/mission_[a-z_]+/g) ?? []).slice(0, 5));
@@ -796,24 +814,39 @@ try {
     await waitStep(t, "G2-PACK");
   }
   await answerPart(t, "5");
+  check("J2.G2.second-error-simple-layout", (await simpleLayout(t)).ok, await simpleLayout(t));
+  await shotScene(t, "ipad-G2-second-error", "iPad second error: one short amber line, answer controls, one hint control");
   await answerPart(t, "6");
-  check("J2.G2.three-misses-no-solution-shown", (await t.locator("[data-testid='part-teach']").count()) === 0 && (await rows("family_learning_exposures")).filter((x) => x.kind === "answer_revealed" && String(x.task_id).includes("ISLAND")).length === 0);
-  check("J2.G2.further-try-needs-guided-step", (await t.locator("[data-testid='stuck-needs-step']").count()) === 1 && (await t.locator("[data-testid='part-input']").isDisabled()) && (await t.locator("[data-testid='choice-solution']").count()) === 1);
-  await shotScene(t, "ipad-G2-three-misses-choices", "Three misses: no solution shown; another try needs a guided step; solution or later are the child's choices");
-  await t.locator("[data-testid='choice-solution']").tap();
-  await t.waitForSelector("[data-testid='part-teach']");
-  check("J2.G2.solution-exposure-recorded-when-chosen", (await rows("family_learning_exposures")).filter((x) => x.kind === "answer_revealed" && String(x.task_id).endsWith("/full")).length === 1);
-  await shotScene(t, "ipad-G2-chosen-solution", "Worked solution shown because the child chose it; exposure recorded now; then his own entry");
-  await answerPart(t, "5");
-  check("J2.G2.wrong-copy-stays-open", (await t.locator("[data-testid='scene-feedback']").getAttribute("data-tone")) === "practice-wrong");
+  check("J2.G2.third-error-no-solution-not-blocked", (await t.locator("[data-testid='part-teach']").count()) === 0 && (await simpleLayout(t)).ok && (await rows("family_learning_exposures")).filter((x) => x.kind === "answer_revealed" && String(x.task_id).includes("ISLAND")).length === 0);
   await answerPart(t, "4");
+  check("J2.G2.third-error-then-correct-no-hint", (await missionRun()).steps["G2-PACK"].parts.full.status === "correct" && (await missionRun()).steps["G2-PACK"].parts.full.evidence === "supported" && (await missionRun()).steps["G2-PACK"].parts.full.hints.length === 0);
+  await shotScene(t, "ipad-G2-third-error-then-correct", "iPad: three errors, then correct without a hint — accepted; success and a distinct next action");
   await t.locator("[data-testid='solve-next-question']").tap();
   await settle(300);
-  check("J2.G2.taught-part-recorded", (await missionRun()).steps["G2-PACK"].parts.full.status === "taught" && (await missionRun()).steps["G2-PACK"].parts.full.evidence === "answer_exposed");
   await answerPart(t, "2");
-  check("J2.G2.inherited-support-after-teaching", (await missionRun()).steps["G2-PACK"].parts.left.evidence === "supported");
+  check("J2.G2.first-try-after-earlier-retries-stays-independent", (await missionRun()).steps["G2-PACK"].parts.left.evidence === "independent");
+  await shotScene(t, "ipad-G2-success-next", "iPad: success in words with the next-question action");
   await t.locator("[data-testid='solve-next-question']").tap();
   await settle(300);
+  await answerPart(t, "4");
+  await t.locator("[data-testid='hint-open']").tap();
+  await t.locator("[data-testid='hint-pick-Ja']").tap();
+  await settle(400);
+  await shotScene(t, "ipad-G2-hint-expanded", "iPad: hint opened on request, its question answered, content directly beneath the control");
+  await t.locator("[data-testid='hint-open']").tap();
+  await t.waitForSelector("[data-testid='hint'][data-hint='G2-total-H2']");
+  await t.waitForSelector("[data-testid='hint-solution']");
+  await t.locator("[data-testid='hint-solution']").tap();
+  await t.waitForSelector("[data-testid='part-teach']");
+  // The exposure table keeps one durable "answer revealed" row per question (the count picture of hint 2 wrote it first);
+  // the chosen solution is recorded as its own teaching event with chosenByChild.
+  {
+    const ex = (await rows("family_learning_exposures")).filter((x) => x.kind === "answer_revealed" && String(x.task_id).endsWith("G2-PACK/total"));
+    const teach = (await rows("family_learning_support_events")).filter((x) => x.kind === "mission_direct_teaching").map((x) => JSON.parse(String(x.payload_json)));
+    check("J2.G2.solution-only-when-asked-recorded-then", ex.length === 1 && ex[0].source === "mission-hint" && teach.length === 1 && teach[0].chosenByChild === true && teach[0].part === "total", { ex: ex.map((x) => x.source), teach });
+  }
+  await answerPart(t, "4");
+  check("J2.G2.wrong-copy-stays-open", (await t.locator("[data-testid='scene-feedback']").getAttribute("data-tone")) === "practice-wrong");
   // Nokt on the iPad: beside the task (≥ 768 px)
   await t.locator("[data-testid='nokt-button']").tap();
   await t.waitForSelector("[data-testid='nokt-panel']");

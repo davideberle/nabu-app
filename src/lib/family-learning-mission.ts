@@ -24,16 +24,15 @@
 // Content v6 (Visit 7, 2026-10-23) adds, without changing any earlier rule
 // for earlier content:
 //  - `solve` steps: one clear question per part, answered on its own; a
-//    correct part stays correct; 1st substantive miss → neutral recheck; from
-//    the 2nd → the child chooses: a talk with Nokt about what the question
-//    means (only when a verified tutor exists — otherwise the screen says
-//    plainly that the talk is unavailable), another try, guided steps, or
-//    keep it for later. Nothing is revealed because a counter reached a
-//    number: the worked solution is shown only when the child CHOOSES it
-//    (after three misses, or after the guided steps), and exposure is
-//    recorded at that moment. After three misses a further try needs an
-//    answered guided step in between (bounded, never endless guessing);
-//    "keep for later" is always an exit, never credit;
+//    correct part stays correct; every miss gets one short amber line; tries
+//    are never blocked (he may find the answer by thinking or with a parent).
+//    Help is the one reviewed hint control: guided steps one level at a time,
+//    each answered before the next, and — only after the steps and a first
+//    try — the worked solution as the last level, shown when he asks for it
+//    and recorded as exposure at that moment. Nothing opens because a counter
+//    reached a number. A verified tutor (never in this build) may offer a
+//    talk in the side panel after the second miss. Global Stopp is the pause;
+//    "keep for later" stays an internal exit after a failed copy;
 //  - a deliberate repeat of the same wrong number is a real attempt (flagged
 //    `repeatOf`) and counts towards the choices; accidental duplicate
 //    delivery is absorbed by the idempotency key of the request;
@@ -680,11 +679,11 @@ function parseWhole(value: unknown): number {
   return Number(raw);
 }
 
-/** The worked solution is an explicit choice: after three misses, or after two misses once every guided step was worked. */
+/** The worked solution is the last level of the hint control: only after every guided step was worked and after a first try. */
 function solutionOffered(def: MissionDef, part: MissionPart, pr: MissionPartRun): boolean {
-  if (pr.status !== "open" || pr.phase === "taught") return false;
-  const ladderDone = pr.hints.length === part.hints.length && part.hints.every((h) => !h.check || pr.checks[h.id]);
-  return pr.misses >= (def.rules.maxPartAttempts ?? 3) || (pr.misses >= 2 && ladderDone);
+  void def;
+  if (pr.status !== "open" || pr.phase === "taught" || pr.misses < 1) return false;
+  return pr.hints.length === part.hints.length && part.hints.every((h) => !h.check || pr.checks[h.id]);
 }
 
 function partEvidence(pr: MissionPartRun, priorMains: number, correct: boolean): EvidenceCategory {
@@ -1128,9 +1127,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (pr.status !== "open" || pr.phase === "taught") throw new MissionOpError("not-allowed", pr.phase === "taught" ? "type the answer from the worked solution" : "this question is answered");
       const value = parseWhole(action.value);
       const raw = String(action.value ?? "").trim().slice(0, 12);
-      const max = def.rules.maxPartAttempts ?? 3;
-      // Bounded: after three misses another try needs an answered guided step in between (no endless guessing; exits stay open).
-      if (pr.misses >= max && (pr.stepsSinceAnswer ?? 0) === 0) throw new MissionOpError("not-allowed", "work one guided step first, look at the solution, or keep it for later");
+      // Deliberate tries are never blocked and never require a hint: he may realise the answer by thinking or with a parent.
       const mains = r.attempts.filter((a) => a.questionId === part.id && a.kind === "answer");
       const last = mains[mains.length - 1];
       // A deliberate repeat of the same wrong number is a real attempt (accidental duplicate delivery is absorbed by the idempotency key).
@@ -1170,7 +1167,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       const { step, r } = requireActive(run, def, action.step);
       const { part, pr } = requirePart(step, r, action.part);
       if (pr.status !== "open" || pr.phase === "taught") throw new MissionOpError("not-allowed", "nothing to show");
-      if (!solutionOffered(def, part, pr)) throw new MissionOpError("not-allowed", "the solution is offered after three tries or after the guided steps");
+      if (!solutionOffered(def, part, pr)) throw new MissionOpError("not-allowed", "the solution is the last hint level, after the guided steps and a first try");
       // Chosen by the child; the exposure is recorded now, when it is shown — not because a counter reached a number.
       pr.phase = "taught";
       pr.exposed.push({ by: "teaching", at: env.nowIso });
@@ -1520,10 +1517,8 @@ export type SolvePartView = {
   practiceLeft: number;
   offer: "shown" | null;
   reflection: "not-available" | "asked" | null;
-  /** From the second miss: what the child can choose (the talk only with a verified tutor). */
-  choices: { nokt: boolean; noktUnavailable: boolean; retry: boolean; guided: boolean; solution: boolean; later: boolean } | null;
-  /** After three misses, another try needs an answered guided step first. */
-  needsStep: boolean;
+  /** The hint control's last level: the worked solution, on request, after the guided steps and a first try. */
+  solutionOffered: boolean;
   /** The open guided step still waits for its answer (the next level opens after it). */
   hintPending: boolean;
 };
@@ -1713,10 +1708,7 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun, tutorA
       practiceLeft: taughtShown && pr.status === "open" ? Math.max(0, (def.rules.maxPracticeAttempts ?? 2) - pr.practiceFails) : 0,
       offer: pr.offer === "shown" ? "shown" : null,
       reflection: pr.reflection ?? null,
-      choices: pr.status === "open" && !taughtShown && pr.misses >= 2
-        ? { nokt: tutorAvailable, noktUnavailable: !tutorAvailable, retry: !(pr.misses >= (def.rules.maxPartAttempts ?? 3) && (pr.stepsSinceAnswer ?? 0) === 0), guided: pr.hints.length < part.hints.length && !(pr.hints.length && part.hints.find((h) => h.id === pr.hints[pr.hints.length - 1].id)?.check && !pr.checks[pr.hints[pr.hints.length - 1].id]), solution: solutionOffered(def, part, pr), later: true }
-        : null,
-      needsStep: pr.status === "open" && !taughtShown && pr.misses >= (def.rules.maxPartAttempts ?? 3) && (pr.stepsSinceAnswer ?? 0) === 0,
+      solutionOffered: !taughtShown && solutionOffered(def, part, pr),
       hintPending: (() => {
         const lastHint = pr.hints.length ? part.hints.find((h) => h.id === pr.hints[pr.hints.length - 1].id) : null;
         return !!lastHint?.check && !pr.checks[lastHint.id];

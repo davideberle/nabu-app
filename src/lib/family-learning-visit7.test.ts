@@ -249,69 +249,92 @@ describe("V7-D02 / V6-F04 — one clear question at a time; correct parts stay c
     deepStrictEqual(attempts.map((a) => [a.raw, a.correct, a.repeatOf ?? null]), [["5", false, null], ["05", false, 1]]);
     equal(gardenRun(s).steps["G2-PACK"].parts!.full.misses, 2, "the deliberate repeat counts — it cannot bypass the choices");
     ok(active(s).solve!.parts[0].feedback!.text.startsWith("Das ist wieder 05."));
-    ok(active(s).solve!.parts[0].choices, "the second miss offers the choices");
+    equal(active(s).solve!.parts[0].feedback!.tone, "stuck");
   });
-  it("first miss: neutral recheck; second: an honest choice (Nokt unavailable) — never an automatic hint or solution", () => {
+});
+
+describe("Retries are never blocked and never expose an answer by themselves (Nabu round 2 regression scenarios)", () => {
+  const exposuresOf = (rs: { records: { exposures: { kind: string; taskId: string }[] } }[]) => rs.flatMap((r) => r.records.exposures.filter((x) => x.kind === "answer_revealed").map((x) => x.taskId));
+  it("first miss: one neutral recheck line; second miss: one short line — no hint, choice card or solution opened for him", () => {
     const env = makeEnv();
     let s = through(started(env), env, "G2-PACK");
-    s = m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "4" }, env);
-    s = m(s, { a: "answer-part", step: "G2-PACK", part: "left", value: "2" }, env);
-    s = m(s, { a: "answer-part", step: "G2-PACK", part: "total", value: "4" }, env);
-    equal(active(s).solve!.parts[2].feedback!.text, garden.steps[1].solve!.parts[2].recheck);
-    equal(active(s).solve!.parts[2].choices, null);
-    const second = mr(s, { a: "answer-part", step: "G2-PACK", part: "total", value: "28" }, env);
-    s = second.state;
-    deepStrictEqual(active(s).solve!.parts[2].choices, { nokt: false, noktUnavailable: true, retry: true, guided: true, solution: false, later: true });
-    ok(second.records.supports.some((x) => x.kind === "mission_tutor_unavailable" && (x.payload as { entry: string }).entry === "offer"));
-    equal(active(s).solve!.parts[2].hints.length, 0, "no hint is opened for him");
-    equal(second.records.exposures.filter((x) => x.kind === "answer_revealed").length, 0);
+    const r1 = mr(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "3" }, env);
+    s = r1.state;
+    equal(active(s).solve!.parts[0].feedback!.text, garden.steps[1].solve!.parts[0].recheck);
+    const r2 = mr(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "5" }, env);
+    s = r2.state;
+    const pv = active(s).solve!.parts[0];
+    deepStrictEqual([pv.feedback!.tone, pv.feedback!.text], ["stuck", garden.steps[1].solve!.parts[0].stuck]);
+    deepStrictEqual([pv.hints.length, pv.solutionOffered, pv.teach, pv.offer], [0, false, null, null]);
+    ok(r2.records.supports.some((x) => x.kind === "mission_tutor_unavailable"), "the missing diagnostic talk is recorded internally");
+    deepStrictEqual(exposuresOf([r1, r2]), []);
   });
-  it("repeated errors never reveal the answer by themselves; after three misses another try needs an answered guided step; the solution is shown only when chosen", () => {
+  it("three misses then correct with no hint: accepted, supported (retries), no hint invented, no exposure", () => {
     const env = makeEnv();
     let s = through(started(env), env, "G2-PACK");
-    const exposures: string[] = [];
-    for (const v of ["3", "5", "6"]) {
+    const rs: ReturnType<typeof mr>[] = [];
+    for (const v of ["3", "5", "6", "4"]) {
       const r = mr(s, { a: "answer-part", step: "G2-PACK", part: "full", value: v }, env);
-      exposures.push(...r.records.exposures.filter((x) => x.kind === "answer_revealed").map((x) => x.taskId));
+      rs.push(r);
       s = r.state;
     }
-    deepStrictEqual(exposures, [], "three misses: no answer revealed");
-    equal(active(s).solve!.parts[0].teach, null);
-    equal(active(s).solve!.parts[0].needsStep, true);
-    refused(() => m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "7" }, env), "not-allowed", /guided step/);
-    // a guided step with an active response re-opens one try
-    s = m(s, { a: "stuck-choice", step: "G2-PACK", part: "full", choice: "guided" }, env);
+    const pr = gardenRun(s).steps["G2-PACK"].parts!.full;
+    deepStrictEqual([pr.status, pr.evidence, pr.hints.length, pr.exposed.length], ["correct", "supported", 0, 0]);
+    deepStrictEqual(exposuresOf(rs), []);
+    deepStrictEqual(gardenRun(s).steps["G2-PACK"].attempts.at(-1)!.support, ["retry"]);
+  });
+  it("three misses, every guided step answered, a further wrong try, then correct: never blocked, no exposure", () => {
+    const env = makeEnv();
+    let s = through(started(env), env, "G2-PACK");
+    const rs: ReturnType<typeof mr>[] = [];
+    const step = (a: MissionAction) => {
+      const r = mr(s, a, env);
+      rs.push(r);
+      s = r.state;
+    };
+    for (const v of ["3", "5", "6"]) step({ a: "answer-part", step: "G2-PACK", part: "full", value: v });
+    step({ a: "hint", step: "G2-PACK", part: "full" });
+    step({ a: "hint-check", step: "G2-PACK", part: "full", hint: "G2-full-H1", value: "16" });
+    step({ a: "hint", step: "G2-PACK", part: "full" });
+    step({ a: "hint-check", step: "G2-PACK", part: "full", hint: "G2-full-H2", value: "Nein" });
+    equal(active(s).solve!.parts[0].solutionOffered, true, "the solution is now the last level of the hint control — offered, not shown");
+    step({ a: "answer-part", step: "G2-PACK", part: "full", value: "5" });
+    step({ a: "answer-part", step: "G2-PACK", part: "full", value: "4" });
+    const pr = gardenRun(s).steps["G2-PACK"].parts!.full;
+    deepStrictEqual([pr.status, pr.evidence, pr.exposed.length], ["correct", "supported", 0]);
+    deepStrictEqual(exposuresOf(rs), []);
+  });
+  it("the same wrong value deliberately repeated is two attempts, the second flagged; nothing exposed", () => {
+    const env = makeEnv();
+    let s = through(started(env), env, "G2-PACK");
+    const rs = [mr(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "5" }, env)];
+    rs.push(mr(rs[0].state, { a: "answer-part", step: "G2-PACK", part: "full", value: "5" }, env));
+    rs.push(mr(rs[1].state, { a: "answer-part", step: "G2-PACK", part: "full", value: "5" }, env));
+    s = rs[2].state;
+    deepStrictEqual(gardenRun(s).steps["G2-PACK"].attempts.map((a) => a.repeatOf ?? null), [null, 1, 2]);
+    equal(gardenRun(s).steps["G2-PACK"].parts!.full.misses, 3);
+    deepStrictEqual(exposuresOf(rs), []);
+  });
+  it("the worked solution is shown only when asked for (last hint level), recorded then; a wrong copy stays open; keep-for-later after the copies is an exit, not credit", () => {
+    const env = makeEnv();
+    let s = through(started(env), env, "G2-PACK");
+    s = m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "3" }, env);
+    refused(() => m(s, { a: "show-solution", step: "G2-PACK", part: "full" }, env), "not-allowed", /last hint level/);
     s = m(s, { a: "hint", step: "G2-PACK", part: "full" }, env);
     refused(() => m(s, { a: "hint", step: "G2-PACK", part: "full" }, env), "not-allowed", /answer the question in this step first/);
     s = m(s, { a: "hint-check", step: "G2-PACK", part: "full", hint: "G2-full-H1", value: "16" }, env);
-    equal(active(s).solve!.parts[0].needsStep, false);
-    s = m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "5" }, env);
-    // separately chosen teaching: recorded and exposed only now
+    s = m(s, { a: "hint", step: "G2-PACK", part: "full" }, env);
+    s = m(s, { a: "hint-check", step: "G2-PACK", part: "full", hint: "G2-full-H2", value: "Nein" }, env);
     const shown = mr(s, { a: "show-solution", step: "G2-PACK", part: "full" }, env);
     ok(shown.records.exposures.some((x) => x.kind === "answer_revealed" && x.taskId.endsWith("/full") && x.source === "mission-part-solution-chosen"));
-    ok(shown.records.supports.some((x) => x.kind === "mission_direct_teaching" && (x.payload as { chosenByChild: boolean }).chosenByChild === true));
     s = shown.state;
     equal(active(s).solve!.parts[0].teach, garden.steps[1].solve!.parts[0].teach);
     s = m(s, { a: "practice-part", step: "G2-PACK", part: "full", value: "3" }, env);
-    equal(active(s).solve!.parts[0].feedback!.tone, "practice-wrong");
-    s = m(s, { a: "practice-part", step: "G2-PACK", part: "full", value: "4" }, env);
-    equal(gardenRun(s).steps["G2-PACK"].parts!.full.status, "taught");
-    equal(gardenRun(s).steps["G2-PACK"].parts!.full.evidence, "answer_exposed");
-    deepStrictEqual(gardenRun(s).steps["G2-PACK"].parts!.full.choices!.map((c) => c.choice), ["guided", "solution"]);
-  });
-  it("keeping a question for later without the solution leaves it open and unexposed; the mission continues", () => {
-    const env = makeEnv();
-    let s = through(started(env), env, "G2-PACK");
-    refused(() => m(s, { a: "later-part", step: "G2-PACK", part: "full" }, env), "not-allowed");
-    s = m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "3" }, env);
-    s = m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "5" }, env);
-    refused(() => m(s, { a: "show-solution", step: "G2-PACK", part: "full" }, env), "not-allowed", /after three tries/);
-    const later = mr(s, { a: "later-part", step: "G2-PACK", part: "full" }, env);
-    equal(later.records.exposures.filter((x) => x.kind === "answer_revealed").length, 0);
-    s = later.state;
-    deepStrictEqual([gardenRun(s).steps["G2-PACK"].parts!.full.status, gardenRun(s).steps["G2-PACK"].parts!.full.evidence], ["unresolved", "incorrect"]);
-    equal(active(s).solve!.current, "left", "the next question follows");
-    ok(missionEvidence(s, v6, "v8")!.steps.find((x) => x.id === "G2-PACK")!.questions[0].reading.includes("Ohne Lösung"));
+    s = m(s, { a: "practice-part", step: "G2-PACK", part: "full", value: "5" }, env);
+    equal(active(s).solve!.parts[0].practiceLeft, 0);
+    s = m(s, { a: "later-part", step: "G2-PACK", part: "full" }, env);
+    deepStrictEqual([gardenRun(s).steps["G2-PACK"].parts!.full.status, gardenRun(s).steps["G2-PACK"].parts!.full.evidence], ["unresolved", "answer_exposed"]);
+    equal(active(s).solve!.current, "left", "the mission goes on");
   });
 });
 

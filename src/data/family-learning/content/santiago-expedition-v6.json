@@ -3934,7 +3934,7 @@
                 "unit": "Tragen",
                 "answer": 4,
                 "recheck": "Noch nicht ganz. Lies die Frage noch einmal und prüfe deine Zahl.",
-                "stuck": "Noch nicht richtig. Wie möchtest du weitermachen?",
+                "stuck": "Noch nicht richtig. Versuch es noch einmal — oder öffne unten den Hinweis.",
                 "hints": [
                   {
                     "id": "G2-full-H1",
@@ -3982,7 +3982,7 @@
                 "unit": "Setzlinge",
                 "answer": 2,
                 "recheck": "Noch nicht ganz. Lies die Frage noch einmal und prüfe deine Zahl.",
-                "stuck": "Noch nicht richtig. Wie möchtest du weitermachen?",
+                "stuck": "Noch nicht richtig. Versuch es noch einmal — oder öffne unten den Hinweis.",
                 "hints": [
                   {
                     "id": "G2-left-H1",
@@ -4016,7 +4016,7 @@
                 "unit": "Tragen",
                 "answer": 5,
                 "recheck": "Noch nicht ganz. Lies die Frage noch einmal: Alle Setzlinge sollen mitkommen.",
-                "stuck": "Noch nicht richtig. Wie möchtest du weitermachen?",
+                "stuck": "Noch nicht richtig. Versuch es noch einmal — oder öffne unten den Hinweis.",
                 "hints": [
                   {
                     "id": "G2-total-H1",
@@ -4387,7 +4387,7 @@
                 "answer": 4,
                 "hintsAfterFirstAttempt": true,
                 "recheck": "Noch nicht ganz. Lies die Frage noch einmal: Alle 11 Setzlinge sollen mitkommen.",
-                "stuck": "Noch nicht richtig. Wie möchtest du weitermachen?",
+                "stuck": "Noch nicht richtig. Versuch es noch einmal — oder öffne unten den Hinweis.",
                 "hints": [
                   {
                     "id": "G7-total-H1",

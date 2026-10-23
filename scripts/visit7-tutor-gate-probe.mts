@@ -103,6 +103,39 @@ const cases: { id: string; observed: Record<string, unknown> }[] = [];
   cases.push({ id: "understood-after-exposure", observed: r(claim, { question: { ...ctx.question, answerExposed: true } }) });
   cases.push({ id: "diagnostic-cannot-answer", observed: r({ ...claim, next: "advance" }, { dispatch: { ...dispatch, purpose: "diagnostic" }, question: { ...ctx.question, status: "open" } }) });
 }
+// --- retry regressions requested by the planner (round 2): tries never blocked, nothing exposed unless asked for ---
+{
+  const e = env();
+  const run = (s: MissionState) => s.missions!["MISSION-ISLAND-GARDEN"].steps["G2-PACK"];
+  const revealed = (rs: { records: { exposures: { kind: string }[] } }[]) => rs.reduce((n, r) => n + r.records.exposures.filter((x) => x.kind === "answer_revealed").length, 0);
+  {
+    let s = atG2(e);
+    const rs = [] as ReturnType<typeof m>[];
+    for (const v of ["3", "5", "6", "4"]) { const r = m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: v }, e); rs.push(r); s = r.state; }
+    const pr = run(s).parts!.full;
+    cases.push({ id: "three-misses-then-correct-no-hint", observed: { status: pr.status, evidence: pr.evidence, hintsUsed: pr.hints.length, answersRevealed: revealed(rs) } });
+  }
+  {
+    let s = atG2(e);
+    const rs = [] as ReturnType<typeof m>[];
+    const go = (a: unknown) => { const r = m(s, a, e); rs.push(r); s = r.state; };
+    for (const v of ["3", "5", "6"]) go({ a: "answer-part", step: "G2-PACK", part: "full", value: v });
+    go({ a: "hint", step: "G2-PACK", part: "full" });
+    go({ a: "hint-check", step: "G2-PACK", part: "full", hint: "G2-full-H1", value: "16" });
+    go({ a: "hint", step: "G2-PACK", part: "full" });
+    go({ a: "hint-check", step: "G2-PACK", part: "full", hint: "G2-full-H2", value: "Nein" });
+    go({ a: "answer-part", step: "G2-PACK", part: "full", value: "5" });
+    go({ a: "answer-part", step: "G2-PACK", part: "full", value: "4" });
+    const pr = run(s).parts!.full;
+    cases.push({ id: "ladder-consumed-wrong-then-correct", observed: { status: pr.status, evidence: pr.evidence, answersRevealed: revealed(rs) } });
+  }
+  {
+    let s = atG2(e);
+    const rs = [] as ReturnType<typeof m>[];
+    for (let i = 0; i < 3; i += 1) { const r = m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "5" }, e); rs.push(r); s = r.state; }
+    cases.push({ id: "same-wrong-value-repeated", observed: { attempts: run(s).attempts.length, repeatFlags: run(s).attempts.map((a) => a.repeatOf ?? 0), answersRevealed: revealed(rs) } });
+  }
+}
 // --- the fictional stub can never be on in a deployed or shared-database environment ---
 cases.push({
   id: "stub-gate",

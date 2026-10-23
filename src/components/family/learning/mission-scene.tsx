@@ -111,6 +111,11 @@ export function MissionScene({ child, view, mission, busy, act, speech, noktMode
     if (active) void act({ a: "tutor-open", step: active.id, entry, part });
   };
 
+  // A tutor's repeated-error offer lives in the side panel (approved preview), only when a verified tutor exists — never in this build.
+  const offerPart = active?.tutor?.available ? active.tutor.offerPart : null;
+  useEffect(() => {
+    if (offerPart) setNoktOpen(true);
+  }, [offerPart]);
   const lines = active ? (active.status === "active" ? active.intro : active.done) : [];
   const speakerId = lines.find((l) => l.speaker)?.speaker ?? active?.character ?? null;
   const speaker = speakerId ? mission.characters.find((c) => c.id === speakerId) ?? null : null;
@@ -143,24 +148,30 @@ export function MissionScene({ child, view, mission, busy, act, speech, noktMode
         )}
 
         <section className={card} style={{ background: CARD }} aria-labelledby="scene-task-title" data-testid="scene-task">
-          <p className="text-base" style={{ color: "#627876" }} data-testid="scene-beat">
-            Teil {beat.index} von {beat.count}
-          </p>
-          <h2 id="scene-task-title" ref={headingRef} tabIndex={-1} className="mb-3 text-2xl font-bold outline-none">
-            {active ? active.title : beat.next ? "Weiter im Inselgarten" : "Geschafft"}
+          <h2 id="scene-task-title" ref={headingRef} tabIndex={-1} className="mb-3 text-base font-semibold outline-none" style={{ color: "#627876" }} data-testid="scene-beat">
+            {active ? active.title : beat.next ? "Weiter im Inselgarten" : "Geschafft"} ·{" "}
+            {active?.solve && active.status === "active" ? `Frage ${Math.min(active.solve.parts.filter((x) => x.status !== "open").length + 1, active.solve.total)} von ${active.solve.total}` : `Teil ${beat.index} von ${beat.count}`}
           </h2>
           {!active ? (
             <button type="button" className={btn} style={nextStyle} disabled={busy} onClick={() => void next()} data-testid="scene-next">
               {beat.next ? "Weiter" : "Zum Abschluss"}
             </button>
           ) : (
-            <ActiveTask child={child} view={view} mission={mission} active={active} busy={busy} act={act} speech={speech} telemetry={telemetry} onNext={() => void next()} onOffer={(part) => openNokt("offer", part)} />
+            <ActiveTask child={child} view={view} mission={mission} active={active} busy={busy} act={act} speech={speech} telemetry={telemetry} onNext={() => void next()} />
           )}
         </section>
       </div>
 
       {noktOpen ? (
-        <NoktPanel child={child} mode={noktMode} step={active?.id ?? null} part={active?.solve?.current ?? null} speech={speech} onClose={() => { setNoktOpen(false); telemetry("tutor-close"); }} />
+        <NoktPanel
+          child={child}
+          mode={noktMode}
+          step={active?.id ?? null}
+          part={active?.solve?.current ?? null}
+          speech={speech}
+          offer={offerPart && active ? { onAccept: () => void act({ a: "tutor-offer", step: active.id, part: offerPart, response: "accepted" }), onDismiss: () => { telemetry("nokt-offer-dismiss"); void act({ a: "tutor-offer", step: active.id, part: offerPart, response: "dismissed" }); setNoktOpen(false); } } : null}
+          onClose={() => { setNoktOpen(false); telemetry("tutor-close"); }}
+        />
       ) : (
         <NoktButton child={child} onOpen={() => openNokt("manual", active?.solve?.current ?? null)} />
       )}
@@ -230,7 +241,7 @@ function SpeakerIcon() {
 
 // --- one beat ------------------------------------------------------------------------
 
-function ActiveTask({ child, view, mission, active, busy, act, speech, telemetry, onNext, onOffer }: { child: ChildId; view: ChildView; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; onNext: () => void; onOffer: (part: string) => void }) {
+function ActiveTask({ child, view, mission, active, busy, act, speech, telemetry, onNext }: { child: ChildId; view: ChildView; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; onNext: () => void }) {
   void view;
   const finished = active.status !== "active";
   const nextLabel = mission.beat?.next || mission.steps.some((s) => s.status === "available" && s.id !== active.id) ? "Weiter" : "Zum Abschluss";
@@ -255,7 +266,7 @@ function ActiveTask({ child, view, mission, active, busy, act, speech, telemetry
   }
   return (
     <div className="grid gap-4">
-      {active.kind === "solve" && active.solve ? <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} onOffer={onOffer} /> : null}
+      {active.kind === "solve" && active.solve ? <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} /> : null}
       {active.kind === "listen" ? <ListenTask child={child} active={active} busy={busy} act={act} speech={speech} telemetry={telemetry} /> : null}
       {active.kind === "recall" || active.kind === "produce" ? <RequestTask active={active} busy={busy} act={act} telemetry={telemetry} /> : null}
       {active.kind === "typing-block" && active.typing ? <TypingBlock block={active.typing} stepId={active.id} busy={busy} act={act} /> : null}
@@ -269,7 +280,7 @@ function ActiveTask({ child, view, mission, active, busy, act, speech, telemetry
   );
 }
 
-function Feedback({ tone, text }: { tone: "retry" | "stuck" | "success" | "taught" | "practice-wrong"; text: string }) {
+function Feedback({ tone, text, testId = "scene-feedback" }: { tone: "retry" | "stuck" | "success" | "taught" | "practice-wrong"; text: string; testId?: string }) {
   const good = tone === "success";
   const neutral = tone === "taught";
   return (
@@ -277,7 +288,7 @@ function Feedback({ tone, text }: { tone: "retry" | "stuck" | "success" | "taugh
       className="rounded-xl px-4 py-3 text-lg leading-relaxed"
       style={good ? { background: OK_BG, color: OK_INK, borderLeft: `5px solid ${OK_EDGE}` } : neutral ? { background: "#eef1e8", color: INK, borderLeft: `5px solid ${ACTION}` } : { background: WARN_BG, color: WARN_INK, borderLeft: `5px solid ${WARN_EDGE}` }}
       role="status"
-      data-testid="scene-feedback"
+      data-testid={testId}
       data-tone={tone}
     >
       {good ? "✓ " : ""}
@@ -288,7 +299,7 @@ function Feedback({ tone, text }: { tone: "retry" | "stuck" | "success" | "taugh
 
 // --- a problem, one question at a time ------------------------------------------------
 
-function SolveTask({ active, busy, act, telemetry, onOffer }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry; onOffer: (part: string) => void }) {
+function SolveTask({ active, busy, act, telemetry }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry }) {
   const sv = active.solve!;
   const finished = active.status !== "active";
   // After a correct answer the success stays on screen with its own "next question" action; the next question follows on tap.
@@ -301,9 +312,6 @@ function SolveTask({ active, busy, act, telemetry, onOffer }: { active: MissionA
   return (
     <div className="grid gap-4" data-testid="solve-task" data-part={current?.id ?? waiting?.id ?? ""}>
       {sv.application ? <p className="text-base font-semibold">Eine neue Lieferung, neue Zahlen.</p> : null}
-      <p className="text-base" style={{ color: "#627876" }} data-testid="solve-progress">
-        Frage {shownIndex} von {sv.total}
-      </p>
       {resolved.length ? (
         <ul className="grid gap-1" aria-label="Schon beantwortet" data-testid="solve-answered">
           {resolved.filter((p) => p !== waiting).map((p) => (
@@ -322,7 +330,7 @@ function SolveTask({ active, busy, act, telemetry, onOffer }: { active: MissionA
           </button>
         </div>
       ) : null}
-      {current ? <PartTask key={current.id} part={current} step={active.id} busy={busy} act={act} telemetry={telemetry} onOffer={onOffer} /> : null}
+      {current ? <PartTask key={current.id} part={current} step={active.id} busy={busy} act={act} telemetry={telemetry} /> : null}
       {finished ? (
         <>
           {lastResolved?.feedback ? <Feedback tone={lastResolved.feedback.tone} text={lastResolved.feedback.text} /> : null}
@@ -333,7 +341,7 @@ function SolveTask({ active, busy, act, telemetry, onOffer }: { active: MissionA
   );
 }
 
-function PartTask({ part, step, busy, act, telemetry, onOffer }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry; onOffer: (part: string) => void }) {
+function PartTask({ part, step, busy, act, telemetry }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry }) {
   const [value, setValue] = useState("");
   const [notice, setNotice] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -359,8 +367,6 @@ function PartTask({ part, step, busy, act, telemetry, onOffer }: { part: SolvePa
     sending.current = false;
     if (res) setValue("");
   };
-  const choose = (choice: "retry" | "guided" | "nokt" | "later") => act({ a: "stuck-choice", step, part: part.id, choice });
-  const locked = part.needsStep;
   return (
     <div className="grid gap-4">
       {taught ? <p className="text-xl font-semibold leading-snug">{part.question}</p> : null}
@@ -374,14 +380,14 @@ function PartTask({ part, step, busy, act, telemetry, onOffer }: { part: SolvePa
         className="grid gap-3"
         onSubmit={(e) => {
           e.preventDefault();
-          if (!busy && !locked) void submit();
+          if (!busy) void submit();
         }}
       >
         <label htmlFor={`part-${part.id}`} className="text-2xl font-semibold leading-snug" data-testid="part-question">
           {taught ? "Trag die Zahl jetzt selbst ein:" : part.question}
         </label>
         <div className="flex items-center gap-3">
-          <input id={`part-${part.id}`} ref={inputRef} value={value} disabled={locked} onChange={(e) => {
+          <input id={`part-${part.id}`} ref={inputRef} value={value} onChange={(e) => {
               setNotice(null);
               setValue(e.target.value.replace(/[^0-9]/g, "").slice(0, 4));
             }} inputMode="numeric" autoComplete="off" className="h-14 w-28 rounded-xl border-2 px-3 text-2xl font-semibold disabled:opacity-50" style={{ borderColor: "#8ba8a4" }} aria-describedby={`unit-${part.id}`} data-testid="part-input" />
@@ -390,59 +396,13 @@ function PartTask({ part, step, busy, act, telemetry, onOffer }: { part: SolvePa
           </span>
         </div>
         <div>
-          <button type="submit" className={btn} style={primary} disabled={busy || !value.trim() || locked} data-testid="part-check">
+          <button type="submit" className={btn} style={primary} disabled={busy || !value.trim()} data-testid="part-check">
             {taught ? "Eintragen" : "Antwort prüfen"}
           </button>
         </div>
       </form>
       {notice ? <Feedback tone="retry" text={notice} /> : part.feedback ? <Feedback tone={part.feedback.tone} text={part.feedback.text} /> : null}
-      {part.choices ? (
-        <div className="grid gap-3 rounded-2xl px-4 py-4" style={{ background: "#eef1e8" }} data-testid="stuck-choices">
-          {part.choices.noktUnavailable ? (
-            <p className="text-lg" data-testid="stuck-nokt-unavailable">
-              Am besten würdest du jetzt mit Nokt besprechen, was die Frage meint. Das geht im Moment nicht.
-            </p>
-          ) : null}
-          {locked ? <p className="text-lg" data-testid="stuck-needs-step">Bevor du noch einmal antwortest: Arbeite einen Schritt im Hinweis durch.</p> : null}
-          <div className="flex flex-wrap gap-2">
-            {part.choices.nokt ? (
-              <button type="button" className={btn} style={primary} disabled={busy} onClick={() => { void choose("nokt"); onOffer(part.id); }} data-testid="choice-nokt">
-                Mit Nokt reden
-              </button>
-            ) : null}
-            {part.choices.retry ? (
-              <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => { void choose("retry"); inputRef.current?.focus(); }} data-testid="choice-retry">
-                Noch einmal versuchen
-              </button>
-            ) : null}
-            {part.choices.guided ? (
-              <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => { telemetry("hint-open"); void choose("guided").then((ok) => ok && act({ a: "hint", step, part: part.id })); }} data-testid="choice-guided">
-                Schritt für Schritt
-              </button>
-            ) : null}
-            {part.choices.solution ? (
-              <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => void act({ a: "show-solution", step, part: part.id })} data-testid="choice-solution">
-                Lösung ansehen
-              </button>
-            ) : null}
-            <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => void act({ a: "later-part", step, part: part.id })} data-testid="choice-later">
-              Für später aufheben
-            </button>
-          </div>
-        </div>
-      ) : null}
-      {part.offer === "shown" && !part.choices ? (
-        <div className="flex flex-wrap items-center gap-3 rounded-2xl px-4 py-3" style={{ background: "#eef1e8" }} data-testid="nokt-offer">
-          <p className="text-lg">Nokt kann mit dir herausfinden, was gesucht ist.</p>
-          <button type="button" className={btn} style={primary} onClick={() => { void act({ a: "tutor-offer", step, part: part.id, response: "accepted" }); onOffer(part.id); }}>
-            Mit Nokt reden
-          </button>
-          <button type="button" className={btn} style={secondary} onClick={() => { telemetry("nokt-offer-dismiss"); void act({ a: "tutor-offer", step, part: part.id, response: "dismissed" }); }}>
-            Nein, danke
-          </button>
-        </div>
-      ) : null}
-      {taught && part.status === "open" ? (
+      {taught && part.status === "open" && part.practiceLeft === 0 ? (
         <button type="button" className={cn(btn, "justify-self-start")} style={secondary} disabled={busy} onClick={() => void act({ a: "later-part", step, part: part.id })} data-testid="part-later">
           Für später aufheben
         </button>
@@ -453,9 +413,14 @@ function PartTask({ part, step, busy, act, telemetry, onOffer }: { part: SolvePa
 }
 
 function HintArea({ part, step, busy, act, telemetry, emphasize }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry; emphasize: boolean }) {
-  if (!part.hints.length && !part.hintsLeft) return null;
+  if (!part.hints.length && !part.hintsLeft && !part.solutionOffered) return null;
   return (
     <div className="mt-2 grid gap-3 border-t pt-5" style={{ borderColor: "#dce5df" }} data-testid="hint-area">
+      {part.hintsLeft === 0 && part.solutionOffered ? (
+        <button type="button" className={cn(btn, "justify-self-start")} style={secondary} disabled={busy} onClick={() => { telemetry("hint-open"); void act({ a: "show-solution", step, part: part.id }); }} data-testid="hint-solution">
+          💡 Lösung zeigen
+        </button>
+      ) : null}
       {part.hintsLeft > 0 ? (
         part.hintPending ? (
           <p className="text-base" data-testid="hint-pending">Beantworte zuerst die Frage in diesem Schritt. Dann kommt der nächste.</p>
@@ -517,7 +482,7 @@ function HintCheck({ check, hintId, part, step, busy, act }: { check: NonNullabl
           </button>
         </form>
       )}
-      {check.reply ? <Feedback tone={check.result === "correct" ? "success" : "retry"} text={check.reply} /> : null}
+      {check.reply ? <Feedback tone={check.result === "correct" ? "success" : "retry"} text={check.reply} testId="hint-feedback" /> : null}
       {check.representation ? <Trays diagram={check.representation} label="So sieht es aus" /> : null}
     </div>
   );
