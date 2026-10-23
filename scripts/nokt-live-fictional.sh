@@ -12,7 +12,8 @@
 # Teardown (round-11 lesson): every process this script starts is recorded with the PID of the PROCESS ITSELF (node is
 # exec'd, not wrapped in a subshell), and only those PIDs are stopped — after checking their command and working
 # directory — on normal exit, error, INT or TERM. Afterwards the owned ports must be free, or the script exits non-zero.
-# It never kills by name or port.
+# It never kills by name or port. The harness runs as an owned background job that the script `wait`s on, so INT/TERM
+# interrupt it promptly (Playwright closes its own browser on the signal). Any persona failure → non-zero exit.
 # ---------------------------------------------------------------------------------------------------------------------
 set -u
 RT=${1:?runtime candidate dir}
@@ -26,14 +27,16 @@ mkdir -p "$OUT/out"
 RT_PID=""
 STUB_PID=""
 APP_DB=""
+H_PID=""
+FAILED=0
 
-owned_stop() { # pid expected-command-fragment expected-cwd
-  pid=$1; frag=$2; cwd=$3
+owned_stop() { # pid expected-command-fragment expected-cwd [alternative-fragment]
+  pid=$1; frag=$2; cwd=$3; alt=${4:-$2}
   [ -n "$pid" ] || return 0
   kill -0 "$pid" 2>/dev/null || return 0
   cmd=$(ps -o command= -p "$pid" 2>/dev/null)
   pcwd=$(lsof -a -p "$pid" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p' | tail -1)
-  case "$cmd" in *"$frag"*) ;; *) echo "not stopping $pid: command is not ours ($cmd)"; return 1 ;; esac
+  case "$cmd" in *"$frag"* | *"$alt"*) ;; *) echo "not stopping $pid: command is not ours ($cmd)"; return 1 ;; esac
   [ "$pcwd" = "$cwd" ] || { echo "not stopping $pid: cwd $pcwd is not $cwd"; return 1; }
   kill -TERM "$pid" 2>/dev/null
   i=0; while kill -0 "$pid" 2>/dev/null && [ $i -lt 50 ]; do sleep 0.1; i=$((i + 1)); done
@@ -43,11 +46,13 @@ owned_stop() { # pid expected-command-fragment expected-cwd
 cleanup() {
   status=$?
   trap - EXIT INT TERM
-  [ -n "$APP_DB" ] && sh "$APP/scripts/run-learning-world-server.sh" --stop "$APP_DB" >/dev/null 2>&1
+  owned_stop "$H_PID" "verify-learning-visit7.mjs" "$APP"
+  [ -n "$APP_DB" ] && [ -f "$APP_DB/server.pid" ] && owned_stop "$(cat "$APP_DB/server.pid")" "next start" "$APP" "next-server" && rm -f "$APP_DB/server.pid"
   owned_stop "$RT_PID" "dist/bridge/main.js" "$RT"
   owned_stop "$STUB_PID" "visit7-nokt-stub-bridge.mjs" "$APP"
   left=$(lsof -nP -iTCP:3196 -iTCP:8797 -iTCP:3299 -sTCP:LISTEN 2>/dev/null | tail -n +2)
   if [ -n "$left" ]; then echo "OWNED PORTS STILL LISTENING:"; echo "$left"; status=1; else echo "owned ports free (3196, 8797, 3299)"; fi
+  [ "$FAILED" = 0 ] || [ "$status" != 0 ] || status=1
   exit $status
 }
 trap cleanup EXIT
@@ -73,7 +78,10 @@ echo "runtime $RT_PID ($(ps -o command= -p $RT_PID)) · stub $STUB_PID · health
 for P in "$@"; do
   APP_DB="$OUT/db-$P"; mkdir -p "$APP_DB"
   FAMILY_BRIDGE_TOKEN_SECRET="$SECRET" FAMILY_NOKT_FICTIONAL_STUB=1 FAMILY_ASSISTANT_BRIDGE_URL=http://127.0.0.1:8797 sh scripts/run-learning-world-server.sh "$APP" "$APP_DB" 3196 >/dev/null || exit 1
-  node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3196 --stub-base http://127.0.0.1:3196 --only-stub --turn --persona "$P" --bridge-origin http://127.0.0.1:8797 --stub-bridge-origin http://127.0.0.1:3299 --db "$APP_DB/nabu.db" --out "$OUT/out" > "$OUT/harness-$P.log" 2>&1
-  sh scripts/run-learning-world-server.sh --stop "$APP_DB" >/dev/null; APP_DB=""
-  echo "persona $P: PASS $(grep -c ^PASS "$OUT/harness-$P.log") FAIL $(grep -c ^FAIL "$OUT/harness-$P.log")"
+  node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3196 --stub-base http://127.0.0.1:3196 --only-stub --turn --persona "$P" --bridge-origin http://127.0.0.1:8797 --stub-bridge-origin http://127.0.0.1:3299 --db "$APP_DB/nabu.db" --out "$OUT/out" > "$OUT/harness-$P.log" 2>&1 &
+  H_PID=$!
+  wait "$H_PID"; hs=$?; H_PID=""
+  owned_stop "$(cat "$APP_DB/server.pid")" "next start" "$APP" "next-server" && rm -f "$APP_DB/server.pid"; APP_DB=""
+  fails=$(grep -c ^FAIL "$OUT/harness-$P.log"); [ "$hs" = 0 ] && [ "$fails" = 0 ] || FAILED=1
+  echo "persona $P: PASS $(grep -c ^PASS "$OUT/harness-$P.log") FAIL $fails (harness exit $hs)"
 done

@@ -587,6 +587,8 @@ const OUTCOME_PERSONAS = {
   G: { label: "help-then-explains", attempt: "5", hint: true, history: [{ text: "Im Hinweis steht: In 3 vollen Tragen sind 12 Setzlinge.", scripted: { v: 1, say: "Was machst du mit den übrigen Setzlingen?", intent: "ask-method", outcome: null } }], final: { text: "Es bleiben 6 übrig. Davon passen 4 in noch eine Trage, und 2 bleiben übrig.", probe: "explains correctly AFTER a hint: independence must be denied whatever the model claims" } },
 };
 const STUB_ORIGIN = (opt("--stub-bridge-origin", "") || "").replace(/\/$/, "");
+/** DRY RUN ONLY: send this scripted final reply to the STUB (never to the runtime) to exercise binding/validation offline. */
+const DRY_FINAL = opt("--dry-final-scripted", null);
 try {
   if (!ONLY_STUB) {
   await sixVisitsDone();
@@ -1028,7 +1030,8 @@ try {
       }, { text, origin, scripted: scripted ? JSON.stringify(scripted) : null, sessionId: `talk-${PERSONA}` });
     const history = [];
     for (const h of persona.history) history.push(await turnVia(h.text, STUB_ORIGIN, h.scripted));
-    const final = await turnVia(persona.final.text, BRIDGE_ORIGIN, null);
+    if (DRY_FINAL && BRIDGE_ORIGIN !== STUB_ORIGIN) throw new Error("--dry-final-scripted only with the stub as bridge origin");
+    const final = await turnVia(persona.final.text, BRIDGE_ORIGIN, DRY_FINAL ? JSON.parse(DRY_FINAL) : null);
     const decode = (rc) => {
       try {
         const c = JSON.parse(Buffer.from(String(rc).split(".")[1], "base64url").toString("utf8"));
