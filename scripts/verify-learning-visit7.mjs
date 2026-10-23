@@ -1013,7 +1013,13 @@ try {
     await t.locator("[data-testid='nokt-button']").click();
     await t.waitForSelector("[data-testid='nokt-panel'][data-mode='fictional-stub']");
     const shownLines = [];
+    let stoppedAfterError = false;
     for (const turn of persona.turns) {
+      // Budget guard: after any runtime error, send NO further turns (each would spend a counted attempt).
+      if (bridgeCalls.some((c) => c.status !== 200)) {
+        stoppedAfterError = true;
+        break;
+      }
       if (turn.via === "typed") {
         const before = await t.locator("[data-testid='nokt-transcript'] li[data-role]").count();
         await t.locator("[data-testid='nokt-input']").fill(turn.text);
@@ -1063,6 +1069,7 @@ try {
       outcomes: st.tutorOutcomes ?? [],
       part: { status: st.parts.full.status, evidence: st.parts.full.evidence, exposed: st.parts.full.exposed, inheritedSupport: st.parts.full.inheritedSupport ?? [] },
       afterAnswer,
+      stoppedAfterError,
     };
     fs.writeFileSync(path.join(OUT, `live-${PERSONA}.json`), JSON.stringify(record, null, 2));
     check(`J5.${PERSONA}.every-turn-answered-by-the-runtime`, bridgeCalls.length === persona.turns.length, bridgeCalls.map((c) => [c.status, c.body?.code ?? null]));
