@@ -106,7 +106,16 @@ function StubConversation({ child, step, part, speech, transcribe, turn }: { chi
   // One talk per opening of the panel; a pending turn is aborted when the panel closes or the task changes (unmount).
   const sessionId = useMemo(() => newId("s"), []);
   const turnAbortRef = useRef<AbortController | null>(null);
-  useEffect(() => () => turnAbortRef.current?.abort(), []);
+  useEffect(() => {
+    // Leaving the page (navigation, reload, closing the tab) does not unmount React: abort the pending turn here too, so a
+    // half-finished turn never posts a reply while the page unloads.
+    const abort = () => turnAbortRef.current?.abort();
+    window.addEventListener("pagehide", abort);
+    return () => {
+      window.removeEventListener("pagehide", abort);
+      abort();
+    };
+  }, []);
   const [turns, setTurns] = useState<NoktTurn[]>([]);
   const [draft, setDraft] = useState("");
   const [via, setVia] = useState<"voice" | "typed">("typed");
