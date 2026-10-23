@@ -61,7 +61,7 @@ import { assessSpacing, flagSpacing, markSpacing, evaluateRevision, type Spacing
 import type { MissionPart, MissionHint, MissionLine, MissionDiagram } from "./family-learning-mission-spec.ts";
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
 import { receiptOrigin, type ReceiptInput, type ReplyOrigin } from "./family-learning-trust.ts";
-import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktPhase, noktTaskContext, parseNoktReply, type NoktTurnText } from "./family-learning-nokt-contract.ts";
+import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktPhase, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
 
 // ---------------------------------------------------------------------------
 // State (MissionState.missions — additive)
@@ -1426,16 +1426,12 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         }
       } else origin = env.tutor.origin ?? "missing";
       let reason: string | null = null;
-      let parsed: ReturnType<typeof parseNoktReply> = null;
+      let parsed: ReturnType<typeof parseNoktReplyText> = null;
       if (origin !== "verified") reason = `origin-${origin}`;
       // A new answer since the dispatch: the reply talks about an older state of the question and is not shown.
       else if (r.attempts.length !== dispatch.revision || pr.status !== (dispatch.purpose === "diagnostic" ? "open" : "correct")) reason = "stale";
       else {
-        try {
-          parsed = parseNoktReply(JSON.parse(action.reply));
-        } catch {
-          parsed = null;
-        }
+        parsed = parseNoktReplyText(action.reply);
         const verdict = checkNoktReply(parsed, {
           purpose: dispatch.purpose,
           answer: part.answer,

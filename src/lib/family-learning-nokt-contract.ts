@@ -123,6 +123,22 @@ export function parseNoktReply(raw: unknown): NoktReply | null {
   return { v: 1, say: r.say.trim(), intent: r.intent as NoktIntent, outcome: r.outcome === null ? null : parseTutorOutcome(r.outcome) };
 }
 
+/**
+ * The reply TEXT as the model returned it → the strict reply. Tolerates exactly one surrounding Markdown code fence
+ * (```json … ```), which chat models add habitually; anything else around the object (prose, two objects) is refused.
+ * The receipt binds the raw bytes; only the parse is tolerant.
+ */
+export function parseNoktReplyText(text: string): NoktReply | null {
+  let body = text.trim();
+  const fenced = /^```(?:json)?\s*\n([\s\S]*?)\n?```$/i.exec(body);
+  if (fenced) body = fenced[1].trim();
+  try {
+    return parseNoktReply(JSON.parse(body));
+  } catch {
+    return null;
+  }
+}
+
 const NUMBER_WORDS: Record<number, string[]> = {
   2: ["zwei"], 3: ["drei"], 4: ["vier"], 5: ["fünf", "fuenf"], 6: ["sechs"], 7: ["sieben"], 8: ["acht"], 9: ["neun"], 10: ["zehn"],
   11: ["elf"], 12: ["zwölf", "zwoelf"], 13: ["dreizehn"], 14: ["vierzehn"], 15: ["fünfzehn"], 16: ["sechzehn"], 17: ["siebzehn"], 18: ["achtzehn"], 19: ["neunzehn"], 20: ["zwanzig"],

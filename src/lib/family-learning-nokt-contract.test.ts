@@ -22,6 +22,7 @@ import {
   noktReceiptBinding,
   noktTaskContext,
   parseNoktReply,
+  parseNoktReplyText,
   statesNumber,
   type NoktTurnText,
 } from "./family-learning-nokt-contract.ts";
@@ -88,6 +89,18 @@ describe("Nokt reply — strict shape", () => {
     equal(parseNoktReply(reply("x".repeat(221))), null);
     equal(parseNoktReply("Super, du hast es verstanden!"), null, "prose is never a reply");
     equal(parseNoktReply(reply("Gut.", "close", { status: "understood" })), null, "a loose outcome is malformed");
+  });
+});
+
+describe("Nokt reply text — one code fence tolerated, nothing else", () => {
+  const obj = '{"v":1,"say":"Was sollst du herausfinden?","intent":"clarify","outcome":null}';
+  it("plain, fenced and json-fenced objects parse; prose around it or two objects do not", () => {
+    ok(parseNoktReplyText(obj));
+    ok(parseNoktReplyText("```json\n" + obj + "\n```"));
+    ok(parseNoktReplyText("```\n" + obj + "\n```"));
+    equal(parseNoktReplyText("Hier ist meine Antwort: " + obj), null);
+    equal(parseNoktReplyText(obj + "\n" + obj), null);
+    equal(parseNoktReplyText("```json\n{\"v\":1}\n```"), null, "the strict shape still applies");
   });
 });
 

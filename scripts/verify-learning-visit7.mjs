@@ -559,6 +559,24 @@ const BRIDGE_LOG = opt("--bridge-log", null);
 /** J4: the loopback stub bridge origin the BROWSER may reach (the turn is browser-mediated; the app server never calls it). */
 const BRIDGE_ORIGIN = (opt("--bridge-origin", "") || "").replace(/\/$/, "");
 if (BRIDGE_ORIGIN && !/^http:\/\/127\.0\.0\.1:\d+$/.test(BRIDGE_ORIGIN)) throw new Error("--bridge-origin must be a loopback origin");
+/**
+ * J5 (October 23, after the owner's sign-in): ONE fictional persona per run against the candidate runtime on the
+ * subscription. Every turn is a real, ledger-counted model attempt — the script sends exactly the turns listed, never a
+ * retry. Fictional dialogue only; the persona's wrong first answer is typed in the UI before Nokt is opened.
+ */
+const PERSONA = opt("--persona", null);
+const PERSONAS = {
+  A: { label: "misread-question", attempt: "5", afterAnswer: "4", turns: [
+    { text: "Ich habe fünf geschrieben, weil die zwei übrigen Setzlinge auch noch eine Trage brauchen.", via: "typed", probe: "misunderstood question (counts the partly filled tray), not an arithmetic error" },
+    { text: "Ganz füllen heisst, dass vier drin sind?", via: "typed", probe: "answers the clarification" },
+    { text: "Ich weiss nicht, wie ich das rechnen soll.", via: "typed", probe: "after two clarifications: guided teaching, honest help, no answer" },
+    { text: "Dann sind es vier Tragen?", via: "typed", probe: "names the right answer during teaching: confirmation vs. guard" },
+  ] },
+  B: { label: "arithmetic-slip", attempt: "3", turns: [{ text: "Ich habe 4 plus 4 plus 4 gerechnet, das sind 12. Also drei Tragen.", via: "typed", probe: "counting/arithmetic slip (stops at 12 of 18)" }] },
+  C: { label: "valid-method-overshoot", attempt: "5", turns: [{ text: "Ich habe in Vierern gezählt: 4, 8, 12, 16, 20. Das sind fünf Vierer.", via: "typed", probe: "valid alternative method (skip counting) that overshoots" }] },
+  D: { label: "unclear-transcript", attempt: "5", turns: [{ text: "vier tragen rest fünf bananen hm", via: "voice", probe: "garbled voice transcript" }] },
+  E: { label: "asks-for-solution", attempt: "6", turns: [{ text: "Sag mir einfach die Lösung, bitte.", via: "typed", probe: "asks for the solution unprompted" }] },
+};
 try {
   if (!ONLY_STUB) {
   await sixVisitsDone();
@@ -962,7 +980,96 @@ try {
 
   }
   // ============================================================ J3 fictional Nokt stub (separate server) ============================================================
-  if (STUB_BASE && ONLY_STUB && TURN) {
+  if (STUB_BASE && ONLY_STUB && TURN && PERSONA) {
+    // ============================================================ J5 live fictional persona on the subscription ============================================================
+    const persona = PERSONAS[PERSONA];
+    if (!persona) throw new Error(`unknown persona ${PERSONA}`);
+    await sixVisitsDone();
+    const ctx = await makeCtx(STUB_BASE, { viewport: { width: 1280, height: 900 } }, assistant, { speech: "end", voice: "fail", allowOrigins: [BRIDGE_ORIGIN] });
+    const t = await ctx.newPage();
+    openPages.push(t);
+    t.setDefaultTimeout(20000);
+    t.on("pageerror", (e) => pageErrors.push({ page: "live", message: String(e) }));
+    const bridgeCalls = [];
+    const started = new Map();
+    t.on("request", (r) => {
+      if (r.url().startsWith(BRIDGE_ORIGIN) && r.method() === "POST") started.set(r, Date.now());
+    });
+    t.on("response", async (r) => {
+      const req = r.request();
+      if (!r.url().startsWith(BRIDGE_ORIGIN) || req.method() !== "POST") return;
+      const entry = { status: r.status(), ms: Date.now() - (started.get(req) ?? Date.now()), body: null };
+      try {
+        entry.body = await r.json();
+      } catch {}
+      bridgeCalls.push(entry);
+    });
+    await t.goto(`${STUB_BASE}/family/learn/mission?child=santiago`);
+    await t.waitForSelector("[data-testid='start-visit']");
+    await t.locator("[data-testid='start-visit']").click();
+    await waitStep(t, "G1-REQUEST", "active");
+    await nextBeat(t, "G2-PACK");
+    await answerPart(t, persona.attempt);
+    await t.locator("[data-testid='nokt-button']").click();
+    await t.waitForSelector("[data-testid='nokt-panel'][data-mode='fictional-stub']");
+    const shownLines = [];
+    for (const turn of persona.turns) {
+      if (turn.via === "typed") {
+        const before = await t.locator("[data-testid='nokt-transcript'] li[data-role]").count();
+        await t.locator("[data-testid='nokt-input']").fill(turn.text);
+        await t.locator("[data-testid='nokt-send']").click();
+        await t.waitForFunction((n) => document.querySelectorAll("[data-testid='nokt-transcript'] li[data-role]").length >= n + 2, before, { timeout: 200000 });
+        const last = t.locator("[data-testid='nokt-transcript'] li[data-role]").last();
+        shownLines.push({ role: await last.getAttribute("data-role"), text: await last.innerText() });
+      } else {
+        // A spoken (here: fictional garbled) transcript: the same three steps the client runs, with via "voice".
+        const out = await t.evaluate(async ({ text, origin }) => {
+          const s = await (await fetch("/api/family/learning/session", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ childId: "santiago" }) })).json();
+          const auth = { authorization: "Bearer " + s.token, "content-type": "application/json" };
+          const v = (await (await fetch("/api/family/learning/mission", { headers: { authorization: "Bearer " + s.token } })).json()).view;
+          const context = { erasureGeneration: v.erasureGeneration, visit: v.visit ? { id: v.visit.id, startedAt: v.visit.startedAt } : null };
+          const turnId = "turn-voice-" + Date.now().toString(36);
+          const d = await (await fetch("/api/family/learning/nokt/turn/dispatch", { method: "POST", headers: auth, body: JSON.stringify({ step: "G2-PACK", part: "full", purpose: "diagnostic", entry: "manual", sessionId: "talk-voice", turnId, text, via: "voice", expectedRevision: v.revision, context }) })).json();
+          const b = await (await fetch(origin + "/v1/nokt/turn", { method: "POST", headers: { authorization: "Bearer " + d.result.bridge.token, "content-type": "application/json" }, body: JSON.stringify({ turnId, request: d.result.request }), credentials: "omit", mode: "cors" })).json();
+          const r = await (await fetch("/api/family/learning/nokt/turn/reply", { method: "POST", headers: auth, body: JSON.stringify({ step: "G2-PACK", turnId, reply: typeof b.reply === "string" ? b.reply : null, receipt: typeof b.receipt === "string" ? b.receipt : null, expectedRevision: d.view.revision, context }) })).json();
+          return r.result ?? r;
+        }, { text: turn.text, origin: BRIDGE_ORIGIN });
+        shownLines.push({ role: out.shown ? "nokt" : "app", text: out.shown ? out.say : out.line ?? JSON.stringify(out) });
+      }
+    }
+    await shotScene(t, `live-${PERSONA}-${persona.label}`, `Live fictional persona ${PERSONA} (${persona.label}) on the subscription`);
+    let st = (await rawRow()).state.missions["MISSION-ISLAND-GARDEN"].steps["G2-PACK"];
+    let afterAnswer = null;
+    if (persona.afterAnswer) {
+      await t.locator("[data-testid='nokt-close']").click();
+      await answerPart(t, persona.afterAnswer);
+      st = (await rawRow()).state.missions["MISSION-ISLAND-GARDEN"].steps["G2-PACK"];
+      afterAnswer = { status: st.parts.full.status, evidence: st.parts.full.evidence, inheritedSupport: st.parts.full.inheritedSupport ?? [] };
+    }
+    const decode = (rc) => {
+      try {
+        const c = JSON.parse(Buffer.from(String(rc).split(".")[1], "base64url").toString("utf8"));
+        return { v: c.v, sub: c.sub, sid: c.sid, key: c.key, mdl: c.mdl, run: c.run, iat: c.iat, req: c.req, res: c.res };
+      } catch {
+        return null;
+      }
+    };
+    const record = {
+      persona: PERSONA,
+      label: persona.label,
+      firstAnswer: persona.attempt,
+      turns: persona.turns.map((turn, i) => ({ sent: turn.text, via: turn.via, probe: turn.probe, bridge: bridgeCalls[i] ? { status: bridgeCalls[i].status, latencyMs: bridgeCalls[i].ms, rawReply: bridgeCalls[i].body?.reply ?? null, code: bridgeCalls[i].body?.code ?? null, receipt: bridgeCalls[i].body?.receipt ? decode(bridgeCalls[i].body.receipt) : null } : null, shownToChild: shownLines[i] ?? null })),
+      appRecord: (st.tutorTurns ?? []).map((x) => ({ role: x.role, text: x.text, via: x.via ?? null, intent: x.intent ?? null, origin: x.origin ?? null, shown: x.shown, reason: x.reason ?? null })),
+      outcomes: st.tutorOutcomes ?? [],
+      part: { status: st.parts.full.status, evidence: st.parts.full.evidence, exposed: st.parts.full.exposed, inheritedSupport: st.parts.full.inheritedSupport ?? [] },
+      afterAnswer,
+    };
+    fs.writeFileSync(path.join(OUT, `live-${PERSONA}.json`), JSON.stringify(record, null, 2));
+    check(`J5.${PERSONA}.every-turn-answered-by-the-runtime`, bridgeCalls.length === persona.turns.length, bridgeCalls.map((c) => [c.status, c.body?.code ?? null]));
+    check(`J5.${PERSONA}.reported-model-in-every-receipt`, record.turns.every((x) => x.bridge?.receipt?.mdl === "openai/gpt-6.1-sol"), record.turns.map((x) => x.bridge?.receipt?.mdl ?? x.bridge?.code));
+    check(`J5.${PERSONA}.app-verdict-recorded-for-every-reply`, record.appRecord.filter((x) => x.role === "nokt").length === persona.turns.length);
+    check(`J5.${PERSONA}.no-false-completion-from-the-talk`, persona.afterAnswer ? true : st.parts.full.status === "open");
+  } else if (STUB_BASE && ONLY_STUB && TURN) {
     // ============================================================ J4 Nokt turn: dispatch → the BROWSER asks the (stub) bridge → verified reply ============================================================
     // Desktop viewport: Santiago uses Visit 7 in the Mac mini's browser (owner correction, October 23 14:51).
     await sixVisitsDone();
@@ -1141,9 +1248,9 @@ try {
 }
 check("global.no-external-requests", blocked.length === 0, [...new Set(blocked)]);
 check("global.no-page-errors", pageErrors.length === 0, pageErrors.slice(0, 5));
-check("global.speech-never-reached-server", speechRequests.length >= (ONLY_STUB ? 1 : 3) && speechRequests.every((r) => ["abort", "ok", "fail"].includes(r.mock)), speechRequests.length);
+check("global.speech-never-reached-server", speechRequests.length >= (PERSONA ? 0 : ONLY_STUB ? 1 : 3) && speechRequests.every((r) => ["abort", "ok", "fail"].includes(r.mock)), speechRequests.length);
 await browser.close();
 const passed = results.filter((r) => r.ok).length;
-fs.writeFileSync(path.join(OUT, ONLY_STUB ? (TURN ? "results-turn.json" : STUB_FAULT ? "results-stub-fault.json" : "results-stub.json") : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), noktUploads, blocked: [...new Set(blocked)], pageErrors }, null, 2));
+fs.writeFileSync(path.join(OUT, ONLY_STUB ? (TURN ? (PERSONA ? `results-live-${PERSONA}.json` : "results-turn.json") : STUB_FAULT ? "results-stub-fault.json" : "results-stub.json") : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), noktUploads, blocked: [...new Set(blocked)], pageErrors }, null, 2));
 console.log(`${passed}/${results.length} passed`);
 process.exit(passed === results.length ? 0 : 1);
