@@ -1065,7 +1065,8 @@ try {
     };
     fs.writeFileSync(path.join(OUT, `outcome-${PERSONA}.json`), JSON.stringify(record, null, 2));
     check(`J6.${PERSONA}.history-through-real-engine`, history.every((h) => h.bridgeStatus === 200 && h.result?.shown === true), history.map((h) => [h.bridgeStatus, h.result?.shown, h.result?.reason ?? null]));
-    check(`J6.${PERSONA}.final-turn-live-exact-model`, final.bridgeStatus === 200 && decode(final.receipt)?.mdl === "openai/gpt-6.1-sol", { status: final.bridgeStatus, code: final.code });
+    if (DRY_FINAL) check(`J6.${PERSONA}.final-turn-DRY-scripted-via-stub-not-a-model`, final.bridgeStatus === 200 && decode(final.receipt)?.mdl === "openai/stub-fictional", { status: final.bridgeStatus, mdl: decode(final.receipt)?.mdl ?? null });
+    else check(`J6.${PERSONA}.final-turn-live-exact-model`, final.bridgeStatus === 200 && decode(final.receipt)?.mdl === "openai/gpt-6.1-sol", { status: final.bridgeStatus, code: final.code });
     check(`J6.${PERSONA}.no-false-completion`, st.parts.full.status === "open");
     check(`J6.${PERSONA}.independence-never-granted-after-help`, !persona.hint || !(st.tutorOutcomes ?? []).some((o) => o.status === "understood"), st.tutorOutcomes ?? []);
     // Round 13: the summary must come from the persisted records — a recorded conversation is never called inactive, a null outcome
