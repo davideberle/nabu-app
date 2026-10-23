@@ -71,23 +71,77 @@ export function resolveChildVoiceId(
 }
 
 // ---------------------------------------------------------------------------
+// Language / speaker routing (Visit 7, 2026-10-23; V6-F08)
+// ---------------------------------------------------------------------------
+//
+// A request that names no language keeps the exact earlier behaviour (the child's
+// voice). A request that names its language and speaker is routed to a voice
+// configured FOR that language/speaker, never to a voice of another language:
+// Spanish lines must not be spoken by the English child voice. When no such voice
+// is configured the route answers 503 and the client speaks the text with the
+// browser's own voice in that language — an honest fallback, never a mismatched
+// accent presented as the character. Configuration is server-only env, read here;
+// this build adds the names below but sets none of them.
+
+export const SPEECH_LANGUAGES = ["de", "en", "es"] as const;
+export type SpeechLanguage = (typeof SPEECH_LANGUAGES)[number];
+/** `child` = the legacy child voice; `nokt` = the German tutor voice (N7-03); `character` = a story character speaking its own language. */
+export const SPEECH_SPEAKERS = ["child", "nokt", "character"] as const;
+export type SpeechSpeaker = (typeof SPEECH_SPEAKERS)[number];
+
+/** Server-only env names for language/speaker voices (none is set by this build). */
+export const LANGUAGE_VOICE_ENV_VARS: Record<SpeechLanguage, string> = {
+  de: "ELEVENLABS_VOICE_DE_ID",
+  en: "ELEVENLABS_VOICE_EN_ID",
+  es: "ELEVENLABS_VOICE_ES_ID",
+};
+export const NOKT_VOICE_ENV_VAR = "ELEVENLABS_NOKT_DE_VOICE_ID";
+
+/** The premade child voices are English catalog voices: they may speak English, never another language for a character. */
+const CHILD_DEFAULT_LANGUAGE: SpeechLanguage = "en";
+
+/**
+ * Resolves the voice for one request, or null when no voice of that language/speaker is configured (→ 503 → browser speech in
+ * that language). Never interpolates a malformed configured value.
+ */
+export function resolveSpeechVoiceId(
+  request: { childId: ChildId; language?: SpeechLanguage; speaker?: SpeechSpeaker },
+  env: Record<string, string | undefined> = process.env,
+): string | null {
+  const configured = (name: string) => {
+    const v = env[name]?.trim();
+    return v && VOICE_ID_PATTERN.test(v) ? v : null;
+  };
+  if (!request.language && (!request.speaker || request.speaker === "child")) return resolveChildVoiceId(request.childId, env);
+  if (request.speaker === "nokt") return request.language === undefined || request.language === "de" ? configured(NOKT_VOICE_ENV_VAR) : null;
+  const language = request.language ?? CHILD_DEFAULT_LANGUAGE;
+  const byLanguage = configured(LANGUAGE_VOICE_ENV_VARS[language]);
+  if (byLanguage) return byLanguage;
+  // English character lines may keep the (English) child voice; German and Spanish need their own configured voice.
+  if (language === CHILD_DEFAULT_LANGUAGE) return resolveChildVoiceId(request.childId, env);
+  return null;
+}
+
+// ---------------------------------------------------------------------------
 // Request contract
 // ---------------------------------------------------------------------------
 
-export type ChildTtsRequest = { childId: ChildId; text: string };
+export type ChildTtsRequest = { childId: ChildId; text: string; language?: SpeechLanguage; speaker?: SpeechSpeaker };
 
 export type ChildTtsRequestIssue =
   | "not-an-object"
   | "unknown-field"
   | "invalid-child"
   | "empty-text"
-  | "overlong-text";
+  | "overlong-text"
+  | "invalid-language"
+  | "invalid-speaker";
 
 export type ChildTtsParseResult =
   | { ok: true; request: ChildTtsRequest }
   | { ok: false; issue: ChildTtsRequestIssue };
 
-const ALLOWED_TTS_FIELDS = new Set(["childId", "text"]);
+const ALLOWED_TTS_FIELDS = new Set(["childId", "text", "language", "speaker"]);
 
 /**
  * Closed request schema: exactly `childId` and `text`, nothing else.
@@ -112,12 +166,25 @@ export function parseChildTtsRequest(body: unknown): ChildTtsParseResult {
   if (record.text.length > MAX_CHILD_SPEECH_CHARS) {
     return { ok: false, issue: "overlong-text" };
   }
-  return { ok: true, request: { childId: record.childId, text: record.text.trim() } };
+  if (record.language !== undefined && !(SPEECH_LANGUAGES as readonly unknown[]).includes(record.language)) return { ok: false, issue: "invalid-language" };
+  if (record.speaker !== undefined && !(SPEECH_SPEAKERS as readonly unknown[]).includes(record.speaker)) return { ok: false, issue: "invalid-speaker" };
+  const request: ChildTtsRequest = { childId: record.childId, text: record.text.trim() };
+  if (record.language !== undefined) request.language = record.language as SpeechLanguage;
+  if (record.speaker !== undefined) request.speaker = record.speaker as SpeechSpeaker;
+  return { ok: true, request };
 }
 
 // ---------------------------------------------------------------------------
 // Synthesis
 // ---------------------------------------------------------------------------
+
+/** Thrown when no voice of the requested language/speaker is configured — caller maps to 503 (client: browser speech in that language). */
+export class TtsVoiceUnavailableError extends Error {
+  constructor() {
+    super("no voice configured for this language/speaker");
+    this.name = "TtsVoiceUnavailableError";
+  }
+}
 
 /** Thrown when the API key is missing — caller maps to 503. */
 export class TtsConfigError extends Error {
@@ -161,7 +228,9 @@ export async function synthesizeChildSpeech(
     throw new TtsConfigError("ELEVENLABS_API_KEY is not configured");
   }
 
-  const voiceId = resolveChildVoiceId(request.childId, env);
+  const voiceId = resolveSpeechVoiceId(request, env);
+  // No provider call at all when no voice of this language/speaker exists (no paid request with a mismatched voice).
+  if (!voiceId) throw new TtsVoiceUnavailableError();
   const url = `${ELEVENLABS_TTS_URL_BASE}/${voiceId}?output_format=${CHILD_TTS_OUTPUT_FORMAT}`;
   const response = await doFetch(url, {
     method: "POST",

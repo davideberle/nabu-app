@@ -19,8 +19,12 @@ import {
   MAX_CHILD_SPEECH_CHARS,
   TtsConfigError,
   TtsUpstreamError,
+  TtsVoiceUnavailableError,
+  LANGUAGE_VOICE_ENV_VARS,
+  NOKT_VOICE_ENV_VAR,
   parseChildTtsRequest,
   resolveChildVoiceId,
+  resolveSpeechVoiceId,
   synthesizeChildSpeech,
 } from "./family-tts.ts";
 
@@ -160,5 +164,52 @@ describe("synthesizeChildSpeech", () => {
         return true;
       },
     );
+  });
+});
+
+// Visit 7 (V6-F08): language/speaker routing. Fake env and fake fetch only — no provider call, no configuration change.
+describe("language and speaker routing (no paid call, fake env)", () => {
+  it("a request without language keeps the exact earlier child-voice behaviour", () => {
+    equal(resolveSpeechVoiceId({ childId: "santiago" }, {}), resolveChildVoiceId("santiago", {}));
+    equal(resolveSpeechVoiceId({ childId: "santiago", speaker: "child" }, { [CHILD_VOICE_ENV_VARS.santiago]: "VoiceAbc12345" }), "VoiceAbc12345");
+  });
+  it("Spanish and German character lines never fall back to the English child voice", () => {
+    equal(resolveSpeechVoiceId({ childId: "santiago", language: "es", speaker: "character" }, { [CHILD_VOICE_ENV_VARS.santiago]: "VoiceAbc12345" }), null);
+    equal(resolveSpeechVoiceId({ childId: "santiago", language: "de", speaker: "character" }, {}), null);
+    equal(resolveSpeechVoiceId({ childId: "santiago", language: "es", speaker: "character" }, { [LANGUAGE_VOICE_ENV_VARS.es]: "SpanishVoice99" }), "SpanishVoice99");
+    equal(resolveSpeechVoiceId({ childId: "santiago", language: "es", speaker: "character" }, { [LANGUAGE_VOICE_ENV_VARS.es]: "../../evil" }), null, "a malformed value is never interpolated");
+  });
+  it("English lines may use a configured English voice, else the (English) child voice", () => {
+    equal(resolveSpeechVoiceId({ childId: "isabel", language: "en", speaker: "character" }, {}), resolveChildVoiceId("isabel", {}));
+    equal(resolveSpeechVoiceId({ childId: "isabel", language: "en", speaker: "character" }, { [LANGUAGE_VOICE_ENV_VARS.en]: "EnglishVoice1" }), "EnglishVoice1");
+  });
+  it("Nokt speaks German only, from its own configured voice; unconfigured means unavailable", () => {
+    equal(resolveSpeechVoiceId({ childId: "santiago", speaker: "nokt" }, {}), null);
+    equal(resolveSpeechVoiceId({ childId: "santiago", speaker: "nokt", language: "de" }, { [NOKT_VOICE_ENV_VAR]: "NoktGerman01" }), "NoktGerman01");
+    equal(resolveSpeechVoiceId({ childId: "santiago", speaker: "nokt", language: "es" }, { [NOKT_VOICE_ENV_VAR]: "NoktGerman01" }), null);
+  });
+  it("the request schema accepts only the reviewed languages and speakers", () => {
+    const r = parseChildTtsRequest({ childId: "santiago", text: "¿Qué necesitan?", language: "es", speaker: "character" });
+    ok(r.ok);
+    equal(r.request.language, "es");
+    for (const language of ["fr", "ES", "", 1]) {
+      const bad = parseChildTtsRequest({ childId: "santiago", text: "x", language });
+      ok(!bad.ok);
+      equal(bad.issue, "invalid-language");
+    }
+    const badSpeaker = parseChildTtsRequest({ childId: "santiago", text: "x", speaker: "rosa-voice-id" });
+    ok(!badSpeaker.ok);
+    equal(badSpeaker.issue, "invalid-speaker");
+  });
+  it("no provider request is made when no voice of that language exists", async () => {
+    let calls = 0;
+    const fetchImpl = (async () => {
+      calls += 1;
+      return new Response(new Uint8Array([1]).buffer, { status: 200 });
+    }) as typeof fetch;
+    await rejects(synthesizeChildSpeech({ childId: "santiago", text: "Necesitamos herramientas", language: "es", speaker: "character" }, { fetchImpl, env: { ELEVENLABS_API_KEY: "fake-key" } }), (e: unknown) => e instanceof TtsVoiceUnavailableError);
+    equal(calls, 0);
+    await synthesizeChildSpeech({ childId: "santiago", text: "Necesitamos herramientas", language: "es", speaker: "character" }, { fetchImpl, env: { ELEVENLABS_API_KEY: "fake-key", [LANGUAGE_VOICE_ENV_VARS.es]: "SpanishVoice99" } });
+    equal(calls, 1);
   });
 });

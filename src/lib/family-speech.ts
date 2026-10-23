@@ -68,7 +68,7 @@ export type ChildSpeechPlayer = {
   /** Call from a user tap. Idempotent; never throws. */
   unlock: () => void;
   /** Fetches and plays the reply in the child's voice. See contract above. */
-  speak: (params: { childId: string; text: string; rate?: number }) => Promise<SpeakResult>;
+  speak: (params: { childId: string; text: string; rate?: number; language?: "de" | "en" | "es"; speaker?: "child" | "nokt" | "character" }) => Promise<SpeakResult>;
   /** Stops playback and invalidates any in-flight speech. */
   cancel: () => void;
 };
@@ -166,7 +166,7 @@ export function createChildSpeechPlayer(
     }
   }
 
-  async function speak(params: { childId: string; text: string; rate?: number }): Promise<SpeakResult> {
+  async function speak(params: { childId: string; text: string; rate?: number; language?: "de" | "en" | "es"; speaker?: "child" | "nokt" | "character" }): Promise<SpeakResult> {
     // Supersede whatever was speaking; that promise resolves "cancelled".
     cancel();
     const mySeq = seq;
@@ -183,7 +183,8 @@ export function createChildSpeechPlayer(
       const response = await doFetch(CHILD_TTS_PATH, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ childId: params.childId, text: params.text }),
+        // Language/speaker only when the caller names them: earlier callers send exactly the earlier body.
+        body: JSON.stringify({ childId: params.childId, text: params.text, ...(params.language ? { language: params.language } : {}), ...(params.speaker ? { speaker: params.speaker } : {}) }),
         cache: "no-store",
         signal: controller.signal,
       });

@@ -6,6 +6,7 @@ import {
   synthesizeChildSpeech,
   TtsConfigError,
   TtsUpstreamError,
+  TtsVoiceUnavailableError,
   type ChildTtsRequestIssue,
 } from "@/lib/family-tts";
 
@@ -55,10 +56,12 @@ function admitSynthesis(childId: string, nowMs: number): boolean {
 /** Adult-readable refusal per issue. Never echoes any part of the request. */
 const ISSUE_MESSAGES: Record<ChildTtsRequestIssue, string> = {
   "not-an-object": "Body must be a JSON object",
-  "unknown-field": "Body accepts exactly childId and text",
+  "unknown-field": "Body accepts childId, text and optionally language and speaker",
   "invalid-child": "childId must be santiago or isabel",
   "empty-text": "text must not be empty",
   "overlong-text": "text is too long to speak",
+  "invalid-language": "language must be de, en or es",
+  "invalid-speaker": "speaker must be child, nokt or character",
 };
 
 export async function POST(request: Request) {
@@ -95,6 +98,10 @@ export async function POST(request: Request) {
       headers: { ...NO_STORE, "Content-Type": speech.contentType },
     });
   } catch (error) {
+    if (error instanceof TtsVoiceUnavailableError) {
+      // No voice of this language/speaker is configured: the client speaks it with the browser's own voice in that language.
+      return NextResponse.json({ error: "No voice for this language" }, { status: 503, headers: NO_STORE });
+    }
     if (error instanceof TtsConfigError) {
       // Which variable is missing is an operator fact; the client only learns
       // that speech is unavailable, and falls back to browser synthesis.
