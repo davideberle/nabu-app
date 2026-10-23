@@ -117,7 +117,7 @@ export function parseTutorOutcome(raw: unknown): TutorOutcomeClaim | null {
   return raw as unknown as TutorOutcomeClaim;
 }
 
-const ALLOWED_NEXT: Record<TutorDispatch["purpose"], Record<TutorOutcomeStatus, readonly TutorNext[]>> = {
+export const ALLOWED_NEXT: Record<TutorDispatch["purpose"], Record<TutorOutcomeStatus, readonly TutorNext[]>> = {
   // An open question stays the child's to answer: the tutor can only send them back, to a hint, to teaching, or pause.
   diagnostic: { understood: ["retry", "pause"], understood_with_support: ["retry", "hint", "pause"], needs_practice: ["hint", "teach", "pause"], not_established: ["retry", "hint", "teach", "pause"] },
   // After a correct answer: an explanation may let the visit go on; otherwise a reviewed fresh problem or a pause.

@@ -780,10 +780,51 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     h = dispatchTurn(h, env2, "turn-o00011", "Mit dem Hinweis: in drei Tragen sind 12").state;
     h = replyTurn(h, env2, "turn-o00011", reply("Was hast du im Hinweis gesehen?", "clarify")).state;
     h = dispatchTurn(h, env2, "turn-o00012", "Dann noch eine volle Trage mit vier, und zwei bleiben übrig.").state;
-    const refused = replyTurn(h, env2, "turn-o00012", reply("Probier es oben noch einmal.", "close", { status: "understood", support: "none", next: "retry" }));
+    // Round 15: claiming no support after an answered pointing question is refused as understated (before the validator)…
+    deepStrictEqual((replyTurn(h, env2, "turn-o00012", reply("Probier es oben noch einmal.", "close", { status: "understood", support: "none", next: "retry" })).result as { outcome: unknown }).outcome, { refused: "support-understated" });
+    // …and the form the model actually produced live (round 14) still meets the validator's false-independence rule.
+    const refused = replyTurn(h, env2, "turn-o00012", reply("Probier es oben noch einmal.", "close", { status: "understood", support: "clarification", next: "retry" }));
     deepStrictEqual((refused.result as { outcome: unknown }).outcome, { refused: "false-independent" });
     equal((g2(refused.state).tutorOutcomes ?? []).length, 0);
     ok(missionEvidence(refused.state, v6, "v8")!.steps.find((x) => x.id === "G2-PACK")!.talk.some((t) => /abgelehnt \(false-independent\)/.test(t.detail)));
+  });
+
+  it("round 15: the exact round-14 live failure, reproduced through the engine — the request now states the evidence and the allowed combinations", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    let s = dispatchTurn(atG2(env), env, "turn-q00001", "Ich habe fünf geschrieben, weil die zwei übrigen Setzlinge auch eine Trage brauchen.").state;
+    s = replyTurn(s, env, "turn-q00001", reply("Was bedeutet «ganz füllen» in der Frage?", "clarify")).state;
+    const d = dispatchTurn(s, env, "turn-q00002", "Nur volle Tragen zählen: 18 durch 4 sind 4 volle Tragen, 2 Setzlinge bleiben übrig.");
+    const ctxOut = (d.result as { request: { context: { evidence: Record<string, unknown>; allowedOutcomes: { status: string; support: string[]; next: string[] }[] } } }).request.context;
+    deepStrictEqual(ctxOut.evidence, { purpose: "diagnostic", questionStatus: "open", helpRecorded: false, answerExposed: false, answeredClarifications: 1, answeredMethodQuestions: 0, teachingGiven: false, supportAtLeast: "clarification" });
+    ok(!ctxOut.allowedOutcomes.some((o) => o.status === "understood"));
+    ok(!ctxOut.allowedOutcomes.some((o) => o.next.includes("advance")));
+    ok(ctxOut.allowedOutcomes.some((o) => o.status === "understood_with_support" && o.support.includes("clarification") && o.next.includes("retry")));
+    // the exact live reply bytes of round 14 are still refused for the same reason
+    const live = '{"v":1,"say":"Du unterscheidest jetzt volle Tragen von einer Trage mit übrigen Setzlingen.","intent":"close","outcome":{"status":"understood","support":"clarification","next":"advance"}}';
+    deepStrictEqual((replyTurn(d.state, env, "turn-q00002", live).result as { outcome: unknown }).outcome, { refused: "false-independent" });
+    // a warranted judgement from the offered set is accepted and keeps the question open
+    const acc = replyTurn(d.state, env, "turn-q00002", reply("Du zählst nur volle Tragen. Trag deine Zahl oben ein.", "close", { status: "understood_with_support", support: "clarification", next: "retry" }));
+    deepStrictEqual((acc.result as { outcome: unknown }).outcome, { status: "understood_with_support", next: "retry" });
+    equal(g2(acc.state).parts!.full.status, "open");
+  });
+
+  it("round 15: independent vs. hinted through the engine — «understood» is offered only without any recorded help", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    let s = dispatchTurn(atG2(env), env, "turn-q00011", "fünf").state;
+    s = replyTurn(s, env, "turn-q00011", reply("Wie bist du auf deine Zahl gekommen?", "ask-method")).state;
+    const d = dispatchTurn(s, env, "turn-q00012", "Ich habe 18 durch 4 gerechnet, das sind 4 volle Tragen und 2 übrig.");
+    const offered = (d.result as { request: { context: { allowedOutcomes: { status: string; support: string[] }[] } } }).request.context.allowedOutcomes;
+    deepStrictEqual(offered.find((o) => o.status === "understood")?.support, ["none"]);
+    deepStrictEqual((replyTurn(d.state, env, "turn-q00012", reply("Trag deine Zahl oben ein.", "close", { status: "understood", support: "none", next: "retry" })).result as { outcome: unknown }).outcome, { status: "understood", next: "retry" });
+    const env2 = makeEnv(v6, { tutorAvailable: true });
+    let h = m(atG2(env2), { a: "hint", step: "G2-PACK", part: "full" }, env2);
+    h = dispatchTurn(h, env2, "turn-q00021", "fünf").state;
+    h = replyTurn(h, env2, "turn-q00021", reply("Wie bist du auf deine Zahl gekommen?", "ask-method")).state;
+    const dh = dispatchTurn(h, env2, "turn-q00022", "Im Hinweis: 12 in 3 Tragen, 6 übrig, noch eine volle Trage, 2 bleiben.");
+    const ctxH = (dh.result as { request: { context: { evidence: { helpRecorded: boolean }; allowedOutcomes: { status: string }[] } } }).request.context;
+    equal(ctxH.evidence.helpRecorded, true);
+    ok(!ctxH.allowedOutcomes.some((o) => o.status === "understood"));
+    deepStrictEqual((replyTurn(dh.state, env2, "turn-q00022", reply("Trag deine Zahl oben ein.", "close", { status: "understood", support: "none", next: "retry" })).result as { outcome: unknown }).outcome, { refused: "false-independent" }, "false independence still refused by the validator");
   });
 
   it("parent summary (round 13): conversation and assessment come from the persisted records, never from panel opens", () => {
@@ -822,7 +863,7 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     h = dispatchTurn(h, env2, "turn-p00011", "Mit dem Hinweis: in drei Tragen sind 12").state;
     h = replyTurn(h, env2, "turn-p00011", reply("Was hast du im Hinweis gesehen?", "clarify")).state;
     h = dispatchTurn(h, env2, "turn-p00012", "Dann noch eine volle Trage mit vier, und zwei bleiben übrig.").state;
-    const ref = step(reload(replyTurn(h, env2, "turn-p00012", reply("Probier es oben noch einmal.", "close", { status: "understood", support: "none", next: "retry" })).state), "fictional-stub");
+    const ref = step(reload(replyTurn(h, env2, "turn-p00012", reply("Probier es oben noch einmal.", "close", { status: "understood", support: "clarification", next: "retry" })).state), "fictional-stub");
     ok(/Einschätzung des Modells zu «full» von der App abgelehnt \(false-independent\) — nicht übernommen\./.test(ref.tutor), ref.tutor);
     ok(!/angenommen/.test(ref.tutor));
     deepStrictEqual([ref.tutorActivity.accepted, ref.tutorActivity.refused], [0, 1]);

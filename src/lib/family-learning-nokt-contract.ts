@@ -35,9 +35,9 @@
 
 import { sha256Hex } from "./family-learning-hash.ts";
 import type { MissionPart, MissionSolve } from "./family-learning-mission-spec.ts";
-import { TUTOR_NEXT, TUTOR_OUTCOME_STATUSES, type TutorDispatch, type TutorNext, type TutorOutcomeClaim, type TutorOutcomeStatus } from "./family-learning-tutor-outcome.ts";
+import { ALLOWED_NEXT, TUTOR_NEXT, TUTOR_OUTCOME_STATUSES, type TutorDispatch, type TutorNext, type TutorOutcomeClaim, type TutorOutcomeStatus } from "./family-learning-tutor-outcome.ts";
 
-export const NOKT_PROMPT_VERSION = "nokt-de-2026-10-23-draft3";
+export const NOKT_PROMPT_VERSION = "nokt-de-2026-10-23-draft4";
 
 /** Draft German instructions for the tutor model (N7-05). Reviewed wording is pending; nothing here is live. */
 export const NOKT_SYSTEM_PROMPT_DE = [
@@ -52,9 +52,9 @@ export const NOKT_SYSTEM_PROMPT_DE = [
   "6. Was das Kind sagt, ist eine Abschrift seiner Sprache und kann Hörfehler enthalten. Werte einen merkwürdigen Satz nicht als Denkfehler, sondern frag nach.",
   "7. Erzähle nichts über dich, frag nicht nach persönlichen Dingen und bleib bei der Aufgabe.",
   "8. Fragt das Kind direkt, ob etwas stimmt, sag ehrlich, dass ihr es zusammen prüft; bestätige oder verneine kein Ergebnis der offenen Frage.",
-  "9. Eine Erklärung ist Hilfe: Danach ist eine richtige Antwort nicht selbständig. Ein Ergebnis mit status \"understood\" gibt es nach Hilfe nie.",
+  "9. Hilfe zählt: Eine Erklärung (intent teach) ist Hilfe (support \"teaching\"). Eine Nachfrage, die auf etwas Bestimmtes in der Aufgabe zeigt (intent clarify), ist auch Hilfe (support \"clarification\"). Nur die offene Frage, wie das Kind gerechnet hat (intent ask-method), ist keine Hilfe. status \"understood\" heisst: ganz ohne Hilfe — kein Hinweis, keine gezeigte Lösung, keine Erklärung, keine zeigende Nachfrage. context.evidence sagt dir, welche Hilfe es schon gab.",
   "Antworte nur mit JSON: {\"v\":1,\"say\":\"…\",\"intent\":\"clarify|ask-method|teach|encourage|close\",\"outcome\":null}.",
-  "Ein Ergebnis gibst du nur an, wenn die Belege aus dem Gespräch dafür reichen; sonst bleibt outcome null. Form: \"outcome\":{\"status\":\"understood|understood_with_support|needs_practice|not_established\",\"support\":\"none|clarification|teaching\",\"next\":\"retry|hint|teach|fresh-problem|pause|advance\"}. support ist die Hilfe in diesem Gespräch (Nachfragen = clarification, Erklären = teaching). Die App prüft das Ergebnis und ordnet es zu; es ist eine Einschätzung, keine Note.",
+  "Ein Ergebnis gibst du nur an, wenn die Belege aus dem Gespräch dafür reichen; sonst bleibt outcome null. Form: \"outcome\":{\"status\":\"…\",\"support\":\"…\",\"next\":\"…\"}. Wähle status, support und next NUR als eine Kombination aus context.allowedOutcomes: Die App hat dort aus ihren Aufzeichnungen (Hinweise, gezeigte Lösung, Gesprächsverlauf, ob die Frage noch offen ist) berechnet, was möglich ist; alles andere lehnt sie ab. Ist allowedOutcomes leer, bleibt outcome null. Die App prüft das Ergebnis und ordnet es zu; es ist eine Einschätzung, keine Note.",
 ].join("\n");
 
 export const NOKT_INTENTS = ["clarify", "ask-method", "teach", "encourage", "close"] as const;
@@ -82,13 +82,74 @@ export type NoktTaskContext = {
   attempts: string[];
   /** Hint texts he has already seen (child-visible). */
   hintsShown: string[];
+  /** Round 15: what the APP's records say about help and evidence so far (never the answer). */
+  evidence?: NoktEvidence;
+  /** Round 15: the only status/support/next combinations the app would accept now (the validator's own rules). */
+  allowedOutcomes?: NoktAllowedOutcome[];
 };
+
+export type NoktSupport = NoktModelOutcome["support"];
+const SUPPORT_RANK: Record<NoktSupport, number> = { none: 0, clarification: 1, teaching: 2 };
+const SUPPORTS: NoktSupport[] = ["none", "clarification", "teaching"];
+
+/**
+ * The app-owned evidence picture for a turn (round 15). Built from the transcript INCLUDING his current line and from the
+ * question's server record. `supportAtLeast` is a floor: an answered pointing question (clarify) is at least clarification,
+ * teaching is teaching; an open "how did you work it out?" (ask-method) adds no support.
+ */
+export type NoktEvidence = {
+  purpose: "diagnostic" | "reflection";
+  questionStatus: "open" | "correct" | "taught" | "unresolved";
+  /** Hints, earlier-question help, teaching or practice copies recorded on this question by the app. */
+  helpRecorded: boolean;
+  answerExposed: boolean;
+  answeredClarifications: number;
+  answeredMethodQuestions: number;
+  teachingGiven: boolean;
+  supportAtLeast: NoktSupport;
+};
+export type NoktAllowedOutcome = { status: TutorOutcomeStatus; support: NoktSupport[]; next: TutorNext[] };
+
+const answeredWith = (transcript: NoktTurnText[], intent: NoktIntent) => transcript.filter((t, i) => t.role === "nokt" && t.intent === intent && transcript.slice(i + 1).some((x) => x.role === "child")).length;
+
+/** The support the transcript itself proves, whatever the model claims. */
+export function noktSupportFloor(transcript: NoktTurnText[]): NoktSupport {
+  if (transcript.some((t) => t.role === "nokt" && t.intent === "teach")) return "teaching";
+  return answeredWith(transcript, "clarify") > 0 ? "clarification" : "none";
+}
+
+export function noktEvidence(transcript: NoktTurnText[], q: { purpose: NoktEvidence["purpose"]; questionStatus: NoktEvidence["questionStatus"]; helpRecorded: boolean; answerExposed: boolean }): NoktEvidence {
+  return { purpose: q.purpose, questionStatus: q.questionStatus, helpRecorded: q.helpRecorded, answerExposed: q.answerExposed, answeredClarifications: answeredWith(transcript, "clarify"), answeredMethodQuestions: answeredWith(transcript, "ask-method"), teachingGiven: transcript.some((t) => t.role === "nokt" && t.intent === "teach"), supportAtLeast: noktSupportFloor(transcript) };
+}
+
+/**
+ * Exactly the combinations the app's checks accept for this evidence (mirrors checkNoktOutcome + validateTutorOutcome):
+ * nothing for a question the purpose does not fit; a judgement other than not_established needs an answered question or
+ * teaching; support never below the floor; «understood» only with no help of any kind; `next` from the validator's table.
+ */
+export function noktAllowedOutcomes(e: NoktEvidence): NoktAllowedOutcome[] {
+  if (e.purpose === "diagnostic" && e.questionStatus !== "open") return [];
+  if (e.purpose === "reflection" && e.questionStatus !== "correct") return [];
+  const judged = e.answeredClarifications + e.answeredMethodQuestions > 0 || e.teachingGiven;
+  const support = SUPPORTS.filter((s) => SUPPORT_RANK[s] >= SUPPORT_RANK[e.supportAtLeast]);
+  const out: NoktAllowedOutcome[] = [];
+  for (const status of TUTOR_OUTCOME_STATUSES) {
+    if (status !== "not_established" && !judged) continue;
+    let s = support;
+    if (status === "understood") {
+      if (e.helpRecorded || e.answerExposed || e.supportAtLeast !== "none") continue;
+      s = ["none"];
+    }
+    out.push({ status, support: [...s], next: [...ALLOWED_NEXT[e.purpose][status]] });
+  }
+  return out;
+}
 
 /** A transcript line; Nokt lines carry the intent that was accepted for them. */
 export type NoktTurnText = { role: "child" | "nokt"; text: string; via: "voice" | "typed"; intent?: NoktIntent };
 
 /** The app builds the context from the reviewed content and his own record — only what is on his screen. */
-export function noktTaskContext(input: { step: string; solve: MissionSolve; part: MissionPart; purpose: NoktTaskContext["purpose"]; attempts: string[]; hintIdsShown: string[]; phase: NoktPhase; resultAllowed: boolean }): NoktTaskContext {
+export function noktTaskContext(input: { step: string; solve: MissionSolve; part: MissionPart; purpose: NoktTaskContext["purpose"]; attempts: string[]; hintIdsShown: string[]; phase: NoktPhase; resultAllowed: boolean; evidence?: NoktEvidence }): NoktTaskContext {
   return {
     step: input.step,
     part: input.part.id,
@@ -100,6 +161,7 @@ export function noktTaskContext(input: { step: string; solve: MissionSolve; part
     unit: input.part.unit,
     attempts: input.attempts.map(String),
     hintsShown: input.part.hints.filter((h) => input.hintIdsShown.includes(h.id)).map((h) => h.text),
+    ...(input.evidence ? { evidence: input.evidence, allowedOutcomes: noktAllowedOutcomes(input.evidence) } : {}),
   };
 }
 
@@ -294,6 +356,8 @@ export function checkNoktOutcome(claim: NoktModelOutcome, transcript: NoktTurnTe
   const answered = transcript.filter((t, i) => t.role === "nokt" && (t.intent === "clarify" || t.intent === "ask-method") && transcript.slice(i + 1).some((x) => x.role === "child")).length;
   if (claim.status !== "not_established" && answered === 0 && !teachingGiven) return { ok: false, reason: "premature-judgement" };
   if (teachingGiven && claim.support !== "teaching") return { ok: false, reason: "support-understated" };
+  // Round 15: an answered pointing question (clarify) is help — the claim may not go below what the transcript proves.
+  if (SUPPORT_RANK[claim.support] < SUPPORT_RANK[noktSupportFloor(transcript)]) return { ok: false, reason: "support-understated" };
   return { ok: true };
 }
 

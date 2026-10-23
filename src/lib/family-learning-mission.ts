@@ -62,7 +62,7 @@ import type { MissionPart, MissionHint, MissionLine, MissionDiagram } from "./fa
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
 import { receiptOrigin, type ReceiptInput, type ReplyOrigin } from "./family-learning-trust.ts";
 import type { NoktMode } from "./family-learning-nokt.ts";
-import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktOutcomeClaim, noktPhase, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
+import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktEvidence, noktOutcomeClaim, noktPhase, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
 
 // ---------------------------------------------------------------------------
 // State (MissionState.missions — additive)
@@ -190,6 +190,12 @@ export type MissionTutorTurn = {
   outcome?: { model: { status: string; support: string; next: string }; verdict: string };
   at: string;
 };
+
+/** Help the APP recorded on a question (hints, earlier-question help, teaching, practice copies) — one rule for the tutor's
+ *  evidence context and for the validator's question facts. */
+function questionHelped(r: MissionStepRun, pr: NonNullable<MissionStepRun["parts"]>[string], partId: string): boolean {
+  return pr.hints.length > 0 || (pr.inheritedSupport ?? []).length > 0 || pr.phase === "taught" || r.attempts.some((a) => a.questionId === partId && a.kind !== "answer");
+}
 
 /** What the child sees instead of a withheld Nokt reply — reviewed app text, never attributed to Nokt. */
 export const NOKT_WITHHELD_LINE = "Nokt hat gerade keine passende Antwort. Probier es oben noch einmal oder öffne den Hinweis.";
@@ -1392,9 +1398,13 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         if (typeof action.text !== "string" || !action.text.trim() || action.text.length > 300 || (action.via !== "voice" && action.via !== "typed")) throw new MissionOpError("invalid", "a turn needs his text (1–300 characters) and how it was entered");
         const pr = r.parts![part.id];
         const prior = talkOf(r, part.id, action.sessionId);
+        const transcript: NoktTurnText[] = [...prior, { role: "child", text: action.text.trim(), via: action.via }];
+        // Round 15: the app's own evidence picture (same help rule as the validator's question facts) and, from it, the only
+        // status/support/next combinations it would accept — so the model is never asked to guess the app's rules.
+        const evidence = noktEvidence(transcript, { purpose: action.purpose, questionStatus: pr.status, helpRecorded: questionHelped(r, pr, part.id), answerExposed: pr.exposed.length > 0 });
         const built = buildNoktRequest(
-          noktTaskContext({ step: step.id, solve: step.solve!, part, purpose: action.purpose, attempts: r.attempts.filter((a) => a.questionId === part.id && a.kind === "answer").map((a) => a.raw), hintIdsShown: pr.hints.map((h) => h.id), phase: noktPhase(prior).phase, resultAllowed: pr.exposed.length > 0 }),
-          [...prior, { role: "child", text: action.text.trim(), via: action.via }],
+          noktTaskContext({ step: step.id, solve: step.solve!, part, purpose: action.purpose, attempts: r.attempts.filter((a) => a.questionId === part.id && a.kind === "answer").map((a) => a.raw), hintIdsShown: pr.hints.map((h) => h.id), phase: noktPhase(prior).phase, resultAllowed: pr.exposed.length > 0, evidence }),
+          transcript,
         );
         dispatch.reqHash = built.reqHash;
         request = built.request;
@@ -1509,7 +1519,7 @@ function applyTutorOutcome(records: Records, env: MissionEnv, def: MissionDef, s
   const dispatch = (r.tutorDispatches ?? []).find((d) => d.turnId === claimTurn);
   const pr = dispatch ? r.parts?.[dispatch.part] : undefined;
   const question = pr && dispatch
-    ? { status: pr.status, attemptNos: r.attempts.filter((a) => a.questionId === dispatch.part).map((a) => a.no), helped: pr.hints.length > 0 || (pr.inheritedSupport ?? []).length > 0 || pr.phase === "taught" || r.attempts.some((a) => a.questionId === dispatch.part && a.kind !== "answer"), answerExposed: pr.exposed.length > 0 }
+    ? { status: pr.status, attemptNos: r.attempts.filter((a) => a.questionId === dispatch.part).map((a) => a.no), helped: questionHelped(r, pr, dispatch.part), answerExposed: pr.exposed.length > 0 }
     : null;
   const verdict = validateTutorOutcome(raw, { child: env.tutor?.child ?? "", origin: env.tutor?.origin ?? "missing", nowIso: env.nowIso, dispatch, question, currentRevision: r.attempts.length });
   if (!verdict.ok) throw new MissionOpError(verdict.reason === "unknown-or-consumed" ? "stale" : "invalid", `tutor result refused: ${verdict.reason}`);

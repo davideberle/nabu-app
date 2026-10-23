@@ -22,6 +22,8 @@ import {
   NOKT_SYSTEM_PROMPT_DE,
   noktPhase,
   noktReceiptBinding,
+  noktAllowedOutcomes,
+  noktEvidence,
   noktTaskContext,
   parseNoktReply,
   parseNoktReplyText,
@@ -29,7 +31,7 @@ import {
   type NoktTurnText,
 } from "./family-learning-nokt-contract.ts";
 import { receiptOrigin } from "./family-learning-trust.ts";
-import { validateTutorOutcome, type TutorDispatch } from "./family-learning-tutor-outcome.ts";
+import { TUTOR_NEXT, TUTOR_OUTCOME_STATUSES, validateTutorOutcome, type TutorDispatch } from "./family-learning-tutor-outcome.ts";
 
 // The reviewed Visit 7 content (G2 «Tragen packen»), read as data.
 const content = JSON.parse(readFileSync(new URL("../data/family-learning/content/santiago-expedition-v6.json", import.meta.url), "utf8"));
@@ -146,7 +148,9 @@ describe("Nokt reply — app-controlled phases and disclosure (G2 «full», answ
     const claimAt = (status: string, support = "none") => parseNoktReply(reply("x", "close", { status, support, next: "hint" }))!.outcome!;
     deepEqual(checkNoktOutcome(claimAt("needs_practice"), [child("fünf")]), { ok: false, reason: "premature-judgement" });
     deepEqual(checkNoktOutcome(claimAt("not_established"), [child("fünf")]), { ok: true }, "«not established» is always honest");
-    deepEqual(checkNoktOutcome(claimAt("needs_practice"), [child("fünf"), nokt("Was sollst du herausfinden?"), child("alle Setzlinge zählen")]), { ok: true });
+    deepEqual(checkNoktOutcome(claimAt("needs_practice", "clarification"), [child("fünf"), nokt("Was sollst du herausfinden?"), child("alle Setzlinge zählen")]), { ok: true });
+    // Round 15: an answered pointing question is help — a claim of no support after it is understated.
+    deepEqual(checkNoktOutcome(claimAt("needs_practice"), [child("fünf"), nokt("Was sollst du herausfinden?"), child("alle Setzlinge zählen")]), { ok: false, reason: "support-understated" });
     deepEqual(check("Was sollst du bei dieser Frage herausfinden?", "clarify", [child("fünf")]), { ok: true });
   });
 
@@ -236,13 +240,15 @@ describe("The eight actual live replies of round 11 (verbatim) — offline regre
 });
 
 describe("Prompt draft3 — valid method first, honest about direct questions, judgement-only outcome", () => {
-  it("states the new rules and the judgement-only outcome form", () => {
+  it("states the new rules and the judgement-only outcome form (draft4: combinations only from the app's allowedOutcomes)", () => {
     ok(NOKT_SYSTEM_PROMPT_DE.includes("was an seinem Weg passt"));
     ok(NOKT_SYSTEM_PROMPT_DE.includes("ohne zu behaupten, warum etwas nicht passt"));
     ok(NOKT_SYSTEM_PROMPT_DE.includes("bestätige oder verneine kein Ergebnis"));
-    ok(NOKT_SYSTEM_PROMPT_DE.includes('\\"support\\":\\"none|clarification|teaching\\"'.replace(/\\\\/g, "\\")) || NOKT_SYSTEM_PROMPT_DE.includes('"support":"none|clarification|teaching"'));
+    ok(NOKT_SYSTEM_PROMPT_DE.includes("NUR als eine Kombination aus context.allowedOutcomes"));
+    ok(NOKT_SYSTEM_PROMPT_DE.includes("zeigende Nachfrage") && NOKT_SYSTEM_PROMPT_DE.includes("(intent ask-method), ist keine Hilfe"));
     ok(!/turnId|sessionId|revision/.test(NOKT_SYSTEM_PROMPT_DE), "the model is never asked for binding fields");
-    equal(NOKT_PROMPT_VERSION, "nokt-de-2026-10-23-draft3");
+    ok(!/\b4 Tragen|vier Tragen|understood_with_support/.test(NOKT_SYSTEM_PROMPT_DE), "no expected answer and no preferred judgement in the prompt");
+    equal(NOKT_PROMPT_VERSION, "nokt-de-2026-10-23-draft4");
   });
 });
 
@@ -289,5 +295,76 @@ describe("Nokt reply — provenance and completion reuse the existing contracts"
   it("a diagnostic talk can never mark the open question answered", () => {
     const r = parseNoktReply(reply("Weiter!", "close", claim("understood_with_support", "advance")))!;
     deepEqual(validateTutorOutcome(bound(r), { ...base, origin: "verified", question: { status: "open", attemptNos: [1], helped: false, answerExposed: false } }), { ok: false, reason: "transition-not-allowed" });
+  });
+});
+
+describe("Round 15 — allowed outcomes are the app's own rules, made explicit to the model (no expected answer, no preferred judgement)", () => {
+  const ev = (transcript: NoktTurnText[], over: Partial<Parameters<typeof noktEvidence>[1]> = {}) => noktEvidence(transcript, { purpose: "diagnostic", questionStatus: "open", helpRecorded: false, answerExposed: false, ...over });
+  const combos = (e: ReturnType<typeof noktEvidence>) => noktAllowedOutcomes(e).flatMap((o) => o.support.flatMap((sp) => o.next.map((n) => `${o.status}/${sp}/${n}`)));
+  const H = [child("Ich habe fünf geschrieben, weil die zwei übrigen Setzlinge auch eine Trage brauchen.", "typed"), nokt("Was bedeutet «ganz füllen» in der Frage?", "clarify"), child("Nur volle Tragen zählen: 18 durch 4 sind 4 volle Tragen, 2 Setzlinge bleiben übrig.", "typed")];
+
+  it("the exact round-14 situation: clarification is help, the question is open → never «understood», never «advance»", () => {
+    const e = ev(H);
+    deepEqual([e.answeredClarifications, e.answeredMethodQuestions, e.supportAtLeast], [1, 0, "clarification"]);
+    const c = combos(e);
+    ok(!c.some((x) => x.startsWith("understood/")), "understood not offered");
+    ok(!c.some((x) => x.endsWith("/advance")), "advance not offered while the question is open");
+    ok(!c.includes("understood/clarification/advance"), "the live failure is not an offered combination");
+    ok(c.includes("understood_with_support/clarification/retry") && c.includes("not_established/clarification/retry"));
+    ok(!c.some((x) => x.split("/")[1] === "none"), "support never below the floor");
+    deepEqual(checkNoktOutcome({ status: "understood", support: "clarification", next: "advance" }, H), { ok: true }, "contract check passes it on…");
+  });
+
+  it("independent: only «how did you work it out?» answered, no hint, no exposure → «understood» with no support is possible", () => {
+    const t = [child("fünf"), nokt("Wie bist du auf deine Zahl gekommen?", "ask-method"), child("Ich habe 18 durch 4 gerechnet.")];
+    const e = ev(t);
+    deepEqual([e.supportAtLeast, e.answeredMethodQuestions], ["none", 1]);
+    ok(combos(e).includes("understood/none/retry") && combos(e).includes("understood/none/pause"));
+    ok(!combos(e).some((x) => x.startsWith("understood/") && !x.startsWith("understood/none")));
+    // reflection after a correct answer: an explanation may let the visit go on
+    ok(combos(ev(t, { purpose: "reflection", questionStatus: "correct" })).includes("understood/none/advance"));
+    deepEqual(noktAllowedOutcomes(ev(t, { purpose: "reflection", questionStatus: "open" })), [], "reflection only after a correct answer");
+  });
+
+  it("hint or exposure recorded by the app → «understood» is never offered, whatever the talk", () => {
+    const t = [child("fünf"), nokt("Wie bist du auf deine Zahl gekommen?", "ask-method"), child("Im Hinweis steht 12 in 3 Tragen, dann noch eine.")];
+    ok(!combos(ev(t, { helpRecorded: true })).some((x) => x.startsWith("understood/")));
+    ok(!combos(ev(t, { answerExposed: true })).some((x) => x.startsWith("understood/")));
+    ok(combos(ev(t, { helpRecorded: true })).includes("understood_with_support/none/retry"), "support of the TALK may be none; the hint is the app's record");
+  });
+
+  it("insufficient evidence: before any answered question only «not_established» is offered", () => {
+    deepEqual(noktAllowedOutcomes(ev([child("fünf")])).map((o) => o.status), ["not_established"]);
+    deepEqual(checkNoktOutcome({ status: "understood_with_support", support: "none", next: "retry" }, [child("fünf")]), { ok: false, reason: "premature-judgement" });
+  });
+
+  it("CONSISTENCY: over a grid of evidence states, a combination is offered exactly when the app's checks accept it", () => {
+    const dispatch: TutorDispatch = { turnId: "turn-grid-0001", child: "santiago", missionId: "MISSION-ISLAND-GARDEN", visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "talk-grid", revision: 1, purpose: "diagnostic", entry: "manual", at: "2026-10-23T20:00:00.000Z", status: "pending" };
+    const transcripts: NoktTurnText[][] = [
+      [child("fünf")],
+      [child("fünf"), nokt("Was bedeutet «ganz füllen»?", "clarify"), child("vier drin")],
+      [child("fünf"), nokt("Wie bist du darauf gekommen?", "ask-method"), child("18 durch 4")],
+      [child("fünf"), nokt("Was bedeutet «ganz füllen»?", "clarify"), child("vier drin"), nokt("Wie viele passen in eine Trage?", "teach"), child("vier")],
+    ];
+    let checked = 0;
+    for (const t of transcripts) for (const purpose of ["diagnostic", "reflection"] as const) for (const questionStatus of ["open", "correct"] as const) for (const helpRecorded of [false, true]) for (const answerExposed of [false, true]) {
+      const e = noktEvidence(t, { purpose, questionStatus, helpRecorded, answerExposed });
+      const offered = new Set(combos(e));
+      for (const status of TUTOR_OUTCOME_STATUSES) for (const support of ["none", "clarification", "teaching"] as const) for (const next of TUTOR_NEXT) {
+        const model = { status, support, next };
+        const fit = checkNoktOutcome(model, t);
+        const v = fit.ok && validateTutorOutcome(noktOutcomeClaim(model, { ...dispatch, purpose }, { attemptNos: [1], transcriptTurns: t.filter((x) => x.role === "child").length }), { child: "santiago", origin: "verified", nowIso: "2026-10-23T20:00:10.000Z", dispatch: { ...dispatch, purpose }, question: { status: questionStatus, attemptNos: [1], helped: helpRecorded, answerExposed }, currentRevision: 1 }).ok;
+        equal(offered.has(`${status}/${support}/${next}`), !!v, `${JSON.stringify({ purpose, questionStatus, helpRecorded, answerExposed, turns: t.length })} ${status}/${support}/${next}`);
+        checked += 1;
+      }
+    }
+    ok(checked > 2000, String(checked));
+  });
+
+  it("the request carries the evidence and the allowed combinations — and still never the answer", () => {
+    const c = noktTaskContext({ step: "G2-PACK", solve, part: full, purpose: "diagnostic", attempts: ["5"], hintIdsShown: [], phase: "nachfragen", resultAllowed: false, evidence: ev(H) });
+    ok(c.allowedOutcomes && c.allowedOutcomes.length > 0 && c.evidence?.supportAtLeast === "clarification");
+    const json = JSON.stringify(buildNoktRequest(c, H).request);
+    ok(!/"answer"/.test(json) && !json.includes(full.teach));
   });
 });

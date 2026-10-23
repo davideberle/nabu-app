@@ -4,8 +4,8 @@
 #
 #   scripts/nokt-live-fictional.sh <runtime-candidate-dir> <out-dir> <persona> [<persona> ...]
 #
-# Starts, on loopback only: the runtime candidate (127.0.0.1:8797, FAMILY_NOKT_MODEL=gpt-6.1-sol, ceiling 11 since the
-# owner's one-call extension of Oct 23 19:29, the project-owned credential), the loopback stub bridge for SCRIPTED history (127.0.0.1:3299, same per-run synthetic
+# Starts, on loopback only: the runtime candidate (127.0.0.1:8797, FAMILY_NOKT_MODEL=gpt-6.1-sol, ceiling 14 since the
+# owner's extensions of Oct 23 19:29 (+1) and 23:37 (+3), the project-owned credential), the loopback stub bridge for SCRIPTED history (127.0.0.1:3299, same per-run synthetic
 # secret), and one isolated app server per persona (127.0.0.1:3196, fresh fictional DB). Every model attempt is reserved
 # in the runtime's ledger before its request; nothing here retries.
 #
@@ -66,7 +66,7 @@ cd "$RT" || exit 1
 env -i PATH="$PATH" HOME="$HOME" FAMILY_BRIDGE_TOKEN_SECRET="$SECRET" FAMILY_BRIDGE_BIND=127.0.0.1 FAMILY_BRIDGE_PORT=8797 \
   FAMILY_BRIDGE_ALLOWED_ORIGINS=http://127.0.0.1:3196 FAMILY_BRIDGE_AUDIT_LOG="$OUT/runtime-audit.jsonl" \
   FAMILY_NOKT_SUBSCRIPTION=on FAMILY_NOKT_CREDENTIALS_FILE="$CFG/credentials.json" FAMILY_NOKT_LEDGER_FILE="$CFG/ledger.json" \
-  FAMILY_NOKT_MODEL=gpt-6.1-sol FAMILY_NOKT_ATTEMPT_CEILING=11 node dist/bridge/main.js > "$OUT/runtime.log" 2>&1 &
+  FAMILY_NOKT_MODEL=gpt-6.1-sol FAMILY_NOKT_ATTEMPT_CEILING=14 node dist/bridge/main.js > "$OUT/runtime.log" 2>&1 &
 RT_PID=$!
 cd "$APP" || exit 1
 FAMILY_BRIDGE_TOKEN_SECRET="$SECRET" node scripts/visit7-nokt-stub-bridge.mjs 3299 "$OUT/stub-bridge.jsonl" http://127.0.0.1:3196 > "$OUT/stub-bridge.log" 2>&1 &
