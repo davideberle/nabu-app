@@ -3,7 +3,7 @@
 # Visit 7 + Nokt candidate — OFFLINE, isolated reproduction of every builder gate (round 13).
 #
 #   scripts/visit7-reproduce-offline.sh <out-dir> [--build] [--runtime <runtime-candidate-dir>]
-#                                       [--heldout <heldout-r5.mjs> --artifact-spec <spec.json>]
+#                                       [--heldout <heldout-r5.mjs> --artifact-spec <spec.json>] [--probe-reference <observations.json>]
 #
 # NEVER a model, provider, credential or production: the only "bridge" is the loopback STUB (scripts/visit7-nokt-stub-bridge.mjs)
 # with a synthetic per-run secret; FAMILY_NOKT_SUBSCRIPTION is never set and no credentials file is read; the runtime candidate
@@ -23,12 +23,14 @@ BUILD=0
 RT=""
 HELDOUT=""
 SPEC=""
+PROBE_REF=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --build) BUILD=1 ;;
     --runtime) RT=$2; shift ;;
     --heldout) HELDOUT=$2; shift ;;
     --artifact-spec) SPEC=$2; shift ;;
+    --probe-reference) PROBE_REF=$2; shift ;;
     *) echo "unknown argument $1"; exit 2 ;;
   esac
   shift
@@ -131,11 +133,12 @@ echo "served build: $(cat .next/BUILD_ID) (built from the source in this worktre
 server "$OUT/db-j1" 3197
 step j1-j2 0 node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3197 --db "$OUT/db-j1/nabu.db" --out "$OUT/out"
 stop_server "$CUR_DB"; CUR_DB=""
-server "$OUT/db-j3" 3198 FAMILY_NOKT_FICTIONAL_STUB=1
-step j3-stub 0 node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3198 --stub-base http://127.0.0.1:3198 --only-stub --db "$OUT/db-j3/nabu.db" --out "$OUT/out"
+# J3 and J3F continue on J1's database (the child is at Visit 7 there), exactly like the established procedure.
+server "$OUT/db-j1" 3198 FAMILY_NOKT_FICTIONAL_STUB=1
+step j3-stub 0 node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3198 --stub-base http://127.0.0.1:3198 --only-stub --db "$OUT/db-j1/nabu.db" --out "$OUT/out"
 stop_server "$CUR_DB"; CUR_DB=""
-server "$OUT/db-j3f" 3199 FAMILY_NOKT_FICTIONAL_STUB=1 FAMILY_NOKT_STT_FAKE_FAULT=quota
-step j3f-fault 0 node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3199 --stub-base http://127.0.0.1:3199 --only-stub --stub-fault --db "$OUT/db-j3f/nabu.db" --out "$OUT/out"
+server "$OUT/db-j1" 3199 FAMILY_NOKT_FICTIONAL_STUB=1 FAMILY_NOKT_STT_FAKE_FAULT=quota
+step j3f-fault 0 node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3199 --stub-base http://127.0.0.1:3199 --only-stub --stub-fault --db "$OUT/db-j1/nabu.db" --out "$OUT/out"
 stop_server "$CUR_DB"; CUR_DB=""
 
 FAMILY_BRIDGE_TOKEN_SECRET="$STUB_SECRET" node scripts/visit7-nokt-stub-bridge.mjs 3299 "$OUT/stub-bridge.jsonl" http://127.0.0.1:3196 > "$OUT/stub-bridge.log" 2>&1 &
@@ -169,4 +172,7 @@ if [ -n "$HELDOUT" ]; then
   stop_server "$CUR_DB"; CUR_DB=""
 fi
 step gate-probe 0 node scripts/visit7-tutor-gate-probe.mts "$OUT/probe-observations.json"
+if [ -n "$PROBE_REF" ]; then # the 24 observations must be identical to the reference run
+  step gate-probe-compare 0 node -e 'const fs=require("fs");const a=JSON.parse(fs.readFileSync(process.argv[1])).cases,b=JSON.parse(fs.readFileSync(process.argv[2])).cases;const same=JSON.stringify(a)===JSON.stringify(b);console.log(`${same?"PASS":"FAIL"} gate-probe.observations-identical ${a.length}/${b.length}`)' "$OUT/probe-observations.json" "$PROBE_REF"
+fi
 echo "done: $( [ "$FAILED" = 0 ] && echo 'all steps within their allowance' || echo 'SOME STEPS FAILED' )" | tee -a "$SUMMARY"
