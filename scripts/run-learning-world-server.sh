@@ -31,7 +31,9 @@ fi
 # FAMILY_LEARNING_CONTENT_CAP is forwarded when set (Visit 4 rollback checks start a capped second instance).
 # FAMILY_ASSISTANT_BRIDGE_URL / FAMILY_BRIDGE_TOKEN_SECRET are forwarded when set (Visit 5 repair round 1: the harness runs a
 # loopback STUB bridge for the plumbing; never the real bridge, never a real secret).
-env -i PATH="$PATH" HOME="$HOME" AUTH_SECRET="$SECRET" AUTH_URL=http://127.0.0.1:$PORT GOOGLE_CLIENT_ID=synthetic GOOGLE_CLIENT_SECRET=synthetic ${FAMILY_LEARNING_CONTENT_CAP:+FAMILY_LEARNING_CONTENT_CAP="$FAMILY_LEARNING_CONTENT_CAP"} ${FAMILY_ASSISTANT_BRIDGE_URL:+FAMILY_ASSISTANT_BRIDGE_URL="$FAMILY_ASSISTANT_BRIDGE_URL"} ${FAMILY_BRIDGE_TOKEN_SECRET:+FAMILY_BRIDGE_TOKEN_SECRET="$FAMILY_BRIDGE_TOKEN_SECRET"} \
+# FAMILY_NOKT_FICTIONAL_STUB is forwarded when set (Visit 7: renders the planned Nokt flow with canned fictional replies; honoured
+# by the app only on this kind of isolated local database — never with a Turso URL or on Vercel).
+env -i PATH="$PATH" HOME="$HOME" AUTH_SECRET="$SECRET" AUTH_URL=http://127.0.0.1:$PORT GOOGLE_CLIENT_ID=synthetic GOOGLE_CLIENT_SECRET=synthetic ${FAMILY_LEARNING_CONTENT_CAP:+FAMILY_LEARNING_CONTENT_CAP="$FAMILY_LEARNING_CONTENT_CAP"} ${FAMILY_ASSISTANT_BRIDGE_URL:+FAMILY_ASSISTANT_BRIDGE_URL="$FAMILY_ASSISTANT_BRIDGE_URL"} ${FAMILY_BRIDGE_TOKEN_SECRET:+FAMILY_BRIDGE_TOKEN_SECRET="$FAMILY_BRIDGE_TOKEN_SECRET"} ${FAMILY_NOKT_FICTIONAL_STUB:+FAMILY_NOKT_FICTIONAL_STUB="$FAMILY_NOKT_FICTIONAL_STUB"} \
   NABU_DB_DIR="$DIR" NEXT_TELEMETRY_DISABLED=1 node node_modules/next/dist/bin/next start -p $PORT -H 127.0.0.1 > "$DIR/server.log" 2>&1 &
 SERVER=$!
 echo "$SERVER" > "$DIR/server.pid"
