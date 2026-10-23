@@ -472,8 +472,8 @@ function Workspace({ child }: { child: ChildId }) {
             telemetry={(name) => {
               telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
             }}
-            act={async (action: MissionAction) => {
-              const outcome = await mutate({ op: "mission", action });
+            act={async (action: MissionAction, options?: { idempotencyKey?: string }) => {
+              const outcome = await mutate({ op: "mission", action }, options?.idempotencyKey ? { idempotencyKey: options.idempotencyKey } : undefined);
               return outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed") ? ((outcome.result as Record<string, unknown> | undefined) ?? {}) : null;
             }}
           />

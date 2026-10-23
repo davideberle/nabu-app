@@ -24,17 +24,25 @@
 // Content v6 (Visit 7, 2026-10-23) adds, without changing any earlier rule
 // for earlier content:
 //  - `solve` steps: one clear question per part, answered on its own; a
-//    correct part stays correct; 1st substantive miss → neutral recheck, 2nd →
-//    stuck (a verified tutor may offer a diagnostic talk; without one the child
-//    is pointed to the hint, never interrogated), 3rd → worked teaching
-//    (answer revealed) and a copy that must be right to count as practiced —
-//    or "keep for later" (unresolved), never false success;
+//    correct part stays correct; 1st substantive miss → neutral recheck; from
+//    the 2nd → the child chooses: a talk with Nokt about what the question
+//    means (only when a verified tutor exists — otherwise the screen says
+//    plainly that the talk is unavailable), another try, guided steps, or
+//    keep it for later. Nothing is revealed because a counter reached a
+//    number: the worked solution is shown only when the child CHOOSES it
+//    (after three misses, or after the guided steps), and exposure is
+//    recorded at that moment. After three misses a further try needs an
+//    answered guided step in between (bounded, never endless guessing);
+//    "keep for later" is always an exit, never credit;
+//  - a deliberate repeat of the same wrong number is a real attempt (flagged
+//    `repeatOf`) and counts towards the choices; accidental duplicate
+//    delivery is absorbed by the idempotency key of the request;
 //  - reviewed hints revealed one level at a time on explicit request, each
 //    recorded with its id/type/level and the attempts before it; a hint that
 //    shows an answer is answer exposure; help on an earlier part makes later
 //    first answers of the same problem `supported` (rule 3, conservative);
-//  - empty, non-numeric and unchanged repeated answers are refused before
-//    they become attempts (accidental Enter, double tap);
+//  - empty and non-numeric answers are refused before they become attempts
+//    (accidental Enter);
 //  - outcome-specific closing lines: success lines only after success
 //    (V6-F06 — also fixes the projection of earlier missions);
 //  - the practice copy after a shown sentence counts only when it matches;
@@ -84,6 +92,8 @@ export type MissionAttempt = {
   kind: "answer" | "practice" | "hint-check";
   /** Content v6: the reviewed hints shown on this part before this attempt, in order. */
   hintsBefore?: string[];
+  /** Content v6: a deliberate resubmission of the same wrong number (attempt no. it repeats) — a real attempt, kept as such. */
+  repeatOf?: number;
 };
 
 /** Content v6: the run of one question of a `solve` step. */
@@ -105,6 +115,10 @@ export type MissionPartRun = {
   offer?: "shown" | "dismissed" | "accepted" | null;
   /** Earlier help on this problem that makes a first answer here supported (rule 3). */
   inheritedSupport?: string[];
+  /** Guided-step responses (hint checks, a hint without a check) since the last main answer — an answer after three misses needs one. */
+  stepsSinceAnswer?: number;
+  /** The child's choices when stuck, in order (meaningful clicks, never help by themselves). */
+  choices?: { choice: "retry" | "guided" | "nokt" | "solution" | "later"; at: string }[];
 };
 
 /** Content v6: the run of one own sentence. */
@@ -274,8 +288,12 @@ export type MissionAction =
   | { a: "hint-check"; step: string; part: string; hint: string; value: string }
   /** Content v6: the child's own entry after worked teaching (counts only when it matches). */
   | { a: "practice-part"; step: string; part: string; value: string }
-  /** Content v6: keep a taught question for later (explicit unresolved item, never credit). */
+  /** Content v6: keep a question for later — when stuck or after teaching (explicit unresolved item, never credit). */
   | { a: "later-part"; step: string; part: string }
+  /** Content v6: the child chooses to see the worked solution (only then is the answer shown and the exposure recorded). */
+  | { a: "show-solution"; step: string; part: string }
+  /** Content v6: what the child chose when stuck (retry / guided / nokt / solution / later) — recorded, not help. */
+  | { a: "stuck-choice"; step: string; part: string; choice: "retry" | "guided" | "nokt" | "solution" | "later" }
   /** Content v6: one own sentence; `revise` = the one revision after the correction, or keep (`text: null`). */
   | { a: "write"; step: string; text: string }
   | { a: "revise"; step: string; text: string | null }
@@ -660,6 +678,13 @@ function parseWhole(value: unknown): number {
   // Accidental/incomplete input never becomes an attempt (V7-D05): only a whole number is an answer.
   if (!/^\d{1,4}$/.test(raw)) throw new MissionOpError("invalid", "enter a whole number");
   return Number(raw);
+}
+
+/** The worked solution is an explicit choice: after three misses, or after two misses once every guided step was worked. */
+function solutionOffered(def: MissionDef, part: MissionPart, pr: MissionPartRun): boolean {
+  if (pr.status !== "open" || pr.phase === "taught") return false;
+  const ladderDone = pr.hints.length === part.hints.length && part.hints.every((h) => !h.check || pr.checks[h.id]);
+  return pr.misses >= (def.rules.maxPartAttempts ?? 3) || (pr.misses >= 2 && ladderDone);
 }
 
 function partEvidence(pr: MissionPartRun, priorMains: number, correct: boolean): EvidenceCategory {
@@ -1103,15 +1128,19 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (pr.status !== "open" || pr.phase === "taught") throw new MissionOpError("not-allowed", pr.phase === "taught" ? "type the answer from the worked solution" : "this question is answered");
       const value = parseWhole(action.value);
       const raw = String(action.value ?? "").trim().slice(0, 12);
+      const max = def.rules.maxPartAttempts ?? 3;
+      // Bounded: after three misses another try needs an answered guided step in between (no endless guessing; exits stay open).
+      if (pr.misses >= max && (pr.stepsSinceAnswer ?? 0) === 0) throw new MissionOpError("not-allowed", "work one guided step first, look at the solution, or keep it for later");
       const mains = r.attempts.filter((a) => a.questionId === part.id && a.kind === "answer");
       const last = mains[mains.length - 1];
-      // Accidental input recovers instead of consuming a teaching attempt (V7-D05): an unchanged repeat of the last wrong answer is refused.
-      if (last && last.correct === false && last.values?.[part.id] === value) throw new MissionOpError("invalid", "same answer as before — look at the question again");
+      // A deliberate repeat of the same wrong number is a real attempt (accidental duplicate delivery is absorbed by the idempotency key).
+      const repeatOf = last && last.correct === false && last.values?.[part.id] === value ? last.no : undefined;
       const correct = value === part.answer;
       const evidence = partEvidence(pr, mains.length, correct);
-      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: part.id, raw, values: { [part.id]: value }, correct, evidence, support: partSupport(pr, mains.length), modality: "typed", kind: "answer", hintsBefore: pr.hints.map((h) => h.id) };
+      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: part.id, raw, values: { [part.id]: value }, correct, evidence, support: partSupport(pr, mains.length), modality: "typed", kind: "answer", hintsBefore: pr.hints.map((h) => h.id), ...(repeatOf ? { repeatOf } : {}) };
       r.attempts.push(attempt);
       attemptRow(records, env, def, step, attempt, "de");
+      pr.stepsSinceAnswer = 0;
       if (correct) {
         pr.status = "correct";
         pr.evidence = evidence;
@@ -1122,23 +1151,44 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         }
       } else {
         pr.misses += 1;
-        const max = def.rules.maxPartAttempts ?? 3;
-        if (pr.misses >= max) {
-          pr.phase = "taught";
-          pr.exposed.push({ by: "teaching", at: env.nowIso });
-          r.support.push({ kind: "direct-teaching", at: env.nowIso, detail: part.id });
-          support(records, env, def, step, "direct-teaching", { part: part.id });
-          records.exposures.push({ taskId: taskId(def, step, part.id), taskVersion: step.version, kind: "answer_revealed", source: "mission-part-taught", at: env.nowIso });
-        } else if (pr.misses === 1) {
-          pr.phase = "rechecked";
-        } else {
+        if (pr.misses === 1) pr.phase = "rechecked";
+        else {
+          // From the second miss the child chooses how to go on. The talk about what the question means needs a verified tutor;
+          // without one that is said plainly — nothing is revealed and nothing is diagnosed in its place.
           pr.phase = "stuck";
-          if (env.tutor?.available) pr.offer = pr.offer ?? "shown";
-          else support(records, env, def, step, "tutor-unavailable", { part: part.id, entry: "offer", help: false });
+          if (pr.misses === 2) {
+            if (env.tutor?.available) pr.offer = pr.offer ?? "shown";
+            else support(records, env, def, step, "tutor-unavailable", { part: part.id, entry: "offer", help: false });
+          }
         }
       }
       finishSolveIfDone(state, run, def, step, r, env, records);
-      result = { correct, part: part.id, status: pr.status, phase: pr.phase };
+      result = { correct, part: part.id, status: pr.status, phase: pr.phase, ...(repeatOf ? { repeatOf } : {}) };
+      break;
+    }
+    case "show-solution": {
+      const { step, r } = requireActive(run, def, action.step);
+      const { part, pr } = requirePart(step, r, action.part);
+      if (pr.status !== "open" || pr.phase === "taught") throw new MissionOpError("not-allowed", "nothing to show");
+      if (!solutionOffered(def, part, pr)) throw new MissionOpError("not-allowed", "the solution is offered after three tries or after the guided steps");
+      // Chosen by the child; the exposure is recorded now, when it is shown — not because a counter reached a number.
+      pr.phase = "taught";
+      pr.exposed.push({ by: "teaching", at: env.nowIso });
+      (pr.choices ??= []).push({ choice: "solution", at: env.nowIso });
+      r.support.push({ kind: "direct-teaching", at: env.nowIso, detail: part.id });
+      support(records, env, def, step, "direct-teaching", { part: part.id, chosenByChild: true, afterMisses: pr.misses });
+      records.exposures.push({ taskId: taskId(def, step, part.id), taskVersion: step.version, kind: "answer_revealed", source: "mission-part-solution-chosen", at: env.nowIso });
+      result = { part: part.id, phase: pr.phase };
+      break;
+    }
+    case "stuck-choice": {
+      const { step, r } = requireActive(run, def, action.step);
+      const { part, pr } = requirePart(step, r, action.part);
+      if (pr.status !== "open" || pr.misses < 2) throw new MissionOpError("not-allowed", "nothing to choose");
+      if (!["retry", "guided", "nokt", "solution", "later"].includes(action.choice)) throw new MissionOpError("invalid", "unknown choice");
+      (pr.choices ??= []).push({ choice: action.choice, at: env.nowIso });
+      support(records, env, def, step, "stuck-choice", { part: part.id, choice: action.choice, afterMisses: pr.misses, help: false });
+      result = { choice: action.choice };
       break;
     }
     case "hint": {
@@ -1149,11 +1199,16 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (part.hintsAfterFirstAttempt && mains.length === 0) throw new MissionOpError("not-allowed", "try the question first — the hint comes after your first answer");
       const next = part.hints[pr.hints.length];
       if (!next) throw new MissionOpError("not-allowed", "no further hint");
+      // Active intermediate responses: the next level opens only after the current step's small question was answered.
+      const current = pr.hints.length ? part.hints.find((h) => h.id === pr.hints[pr.hints.length - 1].id) : null;
+      if (current?.check && !pr.checks[current.id]) throw new MissionOpError("not-allowed", "answer the question in this step first");
       // N7-01: the exact hint, its type/level and its place among the attempts are recorded BEFORE it is shown.
       pr.hints.push({ id: next.id, type: next.type, level: next.level, at: env.nowIso, afterAttempts: mains.length });
       r.support.push({ kind: "hint", at: env.nowIso, detail: `${part.id}:${next.id}` });
       support(records, env, def, step, "hint", { part: part.id, hint: next.id, type: next.type, level: next.level, afterAttempts: mains.length, exposes: next.exposes ?? [] });
       for (const target of next.exposes ?? []) exposePart(records, env, def, step, r, target, `hint:${next.id}`);
+      // A step without its own question (a picture to count) is a guided step as soon as it is shown.
+      if (!next.check) pr.stepsSinceAnswer = (pr.stepsSinceAnswer ?? 0) + 1;
       result = { hint: next.id, level: next.level };
       break;
     }
@@ -1172,6 +1227,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       r.attempts.push(attempt);
       attemptRow(records, env, def, step, attempt, "de", `${step.objective}-hint-check`);
       pr.checks[hint.id] = { result: correct ? "correct" : "wrong", raw, at: env.nowIso };
+      pr.stepsSinceAnswer = (pr.stepsSinceAnswer ?? 0) + 1;
       if (!correct && hint.check.representation) {
         // A different representation after a wrong check: recorded help before it is shown.
         r.support.push({ kind: "representation", at: env.nowIso, detail: `${part.id}:${hint.id}` });
@@ -1204,9 +1260,11 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
     case "later-part": {
       const { step, r } = requireActive(run, def, action.step);
       const { part, pr } = requirePart(step, r, action.part);
-      if (pr.status !== "open" || pr.phase !== "taught") throw new MissionOpError("not-allowed", "keeping it for later is offered after the worked solution");
+      if (pr.status !== "open" || (pr.phase !== "taught" && pr.misses < 2)) throw new MissionOpError("not-allowed", "keeping it for later is offered after two tries");
       pr.status = "unresolved";
-      pr.evidence = "answer_exposed";
+      // No answer shown → the open item stays incorrect, not exposed; after teaching it was exposed.
+      pr.evidence = pr.exposed.length ? "answer_exposed" : "incorrect";
+      (pr.choices ??= []).push({ choice: "later", at: env.nowIso });
       finishSolveIfDone(state, run, def, step, r, env, records);
       result = { part: part.id, status: pr.status };
       break;
@@ -1435,6 +1493,7 @@ export type MissionActiveView = {
   write?: WriteView | null;
   /** Content v6: the exact quantity picture of a story/outcome step. */
   diagram?: MissionDiagram | null;
+  shipments?: { label: string; diagram: MissionDiagram }[] | null;
   /** Content v6: the evidence-based ending of a scene mission's outcome step (one actual success, one next step). */
   ending?: { success: string | null; next: string } | null;
   /** Content v6: tutor state for this step (never an answer). */
@@ -1461,6 +1520,12 @@ export type SolvePartView = {
   practiceLeft: number;
   offer: "shown" | null;
   reflection: "not-available" | "asked" | null;
+  /** From the second miss: what the child can choose (the talk only with a verified tutor). */
+  choices: { nokt: boolean; noktUnavailable: boolean; retry: boolean; guided: boolean; solution: boolean; later: boolean } | null;
+  /** After three misses, another try needs an answered guided step first. */
+  needsStep: boolean;
+  /** The open guided step still waits for its answer (the next level opens after it). */
+  hintPending: boolean;
 };
 export type SolveView = { facts: string[]; current: string | null; parts: SolvePartView[]; diagram: MissionDiagram | null; application: { of: string; kind: string } | null; total: number };
 export type WriteView = { prompt: string; instruction: string; placeholder: string | null; original: string | null; correction: { intro: string; marked: string } | null; revision: string | null; keepLabel: string; thanks: string | null };
@@ -1580,15 +1645,16 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     choice,
     produce,
     typing: step.kind === "typing-block" ? typingBlockView(def, run, content, !run.typing && state && state.typing.alignment?.result === "match" ? planTypingBlock(state, content, def.typingBlock, (state.feedback?.focus ?? []).filter((f) => f.kind === "typing-key" && f.status === "open").map((f) => f.key)) : null) : null,
-    solve: step.solve ? solveView(def, step, r) : null,
+    solve: step.solve ? solveView(def, step, r, tutorAvailable) : null,
     write: step.write ? writeView(step, r) : null,
     diagram: step.diagram ?? null,
+    shipments: step.shipments ?? null,
     ending: step.kind === "outcome" && def.presentation === "scene" ? sceneEnding(def, run) : null,
     tutor: { available: !!tutorAvailable, offerPart: Object.entries(r.parts ?? {}).find(([, x]) => x.offer === "shown")?.[0] ?? null },
   };
 }
 
-function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun): SolveView {
+function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun, tutorAvailable = false): SolveView {
   const sv = step.solve!;
   const current = sv.parts.find((x) => !r.parts?.[x.id] || r.parts[x.id].status === "open")?.id ?? null;
   const parts: SolvePartView[] = [];
@@ -1615,8 +1681,8 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun): Solve
                 ? null
                 : lastMain && lastMain.correct === false
                   ? pr.phase === "stuck"
-                    ? { tone: "stuck", text: part.stuck }
-                    : { tone: "retry", text: part.recheck }
+                    ? { tone: "stuck", text: `${lastMain.repeatOf ? `Das ist wieder ${lastMain.raw}. ` : ""}${part.stuck}` }
+                    : { tone: "retry", text: `${lastMain.repeatOf ? `Das ist wieder ${lastMain.raw}. ` : ""}${part.recheck}` }
                   : null;
     const hints = pr.hints.map((h) => {
       const hd = part.hints.find((x) => x.id === h.id)!;
@@ -1642,11 +1708,19 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun): Solve
       feedback,
       hints,
       hintsLeft: pr.status === "open" && !taughtShown ? part.hints.length - pr.hints.length : 0,
-      hintAllowed: pr.status === "open" && !taughtShown && !(part.hintsAfterFirstAttempt && mains.length === 0),
+      hintAllowed: pr.status === "open" && !taughtShown && !(part.hintsAfterFirstAttempt && mains.length === 0) && !(pr.hints.length && part.hints.find((h) => h.id === pr.hints[pr.hints.length - 1].id)?.check && !pr.checks[pr.hints[pr.hints.length - 1].id]),
       teach: taughtShown ? part.teach : null,
       practiceLeft: taughtShown && pr.status === "open" ? Math.max(0, (def.rules.maxPracticeAttempts ?? 2) - pr.practiceFails) : 0,
       offer: pr.offer === "shown" ? "shown" : null,
       reflection: pr.reflection ?? null,
+      choices: pr.status === "open" && !taughtShown && pr.misses >= 2
+        ? { nokt: tutorAvailable, noktUnavailable: !tutorAvailable, retry: !(pr.misses >= (def.rules.maxPartAttempts ?? 3) && (pr.stepsSinceAnswer ?? 0) === 0), guided: pr.hints.length < part.hints.length && !(pr.hints.length && part.hints.find((h) => h.id === pr.hints[pr.hints.length - 1].id)?.check && !pr.checks[pr.hints[pr.hints.length - 1].id]), solution: solutionOffered(def, part, pr), later: true }
+        : null,
+      needsStep: pr.status === "open" && !taughtShown && pr.misses >= (def.rules.maxPartAttempts ?? 3) && (pr.stepsSinceAnswer ?? 0) === 0,
+      hintPending: (() => {
+        const lastHint = pr.hints.length ? part.hints.find((h) => h.id === pr.hints[pr.hints.length - 1].id) : null;
+        return !!lastHint?.check && !pr.checks[lastHint.id];
+      })(),
     });
   }
   const resolved = r.status !== "active";
@@ -1861,7 +1935,9 @@ export type MissionEvidenceQuestion = {
   taskId: string;
   question: string;
   /** Every answer the child submitted, in order and verbatim (main answers, copies after teaching, answers inside hints). */
-  answers: { no: number; at: string; raw: string; correct: boolean | null; kind: MissionAttempt["kind"]; afterHints: string[] }[];
+  answers: { no: number; at: string; raw: string; correct: boolean | null; kind: MissionAttempt["kind"]; afterHints: string[]; repeatOf: number | null }[];
+  /** What the child chose when stuck, in order (retry / guided steps / Nokt / solution / later). */
+  choices: string[];
   /** The exact reviewed hints shown, with their type/level and how many answers came before each. */
   hints: { id: string; type: string; level: number; at: string; afterAttempts: number }[];
   exposure: string[];
@@ -1877,11 +1953,43 @@ export type MissionEvidenceStep = {
   status: MissionStepStatus;
   observed: string[];
   questions: MissionEvidenceQuestion[];
+  /** Help shown on this step, in readable words; `supportRaw` keeps the stored kinds for the detail view. */
   support: string[];
+  supportRaw: string[];
   tutor: string;
   missing: string[];
   laterCheck: string | null;
 };
+
+const SUPPORT_DE: Record<string, string> = {
+  hint: "Hinweis",
+  representation: "anderes Bild nach falscher Antwort im Hinweis",
+  "direct-teaching": "Lösung gezeigt (selbst gewählt)",
+  transcript: "Text der Nachricht gelesen",
+  translation: "deutsche Übersetzung der Nachricht",
+  "line-translation": "Satz übersetzt",
+  "word-bank": "Wörter-Hinweis geöffnet",
+  "language-repair": "Schreibkorrektur gezeigt",
+  "answer-shown": "Antwort gezeigt",
+  "spacing-correction": "eine Abstand-Korrektur gezeigt",
+  clarification: "Erklärung",
+  "tutor-content": "Hilfe im Gespräch mit Nokt",
+};
+
+/** Readable form of help carried over from an earlier question of the same problem. */
+function inheritedLabel(code: string): string {
+  if (code.startsWith("earlier-hint:")) return `Hinweis bei einer früheren Frage (${code.slice(13)})`;
+  if (code === "earlier-teaching") return "Lösung bei einer früheren Frage";
+  if (code.startsWith("tutor:")) return "Hilfe im Gespräch mit Nokt";
+  return code;
+}
+
+/** A readable label for a recorded help kind (raw kinds stay available in the detail view). */
+export function supportLabel(kind: string, detail?: string): string {
+  const base = SUPPORT_DE[kind] ?? kind;
+  if (kind === "hint" && detail) return `${base} ${detail.split(":").pop()}`;
+  return base;
+}
 
 const HINT_TYPE_DE: Record<string, string> = { grouping: "Bündeln", subtract: "Abziehen", "extra-tray": "Zusatztrage", "count-all": "Alle zählen (Bild)", compare: "Vergleichen", "word-options": "Wortauswahl" };
 
@@ -1900,7 +2008,7 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
     const observed: string[] = [];
     let laterCheck: string | null = null;
     if (!r) {
-      steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support: [], tutor: "—", missing: ["nicht begonnen"], laterCheck });
+      steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support: [], supportRaw: [], tutor: "—", missing: ["nicht begonnen"], laterCheck });
       continue;
     }
     for (const part of step.solve?.parts ?? []) {
@@ -1909,16 +2017,17 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
         missing.push(`Frage «${part.id}» noch nicht erreicht`);
         continue;
       }
-      const answers = r.attempts.filter((a) => a.questionId === part.id || a.questionId?.startsWith(`${part.id}/`)).map((a) => ({ no: a.no, at: a.at, raw: a.raw, correct: a.correct, kind: a.kind, afterHints: a.hintsBefore ?? [] }));
+      const answers = r.attempts.filter((a) => a.questionId === part.id || a.questionId?.startsWith(`${part.id}/`)).map((a) => ({ no: a.no, at: a.at, raw: a.raw, correct: a.correct, kind: a.kind, afterHints: a.hintsBefore ?? [], repeatOf: a.repeatOf ?? null }));
       const mains = answers.filter((a) => a.kind === "answer");
       const result: MissionEvidenceQuestion["result"] = pr.status === "unresolved" ? "kept-for-later" : pr.status === "taught" ? "after-teaching" : pr.status === "open" ? "open" : pr.evidence === "independent" ? "first-try" : pr.hints.length || (pr.inheritedSupport ?? []).length || pr.exposed.length ? "after-hint" : "after-retry";
       const reading =
         result === "first-try" ? "Beim ersten Versuch richtig, ohne Hinweis." :
         result === "after-retry" ? `Richtig nach ${mains.length - 1} falschen Versuch(en), ohne Hinweis; der erste Versuch ist der aussagekräftige.` :
-        result === "after-hint" ? `Richtig mit Unterstützung (${[...pr.hints.map((h) => `${h.id} ${HINT_TYPE_DE[h.type] ?? h.type}`), ...(pr.inheritedSupport ?? [])].join(", ") || "Hilfe"}${pr.exposed.length ? `; Antwort vorher sichtbar durch ${pr.exposed.map((e) => e.by).join(", ")}` : ""}). Kein selbständiger Nachweis.` :
-        result === "after-teaching" ? "Nach gezeigter Lösung abgeschrieben. Kein selbständiger Nachweis." :
-        result === "kept-for-later" ? "Nach gezeigter Lösung fürs nächste Mal aufgehoben." : "Noch offen.";
-      questions.push({ taskId: taskId(def, step, part.id), question: part.question, answers, hints: pr.hints.map((h) => ({ ...h })), exposure: pr.exposed.map((e) => e.by), result, reading });
+        result === "after-hint" ? `Richtig mit Unterstützung (${[...pr.hints.map((h) => `Hinweis ${h.level}: ${HINT_TYPE_DE[h.type] ?? h.type}`), ...(pr.inheritedSupport ?? []).map(inheritedLabel)].join(", ") || "Hilfe"}${pr.exposed.length ? "; die Antwort war vorher sichtbar" : ""}). Kein selbständiger Nachweis.` :
+        result === "after-teaching" ? "Lösung selbst gewählt und angesehen, dann eingetragen. Kein selbständiger Nachweis." :
+        result === "kept-for-later" ? (pr.exposed.length ? "Nach der gezeigten Lösung fürs nächste Mal aufgehoben." : "Ohne Lösung fürs nächste Mal aufgehoben — die Frage ist offen.") : "Noch offen.";
+      const CHOICE_DE: Record<string, string> = { retry: "noch einmal versuchen", guided: "Schritt für Schritt", nokt: "mit Nokt reden", solution: "Lösung ansehen", later: "für später aufheben" };
+      questions.push({ taskId: taskId(def, step, part.id), question: part.question, answers, choices: (pr.choices ?? []).map((c) => CHOICE_DE[c.choice] ?? c.choice), hints: pr.hints.map((h) => ({ ...h })), exposure: pr.exposed.map((e) => (e.by === "teaching" ? "gewählte Lösung" : e.by.startsWith("hint:") ? `Hinweis ${e.by.slice(5)}` : e.by.startsWith("hint-check:") ? `Bild nach Antwort im Hinweis ${e.by.slice(11)}` : e.by)), result, reading });
       if (part.reflect && pr.status === "correct" && pr.reflection !== "asked") missing.push(`Erklärung des Rechenwegs zu «${part.id}»: nicht erhoben (Nokt nicht aktiv). Ob verstanden oder geraten, ist offen.`);
       if (mains.some((a) => a.correct === false)) missing.push(`Ursache der falschen Antwort(en) bei «${part.id}» unbekannt (Aufgabe missverstanden, Rechenfehler oder Versehen sind nicht unterscheidbar ohne Gespräch).`);
     }
@@ -1935,10 +2044,11 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
       }
       if (step.retrieval?.focus) laterCheck = `Wiederabruf von «${step.retrieval.focus.split(":").pop()}» aus früheren Besuchen; zählt nur frisch und ohne Hilfe als Behalten.`;
     }
-    const support = [...new Set(r.support.map((x) => (x.kind === "hint" ? `Hinweis ${x.detail ?? ""}` : x.kind)))];
+    const support = [...new Set(r.support.map((x) => supportLabel(x.kind, x.detail)))];
+    const supportRaw = [...new Set(r.support.map((x) => x.kind))];
     const tutorEntries = r.tutor ?? [];
     const tutor = tutorEntries.length ? `Nokt geöffnet ${tutorEntries.length}× (${tutorEntries.map((t) => t.entry).join(", ")}); ${tutorEntries.some((t) => t.available) ? "Gespräch verfügbar" : "Gespräch nicht verfügbar — keine Tutor-Einschätzung"}` : "Keine Tutor-Einschätzung (Nokt nicht aktiv).";
-    steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support, tutor, missing, laterCheck });
+    steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support, supportRaw, tutor, missing, laterCheck });
   }
   return { mission: def.id, title: def.title, steps, note: "Elternhilfe am Gerät wird von der App nicht erfasst. Abschluss, Hilfe-Zahl oder Abspiel-Meldungen sind kein Nachweis von Können." };
 }

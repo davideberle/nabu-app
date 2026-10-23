@@ -62,8 +62,8 @@ export function NoktPanel({ child, mode, step, part, speech, onClose }: { child:
       </div>
       {mode === "unavailable" ? (
         <div className="mt-4 grid gap-3" data-testid="nokt-unavailable">
-          <p className="text-lg leading-relaxed">Nokt kann noch nicht mit dir sprechen. Bald geht das.</p>
-          <p className="text-lg leading-relaxed">Bis dahin hilft dir der Hinweis bei der Aufgabe. Du kannst auch einen Erwachsenen fragen.</p>
+          <p className="text-lg leading-relaxed">Nokt kann im Moment nicht mit dir sprechen.</p>
+          <p className="text-lg leading-relaxed">Der Hinweis bei der Aufgabe hilft dir Schritt für Schritt. Du kannst auch einen Erwachsenen fragen.</p>
         </div>
       ) : (
         <StubConversation child={child} step={step} part={part} speech={speech} />

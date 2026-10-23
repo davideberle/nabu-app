@@ -124,8 +124,8 @@ export function MissionScene({ child, view, mission, busy, act, speech, noktMode
             {/* eslint-disable-next-line @next/next/no-img-element -- build-time static asset served under the child access gate */}
             <img src={rosaHarbor.src} width={rosaHarbor.width} height={rosaHarbor.height} alt={mission.scene?.alt ?? ""} className={cn("block w-full object-cover", active && active.kind !== "story" && active.kind !== "outcome" ? "h-[min(38vh,340px)]" : "h-[min(48vh,420px)]")} style={{ objectPosition: "70% 30%" }} />
             {lines.length || facts ? (
-              <div className="absolute left-3 top-3 max-w-[min(78%,520px)] rounded-3xl px-5 py-4 shadow-lg sm:left-6 sm:top-6" style={{ background: "#fffef6" }} data-testid="scene-bubble" role="group" aria-label={speaker ? `${speaker.name} sagt` : "Erzählung"}>
-                <span aria-hidden className="absolute -right-4 bottom-6 hidden border-[12px] border-transparent sm:block" style={{ borderLeftColor: "#fffef6" }} />
+              <div className={cn("relative mx-3 -mt-6 mb-3 rounded-3xl px-5 py-4 shadow-lg", noktOpen ? "xl:absolute xl:left-6 xl:top-6 xl:m-0 xl:max-w-[min(52%,520px)]" : "sm:absolute sm:left-6 sm:top-6 sm:m-0 sm:max-w-[min(62%,520px)]")} style={{ background: "#fffef6" }} data-testid="scene-bubble" role="group" aria-label={speaker ? `${speaker.name} sagt` : "Erzählung"}>
+                <span aria-hidden className={cn("absolute -right-4 bottom-6 hidden border-[12px] border-transparent", noktOpen ? "xl:block" : "sm:block")} style={{ borderLeftColor: "#fffef6" }} />
                 {speaker ? <p className="text-sm font-bold uppercase tracking-wide" style={{ color: "#a34431" }}>{speaker.name}</p> : null}
                 <BubbleLines lines={lines} child={child} step={active?.id ?? ""} offset={active && active.status !== "active" ? active.intro.length : 0} act={act} busy={busy} speech={speech} telemetry={telemetry} />
                 {facts ? (
@@ -238,6 +238,9 @@ function ActiveTask({ child, view, mission, active, busy, act, speech, telemetry
     return (
       <div className="grid gap-4" data-testid="story-task">
         {active.diagram ? <Trays diagram={active.diagram} label={active.kind === "outcome" ? "Im Gewächshaus" : "Die Lieferung"} /> : null}
+        {(active.shipments ?? []).map((sh) => (
+          <Trays key={sh.label} diagram={sh.diagram} label={sh.label} />
+        ))}
         {active.ending ? (
           <div className="grid gap-2" data-testid="scene-ending">
             {active.ending.success ? <Feedback tone="success" text={active.ending.success} /> : null}
@@ -334,25 +337,30 @@ function PartTask({ part, step, busy, act, telemetry, onOffer }: { part: SolvePa
   const [value, setValue] = useState("");
   const [notice, setNotice] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  // One submission at a time: a double tap or a second Enter while the first is in flight is not a second answer.
+  const sending = useRef(false);
   const taught = part.phase === "taught";
   useEffect(() => {
     inputRef.current?.focus({ preventScroll: true });
   }, [part.id, part.tries, taught]);
   const submit = async () => {
     const v = value.trim();
-    // Accidental Enter / empty or incomplete input never becomes an attempt; an unchanged repeat does not use up a try.
+    // Accidental Enter / empty or incomplete input never becomes an attempt.
     if (!/^\d{1,4}$/.test(v)) {
       setNotice("Trag eine ganze Zahl ein. Dann drück auf «Antwort prüfen».");
       return;
     }
-    if (!taught && part.lastWrong !== null && Number(v) === part.lastWrong) {
-      setNotice("Das ist dieselbe Zahl wie eben. Lies die Frage noch einmal.");
-      return;
-    }
+    if (sending.current) return;
+    sending.current = true;
     setNotice(null);
-    const res = await act(taught ? { a: "practice-part", step, part: part.id, value: v } : { a: "answer-part", step, part: part.id, value: v });
+    // The same idempotency key covers network retries of THIS submission; a later deliberate submission gets a new key.
+    const key = typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `part-${Date.now()}`;
+    const res = await act(taught ? { a: "practice-part", step, part: part.id, value: v } : { a: "answer-part", step, part: part.id, value: v }, { idempotencyKey: key });
+    sending.current = false;
     if (res) setValue("");
   };
+  const choose = (choice: "retry" | "guided" | "nokt" | "later") => act({ a: "stuck-choice", step, part: part.id, choice });
+  const locked = part.needsStep;
   return (
     <div className="grid gap-4">
       {taught ? <p className="text-xl font-semibold leading-snug">{part.question}</p> : null}
@@ -366,29 +374,64 @@ function PartTask({ part, step, busy, act, telemetry, onOffer }: { part: SolvePa
         className="grid gap-3"
         onSubmit={(e) => {
           e.preventDefault();
-          if (!busy) void submit();
+          if (!busy && !locked) void submit();
         }}
       >
         <label htmlFor={`part-${part.id}`} className="text-2xl font-semibold leading-snug" data-testid="part-question">
           {taught ? "Trag die Zahl jetzt selbst ein:" : part.question}
         </label>
         <div className="flex items-center gap-3">
-          <input id={`part-${part.id}`} ref={inputRef} value={value} onChange={(e) => {
+          <input id={`part-${part.id}`} ref={inputRef} value={value} disabled={locked} onChange={(e) => {
               setNotice(null);
               setValue(e.target.value.replace(/[^0-9]/g, "").slice(0, 4));
-            }} inputMode="numeric" autoComplete="off" className="h-14 w-28 rounded-xl border-2 px-3 text-2xl font-semibold" style={{ borderColor: "#8ba8a4" }} aria-describedby={`unit-${part.id}`} data-testid="part-input" />
+            }} inputMode="numeric" autoComplete="off" className="h-14 w-28 rounded-xl border-2 px-3 text-2xl font-semibold disabled:opacity-50" style={{ borderColor: "#8ba8a4" }} aria-describedby={`unit-${part.id}`} data-testid="part-input" />
           <span id={`unit-${part.id}`} className="text-2xl font-semibold">
             {part.unit}
           </span>
         </div>
         <div>
-          <button type="submit" className={btn} style={primary} disabled={busy || !value.trim()} data-testid="part-check">
+          <button type="submit" className={btn} style={primary} disabled={busy || !value.trim() || locked} data-testid="part-check">
             {taught ? "Eintragen" : "Antwort prüfen"}
           </button>
         </div>
       </form>
       {notice ? <Feedback tone="retry" text={notice} /> : part.feedback ? <Feedback tone={part.feedback.tone} text={part.feedback.text} /> : null}
-      {part.offer === "shown" ? (
+      {part.choices ? (
+        <div className="grid gap-3 rounded-2xl px-4 py-4" style={{ background: "#eef1e8" }} data-testid="stuck-choices">
+          {part.choices.noktUnavailable ? (
+            <p className="text-lg" data-testid="stuck-nokt-unavailable">
+              Am besten würdest du jetzt mit Nokt besprechen, was die Frage meint. Das geht im Moment nicht.
+            </p>
+          ) : null}
+          {locked ? <p className="text-lg" data-testid="stuck-needs-step">Bevor du noch einmal antwortest: Arbeite einen Schritt im Hinweis durch.</p> : null}
+          <div className="flex flex-wrap gap-2">
+            {part.choices.nokt ? (
+              <button type="button" className={btn} style={primary} disabled={busy} onClick={() => { void choose("nokt"); onOffer(part.id); }} data-testid="choice-nokt">
+                Mit Nokt reden
+              </button>
+            ) : null}
+            {part.choices.retry ? (
+              <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => { void choose("retry"); inputRef.current?.focus(); }} data-testid="choice-retry">
+                Noch einmal versuchen
+              </button>
+            ) : null}
+            {part.choices.guided ? (
+              <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => { telemetry("hint-open"); void choose("guided").then((ok) => ok && act({ a: "hint", step, part: part.id })); }} data-testid="choice-guided">
+                Schritt für Schritt
+              </button>
+            ) : null}
+            {part.choices.solution ? (
+              <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => void act({ a: "show-solution", step, part: part.id })} data-testid="choice-solution">
+                Lösung ansehen
+              </button>
+            ) : null}
+            <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => void act({ a: "later-part", step, part: part.id })} data-testid="choice-later">
+              Für später aufheben
+            </button>
+          </div>
+        </div>
+      ) : null}
+      {part.offer === "shown" && !part.choices ? (
         <div className="flex flex-wrap items-center gap-3 rounded-2xl px-4 py-3" style={{ background: "#eef1e8" }} data-testid="nokt-offer">
           <p className="text-lg">Nokt kann mit dir herausfinden, was gesucht ist.</p>
           <button type="button" className={btn} style={primary} onClick={() => { void act({ a: "tutor-offer", step, part: part.id, response: "accepted" }); onOffer(part.id); }}>
@@ -401,10 +444,10 @@ function PartTask({ part, step, busy, act, telemetry, onOffer }: { part: SolvePa
       ) : null}
       {taught && part.status === "open" ? (
         <button type="button" className={cn(btn, "justify-self-start")} style={secondary} disabled={busy} onClick={() => void act({ a: "later-part", step, part: part.id })} data-testid="part-later">
-          Fürs nächste Mal aufheben
+          Für später aufheben
         </button>
       ) : null}
-      <HintArea part={part} step={step} busy={busy} act={act} telemetry={telemetry} emphasize={part.phase === "stuck"} />
+      <HintArea part={part} step={step} busy={busy} act={act} telemetry={telemetry} emphasize={false} />
     </div>
   );
 }
@@ -414,7 +457,9 @@ function HintArea({ part, step, busy, act, telemetry, emphasize }: { part: Solve
   return (
     <div className="mt-2 grid gap-3 border-t pt-5" style={{ borderColor: "#dce5df" }} data-testid="hint-area">
       {part.hintsLeft > 0 ? (
-        part.hintAllowed ? (
+        part.hintPending ? (
+          <p className="text-base" data-testid="hint-pending">Beantworte zuerst die Frage in diesem Schritt. Dann kommt der nächste.</p>
+        ) : part.hintAllowed ? (
           <button
             type="button"
             className={cn(btn, "justify-self-start", emphasize && "ring-4 ring-amber-400")}
@@ -519,7 +564,7 @@ function Seedling() {
 
 // --- listening ------------------------------------------------------------------------
 
-const PLACE_PICTURES: Record<string, "greenhouse" | "gate" | "boat"> = { "Ins Gewächshaus": "greenhouse", "Zum Tor": "gate", "Aufs Boot": "boat" };
+const PLACE_PICTURES: Record<string, "greenhouse" | "gate" | "boat"> = { "Ins Gewächshaus": "greenhouse", "Zum Tor": "gate", "Aufs Boot": "boat", "Im Gewächshaus": "greenhouse", "Am Tor": "gate", "Auf dem Boot": "boat" };
 
 function ListenTask({ child, active, busy, act, speech, telemetry }: { child: ChildId; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry }) {
   const listen = active.listen!;

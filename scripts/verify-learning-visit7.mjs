@@ -502,6 +502,27 @@ async function noOverlap(page, a, b) {
   }, [a, b]);
 }
 
+/** Rosa stands in the right third of the painted scene: the bubble must not cover that region (or must sit below the picture). */
+async function bubbleClearsRosa(page) {
+  return page.evaluate(() => {
+    const img = document.querySelector("[data-testid='scene-figure'] img")?.getBoundingClientRect();
+    const b = document.querySelector("[data-testid='scene-bubble']")?.getBoundingClientRect();
+    if (!img || !b) return { ok: false, reason: "missing" };
+    const rosaLeft = img.left + img.width * 0.62;
+    const below = b.top >= img.bottom - 40;
+    return { ok: below || b.right <= rosaLeft, below, bubbleRight: Math.round(b.right), rosaLeft: Math.round(rosaLeft), imgBottom: Math.round(img.bottom), bubbleTop: Math.round(b.top) };
+  });
+}
+async function readable(page) {
+  // task text never smaller than 16 px, the question at least 20 px, and the task card at least 300 px wide
+  return page.evaluate(() => {
+    const q = document.querySelector("[data-testid='part-question']") ?? document.querySelector("#scene-task-title");
+    const card = document.querySelector("[data-testid='scene-task']")?.getBoundingClientRect();
+    const small = [...document.querySelectorAll("[data-testid='scene-task'] p, [data-testid='scene-task'] label, [data-testid='scene-task'] button")].filter((el) => el.offsetParent && parseFloat(getComputedStyle(el).fontSize) < 16).length;
+    return { ok: !!q && parseFloat(getComputedStyle(q).fontSize) >= 20 && (card?.width ?? 0) >= 300 && small === 0, questionPx: q ? parseFloat(getComputedStyle(q).fontSize) : null, cardWidth: Math.round(card?.width ?? 0), smallTexts: small };
+  });
+}
+
 const openPages = [];
 process.on("unhandledRejection", () => {});
 let v7Before = null;
@@ -559,17 +580,29 @@ try {
   await p.keyboard.press("Enter");
   await settle(300);
   check("J1.G2.accidental-enter-no-attempt", (await missionRun()).steps["G2-PACK"].attempts.length === attemptsBefore);
-  await answerPart(p, "5");
+  // double tap on "Antwort prüfen" while the first request is in flight → one attempt
+  await p.locator("[data-testid='part-input']").fill("5");
+  await p.locator("[data-testid='part-check']").dblclick();
+  await settle(700);
+  check("J1.G2.double-tap-one-attempt", (await missionRun()).steps["G2-PACK"].attempts.filter((a) => a.questionId === "full").length === 1);
   check("J1.G2.first-miss-neutral-recheck-amber", (await p.locator("[data-testid='scene-feedback']").getAttribute("data-tone")) === "retry" && (await p.locator("[data-testid='scene-feedback']").innerText()).includes("Lies die Frage noch einmal"));
   await shotScene(p, "desktop-G2-recheck-amber", "First miss: neutral amber recheck, no answer exposed");
+  // a deliberate second submission of the same number is a real attempt — and leads to the choices
   await answerPart(p, "5");
-  check("J1.G2.unchanged-repeat-not-sent", (await missionRun()).steps["G2-PACK"].attempts.filter((a) => a.questionId === "full").length === 1 && (await text(p)).includes("dieselbe Zahl"));
-  await p.locator("[data-testid='hint-open']").click();
+  {
+    const full = (await missionRun()).steps["G2-PACK"].attempts.filter((a) => a.questionId === "full");
+    check("J1.G2.deliberate-repeat-recorded", full.length === 2 && full[1].repeatOf === full[0].no && (await p.locator("[data-testid='scene-feedback']").innerText()).startsWith("Das ist wieder 5."));
+  }
+  check("J1.G2.second-miss-honest-choices-no-auto-hint", (await p.locator("[data-testid='stuck-choices']").count()) === 1 && (await p.locator("[data-testid='stuck-nokt-unavailable']").count()) === 1 && (await p.locator("[data-testid='hint']").count()) === 0 && (await p.locator("[data-testid='choice-solution']").count()) === 0);
+  check("J1.G2.no-exposure-after-two-misses", (await rows("family_learning_exposures")).filter((x) => x.kind === "answer_revealed" && String(x.task_id).includes("ISLAND")).length === 0);
+  await shotScene(p, "desktop-G2-second-miss-choices", "Second miss: honest note that the Nokt talk is unavailable; the child chooses retry, guided steps or later");
+  await p.locator("[data-testid='choice-guided']").click();
   await p.waitForSelector("[data-testid='hint'][data-hint='G2-full-H1']");
+  check("J1.G2.next-step-waits-for-response", (await p.locator("[data-testid='hint-pending']").count()) === 1);
   await p.locator("[data-testid='hint-check-input']").fill("12");
   await p.locator("[data-testid='hint-check-send']").click();
   await p.waitForSelector("[data-testid='hint'] [data-testid='trays']");
-  await shotScene(p, "desktop-G2-hint-check-wrong-representation", "Hint 1 (grouping) opened below the answer; a wrong reply to its small question shows a different representation");
+  await shotScene(p, "desktop-G2-hint-check-wrong-representation", "Guided step 1 (grouping), chosen by the child; a wrong reply to its small question shows a different representation");
   await p.locator("[data-testid='hint-check-input']").fill("16");
   await p.locator("[data-testid='hint-check-send']").click();
   await settle(400);
@@ -584,18 +617,19 @@ try {
   await settle(300);
   await answerPart(p, "4");
   await answerPart(p, "28");
-  check("J1.G2.second-miss-stuck-points-to-hint", (await p.locator("[data-testid='scene-feedback']").getAttribute("data-tone")) === "stuck" && (await p.locator("[data-testid='nokt-offer']").count()) === 0);
-  await shotScene(p, "desktop-G2-stuck-hint-emphasis", "Second miss: amber, points to the reviewed hint; no Nokt offer while Nokt is unavailable");
+  check("J1.G2.total-second-miss-choices", (await p.locator("[data-testid='scene-feedback']").getAttribute("data-tone")) === "stuck" && (await p.locator("[data-testid='stuck-choices']").count()) === 1 && (await p.locator("[data-testid='nokt-offer']").count()) === 0);
   // Nokt (manual): side panel BESIDE the task, not over it
   await p.locator("[data-testid='nokt-button']").click();
   await p.waitForSelector("[data-testid='nokt-panel'][data-mode='unavailable']");
   check("J1.nokt.side-panel-not-overlay-desktop", (await noOverlap(p, "[data-testid='nokt-panel']", "[data-testid='scene-task']")).ok, await noOverlap(p, "[data-testid='nokt-panel']", "[data-testid='scene-task']"));
-  check("J1.nokt.honest-unavailable-no-mic", (await p.locator("[data-testid='nokt-panel']").innerText()).includes("kann noch nicht mit dir sprechen") && (await p.locator("[data-testid='nokt-mic-start']").count()) === 0);
+  check("J1.nokt.honest-unavailable-no-mic-no-promise", (await p.locator("[data-testid='nokt-panel']").innerText()).includes("kann im Moment nicht mit dir sprechen") && !/bald/i.test(await p.locator("[data-testid='nokt-panel']").innerText()) && (await p.locator("[data-testid='nokt-mic-start']").count()) === 0);
+  check("J1.nokt.bubble-clears-rosa-desktop-panel", (await bubbleClearsRosa(p)).ok, await bubbleClearsRosa(p));
+  check("J1.nokt.task-readable-desktop-panel", (await readable(p)).ok, await readable(p));
   await shotScene(p, "desktop-nokt-side-panel", "Nokt (approved avatar) opens beside the task; honest unavailable state; no microphone");
   await p.locator("[data-testid='nokt-close']").click();
   const tutorRows = (await rows("family_learning_support_events")).filter((r) => r.kind === "mission_tutor_open");
   check("J1.nokt.open-recorded-not-help", tutorRows.length >= 1 && JSON.parse(String(tutorRows.at(-1).payload_json)).help === false && JSON.parse(String(tutorRows.at(-1).payload_json)).available === false);
-  await p.locator("[data-testid='hint-open']").click();
+  await p.locator("[data-testid='choice-guided']").click();
   await p.locator("[data-testid='hint-pick-Ja']").click();
   await settle(400);
   await answerPart(p, "5");
@@ -604,7 +638,9 @@ try {
     const r = (await missionRun()).steps["G2-PACK"];
     check("J1.G2.records-per-question", JSON.stringify(Object.fromEntries(Object.entries(r.parts).map(([k, v]) => [k, v.evidence]))) === JSON.stringify({ full: "supported", left: "supported", total: "supported" }) && r.outcome === "supported", Object.fromEntries(Object.entries(r.parts).map(([k, v]) => [k, [v.evidence, v.hints.map((h) => h.id)]])));
     const hintRows = (await rows("family_learning_support_events")).filter((x) => x.kind === "mission_hint").map((x) => JSON.parse(String(x.payload_json)));
-    check("J1.G2.exact-hints-recorded-in-order", JSON.stringify(hintRows.map((h) => [h.hint, h.level, h.afterAttempts])) === JSON.stringify([["G2-full-H1", 1, 1], ["G2-total-H1", 1, 2]]), hintRows);
+    check("J1.G2.exact-hints-recorded-in-order", JSON.stringify(hintRows.map((h) => [h.hint, h.level, h.afterAttempts])) === JSON.stringify([["G2-full-H1", 1, 2], ["G2-total-H1", 1, 2]]), hintRows);
+    const choiceRows = (await rows("family_learning_support_events")).filter((x) => x.kind === "mission_stuck_choice").map((x) => JSON.parse(String(x.payload_json)).choice);
+    check("J1.G2.choices-recorded-not-help", JSON.stringify(choiceRows) === JSON.stringify(["guided", "guided"]), choiceRows);
   }
   check("J1.G2.done-line-not-praise-after-help", !/Super|Perfekt|ohne Hilfe/i.test(await p.locator("[data-testid='scene-bubble']").innerText()));
   await shotScene(p, "desktop-G2-done-diagram", "Problem resolved: exact tray diagram (4 full + 1 with 2) from data; Rosa's closing line; next action");
@@ -619,7 +655,7 @@ try {
   await p.waitForFunction(() => document.querySelector("[data-testid='listen-task']")?.getAttribute("data-voice") === "browser");
   await p.locator("[data-testid='pick-plants-Ins Gewächshaus']").click();
   await settle(300);
-  await p.locator("[data-testid='pick-tools-Zum Tor']").click();
+  await p.locator("[data-testid='pick-tools-Am Tor']").click();
   await waitStep(p, "G4-RADIO", "done");
   check("J1.G4.independent-after-confirmed-play", (await missionRun()).steps["G4-RADIO"].outcome === "independent");
   check("J1.G4.speech-request-names-language", speechRequests.some((r) => r.body?.language === "en" && r.body?.speaker === "character"));
@@ -686,6 +722,7 @@ try {
   }
   await nextBeat(p, "G9-HOME");
   const ending = await p.locator("[data-testid='scene-ending']").innerText();
+  check("J1.G9.two-shipments-exact", JSON.stringify(await p.$$eval("[data-testid='story-task'] [data-testid='trays']", (els) => els.map((e) => [e.getAttribute("data-total"), e.getAttribute("data-groups")]))) === JSON.stringify([["18", "5"], ["11", "4"]]));
   check("J1.G9.truthful-ending", ending.includes("Die zweite Lieferung") && ending.includes("beim ersten Versuch") && !/ohne Fehler|perfekt|Profi|Genie/i.test(ending), ending);
   await shotScene(p, "desktop-G9-ending", "Beat 10: short ending — the delivered result, one actual success, one next step");
   await p.locator("[data-testid='scene-next']").click();
@@ -714,11 +751,17 @@ try {
   await pp.waitForSelector("[data-testid='parent-mission-evidence']");
   const parentText = await pp.locator("[data-testid='parent-mission-evidence']").innerText();
   check("J1.parent.separates-observed-help-tutor-missing-later", parentText.includes("Antworten (in Reihenfolge)") && parentText.includes("G2-full-H1") && parentText.includes("Nokt nicht aktiv") && parentText.includes("nicht erhoben") && parentText.includes("Frische Anwendung am selben Tag"));
+  check("J1.parent.time-per-step-with-rule", parentText.includes("Zeit pro Aufgabe") && parentText.includes("keine Aussage über Aufmerksamkeit") && /Min\. aktiv|nicht gemessen/.test(await pp.locator("[data-testid='time-G2-PACK']").innerText()), await pp.locator("[data-testid='time-G2-PACK']").innerText());
+  check("J1.parent.choices-and-repeat-readable", parentText.includes("absichtlich wiederholt") && parentText.includes("Gewählt: Schritt für Schritt") && !/earlier-hint:|hint-check:/.test(parentText));
+  {
+    const main = await pp.locator("main").innerText().catch(async () => await pp.locator("body").innerText());
+    check("J1.parent.no-raw-kinds-in-main-view", !/mission_[a-z_]+/.test(main), (main.match(/mission_[a-z_]+/g) ?? []).slice(0, 5));
+  }
   await pp.locator("[data-testid='parent-mission-evidence']").scrollIntoViewIfNeeded();
   await shotScene(pp, "parent-visit7-evidence", "Parent: answers in order, exact hints, tutor (none), missing evidence, later check — apart");
   const ev = await api("GET", "/api/family/learning/parent/evidence?child=santiago", null, owner);
   const g2 = ev.json.missionEvidence?.[0]?.steps?.find((s) => s.id === "G2-PACK");
-  check("J1.parent.api-g2-answers-in-order", JSON.stringify(g2?.questions?.[0]?.answers?.map((a) => [a.raw, a.kind])) === JSON.stringify([["5", "answer"], ["12", "hint-check"], ["16", "hint-check"], ["4", "answer"]]), g2?.questions?.[0]?.answers);
+  check("J1.parent.api-g2-answers-in-order", JSON.stringify(g2?.questions?.[0]?.answers?.map((a) => [a.raw, a.kind])) === JSON.stringify([["5", "answer"], ["5", "answer"], ["12", "hint-check"], ["16", "hint-check"], ["4", "answer"]]), g2?.questions?.[0]?.answers);
   const childParent = await api("GET", "/api/family/learning/parent/evidence?child=santiago", null, assistant);
   check("J1.parent.child-account-refused", childParent.status === 401 || childParent.status === 403, childParent.status);
   // Visit 6 history after a complete Visit 7: the stored run, its visit record, its interest and every Visit 6 row unchanged.
@@ -742,9 +785,25 @@ try {
   await shotScene(t, "ipad-G1", "iPad: scene and bubble at 820×1180");
   await t.locator("[data-testid='scene-next']").tap();
   await waitStep(t, "G2-PACK");
-  for (const v of ["3", "5", "6"]) await answerPart(t, v);
-  check("J2.G2.teaching-after-third-miss", (await t.locator("[data-testid='part-teach']").count()) === 1 && (await t.locator("[data-testid='hint-open']").count()) === 0);
-  await shotScene(t, "ipad-G2-worked-teaching", "Third miss: worked teaching (recorded before shown), then the child's own entry");
+  // accidental duplicate delivery: the same request sent twice with one idempotency key is applied once
+  {
+    const v0 = await view();
+    const body = { op: { op: "mission", action: { a: "answer-part", step: "G2-PACK", part: "full", value: "3" } }, expectedRevision: v0.revision, idempotencyKey: "j2-dup-transport-1", context: contextOf(v0), tz: TZ };
+    const a1 = await api("PUT", "/api/family/learning/mission", body, assistant, bearer);
+    const a2 = await api("PUT", "/api/family/learning/mission", body, assistant, bearer);
+    check("J2.transport-duplicate-applied-once", a1.json?.status === "applied" && a2.json?.status === "replayed" && (await missionRun()).steps["G2-PACK"].attempts.filter((a) => a.questionId === "full").length === 1, [a1.json?.status, a2.json?.status]);
+    await t.reload();
+    await waitStep(t, "G2-PACK");
+  }
+  await answerPart(t, "5");
+  await answerPart(t, "6");
+  check("J2.G2.three-misses-no-solution-shown", (await t.locator("[data-testid='part-teach']").count()) === 0 && (await rows("family_learning_exposures")).filter((x) => x.kind === "answer_revealed" && String(x.task_id).includes("ISLAND")).length === 0);
+  check("J2.G2.further-try-needs-guided-step", (await t.locator("[data-testid='stuck-needs-step']").count()) === 1 && (await t.locator("[data-testid='part-input']").isDisabled()) && (await t.locator("[data-testid='choice-solution']").count()) === 1);
+  await shotScene(t, "ipad-G2-three-misses-choices", "Three misses: no solution shown; another try needs a guided step; solution or later are the child's choices");
+  await t.locator("[data-testid='choice-solution']").tap();
+  await t.waitForSelector("[data-testid='part-teach']");
+  check("J2.G2.solution-exposure-recorded-when-chosen", (await rows("family_learning_exposures")).filter((x) => x.kind === "answer_revealed" && String(x.task_id).endsWith("/full")).length === 1);
+  await shotScene(t, "ipad-G2-chosen-solution", "Worked solution shown because the child chose it; exposure recorded now; then his own entry");
   await answerPart(t, "5");
   check("J2.G2.wrong-copy-stays-open", (await t.locator("[data-testid='scene-feedback']").getAttribute("data-tone")) === "practice-wrong");
   await answerPart(t, "4");
@@ -759,6 +818,8 @@ try {
   await t.locator("[data-testid='nokt-button']").tap();
   await t.waitForSelector("[data-testid='nokt-panel']");
   check("J2.nokt.side-by-side-on-ipad", (await noOverlap(t, "[data-testid='nokt-panel']", "[data-testid='scene-task']")).ok);
+  check("J2.nokt.bubble-clears-rosa-ipad-panel", (await bubbleClearsRosa(t)).ok, await bubbleClearsRosa(t));
+  check("J2.nokt.task-readable-ipad-panel", (await readable(t)).ok, await readable(t));
   await shotScene(t, "ipad-nokt-side-panel", "iPad: Nokt panel beside the narrowed task");
   await t.locator("[data-testid='nokt-close']").tap();
   await answerPart(t, "5");
@@ -778,7 +839,7 @@ try {
   await t.waitForSelector("[data-testid='listen-script']");
   await t.locator("[data-testid='pick-plants-Ins Gewächshaus']").tap();
   await settle(300);
-  await t.locator("[data-testid='pick-tools-Zum Tor']").tap();
+  await t.locator("[data-testid='pick-tools-Am Tor']").tap();
   await waitStep(t, "G4-RADIO", "done");
   check("J2.G4.text-help-supported-never-independent", (await missionRun()).steps["G4-RADIO"].outcome === "supported");
   await t.locator("[data-testid='scene-next']").tap();
@@ -813,6 +874,8 @@ try {
     const tb = await t.locator("[data-testid='scene-task']").boundingBox();
     check("J2.nokt.phone-in-flow-above-task", pb.y + pb.height <= tb.y + 1 && pb.width > 300, { panel: pb, task: tb });
   }
+  check("J2.phone.bubble-clears-rosa", (await bubbleClearsRosa(t)).ok, await bubbleClearsRosa(t));
+  check("J2.phone.task-readable", (await readable(t)).ok, await readable(t));
   await shotScene(t, "phone-nokt-in-flow", "Phone width: Nokt opens in the page flow (no overlay)");
 
   }

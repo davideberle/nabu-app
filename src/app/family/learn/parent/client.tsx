@@ -519,6 +519,38 @@ function CorrectionForm({ attempt, child, ops }: { attempt: EvidenceAttempt; chi
   );
 }
 
+const MISSION_SUPPORT_DE: Record<string, string> = {
+  listen_play: "Nachricht abgespielt (keine Hilfe)",
+  listen_outcome: "Gerät meldet Abspiel-Ende oder Fehler (keine Hilfe)",
+  line_audio: "Satz einer Figur vorgespielt (keine Hilfe)",
+  tutor_open: "Nokt geöffnet (keine Hilfe)",
+  tutor_unavailable: "Gespräch mit Nokt wäre nötig gewesen — nicht verfügbar",
+  tutor_offer: "Angebot, mit Nokt zu reden",
+  tutor_dispatch: "Frage an Nokt gestellt",
+  tutor_outcome: "Einschätzung von Nokt",
+  stuck_choice: "Wahl, wie es weitergeht (keine Hilfe)",
+  hint: "Hinweis",
+  representation: "anderes Bild nach falscher Antwort im Hinweis",
+  direct_teaching: "Lösung gezeigt",
+  transcript: "Text der Nachricht gelesen",
+  translation: "deutsche Übersetzung",
+  line_translation: "Satz übersetzt",
+  word_bank: "Wörter-Hinweis geöffnet",
+  language_repair: "Schreibkorrektur gezeigt",
+  answer_shown: "Antwort gezeigt",
+  spacing_correction: "Abstand-Korrektur gezeigt",
+  clarification: "Erklärung",
+};
+const SUPPORT_KIND_DE: Record<string, string> = { read_aloud: "vorgelesen", gloss: "Wort erklärt", counters: "Zählhilfe", representation: "Darstellung", clarification: "Erklärung", example_shown: "Beispiel gezeigt", tutor_question: "Frage an den Tutor", tutor_reply: "Antwort des Tutors", word_choice: "Wortauswahl", mini_lesson: "kleine Erklärung" };
+function readableSupport(kind: string): string {
+  if (kind.startsWith("mission_")) return MISSION_SUPPORT_DE[kind.slice(8)] ?? kind.slice(8).replace(/_/g, " ");
+  return SUPPORT_KIND_DE[kind] ?? kind.replace(/_/g, " ");
+}
+function readableTask(taskId: string): string {
+  const parts = taskId.split("/");
+  return parts.length > 1 ? parts.slice(1).join(" · ") : taskId;
+}
+
 function SupportList({ evidence, filter }: { evidence: Evidence; filter: (kind: string) => boolean }) {
   const items = evidence.supports.filter((s) => filter(s.kind));
   return (
@@ -532,7 +564,11 @@ function SupportList({ evidence, filter }: { evidence: Evidence; filter: (kind: 
             const payload = (s.payload ?? {}) as Record<string, unknown>;
             return (
               <li key={s.id} className="rounded-xl bg-secondary px-3 py-2">
-                <span className="font-mono text-tertiary">{fmt(s.createdAt)}</span> · {s.kind} {s.taskId ? `(${s.taskId})` : ""}
+                <span className="font-mono text-tertiary">{fmt(s.createdAt)}</span> · {readableSupport(s.kind)} {s.taskId ? <span className="text-tertiary">— {readableTask(s.taskId)}</span> : null}
+                <details className="inline-block align-top text-tertiary">
+                  <summary className="cursor-pointer text-xs">Details</summary>
+                  <span className="block font-mono text-xs">{s.kind}{s.taskId ? ` · ${s.taskId}` : ""}</span>
+                </details>
                 {s.kind === "tutor_reply" ? (() => {
                   // ID28: origin AND delivery together — displayed / reviewed prompt / used in the review / failed / withheld / unknown
                   const d = tutorReplyDelivery(payload);
@@ -1289,7 +1325,14 @@ function interestText(i: { kind: string; text: string | null } | null): string {
 }
 
 /** Planning input for the next visit — the child's own words first, then open retrieval items and the typing calibration. */
-type MissionEvidenceView = NonNullable<ReturnType<typeof missionEvidence>>;
+type MissionEvidenceView = NonNullable<ReturnType<typeof missionEvidence>> & { time?: { observed: boolean; byStep: Record<string, { enters: number; activeSeconds: number }>; idleRuleSeconds: number; hiddenIntervals: number | null } };
+
+/** "about 2 min" — rounded so it is not read as precise; the rule behind it is stated once in the panel. */
+function activeTime(seconds: number | undefined): string {
+  if (seconds === undefined) return "nicht gemessen";
+  if (seconds < 60) return `unter 1 Min. aktiv`;
+  return `ca. ${Math.round(seconds / 60)} Min. aktiv`;
+}
 
 const RESULT_DE: Record<string, string> = { "first-try": "beim ersten Versuch", "after-retry": "nach erneutem Versuch", "after-hint": "mit Hinweis", "after-teaching": "nach gezeigter Lösung", "kept-for-later": "aufgehoben", open: "offen" };
 
@@ -1302,11 +1345,17 @@ function MissionEvidencePanel({ evidence }: { evidence: MissionEvidenceView }) {
     <section className="rounded-2xl border border-primary bg-primary p-4" data-testid="parent-mission-evidence" data-mission={evidence.mission}>
       <h3 className="text-base font-semibold text-primary">{evidence.title}: was beobachtet wurde</h3>
       <p className="mt-1 text-sm text-tertiary">{evidence.note}</p>
+      <p className="mt-1 text-sm text-tertiary" data-testid="parent-time-note">
+        {evidence.time?.observed
+          ? `Zeit pro Aufgabe: Minuten, in denen auf diesem Bildschirm getippt oder geklickt wurde, mit höchstens ${evidence.time.idleRuleSeconds} s Pause dazwischen. Lesen oder Zuhören ohne Eingabe zählt nicht mit, Zeit im Hintergrund auch nicht${evidence.time.hiddenIntervals ? ` (${evidence.time.hiddenIntervals}× war die App im Hintergrund)` : ""}. Das ist keine Aussage über Aufmerksamkeit oder Anstrengung.`
+          : "Zeit pro Aufgabe: keine Messung vom Gerät angekommen — unbekannt, nicht null."}
+      </p>
       <div className="mt-3 overflow-x-auto">
         <table className="w-full min-w-[880px] text-left text-sm text-primary">
           <thead className="text-tertiary">
             <tr>
               <th className="py-1 pr-3">Aufgabe</th>
+              <th className="py-1 pr-3">Zeit</th>
               <th className="py-1 pr-3">Antworten (in Reihenfolge)</th>
               <th className="py-1 pr-3">Hilfe</th>
               <th className="py-1 pr-3">Tutor</th>
@@ -1322,13 +1371,15 @@ function MissionEvidencePanel({ evidence }: { evidence: MissionEvidenceView }) {
                   <br />
                   <span className="text-tertiary">{s.id} · {s.status}</span>
                 </td>
+                <td className="py-2 pr-3" data-testid={`time-${s.id}`}>{evidence.time?.observed ? activeTime(evidence.time.byStep[s.id]?.activeSeconds) : "unbekannt"}</td>
                 <td className="py-2 pr-3">
                   {s.questions.length
                     ? s.questions.map((q) => (
                         <div key={q.taskId} className="mb-1">
                           <span className="text-tertiary">{q.question}</span>
                           <br />
-                          {q.answers.map((a) => `${a.kind === "hint-check" ? "(im Hinweis) " : a.kind === "practice" ? "(Abschrift) " : ""}«${a.raw}» ${a.correct === true ? "✓" : a.correct === false ? "✗" : "?"}`).join(" → ") || "—"}
+                          {q.answers.map((a) => `${a.kind === "hint-check" ? "(im Hinweis) " : a.kind === "practice" ? "(nach Lösung) " : ""}«${a.raw}» ${a.correct === true ? "✓" : a.correct === false ? "✗" : "?"}${a.repeatOf ? " (absichtlich wiederholt)" : ""}`).join(" → ") || "—"}
+                          {q.choices.length ? <><br /><span className="text-tertiary">Gewählt: {q.choices.join(" → ")}</span></> : null}
                           <br />
                           <strong>{RESULT_DE[q.result] ?? q.result}</strong> — {q.reading}
                         </div>
@@ -1336,8 +1387,14 @@ function MissionEvidencePanel({ evidence }: { evidence: MissionEvidenceView }) {
                     : s.observed.join(" · ") || "—"}
                 </td>
                 <td className="py-2 pr-3">
-                  {s.questions.flatMap((q) => q.hints.map((h) => `${h.id} (Stufe ${h.level}, nach ${h.afterAttempts} Antwort${h.afterAttempts === 1 ? "" : "en"})`)).join(" · ") || s.support.filter((x) => !["tutor-open", "line-audio", "listen-play", "listen-outcome"].includes(x)).join(" · ") || "keine"}
+                  {s.questions.flatMap((q) => q.hints.map((h) => `Hinweis ${h.level} (${h.id}) nach ${h.afterAttempts} Antwort${h.afterAttempts === 1 ? "" : "en"}`)).join(" · ") || s.support.filter((x) => !/^(tutor-|line-audio|listen-|stuck-choice)/.test(x)).join(" · ") || "keine"}
                   {s.questions.some((q) => q.exposure.length) ? <><br />Antwort sichtbar durch: {s.questions.flatMap((q) => q.exposure).join(", ")}</> : null}
+                  {s.supportRaw.length ? (
+                    <details className="mt-1 text-tertiary">
+                      <summary>Gespeicherte Einträge</summary>
+                      <span className="font-mono text-xs">{s.supportRaw.join(", ")}</span>
+                    </details>
+                  ) : null}
                 </td>
                 <td className="py-2 pr-3">{s.tutor}</td>
                 <td className="py-2 pr-3">{s.missing.join(" ") || "—"}</td>

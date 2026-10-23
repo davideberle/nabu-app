@@ -189,6 +189,8 @@ export type MissionStep = {
   write?: MissionWrite;
   /** Content v6: an exact quantity picture shown with a story/outcome step. */
   diagram?: MissionDiagram | null;
+  /** Content v6: several labelled quantity pictures (e.g. two shipments), each with exact counts. */
+  shipments?: { label: string; diagram: MissionDiagram }[];
   /** Recall steps: the earlier evidence this retrieval revisits (an open practice focus id or a step of this mission). */
   retrieval?: { focus?: string; step?: string; note: string };
   /** Supplies granted when the step ends (any outcome that lets the mission continue). */
@@ -391,6 +393,7 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
       }
     }
     if (s.diagram !== undefined && s.diagram !== null && !checkDiagram(s.diagram)) problems.push(`${sl}: malformed diagram`);
+    if (s.shipments !== undefined && (!Array.isArray(s.shipments) || s.shipments.some((x) => !isRecord(x) || !str(x.label) || !checkDiagram(x.diagram)))) problems.push(`${sl}: malformed shipments`);
     if (s.when !== undefined) {
       const w = isRecord(s.when) ? s.when : null;
       if (!w || !stepIds.includes(String(w.step)) || w.unlessEvidence !== "independent") problems.push(`${sl}: when must name a step and unlessEvidence "independent"`);

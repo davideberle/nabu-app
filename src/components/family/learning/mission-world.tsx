@@ -53,7 +53,7 @@ const btnPrimaryStyle = { background: BARK, borderColor: BARK } as const;
 const btnSecondaryStyle = { background: "#fffdf6", borderColor: BARK, color: INK } as const;
 
 /** Applies one mission action; resolves to the server result (truthy) or null when it was not applied. */
-export type Act = (action: MissionAction) => Promise<Record<string, unknown> | null>;
+export type Act = (action: MissionAction, options?: { idempotencyKey?: string }) => Promise<Record<string, unknown> | null>;
 
 export type MissionWorldProps = {
   child: ChildId;

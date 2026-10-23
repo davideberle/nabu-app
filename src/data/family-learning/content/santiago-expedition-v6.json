@@ -3934,7 +3934,7 @@
                 "unit": "Tragen",
                 "answer": 4,
                 "recheck": "Noch nicht ganz. Lies die Frage noch einmal und prüfe deine Zahl.",
-                "stuck": "Das ist knifflig. Öffne unten den Hinweis. Er hilft dir Schritt für Schritt.",
+                "stuck": "Noch nicht richtig. Wie möchtest du weitermachen?",
                 "hints": [
                   {
                     "id": "G2-full-H1",
@@ -3982,7 +3982,7 @@
                 "unit": "Setzlinge",
                 "answer": 2,
                 "recheck": "Noch nicht ganz. Lies die Frage noch einmal und prüfe deine Zahl.",
-                "stuck": "Das ist knifflig. Öffne unten den Hinweis. Er hilft dir Schritt für Schritt.",
+                "stuck": "Noch nicht richtig. Wie möchtest du weitermachen?",
                 "hints": [
                   {
                     "id": "G2-left-H1",
@@ -4016,7 +4016,7 @@
                 "unit": "Tragen",
                 "answer": 5,
                 "recheck": "Noch nicht ganz. Lies die Frage noch einmal: Alle Setzlinge sollen mitkommen.",
-                "stuck": "Das ist knifflig. Öffne unten den Hinweis. Er hilft dir Schritt für Schritt.",
+                "stuck": "Noch nicht richtig. Wie möchtest du weitermachen?",
                 "hints": [
                   {
                     "id": "G2-total-H1",
@@ -4150,11 +4150,11 @@
               "prompt": "Wo sollen die Werkzeuge bleiben?",
               "kind": "pick",
               "options": [
-                "Ins Gewächshaus",
-                "Zum Tor",
-                "Aufs Boot"
+                "Im Gewächshaus",
+                "Am Tor",
+                "Auf dem Boot"
               ],
-              "answer": "Zum Tor",
+              "answer": "Am Tor",
               "retryHint": "Hör noch einmal auf das Ende der Nachricht."
             }
           ]
@@ -4387,7 +4387,7 @@
                 "answer": 4,
                 "hintsAfterFirstAttempt": true,
                 "recheck": "Noch nicht ganz. Lies die Frage noch einmal: Alle 11 Setzlinge sollen mitkommen.",
-                "stuck": "Das ist knifflig. Öffne unten den Hinweis. Er hilft dir Schritt für Schritt.",
+                "stuck": "Noch nicht richtig. Wie möchtest du weitermachen?",
                 "hints": [
                   {
                     "id": "G7-total-H1",
@@ -4493,16 +4493,30 @@
           ],
           "required": true,
           "objective": "outcome",
-          "diagram": {
-            "total": 18,
-            "perGroup": 4,
-            "unit": "Setzlinge",
-            "container": "Trage"
-          },
+          "shipments": [
+            {
+              "label": "Erste Lieferung: 18 Setzlinge in 5 Tragen",
+              "diagram": {
+                "total": 18,
+                "perGroup": 4,
+                "unit": "Setzlinge",
+                "container": "Trage"
+              }
+            },
+            {
+              "label": "Zweite Lieferung: 11 Setzlinge in 4 kleinen Tragen",
+              "diagram": {
+                "total": 11,
+                "perGroup": 3,
+                "unit": "Setzlinge",
+                "container": "Trage"
+              }
+            }
+          ],
           "intro": [
             {
               "speaker": "rosa",
-              "text": "Alle Setzlinge sind im Gewächshaus. Die Werkzeuge liegen beim Tor.",
+              "text": "Beide Lieferungen sind im Gewächshaus: zuerst 18 Setzlinge, dann noch 11. Die Werkzeuge liegen am Tor.",
               "language": "de"
             }
           ],
@@ -4526,12 +4540,20 @@
           "label": "5 Tragen mit 18 Setzlingen"
         },
         {
+          "id": "W-TRAYS-2",
+          "after": "G7-FRESH",
+          "prop": "trays",
+          "place": "harbor",
+          "count": 4,
+          "label": "4 kleine Tragen mit 11 Setzlingen"
+        },
+        {
           "id": "W-GARDEN",
           "after": "G9-HOME",
           "prop": "garden",
           "place": "harbor",
-          "count": 18,
-          "label": "18 Setzlinge im Gewächshaus"
+          "count": 29,
+          "label": "29 Setzlinge im Gewächshaus (18 + 11)"
         }
       ],
       "typingBlock": {
@@ -4568,12 +4590,12 @@
         "maxPracticeAttempts": 2
       },
       "nextAdventure": {
-        "prompt": "Was machen wir beim nächsten Besuch im Inselgarten?",
+        "prompt": "Das Gewächshaus ist jetzt voll. Was machen wir beim nächsten Besuch?",
         "hint": "Wähl eine Idee, schreib deine eigene, oder sag, dass du es noch nicht weisst.",
         "choices": [
           {
             "id": "greenhouse",
-            "label": "Ein Gewächshaus bauen",
+            "label": "Das Gewächshaus vergrössern",
             "picture": "greenhouse"
           },
           {
