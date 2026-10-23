@@ -650,7 +650,7 @@ try {
   await p.waitForSelector("[data-testid='nokt-panel'][data-mode='unavailable']");
   check("J1.nokt.side-panel-not-overlay-desktop", (await noOverlap(p, "[data-testid='nokt-panel']", "[data-testid='scene-task']")).ok, await noOverlap(p, "[data-testid='nokt-panel']", "[data-testid='scene-task']"));
   check("J1.nokt.honest-unavailable-no-mic-no-promise", (await p.locator("[data-testid='nokt-panel']").innerText()).includes("kann im Moment nicht mit dir sprechen") && !/bald/i.test(await p.locator("[data-testid='nokt-panel']").innerText()) && (await p.locator("[data-testid='nokt-mic-start']").count()) === 0);
-  // The Nokt transcription route itself refuses outside the isolated fictional stub (real-child activation is gated), and needs the child credential.
+  // The Nokt transcription route needs the child credential and refuses (503) on a server without the explicit provider setting — this server has none.
   const sttRefusal = await p.evaluate(async () => {
     const audio = () => {
       const f = new FormData();
@@ -662,7 +662,7 @@ try {
     const r = await fetch("/api/family/learning/nokt/transcribe", { method: "POST", headers: { authorization: "Bearer " + s.token }, body: audio() });
     return { anonymous: anonymous.status, status: r.status, cache: r.headers.get("cache-control"), body: await r.json() };
   });
-  check("J1.nokt.transcribe-route-gated-outside-isolated-stub", sttRefusal.anonymous === 401 && sttRefusal.status === 503 && !("transcript" in sttRefusal.body) && /no-store/.test(sttRefusal.cache ?? ""), sttRefusal);
+  check("J1.nokt.transcribe-route-refuses-without-provider-setting", sttRefusal.anonymous === 401 && sttRefusal.status === 503 && !("transcript" in sttRefusal.body) && /no-store/.test(sttRefusal.cache ?? ""), sttRefusal);
   check("J1.nokt.bubble-clears-rosa-desktop-panel", (await bubbleClearsRosa(p)).ok, await bubbleClearsRosa(p));
   check("J1.nokt.task-readable-desktop-panel", (await readable(p)).ok, await readable(p));
   await shotScene(p, "desktop-nokt-side-panel", "Nokt (approved avatar) opens beside the task; honest unavailable state; no microphone");

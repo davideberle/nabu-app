@@ -15,6 +15,8 @@
 // Push-to-talk is real in that mode (microphone → /api/family/learning/nokt/
 // transcribe → the editable transcript); the recognizer behind it is chosen in
 // `family-learning-nokt-stt.ts` — a fake by default, OpenAI only on request.
+// Transcription being configured for a deployment does NOT change this mode:
+// outside the isolated stub Nokt stays `unavailable` (no replies, no mic).
 // ---------------------------------------------------------------------------
 
 export type NoktMode = "unavailable" | "fictional-stub";

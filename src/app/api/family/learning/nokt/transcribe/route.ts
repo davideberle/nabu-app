@@ -10,8 +10,10 @@ import { AUDIO_UPLOAD_ISSUE_MESSAGES, checkAudioUpload, createTranscriptionAdmis
  * decides whether to send it; this route never forwards it anywhere.
  *
  * Order: household session + child learning credential, then the provider
- * gate (real-child transcription is not activated: 503 outside the isolated
- * fictional database), then admission, then the body. Refusals are closed
+ * gate (OpenAI only where the deployment sets FAMILY_NOKT_STT_PROVIDER=openai
+ * and OPENAI_API_KEY; otherwise 503, or the fake on the isolated fictional
+ * database), then admission, then the body. Recognition only: nothing here
+ * enables Nokt's replies. Refusals are closed
  * strings; neither the audio nor the transcript is stored or logged. A
  * cancelled request (the child cancelled, closed Nokt or changed task)
  * aborts the upstream call through `request.signal`.

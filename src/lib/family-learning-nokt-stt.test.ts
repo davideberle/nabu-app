@@ -5,12 +5,13 @@
 
 import { deepEqual, equal, ok, rejects } from "node:assert/strict";
 import { describe, it } from "node:test";
+import { noktModeFromEnv } from "./family-learning-nokt.ts";
 import { createLearningClient, LEARNING_NOKT_TRANSCRIBE_PATH, LEARNING_SESSION_PATH } from "./family-learning-client.ts";
 import {
   buildNoktSttForm,
   FICTIONAL_TRANSCRIPT,
   fictionalNoktTranscriber,
-  NOKT_CHILD_TRANSCRIPTION_ACTIVATED,
+  NOKT_TRANSCRIPTION_AUTHORIZATION,
   NOKT_STT_MODEL,
   noktSttModeFromEnv,
   noktTranscriberFor,
@@ -107,31 +108,36 @@ describe("Nokt STT — owner selection gpt-transcribe, no expected-answer bias",
   });
 });
 
-describe("Nokt STT — real-child activation stays gated", () => {
-  it("is not activated in this build", () => {
-    equal(NOKT_CHILD_TRANSCRIPTION_ACTIVATED, false);
+describe("Nokt STT — owner-authorized activation, explicit per deployment", () => {
+  it("records the owner's authorization (recognition only)", () => {
+    equal(NOKT_TRANSCRIPTION_AUTHORIZATION.at, "2026-10-23T12:32+02:00");
+    ok(NOKT_TRANSCRIPTION_AUTHORIZATION.scope.includes("gpt-transcribe"));
   });
 
-  it("production-shaped environments are off even with a provider flag and a key", () => {
-    const withProvider = { FAMILY_NOKT_STT_PROVIDER: "openai", OPENAI_API_KEY: FAKE_KEY };
-    deepEqual(noktSttModeFromEnv({ ...withProvider, VERCEL: "1", VERCEL_ENV: "production" }), { kind: "off" });
-    deepEqual(noktSttModeFromEnv({ ...withProvider, TURSO_DATABASE_URL: "libsql://x" }), { kind: "off" });
-    deepEqual(noktSttModeFromEnv({ ...withProvider, ...ISOLATED, VERCEL_URL: "x.vercel.app" }), { kind: "off" });
-    deepEqual(noktSttModeFromEnv({ ...withProvider, NABU_DB_DIR: "/tmp/x" }), { kind: "off" }, "the fictional flag is required too");
+  it("a deployment transcribes only with the explicit provider setting AND a key", () => {
+    const deployed = { VERCEL: "1", VERCEL_ENV: "production", TURSO_DATABASE_URL: "libsql://x" };
+    deepEqual(noktSttModeFromEnv(deployed), { kind: "off" });
+    deepEqual(noktSttModeFromEnv({ ...deployed, OPENAI_API_KEY: FAKE_KEY }), { kind: "off" }, "a key alone never selects a paid provider");
+    deepEqual(noktSttModeFromEnv({ ...deployed, FAMILY_NOKT_STT_PROVIDER: "openai" }), { kind: "unconfigured" });
+    deepEqual(noktSttModeFromEnv({ ...deployed, FAMILY_NOKT_STT_PROVIDER: "openai", OPENAI_API_KEY: FAKE_KEY }), { kind: "openai", apiKey: FAKE_KEY });
+    deepEqual(noktSttModeFromEnv({ ...deployed, FAMILY_NOKT_STT_PROVIDER: "elevenlabs", OPENAI_API_KEY: FAKE_KEY }), { kind: "off" }, "no other provider name is honoured");
     equal(noktTranscriberFor({ kind: "off" }), null);
-  });
-
-  it("the isolated fictional database uses the fake unless OpenAI is named explicitly", () => {
-    deepEqual(noktSttModeFromEnv(ISOLATED), { kind: "fictional-fake" });
-    deepEqual(noktSttModeFromEnv({ ...ISOLATED, OPENAI_API_KEY: FAKE_KEY }), { kind: "fictional-fake" }, "a key alone never selects a paid provider");
-    deepEqual(noktSttModeFromEnv({ ...ISOLATED, FAMILY_NOKT_STT_PROVIDER: "openai", OPENAI_API_KEY: FAKE_KEY }), { kind: "openai", apiKey: FAKE_KEY });
-    deepEqual(noktSttModeFromEnv({ ...ISOLATED, FAMILY_NOKT_STT_PROVIDER: "openai" }), { kind: "unconfigured" });
     equal(noktTranscriberFor({ kind: "unconfigured" }), null);
   });
 
-  it("once activated in a reviewed change, a deployment must name its provider — never the fake", () => {
-    deepEqual(noktSttModeFromEnv({ VERCEL: "1" }, true), { kind: "unconfigured" });
-    deepEqual(noktSttModeFromEnv({ VERCEL: "1", FAMILY_NOKT_STT_PROVIDER: "openai", OPENAI_API_KEY: FAKE_KEY }, true), { kind: "openai", apiKey: FAKE_KEY });
+  it("activating recognition does not enable Nokt's conversation", () => {
+    const deployed = { VERCEL: "1", VERCEL_ENV: "production", TURSO_DATABASE_URL: "libsql://x", FAMILY_NOKT_STT_PROVIDER: "openai", OPENAI_API_KEY: FAKE_KEY };
+    equal(noktSttModeFromEnv(deployed).kind, "openai");
+    equal(noktModeFromEnv(deployed), "unavailable");
+    equal(noktModeFromEnv({ ...deployed, FAMILY_NOKT_FICTIONAL_STUB: "1" }), "unavailable");
+  });
+
+  it("the isolated fictional database uses the fake unless OpenAI is named explicitly; the fake never runs anywhere else", () => {
+    deepEqual(noktSttModeFromEnv(ISOLATED), { kind: "fictional-fake" });
+    deepEqual(noktSttModeFromEnv({ ...ISOLATED, OPENAI_API_KEY: FAKE_KEY }), { kind: "fictional-fake" });
+    deepEqual(noktSttModeFromEnv({ ...ISOLATED, FAMILY_NOKT_STT_PROVIDER: "openai", OPENAI_API_KEY: FAKE_KEY }), { kind: "openai", apiKey: FAKE_KEY });
+    deepEqual(noktSttModeFromEnv({ NABU_DB_DIR: "/tmp/x" }), { kind: "off" }, "an isolated DB without the stub flag does not transcribe");
+    deepEqual(noktSttModeFromEnv({ ...ISOLATED, VERCEL_URL: "x.vercel.app" }), { kind: "off" });
   });
 
   it("the fake makes no network call and returns a fictional sentence that answers no task", async () => {

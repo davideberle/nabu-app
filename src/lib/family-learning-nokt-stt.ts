@@ -19,21 +19,25 @@
 // Audio and transcript are transient: never written, never logged. Errors
 // carry the upstream status only.
 //
-// Real-child activation is GATED (`NOKT_CHILD_TRANSCRIPTION_ACTIVATED = false`).
-// OpenAI documents `/v1/audio/transcriptions` with no abuse-monitoring and no
-// application-state retention by default, and separately asks that personal
-// data of children under 13 is processed only "after implementing zero data
-// retention in our API". Whether the endpoint default satisfies that is not
-// stated in the documentation (checked October 23), so this build transcribes
-// for Nokt only on an isolated local database (`fictional-stub`): a fake
-// recognizer by default, or OpenAI with an explicit provider flag and key for
-// adult-voiced fictional tests. Anywhere else the route answers 503.
+// Activation: David authorized OpenAI transcription for Nokt on October 23
+// (12:32, `NOKT_TRANSCRIPTION_AUTHORIZATION`). The deployment still decides
+// explicitly: OpenAI is used only where `FAMILY_NOKT_STT_PROVIDER=openai` and
+// `OPENAI_API_KEY` are both set — a key alone never selects it — and the release
+// owner sets them after release verification. Without them a deployed build
+// answers 503; the isolated fictional database falls back to a fake recognizer.
+// This switches on recognition only: Nokt's conversation (replies, tutor
+// outcomes) stays governed by `noktModeFromEnv` and is not enabled here.
+// Documented facts (checked October 23), kept as they are: OpenAI lists
+// `/v1/audio/transcriptions` with no abuse-monitoring and no application-state
+// retention by default; its under-18 guidance separately asks for zero data
+// retention before processing personal data of children under 13; the
+// documentation does not say whether the endpoint default meets that.
 // ---------------------------------------------------------------------------
 
 import { noktModeFromEnv } from "./family-learning-nokt.ts";
 
-/** Stays false until the under-13 question is resolved and the owner activates it in a reviewed change. */
-export const NOKT_CHILD_TRANSCRIPTION_ACTIVATED = false;
+/** The owner's activation of OpenAI transcription for Nokt (recognition only; not a provider-policy exception, not a waiver of gates). */
+export const NOKT_TRANSCRIPTION_AUTHORIZATION = { by: "David Eberle (parent, account owner)", at: "2026-10-23T12:32+02:00", scope: "OpenAI gpt-transcribe for Nokt's microphone" } as const;
 
 export const OPENAI_TRANSCRIPTIONS_URL = "https://api.openai.com/v1/audio/transcriptions";
 export const NOKT_STT_MODEL = "gpt-transcribe";
@@ -66,14 +70,13 @@ export type NoktSttMode =
  * Which recognizer this server may use for Nokt. Never reads a request: the
  * decision is the deployment's, so no client can switch providers.
  */
-export function noktSttModeFromEnv(env: Record<string, string | undefined>, activated: boolean = NOKT_CHILD_TRANSCRIPTION_ACTIVATED): NoktSttMode {
-  if (!activated && noktModeFromEnv(env) !== "fictional-stub") return { kind: "off" };
+export function noktSttModeFromEnv(env: Record<string, string | undefined>): NoktSttMode {
   if (env.FAMILY_NOKT_STT_PROVIDER === "openai") {
     const apiKey = env.OPENAI_API_KEY;
     return apiKey ? { kind: "openai", apiKey } : { kind: "unconfigured" };
   }
-  // Only the isolated fictional database falls back to the fake; an activated deployment must name its provider.
-  return activated && noktModeFromEnv(env) !== "fictional-stub" ? { kind: "unconfigured" } : { kind: "fictional-fake" };
+  // Only the isolated fictional database has a fallback (the fake); a deployment without the provider setting does not transcribe.
+  return noktModeFromEnv(env) === "fictional-stub" ? { kind: "fictional-fake" } : { kind: "off" };
 }
 
 /** The multipart body sent to OpenAI, exported so tests prove exactly what is — and is not — sent. */
