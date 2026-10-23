@@ -56,7 +56,7 @@ type PlanningInput = {
   typing: { planned: number; attempted: number; activeSeconds: number; idleSeconds: number; wallSeconds: number | null; accuracy: number | null; paceCps: number; paceBasis: string } | null;
   note: string;
 };
-type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[] };
+type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" };
 
 /** Learner-facing visit name (server-computed): "Besuch 3 — Die Beobachtungsstation (v4)"; falls back to the id. */
 function visitName(evidence: Evidence, id: string): string {
@@ -370,6 +370,14 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   const v8Done = !!state?.visits.some((v) => v.id === "v8" && v.finishedAt);
   const v8Running = !!state?.visits.some((v) => v.id === "v8" && !v.finishedAt);
   const chapter8 = evidence.visits?.find((v) => v.id === "v8")?.label ?? "Besuch 7 — Rosas Inselgarten";
+  // Round 13: whether Nokt talked comes from the persisted conversation records, never from panel opens or a fixed sentence.
+  const steps = (evidence.missionEvidence ?? []).flatMap((m) => m.steps);
+  const talked = steps.some((s) => s.tutorActivity && (s.tutorActivity.dispatches || s.tutorActivity.childLines || s.tutorActivity.verifiedLines || s.tutorActivity.withheld));
+  const accepted = steps.reduce((n, s) => n + (s.tutorActivity?.accepted ?? 0), 0);
+  const refused = steps.reduce((n, s) => n + (s.tutorActivity?.refused ?? 0), 0);
+  const noktLine = talked
+    ? `Gespräch mit Nokt aufgezeichnet (siehe Tutor-Spalte); ${accepted ? `${accepted} Einschätzung(en) von der App angenommen` : "keine Tutor-Einschätzung angenommen"}${refused ? `, ${refused} abgelehnt` : ""}.`
+    : evidence.noktMode === "fictional-stub" ? "Nokt ist verfügbar (isolierte Testumgebung); noch kein Gespräch." : "Nokt ist nicht aktiv.";
   let text: string;
   if (!state || state.visits.length === 0) text = "Noch kein Besuch. Der nächste Schritt ist der erste Besuch: Basis bauen, 24 Pakete gerecht teilen.";
   else if (fresh.length === 0) text = "Erster Besuch läuft. Nächster Schritt: der frische Check nach der Erklärung (EQ-FRESH).";
@@ -383,7 +391,7 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   else if (v5Done && v6Served && !v6Done) text = `Nächster Schritt: ${chapter6} (intern v6: 38 Kisten zu je 6 pro Boot — volle Boote, Rest und Boote für alle; ${liveTutorDeferred("v6") ? "Erklärgespräch in dieser Übergangsversion ausgesetzt" : "Erklärgespräch mit Nabu"}; spanische Anfrage LANG-ES-HARBOR; Hafenplan; Kapitänslogbuch mit Durchsicht; Tipp-Kurs ab der gespeicherten Lektion; kurzer Check) — sofort verfügbar, Werkstatt-Reihenfolge frei.`;
   else if (v7Running) text = `${chapter7} läuft (intern v7: begehbare Mission MISSION-SHIP-SUPPLY — Hafentafel lesen, englischer Funkspruch zum Hören, vier verbundene Rechnungen, Bestellung bei Rosa auf Spanisch mit Schreibhilfe, Planwahl, Tippblock von etwa fünf Minuten).`;
   else if (v6Done && v7Served && !v7Done) text = `Nächster Schritt: ${chapter7} (intern v7: begehbare Mission; das Thema setzt Santiagos eigene Wahl «Forschungsschiff» aus Besuch 5 fort — kein angenommenes Interesse) — sofort verfügbar.`;
-  else if (v8Running) text = `${chapter8} läuft (intern v8: Szenen-Mission MISSION-ISLAND-GARDEN — Tragen packen Frage für Frage mit geprüften Hinweisen, englische Nachricht, Bitte an Rosa auf Spanisch, Tippblock, frische Anwendung 11 ÷ 3, ein eigener Satz). Nokt ist nicht aktiv.`;
+  else if (v8Running) text = `${chapter8} läuft (intern v8: Szenen-Mission MISSION-ISLAND-GARDEN — Tragen packen Frage für Frage mit geprüften Hinweisen, englische Nachricht, Bitte an Rosa auf Spanisch, Tippblock, frische Anwendung 11 ÷ 3, ein eigener Satz). ${noktLine}`;
   else if (v7Done && v8Served && !v8Done) text = `Nächster Schritt: ${chapter8} (intern v8: Szenen-Mission; das Garten-Thema ist ein gewählter Ersatz, weil Santiagos letzte Antwort «weiss es noch nicht» war — kein angenommenes Interesse) — sofort verfügbar. Besuch 6 bleibt abgeschlossen und wird nicht wiederholt.`;
   else if (v8Done) text = "Alle Inhalte (Besuche 1–7) sind durchlaufen. Für die nächste Mission zählt Santiagos eigene Wahl am Ende von Besuch 7 (siehe Planung unten).";
   else if (v7Done) text = "Alle Inhalte (Besuche 1–6) sind durchlaufen. Für die nächste Mission zählt Santiagos eigene Antwort auf «Was möchtest du nächstes Mal?» (siehe Planung unten).";

@@ -61,6 +61,7 @@ import { assessSpacing, flagSpacing, markSpacing, evaluateRevision, type Spacing
 import type { MissionPart, MissionHint, MissionLine, MissionDiagram } from "./family-learning-mission-spec.ts";
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
 import { receiptOrigin, type ReceiptInput, type ReplyOrigin } from "./family-learning-trust.ts";
+import type { NoktMode } from "./family-learning-nokt.ts";
 import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktOutcomeClaim, noktPhase, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
 
 // ---------------------------------------------------------------------------
@@ -2069,6 +2070,8 @@ export type MissionEvidenceStep = {
   support: string[];
   supportRaw: string[];
   tutor: string;
+  /** What the persisted records show about Nokt on this step — conversation and assessment counted separately (round 13). */
+  tutorActivity: TutorActivity;
   /** The Nokt conversation, line by line (N7-03): what he said, what Nokt said (verified and shown), and withheld replies with the reason. */
   talk: { part: string; who: "Kind" | "Nokt" | "zurückgehalten"; text: string; detail: string; at: string }[];
   missing: string[];
@@ -2107,8 +2110,46 @@ export function supportLabel(kind: string, detail?: string): string {
 
 const HINT_TYPE_DE: Record<string, string> = { grouping: "Bündeln", subtract: "Abziehen", "extra-tray": "Zusatztrage", "count-all": "Alle zählen (Bild)", compare: "Vergleichen", "word-options": "Wortauswahl" };
 
+/**
+ * What the persisted records show about Nokt on one step (round 13). Two separate things, never inferred from each other:
+ *  - CONVERSATION: dispatched child lines and Nokt replies (verified + shown, or withheld) from `tutorDispatches`/`tutorTurns`;
+ *    panel opens (`tutor`) are counted apart and never stand in for a conversation;
+ *  - ASSESSMENT: accepted results (`tutorOutcomes`) and model judgements the app refused on a SHOWN reply. A withheld reply
+ *    is never an assessment, whatever it carried.
+ */
+export type TutorActivity = { opened: number; openedAvailable: number; dispatches: number; childLines: number; verifiedLines: number; withheld: number; accepted: number; refused: number };
+
+export function tutorActivityOf(r: Pick<MissionStepRun, "tutor" | "tutorDispatches" | "tutorTurns" | "tutorOutcomes">): TutorActivity {
+  const turns = r.tutorTurns ?? [];
+  return {
+    opened: (r.tutor ?? []).length,
+    openedAvailable: (r.tutor ?? []).filter((t) => t.available).length,
+    dispatches: (r.tutorDispatches ?? []).length,
+    childLines: turns.filter((t) => t.role === "child").length,
+    verifiedLines: turns.filter((t) => t.role === "nokt" && t.shown).length,
+    withheld: turns.filter((t) => t.role === "nokt" && !t.shown).length,
+    accepted: (r.tutorOutcomes ?? []).length,
+    refused: turns.filter((t) => t.role === "nokt" && t.shown && t.outcome?.verdict.startsWith("refused")).length,
+  };
+}
+
+/** The parent's one-line Nokt summary for a step, from the records (and the deployment's Nokt mode only for "nicht aktiv"). */
+export function tutorSummaryDe(r: Pick<MissionStepRun, "tutor" | "tutorDispatches" | "tutorTurns" | "tutorOutcomes">, noktMode?: NoktMode): string {
+  const a = tutorActivityOf(r);
+  const talked = a.dispatches > 0 || a.childLines > 0 || a.verifiedLines > 0 || a.withheld > 0;
+  const opened = a.opened ? `Nokt geöffnet ${a.opened}× (${(r.tutor ?? []).map((t) => t.entry).join(", ")}).` : "";
+  let conversation: string;
+  if (talked) conversation = `Gespräch mit Nokt aufgezeichnet: ${a.childLines} Zeile(n) des Kindes, ${a.verifiedLines} geprüfte Antwort(en) von Nokt${a.withheld ? `, ${a.withheld} zurückgehalten (nicht gezeigt)` : ""}.`;
+  else if (a.opened) conversation = a.openedAvailable ? "Gespräch verfügbar, aber kein Gespräch geführt." : "Gespräch nicht verfügbar — kein Gespräch.";
+  else conversation = noktMode === "unavailable" ? "Nokt nicht aktiv — kein Gespräch." : "Kein Gespräch mit Nokt aufgezeichnet.";
+  const accepted = (r.tutorOutcomes ?? []).map((o) => `Einschätzung zu «${o.part}» von der App angenommen: ${o.status} → ${o.next} (Hilfe: ${o.support.kind}${o.support.answerExposed ? ", Antwort sichtbar" : ""}; revidierbar, kein Nachweis von Können).`);
+  const refused = (r.tutorTurns ?? []).filter((t) => t.role === "nokt" && t.shown && t.outcome?.verdict.startsWith("refused")).map((t) => `Einschätzung des Modells zu «${t.part}» von der App abgelehnt (${t.outcome!.verdict.slice(9)}) — nicht übernommen.`);
+  const assessment = accepted.length || refused.length ? [...accepted, ...refused] : [noktMode === "unavailable" && !talked ? "Keine Tutor-Einschätzung (Nokt nicht aktiv)." : "Keine Tutor-Einschätzung erfasst."];
+  return [opened, conversation, ...assessment].filter(Boolean).join(" ");
+}
+
 /** The parent's view of one mission run: observation, help, tutor, missing evidence, later checks — never merged. */
-export function missionEvidence(state: MissionState, content: LearningContent, visit: VisitId): { mission: string; title: string; steps: MissionEvidenceStep[]; note: string } | null {
+export function missionEvidence(state: MissionState, content: LearningContent, visit: VisitId, noktMode?: NoktMode): { mission: string; title: string; steps: MissionEvidenceStep[]; note: string } | null {
   const def = missionDefFor(content, visit);
   if (!def) return null;
   const run = missionRunOf(state, def);
@@ -2122,7 +2163,7 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
     const observed: string[] = [];
     let laterCheck: string | null = null;
     if (!r) {
-      steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support: [], supportRaw: [], tutor: "—", talk: [], missing: ["nicht begonnen"], laterCheck });
+      steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support: [], supportRaw: [], tutor: "—", tutorActivity: tutorActivityOf({}), talk: [], missing: ["nicht begonnen"], laterCheck });
       continue;
     }
     for (const part of step.solve?.parts ?? []) {
@@ -2142,7 +2183,10 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
         result === "kept-for-later" ? (pr.exposed.length ? "Nach der gezeigten Lösung fürs nächste Mal aufgehoben." : "Ohne Lösung fürs nächste Mal aufgehoben — die Frage ist offen.") : "Noch offen.";
       const CHOICE_DE: Record<string, string> = { retry: "noch einmal versuchen", guided: "Schritt für Schritt", nokt: "mit Nokt reden", solution: "Lösung ansehen", later: "für später aufheben" };
       questions.push({ taskId: taskId(def, step, part.id), question: part.question, answers, choices: (pr.choices ?? []).map((c) => CHOICE_DE[c.choice] ?? c.choice), hints: pr.hints.map((h) => ({ ...h })), exposure: pr.exposed.map((e) => (e.by === "teaching" ? "gewählte Lösung" : e.by.startsWith("hint:") ? `Hinweis ${e.by.slice(5)}` : e.by.startsWith("hint-check:") ? `Bild nach Antwort im Hinweis ${e.by.slice(11)}` : e.by)), result, reading });
-      if (part.reflect && pr.status === "correct" && pr.reflection !== "asked") missing.push(`Erklärung des Rechenwegs zu «${part.id}»: nicht erhoben (Nokt nicht aktiv). Ob verstanden oder geraten, ist offen.`);
+      if (part.reflect && pr.status === "correct" && pr.reflection !== "asked") {
+        const talkedHere = (r.tutorTurns ?? []).some((t) => t.part === part.id && t.role === "child");
+        missing.push(talkedHere ? `Erklärung des Rechenwegs zu «${part.id}»: nur im Gespräch mit Nokt (siehe Gespräch), ohne angenommene Einschätzung. Ob verstanden oder geraten, ist offen.` : `Erklärung des Rechenwegs zu «${part.id}»: nicht erhoben (${noktMode === "unavailable" ? "Nokt nicht aktiv" : "kein Gespräch dazu"}). Ob verstanden oder geraten, ist offen.`);
+      }
       if (mains.some((a) => a.correct === false)) missing.push(`Ursache der falschen Antwort(en) bei «${part.id}» unbekannt (Aufgabe missverstanden, Rechenfehler oder Versehen sind nicht unterscheidbar ohne Gespräch).`);
     }
     if (step.solve?.application) laterCheck = `Frische Anwendung am selben Tag nach «${def.steps.find((x) => x.id === step.solve!.application!.of)?.title ?? step.solve.application.of}» — kein Nachweis für Behalten über Tage.`;
@@ -2160,16 +2204,14 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
     }
     const support = [...new Set(r.support.map((x) => supportLabel(x.kind, x.detail)))];
     const supportRaw = [...new Set(r.support.map((x) => x.kind))];
-    const tutorEntries = r.tutor ?? [];
-    const outcomes = (r.tutorOutcomes ?? []).map((o) => `Einschätzung zu «${o.part}»: ${o.status} → ${o.next} (Hilfe: ${o.support.kind}${o.support.answerExposed ? ", Antwort sichtbar" : ""}; revidierbar, kein Nachweis von Können)`);
-    const tutor = [tutorEntries.length ? `Nokt geöffnet ${tutorEntries.length}× (${tutorEntries.map((t) => t.entry).join(", ")}); ${tutorEntries.some((t) => t.available) ? "Gespräch verfügbar" : "Gespräch nicht verfügbar — keine Tutor-Einschätzung"}` : "Keine Tutor-Einschätzung (Nokt nicht aktiv).", ...outcomes].join(" ");
+    const tutor = tutorSummaryDe(r, noktMode);
     const WITHHELD_DE: Record<string, string> = { "origin-missing": "ohne Nachweis der Herkunft", "origin-invalid": "Herkunft ungültig", "origin-malformed": "Herkunft fehlerhaft", stale: "zu einer älteren Antwort", malformed: "Form ungültig", "intent-not-in-phase": "passte nicht zur Gesprächsphase", "answer-disclosed": "hätte die Antwort verraten", "judges-open-answer": "hätte die offene Antwort bewertet", "several-questions": "mehrere Fragen", "repeated-question": "wiederholte Frage", "must-close": "Gespräch zu lang" };
     const talk = (r.tutorTurns ?? []).map((t) => t.role === "child"
       ? { part: t.part, who: "Kind" as const, text: t.text, detail: t.via === "voice" ? "gesprochen (Abschrift, korrigierbar)" : "getippt", at: t.at }
       : t.shown
         ? { part: t.part, who: "Nokt" as const, text: t.text, detail: `geprüft (${t.intent ?? ""})${t.outcome ? `; Einschätzung des Modells ${t.outcome.model.status}/${t.outcome.model.support}/${t.outcome.model.next} — ${t.outcome.verdict.startsWith("accepted") ? "von der App angenommen" : `von der App abgelehnt (${t.outcome.verdict.slice(9)})`}` : ""}`, at: t.at }
         : { part: t.part, who: "zurückgehalten" as const, text: "Antwort nicht gezeigt — das Kind sah den App-Hinweis.", detail: WITHHELD_DE[t.reason ?? ""] ?? t.reason ?? "", at: t.at });
-    steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support, supportRaw, tutor, talk, missing, laterCheck });
+    steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support, supportRaw, tutor, tutorActivity: tutorActivityOf(r), talk, missing, laterCheck });
   }
   return { mission: def.id, title: def.title, steps, note: "Elternhilfe am Gerät wird von der App nicht erfasst. Abschluss, Hilfe-Zahl oder Abspiel-Meldungen sind kein Nachweis von Können." };
 }

@@ -1047,6 +1047,8 @@ try {
     await pp.goto(`${STUB_BASE}/family/learn/parent?child=santiago`);
     await pp.waitForSelector("[data-testid='tutor-G2-PACK']", { timeout: 20000 });
     const parentTutor = await pp.locator("[data-testid='tutor-G2-PACK']").innerText();
+    const parentNext = await pp.locator("[data-testid='parent-next-step']").innerText();
+    const parentPage = await pp.locator("body").innerText();
     await pp.locator("[data-testid='tutor-G2-PACK']").scrollIntoViewIfNeeded();
     await shot(pp, `outcome-${PERSONA}-parent`);
     const record = {
@@ -1066,7 +1068,12 @@ try {
     check(`J6.${PERSONA}.final-turn-live-exact-model`, final.bridgeStatus === 200 && decode(final.receipt)?.mdl === "openai/gpt-6.1-sol", { status: final.bridgeStatus, code: final.code });
     check(`J6.${PERSONA}.no-false-completion`, st.parts.full.status === "open");
     check(`J6.${PERSONA}.independence-never-granted-after-help`, !persona.hint || !(st.tutorOutcomes ?? []).some((o) => o.status === "understood"), st.tutorOutcomes ?? []);
-    check(`J6.${PERSONA}.parent-record-shows-what-happened`, parentTutor.length > 0 && (final.result?.outcome == null || /Einschätzung/.test(parentTutor)), parentTutor.slice(0, 400));
+    // Round 13: the summary must come from the persisted records — a recorded conversation is never called inactive, a null outcome
+    // is "no assessment", an accepted/refused one is named as such, and the next-step line agrees.
+    const outcomeOf = final.result?.outcome ?? null;
+    const expectAssessment = outcomeOf == null ? /Keine Tutor-Einschätzung erfasst\./ : outcomeOf.refused ? /von der App abgelehnt/ : /von der App angenommen/;
+    check(`J6.${PERSONA}.parent-record-shows-what-happened`, /Gespräch mit Nokt aufgezeichnet: \d+ Zeile\(n\) des Kindes, \d+ geprüfte Antwort/.test(parentTutor) && expectAssessment.test(parentTutor), parentTutor.slice(0, 400));
+    check(`J6.${PERSONA}.parent-no-contradictory-inactive-text`, !/nicht aktiv/.test(parentPage) && /Gespräch mit Nokt aufgezeichnet/.test(parentNext), { next: parentNext.slice(-200), inactive: (parentPage.match(/[^\n]*nicht aktiv[^\n]*/g) ?? []).slice(0, 3) });
   } else if (STUB_BASE && ONLY_STUB && TURN && PERSONA) {
     // ============================================================ J5 live fictional persona on the subscription ============================================================
     const persona = PERSONAS[PERSONA];

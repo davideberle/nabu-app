@@ -8,6 +8,7 @@ import { delayedCheckInfo, summariseTelemetry, visitLabel, visitOrdinal } from "
 import type { VocabularyInventory } from "@/lib/family-learning-vocabulary";
 import type { VisitId } from "@/lib/family-learning-content";
 import { missionEvidence, planningInput } from "@/lib/family-learning-mission";
+import { noktModeFromEnv } from "@/lib/family-learning-nokt";
 
 /**
  * GET /api/family/learning/parent/evidence?child=santiago|isabel
@@ -58,7 +59,7 @@ export async function GET(request: Request) {
   const missions = [];
   if (prepared && content && bundle.state) {
     for (const m of (content.missions ?? []).filter((x) => x.presentation === "scene")) {
-      const ev = missionEvidence(bundle.state, content, m.visit as VisitId);
+      const ev = missionEvidence(bundle.state, content, m.visit as VisitId, noktModeFromEnv(process.env));
       if (!ev) continue;
       // Per-step foreground activity from the EXISTING telemetry batches (no extra collection): what was on screen while input happened.
       const events = await readTelemetryEvents(await getDb(), child, m.visit);
@@ -66,5 +67,5 @@ export async function GET(request: Request) {
       missions.push({ ...ev, time: { observed: t.uxObserved, byStep: t.byStep ?? {}, idleRuleSeconds: t.idleRuleSeconds, hiddenIntervals: t.hiddenIntervals } });
     }
   }
-  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions }, { headers: NO_STORE });
+  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env) }, { headers: NO_STORE });
 }

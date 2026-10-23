@@ -786,6 +786,54 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     ok(missionEvidence(refused.state, v6, "v8")!.steps.find((x) => x.id === "G2-PACK")!.talk.some((t) => /abgelehnt \(false-independent\)/.test(t.detail)));
   });
 
+  it("parent summary (round 13): conversation and assessment come from the persisted records, never from panel opens", () => {
+    const step = (st: MissionState, mode?: "unavailable" | "fictional-stub") => missionEvidence(st, v6, "v8", mode)!.steps.find((x) => x.id === "G2-PACK")!;
+    const reload = (st: MissionState): MissionState => JSON.parse(JSON.stringify(st));
+    const INACTIVE = /nicht aktiv/;
+    // a. Nokt unavailable, no events at all → the old, accurate statement stays
+    const plain = makeEnv(v6);
+    const none = step(atG2(plain), "unavailable");
+    equal(none.tutor, "Nokt nicht aktiv — kein Gespräch. Keine Tutor-Einschätzung (Nokt nicht aktiv).");
+    deepStrictEqual(none.tutorActivity, { opened: 0, openedAvailable: 0, dispatches: 0, childLines: 0, verifiedLines: 0, withheld: 0, accepted: 0, refused: 0 });
+    // b. normal panel open without a turn → opened, no conversation, no assessment
+    const env = makeEnv(v6, { tutorAvailable: true });
+    const opened = step(mr(atG2(env), { a: "tutor-open", step: "G2-PACK", entry: "manual", part: "full" }, env).state, "fictional-stub");
+    equal(opened.tutor, "Nokt geöffnet 1× (manual). Gespräch verfügbar, aber kein Gespräch geführt. Keine Tutor-Einschätzung erfasst.");
+    // c. persisted history reloaded, ZERO panel-open events, verified line without a judgement → conversation, no assessment
+    let s = dispatchTurn(atG2(env), env, "turn-p00001", "fünf, die halbe Trage zählt auch").state;
+    s = replyTurn(s, env, "turn-p00001", reply("Was bedeutet «ganz füllen» in der Frage?", "clarify")).state;
+    const talked = reload(s);
+    equal((g2(talked).tutor ?? []).length, 0, "no panel-open event recorded");
+    for (const mode of ["unavailable", "fictional-stub", undefined] as const) {
+      const v = step(talked, mode);
+      equal(v.tutor, "Gespräch mit Nokt aufgezeichnet: 1 Zeile(n) des Kindes, 1 geprüfte Antwort(en) von Nokt. Keine Tutor-Einschätzung erfasst.", String(mode));
+      ok(!INACTIVE.test(v.tutor) && !v.missing.some((x) => INACTIVE.test(x)), "no inactive text next to a recorded conversation");
+    }
+    // d. accepted outcome (bound by the app) → stated as accepted
+    s = dispatchTurn(talked, env, "turn-p00002", "Ganz füllen heisst vier drin. Die halbe zählt nicht. Ich rechne nochmal.").state;
+    const acc = step(replyTurn(s, env, "turn-p00002", reply("Wie willst du jetzt vorgehen?", "close", { status: "understood_with_support", support: "clarification", next: "retry" })).state, "fictional-stub");
+    ok(/2 Zeile\(n\) des Kindes, 2 geprüfte Antwort\(en\)/.test(acc.tutor), acc.tutor);
+    ok(/Einschätzung zu «full» von der App angenommen: understood_with_support → retry \(Hilfe: clarification/.test(acc.tutor), acc.tutor);
+    equal(acc.tutorActivity.accepted, 1);
+    ok(!/Keine Tutor-Einschätzung/.test(acc.tutor));
+    // e. refused false-independence after a hint → stated as refused, nothing accepted
+    const env2 = makeEnv(v6, { tutorAvailable: true });
+    let h = m(atG2(env2), { a: "hint", step: "G2-PACK", part: "full" }, env2);
+    h = dispatchTurn(h, env2, "turn-p00011", "Mit dem Hinweis: in drei Tragen sind 12").state;
+    h = replyTurn(h, env2, "turn-p00011", reply("Was hast du im Hinweis gesehen?", "clarify")).state;
+    h = dispatchTurn(h, env2, "turn-p00012", "Dann noch eine volle Trage mit vier, und zwei bleiben übrig.").state;
+    const ref = step(reload(replyTurn(h, env2, "turn-p00012", reply("Probier es oben noch einmal.", "close", { status: "understood", support: "none", next: "retry" })).state), "fictional-stub");
+    ok(/Einschätzung des Modells zu «full» von der App abgelehnt \(false-independent\) — nicht übernommen\./.test(ref.tutor), ref.tutor);
+    ok(!/angenommen/.test(ref.tutor));
+    deepStrictEqual([ref.tutorActivity.accepted, ref.tutorActivity.refused], [0, 1]);
+    // f. a WITHHELD reply is never an assessment, whatever it carried
+    let w = dispatchTurn(atG2(env), env, "turn-p00021", "fünf").state;
+    w = replyTurn(w, env, "turn-p00021", reply("Es sind 4 Tragen.", "teach", { status: "understood", support: "teaching", next: "advance" })).state;
+    const wv = step(reload(w), "fictional-stub");
+    equal(wv.tutor, "Gespräch mit Nokt aufgezeichnet: 1 Zeile(n) des Kindes, 0 geprüfte Antwort(en) von Nokt, 1 zurückgehalten (nicht gezeigt). Keine Tutor-Einschätzung erfasst.");
+    deepStrictEqual([wv.tutorActivity.accepted, wv.tutorActivity.refused, wv.tutorActivity.withheld], [0, 0, 1]);
+  });
+
   it("the reply route's receipt is bound by the ENGINE to its dispatch: right turn/request/bytes verified; anything else withheld", async () => {
     const { sha256Hex } = await import("./family-learning-hash.ts");
     const env = makeEnv(v6, { tutorAvailable: true });
