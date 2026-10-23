@@ -16,6 +16,7 @@ import { isChildView } from "./family-learning-view-guard.ts";
 export const LEARNING_SESSION_PATH = "/api/family/learning/session";
 export const LEARNING_MISSION_PATH = "/api/family/learning/mission";
 export const LEARNING_TELEMETRY_PATH = "/api/family/learning/telemetry";
+export const LEARNING_NOKT_TRANSCRIBE_PATH = "/api/family/learning/nokt/transcribe";
 export const LEARNING_REFRESH_MARGIN_MS = 60_000;
 
 export type LearningSessionInfo = { child: ChildId; token: string; expiresAt: number };
@@ -41,6 +42,9 @@ export type LearningMutateOutcome =
   | { ok: false; status: "refused"; code: string; message: string; view: ChildView }
   | { ok: false; failure: LearningFailure; status?: number };
 
+/** One Nokt push-to-talk turn: the transcript the child then sees and may correct, or why there is none. */
+export type NoktTranscribeOutcome = { ok: true; transcript: string } | { ok: false; failure: LearningFailure | "cancelled" | "empty"; status?: number };
+
 export type LearningClientDeps = {
   fetchImpl?: typeof fetch;
   now?: () => number;
@@ -53,6 +57,8 @@ export type LearningClient = {
   mutate: (childId: ChildId, op: LearningOp, expectedRevision: number, options?: { signal?: AbortSignal; idempotencyKey?: string; context?: MutationContext; timeZone?: string | null }) => Promise<LearningMutateOutcome>;
   /** Send one bounded telemetry batch (idempotent by batch id); failures are silent by design. */
   sendTelemetry: (childId: ChildId, batch: { batchId: string; visitId: string; visitStartedAt: string; erasureGeneration: number; events: unknown[] }, options?: { signal?: AbortSignal; keepalive?: boolean }) => Promise<boolean>;
+  /** Upload one recorded turn for Nokt; aborting `signal` cancels the upload and the server's provider call. */
+  transcribeNokt: (childId: ChildId, audio: Blob, fileName: string, options: { signal: AbortSignal }) => Promise<NoktTranscribeOutcome>;
   reset: () => void;
   peekSession: () => LearningSessionInfo | null;
 };
@@ -192,6 +198,32 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
         return response.ok;
       } catch {
         return false;
+      }
+    },
+
+    async transcribeNokt(childId, audio, fileName, options) {
+      const info = await session(childId, options.signal);
+      if (options.signal.aborted) return { ok: false, failure: "cancelled" };
+      if (!info) return { ok: false, failure: "no-session" };
+      const form = new FormData();
+      form.append("audio", audio, fileName);
+      let response: Response;
+      try {
+        response = await doFetch(LEARNING_NOKT_TRANSCRIBE_PATH, { method: "POST", headers: { Authorization: `Bearer ${info.token}` }, body: form, signal: options.signal, cache: "no-store" });
+      } catch {
+        return { ok: false, failure: options.signal.aborted ? "cancelled" : "network" };
+      }
+      if (!response.ok) {
+        if (response.status === 401) cached = null;
+        return { ok: false, failure: failureFor(response.status), status: response.status };
+      }
+      try {
+        const payload: unknown = await response.json();
+        if (!isRecord(payload) || typeof payload.transcript !== "string") return { ok: false, failure: "bad-response", status: response.status };
+        const transcript = payload.transcript.trim();
+        return transcript ? { ok: true, transcript } : { ok: false, failure: "empty" };
+      } catch {
+        return { ok: false, failure: options.signal.aborted ? "cancelled" : "bad-response", status: response.status };
       }
     },
 

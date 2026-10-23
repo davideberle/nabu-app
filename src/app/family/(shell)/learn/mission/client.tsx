@@ -469,6 +469,7 @@ function Workspace({ child }: { child: ChildId }) {
             busy={busy}
             speech={speech}
             noktMode={view.nokt?.mode ?? "unavailable"}
+            noktTranscribe={(audio, fileName, signal) => learning.transcribeNokt(child, audio, fileName, { signal })}
             telemetry={(name) => {
               telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
             }}

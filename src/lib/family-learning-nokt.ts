@@ -9,9 +9,12 @@
 // (push-to-talk → visible transcript → written reply → speech of that reply,
 // typed fallback) with canned, clearly fictional replies. It is honoured only
 // on an isolated local database: the explicit flag, a local NABU_DB_DIR, no
-// Turso URL and no Vercel environment. The stub never reaches a model, STT or
-// TTS provider, never records a tutor outcome and never changes evidence: the
-// server still records every Nokt opening with `available: false`.
+// Turso URL and no Vercel environment. Its replies never come from a model; it
+// never records a tutor outcome and never changes evidence: the server still
+// records every Nokt opening with `available: false`.
+// Push-to-talk is real in that mode (microphone → /api/family/learning/nokt/
+// transcribe → the editable transcript); the recognizer behind it is chosen in
+// `family-learning-nokt-stt.ts` — a fake by default, OpenAI only on request.
 // ---------------------------------------------------------------------------
 
 export type NoktMode = "unavailable" | "fictional-stub";
@@ -26,8 +29,6 @@ export type NoktTurn = { id: string; role: "child" | "nokt"; text: string; via: 
 
 export type NoktTransport = {
   kind: "fictional-stub";
-  /** Push-to-talk result → the transcript the child sees and may correct before sending. */
-  transcribe: () => Promise<{ ok: true; text: string } | { ok: false }>;
   /** The written reply to one child turn, bound to the task on screen. */
   reply: (input: { text: string; step: string; part: string | null; turns: number }) => Promise<{ ok: true; text: string } | { ok: false }>;
 };
@@ -41,7 +42,6 @@ export function fictionalNoktTransport(): NoktTransport {
   ];
   return {
     kind: "fictional-stub",
-    transcribe: async () => ({ ok: true, text: "Ich glaube, es sind vier Tragen." }),
     reply: async ({ turns }) => ({ ok: true, text: lines[Math.min(turns, lines.length - 1)] }),
   };
 }

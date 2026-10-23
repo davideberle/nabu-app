@@ -78,7 +78,8 @@ type Entry = { role: "child" | "nabu" | "note"; text: string; modality?: "typed"
 /** The finished conversation, kept on the client until the child taps "Weiter" (the server moved the stage on in the same write). */
 type Finished = { turns: Entry[]; method: string; methodLabel: string };
 
-function adaptMediaRecorder(recorder: MediaRecorder, handlers: RecorderHandlers): RecorderControl {
+/** The DOM recorder adapted to the push-to-talk controller (also used by Nokt's microphone). */
+export function adaptMediaRecorder(recorder: MediaRecorder, handlers: RecorderHandlers): RecorderControl {
   recorder.ondataavailable = (event) => handlers.onData(event.data);
   recorder.onstop = () => handlers.onStop();
   recorder.onerror = () => handlers.onError();

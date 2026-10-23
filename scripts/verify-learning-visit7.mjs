@@ -14,7 +14,8 @@
 // truthful ending, illustrated next-adventure choice, report, parent evidence panel.
 // J2 iPad 820×1180 (touch): worked teaching after three misses, wrong copy then right copy, audio failure with honest fallback,
 // Spanish exhausted → wrong copy stays open → keep for later, global Stopp and resume; 390×844 phone Nokt in the page flow.
-// J3 fictional Nokt stub (separate server started with FAMILY_NOKT_FICTIONAL_STUB=1 on the same synthetic DB): push-to-talk →
+// J3 fictional Nokt stub (separate server started with FAMILY_NOKT_FICTIONAL_STUB=1 on the same synthetic DB): REAL push-to-talk
+// with Chromium's fake microphone → /api/family/learning/nokt/transcribe (the server's FAKE recognizer — no provider, no key) →
 // visible transcript → written reply → reply spoken; nothing recorded as tutor evidence.
 //
 // Usage: AUTH_SECRET=… node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3197 --db <dir>/nabu.db --out <dir> [--stub-base http://127.0.0.1:3198]
@@ -235,9 +236,12 @@ async function patchRow(mutate) {
 const sha = (x) => createHash("sha256").update(JSON.stringify(x)).digest("hex");
 
 // --- browser ------------------------------------------------------------------------------------------------------------
-const browser = await chromium.launch(audioSafeChromiumLaunchOptions({ headless: true }));
+// Chromium's synthetic microphone (a test tone, never a person) lets J3 exercise the real recorder → upload path.
+const browser = await chromium.launch(audioSafeChromiumLaunchOptions({ headless: true, args: ["--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream"] }));
 const blocked = [];
 const speechRequests = [];
+/** Nokt microphone uploads seen at the browser edge (shape only — never the audio). */
+const noktUploads = [];
 /** Silent playback mocks, installed BEFORE the audio guard (the guard then cannot replace them; nothing ever reaches a speaker):
  *  speech "end" | "error" — the browser speech engine confirms the end, or reports an error; voice "ok" — the child voice route
  *  answers with bytes and the media element reports `ended` without playing; voice "fail" — the route answers 503. */
@@ -448,6 +452,11 @@ async function makeCtx(base, options, cookie = assistant, mocks = {}) {
       if (mocks.voice === "fail") return r.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ error: "No voice for this language" }) });
       return r.abort("blockedbyclient");
     }
+    if (u.pathname === "/api/family/learning/nokt/transcribe") {
+      const req = r.request();
+      noktUploads.push({ at: Date.now(), base, bearer: /^Bearer \S+/.test(req.headers()["authorization"] ?? ""), multipart: (req.headers()["content-type"] ?? "").startsWith("multipart/form-data"), bytes: req.postDataBuffer()?.length ?? 0 });
+      return r.continue();
+    }
     if (/\/api\/family\/(transcribe|assistant\/session)/.test(u.pathname)) {
       blocked.push(`${u.origin}${u.pathname}`);
       return r.abort("blockedbyclient");
@@ -641,6 +650,19 @@ try {
   await p.waitForSelector("[data-testid='nokt-panel'][data-mode='unavailable']");
   check("J1.nokt.side-panel-not-overlay-desktop", (await noOverlap(p, "[data-testid='nokt-panel']", "[data-testid='scene-task']")).ok, await noOverlap(p, "[data-testid='nokt-panel']", "[data-testid='scene-task']"));
   check("J1.nokt.honest-unavailable-no-mic-no-promise", (await p.locator("[data-testid='nokt-panel']").innerText()).includes("kann im Moment nicht mit dir sprechen") && !/bald/i.test(await p.locator("[data-testid='nokt-panel']").innerText()) && (await p.locator("[data-testid='nokt-mic-start']").count()) === 0);
+  // The Nokt transcription route itself refuses outside the isolated fictional stub (real-child activation is gated), and needs the child credential.
+  const sttRefusal = await p.evaluate(async () => {
+    const audio = () => {
+      const f = new FormData();
+      f.append("audio", new Blob([new Uint8Array([1, 2, 3, 4])], { type: "audio/mp4" }), "utterance.m4a");
+      return f;
+    };
+    const anonymous = await fetch("/api/family/learning/nokt/transcribe", { method: "POST", body: audio() });
+    const s = await (await fetch("/api/family/learning/session", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ childId: "santiago" }) })).json();
+    const r = await fetch("/api/family/learning/nokt/transcribe", { method: "POST", headers: { authorization: "Bearer " + s.token }, body: audio() });
+    return { anonymous: anonymous.status, status: r.status, cache: r.headers.get("cache-control"), body: await r.json() };
+  });
+  check("J1.nokt.transcribe-route-gated-outside-isolated-stub", sttRefusal.anonymous === 401 && sttRefusal.status === 503 && !("transcript" in sttRefusal.body) && /no-store/.test(sttRefusal.cache ?? ""), sttRefusal);
   check("J1.nokt.bubble-clears-rosa-desktop-panel", (await bubbleClearsRosa(p)).ok, await bubbleClearsRosa(p));
   check("J1.nokt.task-readable-desktop-panel", (await readable(p)).ok, await readable(p));
   await shotScene(p, "desktop-nokt-side-panel", "Nokt (approved avatar) opens beside the task; honest unavailable state; no microphone");
@@ -934,6 +956,20 @@ try {
   // ============================================================ J3 fictional Nokt stub (separate server) ============================================================
   if (STUB_BASE && ONLY_STUB) {
     const stubCtx = await makeCtx(STUB_BASE, { viewport: { width: 820, height: 1180 }, hasTouch: true }, assistant, { speech: "end", voice: "fail" });
+    await stubCtx.grantPermissions(["microphone"], { origin: STUB_BASE });
+    await stubCtx.addInitScript(() => {
+      window.__gumCalls = 0;
+      const tracks = [];
+      window.__liveTracks = () => tracks.filter((t) => t.readyState === "live").length;
+      const original = navigator.mediaDevices?.getUserMedia?.bind(navigator.mediaDevices);
+      if (original)
+        navigator.mediaDevices.getUserMedia = async (constraints) => {
+          window.__gumCalls += 1;
+          const stream = await original(constraints);
+          tracks.push(...stream.getTracks());
+          return stream;
+        };
+    });
     const s = await stubCtx.newPage();
     openPages.push(s);
     s.on("pageerror", (e) => pageErrors.push({ page: "stub", message: String(e) }));
@@ -941,11 +977,23 @@ try {
     await s.waitForSelector("[data-testid='mission-scene']");
     await s.locator("[data-testid='nokt-button']").tap();
     await s.waitForSelector("[data-testid='nokt-panel'][data-mode='fictional-stub']");
-    check("J3.stub.mic-only-on-explicit-start", (await s.locator("[data-testid='nokt-mic-stop']").count()) === 0);
+    check("J3.stub.mic-only-on-explicit-start", (await s.locator("[data-testid='nokt-mic-stop']").count()) === 0 && (await s.evaluate(() => window.__gumCalls)) === 0, await s.evaluate(() => window.__gumCalls));
+    // Cancel while live: the microphone is released and nothing is uploaded.
     await s.locator("[data-testid='nokt-mic-start']").tap();
+    await s.waitForSelector("[data-testid='nokt-mic'][data-mic='live']");
+    await s.locator("[data-testid='nokt-mic-cancel']").tap();
+    await settle(600);
+    check("J3.stub.cancel-uploads-nothing", (await s.locator("[data-testid='nokt-mic']").getAttribute("data-mic")) === "idle" && noktUploads.filter((u) => u.base === STUB_BASE).length === 0 && (await s.locator("[data-testid='nokt-input']").inputValue()) === "" && (await s.evaluate(() => window.__liveTracks())) === 0, { uploads: noktUploads.length, live: await s.evaluate(() => window.__liveTracks()) });
+    // A real recording from the synthetic microphone → upload with the child credential → the fake recognizer's sentence in the editable field.
+    await s.locator("[data-testid='nokt-mic-start']").tap();
+    await s.waitForSelector("[data-testid='nokt-mic'][data-mic='live']");
+    await settle(900);
     await s.locator("[data-testid='nokt-mic-stop']").tap();
-    await settle(300);
-    check("J3.stub.visible-correctable-transcript", (await s.locator("[data-testid='nokt-input']").inputValue()) === "Ich glaube, es sind vier Tragen.");
+    await s.waitForFunction(() => document.querySelector("[data-testid='nokt-input']")?.value);
+    const ups = noktUploads.filter((u) => u.base === STUB_BASE);
+    check("J3.stub.push-to-talk-uploads-recording-with-child-credential", ups.length === 1 && ups[0].bearer && ups[0].multipart && ups[0].bytes > 500, ups);
+    check("J3.stub.visible-correctable-transcript", (await s.locator("[data-testid='nokt-input']").inputValue()) === "Ich weiss nicht, wie ich anfangen soll." && (await s.locator("label[for='nokt-input']").innerText()).includes("korrigieren"));
+    check("J3.stub.microphone-released-after-turn", (await s.evaluate(() => window.__liveTracks())) === 0 && (await s.locator("[data-testid='nokt-mic']").getAttribute("data-mic")) === "idle");
     await s.locator("[data-testid='nokt-input']").fill("Ich glaube, es sind fünf Tragen.");
     await s.locator("[data-testid='nokt-send']").tap();
     await s.waitForSelector("[data-testid='nokt-transcript'] [data-role='nokt']");
@@ -955,6 +1003,22 @@ try {
     await shotScene(s, "stub-nokt-push-to-talk", "Fictional stub only (isolated DB): push-to-talk → visible transcript → written reply → spoken reply");
     const outcomes = (await rows("family_learning_support_events")).filter((r) => r.kind === "mission_tutor_outcome" || r.kind === "mission_tutor_dispatch");
     check("J3.stub.no-tutor-evidence-recorded", outcomes.length === 0);
+    // Nothing of the turn is persisted: the recognized sentence appears in no table of the synthetic database.
+    const dbHits = await (async () => {
+      const c = createClient({ url: "file:" + DB });
+      try {
+        const tables = (await c.execute("SELECT name FROM sqlite_master WHERE type = 'table'")).rows.map((r) => String(r.name));
+        const hits = [];
+        for (const t of tables) {
+          const r = await c.execute(`SELECT * FROM "${t}"`);
+          for (const row of r.rows) if (r.columns.some((k) => typeof row[k] === "string" && row[k].includes("wie ich anfangen soll"))) hits.push(t);
+        }
+        return hits;
+      } finally {
+        c.close();
+      }
+    })();
+    check("J3.stub.transcript-and-audio-not-persisted", dbHits.length === 0, dbHits);
   } else if (ONLY_STUB) check("J3.stub.needs-stub-base", false, "run with --stub-base");
 
 } catch (e) {
@@ -971,6 +1035,6 @@ check("global.no-page-errors", pageErrors.length === 0, pageErrors.slice(0, 5));
 check("global.speech-never-reached-server", speechRequests.length >= (ONLY_STUB ? 1 : 3) && speechRequests.every((r) => ["abort", "ok", "fail"].includes(r.mock)), speechRequests.length);
 await browser.close();
 const passed = results.filter((r) => r.ok).length;
-fs.writeFileSync(path.join(OUT, ONLY_STUB ? "results-stub.json" : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), blocked: [...new Set(blocked)], pageErrors }, null, 2));
+fs.writeFileSync(path.join(OUT, ONLY_STUB ? "results-stub.json" : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), noktUploads, blocked: [...new Set(blocked)], pageErrors }, null, 2));
 console.log(`${passed}/${results.length} passed`);
 process.exit(passed === results.length ? 0 : 1);

@@ -9,11 +9,14 @@
 // focus on its heading. A task change closes it and cancels its audio.
 //
 // `unavailable` (every deployed build): an honest child-level line and the way
-// back to the hint. `fictional-stub` (isolated local database only): renders
-// the planned flow — explicit push-to-talk start/stop → visible, correctable
-// transcript → written reply → the same reply spoken in German (Nokt voice
-// route; browser German when no Nokt voice exists) — with canned replies that
-// are labelled as a test. The stub records nothing as tutor evidence.
+// back to the hint; no microphone. `fictional-stub` (isolated local database
+// only): the planned flow — explicit push-to-talk start/stop records real audio
+// (family-voice controller) → POST /api/family/learning/nokt/transcribe → a
+// visible, correctable transcript → written reply → the same reply spoken in
+// German (Nokt voice route; browser German when no Nokt voice exists). Replies
+// are canned and labelled as a test; the recognizer is the server's choice
+// (fake by default). Cancel, closing Nokt or a task change stops the recording
+// and aborts the upload. The stub records nothing as tutor evidence.
 // ---------------------------------------------------------------------------
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -21,7 +24,13 @@ import { AssistantPortrait } from "@/components/family/assistant-portrait";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import { fictionalNoktTransport, type NoktMode, type NoktTurn } from "@/lib/family-learning-nokt";
+import type { NoktTranscribeOutcome } from "@/lib/family-learning-client";
 import { browserSpeech } from "@/lib/family-learning-listening";
+import { startPushToTalk } from "@/lib/family-voice";
+import { adaptMediaRecorder } from "./nabu-sidebar";
+
+/** Uploads one recorded turn; the signal cancels upload and provider call. Bound to the child by the caller. */
+export type NoktTranscribe = (audio: Blob, fileName: string, signal: AbortSignal) => Promise<NoktTranscribeOutcome>;
 
 const btn = "inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 text-lg font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:cursor-not-allowed disabled:opacity-50";
 
@@ -41,7 +50,7 @@ export function NoktButton({ child, onOpen }: { child: ChildId; onOpen: () => vo
   );
 }
 
-export function NoktPanel({ child, mode, step, part, speech, offer = null, onClose }: { child: ChildId; mode: NoktMode; step: string | null; part: string | null; speech: ChildSpeechPlayer; offer?: { onAccept: () => void; onDismiss: () => void } | null; onClose: () => void }) {
+export function NoktPanel({ child, mode, step, part, speech, transcribe = null, offer = null, onClose }: { child: ChildId; mode: NoktMode; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe?: NoktTranscribe | null; offer?: { onAccept: () => void; onDismiss: () => void } | null; onClose: () => void }) {
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: false });
@@ -76,7 +85,7 @@ export function NoktPanel({ child, mode, step, part, speech, offer = null, onClo
           <p className="text-lg leading-relaxed">Der Hinweis bei der Aufgabe hilft dir Schritt für Schritt. Du kannst auch einen Erwachsenen fragen.</p>
         </div>
       ) : (
-        <StubConversation child={child} step={step} part={part} speech={speech} />
+        <StubConversation child={child} step={step} part={part} speech={speech} transcribe={transcribe} />
       )}
       <button type="button" className={`${btn} mt-4`} style={{ background: "#e6eee7", color: "#21484b" }} onClick={onClose} data-testid="nokt-close">
         Schliessen
@@ -86,10 +95,9 @@ export function NoktPanel({ child, mode, step, part, speech, offer = null, onClo
 }
 
 /** The planned German-voice interaction with fictional canned replies (isolated local database only). */
-function StubConversation({ child, step, part, speech }: { child: ChildId; step: string | null; part: string | null; speech: ChildSpeechPlayer }) {
+function StubConversation({ child, step, part, speech, transcribe }: { child: ChildId; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe: NoktTranscribe | null }) {
   const transport = useMemo(() => fictionalNoktTransport(), []);
   const [turns, setTurns] = useState<NoktTurn[]>([]);
-  const [recording, setRecording] = useState(false);
   const [draft, setDraft] = useState("");
   const [via, setVia] = useState<"voice" | "typed">("typed");
   const [waiting, setWaiting] = useState(false);
@@ -132,30 +140,13 @@ function StubConversation({ child, step, part, speech }: { child: ChildId; step:
           </li>
         ))}
       </ol>
-      <div className="flex flex-wrap gap-2">
-        {recording ? (
-          <button
-            type="button"
-            className={btn}
-            style={{ background: "#a34431", color: "white" }}
-            onClick={async () => {
-              setRecording(false);
-              const heard = await transport.transcribe();
-              if (heard.ok) {
-                setDraft(heard.text);
-                setVia("voice");
-              }
-            }}
-            data-testid="nokt-mic-stop"
-          >
-            ■ Fertig gesprochen
-          </button>
-        ) : (
-          <button type="button" className={btn} style={{ background: "#215c60", color: "white" }} onClick={() => setRecording(true)} data-testid="nokt-mic-start">
-            🎙 Sprechen
-          </button>
-        )}
-      </div>
+      <NoktMic
+        transcribe={transcribe}
+        onTranscript={(text) => {
+          setDraft(text.slice(0, 300));
+          setVia("voice");
+        }}
+      />
       <form
         className="grid gap-2"
         onSubmit={(e) => {
@@ -171,6 +162,98 @@ function StubConversation({ child, step, part, speech }: { child: ChildId; step:
           Senden
         </button>
       </form>
+    </div>
+  );
+}
+
+type MicState = "idle" | "starting" | "live" | "transcribing" | "trouble";
+
+/**
+ * Explicit push-to-talk for Nokt: nothing starts on its own, the child sees
+ * when the microphone is live, and every exit (Fertig, Abbrechen, closing Nokt,
+ * a task change unmounting the panel) releases the microphone and aborts a
+ * pending upload. The recording lives only in memory until the upload; the
+ * transcript only lands in the editable field — never sent without the child.
+ */
+function NoktMic({ transcribe, onTranscript }: { transcribe: NoktTranscribe | null; onTranscript: (text: string) => void }) {
+  const [mic, setMic] = useState<MicState>("idle");
+  const sessionRef = useRef<ReturnType<typeof startPushToTalk> | null>(null);
+  const uploadRef = useRef<AbortController | null>(null);
+  const seqRef = useRef(0);
+  useEffect(
+    () => () => {
+      seqRef.current += 1;
+      sessionRef.current?.cancel();
+      uploadRef.current?.abort();
+    },
+    [],
+  );
+  const start = () => {
+    if (!transcribe || typeof navigator === "undefined" || !navigator.mediaDevices || typeof MediaRecorder === "undefined") {
+      setMic("trouble");
+      return;
+    }
+    const seq = (seqRef.current += 1);
+    setMic("starting");
+    sessionRef.current = startPushToTalk({
+      getUserMedia: () => navigator.mediaDevices.getUserMedia({ audio: true }),
+      isTypeSupported: (type) => MediaRecorder.isTypeSupported(type),
+      createRecorder: (stream, mimeType, handlers) => adaptMediaRecorder(mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream), handlers),
+      onLive: () => {
+        if (seqRef.current === seq) setMic("live");
+      },
+      onSettle: async (outcome) => {
+        if (seqRef.current !== seq) return;
+        sessionRef.current = null;
+        if (outcome.kind !== "recorded") {
+          setMic(outcome.kind === "cancelled" ? "idle" : "trouble");
+          return;
+        }
+        setMic("transcribing");
+        const upload = new AbortController();
+        uploadRef.current = upload;
+        const heard = await transcribe(outcome.blob, outcome.fileName, upload.signal);
+        if (seqRef.current !== seq) return;
+        uploadRef.current = null;
+        if (heard.ok) {
+          setMic("idle");
+          onTranscript(heard.transcript);
+        } else setMic(heard.failure === "cancelled" ? "idle" : "trouble");
+      },
+    });
+  };
+  const cancel = () => {
+    seqRef.current += 1;
+    sessionRef.current?.cancel();
+    sessionRef.current = null;
+    uploadRef.current?.abort();
+    uploadRef.current = null;
+    setMic("idle");
+  };
+  const busy = mic === "starting" || mic === "live" || mic === "transcribing";
+  return (
+    <div className="grid gap-2" data-testid="nokt-mic" data-mic={mic}>
+      <div className="flex flex-wrap gap-2">
+        {mic === "live" || mic === "starting" ? (
+          <button type="button" className={btn} style={{ background: "#a34431", color: "white" }} onClick={() => sessionRef.current?.stop()} aria-live="polite" data-testid="nokt-mic-stop">
+            {mic === "live" ? "■ Fertig gesprochen" : "… Mikrofon startet"}
+          </button>
+        ) : (
+          <button type="button" className={btn} style={{ background: "#215c60", color: "white" }} disabled={mic === "transcribing"} onClick={start} data-testid="nokt-mic-start">
+            {mic === "transcribing" ? "… ich schreibe mit" : "🎙 Sprechen"}
+          </button>
+        )}
+        {busy ? (
+          <button type="button" className={btn} style={{ background: "#e6eee7", color: "#21484b" }} onClick={cancel} data-testid="nokt-mic-cancel">
+            Abbrechen
+          </button>
+        ) : null}
+      </div>
+      {mic === "trouble" ? (
+        <p className="text-base" role="status" data-testid="nokt-mic-trouble">
+          Das hat gerade nicht geklappt. Du kannst es nochmal versuchen oder unten schreiben.
+        </p>
+      ) : null}
     </div>
   );
 }
