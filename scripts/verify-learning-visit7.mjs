@@ -551,6 +551,8 @@ process.on("unhandledRejection", () => {});
 let v7Before = null;
 let v7RowsBefore = null;
 const ONLY_STUB = args.includes("--only-stub");
+/** J3-fault: the stub server runs with FAMILY_NOKT_STT_FAKE_FAULT=quota (the fake answers like an exhausted provider account). */
+const STUB_FAULT = args.includes("--stub-fault");
 try {
   if (!ONLY_STUB) {
   await sixVisitsDone();
@@ -954,7 +956,7 @@ try {
 
   }
   // ============================================================ J3 fictional Nokt stub (separate server) ============================================================
-  if (STUB_BASE && ONLY_STUB) {
+  if (STUB_BASE && ONLY_STUB && !STUB_FAULT) {
     const stubCtx = await makeCtx(STUB_BASE, { viewport: { width: 820, height: 1180 }, hasTouch: true }, assistant, { speech: "end", voice: "fail" });
     await stubCtx.grantPermissions(["microphone"], { origin: STUB_BASE });
     await stubCtx.addInitScript(() => {
@@ -1019,6 +1021,36 @@ try {
       }
     })();
     check("J3.stub.transcript-and-audio-not-persisted", dbHits.length === 0, dbHits);
+  } else if (STUB_BASE && ONLY_STUB && STUB_FAULT) {
+    // ============================================================ J3-fault: provider account exhausted (fake 429) ============================================================
+    const stubCtx = await makeCtx(STUB_BASE, { viewport: { width: 820, height: 1180 }, hasTouch: true }, assistant, { speech: "end", voice: "fail" });
+    await stubCtx.grantPermissions(["microphone"], { origin: STUB_BASE });
+    const s = await stubCtx.newPage();
+    openPages.push(s);
+    s.on("pageerror", (e) => pageErrors.push({ page: "stub-fault", message: String(e) }));
+    const statuses = [];
+    s.on("response", (r) => {
+      if (new URL(r.url()).pathname === "/api/family/learning/nokt/transcribe") statuses.push(r.status());
+    });
+    await s.goto(`${STUB_BASE}/family/learn/mission?child=santiago`);
+    await s.waitForSelector("[data-testid='mission-scene']");
+    await s.locator("[data-testid='nokt-button']").tap();
+    await s.waitForSelector("[data-testid='nokt-panel'][data-mode='fictional-stub']");
+    const typed = "Ich habe das schon getippt.";
+    await s.locator("[data-testid='nokt-input']").fill(typed);
+    await s.locator("[data-testid='nokt-mic-start']").tap();
+    await s.waitForSelector("[data-testid='nokt-mic'][data-mic='live']");
+    await settle(700);
+    await s.locator("[data-testid='nokt-mic-stop']").tap();
+    await s.waitForSelector("[data-testid='nokt-mic'][data-mic='trouble']");
+    check("J3F.upload-refused-503-not-success", statuses.length === 1 && statuses[0] === 503, statuses);
+    check("J3F.typed-input-preserved", (await s.locator("[data-testid='nokt-input']").inputValue()) === typed);
+    check("J3F.no-transcription-claimed", !(await s.locator("label[for='nokt-input']").innerText()).includes("verstanden") && (await s.locator("[data-testid='nokt-transcript']").innerText()).includes("Hallo Santi") && !(await s.locator("[data-testid='nokt-panel']").innerText()).includes("gesprochen"));
+    check("J3F.trouble-offers-typing", (await s.locator("[data-testid='nokt-mic-trouble']").innerText()).includes("schreiben"));
+    await shotScene(s, "stub-nokt-mic-quota-exhausted", "Fake provider answers 429 (exhausted account): typed text kept, no transcript claimed, typing offered");
+    await s.locator("[data-testid='nokt-send']").tap();
+    await s.waitForSelector("[data-testid='nokt-transcript'] [data-role='child']");
+    check("J3F.typed-turn-still-sendable", (await s.locator("[data-testid='nokt-transcript'] [data-role='child']").first().innerText()).includes(typed) && !(await s.locator("[data-testid='nokt-transcript'] [data-role='child']").first().innerText()).includes("gesprochen"));
   } else if (ONLY_STUB) check("J3.stub.needs-stub-base", false, "run with --stub-base");
 
 } catch (e) {
@@ -1035,6 +1067,6 @@ check("global.no-page-errors", pageErrors.length === 0, pageErrors.slice(0, 5));
 check("global.speech-never-reached-server", speechRequests.length >= (ONLY_STUB ? 1 : 3) && speechRequests.every((r) => ["abort", "ok", "fail"].includes(r.mock)), speechRequests.length);
 await browser.close();
 const passed = results.filter((r) => r.ok).length;
-fs.writeFileSync(path.join(OUT, ONLY_STUB ? "results-stub.json" : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), noktUploads, blocked: [...new Set(blocked)], pageErrors }, null, 2));
+fs.writeFileSync(path.join(OUT, ONLY_STUB ? (STUB_FAULT ? "results-stub-fault.json" : "results-stub.json") : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), noktUploads, blocked: [...new Set(blocked)], pageErrors }, null, 2));
 console.log(`${passed}/${results.length} passed`);
 process.exit(passed === results.length ? 0 : 1);

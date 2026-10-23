@@ -63,7 +63,7 @@ export type NoktTranscriber = {
 export type NoktSttMode =
   | { kind: "off" }
   | { kind: "unconfigured" }
-  | { kind: "fictional-fake" }
+  | { kind: "fictional-fake"; fault: "quota" | null }
   | { kind: "openai"; apiKey: string };
 
 /**
@@ -76,7 +76,8 @@ export function noktSttModeFromEnv(env: Record<string, string | undefined>): Nok
     return apiKey ? { kind: "openai", apiKey } : { kind: "unconfigured" };
   }
   // Only the isolated fictional database has a fallback (the fake); a deployment without the provider setting does not transcribe.
-  return noktModeFromEnv(env) === "fictional-stub" ? { kind: "fictional-fake" } : { kind: "off" };
+  // FAMILY_NOKT_STT_FAKE_FAULT=quota (isolated stub only) makes the fake answer like an exhausted provider account (HTTP 429).
+  return noktModeFromEnv(env) === "fictional-stub" ? { kind: "fictional-fake", fault: env.FAMILY_NOKT_STT_FAKE_FAULT === "quota" ? "quota" : null } : { kind: "off" };
 }
 
 /** The multipart body sent to OpenAI, exported so tests prove exactly what is — and is not — sent. */
@@ -122,12 +123,13 @@ export function openAiNoktTranscriber(apiKey: string, deps: { fetchImpl?: typeof
 /** Isolated fictional database only: no network, a fixed fictional sentence that is not an answer to any task. */
 export const FICTIONAL_TRANSCRIPT = "Ich weiss nicht, wie ich anfangen soll.";
 
-export function fictionalNoktTranscriber(): NoktTranscriber {
+export function fictionalNoktTranscriber(fault: "quota" | null = null): NoktTranscriber {
   return {
     provider: "fictional-fake",
     model: "none",
     async transcribe(_file, signal) {
       signal.throwIfAborted();
+      if (fault === "quota") throw new NoktSttUpstreamError(429);
       return { transcript: FICTIONAL_TRANSCRIPT, provider: "fictional-fake", model: "none" };
     },
   };
@@ -135,6 +137,16 @@ export function fictionalNoktTranscriber(): NoktTranscriber {
 
 export function noktTranscriberFor(mode: NoktSttMode, deps: { fetchImpl?: typeof fetch } = {}): NoktTranscriber | null {
   if (mode.kind === "openai") return openAiNoktTranscriber(mode.apiKey, deps);
-  if (mode.kind === "fictional-fake") return fictionalNoktTranscriber();
+  if (mode.kind === "fictional-fake") return fictionalNoktTranscriber(mode.fault);
   return null;
+}
+
+/**
+ * The route's answer to a failed transcription. An account/billing/quota refusal (401/402/403/429 — e.g. an exhausted
+ * credit balance) means "Nokt cannot listen right now" (503), so the panel keeps whatever he typed and offers typing; any
+ * other failure is a 502. Never a transcript, never the upstream body.
+ */
+export function noktSttFailure(error: unknown): { status: 502 | 503; error: string } {
+  if (error instanceof NoktSttUpstreamError && [401, 402, 403, 429].includes(error.status)) return { status: 503, error: "Nokt cannot listen right now" };
+  return { status: 502, error: "Transcription failed" };
 }

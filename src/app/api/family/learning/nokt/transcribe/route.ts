@@ -1,6 +1,6 @@
 import { refuse, NO_STORE, requireChildLearning } from "@/lib/family-learning-auth";
 import { loadLearningContent } from "@/lib/family-learning-content-server";
-import { noktSttModeFromEnv, noktTranscriberFor, NoktSttUpstreamError } from "@/lib/family-learning-nokt-stt";
+import { noktSttFailure, noktSttModeFromEnv, noktTranscriberFor, NoktSttUpstreamError } from "@/lib/family-learning-nokt-stt";
 import { AUDIO_UPLOAD_ISSUE_MESSAGES, checkAudioUpload, createTranscriptionAdmission } from "@/lib/family-transcription";
 
 /**
@@ -57,6 +57,7 @@ export async function POST(request: Request) {
     if (request.signal.aborted) return refuse(499, "Cancelled");
     // Operator detail is the upstream status or the error class only — never the recording or a transcript.
     console.error("[family/learning/nokt/transcribe] transcription failed", error instanceof NoktSttUpstreamError ? error.status : error instanceof Error ? error.name : "unknown");
-    return refuse(502, "Transcription failed");
+    const failure = noktSttFailure(error);
+    return refuse(failure.status, failure.error);
   }
 }

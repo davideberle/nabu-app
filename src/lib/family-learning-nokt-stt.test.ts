@@ -15,6 +15,7 @@ import {
   NOKT_STT_MODEL,
   noktSttModeFromEnv,
   noktTranscriberFor,
+  noktSttFailure,
   NoktSttUpstreamError,
   OPENAI_TRANSCRIPTIONS_URL,
   openAiNoktTranscriber,
@@ -133,8 +134,8 @@ describe("Nokt STT — owner-authorized activation, explicit per deployment", ()
   });
 
   it("the isolated fictional database uses the fake unless OpenAI is named explicitly; the fake never runs anywhere else", () => {
-    deepEqual(noktSttModeFromEnv(ISOLATED), { kind: "fictional-fake" });
-    deepEqual(noktSttModeFromEnv({ ...ISOLATED, OPENAI_API_KEY: FAKE_KEY }), { kind: "fictional-fake" });
+    deepEqual(noktSttModeFromEnv(ISOLATED), { kind: "fictional-fake", fault: null });
+    deepEqual(noktSttModeFromEnv({ ...ISOLATED, OPENAI_API_KEY: FAKE_KEY }), { kind: "fictional-fake", fault: null });
     deepEqual(noktSttModeFromEnv({ ...ISOLATED, FAMILY_NOKT_STT_PROVIDER: "openai", OPENAI_API_KEY: FAKE_KEY }), { kind: "openai", apiKey: FAKE_KEY });
     deepEqual(noktSttModeFromEnv({ NABU_DB_DIR: "/tmp/x" }), { kind: "off" }, "an isolated DB without the stub flag does not transcribe");
     deepEqual(noktSttModeFromEnv({ ...ISOLATED, VERCEL_URL: "x.vercel.app" }), { kind: "off" });
@@ -147,6 +148,44 @@ describe("Nokt STT — owner-authorized activation, explicit per deployment", ()
     const aborted = new AbortController();
     aborted.abort();
     await rejects(fictionalNoktTranscriber().transcribe(audio(), aborted.signal));
+  });
+});
+
+describe("Nokt STT — exhausted provider account (Nabu's smoke: HTTP 429 credit_balance_exhausted)", () => {
+  it("OpenAI 429 is an upstream error with the status only; its body is never read", async () => {
+    let bodyRead = false;
+    const f = fakeFetch(() => {
+      const r = Response.json({ error: { code: "credit_balance_exhausted", message: "fictional" } }, { status: 429 });
+      r.json = async () => {
+        bodyRead = true;
+        return {};
+      };
+      r.text = async () => {
+        bodyRead = true;
+        return "";
+      };
+      return r;
+    });
+    await rejects(openAiNoktTranscriber(FAKE_KEY, { fetchImpl: f.impl }).transcribe(audio(), new AbortController().signal), (e: unknown) => e instanceof NoktSttUpstreamError && e.status === 429);
+    equal(bodyRead, false);
+  });
+
+  it("the route answers 503 «cannot listen» for account/billing/quota refusals and 502 otherwise — never a transcript", () => {
+    for (const status of [401, 402, 403, 429]) deepEqual(noktSttFailure(new NoktSttUpstreamError(status)), { status: 503, error: "Nokt cannot listen right now" });
+    deepEqual(noktSttFailure(new NoktSttUpstreamError(500)), { status: 502, error: "Transcription failed" });
+    deepEqual(noktSttFailure(new DOMException("timeout", "TimeoutError")), { status: 502, error: "Transcription failed" });
+  });
+
+  it("the isolated stub can simulate it with the FAKE only", async () => {
+    deepEqual(noktSttModeFromEnv({ ...ISOLATED, FAMILY_NOKT_STT_FAKE_FAULT: "quota" }), { kind: "fictional-fake", fault: "quota" });
+    deepEqual(noktSttModeFromEnv({ VERCEL: "1", FAMILY_NOKT_STT_FAKE_FAULT: "quota" }), { kind: "off" });
+    await rejects(fictionalNoktTranscriber("quota").transcribe(audio(), new AbortController().signal), (e: unknown) => e instanceof NoktSttUpstreamError && e.status === 429);
+  });
+
+  it("the client turns the 503 into «unavailable», not a transcript", async () => {
+    const session = () => Response.json({ child: "santiago", token: "t", expiresAt: Date.now() + 3_600_000 });
+    const client = createLearningClient({ fetchImpl: fakeFetch((c) => (c.url === LEARNING_SESSION_PATH ? session() : Response.json({ error: "Nokt cannot listen right now" }, { status: 503 }))).impl });
+    deepEqual(await client.transcribeNokt("santiago", new Blob(["x"]), "u.m4a", { signal: new AbortController().signal }), { ok: false, failure: "unavailable", status: 503 });
   });
 });
 
