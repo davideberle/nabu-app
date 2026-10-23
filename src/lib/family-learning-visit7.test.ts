@@ -734,7 +734,8 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
   it("ADVERSARIAL: a judgement needs a clarification first; after two clarifications the app moves to teaching, which is help", () => {
     const env = makeEnv(v6, { tutorAvailable: true });
     let s = dispatchTurn(atG2(env), env, "turn-b00001", "fünf").state;
-    const claim = (turnId: string, status: string, kind: string, next: string) => ({ v: 1, turnId, child: "santiago", missionId: garden.id, visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "talk-1", revision: 1, status, evidence: { attempts: [1], transcriptTurns: 1 }, support: { kind, answerExposed: false }, next });
+    // The model gives its judgement only; the app binds it to the dispatch (turn id kept in the call for readability).
+    const claim = (_turnId: string, status: string, support: string, next: string) => ({ status, support, next });
     const premature = replyTurn(s, env, "turn-b00001", reply("Was sollst du herausfinden?", "clarify", claim("turn-b00001", "needs_practice", "none", "hint")));
     deepStrictEqual((premature.result as { outcome: unknown }).outcome, { refused: "premature-judgement" });
     s = premature.state;
@@ -758,6 +759,31 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     ok(talk.some((t) => t.who === "Kind" && t.text === "fünf" && /gesprochen/.test(t.detail)));
     ok(talk.some((t) => t.who === "Nokt" && /geprüft/.test(t.detail)));
     ok(talk.some((t) => t.who === "zurückgehalten" && t.detail === "passte nicht zur Gesprächsphase"));
+  });
+
+  it("an accepted reply's judgement is bound by the app and validated: accepted with help, refused as false independence after a hint; recorded for the parent", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    // case 1: one answered clarification, no help → a supported judgement is accepted, the question stays open
+    let s = dispatchTurn(atG2(env), env, "turn-o00001", "fünf, die halbe Trage zählt auch").state;
+    s = replyTurn(s, env, "turn-o00001", reply("Was bedeutet «ganz füllen» in der Frage?", "clarify")).state;
+    s = dispatchTurn(s, env, "turn-o00002", "Ganz füllen heisst vier drin. Die halbe zählt nicht. Ich rechne nochmal.").state;
+    const ok1 = replyTurn(s, env, "turn-o00002", reply("Wie willst du jetzt vorgehen?", "close", { status: "understood_with_support", support: "clarification", next: "retry" }));
+    deepStrictEqual((ok1.result as { outcome: unknown }).outcome, { status: "understood_with_support", next: "retry" });
+    equal(g2(ok1.state).parts!.full.status, "open", "no false completion");
+    equal(g2(ok1.state).tutorOutcomes!.length, 1);
+    deepStrictEqual(g2(ok1.state).tutorOutcomes![0].evidence, { attempts: [1], transcriptTurns: 2 }, "evidence from the app's own record");
+    ok(missionEvidence(ok1.state, v6, "v8")!.steps.find((x) => x.id === "G2-PACK")!.talk.some((t) => /von der App angenommen/.test(t.detail)));
+    // case 2: after a hint (help), the model claiming independent understanding is refused by the validator
+    const env2 = makeEnv(v6, { tutorAvailable: true });
+    let h = atG2(env2);
+    h = m(h, { a: "hint", step: "G2-PACK", part: "full" }, env2);
+    h = dispatchTurn(h, env2, "turn-o00011", "Mit dem Hinweis: in drei Tragen sind 12").state;
+    h = replyTurn(h, env2, "turn-o00011", reply("Was hast du im Hinweis gesehen?", "clarify")).state;
+    h = dispatchTurn(h, env2, "turn-o00012", "Dann noch eine volle Trage mit vier, und zwei bleiben übrig.").state;
+    const refused = replyTurn(h, env2, "turn-o00012", reply("Probier es oben noch einmal.", "close", { status: "understood", support: "none", next: "retry" }));
+    deepStrictEqual((refused.result as { outcome: unknown }).outcome, { refused: "false-independent" });
+    equal((g2(refused.state).tutorOutcomes ?? []).length, 0);
+    ok(missionEvidence(refused.state, v6, "v8")!.steps.find((x) => x.id === "G2-PACK")!.talk.some((t) => /abgelehnt \(false-independent\)/.test(t.detail)));
   });
 
   it("the reply route's receipt is bound by the ENGINE to its dispatch: right turn/request/bytes verified; anything else withheld", async () => {

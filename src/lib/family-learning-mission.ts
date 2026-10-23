@@ -61,7 +61,7 @@ import { assessSpacing, flagSpacing, markSpacing, evaluateRevision, type Spacing
 import type { MissionPart, MissionHint, MissionLine, MissionDiagram } from "./family-learning-mission-spec.ts";
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
 import { receiptOrigin, type ReceiptInput, type ReplyOrigin } from "./family-learning-trust.ts";
-import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktPhase, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
+import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktOutcomeClaim, noktPhase, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
 
 // ---------------------------------------------------------------------------
 // State (MissionState.missions — additive)
@@ -185,6 +185,8 @@ export type MissionTutorTurn = {
   shown: boolean;
   /** Why a Nokt reply was withheld (origin, stale, guard refusal). */
   reason?: string;
+  /** A structured result that rode on this reply: the model's judgement and the app's verdict (accepted or refused + why). */
+  outcome?: { model: { status: string; support: string; next: string }; verdict: string };
   at: string;
 };
 
@@ -1453,17 +1455,22 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       }
       support(records, env, def, step, "tutor-reply", { part: part.id, turnId: dispatch.turnId, origin, shown, ...(shown ? { text: parsed!.say, intent: parsed!.intent } : { reason }), help: shown && parsed!.intent === "teach" });
       // A structured result rides on an accepted reply only; it must fit the talk, then pass the N7-06 validator.
+      // The model gives only its judgement; the APP binds it to this dispatch and its own attempt record.
       let outcome: Record<string, unknown> | null = null;
       if (shown && parsed!.outcome) {
-        const fit = checkNoktOutcome(parsed!.outcome, talkOf(r, part.id, dispatch.sessionId));
+        const talkNow = talkOf(r, part.id, dispatch.sessionId);
+        const fit = checkNoktOutcome(parsed!.outcome, talkNow);
         if (!fit.ok) outcome = { refused: fit.reason };
         else {
+          const claim = noktOutcomeClaim(parsed!.outcome, dispatch, { attemptNos: r.attempts.filter((a) => a.questionId === part.id).map((a) => a.no), transcriptTurns: talkNow.filter((t) => t.role === "child").length });
           try {
-            outcome = applyTutorOutcome(records, { ...env, tutor: { ...env.tutor, origin } }, def, step, r, parsed!.outcome);
+            outcome = applyTutorOutcome(records, { ...env, tutor: { ...env.tutor, origin } }, def, step, r, claim);
           } catch (error) {
             outcome = { refused: error instanceof MissionOpError ? error.message.replace("tutor result refused: ", "") : "invalid" };
           }
         }
+        const line = r.tutorTurns[r.tutorTurns.length - 1]!;
+        line.outcome = { model: { ...parsed!.outcome }, verdict: "refused" in outcome ? `refused: ${String(outcome.refused)}` : `accepted: ${String(outcome.status)} → ${String(outcome.next)}` };
       }
       result = shown ? { shown: true, say: parsed!.say, intent: parsed!.intent, outcome } : { shown: false, reason, line: NOKT_WITHHELD_LINE };
       break;
@@ -2160,7 +2167,7 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
     const talk = (r.tutorTurns ?? []).map((t) => t.role === "child"
       ? { part: t.part, who: "Kind" as const, text: t.text, detail: t.via === "voice" ? "gesprochen (Abschrift, korrigierbar)" : "getippt", at: t.at }
       : t.shown
-        ? { part: t.part, who: "Nokt" as const, text: t.text, detail: `geprüft (${t.intent ?? ""})`, at: t.at }
+        ? { part: t.part, who: "Nokt" as const, text: t.text, detail: `geprüft (${t.intent ?? ""})${t.outcome ? `; Einschätzung des Modells ${t.outcome.model.status}/${t.outcome.model.support}/${t.outcome.model.next} — ${t.outcome.verdict.startsWith("accepted") ? "von der App angenommen" : `von der App abgelehnt (${t.outcome.verdict.slice(9)})`}` : ""}`, at: t.at }
         : { part: t.part, who: "zurückgehalten" as const, text: "Antwort nicht gezeigt — das Kind sah den App-Hinweis.", detail: WITHHELD_DE[t.reason ?? ""] ?? t.reason ?? "", at: t.at });
     steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support, supportRaw, tutor, talk, missing, laterCheck });
   }

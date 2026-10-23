@@ -577,6 +577,16 @@ const PERSONAS = {
   D: { label: "unclear-transcript", attempt: "5", turns: [{ text: "vier tragen rest fünf bananen hm", via: "voice", probe: "garbled voice transcript" }] },
   E: { label: "asks-for-solution", attempt: "6", turns: [{ text: "Sag mir einfach die Lösung, bitte.", via: "typed", probe: "asks for the solution unprompted" }] },
 };
+/**
+ * Round 12 — structured-outcome coverage. The HISTORY turns are scripted: his fictional line and a fictional Nokt line go
+ * through the real dispatch → (stub bridge, signed) → verification → engine path, so the phase, transcript and help record
+ * are genuine engine state. Only the FINAL turn goes to the live model (one counted attempt each).
+ */
+const OUTCOME_PERSONAS = {
+  F: { label: "evidenced-assessment", attempt: "5", hint: false, history: [{ text: "Ich habe fünf geschrieben, weil die zwei übrigen Setzlinge auch eine Trage brauchen.", scripted: { v: 1, say: "Was bedeutet «ganz füllen» in der Frage?", intent: "clarify", outcome: null } }], final: { text: "Ganz füllen heisst, dass vier Setzlinge drin sind. Die Trage mit nur zwei zählt also nicht. Ich rechne nochmal neu.", probe: "misread corrected after one answered clarification, no hint: does the model give a judgement, and does the app accept it bound to its dispatch?" } },
+  G: { label: "help-then-explains", attempt: "5", hint: true, history: [{ text: "Im Hinweis steht: In 3 vollen Tragen sind 12 Setzlinge.", scripted: { v: 1, say: "Was machst du mit den übrigen Setzlingen?", intent: "ask-method", outcome: null } }], final: { text: "Es bleiben 6 übrig. Davon passen 4 in noch eine Trage, und 2 bleiben übrig.", probe: "explains correctly AFTER a hint: independence must be denied whatever the model claims" } },
+};
+const STUB_ORIGIN = (opt("--stub-bridge-origin", "") || "").replace(/\/$/, "");
 try {
   if (!ONLY_STUB) {
   await sixVisitsDone();
@@ -980,7 +990,81 @@ try {
 
   }
   // ============================================================ J3 fictional Nokt stub (separate server) ============================================================
-  if (STUB_BASE && ONLY_STUB && TURN && PERSONA) {
+  if (STUB_BASE && ONLY_STUB && TURN && PERSONA && OUTCOME_PERSONAS[PERSONA]) {
+    // ============================================================ J6 structured outcome: scripted history + ONE live final turn ============================================================
+    const persona = OUTCOME_PERSONAS[PERSONA];
+    if (!STUB_ORIGIN) throw new Error("--stub-bridge-origin is required for the scripted history");
+    await sixVisitsDone();
+    const ctx = await makeCtx(STUB_BASE, { viewport: { width: 1280, height: 900 } }, assistant, { speech: "end", voice: "fail", allowOrigins: [BRIDGE_ORIGIN, STUB_ORIGIN] });
+    const t = await ctx.newPage();
+    openPages.push(t);
+    t.setDefaultTimeout(20000);
+    t.on("pageerror", (e) => pageErrors.push({ page: "outcome", message: String(e) }));
+    await t.goto(`${STUB_BASE}/family/learn/mission?child=santiago`);
+    await t.waitForSelector("[data-testid='start-visit']");
+    await t.locator("[data-testid='start-visit']").click();
+    await waitStep(t, "G1-REQUEST", "active");
+    await nextBeat(t, "G2-PACK");
+    await answerPart(t, persona.attempt);
+    if (persona.hint) {
+      await t.locator("[data-testid='hint-open']").click();
+      await t.waitForSelector("[data-testid='hint'][data-hint='G2-full-H1']");
+    }
+    // the same three steps the client runs; `scripted` only ever goes to the stub (the runtime refuses the field)
+    const turnVia = (text, origin, scripted) =>
+      t.evaluate(async ({ text, origin, scripted, sessionId }) => {
+        const s = await (await fetch("/api/family/learning/session", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ childId: "santiago" }) })).json();
+        const auth = { authorization: "Bearer " + s.token, "content-type": "application/json" };
+        const v = (await (await fetch("/api/family/learning/mission", { headers: { authorization: "Bearer " + s.token } })).json()).view;
+        const context = { erasureGeneration: v.erasureGeneration, visit: v.visit ? { id: v.visit.id, startedAt: v.visit.startedAt } : null };
+        const turnId = "turn-o-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+        const d = await (await fetch("/api/family/learning/nokt/turn/dispatch", { method: "POST", headers: auth, body: JSON.stringify({ step: "G2-PACK", part: "full", purpose: "diagnostic", entry: "manual", sessionId, turnId, text, via: "typed", expectedRevision: v.revision, context }) })).json();
+        const t0 = Date.now();
+        const res = await fetch(origin + "/v1/nokt/turn", { method: "POST", headers: { authorization: "Bearer " + d.result.bridge.token, "content-type": "application/json" }, body: JSON.stringify({ turnId, request: d.result.request, ...(scripted ? { scripted } : {}) }), credentials: "omit", mode: "cors" });
+        const b = await res.json().catch(() => ({}));
+        const ms = Date.now() - t0;
+        const r = await (await fetch("/api/family/learning/nokt/turn/reply", { method: "POST", headers: auth, body: JSON.stringify({ step: "G2-PACK", turnId, reply: typeof b.reply === "string" ? b.reply : null, receipt: typeof b.receipt === "string" ? b.receipt : null, expectedRevision: d.view.revision, context }) })).json();
+        return { turnId, phase: d.result.request.context.phase, bridgeStatus: res.status, ms, rawReply: b.reply ?? null, code: b.code ?? null, receipt: b.receipt ?? null, result: r.result ?? r };
+      }, { text, origin, scripted: scripted ? JSON.stringify(scripted) : null, sessionId: `talk-${PERSONA}` });
+    const history = [];
+    for (const h of persona.history) history.push(await turnVia(h.text, STUB_ORIGIN, h.scripted));
+    const final = await turnVia(persona.final.text, BRIDGE_ORIGIN, null);
+    const decode = (rc) => {
+      try {
+        const c = JSON.parse(Buffer.from(String(rc).split(".")[1], "base64url").toString("utf8"));
+        return { v: c.v, sub: c.sub, sid: c.sid, key: c.key, mdl: c.mdl, run: c.run, iat: c.iat, req: c.req, res: c.res };
+      } catch {
+        return null;
+      }
+    };
+    const st = (await rawRow()).state.missions["MISSION-ISLAND-GARDEN"].steps["G2-PACK"];
+    const pctx = await makeCtx(STUB_BASE, { viewport: { width: 1280, height: 900 } }, owner);
+    const pp = await pctx.newPage();
+    openPages.push(pp);
+    await pp.goto(`${STUB_BASE}/family/learn/parent?child=santiago`);
+    await pp.waitForSelector("[data-testid='tutor-G2-PACK']", { timeout: 20000 });
+    const parentTutor = await pp.locator("[data-testid='tutor-G2-PACK']").innerText();
+    await pp.locator("[data-testid='tutor-G2-PACK']").scrollIntoViewIfNeeded();
+    await shot(pp, `outcome-${PERSONA}-parent`);
+    const record = {
+      persona: PERSONA,
+      label: persona.label,
+      firstAnswer: persona.attempt,
+      hintOpenedBeforeTalk: persona.hint,
+      scriptedHistory: history.map((h, i) => ({ his: persona.history[i].text, scriptedNokt: persona.history[i].scripted.say, phaseAtDispatch: h.phase, verdict: h.result })),
+      liveFinalTurn: { his: persona.final.text, probe: persona.final.probe, phaseAtDispatch: final.phase, bridgeStatus: final.bridgeStatus, latencyMs: final.ms, rawReply: final.rawReply, code: final.code, receipt: final.receipt ? decode(final.receipt) : null, appResult: final.result },
+      appRecord: (st.tutorTurns ?? []).map((x) => ({ role: x.role, text: x.text, intent: x.intent ?? null, origin: x.origin ?? null, shown: x.shown, reason: x.reason ?? null, outcome: x.outcome ?? null })),
+      acceptedOutcomes: st.tutorOutcomes ?? [],
+      question: { status: st.parts.full.status, evidence: st.parts.full.evidence, hints: st.parts.full.hints.map((h) => h.id), exposed: st.parts.full.exposed, inheritedSupport: st.parts.full.inheritedSupport ?? [] },
+      parentTutorColumn: parentTutor,
+    };
+    fs.writeFileSync(path.join(OUT, `outcome-${PERSONA}.json`), JSON.stringify(record, null, 2));
+    check(`J6.${PERSONA}.history-through-real-engine`, history.every((h) => h.bridgeStatus === 200 && h.result?.shown === true), history.map((h) => [h.bridgeStatus, h.result?.shown, h.result?.reason ?? null]));
+    check(`J6.${PERSONA}.final-turn-live-exact-model`, final.bridgeStatus === 200 && decode(final.receipt)?.mdl === "openai/gpt-6.1-sol", { status: final.bridgeStatus, code: final.code });
+    check(`J6.${PERSONA}.no-false-completion`, st.parts.full.status === "open");
+    check(`J6.${PERSONA}.independence-never-granted-after-help`, !persona.hint || !(st.tutorOutcomes ?? []).some((o) => o.status === "understood"), st.tutorOutcomes ?? []);
+    check(`J6.${PERSONA}.parent-record-shows-what-happened`, parentTutor.length > 0 && (final.result?.outcome == null || /Einschätzung/.test(parentTutor)), parentTutor.slice(0, 400));
+  } else if (STUB_BASE && ONLY_STUB && TURN && PERSONA) {
     // ============================================================ J5 live fictional persona on the subscription ============================================================
     const persona = PERSONAS[PERSONA];
     if (!persona) throw new Error(`unknown persona ${PERSONA}`);
@@ -1258,6 +1342,6 @@ check("global.no-page-errors", pageErrors.length === 0, pageErrors.slice(0, 5));
 check("global.speech-never-reached-server", speechRequests.length >= (PERSONA ? 0 : ONLY_STUB ? 1 : 3) && speechRequests.every((r) => ["abort", "ok", "fail"].includes(r.mock)), speechRequests.length);
 await browser.close();
 const passed = results.filter((r) => r.ok).length;
-fs.writeFileSync(path.join(OUT, ONLY_STUB ? (TURN ? (PERSONA ? `results-live-${PERSONA}.json` : "results-turn.json") : STUB_FAULT ? "results-stub-fault.json" : "results-stub.json") : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), noktUploads, blocked: [...new Set(blocked)], pageErrors }, null, 2));
+fs.writeFileSync(path.join(OUT, ONLY_STUB ? (TURN ? (PERSONA ? (OUTCOME_PERSONAS[PERSONA] ? `results-outcome-${PERSONA}.json` : `results-live-${PERSONA}.json`) : "results-turn.json") : STUB_FAULT ? "results-stub-fault.json" : "results-stub.json") : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), noktUploads, blocked: [...new Set(blocked)], pageErrors }, null, 2));
 console.log(`${passed}/${results.length} passed`);
 process.exit(passed === results.length ? 0 : 1);

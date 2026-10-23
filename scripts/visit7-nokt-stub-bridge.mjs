@@ -14,6 +14,10 @@
 //   2  «teach» label with the answer in the assessment phase, signed → withheld by the app (intent-not-in-phase)
 //   3  a fine clarification, receipt signed with ANOTHER secret      → withheld (origin invalid)
 //   4+ a fine reply after a 3 s delay (the page navigates away)      → never recorded as a Nokt line
+// SCRIPTED HISTORY (round 12): a body carrying `scripted: "<reply JSON>"` is answered with exactly that text, signed — so a
+// fictional earlier Nokt line can be put through the REAL dispatch → verification → engine path before one final live
+// turn goes to the model. Labelled `scripted: true` in the log; never counted as a model attempt. The real runtime
+// refuses this field (closed body).
 import http from "node:http";
 import fs from "node:fs";
 import { createHash, createHmac, timingSafeEqual } from "node:crypto";
@@ -63,8 +67,12 @@ http
         fs.appendFileSync(log, JSON.stringify({ refused: `token-${verdict.why}`, origin }) + "\n");
         return res.writeHead(401, cors).end();
       }
+      const { turnId, request, scripted } = JSON.parse(raw);
+      if (typeof scripted === "string") {
+        fs.appendFileSync(log, JSON.stringify({ scripted: true, at: new Date().toISOString(), origin, child: verdict.sub, phase: request?.context?.phase ?? null, transcript: request?.transcript?.length ?? 0 }) + "\n");
+        return res.writeHead(200, { ...cors, "content-type": "application/json" }).end(JSON.stringify({ ok: true, reply: scripted, receipt: receipt({ child: verdict.sub, turnId, request, reply: scripted }) }));
+      }
       n += 1;
-      const { turnId, request } = JSON.parse(raw);
       fs.appendFileSync(log, JSON.stringify({ n, at: new Date().toISOString(), origin, child: verdict.sub, cookie: Boolean(req.headers.cookie), answerField: /"answer"/.test(JSON.stringify(request)), phase: request?.context?.phase ?? null, transcript: request?.transcript?.length ?? 0 }) + "\n");
       let reply;
       let secret = SECRET;

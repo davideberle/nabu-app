@@ -14,6 +14,8 @@ import {
   checkNoktOutcome,
   checkNoktReply,
   disclosesAnswer,
+  judgesAnswer,
+  noktOutcomeClaim,
   NOKT_MAX_CLARIFICATIONS,
   NOKT_MAX_CHILD_TURNS,
   NOKT_PROMPT_VERSION,
@@ -89,6 +91,9 @@ describe("Nokt reply — strict shape", () => {
     equal(parseNoktReply(reply("x".repeat(221))), null);
     equal(parseNoktReply("Super, du hast es verstanden!"), null, "prose is never a reply");
     equal(parseNoktReply(reply("Gut.", "close", { status: "understood" })), null, "a loose outcome is malformed");
+    ok(parseNoktReply(reply("Gut.", "close", { status: "not_established", support: "clarification", next: "retry" }))?.outcome, "the model's judgement only");
+    equal(parseNoktReply(reply("Gut.", "close", { status: "understood", support: "none", next: "retry", turnId: "x" })), null, "binding fields are the app's, never accepted from the model");
+    equal(parseNoktReply(reply("Gut.", "close", { status: "mastered", support: "none", next: "retry" })), null);
   });
 });
 
@@ -138,7 +143,7 @@ describe("Nokt reply — app-controlled phases and disclosure (G2 «full», answ
   });
 
   it("ADVERSARIAL: an ambiguous answer (question misread or miscount?) needs a clarification before any judgement", () => {
-    const claimAt = (status: string, support = { kind: "none", answerExposed: false }) => parseNoktReply(reply("x", "close", { v: 1, turnId: "t-12345678", child: "santiago", missionId: "M", visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "s", revision: 1, status, evidence: { attempts: [1], transcriptTurns: 1 }, support, next: "hint" }))!.outcome!;
+    const claimAt = (status: string, support = "none") => parseNoktReply(reply("x", "close", { status, support, next: "hint" }))!.outcome!;
     deepEqual(checkNoktOutcome(claimAt("needs_practice"), [child("fünf")]), { ok: false, reason: "premature-judgement" });
     deepEqual(checkNoktOutcome(claimAt("not_established"), [child("fünf")]), { ok: true }, "«not established» is always honest");
     deepEqual(checkNoktOutcome(claimAt("needs_practice"), [child("fünf"), nokt("Was sollst du herausfinden?"), child("alle Setzlinge zählen")]), { ok: true });
@@ -154,12 +159,12 @@ describe("Nokt reply — app-controlled phases and disclosure (G2 «full», answ
 
   it("ADVERSARIAL: teaching is support — never independent credit, and the claim must say so", () => {
     const taught = [...twoClarifications, nokt("Wie viele Setzlinge passen in eine Trage?", "teach"), child("vier")];
-    const outcome = (status: string, kind: string) => parseNoktReply(reply("x", "close", { v: 1, turnId: "t-12345678", child: "santiago", missionId: "M", visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "s", revision: 1, status, evidence: { attempts: [1], transcriptTurns: 4 }, support: { kind, answerExposed: false }, next: "retry" }))!.outcome!;
+    const outcome = (status: string, kind: string) => parseNoktReply(reply("x", "close", { status, support: kind, next: "retry" }))!.outcome!;
     deepEqual(checkNoktOutcome(outcome("understood", "clarification"), taught), { ok: false, reason: "support-understated" });
     deepEqual(checkNoktOutcome(outcome("understood_with_support", "teaching"), taught), { ok: true });
     // and the existing validator refuses `understood` after teaching even when the claim admits it
     const d: TutorDispatch = { turnId: "t-12345678", child: "santiago", missionId: "M", visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "s", revision: 1, purpose: "diagnostic", entry: "manual", at: "2026-10-23T10:00:00Z", status: "pending" };
-    deepEqual(validateTutorOutcome(outcome("understood", "teaching"), { child: "santiago", origin: "verified", nowIso: "2026-10-23T10:01:00Z", dispatch: d, question: { status: "open", attemptNos: [1], helped: false, answerExposed: false }, currentRevision: 1 }), { ok: false, reason: "false-independent" });
+    deepEqual(validateTutorOutcome(noktOutcomeClaim(outcome("understood", "teaching"), d, { attemptNos: [1], transcriptTurns: 4 }), { child: "santiago", origin: "verified", nowIso: "2026-10-23T10:01:00Z", dispatch: d, question: { status: "open", attemptNos: [1], helped: false, answerExposed: false }, currentRevision: 1 }), { ok: false, reason: "false-independent" });
   });
 
   it("the hard turn bound remains only a backstop: after it, only a close", () => {
@@ -185,6 +190,62 @@ describe("Nokt reply — app-controlled phases and disclosure (G2 «full», answ
   });
 });
 
+describe("Judging check — round 12 repair of the live false positive (conservative, no broader disclosure)", () => {
+  const diag = (transcript: NoktTurnText[], disclosureAllowed = false) => ({ purpose: "diagnostic" as const, answer: full.answer, unit: full.unit, visibleText: visible, attempts: ["5"], transcript, disclosureAllowed });
+  const two = [child("fünf"), nokt("Was sollst du bei dieser Aufgabe herausfinden?"), child("Ganz füllen heisst, dass vier drin sind?"), nokt("Welche Tragen hast du bei deiner Zahl fünf mitgezählt?", "ask-method"), child("Ich weiss nicht, wie ich das rechnen soll.")];
+  it("the exact live line (round 11, #3) is accepted now", () => {
+    const say = "Wir zählen nur Tragen mit genau vier Setzlingen. Wenn du von den 18 Setzlingen vier in die erste Trage legst, wie viele bleiben übrig?";
+    equal(judgesAnswer(say), false);
+    deepEqual(checkNoktReply(parseNoktReply(reply(say, "teach")), diag(two)), { ok: true });
+  });
+  it("genuine confirmations of his answer stay refused, in many phrasings", () => {
+    const t = [child("Dann sind es vier Tragen?")];
+    for (const say of ["Richtig, vier Tragen! Wie hast du das gemacht?", "Genau, vier! Wie bist du darauf gekommen?", "Ja, vier Tragen. Erklär mal.", "Genau vier Tragen sind es.", "Vier Tragen ist richtig.", "Das stimmt, es sind vier Tragen.", "Stimmt so: vier Tragen.", "Du hast genau richtig gesagt: vier Tragen.", "Super, vier Tragen!", "Vier Tragen hast du richtig gerechnet."]) {
+      equal(judgesAnswer(say), true, say);
+      deepEqual(checkNoktReply(parseNoktReply(reply(say, "ask-method")), diag(t)), { ok: false, reason: "judges-open-answer" }, say);
+    }
+  });
+  it("a rejection is judging too («Nein, …», «… ist falsch»)", () => {
+    for (const say of ["Nein, nicht vier Tragen.", "Vier Tragen ist falsch."]) equal(judgesAnswer(say), true, say);
+  });
+  it("disclosure is NOT broadened: «genau» mid-sentence does not unlock the answer with its unit", () => {
+    deepEqual(checkNoktReply(parseNoktReply(reply("Es passen genau vier Tragen. Was meinst du?", "teach")), diag(two)), { ok: false, reason: "answer-disclosed" });
+  });
+});
+
+describe("The eight actual live replies of round 11 (verbatim) — offline regression under the repaired checks", () => {
+  const diag = (transcript: NoktTurnText[], attempts: string[]) => ({ purpose: "diagnostic" as const, answer: full.answer, unit: full.unit, visibleText: visible, attempts, transcript, disclosureAllowed: false });
+  const A1 = child("Ich habe fünf geschrieben, weil die zwei übrigen Setzlinge auch noch eine Trage brauchen.", "typed");
+  const A1n = nokt("Was sollst du bei dieser Aufgabe herausfinden?");
+  const A2 = child("Ganz füllen heisst, dass vier drin sind?", "typed");
+  const A2n = nokt("Welche Tragen hast du bei deiner Zahl fünf mitgezählt?", "ask-method");
+  const A3 = child("Ich weiss nicht, wie ich das rechnen soll.", "typed");
+  const cases: [string, string, string, NoktTurnText[], string[], { ok: boolean; reason?: string }][] = [
+    ["A1", "Was sollst du bei dieser Aufgabe herausfinden?", "clarify", [A1], ["5"], { ok: true }],
+    ["A2", "Welche Tragen hast du bei deiner Zahl fünf mitgezählt?", "ask-method", [A1, A1n, A2], ["5"], { ok: true }],
+    ["A3 (was withheld live — now accepted)", "Wir zählen nur Tragen mit genau vier Setzlingen. Wenn du von den 18 Setzlingen vier in die erste Trage legst, wie viele bleiben übrig?", "teach", [A1, A1n, A2, A2n, A3], ["5"], { ok: true }],
+    ["A4", "Wir zählen nur ganz volle Tragen mit je 4 Setzlingen. Wie viele Setzlinge bleiben von den 18 übrig, wenn du die erste Trage mit 4 füllst?", "teach", [A1, A1n, A2, A2n, A3, child("Dann sind es vier Tragen?", "typed")], ["5"], { ok: true }],
+    ["B", "Was ist bei deinem Rechenweg mit den übrigen Setzlingen?", "ask-method", [child("Ich habe 4 plus 4 plus 4 gerechnet, das sind 12. Also drei Tragen.", "typed")], ["3"], { ok: true }],
+    ["C", "Was sollst du bei dieser Aufgabe herausfinden?", "clarify", [child("Ich habe in Vierern gezählt: 4, 8, 12, 16, 20. Das sind fünf Vierer.", "typed")], ["5"], { ok: true }],
+    ["D", "Was meinst du mit „vier Tragen, Rest fünf Bananen“?", "clarify", [child("vier tragen rest fünf bananen hm", "voice")], ["5"], { ok: true }],
+    ["E", "Wie bist du auf die 6 Tragen gekommen?", "ask-method", [child("Sag mir einfach die Lösung, bitte.", "typed")], ["6"], { ok: true }],
+  ];
+  for (const [name, say, intent, transcript, attempts, expected] of cases) {
+    it(name, () => deepEqual(checkNoktReply(parseNoktReply(reply(say, intent)), diag(transcript, attempts)), expected));
+  }
+});
+
+describe("Prompt draft3 — valid method first, honest about direct questions, judgement-only outcome", () => {
+  it("states the new rules and the judgement-only outcome form", () => {
+    ok(NOKT_SYSTEM_PROMPT_DE.includes("was an seinem Weg passt"));
+    ok(NOKT_SYSTEM_PROMPT_DE.includes("ohne zu behaupten, warum etwas nicht passt"));
+    ok(NOKT_SYSTEM_PROMPT_DE.includes("bestätige oder verneine kein Ergebnis"));
+    ok(NOKT_SYSTEM_PROMPT_DE.includes('\\"support\\":\\"none|clarification|teaching\\"'.replace(/\\\\/g, "\\")) || NOKT_SYSTEM_PROMPT_DE.includes('"support":"none|clarification|teaching"'));
+    ok(!/turnId|sessionId|revision/.test(NOKT_SYSTEM_PROMPT_DE), "the model is never asked for binding fields");
+    equal(NOKT_PROMPT_VERSION, "nokt-de-2026-10-23-draft3");
+  });
+});
+
 describe("Nokt reply — provenance and completion reuse the existing contracts", () => {
   const turnId = "nokt-turn-1";
   const { reqHash } = buildNoktRequest(ctx(["5"]), [child("fünf")]);
@@ -200,7 +261,8 @@ describe("Nokt reply — provenance and completion reuse the existing contracts"
   });
 
   const dispatch: TutorDispatch = { turnId, child: "santiago", missionId: "MISSION-ISLAND-GARDEN", visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "s1", revision: 7, purpose: "diagnostic", entry: "manual", at: "2026-10-23T10:00:00Z", status: "pending" };
-  const claim = (status: string, next: string, support = { kind: "clarification", answerExposed: false }) => ({ v: 1, turnId, child: "santiago", missionId: "MISSION-ISLAND-GARDEN", visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "s1", revision: 7, status, evidence: { attempts: [1], transcriptTurns: 2 }, support, next });
+  const claim = (status: string, next: string, support = "clarification") => ({ status, support, next });
+  const bound = (r: ReturnType<typeof parseNoktReply>) => noktOutcomeClaim(r!.outcome!, dispatch, { attemptNos: [1], transcriptTurns: 2 });
   const base = { child: "santiago", nowIso: "2026-10-23T10:05:00Z", dispatch, currentRevision: 7 };
 
   it("prose alone completes nothing: a reply without an outcome carries no result", () => {
@@ -210,17 +272,22 @@ describe("Nokt reply — provenance and completion reuse the existing contracts"
 
   it("an outcome inside a reply is checked by validateTutorOutcome — unverified origin refused", () => {
     const r = parseNoktReply(reply("Probier es oben nochmal.", "close", claim("understood_with_support", "retry")))!;
-    deepEqual(validateTutorOutcome(r.outcome, { ...base, origin: "missing", question: { status: "open", attemptNos: [1], helped: false, answerExposed: false } }), { ok: false, reason: "origin-unverified" });
-    equal(validateTutorOutcome(r.outcome, { ...base, origin: "verified", question: { status: "open", attemptNos: [1], helped: false, answerExposed: false } }).ok, true);
+    deepEqual(validateTutorOutcome(bound(r), { ...base, origin: "missing", question: { status: "open", attemptNos: [1], helped: false, answerExposed: false } }), { ok: false, reason: "origin-unverified" });
+    equal(validateTutorOutcome(bound(r), { ...base, origin: "verified", question: { status: "open", attemptNos: [1], helped: false, answerExposed: false } }).ok, true);
   });
 
   it("after teaching exposed the answer, `understood` is refused as false independence", () => {
-    const r = parseNoktReply(reply("Probier es oben nochmal.", "close", claim("understood", "retry", { kind: "none", answerExposed: false })))!;
-    deepEqual(validateTutorOutcome(r.outcome, { ...base, origin: "verified", question: { status: "open", attemptNos: [1], helped: true, answerExposed: true } }), { ok: false, reason: "false-independent" });
+    const r = parseNoktReply(reply("Probier es oben nochmal.", "close", claim("understood", "retry", "none")))!;
+    deepEqual(validateTutorOutcome(bound(r), { ...base, origin: "verified", question: { status: "open", attemptNos: [1], helped: true, answerExposed: true } }), { ok: false, reason: "false-independent" });
+  });
+
+  it("the app binds the model's judgement to ITS dispatch: binding fields and evidence come from the app, exposure from its record", () => {
+    const c = bound(parseNoktReply(reply("Probier es oben nochmal.", "close", claim("understood_with_support", "retry"))));
+    deepEqual({ turnId: c.turnId, sessionId: c.sessionId, revision: c.revision, attempts: c.evidence.attempts, exposed: c.support.answerExposed }, { turnId, sessionId: "s1", revision: 7, attempts: [1], exposed: false });
   });
 
   it("a diagnostic talk can never mark the open question answered", () => {
     const r = parseNoktReply(reply("Weiter!", "close", claim("understood_with_support", "advance")))!;
-    deepEqual(validateTutorOutcome(r.outcome, { ...base, origin: "verified", question: { status: "open", attemptNos: [1], helped: false, answerExposed: false } }), { ok: false, reason: "transition-not-allowed" });
+    deepEqual(validateTutorOutcome(bound(r), { ...base, origin: "verified", question: { status: "open", attemptNos: [1], helped: false, answerExposed: false } }), { ok: false, reason: "transition-not-allowed" });
   });
 });
