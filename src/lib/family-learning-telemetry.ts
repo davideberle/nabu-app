@@ -29,18 +29,21 @@ export type TelemetryBuffer = {
   activeSince: number | null;
   lastInput: number | null;
   stage: StageId | null;
+  /** Content v6: the open mission step (closed vocabulary), or null. */
+  step: string | null;
   hidden: boolean;
   paused: boolean;
 };
 
 export function createTelemetryBuffer(): TelemetryBuffer {
-  return { events: [], activeSince: null, lastInput: null, stage: null, hidden: false, paused: false };
+  return { events: [], activeSince: null, lastInput: null, stage: null, step: null, hidden: false, paused: false };
 }
 
-function push(buffer: TelemetryBuffer, raw: { t: number; kind: TelemetryKind; stage: StageId | null; detail?: TelemetryDetail }): TelemetryBuffer {
+function push(buffer: TelemetryBuffer, raw: { t: number; kind: TelemetryKind; stage: StageId | null; step?: string | null; detail?: TelemetryDetail }): TelemetryBuffer {
   if (buffer.events.length >= TELEMETRY_MAX_EVENTS_PER_BATCH) return buffer;
-  // The schema is the only gate: a malformed producer call is dropped here too.
-  const event = sanitizeTelemetryEvent(raw);
+  // The schema is the only gate: a malformed producer call is dropped here too. The open mission step travels with every event.
+  const step = raw.step !== undefined ? raw.step : buffer.step;
+  const event = sanitizeTelemetryEvent(step ? { ...raw, step } : { ...raw, step: undefined });
   if (!event) return buffer;
   return { ...buffer, events: [...buffer.events, event] };
 }
@@ -63,12 +66,14 @@ export function noteInput(buffer: TelemetryBuffer, nowMs: number): TelemetryBuff
   return { ...next, lastInput: nowMs };
 }
 
-export function enterStage(buffer: TelemetryBuffer, stage: StageId | null, nowMs: number): TelemetryBuffer {
-  if (buffer.stage === stage) return buffer;
+/** Stage (and, inside the mission stage, the open step) entry/exit: the active interval is attributed to what was on screen. */
+export function enterStage(buffer: TelemetryBuffer, stage: StageId | null, nowMs: number, step: string | null = null): TelemetryBuffer {
+  const nextStep = stage === "mission" ? step : null;
+  if (buffer.stage === stage && buffer.step === nextStep) return buffer;
   let next = closeActive(buffer, nowMs);
-  if (next.stage) next = push(next, { t: nowMs, kind: "stage-exit", stage: next.stage });
-  next = { ...next, stage };
-  if (stage) next = push(next, { t: nowMs, kind: "stage-enter", stage });
+  if (next.stage) next = push(next, { t: nowMs, kind: "stage-exit", stage: next.stage, step: next.step });
+  next = { ...next, stage, step: nextStep };
+  if (stage) next = push(next, { t: nowMs, kind: "stage-enter", stage, step: nextStep });
   return next;
 }
 

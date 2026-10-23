@@ -23,7 +23,7 @@
 import type { ChildId } from "./family-assistant-turn.ts";
 import { checkMissions, checkNextInterest, type MissionDef, type NextInterestDef } from "./family-learning-mission-spec.ts";
 
-export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7";
+export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | "v8";
 
 export type StageId =
   | "name-base"
@@ -403,7 +403,14 @@ export const KEYBOARD_LAYOUT_IDS: readonly KeyboardLayoutId[] = ["ch-de-qwertz",
  */
 export const EXPECTED_VISIT_IDS_V5: readonly VisitId[] = [...EXPECTED_VISIT_IDS_V4, "v7"];
 export const EXPECTED_V7_STAGES: readonly StageId[] = ["mission", "summary", "reflect"];
-export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5];
+/**
+ * Content version 6 (Visit 7, 2026-10-23): version 5 plus the scene mission visit v8 (learner-visible "Besuch 7 — Rosas
+ * Inselgarten"). Every earlier entry, including the v7 mission and its stage list, is unchanged; v8 uses the same frozen
+ * `mission → summary → reflect` shape with its own reviewed mission document.
+ */
+export const EXPECTED_VISIT_IDS_V6: readonly VisitId[] = [...EXPECTED_VISIT_IDS_V5, "v8"];
+export const EXPECTED_V8_STAGES: readonly StageId[] = ["mission", "summary", "reflect"];
+export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5, 6];
 
 export type ContentReconciliation = {
   ok: boolean;
@@ -725,14 +732,15 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
   const version = typeof raw.contentVersion === "number" && SUPPORTED_CONTENT_VERSIONS.includes(raw.contentVersion) ? raw.contentVersion : null;
   if (version === null) problems.push(`contentVersion must be one of ${SUPPORTED_CONTENT_VERSIONS.join(", ")}, got ${String(raw.contentVersion)}`);
   if (raw.child !== "santiago") problems.push("content.child must be santiago for this build");
-  const v5 = version === 5;
+  const v6 = version === 6;
+  const v5 = version === 5 || v6; // every version-5 rule also holds for version 6
   const v4 = version === 4 || v5; // every version-4 rule also holds for version 5
   const v3 = version === 3 || v4; // every version-3 rule also holds for version 4
   const v2 = version === 2 || v3; // every version-2 rule also holds for version 3
 
   const visitIds = idsOf(raw.visits);
   counts.visits = visitIds.length;
-  sameSet(visitIds, v5 ? EXPECTED_VISIT_IDS_V5 : v4 ? EXPECTED_VISIT_IDS_V4 : v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
+  sameSet(visitIds, v6 ? EXPECTED_VISIT_IDS_V6 : v5 ? EXPECTED_VISIT_IDS_V5 : v4 ? EXPECTED_VISIT_IDS_V4 : v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
   if (Array.isArray(raw.visits)) {
     for (const [id, expected] of Object.entries(EXPECTED_RETAINED_STAGES)) {
       const visit = raw.visits.find((v) => isRecord(v) && v.id === id);
@@ -776,9 +784,19 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
     if (stages.join(",") !== EXPECTED_V7_STAGES.join(",")) problems.push(`visit v7: stages must be exactly ${EXPECTED_V7_STAGES.join(" → ")}`);
     const intro = isRecord(v7) && isRecord(v7.intro) ? v7.intro : null;
     if (!intro || typeof intro.who !== "string" || typeof intro.make !== "string" || typeof intro.done !== "string") problems.push("visit v7: intro must say who needs help, what is made and what counts as done");
-    checkMissions(raw.missions, problems);
+    checkMissions(raw.missions, problems, v6 ? 6 : 5);
     const missions = Array.isArray(raw.missions) ? raw.missions : [];
     if (!missions.some((m) => isRecord(m) && m.visit === "v7")) problems.push("missions: visit v7 needs its mission");
+    if (v6) {
+      const v8 = raw.visits.find((v) => isRecord(v) && v.id === "v8");
+      const stages8 = isRecord(v8) && Array.isArray(v8.stages) ? (v8.stages as unknown[]) : [];
+      if (stages8.join(",") !== EXPECTED_V8_STAGES.join(",")) problems.push(`visit v8: stages must be exactly ${EXPECTED_V8_STAGES.join(" → ")}`);
+      const intro8 = isRecord(v8) && isRecord(v8.intro) ? v8.intro : null;
+      if (!intro8 || typeof intro8.who !== "string" || typeof intro8.make !== "string" || typeof intro8.done !== "string") problems.push("visit v8: intro must say who needs help, what is made and what counts as done");
+      const garden = missions.find((m) => isRecord(m) && m.visit === "v8");
+      if (!garden) problems.push("missions: visit v8 needs its mission");
+      else if (isRecord(garden) && garden.presentation !== "scene") problems.push("missions: the v8 mission is a scene mission");
+    }
     checkNextInterest(isRecord(raw.reflection) ? raw.reflection.nextInterest : null, problems);
   } else {
     if ("missions" in raw) problems.push("missions exist only from content version 5");
@@ -913,7 +931,7 @@ export function isLanguageSegmentId(value: unknown): value is LanguageSegmentId 
 }
 
 export function isVisitId(value: unknown): value is VisitId {
-  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5" || value === "v6" || value === "v7";
+  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5" || value === "v6" || value === "v7" || value === "v8";
 }
 
 export function isHarborWorkplaceId(value: unknown): value is HarborWorkplaceId {

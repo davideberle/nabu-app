@@ -785,11 +785,11 @@ export type LearningOp =
   /** `deferred` (D1, 2026-10-11): the owner-deferral transition for an ALREADY-ACTIVE `explain` stage of a deferred visit — not the child's skip; accepted only there. */
   | { op: "skip-stage"; stage: StageId; reason: "time" | "child" | "deferred" }
   | { op: "save-log"; text: string; modality?: "typed" | "spoken" }
-  | { op: "reflect"; optionId: string | null; difficultySkipped?: boolean; feedback?: { enjoyment?: string | null; clarity?: string | null }; interest?: { kind: InterestRecord["kind"]; text?: string | null } }
+  | { op: "reflect"; optionId: string | null; difficultySkipped?: boolean; feedback?: { enjoyment?: string | null; clarity?: string | null }; interest?: { kind: InterestRecord["kind"]; text?: string | null; choice?: string | null } }
   /** Content v5 (Visit 6): one action of the reviewed mission (stage `mission`). */
   | { op: "mission"; action: MissionAction }
   /** Content v5: the next-visit interest asked at the next entry after an early exit (only while one is pending). */
-  | { op: "record-interest"; kind: InterestRecord["kind"]; text?: string | null }
+  | { op: "record-interest"; kind: InterestRecord["kind"]; text?: string | null; choice?: string | null }
   | { op: "write-transfer"; text: string; modality?: "typed" | "spoken" }
   /** UX-5b: record that the mini-lesson's worked example is shown (before it is shown). */
   | { op: "repair-explain"; repairId: string }
@@ -804,7 +804,16 @@ export type LearningOp =
   /** UX-5a: the child has seen the lesson-end feedback and moves on. */
   | { op: "lesson-feedback-seen"; id: string };
 
-export type OpEnv = { content: LearningContent; settings: ParentSettings; now: () => Date; newId: () => string };
+export type OpEnv = {
+  content: LearningContent;
+  settings: ParentSettings;
+  now: () => Date;
+  newId: () => string;
+  /** Content v6: a verified child tutor route is available. Absent = unavailable (production: CHILD_ASSISTANT_AI_ENABLED = false). */
+  tutorAvailable?: boolean;
+  /** Content v6: the origin of a tutor result as verified by the ROUTE (bridge receipt); never taken from the client payload. */
+  tutorOrigin?: import("./family-learning-trust.ts").ReplyOrigin;
+};
 
 export class LearningOpError extends Error {
   readonly code: "invalid" | "not-allowed" | "not-available" | "stale" | "copied-text";
@@ -934,6 +943,10 @@ export function nextVisitAvailability(
   // version 4 (cap / rollback) nothing further is offered and a running v7 is parked.
   const hasV7 = content.visits.some((v) => v.id === "v7");
   if (hasV7 && !finished.includes("v7")) return { visit: "v7", availableAt: null };
+  // Visit 7 (content v6, 2026-10-23): the garden scene mission `v8` follows the finished Visit 6 immediately; Visit 6 is never
+  // replayed or reset. Under content version 5 (cap / rollback) nothing further is offered and a running v8 is parked.
+  const hasV8 = content.visits.some((v) => v.id === "v8");
+  if (hasV8 && !finished.includes("v8")) return { visit: "v8", availableAt: null };
   return { visit: null, availableAt: null, reason: "all-visits-done" };
 }
 
@@ -2459,7 +2472,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       if (content.reflection.nextInterest) {
         if (!op.interest) throw new LearningOpError("invalid", "the closing asks what comes next — answer it or choose one of its buttons");
         try {
-          recordInterest(state, records, op.interest, visit.id, "closing", nowIso, env.newId);
+          recordInterest(state, records, op.interest, visit.id, "closing", nowIso, env.newId, missionDefFor(content, visit.id)?.nextAdventure ?? null);
         } catch (error) {
           if (error instanceof MissionOpError) throw new LearningOpError(error.code, error.message);
           throw error;
@@ -2477,7 +2490,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       requireStage(state, content, "mission");
       const visit = currentVisit(state);
       try {
-        const out = applyMissionAction(state, op.action, { content, settings: env.settings, nowIso, newId: env.newId, visit: visit.id });
+        const out = applyMissionAction(state, op.action, { content, settings: env.settings, nowIso, newId: env.newId, visit: visit.id, tutor: { available: env.tutorAvailable === true, child: state.child, origin: env.tutorOrigin ?? "missing" } });
         records.attempts.push(...out.records.attempts);
         records.exposures.push(...out.records.exposures);
         records.supports.push(...out.records.supports);
@@ -2495,7 +2508,7 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const pending = pendingInterest(state, content);
       if (!pending) throw new LearningOpError("not-allowed", "no next-visit question is waiting");
       try {
-        const rec = recordInterest(state, records, { kind: op.kind, text: op.text ?? null }, pending, "entry", nowIso, env.newId);
+        const rec = recordInterest(state, records, { kind: op.kind, text: op.text ?? null, choice: op.choice ?? null }, pending, "entry", nowIso, env.newId, missionDefFor(content, pending)?.nextAdventure ?? null);
         result = { interest: rec.id };
       } catch (error) {
         if (error instanceof MissionOpError) throw new LearningOpError(error.code, error.message);
@@ -2880,7 +2893,7 @@ export type ChildView = {
   reminder: ReminderCue | null;
   /** The reopenable visit reports (finished visits complete, the running one partial), oldest first. */
   reports: VisitReport[];
-  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; nextInterest: import("./family-learning-mission-spec.ts").NextInterestDef | null } | null;
+  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; nextInterest: import("./family-learning-mission-spec.ts").NextInterestDef | null; adventure?: import("./family-learning-mission-spec.ts").MissionNextAdventure | null } | null;
   /** Content v5 (Visit 6): the running mission (stage `mission`), answer keys stripped. */
   mission: MissionView | null;
   /** Content v5 (V6-11): the next-visit question is still unanswered for this visit (asked at the next entry, never inferred). */
@@ -2889,6 +2902,8 @@ export type ChildView = {
   latestInterest: { visit: VisitId; kind: InterestRecord["kind"]; text: string | null; at: string } | null;
   tutor: TutorContext | null;
   retention: string;
+  /** Content v6: whether Nokt can talk on this surface (deployed builds: never; `fictional-stub` only on an isolated local DB). */
+  nokt?: { mode: import("./family-learning-nokt.ts").NoktMode };
 };
 
 function nextStepText(state: MissionState, content: LearningContent, stage: StageId | null, now: Date): string {
@@ -2925,7 +2940,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
       case "log-transfer": return "Schreib einen neuen kurzen Satz.";
       case "summary": return "Das hast du heute geschafft.";
       case "reflect": return "Wie war es heute?";
-      case "mission": return "Geh über die Insel: Finde heraus, was das Schiff braucht.";
+      case "mission": return state.currentVisit === "v8" ? "Hilf Rosa, die Setzlinge in den Inselgarten zu bringen." : "Geh über die Insel: Finde heraus, was das Schiff braucht.";
     }
   }
   const availability = nextVisitAvailability(state, content, now);
@@ -2938,13 +2953,14 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
     if (availability.visit === "v5") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v5") ?? 4}): der Steg in der Bucht.`;
     if (availability.visit === "v6") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v6") ?? 5}): der Hafen.`;
     if (availability.visit === "v7") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v7") ?? 6}): die Fahrt zum Forschungsschiff.`;
+    if (availability.visit === "v8") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v8") ?? 7}): Rosas Inselgarten.`;
     return "Zurück zur Basis — ein neuer Besuch wartet.";
   }
   return "Alle Besuche sind geschafft.";
 }
 
 /** Optional per-request inputs of the view (follow-on): the learner's time zone, the stored reviews the progress strip may cite and the served vocabulary inventory. */
-export type ChildViewOptions = { timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null };
+export type ChildViewOptions = { timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null; tutorAvailable?: boolean; noktMode?: import("./family-learning-nokt.ts").NoktMode };
 
 export function buildChildView(state: MissionState, content: LearningContent, settings: ParentSettings, now: Date, erasureGeneration = 0, options: ChildViewOptions = {}): ChildView {
   const stage = currentStage(state, content);
@@ -3255,8 +3271,8 @@ export function buildChildView(state: MissionState, content: LearningContent, se
         }),
     reports: buildVisitReports(state, content),
     transfer,
-    reflection: stage === "reflect" ? { prompt: content.reflection.prompt, options: content.reflection.options, skipLabel: content.reflection.skipLabel ?? null, dimensions: content.reflection.dimensions ?? [], nextInterest: content.reflection.nextInterest ?? null } : null,
-    mission: stage === "mission" && running ? buildMissionView(state, content, running.id) : null,
+    reflection: stage === "reflect" ? { prompt: content.reflection.prompt, options: content.reflection.options, skipLabel: content.reflection.skipLabel ?? null, dimensions: content.reflection.dimensions ?? [], nextInterest: content.reflection.nextInterest ?? null, adventure: running ? missionDefFor(content, running.id)?.nextAdventure ?? null : null } : null,
+    mission: stage === "mission" && running ? buildMissionView(state, content, running.id, { tutorAvailable: options.tutorAvailable === true }) : null,
     interestPrompt: (() => {
       const ni = content.reflection.nextInterest;
       const pending = ni && stage !== "reflect" ? pendingInterest(state, content) : null;
@@ -3270,6 +3286,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     })(),
     tutor,
     retention: content.retention.policy,
+    nokt: { mode: options.noktMode ?? "unavailable" },
   };
 }
 

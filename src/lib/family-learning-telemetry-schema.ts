@@ -10,9 +10,16 @@
 // a typed word, a transcript or an attention score could be stored.
 // ---------------------------------------------------------------------------
 
-import { EXPECTED_RETAINED_STAGES, EXPECTED_V4_STAGES, EXPECTED_V5_STAGES, EXPECTED_V6_STAGES, EXPECTED_V7_STAGES, type StageId } from "./family-learning-content.ts";
+import { EXPECTED_RETAINED_STAGES, EXPECTED_V4_STAGES, EXPECTED_V5_STAGES, EXPECTED_V6_STAGES, EXPECTED_V7_STAGES, EXPECTED_V8_STAGES, type StageId } from "./family-learning-content.ts";
+import { ALL_MISSION_STEP_IDS } from "./family-learning-mission-spec.ts";
 
-export const TELEMETRY_STAGES: readonly StageId[] = [...new Set<StageId>([...Object.values(EXPECTED_RETAINED_STAGES).flat(), ...EXPECTED_V4_STAGES, ...EXPECTED_V5_STAGES, ...EXPECTED_V6_STAGES, ...EXPECTED_V7_STAGES])];
+export const TELEMETRY_STAGES: readonly StageId[] = [...new Set<StageId>([...Object.values(EXPECTED_RETAINED_STAGES).flat(), ...EXPECTED_V4_STAGES, ...EXPECTED_V5_STAGES, ...EXPECTED_V6_STAGES, ...EXPECTED_V7_STAGES, ...EXPECTED_V8_STAGES])];
+
+/**
+ * Content v6 (Visit 7, N7-02): the reviewed mission step ids an event may name while the stage is `mission`, so entry/exit and
+ * active time are attributable per task — still a closed vocabulary, never free text.
+ */
+export const TELEMETRY_STEPS: readonly string[] = ALL_MISSION_STEP_IDS;
 
 /** Every op name of the state machine (kept in sync by a unit test). */
 export const TELEMETRY_OPS = [
@@ -26,7 +33,7 @@ export const TELEMETRY_OPS = [
 export type TelemetryOp = (typeof TELEMETRY_OPS)[number];
 
 /** Named controls whose activation may be counted (never their payload). */
-export const TELEMETRY_CONTROLS = ["stop", "tutor-open", "tutor-close", "read-aloud", "another-burst", "shorter-burst", "course-continue", "mic-start", "mic-stop", "walk", "direct-enter", "typing-pause"] as const;
+export const TELEMETRY_CONTROLS = ["stop", "tutor-open", "tutor-close", "read-aloud", "another-burst", "shorter-burst", "course-continue", "mic-start", "mic-stop", "walk", "direct-enter", "typing-pause", "hint-open", "nokt-offer-dismiss", "line-audio", "listen-play", "beat-next"] as const;
 export type TelemetryControl = (typeof TELEMETRY_CONTROLS)[number];
 
 /** Child feedback dimensions and their option ids (content `reflection`). */
@@ -47,10 +54,11 @@ export type TelemetryDetail =
   | { name: TelemetryControl }
   | { dimension: TelemetryFeedbackDimension; option: (typeof TELEMETRY_FEEDBACK)[number] };
 
-export type TelemetryEvent = { t: number; kind: TelemetryKind; stage: StageId | null; detail?: TelemetryDetail };
+export type TelemetryEvent = { t: number; kind: TelemetryKind; stage: StageId | null; step?: string; detail?: TelemetryDetail };
 
 const KIND_SET = new Set<string>(TELEMETRY_KINDS);
 const STAGE_SET = new Set<string>(TELEMETRY_STAGES);
+const STEP_SET = new Set<string>(TELEMETRY_STEPS);
 const OP_SET = new Set<string>(TELEMETRY_OPS);
 const CONTROL_SET = new Set<string>(TELEMETRY_CONTROLS);
 const FEEDBACK_SET = new Set<string>(TELEMETRY_FEEDBACK);
@@ -73,38 +81,45 @@ export function sanitizeTelemetryEvent(raw: unknown): TelemetryEvent | null {
     if (typeof raw.stage !== "string" || !STAGE_SET.has(raw.stage)) return null;
     stage = raw.stage as StageId;
   }
+  // A step id only inside the mission stage and only from the reviewed vocabulary; anything else drops the event.
+  let step: string | undefined;
+  if (raw.step !== undefined && raw.step !== null) {
+    if (typeof raw.step !== "string" || !STEP_SET.has(raw.step) || stage !== "mission") return null;
+    step = raw.step;
+  }
+  const withStep = <T extends TelemetryEvent>(e: T): T => (step ? { ...e, step } : e);
   const d = isRecord(raw.detail) ? raw.detail : {};
   switch (kind) {
     case "active-interval": {
       if (!boundedInt(d.seconds, TELEMETRY_MAX_INTERVAL_SECONDS)) return null;
-      return { t: raw.t, kind, stage, detail: { seconds: d.seconds } };
+      return withStep({ t: raw.t, kind, stage, detail: { seconds: d.seconds } });
     }
     case "submit":
     case "hint": {
       if (typeof d.op !== "string" || !OP_SET.has(d.op) || typeof d.ok !== "boolean") return null;
       const detail: { op: TelemetryOp; ok: boolean; retry?: boolean } = { op: d.op as TelemetryOp, ok: d.ok };
       if (d.retry === true) detail.retry = true;
-      return { t: raw.t, kind, stage, detail };
+      return withStep({ t: raw.t, kind, stage, detail });
     }
     case "save-failure":
     case "retry":
     case "correction": {
       if (typeof d.op !== "string" || !OP_SET.has(d.op)) return null;
-      return { t: raw.t, kind, stage, detail: { op: d.op as TelemetryOp } };
+      return withStep({ t: raw.t, kind, stage, detail: { op: d.op as TelemetryOp } });
     }
     case "control": {
       if (typeof d.name !== "string" || !CONTROL_SET.has(d.name)) return null;
-      return { t: raw.t, kind, stage, detail: { name: d.name as TelemetryControl } };
+      return withStep({ t: raw.t, kind, stage, detail: { name: d.name as TelemetryControl } });
     }
     case "feedback": {
       if (typeof d.dimension !== "string" || !(d.dimension in TELEMETRY_FEEDBACK_DIMENSIONS)) return null;
       const dimension = d.dimension as TelemetryFeedbackDimension;
       if (typeof d.option !== "string" || !(TELEMETRY_FEEDBACK_DIMENSIONS[dimension] as readonly string[]).includes(d.option)) return null;
-      return { t: raw.t, kind, stage, detail: { dimension, option: d.option as (typeof TELEMETRY_FEEDBACK)[number] } };
+      return withStep({ t: raw.t, kind, stage, detail: { dimension, option: d.option as (typeof TELEMETRY_FEEDBACK)[number] } });
     }
     default:
       // stage-enter, stage-exit, pause, resume, hidden, visible: no detail at all.
-      return { t: raw.t, kind, stage };
+      return withStep({ t: raw.t, kind, stage });
   }
 }
 

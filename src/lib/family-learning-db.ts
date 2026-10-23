@@ -11,6 +11,7 @@
 // it from a verified credential — nothing here reads a request.
 // ---------------------------------------------------------------------------
 
+import { noktModeFromEnv } from "./family-learning-nokt.ts";
 import { randomUUID } from "node:crypto";
 import type { Client, InValue, Transaction } from "@libsql/client";
 // Relative .ts imports: this module is loaded directly by `node --test`.
@@ -349,7 +350,7 @@ export async function readProgressSources(db: Db, child: ChildId, missionId: str
 /** Build the child view with its per-request inputs; the reviews are read from `db` (a transaction or the client). */
 async function viewOf(db: Db, child: ChildId, state: MissionState, content: LearningContent, settings: ParentSettings, now: Date, erasureGeneration: number, options: ViewOptions): Promise<ChildView> {
   const progressSources = await readProgressSources(db, child, content.contentId);
-  return buildChildView(state, content, settings, now, erasureGeneration, { timeZone: options.timeZone ?? null, progressSources, vocabulary: options.vocabulary ?? null });
+  return buildChildView(state, content, settings, now, erasureGeneration, { timeZone: options.timeZone ?? null, progressSources, vocabulary: options.vocabulary ?? null, noktMode: noktModeFromEnv(process.env) });
 }
 
 export async function readChildView(client: Client, child: ChildId, content: LearningContent, now = new Date(), options: ViewOptions = {}): Promise<ChildView> {
@@ -362,7 +363,7 @@ export async function readChildView(client: Client, child: ChildId, content: Lea
     const progressSources = await readProgressSources(client, child, content.contentId);
     return { settings, state, progressSources };
   });
-  return buildChildView(value.state, content, value.settings, now, erasureGeneration, { timeZone: options.timeZone ?? null, progressSources: value.progressSources, vocabulary: options.vocabulary ?? null });
+  return buildChildView(value.state, content, value.settings, now, erasureGeneration, { timeZone: options.timeZone ?? null, progressSources: value.progressSources, vocabulary: options.vocabulary ?? null, noktMode: noktModeFromEnv(process.env) });
 }
 
 /**
@@ -476,7 +477,7 @@ export async function applyMutation(
     const progressSources = await readProgressSources(tx, input.child, content.contentId);
     await tx.commit();
     release(tx);
-    return { status: "applied", view: buildChildView(finalState, content, settings, now(), generation, { timeZone: options.timeZone ?? null, progressSources, vocabulary: options.vocabulary ?? null }), result: applied.result };
+    return { status: "applied", view: buildChildView(finalState, content, settings, now(), generation, { timeZone: options.timeZone ?? null, progressSources, vocabulary: options.vocabulary ?? null, noktMode: noktModeFromEnv(process.env) }), result: applied.result };
   } catch (error) {
     try {
       await tx.rollback();

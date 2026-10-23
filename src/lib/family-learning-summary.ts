@@ -115,6 +115,7 @@ export function visitOrdinal(state: MissionState, id: VisitId): number | null {
     case "v5": return hasV3Record ? 5 : 4;
     case "v6": return hasV3Record ? 6 : 5;
     case "v7": return hasV3Record ? 7 : 6;
+    case "v8": return hasV3Record ? 8 : 7;
   }
 }
 
@@ -377,7 +378,7 @@ export function buildVisitSummary(state: MissionState, content: LearningContent,
 // Parent review — learning and UX separated, missingness explicit
 // ---------------------------------------------------------------------------
 
-export type TelemetryEvent = { t: number; kind: string; stage?: string | null; detail?: Record<string, unknown> };
+export type TelemetryEvent = { t: number; kind: string; stage?: string | null; step?: string; detail?: Record<string, unknown> };
 
 export type TelemetrySummary = {
   /** Any telemetry rows exist for the visit (server-owned feedback counts). */
@@ -402,6 +403,8 @@ export type TelemetrySummary = {
   hints: number | null;
   pauses: number | null;
   byStage: Record<string, { enters: number; activeSeconds: number }>;
+  /** Content v6: per mission step (only when the events name one; absent on earlier batches). */
+  byStep?: Record<string, { enters: number; activeSeconds: number }>;
   /** Stages of the visit with no UX observation at all (skipped or not delivered); null when nothing was observed. */
   unobservedStages: string[] | null;
 };
@@ -429,10 +432,20 @@ export function summariseTelemetry(events: TelemetryEvent[] | null, batches = 0,
       const stage = e.stage ?? "?";
       summary.byStage[stage] = summary.byStage[stage] ?? { enters: 0, activeSeconds: 0 };
       summary.byStage[stage].activeSeconds += seconds;
+      if (e.step) {
+        summary.byStep = summary.byStep ?? {};
+        summary.byStep[e.step] = summary.byStep[e.step] ?? { enters: 0, activeSeconds: 0 };
+        summary.byStep[e.step].activeSeconds += seconds;
+      }
     } else if (e.kind === "stage-enter") {
       const stage = e.stage ?? "?";
       summary.byStage[stage] = summary.byStage[stage] ?? { enters: 0, activeSeconds: 0 };
       summary.byStage[stage].enters += 1;
+      if (e.step) {
+        summary.byStep = summary.byStep ?? {};
+        summary.byStep[e.step] = summary.byStep[e.step] ?? { enters: 0, activeSeconds: 0 };
+        summary.byStep[e.step].enters += 1;
+      }
     } else if (e.kind === "hidden") summary.hiddenIntervals += 1;
     else if (e.kind === "save-failure") summary.saveFailures += 1;
     else if (e.kind === "retry") summary.retries += 1;
