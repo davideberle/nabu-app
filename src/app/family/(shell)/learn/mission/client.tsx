@@ -43,6 +43,7 @@ import { cn } from "@/components/ui/nabu";
 import { useChildShell } from "@/components/family/child-shell-provider";
 import { HarborIsland } from "@/components/family/learning/harbor-island";
 import { MissionWorld } from "@/components/family/learning/mission-world";
+import { MissionScene } from "@/components/family/learning/mission-scene";
 import type { MissionAction } from "@/lib/family-learning-mission";
 import { CharacterBeat, HarborPlan, IslandStage, LogReview, WordbookPanel } from "@/components/family/learning/harbor-stages";
 import { NabuSidebar } from "@/components/family/learning/nabu-sidebar";
@@ -210,10 +211,12 @@ function Workspace({ child }: { child: ChildId }) {
   }, [refresh, learning, tutorClient, speech, child]);
 
   const stageForTelemetry = load.kind === "ready" ? load.view.visit?.stage ?? null : null;
+  // Content v6 (N7-02): inside the mission stage the open step is attributed too (closed vocabulary; entry/exit and active time per task).
+  const stepForTelemetry = load.kind === "ready" && stageForTelemetry === "mission" ? load.view.mission?.active?.id ?? null : null;
   useEffect(() => {
-    telemetryRef.current = enterStage(telemetryRef.current, stageForTelemetry, Date.now());
+    telemetryRef.current = enterStage(telemetryRef.current, stageForTelemetry, Date.now(), stepForTelemetry);
     if (stageForTelemetry) flushTelemetry();
-  }, [stageForTelemetry, flushTelemetry]);
+  }, [stageForTelemetry, stepForTelemetry, flushTelemetry]);
   useEffect(() => {
     if (typeof document === "undefined") return;
     const onInput = () => {
@@ -456,7 +459,26 @@ function Workspace({ child }: { child: ChildId }) {
         </p>
       ) : null}
 
-      {stage === "mission" && view.mission && !lastLesson ? (
+      {stage === "mission" && view.mission && !lastLesson && view.mission.presentation === "scene" ? (
+        // Visit 7 (content v6): one illustrated scene, the beats in their reviewed order, Nokt beside the task.
+        <div className="mt-3" data-testid="mission-stage" data-presentation="scene">
+          <MissionScene
+            child={child}
+            view={view}
+            mission={view.mission}
+            busy={busy}
+            speech={speech}
+            noktMode={view.nokt?.mode ?? "unavailable"}
+            telemetry={(name) => {
+              telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
+            }}
+            act={async (action: MissionAction) => {
+              const outcome = await mutate({ op: "mission", action });
+              return outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed") ? ((outcome.result as Record<string, unknown> | undefined) ?? {}) : null;
+            }}
+          />
+        </div>
+      ) : stage === "mission" && view.mission && !lastLesson ? (
         // Visit 6 (content v5): the mission is ONE walkable scene with its own scene panels — not the worksheet card.
         <div className="mt-3" data-testid="mission-stage">
           <MissionWorld
@@ -772,7 +794,7 @@ function StartOrWait({ child, view, busy, onStart, notice, markers }: { child: C
           {notice ? <p className="mt-2 text-base text-primary">{notice}</p> : null}
           {nextDef ? (
             <button ref={startRef} type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-4 min-h-16 px-8 text-xl")} data-testid="start-visit" data-visit={nextDef} data-ordinal={view.next.ordinal ?? ""}>
-              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" || nextDef === "v6" || nextDef === "v7" ? `Besuch ${view.next.ordinal ?? (nextDef === "v7" ? 6 : nextDef === "v6" ? 5 : nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
+              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" || nextDef === "v6" || nextDef === "v7" || nextDef === "v8" ? `Besuch ${view.next.ordinal ?? (nextDef === "v8" ? 7 : nextDef === "v7" ? 6 : nextDef === "v6" ? 5 : nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
             </button>
           ) : null}
         </div>

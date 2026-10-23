@@ -7,7 +7,7 @@ import { readEvidence } from "@/lib/family-learning-db";
 import { delayedCheckInfo, visitLabel, visitOrdinal } from "@/lib/family-learning-summary";
 import type { VocabularyInventory } from "@/lib/family-learning-vocabulary";
 import type { VisitId } from "@/lib/family-learning-content";
-import { planningInput } from "@/lib/family-learning-mission";
+import { missionEvidence, planningInput } from "@/lib/family-learning-mission";
 
 /**
  * GET /api/family/learning/parent/evidence?child=santiago|isabel
@@ -54,5 +54,7 @@ export async function GET(request: Request) {
   // Visit 6 (content v5): the next-visit planning input — the child's verbatim interest answers, open retrieval items and the
   // typing calibration, derived from the same state (nothing stored separately).
   const planning = prepared && content && bundle.state && content.reflection.nextInterest ? planningInput(bundle.state, content) : null;
-  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning }, { headers: NO_STORE });
+  // Visit 7 (content v6, V7-D14): per scene mission, observed answers, help, tutor judgments, missing evidence and later checks — apart.
+  const missions = prepared && content && bundle.state ? (content.missions ?? []).filter((m) => m.presentation === "scene").map((m) => missionEvidence(bundle.state!, content!, m.visit as VisitId)).filter((x) => x !== null) : [];
+  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions }, { headers: NO_STORE });
 }

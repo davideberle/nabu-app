@@ -1130,7 +1130,7 @@ function ProduceTask({ active, busy, act }: { active: MissionActiveView; busy: b
 
 // --- the typing block (clean: keys and hands only, no character, no decision between drills) ---------------
 
-function TypingBlock({ block, stepId, busy, act }: { block: TypingBlockView; stepId: string; busy: boolean; act: Act }) {
+export function TypingBlock({ block, stepId, busy, act }: { block: TypingBlockView; stepId: string; busy: boolean; act: Act }) {
   const drill = block.nextDrill;
   const [lineIndex, setLineIndex] = useState(0);
   const [typed, setTyped] = useState<string[]>([]);

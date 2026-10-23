@@ -68,14 +68,14 @@ function formatDate(iso: string): string {
 export function worldMarkers(view: ChildView): WorldMarker[] {
   const running = view.visit;
   const completed = new Set(view.progress.completed.map((c) => c.visit));
-  const ordered = ["v1", "v2", "v4", "v5", "v6", "v7"] as const;
+  const ordered = ["v1", "v2", "v4", "v5", "v6", "v7", "v8"] as const;
   const markers: WorldMarker[] = [];
   for (const id of ordered) {
     const report = view.reports.find((r) => r.visit === id) ?? null;
     const done = completed.has(id);
     const isRunning = running?.id === id;
     const isNext = !isRunning && view.next.visit === id;
-    const ordinal = report?.ordinal ?? view.progress.completed.find((c) => c.visit === id)?.ordinal ?? (id === "v1" ? 1 : id === "v2" ? 2 : view.next.visit === id ? view.next.ordinal : id === "v7" ? 6 : id === "v6" ? 5 : id === "v5" ? 4 : 3);
+    const ordinal = report?.ordinal ?? view.progress.completed.find((c) => c.visit === id)?.ordinal ?? (id === "v1" ? 1 : id === "v2" ? 2 : view.next.visit === id ? view.next.ordinal : id === "v8" ? 7 : id === "v7" ? 6 : id === "v6" ? 5 : id === "v5" ? 4 : 3);
     const label = report?.label ?? view.progress.completed.find((c) => c.visit === id)?.label ?? (isRunning ? running!.title : isNext ? view.progress.next.label ?? `Besuch ${ordinal ?? ""}` : `Besuch ${ordinal ?? ""}`);
     markers.push({
       visit: id,
@@ -230,7 +230,7 @@ function World({ child }: { child: ChildId }) {
   const view = load.view;
   const running = view.visit;
   const canStart = running !== null || view.next.visit !== null;
-  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" || view.next.visit === "v5" || view.next.visit === "v6" || view.next.visit === "v7" ? `Besuch ${view.next.ordinal ?? (view.next.visit === "v7" ? 6 : view.next.visit === "v6" ? 5 : view.next.visit === "v5" ? 4 : 3)} starten` : "Weiter";
+  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" || view.next.visit === "v5" || view.next.visit === "v6" || view.next.visit === "v7" || view.next.visit === "v8" ? `Besuch ${view.next.ordinal ?? (view.next.visit === "v8" ? 7 : view.next.visit === "v7" ? 6 : view.next.visit === "v6" ? 5 : view.next.visit === "v5" ? 4 : 3)} starten` : "Weiter";
   const markers = worldMarkers(view);
   const report: VisitReport | null = panel?.kind === "report" ? view.reports.find((r) => r.visit === panel.visit) ?? null : null;
   const missionHref = `/family/learn/mission?child=${child}`;

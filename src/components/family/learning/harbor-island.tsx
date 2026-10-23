@@ -1148,6 +1148,7 @@ export function HarborIsland({ scene, markers, pages, harbor = null, variant = "
   const m5 = byVisit("v5");
   const m6 = byVisit("v6");
   const m7 = byVisit("v7");
+  const m8 = byVisit("v8");
   const dest = (id: IslandPlace) => destinations?.find((d) => d.id === id) ?? null;
   // Label chips (screen space): the three workplaces always, the selected arrival when it is another place. Anchored just above
   // each roof; the workshop chip follows the painted plate's box when the plate is mounted (the plate is door-anchored, so its
@@ -1432,6 +1433,8 @@ export function HarborIsland({ scene, markers, pages, harbor = null, variant = "
         {/* Visit 6 (content v5): the mission's world changes stay on the island; its flag stands on the quay's west end */}
         {scene.missionWorld?.length ? <MissionWorldChanges world={scene.missionWorld} pos={DEFAULT_MISSION_POS} testId="island-mission-world" /> : null}
         {m7 ? <Flag x={POS.harbor[0] - 190} y={POS.harbor[1] + 30} marker={m7} onSelect={onSelectMarker} /> : null}
+        {/* Visit 7: the garden visit's flag beside the harbor, next to Visit 6 (the start and the report open from it). */}
+        {m8 ? <Flag x={POS.harbor[0] - 110} y={POS.harbor[1] + 60} marker={m8} onSelect={onSelectMarker} /> : null}
 
         {/* destination hotspots (click/tap to walk) */}
         {hotspot("workshop", "Tipp-Werkstatt", workshopPlate ? PLATE_BOXES.workshop.width + 4 : 190, workshopPlate ? PLATE_BOXES.workshop.height : 170, workshopPlate ? workshopChipX - POS.workshop[0] : 0)}

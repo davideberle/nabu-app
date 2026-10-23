@@ -180,7 +180,7 @@ export function VisitReportView({ report, scene, markers, onBack, backLabel = "Z
       ) : null}
       {report.interest ? (
         <p className="rounded-3xl bg-secondary px-4 py-3 text-base text-primary" data-testid="report-interest">
-          Dein Wunsch fürs nächste Mal: {report.interest.kind === "text" ? `„${report.interest.text}“` : report.interest.kind === "unsure" ? "Du weisst es noch nicht — das ist in Ordnung." : report.interest.kind === "no-preference" ? "Dir ist es egal." : "Du wolltest es lieber nicht sagen."}
+          Dein Wunsch fürs nächste Mal: {report.interest.kind === "text" ? `„${report.interest.text}“` : report.interest.kind === "unsure" ? "Du weisst es noch nicht — das ist in Ordnung." : report.interest.kind === "no-preference" ? "Dir ist es egal." : report.interest.kind === "choice" ? `${report.interest.text}.` : "Du wolltest es lieber nicht sagen."}
         </p>
       ) : null}
 

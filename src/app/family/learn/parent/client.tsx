@@ -28,6 +28,7 @@
 // generation fences are unchanged.
 // ---------------------------------------------------------------------------
 
+import type { missionEvidence } from "@/lib/family-learning-mission";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { NabuBadge, cn } from "@/components/ui/nabu";
@@ -55,7 +56,7 @@ type PlanningInput = {
   typing: { planned: number; attempted: number; activeSeconds: number; idleSeconds: number; wallSeconds: number | null; accuracy: number | null; paceCps: number; paceBasis: string } | null;
   note: string;
 };
-type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null };
+type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[] };
 
 /** Learner-facing visit name (server-computed): "Besuch 3 — Die Beobachtungsstation (v4)"; falls back to the id. */
 function visitName(evidence: Evidence, id: string): string {
@@ -305,6 +306,9 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
         <>
           <NextStep evidence={evidence} />
           {evidence.planningInput ? <PlanningPanel input={evidence.planningInput} /> : null}
+          {(evidence.missionEvidence ?? []).map((m) => (
+            <MissionEvidencePanel key={m.mission} evidence={m} />
+          ))}
           <AttemptTable title="Gleichmässig teilen (EQ-Aufgaben, inkl. Rest bei EQ-STATION/EQ-PIER und Boote bei EQ-HARBOR: Teil A volle Boote/übrig, Teil B Boote für alle)" attempts={math} child={child} ops={ops} empty="Noch kein Mathe-Versuch aufgezeichnet." visits={evidence.visits} />
           <DelayedCheck evidence={evidence} />
           <SupportList evidence={evidence} filter={(k) => k !== "gloss"} />
@@ -362,6 +366,10 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   const v7Done = !!state?.visits.some((v) => v.id === "v7" && v.finishedAt);
   const v7Running = !!state?.visits.some((v) => v.id === "v7" && !v.finishedAt);
   const chapter7 = evidence.visits?.find((v) => v.id === "v7")?.label ?? "Besuch 6 — Die Fahrt zum Forschungsschiff";
+  const v8Served = !!evidence.visits?.some((v) => v.id === "v8");
+  const v8Done = !!state?.visits.some((v) => v.id === "v8" && v.finishedAt);
+  const v8Running = !!state?.visits.some((v) => v.id === "v8" && !v.finishedAt);
+  const chapter8 = evidence.visits?.find((v) => v.id === "v8")?.label ?? "Besuch 7 — Rosas Inselgarten";
   let text: string;
   if (!state || state.visits.length === 0) text = "Noch kein Besuch. Der nächste Schritt ist der erste Besuch: Basis bauen, 24 Pakete gerecht teilen.";
   else if (fresh.length === 0) text = "Erster Besuch läuft. Nächster Schritt: der frische Check nach der Erklärung (EQ-FRESH).";
@@ -375,6 +383,9 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   else if (v5Done && v6Served && !v6Done) text = `Nächster Schritt: ${chapter6} (intern v6: 38 Kisten zu je 6 pro Boot — volle Boote, Rest und Boote für alle; ${liveTutorDeferred("v6") ? "Erklärgespräch in dieser Übergangsversion ausgesetzt" : "Erklärgespräch mit Nabu"}; spanische Anfrage LANG-ES-HARBOR; Hafenplan; Kapitänslogbuch mit Durchsicht; Tipp-Kurs ab der gespeicherten Lektion; kurzer Check) — sofort verfügbar, Werkstatt-Reihenfolge frei.`;
   else if (v7Running) text = `${chapter7} läuft (intern v7: begehbare Mission MISSION-SHIP-SUPPLY — Hafentafel lesen, englischer Funkspruch zum Hören, vier verbundene Rechnungen, Bestellung bei Rosa auf Spanisch mit Schreibhilfe, Planwahl, Tippblock von etwa fünf Minuten).`;
   else if (v6Done && v7Served && !v7Done) text = `Nächster Schritt: ${chapter7} (intern v7: begehbare Mission; das Thema setzt Santiagos eigene Wahl «Forschungsschiff» aus Besuch 5 fort — kein angenommenes Interesse) — sofort verfügbar.`;
+  else if (v8Running) text = `${chapter8} läuft (intern v8: Szenen-Mission MISSION-ISLAND-GARDEN — Tragen packen Frage für Frage mit geprüften Hinweisen, englische Nachricht, Bitte an Rosa auf Spanisch, Tippblock, frische Anwendung 11 ÷ 3, ein eigener Satz). Nokt ist nicht aktiv.`;
+  else if (v7Done && v8Served && !v8Done) text = `Nächster Schritt: ${chapter8} (intern v8: Szenen-Mission; das Garten-Thema ist ein gewählter Ersatz, weil Santiagos letzte Antwort «weiss es noch nicht» war — kein angenommenes Interesse) — sofort verfügbar. Besuch 6 bleibt abgeschlossen und wird nicht wiederholt.`;
+  else if (v8Done) text = "Alle Inhalte (Besuche 1–7) sind durchlaufen. Für die nächste Mission zählt Santiagos eigene Wahl am Ende von Besuch 7 (siehe Planung unten).";
   else if (v7Done) text = "Alle Inhalte (Besuche 1–6) sind durchlaufen. Für die nächste Mission zählt Santiagos eigene Antwort auf «Was möchtest du nächstes Mal?» (siehe Planung unten).";
   else if (v6Done) text = "Alle Inhalte (Besuche 1–5) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität. Die Anwendung am selben Tag (EQ-HARBOR-CHECK) ist keine Behaltensleistung.";
   else if (v5Done) text = "Alle Inhalte (Besuche 1–4) sind durchlaufen. Weitere Aufgaben brauchen neue, geprüfte Inhalte; eine spätere Abruf-Aufgabe mit Abstand wäre eine neue, separat geprüfte Aktivität.";
@@ -1273,10 +1284,73 @@ function interestText(i: { kind: string; text: string | null } | null): string {
   if (i.kind === "text") return `„${i.text}“ (wörtlich)`;
   if (i.kind === "unsure") return "weiss es noch nicht";
   if (i.kind === "no-preference") return "ist egal";
+  if (i.kind === "choice") return `hat die angebotene Idee „${i.text}“ gewählt (Auswahl aus zwei Vorschlägen, kein eigenes Thema)`;
   return "wollte es lieber nicht sagen";
 }
 
 /** Planning input for the next visit — the child's own words first, then open retrieval items and the typing calibration. */
+type MissionEvidenceView = NonNullable<ReturnType<typeof missionEvidence>>;
+
+const RESULT_DE: Record<string, string> = { "first-try": "beim ersten Versuch", "after-retry": "nach erneutem Versuch", "after-hint": "mit Hinweis", "after-teaching": "nach gezeigter Lösung", "kept-for-later": "aufgehoben", open: "offen" };
+
+/**
+ * Visit 7 (V7-D14): one row per task, five separate columns — what the child actually answered (in order), the help shown,
+ * the tutor's judgment (none while Nokt is off), what evidence is missing, and the later check. Nothing here is a mastery claim.
+ */
+function MissionEvidencePanel({ evidence }: { evidence: MissionEvidenceView }) {
+  return (
+    <section className="rounded-2xl border border-primary bg-primary p-4" data-testid="parent-mission-evidence" data-mission={evidence.mission}>
+      <h3 className="text-base font-semibold text-primary">{evidence.title}: was beobachtet wurde</h3>
+      <p className="mt-1 text-sm text-tertiary">{evidence.note}</p>
+      <div className="mt-3 overflow-x-auto">
+        <table className="w-full min-w-[880px] text-left text-sm text-primary">
+          <thead className="text-tertiary">
+            <tr>
+              <th className="py-1 pr-3">Aufgabe</th>
+              <th className="py-1 pr-3">Antworten (in Reihenfolge)</th>
+              <th className="py-1 pr-3">Hilfe</th>
+              <th className="py-1 pr-3">Tutor</th>
+              <th className="py-1 pr-3">Fehlt</th>
+              <th className="py-1">Spätere Prüfung</th>
+            </tr>
+          </thead>
+          <tbody>
+            {evidence.steps.filter((s) => s.kind !== "story").map((s) => (
+              <tr key={s.id} className="border-t border-secondary align-top" data-testid={`evidence-${s.id}`}>
+                <td className="py-2 pr-3 font-medium">
+                  {s.title}
+                  <br />
+                  <span className="text-tertiary">{s.id} · {s.status}</span>
+                </td>
+                <td className="py-2 pr-3">
+                  {s.questions.length
+                    ? s.questions.map((q) => (
+                        <div key={q.taskId} className="mb-1">
+                          <span className="text-tertiary">{q.question}</span>
+                          <br />
+                          {q.answers.map((a) => `${a.kind === "hint-check" ? "(im Hinweis) " : a.kind === "practice" ? "(Abschrift) " : ""}«${a.raw}» ${a.correct === true ? "✓" : a.correct === false ? "✗" : "?"}`).join(" → ") || "—"}
+                          <br />
+                          <strong>{RESULT_DE[q.result] ?? q.result}</strong> — {q.reading}
+                        </div>
+                      ))
+                    : s.observed.join(" · ") || "—"}
+                </td>
+                <td className="py-2 pr-3">
+                  {s.questions.flatMap((q) => q.hints.map((h) => `${h.id} (Stufe ${h.level}, nach ${h.afterAttempts} Antwort${h.afterAttempts === 1 ? "" : "en"})`)).join(" · ") || s.support.filter((x) => !["tutor-open", "line-audio", "listen-play", "listen-outcome"].includes(x)).join(" · ") || "keine"}
+                  {s.questions.some((q) => q.exposure.length) ? <><br />Antwort sichtbar durch: {s.questions.flatMap((q) => q.exposure).join(", ")}</> : null}
+                </td>
+                <td className="py-2 pr-3">{s.tutor}</td>
+                <td className="py-2 pr-3">{s.missing.join(" ") || "—"}</td>
+                <td className="py-2">{s.laterCheck ?? "—"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
+
 function PlanningPanel({ input }: { input: PlanningInput }) {
   return (
     <section className="rounded-2xl border border-primary bg-primary p-4" data-testid="parent-planning">

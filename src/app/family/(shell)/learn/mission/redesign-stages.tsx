@@ -10,7 +10,7 @@
 // lesson-end feedback after a typing round is rendered by the workspace from
 // the server's `lastLesson` (lesson-end.tsx), not here.
 
-import { NextInterestQuestion, interestReady, type InterestAnswer } from "@/components/family/learning/next-interest";
+import { NextAdventureQuestion, NextInterestQuestion, interestReady, type InterestAnswer } from "@/components/family/learning/next-interest";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import { isComposing, useDeliberateFocus } from "@/components/family/learning/focus";
@@ -787,10 +787,16 @@ export function ReflectFeedback({ view, busy, gate = alwaysOpen, onSubmit, draft
   );
   return (
     <div className="flex flex-col gap-5" data-testid="reflect">
+      {reflection.adventure && reflection.nextInterest ? (
+        // Content v6 (V7-D13): the next adventure first, as concrete pictured choices; the optional "how was it" questions follow.
+        <div className="rounded-3xl border border-primary bg-secondary/40 p-4">
+          <NextAdventureQuestion adventure={reflection.adventure} labels={reflection.nextInterest} value={interest} onChange={setInterest} disabled={busy || draft?.phase === "saving"} />
+        </div>
+      ) : null}
       <Instruction kicker="Zum Schluss">Wie war es heute?</Instruction>
       {row("difficulty", reflection.prompt, reflection.options, reflection.skipLabel, true)}
       {dims.map((dim) => row(dim.id, dim.prompt, dim.options, dim.skipLabel, false))}
-      {reflection.nextInterest ? (
+      {reflection.nextInterest && !reflection.adventure ? (
         <div className="rounded-3xl border border-primary bg-secondary/40 p-4">
           <NextInterestQuestion labels={reflection.nextInterest} value={interest} onChange={setInterest} disabled={busy || draft?.phase === "saving"} />
         </div>
