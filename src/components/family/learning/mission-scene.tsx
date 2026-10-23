@@ -303,7 +303,8 @@ function SolveTask({ active, busy, act, telemetry }: { active: MissionActiveView
   const sv = active.solve!;
   const finished = active.status !== "active";
   // After a correct answer the success stays on screen with its own "next question" action; the next question follows on tap.
-  const [seen, setSeen] = useState<string[]>([]);
+  // Parts already resolved when this view mounts (reload, Stopp and back) were seen before: return straight to the open question.
+  const [seen, setSeen] = useState<string[]>(() => sv.parts.filter((p) => p.status !== "open").map((p) => p.id));
   const resolved = sv.parts.filter((p) => p.status !== "open");
   const lastResolved = resolved[resolved.length - 1] ?? null;
   const waiting = !finished && lastResolved && !seen.includes(lastResolved.id) && sv.parts.some((p) => p.status === "open") ? lastResolved : null;

@@ -780,6 +780,22 @@ try {
   const ev = await api("GET", "/api/family/learning/parent/evidence?child=santiago", null, owner);
   const g2 = ev.json.missionEvidence?.[0]?.steps?.find((s) => s.id === "G2-PACK");
   check("J1.parent.api-g2-answers-in-order", JSON.stringify(g2?.questions?.[0]?.answers?.map((a) => [a.raw, a.kind])) === JSON.stringify([["5", "answer"], ["5", "answer"], ["12", "hint-check"], ["16", "hint-check"], ["4", "answer"]]), g2?.questions?.[0]?.answers);
+  // parent page at iPad width: the evidence table scrolls inside its box; the page itself never scrolls sideways
+  {
+    const pc = await makeCtx(BASE, { viewport: { width: 820, height: 1180 } }, owner);
+    const pi = await pc.newPage();
+    openPages.push(pi);
+    pi.on("pageerror", (e) => pageErrors.push({ page: "parent-ipad", message: String(e) }));
+    await pi.goto(`${BASE}/family/learn/parent?child=santiago`);
+    await pi.waitForSelector("[data-testid='parent-mission-evidence']");
+    const w = await pi.evaluate(() => {
+      const box = document.querySelector("[data-testid='parent-mission-evidence'] .overflow-x-auto");
+      return { page: document.body.scrollWidth, vw: document.documentElement.clientWidth, boxClient: box.clientWidth, boxScroll: box.scrollWidth };
+    });
+    check("J1.parent.ipad-no-page-overflow-table-scrolls-inside", w.page <= w.vw && w.boxScroll > w.boxClient, w);
+    await shotScene(pi, "parent-ipad-evidence", "Parent page at iPad width: no sideways page scroll; the table scrolls inside its box");
+    await pc.close();
+  }
   const childParent = await api("GET", "/api/family/learning/parent/evidence?child=santiago", null, assistant);
   check("J1.parent.child-account-refused", childParent.status === 401 || childParent.status === 403, childParent.status);
   // Visit 6 history after a complete Visit 7: the stored run, its visit record, its interest and every Visit 6 row unchanged.
@@ -821,8 +837,11 @@ try {
   await answerPart(t, "4");
   check("J2.G2.third-error-then-correct-no-hint", (await missionRun()).steps["G2-PACK"].parts.full.status === "correct" && (await missionRun()).steps["G2-PACK"].parts.full.evidence === "supported" && (await missionRun()).steps["G2-PACK"].parts.full.hints.length === 0);
   await shotScene(t, "ipad-G2-third-error-then-correct", "iPad: three errors, then correct without a hint — accepted; success and a distinct next action");
-  await t.locator("[data-testid='solve-next-question']").tap();
-  await settle(300);
+  // resume (reload) returns straight to the open question — not the old success card — with the solved question kept
+  await t.reload();
+  await waitStep(t, "G2-PACK");
+  check("J2.resume-returns-to-open-question", (await t.locator("[data-testid='solve-next-question']").count()) === 0 && (await t.locator("[data-testid='part-question']").innerText()).startsWith("Wie viele Setzlinge") && (await t.locator("[data-testid='solve-answered']").innerText()).includes("4 Tragen"));
+  await shotScene(t, "ipad-G2-resume-open-question", "iPad after reload: the open question directly, the solved question kept above it");
   await answerPart(t, "2");
   check("J2.G2.first-try-after-earlier-retries-stays-independent", (await missionRun()).steps["G2-PACK"].parts.left.evidence === "independent");
   await shotScene(t, "ipad-G2-success-next", "iPad: success in words with the next-question action");

@@ -1350,7 +1350,8 @@ function MissionEvidencePanel({ evidence }: { evidence: MissionEvidenceView }) {
           ? `Zeit pro Aufgabe: Minuten, in denen auf diesem Bildschirm getippt oder geklickt wurde, mit höchstens ${evidence.time.idleRuleSeconds} s Pause dazwischen. Lesen oder Zuhören ohne Eingabe zählt nicht mit, Zeit im Hintergrund auch nicht${evidence.time.hiddenIntervals ? ` (${evidence.time.hiddenIntervals}× war die App im Hintergrund)` : ""}. Das ist keine Aussage über Aufmerksamkeit oder Anstrengung.`
           : "Zeit pro Aufgabe: keine Messung vom Gerät angekommen — unbekannt, nicht null."}
       </p>
-      <div className="mt-3 overflow-x-auto">
+      {/* inline-size containment: the wide table scrolls inside its box instead of widening the whole page (iPad width) */}
+      <div className="mt-3 overflow-x-auto [contain:inline-size]">
         <table className="w-full min-w-[880px] text-left text-sm text-primary">
           <thead className="text-tertiary">
             <tr>
