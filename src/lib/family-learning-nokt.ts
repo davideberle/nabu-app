@@ -27,7 +27,8 @@ export function noktModeFromEnv(env: Record<string, string | undefined>): NoktMo
 }
 
 /** The planned turn shape of the German voice tutor. A transport is injected; production has none. */
-export type NoktTurn = { id: string; role: "child" | "nokt"; text: string; via: "voice" | "typed"; at: number };
+/** `app` = reviewed app text shown instead of a withheld or unreachable Nokt reply — never attributed to Nokt. */
+export type NoktTurn = { id: string; role: "child" | "nokt" | "app"; text: string; via: "voice" | "typed"; at: number };
 
 export type NoktTransport = {
   kind: "fictional-stub";

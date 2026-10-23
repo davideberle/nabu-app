@@ -30,7 +30,7 @@ import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import type { NoktMode } from "@/lib/family-learning-nokt";
 import { browserSpeech, playListening } from "@/lib/family-learning-listening";
 import { TypingBlock, type Act } from "./mission-world";
-import { NoktButton, NoktPanel, type NoktTranscribe } from "./nokt-panel";
+import { NoktButton, NoktPanel, type NoktTranscribe, type NoktTurnFn } from "./nokt-panel";
 import rosaHarbor from "@/assets/family-learning/visit7/rosa-research-harbor.webp";
 
 // The palette of the approved preview: sea-green ink, parchment cards, amber retry, green success.
@@ -63,10 +63,12 @@ export type MissionSceneProps = {
   noktMode: NoktMode;
   /** Uploads one Nokt push-to-talk turn for this child; only used where the panel has a microphone. */
   noktTranscribe?: NoktTranscribe | null;
+  /** One Nokt turn through the server; only reached where the server enables Nokt's conversation. */
+  noktTurn?: NoktTurnFn | null;
   telemetry: SceneTelemetry;
 };
 
-export function MissionScene({ child, view, mission, busy, act, speech, noktMode, noktTranscribe = null, telemetry }: MissionSceneProps) {
+export function MissionScene({ child, view, mission, busy, act, speech, noktMode, noktTranscribe = null, noktTurn = null, telemetry }: MissionSceneProps) {
   const active = mission.active;
   const beat = mission.beat ?? { index: 1, count: mission.steps.length, next: null };
   const [noktOpen, setNoktOpen] = useState(false);
@@ -172,6 +174,7 @@ export function MissionScene({ child, view, mission, busy, act, speech, noktMode
           part={active?.solve?.current ?? null}
           speech={speech}
           transcribe={noktTranscribe}
+          turn={noktTurn}
           offer={offerPart && active ? { onAccept: () => void act({ a: "tutor-offer", step: active.id, part: offerPart, response: "accepted" }), onDismiss: () => { telemetry("nokt-offer-dismiss"); void act({ a: "tutor-offer", step: active.id, part: offerPart, response: "dismissed" }); setNoktOpen(false); } } : null}
           onClose={() => { setNoktOpen(false); telemetry("tutor-close"); }}
         />

@@ -655,3 +655,115 @@ describe("N7-02 — the existing telemetry, reconciled (no parallel store, no ke
     deepStrictEqual(summary.byStep, { "G2-PACK": { enters: 1, activeSeconds: 39 }, "G3-DELIVERY": { enters: 1, activeSeconds: 10 } });
   });
 });
+
+describe("Nokt turn through the engine — his line first, verified reply, app phases (fictional, offline)", () => {
+  const reply = (say: string, intent: string, outcome: unknown = null) => JSON.stringify({ v: 1, say, intent, outcome });
+  type Turn = { request: { context: { phase: string; resultAllowed: boolean }; transcript: unknown[] }; reqHash: string; dispatch: TutorDispatch };
+  function atG2(env: Env) {
+    let s = through(started(env), env, "G2-PACK");
+    s = m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "3" }, env);
+    return s;
+  }
+  const dispatchTurn = (s: MissionState, env: Env, turnId: string, text: string) => mr(s, { a: "tutor-dispatch", step: "G2-PACK", part: "full", purpose: "diagnostic", entry: "manual", turnId, sessionId: "talk-1", text, via: "voice" }, env);
+  const replyTurn = (s: MissionState, env: Env, turnId: string, json: string, origin: "verified" | "missing" | "invalid" = "verified") => mr(s, { a: "tutor-reply", step: "G2-PACK", turnId, reply: json }, { ...env, tutorOrigin: origin });
+  const g2 = (s: MissionState) => gardenRun(s).steps["G2-PACK"];
+
+  it("his line is recorded before anything is asked; the request carries what he sees and the app's phase — never the answer", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    const d = dispatchTurn(atG2(env), env, "turn-a00001", "ich glaube fünf");
+    const t = d.result as unknown as Turn;
+    equal(t.request.context.phase, "nachfragen");
+    equal(t.request.context.resultAllowed, false);
+    ok(!/"answer"/.test(JSON.stringify(t.request)));
+    ok(/^[0-9a-f]{64}$/.test(t.reqHash));
+    equal(t.dispatch.reqHash, t.reqHash);
+    deepStrictEqual(g2(d.state).tutorTurns!.map((x) => [x.role, x.text, x.via]), [["child", "ich glaube fünf", "voice"]]);
+    ok(d.records.supports.some((x) => x.kind === "mission_tutor_dispatch" && (x.payload as { text?: string }).text === "ich glaube fünf"));
+  });
+
+  it("a verified, fitting reply is shown as Nokt; prose completes nothing", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    let s = dispatchTurn(atG2(env), env, "turn-a00002", "fünf").state;
+    const r = replyTurn(s, env, "turn-a00002", reply("Super, das schaffst du! Was sollst du bei dieser Frage herausfinden?", "clarify"));
+    s = r.state;
+    deepStrictEqual(r.result, { shown: true, say: "Super, das schaffst du! Was sollst du bei dieser Frage herausfinden?", intent: "clarify", outcome: null });
+    equal(g2(s).parts!.full.status, "open", "no false completion from prose");
+    equal(g2(s).status, "active");
+    equal((g2(s).parts!.full.inheritedSupport ?? []).length, 0);
+  });
+
+  it("ADVERSARIAL: an unverified or forged reply (origin missing/invalid) is withheld; he sees the reviewed app line", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    const s = dispatchTurn(atG2(env), env, "turn-a00003", "fünf").state;
+    for (const origin of ["missing", "invalid"] as const) {
+      const r = replyTurn(s, env, "turn-a00003", reply("Was sollst du herausfinden?", "clarify"), origin);
+      deepStrictEqual(r.result, { shown: false, reason: `origin-${origin}`, line: "Nokt hat gerade keine passende Antwort. Probier es oben noch einmal oder öffne den Hinweis." });
+      equal(g2(r.state).tutorTurns!.at(-1)!.shown, false);
+    }
+  });
+
+  it("ADVERSARIAL: the model's «teach» label with the answer in the assessment phase is withheld — no help, no exposure", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    const s = dispatchTurn(atG2(env), env, "turn-a00004", "fünf").state;
+    const r = replyTurn(s, env, "turn-a00004", reply("Es sind 4 Tragen, 2 Setzlinge bleiben übrig.", "teach"));
+    equal((r.result as { reason: string }).reason, "intent-not-in-phase");
+    equal(g2(r.state).parts!.full.exposed.length, 0);
+    equal((g2(r.state).parts!.full.inheritedSupport ?? []).length, 0);
+  });
+
+  it("replay: a second reply to the same turn is refused; a stale reply (he answered again meanwhile) is withheld", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    let s = dispatchTurn(atG2(env), env, "turn-a00005", "fünf").state;
+    const first = replyTurn(s, env, "turn-a00005", reply("Was sollst du herausfinden?", "clarify")).state;
+    refused(() => replyTurn(first, env, "turn-a00005", reply("Was sollst du herausfinden?", "clarify")), "not-allowed", /already/);
+    s = dispatchTurn(first, env, "turn-a00006", "warte").state;
+    s = m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "6" }, env);
+    equal((replyTurn(s, env, "turn-a00006", reply("Wie bist du auf deine Zahl gekommen?", "ask-method")).result as { reason: string }).reason, "stale");
+    refused(() => replyTurn(s, env, "turn-unknown1", reply("x", "clarify")), "stale");
+  });
+
+  it("cancel: a dispatch without a reply leaves his line, no Nokt line and no result; the next turn works", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    let s = dispatchTurn(atG2(env), env, "turn-a00007", "fünf").state;
+    equal(g2(s).tutorTurns!.filter((t) => t.role === "nokt").length, 0);
+    equal(g2(s).tutorDispatches!.at(-1)!.status, "pending");
+    s = dispatchTurn(s, env, "turn-a00008", "nochmal").state;
+    equal(replyTurn(s, env, "turn-a00008", reply("Was sollst du herausfinden?", "clarify")).result!.shown, true);
+  });
+
+  it("ADVERSARIAL: a judgement needs a clarification first; after two clarifications the app moves to teaching, which is help", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    let s = dispatchTurn(atG2(env), env, "turn-b00001", "fünf").state;
+    const claim = (turnId: string, status: string, kind: string, next: string) => ({ v: 1, turnId, child: "santiago", missionId: garden.id, visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "talk-1", revision: 1, status, evidence: { attempts: [1], transcriptTurns: 1 }, support: { kind, answerExposed: false }, next });
+    const premature = replyTurn(s, env, "turn-b00001", reply("Was sollst du herausfinden?", "clarify", claim("turn-b00001", "needs_practice", "none", "hint")));
+    deepStrictEqual((premature.result as { outcome: unknown }).outcome, { refused: "premature-judgement" });
+    s = premature.state;
+    s = dispatchTurn(s, env, "turn-b00002", "wie viele Tragen").state;
+    s = replyTurn(s, env, "turn-b00002", reply("Wie bist du auf fünf gekommen?", "ask-method")).state;
+    // two clarifications done: the next request is in the teaching phase, a third clarification is withheld
+    const third = dispatchTurn(s, env, "turn-b00003", "geraten");
+    equal((third.result as unknown as Turn).request.context.phase, "erklaeren");
+    s = third.state;
+    equal((replyTurn(s, env, "turn-b00003", reply("Und was denkst du jetzt?", "clarify")).result as { reason: string }).reason, "intent-not-in-phase");
+    s = dispatchTurn(replyTurn(s, env, "turn-b00003", reply("x", "clarify")).state, env, "turn-b00004", "weiss nicht").state;
+    const taught = replyTurn(s, env, "turn-b00004", reply("Schau: In jede Trage kommen 4 Setzlinge. Wie viele sind in 2 vollen Tragen?", "teach", claim("turn-b00004", "understood", "clarification", "retry")));
+    deepStrictEqual((taught.result as { outcome: unknown }).outcome, { refused: "support-understated" });
+    s = taught.state;
+    deepStrictEqual(g2(s).parts!.full.inheritedSupport, ["tutor:teaching"]);
+    // the later correct answer is supported — teaching never gives independent credit
+    s = m(s, { a: "answer-part", step: "G2-PACK", part: "full", value: "4" }, env);
+    equal(g2(s).parts!.full.evidence, "supported");
+    // the parent sees the whole talk: his words, Nokt's verified lines and the withheld replies with the reason
+    const talk = missionEvidence(s, v6, "v8")!.steps.find((x) => x.id === "G2-PACK")!.talk;
+    ok(talk.some((t) => t.who === "Kind" && t.text === "fünf" && /gesprochen/.test(t.detail)));
+    ok(talk.some((t) => t.who === "Nokt" && /geprüft/.test(t.detail)));
+    ok(talk.some((t) => t.who === "zurückgehalten" && t.detail === "passte nicht zur Gesprächsphase"));
+  });
+
+  it("the generic mission route cannot reach any of it: without the Nokt route's env the tutor is unavailable", () => {
+    const env = makeEnv(v6);
+    const s = atG2(env);
+    refused(() => dispatchTurn(s, env, "turn-c00001", "fünf"), "not-available");
+    refused(() => replyTurn(s, env, "turn-c00001", reply("x", "clarify")), "not-available");
+  });
+});

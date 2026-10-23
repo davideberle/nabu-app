@@ -553,6 +553,9 @@ let v7RowsBefore = null;
 const ONLY_STUB = args.includes("--only-stub");
 /** J3-fault: the stub server runs with FAMILY_NOKT_STT_FAKE_FAULT=quota (the fake answers like an exhausted provider account). */
 const STUB_FAULT = args.includes("--stub-fault");
+/** J4: the Nokt turn route on a FRESH synthetic DB, server started in stub mode with the loopback stub bridge (scripts/visit7-nokt-stub-bridge.mjs). */
+const TURN = args.includes("--turn");
+const BRIDGE_LOG = opt("--bridge-log", null);
 try {
   if (!ONLY_STUB) {
   await sixVisitsDone();
@@ -956,7 +959,60 @@ try {
 
   }
   // ============================================================ J3 fictional Nokt stub (separate server) ============================================================
-  if (STUB_BASE && ONLY_STUB && !STUB_FAULT) {
+  if (STUB_BASE && ONLY_STUB && TURN) {
+    // ============================================================ J4 Nokt turn route: dispatch → stub backend → verified reply ============================================================
+    await sixVisitsDone();
+    const tctx = await makeCtx(STUB_BASE, { viewport: { width: 1180, height: 820 }, hasTouch: true }, assistant, { speech: "end", voice: "fail" });
+    const t = await tctx.newPage();
+    openPages.push(t);
+    t.on("pageerror", (e) => pageErrors.push({ page: "turn", message: String(e) }));
+    await t.goto(`${STUB_BASE}/family/learn/mission?child=santiago`);
+    await t.waitForSelector("[data-testid='start-visit']");
+    await t.locator("[data-testid='start-visit']").click();
+    await waitStep(t, "G1-REQUEST", "active");
+    await nextBeat(t, "G2-PACK");
+    await answerPart(t, "3");
+    await t.locator("[data-testid='nokt-button']").click();
+    await t.waitForSelector("[data-testid='nokt-panel'][data-mode='fictional-stub']");
+    const sendTyped = async (text) => {
+      const before = await t.locator("[data-testid='nokt-transcript'] li[data-role]").count();
+      await t.locator("[data-testid='nokt-input']").fill(text);
+      await t.locator("[data-testid='nokt-send']").click();
+      await t.waitForFunction((n) => document.querySelectorAll("[data-testid='nokt-transcript'] li[data-role]").length >= n + 2, before, { timeout: 15000 });
+      return t.locator("[data-testid='nokt-transcript'] li[data-role]").last();
+    };
+    const speechBefore = speechRequests.length;
+    const r1 = await sendTyped("Ich glaube fünf.");
+    check("J4.verified-reply-shown-as-nokt-and-spoken", (await r1.getAttribute("data-role")) === "nokt" && (await r1.innerText()).includes("Was sollst du bei dieser Frage herausfinden?") && speechRequests.length > speechBefore);
+    const r2 = await sendTyped("Wie viele Tragen.");
+    check("J4.teach-label-with-answer-withheld-app-line", (await r2.getAttribute("data-role")) === "app" && (await r2.innerText()).includes("Hinweis der App") && !(await t.locator("[data-testid='nokt-transcript']").innerText()).includes("4 Tragen"));
+    const r3 = await sendTyped("Geraten.");
+    check("J4.forged-receipt-withheld", (await r3.getAttribute("data-role")) === "app");
+    await shotScene(t, "turn-nokt-verified-and-withheld", "Nokt turn route (stub backend): a verified line shown as Nokt; a «teach» reply with the answer and a forged receipt withheld behind the reviewed app line");
+    // cancel: the 4th reply is delayed by the stub; closing Nokt aborts the turn before it lands
+    await t.locator("[data-testid='nokt-input']").fill("Noch eine Frage.");
+    await t.locator("[data-testid='nokt-send']").click();
+    await settle(600);
+    await t.locator("[data-testid='nokt-close']").click();
+    await settle(4500);
+    const st = (await rawRow()).state.missions["MISSION-ISLAND-GARDEN"].steps["G2-PACK"];
+    const turns = st.tutorTurns ?? [];
+    check("J4.cancelled-turn-never-recorded-as-nokt", turns.filter((x) => x.role === "child").length === 4 && turns.filter((x) => x.role === "nokt").length === 3, turns.map((x) => [x.role, x.shown, x.reason ?? null]));
+    check("J4.withheld-reasons-recorded", JSON.stringify(turns.filter((x) => x.role === "nokt").map((x) => [x.shown, x.reason ?? null, x.origin])) === JSON.stringify([[true, null, "verified"], [false, "intent-not-in-phase", "verified"], [false, "origin-invalid", "invalid"]]), turns.filter((x) => x.role === "nokt").map((x) => [x.shown, x.reason ?? null, x.origin]));
+    check("J4.no-false-completion", st.parts.full.status === "open" && st.status === "active" && (st.tutorOutcomes ?? []).length === 0 && st.parts.full.exposed.length === 0 && (st.parts.full.inheritedSupport ?? []).length === 0);
+    const calls = BRIDGE_LOG && fs.existsSync(BRIDGE_LOG) ? fs.readFileSync(BRIDGE_LOG, "utf8").trim().split("\n").map((l) => JSON.parse(l)) : [];
+    check("J4.backend-got-bearer-no-answer-key-app-phase", calls.length === 4 && calls.every((c) => c.bearer && !c.answerField && c.phase === "nachfragen"), calls);
+    // the parent sees the talk: his lines, Nokt's verified line, and the withheld replies with their reason
+    const pctx = await makeCtx(STUB_BASE, { viewport: { width: 1280, height: 900 } }, owner);
+    const pp = await pctx.newPage();
+    openPages.push(pp);
+    await pp.goto(`${STUB_BASE}/family/learn/parent?child=santiago`);
+    await pp.waitForSelector("[data-testid='talk-G2-PACK']", { timeout: 20000 });
+    const talk = await pp.locator("[data-testid='talk-G2-PACK']").innerText();
+    check("J4.parent-sees-talk", talk.includes("Ich glaube fünf.") && talk.includes("Was sollst du bei dieser Frage herausfinden?") && talk.includes("passte nicht zur Gesprächsphase") && talk.includes("Herkunft ungültig") && talk.includes("Noch eine Frage."), talk.slice(0, 600));
+    await pp.locator("[data-testid='talk-G2-PACK']").scrollIntoViewIfNeeded();
+    await shot(pp, "turn-parent-talk");
+  } else if (STUB_BASE && ONLY_STUB && !STUB_FAULT) {
     const stubCtx = await makeCtx(STUB_BASE, { viewport: { width: 820, height: 1180 }, hasTouch: true }, assistant, { speech: "end", voice: "fail" });
     await stubCtx.grantPermissions(["microphone"], { origin: STUB_BASE });
     await stubCtx.addInitScript(() => {
@@ -1067,6 +1123,6 @@ check("global.no-page-errors", pageErrors.length === 0, pageErrors.slice(0, 5));
 check("global.speech-never-reached-server", speechRequests.length >= (ONLY_STUB ? 1 : 3) && speechRequests.every((r) => ["abort", "ok", "fail"].includes(r.mock)), speechRequests.length);
 await browser.close();
 const passed = results.filter((r) => r.ok).length;
-fs.writeFileSync(path.join(OUT, ONLY_STUB ? (STUB_FAULT ? "results-stub-fault.json" : "results-stub.json") : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), noktUploads, blocked: [...new Set(blocked)], pageErrors }, null, 2));
+fs.writeFileSync(path.join(OUT, ONLY_STUB ? (TURN ? "results-turn.json" : STUB_FAULT ? "results-stub-fault.json" : "results-stub.json") : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), noktUploads, blocked: [...new Set(blocked)], pageErrors }, null, 2));
 console.log(`${passed}/${results.length} passed`);
 process.exit(passed === results.length ? 0 : 1);

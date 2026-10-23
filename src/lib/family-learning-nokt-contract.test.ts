@@ -11,10 +11,14 @@ import { sha256Hex } from "./family-learning-hash.ts";
 import type { MissionSolve } from "./family-learning-mission-spec.ts";
 import {
   buildNoktRequest,
+  checkNoktOutcome,
   checkNoktReply,
+  disclosesAnswer,
+  NOKT_MAX_CLARIFICATIONS,
   NOKT_MAX_CHILD_TURNS,
   NOKT_PROMPT_VERSION,
   NOKT_SYSTEM_PROMPT_DE,
+  noktPhase,
   noktReceiptBinding,
   noktTaskContext,
   parseNoktReply,
@@ -31,10 +35,11 @@ const g2 = garden.steps.find((s: { id: string }) => s.id === "G2-PACK");
 const solve: MissionSolve = g2.solve;
 const full = solve.parts.find((p) => p.id === "full")!;
 
-const ctx = (attempts: string[], hintIdsShown: string[] = []) => noktTaskContext({ step: "G2-PACK", solve, part: full, purpose: "diagnostic", attempts, hintIdsShown });
+const ctx = (attempts: string[], hintIdsShown: string[] = []) => noktTaskContext({ step: "G2-PACK", solve, part: full, purpose: "diagnostic", attempts, hintIdsShown, phase: "nachfragen", resultAllowed: false });
 const reply = (say: string, intent = "clarify", outcome: unknown = null) => ({ v: 1, say, intent, outcome });
 const child = (text: string, via: "voice" | "typed" = "voice"): NoktTurnText => ({ role: "child", text, via });
-const nokt = (text: string): NoktTurnText => ({ role: "nokt", text, via: "typed" });
+const nokt = (text: string, intent: NoktTurnText["intent"] = "clarify"): NoktTurnText => ({ role: "nokt", text, via: "typed", intent });
+const visible = [...solve.facts, full.question];
 
 describe("Nokt request — only what is on his screen", () => {
   it("carries facts, the question, his attempts and shown hints — never the answer, the teaching or unrevealed hints", () => {
@@ -86,48 +91,84 @@ describe("Nokt reply — strict shape", () => {
   });
 });
 
-describe("Nokt reply — fictional cases against the guard (G2 «full», answer known only to the app)", () => {
-  const diag = (transcript: NoktTurnText[] = []) => ({ purpose: "diagnostic" as const, answer: full.answer, transcript });
+describe("Nokt reply — app-controlled phases and disclosure (G2 «full», answer known only to the app)", () => {
+  const diag = (transcript: NoktTurnText[] = [], attempts: string[] = ["5"], disclosureAllowed = false) => ({ purpose: "diagnostic" as const, answer: full.answer, unit: full.unit, visibleText: visible, attempts, transcript, disclosureAllowed });
+  const check = (say: string, intent: string, transcript: NoktTurnText[] = [], attempts?: string[], disclosureAllowed?: boolean) => checkNoktReply(parseNoktReply(reply(say, intent)), diag(transcript, attempts, disclosureAllowed));
+  const twoClarifications = [child("fünf"), nokt("Was sollst du bei dieser Frage herausfinden?"), child("wie viele Tragen"), nokt("Wie bist du auf fünf gekommen?", "ask-method"), child("geraten")];
 
-  it("a neutral clarifying question is accepted", () => {
-    deepEqual(checkNoktReply(parseNoktReply(reply("Was sollst du bei dieser Frage herausfinden?")), diag([child("fünf")])), { ok: true, exposesAnswer: false });
+  it("a neutral clarification is accepted in the assessment phase", () => {
+    deepEqual(check("Was sollst du bei dieser Frage herausfinden?", "clarify", [child("fünf")]), { ok: true });
   });
 
-  it("asking about his method is accepted, also when he names a wrong number", () => {
-    deepEqual(checkNoktReply(parseNoktReply(reply("Wie bist du auf fünf gekommen?", "ask-method")), diag([child("fünf")])), { ok: true, exposesAnswer: false });
+  it("ADVERSARIAL: the model labelling itself «teach» with the answer is refused — the label authorizes nothing", () => {
+    deepEqual(check("Es sind 4 Tragen, weil 4 mal 4 gleich 16 ist.", "teach", [child("fünf")]), { ok: false, reason: "intent-not-in-phase" });
+    deepEqual(check("Schau: In jede Trage kommen 4 Setzlinge.", "teach", [child("fünf")]), { ok: false, reason: "intent-not-in-phase" }, "no teaching before the two clarifications, answer or not");
   });
 
-  it("stating the answer before teaching is refused — digits and the German word", () => {
-    deepEqual(checkNoktReply(parseNoktReply(reply(`Es sind ${full.answer} Tragen. Stimmt das?`)), diag()), { ok: false, reason: "answer-before-teaching" });
-    deepEqual(checkNoktReply(parseNoktReply(reply("Ich glaube, vier passt. Was meinst du?")), diag()), { ok: false, reason: "answer-before-teaching" });
+  it("ADVERSARIAL: in the teaching phase the answer stays closed until the app has recorded exposure", () => {
+    equal(noktPhase(twoClarifications).phase, "erklaeren");
+    deepEqual(check("Mit 4 Tragen geht es auf, 2 bleiben übrig.", "teach", twoClarifications), { ok: false, reason: "answer-disclosed" });
+    deepEqual(check("Wie viele Setzlinge sind in 3 vollen Tragen?", "teach", twoClarifications), { ok: true }, "a guided step without the answer");
+    deepEqual(check("Mit 4 Tragen geht es auf, 2 bleiben übrig.", "teach", twoClarifications, ["5"], true), { ok: true }, "after the app recorded the exposure («Lösung zeigen»)");
   });
 
-  it("explicit teaching may state it, and is flagged as answer exposure", () => {
-    deepEqual(checkNoktReply(parseNoktReply(reply("Schau: 4 Tragen mit je 4 Setzlingen sind 16. Es bleiben 2 übrig.", "teach")), diag()), { ok: true, exposesAnswer: true });
+  it("ADVERSARIAL: he says the right number without reasoning — quoting it back is fine, judging it is not", () => {
+    const t = [child("vier")];
+    deepEqual(check("Du sagst vier Tragen. Wie bist du darauf gekommen?", "ask-method", t), { ok: true });
+    deepEqual(check("Richtig, vier Tragen! Wie hast du das gemacht?", "ask-method", t), { ok: false, reason: "judges-open-answer" });
   });
 
-  it("two questions in one line are refused", () => {
-    deepEqual(checkNoktReply(parseNoktReply(reply("Was fragt die Aufgabe? Und wie hast du gerechnet?")), diag()), { ok: false, reason: "several-questions" });
+  it("ADVERSARIAL: a wrong method that contains the right digit incidentally is discussable", () => {
+    const t = [child("18 minus 4 sind 14")];
+    deepEqual(check("Du hast 18 minus 4 gerechnet. Was bedeutet die 4 in der Frage?", "clarify", t, ["14"]), { ok: true }, "the 4 here is the visible group size, not «4 Tragen»");
+    deepEqual(check("Es passen 4 Tragen. Was meinst du?", "clarify", t, ["14"]), { ok: false, reason: "answer-disclosed" });
   });
 
-  it("asking the same question again is refused (no interrogation until he repeats a wording)", () => {
-    const t = [nokt("Wie bist du auf deine Zahl gekommen?"), child("weiss nicht")];
-    deepEqual(checkNoktReply(parseNoktReply(reply("Wie bist du auf deine Zahl gekommen?", "ask-method")), diag(t)), { ok: false, reason: "repeated-question" });
+  it("ADVERSARIAL: an ambiguous answer (question misread or miscount?) needs a clarification before any judgement", () => {
+    const claimAt = (status: string, support = { kind: "none", answerExposed: false }) => parseNoktReply(reply("x", "close", { v: 1, turnId: "t-12345678", child: "santiago", missionId: "M", visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "s", revision: 1, status, evidence: { attempts: [1], transcriptTurns: 1 }, support, next: "hint" }))!.outcome!;
+    deepEqual(checkNoktOutcome(claimAt("needs_practice"), [child("fünf")]), { ok: false, reason: "premature-judgement" });
+    deepEqual(checkNoktOutcome(claimAt("not_established"), [child("fünf")]), { ok: true }, "«not established» is always honest");
+    deepEqual(checkNoktOutcome(claimAt("needs_practice"), [child("fünf"), nokt("Was sollst du herausfinden?"), child("alle Setzlinge zählen")]), { ok: true });
+    deepEqual(check("Was sollst du bei dieser Frage herausfinden?", "clarify", [child("fünf")]), { ok: true });
   });
 
-  it("after the turn bound only a close is accepted", () => {
+  it("ADVERSARIAL: after two clarifications a third is refused; the talk moves on to guided teaching or closes", () => {
+    equal(NOKT_MAX_CLARIFICATIONS, 2);
+    deepEqual(check("Und was denkst du jetzt?", "clarify", twoClarifications), { ok: false, reason: "intent-not-in-phase" });
+    deepEqual(check("Lass uns zusammen schauen: Wie viele Setzlinge passen in eine Trage?", "teach", twoClarifications), { ok: true });
+    deepEqual(check("Danke. Probier es oben noch einmal oder öffne den Hinweis.", "close", twoClarifications), { ok: true });
+  });
+
+  it("ADVERSARIAL: teaching is support — never independent credit, and the claim must say so", () => {
+    const taught = [...twoClarifications, nokt("Wie viele Setzlinge passen in eine Trage?", "teach"), child("vier")];
+    const outcome = (status: string, kind: string) => parseNoktReply(reply("x", "close", { v: 1, turnId: "t-12345678", child: "santiago", missionId: "M", visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "s", revision: 1, status, evidence: { attempts: [1], transcriptTurns: 4 }, support: { kind, answerExposed: false }, next: "retry" }))!.outcome!;
+    deepEqual(checkNoktOutcome(outcome("understood", "clarification"), taught), { ok: false, reason: "support-understated" });
+    deepEqual(checkNoktOutcome(outcome("understood_with_support", "teaching"), taught), { ok: true });
+    // and the existing validator refuses `understood` after teaching even when the claim admits it
+    const d: TutorDispatch = { turnId: "t-12345678", child: "santiago", missionId: "M", visit: "v8", step: "G2-PACK", part: "full", taskVersion: 1, sessionId: "s", revision: 1, purpose: "diagnostic", entry: "manual", at: "2026-10-23T10:00:00Z", status: "pending" };
+    deepEqual(validateTutorOutcome(outcome("understood", "teaching"), { child: "santiago", origin: "verified", nowIso: "2026-10-23T10:01:00Z", dispatch: d, question: { status: "open", attemptNos: [1], helped: false, answerExposed: false }, currentRevision: 1 }), { ok: false, reason: "false-independent" });
+  });
+
+  it("the hard turn bound remains only a backstop: after it, only a close", () => {
     const t: NoktTurnText[] = [];
-    for (let i = 0; i < NOKT_MAX_CHILD_TURNS; i += 1) t.push(child(`Antwort ${i}`), nokt(`Frage ${i}?`));
-    deepEqual(checkNoktReply(parseNoktReply(reply("Was denkst du jetzt?")), diag(t)), { ok: false, reason: "must-close" });
-    deepEqual(checkNoktReply(parseNoktReply(reply("Danke fürs Erklären. Probier es oben noch einmal oder öffne den Hinweis.", "close")), diag(t)), { ok: true, exposesAnswer: false });
+    for (let i = 0; i < 6; i += 1) t.push(child(`Antwort ${i}`), nokt(`Schritt ${i}?`, "teach"));
+    deepEqual(check("Wie geht es weiter?", "teach", t), { ok: false, reason: "must-close" });
+    deepEqual(check("Danke fürs Mitdenken. Probier es oben noch einmal.", "close", t), { ok: true });
   });
 
-  it("a garbled voice transcript is just another turn — nothing in the contract scores it", () => {
-    deepEqual(checkNoktReply(parseNoktReply(reply("Ich habe dich nicht ganz verstanden. Kannst du es nochmal sagen?")), diag([child("vier tragen rest fünf bananen")])), { ok: true, exposesAnswer: false });
+  it("two questions in one line and a repeated question are refused", () => {
+    deepEqual(check("Was fragt die Aufgabe? Und wie hast du gerechnet?", "clarify", [child("fünf")]), { ok: false, reason: "several-questions" });
+    deepEqual(check("Wie bist du auf deine Zahl gekommen?", "ask-method", [child("fünf"), nokt("Wie bist du auf deine Zahl gekommen?", "ask-method"), child("weiss nicht")]), { ok: false, reason: "repeated-question" });
   });
 
-  it("in a reflection after a correct answer, naming the answer is fine", () => {
-    deepEqual(checkNoktReply(parseNoktReply(reply("Du hast 4 geschrieben. Wie hast du das herausgefunden?", "ask-method")), { purpose: "reflection", answer: full.answer, transcript: [] }), { ok: true, exposesAnswer: false });
+  it("a garbled voice transcript is just another turn; a reflection after a correct answer may name it", () => {
+    deepEqual(check("Ich habe dich nicht ganz verstanden. Kannst du es nochmal sagen?", "clarify", [child("vier tragen rest fünf bananen")]), { ok: true });
+    deepEqual(checkNoktReply(parseNoktReply(reply("Du hast 4 Tragen geschrieben. Wie hast du das herausgefunden?", "ask-method")), { purpose: "reflection", answer: full.answer, unit: full.unit, visibleText: visible, attempts: ["4"], transcript: [], disclosureAllowed: false }), { ok: true });
+  });
+
+  it("KNOWN LIMIT (recorded, not hidden): the disclosure check is a heuristic — paraphrased or implied answers pass it", () => {
+    equal(disclosesAnswer("In vier volle Tragen passen 16, dann bleiben 2 übrig.", { answer: 4, unit: "Tragen", visibleText: visible, childSaid: [] }), true, "number + unit is caught");
+    equal(disclosesAnswer("16 Setzlinge sind voll verpackt, 2 bleiben übrig.", { answer: 4, unit: "Tragen", visibleText: visible, childSaid: [] }), false, "implied by arithmetic — NOT caught; phases, prompt and parent review remain the other safeguards");
   });
 });
 

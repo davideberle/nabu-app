@@ -470,6 +470,19 @@ function Workspace({ child }: { child: ChildId }) {
             speech={speech}
             noktMode={view.nokt?.mode ?? "unavailable"}
             noktTranscribe={(audio, fileName, signal) => learning.transcribeNokt(child, audio, fileName, { signal })}
+            noktTurn={async (turn, signal) => {
+              const current = viewRef.current;
+              if (!current) return { kind: "failed" };
+              const out = await learning.noktTurn(child, turn, current.revision, { signal, context: contextOfView(current), timeZone: browserTimeZone() });
+              if (!aliveRef.current || signal.aborted || (!out.ok && "failure" in out && out.failure === "cancelled")) return { kind: "cancelled" };
+              if ("view" in out && out.view) adopt(out.view);
+              if (out.ok && out.status !== "stale") {
+                const r = out.result as { shown?: boolean; say?: string; line?: string };
+                if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say };
+                if (r.shown === false && typeof r.line === "string") return { kind: "withheld", line: r.line };
+              }
+              return { kind: "failed" };
+            }}
             telemetry={(name) => {
               telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
             }}

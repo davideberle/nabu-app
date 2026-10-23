@@ -49,6 +49,10 @@ export type TutorDispatch = {
   entry: "manual" | "offer" | "planned";
   at: string;
   status: "pending" | "consumed";
+  /** Nokt turn (content v6): hash of the exact request the app built for this turn; the reply's receipt must bind to it. */
+  reqHash?: string;
+  /** Nokt turn: set once a reply was applied — a second reply to the same turn is a replay and is refused. */
+  repliedAt?: string;
 };
 
 export type TutorOutcomeClaim = {

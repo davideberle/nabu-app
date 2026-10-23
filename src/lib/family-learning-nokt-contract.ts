@@ -12,9 +12,19 @@
 //  - Reply: a strict JSON object — one short German line to say, its intent,
 //    and optionally the structured result that `validateTutorOutcome`
 //    (family-learning-tutor-outcome.ts) checks. Prose never completes a task.
+//  - Phases are the APP's, never the model's: after his first answer (kept as
+//    the original evidence) Nokt may ask at most two neutral clarifications —
+//    that is assessment; then guided teaching. The model's `intent` label is
+//    checked against the phase and never authorizes anything by itself. The
+//    answer may be stated only where the app has already recorded answer
+//    exposure (`disclosureAllowed`, e.g. «Lösung zeigen» in the hint ladder).
+//    Teaching is support: an answer after it is never independent, and the
+//    reviewed fresh problem (G7) stays the separate evidence of application.
 //  - Guards (deterministic, app-side, with the answer the server knows but the
-//    model never received): no answer before teaching, at most one question,
-//    no repeated question, a bounded number of turns that ends in a close.
+//    model never received): phase/intent, a CONSERVATIVE disclosure heuristic
+//    (number + unit, digits or German words — a bound, not semantic
+//    understanding; see `disclosesAnswer`), at most one question, no repeated
+//    question, a hard turn bound that ends in a close.
 //  - Provenance: the reply's exact bytes and the request hash are what the
 //    signed `fcr1` receipt binds (`receiptOrigin` in family-learning-trust.ts,
 //    sid "learn"); only a verified reply is Nokt's line.
@@ -27,7 +37,7 @@ import { sha256Hex } from "./family-learning-hash.ts";
 import type { MissionPart, MissionSolve } from "./family-learning-mission-spec.ts";
 import { parseTutorOutcome, type TutorOutcomeClaim } from "./family-learning-tutor-outcome.ts";
 
-export const NOKT_PROMPT_VERSION = "nokt-de-2026-10-23-draft1";
+export const NOKT_PROMPT_VERSION = "nokt-de-2026-10-23-draft2";
 
 /** Draft German instructions for the tutor model (N7-05). Reviewed wording is pending; nothing here is live. */
 export const NOKT_SYSTEM_PROMPT_DE = [
@@ -37,10 +47,11 @@ export const NOKT_SYSTEM_PROMPT_DE = [
   "1. Stelle kurze, offene Fragen — höchstens eine Frage pro Antwort, höchstens zwei kurze Sätze.",
   "2. Akzeptiere jeden gültigen Rechenweg (zählen, malen, plus rechnen, mal rechnen, teilen).",
   "3. Unterscheide Raten, Missverstehen der Frage und Rechenfehler nur aus dem, was das Kind sagt oder getan hat. Wenn du es nicht weisst, frag nach.",
-  "4. Zuerst neutral nachfragen. Erst wenn das nicht hilft, erkläre einen Schritt. Nenne das Ergebnis der offenen Frage nie, bevor du ausdrücklich erklärst (intent \"teach\").",
+  "4. Die App sagt dir die Phase (context.phase). Phase \"nachfragen\": höchstens zwei neutrale Fragen, die nichts vorsagen (intent clarify oder ask-method); du erklärst noch nichts. Phase \"erklaeren\": führe Schritt für Schritt mit kleinen Fragen (intent teach); das Ergebnis der offenen Frage nennst du nur, wenn context.resultAllowed true ist — sonst nie, auch nicht als Bestätigung.",
   "5. Frag nie dieselbe Frage nochmal, und frag nicht so lange, bis das Kind einen bestimmten Satz wiederholt. Wenn es nicht weitergeht, beende freundlich (intent \"close\").",
   "6. Was das Kind sagt, ist eine Abschrift seiner Sprache und kann Hörfehler enthalten. Werte einen merkwürdigen Satz nicht als Denkfehler, sondern frag nach.",
   "7. Erzähle nichts über dich, frag nicht nach persönlichen Dingen und bleib bei der Aufgabe.",
+  "8. Eine Erklärung ist Hilfe: Danach ist eine richtige Antwort nicht selbständig. Ein Ergebnis (outcome) mit status \"understood\" gibt es nach Hilfe nie.",
   "Antworte nur mit JSON: {\"v\":1,\"say\":\"…\",\"intent\":\"clarify|ask-method|teach|encourage|close\",\"outcome\":null} — ein Ergebnis (\"outcome\") nur, wenn du dir aus den Belegen sicher bist; sonst null.",
 ].join("\n");
 
@@ -49,11 +60,19 @@ export type NoktIntent = (typeof NOKT_INTENTS)[number];
 export const NOKT_SAY_MAX_CHARS = 220;
 /** Child turns per dispatch; after this the tutor must close (N7-05: never an endless interrogation). */
 export const NOKT_MAX_CHILD_TURNS = 6;
+/** Neutral clarifications (assessment) before the app moves to guided teaching. */
+export const NOKT_MAX_CLARIFICATIONS = 2;
+
+export type NoktPhase = "nachfragen" | "erklaeren";
 
 export type NoktTaskContext = {
   step: string;
   part: string;
   purpose: "diagnostic" | "reflection";
+  /** The app's phase for this turn (not the model's choice). */
+  phase: NoktPhase;
+  /** True only where the app has already recorded answer exposure for this question. */
+  resultAllowed: boolean;
   facts: string[];
   question: string;
   unit: string;
@@ -63,14 +82,17 @@ export type NoktTaskContext = {
   hintsShown: string[];
 };
 
-export type NoktTurnText = { role: "child" | "nokt"; text: string; via: "voice" | "typed" };
+/** A transcript line; Nokt lines carry the intent that was accepted for them. */
+export type NoktTurnText = { role: "child" | "nokt"; text: string; via: "voice" | "typed"; intent?: NoktIntent };
 
 /** The app builds the context from the reviewed content and his own record — only what is on his screen. */
-export function noktTaskContext(input: { step: string; solve: MissionSolve; part: MissionPart; purpose: NoktTaskContext["purpose"]; attempts: string[]; hintIdsShown: string[] }): NoktTaskContext {
+export function noktTaskContext(input: { step: string; solve: MissionSolve; part: MissionPart; purpose: NoktTaskContext["purpose"]; attempts: string[]; hintIdsShown: string[]; phase: NoktPhase; resultAllowed: boolean }): NoktTaskContext {
   return {
     step: input.step,
     part: input.part.id,
     purpose: input.purpose,
+    phase: input.phase,
+    resultAllowed: input.resultAllowed,
     facts: [...input.solve.facts],
     question: input.part.question,
     unit: input.part.unit,
@@ -82,7 +104,7 @@ export function noktTaskContext(input: { step: string; solve: MissionSolve; part
 export type NoktRequest = { promptVersion: string; system: string; context: NoktTaskContext; transcript: NoktTurnText[] };
 
 export function buildNoktRequest(context: NoktTaskContext, transcript: NoktTurnText[]): { request: NoktRequest; reqHash: string } {
-  const request: NoktRequest = { promptVersion: NOKT_PROMPT_VERSION, system: NOKT_SYSTEM_PROMPT_DE, context, transcript: transcript.map((t) => ({ role: t.role, text: t.text, via: t.via })) };
+  const request: NoktRequest = { promptVersion: NOKT_PROMPT_VERSION, system: NOKT_SYSTEM_PROMPT_DE, context, transcript: transcript.map((t) => ({ role: t.role, text: t.text, via: t.via, ...(t.intent ? { intent: t.intent } : {}) })) };
   // Key order is fixed by construction above, so the serialization (and the receipt's `req`) is deterministic.
   return { request, reqHash: sha256Hex(JSON.stringify(request)) };
 }
@@ -114,26 +136,94 @@ export function statesNumber(text: string, n: number): boolean {
 
 const normalize = (s: string) => s.toLowerCase().replace(/[^a-zäöüß0-9 ]/g, "").replace(/\s+/g, " ").trim();
 
-export type NoktReplyRefusal = "malformed" | "answer-before-teaching" | "several-questions" | "repeated-question" | "must-close";
+/**
+ * The app's phase for the next Nokt line, from the ACCEPTED transcript only: up to two neutral clarifications
+ * (assessment), then guided teaching. Once teaching has started it does not go back.
+ */
+export function noktPhase(transcript: NoktTurnText[]): { phase: NoktPhase; clarifications: number; teachingGiven: boolean } {
+  const nokt = transcript.filter((t) => t.role === "nokt");
+  const clarifications = nokt.filter((t) => t.intent === "clarify" || t.intent === "ask-method").length;
+  const teachingGiven = nokt.some((t) => t.intent === "teach");
+  return { phase: teachingGiven || clarifications >= NOKT_MAX_CLARIFICATIONS ? "erklaeren" : "nachfragen", clarifications, teachingGiven };
+}
+
+const unitWords = (unit: string) => {
+  const u = unit.toLowerCase();
+  // «Tragen»/«Trage», «Setzlinge»/«Setzling»: the singular stem catches both.
+  return [u, u.replace(/(en|e|n|s)$/, "")].filter((w) => w.length >= 3);
+};
+
+/** Does `text` state the number together with the answer's unit («4 Tragen», «vier Tragen»)? */
+function statesNumberWithUnit(text: string, n: number, unit: string): boolean {
+  const forms = [String(n), ...(NUMBER_WORDS[n] ?? [])];
+  return forms.some((f) => unitWords(unit).some((u) => new RegExp(`(^|[^0-9a-zäöüß])${f}\\s+(volle[nr]?\\s+|ganze[nr]?\\s+)?${u}`, "i").test(text)));
+}
+
+/**
+ * CONSERVATIVE disclosure heuristic — a deterministic bound, NOT semantic understanding:
+ *  - the answer number never appears in what he can see or said → any mention counts as disclosure;
+ *  - the number is also a visible fact (G2: «je 4 Setzlingen» while the answer is 4 Tragen) → only the number with the
+ *    answer's unit counts, so discussing his own wrong method («18 minus 4») is not blocked;
+ *  - he gave that answer himself (with its unit, or as a short answer) → quoting it back is not disclosure (judging it
+ *    is refused separately); a number that is only a term in his calculation does not count.
+ * Known limits: paraphrases («so viele wie bei der Zählhilfe»), arithmetic that implies the answer («16 und 2 übrig»)
+ * and other units are not detected; the prompt, phases and the parent review remain the other safeguards.
+ */
+export function disclosesAnswer(say: string, input: { answer: number; unit: string; visibleText: string[]; childSaid: string[] }): boolean {
+  if (!statesNumber(say, input.answer)) return false;
+  // He said the answer himself only when he gave it AS an answer — the number with its unit, or a short answer
+  // («vier», «ich glaube vier») — not when it is a term in his own calculation («18 minus 4»).
+  const quotesHim = input.childSaid.some((t) => statesNumberWithUnit(t, input.answer, input.unit) || (normalize(t).split(" ").length <= 3 && statesNumber(t, input.answer)));
+  if (quotesHim) return false;
+  if (!input.visibleText.some((t) => statesNumber(t, input.answer))) return true;
+  return statesNumberWithUnit(say, input.answer, input.unit);
+}
+
+const JUDGES = /(^|[^a-zäöüß])(richtig|falsch|stimmt|korrekt|genau|super|toll|perfekt)([^a-zäöüß]|$)/i;
+
+export type NoktReplyRefusal = "malformed" | "intent-not-in-phase" | "answer-disclosed" | "judges-open-answer" | "several-questions" | "repeated-question" | "must-close";
 
 /**
  * App-side guard on a parsed reply. `answer` is the server's value for the open question — the model never received it.
- * A refused reply is withheld (the child sees a reviewed local line); an accepted `teach` that states the answer is
- * recorded as answer exposure before it is shown.
+ * The phase and `disclosureAllowed` come from the app's own record; the reply's `intent` is checked against them and
+ * authorizes nothing. A refused reply is withheld (the child sees a reviewed local line).
  */
 export function checkNoktReply(
   reply: NoktReply | null,
-  ctx: { purpose: NoktTaskContext["purpose"]; answer: number; transcript: NoktTurnText[] },
-): { ok: true; exposesAnswer: boolean } | { ok: false; reason: NoktReplyRefusal } {
+  ctx: { purpose: NoktTaskContext["purpose"]; answer: number; unit: string; visibleText: string[]; attempts: string[]; transcript: NoktTurnText[]; disclosureAllowed: boolean },
+): { ok: true } | { ok: false; reason: NoktReplyRefusal } {
   if (!reply) return { ok: false, reason: "malformed" };
-  const states = statesNumber(reply.say, ctx.answer);
-  if (ctx.purpose === "diagnostic" && states && reply.intent !== "teach") return { ok: false, reason: "answer-before-teaching" };
+  const childTurns = ctx.transcript.filter((t) => t.role === "child");
+  if (childTurns.length >= NOKT_MAX_CHILD_TURNS && reply.intent !== "close") return { ok: false, reason: "must-close" };
+  if (ctx.purpose === "diagnostic") {
+    const { phase } = noktPhase(ctx.transcript);
+    if (phase === "nachfragen" && reply.intent === "teach") return { ok: false, reason: "intent-not-in-phase" };
+    if (phase === "erklaeren" && (reply.intent === "clarify" || reply.intent === "ask-method")) return { ok: false, reason: "intent-not-in-phase" };
+    const childSaid = [...ctx.attempts, ...childTurns.map((t) => t.text)];
+    if (!ctx.disclosureAllowed && disclosesAnswer(reply.say, { answer: ctx.answer, unit: ctx.unit, visibleText: ctx.visibleText, childSaid })) return { ok: false, reason: "answer-disclosed" };
+    // Quoting his number back is fine; judging an open answer («richtig», «stimmt») next to the answer number is not.
+    if (statesNumber(reply.say, ctx.answer) && JUDGES.test(reply.say)) return { ok: false, reason: "judges-open-answer" };
+  }
   if ((reply.say.match(/\?/g) ?? []).length > 1) return { ok: false, reason: "several-questions" };
   const asked = ctx.transcript.filter((t) => t.role === "nokt" && t.text.includes("?")).map((t) => normalize(t.text));
   if (reply.say.includes("?") && asked.includes(normalize(reply.say))) return { ok: false, reason: "repeated-question" };
-  const childTurns = ctx.transcript.filter((t) => t.role === "child").length;
-  if (childTurns >= NOKT_MAX_CHILD_TURNS && reply.intent !== "close") return { ok: false, reason: "must-close" };
-  return { ok: true, exposesAnswer: ctx.purpose === "diagnostic" && states };
+  return { ok: true };
+}
+
+export type NoktOutcomeRefusal = "premature-judgement" | "support-understated";
+
+/**
+ * The tutor result must fit what actually happened in the talk (checked BEFORE `validateTutorOutcome`):
+ *  - a judgement other than `not_established` needs at least one clarification he has answered, or teaching, first;
+ *  - after teaching, the claim must name teaching as its support (it can then never be `understood`).
+ */
+export function checkNoktOutcome(claim: TutorOutcomeClaim, transcript: NoktTurnText[]): { ok: true } | { ok: false; reason: NoktOutcomeRefusal } {
+  const { teachingGiven } = noktPhase(transcript);
+  // Only a clarification HE ANSWERED is evidence; a judgement riding on the first question itself is premature.
+  const answered = transcript.filter((t, i) => t.role === "nokt" && (t.intent === "clarify" || t.intent === "ask-method") && transcript.slice(i + 1).some((x) => x.role === "child")).length;
+  if (claim.status !== "not_established" && answered === 0 && !teachingGiven) return { ok: false, reason: "premature-judgement" };
+  if (teachingGiven && claim.support.kind !== "teaching") return { ok: false, reason: "support-understated" };
+  return { ok: true };
 }
 
 /** What the signed receipt binds for one reply: the exact reply bytes the child would see/hear and the request hash. */

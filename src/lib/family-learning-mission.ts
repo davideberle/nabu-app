@@ -61,6 +61,7 @@ import { assessSpacing, flagSpacing, markSpacing, evaluateRevision, type Spacing
 import type { MissionPart, MissionHint, MissionLine, MissionDiagram } from "./family-learning-mission-spec.ts";
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
 import type { ReplyOrigin } from "./family-learning-trust.ts";
+import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktPhase, noktTaskContext, parseNoktReply, type NoktTurnText } from "./family-learning-nokt-contract.ts";
 
 // ---------------------------------------------------------------------------
 // State (MissionState.missions — additive)
@@ -167,7 +168,28 @@ export type MissionStepRun = {
   /** Content v6 (N7-06): tutor dispatches recorded before the tutor is asked, and the accepted structured results (immutable). */
   tutorDispatches?: TutorDispatch[];
   tutorOutcomes?: TutorOutcomeRecord[];
+  /** Content v6 (N7-03): the Nokt conversation, line by line — his words, Nokt's verified lines, withheld replies with the reason. Parent-reviewable. */
+  tutorTurns?: MissionTutorTurn[];
 };
+
+export type MissionTutorTurn = {
+  turnId: string;
+  part: string;
+  sessionId: string;
+  role: "child" | "nokt";
+  text: string;
+  via?: "voice" | "typed";
+  intent?: NoktTurnText["intent"];
+  /** Nokt lines: the server-verified origin; only `verified` + accepted lines were shown as Nokt. */
+  origin?: ReplyOrigin;
+  shown: boolean;
+  /** Why a Nokt reply was withheld (origin, stale, guard refusal). */
+  reason?: string;
+  at: string;
+};
+
+/** What the child sees instead of a withheld Nokt reply — reviewed app text, never attributed to Nokt. */
+export const NOKT_WITHHELD_LINE = "Nokt hat gerade keine passende Antwort. Probier es oben noch einmal oder öffne den Hinweis.";
 
 export type MissionDrill = {
   no: number;
@@ -302,7 +324,9 @@ export type MissionAction =
   /** Content v6: a character line was played aloud (its own text, never an answer; recorded, not help). */
   | { a: "line-audio"; step: string; line: number; outcome: "child-voice" | "browser" | "failed" }
   /** Content v6 (N7-06): record the tutor context BEFORE the tutor is asked; refused while the tutor is unavailable. */
-  | { a: "tutor-dispatch"; step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; turnId: string; sessionId: string }
+  | { a: "tutor-dispatch"; step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; turnId: string; sessionId: string; text?: string; via?: "voice" | "typed" }
+  /** Content v6 (N7-03): the reply to one Nokt turn; its origin was verified by the ROUTE (receipt bound to the dispatch). */
+  | { a: "tutor-reply"; step: string; turnId: string; reply: string }
   /** Content v6 (N7-06): the tutor's structured result — accepted only when bound, fresh and verified (origin from the server, never the client). */
   | { a: "tutor-outcome"; step: string; outcome: unknown }
   | { a: "finish" };
@@ -1359,34 +1383,90 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (r.tutorDispatches.some((d) => d.turnId === action.turnId)) throw new MissionOpError("not-allowed", "this tutor turn exists");
       // The revision a result must bind to: the number of recorded attempts on this step (a new answer makes older results stale).
       const dispatch: TutorDispatch = { turnId: action.turnId, child: env.tutor.child ?? "", missionId: def.id, visit: env.visit, step: step.id, part: part.id, taskVersion: step.version, sessionId: action.sessionId, revision: r.attempts.length, purpose: action.purpose, entry: action.entry, at: env.nowIso, status: "pending" };
+      let request: unknown = null;
+      if (action.text !== undefined) {
+        // A Nokt turn: his line is recorded first, then the app builds the request from what he can see — never the answer.
+        if (typeof action.text !== "string" || !action.text.trim() || action.text.length > 300 || (action.via !== "voice" && action.via !== "typed")) throw new MissionOpError("invalid", "a turn needs his text (1–300 characters) and how it was entered");
+        const pr = r.parts![part.id];
+        const prior = talkOf(r, part.id, action.sessionId);
+        const built = buildNoktRequest(
+          noktTaskContext({ step: step.id, solve: step.solve!, part, purpose: action.purpose, attempts: r.attempts.filter((a) => a.questionId === part.id && a.kind === "answer").map((a) => a.raw), hintIdsShown: pr.hints.map((h) => h.id), phase: noktPhase(prior).phase, resultAllowed: pr.exposed.length > 0 }),
+          [...prior, { role: "child", text: action.text.trim(), via: action.via }],
+        );
+        dispatch.reqHash = built.reqHash;
+        request = built.request;
+        (r.tutorTurns ??= []).push({ turnId: action.turnId, part: part.id, sessionId: action.sessionId, role: "child", text: action.text.trim(), via: action.via, shown: true, at: env.nowIso });
+        if (r.tutorTurns.length > 60) r.tutorTurns = r.tutorTurns.slice(-60);
+      }
       r.tutorDispatches.push(dispatch);
       if (r.tutorDispatches.length > 20) r.tutorDispatches = r.tutorDispatches.slice(-20);
-      support(records, env, def, step, "tutor-dispatch", { part: part.id, purpose: action.purpose, entry: action.entry, turnId: action.turnId, help: false });
-      result = { dispatch };
+      support(records, env, def, step, "tutor-dispatch", { part: part.id, purpose: action.purpose, entry: action.entry, turnId: action.turnId, ...(action.text !== undefined ? { text: action.text.trim(), via: action.via } : {}), help: false });
+      result = { dispatch, ...(request ? { request, reqHash: dispatch.reqHash } : {}) };
+      break;
+    }
+    case "tutor-reply": {
+      if (!env.tutor?.available) throw new MissionOpError("not-available", "the tutor is not available");
+      const { step, r } = requireActive(run, def, action.step);
+      const dispatch = (r.tutorDispatches ?? []).find((d) => d.turnId === action.turnId);
+      if (!dispatch || !dispatch.reqHash) throw new MissionOpError("stale", "unknown tutor turn");
+      if (dispatch.repliedAt) throw new MissionOpError("not-allowed", "this tutor turn already has its reply");
+      if (typeof action.reply !== "string" || action.reply.length > 4000) throw new MissionOpError("invalid", "reply must be a string");
+      dispatch.repliedAt = env.nowIso;
+      const part = step.solve!.parts.find((x) => x.id === dispatch.part)!;
+      const pr = r.parts![part.id];
+      const talk = talkOf(r, part.id, dispatch.sessionId);
+      const origin: ReplyOrigin = env.tutor.origin ?? "missing";
+      let reason: string | null = null;
+      let parsed: ReturnType<typeof parseNoktReply> = null;
+      if (origin !== "verified") reason = `origin-${origin}`;
+      // A new answer since the dispatch: the reply talks about an older state of the question and is not shown.
+      else if (r.attempts.length !== dispatch.revision || pr.status !== (dispatch.purpose === "diagnostic" ? "open" : "correct")) reason = "stale";
+      else {
+        try {
+          parsed = parseNoktReply(JSON.parse(action.reply));
+        } catch {
+          parsed = null;
+        }
+        const verdict = checkNoktReply(parsed, {
+          purpose: dispatch.purpose,
+          answer: part.answer,
+          unit: part.unit,
+          visibleText: [...step.solve!.facts, part.question, ...part.hints.filter((h) => pr.hints.some((x) => x.id === h.id)).map((h) => h.text)],
+          attempts: r.attempts.filter((a) => a.questionId === part.id && a.kind === "answer").map((a) => a.raw),
+          transcript: talk,
+          disclosureAllowed: pr.exposed.length > 0,
+        });
+        if (!verdict.ok) reason = verdict.reason;
+      }
+      const shown = reason === null && parsed !== null;
+      (r.tutorTurns ??= []).push({ turnId: dispatch.turnId, part: part.id, sessionId: dispatch.sessionId, role: "nokt", text: shown ? parsed!.say : action.reply.slice(0, 600), ...(shown ? { intent: parsed!.intent } : {}), origin, shown, ...(reason ? { reason } : {}), at: env.nowIso });
+      if (r.tutorTurns.length > 60) r.tutorTurns = r.tutorTurns.slice(-60);
+      // Guided teaching is help: later answers on this question are supported, never independent.
+      if (shown && parsed!.intent === "teach") {
+        r.support.push({ kind: "tutor-content", at: env.nowIso, detail: part.id });
+        pr.inheritedSupport = [...new Set([...(pr.inheritedSupport ?? []), "tutor:teaching"])];
+      }
+      support(records, env, def, step, "tutor-reply", { part: part.id, turnId: dispatch.turnId, origin, shown, ...(shown ? { text: parsed!.say, intent: parsed!.intent } : { reason }), help: shown && parsed!.intent === "teach" });
+      // A structured result rides on an accepted reply only; it must fit the talk, then pass the N7-06 validator.
+      let outcome: Record<string, unknown> | null = null;
+      if (shown && parsed!.outcome) {
+        const fit = checkNoktOutcome(parsed!.outcome, talkOf(r, part.id, dispatch.sessionId));
+        if (!fit.ok) outcome = { refused: fit.reason };
+        else {
+          try {
+            outcome = applyTutorOutcome(records, env, def, step, r, parsed!.outcome);
+          } catch (error) {
+            outcome = { refused: error instanceof MissionOpError ? error.message.replace("tutor result refused: ", "") : "invalid" };
+          }
+        }
+      }
+      result = shown ? { shown: true, say: parsed!.say, intent: parsed!.intent, outcome } : { shown: false, reason, line: NOKT_WITHHELD_LINE };
       break;
     }
     case "tutor-outcome": {
       if (!env.tutor?.available) throw new MissionOpError("not-available", "the tutor is not available");
       const { step, r } = requireActive(run, def, action.step);
-      const claimTurn = typeof action.outcome === "object" && action.outcome !== null ? (action.outcome as { turnId?: unknown }).turnId : null;
-      const dispatch = (r.tutorDispatches ?? []).find((d) => d.turnId === claimTurn);
-      const pr = dispatch ? r.parts?.[dispatch.part] : undefined;
-      const question = pr && dispatch
-        ? { status: pr.status, attemptNos: r.attempts.filter((a) => a.questionId === dispatch.part).map((a) => a.no), helped: pr.hints.length > 0 || (pr.inheritedSupport ?? []).length > 0 || pr.phase === "taught" || r.attempts.some((a) => a.questionId === dispatch.part && a.kind !== "answer"), answerExposed: pr.exposed.length > 0 }
-        : null;
-      const verdict = validateTutorOutcome(action.outcome, { child: env.tutor.child ?? "", origin: env.tutor.origin ?? "missing", nowIso: env.nowIso, dispatch, question, currentRevision: r.attempts.length });
-      if (!verdict.ok) throw new MissionOpError(verdict.reason === "unknown-or-consumed" ? "stale" : "invalid", `tutor result refused: ${verdict.reason}`);
-      dispatch!.status = "consumed";
-      (r.tutorOutcomes ??= []).push(verdict.record);
-      if (verdict.record.support.kind !== "none") {
-        // Help given in the talk is recorded before anything follows from it; it makes later answers on this question supported.
-        r.support.push({ kind: "tutor-content", at: env.nowIso, detail: dispatch!.part });
-        pr!.inheritedSupport = [...new Set([...(pr!.inheritedSupport ?? []), `tutor:${verdict.record.support.kind}`])];
-      }
-      if (verdict.record.support.answerExposed) pr!.exposed.push({ by: `tutor:${dispatch!.turnId}`, at: env.nowIso });
-      if (dispatch!.purpose === "reflection") pr!.reflection = "asked";
-      support(records, env, def, step, "tutor-outcome", { part: dispatch!.part, status: verdict.record.status, next: verdict.record.next, support: verdict.record.support, turnId: dispatch!.turnId, help: verdict.record.support.kind !== "none" });
-      result = { status: verdict.record.status, next: verdict.record.next };
+      result = applyTutorOutcome(records, env, def, step, r, action.outcome);
       break;
     }
     case "finish": {
@@ -1403,6 +1483,34 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
     }
   }
   return { records, result, finished };
+}
+
+/** The accepted Nokt talk about one question in one session: his lines and the Nokt lines that were shown (with their intent). */
+function talkOf(r: MissionStepRun, part: string, sessionId: string): NoktTurnText[] {
+  return (r.tutorTurns ?? []).filter((t) => t.part === part && t.sessionId === sessionId && t.shown).map((t) => ({ role: t.role, text: t.text, via: t.via ?? "typed", ...(t.intent ? { intent: t.intent } : {}) }));
+}
+
+/** N7-06: one structured tutor result, validated against the dispatch and the server's own record of the question. */
+function applyTutorOutcome(records: Records, env: MissionEnv, def: MissionDef, step: MissionStep, r: MissionStepRun, raw: unknown): { status: string; next: string } {
+  const claimTurn = typeof raw === "object" && raw !== null ? (raw as { turnId?: unknown }).turnId : null;
+  const dispatch = (r.tutorDispatches ?? []).find((d) => d.turnId === claimTurn);
+  const pr = dispatch ? r.parts?.[dispatch.part] : undefined;
+  const question = pr && dispatch
+    ? { status: pr.status, attemptNos: r.attempts.filter((a) => a.questionId === dispatch.part).map((a) => a.no), helped: pr.hints.length > 0 || (pr.inheritedSupport ?? []).length > 0 || pr.phase === "taught" || r.attempts.some((a) => a.questionId === dispatch.part && a.kind !== "answer"), answerExposed: pr.exposed.length > 0 }
+    : null;
+  const verdict = validateTutorOutcome(raw, { child: env.tutor?.child ?? "", origin: env.tutor?.origin ?? "missing", nowIso: env.nowIso, dispatch, question, currentRevision: r.attempts.length });
+  if (!verdict.ok) throw new MissionOpError(verdict.reason === "unknown-or-consumed" ? "stale" : "invalid", `tutor result refused: ${verdict.reason}`);
+  dispatch!.status = "consumed";
+  (r.tutorOutcomes ??= []).push(verdict.record);
+  if (verdict.record.support.kind !== "none") {
+    // Help given in the talk is recorded before anything follows from it; it makes later answers on this question supported.
+    r.support.push({ kind: "tutor-content", at: env.nowIso, detail: dispatch!.part });
+    pr!.inheritedSupport = [...new Set([...(pr!.inheritedSupport ?? []), `tutor:${verdict.record.support.kind}`])];
+  }
+  if (verdict.record.support.answerExposed) pr!.exposed.push({ by: `tutor:${dispatch!.turnId}`, at: env.nowIso });
+  if (dispatch!.purpose === "reflection") pr!.reflection = "asked";
+  support(records, env, def, step, "tutor-outcome", { part: dispatch!.part, status: verdict.record.status, next: verdict.record.next, support: verdict.record.support, turnId: dispatch!.turnId, help: verdict.record.support.kind !== "none" });
+  return { status: verdict.record.status, next: verdict.record.next };
 }
 
 export function typingSummary(block: TypingBlockRun) {
@@ -1949,6 +2057,8 @@ export type MissionEvidenceStep = {
   support: string[];
   supportRaw: string[];
   tutor: string;
+  /** The Nokt conversation, line by line (N7-03): what he said, what Nokt said (verified and shown), and withheld replies with the reason. */
+  talk: { part: string; who: "Kind" | "Nokt" | "zurückgehalten"; text: string; detail: string; at: string }[];
   missing: string[];
   laterCheck: string | null;
 };
@@ -2000,7 +2110,7 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
     const observed: string[] = [];
     let laterCheck: string | null = null;
     if (!r) {
-      steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support: [], supportRaw: [], tutor: "—", missing: ["nicht begonnen"], laterCheck });
+      steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support: [], supportRaw: [], tutor: "—", talk: [], missing: ["nicht begonnen"], laterCheck });
       continue;
     }
     for (const part of step.solve?.parts ?? []) {
@@ -2039,8 +2149,15 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
     const support = [...new Set(r.support.map((x) => supportLabel(x.kind, x.detail)))];
     const supportRaw = [...new Set(r.support.map((x) => x.kind))];
     const tutorEntries = r.tutor ?? [];
-    const tutor = tutorEntries.length ? `Nokt geöffnet ${tutorEntries.length}× (${tutorEntries.map((t) => t.entry).join(", ")}); ${tutorEntries.some((t) => t.available) ? "Gespräch verfügbar" : "Gespräch nicht verfügbar — keine Tutor-Einschätzung"}` : "Keine Tutor-Einschätzung (Nokt nicht aktiv).";
-    steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support, supportRaw, tutor, missing, laterCheck });
+    const outcomes = (r.tutorOutcomes ?? []).map((o) => `Einschätzung zu «${o.part}»: ${o.status} → ${o.next} (Hilfe: ${o.support.kind}${o.support.answerExposed ? ", Antwort sichtbar" : ""}; revidierbar, kein Nachweis von Können)`);
+    const tutor = [tutorEntries.length ? `Nokt geöffnet ${tutorEntries.length}× (${tutorEntries.map((t) => t.entry).join(", ")}); ${tutorEntries.some((t) => t.available) ? "Gespräch verfügbar" : "Gespräch nicht verfügbar — keine Tutor-Einschätzung"}` : "Keine Tutor-Einschätzung (Nokt nicht aktiv).", ...outcomes].join(" ");
+    const WITHHELD_DE: Record<string, string> = { "origin-missing": "ohne Nachweis der Herkunft", "origin-invalid": "Herkunft ungültig", "origin-malformed": "Herkunft fehlerhaft", stale: "zu einer älteren Antwort", malformed: "Form ungültig", "intent-not-in-phase": "passte nicht zur Gesprächsphase", "answer-disclosed": "hätte die Antwort verraten", "judges-open-answer": "hätte die offene Antwort bewertet", "several-questions": "mehrere Fragen", "repeated-question": "wiederholte Frage", "must-close": "Gespräch zu lang" };
+    const talk = (r.tutorTurns ?? []).map((t) => t.role === "child"
+      ? { part: t.part, who: "Kind" as const, text: t.text, detail: t.via === "voice" ? "gesprochen (Abschrift, korrigierbar)" : "getippt", at: t.at }
+      : t.shown
+        ? { part: t.part, who: "Nokt" as const, text: t.text, detail: `geprüft (${t.intent ?? ""})`, at: t.at }
+        : { part: t.part, who: "zurückgehalten" as const, text: "Antwort nicht gezeigt — das Kind sah den App-Hinweis.", detail: WITHHELD_DE[t.reason ?? ""] ?? t.reason ?? "", at: t.at });
+    steps.push({ id: step.id, title: step.title, kind: step.kind, status: st[step.id], observed, questions, support, supportRaw, tutor, talk, missing, laterCheck });
   }
   return { mission: def.id, title: def.title, steps, note: "Elternhilfe am Gerät wird von der App nicht erfasst. Abschluss, Hilfe-Zahl oder Abspiel-Meldungen sind kein Nachweis von Können." };
 }

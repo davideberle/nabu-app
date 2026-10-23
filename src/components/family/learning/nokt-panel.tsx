@@ -24,13 +24,19 @@ import { AssistantPortrait } from "@/components/family/assistant-portrait";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import { fictionalNoktTransport, type NoktMode, type NoktTurn } from "@/lib/family-learning-nokt";
-import type { NoktTranscribeOutcome } from "@/lib/family-learning-client";
+import type { NoktTranscribeOutcome, NoktTurnInput } from "@/lib/family-learning-client";
 import { browserSpeech } from "@/lib/family-learning-listening";
 import { startPushToTalk } from "@/lib/family-voice";
 import { adaptMediaRecorder } from "./nabu-sidebar";
 
 /** Uploads one recorded turn; the signal cancels upload and provider call. Bound to the child by the caller. */
 export type NoktTranscribe = (audio: Blob, fileName: string, signal: AbortSignal) => Promise<NoktTranscribeOutcome>;
+/** One Nokt turn through the server (dispatch → backend → verified reply); the caller adopts the returned view. */
+export type NoktTurnFn = (turn: NoktTurnInput, signal: AbortSignal) => Promise<{ kind: "shown"; say: string } | { kind: "withheld"; line: string } | { kind: "failed" } | { kind: "cancelled" }>;
+
+/** Shown when the turn could not be made at all (no connection, refused, unavailable) — reviewed app text. */
+const NOKT_UNREACHABLE_LINE = "Nokt ist gerade nicht erreichbar. Der Hinweis bei der Aufgabe hilft dir weiter.";
+const newId = (prefix: string) => `${prefix}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`;
 
 const btn = "inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 text-lg font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:cursor-not-allowed disabled:opacity-50";
 
@@ -50,7 +56,7 @@ export function NoktButton({ child, onOpen }: { child: ChildId; onOpen: () => vo
   );
 }
 
-export function NoktPanel({ child, mode, step, part, speech, transcribe = null, offer = null, onClose }: { child: ChildId; mode: NoktMode; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe?: NoktTranscribe | null; offer?: { onAccept: () => void; onDismiss: () => void } | null; onClose: () => void }) {
+export function NoktPanel({ child, mode, step, part, speech, transcribe = null, turn = null, offer = null, onClose }: { child: ChildId; mode: NoktMode; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe?: NoktTranscribe | null; turn?: NoktTurnFn | null; offer?: { onAccept: () => void; onDismiss: () => void } | null; onClose: () => void }) {
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: false });
@@ -85,7 +91,7 @@ export function NoktPanel({ child, mode, step, part, speech, transcribe = null, 
           <p className="text-lg leading-relaxed">Der Hinweis bei der Aufgabe hilft dir Schritt für Schritt. Du kannst auch einen Erwachsenen fragen.</p>
         </div>
       ) : (
-        <StubConversation child={child} step={step} part={part} speech={speech} transcribe={transcribe} />
+        <StubConversation child={child} step={step} part={part} speech={speech} transcribe={transcribe} turn={turn} />
       )}
       <button type="button" className={`${btn} mt-4`} style={{ background: "#e6eee7", color: "#21484b" }} onClick={onClose} data-testid="nokt-close">
         Schliessen
@@ -95,8 +101,12 @@ export function NoktPanel({ child, mode, step, part, speech, transcribe = null, 
 }
 
 /** The planned German-voice interaction with fictional canned replies (isolated local database only). */
-function StubConversation({ child, step, part, speech, transcribe }: { child: ChildId; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe: NoktTranscribe | null }) {
+function StubConversation({ child, step, part, speech, transcribe, turn }: { child: ChildId; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe: NoktTranscribe | null; turn: NoktTurnFn | null }) {
   const transport = useMemo(() => fictionalNoktTransport(), []);
+  // One talk per opening of the panel; a pending turn is aborted when the panel closes or the task changes (unmount).
+  const sessionId = useMemo(() => newId("s"), []);
+  const turnAbortRef = useRef<AbortController | null>(null);
+  useEffect(() => () => turnAbortRef.current?.abort(), []);
   const [turns, setTurns] = useState<NoktTurn[]>([]);
   const [draft, setDraft] = useState("");
   const [via, setVia] = useState<"voice" | "typed">("typed");
@@ -114,6 +124,20 @@ function StubConversation({ child, step, part, speech, transcribe }: { child: Ch
     setDraft("");
     setVia("typed");
     setWaiting(true);
+    if (turn && step && part) {
+      // Through the server: his line is recorded, the reply is verified and checked before it is shown as Nokt.
+      const abort = new AbortController();
+      turnAbortRef.current = abort;
+      const out = await turn({ step, part, purpose: "diagnostic", entry: "manual", sessionId, turnId: newId("t"), text, via: childTurn.via }, abort.signal);
+      if (abort.signal.aborted || out.kind === "cancelled") return;
+      turnAbortRef.current = null;
+      setWaiting(false);
+      if (out.kind === "shown") {
+        setTurns((t) => [...t, { id: `n${t.length}`, role: "nokt", text: out.say, via: "typed", at: Date.now() }]);
+        void say(out.say);
+      } else setTurns((t) => [...t, { id: `a${t.length}`, role: "app", text: out.kind === "withheld" ? out.line : NOKT_UNREACHABLE_LINE, via: "typed", at: Date.now() }]);
+      return;
+    }
     const reply = await transport.reply({ text, step: step ?? "", part, turns: turns.filter((t) => t.role === "child").length });
     setWaiting(false);
     if (!reply.ok) return;
@@ -129,7 +153,7 @@ function StubConversation({ child, step, part, speech, transcribe }: { child: Ch
         {turns.length === 0 ? <li className="text-lg">Hallo Santi. Was möchtest du wissen?</li> : null}
         {turns.map((t) => (
           <li key={t.id} className="rounded-xl px-3 py-2 text-lg" style={{ background: t.role === "nokt" ? "#edf4e6" : "#f3f4f1" }} data-role={t.role}>
-            <span className="text-sm font-bold">{t.role === "nokt" ? "Nokt" : "Du"}{t.via === "voice" ? " (gesprochen)" : ""}</span>
+            <span className="text-sm font-bold">{t.role === "nokt" ? "Nokt" : t.role === "app" ? "Hinweis der App" : "Du"}{t.role === "child" && t.via === "voice" ? " (gesprochen)" : ""}</span>
             <br />
             {t.text}
             {t.role === "nokt" ? (

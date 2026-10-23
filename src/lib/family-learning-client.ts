@@ -17,6 +17,10 @@ export const LEARNING_SESSION_PATH = "/api/family/learning/session";
 export const LEARNING_MISSION_PATH = "/api/family/learning/mission";
 export const LEARNING_TELEMETRY_PATH = "/api/family/learning/telemetry";
 export const LEARNING_NOKT_TRANSCRIBE_PATH = "/api/family/learning/nokt/transcribe";
+export const LEARNING_NOKT_TURN_PATH = "/api/family/learning/nokt/turn";
+
+/** One Nokt turn as the panel sends it; the server builds everything else (context, request, binding). */
+export type NoktTurnInput = { step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; sessionId: string; turnId: string; text: string; via: "voice" | "typed" };
 export const LEARNING_REFRESH_MARGIN_MS = 60_000;
 
 export type LearningSessionInfo = { child: ChildId; token: string; expiresAt: number };
@@ -57,6 +61,8 @@ export type LearningClient = {
   mutate: (childId: ChildId, op: LearningOp, expectedRevision: number, options?: { signal?: AbortSignal; idempotencyKey?: string; context?: MutationContext; timeZone?: string | null }) => Promise<LearningMutateOutcome>;
   /** Send one bounded telemetry batch (idempotent by batch id); failures are silent by design. */
   sendTelemetry: (childId: ChildId, batch: { batchId: string; visitId: string; visitStartedAt: string; erasureGeneration: number; events: unknown[] }, options?: { signal?: AbortSignal; keepalive?: boolean }) => Promise<boolean>;
+  /** One Nokt turn (dispatch → backend → verified reply); the outcome carries the adopted view like `mutate`. Aborting cancels it. */
+  noktTurn: (childId: ChildId, turn: NoktTurnInput, expectedRevision: number, options: { signal: AbortSignal; context: MutationContext; timeZone?: string | null }) => Promise<LearningMutateOutcome | { ok: false; failure: "cancelled" }>;
   /** Upload one recorded turn for Nokt; aborting `signal` cancels the upload and the server's provider call. */
   transcribeNokt: (childId: ChildId, audio: Blob, fileName: string, options: { signal: AbortSignal }) => Promise<NoktTranscribeOutcome>;
   reset: () => void;
@@ -128,6 +134,29 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
     return "bad-response";
   }
 
+  /** The one reading of a mutation response (mission PUT and the Nokt turn): applied/replayed/stale/refused, or a failure. */
+  async function readMutation(response: Response, childId: ChildId): Promise<LearningMutateOutcome> {
+    let payload: unknown;
+    try {
+      payload = await response.json();
+    } catch {
+      return { ok: false, failure: failureFor(response.status), status: response.status };
+    }
+    if (!isRecord(payload) || !isChildView(payload.view, childId)) {
+      if (response.status === 401) cached = null;
+      return { ok: false, failure: failureFor(response.status), status: response.status };
+    }
+    const view: ChildView = payload.view;
+    if (response.status === 200 && (payload.status === "applied" || payload.status === "replayed")) {
+      return { ok: true, status: payload.status, view, result: isRecord(payload.result) ? payload.result : {} };
+    }
+    if (response.status === 409) return { ok: true, status: "stale", view };
+    if (response.status === 422 && typeof payload.code === "string") {
+      return { ok: false, status: "refused", code: payload.code, message: typeof payload.message === "string" ? payload.message : "", view };
+    }
+    return { ok: false, failure: failureFor(response.status), status: response.status };
+  }
+
   return {
     async read(childId, options) {
       const info = await session(childId, options?.signal);
@@ -169,25 +198,27 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
       } catch {
         return { ok: false, failure: "network" };
       }
-      let payload: unknown;
+      return readMutation(response, childId);
+    },
+
+    async noktTurn(childId, turn, expectedRevision, options) {
+      const info = await session(childId, options.signal);
+      if (options.signal.aborted) return { ok: false, failure: "cancelled" };
+      if (!info) return { ok: false, failure: "no-session" };
+      let response: Response;
       try {
-        payload = await response.json();
+        response = await doFetch(LEARNING_NOKT_TURN_PATH, {
+          method: "POST",
+          headers: { Authorization: `Bearer ${info.token}`, "Content-Type": "application/json" },
+          body: JSON.stringify({ ...turn, expectedRevision, context: options.context, ...(options.timeZone ? { tz: options.timeZone } : {}) }),
+          signal: options.signal,
+          cache: "no-store",
+        });
       } catch {
-        return { ok: false, failure: failureFor(response.status), status: response.status };
+        return { ok: false, failure: options.signal.aborted ? "cancelled" : "network" };
       }
-      if (!isRecord(payload) || !isChildView(payload.view, childId)) {
-        if (response.status === 401) cached = null;
-        return { ok: false, failure: failureFor(response.status), status: response.status };
-      }
-      const view: ChildView = payload.view;
-      if (response.status === 200 && (payload.status === "applied" || payload.status === "replayed")) {
-        return { ok: true, status: payload.status, view, result: isRecord(payload.result) ? payload.result : {} };
-      }
-      if (response.status === 409) return { ok: true, status: "stale", view };
-      if (response.status === 422 && typeof payload.code === "string") {
-        return { ok: false, status: "refused", code: payload.code, message: typeof payload.message === "string" ? payload.message : "", view };
-      }
-      return { ok: false, failure: failureFor(response.status), status: response.status };
+      if (response.status === 499) return { ok: false, failure: "cancelled" };
+      return readMutation(response, childId);
     },
 
     async sendTelemetry(childId, batch, options) {

@@ -1397,7 +1397,19 @@ function MissionEvidencePanel({ evidence }: { evidence: MissionEvidenceView }) {
                     </details>
                   ) : null}
                 </td>
-                <td className="py-2 pr-3">{s.tutor}</td>
+                <td className="py-2 pr-3" data-testid={`tutor-${s.id}`}>
+                  {s.tutor}
+                  {(s.talk ?? []).length ? (
+                    // N7-03: the conversation stays parent-reviewable — his words as entered, Nokt's verified lines, withheld replies with the reason.
+                    <ol className="mt-1 grid gap-1" data-testid={`talk-${s.id}`}>
+                      {(s.talk ?? []).map((t, i) => (
+                        <li key={i}>
+                          <strong>{t.who}</strong> <span className="text-tertiary">({t.detail})</span>: {t.text}
+                        </li>
+                      ))}
+                    </ol>
+                  ) : null}
+                </td>
                 <td className="py-2 pr-3">{s.missing.join(" ") || "—"}</td>
                 <td className="py-2">{s.laterCheck ?? "—"}</td>
               </tr>
