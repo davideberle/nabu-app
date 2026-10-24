@@ -1184,7 +1184,9 @@ try {
   } else if (STUB_BASE && ONLY_STUB && SUBSCRIPTION_EXHAUSTED) {
     // ============================================================ J7 real conversation mode, day used up (no model, no network) ============================================================
     await sixVisitsDone();
-    const bridge = (opt("--bridge-origin", "") || "").replace(/\/$/, "");
+    // A reserved, never-resolvable name (RFC 2606 .invalid), answered only inside this browser context — never a network host.
+    const bridge = (opt("--intercepted-bridge", "") || "").replace(/\/$/, "");
+    if (!/^https:\/\/[a-z0-9-]+\.invalid(:\d+)?$/.test(bridge)) throw new Error("--intercepted-bridge must be an https://<name>.invalid origin");
     const xctx = await makeCtx(STUB_BASE, { viewport: { width: 1280, height: 900 } }, assistant, { speech: "end", voice: "fail", allowOrigins: [bridge] });
     const bridgeCalls = [];
     const cors = { "access-control-allow-origin": STUB_BASE, "access-control-allow-methods": "POST, OPTIONS", "access-control-allow-headers": "authorization, content-type", vary: "Origin" };
@@ -1409,7 +1411,7 @@ try {
 }
 check("global.no-external-requests", blocked.length === 0, [...new Set(blocked)]);
 check("global.no-page-errors", pageErrors.length === 0, pageErrors.slice(0, 5));
-check("global.speech-never-reached-server", speechRequests.length >= (PERSONA ? 0 : ONLY_STUB ? 1 : 3) && speechRequests.every((r) => ["abort", "ok", "fail"].includes(r.mock)), speechRequests.length);
+check("global.speech-never-reached-server", speechRequests.length >= (PERSONA || SUBSCRIPTION_EXHAUSTED ? 0 : ONLY_STUB ? 1 : 3) && speechRequests.every((r) => ["abort", "ok", "fail"].includes(r.mock)), speechRequests.length);
 await browser.close();
 const passed = results.filter((r) => r.ok).length;
 fs.writeFileSync(path.join(OUT, ONLY_STUB ? (TURN ? (PERSONA ? (OUTCOME_PERSONAS[PERSONA] ? `results-outcome-${PERSONA}.json` : `results-live-${PERSONA}.json`) : "results-turn.json") : STUB_FAULT ? "results-stub-fault.json" : "results-stub.json") : "results.json"), JSON.stringify({ at: new Date().toISOString(), base: BASE, stubBase: STUB_BASE || null, passed, total: results.length, results, shots: shotsIndex, speechRequests: speechRequests.map((r) => ({ mock: r.mock, language: r.body?.language ?? null, speaker: r.body?.speaker ?? null })), noktUploads, blocked: [...new Set(blocked)], pageErrors }, null, 2));

@@ -11,7 +11,7 @@
 #
 # Steps: identity → app unit tests → runtime unit tests → (build) → J1/J2 (Nokt unavailable) → J3 stub → J3F provider-429
 # fault → J4 browser-mediated turn through the stub → J6 dry outcome personas through the stub (SCRIPTED final replies,
-# labelled so; they are not model evidence) → held-out → parent gate probe. Summary in <out-dir>/summary.txt.
+# labelled so; they are not model evidence) → J7 real conversation mode, used-up day → held-out → parent gate probe. Summary in <out-dir>/summary.txt.
 #
 # Teardown: only processes this script started (PID + command + cwd checked), on exit, error, INT or TERM; afterwards the
 # owned ports must be free. Nothing is killed by name or port.
@@ -164,6 +164,12 @@ for case in "F-null:F:$F_NULL" "F-accepted:F:$F_ACC" "G-refused:G:$G_REF"; do
   stop_server "$CUR_DB"; CUR_DB=""
 done
 owned_stop "$STUB_PID" "visit7-nokt-stub-bridge.mjs" "$APP"; STUB_PID=""
+
+# J7 (round 16): the REAL conversation mode (default off, switched on here locally) with the browser's bridge call answered
+# in-process like the runtime's used-up day — an https://<name>.invalid origin that can never resolve; no model, no network.
+server "$OUT/db-j7" 3196 FAMILY_NOKT_CONVERSATION=subscription FAMILY_ASSISTANT_BRIDGE_URL=https://nokt-bridge.invalid:8787 FAMILY_BRIDGE_TOKEN_SECRET="$STUB_SECRET"
+step j7-subscription-exhausted 0 node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3196 --stub-base http://127.0.0.1:3196 --only-stub --subscription-exhausted --intercepted-bridge https://nokt-bridge.invalid:8787 --db "$OUT/db-j7/nabu.db" --out "$OUT/out-j7"
+stop_server "$CUR_DB"; CUR_DB=""
 
 # 4. held-out (Nabu's script, run-time provenance) and the parent gate probe
 if [ -n "$HELDOUT" ]; then
