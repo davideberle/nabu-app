@@ -17,12 +17,12 @@ import { mutationResponse, NOKT_TURN_ID, noktTurnPrereqs } from "@/lib/family-le
 export async function POST(request: Request) {
   const pre = await noktTurnPrereqs(request);
   if (!pre.ok) return pre.response;
-  const { step, turnId, reply, receipt } = pre.body;
+  const { step, turnId, reply, receipt, noReply } = pre.body;
   if (typeof step !== "string" || typeof turnId !== "string" || !NOKT_TURN_ID.test(turnId)) return refuse(400, "step and turnId are required");
   if (reply !== null && typeof reply !== "string") return refuse(400, "reply must be a string or null");
   if (typeof reply === "string" && reply.length > 4000) return refuse(422, "Reply too long; it is refused, never truncated");
   try {
-    const replied = await applyMutation(pre.db, { child: pre.child, op: { op: "mission", action: { a: "tutor-reply", step, turnId, reply: reply ?? "" } }, idempotencyKey: `${turnId}-r`, expectedRevision: pre.expectedRevision, context: pre.context }, pre.content, () => new Date(), { timeZone: pre.timeZone, vocabulary: pre.vocabulary, tutor: { available: true, receipt: reply === null ? null : noktReceiptInput(receipt, pre.bridge.secret) } });
+    const replied = await applyMutation(pre.db, { child: pre.child, op: { op: "mission", action: { a: "tutor-reply", step, turnId, reply: reply ?? "", ...(reply === null && noReply === "attempts_exhausted" ? { noReply } : {}) } }, idempotencyKey: `${turnId}-r`, expectedRevision: pre.expectedRevision, context: pre.context }, pre.content, () => new Date(), { timeZone: pre.timeZone, vocabulary: pre.vocabulary, tutor: { available: true, receipt: reply === null ? null : noktReceiptInput(receipt, pre.bridge.secret) } });
     return mutationResponse(replied);
   } catch (error) {
     if (error instanceof ExposureUnsettledError) return refuse(503, "The task could not be saved as shown; try again");

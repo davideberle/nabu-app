@@ -56,7 +56,7 @@ type PlanningInput = {
   typing: { planned: number; attempted: number; activeSeconds: number; idleSeconds: number; wallSeconds: number | null; accuracy: number | null; paceCps: number; paceBasis: string } | null;
   note: string;
 };
-type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" };
+type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" | "subscription" };
 
 /** Learner-facing visit name (server-computed): "Besuch 3 — Die Beobachtungsstation (v4)"; falls back to the id. */
 function visitName(evidence: Evidence, id: string): string {
@@ -377,7 +377,7 @@ function NextStep({ evidence }: { evidence: Evidence }) {
   const refused = steps.reduce((n, s) => n + (s.tutorActivity?.refused ?? 0), 0);
   const noktLine = talked
     ? `Gespräch mit Nokt aufgezeichnet (siehe Tutor-Spalte); ${accepted ? `${accepted} Einschätzung(en) von der App angenommen` : "keine Tutor-Einschätzung angenommen"}${refused ? `, ${refused} abgelehnt` : ""}.`
-    : evidence.noktMode === "fictional-stub" ? "Nokt ist verfügbar (isolierte Testumgebung); noch kein Gespräch." : "Nokt ist nicht aktiv.";
+    : evidence.noktMode === "fictional-stub" ? "Nokt ist verfügbar (isolierte Testumgebung); noch kein Gespräch." : evidence.noktMode === "subscription" ? "Nokt ist verfügbar; noch kein Gespräch." : "Nokt ist nicht aktiv.";
   let text: string;
   if (!state || state.visits.length === 0) text = "Noch kein Besuch. Der nächste Schritt ist der erste Besuch: Basis bauen, 24 Pakete gerecht teilen.";
   else if (fresh.length === 0) text = "Erster Besuch läuft. Nächster Schritt: der frische Check nach der Erklärung (EQ-FRESH).";

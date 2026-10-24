@@ -469,7 +469,7 @@ function Workspace({ child }: { child: ChildId }) {
             busy={busy}
             speech={speech}
             noktMode={view.nokt?.mode ?? "unavailable"}
-            noktTranscribe={(audio, fileName, signal) => learning.transcribeNokt(child, audio, fileName, { signal })}
+            noktTranscribe={view.nokt?.mic ? (audio, fileName, signal) => learning.transcribeNokt(child, audio, fileName, { signal }) : null}
             noktTurn={async (turn, signal) => {
               const current = viewRef.current;
               if (!current) return { kind: "failed" };
@@ -477,8 +477,9 @@ function Workspace({ child }: { child: ChildId }) {
               if (!aliveRef.current || signal.aborted || (!out.ok && "failure" in out && out.failure === "cancelled")) return { kind: "cancelled" };
               if ("view" in out && out.view) adopt(out.view);
               if (out.ok && out.status !== "stale") {
-                const r = out.result as { shown?: boolean; say?: string; line?: string };
+                const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string };
                 if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say };
+                if (r.shown === false && r.reason === "no-reply-daily-allowance") return { kind: "exhausted" };
                 if (r.shown === false && typeof r.line === "string") return { kind: "withheld", line: r.line };
               }
               return { kind: "failed" };

@@ -225,6 +225,7 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
       // 2. The browser (on the Mac mini) asks the family runtime; bearer only, no cookies, nothing else is sent.
       let reply: string | null = null;
       let receipt: string | null = null;
+      let noReply: "attempts_exhausted" | null = null;
       if (origin && typeof r.bridge?.token === "string" && r.request && r.turnId === turn.turnId) {
         try {
           const res = await doFetch(`${origin}${BRIDGE_NOKT_PATH}`, { method: "POST", headers: { Authorization: `Bearer ${r.bridge.token}`, "Content-Type": "application/json" }, body: JSON.stringify({ turnId: turn.turnId, request: r.request }), signal: options.signal, cache: "no-store", credentials: "omit", mode: "cors" });
@@ -232,6 +233,10 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
             const body = (await res.json()) as { reply?: unknown; receipt?: unknown };
             if (typeof body.reply === "string") reply = body.reply;
             if (typeof body.receipt === "string") receipt = body.receipt;
+          } else if (res.status === 429) {
+            // The runtime's daily allowance is used up: say so (the child sees a kind line, the parent the reason).
+            const body = (await res.json().catch(() => null)) as { code?: unknown } | null;
+            if (body?.code === "attempts_exhausted") noReply = "attempts_exhausted";
           }
         } catch {
           if (options.signal.aborted) return { ok: false, failure: "cancelled" };
@@ -240,7 +245,7 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
       // Cancelled (closed, navigated, task changed) after dispatch: nothing more is sent; his line stays without a reply.
       if (options.signal.aborted) return { ok: false, failure: "cancelled" };
       // 3. The reply EXACTLY as received (or none); the server checks the receipt and the engine binds and guards it.
-      return post(LEARNING_NOKT_REPLY_PATH, { step: turn.step, turnId: turn.turnId, reply: reply ?? null, receipt: reply === null ? null : receipt }, dispatched.view.revision);
+      return post(LEARNING_NOKT_REPLY_PATH, { step: turn.step, turnId: turn.turnId, reply: reply ?? null, receipt: reply === null ? null : receipt, ...(reply === null && noReply ? { noReply } : {}) }, dispatched.view.revision);
     },
 
     async sendTelemetry(childId, batch, options) {

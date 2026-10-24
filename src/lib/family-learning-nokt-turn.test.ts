@@ -118,6 +118,17 @@ describe("Nokt turn client — dispatch → the browser asks the bridge → repl
     }
   });
 
+  it("round 16: the runtime's «used up for today» (429 attempts_exhausted) is passed on with the empty reply; other refusals are not", async () => {
+    const h = harness({ bridge: () => Response.json({ ok: false, code: "attempts_exhausted" }, { status: 429 }) });
+    await run(h);
+    deepEqual(JSON.parse(String(h.calls.find((c) => c.url === LEARNING_NOKT_REPLY_PATH)!.init.body)), { step: "G2-PACK", turnId: turn.turnId, reply: null, receipt: null, noReply: "attempts_exhausted", expectedRevision: 8, context: { erasureGeneration: 0, visit: null } });
+    for (const bridge of [() => Response.json({ ok: false, code: "busy" }, { status: 429 }), () => Response.json({ ok: false, code: "usage_limit" }, { status: 429 }), () => new Response("not json", { status: 429 })]) {
+      const o = harness({ bridge });
+      await run(o);
+      equal("noReply" in JSON.parse(String(o.calls.find((c) => c.url === LEARNING_NOKT_REPLY_PATH)!.init.body)), false);
+    }
+  });
+
   it("a non-loopback plaintext bridge URL is never called; the turn is closed with reply null", async () => {
     const h = harness({ bridgeUrl: "http://dae-macmini.example:8787" });
     await run(h);

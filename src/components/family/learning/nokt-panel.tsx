@@ -32,10 +32,12 @@ import { adaptMediaRecorder } from "./nabu-sidebar";
 /** Uploads one recorded turn; the signal cancels upload and provider call. Bound to the child by the caller. */
 export type NoktTranscribe = (audio: Blob, fileName: string, signal: AbortSignal) => Promise<NoktTranscribeOutcome>;
 /** One Nokt turn through the server (dispatch → backend → verified reply); the caller adopts the returned view. */
-export type NoktTurnFn = (turn: NoktTurnInput, signal: AbortSignal) => Promise<{ kind: "shown"; say: string } | { kind: "withheld"; line: string } | { kind: "failed" } | { kind: "cancelled" }>;
+export type NoktTurnFn = (turn: NoktTurnInput, signal: AbortSignal) => Promise<{ kind: "shown"; say: string } | { kind: "withheld"; line: string } | { kind: "exhausted" } | { kind: "failed" } | { kind: "cancelled" }>;
 
 /** Shown when the turn could not be made at all (no connection, refused, unavailable) — reviewed app text. */
 const NOKT_UNREACHABLE_LINE = "Nokt ist gerade nicht erreichbar. Der Hinweis bei der Aufgabe hilft dir weiter.";
+/** Shown when today's replies are used up (the runtime's daily allowance) — reviewed app text, kind, no blame. */
+export const NOKT_EXHAUSTED_LINE = "Nokt hat heute schon viel geredet und macht jetzt Pause. Morgen ist Nokt wieder da. Der Hinweis bei der Aufgabe hilft dir weiter.";
 const newId = (prefix: string) => `${prefix}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`;
 
 const btn = "inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 text-lg font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:cursor-not-allowed disabled:opacity-50";
@@ -91,7 +93,7 @@ export function NoktPanel({ child, mode, step, part, speech, transcribe = null, 
           <p className="text-lg leading-relaxed">Der Hinweis bei der Aufgabe hilft dir Schritt für Schritt. Du kannst auch einen Erwachsenen fragen.</p>
         </div>
       ) : (
-        <StubConversation child={child} step={step} part={part} speech={speech} transcribe={transcribe} turn={turn} />
+        <Conversation child={child} fictional={mode === "fictional-stub"} step={step} part={part} speech={speech} transcribe={transcribe} turn={turn} />
       )}
       <button type="button" className={`${btn} mt-4`} style={{ background: "#e6eee7", color: "#21484b" }} onClick={onClose} data-testid="nokt-close">
         Schliessen
@@ -100,8 +102,11 @@ export function NoktPanel({ child, mode, step, part, speech, transcribe = null, 
   );
 }
 
-/** The planned German-voice interaction with fictional canned replies (isolated local database only). */
-function StubConversation({ child, step, part, speech, transcribe, turn }: { child: ChildId; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe: NoktTranscribe | null; turn: NoktTurnFn | null }) {
+/**
+ * The conversation: typed (and push-to-talk where transcription is configured). `fictional` = the isolated local stub,
+ * labelled «Testmodus» and allowed to fall back to canned replies; the real conversation (`subscription`) never does.
+ */
+function Conversation({ child, fictional, step, part, speech, transcribe, turn }: { child: ChildId; fictional: boolean; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe: NoktTranscribe | null; turn: NoktTurnFn | null }) {
   const transport = useMemo(() => fictionalNoktTransport(), []);
   // One talk per opening of the panel; a pending turn is aborted when the panel closes or the task changes (unmount).
   const sessionId = useMemo(() => newId("s"), []);
@@ -144,7 +149,18 @@ function StubConversation({ child, step, part, speech, transcribe, turn }: { chi
       if (out.kind === "shown") {
         setTurns((t) => [...t, { id: `n${t.length}`, role: "nokt", text: out.say, via: "typed", at: Date.now() }]);
         void say(out.say);
-      } else setTurns((t) => [...t, { id: `a${t.length}`, role: "app", text: out.kind === "withheld" ? out.line : NOKT_UNREACHABLE_LINE, via: "typed", at: Date.now() }]);
+        return;
+      }
+      setTurns((t) => [...t, { id: `a${t.length}`, role: "app", text: out.kind === "withheld" ? out.line : out.kind === "exhausted" ? NOKT_EXHAUSTED_LINE : NOKT_UNREACHABLE_LINE, via: "typed", at: Date.now() }]);
+      // No reply from Nokt: his words stay in the box (unless he already typed something new), so nothing he wrote is lost.
+      if (out.kind === "exhausted" || out.kind === "failed") setDraft((d) => (d ? d : text));
+      return;
+    }
+    if (!fictional) {
+      // The real conversation has no canned fallback: without the server turn it is simply unreachable.
+      setWaiting(false);
+      setTurns((t) => [...t, { id: `a${t.length}`, role: "app", text: NOKT_UNREACHABLE_LINE, via: "typed", at: Date.now() }]);
+      setDraft((d) => (d ? d : text));
       return;
     }
     const reply = await transport.reply({ text, step: step ?? "", part, turns: turns.filter((t) => t.role === "child").length });
@@ -154,10 +170,12 @@ function StubConversation({ child, step, part, speech, transcribe, turn }: { chi
     void say(reply.text);
   };
   return (
-    <div className="mt-4 grid gap-3" data-testid="nokt-stub">
-      <p className="rounded-xl px-3 py-2 text-base font-semibold" style={{ background: "#fff1d8", color: "#794100" }}>
-        Testmodus: erfundene Antworten, kein echter Tutor.
-      </p>
+    <div className="mt-4 grid gap-3" data-testid={fictional ? "nokt-stub" : "nokt-conversation"}>
+      {fictional ? (
+        <p className="rounded-xl px-3 py-2 text-base font-semibold" style={{ background: "#fff1d8", color: "#794100" }}>
+          Testmodus: erfundene Antworten, kein echter Tutor.
+        </p>
+      ) : null}
       <ol className="grid gap-2" aria-live="polite" data-testid="nokt-transcript">
         {turns.length === 0 ? <li className="text-lg">Hallo Santi. Was möchtest du wissen?</li> : null}
         {turns.map((t) => (
@@ -173,13 +191,16 @@ function StubConversation({ child, step, part, speech, transcribe, turn }: { chi
           </li>
         ))}
       </ol>
-      <NoktMic
-        transcribe={transcribe}
-        onTranscript={(text) => {
-          setDraft(text.slice(0, 300));
-          setVia("voice");
-        }}
-      />
+      {transcribe ? (
+        // Only where the deployment has transcription; otherwise typing is the way to talk to Nokt.
+        <NoktMic
+          transcribe={transcribe}
+          onTranscript={(text) => {
+            setDraft(text.slice(0, 300));
+            setVia("voice");
+          }}
+        />
+      ) : null}
       <form
         className="grid gap-2"
         onSubmit={(e) => {
@@ -188,7 +209,7 @@ function StubConversation({ child, step, part, speech, transcribe, turn }: { chi
         }}
       >
         <label htmlFor="nokt-input" className="text-base font-semibold">
-          {via === "voice" ? "Das habe ich verstanden — du kannst es korrigieren:" : "Oder schreib es hier:"}
+          {via === "voice" ? "Das habe ich verstanden — du kannst es korrigieren:" : transcribe ? "Oder schreib es hier:" : "Schreib es hier:"}
         </label>
         <textarea id="nokt-input" rows={2} value={draft} onChange={(e) => setDraft(e.target.value.slice(0, 300))} className="w-full rounded-xl border-2 px-3 py-2 text-lg" style={{ borderColor: "#8ba8a4" }} data-testid="nokt-input" />
         <button type="submit" className={btn} style={{ background: "#215c60", color: "white" }} disabled={!draft.trim() || waiting} data-testid="nokt-send">

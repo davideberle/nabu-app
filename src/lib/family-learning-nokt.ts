@@ -15,15 +15,32 @@
 // Push-to-talk is real in that mode (microphone → /api/family/learning/nokt/
 // transcribe → the editable transcript); the recognizer behind it is chosen in
 // `family-learning-nokt-stt.ts` — a fake by default, OpenAI only on request.
-// Transcription being configured for a deployment does NOT change this mode:
-// outside the isolated stub Nokt stays `unavailable` (no replies, no mic).
+// Transcription being configured for a deployment does NOT change this mode.
+//
+// `subscription` (activation round 16) is the REAL conversation: Nokt's replies come from the family runtime on the
+// Mac mini (ChatGPT subscription, daily allowance there). Default OFF: only the explicit
+// `FAMILY_NOKT_CONVERSATION=subscription` turns it on, and only when the bridge is ready (an https bridge URL and the
+// shared token secret). Without that it is `unavailable`, exactly as before.
 // ---------------------------------------------------------------------------
 
-export type NoktMode = "unavailable" | "fictional-stub";
+export type NoktMode = "unavailable" | "fictional-stub" | "subscription";
+
+/** The bridge the browser must reach for a real Nokt turn: an https URL and a shared secret of at least 32 characters. */
+export function noktBridgeReady(env: Record<string, string | undefined>): boolean {
+  let url: URL;
+  try {
+    url = new URL(env.FAMILY_ASSISTANT_BRIDGE_URL ?? "");
+  } catch {
+    return false;
+  }
+  return url.protocol === "https:" && (env.FAMILY_BRIDGE_TOKEN_SECRET ?? "").length >= 32;
+}
 
 export function noktModeFromEnv(env: Record<string, string | undefined>): NoktMode {
   const isolated = !!env.NABU_DB_DIR && !env.TURSO_DATABASE_URL && !env.VERCEL && !env.VERCEL_ENV && !env.VERCEL_URL;
-  return env.FAMILY_NOKT_FICTIONAL_STUB === "1" && isolated ? "fictional-stub" : "unavailable";
+  if (env.FAMILY_NOKT_FICTIONAL_STUB === "1" && isolated) return "fictional-stub";
+  if (env.FAMILY_NOKT_CONVERSATION === "subscription" && noktBridgeReady(env)) return "subscription";
+  return "unavailable";
 }
 
 /** The planned turn shape of the German voice tutor. A transport is injected; production has none. */

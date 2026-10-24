@@ -133,6 +133,20 @@ describe("Nokt STT — owner-authorized activation, explicit per deployment", ()
     equal(noktModeFromEnv({ ...deployed, FAMILY_NOKT_FICTIONAL_STUB: "1" }), "unavailable");
   });
 
+  it("round 16: the real conversation (`subscription`) is OFF by default and needs the explicit switch AND a ready https bridge", () => {
+    const prod = { VERCEL: "1", VERCEL_ENV: "production", TURSO_DATABASE_URL: "libsql://x", FAMILY_ASSISTANT_BRIDGE_URL: "https://dae-macmini.example.ts.net:8787", FAMILY_BRIDGE_TOKEN_SECRET: "s".repeat(40) };
+    equal(noktModeFromEnv(prod), "unavailable", "today's production env: off");
+    equal(noktModeFromEnv({ ...prod, FAMILY_NOKT_CONVERSATION: "subscription" }), "subscription");
+    for (const v of ["on", "1", "true", "SUBSCRIPTION", ""]) equal(noktModeFromEnv({ ...prod, FAMILY_NOKT_CONVERSATION: v }), "unavailable", `only the exact value: ${v}`);
+    equal(noktModeFromEnv({ ...prod, FAMILY_NOKT_CONVERSATION: "subscription", FAMILY_ASSISTANT_BRIDGE_URL: "http://dae-macmini.example.ts.net:8787" }), "unavailable", "plaintext bridge");
+    equal(noktModeFromEnv({ ...prod, FAMILY_NOKT_CONVERSATION: "subscription", FAMILY_ASSISTANT_BRIDGE_URL: "" }), "unavailable", "no bridge");
+    equal(noktModeFromEnv({ ...prod, FAMILY_NOKT_CONVERSATION: "subscription", FAMILY_BRIDGE_TOKEN_SECRET: "short" }), "unavailable", "no usable secret");
+    equal(noktModeFromEnv({ ...prod, FAMILY_NOKT_FICTIONAL_STUB: "1", FAMILY_NOKT_CONVERSATION: "subscription" }), "subscription", "the stub flag never applies on Vercel");
+    equal(noktModeFromEnv({ ...ISOLATED, FAMILY_NOKT_CONVERSATION: "subscription" }), "fictional-stub", "the isolated stub stays the stub");
+    // the conversation switch does not turn on the microphone: transcription stays its own decision
+    deepEqual(noktSttModeFromEnv({ ...prod, FAMILY_NOKT_CONVERSATION: "subscription" }), { kind: "off" });
+  });
+
   it("the isolated fictional database uses the fake unless OpenAI is named explicitly; the fake never runs anywhere else", () => {
     deepEqual(noktSttModeFromEnv(ISOLATED), { kind: "fictional-fake", fault: null });
     deepEqual(noktSttModeFromEnv({ ...ISOLATED, OPENAI_API_KEY: FAKE_KEY }), { kind: "fictional-fake", fault: null });

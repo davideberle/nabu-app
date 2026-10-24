@@ -827,6 +827,51 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     deepStrictEqual((replyTurn(dh.state, env2, "turn-q00022", reply("Trag deine Zahl oben ein.", "close", { status: "understood", support: "none", next: "retry" })).result as { outcome: unknown }).outcome, { refused: "false-independent" }, "false independence still refused by the validator");
   });
 
+  it("round 16: the parent sees the model's claimed help apart from the help the app recorded — a hint is never shown as a «Nachfrage»", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    let h = m(atG2(env), { a: "hint", step: "G2-PACK", part: "full" }, env);
+    h = dispatchTurn(h, env, "turn-u00001", "Im Hinweis steht: In 3 vollen Tragen sind 12 Setzlinge.").state;
+    h = replyTurn(h, env, "turn-u00001", reply("Was machst du mit den übrigen Setzlingen?", "ask-method")).state;
+    h = dispatchTurn(h, env, "turn-u00002", "Es bleiben 6 übrig, davon 4 in noch eine Trage, 2 bleiben übrig. Also 4 volle Tragen.").state;
+    // exactly the round-15 live J outcome: the model claims «clarification» although the talk only asked how he worked
+    const out = replyTurn(h, env, "turn-u00002", reply("Du hast volle Tragen und die übrigen Setzlinge auseinandergehalten.", "close", { status: "understood_with_support", support: "clarification", next: "retry" }));
+    deepStrictEqual((out.result as { outcome: unknown }).outcome, { status: "understood_with_support", next: "retry" });
+    const tutor = missionEvidence(out.state, v6, "v8", "subscription")!.steps.find((x) => x.id === "G2-PACK")!.tutor;
+    ok(/Hilfe laut Modell: Nachfrage\. Von der App erfasst: Hinweis 1/.test(tutor), tutor);
+    ok(!/zeigende Nachfrage im Gespräch/.test(tutor), "the talk had no pointing question — the app does not invent one");
+    equal(g2(out.state).tutorOutcomes![0].support.kind, "clarification", "the model's judgement is kept as it was (not relabelled)");
+    // independence guard unchanged: «understood» after the hint is still refused
+    const env2 = makeEnv(v6, { tutorAvailable: true });
+    let k = m(atG2(env2), { a: "hint", step: "G2-PACK", part: "full" }, env2);
+    k = dispatchTurn(k, env2, "turn-u00011", "fünf").state;
+    k = replyTurn(k, env2, "turn-u00011", reply("Wie bist du darauf gekommen?", "ask-method")).state;
+    k = dispatchTurn(k, env2, "turn-u00012", "Mit dem Hinweis: 4 volle Tragen.").state;
+    deepStrictEqual((replyTurn(k, env2, "turn-u00012", reply("Gut.", "close", { status: "understood", support: "none", next: "retry" })).result as { outcome: unknown }).outcome, { refused: "false-independent" });
+  });
+
+  it("round 16: the child view carries the conversation mode and shows the microphone only where transcription exists", () => {
+    const st = newMissionState(v6, "santiago", "2026-09-29T10:00:00.000Z");
+    const at = new Date("2026-10-24T08:00:00Z");
+    const typed = buildChildView(st, v6, EMPTY_PARENT_SETTINGS, at, 0, { noktMode: "subscription", noktMic: false });
+    deepStrictEqual(typed.nokt, { mode: "subscription", mic: false });
+    ok(isChildView(JSON.parse(JSON.stringify(typed))), "the browser's view guard accepts it");
+    deepStrictEqual(buildChildView(st, v6, EMPTY_PARENT_SETTINGS, at, 0, { noktMode: "subscription", noktMic: true }).nokt, { mode: "subscription", mic: true });
+    deepStrictEqual(buildChildView(st, v6, EMPTY_PARENT_SETTINGS, at, 0, { noktMode: "unavailable", noktMic: true }).nokt, { mode: "unavailable", mic: false }, "never a microphone while Nokt is off");
+  });
+
+  it("round 16: «used up for today» — an empty reply the browser reports as exhausted is recorded with that reason, still withheld; never for a non-empty reply", () => {
+    const env = makeEnv(v6, { tutorAvailable: true });
+    const d = dispatchTurn(atG2(env), env, "turn-x00001", "fünf").state;
+    const ex = mr(d, { a: "tutor-reply", step: "G2-PACK", turnId: "turn-x00001", reply: "", noReply: "attempts_exhausted" }, { ...env, tutorOrigin: "missing" });
+    deepStrictEqual({ shown: (ex.result as { shown: boolean }).shown, reason: (ex.result as { reason: string }).reason }, { shown: false, reason: "no-reply-daily-allowance" });
+    const talk = missionEvidence(ex.state, v6, "v8", "subscription")!.steps.find((x) => x.id === "G2-PACK")!.talk;
+    ok(talk.some((t) => t.who === "zurückgehalten" && /Tageskontingent/.test(t.detail)));
+    ok(!(g2(ex.state).tutorOutcomes ?? []).length);
+    const d2 = dispatchTurn(atG2(env), env, "turn-x00002", "fünf").state;
+    const notEmpty = mr(d2, { a: "tutor-reply", step: "G2-PACK", turnId: "turn-x00002", reply: '{"v":1,"say":"x","intent":"clarify","outcome":null}', noReply: "attempts_exhausted" }, { ...env, tutorOrigin: "missing" });
+    equal((notEmpty.result as { reason: string }).reason, "origin-missing", "a reply that came is never labelled exhausted");
+  });
+
   it("parent summary (round 13): conversation and assessment come from the persisted records, never from panel opens", () => {
     const step = (st: MissionState, mode?: "unavailable" | "fictional-stub") => missionEvidence(st, v6, "v8", mode)!.steps.find((x) => x.id === "G2-PACK")!;
     const reload = (st: MissionState): MissionState => JSON.parse(JSON.stringify(st));
@@ -854,7 +899,7 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     s = dispatchTurn(talked, env, "turn-p00002", "Ganz füllen heisst vier drin. Die halbe zählt nicht. Ich rechne nochmal.").state;
     const acc = step(replyTurn(s, env, "turn-p00002", reply("Wie willst du jetzt vorgehen?", "close", { status: "understood_with_support", support: "clarification", next: "retry" })).state, "fictional-stub");
     ok(/2 Zeile\(n\) des Kindes, 2 geprüfte Antwort\(en\)/.test(acc.tutor), acc.tutor);
-    ok(/Einschätzung zu «full» von der App angenommen: understood_with_support → retry \(Hilfe: clarification/.test(acc.tutor), acc.tutor);
+    ok(/Einschätzung zu «full» von der App angenommen: understood_with_support → retry; Hilfe laut Modell: Nachfrage\. Von der App erfasst: .*zeigende Nachfrage im Gespräch/.test(acc.tutor), acc.tutor);
     equal(acc.tutorActivity.accepted, 1);
     ok(!/Keine Tutor-Einschätzung/.test(acc.tutor));
     // e. refused false-independence after a hint → stated as refused, nothing accepted

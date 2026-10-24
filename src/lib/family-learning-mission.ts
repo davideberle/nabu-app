@@ -62,7 +62,7 @@ import type { MissionPart, MissionHint, MissionLine, MissionDiagram } from "./fa
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
 import { receiptOrigin, type ReceiptInput, type ReplyOrigin } from "./family-learning-trust.ts";
 import type { NoktMode } from "./family-learning-nokt.ts";
-import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktEvidence, noktOutcomeClaim, noktPhase, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
+import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktEvidence, noktOutcomeClaim, noktPhase, noktSupportFloor, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
 
 // ---------------------------------------------------------------------------
 // State (MissionState.missions — additive)
@@ -335,7 +335,7 @@ export type MissionAction =
   /** Content v6 (N7-06): record the tutor context BEFORE the tutor is asked; refused while the tutor is unavailable. */
   | { a: "tutor-dispatch"; step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; turnId: string; sessionId: string; text?: string; via?: "voice" | "typed" }
   /** Content v6 (N7-03): the reply to one Nokt turn; its origin was verified by the ROUTE (receipt bound to the dispatch). */
-  | { a: "tutor-reply"; step: string; turnId: string; reply: string }
+  | { a: "tutor-reply"; step: string; turnId: string; reply: string; noReply?: "attempts_exhausted" }
   /** Content v6 (N7-06): the tutor's structured result — accepted only when bound, fresh and verified (origin from the server, never the client). */
   | { a: "tutor-outcome"; step: string; outcome: unknown }
   | { a: "finish" };
@@ -1440,7 +1440,9 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       } else origin = env.tutor.origin ?? "missing";
       let reason: string | null = null;
       let parsed: ReturnType<typeof parseNoktReplyText> = null;
-      if (origin !== "verified") reason = `origin-${origin}`;
+      // No reply at all, and the browser reports the runtime answer "used up for today": recorded as such (still withheld).
+      if (origin === "missing" && action.reply === "" && action.noReply === "attempts_exhausted") reason = "no-reply-daily-allowance";
+      else if (origin !== "verified") reason = `origin-${origin}`;
       // A new answer since the dispatch: the reply talks about an older state of the question and is not shown.
       else if (r.attempts.length !== dispatch.revision || pr.status !== (dispatch.purpose === "diagnostic" ? "open" : "correct")) reason = "stale";
       else {
@@ -2143,8 +2145,22 @@ export function tutorActivityOf(r: Pick<MissionStepRun, "tutor" | "tutorDispatch
   };
 }
 
+/** The help the APP recorded on one question: hints, earlier-question help, the answer shown, and what the shown talk proves. */
+export function recordedHelpDe(r: Pick<MissionStepRun, "parts" | "tutorTurns">, part: string): string {
+  const pr = r.parts?.[part];
+  const out: string[] = [];
+  for (const h of pr?.hints ?? []) out.push(`Hinweis ${h.level}`);
+  if ((pr?.inheritedSupport ?? []).length) out.push("Hilfe bei einer früheren Frage");
+  if ((pr?.exposed ?? []).length) out.push("Antwort war sichtbar");
+  const talk: NoktTurnText[] = (r.tutorTurns ?? []).filter((t) => t.part === part && (t.role === "child" || t.shown)).map((t) => ({ role: t.role, text: t.text, via: t.via ?? "typed", ...(t.intent ? { intent: t.intent } : {}) }));
+  const floor = noktSupportFloor(talk);
+  if (floor === "teaching") out.push("Erklärung im Gespräch");
+  else if (floor === "clarification") out.push("zeigende Nachfrage im Gespräch");
+  return out.length ? out.join(", ") : "keine Hilfe";
+}
+
 /** The parent's one-line Nokt summary for a step, from the records (and the deployment's Nokt mode only for "nicht aktiv"). */
-export function tutorSummaryDe(r: Pick<MissionStepRun, "tutor" | "tutorDispatches" | "tutorTurns" | "tutorOutcomes">, noktMode?: NoktMode): string {
+export function tutorSummaryDe(r: Pick<MissionStepRun, "tutor" | "tutorDispatches" | "tutorTurns" | "tutorOutcomes" | "parts">, noktMode?: NoktMode): string {
   const a = tutorActivityOf(r);
   const talked = a.dispatches > 0 || a.childLines > 0 || a.verifiedLines > 0 || a.withheld > 0;
   const opened = a.opened ? `Nokt geöffnet ${a.opened}× (${(r.tutor ?? []).map((t) => t.entry).join(", ")}).` : "";
@@ -2152,7 +2168,10 @@ export function tutorSummaryDe(r: Pick<MissionStepRun, "tutor" | "tutorDispatche
   if (talked) conversation = `Gespräch mit Nokt aufgezeichnet: ${a.childLines} Zeile(n) des Kindes, ${a.verifiedLines} geprüfte Antwort(en) von Nokt${a.withheld ? `, ${a.withheld} zurückgehalten (nicht gezeigt)` : ""}.`;
   else if (a.opened) conversation = a.openedAvailable ? "Gespräch verfügbar, aber kein Gespräch geführt." : "Gespräch nicht verfügbar — kein Gespräch.";
   else conversation = noktMode === "unavailable" ? "Nokt nicht aktiv — kein Gespräch." : "Kein Gespräch mit Nokt aufgezeichnet.";
-  const accepted = (r.tutorOutcomes ?? []).map((o) => `Einschätzung zu «${o.part}» von der App angenommen: ${o.status} → ${o.next} (Hilfe: ${o.support.kind}${o.support.answerExposed ? ", Antwort sichtbar" : ""}; revidierbar, kein Nachweis von Können).`);
+  // Round 16: the model's judgement (incl. the help it CLAIMS) and the help the APP recorded are shown side by side —
+  // a hint is never relabelled as the model's «clarification», and nothing here changes the independence checks.
+  const SUPPORT_DE: Record<string, string> = { none: "keine", clarification: "Nachfrage", teaching: "Erklärung" };
+  const accepted = (r.tutorOutcomes ?? []).map((o) => `Einschätzung zu «${o.part}» von der App angenommen: ${o.status} → ${o.next}; Hilfe laut Modell: ${SUPPORT_DE[o.support.kind] ?? o.support.kind}. Von der App erfasst: ${recordedHelpDe(r, o.part)}. (Revidierbar, kein Nachweis von Können.)`);
   const refused = (r.tutorTurns ?? []).filter((t) => t.role === "nokt" && t.shown && t.outcome?.verdict.startsWith("refused")).map((t) => `Einschätzung des Modells zu «${t.part}» von der App abgelehnt (${t.outcome!.verdict.slice(9)}) — nicht übernommen.`);
   const assessment = accepted.length || refused.length ? [...accepted, ...refused] : [noktMode === "unavailable" && !talked ? "Keine Tutor-Einschätzung (Nokt nicht aktiv)." : "Keine Tutor-Einschätzung erfasst."];
   return [opened, conversation, ...assessment].filter(Boolean).join(" ");
@@ -2215,7 +2234,7 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
     const support = [...new Set(r.support.map((x) => supportLabel(x.kind, x.detail)))];
     const supportRaw = [...new Set(r.support.map((x) => x.kind))];
     const tutor = tutorSummaryDe(r, noktMode);
-    const WITHHELD_DE: Record<string, string> = { "origin-missing": "ohne Nachweis der Herkunft", "origin-invalid": "Herkunft ungültig", "origin-malformed": "Herkunft fehlerhaft", stale: "zu einer älteren Antwort", malformed: "Form ungültig", "intent-not-in-phase": "passte nicht zur Gesprächsphase", "answer-disclosed": "hätte die Antwort verraten", "judges-open-answer": "hätte die offene Antwort bewertet", "several-questions": "mehrere Fragen", "repeated-question": "wiederholte Frage", "must-close": "Gespräch zu lang" };
+    const WITHHELD_DE: Record<string, string> = { "origin-missing": "ohne Nachweis der Herkunft", "origin-invalid": "Herkunft ungültig", "origin-malformed": "Herkunft fehlerhaft", stale: "zu einer älteren Antwort", malformed: "Form ungültig", "intent-not-in-phase": "passte nicht zur Gesprächsphase", "answer-disclosed": "hätte die Antwort verraten", "judges-open-answer": "hätte die offene Antwort bewertet", "several-questions": "mehrere Fragen", "repeated-question": "wiederholte Frage", "must-close": "Gespräch zu lang", "no-reply-daily-allowance": "keine Antwort: Nokts Tageskontingent war aufgebraucht (Meldung des Browsers)" };
     const talk = (r.tutorTurns ?? []).map((t) => t.role === "child"
       ? { part: t.part, who: "Kind" as const, text: t.text, detail: t.via === "voice" ? "gesprochen (Abschrift, korrigierbar)" : "getippt", at: t.at }
       : t.shown

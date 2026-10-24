@@ -50,7 +50,7 @@ export type NoktTurnPrereqs =
 export async function noktTurnPrereqs(request: Request): Promise<NoktTurnPrereqs> {
   const guard = await requireChildLearning(request);
   if (!guard.ok) return { ok: false, response: guard.response };
-  if (noktModeFromEnv(process.env) !== "fictional-stub") return { ok: false, response: refuse(503, "Nokt cannot talk right now") };
+  if (noktModeFromEnv(process.env) === "unavailable") return { ok: false, response: refuse(503, "Nokt cannot talk right now") };
   const bridge = resolveBridgeMintConfig();
   if (!bridge.ok) return { ok: false, response: refuse(503, "Nokt cannot talk right now") };
   let content;

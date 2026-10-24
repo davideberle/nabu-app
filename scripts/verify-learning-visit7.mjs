@@ -553,6 +553,8 @@ let v7RowsBefore = null;
 const ONLY_STUB = args.includes("--only-stub");
 /** J3-fault: the stub server runs with FAMILY_NOKT_STT_FAKE_FAULT=quota (the fake answers like an exhausted provider account). */
 const STUB_FAULT = args.includes("--stub-fault");
+/** J7 (round 16): the REAL conversation mode on a local server; the browser's bridge call is answered in-process like the runtime's used-up day. */
+const SUBSCRIPTION_EXHAUSTED = args.includes("--subscription-exhausted");
 /** J4: the Nokt turn route on a FRESH synthetic DB, server started in stub mode with the loopback stub bridge (scripts/visit7-nokt-stub-bridge.mjs). */
 const TURN = args.includes("--turn");
 const BRIDGE_LOG = opt("--bridge-log", null);
@@ -1179,6 +1181,55 @@ try {
     check(`J5.${PERSONA}.reported-model-in-every-receipt`, record.turns.every((x) => x.bridge?.receipt?.mdl === "openai/gpt-6.1-sol"), record.turns.map((x) => x.bridge?.receipt?.mdl ?? x.bridge?.code));
     check(`J5.${PERSONA}.app-verdict-recorded-for-every-reply`, record.appRecord.filter((x) => x.role === "nokt").length === persona.turns.length);
     check(`J5.${PERSONA}.no-false-completion-from-the-talk`, persona.afterAnswer ? true : st.parts.full.status === "open");
+  } else if (STUB_BASE && ONLY_STUB && SUBSCRIPTION_EXHAUSTED) {
+    // ============================================================ J7 real conversation mode, day used up (no model, no network) ============================================================
+    await sixVisitsDone();
+    const bridge = (opt("--bridge-origin", "") || "").replace(/\/$/, "");
+    const xctx = await makeCtx(STUB_BASE, { viewport: { width: 1280, height: 900 } }, assistant, { speech: "end", voice: "fail", allowOrigins: [bridge] });
+    const bridgeCalls = [];
+    const cors = { "access-control-allow-origin": STUB_BASE, "access-control-allow-methods": "POST, OPTIONS", "access-control-allow-headers": "authorization, content-type", vary: "Origin" };
+    // Answered in the browser context exactly like the runtime answers a used-up day (src/nokt/handler.ts: 429 attempts_exhausted).
+    await xctx.route(`${bridge}/**`, (r) => {
+      bridgeCalls.push({ method: r.request().method(), path: new URL(r.request().url()).pathname, auth: !!r.request().headers().authorization });
+      if (r.request().method() === "OPTIONS") return r.fulfill({ status: 204, headers: cors });
+      return r.fulfill({ status: 429, headers: { ...cors, "content-type": "application/json" }, body: JSON.stringify({ ok: false, code: "attempts_exhausted" }) });
+    });
+    const x = await xctx.newPage();
+    openPages.push(x);
+    x.on("pageerror", (e) => pageErrors.push({ page: "subscription", message: String(e) }));
+    await x.goto(`${STUB_BASE}/family/learn/mission?child=santiago`);
+    await x.waitForSelector("[data-testid='start-visit']");
+    await x.locator("[data-testid='start-visit']").click();
+    await waitStep(x, "G1-REQUEST", "active");
+    await nextBeat(x, "G2-PACK");
+    await answerPart(x, "3");
+    await x.locator("[data-testid='nokt-button']").click();
+    await x.waitForSelector("[data-testid='nokt-panel'][data-mode='subscription']");
+    const panelText = await x.locator("[data-testid='nokt-panel']").innerText();
+    check("J7.real-conversation-no-test-banner-no-mic-typed-only", !panelText.includes("Testmodus") && (await x.locator("[data-testid='nokt-mic']").count()) === 0 && (await x.locator("label[for='nokt-input']").innerText()).trim() === "Schreib es hier:", panelText.slice(0, 200));
+    const typed = "Ich glaube, es sind fünf Tragen.";
+    await x.locator("[data-testid='nokt-input']").fill(typed);
+    await x.locator("[data-testid='nokt-send']").click();
+    await x.waitForSelector("[data-testid='nokt-transcript'] li[data-role='app']", { timeout: 20000 });
+    const appLine = await x.locator("[data-testid='nokt-transcript'] li[data-role='app']").last().innerText();
+    check("J7.exhausted-child-friendly-line", appLine.includes("Nokt hat heute schon viel geredet und macht jetzt Pause. Morgen ist Nokt wieder da."), appLine);
+    check("J7.typed-input-preserved", (await x.locator("[data-testid='nokt-input']").inputValue()) === typed);
+    await shot(x, "subscription-exhausted-panel");
+    const st = (await rawRow()).state.missions["MISSION-ISLAND-GARDEN"].steps["G2-PACK"];
+    const turns = st.tutorTurns ?? [];
+    check("J7.recorded-as-no-reply-daily-allowance", JSON.stringify(turns.map((t) => [t.role, t.shown, t.reason ?? null])) === JSON.stringify([["child", true, null], ["nokt", false, "no-reply-daily-allowance"]]), turns.map((t) => [t.role, t.shown, t.reason ?? null]));
+    check("J7.no-outcome-no-completion", (st.tutorOutcomes ?? []).length === 0 && st.parts.full.status === "open");
+    check("J7.browser-called-the-bridge-once-with-bearer", bridgeCalls.filter((c) => c.method === "POST").length === 1 && bridgeCalls.every((c) => c.path === "/v1/nokt/turn") && bridgeCalls.filter((c) => c.method === "POST").every((c) => c.auth), bridgeCalls);
+    const pctx = await makeCtx(STUB_BASE, { viewport: { width: 1280, height: 900 } }, owner);
+    const pp = await pctx.newPage();
+    openPages.push(pp);
+    await pp.goto(`${STUB_BASE}/family/learn/parent?child=santiago`);
+    await pp.waitForSelector("[data-testid='talk-G2-PACK']", { timeout: 20000 });
+    const talk = await pp.locator("[data-testid='talk-G2-PACK']").innerText();
+    const tutorCol = await pp.locator("[data-testid='tutor-G2-PACK']").innerText();
+    check("J7.parent-sees-why-there-was-no-reply", talk.includes(typed) && talk.includes("Tageskontingent") && /Keine Tutor-Einschätzung erfasst/.test(tutorCol), talk.slice(0, 400));
+    await pp.locator("[data-testid='talk-G2-PACK']").scrollIntoViewIfNeeded();
+    await shot(pp, "subscription-exhausted-parent");
   } else if (STUB_BASE && ONLY_STUB && TURN) {
     // ============================================================ J4 Nokt turn: dispatch → the BROWSER asks the (stub) bridge → verified reply ============================================================
     // Desktop viewport: Santiago uses Visit 7 in the Mac mini's browser (owner correction, October 23 14:51).

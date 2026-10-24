@@ -2905,7 +2905,7 @@ export type ChildView = {
   tutor: TutorContext | null;
   retention: string;
   /** Content v6: whether Nokt can talk on this surface (deployed builds: never; `fictional-stub` only on an isolated local DB). */
-  nokt?: { mode: import("./family-learning-nokt.ts").NoktMode };
+  nokt?: { mode: import("./family-learning-nokt.ts").NoktMode; mic?: boolean };
 };
 
 function nextStepText(state: MissionState, content: LearningContent, stage: StageId | null, now: Date): string {
@@ -2962,7 +2962,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
 }
 
 /** Optional per-request inputs of the view (follow-on): the learner's time zone, the stored reviews the progress strip may cite and the served vocabulary inventory. */
-export type ChildViewOptions = { timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null; tutorAvailable?: boolean; noktMode?: import("./family-learning-nokt.ts").NoktMode };
+export type ChildViewOptions = { timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null; tutorAvailable?: boolean; noktMode?: import("./family-learning-nokt.ts").NoktMode; noktMic?: boolean };
 
 export function buildChildView(state: MissionState, content: LearningContent, settings: ParentSettings, now: Date, erasureGeneration = 0, options: ChildViewOptions = {}): ChildView {
   const stage = currentStage(state, content);
@@ -3288,7 +3288,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     })(),
     tutor,
     retention: content.retention.policy,
-    nokt: { mode: options.noktMode ?? "unavailable" },
+    nokt: { mode: options.noktMode ?? "unavailable", mic: (options.noktMode ?? "unavailable") !== "unavailable" && !!options.noktMic },
   };
 }
 
