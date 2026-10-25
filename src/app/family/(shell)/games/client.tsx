@@ -23,6 +23,7 @@ import type { ChildId } from "@/lib/family-assistant-turn";
 import { approvedGameLibrary, childGameIdentity, childShellDestinationHref, guardedPlayHref } from "@/lib/family-child-shell";
 import { createGamesClient, newIdempotencyKey, type LibraryGame, type PlayStateView, type StudioAccess } from "@/lib/family-games-client";
 import { DAILY_CHESS_GAME_ID, formatPlayClock } from "@/lib/family-play";
+import { currentNativeSupport } from "@/lib/family-native-games";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -63,6 +64,9 @@ function Games({ child }: { child: ChildId }) {
   const [library, setLibrary] = useState<LibraryLoad>({ kind: "loading" });
   const [attempt, setAttempt] = useState(0);
   const identity = childGameIdentity(child)!;
+  // A native (Mac app) card offers Play only on a desktop Mac; decided after mount (the server cannot know the device).
+  const [macDesktop, setMacDesktop] = useState(false);
+  useEffect(() => setMacDesktop(currentNativeSupport().supported), []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -249,13 +253,15 @@ function Games({ child }: { child: ChildId }) {
                   <div className="min-w-0">
                     <h3 className="text-lg font-semibold">{game.title}</h3>
                     {game.tagline ? <p className="text-sm text-tertiary">{game.tagline}</p> : null}
-                    <p className="text-xs text-quaternary">{game.source === "own" ? "Your own game" : "Approved by a parent"}</p>
+                    <p className="text-xs text-quaternary">{game.launch === "native" ? "Mac app · approved by a parent" : game.source === "own" ? "Your own game" : "Approved by a parent"}</p>
                   </div>
                   <span className="shrink-0 rounded-full border border-secondary px-3 py-1 text-xs font-medium text-tertiary">🪙 {price.coins} / {Math.round(price.seconds / 60)} min</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {game.playable ? (
-                    <Link href={guardedPlayHref(identity, game.gameId, "play")} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>▶ Play</Link>
+                  {game.launch === "native" && !macDesktop ? (
+                    <span className="text-sm text-tertiary" data-native-elsewhere>Plays on the family Mac</span>
+                  ) : game.playable ? (
+                    <Link href={guardedPlayHref(identity, game.gameId, "play")} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>{game.launch === "native" ? "▶ Play on this Mac" : "▶ Play"}</Link>
                   ) : (
                     <span className="text-sm text-tertiary">Not playable yet ({game.status})</span>
                   )}

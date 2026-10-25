@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { normalizeChildId } from "@/lib/family-child-shell";
 import { isValidGameId } from "@/lib/family-play";
 import { GuardedPlayClient } from "./client";
+import { NATIVE_MAC_GAMES, isNativeMacGame } from "@/lib/family-native-games";
+import { NativeLaunchClient } from "./native-client";
 
 export const metadata: Metadata = {
   title: "Play — Nabu",
@@ -20,6 +22,8 @@ export default async function GuardedPlayPage({ searchParams }: Props) {
   const child = normalizeChildId(params.child);
   if (!child) redirect("/family/home");
   if (!isValidGameId(params.game)) redirect(`/family/games?child=${encodeURIComponent(child)}`);
+  // October 25, 2026: a native Mac game gets the launcher (same lease, no frame); every other game is unchanged.
+  if (isNativeMacGame(params.game)) return <NativeLaunchClient child={child} gameId={params.game} title={NATIVE_MAC_GAMES[params.game].title} />;
   // October 8, 2026: chess plays HERE on the daily chess lease (the legacy launch page redirects to this surface).
   return <GuardedPlayClient child={child} gameId={params.game} />;
 }

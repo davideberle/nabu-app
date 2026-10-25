@@ -57,7 +57,15 @@ export type LibraryGame = {
   status: string;
   artworkUrl: string | null;
   updatedAt: string | null;
+  /** Native games only (Game Studio's registry): where the game runs and that it launches as an app, not in a frame. */
+  platform?: "macos";
+  launch?: "native";
 };
+
+/** A one-time native launch link (Game Studio child adapter, lease scope). */
+export type NativeTicket = { launchUrl: string; expiresInMs: number; platform: "macos" };
+/** Read-only meter view for a native lease: whether the app reported yet and the meter's clock. */
+export type NativeStatus = { attached: boolean; ended: boolean; endReason?: string | null; remainingSeconds: number | null; phase: PlayPhase | null; running?: boolean };
 
 export type LibraryView = { child: ChildId; games: LibraryGame[]; canCreate: boolean };
 
@@ -201,6 +209,10 @@ export function createGamesClient(deps: GamesClientDeps = {}) {
     /** `frameStopped`: the wrapper attests the game frame was frozen/removed (guard acknowledgment received) BEFORE this request — the meter may then let a successor start without waiting out the handed deadline. */
     end: (studio: StudioAccess, leaseId: string, reason: string, frameStopped = false, observed: { grant: number | null; runMs: number } | null = null, signal?: AbortSignal) =>
       studioCall<TickView>(studio, `/v1/play/${encodeURIComponent(leaseId)}/end`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ reason, frameStopped, grant: observed?.grant ?? null, runMs: observed?.runMs ?? null }), keepalive: true, signal }),
+    /** Native games: a one-time launch link for THIS lease (the Games page origin only; never carries the credential). */
+    nativeTicket: (studio: StudioAccess, leaseId: string, signal?: AbortSignal) =>
+      studioCall<NativeTicket>(studio, `/v1/native/${encodeURIComponent(leaseId)}/ticket`, { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}", signal }),
+    nativeStatus: (studio: StudioAccess, leaseId: string, signal?: AbortSignal) => studioCall<NativeStatus>(studio, `/v1/native/${encodeURIComponent(leaseId)}/status`, { signal }),
     projects: (studio: StudioAccess, signal?: AbortSignal) => studioCall<{ projects: StudioProject[] }>(studio, "/v1/studio/projects", { signal }),
     project: (studio: StudioAccess, id: string, signal?: AbortSignal) => studioCall<StudioProject>(studio, `/v1/studio/projects/${encodeURIComponent(id)}`, { signal }),
     createProject: (studio: StudioAccess, prompt: string) =>
