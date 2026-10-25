@@ -64,9 +64,19 @@ function Games({ child }: { child: ChildId }) {
   const [library, setLibrary] = useState<LibraryLoad>({ kind: "loading" });
   const [attempt, setAttempt] = useState(0);
   const identity = childGameIdentity(child)!;
-  // A native (Mac app) card offers Play only on a desktop Mac; decided after mount (the server cannot know the device).
+  // A native (Mac app) card offers Play only in a browser on the family Mac itself: a desktop-Mac user agent first,
+  // then Game Studio's answer from the tailnet device address (the server cannot know the device at render time).
   const [macDesktop, setMacDesktop] = useState(false);
-  useEffect(() => setMacDesktop(currentNativeSupport().supported), []);
+  const nativeStudio = library.kind === "ready" && library.games.some((g) => g.launch === "native") ? library.studio : null;
+  useEffect(() => {
+    setMacDesktop(false);
+    if (!nativeStudio || !currentNativeSupport().supported) return;
+    const controller = new AbortController();
+    void client.nativeDevice(nativeStudio, controller.signal).then((r) => {
+      if (!controller.signal.aborted) setMacDesktop(r.ok && r.value.thisMac);
+    });
+    return () => controller.abort();
+  }, [client, nativeStudio]);
 
   useEffect(() => {
     const controller = new AbortController();

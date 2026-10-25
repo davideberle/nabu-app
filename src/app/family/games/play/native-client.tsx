@@ -10,6 +10,12 @@
 // app redeems the link on the Mac's own Game Studio service and then meters its
 // own gameplay (menus, pauses, background and outages never count).
 //
+// Where it may run is decided BEFORE any lease: a desktop-Mac browser (user
+// agent) is only a first filter; Game Studio then confirms from the tailnet
+// device address that this browser runs on the family Mac itself. Any other
+// device — another Mac, an iPad, a phone — takes no lease, so a browser game
+// running elsewhere and the remaining time stay exactly as they were.
+//
 // This page never sends meter reports itself. Leaving before the launch button
 // was ever clicked releases the lease (nothing can have run). After a click the
 // lease belongs to the app: leaving the page leaves the game running there; it
@@ -63,7 +69,7 @@ export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; g
   phaseRef.current = phase;
   const gamesHref = childShellDestinationHref("games", child);
 
-  // ---- device check, then the lease (never on an iPad, phone or non-Mac) ----
+  // ---- device check (this Mac only), then the lease ----
   useEffect(() => {
     if (!currentNativeSupport().supported) {
       setPhase({ kind: "unsupported" });
@@ -76,6 +82,13 @@ export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; g
     attachedRef.current = false;
     clickedRef.current = false;
     (async () => {
+      const session = await client.session(child, controller.signal);
+      if (controller.signal.aborted) return;
+      if (!session?.studio) return setPhase({ kind: "unavailable", message: session ? "Game Studio isn't connected yet. Your time is kept." : "Please sign in again." });
+      const device = await client.nativeDevice(session.studio, controller.signal);
+      if (controller.signal.aborted) return;
+      if (!device.ok) return setPhase({ kind: "unavailable", message: "Game Studio isn't reachable from this device right now. Your time is kept." });
+      if (!device.value.thisMac) return setPhase({ kind: "unsupported" });
       const grant = await client.lease(child, { gameId, mode: "play", takeover, device: deviceLabel() }, controller.signal);
       if (controller.signal.aborted) return;
       if (!grant.ok) {

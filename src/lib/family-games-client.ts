@@ -213,6 +213,8 @@ export function createGamesClient(deps: GamesClientDeps = {}) {
     nativeTicket: (studio: StudioAccess, leaseId: string, signal?: AbortSignal) =>
       studioCall<NativeTicket>(studio, `/v1/native/${encodeURIComponent(leaseId)}/ticket`, { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}", signal }),
     nativeStatus: (studio: StudioAccess, leaseId: string, signal?: AbortSignal) => studioCall<NativeStatus>(studio, `/v1/native/${encodeURIComponent(leaseId)}/status`, { signal }),
+    /** Whether THIS browser runs on the family Mac that hosts Game Studio (decided by Game Studio from the tailnet device address). */
+    nativeDevice: (studio: StudioAccess, signal?: AbortSignal) => studioCall<{ thisMac: boolean }>(studio, "/v1/native/device", { signal }),
     projects: (studio: StudioAccess, signal?: AbortSignal) => studioCall<{ projects: StudioProject[] }>(studio, "/v1/studio/projects", { signal }),
     project: (studio: StudioAccess, id: string, signal?: AbortSignal) => studioCall<StudioProject>(studio, `/v1/studio/projects/${encodeURIComponent(id)}`, { signal }),
     createProject: (studio: StudioAccess, prompt: string) =>

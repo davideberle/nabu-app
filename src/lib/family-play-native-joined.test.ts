@@ -810,10 +810,39 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
       // The untouched ticket still works for the local app (the refusals above did not consume it).
       await native.send(`port ${s.port}`);
       const local = await native.send(`launch deimos-rising-studio://play?ticket=${tk}`);
+      // A remote Mac's browser (any tailnet device other than this Mac): the device check says no, so the launcher
+      // takes no lease; a running browser game and the remaining time stay exactly as they were. Even a ticket request
+      // for an existing native lease from that device is refused before any Family read or activation.
+      const libTok = mod.mintPlayCredential(key, { sub: "santiago", scope: "library", gid: "*", lid: "-", mode: "edit", metered: false, budget: 0, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + 600, jti: "lib-dr12" });
+      const REMOTE = { "x-forwarded-for": "100.101.102.103" };
       await quit(native);
+      await s.server.settler.flush();
+      await issue("lease-dr12-browserA", BROWSER);
+      const a = cred("lease-dr12-browserA", BROWSER);
+      equal((await raw(s.base, "POST", "/v1/play/lease-dr12-browserA/tick", { authorization: `Bearer ${a}` }, { active: true })).status, 200);
+      const before = await getPlayState("santiago", client);
+      const remoteDevice = await raw(s.base, "GET", "/v1/native/device", { authorization: `Bearer ${libTok}`, ...REMOTE });
+      const localDevice = await raw(s.base, "GET", "/v1/native/device", { authorization: `Bearer ${libTok}` });
+      const afterCheck = await getPlayState("santiago", client);
+      clock += 2000;
+      equal((await raw(s.base, "POST", "/v1/play/lease-dr12-browserA/tick", { authorization: `Bearer ${a}` }, { active: true })).status, 200);
+      await raw(s.base, "POST", "/v1/play/lease-dr12-browserA/end", { authorization: `Bearer ${a}` }, { reason: "left", frameStopped: true });
+      await endPlayLease({ leaseId: "lease-dr12-browserA", personId: "santiago", reason: "left", now: new Date(clock) }, client);
+      await s.server.settler.flush();
+      await issue("lease-dr12-native2");
+      const remoteTicket = await raw(s.base, "POST", "/v1/native/lease-dr12-native2/ticket", { origin: ORIGIN, authorization: `Bearer ${cred("lease-dr12-native2")}`, ...REMOTE }, {});
+      const n2Activated = s.server.store.loadLease("lease-dr12-native2") !== null;
       equal(ipad.supported, false);
       equal(mac.supported, true);
       equal(viaTailnet.status, 403);
+      record("DR12", {
+        remoteDeviceThisMac: remoteDevice.json?.thisMac === true,
+        localDeviceThisMac: localDevice.json?.thisMac === true,
+        browserLeaseKeptAfterRemoteCheck: afterCheck.activeLease?.id === "lease-dr12-browserA" && before.activeLease?.id === "lease-dr12-browserA",
+        remainingUnchangedAfterRemoteCheck: afterCheck.remainingSeconds === before.remainingSeconds,
+        remoteTicketStatus: remoteTicket.status,
+        remoteTicketActivatedLease: n2Activated,
+      });
       record("DR12", { ipadSupported: ipad.supported, iphoneSupported: iphone.supported, windowsSupported: windows.supported, androidSupported: android.supported, macSupported: mac.supported, tailnetRedeemStatus: viaTailnet.status, browserRedeemStatus: viaBrowser.status, appAcceptsRemoteOrigin: Number(remoteOrigin.port) > 0, appAcceptsLanOrigin: Number(lanOrigin.port) > 0, appAcceptsLoopback: Number(loopback.port) === 5183, localAppRedeemAfterRefusals: local.ok === true });
     } finally {
       await native.close();
@@ -842,6 +871,65 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
       equal(page.status, 200);
       record("DR13", { santiagoGames: santi.length, browserPaidCards: browser.length, browserShapeUnchanged, nativeCards: santi.filter((g) => g.launch === "native").length, chessListedFree: chessCard?.free === true, isabelGames: isabel.map((g) => g.gameId).join(","), browserGuardedPage: page.status, browserPageHasGuard: page.text.includes("data-family-play-guard"), chessWithoutApprovalRefused: !chess.ok, chessRefusalReason: chess.ok ? null : chess.reason });
     } finally {
+      await s.close();
+    }
+  });
+
+  // ---- BX01 (builder-added at parent request) ---------------------------------------------------------------------
+  it("BX01 long title and background time up to the 20-minute credential expiry bill only gameplay; reopening continues on the same allowance", async () => {
+    await allowance();
+    clock = t0;
+    await issue("lease-bx01-native1");
+    const s = await stack();
+    const native = new Native();
+    try {
+      await at(native, t0);
+      await launch(native, s, "lease-bx01-native1", cred("lease-bx01-native1", NATIVE, { ttl: 1200 }));
+      // 17 minutes on the title screen (the app keeps reporting, never foreground).
+      for (let t = t0; t <= t0 + 17 * 60_000; t += 4000) { await at(native, t); await native.send("tick"); }
+      await native.send("game 1");
+      await play(native, t0 + 17 * 60_000, t0 + 18 * 60_000);
+      // 90 s in the background.
+      await native.send("hide 1");
+      for (let t = t0 + 18 * 60_000; t <= t0 + 19 * 60_000 + 30_000; t += 1000) { await at(native, t); await native.send("tick"); await native.send("frame"); await native.send("beacon"); }
+      await native.send("hide 0");
+      // Play from 19:30 across the credential expiry at 20:00 (the meter ends the lease there).
+      let endedAt: number | null = null;
+      let lastTick = Number.NEGATIVE_INFINITY;
+      for (let t = t0 + 19 * 60_000 + 30_000; t <= t0 + 20 * 60_000 + 10_000; t += 100) {
+        await at(native, t);
+        if (t - lastTick >= 1000) { await native.send("tick"); lastTick = t; }
+        const f = await native.send("frame");
+        await native.send("beacon");
+        if (f.hold === "ended" && endedAt === null) endedAt = t;
+      }
+      const st = await native.send("state");
+      await native.send("end");
+      await s.server.settler.flush();
+      const first = s.server.store.loadLease("lease-bx01-native1")!;
+      const remainingAfterExpiry = await famRemaining();
+      // Reopen from the Games page: a new lease on the same allowance, a new link to the SAME running app.
+      const again = await issue("lease-bx01-native2");
+      const reopen = await launch(native, s, "lease-bx01-native2", cred("lease-bx01-native2"));
+      await native.send("game 1");
+      await play(native, clock + 1000, clock + 11_000);
+      await stopPlaying(native);
+      await quit(native);
+      await s.server.settler.flush();
+      const c2 = (await famLease("lease-bx01-native2")).consumedSeconds;
+      // Actual play: 60 s (17:00-18:00) + 30 s (19:30-20:00). The meter bills DELIVERED observations: the last second
+      // before the expiry may be reported only after the credential expired (refused), so 89-90 s — never more than the
+      // play, never any of the 17 title minutes or the 90 s in the background.
+      const billed = first.consumed;
+      const remainingNow = await famRemaining();
+      record("BX01", { endReasonAtExpiry: String(first.endReason), nativeEndReason: String(st.endReason), billedNotMoreThanPlay: billed <= 90, billedAtLeastPlayMinusOneSecond: billed >= 89, frozenByExpiry: endedAt !== null && endedAt <= t0 + 1_201_000, remainingIsAllowanceMinusBilled: remainingAfterExpiry === 900 - Math.ceil(billed), reopenAttached: reopen.ok === true, reopenBudgetIsRemaining: again.budgetSeconds === remainingAfterExpiry, reopenConsumed: c2, finalRemainingIsExact: remainingNow === remainingAfterExpiry - 10 });
+      equal(first.endReason, "credential-expired");
+      ok(billed <= 90 && billed >= 89, `billed ${billed}`);
+      equal(again.budgetSeconds, remainingAfterExpiry);
+      equal(c2, 10);
+      equal(remainingNow, remainingAfterExpiry - 10);
+    } finally {
+      await native.close();
       await s.close();
     }
   });
