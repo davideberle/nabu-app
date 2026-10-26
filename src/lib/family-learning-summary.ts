@@ -19,7 +19,7 @@ import { writingAspectLabel } from "./family-learning-writing-review.ts";
 import { mathItem, usedWordOf } from "./family-learning-content.ts";
 import type { MathAttempt, MissionState, TypingBurst, VisitRecord } from "./family-learning-state.ts";
 import type { LessonFeedback } from "./family-learning-feedback.ts";
-import { missionReport, missionVisitSummary, pendingInterest } from "./family-learning-mission.ts";
+import { missionReport, missionVisitSummary, pendingInterest, visibleWorld } from "./family-learning-mission.ts";
 
 // ---------------------------------------------------------------------------
 // Delayed check
@@ -116,6 +116,7 @@ export function visitOrdinal(state: MissionState, id: VisitId): number | null {
     case "v6": return hasV3Record ? 6 : 5;
     case "v7": return hasV3Record ? 7 : 6;
     case "v8": return hasV3Record ? 8 : 7;
+    case "v9": return hasV3Record ? 9 : 8;
   }
 }
 
@@ -227,7 +228,7 @@ export function buildSceneModel(state: MissionState, content: LearningContent): 
     missionWorld: (content.missions ?? []).flatMap((def) => {
       const rep = missionReport(state, content, def.visit as VisitId);
       if (!rep) return [];
-      return def.world.filter((w) => ["done", "practiced", "taught", "unresolved"].includes(rep.statuses[w.after])).map((w) => ({ id: w.id, prop: w.prop, place: w.place, count: w.count, label: w.label }));
+      return visibleWorld(def, rep.run, rep.statuses).map((w) => ({ id: w.id, prop: w.prop, place: w.place, count: w.count, label: w.label }));
     }),
   };
 }

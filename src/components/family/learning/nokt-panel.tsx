@@ -229,7 +229,7 @@ type MicState = "idle" | "starting" | "live" | "transcribing" | "trouble";
  * pending upload. The recording lives only in memory until the upload; the
  * transcript only lands in the editable field — never sent without the child.
  */
-function NoktMic({ transcribe, onTranscript }: { transcribe: NoktTranscribe | null; onTranscript: (text: string) => void }) {
+export function NoktMic({ transcribe, onTranscript }: { transcribe: NoktTranscribe | null; onTranscript: (text: string) => void }) {
   const [mic, setMic] = useState<MicState>("idle");
   const sessionRef = useRef<ReturnType<typeof startPushToTalk> | null>(null);
   const uploadRef = useRef<AbortController | null>(null);

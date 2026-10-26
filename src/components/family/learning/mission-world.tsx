@@ -64,6 +64,11 @@ export type MissionWorldProps = {
   act: Act;
   speech: ChildSpeechPlayer;
   onWalk?: () => void;
+  /**
+   * Content v7 (map missions): the body of a scene for the kinds that use the clearer Visit 7/8 task components (solve,
+   * decide, listen, request, write) — or extra content above a story/outcome (the chosen plan). null = the Visit 6 body.
+   */
+  renderTask?: (active: MissionActiveView) => ReactNode | null;
 };
 
 // ---------------------------------------------------------------------------
@@ -357,7 +362,7 @@ function useStageFit(ref: React.RefObject<HTMLDivElement | null>) {
 
 const CHARACTER_NAME: Record<string, string> = {};
 
-export function MissionWorld({ child, view, mission, markers, busy, act, speech, onWalk }: MissionWorldProps) {
+export function MissionWorld({ child, view, mission, markers, busy, act, speech, onWalk, renderTask }: MissionWorldProps) {
   const graph = useMemo(() => buildGraph(mission), [mission]);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -543,7 +548,7 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
 
         {/* --- the open scene (same palette, same plates) --- */}
         {active ? (
-          <ScenePanel child={child} view={view} mission={mission} active={active} busy={busy} act={act} speech={speech} placeLabel={placeOf(mission.position)?.label ?? ""} />
+          <ScenePanel child={child} view={view} mission={mission} active={active} busy={busy} act={act} speech={speech} placeLabel={placeOf(mission.position)?.label ?? ""} renderTask={renderTask} />
         ) : null}
       </div>
 
@@ -735,8 +740,10 @@ function SceneBar({ placeLabel, title, finished, progress, busy, onBack }: { pla
   );
 }
 
-function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabel }: { child: ChildId; view: ChildView; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; placeLabel: string }) {
+function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabel, renderTask }: { child: ChildId; view: ChildView; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; placeLabel: string; renderTask?: (active: MissionActiveView) => ReactNode | null }) {
   const finished = active.status !== "active";
+  const custom = renderTask ? renderTask(active) : null;
+  const storyLike = active.kind === "story" || active.kind === "outcome";
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
     // the typing block keeps the physical keyboard on its input; other scenes start reading at their heading
@@ -749,11 +756,13 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
         {active.title}
       </h2>
       {active.kind !== "typing-block" ? <Lines lines={active.intro} mission={mission} act={act} step={active.id} busy={busy} offset={0} /> : null}
-      {active.kind === "story" || active.kind === "outcome" ? <StoryTask active={active} busy={busy} act={act} /> : null}
-      {active.kind === "read" || active.kind === "listen" ? <QuestionTask child={child} active={active} busy={busy} act={act} speech={speech} /> : null}
-      {active.kind === "calc" ? <CalcTask active={active} busy={busy} act={act} /> : null}
-      {active.kind === "choice" ? <ChoiceTask active={active} busy={busy} act={act} /> : null}
-      {active.kind === "produce" || active.kind === "recall" ? <ProduceTask active={active} busy={busy} act={act} /> : null}
+      {custom && storyLike ? custom : null}
+      {storyLike ? <StoryTask active={active} busy={busy} act={act} label={mission.presentation === "map" ? (active.kind === "outcome" ? "Fertig" : "Verstanden") : undefined} /> : null}
+      {custom && !storyLike ? custom : null}
+      {!custom && (active.kind === "read" || active.kind === "listen") ? <QuestionTask child={child} active={active} busy={busy} act={act} speech={speech} /> : null}
+      {!custom && active.kind === "calc" ? <CalcTask active={active} busy={busy} act={act} /> : null}
+      {!custom && active.kind === "choice" ? <ChoiceTask active={active} busy={busy} act={act} /> : null}
+      {!custom && (active.kind === "produce" || active.kind === "recall") ? <ProduceTask active={active} busy={busy} act={act} /> : null}
       {active.kind === "typing-block" && active.typing ? <TypingBlock block={active.typing} stepId={active.id} busy={busy} act={act} /> : null}
       {finished ? (
         <div className="grid gap-2" data-testid="scene-done">
@@ -768,11 +777,11 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
   );
 }
 
-function StoryTask({ active, busy, act }: { active: MissionActiveView; busy: boolean; act: Act }) {
+function StoryTask({ active, busy, act, label }: { active: MissionActiveView; busy: boolean; act: Act; label?: string }) {
   if (active.status !== "active") return null;
   return (
     <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "story-done", step: active.id })} data-testid="story-done" autoFocus>
-      {active.kind === "outcome" ? "Boote losschicken" : "Verstanden"}
+      {label ?? (active.kind === "outcome" ? "Boote losschicken" : "Verstanden")}
     </button>
   );
 }

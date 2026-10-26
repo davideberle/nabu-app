@@ -145,8 +145,10 @@ export function buildProgress(state: MissionState, content: LearningContent, inp
   else if (running) next = { kind: "continue", visit: running.id, ordinal: visitOrdinal(state, running.id), label: visitLabel(state, content, running.id), text: `Weiter mit ${visitLabel(state, content, running.id)}.`, reason: null };
   else {
     const done = new Set(finished.map((v) => v.id));
-    const candidate: VisitId | null = !done.has("v1") ? "v1" : !done.has("v2") ? "v2" : served("v4") && !done.has("v4") ? "v4" : served("v5") && !done.has("v5") ? "v5" : served("v6") && !done.has("v6") ? "v6" : served("v7") && !done.has("v7") ? "v7" : served("v8") && !done.has("v8") ? "v8" : null;
-    if (candidate) next = { kind: "start", visit: candidate, ordinal: visitOrdinal(state, candidate), label: visitLabel(state, content, candidate), text: candidate === "v1" ? "Start: Baue deine Basis." : `Start: ${visitLabel(state, content, candidate)}.`, reason: null };
+    const isabelNext = content.child === "isabel" ? content.visits.find((d) => !done.has(d.id))?.id ?? null : undefined;
+    const candidate: VisitId | null = isabelNext !== undefined ? isabelNext : !done.has("v1") ? "v1" : !done.has("v2") ? "v2" : served("v4") && !done.has("v4") ? "v4" : served("v5") && !done.has("v5") ? "v5" : served("v6") && !done.has("v6") ? "v6" : served("v7") && !done.has("v7") ? "v7" : served("v8") && !done.has("v8") ? "v8" : served("v9") && !done.has("v9") ? "v9" : null;
+    if (candidate) next = { kind: "start", visit: candidate, ordinal: visitOrdinal(state, candidate), label: visitLabel(state, content, candidate), text: content.child === "isabel" ? `Start: ${visitLabel(state, content, candidate)}.` : candidate === "v1" ? "Start: Baue deine Basis." : `Start: ${visitLabel(state, content, candidate)}.`, reason: null };
+    else if (content.child === "isabel") next = { kind: "none", visit: null, ordinal: null, label: null, text: "Die Werkstatt ist für heute geschafft. Alles ist gespeichert.", reason: "all-visits-done" };
     else if (!served("v4")) next = { kind: "none", visit: null, ordinal: null, label: null, text: "Das nächste Kapitel ist gerade nicht verfügbar. Alles ist gespeichert.", reason: "no-further-visit-served" };
     else next = { kind: "none", visit: null, ordinal: null, label: null, text: "Alle Besuche sind geschafft. Neue Aufgaben kommen erst nach einer Prüfung dazu.", reason: "all-visits-done" };
   }

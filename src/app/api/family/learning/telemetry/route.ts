@@ -2,7 +2,7 @@ import { isVisitId } from "@/lib/family-learning-content";
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
 import { NO_STORE, refuse, requireChildLearning } from "@/lib/family-learning-auth";
-import { loadLearningContent } from "@/lib/family-learning-content-server";
+import { loadLearningContentFor } from "@/lib/family-learning-content-server";
 import { recordTelemetry } from "@/lib/family-learning-db";
 
 /**
@@ -26,11 +26,12 @@ export async function POST(request: Request) {
   if (!guard.ok) return guard.response;
   let loaded;
   try {
-    loaded = loadLearningContent();
+    loaded = loadLearningContentFor(guard.child);
   } catch {
     return refuse(503, "Learning content is not available");
   }
-  if (guard.child !== loaded.child) return refuse(404, "No mission is prepared for this child");
+  // The child's own content (Isabel's workshop or Santiago's expedition); none prepared = 404.
+  if (!loaded || guard.child !== loaded.child) return refuse(404, "No mission is prepared for this child");
   const raw = await request.text();
   if (raw.length > MAX_BODY_BYTES) return refuse(413, "Body too large");
   let body: unknown;

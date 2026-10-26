@@ -137,7 +137,7 @@ describe("Visit 6 — content version 5 (reviewed, additive)", () => {
     ok(mission.steps.some((s) => s.kind === "read" && s.text?.language === "de"));
     ok(mission.steps.some((s) => s.kind === "listen" && s.text?.language === "en" && s.character === "keeper"), "Mrs Finley's English encounter is a listening task of its own");
     equal(mission.theme.basis, "continues-saved-choice");
-    ok(/not a research-proven optimum/.test(mission.typingBlock.note));
+    ok(/not a research-proven optimum/.test(mission.typingBlock!.note));
   });
   it("the validator refuses matcher wording, missing repair words, unreachable places, cycles and an uncalibrated typing claim", () => {
     const clone = () => JSON.parse(JSON.stringify(rawV5));
@@ -488,14 +488,14 @@ describe("V6-04/05 finite typing block, calibrated by observed pace, global paus
   it("plans the block from the observed pace (≈ 5 minutes of focused typing), clamped to the reviewed bounds", () => {
     const env = makeEnv();
     const s = fiveVisitsDone(env);
-    const plan = planTypingBlock(s, v5, mission.typingBlock, ["h"])!;
+    const plan = planTypingBlock(s, v5, mission.typingBlock!, ["h"])!;
     equal(plan.paceBasis, "observed");
-    ok(plan.drills.length >= mission.typingBlock.minDrills && plan.drills.length <= mission.typingBlock.maxDrills);
+    ok(plan.drills.length >= mission.typingBlock!.minDrills && plan.drills.length <= mission.typingBlock!.maxDrills);
     ok(plan.estimatedSeconds >= 180 && plan.estimatedSeconds <= 420, `estimated ${plan.estimatedSeconds}s`);
     ok(plan.drills.some((d) => d.source === "focus" && d.lines.some((l) => l.includes("h"))) || plan.drills.length < 4, "an open focus key gets its own drill");
     const noPace = fiveVisitsDone(env);
     noPace.typing.course!.bursts = [];
-    equal(planTypingBlock(noPace, v5, mission.typingBlock, [])!.paceBasis, "fallback");
+    equal(planTypingBlock(noPace, v5, mission.typingBlock!, [])!.paceBasis, "fallback");
   });
   it("drills follow one another without a stop/continue decision; too little typing is not an attempt; time alone never completes", () => {
     const env = makeEnv();

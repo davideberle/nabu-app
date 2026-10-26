@@ -1,0 +1,1025 @@
+{
+ "contentId": "isabel-workshop",
+ "contentVersion": 1,
+ "child": "isabel",
+ "reviewed": {
+  "status": "builder-draft",
+  "note": "Built from David's approved scope (2026-10-26 15:37). Wording, difficulty and pictures await David's review; not native-speaker or teacher reviewed."
+ },
+ "theme": {
+  "defaultTitle": "Old Lilas kleine Werkstatt",
+  "defaultHook": "Old Lila baut ein kleines Zimmer — und du hilfst.",
+  "note": "Isabel's own first visit; nothing of Santiago's expedition."
+ },
+ "anchorLanguage": "de",
+ "visitBudgetMinutes": {
+  "min": 15,
+  "max": 20
+ },
+ "visits": [
+  {
+   "id": "v1",
+   "title": "Besuch 1 — Old Lilas kleine Werkstatt",
+   "stages": [
+    "mission",
+    "reflect"
+   ],
+   "intro": {
+    "who": "Old Lila baut in ihrer Werkstatt ein kleines Zimmer.",
+    "make": "Du wählst, was du baust, ordnest Materialien zu, zählst mit Bildern, liest ein Wort, hörst gut zu und bastelst in echt.",
+    "done": "Fertig ist es, wenn dein Zimmer steht und du gesagt hast, was du nächstes Mal machen möchtest."
+   }
+  }
+ ],
+ "locations": [],
+ "math": {
+  "objective": "Isabel's arithmetic lives in the workshop mission (visible quantities).",
+  "items": [],
+  "rules": {
+   "maxSubstantiveAttempts": 3,
+   "clarifyAfterFirstIncorrect": true,
+   "hideModelDuringFresh": true,
+   "answerRevealDowngradesToExposed": true
+  }
+ },
+ "language": {
+  "segments": [],
+  "supplyLabels": {}
+ },
+ "typing": {
+  "note": "No typing in Isabel's visits (approved scope: no mandatory typing).",
+  "layouts": [],
+  "lessons": [],
+  "labelTasks": []
+ },
+ "reflection": {
+  "prompt": "Wie war es heute?",
+  "options": [
+   {
+    "id": "easy",
+    "label": "Leicht"
+   },
+   {
+    "id": "right",
+    "label": "Genau richtig"
+   },
+   {
+    "id": "tricky",
+    "label": "Schwer"
+   }
+  ],
+  "skipLabel": "Lieber nicht sagen",
+  "dimensions": [
+   {
+    "id": "enjoyment",
+    "prompt": "Hat es dir Spass gemacht?",
+    "options": [
+     {
+      "id": "yes",
+      "label": "Ja"
+     },
+     {
+      "id": "partly",
+      "label": "So halb"
+     },
+     {
+      "id": "no",
+      "label": "Nein"
+     }
+    ],
+    "skipLabel": "Lieber nicht sagen"
+   }
+  ],
+  "note": "Optional answers with an explicit skip; skipped and open answers stay as such.",
+  "nextInterest": {
+   "prompt": "Was möchtest du nächstes Mal machen?",
+   "hint": "Tipp auf ein Bild oder sag es mit deinen Worten.",
+   "unsureLabel": "Weiss ich noch nicht",
+   "noPreferenceLabel": "Ist mir egal",
+   "declineLabel": "Lieber nicht sagen",
+   "entryPrompt": "Letztes Mal ging es zu Ende, bevor du sagen konntest, was du nächstes Mal machen möchtest. Magst du es jetzt sagen?",
+   "note": "Saved verbatim in Isabel's own record; never inferred."
+  }
+ },
+ "missions": [
+  {
+   "id": "MISSION-OLD-LILA-WORKSHOP",
+   "version": 1,
+   "visit": "v1",
+   "title": "Old Lilas kleine Werkstatt",
+   "objective": "Choose what to make for a little room; match a wooden chair, a glass windowpane and a brick wall to pictured materials; small visible sums (5 + 2, 8 − 2), then ten-bundles (20 + 1) with a fresh check (20 + 3) and an easier path only when needed; read one word with pictures (AST) and switch to supported letter learning if needed; recognise a spoken German instruction by picture; a real-world craft and three wooden things at home; her room and a pictured next-interest choice.",
+   "presentation": "workshop",
+   "theme": {
+    "basis": "owner-chosen",
+    "source": "PROJECT.md «Isabel Visit1 — approved October26, 15:37» (David)",
+    "value": "workshop-room",
+    "note": "The theme follows the parent's planning inputs (kept in the private project record, not in this file); they are not her own saved choice and not assessed mastery. Her own choice is asked at the end."
+   },
+   "map": {
+    "start": "workshop",
+    "places": [
+     {
+      "id": "workshop",
+      "label": "Werkstatt · Old Lila",
+      "x": 800,
+      "y": 600,
+      "kind": "place",
+      "character": "lila"
+     }
+    ],
+    "paths": []
+   },
+   "characters": [
+    {
+     "id": "lila",
+     "name": "Old Lila",
+     "role": "baut in ihrer Werkstatt",
+     "language": "de",
+     "plate": "keeper"
+    }
+   ],
+   "steps": [
+    {
+     "id": "W1-HELLO",
+     "version": 1,
+     "kind": "story",
+     "title": "Hallo bei Old Lila",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [],
+     "required": true,
+     "objective": "story",
+     "picture": "room",
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Hallo Isabel! Ich bin Old Lila.",
+       "language": "de"
+      },
+      {
+       "speaker": "lila",
+       "text": "Heute bauen wir zusammen ein kleines Zimmer.",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Komm, wir fangen an.",
+       "language": "de"
+      }
+     ]
+    },
+    {
+     "id": "W2-MAKE",
+     "version": 1,
+     "kind": "decide",
+     "title": "Was baust du?",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [
+      "W1-HELLO"
+     ],
+     "required": true,
+     "objective": "own-choice-not-scored",
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Was möchtest du für das Zimmer machen? Tipp auf ein Bild.",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Gut, das bauen wir heute.",
+       "language": "de"
+      }
+     ],
+     "decide": {
+      "prompt": "Was möchtest du machen?",
+      "rule": "Jede Idee passt. Du entscheidest.",
+      "options": [
+       {
+        "id": "chair",
+        "label": "Einen Stuhl",
+        "viable": true,
+        "picture": "chair-wood",
+        "feedback": "Du hast den Stuhl gewählt."
+       },
+       {
+        "id": "window",
+        "label": "Ein Fenster",
+        "viable": true,
+        "picture": "window-glass",
+        "feedback": "Du hast das Fenster gewählt."
+       },
+       {
+        "id": "wall",
+        "label": "Eine Wand",
+        "viable": true,
+        "picture": "wall-brick",
+        "feedback": "Du hast die Wand gewählt."
+       },
+       {
+        "id": "shelf",
+        "label": "Ein Regal",
+        "viable": true,
+        "picture": "shelf-wood",
+        "feedback": "Du hast das Regal gewählt."
+       }
+      ]
+     }
+    },
+    {
+     "id": "W3-MATERIALS",
+     "version": 1,
+     "kind": "match",
+     "title": "Woraus ist das?",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [
+      "W2-MAKE"
+     ],
+     "required": true,
+     "objective": "materials-matching",
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Woraus ist das gemacht? Tipp auf das Material.",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Echte Häuser haben oft viele Materialien: Holz, Glas und Steine.",
+       "language": "de"
+      },
+      {
+       "speaker": "lila",
+       "text": "Man kann ein Haus auch ganz aus Holz bauen.",
+       "language": "de"
+      }
+     ],
+     "doneBy": {
+      "taught": [
+       {
+        "speaker": "lila",
+        "text": "Wir haben die Materialien zusammen angeschaut.",
+        "language": "de"
+       },
+       {
+        "speaker": "lila",
+        "text": "Echte Häuser haben oft Holz, Glas und Steine.",
+        "language": "de"
+       }
+      ]
+     },
+     "questions": [
+      {
+       "id": "chair",
+       "prompt": "Der Stuhl",
+       "kind": "pick",
+       "picture": "chair-wood",
+       "options": [
+        "Holz",
+        "Glas",
+        "Ziegel"
+       ],
+       "answer": "Holz",
+       "pictures": {
+        "Holz": "material-wood",
+        "Glas": "material-glass",
+        "Ziegel": "material-brick"
+       },
+       "retryHint": "Schau genau: Der Stuhl ist braun und hat Linien wie ein Baum."
+      },
+      {
+       "id": "window",
+       "prompt": "Das Fenster",
+       "kind": "pick",
+       "picture": "window-glass",
+       "options": [
+        "Holz",
+        "Glas",
+        "Ziegel"
+       ],
+       "answer": "Glas",
+       "pictures": {
+        "Holz": "material-wood",
+        "Glas": "material-glass",
+        "Ziegel": "material-brick"
+       },
+       "retryHint": "Durch das Fenster kann man hindurchschauen."
+      },
+      {
+       "id": "wall",
+       "prompt": "Die Wand",
+       "kind": "pick",
+       "picture": "wall-brick",
+       "options": [
+        "Holz",
+        "Glas",
+        "Ziegel"
+       ],
+       "answer": "Ziegel",
+       "pictures": {
+        "Holz": "material-wood",
+        "Glas": "material-glass",
+        "Ziegel": "material-brick"
+       },
+       "retryHint": "Die Wand ist aus vielen roten Steinen gebaut."
+      }
+     ]
+    },
+    {
+     "id": "W4-COUNT",
+     "version": 1,
+     "kind": "solve",
+     "title": "Klötze zählen",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [
+      "W3-MATERIALS"
+     ],
+     "required": true,
+     "objective": "small-sums-visible-counters",
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Ich zähle meine Holzklötze. Zählst du mit?",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Jetzt wissen wir, wie viele Klötze wir haben.",
+       "language": "de"
+      }
+     ],
+     "doneBy": {
+      "taught": [
+       {
+        "speaker": "lila",
+        "text": "Wir haben zusammen gezählt.",
+        "language": "de"
+       }
+      ],
+      "unresolved": [
+       {
+        "speaker": "lila",
+        "text": "Das Zählen üben wir nächstes Mal wieder.",
+        "language": "de"
+       }
+      ]
+     },
+     "solve": {
+      "facts": [],
+      "parts": [
+       {
+        "id": "plus",
+        "question": "5 Klötze und 2 Klötze. Wie viele sind es zusammen?",
+        "unit": "Klötze",
+        "answer": 7,
+        "counters": {
+         "a": 5,
+         "b": 2,
+         "op": "+",
+         "unit": "Klötze"
+        },
+        "recheck": "Noch nicht. Zähl noch einmal alle im Bild.",
+        "stuck": "Noch nicht richtig. Zähl langsam — oder tipp unten auf den Hinweis.",
+        "hints": [
+         {
+          "id": "W4-plus-H1",
+          "level": 1,
+          "type": "count-all",
+          "text": "Zeig mit dem Finger auf jeden Klotz und zähl: 1, 2, 3 …"
+         }
+        ],
+        "teach": "5 Klötze und 2 dazu: 6, 7. Zusammen sind es 7 Klötze."
+       },
+       {
+        "id": "minus",
+        "question": "8 Klötze. Old Lila nimmt 2 weg. Wie viele bleiben?",
+        "unit": "Klötze",
+        "answer": 6,
+        "counters": {
+         "a": 8,
+         "b": 2,
+         "op": "-",
+         "unit": "Klötze"
+        },
+        "recheck": "Noch nicht. Zähl noch einmal alle im Bild.",
+        "stuck": "Noch nicht richtig. Zähl langsam — oder tipp unten auf den Hinweis.",
+        "hints": [
+         {
+          "id": "W4-minus-H1",
+          "level": 1,
+          "type": "subtract",
+          "text": "Zähl nur die Klötze ohne Kreuz."
+         }
+        ],
+        "teach": "Von 8 Klötzen nimmt Old Lila 2 weg: 7, 6. Es bleiben 6 Klötze."
+       }
+      ]
+     }
+    },
+    {
+     "id": "W5-TENS",
+     "version": 1,
+     "kind": "solve",
+     "title": "Holzstäbe in Bündeln",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [
+      "W4-COUNT"
+     ],
+     "required": true,
+     "objective": "tens-bundles-visible-supported",
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Ich binde Holzstäbe zu Bündeln. In jedem Bündel sind 10.",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Jetzt wissen wir, wie viele Stäbe es sind.",
+       "language": "de"
+      }
+     ],
+     "doneBy": {
+      "taught": [
+       {
+        "speaker": "lila",
+        "text": "Wir haben die Bündel zusammen gezählt.",
+        "language": "de"
+       }
+      ],
+      "unresolved": [
+       {
+        "speaker": "lila",
+        "text": "Die Bündel zählen wir nächstes Mal wieder.",
+        "language": "de"
+       }
+      ]
+     },
+     "solve": {
+      "facts": [
+       "In jedem Bündel sind 10 Stäbe."
+      ],
+      "parts": [
+       {
+        "id": "total",
+        "question": "2 Bündel und 1 einzelner Stab. Wie viele Stäbe sind es?",
+        "unit": "Stäbe",
+        "answer": 21,
+        "counters": {
+         "a": 20,
+         "b": 1,
+         "op": "+",
+         "unit": "Stäbe",
+         "bundles": true
+        },
+        "recheck": "Noch nicht. Schau: In jedem Bündel sind 10 Stäbe.",
+        "stuck": "Noch nicht richtig. Zähl langsam — oder tipp unten auf den Hinweis.",
+        "hints": [
+         {
+          "id": "W5-total-H1",
+          "level": 1,
+          "type": "grouping",
+          "text": "Ein Bündel hat 10 Stäbe. Zähl die Bündel in Zehnern: 10, 20.",
+          "check": {
+           "prompt": "Wie viele Stäbe sind in 2 Bündeln?",
+           "kind": "number",
+           "answer": "20",
+           "unit": "Stäbe",
+           "correct": "Genau, 20. Dazu kommt noch 1 einzelner Stab.",
+           "wrong": "Zähl die Bündel in Zehnern: 10, 20."
+          }
+         }
+        ],
+        "teach": "2 Bündel sind 10 und 10 Stäbe, also 20. Dazu 1 einzelner Stab: 21 Stäbe.",
+        "hintsAfterFirstAttempt": true
+       }
+      ]
+     }
+    },
+    {
+     "id": "W6-TENS-AGAIN",
+     "version": 1,
+     "kind": "solve",
+     "title": "Noch einmal mit Bündeln",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [
+      "W5-TENS"
+     ],
+     "required": true,
+     "objective": "tens-bundles-fresh-check",
+     "when": {
+      "step": "W5-TENS",
+      "unlessEvidence": "independent"
+     },
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Noch einmal, mit anderen Stäben.",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Danke. Jetzt haben wir genug Stäbe.",
+       "language": "de"
+      }
+     ],
+     "doneBy": {
+      "taught": [
+       {
+        "speaker": "lila",
+        "text": "Wir haben es zusammen gezählt.",
+        "language": "de"
+       }
+      ],
+      "unresolved": [
+       {
+        "speaker": "lila",
+        "text": "Das üben wir nächstes Mal wieder.",
+        "language": "de"
+       }
+      ]
+     },
+     "solve": {
+      "facts": [
+       "In jedem Bündel sind 10 Stäbe."
+      ],
+      "application": {
+       "of": "W5-TENS",
+       "kind": "same-day-application"
+      },
+      "parts": [
+       {
+        "id": "total",
+        "question": "2 Bündel und 3 einzelne Stäbe. Wie viele Stäbe sind es?",
+        "unit": "Stäbe",
+        "answer": 23,
+        "counters": {
+         "a": 20,
+         "b": 3,
+         "op": "+",
+         "unit": "Stäbe",
+         "bundles": true
+        },
+        "recheck": "Noch nicht. Zähl zuerst die Bündel, dann die einzelnen Stäbe.",
+        "stuck": "Noch nicht richtig. Zähl langsam — oder tipp unten auf den Hinweis.",
+        "hints": [
+         {
+          "id": "W6-total-H1",
+          "level": 1,
+          "type": "grouping",
+          "text": "Erst die Bündel: 10, 20. Dann die einzelnen weiterzählen: 21, 22, 23."
+         }
+        ],
+        "teach": "2 Bündel sind 20 Stäbe. Dazu 3 einzelne: 21, 22, 23. Es sind 23 Stäbe.",
+        "hintsAfterFirstAttempt": true
+       }
+      ]
+     }
+    },
+    {
+     "id": "W7-EASIER",
+     "version": 1,
+     "kind": "solve",
+     "title": "Mit kleinen Zahlen",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [
+      "W6-TENS-AGAIN"
+     ],
+     "required": true,
+     "objective": "small-sums-easier-path",
+     "when": {
+      "step": "W6-TENS-AGAIN",
+      "unlessEvidence": "independent"
+     },
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Wir zählen jetzt mit kleinen Zahlen weiter.",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Gut gezählt. Die grossen Bündel probieren wir wieder.",
+       "language": "de"
+      }
+     ],
+     "doneBy": {
+      "supported": [
+       {
+        "speaker": "lila",
+        "text": "Die grossen Bündel probieren wir nächstes Mal wieder.",
+        "language": "de"
+       }
+      ],
+      "taught": [
+       {
+        "speaker": "lila",
+        "text": "Wir haben zusammen gezählt. Das üben wir wieder.",
+        "language": "de"
+       }
+      ],
+      "unresolved": [
+       {
+        "speaker": "lila",
+        "text": "Das üben wir nächstes Mal wieder.",
+        "language": "de"
+       }
+      ]
+     },
+     "solve": {
+      "facts": [],
+      "parts": [
+       {
+        "id": "small",
+        "question": "3 Klötze und 2 Klötze. Wie viele sind es zusammen?",
+        "unit": "Klötze",
+        "answer": 5,
+        "counters": {
+         "a": 3,
+         "b": 2,
+         "op": "+",
+         "unit": "Klötze"
+        },
+        "recheck": "Noch nicht. Zähl noch einmal alle im Bild.",
+        "stuck": "Noch nicht richtig. Zähl langsam — oder tipp unten auf den Hinweis.",
+        "hints": [
+         {
+          "id": "W7-small-H1",
+          "level": 1,
+          "type": "count-all",
+          "text": "Zeig auf jeden Klotz und zähl: 1, 2, 3, 4 …"
+         }
+        ],
+        "teach": "3 Klötze und 2 dazu: 4, 5. Es sind 5 Klötze."
+       }
+      ]
+     }
+    },
+    {
+     "id": "W8-READ",
+     "version": 1,
+     "kind": "read",
+     "title": "Ein Wort lesen",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [
+      "W7-EASIER"
+     ],
+     "required": true,
+     "objective": "early-reading-word-picture",
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Hier steht ein Wort. Welches Bild passt dazu?",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Ein Ast ist aus Holz. Holz kommt von Bäumen.",
+       "language": "de"
+      }
+     ],
+     "doneBy": {
+      "taught": [
+       {
+        "speaker": "lila",
+        "text": "Wir haben das Wort zusammen gelesen.",
+        "language": "de"
+       },
+       {
+        "speaker": "lila",
+        "text": "Ein Ast ist aus Holz. Holz kommt von Bäumen.",
+        "language": "de"
+       }
+      ]
+     },
+     "text": {
+      "language": "de",
+      "body": "AST"
+     },
+     "questions": [
+      {
+       "id": "word",
+       "prompt": "Welches Bild passt zum Wort?",
+       "kind": "pick",
+       "options": [
+        "Ast",
+        "Ball",
+        "Haus"
+       ],
+       "answer": "Ast",
+       "pictures": {
+        "Ast": "branch",
+        "Ball": "ball",
+        "Haus": "house"
+       },
+       "retryHint": "Schau den ersten Buchstaben an. Welches Bild fängt so an?"
+      }
+     ],
+     "letters": {
+      "word": "AST",
+      "letters": [
+       {
+        "letter": "A",
+        "sound": "a"
+       },
+       {
+        "letter": "S",
+        "sound": "s"
+       },
+       {
+        "letter": "T",
+        "sound": "t"
+       }
+      ],
+      "spoken": "A. S. T. Ast.",
+      "teach": "A, S und T zusammen: Ast. Ein Ast ist ein Stück vom Baum."
+     }
+    },
+    {
+     "id": "W9-LISTEN",
+     "version": 1,
+     "kind": "listen",
+     "title": "Gut zuhören",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [
+      "W8-READ"
+     ],
+     "required": true,
+     "objective": "listening-recognition-german",
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Hör gut zu. Dann tipp auf das richtige Bild.",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Genau das wollte ich sehen.",
+       "language": "de"
+      }
+     ],
+     "doneBy": {
+      "taught": [
+       {
+        "speaker": "lila",
+        "text": "Ich zeige es dir: Das ist das Fenster.",
+        "language": "de"
+       }
+      ]
+     },
+     "text": {
+      "language": "de",
+      "body": "Zeig mir das Fenster."
+     },
+     "questions": [
+      {
+       "id": "show",
+       "prompt": "Was sollst du zeigen?",
+       "kind": "pick",
+       "options": [
+        "Stuhl",
+        "Fenster",
+        "Wand"
+       ],
+       "answer": "Fenster",
+       "pictures": {
+        "Fenster": "window-glass",
+        "Stuhl": "chair-wood",
+        "Wand": "wall-brick"
+       },
+       "retryHint": "Hör noch einmal genau hin."
+      }
+     ]
+    },
+    {
+     "id": "W10-CRAFT",
+     "version": 1,
+     "kind": "craft",
+     "title": "In echt basteln",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [
+      "W9-LISTEN"
+     ],
+     "required": true,
+     "objective": "real-world-craft-parent-observed",
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Jetzt bastelst du in echt, mit Papier oder Karton.",
+       "language": "de"
+      },
+      {
+       "speaker": "lila",
+       "text": "Danach suchst du drei Dinge aus Holz.",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Danke! Papa oder Mama schreiben auf, wie es war.",
+       "language": "de"
+      }
+     ],
+     "craft": {
+      "tasks": [
+       {
+        "id": "build",
+        "text": "Bau das, was du gewählt hast, aus Papier oder Karton."
+       },
+       {
+        "id": "explain",
+        "text": "Erzähl Papa: Aus welchem Material wäre es in echt? Warum?"
+       },
+       {
+        "id": "find",
+        "text": "Such zu Hause drei Dinge aus Holz."
+       }
+      ],
+      "find": {
+       "prompt": "Was hast du aus Holz gefunden? Tipp auf drei Bilder.",
+       "count": 3,
+       "options": [
+        {
+         "id": "table",
+         "label": "Tisch",
+         "picture": "table-wood"
+        },
+        {
+         "id": "spoon",
+         "label": "Kochlöffel",
+         "picture": "spoon-wood"
+        },
+        {
+         "id": "pencil",
+         "label": "Bleistift",
+         "picture": "pencil"
+        },
+        {
+         "id": "door",
+         "label": "Tür",
+         "picture": "door-wood"
+        },
+        {
+         "id": "blocks",
+         "label": "Bauklötze",
+         "picture": "toy-blocks"
+        },
+        {
+         "id": "frame",
+         "label": "Bilderrahmen",
+         "picture": "frame-wood"
+        }
+       ],
+       "fact": "Holz kommt von Bäumen. Viele Dinge im Haus sind aus Holz."
+      },
+      "parentNote": "Für Papa oder Mama: Tragt auf der Eltern-Seite ein, ob gebastelt wurde (gemacht, mit Hilfe oder nicht probiert)."
+     }
+    },
+    {
+     "id": "W11-ROOM",
+     "version": 1,
+     "kind": "outcome",
+     "title": "Dein Zimmer",
+     "place": "workshop",
+     "character": "lila",
+     "requires": [
+      "W10-CRAFT"
+     ],
+     "required": true,
+     "objective": "outcome",
+     "fromChoice": "W2-MAKE",
+     "recap": true,
+     "intro": [
+      {
+       "speaker": "lila",
+       "text": "Schau, das ist dein Zimmer.",
+       "language": "de"
+      }
+     ],
+     "done": [
+      {
+       "speaker": "lila",
+       "text": "Danke, Isabel. Bis bald in der Werkstatt!",
+       "language": "de"
+      }
+     ]
+    }
+   ],
+   "world": [
+    {
+     "id": "W-ROOM-chair",
+     "after": "W2-MAKE",
+     "prop": "room",
+     "place": "workshop",
+     "count": 1,
+     "label": "Im Zimmer: ein Stuhl",
+     "choice": {
+      "step": "W2-MAKE",
+      "option": "chair"
+     }
+    },
+    {
+     "id": "W-ROOM-window",
+     "after": "W2-MAKE",
+     "prop": "room",
+     "place": "workshop",
+     "count": 1,
+     "label": "Im Zimmer: ein Fenster",
+     "choice": {
+      "step": "W2-MAKE",
+      "option": "window"
+     }
+    },
+    {
+     "id": "W-ROOM-wall",
+     "after": "W2-MAKE",
+     "prop": "room",
+     "place": "workshop",
+     "count": 1,
+     "label": "Im Zimmer: eine Wand",
+     "choice": {
+      "step": "W2-MAKE",
+      "option": "wall"
+     }
+    },
+    {
+     "id": "W-ROOM-shelf",
+     "after": "W2-MAKE",
+     "prop": "room",
+     "place": "workshop",
+     "count": 1,
+     "label": "Im Zimmer: ein Regal",
+     "choice": {
+      "step": "W2-MAKE",
+      "option": "shelf"
+     }
+    }
+   ],
+   "estimatedMinutes": {
+    "min": 15,
+    "max": 20
+   },
+   "rules": {
+    "maxCalcAttempts": 3,
+    "maxQuestionAttempts": 2,
+    "maxProduceAttempts": 3,
+    "maxChoiceAttempts": 2,
+    "maxPartAttempts": 3,
+    "maxPracticeAttempts": 2
+   },
+   "nextAdventure": {
+    "prompt": "Was möchtest du nächstes Mal machen?",
+    "hint": "Tipp auf ein Bild. Oder sag deine eigene Idee.",
+    "ownIdeaLabel": "Eigene Idee",
+    "choices": [
+     {
+      "id": "furniture",
+      "label": "Mehr Möbel bauen",
+      "picture": "next-furniture"
+     },
+     {
+      "id": "garden",
+      "label": "Einen Garten bauen",
+      "picture": "next-garden"
+     },
+     {
+      "id": "animals",
+      "label": "Ein Haus für Tiere",
+      "picture": "next-animals"
+     }
+    ]
+   }
+  }
+ ],
+ "retention": {
+  "policy": "Isabel's records are her own (child-scoped), shown to the parent with provenance and erasable by the parent."
+ }
+}

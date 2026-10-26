@@ -6,6 +6,7 @@
 
 import { cn } from "@/components/ui/nabu";
 import type { MissionNextAdventure } from "@/lib/family-learning-mission-spec";
+import { WorkshopPictureView } from "./workshop-pictures";
 import { PlacePicture } from "./mission-scene";
 
 export type InterestAnswer = { kind: "text" | "unsure" | "no-preference" | "declined" | "choice"; text?: string | null; choice?: string | null };
@@ -70,9 +71,13 @@ export function NextAdventureQuestion({ adventure, labels, value, onChange, disa
           const picked = value?.kind === "choice" && value.choice === c.id;
           return (
             <button key={c.id} type="button" disabled={disabled} aria-pressed={picked} onClick={() => onChange(picked ? null : { kind: "choice", choice: c.id })} className={cn("grid min-h-32 w-44 place-items-center gap-2 rounded-3xl border-2 border-primary bg-primary p-3 text-lg font-semibold text-primary", picked && "ring-4 ring-emerald-600")} data-testid={`adventure-${c.id}`}>
-              <span className="scale-150">
-                <PlacePicture kind={c.picture} />
-              </span>
+              {c.picture === "greenhouse" || c.picture === "water" ? (
+                <span className="scale-150">
+                  <PlacePicture kind={c.picture} />
+                </span>
+              ) : (
+                <WorkshopPictureView id={c.picture} />
+              )}
               {c.label}
             </button>
           );

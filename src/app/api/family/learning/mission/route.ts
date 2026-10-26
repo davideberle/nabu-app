@@ -2,7 +2,8 @@ import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
 import { NO_STORE, refuse, requireChildLearning } from "@/lib/family-learning-auth";
-import { loadLearningContent, loadVocabularyInventory } from "@/lib/family-learning-content-server";
+import { loadLearningContentFor, loadVocabularyInventoryFor } from "@/lib/family-learning-content-server";
+import type { ChildId } from "@/lib/family-assistant-turn";
 import { applyMutation, ExposureUnsettledError, readChildView, type MutationContext } from "@/lib/family-learning-db";
 import { resolveTimeZone } from "@/lib/family-learning-progress";
 import type { LearningOp } from "@/lib/family-learning-state";
@@ -21,9 +22,9 @@ import { verifiedReceiptFromClaims } from "@/lib/family-learning-trust";
  *      409 `{ status: "stale", view }`          — rendered revision is old
  *      422 `{ status: "refused", code, message, view }` — rule refused the op
  *
- * The child is taken from the verified learning credential only. Isabel has
- * no prepared content in this build: her view is an honest empty state and
- * every mutation is refused (family-assistant DESIGN §7.6).
+ * The child is taken from the verified learning credential only, and so is the CONTENT: each child is served her/his own
+ * reviewed content line (Santiago the expedition, Isabel «Old Lilas kleine Werkstatt», 2026-10-26). A child without
+ * served content gets the honest empty state and every mutation is refused (family-assistant DESIGN §7.6).
  */
 
 const MAX_BODY_BYTES = 16 * 1024;
@@ -43,20 +44,23 @@ function sessionFingerprint(request: Request): string | undefined {
   return createHash("sha256").update(match[1]).digest("hex").slice(0, 16);
 }
 
-function content() {
+/** The child's own content: `null` = none prepared for this child, `"failed"` = the served file does not reconcile (503). */
+function content(child: ChildId) {
   try {
-    return loadLearningContent();
+    return loadLearningContentFor(child);
   } catch {
-    return null;
+    return "failed" as const;
   }
 }
 
 /** The reviewed vocabulary inventory; a file that does not reconcile is a 503 like mis-keyed content. */
-function vocabulary() {
+function vocabulary(child: ChildId): { ok: true; inventory: ReturnType<typeof loadVocabularyInventoryFor> } | { ok: false } {
   try {
-    return loadVocabularyInventory();
+    const inventory = loadVocabularyInventoryFor(child);
+    // Santiago's content always has its inventory; Isabel's workshop has none (null is her honest value, not a failure).
+    return child === "santiago" && !inventory ? { ok: false } : { ok: true, inventory };
   } catch {
-    return null;
+    return { ok: false };
   }
 }
 
@@ -72,15 +76,15 @@ function timeZoneOf(value: unknown): string {
 export async function GET(request: Request) {
   const guard = await requireChildLearning(request);
   if (!guard.ok) return guard.response;
-  const loaded = content();
-  if (!loaded) return refuse(503, "Learning content is not available");
-  if (guard.child !== loaded.child) {
+  const loaded = content(guard.child);
+  if (loaded === "failed") return refuse(503, "Learning content is not available");
+  if (!loaded || guard.child !== loaded.child) {
     return NextResponse.json({ view: null, prepared: false, child: guard.child }, { headers: NO_STORE });
   }
-  const inventory = vocabulary();
-  if (!inventory) return refuse(503, "Learning vocabulary inventory is not available");
+  const vocab = vocabulary(guard.child);
+  if (!vocab.ok) return refuse(503, "Learning vocabulary inventory is not available");
   try {
-    const view = await readChildView(await getDb(), guard.child, loaded, new Date(), { timeZone: timeZoneOf(new URL(request.url).searchParams.get("tz")), vocabulary: inventory });
+    const view = await readChildView(await getDb(), guard.child, loaded, new Date(), { timeZone: timeZoneOf(new URL(request.url).searchParams.get("tz")), vocabulary: vocab.inventory });
     return NextResponse.json({ view: { ...view, sessionFingerprint: sessionFingerprint(request) }, prepared: true }, { headers: NO_STORE });
   } catch (error) {
     if (error instanceof ExposureUnsettledError) return refuse(503, "The task could not be saved as shown; try again");
@@ -112,9 +116,9 @@ function readOp(value: unknown): LearningOp | null {
 export async function PUT(request: Request) {
   const guard = await requireChildLearning(request);
   if (!guard.ok) return guard.response;
-  const loaded = content();
-  if (!loaded) return refuse(503, "Learning content is not available");
-  if (guard.child !== loaded.child) return refuse(404, "No mission is prepared for this child");
+  const loaded = content(guard.child);
+  if (loaded === "failed") return refuse(503, "Learning content is not available");
+  if (!loaded || guard.child !== loaded.child) return refuse(404, "No mission is prepared for this child");
 
   const raw = await request.text();
   if (raw.length > MAX_BODY_BYTES) return refuse(413, "Body too large");
@@ -160,12 +164,12 @@ export async function PUT(request: Request) {
   }
   const context = readContext(body.context);
   if (!context) return refuse(400, "context is required: { erasureGeneration, visit: { id, startedAt } | null }");
-  const inventory = vocabulary();
-  if (!inventory) return refuse(503, "Learning vocabulary inventory is not available");
+  const vocab = vocabulary(guard.child);
+  if (!vocab.ok) return refuse(503, "Learning vocabulary inventory is not available");
 
   let outcome;
   try {
-    outcome = await applyMutation(await getDb(), { child: guard.child, op, idempotencyKey, expectedRevision, context }, loaded, () => new Date(), { timeZone: timeZoneOf(body.tz), vocabulary: inventory });
+    outcome = await applyMutation(await getDb(), { child: guard.child, op, idempotencyKey, expectedRevision, context }, loaded, () => new Date(), { timeZone: timeZoneOf(body.tz), vocabulary: vocab.inventory });
   } catch (error) {
     if (error instanceof ExposureUnsettledError) return refuse(503, "The task could not be saved as shown; try again");
     throw error;

@@ -58,7 +58,7 @@ import type { EvidenceCategory, MissionState, Records, TypingBurst, TypingComfor
 import { alignedLessonMetrics, TYPING_METRIC_VERSION, type AlignedLineMetrics } from "./family-learning-typing-metrics.ts";
 import { typingErrors, type TypingError, feedbackOf, updateSpacingFocus } from "./family-learning-feedback.ts";
 import { assessSpacing, flagSpacing, markSpacing, evaluateRevision, type SpacingFlag } from "./family-learning-writing.ts";
-import type { MissionPart, MissionHint, MissionLine, MissionDiagram } from "./family-learning-mission-spec.ts";
+import type { MissionPart, MissionHint, MissionLine, MissionDiagram, MissionGrid, MissionDecide, MissionCounters } from "./family-learning-mission-spec.ts";
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
 import { receiptOrigin, type ReceiptInput, type ReplyOrigin } from "./family-learning-trust.ts";
 import type { NoktMode } from "./family-learning-nokt.ts";
@@ -128,8 +128,13 @@ export type MissionWriteRun = {
   at: string;
   assessable: boolean;
   flags: SpacingFlag[];
-  /** At most one correction is shown (help, recorded before it is shown). */
-  correction: { index: number; marked: string } | null;
+  /**
+   * At most one correction is shown (help, recorded before it is shown). Content v7: `rule` names which reviewed mechanical
+   * rule it is (spacing, the capital at the start, the end mark) and `line` its reviewed child-facing text; absent = spacing.
+   */
+  correction: { index: number; marked: string; rule?: "spacing" | "capital-start" | "end-mark"; line?: string } | null;
+  /** Content v7: the mechanical findings of the original (all of them, for the parent; only one is taught). */
+  mechanics?: ("spacing" | "capital-start" | "end-mark")[];
   revision: { text: string; at: string; outcome: string } | null;
   kept: boolean;
 };
@@ -171,6 +176,8 @@ export type MissionStepRun = {
   tutorOutcomes?: TutorOutcomeRecord[];
   /** Content v6 (N7-03): the Nokt conversation, line by line — his words, Nokt's verified lines, withheld replies with the reason. Parent-reviewable. */
   tutorTurns?: MissionTutorTurn[];
+  /** Isabel's workshop (`craft`): what she tapped as found at home — her own report, not verified by the app. */
+  found?: string[];
 };
 
 export type MissionTutorTurn = {
@@ -268,13 +275,17 @@ export type MissionRun = {
 export type InterestRecord = {
   id: string;
   visit: VisitId;
-  /** `closing` = asked in the normal closing sequence; `entry` = asked at the next entry after an early exit. */
-  source: "closing" | "entry";
+  /** `closing` = asked in the normal closing sequence; `entry` = asked at the next entry after an early exit; `debrief` (content v7) = his answer to Nokt's next-interest question in the spoken look back, recorded verbatim by the server. */
+  source: "closing" | "entry" | "debrief";
   kind: "text" | "unsure" | "no-preference" | "declined" | "choice";
   /** The child's own words, verbatim (text kind only); for a choice, the label the child picked. */
   text: string | null;
   /** Content v6 (V7-D13): the offered story direction the child picked — never inferred, only recorded when tapped. */
   choice?: string | null;
+  /** Content v7 (debrief): how the words came (typed, spoken + confirmed transcript, a tapped idea) and what the app did NOT interpret. */
+  uncertainty?: string | null;
+  /** Content v7: this answer corrects an earlier one of the same look back (both stay; the latest counts). */
+  corrects?: string | null;
   at: string;
 };
 
@@ -300,7 +311,9 @@ export type MissionAction =
   | { a: "choose"; step: string; option: string }
   | { a: "produce"; step: string; response: string; modality: "typed" | "word-bank" }
   | { a: "meaning"; step: string; word: string }
-  | { a: "support"; step: string; kind: "play" | "transcript" | "translation" | "word-bank" | "line-translation"; line?: number }
+  | { a: "support"; step: string; kind: "play" | "transcript" | "translation" | "word-bank" | "line-translation" | "letters"; line?: number }
+  /** Isabel's workshop: the wooden things she says she found at home (her own report, up to the step's count; never verified). */
+  | { a: "craft-found"; step: string; items: string[] }
   /** Listening: what the device reported for the last requested play (`child-voice` / `browser` = playback completion event reported; `failed` = none). */
   | { a: "listen-outcome"; step: string; outcome: "child-voice" | "browser" | "failed" }
   | { a: "practice"; step: string; response: string }
@@ -316,6 +329,8 @@ export type MissionAction =
   | { a: "hint"; step: string; part: string }
   /** Content v6: the child's answer to the small question inside a hint. */
   | { a: "hint-check"; step: string; part: string; hint: string; value: string }
+  /** Content v7: a judgment between plans (every viable option is a legitimate choice). */
+  | { a: "decide"; step: string; option: string }
   /** Content v6: the child's own entry after worked teaching (counts only when it matches). */
   | { a: "practice-part"; step: string; part: string; value: string }
   /** Content v6: keep a question for later — when stuck or after teaching (explicit unresolved item, never credit). */
@@ -335,7 +350,7 @@ export type MissionAction =
   /** Content v6 (N7-06): record the tutor context BEFORE the tutor is asked; refused while the tutor is unavailable. */
   | { a: "tutor-dispatch"; step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; turnId: string; sessionId: string; text?: string; via?: "voice" | "typed" }
   /** Content v6 (N7-03): the reply to one Nokt turn; its origin was verified by the ROUTE (receipt bound to the dispatch). */
-  | { a: "tutor-reply"; step: string; turnId: string; reply: string; noReply?: "attempts_exhausted" }
+  | { a: "tutor-reply"; step: string; turnId: string; reply: string; noReply?: "attempts_exhausted" | "usage_limit" | "busy" | "bad_request" | "unreachable" | "unavailable" | "timeout" }
   /** Content v6 (N7-06): the tutor's structured result — accepted only when bound, fresh and verified (origin from the server, never the client). */
   | { a: "tutor-outcome"; step: string; outcome: unknown }
   | { a: "finish" };
@@ -348,7 +363,18 @@ export type MissionEnv = {
   visit: VisitId;
   /** Content v6: whether a verified tutor route is available for this child right now (production: never, CHILD_ASSISTANT_AI_ENABLED = false). */
   tutor?: { available: boolean; child?: string; origin?: ReplyOrigin; receipt?: ReceiptInput };
+  /**
+   * Content v7: Nokt's conversation is switched on for this deployment. Only map missions (Visit 8) use it, and only to PLAN
+   * an offer/reflection or the writing reaction — dispatching and replying still need `tutor.available`, which only the Nokt
+   * routes set. Earlier missions keep their exact behaviour.
+   */
+  noktEnabled?: boolean;
 };
+
+/** Content v7: whether Nokt may be planned into this mission's flow (offer, reflection, writing reaction). */
+function noktPlanned(def: MissionDef, env: MissionEnv): boolean {
+  return !!env.tutor?.available || (def.presentation === "map" && !!env.noktEnabled);
+}
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -395,6 +421,13 @@ export function missionRunOf(state: MissionState, def: MissionDef): MissionRun |
 
 export function newMissionRun(def: MissionDef, visit: VisitId, nowIso: string): MissionRun {
   return { missionId: def.id, version: def.version, visit, startedAt: nowIso, position: def.map.start, visited: [def.map.start], active: null, steps: {}, facts: {}, shownWords: [], typing: null, finishedAt: null };
+}
+
+/** The mission's typing block step (Isabel's workshop has none: every typing action is refused, never a crash). */
+function typingStepOf(def: MissionDef): MissionStep & { kind: "typing-block" } {
+  const step = def.steps.find((s) => s.kind === "typing-block");
+  if (!step || !def.typingBlock) throw new MissionOpError("invalid", "this mission has no typing block");
+  return step as MissionStep & { kind: "typing-block" };
 }
 
 function stepDef(def: MissionDef, id: string): MissionStep {
@@ -445,6 +478,8 @@ export function stepStatuses(def: MissionDef, run: MissionRun | null): Record<st
       const refRun = run?.steps[step.when.step];
       if (!RESOLVED.includes(ref)) return (out[id] = "locked");
       if (refRun?.outcome === "independent") return (out[id] = "not-needed");
+      // Isabel's workshop: an easier fallback after a fresh check is not needed when the fresh check itself was not needed.
+      if (ref === "not-needed" && def.presentation === "workshop") return (out[id] = "not-needed");
     }
     const ready = step.requires.every((req) => RESOLVED.includes(resolve(req, seen)));
     if (r?.status === "active") return (out[id] = ready ? "active" : "locked");
@@ -563,8 +598,47 @@ function targetWords(p: MissionProduce): string[] {
 }
 
 // ---------------------------------------------------------------------------
+// Content v7 writing mechanics (reviewed, deterministic; meaning is never judged)
+// ---------------------------------------------------------------------------
+
+const END_MARK_RE = /[.!?]["»“”']?$/u;
+
+/** The sentence starts with a lowercase letter (a number at the start is not a capitalization slip). */
+function lowerStart(text: string): boolean {
+  const first = Array.from(text.trim())[0] ?? "";
+  return /\p{Ll}/u.test(first);
+}
+
+// ---------------------------------------------------------------------------
 // Typing block planning (V6-04/05): finite, announced, calibrated by observed pace
 // ---------------------------------------------------------------------------
+
+/**
+ * Content v7: the course progression rule of `typing-comfort`, re-applied at the block start for the saved lesson. Earlier
+ * blocks ran at the course's last lesson, where the rule could not advance (content ceiling); with a new lesson served the
+ * same criterion decides once more. Recorded as the course decision with its reason.
+ */
+/** Content v7: the announced plan must be the plan that will run — apply the start-of-block progression to a COPY for the preview. */
+function previewState(state: MissionState, def: MissionDef, content: LearningContent): MissionState {
+  if (!def.typingBlock?.progressOnStart || !state.typing.course) return state;
+  const copy = { ...state, typing: { ...state.typing, course: { ...state.typing.course, completed: [...state.typing.course.completed] } } } as MissionState;
+  catchUpProgression(copy, { content, nowIso: "" }, def.typingBlock!.id);
+  return copy;
+}
+
+function catchUpProgression(state: MissionState, env: Pick<MissionEnv, "content" | "nowIso">, blockId: string) {
+  const course = env.content.typing.course;
+  const progress = state.typing.course;
+  if (!course || !progress) return;
+  const index = Math.min(progress.lessonIndex, course.lessons.length - 1);
+  const lesson = course.lessons[index];
+  if (index >= course.lessons.length - 1 || progress.completed.includes(lesson.id)) return;
+  const good = progress.bursts.filter((b) => b.lessonId === lesson.id && b.accuracy >= course.progression.minAccuracy && b.comfort !== "hard" && (b.lineCount === undefined || b.lineCount >= lesson.lines.length));
+  if (good.length < course.progression.minBursts) return;
+  progress.completed.push(lesson.id);
+  progress.lessonIndex = index + 1;
+  progress.decision = { lessonId: lesson.id, action: "advance", reason: `${good.length} bursts ≥ ${Math.round(course.progression.minAccuracy * 100)} % and not hard — rule re-applied at the start of ${blockId}: the course had ended at this lesson before`, at: env.nowIso };
+}
 
 export function observedPace(state: MissionState, block: MissionTypingBlock): { cps: number; basis: "observed" | "fallback"; samples: number } {
   const bursts = (state.typing.course?.bursts ?? []).filter((b) => b.seconds > 0 && b.typedChars > 0).slice(-4);
@@ -595,11 +669,16 @@ export function planTypingBlock(state: MissionState, content: LearningContent, b
   const avgChars = block.pattern.map((p) => sourceLines(p).lines.join("").length).reduce((a, b) => a + b, 0) / block.pattern.length;
   const perDrill = avgChars / pace.cps;
   const n = Math.max(block.minDrills, Math.min(block.maxDrills, Math.round(block.targetActiveSeconds / perDrill)));
+  // Content v7: reviewed line sets per lesson are cycled, so the block is varied instead of the same lines again and again.
+  const used: Record<string, number> = {};
   const drills: MissionDrill[] = Array.from({ length: n }, (_, i) => {
     const source = block.pattern[i % block.pattern.length];
     const src = source === "focus" && !focusLine ? "current" : source;
     const { lesson, lines } = sourceLines(src);
-    return { no: i + 1, source: src, lessonId: lesson.id, lines: [...lines] };
+    const sets = src !== "focus" ? block.material?.[lesson.id] : undefined;
+    const k = used[lesson.id] ?? 0;
+    used[lesson.id] = k + 1;
+    return { no: i + 1, source: src, lessonId: lesson.id, lines: [...(sets?.length ? sets[k % sets.length] : lines)] };
   });
   const estimatedSeconds = Math.round(drills.reduce((s, d) => s + d.lines.join("").length / pace.cps, 0));
   return { drills, paceCps: Math.round(pace.cps * 1000) / 1000, paceBasis: pace.basis, paceSamples: pace.samples, estimatedSeconds, lessonId: current.id };
@@ -796,6 +875,11 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         // Exposure is durable and written first (rule 1): the task is on screen from now on.
         if (!["story", "outcome", "typing-block"].includes(step.kind)) records.exposures.push({ taskId: taskId(def, step), taskVersion: step.version, kind: "shown", source: "mission-open", at: env.nowIso });
         if (step.kind === "solve") revealNextPart(records, env, def, step, run.steps[step.id]);
+        // Content v7: a supported exchange models its target word in the intro — supplied from the opening, never fresh recall.
+        for (const w of step.produce?.modelled ?? []) {
+          const norm = stripAccents(normalizeAnswer(w));
+          if (!run.shownWords.includes(norm)) run.shownWords.push(norm);
+        }
       }
       result = { opened: step.id };
       break;
@@ -808,7 +892,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
     }
     case "story-done": {
       const { step, r } = requireActive(run, def, action.step);
-      if (step.kind !== "story" && step.kind !== "outcome") throw new MissionOpError("invalid", "not a story step");
+      if (step.kind !== "story" && step.kind !== "outcome" && step.kind !== "craft") throw new MissionOpError("invalid", "not a story step");
       if (r.status === "active") finishStep(state, run, def, step, r, "done", "unscored", env);
       result = { done: step.id };
       break;
@@ -834,6 +918,16 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       } else if (action.kind === "word-bank") {
         if (!step.produce) throw new MissionOpError("invalid", "no word help for this step");
         for (const w of step.produce.wordBank.map((x) => stripAccents(normalizeAnswer(x)))) if (!run.shownWords.includes(w)) run.shownWords.push(w);
+      } else if (action.kind === "letters") {
+        // Isabel's workshop: the explicit switch to supported letter/word learning — recorded help BEFORE it is shown; only
+        // now may the app speak the word. Every later answer on this step is supported, never independent reading.
+        if (step.kind !== "read" || !step.letters) throw new MissionOpError("invalid", "no letter help for this step");
+        if (!r.support.some((x) => x.kind === "letters")) {
+          r.support.push({ kind: "letters", at: env.nowIso, detail: "" });
+          support(records, env, def, step, "letters", { word: step.letters.word, afterAttempts: r.attempts.length });
+        }
+        result = { support: "letters", letters: step.letters.letters, spoken: step.letters.spoken, teach: step.letters.teach };
+        break;
       } else if (action.kind === "line-translation") {
         const lines = [...step.intro, ...step.done];
         const line = lines[action.line ?? -1];
@@ -860,7 +954,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
     }
     case "answer-question": {
       const { step, r } = requireActive(run, def, action.step);
-      if (step.kind !== "read" && step.kind !== "listen") throw new MissionOpError("invalid", "not a question step");
+      if (step.kind !== "read" && step.kind !== "listen" && step.kind !== "match") throw new MissionOpError("invalid", "not a question step");
       // A listening answer needs a play with a reported completion event — or the text, which is recorded help. A failed playback
       // never unlocks answering on its own and never counts as listening.
       if (step.kind === "listen" && (r.completedPlays ?? 0) < 1 && !r.support.some((s) => s.kind === "transcript")) throw new MissionOpError("not-allowed", "listen to the recording first (or open the text, which counts as help)");
@@ -872,7 +966,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (q.kind === "pick" && !(q.options ?? []).includes(raw)) throw new MissionOpError("invalid", "unknown option");
       const tries = r.attempts.filter((a) => a.questionId === q.id);
       const correct = normalizeAnswer(raw) === normalizeAnswer(q.answer);
-      const helped = r.support.some((s) => ["transcript", "translation"].includes(s.kind)) || (step.kind === "listen" && (r.completedPlays ?? 0) < 1);
+      const helped = r.support.some((s) => ["transcript", "translation", "letters"].includes(s.kind)) || (step.kind === "listen" && (r.completedPlays ?? 0) < 1);
       const evidence: EvidenceCategory = !correct ? "incorrect" : tries.length === 0 && !helped ? "independent" : "supported";
       const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: q.id, raw, correct, evidence, support: [...supportKinds(r), ...(tries.length ? ["retry"] : [])], modality: q.kind === "pick" ? "pick" : "typed", kind: "answer" };
       r.attempts.push(attempt);
@@ -897,6 +991,18 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         finishStep(state, run, def, step, r, evs.some((e) => e === "answer_exposed") ? "taught" : "done", outcome, env);
       }
       result = { correct, question: q.id, status: qs.status };
+      break;
+    }
+    case "craft-found": {
+      const { step, r } = requireActive(run, def, action.step);
+      if (step.kind !== "craft" || !step.craft?.find) throw new MissionOpError("invalid", "nothing to report here");
+      const find = step.craft.find;
+      const items = Array.isArray(action.items) ? [...new Set(action.items.map(String))] : [];
+      if (items.length > find.count || items.some((id) => !find.options.some((o) => o.id === id))) throw new MissionOpError("invalid", "unknown or too many things");
+      r.found = items;
+      // Her own report of the real-world search: kept verbatim as a work sample, never an attempt and never assessed.
+      records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "self_report" as const, language: "de", modality: "pick", text: items.map((id) => find.options.find((o) => o.id === id)!.label).join(", "), metrics: { mission: def.id, step: step.id, items, count: items.length, wanted: find.count, verified: false }, at: env.nowIso });
+      result = { found: items };
       break;
     }
     case "answer-calc": {
@@ -1061,7 +1167,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       break;
     }
     case "typing-start": {
-      const step = def.steps.find((s) => s.kind === "typing-block")!;
+      const step = typingStepOf(def);
       const r = run.steps[step.id];
       if (run.active !== step.id || !r) throw new MissionOpError("not-allowed", "open the typing workshop first");
       if (run.typing) {
@@ -1070,8 +1176,12 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       }
       const focusKeys = (state.feedback?.focus ?? []).filter((f) => f.kind === "typing-key" && f.status === "open").map((f) => f.key);
       const unavailable = !env.settings.keyboardLayout ? "layout-unconfirmed" : state.typing.alignment?.result !== "match" ? "alignment-unchecked" : null;
-      const plan = unavailable ? null : planTypingBlock(state, env.content, def.typingBlock, focusKeys);
-      run.typing = { blockId: def.typingBlock.id, startedAt: env.nowIso, plan: plan ?? { drills: [], paceCps: 0, paceBasis: "fallback", paceSamples: 0, estimatedSeconds: 0, lessonId: "" }, drills: [], partials: [], completedAt: null, extra: "not-offered", unavailable: plan ? null : unavailable ?? "no-course" };
+      // Content v7: the EXISTING progression rule, applied once more at the block start — it could not advance while the course
+      // ended at this lesson. Same criterion (bursts ≥ threshold, not hard); never a skip, never a new rule.
+      const tblock = def.typingBlock!;
+      if (!unavailable && tblock.progressOnStart) catchUpProgression(state, env, tblock.id);
+      const plan = unavailable ? null : planTypingBlock(state, env.content, tblock, focusKeys);
+      run.typing = { blockId: tblock.id, startedAt: env.nowIso, plan: plan ?? { drills: [], paceCps: 0, paceBasis: "fallback", paceSamples: 0, estimatedSeconds: 0, lessonId: "" }, drills: [], partials: [], completedAt: null, extra: "not-offered", unavailable: plan ? null : unavailable ?? "no-course" };
       if (!plan) {
         // Honest: the block cannot run on this device setup — an explicit unresolved item, never credit.
         finishStep(state, run, def, step, r, "unresolved", "unresolved", env);
@@ -1080,7 +1190,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       break;
     }
     case "typing-drill": {
-      const step = def.steps.find((s) => s.kind === "typing-block")!;
+      const step = typingStepOf(def);
       const r = run.steps[step.id];
       const block = run.typing;
       if (run.active !== step.id || !r || !block) throw new MissionOpError("not-allowed", "the typing block is not running");
@@ -1091,7 +1201,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       const seconds = boundedInt(action.seconds, 3600);
       const activeSeconds = Math.min(seconds, boundedInt(action.activeSeconds, 3600));
       const idleSeconds = Math.min(seconds, boundedInt(action.idleSeconds, 3600));
-      const attempted = m.typedChars >= def.typingBlock.minTypedShare * m.expectedChars;
+      const attempted = m.typedChars >= def.typingBlock!.minTypedShare * m.expectedChars;
       const rec: MissionDrillRecord = { no: drill.no, lessonId: drill.lessonId, source: drill.source, extra: !!drill.extra, lineCount: drill.lines.length, lines: m.lines, expectedChars: m.expectedChars, typedChars: m.typedChars, correctChars: m.correctChars, extraChars: m.extraChars, omittedChars: m.omittedChars, substitutedChars: m.substitutedChars, denominator: m.denominator, accuracy: m.denominator ? m.correctChars / m.denominator : 0, errors: typingErrors(drill.lines, action.lines), seconds, activeSeconds, idleSeconds, attempted, metricVersion: TYPING_METRIC_VERSION, at: env.nowIso };
       block.drills.push(rec);
       records.samples.push({ id: env.newId(), visitId: env.visit, taskId: `${def.id}/${step.id}/${block.blockId}`, kind: "typing_burst", language: null, modality: "typed", text: action.lines.join("\n"), metrics: { mission: def.id, block: block.blockId, drill: rec.no, extra: rec.extra, lessonId: rec.lessonId, source: rec.source, expectedChars: rec.expectedChars, typedChars: rec.typedChars, correctChars: rec.correctChars, accuracy: rec.accuracy, seconds, activeSeconds, idleSeconds, attempted, metricVersion: 2 }, at: env.nowIso });
@@ -1117,7 +1227,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       break;
     }
     case "typing-comfort": {
-      const step = def.steps.find((s) => s.kind === "typing-block")!;
+      const step = typingStepOf(def);
       const block = run.typing;
       if (!block?.completedAt || block.comfort !== undefined) throw new MissionOpError("not-allowed", "comfort is asked once after the block");
       if (action.comfort !== null && !["easy", "ok", "hard"].includes(action.comfort)) throw new MissionOpError("invalid", "unknown comfort");
@@ -1144,7 +1254,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       break;
     }
     case "typing-extra": {
-      const step = def.steps.find((s) => s.kind === "typing-block")!;
+      const step = typingStepOf(def);
       const r = run.steps[step.id];
       const block = run.typing;
       if (!block || block.extra !== "offered" || !r) throw new MissionOpError("not-allowed", "no extra drill on offer");
@@ -1174,7 +1284,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (correct) {
         pr.status = "correct";
         pr.evidence = evidence;
-        if (part.reflect && !env.tutor?.available) {
+        if (part.reflect && !noktPlanned(def, env)) {
           // Planned reflection (N7-04c) needs the verified tutor. Without it the explanation is missing evidence — recorded, never replaced by written questioning.
           pr.reflection = "not-available";
           support(records, env, def, step, "tutor-unavailable", { part: part.id, entry: "planned", help: false });
@@ -1187,7 +1297,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
           // without one that is said plainly — nothing is revealed and nothing is diagnosed in its place.
           pr.phase = "stuck";
           if (pr.misses === 2) {
-            if (env.tutor?.available) pr.offer = pr.offer ?? "shown";
+            if (noktPlanned(def, env)) pr.offer = pr.offer ?? "shown";
             else support(records, env, def, step, "tutor-unavailable", { part: part.id, entry: "offer", help: false });
           }
         }
@@ -1299,6 +1409,26 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       result = { part: part.id, status: pr.status };
       break;
     }
+    case "decide": {
+      const { step, r } = requireActive(run, def, action.step);
+      if (step.kind !== "decide" || !step.decide) throw new MissionOpError("invalid", "not a judgment between plans");
+      if (r.status !== "active") throw new MissionOpError("not-allowed", "the plan is chosen");
+      const option = step.decide.options.find((o) => o.id === action.option);
+      if (!option) throw new MissionOpError("invalid", "unknown option");
+      const prior = r.attempts.length;
+      // A viable plan is a legitimate choice — the preference itself is never scored. What IS observed: whether the chosen plan
+      // keeps the stated rule (first pick, without the feedback of an earlier non-viable pick → independent).
+      const evidence: EvidenceCategory = !option.viable ? "incorrect" : prior === 0 ? "independent" : "supported";
+      const attempt: MissionAttempt = { no: prior + 1, at: env.nowIso, raw: option.label, choice: option.id, correct: option.viable, evidence, support: prior ? ["feedback"] : [], modality: "pick", kind: "answer" };
+      r.attempts.push(attempt);
+      attemptRow(records, env, def, step, attempt, "de");
+      if (option.viable) {
+        run.facts[`${step.id}:choice`] = { value: option.id, label: option.label, source: "answered", at: env.nowIso };
+        finishStep(state, run, def, step, r, "done", evidence, env);
+      } else r.phase = "clarified";
+      result = { viable: option.viable, option: option.id };
+      break;
+    }
     case "write": {
       const { step, r } = requireActive(run, def, action.step);
       if (step.kind !== "write" || !step.write) throw new MissionOpError("invalid", "not a writing step");
@@ -1310,25 +1440,41 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       const flags = flagSpacing(text, joins);
       // At most ONE useful correction (D-W1): the first flagged boundary, marked in the child's own sentence. Help, recorded first.
       const first = flags[0] ?? null;
-      const correction = first ? { index: first.index, marked: markSpacing(text, [first]) } : null;
-      r.writing = { original: text, at: env.nowIso, assessable: assessment.assessable, flags, correction, revision: null, kept: false };
-      const outcome = !assessment.assessable ? "unassessable" : flags.length ? "flagged" : "clean";
-      const evidence: EvidenceCategory = !assessment.assessable ? "unscored" : flags.length ? "incorrect" : "independent";
-      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: !assessment.assessable ? null : flags.length === 0, evidence, support: [], modality: "typed", kind: "answer" };
+      // Content v7: the reviewed mechanical rules beyond spacing, in their priority order (capital at the start, end mark).
+      const mech = step.write.mechanics ?? null;
+      const found: ("spacing" | "capital-start" | "end-mark")[] = mech ? mech.filter((m) => (m === "spacing" ? flags.length > 0 : m === "capital-start" ? lowerStart(text) : !END_MARK_RE.test(text.trim()))) : [];
+      const taughtRule = mech ? found[0] ?? null : first ? "spacing" : null;
+      const correction: MissionWriteRun["correction"] =
+        taughtRule === "spacing" && first ? { index: first.index, marked: markSpacing(text, [first]), ...(mech ? { rule: "spacing" as const } : {}) }
+        : taughtRule && taughtRule !== "spacing" ? { index: -1, marked: text, rule: taughtRule, line: step.write.mechanicsLines?.[taughtRule] ?? "" }
+        : null;
+      r.writing = { original: text, at: env.nowIso, assessable: assessment.assessable, flags, correction, ...(mech ? { mechanics: found } : {}), revision: null, kept: false };
+      const outcome = mech ? (found.length ? "flagged" : "clean") : !assessment.assessable ? "unassessable" : flags.length ? "flagged" : "clean";
+      // Mechanics only — meaning and grammar are never judged by the app. Content v7 judges the reviewed mechanical rules
+      // (spacing where a boundary is reviewed, the capital at the start, the end mark); earlier content the spacing alone.
+      const evidence: EvidenceCategory = mech ? (found.length ? "incorrect" : "independent") : !assessment.assessable ? "unscored" : flags.length ? "incorrect" : "independent";
+      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: mech ? found.length === 0 : !assessment.assessable ? null : flags.length === 0, evidence, support: [], modality: "typed", kind: "answer" };
       r.attempts.push(attempt);
       attemptRow(records, env, def, step, attempt, "de");
-      records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "writing_transfer" as const, language: "de", modality: "typed", text, metrics: { mission: def.id, step: step.id, assessed: assessment.assessed, correct: assessment.correct, flagged: flags.length, rules: flags.map((f) => f.rule), outcome, meaningJudged: false, spellingJudged: false }, at: env.nowIso });
-      state.feedback = updateSpacingFocus(feedbackOf(state), { outcome, modality: "typed", helpExposed: false, flagged: flags.length, text, at: env.nowIso, visit: env.visit, lesson: `mission:${def.id}/${step.id}` });
+      records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "writing_transfer" as const, language: "de", modality: "typed", text, metrics: { mission: def.id, step: step.id, assessed: assessment.assessed, correct: assessment.correct, flagged: flags.length, rules: flags.map((f) => f.rule), outcome, ...(mech ? { mechanics: found } : {}), meaningJudged: false, spellingJudged: false }, at: env.nowIso });
+      state.feedback = updateSpacingFocus(feedbackOf(state), { outcome: assessment.assessable ? (flags.length ? "flagged" : "clean") : "unassessable", modality: "typed", helpExposed: false, flagged: flags.length, text, at: env.nowIso, visit: env.visit, lesson: `mission:${def.id}/${step.id}` });
       if (correction) {
-        r.support.push({ kind: "spacing-correction", at: env.nowIso, detail: String(correction.index) });
-        support(records, env, def, step, "spacing-correction", { index: correction.index, rule: first!.rule });
-      } else finishStep(state, run, def, step, r, "done", evidence, env);
-      result = { outcome, flags: flags.length, correction: !!correction };
+        const kind = correction.rule && correction.rule !== "spacing" ? `${correction.rule}-correction` : "spacing-correction";
+        r.support.push({ kind, at: env.nowIso, detail: String(correction.index) });
+        support(records, env, def, step, kind, { index: correction.index, rule: correction.rule === "spacing" || !correction.rule ? first!.rule : correction.rule });
+      }
+      // Content v7: with Nokt switched on, the step stays open for Nokt's reaction to the ORIGINAL and the one revision.
+      const awaitNokt = !!step.write.nokt && noktPlanned(def, env);
+      if (!correction && !awaitNokt) finishStep(state, run, def, step, r, "done", evidence, env);
+      else if (!correction) r.phase = "clarified";
+      result = { outcome, flags: flags.length, correction: !!correction, ...(mech ? { mechanics: found, nokt: awaitNokt } : {}) };
       break;
     }
     case "revise": {
       const { step, r } = requireActive(run, def, action.step);
-      if (step.kind !== "write" || !r.writing || !r.writing.correction || r.status !== "active") throw new MissionOpError("not-allowed", "nothing to revise");
+      // Content v7: a revision may also follow Nokt's reaction alone (the step stays open for it); earlier content needs the correction.
+      const v7Write = !!step.write?.mechanics;
+      if (step.kind !== "write" || !r.writing || (!r.writing.correction && !v7Write) || r.status !== "active") throw new MissionOpError("not-allowed", "nothing to revise");
       if (action.text === null) {
         r.writing.kept = true;
         finishStep(state, run, def, step, r, "done", r.attempts[0]?.evidence ?? "unscored", env);
@@ -1337,6 +1483,22 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       }
       const text = String(action.text ?? "").replace(/\r/g, "").replace(/\n+/g, " ").slice(0, 300);
       if (!text.trim()) throw new MissionOpError("invalid", "write the sentence or keep it");
+      if (v7Write) {
+        // The original stays exactly as typed; the revision is a separate record, judged ONLY on the one taught mechanical rule.
+        const rule = r.writing.correction?.rule ?? null;
+        const same = text.trim() === r.writing.original.trim();
+        const fixed = rule === "spacing" ? evaluateRevision(r.writing.original, text, r.writing.flags.slice(0, 1)).outcome === "revised" : rule === "capital-start" ? !lowerStart(text) : rule === "end-mark" ? END_MARK_RE.test(text.trim()) : false;
+        const outcome = same ? "unchanged" : rule && fixed ? "revised" : "changed";
+        const helps = [...(r.writing.correction ? [r.writing.correction.rule === "spacing" || !r.writing.correction.rule ? "spacing-correction" : `${r.writing.correction.rule}-correction`] : []), ...(r.support.some((x) => x.kind === "nokt-writing") ? ["nokt-writing"] : [])];
+        r.writing.revision = { text, at: env.nowIso, outcome };
+        const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: outcome === "revised" ? true : outcome === "unchanged" && rule ? false : null, evidence: outcome === "revised" ? "supported" : outcome === "unchanged" && rule ? "incorrect" : "unscored", support: helps, modality: "typed", kind: "practice" };
+        r.attempts.push(attempt);
+        attemptRow(records, env, def, step, attempt, "de", `${step.objective}-revision`);
+        records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "writing_retry" as const, language: "de", modality: "typed", text, metrics: { mission: def.id, step: step.id, original: r.writing.original, outcome, rule, help: helps, meaningJudged: false }, at: env.nowIso });
+        finishStep(state, run, def, step, r, "done", r.attempts[0]?.evidence ?? "unscored", env);
+        result = { revision: outcome };
+        break;
+      }
       const ev = evaluateRevision(r.writing.original, text, r.writing.flags.slice(0, 1));
       r.writing.revision = { text, at: env.nowIso, outcome: ev.outcome };
       // The revision is a separate, supported record; the original stays exactly as typed.
@@ -1442,6 +1604,8 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       let parsed: ReturnType<typeof parseNoktReplyText> = null;
       // No reply at all, and the browser reports the runtime answer "used up for today": recorded as such (still withheld).
       if (origin === "missing" && action.reply === "" && action.noReply === "attempts_exhausted") reason = "no-reply-daily-allowance";
+      // Content v7: the browser's other reports (closed vocabulary) only name why there was no reply — still withheld, never authority.
+      else if (origin === "missing" && action.reply === "" && action.noReply && ["usage_limit", "busy", "bad_request", "unreachable", "unavailable", "timeout"].includes(action.noReply)) reason = `no-reply-${action.noReply}`;
       else if (origin !== "verified") reason = `origin-${origin}`;
       // A new answer since the dispatch: the reply talks about an older state of the question and is not shown.
       else if (r.attempts.length !== dispatch.revision || pr.status !== (dispatch.purpose === "diagnostic" ? "open" : "correct")) reason = "stale";
@@ -1564,13 +1728,13 @@ export function typingSummary(block: TypingBlockRun) {
 // Interests (V6-11)
 // ---------------------------------------------------------------------------
 
-export function recordInterest(state: MissionState, records: Records, input: { kind: InterestRecord["kind"]; text?: string | null; choice?: string | null }, visit: VisitId, source: InterestRecord["source"], nowIso: string, newId: () => string, adventure: import("./family-learning-mission-spec.ts").MissionNextAdventure | null = null): InterestRecord {
+export function recordInterest(state: MissionState, records: Records, input: { kind: InterestRecord["kind"]; text?: string | null; choice?: string | null; uncertainty?: string | null; corrects?: string | null }, visit: VisitId, source: InterestRecord["source"], nowIso: string, newId: () => string, adventure: import("./family-learning-mission-spec.ts").MissionNextAdventure | null = null): InterestRecord {
   if (!["text", "unsure", "no-preference", "declined", "choice"].includes(input.kind)) throw new MissionOpError("invalid", "unknown interest answer");
   const picked = input.kind === "choice" ? adventure?.choices.find((c) => c.id === input.choice) ?? null : null;
   if (input.kind === "choice" && !picked) throw new MissionOpError("invalid", "unknown choice for this visit");
   const text = input.kind === "text" ? String(input.text ?? "").replace(/\r/g, "").slice(0, 300) : picked ? picked.label : null;
   if (input.kind === "text" && !text!.trim()) throw new MissionOpError("invalid", "write a few words, or choose one of the buttons");
-  const rec: InterestRecord = { id: newId(), visit, source, kind: input.kind, text, ...(picked ? { choice: picked.id } : {}), at: nowIso };
+  const rec: InterestRecord = { id: newId(), visit, source, kind: input.kind, text, ...(picked ? { choice: picked.id } : {}), ...(input.uncertainty ? { uncertainty: input.uncertainty } : {}), ...(input.corrects ? { corrects: input.corrects } : {}), at: nowIso };
   state.interests = [...(state.interests ?? []), rec];
   records.samples.push({ id: rec.id, visitId: visit, taskId: "next-interest", kind: "next_interest" as never, language: "de", modality: input.kind === "choice" ? "pick" : "typed", text: text ?? "", metrics: { kind: rec.kind, source, ...(picked ? { choice: picked.id } : {}) }, at: nowIso });
   return rec;
@@ -1611,8 +1775,8 @@ export type MissionActiveView = {
   done: { speaker: string | null; text: string; language: string; translated: string | null }[];
   /** Reading tasks: the text to read (never audio). Listening: the text ONLY after the transcript support was recorded. */
   readText: string | null;
-  listen: { language: string; plays: number; completedPlays: number; failures: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean } | null;
-  questions: { id: string; prompt: string; kind: "pick" | "number"; options: string[] | null; status: "open" | "correct" | "given"; tries: number; hint: string | null; shownAnswer: string | null; lastWrong: string | null }[];
+  listen: { language: string; plays: number; completedPlays: number; failures: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean; noPictures?: boolean } | null;
+  questions: { id: string; prompt: string; kind: "pick" | "number"; options: string[] | null; status: "open" | "correct" | "given"; tries: number; hint: string | null; shownAnswer: string | null; lastWrong: string | null; picture?: string | null; pictures?: Record<string, string> | null }[];
   calc: { prompt: string; fields: { key: string; label: string; correct: boolean | null; last: number | null }[]; clarification: string | null; representation: { text: string; total: number; perGroup: number; unit: string } | null; teach: string | null; tries: number } | null;
   choice: { prompt: string; options: { id: string; label: string }[]; picked: { id: string; feedback: string; best: boolean }[]; teach: string | null } | null;
   produce: { language: string; frame: string; instruction: string; wordBank: string[] | null; feedback: string | null; repairLine: string | null; askMeaning: { given: string; options: { word: string; meaningDe: string }[] } | null; shownSentence: string | null; tries: number; maxTries: number; lastResponse: string | null; practiceFeedback?: string | null; practiceLeft?: number } | null;
@@ -1628,7 +1792,21 @@ export type MissionActiveView = {
   ending?: { success: string | null; next: string } | null;
   /** Content v6: tutor state for this step (never an answer). */
   tutor?: { available: boolean; offerPart: string | null };
+  /** Content v7: a judgment between plans (no option is marked as the answer; non-viable feedback only after it was picked). */
+  decide?: DecideView | null;
+  /** Content v7: a floor plan of a story/outcome step (the child's own chosen plan for the outcome). */
+  grid?: MissionGrid | null;
+  /** Isabel's workshop (`read`): the switch to supported letter/word learning; its content only after it was recorded. */
+  letters?: { offered: boolean; shown: { letters: { letter: string; sound: string; picture?: string }[]; spoken: string; teach: string } | null } | null;
+  /** Isabel's workshop (`craft`): the real-world tasks and her own «found» report. */
+  craft?: { tasks: { id: string; text: string; picture: string | null }[]; find: { prompt: string; count: number; options: { id: string; label: string; picture: string }[]; fact: string } | null; found: string[]; parentNote: string } | null;
+  /** Isabel's workshop: the picture of a story/outcome step (the outcome shows what she chose to make). */
+  picture?: { id: string; label: string } | null;
+  /** Isabel's workshop (outcome): one short factual recap from her actual results. */
+  recap?: string | null;
 };
+
+export type DecideView = { prompt: string; rule: string; options: { id: string; label: string; grid: MissionGrid | null; picture?: string | null }[]; picked: { id: string; viable: boolean; feedback: string }[]; chosen: string | null; reflect: string | null };
 
 export type SolvePartView = {
   id: string;
@@ -1642,7 +1820,7 @@ export type SolvePartView = {
   /** The child's own last wrong number (to catch an unchanged repeat before it is sent) — never an answer key. */
   lastWrong: number | null;
   feedback: { tone: "retry" | "stuck" | "success" | "taught" | "practice-wrong"; text: string } | null;
-  hints: { id: string; level: number; type: string; text: string; diagram: MissionDiagram | null; check: { prompt: string; kind: "number" | "pick"; options: string[] | null; unit: string | null; result: "correct" | "wrong" | null; reply: string | null; representation: MissionDiagram | null } | null }[];
+  hints: { id: string; level: number; type: string; text: string; diagram: MissionDiagram | null; grid?: MissionGrid | null; check: { prompt: string; kind: "number" | "pick"; options: string[] | null; unit: string | null; result: "correct" | "wrong" | null; reply: string | null; representation: MissionDiagram | null } | null }[];
   hintsLeft: number;
   /** False before the first attempt of a fresh application (hints come after trying). */
   hintAllowed: boolean;
@@ -1654,9 +1832,24 @@ export type SolvePartView = {
   solutionOffered: boolean;
   /** The open guided step still waits for its answer (the next level opens after it). */
   hintPending: boolean;
+  /** Isabel's workshop: the exact visible quantities of this question. */
+  counters?: MissionCounters | null;
 };
-export type SolveView = { facts: string[]; current: string | null; parts: SolvePartView[]; diagram: MissionDiagram | null; application: { of: string; kind: string } | null; total: number };
-export type WriteView = { prompt: string; instruction: string; placeholder: string | null; original: string | null; correction: { intro: string; marked: string } | null; revision: string | null; keepLabel: string; thanks: string | null };
+export type SolveView = { facts: string[]; current: string | null; parts: SolvePartView[]; diagram: MissionDiagram | null; application: { of: string; kind: string } | null; total: number; grids?: MissionGrid[] };
+export type WriteView = {
+  prompt: string;
+  instruction: string;
+  placeholder: string | null;
+  original: string | null;
+  correction: { intro: string; marked: string; rule?: string; line?: string | null } | null;
+  revision: string | null;
+  keepLabel: string;
+  thanks: string | null;
+  /** Content v7: the step waits for Nokt's reaction to the original and the one revision (the app's correction may be absent). */
+  awaitingRevision?: boolean;
+  /** Content v7: Nokt is planned to react to the original (only after the original exists — never before the first attempt). */
+  nokt?: boolean;
+};
 
 export type TypingBlockView = {
   announce: string;
@@ -1677,8 +1870,8 @@ export type MissionView = {
   id: string;
   title: string;
   objective: string;
-  /** Content v6: `scene` missions show one illustrated scene and their beats in order; absent/`walk` = the walkable island. */
-  presentation?: "walk" | "scene";
+  /** Content v6: `scene` missions show one illustrated scene and their beats in order; absent/`walk` = the walkable island. Content v7: `map` = the walkable island between clear task scenes. */
+  presentation?: "walk" | "scene" | "map" | "workshop";
   scene?: { art: string; alt: string } | null;
   /** Content v6 (scene): which beat of the reviewed order is on screen (1-based) and how many there are. */
   beat?: { index: number; count: number; next: string | null } | null;
@@ -1705,7 +1898,7 @@ function lineView(step: MissionStep, r: MissionStepRun | undefined, lines: Missi
 
 export function typingBlockView(def: MissionDef, run: MissionRun, content?: LearningContent, preview?: TypingBlockRun["plan"] | null): TypingBlockView {
   const block = run.typing;
-  const tb = def.typingBlock;
+  const tb = def.typingBlock!;
   // Before the start the block is announced from the same pace rule it will use (a preview; it is fixed at typing-start).
   const plan = block?.plan ?? preview ?? null;
   const planned = plan?.drills.length ?? 0;
@@ -1723,7 +1916,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     const qs = r.questions[q.id];
     const tries = r.attempts.filter((a) => a.questionId === q.id);
     const last = tries[tries.length - 1];
-    return { id: q.id, prompt: q.prompt, kind: q.kind, options: q.options ?? null, status: qs?.status ?? "open", tries: tries.length, hint: qs?.status === "open" && last && last.correct === false ? q.retryHint : null, shownAnswer: qs?.status === "given" ? q.answer : null, lastWrong: last && last.correct === false ? last.raw : null };
+    return { id: q.id, prompt: q.prompt, kind: q.kind, options: q.options ?? null, status: qs?.status ?? "open", tries: tries.length, hint: qs?.status === "open" && last && last.correct === false ? q.retryHint : null, shownAnswer: qs?.status === "given" ? q.answer : null, lastWrong: last && last.correct === false ? last.raw : null, ...(q.picture || q.pictures ? { picture: q.picture ?? null, pictures: q.pictures ?? null } : {}) };
   });
   const answers = r.attempts.filter((a) => a.kind === "answer");
   const lastAnswer = answers[answers.length - 1];
@@ -1755,7 +1948,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     produce = { language: p.language, frame: p.frame, instruction: p.instruction, wordBank: has("word-bank") ? p.wordBank : null, feedback, repairLine: r.repairLine ?? null, askMeaning: r.phase === "ask-meaning" ? r.pendingMeaning ?? null : null, shownSentence: has("answer-shown") ? p.accepted[0] : null, tries: answers.filter((x) => x.correct !== true).length, maxTries: def.rules.maxProduceAttempts, lastResponse: lastAnswer?.raw ?? null, practiceFeedback: r.status === "active" && lastPractice && lastPractice.correct !== true ? (practiceFails >= (def.rules.maxPracticeAttempts ?? 2) ? "Der Satz stimmt noch nicht ganz. Heb ihn fürs nächste Mal auf, dann üben wir ihn wieder." : "Noch nicht ganz gleich. Schau den Satz oben genau an und schreib ihn noch einmal.") : null, practiceLeft: Math.max(0, (def.rules.maxPracticeAttempts ?? 2) - practiceFails) };
   }
   const listen = step.kind === "listen" && step.text
-    ? { language: step.text.language, plays: r.plays, completedPlays: r.completedPlays ?? 0, failures: r.playFailures ?? 0, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation") }
+    ? { language: step.text.language, plays: r.plays, completedPlays: r.completedPlays ?? 0, failures: r.playFailures ?? 0, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation"), ...(def.presentation === "map" ? { noPictures: true } : {}) }
     : null;
   return {
     id: step.id,
@@ -1772,12 +1965,15 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     calc,
     choice,
     produce,
-    typing: step.kind === "typing-block" ? typingBlockView(def, run, content, !run.typing && state && state.typing.alignment?.result === "match" ? planTypingBlock(state, content, def.typingBlock, (state.feedback?.focus ?? []).filter((f) => f.kind === "typing-key" && f.status === "open").map((f) => f.key)) : null) : null,
+    typing: step.kind === "typing-block" ? typingBlockView(def, run, content, !run.typing && state && state.typing.alignment?.result === "match" ? planTypingBlock(previewState(state, def, content), content, def.typingBlock!, (state.feedback?.focus ?? []).filter((f) => f.kind === "typing-key" && f.status === "open").map((f) => f.key)) : null) : null,
     solve: step.solve ? solveView(def, step, r, tutorAvailable) : null,
     write: step.write ? writeView(step, r) : null,
+    ...(step.decide ? { decide: decideView(step.decide, r) } : {}),
+    ...(step.grid || step.fromChoice ? { grid: step.fromChoice ? chosenGrid(def, run, step.fromChoice) : step.grid ?? null } : {}),
     diagram: step.diagram ?? null,
     shipments: step.shipments ?? null,
-    ending: step.kind === "outcome" && def.presentation === "scene" ? sceneEnding(def, run) : null,
+    ending: step.kind === "outcome" && def.presentation === "scene" ? sceneEnding(def, run) : step.kind === "outcome" && def.presentation === "workshop" ? workshopEnding(def, run) : null,
+    ...(def.presentation === "workshop" ? workshopActive(def, run, step, r) : {}),
     tutor: { available: !!tutorAvailable, offerPart: Object.entries(r.parts ?? {}).find(([, x]) => x.offer === "shown")?.[0] ?? null },
   };
 }
@@ -1821,6 +2017,7 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun, tutorA
         type: hd.type,
         text: hd.text,
         diagram: hd.diagram ?? null,
+        ...(hd.grid ? { grid: hd.grid } : {}),
         check: hd.check ? { prompt: hd.check.prompt, kind: hd.check.kind, options: hd.check.options ?? null, unit: hd.check.unit ?? null, result: c?.result ?? null, reply: c ? (c.result === "correct" ? hd.check.correct : hd.check.wrong) : null, representation: c?.result === "wrong" ? hd.check.representation ?? null : null } : null,
       };
     });
@@ -1846,25 +2043,61 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun, tutorA
         const lastHint = pr.hints.length ? part.hints.find((h) => h.id === pr.hints[pr.hints.length - 1].id) : null;
         return !!lastHint?.check && !pr.checks[lastHint.id];
       })(),
+      ...(part.counters ? { counters: part.counters } : {}),
     });
   }
   const resolved = r.status !== "active";
-  return { facts: sv.facts, current, parts, diagram: resolved ? sv.diagram ?? null : null, application: sv.application ?? null, total: sv.parts.length };
+  return { facts: sv.facts, current, parts, diagram: resolved ? sv.diagram ?? null : null, application: sv.application ?? null, total: sv.parts.length, ...(sv.grids ? { grids: sv.grids } : {}) };
 }
 
 function writeView(step: MissionStep, r: MissionStepRun): WriteView {
   const w = step.write!;
   const wr = r.writing ?? null;
+  const open = !!wr && !wr.revision && !wr.kept && r.status === "active";
   return {
     prompt: w.prompt,
     instruction: w.instruction,
     placeholder: w.placeholder ?? null,
     original: wr?.original ?? null,
-    correction: wr?.correction && !wr.revision && !wr.kept ? { intro: w.correctionIntro, marked: wr.correction.marked } : null,
+    correction: wr?.correction && !wr.revision && !wr.kept ? { intro: w.correctionIntro, marked: wr.correction.marked, ...(wr.correction.rule ? { rule: wr.correction.rule, line: wr.correction.line ?? null } : {}) } : null,
     revision: wr?.revision?.text ?? null,
     keepLabel: w.keep,
     thanks: r.status !== "active" ? w.thanks : null,
+    ...(w.mechanics ? { awaitingRevision: open, nokt: !!w.nokt } : {}),
   };
+}
+
+function decideView(d: MissionDecide, r: MissionStepRun): DecideView {
+  const picked = r.attempts.filter((a) => a.choice).map((a) => d.options.find((o) => o.id === a.choice)!).filter(Boolean);
+  const chosen = picked.find((o) => o.viable) ?? null;
+  return {
+    prompt: d.prompt,
+    rule: d.rule,
+    options: d.options.map((o) => ({ id: o.id, label: o.label, grid: o.grid ?? null, ...(o.picture ? { picture: o.picture } : {}) })),
+    picked: picked.map((o) => ({ id: o.id, viable: o.viable, feedback: o.feedback })),
+    chosen: chosen?.id ?? null,
+    reflect: chosen ? d.reflect?.prompt ?? null : null,
+  };
+}
+
+/** Content v7: the plan the child chose in a decide step (its grid), or null before the choice. */
+export function chosenGrid(def: MissionDef, run: MissionRun, decideStep: string): MissionGrid | null {
+  const step = def.steps.find((s) => s.id === decideStep);
+  const r = run.steps[decideStep];
+  const pick = r?.attempts.find((a) => a.choice && step?.decide?.options.find((o) => o.id === a.choice)?.viable);
+  return pick ? step?.decide?.options.find((o) => o.id === pick.choice)?.grid ?? null : null;
+}
+
+/** World changes that are visible now: after their step, and — for a choice-bound change — only for the option the child chose. */
+export function visibleWorld(def: MissionDef, run: MissionRun | null, statuses: Record<string, MissionStepStatus>) {
+  return def.world.filter((w) => {
+    if (!["done", "practiced", "taught", "unresolved"].includes(statuses[w.after])) return false;
+    if (!w.choice) return true;
+    const r = run?.steps[w.choice.step];
+    const step = def.steps.find((s) => s.id === w.choice!.step);
+    const pick = r?.attempts.find((a) => a.choice && step?.decide?.options.find((o) => o.id === a.choice)?.viable);
+    return pick?.choice === w.choice.option;
+  });
 }
 
 /**
@@ -1901,6 +2134,136 @@ export function sceneEnding(def: MissionDef, run: MissionRun): { success: string
   return { success, next };
 }
 
+/** Isabel's workshop: the option she chose in a decide step (with its picture), or null before the choice. */
+export function chosenOption(def: MissionDef, run: MissionRun, decideStep: string): { id: string; label: string; picture: string | null; room: string } | null {
+  const step = def.steps.find((s) => s.id === decideStep);
+  const r = run.steps[decideStep];
+  if (!step?.decide || !r) return null;
+  const picked = [...r.attempts].reverse().find((a) => a.choice && step.decide!.options.some((o) => o.id === a.choice && o.viable));
+  const o = picked ? step.decide.options.find((x) => x.id === picked.choice)! : null;
+  // The room caption comes from the reviewed world change of that choice («Im Zimmer: ein Stuhl»), else the option label.
+  const room = o ? def.world.find((w) => w.choice?.step === decideStep && w.choice.option === o.id)?.label ?? o.label : null;
+  return o ? { id: o.id, label: o.label, picture: o.picture ?? null, room: room! } : null;
+}
+
+function workshopActive(def: MissionDef, run: MissionRun, step: MissionStep, r: MissionStepRun): Partial<MissionActiveView> {
+  const out: Partial<MissionActiveView> = {};
+  if (step.kind === "read" && step.letters) {
+    const shown = r.support.some((x) => x.kind === "letters");
+    out.letters = { offered: true, shown: shown ? { letters: step.letters.letters, spoken: step.letters.spoken, teach: step.letters.teach } : null };
+  }
+  if (step.kind === "craft" && step.craft) {
+    const made = def.steps.find((x) => x.kind === "decide");
+    const chosen = made ? chosenOption(def, run, made.id) : null;
+    out.craft = { tasks: step.craft.tasks.map((t) => ({ id: t.id, text: t.text, picture: t.picture ?? (t.id === "build" ? chosen?.picture ?? null : null) })), find: step.craft.find ?? null, found: r.found ?? [], parentNote: step.craft.parentNote };
+  }
+  if (step.fromChoice) {
+    const o = chosenOption(def, run, step.fromChoice);
+    out.picture = o && o.picture ? { id: o.picture, label: o.room } : null;
+  } else if (step.picture) out.picture = { id: step.picture, label: step.title };
+  if (step.kind === "outcome" && step.recap) out.recap = workshopRecap(def, run);
+  return out;
+}
+
+export const RESULT_DE = (r: MissionStepRun | undefined, partsOf?: MissionStep["solve"]): string => {
+  if (!r) return "nicht gemacht";
+  if (partsOf) {
+    const prs = partsOf.parts.map((p) => r.parts?.[p.id]).filter(Boolean) as MissionPartRun[];
+    if (prs.length && prs.every((p) => p.evidence === "independent")) return "beim ersten Versuch richtig";
+    if (prs.some((p) => p.status === "taught" || p.status === "unresolved")) return "zusammen mit Old Lila gelöst";
+    if (prs.some((p) => p.hints.length)) return "mit einem Hinweis richtig";
+    return "nach einem weiteren Versuch richtig";
+  }
+  if (r.outcome === "independent") return "beim ersten Versuch richtig";
+  if (r.outcome === "answer_exposed") return "Old Lila hat die Antwort gezeigt";
+  return r.support.some((x) => x.kind === "letters") ? "mit Buchstabenhilfe" : "nach einem weiteren Versuch richtig";
+};
+
+/**
+ * Isabel's workshop: ONE short factual recap for her (one sentence she can also hear) — what she did, with the help that was
+ * really used named (letters, Old Lila's answer, help with the bundles). No praise, no mastery claim; the per-task results
+ * stay in the parent's evidence.
+ */
+export function workshopRecap(def: MissionDef, run: MissionRun): string {
+  const parts: string[] = [];
+  const decide = def.steps.find((s) => s.kind === "decide");
+  const chosen = decide ? chosenOption(def, run, decide.id) : null;
+  if (chosen) parts.push(`${chosen.label.charAt(0).toLowerCase()}${chosen.label.slice(1)} gewählt`);
+  const ran = (kind: string) => def.steps.filter((s) => s.kind === kind && run.steps[s.id] && run.steps[s.id].status !== "active");
+  const match = ran("match")[0];
+  if (match) parts.push(run.steps[match.id].outcome === "answer_exposed" ? "die Materialien mit Old Lila angeschaut" : "Materialien zugeordnet");
+  const tens = ran("solve").filter((s) => s.objective.includes("tens"));
+  const lastTens = tens[tens.length - 1];
+  if (ran("solve").length) parts.push(lastTens && run.steps[lastTens.id].outcome !== "independent" ? "Klötze und Stäbe gezählt (die Bündel mit Hilfe)" : "Klötze und Stäbe gezählt");
+  const read = ran("read")[0];
+  if (read) {
+    const r = run.steps[read.id];
+    const word = read.text?.body ?? "";
+    parts.push(r.outcome === "answer_exposed" ? `das Wort ${word} mit Old Lila angeschaut` : r.support.some((x) => x.kind === "letters") ? `das Wort ${word} mit Buchstabenhilfe angeschaut` : `zum Wort ${word} das passende Bild gefunden`);
+  }
+  const listen = ran("listen")[0];
+  if (listen) parts.push(run.steps[listen.id].outcome === "answer_exposed" ? "beim Zuhören mit Old Lila das Bild gefunden" : "beim Zuhören das richtige Bild gefunden");
+  if (!parts.length) return "Du warst in Old Lilas Werkstatt.";
+  const last = parts.pop()!;
+  return `Du hast ${parts.length ? `${parts.join(", ")} und ${last}` : last}.`;
+}
+
+/**
+ * Isabel's workshop: ONE success that actually happened (first try, without help), else none — never praise after a wrong
+ * answer — and ONE next step from what is still open.
+ */
+export function workshopEnding(def: MissionDef, run: MissionRun): { success: string | null; next: string } {
+  const ran = (id: string) => run.steps[id];
+  const match = def.steps.find((s) => s.kind === "match" && ran(s.id)?.outcome === "independent");
+  const listen = def.steps.find((s) => s.kind === "listen" && ran(s.id)?.outcome === "independent");
+  const solves = def.steps.filter((s) => s.kind === "solve" && ran(s.id));
+  const firstTry = solves.find((s) => (s.solve?.parts ?? []).every((p) => ran(s.id)?.parts?.[p.id]?.evidence === "independent"));
+  const success = match ? "Du hast alle Materialien beim ersten Versuch richtig zugeordnet." : firstTry ? `${firstTry.title}: beim ersten Versuch richtig gezählt.` : listen ? "Du hast genau zugehört und das richtige Bild gezeigt." : null;
+  // The LATEST bundle check decides (a missed first check followed by a right fresh check is not «open»).
+  const tensRan = solves.filter((s) => s.objective.includes("tens"));
+  const openTens = tensRan.length && ran(tensRan[tensRan.length - 1].id)?.outcome !== "independent" ? tensRan[tensRan.length - 1] : null;
+  const readSupported = def.steps.find((s) => s.kind === "read" && ran(s.id) && ran(s.id)!.outcome !== "independent");
+  const next = openTens ? "Nächstes Mal zählen wir noch einmal mit Bündeln." : readSupported ? "Nächstes Mal schauen wir wieder Buchstaben an." : "Gleich wählst du, was du nächstes Mal machen möchtest.";
+  return { success, next };
+}
+
+/**
+ * Content v7 (map mission): ONE success that actually happened, from the records, and ONE next step from what is still open.
+ * A retrieval answered first time without help comes first (that is what this visit checks), then a first-try measurement,
+ * a plan that keeps the rule on the first pick, the Spanish request, the English directions. Never praise for zero mistakes.
+ */
+export function mapEnding(def: MissionDef, run: MissionRun): { success: string | null; next: string; open: boolean } {
+  const ran = (id: string) => run.steps[id];
+  const solves = def.steps.filter((s) => s.kind === "solve");
+  const retrieval = solves.find((s) => !s.solve?.application && s.required && ran(s.id)?.outcome === "independent" && s.objective.includes("retrieval"));
+  const fresh = solves.find((s) => s.solve?.application && ran(s.id)?.outcome === "independent");
+  const firstTry = solves.flatMap((s) => (s.solve?.parts ?? []).map((p) => ({ s, p, pr: ran(s.id)?.parts?.[p.id] }))).find((x) => x.pr?.evidence === "independent" && !x.s.objective.includes("retrieval"));
+  const plan = def.steps.find((s) => s.kind === "decide" && ran(s.id)?.outcome === "independent");
+  const request = def.steps.find((s) => (s.kind === "recall" || s.kind === "produce") && ran(s.id)?.outcome === "independent");
+  const listen = def.steps.find((s) => s.kind === "listen" && ran(s.id)?.outcome === "independent");
+  const success = retrieval
+    ? `${retrieval.title}: beim ersten Versuch richtig, ohne Hinweis.`
+    : fresh
+      ? `${fresh.title}: Du hast mit neuen Zahlen beim ersten Versuch richtig gerechnet.`
+      : firstTry
+        ? `${firstTry.s.title}: ${firstTry.p.answer} ${firstTry.p.unit} — beim ersten Versuch richtig.`
+        : plan
+          ? `Dein Plan hält die Regel ein: Jedes Beet liegt am Weg.`
+          : request
+            ? `Du hast Rosa auf Spanisch gesagt: «${[...ran(request.id)!.attempts].reverse().find((a) => a.correct === true)?.raw ?? ""}».`
+            : listen
+              ? "Du hast June auf Englisch verstanden."
+              : null;
+  const openSolve = solves.find((s) => ["taught", "unresolved"].includes(ran(s.id)?.status ?? "") || ran(s.id)?.outcome === "answer_exposed");
+  const openRequest = def.steps.find((s) => (s.kind === "recall" || s.kind === "produce") && ran(s.id) && ran(s.id)!.status !== "done");
+  const next = openSolve
+    ? `Nächstes Mal schauen wir «${openSolve.title}» noch einmal an, mit neuen Zahlen.`
+    : openRequest
+      ? "Nächstes Mal sagst du Rosa noch einmal auf Spanisch, was ihr braucht."
+      : "Nächstes Mal: dein neues Abenteuer im Gewächshaus — dein Wunsch zählt.";
+  return { success, next, open: !!(openSolve || openRequest) };
+}
+
 export function buildMissionView(state: MissionState, content: LearningContent, visit: VisitId, options: { tutorAvailable?: boolean } = {}): MissionView | null {
   const def = missionDefFor(content, visit);
   if (!def) return null;
@@ -1911,7 +2274,6 @@ export function buildMissionView(state: MissionState, content: LearningContent, 
   const active = activeStep && run.steps[activeStep.id] ? activeView(def, run, activeStep, run.steps[activeStep.id], content, state, !!options.tutorAvailable) : null;
   const nextStep = def.steps.find((s) => st[s.id] === "available" || st[s.id] === "active") ?? null;
   const beatStep = activeStep ?? nextStep;
-  const shownStatus = (id: string) => ["done", "practiced", "taught", "unresolved"].includes(st[id]);
   const required = def.steps.filter((s) => s.required || (st[s.id] !== "not-needed" && st[s.id] !== "locked"));
   const finishBlocked = def.steps.some((s) => (s.required ? !isResolved(st[s.id]) : st[s.id] === "available" || st[s.id] === "active"));
   return {
@@ -1920,7 +2282,7 @@ export function buildMissionView(state: MissionState, content: LearningContent, 
     objective: def.objective,
     presentation: def.presentation ?? "walk",
     scene: def.scene ?? null,
-    beat: def.presentation === "scene" ? { index: beatStep ? def.steps.indexOf(beatStep) + 1 : def.steps.length, count: def.steps.length, next: nextStep?.id ?? null } : null,
+    beat: def.presentation === "scene" || def.presentation === "workshop" ? { index: beatStep ? def.steps.indexOf(beatStep) + 1 : def.steps.length, count: def.steps.length, next: nextStep?.id ?? null } : null,
     theme: def.theme,
     places: def.map.places,
     paths: def.map.paths,
@@ -1930,7 +2292,7 @@ export function buildMissionView(state: MissionState, content: LearningContent, 
     here: steps.filter((s) => s.place === run.position && (s.status === "available" || s.status === "active")).map((s) => s.id),
     active,
     facts: Object.entries(run.facts).map(([key, f]) => ({ key, label: f.label, source: f.source })),
-    world: def.world.filter((w) => shownStatus(w.after)).map((w) => ({ id: w.id, prop: w.prop, place: w.place, count: w.count, label: w.label })),
+    world: visibleWorld(def, run, st).map((w) => ({ id: w.id, prop: w.prop, place: w.place, count: w.count, label: w.label })),
     progress: { required: required.length, resolved: required.filter((s) => isResolved(st[s.id])).length },
     canFinish: !finishBlocked && !run.finishedAt,
     finished: !!run.finishedAt,
@@ -1979,7 +2341,7 @@ export function missionReport(state: MissionState, content: LearningContent, vis
 export function planningInput(state: MissionState, content: LearningContent) {
   const missions = (content.missions ?? []).map((m) => missionReport(state, content, m.visit as VisitId)).filter((x): x is NonNullable<ReturnType<typeof missionReport>> => !!x);
   return {
-    interests: (state.interests ?? []).map((i) => ({ visit: i.visit, source: i.source, kind: i.kind, text: i.text, at: i.at })),
+    interests: (state.interests ?? []).map((i) => ({ visit: i.visit, source: i.source, kind: i.kind, text: i.text, at: i.at, ...(i.uncertainty ? { uncertainty: i.uncertainty } : {}), ...(i.corrects ? { corrects: i.corrects } : {}) })),
     pendingInterest: pendingInterest(state, content),
     openFocus: (state.feedback?.focus ?? []).filter((f) => f.status === "open").map((f) => ({ id: f.id, evidence: f.evidence, openedIn: f.openedIn })),
     retrieval: missions.flatMap((m) => m.retrieval.map((r) => ({ mission: m.def.id, ...r }))),
@@ -1996,6 +2358,17 @@ export function missionVisitSummary(state: MissionState, content: LearningConten
   const rep = missionReport(state, content, visit);
   if (!rep) return null;
   const { def, run } = rep;
+  if (def.presentation === "map") {
+    // Content v7: the same short shape — the visible result (his own plan), one evidenced success, one next step.
+    const ending = mapEnding(def, run);
+    const outcome = visibleWorld(def, run, rep.statuses).pop();
+    return {
+      success: ending.success ? { text: ending.success, basis: `${def.id} records` } : null,
+      practiced: null,
+      next: { branch: (ending.open ? "supported" : "success") as "success" | "supported", text: ending.next, basis: `${def.id} open items` },
+      artifact: run.finishedAt ? { kind: "mission" as const, text: outcome ? `${outcome.label}.` : `${def.title}: geschafft.` } : null,
+    };
+  }
   if (def.presentation === "scene") {
     // V6-F10 / V7-D12: short and child-sized — the visible result, one evidenced success, one next step. Details stay in the parent view.
     const ending = sceneEnding(def, run);
@@ -2091,6 +2464,7 @@ export type MissionEvidenceStep = {
 };
 
 const SUPPORT_DE: Record<string, string> = {
+  letters: "Buchstabenhilfe (Wechsel zum unterstützten Lernen von Buchstaben und Wort)",
   hint: "Hinweis",
   representation: "anderes Bild nach falscher Antwort im Hinweis",
   "direct-teaching": "Lösung gezeigt (selbst gewählt)",
@@ -2218,23 +2592,50 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
       }
       if (mains.some((a) => a.correct === false)) missing.push(`Ursache der falschen Antwort(en) bei «${part.id}» unbekannt (Aufgabe missverstanden, Rechenfehler oder Versehen sind nicht unterscheidbar ohne Gespräch).`);
     }
+    if (def.presentation === "workshop" && step.solve?.parts.some((p) => p.counters)) missing.push("Mit sichtbaren Zählhilfen gerechnet: unterstützte Anschauung. Kein Nachweis, dass sie Zehner und Einer ohne Bild versteht.");
     if (step.solve?.application) laterCheck = `Frische Anwendung am selben Tag nach «${def.steps.find((x) => x.id === step.solve!.application!.of)?.title ?? step.solve.application.of}» — kein Nachweis für Behalten über Tage.`;
     if (!step.solve) {
       for (const a of r.attempts) observed.push(`${a.questionId ? `${a.questionId}: ` : ""}«${a.raw}» ${a.correct === true ? "richtig" : a.correct === false ? "falsch" : "nicht bewertet"}${a.kind === "practice" ? " (Abschrift nach gezeigter Antwort)" : ""}${a.recall ? ` — ${a.recall === "fresh" ? "frisch abgerufen" : "nachdem das Wort gezeigt wurde"}` : ""}`);
+      if (def.presentation === "workshop" && step.kind === "read") {
+        const letters = r.support.find((x) => x.kind === "letters");
+        const before = letters ? r.attempts.filter((a) => a.at <= letters.at).length : r.attempts.length;
+        observed.push(letters ? `Buchstabenhilfe geöffnet nach ${before} Leseversuch(en); erst danach wurde das Wort vorgesprochen.` : "Das Wort wurde nicht vorgesprochen (kein Ton vor oder während des Leseversuchs).");
+        missing.push(letters ? "Nach dem Wechsel zur Buchstabenhilfe: unterstütztes Lernen von Buchstaben und Wort — kein selbständiges Lesen." : "Wort-Bild-Zuordnung (Auswahl aus 3 Bildern, Raten möglich) — kein Nachweis für selbständiges Lesen.");
+      }
+      if (def.presentation === "workshop" && step.kind === "listen") missing.push("Hörverstehen (Bild zeigen), getrennt von Lesen und Nachsprechen erfasst.");
+      if (def.presentation === "workshop" && step.kind === "match") missing.push("Materialien zugeordnet. Ob sie den Unterschied erklären kann, ist nicht erhoben.");
+      if (step.kind === "craft") {
+        observed.push(r.found?.length ? `Selbst gemeldet (nicht überprüft): gefunden ${r.found.map((id) => step.craft?.find?.options.find((o) => o.id === id)?.label ?? id).join(", ")}.` : "Keine Holzsachen angetippt.");
+        missing.push("Basteln und Erklärung finden ausserhalb der App statt: nur der Eintrag der Eltern zählt (siehe «Beobachtung der Eltern»).");
+      }
       if (step.kind === "listen") {
         observed.push(`Abgespielt ${r.plays}×; Abspiel-Ende gemeldet ${r.completedPlays ?? 0}×, fehlgeschlagen ${r.playFailures ?? 0}× (Gerätemeldung).`);
         missing.push("Ob der Ton tatsächlich hörbar war, ist nicht belegt.");
       }
       if (step.kind === "write" && r.writing) {
-        observed.splice(0, observed.length, `Original: «${r.writing.original}»`, ...(r.writing.revision ? [`Überarbeitung: «${r.writing.revision.text}» (${r.writing.revision.outcome})`] : []), `Abstände: ${!r.writing.assessable ? "nicht prüfbar (keine geprüfte Wortgrenze)" : r.writing.flags.length ? `${r.writing.flags.length} Stelle(n) markiert, 1 Korrektur gezeigt` : "keine Auffälligkeit"}`);
-        missing.push("Inhalt und Grammatik des Satzes wurden nicht beurteilt.");
+        const MECH_DE: Record<string, string> = { spacing: "Abstände", "capital-start": "grosser Satzanfang", "end-mark": "Satzzeichen am Ende" };
+        const mech = r.writing.mechanics;
+        observed.splice(
+          0,
+          observed.length,
+          `Original (unverändert gespeichert): «${r.writing.original}»`,
+          ...(r.writing.revision ? [`Überarbeitung: «${r.writing.revision.text}» (${r.writing.revision.outcome})`] : r.writing.kept ? ["Nicht überarbeitet («So lassen»)."] : []),
+          mech
+            ? `Geprüfte Regeln: ${mech.length ? `${mech.map((x) => MECH_DE[x] ?? x).join(", ")} auffällig` : "keine Auffälligkeit"}; gezeigt: ${r.writing.correction ? MECH_DE[r.writing.correction.rule ?? "spacing"] ?? "Korrektur" : "keine App-Korrektur"}${r.support.some((x) => x.kind === "nokt-writing") ? "; Nokt hat auf den Satz reagiert (siehe Gespräch)" : ""}.`
+            : `Abstände: ${!r.writing.assessable ? "nicht prüfbar (keine geprüfte Wortgrenze)" : r.writing.flags.length ? `${r.writing.flags.length} Stelle(n) markiert, 1 Korrektur gezeigt` : "keine Auffälligkeit"}`,
+        );
+        missing.push(mech ? "Inhalt und Grammatik wurden von der App nicht beurteilt; eine Reaktion von Nokt ist ein Gesprächsbeitrag, keine Bewertung." : "Inhalt und Grammatik des Satzes wurden nicht beurteilt.");
+      }
+      if (step.kind === "decide") {
+        observed.splice(0, observed.length, ...r.attempts.map((a) => `gewählt: «${a.raw}» — ${a.correct ? "hält die Regel ein" : "bricht die Regel (Erklärung gezeigt)"}`));
+        missing.push("Die Vorliebe für einen der gültigen Pläne wird nicht bewertet. Der Grund steht nur im Gespräch mit Nokt, wenn es eines gab.");
       }
       if (step.retrieval?.focus) laterCheck = `Wiederabruf von «${step.retrieval.focus.split(":").pop()}» aus früheren Besuchen; zählt nur frisch und ohne Hilfe als Behalten.`;
     }
     const support = [...new Set(r.support.map((x) => supportLabel(x.kind, x.detail)))];
     const supportRaw = [...new Set(r.support.map((x) => x.kind))];
     const tutor = tutorSummaryDe(r, noktMode);
-    const WITHHELD_DE: Record<string, string> = { "origin-missing": "ohne Nachweis der Herkunft", "origin-invalid": "Herkunft ungültig", "origin-malformed": "Herkunft fehlerhaft", stale: "zu einer älteren Antwort", malformed: "Form ungültig", "intent-not-in-phase": "passte nicht zur Gesprächsphase", "answer-disclosed": "hätte die Antwort verraten", "judges-open-answer": "hätte die offene Antwort bewertet", "several-questions": "mehrere Fragen", "repeated-question": "wiederholte Frage", "must-close": "Gespräch zu lang", "no-reply-daily-allowance": "keine Antwort: Nokts Tageskontingent war aufgebraucht (Meldung des Browsers)" };
+    const WITHHELD_DE: Record<string, string> = { "origin-missing": "ohne Nachweis der Herkunft", "origin-invalid": "Herkunft ungültig", "origin-malformed": "Herkunft fehlerhaft", stale: "zu einer älteren Antwort", malformed: "Form ungültig", "intent-not-in-phase": "passte nicht zur Gesprächsphase", "answer-disclosed": "hätte die Antwort verraten", "judges-open-answer": "hätte die offene Antwort bewertet", "several-questions": "mehrere Fragen", "repeated-question": "wiederholte Frage", "must-close": "Gespräch zu lang", "no-reply-daily-allowance": "keine Antwort: Nokts Tageskontingent war aufgebraucht (Meldung des Browsers)", "no-reply-usage_limit": "keine Antwort: Nutzungsgrenze des Anbieters (Meldung des Browsers)", "no-reply-busy": "keine Antwort: Nokt war noch beschäftigt (Meldung des Browsers)", "no-reply-bad_request": "keine Antwort: Anfrage von der Laufzeit abgelehnt (Meldung des Browsers)", "no-reply-unreachable": "keine Antwort: Laufzeit nicht erreichbar (Meldung des Browsers)", "no-reply-unavailable": "keine Antwort: Laufzeit oder Anbieter nicht verfügbar (Meldung des Browsers)", "no-reply-timeout": "keine Antwort: Zeitüberschreitung (Meldung des Browsers)" };
     const talk = (r.tutorTurns ?? []).map((t) => t.role === "child"
       ? { part: t.part, who: "Kind" as const, text: t.text, detail: t.via === "voice" ? "gesprochen (Abschrift, korrigierbar)" : "getippt", at: t.at }
       : t.shown

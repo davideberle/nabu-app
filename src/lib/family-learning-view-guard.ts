@@ -257,6 +257,12 @@ export function isChildView(value: unknown, child?: ChildId): value is ChildView
   // Visit 6 (content v5) fields: present (possibly null) on every view of this build; absent on an older server's view.
   if (value.mission !== undefined && !(value.mission === null || isMissionView(value.mission))) return false;
   if (value.interestPrompt !== undefined && !(value.interestPrompt === null || (isRec(value.interestPrompt) && isStr(value.interestPrompt.visit) && isStr(value.interestPrompt.prompt) && isStr(value.interestPrompt.entryPrompt) && isStr(value.interestPrompt.unsureLabel) && isStr(value.interestPrompt.noPreferenceLabel) && isStr(value.interestPrompt.declineLabel)))) return false;
+  // Content v7: the persisted Nokt conversations of this page (labels by origin only).
+  if (value.nokt !== undefined && value.nokt !== null) {
+    const n = value.nokt;
+    if (!isRec(n) || !isStr(n.mode)) return false;
+    if (n.talk !== undefined && !(isRec(n.talk) && Array.isArray(n.talk.sessions) && n.talk.sessions.every((s) => isRec(s) && isStr(s.id) && isStr(s.purpose) && isStr(s.page) && isBool(s.closed) && Array.isArray(s.lines) && s.lines.every((l) => isRec(l) && oneOf(l.role, ["child", "nokt", "app"]) && isStr(l.text))) && oneOf(n.talk.welcome, ["due", "done", "not-applicable"]))) return false;
+  }
   if (value.latestInterest !== undefined && !(value.latestInterest === null || (isRec(value.latestInterest) && isStr(value.latestInterest.visit) && oneOf(value.latestInterest.kind, ["text", "unsure", "no-preference", "declined", "choice"]) && isStrOrNull(value.latestInterest.text)))) return false;
   return true;
 }

@@ -31,6 +31,11 @@
 // Content version 6 (Visit 7, 2026-10-23) is the served version: version 5 plus the scene mission visit `v8`. Rollback to the
 // released chapter set is this build with FAMILY_LEARNING_CONTENT_CAP=5 (a started v8 is parked untouched, its mission state
 // and every record stay readable; removing the cap resumes exactly). The vocabulary inventory is unchanged (v3).
+// Content version 7 (Visit 8, 2026-10-26) is the served version: version 6 plus the map mission visit `v9` and the typing
+// lesson TYPE-CH-COURSE-6. Rollback to the released chapter set is this build with FAMILY_LEARNING_CONTENT_CAP=6 (a started
+// v9 is parked untouched, its mission state, Nokt talks and every record stay readable; removing the cap resumes exactly).
+// The vocabulary inventory is unchanged (v3).
+import contentV7 from "@/data/family-learning/content/santiago-expedition-v7.json";
 import contentV6 from "@/data/family-learning/content/santiago-expedition-v6.json";
 import contentV5 from "@/data/family-learning/content/santiago-expedition-v5.json";
 import contentV4 from "@/data/family-learning/content/santiago-expedition-v4.json";
@@ -39,6 +44,9 @@ import contentV2 from "@/data/family-learning/content/santiago-expedition-v2.jso
 import contentV1 from "@/data/family-learning/content/santiago-expedition-v1.json";
 import vocabularyV2 from "@/data/family-learning/content/vocabulary-inventory-v2.json";
 import vocabularyV3 from "@/data/family-learning/content/vocabulary-inventory-v3.json";
+import isabelWorkshopV1 from "@/data/family-learning/content/isabel-workshop-v1.json";
+import { asIsabelContent } from "./family-learning-isabel";
+import type { ChildId } from "./family-assistant-turn";
 import { asLearningContent, type LearningContent } from "./family-learning-content";
 import { asVocabularyInventory, type VocabularyInventory } from "./family-learning-vocabulary";
 
@@ -66,10 +74,10 @@ export function loadVocabularyInventory(): VocabularyInventory {
   }
 }
 
-/** The content version this server instance serves (6; 5, 4, 3, 2 or 1 under the rollback cap). */
-export function servedContentVersion(): 1 | 2 | 3 | 4 | 5 | 6 {
+/** The content version this server instance serves (7; 6, 5, 4, 3, 2 or 1 under the rollback cap). */
+export function servedContentVersion(): 1 | 2 | 3 | 4 | 5 | 6 | 7 {
   const cap = process.env.FAMILY_LEARNING_CONTENT_CAP;
-  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : cap === "4" ? 4 : cap === "5" ? 5 : 6;
+  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : cap === "4" ? 4 : cap === "5" ? 5 : cap === "6" ? 6 : 7;
 }
 
 export function loadLearningContent(): LearningContent {
@@ -77,10 +85,55 @@ export function loadLearningContent(): LearningContent {
   if (failure) throw failure;
   try {
     const served = servedContentVersion();
-    cached = asLearningContent(served === 1 ? contentV1 : served === 2 ? contentV2 : served === 3 ? contentV3 : served === 4 ? contentV4 : served === 5 ? contentV5 : contentV6);
+    cached = asLearningContent(served === 1 ? contentV1 : served === 2 ? contentV2 : served === 3 ? contentV3 : served === 4 ? contentV4 : served === 5 ? contentV5 : served === 6 ? contentV6 : contentV7);
     return cached;
   } catch (error) {
     failure = error instanceof Error ? error : new Error(String(error));
     throw failure;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Isabel Visit 1 (2026-10-26): child-bound content. Each child is served HER/HIS OWN reviewed content line — Santiago the
+// expedition (above, with its rollback cap), Isabel «Old Lilas kleine Werkstatt» (`isabel-workshop`, version 1). A route
+// never serves one child's content to the other: the content is chosen by the child of the verified credential (or the
+// parent's explicit child query), and its `child` field is checked again. Isabel's line has its own switch:
+// FAMILY_LEARNING_ISABEL_CONTENT=off serves nothing for her (her honest "not prepared" state; a started workshop stays parked
+// and readable), independent of Santiago's FAMILY_LEARNING_CONTENT_CAP.
+// ---------------------------------------------------------------------------
+
+let cachedIsabel: LearningContent | null = null;
+let isabelFailure: Error | null = null;
+
+export function isabelContentServed(): boolean {
+  return process.env.FAMILY_LEARNING_ISABEL_CONTENT !== "off";
+}
+
+export function loadIsabelContent(): LearningContent {
+  if (cachedIsabel) return cachedIsabel;
+  if (isabelFailure) throw isabelFailure;
+  try {
+    cachedIsabel = asIsabelContent(isabelWorkshopV1);
+    return cachedIsabel;
+  } catch (error) {
+    isabelFailure = error instanceof Error ? error : new Error(String(error));
+    throw isabelFailure;
+  }
+}
+
+/** The content served to one child, or null when none is prepared for that child (her/his honest "not prepared" state). Throws when the served file does not reconcile. */
+export function loadLearningContentFor(child: ChildId): LearningContent | null {
+  if (child === "santiago") return loadLearningContent();
+  if (child === "isabel") return isabelContentServed() ? loadIsabelContent() : null;
+  return null;
+}
+
+/** The vocabulary inventory of a child's content (Santiago only; Isabel's workshop has no word inventory). */
+export function loadVocabularyInventoryFor(child: ChildId): VocabularyInventory | null {
+  return child === "santiago" ? loadVocabularyInventory() : null;
+}
+
+/** The content id whose records belong to a child (stable even when the content is switched off). */
+export function contentIdFor(child: ChildId): string {
+  return child === "isabel" ? "isabel-workshop" : "santiago-expedition";
 }

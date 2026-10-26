@@ -44,6 +44,10 @@ export type MissionQuestion = {
   fact?: { key: string; label: string };
   /** Reviewed neutral hint after a first wrong answer. */
   retryHint: string;
+  /** Isabel's workshop: the object the question is about, drawn (a picture id of `WORKSHOP_PICTURES`). */
+  picture?: string;
+  /** Isabel's workshop: one picture per option (option text → picture id); the options are answered by tapping the picture. */
+  pictures?: Record<string, string>;
 };
 
 export type MissionField = { key: string; label: string; answer: number };
@@ -77,10 +81,19 @@ export type MissionProduce = {
   wordBank: string[];
   /** Content v6 (V6-F07): acknowledge the understood word first, then ONE specific spelling correction per try. */
   nearMiss?: { ack: string };
+  /** Content v7: target words the step itself models in its intro (a supported exchange) — supplied from the opening, never fresh recall. */
+  modelled?: string[];
 };
 
 /** Content v6: an exact quantity picture (`total` objects in containers of `perGroup`); numbers come from the data, never from art. */
 export type MissionDiagram = { total: number; perGroup: number; unit: string; container: string };
+
+/**
+ * Content v7 (Visit 8): a floor plan on a grid of equal fields (`cols` × `rows`, each field `fieldMeters` × `fieldMeters`).
+ * `cells` is one string per row: `.` = an empty field, `W` = path, a lowercase letter = one bed (all fields with the same
+ * letter form that bed). The validator recomputes every count from the cells; the art never carries a number.
+ */
+export type MissionGrid = { label: string; cols: number; rows: number; fieldMeters: number; cells: string[]; door?: { side: "left" | "right" | "top" | "bottom"; index: number } | null };
 
 /** Content v6: the optional small check inside a reviewed hint — a meaningful child response, recorded apart from the main answer. */
 export type MissionHintCheck = {
@@ -107,6 +120,8 @@ export type MissionHint = {
   text: string;
   check?: MissionHintCheck;
   diagram?: MissionDiagram | null;
+  /** Content v7: a floor-plan picture shown with this hint (exact, from the data). */
+  grid?: MissionGrid | null;
   /** Parts whose answer this hint makes visible as soon as it is shown (answer exposure, recorded). */
   exposes?: string[];
 };
@@ -128,7 +143,17 @@ export type MissionPart = {
   hintsAfterFirstAttempt?: boolean;
   /** Planned reflection (N7-04c): asked by the verified tutor only; without it the explanation stays missing evidence. */
   reflect?: { prompt: string };
+  /** Isabel's workshop: the exact visible quantities of this question (supported visual arithmetic, counts from the data). */
+  counters?: MissionCounters | null;
 };
+
+/**
+ * Isabel's workshop: an exact picture of small quantities — `a` pieces and `b` pieces added (`+`) or `b` of `a` taken away
+ * (`−`, drawn crossed out). With `bundles`, every full ten is drawn as one tied bundle of ten sticks and the rest loose.
+ * The child counts what she sees: a correct answer on such a task is supported visual arithmetic, never proof of unaided
+ * place-value mastery.
+ */
+export type MissionCounters = { a: number; b: number; op: "+" | "-"; unit: string; bundles?: boolean };
 
 /** Content v6: a reviewed problem with one question per part. */
 export type MissionSolve = {
@@ -137,12 +162,39 @@ export type MissionSolve = {
   parts: MissionPart[];
   /** The visible consequence once the problem is resolved (exact counts). */
   diagram?: MissionDiagram | null;
+  /** Content v7: floor plans visible the whole time (reference, never a hint). */
+  grids?: MissionGrid[];
   /** A fresh same-day application of an earlier problem: never delayed retention. */
   application?: { of: string; kind: "same-day-application" };
 };
 
 /** Content v6: one own German sentence with the existing mechanical spacing review (D-W1). */
-export type MissionWrite = { prompt: string; instruction: string; placeholder?: string; thanks: string; correctionIntro: string; keep: string };
+export type MissionWrite = {
+  prompt: string;
+  instruction: string;
+  placeholder?: string;
+  thanks: string;
+  correctionIntro: string;
+  keep: string;
+  /**
+   * Content v7 (Visit 8): the ONE useful correction may also be the capital at the sentence start or the end mark (reviewed,
+   * deterministic, in this priority after spacing), and Nokt may react to the original (`nokt`). The original is immutable;
+   * one revision is kept apart. Absent = the Visit 7 rule (spacing only).
+   */
+  mechanics?: ("spacing" | "capital-start" | "end-mark")[];
+  nokt?: boolean;
+  /** Reviewed lines of the app's own correction for each mechanical rule (child-facing). */
+  mechanicsLines?: Partial<Record<"capital-start" | "end-mark", string>>;
+};
+
+/** Content v7: a judgment between plans — every `viable` option is a legitimate choice (none is "the" answer); a non-viable one breaks a stated rule and gets its reviewed explanation. */
+export type MissionDecide = {
+  prompt: string;
+  rule: string;
+  options: { id: string; label: string; viable: boolean; feedback: string; grid?: MissionGrid | null; picture?: string }[];
+  /** Planned reflection about the reason (with the verified tutor only; never a scored explanation). */
+  reflect?: { prompt: string };
+};
 
 export type MissionCalc = {
   prompt: string;
@@ -155,7 +207,37 @@ export type MissionCalc = {
 
 export type MissionChoiceOption = { id: string; label: string; valid: boolean; best: boolean; feedback: string };
 
-export type MissionStepKind = "story" | "read" | "listen" | "calc" | "choice" | "produce" | "recall" | "typing-block" | "outcome" | "solve" | "write";
+/**
+ * Isabel's workshop: every picture id the content may name. The drawings live in the workshop component; the validator checks
+ * the ids so a typo can never show an empty card.
+ */
+export const WORKSHOP_PICTURES = [
+  "chair-wood", "window-glass", "wall-brick", "shelf-wood", "material-wood", "material-glass", "material-brick",
+  "branch", "ball", "house", "table-wood", "spoon-wood", "pencil", "door-wood", "toy-blocks", "frame-wood", "room",
+  "next-furniture", "next-garden", "next-animals",
+] as const;
+export type WorkshopPicture = (typeof WORKSHOP_PICTURES)[number];
+
+export type MissionStepKind = "story" | "read" | "listen" | "calc" | "choice" | "produce" | "recall" | "typing-block" | "outcome" | "solve" | "write" | "decide" | "match" | "craft";
+
+/**
+ * Isabel's workshop — supported letter/word learning for a beginning reader (`read` steps). Offered as an explicit switch
+ * («Buchstaben zusammen anschauen») before or after a reading attempt; opening it is recorded help BEFORE it is shown, and only
+ * then is the word spoken. Any later answer is supported, never independent reading.
+ */
+export type MissionLetters = { word: string; letters: { letter: string; sound: string; picture?: string }[]; spoken: string; teach: string };
+
+/**
+ * Isabel's workshop — a real-world task away from the screen (build with paper/cardboard, explain a material choice to a
+ * parent, find wooden things at home). The app records only what the child taps herself (`found`, her own report) and the
+ * parent's own observation (parent cockpit); it never assesses the craft.
+ */
+export type MissionCraft = {
+  tasks: { id: string; text: string; picture?: string }[];
+  /** Pictured candidates for «Ich habe gefunden …» (her own report, up to `findCount`); not verified by the app. */
+  find?: { prompt: string; count: number; options: { id: string; label: string; picture: string }[]; fact: string };
+  parentNote: string;
+};
 
 /** Content v6 (V6-F06): reviewed closing lines per actual outcome. Success lines are never shown after practice, teaching or an open item. */
 export type MissionDoneBy = Partial<Record<"independent" | "supported" | "practiced" | "taught" | "unresolved", MissionLine[]>>;
@@ -187,12 +269,25 @@ export type MissionStep = {
   solve?: MissionSolve;
   /** Content v6: one own sentence. */
   write?: MissionWrite;
+  /** Content v7: a judgment between plans. */
+  decide?: MissionDecide;
+  /** Content v7: a floor plan shown with a story/outcome step (the plan the child chose, when `fromChoice` names the decide step). */
+  grid?: MissionGrid | null;
+  fromChoice?: string;
   /** Content v6: an exact quantity picture shown with a story/outcome step. */
   diagram?: MissionDiagram | null;
   /** Content v6: several labelled quantity pictures (e.g. two shipments), each with exact counts. */
   shipments?: { label: string; diagram: MissionDiagram }[];
   /** Recall steps: the earlier evidence this retrieval revisits (an open practice focus id or a step of this mission). */
   retrieval?: { focus?: string; step?: string; note: string };
+  /** Isabel's workshop: supported letter/word learning offered on a `read` step. */
+  letters?: MissionLetters;
+  /** Isabel's workshop: a real-world task (`craft` steps). */
+  craft?: MissionCraft;
+  /** Isabel's workshop: a picture shown with a story/outcome step (`fromChoice` shows the picture of the chosen option instead). */
+  picture?: string;
+  /** Isabel's workshop: a short factual recap of the visit shown on the outcome step (computed from her actual results). */
+  recap?: boolean;
   /** Supplies granted when the step ends (any outcome that lets the mission continue). */
   supplies?: Record<string, number>;
 };
@@ -201,10 +296,12 @@ export type MissionWorldChange = {
   id: string;
   /** The step whose completion (done, practiced, taught or unresolved-but-given) shows the change. */
   after: string;
-  prop: "crates" | "tool-crates" | "boats" | "ropes" | "route" | "radio" | "sail" | "trays" | "garden";
+  prop: "crates" | "tool-crates" | "boats" | "ropes" | "route" | "radio" | "sail" | "trays" | "garden" | "beds" | "seedlings" | "room";
   place: string;
   count: number;
   label: string;
+  /** Content v7: shown only when the child chose this option in the named decide step (the consequence of his own plan). */
+  choice?: { step: string; option: string };
 };
 
 export type MissionTypingBlock = {
@@ -226,10 +323,21 @@ export type MissionTypingBlock = {
   pattern: ("current" | "review" | "focus")[];
   announce: string;
   note: string;
+  /**
+   * Content v7: reviewed drill line sets per course lesson (cycled by the planner, so a drill is not the same lines over and
+   * over). A set must have at least as many lines as the lesson (so it still counts for the course progression) and may only
+   * use the keys introduced up to that lesson. Absent = the lesson's own lines.
+   */
+  material?: Record<string, string[][]>;
+  /**
+   * Content v7: at the block start, apply the EXISTING progression rule to the saved lesson once more — it could not advance
+   * while the course ended there (content ceiling); never a new criterion, never a skip.
+   */
+  progressOnStart?: boolean;
 };
 
 /** Content v6 (V7-D13): concrete next-story directions offered at the end; the child may also write an own idea or leave without choosing. */
-export type MissionNextAdventure = { prompt: string; hint: string; choices: { id: string; label: string; picture: "greenhouse" | "water" }[]; ownIdeaLabel: string };
+export type MissionNextAdventure = { prompt: string; hint: string; choices: { id: string; label: string; picture: "greenhouse" | "water" | WorkshopPicture }[]; ownIdeaLabel: string };
 
 export type MissionDef = {
   id: string;
@@ -237,8 +345,8 @@ export type MissionDef = {
   visit: string;
   title: string;
   objective: string;
-  /** Content v6: `scene` = one illustrated scene with a speech bubble and the beats in their reviewed order; absent = the walkable map. */
-  presentation?: "walk" | "scene";
+  /** Content v6: `scene` = one illustrated scene with a speech bubble and the beats in their reviewed order; absent = the walkable map. Content v7: `map` = the walkable island between clear task scenes (free order along the dependencies). */
+  presentation?: "walk" | "scene" | "map" | "workshop";
   /** Content v6: the painted scene (build-time static asset id) and its description. */
   scene?: { art: string; alt: string };
   nextAdventure?: MissionNextAdventure;
@@ -248,7 +356,8 @@ export type MissionDef = {
   characters: MissionCharacter[];
   steps: MissionStep[];
   world: MissionWorldChange[];
-  typingBlock: MissionTypingBlock;
+  /** Every Santiago mission has exactly one typing block; Isabel's workshop has none (no typing is asked of her). */
+  typingBlock?: MissionTypingBlock;
   /** Planned length in minutes — a calibration estimate, never a countdown. */
   estimatedMinutes: { min: number; max: number };
   rules: {
@@ -283,7 +392,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 const str = (v: unknown) => typeof v === "string" && v.trim().length > 0;
 const num = (v: unknown) => typeof v === "number" && Number.isFinite(v);
 
-export const MISSION_STEP_KINDS: readonly MissionStepKind[] = ["story", "read", "listen", "calc", "choice", "produce", "recall", "typing-block", "outcome", "solve", "write"];
+export const MISSION_STEP_KINDS: readonly MissionStepKind[] = ["story", "read", "listen", "calc", "choice", "produce", "recall", "typing-block", "outcome", "solve", "write", "decide"];
 
 /** Exact inventory of content version 5, by stable id (reconciliation contract). */
 export const EXPECTED_MISSION_IDS_V5: readonly string[] = ["MISSION-SHIP-SUPPLY"];
@@ -293,9 +402,12 @@ export const EXPECTED_MISSION_STEP_IDS_V5: readonly string[] = [
 /** Content version 6 (Visit 7): version 5 plus the garden mission of visit v8, by stable id. */
 export const EXPECTED_MISSION_IDS_V6: readonly string[] = [...EXPECTED_MISSION_IDS_V5, "MISSION-ISLAND-GARDEN"];
 export const EXPECTED_MISSION_STEP_IDS_GARDEN: readonly string[] = ["G1-REQUEST", "G2-PACK", "G3-DELIVERY", "G4-RADIO", "G5-TOOLS", "G6-TYPING", "G7-FRESH", "G8-JOURNAL", "G9-HOME"];
-export const EXPECTED_MISSION_STEPS: Readonly<Record<string, readonly string[]>> = { "MISSION-SHIP-SUPPLY": EXPECTED_MISSION_STEP_IDS_V5, "MISSION-ISLAND-GARDEN": EXPECTED_MISSION_STEP_IDS_GARDEN };
+/** Content version 7 (Visit 8): version 6 plus the greenhouse map mission of visit v9, by stable id. */
+export const EXPECTED_MISSION_IDS_V7: readonly string[] = [...EXPECTED_MISSION_IDS_V6, "MISSION-GREENHOUSE-GROW"];
+export const EXPECTED_MISSION_STEP_IDS_GREENHOUSE: readonly string[] = ["H1-PLAN", "H2-POTS", "H3-POTS-AGAIN", "H4-FLOOR", "H5-PLANS", "H6-CHOOSE", "H7-JUNE", "H8-TOOLS", "H9-WATERING", "H10-TYPING", "H11-JOURNAL", "H12-DONE"];
+export const EXPECTED_MISSION_STEPS: Readonly<Record<string, readonly string[]>> = { "MISSION-SHIP-SUPPLY": EXPECTED_MISSION_STEP_IDS_V5, "MISSION-ISLAND-GARDEN": EXPECTED_MISSION_STEP_IDS_GARDEN, "MISSION-GREENHOUSE-GROW": EXPECTED_MISSION_STEP_IDS_GREENHOUSE };
 /** Every known mission step id (closed telemetry vocabulary). */
-export const ALL_MISSION_STEP_IDS: readonly string[] = [...EXPECTED_MISSION_STEP_IDS_V5, ...EXPECTED_MISSION_STEP_IDS_GARDEN];
+export const ALL_MISSION_STEP_IDS: readonly string[] = [...EXPECTED_MISSION_STEP_IDS_V5, ...EXPECTED_MISSION_STEP_IDS_GARDEN, ...EXPECTED_MISSION_STEP_IDS_GREENHOUSE];
 
 function normalize(value: string): string {
   return value.toLowerCase().normalize("NFC").replace(/[.,!?;:¡¿"'’]/g, " ").replace(/\s+/g, " ").trim();
@@ -307,7 +419,7 @@ export function checkMissions(raw: unknown, problems: string[], contentVersion =
     problems.push("missions: list required from content version 5");
     return;
   }
-  const expectedIds = contentVersion >= 6 ? EXPECTED_MISSION_IDS_V6 : EXPECTED_MISSION_IDS_V5;
+  const expectedIds = contentVersion >= 7 ? EXPECTED_MISSION_IDS_V7 : contentVersion >= 6 ? EXPECTED_MISSION_IDS_V6 : EXPECTED_MISSION_IDS_V5;
   const ids = raw.map((m) => (isRecord(m) && typeof m.id === "string" ? m.id : "?"));
   const missing = expectedIds.filter((id) => !ids.includes(id));
   const extra = ids.filter((id) => !expectedIds.includes(id));
@@ -358,7 +470,8 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
   const missing = expectedSteps.filter((id) => !stepIds.includes(id));
   const extra = stepIds.filter((id) => !expectedSteps.includes(id));
   const scene = m.presentation === "scene";
-  if (m.presentation !== undefined && m.presentation !== "walk" && !scene) problems.push(`${label}: presentation must be walk or scene`);
+  const mapMission = m.presentation === "map";
+  if (m.presentation !== undefined && m.presentation !== "walk" && !scene && !mapMission) problems.push(`${label}: presentation must be walk, scene or map`);
   if (scene && (!isRecord(m.scene) || !str(m.scene.art) || !str(m.scene.alt))) problems.push(`${label}: a scene mission names its painted art and its description`);
   if (missing.length) problems.push(`${label}: steps missing ${missing.join(", ")}`);
   if (extra.length) problems.push(`${label}: unexpected steps ${extra.join(", ")}`);
@@ -368,6 +481,7 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
   let choices = 0;
   let typingBlocks = 0;
   let solves = 0;
+  let decides = 0;
   for (const s of steps) {
     if (!isRecord(s)) continue;
     const sl = `${label}/${String(s.id)}`;
@@ -393,6 +507,8 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
       }
     }
     if (s.diagram !== undefined && s.diagram !== null && !checkDiagram(s.diagram)) problems.push(`${sl}: malformed diagram`);
+    if (s.grid !== undefined && s.grid !== null) checkGrid(s.grid, sl, problems, false);
+    if (s.fromChoice !== undefined && (!stepIds.includes(String(s.fromChoice)) || !steps.some((x) => isRecord(x) && x.id === s.fromChoice && x.kind === "decide"))) problems.push(`${sl}: fromChoice must name a decide step of this mission`);
     if (s.shipments !== undefined && (!Array.isArray(s.shipments) || s.shipments.some((x) => !isRecord(x) || !str(x.label) || !checkDiagram(x.diagram)))) problems.push(`${sl}: malformed shipments`);
     if (s.when !== undefined) {
       const w = isRecord(s.when) ? s.when : null;
@@ -479,10 +595,36 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
       case "write": {
         const w = isRecord(s.write) ? s.write : null;
         if (!w || !["prompt", "instruction", "thanks", "correctionIntro", "keep"].every((k) => str(w[k]))) problems.push(`${sl}: write needs prompt, instruction, thanks, correctionIntro and keep`);
+        if (w && w.mechanics !== undefined) {
+          const mech = Array.isArray(w.mechanics) ? (w.mechanics as unknown[]) : [];
+          if (!mech.length || mech.some((x) => !["spacing", "capital-start", "end-mark"].includes(String(x)))) problems.push(`${sl}: mechanics names only spacing / capital-start / end-mark`);
+          const lines = isRecord(w.mechanicsLines) ? w.mechanicsLines : {};
+          for (const x of mech) if (x !== "spacing" && !str((lines as Record<string, unknown>)[String(x)])) problems.push(`${sl}: mechanicsLines.${String(x)} (the reviewed child-facing correction) required`);
+        }
+        if (w && w.nokt !== undefined && typeof w.nokt !== "boolean") problems.push(`${sl}: write.nokt must be a boolean`);
+        break;
+      }
+      case "decide": {
+        decides += 1;
+        const d = isRecord(s.decide) ? s.decide : null;
+        const opts = Array.isArray(d?.options) ? (d!.options as unknown[]) : [];
+        if (!d || !str(d.prompt) || !str(d.rule) || opts.length < 2) problems.push(`${sl}: decide needs a prompt, the rule and at least two options`);
+        const viable = opts.filter((o) => isRecord(o) && o.viable === true);
+        if (viable.length < 2) problems.push(`${sl}: a judgment offers at least two viable options (otherwise it is a quiz, use solve)`);
+        for (const o of opts) {
+          if (!isRecord(o) || !str(o.id) || !str(o.label) || typeof o.viable !== "boolean" || !str(o.feedback)) problems.push(`${sl}: malformed option`);
+          else if (o.grid !== undefined && o.grid !== null) checkGrid(o.grid, `${sl}/${String(o.id)}`, problems, true);
+        }
+        if (d && d.reflect !== undefined && (!isRecord(d.reflect) || !str(d.reflect.prompt))) problems.push(`${sl}: reflect needs its prompt`);
+        if (d) for (const o of opts) if (isRecord(o) && !o.viable && !/weg|regel|rule|nicht/i.test(String(o.feedback))) problems.push(`${sl}/${String(o.id)}: a non-viable option's feedback must name the rule it breaks`);
         break;
       }
       default:
         break;
+    }
+    if ((s.kind === "produce" || s.kind === "recall") && isRecord(s.produce) && s.produce.modelled !== undefined) {
+      const kws = (Array.isArray(s.produce.keywords) ? (s.produce.keywords as unknown[]) : []).map((k) => normalize(String(k)));
+      if (!Array.isArray(s.produce.modelled) || !s.produce.modelled.length || (s.produce.modelled as unknown[]).some((w) => !str(w) || !kws.includes(normalize(String(w))))) problems.push(`${sl}: modelled must name target keywords`);
     }
     if ((s.kind === "produce" || s.kind === "recall") && isRecord(s.produce) && s.produce.nearMiss !== undefined && (!isRecord(s.produce.nearMiss) || !str(s.produce.nearMiss.ack))) problems.push(`${sl}: nearMiss needs its acknowledgement line`);
   }
@@ -492,6 +634,17 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
     if (!steps.some((s) => isRecord(s) && s.kind === "write")) problems.push(`${label}: a scene mission needs its own sentence`);
     const r = isRecord(m.rules) ? m.rules : null;
     if (!r || !Number.isInteger(r.maxPartAttempts) || (r.maxPartAttempts as number) < 3 || !Number.isInteger(r.maxPracticeAttempts) || (r.maxPracticeAttempts as number) < 1) problems.push(`${label}: rules.maxPartAttempts (≥ 3: recheck, stuck, teach) and maxPracticeAttempts required`);
+    const na = isRecord(m.nextAdventure) ? m.nextAdventure : null;
+    const choiceList = Array.isArray(na?.choices) ? (na!.choices as unknown[]) : [];
+    if (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choiceList.length < 2 || choiceList.length > 3 || choiceList.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !["greenhouse", "water"].includes(String(c.picture)))) problems.push(`${label}: nextAdventure needs a prompt, a hint, two or three pictured choices and the own-idea label`);
+  } else if (mapMission) {
+    // Map missions (content v7): the walkable island between clear task scenes — reviewed problems, a judgment, one own sentence.
+    if (solves < 2) problems.push(`${label}: a map mission needs at least two reviewed problems`);
+    if (decides < 1) problems.push(`${label}: a map mission needs at least one judgment (decide)`);
+    if (!steps.some((s) => isRecord(s) && s.kind === "write")) problems.push(`${label}: a map mission needs its own sentence`);
+    if (places.filter((p) => isRecord(p) && p.kind === "place").length < 3) problems.push(`${label}: a map mission walks between at least three places`);
+    const r = isRecord(m.rules) ? m.rules : null;
+    if (!r || !Number.isInteger(r.maxPartAttempts) || (r.maxPartAttempts as number) < 3 || !Number.isInteger(r.maxPracticeAttempts) || (r.maxPracticeAttempts as number) < 1) problems.push(`${label}: rules.maxPartAttempts (≥ 3) and maxPracticeAttempts required`);
     const na = isRecord(m.nextAdventure) ? m.nextAdventure : null;
     const choiceList = Array.isArray(na?.choices) ? (na!.choices as unknown[]) : [];
     if (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choiceList.length < 2 || choiceList.length > 3 || choiceList.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !["greenhouse", "water"].includes(String(c.picture)))) problems.push(`${label}: nextAdventure needs a prompt, a hint, two or three pictured choices and the own-idea label`);
@@ -519,13 +672,90 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
   }
   const world = Array.isArray(m.world) ? (m.world as unknown[]) : [];
   for (const w of world) if (!isRecord(w) || !str(w.id) || !stepIds.includes(String(w.after)) || !placeIds.has(String(w.place)) || !Number.isInteger(w.count) || !str(w.label)) problems.push(`${label}: malformed world change`);
+  for (const w of world) {
+    if (!isRecord(w) || w.choice === undefined) continue;
+    const c = isRecord(w.choice) ? w.choice : null;
+    const dstep = c ? steps.find((x) => isRecord(x) && x.id === c.step && x.kind === "decide") : null;
+    const opts = isRecord(dstep) && isRecord(dstep.decide) && Array.isArray(dstep.decide.options) ? (dstep.decide.options as Record<string, unknown>[]) : [];
+    if (!c || !dstep || !opts.some((o) => o.id === c.option && o.viable === true)) problems.push(`${label}: world change ${String(w.id)} names a choice that is not a viable option of a decide step`);
+  }
   const tb = isRecord(m.typingBlock) ? m.typingBlock : null;
   if (!tb || !str(tb.id) || tb.version !== 1 || !num(tb.targetActiveSeconds) || !Number.isInteger(tb.minDrills) || !Number.isInteger(tb.maxDrills) || (tb.minDrills as number) < 1 || (tb.maxDrills as number) < (tb.minDrills as number) || !num(tb.fallbackCharsPerSecond) || !num(tb.idleGapSeconds) || tb.extraDrills !== 1 || !num(tb.minTypedShare) || !Array.isArray(tb.pattern) || !tb.pattern.length || !str(tb.announce) || !str(tb.note)) problems.push(`${label}: malformed typing block`);
   else if (!/not .*research|kein.*Forschung|calibration/i.test(String(tb.note))) problems.push(`${label}: the typing block note must state that its duration is a calibration, not a research-proven optimum`);
+  if (tb && tb.progressOnStart !== undefined && typeof tb.progressOnStart !== "boolean") problems.push(`${label}: typingBlock.progressOnStart must be a boolean`);
+  if (tb && tb.material !== undefined) {
+    const mat = isRecord(tb.material) ? tb.material : null;
+    if (!mat) problems.push(`${label}: typingBlock.material must map lesson ids to line sets`);
+    for (const [lessonId, sets] of Object.entries(mat ?? {})) {
+      if (!Array.isArray(sets) || !sets.length || sets.some((set) => !Array.isArray(set) || !set.length || set.some((l) => typeof l !== "string" || !l.trim() || l.length > 60))) problems.push(`${label}: typingBlock.material.${lessonId} needs non-empty line sets (≤ 60 characters per line)`);
+    }
+  }
   const rules = isRecord(m.rules) ? m.rules : null;
   if (!rules || !["maxCalcAttempts", "maxQuestionAttempts", "maxProduceAttempts", "maxChoiceAttempts"].every((k) => Number.isInteger(rules[k]) && (rules[k] as number) >= 1)) problems.push(`${label}: rules (attempt bounds) required`);
   const est = isRecord(m.estimatedMinutes) ? m.estimatedMinutes : null;
   if (!est || !num(est.min) || !num(est.max)) problems.push(`${label}: estimatedMinutes required`);
+}
+
+/** The counts a floor plan really shows, recomputed from its cells (the content never states them separately). */
+export function gridCounts(g: MissionGrid): { fields: number; path: number; empty: number; beds: number; bedFields: number; bedSizes: number[]; unreachable: string[] } {
+  const cells = g.cells.map((row) => Array.from(row));
+  const at = (r: number, c: number) => (r >= 0 && r < g.rows && c >= 0 && c < g.cols ? cells[r][c] : null);
+  let path = 0;
+  let empty = 0;
+  const sizes = new Map<string, number>();
+  const touches = new Set<string>();
+  for (let r = 0; r < g.rows; r += 1) {
+    for (let c = 0; c < g.cols; c += 1) {
+      const v = cells[r][c];
+      if (v === "W") path += 1;
+      else if (v === ".") empty += 1;
+      else {
+        sizes.set(v, (sizes.get(v) ?? 0) + 1);
+        if ([at(r - 1, c), at(r + 1, c), at(r, c - 1), at(r, c + 1)].includes("W")) touches.add(v);
+      }
+    }
+  }
+  const letters = [...sizes.keys()].sort();
+  return { fields: g.cols * g.rows, path, empty, beds: letters.length, bedFields: [...sizes.values()].reduce((a, b) => a + b, 0), bedSizes: letters.map((l) => sizes.get(l)!), unreachable: letters.filter((l) => !touches.has(l)) };
+}
+
+function checkGrid(raw: unknown, sl: string, problems: string[], allowUnreachable: boolean): void {
+  const g = isRecord(raw) ? raw : null;
+  if (!g || !str(g.label) || !Number.isInteger(g.cols) || !Number.isInteger(g.rows) || (g.cols as number) < 2 || (g.cols as number) > 12 || (g.rows as number) < 2 || (g.rows as number) > 10 || !num(g.fieldMeters) || !Array.isArray(g.cells)) {
+    problems.push(`${sl}: malformed grid (label, cols 2–12, rows 2–10, fieldMeters, cells)`);
+    return;
+  }
+  const cells = g.cells as unknown[];
+  if (cells.length !== g.rows || cells.some((row) => typeof row !== "string" || Array.from(row).length !== g.cols || !/^[.Wa-z]+$/.test(row))) {
+    problems.push(`${sl}: grid cells must be ${String(g.rows)} rows of ${String(g.cols)} fields (. W or a bed letter)`);
+    return;
+  }
+  // Every bed is one connected block (a letter used twice in separate places is a drawing error).
+  const grid = cells.map((row) => Array.from(row as string));
+  const seen = new Set<string>();
+  for (let r = 0; r < grid.length; r += 1) for (let c = 0; c < grid[r].length; c += 1) {
+    const v = grid[r][c];
+    if (v === "." || v === "W" || seen.has(v)) continue;
+    seen.add(v);
+    const stack = [[r, c]];
+    const reached = new Set<string>([`${r},${c}`]);
+    while (stack.length) {
+      const [y, x] = stack.pop()!;
+      for (const [dy, dx] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const ny = y + dy;
+        const nx = x + dx;
+        if (grid[ny]?.[nx] === v && !reached.has(`${ny},${nx}`)) (reached.add(`${ny},${nx}`), stack.push([ny, nx]));
+      }
+    }
+    const total = grid.flat().filter((x) => x === v).length;
+    if (reached.size !== total) problems.push(`${sl}: bed ${v} is not one connected block`);
+  }
+  const counts = gridCounts(g as unknown as MissionGrid);
+  if (!allowUnreachable && counts.unreachable.length) problems.push(`${sl}: bed(s) ${counts.unreachable.join(", ")} do not touch the path`);
+  if (g.door !== undefined && g.door !== null) {
+    const d = isRecord(g.door) ? g.door : null;
+    if (!d || !["left", "right", "top", "bottom"].includes(String(d.side)) || !Number.isInteger(d.index)) problems.push(`${sl}: malformed door`);
+  }
 }
 
 function checkDiagram(d: unknown): boolean {
@@ -542,6 +772,10 @@ function checkSolve(raw: unknown, sl: string, stepIds: string[], problems: strin
     return;
   }
   if (sv.diagram !== undefined && sv.diagram !== null && !checkDiagram(sv.diagram)) problems.push(`${sl}: malformed diagram`);
+  if (sv.grids !== undefined) {
+    if (!Array.isArray(sv.grids) || !sv.grids.length) problems.push(`${sl}: grids must be a non-empty list`);
+    else for (const g of sv.grids) checkGrid(g, sl, problems, false);
+  }
   if (sv.application !== undefined) {
     const a = isRecord(sv.application) ? sv.application : null;
     if (!a || !stepIds.includes(String(a.of)) || a.kind !== "same-day-application") problems.push(`${sl}: application must name an earlier step and kind same-day-application`);
@@ -572,6 +806,7 @@ function checkSolve(raw: unknown, sl: string, stepIds: string[], problems: strin
       if (exposes.some((x) => !partIds.includes(x))) problems.push(`${pl}/${String(h.id)}: exposes names an unknown part`);
       // Exposure is DECLARED by the reviewed content (a number in a hint may be the group size, not the answer); the engine records it.
       if (h.diagram !== undefined && h.diagram !== null && !checkDiagram(h.diagram)) problems.push(`${pl}/${String(h.id)}: malformed diagram`);
+      if (h.grid !== undefined && h.grid !== null) checkGrid(h.grid, `${pl}/${String(h.id)}`, problems, false);
       if (h.check !== undefined) {
         const c = isRecord(h.check) ? h.check : null;
         if (!c || !str(c.prompt) || !str(c.answer) || !str(c.correct) || !str(c.wrong) || (c.kind !== "number" && c.kind !== "pick")) problems.push(`${pl}/${String(h.id)}: malformed hint check (prompt, answer, correct and wrong replies)`);

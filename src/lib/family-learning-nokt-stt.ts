@@ -75,6 +75,10 @@ export function noktSttModeFromEnv(env: Record<string, string | undefined>): Nok
     const apiKey = env.OPENAI_API_KEY;
     return apiKey ? { kind: "openai", apiKey } : { kind: "unconfigured" };
   }
+  // Content v7 harness: the FAKE recognizer beside the real conversation mode, honoured ONLY on an isolated local database
+  // (explicit flag, local NABU_DB_DIR, no Turso URL, no Vercel environment) — never in a deployment.
+  const isolated = !!env.NABU_DB_DIR && !env.TURSO_DATABASE_URL && !env.VERCEL && !env.VERCEL_ENV && !env.VERCEL_URL;
+  if (env.FAMILY_NOKT_STT_FAKE === "1" && isolated) return { kind: "fictional-fake", fault: null };
   // Only the isolated fictional database has a fallback (the fake); a deployment without the provider setting does not transcribe.
   // FAMILY_NOKT_STT_FAKE_FAULT=quota (isolated stub only) makes the fake answer like an exhausted provider account (HTTP 429).
   return noktModeFromEnv(env) === "fictional-stub" ? { kind: "fictional-fake", fault: env.FAMILY_NOKT_STT_FAKE_FAULT === "quota" ? "quota" : null } : { kind: "off" };

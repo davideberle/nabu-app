@@ -388,7 +388,7 @@ export async function applyMutation(
 ): Promise<MutationOutcome> {
   await ensureLearningTables(client);
   const settings = await readParentSettings(client, input.child);
-  const env = { content, settings, now, newId: () => randomUUID(), ...(options.tutor ? { tutorAvailable: options.tutor.available, ...(options.tutor.origin ? { tutorOrigin: options.tutor.origin } : {}), ...(options.tutor.receipt !== undefined ? { tutorReceipt: options.tutor.receipt } : {}) } : {}) };
+  const env = { content, settings, now, newId: () => randomUUID(), noktEnabled: noktModeFromEnv(process.env) !== "unavailable", ...(options.tutor ? { tutorAvailable: options.tutor.available, ...(options.tutor.origin ? { tutorOrigin: options.tutor.origin } : {}), ...(options.tutor.receipt !== undefined ? { tutorReceipt: options.tutor.receipt } : {}) } : {}) };
   const tx = await beginWrite(client);
   try {
     // R5-1: the generation is read FIRST, inside the write transaction (a deletion is a
@@ -1060,6 +1060,27 @@ export async function audit(client: Client, adminEmail: string, action: string, 
     sql: "INSERT INTO family_learning_parent_audit (id, admin_email, action, child_id, target_id, payload_json, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
     args: [randomUUID(), adminEmail, action, child, targetId, JSON.stringify(payload ?? null), nowIso()],
   });
+}
+
+/**
+ * Isabel Visit 1 (I1-07): the parent's OWN observation of a real-world task (the craft, the explanation to the parent, the
+ * search for wooden things) — `done`, `with-help` or `not-tried`, with an optional note. Stored as a support event of kind
+ * `parent_observation` beside the child's records (no schema change; erased with them), never as a child attempt and never
+ * an app assessment. Several entries may exist; the latest per task counts and every entry stays visible. Audited.
+ */
+export type ParentObservationInput = { child: ChildId; missionId: string; visitId: string; step: string; task: string; status: "done" | "with-help" | "not-tried"; note: string | null; adminEmail: string };
+
+export async function recordParentObservation(client: Client, input: ParentObservationInput): Promise<{ id: string; at: string }> {
+  await ensureLearningTables(client);
+  const id = randomUUID();
+  const at = nowIso();
+  const payload = { step: input.step, task: input.task, status: input.status, note: input.note, recordedBy: "parent", source: "parent-cockpit" };
+  await client.execute({
+    sql: "INSERT INTO family_learning_support_events (id, child_id, mission_id, visit_id, task_id, kind, payload_json, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    args: [id, input.child, input.missionId, input.visitId, `${input.step}/${input.task}`, "parent_observation", JSON.stringify(payload), at],
+  });
+  await audit(client, input.adminEmail, "parent-observation", input.child, id, { visit: input.visitId, ...payload });
+  return { id, at };
 }
 
 export type { InValue };

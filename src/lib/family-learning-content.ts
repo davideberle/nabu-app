@@ -23,7 +23,7 @@
 import type { ChildId } from "./family-assistant-turn.ts";
 import { checkMissions, checkNextInterest, type MissionDef, type NextInterestDef } from "./family-learning-mission-spec.ts";
 
-export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | "v8";
+export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | "v8" | "v9";
 
 export type StageId =
   | "name-base"
@@ -410,7 +410,15 @@ export const EXPECTED_V7_STAGES: readonly StageId[] = ["mission", "summary", "re
  */
 export const EXPECTED_VISIT_IDS_V6: readonly VisitId[] = [...EXPECTED_VISIT_IDS_V5, "v8"];
 export const EXPECTED_V8_STAGES: readonly StageId[] = ["mission", "summary", "reflect"];
-export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5, 6];
+/**
+ * Content version 7 (Visit 8, 2026-10-26): version 6 plus the map mission visit v9 (learner-visible "Besuch 8 — Das grössere
+ * Gewächshaus") and one new typing-course lesson (TYPE-CH-COURSE-6, e/i). Every earlier entry is unchanged; v9 is
+ * `mission → reflect`: the voice-led debrief inside the reflection replaces the passive summary stage for this visit only.
+ */
+export const EXPECTED_VISIT_IDS_V7: readonly VisitId[] = [...EXPECTED_VISIT_IDS_V6, "v9"];
+export const EXPECTED_V9_STAGES: readonly StageId[] = ["mission", "reflect"];
+export const EXPECTED_TYPING_COURSE_IDS_V7: readonly string[] = [...EXPECTED_TYPING_COURSE_IDS_V2, "TYPE-CH-COURSE-6"];
+export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5, 6, 7];
 
 export type ContentReconciliation = {
   ok: boolean;
@@ -552,7 +560,7 @@ function checkTypingLesson(lesson: Record<string, unknown>, problems: string[]) 
   }
 }
 
-function checkTypingCourse(course: unknown, problems: string[]): number {
+function checkTypingCourse(course: unknown, problems: string[], contentVersion = 2): number {
   if (!isRecord(course)) {
     problems.push("typing course: missing");
     return 0;
@@ -590,7 +598,7 @@ function checkTypingCourse(course: unknown, problems: string[]): number {
   }
   const lessons = Array.isArray(course.lessons) ? course.lessons : [];
   const lessonIds = idsOf(lessons);
-  sameSet(lessonIds, EXPECTED_TYPING_COURSE_IDS_V2, "typing course lessons", problems);
+  sameSet(lessonIds, contentVersion >= 7 ? EXPECTED_TYPING_COURSE_IDS_V7 : EXPECTED_TYPING_COURSE_IDS_V2, "typing course lessons", problems);
   let cumulative: string[] = [];
   for (const lesson of lessons) {
     if (!isRecord(lesson)) continue;
@@ -613,6 +621,34 @@ function checkTypingCourse(course: unknown, problems: string[]): number {
     cumulative = [...cumulative, ...keys];
   }
   return lessons.length;
+}
+
+/**
+ * Content v7: a typing block's reviewed drill material may only use keys introduced up to its lesson, and every set has at
+ * least as many lines as the lesson (so an attempted drill still counts for the existing course progression).
+ */
+function checkTypingMaterial(raw: Record<string, unknown>, problems: string[]) {
+  const typing = isRecord(raw.typing) ? raw.typing : null;
+  const course = typing && isRecord(typing.course) ? typing.course : null;
+  const lessons = course && Array.isArray(course.lessons) ? (course.lessons as Record<string, unknown>[]) : [];
+  const missions = Array.isArray(raw.missions) ? raw.missions : [];
+  for (const m of missions) {
+    const tb = isRecord(m) && isRecord(m.typingBlock) ? m.typingBlock : null;
+    if (!tb || !isRecord(tb.material)) continue;
+    for (const [lessonId, sets] of Object.entries(tb.material)) {
+      const index = lessons.findIndex((l) => l.id === lessonId);
+      if (index < 0) {
+        problems.push(`typing material ${String(m.id)}: unknown lesson ${lessonId}`);
+        continue;
+      }
+      const allowed = new Set([" ", ...lessons.slice(0, index + 1).flatMap((l) => (Array.isArray(l.keys) ? (l.keys as string[]) : []))]);
+      const lessonLines = Array.isArray(lessons[index].lines) ? (lessons[index].lines as unknown[]).length : 0;
+      for (const set of Array.isArray(sets) ? sets : []) {
+        if (!Array.isArray(set) || set.length < lessonLines) problems.push(`typing material ${String(m.id)}/${lessonId}: every set needs at least ${lessonLines} lines (course progression)`);
+        for (const line of Array.isArray(set) ? set : []) for (const ch of Array.from(String(line))) if (!allowed.has(ch)) problems.push(`typing material ${String(m.id)}/${lessonId}: "${String(line)}" uses ${ch} before it was introduced`);
+      }
+    }
+  }
 }
 
 /** Content v4: the harbor chapter — frozen v6 stage list composed of the workplace blocks, destinations, characters, log, review and reasoning. */
@@ -732,7 +768,8 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
   const version = typeof raw.contentVersion === "number" && SUPPORTED_CONTENT_VERSIONS.includes(raw.contentVersion) ? raw.contentVersion : null;
   if (version === null) problems.push(`contentVersion must be one of ${SUPPORTED_CONTENT_VERSIONS.join(", ")}, got ${String(raw.contentVersion)}`);
   if (raw.child !== "santiago") problems.push("content.child must be santiago for this build");
-  const v6 = version === 6;
+  const c7 = version === 7;
+  const v6 = version === 6 || c7; // every version-6 rule also holds for version 7
   const v5 = version === 5 || v6; // every version-5 rule also holds for version 6
   const v4 = version === 4 || v5; // every version-4 rule also holds for version 5
   const v3 = version === 3 || v4; // every version-3 rule also holds for version 4
@@ -740,7 +777,7 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
 
   const visitIds = idsOf(raw.visits);
   counts.visits = visitIds.length;
-  sameSet(visitIds, v6 ? EXPECTED_VISIT_IDS_V6 : v5 ? EXPECTED_VISIT_IDS_V5 : v4 ? EXPECTED_VISIT_IDS_V4 : v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
+  sameSet(visitIds, c7 ? EXPECTED_VISIT_IDS_V7 : v6 ? EXPECTED_VISIT_IDS_V6 : v5 ? EXPECTED_VISIT_IDS_V5 : v4 ? EXPECTED_VISIT_IDS_V4 : v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
   if (Array.isArray(raw.visits)) {
     for (const [id, expected] of Object.entries(EXPECTED_RETAINED_STAGES)) {
       const visit = raw.visits.find((v) => isRecord(v) && v.id === id);
@@ -784,7 +821,7 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
     if (stages.join(",") !== EXPECTED_V7_STAGES.join(",")) problems.push(`visit v7: stages must be exactly ${EXPECTED_V7_STAGES.join(" → ")}`);
     const intro = isRecord(v7) && isRecord(v7.intro) ? v7.intro : null;
     if (!intro || typeof intro.who !== "string" || typeof intro.make !== "string" || typeof intro.done !== "string") problems.push("visit v7: intro must say who needs help, what is made and what counts as done");
-    checkMissions(raw.missions, problems, v6 ? 6 : 5);
+    checkMissions(raw.missions, problems, c7 ? 7 : v6 ? 6 : 5);
     const missions = Array.isArray(raw.missions) ? raw.missions : [];
     if (!missions.some((m) => isRecord(m) && m.visit === "v7")) problems.push("missions: visit v7 needs its mission");
     if (v6) {
@@ -796,6 +833,17 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
       const garden = missions.find((m) => isRecord(m) && m.visit === "v8");
       if (!garden) problems.push("missions: visit v8 needs its mission");
       else if (isRecord(garden) && garden.presentation !== "scene") problems.push("missions: the v8 mission is a scene mission");
+    }
+    if (c7) {
+      const v9 = raw.visits.find((v) => isRecord(v) && v.id === "v9");
+      const stages9 = isRecord(v9) && Array.isArray(v9.stages) ? (v9.stages as unknown[]) : [];
+      if (stages9.join(",") !== EXPECTED_V9_STAGES.join(",")) problems.push(`visit v9: stages must be exactly ${EXPECTED_V9_STAGES.join(" → ")}`);
+      const intro9 = isRecord(v9) && isRecord(v9.intro) ? v9.intro : null;
+      if (!intro9 || typeof intro9.who !== "string" || typeof intro9.make !== "string" || typeof intro9.done !== "string") problems.push("visit v9: intro must say who needs help, what is made and what counts as done");
+      const greenhouse = missions.find((m) => isRecord(m) && m.visit === "v9");
+      if (!greenhouse) problems.push("missions: visit v9 needs its mission");
+      else if (isRecord(greenhouse) && greenhouse.presentation !== "map") problems.push("missions: the v9 mission is a map mission (walkable island between task scenes)");
+      checkTypingMaterial(raw, problems);
     }
     checkNextInterest(isRecord(raw.reflection) ? raw.reflection.nextInterest : null, problems);
   } else {
@@ -842,7 +890,7 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
   const labelIds = idsOf(typing?.labelTasks);
   counts.typingLabels = labelIds.length;
   sameSet(labelIds, EXPECTED_TYPING_LABEL_IDS, "typing label tasks", problems);
-  if (v2) counts.typingCourse = checkTypingCourse(typing?.course, problems);
+  if (v2) counts.typingCourse = checkTypingCourse(typing?.course, problems, version ?? 2);
   else if (typing && "course" in typing) problems.push("typing course exists only from content version 2");
 
   if (v2) {
@@ -931,7 +979,7 @@ export function isLanguageSegmentId(value: unknown): value is LanguageSegmentId 
 }
 
 export function isVisitId(value: unknown): value is VisitId {
-  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5" || value === "v6" || value === "v7" || value === "v8";
+  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5" || value === "v6" || value === "v7" || value === "v8" || value === "v9";
 }
 
 export function isHarborWorkplaceId(value: unknown): value is HarborWorkplaceId {

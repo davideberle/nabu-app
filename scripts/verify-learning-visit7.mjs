@@ -785,7 +785,18 @@ try {
   await p.locator("[data-testid='extra-decline']").click();
   await waitStep(p, "G6-TYPING", "done");
   const typing = (await missionRun()).typing;
-  check("J1.G6.course-lessons-only", typing.plan.drills.every((d) => /^TYPE-CH-COURSE-[1-5]$/.test(d.lessonId)), typing.plan.drills.map((d) => d.lessonId));
+  // Version-aware (Visit 8 review): under content ≤ 6 (as Visit 7 was released, or the rollback cap) the course ends at lesson 5 —
+  // the exact original assertion. Under content 7 lesson 6 exists; then only course lessons may appear, and lesson 6 only after
+  // the unchanged progression rule advanced the course (recorded decision, lesson 5 completed).
+  {
+    const served = (await view()).contentVersion;
+    const course = (await rawRow()).state.typing.course;
+    if (served <= 6) check("J1.G6.course-lessons-only", typing.plan.drills.every((d) => /^TYPE-CH-COURSE-[1-5]$/.test(d.lessonId)), typing.plan.drills.map((d) => d.lessonId));
+    else {
+      const six = typing.plan.drills.some((d) => d.lessonId === "TYPE-CH-COURSE-6");
+      check("J1.G6.course-lessons-only-v7", typing.plan.drills.every((d) => /^TYPE-CH-COURSE-[1-6]$/.test(d.lessonId)) && (!six || (course.completed.includes("TYPE-CH-COURSE-5") && course.lessonIndex >= 5 && course.bursts.filter((b) => b.lessonId === "TYPE-CH-COURSE-5" && b.accuracy >= 0.9 && b.comfort !== "hard").length >= 2)), { served, lessons: typing.plan.drills.map((d) => d.lessonId), completed: course.completed, index: course.lessonIndex });
+    }
+  }
   await nextBeat(p, "G7-FRESH");
   // --- G7 fresh application, first try
   check("J1.G7.no-hint-before-first-try", (await p.locator("[data-testid='hint-open']").count()) === 0 && (await p.locator("[data-testid='hint-later']").count()) === 1);

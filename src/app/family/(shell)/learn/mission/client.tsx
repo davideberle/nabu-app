@@ -44,6 +44,11 @@ import { useChildShell } from "@/components/family/child-shell-provider";
 import { HarborIsland } from "@/components/family/learning/harbor-island";
 import { MissionWorld } from "@/components/family/learning/mission-world";
 import { MissionScene } from "@/components/family/learning/mission-scene";
+import { MapMission } from "@/components/family/learning/map-mission";
+import { WorkshopScene } from "@/components/family/learning/workshop-scene";
+import { IsabelStart } from "@/components/family/learning/workshop-hub";
+import type { NoktTalkTurnFn } from "@/components/family/learning/nokt-talk";
+import { Debrief } from "@/components/family/learning/debrief";
 import type { MissionAction } from "@/lib/family-learning-mission";
 import { CharacterBeat, HarborPlan, IslandStage, LogReview, WordbookPanel } from "@/components/family/learning/harbor-stages";
 import { NabuSidebar } from "@/components/family/learning/nabu-sidebar";
@@ -134,6 +139,10 @@ function Workspace({ child }: { child: ChildId }) {
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [nabuOpen, setNabuOpen] = useState(false);
+  /** Content v7: he started the running visit himself in this page session (a reload never sets this). */
+  const [entered, setEntered] = useState(false);
+  /** Content v7: he finished the map mission himself in this page session — the look back's Nokt may open by itself, once. */
+  const [closedHere, setClosedHere] = useState(false);
   const [overlay, setOverlay] = useState<"wordbook" | "logbook" | "supplies" | null>(null);
   /** The visit whose report is shown (just finished, or reopened through `?report=`). */
   const [reportVisit, setReportVisit] = useState<string | null>(() => searchParams.get("report"));
@@ -285,6 +294,25 @@ function Workspace({ child }: { child: ChildId }) {
     [child, learning, adopt],
   );
 
+  /** Content v7: one Nokt conversation turn outside the task talk (welcome, visit, writing, debrief) through the server. */
+  const talkTurn: NoktTalkTurnFn = useCallback(
+    async (turn, signal) => {
+      const current = viewRef.current;
+      if (!current) return { kind: "failed", line: "Nokt ist gerade nicht erreichbar." };
+      const out = await learning.noktTurn(child, turn, current.revision, { signal, context: contextOfView(current), timeZone: browserTimeZone() });
+      if (!aliveRef.current || signal.aborted || (!out.ok && "failure" in out && out.failure === "cancelled")) return { kind: "cancelled" };
+      if ("view" in out && out.view) adopt(out.view);
+      if (out.ok && out.status !== "stale") {
+        const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string };
+        if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say };
+        // No reply at all (runtime unreachable, used up, refused): his words go back into the box.
+        if (r.shown === false && typeof r.line === "string") return { kind: r.reason?.startsWith("no-reply-") ? "failed" : "app", line: r.line };
+      }
+      return { kind: "failed", line: "Nokt ist gerade nicht erreichbar. Du kannst es gleich nochmal versuchen." };
+    },
+    [child, learning, adopt],
+  );
+
   /** Support op → confirmed/not, retrying once on a stale revision. */
   const recordSupportRaw = useCallback(
     async (op: LearningOp & { op: "support" }): Promise<{ outcome: SupportOutcome; revision: number; result?: unknown }> => {
@@ -371,8 +399,28 @@ function Workspace({ child }: { child: ChildId }) {
     );
   }
 
+  if (!view.visit && view.child === "isabel") {
+    // Isabel Visit 1: her own start screen (Old Lila's workshop), never Santiago's island.
+    return <IsabelStart child={child} view={view} busy={busy} notice={notice} onStart={() => { speech.unlock(); void mutate({ op: "start-visit" }); }} />;
+  }
+
   if (!view.visit) {
-    return <StartOrWait child={child} view={view} busy={busy} onStart={() => void mutate({ op: "start-visit" })} notice={notice} markers={markers} />;
+    return (
+      <StartOrWait
+        child={child}
+        view={view}
+        busy={busy}
+        onStart={() => {
+          // Content v7: a deliberate start (not a reload or resume) may open Nokt's one-time welcome.
+          speech.unlock();
+          void mutate({ op: "start-visit" }).then((outcome) => {
+            if (outcome && outcome.ok && outcome.status === "applied" && (outcome.result as { resumed?: boolean }).resumed === false) setEntered(true);
+          });
+        }}
+        notice={notice}
+        markers={markers}
+      />
+    );
   }
 
   const stage = view.visit.stage;
@@ -430,7 +478,7 @@ function Workspace({ child }: { child: ChildId }) {
             ))}
           </ol>
         </div>
-        {view.mission?.active?.produce ? <span className="w-[6.5rem]" aria-hidden /> : <button
+        {view.mission?.active?.produce || view.child === "isabel" ? <span className="w-[6.5rem]" aria-hidden /> : <button
           type="button"
           onClick={() => {
             // During a recall step the wordbook SHOWS the target word: opening it is recorded as help on the segment first (IV5-11).
@@ -490,6 +538,69 @@ function Workspace({ child }: { child: ChildId }) {
             act={async (action: MissionAction, options?: { idempotencyKey?: string }) => {
               const outcome = await mutate({ op: "mission", action }, options?.idempotencyKey ? { idempotencyKey: options.idempotencyKey } : undefined);
               return outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed") ? ((outcome.result as Record<string, unknown> | undefined) ?? {}) : null;
+            }}
+          />
+        </div>
+      ) : stage === "mission" && view.mission && !lastLesson && view.mission.presentation === "workshop" ? (
+        // Isabel Visit 1: Old Lila's workshop — one short instruction and one picture answer at a time; no Nokt, no microphone.
+        <div className="mt-3" data-testid="mission-stage" data-presentation="workshop">
+          <WorkshopScene
+            child={child}
+            mission={view.mission}
+            busy={busy}
+            speech={speech}
+            telemetry={(name) => {
+              telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
+            }}
+            act={async (action: MissionAction, options?: { idempotencyKey?: string }) => {
+              const outcome = await mutate({ op: "mission", action }, options?.idempotencyKey ? { idempotencyKey: options.idempotencyKey } : undefined);
+              return outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed") ? ((outcome.result as Record<string, unknown> | undefined) ?? {}) : null;
+            }}
+          />
+        </div>
+      ) : stage === "mission" && view.mission && !lastLesson && view.mission.presentation === "map" ? (
+        // Visit 8 (content v7): the walkable island between clear task scenes, Nokt beside it.
+        <div className="mt-3" data-testid="mission-stage" data-presentation="map">
+          <MapMission
+            child={child}
+            view={view}
+            mission={view.mission}
+            markers={markers}
+            busy={busy}
+            speech={speech}
+            nokt={{
+              mode: view.nokt?.mode ?? "unavailable",
+              transcribe: view.nokt?.mic ? (audio, fileName, signal) => learning.transcribeNokt(child, audio, fileName, { signal }) : null,
+              taskTurn: async (turn, signal) => {
+                const current = viewRef.current;
+                if (!current) return { kind: "failed" };
+                const out = await learning.noktTurn(child, turn, current.revision, { signal, context: contextOfView(current), timeZone: browserTimeZone() });
+                if (!aliveRef.current || signal.aborted || (!out.ok && "failure" in out && out.failure === "cancelled")) return { kind: "cancelled" };
+                if ("view" in out && out.view) adopt(out.view);
+                if (out.ok && out.status !== "stale") {
+                  const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string };
+                  if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say };
+                  if (r.shown === false && r.reason === "no-reply-daily-allowance") return { kind: "exhausted" };
+                  if (r.shown === false && typeof r.line === "string") return { kind: "withheld", line: r.line };
+                }
+                return { kind: "failed" };
+              },
+              talkTurn,
+              intentionalEntry: entered,
+            }}
+            telemetry={(name) => {
+              telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
+            }}
+            onWalk={() => {
+              telemetryRef.current = noteControl(telemetryRef.current, Date.now(), "walk");
+            }}
+            act={async (action: MissionAction, options?: { idempotencyKey?: string }) => {
+              // The deliberate «Zum Rückblick» tap is a user gesture: unlock audio now, so Nokt's first look-back question can be heard.
+              if (action.a === "finish") speech.unlock();
+              const outcome = await mutate({ op: "mission", action }, options?.idempotencyKey ? { idempotencyKey: options.idempotencyKey } : undefined);
+              const ok = !!outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed");
+              if (ok && action.a === "finish" && outcome.status === "applied") setClosedHere(true);
+              return ok ? ((outcome.result as Record<string, unknown> | undefined) ?? {}) : null;
             }}
           />
         </div>
@@ -607,7 +718,30 @@ function Workspace({ child }: { child: ChildId }) {
                   />
                 ) : null}
                 {stage === "log" ? <SaveLog view={view} busy={busy} gate={gate} onSubmit={(text, modality) => void mutate({ op: "save-log", text, modality })} /> : null}
-                {stage === "reflect" && view.reflection ? (
+                {stage === "reflect" && view.reflection?.closing ? (
+                  // Visit 8 (content v7): the short spoken look back replaces the click-through summary; the form stays the fallback.
+                  <Debrief
+                    key={identityKey(view)}
+                    child={child}
+                    view={view}
+                    busy={busy}
+                    speech={speech}
+                    transcribe={view.nokt?.mic ? (audio, fileName, signal) => learning.transcribeNokt(child, audio, fileName, { signal }) : null}
+                    turn={view.nokt && view.nokt.mode !== "unavailable" ? talkTurn : null}
+                    autoOpen={closedHere}
+                    onFeedback={(feedback) => mutate({ op: "closing-feedback", feedback } as LearningOp)}
+                    onFinish={async (payload, idempotencyKey) => {
+                      const identity = visitIdentity();
+                      const outcome = await mutate(payload as LearningOp, { idempotencyKey });
+                      if (outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) {
+                        flushTelemetry(true, identity, `ui-${idempotencyKey}`);
+                        // The journey ends where it began: Family Home (the visit report stays reopenable from the hub).
+                        router.push(`/family/home?child=${child}`);
+                      }
+                      return outcome;
+                    }}
+                  />
+                ) : stage === "reflect" && view.reflection ? (
                   <ReflectFeedback
                     key={identityKey(view)}
                     view={view}
@@ -637,7 +771,7 @@ function Workspace({ child }: { child: ChildId }) {
         </main>
 
       </div>
-      {stage === "mission" ? null : <NabuSidebar
+      {stage === "mission" || view.reflection?.closing ? null : <NabuSidebar
         child={child}
         view={view}
         page="mission"
@@ -809,7 +943,7 @@ function StartOrWait({ child, view, busy, onStart, notice, markers }: { child: C
           {notice ? <p className="mt-2 text-base text-primary">{notice}</p> : null}
           {nextDef ? (
             <button ref={startRef} type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-4 min-h-16 px-8 text-xl")} data-testid="start-visit" data-visit={nextDef} data-ordinal={view.next.ordinal ?? ""}>
-              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" || nextDef === "v6" || nextDef === "v7" || nextDef === "v8" ? `Besuch ${view.next.ordinal ?? (nextDef === "v8" ? 7 : nextDef === "v7" ? 6 : nextDef === "v6" ? 5 : nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
+              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" || nextDef === "v6" || nextDef === "v7" || nextDef === "v8" || nextDef === "v9" ? `Besuch ${view.next.ordinal ?? (nextDef === "v9" ? 8 : nextDef === "v8" ? 7 : nextDef === "v7" ? 6 : nextDef === "v6" ? 5 : nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
             </button>
           ) : null}
         </div>

@@ -11,13 +11,16 @@
 
 import Link from "next/link";
 import { AssistantPortrait } from "@/components/family/assistant-portrait";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/components/ui/nabu";
 import { assistantProfileById } from "@/data/family-assistant";
 import { useChildShell } from "@/components/family/child-shell-provider";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import { childShellDestinationHref } from "@/lib/family-child-shell";
-import { browserTimeZone, createLearningClient } from "@/lib/family-learning-client";
+import { browserTimeZone, createLearningClient, type MutationContext } from "@/lib/family-learning-client";
+import type { ChildView } from "@/lib/family-learning-state";
+import { createChildSpeechPlayer } from "@/lib/family-speech";
+import { NoktTalk, type NoktTalkTurnFn } from "@/components/family/learning/nokt-talk";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -52,6 +55,8 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
   const profile = assistantProfileById(child)!;
   const client = useMemo(() => createLearningClient(), []);
   const [learn, setLearn] = useState<LearnLabel>({ kind: "loading" });
+  // Content v7: the same learning view also says whether Nokt can talk here (Santiago's Nokt only; server-derived).
+  const [view, setView] = useState<ChildView | null>(null);
 
   // FH-05: the label comes from THIS child's saved state, read under this
   // child's own learning credential — Isabel never receives Santiago's tasks.
@@ -65,6 +70,7 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
         return;
       }
       const view = outcome.view;
+      setView(view);
       if (view.visit) setLearn({ kind: "continue", title: view.visit.title, ordinal: view.visit.ordinal });
       else if (view.next.visit) setLearn({ kind: "start", ordinal: view.next.ordinal, label: view.progress.next.label ?? null });
       else setLearn({ kind: "waiting", reason: view.next.reason });
@@ -117,9 +123,14 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
         <HomeAction href={href("learn")} icon="🧭" title="Lernen" className="sm:col-span-2">
           <LearnCaption label={learn} />
         </HomeAction>
-        <HomeAction href={`${href("assistant")}&focus=general`} icon={<AssistantPortrait child={child} label="" className="h-14 w-14" />} title={`Ask ${profile.companionName}`}>
-          Chat temporarily unavailable — your saved work stays safe
-        </HomeAction>
+        {/* Content v7 only: the view carries `talk` when the served content has Nokt's conversations (not under the rollback cap). */}
+        {view?.nokt && view.nokt.mode !== "unavailable" && view.nokt.talk && child === "santiago" ? (
+          <HomeNokt child={child} view={view} client={client} onView={setView} />
+        ) : (
+          <HomeAction href={`${href("assistant")}&focus=general`} icon={<AssistantPortrait child={child} label="" className="h-14 w-14" />} title={`Ask ${profile.companionName}`}>
+            Chat temporarily unavailable — your saved work stays safe
+          </HomeAction>
+        )}
         <HomeAction href={href("games")} icon="🎮" title="Games">
           Chess: 15 free minutes a day once a parent approves something you did today · Game Studio uses coins
         </HomeAction>
@@ -145,6 +156,66 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
         </nav>
       ) : null}
     </main>
+  );
+}
+
+/**
+ * Content v7: Santiago's Nokt on Family Home — opened deliberately (never by itself, never with the microphone on). The talk
+ * is the learning route's `home` purpose: the server builds the context (his visits and his own saved wish only), the reply
+ * is verified before it is shown as Nokt, and the transcript is saved for the parent. It grants nothing.
+ */
+function HomeNokt({ child, view, client, onView }: { child: ChildId; view: ChildView; client: ReturnType<typeof createLearningClient>; onView: (v: ChildView) => void }) {
+  const [open, setOpen] = useState(false);
+  const speech = useMemo(() => createChildSpeechPlayer(), []);
+  const viewRef = useRef(view);
+  useEffect(() => {
+    viewRef.current = view;
+  }, [view]);
+  const session = view.nokt?.talk?.sessions.find((s) => s.purpose === "home" && s.page === "home" && !s.closed) ?? null;
+  const contextOf = (v: ChildView): MutationContext => ({ erasureGeneration: v.erasureGeneration, visit: v.visit ? { id: v.visit.id, startedAt: v.visit.startedAt } : null });
+  const turn: NoktTalkTurnFn = async (t, signal) => {
+    const current = viewRef.current;
+    const out = await client.noktTurn(child, t, current.revision, { signal, context: contextOf(current), timeZone: browserTimeZone() });
+    if (signal.aborted || (!out.ok && "failure" in out && out.failure === "cancelled")) return { kind: "cancelled" };
+    if ("view" in out && out.view) onView(out.view);
+    if (out.ok && out.status !== "stale") {
+      const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string };
+      if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say };
+      // No reply at all (runtime unreachable, used up, refused): his words go back into the box.
+      if (r.shown === false && typeof r.line === "string") return { kind: r.reason?.startsWith("no-reply-") ? "failed" : "app", line: r.line };
+    }
+    return { kind: "failed", line: "Nokt ist gerade nicht erreichbar. Du kannst es gleich nochmal versuchen." };
+  };
+  if (!open) {
+    return (
+      <button type="button" onClick={() => { speech.unlock(); setOpen(true); }} className={cn(actionClass, "w-full")} data-testid="home-nokt-open">
+        <span className={actionIconClass} aria-hidden>
+          <AssistantPortrait child={child} label="" className="h-14 w-14" />
+        </span>
+        <span className="min-w-0">
+          <span className="block text-lg font-semibold text-primary">Mit Nokt reden</span>
+          <span className="block text-sm text-tertiary">Frag Nokt, was du heute lernen kannst — schreiben oder sprechen</span>
+        </span>
+      </button>
+    );
+  }
+  return (
+    <div className="grid gap-2 sm:col-span-2" data-testid="home-nokt">
+      <NoktTalk
+        child={child}
+        purpose="home"
+        sessionId={session?.id ?? null}
+        initialLines={session?.lines ?? []}
+        opener={false}
+        speech={speech}
+        transcribe={view.nokt?.mic ? (audio, fileName, signal) => client.transcribeNokt(child, audio, fileName, { signal }) : null}
+        turn={turn}
+        testId="nokt-home"
+      />
+      <button type="button" className={pillClass} onClick={() => { speech.cancel(); setOpen(false); }} data-testid="home-nokt-close">
+        Schliessen
+      </button>
+    </div>
   );
 }
 

@@ -29,6 +29,7 @@
 // ---------------------------------------------------------------------------
 
 import type { missionEvidence } from "@/lib/family-learning-mission";
+import type { noktTalkEvidence } from "@/lib/family-learning-nokt-talk";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { NabuBadge, cn } from "@/components/ui/nabu";
@@ -56,7 +57,9 @@ type PlanningInput = {
   typing: { planned: number; attempted: number; activeSeconds: number; idleSeconds: number; wallSeconds: number | null; accuracy: number | null; paceCps: number; paceBasis: string } | null;
   note: string;
 };
-type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" | "subscription" };
+type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" | "subscription"; noktTalks?: ReturnType<typeof noktTalkEvidence>; parentObservations?: ParentObservation[]; craftTasks?: CraftTasks[] };
+type ParentObservation = { id: string; visitId: string; taskId: string | null; at: string; step?: string; task?: string; status?: string; note?: string | null };
+type CraftTasks = { visit: string; step: string; title: string; tasks: { id: string; text: string }[] };
 
 /** Learner-facing visit name (server-computed): "Besuch 3 — Die Beobachtungsstation (v4)"; falls back to the id. */
 function visitName(evidence: Evidence, id: string): string {
@@ -305,10 +308,14 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
       {tab === "math" ? (
         <>
           <NextStep evidence={evidence} />
-          {evidence.planningInput ? <PlanningPanel input={evidence.planningInput} /> : null}
+          {evidence.planningInput ? <PlanningPanel input={evidence.planningInput} child={child} /> : null}
+          {(evidence.craftTasks ?? []).map((c) => (
+            <ParentObservationPanel key={`${c.visit}-${c.step}`} craft={c} observations={(evidence.parentObservations ?? []).filter((o) => o.visitId === c.visit && o.step === c.step)} child={child} ops={ops} />
+          ))}
           {(evidence.missionEvidence ?? []).map((m) => (
             <MissionEvidencePanel key={m.mission} evidence={m} />
           ))}
+          {(evidence.noktTalks ?? []).length ? <NoktTalksPanel talks={evidence.noktTalks!} /> : null}
           <AttemptTable title="Gleichmässig teilen (EQ-Aufgaben, inkl. Rest bei EQ-STATION/EQ-PIER und Boote bei EQ-HARBOR: Teil A volle Boote/übrig, Teil B Boote für alle)" attempts={math} child={child} ops={ops} empty="Noch kein Mathe-Versuch aufgezeichnet." visits={evidence.visits} />
           <DelayedCheck evidence={evidence} />
           <SupportList evidence={evidence} filter={(k) => k !== "gloss"} />
@@ -1333,6 +1340,33 @@ function interestText(i: { kind: string; text: string | null } | null): string {
 }
 
 /** Planning input for the next visit — the child's own words first, then open retrieval items and the typing calibration. */
+/** Content v7: every Nokt conversation outside the task talk, line by line with provenance (Home, welcome, visit, writing, look back). */
+function NoktTalksPanel({ talks }: { talks: ReturnType<typeof noktTalkEvidence> }) {
+  return (
+    <section className="rounded-2xl border border-primary p-4" data-testid="parent-nokt-talks">
+      <h3 className="text-lg font-semibold">Gespräche mit Nokt (ausserhalb der Aufgaben)</h3>
+      <p className="text-sm text-tertiary">Gespräch, keine Bewertung: Diese Zeilen vergeben weder Abschluss noch Münzen noch eine Einschätzung. «Nokt» steht nur bei geprüften Antworten.</p>
+      <ol className="mt-3 grid gap-3">
+        {talks.map((t) => (
+          <li key={t.id} className="rounded-xl border border-secondary p-3" data-testid={`parent-talk-${t.purpose}`}>
+            <p className="text-sm font-semibold">
+              {t.purposeLabel}
+              {t.visitLabel ? ` · ${t.visitLabel}` : ""} · {t.startedAt.slice(0, 16).replace("T", " ")} · {t.closed}
+            </p>
+            <ol className="mt-1 grid gap-1 text-sm">
+              {t.lines.map((l, i) => (
+                <li key={i}>
+                  <strong>{l.who}</strong> <span className="text-tertiary">({l.detail})</span>: {l.text}
+                </li>
+              ))}
+            </ol>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 type MissionEvidenceView = NonNullable<ReturnType<typeof missionEvidence>> & { time?: { observed: boolean; byStep: Record<string, { enters: number; activeSeconds: number }>; idleRuleSeconds: number; hiddenIntervals: number | null } };
 
 /** "about 2 min" — rounded so it is not read as precise; the rule behind it is stated once in the panel. */
@@ -1429,14 +1463,68 @@ function MissionEvidencePanel({ evidence }: { evidence: MissionEvidenceView }) {
   );
 }
 
-function PlanningPanel({ input }: { input: PlanningInput }) {
+const OBSERVATION_DE: Record<string, string> = { done: "gemacht", "with-help": "mit Hilfe gemacht", "not-tried": "nicht probiert" };
+
+/**
+ * Isabel Visit 1 (I1-07): the parent's own observation of each real-world task (craft, explanation, wooden things). The
+ * parent's entry — not an app or AI assessment — kept apart from her attempts; every entry stays listed, the latest counts.
+ */
+function ParentObservationPanel({ craft, observations, child, ops }: { craft: CraftTasks; observations: ParentObservation[]; child: ChildId; ops: ParentOps }) {
+  const [busy, setBusy] = useState<string | null>(null);
+  const [notes, setNotes] = useState<Record<string, string>>({});
+  const [error, setError] = useState<string | null>(null);
+  const save = async (task: string, status: string) => {
+    setBusy(task);
+    setError(null);
+    const ticket = ops.begin();
+    const result = await api("/api/family/learning/parent/observation", { method: "POST", body: JSON.stringify({ child, visit: craft.visit, step: craft.step, task, status, note: notes[task]?.trim() || null }) });
+    setBusy(null);
+    if (!ticket.current()) return;
+    if (!result.ok) {
+      if (result.status === 401 || result.status === 403) return ops.onLocked();
+      setError(String(result.data.error ?? "Nicht gespeichert"));
+      return;
+    }
+    setNotes((n) => ({ ...n, [task]: "" }));
+    ops.onChanged();
+  };
+  return (
+    <section className="rounded-2xl border border-primary bg-primary p-4" data-testid="parent-observations" data-step={craft.step}>
+      <h3 className="text-base font-semibold text-primary">Beobachtung der Eltern: {craft.title}</h3>
+      <p className="mt-1 text-sm text-tertiary">Diese Aufgaben finden ausserhalb der App statt. Hier steht nur, was Sie selbst eintragen — keine Bewertung der App oder einer KI.</p>
+      <ul className="mt-3 grid gap-3">
+        {craft.tasks.map((t) => {
+          const mine = observations.filter((o) => o.task === t.id);
+          const latest = mine[mine.length - 1] ?? null;
+          return (
+            <li key={t.id} className="grid gap-2 rounded-xl border border-secondary p-3" data-testid={`observation-${t.id}`} data-latest={latest?.status ?? ""}>
+              <span className="text-sm text-primary">{t.text}</span>
+              <span className="text-sm text-tertiary">{latest ? `Zuletzt eingetragen: ${OBSERVATION_DE[latest.status ?? ""] ?? latest.status}${latest.note ? ` — «${latest.note}»` : ""} (${fmt(latest.at)})` : "Noch nichts eingetragen."}{mine.length > 1 ? ` · ${mine.length} Einträge` : ""}</span>
+              <input value={notes[t.id] ?? ""} onChange={(e) => setNotes((n) => ({ ...n, [t.id]: e.target.value.slice(0, 300) }))} placeholder="Notiz (freiwillig)" className="h-10 rounded-lg border border-secondary bg-primary px-2 text-sm text-primary" aria-label={`Notiz zu: ${t.text}`} data-testid={`observation-note-${t.id}`} />
+              <div className="flex flex-wrap gap-2">
+                {(["done", "with-help", "not-tried"] as const).map((st) => (
+                  <button key={st} type="button" className={secondaryButton} disabled={busy !== null} onClick={() => void save(t.id, st)} data-testid={`observation-${t.id}-${st}`}>
+                    {OBSERVATION_DE[st]}
+                  </button>
+                ))}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      {error ? <p className="mt-2 text-sm text-red-700" role="alert">{error}</p> : null}
+    </section>
+  );
+}
+
+function PlanningPanel({ input, child }: { input: PlanningInput; child: ChildId }) {
   return (
     <section className="rounded-2xl border border-primary bg-primary p-4" data-testid="parent-planning">
       <h3 className="text-base font-semibold text-primary">Für die Planung des nächsten Besuchs</h3>
       <p className="mt-1 text-sm text-tertiary">{input.note}</p>
       <div className="mt-2 grid gap-2 text-sm text-primary">
         <div data-testid="planning-interests">
-          <span className="font-medium">Santiagos Wünsche (wörtlich):</span>{" "}
+          <span className="font-medium">{child === "isabel" ? "Isabels" : "Santiagos"} Wünsche (wörtlich):</span>{" "}
           {input.interests.length ? input.interests.map((i) => `${interestText(i)} — ${i.visit}, ${i.source === "entry" ? "beim nächsten Öffnen" : "am Schluss"}, ${new Date(i.at).toLocaleString("de-CH")}`).join(" · ") : "noch keine Antwort"}
           {input.pendingInterest ? <span className="text-tertiary"> · offen für {input.pendingInterest} (wird beim nächsten Öffnen gefragt)</span> : null}
         </div>
