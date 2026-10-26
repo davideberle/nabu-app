@@ -61,7 +61,25 @@ import {
 
 type Db = Client | Transaction;
 
-export async function ensurePlayTables(client: Db): Promise<void> {
+/**
+ * Schema bootstrap once per client and process (October 26, 2026): it is ~17 sequential statements, and on the
+ * production database every statement is a network round trip — run on every request it made the meter's signed
+ * status read take ~3.9 s, longer than the authority window, so no paid lease could ever start. A failed attempt
+ * is forgotten, so the next request retries it.
+ */
+const playTablesReady = new WeakMap<Db, Promise<void>>();
+
+export function ensurePlayTables(client: Db): Promise<void> {
+  let ready = playTablesReady.get(client);
+  if (!ready) {
+    ready = createPlayTables(client);
+    playTablesReady.set(client, ready);
+    ready.catch(() => playTablesReady.delete(client));
+  }
+  return ready;
+}
+
+async function createPlayTables(client: Db): Promise<void> {
   await client.execute(`
     CREATE TABLE IF NOT EXISTS family_play_purchases (
       id              TEXT PRIMARY KEY,

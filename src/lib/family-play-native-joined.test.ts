@@ -108,6 +108,8 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
   let clock = t0;
   let key: Buffer;
   let outage = false;
+  /** BX02: how long Family takes to answer a status read (the shared clock advances by it; Family reads midway). */
+  let familyLatencyMs = 0;
   let settleGate: Promise<void> | null = null;
   let upstream: http.Server;
   let upstreamOrigin: string;
@@ -141,6 +143,7 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
   });
   beforeEach(() => {
     outage = false;
+    familyLatencyMs = 0;
     settleGate = null;
   });
 
@@ -163,8 +166,9 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
         const id = new URL(url).pathname.split("/").at(-2)!;
         equal(options.headers["x-family-play-signature"], mod.signSettlement(key, Number(options.headers["x-family-play-timestamp"]), id, options.body || ""));
         if (url.endsWith("/status")) {
-          const readAt = new Date(clock);
+          const readAt = new Date(clock + Math.floor(familyLatencyMs / 2));
           const snapshot = (await recordLeaseActivation(id, readAt, client), await getLeaseStatus(id, client, readAt));
+          clock += familyLatencyMs;
           return Response.json(snapshot ?? { error: "not-found" }, { status: snapshot ? 200 : 404 });
         }
         if (settleGate) await settleGate;
@@ -928,6 +932,94 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
       equal(again.budgetSeconds, remainingAfterExpiry);
       equal(c2, 10);
       equal(remainingNow, remainingAfterExpiry - 10);
+    } finally {
+      await native.close();
+      await s.close();
+    }
+  });
+
+  // ---- BX02 (builder-added after the October 26 live launch hung) -------------------------------------------------
+  // Production: Family's signed status read of an active lease took 3.8-4.0 s (Vercel request log, 09:36-09:40 CET),
+  // longer than the 2 s authority window, so every ticket was refused and the launcher kept "Preparing the launch…".
+  it("BX02 Family answering slower than the authority window: no ticket, nothing counted, and the meter's end resolves the lease Family recorded as activated; a fast answer plays continuously", async () => {
+    await allowance();
+    clock = t0;
+    await issue("lease-bx02-native1");
+    const s = await stack();
+    const native = new Native();
+    try {
+      // (a) The measured production latency: three ticket attempts, 40 s apart (the launcher's refresh), all refused.
+      familyLatencyMs = 3900;
+      const tok1 = cred("lease-bx02-native1");
+      const ticketStatuses: number[] = [];
+      for (let i = 0; i < 3; i += 1) {
+        ticketStatuses.push((await ticket(s.base, "lease-bx02-native1", tok1)).status);
+        clock += 40_000;
+      }
+      const meterNeverRan = s.server.store.loadLease("lease-bx02-native1") === null;
+      const activatedAtFamily = (await famLease("lease-bx02-native1")).activatedAt !== null;
+      // The launcher is left: Family releases the lease, then the page's end reaches the meter (same credential).
+      await endPlayLease({ leaseId: "lease-bx02-native1", personId: "santiago", reason: "left", now: new Date(clock) }, client);
+      const released = await famLease("lease-bx02-native1");
+      const reserveHeldBeforeEnd = released.finalSettled ? 0 : Math.max(0, released.capSeconds - released.consumedSeconds);
+      const end = await raw(s.base, "POST", "/v1/play/lease-bx02-native1/end", { origin: ORIGIN, authorization: `Bearer ${tok1}` }, { reason: "left", frameStopped: true, grant: null, runMs: null });
+      await s.server.settler.flush();
+      const resolved = await famLease("lease-bx02-native1");
+      familyLatencyMs = 0;
+      const next = await issue("lease-bx02-native2");
+      record("BX02", {
+        ticketStatusesAtProductionLatency: ticketStatuses.join(","),
+        meterNeverRanRefusedLease: meterNeverRan,
+        familyRecordedActivation: activatedAtFamily,
+        reserveHeldAfterReleaseSeconds: reserveHeldBeforeEnd,
+        releasedLeaseHeldReserveUntilMeterEnd: reserveHeldBeforeEnd > 0,
+        meterEndStatus: end.status,
+        familyFinalSettledAfterEnd: resolved.finalSettled,
+        familyConsumedAfterEnd: resolved.consumedSeconds,
+        nextLeaseBudgetIsFullAllowance: next.budgetSeconds === 900,
+      });
+      deepEqual(ticketStatuses, [503, 503, 503]);
+      ok(meterNeverRan);
+      ok(reserveHeldBeforeEnd > 0, "the released, activated lease holds a reserve until the meter reports");
+      equal(resolved.finalSettled, true);
+      equal(resolved.consumedSeconds, 0);
+      equal(next.budgetSeconds, 900);
+
+      // (b) Continuity of play by Family latency (renewal every second, frames every 100 ms; the clock never runs back).
+      const runShare = async (lid: string, latency: number) => {
+        await issue(lid);
+        familyLatencyMs = latency;
+        await launch(native, s, lid, cred(lid));
+        await native.send("game 1");
+        let frames = 0;
+        let running = 0;
+        let lastTick = Number.NEGATIVE_INFINITY;
+        const from = clock + 1000;
+        for (let t = from; t <= from + 20_000; t += 100) {
+          await at(native, t);
+          if (t - lastTick >= 1000) {
+            await native.send("tick");
+            lastTick = t;
+            if (clock > t) { t = clock; await at(native, t); }
+          }
+          const f = await native.send("frame");
+          frames += 1;
+          if (f.run) running += 1;
+          await native.send("beacon");
+        }
+        await stopPlaying(native);
+        familyLatencyMs = 0;
+        await quit(native);
+        await s.server.settler.flush();
+        clock += 5000;
+        return Math.round((running / frames) * 100) / 100;
+      };
+      const share300 = await runShare("lease-bx02-native3", 300);
+      const share600 = await runShare("lease-bx02-native4", 600);
+      const share900 = await runShare("lease-bx02-native5", 900);
+      const share1500 = await runShare("lease-bx02-native6", 1500);
+      record("BX02", { continuousPlayAtFamilyLatency300ms: share300 >= 0.95, runShareAtFamilyLatency300ms: share300, runShareAtFamilyLatency600ms: share600, runShareAtFamilyLatency900ms: share900, runShareAtFamilyLatency1500ms: share1500 });
+      ok(share300 >= 0.95, `run share at 300 ms: ${share300}`);
     } finally {
       await native.close();
       await s.close();

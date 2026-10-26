@@ -17,7 +17,9 @@
 // running elsewhere and the remaining time stay exactly as they were.
 //
 // This page never sends meter reports itself. Leaving before the launch button
-// was ever clicked releases the lease (nothing can have run). After a click the
+// was ever clicked releases the lease and closes it at the meter (nothing can
+// have run); so does a launch link Game Studio refuses three times in a row
+// (the page says so instead of waiting silently). After a click the
 // lease belongs to the app: leaving the page leaves the game running there; it
 // stops by itself when its time runs out or another game takes over (a click
 // that never reached an app leaves a lease that the meter closes unused).
@@ -39,6 +41,9 @@ const pillClass = cn("inline-flex min-h-12 items-center justify-center gap-2 rou
 const boxClass = "m-6 flex max-w-md flex-col gap-3 rounded-3xl border border-primary bg-primary p-5";
 /** Refresh the one-time link before its 60 s expiry while nobody clicked it. */
 const TICKET_REFRESH_MS = 40_000;
+/** A refused or failed link request is retried soon; after this many in a row the page says so and lets the lease go. */
+const TICKET_RETRY_MS = 3_000;
+const TICKET_ATTEMPTS = 3;
 const STATUS_POLL_MS = 2_000;
 /** After a click, how long to wait for the app's first report before suggesting what may be wrong. */
 const ATTACH_HINT_MS = 20_000;
@@ -109,27 +114,53 @@ export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; g
     return () => controller.abort();
   }, [child, gameId, client, attempt, takeover]);
 
+  /**
+   * Let go of a lease no app can have taken over: Family first, then the meter — so the meter, seeing it ended,
+   * files the zero report Family waits for even if it never ran the lease.
+   */
+  const closeUnused = useCallback(
+    (studio: StudioAccess, leaseId: string, reason: string) =>
+      client.release(child, leaseId, reason).finally(() => client.end(studio, leaseId, reason, true, null)),
+    [child, client],
+  );
+
   // ---- the one-time launch link, refreshed until the app has it ----
   const leaseId = phase.kind === "ready" ? phase.grant.lease.id : null;
   const studio = phase.kind === "ready" ? phase.studio : null;
   useEffect(() => {
     if (!leaseId || !studio) return;
     let stopped = false;
+    let failures = 0;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const schedule = (ms: number) => {
+      if (!stopped) timer = setTimeout(() => void fetchTicket(), ms);
+    };
     const fetchTicket = async () => {
-      if (attachedRef.current || document.visibilityState === "hidden") return;
+      if (attachedRef.current || document.visibilityState === "hidden") return schedule(TICKET_REFRESH_MS);
       const t = await client.nativeTicket(studio, leaseId);
       if (stopped) return;
-      if (t.ok && isLaunchUrl(t.value.launchUrl)) setLaunchUrl(t.value.launchUrl);
-      else if (!t.ok && (t.status === 410 || t.status === 403)) setPhase({ kind: "ended", reason: "ended", remaining: null });
-      else if (!t.ok) setLaunchUrl(null);
+      if (t.ok && isLaunchUrl(t.value.launchUrl)) {
+        failures = 0;
+        setLaunchUrl(t.value.launchUrl);
+        return schedule(TICKET_REFRESH_MS);
+      }
+      if (!t.ok && (t.status === 410 || t.status === 403)) return setPhase({ kind: "ended", reason: "ended", remaining: null });
+      setLaunchUrl(null);
+      // A predecessor still closing (409 pending) is a wait, not a failure.
+      if (!t.ok && t.status === 409) return schedule(TICKET_RETRY_MS);
+      failures += 1;
+      if (failures < TICKET_ATTEMPTS) return schedule(TICKET_RETRY_MS);
+      if (clickedRef.current) return schedule(TICKET_REFRESH_MS);
+      stopped = true;
+      void closeUnused(studio, leaseId, "launch-unavailable");
+      setPhase({ kind: "unavailable", message: "Game Studio couldn't confirm your play time just now. Nothing was used — try again in a moment." });
     };
     void fetchTicket();
-    const timer = setInterval(() => void fetchTicket(), TICKET_REFRESH_MS);
     return () => {
       stopped = true;
-      clearInterval(timer);
+      if (timer) clearTimeout(timer);
     };
-  }, [leaseId, studio, client]);
+  }, [leaseId, studio, client, closeUnused]);
 
   // ---- read-only meter status: has the app attached; the server's clock ----
   useEffect(() => {
@@ -155,17 +186,16 @@ export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; g
   useEffect(() => {
     return () => {
       const current = phaseRef.current;
-      if (current.kind === "ready" && !attachedRef.current && !clickedRef.current) {
-        void client.end(current.studio, current.grant.lease.id, "left", true, null);
-        void client.release(child, current.grant.lease.id, "left");
-      }
+      if (current.kind === "ready" && !attachedRef.current && !clickedRef.current) void closeUnused(current.studio, current.grant.lease.id, "left");
     };
-  }, [child, client]);
+  }, [closeUnused]);
 
   const onLaunchClick = useCallback(() => {
     clickedRef.current = true;
     setClickedAt(Date.now());
   }, []);
+  // The meter's clock once it runs this lease; until then the time Family granted the lease with.
+  const clockSeconds = status?.remainingSeconds ?? (phase.kind === "ready" ? phase.grant.remainingSeconds : null);
   const showHint = clickedAt !== null && !status?.attached && now - clickedAt > ATTACH_HINT_MS;
 
   return (
@@ -175,8 +205,8 @@ export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; g
           ← Games
         </Link>
         <p className="text-sm font-semibold">{profile.displayName} · {title}</p>
-        <p aria-live="polite" className="min-h-11 rounded-full border border-primary bg-primary px-4 py-2 text-sm font-semibold tabular-nums" data-remaining-seconds={status?.remainingSeconds ?? ""}>
-          ⏱️ {status?.remainingSeconds != null ? formatPlayClock(status.remainingSeconds) : "…"}
+        <p aria-live="polite" className="min-h-11 rounded-full border border-primary bg-primary px-4 py-2 text-sm font-semibold tabular-nums" data-remaining-seconds={clockSeconds ?? ""}>
+          ⏱️ {clockSeconds != null ? formatPlayClock(clockSeconds) : "…"}
         </p>
       </header>
 
