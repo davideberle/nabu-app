@@ -31,6 +31,11 @@
 // Content version 6 (Visit 7, 2026-10-23) is the served version: version 5 plus the scene mission visit `v8`. Rollback to the
 // released chapter set is this build with FAMILY_LEARNING_CONTENT_CAP=5 (a started v8 is parked untouched, its mission state
 // and every record stay readable; removing the cap resumes exactly). The vocabulary inventory is unchanged (v3).
+// Content version 7 (Visit 8, 2026-10-26) is the served version: version 6 plus the map mission visit `v9` and the typing
+// lesson TYPE-CH-COURSE-6. Rollback to the released chapter set is this build with FAMILY_LEARNING_CONTENT_CAP=6 (a started
+// v9 is parked untouched, its mission state, Nokt talks and every record stay readable; removing the cap resumes exactly).
+// The vocabulary inventory is unchanged (v3).
+import contentV7 from "@/data/family-learning/content/santiago-expedition-v7.json";
 import contentV6 from "@/data/family-learning/content/santiago-expedition-v6.json";
 import contentV5 from "@/data/family-learning/content/santiago-expedition-v5.json";
 import contentV4 from "@/data/family-learning/content/santiago-expedition-v4.json";
@@ -66,10 +71,10 @@ export function loadVocabularyInventory(): VocabularyInventory {
   }
 }
 
-/** The content version this server instance serves (6; 5, 4, 3, 2 or 1 under the rollback cap). */
-export function servedContentVersion(): 1 | 2 | 3 | 4 | 5 | 6 {
+/** The content version this server instance serves (7; 6, 5, 4, 3, 2 or 1 under the rollback cap). */
+export function servedContentVersion(): 1 | 2 | 3 | 4 | 5 | 6 | 7 {
   const cap = process.env.FAMILY_LEARNING_CONTENT_CAP;
-  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : cap === "4" ? 4 : cap === "5" ? 5 : 6;
+  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : cap === "4" ? 4 : cap === "5" ? 5 : cap === "6" ? 6 : 7;
 }
 
 export function loadLearningContent(): LearningContent {
@@ -77,7 +82,7 @@ export function loadLearningContent(): LearningContent {
   if (failure) throw failure;
   try {
     const served = servedContentVersion();
-    cached = asLearningContent(served === 1 ? contentV1 : served === 2 ? contentV2 : served === 3 ? contentV3 : served === 4 ? contentV4 : served === 5 ? contentV5 : contentV6);
+    cached = asLearningContent(served === 1 ? contentV1 : served === 2 ? contentV2 : served === 3 ? contentV3 : served === 4 ? contentV4 : served === 5 ? contentV5 : served === 6 ? contentV6 : contentV7);
     return cached;
   } catch (error) {
     failure = error instanceof Error ? error : new Error(String(error));

@@ -9,6 +9,7 @@ import type { VocabularyInventory } from "@/lib/family-learning-vocabulary";
 import type { VisitId } from "@/lib/family-learning-content";
 import { missionEvidence, planningInput } from "@/lib/family-learning-mission";
 import { noktModeFromEnv } from "@/lib/family-learning-nokt";
+import { noktTalkEvidence } from "@/lib/family-learning-nokt-talk";
 
 /**
  * GET /api/family/learning/parent/evidence?child=santiago|isabel
@@ -58,7 +59,8 @@ export async function GET(request: Request) {
   // Visit 7 (content v6, V7-D14): per scene mission, observed answers, help, tutor judgments, missing evidence and later checks — apart.
   const missions = [];
   if (prepared && content && bundle.state) {
-    for (const m of (content.missions ?? []).filter((x) => x.presentation === "scene")) {
+    // Content v7: the map mission (Visit 8) has the same parent view.
+    for (const m of (content.missions ?? []).filter((x) => x.presentation === "scene" || x.presentation === "map")) {
       const ev = missionEvidence(bundle.state, content, m.visit as VisitId, noktModeFromEnv(process.env));
       if (!ev) continue;
       // Per-step foreground activity from the EXISTING telemetry batches (no extra collection): what was on screen while input happened.
@@ -67,5 +69,7 @@ export async function GET(request: Request) {
       missions.push({ ...ev, time: { observed: t.uxObserved, byStep: t.byStep ?? {}, idleRuleSeconds: t.idleRuleSeconds, hiddenIntervals: t.hiddenIntervals } });
     }
   }
-  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env) }, { headers: NO_STORE });
+  // Content v7: Nokt's conversations outside the task talk (Home, welcome, visit, writing, look back) with provenance — never an assessment.
+  const noktTalks = prepared && content && bundle.state ? noktTalkEvidence(bundle.state, content) : [];
+  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env), noktTalks }, { headers: NO_STORE });
 }

@@ -31,6 +31,7 @@ import type { NoktMode } from "@/lib/family-learning-nokt";
 import { browserSpeech, playListening } from "@/lib/family-learning-listening";
 import { TypingBlock, type Act } from "./mission-world";
 import { NoktButton, NoktPanel, type NoktTranscribe, type NoktTurnFn } from "./nokt-panel";
+import { PlanGrid } from "./plan-grid";
 import rosaHarbor from "@/assets/family-learning/visit7/rosa-research-harbor.webp";
 
 // The palette of the approved preview: sea-green ink, parchment cards, amber retry, green success.
@@ -286,7 +287,7 @@ function ActiveTask({ child, view, mission, active, busy, act, speech, telemetry
   );
 }
 
-function Feedback({ tone, text, testId = "scene-feedback" }: { tone: "retry" | "stuck" | "success" | "taught" | "practice-wrong"; text: string; testId?: string }) {
+export function Feedback({ tone, text, testId = "scene-feedback" }: { tone: "retry" | "stuck" | "success" | "taught" | "practice-wrong"; text: string; testId?: string }) {
   const good = tone === "success";
   const neutral = tone === "taught";
   return (
@@ -305,7 +306,7 @@ function Feedback({ tone, text, testId = "scene-feedback" }: { tone: "retry" | "
 
 // --- a problem, one question at a time ------------------------------------------------
 
-function SolveTask({ active, busy, act, telemetry }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry }) {
+export function SolveTask({ active, busy, act, telemetry }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry }) {
   const sv = active.solve!;
   const finished = active.status !== "active";
   // After a correct answer the success stays on screen with its own "next question" action; the next question follows on tap.
@@ -341,7 +342,7 @@ function SolveTask({ active, busy, act, telemetry }: { active: MissionActiveView
       {finished ? (
         <>
           {lastResolved?.feedback ? <Feedback tone={lastResolved.feedback.tone} text={lastResolved.feedback.text} /> : null}
-          {sv.diagram ? <Trays diagram={sv.diagram} label="So werden die Setzlinge verpackt" /> : null}
+          {sv.diagram ? <Trays diagram={sv.diagram} label={`So werden die ${sv.diagram.unit} verpackt`} /> : null}
         </>
       ) : null}
     </div>
@@ -453,6 +454,7 @@ function HintArea({ part, step, busy, act, telemetry, emphasize }: { part: Solve
         <div key={h.id} className="grid gap-3 rounded-2xl p-4" style={{ background: "#edf4e6" }} data-testid="hint" data-hint={h.id}>
           <p className="text-lg">{h.text}</p>
           {h.diagram ? <Trays diagram={h.diagram} label="Zum Zählen" /> : null}
+          {h.grid ? <PlanGrid grid={h.grid} /> : null}
           {h.check ? <HintCheck check={h.check} hintId={h.id} part={part.id} step={step} busy={busy} act={act} /> : null}
         </div>
       ))}
@@ -497,12 +499,14 @@ function HintCheck({ check, hintId, part, step, busy, act }: { check: NonNullabl
 
 // --- the exact quantity picture (counts from data, never from art) ----------------------
 
+const CONTAINER_PLURAL: Record<string, string> = { Trage: "Tragen", Kiste: "Kisten", Schachtel: "Schachteln" };
+
 export function Trays({ diagram, label }: { diagram: MissionDiagram; label: string }) {
   const groups = Math.ceil(diagram.total / diagram.perGroup);
   return (
     <figure className="grid gap-2" data-testid="trays" data-total={diagram.total} data-groups={groups}>
       <figcaption className="text-base font-semibold">{label}</figcaption>
-      <div className="flex flex-wrap gap-2" role="img" aria-label={`${diagram.total} ${diagram.unit} in ${groups} ${diagram.container === "Trage" ? (groups === 1 ? "Trage" : "Tragen") : diagram.container}, höchstens ${diagram.perGroup} pro ${diagram.container}`}>
+      <div className="flex flex-wrap gap-2" role="img" aria-label={`${diagram.total} ${diagram.unit} in ${groups} ${groups === 1 ? diagram.container : CONTAINER_PLURAL[diagram.container] ?? diagram.container}, höchstens ${diagram.perGroup} pro ${diagram.container}`}>
         {Array.from({ length: groups }, (_, g) => {
           const n = Math.min(diagram.perGroup, diagram.total - g * diagram.perGroup);
           return (
@@ -538,7 +542,7 @@ function Seedling() {
 
 const PLACE_PICTURES: Record<string, "greenhouse" | "gate" | "boat"> = { "Ins Gewächshaus": "greenhouse", "Zum Tor": "gate", "Aufs Boot": "boat", "Im Gewächshaus": "greenhouse", "Am Tor": "gate", "Auf dem Boot": "boat" };
 
-function ListenTask({ child, active, busy, act, speech, telemetry }: { child: ChildId; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry }) {
+export function ListenTask({ child, active, busy, act, speech, telemetry }: { child: ChildId; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry }) {
   const listen = active.listen!;
   const [playing, setPlaying] = useState(false);
   const [last, setLast] = useState<"none" | "child-voice" | "browser" | "failed">("none");
@@ -584,7 +588,7 @@ function ListenTask({ child, active, busy, act, speech, telemetry }: { child: Ch
             <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt}>
               {(q.options ?? []).map((o) => (
                 <button key={o} type="button" className="grid min-h-24 w-36 place-items-center gap-1 rounded-2xl border-2 p-2 text-lg font-semibold disabled:opacity-50" style={{ borderColor: "#8ba8a4", background: "white" }} disabled={busy || !canAnswer} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`}>
-                  <PlacePicture kind={PLACE_PICTURES[o] ?? "gate"} />
+                  {PLACE_PICTURES[o] || !listen.noPictures ? <PlacePicture kind={PLACE_PICTURES[o] ?? "gate"} /> : null}
                   {o}
                 </button>
               ))}
@@ -633,7 +637,7 @@ export function PlacePicture({ kind }: { kind: "greenhouse" | "gate" | "boat" | 
 
 // --- the Spanish request -------------------------------------------------------------------
 
-function RequestTask({ active, busy, act, telemetry }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry }) {
+export function RequestTask({ active, busy, act, telemetry }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry }) {
   const p = active.produce!;
   const [text, setText] = useState("");
   const [usedBank, setUsedBank] = useState(false);

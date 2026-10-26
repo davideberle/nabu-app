@@ -23,7 +23,18 @@ export const LEARNING_NOKT_REPLY_PATH = "/api/family/learning/nokt/turn/reply";
 export const BRIDGE_NOKT_PATH = "/v1/nokt/turn";
 
 /** One Nokt turn as the panel sends it; the server builds everything else (context, request, binding). */
-export type NoktTurnInput = { step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; sessionId: string; turnId: string; text: string; via: "voice" | "typed" };
+export type NoktTurnInput =
+  | { step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; sessionId: string; turnId: string; text: string; via: "voice" | "typed" }
+  /** Content v7: a conversation outside the task talk; the page is the server's. No `text` = an opener (welcome, first debrief question, reaction to the saved sentence). */
+  | { purpose: "home" | "welcome" | "visit" | "writing" | "debrief"; sessionId: string; turnId: string; text?: string; via?: "voice" | "typed" };
+
+/** The runtime's refusal as the browser saw it, in the closed vocabulary the reply route accepts (it only names a reason). */
+export function noReplyCodeOf(status: number, code: unknown): "attempts_exhausted" | "usage_limit" | "busy" | "bad_request" | "unavailable" | "timeout" {
+  if (status === 429) return code === "attempts_exhausted" ? "attempts_exhausted" : code === "busy" ? "busy" : "usage_limit";
+  if (status === 400 || status === 409 || status === 422) return "bad_request";
+  if (status === 504) return "timeout";
+  return "unavailable";
+}
 export const LEARNING_REFRESH_MARGIN_MS = 60_000;
 
 export type LearningSessionInfo = { child: ChildId; token: string; expiresAt: number };
@@ -225,7 +236,7 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
       // 2. The browser (on the Mac mini) asks the family runtime; bearer only, no cookies, nothing else is sent.
       let reply: string | null = null;
       let receipt: string | null = null;
-      let noReply: "attempts_exhausted" | null = null;
+      let noReply: ReturnType<typeof noReplyCodeOf> | "unreachable" | null = null;
       if (origin && typeof r.bridge?.token === "string" && r.request && r.turnId === turn.turnId) {
         try {
           const res = await doFetch(`${origin}${BRIDGE_NOKT_PATH}`, { method: "POST", headers: { Authorization: `Bearer ${r.bridge.token}`, "Content-Type": "application/json" }, body: JSON.stringify({ turnId: turn.turnId, request: r.request }), signal: options.signal, cache: "no-store", credentials: "omit", mode: "cors" });
@@ -233,19 +244,22 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
             const body = (await res.json()) as { reply?: unknown; receipt?: unknown };
             if (typeof body.reply === "string") reply = body.reply;
             if (typeof body.receipt === "string") receipt = body.receipt;
-          } else if (res.status === 429) {
-            // The runtime's daily allowance is used up: say so (the child sees a kind line, the parent the reason).
+          } else if (res.status === 429 || !("step" in turn)) {
+            // The runtime refused. The task talk (Visit 7 contract) passes on only the used-up day; the content-v7 purposes say
+            // why honestly (busy, provider limit, a request it does not accept …) — a reason for the parent, never authority.
             const body = (await res.json().catch(() => null)) as { code?: unknown } | null;
-            if (body?.code === "attempts_exhausted") noReply = "attempts_exhausted";
+            const code = noReplyCodeOf(res.status, body?.code);
+            if (code === "attempts_exhausted" || !("step" in turn)) noReply = code;
           }
         } catch {
           if (options.signal.aborted) return { ok: false, failure: "cancelled" };
+          if (!("step" in turn)) noReply = "unreachable";
         }
-      }
+      } else if (!("step" in turn)) noReply = "unreachable";
       // Cancelled (closed, navigated, task changed) after dispatch: nothing more is sent; his line stays without a reply.
       if (options.signal.aborted) return { ok: false, failure: "cancelled" };
       // 3. The reply EXACTLY as received (or none); the server checks the receipt and the engine binds and guards it.
-      return post(LEARNING_NOKT_REPLY_PATH, { step: turn.step, turnId: turn.turnId, reply: reply ?? null, receipt: reply === null ? null : receipt, ...(reply === null && noReply ? { noReply } : {}) }, dispatched.view.revision);
+      return post(LEARNING_NOKT_REPLY_PATH, { ...("step" in turn ? { step: turn.step } : { purpose: turn.purpose }), turnId: turn.turnId, reply: reply ?? null, receipt: reply === null ? null : receipt, ...(reply === null && noReply ? { noReply } : {}) }, dispatched.view.revision);
     },
 
     async sendTelemetry(childId, batch, options) {

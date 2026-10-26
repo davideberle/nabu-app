@@ -29,6 +29,7 @@
 // ---------------------------------------------------------------------------
 
 import type { missionEvidence } from "@/lib/family-learning-mission";
+import type { noktTalkEvidence } from "@/lib/family-learning-nokt-talk";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { NabuBadge, cn } from "@/components/ui/nabu";
@@ -56,7 +57,7 @@ type PlanningInput = {
   typing: { planned: number; attempted: number; activeSeconds: number; idleSeconds: number; wallSeconds: number | null; accuracy: number | null; paceCps: number; paceBasis: string } | null;
   note: string;
 };
-type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" | "subscription" };
+type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" | "subscription"; noktTalks?: ReturnType<typeof noktTalkEvidence> };
 
 /** Learner-facing visit name (server-computed): "Besuch 3 — Die Beobachtungsstation (v4)"; falls back to the id. */
 function visitName(evidence: Evidence, id: string): string {
@@ -309,6 +310,7 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
           {(evidence.missionEvidence ?? []).map((m) => (
             <MissionEvidencePanel key={m.mission} evidence={m} />
           ))}
+          {(evidence.noktTalks ?? []).length ? <NoktTalksPanel talks={evidence.noktTalks!} /> : null}
           <AttemptTable title="Gleichmässig teilen (EQ-Aufgaben, inkl. Rest bei EQ-STATION/EQ-PIER und Boote bei EQ-HARBOR: Teil A volle Boote/übrig, Teil B Boote für alle)" attempts={math} child={child} ops={ops} empty="Noch kein Mathe-Versuch aufgezeichnet." visits={evidence.visits} />
           <DelayedCheck evidence={evidence} />
           <SupportList evidence={evidence} filter={(k) => k !== "gloss"} />
@@ -1333,6 +1335,33 @@ function interestText(i: { kind: string; text: string | null } | null): string {
 }
 
 /** Planning input for the next visit — the child's own words first, then open retrieval items and the typing calibration. */
+/** Content v7: every Nokt conversation outside the task talk, line by line with provenance (Home, welcome, visit, writing, look back). */
+function NoktTalksPanel({ talks }: { talks: ReturnType<typeof noktTalkEvidence> }) {
+  return (
+    <section className="rounded-2xl border border-primary p-4" data-testid="parent-nokt-talks">
+      <h3 className="text-lg font-semibold">Gespräche mit Nokt (ausserhalb der Aufgaben)</h3>
+      <p className="text-sm text-tertiary">Gespräch, keine Bewertung: Diese Zeilen vergeben weder Abschluss noch Münzen noch eine Einschätzung. «Nokt» steht nur bei geprüften Antworten.</p>
+      <ol className="mt-3 grid gap-3">
+        {talks.map((t) => (
+          <li key={t.id} className="rounded-xl border border-secondary p-3" data-testid={`parent-talk-${t.purpose}`}>
+            <p className="text-sm font-semibold">
+              {t.purposeLabel}
+              {t.visitLabel ? ` · ${t.visitLabel}` : ""} · {t.startedAt.slice(0, 16).replace("T", " ")} · {t.closed}
+            </p>
+            <ol className="mt-1 grid gap-1 text-sm">
+              {t.lines.map((l, i) => (
+                <li key={i}>
+                  <strong>{l.who}</strong> <span className="text-tertiary">({l.detail})</span>: {l.text}
+                </li>
+              ))}
+            </ol>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 type MissionEvidenceView = NonNullable<ReturnType<typeof missionEvidence>> & { time?: { observed: boolean; byStep: Record<string, { enters: number; activeSeconds: number }>; idleRuleSeconds: number; hiddenIntervals: number | null } };
 
 /** "about 2 min" — rounded so it is not read as precise; the rule behind it is stated once in the panel. */

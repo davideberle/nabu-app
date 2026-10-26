@@ -58,7 +58,7 @@ import type { EvidenceCategory, MissionState, Records, TypingBurst, TypingComfor
 import { alignedLessonMetrics, TYPING_METRIC_VERSION, type AlignedLineMetrics } from "./family-learning-typing-metrics.ts";
 import { typingErrors, type TypingError, feedbackOf, updateSpacingFocus } from "./family-learning-feedback.ts";
 import { assessSpacing, flagSpacing, markSpacing, evaluateRevision, type SpacingFlag } from "./family-learning-writing.ts";
-import type { MissionPart, MissionHint, MissionLine, MissionDiagram } from "./family-learning-mission-spec.ts";
+import type { MissionPart, MissionHint, MissionLine, MissionDiagram, MissionGrid, MissionDecide } from "./family-learning-mission-spec.ts";
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
 import { receiptOrigin, type ReceiptInput, type ReplyOrigin } from "./family-learning-trust.ts";
 import type { NoktMode } from "./family-learning-nokt.ts";
@@ -128,8 +128,13 @@ export type MissionWriteRun = {
   at: string;
   assessable: boolean;
   flags: SpacingFlag[];
-  /** At most one correction is shown (help, recorded before it is shown). */
-  correction: { index: number; marked: string } | null;
+  /**
+   * At most one correction is shown (help, recorded before it is shown). Content v7: `rule` names which reviewed mechanical
+   * rule it is (spacing, the capital at the start, the end mark) and `line` its reviewed child-facing text; absent = spacing.
+   */
+  correction: { index: number; marked: string; rule?: "spacing" | "capital-start" | "end-mark"; line?: string } | null;
+  /** Content v7: the mechanical findings of the original (all of them, for the parent; only one is taught). */
+  mechanics?: ("spacing" | "capital-start" | "end-mark")[];
   revision: { text: string; at: string; outcome: string } | null;
   kept: boolean;
 };
@@ -268,8 +273,8 @@ export type MissionRun = {
 export type InterestRecord = {
   id: string;
   visit: VisitId;
-  /** `closing` = asked in the normal closing sequence; `entry` = asked at the next entry after an early exit. */
-  source: "closing" | "entry";
+  /** `closing` = asked in the normal closing sequence; `entry` = asked at the next entry after an early exit; `debrief` (content v7) = his answer to Nokt's next-interest question in the spoken look back, recorded verbatim by the server. */
+  source: "closing" | "entry" | "debrief";
   kind: "text" | "unsure" | "no-preference" | "declined" | "choice";
   /** The child's own words, verbatim (text kind only); for a choice, the label the child picked. */
   text: string | null;
@@ -316,6 +321,8 @@ export type MissionAction =
   | { a: "hint"; step: string; part: string }
   /** Content v6: the child's answer to the small question inside a hint. */
   | { a: "hint-check"; step: string; part: string; hint: string; value: string }
+  /** Content v7: a judgment between plans (every viable option is a legitimate choice). */
+  | { a: "decide"; step: string; option: string }
   /** Content v6: the child's own entry after worked teaching (counts only when it matches). */
   | { a: "practice-part"; step: string; part: string; value: string }
   /** Content v6: keep a question for later — when stuck or after teaching (explicit unresolved item, never credit). */
@@ -335,7 +342,7 @@ export type MissionAction =
   /** Content v6 (N7-06): record the tutor context BEFORE the tutor is asked; refused while the tutor is unavailable. */
   | { a: "tutor-dispatch"; step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; turnId: string; sessionId: string; text?: string; via?: "voice" | "typed" }
   /** Content v6 (N7-03): the reply to one Nokt turn; its origin was verified by the ROUTE (receipt bound to the dispatch). */
-  | { a: "tutor-reply"; step: string; turnId: string; reply: string; noReply?: "attempts_exhausted" }
+  | { a: "tutor-reply"; step: string; turnId: string; reply: string; noReply?: "attempts_exhausted" | "usage_limit" | "busy" | "bad_request" | "unreachable" | "unavailable" | "timeout" }
   /** Content v6 (N7-06): the tutor's structured result — accepted only when bound, fresh and verified (origin from the server, never the client). */
   | { a: "tutor-outcome"; step: string; outcome: unknown }
   | { a: "finish" };
@@ -348,7 +355,18 @@ export type MissionEnv = {
   visit: VisitId;
   /** Content v6: whether a verified tutor route is available for this child right now (production: never, CHILD_ASSISTANT_AI_ENABLED = false). */
   tutor?: { available: boolean; child?: string; origin?: ReplyOrigin; receipt?: ReceiptInput };
+  /**
+   * Content v7: Nokt's conversation is switched on for this deployment. Only map missions (Visit 8) use it, and only to PLAN
+   * an offer/reflection or the writing reaction — dispatching and replying still need `tutor.available`, which only the Nokt
+   * routes set. Earlier missions keep their exact behaviour.
+   */
+  noktEnabled?: boolean;
 };
+
+/** Content v7: whether Nokt may be planned into this mission's flow (offer, reflection, writing reaction). */
+function noktPlanned(def: MissionDef, env: MissionEnv): boolean {
+  return !!env.tutor?.available || (def.presentation === "map" && !!env.noktEnabled);
+}
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -563,8 +581,39 @@ function targetWords(p: MissionProduce): string[] {
 }
 
 // ---------------------------------------------------------------------------
+// Content v7 writing mechanics (reviewed, deterministic; meaning is never judged)
+// ---------------------------------------------------------------------------
+
+const END_MARK_RE = /[.!?]["»“”']?$/u;
+
+/** The sentence starts with a lowercase letter (a number at the start is not a capitalization slip). */
+function lowerStart(text: string): boolean {
+  const first = Array.from(text.trim())[0] ?? "";
+  return /\p{Ll}/u.test(first);
+}
+
+// ---------------------------------------------------------------------------
 // Typing block planning (V6-04/05): finite, announced, calibrated by observed pace
 // ---------------------------------------------------------------------------
+
+/**
+ * Content v7: the course progression rule of `typing-comfort`, re-applied at the block start for the saved lesson. Earlier
+ * blocks ran at the course's last lesson, where the rule could not advance (content ceiling); with a new lesson served the
+ * same criterion decides once more. Recorded as the course decision with its reason.
+ */
+function catchUpProgression(state: MissionState, env: MissionEnv, blockId: string) {
+  const course = env.content.typing.course;
+  const progress = state.typing.course;
+  if (!course || !progress) return;
+  const index = Math.min(progress.lessonIndex, course.lessons.length - 1);
+  const lesson = course.lessons[index];
+  if (index >= course.lessons.length - 1 || progress.completed.includes(lesson.id)) return;
+  const good = progress.bursts.filter((b) => b.lessonId === lesson.id && b.accuracy >= course.progression.minAccuracy && b.comfort !== "hard" && (b.lineCount === undefined || b.lineCount >= lesson.lines.length));
+  if (good.length < course.progression.minBursts) return;
+  progress.completed.push(lesson.id);
+  progress.lessonIndex = index + 1;
+  progress.decision = { lessonId: lesson.id, action: "advance", reason: `${good.length} bursts ≥ ${Math.round(course.progression.minAccuracy * 100)} % and not hard — rule re-applied at the start of ${blockId}: the course had ended at this lesson before`, at: env.nowIso };
+}
 
 export function observedPace(state: MissionState, block: MissionTypingBlock): { cps: number; basis: "observed" | "fallback"; samples: number } {
   const bursts = (state.typing.course?.bursts ?? []).filter((b) => b.seconds > 0 && b.typedChars > 0).slice(-4);
@@ -595,11 +644,16 @@ export function planTypingBlock(state: MissionState, content: LearningContent, b
   const avgChars = block.pattern.map((p) => sourceLines(p).lines.join("").length).reduce((a, b) => a + b, 0) / block.pattern.length;
   const perDrill = avgChars / pace.cps;
   const n = Math.max(block.minDrills, Math.min(block.maxDrills, Math.round(block.targetActiveSeconds / perDrill)));
+  // Content v7: reviewed line sets per lesson are cycled, so the block is varied instead of the same lines again and again.
+  const used: Record<string, number> = {};
   const drills: MissionDrill[] = Array.from({ length: n }, (_, i) => {
     const source = block.pattern[i % block.pattern.length];
     const src = source === "focus" && !focusLine ? "current" : source;
     const { lesson, lines } = sourceLines(src);
-    return { no: i + 1, source: src, lessonId: lesson.id, lines: [...lines] };
+    const sets = src !== "focus" ? block.material?.[lesson.id] : undefined;
+    const k = used[lesson.id] ?? 0;
+    used[lesson.id] = k + 1;
+    return { no: i + 1, source: src, lessonId: lesson.id, lines: [...(sets?.length ? sets[k % sets.length] : lines)] };
   });
   const estimatedSeconds = Math.round(drills.reduce((s, d) => s + d.lines.join("").length / pace.cps, 0));
   return { drills, paceCps: Math.round(pace.cps * 1000) / 1000, paceBasis: pace.basis, paceSamples: pace.samples, estimatedSeconds, lessonId: current.id };
@@ -796,6 +850,11 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         // Exposure is durable and written first (rule 1): the task is on screen from now on.
         if (!["story", "outcome", "typing-block"].includes(step.kind)) records.exposures.push({ taskId: taskId(def, step), taskVersion: step.version, kind: "shown", source: "mission-open", at: env.nowIso });
         if (step.kind === "solve") revealNextPart(records, env, def, step, run.steps[step.id]);
+        // Content v7: a supported exchange models its target word in the intro — supplied from the opening, never fresh recall.
+        for (const w of step.produce?.modelled ?? []) {
+          const norm = stripAccents(normalizeAnswer(w));
+          if (!run.shownWords.includes(norm)) run.shownWords.push(norm);
+        }
       }
       result = { opened: step.id };
       break;
@@ -1070,6 +1129,9 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       }
       const focusKeys = (state.feedback?.focus ?? []).filter((f) => f.kind === "typing-key" && f.status === "open").map((f) => f.key);
       const unavailable = !env.settings.keyboardLayout ? "layout-unconfirmed" : state.typing.alignment?.result !== "match" ? "alignment-unchecked" : null;
+      // Content v7: the EXISTING progression rule, applied once more at the block start — it could not advance while the course
+      // ended at this lesson. Same criterion (bursts ≥ threshold, not hard); never a skip, never a new rule.
+      if (!unavailable && def.typingBlock.progressOnStart) catchUpProgression(state, env, def.typingBlock.id);
       const plan = unavailable ? null : planTypingBlock(state, env.content, def.typingBlock, focusKeys);
       run.typing = { blockId: def.typingBlock.id, startedAt: env.nowIso, plan: plan ?? { drills: [], paceCps: 0, paceBasis: "fallback", paceSamples: 0, estimatedSeconds: 0, lessonId: "" }, drills: [], partials: [], completedAt: null, extra: "not-offered", unavailable: plan ? null : unavailable ?? "no-course" };
       if (!plan) {
@@ -1174,7 +1236,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (correct) {
         pr.status = "correct";
         pr.evidence = evidence;
-        if (part.reflect && !env.tutor?.available) {
+        if (part.reflect && !noktPlanned(def, env)) {
           // Planned reflection (N7-04c) needs the verified tutor. Without it the explanation is missing evidence — recorded, never replaced by written questioning.
           pr.reflection = "not-available";
           support(records, env, def, step, "tutor-unavailable", { part: part.id, entry: "planned", help: false });
@@ -1187,7 +1249,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
           // without one that is said plainly — nothing is revealed and nothing is diagnosed in its place.
           pr.phase = "stuck";
           if (pr.misses === 2) {
-            if (env.tutor?.available) pr.offer = pr.offer ?? "shown";
+            if (noktPlanned(def, env)) pr.offer = pr.offer ?? "shown";
             else support(records, env, def, step, "tutor-unavailable", { part: part.id, entry: "offer", help: false });
           }
         }
@@ -1299,6 +1361,26 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       result = { part: part.id, status: pr.status };
       break;
     }
+    case "decide": {
+      const { step, r } = requireActive(run, def, action.step);
+      if (step.kind !== "decide" || !step.decide) throw new MissionOpError("invalid", "not a judgment between plans");
+      if (r.status !== "active") throw new MissionOpError("not-allowed", "the plan is chosen");
+      const option = step.decide.options.find((o) => o.id === action.option);
+      if (!option) throw new MissionOpError("invalid", "unknown option");
+      const prior = r.attempts.length;
+      // A viable plan is a legitimate choice — the preference itself is never scored. What IS observed: whether the chosen plan
+      // keeps the stated rule (first pick, without the feedback of an earlier non-viable pick → independent).
+      const evidence: EvidenceCategory = !option.viable ? "incorrect" : prior === 0 ? "independent" : "supported";
+      const attempt: MissionAttempt = { no: prior + 1, at: env.nowIso, raw: option.label, choice: option.id, correct: option.viable, evidence, support: prior ? ["feedback"] : [], modality: "pick", kind: "answer" };
+      r.attempts.push(attempt);
+      attemptRow(records, env, def, step, attempt, "de");
+      if (option.viable) {
+        run.facts[`${step.id}:choice`] = { value: option.id, label: option.label, source: "answered", at: env.nowIso };
+        finishStep(state, run, def, step, r, "done", evidence, env);
+      } else r.phase = "clarified";
+      result = { viable: option.viable, option: option.id };
+      break;
+    }
     case "write": {
       const { step, r } = requireActive(run, def, action.step);
       if (step.kind !== "write" || !step.write) throw new MissionOpError("invalid", "not a writing step");
@@ -1310,25 +1392,41 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       const flags = flagSpacing(text, joins);
       // At most ONE useful correction (D-W1): the first flagged boundary, marked in the child's own sentence. Help, recorded first.
       const first = flags[0] ?? null;
-      const correction = first ? { index: first.index, marked: markSpacing(text, [first]) } : null;
-      r.writing = { original: text, at: env.nowIso, assessable: assessment.assessable, flags, correction, revision: null, kept: false };
-      const outcome = !assessment.assessable ? "unassessable" : flags.length ? "flagged" : "clean";
-      const evidence: EvidenceCategory = !assessment.assessable ? "unscored" : flags.length ? "incorrect" : "independent";
-      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: !assessment.assessable ? null : flags.length === 0, evidence, support: [], modality: "typed", kind: "answer" };
+      // Content v7: the reviewed mechanical rules beyond spacing, in their priority order (capital at the start, end mark).
+      const mech = step.write.mechanics ?? null;
+      const found: ("spacing" | "capital-start" | "end-mark")[] = mech ? mech.filter((m) => (m === "spacing" ? flags.length > 0 : m === "capital-start" ? lowerStart(text) : !END_MARK_RE.test(text.trim()))) : [];
+      const taughtRule = mech ? found[0] ?? null : first ? "spacing" : null;
+      const correction: MissionWriteRun["correction"] =
+        taughtRule === "spacing" && first ? { index: first.index, marked: markSpacing(text, [first]), ...(mech ? { rule: "spacing" as const } : {}) }
+        : taughtRule && taughtRule !== "spacing" ? { index: -1, marked: text, rule: taughtRule, line: step.write.mechanicsLines?.[taughtRule] ?? "" }
+        : null;
+      r.writing = { original: text, at: env.nowIso, assessable: assessment.assessable, flags, correction, ...(mech ? { mechanics: found } : {}), revision: null, kept: false };
+      const outcome = mech ? (found.length ? "flagged" : "clean") : !assessment.assessable ? "unassessable" : flags.length ? "flagged" : "clean";
+      // Mechanics only — meaning and grammar are never judged by the app. Content v7 judges the reviewed mechanical rules
+      // (spacing where a boundary is reviewed, the capital at the start, the end mark); earlier content the spacing alone.
+      const evidence: EvidenceCategory = mech ? (found.length ? "incorrect" : "independent") : !assessment.assessable ? "unscored" : flags.length ? "incorrect" : "independent";
+      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: mech ? found.length === 0 : !assessment.assessable ? null : flags.length === 0, evidence, support: [], modality: "typed", kind: "answer" };
       r.attempts.push(attempt);
       attemptRow(records, env, def, step, attempt, "de");
-      records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "writing_transfer" as const, language: "de", modality: "typed", text, metrics: { mission: def.id, step: step.id, assessed: assessment.assessed, correct: assessment.correct, flagged: flags.length, rules: flags.map((f) => f.rule), outcome, meaningJudged: false, spellingJudged: false }, at: env.nowIso });
-      state.feedback = updateSpacingFocus(feedbackOf(state), { outcome, modality: "typed", helpExposed: false, flagged: flags.length, text, at: env.nowIso, visit: env.visit, lesson: `mission:${def.id}/${step.id}` });
+      records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "writing_transfer" as const, language: "de", modality: "typed", text, metrics: { mission: def.id, step: step.id, assessed: assessment.assessed, correct: assessment.correct, flagged: flags.length, rules: flags.map((f) => f.rule), outcome, ...(mech ? { mechanics: found } : {}), meaningJudged: false, spellingJudged: false }, at: env.nowIso });
+      state.feedback = updateSpacingFocus(feedbackOf(state), { outcome: assessment.assessable ? (flags.length ? "flagged" : "clean") : "unassessable", modality: "typed", helpExposed: false, flagged: flags.length, text, at: env.nowIso, visit: env.visit, lesson: `mission:${def.id}/${step.id}` });
       if (correction) {
-        r.support.push({ kind: "spacing-correction", at: env.nowIso, detail: String(correction.index) });
-        support(records, env, def, step, "spacing-correction", { index: correction.index, rule: first!.rule });
-      } else finishStep(state, run, def, step, r, "done", evidence, env);
-      result = { outcome, flags: flags.length, correction: !!correction };
+        const kind = correction.rule && correction.rule !== "spacing" ? `${correction.rule}-correction` : "spacing-correction";
+        r.support.push({ kind, at: env.nowIso, detail: String(correction.index) });
+        support(records, env, def, step, kind, { index: correction.index, rule: correction.rule === "spacing" || !correction.rule ? first!.rule : correction.rule });
+      }
+      // Content v7: with Nokt switched on, the step stays open for Nokt's reaction to the ORIGINAL and the one revision.
+      const awaitNokt = !!step.write.nokt && noktPlanned(def, env);
+      if (!correction && !awaitNokt) finishStep(state, run, def, step, r, "done", evidence, env);
+      else if (!correction) r.phase = "clarified";
+      result = { outcome, flags: flags.length, correction: !!correction, ...(mech ? { mechanics: found, nokt: awaitNokt } : {}) };
       break;
     }
     case "revise": {
       const { step, r } = requireActive(run, def, action.step);
-      if (step.kind !== "write" || !r.writing || !r.writing.correction || r.status !== "active") throw new MissionOpError("not-allowed", "nothing to revise");
+      // Content v7: a revision may also follow Nokt's reaction alone (the step stays open for it); earlier content needs the correction.
+      const v7Write = !!step.write?.mechanics;
+      if (step.kind !== "write" || !r.writing || (!r.writing.correction && !v7Write) || r.status !== "active") throw new MissionOpError("not-allowed", "nothing to revise");
       if (action.text === null) {
         r.writing.kept = true;
         finishStep(state, run, def, step, r, "done", r.attempts[0]?.evidence ?? "unscored", env);
@@ -1337,6 +1435,22 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       }
       const text = String(action.text ?? "").replace(/\r/g, "").replace(/\n+/g, " ").slice(0, 300);
       if (!text.trim()) throw new MissionOpError("invalid", "write the sentence or keep it");
+      if (v7Write) {
+        // The original stays exactly as typed; the revision is a separate record, judged ONLY on the one taught mechanical rule.
+        const rule = r.writing.correction?.rule ?? null;
+        const same = text.trim() === r.writing.original.trim();
+        const fixed = rule === "spacing" ? evaluateRevision(r.writing.original, text, r.writing.flags.slice(0, 1)).outcome === "revised" : rule === "capital-start" ? !lowerStart(text) : rule === "end-mark" ? END_MARK_RE.test(text.trim()) : false;
+        const outcome = same ? "unchanged" : rule && fixed ? "revised" : "changed";
+        const helps = [...(r.writing.correction ? [r.writing.correction.rule === "spacing" || !r.writing.correction.rule ? "spacing-correction" : `${r.writing.correction.rule}-correction`] : []), ...(r.support.some((x) => x.kind === "nokt-writing") ? ["nokt-writing"] : [])];
+        r.writing.revision = { text, at: env.nowIso, outcome };
+        const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: outcome === "revised" ? true : outcome === "unchanged" && rule ? false : null, evidence: outcome === "revised" ? "supported" : outcome === "unchanged" && rule ? "incorrect" : "unscored", support: helps, modality: "typed", kind: "practice" };
+        r.attempts.push(attempt);
+        attemptRow(records, env, def, step, attempt, "de", `${step.objective}-revision`);
+        records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "writing_retry" as const, language: "de", modality: "typed", text, metrics: { mission: def.id, step: step.id, original: r.writing.original, outcome, rule, help: helps, meaningJudged: false }, at: env.nowIso });
+        finishStep(state, run, def, step, r, "done", r.attempts[0]?.evidence ?? "unscored", env);
+        result = { revision: outcome };
+        break;
+      }
       const ev = evaluateRevision(r.writing.original, text, r.writing.flags.slice(0, 1));
       r.writing.revision = { text, at: env.nowIso, outcome: ev.outcome };
       // The revision is a separate, supported record; the original stays exactly as typed.
@@ -1442,6 +1556,8 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       let parsed: ReturnType<typeof parseNoktReplyText> = null;
       // No reply at all, and the browser reports the runtime answer "used up for today": recorded as such (still withheld).
       if (origin === "missing" && action.reply === "" && action.noReply === "attempts_exhausted") reason = "no-reply-daily-allowance";
+      // Content v7: the browser's other reports (closed vocabulary) only name why there was no reply — still withheld, never authority.
+      else if (origin === "missing" && action.reply === "" && action.noReply && ["usage_limit", "busy", "bad_request", "unreachable", "unavailable", "timeout"].includes(action.noReply)) reason = `no-reply-${action.noReply}`;
       else if (origin !== "verified") reason = `origin-${origin}`;
       // A new answer since the dispatch: the reply talks about an older state of the question and is not shown.
       else if (r.attempts.length !== dispatch.revision || pr.status !== (dispatch.purpose === "diagnostic" ? "open" : "correct")) reason = "stale";
@@ -1611,7 +1727,7 @@ export type MissionActiveView = {
   done: { speaker: string | null; text: string; language: string; translated: string | null }[];
   /** Reading tasks: the text to read (never audio). Listening: the text ONLY after the transcript support was recorded. */
   readText: string | null;
-  listen: { language: string; plays: number; completedPlays: number; failures: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean } | null;
+  listen: { language: string; plays: number; completedPlays: number; failures: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean; noPictures?: boolean } | null;
   questions: { id: string; prompt: string; kind: "pick" | "number"; options: string[] | null; status: "open" | "correct" | "given"; tries: number; hint: string | null; shownAnswer: string | null; lastWrong: string | null }[];
   calc: { prompt: string; fields: { key: string; label: string; correct: boolean | null; last: number | null }[]; clarification: string | null; representation: { text: string; total: number; perGroup: number; unit: string } | null; teach: string | null; tries: number } | null;
   choice: { prompt: string; options: { id: string; label: string }[]; picked: { id: string; feedback: string; best: boolean }[]; teach: string | null } | null;
@@ -1628,7 +1744,13 @@ export type MissionActiveView = {
   ending?: { success: string | null; next: string } | null;
   /** Content v6: tutor state for this step (never an answer). */
   tutor?: { available: boolean; offerPart: string | null };
+  /** Content v7: a judgment between plans (no option is marked as the answer; non-viable feedback only after it was picked). */
+  decide?: DecideView | null;
+  /** Content v7: a floor plan of a story/outcome step (the child's own chosen plan for the outcome). */
+  grid?: MissionGrid | null;
 };
+
+export type DecideView = { prompt: string; rule: string; options: { id: string; label: string; grid: MissionGrid | null }[]; picked: { id: string; viable: boolean; feedback: string }[]; chosen: string | null; reflect: string | null };
 
 export type SolvePartView = {
   id: string;
@@ -1642,7 +1764,7 @@ export type SolvePartView = {
   /** The child's own last wrong number (to catch an unchanged repeat before it is sent) — never an answer key. */
   lastWrong: number | null;
   feedback: { tone: "retry" | "stuck" | "success" | "taught" | "practice-wrong"; text: string } | null;
-  hints: { id: string; level: number; type: string; text: string; diagram: MissionDiagram | null; check: { prompt: string; kind: "number" | "pick"; options: string[] | null; unit: string | null; result: "correct" | "wrong" | null; reply: string | null; representation: MissionDiagram | null } | null }[];
+  hints: { id: string; level: number; type: string; text: string; diagram: MissionDiagram | null; grid?: MissionGrid | null; check: { prompt: string; kind: "number" | "pick"; options: string[] | null; unit: string | null; result: "correct" | "wrong" | null; reply: string | null; representation: MissionDiagram | null } | null }[];
   hintsLeft: number;
   /** False before the first attempt of a fresh application (hints come after trying). */
   hintAllowed: boolean;
@@ -1655,8 +1777,21 @@ export type SolvePartView = {
   /** The open guided step still waits for its answer (the next level opens after it). */
   hintPending: boolean;
 };
-export type SolveView = { facts: string[]; current: string | null; parts: SolvePartView[]; diagram: MissionDiagram | null; application: { of: string; kind: string } | null; total: number };
-export type WriteView = { prompt: string; instruction: string; placeholder: string | null; original: string | null; correction: { intro: string; marked: string } | null; revision: string | null; keepLabel: string; thanks: string | null };
+export type SolveView = { facts: string[]; current: string | null; parts: SolvePartView[]; diagram: MissionDiagram | null; application: { of: string; kind: string } | null; total: number; grids?: MissionGrid[] };
+export type WriteView = {
+  prompt: string;
+  instruction: string;
+  placeholder: string | null;
+  original: string | null;
+  correction: { intro: string; marked: string; rule?: string; line?: string | null } | null;
+  revision: string | null;
+  keepLabel: string;
+  thanks: string | null;
+  /** Content v7: the step waits for Nokt's reaction to the original and the one revision (the app's correction may be absent). */
+  awaitingRevision?: boolean;
+  /** Content v7: Nokt is planned to react to the original (only after the original exists — never before the first attempt). */
+  nokt?: boolean;
+};
 
 export type TypingBlockView = {
   announce: string;
@@ -1677,8 +1812,8 @@ export type MissionView = {
   id: string;
   title: string;
   objective: string;
-  /** Content v6: `scene` missions show one illustrated scene and their beats in order; absent/`walk` = the walkable island. */
-  presentation?: "walk" | "scene";
+  /** Content v6: `scene` missions show one illustrated scene and their beats in order; absent/`walk` = the walkable island. Content v7: `map` = the walkable island between clear task scenes. */
+  presentation?: "walk" | "scene" | "map";
   scene?: { art: string; alt: string } | null;
   /** Content v6 (scene): which beat of the reviewed order is on screen (1-based) and how many there are. */
   beat?: { index: number; count: number; next: string | null } | null;
@@ -1755,7 +1890,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     produce = { language: p.language, frame: p.frame, instruction: p.instruction, wordBank: has("word-bank") ? p.wordBank : null, feedback, repairLine: r.repairLine ?? null, askMeaning: r.phase === "ask-meaning" ? r.pendingMeaning ?? null : null, shownSentence: has("answer-shown") ? p.accepted[0] : null, tries: answers.filter((x) => x.correct !== true).length, maxTries: def.rules.maxProduceAttempts, lastResponse: lastAnswer?.raw ?? null, practiceFeedback: r.status === "active" && lastPractice && lastPractice.correct !== true ? (practiceFails >= (def.rules.maxPracticeAttempts ?? 2) ? "Der Satz stimmt noch nicht ganz. Heb ihn fürs nächste Mal auf, dann üben wir ihn wieder." : "Noch nicht ganz gleich. Schau den Satz oben genau an und schreib ihn noch einmal.") : null, practiceLeft: Math.max(0, (def.rules.maxPracticeAttempts ?? 2) - practiceFails) };
   }
   const listen = step.kind === "listen" && step.text
-    ? { language: step.text.language, plays: r.plays, completedPlays: r.completedPlays ?? 0, failures: r.playFailures ?? 0, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation") }
+    ? { language: step.text.language, plays: r.plays, completedPlays: r.completedPlays ?? 0, failures: r.playFailures ?? 0, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation"), ...(def.presentation === "map" ? { noPictures: true } : {}) }
     : null;
   return {
     id: step.id,
@@ -1775,6 +1910,8 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     typing: step.kind === "typing-block" ? typingBlockView(def, run, content, !run.typing && state && state.typing.alignment?.result === "match" ? planTypingBlock(state, content, def.typingBlock, (state.feedback?.focus ?? []).filter((f) => f.kind === "typing-key" && f.status === "open").map((f) => f.key)) : null) : null,
     solve: step.solve ? solveView(def, step, r, tutorAvailable) : null,
     write: step.write ? writeView(step, r) : null,
+    ...(step.decide ? { decide: decideView(step.decide, r) } : {}),
+    ...(step.grid || step.fromChoice ? { grid: step.fromChoice ? chosenGrid(def, run, step.fromChoice) : step.grid ?? null } : {}),
     diagram: step.diagram ?? null,
     shipments: step.shipments ?? null,
     ending: step.kind === "outcome" && def.presentation === "scene" ? sceneEnding(def, run) : null,
@@ -1821,6 +1958,7 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun, tutorA
         type: hd.type,
         text: hd.text,
         diagram: hd.diagram ?? null,
+        ...(hd.grid ? { grid: hd.grid } : {}),
         check: hd.check ? { prompt: hd.check.prompt, kind: hd.check.kind, options: hd.check.options ?? null, unit: hd.check.unit ?? null, result: c?.result ?? null, reply: c ? (c.result === "correct" ? hd.check.correct : hd.check.wrong) : null, representation: c?.result === "wrong" ? hd.check.representation ?? null : null } : null,
       };
     });
@@ -1849,22 +1987,57 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun, tutorA
     });
   }
   const resolved = r.status !== "active";
-  return { facts: sv.facts, current, parts, diagram: resolved ? sv.diagram ?? null : null, application: sv.application ?? null, total: sv.parts.length };
+  return { facts: sv.facts, current, parts, diagram: resolved ? sv.diagram ?? null : null, application: sv.application ?? null, total: sv.parts.length, ...(sv.grids ? { grids: sv.grids } : {}) };
 }
 
 function writeView(step: MissionStep, r: MissionStepRun): WriteView {
   const w = step.write!;
   const wr = r.writing ?? null;
+  const open = !!wr && !wr.revision && !wr.kept && r.status === "active";
   return {
     prompt: w.prompt,
     instruction: w.instruction,
     placeholder: w.placeholder ?? null,
     original: wr?.original ?? null,
-    correction: wr?.correction && !wr.revision && !wr.kept ? { intro: w.correctionIntro, marked: wr.correction.marked } : null,
+    correction: wr?.correction && !wr.revision && !wr.kept ? { intro: w.correctionIntro, marked: wr.correction.marked, ...(wr.correction.rule ? { rule: wr.correction.rule, line: wr.correction.line ?? null } : {}) } : null,
     revision: wr?.revision?.text ?? null,
     keepLabel: w.keep,
     thanks: r.status !== "active" ? w.thanks : null,
+    ...(w.mechanics ? { awaitingRevision: open, nokt: !!w.nokt } : {}),
   };
+}
+
+function decideView(d: MissionDecide, r: MissionStepRun): DecideView {
+  const picked = r.attempts.filter((a) => a.choice).map((a) => d.options.find((o) => o.id === a.choice)!).filter(Boolean);
+  const chosen = picked.find((o) => o.viable) ?? null;
+  return {
+    prompt: d.prompt,
+    rule: d.rule,
+    options: d.options.map((o) => ({ id: o.id, label: o.label, grid: o.grid ?? null })),
+    picked: picked.map((o) => ({ id: o.id, viable: o.viable, feedback: o.feedback })),
+    chosen: chosen?.id ?? null,
+    reflect: chosen ? d.reflect?.prompt ?? null : null,
+  };
+}
+
+/** Content v7: the plan the child chose in a decide step (its grid), or null before the choice. */
+export function chosenGrid(def: MissionDef, run: MissionRun, decideStep: string): MissionGrid | null {
+  const step = def.steps.find((s) => s.id === decideStep);
+  const r = run.steps[decideStep];
+  const pick = r?.attempts.find((a) => a.choice && step?.decide?.options.find((o) => o.id === a.choice)?.viable);
+  return pick ? step?.decide?.options.find((o) => o.id === pick.choice)?.grid ?? null : null;
+}
+
+/** World changes that are visible now: after their step, and — for a choice-bound change — only for the option the child chose. */
+export function visibleWorld(def: MissionDef, run: MissionRun | null, statuses: Record<string, MissionStepStatus>) {
+  return def.world.filter((w) => {
+    if (!["done", "practiced", "taught", "unresolved"].includes(statuses[w.after])) return false;
+    if (!w.choice) return true;
+    const r = run?.steps[w.choice.step];
+    const step = def.steps.find((s) => s.id === w.choice!.step);
+    const pick = r?.attempts.find((a) => a.choice && step?.decide?.options.find((o) => o.id === a.choice)?.viable);
+    return pick?.choice === w.choice.option;
+  });
 }
 
 /**
@@ -1901,6 +2074,43 @@ export function sceneEnding(def: MissionDef, run: MissionRun): { success: string
   return { success, next };
 }
 
+/**
+ * Content v7 (map mission): ONE success that actually happened, from the records, and ONE next step from what is still open.
+ * A retrieval answered first time without help comes first (that is what this visit checks), then a first-try measurement,
+ * a plan that keeps the rule on the first pick, the Spanish request, the English directions. Never praise for zero mistakes.
+ */
+export function mapEnding(def: MissionDef, run: MissionRun): { success: string | null; next: string; open: boolean } {
+  const ran = (id: string) => run.steps[id];
+  const solves = def.steps.filter((s) => s.kind === "solve");
+  const retrieval = solves.find((s) => !s.solve?.application && s.required && ran(s.id)?.outcome === "independent" && s.objective.includes("retrieval"));
+  const fresh = solves.find((s) => s.solve?.application && ran(s.id)?.outcome === "independent");
+  const firstTry = solves.flatMap((s) => (s.solve?.parts ?? []).map((p) => ({ s, p, pr: ran(s.id)?.parts?.[p.id] }))).find((x) => x.pr?.evidence === "independent" && !x.s.objective.includes("retrieval"));
+  const plan = def.steps.find((s) => s.kind === "decide" && ran(s.id)?.outcome === "independent");
+  const request = def.steps.find((s) => (s.kind === "recall" || s.kind === "produce") && ran(s.id)?.outcome === "independent");
+  const listen = def.steps.find((s) => s.kind === "listen" && ran(s.id)?.outcome === "independent");
+  const success = retrieval
+    ? `${retrieval.title}: beim ersten Versuch richtig, ohne Hinweis.`
+    : fresh
+      ? `${fresh.title}: Du hast mit neuen Zahlen beim ersten Versuch richtig gerechnet.`
+      : firstTry
+        ? `${firstTry.s.title}: ${firstTry.p.answer} ${firstTry.p.unit} — beim ersten Versuch richtig.`
+        : plan
+          ? `Dein Plan hält die Regel ein: Jedes Beet liegt am Weg.`
+          : request
+            ? `Du hast Rosa auf Spanisch gesagt: «${[...ran(request.id)!.attempts].reverse().find((a) => a.correct === true)?.raw ?? ""}».`
+            : listen
+              ? "Du hast June auf Englisch verstanden."
+              : null;
+  const openSolve = solves.find((s) => ["taught", "unresolved"].includes(ran(s.id)?.status ?? "") || ran(s.id)?.outcome === "answer_exposed");
+  const openRequest = def.steps.find((s) => (s.kind === "recall" || s.kind === "produce") && ran(s.id) && ran(s.id)!.status !== "done");
+  const next = openSolve
+    ? `Nächstes Mal schauen wir «${openSolve.title}» noch einmal an, mit neuen Zahlen.`
+    : openRequest
+      ? "Nächstes Mal sagst du Rosa noch einmal auf Spanisch, was ihr braucht."
+      : "Nächstes Mal: dein neues Abenteuer im Gewächshaus — dein Wunsch zählt.";
+  return { success, next, open: !!(openSolve || openRequest) };
+}
+
 export function buildMissionView(state: MissionState, content: LearningContent, visit: VisitId, options: { tutorAvailable?: boolean } = {}): MissionView | null {
   const def = missionDefFor(content, visit);
   if (!def) return null;
@@ -1911,7 +2121,6 @@ export function buildMissionView(state: MissionState, content: LearningContent, 
   const active = activeStep && run.steps[activeStep.id] ? activeView(def, run, activeStep, run.steps[activeStep.id], content, state, !!options.tutorAvailable) : null;
   const nextStep = def.steps.find((s) => st[s.id] === "available" || st[s.id] === "active") ?? null;
   const beatStep = activeStep ?? nextStep;
-  const shownStatus = (id: string) => ["done", "practiced", "taught", "unresolved"].includes(st[id]);
   const required = def.steps.filter((s) => s.required || (st[s.id] !== "not-needed" && st[s.id] !== "locked"));
   const finishBlocked = def.steps.some((s) => (s.required ? !isResolved(st[s.id]) : st[s.id] === "available" || st[s.id] === "active"));
   return {
@@ -1930,7 +2139,7 @@ export function buildMissionView(state: MissionState, content: LearningContent, 
     here: steps.filter((s) => s.place === run.position && (s.status === "available" || s.status === "active")).map((s) => s.id),
     active,
     facts: Object.entries(run.facts).map(([key, f]) => ({ key, label: f.label, source: f.source })),
-    world: def.world.filter((w) => shownStatus(w.after)).map((w) => ({ id: w.id, prop: w.prop, place: w.place, count: w.count, label: w.label })),
+    world: visibleWorld(def, run, st).map((w) => ({ id: w.id, prop: w.prop, place: w.place, count: w.count, label: w.label })),
     progress: { required: required.length, resolved: required.filter((s) => isResolved(st[s.id])).length },
     canFinish: !finishBlocked && !run.finishedAt,
     finished: !!run.finishedAt,
@@ -1996,6 +2205,17 @@ export function missionVisitSummary(state: MissionState, content: LearningConten
   const rep = missionReport(state, content, visit);
   if (!rep) return null;
   const { def, run } = rep;
+  if (def.presentation === "map") {
+    // Content v7: the same short shape — the visible result (his own plan), one evidenced success, one next step.
+    const ending = mapEnding(def, run);
+    const outcome = visibleWorld(def, run, rep.statuses).pop();
+    return {
+      success: ending.success ? { text: ending.success, basis: `${def.id} records` } : null,
+      practiced: null,
+      next: { branch: (ending.open ? "supported" : "success") as "success" | "supported", text: ending.next, basis: `${def.id} open items` },
+      artifact: run.finishedAt ? { kind: "mission" as const, text: outcome ? `${outcome.label}.` : `${def.title}: geschafft.` } : null,
+    };
+  }
   if (def.presentation === "scene") {
     // V6-F10 / V7-D12: short and child-sized — the visible result, one evidenced success, one next step. Details stay in the parent view.
     const ending = sceneEnding(def, run);
@@ -2226,15 +2446,29 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
         missing.push("Ob der Ton tatsächlich hörbar war, ist nicht belegt.");
       }
       if (step.kind === "write" && r.writing) {
-        observed.splice(0, observed.length, `Original: «${r.writing.original}»`, ...(r.writing.revision ? [`Überarbeitung: «${r.writing.revision.text}» (${r.writing.revision.outcome})`] : []), `Abstände: ${!r.writing.assessable ? "nicht prüfbar (keine geprüfte Wortgrenze)" : r.writing.flags.length ? `${r.writing.flags.length} Stelle(n) markiert, 1 Korrektur gezeigt` : "keine Auffälligkeit"}`);
-        missing.push("Inhalt und Grammatik des Satzes wurden nicht beurteilt.");
+        const MECH_DE: Record<string, string> = { spacing: "Abstände", "capital-start": "grosser Satzanfang", "end-mark": "Satzzeichen am Ende" };
+        const mech = r.writing.mechanics;
+        observed.splice(
+          0,
+          observed.length,
+          `Original (unverändert gespeichert): «${r.writing.original}»`,
+          ...(r.writing.revision ? [`Überarbeitung: «${r.writing.revision.text}» (${r.writing.revision.outcome})`] : r.writing.kept ? ["Nicht überarbeitet («So lassen»)."] : []),
+          mech
+            ? `Geprüfte Regeln: ${mech.length ? `${mech.map((x) => MECH_DE[x] ?? x).join(", ")} auffällig` : "keine Auffälligkeit"}; gezeigt: ${r.writing.correction ? MECH_DE[r.writing.correction.rule ?? "spacing"] ?? "Korrektur" : "keine App-Korrektur"}${r.support.some((x) => x.kind === "nokt-writing") ? "; Nokt hat auf den Satz reagiert (siehe Gespräch)" : ""}.`
+            : `Abstände: ${!r.writing.assessable ? "nicht prüfbar (keine geprüfte Wortgrenze)" : r.writing.flags.length ? `${r.writing.flags.length} Stelle(n) markiert, 1 Korrektur gezeigt` : "keine Auffälligkeit"}`,
+        );
+        missing.push(mech ? "Inhalt und Grammatik wurden von der App nicht beurteilt; eine Reaktion von Nokt ist ein Gesprächsbeitrag, keine Bewertung." : "Inhalt und Grammatik des Satzes wurden nicht beurteilt.");
+      }
+      if (step.kind === "decide") {
+        observed.splice(0, observed.length, ...r.attempts.map((a) => `gewählt: «${a.raw}» — ${a.correct ? "hält die Regel ein" : "bricht die Regel (Erklärung gezeigt)"}`));
+        missing.push("Die Vorliebe für einen der gültigen Pläne wird nicht bewertet. Der Grund steht nur im Gespräch mit Nokt, wenn es eines gab.");
       }
       if (step.retrieval?.focus) laterCheck = `Wiederabruf von «${step.retrieval.focus.split(":").pop()}» aus früheren Besuchen; zählt nur frisch und ohne Hilfe als Behalten.`;
     }
     const support = [...new Set(r.support.map((x) => supportLabel(x.kind, x.detail)))];
     const supportRaw = [...new Set(r.support.map((x) => x.kind))];
     const tutor = tutorSummaryDe(r, noktMode);
-    const WITHHELD_DE: Record<string, string> = { "origin-missing": "ohne Nachweis der Herkunft", "origin-invalid": "Herkunft ungültig", "origin-malformed": "Herkunft fehlerhaft", stale: "zu einer älteren Antwort", malformed: "Form ungültig", "intent-not-in-phase": "passte nicht zur Gesprächsphase", "answer-disclosed": "hätte die Antwort verraten", "judges-open-answer": "hätte die offene Antwort bewertet", "several-questions": "mehrere Fragen", "repeated-question": "wiederholte Frage", "must-close": "Gespräch zu lang", "no-reply-daily-allowance": "keine Antwort: Nokts Tageskontingent war aufgebraucht (Meldung des Browsers)" };
+    const WITHHELD_DE: Record<string, string> = { "origin-missing": "ohne Nachweis der Herkunft", "origin-invalid": "Herkunft ungültig", "origin-malformed": "Herkunft fehlerhaft", stale: "zu einer älteren Antwort", malformed: "Form ungültig", "intent-not-in-phase": "passte nicht zur Gesprächsphase", "answer-disclosed": "hätte die Antwort verraten", "judges-open-answer": "hätte die offene Antwort bewertet", "several-questions": "mehrere Fragen", "repeated-question": "wiederholte Frage", "must-close": "Gespräch zu lang", "no-reply-daily-allowance": "keine Antwort: Nokts Tageskontingent war aufgebraucht (Meldung des Browsers)", "no-reply-usage_limit": "keine Antwort: Nutzungsgrenze des Anbieters (Meldung des Browsers)", "no-reply-busy": "keine Antwort: Nokt war noch beschäftigt (Meldung des Browsers)", "no-reply-bad_request": "keine Antwort: Anfrage von der Laufzeit abgelehnt (Meldung des Browsers)", "no-reply-unreachable": "keine Antwort: Laufzeit nicht erreichbar (Meldung des Browsers)", "no-reply-unavailable": "keine Antwort: Laufzeit oder Anbieter nicht verfügbar (Meldung des Browsers)", "no-reply-timeout": "keine Antwort: Zeitüberschreitung (Meldung des Browsers)" };
     const talk = (r.tutorTurns ?? []).map((t) => t.role === "child"
       ? { part: t.part, who: "Kind" as const, text: t.text, detail: t.via === "voice" ? "gesprochen (Abschrift, korrigierbar)" : "getippt", at: t.at }
       : t.shown

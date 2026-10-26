@@ -388,7 +388,7 @@ export async function applyMutation(
 ): Promise<MutationOutcome> {
   await ensureLearningTables(client);
   const settings = await readParentSettings(client, input.child);
-  const env = { content, settings, now, newId: () => randomUUID(), ...(options.tutor ? { tutorAvailable: options.tutor.available, ...(options.tutor.origin ? { tutorOrigin: options.tutor.origin } : {}), ...(options.tutor.receipt !== undefined ? { tutorReceipt: options.tutor.receipt } : {}) } : {}) };
+  const env = { content, settings, now, newId: () => randomUUID(), noktEnabled: noktModeFromEnv(process.env) !== "unavailable", ...(options.tutor ? { tutorAvailable: options.tutor.available, ...(options.tutor.origin ? { tutorOrigin: options.tutor.origin } : {}), ...(options.tutor.receipt !== undefined ? { tutorReceipt: options.tutor.receipt } : {}) } : {}) };
   const tx = await beginWrite(client);
   try {
     // R5-1: the generation is read FIRST, inside the write transaction (a deletion is a

@@ -59,7 +59,8 @@ import { buildWritingReviewDispatch, evaluateLogRevision, parseWritingReviewRepl
 import { applyReasoningChoice, applyReasoningReply, applyReasoningTurn, childExplanationText, closeReasoningUnresolved, effectiveLevel, levelLabel, MAX_REPLY_CHARS, methodLabel, newReasoningState, pendingDispatch, turnsLeft, type AssessmentLevel, type ReasoningDispatchContext, type ReasoningState, type ReplyOrigin } from "./family-learning-reasoning.ts";
 import { sha256Hex } from "./family-learning-hash.ts";
 import { liveTutorDeferred } from "./family-learning-deferral.ts";
-import { applyMissionAction, buildMissionView, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
+import { applyMissionAction, buildMissionView, chosenGrid, mapEnding, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, stepStatuses, visibleWorld, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
+import { applyNoktTalk, noktTalkView } from "./family-learning-nokt-talk.ts";
 import { originWithoutBinding, provenanceOf, receiptOrigin as bindReceipt, type InvalidReceipt, type ReceiptInput, type VerifiedReceipt } from "./family-learning-trust.ts";
 import {
   childFacingUnclear,
@@ -802,7 +803,11 @@ export type LearningOp =
   /** UX-5b: close the bounded loop honestly (done = outcome from the retries; skip = moved on). */
   | { op: "repair-close"; repairId: string; reason: "done" | "skip" }
   /** UX-5a: the child has seen the lesson-end feedback and moves on. */
-  | { op: "lesson-feedback-seen"; id: string };
+  | { op: "lesson-feedback-seen"; id: string }
+  /** Content v7 (Visit 8): one Nokt conversation action outside the task talk (Home, welcome, visit, writing, debrief). Only the Nokt turn routes may apply it. */
+  | { op: "nokt-talk"; action: import("./family-learning-nokt-talk.ts").NoktTalkAction }
+  /** Content v7: the closing button answers (enjoyment, clarity) recorded BEFORE the spoken look back, so the debrief can use them. */
+  | { op: "closing-feedback"; feedback: { difficulty?: string | null; enjoyment?: string | null; clarity?: string | null } };
 
 export type OpEnv = {
   content: LearningContent;
@@ -815,6 +820,8 @@ export type OpEnv = {
   tutorOrigin?: import("./family-learning-trust.ts").ReplyOrigin;
   /** Content v6: the reply receipt as verified by the Nokt reply ROUTE (signature checked; the engine binds it to its dispatch). */
   tutorReceipt?: import("./family-learning-trust.ts").ReceiptInput;
+  /** Content v7: Nokt's conversation is switched on for this deployment (server env only; plans offers/reactions, grants nothing). */
+  noktEnabled?: boolean;
 };
 
 export class LearningOpError extends Error {
@@ -949,6 +956,10 @@ export function nextVisitAvailability(
   // replayed or reset. Under content version 5 (cap / rollback) nothing further is offered and a running v8 is parked.
   const hasV8 = content.visits.some((v) => v.id === "v8");
   if (hasV8 && !finished.includes("v8")) return { visit: "v8", availableAt: null };
+  // Visit 8 (content v7, 2026-10-26): the greenhouse map mission `v9` follows the finished Visit 7 immediately; Visit 7 is never
+  // replayed or reset. Under content version 6 (cap / rollback) nothing further is offered and a running v9 is parked.
+  const hasV9 = content.visits.some((v) => v.id === "v9");
+  if (hasV9 && !finished.includes("v9")) return { visit: "v9", availableAt: null };
   return { visit: null, availableAt: null, reason: "all-visits-done" };
 }
 
@@ -2445,9 +2456,11 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       if (op.optionId !== null && op.optionId !== undefined && !content.reflection.options.some((o) => o.id === op.optionId)) throw new LearningOpError("invalid", "unknown reflection option");
       if ((op.optionId === null || op.optionId === undefined) && !difficultyOptional) throw new LearningOpError("invalid", "difficulty is required by this content");
       const visit = currentVisit(state);
-      visit.reflection = op.optionId ?? null;
+      // Content v7: the button answers recorded before the spoken look back (closing-feedback) stand unless the closing sends new ones.
+      const keepEarlier = op.feedback === undefined && op.optionId === undefined && !op.difficultySkipped && !!visit.feedback;
+      if (!keepEarlier) visit.reflection = op.optionId ?? null;
       const dims = content.reflection.dimensions ?? [];
-      if (dims.length || difficultyOptional) {
+      if (!keepEarlier && (dims.length || difficultyOptional)) {
         // Three states per dimension (R3-3): answered, explicitly skipped ("Lieber nicht sagen"), left open. Never coerced.
         const answers: Record<string, string> = {};
         const skipped: string[] = [];
@@ -2471,7 +2484,9 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       }
       // Content v5 (V6-11): every normal closing asks what the child wants next; the answer (own words, "weiss nicht", "egal" or
       // "lieber nicht sagen") is stored verbatim in the child's evidence. Nothing is inferred when no answer is given.
-      if (content.reflection.nextInterest) {
+      // Content v7: the spoken look back may already have recorded his own next-interest words (verbatim, server-side).
+      const debriefed = (state.interests ?? []).some((i) => i.visit === visit.id && i.at >= visit.startedAt && i.source === "debrief");
+      if (content.reflection.nextInterest && (op.interest || !debriefed)) {
         if (!op.interest) throw new LearningOpError("invalid", "the closing asks what comes next — answer it or choose one of its buttons");
         try {
           recordInterest(state, records, op.interest, visit.id, "closing", nowIso, env.newId, missionDefFor(content, visit.id)?.nextAdventure ?? null);
@@ -2488,11 +2503,48 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       break;
     }
 
+    case "nokt-talk": {
+      try {
+        const out = applyNoktTalk(state, op.action, { content, nowIso, newId: env.newId, child: state.child, available: env.tutorAvailable === true, ...(env.tutorReceipt !== undefined ? { receipt: env.tutorReceipt } : {}) });
+        records.attempts.push(...out.records.attempts);
+        records.exposures.push(...out.records.exposures);
+        records.supports.push(...out.records.supports);
+        records.samples.push(...out.records.samples);
+        result = out.result;
+      } catch (error) {
+        if (error instanceof MissionOpError) throw new LearningOpError(error.code, error.message);
+        throw error;
+      }
+      break;
+    }
+
+    case "closing-feedback": {
+      requireStage(state, content, "reflect");
+      const visit = currentVisit(state);
+      if (missionDefFor(content, visit.id)?.presentation !== "map") throw new LearningOpError("not-available", "this visit closes with the reflection form");
+      const dims = [{ id: "difficulty", options: content.reflection.options }, ...(content.reflection.dimensions ?? [])];
+      const answers: Record<string, string> = {};
+      const skipped: string[] = [];
+      const unanswered: string[] = [];
+      for (const dim of dims) {
+        const given = op.feedback?.[dim.id as "enjoyment" | "clarity" | "difficulty"];
+        if (given === null || given === "") skipped.push(dim.id);
+        else if (given === undefined) unanswered.push(dim.id);
+        else if (dim.options.some((o) => o.id === given)) answers[dim.id] = given;
+        else throw new LearningOpError("invalid", `unknown ${dim.id} option`);
+      }
+      // Three states per dimension (R3-3), exactly like the reflection; the latest answer counts until the visit closes.
+      visit.reflection = answers.difficulty ?? null;
+      visit.feedback = { answers, skipped, unanswered, offered: dims.map((d) => d.id) };
+      result = { feedback: visit.feedback };
+      break;
+    }
+
     case "mission": {
       requireStage(state, content, "mission");
       const visit = currentVisit(state);
       try {
-        const out = applyMissionAction(state, op.action, { content, settings: env.settings, nowIso, newId: env.newId, visit: visit.id, tutor: { available: env.tutorAvailable === true, child: state.child, origin: env.tutorOrigin ?? "missing", ...(env.tutorReceipt !== undefined ? { receipt: env.tutorReceipt } : {}) } });
+        const out = applyMissionAction(state, op.action, { content, settings: env.settings, nowIso, newId: env.newId, visit: visit.id, tutor: { available: env.tutorAvailable === true, child: state.child, origin: env.tutorOrigin ?? "missing", ...(env.tutorReceipt !== undefined ? { receipt: env.tutorReceipt } : {}) }, noktEnabled: env.noktEnabled === true });
         records.attempts.push(...out.records.attempts);
         records.exposures.push(...out.records.exposures);
         records.supports.push(...out.records.supports);
@@ -2834,6 +2886,9 @@ export type LogReviewView = {
   record: { outcome: LogReviewRecord["outcome"]; revised: string | null; resolved: number; unresolved: number } | null;
 };
 
+/** Content v7: what the look back shows before Nokt speaks — the visible result (his own plan), one evidenced success, one next step, his button answers so far. */
+export type ClosingView = { success: string | null; next: string; artifact: string | null; plan: import("./family-learning-mission-spec.ts").MissionGrid | null; feedback: Record<string, string | null> };
+
 export type ChildView = {
   child: ChildId;
   revision: number;
@@ -2895,7 +2950,7 @@ export type ChildView = {
   reminder: ReminderCue | null;
   /** The reopenable visit reports (finished visits complete, the running one partial), oldest first. */
   reports: VisitReport[];
-  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; nextInterest: import("./family-learning-mission-spec.ts").NextInterestDef | null; adventure?: import("./family-learning-mission-spec.ts").MissionNextAdventure | null } | null;
+  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; nextInterest: import("./family-learning-mission-spec.ts").NextInterestDef | null; adventure?: import("./family-learning-mission-spec.ts").MissionNextAdventure | null; closing?: ClosingView | null } | null;
   /** Content v5 (Visit 6): the running mission (stage `mission`), answer keys stripped. */
   mission: MissionView | null;
   /** Content v5 (V6-11): the next-visit question is still unanswered for this visit (asked at the next entry, never inferred). */
@@ -2905,7 +2960,7 @@ export type ChildView = {
   tutor: TutorContext | null;
   retention: string;
   /** Content v6: whether Nokt can talk on this surface (deployed builds: never; `fictional-stub` only on an isolated local DB). */
-  nokt?: { mode: import("./family-learning-nokt.ts").NoktMode; mic?: boolean };
+  nokt?: { mode: import("./family-learning-nokt.ts").NoktMode; mic?: boolean; talk?: ReturnType<typeof noktTalkView> };
 };
 
 function nextStepText(state: MissionState, content: LearningContent, stage: StageId | null, now: Date): string {
@@ -2942,7 +2997,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
       case "log-transfer": return "Schreib einen neuen kurzen Satz.";
       case "summary": return "Das hast du heute geschafft.";
       case "reflect": return "Wie war es heute?";
-      case "mission": return state.currentVisit === "v8" ? "Hilf Rosa, die Setzlinge in den Inselgarten zu bringen." : "Geh über die Insel: Finde heraus, was das Schiff braucht.";
+      case "mission": return state.currentVisit === "v9" ? "Geh über die Insel: Plan das neue Gewächshaus." : state.currentVisit === "v8" ? "Hilf Rosa, die Setzlinge in den Inselgarten zu bringen." : "Geh über die Insel: Finde heraus, was das Schiff braucht.";
     }
   }
   const availability = nextVisitAvailability(state, content, now);
@@ -2956,12 +3011,29 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
     if (availability.visit === "v6") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v6") ?? 5}): der Hafen.`;
     if (availability.visit === "v7") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v7") ?? 6}): die Fahrt zum Forschungsschiff.`;
     if (availability.visit === "v8") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v8") ?? 7}): Rosas Inselgarten.`;
+    if (availability.visit === "v9") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v9") ?? 8}): das grössere Gewächshaus.`;
     return "Zurück zur Basis — ein neuer Besuch wartet.";
   }
   return "Alle Besuche sind geschafft.";
 }
 
 /** Optional per-request inputs of the view (follow-on): the learner's time zone, the stored reviews the progress strip may cite and the served vocabulary inventory. */
+/** Content v7 (map missions): the closing card of the look back; null for every earlier mission (their reflection form is unchanged). */
+function closingView(state: MissionState, content: LearningContent, visit: VisitId): ClosingView | null {
+  const def = missionDefFor(content, visit);
+  if (!def || def.presentation !== "map") return null;
+  const run = state.missions?.[def.id];
+  if (!run) return null;
+  const ending = mapEnding(def, run);
+  const decide = def.steps.find((s) => s.kind === "decide");
+  const world = visibleWorld(def, run, stepStatuses(def, run));
+  const v = state.visits.find((x) => x.id === visit && x.finishedAt === null);
+  const feedback: Record<string, string | null> = {};
+  for (const [k, val] of Object.entries(v?.feedback?.answers ?? {})) feedback[k] = val;
+  for (const k of v?.feedback?.skipped ?? []) feedback[k] = null;
+  return { success: ending.success, next: ending.next, artifact: world.length ? world.map((w) => w.label).join(" · ") : null, plan: decide ? chosenGrid(def, run, decide.id) : null, feedback };
+}
+
 export type ChildViewOptions = { timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null; tutorAvailable?: boolean; noktMode?: import("./family-learning-nokt.ts").NoktMode; noktMic?: boolean };
 
 export function buildChildView(state: MissionState, content: LearningContent, settings: ParentSettings, now: Date, erasureGeneration = 0, options: ChildViewOptions = {}): ChildView {
@@ -3273,7 +3345,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
         }),
     reports: buildVisitReports(state, content),
     transfer,
-    reflection: stage === "reflect" ? { prompt: content.reflection.prompt, options: content.reflection.options, skipLabel: content.reflection.skipLabel ?? null, dimensions: content.reflection.dimensions ?? [], nextInterest: content.reflection.nextInterest ?? null, adventure: running ? missionDefFor(content, running.id)?.nextAdventure ?? null : null } : null,
+    reflection: stage === "reflect" ? { prompt: content.reflection.prompt, options: content.reflection.options, skipLabel: content.reflection.skipLabel ?? null, dimensions: content.reflection.dimensions ?? [], nextInterest: content.reflection.nextInterest ?? null, adventure: running ? missionDefFor(content, running.id)?.nextAdventure ?? null : null, ...(running ? { closing: closingView(state, content, running.id) } : {}) } : null,
     mission: stage === "mission" && running ? buildMissionView(state, content, running.id, { tutorAvailable: options.tutorAvailable === true }) : null,
     interestPrompt: (() => {
       const ni = content.reflection.nextInterest;
@@ -3288,7 +3360,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     })(),
     tutor,
     retention: content.retention.policy,
-    nokt: { mode: options.noktMode ?? "unavailable", mic: (options.noktMode ?? "unavailable") !== "unavailable" && !!options.noktMic },
+    nokt: { mode: options.noktMode ?? "unavailable", mic: (options.noktMode ?? "unavailable") !== "unavailable" && !!options.noktMic, ...((options.noktMode ?? "unavailable") !== "unavailable" && content.child === state.child && (content.missions ?? []).some((m) => m.presentation === "map") ? { talk: noktTalkView(state, content) } : {}) },
   };
 }
 

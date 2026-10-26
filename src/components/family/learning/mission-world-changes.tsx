@@ -44,19 +44,32 @@ export function MissionWorldChanges({ world, pos, testId = "mission-world-change
   const boats = has("boats");
   const route = has("route");
   const sail = has("sail");
-  const quay = pos.harbor;
-  const pier = pos.pier;
-  const moor = [
-    { x: pier.x + 110, y: pier.y + 70 },
-    { x: pier.x + 230, y: pier.y + 92 },
-  ];
+  // Content v7: crates stand where the mission put them (Visit 8: at Rosa's shop); earlier missions keep the quay.
+  const quay = (crates && pos[crates.place]) || pos.harbor || { x: 760, y: 700 };
+  const pier = pos.pier ?? null;
+  const moor = pier
+    ? [
+        { x: pier.x + 110, y: pier.y + 70 },
+        { x: pier.x + 230, y: pier.y + 92 },
+      ]
+    : [];
   const onQuay = (crates?.count ?? 0) + (tools?.count ?? 0);
+  // Content v7: the child's own plan as painted beds beside the greenhouse, and the placed plants (painted seedling plates).
+  const beds = has("beds");
+  const seedlings = has("seedlings");
+  const bedAt = beds ? pos[beds.place] : null;
   return (
     <g data-part="mission-world" data-testid={testId} data-changes={world.map((w) => w.id).join(",")} aria-hidden>
       {onQuay && !boats
         ? Array.from({ length: onQuay }, (_, i) => <PlateImg key={`c${i}`} id="crate" x={quay.x - 150 + (i % 4) * 46} y={quay.y - 44 - Math.floor(i / 4) * 34} width={46} height={42} />)
         : null}
-      {route ? <path d={`M ${pier.x + 160} ${pier.y + 60} C ${pier.x + 120} ${pier.y - 220}, 880 260, 690 150`} fill="none" stroke={PARCHMENT} strokeWidth={6} strokeDasharray="2 14" strokeLinecap="round" opacity={0.85} data-part="route" /> : null}
+      {bedAt && beds
+        ? Array.from({ length: Math.min(beds.count, 6) }, (_, i) => <PlateImg key={`bed${i}`} id="garden-bed" x={bedAt.x - 150 + (i % 3) * 62} y={bedAt.y + 18 + Math.floor(i / 3) * 40} width={64} height={44} />)
+        : null}
+      {bedAt && seedlings
+        ? Array.from({ length: Math.min(seedlings.count, 4) }, (_, i) => <PlateImg key={`sd${i}`} id="seedling" x={bedAt.x - 132 + i * 44} y={bedAt.y + 6} width={30} height={29} />)
+        : null}
+      {route && pier ? <path d={`M ${pier.x + 160} ${pier.y + 60} C ${pier.x + 120} ${pier.y - 220}, 880 260, 690 150`} fill="none" stroke={PARCHMENT} strokeWidth={6} strokeDasharray="2 14" strokeLinecap="round" opacity={0.85} data-part="route" /> : null}
       {boats && !sail
         ? moor.map((b, i) => (
             <g key={`b${i}`} data-part="mission-boat">
