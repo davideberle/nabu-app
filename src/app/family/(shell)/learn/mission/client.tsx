@@ -45,6 +45,8 @@ import { HarborIsland } from "@/components/family/learning/harbor-island";
 import { MissionWorld } from "@/components/family/learning/mission-world";
 import { MissionScene } from "@/components/family/learning/mission-scene";
 import { MapMission } from "@/components/family/learning/map-mission";
+import { WorkshopScene } from "@/components/family/learning/workshop-scene";
+import { IsabelStart } from "@/components/family/learning/workshop-hub";
 import type { NoktTalkTurnFn } from "@/components/family/learning/nokt-talk";
 import { Debrief } from "@/components/family/learning/debrief";
 import type { MissionAction } from "@/lib/family-learning-mission";
@@ -397,6 +399,11 @@ function Workspace({ child }: { child: ChildId }) {
     );
   }
 
+  if (!view.visit && view.child === "isabel") {
+    // Isabel Visit 1: her own start screen (Old Lila's workshop), never Santiago's island.
+    return <IsabelStart child={child} view={view} busy={busy} notice={notice} onStart={() => { speech.unlock(); void mutate({ op: "start-visit" }); }} />;
+  }
+
   if (!view.visit) {
     return (
       <StartOrWait
@@ -471,7 +478,7 @@ function Workspace({ child }: { child: ChildId }) {
             ))}
           </ol>
         </div>
-        {view.mission?.active?.produce ? <span className="w-[6.5rem]" aria-hidden /> : <button
+        {view.mission?.active?.produce || view.child === "isabel" ? <span className="w-[6.5rem]" aria-hidden /> : <button
           type="button"
           onClick={() => {
             // During a recall step the wordbook SHOWS the target word: opening it is recorded as help on the segment first (IV5-11).
@@ -525,6 +532,23 @@ function Workspace({ child }: { child: ChildId }) {
               }
               return { kind: "failed" };
             }}
+            telemetry={(name) => {
+              telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
+            }}
+            act={async (action: MissionAction, options?: { idempotencyKey?: string }) => {
+              const outcome = await mutate({ op: "mission", action }, options?.idempotencyKey ? { idempotencyKey: options.idempotencyKey } : undefined);
+              return outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed") ? ((outcome.result as Record<string, unknown> | undefined) ?? {}) : null;
+            }}
+          />
+        </div>
+      ) : stage === "mission" && view.mission && !lastLesson && view.mission.presentation === "workshop" ? (
+        // Isabel Visit 1: Old Lila's workshop — one short instruction and one picture answer at a time; no Nokt, no microphone.
+        <div className="mt-3" data-testid="mission-stage" data-presentation="workshop">
+          <WorkshopScene
+            child={child}
+            mission={view.mission}
+            busy={busy}
+            speech={speech}
             telemetry={(name) => {
               telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
             }}

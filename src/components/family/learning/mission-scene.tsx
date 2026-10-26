@@ -32,6 +32,7 @@ import { browserSpeech, playListening } from "@/lib/family-learning-listening";
 import { TypingBlock, type Act } from "./mission-world";
 import { NoktButton, NoktPanel, type NoktTranscribe, type NoktTurnFn } from "./nokt-panel";
 import { PlanGrid } from "./plan-grid";
+import { Counters } from "./workshop-pictures";
 import rosaHarbor from "@/assets/family-learning/visit7/rosa-research-harbor.webp";
 
 // The palette of the approved preview: sea-green ink, parchment cards, amber retry, green success.
@@ -287,6 +288,8 @@ function ActiveTask({ child, view, mission, active, busy, act, speech, telemetry
   );
 }
 
+export { SpeakerIcon };
+
 export function Feedback({ tone, text, testId = "scene-feedback" }: { tone: "retry" | "stuck" | "success" | "taught" | "practice-wrong"; text: string; testId?: string }) {
   const good = tone === "success";
   const neutral = tone === "taught";
@@ -306,7 +309,7 @@ export function Feedback({ tone, text, testId = "scene-feedback" }: { tone: "ret
 
 // --- a problem, one question at a time ------------------------------------------------
 
-export function SolveTask({ active, busy, act, telemetry }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry }) {
+export function SolveTask({ active, busy, act, telemetry, applicationNote = "Eine neue Lieferung, neue Zahlen." }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry; applicationNote?: string }) {
   const sv = active.solve!;
   const finished = active.status !== "active";
   // After a correct answer the success stays on screen with its own "next question" action; the next question follows on tap.
@@ -319,7 +322,7 @@ export function SolveTask({ active, busy, act, telemetry }: { active: MissionAct
   const shownIndex = current ? sv.parts.indexOf(current) + 1 : Math.min(resolved.length, sv.total);
   return (
     <div className="grid gap-4" data-testid="solve-task" data-part={current?.id ?? waiting?.id ?? ""}>
-      {sv.application ? <p className="text-base font-semibold">Eine neue Lieferung, neue Zahlen.</p> : null}
+      {sv.application ? <p className="text-base font-semibold">{applicationNote}</p> : null}
       {resolved.length ? (
         <ul className="grid gap-1" aria-label="Schon beantwortet" data-testid="solve-answered">
           {resolved.filter((p) => p !== waiting).map((p) => (
@@ -377,6 +380,8 @@ function PartTask({ part, step, busy, act, telemetry }: { part: SolvePartView; s
   };
   return (
     <div className="grid gap-4">
+      {/* Isabel's workshop: the exact quantities of this question, drawn from the data (absent for every Santiago question). */}
+      {part.counters ? <Counters counters={part.counters} /> : null}
       {taught ? <p className="text-xl font-semibold leading-snug">{part.question}</p> : null}
       {taught && part.teach ? (
         <div className="rounded-2xl px-4 py-3 text-lg" style={{ background: "#eef1e8", borderLeft: `5px solid ${ACTION}` }} data-testid="part-teach">

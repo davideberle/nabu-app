@@ -39,6 +39,7 @@ import { createChildTurnClient } from "@/lib/family-assistant-client";
 import type { LearningOp } from "@/lib/family-learning-state";
 import type { SupportOutcome } from "@/lib/family-learning-tutor";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
+import { IsabelHub } from "@/components/family/learning/workshop-hub";
 import { VisitReportView } from "@/components/family/learning/visit-report";
 import { focusRing, primaryButton, secondaryButton } from "./mission/styles";
 import { NextInterestQuestion, interestReady, type InterestAnswer } from "@/components/family/learning/next-interest";
@@ -228,6 +229,8 @@ function World({ child }: { child: ChildId }) {
   }
 
   const view = load.view;
+  // Isabel Visit 1: her own workshop hub (her content, her record) — never Santiago's island.
+  if (view.child === "isabel") return <IsabelHub child={child} view={view} />;
   const running = view.visit;
   const canStart = running !== null || view.next.visit !== null;
   const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" || view.next.visit === "v5" || view.next.visit === "v6" || view.next.visit === "v7" || view.next.visit === "v8" || view.next.visit === "v9" ? `Besuch ${view.next.ordinal ?? (view.next.visit === "v9" ? 8 : view.next.visit === "v8" ? 7 : view.next.visit === "v7" ? 6 : view.next.visit === "v6" ? 5 : view.next.visit === "v5" ? 4 : 3)} starten` : "Weiter";

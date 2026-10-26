@@ -44,6 +44,10 @@ export type MissionQuestion = {
   fact?: { key: string; label: string };
   /** Reviewed neutral hint after a first wrong answer. */
   retryHint: string;
+  /** Isabel's workshop: the object the question is about, drawn (a picture id of `WORKSHOP_PICTURES`). */
+  picture?: string;
+  /** Isabel's workshop: one picture per option (option text → picture id); the options are answered by tapping the picture. */
+  pictures?: Record<string, string>;
 };
 
 export type MissionField = { key: string; label: string; answer: number };
@@ -139,7 +143,17 @@ export type MissionPart = {
   hintsAfterFirstAttempt?: boolean;
   /** Planned reflection (N7-04c): asked by the verified tutor only; without it the explanation stays missing evidence. */
   reflect?: { prompt: string };
+  /** Isabel's workshop: the exact visible quantities of this question (supported visual arithmetic, counts from the data). */
+  counters?: MissionCounters | null;
 };
+
+/**
+ * Isabel's workshop: an exact picture of small quantities — `a` pieces and `b` pieces added (`+`) or `b` of `a` taken away
+ * (`−`, drawn crossed out). With `bundles`, every full ten is drawn as one tied bundle of ten sticks and the rest loose.
+ * The child counts what she sees: a correct answer on such a task is supported visual arithmetic, never proof of unaided
+ * place-value mastery.
+ */
+export type MissionCounters = { a: number; b: number; op: "+" | "-"; unit: string; bundles?: boolean };
 
 /** Content v6: a reviewed problem with one question per part. */
 export type MissionSolve = {
@@ -177,7 +191,7 @@ export type MissionWrite = {
 export type MissionDecide = {
   prompt: string;
   rule: string;
-  options: { id: string; label: string; viable: boolean; feedback: string; grid?: MissionGrid | null }[];
+  options: { id: string; label: string; viable: boolean; feedback: string; grid?: MissionGrid | null; picture?: string }[];
   /** Planned reflection about the reason (with the verified tutor only; never a scored explanation). */
   reflect?: { prompt: string };
 };
@@ -193,7 +207,37 @@ export type MissionCalc = {
 
 export type MissionChoiceOption = { id: string; label: string; valid: boolean; best: boolean; feedback: string };
 
-export type MissionStepKind = "story" | "read" | "listen" | "calc" | "choice" | "produce" | "recall" | "typing-block" | "outcome" | "solve" | "write" | "decide";
+/**
+ * Isabel's workshop: every picture id the content may name. The drawings live in the workshop component; the validator checks
+ * the ids so a typo can never show an empty card.
+ */
+export const WORKSHOP_PICTURES = [
+  "chair-wood", "window-glass", "wall-brick", "shelf-wood", "material-wood", "material-glass", "material-brick",
+  "branch", "ball", "house", "table-wood", "spoon-wood", "pencil", "door-wood", "toy-blocks", "frame-wood", "room",
+  "next-furniture", "next-garden", "next-animals",
+] as const;
+export type WorkshopPicture = (typeof WORKSHOP_PICTURES)[number];
+
+export type MissionStepKind = "story" | "read" | "listen" | "calc" | "choice" | "produce" | "recall" | "typing-block" | "outcome" | "solve" | "write" | "decide" | "match" | "craft";
+
+/**
+ * Isabel's workshop — supported letter/word learning for a beginning reader (`read` steps). Offered as an explicit switch
+ * («Buchstaben zusammen anschauen») before or after a reading attempt; opening it is recorded help BEFORE it is shown, and only
+ * then is the word spoken. Any later answer is supported, never independent reading.
+ */
+export type MissionLetters = { word: string; letters: { letter: string; sound: string; picture?: string }[]; spoken: string; teach: string };
+
+/**
+ * Isabel's workshop — a real-world task away from the screen (build with paper/cardboard, explain a material choice to a
+ * parent, find wooden things at home). The app records only what the child taps herself (`found`, her own report) and the
+ * parent's own observation (parent cockpit); it never assesses the craft.
+ */
+export type MissionCraft = {
+  tasks: { id: string; text: string; picture?: string }[];
+  /** Pictured candidates for «Ich habe gefunden …» (her own report, up to `findCount`); not verified by the app. */
+  find?: { prompt: string; count: number; options: { id: string; label: string; picture: string }[]; fact: string };
+  parentNote: string;
+};
 
 /** Content v6 (V6-F06): reviewed closing lines per actual outcome. Success lines are never shown after practice, teaching or an open item. */
 export type MissionDoneBy = Partial<Record<"independent" | "supported" | "practiced" | "taught" | "unresolved", MissionLine[]>>;
@@ -236,6 +280,14 @@ export type MissionStep = {
   shipments?: { label: string; diagram: MissionDiagram }[];
   /** Recall steps: the earlier evidence this retrieval revisits (an open practice focus id or a step of this mission). */
   retrieval?: { focus?: string; step?: string; note: string };
+  /** Isabel's workshop: supported letter/word learning offered on a `read` step. */
+  letters?: MissionLetters;
+  /** Isabel's workshop: a real-world task (`craft` steps). */
+  craft?: MissionCraft;
+  /** Isabel's workshop: a picture shown with a story/outcome step (`fromChoice` shows the picture of the chosen option instead). */
+  picture?: string;
+  /** Isabel's workshop: a short factual recap of the visit shown on the outcome step (computed from her actual results). */
+  recap?: boolean;
   /** Supplies granted when the step ends (any outcome that lets the mission continue). */
   supplies?: Record<string, number>;
 };
@@ -244,7 +296,7 @@ export type MissionWorldChange = {
   id: string;
   /** The step whose completion (done, practiced, taught or unresolved-but-given) shows the change. */
   after: string;
-  prop: "crates" | "tool-crates" | "boats" | "ropes" | "route" | "radio" | "sail" | "trays" | "garden" | "beds" | "seedlings";
+  prop: "crates" | "tool-crates" | "boats" | "ropes" | "route" | "radio" | "sail" | "trays" | "garden" | "beds" | "seedlings" | "room";
   place: string;
   count: number;
   label: string;
@@ -285,7 +337,7 @@ export type MissionTypingBlock = {
 };
 
 /** Content v6 (V7-D13): concrete next-story directions offered at the end; the child may also write an own idea or leave without choosing. */
-export type MissionNextAdventure = { prompt: string; hint: string; choices: { id: string; label: string; picture: "greenhouse" | "water" }[]; ownIdeaLabel: string };
+export type MissionNextAdventure = { prompt: string; hint: string; choices: { id: string; label: string; picture: "greenhouse" | "water" | WorkshopPicture }[]; ownIdeaLabel: string };
 
 export type MissionDef = {
   id: string;
@@ -294,7 +346,7 @@ export type MissionDef = {
   title: string;
   objective: string;
   /** Content v6: `scene` = one illustrated scene with a speech bubble and the beats in their reviewed order; absent = the walkable map. Content v7: `map` = the walkable island between clear task scenes (free order along the dependencies). */
-  presentation?: "walk" | "scene" | "map";
+  presentation?: "walk" | "scene" | "map" | "workshop";
   /** Content v6: the painted scene (build-time static asset id) and its description. */
   scene?: { art: string; alt: string };
   nextAdventure?: MissionNextAdventure;
@@ -304,7 +356,8 @@ export type MissionDef = {
   characters: MissionCharacter[];
   steps: MissionStep[];
   world: MissionWorldChange[];
-  typingBlock: MissionTypingBlock;
+  /** Every Santiago mission has exactly one typing block; Isabel's workshop has none (no typing is asked of her). */
+  typingBlock?: MissionTypingBlock;
   /** Planned length in minutes — a calibration estimate, never a countdown. */
   estimatedMinutes: { min: number; max: number };
   rules: {

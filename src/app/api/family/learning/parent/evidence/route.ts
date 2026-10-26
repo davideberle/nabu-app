@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
 import { isChildId } from "@/lib/family-assistant-turn";
 import { NO_STORE, refuse, requireParentOwner } from "@/lib/family-learning-auth";
-import { loadLearningContent, loadVocabularyInventory } from "@/lib/family-learning-content-server";
+import { contentIdFor, loadLearningContentFor, loadVocabularyInventoryFor } from "@/lib/family-learning-content-server";
 import { readEvidence, readTelemetryEvents } from "@/lib/family-learning-db";
 import { delayedCheckInfo, summariseTelemetry, visitLabel, visitOrdinal } from "@/lib/family-learning-summary";
 import type { VocabularyInventory } from "@/lib/family-learning-vocabulary";
@@ -26,21 +26,23 @@ export async function GET(request: Request) {
   if (!parent.ok) return parent.response;
   const child = new URL(request.url).searchParams.get("child");
   if (!isChildId(child)) return refuse(400, "child must be santiago or isabel");
-  let contentId = "santiago-expedition";
+  // Child-bound (Isabel Visit 1): the records of the child's OWN content line are read — Isabel's workshop never defaults to
+  // Santiago's expedition id, and a switched-off content still shows its stored records under its own id.
+  let contentId = contentIdFor(child);
   let prepared = false;
   let counts: Record<string, number> | null = null;
-  let content: ReturnType<typeof loadLearningContent> | undefined;
+  let content: NonNullable<ReturnType<typeof loadLearningContentFor>> | undefined;
   try {
-    content = loadLearningContent();
-    contentId = content.contentId;
-    prepared = content.child === child;
-    counts = { version: content.contentVersion, math: content.math.items.length, language: content.language.segments.length, typingLessons: content.typing.lessons.length, typingCourse: content.typing.course?.lessons.length ?? 0, typingLabels: content.typing.labelTasks.length };
+    content = loadLearningContentFor(child) ?? undefined;
+    if (content) contentId = content.contentId;
+    prepared = !!content && content.child === child;
+    if (content) counts = { version: content.contentVersion, math: content.math.items.length, language: content.language.segments.length, typingLessons: content.typing.lessons.length, typingCourse: content.typing.course?.lessons.length ?? 0, typingLabels: content.typing.labelTasks.length };
   } catch {
     /* evidence remains readable even if content fails to load */
   }
   let inventory: VocabularyInventory | null = null;
   try {
-    inventory = prepared ? loadVocabularyInventory() : null;
+    inventory = prepared ? loadVocabularyInventoryFor(child) : null;
   } catch {
     /* the ledger is derived; evidence stays readable without it (the bundle says vocabulary: null) */
   }
@@ -60,7 +62,7 @@ export async function GET(request: Request) {
   const missions = [];
   if (prepared && content && bundle.state) {
     // Content v7: the map mission (Visit 8) has the same parent view.
-    for (const m of (content.missions ?? []).filter((x) => x.presentation === "scene" || x.presentation === "map")) {
+    for (const m of (content.missions ?? []).filter((x) => x.presentation === "scene" || x.presentation === "map" || x.presentation === "workshop")) {
       const ev = missionEvidence(bundle.state, content, m.visit as VisitId, noktModeFromEnv(process.env));
       if (!ev) continue;
       // Per-step foreground activity from the EXISTING telemetry batches (no extra collection): what was on screen while input happened.
@@ -71,5 +73,11 @@ export async function GET(request: Request) {
   }
   // Content v7: Nokt's conversations outside the task talk (Home, welcome, visit, writing, look back) with provenance — never an assessment.
   const noktTalks = prepared && content && bundle.state ? noktTalkEvidence(bundle.state, content) : [];
-  return NextResponse.json({ ...bundle, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env), noktTalks }, { headers: NO_STORE });
+  // Isabel Visit 1 (I1-07): the parent's own observations of real-world tasks — apart from every child attempt and assessment.
+  const parentObservations = bundle.supports
+    .filter((x) => x.kind === "parent_observation")
+    .map((x) => ({ id: x.id, visitId: x.visitId, taskId: x.taskId, at: x.createdAt, ...((x.payload ?? {}) as { step?: string; task?: string; status?: string; note?: string | null }) }));
+  // The real-world tasks a parent may record (the child's own served content only).
+  const craftTasks = prepared && content ? (content.missions ?? []).flatMap((m) => m.steps.filter((st) => st.kind === "craft" && st.craft).map((st) => ({ visit: m.visit, step: st.id, title: st.title, tasks: st.craft!.tasks.map((t) => ({ id: t.id, text: t.text })) }))) : [];
+  return NextResponse.json({ ...bundle, parentObservations, craftTasks, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env), noktTalks }, { headers: NO_STORE });
 }

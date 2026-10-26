@@ -44,6 +44,9 @@ import contentV2 from "@/data/family-learning/content/santiago-expedition-v2.jso
 import contentV1 from "@/data/family-learning/content/santiago-expedition-v1.json";
 import vocabularyV2 from "@/data/family-learning/content/vocabulary-inventory-v2.json";
 import vocabularyV3 from "@/data/family-learning/content/vocabulary-inventory-v3.json";
+import isabelWorkshopV1 from "@/data/family-learning/content/isabel-workshop-v1.json";
+import { asIsabelContent } from "./family-learning-isabel";
+import type { ChildId } from "./family-assistant-turn";
 import { asLearningContent, type LearningContent } from "./family-learning-content";
 import { asVocabularyInventory, type VocabularyInventory } from "./family-learning-vocabulary";
 
@@ -88,4 +91,49 @@ export function loadLearningContent(): LearningContent {
     failure = error instanceof Error ? error : new Error(String(error));
     throw failure;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Isabel Visit 1 (2026-10-26): child-bound content. Each child is served HER/HIS OWN reviewed content line — Santiago the
+// expedition (above, with its rollback cap), Isabel «Old Lilas kleine Werkstatt» (`isabel-workshop`, version 1). A route
+// never serves one child's content to the other: the content is chosen by the child of the verified credential (or the
+// parent's explicit child query), and its `child` field is checked again. Isabel's line has its own switch:
+// FAMILY_LEARNING_ISABEL_CONTENT=off serves nothing for her (her honest "not prepared" state; a started workshop stays parked
+// and readable), independent of Santiago's FAMILY_LEARNING_CONTENT_CAP.
+// ---------------------------------------------------------------------------
+
+let cachedIsabel: LearningContent | null = null;
+let isabelFailure: Error | null = null;
+
+export function isabelContentServed(): boolean {
+  return process.env.FAMILY_LEARNING_ISABEL_CONTENT !== "off";
+}
+
+export function loadIsabelContent(): LearningContent {
+  if (cachedIsabel) return cachedIsabel;
+  if (isabelFailure) throw isabelFailure;
+  try {
+    cachedIsabel = asIsabelContent(isabelWorkshopV1);
+    return cachedIsabel;
+  } catch (error) {
+    isabelFailure = error instanceof Error ? error : new Error(String(error));
+    throw isabelFailure;
+  }
+}
+
+/** The content served to one child, or null when none is prepared for that child (her/his honest "not prepared" state). Throws when the served file does not reconcile. */
+export function loadLearningContentFor(child: ChildId): LearningContent | null {
+  if (child === "santiago") return loadLearningContent();
+  if (child === "isabel") return isabelContentServed() ? loadIsabelContent() : null;
+  return null;
+}
+
+/** The vocabulary inventory of a child's content (Santiago only; Isabel's workshop has no word inventory). */
+export function loadVocabularyInventoryFor(child: ChildId): VocabularyInventory | null {
+  return child === "santiago" ? loadVocabularyInventory() : null;
+}
+
+/** The content id whose records belong to a child (stable even when the content is switched off). */
+export function contentIdFor(child: ChildId): string {
+  return child === "isabel" ? "isabel-workshop" : "santiago-expedition";
 }

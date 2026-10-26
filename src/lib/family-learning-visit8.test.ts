@@ -296,7 +296,7 @@ describe("typing — about five focused minutes, varied material, the new key gr
     const plan = run(s).typing!.plan;
     equal(plan.lessonId, "TYPE-CH-COURSE-6");
     ok(plan.drills.length > 6, `more than six drills for five minutes at the observed pace (got ${plan.drills.length})`);
-    ok(plan.drills.length <= gh.typingBlock.maxDrills);
+    ok(plan.drills.length <= gh.typingBlock!.maxDrills);
     const current = plan.drills.filter((d) => d.lessonId === "TYPE-CH-COURSE-6").map((d) => d.lines.join("|"));
     ok(new Set(current).size > 1, "the reviewed line sets are cycled, not the same lines again and again");
   });
@@ -315,9 +315,9 @@ describe("typing — about five focused minutes, varied material, the new key gr
   });
   it("the plan is finite and drawn from reviewed material only", () => {
     const s = sevenVisitsDone();
-    const plan = planTypingBlock(s, v7, gh.typingBlock, [])!;
+    const plan = planTypingBlock(s, v7, gh.typingBlock!, [])!;
     // lesson 5 is current here (no catch-up in a plan preview); lesson 4 is its review; the focus source falls back to current.
-    const allowed = new Set([...gh.typingBlock.material!["TYPE-CH-COURSE-5"].flat(), ...v7.typing.course!.lessons[4].lines, ...v7.typing.course!.lessons[3].lines]);
+    const allowed = new Set([...gh.typingBlock!.material!["TYPE-CH-COURSE-5"].flat(), ...v7.typing.course!.lessons[4].lines, ...v7.typing.course!.lessons[3].lines]);
     for (const d of plan.drills) for (const l of d.lines) ok(allowed.has(l), l);
   });
 });

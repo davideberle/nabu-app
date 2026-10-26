@@ -158,6 +158,10 @@ function currentStageOf(state: MissionState, content: LearningContent): string |
 
 /** The page this purpose may talk about right now, or why it may not. */
 export function talkPage(state: MissionState, content: LearningContent, purpose: NoktTalkPurpose): Where {
+  // Nokt beyond the task talk (Home, welcome, visit, writing, look back) belongs to content v7 (a map mission). Under the
+  // rollback cap (FAMILY_LEARNING_CONTENT_CAP=6, or any earlier content) none of it exists — Home included — so the capped
+  // build is Visit 7 exactly as released.
+  if (!(content.missions ?? []).some((m) => m.presentation === "map")) return { ok: false, why: "Nokt's conversation outside the tasks needs content version 7" };
   if (purpose === "home") return { ok: true, page: "home", visit: null, def: null, run: null, step: null };
   const v = runningVisit(state);
   if (!v) return { ok: false, why: "no visit is running" };

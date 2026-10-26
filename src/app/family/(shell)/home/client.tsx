@@ -123,7 +123,8 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
         <HomeAction href={href("learn")} icon="🧭" title="Lernen" className="sm:col-span-2">
           <LearnCaption label={learn} />
         </HomeAction>
-        {view?.nokt && view.nokt.mode !== "unavailable" && child === "santiago" ? (
+        {/* Content v7 only: the view carries `talk` when the served content has Nokt's conversations (not under the rollback cap). */}
+        {view?.nokt && view.nokt.mode !== "unavailable" && view.nokt.talk && child === "santiago" ? (
           <HomeNokt child={child} view={view} client={client} onView={setView} />
         ) : (
           <HomeAction href={`${href("assistant")}&focus=general`} icon={<AssistantPortrait child={child} label="" className="h-14 w-14" />} title={`Ask ${profile.companionName}`}>

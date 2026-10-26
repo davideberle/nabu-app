@@ -22,6 +22,7 @@ import type { ChildId } from "@/lib/family-assistant-turn";
 import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import type { LearningMutateOutcome } from "@/lib/family-learning-client";
 import { PlanGrid, planCountsText } from "./plan-grid";
+import { WorkshopRoom } from "./workshop-pictures";
 import { NoktTalk, type NoktTalkTurnFn } from "./nokt-talk";
 import { NextAdventureQuestion, NextInterestQuestion, interestReady, type InterestAnswer } from "./next-interest";
 import type { NoktTranscribe } from "./nokt-panel";
@@ -111,10 +112,22 @@ export function Debrief({
     <div className="flex flex-col gap-4" data-testid="debrief" data-talking={talking ? "true" : "false"} data-interest={interestRecorded ? "recorded" : "open"}>
       <section className="flex items-center gap-4 rounded-3xl p-3" style={{ background: "#f2f7ee" }} data-testid="debrief-result">
         {closing?.plan ? <PlanGrid grid={closing.plan} caption="Dein Plan" highlight compact /> : null}
+        {/* Isabel's workshop: the room with what she chose to make (no plan). */}
+        {closing?.made ? <div className="w-40 shrink-0"><WorkshopRoom made={closing.made.picture} label={closing.made.room} /></div> : null}
         <div className="min-w-0">
           <h2 className="text-xl font-bold">Geschafft: {view.visit?.title ?? "dein Besuch"}</h2>
           {closing?.success ? <p className="text-base" data-testid="debrief-success">✓ {closing.success}</p> : null}
           {closing?.plan && planCountsText(closing.plan) ? <p className="text-sm" data-testid="debrief-plan-counts">{planCountsText(closing.plan)}</p> : null}
+          {closing?.recap ? (
+            <p className="text-lg" data-testid="debrief-recap">
+              {closing.recap}{" "}
+              {child === "isabel" ? (
+                <button type="button" className="text-base font-semibold underline underline-offset-4" onClick={() => { speech.unlock(); void speech.speak({ childId: child, text: closing.recap!, language: "de", speaker: "character" }); }} data-testid="debrief-recap-audio">
+                  Anhören
+                </button>
+              ) : null}
+            </p>
+          ) : null}
         </div>
       </section>
 
@@ -142,7 +155,7 @@ export function Debrief({
             Mit Nokt zurückschauen
           </button>
         )
-      ) : (
+      ) : child === "isabel" ? null : (
         <p className="rounded-2xl px-4 py-3 text-base" style={{ background: "#fff8e1" }} data-testid="debrief-no-nokt">
           Nokt kann gerade nicht mit dir zurückschauen. Unten kannst du sagen, was du als Nächstes machen möchtest.
         </p>
@@ -175,7 +188,7 @@ export function Debrief({
           <div className="mt-2 grid gap-2">{more.map((d) => row(d.id, d.prompt, d.options, d.skipLabel))}</div>
         </details>
       ) : null}
-      <p className="text-sm">Mit «Stopp» oben machst du eine Pause; das Gespräch bleibt gespeichert.</p>
+      <p className="text-sm">{child === "isabel" ? "Mit «Stopp» oben machst du eine Pause; deine Antworten bleiben gespeichert." : "Mit «Stopp» oben machst du eine Pause; das Gespräch bleibt gespeichert."}</p>
     </div>
   );
 }

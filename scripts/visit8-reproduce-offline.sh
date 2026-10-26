@@ -11,7 +11,7 @@
 # own offline unit tests.
 #
 # Steps: identity → app unit (minus the two Game Studio "joined" suites, which need the live Studio adapter) → runtime unit
-# → (build) → J8 nokt / J8 nokt-old / J8 off → Visit 7 J1/J2 regression → privacy scan. Summary in <out-dir>/summary.txt.
+# → (build) → J8 nokt / J8 nokt-old / J8 off → Isabel Visit 1 (journey, content off) → Visit 7 J1/J2 regression → privacy scan. Summary in <out-dir>/summary.txt.
 # Teardown: only servers this script started (PID + command checked); afterwards the owned ports must be free.
 # ---------------------------------------------------------------------------------------------------------------------
 set -u
@@ -35,7 +35,7 @@ export AUTH_SECRET=fable-world-first-synthetic-secret-0123456789abcdef
 unset FAMILY_NOKT_SUBSCRIPTION FAMILY_NOKT_CREDENTIALS_FILE FAMILY_NOKT_LEDGER_FILE OPENAI_API_KEY
 BRIDGE=https://nokt-bridge.invalid:8787
 export BRIDGE_SECRET="visit8-reproduce-synthetic-secret-$(date +%s)-0123456789"
-PORTS="3291 3292 3293 3297"
+PORTS="3291 3292 3293 3294 3295 3297"
 mkdir -p "$OUT"
 SUMMARY="$OUT/summary.txt"
 : > "$SUMMARY"
@@ -108,6 +108,21 @@ step j8-nokt-old-runtime 0 node scripts/verify-learning-visit8.mjs --base http:/
 stop_server "$CUR"; CUR=""
 server "$OUT/db-off" 3293
 step j8-off 0 node scripts/verify-learning-visit8.mjs --base http://127.0.0.1:3293 --db "$OUT/db-off/nabu.db" --out "$OUT/out-off" --mode off
+stop_server "$CUR"; CUR=""
+
+# 3b. Isabel Visit 1 (Old Lilas kleine Werkstatt) — her whole journey on a server with Santiago's Nokt conversation ON (as in
+#     production: she must never reach Nokt), against a synthetic Santiago record; then her content switched off.
+# shellcheck disable=SC2086
+server "$OUT/db-isabel" 3294 $NOKTENV
+step isabel-journey 0 node scripts/verify-learning-isabel.mjs --base http://127.0.0.1:3294 --db "$OUT/db-isabel/nabu.db" --out "$OUT/out-isabel" --mode isabel
+stop_server "$CUR"; CUR=""
+server "$OUT/db-isabel-off" 3295 FAMILY_LEARNING_ISABEL_CONTENT=off
+step isabel-content-off 0 node scripts/verify-learning-isabel.mjs --base http://127.0.0.1:3295 --db "$OUT/db-isabel-off/nabu.db" --out "$OUT/out-isabel-off" --mode isabel-off
+stop_server "$CUR"; CUR=""
+# The child-specific rollout option (Isabel on, Santiago capped at Visit 7, Nokt conversation on as in production).
+# shellcheck disable=SC2086
+server "$OUT/db-rollout" 3295 FAMILY_LEARNING_CONTENT_CAP=6 $NOKTENV
+step rollout-isabel-only 0 node scripts/verify-learning-isabel.mjs --base http://127.0.0.1:3295 --db "$OUT/db-rollout/nabu.db" --out "$OUT/out-rollout" --mode rollout-isabel-only
 stop_server "$CUR"; CUR=""
 
 # 4. Visit 7 rendered regression (J1/J2, Nokt off = the production default) on this build, in two configurations — every
