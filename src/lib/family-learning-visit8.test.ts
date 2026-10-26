@@ -5,7 +5,7 @@ import { deepStrictEqual, equal, notEqual, ok, throws } from "node:assert/strict
 import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 import { asLearningContent, reconcileLearningContent, type LearningContent } from "./family-learning-content.ts";
-import { buildMissionView, missionDefFor, missionEvidence, stepStatuses, planTypingBlock, type MissionAction, type MissionRun } from "./family-learning-mission.ts";
+import { buildMissionView, missionDefFor, missionEvidence, stepStatuses, planTypingBlock, planningInput, type MissionAction, type MissionRun } from "./family-learning-mission.ts";
 import { gridCounts } from "./family-learning-mission-spec.ts";
 import { applyLearningOp, buildChildView, currentStage, EMPTY_PARENT_SETTINGS, LearningOpError, newMissionState, nextVisitAvailability, type LearningOp, type MissionState, type OpEnv, type ParentSettings } from "./family-learning-state.ts";
 import { visitLabel } from "./family-learning-summary.ts";
@@ -548,6 +548,109 @@ describe("debrief — his button answers, one question at a time, his own next-i
     refused(() => op(d.s, { op: "reflect" } as LearningOp, env), "invalid", /answer it or choose/);
     const fin = op(d.s, { op: "reflect", interest: { kind: "choice", choice: "water-pipe" } } as LearningOp, env);
     equal(fin.state.interests!.at(-1)!.text, "Eine Wasserleitung zum Gewächshaus bauen");
+  });
+  /** Opener → two look-back answers → the shown next-interest question; returns the state and session. */
+  function toNextQuestion(env: Env, sess: string) {
+    let s = finishedMission(env);
+    let d = dispatch(s, env, "debrief", sess);
+    s = reply(d.s, env, d.turnId, say("Was war heute knifflig?")).s;
+    d = dispatch(s, env, "debrief", sess, "die pläne");
+    s = reply(d.s, env, d.turnId, say("Was würdest du jemandem zeigen?")).s;
+    d = dispatch(s, env, "debrief", sess, "mein plan");
+    equal(d.result.phase, "naechstes");
+    deepStrictEqual(d.result.request.context.nextIdeas, ["Im Gewächshaus ernten", "Eine Wasserleitung zum Gewächshaus bauen"], "the two reviewed ideas are in the briefing");
+    ok(/zwei Ideen aus context\.nextIdeas/.test(d.result.request.system) && !/Mach keinen Vorschlag/.test(d.result.request.system), "Nokt offers the ideas instead of a blank question");
+    return { s: reply(d.s, env, d.turnId, say("Möchtest du im Gewächshaus ernten, eine Wasserleitung bauen oder hast du eine eigene Idee?")).s, d };
+  }
+  const v9 = (s: MissionState) => (s.interests ?? []).filter((i) => i.visit === "v9");
+  it("a question back («Was meinst du?») is never saved as a wish; Nokt explains and asks again; then his answer counts", () => {
+    const env = makeEnv();
+    let { s } = toNextQuestion(env, "sess-debrief-c001");
+    let d = dispatch(s, env, "debrief", "sess-debrief-c001", "Was meinst du?");
+    equal(v9(d.s).length, 0);
+    equal(d.result.phase, "naechstes");
+    equal(d.result.request.context.lastAnswerKind, "nachfrage");
+    s = reply(d.s, env, d.turnId, say("Ernten heisst: Tomaten pflücken. Oder Wasser holen mit einer Leitung. Was möchtest du?")).s;
+    d = dispatch(s, env, "debrief", "sess-debrief-c001", "eine leitung bauen", "voice");
+    deepStrictEqual(v9(d.s).map((i) => [i.kind, i.text]), [["text", "eine leitung bauen"]]);
+    ok(/gesprochen/.test(v9(d.s)[0].uncertainty ?? "") && /nicht gedeutet/.test(v9(d.s)[0].uncertainty ?? ""));
+    equal(d.result.phase, "abschluss");
+    equal(d.result.request.context.hisWish, "eine leitung bauen");
+  });
+  it("a refusal is recorded as «lieber nicht sagen», never as a topic; «weiss nicht» as unsure", () => {
+    const env = makeEnv();
+    const { s } = toNextQuestion(env, "sess-debrief-r001");
+    const d = dispatch(s, env, "debrief", "sess-debrief-r001", "Das sag ich lieber nicht");
+    deepStrictEqual(v9(d.s).map((i) => [i.kind, i.text]), [["declined", null]]);
+    equal(op(d.s, { op: "reflect" } as LearningOp, env).result.finished, "v9", "no endless gate: the closing accepts it");
+    const u = toNextQuestion(makeEnv(), "sess-debrief-u001");
+    deepStrictEqual(v9(dispatch(u.s, env, "debrief", "sess-debrief-u001", "weiss nicht").s).map((i) => [i.kind, i.text]), [["unsure", null]]);
+  });
+  it("a correction keeps both answers verbatim; the latest counts and points to the one it corrects", () => {
+    const env = makeEnv();
+    let { s } = toNextQuestion(env, "sess-debrief-k001");
+    let d = dispatch(s, env, "debrief", "sess-debrief-k001", "tomaten ernten");
+    s = reply(d.s, env, d.turnId, say("Danke, Santi! Tomaten ernten.", "close")).s;
+    d = dispatch(s, env, "debrief", "sess-debrief-k001", "nein, ich meine eine wasserleitung bauen");
+    const list = v9(d.s);
+    deepStrictEqual(list.map((i) => i.text), ["tomaten ernten", "nein, ich meine eine wasserleitung bauen"]);
+    equal(list[1].corrects, list[0].id);
+    const plan = planningInput(d.s, v7);
+    equal(plan.interests.at(-1)!.text, "nein, ich meine eine wasserleitung bauen");
+    // A plain «nein» without new words is not a new wish.
+    const d2 = dispatch(d.s, env, "debrief", "sess-debrief-k001", "nein");
+    equal(v9(d2.s).length, 2);
+  });
+  it("a tapped reviewed idea is recorded as that choice (its label, its id); a tap before the question is not", () => {
+    const env = makeEnv();
+    const early = finishedMission(env);
+    const e1 = dispatch(early, env, "debrief", "sess-debrief-t000");
+    const e2 = reply(e1.s, env, e1.turnId, say("Was war heute knifflig?")).s;
+    const tap = op(e2, { op: "nokt-talk", action: { a: "dispatch", purpose: "debrief", sessionId: "sess-debrief-t000", turnId: tid(), text: "Im Gewächshaus ernten", via: "typed", choice: "harvest" } }, { ...env, tutorAvailable: true });
+    equal(v9(tap.state).length, 0, "too early: Nokt has not asked about the next visit yet");
+    const { s } = toNextQuestion(env, "sess-debrief-t001");
+    const out = op(s, { op: "nokt-talk", action: { a: "dispatch", purpose: "debrief", sessionId: "sess-debrief-t001", turnId: tid(), text: "anything the client claims", via: "typed", choice: "water-pipe" } }, { ...env, tutorAvailable: true });
+    const rec = v9(out.state)[0];
+    deepStrictEqual([rec.kind, rec.choice, rec.text], ["choice", "water-pipe", "Eine Wasserleitung zum Gewächshaus bauen"]);
+    const turns = talkStateOf(out.state).sessions.find((x) => x.id === "sess-debrief-t001")!.turns;
+    deepStrictEqual([turns.at(-1)!.text, turns.at(-1)!.via], ["Eine Wasserleitung zum Gewächshaus bauen", "choice"], "the transcript shows the reviewed label, not client words");
+    refused(() => op(s, { op: "nokt-talk", action: { a: "dispatch", purpose: "debrief", sessionId: "sess-debrief-t001", turnId: tid(), text: "x", via: "typed", choice: "rocket" } }, { ...env, tutorAvailable: true }), "invalid");
+  });
+  it("after a withheld next-interest line his reply waits; the retried question (shown) gets the answer; three tries at most", () => {
+    const env = makeEnv();
+    let s = finishedMission(env);
+    const sess = "sess-debrief-w001";
+    let d = dispatch(s, env, "debrief", sess);
+    s = reply(d.s, env, d.turnId, say("Was war heute knifflig?")).s;
+    d = dispatch(s, env, "debrief", sess, "nichts");
+    s = reply(d.s, env, d.turnId, say("Was würdest du zeigen?")).s;
+    d = dispatch(s, env, "debrief", sess, "den plan");
+    const withheld = reply(d.s, env, d.turnId, "", null, "timeout");
+    ok(/Tipp unten eine Idee an/.test(withheld.result.line!), "the app asks the reviewed question with the taps");
+    d = dispatch(withheld.s, env, "debrief", sess, "wasser");
+    equal(v9(d.s).length, 0, "a reply to a withheld question is not saved");
+    equal(d.result.phase, "naechstes", "the question is asked again");
+    s = reply(d.s, env, d.turnId, say("Möchtest du ernten oder eine Wasserleitung bauen?")).s;
+    d = dispatch(s, env, "debrief", sess, "wasserleitung");
+    deepStrictEqual(v9(d.s).map((i) => i.text), ["wasserleitung"]);
+    // Bounded: three unanswered next-interest questions → Nokt closes; the reviewed buttons remain.
+    let b = toNextQuestion(makeEnv(), "sess-debrief-w002").s;
+    for (let i = 0; i < 2; i += 1) {
+      const q = dispatch(b, env, "debrief", "sess-debrief-w002", "Was meinst du?");
+      b = reply(q.s, env, q.turnId, say(`Ernten oder Wasser? (${i})`)).s;
+    }
+    const last = dispatch(b, env, "debrief", "sess-debrief-w002", "Was meinst du?");
+    equal(last.result.phase, "abschluss");
+    equal(v9(last.s).length, 0);
+  });
+  it("the briefing never turns «no recorded app help» into «without any help»", () => {
+    const env = makeEnv();
+    const d = dispatch(finishedMission(env), env, "debrief", "sess-debrief-h001");
+    const work = d.result.request.context.work as { title: string; result?: string }[];
+    const independent = work.find((w) => w.title === "Töpfe packen")!;
+    ok(/ohne aufgezeichnete Hilfe in der App/.test(independent.result!) && /Erwachsener/.test(independent.result!), independent.result);
+    ok(!work.some((w) => /ohne Hilfe$|beim ersten Versuch ohne Hilfe/.test(w.result ?? "")));
+    ok(/Sag nie, er habe es ganz allein geschafft/.test(String(d.result.request.context.workNote)));
   });
   it("parent evidence keeps every line with its provenance and says it is no assessment", () => {
     const env = makeEnv();

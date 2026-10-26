@@ -139,6 +139,8 @@ function Workspace({ child }: { child: ChildId }) {
   const [nabuOpen, setNabuOpen] = useState(false);
   /** Content v7: he started the running visit himself in this page session (a reload never sets this). */
   const [entered, setEntered] = useState(false);
+  /** Content v7: he finished the map mission himself in this page session — the look back's Nokt may open by itself, once. */
+  const [closedHere, setClosedHere] = useState(false);
   const [overlay, setOverlay] = useState<"wordbook" | "logbook" | "supplies" | null>(null);
   /** The visit whose report is shown (just finished, or reopened through `?report=`). */
   const [reportVisit, setReportVisit] = useState<string | null>(() => searchParams.get("report"));
@@ -569,8 +571,12 @@ function Workspace({ child }: { child: ChildId }) {
               telemetryRef.current = noteControl(telemetryRef.current, Date.now(), "walk");
             }}
             act={async (action: MissionAction, options?: { idempotencyKey?: string }) => {
+              // The deliberate «Zum Rückblick» tap is a user gesture: unlock audio now, so Nokt's first look-back question can be heard.
+              if (action.a === "finish") speech.unlock();
               const outcome = await mutate({ op: "mission", action }, options?.idempotencyKey ? { idempotencyKey: options.idempotencyKey } : undefined);
-              return outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed") ? ((outcome.result as Record<string, unknown> | undefined) ?? {}) : null;
+              const ok = !!outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed");
+              if (ok && action.a === "finish" && outcome.status === "applied") setClosedHere(true);
+              return ok ? ((outcome.result as Record<string, unknown> | undefined) ?? {}) : null;
             }}
           />
         </div>
@@ -698,6 +704,7 @@ function Workspace({ child }: { child: ChildId }) {
                     speech={speech}
                     transcribe={view.nokt?.mic ? (audio, fileName, signal) => learning.transcribeNokt(child, audio, fileName, { signal }) : null}
                     turn={view.nokt && view.nokt.mode !== "unavailable" ? talkTurn : null}
+                    autoOpen={closedHere}
                     onFeedback={(feedback) => mutate({ op: "closing-feedback", feedback } as LearningOp)}
                     onFinish={async (payload, idempotencyKey) => {
                       const identity = visitIdentity();

@@ -22,7 +22,7 @@ import { encode } from "@auth/core/jwt";
 import { chromium } from "/Users/claweberle/.npm-global/lib/node_modules/playwright/index.mjs";
 import { audioSafeChromiumLaunchOptions, installBrowserAudioGuard } from "./lib/browser-audio-guard.mjs";
 import { asLearningContent } from "../src/lib/family-learning-content.ts";
-import { newMissionState } from "../src/lib/family-learning-state.ts";
+import { applyLearningOp, EMPTY_PARENT_SETTINGS, newMissionState } from "../src/lib/family-learning-state.ts";
 
 const args = process.argv.slice(2);
 const opt = (name, fallback) => (args.includes(name) ? args[args.indexOf(name) + 1] : fallback);
@@ -94,7 +94,51 @@ async function countRows(table) {
 // Fixture: SYNTHETIC "seven visits finished" (shape only; invented values), written as the child's state row.
 // --------------------------------------------------------------------------------------------------------------------------
 const content = asLearningContent(JSON.parse(fs.readFileSync(new URL("../src/data/family-learning/content/santiago-expedition-v7.json", import.meta.url), "utf8")));
-async function seedSevenVisitsDone() {
+/** SYNTHETIC: the same fixture, then the whole Visit 8 mission played through the ENGINE (no UI), ending at the look back. */
+function playedToDebrief(s) {
+  let t = Date.UTC(2026, 9, 27, 10, 0, 0);
+  let n = 0;
+  const env = { content, settings: { ...EMPTY_PARENT_SETTINGS, keyboardLayout: "ch-de-qwertz" }, now: () => new Date((t += 15000)), newId: () => `seed-${(n += 1)}` };
+  const o = (x) => (s = applyLearningOp(s, x, env).state);
+  const m = (action) => o({ op: "mission", action });
+  const place = (id) => content.missions.find((x) => x.visit === "v9").steps.find((x) => x.id === id).place;
+  const openAt = (id) => (m({ a: "arrive", place: place(id) }), m({ a: "open", step: id }));
+  o({ op: "start-visit" });
+  for (const id of ["H1-PLAN", "H2-POTS", "H4-FLOOR", "H5-PLANS", "H6-CHOOSE", "H7-JUNE", "H8-TOOLS", "H9-WATERING", "H10-TYPING", "H11-JOURNAL", "H12-DONE"]) {
+    openAt(id);
+    if (id === "H1-PLAN" || id === "H12-DONE") m({ a: "story-done", step: id });
+    if (id === "H2-POTS") m({ a: "answer-part", step: id, part: "total", value: "4" });
+    if (id === "H4-FLOOR") for (const [part, v] of [["row", 6], ["rows", 5], ["all", 30]]) m({ a: "answer-part", step: id, part, value: String(v) });
+    if (id === "H5-PLANS") for (const [part, v] of [["bedsA", 24], ["bedsB", 18]]) m({ a: "answer-part", step: id, part, value: String(v) });
+    if (id === "H6-CHOOSE") m({ a: "decide", step: id, option: "B" });
+    if (id === "H7-JUNE") {
+      m({ a: "support", step: id, kind: "play" });
+      m({ a: "listen-outcome", step: id, outcome: "browser" });
+      m({ a: "answer-question", step: id, question: "tomatoes", value: "Neben die Tür" });
+      m({ a: "answer-question", step: id, question: "beans", value: "Hinten links" });
+    }
+    if (id === "H8-TOOLS") m({ a: "produce", step: id, response: "Necesitamos herramientas", modality: "typed" });
+    if (id === "H9-WATERING") m({ a: "produce", step: id, response: "Necesitamos una regadera", modality: "typed" });
+    if (id === "H10-TYPING") {
+      m({ a: "typing-start" });
+      for (;;) {
+        const block = s.missions["MISSION-GREENHOUSE-GROW"].typing;
+        const next = block.plan.drills.find((d) => !block.drills.some((x) => x.no === d.no && x.attempted));
+        if (!next) break;
+        m({ a: "typing-drill", no: next.no, lines: next.lines, seconds: 30, activeSeconds: 28, idleSeconds: 2 });
+      }
+      m({ a: "typing-comfort", comfort: "easy" });
+      m({ a: "typing-extra", take: false });
+    }
+    if (id === "H11-JOURNAL") m({ a: "write", step: id, text: "Heute haben wir Beete geplant." });
+    if (id === "H11-JOURNAL" && s.missions["MISSION-GREENHOUSE-GROW"].steps[id].status === "active") m({ a: "revise", step: id, text: null });
+    m({ a: "leave" });
+  }
+  m({ a: "finish" });
+  return s;
+}
+
+async function seedSevenVisitsDone(opts = {}) {
   await api("DELETE", "/api/family/learning/parent/records?child=santiago&confirm=santiago", null, owner);
   const bearer = await mintChild("santiago");
   await api("GET", `/api/family/learning/mission?tz=${TZ}`, null, assistant, bearer); // creates the row
@@ -108,15 +152,16 @@ async function seedSevenVisitsDone() {
   const burst = (seconds) => ({ lessonId: "TYPE-CH-COURSE-5", visit: "v8", lineCount: 3, lines: [], expectedChars: 21, typedChars: 21, correctChars: 21, extraChars: 0, omittedChars: 0, substitutedChars: 0, denominator: 21, accuracy: 1, comfort: "easy", metricVersion: 2, seconds, at: day(18, 10) });
   s.typing.course = { layout: "ch-de-qwertz", lessonIndex: 4, bursts: [burst(25), burst(24)], decision: null, completed: ["TYPE-CH-COURSE-1", "TYPE-CH-COURSE-2", "TYPE-CH-COURSE-3", "TYPE-CH-COURSE-4"] };
   s.interests = [{ id: "fx-interest", visit: "v8", source: "closing", kind: "choice", text: "Das Gewächshaus vergrössern", choice: "greenhouse", at: day(18, 11) }];
+  const final = opts.atDebrief ? playedToDebrief(s) : s;
   const c = createClient({ url: "file:" + DB });
   try {
     // The row exists after the first child read in some builds and only after the first write in others: upsert it.
     const row = (await c.execute("SELECT revision FROM family_learning_missions WHERE child_id = 'santiago'")).rows[0];
     const revision = row ? Number(row.revision) + 1 : 1;
-    s.revision = revision;
+    final.revision = revision;
     const now = new Date().toISOString();
-    if (row) await c.execute({ sql: "UPDATE family_learning_missions SET state_json = ?, revision = ?, content_version = 7, updated_at = ? WHERE child_id = 'santiago'", args: [JSON.stringify(s), revision, now] });
-    else await c.execute({ sql: "INSERT INTO family_learning_missions (child_id, mission_id, content_version, revision, state_json, created_at, updated_at) VALUES ('santiago', ?, 7, ?, ?, ?, ?)", args: [content.contentId, revision, JSON.stringify(s), now, now] });
+    if (row) await c.execute({ sql: "UPDATE family_learning_missions SET state_json = ?, revision = ?, content_version = 7, updated_at = ? WHERE child_id = 'santiago'", args: [JSON.stringify(final), revision, now] });
+    else await c.execute({ sql: "INSERT INTO family_learning_missions (child_id, mission_id, content_version, revision, state_json, created_at, updated_at) VALUES ('santiago', ?, 7, ?, ?, ?, ?)", args: [content.contentId, revision, JSON.stringify(final), now, now] });
   } finally {
     c.close();
   }
@@ -163,7 +208,9 @@ function scripted(request) {
         : ctx.phase === "rueckblick"
           ? say("Das verstehe ich. Was würdest du jemandem zeigen?")
           : ctx.phase === "naechstes"
-            ? say("Danke. Was möchtest du beim nächsten Besuch machen?")
+            ? ctx.lastAnswerKind === "nachfrage"
+              ? say("Ernten heisst: Tomaten pflücken. Eine Wasserleitung bringt Wasser zum Gewächshaus. Was möchtest du lieber?")
+              : say(`Danke. Beim nächsten Mal könntest du: ${(ctx.nextIdeas ?? []).join(" oder ")} — oder du hast eine eigene Idee. Was möchtest du?`)
             : say("Danke, Santi! Das merke ich mir für das nächste Mal.", "close");
   }
   return say("Erzähl mir mehr.", "respond");
@@ -463,6 +510,11 @@ if (MODE === "nokt") {
   await goTo(page, "H6-CHOOSE");
   await page.locator("[data-testid='decide-pick-C']").click();
   await page.waitForSelector("[data-testid='decide-feedback'][data-tone='retry']");
+  {
+    // A bed is one outlined block of several 1 m fields: the counts are said in words (Plan A: 12 beds of 2 fields each).
+    const counts = await page.locator("[data-testid='plan-grid-counts']").allInnerTexts();
+    check("J8.plans.bed-area-in-words", counts.some((t) => t.includes("12 Beete aus zusammen 24 Feldern (jedes Beet 2 Felder)")) && counts.some((t) => t.includes("Weg 12 Felder")) && counts.every((t) => t.includes("1 Feld = 1 m × 1 m")), counts);
+  }
   check("J8.plans.non-viable-explained-step-stays-open", (await missionRun()).steps["H6-CHOOSE"].status === "active");
   await page.locator("[data-testid='decide-pick-A']").click();
   await page.waitForSelector("[data-testid='decide-feedback'][data-tone='success']");
@@ -544,27 +596,81 @@ if (MODE === "nokt") {
   await page.locator("[data-testid='mission-finish']").click();
   await page.waitForSelector("[data-testid='debrief']", { timeout: 20000 });
 
-  // ---------------------------------------------------------------- J8.10 Debrief: buttons → one question at a time → his words
+  // ---------------------------------------------------------------- J8.10 Debrief: Nokt opens by itself after the deliberate finish
+  const callsBeforeDebrief = bridgeCalls.length;
+  const nokSpeechBefore = speechRequests.filter((r) => r.body?.speaker === "nokt").length;
+  await page.waitForSelector("[data-testid='nokt-debrief'] [data-testid='nokt-talk-current'] li[data-role='nokt']", { timeout: 20000 });
+  const openers = bridgeCalls.slice(callsBeforeDebrief).filter((c) => c.purpose === "debrief" && c.transcript === 0);
+  check("J8.debrief.opener-automatic-once-after-deliberate-finish", openers.length === 1 && (await page.locator("[data-testid='debrief-start']").count()) === 0, { openers: openers.length });
+  await settle(300);
+  check("J8.debrief.opener-spoken-once-no-microphone", speechRequests.filter((r) => r.body?.speaker === "nokt").length === nokSpeechBefore + 1 && (await page.evaluate(() => globalThis.__gum || 0)) === 0, { gum: await page.evaluate(() => globalThis.__gum || 0) });
+  const fit = await page.evaluate(() => {
+    const q = document.querySelector("[data-testid='nokt-debrief'] [data-testid='nokt-talk-current'] li[data-role='nokt']")?.getBoundingClientRect();
+    const box = document.querySelector("[data-testid='nokt-debrief'] [data-testid='nokt-talk-input']")?.getBoundingClientRect();
+    const result = document.querySelector("[data-testid='debrief-result']")?.getBoundingClientRect();
+    return { h: innerHeight, q: q ? [Math.round(q.top), Math.round(q.bottom)] : null, box: box ? [Math.round(box.top), Math.round(box.bottom)] : null, result: result ? Math.round(result.height) : null, page: document.documentElement.scrollHeight };
+  });
+  check("J8.debrief.nokt-question-and-answer-box-in-first-viewport", !!fit.q && !!fit.box && fit.q[0] >= 0 && fit.box[1] <= fit.h && fit.result !== null && fit.result < 260, fit);
+  await page.screenshot({ path: path.join(OUT, `${String((shotN += 1)).padStart(2, "0")}-debrief-first-viewport.png`) });
+  check("J8.debrief.plan-bed-area-in-words", (await text(page, "[data-testid='debrief-result']")).includes("12 Beete aus zusammen 24 Feldern (jedes Beet 2 Felder)"));
+  check("J8.debrief.one-current-line-transcript-folded", (await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-talk-current'] li[data-role]").count()) === 1);
+  // One compact choice on the screen; the two optional ones are folded.
   await page.locator("[data-testid='difficulty-right']").click();
   await settle(300);
+  await page.locator("[data-testid='debrief-more'] summary").click();
   await page.locator("[data-testid='enjoyment-yes']").click();
   await settle(300);
   await page.locator("[data-testid='clarity-skip']").click();
   await settle(400);
-  check("J8.debrief.buttons-saved-before-nokt", JSON.stringify((await rawRow()).state.visits.find((v) => v.id === "v9").feedback?.answers) === JSON.stringify({ difficulty: "right", enjoyment: "yes" }));
-  await page.locator("[data-testid='debrief-start']").click();
-  await page.waitForSelector("[data-testid='nokt-debrief'] li[data-role='nokt']", { timeout: 20000 });
-  const opener = bridgeCalls.at(-1);
-  check("J8.debrief.opener-uses-his-buttons-and-work", opener.purpose === "debrief" && opener.transcript === 0 && Object.values(opener.context?.buttons ?? {}).includes("Ja") && Array.isArray(opener.context?.work) && opener.context.work.length > 5, opener.context?.buttons);
-  await talkSend(page, "[data-testid='nokt-debrief']", "die pläne");
-  await talkSend(page, "[data-testid='nokt-debrief']", "mein plan");
-  const last = await talkSend(page, "[data-testid='nokt-debrief']", "tomaten ernten");
-  check("J8.debrief.one-question-at-a-time", (await page.locator("[data-testid='nokt-debrief'] li[data-role='nokt']").allInnerTexts()).every((t) => (t.match(/\?/g) ?? []).length <= 1) && /Danke/.test(last));
-  await settle(400);
+  check("J8.debrief.buttons-saved", JSON.stringify((await rawRow()).state.visits.find((v) => v.id === "v9").feedback?.answers) === JSON.stringify({ difficulty: "right", enjoyment: "yes" }));
+  const focusSend = async (text) => {
+    const n = bridgeCalls.length;
+    await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-talk-input']").fill(text);
+    await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-talk-send']").click();
+    for (let i = 0; i < 80 && bridgeCalls.length <= n; i += 1) await settle(250);
+    await page.waitForFunction(() => document.querySelector("[data-testid='nokt-debrief']")?.getAttribute("data-waiting") === "false", null, { timeout: 20000 });
+    await settle(400);
+    return bridgeCalls.slice(n);
+  };
+  const c1 = await focusSend("die pläne");
+  check("J8.debrief.uses-his-buttons-and-work", Object.values(c1[0]?.context?.buttons ?? {}).includes("Genau richtig") && Object.values(c1[0]?.context?.buttons ?? {}).includes("Ja") && Array.isArray(c1[0]?.context?.work) && c1[0].context.work.length > 5, c1[0]?.context?.buttons);
+  const c2 = await focusSend("mein plan");
+  const nextQ = await text(page, "[data-testid='nokt-debrief'] [data-testid='nokt-talk-current']");
+  check("J8.debrief.next-question-offers-two-reviewed-ideas-and-own", c2[0]?.phase === "naechstes" && nextQ.includes("Im Gewächshaus ernten") && nextQ.includes("Wasserleitung") && (await page.locator("[data-testid='nokt-choice-harvest']").count()) === 1 && (await page.locator("[data-testid='nokt-choice-water-pipe']").count()) === 1 && (await page.locator("[data-testid='nokt-choice-unsure']").count()) === 1 && (await page.locator("[data-testid='nokt-choice-own']").count()) === 1, nextQ);
+  const c3 = await focusSend("Was meinst du?");
+  check("J8.debrief.question-back-is-not-a-wish", (await rawRow()).state.interests.filter((i) => i.visit === "v9").length === 0 && c3[0]?.phase === "naechstes" && c3[0]?.context?.lastAnswerKind === "nachfrage" && (await page.locator("[data-testid='nokt-choice-harvest']").count()) === 1);
+  // Reload: the saved conversation, no new opener, nothing spoken.
+  const callsBeforeReload = bridgeCalls.length;
+  const speechBeforeReload = speechRequests.length;
+  await page.reload();
+  await page.waitForSelector("[data-testid='nokt-debrief'] [data-testid='nokt-talk-current'] li[data-role='nokt']", { timeout: 30000 });
+  await settle(1500);
+  check("J8.debrief.reload-no-new-opener-no-audio", bridgeCalls.length === callsBeforeReload && speechRequests.length === speechBeforeReload && (await text(page, "[data-testid='nokt-debrief'] [data-testid='nokt-talk-current']")).includes("Tomaten pflücken"));
+  // Stopp (pause) and back: the same, and the visit is still open.
+  await page.locator("[data-testid='hud-stop']").click();
+  await page.waitForURL(/\/family\/learn(\?|$)/, { timeout: 20000 });
+  await page.goto(`${BASE}/family/learn/mission?child=santiago`);
+  await page.waitForSelector("[data-testid='nokt-debrief']", { timeout: 30000 });
+  await settle(1500);
+  check("J8.debrief.stop-and-back-no-opener-visit-still-open", bridgeCalls.length === callsBeforeReload && (await rawRow()).state.visits.find((v) => v.id === "v9").finishedAt === null);
+  const pageHeightBefore = await page.evaluate(() => document.documentElement.scrollHeight);
+  // He taps one of the reviewed ideas: saved as that choice (label + id), with how it came.
+  const n4 = bridgeCalls.length;
+  await page.locator("[data-testid='nokt-choice-water-pipe']").click();
+  for (let i = 0; i < 80 && bridgeCalls.length <= n4; i += 1) await settle(250);
+  await page.waitForFunction(() => document.querySelector("[data-testid='nokt-debrief']")?.getAttribute("data-waiting") === "false", null, { timeout: 20000 });
+  await settle(600);
   const interests = (await rawRow()).state.interests.filter((i) => i.visit === "v9");
-  check("J8.debrief.his-own-next-interest-words-verbatim", interests.length === 1 && interests[0].text === "tomaten ernten" && interests[0].source === "debrief", interests);
+  check("J8.debrief.tapped-idea-saved-as-that-choice-with-provenance", interests.length === 1 && interests[0].kind === "choice" && interests[0].choice === "water-pipe" && interests[0].text === "Eine Wasserleitung zum Gewächshaus bauen" && interests[0].source === "debrief" && /angetippt/.test(interests[0].uncertainty ?? ""), interests);
+  check("J8.debrief.closing-line-repeats-his-wish", bridgeCalls.at(-1)?.phase === "abschluss" && bridgeCalls.at(-1)?.context?.hisWish === "Eine Wasserleitung zum Gewächshaus bauen");
+  const pageHeightAfter = await page.evaluate(() => document.documentElement.scrollHeight);
+  check("J8.debrief.layout-does-not-grow-with-the-talk", pageHeightAfter - pageHeightBefore < 160, { pageHeightBefore, pageHeightAfter });
+  await page.locator("[data-testid='nokt-talk-history'] summary").click();
+  check("J8.debrief.whole-talk-reviewable", (await page.locator("[data-testid='nokt-talk-history'] li[data-role]").count()) >= 9);
+  check("J8.debrief.one-question-at-a-time", (await page.locator("[data-testid='nokt-talk-history'] li[data-role='nokt']").allInnerTexts()).every((t) => (t.match(/\?/g) ?? []).length <= 1));
   check("J8.debrief.no-assessment-no-completion-from-the-talk", (await rawRow()).state.visits.find((v) => v.id === "v9").finishedAt === null);
-  await shot(page, "debrief");
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(OUT, `${String((shotN += 1)).padStart(2, "0")}-debrief-after-choice.png`) });
   await page.locator("[data-testid='debrief-finish']").click();
   await page.waitForURL(/\/family\/home\?child=santiago/, { timeout: 20000 });
   check("J8.journey.ends-on-family-home", page.url().includes("/family/home"));
@@ -582,7 +688,7 @@ if (MODE === "nokt") {
   await pp.goto(`${BASE}/family/learn/parent?child=santiago`);
   await pp.waitForSelector("[data-testid='parent-nokt-talks']", { timeout: 30000 });
   const ptext = await text(pp, "[data-testid='parent-nokt-talks']");
-  check("J8.parent.talks-with-provenance-and-withheld-reasons", ["Family Home", "Begrüssung", "Reaktion auf den Satz", "Rückblick am Ende", "harness-fictional", "Herkunft ungültig", "Tageskontingent"].every((x) => ptext.includes(x)), ptext.slice(0, 300));
+  check("J8.parent.talks-with-provenance-and-withheld-reasons", ["Family Home", "Begrüssung", "Reaktion auf den Satz", "Rückblick am Ende", "harness-fictional", "Herkunft ungültig", "Tageskontingent", "Nachfrage (kein Wunsch gespeichert)", "angetippte Idee"].every((x) => ptext.includes(x)), ptext.slice(0, 300));
   check("J8.parent.no-assessment-claim", ptext.includes("keine Bewertung"));
   await shot(pp, "parent-talks");
 
@@ -606,6 +712,24 @@ if (MODE === "nokt-old") {
   await page.locator("[data-testid='nokt-button']").click();
   const ok = await talkSend(page, "[data-testid='nokt-visit']", "Wohin soll ich?");
   check("J8.old-runtime.ordinary-turns-unaffected", ok.startsWith("Nokt"), ok);
+  // The look back reached without a deliberate finish in this page (seeded at the closing): no opener by itself; one tap
+  // starts it; against the old runtime the opener falls back to the labelled app line; typing continues the talk.
+  await seedSevenVisitsDone({ atDebrief: true });
+  const before = bridgeCalls.length;
+  const spokenBefore = speechRequests.filter((r) => r.body?.speaker === "nokt").length;
+  const spokenSince = () => speechRequests.filter((r) => r.body?.speaker === "nokt").length - spokenBefore;
+  await page.goto(`${BASE}/family/learn/mission?child=santiago`);
+  await page.waitForSelector("[data-testid='debrief-start']", { timeout: 30000 });
+  await settle(1200);
+  check("J8.old-runtime.debrief-no-auto-opener-without-deliberate-finish", bridgeCalls.length === before && spokenSince() === 0, { bridge: bridgeCalls.length - before, spoken: spokenSince() });
+  const startBox = await page.locator("[data-testid='debrief-start']").boundingBox();
+  check("J8.old-runtime.debrief-start-in-first-viewport", !!startBox && startBox.y + startBox.height <= 900, startBox);
+  await page.locator("[data-testid='debrief-start']").click();
+  await page.waitForSelector("[data-testid='nokt-debrief'] [data-testid='nokt-talk-current'] li[data-role='app']", { timeout: 20000 });
+  check("J8.old-runtime.debrief-opener-refused-honest-app-line", (await text(page, "[data-testid='nokt-debrief'] [data-testid='nokt-talk-current']")).includes("Hinweis der App") && spokenSince() === 0, { line: await text(page, "[data-testid='nokt-debrief'] [data-testid='nokt-talk-current']"), spoken: spokenSince() });
+  await page.locator("[data-testid='debrief-finish']").click();
+  await page.waitForSelector("[data-testid='debrief-interest-form']", { timeout: 10000 });
+  check("J8.old-runtime.finish-without-a-wish-shows-reviewed-choices", (await rawRow()).state.visits.find((v) => v.id === "v9").finishedAt === null);
 }
 
 if (MODE === "off") {
@@ -632,6 +756,18 @@ if (MODE === "off") {
   check("J8off.planned-reflection-recorded-not-available", (await missionRun()).steps["H2-POTS"].parts.total.reflection === "not-available");
   await back(page);
   check("J8off.fresh-application-not-needed", (await page.locator("[data-testid='go-H3-POTS-AGAIN']").count()) === 0);
+  // The look back without Nokt: short result, the one compact choice, the reviewed ideas — all in the first viewport.
+  await seedSevenVisitsDone({ atDebrief: true });
+  await page.goto(`${BASE}/family/learn/mission?child=santiago`);
+  await page.waitForSelector("[data-testid='debrief-interest-form']", { timeout: 30000 });
+  const offFit = await page.evaluate(() => ({ h: innerHeight, form: document.querySelector("[data-testid='debrief-interest-form']")?.getBoundingClientRect().top ?? 9999 }));
+  check("J8off.debrief-reviewed-ideas-in-first-viewport-no-nokt", (await page.locator("[data-testid='nokt-debrief']").count()) === 0 && (await page.locator("[data-testid='debrief-no-nokt']").count()) === 1 && offFit.form < offFit.h, offFit);
+  check("J8off.debrief-plan-counts-in-words", /\d+ Beete aus zusammen \d+ Feldern/.test(await text(page, "[data-testid='debrief-result']")) && (await text(page, "[data-testid='debrief-result']")).includes("1 Feld = 1 m × 1 m"));
+  await page.locator("[data-testid='debrief-interest-form'] button", { hasText: "Im Gewächshaus ernten" }).first().click();
+  await page.locator("[data-testid='debrief-finish']").click();
+  await page.waitForURL(/\/family\/home\?child=santiago/, { timeout: 20000 });
+  const offInterest = (await rawRow()).state.interests.filter((i) => i.visit === "v9");
+  check("J8off.debrief-finish-records-the-tapped-idea-ends-home", offInterest.length === 1 && offInterest[0].source === "closing" && offInterest[0].choice === "harvest" && (await rawRow()).state.visits.find((v) => v.id === "v9").finishedAt !== null, offInterest);
 }
 
 check("J8.common.no-external-requests", blocked.length === 0, blocked.slice(0, 5));

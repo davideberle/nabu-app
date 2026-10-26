@@ -5983,7 +5983,7 @@
           "prop": "beds",
           "place": "greenhouse",
           "count": 9,
-          "label": "Plan A: 12 Beete, schmaler Weg",
+          "label": "Plan A: 12 Beete zu je 2 Feldern (24 Felder), schmaler Weg",
           "choice": {
             "step": "H6-CHOOSE",
             "option": "A"
@@ -5995,7 +5995,7 @@
           "prop": "beds",
           "place": "greenhouse",
           "count": 6,
-          "label": "Plan B: 6 Beete, breiter Weg",
+          "label": "Plan B: 6 Beete aus 18 Feldern, breiter Weg",
           "choice": {
             "step": "H6-CHOOSE",
             "option": "B"

@@ -175,7 +175,7 @@ export function MapTask({ child, view, active, busy, act, speech, telemetry, nok
     case "outcome":
       return active.grid ? (
         <div className="grid gap-3" data-testid="outcome-plan">
-          <PlanGrid grid={active.grid} caption={`Dein Plan: ${active.grid.label}`} highlight />
+          <PlanGrid grid={active.grid} caption={`Dein Plan: ${active.grid.label}`} highlight showCounts />
           {active.diagram ? <Trays diagram={active.diagram} label="Geliefert" /> : null}
         </div>
       ) : null;
@@ -200,7 +200,7 @@ function DecideTask({ active, busy, act }: { active: MissionActiveView; busy: bo
           const chosen = d.chosen === o.id;
           return (
             <div key={o.id} className="grid content-start gap-2 rounded-2xl border-2 p-3" style={{ borderColor: chosen ? "#42864f" : picked ? "#c77c14" : "#dce5df", background: "white" }} data-testid={`decide-option-${o.id}`}>
-              {o.grid ? <PlanGrid grid={o.grid} caption={o.label} highlight={chosen} /> : <p className="text-lg font-semibold">{o.label}</p>}
+              {o.grid ? <PlanGrid grid={o.grid} caption={o.label} highlight={chosen} showCounts /> : <p className="text-lg font-semibold">{o.label}</p>}
               {!finished ? (
                 <button type="button" className={btn} style={primary} disabled={busy} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`decide-pick-${o.id}`}>
                   Diesen Plan wählen

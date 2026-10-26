@@ -280,6 +280,10 @@ export type InterestRecord = {
   text: string | null;
   /** Content v6 (V7-D13): the offered story direction the child picked — never inferred, only recorded when tapped. */
   choice?: string | null;
+  /** Content v7 (debrief): how the words came (typed, spoken + confirmed transcript, a tapped idea) and what the app did NOT interpret. */
+  uncertainty?: string | null;
+  /** Content v7: this answer corrects an earlier one of the same look back (both stay; the latest counts). */
+  corrects?: string | null;
   at: string;
 };
 
@@ -1688,13 +1692,13 @@ export function typingSummary(block: TypingBlockRun) {
 // Interests (V6-11)
 // ---------------------------------------------------------------------------
 
-export function recordInterest(state: MissionState, records: Records, input: { kind: InterestRecord["kind"]; text?: string | null; choice?: string | null }, visit: VisitId, source: InterestRecord["source"], nowIso: string, newId: () => string, adventure: import("./family-learning-mission-spec.ts").MissionNextAdventure | null = null): InterestRecord {
+export function recordInterest(state: MissionState, records: Records, input: { kind: InterestRecord["kind"]; text?: string | null; choice?: string | null; uncertainty?: string | null; corrects?: string | null }, visit: VisitId, source: InterestRecord["source"], nowIso: string, newId: () => string, adventure: import("./family-learning-mission-spec.ts").MissionNextAdventure | null = null): InterestRecord {
   if (!["text", "unsure", "no-preference", "declined", "choice"].includes(input.kind)) throw new MissionOpError("invalid", "unknown interest answer");
   const picked = input.kind === "choice" ? adventure?.choices.find((c) => c.id === input.choice) ?? null : null;
   if (input.kind === "choice" && !picked) throw new MissionOpError("invalid", "unknown choice for this visit");
   const text = input.kind === "text" ? String(input.text ?? "").replace(/\r/g, "").slice(0, 300) : picked ? picked.label : null;
   if (input.kind === "text" && !text!.trim()) throw new MissionOpError("invalid", "write a few words, or choose one of the buttons");
-  const rec: InterestRecord = { id: newId(), visit, source, kind: input.kind, text, ...(picked ? { choice: picked.id } : {}), at: nowIso };
+  const rec: InterestRecord = { id: newId(), visit, source, kind: input.kind, text, ...(picked ? { choice: picked.id } : {}), ...(input.uncertainty ? { uncertainty: input.uncertainty } : {}), ...(input.corrects ? { corrects: input.corrects } : {}), at: nowIso };
   state.interests = [...(state.interests ?? []), rec];
   records.samples.push({ id: rec.id, visitId: visit, taskId: "next-interest", kind: "next_interest" as never, language: "de", modality: input.kind === "choice" ? "pick" : "typed", text: text ?? "", metrics: { kind: rec.kind, source, ...(picked ? { choice: picked.id } : {}) }, at: nowIso });
   return rec;
@@ -2196,7 +2200,7 @@ export function missionReport(state: MissionState, content: LearningContent, vis
 export function planningInput(state: MissionState, content: LearningContent) {
   const missions = (content.missions ?? []).map((m) => missionReport(state, content, m.visit as VisitId)).filter((x): x is NonNullable<ReturnType<typeof missionReport>> => !!x);
   return {
-    interests: (state.interests ?? []).map((i) => ({ visit: i.visit, source: i.source, kind: i.kind, text: i.text, at: i.at })),
+    interests: (state.interests ?? []).map((i) => ({ visit: i.visit, source: i.source, kind: i.kind, text: i.text, at: i.at, ...(i.uncertainty ? { uncertainty: i.uncertainty } : {}), ...(i.corrects ? { corrects: i.corrects } : {}) })),
     pendingInterest: pendingInterest(state, content),
     openFocus: (state.feedback?.focus ?? []).filter((f) => f.status === "open").map((f) => ({ id: f.id, evidence: f.evidence, openedIn: f.openedIn })),
     retrieval: missions.flatMap((m) => m.retrieval.map((r) => ({ mission: m.def.id, ...r }))),

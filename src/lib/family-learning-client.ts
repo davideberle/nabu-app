@@ -26,7 +26,7 @@ export const BRIDGE_NOKT_PATH = "/v1/nokt/turn";
 export type NoktTurnInput =
   | { step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; sessionId: string; turnId: string; text: string; via: "voice" | "typed" }
   /** Content v7: a conversation outside the task talk; the page is the server's. No `text` = an opener (welcome, first debrief question, reaction to the saved sentence). */
-  | { purpose: "home" | "welcome" | "visit" | "writing" | "debrief"; sessionId: string; turnId: string; text?: string; via?: "voice" | "typed" };
+  | { purpose: "home" | "welcome" | "visit" | "writing" | "debrief"; sessionId: string; turnId: string; text?: string; via?: "voice" | "typed"; choice?: string };
 
 /** The runtime's refusal as the browser saw it, in the closed vocabulary the reply route accepts (it only names a reason). */
 export function noReplyCodeOf(status: number, code: unknown): "attempts_exhausted" | "usage_limit" | "busy" | "bad_request" | "unavailable" | "timeout" {

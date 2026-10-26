@@ -20,14 +20,14 @@ import { mutationResponse, NOKT_TURN_ID, noktTurnPrereqs } from "@/lib/family-le
 export async function POST(request: Request) {
   const pre = await noktTurnPrereqs(request);
   if (!pre.ok) return pre.response;
-  const { step, part, purpose, entry, sessionId, turnId, text, via } = pre.body;
+  const { step, part, purpose, entry, sessionId, turnId, text, via, choice } = pre.body;
   if (typeof sessionId !== "string" || !sessionId || sessionId.length > 80 || typeof turnId !== "string" || !NOKT_TURN_ID.test(turnId)) return refuse(400, "sessionId and turnId are required");
   const talk = typeof purpose === "string" && (NOKT_TALK_PURPOSES as readonly string[]).includes(purpose);
   if (!talk && (typeof step !== "string" || typeof part !== "string")) return refuse(400, "step, part, sessionId and turnId are required");
   if (talk && (step !== undefined || part !== undefined)) return refuse(400, "the page of this conversation is the server's, not the client's");
   try {
     const op = talk
-      ? ({ op: "nokt-talk", action: { a: "dispatch", purpose: purpose as NoktTalkPurpose, sessionId, turnId, ...(text !== undefined ? { text: text as string, via: via as "typed" } : {}) } } as const)
+      ? ({ op: "nokt-talk", action: { a: "dispatch", purpose: purpose as NoktTalkPurpose, sessionId, turnId, ...(text !== undefined ? { text: text as string, via: via as "typed" } : {}), ...(typeof choice === "string" && choice.length <= 40 ? { choice } : {}) } } as const)
       : ({ op: "mission", action: { a: "tutor-dispatch", step: step as string, part: part as string, purpose: purpose as "diagnostic", entry: entry as "manual", turnId, sessionId, text: text as string, via: via as "typed" } } as const);
     const dispatched = await applyMutation(pre.db, { child: pre.child, op, idempotencyKey: `${turnId}-d`, expectedRevision: pre.expectedRevision, context: pre.context }, pre.content, () => new Date(), { timeZone: pre.timeZone, vocabulary: pre.vocabulary, tutor: { available: true } });
     if (dispatched.status !== "applied") return mutationResponse(dispatched);

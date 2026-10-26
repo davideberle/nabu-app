@@ -15,7 +15,20 @@ const BED = "#8cc56f";
 const BED_EDGE = "#3f7a3a";
 const LINE = "#8a7350";
 
-export function PlanGrid({ grid, caption, highlight }: { grid: MissionGrid; caption?: string; highlight?: boolean }) {
+/**
+ * `showCounts` (only where no question about these counts is open — the decide step, the outcome, the look back): the counts
+ * in words, so a «bed» (one outlined block, several fields) is never mistaken for a field (1 m × 1 m).
+ */
+/** The plan's counts in words, e.g. «12 Beete aus zusammen 24 Feldern (jedes Beet 2 Felder) · Weg 6 Felder · 1 Feld = 1 m × 1 m». */
+export function planCountsText(grid: MissionGrid): string | null {
+  const counts = gridCounts(grid);
+  if (!counts.beds) return null;
+  const sizes = [...new Set(counts.bedSizes)].sort((a, b) => a - b);
+  const each = sizes.length === 1 ? ` (jedes Beet ${sizes[0]} Felder)` : ` (Beete mit ${sizes.join(" oder ")} Feldern)`;
+  return `${counts.beds} Beete aus zusammen ${counts.bedFields} Feldern${each} · Weg ${counts.path} Felder · 1 Feld = ${grid.fieldMeters} m × ${grid.fieldMeters} m`;
+}
+
+export function PlanGrid({ grid, caption, highlight, showCounts = false, compact = false }: { grid: MissionGrid; caption?: string; highlight?: boolean; showCounts?: boolean; compact?: boolean }) {
   const counts = gridCounts(grid);
   const cells = grid.cells.map((row) => Array.from(row));
   const w = grid.cols * FIELD;
@@ -49,7 +62,7 @@ export function PlanGrid({ grid, caption, highlight }: { grid: MissionGrid; capt
   return (
     <figure className="grid gap-2" data-testid="plan-grid" data-label={grid.label} data-fields={counts.fields} data-path={counts.path} data-beds={counts.beds} data-bed-fields={counts.bedFields} data-highlight={highlight ? "true" : "false"}>
       <figcaption className="text-base font-semibold">{caption ?? grid.label}</figcaption>
-      <svg role="img" aria-label={aria} viewBox={`${-pad} ${-pad} ${w + pad * 2} ${h + pad * 2}`} className="h-auto w-full max-w-[420px]" style={{ outline: highlight ? "4px solid #f59e0b" : undefined, borderRadius: 12 }}>
+      <svg role="img" aria-label={aria} viewBox={`${-pad} ${-pad} ${w + pad * 2} ${h + pad * 2}`} className={compact ? "h-auto w-full max-w-[200px]" : "h-auto w-full max-w-[420px]"} style={{ outline: highlight ? "4px solid #f59e0b" : undefined, borderRadius: 12 }}>
         {cells.map((row, r) =>
           row.map((v, c) => (
             <rect key={`${r}-${c}`} x={c * FIELD} y={r * FIELD} width={FIELD} height={FIELD} fill={v === "W" ? PATH : v === "." ? SOIL : BED} stroke={LINE} strokeWidth={1} strokeOpacity={0.6} />
@@ -75,7 +88,12 @@ export function PlanGrid({ grid, caption, highlight }: { grid: MissionGrid; capt
           </text>
         </g>
       </svg>
-      {counts.path ? (
+      {showCounts && counts.beds ? (
+        <p className="text-sm" data-testid="plan-grid-counts">
+          {planCountsText(grid)}
+        </p>
+      ) : null}
+      {counts.path && !compact ? (
         <p className="flex flex-wrap gap-3 text-sm" aria-hidden>
           <span><span className="mr-1 inline-block h-3 w-3 rounded-sm align-middle" style={{ background: PATH }} />Weg</span>
           <span><span className="mr-1 inline-block h-3 w-3 rounded-sm align-middle" style={{ background: BED, outline: `2px solid ${BED_EDGE}` }} />Beet</span>

@@ -23,7 +23,7 @@ import { NoktMic, type NoktTranscribe } from "./nokt-panel";
 
 export type NoktTalkTurnOutcome = { kind: "shown"; say: string } | { kind: "app"; line: string } | { kind: "failed"; line: string } | { kind: "cancelled" };
 /** One talk turn through the server (dispatch → family runtime → reply). `text` absent = an opener. */
-export type NoktTalkTurnFn = (turn: { purpose: NoktTalkPurpose; sessionId: string; turnId: string; text?: string; via?: "voice" | "typed" }, signal: AbortSignal) => Promise<NoktTalkTurnOutcome>;
+export type NoktTalkTurnFn = (turn: { purpose: NoktTalkPurpose; sessionId: string; turnId: string; text?: string; via?: "voice" | "typed"; choice?: string }, signal: AbortSignal) => Promise<NoktTalkTurnOutcome>;
 
 const newId = (prefix: string) => `${prefix}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`;
 const btn = "inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 text-lg font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:cursor-not-allowed disabled:opacity-50";
@@ -51,6 +51,9 @@ export function NoktTalk({
   onLine,
   title = "Nokt",
   testId = "nokt-talk",
+  layout = "full",
+  choices = null,
+  autoFocus = false,
 }: {
   child: ChildId;
   purpose: NoktTalkPurpose;
@@ -66,6 +69,11 @@ export function NoktTalk({
   onLine?: (line: { role: "nokt" | "app" | "child"; text: string }) => void;
   title?: string;
   testId?: string;
+  /** `focus`: only the current exchange is on screen (Nokt's latest line, his latest words); the whole talk folds open. */
+  layout?: "full" | "focus";
+  /** Reviewed ideas he may tap (the look back's next-interest question); `own` focuses the box for his own words. */
+  choices?: { id: string; label: string }[] | null;
+  autoFocus?: boolean;
 }) {
   const sessionId = useMemo(() => persistedSession ?? newId("s"), [persistedSession]);
   const [lines, setLines] = useState<Line[]>(() => initialLines.map((l, i) => ({ ...l, key: `p${i}` })));
@@ -130,6 +138,44 @@ export function NoktTalk({
     setVia("typed");
     void run(text, via);
   };
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
+  const pick = (c: { id: string; label: string }) => {
+    if (waiting || closed) return;
+    setLines((l) => [...l, { role: "child", text: c.label, via: "choice", at: new Date().toISOString(), key: newId("c") }]);
+    onLine?.({ role: "child", text: c.label });
+    const abort = new AbortController();
+    abortRef.current = abort;
+    setWaiting(true);
+    void turn({ purpose, sessionId, turnId: newId("t"), text: c.label, via: "typed", choice: c.id }, abort.signal).then((out) => {
+      if (!alive.current || abort.signal.aborted || out.kind === "cancelled") return;
+      abortRef.current = null;
+      setWaiting(false);
+      if (out.kind === "shown") {
+        setLines((l) => [...l, { role: "nokt", text: out.say, at: new Date().toISOString(), key: newId("n") }]);
+        void say(out.say);
+      } else setLines((l) => [...l, { role: "app", text: out.line, at: new Date().toISOString(), key: newId("a") }]);
+    });
+  };
+  useEffect(() => {
+    if (autoFocus) inputRef.current?.focus({ preventScroll: true });
+  }, [autoFocus]);
+  const lastNokt = [...lines].reverse().find((l) => l.role !== "child") ?? null;
+  const lastChild = [...lines].reverse().find((l) => l.role === "child") ?? null;
+  // Focus: the current question (Nokt's or the app's latest line) and — while he waits — his own latest words after it.
+  const childAfter = lastChild && (!lastNokt || lines.indexOf(lastChild) > lines.indexOf(lastNokt)) ? lastChild : null;
+  const shown = layout === "focus" ? [lastNokt, childAfter].filter((x): x is Line => !!x) : lines;
+  const line = (t: Line, big = false) => (
+    <li key={t.key} className={`rounded-xl px-3 py-2 ${big ? "text-xl leading-snug" : "text-lg"}`} style={{ background: t.role === "nokt" ? "#edf4e6" : t.role === "app" ? "#fff8e1" : "#f3f4f1" }} data-role={t.role}>
+      <span className="text-sm font-bold">{t.role === "nokt" ? "Nokt" : t.role === "app" ? "Hinweis der App" : t.via === "sentence" ? "Dein Satz" : t.via === "choice" ? "Du hast gewählt" : "Du"}{t.role === "child" && t.via === "voice" ? " (gesprochen)" : ""}</span>
+      <br />
+      {t.text}
+      {t.role === "nokt" ? (
+        <button type="button" className="ml-2 text-base underline" onClick={() => void say(t.text)} data-testid="nokt-talk-repeat">
+          Nochmal anhören
+        </button>
+      ) : null}
+    </li>
+  );
 
   return (
     <section className="grid gap-3 rounded-3xl bg-white p-4 shadow-sm" style={{ color: "#203b3d", border: "2px solid #dce5df" }} aria-label={title} data-testid={testId} data-purpose={purpose} data-session={sessionId} data-waiting={waiting ? "true" : "false"}>
@@ -137,22 +183,31 @@ export function NoktTalk({
         <AssistantPortrait child={child === "isabel" ? "isabel" : "santiago"} className="h-12 w-12" label="" />
         <h3 className="text-xl font-bold">{title}</h3>
       </div>
-      <ol className="grid gap-2" aria-live="polite" data-testid="nokt-talk-transcript">
+      {layout === "focus" && lines.length > shown.length ? (
+        <details className="text-base" data-testid="nokt-talk-history">
+          <summary className="cursor-pointer underline">Ganzes Gespräch ansehen ({lines.length})</summary>
+          <ol className="mt-2 grid gap-2" data-testid="nokt-talk-transcript">
+            {lines.map((t) => line(t))}
+          </ol>
+        </details>
+      ) : null}
+      <ol className="grid gap-2" aria-live="polite" data-testid={layout === "focus" ? "nokt-talk-current" : "nokt-talk-transcript"}>
         {lines.length === 0 && PLACEHOLDER[purpose] && !waiting ? <li className="text-lg">{PLACEHOLDER[purpose]}</li> : null}
-        {lines.map((t) => (
-          <li key={t.key} className="rounded-xl px-3 py-2 text-lg" style={{ background: t.role === "nokt" ? "#edf4e6" : t.role === "app" ? "#fff8e1" : "#f3f4f1" }} data-role={t.role}>
-            <span className="text-sm font-bold">{t.role === "nokt" ? "Nokt" : t.role === "app" ? "Hinweis der App" : t.via === "sentence" ? "Dein Satz" : "Du"}{t.role === "child" && t.via === "voice" ? " (gesprochen)" : ""}</span>
-            <br />
-            {t.text}
-            {t.role === "nokt" ? (
-              <button type="button" className="ml-2 text-base underline" onClick={() => void say(t.text)} data-testid="nokt-talk-repeat">
-                Nochmal anhören
-              </button>
-            ) : null}
-          </li>
-        ))}
+        {shown.map((t) => line(t, layout === "focus" && t.role !== "child"))}
         {waiting ? <li className="text-lg italic" data-testid="nokt-talk-waiting">Nokt überlegt …</li> : null}
       </ol>
+      {choices?.length && !closed ? (
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Ideen für das nächste Mal" data-testid="nokt-talk-choices">
+          {choices.map((c) => (
+            <button key={c.id} type="button" className="min-h-12 rounded-full border-2 px-4 text-lg font-semibold disabled:opacity-50" style={{ borderColor: "#8ba8a4", background: "white" }} disabled={waiting} onClick={() => pick(c)} data-testid={`nokt-choice-${c.id}`}>
+              {c.label}
+            </button>
+          ))}
+          <button type="button" className="min-h-12 rounded-full border-2 px-4 text-lg font-semibold" style={{ borderColor: "#d6c3a3", background: "#fffdf6" }} disabled={waiting} onClick={() => inputRef.current?.focus()} data-testid="nokt-choice-own">
+            Eigene Idee (sagen oder schreiben)
+          </button>
+        </div>
+      ) : null}
       {closed ? null : (
         <>
           {transcribe ? (
@@ -174,7 +229,7 @@ export function NoktTalk({
             <label htmlFor={`${testId}-input`} className="text-base font-semibold">
               {via === "voice" ? "Das habe ich verstanden — du kannst es korrigieren:" : transcribe ? "Oder schreib es hier:" : "Schreib es hier:"}
             </label>
-            <textarea id={`${testId}-input`} rows={2} value={draft} onChange={(e) => setDraft(e.target.value.slice(0, 300))} className="w-full rounded-xl border-2 px-3 py-2 text-lg" style={{ borderColor: "#8ba8a4" }} data-testid="nokt-talk-input" />
+            <textarea id={`${testId}-input`} ref={inputRef} rows={2} value={draft} onChange={(e) => setDraft(e.target.value.slice(0, 300))} className="w-full rounded-xl border-2 px-3 py-2 text-lg" style={{ borderColor: "#8ba8a4" }} data-testid="nokt-talk-input" />
             <button type="submit" className={btn} style={{ background: "#215c60", color: "white" }} disabled={!draft.trim() || waiting} data-testid="nokt-talk-send">
               Senden
             </button>

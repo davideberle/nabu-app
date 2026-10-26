@@ -42,7 +42,9 @@ export const NOKT_TALK_INTENTS = ["ask", "respond", "encourage", "correct", "clo
 export type NoktTalkIntent = (typeof NOKT_TALK_INTENTS)[number];
 
 /** Child lines per session before Nokt must close (never an endless conversation gate). */
-export const NOKT_TALK_MAX_CHILD_TURNS: Record<NoktTalkPurpose, number> = { home: 8, welcome: 2, visit: 6, writing: 3, debrief: 3 };
+export const NOKT_TALK_MAX_CHILD_TURNS: Record<NoktTalkPurpose, number> = { home: 8, welcome: 2, visit: 6, writing: 3, debrief: 7 };
+/** Debrief: how often Nokt may ask the next-interest question before the reviewed buttons alone remain (no endless gate). */
+export const NOKT_DEBRIEF_MAX_NEXT_QUESTIONS = 3;
 /** Lines of one session sent to the runtime (the runtime accepts at most 14). */
 const MAX_TRANSCRIPT_LINES = 12;
 const MAX_SESSIONS = 40;
@@ -64,8 +66,10 @@ export type NoktTalkTurn = {
   turnId: string;
   role: "child" | "nokt";
   text: string;
-  /** Child: typed or spoken (confirmed transcript); `sentence` = his saved written original; `opener` marks the Nokt line of an opener turn. */
-  via?: "voice" | "typed" | "sentence";
+  /** Child: typed or spoken (confirmed transcript); `sentence` = his saved written original; `choice` = a tapped reviewed idea. */
+  via?: "voice" | "typed" | "sentence" | "choice";
+  /** Debrief: how the app classified his line after the next-interest question (clarify / decline / unsure / answer / correction / choice). */
+  classified?: string;
   intent?: NoktTalkIntent;
   /** Nokt lines: the server-verified origin; only `verified` + accepted lines were shown as Nokt. */
   origin?: ReplyOrigin;
@@ -112,7 +116,8 @@ function setTalkState(state: MissionState, talks: NoktTalkState) {
 // ---------------------------------------------------------------------------
 
 export type NoktTalkAction =
-  | { a: "dispatch"; purpose: NoktTalkPurpose; sessionId: string; turnId: string; text?: string; via?: "voice" | "typed" }
+  /** `choice` (debrief only): he TAPPED one of the reviewed next ideas (or «weiss ich noch nicht»); `text` is then its label. */
+  | { a: "dispatch"; purpose: NoktTalkPurpose; sessionId: string; turnId: string; text?: string; via?: "voice" | "typed"; choice?: string }
   | { a: "reply"; turnId: string; reply: string; noReply?: NoktNoReply }
   | { a: "close"; sessionId: string; reason: "finished" | "paused" };
 
@@ -209,6 +214,29 @@ function visitLabelOf(content: LearningContent, id: VisitId): { label: string; t
   return { label, title: sub ?? title };
 }
 
+/**
+ * What the record says about a finished step, in words the model can quote — and no more: the app only knows the help IT
+ * recorded; help from an adult beside him is not captured, so «independent» never means "without any help".
+ */
+function resultDe(r: MissionRun["steps"][string]): string {
+  const appHelp = r.support.some((x) => !!HELP_DE[x.kind]) || r.attempts.some((a) => a.support.some((k) => k !== "retry" && k !== "feedback"));
+  const retried = r.attempts.filter((a) => a.kind === "answer").length > 1;
+  switch (r.outcome) {
+    case "independent":
+      return "beim ersten Versuch, ohne aufgezeichnete Hilfe in der App (ob ein Erwachsener geholfen hat, weiss die App nicht)";
+    case "supported":
+      return appHelp ? "mit aufgezeichneter Hilfe in der App" : retried ? "nach einem weiteren Versuch, ohne aufgezeichnete Hilfe in der App" : "mit Unterstützung (z. B. ein vorgegebenes Wort)";
+    case "answer_exposed":
+      return "nach der gezeigten Lösung";
+    case "unresolved":
+      return "fürs nächste Mal aufgehoben";
+    case "practiced":
+      return "mit Hilfe geübt";
+    default:
+      return String(r.outcome);
+  }
+}
+
 function workSummary(def: MissionDef, run: MissionRun) {
   const st = stepStatuses(def, run);
   return def.steps
@@ -223,7 +251,7 @@ function workSummary(def: MissionDef, run: MissionRun) {
         status: STATUS_DE[st[s.id]] ?? st[s.id],
         // His own resolved answers are his work; an open item carries his tries but never the key.
         ...(resolved && own.length ? { hisAnswers: own.slice(0, 6) } : {}),
-        ...(resolved && r.outcome ? { result: r.outcome === "independent" ? "beim ersten Versuch ohne Hilfe" : r.outcome === "supported" ? "mit Hilfe oder nach einem zweiten Versuch" : r.outcome === "answer_exposed" ? "nach gezeigter Lösung" : r.outcome === "unresolved" ? "aufgehoben" : String(r.outcome) } : {}),
+        ...(resolved && r.outcome ? { result: resultDe(r) } : {}),
         ...(help.length ? { helpShown: help } : {}),
       };
     });
@@ -268,7 +296,8 @@ function openStepContext(def: MissionDef, run: MissionRun, step: MissionStep) {
 function debriefFeedback(content: LearningContent, state: MissionState) {
   const v = runningVisit(state);
   const fb = v?.feedback;
-  const dims = content.reflection.dimensions ?? [];
+  // His «how was it» tap comes first (the one compact choice on the look-back screen), then the optional two.
+  const dims = [{ id: "difficulty", prompt: content.reflection.prompt, options: content.reflection.options }, ...(content.reflection.dimensions ?? [])];
   const out: Record<string, string> = {};
   for (const d of dims) {
     const given = fb?.answers?.[d.id];
@@ -304,7 +333,7 @@ export function talkPhase(purpose: NoktTalkPurpose, session: NoktTalkSession | n
 
 export type NoktTalkContext = Record<string, unknown>;
 
-export function talkContext(state: MissionState, content: LearningContent, purpose: NoktTalkPurpose, where: Extract<Where, { ok: true }>, phase: NoktTalkPhase): NoktTalkContext {
+export function talkContext(state: MissionState, content: LearningContent, purpose: NoktTalkPurpose, where: Extract<Where, { ok: true }>, phase: NoktTalkPhase, extra?: { lastAnswerKind?: string }): NoktTalkContext {
   const ctx: NoktTalkContext = { purpose, phase, childName: "Santi", page: where.page };
   const v = runningVisit(state);
   const finished = state.visits.filter((x) => x.finishedAt !== null).sort((a, b) => a.startedAt.localeCompare(b.startedAt));
@@ -350,8 +379,12 @@ export function talkContext(state: MissionState, content: LearningContent, purpo
   }
   // debrief
   ctx.buttons = debriefFeedback(content, state);
+  ctx.workNote = "«ohne aufgezeichnete Hilfe» heisst nur: Die App hat keine Hilfe aufgezeichnet. Sag nie, er habe es ganz allein geschafft.";
   const endingNext = def.nextAdventure;
   ctx.nextIdeas = endingNext ? endingNext.choices.map((c) => c.label) : [];
+  const wish = latestDebriefInterest(state, where.visit!);
+  if (wish) ctx.hisWish = wish.kind === "text" || wish.kind === "choice" ? wish.text : wish.kind === "unsure" ? "weiss es noch nicht" : wish.kind === "declined" ? "möchte es lieber nicht sagen" : "ist ihm egal";
+  if (extra?.lastAnswerKind) ctx.lastAnswerKind = extra.lastAnswerKind;
   return ctx;
 }
 
@@ -398,8 +431,9 @@ const PURPOSE_DE: Record<NoktTalkPurpose, string[]> = {
     "Ort: kurzer Rückblick am Ende von context.visit. Das dauert ein bis zwei Minuten, kein Test.",
     "phase \"rueckblick-start\": Frag EINE kurze Frage zu seiner Arbeit heute. Nimm eine echte Sache aus context.work oder seine Knopf-Antworten aus context.buttons (zum Beispiel: Was war knifflig?). intent ask.",
     "phase \"rueckblick\": Reagier kurz auf seine Antwort, dann EINE weitere Frage zu heute (was er jemandem zeigen oder erklären würde, oder was leicht war). intent ask.",
-    "phase \"naechstes\": Reagier kurz, dann frag, was er beim nächsten Besuch machen oder lernen möchte. Mach keinen Vorschlag; er darf auch «weiss nicht» sagen. intent ask.",
-    "phase \"abschluss\": Danke ihm und wiederhole seinen Wunsch mit seinen Worten, ohne etwas zu versprechen. intent close.",
+    "phase \"naechstes\": Reagier kurz. Dann nenne die zwei Ideen aus context.nextIdeas als zwei Möglichkeiten für den nächsten Besuch (mit ihren Worten, kurz) und sag, dass auch eine eigene Idee oder «weiss ich noch nicht» gut ist. Frag dann, was er möchte. Wenn context.lastAnswerKind \"nachfrage\" ist, hat er nachgefragt: erklär die zwei Ideen einfacher und frag noch einmal. intent ask.",
+    "phase \"abschluss\": Danke ihm und wiederhole context.hisWish mit seinen Worten, ohne etwas zu versprechen. intent close.",
+    "Wenn er etwas nicht sagen möchte, ist das in Ordnung — dräng ihn nicht.",
   ],
 };
 
@@ -513,6 +547,75 @@ function emptyRecords(): Records {
   return { attempts: [], exposures: [], supports: [], samples: [] };
 }
 
+// ---------------------------------------------------------------------------
+// Debrief: the next-interest question, his answer, and what the app records
+// ---------------------------------------------------------------------------
+
+const CLARIFY_RE = /\?\s*$|^(was|wie|wo|welche[nsr]?|wieso|warum)\b.*\b(meinst|heisst|bedeutet|meint)\b|\b(wie bitte|nochmal|noch einmal sagen|versteh(e)? (ich )?nicht|was meinst du|was heisst das)\b/i;
+const DECLINE_RE = /\b(lieber nicht|sag ich nicht|will ich nicht sagen|möchte ich nicht sagen|keine lust (das )?zu sagen|geht dich nichts an)\b|^nein,? danke\b/i;
+const UNSURE_RE = /^(ich )?(weiss|weiß) (es )?(noch )?nicht\b|^keine ahnung\b|^(ist mir )?egal\b|^(hm+|mmh|äh+)[.!]?$/i;
+const CORRECTION_RE = /^(nein|nee|doch nicht|halt|stopp)\b[,!.]?\s*(ich meine|ich will|lieber|eigentlich)?\s*|^(ich meine|eigentlich|lieber)\b\s*/i;
+
+/** The reviewed ideas he may tap in the look back (plus «weiss ich noch nicht»). */
+export function debriefChoice(def: MissionDef | null, id: string): { id: string; label: string; kind: "choice" | "unsure" } | null {
+  if (id === "unsure") return { id, label: "Weiss ich noch nicht", kind: "unsure" };
+  const c = def?.nextAdventure?.choices.find((x) => x.id === id);
+  return c ? { id: c.id, label: c.label, kind: "choice" } : null;
+}
+
+function latestDebriefInterest(state: MissionState, visit: { id: VisitId; startedAt: string }): InterestRecord | null {
+  const list = (state.interests ?? []).filter((i) => i.visit === visit.id && i.at >= visit.startedAt && i.source === "debrief");
+  return list[list.length - 1] ?? null;
+}
+
+/** Conservative, deterministic reading of his line after the next-interest question — never a semantic guess. */
+export function classifyNextAnswer(text: string): "clarify" | "decline" | "unsure" | "answer" {
+  const t = text.trim();
+  if (DECLINE_RE.test(t)) return "decline";
+  if (UNSURE_RE.test(t)) return "unsure";
+  if (CLARIFY_RE.test(t)) return "clarify";
+  return "answer";
+}
+
+function debriefNextInterest(state: MissionState, records: Records, env: NoktTalkEnv, session: NoktTalkSession, line: NoktTalkTurn, tapped: ReturnType<typeof debriefChoice>, where: Extract<Where, { ok: true }>): { kind: string; interest?: string } {
+  const visit = where.visit!;
+  const adventure = where.def?.nextAdventure ?? null;
+  const asked = session.dispatches.some((d) => d.phase === "naechstes");
+  const lastNokt = [...session.turns].reverse().find((t) => t.role === "nokt") ?? null;
+  const previous = latestDebriefInterest(state, visit);
+  const how = line.via === "voice" ? "gesprochen (Abschrift, vom Kind bestätigt)" : "getippt";
+  const record = (input: Parameters<typeof recordInterest>[2]) => recordInterest(state, records, input, visit.id, "debrief", env.nowIso, env.newId, adventure).id;
+  if (tapped) {
+    // A tapped reviewed idea is his explicit choice — allowed once the question was asked (even if Nokt's line was withheld).
+    if (!asked) return { kind: "choice-too-early" };
+    if (tapped.kind === "unsure") return { kind: "unsure", interest: record({ kind: "unsure", uncertainty: "im Rückblick angetippt: «Weiss ich noch nicht»", ...(previous ? { corrects: previous.id } : {}) }) };
+    return { kind: "choice", interest: record({ kind: "choice", choice: tapped.id, uncertainty: "im Rückblick angetippte Idee (vorgegebener Text)", ...(previous ? { corrects: previous.id } : {}) }) };
+  }
+  // A correction of what he already said in this look back: the new words are recorded too (both kept; the latest counts).
+  if (previous && CORRECTION_RE.test(line.text)) {
+    const rest = line.text.replace(CORRECTION_RE, "").trim();
+    if (rest.length >= 3 && classifyNextAnswer(rest) === "answer") return { kind: "correction", interest: record({ kind: "text", text: line.text, uncertainty: `${how}; korrigiert die vorige Antwort; Wortlaut, von der App nicht gedeutet`, corrects: previous.id }) };
+    return { kind: "not-a-wish" };
+  }
+  // Only an answer to a SHOWN next-interest question counts; a reply after a withheld/missing line waits for the next question.
+  if (previous || !lastNokt || lastNokt.phase !== "naechstes" || !lastNokt.shown) return { kind: lastNokt?.phase === "naechstes" && !lastNokt.shown ? "after-withheld" : "not-a-wish" };
+  const kind = classifyNextAnswer(line.text);
+  if (kind === "clarify") return { kind };
+  if (kind === "decline") return { kind, interest: record({ kind: "declined", uncertainty: `${how}: möchte es lieber nicht sagen` }) };
+  if (kind === "unsure") return { kind, interest: record({ kind: "unsure", uncertainty: `${how}: «${line.text.slice(0, 60)}»` }) };
+  return { kind, interest: record({ kind: "text", text: line.text, uncertainty: `${how}; Wortlaut, von der App nicht gedeutet` }) };
+}
+
+/** The app's phase for the next Nokt line of the look back. The next-interest question repeats until he answered it (bounded). */
+function debriefPhase(state: MissionState, session: NoktTalkSession, childLinesNow: number, visit: { id: VisitId; startedAt: string }): NoktTalkPhase {
+  if (childLinesNow > NOKT_TALK_MAX_CHILD_TURNS.debrief) return "schliessen";
+  if (childLinesNow === 0) return "rueckblick-start";
+  if (childLinesNow === 1) return "rueckblick";
+  if (latestDebriefInterest(state, visit)) return session.dispatches.some((d) => d.phase === "abschluss") ? "schliessen" : "abschluss";
+  const asked = session.dispatches.filter((d) => d.phase === "naechstes").length;
+  return asked >= NOKT_DEBRIEF_MAX_NEXT_QUESTIONS ? "abschluss" : "naechstes";
+}
+
 function acceptedTranscript(session: NoktTalkSession): { role: "child" | "nokt"; text: string; via: "voice" | "typed" }[] {
   return session.turns.filter((t) => t.role === "child" || t.shown).map((t) => ({ role: t.role, text: t.text, via: t.via === "voice" ? "voice" : "typed" }));
 }
@@ -545,9 +648,12 @@ export function applyNoktTalk(state: MissionState, action: NoktTalkAction, env: 
       // The child's line: typed/spoken text, or — for the writing reaction's first turn — his saved original (server copy).
       let childLine: NoktTalkTurn | null = null;
       const opener = action.text === undefined;
+      const tapped = action.choice !== undefined ? debriefChoice(where.def, action.choice) : null;
+      if (action.choice !== undefined && (action.purpose !== "debrief" || !tapped)) throw new MissionOpError("invalid", "a tapped idea exists only in the look back, from its reviewed ideas");
       if (!opener) {
         if (typeof action.text !== "string" || !action.text.trim() || action.text.length > NOKT_TALK_CHILD_MAX_CHARS || (action.via !== "voice" && action.via !== "typed")) throw new MissionOpError("invalid", "a turn needs his text (1–300 characters) and how it was entered");
-        childLine = { turnId: action.turnId, role: "child", text: action.text.trim(), via: action.via, shown: true, at: env.nowIso };
+        // A tapped idea is his choice, shown with its reviewed label (the client cannot put other words in his mouth).
+        childLine = tapped ? { turnId: action.turnId, role: "child", text: tapped.label, via: "choice", shown: true, at: env.nowIso } : { turnId: action.turnId, role: "child", text: action.text.trim(), via: action.via, shown: true, at: env.nowIso };
       } else if (action.purpose === "writing" && !session) {
         const w = where.run!.steps[where.step!.id].writing!;
         childLine = { turnId: action.turnId, role: "child", text: w.original, via: "sentence", shown: true, at: env.nowIso };
@@ -562,23 +668,19 @@ export function applyNoktTalk(state: MissionState, action: NoktTalkAction, env: 
       }
       const prior = acceptedTranscript(session);
       const childCount = prior.filter((t) => t.role === "child").length + (childLine ? 1 : 0);
-      const phase = talkPhase(action.purpose, session, childCount);
-      // Debrief: his answer to the accepted next-interest question IS his next-interest answer — recorded verbatim, server-side.
-      if (action.purpose === "debrief" && childLine && childLine.via !== "sentence") {
-        const lastNokt = [...session.turns].reverse().find((t) => t.role === "nokt");
-        if (lastNokt?.shown && lastNokt.phase === "naechstes") {
-          const visit = where.visit!.id;
-          const def = where.def;
-          const already = (state.interests ?? []).some((i) => i.visit === visit && i.at >= where.visit!.startedAt);
-          if (!already) {
-            const rec = recordInterest(state, records, { kind: "text", text: childLine.text }, visit, "debrief", env.nowIso, env.newId, def?.nextAdventure ?? null);
-            result = { ...result, interest: rec.id };
-          }
-        }
+      let lastAnswerKind: string | undefined;
+      // Debrief: only an answer to an ACCEPTED next-interest question (or a tapped reviewed idea) can become his next-interest
+      // record — classified conservatively; a question back, a refusal or a reply to a withheld prompt is never a topic.
+      if (action.purpose === "debrief" && childLine) {
+        const recorded = debriefNextInterest(state, records, env, session, childLine, tapped, where);
+        if (recorded.interest) result = { ...result, interest: recorded.interest };
+        childLine.classified = recorded.kind;
+        if (recorded.kind === "clarify") lastAnswerKind = "nachfrage";
       }
+      const phase = action.purpose === "debrief" ? debriefPhase(state, session, childCount, where.visit!) : talkPhase(action.purpose, session, childCount);
       if (childLine) session.turns.push(childLine);
       const transcript = acceptedTranscript(session);
-      const context = talkContext(state, env.content, action.purpose, where, phase);
+      const context = talkContext(state, env.content, action.purpose, where, phase, { lastAnswerKind });
       const built = buildTalkRequest(action.purpose, context, transcript);
       if (carriesAnswerKey(built.request)) throw new MissionOpError("invalid", "request would carry an answer key");
       session.dispatches.push({ turnId: action.turnId, reqHash: built.reqHash, page: where.page, phase, opener, at: env.nowIso });
@@ -626,7 +728,7 @@ export function applyNoktTalk(state: MissionState, action: NoktTalkAction, env: 
         if (r && !r.support.some((x) => x.kind === "nokt-writing")) r.support.push({ kind: "nokt-writing", at: env.nowIso, detail: dispatch.turnId });
       }
       supportRow(records, env, session.visit, "talk-reply", { purpose: session.purpose, session: session.id, turnId: dispatch.turnId, origin, shown, ...(shown ? { text: parsed!.say, intent: parsed!.intent } : { reason }), help: shown && session.purpose === "writing" }, where.ok && where.step ? `${where.def!.id}/${where.step.id}` : null);
-      result = shown ? { shown: true, say: parsed!.say, intent: parsed!.intent, phase: dispatch.phase } : { shown: false, reason, line: talkAppLine(session.purpose, dispatch.opener, reason) };
+      result = shown ? { shown: true, say: parsed!.say, intent: parsed!.intent, phase: dispatch.phase } : { shown: false, reason, line: talkAppLine(session.purpose, dispatch.opener, reason, dispatch.phase) };
       break;
     }
     case "close": {
@@ -651,8 +753,10 @@ export function applyNoktTalk(state: MissionState, action: NoktTalkAction, env: 
 
 export const NOKT_TALK_EXHAUSTED_LINE = "Nokt hat heute schon viel geredet und macht jetzt Pause. Morgen ist Nokt wieder da.";
 
-export function talkAppLine(purpose: NoktTalkPurpose, opener: boolean, reason: string | null): string {
+export function talkAppLine(purpose: NoktTalkPurpose, opener: boolean, reason: string | null, phase: string | null = null): string {
   if (reason === "no-reply-attempts_exhausted") return NOKT_TALK_EXHAUSTED_LINE;
+  // The look back's next-interest question, when Nokt's line is missing: the app asks it with the reviewed taps below.
+  if (purpose === "debrief" && phase === "naechstes") return "Was möchtest du beim nächsten Besuch machen? Tipp unten eine Idee an, oder sag oder schreib deine eigene.";
   if (reason?.startsWith("no-reply-") && !opener) return "Nokt ist gerade nicht erreichbar. Was du geschrieben hast, ist noch da — du kannst es gleich nochmal schicken.";
   if (opener && purpose === "welcome") return "Willkommen! Heute geht es um das grössere Gewächshaus. Auf der Karte siehst du, wo jemand auf dich wartet.";
   if (opener && purpose === "debrief") return "Nokt kann gerade nicht mit dir zurückschauen. Unten kannst du sagen, wie es war und was du als Nächstes machen möchtest.";
@@ -675,14 +779,16 @@ export function talkLines(session: NoktTalkSession): NoktTalkLineView[] {
     else if (t.shown) out.push({ role: "nokt", text: t.text, at: t.at });
     else {
       const d = session.dispatches.find((x) => x.turnId === t.turnId);
-      out.push({ role: "app", text: talkAppLine(session.purpose, !!d?.opener, t.reason ?? null), at: t.at });
+      out.push({ role: "app", text: talkAppLine(session.purpose, !!d?.opener, t.reason ?? null, d?.phase ?? null), at: t.at });
     }
   }
   return out;
 }
 
 /** The sessions the client may show now: the latest per purpose for this page (Home, or the running visit instance). */
-export function noktTalkView(state: MissionState, content: LearningContent): { sessions: NoktTalkSessionView[]; welcome: "due" | "done" | "not-applicable"; debrief: { interestRecorded: boolean } | null } {
+export type NoktDebriefView = { interestRecorded: boolean; wish: { kind: InterestRecord["kind"]; text: string | null } | null; ideas: { id: string; label: string }[]; askingNext: boolean };
+
+export function noktTalkView(state: MissionState, content: LearningContent): { sessions: NoktTalkSessionView[]; welcome: "due" | "done" | "not-applicable"; debrief: NoktDebriefView | null } {
   const talks = talkStateOf(state);
   const v = runningVisit(state);
   const def = v ? missionDefFor(content, v.id) : null;
@@ -696,7 +802,14 @@ export function noktTalkView(state: MissionState, content: LearningContent): { s
     welcome = done ? "done" : talkPage(state, content, "welcome").ok ? "due" : "not-applicable";
   }
   const stage = currentStageOf(state, content);
-  const debrief = v && def?.presentation === "map" && stage === "reflect" ? { interestRecorded: (state.interests ?? []).some((i) => i.visit === v.id && i.at >= v.startedAt) } : null;
+  let debrief: NoktDebriefView | null = null;
+  if (v && def?.presentation === "map" && stage === "reflect") {
+    const wish = latestDebriefInterest(state, { id: v.id, startedAt: v.startedAt });
+    const session = [...talks.sessions].reverse().find((s) => s.purpose === "debrief" && s.visit === v.id && s.visitStartedAt === v.startedAt) ?? null;
+    // The reviewed ideas are offered as taps once Nokt asked the next-interest question (shown or withheld) and nothing is saved yet.
+    const askingNext = !!session && !wish && session.dispatches.some((d) => d.phase === "naechstes");
+    debrief = { interestRecorded: (state.interests ?? []).some((i) => i.visit === v.id && i.at >= v.startedAt), wish: wish ? { kind: wish.kind, text: wish.text } : null, ideas: (def.nextAdventure?.choices ?? []).map((c) => ({ id: c.id, label: c.label })), askingNext };
+  }
   return { sessions, welcome, debrief };
 }
 
@@ -727,6 +840,8 @@ const REASON_DE: Record<string, string> = {
   "no-reply-timeout": "keine Antwort: Zeitüberschreitung (Meldung des Browsers)",
 };
 
+const CLASSIFIED_DE: Record<string, string> = { clarify: "Nachfrage (kein Wunsch gespeichert)", decline: "möchte es nicht sagen", unsure: "weiss es noch nicht", answer: "Wunsch, wörtlich gespeichert", correction: "Korrektur, wörtlich gespeichert", choice: "angetippte Idee gespeichert", "after-withheld": "Antwort nach zurückgehaltener Frage (nicht gespeichert)", "not-a-wish": "kein Wunsch", "choice-too-early": "zu früh angetippt (nicht gespeichert)" };
+
 export function noktTalkEvidence(state: MissionState, content: LearningContent) {
   const talks = talkStateOf(state);
   return talks.sessions.map((s) => ({
@@ -740,7 +855,7 @@ export function noktTalkEvidence(state: MissionState, content: LearningContent) 
     closed: s.closedAt ? `${s.closeReason === "paused" ? "pausiert" : "beendet"} ${s.closedAt}` : "offen",
     lines: s.turns.map((t) =>
       t.role === "child"
-        ? { who: "Kind" as const, text: t.text, detail: t.via === "voice" ? "gesprochen (Abschrift, vom Kind bestätigt)" : t.via === "sentence" ? "sein geschriebener Satz (Original)" : "getippt", at: t.at }
+        ? { who: "Kind" as const, text: t.text, detail: `${t.via === "voice" ? "gesprochen (Abschrift, vom Kind bestätigt)" : t.via === "sentence" ? "sein geschriebener Satz (Original)" : t.via === "choice" ? "angetippte Idee (vorgegebener Text)" : "getippt"}${t.classified ? `; von der App gelesen als: ${CLASSIFIED_DE[t.classified] ?? t.classified}` : ""}`, at: t.at }
         : t.shown
           ? { who: "Nokt" as const, text: t.text, detail: `geprüft (${t.intent ?? ""}${t.phase ? `, Phase ${t.phase}` : ""}); Modell laut Beleg: ${t.provenance ? `${t.provenance.model}, Lauf ${t.provenance.runId}` : "unbekannt"}`, at: t.at }
           : { who: "zurückgehalten" as const, text: "Antwort nicht gezeigt — das Kind sah den App-Hinweis.", detail: REASON_DE[t.reason ?? ""] ?? t.reason ?? "", at: t.at },
