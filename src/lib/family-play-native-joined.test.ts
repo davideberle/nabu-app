@@ -17,7 +17,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { after, before, beforeEach, describe, it } from "node:test";
 import { createClient, type Client } from "@libsql/client";
-import { endPlayLease, ensurePlayTables, getLease, getLeaseStatus, getPlayState, issuePlayLease, recordLeaseActivation, settlePlayLease } from "./family-play-db.ts";
+import { endPlayLease, ensurePlayTables, getLease, getLeaseStatus, getPlayState, issuePlayLease, readLeaseStatusForMeter, settlePlayLease } from "./family-play-db.ts";
 import { resolveStudioCandidate } from "./family-studio-candidate.ts";
 import { DAILY_CHESS_GAME_ID } from "./family-play.ts";
 import { nativeLaunchSupport } from "./family-native-games.ts";
@@ -167,7 +167,8 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
         equal(options.headers["x-family-play-signature"], mod.signSettlement(key, Number(options.headers["x-family-play-timestamp"]), id, options.body || ""));
         if (url.endsWith("/status")) {
           const readAt = new Date(clock + Math.floor(familyLatencyMs / 2));
-          const snapshot = (await recordLeaseActivation(id, readAt, client), await getLeaseStatus(id, client, readAt));
+          // The status route's own code (readLeaseStatusForMeter; AR01 proves it equals the former two-step read).
+          const snapshot = await readLeaseStatusForMeter(id, readAt, client);
           clock += familyLatencyMs;
           return Response.json(snapshot ?? { error: "not-found" }, { status: snapshot ? 200 : 404 });
         }

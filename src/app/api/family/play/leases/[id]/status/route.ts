@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { NO_STORE, refuse, requireStudioSettlement } from "@/lib/family-games-auth";
-import { getLeaseStatus, recordLeaseActivation } from "@/lib/family-play-db";
+import { readLeaseStatusForMeter } from "@/lib/family-play-db";
 import { isValidLeaseId } from "@/lib/family-play";
 
 /**
@@ -23,8 +23,9 @@ export async function GET(request: Request, context: { params: Promise<{ id: str
   if (!authz.ok) return authz.response;
   // One instant for the whole read: the window is granted and reported against the same clock.
   const now = new Date();
-  await recordLeaseActivation(id, now);
-  const status = await getLeaseStatus(id, undefined, now);
+  // One transaction, three database round trips (readLeaseStatusForMeter); same rows and answer as the former
+  // recordLeaseActivation + getLeaseStatus pair.
+  const status = await readLeaseStatusForMeter(id, now);
   if (!status) return refuse(404, "not-found");
   return NextResponse.json(status, { headers: NO_STORE });
 }

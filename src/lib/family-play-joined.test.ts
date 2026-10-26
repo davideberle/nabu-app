@@ -13,7 +13,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { after, before, beforeEach, describe, it } from "node:test";
 import { createClient, type Client } from "@libsql/client";
-import { ensurePlayTables, endPlayLease, getLease, getLeaseStatus, getPlayState, issuePlayLease, recordLeaseActivation, settlePlayLease } from "./family-play-db.ts";
+import { ensurePlayTables, endPlayLease, getLease, getLeaseStatus, getPlayState, issuePlayLease, readLeaseStatusForMeter, settlePlayLease } from "./family-play-db.ts";
 import { createHeartbeat, type HeartbeatInput } from "./family-play-heartbeat.ts";
 import { resolveStudioCandidate } from "./family-studio-candidate.ts";
 import { guardScript as mirroredGuardScript } from "./family-play-guard.ts";
@@ -112,7 +112,8 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
         if (url.endsWith("/status")) {
           // Like the real status route: one instant for the activation (window grant) and the answer.
           const readAt = new Date(clock);
-          const snapshot = (await recordLeaseActivation(id, readAt, client), await getLeaseStatus(id, client, readAt));
+          // The status route's own code (readLeaseStatusForMeter; AR01 proves it equals the former two-step read).
+          const snapshot = await readLeaseStatusForMeter(id, readAt, client);
           if (statusGate && statusGate.lid === id) await statusGate.gate;
           return Response.json(snapshot ?? { error: "not-found" }, { status: snapshot ? 200 : 404 });
         }

@@ -414,15 +414,20 @@ async function readChessAllowance(db: Db, personId: ChildId, date: string): Prom
  * yesterday approved today never qualifies today, a malformed identity never
  * qualifies at all. Returns the first such identity, or null.
  */
+const QUALIFYING_APPROVAL_SQL = `SELECT week, routine_id, day, status, reviewed_at, approval_source FROM family_completions
+          WHERE person_id = ? AND week = ? AND day = ? AND status = 'done'
+          ORDER BY routine_id ASC`;
+
 export async function chessQualifyingApproval(db: Db, personId: ChildId, now: Date): Promise<{ week: string; routineId: string; day: number } | null> {
   const today = familyTodayInZurich(now);
-  const result = await db.execute({
-    sql: `SELECT week, routine_id, day, status, reviewed_at, approval_source FROM family_completions
-          WHERE person_id = ? AND week = ? AND day = ? AND status = 'done'
-          ORDER BY routine_id ASC`,
-    args: [personId, today.week, today.day],
-  });
-  for (const raw of result.rows) {
+  const result = await db.execute({ sql: QUALIFYING_APPROVAL_SQL, args: [personId, today.week, today.day] });
+  return qualifyingApprovalFrom(result.rows as Record<string, unknown>[], today.date);
+}
+
+/** The approval rule itself (pure): the first done, parent-approved completion whose occurrence date is `todayDate`. */
+function qualifyingApprovalFrom(rows: Record<string, unknown>[], todayDate: string): { week: string; routineId: string; day: number } | null {
+  const today = { date: todayDate };
+  for (const raw of rows) {
     const row = raw as Record<string, unknown>;
     const week = String(row["week"]);
     const day = Number(row["day"]);
@@ -1099,6 +1104,11 @@ export async function getLeaseStatus(leaseId: string, client?: Client, now: Date
   if (!lease) return null;
   const remaining = await budgetRemaining(db, lease.personId, budgetOf(lease));
   const startsAt = lease.state === "active" ? await handoverUntil(db, lease.personId, lease.id, now) : null;
+  return leaseStatusView(lease, remaining, startsAt, now);
+}
+
+/** The meter's view of one lease (shared by both status paths, so their answers cannot drift apart). */
+function leaseStatusView(lease: PlayLease, remaining: number, startsAt: string | null, now: Date): LeaseStatus {
   const pending = startsAt !== null;
   const granted = lease.state === "active" && !pending && lease.authorityUntil !== null;
   return {
@@ -1123,6 +1133,107 @@ export async function getLeaseStatus(leaseId: string, client?: Client, now: Date
     authorizedUntil: granted ? lease.authorityUntil : null,
     startsAt,
   };
+}
+
+/**
+ * The meter's signed status read (`GET /api/family/play/leases/:id/status`) in ONE write transaction with three
+ * database round trips instead of twelve (October 26, 2026): the same statements as `recordLeaseActivation` followed
+ * by `getLeaseStatus`, sent as two transaction batches (`Transaction.batch`, executed in order, each statement only
+ * after the previous succeeded) plus the commit; every decision in between is made by the same pure rules. The answer
+ * is built from the reads of the same transaction. A chess lease that this read must end (day over / approval
+ * withdrawn) is handled by the original two-step path, unchanged.
+ */
+export async function readLeaseStatusForMeter(leaseId: string, now: Date = new Date(), client?: Client): Promise<LeaseStatus | null> {
+  const db = client ?? (await getDb());
+  await ensurePlayTables(db);
+  const today = familyTodayInZurich(now);
+  const at = now.toISOString();
+  const PERSON = "(SELECT person_id FROM family_play_leases WHERE id = ?)";
+  const tx = await beginWrite(db);
+  try {
+    const [, leaseRows, fenceRows, unresolvedRows, allowanceRows, chessRows, approvalRows] = await tx.batch([
+      // Ended and never activated ⇒ its meter can never report: resolve it (the asked lease included).
+      {
+        sql: `UPDATE family_play_leases SET final_settled = 1, cap_seconds = consumed_seconds
+              WHERE person_id = ${PERSON} AND state = 'ended' AND activated_at IS NULL AND final_settled = 0 AND metered = 1`,
+        args: [leaseId],
+      },
+      { sql: "SELECT * FROM family_play_leases WHERE id = ?", args: [leaseId] },
+      {
+        sql: `SELECT MAX(ended_at) AS until FROM family_play_leases
+              WHERE person_id = ${PERSON} AND id <> ? AND state = 'ended' AND metered = 1 AND final_settled = 0 AND ended_at > ?`,
+        args: [leaseId, leaseId, at],
+      },
+      // Unresolved leases of the child: the reserve inputs, and (never final-settled while active) every active lease.
+      { sql: `SELECT * FROM family_play_leases WHERE person_id = ${PERSON} AND metered = 1 AND final_settled = 0`, args: [leaseId] },
+      { sql: `SELECT granted_seconds, consumed_seconds FROM family_play_allowances WHERE person_id = ${PERSON}`, args: [leaseId] },
+      {
+        sql: `SELECT date, granted_seconds, consumed_seconds FROM family_chess_allowances WHERE person_id = ${PERSON}
+              AND (date IN (SELECT budget_date FROM family_play_leases WHERE person_id = ${PERSON} AND metered = 1 AND final_settled = 0 AND budget_kind = 'chess')
+                   OR date = (SELECT budget_date FROM family_play_leases WHERE id = ?))`,
+        args: [leaseId, leaseId, leaseId],
+      },
+      { sql: QUALIFYING_APPROVAL_SQL.replace("person_id = ?", `person_id = ${PERSON}`), args: [leaseId, today.week, today.day] },
+    ]);
+    const row = leaseRows.rows[0] as Record<string, unknown> | undefined;
+    if (!row) {
+      await tx.rollback();
+      return null;
+    }
+    const lease = rowToLease(row);
+    if (lease.budgetKind === "chess" && lease.state === "active") {
+      const reason = lease.budgetDate !== today.date ? "day-ended" : qualifyingApprovalFrom(approvalRows.rows as Record<string, unknown>[], today.date) === null ? "chess-locked" : null;
+      if (reason !== null) {
+        // This read ends the chess lease: the original sequential path, byte for byte.
+        await tx.rollback();
+        release(tx);
+        await recordLeaseActivation(leaseId, now, db as Client);
+        return getLeaseStatus(leaseId, db as Client, now);
+      }
+    }
+    const fenceUntil = fenceRows.rows[0]?.["until"];
+    const pendingUntil = typeof fenceUntil === "string" && fenceUntil ? fenceUntil : null;
+    const allowance = rowToAllowance(allowanceRows.rows[0] as Record<string, unknown> | undefined, lease.personId);
+    const chessByDate = new Map((chessRows.rows as Record<string, unknown>[]).map((r) => [String(r["date"]), rowToChessAllowance(r, lease.personId, String(r["date"]))]));
+    const remainingOf = (budget: BudgetRef) => (budget.kind === "paid" ? allowanceRemaining(allowance) : chessRemaining(chessByDate.get(budget.date) ?? null, true));
+    const writes: { sql: string; args: (string | number | null)[] }[] = [];
+    if (lease.state === "active" && pendingUntil === null) {
+      // Grant (or extend) the exclusive authority window for this read (see recordLeaseActivation).
+      const until = new Date(now.getTime() + AUTHORITY_WINDOW_SECONDS * 1000).toISOString();
+      writes.push({
+        sql: "UPDATE family_play_leases SET activated_at = COALESCE(activated_at, ?), authority_until = CASE WHEN authority_until IS NULL OR authority_until < ? THEN ? ELSE authority_until END WHERE id = ? AND state = 'active'",
+        args: [at, until, until, lease.id],
+      });
+    }
+    // reconcileActiveBudgets, in the same order and with each update visible to the next (as sequential SQL would be).
+    const unresolved = (unresolvedRows.rows as Record<string, unknown>[]).map(rowToLease);
+    for (let i = 0; i < unresolved.length; i += 1) {
+      const active = unresolved[i];
+      if (active.state !== "active") continue;
+      const budgetRef = budgetOf(active);
+      const remaining = remainingOf(budgetRef);
+      const reserve = unresolved.filter((other) => other.id !== active.id && sameBudget(budgetOf(other), budgetRef)).reduce((sum, other) => sum + outstandingSeconds(other, now), 0);
+      const budget = Math.max(active.consumedSeconds, remaining + active.consumedSeconds - reserve);
+      writes.push({ sql: "UPDATE family_play_leases SET budget_seconds = ?, cap_seconds = ?, reserve_seconds = ? WHERE id = ?", args: [budget, budget, reserve, active.id] });
+      unresolved[i] = { ...active, budgetSeconds: budget, capSeconds: budget, reserveSeconds: reserve };
+    }
+    let finalLease = lease;
+    if (writes.length > 0) {
+      const results = await tx.batch([...writes, { sql: "SELECT * FROM family_play_leases WHERE id = ?", args: [lease.id] }]);
+      finalLease = rowToLease(results[results.length - 1].rows[0] as Record<string, unknown>);
+    }
+    await tx.commit();
+    return leaseStatusView(finalLease, remainingOf(budgetOf(finalLease)), finalLease.state === "active" ? pendingUntil : null, now);
+  } catch (error) {
+    try {
+      await tx.rollback();
+    } catch {
+      /* already finished */
+    }
+    throw error;
+  } finally {
+    release(tx);
+  }
 }
 
 export async function getLeasesForPerson(personId: ChildId, client?: Client): Promise<PlayLease[]> {
