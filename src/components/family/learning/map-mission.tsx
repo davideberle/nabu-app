@@ -15,7 +15,7 @@
 // A page change remounts the dock: the pending turn is aborted and its audio stops; a late reply is withheld server-side.
 // ---------------------------------------------------------------------------
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/components/ui/nabu";
 import type { ChildView } from "@/lib/family-learning-state";
 import type { MissionActiveView, MissionView } from "@/lib/family-learning-mission";
@@ -57,6 +57,14 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
   const enabled = nokt.mode !== "unavailable";
   const welcomeDue = enabled && talk?.welcome === "due" && nokt.intentionalEntry;
   const [open, setOpen] = useState<"none" | "welcome" | "page">(welcomeDue ? "welcome" : "none");
+  // The deliberate start is confirmed a moment after the mission first renders: open the welcome then — once, never again.
+  const welcomed = useRef(welcomeDue);
+  useEffect(() => {
+    if (welcomeDue && !welcomed.current) {
+      welcomed.current = true;
+      setOpen("welcome");
+    }
+  }, [welcomeDue]);
   // A different page closes the dock (stale conversation and its audio end with it); the welcome never reopens.
   useEffect(() => {
     if (open === "page") setOpen("none");
