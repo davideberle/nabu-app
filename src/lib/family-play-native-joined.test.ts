@@ -95,7 +95,7 @@ function raw(base: string, method: string, path: string, headers: Record<string,
 
 describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { skip: !available && "candidate adapter or native harness not named" }, () => {
   type Adapter = {
-    createChildPlayAdapter: (opts: Record<string, unknown>) => http.Server & { store: { loadLease: (id: string) => Record<string, unknown> & { consumed: number; state: string; endReason: string | null; endedAt: number | null; frameDeadline?: number | null } | null; dataDir: string }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number; applyStatusAnswer: (leaseId: string, check: Record<string, unknown>) => Promise<{ lease?: Record<string, unknown> } | null> };
+    createChildPlayAdapter: (opts: Record<string, unknown>) => http.Server & { store: { loadLease: (id: string) => Record<string, unknown> & { consumed: number; state: string; endReason: string | null; endedAt: number | null; frameDeadline?: number | null } | null; dataDir: string }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
     derivePlayKey: (secret: string) => Buffer;
     mintPlayCredential: (key: Buffer, claims: Record<string, unknown>) => string;
     signSettlement: (key: Buffer, ts: number, leaseId: string, body: string) => string;
@@ -116,6 +116,8 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
    * snapshot until the test releases it, per-lease outages, and every settlement report received.
    */
   const statusReads = new Map<string, number>();
+  /** Fake-clock instant each status read for a lease was sent (the meter's requestedAt). */
+  const statusReadTimes = new Map<string, number[]>();
   const statusInflight = new Map<string, number>();
   const maxStatusInflight = new Map<string, number>();
   const holds = new Map<string, Promise<void>>();
@@ -166,6 +168,7 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
     familyLatencyMs = 0;
     settleGate = null;
     statusReads.clear();
+    statusReadTimes.clear();
     statusInflight.clear();
     maxStatusInflight.clear();
     holds.clear();
@@ -196,6 +199,7 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
         if (url.endsWith("/status")) {
           if (brokenLeases.has(id)) throw new Error("isolated outage for this lease");
           statusReads.set(id, (statusReads.get(id) ?? 0) + 1);
+          statusReadTimes.set(id, [...(statusReadTimes.get(id) ?? []), clock]);
           const inflight = (statusInflight.get(id) ?? 0) + 1;
           statusInflight.set(id, inflight);
           maxStatusInflight.set(id, Math.max(maxStatusInflight.get(id) ?? 0, inflight));
@@ -1082,6 +1086,48 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
     ok(r.ok, JSON.stringify(r));
     return r.ok ? r.lease : null!;
   };
+  /**
+   * An older Family answer next to a newer one, through the production HTTP path (AR05, AR07): report 1's read is
+   * snapshotted (budget 900) and held; the allowance then shrinks to 600; report 2 arrives while report 1 still waits.
+   * Report 2 cannot reuse report 1's confirmation (sent before its receipt), so it reads Family again after report 1 —
+   * and that newer answer is what must stand: window from the later read, cap from the smaller allowance.
+   */
+  async function olderAndNewerAnswer(lid: string) {
+    await allowance();
+    clock = t0;
+    await issue(lid);
+    const st = await stack();
+    try {
+      const tok = cred(lid);
+      equal((await ticket(st.base, lid, tok)).status, 201);
+      clock = t0 + 1000;
+      const release = holdStatus(lid);
+      const first = report(st.base, lid, tok);
+      await untilReading(lid);
+      await client.execute("UPDATE family_play_allowances SET granted_seconds = 600 WHERE person_id = 'santiago'");
+      clock = t0 + 1200;
+      const second = report(st.base, lid, tok);
+      await new Promise((r) => setTimeout(r, 20));
+      release();
+      const [r1, r2] = await Promise.all([first, second]);
+      const times = statusReadTimes.get(lid) ?? [];
+      const lease = st.server.store.loadLease(lid)! as Record<string, unknown>;
+      const handed = (r: { status: number; json: Record<string, unknown> | null }, receivedAt: number) => (r.status === 200 && Number(r.json?.authorizedForMs ?? 0) > 0 ? receivedAt + Number(r.json!.authorizedForMs) : null);
+      return {
+        reads: times.length,
+        newestReadAt: times.at(-1) ?? null,
+        authorityReadAt: Number(lease.authorityReadAt),
+        authorityUntil: Number(lease.authorityUntil),
+        budget: Number(lease.budget),
+        replies: [r1.status, r2.status],
+        // Each grant ends no later than the window of the read that confirmed it (read send + 2 s).
+        grantsWithinOwnWindow: [handed(r1, t0 + 1000), handed(r2, t0 + 1200)].every((h, k) => h === null || h <= (times[k + 1] ?? Number.POSITIVE_INFINITY) + 2000),
+        maxInflight: maxStatusInflight.get(lid) ?? 0,
+      };
+    } finally {
+      await st.close();
+    }
+  }
   /** Step the clock until `lid`'s ticket is issued (B becomes playable at the meter); returns that instant. */
   async function firstPlayable(base: string, lid: string, token: string, from: number, to: number) {
     for (let t = from; t <= to; t += 100) {
@@ -1284,27 +1330,9 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
       await issue(`${lid}-b`);
       return ticket(st.base, `${lid}-b`, cred(`${lid}-b`));
     });
-    // (4) An answer older than the one already applied (unreachable through HTTP within one instance — see
-    //     applyStatusAnswer): applied after a newer one, it moves neither window nor cap.
-    await allowance();
-    clock = t0;
-    await issue("lease-ar05-older");
-    const o = await stack();
-    let lateOlderResultOverwroteNewer = true;
-    let newerApplied = false;
-    try {
-      const tok = cred("lease-ar05-older");
-      equal((await ticket(o.base, "lease-ar05-older", tok)).status, 201);
-      const status = (budgetSeconds: number) => ({ leaseId: "lease-ar05-older", state: "active", personId: "santiago", gameId: NATIVE, budgetSeconds, metered: true, budgetKind: "paid", authorizedForSeconds: 2 });
-      clock = t0 + 3000;
-      const newer = await o.server.applyStatusAnswer("lease-ar05-older", { ok: true, status: status(600), requestedAt: t0 + 2900, authorizedUntil: t0 + 4900 });
-      newerApplied = (newer?.lease?.authorityUntil === t0 + 4900) && newer?.lease?.budget === 600;
-      const snapshot = JSON.stringify(o.server.store.loadLease("lease-ar05-older"));
-      await o.server.applyStatusAnswer("lease-ar05-older", { ok: true, status: status(900), requestedAt: t0 + 2500, authorizedUntil: t0 + 4500 });
-      lateOlderResultOverwroteNewer = JSON.stringify(o.server.store.loadLease("lease-ar05-older")) !== snapshot;
-    } finally {
-      await o.close();
-    }
+    // (4) An older answer next to a newer one, through HTTP: the newer read stands (window and cap).
+    const ordered = await olderAndNewerAnswer("lease-ar05-older");
+    const lateOlderResultOverwroteNewer = !(ordered.reads === 3 && ordered.authorityReadAt === ordered.newestReadAt && ordered.authorityUntil === ordered.newestReadAt! + 2000 && ordered.budget === 600 && ordered.maxInflight === 1);
     // (5) Family errors are handled: the report fails closed, nothing changes, the meter keeps serving.
     await allowance();
     clock = t0;
@@ -1331,7 +1359,8 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
       lateResultAfterEndRevived: ended.after.state !== "ended" || Number(ended.after.consumed) !== 0,
       lateResultAfterExpiryRevived: expired.after.state !== "ended" || grantOf(expired.reply) > 0,
       lateResultAfterTakeoverRevived: takeover.after.state !== "ended" || grantOf(takeover.reply) > 0,
-      lateOlderResultOverwroteNewer: lateOlderResultOverwroteNewer || !newerApplied,
+      lateOlderResultOverwroteNewer,
+      olderNewer: JSON.stringify(ordered),
       familyErrorHandled: errorHandled,
       lateReplies: [ended.reply.status, expired.reply.status, takeover.reply.status].join(","),
       endStatus: (ended.moveResult as { status: number }).status,
@@ -1507,28 +1536,11 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
       await native.close();
       await s.close();
     }
-    // A stale answer applied after a newer one (see AR05) must not raise the cap or extend the window.
-    await allowance();
-    clock = t0;
-    await issue("lease-ar07-b");
-    const o = await stack();
-    let staleReplyExtendedGrant = true;
-    let staleReplyRaisedCap = true;
-    try {
-      equal((await ticket(o.base, "lease-ar07-b", cred("lease-ar07-b"))).status, 201);
-      const status = (budgetSeconds: number) => ({ leaseId: "lease-ar07-b", state: "active", personId: "santiago", gameId: NATIVE, budgetSeconds, metered: true, budgetKind: "paid", authorizedForSeconds: 2 });
-      clock = t0 + 3000;
-      await o.server.applyStatusAnswer("lease-ar07-b", { ok: true, status: status(600), requestedAt: t0 + 2900, authorizedUntil: t0 + 4900 });
-      await o.server.applyStatusAnswer("lease-ar07-b", { ok: true, status: status(900), requestedAt: t0 + 2950, authorizedUntil: t0 + 4950 - 100 });
-      await o.server.applyStatusAnswer("lease-ar07-b", { ok: true, status: status(900), requestedAt: t0 + 2000, authorizedUntil: t0 + 5500 });
-      const l = o.server.store.loadLease("lease-ar07-b")! as Record<string, unknown>;
-      staleReplyExtendedGrant = Number(l.authorityUntil) !== t0 + 4950 - 100;
-      staleReplyRaisedCap = Number(l.budget) > 900;
-      // The newest answer (2950) applies in full — including its larger budget, which IS Family's authority at its read.
-      staleReplyExtendedGrant = staleReplyExtendedGrant || Number(l.authorityReadAt) !== t0 + 2950;
-    } finally {
-      await o.close();
-    }
+    // A stale answer next to a newer one (through HTTP, see AR05): the cap follows Family's newer, smaller allowance and
+    // no grant reaches past the window of the read that confirmed it.
+    const stale = await olderAndNewerAnswer("lease-ar07-b");
+    const staleReplyRaisedCap = stale.budget !== 600;
+    const staleReplyExtendedGrant = !stale.grantsWithinOwnWindow || stale.authorityReadAt !== stale.newestReadAt;
     // Exhaustion and the save tail as in DR07 (same lease rules, same numbers).
     await allowance(130);
     clock = t0;
