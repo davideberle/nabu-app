@@ -20,7 +20,8 @@ export function PlanGrid({ grid, caption, highlight }: { grid: MissionGrid; capt
   const cells = grid.cells.map((row) => Array.from(row));
   const w = grid.cols * FIELD;
   const h = grid.rows * FIELD;
-  const pad = 22;
+  // Room on every side for the door label and the 1 m ruler (the label must never be clipped).
+  const pad = 36;
   const aria = `${grid.label}: ${grid.cols} Felder lang, ${grid.rows} Felder breit, zusammen ${counts.fields} Felder${counts.path ? `; Weg ${counts.path} Felder` : ""}${counts.beds ? `; ${counts.beds} Beete mit zusammen ${counts.bedFields} Feldern` : ""}.`;
   const bedEdges: { x1: number; y1: number; x2: number; y2: number }[] = [];
   for (let r = 0; r < grid.rows; r += 1) {

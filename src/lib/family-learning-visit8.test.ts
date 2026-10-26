@@ -575,3 +575,44 @@ describe("Visit 7 and earlier stay exactly as they were", () => {
     deepStrictEqual(v.nokt, { mode: "subscription", mic: false });
   });
 });
+
+describe("Nokt plumbing for the new purposes (fake fetch, fake env)", () => {
+  it("the fake recognizer never switches on outside an isolated local database", async () => {
+    const { noktSttModeFromEnv } = await import("./family-learning-nokt-stt.ts");
+    equal(noktSttModeFromEnv({ FAMILY_NOKT_STT_FAKE: "1", NABU_DB_DIR: "/tmp/x" }).kind, "fictional-fake");
+    for (const extra of [{ TURSO_DATABASE_URL: "libsql://x" }, { VERCEL: "1" }, { VERCEL_ENV: "production" }, { VERCEL_URL: "x.vercel.app" }, { NABU_DB_DIR: "" }]) equal(noktSttModeFromEnv({ FAMILY_NOKT_STT_FAKE: "1", NABU_DB_DIR: "/tmp/x", ...extra }).kind, "off", JSON.stringify(extra));
+    equal(noktSttModeFromEnv({ FAMILY_NOKT_CONVERSATION: "subscription" }).kind, "off", "the conversation switch alone never enables a microphone");
+  });
+  it("the browser's report of a runtime refusal is a closed vocabulary that only names a reason", async () => {
+    const { noReplyCodeOf } = await import("./family-learning-client.ts");
+    deepStrictEqual([noReplyCodeOf(429, "attempts_exhausted"), noReplyCodeOf(429, "busy"), noReplyCodeOf(429, "x"), noReplyCodeOf(400, "bad_request"), noReplyCodeOf(409, "replay"), noReplyCodeOf(504, "timeout"), noReplyCodeOf(503, "reauthorize"), noReplyCodeOf(502, "x")], ["attempts_exhausted", "busy", "usage_limit", "bad_request", "bad_request", "timeout", "unavailable", "unavailable"]);
+  });
+  it("a talk turn posts its purpose (never a step) and passes the runtime's refusal on; the task talk keeps its Visit 7 contract", async () => {
+    const { createLearningClient, LEARNING_NOKT_DISPATCH_PATH, LEARNING_NOKT_REPLY_PATH, LEARNING_SESSION_PATH } = await import("./family-learning-client.ts");
+    const v = buildChildView(sevenVisitsDone(), v7, EMPTY_PARENT_SETTINGS, new Date(), 0);
+    const run = async (turn: Parameters<ReturnType<typeof createLearningClient>["noktTurn"]>[1], bridge: () => Response | Promise<Response>) => {
+      const calls: { url: string; body: unknown }[] = [];
+      const impl = (async (url: string, init: RequestInit = {}) => {
+        calls.push({ url: String(url), body: init.body ? JSON.parse(String(init.body)) : null });
+        if (url === LEARNING_SESSION_PATH) return Response.json({ child: "santiago", token: "t", expiresAt: Date.now() + 3_600_000 });
+        if (url === LEARNING_NOKT_DISPATCH_PATH) return Response.json({ status: "applied", view: v, result: { turnId: turn.turnId, request: { x: 1 }, reqHash: "h", bridge: { url: "https://nokt-bridge.invalid:8787", token: "fcm1.a.b", expiresAt: 1 } } });
+        if (String(url).endsWith("/v1/nokt/turn")) return bridge();
+        if (url === LEARNING_NOKT_REPLY_PATH) return Response.json({ status: "applied", view: v, result: { shown: false } });
+        return new Response("x", { status: 500 });
+      }) as typeof fetch;
+      await createLearningClient({ fetchImpl: impl }).noktTurn("santiago", turn, 1, { signal: new AbortController().signal, context: { erasureGeneration: 0, visit: null } });
+      return calls.find((c) => c.url === LEARNING_NOKT_REPLY_PATH)!.body as Record<string, unknown>;
+    };
+    const talk = await run({ purpose: "home", sessionId: "sess-home-00009", turnId: "turn-client-0001", text: "Hallo", via: "typed" }, () => Response.json({ ok: false, code: "busy" }, { status: 429 }));
+    deepStrictEqual([talk.purpose, "step" in talk, talk.reply, talk.noReply], ["home", false, null, "busy"]);
+    const down = await run({ purpose: "welcome", sessionId: "sess-welc-00009", turnId: "turn-client-0002" }, () => Promise.reject(new TypeError("network")));
+    equal(down.noReply, "unreachable");
+    const task = await run({ step: "H2-POTS", part: "total", purpose: "diagnostic", entry: "manual", sessionId: "s", turnId: "turn-client-0003", text: "x", via: "typed" }, () => Response.json({ ok: false, code: "busy" }, { status: 429 }));
+    deepStrictEqual([task.step, "noReply" in task], ["H2-POTS", false], "Visit 7 task talk: only the used-up day is passed on");
+  });
+  it("the view guard refuses a malformed talk block", () => {
+    const v = buildChildView(started(makeEnv()), v7, EMPTY_PARENT_SETTINGS, new Date(), 0, { noktMode: "subscription" });
+    ok(isChildView(v));
+    ok(!isChildView({ ...v, nokt: { ...v.nokt, talk: { sessions: [{ id: "x", purpose: "home", page: "home", closed: false, lines: [{ role: "model", text: "x" }] }], welcome: "due" } } }));
+  });
+});

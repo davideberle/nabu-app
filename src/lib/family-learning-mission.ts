@@ -601,7 +601,15 @@ function lowerStart(text: string): boolean {
  * blocks ran at the course's last lesson, where the rule could not advance (content ceiling); with a new lesson served the
  * same criterion decides once more. Recorded as the course decision with its reason.
  */
-function catchUpProgression(state: MissionState, env: MissionEnv, blockId: string) {
+/** Content v7: the announced plan must be the plan that will run — apply the start-of-block progression to a COPY for the preview. */
+function previewState(state: MissionState, def: MissionDef, content: LearningContent): MissionState {
+  if (!def.typingBlock.progressOnStart || !state.typing.course) return state;
+  const copy = { ...state, typing: { ...state.typing, course: { ...state.typing.course, completed: [...state.typing.course.completed] } } } as MissionState;
+  catchUpProgression(copy, { content, nowIso: "" }, def.typingBlock.id);
+  return copy;
+}
+
+function catchUpProgression(state: MissionState, env: Pick<MissionEnv, "content" | "nowIso">, blockId: string) {
   const course = env.content.typing.course;
   const progress = state.typing.course;
   if (!course || !progress) return;
@@ -1907,7 +1915,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     calc,
     choice,
     produce,
-    typing: step.kind === "typing-block" ? typingBlockView(def, run, content, !run.typing && state && state.typing.alignment?.result === "match" ? planTypingBlock(state, content, def.typingBlock, (state.feedback?.focus ?? []).filter((f) => f.kind === "typing-key" && f.status === "open").map((f) => f.key)) : null) : null,
+    typing: step.kind === "typing-block" ? typingBlockView(def, run, content, !run.typing && state && state.typing.alignment?.result === "match" ? planTypingBlock(previewState(state, def, content), content, def.typingBlock, (state.feedback?.focus ?? []).filter((f) => f.kind === "typing-key" && f.status === "open").map((f) => f.key)) : null) : null,
     solve: step.solve ? solveView(def, step, r, tutorAvailable) : null,
     write: step.write ? writeView(step, r) : null,
     ...(step.decide ? { decide: decideView(step.decide, r) } : {}),

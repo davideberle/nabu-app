@@ -299,9 +299,10 @@ function Workspace({ child }: { child: ChildId }) {
       if (!aliveRef.current || signal.aborted || (!out.ok && "failure" in out && out.failure === "cancelled")) return { kind: "cancelled" };
       if ("view" in out && out.view) adopt(out.view);
       if (out.ok && out.status !== "stale") {
-        const r = out.result as { shown?: boolean; say?: string; line?: string };
+        const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string };
         if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say };
-        if (r.shown === false && typeof r.line === "string") return { kind: "app", line: r.line };
+        // No reply at all (runtime unreachable, used up, refused): his words go back into the box.
+        if (r.shown === false && typeof r.line === "string") return { kind: r.reason?.startsWith("no-reply-") ? "failed" : "app", line: r.line };
       }
       return { kind: "failed", line: "Nokt ist gerade nicht erreichbar. Du kannst es gleich nochmal versuchen." };
     },
@@ -739,7 +740,7 @@ function Workspace({ child }: { child: ChildId }) {
         </main>
 
       </div>
-      {stage === "mission" ? null : <NabuSidebar
+      {stage === "mission" || view.reflection?.closing ? null : <NabuSidebar
         child={child}
         view={view}
         page="mission"

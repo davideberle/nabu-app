@@ -653,6 +653,7 @@ export const NOKT_TALK_EXHAUSTED_LINE = "Nokt hat heute schon viel geredet und m
 
 export function talkAppLine(purpose: NoktTalkPurpose, opener: boolean, reason: string | null): string {
   if (reason === "no-reply-attempts_exhausted") return NOKT_TALK_EXHAUSTED_LINE;
+  if (reason?.startsWith("no-reply-") && !opener) return "Nokt ist gerade nicht erreichbar. Was du geschrieben hast, ist noch da — du kannst es gleich nochmal schicken.";
   if (opener && purpose === "welcome") return "Willkommen! Heute geht es um das grössere Gewächshaus. Auf der Karte siehst du, wo jemand auf dich wartet.";
   if (opener && purpose === "debrief") return "Nokt kann gerade nicht mit dir zurückschauen. Unten kannst du sagen, wie es war und was du als Nächstes machen möchtest.";
   if (purpose === "writing") return "Nokt kann gerade nichts zu deinem Satz sagen. Du kannst ihn selbst noch einmal anschauen oder so lassen.";
