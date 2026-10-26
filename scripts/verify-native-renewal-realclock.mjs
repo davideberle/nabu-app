@@ -7,10 +7,13 @@
 //   AR11: continuity headroom at 600 and 900 ms with the unchanged 2 s window and the app's own 800 ms cadence.
 // Evidence per run (October 26, AR11): the ENGINE's own frames — DR_TRACE writes one TRACE line per processed gameplay
 // frame; the game processes one frame per main-loop frame and its frame limiter paces the loop at the game's 30 fps;
-// script marks at ticks 1,500 and 2,900 of the 60 Hz clock bound 23.3 s (~700 frames). The loop's own pacing can lose
-// a frame without any Family involvement, so the reference is MEASURED in the same harness run: the identical script
-// and level on the standalone build (no Family gate at all), three times; a run's frozen frames are its shortfall
-// against the lowest gate-free count. Raw counts are kept; every report through a pass-through proxy between app and meter (arrival ~ the app's send, answer
+// script marks every 28 ticks of the 60 Hz clock (ticks 1,500..2,900) cut 23.3 s of play into 50 windows of ~14 frames.
+// The loop's own pacing moves single frames across window boundaries (gate-free runs counted 699, 700 and 701 frames
+// over the whole interval), so the band is MEASURED in the same harness run: the identical script and level on the
+// standalone build (no Family gate at all), three times. A run's frozen frames are its per-window shortfall below the
+// lowest gate-free window count. A Family hold cannot hide in that band: the core stops running on any denied frame
+// and resumes only on a new grant answered to a later report, i.e. after a Family read (>= 18 frames at 600 ms).
+// The app's own report flags (active / foreground) are recorded too. Raw counts are kept; every report through a pass-through proxy between app and meter (arrival ~ the app's send, answer
 // time, grant handed, the app's resulting deadline, the meter's window at that moment); every Family read (sent,
 // answered, applied — the meter's authority changing).
 // Per run, from the meter's own sessions: play span, share that ran, freezes, billing balance (meter = delivered
@@ -42,12 +45,19 @@ const live = JSON.parse(fs.readFileSync(livePath, "utf8"));
 const realDelays = live.samples.map((x) => x.signedMs);
 if (realDelays.length !== 27) throw new Error(`expected 27 live samples, found ${realDelays.length}`);
 
-const SCRIPT = ["30 window focus", "900 char 13", "1500 mark a", "2900 mark b", "3000 keydown 0x01", "3090 keyup 0x01", "3180 quit", ""].join("\n");
+const MARKS = Array.from({ length: 51 }, (_, k) => 1500 + 28 * k);
+const SCRIPT = ["30 window focus", "900 char 13", ...MARKS.map((t, k) => `${t} mark w${k}`), "3000 keydown 0x01", "3090 keyup 0x01", "3180 quit", ""].join("\n");
 const traceBetweenMarks = (logFile) => {
   const lines = fs.existsSync(logFile) ? fs.readFileSync(logFile, "utf8").split("\n") : [];
-  const a = lines.findIndex((x) => x === "MARK a");
-  const b = lines.findIndex((x) => x === "MARK b");
-  return { levelBeforeMarkA: a > 0 && lines.slice(0, a).some((x) => /Level 1 started/.test(x)), between: a >= 0 && b > a ? lines.slice(a, b).filter((x) => x.startsWith("TRACE ")).length : null, total: lines.filter((x) => x.startsWith("TRACE ")).length };
+  const at = MARKS.map((_, k) => lines.findIndex((x) => x === `MARK w${k}`));
+  const ok = at.every((i, k) => i >= 0 && (k === 0 || i > at[k - 1]));
+  const windows = ok ? at.slice(1).map((i, k) => lines.slice(at[k], i).filter((x) => x.startsWith("TRACE ")).length) : null;
+  return {
+    levelBeforeMarkA: at[0] > 0 && lines.slice(0, at[0]).some((x) => /Level 1 started/.test(x)),
+    between: ok ? windows.reduce((n, w) => n + w, 0) : null,
+    windows,
+    total: lines.filter((x) => x.startsWith("TRACE ")).length,
+  };
 };
 /** Gate-free reference: the standalone build plays the same script and level (no meter, no Family). */
 async function controlRun(k) {
@@ -63,8 +73,10 @@ async function controlRun(k) {
 }
 const controls = [];
 for (let k = 0; k < 3; k += 1) controls.push(await controlRun(k));
-const controlMin = Math.min(...controls.map((c) => (c.between === null ? Infinity : c.between)));
-if (!Number.isFinite(controlMin) || !controls.every((c) => c.levelBeforeMarkA)) throw new Error(`gate-free reference failed: ${JSON.stringify(controls)}`);
+if (!controls.every((c) => c.levelBeforeMarkA && c.windows)) throw new Error(`gate-free reference failed: ${JSON.stringify(controls)}`);
+const controlMin = Math.min(...controls.map((c) => c.between));
+/** Lowest per-window frame count the gate-free loop produced: the pacing band's floor. */
+const bandMin = Math.min(...controls.flatMap((c) => c.windows));
 
 async function runOnce(name, { delayFor, outageFromMs = null, outageForMs = 0 }) {
   const dir = path.join(out, name);
@@ -128,7 +140,9 @@ async function runOnce(name, { delayFor, outageFromMs = null, outageForMs = 0 })
             try { json = JSON.parse(String(text)); } catch { json = null; }
             const grant = json && typeof json.authorizedForMs === "number" ? json.authorizedForMs : 0;
             const l = server.store.loadLease(lid);
-            reports.push({ receivedAt, repliedAt, status: r.statusCode, grantMs: grant, appDeadline: grant > 0 ? receivedAt + grant : null, meterWindowEnd: l && typeof l.authorityUntil === "number" ? l.authorityUntil : null });
+            let sent = null;
+            try { sent = JSON.parse(String(body)); } catch { sent = null; }
+            reports.push({ receivedAt, repliedAt, status: r.statusCode, grantMs: grant, appDeadline: grant > 0 ? receivedAt + grant : null, meterWindowEnd: l && typeof l.authorityUntil === "number" ? l.authorityUntil : null, active: sent ? sent.active === true : null, foreground: sent ? sent.foreground === true : null, paused: sent ? sent.paused === true : null });
           }
           res.writeHead(r.statusCode, r.headers);
           res.end(text);
@@ -195,6 +209,7 @@ async function runOnce(name, { delayFor, outageFromMs = null, outageForMs = 0 })
   // The engine's own record: gameplay frames between the two marks (1,400 main-loop frames apart), and in total.
   const traced = traceBetweenMarks(path.join(dir, "home", "Library", "Application Support", "Deimos Rising Family", "DeimosRising.log"));
   const levelBeforeMarkA = traced.levelBeforeMarkA;
+  const frozenFrames = traced.windows ? traced.windows.reduce((n, w) => n + Math.max(0, bandMin - w), 0) : null;
   const tracedBetweenMarks = traced.between;
   const tracedTotal = traced.total;
   const fam = (await db.execute({ sql: "SELECT consumed_seconds, final_settled FROM family_play_leases WHERE id = ?", args: [lid] })).rows[0];
@@ -241,7 +256,9 @@ async function runOnce(name, { delayFor, outageFromMs = null, outageForMs = 0 })
     statusReadsDuringPlay: statusReadsInPlay.length,
     firstInPlayReadIndex: statusReadsInPlay.length ? statusReadsInPlay[0].i : null,
     delaysUsedInPlay: statusReadsInPlay.map((r) => r.delayMs),
-    engine: { levelBeforeMarkA, ticksBetweenMarks: 1400, gateFreeReferenceFrames: controlMin, tracedBetweenMarks, frozenFramesBetweenMarks: tracedBetweenMarks === null ? null : Math.max(0, controlMin - tracedBetweenMarks), tracedTotal, engineRanSeconds: Math.round((tracedTotal / 30) * 100) / 100 },
+    engine: { levelBeforeMarkA, ticksBetweenMarks: 1400, windows: 50, gateFreeTotalMin: controlMin, gateFreeWindowFloor: bandMin, tracedBetweenMarks, windowMin: traced.windows ? Math.min(...traced.windows) : null, windowCounts: traced.windows ? traced.windows.join(",") : null, frozenFramesBetweenMarks: frozenFrames, tracedTotal, engineRanSeconds: Math.round((tracedTotal / 30) * 100) / 100 },
+    // The app's own core: reports during play that wanted to play (foreground) but were not running = protocol holds.
+    coreNotRunningWhileWantingInPlay: (() => { const p = reports.filter((r) => r.receivedAt >= playFrom && r.receivedAt <= playTo); return p.filter((r) => r.foreground === true && r.active === false && r.paused === false).length; })(),
     reportsTotal: reports.length,
     reportsInPlay: inPlay.length,
     reportCadenceMedianMs: gaps.length ? gaps[Math.floor(gaps.length / 2)] : null,
@@ -304,10 +321,12 @@ const summary = {
   } : null,
 };
 const engineOk = (r) => r && r.engine.levelBeforeMarkA && r.engine.frozenFramesBetweenMarks === 0;
-const continuous = (r) => Boolean(r) && r.freezes === 0 && r.playSpanSeconds >= 25 && engineOk(r);
+const continuous = (r) => Boolean(r) && r.freezes === 0 && r.playSpanSeconds >= 25 && engineOk(r) && r.coreNotRunningWhileWantingInPlay === 0;
 const beyond = ["c1200", "outage"].filter((n) => by[n]);
 summary.AR11 = {
   gateFreeReferenceFramesBetweenMarks: controls.map((c) => c.between).join(","),
+  gateFreeWindowFloor: bandMin,
+  gateFreeWindowCounts: controls.map((c) => `${Math.min(...c.windows)}-${Math.max(...c.windows)}`).join(","),
   authorityWindowSeconds: mod.AUTHORITY_WINDOW_SECONDS,
   // Measured, not configured: the median interval between the app's reports when answers come back quickly (300 ms).
   nativeReportCadenceMs: by.c300 && by.c300.reportCadenceMedianMs !== null ? Math.round(by.c300.reportCadenceMedianMs / 100) * 100 : null,
