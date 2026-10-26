@@ -110,11 +110,19 @@ server "$OUT/db-off" 3293
 step j8-off 0 node scripts/verify-learning-visit8.mjs --base http://127.0.0.1:3293 --db "$OUT/db-off/nabu.db" --out "$OUT/out-off" --mode off
 stop_server "$CUR"; CUR=""
 
-# 4. Visit 7 rendered regression (J1/J2, Nokt off = the production default) on this build
+# 4. Visit 7 rendered regression (J1/J2, Nokt off = the production default) on this build, in two configurations:
+#    a) the rollback cap FAMILY_LEARNING_CONTENT_CAP=6 (content v6 exactly as Visit 7 was released) — every check must pass;
+#    b) content v7 — exactly ONE named, explained difference is accepted: J1.G6.course-lessons-only asserts the v6 course
+#       ceiling (lessons 1–5); with lesson 6 served, the synthetic child of that harness progresses to it by the unchanged rule.
 if [ "$SKIP7" = 0 ]; then
-  server "$OUT/db-v7" 3297
-  step v7-j1-j2-regression 0 node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3297 --db "$OUT/db-v7/nabu.db" --out "$OUT/out-v7"
+  server "$OUT/db-v7cap" 3297 FAMILY_LEARNING_CONTENT_CAP=6
+  step v7-j1-j2-regression-cap6 0 node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3297 --db "$OUT/db-v7cap/nabu.db" --out "$OUT/out-v7cap"
   stop_server "$CUR"; CUR=""
+  server "$OUT/db-v7" 3297
+  step v7-j1-j2-regression-v7content 1 node scripts/verify-learning-visit7.mjs --base http://127.0.0.1:3297 --db "$OUT/db-v7/nabu.db" --out "$OUT/out-v7"
+  stop_server "$CUR"; CUR=""
+  only=$(grep '^FAIL' "$OUT/v7-j1-j2-regression-v7content.log" | awk '{print $2}' | tr '\n' ' ')
+  if [ "$only" = "J1.G6.course-lessons-only " ] || [ -z "$only" ]; then echo "v7-regression-v7content: the only difference is the named course-ceiling assertion (${only:-none}) → ok" | tee -a "$SUMMARY"; else echo "v7-regression-v7content: UNEXPECTED failures: $only → FAILED" | tee -a "$SUMMARY"; FAILED=1; fi
 fi
 
 # 5. privacy: no private child record in the tracked source. The private review (PRIVATE_EVIDENCE, a JSON file OUTSIDE the
