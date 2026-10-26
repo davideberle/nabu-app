@@ -65,6 +65,9 @@ export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; g
   const [attempt, setAttempt] = useState(0);
   const [takeover, setTakeover] = useState(false);
   const [launchUrl, setLaunchUrl] = useState<string | null>(null);
+  /** When the shown link stops working (Game Studio's 60 s), and the same for the link the child last clicked. */
+  const launchExpiresAtRef = useRef<number | null>(null);
+  const [clickedExpiresAt, setClickedExpiresAt] = useState<number | null>(null);
   const [status, setStatus] = useState<NativeStatus | null>(null);
   const [clickedAt, setClickedAt] = useState<number | null>(null);
   const [now, setNow] = useState(() => Date.now());
@@ -141,6 +144,7 @@ export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; g
       if (stopped) return;
       if (t.ok && isLaunchUrl(t.value.launchUrl)) {
         failures = 0;
+        launchExpiresAtRef.current = Date.now() + t.value.expiresInMs;
         setLaunchUrl(t.value.launchUrl);
         return schedule(TICKET_REFRESH_MS);
       }
@@ -193,10 +197,14 @@ export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; g
   const onLaunchClick = useCallback(() => {
     clickedRef.current = true;
     setClickedAt(Date.now());
+    setClickedExpiresAt(launchExpiresAtRef.current);
   }, []);
   // The meter's clock once it runs this lease; until then the time Family granted the lease with.
   const clockSeconds = status?.remainingSeconds ?? (phase.kind === "ready" ? phase.grant.remainingSeconds : null);
-  const showHint = clickedAt !== null && !status?.attached && now - clickedAt > ATTACH_HINT_MS;
+  // The clicked link ran out before the app took it (e.g. the browser's "Open …?" question stayed open): say so — the
+  // button already carries a fresh link. Otherwise, after a while, the general hint.
+  const clickedLinkExpired = clickedAt !== null && !status?.attached && clickedExpiresAt !== null && now > clickedExpiresAt;
+  const showHint = clickedAt !== null && !status?.attached && !clickedLinkExpired && now - clickedAt > ATTACH_HINT_MS;
 
   return (
     <div className="flex min-h-dvh flex-col bg-secondary text-primary">
@@ -269,6 +277,7 @@ export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; g
               ) : (
                 <p className="text-sm text-tertiary">Preparing the launch…</p>
               )}
+              {clickedLinkExpired ? <p role="status" className="text-sm text-secondary" data-native-link-expired>That link ran out before {title} opened. Click ▶ Open {title} again — nothing was used.</p> : null}
               {showHint ? <p role="status" className="text-sm text-secondary">Nothing opened? This computer may not have the family {title} app. Ask a parent, or play on the family Mac.</p> : null}
             </>
           )}

@@ -54,7 +54,14 @@ try {
   cleanup.push(() => { adapter.settler?.stop(); adapter.close(); });
   const adapterPort = adapter.address().port;
   let device = MINI;
+  /** LK03: make Game Studio refuse launch links (as when it cannot confirm the lease with Family). */
+  let failTickets = false;
   const proxy = http.createServer((req, res) => {
+    if (failTickets && req.method === "POST" && /^\/v1\/native\/[^/]+\/ticket$/.test(req.url || "")) {
+      res.writeHead(503, { "content-type": "application/json", "access-control-allow-origin": base });
+      res.end(JSON.stringify({ error: "Family is not reachable right now; your time is kept" }));
+      return;
+    }
     const headers = { ...req.headers };
     for (const h of ["x-forwarded-for", "x-forwarded-proto", "x-forwarded-host", "forwarded"]) delete headers[h];
     Object.assign(headers, { "x-forwarded-for": device, "x-forwarded-proto": "https", "x-forwarded-host": "dae-macmini.tail4f656e.ts.net:8444" });
@@ -193,6 +200,128 @@ try {
     obs.browserGamePageErrors = errors.length;
     await ipad.ctx.close();
     await ctx.close();
+  }
+
+  // ---- 4. LK03 rendered lifecycle (October 26): delayed confirmation across a link refresh, an expired click, honest
+  //         failure after refused links, abandoned launch. Real waits (40 s refresh, 60 s link lifetime), no fake clock.
+  {
+    const lk = {};
+    const familyLease = async (id) => { const r = (await db.execute({ sql: "SELECT state, consumed_seconds, final_settled FROM family_play_leases WHERE id = ?", args: [id] })).rows[0]; return r ? { state: String(r.state), consumed: Number(r.consumed_seconds), finalSettled: Number(r.final_settled) === 1 } : null; };
+    const newestLeaseId = async () => String((await db.execute("SELECT id FROM family_play_leases ORDER BY issued_at DESC LIMIT 1")).rows[0].id);
+    const openSaysOpen = async (p) => (await p.getByText("Deimos Rising is open on this Mac").count()) > 0;
+    let falseOpenClaims = 0;
+    // A click on the launch link runs the page's own handler, while the custom-scheme navigation is cancelled (the
+    // test hands the link to the app stand-in itself).
+    const clickLink = async (p) => {
+      await p.evaluate(() => window.addEventListener("click", (e) => { if (e.target instanceof Element && e.target.closest("[data-native-launch]")) e.preventDefault(); }, true));
+      const href = await p.locator("[data-native-launch]").getAttribute("href");
+      await p.locator("[data-native-launch]").click();
+      return href;
+    };
+    /** Open the Deimos launcher; when another game still holds the time, answer "Continue here" like a child would. */
+    const openLauncher = async (p) => {
+      await p.goto("/family/games/play?game=deimos-rising&child=santiago");
+      const cont = p.getByRole("button", { name: "Continue here" });
+      const link = p.locator("[data-native-launch]");
+      await Promise.race([cont.waitFor({ timeout: 20000 }).catch(() => {}), link.waitFor({ timeout: 20000 }).catch(() => {})]);
+      if ((await cont.count()) > 0) await cont.click();
+    };
+    const harnessOnce = () => {
+      const nat = spawn(harness, [], { stdio: ["pipe", "pipe", "inherit"] });
+      let buf = "";
+      const waiters = [];
+      nat.stdout.setEncoding("utf8");
+      nat.stdout.on("data", (d) => { buf += d; let i; while ((i = buf.indexOf("\n")) >= 0) { const l = buf.slice(0, i); buf = buf.slice(i + 1); waiters.shift()?.(JSON.parse(l)); } });
+      const send = (c) => new Promise((r) => { waiters.push(r); nat.stdin.write(`${c}\n`); });
+      return { nat, send };
+    };
+    // (a) Delayed confirmation: the child clicks link 1; the browser's question stays open for 50 s, across the
+    //     page's 40 s refresh; the app then starts with link 1 and attaches.
+    {
+      const { p, ctx } = await page(MAC_UA);
+      await openLauncher(p);
+      await p.locator("[data-native-launch]").waitFor({ timeout: 20000 });
+      const clicked = await clickLink(p);
+      await p.waitForTimeout(50_000);
+      const refreshedHref = await p.locator("[data-native-launch]").getAttribute("href").catch(() => null);
+      lk.pageRefreshedLinkMeanwhile = refreshedHref !== null && refreshedHref !== clicked;
+      if (await openSaysOpen(p)) falseOpenClaims += 1;
+      const { nat, send } = harnessOnce();
+      await send(`port ${adapterPort}`);
+      await send(`time ${Date.now()}`);
+      const redeemed = (await send(`launch ${clicked}`)).ok === true;
+      await send(`time ${Date.now()}`);
+      await send("tick");
+      let attached = false;
+      try { await p.locator('[data-native-launcher][data-attached="true"]').waitFor({ timeout: 10000 }); attached = true; } catch { attached = false; }
+      lk.delayedConfirmationAttached = redeemed && attached;
+      lk.pageSaysOpenAfterAttach = attached && (await openSaysOpen(p));
+      await shot(p, "9-lk03-delayed-confirmation-attached");
+      await send(`time ${Date.now()}`);
+      await send("requestend left");
+      await send("end");
+      nat.stdin.end();
+      await adapter.settler.flush();
+      await p.getByText("This play session is over").waitFor({ timeout: 10000 }).catch(() => {});
+      await ctx.close();
+    }
+    // (b) The clicked link runs out (the question stays open past 60 s) and no app takes it: the page says so honestly.
+    {
+      const { p, ctx } = await page(MAC_UA);
+      await openLauncher(p);
+      await p.locator("[data-native-launch]").waitFor({ timeout: 20000 });
+      await clickLink(p);
+      let expiredShown = false;
+      for (let waited = 0; waited < 75_000 && !expiredShown; waited += 2500) {
+        await p.waitForTimeout(2500);
+        if (await openSaysOpen(p)) falseOpenClaims += 1;
+        expiredShown = (await p.locator("[data-native-link-expired]").count()) === 1;
+      }
+      lk.expiredLinkMessageHonest = expiredShown && (await p.getByText(/That link ran out before Deimos Rising opened/).count()) === 1 && (await p.locator("[data-native-launch]").count()) === 1;
+      await shot(p, "10-lk03-link-expired");
+      await ctx.close();
+    }
+    // (c) Game Studio refuses the links: after three refusals the page says it could not confirm the time, stops
+    //     preparing, and lets the lease go (Family first, then the meter's zero report).
+    {
+      failTickets = true;
+      const { p, ctx } = await page(MAC_UA);
+      await openLauncher(p);
+      let errorShown = false;
+      let stillPreparingAfter = false;
+      for (let waited = 0; waited < 60_000 && !errorShown; waited += 1000) {
+        await p.waitForTimeout(1000);
+        if (await openSaysOpen(p)) falseOpenClaims += 1;
+        errorShown = (await p.getByText(/couldn't confirm your play time/).count()) === 1;
+      }
+      if (errorShown) { await p.waitForTimeout(1000); stillPreparingAfter = (await p.getByText("Preparing the launch…").count()) > 0; }
+      lk.honestErrorShownAfterFailures = errorShown;
+      lk.endlessPreparingObserved = !errorShown || stillPreparingAfter;
+      await shot(p, "11-lk03-honest-error");
+      const failedId = await newestLeaseId();
+      await adapter.settler.flush();
+      for (let i = 0; i < 20; i += 1) { const f = await familyLease(failedId); if (f && f.state === "ended" && f.finalSettled) break; await p.waitForTimeout(500); await adapter.settler.flush(); }
+      const failedLease = await familyLease(failedId);
+      lk.failedLaunchLease = failedLease;
+      failTickets = false;
+      await ctx.close();
+      // (d) Abandoned launch: the link is ready, the child goes back to Games without clicking.
+      const second = await page(MAC_UA);
+      await openLauncher(second.p);
+      await second.p.locator("[data-native-launch]").waitFor({ timeout: 20000 });
+      const abandonedId = await newestLeaseId();
+      await second.p.getByRole("link", { name: /Games/ }).first().click();
+      await second.p.waitForTimeout(3000);
+      await adapter.settler.flush();
+      for (let i = 0; i < 20; i += 1) { const f = await familyLease(abandonedId); if (f && f.state === "ended" && f.finalSettled) break; await second.p.waitForTimeout(500); await adapter.settler.flush(); }
+      const abandoned = await familyLease(abandonedId);
+      lk.abandonedLaunchLease = abandoned;
+      lk.abandonedLaunchReleased = Boolean(failedLease && failedLease.state === "ended" && failedLease.finalSettled && failedLease.consumed === 0 && abandoned && abandoned.state === "ended" && abandoned.finalSettled && abandoned.consumed === 0);
+      lk.remainingAfterLk03 = await remaining();
+      await second.ctx.close();
+    }
+    lk.falseOpenClaims = falseOpenClaims;
+    obs.LK03 = lk;
   }
 } finally {
   for (const fn of cleanup.reverse()) { try { await fn(); } catch { /* best effort */ } }

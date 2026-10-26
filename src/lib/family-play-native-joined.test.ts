@@ -95,7 +95,7 @@ function raw(base: string, method: string, path: string, headers: Record<string,
 
 describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { skip: !available && "candidate adapter or native harness not named" }, () => {
   type Adapter = {
-    createChildPlayAdapter: (opts: Record<string, unknown>) => http.Server & { store: { loadLease: (id: string) => Record<string, unknown> & { consumed: number; state: string; endReason: string | null; endedAt: number | null; frameDeadline?: number | null } | null; dataDir: string }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number };
+    createChildPlayAdapter: (opts: Record<string, unknown>) => http.Server & { store: { loadLease: (id: string) => Record<string, unknown> & { consumed: number; state: string; endReason: string | null; endedAt: number | null; frameDeadline?: number | null } | null; dataDir: string }; settler: { flush: () => Promise<void>; stop: () => void }; sweep: () => number; applyStatusAnswer: (leaseId: string, check: Record<string, unknown>) => Promise<{ lease?: Record<string, unknown> } | null> };
     derivePlayKey: (secret: string) => Buffer;
     mintPlayCredential: (key: Buffer, claims: Record<string, unknown>) => string;
     signSettlement: (key: Buffer, ts: number, leaseId: string, body: string) => string;
@@ -111,6 +111,26 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
   /** BX02: how long Family takes to answer a status read (the shared clock advances by it; Family reads midway). */
   let familyLatencyMs = 0;
   let settleGate: Promise<void> | null = null;
+  /**
+   * Family fixture probes (AR02-AR10, October 26): status reads per lease and how many overlap, an answer held after its
+   * snapshot until the test releases it, per-lease outages, and every settlement report received.
+   */
+  const statusReads = new Map<string, number>();
+  const statusInflight = new Map<string, number>();
+  const maxStatusInflight = new Map<string, number>();
+  const holds = new Map<string, Promise<void>>();
+  const brokenLeases = new Set<string>();
+  const settlements: Record<string, unknown>[] = [];
+  /** Hold the NEXT status answers of `lid`: Family reads at once, the reply is delivered when the returned function runs. */
+  function holdStatus(lid: string) {
+    let release!: () => void;
+    holds.set(lid, new Promise<void>((r) => (release = r)));
+    return () => { holds.delete(lid); release(); };
+  }
+  async function untilReading(lid: string) {
+    for (let i = 0; i < 400 && !(statusInflight.get(lid) ?? 0); i += 1) await new Promise((r) => setTimeout(r, 5));
+    ok((statusInflight.get(lid) ?? 0) > 0, `no status read in flight for ${lid}`);
+  }
   let upstream: http.Server;
   let upstreamOrigin: string;
   const LIVE_IDS = ["6bd56478-5ea0-4f2a-a2db-be8549a88d05", "cb2ad59b-4e92-49d3-abcf-af9d26b439f0", "738a33f8-1fe3-4164-b635-236f596c80e3", "64db53d2-84bb-41bd-9bbe-e5fffffae014", "2bf02071-b51e-43d6-940b-44e0140c256d"];
@@ -145,13 +165,21 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
     outage = false;
     familyLatencyMs = 0;
     settleGate = null;
+    statusReads.clear();
+    statusInflight.clear();
+    maxStatusInflight.clear();
+    holds.clear();
+    brokenLeases.clear();
+    settlements.length = 0;
   });
 
   let stacks = 0;
-  async function stack(approvals = [{ gameId: NATIVE, children: ["santiago"] }, { gameId: BROWSER, children: ["santiago"] }, { gameId: DAILY_CHESS_GAME_ID, children: ["santiago", "isabel"] }]) {
-    const dataDir = join(dir, `adapter-${(stacks += 1)}`);
-    mkdirSync(dataDir);
-    writeFileSync(join(dataDir, "approvals.json"), JSON.stringify({ version: 1, approvals }));
+  async function stack(approvals = [{ gameId: NATIVE, children: ["santiago"] }, { gameId: BROWSER, children: ["santiago"] }, { gameId: DAILY_CHESS_GAME_ID, children: ["santiago", "isabel"] }], existingDataDir: string | null = null) {
+    const dataDir = existingDataDir ?? join(dir, `adapter-${(stacks += 1)}`);
+    if (!existingDataDir) {
+      mkdirSync(dataDir);
+      writeFileSync(join(dataDir, "approvals.json"), JSON.stringify({ version: 1, approvals }));
+    }
     const server = mod.createChildPlayAdapter({
       key,
       dataDir,
@@ -166,21 +194,33 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
         const id = new URL(url).pathname.split("/").at(-2)!;
         equal(options.headers["x-family-play-signature"], mod.signSettlement(key, Number(options.headers["x-family-play-timestamp"]), id, options.body || ""));
         if (url.endsWith("/status")) {
-          const readAt = new Date(clock + Math.floor(familyLatencyMs / 2));
-          // The status route's own code (readLeaseStatusForMeter; AR01 proves it equals the former two-step read).
-          const snapshot = await readLeaseStatusForMeter(id, readAt, client);
-          clock += familyLatencyMs;
-          return Response.json(snapshot ?? { error: "not-found" }, { status: snapshot ? 200 : 404 });
+          if (brokenLeases.has(id)) throw new Error("isolated outage for this lease");
+          statusReads.set(id, (statusReads.get(id) ?? 0) + 1);
+          const inflight = (statusInflight.get(id) ?? 0) + 1;
+          statusInflight.set(id, inflight);
+          maxStatusInflight.set(id, Math.max(maxStatusInflight.get(id) ?? 0, inflight));
+          try {
+            const readAt = new Date(clock + Math.floor(familyLatencyMs / 2));
+            // The status route's own code (readLeaseStatusForMeter; AR01 proves it equals the former two-step read).
+            const snapshot = await readLeaseStatusForMeter(id, readAt, client);
+            clock += familyLatencyMs;
+            const held = holds.get(id);
+            if (held) await held; // answer produced at readAt, delivered when the test releases it
+            return Response.json(snapshot ?? { error: "not-found" }, { status: snapshot ? 200 : 404 });
+          } finally {
+            statusInflight.set(id, (statusInflight.get(id) ?? 1) - 1);
+          }
         }
         if (settleGate) await settleGate;
         const body = JSON.parse(options.body!);
+        settlements.push(body);
         return Response.json(await settlePlayLease({ ...body, now: new Date(clock) }, client));
       },
     });
     await new Promise<void>((r) => server.listen(0, "127.0.0.1", () => r()));
     const base = `http://127.0.0.1:${(server.address() as { port: number }).port}`;
     const port = (server.address() as { port: number }).port;
-    return { server, base, port, close: async () => { server.settler.stop(); await new Promise((r) => server.close(r)); } };
+    return { server, base, port, dataDir, close: async () => { server.settler.stop(); await new Promise((r) => server.close(r)); } };
   }
   async function allowance(seconds = 900) {
     await client.execute("DELETE FROM family_play_leases");
@@ -1023,6 +1063,627 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
       ok(share300 >= 0.95, `run share at 300 ms: ${share300}`);
     } finally {
       await native.close();
+      await s.close();
+    }
+  });
+
+  // ======================================================================================================================
+  // Planner-owned additional cases AR02-AR07, AR10, LK02 (October 26, 17:08). AR01 lives in
+  // family-play-status-consolidated.test.ts, AR08/AR09/LK01 run on the real clock with the real app, LK03 is rendered.
+  // ======================================================================================================================
+  const INTENT = { active: false, hidden: false, paused: false, foreground: true, grant: null, runMs: null };
+  const report = (base: string, lid: string, token: string, body: Record<string, unknown> = INTENT) => raw(base, "POST", `/v1/play/${lid}/tick`, { origin: ORIGIN, authorization: `Bearer ${token}` }, body);
+  const endAt = (base: string, lid: string, token: string) => raw(base, "POST", `/v1/play/${lid}/end`, { origin: ORIGIN, authorization: `Bearer ${token}` }, { reason: "left", frameStopped: true, grant: null, runMs: null });
+  const redeem = (base: string, ticketValue: string, headers: Record<string, string> = {}) => raw(base, "POST", "/v1/native/redeem", headers, { ticket: ticketValue, gameId: NATIVE });
+  const ticketOf = (r: { json: Record<string, unknown> | null }) => /ticket=(.+)$/.exec(String(r.json?.launchUrl ?? ""))?.[1] ?? "";
+  const familyRow = async (lid: string) => (await client.execute({ sql: "SELECT * FROM family_play_leases WHERE id = ?", args: [lid] })).rows[0] as Record<string, unknown> | undefined;
+  const issueFor = async (person: "santiago" | "isabel", lid: string, gameId: string, takeover = true) => {
+    const r = await issuePlayLease({ personId: person, gameId, mode: "play", leaseId: lid, takeover, deviceLabel: "computer", now: new Date(clock) }, client);
+    ok(r.ok, JSON.stringify(r));
+    return r.ok ? r.lease : null!;
+  };
+  /** Step the clock until `lid`'s ticket is issued (B becomes playable at the meter); returns that instant. */
+  async function firstPlayable(base: string, lid: string, token: string, from: number, to: number) {
+    for (let t = from; t <= to; t += 100) {
+      clock = t;
+      if ((await ticket(base, lid, token)).status === 201) return t;
+    }
+    return null;
+  }
+
+  // ---- AR02 -------------------------------------------------------------------------------------------------------
+  it("AR02 real fencing, not a freshness TTL: status versus end/takeover in both orders, replies delayed below and at the 2 s boundary", async () => {
+    const cases: Record<string, unknown>[] = [];
+    for (const order of ["takeover-before-reply", "reply-before-takeover"]) {
+      for (const delay of [0, 1000, 1999, 2000]) {
+        await allowance();
+        clock = t0;
+        const A = `lease-ar02-a-${order.slice(0, 1)}${delay}`;
+        const B = `lease-ar02-b-${order.slice(0, 1)}${delay}`;
+        await issue(A);
+        const s = await stack();
+        try {
+          const tokA = cred(A);
+          equal((await ticket(s.base, A, tokA)).status, 201);
+          // A's report at t2: Family snapshots A at once; the reply reaches the meter `delay` ms later.
+          clock = t0 + 2000;
+          const release = holdStatus(A);
+          const pending = report(s.base, A, tokA);
+          await untilReading(A);
+          if (order === "takeover-before-reply") { clock = t0 + 2500; await issue(B); }
+          clock = t0 + 2000 + delay;
+          release();
+          const r = await pending;
+          const repliedAt = clock;
+          if (order === "reply-before-takeover") { clock = repliedAt + 1; await issue(B); }
+          const rowA = (await familyRow(A))!;
+          // Family's fence for A: the end of the window it granted (A's end takes effect there unless A's meter reports
+          // its end first — the documented early release of the handover).
+          const familyFence = Date.parse(String(rowA["ended_at"] ?? rowA["authority_until"]));
+          // The deadline the app holds: counted from the instant it SENT the report (t2), as the native core and the
+          // meter's recorded frame deadline do; a deadline already past when the reply arrives thaws nothing.
+          const grantMs = r.status === 200 && typeof r.json?.authorizedForMs === "number" ? Number(r.json.authorizedForMs) : 0;
+          const handed = t0 + 2000 + grantMs;
+          const effectiveHanded = grantMs > 0 && handed > repliedAt ? handed : null;
+          const meterFrameDeadline = (s.server.store.loadLease(A)?.frameDeadline as number | null | undefined) ?? null;
+          const tokB = cred(B);
+          const bFirst = await firstPlayable(s.base, B, tokB, clock, familyFence + 3000);
+          cases.push({ order, delay, replyStatus: r.status, grantMs, handedPastFamilyFenceMs: grantMs > 0 ? handed - familyFence : null, effectiveHanded: effectiveHanded !== null, meterFrameDeadlineMatches: meterFrameDeadline === effectiveHanded, bFirstMinusHandedMs: bFirst === null ? null : effectiveHanded === null ? 0 : bFirst - effectiveHanded, bFirstMinusFamilyFenceMs: bFirst === null ? null : bFirst - familyFence });
+        } finally {
+          await s.close();
+        }
+      }
+    }
+    // No grant reaches past Family's fence; the successor never becomes playable before the deadline the predecessor's
+    // app actually holds (Family's own fence may be released earlier by the predecessor's terminal report).
+    const noGrantPastFence = cases.every((c) => c.handedPastFamilyFenceMs === null || (c.handedPastFamilyFenceMs as number) <= 0) && cases.every((c) => c.meterFrameDeadlineMatches === true);
+    const successorNeverPlayableBeforeFence = cases.every((c) => c.bFirstMinusHandedMs !== null && (c.bFirstMinusHandedMs as number) >= 0);
+    record("AR02", { casesRun: cases.length, noGrantPastFence, successorNeverPlayableBeforeFence, staleReplyAuthorizedPastFence: !noGrantPastFence, cases: JSON.stringify(cases) });
+    ok(noGrantPastFence, JSON.stringify(cases));
+    ok(successorNeverPlayableBeforeFence, JSON.stringify(cases));
+  });
+
+  // ---- AR03 -------------------------------------------------------------------------------------------------------
+  it("AR03 expiry and final-await gates: no launch or gameplay authority from an expired credential/window, checked after every await and at commit", async () => {
+    await allowance();
+    clock = t0;
+    await issue("lease-ar03-a");
+    const s = await stack();
+    try {
+      // An expired credential gets no ticket and no report.
+      const short = cred("lease-ar03-a", NATIVE, { ttl: 5 });
+      equal((await ticket(s.base, "lease-ar03-a", short)).status, 201);
+      clock = t0 + 6000;
+      const expiredTicket = await ticket(s.base, "lease-ar03-a", short);
+      const expiredReport = await report(s.base, "lease-ar03-a", short);
+      // Expiry while a Family read is in flight: the reply is checked against the clock AFTER the await.
+      await allowance();
+      clock = t0 + 10_000;
+      await issue("lease-ar03-b");
+      const tokB = cred("lease-ar03-b", NATIVE, { ttl: 5 });
+      equal((await ticket(s.base, "lease-ar03-b", tokB)).status, 201);
+      clock = t0 + 14_500;
+      const release = holdStatus("lease-ar03-b");
+      const slow = report(s.base, "lease-ar03-b", tokB);
+      await untilReading("lease-ar03-b");
+      clock = t0 + 15_500; // past the credential's expiry (t0+15 s)
+      release();
+      const slowReply = await slow;
+      // A reply whose authority window lapsed before it was applied grants nothing (both reads arrive after 2.1 s).
+      await allowance();
+      clock = t0 + 30_000;
+      await issue("lease-ar03-c");
+      const tokC = cred("lease-ar03-c");
+      equal((await ticket(s.base, "lease-ar03-c", tokC)).status, 201);
+      clock = t0 + 31_000;
+      familyLatencyMs = 2100;
+      const lapsed = await report(s.base, "lease-ar03-c", tokC);
+      familyLatencyMs = 0;
+      // Local replacement: once the successor is active on this meter, the predecessor is refused.
+      clock += 3000;
+      await issue("lease-ar03-d");
+      const tokD = cred("lease-ar03-d");
+      const dFirst = await firstPlayable(s.base, "lease-ar03-d", tokD, clock, clock + 6000);
+      const afterReplacement = await report(s.base, "lease-ar03-c", tokC);
+      const meterC = s.server.store.loadLease("lease-ar03-c")!;
+      const observed = {
+        expiredCredentialTicketRefused: expiredTicket.status === 401,
+        expiredCredentialReportRefused: expiredReport.status === 401,
+        expiryDuringSlowRenewalRefused: slowReply.status === 401 && !(Number(slowReply.json?.authorizedForMs ?? 0) > 0),
+        grantAfterWindowLapseMs: Number(lapsed.json?.authorizedForMs ?? 0),
+        lapsedReplyStatus: lapsed.status,
+        localReplacementFenceHeld: dFirst !== null && afterReplacement.status === 410 && meterC.state === "ended" && !(Number(afterReplacement.json?.authorizedForMs ?? 0) > 0),
+        expiredTicketStatus: expiredTicket.status,
+        expiredReportStatus: expiredReport.status,
+        slowReplyStatus: slowReply.status,
+        afterReplacementStatus: afterReplacement.status,
+      };
+      record("AR03", observed);
+      ok(observed.expiredCredentialTicketRefused && observed.expiredCredentialReportRefused && observed.expiryDuringSlowRenewalRefused && observed.localReplacementFenceHeld, JSON.stringify(observed));
+      equal(observed.grantAfterWindowLapseMs, 0);
+    } finally {
+      await s.close();
+    }
+  });
+
+  // ---- AR04 -------------------------------------------------------------------------------------------------------
+  it("AR04 single-flight renewal: a burst of reports for one lease costs one Family read; another lease is not held up", async () => {
+    await allowance();
+    await client.execute({ sql: "INSERT INTO family_play_allowances VALUES ('isabel', 900, 0, ?)", args: [new Date(t0).toISOString()] });
+    clock = t0;
+    await issue("lease-ar04-a");
+    await issueFor("isabel", "lease-ar04-x", BROWSER);
+    const s = await stack([{ gameId: NATIVE, children: ["santiago"] }, { gameId: BROWSER, children: ["santiago", "isabel"] }]);
+    try {
+      const tokA = cred("lease-ar04-a");
+      const tokX = cred("lease-ar04-x", BROWSER, { sub: "isabel" });
+      equal((await ticket(s.base, "lease-ar04-a", tokA)).status, 201);
+      equal((await report(s.base, "lease-ar04-x", tokX)).status, 200);
+      clock = t0 + 1000;
+      const readsBefore = statusReads.get("lease-ar04-a") ?? 0;
+      const release = holdStatus("lease-ar04-a");
+      const burst = Array.from({ length: 5 }, () => report(s.base, "lease-ar04-a", tokA));
+      await untilReading("lease-ar04-a");
+      // Meanwhile another child's lease is served normally.
+      const other = await report(s.base, "lease-ar04-x", tokX);
+      const aStillHeld = (statusInflight.get("lease-ar04-a") ?? 0) === 1;
+      release();
+      const replies = await Promise.all(burst);
+      const observed = {
+        burstReplies: replies.map((r) => r.status).join(","),
+        maxConcurrentFamilyReadsPerLease: maxStatusInflight.get("lease-ar04-a") ?? 0,
+        familyReadsForConcurrentBurst: (statusReads.get("lease-ar04-a") ?? 0) - readsBefore,
+        otherLeaseIsolated: other.status === 200 && aStillHeld,
+        pendingRenewalsAfterBurst: statusInflight.get("lease-ar04-a") ?? 0,
+      };
+      record("AR04", observed);
+      equal(observed.burstReplies, "200,200,200,200,200");
+      equal(observed.familyReadsForConcurrentBurst, 1);
+      ok(observed.otherLeaseIsolated);
+    } finally {
+      await s.close();
+    }
+  });
+
+  // ---- AR05 -------------------------------------------------------------------------------------------------------
+  it("AR05 late-result fencing: an answer completing after end, expiry, takeover or a newer answer cannot revive or overwrite", async () => {
+    // Each scenario holds lease A's Family answer (snapshot taken, reply delayed) while the lease is moved on, on ONE
+    // meter (two live instances on one store cannot exist: one instance per data directory).
+    const scenario = async (name: string, ttl: number, move: (st: Awaited<ReturnType<typeof stack>>, lid: string, tok: string) => Promise<unknown>) => {
+      await allowance();
+      clock = t0;
+      const lid = `lease-ar05-${name}`;
+      await issue(lid);
+      const st = await stack();
+      try {
+        const tok = cred(lid, NATIVE, { ttl });
+        equal((await ticket(st.base, lid, tok)).status, 201);
+        clock = t0 + 1000;
+        const release = holdStatus(lid);
+        const late = report(st.base, lid, tok);
+        await untilReading(lid);
+        const moved = move(st, lid, tok); // may itself wait for the lease lock held by the late report
+        await new Promise((r) => setTimeout(r, 20));
+        release();
+        const reply = await late;
+        const moveResult = await moved;
+        await st.server.settler.flush();
+        const after = st.server.store.loadLease(lid) as Record<string, unknown>;
+        return { reply, after, moveResult };
+      } finally {
+        await st.close();
+      }
+    };
+    // (1) The app ends the session while its previous report waits for Family: the end's receipt is persisted first.
+    const ended = await scenario("end", 1200, async (st, lid, tok) => { clock = t0 + 1200; return endAt(st.base, lid, tok); });
+    // (2) The credential expires while the answer is on its way.
+    const expired = await scenario("expiry", 2, async () => { clock = t0 + 2500; });
+    // (3) A successor's activation ends A on this meter (handover path) while A's answer is still on its way.
+    const takeover = await scenario("takeover", 1200, async (st, lid) => {
+      clock = t0 + 1500;
+      await issue(`${lid}-b`);
+      return ticket(st.base, `${lid}-b`, cred(`${lid}-b`));
+    });
+    // (4) An answer older than the one already applied (unreachable through HTTP within one instance — see
+    //     applyStatusAnswer): applied after a newer one, it moves neither window nor cap.
+    await allowance();
+    clock = t0;
+    await issue("lease-ar05-older");
+    const o = await stack();
+    let lateOlderResultOverwroteNewer = true;
+    let newerApplied = false;
+    try {
+      const tok = cred("lease-ar05-older");
+      equal((await ticket(o.base, "lease-ar05-older", tok)).status, 201);
+      const status = (budgetSeconds: number) => ({ leaseId: "lease-ar05-older", state: "active", personId: "santiago", gameId: NATIVE, budgetSeconds, metered: true, budgetKind: "paid", authorizedForSeconds: 2 });
+      clock = t0 + 3000;
+      const newer = await o.server.applyStatusAnswer("lease-ar05-older", { ok: true, status: status(600), requestedAt: t0 + 2900, authorizedUntil: t0 + 4900 });
+      newerApplied = (newer?.lease?.authorityUntil === t0 + 4900) && newer?.lease?.budget === 600;
+      const snapshot = JSON.stringify(o.server.store.loadLease("lease-ar05-older"));
+      await o.server.applyStatusAnswer("lease-ar05-older", { ok: true, status: status(900), requestedAt: t0 + 2500, authorizedUntil: t0 + 4500 });
+      lateOlderResultOverwroteNewer = JSON.stringify(o.server.store.loadLease("lease-ar05-older")) !== snapshot;
+    } finally {
+      await o.close();
+    }
+    // (5) Family errors are handled: the report fails closed, nothing changes, the meter keeps serving.
+    await allowance();
+    clock = t0;
+    await issue("lease-ar05-error");
+    const e = await stack();
+    let errorHandled = false;
+    try {
+      const tok = cred("lease-ar05-error");
+      equal((await ticket(e.base, "lease-ar05-error", tok)).status, 201);
+      clock = t0 + 1000;
+      brokenLeases.add("lease-ar05-error");
+      const failed = await report(e.base, "lease-ar05-error", tok);
+      brokenLeases.delete("lease-ar05-error");
+      const health = await raw(e.base, "GET", "/v1/health", {});
+      const afterErr = e.server.store.loadLease("lease-ar05-error")!;
+      clock = t0 + 1500;
+      const recovered = await report(e.base, "lease-ar05-error", tok);
+      errorHandled = failed.status === 503 && health.status === 200 && afterErr.state === "active" && afterErr.consumed === 0 && recovered.status === 200;
+    } finally {
+      await e.close();
+    }
+    const grantOf = (r: { status: number; json: Record<string, unknown> | null }) => (r.status === 200 ? Number(r.json?.authorizedForMs ?? 0) : 0);
+    const observed = {
+      lateResultAfterEndRevived: ended.after.state !== "ended" || Number(ended.after.consumed) !== 0,
+      lateResultAfterExpiryRevived: expired.after.state !== "ended" || grantOf(expired.reply) > 0,
+      lateResultAfterTakeoverRevived: takeover.after.state !== "ended" || grantOf(takeover.reply) > 0,
+      lateOlderResultOverwroteNewer: lateOlderResultOverwroteNewer || !newerApplied,
+      familyErrorHandled: errorHandled,
+      lateReplies: [ended.reply.status, expired.reply.status, takeover.reply.status].join(","),
+      endStatus: (ended.moveResult as { status: number }).status,
+      successorTicketStatus: (takeover.moveResult as { status: number }).status,
+    };
+    record("AR05", observed);
+    ok(!observed.lateResultAfterEndRevived && !observed.lateResultAfterExpiryRevived && !observed.lateResultAfterTakeoverRevived && !observed.lateOlderResultOverwroteNewer && observed.familyErrorHandled, JSON.stringify(observed));
+  });
+
+  // ---- AR06 -------------------------------------------------------------------------------------------------------
+  it("AR06 evidence-conserving terminal paths: observed foreground kept, unobserved time never billed, reserve conserved (R6-1)", async () => {
+    /** Frames every 100 ms on a clock that never runs back (a slow Family read may move it), reports every second. */
+    async function run(native: Native, from: number, to: number) {
+      let runFrames = 0;
+      let lastTick = Number.NEGATIVE_INFINITY;
+      for (let t = from; t <= to; t += 100) {
+        if (clock > t) t = clock;
+        await at(native, t);
+        if (t - lastTick >= 1000) { await native.send("tick"); lastTick = t; if (clock > t) { t = clock; await at(native, t); } }
+        if ((await native.send("frame")).run) runFrames += 1;
+        await native.send("beacon");
+      }
+      return runFrames;
+    }
+    const sessionsObserved = (l: Record<string, unknown>) => [...((l.closedSessions as { observed?: number }[] | undefined) ?? []), ...(l.session ? [l.session as { observed?: number }] : [])].reduce((n, x) => n + (x.observed ?? 0), 0);
+    const paths: Record<string, unknown>[] = [];
+    const path = async (name: string, body: (ctx: { s: Awaited<ReturnType<typeof stack>>; native: Native; lid: string; tok: string }) => Promise<{ s: Awaited<ReturnType<typeof stack>>; runFrames: number; successor?: string }>, ttl = 1200) => {
+      await allowance();
+      clock = t0;
+      const lid = `lease-ar06-${name}`;
+      await issue(lid);
+      const s0 = await stack();
+      const native = new Native();
+      let s = s0;
+      try {
+        const tok = cred(lid, NATIVE, { ttl });
+        await at(native, t0);
+        await launch(native, s0, lid, tok);
+        await native.send("game 1");
+        const r = await body({ s: s0, native, lid, tok });
+        s = r.s;
+        await s.server.settler.flush();
+        const meter = s.server.store.loadLease(lid)!;
+        const fam = await famLease(lid);
+        const appRan = r.runFrames / 10;
+        const next = r.successor ?? `${lid}-next`;
+        if (!r.successor) { clock += 1000; await issue(next); }
+        const nextBudget = (await famLease(next)).budgetSeconds;
+        const row = {
+          path: name,
+          appRanSeconds: appRan,
+          meterConsumed: Math.round(meter.consumed * 1000) / 1000,
+          deliveredObserved: Math.round(sessionsObserved(meter as Record<string, unknown>) * 1000) / 1000,
+          familyConsumed: fam.consumedSeconds,
+          familyFinal: fam.finalSettled,
+          meterState: meter.state,
+          endReason: meter.endReason,
+          nextBudget,
+        };
+        paths.push(row);
+      } finally {
+        await native.close();
+        if (s !== s0) await s0.close().catch(() => {});
+        await s.close().catch(() => {});
+      }
+    };
+    await path("pause", async ({ s, native }) => {
+      const ran = await run(native, t0 + 2000, t0 + 7000);
+      await native.send("pause 1");
+      const paused = await run(native, t0 + 7100, t0 + 12_000);
+      await native.send("pause 0");
+      await stopPlaying(native);
+      await quit(native);
+      return { s, runFrames: ran + paused };
+    });
+    await path("outage", async ({ s, native }) => {
+      const ran = await run(native, t0 + 2000, t0 + 7000);
+      outage = true;
+      const during = await run(native, t0 + 7100, t0 + 67_000);
+      outage = false;
+      await stopPlaying(native);
+      await quit(native);
+      return { s, runFrames: ran + during };
+    });
+    await path("failed-renewal", async ({ s, native }) => {
+      const ran = await run(native, t0 + 2000, t0 + 7000);
+      familyLatencyMs = 2100; // every answer arrives after its 2 s window: unusable
+      const during = await run(native, clock + 100, clock + 8000);
+      familyLatencyMs = 0;
+      await stopPlaying(native);
+      await quit(native);
+      return { s, runFrames: ran + during };
+    });
+    await path("credential-expiry", async ({ s, native }) => {
+      const ran = await run(native, t0 + 2000, t0 + 15_000);
+      await native.send("end");
+      return { s, runFrames: ran };
+    }, 10);
+    await path("explicit-end", async ({ s, native }) => {
+      const ran = await run(native, t0 + 2000, t0 + 7000);
+      await stopPlaying(native);
+      await quit(native);
+      return { s, runFrames: ran };
+    });
+    await path("delayed-ack", async ({ s, native, lid }) => {
+      let releaseAcks!: () => void;
+      settleGate = new Promise<void>((r) => (releaseAcks = r));
+      const ran = await run(native, t0 + 2000, t0 + 35_000);
+      await issue(`${lid}-b`); // Family hands the time to another device at 35 s
+      const after = await run(native, t0 + 35_100, t0 + 45_000);
+      releaseAcks();
+      settleGate = null;
+      await native.send("end");
+      return { s, runFrames: ran + after, successor: `${lid}-b` };
+    });
+    await path("sweep", async ({ s, native }) => {
+      const ran = await run(native, t0 + 2000, t0 + 7000);
+      native.kill(); // crash: no end, no final observation
+      clock = t0 + 7000 + (mod.LEASE_IDLE_END_SECONDS + 60) * 1000;
+      s.server.sweep();
+      return { s, runFrames: ran };
+    });
+    await path("restart", async ({ s, native }) => {
+      const ran = await run(native, t0 + 2000, t0 + 7000);
+      await s.close();
+      const s2 = await stack(undefined, s.dataDir);
+      await native.send(`port ${s2.port}`);
+      const more = await run(native, t0 + 7100, t0 + 12_000);
+      await stopPlaying(native);
+      await quit(native);
+      return { s: s2, runFrames: ran + more };
+    });
+    const billedOk = (p: Record<string, unknown>) => Math.abs((p.meterConsumed as number) - (p.deliveredObserved as number)) <= 0.001 && p.familyConsumed === Math.ceil((p.meterConsumed as number) - 1e-9) && p.familyFinal === true;
+    const unobserved = paths.reduce((n, p) => n + Math.max(0, (p.familyConsumed as number) - Math.ceil((p.appRanSeconds as number) - 1e-9)), 0);
+    const observed = {
+      pathsCovered: paths.length,
+      allPathsBilledEqualsObserved: paths.every(billedOk),
+      unobservedSecondsBilled: unobserved,
+      allPathsReserveConserved: paths.every((p) => p.nextBudget === 900 - (p.familyConsumed as number)),
+      maxObservedNotDeliveredSeconds: Math.max(...paths.map((p) => Math.round(((p.appRanSeconds as number) - (p.deliveredObserved as number)) * 1000) / 1000)),
+      paths: JSON.stringify(paths),
+    };
+    record("AR06", observed);
+    ok(observed.allPathsBilledEqualsObserved && observed.allPathsReserveConserved && unobserved === 0, observed.paths);
+  });
+
+  // ---- AR07 -------------------------------------------------------------------------------------------------------
+  it("AR07 atomic grant/cap view: every reply from one coherent snapshot; stale answers cannot extend grant or cap; exhaustion unchanged", async () => {
+    await allowance();
+    clock = t0;
+    await issue("lease-ar07-a");
+    const s = await stack();
+    const native = new Native();
+    let replyFromSingleSnapshot = true;
+    let grantWithinAuthority = true;
+    try {
+      const tok = cred("lease-ar07-a");
+      await at(native, t0);
+      await launch(native, s, "lease-ar07-a", tok);
+      await native.send("game 1");
+      await play(native, t0 + 1000, t0 + 6000);
+      for (let i = 0; i < 5; i += 1) {
+        clock = t0 + 6100 + i * 300;
+        const r = await report(s.base, "lease-ar07-a", tok, { active: false, hidden: false, paused: false, foreground: true, grant: null, runMs: null });
+        const l = s.server.store.loadLease("lease-ar07-a")! as Record<string, unknown> & { consumed: number };
+        const budget = Number(l.budget);
+        const authorityUntil = Number(l.authorityUntil);
+        if (Number(r.json?.consumedSeconds) !== Math.round(l.consumed) && Number(r.json?.consumedSeconds) !== l.consumed) replyFromSingleSnapshot = false;
+        if (Number(r.json?.remainingSeconds) > budget - l.consumed + 0.001) replyFromSingleSnapshot = false;
+        if (Number(r.json?.authorizedForMs ?? 0) > authorityUntil - clock) grantWithinAuthority = false;
+      }
+    } finally {
+      await native.close();
+      await s.close();
+    }
+    // A stale answer applied after a newer one (see AR05) must not raise the cap or extend the window.
+    await allowance();
+    clock = t0;
+    await issue("lease-ar07-b");
+    const o = await stack();
+    let staleReplyExtendedGrant = true;
+    let staleReplyRaisedCap = true;
+    try {
+      equal((await ticket(o.base, "lease-ar07-b", cred("lease-ar07-b"))).status, 201);
+      const status = (budgetSeconds: number) => ({ leaseId: "lease-ar07-b", state: "active", personId: "santiago", gameId: NATIVE, budgetSeconds, metered: true, budgetKind: "paid", authorizedForSeconds: 2 });
+      clock = t0 + 3000;
+      await o.server.applyStatusAnswer("lease-ar07-b", { ok: true, status: status(600), requestedAt: t0 + 2900, authorizedUntil: t0 + 4900 });
+      await o.server.applyStatusAnswer("lease-ar07-b", { ok: true, status: status(900), requestedAt: t0 + 2950, authorizedUntil: t0 + 4950 - 100 });
+      await o.server.applyStatusAnswer("lease-ar07-b", { ok: true, status: status(900), requestedAt: t0 + 2000, authorizedUntil: t0 + 5500 });
+      const l = o.server.store.loadLease("lease-ar07-b")! as Record<string, unknown>;
+      staleReplyExtendedGrant = Number(l.authorityUntil) !== t0 + 4950 - 100;
+      staleReplyRaisedCap = Number(l.budget) > 900;
+      // The newest answer (2950) applies in full — including its larger budget, which IS Family's authority at its read.
+      staleReplyExtendedGrant = staleReplyExtendedGrant || Number(l.authorityReadAt) !== t0 + 2950;
+    } finally {
+      await o.close();
+    }
+    // Exhaustion and the save tail as in DR07 (same lease rules, same numbers).
+    await allowance(130);
+    clock = t0;
+    await issue("lease-ar07-exh");
+    const e = await stack();
+    const en = new Native();
+    let warnings = 0;
+    let graces = 0;
+    let endReason = "";
+    let stopGame = false;
+    try {
+      await at(en, t0);
+      await launch(en, e, "lease-ar07-exh", cred("lease-ar07-exh", NATIVE, { budget: 130 }));
+      await en.send("game 1");
+      let lastTick = Number.NEGATIVE_INFINITY;
+      for (let t = t0; t <= t0 + 240_000; t += 100) {
+        await at(en, t);
+        if (t - lastTick >= 1000) { await en.send("tick"); lastTick = t; }
+        const n = await en.send("notice");
+        if (n.notice === "warning") warnings += 1;
+        if (n.notice === "grace") graces += 1;
+        const f = await en.send("frame");
+        await en.send("beacon");
+        if (f.hold === "ended") { stopGame = f.stopGame === true; endReason = String((await en.send("state")).endReason); break; }
+      }
+      await en.send("game 0");
+      await en.send("end");
+      await e.server.settler.flush();
+    } finally {
+      await en.close();
+      await e.close();
+    }
+    const exhaustionSaveTailUnchanged = warnings === 1 && graces === 1 && endReason === "exhausted" && stopGame && (await famRemaining()) === 0 && e.server.store.loadLease("lease-ar07-exh")!.consumed === 130;
+    const observed = { replyFromSingleSnapshot: replyFromSingleSnapshot && grantWithinAuthority, staleReplyExtendedGrant, staleReplyRaisedCap, exhaustionSaveTailUnchanged, warnings, graces, endReason };
+    record("AR07", observed);
+    ok(observed.replyFromSingleSnapshot && !staleReplyExtendedGrant && !staleReplyRaisedCap && exhaustionSaveTailUnchanged, JSON.stringify(observed));
+  });
+
+  // ---- AR10 -------------------------------------------------------------------------------------------------------
+  it("AR10 unused-time reconciliation: abandoned launch and an end during a slow renewal keep the full unused budget; terminal reports idempotent and confined", async () => {
+    await allowance();
+    clock = t0;
+    // Abandoned launch: the link was issued (the meter activated the lease), the child left before clicking.
+    await issue("lease-ar10-left");
+    const s = await stack();
+    const native = new Native();
+    try {
+      const tokL = cred("lease-ar10-left");
+      equal((await ticket(s.base, "lease-ar10-left", tokL)).status, 201);
+      clock = t0 + 5000;
+      await endPlayLease({ leaseId: "lease-ar10-left", personId: "santiago", reason: "left", now: new Date(clock) }, client); // the page: Family first
+      await endAt(s.base, "lease-ar10-left", tokL); // then the meter
+      await s.server.settler.flush();
+      clock = t0 + 6000;
+      const a = await issue("lease-ar10-a");
+      const abandonedLaunchFullBudget = a.budgetSeconds === 900 && (await famLease("lease-ar10-left")).finalSettled === true;
+      // End during a slow renewal: 5 s played, the app's last report waits for Family while the app ends the session.
+      const tokA = cred("lease-ar10-a");
+      await at(native, t0 + 6000);
+      await launch(native, s, "lease-ar10-a", tokA);
+      await native.send("game 1");
+      await play(native, t0 + 7000, t0 + 12_000);
+      await native.send("game 0");
+      clock = t0 + 12_100;
+      const release = holdStatus("lease-ar10-a");
+      const slow = report(s.base, "lease-ar10-a", tokA, { active: false, hidden: false, paused: true, foreground: false, grant: null, runMs: null });
+      await untilReading("lease-ar10-a");
+      clock = t0 + 12_300;
+      const ending = endAt(s.base, "lease-ar10-a", tokA);
+      await new Promise((r) => setTimeout(r, 20));
+      release();
+      await slow;
+      await ending;
+      await s.server.settler.flush();
+      const famA = await famLease("lease-ar10-a");
+      const meterA = s.server.store.loadLease("lease-ar10-a")!;
+      // Billed = the observed play (5.1 s of frames, delivered) rounded up once; everything else stays available.
+      const endDuringSlowRenewalFullUnused = famA.finalSettled === true && meterA.state === "ended" && famA.consumedSeconds === Math.ceil(meterA.consumed - 1e-9) && meterA.consumed <= 5.1 + 1e-9 && (await famRemaining()) === 900 - famA.consumedSeconds;
+      // Repeated ends add nothing; a subsequent session gets exactly the unused time.
+      await endAt(s.base, "lease-ar10-a", tokA);
+      await endAt(s.base, "lease-ar10-a", tokA);
+      await s.server.settler.flush();
+      clock = t0 + 20_000;
+      const next = await issue("lease-ar10-next");
+      const subsequentSessionFullBudget = next.budgetSeconds === 900 - famA.consumedSeconds;
+      const finals = (lid: string) => settlements.filter((b) => b.leaseId === lid && b.end === true).length;
+      const ids = new Set(settlements.map((b) => String(b.leaseId)));
+      const observed = {
+        abandonedLaunchFullBudget,
+        endDuringSlowRenewalFullUnused,
+        subsequentSessionFullBudget,
+        terminalReportsIdempotent: finals("lease-ar10-a") === 1 && finals("lease-ar10-left") === 1,
+        terminalReportsConfinedToLease: [...ids].every((id) => id === "lease-ar10-left" || id === "lease-ar10-a"),
+        consumedA: famA.consumedSeconds,
+        meterObservedA: meterA.consumed,
+        nextBudget: next.budgetSeconds,
+        settlementLeases: [...ids].join(","),
+      };
+      record("AR10", observed);
+      ok(observed.abandonedLaunchFullBudget && observed.endDuringSlowRenewalFullUnused && observed.subsequentSessionFullBudget && observed.terminalReportsIdempotent && observed.terminalReportsConfinedToLease, JSON.stringify(observed));
+    } finally {
+      await native.close();
+      await s.close();
+    }
+  });
+
+  // ---- LK02 -------------------------------------------------------------------------------------------------------
+  it("LK02 ticket denial invariants: expired, replayed, wrong-child, remote-device, ended and replaced-lease links stay refused", async () => {
+    await allowance();
+    await client.execute({ sql: "INSERT INTO family_play_allowances VALUES ('isabel', 900, 0, ?)", args: [new Date(t0).toISOString()] });
+    clock = t0;
+    await issue("lease-lk02-a");
+    const s = await stack([{ gameId: NATIVE, children: ["santiago"] }, { gameId: BROWSER, children: ["santiago", "isabel"] }]);
+    try {
+      const tok = cred("lease-lk02-a");
+      const t1 = ticketOf(await ticket(s.base, "lease-lk02-a", tok));
+      clock = t0 + 60_001;
+      const expired = await redeem(s.base, t1);
+      const t2 = ticketOf(await ticket(s.base, "lease-lk02-a", tok));
+      const t3 = ticketOf(await ticket(s.base, "lease-lk02-a", tok));
+      const first = await redeem(s.base, t3);
+      const replay = await redeem(s.base, t3);
+      const sibling = await redeem(s.base, t2);
+      // Another child's credential for this lease, a remote device through the proxy, a proxied redemption.
+      const wrongChild = await ticket(s.base, "lease-lk02-a", cred("lease-lk02-a", NATIVE, { sub: "isabel" }));
+      const remoteTicket = await raw(s.base, "POST", "/v1/native/lease-lk02-a/ticket", { origin: ORIGIN, authorization: `Bearer ${tok}`, "x-forwarded-for": "100.101.102.103" }, {});
+      const t4 = ticketOf(await ticket(s.base, "lease-lk02-a", tok));
+      const remoteRedeem = await redeem(s.base, t4, { "x-forwarded-for": "100.101.102.103" });
+      // Ended lease: its outstanding link is refused.
+      await endAt(s.base, "lease-lk02-a", tok);
+      const endedRedeem = await redeem(s.base, t4);
+      // Replaced lease: a link issued before a takeover is refused once the successor runs on this meter.
+      await allowance();
+      clock = t0 + 70_000;
+      await issue("lease-lk02-r");
+      const tokR = cred("lease-lk02-r");
+      const tr = ticketOf(await ticket(s.base, "lease-lk02-r", tokR));
+      clock = t0 + 71_000;
+      await issue("lease-lk02-s");
+      const sFirst = await firstPlayable(s.base, "lease-lk02-s", cred("lease-lk02-s"), clock, clock + 6000);
+      const replaced = await redeem(s.base, tr);
+      const observed = {
+        expiredRefused: expired.status === 410,
+        replayRefused: first.status === 200 && replay.status === 410,
+        wrongChildRefused: wrongChild.status === 403,
+        remoteDeviceRefused: remoteTicket.status === 403 && remoteRedeem.status === 403,
+        endedLeaseRefused: endedRedeem.status === 410,
+        replacedLeaseRefused: sFirst !== null && replaced.status === 410,
+        siblingTicketAfterRedeemRefused: sibling.status === 410,
+        preTakeoverTicketRefused: sFirst !== null && replaced.status === 410,
+        statuses: [expired.status, first.status, replay.status, sibling.status, wrongChild.status, remoteTicket.status, remoteRedeem.status, endedRedeem.status, replaced.status].join(","),
+      };
+      record("LK02", observed);
+      ok(Object.entries(observed).filter(([k]) => k !== "statuses").every(([, v]) => v === true), JSON.stringify(observed));
+    } finally {
       await s.close();
     }
   });
