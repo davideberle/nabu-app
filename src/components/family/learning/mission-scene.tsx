@@ -30,6 +30,7 @@ import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import type { NoktMode } from "@/lib/family-learning-nokt";
 import { browserSpeech, playListening } from "@/lib/family-learning-listening";
 import { TypingBlock, type Act } from "./mission-world";
+import { useStorySpeech } from "./narration";
 import { NoktButton, NoktPanel, type NoktTranscribe, type NoktTurnFn } from "./nokt-panel";
 import { PlanGrid } from "./plan-grid";
 import { Counters } from "./workshop-pictures";
@@ -53,7 +54,7 @@ const secondary = { background: "#e6eee7", color: "#21484b" } as const;
 const nextStyle = { background: DEEP, color: "white" } as const;
 const card = "rounded-3xl p-5 shadow-sm sm:p-7";
 
-export type SceneTelemetry = (name: "hint-open" | "nokt-offer-dismiss" | "line-audio" | "listen-play" | "beat-next" | "tutor-open" | "tutor-close" | "narration-replay" | "narration-stop" | "narration-unlock" | "narration-recorded" | "narration-device-de" | "narration-no-german-voice" | "narration-blocked") => void;
+export type SceneTelemetry = (name: "hint-open" | "nokt-offer-dismiss" | "line-audio" | "listen-play" | "beat-next" | "tutor-open" | "tutor-close" | "narration-replay" | "narration-stop" | "narration-unlock" | "narration-recorded" | "narration-device-de" | "narration-no-german-voice" | "narration-missing-recording" | "narration-blocked") => void;
 
 export type MissionSceneProps = {
   child: ChildId;
@@ -138,7 +139,7 @@ export function MissionScene({ child, view, mission, busy, act, speech, noktMode
               <div className={cn("relative mx-3 -mt-6 mb-3 rounded-3xl px-5 py-4 shadow-lg", noktOpen ? "xl:absolute xl:left-6 xl:top-6 xl:m-0 xl:max-w-[min(52%,520px)]" : "sm:absolute sm:left-6 sm:top-6 sm:m-0 sm:max-w-[min(62%,520px)]")} style={{ background: "#fffef6" }} data-testid="scene-bubble" role="group" aria-label={speaker ? `${speaker.name} sagt` : "Erzählung"}>
                 <span aria-hidden className={cn("absolute -right-4 bottom-6 hidden border-[12px] border-transparent", noktOpen ? "xl:block" : "sm:block")} style={{ borderLeftColor: "#fffef6" }} />
                 {speaker ? <p className="text-sm font-bold uppercase tracking-wide" style={{ color: "#a34431" }}>{speaker.name}</p> : null}
-                <BubbleLines lines={lines} child={child} step={active?.id ?? ""} offset={active && active.status !== "active" ? active.intro.length : 0} act={act} busy={busy} speech={speech} telemetry={telemetry} />
+                <BubbleLines lines={lines} child={child} step={active?.id ?? ""} offset={active && active.status !== "active" ? active.intro.length : 0} act={act} busy={busy} speech={speech} telemetry={telemetry} characters={mission.characters} />
                 {facts ? (
                   <ul className="mt-2 flex flex-wrap gap-2" aria-label="Was du weisst" data-testid="scene-facts">
                     {facts.map((f) => (
@@ -189,7 +190,7 @@ export function MissionScene({ child, view, mission, busy, act, speech, noktMode
 
 // --- the speech bubble ----------------------------------------------------------
 
-function BubbleLines({ lines, child, step, offset, act, busy, speech, telemetry }: { lines: MissionActiveView["intro"]; child: ChildId; step: string; offset: number; act: Act; busy: boolean; speech: ChildSpeechPlayer; telemetry: SceneTelemetry }) {
+function BubbleLines({ lines, child, step, offset, act, busy, speech, telemetry, characters = [] }: { lines: MissionActiveView["intro"]; child: ChildId; step: string; offset: number; act: Act; busy: boolean; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; characters?: MissionView["characters"] }) {
   return (
     <div className="grid gap-2">
       {lines.map((l, i) => {
@@ -201,7 +202,7 @@ function BubbleLines({ lines, child, step, offset, act, busy, speech, telemetry 
             </p>
             {foreign ? (
               <div className="mt-1 flex flex-wrap items-center gap-3">
-                <LineAudio text={l.text} language={l.language as "en" | "es"} child={child} speech={speech} onPlayed={(outcome) => { telemetry("line-audio"); void act({ a: "line-audio", step, line: i + offset, outcome }); }} />
+                <LineAudio text={l.text} language={l.language as "en" | "es"} speaker={l.speaker} characters={characters} child={child} speech={speech} onPlayed={(outcome) => { telemetry("line-audio"); void act({ a: "line-audio", step, line: i + offset, outcome }); }} />
                 {l.translated ? (
                   <span className="text-base italic" data-testid="bubble-translation">
                     Auf Deutsch: {l.translated}
@@ -220,11 +221,20 @@ function BubbleLines({ lines, child, step, offset, act, busy, speech, telemetry 
   );
 }
 
-function LineAudio({ text, language, child, speech, onPlayed }: { text: string; language: "en" | "es"; child: ChildId; speech: ChildSpeechPlayer; onPlayed: (outcome: "child-voice" | "browser" | "failed") => void }) {
-  const [state, setState] = useState<"idle" | "playing" | "failed">("idle");
+function LineAudio({ text, language, speaker = null, characters = [], child, speech, onPlayed }: { text: string; language: "en" | "es"; speaker?: string | null; characters?: MissionView["characters"]; child: ChildId; speech: ChildSpeechPlayer; onPlayed: (outcome: "child-voice" | "browser" | "failed" | "recorded") => void }) {
+  const [state, setState] = useState<"idle" | "playing" | "failed" | "missing">("idle");
+  const story = useStorySpeech(characters);
   const play = async () => {
     speech.unlock();
     setState("playing");
+    // Story voices (2026-10-29): with a selected voice for this line's language × character, only its recording plays.
+    const own = await story(text, language, speaker);
+    if (own === "cancelled") return setState("idle");
+    if (own) {
+      setState(own === "recorded" ? "idle" : own === "missing" ? "missing" : "failed");
+      onPlayed(own === "recorded" ? "recorded" : "failed");
+      return;
+    }
     // The character speaks in its own language; with no voice for that language the browser speaks it — never the wrong accent.
     const outcome = await playListening(text, language, { voice: (t) => speech.speak({ childId: child, text: t, language, speaker: "character" }), browser: browserSpeech() });
     if (outcome === "cancelled") return setState("idle");
@@ -233,7 +243,7 @@ function LineAudio({ text, language, child, speech, onPlayed }: { text: string; 
   };
   return (
     <button type="button" className="inline-flex items-center gap-1 text-base font-semibold underline underline-offset-4" onClick={() => void play()} disabled={state === "playing"} data-testid="bubble-audio" data-state={state}>
-      <SpeakerIcon /> {state === "playing" ? "… spielt" : state === "failed" ? "Ton geht nicht — nochmal?" : "Anhören"}
+      <SpeakerIcon /> {state === "playing" ? "… spielt" : state === "missing" ? "⚠ Aufnahme fehlt" : state === "failed" ? "Ton geht nicht — nochmal?" : "Anhören"}
     </button>
   );
 }
@@ -275,7 +285,7 @@ function ActiveTask({ child, view, mission, active, busy, act, speech, telemetry
   return (
     <div className="grid gap-4">
       {active.kind === "solve" && active.solve ? <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} /> : null}
-      {active.kind === "listen" ? <ListenTask child={child} active={active} busy={busy} act={act} speech={speech} telemetry={telemetry} /> : null}
+      {active.kind === "listen" ? <ListenTask child={child} active={active} busy={busy} act={act} speech={speech} telemetry={telemetry} characters={mission.characters} /> : null}
       {active.kind === "recall" || active.kind === "produce" ? <RequestTask active={active} busy={busy} act={act} telemetry={telemetry} /> : null}
       {active.kind === "typing-block" && active.typing ? <TypingBlock block={active.typing} stepId={active.id} busy={busy} act={act} /> : null}
       {active.kind === "write" && active.write ? <WriteTask active={active} busy={busy} act={act} /> : null}
@@ -551,10 +561,11 @@ function Seedling() {
 
 const PLACE_PICTURES: Record<string, "greenhouse" | "gate" | "boat"> = { "Ins Gewächshaus": "greenhouse", "Zum Tor": "gate", "Aufs Boot": "boat", "Im Gewächshaus": "greenhouse", "Am Tor": "gate", "Auf dem Boot": "boat" };
 
-export function ListenTask({ child, active, busy, act, speech, telemetry }: { child: ChildId; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry }) {
+export function ListenTask({ child, active, busy, act, speech, telemetry, characters = [] }: { child: ChildId; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; characters?: MissionView["characters"] }) {
   const listen = active.listen!;
   const [playing, setPlaying] = useState(false);
-  const [last, setLast] = useState<"none" | "child-voice" | "browser" | "failed">("none");
+  const [last, setLast] = useState<"none" | "child-voice" | "browser" | "failed" | "recorded" | "missing">("none");
+  const story = useStorySpeech(characters);
   const play = async () => {
     speech.unlock();
     telemetry("listen-play");
@@ -563,6 +574,14 @@ export function ListenTask({ child, active, busy, act, speech, telemetry }: { ch
     if (!res) return;
     setPlaying(true);
     const script = typeof res.script === "string" ? res.script : "";
+    const own = await story(script, listen.language, active.character);
+    if (own) {
+      setPlaying(false);
+      if (own === "cancelled") return;
+      setLast(own === "recorded" ? "recorded" : own === "missing" ? "missing" : "failed");
+      await act({ a: "listen-outcome", step: active.id, outcome: own === "recorded" ? "recorded" : "failed" });
+      return;
+    }
     const outcome = await playListening(script, listen.language, { voice: (t) => speech.speak({ childId: child, text: t, language: listen.language as "en", speaker: "character" }), browser: browserSpeech() });
     setPlaying(false);
     if (outcome === "cancelled") return;
@@ -572,7 +591,12 @@ export function ListenTask({ child, active, busy, act, speech, telemetry }: { ch
   const canAnswer = listen.completedPlays > 0 || listen.transcriptShown;
   return (
     <div className="grid gap-4" data-testid="listen-task" data-voice={last}>
-      <div className="flex flex-wrap items-center gap-3">
+      {last === "missing" ? (
+        <p className="rounded-2xl border-2 px-4 py-3 text-base font-semibold" style={{ borderColor: "#d9826b", background: "#fde8e4", color: "#8a2c1d" }} role="status" data-testid="story-audio-missing">
+          ⚠ Aufnahme fehlt — die Nachricht ist noch nicht aufgenommen. Ein Erwachsener kann sie vorlesen (zählt als Hilfe).
+        </p>
+      ) : null}
+            <div className="flex flex-wrap items-center gap-3">
         <button type="button" className={btn} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" autoFocus>
           <SpeakerIcon /> {playing ? "… spielt" : listen.plays ? "Nochmal anhören" : "Nachricht anhören"}
         </button>

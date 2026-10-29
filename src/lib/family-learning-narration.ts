@@ -21,13 +21,13 @@
 import type { LearningContent } from "./family-learning-content.ts";
 import type { MissionActiveView, MissionView } from "./family-learning-mission.ts";
 import type { MissionDef } from "./family-learning-mission-spec.ts";
-import { isVoiceSlot, type VoiceSlot } from "./family-voice-registry.ts";
+import { characterGender, isVoiceSlot, slotFor, type VoiceSlot } from "./family-voice-registry.ts";
 
 /**
  * `slot`: the story voice slot that speaks the line (six-slot registry). The recording of a line is keyed by slot AND text: the
  * same words in two voices are two recordings. `where` (catalogue only): the screens that speak it.
  */
-export type NarrationLine = { id: string; text: string; slot?: VoiceSlot; where?: string[] };
+export type NarrationLine = { id: string; text: string; slot?: VoiceSlot; where?: string[]; /** Catalogue only: whose visits speak it. */ child?: "isabel" | "santiago" };
 /** One screen's narration: `key` changes exactly when something new should be said (a new beat, a new answer, a new hint). */
 export type NarrationScript = { key: string; lines: NarrationLine[] };
 
@@ -276,6 +276,34 @@ export function narrationCatalog(content: LearningContent): NarrationLine[] {
     for (const t of farewellLines(content, m)) add(t);
   }
   return [...out.values()].sort((x, y) => (`${x.slot}|${x.id}` < `${y.slot}|${y.id}` ? -1 : 1));
+}
+
+/**
+ * The story lines a NON-narrated mission speaks today (Santiago's scenes; unchanged presentation): every foreign-language bubble
+ * line of a `scene` mission (its «Anhören») and every listening message (all presentations), each in the slot of the LINE'S OWN
+ * language × its speaking character's gender. German bubble lines are read, not spoken, in his scenes — so they are not recorded.
+ * A line whose character has no known gender, or an assistant, gets no slot and is not catalogued (it keeps its earlier route).
+ */
+export function storyCatalog(content: LearningContent, child: "isabel" | "santiago"): NarrationLine[] {
+  const out = new Map<string, NarrationLine>();
+  const add = (text: string | null | undefined, speaker: string | null | undefined, language: string | null | undefined, m: MissionDef, where: string) => {
+    if (typeof text !== "string" || !text.trim()) return;
+    const character = m.characters.find((c) => c.id === speaker) ?? null;
+    const slot = slotFor(characterGender(content.contentId, character), language);
+    if (!slot) return;
+    const l = line(text, slot);
+    const k = catalogKey(l);
+    const prev = out.get(k);
+    out.set(k, { ...l, child, where: [...new Set([...(prev?.where ?? []), where])] });
+  };
+  for (const m of (content.missions ?? []).filter((x) => !narrated(x))) {
+    for (const st of m.steps) {
+      const where = `${child}:${m.visit}/${st.id}`;
+      if (m.presentation === "scene") for (const l of [...(st.intro ?? []), ...(st.done ?? []), ...Object.values(st.doneBy ?? {}).flat()]) if (l && l.language !== "de") add(l.text, l.speaker, l.language, m, where);
+      if (st.kind === "listen" && st.text) add(st.text.body, st.character, st.text.language, m, where);
+    }
+  }
+  return [...out.values()].sort((x, y) => (catalogKey(x) < catalogKey(y) ? -1 : 1));
 }
 
 /** The catalogue key of a line (slot + text id). */

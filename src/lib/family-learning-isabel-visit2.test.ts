@@ -692,10 +692,10 @@ import { pickNativeVoice } from "./family-narration-player.ts";
 import { readNarrationClip } from "./family-narration-store.ts";
 
 describe("six-slot story voice registry", () => {
-  it("has exactly de/es/en × female/male, each with its own server-only env name and an OPEN dialect decision", () => {
+  it("has exactly de/es/en × female/male, each with its own server-only env name and the owner's variety", () => {
     deepStrictEqual([...VOICE_SLOTS], ["de-female", "de-male", "es-female", "es-male", "en-female", "en-male"]);
     equal(new Set(VOICE_SLOTS.map((x) => VOICE_SLOT_INFO[x].env)).size, 6);
-    ok(VOICE_SLOTS.every((x) => VOICE_SLOT_INFO[x].dialect.decided === null && VOICE_SLOT_INFO[x].dialect.options.length >= 2));
+    deepStrictEqual(VOICE_SLOTS.map((x) => VOICE_SLOT_INFO[x].dialect.decided), ["Standard German", "Standard German", "Mexican Spanish", "Mexican Spanish", "American English", "American English"]);
   });
   it("resolves a slot only from its own env and never interpolates a malformed id", () => {
     equal(resolveSlotVoiceId("es-female", { ELEVENLABS_VOICE_ES_FEMALE_ID: "Abc12345xyz" }), "Abc12345xyz");
@@ -752,5 +752,91 @@ describe("six-slot story voice registry", () => {
     equal(pickNativeVoice(voices, "es")?.name, "Mónica");
     equal(pickNativeVoice(voices, "de")?.name, "Anna");
     equal(pickNativeVoice(voices.filter((v) => !v.lang.startsWith("es")), "es"), null);
+  });
+});
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Both children's story voices (owner «Proceed with implementation», 2026-10-29) — fakes only
+// ---------------------------------------------------------------------------------------------------------------------
+import { characterGender, configuredSlots, slotFor } from "./family-voice-registry.ts";
+import { storyCatalog, catalogCharacters } from "./family-learning-narration.ts";
+
+describe("story voices for both children", () => {
+  const sCat = storyCatalog(santiago, "santiago");
+  it("Santiago: exactly the lines his scenes speak today, in the slot of the line's language × the character's gender", () => {
+    equal(sCat.length, 9);
+    equal(catalogCharacters(sCat), 572);
+    deepStrictEqual([...new Set(sCat.map((l) => l.slot))].sort(), ["en-female", "es-female"]);
+    ok(sCat.filter((l) => l.slot === "es-female").every((l) => /[¡¿]|Aquí|Gracias|Hola|cuerdas/.test(l.text)), "Rosa's Spanish → es-female");
+    ok(sCat.some((l) => l.slot === "en-female" && /June/.test(l.text)), "June's English → en-female");
+    ok(!sCat.some((l) => (l.slot ?? "").startsWith("de-")), "his German bubble lines are read, not spoken — not recorded");
+  });
+  it("a character keeps her identity across languages; only the voice of the line's language changes (Rosa)", () => {
+    const rosa = { id: "rosa" };
+    equal(slotFor(characterGender("santiago-expedition", rosa), "es"), "es-female");
+    equal(slotFor(characterGender("santiago-expedition", rosa), "de"), "de-female", "her German instruction: a German voice, never the Spanish one");
+    equal(slotFor(characterGender("santiago-expedition", { id: "planner" }), "de"), "de-male");
+    equal(slotFor(characterGender("santiago-expedition", { id: "nokt" }), "de"), null, "an assistant never gets a story voice");
+    equal(slotFor(characterGender("isabel-workshop", { id: "lila" }), "de"), null, "Old Lila neither");
+  });
+  it("the combined catalogue keeps Isabel's 4,731 characters apart from Santiago's increment", () => {
+    equal(catalogCharacters(narrationCatalog(v2)), 4731);
+    equal(catalogCharacters(narrationCatalog(v2)) + catalogCharacters(sCat), 5303);
+  });
+  it("readiness is a gate: ready only when every needed slot has a voice and every line is recorded; totals per child", async () => {
+    const cat = [...narrationCatalog(v2).map((l) => ({ ...l, child: "isabel" as const })), ...sCat];
+    const none = await narrationReadiness(cat, { env: { BLOB_READ_WRITE_TOKEN: "t" }, headImpl: (async () => { throw new Error("none"); }) as never });
+    equal(none.ready, false);
+    deepStrictEqual(none.children.map((c) => [c.child, c.lines, c.characters]), [["isabel", 123, 4731], ["santiago", 9, 572]]);
+    deepStrictEqual(none.slots.map((x) => x.slot), ["de-female", "es-female", "en-female"]);
+    const env = { BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_FEMALE_ID: "Hannah12345678", ELEVENLABS_VOICE_ES_FEMALE_ID: "AnaSofia123456", ELEVENLABS_VOICE_EN_FEMALE_ID: "Jessica1234567" };
+    const all = await narrationReadiness(cat, { env, headImpl: (async () => ({ uploadedAt: new Date() })) as never });
+    equal(all.ready, true);
+    deepStrictEqual(configuredSlots(env), ["de-female", "es-female", "en-female"]);
+  });
+  it("a selected voice is never replaced: with the slot configured and no recording, nothing is spoken and the state is «missing»", async () => {
+    const spoken: string[] = [];
+    const player = createNarrationPlayer({
+      fetchClip: async () => null,
+      configuredSlots: () => new Set(["es-female"]),
+      synth: { getVoices: () => [{ name: "Mónica", lang: "es-ES" }, { name: "Anna", lang: "de-DE" }, { name: "Samantha", lang: "en-US", default: true }], cancel: () => {}, speak: (u: { text: string; onend: (() => void) | null }) => { spoken.push(u.text); queueMicrotask(() => u.onend?.()); } } as never,
+      makeUtterance: (text) => ({ text, lang: "", rate: 1, onend: null, onerror: null }) as never,
+      setTimer: () => 0,
+      clearTimer: () => {},
+    });
+    player.unlock();
+    equal(await player.play({ key: "a", lines: [line("¡Hola, Santi!", "es-female")] }), "missing");
+    equal(player.status(), "missing");
+    equal(player.lastLineOutcome(), "missing-recording");
+    deepStrictEqual(spoken, []);
+    equal(await player.play({ key: "b", lines: [line("Hallo!", "de-female")] }), "done", "an unconfigured slot keeps the native device fallback");
+    deepStrictEqual(spoken, ["Hallo!"]);
+  });
+  it("the engine accepts a recorded play for non-narrated missions; the play stays a device report, never help", () => {
+    const env2 = makeEnv(v1);
+    let t = op(newMissionState(v1, "isabel", "2026-10-28T16:34:00.000Z"), { op: "start-visit" }, env2);
+    t = open(t, "W1-HELLO", env2);
+    const out = applyLearningOp(t, { op: "mission", action: { a: "line-audio", step: "W1-HELLO", line: 0, outcome: "recorded" } }, env2);
+    const ev = out.records.supports.find((x) => x.kind === "mission_line_audio");
+    ok(ev, "recorded as a line-audio event");
+    equal((ev!.payload as { help: boolean; outcome: string }).help, false);
+    equal((ev!.payload as { outcome: string }).outcome, "recorded");
+    let refused = false;
+    try {
+      applyLearningOp(t, { op: "mission", action: { a: "line-audio", step: "W1-HELLO", line: 0, outcome: "nonsense" as never } }, env2);
+    } catch {
+      refused = true;
+    }
+    ok(refused);
+  });
+});
+
+describe("children's story-voice switch", () => {
+  it("children hear selected voices only after FAMILY_STORY_VOICES=recorded; the owner can prepare before", async () => {
+    const { childStoryVoices } = await import("./family-voice-registry.ts");
+    const env = { ELEVENLABS_VOICE_DE_FEMALE_ID: "Hannah12345678" };
+    deepStrictEqual(childStoryVoices(env), []);
+    deepStrictEqual(childStoryVoices({ ...env, FAMILY_STORY_VOICES: "recorded" }), ["de-female"]);
+    deepStrictEqual(configuredSlots(env), ["de-female"]);
   });
 });

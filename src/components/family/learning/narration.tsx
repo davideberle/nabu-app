@@ -8,10 +8,11 @@
 //  - A new screen supersedes the old speech at once (the player drops late audio); leaving the page stops it.
 // ---------------------------------------------------------------------------------------------------------------------
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
-import type { NarrationScript } from "@/lib/family-learning-narration";
+import { line, type NarrationScript } from "@/lib/family-learning-narration";
 import type { NarrationPlayer, NarrationStatus } from "@/lib/family-narration-player";
+import { slotFor, type StoryGender } from "@/lib/family-voice-registry";
 
 export type NarrationTelemetry = (name: "narration-replay" | "narration-stop" | "narration-unlock") => void;
 
@@ -75,6 +76,12 @@ export function NarrationControl({ status, onReplay, onStop, className }: { stat
         <span aria-hidden>▶</span> Vorlesen
       </button>
     );
+  if (status === "missing")
+    return (
+      <button type="button" className={cn(base, "ring-4 ring-red-300", className)} style={{ background: "#fde8e4", color: "#8a2c1d" }} onClick={onReplay} data-testid="narration-control" data-state="missing" aria-label="Aufnahme fehlt. Nochmal versuchen">
+        <span aria-hidden>⚠</span> Aufnahme fehlt
+      </button>
+    );
   if (status === "unavailable")
     return (
       <button type="button" className={cn(base, className)} style={{ background: "#f3efe6", color: "#5b4a33" }} onClick={onReplay} data-testid="narration-control" data-state="unavailable" aria-label="Keine deutsche Stimme auf diesem Gerät. Nochmal versuchen">
@@ -85,5 +92,34 @@ export function NarrationControl({ status, onReplay, onStop, className }: { stat
     <button type="button" className={cn(base, className)} style={{ background: "#e7efd9", color: "#2f4a1f" }} onClick={onReplay} data-testid="narration-control" data-state="idle" aria-label="Nochmal hören">
       <SpeakerGlyph /> Nochmal hören
     </button>
+  );
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Story voices for scenes that keep their own per-line controls (Santiago's scenes; 2026-10-29). The page provides the player
+// and the slots that have a selected voice. A line is spoken in the slot of its own language × its character's gender ONLY when
+// that slot has a selected voice — then only its recording plays (a missing one is reported, never replaced). Otherwise the
+// caller keeps its earlier route unchanged (so nothing changes for him until the voices are configured).
+// ---------------------------------------------------------------------------------------------------------------------
+
+export type StoryVoices = { narrator: NarrationPlayer; isConfigured: (slot: string) => boolean };
+export const StoryVoiceContext = createContext<StoryVoices | null>(null);
+export type StorySpeechResult = "recorded" | "missing" | "failed" | "cancelled";
+
+/** Returns a speak function: a result, or null when the line has no configured story voice (use the earlier route). */
+export function useStorySpeech(characters: readonly { id: string; gender?: StoryGender | null }[]) {
+  const ctx = useContext(StoryVoiceContext);
+  return useCallback(
+    async (text: string, language: string, speaker: string | null): Promise<StorySpeechResult | null> => {
+      if (!ctx) return null;
+      const slot = slotFor(characters.find((c) => c.id === speaker)?.gender ?? null, language);
+      if (!slot || !ctx.isConfigured(slot)) return null;
+      ctx.narrator.unlock();
+      const r = await ctx.narrator.play({ key: `story|${slot}|${text}|${Date.now()}`, lines: [line(text, slot)] });
+      if (r === "cancelled") return "cancelled";
+      const o = ctx.narrator.lastLineOutcome();
+      return o === "recorded" ? "recorded" : o === "missing-recording" ? "missing" : "failed";
+    },
+    [ctx, characters],
   );
 }

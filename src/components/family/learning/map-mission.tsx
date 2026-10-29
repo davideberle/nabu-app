@@ -166,7 +166,7 @@ export function MapTask({ child, view, active, busy, act, speech, telemetry, nok
     case "decide":
       return active.decide ? <DecideTask active={active} busy={busy} act={act} /> : null;
     case "listen":
-      return <ListenTask child={child} active={active} busy={busy} act={act} speech={speech} telemetry={telemetry} />;
+      return <ListenTask child={child} active={active} busy={busy} act={act} speech={speech} telemetry={telemetry} characters={view.mission?.characters ?? []} />;
     case "recall":
     case "produce":
       return <RequestTask active={active} busy={busy} act={act} telemetry={telemetry} />;

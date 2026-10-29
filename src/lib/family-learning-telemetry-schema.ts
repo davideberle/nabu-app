@@ -33,7 +33,7 @@ export const TELEMETRY_OPS = [
 export type TelemetryOp = (typeof TELEMETRY_OPS)[number];
 
 /** Named controls whose activation may be counted (never their payload). */
-export const TELEMETRY_CONTROLS = ["stop", "tutor-open", "tutor-close", "read-aloud", "another-burst", "shorter-burst", "course-continue", "mic-start", "mic-stop", "walk", "direct-enter", "typing-pause", "hint-open", "nokt-offer-dismiss", "line-audio", "listen-play", "beat-next", "narration-recorded", "narration-device-de", "narration-no-german-voice", "narration-blocked", "narration-replay", "narration-stop", "narration-unlock"] as const;
+export const TELEMETRY_CONTROLS = ["stop", "tutor-open", "tutor-close", "read-aloud", "another-burst", "shorter-burst", "course-continue", "mic-start", "mic-stop", "walk", "direct-enter", "typing-pause", "hint-open", "nokt-offer-dismiss", "line-audio", "listen-play", "beat-next", "narration-recorded", "narration-device-de", "narration-no-german-voice", "narration-blocked", "narration-missing-recording", "narration-replay", "narration-stop", "narration-unlock"] as const;
 export type TelemetryControl = (typeof TELEMETRY_CONTROLS)[number];
 
 /** Child feedback dimensions and their option ids (content `reflection`). */

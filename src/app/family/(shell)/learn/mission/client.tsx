@@ -48,7 +48,8 @@ import { MapMission } from "@/components/family/learning/map-mission";
 import { WorkshopScene } from "@/components/family/learning/workshop-scene";
 import { IsabelStart } from "@/components/family/learning/workshop-hub";
 import { WorkshopClosing, WorkshopFarewell } from "@/components/family/learning/workshop-closing";
-import { createNarrationPlayer } from "@/lib/family-narration-player";
+import { createNarrationPlayer, type NarrationPlayer } from "@/lib/family-narration-player";
+import { StoryVoiceContext } from "@/components/family/learning/narration";
 import type { NoktTalkTurnFn } from "@/components/family/learning/nokt-talk";
 import { Debrief } from "@/components/family/learning/debrief";
 import type { MissionAction } from "@/lib/family-learning-mission";
@@ -121,7 +122,26 @@ function parseAnswerNumber(raw: string): number | null {
 
 const HOME_FALLBACK = { left: ["a", "s", "d", "f"], right: ["j", "k", "l", "ö"], anchors: ["f", "j"], thumb: " " };
 
+type NarrationTelemetryName = "narration-recorded" | "narration-device-de" | "narration-no-german-voice" | "narration-missing-recording" | "narration-blocked";
+
+/**
+ * One narration player per page (Isabel's narrated visits and both children's story voices): unlocked only by a deliberate tap;
+ * how each line was spoken goes to UX telemetry, never into learning evidence. Slots with a selected voice (from the server view)
+ * play only their recordings — provided to every scene through the story-voice context.
+ */
 function Workspace({ child }: { child: ChildId }) {
+  const narrationTelemetryRef = useRef<((name: NarrationTelemetryName) => void) | null>(null);
+  const configuredRef = useRef<ReadonlySet<string>>(new Set());
+  const narrator = useMemo(() => createNarrationPlayer({ configuredSlots: () => configuredRef.current, onLine: (_l, outcome) => narrationTelemetryRef.current?.(outcome === "recorded" ? "narration-recorded" : outcome === "device-de" ? "narration-device-de" : outcome === "no-german-voice" ? "narration-no-german-voice" : outcome === "missing-recording" ? "narration-missing-recording" : "narration-blocked") }), []);
+  const storyVoices = useMemo(() => ({ narrator, isConfigured: (slot: string) => configuredRef.current.has(slot) }), [narrator]);
+  return (
+    <StoryVoiceContext.Provider value={storyVoices}>
+      <WorkspaceBody child={child} narrator={narrator} configuredRef={configuredRef} narrationTelemetryRef={narrationTelemetryRef} />
+    </StoryVoiceContext.Provider>
+  );
+}
+
+function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }: { child: ChildId; narrator: NarrationPlayer; configuredRef: React.MutableRefObject<ReadonlySet<string>>; narrationTelemetryRef: React.MutableRefObject<((name: NarrationTelemetryName) => void) | null> }) {
   const learning = useMemo(() => createLearningClient(), []);
   const tutorClient = useMemo(() => createChildTurnClient(), []);
   // The semantic review of the captain's log goes through the same isolated child transport (session "learn") as every Nabu question.
@@ -134,10 +154,6 @@ function Workspace({ child }: { child: ChildId }) {
     [tutorClient, child],
   );
   const speech = useMemo(() => createChildSpeechPlayer(), []);
-  // Isabel Visit 2+ (narrated visits): ONE narration player for the page — unlocked only by her deliberate tap; how each line
-  // was spoken (prerecorded / German device voice / none / refused) goes to the UX telemetry, never into learning evidence.
-  const narrationTelemetryRef = useRef<((name: "narration-recorded" | "narration-device-de" | "narration-no-german-voice" | "narration-blocked") => void) | null>(null);
-  const narrator = useMemo(() => createNarrationPlayer({ onLine: (_l, outcome) => narrationTelemetryRef.current?.(outcome === "recorded" ? "narration-recorded" : outcome === "device-de" ? "narration-device-de" : outcome === "no-german-voice" ? "narration-no-german-voice" : "narration-blocked") }), []);
   const [farewell, setFarewell] = useState<{ who: string; lines: string[]; grown: string | null; label: string; voice: import("@/lib/family-voice-registry").VoiceSlot | null } | null>(null);
   const router = useRouter();
   const pathname = usePathname();
@@ -186,9 +202,10 @@ function Workspace({ child }: { child: ChildId }) {
   const draftStorage = typeof window !== "undefined" ? window.sessionStorage : null;
   const adopt = useCallback((view: ChildView) => {
     viewRef.current = view;
+    configuredRef.current = new Set(view.storyVoices ?? []);
     setLoad({ kind: "ready", view });
     retireMismatched(draftStorage, draftIdentityOf(view));
-  }, [draftStorage]);
+  }, [draftStorage, configuredRef]);
 
   const refresh = useCallback(async () => {
     const abort = new AbortController();

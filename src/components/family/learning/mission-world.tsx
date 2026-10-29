@@ -36,6 +36,7 @@ import { plateFor, type PlateId } from "./harbor-island-plates";
 import { HandsKeyboard } from "./hands-keyboard";
 import { MissionWorldChanges } from "./mission-world-changes";
 import type { WorldMarker } from "./expedition-world";
+import { useStorySpeech } from "./narration";
 
 // The one palette of the mission (shared with the island chips): parchment, bark, ink, sea, signal.
 const PARCHMENT = "#fff8e8";
@@ -759,7 +760,7 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
       {custom && storyLike ? custom : null}
       {storyLike ? <StoryTask active={active} busy={busy} act={act} label={mission.presentation === "map" ? (active.kind === "outcome" ? "Fertig" : "Verstanden") : undefined} /> : null}
       {custom && !storyLike ? custom : null}
-      {!custom && (active.kind === "read" || active.kind === "listen") ? <QuestionTask child={child} active={active} busy={busy} act={act} speech={speech} /> : null}
+      {!custom && (active.kind === "read" || active.kind === "listen") ? <QuestionTask child={child} active={active} busy={busy} act={act} speech={speech} characters={mission.characters} /> : null}
       {!custom && active.kind === "calc" ? <CalcTask active={active} busy={busy} act={act} /> : null}
       {!custom && active.kind === "choice" ? <ChoiceTask active={active} busy={busy} act={act} /> : null}
       {!custom && (active.kind === "produce" || active.kind === "recall") ? <ProduceTask active={active} busy={busy} act={act} /> : null}
@@ -788,10 +789,11 @@ function StoryTask({ active, busy, act, label }: { active: MissionActiveView; bu
 
 // --- reading / listening ---------------------------------------------------
 
-function QuestionTask({ child, active, busy, act, speech }: { child: ChildId; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer }) {
+function QuestionTask({ child, active, busy, act, speech, characters = [] }: { child: ChildId; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; characters?: MissionView["characters"] }) {
   const listen = active.listen;
   const [playing, setPlaying] = useState(false);
-  const [voice, setVoice] = useState<"none" | "child-voice" | "browser" | "failed">("none");
+  const [voice, setVoice] = useState<"none" | "child-voice" | "browser" | "failed" | "recorded" | "missing">("none");
+  const story = useStorySpeech(characters);
   const play = async () => {
     if (!listen) return;
     speech.unlock();
@@ -801,6 +803,15 @@ function QuestionTask({ child, active, busy, act, speech }: { child: ChildId; ac
     if (!res) return;
     setPlaying(true);
     const script = typeof res.script === "string" ? res.script : "";
+    // Story voices (2026-10-29): with a selected voice for this message's language × character, only its recording plays.
+    const own = await story(script, listen.language, active.character);
+    if (own) {
+      setPlaying(false);
+      if (own === "cancelled") return;
+      setVoice(own === "recorded" ? "recorded" : own === "missing" ? "missing" : "failed");
+      await act({ a: "listen-outcome", step: active.id, outcome: own === "recorded" ? "recorded" : "failed" });
+      return;
+    }
     const outcome = await playListening(script, listen.language, { voice: (text) => speech.speak({ childId: child, text }), browser: browserSpeech() });
     setPlaying(false);
     if (outcome === "cancelled") return;
@@ -811,7 +822,12 @@ function QuestionTask({ child, active, busy, act, speech }: { child: ChildId; ac
   const open = active.questions.filter((q) => q.status === "open");
   return (
     <div className="grid gap-3" data-testid="question-task" data-mode={listen ? "listening" : "reading"}>
-      {active.readText ? (
+      {voice === "missing" ? (
+        <p className="rounded-2xl border-2 px-4 py-3 text-base font-semibold" style={{ borderColor: "#d9826b", background: "#fde8e4", color: "#8a2c1d" }} role="status" data-testid="story-audio-missing">
+          ⚠ Aufnahme fehlt — die Nachricht ist noch nicht aufgenommen. Ein Erwachsener kann sie vorlesen (zählt als Hilfe).
+        </p>
+      ) : null}
+            {active.readText ? (
         <div className="rounded-2xl border-2 px-4 py-3 font-semibold" style={{ borderColor: BARK, background: "#f3e7cf" }} data-testid="read-text">
           {active.readText.split("\n").map((line, i) => (
             <p key={i} className={cn("text-lg leading-snug", i === 0 && "text-xl tracking-wide")}>

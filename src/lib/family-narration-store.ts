@@ -74,8 +74,12 @@ export async function readNarrationClip(slot: string, lineId: string, deps: Stor
 
 export type SlotReadiness = { slot: VoiceSlot; language: string; gender: string; configured: boolean; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number };
 export type NarrationReadiness = {
+  /** True only when every slot the catalogue needs has a selected voice AND every line is recorded — the release gate. */
+  ready: boolean;
   /** Slots the catalogue needs, with their configuration and recording state (voice ids are never reported). */
   slots: SlotReadiness[];
+  /** The same totals per child (Isabel's narration and Santiago's story lines are counted apart). */
+  children: { child: string; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number }[];
   providerKeyConfigured: boolean;
   storeConfigured: boolean;
   model: string;
@@ -111,7 +115,12 @@ export async function narrationReadiness(catalog: NarrationLine[], deps: StoreDe
     const miss = ls.filter((l) => missing.has(l));
     return { slot: sl, language: VOICE_SLOT_INFO[sl].language, gender: VOICE_SLOT_INFO[sl].gender, configured: !!resolveSlotVoiceId(sl, env), lines: ls.length, characters: chars(ls), recorded: ls.length - miss.length, missing: miss.length, missingCharacters: chars(miss) };
   });
-  return { slots, providerKeyConfigured: !!env.ELEVENLABS_API_KEY, storeConfigured: !!token, model: NARRATION_TTS_MODEL_ID, lines: catalog.length, characters: chars(catalog), recorded: catalog.length - missingLines.length, missing: missingLines.length, missingCharacters: chars(missingLines), missingLines };
+  const children = [...new Set(catalog.map((l) => l.child ?? "?"))].map((c) => {
+    const ls = catalog.filter((l) => (l.child ?? "?") === c);
+    const miss = ls.filter((l) => missing.has(l));
+    return { child: c, lines: ls.length, characters: chars(ls), recorded: ls.length - miss.length, missing: miss.length, missingCharacters: chars(miss) };
+  });
+  return { ready: missingLines.length === 0 && slots.every((x) => x.configured), slots, children, providerKeyConfigured: !!env.ELEVENLABS_API_KEY, storeConfigured: !!token, model: NARRATION_TTS_MODEL_ID, lines: catalog.length, characters: chars(catalog), recorded: catalog.length - missingLines.length, missing: missingLines.length, missingCharacters: chars(missingLines), missingLines };
 }
 
 export type PrepareResult = { status: "prepared" | "not-configured" | "busy" | "cap-reached" | "upstream-failed" | "refused-private"; recorded: number; charactersSent: number; remaining: number; failedStatus?: number };

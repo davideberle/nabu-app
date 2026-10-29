@@ -2909,6 +2909,8 @@ function visitTextFor(state: MissionState, content: LearningContent, nextVisit: 
 }
 
 export type ChildView = {
+  /** Story voice slots with a selected ElevenLabs voice (server env); a line in such a slot plays only its recording. */
+  storyVoices?: import("./family-voice-registry.ts").VoiceSlot[];
   /** Isabel Visit 2+: see `VisitText` (absent for Santiago). */
   visitText?: VisitText | null;
   child: ChildId;
@@ -3084,7 +3086,7 @@ function closingView(state: MissionState, content: LearningContent, visit: Visit
   return { success: ending.success, next: ending.next, artifact: world.length ? world.map((w) => w.label).join(" · ") : null, plan: decide ? chosenGrid(def, run, decide.id) : null, feedback };
 }
 
-export type ChildViewOptions = { timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null; tutorAvailable?: boolean; noktMode?: import("./family-learning-nokt.ts").NoktMode; noktMic?: boolean };
+export type ChildViewOptions = { /** Story voice slots with a selected voice on the server (booleans only). */ storyVoices?: import("./family-voice-registry.ts").VoiceSlot[]; timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null; tutorAvailable?: boolean; noktMode?: import("./family-learning-nokt.ts").NoktMode; noktMic?: boolean };
 
 export function buildChildView(state: MissionState, content: LearningContent, settings: ParentSettings, now: Date, erasureGeneration = 0, options: ChildViewOptions = {}): ChildView {
   const stage = currentStage(state, content);
@@ -3370,6 +3372,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     wordbook: options.vocabulary ? childWordbook(buildVocabularyLedger(state, content, options.vocabulary), content, state, options.vocabulary) : null,
     nextStep: nextStepText(state, content, stage, now),
     ...(content.child === "isabel" ? { visitText: visitTextFor(state, content, availability.visit) } : {}),
+    storyVoices: options.storyVoices ?? [],
     locations: content.locations,
     station: stationDef ? { themes: stationDef.themes, spots: stationDef.spots, theme: station.theme, spot: station.spot, built: station.built, lampLit: station.lampLit, lampAvailable: (state.base.supplies["lámpara"] ?? 0) > 0, reference: stationReference } : null,
     pier: content.pier ? { spots: content.pier.spots, spot: pier.spot, built: pier.built, boatMoored: pier.boatMoored, woodAvailable: (state.base.supplies["wood"] ?? 0) > 0 } : null,

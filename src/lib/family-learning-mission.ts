@@ -57,6 +57,7 @@ import type { MissionDef, MissionStep, MissionProduce, MissionQuestion, MissionT
 import type { EvidenceCategory, MissionState, Records, TypingBurst, TypingComfort, ParentSettings } from "./family-learning-state.ts";
 import { alignedLessonMetrics, TYPING_METRIC_VERSION, type AlignedLineMetrics } from "./family-learning-typing-metrics.ts";
 import { typingErrors, type TypingError, feedbackOf, updateSpacingFocus } from "./family-learning-feedback.ts";
+import { characterGender } from "./family-voice-registry.ts";
 import { assessSpacing, flagSpacing, markSpacing, evaluateRevision, type SpacingFlag } from "./family-learning-writing.ts";
 import type { MissionPart, MissionHint, MissionLine, MissionDiagram, MissionGrid, MissionDecide, MissionCounters } from "./family-learning-mission-spec.ts";
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
@@ -346,7 +347,7 @@ export type MissionAction =
   | { a: "tutor-open"; step: string; entry: "manual" | "offer" | "planned"; part?: string | null }
   | { a: "tutor-offer"; step: string; part: string; response: "dismissed" | "accepted" }
   /** Content v6: a character line was played aloud (its own text, never an answer; recorded, not help). */
-  | { a: "line-audio"; step: string; line: number; outcome: "child-voice" | "browser" | "failed" }
+  | { a: "line-audio"; step: string; line: number; outcome: "child-voice" | "browser" | "failed" | "recorded" }
   /** Content v6 (N7-06): record the tutor context BEFORE the tutor is asked; refused while the tutor is unavailable. */
   | { a: "tutor-dispatch"; step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; turnId: string; sessionId: string; text?: string; via?: "voice" | "typed" }
   /** Content v6 (N7-03): the reply to one Nokt turn; its origin was verified by the ROUTE (receipt bound to the dispatch). */
@@ -944,7 +945,8 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (step.kind !== "listen") throw new MissionOpError("invalid", "only listening steps report playback");
       // Isabel Visit 2 (narrated): `recorded` = the prerecorded clip of the reviewed sentence, `device-de` = the device's own
       // explicitly German voice. Both are device-reported completions, like `child-voice` / `browser`.
-      const allowed = def.narration ? ["recorded", "device-de", "failed"] : ["child-voice", "browser", "failed"];
+      // `recorded` (2026-10-29): the prerecorded clip of the line in its story voice slot — a device-reported completion as well.
+      const allowed = def.narration ? ["recorded", "device-de", "failed"] : ["child-voice", "browser", "failed", "recorded"];
       if (!allowed.includes(action.outcome)) throw new MissionOpError("invalid", "unknown playback outcome");
       const reported = (r.completedPlays ?? 0) + (r.playFailures ?? 0);
       if (reported >= r.plays) throw new MissionOpError("not-allowed", "no requested play is waiting for its outcome");
@@ -1540,7 +1542,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       const { step, r } = requireActive(run, def, action.step);
       const lines = [...step.intro, ...doneLinesFor(step, r)];
       if (!lines[action.line]) throw new MissionOpError("invalid", "unknown line");
-      if (!["child-voice", "browser", "failed"].includes(action.outcome)) throw new MissionOpError("invalid", "unknown playback outcome");
+      if (!["child-voice", "browser", "failed", "recorded"].includes(action.outcome)) throw new MissionOpError("invalid", "unknown playback outcome");
       // A character's own line read aloud: no answer content, not help; the device-reported outcome is kept for the audio review.
       support(records, env, def, step, "line-audio", { line: action.line, language: lines[action.line].language, outcome: action.outcome, reportedBy: "device", help: false });
       result = { line: action.line, outcome: action.outcome };
@@ -2320,7 +2322,8 @@ export function buildMissionView(state: MissionState, content: LearningContent, 
     theme: def.theme,
     places: def.map.places,
     paths: def.map.paths,
-    characters: def.characters,
+    // Story voice binding (2026-10-29): each character's gender for the voice slot of a line's language; assistants have none.
+    characters: def.characters.map((c) => ({ ...c, gender: characterGender(content.contentId, c) })),
     position: run.position,
     steps,
     here: steps.filter((s) => s.place === run.position && (s.status === "available" || s.status === "active")).map((s) => s.id),

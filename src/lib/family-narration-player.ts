@@ -19,9 +19,9 @@ import { slotLanguage, type SlotLanguage } from "./family-voice-registry.ts";
 
 export const NARRATION_CLIP_PATH = "/api/family/learning/narration";
 
-export type NarrationStatus = "locked" | "idle" | "speaking" | "blocked" | "unavailable";
-export type LineOutcome = "recorded" | "device-de" | "no-german-voice" | "blocked" | "failed";
-export type PlayResult = "done" | "cancelled" | "locked" | "blocked" | "unavailable";
+export type NarrationStatus = "locked" | "idle" | "speaking" | "blocked" | "unavailable" | "missing";
+export type LineOutcome = "recorded" | "device-de" | "no-german-voice" | "missing-recording" | "blocked" | "failed";
+export type PlayResult = "done" | "cancelled" | "locked" | "blocked" | "unavailable" | "missing";
 
 export type VoiceLike = { name: string; lang: string; localService?: boolean; default?: boolean };
 type UtteranceLike = { lang: string; rate: number; voice?: unknown; onend: (() => void) | null; onerror: ((e?: { error?: string }) => void) | null };
@@ -40,6 +40,12 @@ export type NarrationPlayerDeps = {
   clearTimer?: (t: unknown) => void;
   onStatus?: (s: NarrationStatus) => void;
   onLine?: (line: NarrationLine, outcome: LineOutcome, voice: string | null) => void;
+  /**
+   * The slots whose selected ElevenLabs voice is configured on the server. For such a slot ONLY its recording may play: a missing
+   * recording is reported («missing-recording», status «missing») and nothing else is spoken — no device or default voice silently
+   * stands in for the selected voice. Slots without a selected voice keep the native-device-voice fallback.
+   */
+  configuredSlots?: () => ReadonlySet<string>;
 };
 
 export type NarrationPlayer = {
@@ -215,6 +221,10 @@ export function createNarrationPlayer(deps: NarrationPlayerDeps = {}): Narration
         // A broken clip: this line falls through to the German device voice.
       }
     }
+    if (l.slot && deps.configuredSlots?.().has(l.slot)) {
+      deps.onLine?.(l, "missing-recording", null);
+      return "missing-recording";
+    }
     const voice = pickNativeVoice(await voices(), l.slot ? slotLanguage(l.slot) : "de");
     if (seq !== mySeq) return "cancelled";
     if (!voice || !synth || !makeUtterance) {
@@ -261,6 +271,10 @@ export function createNarrationPlayer(deps: NarrationPlayerDeps = {}): Narration
       if (r === "no-german-voice") {
         setStatus("unavailable");
         return "unavailable";
+      }
+      if (r === "missing-recording") {
+        setStatus("missing");
+        return "missing";
       }
     }
     if (seq === mySeq) setStatus("idle");

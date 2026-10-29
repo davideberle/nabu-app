@@ -344,8 +344,8 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
       ) : null}
       {tab === "review" ? <ReviewTab evidence={evidence} /> : null}
       {tab === "settings" ? <Settings key={`${evidence.child}:${evidence.erasureGeneration}`} evidence={evidence} child={evidence.child} ops={ops} /> : null}
-      {/* Isabel Visit 2: the owner's listening check of the recorded narration (no visit is started). */}
-      {tab === "settings" && evidence.child === "isabel" ? <NarrationAudition /> : null}
+      {/* Both children: the owner's listening check of the recorded story voices (no visit is started). */}
+      {tab === "settings" ? <NarrationAudition /> : null}
       {state ? (
         <p className="text-xs text-tertiary">
           Mission {state.missionId} v{state.contentVersion} · Stand {fmt(state.updatedAt)} · Revision {state.revision} · Besuche abgeschlossen: {state.visits.filter((v) => v.finishedAt).length}

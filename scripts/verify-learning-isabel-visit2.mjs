@@ -263,7 +263,57 @@ const runOf = async () => (await row("isabel"))?.state.missions?.["MISSION-IDA-G
 const rec = { mode: MODE, base: BASE, startedAt: new Date().toISOString() };
 const VIEW = { viewport: { width: 1440, height: 900 } }; // Mac mini browser window (actual use device), not the iPad
 
-if (MODE === "branches") {
+if (MODE === "voices-off") {
+  // ---------------------------------------------------------------- Ids configured, children's switch off: nothing changes for them
+  const iv = await api("GET", `/api/family/learning/mission?tz=${TZ}`, null, assistant, isabelBearer);
+  const sv = await api("GET", `/api/family/learning/mission?tz=${TZ}`, null, assistant, santiagoBearer);
+  check("VO.children-get-no-story-voices-before-the-switch", JSON.stringify(iv.json?.view?.storyVoices) === "[]" && JSON.stringify(sv.json?.view?.storyVoices) === "[]");
+  const r = await api("GET", "/api/family/learning/parent/narration", null, owner);
+  check("VO.owner-can-already-prepare-and-audition", r.json?.readiness?.slots?.every((x) => x.configured === true) && r.json.readiness.ready === false);
+} else if (MODE === "voices") {
+  // ---------------------------------------------------------------- Selected voices configured (fake ids), nothing recorded yet
+  const ctx = await makeCtx(VIEW);
+  const page = await ctx.newPage();
+  page.on("pageerror", (e) => pageErrors.push(String(e)));
+  await page.goto(`${BASE}/family/learn?child=isabel`);
+  await page.waitForSelector("[data-testid='world-screen'][data-child='isabel'][data-world-next='v2']", { timeout: 30000 });
+  await page.locator("[data-testid='cockpit-start']").click();
+  await page.locator("[data-testid='start-visit']").click();
+  await onStep(page, "IG1-HELLO");
+  await page.waitForSelector("[data-testid='narration-control'][data-state='missing']", { timeout: 15000 });
+  await settle(800);
+  check("V.selected-voice-never-replaced-missing-is-conspicuous", (await spoken(page)).length === 0 && (await text(page, "[data-testid='narration-control']")).includes("Aufnahme fehlt"), await spoken(page));
+  check("V.visit-still-usable", await page.locator("[data-testid='workshop-next']").isEnabled());
+  const sv = await api("GET", `/api/family/learning/mission?tz=${TZ}`, null, assistant, santiagoBearer);
+  check("V.children-see-only-configured-slot-names-never-ids", JSON.stringify(sv.json?.view?.storyVoices) === JSON.stringify(["de-female", "es-female", "en-female"]) && !JSON.stringify(sv.json).includes("FakeVoice"));
+  await shot(page, "V-isabel-missing-recording");
+  const r = await api("GET", "/api/family/learning/parent/narration", null, owner);
+  const rd = r.json?.readiness;
+  check("V.readiness-gate-not-ready-per-child-and-slot", rd?.ready === false && JSON.stringify(rd.children.map((c) => [c.child, c.lines, c.characters])) === JSON.stringify([["isabel", 123, 4731], ["santiago", 9, 572]]) && JSON.stringify(rd.slots.map((x) => [x.slot, x.configured, x.lines, x.characters])) === JSON.stringify([["de-female", true, 123, 4731], ["es-female", true, 6, 176], ["en-female", true, 3, 396]]) && !JSON.stringify(r.json).includes("FakeVoice"), rd);
+  for (const [label, extra] of [["missing", {}], ["recorded", { clips: true }]]) {
+    const oc = await makeCtx(VIEW, owner, GERMAN, extra);
+    const op = await oc.newPage();
+    op.on("pageerror", (e) => pageErrors.push(String(e)));
+    await op.goto(`${BASE}/family/learn/parent?child=santiago`);
+    await op.waitForSelector("[role='tab']", { timeout: 30000 });
+    await op.locator("[role='tab']", { hasText: "Einstellungen" }).click();
+    await op.waitForSelector("[data-testid='narration-audition']", { timeout: 20000 });
+    const rosa = r.json.lines.find((l) => l.child === "santiago" && l.slot === "es-female");
+    const group = rosa.where[0];
+    await op.locator(`[data-testid='audition-group-${group}'] summary`).click();
+    await op.locator(`[data-testid='audition-line-${rosa.slot}-${rosa.id}'] button`).click();
+    await op.waitForFunction((k) => document.querySelector(`[data-testid='audition-line-${k}']`)?.dataset.heard, `${rosa.slot}-${rosa.id}`, { timeout: 10000 });
+    const heardAs = await op.locator(`[data-testid='audition-line-${rosa.slot}-${rosa.id}']`).getAttribute("data-heard");
+    const devSpoken = await op.evaluate(() => (globalThis.__speech || []).length);
+    if (label === "missing") check("V.santiago-rosa-spanish-missing-recording-shown-no-substitute", heardAs === "⚠ Aufnahme fehlt" && devSpoken === 0, { heardAs, devSpoken });
+    else check("V.santiago-rosa-spanish-plays-her-es-female-recording", heardAs === "Aufnahme" && devSpoken === 0 && (await op.evaluate(() => globalThis.__clips.length)) === 1, { heardAs });
+    if (label === "missing") {
+      check("V.owner-panel-says-not-ready", (await op.locator("[data-testid='audition-ready'][data-ready='false']").count()) === 1);
+      await shot(op, "V-owner-panel-not-ready", true);
+    }
+    await oc.close();
+  }
+} else if (MODE === "branches") {
   // ---------------------------------------------------------------- Every remaining branch, rendered, with a screenshot each
   const ctx = await makeCtx(VIEW);
   const page = await ctx.newPage();
@@ -466,7 +516,7 @@ if (MODE === "branches") {
   const ready = await api("GET", "/api/family/learning/parent/narration", null, owner);
   check("CAP1.catalogue-available-while-visit-2-is-parked", ready.status === 200 && ready.json?.readiness?.lines === ready.json?.lines?.length && ready.json.lines.length > 100, ready.json?.readiness);
   const clip = await api("GET", `/api/family/learning/narration/${ready.json.lines[0].slot}/${ready.json.lines[0].id}`, null, assistant);
-  check("CAP1.every-line-in-the-gardeners-slot", ready.json.lines.every((l) => l.slot === "de-female") && JSON.stringify(ready.json.readiness.slots.map((x) => [x.slot, x.configured])) === JSON.stringify([["de-female", false]]), ready.json.readiness.slots);
+  check("CAP1.isabel-in-the-gardeners-slot-santiago-in-his-characters-slots", ready.json.lines.filter((l) => l.child === "isabel").every((l) => l.slot === "de-female") && JSON.stringify(ready.json.readiness.slots.map((x) => [x.slot, x.configured])) === JSON.stringify([["de-female", false], ["es-female", false], ["en-female", false]]) && ready.json.readiness.ready === false, ready.json.readiness.slots);
   check("CAP1.clip-route-knows-the-catalogue-under-the-cap", clip.status === 404 && clip.json?.error === "Not recorded", clip);
   const oc = await makeCtx(VIEW, owner, GERMAN, { clips: true });
   const op = await oc.newPage();
@@ -478,9 +528,9 @@ if (MODE === "branches") {
   await op.waitForSelector("[data-testid='narration-audition']", { timeout: 20000 });
   const first = ready.json.lines.find((l) => l.where.includes("IG1-HELLO"));
   await op.locator(`[data-testid='audition-group-IG1-HELLO'] summary`).click();
-  await op.locator(`[data-testid='audition-line-${first.id}'] button`).click();
-  await op.waitForFunction((id) => document.querySelector(`[data-testid='audition-line-${id}']`)?.dataset.heard, first.id, { timeout: 10000 });
-  check("CAP1.owner-audition-plays-the-recording-without-a-visit", (await op.locator(`[data-testid='audition-line-${first.id}']`).getAttribute("data-heard")) === "Aufnahme" && (await op.evaluate(() => globalThis.__clips.length)) === 1, await op.locator(`[data-testid='audition-line-${first.id}']`).getAttribute("data-heard"));
+  await op.locator(`[data-testid='audition-line-${first.slot}-${first.id}'] button`).click();
+  await op.waitForFunction((id) => document.querySelector(`[data-testid='audition-line-${id}']`)?.dataset.heard, `${first.slot}-${first.id}`, { timeout: 10000 });
+  check("CAP1.owner-audition-plays-the-recording-without-a-visit", (await op.locator(`[data-testid='audition-line-${first.slot}-${first.id}']`).getAttribute("data-heard")) === "Aufnahme" && (await op.evaluate(() => globalThis.__clips.length)) === 1, await op.locator(`[data-testid='audition-line-${first.slot}-${first.id}']`).getAttribute("data-heard"));
   check("CAP1.prepare-needs-the-spend-confirmation", (await op.locator("[data-testid='audition-prepare-run']").isDisabled()));
   await shot(op, "owner-audition", true);
   check("CAP1.audition-started-no-visit", JSON.stringify(await v1Snapshot()) === JSON.stringify(v1Before) && (await row("isabel")).state.visits.length === 1);

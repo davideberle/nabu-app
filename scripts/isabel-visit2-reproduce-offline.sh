@@ -100,6 +100,13 @@ stop_server "$CUR"; CUR=""
 server "$OUT/db-branches" 3292
 step isabel-v2-branches 0 node scripts/verify-learning-isabel-visit2.mjs --base http://127.0.0.1:3292 --db "$OUT/db-branches/nabu.db" --out "$OUT/out-branches" --mode branches
 stop_server "$CUR"; CUR=""
+server "$OUT/db-voices" 3292 FAMILY_STORY_VOICES=recorded ELEVENLABS_VOICE_DE_FEMALE_ID=FakeVoiceDeF123 ELEVENLABS_VOICE_ES_FEMALE_ID=FakeVoiceEsF123 ELEVENLABS_VOICE_EN_FEMALE_ID=FakeVoiceEnF123
+step story-voices-configured-unrecorded 0 node scripts/verify-learning-isabel-visit2.mjs --base http://127.0.0.1:3292 --db "$OUT/db-voices/nabu.db" --out "$OUT/out-voices" --mode voices
+stop_server "$CUR"; CUR=""
+# Voice ids configured but the children's switch still off (the parked release): child pages keep their earlier routes.
+server "$OUT/db-voices-off" 3292 ELEVENLABS_VOICE_DE_FEMALE_ID=FakeVoiceDeF123 ELEVENLABS_VOICE_ES_FEMALE_ID=FakeVoiceEsF123 ELEVENLABS_VOICE_EN_FEMALE_ID=FakeVoiceEnF123
+step story-voices-configured-switch-off 0 node scripts/verify-learning-isabel-visit2.mjs --base http://127.0.0.1:3292 --db "$OUT/db-voices-off/nabu.db" --out "$OUT/out-voices-off" --mode voices-off
+stop_server "$CUR"; CUR=""
 server "$OUT/db-novoice" 3292
 step isabel-v2-no-german-voice 0 node scripts/verify-learning-isabel-visit2.mjs --base http://127.0.0.1:3292 --db "$OUT/db-novoice/nabu.db" --out "$OUT/out-novoice" --mode novoice
 stop_server "$CUR"; CUR=""
