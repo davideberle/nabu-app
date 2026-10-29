@@ -195,7 +195,7 @@ async function makeCtx(options, cookie = assistant, voices = GERMAN, extra = {})
       ttsCalls.push(u.pathname);
       return r.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ error: "No voice for this language" }) });
     }
-    if (extra.clips && u.pathname.startsWith("/api/family/learning/narration/")) return r.fulfill({ status: 200, contentType: "audio/mpeg", body: Buffer.from([0xff, 0xfb, 0x90, 0x00]) });
+    if (extra.clips && u.pathname.startsWith("/api/family/learning/narration/")) return r.fulfill({ status: 200, contentType: "audio/mpeg", body: Buffer.from("UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQIAAAAAAA==", "base64") }); // a valid silent clip
     if (u.pathname.startsWith("/api/family/learning/nokt/")) noktCalls.push(u.pathname);
     if (/\/api\/family\/(transcribe|assistant\/session)/.test(u.pathname)) {
       blocked.push(`${u.origin}${u.pathname}`);
@@ -282,7 +282,7 @@ if (MODE === "novoice" || MODE === "denied") {
     await page.locator("[data-testid='narration-control']").click();
     await page.waitForFunction(() => (globalThis.__clips || []).length >= 2, null, { timeout: 15000 });
     await narrationIdle(page);
-    check("I2-06.recorded-clips-preferred-over-the-device-voice", (await spoken(page)).length === 0 && (await page.evaluate(() => globalThis.__clips.length)) >= 2);
+    check("I2-06.recorded-clips-preferred-over-the-device-voice", (await spoken(page)).length === 0 && (await page.evaluate(() => globalThis.__clips.length)) >= 2, { spoken: await spoken(page), clips: await page.evaluate(() => globalThis.__clips.length) });
   }
 } else if (MODE === "cap1") {
   // ---------------------------------------------------------------- Rollback: her released visit set only
@@ -293,7 +293,7 @@ if (MODE === "novoice" || MODE === "denied") {
   await page.goto(`${BASE}/family/learn?child=isabel`);
   await page.waitForSelector("[data-testid='world-screen'][data-child='isabel']", { timeout: 30000 });
   const hub = await text(page);
-  check("CAP1.hub-is-the-released-workshop-done", hub.includes("Old Lilas kleine Werkstatt") && (await page.locator("[data-testid='cockpit-start']").count()) === 0 && !/Ida|Garten/.test(hub), hub.slice(0, 200));
+  check("CAP1.hub-is-the-released-workshop-done", hub.includes("Old Lilas kleine Werkstatt") && (await page.locator("[data-testid='cockpit-start']").count()) === 0 && !/Gärtnerin|Idas Garten|Zum Garten/.test(hub), hub.slice(0, 200)); // «Einen Garten bauen» is her own saved wish, correctly shown
   const ev = await api("GET", "/api/family/learning/parent/evidence?child=isabel", null, owner);
   check("CAP1.parent-evidence-readable", ev.status === 200);
   check("CAP1.visit-1-records-untouched", JSON.stringify(await v1Snapshot()) === JSON.stringify(v1Before));
@@ -597,7 +597,7 @@ if (MODE === "novoice" || MODE === "denied") {
   const ig3 = await text(pp, "[data-testid='evidence-IG3-STICKS']");
   check("I2-05.parent-exact-answers-and-help-in-order", /«23» ✗ .*«32» ✓/.test(ig3) && /Hinweis|hint/i.test(ig3), ig3.slice(0, 300));
   check("I2-05.parent-reading-supported-listening-apart", (await text(pp, "[data-testid='evidence-IG7-READ']")).includes("Buchstabenhilfe") && (await text(pp, "[data-testid='evidence-IG8-LISTEN']")).includes("getrennt von Lesen"));
-  await pp.locator("[data-testid='observation-plant-done']").click().catch(() => {});
+  await pp.locator("[data-testid='observation-v2-plant-done']").click();
   await settle(1200);
   await shot(pp, "parent-evidence", true);
   await pp.locator("[role='tab']", { hasText: "Rückblick" }).click();

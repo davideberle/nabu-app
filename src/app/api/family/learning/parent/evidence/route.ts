@@ -78,6 +78,8 @@ export async function GET(request: Request) {
     .filter((x) => x.kind === "parent_observation")
     .map((x) => ({ id: x.id, visitId: x.visitId, taskId: x.taskId, at: x.createdAt, ...((x.payload ?? {}) as { step?: string; task?: string; status?: string; note?: string | null }) }));
   // The real-world tasks a parent may record (the child's own served content only).
-  const craftTasks = prepared && content ? (content.missions ?? []).flatMap((m) => m.steps.filter((st) => st.kind === "craft" && st.craft).map((st) => ({ visit: m.visit, step: st.id, title: st.title, tasks: st.craft!.tasks.map((t) => ({ id: t.id, text: t.text })) }))) : [];
+  // Isabel Visit 2: only visits she has started can have a real-world task to observe (Visit 1 is always listed, as released).
+  const started = new Set((bundle.state?.visits ?? []).map((v) => v.id));
+  const craftTasks = prepared && content ? (content.missions ?? []).filter((m) => m.visit === "v1" || started.has(m.visit as never)).flatMap((m) => m.steps.filter((st) => st.kind === "craft" && st.craft).map((st) => ({ visit: m.visit, step: st.id, title: st.title, tasks: st.craft!.tasks.map((t) => ({ id: t.id, text: t.text })) }))) : [];
   return NextResponse.json({ ...bundle, parentObservations, craftTasks, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env), noktTalks }, { headers: NO_STORE });
 }

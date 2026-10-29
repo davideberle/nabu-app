@@ -112,11 +112,14 @@ stop_server "$CUR"; CUR=""
 server "$OUT/db-v1cap" 3295 FAMILY_LEARNING_ISABEL_CONTENT_CAP=1 $NOKTENV
 step isabel-v1-journey-cap1 0 node scripts/verify-learning-isabel.mjs --base http://127.0.0.1:3295 --db "$OUT/db-v1cap/nabu.db" --out "$OUT/out-v1cap" --mode isabel
 stop_server "$CUR"; CUR=""
-# Under content v2 the released Visit 1 journey runs unchanged except where Visit 2 is now offered after it (named below).
+# Under content v2 the released Visit 1 journey runs unchanged except exactly two named, intended differences:
+#   I1-01.visit-started-own-content (her record now carries content version 2) and
+#   I1-08.hub-after-shows-done-and-her-wish-not-a-new-visit (Visit 2 is offered after Visit 1). Checked by name below.
 # shellcheck disable=SC2086
 server "$OUT/db-v1v2" 3295 $NOKTENV
-step isabel-v1-journey-content-v2 1 node scripts/verify-learning-isabel.mjs --base http://127.0.0.1:3295 --db "$OUT/db-v1v2/nabu.db" --out "$OUT/out-v1v2" --mode isabel
+step isabel-v1-journey-content-v2 2 node scripts/verify-learning-isabel.mjs --base http://127.0.0.1:3295 --db "$OUT/db-v1v2/nabu.db" --out "$OUT/out-v1v2" --mode isabel
 stop_server "$CUR"; CUR=""
+if [ "$(sed 's/\x1b\[[0-9;]*m//g' "$OUT/isabel-v1-journey-content-v2.log" | grep '^FAIL' | awk '{print $2}' | sort | tr '\n' ' ')" != "I1-01.visit-started-own-content I1-08.hub-after-shows-done-and-her-wish-not-a-new-visit " ]; then echo "isabel-v1-journey-content-v2: unexpected failure set → FAILED" | tee -a "$SUMMARY"; FAILED=1; else echo "isabel-v1-journey-content-v2: exactly the two named differences" | tee -a "$SUMMARY"; fi
 server "$OUT/db-off" 3295 FAMILY_LEARNING_ISABEL_CONTENT=off
 step isabel-content-off 0 node scripts/verify-learning-isabel.mjs --base http://127.0.0.1:3295 --db "$OUT/db-off/nabu.db" --out "$OUT/out-off" --mode isabel-off
 stop_server "$CUR"; CUR=""

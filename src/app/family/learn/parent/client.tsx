@@ -1495,6 +1495,8 @@ function ParentObservationPanel({ craft, observations, child, ops }: { craft: Cr
     setNotes((n) => ({ ...n, [task]: "" }));
     ops.onChanged();
   };
+  // Visit 1 keeps its released ids; a later visit's tasks carry the visit (two visits may both have a «build» task).
+  const tid = (id: string) => (craft.visit === "v1" ? id : `${craft.visit}-${id}`);
   return (
     <section className="rounded-2xl border border-primary bg-primary p-4" data-testid="parent-observations" data-step={craft.step}>
       <h3 className="text-base font-semibold text-primary">Beobachtung der Eltern: {craft.title}</h3>
@@ -1504,13 +1506,13 @@ function ParentObservationPanel({ craft, observations, child, ops }: { craft: Cr
           const mine = observations.filter((o) => o.task === t.id);
           const latest = mine[mine.length - 1] ?? null;
           return (
-            <li key={t.id} className="grid gap-2 rounded-xl border border-secondary p-3" data-testid={`observation-${t.id}`} data-latest={latest?.status ?? ""}>
+            <li key={t.id} className="grid gap-2 rounded-xl border border-secondary p-3" data-testid={`observation-${tid(t.id)}`} data-latest={latest?.status ?? ""}>
               <span className="text-sm text-primary">{t.text}</span>
               <span className="text-sm text-tertiary">{latest ? `Zuletzt eingetragen: ${OBSERVATION_DE[latest.status ?? ""] ?? latest.status}${latest.note ? ` — «${latest.note}»` : ""} (${fmt(latest.at)})` : "Noch nichts eingetragen."}{mine.length > 1 ? ` · ${mine.length} Einträge` : ""}</span>
-              <input value={notes[t.id] ?? ""} onChange={(e) => setNotes((n) => ({ ...n, [t.id]: e.target.value.slice(0, 300) }))} placeholder="Notiz (freiwillig)" className="h-10 rounded-lg border border-secondary bg-primary px-2 text-sm text-primary" aria-label={`Notiz zu: ${t.text}`} data-testid={`observation-note-${t.id}`} />
+              <input value={notes[t.id] ?? ""} onChange={(e) => setNotes((n) => ({ ...n, [t.id]: e.target.value.slice(0, 300) }))} placeholder="Notiz (freiwillig)" className="h-10 rounded-lg border border-secondary bg-primary px-2 text-sm text-primary" aria-label={`Notiz zu: ${t.text}`} data-testid={`observation-note-${tid(t.id)}`} />
               <div className="flex flex-wrap gap-2">
                 {(["done", "with-help", "not-tried"] as const).map((st) => (
-                  <button key={st} type="button" className={secondaryButton} disabled={busy !== null} onClick={() => void save(t.id, st)} data-testid={`observation-${t.id}-${st}`}>
+                  <button key={st} type="button" className={secondaryButton} disabled={busy !== null} onClick={() => void save(t.id, st)} data-testid={`observation-${tid(t.id)}-${st}`}>
                     {OBSERVATION_DE[st]}
                   </button>
                 ))}
