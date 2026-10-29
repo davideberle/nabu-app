@@ -17,9 +17,9 @@ export async function GET() {
   if (!parent.ok) return parent.response;
   const catalog = servedNarrationCatalog();
   const { missingLines, ...readiness } = await narrationReadiness(catalog);
-  const missing = new Set(missingLines.map((l) => l.id));
+  const missing = new Set(missingLines);
   // The reviewed catalogue itself (fixed scripts, no child data) so the owner can audition every line on the real device.
-  return NextResponse.json({ readiness, lines: catalog.map((l) => ({ id: l.id, text: l.text, where: l.where ?? [], recorded: !missing.has(l.id) })) }, { headers: NO_STORE });
+  return NextResponse.json({ readiness, lines: catalog.map((l) => ({ id: l.id, slot: l.slot ?? null, text: l.text, where: l.where ?? [], recorded: !missing.has(l) })) }, { headers: NO_STORE });
 }
 
 export async function POST(request: Request) {

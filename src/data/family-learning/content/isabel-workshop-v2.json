@@ -1073,7 +1073,8 @@
           "name": "Gärtnerin Ida",
           "role": "baut einen Garten",
           "language": "de",
-          "plate": "gardener"
+          "plate": "gardener",
+          "voice": "de-female"
         }
       ],
       "steps": [

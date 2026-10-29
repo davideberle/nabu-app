@@ -406,7 +406,7 @@ function fakes(opts: { voices?: VoiceLike[]; clips?: Record<string, boolean>; cl
   });
   return { player, spoken, played, revoked, cancelledCount: () => cancelled, audio: () => audioEl, fireTimers: () => timers.splice(0).forEach((f) => f()) };
 }
-const script = (key: string, ...texts: string[]) => ({ key, lines: texts.map(line) });
+const script = (key: string, ...texts: string[]) => ({ key, lines: texts.map((t) => line(t)) });
 
 describe("narration player — fakes only", () => {
   it("speaks nothing before the deliberate tap; after unlock it plays the script once", async () => {
@@ -500,9 +500,9 @@ describe("prerecorded narration — readiness and the owner's capped preparation
     return {
       stored,
       sent,
-      lockAt: (voice: string) => clipPathname(voice, "n" + "0".repeat(28)).replace(/[^/]+$/, "") + "prepare.lock",
-      seedLock(voice: string) {
-        stored.set(this.lockAt(voice), Date.now() - (lockAgeMs ?? 0));
+      lockAt: (_voice?: string) => "family-narration/prepare.lock",
+      seedLock(_voice?: string) {
+        stored.set("family-narration/prepare.lock", Date.now() - (lockAgeMs ?? 0));
       },
       deps(env: Record<string, string>, fetchOk: (n: number) => boolean = () => true) {
         return {
@@ -516,7 +516,7 @@ describe("prerecorded narration — readiness and the owner's capped preparation
       },
     };
   }
-  const ENV = { ELEVENLABS_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_NARRATION_DE_VOICE_ID: "VoiceAbc12345" };
+  const ENV = { ELEVENLABS_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_FEMALE_ID: "VoiceAbc12345" };
   it("records only missing catalogued lines, with the configured voice, within the character cap", async () => {
     const st = fakeStore([clipPathname("VoiceAbc12345", catalog[0].id)]);
     equal((await narrationReadiness(catalog, st.deps(ENV))).recorded, 1);
@@ -560,7 +560,7 @@ describe("prerecorded narration — readiness and the owner's capped preparation
   });
   it("a line naming a child is never sent to the provider or stored in the public store", async () => {
     const st = fakeStore();
-    const r = await prepareNarration([...catalog, line("Hallo Isabel!")], 99999, st.deps(ENV));
+    const r = await prepareNarration([...catalog, line("Hallo Isabel!", "de-female")], 99999, st.deps(ENV));
     equal(r.status, "refused-private");
     equal(st.sent.length, 0);
   });
@@ -680,5 +680,77 @@ describe("narration catalogue coverage — complete and minimal (pre-release rev
   });
   it("every catalogue line is a fixed public-safe script (no child name; public store)", () => {
     deepStrictEqual(catalog.filter((l) => !isPublicSafeScript(l.text)).map((l) => l.text), []);
+  });
+});
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Six-slot story voice registry (owner direction 2026-10-29 09:34) — fakes only
+// ---------------------------------------------------------------------------------------------------------------------
+import { ASSISTANT_IDENTITIES, resolveSlotVoiceId, slotFitsCharacter, VOICE_SLOTS, VOICE_SLOT_INFO } from "./family-voice-registry.ts";
+import { parseChildTtsRequest, resolveSpeechVoiceId } from "./family-tts.ts";
+import { pickNativeVoice } from "./family-narration-player.ts";
+import { readNarrationClip } from "./family-narration-store.ts";
+
+describe("six-slot story voice registry", () => {
+  it("has exactly de/es/en × female/male, each with its own server-only env name and an OPEN dialect decision", () => {
+    deepStrictEqual([...VOICE_SLOTS], ["de-female", "de-male", "es-female", "es-male", "en-female", "en-male"]);
+    equal(new Set(VOICE_SLOTS.map((x) => VOICE_SLOT_INFO[x].env)).size, 6);
+    ok(VOICE_SLOTS.every((x) => VOICE_SLOT_INFO[x].dialect.decided === null && VOICE_SLOT_INFO[x].dialect.options.length >= 2));
+  });
+  it("resolves a slot only from its own env and never interpolates a malformed id", () => {
+    equal(resolveSlotVoiceId("es-female", { ELEVENLABS_VOICE_ES_FEMALE_ID: "Abc12345xyz" }), "Abc12345xyz");
+    equal(resolveSlotVoiceId("es-female", { ELEVENLABS_VOICE_ES_MALE_ID: "Abc12345xyz" }), null);
+    equal(resolveSlotVoiceId("de-female", { ELEVENLABS_VOICE_DE_FEMALE_ID: "../evil" }), null);
+  });
+  it("assistants are not story characters; a character's slot must be of its own language", () => {
+    deepStrictEqual(ASSISTANT_IDENTITIES.map((a) => a.id), ["nokt", "lila"]);
+    ok(slotFitsCharacter("de-female", "de") && !slotFitsCharacter("en-female", "de") && !slotFitsCharacter("nokt", "de"));
+    const nokt = structuredClone(rawV2);
+    nokt.missions[1].characters[0] = { ...nokt.missions[1].characters[0], id: "nokt", name: "Nokt" };
+    ok(reconcileIsabelContent(nokt).problems.some((p) => /assistant identity is never a story character/.test(p)));
+    const wrong = structuredClone(rawV2);
+    wrong.missions[1].characters[0].voice = "en-female";
+    ok(reconcileIsabelContent(wrong).problems.some((p) => /voice slot of its own language/.test(p)));
+    const v1voice = structuredClone(rawV1);
+    v1voice.missions[0].characters[0].voice = "de-female";
+    ok(reconcileIsabelContent(v1voice).problems.some((p) => /Visit 1 stays exactly as released/.test(p)), "Visit 1 is not re-voiced");
+  });
+  it("Visit 2's gardener speaks with the de-female slot: every catalogued and spoken line carries it", () => {
+    ok(narrationCatalog(v2).every((l) => l.slot === "de-female"));
+    const { upgraded, env } = afterVisit1();
+    const s = open(op(upgraded, { op: "start-visit" }, env), "IG1-HELLO", env);
+    ok(said(s).every((l) => l.slot === "de-female"));
+  });
+  it("a clip is read with its slot's voice only; an unconfigured or unknown slot has none", async () => {
+    let asked = "";
+    const deps = { env: { BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_FEMALE_ID: "VoiceAbc12345" }, getImpl: (async (p: string) => { asked = p; return null; }) as never };
+    await readNarrationClip("de-female", narrationCatalog(v2)[0].id, deps);
+    equal(asked, clipPathname("VoiceAbc12345", narrationCatalog(v2)[0].id));
+    equal(await readNarrationClip("de-male", narrationCatalog(v2)[0].id, deps), null);
+    equal(await readNarrationClip("xx-female", narrationCatalog(v2)[0].id, deps), null);
+  });
+  it("preparation records only lines whose slot has a voice; other slots are reported, never filled with another voice", async () => {
+    const r = await narrationReadiness(narrationCatalog(v2), { env: { BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_MALE_ID: "VoiceMale12345" }, headImpl: (async () => { throw new Error("none"); }) as never });
+    deepStrictEqual(r.slots.map((x) => [x.slot, x.configured]), [["de-female", false]]);
+    let calls = 0;
+    const p = await prepareNarration(narrationCatalog(v2), 99999, { env: { ELEVENLABS_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_MALE_ID: "VoiceMale12345" }, fetchImpl: (async () => { calls += 1; return new Response(); }) as unknown as typeof fetch, headImpl: (async () => { throw new Error("none"); }) as never, putImpl: (async () => ({})) as never, delImpl: (async () => {}) as never });
+    equal(p.status, "not-configured");
+    equal(calls, 0);
+  });
+  it("the shared live speech route: a slot picks only that slot's native voice; without a slot routing is exactly as before (Santiago, Nokt)", () => {
+    const env = { ELEVENLABS_VOICE_ES_FEMALE_ID: "EsFemale1234", ELEVENLABS_VOICE_ES_ID: "LegacyEs1234", ELEVENLABS_NOKT_DE_VOICE_ID: "Nokt12345678" };
+    equal(resolveSpeechVoiceId({ childId: "santiago", language: "es", speaker: "character", slot: "es-female" }, env), "EsFemale1234");
+    equal(resolveSpeechVoiceId({ childId: "santiago", language: "es", speaker: "character" }, env), "LegacyEs1234", "no slot → the earlier language voice");
+    equal(resolveSpeechVoiceId({ childId: "santiago", language: "de", speaker: "nokt" }, env), "Nokt12345678", "Nokt keeps its own voice");
+    equal(resolveSpeechVoiceId({ childId: "santiago", language: "de", speaker: "character", slot: "es-female" }, env), null, "a slot of another language is refused");
+    ok(!parseChildTtsRequest({ childId: "isabel", text: "x", speaker: "nokt", slot: "de-female" }).ok, "the tutor never takes a story slot");
+    ok(!parseChildTtsRequest({ childId: "isabel", text: "x", speaker: "character", slot: "fr-female" }).ok);
+    ok(parseChildTtsRequest({ childId: "isabel", text: "x", language: "de", speaker: "character", slot: "de-male" }).ok);
+  });
+  it("device fallback is native per language — never another language's default", () => {
+    const voices = [{ name: "Samantha", lang: "en-US", default: true }, { name: "Anna", lang: "de-DE" }, { name: "Mónica", lang: "es-ES" }, { name: "Daniel", lang: "en-GB" }];
+    equal(pickNativeVoice(voices, "es")?.name, "Mónica");
+    equal(pickNativeVoice(voices, "de")?.name, "Anna");
+    equal(pickNativeVoice(voices.filter((v) => !v.lang.startsWith("es")), "es"), null);
   });
 });

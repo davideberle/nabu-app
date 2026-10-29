@@ -28,7 +28,8 @@ export type MissionPlace = {
   character?: string;
 };
 
-export type MissionCharacter = { id: string; name: string; role: string; language: MissionLanguage; plate: string };
+/** `voice`: the story voice slot of the six-slot registry (`family-voice-registry.ts`, 2026-10-29); optional — earlier characters keep their routes. */
+export type MissionCharacter = { id: string; name: string; role: string; language: MissionLanguage; plate: string; voice?: import("./family-voice-registry.ts").VoiceSlot };
 
 /** A line of a story beat or a character; `de` is the reviewed German translation (opening it is recorded as support). */
 export type MissionLine = { speaker: string | null; text: string; language: MissionLanguage; de?: string | null };

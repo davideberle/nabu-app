@@ -21,8 +21,13 @@
 import type { LearningContent } from "./family-learning-content.ts";
 import type { MissionActiveView, MissionView } from "./family-learning-mission.ts";
 import type { MissionDef } from "./family-learning-mission-spec.ts";
+import { isVoiceSlot, type VoiceSlot } from "./family-voice-registry.ts";
 
-export type NarrationLine = { id: string; text: string; /** Catalogue only: where the line is spoken (step id, «closing», «farewell»). */ where?: string[] };
+/**
+ * `slot`: the story voice slot that speaks the line (six-slot registry). The recording of a line is keyed by slot AND text: the
+ * same words in two voices are two recordings. `where` (catalogue only): the screens that speak it.
+ */
+export type NarrationLine = { id: string; text: string; slot?: VoiceSlot; where?: string[] };
 /** One screen's narration: `key` changes exactly when something new should be said (a new beat, a new answer, a new hint). */
 export type NarrationScript = { key: string; lines: NarrationLine[] };
 
@@ -67,8 +72,10 @@ export function narrationId(text: string): string {
   return `n${cyrb53(bytes, 0)}${cyrb53(bytes, 0x9e3779b9)}`;
 }
 
-export const line = (text: string): NarrationLine => ({ id: narrationId(text), text: normaliseNarration(text) });
-const lines = (texts: (string | null | undefined)[]): NarrationLine[] => texts.filter((t): t is string => typeof t === "string" && t.trim().length > 0).map(line);
+export const line = (text: string, slot?: VoiceSlot | null): NarrationLine => ({ id: narrationId(text), text: normaliseNarration(text), ...(slot ? { slot } : {}) });
+const linesIn = (slot: VoiceSlot | null) => (texts: (string | null | undefined)[]): NarrationLine[] => texts.filter((t): t is string => typeof t === "string" && t.trim().length > 0).map((t) => line(t, slot));
+/** The story voice slot of a narrated mission (its one story character), or null. */
+export const missionSlot = (m: { characters?: { voice?: unknown }[] } | null | undefined): VoiceSlot | null => (isVoiceSlot(m?.characters?.[0]?.voice) ? (m!.characters![0].voice as VoiceSlot) : null);
 
 /** The child's own typed number repeated back («Das ist wieder 12. ») stays visible but is never spoken. */
 export const stripRepeat = (text: string) => text.replace(/^Das ist wieder [^.]{1,12}\.\s*/, "");
@@ -90,6 +97,7 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
   if (!narrated(mission)) return null;
   const a = mission.active;
   if (!a) return null;
+  const lines = linesIn(missionSlot(mission));
   const finished = a.status !== "active";
   const keyParts: (string | number)[] = [a.id, a.status];
   let out: NarrationLine[] = [];
@@ -184,9 +192,10 @@ export function closingLines(kind: "difficulty" | "enjoyment" | "next", src: Clo
 }
 
 /** The closing questions, one per screen (the same lines the screen shows). */
-export function closingNarration(kind: "difficulty" | "enjoyment" | "next" | "farewell", content: { prompt: string; options: { label: string }[] } | { lines: string[] }): NarrationScript {
+export function closingNarration(kind: "difficulty" | "enjoyment" | "next" | "farewell", content: { prompt: string; options: { label: string }[] } | { lines: string[] }, slot: VoiceSlot | null = null): NarrationScript {
+  const lines = linesIn(slot);
   const out = "lines" in content ? lines(content.lines) : lines([content.prompt, ...content.options.map((o) => o.label)]);
-  return { key: `closing|${kind}|${out.map((l) => l.id).join(",")}`, lines: out };
+  return { key: `closing|${kind}|${slot ?? ""}|${out.map((l) => l.id).join(",")}`, lines: out };
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -196,16 +205,19 @@ export function closingNarration(kind: "difficulty" | "enjoyment" | "next" | "fa
 export function narrationCatalog(content: LearningContent): NarrationLine[] {
   const out = new Map<string, NarrationLine>();
   let where = "";
+  let slot: VoiceSlot | null = null;
   const add = (t: string | null | undefined) => {
     if (typeof t === "string" && t.trim()) {
-      const l = line(t);
-      const prev = out.get(l.id);
-      out.set(l.id, { ...l, where: [...new Set([...(prev?.where ?? []), where])] });
+      const l = line(t, slot);
+      const k = `${slot ?? ""}|${l.id}`;
+      const prev = out.get(k);
+      out.set(k, { ...l, where: [...new Set([...(prev?.where ?? []), where])] });
     }
   };
   const missions = (content.missions ?? []).filter((m) => narrated(m));
   if (!missions.length) return [];
   for (const m of missions) {
+    slot = missionSlot(m);
     for (const s of m.steps) {
       where = s.id;
       for (const l of [...(s.intro ?? []), ...(s.done ?? []), ...Object.values(s.doneBy ?? {}).flat()]) add(l?.text);
@@ -263,8 +275,11 @@ export function narrationCatalog(content: LearningContent): NarrationLine[] {
     where = "farewell";
     for (const t of farewellLines(content, m)) add(t);
   }
-  return [...out.values()].sort((x, y) => (x.id < y.id ? -1 : 1));
+  return [...out.values()].sort((x, y) => (`${x.slot}|${x.id}` < `${y.slot}|${y.id}` ? -1 : 1));
 }
+
+/** The catalogue key of a line (slot + text id). */
+export const catalogKey = (l: { slot?: string | null; id: string }) => `${l.slot ?? ""}|${l.id}`;
 
 /** The spoken goodbye of a narrated mission: its outcome's reviewed done lines + the visit's saved line. */
 export function farewellLines(content: LearningContent, m: MissionDef): string[] {

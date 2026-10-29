@@ -30,7 +30,8 @@ import { AssistantPortrait } from "@/components/family/assistant-portrait";
 import type { Act } from "./mission-world";
 import { Feedback, SolveTask, SpeakerIcon, type SceneTelemetry } from "./mission-scene";
 import { GardenerPortrait, WorkshopGarden, WorkshopPictureView, WorkshopRoom } from "./workshop-pictures";
-import { line, missionNarration, narrated, NARRATION_UI } from "@/lib/family-learning-narration";
+import { line, missionNarration, missionSlot, narrated, NARRATION_UI } from "@/lib/family-learning-narration";
+import type { VoiceSlot } from "@/lib/family-voice-registry";
 import type { NarrationPlayer } from "@/lib/family-narration-player";
 import { NarrationControl, useNarration } from "./narration";
 
@@ -524,7 +525,7 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
       {active.kind === "decide" && active.decide ? <NarratedDecide active={active} busy={busy} act={act} /> : null}
       {active.kind === "solve" && active.solve ? <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} quiet onSeen={seen} /> : null}
       {active.kind === "read" ? <NarratedReadTask active={active} busy={busy} act={act} /> : null}
-      {active.kind === "listen" ? <NarratedListen active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} who={mission.characters[0]?.name ?? ""} /> : null}
+      {active.kind === "listen" ? <NarratedListen active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} who={mission.characters[0]?.name ?? ""} slot={missionSlot(mission)} /> : null}
       {active.kind === "craft" && active.craft ? <NarratedCraft active={active} busy={busy} act={act} onDone={onNext} /> : null}
       {finished && active.kind !== "craft" ? <NextButton busy={busy} onNext={onNext} /> : null}
     </div>
@@ -595,7 +596,7 @@ function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; bu
 }
 
 /** Listening (narrated): the sentence is played only on her explicit tap, recorded first, through the SAME player (no overlap). */
-function NarratedListen({ active, busy, act, narrator, telemetry, who }: { active: MissionActiveView; busy: boolean; act: Act; narrator: NarrationPlayer; telemetry: SceneTelemetry; who: string }) {
+function NarratedListen({ active, busy, act, narrator, telemetry, who, slot }: { active: MissionActiveView; busy: boolean; act: Act; narrator: NarrationPlayer; telemetry: SceneTelemetry; who: string; slot: VoiceSlot | null }) {
   const listen = active.listen!;
   const [playing, setPlaying] = useState(false);
   const play = async () => {
@@ -605,7 +606,7 @@ function NarratedListen({ active, busy, act, narrator, telemetry, who }: { activ
     const res = await act({ a: "support", step: active.id, kind: "play" });
     if (!res || typeof res.script !== "string") return;
     setPlaying(true);
-    const result = await narrator.play({ key: `listen|${active.id}|${listen.plays + 1}`, lines: [line(res.script)] });
+    const result = await narrator.play({ key: `listen|${active.id}|${listen.plays + 1}`, lines: [line(res.script, slot)] });
     setPlaying(false);
     if (result === "cancelled") return;
     const o = narrator.lastLineOutcome();

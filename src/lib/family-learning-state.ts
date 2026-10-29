@@ -2898,14 +2898,14 @@ export type LogReviewView = {
 export type ClosingView = { success: string | null; next: string; artifact: string | null; plan: import("./family-learning-mission-spec.ts").MissionGrid | null; feedback: Record<string, string | null>; made?: { id: string; label: string; picture: string | null; room: string } | null; recap?: string | null; /** Isabel Visit 2+ (narrated): the spoken goodbye after the closing questions (the outcome's reviewed done lines + the visit's saved line). */ farewell?: string[] | null; narrated?: boolean };
 
 /** Isabel Visit 2+: the running (else the next) visit's own reviewed wording and its mission's story character; null for Visit 1. */
-export type VisitText = { visit: string; title: string; hub: string; mission: string; done: string; start: string; character: string | null; narrated: boolean };
+export type VisitText = { visit: string; title: string; hub: string; mission: string; done: string; start: string; character: string | null; narrated: boolean; /** The story character's voice slot (six-slot registry), or null. */ voice: import("./family-voice-registry.ts").VoiceSlot | null };
 
 function visitTextFor(state: MissionState, content: LearningContent, nextVisit: string | null): VisitText | null {
   const id = state.visits.find((v) => v.finishedAt === null)?.id ?? nextVisit;
   const def = content.visits.find((v) => v.id === id);
   if (!def?.childText) return null;
   const mission = (content.missions ?? []).find((m) => m.visit === def.id) ?? null;
-  return { visit: def.id, title: mission?.title ?? def.title, ...def.childText, character: mission?.characters[0]?.name ?? null, narrated: mission?.narration?.mode === "auto" };
+  return { visit: def.id, title: mission?.title ?? def.title, ...def.childText, character: mission?.characters[0]?.name ?? null, narrated: mission?.narration?.mode === "auto", voice: mission?.characters[0]?.voice ?? null };
 }
 
 export type ChildView = {

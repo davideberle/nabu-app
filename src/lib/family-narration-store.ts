@@ -2,7 +2,8 @@
 // Prerecorded visit narration — server-only storage and the owner-run preparation (Isabel Visit 2, 2026-10-29; I2-06).
 //
 // Deterministic and cacheable: every narrated line is a REVIEWED, catalogued text (`narrationCatalog`), recorded ONCE with the
-// configured German voice through the existing ElevenLabs route and stored as an MP3 in the existing Blob store under
+// voice of its character's slot (six-slot registry, `family-voice-registry.ts`) through the existing ElevenLabs route and stored
+// as an MP3 in the existing Blob store under
 //   family-narration/<voice key>/<line id>.mp3        (voice key = first 12 hex of sha256(voice id); the voice id never leaves)
 // The child's browser only ever RECEIVES stored clips (GET clip route, authenticated, catalogued ids only). No child path calls
 // the provider; no free text, no child answer and no child record is ever sent to it. A missing clip means the device's own
@@ -16,20 +17,18 @@
 import { createHash } from "node:crypto";
 import { del, get, head, put } from "@vercel/blob";
 import type { NarrationLine } from "./family-learning-narration.ts";
+import { isVoiceSlot, resolveSlotVoiceId, VOICE_SLOTS, VOICE_SLOT_INFO, type VoiceSlot } from "./family-voice-registry.ts";
 
-/** Server-only env: the ONE German narration voice. Unset = no prerecording possible (device German voice only). */
-export const NARRATION_VOICE_ENV = "ELEVENLABS_NARRATION_DE_VOICE_ID";
 /** Prerecorded once, so the higher-quality multilingual model rather than the low-latency one used for live replies. */
 export const NARRATION_TTS_MODEL_ID = "eleven_multilingual_v2";
 export const NARRATION_OUTPUT_FORMAT = "mp3_44100_128";
-const VOICE_ID_PATTERN = /^[A-Za-z0-9]{8,64}$/;
 const LINE_ID_PATTERN = /^n[0-9a-f]{28}$/;
 
 export type Env = Record<string, string | undefined>;
 
-export function narrationVoiceId(env: Env = process.env): string | null {
-  const v = env[NARRATION_VOICE_ENV]?.trim();
-  return v && VOICE_ID_PATTERN.test(v) ? v : null;
+/** The configured voice of the line's story slot (six-slot registry), or null — a line without a slot is never recorded. */
+export function lineVoiceId(l: { slot?: VoiceSlot }, env: Env = process.env): string | null {
+  return l.slot ? resolveSlotVoiceId(l.slot, env) : null;
 }
 
 export const isNarrationLineId = (id: string) => LINE_ID_PATTERN.test(id);
@@ -56,12 +55,13 @@ export const isPublicSafeScript = (text: string) => !PRIVATE_TEXT.test(text) && 
 /** A preparation run holds this lock; a second run (double click, retry, two tabs) is refused instead of paying twice. */
 const LOCK_STALE_MS = 15 * 60_000;
 export const MAX_PREPARE_CHARACTERS = 20_000;
-const lockPathname = (voiceId: string) => `${clipPathname(voiceId, "n" + "0".repeat(28)).replace(/[^/]+$/, "")}prepare.lock`;
+/** One lock for all slots: preparation runs one at a time whatever voices it records. */
+export const PREPARE_LOCK = "family-narration/prepare.lock";
 
 /** The stored clip of one catalogued line for the configured voice, or null (no voice, no store, not recorded). */
-export async function readNarrationClip(lineId: string, deps: StoreDeps = {}): Promise<ReadableStream<Uint8Array> | null> {
+export async function readNarrationClip(slot: string, lineId: string, deps: StoreDeps = {}): Promise<ReadableStream<Uint8Array> | null> {
   const env = deps.env ?? process.env;
-  const voice = narrationVoiceId(env);
+  const voice = isVoiceSlot(slot) ? resolveSlotVoiceId(slot, env) : null;
   const token = env.BLOB_READ_WRITE_TOKEN;
   if (!voice || !token || !isNarrationLineId(lineId)) return null;
   try {
@@ -72,8 +72,10 @@ export async function readNarrationClip(lineId: string, deps: StoreDeps = {}): P
   }
 }
 
+export type SlotReadiness = { slot: VoiceSlot; language: string; gender: string; configured: boolean; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number };
 export type NarrationReadiness = {
-  voiceConfigured: boolean;
+  /** Slots the catalogue needs, with their configuration and recording state (voice ids are never reported). */
+  slots: SlotReadiness[];
   providerKeyConfigured: boolean;
   storeConfigured: boolean;
   model: string;
@@ -93,23 +95,29 @@ async function exists(pathname: string, token: string, headImpl: typeof head): P
   }
 }
 
-/** Read-only: which catalogued lines already have a clip for the configured voice (no provider call, no write). */
+/** Read-only: which catalogued lines already have a clip in their slot's configured voice (no provider call, no write). */
 export async function narrationReadiness(catalog: NarrationLine[], deps: StoreDeps = {}): Promise<NarrationReadiness & { missingLines: NarrationLine[] }> {
   const env = deps.env ?? process.env;
-  const voice = narrationVoiceId(env);
   const token = env.BLOB_READ_WRITE_TOKEN ?? null;
-  const characters = catalog.reduce((n, l) => n + l.text.length, 0);
-  const base = { voiceConfigured: !!voice, providerKeyConfigured: !!env.ELEVENLABS_API_KEY, storeConfigured: !!token, model: NARRATION_TTS_MODEL_ID, lines: catalog.length, characters };
-  if (!voice || !token) return { ...base, recorded: 0, missing: catalog.length, missingCharacters: characters, missingLines: catalog };
   const missingLines: NarrationLine[] = [];
-  for (const l of catalog) if (!(await exists(clipPathname(voice, l.id), token, deps.headImpl ?? head))) missingLines.push(l);
-  return { ...base, recorded: catalog.length - missingLines.length, missing: missingLines.length, missingCharacters: missingLines.reduce((n, l) => n + l.text.length, 0), missingLines };
+  for (const l of catalog) {
+    const voice = lineVoiceId(l, env);
+    if (!voice || !token || !(await exists(clipPathname(voice, l.id), token, deps.headImpl ?? head))) missingLines.push(l);
+  }
+  const missing = new Set(missingLines);
+  const chars = (ls: NarrationLine[]) => ls.reduce((n, l) => n + l.text.length, 0);
+  const slots = VOICE_SLOTS.filter((sl) => catalog.some((l) => l.slot === sl)).map((sl) => {
+    const ls = catalog.filter((l) => l.slot === sl);
+    const miss = ls.filter((l) => missing.has(l));
+    return { slot: sl, language: VOICE_SLOT_INFO[sl].language, gender: VOICE_SLOT_INFO[sl].gender, configured: !!resolveSlotVoiceId(sl, env), lines: ls.length, characters: chars(ls), recorded: ls.length - miss.length, missing: miss.length, missingCharacters: chars(miss) };
+  });
+  return { slots, providerKeyConfigured: !!env.ELEVENLABS_API_KEY, storeConfigured: !!token, model: NARRATION_TTS_MODEL_ID, lines: catalog.length, characters: chars(catalog), recorded: catalog.length - missingLines.length, missing: missingLines.length, missingCharacters: chars(missingLines), missingLines };
 }
 
 export type PrepareResult = { status: "prepared" | "not-configured" | "busy" | "cap-reached" | "upstream-failed" | "refused-private"; recorded: number; charactersSent: number; remaining: number; failedStatus?: number };
 
-async function acquireLock(voice: string, token: string, deps: StoreDeps): Promise<boolean> {
-  const path = lockPathname(voice);
+async function acquireLock(token: string, deps: StoreDeps): Promise<boolean> {
+  const path = PREPARE_LOCK;
   const now = (deps.now ?? Date.now)();
   const take = async () => {
     await (deps.putImpl ?? put)(path, String(now), { access: "public", contentType: "text/plain", allowOverwrite: false, addRandomSuffix: false, token });
@@ -140,18 +148,20 @@ async function acquireLock(voice: string, token: string, deps: StoreDeps): Promi
  */
 export async function prepareNarration(catalog: NarrationLine[], maxCharacters: number, deps: StoreDeps = {}): Promise<PrepareResult> {
   const env = deps.env ?? process.env;
-  const voice = narrationVoiceId(env);
   const token = env.BLOB_READ_WRITE_TOKEN;
   const key = env.ELEVENLABS_API_KEY;
   const cap = Math.max(0, Math.min(maxCharacters, MAX_PREPARE_CHARACTERS));
   if (catalog.some((l) => !isPublicSafeScript(l.text))) return { status: "refused-private", recorded: 0, charactersSent: 0, remaining: catalog.length };
-  if (!voice || !token || !key) return { status: "not-configured", recorded: 0, charactersSent: 0, remaining: catalog.length };
-  if (!(await acquireLock(voice, token, deps))) return { status: "busy", recorded: 0, charactersSent: 0, remaining: -1 };
+  // Only lines whose slot has a configured voice are recorded; an unconfigured slot is reported, never filled with another voice.
+  if (!token || !key || !catalog.some((l) => lineVoiceId(l, env))) return { status: "not-configured", recorded: 0, charactersSent: 0, remaining: catalog.length };
+  if (!(await acquireLock(token, deps))) return { status: "busy", recorded: 0, charactersSent: 0, remaining: -1 };
   try {
     const ready = await narrationReadiness(catalog, deps);
     let recorded = 0;
     let sent = 0;
     for (const l of ready.missingLines) {
+      const voice = lineVoiceId(l, env);
+      if (!voice) continue;
       if (sent + l.text.length > cap) return { status: "cap-reached", recorded, charactersSent: sent, remaining: ready.missing - recorded };
       if (await exists(clipPathname(voice, l.id), token, deps.headImpl ?? head)) continue;
       const res = await (deps.fetchImpl ?? fetch)(`https://api.elevenlabs.io/v1/text-to-speech/${voice}?output_format=${NARRATION_OUTPUT_FORMAT}`, {
@@ -165,8 +175,8 @@ export async function prepareNarration(catalog: NarrationLine[], maxCharacters: 
       await (deps.putImpl ?? put)(clipPathname(voice, l.id), Buffer.from(bytes), { access: "public", contentType: "audio/mpeg", allowOverwrite: true, addRandomSuffix: false, token });
       recorded += 1;
     }
-    return { status: "prepared", recorded, charactersSent: sent, remaining: 0 };
+    return { status: "prepared", recorded, charactersSent: sent, remaining: ready.missing - recorded };
   } finally {
-    await (deps.delImpl ?? del)(lockPathname(voice), { token }).catch(() => {});
+    await (deps.delImpl ?? del)(PREPARE_LOCK, { token }).catch(() => {});
   }
 }

@@ -15,6 +15,7 @@ import type { ChildView } from "@/lib/family-learning-state";
 import type { LearningMutateOutcome } from "@/lib/family-learning-client";
 import { closingLines, closingNarration, type ClosingSource } from "@/lib/family-learning-narration";
 import type { NarrationPlayer } from "@/lib/family-narration-player";
+import type { VoiceSlot } from "@/lib/family-voice-registry";
 import { NarrationControl, useNarration, type NarrationTelemetry } from "./narration";
 import type { InterestAnswer } from "./next-interest";
 import { GardenerPortrait, WorkshopGarden, WorkshopPictureView } from "./workshop-pictures";
@@ -48,8 +49,8 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
 
   const script = useMemo(() => {
     const src = { reflection, adventure } as unknown as ClosingSource;
-    return closingNarration(step, { lines: closingLines(step, src) });
-  }, [step, reflection, adventure]);
+    return closingNarration(step, { lines: closingLines(step, src) }, view.visitText?.voice ?? null);
+  }, [step, reflection, adventure, view.visitText?.voice]);
   const narration = useNarration(narrator, script, telemetry);
 
   const answer = (id: string, value: string | null) => {
@@ -129,8 +130,8 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
 }
 
 /** The spoken goodbye after the closing (her garden, the reviewed goodbye lines, one way home). */
-export function WorkshopFarewell({ who, lines, grown, label, narrator, telemetry, onHome }: { who: string; lines: string[]; grown: string | null; label: string; narrator: NarrationPlayer; telemetry: NarrationTelemetry; onHome: () => void }) {
-  const script = useMemo(() => closingNarration("farewell", { lines }), [lines]);
+export function WorkshopFarewell({ who, lines, grown, label, voice, narrator, telemetry, onHome }: { who: string; lines: string[]; grown: string | null; label: string; voice: VoiceSlot | null; narrator: NarrationPlayer; telemetry: NarrationTelemetry; onHome: () => void }) {
+  const script = useMemo(() => closingNarration("farewell", { lines }, voice), [lines, voice]);
   const narration = useNarration(narrator, script, telemetry);
   return (
     <div className="mx-auto grid max-w-3xl gap-5 px-4 py-6" data-testid="workshop-farewell" data-narration={narration.status}>

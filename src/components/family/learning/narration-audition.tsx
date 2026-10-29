@@ -12,9 +12,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { createNarrationPlayer, type LineOutcome } from "@/lib/family-narration-player";
 import { line } from "@/lib/family-learning-narration";
+import type { VoiceSlot } from "@/lib/family-voice-registry";
 
-type Readiness = { voiceConfigured: boolean; providerKeyConfigured: boolean; storeConfigured: boolean; model: string; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number };
-type CatalogLine = { id: string; text: string; where: string[]; recorded: boolean };
+type SlotReadiness = { slot: string; language: string; gender: string; configured: boolean; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number };
+type Readiness = { slots: SlotReadiness[]; providerKeyConfigured: boolean; storeConfigured: boolean; model: string; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number };
+type CatalogLine = { id: string; slot: VoiceSlot | null; text: string; where: string[]; recorded: boolean };
 const SOURCE_DE: Record<LineOutcome, string> = { recorded: "Aufnahme", "device-de": "Gerätestimme", "no-german-voice": "keine deutsche Stimme", blocked: "vom Browser blockiert", failed: "Fehler" };
 const btn = "inline-flex min-h-9 items-center rounded-lg border border-primary px-3 text-sm font-medium text-primary disabled:opacity-50";
 
@@ -42,16 +44,17 @@ export function NarrationAudition() {
     const rank = (w: string) => (/^IG(\d+)-/.test(w) ? Number(/^IG(\d+)-/.exec(w)![1]) : ["closing-difficulty", "closing-enjoyment", "closing-next", "farewell"].indexOf(w) + 100);
     return [...g.entries()].sort((a, b) => rank(a[0]) - rank(b[0]));
   }, [data]);
+  const configuredMissing = data ? data.readiness.slots.filter((x) => x.configured).reduce((n, x) => n + x.missingCharacters, 0) : 0;
   const play = async (ls: CatalogLine[], key: string) => {
     player.unlock();
     setPlaying(key);
-    await player.play({ key: `audition|${key}|${Date.now()}`, lines: ls.map((l) => line(l.text)) });
+    await player.play({ key: `audition|${key}|${Date.now()}`, lines: ls.map((l) => line(l.text, l.slot)) });
     setPlaying(null);
   };
   const runPrepare = async () => {
     if (!data || !confirmSpend) return;
     setPrepare("läuft …");
-    const r = await fetch("/api/family/learning/parent/narration", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ confirm: "prepare-narration", maxCharacters: data.readiness.missingCharacters }) });
+    const r = await fetch("/api/family/learning/parent/narration", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ confirm: "prepare-narration", maxCharacters: Math.max(1, configuredMissing) }) });
     const j = await r.json().catch(() => ({}));
     setPrepare(`${j?.result?.status ?? r.status}: ${j?.result?.recorded ?? 0} aufgenommen, ${j?.result?.charactersSent ?? 0} Zeichen gesendet, ${j?.result?.remaining ?? "?"} offen`);
     setConfirmSpend(false);
@@ -64,8 +67,15 @@ export function NarrationAudition() {
     <section className="rounded-2xl border border-primary bg-primary p-4" data-testid="narration-audition" data-recorded={r.recorded} data-lines={r.lines}>
       <h3 className="text-base font-semibold text-primary">Vorlese-Stimme (Probehören)</h3>
       <p className="mt-1 text-sm text-tertiary">
-        Stimme eingestellt: {r.voiceConfigured ? "ja" : "nein"} · Anbieter-Schlüssel vorhanden: {r.providerKeyConfigured ? "ja (Gültigkeit nicht geprüft)" : "nein"} · Speicher: {r.storeConfigured ? "ja" : "nein"} · Modell {r.model} · {r.recorded}/{r.lines} Sätze aufgenommen, {r.missingCharacters} Zeichen fehlen
+        Anbieter-Schlüssel vorhanden: {r.providerKeyConfigured ? "ja (Gültigkeit nicht geprüft)" : "nein"} · Speicher: {r.storeConfigured ? "ja" : "nein"} · Modell {r.model} · {r.recorded}/{r.lines} Sätze aufgenommen, {r.missingCharacters} Zeichen fehlen
       </p>
+      <ul className="mt-1 text-sm text-tertiary" data-testid="audition-slots">
+        {r.slots.map((x) => (
+          <li key={x.slot} data-slot={x.slot} data-configured={x.configured ? "true" : "false"}>
+            Stimme {x.slot}: {x.configured ? "eingestellt" : "noch nicht gewählt"} · {x.recorded}/{x.lines} aufgenommen
+          </li>
+        ))}
+      </ul>
       <p className="mt-1 text-sm text-tertiary">Hier hören Sie jeden Satz so, wie er im Besuch kommt — ohne einen Besuch zu starten. Ohne Aufnahme spricht die deutsche Gerätestimme, ohne sie nichts.</p>
       <div className="mt-3 flex flex-wrap items-center gap-2">
         <button type="button" className={btn} onClick={() => void play(data.lines, "all")} disabled={playing !== null} data-testid="audition-all">▶ Alle der Reihe nach</button>
@@ -89,9 +99,9 @@ export function NarrationAudition() {
       </div>
       {r.missing > 0 ? (
         <div className="mt-4 grid gap-2 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" data-testid="audition-prepare">
-          <p>Fehlende Aufnahmen erstellen: {r.missing} Sätze, {r.missingCharacters} Zeichen, einmalig mit der eingestellten Stimme ({r.model}). <strong>Kostenpflichtig</strong> (Zeichen werden vom Konto abgebucht). Gesendet wird nur der geprüfte Text oben, nie Antworten eines Kindes.</p>
+          <p>Fehlende Aufnahmen erstellen: {configuredMissing} Zeichen für die eingestellten Stimmen, einmalig ({r.model}). <strong>Kostenpflichtig</strong> (Zeichen werden vom Konto abgebucht). Gesendet wird nur der geprüfte Text oben, nie Antworten eines Kindes. Stimmen ohne Auswahl werden nicht aufgenommen.</p>
           <label className="flex items-center gap-2"><input type="checkbox" checked={confirmSpend} onChange={(e) => setConfirmSpend(e.target.checked)} data-testid="audition-confirm" /> Ich habe die Kosten freigegeben.</label>
-          <button type="button" className={btn} disabled={!confirmSpend || !r.voiceConfigured || prepare === "läuft …"} onClick={() => void runPrepare()} data-testid="audition-prepare-run">Aufnahmen erstellen</button>
+          <button type="button" className={btn} disabled={!confirmSpend || configuredMissing === 0 || prepare === "läuft …"} onClick={() => void runPrepare()} data-testid="audition-prepare-run">Aufnahmen erstellen</button>
           {prepare ? <p data-testid="audition-prepare-result">{prepare}</p> : null}
         </div>
       ) : null}

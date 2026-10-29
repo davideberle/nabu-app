@@ -5,9 +5,9 @@
 //  - nothing plays before `unlock()` — called only from the child's deliberate tap (Start, or «Vorlesen» after a reload);
 //  - `play(script)` supersedes whatever was playing (sequence number): late audio of an old screen is dropped, never spoken
 //    over the new one; `stop()` silences everything and leaves the screen as it is; nothing ever advances the visit;
-//  - each line: the PRERECORDED clip of the reviewed text (authenticated clip route, catalogued lines only) → else the
-//    device's own speech with an explicitly chosen GERMAN voice → else nothing («unavailable»: no German voice on this
-//    device). Never the device's default voice: an English voice reading German is not a fallback (I2-06);
+//  - each line: the PRERECORDED clip of the reviewed text in its character's voice slot (authenticated clip route, catalogued
+//    lines only) → else the device's own speech with an explicitly chosen NATIVE voice of the slot's language → else nothing
+//    («unavailable»). Never the device's default voice: an English voice reading German is not a fallback (I2-06);
 //  - a refused play() (autoplay policy after a reload) is reported as «blocked» so the UI can offer one big «Vorlesen» tap;
 //  - every exit path revokes object URLs; a bounded timer ends a line whose device never reports its end.
 // A played line proves only that the device reported playback, not that it was audible or understood.
@@ -15,6 +15,7 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 import type { NarrationLine, NarrationScript } from "./family-learning-narration.ts";
+import { slotLanguage, type SlotLanguage } from "./family-voice-registry.ts";
 
 export const NARRATION_CLIP_PATH = "/api/family/learning/narration";
 
@@ -54,18 +55,30 @@ export type NarrationPlayer = {
 /** Novelty / effect voices macOS lists under German too — never used to read to a child. */
 const NOVELTY = /^(eddy|flo|grandma|grandpa|reed|rocko|sandy|shelley|albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|wobble|zarvox|fred|junior|ralph|kathy)\b/i;
 
-/** The best German voice of the device, or null. Swiss/German locales only; enhanced/premium and Google voices first. */
-export function pickGermanVoice(voices: readonly VoiceLike[]): VoiceLike | null {
-  const german = voices.filter((v) => /^de([-_]|$)/i.test(v.lang ?? ""));
-  if (!german.length) return null;
-  const score = (v: VoiceLike) => (NOVELTY.test(v.name) ? -10 : 0) + (/premium|enhanced|erweitert|natural|neural/i.test(v.name) ? 4 : 0) + (/google/i.test(v.name) ? 3 : 0) + (/^de[-_]ch/i.test(v.lang) ? 1 : 0) + (/^(anna|helena|petra|markus|yannick|viktor|martin)\b/i.test(v.name) ? 2 : 0);
-  const best = [...german].sort((a, b) => score(b) - score(a))[0];
+const PREFERRED: Record<SlotLanguage, RegExp> = {
+  de: /^(anna|helena|petra|markus|yannick|viktor|martin)\b/i,
+  es: /^(m[oó]nica|paulina|jorge|juan|marisol|diego)\b/i,
+  en: /^(daniel|serena|kate|oliver|arthur|samantha|alex)\b/i,
+};
+
+/** The best NATIVE device voice of a language (its locale, never another language's default), or null. */
+export function pickNativeVoice(voices: readonly VoiceLike[], language: SlotLanguage): VoiceLike | null {
+  const native = voices.filter((v) => new RegExp(`^${language}([-_]|$)`, "i").test(v.lang ?? ""));
+  if (!native.length) return null;
+  const score = (v: VoiceLike) => (NOVELTY.test(v.name) ? -10 : 0) + (/premium|enhanced|erweitert|natural|neural/i.test(v.name) ? 4 : 0) + (/google/i.test(v.name) ? 3 : 0) + (language === "de" && /^de[-_]ch/i.test(v.lang) ? 1 : 0) + (PREFERRED[language].test(v.name) ? 2 : 0);
+  const best = [...native].sort((a, b) => score(b) - score(a))[0];
   return best && score(best) > -10 ? best : null;
 }
 
+/** The best German voice of the device, or null (Visit 2's gardener speaks German). */
+export function pickGermanVoice(voices: readonly VoiceLike[]): VoiceLike | null {
+  return pickNativeVoice(voices, "de");
+}
+
 const defaultFetchClip = async (l: NarrationLine, signal: AbortSignal): Promise<Blob | null> => {
+  if (!l.slot) return null;
   try {
-    const r = await fetch(`${NARRATION_CLIP_PATH}/${encodeURIComponent(l.id)}`, { cache: "force-cache", signal, credentials: "same-origin" });
+    const r = await fetch(`${NARRATION_CLIP_PATH}/${encodeURIComponent(l.slot)}/${encodeURIComponent(l.id)}`, { cache: "force-cache", signal, credentials: "same-origin" });
     if (!r.ok) return null;
     const type = r.headers.get("content-type") ?? "";
     return type.startsWith("audio/") ? await r.blob() : null;
@@ -202,7 +215,7 @@ export function createNarrationPlayer(deps: NarrationPlayerDeps = {}): Narration
         // A broken clip: this line falls through to the German device voice.
       }
     }
-    const voice = pickGermanVoice(await voices());
+    const voice = pickNativeVoice(await voices(), l.slot ? slotLanguage(l.slot) : "de");
     if (seq !== mySeq) return "cancelled";
     if (!voice || !synth || !makeUtterance) {
       deps.onLine?.(l, "no-german-voice", null);

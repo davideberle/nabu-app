@@ -23,6 +23,7 @@
 
 import type { LearningContent } from "./family-learning-content.ts";
 import { COUNTER_ICONS, WORKSHOP_PICTURES, type MissionDef, type MissionStep } from "./family-learning-mission-spec.ts";
+import { ASSISTANT_IDENTITIES, slotFitsCharacter } from "./family-voice-registry.ts";
 
 export const ISABEL_CONTENT_ID = "isabel-workshop";
 export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2];
@@ -107,9 +108,12 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
   if (spec.narrated) {
     // I2-02: the story character is never her assistant; Old Lila is not re-cast as a gardener, teacher or narrator.
     if (ch && (ch.id === "lila" || /old\s*lila/i.test(String(ch.name)))) problems.push(`${label}: the story character must not be Old Lila (her assistant)`);
+    if (ch && ASSISTANT_IDENTITIES.some((a) => a.id === ch.id || a.name.toLowerCase() === String(ch.name).toLowerCase())) problems.push(`${label}: an assistant identity is never a story character`);
+    // Six-slot registry: a narrated story character speaks with a native voice slot of its own language.
+    if (ch && !slotFitsCharacter(ch.voice, ch.language)) problems.push(`${label}: the story character needs a voice slot of its own language (${String(ch.language)}-female / ${String(ch.language)}-male)`);
     const n = isRecord(m.narration) ? m.narration : null;
     if (!n || n.mode !== "auto") problems.push(`${label}: narration.mode must be auto (spoken after the deliberate start, one replay/stop control)`);
-  } else if ("narration" in m) problems.push(`${label}: Visit 1 stays exactly as released (no narration block)`);
+  } else if ("narration" in m || (ch && "voice" in ch)) problems.push(`${label}: Visit 1 stays exactly as released (no narration block, no voice slot)`);
   const map = isRecord(m.map) ? m.map : null;
   const places = Array.isArray(map?.places) ? (map!.places as unknown[]).filter(isRecord) : [];
   if (places.length !== 1 || places[0].id !== map?.start || map?.start !== spec.place) problems.push(`${label}: one place (${spec.place}), which is the start`);

@@ -465,7 +465,8 @@ if (MODE === "branches") {
   // Release configuration: Visit 2 parked, yet the recordings can be prepared and auditioned on the exact build.
   const ready = await api("GET", "/api/family/learning/parent/narration", null, owner);
   check("CAP1.catalogue-available-while-visit-2-is-parked", ready.status === 200 && ready.json?.readiness?.lines === ready.json?.lines?.length && ready.json.lines.length > 100, ready.json?.readiness);
-  const clip = await api("GET", `/api/family/learning/narration/${ready.json.lines[0].id}`, null, assistant);
+  const clip = await api("GET", `/api/family/learning/narration/${ready.json.lines[0].slot}/${ready.json.lines[0].id}`, null, assistant);
+  check("CAP1.every-line-in-the-gardeners-slot", ready.json.lines.every((l) => l.slot === "de-female") && JSON.stringify(ready.json.readiness.slots.map((x) => [x.slot, x.configured])) === JSON.stringify([["de-female", false]]), ready.json.readiness.slots);
   check("CAP1.clip-route-knows-the-catalogue-under-the-cap", clip.status === 404 && clip.json?.error === "Not recorded", clip);
   const oc = await makeCtx(VIEW, owner, GERMAN, { clips: true });
   const op = await oc.newPage();
@@ -757,14 +758,14 @@ if (MODE === "branches") {
 
   // ---------------------------------------------------------------- Clip and preparation routes without a configured voice
   const cat = await api("GET", "/api/family/learning/parent/narration", null, owner);
-  check("I2-06.readiness-reports-names-only-no-voice-configured", cat.status === 200 && cat.json?.readiness?.voiceConfigured === false && cat.json.readiness.lines > 50 && !JSON.stringify(cat.json).match(/sk_|xi-api|[A-Za-z0-9]{32,}/), cat.json?.readiness);
+  check("I2-06.readiness-reports-names-only-no-voice-configured", cat.status === 200 && cat.json?.readiness?.slots?.every((x) => x.configured === false) && cat.json.readiness.lines > 50 && !JSON.stringify(cat.json).match(/sk_|xi-api|[A-Za-z0-9]{32,}/), cat.json?.readiness);
   rec.narrationReadiness = cat.json?.readiness ?? null;
   const prepNo = await api("POST", "/api/family/learning/parent/narration", { confirm: "yes", maxCharacters: 10 }, owner);
   const prepCfg = await api("POST", "/api/family/learning/parent/narration", { confirm: "prepare-narration", maxCharacters: 10 }, owner);
   const prepChild = await api("POST", "/api/family/learning/parent/narration", { confirm: "prepare-narration", maxCharacters: 10 }, assistant);
   check("I2-06.prepare-needs-owner-confirmation-and-a-voice-no-provider-call", prepNo.status === 400 && prepCfg.status === 503 && prepCfg.json?.result?.status === "not-configured" && (prepChild.status === 403 || prepChild.status === 401), { no: prepNo.status, cfg: prepCfg.json?.result, child: prepChild.status });
-  const clipUnknown = await api("GET", "/api/family/learning/narration/n0000000000000000000000000000", null, assistant);
-  const clipAnon = await api("GET", "/api/family/learning/narration/n0000000000000000000000000000", null, null);
+  const clipUnknown = await api("GET", "/api/family/learning/narration/de-female/n0000000000000000000000000000", null, assistant);
+  const clipAnon = await api("GET", "/api/family/learning/narration/de-female/n0000000000000000000000000000", null, null);
   check("I2-06.clip-route-serves-only-recorded-catalogued-lines", clipUnknown.status === 404 && (clipAnon.status === 401 || clipAnon.status === 307 || clipAnon.status === 302), { unknown: clipUnknown.status, anon: clipAnon.status });
 
   // ---------------------------------------------------------------- I2-05 Parent: Visit 1 summary corrected on read; stored row unchanged

@@ -56,12 +56,13 @@ function admitSynthesis(childId: string, nowMs: number): boolean {
 /** Adult-readable refusal per issue. Never echoes any part of the request. */
 const ISSUE_MESSAGES: Record<ChildTtsRequestIssue, string> = {
   "not-an-object": "Body must be a JSON object",
-  "unknown-field": "Body accepts childId, text and optionally language and speaker",
+  "unknown-field": "Body accepts childId, text and optionally language, speaker and slot",
   "invalid-child": "childId must be santiago or isabel",
   "empty-text": "text must not be empty",
   "overlong-text": "text is too long to speak",
   "invalid-language": "language must be de, en or es",
   "invalid-speaker": "speaker must be child, nokt or character",
+  "invalid-slot": "slot must be a story voice slot and only with speaker character",
 };
 
 export async function POST(request: Request) {

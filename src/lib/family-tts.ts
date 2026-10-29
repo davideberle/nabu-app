@@ -12,6 +12,7 @@
 // not the utterance.
 
 import { isChildId, type ChildId } from "./family-assistant-turn.ts";
+import { isVoiceSlot, resolveSlotVoiceId, slotLanguage, type VoiceSlot } from "./family-voice-registry.ts";
 
 const ELEVENLABS_TTS_URL_BASE = "https://api.elevenlabs.io/v1/text-to-speech";
 
@@ -105,9 +106,15 @@ const CHILD_DEFAULT_LANGUAGE: SpeechLanguage = "en";
  * that language). Never interpolates a malformed configured value.
  */
 export function resolveSpeechVoiceId(
-  request: { childId: ChildId; language?: SpeechLanguage; speaker?: SpeechSpeaker },
+  request: { childId: ChildId; language?: SpeechLanguage; speaker?: SpeechSpeaker; slot?: VoiceSlot },
   env: Record<string, string | undefined> = process.env,
 ): string | null {
+  // Six-slot story voices (2026-10-29): a request that names a slot gets exactly that slot's native voice (a story character,
+  // never Nokt), or none (503 → a native device voice of that language). A slot of another language than the request is refused.
+  if (request.slot) {
+    if (request.speaker === "nokt" || request.speaker === "child" || (request.language && request.language !== slotLanguage(request.slot))) return null;
+    return resolveSlotVoiceId(request.slot, env);
+  }
   const configured = (name: string) => {
     const v = env[name]?.trim();
     return v && VOICE_ID_PATTERN.test(v) ? v : null;
@@ -126,7 +133,7 @@ export function resolveSpeechVoiceId(
 // Request contract
 // ---------------------------------------------------------------------------
 
-export type ChildTtsRequest = { childId: ChildId; text: string; language?: SpeechLanguage; speaker?: SpeechSpeaker };
+export type ChildTtsRequest = { childId: ChildId; text: string; language?: SpeechLanguage; speaker?: SpeechSpeaker; slot?: VoiceSlot };
 
 export type ChildTtsRequestIssue =
   | "not-an-object"
@@ -135,13 +142,14 @@ export type ChildTtsRequestIssue =
   | "empty-text"
   | "overlong-text"
   | "invalid-language"
-  | "invalid-speaker";
+  | "invalid-speaker"
+  | "invalid-slot";
 
 export type ChildTtsParseResult =
   | { ok: true; request: ChildTtsRequest }
   | { ok: false; issue: ChildTtsRequestIssue };
 
-const ALLOWED_TTS_FIELDS = new Set(["childId", "text", "language", "speaker"]);
+const ALLOWED_TTS_FIELDS = new Set(["childId", "text", "language", "speaker", "slot"]);
 
 /**
  * Closed request schema: exactly `childId` and `text`, nothing else.
@@ -168,9 +176,11 @@ export function parseChildTtsRequest(body: unknown): ChildTtsParseResult {
   }
   if (record.language !== undefined && !(SPEECH_LANGUAGES as readonly unknown[]).includes(record.language)) return { ok: false, issue: "invalid-language" };
   if (record.speaker !== undefined && !(SPEECH_SPEAKERS as readonly unknown[]).includes(record.speaker)) return { ok: false, issue: "invalid-speaker" };
+  if (record.slot !== undefined && (!isVoiceSlot(record.slot) || record.speaker !== "character")) return { ok: false, issue: "invalid-slot" };
   const request: ChildTtsRequest = { childId: record.childId, text: record.text.trim() };
   if (record.language !== undefined) request.language = record.language as SpeechLanguage;
   if (record.speaker !== undefined) request.speaker = record.speaker as SpeechSpeaker;
+  if (record.slot !== undefined) request.slot = record.slot as VoiceSlot;
   return { ok: true, request };
 }
 

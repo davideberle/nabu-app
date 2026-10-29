@@ -138,7 +138,7 @@ function Workspace({ child }: { child: ChildId }) {
   // was spoken (prerecorded / German device voice / none / refused) goes to the UX telemetry, never into learning evidence.
   const narrationTelemetryRef = useRef<((name: "narration-recorded" | "narration-device-de" | "narration-no-german-voice" | "narration-blocked") => void) | null>(null);
   const narrator = useMemo(() => createNarrationPlayer({ onLine: (_l, outcome) => narrationTelemetryRef.current?.(outcome === "recorded" ? "narration-recorded" : outcome === "device-de" ? "narration-device-de" : outcome === "no-german-voice" ? "narration-no-german-voice" : "narration-blocked") }), []);
-  const [farewell, setFarewell] = useState<{ who: string; lines: string[]; grown: string | null; label: string } | null>(null);
+  const [farewell, setFarewell] = useState<{ who: string; lines: string[]; grown: string | null; label: string; voice: import("@/lib/family-voice-registry").VoiceSlot | null } | null>(null);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -396,6 +396,7 @@ function Workspace({ child }: { child: ChildId }) {
         lines={farewell.lines}
         grown={farewell.grown}
         label={farewell.label}
+        voice={farewell.voice}
         narrator={narrator}
         telemetry={(name) => {
           telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
@@ -766,7 +767,7 @@ function Workspace({ child }: { child: ChildId }) {
                       const ok = !!outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed");
                       if (ok) {
                         flushTelemetry(true, identity, `ui-${idempotencyKey}`);
-                        setFarewell({ who: view.visitText?.character ?? "", lines: closing?.farewell ?? [], grown: closing?.made?.picture ?? null, label: closing?.recap ?? closing?.made?.room ?? "" });
+                        setFarewell({ who: view.visitText?.character ?? "", lines: closing?.farewell ?? [], grown: closing?.made?.picture ?? null, label: closing?.recap ?? closing?.made?.room ?? "", voice: view.visitText?.voice ?? null });
                       }
                       return ok;
                     }}
