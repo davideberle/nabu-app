@@ -203,14 +203,14 @@ describe("Visit 2 journey — first tries (fictional)", () => {
     equal(currentStage(s, v2), "reflect");
     const closing = buildChildView(s, v2, EMPTY_PARENT_SETTINGS, new Date(), 0, { noktMode: "unavailable" }).reflection!.closing!;
     equal(closing.narrated, true);
-    deepStrictEqual(closing.farewell, ["Danke, Isabel. Bis bald im Garten!", "Dein Garten ist gespeichert."]);
+    deepStrictEqual(closing.farewell, ["Danke! Bis bald im Garten!", "Dein Garten ist gespeichert."]);
   });
   it("every spoken line is a catalogued, reviewed line (prerecordable); none says a reading word or an option before her attempt", () => {
     const { heard } = gardenFirstTry();
     const catalog = new Set(narrationCatalog(v2).map((l) => l.id));
     for (const l of heard) ok(catalog.has(l.id), `catalogued: ${l.text}`);
     ok(heard.some((l) => l.text === "Was soll in deinem Garten wachsen? Tipp auf ein Bild."));
-    ok(heard.some((l) => l.text === "Danke, Isabel. Bis bald im Garten!"), "the ending is spoken");
+    ok(heard.some((l) => l.text === "Danke! Bis bald im Garten!"), "the ending is spoken");
   });
   it("the closing records her answers and her own next-visit choice; Visit 1's records stay untouched", () => {
     const { s, env } = gardenFirstTry();
@@ -493,27 +493,192 @@ describe("prerecorded narration — readiness and the owner's capped preparation
     equal(r.status, "not-configured");
     equal(calls, 0);
   });
-  it("records only missing catalogued lines, with the configured voice, within the character cap; stops at the first failure", async () => {
-    const env = { ELEVENLABS_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_NARRATION_DE_VOICE_ID: "VoiceAbc12345" };
-    const stored = new Set<string>([clipPathname("VoiceAbc12345", catalog[0].id)]);
+  /** An in-memory store with the semantics prepare relies on (put without overwrite fails when the path exists). */
+  function fakeStore(initial: string[] = [], lockAgeMs: number | null = null) {
+    const stored = new Map<string, number>(initial.map((p) => [p, Date.now()]));
     const sent: { url: string; body: { text: string; model_id: string } }[] = [];
-    const deps = {
-      env,
-      headImpl: (async (p: string) => { if (!stored.has(p)) throw new Error("not found"); return {}; }) as never,
-      putImpl: (async (p: string) => { stored.add(p); return {}; }) as never,
-      fetchImpl: (async (url: string, init: RequestInit) => { sent.push({ url, body: JSON.parse(String(init.body)) }); return new Response(new Uint8Array([1, 2, 3])); }) as unknown as typeof fetch,
+    return {
+      stored,
+      sent,
+      lockAt: (voice: string) => clipPathname(voice, "n" + "0".repeat(28)).replace(/[^/]+$/, "") + "prepare.lock",
+      seedLock(voice: string) {
+        stored.set(this.lockAt(voice), Date.now() - (lockAgeMs ?? 0));
+      },
+      deps(env: Record<string, string>, fetchOk: (n: number) => boolean = () => true) {
+        return {
+          env,
+          now: () => Date.now(),
+          headImpl: (async (p: string) => { if (!stored.has(p)) throw new Error("not found"); return { uploadedAt: new Date(stored.get(p)!) }; }) as never,
+          putImpl: (async (p: string, _b: unknown, o: { allowOverwrite?: boolean }) => { if (o.allowOverwrite === false && stored.has(p)) throw new Error("exists"); stored.set(p, Date.now()); return {}; }) as never,
+          delImpl: (async (p: string) => { stored.delete(p); }) as never,
+          fetchImpl: (async (url: string, init: RequestInit) => { sent.push({ url, body: JSON.parse(String(init.body)) }); return fetchOk(sent.length) ? new Response(new Uint8Array([1, 2, 3])) : new Response("no", { status: 401 }); }) as unknown as typeof fetch,
+        };
+      },
     };
-    const ready = await narrationReadiness(catalog, deps);
-    equal(ready.recorded, 1);
+  }
+  const ENV = { ELEVENLABS_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_NARRATION_DE_VOICE_ID: "VoiceAbc12345" };
+  it("records only missing catalogued lines, with the configured voice, within the character cap", async () => {
+    const st = fakeStore([clipPathname("VoiceAbc12345", catalog[0].id)]);
+    equal((await narrationReadiness(catalog, st.deps(ENV))).recorded, 1);
     const cap = catalog[1].text.length + catalog[2].text.length;
-    const r = await prepareNarration(catalog, cap, deps);
+    const r = await prepareNarration(catalog, cap, st.deps(ENV));
     equal(r.status, "cap-reached");
     equal(r.recorded, 2);
-    ok(sent.every((x) => x.url.includes("/v1/text-to-speech/VoiceAbc12345") && x.body.model_id === "eleven_multilingual_v2"));
-    ok(sent.every((x) => catalog.some((l) => l.text === x.body.text)), "only reviewed catalogue text is sent");
+    ok(st.sent.every((x) => x.url.includes("/v1/text-to-speech/VoiceAbc12345") && x.body.model_id === "eleven_multilingual_v2"));
+    ok(st.sent.every((x) => catalog.some((l) => l.text === x.body.text)), "only reviewed catalogue text is sent");
     ok(!JSON.stringify(r).includes(catalog[1].text), "the result carries counts, not texts");
-    const failing = await prepareNarration(catalog, 99999, { ...deps, fetchImpl: (async () => new Response("no", { status: 401 })) as unknown as typeof fetch });
-    equal(failing.status, "upstream-failed");
-    equal(failing.recorded, 0);
+    ok(!st.stored.has(st.lockAt("VoiceAbc12345")), "the lock is released");
+  });
+  it("a failure stops at once (no retry); the next run resumes with exactly the missing lines — nothing is paid twice", async () => {
+    const st = fakeStore();
+    const first = await prepareNarration(catalog, 99999, st.deps(ENV, (n) => n <= 5));
+    equal(first.status, "upstream-failed");
+    equal(first.recorded, 5);
+    equal(st.sent.length, 6, "five recorded, the sixth failed, nothing after it");
+    const second = await prepareNarration(catalog, 99999, st.deps(ENV));
+    equal(second.status, "prepared");
+    equal(second.recorded, catalog.length - 5);
+    const texts = st.sent.map((x) => x.body.text);
+    equal(new Set(texts.slice(0, 5)).size + texts.slice(6).length, catalog.length, "each line synthesised once (plus the one failed request)");
+    equal((await narrationReadiness(catalog, st.deps(ENV))).missing, 0);
+    const third = await prepareNarration(catalog, 99999, st.deps(ENV));
+    equal(third.recorded, 0);
+    equal(st.sent.length, catalog.length + 1, "a repeated run sends nothing");
+  });
+  it("two runs at once: the second is refused («busy») and sends nothing; a stale lock (crashed run) is taken over", async () => {
+    const st = fakeStore();
+    const [a, b] = await Promise.all([prepareNarration(catalog, 99999, st.deps(ENV)), prepareNarration(catalog, 99999, st.deps(ENV))]);
+    deepStrictEqual([a.status, b.status].sort(), ["busy", "prepared"]);
+    equal(st.sent.length, catalog.length, "no line was synthesised twice");
+    const live = fakeStore([], 60_000);
+    live.seedLock("VoiceAbc12345");
+    equal((await prepareNarration(catalog, 99999, live.deps(ENV))).status, "busy");
+    equal(live.sent.length, 0);
+    const stale = fakeStore([], 20 * 60_000);
+    stale.seedLock("VoiceAbc12345");
+    equal((await prepareNarration(catalog, 99999, stale.deps(ENV))).status, "prepared");
+  });
+  it("a line naming a child is never sent to the provider or stored in the public store", async () => {
+    const st = fakeStore();
+    const r = await prepareNarration([...catalog, line("Hallo Isabel!")], 99999, st.deps(ENV));
+    equal(r.status, "refused-private");
+    equal(st.sent.length, 0);
+  });
+});
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Coverage (pre-release review, 2026-10-29): every line any branch can speak is in the catalogue, and every catalogue line is
+// reachable — so the prerecording is complete AND minimal. Seeded random walks through the real engine.
+// ---------------------------------------------------------------------------------------------------------------------
+import { closingLines, farewellLines } from "./family-learning-narration.ts";
+import { isPublicSafeScript } from "./family-narration-store.ts";
+
+function rng(seed: number) {
+  let x = seed * 2654435761 >>> 0 || 1;
+  return () => ((x = (x ^ (x << 13)) >>> 0, x = (x ^ (x >>> 17)) >>> 0, x = (x ^ (x << 5)) >>> 0) % 10000) / 10000;
+}
+function walk(seed: number, spoken: Map<string, string>) {
+  const r = rng(seed);
+  const pick = <T,>(a: T[]) => a[Math.floor(r() * a.length)];
+  const { upgraded, env } = afterVisit1();
+  let s = op(upgraded, { op: "start-visit" }, env);
+  const tryM = (a: MissionAction) => {
+    try {
+      s = m(s, a, env);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+  const hear = () => {
+    const v = mview(s);
+    const parts = v.active?.solve?.parts ?? [];
+    for (const seen of [[], parts.filter((p) => p.status !== "open").map((p) => p.id)]) for (const l of missionNarration(v, seen)?.lines ?? []) spoken.set(l.id, l.text);
+  };
+  for (let i = 0; i < 160; i += 1) {
+    const v = mview(s);
+    const a = v.active;
+    if (!a) {
+      const next = v.steps.find((x) => x.status === "available" || x.status === "active");
+      if (next) tryM({ a: "open", step: next.id });
+      else {
+        tryM({ a: "finish" });
+        break;
+      }
+      hear();
+      continue;
+    }
+    if (a.status !== "active") {
+      hear();
+      tryM({ a: "leave" });
+      continue;
+    }
+    if (a.kind === "story" || a.kind === "outcome") tryM({ a: "story-done", step: a.id });
+    else if (a.kind === "craft") {
+      if (r() < 0.5) tryM({ a: "craft-found", step: a.id, items: a.craft!.find!.options.slice(0, 1 + Math.floor(r() * 3)).map((o) => o.id) });
+      tryM({ a: "story-done", step: a.id });
+    } else if (a.kind === "decide") tryM({ a: "decide", step: a.id, option: pick(a.decide!.options).id });
+    else if (a.kind === "solve") {
+      const p = a.solve!.parts.find((x) => x.status === "open");
+      const def = missionDefFor(v2, "v2")!.steps.find((x) => x.id === a.id)!.solve!.parts.find((x) => x.id === p?.id);
+      if (!p || !def) {
+        tryM({ a: "leave" });
+      } else {
+        const pendingHint = p.hints.find((h) => h.check && h.check.result === null);
+        const choice = r();
+        if (pendingHint && choice < 0.6) tryM({ a: "hint-check", step: a.id, part: p.id, hint: pendingHint.id, value: r() < 0.5 ? String((def.hints.find((h) => h.id === pendingHint.id)?.check?.answer) ?? "0") : "1" });
+        else if (p.phase === "taught") tryM(choice < 0.4 ? { a: "practice-part", step: a.id, part: p.id, value: String(def.answer) } : choice < 0.8 ? { a: "practice-part", step: a.id, part: p.id, value: String(def.answer + 1 + Math.floor(r() * 5)) } : { a: "later-part", step: a.id, part: p.id });
+        else if (choice < 0.35) tryM({ a: "answer-part", step: a.id, part: p.id, value: String(def.answer) });
+        else if (choice < 0.65) tryM({ a: "answer-part", step: a.id, part: p.id, value: String(r() < 0.3 && p.lastWrong !== null ? p.lastWrong : def.answer + 1 + Math.floor(r() * 7)) });
+        else if (choice < 0.8) tryM({ a: "hint", step: a.id, part: p.id });
+        else tryM({ a: "show-solution", step: a.id, part: p.id });
+      }
+    } else if (a.kind === "read") {
+      const q = a.questions[0];
+      const c = r();
+      if (c < 0.25) tryM({ a: "support", step: a.id, kind: "letters" });
+      else tryM({ a: "answer-question", step: a.id, question: q.id, value: c < 0.6 ? String(missionDefFor(v2, "v2")!.steps.find((x) => x.id === a.id)!.questions![0].answer) : pick((q.options ?? []).slice(1)) });
+    } else if (a.kind === "listen") {
+      const q = a.questions[0];
+      const c = r();
+      if (c < 0.3) {
+        tryM({ a: "support", step: a.id, kind: "play" });
+        tryM({ a: "listen-outcome", step: a.id, outcome: pick(["recorded", "device-de", "failed"] as const) });
+      } else if (c < 0.4) tryM({ a: "support", step: a.id, kind: "transcript" });
+      else tryM({ a: "answer-question", step: a.id, question: q.id, value: c < 0.7 ? "Schnecke auf dem Blatt" : pick(["Schnecke unter dem Blatt", "Käfer auf dem Blatt"]) });
+    }
+    hear();
+  }
+  return s;
+}
+
+describe("narration catalogue coverage — complete and minimal (pre-release review)", () => {
+  const catalog = narrationCatalog(v2);
+  const ids = new Set(catalog.map((l) => l.id));
+  const spoken = new Map<string, string>();
+  let finished = 0;
+  for (let seed = 1; seed <= 600; seed += 1) if (walk(seed, spoken).missions![GARDEN].finishedAt) finished += 1;
+  // The closing screens and the goodbye use the same functions as the screens.
+  const src = { reflection: v2.reflection, adventure: v2.missions!.find((x) => x.id === GARDEN)!.nextAdventure ?? null } as never;
+  for (const k of ["difficulty", "enjoyment", "next"] as const) for (const t of closingLines(k, src)) spoken.set(line(t).id, line(t).text);
+  for (const t of farewellLines(v2, v2.missions!.find((x) => x.id === GARDEN)!)) spoken.set(line(t).id, line(t).text);
+  // The listening sentence is spoken by the ear button (recorded play), not by the screen script.
+  const listenBody = v2.missions!.find((x) => x.id === GARDEN)!.steps.find((x) => x.kind === "listen")!.text!.body;
+  spoken.set(line(listenBody).id, listenBody);
+  it("many walks reach the end", () => ok(finished > 300, `finished ${finished}/600`));
+  it("every spoken line of every branch is catalogued (prerecordable)", () => {
+    const missing = [...spoken].filter(([id]) => !ids.has(id)).map(([, t]) => t);
+    deepStrictEqual(missing, []);
+  });
+  it("every catalogued line is actually spoken somewhere (nothing recorded for nothing)", () => {
+    const unused = catalog.filter((l) => !spoken.has(l.id)).map((l) => `${l.where?.join("/")}: ${l.text}`);
+    deepStrictEqual(unused, []);
+  });
+  it("the listening stimulus and the supported letters/word are catalogued (recorded audio, not the old live route)", () => {
+    ok(ids.has(line("Zeig mir die Schnecke auf dem Blatt.").id));
+    ok(ids.has(line("N. E. S. T. Nest.").id) && ids.has(line("N, E, S und T zusammen: Nest. Im Nest wohnen kleine Vögel.").id));
+  });
+  it("every catalogue line is a fixed public-safe script (no child name; public store)", () => {
+    deepStrictEqual(catalog.filter((l) => !isPublicSafeScript(l.text)).map((l) => l.text), []);
   });
 });

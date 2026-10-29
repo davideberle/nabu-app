@@ -1091,7 +1091,7 @@
           "intro": [
             {
               "speaker": "ida",
-              "text": "Hallo Isabel! Ich bin Ida, die Gärtnerin.",
+              "text": "Hallo! Ich bin Ida, die Gärtnerin.",
               "language": "de"
             },
             {
@@ -1181,7 +1181,7 @@
           "intro": [
             {
               "speaker": "ida",
-              "text": "Für den Zaun brauchen wir Stäbe. In jedem Bündel sind 10.",
+              "text": "Wir brauchen Stäbe für den Zaun.",
               "language": "de"
             },
             {
@@ -1754,12 +1754,7 @@
             "tasks": [
               {
                 "id": "build",
-                "text": "Bastle aus Papier, was in deinem Garten wächst."
-              },
-              {
-                "id": "plant",
-                "text": "Wenn ihr mögt: Pflanzt zusammen einen Samen in einen Becher.",
-                "picture": "seed-cup"
+                "text": "Bastle es aus Papier."
               },
               {
                 "id": "find",
@@ -1767,7 +1762,7 @@
               }
             ],
             "find": {
-              "prompt": "Was hast du gefunden, das wächst? Tipp auf drei Bilder.",
+              "prompt": "Tipp auf das, was du gefunden hast.",
               "count": 3,
               "options": [
                 {
@@ -1789,11 +1784,6 @@
                   "id": "houseplant",
                   "label": "Zimmerpflanze",
                   "picture": "find-houseplant"
-                },
-                {
-                  "id": "herbs",
-                  "label": "Kräuter",
-                  "picture": "find-herbs"
                 }
               ],
               "fact": "Pflanzen brauchen Erde, Wasser und Licht."
@@ -1825,7 +1815,7 @@
           "done": [
             {
               "speaker": "ida",
-              "text": "Danke, Isabel. Bis bald im Garten!",
+              "text": "Danke! Bis bald im Garten!",
               "language": "de"
             }
           ]

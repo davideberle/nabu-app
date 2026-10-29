@@ -22,7 +22,7 @@ import type { LearningContent } from "./family-learning-content.ts";
 import type { MissionActiveView, MissionView } from "./family-learning-mission.ts";
 import type { MissionDef } from "./family-learning-mission-spec.ts";
 
-export type NarrationLine = { id: string; text: string };
+export type NarrationLine = { id: string; text: string; /** Catalogue only: where the line is spoken (step id, «closing», «farewell»). */ where?: string[] };
 /** One screen's narration: `key` changes exactly when something new should be said (a new beat, a new answer, a new hint). */
 export type NarrationScript = { key: string; lines: NarrationLine[] };
 
@@ -165,6 +165,24 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
   return { key: `${mission.id}|${keyParts.join("|")}|${out.map((l) => l.id).join(",")}`, lines: out };
 }
 
+/**
+ * The closing screens' spoken lines — ONE source for the screen and the catalogue. Each question, its pictured answers and
+ * the honest ways out (skip / «weiss ich noch nicht» / «lieber nicht sagen») are spoken so she can answer without reading.
+ */
+export type ClosingSource = {
+  reflection: { prompt: string; options: { label: string }[]; skipLabel?: string; dimensions?: { id: string; prompt: string; options: { label: string }[]; skipLabel: string }[]; nextInterest?: { prompt: string; unsureLabel: string; declineLabel: string } | null };
+  adventure: { prompt: string; choices: { label: string }[] } | null;
+};
+export function closingLines(kind: "difficulty" | "enjoyment" | "next", src: ClosingSource): string[] {
+  const r = src.reflection;
+  if (kind === "difficulty") return [r.prompt, ...r.options.map((o) => o.label), r.skipLabel ?? "Lieber nicht sagen"];
+  if (kind === "enjoyment") {
+    const d = (r.dimensions ?? []).find((x) => x.id === "enjoyment");
+    return d ? [d.prompt, ...d.options.map((o) => o.label), d.skipLabel] : [];
+  }
+  return [src.adventure?.prompt ?? r.nextInterest?.prompt ?? "", ...(src.adventure?.choices ?? []).map((c) => c.label), NARRATION_UI.ownIdea, r.nextInterest?.unsureLabel ?? "Weiss ich noch nicht", r.nextInterest?.declineLabel ?? "Lieber nicht sagen", NARRATION_UI.thenFinish].filter(Boolean);
+}
+
 /** The closing questions, one per screen (the same lines the screen shows). */
 export function closingNarration(kind: "difficulty" | "enjoyment" | "next" | "farewell", content: { prompt: string; options: { label: string }[] } | { lines: string[] }): NarrationScript {
   const out = "lines" in content ? lines(content.lines) : lines([content.prompt, ...content.options.map((o) => o.label)]);
@@ -177,16 +195,19 @@ export function closingNarration(kind: "difficulty" | "enjoyment" | "next" | "fa
 
 export function narrationCatalog(content: LearningContent): NarrationLine[] {
   const out = new Map<string, NarrationLine>();
+  let where = "";
   const add = (t: string | null | undefined) => {
     if (typeof t === "string" && t.trim()) {
       const l = line(t);
-      out.set(l.id, l);
+      const prev = out.get(l.id);
+      out.set(l.id, { ...l, where: [...new Set([...(prev?.where ?? []), where])] });
     }
   };
   const missions = (content.missions ?? []).filter((m) => narrated(m));
   if (!missions.length) return [];
   for (const m of missions) {
     for (const s of m.steps) {
+      where = s.id;
       for (const l of [...(s.intro ?? []), ...(s.done ?? []), ...Object.values(s.doneBy ?? {}).flat()]) add(l?.text);
       for (const o of s.decide?.options ?? []) add(o.feedback);
       for (const p of s.solve?.parts ?? []) {
@@ -230,34 +251,26 @@ export function narrationCatalog(content: LearningContent): NarrationLine[] {
       add(s.ending?.success);
       add(s.ending?.open);
     }
+    where = m.steps.find((x) => x.kind === "outcome")?.id ?? "outcome";
     for (const w of m.world) add(w.label);
     add(NARRATION_UI.noOpenNext);
-    const na = m.nextAdventure;
-    if (na) {
-      add(na.prompt);
-      for (const c of na.choices) add(c.label);
-      add(na.ownIdeaLabel);
-      add(NARRATION_UI.ownIdea);
-      add(NARRATION_UI.thenFinish);
+    // The closing screens and the goodbye of this mission's visit — the same functions the screens use.
+    const src: ClosingSource = { reflection: content.reflection as ClosingSource["reflection"], adventure: m.nextAdventure ?? null };
+    for (const k of ["difficulty", "enjoyment", "next"] as const) {
+      where = `closing-${k}`;
+      for (const t of closingLines(k, src)) add(t);
     }
-  }
-  // The closing questions (content reflection) and the honest skip/unsure answers she can hear.
-  const r = content.reflection;
-  add(r.prompt);
-  for (const o of r.options) add(o.label);
-  add(r.skipLabel);
-  for (const d of r.dimensions ?? []) {
-    add(d.prompt);
-    for (const o of d.options) add(o.label);
-    add(d.skipLabel);
-  }
-  add(r.nextInterest?.unsureLabel);
-  add(r.nextInterest?.declineLabel);
-  for (const v of content.visits) {
-    const t = (v as { childText?: { done?: string } }).childText;
-    if (t) add(t.done);
+    where = "farewell";
+    for (const t of farewellLines(content, m)) add(t);
   }
   return [...out.values()].sort((x, y) => (x.id < y.id ? -1 : 1));
+}
+
+/** The spoken goodbye of a narrated mission: its outcome's reviewed done lines + the visit's saved line. */
+export function farewellLines(content: LearningContent, m: MissionDef): string[] {
+  const outcome = m.steps.find((x) => x.kind === "outcome");
+  const done = (content.visits.find((v) => v.id === m.visit) as { childText?: { done?: string } } | undefined)?.childText?.done;
+  return [...(outcome?.done ?? []).map((l) => l.text), ...(done ? [done] : [])];
 }
 
 /** Total characters of a catalogue (the unit a TTS provider bills; cost = characters × the provider's current rate). */

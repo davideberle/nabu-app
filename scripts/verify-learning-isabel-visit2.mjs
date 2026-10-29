@@ -158,7 +158,7 @@ const probe = (voices, opts = {}) => `(() => {
   const step = () => document.querySelector("[data-testid='workshop-scene']")?.dataset.step || document.querySelector("[data-testid='workshop-closing']")?.dataset.step || (document.querySelector("[data-testid='workshop-farewell']") ? "farewell" : "");
   let pending = null;
   if (s) {
-    const speak = (u) => { globalThis.__speech.push({ text: u.text, lang: u.lang, step: step(), at: Date.now() }); pending = u; setTimeout(() => { if (pending === u) { pending = null; u.onend && u.onend(); } }, globalThis.__speechMs || 30); };
+    const speak = (u) => { globalThis.__speech.push({ text: u.text, lang: u.lang, step: step(), at: Date.now() }); pending = u; setTimeout(() => { if (pending === u) { pending = null; if (globalThis.__speechFail) { u.onerror && u.onerror({ error: "synthesis-failed" }); } else { u.onend && u.onend(); } } }, globalThis.__speechMs || 30); };
     const cancel = () => { globalThis.__cancel += 1; const u = pending; pending = null; if (u && u.onerror) u.onerror({ error: "interrupted" }); };
     try { Object.defineProperty(s, "speak", { configurable: false, writable: false, value: speak }); } catch {}
     try { Object.defineProperty(s, "cancel", { configurable: false, writable: false, value: cancel }); } catch {}
@@ -216,9 +216,17 @@ async function shot(page, name, fullPage = false) {
   return file;
 }
 const text = async (page, sel = "body") => (await page.locator(sel).first().innerText()).replace(/\s+/g, " ").trim();
-const spoken = async (page) => page.evaluate(() => globalThis.__speech);
+const allSpoken = [];
+const spoken = async (page) => {
+  const list = await page.evaluate(() => globalThis.__speech);
+  for (const x of list) allSpoken.push(x.text);
+  return list;
+};
 const spokenTexts = async (page) => (await spoken(page)).map((s) => s.text);
-const clearSpoken = (page) => page.evaluate(() => { globalThis.__speech = []; });
+const clearSpoken = async (page) => {
+  await spoken(page);
+  await page.evaluate(() => { globalThis.__speech = []; });
+};
 async function heard(page, needle, timeout = 10000) {
   await page.waitForFunction((n) => (globalThis.__speech || []).some((s) => s.text.includes(n)), needle, { timeout });
 }
@@ -255,7 +263,164 @@ const runOf = async () => (await row("isabel"))?.state.missions?.["MISSION-IDA-G
 const rec = { mode: MODE, base: BASE, startedAt: new Date().toISOString() };
 const VIEW = { viewport: { width: 1440, height: 900 } }; // Mac mini browser window (actual use device), not the iPad
 
-if (MODE === "novoice" || MODE === "denied") {
+if (MODE === "branches") {
+  // ---------------------------------------------------------------- Every remaining branch, rendered, with a screenshot each
+  const ctx = await makeCtx(VIEW);
+  const page = await ctx.newPage();
+  page.on("pageerror", (e) => pageErrors.push(String(e)));
+  await page.goto(`${BASE}/family/learn?child=isabel`);
+  await page.waitForSelector("[data-testid='world-screen'][data-child='isabel'][data-world-next='v2']", { timeout: 30000 });
+  await page.locator("[data-testid='cockpit-start']").click();
+  await page.locator("[data-testid='start-visit']").click();
+  await onStep(page, "IG1-HELLO");
+  await narrationIdle(page);
+  await next(page);
+  await onStep(page, "IG2-PLANT");
+  await narrationIdle(page);
+  const d = saved(page);
+  await page.locator("[data-testid='make-tree']").click();
+  await d;
+  await narrationIdle(page);
+  await shot(page, "B-IG2-chosen");
+  await next(page);
+  // Tens: three misses → stuck line → the worked solution on request → a wrong copy → the right copy.
+  await onStep(page, "IG3-STICKS");
+  for (const v of [12, 12, 50]) { await answerNumber(page, v); await narrationIdle(page); }
+  check("B.repeat-of-her-own-number-never-spoken", !(await spokenTexts(page)).some((t) => /\b12\b|\b50\b/.test(t)));
+  await shot(page, "B-IG3-stuck");
+  // The one hint control: the guided step first (with its small question), then the worked solution on request.
+  for (let i = 0; i < 4 && !(await page.locator("[data-testid='part-teach']").count()); i += 1) {
+    if (await page.locator("[data-testid='hint-solution']").count()) {
+      const c = saved(page);
+      await page.locator("[data-testid='hint-solution']").click();
+      await c;
+    } else if (await page.locator("[data-testid='hint-check-input']").count()) {
+      await page.locator("[data-testid='hint-check-input']").fill("30");
+      const c = saved(page);
+      await page.locator("[data-testid='hint-check-send']").click();
+      await c;
+    } else if (await page.locator("[data-testid='hint-open']").count()) {
+      const c = saved(page);
+      await page.locator("[data-testid='hint-open']").click();
+      await c;
+    }
+    await settle(400);
+  }
+  await page.waitForSelector("[data-testid='part-teach']", { timeout: 10000 });
+  await heard(page, "3 Bündel sind 10, 20, 30 Stäbe.");
+  check("B.worked-solution-spoken-only-after-it-is-shown", (await runOf()).steps["IG3-STICKS"].parts.total.phase === "taught");
+  await narrationIdle(page);
+  await shot(page, "B-IG3-solution");
+  await answerNumber(page, 31);
+  await heard(page, "Noch nicht. Schau die Lösung oben noch einmal an und trag die Zahl ein.");
+  await narrationIdle(page);
+  await answerNumber(page, 32);
+  await narrationIdle(page);
+  check("B.taught-is-never-independent", (await runOf()).steps["IG3-STICKS"].outcome === "answer_exposed" || (await runOf()).steps["IG3-STICKS"].outcome === "supported", (await runOf()).steps["IG3-STICKS"].outcome);
+  await next(page);
+  await onStep(page, "IG4-STICKS-AGAIN");
+  await answerNumber(page, 25);
+  await narrationIdle(page);
+  await shot(page, "B-IG4-fresh");
+  await next(page);
+  await onStep(page, "IG5-PLANTING");
+  await answerNumber(page, 9);
+  await page.locator("[data-testid='solve-next-question']").click();
+  await answerNumber(page, 5);
+  await page.locator("[data-testid='solve-next-question']").click();
+  await answerNumber(page, 4);
+  await narrationIdle(page);
+  await page.locator("[data-testid='hint-open']").click();
+  await heard(page, "Zeig auf jeden leeren Platz und zähl.");
+  await narrationIdle(page);
+  await shot(page, "B-IG5-hint");
+  await answerNumber(page, 3);
+  await narrationIdle(page);
+  await next(page);
+  await onStep(page, "IG6-PLANTING-EASIER");
+  await narrationIdle(page);
+  await shot(page, "B-IG6-easier");
+  await answerNumber(page, 6);
+  await narrationIdle(page);
+  await next(page);
+  // Reading: two misses → the word is shown (never credited); only then spoken.
+  await onStep(page, "IG7-READ");
+  await narrationIdle(page);
+  await page.locator("[data-testid='pick-word-Topf']").click();
+  await heard(page, "Schau den ersten Buchstaben an.");
+  await narrationIdle(page);
+  await page.locator("[data-testid='pick-word-Igel']").click();
+  await heard(page, "Das Wort heisst: Nest.");
+  check("B.word-shown-after-two-misses-not-credited", (await runOf()).steps["IG7-READ"].outcome === "answer_exposed");
+  await narrationIdle(page);
+  await shot(page, "B-IG7-word-shown");
+  await next(page);
+  // Listening: the play fails on the device → the adult may read it (help) → two misses → the answer is shown.
+  await onStep(page, "IG8-LISTEN");
+  await narrationIdle(page);
+  await page.evaluate(() => { globalThis.__speechFail = true; });
+  await page.locator("[data-testid='listen-play']").click();
+  await page.waitForSelector("[data-testid='listen-adult-open']", { timeout: 15000 });
+  let lo = [];
+  for (let i = 0; i < 20 && !lo.length; i += 1) {
+    lo = await query("SELECT payload_json FROM family_learning_support_events WHERE child_id='isabel' AND kind='mission_listen_outcome' AND task_id='MISSION-IDA-GARDEN/IG8-LISTEN'");
+    if (!lo.length) await settle(250);
+  }
+  await page.evaluate(() => { globalThis.__speechFail = false; });
+  check("B.failed-play-recorded-as-failed", lo.some((r) => JSON.parse(String(r.payload_json)).outcome === "failed"), lo.map((r) => JSON.parse(String(r.payload_json)).outcome));
+  const tr = saved(page);
+  await page.locator("[data-testid='listen-adult-open']").click();
+  await tr;
+  await page.waitForSelector("[data-testid='listen-adult-read']");
+  await shot(page, "B-IG8-adult-read");
+  await page.locator("[data-testid='pick-show-Käfer auf dem Blatt']").click();
+  await heard(page, "Hör noch einmal genau hin");
+  await narrationIdle(page);
+  await page.locator("[data-testid='pick-show-Schnecke unter dem Blatt']").click();
+  await heard(page, "Gemeint war: Schnecke auf dem Blatt.");
+  check("B.listening-with-adult-reading-is-help", ["answer_exposed", "supported"].includes((await runOf()).steps["IG8-LISTEN"].outcome));
+  await narrationIdle(page);
+  await shot(page, "B-IG8-given");
+  await next(page);
+  // Craft skipped (optional): nothing found, nothing inferred.
+  await onStep(page, "IG9-CRAFT");
+  await narrationIdle(page);
+  await next(page);
+  check("B.craft-skipped-nothing-inferred", JSON.stringify((await runOf()).steps["IG9-CRAFT"].found ?? []) === "[]");
+  await onStep(page, "IG10-GARDEN");
+  await narrationIdle(page);
+  const ending = await text(page, "[data-testid='workshop-ending']");
+  check("B.ending-honest-after-help", (await page.locator("[data-testid='workshop-garden'][data-grown='garden-tree']").count()) === 1 && !/super|toll|perfekt|bravo/i.test(ending), ending);
+  await shot(page, "B-IG10-garden");
+  await next(page);
+  await onStep(page, "IG10-GARDEN", "done");
+  await narrationIdle(page);
+  const fin = saved(page);
+  await page.locator("[data-testid='workshop-next']").click();
+  await fin;
+  // Closing: both questions skipped honestly, then «Weiss ich noch nicht».
+  await page.waitForSelector("[data-testid='workshop-closing'][data-step='difficulty']", { timeout: 20000 });
+  await heard(page, "Lieber nicht sagen");
+  await narrationIdle(page);
+  await page.locator("[data-testid='difficulty-skip']").click();
+  await page.waitForSelector("[data-testid='workshop-closing'][data-step='enjoyment']");
+  await narrationIdle(page);
+  await shot(page, "B-closing-enjoyment");
+  await page.locator("[data-testid='enjoyment-skip']").click();
+  await page.waitForSelector("[data-testid='workshop-closing'][data-step='next']");
+  await narrationIdle(page);
+  await page.locator("[data-testid='next-interest-unsure']").click();
+  const rf = saved(page);
+  await page.locator("[data-testid='closing-finish']").click();
+  await rf;
+  await page.waitForSelector("[data-testid='workshop-farewell']", { timeout: 20000 });
+  await narrationIdle(page);
+  const done = await row("isabel");
+  const v2rec = done.state.visits.find((v) => v.id === "v2");
+  check("B.skips-saved-as-skipped-unsure-as-unsure", (v2rec.feedback?.skipped ?? []).includes("difficulty") && (v2rec.feedback?.skipped ?? []).includes("enjoyment") && (done.state.interests ?? []).some((i) => i.visit === "v2" && i.kind === "unsure"), { fb: v2rec.feedback, interests: done.state.interests });
+  await shot(page, "B-farewell");
+  check("B.visit-1-records-untouched", JSON.stringify(await v1Snapshot()) === JSON.stringify(v1Before));
+} else if (MODE === "novoice" || MODE === "denied") {
   // ---------------------------------------------------------------- I2-06 device variants on their own database
   const ctx = MODE === "novoice"
     ? await makeCtx(VIEW, assistant, [{ name: "Samantha", lang: "en-US", default: true }, { name: "Daniel", lang: "en-GB" }, { name: "Eddy (Deutsch (Deutschland))", lang: "de-DE" }])
@@ -297,6 +462,28 @@ if (MODE === "novoice" || MODE === "denied") {
   const ev = await api("GET", "/api/family/learning/parent/evidence?child=isabel", null, owner);
   check("CAP1.parent-evidence-readable", ev.status === 200);
   check("CAP1.visit-1-records-untouched", JSON.stringify(await v1Snapshot()) === JSON.stringify(v1Before));
+  // Release configuration: Visit 2 parked, yet the recordings can be prepared and auditioned on the exact build.
+  const ready = await api("GET", "/api/family/learning/parent/narration", null, owner);
+  check("CAP1.catalogue-available-while-visit-2-is-parked", ready.status === 200 && ready.json?.readiness?.lines === ready.json?.lines?.length && ready.json.lines.length > 100, ready.json?.readiness);
+  const clip = await api("GET", `/api/family/learning/narration/${ready.json.lines[0].id}`, null, assistant);
+  check("CAP1.clip-route-knows-the-catalogue-under-the-cap", clip.status === 404 && clip.json?.error === "Not recorded", clip);
+  const oc = await makeCtx(VIEW, owner, GERMAN, { clips: true });
+  const op = await oc.newPage();
+  op.on("pageerror", (e) => pageErrors.push(String(e)));
+  await op.goto(`${BASE}/family/learn/parent?child=isabel`);
+  await op.waitForSelector("[role='tab']", { timeout: 30000 });
+  await op.locator("[role='tab']", { hasText: "Isabel" }).click();
+  await op.locator("[role='tab']", { hasText: "Einstellungen" }).click();
+  await op.waitForSelector("[data-testid='narration-audition']", { timeout: 20000 });
+  const first = ready.json.lines.find((l) => l.where.includes("IG1-HELLO"));
+  await op.locator(`[data-testid='audition-group-IG1-HELLO'] summary`).click();
+  await op.locator(`[data-testid='audition-line-${first.id}'] button`).click();
+  await op.waitForFunction((id) => document.querySelector(`[data-testid='audition-line-${id}']`)?.dataset.heard, first.id, { timeout: 10000 });
+  check("CAP1.owner-audition-plays-the-recording-without-a-visit", (await op.locator(`[data-testid='audition-line-${first.id}']`).getAttribute("data-heard")) === "Aufnahme" && (await op.evaluate(() => globalThis.__clips.length)) === 1, await op.locator(`[data-testid='audition-line-${first.id}']`).getAttribute("data-heard"));
+  check("CAP1.prepare-needs-the-spend-confirmation", (await op.locator("[data-testid='audition-prepare-run']").isDisabled()));
+  await shot(op, "owner-audition", true);
+  check("CAP1.audition-started-no-visit", JSON.stringify(await v1Snapshot()) === JSON.stringify(v1Before) && (await row("isabel")).state.visits.length === 1);
+  await oc.close();
 } else {
   const ctx = await makeCtx(VIEW);
   const page = await ctx.newPage();
@@ -321,7 +508,7 @@ if (MODE === "novoice" || MODE === "denied") {
   // ---------------------------------------------------------------- I2-04 Narration after the deliberate start; I2-02 the gardener
   await page.locator("[data-testid='start-visit']").click();
   await onStep(page, "IG1-HELLO");
-  await heard(page, "Hallo Isabel! Ich bin Ida, die Gärtnerin.");
+  await heard(page, "Hallo! Ich bin Ida, die Gärtnerin.");
   await heard(page, "Heute bauen wir zusammen einen Garten.");
   const first = await spoken(page);
   check("I2-04.scene-spoken-by-itself-after-start", first.length >= 2 && first.every((s) => s.lang === "de-DE"), first.map((s) => [s.text, s.lang]));
@@ -348,7 +535,7 @@ if (MODE === "novoice" || MODE === "denied") {
   await heard(page, "Was soll in deinem Garten wachsen?");
   await settle(600);
   const afterNav = await spoken(page);
-  const stale = afterNav.filter((s) => s.step === "IG2-PLANT" && /Hallo Isabel|Heute bauen wir zusammen|Komm mit in den Garten/.test(s.text));
+  const stale = afterNav.filter((s) => s.step === "IG2-PLANT" && /Hallo! Ich bin Ida|Heute bauen wir zusammen|Komm mit in den Garten/.test(s.text));
   check("I2-04.navigation-cancels-old-speech-no-stale-or-overlap", (await page.evaluate(() => globalThis.__cancel)) > cancelsBefore && stale.length === 0, { cancels: (await page.evaluate(() => globalThis.__cancel)) - cancelsBefore, stale });
   check("I2-04.does-not-auto-advance-when-speech-ends", (await page.locator("[data-testid='workshop-scene'][data-step='IG2-PLANT'][data-status='active']").count()) === 1);
   await narrationIdle(page);
@@ -499,7 +686,7 @@ if (MODE === "novoice" || MODE === "denied") {
   await heard(page, "Such drei Dinge, die wachsen.");
   await narrationIdle(page);
   check("I2-02.craft-pictured-optional-no-speech-buttons", (await page.locator("[data-testid='craft-task-build'] svg[data-picture='garden-flowers']").count()) === 1 && (await page.locator("[data-testid^='craft-task-audio']").count()) === 0);
-  for (const id of ["flower", "grass", "tree", "herbs"]) await page.locator(`[data-testid='found-${id}']`).click();
+  for (const id of ["flower", "grass", "tree", "houseplant"]) await page.locator(`[data-testid='found-${id}']`).click();
   check("I2-02.three-things-at-most", (await page.locator("[data-testid^='found-'][aria-pressed='true']").count()) === 3);
   await page.locator("[data-testid='found-save']").click();
   await page.waitForFunction(() => document.querySelector("[data-testid='found-save']")?.textContent?.includes("Gespeichert"), null, { timeout: 10000 });
@@ -520,7 +707,7 @@ if (MODE === "novoice" || MODE === "denied") {
   await shot(page, "IG10-garden");
   await next(page); // Fertig
   await onStep(page, "IG10-GARDEN", "done");
-  await heard(page, "Danke, Isabel. Bis bald im Garten!");
+  await heard(page, "Danke! Bis bald im Garten!");
   await narrationIdle(page);
   const fin = saved(page);
   await page.locator("[data-testid='workshop-next']").click();
@@ -553,7 +740,7 @@ if (MODE === "novoice" || MODE === "denied") {
   await reflect;
   await page.waitForSelector("[data-testid='workshop-farewell']", { timeout: 20000 });
   await heard(page, "Dein Garten ist gespeichert.");
-  check("I2-04.goodbye-spoken-and-visible", (await spokenTexts(page)).includes("Danke, Isabel. Bis bald im Garten!") && (await text(page, "[data-testid='workshop-farewell']")).includes("Bis bald im Garten"));
+  check("I2-04.goodbye-spoken-and-visible", (await spokenTexts(page)).includes("Danke! Bis bald im Garten!") && (await text(page, "[data-testid='workshop-farewell']")).includes("Bis bald im Garten"));
   b = await measure(page, "farewell");
   await narrationIdle(page);
   await shot(page, "farewell");
@@ -597,7 +784,7 @@ if (MODE === "novoice" || MODE === "denied") {
   const ig3 = await text(pp, "[data-testid='evidence-IG3-STICKS']");
   check("I2-05.parent-exact-answers-and-help-in-order", /«23» ✗ .*«32» ✓/.test(ig3) && /Hinweis|hint/i.test(ig3), ig3.slice(0, 300));
   check("I2-05.parent-reading-supported-listening-apart", (await text(pp, "[data-testid='evidence-IG7-READ']")).includes("Buchstabenhilfe") && (await text(pp, "[data-testid='evidence-IG8-LISTEN']")).includes("getrennt von Lesen"));
-  await pp.locator("[data-testid='observation-v2-plant-done']").click();
+  await pp.locator("[data-testid='observation-v2-build-done']").click();
   await settle(1200);
   await shot(pp, "parent-evidence", true);
   await pp.locator("[role='tab']", { hasText: "Rückblick" }).click();
@@ -629,6 +816,14 @@ if (MODE === "novoice" || MODE === "denied") {
 // Device variants on a second synthetic child state are not possible after the finished visit, so they run as separate modes:
 // --mode novoice / --mode denied start a fresh Isabel Visit 2 on their own database (see the reproduction script).
 // --------------------------------------------------------------------------------------------------------------------------
+// Every text the device actually spoke in this run is a catalogued (prerecordable) line — rendered coverage, all modes.
+{
+  const cat = await api("GET", "/api/family/learning/parent/narration", null, owner);
+  const texts = new Set((cat.json?.lines ?? []).map((l) => l.text));
+  const outside = [...new Set(allSpoken)].filter((t) => !texts.has(t));
+  check("COMMON.every-spoken-line-is-catalogued", cat.status === 200 && texts.size > 100 && outside.length === 0, { catalogued: texts.size, spokenDistinct: new Set(allSpoken).size, outside });
+  rec.spokenDistinct = new Set(allSpoken).size;
+}
 check("COMMON.no-external-requests", blocked.length === 0, blocked.slice(0, 5));
 check("COMMON.no-page-errors", pageErrors.length === 0, pageErrors.slice(0, 3));
 check("COMMON.no-nokt-call-from-isabels-browser", noktCalls.length === 0, noktCalls);

@@ -13,7 +13,7 @@ import { useMemo, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import type { ChildView } from "@/lib/family-learning-state";
 import type { LearningMutateOutcome } from "@/lib/family-learning-client";
-import { closingNarration, NARRATION_UI } from "@/lib/family-learning-narration";
+import { closingLines, closingNarration, type ClosingSource } from "@/lib/family-learning-narration";
 import type { NarrationPlayer } from "@/lib/family-narration-player";
 import { NarrationControl, useNarration, type NarrationTelemetry } from "./narration";
 import type { InterestAnswer } from "./next-interest";
@@ -47,10 +47,9 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
   const adventure = reflection.adventure ?? null;
 
   const script = useMemo(() => {
-    if (step === "difficulty") return closingNarration("difficulty", { prompt: reflection.prompt, options: reflection.options });
-    if (step === "enjoyment" && enjoyment) return closingNarration("enjoyment", { prompt: enjoyment.prompt, options: enjoyment.options });
-    return closingNarration("next", { prompt: adventure?.prompt ?? reflection.nextInterest?.prompt ?? "", options: [...(adventure?.choices ?? []), { label: NARRATION_UI.ownIdea }, { label: reflection.nextInterest?.unsureLabel ?? "Weiss ich noch nicht" }, { label: NARRATION_UI.thenFinish }] });
-  }, [step, reflection, enjoyment, adventure]);
+    const src = { reflection, adventure } as unknown as ClosingSource;
+    return closingNarration(step, { lines: closingLines(step, src) });
+  }, [step, reflection, adventure]);
   const narration = useNarration(narrator, script, telemetry);
 
   const answer = (id: string, value: string | null) => {

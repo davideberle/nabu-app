@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { NO_STORE, refuse, requireParentOwner } from "@/lib/family-learning-auth";
 import { servedNarrationCatalog } from "@/lib/family-narration-catalog-server";
-import { narrationReadiness, prepareNarration } from "@/lib/family-narration-store";
+import { MAX_PREPARE_CHARACTERS, narrationReadiness, prepareNarration } from "@/lib/family-narration-store";
 
 /**
  * Owner only (Isabel Visit 2, I2-06): the prerecorded German narration.
@@ -15,9 +15,11 @@ import { narrationReadiness, prepareNarration } from "@/lib/family-narration-sto
 export async function GET() {
   const parent = await requireParentOwner();
   if (!parent.ok) return parent.response;
-  const { missingLines, ...readiness } = await narrationReadiness(servedNarrationCatalog());
-  void missingLines;
-  return NextResponse.json({ readiness }, { headers: NO_STORE });
+  const catalog = servedNarrationCatalog();
+  const { missingLines, ...readiness } = await narrationReadiness(catalog);
+  const missing = new Set(missingLines.map((l) => l.id));
+  // The reviewed catalogue itself (fixed scripts, no child data) so the owner can audition every line on the real device.
+  return NextResponse.json({ readiness, lines: catalog.map((l) => ({ id: l.id, text: l.text, where: l.where ?? [], recorded: !missing.has(l.id) })) }, { headers: NO_STORE });
 }
 
 export async function POST(request: Request) {
@@ -29,11 +31,12 @@ export async function POST(request: Request) {
   } catch {
     return refuse(400, "Body must be JSON");
   }
-  const { confirm, maxCharacters } = (typeof body === "object" && body !== null ? body : {}) as Record<string, unknown>;
+  if (typeof body !== "object" || body === null || Array.isArray(body) || Object.keys(body).some((k) => k !== "confirm" && k !== "maxCharacters")) return refuse(400, "Body accepts exactly confirm and maxCharacters (no text: only the reviewed catalogue is ever recorded)");
+  const { confirm, maxCharacters } = body as Record<string, unknown>;
   if (confirm !== "prepare-narration") return refuse(400, "confirm must be \"prepare-narration\"");
-  if (typeof maxCharacters !== "number" || !Number.isInteger(maxCharacters) || maxCharacters < 1 || maxCharacters > 20000) return refuse(400, "maxCharacters must be an integer between 1 and 20000");
+  if (typeof maxCharacters !== "number" || !Number.isInteger(maxCharacters) || maxCharacters < 1 || maxCharacters > MAX_PREPARE_CHARACTERS) return refuse(400, `maxCharacters must be an integer between 1 and ${MAX_PREPARE_CHARACTERS}`);
   const result = await prepareNarration(servedNarrationCatalog(), maxCharacters);
   // Counts only: no text, key or voice id in the log or the response.
   console.info(`[family/learning/parent/narration] prepare by owner: ${result.status}, recorded ${result.recorded}, characters ${result.charactersSent}, remaining ${result.remaining}`);
-  return NextResponse.json({ result }, { status: result.status === "not-configured" ? 503 : result.status === "upstream-failed" ? 502 : 200, headers: NO_STORE });
+  return NextResponse.json({ result }, { status: result.status === "not-configured" ? 503 : result.status === "upstream-failed" ? 502 : result.status === "busy" ? 409 : result.status === "refused-private" ? 422 : 200, headers: NO_STORE });
 }

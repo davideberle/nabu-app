@@ -1,18 +1,12 @@
-// Server-only: the narration catalogue of every child's SERVED content (Isabel Visit 2, 2026-10-29). Only these reviewed lines
-// can be fetched as clips or prepared; a capped/switched-off content contributes nothing.
-import { loadLearningContentFor } from "./family-learning-content-server";
+// Server-only: the narration catalogue (Isabel Visit 2, 2026-10-29). It is built from every NARRATED content version bundled in
+// this build — independent of the rollback/content switches — so the owner can prepare and audition the recordings while the
+// visit itself is still parked (FAMILY_LEARNING_ISABEL_CONTENT_CAP=1). Only fixed reviewed scripts; no child record.
+import isabelWorkshopV2 from "@/data/family-learning/content/isabel-workshop-v2.json";
+import { asIsabelContent } from "./family-learning-isabel";
 import { narrationCatalog, type NarrationLine } from "./family-learning-narration";
 
+let cached: NarrationLine[] | null = null;
 export function servedNarrationCatalog(): NarrationLine[] {
-  const out = new Map<string, NarrationLine>();
-  for (const child of ["isabel", "santiago"] as const) {
-    let content = null;
-    try {
-      content = loadLearningContentFor(child);
-    } catch {
-      content = null;
-    }
-    if (content) for (const l of narrationCatalog(content)) out.set(l.id, l);
-  }
-  return [...out.values()].sort((a, b) => (a.id < b.id ? -1 : 1));
+  if (!cached) cached = narrationCatalog(asIsabelContent(isabelWorkshopV2));
+  return cached;
 }

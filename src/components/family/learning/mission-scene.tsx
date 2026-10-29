@@ -423,7 +423,8 @@ function PartTask({ part, step, busy, act, telemetry, quiet = false }: { part: S
           Für später aufheben
         </button>
       ) : null}
-      <HintArea part={part} step={step} busy={busy} act={act} telemetry={telemetry} emphasize={false} quiet={quiet} />
+      {/* Narrated (quiet): once the worked solution is shown, the earlier hint steps are no longer on screen. */}
+      {quiet && taught ? null : <HintArea part={part} step={step} busy={busy} act={act} telemetry={telemetry} emphasize={false} quiet={quiet} />}
     </div>
   );
 }

@@ -97,6 +97,9 @@ NOKTENV="FAMILY_NOKT_CONVERSATION=subscription FAMILY_ASSISTANT_BRIDGE_URL=$BRID
 server "$OUT/db-v2" 3291 $NOKTENV
 step isabel-v2-journey 0 node scripts/verify-learning-isabel-visit2.mjs --base http://127.0.0.1:3291 --db "$OUT/db-v2/nabu.db" --out "$OUT/out-v2" --mode v2
 stop_server "$CUR"; CUR=""
+server "$OUT/db-branches" 3292
+step isabel-v2-branches 0 node scripts/verify-learning-isabel-visit2.mjs --base http://127.0.0.1:3292 --db "$OUT/db-branches/nabu.db" --out "$OUT/out-branches" --mode branches
+stop_server "$CUR"; CUR=""
 server "$OUT/db-novoice" 3292
 step isabel-v2-no-german-voice 0 node scripts/verify-learning-isabel-visit2.mjs --base http://127.0.0.1:3292 --db "$OUT/db-novoice/nabu.db" --out "$OUT/out-novoice" --mode novoice
 stop_server "$CUR"; CUR=""

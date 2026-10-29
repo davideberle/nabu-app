@@ -42,6 +42,7 @@ import { MATH_OBJECTIVES, isMathObjective, type KeyboardLayoutId } from "@/lib/f
 import type { DelayedCheckInfo, ParentReview } from "@/lib/family-learning-summary";
 import { createSettingsDraft, editSettingsDraft, reconcileSettingsDraft, settingsSaveBody, type SettingsDraft, type SettingsSource } from "@/lib/family-learning-parent-draft";
 import { beginRequest, clearEvidence, createEvidenceStore, describeTypingMetrics, invalidateAuthorization, isCurrentEpoch, receiveEvidence, renderableEvidence, selectChild, type EvidenceStore } from "@/lib/family-learning-parent-evidence";
+import { NarrationAudition } from "@/components/family/learning/narration-audition";
 
 const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
 const primaryButton = cn("inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-stone-900 px-5 text-base font-semibold text-white disabled:opacity-50 dark:bg-stone-100 dark:text-stone-900", focusRing);
@@ -343,6 +344,8 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
       ) : null}
       {tab === "review" ? <ReviewTab evidence={evidence} /> : null}
       {tab === "settings" ? <Settings key={`${evidence.child}:${evidence.erasureGeneration}`} evidence={evidence} child={evidence.child} ops={ops} /> : null}
+      {/* Isabel Visit 2: the owner's listening check of the recorded narration (no visit is started). */}
+      {tab === "settings" && evidence.child === "isabel" ? <NarrationAudition /> : null}
       {state ? (
         <p className="text-xs text-tertiary">
           Mission {state.missionId} v{state.contentVersion} · Stand {fmt(state.updatedAt)} · Revision {state.revision} · Besuche abgeschlossen: {state.visits.filter((v) => v.finishedAt).length}

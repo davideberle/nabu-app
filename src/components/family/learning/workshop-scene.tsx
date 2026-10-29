@@ -470,15 +470,19 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
         <GardenerPortrait name={who} className="h-20 w-20 shrink-0" />
         <div className="grid min-w-0 flex-1 gap-1" role="group" aria-label={`${who} sagt`}>
           <p className="text-sm font-bold uppercase tracking-wide" style={{ color: "#3d5a2a" }} data-testid="workshop-speaker">{who}</p>
-          {lines.map((l, i) => (
+          {/* Visible: the first short line only; every line is spoken (the narration is the instruction, the text is a reminder). */}
+          {lines.slice(0, 1).map((l, i) => (
             <p key={`${active?.id}-${i}`} className="text-xl leading-snug sm:text-2xl" data-testid="workshop-line">{l.text}</p>
           ))}
         </div>
         <NarrationControl status={narration.status} onReplay={narration.replay} onStop={narration.stop} />
       </figure>
       <section className="rounded-3xl p-5 shadow-sm sm:p-7" style={{ background: CARD }} aria-labelledby="workshop-title" data-testid="workshop-task">
-        <h2 id="workshop-title" ref={headingRef} tabIndex={-1} className="mb-4 text-base font-semibold outline-none" style={{ color: "#7b6a55" }} data-testid="workshop-beat">
-          {active ? active.title : mission.title} · Teil {beat.index} von {beat.count}
+        {/* Progress as dots, not words; the title stays for assistive technology. */}
+        <h2 id="workshop-title" ref={headingRef} tabIndex={-1} className="mb-4 flex items-center gap-1.5 outline-none" data-testid="workshop-beat" aria-label={`${active ? active.title : mission.title}, Teil ${beat.index} von ${beat.count}`}>
+          {Array.from({ length: beat.count }, (_, i) => (
+            <span key={i} aria-hidden className={i + 1 === beat.index ? "h-3 w-7 rounded-full" : "h-3 w-3 rounded-full"} style={{ background: i + 1 < beat.index ? "#6f8f5a" : i + 1 === beat.index ? "#e0a020" : "#dcd3c2" }} />
+          ))}
         </h2>
         {active ? (
           <NarratedTask child={child} mission={mission} active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} onNext={() => void next()} onSeen={setSeenParts} />
@@ -507,7 +511,8 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
         {active.ending ? (
           <div className="grid gap-2" data-testid="workshop-ending">
             {active.ending.success ? <Feedback tone="success" text={active.ending.success} /> : null}
-            <p className="text-lg">{active.ending.next}</p>
+            {/* The next step is spoken; on screen only the result and the one success stay. */}
+            <p className="sr-only">{active.ending.next}</p>
           </div>
         ) : null}
         <NextButton busy={busy} onNext={onNext} label={active.kind === "outcome" ? (finished ? "Weiter" : "Fertig") : "Weiter"} />
@@ -516,12 +521,31 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
   }
   return (
     <div className="grid gap-5">
-      {active.kind === "decide" && active.decide ? <DecideTask active={active} busy={busy} act={act} /> : null}
+      {active.kind === "decide" && active.decide ? <NarratedDecide active={active} busy={busy} act={act} /> : null}
       {active.kind === "solve" && active.solve ? <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} quiet onSeen={seen} /> : null}
       {active.kind === "read" ? <NarratedReadTask active={active} busy={busy} act={act} /> : null}
       {active.kind === "listen" ? <NarratedListen active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} who={mission.characters[0]?.name ?? ""} /> : null}
       {active.kind === "craft" && active.craft ? <NarratedCraft active={active} busy={busy} act={act} onDone={onNext} /> : null}
       {finished && active.kind !== "craft" ? <NextButton busy={busy} onNext={onNext} /> : null}
+    </div>
+  );
+}
+
+/** The choice (narrated): pictures with one-word labels; the question is spoken, the choice is never scored. */
+function NarratedDecide({ active, busy, act }: { active: MissionActiveView; busy: boolean; act: Act }) {
+  const d = active.decide!;
+  const chosen = d.picked.find((p) => p.viable) ?? null;
+  return (
+    <div className="grid gap-3" data-testid="workshop-decide" data-chosen={d.chosen ?? ""}>
+      <div className="flex flex-wrap gap-3" role="group" aria-label={d.prompt}>
+        {d.options.map((o) => (
+          <button key={o.id} type="button" className={pictureButton} style={{ borderColor: d.chosen === o.id ? "#3f7a3a" : "#d9c6aa" }} aria-pressed={d.chosen === o.id} disabled={busy || active.status !== "active"} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`make-${o.id}`}>
+            {o.picture ? <WorkshopPictureView id={o.picture} /> : null}
+            {o.label}
+          </button>
+        ))}
+      </div>
+      {chosen ? <Feedback tone="success" text={chosen.feedback} /> : null}
     </div>
   );
 }
@@ -650,11 +674,11 @@ function NarratedCraft({ active, busy, act, onDone }: { active: MissionActiveVie
             ))}
           </div>
           <button type="button" className={cn(btn, "justify-self-start")} style={secondary} disabled={busy || !picked.length || saved} onClick={() => void act({ a: "craft-found", step: active.id, items: picked })} data-testid="found-save">
-            {saved ? "✓ Gespeichert" : `Speichern (${picked.length} von ${c.find.count})`}
+            {saved ? "✓ Gespeichert" : <><span aria-hidden>✓</span> Speichern</>}
           </button>
         </div>
       ) : null}
-      <p className="text-sm" style={{ color: "#7b6a55" }} data-testid="craft-parent-note">{c.parentNote}</p>
+      {/* The parent's note lives on the parent page (observation panel), not on her screen. */}
       <NextButton busy={busy} onNext={onDone} label="Weiter" />
     </div>
   );
