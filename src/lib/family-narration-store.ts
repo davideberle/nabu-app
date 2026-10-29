@@ -79,7 +79,7 @@ export type NarrationReadiness = {
   /** Slots the catalogue needs, with their configuration and recording state (voice ids are never reported). */
   slots: SlotReadiness[];
   /** The same totals per child (Isabel's narration and Santiago's story lines are counted apart). */
-  children: { child: string; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number }[];
+  children: { child: string; ready: boolean; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number; personal: number }[];
   providerKeyConfigured: boolean;
   storeConfigured: boolean;
   model: string;
@@ -118,12 +118,14 @@ export async function narrationReadiness(catalog: NarrationLine[], deps: StoreDe
   const children = [...new Set(catalog.map((l) => l.child ?? "?"))].map((c) => {
     const ls = catalog.filter((l) => (l.child ?? "?") === c);
     const miss = ls.filter((l) => missing.has(l));
-    return { child: c, lines: ls.length, characters: chars(ls), recorded: ls.length - miss.length, missing: miss.length, missingCharacters: chars(miss) };
+    const needed = new Set(ls.map((l) => l.slot));
+    const slotsOk = slots.filter((x) => needed.has(x.slot)).every((x) => x.configured);
+    return { child: c, ready: miss.length === 0 && slotsOk, lines: ls.length, characters: chars(ls), recorded: ls.length - miss.length, missing: miss.length, missingCharacters: chars(miss), personal: ls.filter((l) => !isPublicSafeScript(l.text)).length };
   });
   return { ready: missingLines.length === 0 && slots.every((x) => x.configured), slots, children, providerKeyConfigured: !!env.ELEVENLABS_API_KEY, storeConfigured: !!token, model: NARRATION_TTS_MODEL_ID, lines: catalog.length, characters: chars(catalog), recorded: catalog.length - missingLines.length, missing: missingLines.length, missingCharacters: chars(missingLines), missingLines };
 }
 
-export type PrepareResult = { status: "prepared" | "not-configured" | "busy" | "cap-reached" | "upstream-failed" | "refused-private"; recorded: number; charactersSent: number; remaining: number; failedStatus?: number };
+export type PrepareResult = { status: "prepared" | "not-configured" | "busy" | "cap-reached" | "upstream-failed"; recorded: number; charactersSent: number; remaining: number; failedStatus?: number; /** Lines naming a child: never sent, never stored in the public store (they stay «missing» until a storage decision). */ personalSkipped: number };
 
 async function acquireLock(token: string, deps: StoreDeps): Promise<boolean> {
   const path = PREPARE_LOCK;
@@ -155,15 +157,18 @@ async function acquireLock(token: string, deps: StoreDeps): Promise<boolean> {
  * - the first upstream failure stops the run (no retries); only catalogued, public-safe text is ever sent.
  * Returns counts only — never the texts, the key or the voice id.
  */
-export async function prepareNarration(catalog: NarrationLine[], maxCharacters: number, deps: StoreDeps = {}): Promise<PrepareResult> {
+export async function prepareNarration(fullCatalog: NarrationLine[], maxCharacters: number, deps: StoreDeps = {}): Promise<PrepareResult> {
+  let catalog = fullCatalog;
   const env = deps.env ?? process.env;
   const token = env.BLOB_READ_WRITE_TOKEN;
   const key = env.ELEVENLABS_API_KEY;
   const cap = Math.max(0, Math.min(maxCharacters, MAX_PREPARE_CHARACTERS));
-  if (catalog.some((l) => !isPublicSafeScript(l.text))) return { status: "refused-private", recorded: 0, charactersSent: 0, remaining: catalog.length };
+  // Lines naming a child never go to the provider or into the public store; everything else is prepared.
+  const personalSkipped = catalog.filter((l) => !isPublicSafeScript(l.text)).length;
+  catalog = catalog.filter((l) => isPublicSafeScript(l.text));
   // Only lines whose slot has a configured voice are recorded; an unconfigured slot is reported, never filled with another voice.
-  if (!token || !key || !catalog.some((l) => lineVoiceId(l, env))) return { status: "not-configured", recorded: 0, charactersSent: 0, remaining: catalog.length };
-  if (!(await acquireLock(token, deps))) return { status: "busy", recorded: 0, charactersSent: 0, remaining: -1 };
+  if (!token || !key || !catalog.some((l) => lineVoiceId(l, env))) return { status: "not-configured", recorded: 0, charactersSent: 0, remaining: catalog.length, personalSkipped };
+  if (!(await acquireLock(token, deps))) return { status: "busy", recorded: 0, charactersSent: 0, remaining: -1, personalSkipped };
   try {
     const ready = await narrationReadiness(catalog, deps);
     let recorded = 0;
@@ -171,7 +176,7 @@ export async function prepareNarration(catalog: NarrationLine[], maxCharacters: 
     for (const l of ready.missingLines) {
       const voice = lineVoiceId(l, env);
       if (!voice) continue;
-      if (sent + l.text.length > cap) return { status: "cap-reached", recorded, charactersSent: sent, remaining: ready.missing - recorded };
+      if (sent + l.text.length > cap) return { status: "cap-reached", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped };
       if (await exists(clipPathname(voice, l.id), token, deps.headImpl ?? head)) continue;
       const res = await (deps.fetchImpl ?? fetch)(`https://api.elevenlabs.io/v1/text-to-speech/${voice}?output_format=${NARRATION_OUTPUT_FORMAT}`, {
         method: "POST",
@@ -179,12 +184,12 @@ export async function prepareNarration(catalog: NarrationLine[], maxCharacters: 
         body: JSON.stringify({ text: l.text, model_id: NARRATION_TTS_MODEL_ID }),
       });
       sent += l.text.length;
-      if (!res.ok) return { status: "upstream-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, failedStatus: res.status };
+      if (!res.ok) return { status: "upstream-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, failedStatus: res.status, personalSkipped };
       const bytes = await res.arrayBuffer();
       await (deps.putImpl ?? put)(clipPathname(voice, l.id), Buffer.from(bytes), { access: "public", contentType: "audio/mpeg", allowOverwrite: true, addRandomSuffix: false, token });
       recorded += 1;
     }
-    return { status: "prepared", recorded, charactersSent: sent, remaining: ready.missing - recorded };
+    return { status: "prepared", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped };
   } finally {
     await (deps.delImpl ?? del)(PREPARE_LOCK, { token }).catch(() => {});
   }

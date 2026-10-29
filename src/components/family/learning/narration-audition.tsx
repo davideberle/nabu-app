@@ -15,8 +15,8 @@ import { line } from "@/lib/family-learning-narration";
 import type { VoiceSlot } from "@/lib/family-voice-registry";
 
 type SlotReadiness = { slot: string; language: string; gender: string; configured: boolean; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number };
-type Readiness = { ready: boolean; children: { child: string; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number }[]; slots: SlotReadiness[]; providerKeyConfigured: boolean; storeConfigured: boolean; model: string; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number };
-type CatalogLine = { id: string; slot: VoiceSlot | null; text: string; where: string[]; recorded: boolean };
+type Readiness = { ready: boolean; children: { child: string; ready: boolean; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number; personal: number }[]; slots: SlotReadiness[]; providerKeyConfigured: boolean; storeConfigured: boolean; model: string; lines: number; characters: number; recorded: number; missing: number; missingCharacters: number };
+type CatalogLine = { id: string; slot: VoiceSlot | null; text: string; where: string[]; recorded: boolean; personal?: boolean };
 const SOURCE_DE: Record<LineOutcome, string> = { recorded: "Aufnahme", "device-de": "Gerätestimme", "no-german-voice": "keine passende Gerätestimme", "missing-recording": "⚠ Aufnahme fehlt", blocked: "vom Browser blockiert", failed: "Fehler" };
 const btn = "inline-flex min-h-9 items-center rounded-lg border border-primary px-3 text-sm font-medium text-primary disabled:opacity-50";
 
@@ -60,7 +60,7 @@ export function NarrationAudition() {
     setPrepare("läuft …");
     const r = await fetch("/api/family/learning/parent/narration", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ confirm: "prepare-narration", maxCharacters: Math.max(1, configuredMissing) }) });
     const j = await r.json().catch(() => ({}));
-    setPrepare(`${j?.result?.status ?? r.status}: ${j?.result?.recorded ?? 0} aufgenommen, ${j?.result?.charactersSent ?? 0} Zeichen gesendet, ${j?.result?.remaining ?? "?"} offen`);
+    setPrepare(`${j?.result?.status ?? r.status}: ${j?.result?.recorded ?? 0} aufgenommen, ${j?.result?.charactersSent ?? 0} Zeichen gesendet, ${j?.result?.remaining ?? "?"} offen, ${j?.result?.personalSkipped ?? 0} Sätze mit Namen übersprungen`);
     setConfirmSpend(false);
     void load();
   };
@@ -79,7 +79,7 @@ export function NarrationAudition() {
       )}
       <ul className="mt-1 text-sm text-tertiary" data-testid="audition-children">
         {r.children.map((c) => (
-          <li key={c.child} data-child={c.child}>{c.child === "isabel" ? "Isabel" : c.child === "santiago" ? "Santiago" : c.child}: {c.lines} Sätze, {c.characters} Zeichen · {c.recorded} aufgenommen · {c.missingCharacters} Zeichen fehlen</li>
+          <li key={c.child} data-child={c.child} data-ready={c.ready ? "true" : "false"}>{c.ready ? "✓" : "✗"} {c.child === "isabel" ? "Isabel" : c.child === "santiago" ? "Santiago" : c.child}: {c.lines} Sätze, {c.characters} Zeichen · {c.recorded} aufgenommen · {c.missingCharacters} Zeichen fehlen{c.personal ? ` · ${c.personal} Sätze mit Namen werden nicht im öffentlichen Speicher aufgenommen (Entscheid offen)` : ""}</li>
         ))}
       </ul>
       <p className="mt-1 text-sm text-tertiary">
@@ -106,7 +106,7 @@ export function NarrationAudition() {
                 <li key={l.id} className="flex flex-wrap items-center gap-2 text-sm" data-testid={`audition-line-${l.slot}-${l.id}`} data-heard={heard[`${l.slot}|${l.id}`] ?? ""}>
                   <button type="button" className={btn} onClick={() => void play([l], l.id)} disabled={playing !== null} aria-label={`Anhören: ${l.text}`}>▶</button>
                   <span className="text-primary">{l.text}</span>
-                  <span className="text-tertiary">{l.recorded ? "· aufgenommen" : "· keine Aufnahme"}{heard[`${l.slot}|${l.id}`] ? ` · gehört: ${heard[`${l.slot}|${l.id}`]}` : ""}</span>
+                  <span className="text-tertiary">{l.personal ? "· enthält einen Namen — nicht aufnehmbar (öffentlicher Speicher)" : l.recorded ? "· aufgenommen" : "· keine Aufnahme"}{heard[`${l.slot}|${l.id}`] ? ` · gehört: ${heard[`${l.slot}|${l.id}`]}` : ""}</span>
                 </li>
               ))}
             </ul>

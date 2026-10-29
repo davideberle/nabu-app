@@ -558,11 +558,13 @@ describe("prerecorded narration — readiness and the owner's capped preparation
     stale.seedLock("VoiceAbc12345");
     equal((await prepareNarration(catalog, 99999, stale.deps(ENV))).status, "prepared");
   });
-  it("a line naming a child is never sent to the provider or stored in the public store", async () => {
+  it("a line naming a child is never sent to the provider or stored in the public store; the rest is still prepared", async () => {
     const st = fakeStore();
     const r = await prepareNarration([...catalog, line("Hallo Isabel!", "de-female")], 99999, st.deps(ENV));
-    equal(r.status, "refused-private");
-    equal(st.sent.length, 0);
+    equal(r.status, "prepared");
+    equal(r.personalSkipped, 1);
+    ok(!st.sent.some((x) => /Isabel/.test(x.body.text)));
+    equal(st.sent.length, catalog.length);
   });
 });
 
@@ -787,11 +789,15 @@ describe("story voices for both children", () => {
     const cat = [...narrationCatalog(v2).map((l) => ({ ...l, child: "isabel" as const })), ...sCat];
     const none = await narrationReadiness(cat, { env: { BLOB_READ_WRITE_TOKEN: "t" }, headImpl: (async () => { throw new Error("none"); }) as never });
     equal(none.ready, false);
-    deepStrictEqual(none.children.map((c) => [c.child, c.lines, c.characters]), [["isabel", 123, 4731], ["santiago", 9, 572]]);
+    deepStrictEqual(none.children.map((c) => [c.child, c.lines, c.characters, c.personal, c.ready]), [["isabel", 123, 4731, 0, false], ["santiago", 9, 572, 3, false]]);
     deepStrictEqual(none.slots.map((x) => x.slot), ["de-female", "es-female", "en-female"]);
     const env = { BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_FEMALE_ID: "Hannah12345678", ELEVENLABS_VOICE_ES_FEMALE_ID: "AnaSofia123456", ELEVENLABS_VOICE_EN_FEMALE_ID: "Jessica1234567" };
     const all = await narrationReadiness(cat, { env, headImpl: (async () => ({ uploadedAt: new Date() })) as never });
     equal(all.ready, true);
+    // Realistic: the three nickname lines cannot be recorded into the public store — Isabel is ready, Santiago is not.
+    const personal = new Set(sCat.filter((l) => /Santi/.test(l.text)).map((l) => clipPathname("AnaSofia123456", l.id)).concat(sCat.filter((l) => /Santi/.test(l.text)).map((l) => clipPathname("Jessica1234567", l.id))));
+    const real = await narrationReadiness(cat, { env, headImpl: (async (p: string) => { if (personal.has(p)) throw new Error("none"); return { uploadedAt: new Date() }; }) as never });
+    deepStrictEqual(real.children.map((c) => [c.child, c.ready]), [["isabel", true], ["santiago", false]]);
     deepStrictEqual(configuredSlots(env), ["de-female", "es-female", "en-female"]);
   });
   it("a selected voice is never replaced: with the slot configured and no recording, nothing is spoken and the state is «missing»", async () => {
@@ -837,6 +843,8 @@ describe("children's story-voice switch", () => {
     const env = { ELEVENLABS_VOICE_DE_FEMALE_ID: "Hannah12345678" };
     deepStrictEqual(childStoryVoices(env), []);
     deepStrictEqual(childStoryVoices({ ...env, FAMILY_STORY_VOICES: "recorded" }), ["de-female"]);
+    deepStrictEqual(childStoryVoices({ ...env, FAMILY_STORY_VOICES: "isabel" }, "isabel"), ["de-female"]);
+    deepStrictEqual(childStoryVoices({ ...env, FAMILY_STORY_VOICES: "isabel" }, "santiago"), [], "one child can go live while the other waits");
     deepStrictEqual(configuredSlots(env), ["de-female"]);
   });
 });

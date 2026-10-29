@@ -99,6 +99,8 @@ export function configuredSlots(env: Record<string, string | undefined>): VoiceS
  * prepare and audition), and every child page keeps its earlier route unchanged.
  */
 export const STORY_VOICES_SWITCH = "FAMILY_STORY_VOICES";
-export function childStoryVoices(env: Record<string, string | undefined>): VoiceSlot[] {
-  return env[STORY_VOICES_SWITCH] === "recorded" ? configuredSlots(env) : [];
+export function childStoryVoices(env: Record<string, string | undefined>, child?: string): VoiceSlot[] {
+  // `recorded` = both children; otherwise a comma list of children (e.g. `isabel`), so one child can go live while the other waits.
+  const v = (env[STORY_VOICES_SWITCH] ?? "").split(",").map((x) => x.trim());
+  return v.includes("recorded") || (child && v.includes(child)) ? configuredSlots(env) : [];
 }

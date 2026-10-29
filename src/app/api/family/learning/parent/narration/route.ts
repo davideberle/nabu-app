@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { NO_STORE, refuse, requireParentOwner } from "@/lib/family-learning-auth";
 import { servedNarrationCatalog } from "@/lib/family-narration-catalog-server";
-import { MAX_PREPARE_CHARACTERS, narrationReadiness, prepareNarration } from "@/lib/family-narration-store";
+import { isPublicSafeScript, MAX_PREPARE_CHARACTERS, narrationReadiness, prepareNarration } from "@/lib/family-narration-store";
 
 /**
  * Owner only (Isabel Visit 2, I2-06): the prerecorded German narration.
@@ -19,7 +19,7 @@ export async function GET() {
   const { missingLines, ...readiness } = await narrationReadiness(catalog);
   const missing = new Set(missingLines);
   // The reviewed catalogue itself (fixed scripts, no child data) so the owner can audition every line on the real device.
-  return NextResponse.json({ readiness, lines: catalog.map((l) => ({ id: l.id, slot: l.slot ?? null, child: l.child ?? null, text: l.text, where: l.where ?? [], recorded: !missing.has(l) })) }, { headers: NO_STORE });
+  return NextResponse.json({ readiness, lines: catalog.map((l) => ({ id: l.id, slot: l.slot ?? null, child: l.child ?? null, text: l.text, where: l.where ?? [], recorded: !missing.has(l), personal: !isPublicSafeScript(l.text) })) }, { headers: NO_STORE });
 }
 
 export async function POST(request: Request) {
@@ -37,6 +37,6 @@ export async function POST(request: Request) {
   if (typeof maxCharacters !== "number" || !Number.isInteger(maxCharacters) || maxCharacters < 1 || maxCharacters > MAX_PREPARE_CHARACTERS) return refuse(400, `maxCharacters must be an integer between 1 and ${MAX_PREPARE_CHARACTERS}`);
   const result = await prepareNarration(servedNarrationCatalog(), maxCharacters);
   // Counts only: no text, key or voice id in the log or the response.
-  console.info(`[family/learning/parent/narration] prepare by owner: ${result.status}, recorded ${result.recorded}, characters ${result.charactersSent}, remaining ${result.remaining}`);
-  return NextResponse.json({ result }, { status: result.status === "not-configured" ? 503 : result.status === "upstream-failed" ? 502 : result.status === "busy" ? 409 : result.status === "refused-private" ? 422 : 200, headers: NO_STORE });
+  console.info(`[family/learning/parent/narration] prepare by owner: ${result.status}, recorded ${result.recorded}, characters ${result.charactersSent}, remaining ${result.remaining}, personal lines skipped ${result.personalSkipped}`);
+  return NextResponse.json({ result }, { status: result.status === "not-configured" ? 503 : result.status === "upstream-failed" ? 502 : result.status === "busy" ? 409 : 200, headers: NO_STORE });
 }
