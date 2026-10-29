@@ -2,7 +2,7 @@
 // Prerecorded visit narration — server-only storage and the owner-run preparation (Isabel Visit 2, 2026-10-29; I2-06).
 //
 // Deterministic and cacheable: every narrated line is a REVIEWED, catalogued text (`narrationCatalog`), recorded ONCE with the
-// voice of its character's slot (six-slot registry, `family-voice-registry.ts`) through the existing ElevenLabs route and stored
+// voice of its character's slot (six-slot registry, `family-voice-registry.ts`) with the recording-only key and stored
 // as an MP3 in the existing Blob store under
 //   family-narration/<voice key>/<line id>.mp3        (voice key = first 12 hex of sha256(voice id); the voice id never leaves)
 // The child's browser only ever RECEIVES stored clips (GET clip route, authenticated, catalogued ids only). No child path calls
@@ -14,8 +14,8 @@
 // This module reads `process.env` and must never be imported by a client component.
 // ---------------------------------------------------------------------------------------------------------------------
 
-import { createHash } from "node:crypto";
-import { del, get, head, put } from "@vercel/blob";
+import { createHash, randomBytes } from "node:crypto";
+import { del, get, head, list, put } from "@vercel/blob";
 import type { NarrationLine } from "./family-learning-narration.ts";
 import { isVoiceSlot, resolveSlotVoiceId, VOICE_SLOTS, VOICE_SLOT_INFO, type VoiceSlot } from "./family-voice-registry.ts";
 
@@ -45,6 +45,7 @@ export type StoreDeps = {
   headImpl?: typeof head;
   putImpl?: typeof put;
   delImpl?: typeof del;
+  listImpl?: typeof list;
   fetchImpl?: typeof fetch;
   now?: () => number;
 };
@@ -57,6 +58,49 @@ const LOCK_STALE_MS = 15 * 60_000;
 export const MAX_PREPARE_CHARACTERS = 20_000;
 /** One lock for all slots: preparation runs one at a time whatever voices it records. */
 export const PREPARE_LOCK = "family-narration/prepare.lock";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Owner spend budget (2026-10-29 12:05: «≤ 6000 characters across all calls/attempts of this approval»). A paid run needs
+// `FAMILY_NARRATION_BUDGET=<approval id>:<characters>`; without it nothing is sent. Every provider request is RESERVED in the
+// ledger before it is sent — one store object per request (a unique name), its characters in the path — so a failed, interrupted or uncertain
+// request still counts, and a later run (any call, any instance) adds to the same total. The ledger is listed from the store API
+// (not a cached copy); if it cannot be read or written, nothing is sent.
+// ---------------------------------------------------------------------------------------------------------------------
+
+export const BUDGET_SWITCH = "FAMILY_NARRATION_BUDGET";
+/**
+ * The provider key used ONLY for this owner-run recording — deliberately not the app's shared `ELEVENLABS_API_KEY`, which also
+ * serves the children's live speech and the household transcription route: configuring recordings must never switch those on.
+ */
+export const NARRATION_KEY_ENV = "ELEVENLABS_NARRATION_API_KEY";
+const BUDGET_PATTERN = /^([a-z0-9][a-z0-9-]{0,62}):([1-9][0-9]{0,5})$/;
+export function narrationBudget(env: Env): { approval: string; characters: number } | null {
+  const m = BUDGET_PATTERN.exec((env[BUDGET_SWITCH] ?? "").trim());
+  return m ? { approval: m[1], characters: Number(m[2]) } : null;
+}
+const ledgerPrefix = (approval: string) => `family-narration/budget/${approval}/`;
+
+/** Characters already reserved under this approval (every request ever sent or attempted), or null when the ledger is unreadable. */
+export async function budgetSpent(approval: string, token: string, deps: StoreDeps = {}): Promise<{ characters: number; requests: number } | null> {
+  try {
+    let characters = 0;
+    let requests = 0;
+    let cursor: string | undefined;
+    do {
+      const page = await (deps.listImpl ?? list)({ prefix: ledgerPrefix(approval), token, cursor, limit: 1000 });
+      for (const b of page.blobs) {
+        const n = /-(\d+)\.txt$/.exec(b.pathname);
+        if (!n) return null;
+        characters += Number(n[1]);
+        requests += 1;
+      }
+      cursor = page.hasMore ? page.cursor : undefined;
+    } while (cursor);
+    return { characters, requests };
+  } catch {
+    return null;
+  }
+}
 
 /** The stored clip of one catalogued line for the configured voice, or null (no voice, no store, not recorded). */
 export async function readNarrationClip(slot: string, lineId: string, deps: StoreDeps = {}): Promise<ReadableStream<Uint8Array> | null> {
@@ -122,10 +166,20 @@ export async function narrationReadiness(catalog: NarrationLine[], deps: StoreDe
     const slotsOk = slots.filter((x) => needed.has(x.slot)).every((x) => x.configured);
     return { child: c, ready: miss.length === 0 && slotsOk, lines: ls.length, characters: chars(ls), recorded: ls.length - miss.length, missing: miss.length, missingCharacters: chars(miss), personal: ls.filter((l) => !isPublicSafeScript(l.text)).length };
   });
-  return { ready: missingLines.length === 0 && slots.every((x) => x.configured), slots, children, providerKeyConfigured: !!env.ELEVENLABS_API_KEY, storeConfigured: !!token, model: NARRATION_TTS_MODEL_ID, lines: catalog.length, characters: chars(catalog), recorded: catalog.length - missingLines.length, missing: missingLines.length, missingCharacters: chars(missingLines), missingLines };
+  return { ready: missingLines.length === 0 && slots.every((x) => x.configured), slots, children, providerKeyConfigured: !!env[NARRATION_KEY_ENV], storeConfigured: !!token, model: NARRATION_TTS_MODEL_ID, lines: catalog.length, characters: chars(catalog), recorded: catalog.length - missingLines.length, missing: missingLines.length, missingCharacters: chars(missingLines), missingLines };
 }
 
-export type PrepareResult = { status: "prepared" | "not-configured" | "busy" | "cap-reached" | "upstream-failed"; recorded: number; charactersSent: number; remaining: number; failedStatus?: number; /** Lines naming a child: never sent, never stored in the public store (they stay «missing» until a storage decision). */ personalSkipped: number };
+export type PrepareResult = {
+  status: "prepared" | "not-configured" | "no-budget" | "budget-unavailable" | "budget-reached" | "busy" | "cap-reached" | "upstream-failed" | "store-failed";
+  recorded: number;
+  charactersSent: number;
+  remaining: number;
+  failedStatus?: number;
+  /** Lines naming a child: never sent, never stored in the public store (they stay «missing» until a storage decision). */
+  personalSkipped: number;
+  /** The owner budget after this run: characters reserved under the approval (all calls, failed ones included) and its limit. */
+  budget?: { approval: string; limit: number; spent: number; requests: number };
+};
 
 async function acquireLock(token: string, deps: StoreDeps): Promise<boolean> {
   const path = PREPARE_LOCK;
@@ -154,42 +208,69 @@ async function acquireLock(token: string, deps: StoreDeps): Promise<boolean> {
  * - one run at a time (store lock; a concurrent or retried request answers «busy» and sends nothing);
  * - every line is re-checked right before its request, and stored as soon as it arrives, so an interrupted run resumes with
  *   exactly the lines still missing and nothing is paid twice;
- * - the first upstream failure stops the run (no retries); only catalogued, public-safe text is ever sent.
+ * - the first upstream failure stops the run (no retries); only catalogued, public-safe text is ever sent;
+ * - the owner's total budget (`FAMILY_NARRATION_BUDGET`) is enforced across runs: each request is reserved before it is sent.
  * Returns counts only — never the texts, the key or the voice id.
  */
 export async function prepareNarration(fullCatalog: NarrationLine[], maxCharacters: number, deps: StoreDeps = {}): Promise<PrepareResult> {
   let catalog = fullCatalog;
   const env = deps.env ?? process.env;
   const token = env.BLOB_READ_WRITE_TOKEN;
-  const key = env.ELEVENLABS_API_KEY;
+  const key = env[NARRATION_KEY_ENV];
   const cap = Math.max(0, Math.min(maxCharacters, MAX_PREPARE_CHARACTERS));
   // Lines naming a child never go to the provider or into the public store; everything else is prepared.
   const personalSkipped = catalog.filter((l) => !isPublicSafeScript(l.text)).length;
   catalog = catalog.filter((l) => isPublicSafeScript(l.text));
   // Only lines whose slot has a configured voice are recorded; an unconfigured slot is reported, never filled with another voice.
   if (!token || !key || !catalog.some((l) => lineVoiceId(l, env))) return { status: "not-configured", recorded: 0, charactersSent: 0, remaining: catalog.length, personalSkipped };
+  const budget = narrationBudget(env);
+  if (!budget) return { status: "no-budget", recorded: 0, charactersSent: 0, remaining: catalog.length, personalSkipped };
   if (!(await acquireLock(token, deps))) return { status: "busy", recorded: 0, charactersSent: 0, remaining: -1, personalSkipped };
   try {
+    const before = await budgetSpent(budget.approval, token, deps);
+    if (!before) return { status: "budget-unavailable", recorded: 0, charactersSent: 0, remaining: -1, personalSkipped };
+    let spent = before.characters;
+    let requests = before.requests;
+    const report = () => ({ approval: budget.approval, limit: budget.characters, spent, requests });
     const ready = await narrationReadiness(catalog, deps);
     let recorded = 0;
     let sent = 0;
     for (const l of ready.missingLines) {
       const voice = lineVoiceId(l, env);
       if (!voice) continue;
-      if (sent + l.text.length > cap) return { status: "cap-reached", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped };
+      if (sent + l.text.length > cap) return { status: "cap-reached", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
+      if (spent + l.text.length > budget.characters) return { status: "budget-reached", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
       if (await exists(clipPathname(voice, l.id), token, deps.headImpl ?? head)) continue;
-      const res = await (deps.fetchImpl ?? fetch)(`https://api.elevenlabs.io/v1/text-to-speech/${voice}?output_format=${NARRATION_OUTPUT_FORMAT}`, {
-        method: "POST",
-        headers: { "xi-api-key": key, "Content-Type": "application/json", Accept: "audio/mpeg" },
-        body: JSON.stringify({ text: l.text, model_id: NARRATION_TTS_MODEL_ID }),
-      });
+      // Reserve BEFORE sending: whatever happens to the request, it is counted.
+      try {
+        await (deps.putImpl ?? put)(`${ledgerPrefix(budget.approval)}${String((deps.now ?? Date.now)()).padStart(14, "0")}-${randomBytes(4).toString("hex")}-${l.id}-${l.text.length}.txt`, "", { access: "public", contentType: "text/plain", allowOverwrite: false, addRandomSuffix: false, token });
+      } catch {
+        return { status: "budget-unavailable", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
+      }
+      spent += l.text.length;
+      requests += 1;
       sent += l.text.length;
-      if (!res.ok) return { status: "upstream-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, failedStatus: res.status, personalSkipped };
-      const bytes = await res.arrayBuffer();
-      await (deps.putImpl ?? put)(clipPathname(voice, l.id), Buffer.from(bytes), { access: "public", contentType: "audio/mpeg", allowOverwrite: true, addRandomSuffix: false, token });
+      let res: Response;
+      try {
+        res = await (deps.fetchImpl ?? fetch)(`https://api.elevenlabs.io/v1/text-to-speech/${voice}?output_format=${NARRATION_OUTPUT_FORMAT}`, {
+          method: "POST",
+          headers: { "xi-api-key": key, "Content-Type": "application/json", Accept: "audio/mpeg" },
+          body: JSON.stringify({ text: l.text, model_id: NARRATION_TTS_MODEL_ID }),
+        });
+      } catch {
+        // No answer (network): the request may have been billed — it stays reserved, and the run stops.
+        return { status: "upstream-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, failedStatus: 0, personalSkipped, budget: report() };
+      }
+      if (!res.ok) return { status: "upstream-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, failedStatus: res.status, personalSkipped, budget: report() };
+      try {
+        const bytes = await res.arrayBuffer();
+        await (deps.putImpl ?? put)(clipPathname(voice, l.id), Buffer.from(bytes), { access: "public", contentType: "audio/mpeg", allowOverwrite: true, addRandomSuffix: false, token });
+      } catch {
+        return { status: "store-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
+      }
       recorded += 1;
     }
-    return { status: "prepared", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped };
+    return { status: "prepared", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
   } finally {
     await (deps.delImpl ?? del)(PREPARE_LOCK, { token }).catch(() => {});
   }

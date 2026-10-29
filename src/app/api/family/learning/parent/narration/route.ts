@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { NO_STORE, refuse, requireParentOwner } from "@/lib/family-learning-auth";
 import { servedNarrationCatalog } from "@/lib/family-narration-catalog-server";
-import { isPublicSafeScript, MAX_PREPARE_CHARACTERS, narrationReadiness, prepareNarration } from "@/lib/family-narration-store";
+import { budgetSpent, isPublicSafeScript, MAX_PREPARE_CHARACTERS, narrationBudget, narrationReadiness, prepareNarration } from "@/lib/family-narration-store";
 
 /**
  * Owner only (Isabel Visit 2, I2-06): the prerecorded German narration.
@@ -11,6 +11,7 @@ import { isPublicSafeScript, MAX_PREPARE_CHARACTERS, narrationReadiness, prepare
  * POST `{ confirm: "prepare-narration", maxCharacters }` — PAID, explicit: records the missing catalogued lines once, with the
  *        configured voice, never more than `maxCharacters` characters in this call; existing clips are skipped; the first
  *        upstream failure stops it (no retries). Only reviewed catalogue text is sent — never a child's answer or record.
+ *        Needs the owner budget `FAMILY_NARRATION_BUDGET`; every request counts against it across calls (failed ones too).
  */
 export async function GET() {
   const parent = await requireParentOwner();
@@ -18,8 +19,14 @@ export async function GET() {
   const catalog = servedNarrationCatalog();
   const { missingLines, ...readiness } = await narrationReadiness(catalog);
   const missing = new Set(missingLines);
+  // The owner's spend budget for recordings (approval id and limit are not secret): what is already reserved under it.
+  const b = narrationBudget(process.env);
+  const token = process.env.BLOB_READ_WRITE_TOKEN;
+  const spent = b && token ? await budgetSpent(b.approval, token) : null;
+  const budget = b ? { approval: b.approval, limit: b.characters, spent: spent?.characters ?? null, requests: spent?.requests ?? null } : null;
   // The reviewed catalogue itself (fixed scripts, no child data) so the owner can audition every line on the real device.
-  return NextResponse.json({ readiness, lines: catalog.map((l) => ({ id: l.id, slot: l.slot ?? null, child: l.child ?? null, text: l.text, where: l.where ?? [], recorded: !missing.has(l), personal: !isPublicSafeScript(l.text) })) }, { headers: NO_STORE });
+  // `sources`: a line spoken as a reviewed variant names the displayed line(s) it stands for.
+  return NextResponse.json({ readiness, budget, lines: catalog.map((l) => ({ id: l.id, slot: l.slot ?? null, child: l.child ?? null, text: l.text, where: l.where ?? [], sources: l.sources ?? [], recorded: !missing.has(l), personal: !isPublicSafeScript(l.text) })) }, { headers: NO_STORE });
 }
 
 export async function POST(request: Request) {
@@ -37,6 +44,7 @@ export async function POST(request: Request) {
   if (typeof maxCharacters !== "number" || !Number.isInteger(maxCharacters) || maxCharacters < 1 || maxCharacters > MAX_PREPARE_CHARACTERS) return refuse(400, `maxCharacters must be an integer between 1 and ${MAX_PREPARE_CHARACTERS}`);
   const result = await prepareNarration(servedNarrationCatalog(), maxCharacters);
   // Counts only: no text, key or voice id in the log or the response.
-  console.info(`[family/learning/parent/narration] prepare by owner: ${result.status}, recorded ${result.recorded}, characters ${result.charactersSent}, remaining ${result.remaining}, personal lines skipped ${result.personalSkipped}`);
-  return NextResponse.json({ result }, { status: result.status === "not-configured" ? 503 : result.status === "upstream-failed" ? 502 : result.status === "busy" ? 409 : 200, headers: NO_STORE });
+  console.info(`[family/learning/parent/narration] prepare by owner: ${result.status}, recorded ${result.recorded}, characters ${result.charactersSent}, remaining ${result.remaining}, personal lines skipped ${result.personalSkipped}, budget ${result.budget ? `${result.budget.spent}/${result.budget.limit} (${result.budget.requests} requests)` : "none"}`);
+  const status = { "not-configured": 503, "no-budget": 503, "budget-unavailable": 503, "upstream-failed": 502, "store-failed": 502, busy: 409 } as Record<string, number>;
+  return NextResponse.json({ result }, { status: status[result.status] ?? 200, headers: NO_STORE });
 }

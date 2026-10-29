@@ -27,7 +27,16 @@ import { characterGender, isVoiceSlot, slotFor, type VoiceSlot } from "./family-
  * `slot`: the story voice slot that speaks the line (six-slot registry). The recording of a line is keyed by slot AND text: the
  * same words in two voices are two recordings. `where` (catalogue only): the screens that speak it.
  */
-export type NarrationLine = { id: string; text: string; slot?: VoiceSlot; where?: string[]; /** Catalogue only: whose visits speak it. */ child?: "isabel" | "santiago" };
+export type NarrationLine = {
+  id: string;
+  text: string;
+  slot?: VoiceSlot;
+  where?: string[];
+  /** Catalogue only: whose visits speak it. */
+  child?: "isabel" | "santiago";
+  /** Catalogue only: ids of the DISPLAYED source lines this recording speaks for, when the spoken text is a reviewed variant (`SPOKEN_VARIANTS`). */
+  sources?: string[];
+};
 /** One screen's narration: `key` changes exactly when something new should be said (a new beat, a new answer, a new hint). */
 export type NarrationScript = { key: string; lines: NarrationLine[] };
 
@@ -73,6 +82,31 @@ export function narrationId(text: string): string {
 }
 
 export const line = (text: string, slot?: VoiceSlot | null): NarrationLine => ({ id: narrationId(text), text: normaliseNarration(text), ...(slot ? { slot } : {}) });
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Reviewed spoken variants (owner decision 2026-10-29 12:05): a recording never says a child's name. These EXACT displayed
+// lines are spoken as the fixed text on the right; the screen keeps the personal wording. Exact-match only — there is no general
+// name stripping, and no other line is altered. Each variant keeps the line's meaning (the listening message keeps every
+// instruction its question asks about).
+// ---------------------------------------------------------------------------------------------------------------------
+
+export const SPOKEN_VARIANTS: Readonly<Record<string, string>> = {
+  "¡Hola, Santi!": "¡Hola!",
+  "¡Gracias, Santi! Hasta pronto.": "¡Gracias! Hasta pronto.",
+  "Hello Santi! The new beds are ready. Put the tomatoes next to the door. Put the beans at the back, on the left. Thank you!":
+    "Hello! The new beds are ready. Put the tomatoes next to the door. Put the beans at the back, on the left. Thank you!",
+};
+
+/** What is SPOKEN for a displayed line: its reviewed variant, or the line itself. */
+export const spokenText = (displayed: string): string => SPOKEN_VARIANTS[normaliseNarration(displayed)] ?? normaliseNarration(displayed);
+
+/** A story line as recorded and played: the spoken text's id and text; `sources` names the displayed line when they differ. */
+export function storyLine(displayed: string, slot: VoiceSlot): NarrationLine {
+  const spoken = spokenText(displayed);
+  const l = line(spoken, slot);
+  return spoken === normaliseNarration(displayed) ? l : { ...l, sources: [narrationId(displayed)] };
+}
+
 const linesIn = (slot: VoiceSlot | null) => (texts: (string | null | undefined)[]): NarrationLine[] => texts.filter((t): t is string => typeof t === "string" && t.trim().length > 0).map((t) => line(t, slot));
 /** The story voice slot of a narrated mission (its one story character), or null. */
 export const missionSlot = (m: { characters?: { voice?: unknown }[] } | null | undefined): VoiceSlot | null => (isVoiceSlot(m?.characters?.[0]?.voice) ? (m!.characters![0].voice as VoiceSlot) : null);
@@ -283,6 +317,7 @@ export function narrationCatalog(content: LearningContent): NarrationLine[] {
  * line of a `scene` mission (its «Anhören») and every listening message (all presentations), each in the slot of the LINE'S OWN
  * language × its speaking character's gender. German bubble lines are read, not spoken, in his scenes — so they are not recorded.
  * A line whose character has no known gender, or an assistant, gets no slot and is not catalogued (it keeps its earlier route).
+ * A displayed line with a reviewed spoken variant is catalogued as that variant (`storyLine`), bound to its source line id.
  */
 export function storyCatalog(content: LearningContent, child: "isabel" | "santiago"): NarrationLine[] {
   const out = new Map<string, NarrationLine>();
@@ -291,10 +326,11 @@ export function storyCatalog(content: LearningContent, child: "isabel" | "santia
     const character = m.characters.find((c) => c.id === speaker) ?? null;
     const slot = slotFor(characterGender(content.contentId, character), language);
     if (!slot) return;
-    const l = line(text, slot);
+    const l = storyLine(text, slot);
     const k = catalogKey(l);
     const prev = out.get(k);
-    out.set(k, { ...l, child, where: [...new Set([...(prev?.where ?? []), where])] });
+    const sources = [...new Set([...(prev?.sources ?? []), ...(l.sources ?? [])])];
+    out.set(k, { ...l, child, where: [...new Set([...(prev?.where ?? []), where])], ...(sources.length ? { sources } : {}) });
   };
   for (const m of (content.missions ?? []).filter((x) => !narrated(x))) {
     for (const st of m.steps) {

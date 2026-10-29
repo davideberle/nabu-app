@@ -9,7 +9,7 @@ import { buildMissionView, missionDefFor, missionEvidence, missionVisitSummary, 
 import { buildVisitSummary, correctedWorkshopChildSummary, type VisitSummary } from "./family-learning-summary.ts";
 import { line, missionNarration, narrationCatalog, narrationId, NARRATION_UI, type NarrationLine } from "./family-learning-narration.ts";
 import { createNarrationPlayer, pickGermanVoice, type VoiceLike } from "./family-narration-player.ts";
-import { clipPathname, narrationReadiness, prepareNarration } from "./family-narration-store.ts";
+import { budgetSpent, clipPathname, narrationBudget, narrationReadiness, prepareNarration } from "./family-narration-store.ts";
 
 const read = (name: string) => JSON.parse(readFileSync(new URL(`../data/family-learning/content/${name}`, import.meta.url), "utf8"));
 const rawV1 = read("isabel-workshop-v1.json");
@@ -489,7 +489,7 @@ describe("prerecorded narration — readiness and the owner's capped preparation
   });
   it("without a configured narration voice nothing is called and nothing is written", async () => {
     let calls = 0;
-    const r = await prepareNarration(catalog, 99999, { env: { ELEVENLABS_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t" }, fetchImpl: (async () => { calls += 1; return new Response(); }) as typeof fetch, headImpl: (async () => { throw new Error("none"); }) as never, putImpl: (async () => { calls += 1; }) as never });
+    const r = await prepareNarration(catalog, 99999, { env: { ELEVENLABS_NARRATION_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t" }, fetchImpl: (async () => { calls += 1; return new Response(); }) as typeof fetch, headImpl: (async () => { throw new Error("none"); }) as never, putImpl: (async () => { calls += 1; }) as never });
     equal(r.status, "not-configured");
     equal(calls, 0);
   });
@@ -504,19 +504,20 @@ describe("prerecorded narration — readiness and the owner's capped preparation
       seedLock(_voice?: string) {
         stored.set("family-narration/prepare.lock", Date.now() - (lockAgeMs ?? 0));
       },
-      deps(env: Record<string, string>, fetchOk: (n: number) => boolean = () => true) {
+      deps(env: Record<string, string>, fetchOk: (n: number) => boolean | "throw" = () => true) {
         return {
           env,
           now: () => Date.now(),
           headImpl: (async (p: string) => { if (!stored.has(p)) throw new Error("not found"); return { uploadedAt: new Date(stored.get(p)!) }; }) as never,
           putImpl: (async (p: string, _b: unknown, o: { allowOverwrite?: boolean }) => { if (o.allowOverwrite === false && stored.has(p)) throw new Error("exists"); stored.set(p, Date.now()); return {}; }) as never,
           delImpl: (async (p: string) => { stored.delete(p); }) as never,
-          fetchImpl: (async (url: string, init: RequestInit) => { sent.push({ url, body: JSON.parse(String(init.body)) }); return fetchOk(sent.length) ? new Response(new Uint8Array([1, 2, 3])) : new Response("no", { status: 401 }); }) as unknown as typeof fetch,
+          listImpl: (async ({ prefix }: { prefix: string }) => ({ blobs: [...stored.keys()].filter((k) => k.startsWith(prefix)).map((pathname) => ({ pathname })), hasMore: false })) as never,
+          fetchImpl: (async (url: string, init: RequestInit) => { sent.push({ url, body: JSON.parse(String(init.body)) }); const v = fetchOk(sent.length); if (v === "throw") throw new Error("network"); return v ? new Response(new Uint8Array([1, 2, 3])) : new Response("no", { status: 401 }); }) as unknown as typeof fetch,
         };
       },
     };
   }
-  const ENV = { ELEVENLABS_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_FEMALE_ID: "VoiceAbc12345" };
+  const ENV = { ELEVENLABS_NARRATION_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_FEMALE_ID: "VoiceAbc12345", FAMILY_NARRATION_BUDGET: "test-approval:99999" };
   it("records only missing catalogued lines, with the configured voice, within the character cap", async () => {
     const st = fakeStore([clipPathname("VoiceAbc12345", catalog[0].id)]);
     equal((await narrationReadiness(catalog, st.deps(ENV))).recorded, 1);
@@ -557,6 +558,67 @@ describe("prerecorded narration — readiness and the owner's capped preparation
     const stale = fakeStore([], 20 * 60_000);
     stale.seedLock("VoiceAbc12345");
     equal((await prepareNarration(catalog, 99999, stale.deps(ENV))).status, "prepared");
+  });
+  it("recording uses its own key: the app's shared ELEVENLABS_API_KEY alone never records (and is never needed for it)", async () => {
+    const st = fakeStore();
+    const { ELEVENLABS_NARRATION_API_KEY: _k, ...shared } = ENV;
+    const r = await prepareNarration(catalog, 99999, st.deps({ ...shared, ELEVENLABS_API_KEY: "shared" }));
+    equal(r.status, "not-configured");
+    equal(st.sent.length, 0);
+    equal((await narrationReadiness(catalog, st.deps({ ...shared, ELEVENLABS_API_KEY: "shared" }))).providerKeyConfigured, false);
+  });
+  it("no owner budget, no request: without FAMILY_NARRATION_BUDGET nothing is sent and nothing is written", async () => {
+    const st = fakeStore();
+    const { FAMILY_NARRATION_BUDGET: _b, ...noBudget } = ENV;
+    const r = await prepareNarration(catalog, 99999, st.deps(noBudget));
+    equal(r.status, "no-budget");
+    equal(st.sent.length, 0);
+    equal(st.stored.size, 0);
+    equal(narrationBudget({ FAMILY_NARRATION_BUDGET: "Owner Approval:6000" }), null, "a malformed budget is no budget");
+    equal(narrationBudget({ FAMILY_NARRATION_BUDGET: "owner-20261029-1205:6000" })?.characters, 6000);
+  });
+  it("the owner budget holds across runs and counts every attempt — failed and unanswered requests included", async () => {
+    const limit = catalog.slice(0, 12).reduce((n, l) => n + l.text.length, 0);
+    const env = { ...ENV, FAMILY_NARRATION_BUDGET: `test-approval:${limit}` };
+    const st = fakeStore();
+    const frozen = { ...st.deps(env), now: () => 1_793_000_000_000 };
+    equal((await prepareNarration(catalog.slice(0, 1), 99999, { ...frozen, fetchImpl: (async () => new Response("no", { status: 500 })) as unknown as typeof fetch })).status, "upstream-failed");
+    equal((await prepareNarration(catalog.slice(0, 1), 99999, { ...frozen, fetchImpl: (async () => new Response("no", { status: 500 })) as unknown as typeof fetch })).status, "upstream-failed", "a retry in the same millisecond is reserved again (unique ledger entry), not refused");
+    equal((await budgetSpent("test-approval", "t", st.deps(env)))?.requests, 2);
+    for (const k of [...st.stored.keys()]) if (k.includes("/budget/")) st.stored.delete(k);
+    const first = await prepareNarration(catalog, 99999, st.deps(env, (n) => (n === 4 ? false : true)));
+    equal(first.status, "upstream-failed");
+    equal(first.budget?.requests, 4, "the failed request is counted");
+    const second = await prepareNarration(catalog, 99999, st.deps(env, (n) => (n === 8 ? "throw" : true)));
+    equal(second.status, "upstream-failed");
+    equal(second.failedStatus, 0, "no answer: reported, counted, stopped");
+    const third = await prepareNarration(catalog, 99999, st.deps(env));
+    equal(third.status, "budget-reached");
+    const spent = await budgetSpent("test-approval", "t", st.deps(env));
+    equal(spent?.requests, st.sent.length, "the ledger has one entry per request ever sent");
+    equal(spent?.characters, st.sent.reduce((n, x) => n + x.body.text.length, 0), "and its characters are exactly what was sent");
+    ok(spent!.characters <= limit, `never above the budget: ${spent!.characters} ≤ ${limit}`);
+    const other = await budgetSpent("another-approval", "t", st.deps(env));
+    equal(other?.characters, 0, "a different approval starts its own total");
+  });
+  it("an unreadable or unwritable ledger sends nothing", async () => {
+    const st = fakeStore();
+    const deps = { ...st.deps(ENV), listImpl: (async () => { throw new Error("store down"); }) as never };
+    equal((await prepareNarration(catalog, 99999, deps)).status, "budget-unavailable");
+    equal(st.sent.length, 0);
+    const st2 = fakeStore();
+    const d2 = st2.deps(ENV);
+    const putClip = d2.putImpl as unknown as (p: string, b: unknown, o: { allowOverwrite?: boolean }) => Promise<unknown>;
+    const deps2 = { ...d2, putImpl: (async (p: string, b: unknown, o: { allowOverwrite?: boolean }) => { if (p.includes("/budget/")) throw new Error("no write"); return putClip(p, b, o); }) as never };
+    equal((await prepareNarration(catalog, 99999, deps2)).status, "budget-unavailable");
+    equal(st2.sent.length, 0);
+  });
+  it("the ledger and the clips carry no text and no name: a line id and a character count only", async () => {
+    const st = fakeStore();
+    await prepareNarration(catalog.slice(0, 3), 99999, st.deps(ENV));
+    const ledger = [...st.stored.keys()].filter((k) => k.includes("/budget/"));
+    equal(ledger.length, 3);
+    ok(ledger.every((k) => /^family-narration\/budget\/test-approval\/\d{14}-[0-9a-f]{8}-n[0-9a-f]{28}-\d+\.txt$/.test(k)), ledger.join(" "));
   });
   it("a line naming a child is never sent to the provider or stored in the public store; the rest is still prepared", async () => {
     const st = fakeStore();
@@ -735,7 +797,7 @@ describe("six-slot story voice registry", () => {
     const r = await narrationReadiness(narrationCatalog(v2), { env: { BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_MALE_ID: "VoiceMale12345" }, headImpl: (async () => { throw new Error("none"); }) as never });
     deepStrictEqual(r.slots.map((x) => [x.slot, x.configured]), [["de-female", false]]);
     let calls = 0;
-    const p = await prepareNarration(narrationCatalog(v2), 99999, { env: { ELEVENLABS_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_MALE_ID: "VoiceMale12345" }, fetchImpl: (async () => { calls += 1; return new Response(); }) as unknown as typeof fetch, headImpl: (async () => { throw new Error("none"); }) as never, putImpl: (async () => ({})) as never, delImpl: (async () => {}) as never });
+    const p = await prepareNarration(narrationCatalog(v2), 99999, { env: { ELEVENLABS_NARRATION_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_MALE_ID: "VoiceMale12345" }, fetchImpl: (async () => { calls += 1; return new Response(); }) as unknown as typeof fetch, headImpl: (async () => { throw new Error("none"); }) as never, putImpl: (async () => ({})) as never, delImpl: (async () => {}) as never });
     equal(p.status, "not-configured");
     equal(calls, 0);
   });
@@ -761,13 +823,13 @@ describe("six-slot story voice registry", () => {
 // Both children's story voices (owner «Proceed with implementation», 2026-10-29) — fakes only
 // ---------------------------------------------------------------------------------------------------------------------
 import { characterGender, configuredSlots, slotFor } from "./family-voice-registry.ts";
-import { storyCatalog, catalogCharacters } from "./family-learning-narration.ts";
+import { storyCatalog, catalogCharacters, catalogKey, spokenText, storyLine } from "./family-learning-narration.ts";
 
 describe("story voices for both children", () => {
   const sCat = storyCatalog(santiago, "santiago");
   it("Santiago: exactly the lines his scenes speak today, in the slot of the line's language × the character's gender", () => {
     equal(sCat.length, 9);
-    equal(catalogCharacters(sCat), 572);
+    equal(catalogCharacters(sCat), 552, "572 displayed characters; the three name lines are spoken 20 characters shorter");
     deepStrictEqual([...new Set(sCat.map((l) => l.slot))].sort(), ["en-female", "es-female"]);
     ok(sCat.filter((l) => l.slot === "es-female").every((l) => /[¡¿]|Aquí|Gracias|Hola|cuerdas/.test(l.text)), "Rosa's Spanish → es-female");
     ok(sCat.some((l) => l.slot === "en-female" && /June/.test(l.text)), "June's English → en-female");
@@ -783,20 +845,71 @@ describe("story voices for both children", () => {
   });
   it("the combined catalogue keeps Isabel's 4,731 characters apart from Santiago's increment", () => {
     equal(catalogCharacters(narrationCatalog(v2)), 4731);
-    equal(catalogCharacters(narrationCatalog(v2)) + catalogCharacters(sCat), 5303);
+    equal(catalogCharacters(narrationCatalog(v2)) + catalogCharacters(sCat), 5283);
+  });
+  // Owner decision 2026-10-29 12:05: recordings never say his name; the screen keeps it.
+  const NAMED = ["¡Hola, Santi!", "¡Gracias, Santi! Hasta pronto.", "Hello Santi! The new beds are ready. Put the tomatoes next to the door. Put the beans at the back, on the left. Thank you!"];
+  /** Every displayed line his scenes speak (the same walk as the catalogue, WITHOUT variants): the source lines to reconcile. */
+  function displayedSources() {
+    const out = new Map<string, { slot: string; text: string }>();
+    for (const m of (santiago.missions ?? []).filter((x) => !(x as { narration?: unknown }).narration)) {
+      for (const st of m.steps) {
+        const add = (text: string | undefined, speaker: string | null | undefined, language: string | undefined) => {
+          if (!text) return;
+          const slot = slotFor(characterGender(santiago.contentId, m.characters.find((c) => c.id === speaker) ?? null), language);
+          if (slot) out.set(`${slot}|${text}`, { slot, text });
+        };
+        if (m.presentation === "scene") for (const l of [...(st.intro ?? []), ...(st.done ?? []), ...Object.values(st.doneBy ?? {}).flat()]) if (l && l.language !== "de") add(l.text, l.speaker, l.language);
+        if (st.kind === "listen" && st.text) add(st.text.body, st.character, st.text.language);
+      }
+    }
+    return [...out.values()];
+  }
+  it("reconciliation: every displayed source line maps to exactly one catalogued clip — none omitted, none extra, no name", () => {
+    const sources = displayedSources();
+    const isabelSources = narrationCatalog(v2);
+    equal(sources.length + isabelSources.length, 132, "132 required source lines");
+    const keys = new Set(sCat.map((l) => catalogKey(l)));
+    const hit = new Map<string, number>();
+    for (const src of sources) {
+      const clip = storyLine(src.text, src.slot as never);
+      ok(keys.has(catalogKey(clip)), `source line has its clip: ${src.slot}`);
+      hit.set(catalogKey(clip), (hit.get(catalogKey(clip)) ?? 0) + 1);
+      if (clip.text !== src.text) ok(sCat.find((l) => catalogKey(l) === catalogKey(clip))!.sources!.includes(narrationId(src.text)), "the clip names its source line");
+    }
+    equal(hit.size, sCat.length, "no catalogued clip without a source line");
+    equal(sCat.length + isabelSources.length, 132, "132 unique clips (no variant collides with another line)");
+    equal(sources.filter((x) => NAMED.includes(x.text)).length, 3, "the three named lines are among the sources");
+    deepStrictEqual(sCat.filter((l) => !isPublicSafeScript(l.text)).map((l) => l.text), [], "no catalogued clip says a name");
+    ok(!/santi|isabel|eberle/i.test(JSON.stringify(sCat.map((l) => ({ id: l.id, slot: l.slot, text: l.text, sources: l.sources })))), "nor in its id, text or source ids");
+    ok(sCat.every((l) => !/santi/i.test(clipPathname("AnaSofia123456", l.id))));
+  });
+  it("the spoken variants are exact, fixed and meaning-preserving; nothing else is altered", () => {
+    deepStrictEqual(NAMED.map((t) => spokenText(t)), ["¡Hola!", "¡Gracias! Hasta pronto.", "Hello! The new beds are ready. Put the tomatoes next to the door. Put the beans at the back, on the left. Thank you!"]);
+    equal(spokenText("Thank you, Santi!"), "Thank you, Santi!", "no general stripping: an unlisted line is unchanged (this one is not spoken)");
+    equal(spokenText("¡Hola, Santiago!"), "¡Hola, Santiago!");
+    for (const sp of [...displayedSources(), ...narrationCatalog(v2)]) if (!NAMED.includes(sp.text)) equal(spokenText(sp.text), sp.text);
+    // The listening message keeps everything its question asks about.
+    const listen = (santiago.missions ?? []).flatMap((m) => m.steps).find((st) => st.id === "H7-JUNE")!;
+    const spoken = spokenText(listen.text!.body);
+    for (const w of ["tomatoes", "door", "beans", "back", "left"]) ok(spoken.includes(w), w);
+    equal(spoken, listen.text!.body.replace("Hello Santi!", "Hello!"));
+    ok(listen.text!.body.includes("Santi"), "the displayed message still greets him");
+    // Playback binds to the same clip: the scene's display text resolves to the catalogued variant.
+    equal(storyLine(listen.text!.body, "en-female").id, narrationId(spoken));
   });
   it("readiness is a gate: ready only when every needed slot has a voice and every line is recorded; totals per child", async () => {
     const cat = [...narrationCatalog(v2).map((l) => ({ ...l, child: "isabel" as const })), ...sCat];
     const none = await narrationReadiness(cat, { env: { BLOB_READ_WRITE_TOKEN: "t" }, headImpl: (async () => { throw new Error("none"); }) as never });
     equal(none.ready, false);
-    deepStrictEqual(none.children.map((c) => [c.child, c.lines, c.characters, c.personal, c.ready]), [["isabel", 123, 4731, 0, false], ["santiago", 9, 572, 3, false]]);
+    deepStrictEqual(none.children.map((c) => [c.child, c.lines, c.characters, c.personal, c.ready]), [["isabel", 123, 4731, 0, false], ["santiago", 9, 552, 0, false]]);
     deepStrictEqual(none.slots.map((x) => x.slot), ["de-female", "es-female", "en-female"]);
     const env = { BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_FEMALE_ID: "Hannah12345678", ELEVENLABS_VOICE_ES_FEMALE_ID: "AnaSofia123456", ELEVENLABS_VOICE_EN_FEMALE_ID: "Jessica1234567" };
     const all = await narrationReadiness(cat, { env, headImpl: (async () => ({ uploadedAt: new Date() })) as never });
     equal(all.ready, true);
-    // Realistic: the three nickname lines cannot be recorded into the public store — Isabel is ready, Santiago is not.
-    const personal = new Set(sCat.filter((l) => /Santi/.test(l.text)).map((l) => clipPathname("AnaSofia123456", l.id)).concat(sCat.filter((l) => /Santi/.test(l.text)).map((l) => clipPathname("Jessica1234567", l.id))));
-    const real = await narrationReadiness(cat, { env, headImpl: (async (p: string) => { if (personal.has(p)) throw new Error("none"); return { uploadedAt: new Date() }; }) as never });
+    // One missing Santiago clip (e.g. the variant of the listening message): Isabel is ready, Santiago is not.
+    const gone = clipPathname("Jessica1234567", storyLine(NAMED[2], "en-female").id);
+    const real = await narrationReadiness(cat, { env, headImpl: (async (p: string) => { if (p === gone) throw new Error("none"); return { uploadedAt: new Date() }; }) as never });
     deepStrictEqual(real.children.map((c) => [c.child, c.ready]), [["isabel", true], ["santiago", false]]);
     deepStrictEqual(configuredSlots(env), ["de-female", "es-female", "en-female"]);
   });

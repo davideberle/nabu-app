@@ -289,7 +289,11 @@ if (MODE === "voices-off") {
   await shot(page, "V-isabel-missing-recording");
   const r = await api("GET", "/api/family/learning/parent/narration", null, owner);
   const rd = r.json?.readiness;
-  check("V.readiness-gate-not-ready-per-child-and-slot", rd?.ready === false && JSON.stringify(rd.children.map((c) => [c.child, c.lines, c.characters, c.personal])) === JSON.stringify([["isabel", 123, 4731, 0], ["santiago", 9, 572, 3]]) && JSON.stringify(rd.slots.map((x) => [x.slot, x.configured, x.lines, x.characters])) === JSON.stringify([["de-female", true, 123, 4731], ["es-female", true, 6, 176], ["en-female", true, 3, 396]]) && !JSON.stringify(r.json).includes("FakeVoice"), rd);
+  check("V.readiness-gate-not-ready-per-child-and-slot", rd?.ready === false && JSON.stringify(rd.children.map((c) => [c.child, c.lines, c.characters, c.personal])) === JSON.stringify([["isabel", 123, 4731, 0], ["santiago", 9, 552, 0]]) && JSON.stringify(rd.slots.map((x) => [x.slot, x.configured, x.lines, x.characters])) === JSON.stringify([["de-female", true, 123, 4731], ["es-female", true, 6, 162], ["en-female", true, 3, 390]]) && !JSON.stringify(r.json).includes("FakeVoice"), rd);
+  // Owner decision 2026-10-29 12:05: the three name lines are recorded as fixed variants without the name, bound to their source line.
+  const variants = r.json.lines.filter((l) => l.sources?.length);
+  check("V.name-lines-spoken-as-fixed-variants-bound-to-their-source", JSON.stringify(variants.map((l) => [l.slot, l.text]).sort()) === JSON.stringify([["en-female", "Hello! The new beds are ready. Put the tomatoes next to the door. Put the beans at the back, on the left. Thank you!"], ["es-female", "¡Gracias! Hasta pronto."], ["es-female", "¡Hola!"]]) && variants.every((l) => l.sources.length === 1 && /^n[0-9a-f]{28}$/.test(l.sources[0])) && !r.json.lines.some((l) => /santi|isabel|eberle/i.test(`${l.text} ${l.id} ${(l.sources ?? []).join(" ")}`)) && r.json.lines.every((l) => !l.personal) && r.json.lines.length === 132, variants);
+  check("V.no-owner-budget-configured-nothing-can-be-sent", r.json.budget === null);
   for (const [label, extra] of [["missing", {}], ["recorded", { clips: true }]]) {
     const oc = await makeCtx(VIEW, owner, GERMAN, extra);
     const op = await oc.newPage();
@@ -309,6 +313,8 @@ if (MODE === "voices-off") {
     else check("V.santiago-rosa-spanish-plays-her-es-female-recording", heardAs === "Aufnahme" && devSpoken === 0 && (await op.evaluate(() => globalThis.__clips.length)) === 1, { heardAs });
     if (label === "missing") {
       check("V.owner-panel-says-not-ready", (await op.locator("[data-testid='audition-ready'][data-ready='false']").count()) === 1);
+      if ((await op.locator("[data-testid='audition-confirm']").count()) === 1) await op.locator("[data-testid='audition-confirm']").check();
+      check("V.owner-panel-without-budget-cannot-record", (await text(op, "[data-testid='audition-budget']")).includes("Kein Aufnahme-Budget") && (await op.locator("[data-testid='audition-prepare-run']").isDisabled()));
       await shot(op, "V-owner-panel-not-ready", true);
     }
     await oc.close();
@@ -813,7 +819,7 @@ if (MODE === "voices-off") {
   const prepNo = await api("POST", "/api/family/learning/parent/narration", { confirm: "yes", maxCharacters: 10 }, owner);
   const prepCfg = await api("POST", "/api/family/learning/parent/narration", { confirm: "prepare-narration", maxCharacters: 10 }, owner);
   const prepChild = await api("POST", "/api/family/learning/parent/narration", { confirm: "prepare-narration", maxCharacters: 10 }, assistant);
-  check("I2-06.prepare-needs-owner-confirmation-and-a-voice-no-provider-call", prepNo.status === 400 && prepCfg.status === 503 && prepCfg.json?.result?.status === "not-configured" && prepCfg.json.result.personalSkipped === 3 && (prepChild.status === 403 || prepChild.status === 401), { no: prepNo.status, cfg: prepCfg.json?.result, child: prepChild.status });
+  check("I2-06.prepare-needs-owner-confirmation-and-a-voice-no-provider-call", prepNo.status === 400 && prepCfg.status === 503 && prepCfg.json?.result?.status === "not-configured" && prepCfg.json.result.personalSkipped === 0 && (prepChild.status === 403 || prepChild.status === 401), { no: prepNo.status, cfg: prepCfg.json?.result, child: prepChild.status });
   const clipUnknown = await api("GET", "/api/family/learning/narration/de-female/n0000000000000000000000000000", null, assistant);
   const clipAnon = await api("GET", "/api/family/learning/narration/de-female/n0000000000000000000000000000", null, null);
   check("I2-06.clip-route-serves-only-recorded-catalogued-lines", clipUnknown.status === 404 && (clipAnon.status === 401 || clipAnon.status === 307 || clipAnon.status === 302), { unknown: clipUnknown.status, anon: clipAnon.status });

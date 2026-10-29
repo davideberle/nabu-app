@@ -10,7 +10,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
-import { line, type NarrationScript } from "@/lib/family-learning-narration";
+import { storyLine, type NarrationScript } from "@/lib/family-learning-narration";
 import type { NarrationPlayer, NarrationStatus } from "@/lib/family-narration-player";
 import { slotFor, type StoryGender } from "@/lib/family-voice-registry";
 
@@ -115,7 +115,7 @@ export function useStorySpeech(characters: readonly { id: string; gender?: Story
       const slot = slotFor(characters.find((c) => c.id === speaker)?.gender ?? null, language);
       if (!slot || !ctx.isConfigured(slot)) return null;
       ctx.narrator.unlock();
-      const r = await ctx.narrator.play({ key: `story|${slot}|${text}|${Date.now()}`, lines: [line(text, slot)] });
+      const r = await ctx.narrator.play({ key: `story|${slot}|${text}|${Date.now()}`, lines: [storyLine(text, slot)] });
       if (r === "cancelled") return "cancelled";
       const o = ctx.narrator.lastLineOutcome();
       return o === "recorded" ? "recorded" : o === "missing-recording" ? "missing" : "failed";
