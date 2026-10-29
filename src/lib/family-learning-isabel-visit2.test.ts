@@ -509,7 +509,8 @@ describe("prerecorded narration — readiness and the owner's capped preparation
           env,
           now: () => Date.now(),
           headImpl: (async (p: string) => { if (!stored.has(p)) throw new Error("not found"); return { uploadedAt: new Date(stored.get(p)!) }; }) as never,
-          putImpl: (async (p: string, _b: unknown, o: { allowOverwrite?: boolean }) => { if (o.allowOverwrite === false && stored.has(p)) throw new Error("exists"); stored.set(p, Date.now()); return {}; }) as never,
+          // Like @vercel/blob: an empty body is refused («body is required»).
+          putImpl: (async (p: string, b: unknown, o: { allowOverwrite?: boolean }) => { if (!b) throw new Error("body is required"); if (o.allowOverwrite === false && stored.has(p)) throw new Error("exists"); stored.set(p, Date.now()); return {}; }) as never,
           delImpl: (async (p: string) => { stored.delete(p); }) as never,
           listImpl: (async ({ prefix }: { prefix: string }) => ({ blobs: [...stored.keys()].filter((k) => k.startsWith(prefix)).map((pathname) => ({ pathname })), hasMore: false })) as never,
           fetchImpl: (async (url: string, init: RequestInit) => { sent.push({ url, body: JSON.parse(String(init.body)) }); const v = fetchOk(sent.length); if (v === "throw") throw new Error("network"); return v ? new Response(new Uint8Array([1, 2, 3])) : new Response("no", { status: 401 }); }) as unknown as typeof fetch,

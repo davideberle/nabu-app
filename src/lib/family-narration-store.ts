@@ -243,7 +243,7 @@ export async function prepareNarration(fullCatalog: NarrationLine[], maxCharacte
       if (await exists(clipPathname(voice, l.id), token, deps.headImpl ?? head)) continue;
       // Reserve BEFORE sending: whatever happens to the request, it is counted.
       try {
-        await (deps.putImpl ?? put)(`${ledgerPrefix(budget.approval)}${String((deps.now ?? Date.now)()).padStart(14, "0")}-${randomBytes(4).toString("hex")}-${l.id}-${l.text.length}.txt`, "", { access: "public", contentType: "text/plain", allowOverwrite: false, addRandomSuffix: false, token });
+        await (deps.putImpl ?? put)(`${ledgerPrefix(budget.approval)}${String((deps.now ?? Date.now)()).padStart(14, "0")}-${randomBytes(4).toString("hex")}-${l.id}-${l.text.length}.txt`, String(l.text.length), { access: "public", contentType: "text/plain", allowOverwrite: false, addRandomSuffix: false, token });
       } catch {
         return { status: "budget-unavailable", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
       }
