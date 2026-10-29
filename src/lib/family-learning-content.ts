@@ -301,7 +301,7 @@ export type LearningContent = {
   theme: { defaultTitle: string; defaultHook: string; note: string };
   anchorLanguage: "de";
   visitBudgetMinutes: { min: number; max: number };
-  visits: { id: VisitId; title: string; stages: StageId[]; minDaysAfterTeaching?: number; intro?: { who: string; make: string; done: string } }[];
+  visits: { id: VisitId; title: string; stages: StageId[]; minDaysAfterTeaching?: number; intro?: { who: string; make: string; done: string }; /** Isabel Visit 2+: the hub/start/mission wording of this visit (Visit 1 keeps its released wording). */ childText?: { hub: string; mission: string; done: string; start: string } }[];
   locations: { id: string; label: string; emoji: string }[];
   station?: { note: string; themes: StationTheme[]; spots: StationSpot[] };
   math: {

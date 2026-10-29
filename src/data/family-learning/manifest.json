@@ -9,6 +9,10 @@
       "sha256": "b1f1376325468631b5eec02c1cd4fb7703dcf50b6ab012809f0cb6cee5d6f5c6",
       "bytes": 24947
     },
+    "content/isabel-workshop-v2.json": {
+      "sha256": "bda1c7fb53781ded81e610cef24932e4ea80cf8f01e3a40e745f905f2683f7c6",
+      "bytes": 59658
+    },
     "content/santiago-expedition-v1.json": {
       "sha256": "eff6118772566c9a9a068a90de955f8c74a437f5462b17927f08b5d7aeb19734",
       "bytes": 19429

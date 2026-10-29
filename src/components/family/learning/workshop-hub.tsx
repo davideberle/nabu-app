@@ -11,7 +11,7 @@ import { cn } from "@/components/ui/nabu";
 import { AssistantPortrait } from "@/components/family/assistant-portrait";
 import type { ChildView } from "@/lib/family-learning-state";
 import type { ChildId } from "@/lib/family-assistant-turn";
-import { WorkshopPictureView, WorkshopRoom } from "./workshop-pictures";
+import { WorkshopGarden, WorkshopPictureView, WorkshopRoom } from "./workshop-pictures";
 
 const big = "inline-flex min-h-16 items-center justify-center gap-2 rounded-2xl px-8 text-xl font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:cursor-not-allowed disabled:opacity-50";
 const primary = { background: "#7a4a22", color: "white" } as const;
@@ -34,26 +34,32 @@ export function IsabelHub({ child, view }: { child: ChildId; view: ChildView }) 
   const done = view.progress.completedTotal;
   const missionHref = `/family/learn/mission?child=${child}`;
   const made = view.latestInterest;
+  const text = view.visitText ?? null;
   return (
     <div className="mx-auto grid max-w-3xl gap-5 px-4 py-6" data-testid="world-screen" data-world-next={view.next.visit ?? ""} data-world-running={running?.id ?? ""} data-child="isabel">
       <Link href={`/family/home?child=${child}`} className="justify-self-start text-base text-tertiary underline underline-offset-4">
         ← Home
       </Link>
+      {/* Old Lila is always HER assistant here; from Visit 2 on she introduces the visit's own story character. */}
       <Lila child={child}>
-        <h1 className="text-3xl font-semibold text-primary">Old Lilas kleine Werkstatt</h1>
+        <h1 className="text-3xl font-semibold text-primary">{text ? text.title : "Old Lilas kleine Werkstatt"}</h1>
         <p className="text-xl text-primary" data-testid="world-next-step">
           {view.nextStep}
         </p>
       </Lila>
-      <div className="flex flex-wrap items-center gap-4">
-        <WorkshopPictureView id="chair-wood" className="h-20 w-20" />
-        <WorkshopPictureView id="window-glass" className="h-20 w-20" />
-        <WorkshopPictureView id="wall-brick" className="h-20 w-20" />
-        <WorkshopPictureView id="shelf-wood" className="h-20 w-20" />
-      </div>
+      {text ? (
+        <WorkshopPictureView id="garden-flowers" className="h-28 w-28" />
+      ) : (
+        <div className="flex flex-wrap items-center gap-4">
+          <WorkshopPictureView id="chair-wood" className="h-20 w-20" />
+          <WorkshopPictureView id="window-glass" className="h-20 w-20" />
+          <WorkshopPictureView id="wall-brick" className="h-20 w-20" />
+          <WorkshopPictureView id="shelf-wood" className="h-20 w-20" />
+        </div>
+      )}
       {running || view.next.visit ? (
         <Link href={missionHref} className={cn(big, "justify-self-start")} style={primary} data-testid="cockpit-start">
-          {running ? "Weiter in der Werkstatt" : "Zur Werkstatt"} <span aria-hidden>→</span>
+          {text ? (running ? `Weiter: ${text.start}` : text.start) : running ? "Weiter in der Werkstatt" : "Zur Werkstatt"} <span aria-hidden>→</span>
         </Link>
       ) : null}
       {done ? (
@@ -70,21 +76,23 @@ export function IsabelHub({ child, view }: { child: ChildId; view: ChildView }) 
 export function IsabelStart({ child, view, busy, onStart, notice }: { child: ChildId; view: ChildView; busy: boolean; onStart: () => void; notice: string | null }) {
   const startRef = useRef<HTMLButtonElement | null>(null);
   const nextDef = view.next.visit;
+  const text = view.visitText ?? null;
   return (
     <div className="mx-auto grid max-w-3xl gap-5 px-4 py-6" data-testid="start-screen" data-child="isabel">
       <Link href={`/family/learn?child=${child}`} className="justify-self-start text-base text-tertiary underline underline-offset-4">
         ← Zurück
       </Link>
       <Lila child={child}>
-        <p className="text-2xl text-primary">{view.hook}</p>
+        <p className="text-2xl text-primary">{text ? text.hub : view.hook}</p>
       </Lila>
-      <WorkshopRoom made={null} label="Ein leeres Zimmer — was baust du hinein?" />
+      {text ? <WorkshopGarden grown={null} label={text.title} /> : <WorkshopRoom made={null} label="Ein leeres Zimmer — was baust du hinein?" />}
       <div className="grid gap-3">
-        <h1 className="text-2xl font-semibold text-primary">{view.nextStep}</h1>
+        {text ? null : <h1 className="text-2xl font-semibold text-primary">{view.nextStep}</h1>}
         {notice ? <p className="text-base text-primary">{notice}</p> : null}
         {nextDef ? (
+          // The deliberate start: this tap also unlocks the narration (I2-04) — nothing is spoken before it.
           <button ref={startRef} type="button" onClick={onStart} disabled={busy} className={cn(big, "justify-self-start")} style={primary} data-testid="start-visit" data-visit={nextDef}>
-            Los geht&apos;s
+            {text ? <span aria-hidden>▶</span> : null} Los geht&apos;s
           </button>
         ) : null}
       </div>

@@ -53,7 +53,7 @@ const secondary = { background: "#e6eee7", color: "#21484b" } as const;
 const nextStyle = { background: DEEP, color: "white" } as const;
 const card = "rounded-3xl p-5 shadow-sm sm:p-7";
 
-export type SceneTelemetry = (name: "hint-open" | "nokt-offer-dismiss" | "line-audio" | "listen-play" | "beat-next" | "tutor-open" | "tutor-close") => void;
+export type SceneTelemetry = (name: "hint-open" | "nokt-offer-dismiss" | "line-audio" | "listen-play" | "beat-next" | "tutor-open" | "tutor-close" | "narration-replay" | "narration-stop" | "narration-unlock" | "narration-recorded" | "narration-device-de" | "narration-no-german-voice" | "narration-blocked") => void;
 
 export type MissionSceneProps = {
   child: ChildId;
@@ -309,12 +309,15 @@ export function Feedback({ tone, text, testId = "scene-feedback" }: { tone: "ret
 
 // --- a problem, one question at a time ------------------------------------------------
 
-export function SolveTask({ active, busy, act, telemetry, applicationNote = "Eine neue Lieferung, neue Zahlen." }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry; applicationNote?: string }) {
+export function SolveTask({ active, busy, act, telemetry, applicationNote = "Eine neue Lieferung, neue Zahlen.", quiet = false, onSeen }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry; applicationNote?: string; /** Isabel Visit 2 (narrated): less reading — no application note, no «try first» line (the narration says what to do). */ quiet?: boolean; /** Isabel Visit 2: the questions whose success she has moved past (for the narration script). */ onSeen?: (ids: string[]) => void }) {
   const sv = active.solve!;
   const finished = active.status !== "active";
   // After a correct answer the success stays on screen with its own "next question" action; the next question follows on tap.
   // Parts already resolved when this view mounts (reload, Stopp and back) were seen before: return straight to the open question.
   const [seen, setSeen] = useState<string[]>(() => sv.parts.filter((p) => p.status !== "open").map((p) => p.id));
+  useEffect(() => {
+    onSeen?.(seen);
+  }, [seen, onSeen]);
   const resolved = sv.parts.filter((p) => p.status !== "open");
   const lastResolved = resolved[resolved.length - 1] ?? null;
   const waiting = !finished && lastResolved && !seen.includes(lastResolved.id) && sv.parts.some((p) => p.status === "open") ? lastResolved : null;
@@ -322,8 +325,8 @@ export function SolveTask({ active, busy, act, telemetry, applicationNote = "Ein
   const shownIndex = current ? sv.parts.indexOf(current) + 1 : Math.min(resolved.length, sv.total);
   return (
     <div className="grid gap-4" data-testid="solve-task" data-part={current?.id ?? waiting?.id ?? ""}>
-      {sv.application ? <p className="text-base font-semibold">{applicationNote}</p> : null}
-      {resolved.length ? (
+      {sv.application && !quiet ? <p className="text-base font-semibold">{applicationNote}</p> : null}
+      {resolved.length && !quiet ? (
         <ul className="grid gap-1" aria-label="Schon beantwortet" data-testid="solve-answered">
           {resolved.filter((p) => p !== waiting).map((p) => (
             <li key={p.id} className="text-base">
@@ -341,7 +344,7 @@ export function SolveTask({ active, busy, act, telemetry, applicationNote = "Ein
           </button>
         </div>
       ) : null}
-      {current ? <PartTask key={current.id} part={current} step={active.id} busy={busy} act={act} telemetry={telemetry} /> : null}
+      {current ? <PartTask key={current.id} part={current} step={active.id} busy={busy} act={act} telemetry={telemetry} quiet={quiet} /> : null}
       {finished ? (
         <>
           {lastResolved?.feedback ? <Feedback tone={lastResolved.feedback.tone} text={lastResolved.feedback.text} /> : null}
@@ -352,7 +355,7 @@ export function SolveTask({ active, busy, act, telemetry, applicationNote = "Ein
   );
 }
 
-function PartTask({ part, step, busy, act, telemetry }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry }) {
+function PartTask({ part, step, busy, act, telemetry, quiet = false }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry; quiet?: boolean }) {
   const [value, setValue] = useState("");
   const [notice, setNotice] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -381,7 +384,7 @@ function PartTask({ part, step, busy, act, telemetry }: { part: SolvePartView; s
   return (
     <div className="grid gap-4">
       {/* Isabel's workshop: the exact quantities of this question, drawn from the data (absent for every Santiago question). */}
-      {part.counters ? <Counters counters={part.counters} /> : null}
+      {part.counters ? <Counters counters={part.counters} caption={!quiet} /> : null}
       {taught ? <p className="text-xl font-semibold leading-snug">{part.question}</p> : null}
       {taught && part.teach ? (
         <div className="rounded-2xl px-4 py-3 text-lg" style={{ background: "#eef1e8", borderLeft: `5px solid ${ACTION}` }} data-testid="part-teach">
@@ -410,7 +413,7 @@ function PartTask({ part, step, busy, act, telemetry }: { part: SolvePartView; s
         </div>
         <div>
           <button type="submit" className={btn} style={primary} disabled={busy || !value.trim()} data-testid="part-check">
-            {taught ? "Eintragen" : "Antwort prüfen"}
+            {quiet ? <><span aria-hidden>✓</span> Prüfen</> : taught ? "Eintragen" : "Antwort prüfen"}
           </button>
         </div>
       </form>
@@ -420,12 +423,12 @@ function PartTask({ part, step, busy, act, telemetry }: { part: SolvePartView; s
           Für später aufheben
         </button>
       ) : null}
-      <HintArea part={part} step={step} busy={busy} act={act} telemetry={telemetry} emphasize={false} />
+      <HintArea part={part} step={step} busy={busy} act={act} telemetry={telemetry} emphasize={false} quiet={quiet} />
     </div>
   );
 }
 
-function HintArea({ part, step, busy, act, telemetry, emphasize }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry; emphasize: boolean }) {
+function HintArea({ part, step, busy, act, telemetry, emphasize, quiet = false }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry; emphasize: boolean; quiet?: boolean }) {
   if (!part.hints.length && !part.hintsLeft && !part.solutionOffered) return null;
   return (
     <div className="mt-2 grid gap-3 border-t pt-5" style={{ borderColor: "#dce5df" }} data-testid="hint-area">
@@ -451,7 +454,7 @@ function HintArea({ part, step, busy, act, telemetry, emphasize }: { part: Solve
           >
             💡 {part.hints.length ? "Noch ein Hinweis" : "Hinweis"}
           </button>
-        ) : (
+        ) : quiet ? null : (
           <p className="text-base" data-testid="hint-later">Probier es zuerst selbst. Danach gibt es hier einen Hinweis.</p>
         )
       ) : null}

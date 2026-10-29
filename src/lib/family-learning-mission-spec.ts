@@ -153,7 +153,15 @@ export type MissionPart = {
  * The child counts what she sees: a correct answer on such a task is supported visual arithmetic, never proof of unaided
  * place-value mastery.
  */
-export type MissionCounters = { a: number; b: number; op: "+" | "-"; unit: string; bundles?: boolean };
+/** Isabel Visit 2: what one counter looks like (a garden thing); absent = the plain wooden block of Visit 1. */
+export const COUNTER_ICONS = ["block", "tulip", "strawberry", "pot", "seed"] as const;
+export type CounterIcon = (typeof COUNTER_ICONS)[number];
+/**
+ * Exact visible quantities of one question. Visit 2 additions (never used by Visit 1): `icon`; `actor` (who takes away, for a
+ * subtraction caption — Visit 1's caption keeps «Old Lila»); `frame` + `ask: "missing"` = a full frame of `frame` places with
+ * `a` filled and `b` empty, asking for the missing part (`b`).
+ */
+export type MissionCounters = { a: number; b: number; op: "+" | "-"; unit: string; bundles?: boolean; icon?: CounterIcon; actor?: string; frame?: number; ask?: "missing" };
 
 /** Content v6: a reviewed problem with one question per part. */
 export type MissionSolve = {
@@ -215,6 +223,10 @@ export const WORKSHOP_PICTURES = [
   "chair-wood", "window-glass", "wall-brick", "shelf-wood", "material-wood", "material-glass", "material-brick",
   "branch", "ball", "house", "table-wood", "spoon-wood", "pencil", "door-wood", "toy-blocks", "frame-wood", "room",
   "next-furniture", "next-garden", "next-animals",
+  // Isabel Visit 2 — «Idas Garten»
+  "garden-empty", "garden-flowers", "garden-vegetables", "garden-tree", "nest", "hedgehog", "flowerpot",
+  "snail-on-leaf", "snail-under-leaf", "beetle-on-leaf", "seed-cup", "find-flower", "find-grass", "find-houseplant", "find-herbs",
+  "next-birdhouse", "next-garden-animals", "next-harvest",
 ] as const;
 export type WorkshopPicture = (typeof WORKSHOP_PICTURES)[number];
 
@@ -233,6 +245,8 @@ export type MissionLetters = { word: string; letters: { letter: string; sound: s
  * parent's own observation (parent cockpit); it never assesses the craft.
  */
 export type MissionCraft = {
+  /** Isabel Visit 2: the whole real-world activity is optional (the child may go on without it; nothing is inferred either way). */
+  optional?: boolean;
   tasks: { id: string; text: string; picture?: string }[];
   /** Pictured candidates for «Ich habe gefunden …» (her own report, up to `findCount`); not verified by the app. */
   find?: { prompt: string; count: number; options: { id: string; label: string; picture: string }[]; fact: string };
@@ -243,6 +257,11 @@ export type MissionCraft = {
 export type MissionDoneBy = Partial<Record<"independent" | "supported" | "practiced" | "taught" | "unresolved", MissionLine[]>>;
 
 export type MissionStep = {
+  /**
+   * Isabel Visit 2 (narrated workshop): this task's reviewed ending lines — `success` when it ran right on the first try without
+   * recorded help, `open` when it is still open (the ending names at most one of each). Spoken, so a finite reviewed set.
+   */
+  ending?: { success: string; open: string };
   id: string;
   version: number;
   kind: MissionStepKind;
@@ -350,6 +369,11 @@ export type MissionDef = {
   /** Content v6: the painted scene (build-time static asset id) and its description. */
   scene?: { art: string; alt: string };
   nextAdventure?: MissionNextAdventure;
+  /**
+   * Isabel Visit 2 (I2-04): `auto` = after the deliberate start every scene's essential instruction, feedback and ending is
+   * spoken by itself, with one replay/stop control (no per-line speech buttons). Absent = the released per-line «Anhören».
+   */
+  narration?: { mode: "auto" };
   /** Where the theme comes from — a saved child choice or an explicit owner/child decision, never an invented interest. */
   theme: { basis: "continues-saved-choice" | "child-chosen" | "owner-chosen"; source: string; value: string; note: string };
   map: { start: string; places: MissionPlace[]; paths: [string, string][] };

@@ -45,6 +45,7 @@ import contentV1 from "@/data/family-learning/content/santiago-expedition-v1.jso
 import vocabularyV2 from "@/data/family-learning/content/vocabulary-inventory-v2.json";
 import vocabularyV3 from "@/data/family-learning/content/vocabulary-inventory-v3.json";
 import isabelWorkshopV1 from "@/data/family-learning/content/isabel-workshop-v1.json";
+import isabelWorkshopV2 from "@/data/family-learning/content/isabel-workshop-v2.json";
 import { asIsabelContent } from "./family-learning-isabel";
 import type { ChildId } from "./family-assistant-turn";
 import { asLearningContent, type LearningContent } from "./family-learning-content";
@@ -102,6 +103,11 @@ export function loadLearningContent(): LearningContent {
 // and readable), independent of Santiago's FAMILY_LEARNING_CONTENT_CAP.
 // ---------------------------------------------------------------------------
 
+// Isabel Visit 2 (2026-10-29): her content version 2 = version 1 unchanged + visit `v2` «Idas Garten». Rollback to her released
+// visit set is this build with FAMILY_LEARNING_ISABEL_CONTENT_CAP=1: version-1 content is served, a started v2 is parked untouched
+// (nothing offered in its place, nothing rewritten, every record readable) and removing the cap resumes it exactly. Santiago's
+// FAMILY_LEARNING_CONTENT_CAP never affects her, and hers never affects him.
+
 let cachedIsabel: LearningContent | null = null;
 let isabelFailure: Error | null = null;
 
@@ -109,11 +115,16 @@ export function isabelContentServed(): boolean {
   return process.env.FAMILY_LEARNING_ISABEL_CONTENT !== "off";
 }
 
+/** Isabel's served content version (2; 1 under FAMILY_LEARNING_ISABEL_CONTENT_CAP=1). */
+export function servedIsabelContentVersion(): 1 | 2 {
+  return process.env.FAMILY_LEARNING_ISABEL_CONTENT_CAP === "1" ? 1 : 2;
+}
+
 export function loadIsabelContent(): LearningContent {
   if (cachedIsabel) return cachedIsabel;
   if (isabelFailure) throw isabelFailure;
   try {
-    cachedIsabel = asIsabelContent(isabelWorkshopV1);
+    cachedIsabel = asIsabelContent(servedIsabelContentVersion() === 1 ? isabelWorkshopV1 : isabelWorkshopV2);
     return cachedIsabel;
   } catch (error) {
     isabelFailure = error instanceof Error ? error : new Error(String(error));

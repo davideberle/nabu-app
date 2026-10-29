@@ -1,0 +1,519 @@
+// Isabel Visit 2 — «Idas Garten» + the narration standard (2026-10-29, I2-01…I2-08). Fictional data only; no provider, no audio.
+import { describe, it } from "node:test";
+import { deepStrictEqual, equal, ok } from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { asLearningContent, type LearningContent } from "./family-learning-content.ts";
+import { asIsabelContent, reconcileIsabelContent, EXPECTED_GARDEN_STEPS } from "./family-learning-isabel.ts";
+import { applyLearningOp, buildChildView, currentStage, EMPTY_PARENT_SETTINGS, newMissionState, upgradeMissionState, type LearningOp, type MissionState, type OpEnv, type ParentSettings } from "./family-learning-state.ts";
+import { buildMissionView, missionDefFor, missionEvidence, missionVisitSummary, type MissionAction, type MissionView } from "./family-learning-mission.ts";
+import { buildVisitSummary, correctedWorkshopChildSummary, type VisitSummary } from "./family-learning-summary.ts";
+import { line, missionNarration, narrationCatalog, narrationId, NARRATION_UI, type NarrationLine } from "./family-learning-narration.ts";
+import { createNarrationPlayer, pickGermanVoice, type VoiceLike } from "./family-narration-player.ts";
+import { clipPathname, narrationReadiness, prepareNarration } from "./family-narration-store.ts";
+
+const read = (name: string) => JSON.parse(readFileSync(new URL(`../data/family-learning/content/${name}`, import.meta.url), "utf8"));
+const rawV1 = read("isabel-workshop-v1.json");
+const rawV2 = read("isabel-workshop-v2.json");
+const v1: LearningContent = asIsabelContent(rawV1);
+const v2: LearningContent = asIsabelContent(rawV2);
+const santiago: LearningContent = asLearningContent(read("santiago-expedition-v7.json"));
+const GARDEN = "MISSION-IDA-GARDEN";
+const WORKSHOP = "MISSION-OLD-LILA-WORKSHOP";
+
+type Env = OpEnv & { settings: ParentSettings };
+function makeEnv(content: LearningContent, start = Date.UTC(2026, 9, 28, 16, 34, 32)): Env {
+  let t = start;
+  let n = 0;
+  return { content, settings: { ...EMPTY_PARENT_SETTINGS }, now: () => new Date((t += 15_000)), newId: () => `fixture-${(n += 1)}` };
+}
+const op = (s: MissionState, o: LearningOp, env: Env) => applyLearningOp(s, o, env).state;
+const m = (s: MissionState, action: MissionAction, env: Env) => op(s, { op: "mission", action }, env);
+const open = (s: MissionState, step: string, env: Env) => m(s, { a: "open", step }, env);
+const leave = (s: MissionState, env: Env) => m(s, { a: "leave" }, env);
+const parts = (s: MissionState, step: string, values: Record<string, number>, env: Env) => Object.entries(values).reduce((x, [part, v]) => m(x, { a: "answer-part", step, part, value: String(v) }, env), s);
+const mview = (s: MissionState, content = v2): MissionView => buildMissionView(s, content, "v2")!;
+
+/** Visit 1 as Isabel actually did it (fictional replay of the reviewed shape): she chose the WALL; everything first try. */
+function visit1(env: Env): MissionState {
+  let s = op(newMissionState(v1, "isabel", "2026-10-28T16:34:00.000Z"), { op: "start-visit" }, env);
+  s = m(open(s, "W1-HELLO", env), { a: "story-done", step: "W1-HELLO" }, env);
+  s = m(open(leave(s, env), "W2-MAKE", env), { a: "decide", step: "W2-MAKE", option: "wall" }, env);
+  s = open(leave(s, env), "W3-MATERIALS", env);
+  for (const [q, v] of [["chair", "Holz"], ["window", "Glas"], ["wall", "Ziegel"]]) s = m(s, { a: "answer-question", step: "W3-MATERIALS", question: q, value: v }, env);
+  s = parts(open(leave(s, env), "W4-COUNT", env), "W4-COUNT", { plus: 7, minus: 6 }, env);
+  s = parts(open(leave(s, env), "W5-TENS", env), "W5-TENS", { total: 21 }, env);
+  s = open(leave(s, env), "W8-READ", env);
+  s = m(s, { a: "answer-question", step: "W8-READ", question: "word", value: "Ast" }, env);
+  s = open(leave(s, env), "W9-LISTEN", env);
+  s = m(s, { a: "support", step: "W9-LISTEN", kind: "play" }, env);
+  s = m(s, { a: "listen-outcome", step: "W9-LISTEN", outcome: "browser" }, env);
+  s = m(s, { a: "answer-question", step: "W9-LISTEN", question: "show", value: "Fenster" }, env);
+  s = open(leave(s, env), "W10-CRAFT", env);
+  s = m(s, { a: "craft-found", step: "W10-CRAFT", items: ["table", "spoon", "door"] }, env);
+  s = m(s, { a: "story-done", step: "W10-CRAFT" }, env);
+  s = m(open(leave(s, env), "W11-ROOM", env), { a: "story-done", step: "W11-ROOM" }, env);
+  s = m(s, { a: "finish" }, env);
+  s = op(s, { op: "closing-feedback", feedback: { difficulty: "easy" } }, env);
+  return op(s, { op: "reflect", interest: { kind: "choice", choice: "garden" } } as LearningOp, env);
+}
+
+/** Visit 1 done (content v1), then served content v2 — the additive upgrade as the server does it on read. */
+function afterVisit1() {
+  const env1 = makeEnv(v1);
+  const done = visit1(env1);
+  const upgraded = upgradeMissionState(done, v2, "2026-10-29T15:00:00.000Z").state;
+  return { done, upgraded, env: makeEnv(v2, Date.UTC(2026, 9, 29, 15, 0, 0)) };
+}
+
+/** Every narration line said on the way must be in the catalogue (prerecordable); collects them for the safety checks. */
+function said(s: MissionState, seen: string[] = []): NarrationLine[] {
+  const script = missionNarration(mview(s), seen);
+  return script?.lines ?? [];
+}
+
+describe("Visit 2 content — her own line, version 2 = version 1 unchanged + Idas Garten (I2-01, I2-02, I2-03)", () => {
+  it("reconciles; every version-1 entry is byte-for-byte the released one", () => {
+    deepStrictEqual(reconcileIsabelContent(rawV2).problems, []);
+    equal(rawV2.contentVersion, 2);
+    deepStrictEqual(rawV2.missions[0], rawV1.missions[0]);
+    deepStrictEqual(rawV2.visits[0], rawV1.visits[0]);
+    deepStrictEqual(rawV2.reflection, rawV1.reflection);
+    deepStrictEqual(rawV2.missions[1].steps.map((s: { id: string }) => s.id), [...EXPECTED_GARDEN_STEPS]);
+  });
+  it("the gardener is a separate story character; Old Lila is never re-cast; narration is automatic", () => {
+    const g = v2.missions!.find((x) => x.id === GARDEN)!;
+    deepStrictEqual(g.characters.map((c) => [c.id, c.name]), [["ida", "Gärtnerin Ida"]]);
+    deepStrictEqual(g.narration, { mode: "auto" });
+    for (const s of g.steps) for (const l of [...s.intro, ...s.done]) equal(l.speaker, "ida");
+    const bad = structuredClone(rawV2);
+    bad.missions[1].characters[0] = { id: "lila", name: "Old Lila", role: "Gärtnerin", language: "de", plate: "keeper" };
+    ok(reconcileIsabelContent(bad).problems.some((p) => /must not be Old Lila/.test(p)));
+    const silent = structuredClone(rawV2);
+    delete silent.missions[1].narration;
+    ok(reconcileIsabelContent(silent).problems.some((p) => /narration.mode must be auto/.test(p)));
+  });
+  it("progression from her actual Visit 1: fresh tens (not 21/23), a new reading word, a new listening sentence, missing part to ten", () => {
+    const g = v2.missions!.find((x) => x.id === GARDEN)!;
+    const tens = g.steps.flatMap((s) => (s.solve?.parts ?? []).filter((p) => p.counters?.bundles).map((p) => p.answer));
+    deepStrictEqual(tens, [32, 25]);
+    equal(g.steps.find((s) => s.kind === "read")!.text!.body, "NEST");
+    equal(g.steps.find((s) => s.kind === "listen")!.text!.body, "Zeig mir die Schnecke auf dem Blatt.");
+    const ten = g.steps.find((s) => s.id === "IG5-PLANTING")!.solve!.parts.find((p) => p.id === "ten")!;
+    deepStrictEqual([ten.counters!.frame, ten.counters!.a, ten.counters!.ask, ten.answer], [10, 7, "missing", 3]);
+    const reused = structuredClone(rawV2);
+    reused.missions[1].steps[2].solve.parts[0] = { ...reused.missions[1].steps[2].solve.parts[0], answer: 21, counters: { a: 20, b: 1, op: "+", unit: "Stäbe", bundles: true } };
+    ok(reconcileIsabelContent(reused).problems.some((p) => /21 was already asked/.test(p)));
+    const oldWord = structuredClone(rawV2);
+    const r = oldWord.missions[1].steps.find((s: { kind: string }) => s.kind === "read");
+    r.text.body = "AST";
+    r.letters = { word: "AST", letters: [{ letter: "A", sound: "a" }, { letter: "S", sound: "s" }, { letter: "T", sound: "t" }], spoken: "A. S. T. Ast.", teach: "Ast." };
+    ok(reconcileIsabelContent(oldWord).problems.some((p) => /AST was already read/.test(p)));
+  });
+  it("Swiss standard orthography, short lines, no praise in non-independent endings, no typing", () => {
+    const text = JSON.stringify(rawV2.missions[1]);
+    ok(!/ß/.test(text));
+    const g = v2.missions!.find((x) => x.id === GARDEN)!;
+    ok(!g.steps.some((s) => ["typing-block", "write", "produce", "recall"].includes(s.kind)));
+    equal(g.typingBlock, undefined);
+    const sharp = structuredClone(rawV2);
+    sharp.missions[1].steps[0].intro[0].text = "Hallo! Heute ist es heiß.";
+    ok(reconcileIsabelContent(sharp).problems.some((p) => /Swiss standard orthography/.test(p)));
+  });
+});
+
+describe("continuity after her completed Visit 1 (I2-01)", () => {
+  it("upgrades additively: Visit 1 records unchanged, no pilot date, Visit 2 offered next on her own hub", () => {
+    const { done, upgraded, env } = afterVisit1();
+    deepStrictEqual(upgraded.missions![WORKSHOP], done.missions![WORKSHOP]);
+    deepStrictEqual(upgraded.visits, done.visits);
+    deepStrictEqual(upgraded.interests, done.interests);
+    equal(upgraded.upgradedAt ?? null, null, "her 1 → 2 upgrade dates no pilot");
+    equal(upgraded.contentVersion, 2);
+    const view = buildChildView(upgraded, v2, env.settings, new Date(Date.UTC(2026, 9, 29, 15, 0, 0)), 0, { noktMode: "subscription" });
+    equal(view.next.visit, "v2");
+    equal(view.nextStep, "Heute baust du mit Gärtnerin Ida einen Garten.");
+    equal(view.visitText?.character, "Gärtnerin Ida");
+    equal(view.nokt?.mode ?? "unavailable", "unavailable", "never Nokt for Isabel");
+    // Capped back to version 1 (rollback): Visit 1 still reads, nothing further is offered.
+    const back = buildChildView(upgraded, v1, env.settings, new Date(), 0, { noktMode: "unavailable" });
+    equal(back.next.visit, null);
+  });
+  it("the Visit 1 summary names HER wall and never praises her choice; the stored wording is corrected on read only", () => {
+    const { upgraded } = afterVisit1();
+    const now = buildVisitSummary(upgraded, v2, "v1");
+    equal(now.artifact.text, "Im Zimmer: eine Wand.");
+    equal(now.success?.text, "Du hast alle Materialien beim ersten Versuch richtig zugeordnet.");
+    ok(!/wall|Was baust du/.test(JSON.stringify(now)));
+    // What the old derivation stored (the defect Nabu read on October 28).
+    const stored: VisitSummary = { visit: "v1", title: now.title, success: { text: "Was baust du?: „wall“ — ohne Hilfe, beim ersten Versuch.", basis: "x" }, practiced: null, next: now.next, artifact: { kind: "mission", text: "Im Zimmer: ein Regal." } };
+    const fix = correctedWorkshopChildSummary(stored, upgraded, v2, "v1")!;
+    equal(fix.summary.artifact.text, "Im Zimmer: eine Wand.");
+    deepStrictEqual(fix.stored, stored, "the stored wording is kept beside it");
+    ok(/Vorliebe und kein Erfolg/.test(fix.note));
+    equal(correctedWorkshopChildSummary(now, upgraded, v2, "v1"), null, "a correct summary is returned unchanged");
+    equal(correctedWorkshopChildSummary(stored, upgraded, santiago, "v1"), null, "never applied to Santiago's content");
+  });
+});
+
+/** Visit 2, everything first try (fictional). Returns the state after the closing and every narration line on the way. */
+function gardenFirstTry() {
+  const { upgraded, env } = afterVisit1();
+  const heard: NarrationLine[] = [];
+  const hear = (s: MissionState, seen?: string[]) => heard.push(...said(s, seen));
+  let s = op(upgraded, { op: "start-visit" }, env);
+  equal(currentStage(s, v2), "mission");
+  s = open(s, "IG1-HELLO", env); hear(s);
+  s = m(s, { a: "story-done", step: "IG1-HELLO" }, env); hear(s);
+  s = open(leave(s, env), "IG2-PLANT", env); hear(s);
+  s = m(s, { a: "decide", step: "IG2-PLANT", option: "flowers" }, env); hear(s);
+  s = open(leave(s, env), "IG3-STICKS", env); hear(s);
+  s = parts(s, "IG3-STICKS", { total: 32 }, env); hear(s);
+  s = open(leave(s, env), "IG5-PLANTING", env); hear(s);
+  s = parts(s, "IG5-PLANTING", { plus: 9 }, env); hear(s);
+  hear(s, ["plus"]);
+  s = parts(s, "IG5-PLANTING", { minus: 5 }, env); hear(s, ["plus"]);
+  hear(s, ["plus", "minus"]);
+  s = parts(s, "IG5-PLANTING", { ten: 3 }, env); hear(s, ["plus", "minus", "ten"]);
+  s = open(leave(s, env), "IG7-READ", env); hear(s);
+  s = m(s, { a: "answer-question", step: "IG7-READ", question: "word", value: "Nest" }, env); hear(s);
+  s = open(leave(s, env), "IG8-LISTEN", env); hear(s);
+  s = m(s, { a: "support", step: "IG8-LISTEN", kind: "play" }, env);
+  s = m(s, { a: "listen-outcome", step: "IG8-LISTEN", outcome: "device-de" }, env); hear(s);
+  s = m(s, { a: "answer-question", step: "IG8-LISTEN", question: "show", value: "Schnecke auf dem Blatt" }, env); hear(s);
+  s = open(leave(s, env), "IG9-CRAFT", env); hear(s);
+  s = m(s, { a: "craft-found", step: "IG9-CRAFT", items: ["flower", "grass", "tree"] }, env);
+  s = m(s, { a: "story-done", step: "IG9-CRAFT" }, env); hear(s);
+  s = open(leave(s, env), "IG10-GARDEN", env); hear(s);
+  const outcome = mview(s).active!;
+  s = m(s, { a: "story-done", step: "IG10-GARDEN" }, env); hear(s);
+  s = m(s, { a: "finish" }, env);
+  return { s, env, heard, outcome };
+}
+
+describe("Visit 2 journey — first tries (fictional)", () => {
+  it("runs every beat; the fresh application and the easier path are not needed; her garden shows HER choice", () => {
+    const { s, outcome } = gardenFirstTry();
+    const run = s.missions![GARDEN];
+    equal(run.steps["IG4-STICKS-AGAIN"], undefined);
+    equal(run.steps["IG6-PLANTING-EASIER"], undefined);
+    equal(outcome.recap, "Im Garten wachsen Blumen.");
+    equal(outcome.picture?.id, "garden-flowers");
+    equal(outcome.ending?.success, "Die Stäbe hast du beim ersten Versuch richtig gezählt.");
+    equal(outcome.ending?.next, NARRATION_UI.noOpenNext);
+    equal(currentStage(s, v2), "reflect");
+    const closing = buildChildView(s, v2, EMPTY_PARENT_SETTINGS, new Date(), 0, { noktMode: "unavailable" }).reflection!.closing!;
+    equal(closing.narrated, true);
+    deepStrictEqual(closing.farewell, ["Danke, Isabel. Bis bald im Garten!", "Dein Garten ist gespeichert."]);
+  });
+  it("every spoken line is a catalogued, reviewed line (prerecordable); none says a reading word or an option before her attempt", () => {
+    const { heard } = gardenFirstTry();
+    const catalog = new Set(narrationCatalog(v2).map((l) => l.id));
+    for (const l of heard) ok(catalog.has(l.id), `catalogued: ${l.text}`);
+    ok(heard.some((l) => l.text === "Was soll in deinem Garten wachsen? Tipp auf ein Bild."));
+    ok(heard.some((l) => l.text === "Danke, Isabel. Bis bald im Garten!"), "the ending is spoken");
+  });
+  it("the closing records her answers and her own next-visit choice; Visit 1's records stay untouched", () => {
+    const { s, env } = gardenFirstTry();
+    let x = op(s, { op: "closing-feedback", feedback: { difficulty: "easy", enjoyment: "yes" } }, env);
+    x = op(x, { op: "reflect", interest: { kind: "choice", choice: "birdhouse" } } as LearningOp, env);
+    ok(x.visits.find((v) => v.id === "v2")!.finishedAt);
+    deepStrictEqual((x.interests ?? []).map((i) => [i.visit, i.kind, i.choice]), [["v1", "choice", "garden"], ["v2", "choice", "birdhouse"]]);
+    deepStrictEqual(x.missions![WORKSHOP], afterVisit1().upgraded.missions![WORKSHOP]);
+    const summary = missionVisitSummary(x, v2, "v2")!;
+    equal(summary.artifact?.text, "Im Garten wachsen Blumen.");
+    ok(!/Blumen gewählt/.test(summary.success?.text ?? ""), "her choice is never the success");
+  });
+});
+
+describe("Visit 2 journey — wrong answers, help, support paths and narration safety (I2-03, I2-05)", () => {
+  it("tens missed → hint only after the try → fresh application 25; the math answer is never spoken before it was answered or taught", () => {
+    const { upgraded, env } = afterVisit1();
+    let s = op(upgraded, { op: "start-visit" }, env);
+    s = m(open(s, "IG1-HELLO", env), { a: "story-done", step: "IG1-HELLO" }, env);
+    s = m(open(leave(s, env), "IG2-PLANT", env), { a: "decide", step: "IG2-PLANT", option: "tree" }, env);
+    s = open(leave(s, env), "IG3-STICKS", env);
+    const before = said(s);
+    ok(before.some((l) => /3 Bündel und 2 einzelne/.test(l.text)));
+    ok(!before.some((l) => /\b32\b/.test(l.text)), "the question is spoken, never its answer");
+    equal(mview(s).active!.solve!.parts[0].hintAllowed, false, "no hint before the first try");
+    s = parts(s, "IG3-STICKS", { total: 23 }, env);
+    const retry = said(s);
+    deepStrictEqual(retry.map((l) => l.text), ["Noch nicht. Schau: In jedem Bündel sind 10 Stäbe."]);
+    s = parts(s, "IG3-STICKS", { total: 23 }, env);
+    ok(!said(s).some((l) => /23/.test(l.text)), "her own repeated number is never spoken back");
+    s = m(s, { a: "hint", step: "IG3-STICKS", part: "total" }, env);
+    deepStrictEqual(said(s).map((l) => l.text), ["Ein Bündel hat 10 Stäbe. Zähl die Bündel in Zehnern: 10, 20 …", "Wie viele Stäbe sind in 3 Bündeln?"]);
+    s = m(s, { a: "hint-check", step: "IG3-STICKS", part: "total", hint: "IG3-total-H1", value: "30" }, env);
+    ok(said(s)[0].text.startsWith("Genau, 30."));
+    s = parts(s, "IG3-STICKS", { total: 32 }, env);
+    ok(said(s).some((l) => l.text === "Richtig! 32 Stäbe."), "the answer is said only after her own correct answer");
+    equal(s.missions![GARDEN].steps["IG3-STICKS"].outcome, "supported");
+    s = open(leave(s, env), "IG4-STICKS-AGAIN", env);
+    ok(!said(s).some((l) => /\b25\b/.test(l.text)));
+    s = parts(s, "IG4-STICKS-AGAIN", { total: 25 }, env);
+    equal(s.missions![GARDEN].steps["IG4-STICKS-AGAIN"].outcome, "independent");
+  });
+  it("small sums missed → the easier path; the ending names an honest success and the open item", () => {
+    const { upgraded, env } = afterVisit1();
+    let s = op(upgraded, { op: "start-visit" }, env);
+    s = m(open(s, "IG1-HELLO", env), { a: "story-done", step: "IG1-HELLO" }, env);
+    s = m(open(leave(s, env), "IG2-PLANT", env), { a: "decide", step: "IG2-PLANT", option: "vegetables" }, env);
+    s = parts(open(leave(s, env), "IG3-STICKS", env), "IG3-STICKS", { total: 32 }, env);
+    s = open(leave(s, env), "IG5-PLANTING", env);
+    s = parts(s, "IG5-PLANTING", { plus: 8 }, env);
+    s = parts(s, "IG5-PLANTING", { plus: 9 }, env);
+    s = parts(s, "IG5-PLANTING", { minus: 5, ten: 3 }, env);
+    equal(s.missions![GARDEN].steps["IG5-PLANTING"].outcome !== "independent", true);
+    s = open(leave(s, env), "IG6-PLANTING-EASIER", env);
+    s = parts(s, "IG6-PLANTING-EASIER", { small: 6 }, env);
+    s = open(leave(s, env), "IG7-READ", env);
+    // Reading: two misses → the word is shown (never credited) — and only THEN spoken.
+    const intro = said(s);
+    ok(!intro.some((l) => /nest/i.test(l.text)));
+    s = m(s, { a: "answer-question", step: "IG7-READ", question: "word", value: "Igel" }, env);
+    const retry = said(s);
+    ok(!retry.some((l) => /nest|igel|topf/i.test(l.text)), "after a miss: the reviewed hint, never the word or an option");
+    s = m(s, { a: "answer-question", step: "IG7-READ", question: "word", value: "Topf" }, env);
+    deepStrictEqual(said(s).map((l) => l.text).slice(0, 1), ["Das Wort heisst: Nest."]);
+    equal(s.missions![GARDEN].steps["IG7-READ"].outcome, "answer_exposed");
+    s = open(leave(s, env), "IG8-LISTEN", env);
+    ok(!said(s).some((l) => /schnecke|käfer|blatt/i.test(l.text)), "the listening options and sentence are never narrated");
+    let refusedAnswer = false;
+    try {
+      m(s, { a: "answer-question", step: "IG8-LISTEN", question: "show", value: "Schnecke auf dem Blatt" }, env);
+    } catch {
+      refusedAnswer = true;
+    }
+    ok(refusedAnswer, "answering before a completed play is refused");
+    s = m(s, { a: "support", step: "IG8-LISTEN", kind: "play" }, env);
+    let wrongOutcome = false;
+    try {
+      m(s, { a: "listen-outcome", step: "IG8-LISTEN", outcome: "browser" }, env);
+    } catch {
+      wrongOutcome = true;
+    }
+    ok(wrongOutcome, "a narrated visit reports recorded / device-de / failed only");
+    s = m(s, { a: "listen-outcome", step: "IG8-LISTEN", outcome: "recorded" }, env);
+    s = m(s, { a: "answer-question", step: "IG8-LISTEN", question: "show", value: "Schnecke auf dem Blatt" }, env);
+    s = open(leave(s, env), "IG9-CRAFT", env);
+    s = m(s, { a: "story-done", step: "IG9-CRAFT" }, env);
+    s = open(leave(s, env), "IG10-GARDEN", env);
+    const ending = mview(s).active!.ending!;
+    equal(ending.success, "Die Stäbe hast du beim ersten Versuch richtig gezählt.");
+    equal(ending.next, "Nächstes Mal schauen wir wieder Buchstaben an.", "the easier path replaced the planting item; the reading stays open");
+    const ev = missionEvidence(s, v2, "v2")!;
+    ok(ev.steps.some((x) => x.id === "IG6-PLANTING-EASIER"), "the easier path is in the parent evidence");
+  });
+  it("supported letter learning: recorded first, then (only then) the word may be spoken; never independent reading", () => {
+    const { upgraded, env } = afterVisit1();
+    let s = op(upgraded, { op: "start-visit" }, env);
+    for (const [step, action] of [["IG1-HELLO", { a: "story-done", step: "IG1-HELLO" }], ["IG2-PLANT", { a: "decide", step: "IG2-PLANT", option: "flowers" }]] as const) s = m(open(s, step, env), action as MissionAction, env), (s = leave(s, env));
+    s = parts(open(s, "IG3-STICKS", env), "IG3-STICKS", { total: 32 }, env);
+    s = parts(open(leave(s, env), "IG5-PLANTING", env), "IG5-PLANTING", { plus: 9, minus: 5, ten: 3 }, env);
+    s = open(leave(s, env), "IG7-READ", env);
+    ok(!said(s).some((l) => /nest|n\. e\. s/i.test(l.text)));
+    s = m(s, { a: "support", step: "IG7-READ", kind: "letters" }, env);
+    const letters = said(s).map((l) => l.text);
+    deepStrictEqual(letters.slice(0, 2), ["N. E. S. T. Nest.", "N, E, S und T zusammen: Nest. Im Nest wohnen kleine Vögel."]);
+    s = m(s, { a: "answer-question", step: "IG7-READ", question: "word", value: "Nest" }, env);
+    equal(s.missions![GARDEN].steps["IG7-READ"].outcome, "supported");
+    equal(said(s)[0].text, NARRATION_UI.readCorrectWithLetters);
+  });
+  it("stop and resume: leaving keeps every answer; the open question continues; nothing is re-credited", () => {
+    const { upgraded, env } = afterVisit1();
+    let s = op(upgraded, { op: "start-visit" }, env);
+    s = m(open(s, "IG1-HELLO", env), { a: "story-done", step: "IG1-HELLO" }, env);
+    s = m(open(leave(s, env), "IG2-PLANT", env), { a: "decide", step: "IG2-PLANT", option: "flowers" }, env);
+    s = open(leave(s, env), "IG3-STICKS", env);
+    s = parts(s, "IG3-STICKS", { total: 30 }, env);
+    const before = JSON.stringify(s.missions![GARDEN].steps["IG3-STICKS"].attempts);
+    const resumed = op(s, { op: "start-visit" }, env);
+    equal(JSON.stringify(resumed.missions![GARDEN].steps["IG3-STICKS"].attempts), before);
+    equal(mview(resumed).active?.id, "IG3-STICKS");
+    equal(said(resumed)[0].text, "Noch nicht. Schau: In jedem Bündel sind 10 Stäbe.", "after a reload the current feedback is what «Vorlesen» says");
+  });
+});
+
+describe("narration is scoped to narrated missions (I2-07): Santiago and Visit 1 unchanged", () => {
+  it("no narration script or catalogue for Santiago's content or Visit 1", () => {
+    deepStrictEqual(narrationCatalog(santiago), []);
+    deepStrictEqual(narrationCatalog(v1), []);
+    const env = makeEnv(v1);
+    let s = op(newMissionState(v1, "isabel", "2026-10-28T16:34:00.000Z"), { op: "start-visit" }, env);
+    s = open(s, "W1-HELLO", env);
+    equal(missionNarration(buildMissionView(s, v1, "v1")!), null);
+    equal(missionDefFor(v1, "v1")!.narration, undefined);
+  });
+  it("line ids are stable and text-bound", () => {
+    equal(narrationId("Hallo  Isabel! "), narrationId("Hallo Isabel!"));
+    ok(narrationId("Hallo Isabel!") !== narrationId("Hallo Isabel."));
+    ok(/^n[0-9a-f]{28}$/.test(narrationId("x")));
+  });
+});
+
+// ---------------------------------------------------------------------------------------------------------------------
+// The player (I2-04 / I2-06) — fakes only, nothing audible
+// ---------------------------------------------------------------------------------------------------------------------
+
+type FakeU = { text: string; lang: string; rate: number; voice?: unknown; onend: (() => void) | null; onerror: ((e?: { error?: string }) => void) | null };
+function fakes(opts: { voices?: VoiceLike[]; clips?: Record<string, boolean>; clipDelay?: number; playRejects?: string | null; speechEnds?: boolean } = {}) {
+  const spoken: { text: string; voice: string | null; lang: string }[] = [];
+  const played: string[] = [];
+  const revoked: string[] = [];
+  let cancelled = 0;
+  let pending: FakeU | null = null;
+  const synth = {
+    getVoices: () => opts.voices ?? [{ name: "Samantha", lang: "en-US", default: true }, { name: "Anna", lang: "de-DE" }],
+    cancel: () => {
+      cancelled += 1;
+      const u = pending;
+      pending = null;
+      u?.onerror?.({ error: "interrupted" });
+    },
+    speak: (u: FakeU) => {
+      spoken.push({ text: u.text, voice: (u.voice as VoiceLike | undefined)?.name ?? null, lang: u.lang });
+      pending = u;
+      if (opts.speechEnds !== false) queueMicrotask(() => { if (pending === u) { pending = null; u.onend?.(); } });
+    },
+  };
+  let audioEl: { src: string; play: () => Promise<void>; pause: () => void; onended: (() => void) | null; onerror: (() => void) | null } | null = null;
+  const timers: (() => void)[] = [];
+  const player = createNarrationPlayer({
+    fetchClip: async (l) => {
+      if (opts.clipDelay) await new Promise((r) => setTimeout(r, opts.clipDelay));
+      return opts.clips?.[l.text] ? new Blob(["mp3"], { type: "audio/mpeg" }) : null;
+    },
+    createAudio: () => (audioEl = {
+      src: "",
+      play() {
+        if (this.src.startsWith("blob:")) {
+          played.push(this.src);
+          if (opts.playRejects) return Promise.reject(Object.assign(new Error("x"), { name: opts.playRejects }));
+          queueMicrotask(() => this.onended?.());
+        }
+        return Promise.resolve();
+      },
+      pause() {},
+      onended: null,
+      onerror: null,
+    }),
+    createObjectUrl: () => `blob:${played.length + revoked.length + 1}`,
+    revokeObjectUrl: (u) => revoked.push(u),
+    synth: synth as never,
+    makeUtterance: (text) => ({ text, lang: "", rate: 1, onend: null, onerror: null }) as FakeU,
+    setTimer: (fn) => { timers.push(fn); return timers.length; },
+    clearTimer: () => {},
+  });
+  return { player, spoken, played, revoked, cancelledCount: () => cancelled, audio: () => audioEl, fireTimers: () => timers.splice(0).forEach((f) => f()) };
+}
+const script = (key: string, ...texts: string[]) => ({ key, lines: texts.map(line) });
+
+describe("narration player — fakes only", () => {
+  it("speaks nothing before the deliberate tap; after unlock it plays the script once", async () => {
+    const f = fakes();
+    equal(await f.player.play(script("a", "Hallo Isabel!")), "locked");
+    equal(f.spoken.length, 0);
+    f.player.unlock();
+    equal(await f.player.play(script("a", "Hallo Isabel!", "Komm mit.")), "done");
+    deepStrictEqual(f.spoken.map((x) => [x.text, x.voice]), [["Hallo Isabel!", "Anna"], ["Komm mit.", "Anna"]]);
+  });
+  it("prefers the prerecorded clip; revokes every object URL", async () => {
+    const f = fakes({ clips: { "Hallo Isabel!": true } });
+    f.player.unlock();
+    equal(await f.player.play(script("a", "Hallo Isabel!", "Komm mit.")), "done");
+    equal(f.played.length, 1);
+    deepStrictEqual(f.spoken.map((x) => x.text), ["Komm mit."]);
+    deepStrictEqual(f.revoked, f.played);
+    equal(f.player.lastLineOutcome(), "device-de");
+  });
+  it("never falls back to an English or default voice: no German voice = nothing spoken, status «unavailable»", async () => {
+    const f = fakes({ voices: [{ name: "Samantha", lang: "en-US", default: true }, { name: "Daniel", lang: "en-GB" }] });
+    f.player.unlock();
+    equal(await f.player.play(script("a", "Hallo Isabel!")), "unavailable");
+    equal(f.spoken.length, 0);
+    equal(f.player.status(), "unavailable");
+  });
+  it("a refused play (autoplay after reload) is «blocked» — one tap unlocks and replays", async () => {
+    const f = fakes({ clips: { "Hallo Isabel!": true }, playRejects: "NotAllowedError" });
+    f.player.unlock();
+    equal(await f.player.play(script("a", "Hallo Isabel!")), "blocked");
+    equal(f.player.status(), "blocked");
+  });
+  it("a new screen supersedes the old one at once: late audio of the old screen is never spoken (no overlap)", async () => {
+    const f = fakes({ clipDelay: 5 });
+    f.player.unlock();
+    const first = f.player.play(script("a", "Alter Satz."));
+    const second = f.player.play(script("b", "Neuer Satz."));
+    equal(await first, "cancelled");
+    equal(await second, "done");
+    deepStrictEqual(f.spoken.map((x) => x.text), ["Neuer Satz."]);
+  });
+  it("stop silences the current line and never advances anything", async () => {
+    const f = fakes({ speechEnds: false });
+    f.player.unlock();
+    const p = f.player.play(script("a", "Eins.", "Zwei."));
+    await new Promise((r) => setTimeout(r, 0));
+    f.player.stop();
+    equal(await p, "cancelled");
+    deepStrictEqual(f.spoken.map((x) => x.text), ["Eins."]);
+    equal(f.player.status(), "idle");
+  });
+  it("a device that never reports the end does not hang the screen (bounded timer)", async () => {
+    const f = fakes({ speechEnds: false });
+    f.player.unlock();
+    const p = f.player.play(script("a", "Eins."));
+    await new Promise((r) => setTimeout(r, 0));
+    f.fireTimers();
+    equal(await p, "done");
+  });
+  it("picks a real German voice, never a novelty voice", () => {
+    equal(pickGermanVoice([{ name: "Eddy (Deutsch (Deutschland))", lang: "de-DE" }, { name: "Anna", lang: "de-DE" }])?.name, "Anna");
+    equal(pickGermanVoice([{ name: "Anna", lang: "de-DE" }, { name: "Google Deutsch", lang: "de-DE" }])?.name, "Google Deutsch");
+    equal(pickGermanVoice([{ name: "Grandma (Deutsch (Deutschland))", lang: "de-DE" }]), null);
+    equal(pickGermanVoice([{ name: "Samantha", lang: "en-US" }]), null);
+  });
+});
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Prerecording (I2-06) — mocked provider and store only; no request leaves the test
+// ---------------------------------------------------------------------------------------------------------------------
+
+describe("prerecorded narration — readiness and the owner's capped preparation (mocked)", () => {
+  const catalog = narrationCatalog(v2);
+  const chars = catalog.reduce((n, l) => n + l.text.length, 0);
+  it("the catalogue is finite, reviewed and small; its character count is the cost basis", () => {
+    ok(catalog.length > 50 && catalog.length < 200, `lines: ${catalog.length}`);
+    ok(chars > 2000 && chars < 12000, `characters: ${chars}`);
+    ok(catalog.every((l) => !/ß/.test(l.text)));
+    ok(!catalog.some((l) => /Santiago|Nokt/.test(l.text)));
+  });
+  it("without a configured narration voice nothing is called and nothing is written", async () => {
+    let calls = 0;
+    const r = await prepareNarration(catalog, 99999, { env: { ELEVENLABS_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t" }, fetchImpl: (async () => { calls += 1; return new Response(); }) as typeof fetch, headImpl: (async () => { throw new Error("none"); }) as never, putImpl: (async () => { calls += 1; }) as never });
+    equal(r.status, "not-configured");
+    equal(calls, 0);
+  });
+  it("records only missing catalogued lines, with the configured voice, within the character cap; stops at the first failure", async () => {
+    const env = { ELEVENLABS_API_KEY: "k", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_NARRATION_DE_VOICE_ID: "VoiceAbc12345" };
+    const stored = new Set<string>([clipPathname("VoiceAbc12345", catalog[0].id)]);
+    const sent: { url: string; body: { text: string; model_id: string } }[] = [];
+    const deps = {
+      env,
+      headImpl: (async (p: string) => { if (!stored.has(p)) throw new Error("not found"); return {}; }) as never,
+      putImpl: (async (p: string) => { stored.add(p); return {}; }) as never,
+      fetchImpl: (async (url: string, init: RequestInit) => { sent.push({ url, body: JSON.parse(String(init.body)) }); return new Response(new Uint8Array([1, 2, 3])); }) as unknown as typeof fetch,
+    };
+    const ready = await narrationReadiness(catalog, deps);
+    equal(ready.recorded, 1);
+    const cap = catalog[1].text.length + catalog[2].text.length;
+    const r = await prepareNarration(catalog, cap, deps);
+    equal(r.status, "cap-reached");
+    equal(r.recorded, 2);
+    ok(sent.every((x) => x.url.includes("/v1/text-to-speech/VoiceAbc12345") && x.body.model_id === "eleven_multilingual_v2"));
+    ok(sent.every((x) => catalog.some((l) => l.text === x.body.text)), "only reviewed catalogue text is sent");
+    ok(!JSON.stringify(r).includes(catalog[1].text), "the result carries counts, not texts");
+    const failing = await prepareNarration(catalog, 99999, { ...deps, fetchImpl: (async () => new Response("no", { status: 401 })) as unknown as typeof fetch });
+    equal(failing.status, "upstream-failed");
+    equal(failing.recorded, 0);
+  });
+});

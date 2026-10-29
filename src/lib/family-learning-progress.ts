@@ -13,7 +13,7 @@
 
 import type { LearningContent, VisitId } from "./family-learning-content.ts";
 import type { MissionState } from "./family-learning-state.ts";
-import { buildVisitSummary, LEARNING_RULES_VERSION, visitLabel, visitOrdinal, visitSubtitle, type VisitSummary } from "./family-learning-summary.ts";
+import { buildVisitSummary, correctedWorkshopChildSummary, LEARNING_RULES_VERSION, visitLabel, visitOrdinal, visitSubtitle, type VisitSummary } from "./family-learning-summary.ts";
 
 /** Household default; the client sends its own IANA zone and the server validates it. */
 export const DEFAULT_LEARNER_TIME_ZONE = "Europe/Zurich";
@@ -176,7 +176,8 @@ export function buildProgress(state: MissionState, content: LearningContent, inp
     else if (source.reviewVersion !== null && source.reviewVersion < LEARNING_RULES_VERSION) recent = suppress("review-obsolete", "Der Rückblick zu diesem Besuch stammt aus einer älteren Regelfassung und wird nicht zitiert.");
     else if (source.reviewVersion === null) recent = suppress("review-obsolete", "Der Rückblick zu diesem Besuch hat keine Regelfassung und wird nicht zitiert.");
     else {
-      const summary = source.childSummary;
+      // Isabel's workshop: a stored summary that misreports her choice is re-derived from her unchanged records (2026-10-29).
+      const summary = correctedWorkshopChildSummary(source.childSummary, state, content, last.id)?.summary ?? source.childSummary;
       recent = {
         visit: last.id,
         ordinal: visitOrdinal(state, last.id),

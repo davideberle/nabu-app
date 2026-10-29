@@ -13,9 +13,14 @@
 //    read it aloud — clearly labelled and recorded as help;
 //  - the real-world craft happens away from the screen: she may tap what she found; the parent records the rest.
 // No Nokt, no microphone, no model: Old Lila's lines are the reviewed content.
+//
+// Isabel Visit 2 (content `narration.mode = "auto"`, 2026-10-29; I2-02/I2-04): the same scene NARRATED — the mission's own story
+// character (the gardener; never Old Lila, who stays her assistant) in the bubble, one short visible instruction, every screen's
+// essential instruction, feedback and ending spoken by itself after the deliberate start (`missionNarration`), and ONE
+// replay/stop control instead of a speech button per line. The listening sentence stays the task's own explicit, recorded play.
 // ---------------------------------------------------------------------------
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import type { MissionActiveView, MissionView } from "@/lib/family-learning-mission";
 import type { ChildId } from "@/lib/family-assistant-turn";
@@ -24,7 +29,10 @@ import { browserSpeech, playListening } from "@/lib/family-learning-listening";
 import { AssistantPortrait } from "@/components/family/assistant-portrait";
 import type { Act } from "./mission-world";
 import { Feedback, SolveTask, SpeakerIcon, type SceneTelemetry } from "./mission-scene";
-import { WorkshopPictureView, WorkshopRoom } from "./workshop-pictures";
+import { GardenerPortrait, WorkshopGarden, WorkshopPictureView, WorkshopRoom } from "./workshop-pictures";
+import { line, missionNarration, narrated, NARRATION_UI } from "@/lib/family-learning-narration";
+import type { NarrationPlayer } from "@/lib/family-narration-player";
+import { NarrationControl, useNarration } from "./narration";
 
 const INK = "#2f2a24";
 const ACTION = "#7a4a22";
@@ -34,7 +42,7 @@ const primary = { background: ACTION, color: "white" } as const;
 const secondary = { background: "#f1e6d6", color: "#4a3420" } as const;
 const pictureButton = "grid min-h-36 w-40 place-items-center gap-1 rounded-3xl border-4 bg-white p-2 text-lg font-semibold disabled:opacity-50";
 
-export type WorkshopSceneProps = { child: ChildId; mission: MissionView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry };
+export type WorkshopSceneProps = { child: ChildId; mission: MissionView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; /** Isabel Visit 2: the page's narration player (required for a narrated mission). */ narrator?: NarrationPlayer | null };
 
 /** Speaks one German line (child voice route, else the browser's German voice); resolves with the device-reported outcome. */
 function useSay(child: ChildId, speech: ChildSpeechPlayer) {
@@ -44,7 +52,13 @@ function useSay(child: ChildId, speech: ChildSpeechPlayer) {
   };
 }
 
-export function WorkshopScene({ child, mission, busy, act, speech, telemetry }: WorkshopSceneProps) {
+export function WorkshopScene(props: WorkshopSceneProps) {
+  if (narrated(props.mission) && props.narrator) return <NarratedWorkshopScene {...props} narrator={props.narrator} />;
+  return <ReleasedWorkshopScene {...props} />;
+}
+
+/** Visit 1 exactly as released (per-line «Anhören»). */
+function ReleasedWorkshopScene({ child, mission, busy, act, speech, telemetry }: WorkshopSceneProps) {
   const active = mission.active;
   const beat = mission.beat ?? { index: 1, count: mission.steps.length, next: null };
   const headingRef = useRef<HTMLHeadingElement | null>(null);
@@ -397,6 +411,251 @@ function CraftTask({ child, speech, active, busy, act, onDone }: { child: ChildI
       ) : null}
       <p className="text-base" style={{ color: "#7b6a55" }} data-testid="craft-parent-note">{c.parentNote}</p>
       <NextButton busy={busy} onNext={onDone} label={active.status === "active" ? "Fertig gebastelt — weiter" : "Weiter"} />
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Isabel Visit 2 — the narrated scene (one replay/stop control; the story character is the mission's own, never Old Lila)
+// ---------------------------------------------------------------------------------------------------------------------
+
+function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator }: WorkshopSceneProps & { narrator: NarrationPlayer }) {
+  const active = mission.active;
+  const beat = mission.beat ?? { index: 1, count: mission.steps.length, next: null };
+  const who = mission.characters[0]?.name ?? "";
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const opened = useRef(false);
+  const [seenParts, setSeenParts] = useState<string[]>([]);
+  useEffect(() => {
+    if (opened.current || busy || active) return;
+    const first = mission.steps[0];
+    if (first && first.status === "available" && mission.steps.every((s) => s.status === "available" || s.status === "locked")) {
+      opened.current = true;
+      void act({ a: "open", step: first.id });
+    }
+  }, [active, busy, mission.steps, act]);
+  useEffect(() => {
+    headingRef.current?.focus({ preventScroll: true });
+    setSeenParts([]);
+  }, [active?.id]);
+  const script = useMemo(() => missionNarration(mission, seenParts), [mission, seenParts]);
+  const narration = useNarration(narrator, script, (name) => telemetry(name));
+
+  const [advancing, setAdvancing] = useState(false);
+  const next = async () => {
+    telemetry("beat-next");
+    narrator.stop();
+    if (active) {
+      if (active.status === "active" && (active.kind === "story" || active.kind === "outcome" || active.kind === "craft")) {
+        const done = await act({ a: "story-done", step: active.id });
+        if (!done || active.kind === "outcome") return;
+      }
+      const left = await act({ a: "leave" });
+      if (!left) return;
+    }
+    setAdvancing(true);
+  };
+  useEffect(() => {
+    if (!advancing || busy || active) return;
+    setAdvancing(false);
+    const upcoming = mission.steps.find((s) => s.status === "available" || s.status === "active") ?? null;
+    void act(upcoming ? { a: "open", step: upcoming.id } : { a: "finish" });
+  }, [advancing, busy, active, mission.steps, act]);
+
+  // The visible instruction: the beat's own short line(s) — the same words the narration says first.
+  const lines = active ? (active.status === "active" ? active.intro : active.done) : [];
+  return (
+    <div className="grid gap-4 pb-16" style={{ color: INK }} data-testid="workshop-scene" data-narrated="true" data-step={active?.id ?? ""} data-kind={active?.kind ?? ""} data-status={active?.status ?? ""} data-narration={narration.status} data-narration-key={script?.key ?? ""}>
+      <figure className="flex flex-wrap items-center gap-4 rounded-3xl p-4" style={{ background: "#eef5e4" }} data-testid="workshop-bubble">
+        <GardenerPortrait name={who} className="h-20 w-20 shrink-0" />
+        <div className="grid min-w-0 flex-1 gap-1" role="group" aria-label={`${who} sagt`}>
+          <p className="text-sm font-bold uppercase tracking-wide" style={{ color: "#3d5a2a" }} data-testid="workshop-speaker">{who}</p>
+          {lines.map((l, i) => (
+            <p key={`${active?.id}-${i}`} className="text-xl leading-snug sm:text-2xl" data-testid="workshop-line">{l.text}</p>
+          ))}
+        </div>
+        <NarrationControl status={narration.status} onReplay={narration.replay} onStop={narration.stop} />
+      </figure>
+      <section className="rounded-3xl p-5 shadow-sm sm:p-7" style={{ background: CARD }} aria-labelledby="workshop-title" data-testid="workshop-task">
+        <h2 id="workshop-title" ref={headingRef} tabIndex={-1} className="mb-4 text-base font-semibold outline-none" style={{ color: "#7b6a55" }} data-testid="workshop-beat">
+          {active ? active.title : mission.title} · Teil {beat.index} von {beat.count}
+        </h2>
+        {active ? (
+          <NarratedTask child={child} mission={mission} active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} onNext={() => void next()} onSeen={setSeenParts} />
+        ) : (
+          <button type="button" className={btn} style={primary} disabled={busy} onClick={() => void next()} data-testid="workshop-next">
+            Weiter
+          </button>
+        )}
+      </section>
+    </div>
+  );
+}
+
+function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, onNext, onSeen }: { child: ChildId; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; narrator: NarrationPlayer; telemetry: SceneTelemetry; onNext: () => void; onSeen: (ids: string[]) => void }) {
+  void child;
+  const finished = active.status !== "active";
+  const seen = useCallback((ids: string[]) => onSeen(ids), [onSeen]);
+  if (active.kind === "story" || active.kind === "outcome") {
+    return (
+      <div className="grid gap-4" data-testid="workshop-story">
+        {active.kind === "outcome" ? (
+          <WorkshopGarden grown={active.picture?.id ?? null} label={active.recap ?? active.picture?.label ?? mission.title} />
+        ) : active.picture ? (
+          <WorkshopPictureView id={active.picture.id} className="h-40 w-40" />
+        ) : null}
+        {active.ending ? (
+          <div className="grid gap-2" data-testid="workshop-ending">
+            {active.ending.success ? <Feedback tone="success" text={active.ending.success} /> : null}
+            <p className="text-lg">{active.ending.next}</p>
+          </div>
+        ) : null}
+        <NextButton busy={busy} onNext={onNext} label={active.kind === "outcome" ? (finished ? "Weiter" : "Fertig") : "Weiter"} />
+      </div>
+    );
+  }
+  return (
+    <div className="grid gap-5">
+      {active.kind === "decide" && active.decide ? <DecideTask active={active} busy={busy} act={act} /> : null}
+      {active.kind === "solve" && active.solve ? <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} quiet onSeen={seen} /> : null}
+      {active.kind === "read" ? <NarratedReadTask active={active} busy={busy} act={act} /> : null}
+      {active.kind === "listen" ? <NarratedListen active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} who={mission.characters[0]?.name ?? ""} /> : null}
+      {active.kind === "craft" && active.craft ? <NarratedCraft active={active} busy={busy} act={act} onDone={onNext} /> : null}
+      {finished && active.kind !== "craft" ? <NextButton busy={busy} onNext={onNext} /> : null}
+    </div>
+  );
+}
+
+/** Reading (narrated): the word is SHOWN; the narration never says it, its letters or the options before her attempt. */
+function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; busy: boolean; act: Act }) {
+  const q = active.questions[0];
+  const letters = active.letters;
+  const open = q?.status === "open";
+  return (
+    <div className="grid gap-4" data-testid="workshop-read" data-letters={letters?.shown ? "shown" : "no"}>
+      <p className="justify-self-start rounded-3xl border-4 px-8 py-4 font-mono text-6xl font-bold tracking-[0.3em]" style={{ borderColor: "#d9c6aa", background: "white" }} lang="de" data-testid="read-word">
+        {active.readText}
+      </p>
+      {letters?.shown ? (
+        <div className="flex flex-wrap gap-3 rounded-2xl p-4" style={{ background: "#edf4e6" }} data-testid="read-letters">
+          {letters.shown.letters.map((l, i) => (
+            <span key={i} className="grid h-16 w-16 place-items-center rounded-2xl bg-white text-4xl font-bold">
+              {l.letter}
+            </span>
+          ))}
+        </div>
+      ) : null}
+      {q ? (
+        <div className="grid gap-3" data-testid={`question-${q.id}`} data-status={q.status}>
+          {open ? (
+            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt}>
+              {(q.options ?? []).map((o) => (
+                <button key={o} type="button" className={pictureButton} style={{ borderColor: q.lastWrong === o ? "#c77c14" : "#d9c6aa" }} disabled={busy} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`} aria-label={`Bild ${(q.options ?? []).indexOf(o) + 1}`}>
+                  {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} /> : null}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <Feedback tone={q.status === "correct" ? "success" : "taught"} text={q.status === "correct" ? (letters?.shown ? NARRATION_UI.readCorrectWithLetters : NARRATION_UI.readCorrect) : NARRATION_UI.readGiven(q.shownAnswer ?? "")} />
+          )}
+          {q.hint ? <Feedback tone="retry" text={q.hint} /> : null}
+        </div>
+      ) : null}
+      {open && letters?.offered && !letters.shown ? (
+        <button type="button" className={cn(btn, "justify-self-start", q?.tries ? "ring-4 ring-amber-400" : "")} style={secondary} disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "letters" })} data-testid="read-letters-open" aria-label="Das ist schwer — Buchstaben zusammen anschauen">
+          <span aria-hidden>🔤</span> Buchstaben
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
+/** Listening (narrated): the sentence is played only on her explicit tap, recorded first, through the SAME player (no overlap). */
+function NarratedListen({ active, busy, act, narrator, telemetry, who }: { active: MissionActiveView; busy: boolean; act: Act; narrator: NarrationPlayer; telemetry: SceneTelemetry; who: string }) {
+  const listen = active.listen!;
+  const [playing, setPlaying] = useState(false);
+  const play = async () => {
+    telemetry("listen-play");
+    narrator.unlock();
+    narrator.stop();
+    const res = await act({ a: "support", step: active.id, kind: "play" });
+    if (!res || typeof res.script !== "string") return;
+    setPlaying(true);
+    const result = await narrator.play({ key: `listen|${active.id}|${listen.plays + 1}`, lines: [line(res.script)] });
+    setPlaying(false);
+    if (result === "cancelled") return;
+    const o = narrator.lastLineOutcome();
+    await act({ a: "listen-outcome", step: active.id, outcome: result === "done" && (o === "recorded" || o === "device-de") ? o : "failed" });
+  };
+  const canAnswer = listen.completedPlays > 0 || listen.transcriptShown;
+  return (
+    <div className="grid gap-4" data-testid="workshop-listen">
+      <button type="button" className={cn(btn, "min-h-20 justify-self-start px-8 text-2xl")} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" aria-label={listen.plays ? "Nochmal anhören" : `${who} anhören`}>
+        <span aria-hidden className="text-3xl">👂</span> {playing ? "…" : listen.plays ? "Nochmal" : "Anhören"}
+      </button>
+      {listen.script ? (
+        <p className="rounded-2xl px-4 py-3 text-lg" style={{ background: "#fff8e1" }} data-testid="listen-adult-read">
+          <span className="block text-sm font-semibold uppercase tracking-wide">Für Erwachsene zum Vorlesen (zählt als Hilfe)</span>«{listen.script}»
+        </p>
+      ) : listen.plays > 0 || listen.failures > 0 ? (
+        <button type="button" className="justify-self-start text-base underline underline-offset-4" disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "transcript" })} data-testid="listen-adult-open">
+          Kein Ton? Ein Erwachsener kann vorlesen (zählt als Hilfe)
+        </button>
+      ) : null}
+      {active.questions.map((q) => (
+        <div key={q.id} className="grid gap-2" data-testid={`question-${q.id}`} data-status={q.status}>
+          {q.status === "open" ? (
+            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt}>
+              {(q.options ?? []).map((o, i) => (
+                <button key={o} type="button" className={pictureButton} style={{ borderColor: q.lastWrong === o ? "#c77c14" : "#d9c6aa" }} disabled={busy || !canAnswer} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`} aria-label={`Bild ${i + 1}`}>
+                  {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-28 w-28" /> : null}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <Feedback tone={q.status === "correct" ? "success" : "taught"} text={q.status === "correct" ? NARRATION_UI.listenCorrect : NARRATION_UI.listenGiven(q.shownAnswer ?? "")} />
+          )}
+          {q.hint ? <Feedback tone="retry" text={q.hint} /> : null}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** The real-world activity (narrated, optional): pictured tasks, her own «found» report; no speech buttons, no reading needed. */
+function NarratedCraft({ active, busy, act, onDone }: { active: MissionActiveView; busy: boolean; act: Act; onDone: () => void }) {
+  const c = active.craft!;
+  const [picked, setPicked] = useState<string[]>(c.found);
+  const saved = c.found.length > 0 && c.found.join(",") === picked.join(",");
+  const toggle = (id: string) => setPicked((p) => (p.includes(id) ? p.filter((x) => x !== id) : c.find && p.length >= c.find.count ? p : [...p, id]));
+  return (
+    <div className="grid gap-5" data-testid="workshop-craft">
+      <ol className="grid gap-3">
+        {c.tasks.map((t, i) => (
+          <li key={t.id} className="flex items-center gap-4 rounded-2xl px-4 py-3" style={{ background: "#eef5e4" }} data-testid={`craft-task-${t.id}`}>
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-xl font-bold">{i + 1}</span>
+            {t.picture ? <WorkshopPictureView id={t.picture} className="h-16 w-16" /> : null}
+            <span className="text-xl">{t.text}</span>
+          </li>
+        ))}
+      </ol>
+      {c.find ? (
+        <div className="grid gap-3" data-testid="craft-find">
+          <div className="flex flex-wrap gap-3" role="group" aria-label={c.find.prompt}>
+            {c.find.options.map((o) => (
+              <button key={o.id} type="button" className={pictureButton} style={{ borderColor: picked.includes(o.id) ? "#3f7a3a" : "#d9c6aa" }} aria-pressed={picked.includes(o.id)} disabled={busy} onClick={() => toggle(o.id)} data-testid={`found-${o.id}`}>
+                <WorkshopPictureView id={o.picture} />
+                {o.label}
+              </button>
+            ))}
+          </div>
+          <button type="button" className={cn(btn, "justify-self-start")} style={secondary} disabled={busy || !picked.length || saved} onClick={() => void act({ a: "craft-found", step: active.id, items: picked })} data-testid="found-save">
+            {saved ? "✓ Gespeichert" : `Speichern (${picked.length} von ${c.find.count})`}
+          </button>
+        </div>
+      ) : null}
+      <p className="text-sm" style={{ color: "#7b6a55" }} data-testid="craft-parent-note">{c.parentNote}</p>
+      <NextButton busy={busy} onNext={onDone} label="Weiter" />
     </div>
   );
 }

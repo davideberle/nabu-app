@@ -59,7 +59,7 @@ import { buildWritingReviewDispatch, evaluateLogRevision, parseWritingReviewRepl
 import { applyReasoningChoice, applyReasoningReply, applyReasoningTurn, childExplanationText, closeReasoningUnresolved, effectiveLevel, levelLabel, MAX_REPLY_CHARS, methodLabel, newReasoningState, pendingDispatch, turnsLeft, type AssessmentLevel, type ReasoningDispatchContext, type ReasoningState, type ReplyOrigin } from "./family-learning-reasoning.ts";
 import { sha256Hex } from "./family-learning-hash.ts";
 import { liveTutorDeferred } from "./family-learning-deferral.ts";
-import { applyMissionAction, buildMissionView, chosenGrid, chosenOption, mapEnding, workshopEnding, workshopRecap, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, stepStatuses, visibleWorld, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
+import { applyMissionAction, buildMissionView, chosenGrid, chosenOption, mapEnding, narratedWorkshopEnding, narratedWorkshopRecap, workshopEnding, workshopRecap, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, stepStatuses, visibleWorld, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
 import { applyNoktTalk, noktTalkView } from "./family-learning-nokt-talk.ts";
 import { originWithoutBinding, provenanceOf, receiptOrigin as bindReceipt, type InvalidReceipt, type ReceiptInput, type VerifiedReceipt } from "./family-learning-trust.ts";
 import {
@@ -669,7 +669,8 @@ export function upgradeMissionState(input: MissionState, content: LearningConten
   if (state.contentVersion < content.contentVersion) {
     // `upgradedAt` dates the ONE upgrade from the pilot content (version 1): historical reviews of pilot visits are
     // labelled by it. A later additive upgrade (2 → 3, Visit 4) never moves it, so chapter reviews keep their version.
-    if (state.contentVersion === 1) state.upgradedAt = nowIso;
+    // Isabel's own line (`isabel-workshop`) never had a pilot: her 1 → 2 upgrade (Visit 2) dates nothing.
+    if (state.contentVersion === 1 && content.contentId !== "isabel-workshop") state.upgradedAt = nowIso;
     state.contentVersion = content.contentVersion;
     changed = true;
   }
@@ -2893,9 +2894,22 @@ export type LogReviewView = {
 };
 
 /** Content v7: what the look back shows before Nokt speaks — the visible result (his own plan), one evidenced success, one next step, his button answers so far. */
-export type ClosingView = { success: string | null; next: string; artifact: string | null; plan: import("./family-learning-mission-spec.ts").MissionGrid | null; feedback: Record<string, string | null>; made?: { id: string; label: string; picture: string | null; room: string } | null; recap?: string | null };
+export type ClosingView = { success: string | null; next: string; artifact: string | null; plan: import("./family-learning-mission-spec.ts").MissionGrid | null; feedback: Record<string, string | null>; made?: { id: string; label: string; picture: string | null; room: string } | null; recap?: string | null; /** Isabel Visit 2+ (narrated): the spoken goodbye after the closing questions (the outcome's reviewed done lines + the visit's saved line). */ farewell?: string[] | null; narrated?: boolean };
+
+/** Isabel Visit 2+: the running (else the next) visit's own reviewed wording and its mission's story character; null for Visit 1. */
+export type VisitText = { visit: string; title: string; hub: string; mission: string; done: string; start: string; character: string | null; narrated: boolean };
+
+function visitTextFor(state: MissionState, content: LearningContent, nextVisit: string | null): VisitText | null {
+  const id = state.visits.find((v) => v.finishedAt === null)?.id ?? nextVisit;
+  const def = content.visits.find((v) => v.id === id);
+  if (!def?.childText) return null;
+  const mission = (content.missions ?? []).find((m) => m.visit === def.id) ?? null;
+  return { visit: def.id, title: mission?.title ?? def.title, ...def.childText, character: mission?.characters[0]?.name ?? null, narrated: mission?.narration?.mode === "auto" };
+}
 
 export type ChildView = {
+  /** Isabel Visit 2+: see `VisitText` (absent for Santiago). */
+  visitText?: VisitText | null;
   child: ChildId;
   revision: number;
   /** Server-established erasure generation the view was read under; echoed by telemetry batches (P2). Content-free. */
@@ -2972,11 +2986,16 @@ export type ChildView = {
 function nextStepText(state: MissionState, content: LearningContent, stage: StageId | null, now: Date): string {
   // Isabel's own content (Old Lilas kleine Werkstatt): her own wording, never Santiago's base/island lines.
   if (content.child === "isabel") {
-    if (stage === "mission") return "Hilf Old Lila in der Werkstatt: Wir bauen ein kleines Zimmer.";
-    if (stage === "reflect") return "Wie war es heute?";
+    // Isabel Visit 2+: a visit with its own reviewed wording (`childText`) speaks for itself; Visit 1 keeps its released lines.
+    const running = state.visits.find((v) => v.finishedAt === null);
     const next = nextVisitAvailability(state, content, now);
-    if (next.visit) return "Old Lilas kleine Werkstatt wartet auf dich.";
-    return "Die Werkstatt ist für heute geschafft. Dein Zimmer ist gespeichert.";
+    const text = content.visits.find((v) => v.id === (running?.id ?? next.visit))?.childText ?? null;
+    const lastDone = [...state.visits].reverse().find((v) => v.finishedAt !== null);
+    const doneText = lastDone ? content.visits.find((v) => v.id === lastDone.id)?.childText ?? null : null;
+    if (stage === "mission") return text?.mission ?? "Hilf Old Lila in der Werkstatt: Wir bauen ein kleines Zimmer.";
+    if (stage === "reflect") return "Wie war es heute?";
+    if (next.visit) return text?.hub ?? "Old Lilas kleine Werkstatt wartet auf dich.";
+    return doneText?.done ?? "Die Werkstatt ist für heute geschafft. Dein Zimmer ist gespeichert.";
   }
   if (stage) {
     switch (stage) {
@@ -3046,6 +3065,14 @@ function closingView(state: MissionState, content: LearningContent, visit: Visit
     const fb: Record<string, string | null> = {};
     for (const [k, val] of Object.entries(vw?.feedback?.answers ?? {})) fb[k] = val;
     for (const k of vw?.feedback?.skipped ?? []) fb[k] = null;
+    if (def.narration) {
+      // Isabel Visit 2 (narrated): the result was already shown and spoken on the outcome beat; the closing asks one question per
+      // screen and ends with the spoken goodbye.
+      const outcomeStep = def.steps.find((x) => x.kind === "outcome");
+      const childText = content.visits.find((x) => x.id === visit)?.childText;
+      const nEnding = narratedWorkshopEnding(def, run);
+      return { success: nEnding.success, next: nEnding.next, artifact: null, plan: null, feedback: fb, made: decideStep ? chosenOption(def, run, decideStep.id) : null, recap: narratedWorkshopRecap(def, run), farewell: [...(outcomeStep?.done ?? []).map((l) => l.text), ...(childText?.done ? [childText.done] : [])], narrated: true };
+    }
     return { success: ending.success, next: ending.next, artifact: null, plan: null, feedback: fb, made: decideStep ? chosenOption(def, run, decideStep.id) : null, recap: workshopRecap(def, run) };
   }
   const ending = mapEnding(def, run);
@@ -3343,6 +3370,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     vocabulary: options.vocabulary ? childVocabularyCue(buildVocabularyLedger(state, content, options.vocabulary), content, state) : null,
     wordbook: options.vocabulary ? childWordbook(buildVocabularyLedger(state, content, options.vocabulary), content, state, options.vocabulary) : null,
     nextStep: nextStepText(state, content, stage, now),
+    ...(content.child === "isabel" ? { visitText: visitTextFor(state, content, availability.visit) } : {}),
     locations: content.locations,
     station: stationDef ? { themes: stationDef.themes, spots: stationDef.spots, theme: station.theme, spot: station.spot, built: station.built, lampLit: station.lampLit, lampAvailable: (state.base.supplies["lámpara"] ?? 0) > 0, reference: stationReference } : null,
     pier: content.pier ? { spots: content.pier.spots, spot: pier.spot, built: pier.built, boatMoored: pier.boatMoored, woodAvailable: (state.base.supplies["wood"] ?? 0) > 0 } : null,

@@ -794,6 +794,13 @@ function ReviewCard({ completion, visitTitle }: { completion: Evidence["completi
           Hinweis: {derivation.note} (gespeicherte Regelfassung {derivation.storedVersion}, aktuell {derivation.currentVersion})
         </p>
       ) : null}
+      {r?.learning.childSummaryCorrection ? (
+        <div className="mt-2 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" data-testid="review-child-summary-corrected">
+          <p className="font-medium">{r.learning.childSummaryCorrection.note}</p>
+          <p className="mt-1">Jetzt: {r.learning.childSummary.success?.text ?? "kein Erfolgssatz"} · {r.learning.childSummary.artifact.text}</p>
+          <p className="mt-1">Gespeichert: {r.learning.childSummaryCorrection.stored.success?.text ?? "kein Erfolgssatz"} · {r.learning.childSummaryCorrection.stored.artifact.text}</p>
+        </div>
+      ) : null}
       {r?.previousReviews?.length ? (
         <div className="mt-2 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" data-testid="review-refreshed">
           <p className="font-medium">Dieser Rückblick wurde aus den gespeicherten Aufzeichnungen neu abgeleitet (Kennung, Daten und Originaltexte unverändert).</p>

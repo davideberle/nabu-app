@@ -470,6 +470,24 @@ export function summariseTelemetry(events: TelemetryEvent[] | null, batches = 0,
  * (`learning.lessons`), so parent evidence and the child report are the same derivation.
  */
 export const REVIEW_VERSION = 5;
+
+/**
+ * Isabel's workshop reviews (correction 2026-10-29, I2-05): a stored child summary derived before the workshop branch existed
+ * praised her unscored choice of what to make as a first-try success and named the LAST listed room element («ein Regal»)
+ * instead of the one she chose. The stored row is never rewritten (it stays byte-identical, with her answers); on read the
+ * summary is re-derived from her unchanged records and the stored wording is kept beside it with a note. Other children and
+ * other presentations are returned unchanged.
+ */
+export function correctedWorkshopChildSummary(stored: VisitSummary | null | undefined, state: MissionState | null, content: LearningContent | null | undefined, visitId: string): { summary: VisitSummary; stored: VisitSummary; note: string } | null {
+  if (!stored || !state || !content || content.child !== "isabel") return null;
+  if (!content.visits.some((v) => v.id === visitId) || !state.visits.some((v) => v.id === visitId && v.finishedAt)) return null;
+  const def = (content.missions ?? []).find((m) => m.visit === visitId);
+  if (def?.presentation !== "workshop") return null;
+  const live = buildVisitSummary(state, content, visitId as VisitId);
+  const same = (a: VisitSummary, b: VisitSummary) => (a.success?.text ?? null) === (b.success?.text ?? null) && a.artifact.text === b.artifact.text && a.next.text === b.next.text;
+  if (same(live, stored)) return null;
+  return { summary: live, stored, note: "Kinder-Zusammenfassung beim Lesen neu abgeleitet (Korrektur 29.10.2026): Ihre Wahl, was sie baut, ist eine Vorliebe und kein Erfolg; das Ergebnis zeigt das von ihr gewählte Element. Gespeicherte Fassung und ihre Antworten bleiben unverändert erhalten." };
+}
 /** The review version in which the LEARNING classification rules last changed; older stored learning credit is obsolete. */
 export const LEARNING_RULES_VERSION = 3;
 
@@ -483,6 +501,8 @@ export type ParentReview = {
     objectives: { taskId: string; version: number; objective: string; outcome: string; evidence: string; support: string[]; uncertainty: string | null }[];
     teachNext: { text: string; why: string; uncertainty: string };
     childSummary: VisitSummary;
+    /** Isabel's workshop (2026-10-29): present only on READ when the stored child summary was re-derived; the stored wording is kept here. Never written. */
+    childSummaryCorrection?: { stored: VisitSummary; note: string };
     /** The per-lesson feedback exactly as the child's report shows it (world-first 2026-10-03); absent on older stored reviews. */
     lessons?: LessonFeedback[];
   };

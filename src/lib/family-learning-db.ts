@@ -34,7 +34,7 @@ import {
   type Records,
 } from "./family-learning-state.ts";
 import { sanitizeTelemetryEvents } from "./family-learning-telemetry-schema.ts";
-import { buildParentReview, LEARNING_RULES_VERSION, REVIEW_VERSION, completionIdentity, summariseTelemetry, type ParentReview, type TelemetryEvent, type TelemetrySummary } from "./family-learning-summary.ts";
+import { buildParentReview, correctedWorkshopChildSummary, LEARNING_RULES_VERSION, REVIEW_VERSION, completionIdentity, summariseTelemetry, type ParentReview, type TelemetryEvent, type TelemetrySummary } from "./family-learning-summary.ts";
 import { visitLessonFeedback } from "./family-learning-feedback.ts";
 import type { ProgressSources } from "./family-learning-progress.ts";
 import { buildVocabularyLedger, type ParentCorrectionMap, type VocabularyInventory, type VocabularyLedger } from "./family-learning-vocabulary.ts";
@@ -612,7 +612,12 @@ export async function readEvidence(client: Client, child: ChildId, missionId: st
     const stored = parseJson(row.review_json) as ParentReview | null;
     const visitId = String(row.visit_id);
     const historical = Number(row.historical) === 1;
-    const { review, derivation } = await projectReview(client, child, visitId, historical, stored, state, content);
+    const projected = await projectReview(client, child, visitId, historical, stored, state, content);
+    const { derivation } = projected;
+    let review = projected.review;
+    // Isabel's workshop: a stored child summary that misreports her choice is re-derived in memory (the row is not touched).
+    const fix = review ? correctedWorkshopChildSummary(review.learning?.childSummary, state, content, visitId) : null;
+    if (review && fix) review = { ...review, learning: { ...review.learning, childSummary: fix.summary, childSummaryCorrection: { stored: fix.stored, note: fix.note } } };
     completionRecords.push({
       completionId: String(row.completion_id),
       missionId: String(row.mission_id),

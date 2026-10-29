@@ -315,7 +315,7 @@ export type MissionAction =
   /** Isabel's workshop: the wooden things she says she found at home (her own report, up to the step's count; never verified). */
   | { a: "craft-found"; step: string; items: string[] }
   /** Listening: what the device reported for the last requested play (`child-voice` / `browser` = playback completion event reported; `failed` = none). */
-  | { a: "listen-outcome"; step: string; outcome: "child-voice" | "browser" | "failed" }
+  | { a: "listen-outcome"; step: string; outcome: "child-voice" | "browser" | "failed" | "recorded" | "device-de" }
   | { a: "practice"; step: string; response: string }
   | { a: "later"; step: string }
   | { a: "typing-start" }
@@ -942,7 +942,10 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
     case "listen-outcome": {
       const { step, r } = requireActive(run, def, action.step);
       if (step.kind !== "listen") throw new MissionOpError("invalid", "only listening steps report playback");
-      if (!["child-voice", "browser", "failed"].includes(action.outcome)) throw new MissionOpError("invalid", "unknown playback outcome");
+      // Isabel Visit 2 (narrated): `recorded` = the prerecorded clip of the reviewed sentence, `device-de` = the device's own
+      // explicitly German voice. Both are device-reported completions, like `child-voice` / `browser`.
+      const allowed = def.narration ? ["recorded", "device-de", "failed"] : ["child-voice", "browser", "failed"];
+      if (!allowed.includes(action.outcome)) throw new MissionOpError("invalid", "unknown playback outcome");
       const reported = (r.completedPlays ?? 0) + (r.playFailures ?? 0);
       if (reported >= r.plays) throw new MissionOpError("not-allowed", "no requested play is waiting for its outcome");
       if (action.outcome === "failed") r.playFailures = (r.playFailures ?? 0) + 1;
@@ -1820,7 +1823,7 @@ export type SolvePartView = {
   /** The child's own last wrong number (to catch an unchanged repeat before it is sent) — never an answer key. */
   lastWrong: number | null;
   feedback: { tone: "retry" | "stuck" | "success" | "taught" | "practice-wrong"; text: string } | null;
-  hints: { id: string; level: number; type: string; text: string; diagram: MissionDiagram | null; grid?: MissionGrid | null; check: { prompt: string; kind: "number" | "pick"; options: string[] | null; unit: string | null; result: "correct" | "wrong" | null; reply: string | null; representation: MissionDiagram | null } | null }[];
+  hints: { id: string; level: number; type: string; text: string; /** Main answers given before this hint was opened. */ afterAttempts?: number; diagram: MissionDiagram | null; grid?: MissionGrid | null; check: { prompt: string; kind: "number" | "pick"; options: string[] | null; unit: string | null; result: "correct" | "wrong" | null; reply: string | null; representation: MissionDiagram | null } | null }[];
   hintsLeft: number;
   /** False before the first attempt of a fresh application (hints come after trying). */
   hintAllowed: boolean;
@@ -1872,6 +1875,8 @@ export type MissionView = {
   objective: string;
   /** Content v6: `scene` missions show one illustrated scene and their beats in order; absent/`walk` = the walkable island. Content v7: `map` = the walkable island between clear task scenes. */
   presentation?: "walk" | "scene" | "map" | "workshop";
+  /** Isabel Visit 2+: the content asks for automatic narration (one replay/stop control); absent everywhere else. */
+  narration?: { mode: "auto" } | null;
   scene?: { art: string; alt: string } | null;
   /** Content v6 (scene): which beat of the reviewed order is on screen (1-based) and how many there are. */
   beat?: { index: number; count: number; next: string | null } | null;
@@ -1972,7 +1977,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     ...(step.grid || step.fromChoice ? { grid: step.fromChoice ? chosenGrid(def, run, step.fromChoice) : step.grid ?? null } : {}),
     diagram: step.diagram ?? null,
     shipments: step.shipments ?? null,
-    ending: step.kind === "outcome" && def.presentation === "scene" ? sceneEnding(def, run) : step.kind === "outcome" && def.presentation === "workshop" ? workshopEnding(def, run) : null,
+    ending: step.kind === "outcome" && def.presentation === "scene" ? sceneEnding(def, run) : step.kind === "outcome" && def.presentation === "workshop" ? (def.narration ? narratedWorkshopEnding(def, run) : workshopEnding(def, run)) : null,
     ...(def.presentation === "workshop" ? workshopActive(def, run, step, r) : {}),
     tutor: { available: !!tutorAvailable, offerPart: Object.entries(r.parts ?? {}).find(([, x]) => x.offer === "shown")?.[0] ?? null },
   };
@@ -2016,6 +2021,7 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun, tutorA
         level: hd.level,
         type: hd.type,
         text: hd.text,
+        afterAttempts: h.afterAttempts,
         diagram: hd.diagram ?? null,
         ...(hd.grid ? { grid: hd.grid } : {}),
         check: hd.check ? { prompt: hd.check.prompt, kind: hd.check.kind, options: hd.check.options ?? null, unit: hd.check.unit ?? null, result: c?.result ?? null, reply: c ? (c.result === "correct" ? hd.check.correct : hd.check.wrong) : null, representation: c?.result === "wrong" ? hd.check.representation ?? null : null } : null,
@@ -2161,21 +2167,21 @@ function workshopActive(def: MissionDef, run: MissionRun, step: MissionStep, r: 
     const o = chosenOption(def, run, step.fromChoice);
     out.picture = o && o.picture ? { id: o.picture, label: o.room } : null;
   } else if (step.picture) out.picture = { id: step.picture, label: step.title };
-  if (step.kind === "outcome" && step.recap) out.recap = workshopRecap(def, run);
+  if (step.kind === "outcome" && step.recap) out.recap = def.narration ? narratedWorkshopRecap(def, run) : workshopRecap(def, run);
   return out;
 }
 
-export const RESULT_DE = (r: MissionStepRun | undefined, partsOf?: MissionStep["solve"]): string => {
+export const RESULT_DE = (r: MissionStepRun | undefined, partsOf?: MissionStep["solve"], who = "Old Lila"): string => {
   if (!r) return "nicht gemacht";
   if (partsOf) {
     const prs = partsOf.parts.map((p) => r.parts?.[p.id]).filter(Boolean) as MissionPartRun[];
     if (prs.length && prs.every((p) => p.evidence === "independent")) return "beim ersten Versuch richtig";
-    if (prs.some((p) => p.status === "taught" || p.status === "unresolved")) return "zusammen mit Old Lila gelöst";
+    if (prs.some((p) => p.status === "taught" || p.status === "unresolved")) return `zusammen mit ${who} gelöst`;
     if (prs.some((p) => p.hints.length)) return "mit einem Hinweis richtig";
     return "nach einem weiteren Versuch richtig";
   }
   if (r.outcome === "independent") return "beim ersten Versuch richtig";
-  if (r.outcome === "answer_exposed") return "Old Lila hat die Antwort gezeigt";
+  if (r.outcome === "answer_exposed") return `${who} hat die Antwort gezeigt`;
   return r.support.some((x) => x.kind === "letters") ? "mit Buchstabenhilfe" : "nach einem weiteren Versuch richtig";
 };
 
@@ -2185,13 +2191,15 @@ export const RESULT_DE = (r: MissionStepRun | undefined, partsOf?: MissionStep["
  * stay in the parent's evidence.
  */
 export function workshopRecap(def: MissionDef, run: MissionRun): string {
+  // The story character of THIS mission (Visit 1: Old Lila — the released wording is unchanged).
+  const who = def.characters[0]?.name ?? "Old Lila";
   const parts: string[] = [];
   const decide = def.steps.find((s) => s.kind === "decide");
   const chosen = decide ? chosenOption(def, run, decide.id) : null;
   if (chosen) parts.push(`${chosen.label.charAt(0).toLowerCase()}${chosen.label.slice(1)} gewählt`);
   const ran = (kind: string) => def.steps.filter((s) => s.kind === kind && run.steps[s.id] && run.steps[s.id].status !== "active");
   const match = ran("match")[0];
-  if (match) parts.push(run.steps[match.id].outcome === "answer_exposed" ? "die Materialien mit Old Lila angeschaut" : "Materialien zugeordnet");
+  if (match) parts.push(run.steps[match.id].outcome === "answer_exposed" ? `die Materialien mit ${who} angeschaut` : "Materialien zugeordnet");
   const tens = ran("solve").filter((s) => s.objective.includes("tens"));
   const lastTens = tens[tens.length - 1];
   if (ran("solve").length) parts.push(lastTens && run.steps[lastTens.id].outcome !== "independent" ? "Klötze und Stäbe gezählt (die Bündel mit Hilfe)" : "Klötze und Stäbe gezählt");
@@ -2199,11 +2207,11 @@ export function workshopRecap(def: MissionDef, run: MissionRun): string {
   if (read) {
     const r = run.steps[read.id];
     const word = read.text?.body ?? "";
-    parts.push(r.outcome === "answer_exposed" ? `das Wort ${word} mit Old Lila angeschaut` : r.support.some((x) => x.kind === "letters") ? `das Wort ${word} mit Buchstabenhilfe angeschaut` : `zum Wort ${word} das passende Bild gefunden`);
+    parts.push(r.outcome === "answer_exposed" ? `das Wort ${word} mit ${who} angeschaut` : r.support.some((x) => x.kind === "letters") ? `das Wort ${word} mit Buchstabenhilfe angeschaut` : `zum Wort ${word} das passende Bild gefunden`);
   }
   const listen = ran("listen")[0];
-  if (listen) parts.push(run.steps[listen.id].outcome === "answer_exposed" ? "beim Zuhören mit Old Lila das Bild gefunden" : "beim Zuhören das richtige Bild gefunden");
-  if (!parts.length) return "Du warst in Old Lilas Werkstatt.";
+  if (listen) parts.push(run.steps[listen.id].outcome === "answer_exposed" ? `beim Zuhören mit ${who} das Bild gefunden` : "beim Zuhören das richtige Bild gefunden");
+  if (!parts.length) return def.narration ? `Du warst bei ${who}.` : "Du warst in Old Lilas Werkstatt.";
   const last = parts.pop()!;
   return `Du hast ${parts.length ? `${parts.join(", ")} und ${last}` : last}.`;
 }
@@ -2225,6 +2233,31 @@ export function workshopEnding(def: MissionDef, run: MissionRun): { success: str
   const readSupported = def.steps.find((s) => s.kind === "read" && ran(s.id) && ran(s.id)!.outcome !== "independent");
   const next = openTens ? "Nächstes Mal zählen wir noch einmal mit Bündeln." : readSupported ? "Nächstes Mal schauen wir wieder Buchstaben an." : "Gleich wählst du, was du nächstes Mal machen möchtest.";
   return { success, next };
+}
+
+/**
+ * Isabel Visit 2 (narrated workshop): the recap is ONE short sentence about what she made — the reviewed world line of her own
+ * choice («Im Garten wachsen Blumen.»). Task results stay in the parent view; nothing here is praise or a mastery claim.
+ */
+export function narratedWorkshopRecap(def: MissionDef, run: MissionRun): string | null {
+  const decide = def.steps.find((s) => s.kind === "decide");
+  const chosen = decide ? chosenOption(def, run, decide.id) : null;
+  return chosen ? chosen.room : null;
+}
+
+/**
+ * Isabel Visit 2 (narrated workshop): ONE success that actually happened — the first task (in the reviewed order) answered right
+ * on the first try without recorded in-app help, spoken with that task's reviewed line — else none; and ONE next step: the first
+ * task still open (a fresh application replaces the task it applies), else the next-visit choice. An unscored choice (`decide`)
+ * and the real-world craft are never a success. «Without recorded help» is what the app knows — not that no adult helped.
+ */
+export function narratedWorkshopEnding(def: MissionDef, run: MissionRun): { success: string | null; next: string } {
+  const ran = (id: string) => run.steps[id];
+  const graded = def.steps.filter((s) => s.ending && ran(s.id) && ran(s.id)!.status !== "active" && (s.kind === "solve" || s.kind === "read" || s.kind === "listen"));
+  const superseded = new Set(graded.map((s) => s.solve?.application?.of).filter((x): x is string => !!x));
+  const success = graded.find((s) => ran(s.id)!.outcome === "independent")?.ending?.success ?? null;
+  const open = graded.find((s) => !superseded.has(s.id) && ran(s.id)!.outcome !== "independent")?.ending?.open ?? null;
+  return { success, next: open ?? "Gleich wählst du, was du nächstes Mal machen möchtest." };
 }
 
 /**
@@ -2281,6 +2314,7 @@ export function buildMissionView(state: MissionState, content: LearningContent, 
     title: def.title,
     objective: def.objective,
     presentation: def.presentation ?? "walk",
+    ...(def.narration ? { narration: def.narration } : {}),
     scene: def.scene ?? null,
     beat: def.presentation === "scene" || def.presentation === "workshop" ? { index: beatStep ? def.steps.indexOf(beatStep) + 1 : def.steps.length, count: def.steps.length, next: nextStep?.id ?? null } : null,
     theme: def.theme,
@@ -2367,6 +2401,19 @@ export function missionVisitSummary(state: MissionState, content: LearningConten
       practiced: null,
       next: { branch: (ending.open ? "supported" : "success") as "success" | "supported", text: ending.next, basis: `${def.id} open items` },
       artifact: run.finishedAt ? { kind: "mission" as const, text: outcome ? `${outcome.label}.` : `${def.title}: geschafft.` } : null,
+    };
+  }
+  if (def.presentation === "workshop") {
+    // Isabel's workshop (correction 2026-10-29, I2-05): the artifact is the element SHE chose (the choice-bound world change,
+    // never the last one listed — Visit 1 said «ein Regal» after she chose the wall), and the success is a task really answered
+    // right on the first try. Her own choice of what to make is a preference, never scored and never a success line.
+    const ending = def.narration ? narratedWorkshopEnding(def, run) : workshopEnding(def, run);
+    const outcome = visibleWorld(def, run, rep.statuses).pop();
+    return {
+      success: ending.success ? { text: ending.success, basis: `${def.id} records (first try, no recorded in-app help; preferences never scored)` } : null,
+      practiced: null,
+      next: { branch: (ending.next.startsWith("Gleich") ? "success" : "supported") as "success" | "supported", text: ending.next.startsWith("Gleich") ? "Nächstes Mal: dein Wunsch zählt." : ending.next, basis: `${def.id} open items` },
+      artifact: run.finishedAt ? { kind: "mission" as const, text: outcome ? `${outcome.label}${/[.!?]$/.test(outcome.label) ? "" : "."}` : `${def.title}: geschafft.` } : null,
     };
   }
   if (def.presentation === "scene") {

@@ -47,6 +47,8 @@ import { MissionScene } from "@/components/family/learning/mission-scene";
 import { MapMission } from "@/components/family/learning/map-mission";
 import { WorkshopScene } from "@/components/family/learning/workshop-scene";
 import { IsabelStart } from "@/components/family/learning/workshop-hub";
+import { WorkshopClosing, WorkshopFarewell } from "@/components/family/learning/workshop-closing";
+import { createNarrationPlayer } from "@/lib/family-narration-player";
 import type { NoktTalkTurnFn } from "@/components/family/learning/nokt-talk";
 import { Debrief } from "@/components/family/learning/debrief";
 import type { MissionAction } from "@/lib/family-learning-mission";
@@ -132,6 +134,11 @@ function Workspace({ child }: { child: ChildId }) {
     [tutorClient, child],
   );
   const speech = useMemo(() => createChildSpeechPlayer(), []);
+  // Isabel Visit 2+ (narrated visits): ONE narration player for the page — unlocked only by her deliberate tap; how each line
+  // was spoken (prerecorded / German device voice / none / refused) goes to the UX telemetry, never into learning evidence.
+  const narrationTelemetryRef = useRef<((name: "narration-recorded" | "narration-device-de" | "narration-no-german-voice" | "narration-blocked") => void) | null>(null);
+  const narrator = useMemo(() => createNarrationPlayer({ onLine: (_l, outcome) => narrationTelemetryRef.current?.(outcome === "recorded" ? "narration-recorded" : outcome === "device-de" ? "narration-device-de" : outcome === "no-german-voice" ? "narration-no-german-voice" : "narration-blocked") }), []);
+  const [farewell, setFarewell] = useState<{ who: string; lines: string[]; grown: string | null; label: string } | null>(null);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -155,6 +162,9 @@ function Workspace({ child }: { child: ChildId }) {
   // re-render the workspace. Batches go out on stage change, every 20 s and
   // on unmount; the idle rule and the event kinds live in the pure module.
   const telemetryRef = useRef(createTelemetryBuffer());
+  narrationTelemetryRef.current = (name) => {
+    telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
+  };
   const flushTelemetry = useCallback(
     (keepalive = false, identity?: { visitId: string; visitStartedAt: string; erasureGeneration: number } | null, batchId?: string) => {
       const taken = takeBatch(telemetryRef.current, Date.now(), batchId ?? (typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `b-${Date.now()}`));
@@ -215,9 +225,10 @@ function Workspace({ child }: { child: ChildId }) {
       learning.reset();
       tutorClient.reset();
       speech.cancel();
+      narrator.stop();
       clearChildDrafts(typeof window !== "undefined" ? window.sessionStorage : null, child);
     };
-  }, [refresh, learning, tutorClient, speech, child]);
+  }, [refresh, learning, tutorClient, speech, narrator, child]);
 
   const stageForTelemetry = load.kind === "ready" ? load.view.visit?.stage ?? null : null;
   // Content v6 (N7-02): inside the mission stage the open step is attributed too (closed vocabulary; entry/exit and active time per task).
@@ -377,6 +388,23 @@ function Workspace({ child }: { child: ChildId }) {
   const fingers = view.typingCourse?.fingers ?? (view.typing && view.typing.available ? view.typing.lesson.fingers : {});
   const home = view.typingCourse?.homePosition ?? (view.typing && view.typing.available ? { left: view.typing.lesson.homeRow.slice(0, 4), right: view.typing.lesson.homeRow.slice(4, 8), anchors: ["f", "j"], thumb: " " } : HOME_FALLBACK);
 
+  // Isabel Visit 2+ (narrated): the spoken goodbye after her closing answers were saved, then one way home.
+  if (farewell) {
+    return (
+      <WorkshopFarewell
+        who={farewell.who}
+        lines={farewell.lines}
+        grown={farewell.grown}
+        label={farewell.label}
+        narrator={narrator}
+        telemetry={(name) => {
+          telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
+        }}
+        onHome={() => router.push(`/family/home?child=${child}`)}
+      />
+    );
+  }
+
   // The report of a just-finished (or reopened) visit comes before the map.
   const report = reportVisit ? view.reports.find((r) => r.visit === reportVisit) ?? null : null;
   if (report && (!view.visit || view.visit.id !== report.visit || report.partial)) {
@@ -401,7 +429,8 @@ function Workspace({ child }: { child: ChildId }) {
 
   if (!view.visit && view.child === "isabel") {
     // Isabel Visit 1: her own start screen (Old Lila's workshop), never Santiago's island.
-    return <IsabelStart child={child} view={view} busy={busy} notice={notice} onStart={() => { speech.unlock(); void mutate({ op: "start-visit" }); }} />;
+    // The deliberate start also unlocks the narration of a narrated visit (nothing is spoken before this tap).
+    return <IsabelStart child={child} view={view} busy={busy} notice={notice} onStart={() => { speech.unlock(); narrator.unlock(); void mutate({ op: "start-visit" }); }} />;
   }
 
   if (!view.visit) {
@@ -549,6 +578,7 @@ function Workspace({ child }: { child: ChildId }) {
             mission={view.mission}
             busy={busy}
             speech={speech}
+            narrator={narrator}
             telemetry={(name) => {
               telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
             }}
@@ -718,7 +748,30 @@ function Workspace({ child }: { child: ChildId }) {
                   />
                 ) : null}
                 {stage === "log" ? <SaveLog view={view} busy={busy} gate={gate} onSubmit={(text, modality) => void mutate({ op: "save-log", text, modality })} /> : null}
-                {stage === "reflect" && view.reflection?.closing ? (
+                {stage === "reflect" && view.reflection?.closing?.narrated ? (
+                  // Isabel Visit 2+: one spoken question per screen, then the spoken goodbye (no Nokt, no microphone).
+                  <WorkshopClosing
+                    key={identityKey(view)}
+                    view={view}
+                    busy={busy}
+                    narrator={narrator}
+                    telemetry={(name) => {
+                      telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
+                    }}
+                    onFeedback={(feedback) => mutate({ op: "closing-feedback", feedback } as LearningOp)}
+                    onFinish={async (payload, idempotencyKey) => {
+                      const identity = visitIdentity();
+                      const closing = view.reflection?.closing ?? null;
+                      const outcome = await mutate(payload as LearningOp, { idempotencyKey });
+                      const ok = !!outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed");
+                      if (ok) {
+                        flushTelemetry(true, identity, `ui-${idempotencyKey}`);
+                        setFarewell({ who: view.visitText?.character ?? "", lines: closing?.farewell ?? [], grown: closing?.made?.picture ?? null, label: closing?.recap ?? closing?.made?.room ?? "" });
+                      }
+                      return ok;
+                    }}
+                  />
+                ) : stage === "reflect" && view.reflection?.closing ? (
                   // Visit 8 (content v7): the short spoken look back replaces the click-through summary; the form stays the fallback.
                   <Debrief
                     key={identityKey(view)}
