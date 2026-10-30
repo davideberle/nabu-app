@@ -928,8 +928,8 @@ function MealsPageInner() {
   }, [plan?.week, plan?.days, dayHistory]);
 
   const isRecipeOnFile = useCallback(
-    (recipeId: string) => recipeIdsOnFile.has(recipeId),
-    [recipeIdsOnFile],
+    (recipeId: string) => recipeIdsOnFile.has(recipeId) || candidates.some((recipe) => recipe.id === recipeId),
+    [recipeIdsOnFile, candidates],
   );
 
   /**
@@ -1118,7 +1118,6 @@ function MealsPageInner() {
     if (planLoading) return;
     const activePlan = plan ?? (selectedRecipe ? buildEmptyPlan() : null);
     if (!activePlan) return;
-    if (activePlan.locked) return;
     // No candidate selected — navigate to recipe page if assigned
     if (!selectedRecipe) {
       const slot = activePlan.days[dayIndex];
@@ -1130,6 +1129,7 @@ function MealsPageInner() {
       }
       return;
     }
+    if (activePlan.locked) return;
     const newDays = [...activePlan.days];
     const existingMeal = newDays[dayIndex].meal;
     newDays[dayIndex] = {
@@ -1153,7 +1153,6 @@ function MealsPageInner() {
     if (planLoading) return;
     const activePlan = plan ?? (selectedRecipe ? buildEmptyPlan() : null);
     if (!activePlan) return;
-    if (activePlan.locked) return;
     const slot = activePlan.days[dayIndex];
     if (!slot || !hasBrunchSlot(slot.dayOfWeek)) return;
 
@@ -1166,6 +1165,7 @@ function MealsPageInner() {
       return;
     }
 
+    if (activePlan.locked) return;
     const newDays = [...activePlan.days];
     newDays[dayIndex] = {
       ...slot,
@@ -1669,19 +1669,23 @@ function MealsPageInner() {
               history: hist,
               isRecipe: isRecipeOnFile,
             });
+            // A weekend day with only brunch assigned must still open that
+            // recipe when its header/background is tapped.
+            const dayNavigationRecipeId = navigationRecipeId ??
+              (!isFilled && brunchSlot?.main?.id && isRecipeOnFile(brunchSlot.main.id)
+                ? brunchSlot.main.id : null);
             const isClickable = isSelectable
               ? true
-              : Boolean(navigationRecipeId && !dayIsSkipped);
-            const cardHandlesMainClick = !hasBrunch;
+              : Boolean(dayNavigationRecipeId && !dayIsSkipped);
             return (
               <div
                 key={wd.date}
-                onClick={() => cardHandlesMainClick && isClickable && handleSlotClick(i, navigationRecipeId)}
+                onClick={() => isClickable && handleSlotClick(i, dayNavigationRecipeId)}
                 className={`rounded-lg border p-3 min-h-[110px] flex flex-col transition-all ${
                   dayIsSkipped
                     ? "border-secondary bg-secondary opacity-50"
                     : isSelectable
-                      ? `${cardHandlesMainClick ? "cursor-pointer " : ""}border-amber-300/80 dark:border-amber-700/60 bg-amber-50/30 dark:bg-amber-950/15 hover:bg-amber-50/50 dark:hover:bg-amber-900/20`
+                      ? `cursor-pointer border-amber-300/80 dark:border-amber-700/60 bg-amber-50/30 dark:bg-amber-950/15 hover:bg-amber-50/50 dark:hover:bg-amber-900/20`
                       : isCooked
                         ? "bg-emerald-50/30 dark:bg-emerald-950/10 border-emerald-200/80 dark:border-emerald-800/30 cursor-pointer"
                         : isFilled
@@ -1818,7 +1822,10 @@ function MealsPageInner() {
                   </div>
                 ) : isFilled ? (
                   <div
-                    onClick={() => hasBrunch && isClickable && handleSlotClick(i, navigationRecipeId)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (isClickable) handleSlotClick(i, navigationRecipeId);
+                    }}
                     className={`flex-1 flex flex-col justify-between ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
                   >
                     {hasBrunch && (
@@ -1941,7 +1948,10 @@ function MealsPageInner() {
                   </div>
                 ) : actualMealName ? (
                   <div
-                    onClick={() => hasBrunch && isClickable && handleSlotClick(i, navigationRecipeId)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (isClickable) handleSlotClick(i, navigationRecipeId);
+                    }}
                     className={`flex-1 flex flex-col justify-center ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
                   >
                     <span className="mb-0.5 text-[9px] font-medium uppercase tracking-wider text-blue-600 dark:text-blue-400">
@@ -1953,7 +1963,10 @@ function MealsPageInner() {
                   </div>
                 ) : (
                   <div
-                    onClick={() => hasBrunch && isClickable && handleSlotClick(i, navigationRecipeId)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (isClickable) handleSlotClick(i, dayNavigationRecipeId);
+                    }}
                     className={`flex-1 flex flex-col items-center justify-center ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
                   >
                     {hasBrunch && (
@@ -2231,7 +2244,7 @@ function RecipeCard({
     <div
       className={`group rounded-lg border overflow-hidden transition-all ${
         isAssigned
-          ? "opacity-40 grayscale pointer-events-none border-secondary bg-primary"
+          ? "opacity-75 border-secondary bg-primary"
           : isSelected
             ? "ring-2 ring-amber-400/30 border-primary bg-primary shadow-xs"
             : "border-primary bg-primary shadow-xs hover:shadow-md dark:shadow-none dark:hover:shadow-none"
