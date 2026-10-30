@@ -1107,27 +1107,10 @@ function MealsPageInner() {
     }
   }
 
-  // Quick View — fetch full recipe detail
-  async function handleQuickView(recipeId: string) {
-    setQuickViewLoading(true);
-    setQuickViewRecipe(null);
-    try {
-      const res = await fetch("/api/meals/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: recipeId }),
-      });
-      if (!res.ok) {
-        console.error("Quick View fetch failed:", res.status);
-        return;
-      }
-      const data = await res.json();
-      setQuickViewRecipe(data);
-    } catch (err) {
-      console.error("Failed to load recipe:", err);
-    } finally {
-      setQuickViewLoading(false);
-    }
+  // Open the canonical read-only recipe page directly. The former preview
+  // depended on an unbounded POST and could strand a client on Loading recipe.
+  function handleQuickView(recipeId: string) {
+    router.push(`/recipes/${encodeURIComponent(recipeId)}?from=${encodeURIComponent('/meals')}`);
   }
 
   // Assign recipe to a day slot — persists immediately
