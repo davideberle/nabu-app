@@ -1975,6 +1975,8 @@ export type WriteView = {
   correction: { intro: string; marked: string; rule?: string; line?: string | null } | null;
   revision: string | null;
   keepLabel: string;
+  /** Step 1 (S1-05): the app's mechanical tip waits for Nokt; it is shown only if Nokt's reaction does not arrive. */
+  tipHeld?: boolean;
   thanks: string | null;
   /** Content v7: the step waits for Nokt's reaction to the original and the one revision (the app's correction may be absent). */
   awaitingRevision?: boolean;
@@ -2206,6 +2208,8 @@ function writeView(step: MissionStep, r: MissionStepRun): WriteView {
     keepLabel: w.keep,
     thanks: r.status !== "active" ? w.thanks : null,
     ...(w.mechanics ? { awaitingRevision: open, nokt: !!w.nokt } : {}),
+    // Step 1 (S1-05): the app's tip is held while Nokt is expected; the page asks for it only when Nokt did not react.
+    ...(open && wr?.pendingCorrection ? { tipHeld: true } : {}),
   };
 }
 

@@ -185,3 +185,42 @@ describe("createLearningClient", () => {
     ok(!outcome.ok && outcome.failure === "bad-response");
   });
 });
+
+describe("Step 1 (S1-07): device audio — off by default, throttled, never blocks, only {reason} reaches the bridge", () => {
+  const session = { child: "santiago", token: "tok-learning", expiresAt: 9_999_999_999_999 };
+  function fake(enabled: boolean, bridgeOk = true) {
+    const calls: { url: string; body: string | null; auth: string | null }[] = [];
+    const fetchImpl = (async (url: string, init?: RequestInit) => {
+      const headers = new Headers(init?.headers);
+      calls.push({ url: String(url), body: typeof init?.body === "string" ? init.body : null, auth: headers.get("authorization") });
+      if (String(url).endsWith("/api/family/learning/session")) return new Response(JSON.stringify(session), { status: 200 });
+      if (String(url).endsWith("/api/family/learning/device-audio")) return new Response(JSON.stringify(enabled ? { enabled: true, bridge: { url: "https://bridge.invalid:8787", token: "bridge-learn-token" } } : { enabled: false }), { status: 200 });
+      if (String(url) === "https://bridge.invalid:8787/v1/device/audio") return new Response(JSON.stringify({ ok: bridgeOk }), { status: bridgeOk ? 200 : 502 });
+      throw new Error(`unexpected ${String(url)}`);
+    }) as unknown as typeof fetch;
+    return { calls, fetchImpl };
+  }
+  it("off on the server → nothing goes to the bridge", async () => {
+    const f = fake(false);
+    const c = createLearningClient({ fetchImpl: f.fetchImpl, now: () => 1000 });
+    equal(await c.deviceAudio("santiago", "visit-start"), "off");
+    ok(!f.calls.some((x) => x.url.includes("bridge.invalid")));
+  });
+  it("on → one bridge call with the bridge token and only the reason; a second within a minute is throttled", async () => {
+    const f = fake(true);
+    let t = 1000;
+    const c = createLearningClient({ fetchImpl: f.fetchImpl, now: () => t });
+    equal(await c.deviceAudio("santiago", "nokt-open"), "sent");
+    const b = f.calls.find((x) => x.url.includes("bridge.invalid"))!;
+    equal(b.body, JSON.stringify({ reason: "nokt-open" }));
+    equal(b.auth, "Bearer bridge-learn-token");
+    equal(await c.deviceAudio("santiago", "nokt-open"), "throttled");
+    t += 61_000;
+    equal(await c.deviceAudio("santiago", "nokt-open"), "sent");
+  });
+  it("a failing bridge is reported, never thrown", async () => {
+    const f = fake(true, false);
+    const c = createLearningClient({ fetchImpl: f.fetchImpl, now: () => 5 });
+    equal(await c.deviceAudio("isabel", "visit-start"), "failed");
+  });
+});

@@ -21,6 +21,12 @@ export const LEARNING_NOKT_DISPATCH_PATH = "/api/family/learning/nokt/turn/dispa
 export const LEARNING_NOKT_REPLY_PATH = "/api/family/learning/nokt/turn/reply";
 /** The family runtime's Nokt route (bridge origin + this path), reached by the BROWSER — the hosted app cannot reach it. */
 export const BRIDGE_NOKT_PATH = "/v1/nokt/turn";
+/** Step 1 (S1-07, candidate): the app route that hands out the short-lived bridge credential for the unmute call. */
+export const LEARNING_DEVICE_AUDIO_PATH = "/api/family/learning/device-audio";
+/** Step 1 (S1-07): the bridge route that unmutes the Mac mini at its fixed volume (body `{ reason }` only). */
+export const BRIDGE_DEVICE_AUDIO_PATH = "/v1/device/audio";
+/** Step 1 (S1-07): at most one unmute request per reason within this window (the bridge rate-limits too). */
+export const DEVICE_AUDIO_MIN_INTERVAL_MS = 60_000;
 
 /** One Nokt turn as the panel sends it; the server builds everything else (context, request, binding). */
 export type NoktTurnInput =
@@ -77,6 +83,11 @@ export type LearningClient = {
   sendTelemetry: (childId: ChildId, batch: { batchId: string; visitId: string; visitStartedAt: string; erasureGeneration: number; events: unknown[] }, options?: { signal?: AbortSignal; keepalive?: boolean }) => Promise<boolean>;
   /** One Nokt turn (dispatch → backend → verified reply); the outcome carries the adopted view like `mutate`. Aborting cancels it. */
   noktTurn: (childId: ChildId, turn: NoktTurnInput, expectedRevision: number, options: { signal: AbortSignal; context: MutationContext; timeZone?: string | null }) => Promise<LearningMutateOutcome | { ok: false; failure: "cancelled" }>;
+  /**
+   * Step 1 (S1-07): ask the Mac mini to be audible (visit start, Nokt opens). Off unless the server enables it; failures are
+   * silent and never block the visit. Returns what happened, for telemetry only.
+   */
+  deviceAudio: (childId: ChildId, reason: "visit-start" | "nokt-open") => Promise<"sent" | "off" | "throttled" | "failed">;
   /** Upload one recorded turn for Nokt; aborting `signal` cancels the upload and the server's provider call. */
   transcribeNokt: (childId: ChildId, audio: Blob, fileName: string, options: { signal: AbortSignal }) => Promise<NoktTranscribeOutcome>;
   reset: () => void;
@@ -114,6 +125,7 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
     (() => (typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `k-${now()}-${Math.random().toString(36).slice(2, 10)}`));
 
   let cached: LearningSessionInfo | null = null;
+  const lastAudio = new Map<string, number>();
 
   async function session(childId: ChildId, signal: AbortSignal | undefined): Promise<LearningSessionInfo | null> {
     if (cached && cached.child === childId && cached.expiresAt - now() > LEARNING_REFRESH_MARGIN_MS) return cached;
@@ -270,6 +282,27 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
         return response.ok;
       } catch {
         return false;
+      }
+    },
+
+    async deviceAudio(childId, reason) {
+      const key = `${childId}:${reason}`;
+      const last = lastAudio.get(key);
+      if (last !== undefined && now() - last < DEVICE_AUDIO_MIN_INTERVAL_MS) return "throttled";
+      lastAudio.set(key, now());
+      const info = await session(childId, undefined);
+      if (!info) return "failed";
+      try {
+        const res = await doFetch(LEARNING_DEVICE_AUDIO_PATH, { method: "POST", headers: { Authorization: `Bearer ${info.token}` }, cache: "no-store" });
+        if (!res.ok) return "failed";
+        const body = (await res.json()) as { enabled?: unknown; bridge?: { url?: unknown; token?: unknown } };
+        if (body.enabled !== true) return "off";
+        const origin = readBridgeOrigin(body.bridge?.url);
+        if (!origin || typeof body.bridge?.token !== "string") return "failed";
+        const out = await doFetch(`${origin}${BRIDGE_DEVICE_AUDIO_PATH}`, { method: "POST", headers: { Authorization: `Bearer ${body.bridge.token}`, "Content-Type": "application/json" }, body: JSON.stringify({ reason }), cache: "no-store", credentials: "omit", mode: "cors" });
+        return out.ok ? "sent" : "failed";
+      } catch {
+        return "failed";
       }
     },
 

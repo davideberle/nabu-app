@@ -450,7 +450,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
   if (!view.visit && view.child === "isabel") {
     // Isabel Visit 1: her own start screen (Old Lila's workshop), never Santiago's island.
     // The deliberate start also unlocks the narration of a narrated visit (nothing is spoken before this tap).
-    return <IsabelStart child={child} view={view} busy={busy} notice={notice} onStart={() => { speech.unlock(); narrator.unlock(); void mutate({ op: "start-visit" }); }} />;
+    return <IsabelStart child={child} view={view} busy={busy} notice={notice} onStart={() => { speech.unlock(); narrator.unlock(); void mutate({ op: "start-visit" }).then((o) => { if (o && o.ok) void learning.deviceAudio(child, "visit-start"); }); }} />;
   }
 
   if (!view.visit) {
@@ -464,6 +464,8 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
           speech.unlock();
           void mutate({ op: "start-visit" }).then((outcome) => {
             if (outcome && outcome.ok && outcome.status === "applied" && (outcome.result as { resumed?: boolean }).resumed === false) setEntered(true);
+            // Step 1 (S1-07): ask the Mac mini to be audible (off unless enabled on the server; silent on failure).
+            if (outcome && outcome.ok) void learning.deviceAudio(child, "visit-start");
           });
         }}
         notice={notice}
@@ -638,6 +640,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
               },
               talkTurn,
               intentionalEntry: entered,
+              onOpen: (reason) => void learning.deviceAudio(child, reason),
             }}
             telemetry={(name) => {
               telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
