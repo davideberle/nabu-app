@@ -113,6 +113,8 @@ export function visitReportEn(bundle: Pick<EvidenceBundle, "state" | "attempts" 
     const own = attempts.filter((a) => a.taskId === `${def.id}/${step.id}` || a.taskId.startsWith(`${def.id}/${step.id}/`));
     const sr = run?.steps?.[step.id] ?? null;
     if (!own.length && !sr) continue;
+    // Story and outcome beats carry no answer: they are not listed as tasks.
+    if (!own.length && (step.kind === "story" || step.kind === "outcome")) continue;
     const first = own.find((a) => a.teachingMove === "warmup") ?? null;
     const seconds = first?.secondsSinceTeaching ?? null;
     tasks.push({
