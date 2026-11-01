@@ -13,6 +13,13 @@
 // paused is ignored until an explicit resume. Every event conforms to the
 // closed schema in `family-learning-telemetry-schema.ts` by construction —
 // nothing here keeps keystroke contents, audio or a replay.
+//
+// Step 1 (2026-11-01, S1-13b): a visible screen counts from the moment it was
+// shown (or the last interval closed), at most the idle rule back, when the
+// next input arrives. Before, an interval started only AT an input, so a child
+// who listens to the narration and then taps once per screen produced ~0 s
+// intervals that were dropped (Isabel Visit 2: 43 s recorded for ~9 min).
+// Narration playing counts as activity too (`noteActivity`).
 // ---------------------------------------------------------------------------
 
 import { sanitizeTelemetryEvent, type TelemetryControl, type TelemetryDetail, type TelemetryEvent, type TelemetryKind, type TelemetryOp } from "./family-learning-telemetry-schema.ts";
@@ -33,10 +40,12 @@ export type TelemetryBuffer = {
   step: string | null;
   hidden: boolean;
   paused: boolean;
+  /** Step 1: since when the page has been visible and unpaused without a running interval (the presence before the next input), or null. */
+  presentSince?: number | null;
 };
 
 export function createTelemetryBuffer(): TelemetryBuffer {
-  return { events: [], activeSince: null, lastInput: null, stage: null, step: null, hidden: false, paused: false };
+  return { events: [], activeSince: null, lastInput: null, stage: null, step: null, hidden: false, paused: false, presentSince: null };
 }
 
 function push(buffer: TelemetryBuffer, raw: { t: number; kind: TelemetryKind; stage: StageId | null; step?: string | null; detail?: TelemetryDetail }): TelemetryBuffer {
@@ -54,16 +63,27 @@ export function closeActive(buffer: TelemetryBuffer, nowMs: number): TelemetryBu
   const end = Math.min(nowMs, (buffer.lastInput ?? nowMs) + TELEMETRY_IDLE_RULE_SECONDS * 1000);
   const seconds = Math.max(0, Math.round((end - buffer.activeSince) / 1000));
   const next = seconds > 0 ? push(buffer, { t: nowMs, kind: "active-interval", stage: buffer.stage, detail: { seconds } }) : buffer;
-  return { ...next, activeSince: null };
+  return { ...next, activeSince: null, presentSince: buffer.hidden || buffer.paused ? null : nowMs };
 }
 
 /** Input activity (any key, pointer or touch): extends or starts an active interval; a gap over the idle rule closes it first. Ignored while hidden or paused. */
 export function noteInput(buffer: TelemetryBuffer, nowMs: number): TelemetryBuffer {
   if (buffer.hidden || buffer.paused) return buffer;
   let next = buffer;
-  if (next.activeSince !== null && next.lastInput !== null && nowMs - next.lastInput > TELEMETRY_IDLE_RULE_SECONDS * 1000) next = closeActive(next, next.lastInput);
-  if (next.activeSince === null) next = { ...next, activeSince: nowMs };
-  return { ...next, lastInput: nowMs };
+  // An idle gap over the rule: the interval ends at the last input and the gap is NOT presence.
+  if (next.activeSince !== null && next.lastInput !== null && nowMs - next.lastInput > TELEMETRY_IDLE_RULE_SECONDS * 1000) next = { ...closeActive(next, next.lastInput), presentSince: null };
+  if (next.activeSince === null) {
+    // The screen was visible since `presentSince`: that looking/listening time counts, at most the idle rule back.
+    const present = next.presentSince ?? null;
+    const since = present !== null && present <= nowMs ? Math.max(present, nowMs - TELEMETRY_IDLE_RULE_SECONDS * 1000) : nowMs;
+    next = { ...next, activeSince: since };
+  }
+  return { ...next, lastInput: nowMs, presentSince: null };
+}
+
+/** Step 1: narration (or another recorded play) started or ended while the page is visible — counts like an input. */
+export function noteActivity(buffer: TelemetryBuffer, nowMs: number): TelemetryBuffer {
+  return noteInput(buffer, nowMs);
 }
 
 /** Stage (and, inside the mission stage, the open step) entry/exit: the active interval is attributed to what was on screen. */
@@ -72,7 +92,7 @@ export function enterStage(buffer: TelemetryBuffer, stage: StageId | null, nowMs
   if (buffer.stage === stage && buffer.step === nextStep) return buffer;
   let next = closeActive(buffer, nowMs);
   if (next.stage) next = push(next, { t: nowMs, kind: "stage-exit", stage: next.stage, step: next.step });
-  next = { ...next, stage, step: nextStep };
+  next = { ...next, stage, step: nextStep, presentSince: next.hidden || next.paused || !stage ? null : nowMs };
   if (stage) next = push(next, { t: nowMs, kind: "stage-enter", stage, step: nextStep });
   return next;
 }
@@ -81,20 +101,21 @@ export function setHidden(buffer: TelemetryBuffer, hidden: boolean, nowMs: numbe
   if (buffer.hidden === hidden) return buffer;
   let next = hidden ? closeActive(buffer, nowMs) : buffer;
   next = push(next, { t: nowMs, kind: hidden ? "hidden" : "visible", stage: next.stage });
-  return { ...next, hidden };
+  // Becoming visible again is not presence by itself (a parent may switch tabs); activity starts with the next input.
+  return { ...next, hidden, presentSince: null };
 }
 
 /** An explicit pause closes the active interval; input is ignored until `resume`. */
 export function pause(buffer: TelemetryBuffer, nowMs: number): TelemetryBuffer {
   if (buffer.paused) return buffer;
   const next = closeActive(buffer, nowMs);
-  return { ...push(next, { t: nowMs, kind: "pause", stage: next.stage }), paused: true, lastInput: null };
+  return { ...push(next, { t: nowMs, kind: "pause", stage: next.stage }), paused: true, lastInput: null, presentSince: null };
 }
 
 /** A deliberate resume; activity starts again with the next input. */
 export function resume(buffer: TelemetryBuffer, nowMs: number): TelemetryBuffer {
   if (!buffer.paused) return buffer;
-  return { ...push(buffer, { t: nowMs, kind: "resume", stage: buffer.stage }), paused: false, lastInput: null };
+  return { ...push(buffer, { t: nowMs, kind: "resume", stage: buffer.stage }), paused: false, lastInput: null, presentSince: null };
 }
 
 export function noteSubmit(buffer: TelemetryBuffer, kind: "submit" | "hint", nowMs: number, op: TelemetryOp, ok: boolean, retry = false): TelemetryBuffer {
@@ -144,6 +165,6 @@ export function takeBatch(buffer: TelemetryBuffer, nowMs: number, batchId: strin
   const closed = closeActive(buffer, nowMs);
   if (closed.events.length === 0) return { buffer: closed, batch: null };
   // A new active interval continues from now only if input was recent and nothing suspends activity.
-  const reopened = closed.lastInput !== null && nowMs - closed.lastInput <= TELEMETRY_IDLE_RULE_SECONDS * 1000 && !closed.hidden && !closed.paused ? { ...closed, activeSince: nowMs } : closed;
+  const reopened = closed.lastInput !== null && nowMs - closed.lastInput <= TELEMETRY_IDLE_RULE_SECONDS * 1000 && !closed.hidden && !closed.paused ? { ...closed, activeSince: nowMs, presentSince: null } : closed;
   return { buffer: { ...reopened, events: [] }, batch: { batchId, events: closed.events } };
 }

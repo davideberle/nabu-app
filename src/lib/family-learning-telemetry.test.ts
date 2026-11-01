@@ -4,7 +4,7 @@
 import { deepStrictEqual, equal, ok } from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
-import { createTelemetryBuffer, enterStage, noteControl, noteInput, noteSubmit, pause, resume, setHidden, takeBatch } from "./family-learning-telemetry.ts";
+import { createTelemetryBuffer, enterStage, noteActivity, noteControl, noteInput, noteSubmit, pause, resume, setHidden, takeBatch } from "./family-learning-telemetry.ts";
 import { sanitizeTelemetryEvent, sanitizeTelemetryEvents, TELEMETRY_OPS, TELEMETRY_STAGES } from "./family-learning-telemetry-schema.ts";
 import { summariseTelemetry } from "./family-learning-summary.ts";
 
@@ -104,5 +104,52 @@ describe("closed telemetry schema (P4)", () => {
     b = noteControl(b, 3, "not-a-control" as never);
     const { batch } = takeBatch(b, 4, "x");
     deepStrictEqual(batch!.events.map((e) => [e.kind, e.detail]), [["stage-enter", undefined], ["submit", { op: "save-log", ok: true }], ["control", { name: "stop" }]]);
+  });
+});
+
+describe("Step 1 (S1-13b): looking and listening before a single tap count", () => {
+  it("Isabel's pattern — one tap per screen after the narration — is no longer ~0 s", () => {
+    // Nine screens of ~55 s each: the narration plays (activity at start and end), she taps once, the next screen opens.
+    const ids = ["IG1-HELLO", "IG2-PLANT", "IG3-STICKS", "IG5-PLANTING", "IG7-READ", "IG8-LISTEN", "IG9-CRAFT", "IG10-GARDEN", "IG4-STICKS-AGAIN", "IG6-PLANTING-EASIER"];
+    let b = enterStage(createTelemetryBuffer(), "mission", 0, ids[0]);
+    let t = 0;
+    for (let i = 0; i < 9; i += 1) {
+      b = noteActivity(b, t + s(1)); // narration starts
+      b = noteActivity(b, t + s(20)); // narration ends
+      b = noteInput(b, t + s(55)); // her one tap
+      t += s(55);
+      b = enterStage(b, "mission", t + 300, ids[i + 1]);
+    }
+    const { batch } = takeBatch(b, t + s(1), "isabel");
+    const active = summariseTelemetry(batch!.events, 1).foregroundActiveSeconds!;
+    ok(active >= 9 * 50 && active <= 9 * 56, `about 9 × 55 s, got ${active}`);
+  });
+  it("without narration, the time on screen before the one tap counts, bounded by the idle rule", () => {
+    let b = enterStage(createTelemetryBuffer(), "mission", 0, "H2-POTS");
+    b = noteInput(b, s(25));
+    b = enterStage(b, "mission", s(25), "H4-FLOOR");
+    b = noteInput(b, s(200)); // 175 s on screen: only 60 s back count
+    const { batch } = takeBatch(b, s(200), "x");
+    const intervals = batch!.events.filter((e) => e.kind === "active-interval").map((e) => (e.detail as { seconds: number }).seconds);
+    deepStrictEqual(intervals, [25, 60]);
+  });
+  it("hidden and paused time still never count", () => {
+    let b = enterStage(createTelemetryBuffer(), "mission", 0, "IG7-READ");
+    b = setHidden(b, true, s(2));
+    b = setHidden(b, false, s(100));
+    b = noteInput(b, s(101));
+    b = pause(b, s(103));
+    b = resume(b, s(200));
+    b = noteInput(b, s(201));
+    const { batch } = takeBatch(b, s(205), "y");
+    equal(summariseTelemetry(batch!.events, 1).foregroundActiveSeconds, 2 + 4);
+  });
+});
+
+describe("Step 1 (S1-13b): Isabel's step ids are in the closed vocabulary", () => {
+  it("an active interval on IG3-STICKS or W5-TENS is kept, a made-up id is still dropped", () => {
+    ok(sanitizeTelemetryEvent({ t: 1, kind: "active-interval", stage: "mission", step: "IG3-STICKS", detail: { seconds: 30 } }));
+    ok(sanitizeTelemetryEvent({ t: 1, kind: "stage-enter", stage: "mission", step: "W5-TENS" }));
+    equal(sanitizeTelemetryEvent({ t: 1, kind: "stage-enter", stage: "mission", step: "MY-SECRET" }), null);
   });
 });

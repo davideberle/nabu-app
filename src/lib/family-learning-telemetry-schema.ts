@@ -12,6 +12,7 @@
 
 import { EXPECTED_RETAINED_STAGES, EXPECTED_V4_STAGES, EXPECTED_V5_STAGES, EXPECTED_V6_STAGES, EXPECTED_V7_STAGES, EXPECTED_V8_STAGES, type StageId } from "./family-learning-content.ts";
 import { ALL_MISSION_STEP_IDS } from "./family-learning-mission-spec.ts";
+import { ALL_ISABEL_STEP_IDS } from "./family-learning-isabel.ts";
 
 export const TELEMETRY_STAGES: readonly StageId[] = [...new Set<StageId>([...Object.values(EXPECTED_RETAINED_STAGES).flat(), ...EXPECTED_V4_STAGES, ...EXPECTED_V5_STAGES, ...EXPECTED_V6_STAGES, ...EXPECTED_V7_STAGES, ...EXPECTED_V8_STAGES])];
 
@@ -19,7 +20,9 @@ export const TELEMETRY_STAGES: readonly StageId[] = [...new Set<StageId>([...Obj
  * Content v6 (Visit 7, N7-02): the reviewed mission step ids an event may name while the stage is `mission`, so entry/exit and
  * active time are attributable per task — still a closed vocabulary, never free text.
  */
-export const TELEMETRY_STEPS: readonly string[] = ALL_MISSION_STEP_IDS;
+// Step 1 (S1-13b): Isabel's workshop/garden step ids were missing here, so the closed schema dropped every mission event
+// that named one of her steps (stage entries and active intervals included) — her Visit 2 recorded 43 s for ~9 minutes.
+export const TELEMETRY_STEPS: readonly string[] = [...ALL_MISSION_STEP_IDS, ...ALL_ISABEL_STEP_IDS];
 
 /** Every op name of the state machine (kept in sync by a unit test). */
 export const TELEMETRY_OPS = [

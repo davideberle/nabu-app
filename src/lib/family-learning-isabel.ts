@@ -33,6 +33,8 @@ export const ISABEL_GARDEN_MISSION_ID = "MISSION-IDA-GARDEN";
 export const ISABEL_COMPANION = "Old Lila";
 export const EXPECTED_WORKSHOP_STEPS: readonly string[] = ["W1-HELLO", "W2-MAKE", "W3-MATERIALS", "W4-COUNT", "W5-TENS", "W6-TENS-AGAIN", "W7-EASIER", "W8-READ", "W9-LISTEN", "W10-CRAFT", "W11-ROOM"];
 export const EXPECTED_GARDEN_STEPS: readonly string[] = ["IG1-HELLO", "IG2-PLANT", "IG3-STICKS", "IG4-STICKS-AGAIN", "IG5-PLANTING", "IG6-PLANTING-EASIER", "IG7-READ", "IG8-LISTEN", "IG9-CRAFT", "IG10-GARDEN"];
+/** Every Isabel mission step id (telemetry vocabulary). */
+export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS];
 
 /** What each of Isabel's missions must be (by visit). The generic rules below apply to all of them. */
 type WorkshopSpec = {
