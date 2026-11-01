@@ -1,11 +1,10 @@
 import { auth } from "@/auth";
 import { ADAPTIVE_CHESS_COACH_BUNDLE } from "@/data/adaptive-chess-coach/bundle.generated";
-import { todayInZurich } from "@/lib/date";
 import { normalizeChildId } from "@/lib/family-child-shell";
 import { appOrigin, renderChessDocument } from "@/lib/family-chess-content";
 import { derivePlayKey, resolveStudioConfig, verifyPlayCredential } from "@/lib/family-games-token";
-import { DAILY_CHESS_GAME_ID } from "@/lib/family-play";
-import { chessQualifyingApproval, getLease } from "@/lib/family-play-db";
+import { DAILY_CHESS_GAME_ID, PURCHASED_CHESS_BUDGET_DATE } from "@/lib/family-play";
+import { getLease } from "@/lib/family-play-db";
 import { guardScript } from "@/lib/family-play-guard";
 import { getDb } from "@/lib/db";
 
@@ -27,8 +26,9 @@ function page(status: number, message: string, origin: string): Response {
  *   1. the household login (middleware);
  *   2. a Studio lease credential for exactly this game in play mode (signed
  *      with the shared secret; expired/forged/library/studio/other-game → refused);
- *   3. Family's lease row: active, chess-kind, issued for TODAY (Europe/Zurich),
- *      for the credential's child, and that child still qualifies today.
+ *   3. Family's lease row: active, chess-kind, for the credential's child, and
+ *      issued on the purchased chess allowance (1 coin / 15 minutes, November
+ *      1, 2026) — a lease from the retired free daily grant is refused.
  * The guard the adapter injects into every served game is injected here too
  * (mirror), pointed at the adapter origin for its beacons. Every other asset
  * name answers 404: there is no raw JS at any URL.
@@ -49,13 +49,11 @@ export async function GET(request: Request, context: { params: Promise<{ asset: 
   if (!child || !verified || !verified.ok) return page(401, "This chess link has expired. Open chess again from your Games page.", origin);
   const claims = verified.claims;
   if (claims.scope !== "lease" || claims.gid !== DAILY_CHESS_GAME_ID || claims.mode !== "play" || claims.sub !== child) return page(403, "This chess link does not match your play session.", origin);
-  const now = new Date();
   const db = await getDb();
   const lease = await getLease(claims.lid, db);
   if (!lease || lease.personId !== child || lease.gameId !== DAILY_CHESS_GAME_ID || lease.budgetKind !== "chess") return page(403, "This chess link does not match your play session.", origin);
   if (lease.state !== "active") return page(410, "This chess session has ended. Go back to your Games page.", origin);
-  if (lease.budgetDate !== todayInZurich(now)) return page(410, "That was yesterday's chess time. Do something useful today and ask a parent to approve it.", origin);
-  if ((await chessQualifyingApproval(db, child, now)) === null) return page(403, "Chess is locked right now — today's approval is gone. Ask a parent.", origin);
+  if (lease.budgetDate !== PURCHASED_CHESS_BUDGET_DATE) return page(410, "Free daily chess has ended. Chess is now 1 coin for 15 minutes — go back to your Games page.", origin);
   const html = renderChessDocument(ADAPTIVE_CHESS_COACH_BUNDLE, guardScript({ allowedOrigin: origin, leaseId: lease.id, beaconBase: studio.studioUrl }));
   return new Response(html, { status: 200, headers: { ...NO_STORE, "Content-Type": "text/html; charset=utf-8", "Content-Security-Policy": `frame-ancestors ${origin}` } });
 }

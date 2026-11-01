@@ -22,11 +22,11 @@
 // without this wrapper's heartbeats (documented limit: browser-side code is
 // not tamper-proof).
 //
-// October 8, 2026: chess runs here too, on the child's DAILY chess lease (15
-// free minutes after a parent approved something the child did today). Its
-// bundle is served from THIS origin by a credential-gated route (per-child
-// saves stay where they were) and metered by the Studio adapter like any
-// other game. No purchase is ever offered for chess.
+// Chess runs here too, on the child's chess lease (November 1, 2026: 1 coin
+// buys 15 minutes, explicitly, from the permanent wallet). Its bundle is
+// served from THIS origin by a credential-gated route (per-child saves stay
+// where they were) and metered by the Studio adapter like any other game. An
+// empty chess allowance offers the 1-coin block, never the Studio block.
 // ---------------------------------------------------------------------------
 
 import Link from "next/link";
@@ -36,7 +36,7 @@ import { assistantProfileById } from "@/data/family-assistant";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import { childShellDestinationHref, guardedPlayHref } from "@/lib/family-child-shell";
 import { createGamesClient, deviceLabel, newIdempotencyKey, type LeaseGrant, type StudioAccess, type TickView } from "@/lib/family-games-client";
-import { DAILY_CHESS_SECONDS, PLAY_BLOCK_COINS, PLAY_BLOCK_SECONDS, formatPlayClock, isDailyChessGame } from "@/lib/family-play";
+import { CHESS_BLOCK_COINS, CHESS_BLOCK_SECONDS, PLAY_BLOCK_COINS, PLAY_BLOCK_SECONDS, formatPlayClock, isDailyChessGame } from "@/lib/family-play";
 import { createHeartbeat, type HeartbeatInput } from "@/lib/family-play-heartbeat";
 
 const focusRing =
@@ -67,10 +67,10 @@ type Phase =
   | { kind: "starting" }
   | { kind: "rolling-over" }
   | { kind: "rollover-failed"; leaseId: string; why: "timeout" | "rejected" }
-  | { kind: "needs-time"; balance: number | null; remaining: number; chess: "not-earned" | "used-up" | null }
+  | { kind: "needs-time"; balance: number | null; remaining: number }
   | { kind: "held"; heldBy: { gameId: string; deviceLabel: string | null } }
   | { kind: "playing"; grant: LeaseGrant; studio: StudioAccess; tick: TickView | null; paused: boolean; hidden: boolean; offline: boolean; handover: boolean; lapsed: boolean; armed: boolean }
-  | { kind: "ended"; reason: "exhausted" | "ended" | "replaced" | "left" | "expired" | "chess-locked" | "day-ended"; remaining: number | null }
+  | { kind: "ended"; reason: "exhausted" | "ended" | "replaced" | "left" | "expired" | "day-ended"; remaining: number | null }
   | { kind: "unavailable"; message: string };
 
 export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: string }) {
@@ -104,11 +104,11 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
       const grant = await client.lease(child, { gameId, mode: "play", takeover, device: deviceLabel() }, controller.signal);
       if (controller.signal.aborted) return;
       if (!grant.ok) {
-        if (grant.failure === "no-allowance" || grant.failure === "chess-not-earned") {
+        if (grant.failure === "no-allowance") {
           const detail = grant.detail as { remainingSeconds?: number } | undefined;
           const state = await client.state(child, controller.signal);
           if (controller.signal.aborted) return;
-          setPhase({ kind: "needs-time", balance: state.ok ? state.value.balance : null, remaining: detail?.remainingSeconds ?? 0, chess: chess ? (grant.failure === "chess-not-earned" ? "not-earned" : "used-up") : null });
+          setPhase({ kind: "needs-time", balance: state.ok ? state.value.balance : null, remaining: detail?.remainingSeconds ?? 0 });
           return;
         }
         if (grant.failure === "lease-held") {
@@ -382,7 +382,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         if (!outcome.ok) {
           if (outcome.failure === "no-allowance" || outcome.status === 410 || outcome.status === 404 || outcome.status === 401) {
             const detail = outcome.detail as { endReason?: string; remainingSeconds?: number; ended?: boolean } | undefined;
-            const reason = detail?.endReason === "chess-locked" || detail?.endReason === "day-ended" ? detail.endReason : detail?.endReason === "replaced" || detail?.endReason === "revoked" || detail?.endReason === "superseded" ? "replaced" : detail?.endReason === "credential-expired" || outcome.status === 401 ? "expired" : "exhausted";
+            const reason = detail?.endReason === "day-ended" ? detail.endReason : detail?.endReason === "replaced" || detail?.endReason === "revoked" || detail?.endReason === "superseded" ? "replaced" : detail?.endReason === "credential-expired" || outcome.status === 401 ? "expired" : "exhausted";
             authorizedUntil = 0;
             heartbeat.stop();
             // Stop the frame with the guard's acknowledgment, then tell the meter (so a successor need not wait out the deadline).
@@ -419,7 +419,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
           authorizedUntil = 0;
           heartbeat.stop();
           void stopFrame(leaseId, origin).then((stopped) => client.end(studio, leaseId, "stopped", stopped, observationRef.current));
-          setPhase({ kind: "ended", reason: tick.endReason === "chess-locked" || tick.endReason === "day-ended" ? tick.endReason : tick.endReason === "replaced" ? "replaced" : "exhausted", remaining: tick.remainingSeconds });
+          setPhase({ kind: "ended", reason: tick.endReason === "day-ended" ? tick.endReason : tick.endReason === "replaced" ? "replaced" : "exhausted", remaining: tick.remainingSeconds });
           void client.release(child, leaseId, tick.endReason ?? "exhausted");
           return;
         }
@@ -456,6 +456,8 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
   }, [phase.kind === "playing" ? phase.grant.lease.id : null, client, child, frameOriginOf]);
 
   // ---- purchase from the empty state -------------------------------------
+  // The block of THIS game's allowance: chess buys chess time (1 coin), everything else the Studio block (3 coins).
+  const block = chess ? { coins: CHESS_BLOCK_COINS, seconds: CHESS_BLOCK_SECONDS } : { coins: PLAY_BLOCK_COINS, seconds: PLAY_BLOCK_SECONDS };
   const [buying, setBuying] = useState(false);
   const [buyNotice, setBuyNotice] = useState<string | null>(null);
   const keyRef = useRef<string | null>(null);
@@ -464,7 +466,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
     setBuying(true);
     setBuyNotice(null);
     if (!keyRef.current) keyRef.current = newIdempotencyKey();
-    const outcome = await client.purchase(child, keyRef.current);
+    const outcome = await client.purchase(child, keyRef.current, undefined, chess ? "chess" : "paid");
     setBuying(false);
     if (outcome.ok) {
       keyRef.current = null;
@@ -477,7 +479,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
       return;
     }
     setBuyNotice("That didn't go through — tap again; you will not be charged twice.");
-  }, [buying, child, client]);
+  }, [buying, child, client, chess]);
 
   const leaveAndGo = useCallback(
     async (reason: string) => {
@@ -518,27 +520,14 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
             <Link href={gamesHref} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>Back to Games</Link>
           </div>
         </section>
-      ) : phase.kind === "needs-time" && phase.chess ? (
-        <section aria-label="Chess is locked" className="m-6 flex max-w-md flex-col gap-3 rounded-3xl border border-primary bg-primary p-5" data-chess-locked={phase.chess}>
-          <h2 className="text-xl font-semibold">{phase.chess === "used-up" ? "Today's chess time is used up" : "Chess is locked today"}</h2>
-          <p className="text-sm text-secondary">
-            {phase.chess === "used-up"
-              ? `Your ${DAILY_CHESS_SECONDS / 60} free minutes for today are gone. Tomorrow, once a parent approves something you did, you get ${DAILY_CHESS_SECONDS / 60} new minutes.`
-              : `Do something useful today, record it, and once a parent approves it you get ${DAILY_CHESS_SECONDS / 60} minutes of chess. Coins can't buy chess — and the real board is always free.`}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <Link href={childShellDestinationHref("record", child)} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>🎙️ Record something I did</Link>
-            <Link href={gamesHref} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>Back to Games</Link>
-          </div>
-        </section>
       ) : phase.kind === "needs-time" ? (
-        <section aria-label="Buy play time" className="m-6 flex max-w-md flex-col gap-3 rounded-3xl border border-primary bg-primary p-5">
-          <h2 className="text-xl font-semibold">No play time left</h2>
-          <p className="text-sm text-secondary">{PLAY_BLOCK_COINS} coins buy {PLAY_BLOCK_SECONDS / 60} minutes of Game Studio — playing, making and changing your games share it.{phase.balance !== null ? ` You have 🪙 ${phase.balance} coins.` : ""}</p>
+        <section aria-label={chess ? "Buy chess time" : "Buy play time"} className="m-6 flex max-w-md flex-col gap-3 rounded-3xl border border-primary bg-primary p-5" data-buy-kind={chess ? "chess" : "paid"}>
+          <h2 className="text-xl font-semibold">{chess ? "No chess time left" : "No play time left"}</h2>
+          <p className="text-sm text-secondary">{chess ? `🪙 ${CHESS_BLOCK_COINS} coin buys ${CHESS_BLOCK_SECONDS / 60} minutes of chess. Chess on the real board is always free.` : `${PLAY_BLOCK_COINS} coins buy ${PLAY_BLOCK_SECONDS / 60} minutes of Game Studio — playing, making and changing your games share it.`}{phase.balance !== null ? ` You have 🪙 ${phase.balance} coins.` : ""}</p>
           {buyNotice ? <p role="status" className="text-sm font-medium text-secondary">{buyNotice}</p> : null}
           <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={buy} disabled={buying || (phase.balance !== null && phase.balance < PLAY_BLOCK_COINS)} className={cn(pillClass, phase.balance === null || phase.balance >= PLAY_BLOCK_COINS ? "bg-secondary text-primary hover:bg-primary" : "cursor-not-allowed bg-primary text-quaternary")}>
-              {buying ? "Buying…" : `Buy ${PLAY_BLOCK_SECONDS / 60} minutes for 🪙 ${PLAY_BLOCK_COINS}`}
+            <button type="button" onClick={buy} disabled={buying || (phase.balance !== null && phase.balance < block.coins)} className={cn(pillClass, phase.balance === null || phase.balance >= block.coins ? "bg-secondary text-primary hover:bg-primary" : "cursor-not-allowed bg-primary text-quaternary")}>
+              {buying ? "Buying…" : `Buy ${block.seconds / 60} minutes for 🪙 ${block.coins}`}
             </button>
             <Link href={gamesHref} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>Back to Games</Link>
           </div>
@@ -563,14 +552,14 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         </section>
       ) : phase.kind === "ended" ? (
         <section aria-label="Play ended" className="m-6 flex max-w-md flex-col gap-3 rounded-3xl border border-primary bg-primary p-5">
-          <h2 className="text-xl font-semibold">{phase.reason === "chess-locked" ? "Chess is locked right now" : phase.reason === "day-ended" ? "That was yesterday's chess time" : phase.reason === "exhausted" ? "Time's up!" : phase.reason === "replaced" ? "You continued on another screen" : phase.reason === "expired" ? "This play session timed out" : "Game closed"}</h2>
+          <h2 className="text-xl font-semibold">{phase.reason === "day-ended" ? "Free daily chess has ended" : phase.reason === "exhausted" ? "Time's up!" : phase.reason === "replaced" ? "You continued on another screen" : phase.reason === "expired" ? "This play session timed out" : "Game closed"}</h2>
           <p className="text-sm text-secondary">
-            {phase.reason === "chess-locked" ? "Today's approval was taken back, so chess stopped. If a parent approves something you did today, your remaining minutes come back." : phase.reason === "day-ended" ? "A new day needs a new approved activity before chess unlocks again." : phase.reason === "exhausted" ? (chess ? "Your chess time for today is used up. Tomorrow's approval brings new minutes." : `Your play time is used up. Buying another ${PLAY_BLOCK_SECONDS / 60} minutes costs 🪙 ${PLAY_BLOCK_COINS} — only if you choose to.`) : phase.reason === "replaced" && chess ? "Your remaining chess time is kept for today." : "Your remaining time is kept."}
+            {phase.reason === "day-ended" ? `Chess now costs 🪙 ${CHESS_BLOCK_COINS} for ${CHESS_BLOCK_SECONDS / 60} minutes from your wallet — only if you choose to buy it.` : phase.reason === "exhausted" ? `Your ${chess ? "chess" : "play"} time is used up. Buying another ${block.seconds / 60} minutes costs 🪙 ${block.coins} — only if you choose to.` : "Your remaining time is kept."}
           </p>
           <div className="flex flex-wrap gap-2">
-            {phase.reason === "exhausted" && !chess ? (
-              <button type="button" onClick={() => setPhase({ kind: "needs-time", balance: null, remaining: 0, chess: null })} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>Buy more time</button>
-            ) : phase.reason !== "left" && !(phase.reason === "exhausted" && chess) && phase.reason !== "chess-locked" && phase.reason !== "day-ended" ? (
+            {phase.reason === "exhausted" || phase.reason === "day-ended" ? (
+              <button type="button" onClick={() => setPhase({ kind: "needs-time", balance: null, remaining: 0 })} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>Buy more time</button>
+            ) : phase.reason !== "left" ? (
               <button type="button" onClick={() => setAttempt((n) => n + 1)} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>Play again</button>
             ) : null}
             <Link href={gamesHref} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>Back to Games</Link>
@@ -614,7 +603,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
                 <Link href={guardedPlayHref(identity, gameId, "edit")} onClick={() => void leaveAndGo("edit")} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>✏️ Change it (same time)</Link>
               ) : null}
             </div>
-            <p className="text-xs text-tertiary">{chess ? "Your free chess minutes for today. Only visible play counts; pause or another tab stops the clock." : "Only visible play counts. Pause or another tab stops the clock; changing the game uses the same time."}</p>
+            <p className="text-xs text-tertiary">{chess ? "Your chess time. Only visible play counts; pause or another tab stops the clock." : "Only visible play counts. Pause or another tab stops the clock; changing the game uses the same time."}</p>
           </footer>
         </>
       )}
@@ -626,7 +615,7 @@ function PlayClock({ phase, chess }: { phase: Phase; chess: boolean }) {
   if (phase.kind !== "playing") return <span aria-hidden className="min-h-11 w-[88px]" />;
   const tick = phase.tick;
   return (
-    <p aria-live="polite" className="rounded-full border border-primary bg-primary px-4 py-2 text-sm font-semibold tabular-nums" data-remaining-seconds={tick?.remainingSeconds ?? ""} title={chess ? "Free chess time left today" : "Game Studio time left"}>
+    <p aria-live="polite" className="rounded-full border border-primary bg-primary px-4 py-2 text-sm font-semibold tabular-nums" data-remaining-seconds={tick?.remainingSeconds ?? ""} title={chess ? "Chess time left" : "Game Studio time left"}>
       {chess ? "♟️" : "⏱️"} {tick ? formatPlayClock(tick.remainingSeconds) : "…"}
     </p>
   );

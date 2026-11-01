@@ -16,21 +16,20 @@ import type { PlayLease, PlayPhase } from "./family-play.ts";
 export const GAMES_SESSION_PATH = "/api/family/games/session";
 export const PLAY_STATE_PATH = "/api/family/play/state";
 export const PLAY_PURCHASES_PATH = "/api/family/play/purchases";
+export const PLAY_CHESS_PURCHASES_PATH = "/api/family/play/chess-purchases";
 export const PLAY_LEASES_PATH = "/api/family/play/leases";
 export const SESSION_REFRESH_MARGIN_MS = 60_000;
 
 export type StudioAccess = { url: string; token: string; expiresAt: number };
 export type GamesSession = { child: ChildId; token: string; expiresAt: number; studio: StudioAccess | null };
 
+/** The purchased chess allowance (November 1, 2026: 1 coin / 15 minutes, no activity requirement). */
 export type ChessStateView = {
   gameId: string;
-  dailySeconds: number;
-  date: string;
-  eligible: boolean;
   grantedSeconds: number;
-  remainingSeconds: number;
   consumedSeconds: number;
-  qualifiedBy: { week: string; routineId: string; day: number } | null;
+  remainingSeconds: number;
+  price: { coins: number; seconds: number };
 };
 
 export type PlayStateView = {
@@ -38,11 +37,10 @@ export type PlayStateView = {
   balance: number;
   remainingSeconds: number;
   price: { coins: number; seconds: number };
-  freeGameIds: string[];
   warnSeconds: number;
   graceSeconds: number;
   activeLease: PlayLease | null;
-  /** Today's chess status (server date and eligibility). */
+  /** Purchased chess time and its price. */
   chess: ChessStateView;
 };
 
@@ -103,7 +101,7 @@ export type LeaseGrant = {
   content?: { path: string; expiresAt: number } | null;
 };
 
-export type Failure = "no-session" | "network" | "unauthorized" | "unavailable" | "bad-response" | "insufficient" | "lease-held" | "no-allowance" | "chess-not-earned";
+export type Failure = "no-session" | "network" | "unauthorized" | "unavailable" | "bad-response" | "insufficient" | "lease-held" | "no-allowance";
 export type Outcome<T> = { ok: true; value: T } | { ok: false; failure: Failure; status?: number; detail?: unknown };
 
 export type GamesClientDeps = { fetchImpl?: typeof fetch; now?: () => number };
@@ -153,7 +151,6 @@ export function createGamesClient(deps: GamesClientDeps = {}) {
       if (res.status === 401) cached = null;
       const reason = typeof body === "object" && body !== null ? (body as { error?: unknown; reason?: unknown }).error ?? (body as { reason?: unknown }).reason : null;
       if (res.status === 409 && reason === "lease-held") return { ok: false, failure: "lease-held", status: 409, detail: body };
-      if (reason === "chess-not-earned") return { ok: false, failure: "chess-not-earned", status: res.status, detail: body };
       if (res.status === 402 || reason === "no-allowance") return { ok: false, failure: "no-allowance", status: res.status, detail: body };
       if (res.status === 409) return { ok: false, failure: "insufficient", status: 409, detail: body };
       return { ok: false, failure: failureFor(res.status), status: res.status, detail: body };
@@ -184,8 +181,9 @@ export function createGamesClient(deps: GamesClientDeps = {}) {
       cached = null;
     },
     state: (child: ChildId, signal?: AbortSignal) => familyCall<PlayStateView>(child, PLAY_STATE_PATH, { signal }),
-    purchase: (child: ChildId, idempotencyKey: string, signal?: AbortSignal) =>
-      familyCall<{ purchase: unknown; replayed: boolean; remainingSeconds: number; balance: number }>(child, PLAY_PURCHASES_PATH, {
+    /** One explicit block purchase: the Studio block (`paid`, default) or 15 minutes of chess (`chess`, its own route). */
+    purchase: (child: ChildId, idempotencyKey: string, signal?: AbortSignal, budgetKind: "paid" | "chess" = "paid") =>
+      familyCall<{ purchase: unknown; replayed: boolean; remainingSeconds: number; balance: number }>(child, budgetKind === "chess" ? PLAY_CHESS_PURCHASES_PATH : PLAY_PURCHASES_PATH, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ idempotencyKey }),

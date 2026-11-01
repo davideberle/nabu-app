@@ -13,7 +13,7 @@ import { familyTodayInZurich } from "@/lib/date";
  * GET /api/family/parent/records — the compact parent tools' one read
  * (October 8, 2026): every completion, redemption and play purchase since the
  * permanent-wallet epoch for both children, the board configuration and each
- * child's chess status for today. Owner session only (middleware refuses
+ * child's purchased chess allowance. Owner session only (middleware refuses
  * tracker-only sessions on the whole `/api/family/parent/` prefix; the handler
  * refuses every non-owner session itself). Read-only, never cached.
  */
@@ -29,7 +29,7 @@ export async function GET() {
     getPurchasesFromWeek(FAMILY_WALLET_EPOCH_WEEK),
     getBoardConfig(),
   ]);
-  const chess = Object.fromEntries(await Promise.all(CHILD_IDS.map(async (child) => [child, await chessStatusFor(db, child, now)] as const)));
+  const chess = Object.fromEntries(await Promise.all(CHILD_IDS.map(async (child) => [child, await chessStatusFor(db, child)] as const)));
   return NextResponse.json(
     { generatedAt: now.toISOString(), today: familyTodayInZurich(now), epochWeek: FAMILY_WALLET_EPOCH_WEEK, completions, redemptions, purchases, config, chess },
     { headers: NO_STORE },

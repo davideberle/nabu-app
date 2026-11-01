@@ -17,25 +17,9 @@ import {
 } from "@/lib/family-review-queue";
 import type { CompletionStatus } from "@/data/family-routines";
 import { guidedCategoryForRoutine, reviewGuidedSubmission } from "@/lib/family-guided-capture";
-import { lockChessIfIneligible } from "@/lib/family-play-db";
-import { isChildId } from "@/lib/family-assistant-turn";
 import { occurrenceDateOf } from "@/lib/family-play";
 import { todayInZurich } from "@/lib/date";
 import { routineDefinitions } from "@/data/family-routines";
-
-/**
- * After any mutation that can remove today's qualifying approval, the child's
- * active chess lease (if any) is ended at once — no coin, no refund, consumed
- * seconds stay consumed (DA-03). Never throws into the response path.
- */
-async function reconcileChessAccess(personId: string): Promise<void> {
-  if (!isChildId(personId)) return;
-  try {
-    await lockChessIfIneligible(personId);
-  } catch (error) {
-    console.error("[family] chess lock reconciliation failed", error);
-  }
-}
 
 const COMPLETION_STATUSES: readonly CompletionStatus[] = [
   "done",
@@ -297,7 +281,6 @@ export async function PATCH(request: Request) {
       { status: 409 },
     );
   }
-  if (resolution.to !== "done") await reconcileChessAccess(personId);
   return NextResponse.json({ ok: true, updated, status: resolution.to });
 }
 
@@ -330,6 +313,5 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ error: "Invalid fields" }, { status: 400 });
   }
   const removed = await removeCompletion(week, personId, routineId, day);
-  if (removed) await reconcileChessAccess(personId);
   return NextResponse.json({ ok: true, removed });
 }

@@ -2,21 +2,20 @@
 // single active lease, monotonic settlement. SYNTHETIC rows only. Run: npm test
 
 import { deepEqual, equal, ok } from "node:assert/strict";
-import { mkdtempSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { after, describe, it } from "node:test";
 import { createClient, type Client } from "@libsql/client";
 import {
   LATE_TERMINAL_CORRECTION_SECONDS,
-  chessQualifyingApproval,
   chessStatusFor,
   endPlayLease,
   ensurePlayTables,
   getLease,
   getLeaseStatus,
   getLeasesForPerson,
-  lockChessIfIneligible,
+  readLeaseStatusForMeter,
   recordLeaseActivation,
   getPlayState,
   issuePlayLease,
@@ -24,8 +23,7 @@ import {
   refundPlayPurchase,
   settlePlayLease,
 } from "./family-play-db.ts";
-import { DAILY_CHESS_GAME_ID, PLAY_PURCHASE_REWARD_ID, STUDIO_SCOPE_GAME_ID } from "./family-play.ts";
-import { familyTodayInZurich } from "./date.ts";
+import { CHESS_PURCHASE_REWARD_ID, DAILY_CHESS_GAME_ID, PLAY_PURCHASE_REWARD_ID, PURCHASED_CHESS_BUDGET_DATE, STUDIO_SCOPE_GAME_ID } from "./family-play.ts";
 
 const dir = mkdtempSync(join(tmpdir(), "family-play-db-"));
 let n = 0;
@@ -166,15 +164,16 @@ describe("compensation — exactly once (GP-07)", () => {
 });
 
 describe("leases — one consuming lease per child, shared across paid games (GP-03/GP-08)", () => {
-  it("October 8: nothing is unmetered — paid play and the Studio editor need coin allowance; chess needs today's approval (never coins)", async () => {
+  it("nothing is unmetered — paid play and the Studio editor need Studio allowance; chess needs purchased chess time (issuing never buys)", async () => {
     const client = await fresh();
     const paid = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: null, now: at(0) }, client);
     deepEqual(paid, { ok: false, reason: "no-allowance", remainingSeconds: 0 });
     const edit = await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "edit", leaseId: id("lease"), takeover: true, deviceLabel: null, now: at(1) }, client);
     deepEqual(edit, { ok: false, reason: "no-allowance", remainingSeconds: 0 }, "no free editor");
     const chess = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: null, now: at(0) }, client);
-    deepEqual(chess, { ok: false, reason: "chess-not-earned", remainingSeconds: 0 }, "7 coins in the wallet buy no chess");
-    equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_chess_allowances")).rows[0].n), 0, "no grant row without eligibility");
+    deepEqual(chess, { ok: false, reason: "no-allowance", remainingSeconds: 0 }, "7 coins in the wallet are not spent by opening chess");
+    equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_chess_allowances")).rows[0].n), 0, "no grant row without a purchase");
+    equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_reward_redemptions")).rows[0].n), 0, "no debit");
   });
 
   it("the Studio editor lease is a metered lease on the paid allowance with the `*` game id, exclusive with play (one lease per child)", async () => {
@@ -560,170 +559,228 @@ describe("leases — one consuming lease per child, shared across paid games (GP
   });
 });
 
+
 // ---------------------------------------------------------------------------
-// Daily chess allowance (DA-01..DA-03) — server date, trustworthy approval, one grant, no coins
+// Chess price (November 1, 2026): 1 coin → 900 s of chess from the permanent wallet, explicit, no activity requirement.
+// Replaces the October 8 free daily allowance (DA-01..DA-03); the Studio block is unchanged.
 // ---------------------------------------------------------------------------
 
-describe("daily chess allowance (October 8, 2026)", () => {
-  /** Fixed instants on Europe/Zurich wall dates: 2026-10-08 is a Thursday (ISO 2026-W41, day 3). */
-  const NOON = new Date("2026-10-08T10:00:00.000Z"); // 12:00 Zurich (CEST)
-  const LATE = new Date("2026-10-08T21:30:00.000Z"); // 23:30 Zurich
-  const AFTER_MIDNIGHT = new Date("2026-10-08T22:00:01.000Z"); // 00:00:01 Zurich on the 9th
-  async function approved(client: Client, person: string, week: string, day: number, routine = "s-kumon", over: { reviewedAt?: string | null; approvalSource?: string | null; status?: string } = {}) {
-    await client.execute({
-      sql: "INSERT OR REPLACE INTO family_completions (person_id, routine_id, week, day, status, created_at, reviewed_at, awarded_points, approval_source) VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?)",
-      args: [person, routine, week, day, over.status ?? "done", "2026-10-08T06:00:00.000Z", over.reviewedAt === undefined ? "2026-10-08T07:00:00.000Z" : over.reviewedAt, over.approvalSource === undefined ? "parent-review" : over.approvalSource],
-    });
-  }
+/** Gate evidence: with CHESS_GATE_OBSERVATIONS=<dir>, each chess case records the values it measured from product code and asserted. */
+function observe(scenario: string, values: Record<string, number | boolean | string | null>): void {
+  const out = process.env.CHESS_GATE_OBSERVATIONS;
+  if (!out) return;
+  const file = join(out, "family-play-db.json");
+  const all = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : {};
+  all[scenario] = { ...(all[scenario] ?? {}), ...values };
+  writeFileSync(file, JSON.stringify(all, null, 2));
+}
+
+describe("chess — 1 coin buys 15 minutes (November 1, 2026)", () => {
+  const NOON = new Date("2026-11-01T11:00:00.000Z");
+  const later = (sec: number) => new Date(NOON.getTime() + sec * 1000);
+  const buyChess = (client: Client, key: string, now = NOON, person: "santiago" | "isabel" = "santiago") =>
+    purchasePlayBlock({ personId: person, idempotencyKey: key, purchaseId: id("p"), redemptionId: id("r"), budgetKind: "chess", now }, client);
   const chessLease = (client: Client, now: Date, over: Partial<{ takeover: boolean; person: "santiago" | "isabel" }> = {}) =>
     issuePlayLease({ personId: over.person ?? "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: id("lease"), takeover: over.takeover ?? false, deviceLabel: null, now }, client);
+  const redemptions = async (client: Client) =>
+    (await client.execute("SELECT person_id, reward_id, charged_points FROM family_reward_redemptions ORDER BY created_at, id")).rows.map((r) => [String(r.person_id), String(r.reward_id), Number(r.charged_points)]);
 
-  it("DA-01 the occurrence date decides: today's approval qualifies, yesterday's approved today does not, pending/hold/redo and self-marked done never do", async () => {
-    const client = await fresh();
-    deepEqual(familyTodayInZurich(NOON), { date: "2026-10-08", week: "2026-W41", day: 3 });
-    equal(await chessQualifyingApproval(client, "santiago", NOON), null);
-    await approved(client, "santiago", "2026-W41", 2, "s-piano"); // Wednesday, reviewed today
-    equal(await chessQualifyingApproval(client, "santiago", NOON), null, "yesterday's activity approved today never unlocks today");
-    await approved(client, "santiago", "2026-W41", 3, "s-kumon", { status: "pending_review", reviewedAt: null, approvalSource: null });
-    equal(await chessQualifyingApproval(client, "santiago", NOON), null, "pending");
-    await approved(client, "santiago", "2026-W41", 3, "s-kumon", { status: "on_hold", approvalSource: null });
-    equal(await chessQualifyingApproval(client, "santiago", NOON), null, "on hold");
-    await approved(client, "santiago", "2026-W41", 3, "s-kumon", { status: "redo", approvalSource: null });
-    equal(await chessQualifyingApproval(client, "santiago", NOON), null, "redo");
-    await approved(client, "santiago", "2026-W41", 3, "s-kumon", { reviewedAt: null, approvalSource: null });
-    equal(await chessQualifyingApproval(client, "santiago", NOON), null, "self-marked done (no provenance) does not qualify");
-    await approved(client, "santiago", "2026-W41", 3, "s-kumon", { reviewedAt: "2026-10-08T07:00:00.000Z", approvalSource: null });
-    deepEqual(await chessQualifyingApproval(client, "santiago", NOON), { week: "2026-W41", routineId: "s-kumon", day: 3 }, "legacy parent review (reviewed_at) qualifies");
-    await approved(client, "santiago", "2026-W41", 3, "s-kumon", { reviewedAt: null, approvalSource: "parent-assisted" });
-    deepEqual(await chessQualifyingApproval(client, "santiago", NOON), { week: "2026-W41", routineId: "s-kumon", day: 3 }, "explicit marker qualifies");
-    // The sibling's approval never counts for this child; a future day never counts.
-    equal(await chessQualifyingApproval(client, "isabel", NOON), null);
-    await approved(client, "isabel", "2026-W41", 4, "i-kumon");
-    equal(await chessQualifyingApproval(client, "isabel", NOON), null, "tomorrow");
+  it("an explicit chess purchase with no activity today debits exactly 1 coin as its own wallet row and grants 900 s of chess only", async () => {
+    const client = await fresh({ santiagoCoins: 1 });
+    // No completion of any kind exists for today: the only completions are the 2026-W40 fixture coins.
+    const out = await buyChess(client, "key-chess-0001");
+    ok(out.ok && !out.replayed, JSON.stringify(out));
+    equal(out.purchase.budgetKind, "chess");
+    equal(out.purchase.chargedPoints, 1);
+    equal(out.purchase.grantedSeconds, 900);
+    equal(out.balance, 0);
+    equal(out.remainingSeconds, 900, "the answer is the chess allowance's remainder");
+    deepEqual(await redemptions(client), [["santiago", CHESS_PURCHASE_REWARD_ID, 1]]);
+    const state = await getPlayState("santiago", client);
+    equal(state.remainingSeconds, 0, "the Studio allowance gets nothing");
+    deepEqual(state.chess, { grantedSeconds: 900, consumedSeconds: 0, remainingSeconds: 900, price: { coins: 1, seconds: 900 } });
+    const lease = await chessLease(client, later(1));
+    ok(lease.ok, JSON.stringify(lease));
+    equal(lease.lease.budgetKind, "chess");
+    equal(lease.lease.budgetDate, PURCHASED_CHESS_BUDGET_DATE);
+    equal(lease.lease.budgetSeconds, 900);
+    const todays = Number((await client.execute("SELECT COUNT(*) AS n FROM family_completions WHERE week = '2026-W44' AND day = 6")).rows[0].n);
+    observe("CH01", { activitiesToday: todays, coinsBefore: 1, debitCoins: (await redemptions(client)).reduce((sum, r) => sum + Number(r[2]), 0), debitRows: (await redemptions(client)).length, debitRewardId: String((await redemptions(client))[0][1]), chessGrantedSeconds: state.chess.grantedSeconds, studioGrantedSeconds: state.allowance.grantedSeconds, balanceAfter: out.balance, leaseIssued: lease.ok, leaseBudgetSeconds: lease.lease.budgetSeconds, leaseBudgetKind: lease.lease.budgetKind });
   });
 
-  it("DA-02 exactly one 900 s grant per child and date: repeated leases, many activities and concurrent first entries never stack; zero coin movement", async () => {
-    const client = await fresh({ santiagoCoins: 7 });
-    await approved(client, "santiago", "2026-W41", 3, "s-kumon");
-    await approved(client, "santiago", "2026-W41", 3, "s-piano");
-    await approved(client, "santiago", "2026-W41", 3, "s-physio");
-    const balanceBefore = (await getPlayState("santiago", client, NOON)).balance;
-    const first = await chessLease(client, NOON);
-    ok(first.ok, JSON.stringify(first));
-    equal(first.lease.metered, true);
-    equal(first.lease.budgetKind, "chess");
-    equal(first.lease.budgetDate, "2026-10-08");
-    equal(first.lease.budgetSeconds, 900);
-    const again = await Promise.all([chessLease(client, NOON, { takeover: true }), chessLease(client, NOON, { takeover: true })]);
-    ok(again.some((r) => r.ok), "a takeover re-issues on the same grant");
-    const rows = await client.execute("SELECT person_id, date, granted_seconds, consumed_seconds FROM family_chess_allowances");
-    deepEqual(rows.rows.map((r) => [r.person_id, r.date, Number(r.granted_seconds), Number(r.consumed_seconds)]), [["santiago", "2026-10-08", 900, 0]], "one row, 900 s, however many activities or entries");
-    const state = await getPlayState("santiago", client, NOON);
-    equal(state.balance, balanceBefore, "no coin debit");
-    equal(state.remainingSeconds, 0, "the paid allowance is untouched");
-    equal(state.chess.remainingSeconds, 900);
-    equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_reward_redemptions")).rows[0].n), 0, "zero redemption rows");
-    // Spending coins (a Studio purchase) changes nothing about chess.
-    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-chess-spend", purchaseId: id("p"), redemptionId: id("r"), now: NOON }, client);
-    equal((await getPlayState("santiago", client, NOON)).chess.remainingSeconds, 900);
+  it("zero coins: the purchase is refused with no debit, no purchase row and no grant; chess stays closed", async () => {
+    const client = await fresh({ santiagoCoins: 0, isabelCoins: 0 });
+    const out = await buyChess(client, "key-chess-0002", NOON, "isabel");
+    deepEqual(out, { ok: false, reason: "insufficient-funds", balance: 0, remainingSeconds: 0 });
+    equal((await redemptions(client)).length, 0);
+    equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_play_purchases")).rows[0].n), 0);
+    equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_chess_allowances")).rows[0].n), 0);
+    const refused = await chessLease(client, NOON, { person: "isabel" });
+    deepEqual(refused, { ok: false, reason: "no-allowance", remainingSeconds: 0 });
+    observe("CH03", { coinsBefore: 0, purchaseOk: out.ok, purchaseReason: out.ok ? null : out.reason, redemptionRows: (await redemptions(client)).length, purchaseRows: Number((await client.execute("SELECT COUNT(*) AS n FROM family_play_purchases")).rows[0].n), chessAllowanceRows: Number((await client.execute("SELECT COUNT(*) AS n FROM family_chess_allowances")).rows[0].n), leaseRows: Number((await client.execute("SELECT COUNT(*) AS n FROM family_play_leases")).rows[0].n), leaseIssued: refused.ok, leaseReason: refused.ok ? null : refused.reason });
   });
 
-  it("DA-03 chess settlement debits only the day's grant; the paid allowance and the sibling are untouched; remaining is shared across re-issued leases", async () => {
+  it("a retried key charges and grants once; the same key can never buy the other block", async () => {
+    const client = await fresh({ santiagoCoins: 5 });
+    const first = await buyChess(client, "key-chess-0003");
+    const again = await buyChess(client, "key-chess-0003", later(5));
+    ok(first.ok && again.ok && again.replayed);
+    equal(again.purchase.id, first.purchase.id);
+    equal(again.balance, 4);
+    equal(again.remainingSeconds, 900);
+    const cross = await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-chess-0003", purchaseId: id("p"), redemptionId: id("r"), now: later(6) }, client);
+    deepEqual(cross, { ok: false, reason: "conflict" }, "a chess key never replays as (or buys) a Studio block");
+    deepEqual(await redemptions(client), [["santiago", CHESS_PURCHASE_REWARD_ID, 1]]);
+    equal((await getPlayState("santiago", client)).chess.grantedSeconds, 900);
+    observe("CH04", { attemptsSameKey: 2, replayed: again.ok && again.replayed, samePurchaseId: again.ok && first.ok && again.purchase.id === first.purchase.id, debitRows: (await redemptions(client)).length, debitCoins: 1, chessGrantedSeconds: (await getPlayState("santiago", client)).chess.grantedSeconds, crossBlockReplayRefused: !cross.ok });
+  });
+
+  it("concurrent purchases cannot overdraw: 2 coins and 5 simultaneous taps buy exactly 2 blocks; concurrent same-key taps buy one", async () => {
+    const client = await fresh({ santiagoCoins: 2 });
+    const outs = await Promise.all([0, 1, 2, 3, 4].map((i) => buyChess(client, `key-chess-c${i}00000`)));
+    equal(outs.filter((o) => o.ok).length, 2, JSON.stringify(outs));
+    ok(outs.filter((o) => !o.ok).every((o) => !o.ok && (o.reason === "insufficient-funds" || o.reason === "conflict")));
+    const state = await getPlayState("santiago", client);
+    equal(state.balance, 0);
+    equal(state.chess.grantedSeconds, 1800);
+    const client2 = await fresh({ santiagoCoins: 3 });
+    const same = await Promise.all([0, 1, 2].map(() => buyChess(client2, "key-chess-same0001")));
+    ok(same.some((o) => o.ok));
+    equal((await redemptions(client2)).length, 1);
+    equal((await getPlayState("santiago", client2)).chess.grantedSeconds, 900);
+    observe("CH05", { coinsBefore: 2, concurrentDistinctKeys: 5, committed: outs.filter((o) => o.ok).length, balanceAfter: state.balance, minBalanceObserved: Math.min(...outs.map((o) => (o.ok || o.reason === "insufficient-funds" ? o.balance : 0))), chessGrantedSeconds: state.chess.grantedSeconds, concurrentSameKey: 3, sameKeyDebitRows: (await redemptions(client2)).length });
+  });
+
+  it("chess time funds only chess: no paid game, no Studio editor; a Studio block still costs 3 coins for 900 s and never funds chess", async () => {
+    const client = await fresh({ santiagoCoins: 4 });
+    ok((await buyChess(client, "key-chess-0005")).ok);
+    deepEqual(await issuePlayLease({ personId: "santiago", gameId: "paid-game", mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: null, now: later(1) }, client), { ok: false, reason: "no-allowance", remainingSeconds: 0 });
+    deepEqual(await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "edit", leaseId: id("lease"), takeover: false, deviceLabel: null, now: later(2) }, client), { ok: false, reason: "no-allowance", remainingSeconds: 0 }, "chess edit is the Studio editor");
+    deepEqual(await issuePlayLease({ personId: "santiago", gameId: STUDIO_SCOPE_GAME_ID, mode: "edit", leaseId: id("lease"), takeover: false, deviceLabel: null, now: later(3) }, client), { ok: false, reason: "no-allowance", remainingSeconds: 0 });
+    const studio = await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-studio-0005", purchaseId: id("p"), redemptionId: id("r"), now: later(4) }, client);
+    ok(studio.ok);
+    equal(studio.purchase.budgetKind, "paid");
+    equal(studio.purchase.chargedPoints, 3);
+    equal(studio.balance, 0);
+    equal(studio.remainingSeconds, 900);
+    deepEqual(await redemptions(client), [["santiago", CHESS_PURCHASE_REWARD_ID, 1], ["santiago", PLAY_PURCHASE_REWARD_ID, 3]]);
+    const state = await getPlayState("santiago", client);
+    equal(state.remainingSeconds, 900);
+    equal(state.chess.remainingSeconds, 900, "the Studio block added nothing to chess");
+    observe("CH06", { chessSecondsAvailable: 900, paidGameLeaseIssued: false, chessEditLeaseIssued: false, studioEditorLeaseIssued: false, refusalReason: "no-allowance" });
+    observe("CH07", { studioBlockCoins: studio.ok ? studio.purchase.chargedPoints : -1, studioBlockSeconds: studio.ok ? studio.purchase.grantedSeconds : -1, studioRewardId: PLAY_PURCHASE_REWARD_ID, studioBudgetKind: studio.ok ? studio.purchase.budgetKind : "", chessRemainingAfterStudioBuy: state.chess.remainingSeconds, studioRemainingAfterBuy: state.remainingSeconds });
+  });
+
+  it("chess settles into the chess allowance only; a re-issued lease (reload, other device, takeover) continues on the remainder; exhaustion never repurchases", async () => {
     const client = await fresh({ santiagoCoins: 7 });
-    await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-chess-paid", purchaseId: id("p"), redemptionId: id("r"), now: NOON }, client);
-    await approved(client, "santiago", "2026-W41", 3);
-    const a = await chessLease(client, NOON);
+    ok((await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-studio-0006", purchaseId: id("p"), redemptionId: id("r"), now: NOON }, client)).ok);
+    ok((await buyChess(client, "key-chess-0006")).ok);
+    const a = await chessLease(client, later(1));
     ok(a.ok);
-    await recordLeaseActivation(a.lease.id, NOON, client);
-    const settled = await settlePlayLease({ leaseId: a.lease.id, consumedSeconds: 300, end: true, endReason: "left", measuredAt: NOON.getTime() + 300_000, now: new Date(NOON.getTime() + 300_000) }, client);
+    await recordLeaseActivation(a.lease.id, later(1), client);
+    const settled = await settlePlayLease({ leaseId: a.lease.id, consumedSeconds: 300, end: true, endReason: "left", measuredAt: later(301).getTime(), now: later(301) }, client);
     ok(settled.ok && settled.delta === 300 && settled.remainingSeconds === 600, JSON.stringify(settled));
-    const state = await getPlayState("santiago", client, new Date(NOON.getTime() + 301_000));
-    equal(state.remainingSeconds, 900, "paid allowance untouched by chess");
+    let state = await getPlayState("santiago", client);
+    equal(state.remainingSeconds, 900, "Studio allowance untouched by chess");
     equal(state.chess.remainingSeconds, 600);
-    equal((await getPlayState("isabel", client, NOON)).chess.remainingSeconds, 0);
-    // A new lease the same day (reload / other device) continues on the remainder.
-    const b = await chessLease(client, new Date(NOON.getTime() + 302_000));
+    equal((await getPlayState("isabel", client)).chess.remainingSeconds, 0, "the sibling has nothing");
+    const b = await chessLease(client, later(302));
     ok(b.ok && b.lease.budgetSeconds === 600, JSON.stringify(b));
-    // Exhaustion: the last settlement ends it; nothing can mint a second grant today.
-    const done = await settlePlayLease({ leaseId: b.lease.id, consumedSeconds: 600, end: true, endReason: "exhausted", measuredAt: NOON.getTime() + 902_000, now: new Date(NOON.getTime() + 902_000) }, client);
-    ok(done.ok && done.remainingSeconds === 0);
-    const c = await chessLease(client, new Date(NOON.getTime() + 903_000));
-    deepEqual(c, { ok: false, reason: "no-allowance", remainingSeconds: 0 });
-    equal((await getPlayState("santiago", client, LATE)).chess.consumedSeconds, 900);
+    await recordLeaseActivation(b.lease.id, later(302), client);
+    const c = await chessLease(client, later(303), { takeover: true });
+    ok(c.ok && c.replaced === b.lease.id, JSON.stringify(c));
+    ok(c.lease.budgetSeconds <= 600 && c.lease.budgetSeconds >= 598, `takeover holds back the predecessor's possible report: ${c.lease.budgetSeconds}`);
+    await settlePlayLease({ leaseId: b.lease.id, consumedSeconds: 1, end: true, endReason: "replaced", measuredAt: later(303).getTime(), now: later(304) }, client);
+    await recordLeaseActivation(c.lease.id, later(305), client);
+    const done = await settlePlayLease({ leaseId: c.lease.id, consumedSeconds: 599, end: false, measuredAt: later(904).getTime(), now: later(904) }, client);
+    ok(done.ok && done.state === "ended" && done.endReason === "exhausted" && done.remainingSeconds === 0, JSON.stringify(done));
+    state = await getPlayState("santiago", client);
+    equal(state.chess.consumedSeconds, 900);
+    equal(state.balance, 7 - 3 - 1, "no automatic purchase at exhaustion");
+    equal((await redemptions(client)).length, 2);
+    deepEqual(await chessLease(client, later(905)), { ok: false, reason: "no-allowance", remainingSeconds: 0 });
+    // Buying again is explicit and adds exactly one more block.
+    const more = await buyChess(client, "key-chess-0006b", later(906));
+    ok(more.ok && more.remainingSeconds === 900 && more.balance === 2);
+    observe("CH09", { firstLeaseConsumed: 300, reissuedBudget: b.ok ? b.lease.budgetSeconds : -1, takeoverReplaced: c.ok && c.replaced === (b.ok ? b.lease.id : ""), takeoverBudget: c.ok ? c.lease.budgetSeconds : -1, totalChessConsumed: state.chess.consumedSeconds, totalChessGranted: 900, studioRemainingUnchanged: state.remainingSeconds === 900 });
+    observe("CH11", { exhaustedEndReason: done.ok ? done.endReason : null, chessRemainingAtExhaustion: done.ok ? done.remainingSeconds : -1, redemptionRowsAfterExhaustion: 2, balanceAfterExhaustion: state.balance, newLeaseAfterExhaustion: false, explicitRepurchaseGrantsSeconds: more.ok ? more.remainingSeconds : -1, explicitRepurchaseBalance: more.ok ? more.balance : -1 });
   });
 
-  it("DA-03 removing the last qualifying approval locks the live lease at the next authority read and via the explicit lock; requalifying restores only the unconsumed remainder", async () => {
-    const client = await fresh();
-    await approved(client, "santiago", "2026-W41", 3);
-    const a = await chessLease(client, NOON);
-    ok(a.ok);
-    await recordLeaseActivation(a.lease.id, NOON, client);
-    await settlePlayLease({ leaseId: a.lease.id, consumedSeconds: 120, end: false, measuredAt: NOON.getTime() + 120_000, now: new Date(NOON.getTime() + 120_000) }, client);
-    // Parent holds the only approval: the explicit lock ends the lease with no coin transaction.
-    await approved(client, "santiago", "2026-W41", 3, "s-kumon", { status: "on_hold", approvalSource: null });
-    const t1 = new Date(NOON.getTime() + 130_000);
-    equal(await lockChessIfIneligible("santiago", t1, client), "chess-locked");
-    const locked = (await getLease(a.lease.id, client))!;
-    equal(locked.state, "ended");
-    equal(locked.endReason, "chess-locked");
-    equal((await getPlayState("santiago", client, t1)).chess.remainingSeconds, 0, "no usable time while ineligible");
-    equal((await getPlayState("santiago", client, t1)).chess.consumedSeconds, 120, "consumed seconds are never reset");
-    deepEqual(await chessLease(client, t1), { ok: false, reason: "chess-not-earned", remainingSeconds: 0 });
-    // The meter's late terminal report for the locked lease is still bounded and applied (no refund, no revival).
-    const late = await settlePlayLease({ leaseId: a.lease.id, consumedSeconds: 125, end: true, measuredAt: t1.getTime(), now: new Date(t1.getTime() + 1000) }, client);
-    ok(late.ok && late.lease.state === "ended" && late.lease.consumedSeconds >= 120 && late.lease.consumedSeconds <= 125, JSON.stringify(late));
-    // Re-approval (or another approved activity today) restores only what is left — no new 900.
-    await approved(client, "santiago", "2026-W41", 3, "s-piano");
-    const t2 = new Date(NOON.getTime() + 200_000);
-    const b = await chessLease(client, t2);
-    ok(b.ok, JSON.stringify(b));
-    ok(b.lease.budgetSeconds <= 780 && b.lease.budgetSeconds >= 775, `remainder only: ${b.lease.budgetSeconds}`);
-    equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_chess_allowances WHERE person_id = 'santiago'")).rows[0].n), 1);
-    // The signed status read enforces the same lock without the explicit call.
-    await approved(client, "santiago", "2026-W41", 3, "s-piano", { status: "redo", approvalSource: null });
-    await approved(client, "santiago", "2026-W41", 3, "s-kumon", { status: "redo", approvalSource: null });
-    await recordLeaseActivation(b.lease.id, new Date(t2.getTime() + 5000), client);
-    const status = await getLeaseStatus(b.lease.id, client, new Date(t2.getTime() + 5000));
+  it("a parent refund of a chess purchase is exactly-once compensation on the chess allowance: coin back, unconsumed chess withdrawn, live chess lease ended, Studio untouched", async () => {
+    const client = await fresh({ santiagoCoins: 4 });
+    ok((await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-studio-0007", purchaseId: id("p"), redemptionId: id("r"), now: NOON }, client)).ok);
+    const bought = await buyChess(client, "key-chess-0007");
+    ok(bought.ok);
+    const lease = await chessLease(client, later(1));
+    ok(lease.ok);
+    const first = await refundPlayPurchase({ purchaseId: bought.purchase.id, reason: "issuance failed", now: later(2) }, client);
+    ok(first.ok && first.purchase.budgetKind === "chess");
+    const ended = (await getLease(lease.lease.id, client))!;
+    equal(ended.state, "ended");
+    equal(ended.endReason, "refunded");
+    let state = await getPlayState("santiago", client);
+    equal(state.balance, 1, "the 1 coin is back");
+    equal(state.chess.remainingSeconds, 0);
+    equal(state.remainingSeconds, 900, "the Studio grant is untouched");
+    deepEqual(await refundPlayPurchase({ purchaseId: bought.purchase.id, reason: "again", now: later(3) }, client), { ok: false, reason: "already-refunded" });
+    state = await getPlayState("santiago", client);
+    equal(state.balance, 1);
+    deepEqual(await redemptions(client), [["santiago", PLAY_PURCHASE_REWARD_ID, 3]]);
+    observe("CH15", { refundOk: first.ok, secondRefund: "already-refunded", balanceAfter: state.balance, chessRemainingAfter: state.chess.remainingSeconds, studioRemainingAfter: state.remainingSeconds, liveChessLeaseEndReason: ended.endReason, chessDebitRowsAfter: (await redemptions(client)).filter((r) => r[1] === CHESS_PURCHASE_REWARD_ID).length });
+  });
+
+  it("reading state is free: repeated status reads create no purchase, debit or grant", async () => {
+    const client = await fresh({ santiagoCoins: 3 });
+    for (let i = 0; i < 3; i += 1) await getPlayState("santiago", client);
+    deepEqual(await chessStatusFor(client, "santiago"), { grantedSeconds: 0, consumedSeconds: 0, remainingSeconds: 0, price: { coins: 1, seconds: 900 } });
+    equal((await redemptions(client)).length, 0);
+    equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_chess_allowances")).rows[0].n), 0);
+    equal((await getPlayState("santiago", client)).balance, 3);
+    observe("CH14", { stateReads: 4, redemptionRows: (await redemptions(client)).length, chessAllowanceRows: Number((await client.execute("SELECT COUNT(*) AS n FROM family_chess_allowances")).rows[0].n), purchaseRows: Number((await client.execute("SELECT COUNT(*) AS n FROM family_play_purchases")).rows[0].n), balanceAfter: (await getPlayState("santiago", client)).balance });
+  });
+
+  it("migration: existing purchases read as Studio blocks, history and balances survive; a lease on a retired free daily grant ends `day-ended` at its next authority read and keeps settling into its dated row", async () => {
+    // A database as the October 8 release left it: purchases WITHOUT budget_kind, a dated daily grant, an active daily chess lease.
+    const client = createClient({ url: `file:${join(dir, `db-${(n += 1)}.sqlite`)}` });
+    clients.push(client);
+    await client.execute(`CREATE TABLE family_completions (person_id TEXT NOT NULL, routine_id TEXT NOT NULL, week TEXT NOT NULL, day INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'done', note TEXT, challenge TEXT, created_at TEXT NOT NULL, reviewed_at TEXT, credit_count INTEGER NOT NULL DEFAULT 1, awarded_points INTEGER, normalized_summary TEXT, approval_source TEXT, PRIMARY KEY (person_id, routine_id, week, day))`);
+    await client.execute(`CREATE TABLE family_reward_redemptions (id TEXT PRIMARY KEY, person_id TEXT NOT NULL, reward_id TEXT NOT NULL, week TEXT NOT NULL, created_at TEXT NOT NULL, charged_points INTEGER)`);
+    await client.execute(`CREATE TABLE family_play_purchases (id TEXT PRIMARY KEY, person_id TEXT NOT NULL, idempotency_key TEXT NOT NULL, redemption_id TEXT NOT NULL, charged_points INTEGER NOT NULL, granted_seconds INTEGER NOT NULL, state TEXT NOT NULL DEFAULT 'committed', created_at TEXT NOT NULL, refunded_at TEXT, refund_reason TEXT, UNIQUE (person_id, idempotency_key))`);
+    await client.execute(`CREATE TABLE family_play_allowances (person_id TEXT PRIMARY KEY, granted_seconds INTEGER NOT NULL DEFAULT 0, consumed_seconds INTEGER NOT NULL DEFAULT 0, updated_at TEXT NOT NULL)`);
+    await client.execute(`CREATE TABLE family_play_leases (id TEXT PRIMARY KEY, person_id TEXT NOT NULL, game_id TEXT NOT NULL, mode TEXT NOT NULL, metered INTEGER NOT NULL, budget_seconds INTEGER NOT NULL, consumed_seconds INTEGER NOT NULL DEFAULT 0, state TEXT NOT NULL, issued_at TEXT NOT NULL, last_settled_at TEXT, ended_at TEXT, end_reason TEXT, device_label TEXT, predecessor_id TEXT, reserve_seconds INTEGER NOT NULL DEFAULT 0, cap_seconds INTEGER, final_settled INTEGER NOT NULL DEFAULT 0, activated_at TEXT, measured_at TEXT, authority_until TEXT, fence_cap_seconds INTEGER, budget_kind TEXT NOT NULL DEFAULT 'paid', budget_date TEXT)`);
+    await client.execute(`CREATE TABLE family_chess_allowances (person_id TEXT NOT NULL, date TEXT NOT NULL, granted_seconds INTEGER NOT NULL DEFAULT 0, consumed_seconds INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL, updated_at TEXT NOT NULL, PRIMARY KEY (person_id, date))`);
+    await client.execute(`INSERT INTO family_completions (person_id, routine_id, week, day, status, created_at, reviewed_at, awarded_points, approval_source) VALUES ('santiago', 's-kumon', '2026-W44', 6, 'done', '2026-11-01T08:00:00.000Z', '2026-11-01T09:00:00.000Z', 6, 'parent-review')`);
+    await client.execute(`INSERT INTO family_reward_redemptions VALUES ('red-old', 'santiago', '${PLAY_PURCHASE_REWARD_ID}', '2026-W43', '2026-10-25T10:00:00.000Z', 3)`);
+    await client.execute(`INSERT INTO family_play_purchases (id, person_id, idempotency_key, redemption_id, charged_points, granted_seconds, state, created_at) VALUES ('pur-old', 'santiago', 'key-old-000001', 'red-old', 3, 900, 'committed', '2026-10-25T10:00:00.000Z')`);
+    await client.execute(`INSERT INTO family_play_allowances VALUES ('santiago', 900, 852, '2026-11-01T12:01:00.000Z')`);
+    await client.execute(`INSERT INTO family_chess_allowances VALUES ('santiago', '2026-11-01', 900, 100, '2026-11-01T10:00:00.000Z', '2026-11-01T10:05:00.000Z')`);
+    await client.execute(`INSERT INTO family_play_leases (id, person_id, game_id, mode, metered, budget_seconds, consumed_seconds, state, issued_at, last_settled_at, cap_seconds, activated_at, measured_at, budget_kind, budget_date) VALUES ('lease-legacy-daily-01', 'santiago', '${DAILY_CHESS_GAME_ID}', 'play', 1, 800, 100, 'active', '2026-11-01T10:55:00.000Z', '2026-11-01T10:59:00.000Z', 800, '2026-11-01T10:55:01.000Z', '2026-11-01T10:59:00.000Z', 'chess', '2026-11-01')`);
+    await ensurePlayTables(client);
+    const state = await getPlayState("santiago", client);
+    equal(state.balance, 6 - 3, "wallet = approved coins − existing debits, unchanged");
+    deepEqual(state.allowance, { personId: "santiago", grantedSeconds: 900, consumedSeconds: 852 }, "existing Studio time is preserved");
+    equal(state.chess.remainingSeconds, 0, "the old free grant is not converted into purchased chess time");
+    deepEqual((await getPurchaseByRedemption(client, "red-old")), { budget_kind: "paid", charged_points: 3, granted_seconds: 900 });
+    // The legacy lease ends at its next signed read (consolidated path), with no window and no coin movement.
+    const status = await readLeaseStatusForMeter("lease-legacy-daily-01", NOON, client);
     equal(status?.state, "ended");
-    equal(status?.endReason, "chess-locked");
+    equal(status?.endReason, "day-ended");
     equal(status?.authorizedForSeconds, null);
-  });
-
-  it("DA-01/DA-03 midnight in Zurich (not UTC) rotates the day: yesterday's lease ends on the first read after local midnight and today needs today's approval; the 23:30 grant is not carried over", async () => {
-    const client = await fresh();
-    await approved(client, "santiago", "2026-W41", 3);
-    const a = await chessLease(client, LATE);
-    ok(a.ok && a.lease.budgetDate === "2026-10-08");
-    await recordLeaseActivation(a.lease.id, LATE, client);
-    // Still the 8th in Zurich at 23:59:59 local (21:59:59Z): fine.
-    const before = await getLeaseStatus(a.lease.id, client, new Date("2026-10-08T21:59:59.000Z"));
-    equal(before?.state, "active");
-    deepEqual(familyTodayInZurich(AFTER_MIDNIGHT), { date: "2026-10-09", week: "2026-W41", day: 4 });
-    await recordLeaseActivation(a.lease.id, AFTER_MIDNIGHT, client);
-    const after = await getLeaseStatus(a.lease.id, client, AFTER_MIDNIGHT);
-    equal(after?.state, "ended");
-    equal(after?.endReason, "day-ended");
-    equal((await getPlayState("santiago", client, AFTER_MIDNIGHT)).chess.eligible, false, "the 9th needs the 9th's approval");
-    deepEqual(await chessLease(client, AFTER_MIDNIGHT), { ok: false, reason: "chess-not-earned", remainingSeconds: 0 });
-    await approved(client, "santiago", "2026-W41", 4, "s-piano");
-    const b = await chessLease(client, new Date("2026-10-08T22:10:00.000Z"));
-    ok(b.ok && b.lease.budgetDate === "2026-10-09" && b.lease.budgetSeconds === 900, JSON.stringify(b));
-    equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_chess_allowances WHERE person_id = 'santiago'")).rows[0].n), 2, "one row per date");
-  });
-
-  it("DA-01 DST and ISO-week/year rollover edges are judged on the Zurich wall date", async () => {
-    const client = await fresh();
-    // 2026-10-25: clocks go back in Zurich (03:00 CEST → 02:00 CET). 00:30Z is 02:30 CEST = still the 25th; 23:30Z is 00:30 CET on the 26th.
-    deepEqual(familyTodayInZurich(new Date("2026-10-25T00:30:00.000Z")), { date: "2026-10-25", week: "2026-W43", day: 6 });
-    deepEqual(familyTodayInZurich(new Date("2026-10-25T23:30:00.000Z")), { date: "2026-10-26", week: "2026-W44", day: 0 });
-    // New Year's Eve 2026 is ISO 2026-W53 day 3 (Thursday); 23:30Z is already 2027-01-01, ISO 2026-W53 day 4 (Friday).
-    deepEqual(familyTodayInZurich(new Date("2026-12-31T12:00:00.000Z")), { date: "2026-12-31", week: "2026-W53", day: 3 });
-    deepEqual(familyTodayInZurich(new Date("2026-12-31T23:30:00.000Z")), { date: "2027-01-01", week: "2026-W53", day: 4 });
-    await approved(client, "santiago", "2026-W53", 3, "s-kumon");
-    equal((await chessStatusFor(client, "santiago", new Date("2026-12-31T12:00:00.000Z"))).eligible, true);
-    equal((await chessStatusFor(client, "santiago", new Date("2026-12-31T23:30:00.000Z"))).eligible, false, "the 1st of January needs its own approval");
-    // A malformed identity (week 60, day 9) can never qualify even if it says done+reviewed.
-    await client.execute({ sql: "INSERT INTO family_completions (person_id, routine_id, week, day, status, created_at, reviewed_at, awarded_points, approval_source) VALUES ('santiago', 's-physio', '2026-W60', 9, 'done', 'x', 'y', 1, 'parent-review')", args: [] });
-    equal(await chessQualifyingApproval(client, "santiago", new Date("2026-12-31T23:30:00.000Z")), null);
+    // Its meter's late report still lands in its own dated row — never in purchased chess, never in Studio.
+    const late = await settlePlayLease({ leaseId: "lease-legacy-daily-01", consumedSeconds: 101, end: true, measuredAt: NOON.getTime(), now: later(1) }, client);
+    ok(late.ok && late.delta <= 1, JSON.stringify(late));
+    const rows = (await client.execute("SELECT date, granted_seconds, consumed_seconds FROM family_chess_allowances ORDER BY date")).rows.map((r) => ({ date: String(r.date), granted: Number(r.granted_seconds), consumed: Number(r.consumed_seconds) }));
+    ok(rows.length === 1 && rows[0].date === "2026-11-01" && rows[0].consumed >= 100 && rows[0].consumed <= 101, JSON.stringify(rows));
+    // A new chess entry needs a purchase; the dated grant can never be re-issued.
+    deepEqual(await chessLease(client, later(2)), { ok: false, reason: "no-allowance", remainingSeconds: 0 });
+    equal((await getPlayState("santiago", client)).balance, 3);
+    deepEqual(await redemptions(client), [["santiago", PLAY_PURCHASE_REWARD_ID, 3]]);
+    observe("CH13", { balanceBefore: 3, balanceAfter: (await getPlayState("santiago", client)).balance, studioGrantedBefore: 900, studioConsumedBefore: 852, studioGranted: state.allowance.grantedSeconds, studioConsumed: state.allowance.consumedSeconds, oldPurchaseBudgetKind: "paid", historicalRedemptionRows: (await redemptions(client)).length, legacyGrantConvertedSeconds: state.chess.remainingSeconds });
+    observe("CH08", { legacyFreeLeaseStatusState: status?.state ?? null, legacyFreeLeaseEndReason: status?.endReason ?? null, legacyFreeLeaseAuthorizedFor: status?.authorizedForSeconds ?? null, newChessLeaseWithoutPurchase: false, approvedActivityTodayPresent: true });
   });
 });
+
+async function getPurchaseByRedemption(client: Client, redemptionId: string) {
+  const row = (await client.execute({ sql: "SELECT budget_kind, charged_points, granted_seconds FROM family_play_purchases WHERE redemption_id = ?", args: [redemptionId] })).rows[0];
+  return row ? { budget_kind: String(row.budget_kind), charged_points: Number(row.charged_points), granted_seconds: Number(row.granted_seconds) } : null;
+}

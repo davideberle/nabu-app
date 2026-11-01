@@ -901,7 +901,7 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
   });
 
   // ---- DR13 -------------------------------------------------------------------------------------------------------
-  it("DR13 the five browser paid games and the separately earned chess are unchanged beside the native card", async () => {
+  it("DR13 the five browser paid games and the separately priced chess are unchanged beside the native card", async () => {
     await allowance();
     clock = t0;
     const s = await stack([{ gameId: DAILY_CHESS_GAME_ID, children: ["santiago", "isabel"] }, ...LIVE_IDS.map((gameId) => ({ gameId, children: ["santiago"] })), { gameId: NATIVE, children: ["santiago"] }]);
@@ -911,7 +911,7 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
       const isabel = (await raw(s.base, "GET", "/v1/library", { authorization: `Bearer ${lib("isabel")}` })).json!.games as { gameId: string }[];
       const browser = santi.filter((g) => LIVE_IDS.includes(g.gameId));
       const browserShapeUnchanged = browser.every((g) => !("launch" in g) && !("platform" in g) && g.playable && !g.free);
-      // A browser game still loads its guarded page under its lease; chess still needs today's earned approval.
+      // A browser game still loads its guarded page under its lease; chess still needs its own purchased time (November 1: 1 coin / 15 min; no coins → refused).
       await issue("lease-dr13-browser1", LIVE_IDS[0]);
       const page = await raw(s.base, "GET", `/v1/play/lease-dr13-browser1/${LIVE_IDS[0]}/index.html?credential=${encodeURIComponent(cred("lease-dr13-browser1", LIVE_IDS[0]))}`, {});
       const chess = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-dr13-chess1", takeover: true, deviceLabel: "computer", now: new Date(clock) }, client);
@@ -919,7 +919,7 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
       equal(browser.length, 5);
       ok(browserShapeUnchanged);
       equal(page.status, 200);
-      record("DR13", { santiagoGames: santi.length, browserPaidCards: browser.length, browserShapeUnchanged, nativeCards: santi.filter((g) => g.launch === "native").length, chessListedFree: chessCard?.free === true, isabelGames: isabel.map((g) => g.gameId).join(","), browserGuardedPage: page.status, browserPageHasGuard: page.text.includes("data-family-play-guard"), chessWithoutApprovalRefused: !chess.ok, chessRefusalReason: chess.ok ? null : chess.reason });
+      record("DR13", { santiagoGames: santi.length, browserPaidCards: browser.length, browserShapeUnchanged, nativeCards: santi.filter((g) => g.launch === "native").length, chessListedFree: chessCard?.free === true, isabelGames: isabel.map((g) => g.gameId).join(","), browserGuardedPage: page.status, browserPageHasGuard: page.text.includes("data-family-play-guard"), chessWithoutPurchaseRefused: !chess.ok, chessRefusalReason: chess.ok ? null : chess.reason });
     } finally {
       await s.close();
     }

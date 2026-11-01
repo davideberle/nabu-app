@@ -10,7 +10,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { after, describe, it } from "node:test";
 import { createClient, type Client, type Transaction } from "@libsql/client";
-import { endPlayLease, ensurePlayTables, getLeaseStatus, issuePlayLease, readLeaseStatusForMeter, recordLeaseActivation, settlePlayLease } from "./family-play-db.ts";
+import { endPlayLease, ensurePlayTables, getLeaseStatus, issuePlayLease, purchasePlayBlock, readLeaseStatusForMeter, recordLeaseActivation, settlePlayLease } from "./family-play-db.ts";
 import { DAILY_CHESS_GAME_ID } from "./family-play.ts";
 
 const dir = mkdtempSync(join(tmpdir(), "family-status-consolidated-"));
@@ -29,6 +29,11 @@ async function base(path: string): Promise<Client> {
   return client;
 }
 const approveToday = (c: Client) => c.execute({ sql: "INSERT INTO family_completions (person_id, routine_id, week, day, status, created_at, reviewed_at, awarded_points, approval_source) VALUES ('santiago', 's-kumon', '2026-W41', 3, 'done', '2026-10-08T06:00:00.000Z', '2026-10-08T07:00:00.000Z', 1, 'parent-review')" });
+/** One explicit 1-coin chess block (November 1, 2026), paid with the coin `approveToday` awards. */
+const buyChess = async (c: Client) => {
+  const r = await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-ar01-chess", purchaseId: "pur-ar01-chess", redemptionId: "red-ar01-chess", budgetKind: "chess", now: at(-100_000) }, c);
+  ok(r.ok, JSON.stringify(r));
+};
 const issue = async (c: Client, leaseId: string, now: Date, gameId = "deimos-rising", takeover = false) => {
   const r = await issuePlayLease({ personId: "santiago", gameId, mode: "play", leaseId, takeover, deviceLabel: "computer", now }, c);
   ok(r.ok, JSON.stringify(r));
@@ -70,8 +75,9 @@ const scenarios: Scenario[] = [
   { name: "ended-activated-unsettled", leaseId: "lease-ar01-rel", seed: async (c) => { await issue(c, "lease-ar01-rel", at(-60_000)); await recordLeaseActivation("lease-ar01-rel", at(-50_000), c); await endPlayLease({ leaseId: "lease-ar01-rel", personId: "santiago", reason: "left", now: at(-20_000) }, c); await issue(c, "lease-ar01-next", at(-5_000)); } },
   { name: "final-settled", leaseId: "lease-ar01-done", seed: async (c) => { await issue(c, "lease-ar01-done", at(-60_000)); await recordLeaseActivation("lease-ar01-done", at(-50_000), c); await settlePlayLease({ leaseId: "lease-ar01-done", consumedSeconds: 10, end: true, endReason: "left", measuredAt: at(-30_000).getTime(), now: at(-30_000) }, c); } },
   { name: "exhausted", leaseId: "lease-ar01-exh", seed: async (c) => { await issue(c, "lease-ar01-exh", at(-1_000_000)); await recordLeaseActivation("lease-ar01-exh", at(-999_000), c); await settlePlayLease({ leaseId: "lease-ar01-exh", consumedSeconds: 900, end: false, measuredAt: at(-60_000).getTime(), now: at(-60_000) }, c); } },
-  { name: "chess-active", leaseId: "lease-ar01-chess", seed: async (c) => { await approveToday(c); await issue(c, "lease-ar01-paid-old", at(-90_000)); await recordLeaseActivation("lease-ar01-paid-old", at(-80_000), c); await endPlayLease({ leaseId: "lease-ar01-paid-old", personId: "santiago", reason: "left", now: at(-70_000) }, c); await issue(c, "lease-ar01-chess", at(-10_000), DAILY_CHESS_GAME_ID); await recordLeaseActivation("lease-ar01-chess", at(-2_000), c); } },
-  { name: "chess-day-ended", leaseId: "lease-ar01-chess-y", seed: async (c) => { await c.execute("INSERT INTO family_completions (person_id, routine_id, week, day, status, created_at, reviewed_at, awarded_points, approval_source) VALUES ('santiago', 's-kumon', '2026-W41', 2, 'done', '2026-10-07T06:00:00.000Z', '2026-10-07T07:00:00.000Z', 1, 'parent-review')"); await issue(c, "lease-ar01-chess-y", new Date("2026-10-07T20:00:00.000Z"), DAILY_CHESS_GAME_ID); await recordLeaseActivation("lease-ar01-chess-y", new Date("2026-10-07T20:00:01.000Z"), c); } },
+  { name: "chess-active", leaseId: "lease-ar01-chess", seed: async (c) => { await approveToday(c); await buyChess(c); await issue(c, "lease-ar01-paid-old", at(-90_000)); await recordLeaseActivation("lease-ar01-paid-old", at(-80_000), c); await endPlayLease({ leaseId: "lease-ar01-paid-old", personId: "santiago", reason: "left", now: at(-70_000) }, c); await issue(c, "lease-ar01-chess", at(-10_000), DAILY_CHESS_GAME_ID); await recordLeaseActivation("lease-ar01-chess", at(-2_000), c); } },
+  // A lease issued on the retired free daily grant (state the October 8 release could leave behind): this read ends it `day-ended`.
+  { name: "chess-legacy-daily", leaseId: "lease-ar01-chess-y", seed: async (c) => { await c.execute("INSERT INTO family_chess_allowances VALUES ('santiago', '2026-10-07', 900, 30, '2026-10-07T19:00:00.000Z', '2026-10-07T20:00:00.000Z')"); await c.execute({ sql: "INSERT INTO family_play_leases (id, person_id, game_id, mode, metered, budget_seconds, consumed_seconds, state, issued_at, last_settled_at, cap_seconds, activated_at, measured_at, budget_kind, budget_date) VALUES ('lease-ar01-chess-y', 'santiago', ?, 'play', 1, 870, 0, 'active', '2026-10-07T20:00:00.000Z', NULL, 870, '2026-10-07T20:00:01.000Z', NULL, 'chess', '2026-10-07')", args: [DAILY_CHESS_GAME_ID] }); } },
   { name: "unknown-lease", leaseId: "lease-ar01-nobody", seed: async (c) => { await issue(c, "lease-ar01-someone", at(-10_000)); } },
 ];
 

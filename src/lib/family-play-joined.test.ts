@@ -7,18 +7,28 @@
 // no candidate is named at all. Run: npm test
 
 import { deepEqual, equal, ok } from "node:assert/strict";
-import { existsSync, mkdtempSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
 import http from "node:http";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { after, before, beforeEach, describe, it } from "node:test";
 import { createClient, type Client } from "@libsql/client";
-import { ensurePlayTables, endPlayLease, getLease, getLeaseStatus, getPlayState, issuePlayLease, readLeaseStatusForMeter, settlePlayLease } from "./family-play-db.ts";
+import { ensurePlayTables, endPlayLease, getLease, getLeaseStatus, getPlayState, issuePlayLease, purchasePlayBlock, readLeaseStatusForMeter, settlePlayLease } from "./family-play-db.ts";
 import { createHeartbeat, type HeartbeatInput } from "./family-play-heartbeat.ts";
 import { resolveStudioCandidate } from "./family-studio-candidate.ts";
 import { guardScript as mirroredGuardScript } from "./family-play-guard.ts";
-import { DAILY_CHESS_GAME_ID } from "./family-play.ts";
+import { CHESS_PURCHASE_REWARD_ID, DAILY_CHESS_GAME_ID } from "./family-play.ts";
 import { PLAY_CREDENTIAL_TTL_SECONDS, playCredentialTtlSeconds } from "./family-games-token.ts";
+
+/** Gate evidence: with CHESS_GATE_OBSERVATIONS=<dir>, each chess case records the values it measured from product code and asserted. */
+function observe(scenario: string, values: Record<string, number | boolean | string | null>): void {
+  const out = process.env.CHESS_GATE_OBSERVATIONS;
+  if (!out) return;
+  const file = join(out, "family-play-joined.json");
+  const all = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : {};
+  all[scenario] = { ...(all[scenario] ?? {}), ...values };
+  writeFileSync(file, JSON.stringify(all, null, 2));
+}
 
 const candidate = resolveStudioCandidate();
 const ADAPTER = candidate?.path ?? "";
@@ -2122,7 +2132,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const end = await fetch(`${base}/v1/play/lease-joined-stud02/end`, { method: "POST", headers: { authorization: `Bearer ${studio}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
       equal(end.status, 200);
       await server.settler.flush();
-      const state = await getPlayState("santiago", client, new Date(clock));
+      const state = await getPlayState("santiago", client);
       ok(state.remainingSeconds >= 893 && state.remainingSeconds <= 895, `paid remaining ${state.remainingSeconds}: ~6 interactive seconds, 54 waiting seconds free`);
     } finally {
       server.settler.stop();
@@ -2130,48 +2140,133 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     }
   });
 
-  it("DA-03 joined: a chess lease is metered by the adapter like any game, settles into the day's chess grant only, and stops within one heartbeat once Family locks it", async () => {
+  /** A wallet with `coins` approved YESTERDAY (t0 is Sunday 2026-10-04 = 2026-W40 day 6): nothing approved today. */
+  async function walletFromYesterday(coins: number) {
+    for (const table of ["family_completions", "family_reward_redemptions", "family_play_purchases", "family_chess_allowances"]) await client.execute(`DELETE FROM ${table}`);
+    await client.execute({ sql: "INSERT INTO family_completions (person_id, routine_id, week, day, status, created_at, reviewed_at, awarded_points, approval_source) VALUES ('santiago', 's-kumon', '2026-W40', 5, 'done', 'x', 'y', ?, 'parent-review')", args: [coins] });
+  }
+  const chessCred = (lid: string, budget = 900, ttlSeconds = 1200) => mod.mintPlayCredential(key, { sub: "santiago", scope: "lease", gid: DAILY_CHESS_GAME_ID, lid, mode: "play", metered: true, budget, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + ttlSeconds, jti: lid });
+
+  it("CH joined: chess bought for 1 coin (earned yesterday, nothing today) is metered by the adapter like any game, settles into the purchased chess allowance only; pause/background bill nothing and resume mints nothing; a lease from the retired free daily grant is refused within one heartbeat", async () => {
     await allowance(0);
-    await client.execute("DELETE FROM family_completions");
-    await client.execute("DELETE FROM family_chess_allowances");
-    // 2026-10-04 12:00Z = 14:00 Zurich, Sunday = ISO 2026-W40 day 6; a parent-reviewed activity today.
-    await client.execute("INSERT INTO family_completions (person_id, routine_id, week, day, status, created_at, reviewed_at, awarded_points, approval_source) VALUES ('santiago', 's-kumon', '2026-W40', 6, 'done', 'x', 'y', 1, 'parent-review')");
+    await walletFromYesterday(1);
     clock = t0;
+    const bought = await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-joined-chess-01", purchaseId: "pur-joined-chess-01", redemptionId: "red-joined-chess-01", budgetKind: "chess", now: at(0) }, client);
+    ok(bought.ok && bought.balance === 0 && bought.remainingSeconds === 900, JSON.stringify(bought));
     const issued = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-joined-chess01", takeover: true, deviceLabel: null, now: at(0) }, client);
     ok(issued.ok && issued.lease.budgetKind === "chess" && issued.lease.budgetSeconds === 900, JSON.stringify(issued));
     const { server, base } = await stack();
     try {
-      const token = mod.mintPlayCredential(key, { sub: "santiago", scope: "lease", gid: DAILY_CHESS_GAME_ID, lid: "lease-joined-chess01", mode: "play", metered: true, budget: 900, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + 1200, jti: "chess01" });
+      const token = chessCred("lease-joined-chess01");
       equal((await tick(base, "lease-joined-chess01", token)).status, 200);
       await playUntil(base, "lease-joined-chess01", token, 0, 10);
-      await server.settler.flush();
-      // Parent takes the approval back: the next authority read ends the lease; no coin row anywhere.
-      await client.execute("UPDATE family_completions SET status = 'on_hold', approval_source = NULL");
-      clock = t0 + 11000;
-      const refused = await tick(base, "lease-joined-chess01", token);
-      equal(refused.status, 410, JSON.stringify(refused.body));
+      // Explicit pause, then a hidden tab: 60 s of wall time, heartbeats keep flowing, nothing is billed.
+      const beat = async (body: string) => {
+        const r = await fetch(`${base}/v1/play/lease-joined-chess01/tick`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body });
+        return { status: r.status, body: (await r.json()) as { consumedSeconds: number } };
+      };
+      clock = t0 + 11_000;
+      const atPause = (await beat('{"active":false,"paused":true}')).body.consumedSeconds;
+      for (let sec = 12; sec <= 40; sec += 1) { clock = t0 + sec * 1000; await beat('{"active":false,"paused":true}'); }
+      for (let sec = 41; sec <= 70; sec += 1) { clock = t0 + sec * 1000; await beat('{"active":false,"foreground":false}'); }
+      const afterPause = (await beat('{"active":false,"foreground":false}')).body.consumedSeconds;
+      ok(afterPause - atPause <= 1, `paused/background billed ${afterPause - atPause} s`);
+      // Resume: counting continues from where it was, no time is minted.
+      clock = t0 + 71_000;
+      equal((await tick(base, "lease-joined-chess01", token)).status, 200);
+      const resumed = await playUntil(base, "lease-joined-chess01", token, 71, 76);
+      ok(resumed!.body.consumedSeconds <= afterPause + 6, `resume billed ${resumed!.body.consumedSeconds - afterPause} s over ~5 s of play`);
+      clock = t0 + 77_000;
+      const end = await fetch(`${base}/v1/play/lease-joined-chess01/end`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
+      equal(end.status, 200);
       await server.settler.flush();
       const lease = (await getLease("lease-joined-chess01", client))!;
       equal(lease.state, "ended");
-      equal(lease.endReason, "chess-locked");
-      ok(lease.consumedSeconds >= 10 && lease.consumedSeconds <= 11, `chess consumed ${lease.consumedSeconds}`);
-      const chessRow = (await client.execute("SELECT granted_seconds, consumed_seconds FROM family_chess_allowances WHERE person_id = 'santiago' AND date = '2026-10-04'")).rows[0];
-      equal(Number(chessRow.granted_seconds), 900);
-      ok(Number(chessRow.consumed_seconds) >= 10);
-      equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_reward_redemptions")).rows[0].n), 0, "no coin movement for chess");
-      equal((await getPlayState("santiago", client, new Date(clock))).remainingSeconds, 0, "paid allowance untouched (none purchased)");
+      ok(lease.consumedSeconds >= 14 && lease.consumedSeconds <= 18, `chess consumed ${lease.consumedSeconds}`);
+      const chessRow = (await client.execute("SELECT date, granted_seconds, consumed_seconds FROM family_chess_allowances WHERE person_id = 'santiago'")).rows;
+      deepEqual(chessRow.map((r) => [String(r.date), Number(r.granted_seconds), Number(r.consumed_seconds)]), [["purchased", 900, lease.consumedSeconds]]);
+      const debits = (await client.execute("SELECT reward_id, charged_points FROM family_reward_redemptions")).rows.map((r) => [String(r.reward_id), Number(r.charged_points)]);
+      deepEqual(debits, [[CHESS_PURCHASE_REWARD_ID, 1]], "exactly the one explicit chess debit");
+      const state = await getPlayState("santiago", client);
+      equal(state.remainingSeconds, 0, "Studio allowance untouched (none purchased)");
+      equal(state.chess.remainingSeconds, 900 - lease.consumedSeconds);
+      observe("CH02", { coinsEarnedYesterday: 1, approvedToday: 0, purchaseOk: bought.ok, debitCoins: 1, grantedSeconds: 900, leaseIssued: issued.ok, meteredByAdapter: true, firstTickStatus: 200 });
+      observe("CH10", { pausedAndBackgroundWallSeconds: 60, billedDuringPause: afterPause - atPause, resumeBilledOverFiveSeconds: resumed!.body.consumedSeconds - afterPause, totalConsumed: lease.consumedSeconds, chessRemaining: state.chess.remainingSeconds, conserved: state.chess.remainingSeconds + lease.consumedSeconds === 900 });
+
+      // A lease from the retired free daily grant (issued before the release) gets no authority: 410 within one heartbeat.
+      await client.execute({ sql: "INSERT INTO family_chess_allowances VALUES ('santiago', '2026-10-04', 900, 0, ?, ?)", args: [at(0).toISOString(), at(0).toISOString()] });
+      await client.execute({ sql: "INSERT INTO family_play_leases (id, person_id, game_id, mode, metered, budget_seconds, consumed_seconds, state, issued_at, cap_seconds, budget_kind, budget_date) VALUES ('lease-joined-legacy1', 'santiago', ?, 'play', 1, 900, 0, 'active', ?, 900, 'chess', '2026-10-04')", args: [DAILY_CHESS_GAME_ID, new Date(clock).toISOString()] });
+      clock += 1000;
+      const legacy = await tick(base, "lease-joined-legacy1", chessCred("lease-joined-legacy1"));
+      equal(legacy.status, 410, JSON.stringify(legacy.body));
+      await server.settler.flush();
+      const legacyLease = (await getLease("lease-joined-legacy1", client))!;
+      equal(legacyLease.state, "ended");
+      equal(legacyLease.endReason, "day-ended");
+      equal(legacyLease.consumedSeconds, 0);
+      equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_reward_redemptions")).rows[0].n), 1, "no coin movement");
+      observe("CH08", { meterLegacyFreeLeaseStatus: legacy.status, meterLegacyFreeLeaseFamilyEndReason: legacyLease.endReason, meterLegacyFreeLeaseConsumed: legacyLease.consumedSeconds });
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));
     }
   });
 
-  it("REPAIR-1 joined: a chess lease plays its full 900 s against the real Family persistence and ENDS at the boundary — 410 exhausted, no grace, no grant; Family's day row is fully consumed; a fresh chess lease is refused and a fresh PAID lease still gets its own grace", async () => {
-    await allowance(900);
-    await client.execute("DELETE FROM family_completions");
-    await client.execute("DELETE FROM family_chess_allowances");
-    await client.execute("INSERT INTO family_completions (person_id, routine_id, week, day, status, created_at, reviewed_at, awarded_points, approval_source) VALUES ('santiago', 's-kumon', '2026-W40', 6, 'done', 'x', 'y', 1, 'parent-review')");
+  it("CH12 joined: a chess lease fails closed through a Family outage (nothing billed while authority is missing), an expired credential gets no authority, and a delayed/stale report cannot give spent chess time back", async () => {
+    await allowance(0);
+    await walletFromYesterday(2);
     clock = t0;
+    ok((await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-joined-chess-12", purchaseId: "pur-joined-chess-12", redemptionId: "red-joined-chess-12", budgetKind: "chess", now: at(0) }, client)).ok);
+    const issued = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-joined-chess12", takeover: true, deviceLabel: null, now: at(0) }, client);
+    ok(issued.ok, JSON.stringify(issued));
+    const { server, base } = await stack();
+    try {
+      const token = chessCred("lease-joined-chess12");
+      equal((await tick(base, "lease-joined-chess12", token)).status, 200);
+      const before = await playUntil(base, "lease-joined-chess12", token, 0, 5);
+      const billedBefore = before!.body.consumedSeconds;
+      // Family unreachable for 30 s while the child keeps "playing": every beat is refused, nothing more is billed.
+      outage = true;
+      const outageStatuses: number[] = [];
+      for (let sec = 8; sec <= 37; sec += 1) { clock = t0 + sec * 1000; outageStatuses.push((await tick(base, "lease-joined-chess12", token)).status); }
+      outage = false;
+      clock = t0 + 38_000;
+      const recovered = await tick(base, "lease-joined-chess12", token);
+      await playUntil(base, "lease-joined-chess12", token, 38, 40);
+      clock = t0 + 41_000;
+      const end = await fetch(`${base}/v1/play/lease-joined-chess12/end`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: '{"reason":"left","frameStopped":true}' });
+      equal(end.status, 200);
+      await server.settler.flush();
+      const lease = (await getLease("lease-joined-chess12", client))!;
+      ok(outageStatuses.every((s) => s !== 200), `outage beats ${outageStatuses.join(",")}`);
+      ok(lease.consumedSeconds <= billedBefore + 2 + 3 + 1, `outage billed nothing beyond the handed window: ${lease.consumedSeconds} (before ${billedBefore})`);
+      const remainingAfterPlay = (await getPlayState("santiago", client)).chess.remainingSeconds;
+      equal(remainingAfterPlay, 900 - lease.consumedSeconds);
+      // A delayed, regressed report (older measurement, lower value) changes nothing: spent time is not restored.
+      const stale = await settlePlayLease({ leaseId: "lease-joined-chess12", consumedSeconds: 1, end: true, measuredAt: t0 + 2000, now: new Date(clock + 5000) }, client);
+      ok(stale.ok && stale.delta === 0, JSON.stringify(stale));
+      equal((await getPlayState("santiago", client)).chess.remainingSeconds, remainingAfterPlay);
+      // A credential past its expiry gets no authority on a fresh lease.
+      const fresh = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-joined-chess12b", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
+      ok(fresh.ok);
+      const expired = mod.mintPlayCredential(key, { sub: "santiago", scope: "lease", gid: DAILY_CHESS_GAME_ID, lid: "lease-joined-chess12b", mode: "play", metered: true, budget: 900, iat: Math.floor(clock / 1000) - 1300, exp: Math.floor(clock / 1000) - 100, jti: "chess12b" });
+      const refused = await tick(base, "lease-joined-chess12b", expired);
+      equal(refused.status, 401);
+      equal((await getPlayState("santiago", client)).chess.remainingSeconds, remainingAfterPlay, "nothing billed or restored by the refused beat");
+      equal((await getPlayState("santiago", client)).balance, 1, "no purchase happened on the way");
+      observe("CH12", { billedBeforeOutage: billedBefore, outageBeats: outageStatuses.length, outageBeatsAuthorized: outageStatuses.filter((s) => s === 200).length, recoveredStatus: recovered.status, totalBilled: lease.consumedSeconds, staleReportDelta: stale.ok ? stale.delta : -1, remainingAfterStaleReport: (await getPlayState("santiago", client)).chess.remainingSeconds, expiredCredentialStatus: refused.status, balanceAfter: (await getPlayState("santiago", client)).balance });
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("REPAIR-1 joined: a purchased chess lease plays its full 900 s against the real Family persistence and ENDS at the boundary — 410 exhausted, no grace, no grant; the chess allowance is fully consumed; no automatic purchase; a fresh chess lease is refused and a fresh PAID lease still gets its own grace", async () => {
+    await allowance(900);
+    await walletFromYesterday(3);
+    clock = t0;
+    const bought = await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-joined-chessfull", purchaseId: "pur-joined-chessfull", redemptionId: "red-joined-chessfull", budgetKind: "chess", now: at(0) }, client);
+    ok(bought.ok && bought.balance === 2, JSON.stringify(bought));
     const issued = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-joined-chessfull", takeover: true, deviceLabel: null, now: at(0) }, client);
     ok(issued.ok && issued.lease.budgetSeconds === 900, JSON.stringify(issued));
     const { server, base } = await stack();
@@ -2193,17 +2288,21 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const lease = (await getLease("lease-joined-chessfull", client))!;
       equal(lease.state, "ended");
       equal(lease.consumedSeconds, 900);
-      const row = (await client.execute("SELECT consumed_seconds FROM family_chess_allowances WHERE person_id = 'santiago' AND date = '2026-10-04'")).rows[0];
+      const row = (await client.execute("SELECT consumed_seconds FROM family_chess_allowances WHERE person_id = 'santiago' AND date = 'purchased'")).rows[0];
       equal(Number(row.consumed_seconds), 900);
-      const state = await getPlayState("santiago", client, new Date(clock));
+      const state = await getPlayState("santiago", client);
       equal(state.chess.remainingSeconds, 0);
-      equal(state.remainingSeconds, 900, "the purchased allowance is untouched by chess");
+      equal(state.remainingSeconds, 900, "the Studio allowance is untouched by chess");
+      equal(state.balance, 2, "exhaustion buys nothing by itself");
+      equal(Number((await client.execute("SELECT COUNT(*) AS n FROM family_reward_redemptions")).rows[0].n), 1);
       // reconnect/refresh with the same credential: no authority
       clock = t0 + 905_000;
       equal((await tick(base, "lease-joined-chessfull", token)).status, 410);
       // a fresh chess lease today: refused by Family (no daily seconds left)
       const again = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-joined-chessfull2", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
       deepEqual(again, { ok: false, reason: "no-allowance", remainingSeconds: 0 });
+      equal((await getPlayState("santiago", client)).balance, 2, "a refused re-entry buys nothing either");
+      observe("CH11", { meterEndStatus: end.status, meterEndReason: view.endReason ?? null, graceAfterChessExhaustion: view.graceRemainingSeconds ?? null, authorizedMsAfterEnd: view.authorizedForMs ?? 0, consumedAtEnd: view.consumedSeconds, reconnectStatus: 410, balanceBeforeExhaustion: 2, balanceAfterExhaustion: (await getPlayState("santiago", client)).balance, debitRowsAfterExhaustion: Number((await client.execute("SELECT COUNT(*) AS n FROM family_reward_redemptions")).rows[0].n), freshChessLeaseIssued: again.ok });
       // the PAID clock keeps its once-only tail: a 2 s paid lease reaches grace, not an immediate end
       await client.execute("UPDATE family_play_allowances SET consumed_seconds = granted_seconds - 2 WHERE person_id = 'santiago'");
       const paid = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: "lease-joined-paidtail", takeover: true, deviceLabel: null, now: new Date(clock) }, client);
@@ -2241,7 +2340,7 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       equal(r.status, 200, `idle report at t${sec}: ${JSON.stringify(r.body)}`);
     }
   };
-  const familyRemaining = async () => (await getPlayState("santiago", client, new Date(clock))).remainingSeconds;
+  const familyRemaining = async () => (await getPlayState("santiago", client)).remainingSeconds;
 
   it("CX01 reproduction (former fixed 20-minute credential): a 1800 s lease played across 20:00 ends credential-expired mid-game with time remaining", async () => {
     await allowance(1800);

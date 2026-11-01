@@ -20,7 +20,7 @@ import { dayLabels, familyMembers, routineDefinitions, type CompletionRecord } f
 import { CHILD_IDS, type ChildId } from "@/lib/family-assistant-turn";
 import type { FamilyBoardConfig, RewardRedemption } from "@/lib/family-db";
 import type { ChessStatusView, PlayPurchase } from "@/lib/family-play";
-import { PLAY_PURCHASE_REWARD_ID, formatPlayClock, occurrenceDateOf } from "@/lib/family-play";
+import { CHESS_PURCHASE_REWARD_ID, PLAY_PURCHASE_REWARD_ID, formatPlayClock, occurrenceDateOf } from "@/lib/family-play";
 import { rewardDefinitions } from "@/data/family-routines";
 
 const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -98,7 +98,7 @@ export function FamilyParentClient({ milestones }: { milestones: Milestone[] }) 
   const setCount = (c: CompletionRecord & { week: string }, creditCount: number) =>
     act(`Set ${routineTitle(c.routineId)} to ${creditCount}`, () => fetch("/api/family/completions", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ week: c.week, personId: c.personId, routineId: c.routineId, day: c.day, action: "set-credit-count", creditCount }) }));
   const undoRedemption = (r: RewardRedemption) =>
-    act(`Undo ${r.rewardId === PLAY_PURCHASE_REWARD_ID ? "Game Studio time" : r.rewardId}`, () => fetch("/api/family/redemptions", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: r.id }) }));
+    act(`Undo ${r.rewardId === PLAY_PURCHASE_REWARD_ID ? "Game Studio time" : r.rewardId === CHESS_PURCHASE_REWARD_ID ? "chess time" : r.rewardId}`, () => fetch("/api/family/redemptions", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: r.id }) }));
 
   // ---- routine configuration (debounced full-config PUT; reward overrides preserved untouched) ----
   const [config, setConfig] = useState<FamilyBoardConfig | null>(null);
@@ -184,26 +184,26 @@ export function FamilyParentClient({ milestones }: { milestones: Milestone[] }) 
         )}
       </section>
 
-      {/* 2. Chess today — server status per child */}
-      <section aria-label="Chess today" className={card}>
-        <h2 className="text-lg font-semibold">Chess today {records ? `· ${records.today.date}` : ""}</h2>
+      {/* 2. Chess time — purchased chess allowance per child (server numbers) */}
+      <section aria-label="Chess time" className={card}>
+        <h2 className="text-lg font-semibold">Chess time</h2>
         <div className="grid gap-3 sm:grid-cols-2">
           {CHILD_IDS.map((child) => {
             const c = records?.chess[child];
             return (
-              <div key={child} className="rounded-2xl border border-secondary bg-secondary px-4 py-3" data-chess-child={child} data-chess-eligible={c ? String(c.eligible) : ""} data-chess-remaining={c ? c.remainingSeconds : ""}>
+              <div key={child} className="rounded-2xl border border-secondary bg-secondary px-4 py-3" data-chess-child={child} data-chess-remaining={c ? c.remainingSeconds : ""}>
                 <p className="text-base font-semibold">{childName(child)}</p>
                 {!c ? <p className="text-sm text-tertiary">…</p> : (
                   <>
-                    <p className="text-sm text-primary">{c.eligible ? `Unlocked · ${formatPlayClock(c.remainingSeconds)} left of 15:00` : c.grantedSeconds > 0 ? `Locked (approval removed) · ${formatPlayClock(Math.max(0, c.grantedSeconds - c.consumedSeconds))} would come back` : "Locked — no approved activity today"}</p>
-                    {c.qualifiedBy ? <p className="text-xs text-tertiary">Unlocked by {routineTitle(c.qualifiedBy.routineId)} ({dayLabels[c.qualifiedBy.day]} {c.qualifiedBy.week})</p> : null}
+                    <p className="text-sm text-primary">{formatPlayClock(c.remainingSeconds)} left</p>
+                    <p className="text-xs text-tertiary">{formatPlayClock(c.grantedSeconds)} bought · {formatPlayClock(c.consumedSeconds)} played</p>
                   </>
                 )}
               </div>
             );
           })}
         </div>
-        <p className="text-xs text-tertiary">One approved activity occurring today unlocks 15 free minutes of digital chess for that day. More activities don&rsquo;t add time; coins never buy it; the real board is always free.</p>
+        <p className="text-xs text-tertiary">Digital chess costs 🪙 1 for 15 minutes from the child&rsquo;s wallet, bought explicitly on Games; no activity is required that day. Game Studio stays 🪙 3 for 15 minutes; the real board is always free.</p>
       </section>
 
       {/* 3. Record a day for a child */}
@@ -266,11 +266,11 @@ export function FamilyParentClient({ milestones }: { milestones: Milestone[] }) 
         {!records ? <p className="text-sm text-tertiary">Loading…</p> : spending.length === 0 ? <p className="text-sm text-tertiary">Nothing spent since {records.epochWeek}.</p> : (
           <ol className="flex flex-col gap-2">
             {spending.map((r) => {
-              const purchase = r.rewardId === PLAY_PURCHASE_REWARD_ID ? records.purchases.find((p) => p.redemptionId === r.id) ?? null : null;
+              const purchase = r.rewardId === PLAY_PURCHASE_REWARD_ID || r.rewardId === CHESS_PURCHASE_REWARD_ID ? records.purchases.find((p) => p.redemptionId === r.id) ?? null : null;
               const reward = rewardDefinitions.find((d) => d.id === r.rewardId);
               return (
                 <li key={r.id} data-redemption-id={r.id} className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-secondary bg-secondary px-4 py-2">
-                  <p className="text-sm"><span className="font-semibold">{purchase ? "🎮 Game Studio time · 15 minutes" : `${reward?.icon ?? "🎁"} ${reward?.title ?? r.rewardId}`}</span> <span className="text-tertiary">· {childName(r.personId)} · {r.week} · 🪙 −{r.chargedPoints}{reward?.retired ? " · retired reward (history only)" : ""}</span></p>
+                  <p className="text-sm"><span className="font-semibold">{purchase ? (purchase.budgetKind === "chess" ? "♟️ Chess time · 15 minutes" : "🎮 Game Studio time · 15 minutes") : `${reward?.icon ?? "🎁"} ${reward?.title ?? r.rewardId}`}</span> <span className="text-tertiary">· {childName(r.personId)} · {r.week} · 🪙 −{r.chargedPoints}{reward?.retired ? " · retired reward (history only)" : ""}</span></p>
                   <button type="button" onClick={() => undoRedemption(r)} className={secondaryPill}>{purchase ? "Refund" : "Undo"}</button>
                 </li>
               );

@@ -4,7 +4,7 @@ import { FamilyGamesClient } from "./client";
 
 export const metadata: Metadata = {
   title: "Games — Nabu",
-  description: "Chess: 15 free minutes a day after a parent approves something you did today. Game Studio: coins buy time for making, changing and playing",
+  description: "Chess: 1 coin buys 15 minutes. Game Studio: 3 coins buy 15 minutes of making, changing and playing",
 };
 
 // The approved-game library (Game Studio DESIGN G1; Family DESIGN "Game

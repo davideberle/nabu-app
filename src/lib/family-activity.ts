@@ -15,7 +15,7 @@
 
 import { routineDefinitions, rewardDefinitions, type CompletionRecord } from "../data/family-routines.ts";
 import type { ChildId } from "./family-assistant-turn.ts";
-import { PLAY_PURCHASE_REWARD_ID, type PlayPurchase } from "./family-play.ts";
+import { CHESS_PURCHASE_REWARD_ID, PLAY_PURCHASE_REWARD_ID, type PlayPurchase } from "./family-play.ts";
 import type { WalletRedemption } from "./family-wallet.ts";
 
 export type ActivityStatus = "pending" | "approved" | "on-hold" | "try-again" | "redeemed" | "refunded";
@@ -120,7 +120,8 @@ export function completionToActivity(c: ActivityCompletion): ActivityItem {
 }
 
 export function redemptionToActivity(r: ActivityRedemption, purchases: readonly PlayPurchase[] = []): ActivityItem {
-  const isPlay = r.rewardId === PLAY_PURCHASE_REWARD_ID;
+  const isChess = r.rewardId === CHESS_PURCHASE_REWARD_ID;
+  const isPlay = r.rewardId === PLAY_PURCHASE_REWARD_ID || isChess;
   const reward = rewardDefinitions.find((d) => d.id === r.rewardId);
   const purchase = isPlay ? purchases.find((p) => p.redemptionId === r.id) ?? null : null;
   const refunded = purchase?.state === "refunded";
@@ -130,8 +131,8 @@ export function redemptionToActivity(r: ActivityRedemption, purchases: readonly 
     kind: isPlay ? "play-purchase" : "redemption",
     personId: r.personId,
     week: r.week,
-    title: isPlay ? "Game time · 15 minutes" : reward?.title ?? r.rewardId,
-    icon: isPlay ? "🎮" : reward?.icon ?? "🎁",
+    title: isChess ? "Chess time · 15 minutes" : isPlay ? "Game time · 15 minutes" : reward?.title ?? r.rewardId,
+    icon: isChess ? "♟️" : isPlay ? "🎮" : reward?.icon ?? "🎁",
     status,
     statusLabel: STATUS_LABEL[status],
     coinDelta: refunded ? 0 : -Math.abs(r.chargedPoints),

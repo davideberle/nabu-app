@@ -309,8 +309,8 @@ export function guardedPlayHref(identity: ChildGameIdentity, gameId: string, mod
  *
  * The Adaptive Chess Coach is Game Studio-owned; its bundle is embedded in this
  * app and served ONLY by the credential-gated route behind the guarded play
- * surface, which issues the child's daily chess lease (15 free minutes after a
- * parent approves something the child did today). The launch href is built
+ * surface, which issues the child's chess lease on purchased chess time
+ * (November 1, 2026: 1 coin for 15 minutes). The launch href is built
  * only from a validated `ChildGameIdentity`, so a child can never hand-craft a
  * sibling id into the launch. Family owns the gate (`family-play.ts`).
  */
