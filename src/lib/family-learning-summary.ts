@@ -117,6 +117,7 @@ export function visitOrdinal(state: MissionState, id: VisitId): number | null {
     case "v7": return hasV3Record ? 7 : 6;
     case "v8": return hasV3Record ? 8 : 7;
     case "v9": return hasV3Record ? 9 : 8;
+    case "v10": return hasV3Record ? 10 : 9;
   }
 }
 

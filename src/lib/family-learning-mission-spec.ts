@@ -207,8 +207,7 @@ export type MissionWrite = {
   nokt?: boolean;
   /** Step 1 (S1-05): Nokt gives the writing feedback; the app's mechanical tip is held and shown only when Nokt fails. */
   noktFirst?: boolean;
-  /** Step 1 (S1-14): how many own sentences this step asks for (default 1). Each is a separate original; one revision is kept. */
-  sentences?: number;
+
   /** Reviewed lines of the app's own correction for each mechanical rule (child-facing). */
   mechanicsLines?: Partial<Record<"capital-start" | "end-mark", string>>;
 };
@@ -465,10 +464,13 @@ export const EXPECTED_MISSION_IDS_V6: readonly string[] = [...EXPECTED_MISSION_I
 export const EXPECTED_MISSION_STEP_IDS_GARDEN: readonly string[] = ["G1-REQUEST", "G2-PACK", "G3-DELIVERY", "G4-RADIO", "G5-TOOLS", "G6-TYPING", "G7-FRESH", "G8-JOURNAL", "G9-HOME"];
 /** Content version 7 (Visit 8): version 6 plus the greenhouse map mission of visit v9, by stable id. */
 export const EXPECTED_MISSION_IDS_V7: readonly string[] = [...EXPECTED_MISSION_IDS_V6, "MISSION-GREENHOUSE-GROW"];
+export const EXPECTED_MISSION_IDS_V8: readonly string[] = [...EXPECTED_MISSION_IDS_V7, "MISSION-WATER-PIPE"];
 export const EXPECTED_MISSION_STEP_IDS_GREENHOUSE: readonly string[] = ["H1-PLAN", "H2-POTS", "H3-POTS-AGAIN", "H4-FLOOR", "H5-PLANS", "H6-CHOOSE", "H7-JUNE", "H8-TOOLS", "H9-WATERING", "H10-TYPING", "H11-JOURNAL", "H12-DONE"];
-export const EXPECTED_MISSION_STEPS: Readonly<Record<string, readonly string[]>> = { "MISSION-SHIP-SUPPLY": EXPECTED_MISSION_STEP_IDS_V5, "MISSION-ISLAND-GARDEN": EXPECTED_MISSION_STEP_IDS_GARDEN, "MISSION-GREENHOUSE-GROW": EXPECTED_MISSION_STEP_IDS_GREENHOUSE };
+/** Step 1 (content v8, Visit 9): the water pipe — warm-up, adaptive versions (harder/easier/normal-again), home task. */
+export const EXPECTED_MISSION_STEP_IDS_WATER_PIPE: readonly string[] = ["P1-START", "P2-PIPES", "P3-TANKBED", "P4-REGADERA", "P5-BEDS", "P5H-BEDS-BIG", "P5E-BEDS-SMALL", "P5N-BEDS-AGAIN", "P6-EDGE", "P6E-EDGE-SMALL", "P6N-EDGE-AGAIN", "P6H-LITERS", "P6D-ROUTE", "P7-JUNE", "P7H-JUNE-MORE", "P7E-JUNE-SHORT", "P8-ROSA", "P8H-ROSA-MORE", "P8E-ROSA-SHORT", "P9-TUBO", "P10-TYPING", "P11-JOURNAL", "P12-DONE"];
+export const EXPECTED_MISSION_STEPS: Readonly<Record<string, readonly string[]>> = { "MISSION-SHIP-SUPPLY": EXPECTED_MISSION_STEP_IDS_V5, "MISSION-ISLAND-GARDEN": EXPECTED_MISSION_STEP_IDS_GARDEN, "MISSION-GREENHOUSE-GROW": EXPECTED_MISSION_STEP_IDS_GREENHOUSE, "MISSION-WATER-PIPE": EXPECTED_MISSION_STEP_IDS_WATER_PIPE };
 /** Every known mission step id (closed telemetry vocabulary). */
-export const ALL_MISSION_STEP_IDS: readonly string[] = [...EXPECTED_MISSION_STEP_IDS_V5, ...EXPECTED_MISSION_STEP_IDS_GARDEN, ...EXPECTED_MISSION_STEP_IDS_GREENHOUSE];
+export const ALL_MISSION_STEP_IDS: readonly string[] = [...EXPECTED_MISSION_STEP_IDS_V5, ...EXPECTED_MISSION_STEP_IDS_GARDEN, ...EXPECTED_MISSION_STEP_IDS_GREENHOUSE, ...EXPECTED_MISSION_STEP_IDS_WATER_PIPE];
 
 function normalize(value: string): string {
   return value.toLowerCase().normalize("NFC").replace(/[.,!?;:¡¿"'’]/g, " ").replace(/\s+/g, " ").trim();
@@ -504,7 +506,7 @@ export function checkMissions(raw: unknown, problems: string[], contentVersion =
     problems.push("missions: list required from content version 5");
     return;
   }
-  const expectedIds = contentVersion >= 7 ? EXPECTED_MISSION_IDS_V7 : contentVersion >= 6 ? EXPECTED_MISSION_IDS_V6 : EXPECTED_MISSION_IDS_V5;
+  const expectedIds = contentVersion >= 8 ? EXPECTED_MISSION_IDS_V8 : contentVersion >= 7 ? EXPECTED_MISSION_IDS_V7 : contentVersion >= 6 ? EXPECTED_MISSION_IDS_V6 : EXPECTED_MISSION_IDS_V5;
   const ids = raw.map((m) => (isRecord(m) && typeof m.id === "string" ? m.id : "?"));
   const missing = expectedIds.filter((id) => !ids.includes(id));
   const extra = ids.filter((id) => !expectedIds.includes(id));
@@ -931,7 +933,6 @@ function checkSolve(raw: unknown, sl: string, stepIds: string[], problems: strin
     const m = isRecord(sv.methods) ? sv.methods : null;
     const partIds = (sv.parts as unknown[]).map((p) => (isRecord(p) ? String(p.id) : "?"));
     const opts = Array.isArray(m?.options) ? (m!.options as unknown[]) : [];
-    if (m && partIds.indexOf(String(m.after)) === partIds.length - 1) problems.push(`${sl}: the «which way» question comes after a part that is not the last (the problem stays open for it)`);
     if (!m || !partIds.includes(String(m.after)) || !str(m.prompt) || opts.length < 2 || opts.some((o) => !isRecord(o) || !str(o.id) || !str(o.label))) problems.push(`${sl}: methods name a part of this problem, a prompt and at least two ways`);
   }
 }

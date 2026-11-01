@@ -253,7 +253,7 @@ export type MissionDrillRecord = {
 export type TypingBlockRun = {
   blockId: string;
   startedAt: string;
-  plan: { drills: MissionDrill[]; paceCps: number; paceBasis: "observed" | "fallback"; paceSamples: number; estimatedSeconds: number; lessonId: string };
+  plan: { drills: MissionDrill[]; paceCps: number; paceBasis: "observed" | "fallback"; paceSamples: number; estimatedSeconds: number; lessonId: string; /** Step 1: the next unused reviewed set for the optional extra drill. */ extraLines?: string[] };
   drills: MissionDrillRecord[];
   /** Partial work saved on pause (never completion). */
   partials: { no: number; typedChars: number; activeSeconds: number; at: string }[];
@@ -723,12 +723,15 @@ export function planTypingBlock(state: MissionState, content: LearningContent, b
     return { no: i + 1, source: src, lessonId: lesson.id, lines: [...(sets?.length ? sets[k % sets.length] : lines)] };
   });
   const estimatedSeconds = Math.round(drills.reduce((s, d) => s + d.lines.join("").length / pace.cps, 0));
-  return { drills, paceCps: Math.round(pace.cps * 1000) / 1000, paceBasis: pace.basis, paceSamples: pace.samples, estimatedSeconds, lessonId: current.id };
+  // Step 1 (S1-14): the optional extra drill takes the next unused reviewed set of the current lesson (no exact repeat) when one is left.
+  const currentSets = block.material?.[current.id];
+  const nextSet = currentSets && currentSets.length > (used[current.id] ?? 0) ? currentSets[used[current.id] ?? 0] : null;
+  return { drills, paceCps: Math.round(pace.cps * 1000) / 1000, paceBasis: pace.basis, paceSamples: pace.samples, estimatedSeconds, lessonId: current.id, ...(nextSet ? { extraLines: [...nextSet] } : {}) };
 }
 
 function extraDrill(plan: TypingBlockRun["plan"]): MissionDrill {
   const first = plan.drills[0];
-  return { no: plan.drills.length + 1, source: "current", lessonId: first.lessonId, lines: [...first.lines], extra: true };
+  return { no: plan.drills.length + 1, source: "current", lessonId: plan.extraLines ? plan.lessonId : first.lessonId, lines: [...(plan.extraLines ?? first.lines)], extra: true };
 }
 
 export function nextDrill(run: TypingBlockRun): MissionDrill | null {
@@ -901,6 +904,8 @@ function finishSolveIfDone(state: MissionState, run: MissionRun, def: MissionDef
   if (records) revealNextPart(records, env, def, step, r);
   const runs = parts.map((x) => r.parts?.[x.id]);
   if (runs.some((x) => !x || x.status === "open")) return;
+  // Step 1 (S1-09): the «which way did you use?» question keeps the problem open until it is answered (unscored).
+  if (step.solve?.methods && r.parts?.[step.solve.methods.after] && !r.support.some((x) => x.kind === "method-used")) return;
   const evs = runs.map((x) => x!.evidence);
   const status: MissionStepRun["status"] = runs.some((x) => x!.status === "unresolved") ? "unresolved" : runs.some((x) => x!.status === "taught") ? "taught" : "done";
   const outcome: MissionStepRun["outcome"] = status === "unresolved" ? "unresolved" : evs.every((e) => e === "independent") ? "independent" : evs.some((e) => e === "answer_exposed") ? "answer_exposed" : "supported";
@@ -1560,6 +1565,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (r.support.some((x) => x.kind === "method-used")) throw new MissionOpError("not-allowed", "already answered");
       r.support.push({ kind: "method-used", at: env.nowIso, detail: action.choice });
       support(records, env, def, step, "method-used", { part: m.after, choice: action.choice, scored: false, help: false });
+      finishSolveIfDone(state, run, def, step, r, env, records);
       result = { method: action.choice };
       break;
     }

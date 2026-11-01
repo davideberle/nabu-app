@@ -652,7 +652,8 @@ describe("N7-02 — the existing telemetry, reconciled (no parallel store, no ke
     ok(batch!.events.some((e) => e.kind === "stage-exit" && e.step === "G2-PACK"));
     ok(batch!.events.some((e) => e.kind === "control" && e.step === "G2-PACK"));
     const summary = summariseTelemetry(batch!.events, 1, ["mission", "summary", "reflect"]);
-    deepStrictEqual(summary.byStep, { "G2-PACK": { enters: 1, activeSeconds: 39 }, "G3-DELIVERY": { enters: 1, activeSeconds: 10 } });
+    // Step 1 (S1-13b): the second on screen before the first input now counts as presence (39 → 40, 10 → 11).
+    deepStrictEqual(summary.byStep, { "G2-PACK": { enters: 1, activeSeconds: 40 }, "G3-DELIVERY": { enters: 1, activeSeconds: 11 } });
   });
 });
 

@@ -69,7 +69,7 @@ function formatDate(iso: string): string {
 export function worldMarkers(view: ChildView): WorldMarker[] {
   const running = view.visit;
   const completed = new Set(view.progress.completed.map((c) => c.visit));
-  const ordered = ["v1", "v2", "v4", "v5", "v6", "v7", "v8", "v9"] as const;
+  const ordered = ["v1", "v2", "v4", "v5", "v6", "v7", "v8", "v9", "v10"] as const;
   const markers: WorldMarker[] = [];
   for (const id of ordered) {
     const report = view.reports.find((r) => r.visit === id) ?? null;
@@ -233,7 +233,7 @@ function World({ child }: { child: ChildId }) {
   if (view.child === "isabel") return <IsabelHub child={child} view={view} />;
   const running = view.visit;
   const canStart = running !== null || view.next.visit !== null;
-  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" || view.next.visit === "v5" || view.next.visit === "v6" || view.next.visit === "v7" || view.next.visit === "v8" || view.next.visit === "v9" ? `Besuch ${view.next.ordinal ?? (view.next.visit === "v9" ? 8 : view.next.visit === "v8" ? 7 : view.next.visit === "v7" ? 6 : view.next.visit === "v6" ? 5 : view.next.visit === "v5" ? 4 : 3)} starten` : "Weiter";
+  const startLabel = running ? "Weiter" : view.next.visit === "v1" ? "Start" : view.next.visit === "v4" || view.next.visit === "v5" || view.next.visit === "v6" || view.next.visit === "v7" || view.next.visit === "v8" || view.next.visit === "v9" || view.next.visit === "v10" ? `Besuch ${view.next.ordinal ?? (view.next.visit === "v10" ? 9 : view.next.visit === "v9" ? 8 : view.next.visit === "v8" ? 7 : view.next.visit === "v7" ? 6 : view.next.visit === "v6" ? 5 : view.next.visit === "v5" ? 4 : 3)} starten` : "Weiter";
   const markers = worldMarkers(view);
   const report: VisitReport | null = panel?.kind === "report" ? view.reports.find((r) => r.visit === panel.visit) ?? null : null;
   const missionHref = `/family/learn/mission?child=${child}`;

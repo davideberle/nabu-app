@@ -967,6 +967,10 @@ export function nextVisitAvailability(
   // replayed or reset. Under content version 6 (cap / rollback) nothing further is offered and a running v9 is parked.
   const hasV9 = content.visits.some((v) => v.id === "v9");
   if (hasV9 && !finished.includes("v9")) return { visit: "v9", availableAt: null };
+  // Step 1 / Visit 9 (content v8, 2026-11-01): the water-pipe map mission `v10` follows the finished Visit 8 immediately; Visit 8
+  // is never replayed or reset. Under content version 7 (cap / rollback) nothing further is offered and a running v10 is parked.
+  const hasV10 = content.visits.some((v) => v.id === "v10");
+  if (hasV10 && !finished.includes("v10")) return { visit: "v10", availableAt: null };
   return { visit: null, availableAt: null, reason: "all-visits-done" };
 }
 
@@ -3033,7 +3037,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
       case "log-transfer": return "Schreib einen neuen kurzen Satz.";
       case "summary": return "Das hast du heute geschafft.";
       case "reflect": return "Wie war es heute?";
-      case "mission": return state.currentVisit === "v9" ? "Geh über die Insel: Plan das neue Gewächshaus." : state.currentVisit === "v8" ? "Hilf Rosa, die Setzlinge in den Inselgarten zu bringen." : "Geh über die Insel: Finde heraus, was das Schiff braucht.";
+      case "mission": return state.currentVisit === "v10" ? "Geh über die Insel: Bau die Wasserleitung zum Gewächshaus." : state.currentVisit === "v9" ? "Geh über die Insel: Plan das neue Gewächshaus." : state.currentVisit === "v8" ? "Hilf Rosa, die Setzlinge in den Inselgarten zu bringen." : "Geh über die Insel: Finde heraus, was das Schiff braucht.";
     }
   }
   const availability = nextVisitAvailability(state, content, now);
@@ -3048,6 +3052,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
     if (availability.visit === "v7") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v7") ?? 6}): die Fahrt zum Forschungsschiff.`;
     if (availability.visit === "v8") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v8") ?? 7}): Rosas Inselgarten.`;
     if (availability.visit === "v9") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v9") ?? 8}): das grössere Gewächshaus.`;
+    if (availability.visit === "v10") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v10") ?? 9}): die Wasserleitung.`;
     return "Zurück zur Basis — ein neuer Besuch wartet.";
   }
   return "Alle Besuche sind geschafft.";
