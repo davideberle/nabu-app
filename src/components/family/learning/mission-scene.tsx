@@ -591,7 +591,7 @@ function Seedling() {
 
 const PLACE_PICTURES: Record<string, "greenhouse" | "gate" | "boat"> = { "Ins Gewächshaus": "greenhouse", "Zum Tor": "gate", "Aufs Boot": "boat", "Im Gewächshaus": "greenhouse", "Am Tor": "gate", "Auf dem Boot": "boat" };
 
-export function ListenTask({ child, active, busy, act, speech, telemetry, characters = [] }: { child: ChildId; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; characters?: MissionView["characters"] }) {
+export function ListenTask({ child, active, busy, act, speech, telemetry, characters = [], focused = false }: { child: ChildId; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; characters?: MissionView["characters"]; /** Step 1 (review): one open question at a time, compact answer buttons — question and answers above the fold. */ focused?: boolean }) {
   const listen = active.listen!;
   const [playing, setPlaying] = useState(false);
   const [last, setLast] = useState<"none" | "child-voice" | "browser" | "failed" | "recorded" | "missing">("none");
@@ -644,14 +644,14 @@ export function ListenTask({ child, active, busy, act, speech, telemetry, charac
           {listen.script}
         </p>
       ) : null}
-      {active.questions.map((q) => (
+      {(focused ? active.questions.filter((q) => q.status === "open").slice(0, 1) : active.questions).map((q) => (
         <div key={q.id} className="grid gap-2" data-testid={`question-${q.id}`} data-status={q.status}>
-          <p className="text-xl font-semibold">{q.prompt}</p>
+          <p className="text-xl font-semibold" data-fold={focused ? "question" : undefined}>{q.prompt}</p>
           {q.status === "open" ? (
             <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
               {(q.options ?? []).map((o) => (
-                <button key={o} type="button" className="grid min-h-24 w-36 place-items-center gap-1 rounded-2xl border-2 p-2 text-lg font-semibold disabled:opacity-50" style={{ borderColor: "#8ba8a4", background: "white" }} disabled={busy || !canAnswer} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`}>
-                  {PLACE_PICTURES[o] || !listen.noPictures ? <PlacePicture kind={PLACE_PICTURES[o] ?? "gate"} /> : null}
+                <button key={o} type="button" className={focused ? "min-h-14 rounded-2xl border-2 px-5 text-lg font-semibold disabled:opacity-50" : "grid min-h-24 w-36 place-items-center gap-1 rounded-2xl border-2 p-2 text-lg font-semibold disabled:opacity-50"} style={{ borderColor: "#8ba8a4", background: "white" }} disabled={busy || !canAnswer} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`}>
+                  {!focused && (PLACE_PICTURES[o] || !listen.noPictures) ? <PlacePicture kind={PLACE_PICTURES[o] ?? "gate"} /> : null}
                   {o}
                 </button>
               ))}
@@ -662,6 +662,9 @@ export function ListenTask({ child, active, busy, act, speech, telemetry, charac
           {q.hint ? <Feedback tone="retry" text={q.hint} /> : null}
         </div>
       ))}
+      {focused && active.questions.some((q) => q.status !== "open") && active.questions.some((q) => q.status === "open") ? (
+        <p className="text-base" data-testid="listen-answered">✓ {active.questions.filter((q) => q.status !== "open").length} von {active.questions.length} beantwortet</p>
+      ) : null}
       {!canAnswer && listen.failures === 0 ? <p className="text-lg">Hör zuerst die Nachricht. Dann wählst du.</p> : null}
     </div>
   );

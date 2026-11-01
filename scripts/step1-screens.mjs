@@ -213,7 +213,7 @@ const oneStopControl = async (page, who) => {
   if (PATH === "main") {
     check("S.calculation-input", (await page.locator("[data-testid='part-input'][data-kind='calculation']").count()) === 1);
     check("S.no-formula-chip-before-first-attempt", (await page.locator("[data-testid='scene-facts']").count()) === 0);
-    check("S.no-duplicate-grid-caption", !(await visibleText(page, "[data-testid='scene-panel']")).includes("Das Beet beim Tank: 4 Reihen"));
+    check("S.no-duplicate-grid-caption", await page.locator("[data-testid='plan-grid'] figcaption").first().evaluate((e) => e.getBoundingClientRect().height <= 1 && e.getBoundingClientRect().width <= 1));
     check("S.placeholder-is-not-the-answer", !/\d/.test((await page.locator("[data-testid='part-input']").getAttribute("placeholder")) ?? ""));
     await page.locator("[data-testid='part-input']").fill("4 x 7");
     await shot(page, "santiago-P3-written-calculation");
@@ -240,7 +240,7 @@ const oneStopControl = async (page, who) => {
     await goTo(page, "P5H-BEDS-BIG");
     await shot(page, "santiago-P5H-harder");
     await part(page, "6 x 8");
-    await part(page, 36, "main.P5H-BEDS-BIG.beds");
+    await part(page, 32, "main.P5H-BEDS-BIG.beds");
     await method(page, "rows");
     await leave(page);
 
