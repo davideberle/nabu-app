@@ -31,6 +31,17 @@ export const GAMES_CHILD_AUDIENCE = "family-games";
 export const PLAY_CREDENTIAL_AUDIENCE = "family-play";
 export const CHILD_GAMES_TTL_SECONDS = 15 * 60;
 export const PLAY_CREDENTIAL_TTL_SECONDS = 20 * 60;
+/**
+ * Unbilled wall-clock allowance a LEASE-bound credential gets on top of the
+ * lease budget: menus, pauses, loading, the finish tail. The credential must
+ * outlive every second the child can actually use in one sitting. November 1,
+ * 2026: a 1800 s Deimos lease ended `credential-expired` after exactly 20
+ * minutes mid-game with 948 s unused, because every credential had the fixed
+ * life above regardless of its budget and nothing renewed it.
+ */
+export const PLAY_CREDENTIAL_UNBILLED_ALLOWANCE_SECONDS = 30 * 60;
+/** Upper bound of one credential's life (one sitting); a budget beyond it simply reopens from the Games page. */
+export const PLAY_CREDENTIAL_MAX_TTL_SECONDS = 4 * 60 * 60;
 export const MIN_SECRET_CHARS = 32;
 export const GAMES_SECRET_ENV = "FAMILY_GAMES_TOKEN_SECRET";
 export const GAMES_URL_ENV = "FAMILY_GAMES_STUDIO_URL";
@@ -132,6 +143,20 @@ export function resolveStudioConfig(env: Record<string, string | undefined> = pr
   const loopback = url.hostname === "127.0.0.1" || url.hostname === "localhost" || url.hostname === "::1";
   if (url.protocol !== "https:" && !loopback) return { ok: false, reason: "insecure-url" };
   return { ok: true, key, studioUrl: url.origin + url.pathname.replace(/\/+$/, "") };
+}
+
+/**
+ * Life of a lease-bound credential (scopes `lease` and `studio`): the lease
+ * budget plus the unbilled allowance, never below the former fixed 20 minutes
+ * and never above the maximum. Library credentials keep the fixed life.
+ * Expiry is not the charging boundary — the meter bills only reported active
+ * play, bounded by Family's lease budget and re-confirmed authority, and ends
+ * a silent lease by itself — so a longer life changes nothing about what is
+ * charged, only whether an unfinished sitting is cut off with time remaining.
+ */
+export function playCredentialTtlSeconds(budgetSeconds: number): number {
+  const budget = Number.isFinite(budgetSeconds) ? Math.max(0, Math.floor(budgetSeconds)) : 0;
+  return Math.min(PLAY_CREDENTIAL_MAX_TTL_SECONDS, Math.max(PLAY_CREDENTIAL_TTL_SECONDS, budget + PLAY_CREDENTIAL_UNBILLED_ALLOWANCE_SECONDS));
 }
 
 function mint(key: Buffer, order: readonly string[], claims: Record<string, unknown>): string {

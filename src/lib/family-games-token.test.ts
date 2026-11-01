@@ -8,6 +8,10 @@ import {
   deriveSharedPlayKey,
   mintChildGamesToken,
   mintPlayCredential,
+  PLAY_CREDENTIAL_MAX_TTL_SECONDS,
+  PLAY_CREDENTIAL_TTL_SECONDS,
+  PLAY_CREDENTIAL_UNBILLED_ALLOWANCE_SECONDS,
+  playCredentialTtlSeconds,
   readBearer,
   resolveStudioConfig,
   signSettlement,
@@ -97,5 +101,37 @@ describe("settlement signature", () => {
     equal(verifySettlementSignature(key, sig, String(now), "lease-aaaaaaaaaaaa", body + " ", now + 5).ok, false);
     equal(verifySettlementSignature(key, sig, String(now), "lease-aaaaaaaaaaaa", body, now + 1000).ok, false);
     equal(verifySettlementSignature(key, null, String(now), "lease-aaaaaaaaaaaa", body, now).ok, false);
+  });
+});
+
+describe("lease credential life (November 1, 2026: a 1800 s lease must not end credential-expired after 20 minutes)", () => {
+  it("is the lease budget plus the unbilled allowance for menus, pauses and loading", () => {
+    equal(PLAY_CREDENTIAL_UNBILLED_ALLOWANCE_SECONDS, 30 * 60);
+    equal(playCredentialTtlSeconds(1800), 1800 + 30 * 60);
+    equal(playCredentialTtlSeconds(900), 900 + 30 * 60);
+    equal(playCredentialTtlSeconds(2), 2 + 30 * 60);
+  });
+  it("never falls below the former fixed life and never exceeds the maximum", () => {
+    // The allowance alone already exceeds the former fixed life, so the floor is a guard, never the result.
+    ok(PLAY_CREDENTIAL_UNBILLED_ALLOWANCE_SECONDS >= PLAY_CREDENTIAL_TTL_SECONDS);
+    equal(playCredentialTtlSeconds(0), PLAY_CREDENTIAL_UNBILLED_ALLOWANCE_SECONDS);
+    equal(playCredentialTtlSeconds(-5), PLAY_CREDENTIAL_UNBILLED_ALLOWANCE_SECONDS);
+    equal(playCredentialTtlSeconds(Number.NaN), PLAY_CREDENTIAL_UNBILLED_ALLOWANCE_SECONDS);
+    ok(playCredentialTtlSeconds(0) >= PLAY_CREDENTIAL_TTL_SECONDS);
+    equal(playCredentialTtlSeconds(PLAY_CREDENTIAL_MAX_TTL_SECONDS), PLAY_CREDENTIAL_MAX_TTL_SECONDS);
+    equal(playCredentialTtlSeconds(10 * 60 * 60), PLAY_CREDENTIAL_MAX_TTL_SECONDS);
+    equal(playCredentialTtlSeconds(1799.9), 1799 + 30 * 60);
+  });
+  it("a lease credential minted with that life outlives its budget, is verified, and a library credential keeps the fixed life", () => {
+    const key = derivePlayKey(env)!;
+    const budget = 1800;
+    const minted = mintPlayCredential(key, { child: "santiago", scope: "lease", gameId: "deimos-rising", leaseId: "lease-bb8e3cbd43c14d88a3eb89e6", mode: "play", metered: true, budgetSeconds: budget, jti: "ttl-1", nowSeconds: now, ttlSeconds: playCredentialTtlSeconds(budget) });
+    equal(minted.expiresAt, (now + budget + PLAY_CREDENTIAL_UNBILLED_ALLOWANCE_SECONDS) * 1000);
+    // Still valid at the instant today's credential died (20 minutes) and at the end of the full budget.
+    ok(verifyPlayCredential(key, minted.token, now + PLAY_CREDENTIAL_TTL_SECONDS).ok);
+    ok(verifyPlayCredential(key, minted.token, now + budget + 60).ok);
+    equal(verifyPlayCredential(key, minted.token, now + budget + PLAY_CREDENTIAL_UNBILLED_ALLOWANCE_SECONDS).ok, false);
+    const library = mintPlayCredential(key, { child: "santiago", scope: "library", gameId: "*", leaseId: "-", mode: "edit", metered: false, budgetSeconds: 0, jti: "ttl-2", nowSeconds: now });
+    equal(library.expiresAt, (now + PLAY_CREDENTIAL_TTL_SECONDS) * 1000);
   });
 });

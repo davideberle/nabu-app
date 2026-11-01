@@ -1,5 +1,5 @@
 {
-  "_comment": "The Game Studio child adapter candidate the joined suites and the guard mirror are bound to (VR-01). Path of the live Studio runtime on this machine; the SHA-256 is the accepted candidate's hash (October 25, 2026: native Mac launch). Until that adapter is activated the live file hashes differently and the joined suites FAIL instead of silently testing the wrong adapter; FAMILY_STUDIO_ADAPTER(_SHA256) names the isolated candidate for verification.",
+  "_comment": "The Game Studio child adapter candidate the joined suites and the guard mirror are bound to (VR-01). Path of the live Studio runtime on this machine; the SHA-256 is the accepted candidate's hash (October 26, 2026: native Mac launch with receipt-anchored renewal, activated that evening; unchanged by the November 1 credential-life fix). If the live file ever hashes differently the joined suites FAIL instead of silently testing the wrong adapter; FAMILY_STUDIO_ADAPTER(_SHA256) names an isolated candidate for verification.",
   "path": "/Users/claweberle/Projects/game-studio/server/child-play-adapter.mjs",
-  "sha256": "35cf6806f7dd4589a558c0242022dde648b12edeb03534942596754f97edf4e8"
+  "sha256": "70d5ea98bc423395e2b855709d6b49431e855cc6aac181e76e5ccae644e5c13d"
 }

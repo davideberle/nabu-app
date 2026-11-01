@@ -21,6 +21,7 @@ import { endPlayLease, ensurePlayTables, getLease, getLeaseStatus, getPlayState,
 import { resolveStudioCandidate } from "./family-studio-candidate.ts";
 import { DAILY_CHESS_GAME_ID } from "./family-play.ts";
 import { nativeLaunchSupport } from "./family-native-games.ts";
+import { PLAY_CREDENTIAL_TTL_SECONDS, playCredentialTtlSeconds } from "./family-games-token.ts";
 
 const candidate = resolveStudioCandidate();
 const HARNESS = process.env.FAMILY_NATIVE_HARNESS ?? "";
@@ -1696,6 +1697,124 @@ describe("native Mac game on the joined Family + Studio stack (DR01–DR13)", { 
       record("LK02", observed);
       ok(Object.entries(observed).filter(([k]) => k !== "statuses").every(([, v]) => v === true), JSON.stringify(observed));
     } finally {
+      await s.close();
+    }
+  });
+
+  // ---- November 1, 2026: the first real Deimos session ended credential-expired at exactly 20:00 with 948 s left ----
+  // lease-bb8e3cbd43c14d88a3eb89e6: budget 1800 s, issued 12:41:08, ended 13:01:08 mid-game, 852 s billed. The Family
+  // app never times itself out; it reacts to the meter's 401 (credential-expired). NX01 reproduces the failure with the
+  // former fixed credential life; NX02 is the same sitting with the life the lease route now computes.
+  type NativeEnded = { consumed: number; state: string; endReason: string | null; endedAt: number | null; expiresAt: number };
+  /** Gameplay frames every 500 ms (never a stall), a report every second, observations as due. */
+  async function playLong(native: Native, from: number, to: number, probeAt: number | null = null) {
+    let lastTick = Number.NEGATIVE_INFINITY;
+    let endedAtMs: number | null = null;
+    let probe: Json | null = null;
+    for (let t = from; t <= to; t += 500) {
+      await at(native, t);
+      if (t - lastTick >= 1000) { await native.send("tick"); lastTick = t; }
+      const f = await native.send("frame");
+      await native.send("beacon");
+      if (probeAt !== null && t === probeAt) probe = f;
+      if (f.hold === "ended" && endedAtMs === null) endedAtMs = t;
+    }
+    return { endedAtMs, probe };
+  }
+
+  it("NX01 reproduction (former fixed 20-minute credential): title screen 3 min, then play across 20:00 — the app is frozen credential-expired with 780 s unused", async () => {
+    await allowance(1800);
+    clock = t0;
+    const lid = "lease-nx01-native1";
+    const lease = await issue(lid);
+    equal(lease.budgetSeconds, 1800);
+    const s = await stack();
+    const native = new Native();
+    try {
+      await at(native, t0);
+      await launch(native, s, lid, cred(lid, NATIVE, { budget: 1800, ttl: PLAY_CREDENTIAL_TTL_SECONDS }));
+      for (let t = t0; t <= t0 + 180_000; t += 4000) { await at(native, t); await native.send("tick"); }
+      await native.send("game 1");
+      const { endedAtMs, probe } = await playLong(native, t0 + 180_000, t0 + 1_230_000, t0 + 1_199_500);
+      const st = await native.send("state");
+      await native.send("end");
+      await s.server.settler.flush();
+      const meter = s.server.store.loadLease(lid)! as unknown as NativeEnded;
+      const fam = await famLease(lid);
+      const remaining = await famRemaining();
+      const observed = {
+        credentialLifeSeconds: PLAY_CREDENTIAL_TTL_SECONDS,
+        budgetSeconds: 1800,
+        runningJustBeforeExpiry: probe?.run === true,
+        frozenWallClockSeconds: endedAtMs === null ? -1 : Math.round((endedAtMs - t0) / 1000),
+        nativeEndReason: String(st.endReason),
+        meterEndReason: String(meter.endReason),
+        meterConsumedSeconds: meter.consumed,
+        familyConsumedSeconds: fam.consumedSeconds,
+        familyRemainingSeconds: remaining,
+        endedWithTimeRemaining: meter.state === "ended" && remaining > 0,
+        billedOnlyPlay: meter.consumed >= 1018 && meter.consumed <= 1020,
+      };
+      record("NX01", observed);
+      equal(observed.meterEndReason, "credential-expired");
+      equal(observed.nativeEndReason, "credential-expired");
+      equal(observed.runningJustBeforeExpiry, true);
+      ok(observed.frozenWallClockSeconds >= 1200 && observed.frozenWallClockSeconds <= 1202, `frozen at ${observed.frozenWallClockSeconds}`);
+      ok(observed.endedWithTimeRemaining && observed.billedOnlyPlay, JSON.stringify(observed));
+    } finally {
+      await native.close();
+      await s.close();
+    }
+  });
+
+  it("NX02 fixed: with the budget-derived credential life the same sitting plays through 20:00 to 25:00, quits normally, bills only the play, and the rest is available again", async () => {
+    await allowance(1800);
+    clock = t0;
+    const lid = "lease-nx02-native1";
+    const lease = await issue(lid);
+    const life = playCredentialTtlSeconds(lease.budgetSeconds);
+    const s = await stack();
+    const native = new Native();
+    try {
+      await at(native, t0);
+      await launch(native, s, lid, cred(lid, NATIVE, { budget: 1800, ttl: life }));
+      for (let t = t0; t <= t0 + 180_000; t += 4000) { await at(native, t); await native.send("tick"); }
+      await native.send("game 1");
+      const { endedAtMs, probe } = await playLong(native, t0 + 180_000, t0 + 1_500_000, t0 + 1_200_000);
+      const stAt25 = await native.send("state");
+      await stopPlaying(native);
+      const end = await quit(native);
+      await s.server.settler.flush();
+      const meter = s.server.store.loadLease(lid)! as unknown as NativeEnded;
+      const fam = await famLease(lid);
+      const remaining = await famRemaining();
+      const again = await issue("lease-nx02-native2");
+      const observed = {
+        credentialLifeSeconds: life,
+        budgetSeconds: 1800,
+        runningAt20Min: probe?.run === true,
+        frozenBefore25Min: endedAtMs !== null,
+        nativeEndedAt25Min: stAt25.ended === true,
+        quitStatus: Number((end.answer as Json).status),
+        meterEndReason: String(meter.endReason),
+        meterConsumedSeconds: meter.consumed,
+        familyConsumedSeconds: fam.consumedSeconds,
+        familyRemainingSeconds: remaining,
+        credentialValidAtEnd: meter.endedAt !== null && meter.expiresAt > meter.endedAt,
+        reopenBudgetIsRemaining: again.budgetSeconds === remaining,
+      };
+      record("NX02", observed);
+      equal(observed.runningAt20Min, true);
+      equal(observed.frozenBefore25Min, false);
+      equal(observed.nativeEndedAt25Min, false);
+      equal(observed.quitStatus, 200);
+      equal(observed.meterEndReason, "left");
+      ok(meter.consumed >= 1318 && meter.consumed <= 1320, `billed ${meter.consumed}`);
+      equal(fam.consumedSeconds, meter.consumed);
+      equal(remaining, 1800 - meter.consumed);
+      ok(observed.credentialValidAtEnd && observed.reopenBudgetIsRemaining, JSON.stringify(observed));
+    } finally {
+      await native.close();
       await s.close();
     }
   });

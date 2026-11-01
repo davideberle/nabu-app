@@ -18,6 +18,7 @@ import { createHeartbeat, type HeartbeatInput } from "./family-play-heartbeat.ts
 import { resolveStudioCandidate } from "./family-studio-candidate.ts";
 import { guardScript as mirroredGuardScript } from "./family-play-guard.ts";
 import { DAILY_CHESS_GAME_ID } from "./family-play.ts";
+import { PLAY_CREDENTIAL_TTL_SECONDS, playCredentialTtlSeconds } from "./family-games-token.ts";
 
 const candidate = resolveStudioCandidate();
 const ADAPTER = candidate?.path ?? "";
@@ -77,10 +78,14 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     mkdirSync(join(dir, "adapter"));
     writeFileSync(join(dir, "adapter", "approvals.json"), JSON.stringify({ version: 1, approvals: [{ gameId: "paid-game-1", children: ["santiago"] }] }));
   });
+  /** Normalized observations of the credential-life cases (CX01–CX03), written for the early failure gate when PLAY_GATE_OBSERVATIONS names a file. */
+  const observations: Record<string, Record<string, number | boolean | string | null>> = {};
+  const record = (id: string, values: Record<string, number | boolean | string | null>) => { observations[id] = { ...(observations[id] ?? {}), ...values }; };
   after(async () => {
     client?.close();
     await new Promise((r) => upstream?.close(r));
     rmSync(dir, { recursive: true, force: true });
+    if (process.env.PLAY_GATE_OBSERVATIONS) writeFileSync(process.env.PLAY_GATE_OBSERVATIONS, `${JSON.stringify(observations, null, 2)}\n`);
   });
   // A failed case must not leak a held gate into the next one (a held settle gate would hang every later flush).
   beforeEach(() => {
@@ -2210,6 +2215,214 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
       const tail = await tick(base, "lease-joined-paidtail", ptoken);
       equal(tail.status, 200, JSON.stringify(tail.body));
       equal((tail.body as unknown as { phase: string }).phase, "grace");
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  // ---- November 1, 2026: a paid session must last as long as its budget can be used in one sitting -------------------
+  // Observed live: Deimos lease lease-bb8e3cbd43c14d88a3eb89e6 (budget 1800 s) ended `credential-expired` exactly
+  // 20 minutes after issue, mid-game, with 852 s consumed. Cause: every play credential had the fixed
+  // PLAY_CREDENTIAL_TTL_SECONDS life; the meter ends the lease at the credential's expiry. The same applied to every
+  // browser paid game. These cases mint the credential with the life the lease route now computes
+  // (playCredentialTtlSeconds, the production function) and keep the former fixed life as the reproduction.
+  type Ended = { consumed: number; state: string; endReason: string | null; endedAt: number | null; expiresAt: number; lastTickAt: number | null };
+  const credFor = (lid: string, budget: number, ttlSeconds: number) => mod.mintPlayCredential(key, { sub: "santiago", scope: "lease", gid: "paid-game-1", lid, mode: "play", metered: true, budget, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + ttlSeconds, jti: `${lid}-${ttlSeconds}` });
+  const tickWith = async (base: string, lid: string, token: string, body: string) => {
+    const r = await fetch(`${base}/v1/play/${lid}/tick`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body });
+    return { status: r.status, body: (await r.json()) as { consumedSeconds?: number; ended?: boolean; phase?: string; endReason?: string; remainingSeconds?: number } };
+  };
+  /** The wrapper keeps reporting while the frame is not running (title screen, explicit pause): nothing is billed. */
+  const idleUntil = async (base: string, lid: string, token: string, fromSec: number, toSec: number) => {
+    for (let sec = fromSec; sec <= toSec; sec += 1) {
+      clock = t0 + sec * 1000;
+      const r = await tickWith(base, lid, token, '{"active":false}');
+      equal(r.status, 200, `idle report at t${sec}: ${JSON.stringify(r.body)}`);
+    }
+  };
+  const familyRemaining = async () => (await getPlayState("santiago", client, new Date(clock))).remainingSeconds;
+
+  it("CX01 reproduction (former fixed 20-minute credential): a 1800 s lease played across 20:00 ends credential-expired mid-game with time remaining", async () => {
+    await allowance(1800);
+    clock = t0;
+    const lid = "lease-joined-cx01";
+    const issued = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: lid, takeover: true, deviceLabel: null, now: at(0) }, client);
+    ok(issued.ok && issued.lease.budgetSeconds === 1800, JSON.stringify(issued));
+    const { server, base } = await stack();
+    try {
+      const token = credFor(lid, 1800, PLAY_CREDENTIAL_TTL_SECONDS);
+      await idleUntil(base, lid, token, 0, 180); // 3 minutes of title screen / menus (reported, never billed)
+      const beforeExpiry = await playUntil(base, lid, token, 180, 1199); // live play up to the last second before 20:00
+      clock = t0 + 1200 * 1000;
+      const atExpiry = await tick(base, lid, token); // the child is still playing at 20:00
+      await server.settler.flush();
+      const meter = server.store.loadLease(lid)! as unknown as Ended;
+      const fam = (await getLease(lid, client))!;
+      const remaining = await familyRemaining();
+      const observed = {
+        credentialLifeSeconds: PLAY_CREDENTIAL_TTL_SECONDS,
+        budgetSeconds: 1800,
+        lastAnsweredHeartbeatStatus: beforeExpiry!.status,
+        heartbeatAtExpiryStatus: atExpiry.status,
+        endReason: String(meter.endReason),
+        meterConsumedSeconds: meter.consumed,
+        familyConsumedSeconds: fam.consumedSeconds,
+        familyRemainingSeconds: remaining,
+        wallClockSecondsAtEnd: meter.endedAt === null ? -1 : Math.round((meter.endedAt - t0) / 1000),
+        endedWhileStillPlaying: beforeExpiry!.status === 200 && beforeExpiry!.body.ended === false && atExpiry.status !== 200,
+        endedWithTimeRemaining: meter.state === "ended" && remaining > 0,
+        billedOnlyPlay: meter.consumed >= 1018 && meter.consumed <= 1020,
+      };
+      record("CX01", observed);
+      equal(observed.endReason, "credential-expired");
+      equal(observed.wallClockSecondsAtEnd, 1200);
+      ok(observed.endedWhileStillPlaying && observed.endedWithTimeRemaining && observed.billedOnlyPlay, JSON.stringify(observed));
+      equal(fam.state, "ended");
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("CX02 fixed: with the budget-derived credential life the same sitting runs past 20:00 and 25:00, survives a 5-minute pause, and ends only at exhaustion — billed exactly the budget", async () => {
+    await allowance(1800);
+    clock = t0;
+    const lid = "lease-joined-cx02";
+    const issued = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: lid, takeover: true, deviceLabel: null, now: at(0) }, client);
+    ok(issued.ok && issued.lease.budgetSeconds === 1800, JSON.stringify(issued));
+    const life = playCredentialTtlSeconds(issued.ok ? issued.lease.budgetSeconds : 0);
+    const { server, base } = await stack();
+    try {
+      const token = credFor(lid, 1800, life);
+      await idleUntil(base, lid, token, 0, 180);
+      await playUntil(base, lid, token, 180, 1199);
+      clock = t0 + 1200 * 1000;
+      const at20 = await tick(base, lid, token); // where today's credential died
+      equal(at20.status, 200, JSON.stringify(at20.body));
+      const at25 = await playUntil(base, lid, token, 1200, 1500);
+      const consumedAt25 = at25!.body.consumedSeconds;
+      await idleUntil(base, lid, token, 1501, 1800); // 5-minute pause: reported, not billed
+      const afterPause = server.store.loadLease(lid)!.consumed;
+      // Resume and play until the budget runs out: warning, the once-only 30 s tail, then the end.
+      let phases = "";
+      let end: { sec: number; status: number; body: Record<string, unknown> } | null = null;
+      for (let sec = 1801; sec <= 2700 && end === null; sec += 1) {
+        clock = t0 + sec * 1000;
+        const r = await tick(base, lid, token);
+        const phase = String((r.body as { phase?: string }).phase ?? "");
+        if (r.status === 200 && phase && !phases.endsWith(phase)) phases += (phases ? ">" : "") + phase;
+        if (r.status !== 200 || r.body.ended) end = { sec, status: r.status, body: r.body as unknown as Record<string, unknown> };
+      }
+      ok(end, "the lease never ended within 45 minutes");
+      await server.settler.flush();
+      const meter = server.store.loadLease(lid)! as unknown as Ended;
+      const fam = (await getLease(lid, client))!;
+      const remaining = await familyRemaining();
+      const observed = {
+        credentialLifeSeconds: life,
+        budgetSeconds: 1800,
+        heartbeatAt20MinStatus: at20.status,
+        endedAt20Min: at20.body.ended === true,
+        heartbeatAt25MinStatus: at25!.status,
+        consumedAt25Min: consumedAt25,
+        pauseBilledSeconds: afterPause - consumedAt25,
+        phases,
+        endStatus: end!.status,
+        endReason: String(meter.endReason),
+        meterConsumedSeconds: meter.consumed,
+        familyConsumedSeconds: fam.consumedSeconds,
+        familyRemainingSeconds: remaining,
+        wallClockSecondsAtEnd: meter.endedAt === null ? -1 : Math.round((meter.endedAt - t0) / 1000),
+        credentialValidAtEnd: meter.endedAt !== null && meter.expiresAt > meter.endedAt,
+        endedBeforeCredentialExpiry: meter.endedAt !== null && meter.endedAt < t0 + life * 1000,
+      };
+      record("CX02", observed);
+      equal(observed.heartbeatAt20MinStatus, 200);
+      equal(observed.endedAt20Min, false);
+      equal(observed.heartbeatAt25MinStatus, 200);
+      ok(consumedAt25 >= 1318 && consumedAt25 <= 1320, `consumed at 25:00 ${consumedAt25}`);
+      ok(observed.pauseBilledSeconds <= 1, `pause billed ${observed.pauseBilledSeconds}`);
+      equal(observed.endReason, "exhausted");
+      equal(observed.endStatus, 410);
+      equal(observed.meterConsumedSeconds, 1800);
+      equal(observed.familyConsumedSeconds, 1800);
+      equal(observed.familyRemainingSeconds, 0);
+      ok(observed.credentialValidAtEnd && observed.endedBeforeCredentialExpiry, JSON.stringify(observed));
+      ok(phases.includes("warning") && phases.includes("grace"), phases);
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
+  it("CX03 with the long credential an abandoned session still ends by itself: a title-screen lease is stale for Family after 10 min (replaced without takeover), a closed tab is abandoned by the meter after 10 silent minutes, nothing extra is billed", async () => {
+    await allowance(1800);
+    clock = t0;
+    const a = "lease-joined-cx03a";
+    const issuedA = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: a, takeover: true, deviceLabel: "iPad", now: at(0) }, client);
+    ok(issuedA.ok, JSON.stringify(issuedA));
+    const { server, base } = await stack();
+    try {
+      const tokenA = credFor(a, 1800, playCredentialTtlSeconds(1800));
+      // (a) 11 minutes on a title screen: the wrapper keeps reporting, nothing is billed, no settlement moves.
+      await idleUntil(base, a, tokenA, 0, 660);
+      const b = "lease-joined-cx03b";
+      const issuedB = await issuePlayLease({ personId: "santiago", gameId: "paid-game-1", mode: "play", leaseId: b, takeover: false, deviceLabel: "computer", now: new Date(clock) }, client);
+      const staleReplaced = issuedB.ok && issuedB.replaced === a;
+      clock += 3000;
+      const afterReplace = await tickWith(base, a, tokenA, '{"active":false}');
+      await server.settler.flush();
+      const meterA = server.store.loadLease(a)! as unknown as Ended;
+      // (b) the replacement plays 60 s, then its tab closes: no more heartbeats.
+      ok(issuedB.ok, JSON.stringify(issuedB));
+      const budgetB = issuedB.ok ? issuedB.lease.budgetSeconds : 0;
+      const lifeB = playCredentialTtlSeconds(budgetB);
+      const tokenB = credFor(b, budgetB, lifeB);
+      const s0 = Math.round((clock - t0) / 1000);
+      clock = t0 + s0 * 1000;
+      equal((await tick(base, b, tokenB)).status, 200);
+      await playUntil(base, b, tokenB, s0, s0 + 60);
+      const lastHeartbeatSec = s0 + 60;
+      clock = t0 + (lastHeartbeatSec + 599) * 1000;
+      server.sweep();
+      const stillActiveBeforeIdleLimit = server.store.loadLease(b)!.state === "active";
+      clock = t0 + (lastHeartbeatSec + 600) * 1000;
+      server.sweep();
+      await server.settler.flush();
+      const meterB = server.store.loadLease(b)! as unknown as Ended;
+      const famB = (await getLease(b, client))!;
+      const remaining = await familyRemaining();
+      const observed = {
+        credentialLifeSeconds: lifeB,
+        titleScreenBilledSeconds: meterA.consumed,
+        staleLeaseReplacedWithoutTakeover: staleReplaced,
+        staleLeaseHeartbeatStatus: afterReplace.status,
+        staleLeaseEndReason: String(meterA.endReason),
+        stillActiveBeforeIdleLimit,
+        abandonedEndReason: String(meterB.endReason),
+        abandonedBilledSeconds: meterB.consumed,
+        abandonedWallClockSecondsAfterLastHeartbeat: meterB.endedAt === null ? -1 : Math.round((meterB.endedAt - (t0 + lastHeartbeatSec * 1000)) / 1000),
+        abandonedBeforeCredentialExpiry: meterB.endedAt !== null && meterB.endedAt < meterB.expiresAt,
+        familyConsumedSeconds: famB.consumedSeconds,
+        familyRemainingSeconds: remaining,
+        familyStateAfterAbandon: famB.state,
+      };
+      record("CX03", observed);
+      equal(observed.titleScreenBilledSeconds, 0);
+      equal(observed.staleLeaseReplacedWithoutTakeover, true);
+      equal(observed.staleLeaseHeartbeatStatus, 410);
+      equal(observed.staleLeaseEndReason, "replaced");
+      equal(observed.stillActiveBeforeIdleLimit, true);
+      equal(observed.abandonedEndReason, "abandoned");
+      // 60 s of reported play plus at most the handed 2 s frame window after the last heartbeat (the meter's existing
+      // rule for silence: the authorized foreground is charged once, never the silence itself).
+      ok(meterB.consumed >= 60 && meterB.consumed <= 62, `abandoned billed ${meterB.consumed}`);
+      equal(observed.abandonedWallClockSecondsAfterLastHeartbeat, 600);
+      equal(observed.abandonedBeforeCredentialExpiry, true);
+      equal(famB.consumedSeconds, meterB.consumed);
+      equal(famB.state, "ended");
+      equal(remaining, 1800 - meterB.consumed);
     } finally {
       server.settler.stop();
       await new Promise((r) => server.close(r));

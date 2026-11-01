@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
 import { NO_STORE, refuse, requireChildGames } from "@/lib/family-games-auth";
-import { mintPlayCredential, resolveStudioConfig } from "@/lib/family-games-token";
+import { mintPlayCredential, playCredentialTtlSeconds, resolveStudioConfig } from "@/lib/family-games-token";
 import { issuePlayLease } from "@/lib/family-play-db";
 import { PLAY_GRACE_SECONDS, PLAY_WARN_SECONDS, STUDIO_SCOPE_GAME_ID, isDailyChessGame, isPlayMode, isValidGameId, playPriceFor } from "@/lib/family-play";
 import { chessContentPath } from "@/lib/family-chess-content";
@@ -22,6 +22,11 @@ import { chessContentPath } from "@/lib/family-chess-content";
  *     game id `*`): creating, changing, answering and approving all run on it.
  * A live lease on another device/mode is `lease-held` (409) until the child
  * explicitly takes over. Nothing is unmetered any more.
+ *
+ * The credential lives as long as the lease can be used in one sitting: its
+ * budget plus an unbilled allowance for menus, pauses and loading (bounded,
+ * `playCredentialTtlSeconds`). The meter, not the credential, decides what is
+ * charged; it ends a lease by itself at exhaustion or after 10 silent minutes.
  */
 export async function POST(request: Request) {
   const authz = await requireChildGames(request);
@@ -58,6 +63,7 @@ export async function POST(request: Request) {
         budgetSeconds: outcome.lease.budgetSeconds,
         jti: randomUUID(),
         nowSeconds,
+        ttlSeconds: playCredentialTtlSeconds(outcome.lease.budgetSeconds),
       })
     : null;
   const chess = mode === "play" && isDailyChessGame(gameId);
