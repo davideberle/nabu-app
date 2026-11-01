@@ -6,7 +6,7 @@ import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "no
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { after, describe, it } from "node:test";
-import { createClient, type Client } from "@libsql/client";
+import { createClient, type Client, type Transaction } from "@libsql/client";
 import {
   LATE_TERMINAL_CORRECTION_SECONDS,
   chessStatusFor,
@@ -727,6 +727,75 @@ describe("chess — 1 coin buys 15 minutes (November 1, 2026)", () => {
     equal(state.balance, 1);
     deepEqual(await redemptions(client), [["santiago", PLAY_PURCHASE_REWARD_ID, 3]]);
     observe("CH15", { refundOk: first.ok, secondRefund: "already-refunded", balanceAfter: state.balance, chessRemainingAfter: state.chess.remainingSeconds, studioRemainingAfter: state.remainingSeconds, liveChessLeaseEndReason: ended.endReason, chessDebitRowsAfter: (await redemptions(client)).filter((r) => r[1] === CHESS_PURCHASE_REWARD_ID).length });
+  });
+
+  /** The same client, but its write transactions throw once on the first statement matching `failOn` (an injected fault mid-transaction). */
+  function faulty(raw: Client, failOn: RegExp): Client {
+    let armed = true;
+    const wrapTx = (tx: Transaction) => new Proxy(tx, {
+      get(t, k) {
+        const v = (t as unknown as Record<string | symbol, unknown>)[k];
+        if (k === "execute") return async (stmt: string | { sql: string }) => {
+          const sql = typeof stmt === "string" ? stmt : stmt.sql;
+          if (armed && failOn.test(sql)) { armed = false; throw new Error("injected fault"); }
+          return (v as (s: unknown) => unknown).call(t, stmt);
+        };
+        return typeof v === "function" ? (v as (...a: unknown[]) => unknown).bind(t) : v;
+      },
+    });
+    return new Proxy(raw, {
+      get(t, k) {
+        const v = (t as unknown as Record<string | symbol, unknown>)[k];
+        if (k === "transaction") return async (...a: unknown[]) => wrapTx(await (v as (...x: unknown[]) => Promise<Transaction>).apply(t, a));
+        return typeof v === "function" ? (v as (...a: unknown[]) => unknown).bind(t) : v;
+      },
+    }) as Client;
+  }
+
+  it("issuance failures are recoverable and exactly-once: a fault after the debit rolls everything back (no lost coin); a lost success reply retried with the same key replays; a failed lease issue keeps the bought time usable without a second charge", async () => {
+    const client = await fresh({ santiagoCoins: 2 });
+    // 1. The debit row is written, then the grant fails: one transaction, so nothing of it survives.
+    let thrown: string | null = null;
+    try {
+      await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-chess-fault01", purchaseId: id("p"), redemptionId: id("r"), budgetKind: "chess", now: NOON }, faulty(client, /INSERT INTO family_chess_allowances/));
+    } catch (error) {
+      thrown = (error as Error).message;
+    }
+    equal(thrown, "injected fault");
+    const afterFault = { debits: (await redemptions(client)).length, purchases: Number((await client.execute("SELECT COUNT(*) AS n FROM family_play_purchases")).rows[0].n), balance: (await getPlayState("santiago", client)).balance, chess: (await getPlayState("santiago", client)).chess.grantedSeconds };
+    deepEqual(afterFault, { debits: 0, purchases: 0, balance: 2, chess: 0 }, "no lost coin, no half purchase");
+    // The client retries the SAME key (it keeps the key on an unknown outcome): it commits once.
+    const retried = await buyChess(client, "key-chess-fault01", later(1));
+    ok(retried.ok && !retried.replayed && retried.balance === 1 && retried.remainingSeconds === 900, JSON.stringify(retried));
+    // 2. The commit succeeded but the reply was lost: the same-key retry replays, no second debit or grant.
+    const lostReply = await buyChess(client, "key-chess-fault02", later(2));
+    ok(lostReply.ok);
+    const replay = await buyChess(client, "key-chess-fault02", later(3));
+    ok(replay.ok && replay.replayed && replay.purchase.id === lostReply.purchase.id, JSON.stringify(replay));
+    deepEqual(await redemptions(client), [["santiago", CHESS_PURCHASE_REWARD_ID, 1], ["santiago", CHESS_PURCHASE_REWARD_ID, 1]]);
+    equal((await getPlayState("santiago", client)).chess.grantedSeconds, 1800);
+    // 3. Lease issuance (a separate step after the purchase) fails: the bought time stays, a retry issues it, no charge.
+    let leaseThrown: string | null = null;
+    try {
+      await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: id("lease"), takeover: false, deviceLabel: null, now: later(4) }, faulty(client, /INSERT INTO family_play_leases/));
+    } catch (error) {
+      leaseThrown = (error as Error).message;
+    }
+    equal(leaseThrown, "injected fault");
+    const afterLeaseFault = { leases: Number((await client.execute("SELECT COUNT(*) AS n FROM family_play_leases")).rows[0].n), chess: (await getPlayState("santiago", client)).chess.remainingSeconds, balance: (await getPlayState("santiago", client)).balance };
+    deepEqual(afterLeaseFault, { leases: 0, chess: 1800, balance: 0 });
+    const lease = await chessLease(client, later(5));
+    ok(lease.ok && lease.lease.budgetSeconds === 1800, JSON.stringify(lease));
+    // 4. The lease was issued but the game could not start (no Studio credential): the wrapper releases it; the next
+    //    status read resolves the never-activated lease and the full time is usable again — still no charge.
+    ok(await endPlayLease({ leaseId: lease.lease.id, personId: "santiago", reason: "studio-unconfigured", now: later(6) }, client));
+    const again = await chessLease(client, later(7));
+    ok(again.ok, JSON.stringify(again));
+    await recordLeaseActivation(again.lease.id, later(8), client);
+    const resolved = (await getLease(again.lease.id, client))!;
+    equal(resolved.budgetSeconds, 1800, "the released, never-started lease holds nothing back");
+    equal((await redemptions(client)).length, 2, "two explicit purchases, two debits — nothing else");
+    observe("CH15", { faultAfterDebitThrown: thrown === "injected fault", faultAfterDebitDebitRows: afterFault.debits, faultAfterDebitPurchaseRows: afterFault.purchases, faultAfterDebitBalance: afterFault.balance, faultAfterDebitChessGranted: afterFault.chess, sameKeyRetryCommitted: retried.ok && !retried.replayed, sameKeyRetryBalance: retried.ok ? retried.balance : -1, lostReplyRetryReplayed: replay.ok && replay.replayed, lostReplyDebitRows: 2, leaseFaultLeaseRows: afterLeaseFault.leases, leaseFaultChessRemaining: afterLeaseFault.chess, leaseFaultBalance: afterLeaseFault.balance, leaseRetryBudget: lease.ok ? lease.lease.budgetSeconds : -1, releasedUnstartedLeaseRestoredBudget: resolved.budgetSeconds, totalDebitRows: (await redemptions(client)).length });
   });
 
   it("reading state is free: repeated status reads create no purchase, debit or grant", async () => {
