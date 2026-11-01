@@ -450,7 +450,8 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
     <div className="flex w-full flex-col gap-3" data-testid="mission-world" data-position={mission.position} data-walker-at={walker.node} data-walking={walker.walking ? "true" : "false"} data-active={active?.id ?? ""} data-walk-requests={walker.walkRequests} data-raf={walker.rafActive ? "on" : "off"} data-last-route={walker.lastRoute} data-ticks={walker.ticks}>
       {/* Scene mode: an open activity takes the screen — the island, the task list and the notebook step aside (they stay mounted,
           so the avatar's position and the map measurements survive); a compact bar keeps the place, the way back and the progress. */}
-      {active ? <SceneBar placeLabel={placeOf(mission.position)?.label ?? ""} title={active.title} finished={active.status !== "active"} progress={mission.progress} busy={busy} onBack={() => void act({ a: "leave" })} /> : null}
+      {/* Step 1 (S1-01): the focused screen has no breadcrumb bar; a small way back sits on the picture. */}
+      {active && mission.screen !== "focused" ? <SceneBar placeLabel={placeOf(mission.position)?.label ?? ""} title={active.title} finished={active.status !== "active"} progress={mission.progress} busy={busy} onBack={() => void act({ a: "leave" })} /> : null}
       <div className="grid grid-cols-1 gap-3">
         {/* --- the walkable island --- */}
         <div
@@ -655,7 +656,7 @@ const SCENE_FOCUS: Record<string, { x: number; y: number }> = {
  * person who works there (drawn at their door), the saved world and the mission's own changes — one artwork, no separate
  * illustration style, nothing composited on an empty crop.
  */
-function SceneHeader({ view, mission, active, placeLabel }: { view: ChildView; mission: MissionView; active: MissionActiveView; placeLabel: string }) {
+function SceneHeader({ view, mission, active, placeLabel, onBack }: { view: ChildView; mission: MissionView; active: MissionActiveView; placeLabel: string; /** Step 1: the focused screen's only way back (an icon on the picture). */ onBack?: (() => void) | null }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [box, setBox] = useState<{ w: number; h: number } | null>(null);
   useLayoutEffect(() => {
@@ -683,6 +684,11 @@ function SceneHeader({ view, mission, active, placeLabel }: { view: ChildView; m
             <MissionWorldChanges world={mission.world} pos={Object.fromEntries(mission.places.map((p) => [p.id, { x: p.x, y: p.y }]))} testId="scene-world-changes" />
           </svg>
         </div>
+      ) : null}
+      {onBack ? (
+        <button type="button" onClick={onBack} className="absolute left-2 top-2 inline-flex h-11 w-11 items-center justify-center rounded-full border-2 text-xl font-bold shadow" style={{ ...cardStyle }} aria-label="Zurück zur Insel" data-testid="scene-back">
+          ←
+        </button>
       ) : null}
       <div className="absolute bottom-2 left-3">
         <p className="inline-block rounded-full border px-3 text-sm font-bold shadow-sm" style={{ ...cardStyle }}>
@@ -751,13 +757,15 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
     // the typing block keeps the physical keyboard on its input; other scenes start reading at their heading
     if (active.kind !== "typing-block") headingRef.current?.focus({ preventScroll: true });
   }, [active.id, active.kind]);
+  // Step 1 (S1-01): picture (with the place in it), one story line, the question, the input, one button.
+  const focused = mission.screen === "focused";
   return (
-    <section className={cn(card, "flex min-w-0 flex-col gap-3 p-3 sm:p-4")} style={cardStyle} aria-labelledby="mw-scene-title" data-testid="scene-panel" data-step={active.id} data-kind={active.kind} data-status={active.status} data-phase={active.phase}>
-      {active.kind === "typing-block" ? null : <SceneHeader view={view} mission={mission} active={active} placeLabel={placeLabel} />}
-      <h2 id="mw-scene-title" ref={headingRef} tabIndex={-1} className={cn("font-bold outline-none", active.kind === "typing-block" ? "sr-only" : "text-xl")}>
+    <section className={cn(card, "flex min-w-0 flex-col gap-3 p-3 sm:p-4")} style={cardStyle} aria-labelledby="mw-scene-title" data-testid="scene-panel" data-step={active.id} data-kind={active.kind} data-status={active.status} data-phase={active.phase} data-screen={focused ? "focused" : "full"}>
+      {active.kind === "typing-block" ? null : <SceneHeader view={view} mission={mission} active={active} placeLabel={placeLabel} onBack={focused && !finished ? () => void act({ a: "leave" }) : null} />}
+      <h2 id="mw-scene-title" ref={headingRef} tabIndex={-1} className={cn("font-bold outline-none", active.kind === "typing-block" || focused ? "sr-only" : "text-xl")}>
         {active.title}
       </h2>
-      {active.kind !== "typing-block" ? <Lines lines={active.intro} mission={mission} act={act} step={active.id} busy={busy} offset={0} /> : null}
+      {active.kind !== "typing-block" && !(focused && finished) ? <Lines lines={focused ? active.intro.slice(0, 1) : active.intro} mission={mission} act={act} step={active.id} busy={busy} offset={0} /> : null}
       {custom && storyLike ? custom : null}
       {storyLike ? <StoryTask active={active} busy={busy} act={act} label={mission.presentation === "map" ? (active.kind === "outcome" ? "Fertig" : "Verstanden") : undefined} /> : null}
       {custom && !storyLike ? custom : null}
@@ -768,13 +776,19 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
       {active.kind === "typing-block" && active.typing ? <TypingBlock block={active.typing} stepId={active.id} busy={busy} act={act} /> : null}
       {finished ? (
         <div className="grid gap-2" data-testid="scene-done">
-          <Lines lines={active.done} mission={mission} act={act} step={active.id} busy={busy} offset={active.intro.length} />
+          <Lines lines={focused ? active.done.slice(0, 1) : active.done} mission={mission} act={act} step={active.id} busy={busy} offset={active.intro.length} />
+          {active.home ? (
+            <div className="rounded-2xl border-2 px-4 py-3" style={{ borderColor: "#6f8f5a", background: "#f2f8ec" }} data-testid="home-task">
+              <p className="text-sm font-bold">🏡 Für zuhause</p>
+              <p className="text-lg">{active.home.replace(/^Für zuhause:\s*/, "")}</p>
+            </div>
+          ) : null}
           <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "leave" })} data-testid="scene-continue" autoFocus>
-            Weiter auf der Insel →
+            {focused ? "Weiter →" : "Weiter auf der Insel →"}
           </button>
         </div>
       ) : null}
-      {active.kind === "typing-block" ? null : <p className="text-sm">Du kannst jederzeit oben «Stopp» drücken. Was du gemacht hast, bleibt gespeichert.</p>}
+      {active.kind === "typing-block" || focused ? null : <p className="text-sm">Du kannst jederzeit oben «Stopp» drücken. Was du gemacht hast, bleibt gespeichert.</p>}
     </section>
   );
 }

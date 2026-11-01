@@ -69,7 +69,7 @@ import type { RetryItem } from "@/lib/family-learning-feedback";
 import type { RetryOutcome, RetryPayload } from "@/components/family/learning/lesson-end";
 import { stageLabel, type ChildView, type LearningOp, type SupportKind } from "@/lib/family-learning-state";
 import { createReadAloudController } from "@/lib/family-learning-audio";
-import { createTelemetryBuffer, enterStage, noteControl, noteInput, noteOp, noteSubmit, pause as pauseTelemetry, setHidden, takeBatch } from "@/lib/family-learning-telemetry";
+import { createTelemetryBuffer, enterStage, noteActivity, noteControl, noteInput, noteOp, noteSubmit, pause as pauseTelemetry, setHidden, takeBatch } from "@/lib/family-learning-telemetry";
 import { LogRevise, LogTransfer, PierBuild, ReflectFeedback, StationBuild, StationChoice, Summary, TypingCourse, type DraftContext } from "./redesign-stages";
 import { clearChildDrafts, retireAllDrafts, retireMismatched, type DraftIdentity } from "@/lib/family-learning-draft-store";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
@@ -180,7 +180,8 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
   // on unmount; the idle rule and the event kinds live in the pure module.
   const telemetryRef = useRef(createTelemetryBuffer());
   narrationTelemetryRef.current = (name) => {
-    telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
+    // Step 1 (S1-13b): a narrated line playing is activity on the visible screen (listening counts as active time).
+    telemetryRef.current = noteControl(noteActivity(telemetryRef.current, Date.now()), Date.now(), name);
   };
   const flushTelemetry = useCallback(
     (keepalive = false, identity?: { visitId: string; visitStartedAt: string; erasureGeneration: number } | null, batchId?: string) => {
@@ -526,7 +527,8 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
             ))}
           </ol>
         </div>
-        {view.mission?.active?.produce || view.child === "isabel" ? <span className="w-[6.5rem]" aria-hidden /> : <button
+        {/* Step 1 (S1-01): no permanent «Wörter» on the focused screens — the request task carries its own word help. */}
+        {view.mission?.active?.produce || view.child === "isabel" || view.mission?.screen === "focused" ? <span className="w-[6.5rem]" aria-hidden /> : <button
           type="button"
           onClick={() => {
             // During a recall step the wordbook SHOWS the target word: opening it is recorded as help on the segment first (IV5-11).

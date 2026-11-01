@@ -158,9 +158,9 @@ function SayButton({ child, speech, text, testId }: { child: ChildId; speech: Ch
   );
 }
 
-function NextButton({ busy, onNext, label = "Weiter" }: { busy: boolean; onNext: () => void; label?: string }) {
+function NextButton({ busy, onNext, label = "Weiter", speaking = false }: { busy: boolean; onNext: () => void; label?: string; /** Step 1 (S1-02): disabled while the narration speaks (Stopp/replay stay available above). */ speaking?: boolean }) {
   return (
-    <button type="button" className={cn(btn, "justify-self-start")} style={primary} disabled={busy} onClick={onNext} data-testid="workshop-next" autoFocus>
+    <button type="button" className={cn(btn, "justify-self-start")} style={primary} disabled={busy || speaking} onClick={onNext} data-testid="workshop-next" data-waiting={speaking ? "narration" : undefined} autoFocus={!speaking}>
       {label} <span aria-hidden>→</span>
     </button>
   );
@@ -486,9 +486,9 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
           ))}
         </h2>
         {active ? (
-          <NarratedTask child={child} mission={mission} active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} onNext={() => void next()} onSeen={setSeenParts} />
+          <NarratedTask child={child} mission={mission} active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} onNext={() => void next()} onSeen={setSeenParts} speaking={mission.screen === "focused" && narration.status === "speaking"} />
         ) : (
-          <button type="button" className={btn} style={primary} disabled={busy} onClick={() => void next()} data-testid="workshop-next">
+          <button type="button" className={btn} style={primary} disabled={busy || (mission.screen === "focused" && narration.status === "speaking")} onClick={() => void next()} data-testid="workshop-next">
             Weiter
           </button>
         )}
@@ -497,7 +497,7 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
   );
 }
 
-function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, onNext, onSeen }: { child: ChildId; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; narrator: NarrationPlayer; telemetry: SceneTelemetry; onNext: () => void; onSeen: (ids: string[]) => void }) {
+function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, onNext, onSeen, speaking = false }: { child: ChildId; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; narrator: NarrationPlayer; telemetry: SceneTelemetry; onNext: () => void; onSeen: (ids: string[]) => void; speaking?: boolean }) {
   void child;
   const finished = active.status !== "active";
   const seen = useCallback((ids: string[]) => onSeen(ids), [onSeen]);
@@ -516,7 +516,13 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
             <p className="sr-only">{active.ending.next}</p>
           </div>
         ) : null}
-        <NextButton busy={busy} onNext={onNext} label={active.kind === "outcome" ? (finished ? "Weiter" : "Fertig") : "Weiter"} />
+        {active.home ? (
+          <div className="flex items-center gap-3 rounded-2xl border-2 px-4 py-3" style={{ borderColor: "#6f8f5a", background: "#f2f8ec" }} data-testid="home-task">
+            <span className="text-3xl" aria-hidden>🏡</span>
+            <p className="text-xl">{active.home}</p>
+          </div>
+        ) : null}
+        <NextButton busy={busy} onNext={onNext} label={active.kind === "outcome" ? (finished ? "Weiter" : "Fertig") : "Weiter"} speaking={speaking} />
       </div>
     );
   }
@@ -527,7 +533,7 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
       {active.kind === "read" ? <NarratedReadTask active={active} busy={busy} act={act} /> : null}
       {active.kind === "listen" ? <NarratedListen active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} who={mission.characters[0]?.name ?? ""} slot={missionSlot(mission)} /> : null}
       {active.kind === "craft" && active.craft ? <NarratedCraft active={active} busy={busy} act={act} onDone={onNext} /> : null}
-      {finished && active.kind !== "craft" ? <NextButton busy={busy} onNext={onNext} /> : null}
+      {finished && active.kind !== "craft" ? <NextButton busy={busy} onNext={onNext} speaking={speaking} /> : null}
     </div>
   );
 }

@@ -320,7 +320,7 @@ export function Feedback({ tone, text, testId = "scene-feedback" }: { tone: "ret
 
 // --- a problem, one question at a time ------------------------------------------------
 
-export function SolveTask({ active, busy, act, telemetry, applicationNote = "Eine neue Lieferung, neue Zahlen.", quiet = false, onSeen }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry; applicationNote?: string; /** Isabel Visit 2 (narrated): less reading — no application note, no «try first» line (the narration says what to do). */ quiet?: boolean; /** Isabel Visit 2: the questions whose success she has moved past (for the narration script). */ onSeen?: (ids: string[]) => void }) {
+export function SolveTask({ active, busy, act, telemetry, applicationNote = "Eine neue Lieferung, neue Zahlen.", quiet = false, focused = false, onSeen }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry; applicationNote?: string; /** Isabel Visit 2 (narrated): less reading — no application note, no «try first» line (the narration says what to do). */ quiet?: boolean; /** Step 1 (S1-01): the focused screen — no list of earlier answers, no application note. */ focused?: boolean; /** Isabel Visit 2: the questions whose success she has moved past (for the narration script). */ onSeen?: (ids: string[]) => void }) {
   const sv = active.solve!;
   const finished = active.status !== "active";
   // After a correct answer the success stays on screen with its own "next question" action; the next question follows on tap.
@@ -332,12 +332,14 @@ export function SolveTask({ active, busy, act, telemetry, applicationNote = "Ein
   const resolved = sv.parts.filter((p) => p.status !== "open");
   const lastResolved = resolved[resolved.length - 1] ?? null;
   const waiting = !finished && lastResolved && !seen.includes(lastResolved.id) && sv.parts.some((p) => p.status === "open") ? lastResolved : null;
-  const current = waiting ? null : sv.parts.find((p) => p.status === "open") ?? null;
+  // Step 1 (S1-09): «which way did you use?» comes right after its part is solved, before anything else.
+  const methodsPending = sv.methods && sv.methods.chosen === null ? sv.methods : null;
+  const current = waiting || methodsPending ? null : sv.parts.find((p) => p.status === "open") ?? null;
   const shownIndex = current ? sv.parts.indexOf(current) + 1 : Math.min(resolved.length, sv.total);
   return (
     <div className="grid gap-4" data-testid="solve-task" data-part={current?.id ?? waiting?.id ?? ""}>
-      {sv.application && !quiet ? <p className="text-base font-semibold">{applicationNote}</p> : null}
-      {resolved.length && !quiet ? (
+      {sv.application && !quiet && !focused ? <p className="text-base font-semibold">{applicationNote}</p> : null}
+      {resolved.length && !quiet && !focused ? (
         <ul className="grid gap-1" aria-label="Schon beantwortet" data-testid="solve-answered">
           {resolved.filter((p) => p !== waiting).map((p) => (
             <li key={p.id} className="text-base">
@@ -346,6 +348,7 @@ export function SolveTask({ active, busy, act, telemetry, applicationNote = "Ein
           ))}
         </ul>
       ) : null}
+      {methodsPending && !waiting ? <MethodsChoice methods={methodsPending} step={active.id} busy={busy} act={act} lastFeedback={lastResolved?.feedback ?? null} /> : null}
       {waiting ? (
         <div className="grid gap-3">
           <p className="text-xl font-semibold">{waiting.question}</p>
@@ -355,7 +358,7 @@ export function SolveTask({ active, busy, act, telemetry, applicationNote = "Ein
           </button>
         </div>
       ) : null}
-      {current ? <PartTask key={current.id} part={current} step={active.id} busy={busy} act={act} telemetry={telemetry} quiet={quiet} /> : null}
+      {current ? <PartTask key={current.id} part={current} step={active.id} busy={busy} act={act} telemetry={telemetry} quiet={quiet} focused={focused} /> : null}
       {finished ? (
         <>
           {lastResolved?.feedback ? <Feedback tone={lastResolved.feedback.tone} text={lastResolved.feedback.text} /> : null}
@@ -366,7 +369,27 @@ export function SolveTask({ active, busy, act, telemetry, applicationNote = "Ein
   );
 }
 
-function PartTask({ part, step, busy, act, telemetry, quiet = false }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry; quiet?: boolean }) {
+/** Step 1 (S1-09): the ways side by side after the question is solved; he says which one he used (never scored). */
+function MethodsChoice({ methods, step, busy, act, lastFeedback }: { methods: NonNullable<NonNullable<MissionActiveView["solve"]>["methods"]>; step: string; busy: boolean; act: Act; lastFeedback: SolvePartView["feedback"] }) {
+  return (
+    <div className="grid gap-3" data-testid="solve-methods">
+      {lastFeedback ? <Feedback tone={lastFeedback.tone} text={lastFeedback.text} /> : null}
+      <p className="text-2xl font-semibold leading-snug">{methods.prompt}</p>
+      <div className="grid gap-2 sm:grid-cols-2">
+        {methods.options.map((o) => (
+          <button key={o.id} type="button" className={cn(btn, "justify-start text-left")} style={secondary} disabled={busy} onClick={() => void act({ a: "method", step, choice: o.id })} data-testid={`method-${o.id}`}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const CALC_RE = /^\s*\d{1,4}\s*[xX×*·]\s*\d{1,4}\s*(=\s*\d{1,5})?\s*$/;
+
+function PartTask({ part, step, busy, act, telemetry, quiet = false, focused = false }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry; quiet?: boolean; focused?: boolean }) {
+  const calc = !!part.calculation;
   const [value, setValue] = useState("");
   const [notice, setNotice] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -379,8 +402,8 @@ function PartTask({ part, step, busy, act, telemetry, quiet = false }: { part: S
   const submit = async () => {
     const v = value.trim();
     // Accidental Enter / empty or incomplete input never becomes an attempt.
-    if (!/^\d{1,4}$/.test(v)) {
-      setNotice("Trag eine ganze Zahl ein. Dann drück auf «Antwort prüfen».");
+    if (calc ? !CALC_RE.test(v) : !/^\d{1,4}$/.test(v)) {
+      setNotice(calc ? "Schreib die Rechnung, zum Beispiel 4 × 7." : "Trag eine ganze Zahl ein. Dann drück auf «Antwort prüfen».");
       return;
     }
     if (sending.current) return;
@@ -411,20 +434,26 @@ function PartTask({ part, step, busy, act, telemetry, quiet = false }: { part: S
         }}
       >
         <label htmlFor={`part-${part.id}`} className="text-2xl font-semibold leading-snug" data-testid="part-question">
-          {taught ? "Trag die Zahl jetzt selbst ein:" : part.question}
+          {taught ? (calc ? "Schreib die Rechnung jetzt selbst:" : "Trag die Zahl jetzt selbst ein:") : part.question}
         </label>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <input {...NO_TYPING_HELP} id={`part-${part.id}`} ref={inputRef} value={value} onChange={(e) => {
               setNotice(null);
-              setValue(e.target.value.replace(/[^0-9]/g, "").slice(0, 4));
-            }} inputMode="numeric" autoComplete="off" className="h-14 w-28 rounded-xl border-2 px-3 text-2xl font-semibold disabled:opacity-50" style={{ borderColor: "#8ba8a4" }} aria-describedby={`unit-${part.id}`} data-testid="part-input" />
-          <span id={`unit-${part.id}`} className="text-2xl font-semibold">
-            {part.unit}
-          </span>
+              setValue(calc ? e.target.value.replace(/[^0-9xX×*·= ]/g, "").slice(0, 20) : e.target.value.replace(/[^0-9]/g, "").slice(0, 4));
+            }} inputMode={calc ? "text" : "numeric"} autoComplete="off" className={cn("h-14 rounded-xl border-2 px-3 text-2xl font-semibold disabled:opacity-50", calc ? "w-56" : "w-28")} style={{ borderColor: "#8ba8a4" }} aria-describedby={`unit-${part.id}`} placeholder={calc ? "4 × 7" : undefined} data-testid="part-input" data-kind={calc ? "calculation" : "number"} />
+          {calc ? (
+            <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => { setValue((v) => `${v.trimEnd()} × `.trimStart()); inputRef.current?.focus(); }} aria-label="Mal-Zeichen einfügen" data-testid="part-times">
+              ×
+            </button>
+          ) : (
+            <span id={`unit-${part.id}`} className="text-2xl font-semibold">
+              {part.unit}
+            </span>
+          )}
         </div>
         <div>
           <button type="submit" className={btn} style={primary} disabled={busy || !value.trim()} data-testid="part-check">
-            {quiet ? <><span aria-hidden>✓</span> Prüfen</> : taught ? "Eintragen" : "Antwort prüfen"}
+            {quiet || focused ? <><span aria-hidden>✓</span> Prüfen</> : taught ? "Eintragen" : "Antwort prüfen"}
           </button>
         </div>
       </form>

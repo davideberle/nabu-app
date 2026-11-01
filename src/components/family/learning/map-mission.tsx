@@ -142,12 +142,16 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
 /** The body of a Visit 8 scene for the kinds that use the clearer task components; null = MissionWorld's own body. */
 export function MapTask({ child, view, active, busy, act, speech, telemetry, nokt }: { child: ChildId; view: ChildView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; nokt: MapNokt }): ReactNode | null {
   switch (active.kind) {
-    case "solve":
+    case "solve": {
+      // Step 1 (S1-01): on the focused screen a fact already said by the story line or the question is not repeated in a box.
+      const focused = view.mission?.screen === "focused";
+      const said = [...active.intro.map((l) => l.text), ...(active.solve?.parts.map((p) => p.question) ?? [])].join(" ").toLowerCase();
+      const facts = (active.solve?.facts ?? []).filter((f) => !focused || !said.includes(f.toLowerCase().replace(/[.]$/, "")));
       return (
         <div className="grid gap-4" data-testid="map-solve">
-          {active.solve?.facts.length ? (
+          {facts.length ? (
             <ul className="flex flex-wrap gap-2" aria-label="Was du weisst" data-testid="scene-facts">
-              {active.solve.facts.map((f) => (
+              {facts.map((f) => (
                 <li key={f} className="rounded-full px-3 py-1 text-base font-semibold" style={{ background: "#edf4e6" }}>
                   {f}
                 </li>
@@ -161,9 +165,10 @@ export function MapTask({ child, view, active, busy, act, speech, telemetry, nok
               ))}
             </div>
           ) : null}
-          <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} />
+          <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} focused={focused} />
         </div>
       );
+    }
     case "decide":
       return active.decide ? <DecideTask active={active} busy={busy} act={act} /> : null;
     case "listen":
