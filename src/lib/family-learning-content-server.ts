@@ -47,6 +47,7 @@ import vocabularyV2 from "@/data/family-learning/content/vocabulary-inventory-v2
 import vocabularyV3 from "@/data/family-learning/content/vocabulary-inventory-v3.json";
 import isabelWorkshopV1 from "@/data/family-learning/content/isabel-workshop-v1.json";
 import isabelWorkshopV2 from "@/data/family-learning/content/isabel-workshop-v2.json";
+import isabelWorkshopV3 from "@/data/family-learning/content/isabel-workshop-v3.json";
 import { asIsabelContent } from "./family-learning-isabel";
 import type { ChildId } from "./family-assistant-turn";
 import { asLearningContent, type LearningContent } from "./family-learning-content";
@@ -119,16 +120,21 @@ export function isabelContentServed(): boolean {
   return process.env.FAMILY_LEARNING_ISABEL_CONTENT !== "off";
 }
 
-/** Isabel's served content version (2; 1 under FAMILY_LEARNING_ISABEL_CONTENT_CAP=1). */
-export function servedIsabelContentVersion(): 1 | 2 {
-  return process.env.FAMILY_LEARNING_ISABEL_CONTENT_CAP === "1" ? 1 : 2;
+// Step 1 / Isabel Visit 3 (2026-11-01): her content version 3 = version 2 unchanged + visit `v4` («Besuch 3 — Ernten und
+// probieren»). Rollback to her released visit set is this build with FAMILY_LEARNING_ISABEL_CONTENT_CAP=2 (a started v4 is parked
+// untouched, every record readable; removing the cap resumes it exactly). CAP=1 keeps the earlier behaviour.
+/** Isabel's served content version (3; 2 or 1 under FAMILY_LEARNING_ISABEL_CONTENT_CAP). */
+export function servedIsabelContentVersion(): 1 | 2 | 3 {
+  const cap = process.env.FAMILY_LEARNING_ISABEL_CONTENT_CAP;
+  return cap === "1" ? 1 : cap === "2" ? 2 : 3;
 }
 
 export function loadIsabelContent(): LearningContent {
   if (cachedIsabel) return cachedIsabel;
   if (isabelFailure) throw isabelFailure;
   try {
-    cachedIsabel = asIsabelContent(servedIsabelContentVersion() === 1 ? isabelWorkshopV1 : isabelWorkshopV2);
+    const v = servedIsabelContentVersion();
+    cachedIsabel = asIsabelContent(v === 1 ? isabelWorkshopV1 : v === 2 ? isabelWorkshopV2 : isabelWorkshopV3);
     return cachedIsabel;
   } catch (error) {
     isabelFailure = error instanceof Error ? error : new Error(String(error));

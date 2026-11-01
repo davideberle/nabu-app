@@ -7906,18 +7906,18 @@
      "done": [
       {
        "speaker": "gardener",
-       "text": "Thank you, Santi!",
+       "text": "Thank you!",
        "language": "en",
-       "de": "Danke, Santi!"
+       "de": "Danke!"
       }
      ],
      "doneBy": {
       "taught": [
        {
         "speaker": "gardener",
-        "text": "Thank you, Santi!",
+        "text": "Thank you!",
         "language": "en",
-        "de": "Danke, Santi!"
+        "de": "Danke!"
        },
        {
         "speaker": null,
@@ -7928,8 +7928,8 @@
      },
      "text": {
       "language": "en",
-      "body": "Hi Santi! Put the watering can next to the tank. The hose goes behind the bench. The bucket goes between the two beds.",
-      "de": "Hallo Santi! Stell die Giesskanne neben den Tank. Der Schlauch kommt hinter die Bank. Der Eimer kommt zwischen die zwei Beete."
+      "body": "Hi! Put the watering can next to the tank. The hose goes behind the bench. The bucket goes between the two beds.",
+      "de": "Hallo! Stell die Giesskanne neben den Tank. Der Schlauch kommt hinter die Bank. Der Eimer kommt zwischen die zwei Beete."
      },
      "questions": [
       {
@@ -7996,18 +7996,18 @@
      "done": [
       {
        "speaker": "gardener",
-       "text": "Thank you, Santi!",
+       "text": "Thank you!",
        "language": "en",
-       "de": "Danke, Santi!"
+       "de": "Danke!"
       }
      ],
      "doneBy": {
       "taught": [
        {
         "speaker": "gardener",
-        "text": "Thank you, Santi!",
+        "text": "Thank you!",
         "language": "en",
-        "de": "Danke, Santi!"
+        "de": "Danke!"
        },
        {
         "speaker": null,
@@ -8078,18 +8078,18 @@
      "done": [
       {
        "speaker": "gardener",
-       "text": "Thank you, Santi!",
+       "text": "Thank you!",
        "language": "en",
-       "de": "Danke, Santi!"
+       "de": "Danke!"
       }
      ],
      "doneBy": {
       "taught": [
        {
         "speaker": "gardener",
-        "text": "Thank you, Santi!",
+        "text": "Thank you!",
         "language": "en",
-        "de": "Danke, Santi!"
+        "de": "Danke!"
        },
        {
         "speaker": null,
@@ -8100,8 +8100,8 @@
      },
      "text": {
       "language": "en",
-      "body": "Santi, put the bucket on the right, next to the door.",
-      "de": "Santi, stell den Eimer nach rechts, neben die Tür."
+      "body": "Please put the bucket on the right, next to the door.",
+      "de": "Bitte stell den Eimer nach rechts, neben die Tür."
      },
      "questions": [
       {
@@ -8148,9 +8148,9 @@
      "done": [
       {
        "speaker": "supplier",
-       "text": "¡Gracias, Santi!",
+       "text": "¡Gracias!",
        "language": "es",
-       "de": "Danke, Santi!"
+       "de": "Danke!"
       }
      ],
      "doneBy": {
@@ -8170,8 +8170,8 @@
      },
      "text": {
       "language": "es",
-      "body": "Hola, Santi. Para la tubería necesito tres tubos y un grifo.",
-      "de": "Hallo, Santi. Für die Leitung brauche ich drei Rohre und einen Wasserhahn."
+      "body": "Hola. Para la tubería necesito tres tubos y un grifo.",
+      "de": "Hallo. Für die Leitung brauche ich drei Rohre und einen Wasserhahn."
      },
      "questions": [
       {
@@ -8226,9 +8226,9 @@
      "done": [
       {
        "speaker": "supplier",
-       "text": "¡Gracias, Santi!",
+       "text": "¡Gracias!",
        "language": "es",
-       "de": "Danke, Santi!"
+       "de": "Danke!"
       }
      ],
      "doneBy": {
@@ -8308,9 +8308,9 @@
      "done": [
       {
        "speaker": "supplier",
-       "text": "¡Gracias, Santi!",
+       "text": "¡Gracias!",
        "language": "es",
-       "de": "Danke, Santi!"
+       "de": "Danke!"
       }
      ],
      "doneBy": {

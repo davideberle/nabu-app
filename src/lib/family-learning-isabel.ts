@@ -22,19 +22,22 @@
 // ---------------------------------------------------------------------------
 
 import type { LearningContent } from "./family-learning-content.ts";
-import { COUNTER_ICONS, WORKSHOP_PICTURES, type MissionDef, type MissionStep } from "./family-learning-mission-spec.ts";
+import { checkAdaptiveBudget, COUNTER_ICONS, WORKSHOP_PICTURES, type MissionDef, type MissionStep } from "./family-learning-mission-spec.ts";
 import { ASSISTANT_IDENTITIES, slotFitsCharacter } from "./family-voice-registry.ts";
 
 export const ISABEL_CONTENT_ID = "isabel-workshop";
-export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2];
+export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2, 3];
 export const ISABEL_MISSION_ID = "MISSION-OLD-LILA-WORKSHOP";
 export const ISABEL_GARDEN_MISSION_ID = "MISSION-IDA-GARDEN";
+/** Step 1 (content v3): Isabel Visit 3 «Ernten und probieren» (internal visit id v4, learner-facing «Besuch 3»). */
+export const ISABEL_HARVEST_MISSION_ID = "MISSION-IDA-HARVEST";
 /** Isabel's assistant identity (approved October 18). In Visit 1 she was also the story character; from Visit 2 on she is not. */
 export const ISABEL_COMPANION = "Old Lila";
 export const EXPECTED_WORKSHOP_STEPS: readonly string[] = ["W1-HELLO", "W2-MAKE", "W3-MATERIALS", "W4-COUNT", "W5-TENS", "W6-TENS-AGAIN", "W7-EASIER", "W8-READ", "W9-LISTEN", "W10-CRAFT", "W11-ROOM"];
 export const EXPECTED_GARDEN_STEPS: readonly string[] = ["IG1-HELLO", "IG2-PLANT", "IG3-STICKS", "IG4-STICKS-AGAIN", "IG5-PLANTING", "IG6-PLANTING-EASIER", "IG7-READ", "IG8-LISTEN", "IG9-CRAFT", "IG10-GARDEN"];
+export const EXPECTED_HARVEST_STEPS: readonly string[] = ["IH1-HELLO", "IH2-PICK", "IH3-BUNDLE", "IH4-TENS", "IH5-TENS-AGAIN", "IH6-PLUS", "IH6H-BRIDGE", "IH6E-SMALL", "IH7-READ", "IH8-READ", "IH9-PHRASE", "IH10-LISTEN", "IH11-HARVEST"];
 /** Every Isabel mission step id (telemetry vocabulary). */
-export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS];
+export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS, ...EXPECTED_HARVEST_STEPS];
 
 /** What each of Isabel's missions must be (by visit). The generic rules below apply to all of them. */
 type WorkshopSpec = {
@@ -53,10 +56,15 @@ type WorkshopSpec = {
   worldProp: string;
   /** From Visit 2 on: automatic narration and a story character that is not her assistant. */
   narrated: boolean;
+  /** Step 1 (Visit 3): a reading step may be a first two-word phrase (≤ 14 characters, both words read before). */
+  phrases?: boolean;
+  /** Step 1 (Visit 3): no in-visit craft; the outcome carries a home task. */
+  homeTask?: boolean;
 };
 const SPECS: readonly WorkshopSpec[] = [
   { id: ISABEL_MISSION_ID, visit: "v1", steps: EXPECTED_WORKSHOP_STEPS, character: { id: "lila", name: ISABEL_COMPANION }, place: "workshop", decide: "W2-MAKE", tens: "W5-TENS", tensAgain: "W6-TENS-AGAIN", easier: ["W7-EASIER", "W6-TENS-AGAIN"], worldProp: "room", narrated: false },
   { id: ISABEL_GARDEN_MISSION_ID, visit: "v2", steps: EXPECTED_GARDEN_STEPS, character: { id: "ida", name: null }, place: "garden", decide: "IG2-PLANT", tens: "IG3-STICKS", tensAgain: "IG4-STICKS-AGAIN", easier: ["IG6-PLANTING-EASIER", "IG5-PLANTING"], worldProp: "garden", narrated: true },
+  { id: ISABEL_HARVEST_MISSION_ID, visit: "v4", steps: EXPECTED_HARVEST_STEPS, character: { id: "ida", name: null }, place: "garden", decide: "IH2-PICK", tens: "IH4-TENS", tensAgain: "IH5-TENS-AGAIN", easier: ["IH6E-SMALL", "IH6-PLUS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
 ];
 
 const FORBIDDEN_KINDS = new Set(["typing-block", "write", "produce", "recall", "calc", "choice"]);
@@ -90,7 +98,7 @@ function countersValue(c: Record<string, unknown>): number {
 /** The answers of every ten-bundle question of a mission (I2-03: a later visit must not re-ask the same quantity as "fresh"). */
 function bundleAnswers(m: Record<string, unknown>): number[] {
   const steps = Array.isArray(m.steps) ? (m.steps as unknown[]).filter(isRecord) : [];
-  return steps.flatMap((s) => (isRecord(s.solve) && Array.isArray(s.solve.parts) ? s.solve.parts.filter(isRecord) : []).filter((p) => isRecord(p.counters) && p.counters.bundles === true).map((p) => Number(p.answer)));
+  return steps.flatMap((s) => (isRecord(s.solve) && Array.isArray(s.solve.parts) ? s.solve.parts.filter(isRecord) : []).filter((p) => isRecord(p.counters) && p.counters.bundles === true && p.compare !== true).map((p) => Number(p.answer)));
 }
 const readWord = (m: Record<string, unknown>) => ((Array.isArray(m.steps) ? (m.steps as unknown[]).filter(isRecord) : []).find((s) => s.kind === "read" && isRecord(s.text))?.text as Record<string, unknown> | undefined)?.body;
 
@@ -169,13 +177,15 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
     }
     if (s.kind === "read") {
       const body = isRecord(s.text) ? String(s.text.body ?? "") : "";
-      if (!body || body.length > 8) problems.push(`${sl}: one short word to read`);
+      const phrase = !!spec.phrases && /^\S+ \S+ \S+$|^\S+ \S+$/.test(body) && body.length <= 14;
+      if (!body || (body.length > 8 && !phrase)) problems.push(`${sl}: one short word to read${spec.phrases ? " (or a first short phrase)" : ""}`);
+      if (phrase) for (const w of body.split(" ").filter((x) => x.length > 3)) if (!steps.some((o) => o !== s && o.kind === "read" && isRecord(o.text) && String(o.text.body).toUpperCase() === w.toUpperCase())) problems.push(`${sl}: every longer word of a phrase is read on its own first (${w})`);
       const spoken = linesOf(s).filter((l) => (Array.isArray(s.intro) ? s.intro : []).includes(l));
       if (body && spoken.some((l) => new RegExp(`\\b${body}\\b`, "i").test(String(l.text)))) problems.push(`${sl}: the instruction must not say the word before the reading attempt`);
       const q0 = Array.isArray(s.questions) && isRecord(s.questions[0]) ? s.questions[0] : null;
       if (body && q0 && new RegExp(`\\b${body}\\b`, "i").test(String(q0.prompt ?? ""))) problems.push(`${sl}: the question must not say the word before the reading attempt`);
       const letters = isRecord(s.letters) ? s.letters : null;
-      if (!letters || String(letters.word).toUpperCase() !== body.toUpperCase() || !Array.isArray(letters.letters) || letters.letters.length !== body.length || !str(letters.spoken) || !str(letters.teach)) problems.push(`${sl}: supported letter/word learning for the same word`);
+      if (!letters || String(letters.word).toUpperCase() !== body.toUpperCase() || !Array.isArray(letters.letters) || letters.letters.length !== body.replace(/ /g, "").length || !str(letters.spoken) || !str(letters.teach)) problems.push(`${sl}: supported letter/word learning for the same word`);
       for (const e of earlier) if (body && String(readWord(e) ?? "").toUpperCase() === body.toUpperCase()) problems.push(`${sl}: the reading word ${body} was already read in ${String(e.visit)} (a new word is required)`);
     }
     if (s.kind === "listen") {
@@ -204,7 +214,7 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
     } else if (s.ending !== undefined) problems.push(`${sl}: ending lines belong to a narrated mission's tasks`);
     if (s.when !== undefined) {
       const w = isRecord(s.when) ? s.when : null;
-      if (!w || w.unlessEvidence !== "independent" || !byId.has(String(w.step))) problems.push(`${sl}: when names an earlier step of this mission`);
+      if (!w || !(w.unlessEvidence === "independent" || (w.ifEvidence === "independent" && isRecord(s.adaptive) && s.adaptive.level === "harder")) || !byId.has(String(w.step))) problems.push(`${sl}: when names an earlier step of this mission`);
     }
   }
   const tens = byId.get(spec.tens);
@@ -219,6 +229,12 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
   for (const n of bundleAnswers(m)) if (before.has(n)) problems.push(`${label}: the ten-bundle quantity ${n} was already asked in an earlier visit (not fresh)`);
   const outcome = steps.filter((s) => s.kind === "outcome");
   if (outcome.length !== 1 || outcome[0].recap !== true || outcome[0].fromChoice !== spec.decide) problems.push(`${label}: one outcome showing her chosen element and a factual recap`);
+  if (spec.homeTask) {
+    if (steps.some((x) => x.kind === "craft")) problems.push(`${label}: no craft inside the visit (a home task at the end instead)`);
+    const home = outcome[0] && isRecord(outcome[0].home) ? outcome[0].home : null;
+    if (!home || !str(home.text) || !str(home.parentNote) || String(home.text).length > MAX_LINE_CHARS * 2) problems.push(`${label}: the outcome carries a short home task and its parent note`);
+  }
+  checkAdaptiveBudget(steps, label, problems);
   const na = isRecord(m.nextAdventure) ? m.nextAdventure : null;
   const choices = Array.isArray(na?.choices) ? (na!.choices as unknown[]) : [];
   if (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choices.length < 2 || choices.length > 3 || choices.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !picture(c.picture))) problems.push(`${label}: nextAdventure needs two or three pictured choices and the own-idea label`);

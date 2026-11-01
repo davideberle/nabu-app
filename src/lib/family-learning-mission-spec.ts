@@ -163,14 +163,14 @@ export type MissionPart = {
  * place-value mastery.
  */
 /** Isabel Visit 2: what one counter looks like (a garden thing); absent = the plain wooden block of Visit 1. */
-export const COUNTER_ICONS = ["block", "tulip", "strawberry", "pot", "seed"] as const;
+export const COUNTER_ICONS = ["block", "tulip", "strawberry", "pot", "seed", "apple", "carrot", "stick"] as const;
 export type CounterIcon = (typeof COUNTER_ICONS)[number];
 /**
  * Exact visible quantities of one question. Visit 2 additions (never used by Visit 1): `icon`; `actor` (who takes away, for a
  * subtraction caption — Visit 1's caption keeps «Old Lila»); `frame` + `ask: "missing"` = a full frame of `frame` places with
  * `a` filled and `b` empty, asking for the missing part (`b`).
  */
-export type MissionCounters = { a: number; b: number; op: "+" | "-"; unit: string; bundles?: boolean; icon?: CounterIcon; actor?: string; frame?: number; ask?: "missing" };
+export type MissionCounters = { a: number; b: number; op: "+" | "-"; unit: string; bundles?: boolean; icon?: CounterIcon; actor?: string; frame?: number; ask?: "missing"; /** Step 1 (S1-15): full tens drawn as closed bundles (or bags of 10) marked «10» — not every piece. */ closed?: boolean };
 
 /** Content v6: a reviewed problem with one question per part. */
 export type MissionSolve = {
@@ -244,6 +244,9 @@ export const WORKSHOP_PICTURES = [
   "garden-empty", "garden-flowers", "garden-vegetables", "garden-tree", "nest", "hedgehog", "flowerpot",
   "snail-on-leaf", "snail-under-leaf", "beetle-on-leaf", "seed-cup", "find-flower", "find-grass", "find-houseplant", "find-herbs",
   "next-birdhouse", "next-garden-animals", "next-harvest",
+  // Step 1 — Isabel Visit 3 «Ernten und probieren»
+  "harvest-apples", "harvest-carrots", "harvest-corn", "corn", "nut", "apple", "nut-and-corn",
+  "basket-small-red-apple", "basket-small-green-apple", "basket-big-red-apple",
 ] as const;
 export type WorkshopPicture = (typeof WORKSHOP_PICTURES)[number];
 

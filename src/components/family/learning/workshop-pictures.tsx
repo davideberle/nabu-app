@@ -86,6 +86,58 @@ function Bricks({ x, y, w, h, rows = 5 }: { x: number; y: number; w: number; h: 
   );
 }
 
+
+function Apple({ x, y, r, color }: { x: number; y: number; r: number; color: string }) {
+  return (
+    <g>
+      <circle cx={x} cy={y} r={r} fill={color} />
+      <path d={`M${x} ${y - r}q1-${r / 2} ${r / 3}-${r / 1.6}`} stroke={WOOD_DARK} strokeWidth={2} fill="none" />
+      <ellipse cx={x + r / 2.5} cy={y - r - 2} rx={r / 3} ry={r / 6} fill={LEAF} />
+    </g>
+  );
+}
+
+function Carrot({ x, y }: { x: number; y: number }) {
+  return (
+    <g>
+      <path d={`M${x - 6} ${y}h12l-6 30z`} fill="#ef8a2c" />
+      <path d={`M${x} ${y}q-6-12-10-14M${x} ${y}q0-14 0-16M${x} ${y}q6-12 10-14`} stroke={LEAF} strokeWidth={3} fill="none" strokeLinecap="round" />
+    </g>
+  );
+}
+
+function Corn({ x, y }: { x: number; y: number }) {
+  return (
+    <g>
+      <path d={`M${x - 12} ${y + 58}q4-30 12-40q8 10 12 40z`} fill={LEAF} />
+      <ellipse cx={x} cy={y + 26} rx={8} ry={20} fill="#f2c94c" />
+      {[0, 1, 2, 3, 4].map((k) => <path key={k} d={`M${x - 7} ${y + 12 + k * 7}h14`} stroke="#d9a93a" strokeWidth={1.5} />)}
+    </g>
+  );
+}
+
+function Nut({ x, y, r }: { x: number; y: number; r: number }) {
+  return (
+    <g>
+      <ellipse cx={x} cy={y + r * 0.2} rx={r} ry={r * 0.85} fill="#a8743f" />
+      <path d={`M${x - r} ${y}q${r} -${r * 1.4} ${2 * r} 0z`} fill="#7a4a22" />
+      <path d={`M${x} ${y + r * 0.9}v-${r * 0.9}`} stroke="#7a4a22" strokeWidth={1.5} />
+    </g>
+  );
+}
+
+function Basket({ big, apple }: { big: boolean; apple: string }) {
+  const w = big ? 64 : 40;
+  const x = 40 - w / 2;
+  return (
+    <g>
+      <path d={`M${x} 46h${w}l-${w / 8} 26h-${(w * 3) / 4}z`} fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} />
+      <path d={`M${x + 4} 46q${w / 2 - 4} -${big ? 34 : 26} ${w - 8} 0`} stroke={WOOD_DARK} strokeWidth={3} fill="none" />
+      <Apple x={40} y={42} r={8} color={apple} />
+    </g>
+  );
+}
+
 function Shape({ id }: { id: WorkshopPicture }) {
   switch (id) {
     case "chair-wood":
@@ -476,6 +528,39 @@ export function WorkshopRoom({ made, label }: { made: string | null; label: stri
  */
 export function Counters({ counters, caption = true }: { counters: MissionCounters; /** Isabel Visit 2 (narrated): the question says it — no caption to read. */ caption?: boolean }) {
   const { a, b, op, unit, bundles } = counters;
+  if (bundles && counters.closed) {
+    // Step 1 (S1-15): after counting one bundle, a bundle is drawn closed with its «10» — not every stick (or apple) again.
+    const tens = Math.floor(a / 10);
+    const loose = a % 10;
+    const bag = counters.icon === "apple";
+    return (
+      <figure className="grid gap-2" data-testid="counters" data-a={a} data-b={b} data-op={op} data-bundles="closed">
+        <div className="flex flex-wrap items-end gap-3" role="img" aria-label={`${tens} ${bag ? "Säcke" : "Bündel"} mit je 10 ${unit}${loose ? ` und ${loose} einzelne` : ""} und ${b} einzelne`}>
+          {Array.from({ length: tens }, (_, i) => (
+            <svg key={`t${i}`} viewBox="0 0 64 80" className="h-20 w-16" aria-hidden data-part="closed-bundle">
+              {bag ? <path d="M10 22q22-14 44 0l6 50H4z" fill="#c9a26b" stroke={WOOD_DARK} strokeWidth={2} /> : <path d="M8 6h48v68H8z" fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} />}
+              {bag ? null : <rect x={6} y={34} width={52} height={8} rx={2} fill="#c0504d" />}
+              <text x={32} y={bag ? 56 : 28} textAnchor="middle" fontSize={20} fontWeight={700} fill="#3b2a17">10</text>
+            </svg>
+          ))}
+          {Array.from({ length: loose + (op === "+" ? b : 0) }, (_, i) =>
+            bag ? (
+              <svg key={`l${i}`} viewBox="0 0 40 40" className="h-12 w-12" aria-hidden data-part="loose">
+                <CounterIcon icon="apple" />
+              </svg>
+            ) : (
+              <svg key={`l${i}`} viewBox="0 0 10 80" className="h-20 w-2.5" aria-hidden data-part="loose">
+                <rect x={3} y={6} width={4} height={68} rx={1.5} fill={WOOD_LIGHT} />
+              </svg>
+            ),
+          )}
+        </div>
+        <figcaption className="sr-only">
+          {tens} {bag ? "Säcke" : "Bündel"} mit je 10 {unit} und {loose + b} einzelne
+        </figcaption>
+      </figure>
+    );
+  }
   if (bundles) {
     const tens = Math.floor(a / 10);
     const loose = a % 10;
@@ -582,6 +667,12 @@ function CounterIcon({ icon }: { icon?: string }) {
       );
     case "seed":
       return <ellipse cx={20} cy={20} rx={7} ry={11} fill="#8a5a2b" transform="rotate(25 20 20)" />;
+    case "apple":
+      return <Apple x={20} y={22} r={12} color="#d6342c" />;
+    case "carrot":
+      return <Carrot x={20} y={10} />;
+    case "stick":
+      return <rect x={17} y={2} width={6} height={36} rx={2} fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={1} />;
     default:
       return <rect x={6} y={6} width={28} height={28} rx={4} fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={1.5} />;
   }

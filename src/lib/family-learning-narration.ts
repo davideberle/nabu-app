@@ -335,7 +335,8 @@ export function storyCatalog(content: LearningContent, child: "isabel" | "santia
   for (const m of (content.missions ?? []).filter((x) => !narrated(x))) {
     for (const st of m.steps) {
       const where = `${child}:${m.visit}/${st.id}`;
-      if (m.presentation === "scene") for (const l of [...(st.intro ?? []), ...(st.done ?? []), ...Object.values(st.doneBy ?? {}).flat()]) if (l && l.language !== "de") add(l.text, l.speaker, l.language, m, where);
+      // Step 1: the foreign-language lines of the Visit 9 map mission (Rosa, June) are story-voice lines too.
+      if (m.presentation === "scene" || (m.presentation === "map" && m.visit === "v10")) for (const l of [...(st.intro ?? []), ...(st.done ?? []), ...Object.values(st.doneBy ?? {}).flat()]) if (l && l.language !== "de") add(l.text, l.speaker, l.language, m, where);
       if (st.kind === "listen" && st.text) add(st.text.body, st.character, st.text.language, m, where);
     }
   }
