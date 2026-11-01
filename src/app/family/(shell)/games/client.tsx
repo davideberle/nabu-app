@@ -1,17 +1,20 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Games — October 8, 2026 policy (UI-10, DA-02, SC-01).
+// Games — October 8, 2026 policy (UI-10, SC-01), chess price of November 1, 2026.
 //
 // Two clearly separate things, one page:
-//   1. Chess: free, 15 minutes a day, unlocked by a parent approving something
-//      the child did TODAY. The status here is the server's (date, eligibility,
-//      remaining); the launch goes through the guarded play surface.
+//   1. Chess: 1 coin → 15 minutes of digital chess on its own allowance, from
+//      the permanent wallet, no activity requirement. The status here is the
+//      server's (remaining, price); the launch goes through the guarded play
+//      surface.
 //   2. Game Studio: the approved library plus the child's own games, all on ONE
 //      paid allowance (3 coins → 15 minutes) that covers making, changing and
-//      playing. Buying is an explicit confirmation showing the exact price and
-//      the authoritative balance; the server commits or refuses.
-// No shop, no generic mini-game checkout, no duplicate chess card.
+//      playing.
+// Both are bought only by an explicit confirmation showing the exact price and
+// the authoritative balance; the server commits or refuses. Looking, opening
+// and cancelling the confirmation cost nothing. No shop, no generic mini-game
+// checkout, no duplicate chess card.
 // ---------------------------------------------------------------------------
 
 import Link from "next/link";
@@ -22,7 +25,7 @@ import { useChildShell } from "@/components/family/child-shell-provider";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import { approvedGameLibrary, childGameIdentity, childShellDestinationHref, guardedPlayHref } from "@/lib/family-child-shell";
 import { createGamesClient, newIdempotencyKey, type LibraryGame, type PlayStateView, type StudioAccess } from "@/lib/family-games-client";
-import { DAILY_CHESS_GAME_ID, formatPlayClock } from "@/lib/family-play";
+import { DAILY_CHESS_GAME_ID, formatPlayClock, type BudgetKind } from "@/lib/family-play";
 import { currentNativeSupport } from "@/lib/family-native-games";
 
 const focusRing =
@@ -44,16 +47,11 @@ export function FamilyGamesClient() {
 
 /** Child-readable chess status from the server numbers only. */
 export function chessStatusCopy(chess: PlayStateView["chess"]): { headline: string; detail: string; playable: boolean } {
-  if (chess.eligible && chess.remainingSeconds > 0) {
-    return { headline: `Unlocked today · ${formatPlayClock(chess.remainingSeconds)} left`, detail: "A parent approved something you did today. Your chess time follows you on every screen.", playable: true };
+  const minutes = Math.round(chess.price.seconds / 60);
+  if (chess.remainingSeconds > 0) {
+    return { headline: `${formatPlayClock(chess.remainingSeconds)} of chess left`, detail: "Your chess time follows you on every screen. Only visible play counts — pausing stops the clock.", playable: true };
   }
-  if (chess.eligible) {
-    return { headline: "Today's chess time is used up", detail: "You get 15 new minutes tomorrow, after a parent approves something you did tomorrow.", playable: false };
-  }
-  if (chess.grantedSeconds > 0) {
-    return { headline: "Locked right now", detail: `Today's approval was taken back. If a parent approves something you did today, your remaining ${formatPlayClock(Math.max(0, chess.grantedSeconds - chess.consumedSeconds))} comes back.`, playable: false };
-  }
-  return { headline: "Locked — earn it today", detail: "Do something useful, record it, and once a parent approves it you get 15 minutes of chess today. Chess on the real board is always free.", playable: false };
+  return { headline: `Chess: 🪙 ${chess.price.coins} for ${minutes} minutes`, detail: `Buy ${minutes} minutes when you want to play. Chess on the real board is always free.`, playable: false };
 }
 
 function Games({ child }: { child: ChildId }) {
@@ -115,41 +113,50 @@ function Games({ child }: { child: ChildId }) {
     return () => controller.abort();
   }, [child, client, attempt]);
 
-  // Purchase — explicit confirmation, idempotency key per confirmed tap.
-  const [confirming, setConfirming] = useState(false);
+  // Purchase — explicit confirmation per block (chess or Game Studio), idempotency key per confirmed tap.
+  const [confirming, setConfirming] = useState<BudgetKind | null>(null);
   const [buying, setBuying] = useState(false);
-  const [notice, setNotice] = useState<string | null>(null);
+  const [notice, setNotice] = useState<{ kind: BudgetKind; text: string } | null>(null);
   const keyRef = useRef<string | null>(null);
-  const buy = useCallback(async () => {
+  const openConfirm = useCallback((kind: BudgetKind) => {
+    keyRef.current = null;
+    setConfirming(kind);
+    setNotice(null);
+  }, []);
+  const buy = useCallback(async (kind: BudgetKind) => {
     if (buying) return;
     setBuying(true);
     setNotice(null);
     if (!keyRef.current) keyRef.current = newIdempotencyKey();
-    const outcome = await client.purchase(child, keyRef.current);
+    const outcome = await client.purchase(child, keyRef.current, undefined, kind);
     setBuying(false);
+    // A remaining-seconds answer belongs to the allowance this block funds.
+    const withRemaining = (prev: PlayStateView, balance: number, remaining: number): PlayStateView =>
+      kind === "chess" ? { ...prev, balance, chess: { ...prev.chess, remainingSeconds: remaining } } : { ...prev, balance, remainingSeconds: remaining };
     if (outcome.ok) {
       keyRef.current = null;
-      setConfirming(false);
-      setNotice(outcome.value.replayed ? "Already bought — your time is ready." : "15 minutes added.");
-      setState((prev) => (prev.kind === "ready" ? { kind: "ready", state: { ...prev.state, balance: outcome.value.balance, remainingSeconds: outcome.value.remainingSeconds } } : prev));
+      setConfirming(null);
+      setNotice({ kind, text: outcome.value.replayed ? "Already bought — your time is ready." : kind === "chess" ? "15 minutes of chess added." : "15 minutes added." });
+      setState((prev) => (prev.kind === "ready" ? { kind: "ready", state: withRemaining(prev.state, outcome.value.balance, outcome.value.remainingSeconds) } : prev));
       refreshWallet();
       return;
     }
     if (outcome.failure === "insufficient") {
       keyRef.current = null;
-      setConfirming(false);
-      setNotice("Not enough coins yet — keep going!");
+      setConfirming(null);
+      setNotice({ kind, text: "Not enough coins yet — keep going!" });
       const detail = outcome.detail as { balance?: number; remainingSeconds?: number } | undefined;
       if (detail && typeof detail.balance === "number") {
-        setState((prev) => (prev.kind === "ready" ? { kind: "ready", state: { ...prev.state, balance: detail.balance!, remainingSeconds: detail.remainingSeconds ?? prev.state.remainingSeconds } } : prev));
+        setState((prev) => (prev.kind === "ready" ? { kind: "ready", state: withRemaining(prev.state, detail.balance!, detail.remainingSeconds ?? (kind === "chess" ? prev.state.chess.remainingSeconds : prev.state.remainingSeconds)) } : prev));
       }
       return;
     }
     // Network/unknown: keep the SAME key so a retry can only replay, never double-charge.
-    setNotice("That didn't go through — tap Buy again; you will not be charged twice.");
+    setNotice({ kind, text: "That didn't go through — tap Buy again; you will not be charged twice." });
   }, [buying, child, client, refreshWallet]);
 
   const price = state.kind === "ready" ? state.state.price : { coins: 3, seconds: 900 };
+  const chessPrice = state.kind === "ready" ? state.state.chess.price : { coins: 1, seconds: 900 };
   const chess = state.kind === "ready" ? chessStatusCopy(state.state.chess) : null;
   const chessCard = approvedGameLibrary[0];
 
@@ -158,20 +165,20 @@ function Games({ child }: { child: ChildId }) {
       <div>
         <p className="text-xs font-medium uppercase tracking-[0.14em] text-quaternary">Games</p>
         <h1 className="text-2xl font-semibold">{profile.displayName}&rsquo;s games</h1>
-        <p className="text-sm text-tertiary">Chess is free for 15 minutes a day once a parent approves something you did today. Game Studio uses coins: {price.coins} coins buy {Math.round(price.seconds / 60)} minutes of making, changing and playing your games.</p>
+        <p className="text-sm text-tertiary">Chess: 🪙 {chessPrice.coins} coin buys {Math.round(chessPrice.seconds / 60)} minutes. Game Studio: {price.coins} coins buy {Math.round(price.seconds / 60)} minutes of making, changing and playing your games. Coins are only spent when you tap Buy.</p>
       </div>
 
-      {/* Chess — the free daily allowance (server status only). */}
-      <section aria-label="Chess" className={cn(cardClass)} data-chess-eligible={state.kind === "ready" ? String(state.state.chess.eligible) : ""} data-chess-remaining={state.kind === "ready" ? state.state.chess.remainingSeconds : ""}>
+      {/* Chess — its own purchased allowance, 1 coin / 15 minutes (server status only). */}
+      <section aria-label="Chess" className={cn(cardClass)} data-chess-remaining={state.kind === "ready" ? state.state.chess.remainingSeconds : ""}>
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <h2 className="text-lg font-semibold">{chessCard.title}</h2>
             <p className="text-sm text-tertiary">{chessCard.tagline}</p>
           </div>
-          <span className="shrink-0 rounded-full border border-secondary px-3 py-1 text-xs font-medium text-tertiary">Free · 15 min a day</span>
+          <span className="shrink-0 rounded-full border border-secondary px-3 py-1 text-xs font-medium text-tertiary" data-chess-price>🪙 {chessPrice.coins} / {Math.round(chessPrice.seconds / 60)} min</span>
         </div>
         {state.kind === "loading" ? (
-          <p className="text-sm text-tertiary">Checking today&rsquo;s chess time…</p>
+          <p className="text-sm text-tertiary">Checking your chess time…</p>
         ) : state.kind === "error" || !chess ? (
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm text-secondary">Couldn&rsquo;t check your chess time.</p>
@@ -181,13 +188,26 @@ function Games({ child }: { child: ChildId }) {
           <>
             <p role="status" className="text-base font-semibold text-primary">{chess.headline}</p>
             <p className="text-sm text-secondary">{chess.detail}</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               {chess.playable ? (
                 <Link href={chessCard.hrefFor(identity)} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")} data-chess-play>♟️ Play chess</Link>
+              ) : null}
+              {confirming !== "chess" ? (
+                <button type="button" onClick={() => openConfirm("chess")} disabled={state.state.balance < chessPrice.coins} data-chess-buy className={cn(pillClass, state.state.balance >= chessPrice.coins ? (chess.playable ? "bg-primary text-secondary hover:bg-secondary" : "bg-secondary text-primary hover:bg-primary") : "cursor-not-allowed bg-primary text-quaternary")}>
+                  {state.state.balance >= chessPrice.coins ? `Buy ${Math.round(chessPrice.seconds / 60)} ${chess.playable ? "more " : ""}minutes for 🪙 ${chessPrice.coins}` : `${chessPrice.coins - state.state.balance} more coin for ${Math.round(chessPrice.seconds / 60)} minutes`}
+                </button>
               ) : (
-                <Link href={childShellDestinationHref("record", child)} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>🎙️ Record something I did</Link>
+                <div role="group" aria-label="Confirm chess purchase" className="flex flex-col items-end gap-2 rounded-2xl border border-primary bg-secondary px-4 py-3">
+                  <p className="text-sm font-medium text-primary">Spend 🪙 {chessPrice.coins} of your {state.state.balance} coins for {Math.round(chessPrice.seconds / 60)} minutes of chess?</p>
+                  <div className="flex gap-2">
+                    <button type="button" onClick={() => { setConfirming(null); keyRef.current = null; }} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>Not now</button>
+                    <button type="button" onClick={() => buy("chess")} disabled={buying} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>{buying ? "Buying…" : `Yes, buy for 🪙 ${chessPrice.coins}`}</button>
+                  </div>
+                </div>
               )}
             </div>
+            <p className="text-xs text-tertiary">You have 🪙 {state.state.balance} coins.</p>
+            {notice?.kind === "chess" ? <p role="status" className="text-sm font-medium text-secondary">{notice.text}</p> : null}
           </>
         )}
       </section>
@@ -209,21 +229,21 @@ function Games({ child }: { child: ChildId }) {
                 <p className="text-3xl font-semibold" data-remaining-seconds={state.state.remainingSeconds}>⏱️ {formatPlayClock(state.state.remainingSeconds)}</p>
                 <p className="text-sm text-tertiary">You have 🪙 {state.state.balance} coins. Making, changing and playing all use this time.</p>
               </div>
-              {!confirming ? (
-                <button type="button" onClick={() => { setConfirming(true); setNotice(null); }} disabled={state.state.balance < price.coins} className={cn(pillClass, state.state.balance >= price.coins ? "bg-secondary text-primary hover:bg-primary" : "cursor-not-allowed bg-primary text-quaternary")}>
+              {confirming !== "paid" ? (
+                <button type="button" onClick={() => openConfirm("paid")} disabled={state.state.balance < price.coins} className={cn(pillClass, state.state.balance >= price.coins ? "bg-secondary text-primary hover:bg-primary" : "cursor-not-allowed bg-primary text-quaternary")}>
                   {state.state.balance >= price.coins ? `Buy ${Math.round(price.seconds / 60)} minutes for 🪙 ${price.coins}` : `${price.coins - state.state.balance} more coins for ${Math.round(price.seconds / 60)} minutes`}
                 </button>
               ) : (
                 <div role="group" aria-label="Confirm purchase" className="flex flex-col items-end gap-2 rounded-2xl border border-primary bg-secondary px-4 py-3">
                   <p className="text-sm font-medium text-primary">Spend 🪙 {price.coins} of your {state.state.balance} coins for {Math.round(price.seconds / 60)} minutes of Game Studio?</p>
                   <div className="flex gap-2">
-                    <button type="button" onClick={() => { setConfirming(false); keyRef.current = null; }} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>Not now</button>
-                    <button type="button" onClick={buy} disabled={buying} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>{buying ? "Buying…" : `Yes, buy for 🪙 ${price.coins}`}</button>
+                    <button type="button" onClick={() => { setConfirming(null); keyRef.current = null; }} className={cn(pillClass, "bg-primary text-secondary hover:bg-secondary")}>Not now</button>
+                    <button type="button" onClick={() => buy("paid")} disabled={buying} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>{buying ? "Buying…" : `Yes, buy for 🪙 ${price.coins}`}</button>
                   </div>
                 </div>
               )}
             </div>
-            {notice ? <p role="status" className="text-sm font-medium text-secondary">{notice}</p> : null}
+            {notice?.kind === "paid" ? <p role="status" className="text-sm font-medium text-secondary">{notice.text}</p> : null}
             {state.state.activeLease ? (
               <p className="text-xs text-tertiary">{state.state.activeLease.mode === "edit" ? "The studio is open" : "A game is open"} on {state.state.activeLease.deviceLabel ? `another ${state.state.activeLease.deviceLabel}` : "another screen"}. Opening one here continues the same time.</p>
             ) : null}

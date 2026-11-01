@@ -132,7 +132,7 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
           </HomeAction>
         )}
         <HomeAction href={href("games")} icon="🎮" title="Games">
-          Chess: 15 free minutes a day once a parent approves something you did today · Game Studio uses coins
+          Chess: 🪙 1 for 15 minutes · Game Studio: 🪙 3 for 15 minutes
         </HomeAction>
       </div>
 

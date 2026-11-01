@@ -17,7 +17,7 @@ const redemptions: ActivityRedemption[] = [
 ];
 
 describe("composeActivity", () => {
-  const items = composeActivity({ personId: "santiago", completions, redemptions, purchases: [{ id: "p-1", personId: "santiago", idempotencyKey: "k", redemptionId: "r-2", chargedPoints: 3, grantedSeconds: 900, state: "committed", createdAt: "2026-10-02T10:00:00.000Z", refundedAt: null, refundReason: null }] });
+  const items = composeActivity({ personId: "santiago", completions, redemptions, purchases: [{ id: "p-1", personId: "santiago", budgetKind: "paid", idempotencyKey: "k", redemptionId: "r-2", chargedPoints: 3, grantedSeconds: 900, state: "committed", createdAt: "2026-10-02T10:00:00.000Z", refundedAt: null, refundReason: null }] });
 
   it("never shows the sibling and keys every item by its stable source id", () => {
     ok(items.every((i) => i.personId === "santiago"));
@@ -63,8 +63,16 @@ describe("composeActivity", () => {
     equal(play.coinDelta, -3);
   });
 
+  it("a chess block (November 1, 2026) is its own labelled spend of 1 coin, never shown as Game Studio time", () => {
+    const chess = composeActivity({ personId: "santiago", completions: [], redemptions: [{ id: "r-3", personId: "santiago", rewardId: "chess-15min", week: "2026-W44", chargedPoints: 1, createdAt: "2026-11-01T10:00:00.000Z" }], purchases: [{ id: "p-3", personId: "santiago", budgetKind: "chess", idempotencyKey: "k3", redemptionId: "r-3", chargedPoints: 1, grantedSeconds: 900, state: "committed", createdAt: "2026-11-01T10:00:00.000Z", refundedAt: null, refundReason: null }] });
+    equal(chess[0].title, "Chess time · 15 minutes");
+    equal(chess[0].icon, "♟️");
+    equal(chess[0].kind, "play-purchase");
+    equal(chess[0].coinDelta, -1);
+  });
+
   it("a refunded purchase shows as refunded with no coin change", () => {
-    const refunded = composeActivity({ personId: "santiago", completions: [], redemptions: [redemptions[1]], purchases: [{ id: "p-1", personId: "santiago", idempotencyKey: "k", redemptionId: "r-2", chargedPoints: 3, grantedSeconds: 900, state: "refunded", createdAt: "x", refundedAt: "y", refundReason: "issuance failed" }] });
+    const refunded = composeActivity({ personId: "santiago", completions: [], redemptions: [redemptions[1]], purchases: [{ id: "p-1", personId: "santiago", budgetKind: "paid", idempotencyKey: "k", redemptionId: "r-2", chargedPoints: 3, grantedSeconds: 900, state: "refunded", createdAt: "x", refundedAt: "y", refundReason: "issuance failed" }] });
     equal(refunded[0].status, "refunded");
     equal(refunded[0].coinDelta, 0);
   });

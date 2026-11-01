@@ -6,9 +6,10 @@
 //   - PAID: the existing `game-play-15min` block (3 coins → 900 s) funds every
 //     paid Studio interaction — creating, editing, plan reading/answering,
 //     approving and playing — on ONE durable allowance per child.
-//   - DAILY CHESS: a separate, free 900 s allowance per child and Europe/Zurich
-//     calendar date, unlocked by at least one trustworthy parent-approved
-//     activity occurring today. No coin is ever debited for it.
+//   - CHESS (November 1, 2026, replacing the free daily allowance): a
+//     `chess-15min` block (1 coin → 900 s) from the same permanent wallet,
+//     explicitly bought, on a separate durable chess allowance per child. No
+//     same-day activity requirement; it funds digital chess only.
 // Exactly one interactive lease per child spans chess, play and the Studio
 // editor; budgets never mix.
 //
@@ -38,16 +39,21 @@ export const PLAY_GRACE_SECONDS = 30;
  * see it without a second ledger (proposal "History, not another balance").
  */
 export const PLAY_PURCHASE_REWARD_ID = "game-play-15min";
-/** The one game that runs on the free DAILY chess allowance instead of coins. Stable Game Studio id. */
+/** The one game that runs on the chess allowance instead of the Studio block. Stable Game Studio id. */
 export const DAILY_CHESS_GAME_ID = "adaptive-chess-coach";
+/** Coins debited for one block of digital chess (November 1, 2026). */
+export const CHESS_BLOCK_COINS = 1;
+/** Seconds of digital chess granted by one block (15 minutes). */
+export const CHESS_BLOCK_SECONDS = 900;
+/** Wallet redemption reward id of a chess block: its own history label, never the Studio block's. */
+export const CHESS_PURCHASE_REWARD_ID = "chess-15min";
 /**
- * Kept for wire compatibility with the deployed adapter's library listing
- * (`free` flag) and older clients: the only "free" game is chess, and "free"
- * now means "earned daily allowance, no coins", never "unmetered".
+ * The durable purchased chess allowance lives in `family_chess_allowances`
+ * under this key instead of a calendar date, and chess leases carry it as
+ * their `budget_date`. Dated rows are the retired free daily grants: kept as
+ * history, never granted or runnable again.
  */
-export const FREE_GAME_IDS: readonly string[] = [DAILY_CHESS_GAME_ID];
-/** Seconds of digital chess one qualifying day unlocks (not per activity). */
-export const DAILY_CHESS_SECONDS = 900;
+export const PURCHASED_CHESS_BUDGET_DATE = "purchased";
 /**
  * The Studio editor lease is not bound to one game: creating a game happens
  * BEFORE it has an id. The lease (and its credential) carries this sentinel
@@ -94,34 +100,36 @@ export function isPlayMode(value: unknown): value is PlayMode {
 }
 
 export type PlayPrice =
-  /** Digital chess: the free daily allowance, unlocked by today's approved effort. */
-  | { kind: "daily-chess"; seconds: number }
-  /** Everything else — paid play AND the Studio editor — on the one coin-funded allowance. */
+  /** Digital chess: 1 coin / 15 minutes on the chess allowance. */
+  | { kind: "chess"; coins: number; seconds: number }
+  /** Everything else — paid play AND the Studio editor — on the 3-coin Studio allowance. */
   | { kind: "metered"; coins: number; seconds: number };
 
 /**
- * October 8 policy: chess in Play mode runs on the daily chess allowance;
- * every other interaction — paid games and any Studio editing/creation
- * (`mode: "edit"`, game id `*`) — is 3 coins / 15 minutes on the shared paid
- * allowance. Nothing is unmetered any more.
+ * November 1 policy: chess in Play mode runs on the chess allowance (1 coin /
+ * 15 minutes); every other interaction — paid games and any Studio
+ * editing/creation (`mode: "edit"`, game id `*`) — is 3 coins / 15 minutes on
+ * the shared paid allowance. Nothing is unmetered.
  */
 export function playPriceFor(gameId: string, mode: PlayMode = "play"): PlayPrice {
-  if (mode === "play" && gameId === DAILY_CHESS_GAME_ID) return { kind: "daily-chess", seconds: DAILY_CHESS_SECONDS };
+  if (mode === "play" && gameId === DAILY_CHESS_GAME_ID) return { kind: "chess", coins: CHESS_BLOCK_COINS, seconds: CHESS_BLOCK_SECONDS };
   return { kind: "metered", coins: PLAY_BLOCK_COINS, seconds: PLAY_BLOCK_SECONDS };
 }
 
 /** The budget a lease for this game/mode consumes. */
 export function budgetKindFor(gameId: string, mode: PlayMode = "play"): BudgetKind {
-  return playPriceFor(gameId, mode).kind === "daily-chess" ? "chess" : "paid";
-}
-
-/** True for the chess pilot: earned daily time, never coins (kept for older call sites). */
-export function isFreeGame(gameId: string): boolean {
-  return gameId === DAILY_CHESS_GAME_ID;
+  return playPriceFor(gameId, mode).kind === "chess" ? "chess" : "paid";
 }
 
 export function isDailyChessGame(gameId: string): boolean {
   return gameId === DAILY_CHESS_GAME_ID;
+}
+
+/** What one explicit purchase of a block for this allowance costs and grants, and its wallet reward id. */
+export function blockFor(kind: BudgetKind): { coins: number; seconds: number; rewardId: string } {
+  return kind === "chess"
+    ? { coins: CHESS_BLOCK_COINS, seconds: CHESS_BLOCK_SECONDS, rewardId: CHESS_PURCHASE_REWARD_ID }
+    : { coins: PLAY_BLOCK_COINS, seconds: PLAY_BLOCK_SECONDS, rewardId: PLAY_PURCHASE_REWARD_ID };
 }
 
 /** `YYYY-MM-DD` as produced by `todayInZurich`. */
@@ -184,18 +192,13 @@ export function isParentApproved(row: ApprovalEvidence): boolean {
   return typeof row.reviewedAt === "string" && row.reviewedAt.length > 0;
 }
 
+/** One `family_chess_allowances` row: the purchased chess allowance, or a retired dated daily grant. */
 export type ChessAllowance = {
   personId: ChildId;
   date: string;
   grantedSeconds: number;
   consumedSeconds: number;
 };
-
-/** Usable chess seconds: nothing while not eligible; otherwise the unconsumed remainder of today's one grant. */
-export function chessRemaining(allowance: Pick<ChessAllowance, "grantedSeconds" | "consumedSeconds"> | null, eligible: boolean): number {
-  if (!eligible || !allowance) return 0;
-  return Math.max(0, allowance.grantedSeconds - allowance.consumedSeconds);
-}
 
 export function isValidIdempotencyKey(value: unknown): value is string {
   return typeof value === "string" && IDEMPOTENCY_KEY_PATTERN.test(value);
@@ -237,9 +240,9 @@ export type PlayLease = {
   mode: PlayMode;
   /** False only for legacy rows issued before October 8 (free edit/chess); every new lease is metered against one of the two budgets. */
   metered: boolean;
-  /** Which allowance this lease consumes (`paid` = coin block, `chess` = today's earned chess time). */
+  /** Which allowance this lease consumes (`paid` = Studio block, `chess` = chess allowance). */
   budgetKind: BudgetKind;
-  /** The Europe/Zurich calendar date a chess lease belongs to (null for paid leases). */
+  /** Chess leases: `PURCHASED_CHESS_BUDGET_DATE`, or the Zurich date of a retired free daily grant (legacy rows). Null for paid leases. */
   budgetDate: string | null;
   /** Seconds of allowance this lease may consume at most (remaining at issue). */
   budgetSeconds: number;
@@ -301,29 +304,26 @@ export function leaseIsAlive(
   return now.getTime() - last < staleSeconds * 1000;
 }
 
-export type LeaseRefusal = "no-allowance" | "lease-held" | "chess-not-earned";
+export type LeaseRefusal = "no-allowance" | "lease-held";
 
 export type LeaseDecision =
   | { ok: true; replaces: string | null }
   | { ok: false; reason: LeaseRefusal; heldBy?: { leaseId: string; gameId: string; deviceLabel: string | null } };
 
 /**
- * Whether a new lease may be issued. A metered lease needs remaining
- * allowance. A live lease on another device blocks issuance unless the child
- * explicitly takes over (which ends the other lease — tabs/devices never run
- * in parallel, GP-03). A stale lease is replaced silently.
+ * Whether a new lease may be issued. A metered lease — chess included — needs
+ * remaining allowance on its own budget. A live lease on another device blocks
+ * issuance unless the child explicitly takes over (which ends the other lease
+ * — tabs/devices never run in parallel, GP-03). A stale lease is replaced
+ * silently.
  */
 export function decideLeaseIssue(input: {
-  price: PlayPrice;
   remainingSeconds: number;
   existing: PlayLease | null;
   takeover: boolean;
   now: Date;
-  /** For the daily chess price: whether today's qualifying approval exists (server-derived). */
-  chessEligible?: boolean;
 }): LeaseDecision {
-  const { price, remainingSeconds, existing, takeover, now } = input;
-  if (price.kind === "daily-chess" && !input.chessEligible) return { ok: false, reason: "chess-not-earned" };
+  const { remainingSeconds, existing, takeover, now } = input;
   if (remainingSeconds <= 0) return { ok: false, reason: "no-allowance" };
   if (existing && existing.state === "active") {
     if (leaseIsAlive(existing, now) && !takeover) {
@@ -345,6 +345,8 @@ export function decideLeaseIssue(input: {
 export type PlayPurchase = {
   id: string;
   personId: ChildId;
+  /** Which allowance the block granted (`paid` for every purchase before November 1, 2026). */
+  budgetKind: BudgetKind;
   idempotencyKey: string;
   redemptionId: string;
   chargedPoints: number;
@@ -366,15 +368,12 @@ export type PurchaseOutcome =
 
 export type PlayPhase = "playing" | "warning" | "grace" | "exhausted" | "unmetered";
 
-/** Per-child chess status for Home/Games (server numbers only). */
+/** Per-child purchased chess allowance for Home/Games/parent tools (server numbers only). */
 export type ChessStatusView = {
-  date: string;
-  eligible: boolean;
   grantedSeconds: number;
-  remainingSeconds: number;
   consumedSeconds: number;
-  /** The identity of one qualifying approval (for parent tools), or null. */
-  qualifiedBy: { week: string; routineId: string; day: number } | null;
+  remainingSeconds: number;
+  price: { coins: number; seconds: number };
 };
 
 export function projectPlayPhase(input: {

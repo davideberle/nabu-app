@@ -16,7 +16,7 @@ import { assistantProfileById } from "@/data/family-assistant";
 import { useChildShell } from "@/components/family/child-shell-provider";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import { childShellDestinationHref } from "@/lib/family-child-shell";
-import { PLAY_BLOCK_COINS, PLAY_BLOCK_SECONDS } from "@/lib/family-play";
+import { CHESS_BLOCK_COINS, CHESS_BLOCK_SECONDS, PLAY_BLOCK_COINS, PLAY_BLOCK_SECONDS } from "@/lib/family-play";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -79,7 +79,7 @@ function Coins({ child }: { child: ChildId }) {
       <section aria-label="What coins buy" className="flex flex-col gap-3 rounded-3xl border border-primary bg-primary px-5 py-4">
         <h2 className="text-lg font-semibold">What coins buy</h2>
         <p className="text-sm text-secondary">
-          🪙 {PLAY_BLOCK_COINS} coins = {PLAY_BLOCK_SECONDS / 60} minutes in Game Studio — making, changing and playing your own games. Chess is free every day you did something useful.
+          🪙 {CHESS_BLOCK_COINS} coin = {CHESS_BLOCK_SECONDS / 60} minutes of chess. 🪙 {PLAY_BLOCK_COINS} coins = {PLAY_BLOCK_SECONDS / 60} minutes in Game Studio — making, changing and playing your own games. Coins are only spent when you choose to buy.
         </p>
         <div className="flex flex-wrap gap-2">
           <Link href={childShellDestinationHref("games", child)} className={cn(pillClass, "bg-secondary text-primary hover:bg-primary")}>🎮 Go to Games</Link>

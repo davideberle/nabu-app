@@ -3,10 +3,11 @@
 import { deepEqual, equal, ok } from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
-  DAILY_CHESS_GAME_ID,
-  DAILY_CHESS_SECONDS,
-  FREE_GAME_IDS,
+  CHESS_BLOCK_COINS,
+  CHESS_BLOCK_SECONDS,
+  CHESS_PURCHASE_REWARD_ID,
   PLAY_BLOCK_COINS,
+  PLAY_PURCHASE_REWARD_ID,
   PLAY_BLOCK_SECONDS,
   PLAY_GRACE_SECONDS,
   PLAY_WARN_SECONDS,
@@ -14,8 +15,8 @@ import {
   STUDIO_SCOPE_GAME_ID,
   allowanceRemaining,
   applySettlement,
+  blockFor,
   budgetKindFor,
-  chessRemaining,
   decideLeaseIssue,
   formatPlayClock,
   isParentApproved,
@@ -56,14 +57,19 @@ const lease = (over: Partial<PlayLease> = {}): PlayLease => ({
   ...over,
 });
 
-describe("October 8 access policy — price and budget", () => {
-  it("chess in play mode runs on the free daily allowance; every other game is 3 coins for 15 minutes", () => {
-    deepEqual(FREE_GAME_IDS, [DAILY_CHESS_GAME_ID]);
-    deepEqual(playPriceFor("adaptive-chess-coach"), { kind: "daily-chess", seconds: DAILY_CHESS_SECONDS });
+describe("access policy — price and budget (October 8; chess price November 1, 2026)", () => {
+  it("chess in play mode is 1 coin for 15 minutes on its own allowance; every other game is 3 coins for 15 minutes", () => {
+    deepEqual(playPriceFor("adaptive-chess-coach"), { kind: "chess", coins: 1, seconds: 900 });
     deepEqual(playPriceFor("6bd56478-5ea0-4f2a-a2db-be8549a88d05"), { kind: "metered", coins: 3, seconds: 900 });
     equal(PLAY_BLOCK_COINS, 3);
     equal(PLAY_BLOCK_SECONDS, 900);
-    equal(DAILY_CHESS_SECONDS, 900);
+    equal(CHESS_BLOCK_COINS, 1);
+    equal(CHESS_BLOCK_SECONDS, 900);
+  });
+  it("each block has its own wallet reward id: chess never reuses the Studio block's", () => {
+    deepEqual(blockFor("chess"), { coins: 1, seconds: 900, rewardId: CHESS_PURCHASE_REWARD_ID });
+    deepEqual(blockFor("paid"), { coins: 3, seconds: 900, rewardId: PLAY_PURCHASE_REWARD_ID });
+    ok((CHESS_PURCHASE_REWARD_ID as string) !== PLAY_PURCHASE_REWARD_ID);
   });
   it("editing is PAID: edit mode of any game — and the id-less studio sentinel — is the same 3-coin block (no free editor)", () => {
     deepEqual(playPriceFor("6bd56478-5ea0-4f2a-a2db-be8549a88d05", "edit"), { kind: "metered", coins: 3, seconds: 900 });
@@ -124,12 +130,6 @@ describe("occurrence date and parent-approval provenance (DA-01/PR-02)", () => {
     ok(!isParentApproved({ status: "pending_review", reviewedAt: "2026-10-08T07:00:00.000Z", approvalSource: "parent-review" }));
     ok(!isParentApproved({ status: "on_hold", reviewedAt: "2026-10-08T07:00:00.000Z", approvalSource: null }));
   });
-  it("chess remaining is zero while ineligible and the unconsumed remainder once eligible", () => {
-    equal(chessRemaining(null, true), 0);
-    equal(chessRemaining({ grantedSeconds: 900, consumedSeconds: 300 }, false), 0);
-    equal(chessRemaining({ grantedSeconds: 900, consumedSeconds: 300 }, true), 600);
-    equal(chessRemaining({ grantedSeconds: 900, consumedSeconds: 950 }, true), 0);
-  });
 });
 
 describe("allowance", () => {
@@ -157,25 +157,19 @@ describe("settlement is monotonic and bounded (GP-02/GP-07)", () => {
 describe("one consuming lease per child (GP-03)", () => {
   const now = new Date("2026-10-04T10:05:00.000Z");
   it("refuses a metered lease without allowance", () => {
-    deepEqual(decideLeaseIssue({ price: { kind: "metered", coins: 3, seconds: 900 }, remainingSeconds: 0, existing: null, takeover: false, now }), { ok: false, reason: "no-allowance" });
-  });
-  it("chess needs today's qualifying approval AND remaining daily seconds; coins never substitute", () => {
-    const chess = { kind: "daily-chess" as const, seconds: 900 };
-    deepEqual(decideLeaseIssue({ price: chess, remainingSeconds: 900, existing: null, takeover: false, now, chessEligible: false }), { ok: false, reason: "chess-not-earned" });
-    deepEqual(decideLeaseIssue({ price: chess, remainingSeconds: 0, existing: null, takeover: false, now, chessEligible: true }), { ok: false, reason: "no-allowance" });
-    deepEqual(decideLeaseIssue({ price: chess, remainingSeconds: 1, existing: null, takeover: false, now, chessEligible: true }), { ok: true, replaces: null });
-    deepEqual(decideLeaseIssue({ price: chess, remainingSeconds: 900, existing: null, takeover: false, now }), { ok: false, reason: "chess-not-earned" }, "eligibility must be stated explicitly");
+    deepEqual(decideLeaseIssue({ remainingSeconds: 0, existing: null, takeover: false, now }), { ok: false, reason: "no-allowance" });
+    deepEqual(decideLeaseIssue({ remainingSeconds: 1, existing: null, takeover: false, now }), { ok: true, replaces: null });
   });
   it("a live lease on another device blocks a second one unless the child takes over", () => {
     const held = lease({ lastSettledAt: "2026-10-04T10:04:30.000Z", deviceLabel: "iPad" });
-    const blocked = decideLeaseIssue({ price: { kind: "metered", coins: 3, seconds: 900 }, remainingSeconds: 600, existing: held, takeover: false, now });
+    const blocked = decideLeaseIssue({ remainingSeconds: 600, existing: held, takeover: false, now });
     deepEqual(blocked, { ok: false, reason: "lease-held", heldBy: { leaseId: held.id, gameId: held.gameId, deviceLabel: "iPad" } });
-    deepEqual(decideLeaseIssue({ price: { kind: "metered", coins: 3, seconds: 900 }, remainingSeconds: 600, existing: held, takeover: true, now }), { ok: true, replaces: held.id });
+    deepEqual(decideLeaseIssue({ remainingSeconds: 600, existing: held, takeover: true, now }), { ok: true, replaces: held.id });
   });
   it("a stale lease (no settlement for ten minutes) is replaced silently", () => {
     const stale = lease({ issuedAt: "2026-10-04T09:00:00.000Z", lastSettledAt: "2026-10-04T09:30:00.000Z" });
     equal(leaseIsAlive(stale, now), false);
-    deepEqual(decideLeaseIssue({ price: { kind: "metered", coins: 3, seconds: 900 }, remainingSeconds: 600, existing: stale, takeover: false, now }), { ok: true, replaces: stale.id });
+    deepEqual(decideLeaseIssue({ remainingSeconds: 600, existing: stale, takeover: false, now }), { ok: true, replaces: stale.id });
   });
 });
 

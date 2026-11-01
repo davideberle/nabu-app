@@ -14,10 +14,10 @@ import { chessContentPath } from "@/lib/family-chess-content";
  * to exactly this child, lease and mode (October 8, 2026 policy):
  *   - `mode: "play"` + a Studio game id → paid play on the coin allowance
  *     (credential scope `lease`);
- *   - `mode: "play"` + the chess id → today's earned chess allowance; refused
- *     `chess-not-earned` (402) without a qualifying parent-approved activity
- *     occurring today; the response also carries the same-origin gated content
- *     path for the chess bundle;
+ *   - `mode: "play"` + the chess id → the purchased chess allowance (1 coin /
+ *     15 minutes, November 1, 2026); refused `no-allowance` (402) when it is
+ *     empty — issuing never buys; the response also carries the same-origin
+ *     gated content path for the chess bundle;
  *   - `mode: "edit"` → the paid Studio editor lease (credential scope `studio`,
  *     game id `*`): creating, changing, answering and approving all run on it.
  * A live lease on another device/mode is `lease-held` (409) until the child

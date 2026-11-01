@@ -21,11 +21,14 @@ describe("family wallet consumer contract (October 8, 2026)", () => {
     match(assistant, /fetch\("\/api\/family\/wallet"\)/);
   });
 
-  it("no child surface posts a catalog redemption any more; the only purchase is the Studio block with an idempotency key", () => {
+  it("no child surface posts a catalog redemption any more; the only purchases are the Studio block and (November 1, 2026) the chess block, each confirmed with an idempotency key", () => {
     doesNotMatch(coins, /\/api\/family\/redemptions/);
     doesNotMatch(games, /\/api\/family\/redemptions/);
-    match(games, /client\.purchase\(child, keyRef\.current\)/);
+    match(games, /client\.purchase\(child, keyRef\.current, undefined, kind\)/);
     match(games, /Yes, buy for 🪙 \$\{price\.coins\}/);
+    match(games, /Yes, buy for 🪙 \$\{chessPrice\.coins\}/);
+    match(games, /onClick=\{\(\) => buy\("chess"\)\}/);
+    match(games, /onClick=\{\(\) => buy\("paid"\)\}/);
     match(games, /if \(buying\) return/);
   });
 
