@@ -2261,6 +2261,70 @@ describe("joined Family + Studio stack", { skip: !available && "game-studio work
     }
   });
 
+  it("CH12 joined, delayed success: an 'active' status reply held in transit past Family's end of the chess lease (other device took over) or past the credential's expiry grants no play and restores no time", async () => {
+    await allowance(0);
+    await walletFromYesterday(1);
+    clock = t0;
+    ok((await purchasePlayBlock({ personId: "santiago", idempotencyKey: "key-joined-chess-12d", purchaseId: "pur-joined-chess-12d", redemptionId: "red-joined-chess-12d", budgetKind: "chess", now: at(0) }, client)).ok);
+    ok((await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-joined-chess12d", takeover: true, deviceLabel: "ipad", now: at(0) }, client)).ok);
+    const { server, base } = await stack();
+    try {
+      // (a) Takeover while the confirming read is in flight.
+      const a = chessCred("lease-joined-chess12d");
+      equal((await tick(base, "lease-joined-chess12d", a)).status, 200);
+      clock = t0 + 2000;
+      let release!: () => void;
+      statusGate = { lid: "lease-joined-chess12d", gate: new Promise<void>((r) => { release = r; }) };
+      const pending = tick(base, "lease-joined-chess12d", a); // Family still says active at t2
+      await new Promise((r) => setTimeout(r, 40));
+      clock = t0 + 2500;
+      const b = await issuePlayLease({ personId: "santiago", gameId: DAILY_CHESS_GAME_ID, mode: "play", leaseId: "lease-joined-chess12e", takeover: true, deviceLabel: "mac", now: new Date(clock) }, client);
+      ok(b.ok && b.replaced === "lease-joined-chess12d", JSON.stringify(b));
+      clock = t0 + 6000;
+      release();
+      statusGate = null;
+      const late = await pending;
+      equal(late.status, 410, JSON.stringify(late.body));
+      clock = t0 + 7000;
+      const after = await tick(base, "lease-joined-chess12d", a);
+      equal(after.status, 410);
+      await server.settler.flush();
+      const meterA = server.store.loadLease("lease-joined-chess12d")!;
+      const familyA = (await getLease("lease-joined-chess12d", client))!;
+      const successor = (await getLease("lease-joined-chess12e", client))!;
+      ok(meterA.consumed <= 2, `A counted ${meterA.consumed} (frame deadline t2)`);
+      equal(familyA.consumedSeconds, meterA.consumed);
+      ok(meterA.consumed + successor.budgetSeconds <= 900, `measured ${meterA.consumed} + usable ${successor.budgetSeconds}`);
+      // (b) The successor's credential expires while its confirming read is in flight.
+      const shortCred = mod.mintPlayCredential(key, { sub: "santiago", scope: "lease", gid: DAILY_CHESS_GAME_ID, lid: "lease-joined-chess12e", mode: "play", metered: true, budget: successor.budgetSeconds, iat: Math.floor(clock / 1000), exp: Math.floor(clock / 1000) + 5, jti: "chess12e" });
+      equal((await tick(base, "lease-joined-chess12e", shortCred)).status, 200);
+      await playUntil(base, "lease-joined-chess12e", shortCred, 7, 10);
+      clock = t0 + 11000;
+      let releaseB!: () => void;
+      statusGate = { lid: "lease-joined-chess12e", gate: new Promise<void>((r) => { releaseB = r; }) };
+      const pendingB = tick(base, "lease-joined-chess12e", shortCred);
+      await new Promise((r) => setTimeout(r, 40));
+      clock = t0 + 20000; // credential expired at t12
+      releaseB();
+      statusGate = null;
+      const lateB = await pendingB;
+      const afterB = await tick(base, "lease-joined-chess12e", shortCred);
+      await server.settler.flush();
+      const meterB = server.store.loadLease("lease-joined-chess12e")!;
+      ok(lateB.status !== 200 || (lateB.body as { authorizedForMs?: number }).authorizedForMs === 0, `late reply ${lateB.status} ${JSON.stringify(lateB.body)}`);
+      equal(afterB.status, 401, "an expired credential gets no authority");
+      ok(meterB.consumed <= 6, `B counted ${meterB.consumed}: nothing after the last handed deadline`);
+      const state = await getPlayState("santiago", client);
+      const used = Number((await client.execute("SELECT consumed_seconds FROM family_chess_allowances WHERE person_id = 'santiago' AND date = 'purchased'")).rows[0].consumed_seconds);
+      equal(state.chess.remainingSeconds, 900 - used, "remaining = grant − measured, nothing restored");
+      equal(state.balance, 0, "no purchase on the way");
+      observe("CH12", { delayedReplyAfterTakeoverStatus: late.status, takeoverPredecessorBeatAfterStatus: after.status, takeoverPredecessorCounted: meterA.consumed, takeoverConserved: meterA.consumed + successor.budgetSeconds <= 900, delayedReplyAfterExpiryAuthorized: lateB.status === 200 && ((lateB.body as { authorizedForMs?: number }).authorizedForMs ?? 0) > 0, expiredBeatStatus: afterB.status, expiryLeaseCounted: meterB.consumed, expiryCountedWithinDeadline: meterB.consumed <= 6, remainingEqualsGrantMinusMeasured: state.chess.remainingSeconds === 900 - used });
+    } finally {
+      server.settler.stop();
+      await new Promise((r) => server.close(r));
+    }
+  });
+
   it("REPAIR-1 joined: a purchased chess lease plays its full 900 s against the real Family persistence and ENDS at the boundary — 410 exhausted, no grace, no grant; the chess allowance is fully consumed; no automatic purchase; a fresh chess lease is refused and a fresh PAID lease still gets its own grace", async () => {
     await allowance(900);
     await walletFromYesterday(3);

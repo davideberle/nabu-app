@@ -45,8 +45,9 @@ export function FamilyGamesClient() {
   return <Games key={child} child={child} />;
 }
 
-/** Child-readable chess status from the server numbers only. */
-export function chessStatusCopy(chess: PlayStateView["chess"]): { headline: string; detail: string; playable: boolean } {
+/** Child-readable chess status from the server numbers only; null when the answer carries no chess price (a server without it). */
+export function chessStatusCopy(chess: PlayStateView["chess"] | undefined): { headline: string; detail: string; playable: boolean } | null {
+  if (!chess?.price || typeof chess.remainingSeconds !== "number") return null;
   const minutes = Math.round(chess.price.seconds / 60);
   if (chess.remainingSeconds > 0) {
     return { headline: `${formatPlayClock(chess.remainingSeconds)} of chess left`, detail: "Your chess time follows you on every screen. Only visible play counts — pausing stops the clock.", playable: true };
@@ -156,7 +157,7 @@ function Games({ child }: { child: ChildId }) {
   }, [buying, child, client, refreshWallet]);
 
   const price = state.kind === "ready" ? state.state.price : { coins: 3, seconds: 900 };
-  const chessPrice = state.kind === "ready" ? state.state.chess.price : { coins: 1, seconds: 900 };
+  const chessPrice = (state.kind === "ready" ? state.state.chess?.price : null) ?? { coins: 1, seconds: 900 };
   const chess = state.kind === "ready" ? chessStatusCopy(state.state.chess) : null;
   const chessCard = approvedGameLibrary[0];
 
@@ -169,7 +170,7 @@ function Games({ child }: { child: ChildId }) {
       </div>
 
       {/* Chess — its own purchased allowance, 1 coin / 15 minutes (server status only). */}
-      <section aria-label="Chess" className={cn(cardClass)} data-chess-remaining={state.kind === "ready" ? state.state.chess.remainingSeconds : ""}>
+      <section aria-label="Chess" className={cn(cardClass)} data-chess-remaining={state.kind === "ready" ? state.state.chess?.remainingSeconds ?? "" : ""}>
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <h2 className="text-lg font-semibold">{chessCard.title}</h2>
