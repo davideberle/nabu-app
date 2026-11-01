@@ -507,9 +507,9 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
     return (
       <div className="grid gap-4" data-testid="workshop-story">
         {active.kind === "outcome" ? (
-          <WorkshopGarden grown={active.picture?.id ?? null} label={active.recap ?? active.picture?.label ?? mission.title} />
+          <WorkshopGarden grown={active.picture?.id ?? null} label={active.recap ?? active.picture?.label ?? mission.title} compact={mission.screen === "focused"} />
         ) : active.picture ? (
-          <WorkshopPictureView id={active.picture.id} className="h-40 w-40" />
+          <WorkshopPictureView id={active.picture.id} className={mission.screen === "focused" ? "h-28 w-28" : "h-40 w-40"} />
         ) : null}
         {active.ending ? (
           <div className="grid gap-2" data-testid="workshop-ending">

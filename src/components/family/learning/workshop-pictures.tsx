@@ -680,10 +680,10 @@ function CounterIcon({ icon }: { icon?: string }) {
 }
 
 /** Visit 2: her garden with what she chose to grow (the visible consequence of her own choice). */
-export function WorkshopGarden({ grown, label }: { grown: string | null; label: string }) {
+export function WorkshopGarden({ grown, label, compact = false }: { grown: string | null; label: string; /** Step 1 (review): smaller on the focused screen so «Weiter» stays above the fold. */ compact?: boolean }) {
   return (
     <figure className="grid justify-items-start gap-2" data-testid="workshop-garden" data-grown={grown ?? ""}>
-      <svg viewBox="0 0 240 150" className="h-auto w-full max-w-[360px]" role="img" aria-label={label}>
+      <svg viewBox="0 0 240 150" className={compact ? "h-auto w-full max-w-[240px]" : "h-auto w-full max-w-[360px]"} role="img" aria-label={label}>
         <rect x={4} y={4} width={232} height={142} rx={10} fill="#dff0fb" stroke="#6f8f5a" strokeWidth={3} />
         <circle cx={204} cy={30} r={14} fill="#f7d54a" />
         <rect x={4} y={104} width={232} height={42} fill="#7fb069" />
