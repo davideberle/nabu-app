@@ -28,6 +28,7 @@ import type { NoktTranscribeOutcome, NoktTurnInput } from "@/lib/family-learning
 import { browserSpeech } from "@/lib/family-learning-listening";
 import { startPushToTalk } from "@/lib/family-voice";
 import { adaptMediaRecorder } from "./nabu-sidebar";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 /** Uploads one recorded turn; the signal cancels upload and provider call. Bound to the child by the caller. */
 export type NoktTranscribe = (audio: Blob, fileName: string, signal: AbortSignal) => Promise<NoktTranscribeOutcome>;
@@ -211,7 +212,7 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn }
         <label htmlFor="nokt-input" className="text-base font-semibold">
           {via === "voice" ? "Das habe ich verstanden — du kannst es korrigieren:" : transcribe ? "Oder schreib es hier:" : "Schreib es hier:"}
         </label>
-        <textarea id="nokt-input" rows={2} value={draft} onChange={(e) => setDraft(e.target.value.slice(0, 300))} className="w-full rounded-xl border-2 px-3 py-2 text-lg" style={{ borderColor: "#8ba8a4" }} data-testid="nokt-input" />
+        <textarea {...NO_TYPING_HELP} id="nokt-input" rows={2} value={draft} onChange={(e) => setDraft(e.target.value.slice(0, 300))} className="w-full rounded-xl border-2 px-3 py-2 text-lg" style={{ borderColor: "#8ba8a4" }} data-testid="nokt-input" />
         <button type="submit" className={btn} style={{ background: "#215c60", color: "white" }} disabled={!draft.trim() || waiting} data-testid="nokt-send">
           Senden
         </button>

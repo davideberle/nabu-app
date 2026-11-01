@@ -6163,6 +6163,7 @@
    "title": "Die Wasserleitung",
    "objective": "Follow the child's own next-adventure choice (a water pipe to the greenhouse): a «Weisst du noch?» warm-up with fresh tasks on earlier skills (groups with leftovers as pipe pieces, an area written as a multiplication, «regadera» from memory) with the time since teaching recorded; a new area-with-path station with written calculations and the ways compared side by side; new lengths in m/cm and the length around a bed (perimeter) against the fields inside (area), with a harder liters version; English positions with June (next to, behind, between; left/right in the harder version); a short Spanish exchange with Rosa (listening, then a new supported request «un tubo»); about five minutes of typing lesson 7; two own sentences with Nokt's reaction first and one revision; a home task instead of a craft. Easier / normal / harder versions per main station, all authored in advance (at most two extra tasks per skill).",
    "presentation": "map",
+   "screen": "focused",
    "theme": {
     "basis": "child-chosen",
     "source": "The child's own Visit 8 closing choice (nextAdventure choice id 'water-pipe', «Eine Wasserleitung zum Gewächshaus bauen», 2026-11-01T11:34Z), read from his saved interests at runtime; David approved the step-1 plan on 2026-11-01.",
@@ -6354,7 +6355,7 @@
      "solve": {
       "facts": [
        "Ein Rohrstück ist 4 m lang.",
-       "Die Leitung wird 18 m lang."
+       "Die Leitung muss 18 m lang werden."
       ],
       "parts": [
        {
@@ -6741,8 +6742,7 @@
      },
      "solve": {
       "facts": [
-       "Reihen × Felder in einer Reihe = alle Felder",
-       "W = Weg (dort wächst nichts)"
+       "Reihen × Felder in einer Reihe = alle Felder"
       ],
       "grids": [
        {
@@ -6892,8 +6892,7 @@
      },
      "solve": {
       "facts": [
-       "Reihen × Felder in einer Reihe = alle Felder",
-       "W = Weg (dort wächst nichts)"
+       "Reihen × Felder in einer Reihe = alle Felder"
       ],
       "grids": [
        {
@@ -7048,8 +7047,7 @@
      },
      "solve": {
       "facts": [
-       "Reihen × Felder in einer Reihe = alle Felder",
-       "W = Weg (dort wächst nichts)"
+       "Reihen × Felder in einer Reihe = alle Felder"
       ],
       "grids": [
        {
@@ -7201,8 +7199,7 @@
      },
      "solve": {
       "facts": [
-       "Reihen × Felder in einer Reihe = alle Felder",
-       "W = Weg (dort wächst nichts)"
+       "Reihen × Felder in einer Reihe = alle Felder"
       ],
       "grids": [
        {
@@ -7357,8 +7354,7 @@
      "solve": {
       "facts": [
        "1 m = 100 cm",
-       "Aussen herum = alle vier Seiten zusammen",
-       "Innen = alle Felder"
+       "Aussen herum = alle vier Seiten zusammen. Innen = alle Felder."
       ],
       "grids": [
        {
@@ -7507,8 +7503,7 @@
      "solve": {
       "facts": [
        "1 m = 100 cm",
-       "Aussen herum = alle vier Seiten zusammen",
-       "Innen = alle Felder"
+       "Aussen herum = alle vier Seiten zusammen. Innen = alle Felder."
       ],
       "grids": [
        {
@@ -7635,8 +7630,7 @@
      "solve": {
       "facts": [
        "1 m = 100 cm",
-       "Aussen herum = alle vier Seiten zusammen",
-       "Innen = alle Felder"
+       "Aussen herum = alle vier Seiten zusammen. Innen = alle Felder."
       ],
       "grids": [
        {
@@ -7763,8 +7757,8 @@
      },
      "solve": {
       "facts": [
-       "12 Felder",
-       "2 Liter pro Feld und Tag",
+       "2 Liter Wasser",
+       "Das Beet hat 12 Felder.",
        "Der Tank fasst 120 Liter."
       ],
       "parts": [

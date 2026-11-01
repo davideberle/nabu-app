@@ -23,6 +23,7 @@ import { nextExpectedChar } from "@/lib/family-learning-typing-metrics";
 import { applySubmitOutcome, canSend, markSending, payloadKeyOf, submitDraftFor, type SubmitDraft } from "@/lib/family-learning-submit-draft";
 import { clearDraft, loadDraft, saveDraft, type DraftIdentity, type DraftStorage } from "@/lib/family-learning-draft-store";
 import { chipButton, focusRing, primaryButton, secondaryButton } from "./styles";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 const newKey = () => (typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `k-${Date.now()}`);
 type Gate = () => boolean;
@@ -171,7 +172,7 @@ function AlignmentCheck({ view, busy, gate, onCheck }: { view: ChildView; busy: 
       <ol className="space-y-2">
         {course.alignment.keys.map((key, i) => (
           <li key={key.id} className="flex flex-wrap items-center gap-3">
-            <input
+            <input {...NO_TYPING_HELP}
               ref={(el) => {
                 refs.current[i] = el;
                 if (i === 0) firstRef.current = el;
@@ -387,7 +388,7 @@ export function TypingCourse({ view, busy, gate = alwaysOpen, reminder = null, o
               );
             })}
           </p>
-          <input
+          <input {...NO_TYPING_HELP}
             ref={inputRef}
             value={draft.current}
             onChange={(e) => setDraft((d) => (d ? typeInto(d, e.target.value, Date.now()) : d))}
@@ -542,7 +543,7 @@ export function LogRevise({ view, busy, gate = alwaysOpen, onRevise, onSkip }: {
       <label className="sr-only" htmlFor="revise-text">
         Dein Satz
       </label>
-      <textarea ref={ref} id="revise-text" value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="revise-input" />
+      <textarea {...NO_TYPING_HELP} ref={ref} id="revise-text" value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="revise-input" />
       <div className="flex flex-wrap gap-2">
         <button ref={nothing ? continueRef : undefined} type="submit" disabled={busy || !text.trim()} className={primaryButton} data-testid="revise-save">
           {nothing ? "Weiter" : "Überarbeitung speichern"}
@@ -657,7 +658,7 @@ export function LogTransfer({ view, busy, gate = alwaysOpen, onSubmit, onSkip, d
       <label className="sr-only" htmlFor="transfer-text">
         Dein neuer Satz
       </label>
-      <textarea ref={ref} id="transfer-text" value={text} onChange={(e) => setText(e.target.value)} rows={2} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="transfer-input" />
+      <textarea {...NO_TYPING_HELP} ref={ref} id="transfer-text" value={text} onChange={(e) => setText(e.target.value)} rows={2} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="transfer-input" />
       {failed ? (
         <p className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-900 dark:bg-amber-950/40 dark:text-amber-100" role="status" data-testid="transfer-notice" data-failure={failed.failure} data-code={failed.refusalCode ?? ""} data-restored={restored ? "true" : "false"}>
           {failed.failure === "refused"

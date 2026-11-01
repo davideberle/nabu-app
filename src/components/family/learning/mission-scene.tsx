@@ -35,6 +35,7 @@ import { NoktButton, NoktPanel, type NoktTranscribe, type NoktTurnFn } from "./n
 import { PlanGrid } from "./plan-grid";
 import { Counters } from "./workshop-pictures";
 import rosaHarbor from "@/assets/family-learning/visit7/rosa-research-harbor.webp";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 // The palette of the approved preview: sea-green ink, parchment cards, amber retry, green success.
 const INK = "#203b3d";
@@ -413,7 +414,7 @@ function PartTask({ part, step, busy, act, telemetry, quiet = false }: { part: S
           {taught ? "Trag die Zahl jetzt selbst ein:" : part.question}
         </label>
         <div className="flex items-center gap-3">
-          <input id={`part-${part.id}`} ref={inputRef} value={value} onChange={(e) => {
+          <input {...NO_TYPING_HELP} id={`part-${part.id}`} ref={inputRef} value={value} onChange={(e) => {
               setNotice(null);
               setValue(e.target.value.replace(/[^0-9]/g, "").slice(0, 4));
             }} inputMode="numeric" autoComplete="off" className="h-14 w-28 rounded-xl border-2 px-3 text-2xl font-semibold disabled:opacity-50" style={{ borderColor: "#8ba8a4" }} aria-describedby={`unit-${part.id}`} data-testid="part-input" />
@@ -503,7 +504,7 @@ function HintCheck({ check, hintId, part, step, busy, act }: { check: NonNullabl
             if (!busy && /^\d{1,4}$/.test(value)) send(value);
           }}
         >
-          <input value={value} onChange={(e) => setValue(e.target.value.replace(/[^0-9]/g, "").slice(0, 4))} inputMode="numeric" className="h-12 w-24 rounded-xl border-2 px-3 text-xl" style={{ borderColor: "#8ba8a4" }} aria-label={check.prompt} data-testid="hint-check-input" />
+          <input {...NO_TYPING_HELP} value={value} onChange={(e) => setValue(e.target.value.replace(/[^0-9]/g, "").slice(0, 4))} inputMode="numeric" className="h-12 w-24 rounded-xl border-2 px-3 text-xl" style={{ borderColor: "#8ba8a4" }} aria-label={check.prompt} data-testid="hint-check-input" />
           {check.unit ? <span className="text-lg">{check.unit}</span> : null}
           <button type="submit" className={btn} style={primary} disabled={busy || !value} data-testid="hint-check-send">
             Prüfen
@@ -702,7 +703,7 @@ export function RequestTask({ active, busy, act, telemetry }: { active: MissionA
         <label htmlFor="scene-request" className="text-2xl font-semibold" lang={p.language}>
           {exhausted ? "Schreib den Satz ab:" : p.frame.replace("___", "…")}
         </label>
-        <input id="scene-request" ref={inputRef} value={text} onChange={(e) => setText(e.target.value.slice(0, 200))} lang={p.language} disabled={!!p.askMeaning || (exhausted && (p.practiceLeft ?? 1) === 0)} className="h-14 w-full max-w-xl rounded-xl border-2 px-3 text-xl" style={{ borderColor: "#8ba8a4" }} autoComplete="off" autoCorrect="off" spellCheck={false} data-testid="request-input" />
+        <input {...NO_TYPING_HELP} id="scene-request" ref={inputRef} value={text} onChange={(e) => setText(e.target.value.slice(0, 200))} lang={p.language} disabled={!!p.askMeaning || (exhausted && (p.practiceLeft ?? 1) === 0)} className="h-14 w-full max-w-xl rounded-xl border-2 px-3 text-xl" style={{ borderColor: "#8ba8a4" }} autoComplete="off" autoCorrect="off" spellCheck={false} data-testid="request-input" />
         <div>
           <button type="submit" className={btn} style={primary} disabled={busy || !text.trim() || !!p.askMeaning || (exhausted && (p.practiceLeft ?? 1) === 0)} data-testid="request-send">
             {exhausted ? "Üben" : "Zu Rosa sagen"}
@@ -783,7 +784,7 @@ function WriteTask({ active, busy, act }: { active: MissionActiveView; busy: boo
         <label htmlFor="scene-revise" className="text-lg font-semibold">
           Schreib deinen Satz noch einmal:
         </label>
-        <textarea id="scene-revise" value={value} onChange={(e) => setRevision(e.target.value.slice(0, 300))} rows={2} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-revise" />
+        <textarea {...NO_TYPING_HELP} id="scene-revise" value={value} onChange={(e) => setRevision(e.target.value.slice(0, 300))} rows={2} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-revise" />
         <div className="flex flex-wrap gap-3">
           <button type="button" className={btn} style={primary} disabled={busy || !value.trim()} onClick={() => void act({ a: "revise", step: active.id, text: value })} data-testid="write-revise-send">
             Neu ins Gartenbuch
@@ -808,7 +809,7 @@ function WriteTask({ active, busy, act }: { active: MissionActiveView; busy: boo
         {w.prompt}
       </label>
       <p className="text-lg">{w.instruction}</p>
-      <textarea id="scene-write" value={text} onChange={(e) => setText(e.target.value.slice(0, 300))} rows={2} placeholder={w.placeholder ?? undefined} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-input" />
+      <textarea {...NO_TYPING_HELP} id="scene-write" value={text} onChange={(e) => setText(e.target.value.slice(0, 300))} rows={2} placeholder={w.placeholder ?? undefined} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-input" />
       <div>
         <button type="submit" className={btn} style={primary} disabled={busy || !text.trim()} data-testid="write-send">
           Ins Gartenbuch schreiben

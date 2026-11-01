@@ -19,6 +19,7 @@ import type { VoiceSlot } from "@/lib/family-voice-registry";
 import { NarrationControl, useNarration, type NarrationTelemetry } from "./narration";
 import type { InterestAnswer } from "./next-interest";
 import { GardenerPortrait, WorkshopGarden, WorkshopPictureView } from "./workshop-pictures";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 const btn = "inline-flex min-h-16 items-center justify-center gap-2 rounded-2xl px-8 text-xl font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:cursor-not-allowed disabled:opacity-50";
 const primary = { background: "#3d5a2a", color: "white" } as const;
@@ -110,7 +111,7 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
           {interest?.kind === "text" ? (
             <label className="grid gap-1 text-base">
               <span>Für Papa oder Mama: Schreibt ihre Idee mit ihren Worten auf.</span>
-              <textarea value={interest.text ?? ""} rows={2} maxLength={300} onChange={(e) => setInterest({ kind: "text", text: e.target.value })} className="w-full rounded-2xl border-2 px-4 py-3 text-lg" style={{ borderColor: "#d9c6aa" }} data-testid="adventure-own-text" />
+              <textarea {...NO_TYPING_HELP} value={interest.text ?? ""} rows={2} maxLength={300} onChange={(e) => setInterest({ kind: "text", text: e.target.value })} className="w-full rounded-2xl border-2 px-4 py-3 text-lg" style={{ borderColor: "#d9c6aa" }} data-testid="adventure-own-text" />
             </label>
           ) : null}
           <div className="flex flex-wrap gap-3">

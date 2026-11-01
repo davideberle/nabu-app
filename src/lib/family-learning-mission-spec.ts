@@ -413,6 +413,8 @@ export type MissionDef = {
    * spoken by itself, with one replay/stop control (no per-line speech buttons). Absent = the released per-line «Anhören».
    */
   narration?: { mode: "auto" };
+  /** Step 1 (S1-01): `focused` task screens for the new visits (released visits keep their screens). */
+  screen?: "focused";
   /** Where the theme comes from — a saved child choice or an explicit owner/child decision, never an invented interest. */
   theme: { basis: "continues-saved-choice" | "child-chosen" | "owner-chosen"; source: string; value: string; note: string };
   map: { start: string; places: MissionPlace[]; paths: [string, string][] };

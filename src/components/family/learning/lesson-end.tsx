@@ -26,6 +26,7 @@ import { chipButton, focusRing, primaryButton, secondaryButton } from "@/app/fam
 import { isComposing, useDeliberateFocus } from "./focus";
 import { HandsKeyboard, type HomePosition } from "./hands-keyboard";
 import { MistakeVisualView } from "./visuals";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 export type RetryPayload = { typed?: string; text?: string; response?: string; seconds: number };
 export type RetryOutcome = { ok: boolean; result?: "correct" | "incorrect" | "unscored"; remaining: number | null; closed?: boolean; refused?: boolean };
@@ -96,7 +97,7 @@ function TypedRetry({ item, fingers, home, busy, onCommit, gate, showHands }: { 
           );
         })}
       </p>
-      <input
+      <input {...NO_TYPING_HELP}
         ref={inputRef}
         value={typed}
         onChange={(e) => {
@@ -139,7 +140,7 @@ function SentenceRetry({ item, busy, onCommit, gate }: { item: Extract<RetryItem
       <p className="text-base text-primary">
         <span className="font-semibold">Setz das Leerzeichen ein:</span> <span className="text-tertiary">Versuch {item.no}</span>
       </p>
-      <textarea ref={ref} value={text} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !isComposing(e)) { e.preventDefault(); if (!busy && text.trim()) onCommit(text); } }} rows={2} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-white px-4 py-3 text-xl text-primary dark:bg-stone-900", focusRing)} data-testid="retry-sentence" aria-label="Dein Satz" />
+      <textarea {...NO_TYPING_HELP} ref={ref} value={text} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !isComposing(e)) { e.preventDefault(); if (!busy && text.trim()) onCommit(text); } }} rows={2} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-white px-4 py-3 text-xl text-primary dark:bg-stone-900", focusRing)} data-testid="retry-sentence" aria-label="Dein Satz" />
       <button type="button" disabled={busy || !text.trim()} onClick={() => onCommit(text)} className={cn(primaryButton, "self-start")} data-testid="retry-commit">
         Fertig
       </button>
@@ -197,7 +198,7 @@ function ProduceRetry({ item, busy, onCommit, gate }: { item: Extract<RetryItem,
       </p>
       <RetryCueView cue={item.cue} />
       <p className="text-2xl text-primary">{item.frame}</p>
-      <input ref={ref} value={text} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !isComposing(e)) { e.preventDefault(); if (!busy && text.trim()) onCommit(text.trim()); } }} maxLength={200} autoCapitalize="off" autoComplete="off" className={cn("min-h-16 w-full rounded-2xl border-2 border-primary bg-white px-4 text-2xl text-primary dark:bg-stone-900", focusRing)} aria-label="Antwort" data-testid="retry-input" />
+      <input {...NO_TYPING_HELP} ref={ref} value={text} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !isComposing(e)) { e.preventDefault(); if (!busy && text.trim()) onCommit(text.trim()); } }} maxLength={200} autoCapitalize="off" autoComplete="off" className={cn("min-h-16 w-full rounded-2xl border-2 border-primary bg-white px-4 text-2xl text-primary dark:bg-stone-900", focusRing)} aria-label="Antwort" data-testid="retry-input" />
       <button type="button" disabled={busy || !text.trim()} onClick={() => onCommit(text.trim())} className={cn(primaryButton, "self-start")} data-testid="retry-commit">
         Senden
       </button>

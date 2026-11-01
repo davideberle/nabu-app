@@ -37,6 +37,7 @@ import { HandsKeyboard } from "./hands-keyboard";
 import { MissionWorldChanges } from "./mission-world-changes";
 import type { WorldMarker } from "./expedition-world";
 import { useStorySpeech } from "./narration";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 // The one palette of the mission (shared with the island chips): parchment, bark, ink, sea, signal.
 const PARCHMENT = "#fff8e8";
@@ -912,7 +913,7 @@ function QuestionRow({ q, step, busy, act, first }: { q: MissionActiveView["ques
             if (!busy && value.trim()) void act({ a: "answer-question", step, question: q.id, value: value.trim() }).then((ok) => ok && setValue(""));
           }}
         >
-          <input value={value} onChange={(e) => setValue(e.target.value.replace(/[^0-9]/g, "").slice(0, 3))} inputMode="numeric" className="h-12 w-24 rounded-xl border-2 px-3 text-xl font-semibold" style={{ borderColor: BARK }} aria-label={q.prompt} data-testid={`number-${q.id}`} autoFocus={first} />
+          <input {...NO_TYPING_HELP} value={value} onChange={(e) => setValue(e.target.value.replace(/[^0-9]/g, "").slice(0, 3))} inputMode="numeric" className="h-12 w-24 rounded-xl border-2 px-3 text-xl font-semibold" style={{ borderColor: BARK }} aria-label={q.prompt} data-testid={`number-${q.id}`} autoFocus={first} />
           <button type="submit" className={btnPrimary} style={btnPrimaryStyle} disabled={busy || !value.trim()}>
             OK
           </button>
@@ -972,7 +973,7 @@ function CalcTask({ active, busy, act }: { active: MissionActiveView; busy: bool
       <div className="grid gap-2">
         {c.fields.map((f, i) => (
           <label key={f.key} className="flex flex-wrap items-center gap-3 rounded-2xl border px-3 py-2" style={{ borderColor: "#d6c3a3", background: "#fffdf6" }}>
-            <input
+            <input {...NO_TYPING_HELP}
               ref={i === 0 ? firstRef : undefined}
               value={done ? String(f.last ?? "") : values[f.key] ?? ""}
               onChange={(e) => setValues({ ...values, [f.key]: e.target.value.replace(/[^0-9]/g, "").slice(0, 4) })}
@@ -1098,7 +1099,7 @@ function ProduceTask({ active, busy, act }: { active: MissionActiveView; busy: b
               if (!busy && text.trim()) void act({ a: "practice", step: active.id, response: text }).then((ok) => ok && setText(""));
             }}
           >
-            <input ref={inputRef} value={text} onChange={(e) => setText(e.target.value.slice(0, 200))} lang={p.language} className="h-12 min-w-0 flex-1 rounded-xl border-2 px-3 text-lg" style={{ borderColor: BARK }} aria-label="Satz abschreiben" data-testid="practice-input" autoComplete="off" autoCorrect="off" spellCheck={false} />
+            <input {...NO_TYPING_HELP} ref={inputRef} value={text} onChange={(e) => setText(e.target.value.slice(0, 200))} lang={p.language} className="h-12 min-w-0 flex-1 rounded-xl border-2 px-3 text-lg" style={{ borderColor: BARK }} aria-label="Satz abschreiben" data-testid="practice-input" autoComplete="off" autoCorrect="off" spellCheck={false} />
             <button type="submit" className={btnPrimary} style={btnPrimaryStyle} disabled={busy || !text.trim()} data-testid="practice-send">
               Üben
             </button>
@@ -1119,7 +1120,7 @@ function ProduceTask({ active, busy, act }: { active: MissionActiveView; busy: b
             {p.frame.replace("___", "…")}
           </label>
           <div className="flex flex-wrap items-center gap-2">
-            <input id="mw-produce" ref={inputRef} value={text} onChange={(e) => setText(e.target.value.slice(0, 200))} lang={p.language} disabled={!!p.askMeaning} className="h-12 min-w-0 flex-1 rounded-xl border-2 px-3 text-lg" style={{ borderColor: BARK }} data-testid="produce-input" autoComplete="off" autoCorrect="off" spellCheck={false} />
+            <input {...NO_TYPING_HELP} id="mw-produce" ref={inputRef} value={text} onChange={(e) => setText(e.target.value.slice(0, 200))} lang={p.language} disabled={!!p.askMeaning} className="h-12 min-w-0 flex-1 rounded-xl border-2 px-3 text-lg" style={{ borderColor: BARK }} data-testid="produce-input" autoComplete="off" autoCorrect="off" spellCheck={false} />
             <button type="submit" className={btnPrimary} style={btnPrimaryStyle} disabled={busy || !text.trim() || !!p.askMeaning} data-testid="produce-send">
               Sagen
             </button>
@@ -1296,7 +1297,7 @@ export function TypingBlock({ block, stepId, busy, act }: { block: TypingBlockVi
           if (!busy && current.length) commitLine();
         }}
       >
-        <input
+        <input {...NO_TYPING_HELP}
           ref={inputRef}
           value={current}
           onChange={(e) => {

@@ -1929,6 +1929,10 @@ export type MissionActiveView = {
   picture?: { id: string; label: string } | null;
   /** Isabel's workshop (outcome): one short factual recap from her actual results. */
   recap?: string | null;
+  /** Step 1 (S1-10): the home task shown at the end (the parent records it later). */
+  home?: string | null;
+  /** Step 1 (S1-12): a «Weisst du noch?» warm-up task. */
+  warmup?: boolean;
 };
 
 export type DecideView = { prompt: string; rule: string; options: { id: string; label: string; grid: MissionGrid | null; picture?: string | null }[]; picked: { id: string; viable: boolean; feedback: string }[]; chosen: string | null; reflect: string | null };
@@ -1959,8 +1963,10 @@ export type SolvePartView = {
   hintPending: boolean;
   /** Isabel's workshop: the exact visible quantities of this question. */
   counters?: MissionCounters | null;
+  /** Step 1 (S1-09): the child writes the calculation (text input); the factors are never sent. */
+  calculation?: boolean;
 };
-export type SolveView = { facts: string[]; current: string | null; parts: SolvePartView[]; diagram: MissionDiagram | null; application: { of: string; kind: string } | null; total: number; grids?: MissionGrid[] };
+export type SolveView = { facts: string[]; current: string | null; parts: SolvePartView[]; diagram: MissionDiagram | null; application: { of: string; kind: string } | null; total: number; grids?: MissionGrid[]; /** Step 1 (S1-09): the ways side by side, after the named part is solved. */ methods?: { prompt: string; options: { id: string; label: string }[]; chosen: string | null } };
 export type WriteView = {
   prompt: string;
   instruction: string;
@@ -1999,6 +2005,8 @@ export type MissionView = {
   presentation?: "walk" | "scene" | "map" | "workshop";
   /** Isabel Visit 2+: the content asks for automatic narration (one replay/stop control); absent everywhere else. */
   narration?: { mode: "auto" } | null;
+  /** Step 1 (S1-01): `focused` task screens — picture, one story line, the question, the input, one button. */
+  screen?: "focused" | null;
   scene?: { art: string; alt: string } | null;
   /** Content v6 (scene): which beat of the reviewed order is on screen (1-based) and how many there are. */
   beat?: { index: number; count: number; next: string | null } | null;
@@ -2094,6 +2102,8 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     produce,
     typing: step.kind === "typing-block" ? typingBlockView(def, run, content, !run.typing && state && state.typing.alignment?.result === "match" ? planTypingBlock(previewState(state, def, content), content, def.typingBlock!, (state.feedback?.focus ?? []).filter((f) => f.kind === "typing-key" && f.status === "open").map((f) => f.key)) : null) : null,
     solve: step.solve ? solveView(def, step, r, tutorAvailable) : null,
+    ...(step.home ? { home: step.home.text } : {}),
+    ...(step.warmup ? { warmup: true } : {}),
     write: step.write ? writeView(step, r) : null,
     ...(step.decide ? { decide: decideView(step.decide, r) } : {}),
     ...(step.grid || step.fromChoice ? { grid: step.fromChoice ? chosenGrid(def, run, step.fromChoice) : step.grid ?? null } : {}),
@@ -2172,10 +2182,14 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun, tutorA
         return !!lastHint?.check && !pr.checks[lastHint.id];
       })(),
       ...(part.counters ? { counters: part.counters } : {}),
+      ...(part.calculation ? { calculation: true } : {}),
     });
   }
   const resolved = r.status !== "active";
-  return { facts: sv.facts, current, parts, diagram: resolved ? sv.diagram ?? null : null, application: sv.application ?? null, total: sv.parts.length, ...(sv.grids ? { grids: sv.grids } : {}) };
+  // Step 1 (S1-09): the ways side by side — only once the named part is solved, never before (no hint for an open part).
+  const m = sv.methods;
+  const methodsOpen = m && r.parts?.[m.after] && r.parts[m.after].status !== "open" ? { prompt: m.prompt, options: m.options, chosen: r.support.find((x) => x.kind === "method-used")?.detail ?? null } : null;
+  return { facts: sv.facts, current, parts, diagram: resolved ? sv.diagram ?? null : null, application: sv.application ?? null, total: sv.parts.length, ...(sv.grids ? { grids: sv.grids } : {}), ...(methodsOpen ? { methods: methodsOpen } : {}) };
 }
 
 function writeView(step: MissionStep, r: MissionStepRun): WriteView {
@@ -2437,6 +2451,7 @@ export function buildMissionView(state: MissionState, content: LearningContent, 
     objective: def.objective,
     presentation: def.presentation ?? "walk",
     ...(def.narration ? { narration: def.narration } : {}),
+    ...(def.screen ? { screen: def.screen } : {}),
     scene: def.scene ?? null,
     beat: def.presentation === "scene" || def.presentation === "workshop" ? { index: beatStep ? def.steps.indexOf(beatStep) + 1 : def.steps.length, count: def.steps.length, next: nextStep?.id ?? null } : null,
     theme: def.theme,

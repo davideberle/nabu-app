@@ -28,6 +28,7 @@ import { Feedback, ListenTask, RequestTask, SolveTask, Trays, type SceneTelemetr
 import { PlanGrid } from "./plan-grid";
 import { NoktButton, NoktPanel, type NoktTranscribe, type NoktTurnFn } from "./nokt-panel";
 import { NoktTalk, type NoktTalkTurnFn } from "./nokt-talk";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 const btn = "inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 text-lg font-semibold transition-colors focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none";
 const primary = { background: "#215c60", color: "white" } as const;
@@ -273,7 +274,7 @@ function WriteWithNokt({ child, view, active, busy, act, speech, nokt }: { child
         <label htmlFor="map-revise" className="text-lg font-semibold">
           Möchtest du deinen Satz noch einmal schreiben? (Schreib ihn selbst.)
         </label>
-        <textarea id="map-revise" value={value} onChange={(e) => setRevision(e.target.value.slice(0, 300))} rows={2} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-revise" />
+        <textarea {...NO_TYPING_HELP} id="map-revise" value={value} onChange={(e) => setRevision(e.target.value.slice(0, 300))} rows={2} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-revise" />
         <div className="flex flex-wrap gap-3">
           <button type="button" className={btn} style={primary} disabled={busy || !value.trim()} onClick={() => void act({ a: "revise", step: active.id, text: value })} data-testid="write-revise-send">
             Neu ins Gartenbuch
@@ -298,7 +299,7 @@ function WriteWithNokt({ child, view, active, busy, act, speech, nokt }: { child
         {w.prompt}
       </label>
       <p className="text-lg">{w.instruction}</p>
-      <textarea id="map-write" value={text} onChange={(e) => setText(e.target.value.slice(0, 300))} rows={2} placeholder={w.placeholder ?? undefined} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-input" />
+      <textarea {...NO_TYPING_HELP} id="map-write" value={text} onChange={(e) => setText(e.target.value.slice(0, 300))} rows={2} placeholder={w.placeholder ?? undefined} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-input" />
       <div>
         <button type="submit" className={btn} style={primary} disabled={busy || !text.trim()} data-testid="write-send">
           Ins Gartenbuch schreiben

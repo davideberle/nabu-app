@@ -47,6 +47,7 @@ import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import { checkChildUtterance, startPushToTalk, type RecorderControl, type RecorderHandlers } from "@/lib/family-voice";
 import { focusRing, primaryButton, secondaryButton } from "@/app/family/(shell)/learn/mission/styles";
 import { isComposing } from "./focus";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 const TRANSCRIBE_PATH = "/api/family/transcribe";
 const TUTOR_SESSION_SUFFIX = "learn";
@@ -601,7 +602,7 @@ export function NabuSidebar({ child, view, page, speech, tutorClient = null, rec
                   {mode === "reasoning" ? "Deine Erklärung" : `Frage an ${assistantName}`}
                 </label>
                 <div className="flex gap-2">
-                  <input ref={inputRef} id="nabu-input" value={question} onChange={(e) => setQuestion(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={600} placeholder={mode === "reasoning" ? "… oder schreib es hier" : "Was heisst …? Warum …?"} className={cn("min-h-14 min-w-0 flex-1 rounded-2xl border border-primary bg-primary px-4 text-lg text-primary", focusRing)} data-testid="nabu-input" autoComplete="off" />
+                  <input {...NO_TYPING_HELP} ref={inputRef} id="nabu-input" value={question} onChange={(e) => setQuestion(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={600} placeholder={mode === "reasoning" ? "… oder schreib es hier" : "Was heisst …? Warum …?"} className={cn("min-h-14 min-w-0 flex-1 rounded-2xl border border-primary bg-primary px-4 text-lg text-primary", focusRing)} data-testid="nabu-input" autoComplete="off" />
                   <button type="submit" disabled={sending || busy || !question.trim()} className={primaryButton} data-testid="nabu-send">
                     {mode === "reasoning" ? "Senden" : "Fragen"}
                   </button>

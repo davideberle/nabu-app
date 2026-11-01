@@ -8,6 +8,7 @@ import { cn } from "@/components/ui/nabu";
 import type { MissionNextAdventure } from "@/lib/family-learning-mission-spec";
 import { WorkshopPictureView } from "./workshop-pictures";
 import { PlacePicture } from "./mission-scene";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 export type InterestAnswer = { kind: "text" | "unsure" | "no-preference" | "declined" | "choice"; text?: string | null; choice?: string | null };
 
@@ -25,7 +26,7 @@ export function NextInterestQuestion({ labels, value, onChange, disabled, intro 
         {labels.prompt}
       </label>
       <p className="text-sm text-tertiary">{labels.hint}</p>
-      <textarea
+      <textarea {...NO_TYPING_HELP}
         id="next-interest-text"
         value={text}
         disabled={disabled}
@@ -87,7 +88,7 @@ export function NextAdventureQuestion({ adventure, labels, value, onChange, disa
         </button>
       </div>
       {own ? (
-        <textarea value={value?.text ?? ""} disabled={disabled} rows={2} maxLength={300} onChange={(e) => onChange({ kind: "text", text: e.target.value })} aria-label={adventure.ownIdeaLabel} className="w-full rounded-2xl border border-primary bg-primary px-4 py-3 text-lg text-primary" data-testid="adventure-own-text" autoFocus />
+        <textarea {...NO_TYPING_HELP} value={value?.text ?? ""} disabled={disabled} rows={2} maxLength={300} onChange={(e) => onChange({ kind: "text", text: e.target.value })} aria-label={adventure.ownIdeaLabel} className="w-full rounded-2xl border border-primary bg-primary px-4 py-3 text-lg text-primary" data-testid="adventure-own-text" autoFocus />
       ) : null}
       <div className="flex flex-wrap gap-2" role="group" aria-label="Oder">
         {(

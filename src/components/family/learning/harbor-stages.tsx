@@ -18,6 +18,7 @@ import { useDeliberateFocus } from "./focus";
 import { HarborIsland, type IslandDestination, type IslandPlace } from "./harbor-island";
 import { SpacingVisual } from "./visuals";
 import type { WorldMarker } from "./expedition-world";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 type Gate = () => boolean;
 const alwaysOpen: Gate = () => true;
@@ -417,13 +418,13 @@ export function LogReview({ view, busy, gate = alwaysOpen, onSubmit, onSkip, ask
             review.clarify.words.map((w) => (
               <label key={w} className="mt-2 flex flex-col gap-1 text-base text-primary">
                 Was meinst du mit „{w}“?
-                <input value={clarifications[w] ?? ""} onChange={(e) => setClarifications((c) => ({ ...c, [w]: e.target.value }))} maxLength={200} className={cn("min-h-12 rounded-2xl border-2 border-primary bg-primary px-4 text-lg text-primary", focusRing)} data-testid={`log-review-clarify-${w}`} autoComplete="off" />
+                <input {...NO_TYPING_HELP} value={clarifications[w] ?? ""} onChange={(e) => setClarifications((c) => ({ ...c, [w]: e.target.value }))} maxLength={200} className={cn("min-h-12 rounded-2xl border-2 border-primary bg-primary px-4 text-lg text-primary", focusRing)} data-testid={`log-review-clarify-${w}`} autoComplete="off" />
               </label>
             ))
           ) : (
             <label className="mt-2 flex flex-col gap-1 text-base text-primary">
               {review.clarify.question}
-              <input value={clarifications.question ?? ""} onChange={(e) => setClarifications((c) => ({ ...c, question: e.target.value }))} maxLength={200} className={cn("min-h-12 rounded-2xl border-2 border-primary bg-primary px-4 text-lg text-primary", focusRing)} data-testid="log-review-clarify-question" autoComplete="off" />
+              <input {...NO_TYPING_HELP} value={clarifications.question ?? ""} onChange={(e) => setClarifications((c) => ({ ...c, question: e.target.value }))} maxLength={200} className={cn("min-h-12 rounded-2xl border-2 border-primary bg-primary px-4 text-lg text-primary", focusRing)} data-testid="log-review-clarify-question" autoComplete="off" />
             </label>
           )}
         </div>
@@ -431,7 +432,7 @@ export function LogReview({ view, busy, gate = alwaysOpen, onSubmit, onSkip, ask
       <label className="sr-only" htmlFor="log-review-text">
         Dein Satz
       </label>
-      <textarea ref={ref} id="log-review-text" value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="log-review-input" />
+      <textarea {...NO_TYPING_HELP} ref={ref} id="log-review-text" value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="log-review-input" />
       <div className="flex flex-wrap gap-2">
         <button ref={nothing ? continueRef : undefined} type="submit" disabled={busy || !text.trim()} className={primaryButton} data-testid="log-review-save">
           {nothing ? "Weiter" : "Überarbeitung speichern"}

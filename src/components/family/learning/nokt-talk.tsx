@@ -20,6 +20,7 @@ import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import type { NoktTalkLineView, NoktTalkPurpose } from "@/lib/family-learning-nokt-talk";
 import { browserSpeech } from "@/lib/family-learning-listening";
 import { NoktMic, type NoktTranscribe } from "./nokt-panel";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 export type NoktTalkTurnOutcome = { kind: "shown"; say: string } | { kind: "app"; line: string } | { kind: "failed"; line: string } | { kind: "cancelled" };
 /** One talk turn through the server (dispatch → family runtime → reply). `text` absent = an opener. */
@@ -229,7 +230,7 @@ export function NoktTalk({
             <label htmlFor={`${testId}-input`} className="text-base font-semibold">
               {via === "voice" ? "Das habe ich verstanden — du kannst es korrigieren:" : transcribe ? "Oder schreib es hier:" : "Schreib es hier:"}
             </label>
-            <textarea id={`${testId}-input`} ref={inputRef} rows={2} value={draft} onChange={(e) => setDraft(e.target.value.slice(0, 300))} className="w-full rounded-xl border-2 px-3 py-2 text-lg" style={{ borderColor: "#8ba8a4" }} data-testid="nokt-talk-input" />
+            <textarea {...NO_TYPING_HELP} id={`${testId}-input`} ref={inputRef} rows={2} value={draft} onChange={(e) => setDraft(e.target.value.slice(0, 300))} className="w-full rounded-xl border-2 px-3 py-2 text-lg" style={{ borderColor: "#8ba8a4" }} data-testid="nokt-talk-input" />
             <button type="submit" className={btn} style={{ background: "#215c60", color: "white" }} disabled={!draft.trim() || waiting} data-testid="nokt-talk-send">
               Senden
             </button>

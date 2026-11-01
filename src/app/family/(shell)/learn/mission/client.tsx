@@ -78,6 +78,7 @@ import { applySaveOutcome, commitLine, createTypingDraft, lessonPayload, markSav
 import { nextExpectedChar } from "@/lib/family-learning-typing-metrics";
 import { createChildSpeechPlayer, type ChildSpeechPlayer } from "@/lib/family-speech";
 import { worldMarkers } from "../client";
+import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 import { chipButton, focusRing, primaryButton, secondaryButton } from "./styles";
 
 /** The exact identity a completed draft is bound to: child, content version, visit instance, erasure generation, stage, sign-in. */
@@ -1073,7 +1074,7 @@ function NameBase({ busy, gate, onSubmit }: { busy: boolean; gate: Gate; onSubmi
       <label className="sr-only" htmlFor="base-name">
         Name der Basis
       </label>
-      <input ref={ref} id="base-name" value={name} onChange={(e) => setName(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={40} autoComplete="off" className={cn("min-h-16 rounded-2xl border-2 border-primary bg-primary px-4 text-2xl text-primary", focusRing)} data-testid="base-name" />
+      <input {...NO_TYPING_HELP} ref={ref} id="base-name" value={name} onChange={(e) => setName(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={40} autoComplete="off" className={cn("min-h-16 rounded-2xl border-2 border-primary bg-primary px-4 text-2xl text-primary", focusRing)} data-testid="base-name" />
       <button type="submit" disabled={busy || !name.trim()} className={primaryButton}>
         Weiter
       </button>
@@ -1207,7 +1208,7 @@ function MathItem({ child, view, busy, gate, speech, support, onAnswer, onAnswer
   const numberInput = (props: { value: string; onChange: (v: string) => void; label: string; testId: string; ref?: React.RefObject<HTMLInputElement | null> }) => (
     <label className="flex flex-col gap-1 text-base font-medium text-primary">
       {props.label}
-      <input ref={props.ref} inputMode="numeric" pattern="[0-9]*" value={props.value} onChange={(e) => props.onChange(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} className={cn("min-h-16 w-32 rounded-2xl border-2 border-primary bg-primary px-4 text-3xl text-primary", focusRing)} aria-label={props.label} data-testid={props.testId} autoComplete="off" />
+      <input {...NO_TYPING_HELP} ref={props.ref} inputMode="numeric" pattern="[0-9]*" value={props.value} onChange={(e) => props.onChange(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} className={cn("min-h-16 w-32 rounded-2xl border-2 border-primary bg-primary px-4 text-3xl text-primary", focusRing)} aria-label={props.label} data-testid={props.testId} autoComplete="off" />
     </label>
   );
 
@@ -1489,7 +1490,7 @@ function Explain({ busy, gate, overBudget, onSubmit, onSkip }: { busy: boolean; 
     >
       <Instruction kicker="Erklären">Wie hast du das gerechnet?</Instruction>
       <p className="text-base text-tertiary">Ein Satz reicht. Laut erklären kannst du unten rechts bei Nabu.</p>
-      <textarea ref={ref} value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="explain-input" />
+      <textarea {...NO_TYPING_HELP} ref={ref} value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="explain-input" />
       <div className="flex flex-wrap gap-2">
         <button type="submit" disabled={busy || !text.trim()} className={primaryButton}>
           Speichern
@@ -1647,7 +1648,7 @@ function LanguageSegment({ child, view, busy, gate, speech, support, onStep, onC
             }}
             className="flex flex-wrap items-end gap-2"
           >
-            <input ref={inputRef} value={typed} onChange={(e) => setTyped(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={200} lang={segment.language} className={cn("min-h-16 min-w-0 flex-1 rounded-2xl border-2 border-primary bg-primary px-4 text-2xl text-primary", focusRing)} aria-label="Antwort" autoComplete="off" autoCapitalize="off" data-testid="language-input" />
+            <input {...NO_TYPING_HELP} ref={inputRef} value={typed} onChange={(e) => setTyped(e.target.value)} onKeyDown={(e) => (e.key === "Enter" && isComposing(e) ? e.preventDefault() : undefined)} maxLength={200} lang={segment.language} className={cn("min-h-16 min-w-0 flex-1 rounded-2xl border-2 border-primary bg-primary px-4 text-2xl text-primary", focusRing)} aria-label="Antwort" autoComplete="off" autoCapitalize="off" data-testid="language-input" />
             <button type="submit" disabled={busy || !typed.trim()} className={primaryButton} data-testid="language-send">
               Senden
             </button>
@@ -1771,7 +1772,7 @@ function TypingSegment({ view, busy, gate, onLesson, onLabel, onSkip }: {
                   );
                 })}
               </p>
-              <input
+              <input {...NO_TYPING_HELP}
                 ref={inputRef}
                 value={draft.current}
                 onChange={(e) => setDraft((d) => (d ? typeInto(d, e.target.value, Date.now()) : d))}
@@ -1841,7 +1842,7 @@ function TypingSegment({ view, busy, gate, onLesson, onLabel, onSkip }: {
           <p className="font-mono text-3xl text-primary" aria-label="Vorlage">
             {typing.label.target}
           </p>
-          <input
+          <input {...NO_TYPING_HELP}
             ref={labelRef}
             value={labelTyped}
             onChange={(e) => {
@@ -1897,7 +1898,7 @@ function SaveLog({ view, busy, gate, onSubmit }: { view: ChildView; busy: boolea
       {captain && view.harbor ? <KeeperBeat view={view} workplace="planning" lineId="log" /> : <StoryBeat speaker="logbook" beats={[{ text: `Basis „${view.base.name}“${view.base.location ? ` · ${view.base.location.label}` : ""}`, scene: "page" }]} compact />}
       <Instruction kicker={captain ? "Kapitänslogbuch" : "Logbuch"}>{captain ? captain.prompt : "Was ist heute passiert? Ein, zwei Sätze."}</Instruction>
       {captain ? <p className="text-base text-tertiary" data-testid="log-instruction">{captain.instruction}</p> : null}
-      <textarea ref={ref} value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="log-input" />
+      <textarea {...NO_TYPING_HELP} ref={ref} value={text} onChange={(e) => setText(e.target.value)} rows={3} maxLength={600} className={cn("rounded-2xl border-2 border-primary bg-primary px-4 py-3 text-xl text-primary", focusRing)} data-testid="log-input" />
       <div className="flex flex-wrap gap-2">
         <button type="submit" disabled={busy || !text.trim()} className={primaryButton} data-testid="log-save">
           {captain ? "Ins Logbuch eintragen" : "Seite speichern"}
