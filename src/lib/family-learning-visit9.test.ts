@@ -188,3 +188,40 @@ describe("writing (S1-13a, S1-05): the end mark alone is a revision prompt; Nokt
     throws(() => op(withNokt, { op: "mission", action: { a: "writing-tip", step: "P11-JOURNAL" } }, env), (e: unknown) => e instanceof LearningOpError);
   });
 });
+
+import { meaningfulSuccess, wishLine } from "./family-learning-mission.ts";
+import { noktNoReplyLine, visitReportEn, PARENT_HELPED_NOTE } from "./family-learning-parent-report-en.ts";
+
+describe("closing summary (S1-13d) and the English parent report (S1-13e, S1-06, S1-13c)", () => {
+  const done = (outcome: "independent" | "supported") => ({ status: "done" as const, openedAt: "x", finishedAt: "x", attempts: [], support: [], plays: 0, questions: {}, phase: "answer" as const, outcome });
+  it("the most meaningful success: the harder version beats the newest normal station and a warm-up", () => {
+    const r = { steps: { "P2-PIPES": done("independent"), "P5-BEDS": done("independent"), "P5H-BEDS-BIG": done("independent") } } as unknown as MissionRun;
+    ok(/schwierigere Aufgabe/.test(meaningfulSuccess(pipe, r)!));
+    const r2 = { steps: { "P2-PIPES": done("independent"), "P5-BEDS": done("supported"), "P6-EDGE": done("independent") } } as unknown as MissionRun;
+    ok(meaningfulSuccess(pipe, r2)!.startsWith("Rund herum und innen"));
+    const r3 = { steps: { "P2-PIPES": done("independent") } } as unknown as MissionRun;
+    ok(/noch gewusst/.test(meaningfulSuccess(pipe, r3)!));
+  });
+  it("the next-visit line names the wish actually chosen — never «dein Wunsch zählt»", () => {
+    const s = eightVisitsDone();
+    s.interests = [...(s.interests ?? []), { id: "w", visit: "v10", source: "closing", kind: "choice", text: "Einen kleinen Teich anlegen", choice: "pond", at: "2026-11-08T10:00:00.000Z" }];
+    equal(wishLine(s, "v10"), "Nächstes Mal: «Einen kleinen Teich anlegen» — das hast du dir gewünscht.");
+    ok(!/Wunsch zählt/.test(wishLine(eightVisitsDone(), "v10")));
+  });
+  it("«Nokt did not respond 3× (unreachable 3)», versions, warm-up timing and «I helped here» from the records", () => {
+    const env = makeEnv(Date.UTC(2026, 10, 8, 9, 0, 0));
+    let s = story(started(env), env);
+    s = openAt(s, "P2-PIPES", env);
+    const out = op(s, { op: "mission", action: { a: "answer-part", step: "P2-PIPES", part: "pieces", value: "5" } }, env);
+    s = out.state;
+    (s as unknown as { noktTalks: unknown }).noktTalks = { welcomes: [], sessions: (["welcome", "writing", "debrief"] as const).map((purpose, i) => ({ id: `s${i}`, purpose, visit: "v10", visitStartedAt: null, page: `p${i}`, startedAt: "x", closedAt: null, turns: [{ turnId: `t${i}`, role: "nokt", text: "", origin: "missing", shown: false, reason: "no-reply-unreachable", phase: "x", provenance: null, at: "x" }], dispatches: [] })) };
+    const rows = out.records.attempts.map((a, i) => ({ ...a, id: `a${i}`, createdAt: a.at, parentCorrection: i === 0 ? { evidence: "supported", note: PARENT_HELPED_NOTE, by: "parent@example.invalid", at: "x" } : null })) as never;
+    const rep = visitReportEn({ state: s, attempts: rows, supports: [] }, v8, "v10", "Visit 9")!;
+    equal(noktNoReplyLine(rep.nokt), "Nokt did not respond 3× (unreachable 3)");
+    const t = rep.tasks.find((x) => x.step === "P2-PIPES")!;
+    equal(t.warmup!.counts, "delayed retention");
+    equal(t.attempts[0].result, "right first time");
+    equal(t.attempts[0].parentHelped, true);
+    ok(rep.homeTask && /Massband/.test(rep.homeTask));
+  });
+});

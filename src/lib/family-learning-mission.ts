@@ -2529,19 +2529,44 @@ export function planningInput(state: MissionState, content: LearningContent) {
 
 export type { NextInterestDef };
 
+/**
+ * Step 1 (S1-13d): the most meaningful success of a focused visit, from the child's own first-try records (no recorded help):
+ * a harder version > the newest normal station > reading a phrase/word > a warm-up remembered. Null when none ran that way.
+ */
+export function meaningfulSuccess(def: MissionDef, run: MissionRun): string | null {
+  const first = (s: MissionStep) => run.steps[s.id]?.outcome === "independent" && run.steps[s.id]?.status === "done";
+  const harder = def.steps.find((s) => s.adaptive?.level === "harder" && first(s));
+  if (harder) return `${harder.title}: Die schwierigere Aufgabe hast du beim ersten Versuch gelöst.`;
+  const normal = [...def.steps].reverse().find((s) => s.adaptive?.level === "normal" && s.kind === "solve" && first(s));
+  if (normal) return `${normal.title}: beim ersten Versuch richtig.`;
+  const read = [...def.steps].reverse().find((s) => s.kind === "read" && first(s));
+  if (read && read.text) return `Du hast «${read.text.body}» beim ersten Versuch gelesen.`;
+  const warm = def.steps.find((s) => s.warmup && first(s));
+  if (warm) return `Weisst du noch? ${warm.title.replace(/^Weisst du noch\?\s*/, "")}: Das hast du noch gewusst.`;
+  return null;
+}
+
+/** Step 1 (S1-13d): the next-visit line names the wish the child actually chose at this visit's closing — never a generic claim. */
+export function wishLine(state: MissionState, visit: VisitId): string {
+  const wish = [...(state.interests ?? [])].reverse().find((i) => i.visit === visit && (i.kind === "choice" || i.kind === "text") && i.text);
+  return wish ? `Nächstes Mal: «${wish.text}» — das hast du dir gewünscht.` : "Nächstes Mal geht es mit einer neuen Aufgabe weiter.";
+}
+
 /** Child summary lines of a mission visit: one evidence-backed success, one practiced line, the next step, the artifact. */
 export function missionVisitSummary(state: MissionState, content: LearningContent, visit: VisitId) {
   const rep = missionReport(state, content, visit);
   if (!rep) return null;
   const { def, run } = rep;
+  const focused = def.screen === "focused";
   if (def.presentation === "map") {
     // Content v7: the same short shape — the visible result (his own plan), one evidenced success, one next step.
     const ending = mapEnding(def, run);
     const outcome = visibleWorld(def, run, rep.statuses).pop();
+    const success = focused ? meaningfulSuccess(def, run) ?? ending.success : ending.success;
     return {
-      success: ending.success ? { text: ending.success, basis: `${def.id} records` } : null,
+      success: success ? { text: success, basis: `${def.id} records` } : null,
       practiced: null,
-      next: { branch: (ending.open ? "supported" : "success") as "success" | "supported", text: ending.next, basis: `${def.id} open items` },
+      next: { branch: (ending.open ? "supported" : "success") as "success" | "supported", text: focused && !ending.open ? wishLine(state, visit) : ending.next, basis: `${def.id} open items` },
       artifact: run.finishedAt ? { kind: "mission" as const, text: outcome ? `${outcome.label}.` : `${def.title}: geschafft.` } : null,
     };
   }
@@ -2551,10 +2576,11 @@ export function missionVisitSummary(state: MissionState, content: LearningConten
     // right on the first try. Her own choice of what to make is a preference, never scored and never a success line.
     const ending = def.narration ? narratedWorkshopEnding(def, run) : workshopEnding(def, run);
     const outcome = visibleWorld(def, run, rep.statuses).pop();
+    const success = focused ? meaningfulSuccess(def, run) ?? ending.success : ending.success;
     return {
-      success: ending.success ? { text: ending.success, basis: `${def.id} records (first try, no recorded in-app help; preferences never scored)` } : null,
+      success: success ? { text: success, basis: `${def.id} records (first try, no recorded in-app help; preferences never scored)` } : null,
       practiced: null,
-      next: { branch: (ending.next.startsWith("Gleich") ? "success" : "supported") as "success" | "supported", text: ending.next.startsWith("Gleich") ? "Nächstes Mal: dein Wunsch zählt." : ending.next, basis: `${def.id} open items` },
+      next: { branch: (ending.next.startsWith("Gleich") ? "success" : "supported") as "success" | "supported", text: ending.next.startsWith("Gleich") ? (focused ? wishLine(state, visit) : "Nächstes Mal: dein Wunsch zählt.") : ending.next, basis: `${def.id} open items` },
       artifact: run.finishedAt ? { kind: "mission" as const, text: outcome ? `${outcome.label}${/[.!?]$/.test(outcome.label) ? "" : "."}` : `${def.title}: geschafft.` } : null,
     };
   }

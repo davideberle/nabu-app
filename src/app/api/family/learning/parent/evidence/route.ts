@@ -8,6 +8,7 @@ import { delayedCheckInfo, summariseTelemetry, visitLabel, visitOrdinal } from "
 import type { VocabularyInventory } from "@/lib/family-learning-vocabulary";
 import type { VisitId } from "@/lib/family-learning-content";
 import { missionEvidence, planningInput } from "@/lib/family-learning-mission";
+import { visitReportEn } from "@/lib/family-learning-parent-report-en";
 import { noktModeFromEnv } from "@/lib/family-learning-nokt";
 import { noktTalkEvidence } from "@/lib/family-learning-nokt-talk";
 
@@ -81,5 +82,9 @@ export async function GET(request: Request) {
   // Isabel Visit 2: only visits she has started can have a real-world task to observe (Visit 1 is always listed, as released).
   const started = new Set((bundle.state?.visits ?? []).map((v) => v.id));
   const craftTasks = prepared && content ? (content.missions ?? []).filter((m) => m.visit === "v1" || started.has(m.visit as never)).flatMap((m) => m.steps.filter((st) => st.kind === "craft" && st.craft).map((st) => ({ visit: m.visit, step: st.id, title: st.title, tasks: st.craft!.tasks.map((t) => ({ id: t.id, text: t.text })) }))) : [];
-  return NextResponse.json({ ...bundle, parentObservations, craftTasks, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env), noktTalks }, { headers: NO_STORE });
+  // Step 1 (S1-13e, S1-06, S1-13c): the English visit report of every started mission visit, newest first (derived, never stored).
+  const reportEn = prepared && content && bundle.state
+    ? [...bundle.state.visits].reverse().map((v) => visitReportEn(bundle, content!, v.id, `Visit ${visitOrdinal(bundle.state!, v.id) ?? "?"}`)).filter((r): r is NonNullable<typeof r> => !!r)
+    : [];
+  return NextResponse.json({ ...bundle, parentObservations, craftTasks, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env), noktTalks, reportEn }, { headers: NO_STORE });
 }

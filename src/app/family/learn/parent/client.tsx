@@ -43,6 +43,7 @@ import type { DelayedCheckInfo, ParentReview } from "@/lib/family-learning-summa
 import { createSettingsDraft, editSettingsDraft, reconcileSettingsDraft, settingsSaveBody, type SettingsDraft, type SettingsSource } from "@/lib/family-learning-parent-draft";
 import { beginRequest, clearEvidence, createEvidenceStore, describeTypingMetrics, invalidateAuthorization, isCurrentEpoch, receiveEvidence, renderableEvidence, selectChild, type EvidenceStore } from "@/lib/family-learning-parent-evidence";
 import { NarrationAudition } from "@/components/family/learning/narration-audition";
+import { noktNoReplyLine, PARENT_HELPED_NOTE, type VisitReportEn } from "@/lib/family-learning-parent-report-en";
 
 const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
 const primaryButton = cn("inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-stone-900 px-5 text-base font-semibold text-white disabled:opacity-50 dark:bg-stone-100 dark:text-stone-900", focusRing);
@@ -58,7 +59,7 @@ type PlanningInput = {
   typing: { planned: number; attempted: number; activeSeconds: number; idleSeconds: number; wallSeconds: number | null; accuracy: number | null; paceCps: number; paceBasis: string } | null;
   note: string;
 };
-type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" | "subscription"; noktTalks?: ReturnType<typeof noktTalkEvidence>; parentObservations?: ParentObservation[]; craftTasks?: CraftTasks[] };
+type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" | "subscription"; noktTalks?: ReturnType<typeof noktTalkEvidence>; parentObservations?: ParentObservation[]; craftTasks?: CraftTasks[]; reportEn?: VisitReportEn[] };
 type ParentObservation = { id: string; visitId: string; taskId: string | null; at: string; step?: string; task?: string; status?: string; note?: string | null };
 type CraftTasks = { visit: string; step: string; title: string; tasks: { id: string; text: string }[] };
 
@@ -306,6 +307,7 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
 
   return (
     <section className="mt-6 space-y-6">
+      {(evidence.reportEn ?? []).length ? <VisitReportsEn reports={evidence.reportEn!.slice(0, 2)} child={child} ops={ops} /> : null}
       {tab === "math" ? (
         <>
           <NextStep evidence={evidence} />
@@ -352,6 +354,96 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
         </p>
       ) : null}
     </section>
+  );
+}
+
+/**
+ * Step 1 (S1-13e, S1-06, S1-13c): the latest visits in English — each task with its version, warm-up timing, every attempt
+ * and the help before it, «Nokt did not respond N×» and the home task. «I helped here» marks an attempt as supported by the
+ * parent (a correction beside the record, never a rewrite). The German sections below are the earlier details.
+ */
+function VisitReportsEn({ reports, child, ops }: { reports: VisitReportEn[]; child: ChildId; ops: ParentOps }) {
+  return (
+    <section className="rounded-3xl border border-primary bg-primary p-5" lang="en" data-testid="report-en">
+      <h2 className="text-xl font-semibold text-primary">Latest visits</h2>
+      <p className="mt-1 text-sm text-tertiary">From the child&apos;s own records. Estimates from a few tasks, not test scores. Earlier details (German) follow below.</p>
+      {reports.map((r) => (
+        <article key={r.visit} className="mt-4 rounded-2xl bg-secondary p-4" data-testid={`report-en-${r.visit}`}>
+          <h3 className="text-lg font-semibold text-primary">
+            {r.label} · {r.finishedAt ? `finished ${fmt(r.finishedAt)}` : r.startedAt ? `started ${fmt(r.startedAt)}` : "not started"}
+          </h3>
+          {noktNoReplyLine(r.nokt) ? (
+            <p className="mt-2 rounded-xl px-3 py-2 text-base font-semibold" style={{ background: "#fdecea", color: "#7a1f1a" }} data-testid="report-en-nokt">
+              {noktNoReplyLine(r.nokt)}
+            </p>
+          ) : r.nokt.replies ? (
+            <p className="mt-2 text-sm text-tertiary">Nokt answered {r.nokt.replies}×.</p>
+          ) : null}
+          {r.notes.map((n) => (
+            <p key={n} className="mt-2 text-sm text-primary">{n}</p>
+          ))}
+          <ul className="mt-3 space-y-2">
+            {r.tasks.map((t) => (
+              <li key={t.step} className="rounded-xl border border-primary bg-primary p-3" data-testid={`report-en-task-${t.step}`}>
+                <p className="text-base font-semibold text-primary">
+                  {t.title}
+                  {t.version ? <span className="ml-2 rounded-full bg-secondary px-2 text-xs font-normal">{t.version} version</span> : null}
+                  {t.warmup ? <span className="ml-2 rounded-full bg-secondary px-2 text-xs font-normal">warm-up · {t.warmup.daysSinceTeaching ?? "?"} days since teaching · {t.warmup.counts}</span> : null}
+                </p>
+                {t.attempts.length ? (
+                  <ul className="mt-1 space-y-1">
+                    {t.attempts.map((a) => (
+                      <li key={a.id} className="flex flex-wrap items-center gap-2 text-sm text-primary">
+                        <span>{a.part ? `${a.part}: ` : ""}«{a.answer}» — {a.result}{a.help.length ? ` (help before: ${a.help.join(", ")})` : ""}</span>
+                        {a.parentHelped ? (
+                          <span className="rounded-full px-2 text-xs font-semibold" style={{ background: "#fff3cd" }} data-testid="report-en-helped">parent helped</span>
+                        ) : a.result !== "not scored" && a.result !== "revision" ? (
+                          <HelpedHereButton attemptId={a.id} child={child} ops={ops} />
+                        ) : null}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-1 text-sm text-tertiary">No answer recorded.</p>
+                )}
+                {t.wayUsed ? <p className="mt-1 text-sm text-primary">Way he said he used: {t.wayUsed}</p> : null}
+              </li>
+            ))}
+          </ul>
+          {r.homeTask ? <p className="mt-3 text-sm text-primary">Home task shown at the end: «{r.homeTask}» — record it when it happens (photo to Nabu).</p> : null}
+        </article>
+      ))}
+    </section>
+  );
+}
+
+function HelpedHereButton({ attemptId, child, ops }: { attemptId: string; child: ChildId; ops: ParentOps }) {
+  const [state, setState] = useState<"idle" | "busy" | "error">("idle");
+  return (
+    <button
+      type="button"
+      className={cn("min-h-8 rounded-full border border-primary px-3 text-xs font-semibold text-primary", focusRing)}
+      disabled={state === "busy"}
+      data-testid="report-en-helped-here"
+      onClick={async () => {
+        setState("busy");
+        const ticket = ops.begin();
+        const result = await api("/api/family/learning/parent/corrections", { method: "POST", body: JSON.stringify({ child, attemptId, evidence: "supported", note: PARENT_HELPED_NOTE }) });
+        if (!ticket.current()) return;
+        if (!result.ok) {
+          if (result.status === 401 || result.status === 403) {
+            ops.onLocked();
+            return;
+          }
+          setState("error");
+          return;
+        }
+        setState("idle");
+        ops.onChanged();
+      }}
+    >
+      {state === "error" ? "Not saved — try again" : "I helped here"}
+    </button>
   );
 }
 
