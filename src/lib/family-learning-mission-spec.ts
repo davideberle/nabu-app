@@ -146,6 +146,14 @@ export type MissionPart = {
   reflect?: { prompt: string };
   /** Isabel's workshop: the exact visible quantities of this question (supported visual arithmetic, counts from the data). */
   counters?: MissionCounters | null;
+  /**
+   * Step 1 (S1-09): the child writes the CALCULATION (e.g. «5 × 6»), not only the result. `answer` is the product; the written
+   * calculation is kept verbatim as evidence. Accepted: the two factors in either order with ×, x, *, · or «mal», and an
+   * optional «= result» that must then be right.
+   */
+  calculation?: { factors: [number, number] };
+  /** Step 1 (S1-15): a comparison of two shown numbers (e.g. 23 or 32) — not a fresh tens retrieval of that quantity. */
+  compare?: boolean;
 };
 
 /**
@@ -175,6 +183,11 @@ export type MissionSolve = {
   grids?: MissionGrid[];
   /** A fresh same-day application of an earlier problem: never delayed retention. */
   application?: { of: string; kind: "same-day-application" };
+  /**
+   * Step 1 (S1-09): after the named part is solved, other ways are shown side by side and the child says which one he used.
+   * Unscored (a self-report, recorded as support), never a hint for an open part.
+   */
+  methods?: { after: string; prompt: string; options: { id: string; label: string }[] };
 };
 
 /** Content v6: one own German sentence with the existing mechanical spacing review (D-W1). */
@@ -192,6 +205,10 @@ export type MissionWrite = {
    */
   mechanics?: ("spacing" | "capital-start" | "end-mark")[];
   nokt?: boolean;
+  /** Step 1 (S1-05): Nokt gives the writing feedback; the app's mechanical tip is held and shown only when Nokt fails. */
+  noktFirst?: boolean;
+  /** Step 1 (S1-14): how many own sentences this step asks for (default 1). Each is a separate original; one revision is kept. */
+  sentences?: number;
   /** Reviewed lines of the app's own correction for each mechanical rule (child-facing). */
   mechanicsLines?: Partial<Record<"capital-start" | "end-mark", string>>;
 };
@@ -277,8 +294,27 @@ export type MissionStep = {
   done: MissionLine[];
   /** Content v6: outcome-specific closing lines (fallback: neutral engine lines for non-success outcomes). */
   doneBy?: MissionDoneBy;
-  /** Conditional retrieval: the step is offered only when the named step did NOT end independent (else `not-needed`). */
-  when?: { step: string; unlessEvidence: "independent" };
+  /**
+   * Conditional retrieval: the step is offered only when the named step did NOT end independent (else `not-needed`).
+   * Step 1 (S1-11): `ifEvidence: "independent"` is the opposite — offered only when the named step ended right first time
+   * without help (the harder version); otherwise `not-needed`.
+   */
+  when?: { step: string; unlessEvidence: "independent" } | { step: string; ifEvidence: "independent" };
+  /**
+   * Step 1 (S1-11): this step is one authored version of a main station — `normal` (always offered), `harder` (offered after
+   * the normal one was right first time unaided), `easier` (after a miss and the teaching), or `normal-again` (a fresh normal
+   * task after the easier one). All numbers and answers are authored and validated in advance; at most two extra tasks per
+   * skill and visit (validator).
+   */
+  adaptive?: { skill: string; level: "normal" | "harder" | "easier" | "normal-again" };
+  /**
+   * Step 1 (S1-12): a «Weisst du noch?» warm-up task on an earlier skill. The attempt records the seconds since that skill was
+   * last taught (the latest finish of the named steps in this child's own record); ≥ 6 days = delayed retention, shorter =
+   * short check. Never a hint: it is a fresh task, not a repeat of the taught one.
+   */
+  warmup?: { skill: string; taughtIn: { mission: string; step: string }[] };
+  /** Step 1 (S1-10): a real-world task for home — shown once at the end; the parent records it later (photo via Nabu). */
+  home?: { text: string; parentNote: string };
   /** Read: the written text (shown, never read aloud). Listen: the audio script (played, never shown before the support is recorded). */
   text?: { language: MissionLanguage; body: string; de?: string | null };
   questions?: MissionQuestion[];
@@ -438,6 +474,30 @@ function normalize(value: string): string {
   return value.toLowerCase().normalize("NFC").replace(/[.,!?;:¡¿"'’]/g, " ").replace(/\s+/g, " ").trim();
 }
 
+/** Step 1 (S1-11): at most two extra tasks per skill and visit; one normal version per skill; every version anchors on it. */
+export const ADAPTIVE_MAX_EXTRA_PER_SKILL = 2;
+export function checkAdaptiveBudget(steps: unknown[], label: string, problems: string[]): void {
+  const bySkill = new Map<string, { id: string; level: string; on: string | null }[]>();
+  for (const s of steps) {
+    if (!isRecord(s) || !isRecord(s.adaptive)) continue;
+    const skill = String(s.adaptive.skill);
+    const w = isRecord(s.when) ? String(s.when.step) : null;
+    (bySkill.get(skill) ?? bySkill.set(skill, []).get(skill)!).push({ id: String(s.id), level: String(s.adaptive.level), on: w });
+  }
+  for (const [skill, list] of bySkill) {
+    const normals = list.filter((x) => x.level === "normal");
+    if (normals.length !== 1) {
+      problems.push(`${label}: skill ${skill} needs exactly one normal version`);
+      continue;
+    }
+    const anchor = normals[0].id;
+    for (const x of list) if (x.level !== "normal" && x.on !== anchor) problems.push(`${label}/${x.id}: an adaptive version must depend on the normal one (${anchor})`);
+    const harder = list.filter((x) => x.level === "harder").length;
+    const support = list.filter((x) => x.level === "easier" || x.level === "normal-again").length;
+    if (harder > ADAPTIVE_MAX_EXTRA_PER_SKILL || support > ADAPTIVE_MAX_EXTRA_PER_SKILL) problems.push(`${label}: skill ${skill} has more than ${ADAPTIVE_MAX_EXTRA_PER_SKILL} extra tasks on one path`);
+  }
+}
+
 /** Validates the reviewed mission documents of a content file; every problem is reported, nothing is repaired. */
 export function checkMissions(raw: unknown, problems: string[], contentVersion = 5): void {
   if (!Array.isArray(raw)) {
@@ -502,6 +562,7 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
   if (extra.length) problems.push(`${label}: unexpected steps ${extra.join(", ")}`);
   const dupes = stepIds.filter((id, i) => stepIds.indexOf(id) !== i);
   if (dupes.length) problems.push(`${label}: duplicate steps ${dupes.join(", ")}`);
+  checkAdaptiveBudget(steps, label, problems);
   let calcs = 0;
   let choices = 0;
   let typingBlocks = 0;
@@ -537,9 +598,22 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
     if (s.shipments !== undefined && (!Array.isArray(s.shipments) || s.shipments.some((x) => !isRecord(x) || !str(x.label) || !checkDiagram(x.diagram)))) problems.push(`${sl}: malformed shipments`);
     if (s.when !== undefined) {
       const w = isRecord(s.when) ? s.when : null;
-      if (!w || !stepIds.includes(String(w.step)) || w.unlessEvidence !== "independent") problems.push(`${sl}: when must name a step and unlessEvidence "independent"`);
+      if (!w || !stepIds.includes(String(w.step)) || !(w.unlessEvidence === "independent" || w.ifEvidence === "independent") || (w.unlessEvidence !== undefined && w.ifEvidence !== undefined)) problems.push(`${sl}: when must name a step and unlessEvidence or ifEvidence "independent"`);
       if (s.required) problems.push(`${sl}: a conditional retrieval step is required only when offered — mark it required: false`);
     }
+    if (s.adaptive !== undefined) {
+      const a = isRecord(s.adaptive) ? s.adaptive : null;
+      const w = isRecord(s.when) ? s.when : null;
+      if (!a || !str(a.skill) || !["normal", "harder", "easier", "normal-again"].includes(String(a.level))) problems.push(`${sl}: adaptive needs a skill and a level`);
+      else if (a.level === "normal" && w) problems.push(`${sl}: the normal version is always offered (no when)`);
+      else if (a.level === "harder" && !(w && w.ifEvidence === "independent")) problems.push(`${sl}: the harder version follows a right-first-time normal one (when.ifEvidence)`);
+      else if ((a.level === "easier" || a.level === "normal-again") && !(w && w.unlessEvidence === "independent")) problems.push(`${sl}: the easier / normal-again version follows a normal one that was not right first time (when.unlessEvidence)`);
+    }
+    if (s.warmup !== undefined) {
+      const wu = isRecord(s.warmup) ? s.warmup : null;
+      if (!wu || !str(wu.skill) || !Array.isArray(wu.taughtIn) || !wu.taughtIn.length || wu.taughtIn.some((t) => !isRecord(t) || !str(t.mission) || !str(t.step))) problems.push(`${sl}: warmup needs a skill and the steps where it was taught`);
+    }
+    if (s.home !== undefined && !(isRecord(s.home) && str(s.home.text) && str(s.home.parentNote))) problems.push(`${sl}: home needs its text and a parent note`);
     const questions = Array.isArray(s.questions) ? s.questions : [];
     switch (s.kind) {
       case "read":
@@ -846,6 +920,19 @@ function checkSolve(raw: unknown, sl: string, stepIds: string[], problems: strin
     }
     if (levels.some((l, i) => l !== i + 1)) problems.push(`${pl}: hint levels must be 1, 2, 3 … in order`);
     if (p.reflect !== undefined && (!isRecord(p.reflect) || !str(p.reflect.prompt))) problems.push(`${pl}: reflect needs its prompt`);
+  }
+  // Step 1 (S1-09): written calculations and the unscored «which way did you use?» question.
+  for (const p of sv.parts as unknown[]) {
+    if (!isRecord(p) || p.calculation === undefined) continue;
+    const f = isRecord(p.calculation) && Array.isArray(p.calculation.factors) ? (p.calculation.factors as unknown[]) : [];
+    if (f.length !== 2 || f.some((x) => !Number.isInteger(x) || (x as number) < 1) || (f[0] as number) * (f[1] as number) !== p.answer) problems.push(`${sl}/${String(p.id)}: a calculation part names two factors whose product is the answer`);
+  }
+  if (sv.methods !== undefined) {
+    const m = isRecord(sv.methods) ? sv.methods : null;
+    const partIds = (sv.parts as unknown[]).map((p) => (isRecord(p) ? String(p.id) : "?"));
+    const opts = Array.isArray(m?.options) ? (m!.options as unknown[]) : [];
+    if (m && partIds.indexOf(String(m.after)) === partIds.length - 1) problems.push(`${sl}: the «which way» question comes after a part that is not the last (the problem stays open for it)`);
+    if (!m || !partIds.includes(String(m.after)) || !str(m.prompt) || opts.length < 2 || opts.some((o) => !isRecord(o) || !str(o.id) || !str(o.label))) problems.push(`${sl}: methods name a part of this problem, a prompt and at least two ways`);
   }
 }
 

@@ -138,6 +138,13 @@ export type MissionWriteRun = {
   mechanics?: ("spacing" | "capital-start" | "end-mark")[];
   revision: { text: string; at: string; outcome: string } | null;
   kept: boolean;
+  /**
+   * Step 1 (S1-05, content with `write.noktFirst`): the app's own mechanical tip, held back while Nokt is expected to react.
+   * It becomes `correction` (recorded help) only when Nokt's reaction did not arrive — never both helpers for one sentence.
+   */
+  pendingCorrection?: { index: number; marked: string; rule?: "spacing" | "capital-start" | "end-mark"; line?: string } | null;
+  /** Step 1 (S1-13a): the only finding was the missing end mark — a revision prompt, never «incorrect». */
+  endMarkOnly?: boolean;
 };
 
 export type MissionStepRun = {
@@ -343,6 +350,9 @@ export type MissionAction =
   /** Content v6: one own sentence; `revise` = the one revision after the correction, or keep (`text: null`). */
   | { a: "write"; step: string; text: string }
   | { a: "revise"; step: string; text: string | null }
+  | { a: "writing-tip"; step: string }
+  /** Step 1 (S1-09): which of the shown ways the child used (unscored self-report). */
+  | { a: "method"; step: string; choice: string }
   /** Content v6: a tutor entry point (opening Nokt is never help; the tutor's availability is the server's). */
   | { a: "tutor-open"; step: string; entry: "manual" | "offer" | "planned"; part?: string | null }
   | { a: "tutor-offer"; step: string; part: string; response: "dismissed" | "accepted" }
@@ -370,7 +380,31 @@ export type MissionEnv = {
    * routes set. Earlier missions keep their exact behaviour.
    */
   noktEnabled?: boolean;
+  /** Step 1 (S1-12): per warm-up step, when its skill was last taught in this child's own record (filled by the engine). */
+  warmupTaughtAt?: Record<string, string | null>;
 };
+
+/** Step 1 (S1-12): a fresh task ≥ 6 days after the teaching counts as delayed retention; shorter is a short check. */
+export const DELAYED_RETENTION_DAYS = 6;
+export function retentionClass(secondsSinceTeaching: number | null): "delayed-retention" | "short-check" | "no-teaching-record" {
+  if (secondsSinceTeaching === null) return "no-teaching-record";
+  return secondsSinceTeaching >= DELAYED_RETENTION_DAYS * 86_400 ? "delayed-retention" : "short-check";
+}
+
+/** Step 1 (S1-12): the latest finish of the steps that taught each warm-up skill, from this child's own mission runs only. */
+export function warmupAnchors(state: MissionState, def: MissionDef): Record<string, string | null> {
+  const out: Record<string, string | null> = {};
+  for (const step of def.steps) {
+    if (!step.warmup) continue;
+    let latest: string | null = null;
+    for (const t of step.warmup.taughtIn) {
+      const at = state.missions?.[t.mission]?.steps?.[t.step]?.finishedAt ?? null;
+      if (at && (!latest || at > latest)) latest = at;
+    }
+    out[step.id] = latest;
+  }
+  return out;
+}
 
 /** Content v7: whether Nokt may be planned into this mission's flow (offer, reflection, writing reaction). */
 function noktPlanned(def: MissionDef, env: MissionEnv): boolean {
@@ -478,6 +512,13 @@ export function stepStatuses(def: MissionDef, run: MissionRun | null): Record<st
       const ref = resolve(step.when.step, seen);
       const refRun = run?.steps[step.when.step];
       if (!RESOLVED.includes(ref)) return (out[id] = "locked");
+      // Step 1 (S1-11): the harder version only after the normal one was right first time without help.
+      if ("ifEvidence" in step.when) {
+        if (refRun?.outcome !== "independent") return (out[id] = "not-needed");
+        const ready = step.requires.every((req) => RESOLVED.includes(resolve(req, seen)));
+        if (r?.status === "active") return (out[id] = ready ? "active" : "locked");
+        return (out[id] = ready ? "available" : "locked");
+      }
       if (refRun?.outcome === "independent") return (out[id] = "not-needed");
       // Isabel's workshop: an easier fallback after a fresh check is not needed when the fresh check itself was not needed.
       if (ref === "not-needed" && def.presentation === "workshop") return (out[id] = "not-needed");
@@ -749,11 +790,19 @@ function attemptRow(records: Records, env: MissionEnv, def: MissionDef, step: Mi
     responseLanguage: step.produce?.language ?? "de",
     modality: a.modality,
     uncertainty: a.analysis?.kind === "ambiguous" ? "ambiguous-pending-meaning" : a.analysis?.kind === "unclear" ? "unclear" : null,
-    teachingMove: null,
-    teachingReason: null,
-    secondsSinceTeaching: null,
+    // Step 1 (S1-12): a warm-up attempt carries the time since its skill was taught and the retention class it supports.
+    teachingMove: step.warmup ? "warmup" : null,
+    teachingReason: step.warmup ? `${step.warmup.skill}:${retentionClass(warmupSeconds(env, step, a.at))}` : null,
+    secondsSinceTeaching: step.warmup ? warmupSeconds(env, step, a.at) : null,
     at: a.at,
   });
+}
+
+function warmupSeconds(env: MissionEnv, step: MissionStep, atIso: string): number | null {
+  const taught = env.warmupTaughtAt?.[step.id] ?? null;
+  if (!taught) return null;
+  const s = Math.round((Date.parse(atIso) - Date.parse(taught)) / 1000);
+  return Number.isFinite(s) && s >= 0 ? s : null;
 }
 
 function requireActive(run: MissionRun, def: MissionDef, stepId: string): { step: MissionStep; r: MissionStepRun } {
@@ -783,6 +832,23 @@ function emptyPartRun(r: MissionStepRun, step: MissionStep, index: number): Miss
   const earlier = (step.solve?.parts ?? []).slice(0, index).map((x) => r.parts?.[x.id]).filter((x): x is MissionPartRun => !!x);
   const inherited = [...new Set(earlier.flatMap((x) => [...x.hints.map((h) => `earlier-hint:${h.id}`), ...(x.phase === "taught" ? ["earlier-teaching"] : [])]))];
   return { status: "open", evidence: null, phase: "answer", misses: 0, hints: [], checks: {}, exposed: [], practiceFails: 0, reflection: null, offer: null, inheritedSupport: inherited };
+}
+
+/**
+ * Step 1 (S1-09): «5 × 6», «6x5», «5 * 6», «5 · 6», «5 mal 6», optionally «= 30». Returns the product when the two factors are the
+ * reviewed ones (either order) and an optional result is right; −1 when it is a calculation but not the right one (a wrong
+ * attempt, recorded as written). Anything that is not a calculation is not an attempt.
+ */
+export function parseCalculation(value: unknown, factors: [number, number]): number {
+  const raw = String(value ?? "").trim().toLowerCase().replace(/\s*mal\s*/g, "x").replace(/[×*·⋅∙]/g, "x").replace(/\s+/g, "");
+  const m = /^(\d{1,4})x(\d{1,4})(?:=(\d{1,5}))?$/.exec(raw);
+  if (!m) throw new MissionOpError("invalid", "write the calculation, e.g. 5 × 6");
+  const a = Number(m[1]);
+  const b = Number(m[2]);
+  const same = (a === factors[0] && b === factors[1]) || (a === factors[1] && b === factors[0]);
+  if (!same) return -1;
+  if (m[3] !== undefined && Number(m[3]) !== a * b) return -1;
+  return a * b;
 }
 
 function parseWhole(value: unknown): number {
@@ -851,6 +917,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
   state.missions = state.missions ?? {};
   const run = (state.missions[def.id] = state.missions[def.id] ?? newMissionRun(def, env.visit, env.nowIso));
   if (run.finishedAt) throw new MissionOpError("not-allowed", "the mission is finished");
+  if (def.steps.some((x) => x.warmup)) env = { ...env, warmupTaughtAt: warmupAnchors(state, def) };
   const records: Records = { attempts: [], exposures: [], supports: [], samples: [] };
   const statuses = () => stepStatuses(def, run);
   let result: Record<string, unknown> = {};
@@ -1273,8 +1340,9 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       const { step, r } = requireActive(run, def, action.step);
       const { part, pr } = requirePart(step, r, action.part);
       if (pr.status !== "open" || pr.phase === "taught") throw new MissionOpError("not-allowed", pr.phase === "taught" ? "type the answer from the worked solution" : "this question is answered");
-      const value = parseWhole(action.value);
-      const raw = String(action.value ?? "").trim().slice(0, 12);
+      // Step 1 (S1-09): a calculation part takes the written calculation; its product is the value, the text is the evidence.
+      const value = part.calculation ? parseCalculation(action.value, part.calculation.factors) : parseWhole(action.value);
+      const raw = String(action.value ?? "").trim().slice(0, part.calculation ? 24 : 12);
       // Deliberate tries are never blocked and never require a hint: he may realise the answer by thinking or with a parent.
       const mains = r.attempts.filter((a) => a.questionId === part.id && a.kind === "answer");
       const last = mains[mains.length - 1];
@@ -1388,8 +1456,9 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (pr.status !== "open" || pr.phase !== "taught") throw new MissionOpError("not-allowed", "practice comes after the worked solution");
       const max = def.rules.maxPracticeAttempts ?? 2;
       if (pr.practiceFails >= max) throw new MissionOpError("not-allowed", "keep it for later");
-      const value = parseWhole(action.value);
-      const raw = String(action.value ?? "").trim().slice(0, 12);
+      // Step 1 (S1-09): a calculation part takes the written calculation; its product is the value, the text is the evidence.
+      const value = part.calculation ? parseCalculation(action.value, part.calculation.factors) : parseWhole(action.value);
+      const raw = String(action.value ?? "").trim().slice(0, part.calculation ? 24 : 12);
       const correct = value === part.answer;
       const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: part.id, raw, values: { [part.id]: value }, correct, evidence: correct ? "answer_exposed" : "incorrect", support: partSupport(pr, 1), modality: "typed", kind: "practice", hintsBefore: pr.hints.map((h) => h.id) };
       r.attempts.push(attempt);
@@ -1453,26 +1522,64 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         taughtRule === "spacing" && first ? { index: first.index, marked: markSpacing(text, [first]), ...(mech ? { rule: "spacing" as const } : {}) }
         : taughtRule && taughtRule !== "spacing" ? { index: -1, marked: text, rule: taughtRule, line: step.write.mechanicsLines?.[taughtRule] ?? "" }
         : null;
-      r.writing = { original: text, at: env.nowIso, assessable: assessment.assessable, flags, correction, ...(mech ? { mechanics: found } : {}), revision: null, kept: false };
-      const outcome = mech ? (found.length ? "flagged" : "clean") : !assessment.assessable ? "unassessable" : flags.length ? "flagged" : "clean";
+      // Step 1 (S1-13a): a sentence whose ONLY finding is the missing end mark is not wrong — it is a revision prompt; the
+      // original and the revision are both kept. Applies to every content with mechanics (Visit 8 onwards).
+      const endMarkOnly = !!mech && found.length === 1 && found[0] === "end-mark";
+      // Step 1 (S1-05): with `noktFirst`, Nokt gives the writing feedback; the app's tip waits and appears only if Nokt fails.
+      const holdTip = !!step.write.noktFirst && !!step.write.nokt && noktPlanned(def, env) && correction !== null;
+      r.writing = { original: text, at: env.nowIso, assessable: assessment.assessable, flags, correction: holdTip ? null : correction, ...(mech ? { mechanics: found } : {}), revision: null, kept: false, ...(holdTip ? { pendingCorrection: correction } : {}), ...(endMarkOnly ? { endMarkOnly: true } : {}) };
+      const outcome = mech ? (endMarkOnly ? "end-mark-prompt" : found.length ? "flagged" : "clean") : !assessment.assessable ? "unassessable" : flags.length ? "flagged" : "clean";
       // Mechanics only — meaning and grammar are never judged by the app. Content v7 judges the reviewed mechanical rules
       // (spacing where a boundary is reviewed, the capital at the start, the end mark); earlier content the spacing alone.
-      const evidence: EvidenceCategory = mech ? (found.length ? "incorrect" : "independent") : !assessment.assessable ? "unscored" : flags.length ? "incorrect" : "independent";
-      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: mech ? found.length === 0 : !assessment.assessable ? null : flags.length === 0, evidence, support: [], modality: "typed", kind: "answer" };
+      const evidence: EvidenceCategory = mech ? (endMarkOnly ? "unscored" : found.length ? "incorrect" : "independent") : !assessment.assessable ? "unscored" : flags.length ? "incorrect" : "independent";
+      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: mech ? (endMarkOnly ? null : found.length === 0) : !assessment.assessable ? null : flags.length === 0, evidence, support: [], modality: "typed", kind: "answer" };
       r.attempts.push(attempt);
       attemptRow(records, env, def, step, attempt, "de");
       records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "writing_transfer" as const, language: "de", modality: "typed", text, metrics: { mission: def.id, step: step.id, assessed: assessment.assessed, correct: assessment.correct, flagged: flags.length, rules: flags.map((f) => f.rule), outcome, ...(mech ? { mechanics: found } : {}), meaningJudged: false, spellingJudged: false }, at: env.nowIso });
       state.feedback = updateSpacingFocus(feedbackOf(state), { outcome: assessment.assessable ? (flags.length ? "flagged" : "clean") : "unassessable", modality: "typed", helpExposed: false, flagged: flags.length, text, at: env.nowIso, visit: env.visit, lesson: `mission:${def.id}/${step.id}` });
-      if (correction) {
+      if (correction && !holdTip) {
         const kind = correction.rule && correction.rule !== "spacing" ? `${correction.rule}-correction` : "spacing-correction";
         r.support.push({ kind, at: env.nowIso, detail: String(correction.index) });
         support(records, env, def, step, kind, { index: correction.index, rule: correction.rule === "spacing" || !correction.rule ? first!.rule : correction.rule });
       }
       // Content v7: with Nokt switched on, the step stays open for Nokt's reaction to the ORIGINAL and the one revision.
       const awaitNokt = !!step.write.nokt && noktPlanned(def, env);
-      if (!correction && !awaitNokt) finishStep(state, run, def, step, r, "done", evidence, env);
-      else if (!correction) r.phase = "clarified";
-      result = { outcome, flags: flags.length, correction: !!correction, ...(mech ? { mechanics: found, nokt: awaitNokt } : {}) };
+      const shownTip = holdTip ? null : correction;
+      if (!shownTip && !awaitNokt) finishStep(state, run, def, step, r, "done", evidence, env);
+      else if (!shownTip) r.phase = "clarified";
+      result = { outcome, flags: flags.length, correction: !!shownTip, ...(holdTip ? { tipHeld: true } : {}), ...(endMarkOnly ? { endMarkOnly: true } : {}), ...(mech ? { mechanics: found, nokt: awaitNokt } : {}) };
+      break;
+    }
+    case "method": {
+      const { step, r } = requireActive(run, def, action.step);
+      const m = step.solve?.methods;
+      if (!m) throw new MissionOpError("not-allowed", "no ways to compare here");
+      const after = r.parts?.[m.after];
+      if (!after || after.status === "open") throw new MissionOpError("not-allowed", "solve the question first");
+      if (!m.options.some((o) => o.id === action.choice)) throw new MissionOpError("invalid", "unknown way");
+      if (r.support.some((x) => x.kind === "method-used")) throw new MissionOpError("not-allowed", "already answered");
+      r.support.push({ kind: "method-used", at: env.nowIso, detail: action.choice });
+      support(records, env, def, step, "method-used", { part: m.after, choice: action.choice, scored: false, help: false });
+      result = { method: action.choice };
+      break;
+    }
+    case "writing-tip": {
+      // Step 1 (S1-05): Nokt did not react (unreachable, refused, no usable line) — the app's held tip is shown now, recorded as
+      // help before it is shown. Refused once Nokt's reaction was shown: never both helpers for one sentence.
+      const { step, r } = requireActive(run, def, action.step);
+      if (step.kind !== "write" || !r.writing || r.status !== "active") throw new MissionOpError("not-allowed", "nothing to show");
+      if (r.support.some((x) => x.kind === "nokt-writing")) throw new MissionOpError("not-allowed", "Nokt already reacted to this sentence");
+      const held = r.writing.pendingCorrection ?? null;
+      if (!held) {
+        result = { tip: false };
+        break;
+      }
+      r.writing.correction = held;
+      r.writing.pendingCorrection = null;
+      const kind = held.rule && held.rule !== "spacing" ? `${held.rule}-correction` : "spacing-correction";
+      r.support.push({ kind, at: env.nowIso, detail: String(held.index) });
+      support(records, env, def, step, kind, { index: held.index, rule: held.rule === "spacing" || !held.rule ? r.writing.flags[0]?.rule ?? "spacing" : held.rule, after: "nokt-unavailable" });
+      result = { tip: true };
       break;
     }
     case "revise": {
@@ -1496,7 +1603,14 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         const outcome = same ? "unchanged" : rule && fixed ? "revised" : "changed";
         const helps = [...(r.writing.correction ? [r.writing.correction.rule === "spacing" || !r.writing.correction.rule ? "spacing-correction" : `${r.writing.correction.rule}-correction`] : []), ...(r.support.some((x) => x.kind === "nokt-writing") ? ["nokt-writing"] : [])];
         r.writing.revision = { text, at: env.nowIso, outcome };
-        const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: outcome === "revised" ? true : outcome === "unchanged" && rule ? false : null, evidence: outcome === "revised" ? "supported" : outcome === "unchanged" && rule ? "incorrect" : "unscored", support: helps, modality: "typed", kind: "practice" };
+        // Step 1 (S1-13a): after an end-mark-only prompt the revision is judged on the end mark itself (rule known even when Nokt,
+        // not the app's tip, gave the feedback); keeping the sentence unchanged is never «incorrect».
+        const endFixed = !!r.writing.endMarkOnly && END_MARK_RE.test(text.trim());
+        const outcome2 = r.writing.endMarkOnly && !same ? (endFixed ? "revised" : "changed") : outcome;
+        if (outcome2 !== outcome) r.writing.revision.outcome = outcome2;
+        const attempt: MissionAttempt = r.writing.endMarkOnly
+          ? { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: endFixed ? true : null, evidence: endFixed ? "supported" : "unscored", support: helps, modality: "typed", kind: "practice" }
+          : { no: r.attempts.length + 1, at: env.nowIso, raw: text, correct: outcome === "revised" ? true : outcome === "unchanged" && rule ? false : null, evidence: outcome === "revised" ? "supported" : outcome === "unchanged" && rule ? "incorrect" : "unscored", support: helps, modality: "typed", kind: "practice" };
         r.attempts.push(attempt);
         attemptRow(records, env, def, step, attempt, "de", `${step.objective}-revision`);
         records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "writing_retry" as const, language: "de", modality: "typed", text, metrics: { mission: def.id, step: step.id, original: r.writing.original, outcome, rule, help: helps, meaningJudged: false }, at: env.nowIso });
