@@ -1977,6 +1977,8 @@ export type WriteView = {
   keepLabel: string;
   /** Step 1 (S1-05): the app's mechanical tip waits for Nokt; it is shown only if Nokt's reaction does not arrive. */
   tipHeld?: boolean;
+  /** Step 1 (review): the prompt asks for more than one sentence («Deine Sätze»). */
+  plural?: boolean;
   thanks: string | null;
   /** Content v7: the step waits for Nokt's reaction to the original and the one revision (the app's correction may be absent). */
   awaitingRevision?: boolean;
@@ -2210,6 +2212,7 @@ function writeView(step: MissionStep, r: MissionStepRun): WriteView {
     ...(w.mechanics ? { awaitingRevision: open, nokt: !!w.nokt } : {}),
     // Step 1 (S1-05): the app's tip is held while Nokt is expected; the page asks for it only when Nokt did not react.
     ...(open && wr?.pendingCorrection ? { tipHeld: true } : {}),
+    ...(w.sentences && w.sentences > 1 ? { plural: true } : {}),
   };
 }
 

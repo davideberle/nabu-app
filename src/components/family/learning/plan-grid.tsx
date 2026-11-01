@@ -28,7 +28,7 @@ export function planCountsText(grid: MissionGrid): string | null {
   return `${counts.beds} Beete aus zusammen ${counts.bedFields} Feldern${each} · Weg ${counts.path} Felder · 1 Feld = ${grid.fieldMeters} m × ${grid.fieldMeters} m`;
 }
 
-export function PlanGrid({ grid, caption, highlight, showCounts = false, compact = false }: { grid: MissionGrid; caption?: string; highlight?: boolean; showCounts?: boolean; compact?: boolean }) {
+export function PlanGrid({ grid, caption, highlight, showCounts = false, compact = false, focused = false }: { grid: MissionGrid; caption?: string; highlight?: boolean; showCounts?: boolean; compact?: boolean; /** Step 1 (review): the focused screen — no visible caption (the story line says it), a height that keeps the question above the fold. */ focused?: boolean }) {
   const counts = gridCounts(grid);
   const cells = grid.cells.map((row) => Array.from(row));
   const w = grid.cols * FIELD;
@@ -61,8 +61,8 @@ export function PlanGrid({ grid, caption, highlight, showCounts = false, compact
     : null;
   return (
     <figure className="grid gap-2" data-testid="plan-grid" data-label={grid.label} data-fields={counts.fields} data-path={counts.path} data-beds={counts.beds} data-bed-fields={counts.bedFields} data-highlight={highlight ? "true" : "false"}>
-      <figcaption className="text-base font-semibold">{caption ?? grid.label}</figcaption>
-      <svg role="img" aria-label={aria} viewBox={`${-pad} ${-pad} ${w + pad * 2} ${h + pad * 2}`} className={compact ? "h-auto w-full max-w-[200px]" : "h-auto w-full max-w-[420px]"} style={{ outline: highlight ? "4px solid #f59e0b" : undefined, borderRadius: 12 }}>
+      <figcaption className={focused ? "sr-only" : "text-base font-semibold"}>{caption ?? grid.label}</figcaption>
+      <svg role="img" aria-label={aria} viewBox={`${-pad} ${-pad} ${w + pad * 2} ${h + pad * 2}`} className={focused ? "h-auto max-h-[300px] w-full max-w-[380px]" : compact ? "h-auto w-full max-w-[200px]" : "h-auto w-full max-w-[420px]"} style={{ outline: highlight ? "4px solid #f59e0b" : undefined, borderRadius: 12 }}>
         {cells.map((row, r) =>
           row.map((v, c) => (
             <rect key={`${r}-${c}`} x={c * FIELD} y={r * FIELD} width={FIELD} height={FIELD} fill={v === "W" ? PATH : v === "." ? SOIL : BED} stroke={LINE} strokeWidth={1} strokeOpacity={0.6} />

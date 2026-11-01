@@ -119,7 +119,7 @@ function ReleasedWorkshopScene({ child, mission, busy, act, speech, telemetry }:
           {active ? active.title : "Werkstatt"} · Teil {beat.index} von {beat.count}
         </h2>
         {active ? <WorkshopTask child={child} mission={mission} active={active} busy={busy} act={act} speech={speech} telemetry={telemetry} onNext={() => void next()} /> : (
-          <button type="button" className={btn} style={primary} disabled={busy} onClick={() => void next()} data-testid="workshop-next">
+          <button type="button" className={btn} style={primary} disabled={busy} onClick={() => void next()} data-testid="workshop-next" data-fold="primary">
             Weiter
           </button>
         )}
@@ -132,7 +132,7 @@ function SpokenLine({ text, child, speech, onPlayed }: { text: string; child: Ch
   const say = useSay(child, speech);
   const [state, setState] = useState<"idle" | "playing" | "failed">("idle");
   return (
-    <div className="flex flex-wrap items-center gap-3" data-testid="workshop-line">
+    <div className="flex flex-wrap items-center gap-3" data-testid="workshop-line" data-fold="question">
       <p className="text-xl leading-snug sm:text-2xl">{text}</p>
       <button type="button" className="inline-flex min-h-11 items-center gap-1 rounded-full px-3 text-base font-semibold" style={secondary} disabled={state === "playing"} onClick={async () => {
         setState("playing");
@@ -160,7 +160,7 @@ function SayButton({ child, speech, text, testId }: { child: ChildId; speech: Ch
 
 function NextButton({ busy, onNext, label = "Weiter", speaking = false }: { busy: boolean; onNext: () => void; label?: string; /** Step 1 (S1-02): disabled while the narration speaks (Stopp/replay stay available above). */ speaking?: boolean }) {
   return (
-    <button type="button" className={cn(btn, "justify-self-start")} style={primary} disabled={busy || speaking} onClick={onNext} data-testid="workshop-next" data-waiting={speaking ? "narration" : undefined} autoFocus={!speaking}>
+    <button type="button" className={cn(btn, "justify-self-start")} style={primary} disabled={busy || speaking} onClick={onNext} data-testid="workshop-next" data-fold="primary" data-waiting={speaking ? "narration" : undefined} autoFocus={!speaking}>
       {label} <span aria-hidden>→</span>
     </button>
   );
@@ -210,7 +210,7 @@ function DecideTask({ active, busy, act }: { active: MissionActiveView; busy: bo
       <p className="text-2xl font-semibold">{d.prompt}</p>
       <div className="flex flex-wrap gap-3" role="group" aria-label={d.prompt}>
         {d.options.map((o) => (
-          <button key={o.id} type="button" className={pictureButton} style={{ borderColor: d.chosen === o.id ? "#3f7a3a" : "#d9c6aa" }} aria-pressed={d.chosen === o.id} disabled={busy || active.status !== "active"} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`make-${o.id}`}>
+          <button key={o.id} type="button" className={pictureButton} style={{ borderColor: d.chosen === o.id ? "#3f7a3a" : "#d9c6aa" }} aria-pressed={d.chosen === o.id} disabled={busy || active.status !== "active"} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`make-${o.id}`} data-fold="input">
             {o.picture ? <WorkshopPictureView id={o.picture} /> : null}
             {o.label}
           </button>
@@ -294,7 +294,7 @@ function ReadTask({ child, active, busy, act, speech }: { child: ChildId; active
         <div className="grid gap-3" data-testid={`question-${q.id}`} data-status={q.status}>
           <p className="text-xl font-semibold">{q.prompt}</p>
           {open ? (
-            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt}>
+            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
               {(q.options ?? []).map((o) => (
                 <button key={o} type="button" className={pictureButton} style={{ borderColor: q.lastWrong === o ? "#c77c14" : "#d9c6aa" }} disabled={busy} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`} aria-label={o}>
                   {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} /> : null}
@@ -335,7 +335,7 @@ function ListenPictures({ child, active, busy, act, speech, telemetry }: { child
   return (
     <div className="grid gap-4" data-testid="workshop-listen">
       <div className="flex flex-wrap items-center gap-3">
-        <button type="button" className={btn} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" autoFocus>
+        <button type="button" className={btn} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" data-fold="primary" autoFocus>
           <SpeakerIcon /> {playing ? "… spricht" : listen.plays ? "Nochmal anhören" : "Old Lila anhören"}
         </button>
       </div>
@@ -352,7 +352,7 @@ function ListenPictures({ child, active, busy, act, speech, telemetry }: { child
         <div key={q.id} className="grid gap-2" data-testid={`question-${q.id}`} data-status={q.status}>
           <p className="text-xl font-semibold">{q.prompt}</p>
           {q.status === "open" ? (
-            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt}>
+            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
               {(q.options ?? []).map((o) => (
                 <button key={o} type="button" className={pictureButton} style={{ borderColor: q.lastWrong === o ? "#c77c14" : "#d9c6aa" }} disabled={busy || !canAnswer} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`}>
                   {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} /> : null}
@@ -438,7 +438,9 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
     setSeenParts([]);
-  }, [active?.id]);
+    // Step 1 (review): a focused task always opens at the top, so its question and button are in view.
+    if (mission.screen === "focused" && typeof window !== "undefined") window.scrollTo({ top: 0 });
+  }, [active?.id, mission.screen]);
   const script = useMemo(() => missionNarration(mission, seenParts), [mission, seenParts]);
   const narration = useNarration(narrator, script, (name) => telemetry(name));
 
@@ -473,7 +475,7 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
           <p className="text-sm font-bold uppercase tracking-wide" style={{ color: "#3d5a2a" }} data-testid="workshop-speaker">{who}</p>
           {/* Visible: the first short line only; every line is spoken (the narration is the instruction, the text is a reminder). */}
           {lines.slice(0, 1).map((l, i) => (
-            <p key={`${active?.id}-${i}`} className="text-xl leading-snug sm:text-2xl" data-testid="workshop-line">{l.text}</p>
+            <p key={`${active?.id}-${i}`} className="text-xl leading-snug sm:text-2xl" data-testid="workshop-line" data-fold="question">{l.text}</p>
           ))}
         </div>
         <NarrationControl status={narration.status} onReplay={narration.replay} onStop={narration.stop} />
@@ -488,7 +490,7 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
         {active ? (
           <NarratedTask child={child} mission={mission} active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} onNext={() => void next()} onSeen={setSeenParts} speaking={mission.screen === "focused" && narration.status === "speaking"} />
         ) : (
-          <button type="button" className={btn} style={primary} disabled={busy || (mission.screen === "focused" && narration.status === "speaking")} onClick={() => void next()} data-testid="workshop-next">
+          <button type="button" className={btn} style={primary} disabled={busy || (mission.screen === "focused" && narration.status === "speaking")} onClick={() => void next()} data-testid="workshop-next" data-fold="primary">
             Weiter
           </button>
         )}
@@ -546,7 +548,7 @@ function NarratedDecide({ active, busy, act }: { active: MissionActiveView; busy
     <div className="grid gap-3" data-testid="workshop-decide" data-chosen={d.chosen ?? ""}>
       <div className="flex flex-wrap gap-3" role="group" aria-label={d.prompt}>
         {d.options.map((o) => (
-          <button key={o.id} type="button" className={pictureButton} style={{ borderColor: d.chosen === o.id ? "#3f7a3a" : "#d9c6aa" }} aria-pressed={d.chosen === o.id} disabled={busy || active.status !== "active"} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`make-${o.id}`}>
+          <button key={o.id} type="button" className={pictureButton} style={{ borderColor: d.chosen === o.id ? "#3f7a3a" : "#d9c6aa" }} aria-pressed={d.chosen === o.id} disabled={busy || active.status !== "active"} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`make-${o.id}`} data-fold="input">
             {o.picture ? <WorkshopPictureView id={o.picture} /> : null}
             {o.label}
           </button>
@@ -579,7 +581,7 @@ function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; bu
       {q ? (
         <div className="grid gap-3" data-testid={`question-${q.id}`} data-status={q.status}>
           {open ? (
-            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt}>
+            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
               {(q.options ?? []).map((o) => (
                 <button key={o} type="button" className={pictureButton} style={{ borderColor: q.lastWrong === o ? "#c77c14" : "#d9c6aa" }} disabled={busy} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`} aria-label={`Bild ${(q.options ?? []).indexOf(o) + 1}`}>
                   {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} /> : null}
@@ -621,7 +623,7 @@ function NarratedListen({ active, busy, act, narrator, telemetry, who, slot }: {
   const canAnswer = listen.completedPlays > 0 || listen.transcriptShown;
   return (
     <div className="grid gap-4" data-testid="workshop-listen">
-      <button type="button" className={cn(btn, "min-h-20 justify-self-start px-8 text-2xl")} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" aria-label={listen.plays ? "Nochmal anhören" : `${who} anhören`}>
+      <button type="button" className={cn(btn, "min-h-20 justify-self-start px-8 text-2xl")} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" data-fold="primary" aria-label={listen.plays ? "Nochmal anhören" : `${who} anhören`}>
         <span aria-hidden className="text-3xl">👂</span> {playing ? "…" : listen.plays ? "Nochmal" : "Anhören"}
       </button>
       {listen.script ? (
@@ -636,7 +638,7 @@ function NarratedListen({ active, busy, act, narrator, telemetry, who, slot }: {
       {active.questions.map((q) => (
         <div key={q.id} className="grid gap-2" data-testid={`question-${q.id}`} data-status={q.status}>
           {q.status === "open" ? (
-            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt}>
+            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
               {(q.options ?? []).map((o, i) => (
                 <button key={o} type="button" className={pictureButton} style={{ borderColor: q.lastWrong === o ? "#c77c14" : "#d9c6aa" }} disabled={busy || !canAnswer} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`} aria-label={`Bild ${i + 1}`}>
                   {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-28 w-28" /> : null}

@@ -211,7 +211,7 @@ export function IslandStage({ view, markers, busy, gate = alwaysOpen, onEnter, o
           </button>
         ) : null}
       </div>
-      <p className="text-xs text-tertiary">Stopp und speichern geht jederzeit oben links. Fertig ist der Besuch, wenn beide Werkstätten und der kurze Check gemacht sind.</p>
+      <p className="text-xs text-tertiary">Pause (mit Speichern) geht jederzeit oben links. Fertig ist der Besuch, wenn beide Werkstätten und der kurze Check gemacht sind.</p>
     </div>
   );
 }

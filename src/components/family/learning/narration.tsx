@@ -54,20 +54,16 @@ export function useNarration(player: NarrationPlayer, script: NarrationScript | 
   return { status, replay, stop };
 }
 
-const SpeakerGlyph = () => (
-  <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden fill="currentColor">
-    <path d="M4 9v6h4l5 4V5L8 9H4z" />
-    <path d="M16 8.5a5 5 0 0 1 0 7" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-  </svg>
-);
 
 /** The one narration control of a screen. `big` = the prominent «Vorlesen» before audio is unlocked. */
 export function NarrationControl({ status, onReplay, onStop, className }: { status: NarrationStatus; onReplay: () => void; onStop: () => void; className?: string }) {
   const base = "inline-flex min-h-14 items-center justify-center gap-2 rounded-full px-5 text-lg font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500";
+  const icon = "inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500";
   if (status === "speaking")
     return (
-      <button type="button" className={cn(base, className)} style={{ background: "#3d5a2a", color: "white" }} onClick={onStop} data-testid="narration-control" data-state="speaking" aria-label="Vorlesen stoppen">
-        <span aria-hidden>■</span> Stopp
+      // Step 1 (review): an icon button (■ stop / 🔊 replay), never a second «Stopp» next to the visit's «Pause».
+      <button type="button" className={cn(icon, className)} style={{ background: "#3d5a2a", color: "white" }} onClick={onStop} data-testid="narration-control" data-state="speaking" aria-label="Vorlesen stoppen" title="Vorlesen stoppen">
+        <span aria-hidden className="text-2xl leading-none">■</span>
       </button>
     );
   if (status === "locked" || status === "blocked")
@@ -89,8 +85,8 @@ export function NarrationControl({ status, onReplay, onStop, className }: { stat
       </button>
     );
   return (
-    <button type="button" className={cn(base, className)} style={{ background: "#e7efd9", color: "#2f4a1f" }} onClick={onReplay} data-testid="narration-control" data-state="idle" aria-label="Nochmal hören">
-      <SpeakerGlyph /> Nochmal hören
+    <button type="button" className={cn(icon, className)} style={{ background: "#e7efd9", color: "#2f4a1f" }} onClick={onReplay} data-testid="narration-control" data-state="idle" aria-label="Nochmal hören" title="Nochmal hören">
+      <span aria-hidden className="text-2xl leading-none">🔊</span>
     </button>
   );
 }

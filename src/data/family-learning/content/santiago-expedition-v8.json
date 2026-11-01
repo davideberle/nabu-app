@@ -7372,7 +7372,7 @@
       "parts": [
        {
         "id": "cm",
-        "question": "Ein Rohrstück für den Rand ist 2 m lang. Wie viele Zentimeter sind das?",
+        "question": "Neu: 1 m hat 100 cm. Ein Rohrstück für den Rand ist 2 m lang. Wie viele Zentimeter sind das?",
         "unit": "cm",
         "answer": 200,
         "recheck": "Noch nicht ganz. 1 m hat 100 cm.",
@@ -8549,7 +8549,7 @@
       "instruction": "Zwei Sätze, mit deinen eigenen Wörtern.",
       "placeholder": "Heute haben wir …",
       "thanks": "Danke! Deine Sätze stehen im Gartenbuch.",
-      "correctionIntro": "Ein Tipp für deinen Satz:",
+      "correctionIntro": "Ein Tipp für deine Sätze:",
       "keep": "So lassen",
       "mechanics": [
        "spacing",
@@ -8557,11 +8557,12 @@
        "end-mark"
       ],
       "mechanicsLines": {
-       "capital-start": "Ein Satz beginnt mit einem grossen Buchstaben. Schau dir den Anfang deines Satzes an.",
-       "end-mark": "Am Ende eines Satzes steht ein Punkt. Schau dir das Ende deines Satzes an."
+       "capital-start": "Ein Satz beginnt mit einem grossen Buchstaben. Schau dir den Anfang von jedem Satz an.",
+       "end-mark": "Am Ende von jedem Satz steht ein Punkt. Schau dir das Ende von jedem Satz an."
       },
       "nokt": true,
-      "noktFirst": true
+      "noktFirst": true,
+      "sentences": 2
      }
     },
     {

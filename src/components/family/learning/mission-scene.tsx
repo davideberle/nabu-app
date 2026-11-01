@@ -374,10 +374,10 @@ function MethodsChoice({ methods, step, busy, act, lastFeedback }: { methods: No
   return (
     <div className="grid gap-3" data-testid="solve-methods">
       {lastFeedback ? <Feedback tone={lastFeedback.tone} text={lastFeedback.text} /> : null}
-      <p className="text-2xl font-semibold leading-snug">{methods.prompt}</p>
+      <p className="text-2xl font-semibold leading-snug" data-fold="question">{methods.prompt}</p>
       <div className="grid gap-2 sm:grid-cols-2">
         {methods.options.map((o) => (
-          <button key={o.id} type="button" className={cn(btn, "justify-start text-left")} style={secondary} disabled={busy} onClick={() => void act({ a: "method", step, choice: o.id })} data-testid={`method-${o.id}`}>
+          <button key={o.id} type="button" className={cn(btn, "justify-start text-left")} style={secondary} disabled={busy} onClick={() => void act({ a: "method", step, choice: o.id })} data-testid={`method-${o.id}`} data-fold="input">
             {o.label}
           </button>
         ))}
@@ -433,14 +433,14 @@ function PartTask({ part, step, busy, act, telemetry, quiet = false, focused = f
           if (!busy) void submit();
         }}
       >
-        <label htmlFor={`part-${part.id}`} className="text-2xl font-semibold leading-snug" data-testid="part-question">
+        <label htmlFor={`part-${part.id}`} className="text-2xl font-semibold leading-snug" data-testid="part-question" data-fold="question">
           {taught ? (calc ? "Schreib die Rechnung jetzt selbst:" : "Trag die Zahl jetzt selbst ein:") : part.question}
         </label>
         <div className="flex flex-wrap items-center gap-3">
           <input {...NO_TYPING_HELP} id={`part-${part.id}`} ref={inputRef} value={value} onChange={(e) => {
               setNotice(null);
               setValue(calc ? e.target.value.replace(/[^0-9xX×*·= ]/g, "").slice(0, 20) : e.target.value.replace(/[^0-9]/g, "").slice(0, 4));
-            }} inputMode={calc ? "text" : "numeric"} autoComplete="off" className={cn("h-14 rounded-xl border-2 px-3 text-2xl font-semibold disabled:opacity-50", calc ? "w-56" : "w-28")} style={{ borderColor: "#8ba8a4" }} aria-describedby={`unit-${part.id}`} placeholder={calc ? "4 × 7" : undefined} data-testid="part-input" data-kind={calc ? "calculation" : "number"} />
+            }} inputMode={calc ? "text" : "numeric"} autoComplete="off" className={cn("h-14 rounded-xl border-2 px-3 text-2xl font-semibold disabled:opacity-50", calc ? "w-56" : "w-28")} style={{ borderColor: "#8ba8a4" }} aria-describedby={`unit-${part.id}`} placeholder={calc ? "_ × _" : undefined} data-testid="part-input" data-fold="input" data-kind={calc ? "calculation" : "number"} />
           {calc ? (
             <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => { setValue((v) => `${v.trimEnd()} × `.trimStart()); inputRef.current?.focus(); }} aria-label="Mal-Zeichen einfügen" data-testid="part-times">
               ×
@@ -452,7 +452,7 @@ function PartTask({ part, step, busy, act, telemetry, quiet = false, focused = f
           )}
         </div>
         <div>
-          <button type="submit" className={btn} style={primary} disabled={busy || !value.trim()} data-testid="part-check">
+          <button type="submit" className={btn} style={primary} disabled={busy || !value.trim()} data-testid="part-check" data-fold="primary">
             {quiet || focused ? <><span aria-hidden>✓</span> Prüfen</> : taught ? "Eintragen" : "Antwort prüfen"}
           </button>
         </div>
@@ -627,7 +627,7 @@ export function ListenTask({ child, active, busy, act, speech, telemetry, charac
         </p>
       ) : null}
             <div className="flex flex-wrap items-center gap-3">
-        <button type="button" className={btn} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" autoFocus>
+        <button type="button" className={btn} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" data-fold="primary" autoFocus>
           <SpeakerIcon /> {playing ? "… spielt" : listen.plays ? "Nochmal anhören" : "Nachricht anhören"}
         </button>
         {listen.plays > 0 && !listen.transcriptShown ? (
@@ -648,7 +648,7 @@ export function ListenTask({ child, active, busy, act, speech, telemetry, charac
         <div key={q.id} className="grid gap-2" data-testid={`question-${q.id}`} data-status={q.status}>
           <p className="text-xl font-semibold">{q.prompt}</p>
           {q.status === "open" ? (
-            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt}>
+            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
               {(q.options ?? []).map((o) => (
                 <button key={o} type="button" className="grid min-h-24 w-36 place-items-center gap-1 rounded-2xl border-2 p-2 text-lg font-semibold disabled:opacity-50" style={{ borderColor: "#8ba8a4", background: "white" }} disabled={busy || !canAnswer} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`}>
                   {PLACE_PICTURES[o] || !listen.noPictures ? <PlacePicture kind={PLACE_PICTURES[o] ?? "gate"} /> : null}
@@ -729,12 +729,12 @@ export function RequestTask({ active, busy, act, telemetry }: { active: MissionA
           say();
         }}
       >
-        <label htmlFor="scene-request" className="text-2xl font-semibold" lang={p.language}>
+        <label htmlFor="scene-request" data-fold="question" className="text-2xl font-semibold" lang={p.language}>
           {exhausted ? "Schreib den Satz ab:" : p.frame.replace("___", "…")}
         </label>
-        <input {...NO_TYPING_HELP} id="scene-request" ref={inputRef} value={text} onChange={(e) => setText(e.target.value.slice(0, 200))} lang={p.language} disabled={!!p.askMeaning || (exhausted && (p.practiceLeft ?? 1) === 0)} className="h-14 w-full max-w-xl rounded-xl border-2 px-3 text-xl" style={{ borderColor: "#8ba8a4" }} autoComplete="off" autoCorrect="off" spellCheck={false} data-testid="request-input" />
+        <input {...NO_TYPING_HELP} id="scene-request" data-fold="input" ref={inputRef} value={text} onChange={(e) => setText(e.target.value.slice(0, 200))} lang={p.language} disabled={!!p.askMeaning || (exhausted && (p.practiceLeft ?? 1) === 0)} className="h-14 w-full max-w-xl rounded-xl border-2 px-3 text-xl" style={{ borderColor: "#8ba8a4" }} autoComplete="off" autoCorrect="off" spellCheck={false} data-testid="request-input" />
         <div>
-          <button type="submit" className={btn} style={primary} disabled={busy || !text.trim() || !!p.askMeaning || (exhausted && (p.practiceLeft ?? 1) === 0)} data-testid="request-send">
+          <button data-fold="primary" type="submit" className={btn} style={primary} disabled={busy || !text.trim() || !!p.askMeaning || (exhausted && (p.practiceLeft ?? 1) === 0)} data-testid="request-send">
             {exhausted ? "Üben" : "Zu Rosa sagen"}
           </button>
         </div>

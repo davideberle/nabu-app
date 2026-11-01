@@ -512,14 +512,15 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
         <Link
           href={worldHref}
           className={secondaryButton}
-          aria-label="Stopp und speichern"
+          aria-label="Pause — dein Stand bleibt gespeichert"
           data-testid="hud-stop"
           onClick={() => {
             telemetryRef.current = noteControl(pauseTelemetry(telemetryRef.current, Date.now()), Date.now(), "stop");
             flushTelemetry(true);
           }}
         >
-          ■ Stopp
+          {/* Step 1 (review): the visit exit is «Pause», distinct from the narration's own stop icon. */}
+          <span aria-hidden>⏸</span> Pause
         </Link>
         <div className="min-w-0 flex-1 text-center">
           <p className="truncate text-sm font-semibold text-primary">{view.visit.title}</p>

@@ -207,6 +207,8 @@ export type MissionWrite = {
   nokt?: boolean;
   /** Step 1 (S1-05): Nokt gives the writing feedback; the app's mechanical tip is held and shown only when Nokt fails. */
   noktFirst?: boolean;
+  /** Step 1 (review): how many sentences the prompt asks for (labels only: «Deine Sätze»); the text is one original as before. */
+  sentences?: number;
 
   /** Reviewed lines of the app's own correction for each mechanical rule (child-facing). */
   mechanicsLines?: Partial<Record<"capital-start" | "end-mark", string>>;

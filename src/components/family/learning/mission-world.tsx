@@ -676,7 +676,7 @@ function SceneHeader({ view, mission, active, placeLabel, onBack }: { view: Chil
   const tx = box ? box.w / 2 - focus.x * scale : 0;
   const ty = box ? box.h * 0.56 - focus.y * scale : 0;
   return (
-    <div ref={ref} className="relative h-48 overflow-hidden rounded-2xl border-2 sm:h-56" style={{ borderColor: BARK, background: SEA }} data-testid="scene-header" data-place={place?.id ?? ""} data-character={ch?.id ?? ""}>
+    <div ref={ref} className={cn("relative overflow-hidden rounded-2xl border-2", mission.screen === "focused" ? "h-28" : "h-48 sm:h-56")} style={{ borderColor: BARK, background: SEA }} data-testid="scene-header" data-place={place?.id ?? ""} data-character={ch?.id ?? ""}>
       {box ? (
         <div aria-hidden className="pointer-events-none absolute left-0 top-0" style={{ width: 1600, height: 900, transform: `translate(${tx}px, ${ty}px) scale(${scale})`, transformOrigin: "0 0" }}>
           <HarborIsland scene={{ ...view.scene, missionWorld: [] }} markers={[]} pages={view.pages.length} harbor={null} variant="stage" labelsToggle={false} chips={false} className="absolute inset-0" />
@@ -756,7 +756,9 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
   useEffect(() => {
     // the typing block keeps the physical keyboard on its input; other scenes start reading at their heading
     if (active.kind !== "typing-block") headingRef.current?.focus({ preventScroll: true });
-  }, [active.id, active.kind]);
+    // Step 1 (review): a focused task always opens at the top, so its question and button are in view.
+    if (mission.screen === "focused" && typeof window !== "undefined") window.scrollTo({ top: 0 });
+  }, [active.id, active.kind, mission.screen]);
   // Step 1 (S1-01): picture (with the place in it), one story line, the question, the input, one button.
   const focused = mission.screen === "focused";
   return (
@@ -783,12 +785,12 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
               <p className="text-lg">{active.home.replace(/^Für zuhause:\s*/, "")}</p>
             </div>
           ) : null}
-          <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "leave" })} data-testid="scene-continue" autoFocus>
+          <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "leave" })} data-testid="scene-continue" data-fold="primary" autoFocus>
             {focused ? "Weiter →" : "Weiter auf der Insel →"}
           </button>
         </div>
       ) : null}
-      {active.kind === "typing-block" || focused ? null : <p className="text-sm">Du kannst jederzeit oben «Stopp» drücken. Was du gemacht hast, bleibt gespeichert.</p>}
+      {active.kind === "typing-block" || focused ? null : <p className="text-sm">Du kannst jederzeit oben «Pause» drücken. Was du gemacht hast, bleibt gespeichert.</p>}
     </section>
   );
 }
@@ -796,7 +798,7 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
 function StoryTask({ active, busy, act, label }: { active: MissionActiveView; busy: boolean; act: Act; label?: string }) {
   if (active.status !== "active") return null;
   return (
-    <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "story-done", step: active.id })} data-testid="story-done" autoFocus>
+    <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "story-done", step: active.id })} data-testid="story-done" data-fold="primary" autoFocus>
       {label ?? (active.kind === "outcome" ? "Boote losschicken" : "Verstanden")}
     </button>
   );
@@ -1203,7 +1205,7 @@ export function TypingBlock({ block, stepId, busy, act }: { block: TypingBlockVi
       <div className="grid gap-3" data-testid="typing-block" data-phase="not-started">
         <p className="text-lg" data-testid="typing-intro">{block.announce}</p>
         <p className="text-base">Du siehst nur die Zeilen, die Tasten und deine Hände.</p>
-        <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "typing-start" })} data-testid="typing-start" autoFocus>
+        <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "typing-start" })} data-testid="typing-start" data-fold="primary" autoFocus>
           Tippblock beginnen
         </button>
       </div>
@@ -1326,7 +1328,7 @@ export function TypingBlock({ block, stepId, busy, act }: { block: TypingBlockVi
           autoCorrect="off"
           autoCapitalize="off"
           spellCheck={false}
-          data-testid="typing-input"
+          data-testid="typing-input" data-fold="input"
         />
         <p className="mt-1 text-sm">Enter: Zeile fertig · Fehler sind erlaubt — tipp einfach weiter.</p>
       </form>

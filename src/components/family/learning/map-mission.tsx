@@ -179,7 +179,11 @@ export function MapTask({ child, view, active, busy, act, speech, telemetry, nok
       // Step 1 (S1-01): on the focused screen a fact already said by the story line or the question is not repeated in a box.
       const focused = view.mission?.screen === "focused";
       const said = [...active.intro.map((l) => l.text), ...(active.solve?.parts.map((p) => p.question) ?? [])].join(" ").toLowerCase();
-      const facts = (active.solve?.facts ?? []).filter((f) => !focused || !said.includes(f.toLowerCase().replace(/[.]$/, "")));
+      // Step 1 (review): a formula or rule chip is teaching — on the focused screen it appears only after a miss on the open
+      // question (or with the worked solution), never before the first attempt.
+      const open = active.solve?.parts.find((p) => p.status === "open") ?? null;
+      const afterMiss = !!open && (open.tries > 0 || open.phase !== "answer");
+      const facts = (active.solve?.facts ?? []).filter((f) => !focused || (afterMiss && !said.includes(f.toLowerCase().replace(/[.]$/, ""))));
       return (
         <div className="grid gap-4" data-testid="map-solve">
           {facts.length ? (
@@ -191,14 +195,28 @@ export function MapTask({ child, view, active, busy, act, speech, telemetry, nok
               ))}
             </ul>
           ) : null}
-          {active.solve?.grids?.length ? (
-            <div className="grid gap-3 sm:grid-cols-2" data-testid="solve-grids">
-              {active.solve.grids.map((g) => (
-                <PlanGrid key={g.label} grid={g} />
-              ))}
+          {focused && active.solve?.grids?.length ? (
+            // Step 1 (review): picture of the field beside the question, so question, input and button stay above the fold.
+            <div className="grid items-start gap-6 md:grid-cols-[minmax(0,380px)_minmax(0,1fr)]">
+              <div className="grid gap-3" data-testid="solve-grids">
+                {active.solve.grids.map((g) => (
+                  <PlanGrid key={g.label} grid={g} focused />
+                ))}
+              </div>
+              <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} focused />
             </div>
-          ) : null}
-          <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} focused={focused} />
+          ) : (
+            <>
+              {active.solve?.grids?.length ? (
+                <div className="grid gap-3 sm:grid-cols-2" data-testid="solve-grids">
+                  {active.solve.grids.map((g) => (
+                    <PlanGrid key={g.label} grid={g} />
+                  ))}
+                </div>
+              ) : null}
+              <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} focused={focused} />
+            </>
+          )}
         </div>
       );
     }
@@ -229,7 +247,7 @@ function DecideTask({ active, busy, act }: { active: MissionActiveView; busy: bo
   const last = d.picked[d.picked.length - 1] ?? null;
   return (
     <div className="grid gap-4" data-testid="decide-task" data-chosen={d.chosen ?? ""}>
-      <p className="text-2xl font-semibold">{d.prompt}</p>
+      <p className="text-2xl font-semibold" data-fold="question">{d.prompt}</p>
       <p className="rounded-xl px-4 py-2 text-lg" style={{ background: "#eef1e8" }} data-testid="decide-rule">
         Regel: {d.rule}
       </p>
@@ -241,7 +259,7 @@ function DecideTask({ active, busy, act }: { active: MissionActiveView; busy: bo
             <div key={o.id} className="grid content-start gap-2 rounded-2xl border-2 p-3" style={{ borderColor: chosen ? "#42864f" : picked ? "#c77c14" : "#dce5df", background: "white" }} data-testid={`decide-option-${o.id}`}>
               {o.grid ? <PlanGrid grid={o.grid} caption={o.label} highlight={chosen} showCounts /> : <p className="text-lg font-semibold">{o.label}</p>}
               {!finished ? (
-                <button type="button" className={btn} style={primary} disabled={busy} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`decide-pick-${o.id}`}>
+                <button type="button" className={btn} style={primary} disabled={busy} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`decide-pick-${o.id}`} data-fold="input">
                   Diesen Plan wählen
                 </button>
               ) : null}
@@ -286,7 +304,7 @@ function WriteWithNokt({ child, view, active, busy, act, speech, nokt }: { child
         <p className="rounded-2xl px-4 py-3 text-xl" style={{ background: "#fff8e1" }}>
           «{w.revision ?? w.original}»
         </p>
-        {w.revision && w.original && w.revision !== w.original ? <p className="text-base">Dein erster Satz bleibt auch gespeichert: «{w.original}»</p> : null}
+        {w.revision && w.original && w.revision !== w.original ? <p className="text-base">{w.plural ? "Deine ersten Sätze bleiben auch gespeichert" : "Dein erster Satz bleibt auch gespeichert"}: «{w.original}»</p> : null}
         {w.thanks ? <Feedback tone="success" text={w.thanks} /> : null}
       </div>
     );
@@ -296,7 +314,7 @@ function WriteWithNokt({ child, view, active, busy, act, speech, nokt }: { child
     return (
       <div className="grid gap-4" data-testid="write-feedback">
         <div>
-          <p className="text-base font-semibold">Dein Satz (so bleibt er gespeichert):</p>
+          <p className="text-base font-semibold">{w.plural ? "Deine Sätze (so bleiben sie gespeichert):" : "Dein Satz (so bleibt er gespeichert):"}</p>
           <p className="rounded-2xl px-4 py-3 text-xl" style={{ background: "#fff8e1" }} data-testid="write-original">
             «{w.original}»
           </p>
@@ -323,9 +341,9 @@ function WriteWithNokt({ child, view, active, busy, act, speech, nokt }: { child
           <NoktTalk key={page} child={child} purpose="writing" sessionId={session && !session.closed ? session.id : null} initialLines={session?.lines ?? []} opener speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn!} title="Nokt liest deinen Satz" testId="nokt-writing" />
         ) : null}
         {enabled && focused && !noktDone ? (
-          <div className="fixed inset-0 z-50 grid place-items-center bg-black/45 p-4" role="dialog" aria-modal="true" aria-label="Nokt liest deinen Satz" data-testid="nokt-modal">
+          <div className="fixed inset-0 z-50 grid place-items-center bg-black/45 p-4" role="dialog" aria-modal="true" aria-label={w.plural ? "Nokt liest deine Sätze" : "Nokt liest deinen Satz"} data-testid="nokt-modal">
             <div className="grid max-h-[90vh] w-full max-w-xl gap-3 overflow-y-auto">
-              <NoktTalk key={page} child={child} purpose="writing" sessionId={session && !session.closed ? session.id : null} initialLines={session?.lines ?? []} opener speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn!} title="Nokt liest deinen Satz" testId="nokt-writing"
+              <NoktTalk key={page} child={child} purpose="writing" sessionId={session && !session.closed ? session.id : null} initialLines={session?.lines ?? []} opener speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn!} title={w.plural ? "Nokt liest deine Sätze" : "Nokt liest deinen Satz"} testId="nokt-writing"
                 onLine={(line) => {
                   if (line.role !== "app") return;
                   askTip();
@@ -339,11 +357,11 @@ function WriteWithNokt({ child, view, active, busy, act, speech, nokt }: { child
           </div>
         ) : null}
         <label htmlFor="map-revise" className="text-lg font-semibold">
-          Möchtest du deinen Satz noch einmal schreiben? (Schreib ihn selbst.)
+          {w.plural ? "Möchtest du deine Sätze noch einmal schreiben? (Schreib sie selbst.)" : "Möchtest du deinen Satz noch einmal schreiben? (Schreib ihn selbst.)"}
         </label>
-        <textarea {...NO_TYPING_HELP} id="map-revise" value={value} onChange={(e) => setRevision(e.target.value.slice(0, 300))} rows={2} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-revise" />
+        <textarea {...NO_TYPING_HELP} id="map-revise" value={value} onChange={(e) => setRevision(e.target.value.slice(0, 300))} rows={2} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-revise" data-fold="input" />
         <div className="flex flex-wrap gap-3">
-          <button type="button" className={btn} style={primary} disabled={busy || !value.trim()} onClick={() => void act({ a: "revise", step: active.id, text: value })} data-testid="write-revise-send">
+          <button type="button" className={btn} style={primary} disabled={busy || !value.trim()} onClick={() => void act({ a: "revise", step: active.id, text: value })} data-testid="write-revise-send" data-fold="primary">
             Neu ins Gartenbuch
           </button>
           <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => void act({ a: "revise", step: active.id, text: null })} data-testid="write-keep">
@@ -362,13 +380,13 @@ function WriteWithNokt({ child, view, active, busy, act, speech, nokt }: { child
       }}
       data-testid="write-task"
     >
-      <label htmlFor="map-write" className="text-2xl font-semibold">
+      <label htmlFor="map-write" data-fold="question" className="text-2xl font-semibold">
         {w.prompt}
       </label>
       <p className="text-lg">{w.instruction}</p>
-      <textarea {...NO_TYPING_HELP} id="map-write" value={text} onChange={(e) => setText(e.target.value.slice(0, 300))} rows={2} placeholder={w.placeholder ?? undefined} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-input" />
+      <textarea {...NO_TYPING_HELP} id="map-write" value={text} onChange={(e) => setText(e.target.value.slice(0, 300))} rows={2} placeholder={w.placeholder ?? undefined} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-input" data-fold="input" />
       <div>
-        <button type="submit" className={btn} style={primary} disabled={busy || !text.trim()} data-testid="write-send">
+        <button type="submit" className={btn} style={primary} disabled={busy || !text.trim()} data-testid="write-send" data-fold="primary">
           Ins Gartenbuch schreiben
         </button>
       </div>

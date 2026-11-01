@@ -188,7 +188,7 @@ export function Debrief({
           <div className="mt-2 grid gap-2">{more.map((d) => row(d.id, d.prompt, d.options, d.skipLabel))}</div>
         </details>
       ) : null}
-      <p className="text-sm">{child === "isabel" ? "Mit «Stopp» oben machst du eine Pause; deine Antworten bleiben gespeichert." : "Mit «Stopp» oben machst du eine Pause; das Gespräch bleibt gespeichert."}</p>
+      <p className="text-sm">{child === "isabel" ? "Mit «Pause» oben machst du eine Pause; deine Antworten bleiben gespeichert." : "Mit «Pause» oben machst du eine Pause; das Gespräch bleibt gespeichert."}</p>
     </div>
   );
 }

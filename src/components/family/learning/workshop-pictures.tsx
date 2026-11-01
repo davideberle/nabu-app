@@ -540,7 +540,8 @@ export function Counters({ counters, caption = true }: { counters: MissionCounte
             <svg key={`t${i}`} viewBox="0 0 64 80" className="h-20 w-16" aria-hidden data-part="closed-bundle">
               {bag ? <path d="M10 22q22-14 44 0l6 50H4z" fill="#c9a26b" stroke={WOOD_DARK} strokeWidth={2} /> : <path d="M8 6h48v68H8z" fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} />}
               {bag ? null : <rect x={6} y={34} width={52} height={8} rx={2} fill="#c0504d" />}
-              <text x={32} y={bag ? 56 : 28} textAnchor="middle" fontSize={20} fontWeight={700} fill="#3b2a17">10</text>
+              {/* The «10» is written on the bag (the question says it); a tied bundle carries no number — she knows it from counting one. */}
+              {bag ? <text x={32} y={56} textAnchor="middle" fontSize={20} fontWeight={700} fill="#3b2a17">10</text> : <g>{[14, 22, 30, 38, 46].map((x) => <rect key={x} x={x} y={10} width={4} height={60} rx={1.5} fill={WOOD} opacity={0.55} />)}</g>}
             </svg>
           ))}
           {Array.from({ length: loose + (op === "+" ? b : 0) }, (_, i) =>
