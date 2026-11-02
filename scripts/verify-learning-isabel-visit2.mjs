@@ -582,7 +582,8 @@ if (MODE === "voices-off") {
 
   // ---------------------------------------------------------------- Speech cancellation on navigation (slow device speech)
   await page.evaluate(() => { globalThis.__speechMs = 2500; });
-  await page.locator("[data-testid='narration-control']").click(); // «Nochmal hören»
+  // Step 1 (review): the replay control is an icon button (🔊) — select it by its state and its accessible name, never its words.
+  await page.locator("[data-testid='narration-control'][data-state='idle'][aria-label='Nochmal hören']").click();
   await page.waitForFunction(() => document.querySelector("[data-testid='narration-control']")?.dataset.state === "speaking", null, { timeout: 5000 });
   const cancelsBefore = await page.evaluate(() => globalThis.__cancel);
   await clearSpoken(page);
