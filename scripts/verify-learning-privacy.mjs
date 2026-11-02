@@ -171,7 +171,7 @@ async function openSettings(c) {
 }
 const titleValue = async (p) => ((await p.getByLabel("Missions-Titel").count()) ? p.getByLabel("Missions-Titel").inputValue() : null);
 const deniedVisible = (p) => p.getByRole("heading", { name: "Nur mit dem Eltern-Konto" }).count();
-const ownerBadge = (p) => p.getByText("Eltern-Konto " + OWNER).count();
+const ownerBadge = (p) => p.getByText("Parent account " + OWNER).count();
 const privateInDom = (p) => p.evaluate((t) => document.documentElement.innerHTML.includes(t) || [...document.querySelectorAll("input")].some((i) => i.value.includes(t)), TITLE);
 
 /** Hold the next matching request after its real response was fetched; returns {info, release}. */

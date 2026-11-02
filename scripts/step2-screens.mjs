@@ -8,6 +8,7 @@ import path from "node:path";
 import { encode } from "@auth/core/jwt";
 import { chromium } from "/Users/claweberle/.npm-global/lib/node_modules/playwright/index.mjs";
 import { audioSafeChromiumLaunchOptions, installBrowserAudioGuard } from "./lib/browser-audio-guard.mjs";
+import { openParentTab } from "./lib/parent-tabs.mjs";
 
 const args = process.argv.slice(2);
 const opt = (n, d) => (args.includes(n) ? args[args.indexOf(n) + 1] : d);
@@ -90,6 +91,20 @@ check("visit-details-opens", (await page.locator("[data-testid='visit-details']"
 check("visit-details-has-earlier-tabs", (await page.getByRole("tab", { name: "Mathe", exact: true }).count()) === 1 && (await page.getByRole("tab", { name: "Einstellungen", exact: true }).count()) === 1);
 await page.locator("[data-testid='visit-details']").scrollIntoViewIfNeeded();
 await shot("parent-isabel-visit-details-open");
+// Every earlier German view still opens inside «Visit details» (both children), without a page error.
+for (const child of ["santiago", "isabel"]) {
+  await page.getByRole("tab", { name: child === "santiago" ? "Santiago" : "Isabel", exact: true }).click();
+  await page.waitForFunction((c) => document.querySelector("[data-testid='learning-ladder'] h2")?.textContent?.toLowerCase().startsWith(c), child, { timeout: 30000 });
+  const opened = [];
+  for (const tab of ["Mathe", "Deutsch", "Englisch", "Spanisch", "Tippen", "Rückblick", "Einstellungen"]) {
+    await openParentTab(page, tab, { exact: true });
+    await page.waitForTimeout(150);
+    const selected = await page.getByRole("tab", { name: tab, exact: true }).getAttribute("aria-selected");
+    const h = await page.locator("[data-testid='visit-details'] h2").count();
+    opened.push(`${tab}:${selected === "true" && h > 0 ? "ok" : "missing"}`);
+  }
+  check(`${child}.earlier-views-open-inside-visit-details`, opened.every((x) => x.endsWith(":ok")), opened);
+}
 
 check("no-page-errors", pageErrors.length === 0, pageErrors);
 check("no-external-requests", external.length === 0, [...new Set(external)]);
