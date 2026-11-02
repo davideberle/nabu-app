@@ -132,9 +132,15 @@ function Row({ row }: { row: LadderRow }) {
       <div className="col-start-1 row-start-1 min-w-0 text-[15px] font-semibold leading-tight text-primary" title={row.observes}>
         {row.label}
       </div>
-      <div className="col-start-2 row-start-1 flex min-w-0 items-center gap-2">
+      <div className="col-start-2 row-start-1 flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
         <Steps status={row.status} />
         {row.noTaskYet ? <span className="text-xs text-tertiary">no task yet</span> : <StatusChip status={row.status} />}
+        {row.headlineStep && !row.noTaskYet ? <span className="text-[11px] text-tertiary" title="The chip shows the highest CEFR step attempted; lower steps are on the track.">at {row.headlineStep}</span> : null}
+        {row.thin ? (
+          <span className="cursor-help rounded-full border border-dashed px-1.5 text-[10px] font-semibold" style={{ borderColor: "#b45309", color: "#92400e" }} title={row.thin.reason} data-testid={`ladder-thin-${row.id}`}>
+            thin evidence
+          </span>
+        ) : null}
       </div>
       <div className="col-start-3 row-start-1">
         <Trend trend={row.trend} />
@@ -241,7 +247,7 @@ export function LearningLadderView({ ladder, childName }: { ladder: LearningLadd
 
       <footer className="mt-4 space-y-1 border-t border-primary pt-3 text-xs text-tertiary" data-testid="ladder-footnote">
         <p>
-          Each row is a chance to observe one narrow skill toward the official description shown — not a grade, and never «is at level X». Held = a fresh task right on own at least 6 days after it was last taught or helped. «I helped here» in Visit details turns that answer into «with help». CEFR A1.1 / A1.2 are not separated by the descriptors used here, so A1 tasks light both. Children&apos;s screens never show any of this.
+          Each row is a chance to observe one narrow skill toward the official description shown — not a grade, and never «is at level X». Held = a fresh task right on own at least 6 days after it was last taught or helped. «I helped here» in Visit details turns that answer into «with help». CEFR A1.1 / A1.2 are not separated by the descriptors used here, so A1 tasks light both; a language row's chip shows the highest step attempted. «Thin evidence» marks a «held» or «new situation» that rests only on picks from given options or on a single task (hover for why). Children&apos;s screens never show any of this.
         </p>
         <p data-testid="ladder-reconciliation">
           Objective ids in {childName}&apos;s records: <b>{ladder.reconciliation.found}</b> found · <b>{ladder.reconciliation.mapped}</b> mapped to a skill row · <b>{unmapped.length}</b> unmapped

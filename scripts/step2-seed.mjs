@@ -100,8 +100,8 @@ for (const child of ["santiago", "isabel"]) {
       attempts += 1;
       await client.execute({
         sql: `INSERT INTO family_learning_attempts (id, child_id, mission_id, visit_id, task_id, task_version, objective, attempt_no, answer_json, correct, evidence, support_json, exposure_before, stimulus_language, response_language, modality, uncertainty, teaching_move, teaching_reason, seconds_since_teaching, created_at, parent_correction_json, parent_corrected_at)
-              VALUES (?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?, ?, 'shown', ?, ?, 'typed', NULL, NULL, NULL, NULL, ?, ?, ?)`,
-        args: [`fx-${child}-${n}`, child, MISSION[child], visit, tasks[k], objective, 1, JSON.stringify({ raw: "fixture", ...(practice ? { kind: "practice" } : {}) }), correct, ev, JSON.stringify(ev === "supported" ? ["hint"] : []), LANG(objective, tasks[k]), LANG(objective, tasks[k]), at, helped ? JSON.stringify({ evidence: "supported", note: "I helped here", by: "info@davideberle.com", at: "2026-11-02T08:00:00.000Z" }) : null, helped ? "2026-11-02T08:00:00.000Z" : null],
+              VALUES (?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?, ?, 'shown', ?, ?, ?, NULL, NULL, NULL, NULL, ?, ?, ?)`,
+        args: [`fx-${child}-${n}`, child, MISSION[child], visit, tasks[k], objective, 1, JSON.stringify({ raw: "fixture", ...(practice ? { kind: "practice" } : {}) }), correct, ev, JSON.stringify(ev === "supported" ? ["hint"] : []), LANG(objective, tasks[k]), LANG(objective, tasks[k]), objective.startsWith("plan-") ? "pick" : "typed", at, helped ? JSON.stringify({ evidence: "supported", note: "I helped here", by: "info@davideberle.com", at: "2026-11-02T08:00:00.000Z" }) : null, helped ? "2026-11-02T08:00:00.000Z" : null],
       });
     }
   }

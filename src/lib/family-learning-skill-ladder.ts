@@ -57,7 +57,7 @@ function better(a: LadderStatus, b: LadderStatus): LadderStatus {
   return ORDER.indexOf(a) >= ORDER.indexOf(b) ? a : b;
 }
 
-type AttemptLike = Pick<EvidenceAttempt, "id" | "visitId" | "taskId" | "objective" | "answer" | "correct" | "evidence" | "stimulusLanguage" | "teachingMove" | "teachingReason" | "secondsSinceTeaching" | "createdAt" | "parentCorrection">;
+type AttemptLike = Pick<EvidenceAttempt, "id" | "visitId" | "taskId" | "objective" | "answer" | "correct" | "evidence" | "stimulusLanguage" | "teachingMove" | "teachingReason" | "secondsSinceTeaching" | "createdAt" | "parentCorrection"> & { modality?: string };
 
 export type LadderInput = {
   child: ChildId;
@@ -80,6 +80,8 @@ export type LadderAttempt = {
   parentHelped: boolean;
   /** For «held»: whole days since the skill was last taught or helped, when known. */
   daysLater: number | null;
+  /** Answered by picking from given options (a right pick can be a guess). */
+  pick: boolean;
 };
 
 export type LadderRow = {
@@ -100,6 +102,10 @@ export type LadderRow = {
   latestNotYet: boolean;
   observedOnly: boolean;
   noTaskYet: boolean;
+  /** CEFR rows: the step the status chip speaks for (the highest step attempted); null for Lehrplan 21 rows. */
+  headlineStep: CefrStep | null;
+  /** «held» / «on own in a new situation» resting only on picks, or on one task: a display marker, never a status change. */
+  thin: { reason: string } | null;
   attempts: LadderAttempt[];
 };
 
@@ -213,13 +219,37 @@ function classify(rowAttempts: { a: AttemptLike; role: ObjectiveRole; cefrStep: 
     }
     if (firstAt === null) firstAt = at;
     contexts.add(ctx);
-    out.push({ id: a.id, visit: a.visitId, task: a.taskId, at: a.createdAt, role, cefrStep, level, parentHelped: parentHelped(a), daysLater });
+    out.push({ id: a.id, visit: a.visitId, task: a.taskId, at: a.createdAt, role, cefrStep, level, parentHelped: parentHelped(a), daysLater, pick: a.modality === "pick" });
   }
   return out;
 }
 
 function bestOf(levels: LadderStatus[]): LadderStatus {
   return levels.reduce<LadderStatus>((m, l) => better(m, l), "not-seen");
+}
+
+const STEP_ORDER: CefrStep[] = ["Pre-A1", "A1", "A2"];
+
+/**
+ * The status the chip shows. Lehrplan 21 rows: the best level ever reached. CEFR rows (review decision of 2026-11-02): the
+ * best level at the HIGHEST step attempted — whole requests at A1 speak for «speaking», not the single words at Pre-A1;
+ * the lower steps stay visible on the CEFR track.
+ */
+function headlineOf(def: SkillRow, attempts: LadderAttempt[]): { status: LadderStatus; step: CefrStep | null } {
+  if (!def.cefr) return { status: bestOf(attempts.map((x) => x.level)), step: null };
+  const top = [...STEP_ORDER].reverse().find((st) => attempts.some((x) => x.cefrStep === st)) ?? null;
+  return { status: bestOf(attempts.filter((x) => top === null || x.cefrStep === top).map((x) => x.level)), step: top };
+}
+
+/** «Thin evidence» for «held» and «on own in a new situation»: only picks from given options, or a single task. */
+function thinOf(status: LadderStatus, step: CefrStep | null, attempts: LadderAttempt[]): LadderRow["thin"] {
+  if (status !== "held" && status !== "on-own-new") return null;
+  const scope = attempts.filter((x) => step === null || x.cefrStep === step);
+  const own = scope.filter((x) => RANK[x.level] >= RANK["on-own-once"]);
+  if (own.length && own.every((x) => x.pick)) return { reason: "Only picks from given options so far — a right pick can be a guess." };
+  const shown = new Set(scope.filter((x) => x.level === status).map((x) => taskContext(x.task)));
+  if (shown.size === 1) return { reason: `${status === "held" ? "Held" : "The new situation"} is shown by one task only (${[...shown][0]}).` };
+  return null;
 }
 
 const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
@@ -304,14 +334,16 @@ export function learningLadder(input: LadderInput): LearningLadder {
       ? [...new Set(list.map((x) => x.cefrStep))].flatMap((step) => classify(list.filter((x) => x.cefrStep === step))).sort((x, y) => (x.at < y.at ? -1 : x.at > y.at ? 1 : x.id < y.id ? -1 : 1))
       : classify(list);
     const samples = def.observedOnly ? input.samples.filter((s) => s.kind === "expedition_log" || s.kind === "writing_transfer").length : 0;
-    let status: LadderStatus = def.observedOnly || def.noTaskYet ? "not-seen" : bestOf(attempts.map((x) => x.level));
+    const head = headlineOf(def, attempts);
+    let status: LadderStatus = def.observedOnly || def.noTaskYet ? "not-seen" : head.status;
     if (def.observedOnly && samples) status = "observed";
+    const headScope = attempts.filter((x) => head.step === null || x.cefrStep === head.step);
     const trend = visits.map((v) => {
       const here = attempts.filter((x) => x.visit === v.id);
       const s = def.observedOnly ? (input.samples.some((x) => x.visitId === v.id && (x.kind === "expedition_log" || x.kind === "writing_transfer")) ? "observed" : null) : here.length ? bestOf(here.map((x) => x.level)) : null;
       return { visit: v.id, label: v.label, status: s as LadderStatus | null };
     });
-    const scored = attempts.filter((x) => x.level !== "observed");
+    const scored = headScope.filter((x) => x.level !== "observed");
     const evidence = {
       answers: attempts.length,
       tasks: new Set(attempts.map((x) => taskContext(x.task))).size,
@@ -341,28 +373,31 @@ export function learningLadder(input: LadderInput): LearningLadder {
       status,
       trend,
       evidence,
-      meaning: meaningOf(def, status, evidence, latestNotYet, attempts, samples),
+      meaning: `${head.step && !def.noTaskYet && attempts.some((x) => x.cefrStep !== head.step) ? `At ${head.step}: ` : ""}${meaningOf(def, status, evidence, latestNotYet, headScope, samples)}`,
       latestNotYet,
       observedOnly: !!def.observedOnly,
       noTaskYet: !!def.noTaskYet,
+      headlineStep: def.cefr ? head.step : null,
+      thin: def.observedOnly || def.noTaskYet ? null : thinOf(status, head.step, attempts),
       attempts,
     };
   });
 
   // Summary: three lines from the ladder itself — never free text.
-  const before = (r: LadderRow) => bestOf(r.attempts.filter((x) => (visitIndex.get(x.visit) ?? -1) < lastIdx).map((x) => x.level));
+  const before = (r: LadderRow) => headlineOf(rowsDef.find((d) => d.id === r.id)!, r.attempts.filter((x) => (visitIndex.get(x.visit) ?? -1) < lastIdx)).status;
+  const thinTag = (r: LadderRow) => (r.thin ? " (thin evidence)" : "");
   const moved = lastVisit ? rows.filter((r) => !r.observedOnly && !r.noTaskYet && RANK[r.status] > RANK[before(r)]) : [];
   const lastHad = lastVisit ? rows.some((r) => r.attempts.some((x) => x.visit === lastVisit.id)) : false;
   const movedUp = !lastVisit
     ? "No visit yet."
     : moved.length
-      ? `Moved up in ${lastVisit.label}: ${moved.map((r) => `${r.label} → ${STATUS_EN[r.status]}`).join("; ")}.`
+      ? `Moved up in ${lastVisit.label}: ${moved.map((r) => `${r.label} → ${STATUS_EN[r.status]}${thinTag(r)}`).join("; ")}.`
       : lastHad
         ? `Nothing moved up in ${lastVisit.label}.`
         : `${lastVisit.label} has no scored answers yet${lastVisit.finishedAt ? "" : " (not finished)"}.`;
   const heldRows = rows.filter((r) => r.status === "held");
   const held = heldRows.length
-    ? `Held: ${heldRows.map((r) => r.label).join("; ")}.`
+    ? `Held: ${heldRows.map((r) => `${r.label}${thinTag(r)}`).join("; ")}.`
     : `Nothing held yet — no fresh task right on own ≥ ${DELAYED_RETENTION_DAYS} days after teaching so far.`;
   const candidates = rows
     .filter((r) => !r.observedOnly && !r.noTaskYet && NEXT_MOVE[r.status])

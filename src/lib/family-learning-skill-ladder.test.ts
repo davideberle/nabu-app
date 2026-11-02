@@ -230,6 +230,55 @@ describe("CEFR steps are separate skills", () => {
   });
 });
 
+describe("review decisions of 2026-11-02 (language headline, thin evidence)", () => {
+  it("a language row's chip speaks for the highest CEFR step attempted; lower steps stay on the track", () => {
+    const l = learningLadder(input("santiago", [
+      attempt({ objective: "language-es-completion", visitId: "v1", taskId: "LANG-ES-AGUA/produce", createdAt: at(1), stimulusLanguage: "es" }),
+      attempt({ objective: "language-es-completion", visitId: "v2", taskId: "LANG-ES-STATION/produce", createdAt: at(3), stimulusLanguage: "es" }),
+      attempt({ objective: "language-es-request", visitId: "v4", taskId: "MISSION-A/S6-ROSA", createdAt: at(10), stimulusLanguage: "es", evidence: "supported" }),
+    ]));
+    const r = rowOf(l, "s-es-speak");
+    equal(r.status, "with-help");
+    equal(r.headlineStep, "A1");
+    ok(r.meaning.startsWith("At A1: "));
+    if (r.reference.kind === "cefr") deepStrictEqual(r.reference.steps.map((x) => [x.step, x.status]), [["Pre-A1", "on-own-new"], ["A1", "with-help"]]);
+  });
+  it("Lehrplan 21 rows keep the best level ever reached", () => {
+    const l = learningLadder(input("santiago", [
+      attempt({ objective: "equal-sharing", visitId: "v1", taskId: "EQ-ENTRY", createdAt: at(1) }),
+      attempt({ objective: "equal-sharing", visitId: "v2", taskId: "EQ-FRESH", createdAt: at(2), correct: false, evidence: "incorrect" }),
+    ]));
+    equal(rowOf(l, "s-share").status, "on-own-once");
+    equal(rowOf(l, "s-share").headlineStep, null);
+  });
+  it("«held» backed only by picks from given options gets the thin marker — the status itself is unchanged", () => {
+    const l = learningLadder(input("santiago", [
+      attempt({ objective: "plan-under-constraints", visitId: "v1", taskId: "MISSION-A/S11-ROUTE", createdAt: at(1), modality: "pick" }),
+      attempt({ objective: "plan-judgment-viable", visitId: "v4", taskId: "MISSION-B/H6-CHOOSE", createdAt: at(12), modality: "pick" }),
+    ]));
+    const r = rowOf(l, "s-plan");
+    equal(r.status, "held");
+    ok(r.thin && /picks from given options/.test(r.thin.reason));
+    ok(l.summary.held.includes("Choosing a plan that meets every rule (thin evidence)"));
+  });
+  it("a status shown by one task only is thin; shown by two tasks it is not", () => {
+    let l = learningLadder(input("santiago", [
+      attempt({ objective: "area-count-fields", visitId: "v1", taskId: "MISSION-A/H4-FLOOR/row", createdAt: at(1) }),
+      attempt({ objective: "area-subtract-path", visitId: "v1", taskId: "MISSION-A/H5-PLANS/a", createdAt: at(1, 3) }),
+      attempt({ objective: "area-subtract-path", visitId: "v1", taskId: "MISSION-A/H5-PLANS/b", createdAt: at(1, 4) }),
+    ]));
+    equal(rowOf(l, "s-area-count").status, "on-own-new");
+    ok(rowOf(l, "s-area-count").thin?.reason.includes("MISSION-A/H5-PLANS"));
+    l = learningLadder(input("santiago", [
+      attempt({ objective: "equal-sharing", visitId: "v1", taskId: "EQ-ENTRY", createdAt: at(1) }),
+      attempt({ objective: "equal-sharing", visitId: "v1", taskId: "EQ-FRESH", createdAt: at(1, 3) }),
+      attempt({ objective: "equal-sharing", visitId: "v1", taskId: "EQ-RETURN", createdAt: at(1, 6) }),
+    ]));
+    equal(rowOf(l, "s-share").status, "on-own-new");
+    equal(rowOf(l, "s-share").thin, null);
+  });
+});
+
 describe("child isolation", () => {
   it("each child's table only points at that child's own rows", () => {
     for (const child of ["santiago", "isabel"] as const) {
