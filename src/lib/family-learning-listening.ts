@@ -42,6 +42,19 @@ type SynthLike = { cancel: () => void; speak: (u: UtteranceLike) => void };
 type UtteranceLike = { lang: string; rate: number; onend: (() => void) | null; onerror: (() => void) | null };
 
 /** Browser speech with a bounded wait. Injectable for tests; the real client passes nothing. */
+/**
+ * Nokt voice (2026-11-02): stop the browser's own speech (the fallback voice). The ElevenLabs player's `cancel()` stops only its
+ * audio element; a panel that closes must also silence a browser fallback that is still speaking. Safe without speech support.
+ */
+export function cancelBrowserSpeech(synth?: { cancel: () => void } | null): void {
+  const s = synth !== undefined ? synth : ((globalThis as unknown as { speechSynthesis?: { cancel: () => void } }).speechSynthesis ?? null);
+  try {
+    s?.cancel();
+  } catch {
+    /* best effort */
+  }
+}
+
 export function browserSpeech(env?: { synth?: SynthLike | null; makeUtterance?: (text: string) => UtteranceLike; setTimer?: (fn: () => void, ms: number) => unknown; clearTimer?: (t: unknown) => void }) {
   return (text: string, language: string): Promise<BrowserSpeechResult> => {
     const g = globalThis as unknown as { speechSynthesis?: SynthLike; SpeechSynthesisUtterance?: new (t: string) => UtteranceLike };

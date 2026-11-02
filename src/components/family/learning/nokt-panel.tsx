@@ -25,7 +25,7 @@ import type { ChildId } from "@/lib/family-assistant-turn";
 import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import { fictionalNoktTransport, type NoktMode, type NoktTurn } from "@/lib/family-learning-nokt";
 import type { NoktTranscribeOutcome, NoktTurnInput } from "@/lib/family-learning-client";
-import { browserSpeech } from "@/lib/family-learning-listening";
+import { browserSpeech, cancelBrowserSpeech } from "@/lib/family-learning-listening";
 import { startPushToTalk } from "@/lib/family-voice";
 import { adaptMediaRecorder } from "./nabu-sidebar";
 import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
@@ -63,7 +63,11 @@ export function NoktPanel({ child, mode, step, part, speech, transcribe = null, 
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: false });
-    return () => speech.cancel();
+    return () => {
+      speech.cancel();
+      // A browser fallback voice that is still speaking stops with the panel too.
+      cancelBrowserSpeech();
+    };
   }, [speech]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -112,12 +116,15 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn }
   // One talk per opening of the panel; a pending turn is aborted when the panel closes or the task changes (unmount).
   const sessionId = useMemo(() => newId("s"), []);
   const turnAbortRef = useRef<AbortController | null>(null);
+  const alive = useRef(true);
   useEffect(() => {
+    alive.current = true;
     // Leaving the page (navigation, reload, closing the tab) does not unmount React: abort the pending turn here too, so a
     // half-finished turn never posts a reply while the page unloads.
     const abort = () => turnAbortRef.current?.abort();
     window.addEventListener("pagehide", abort);
     return () => {
+      alive.current = false;
       window.removeEventListener("pagehide", abort);
       abort();
     };
@@ -129,7 +136,8 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn }
   const say = async (text: string) => {
     speech.unlock();
     const played = await speech.speak({ childId: child, text, language: "de", speaker: "nokt" });
-    if (played === "fallback") await browserSpeech()(text, "de");
+    // Only the ElevenLabs audio plays on success; the browser voice is the fallback, and never after the panel closed.
+    if (played === "fallback" && alive.current) await browserSpeech()(text, "de");
   };
   const send = async () => {
     const text = draft.trim();

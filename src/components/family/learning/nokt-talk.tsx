@@ -18,7 +18,7 @@ import { AssistantPortrait } from "@/components/family/assistant-portrait";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import type { NoktTalkLineView, NoktTalkPurpose } from "@/lib/family-learning-nokt-talk";
-import { browserSpeech } from "@/lib/family-learning-listening";
+import { browserSpeech, cancelBrowserSpeech } from "@/lib/family-learning-listening";
 import { NoktMic, type NoktTranscribe } from "./nokt-panel";
 import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
@@ -94,13 +94,16 @@ export function NoktTalk({
       window.removeEventListener("pagehide", abort);
       abort();
       speech.cancel();
+      // A browser fallback voice that is still speaking stops with the panel too.
+      cancelBrowserSpeech();
     };
   }, [speech]);
 
   const say = async (text: string) => {
     speech.unlock();
     const played = await speech.speak({ childId: child, text, language: "de", speaker: "nokt" });
-    if (played === "fallback") await browserSpeech()(text, "de");
+    // Only the ElevenLabs audio plays on success; the browser voice is the fallback, and never after the panel closed.
+    if (played === "fallback" && alive.current) await browserSpeech()(text, "de");
   };
 
   const run = async (text: string | undefined, entered: "voice" | "typed") => {

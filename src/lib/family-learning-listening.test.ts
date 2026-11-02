@@ -40,3 +40,14 @@ describe("V6-07 listening playback — mocked outcomes (no audio)", () => {
     equal(await pending, "timeout");
   });
 });
+
+describe("Nokt voice (2026-11-02): closing a panel also silences the browser fallback voice", () => {
+  it("cancelBrowserSpeech cancels the given synthesizer and never throws", async () => {
+    const { cancelBrowserSpeech } = await import("./family-learning-listening.ts");
+    let n = 0;
+    cancelBrowserSpeech({ cancel: () => { n += 1; } });
+    equal(n, 1);
+    cancelBrowserSpeech(null);
+    cancelBrowserSpeech({ cancel: () => { throw new Error("no speech"); } });
+  });
+});
