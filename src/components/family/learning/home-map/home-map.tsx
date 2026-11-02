@@ -14,7 +14,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import { deriveHomeWorld, seenKey, type HomeWorld, type Tile } from "@/lib/family-home-map";
 import type { HomeMapView } from "@/lib/family-home-map-view";
-import type { GameApi } from "./home-map-game";
+import type { GameApi, LabelPlacement } from "./home-map-game";
 
 function readSeen(child: ChildId): string[] | null {
   try {
@@ -54,7 +54,10 @@ export function HomeMap({ child, map, at, onArrive, busy, children }: HomeMapPro
   arriveRef.current = onArrive;
   const [seen] = useState<string[] | null>(() => (typeof window === "undefined" ? null : readSeen(child)));
   const world: HomeWorld = useMemo(() => deriveHomeWorld({ ...map.input, seen, lastPlace: at }), [map.input, seen, at]);
-  const [labels, setLabels] = useState<Record<string, { x: number; y: number }>>({});
+  /** Bumped whenever the game reports a new layout (first draw, resize); labels are then measured and placed again. */
+  const [layoutTick, setLayoutTick] = useState(0);
+  const [placed, setPlaced] = useState<LabelPlacement | null>(null);
+  const labelRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const [avatar, setAvatar] = useState<{ tile: Tile; walking: boolean }>({ tile: world.avatar, walking: false });
   const [arrival, setArrival] = useState<"none" | "playing" | "done">(world.arrivals.length ? "playing" : "none");
   const [ready, setReady] = useState(false);
@@ -75,9 +78,8 @@ export function HomeMap({ child, map, at, onArrive, busy, children }: HomeMapPro
       apiRef.current = startHomeMap(host, world, {
         onArrive: (place) => arriveRef.current(place),
         onAvatar: (tile, walking) => setAvatar({ tile, walking }),
-        onLayout: (pos) => {
-          setLabels(pos);
-          setReady(true);
+        onLayout: () => {
+          setLayoutTick((t) => t + 1);
         },
         onMissing: setMissing,
         onArrival: (state, ids) => {
@@ -91,12 +93,32 @@ export function HomeMap({ child, map, at, onArrive, busy, children }: HomeMapPro
     });
     return () => {
       cancelled = true;
+      setPlaced(null);
       apiRef.current?.destroy();
       apiRef.current = null;
     };
     // The game is rebuilt only when the world itself changes (a new piece, a new station), not on every render.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [worldKey, child]);
+
+  // Place the names once the game has laid out the map: each label is measured as rendered, then the game puts it under its
+  // own building (never over another sprite or label). The map is «ready» only when the names are in place.
+  useEffect(() => {
+    if (!layoutTick) return;
+    const raf = requestAnimationFrame(() => {
+      const api = apiRef.current;
+      if (!api) return;
+      const sizes: Record<string, { w: number; h: number }> = {};
+      for (const [id, el] of Object.entries(labelRefs.current)) if (el) sizes[id] = { w: el.offsetWidth, h: el.offsetHeight };
+      const result = api.placeLabels(sizes);
+      if (!result) return;
+      setPlaced(result);
+      setReady(true);
+      // Test hook (render checks): the game's opaque-pixel probe and label anchors; read-only.
+      (window as unknown as { __homeMapProbe?: unknown }).__homeMapProbe = { ownersUnder: api.ownersUnder, labelAnchor: api.labelAnchor };
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [layoutTick, worldKey]);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (arrival === "playing") {
@@ -139,32 +161,45 @@ export function HomeMap({ child, map, at, onArrive, busy, children }: HomeMapPro
       data-pieces={world.pieces.map((p) => `${p.id}:${p.stage}`).join(" ")}
       data-unplaced={world.unplaced.join(" ")}
       data-missing={missing.join(" ")}
+      data-label-overlaps={placed ? Object.entries(placed.overlaps).filter(([, o]) => o.length).map(([id, o]) => `${id}:${o.join("+")}`).join(" ") : ""}
     >
       <div ref={hostRef} className="absolute inset-0" data-testid="home-map-canvas" />
       {world.places
-        .filter((p) => !p.waypoint && labels[p.id])
-        .map((p) => (
-          <button
-            key={p.id}
-            type="button"
-            disabled={busy || arrival === "playing"}
-            onClick={() => apiRef.current?.walkTo(p.id)}
-            className="absolute -translate-x-1/2 whitespace-nowrap rounded-full border-2 px-3 font-bold shadow-sm transition-transform hover:scale-105 disabled:opacity-80"
-            style={{
-              left: labels[p.id].x,
-              top: labels[p.id].y + 16,
-              fontSize: p.state === "current" ? 17 : 14,
-              lineHeight: p.state === "current" ? "30px" : "24px",
-              background: p.state === "current" ? "#fff6d6" : "rgba(255,253,246,0.85)",
-              color: "#4a3520",
-              borderColor: p.state === "current" ? "#e0a526" : "#d6c3a3",
-            }}
-            data-testid={`home-place-${p.id}`}
-            data-state={p.state}
-          >
-            {p.label}
-          </button>
-        ))}
+        .filter((p) => !p.waypoint)
+        .map((p) => {
+          const at = placed?.pos[p.id];
+          const today = p.state === "current";
+          return (
+            <button
+              key={p.id}
+              ref={(el) => {
+                labelRefs.current[p.id] = el;
+              }}
+              type="button"
+              disabled={busy || arrival === "playing"}
+              onClick={() => apiRef.current?.walkTo(p.id)}
+              className="absolute whitespace-nowrap rounded-full px-3 shadow-sm transition-transform hover:scale-105 disabled:opacity-90"
+              style={{
+                left: at?.x ?? 0,
+                top: at?.y ?? 0,
+                visibility: at ? "visible" : "hidden",
+                // Today's place is the most visible name on the map; earlier places stay small and quiet.
+                fontSize: today ? 18 : 13,
+                fontWeight: today ? 800 : 600,
+                lineHeight: today ? "32px" : "22px",
+                background: today ? "#ffe27a" : "rgba(255,253,246,0.82)",
+                color: "#4a3520",
+                border: today ? "3px solid #d98a00" : "1px solid #d6c3a3",
+                boxShadow: today ? "0 3px 10px rgba(74,53,32,0.35)" : undefined,
+                zIndex: today ? 3 : 2,
+              }}
+              data-testid={`home-place-${p.id}`}
+              data-state={p.state}
+            >
+              {p.label}
+            </button>
+          );
+        })}
       {arrival === "playing" ? (
         <button type="button" className="absolute bottom-4 right-4 rounded-full bg-white/85 px-4 py-2 text-base font-semibold text-stone-800 shadow" onClick={() => apiRef.current?.skipArrival()} data-testid="home-map-skip">
           Weiter ▸

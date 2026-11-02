@@ -40,6 +40,9 @@ export type PieceDef = {
   footprint: { w: number; h: number };
   /** The content place (map.places[].id) this piece stands for, if any. */
   place: string | null;
+  /** A piece without its own place that belongs to another place's building (the greenhouse wing, the pipe of the tank):
+   *  that place's label may lie over it. */
+  partOf?: string;
   /** A variant chosen by the child in one step of the building visit: step id → option id → asset suffix. */
   variant?: { step: string; options: Record<string, string>; fallback: string };
 };
@@ -103,9 +106,9 @@ const SANTIAGO: WorldDef = {
     { id: "s-workshop", label: "Tipp-Werkstatt", builtBy: "v7", tile: { c: 8, r: 6 }, footprint: { w: 2, h: 2 }, place: "workshop" },
     { id: "s-garden-beds", label: "Gartenbeete", builtBy: "v8", tile: { c: 2, r: 6 }, footprint: { w: 2, h: 2 }, place: "garden" },
     { id: "s-greenhouse", label: "Gewächshaus", builtBy: "v8", tile: { c: 5, r: 1 }, footprint: { w: 3, h: 2 }, place: "greenhouse" },
-    { id: "s-greenhouse-wing", label: "Neuer Flügel", builtBy: "v9", tile: { c: 8, r: 1 }, footprint: { w: 2, h: 2 }, place: null },
+    { id: "s-greenhouse-wing", label: "Neuer Flügel", builtBy: "v9", tile: { c: 8, r: 1 }, footprint: { w: 2, h: 2 }, place: null, partOf: "greenhouse" },
     { id: "s-water-tank", label: "Wassertank", builtBy: "v10", tile: { c: 2, r: 1 }, footprint: { w: 2, h: 2 }, place: "tank" },
-    { id: "s-pipe", label: "Wasserleitung", builtBy: "v10", tile: { c: 4, r: 1 }, footprint: { w: 1, h: 2 }, place: null },
+    { id: "s-pipe", label: "Wasserleitung", builtBy: "v10", tile: { c: 4, r: 1 }, footprint: { w: 1, h: 2 }, place: null, partOf: "tank" },
   ],
 };
 
@@ -125,7 +128,7 @@ const ISABEL: WorldDef = {
   pieces: [
     { id: "i-garden-house", label: "Gartenhaus", builtBy: "v1", tile: { c: 1, r: 1 }, footprint: { w: 3, h: 3 }, place: "workshop" },
     { id: "i-stick-fence", label: "Stockzaun mit Tor", builtBy: "v2", tile: { c: 5, r: 1 }, footprint: { w: 3, h: 1 }, place: "garden" },
-    { id: "i-flower-garden", label: "Garten", builtBy: "v2", tile: { c: 9, r: 1 }, footprint: { w: 2, h: 2 }, place: null, variant: { step: "IG2-PLANT", options: { flowers: "flowers", vegetables: "vegetables", tree: "tree" }, fallback: "flowers" } },
+    { id: "i-flower-garden", label: "Garten", builtBy: "v2", tile: { c: 9, r: 1 }, footprint: { w: 2, h: 2 }, place: null, partOf: "garden", variant: { step: "IG2-PLANT", options: { flowers: "flowers", vegetables: "vegetables", tree: "tree" }, fallback: "flowers" } },
     { id: "i-vegetable-patch", label: "Gemüsebeet", builtBy: "v4", tile: { c: 8, r: 4 }, footprint: { w: 2, h: 2 }, place: "patch" },
     { id: "i-harvest-table", label: "Erntetisch", builtBy: "v4", tile: { c: 2, r: 7 }, footprint: { w: 2, h: 1 }, place: "table", variant: { step: "IH2-PICK", options: { apples: "apples", carrots: "carrots", corn: "corn" }, fallback: "apples" } },
   ],
@@ -151,7 +154,7 @@ export type HomeWorldInput = {
   lastPlace?: string | null;
 };
 
-export type HomePiece = { id: string; label: string; stage: "built" | "site"; tile: Tile; footprint: { w: number; h: number }; asset: string; place: string | null; builtBy: string; arriving: boolean };
+export type HomePiece = { id: string; label: string; stage: "built" | "site"; tile: Tile; footprint: { w: number; h: number }; asset: string; place: string | null; partOf: string | null; builtBy: string; arriving: boolean };
 export type HomePlace = { id: string; label: string; tile: Tile; state: "current" | "quiet"; waypoint: boolean };
 export type HomeWorld = {
   child: ChildId;
@@ -180,7 +183,7 @@ export function deriveHomeWorld(input: HomeWorldInput): HomeWorld {
     const variant = p.variant ? (p.variant.options[input.choices[p.variant.step] ?? ""] ?? p.variant.fallback) : null;
     // A site is the same for every variant (the choice is made during that visit); a built piece shows the child's choice.
     const asset = built ? `${p.id}${variant ? `-${variant}` : ""}-built` : `${p.id}-site`;
-    pieces.push({ id: p.id, label: p.label, stage: built ? "built" : "site", tile: p.tile, footprint: p.footprint, asset, place: p.place, builtBy: p.builtBy, arriving: false });
+    pieces.push({ id: p.id, label: p.label, stage: built ? "built" : "site", tile: p.tile, footprint: p.footprint, asset, place: p.place, partOf: p.partOf ?? null, builtBy: p.builtBy, arriving: false });
   }
   const builtIds = pieces.filter((p) => p.stage === "built").map((p) => p.id);
   // First time on this device: only the latest finished visit's pieces arrive (not the whole history at once).

@@ -23,8 +23,19 @@ export type GameCallbacks = {
   onMissing: (ids: string[]) => void;
 };
 
+export type LabelSize = { w: number; h: number };
+type Pt = { x: number; y: number };
+export type LabelAnchor = Pt & { footprint: { west: Pt; south: Pt; east: Pt; north: Pt } | null };
+export type LabelPlacement = { pos: Record<string, { x: number; y: number }>; overlaps: Record<string, string[]> };
+
 export type GameApi = {
   walkTo: (place: string) => void;
+  /** Place the name labels (sizes in screen px): each under its own piece's footprint, never over another sprite or label. */
+  placeLabels: (sizes: Record<string, LabelSize>) => LabelPlacement | null;
+  /** Owners (place ids, or `piece:<id>` for pieces without a place) whose OPAQUE pixels lie under a screen rectangle. */
+  ownersUnder: (rect: { x: number; y: number; w: number; h: number }) => string[];
+  /** Where a place's label belongs: its piece's footprint diamond on screen (west/south/east/north corners), else the place tile. */
+  labelAnchor: (place: string) => LabelAnchor | null;
   step: (dir: "up" | "down" | "left" | "right") => void;
   skipArrival: () => void;
   destroy: () => void;
@@ -58,6 +69,8 @@ export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCall
     arrivalTweens: Phaser.Tweens.Tween[] = [];
     arriving: Phaser.GameObjects.Image[] = [];
     arrivalDone = false;
+    /** Every drawn sprite that a label must not cover, with the place it belongs to. */
+    owned: { owner: string; img: Phaser.GameObjects.Image }[] = [];
     constructor() {
       super("home");
     }
@@ -90,7 +103,8 @@ export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCall
         }
         if (!pl.waypoint) {
           const sign = ASSETS.find((a) => a.id === "sign")!;
-          this.add.image(c.x + 34, c.y - 6, "sign").setOrigin(sign.anchor.x / sign.size.w, sign.anchor.y / sign.size.h).setScale(1 / ART_SCALE).setDepth(c.y - 6).setAlpha(pl.state === "current" ? 1 : 0.85);
+          const signImg = this.add.image(c.x + 34, c.y - 6, "sign").setOrigin(sign.anchor.x / sign.size.w, sign.anchor.y / sign.size.h).setScale(1 / ART_SCALE).setDepth(c.y - 6).setAlpha(pl.state === "current" ? 1 : 0.85);
+          this.owned.push({ owner: pl.id, img: signImg });
         }
       }
       const missing: string[] = [];
@@ -102,6 +116,7 @@ export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCall
         }
         const south = top({ c: p.tile.c + p.footprint.w, r: p.tile.r + p.footprint.h });
         const img = this.add.image(south.x, south.y, a.id).setOrigin(a.anchor.x / a.size.w, a.anchor.y / a.size.h).setScale(1 / ART_SCALE).setDepth(south.y);
+        this.owned.push({ owner: p.place ?? p.partOf ?? `piece:${p.id}`, img });
         if (p.arriving) {
           img.setData("finalY", south.y).setAlpha(0).setY(south.y + 40);
           this.arriving.push(img);
@@ -142,6 +157,94 @@ export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCall
       fit();
       cb.onAvatar(this.at, false);
       this.playArrival();
+    }
+    toScreen(x: number, y: number) {
+      const cam = this.cameras.main;
+      return { x: (x - cam.worldView.x) * cam.zoom, y: (y - cam.worldView.y) * cam.zoom };
+    }
+    /** Opaque-pixel test of the sprites under a screen rectangle (sampled every 4 px; arriving pieces at their final place). */
+    ownersUnder(rect: { x: number; y: number; w: number; h: number }): string[] {
+      const cam = this.cameras.main;
+      const hit = new Set<string>();
+      for (let sy = rect.y + 2; sy <= rect.y + rect.h - 2; sy += 4) {
+        for (let sx = rect.x + 2; sx <= rect.x + rect.w - 2; sx += 4) {
+          const w = cam.getWorldPoint(sx, sy);
+          for (const o of this.owned) {
+            if (hit.has(o.owner)) continue;
+            const img = o.img;
+            const y = (img.getData("finalY") as number | undefined) ?? img.y;
+            const left = img.x - img.displayWidth * img.originX;
+            const topY = y - img.displayHeight * img.originY;
+            const tx = Math.floor((w.x - left) / img.scaleX);
+            const ty = Math.floor((w.y - topY) / img.scaleY);
+            if (tx < 0 || ty < 0 || tx >= img.width || ty >= img.height) continue;
+            if (this.textures.getPixelAlpha(tx, ty, img.texture.key) > 40) hit.add(o.owner);
+          }
+        }
+      }
+      return [...hit];
+    }
+    labelAnchor(place: string): LabelAnchor | null {
+      const pl = world.places.find((x) => x.id === place);
+      if (!pl) return null;
+      const piece = world.pieces.find((p) => p.place === place);
+      if (!piece) return { ...this.toScreen(centre(pl.tile).x, centre(pl.tile).y), footprint: null };
+      const { c, r } = piece.tile;
+      const { w, h } = piece.footprint;
+      const s = (t: Tile) => {
+        const p = top(t);
+        return this.toScreen(p.x, p.y);
+      };
+      const south = s({ c: c + w, r: r + h });
+      return { ...south, footprint: { north: s({ c, r }), east: s({ c: c + w, r }), south, west: s({ c, r: r + h }) } };
+    }
+    /**
+     * Each label goes under its own piece's lowest footprint corner; nearby spots are tried when that one would cover another
+     * sprite or a label already placed. Today's places are placed first (they get the best spot).
+     */
+    placeLabels(sizes: Record<string, LabelSize>): LabelPlacement {
+      const order = [...world.places].filter((p) => !p.waypoint && sizes[p.id]).sort((a, b) => (a.state === b.state ? 0 : a.state === "current" ? -1 : 1));
+      const placed: { id: string; x: number; y: number; w: number; h: number }[] = [];
+      const pos: LabelPlacement["pos"] = {};
+      const overlaps: LabelPlacement["overlaps"] = {};
+      const W = this.scale.width;
+      const H = this.scale.height;
+      for (const pl of order) {
+        const { w, h } = sizes[pl.id];
+        const a = this.labelAnchor(pl.id)!;
+        const mid = (p: Pt, q: Pt, t = 0.5) => ({ x: p.x + (q.x - p.x) * t, y: p.y + (q.y - p.y) * t });
+        // Spots right under the footprint (along its two front edges), then inside it (over its own building).
+        const f = a.footprint;
+        const spots: { p: Pt; rank: number }[] = f
+          ? [
+              { p: f.south, rank: 0 },
+              { p: mid(f.west, f.south, 0.65), rank: 1 },
+              { p: mid(f.south, f.east, 0.35), rank: 1 },
+              { p: mid(f.west, f.south, 0.3), rank: 2 },
+              { p: mid(f.south, f.east, 0.7), rank: 2 },
+              { p: mid(f.north, f.south), rank: 3 },
+              { p: mid(mid(f.north, f.south), f.south, 0.5), rank: 3 },
+            ]
+          : [{ p: a, rank: 0 }];
+        let best: { x: number; y: number; cost: number; others: string[] } | null = null;
+        for (const spot of spots) for (const dy of [4, 16, 30]) {
+          for (const dx of [0, -0.3, 0.3]) {
+            // The label's centre stays within its own footprint's width.
+            const cx = f ? Math.min(Math.max(spot.p.x + dx * w, f.west.x + 8), f.east.x - 8) : spot.p.x + dx * w;
+            const x = Math.round(cx - w / 2);
+            const y = Math.round(spot.p.y + dy);
+            const others = this.ownersUnder({ x, y, w, h }).filter((o) => o !== pl.id);
+            const clash = placed.some((q) => x < q.x + q.w + 4 && q.x < x + w + 4 && y < q.y + q.h + 4 && q.y < y + h + 4);
+            const off = x < 4 || y < 4 || x + w > W - 4 || y + h > H - 4;
+            const cost = others.length * 1000 + (clash ? 1000 : 0) + (off ? 500 : 0) + spot.rank * 30 + Math.abs(dx) * 40 + dy;
+            if (!best || cost < best.cost) best = { x, y, cost, others };
+          }
+        }
+        pos[pl.id] = { x: best!.x, y: best!.y };
+        overlaps[pl.id] = best!.others;
+        placed.push({ id: pl.id, x: best!.x, y: best!.y, w, h });
+      }
+      return { pos, overlaps };
     }
     reportLayout() {
       const cam = this.cameras.main;
@@ -279,6 +382,9 @@ export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCall
   ro.observe(parent);
   return {
     walkTo: (place) => scene?.walkTo(place),
+    placeLabels: (sizes) => (scene ? scene.placeLabels(sizes) : null),
+    ownersUnder: (rect) => (scene ? scene.ownersUnder(rect) : []),
+    labelAnchor: (place) => (scene ? scene.labelAnchor(place) : null),
     step: (dir) => scene?.step(dir),
     skipArrival: () => scene?.skipArrival(),
     destroy: () => {

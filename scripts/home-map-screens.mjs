@@ -55,6 +55,41 @@ const shot = async (page, name) => {
 };
 const attr = (page, sel, a) => page.locator(sel).first().getAttribute(a);
 const noScroll = (page) => page.evaluate(() => ({ h: document.documentElement.scrollHeight, w: document.documentElement.scrollWidth, vh: window.innerHeight, vw: window.innerWidth }));
+/** Every place label: under its own building, over no other sprite's opaque pixels, no two labels overlapping, today's largest. */
+async function labelChecks(page, tag) {
+  const labels = await page.evaluate(() => {
+    const probe = window.__homeMapProbe;
+    const canvas = document.querySelector("[data-testid='home-map-canvas']").getBoundingClientRect();
+    return [...document.querySelectorAll("[data-testid^='home-place-']")].map((el) => {
+      const b = el.getBoundingClientRect();
+      const id = el.getAttribute("data-testid").replace("home-place-", "");
+      const r = { x: b.left - canvas.left, y: b.top - canvas.top, w: b.width, h: b.height };
+      return { id, state: el.getAttribute("data-state"), ...r, fs: parseFloat(getComputedStyle(el).fontSize), visible: getComputedStyle(el).visibility === "visible", owners: probe.ownersUnder(r), anchor: probe.labelAnchor(id) };
+    });
+  });
+  const over = labels.flatMap((l) => l.owners.filter((o) => o !== l.id).map((o) => `${l.id}→${o}`));
+  check(`${tag}.labels-over-no-other-sprite`, labels.length > 0 && over.length === 0, over);
+  const clashes = [];
+  for (const a of labels) for (const b of labels) if (a.id < b.id && a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h) clashes.push(`${a.id}×${b.id}`);
+  check(`${tag}.labels-do-not-overlap`, clashes.length === 0, clashes);
+  // The label's top centre lies inside its own building's footprint diamond or at most 48 px below its front edges
+  // (for a place without a building: within 48 px of the place tile).
+  const lerpY = (p, q, x) => p.y + ((q.y - p.y) * (x - p.x)) / (q.x - p.x || 1);
+  const far = labels.filter((l) => {
+    const cx = l.x + l.w / 2;
+    const f = l.anchor.footprint;
+    if (!f) return Math.hypot(cx - l.anchor.x, l.y - l.anchor.y) > 48;
+    if (cx < f.west.x || cx > f.east.x) return true;
+    const low = cx <= f.south.x ? lerpY(f.west, f.south, cx) : lerpY(f.south, f.east, cx);
+    const up = cx <= f.north.x ? lerpY(f.west, f.north, cx) : lerpY(f.north, f.east, cx);
+    return l.y < up - 4 || l.y > low + 48;
+  }).map((l) => ({ id: l.id, x: Math.round(l.x + l.w / 2), y: Math.round(l.y) }));
+  check(`${tag}.labels-under-own-building`, far.length === 0, far);
+  const today = labels.filter((l) => l.state === "current");
+  const quiet = labels.filter((l) => l.state !== "current");
+  check(`${tag}.today-label-most-visible`, today.length > 0 && today.every((t) => quiet.every((q) => t.fs > q.fs)) && labels.every((l) => l.visible), { today: today.map((t) => [t.id, t.fs]), quiet: quiet.map((q) => [q.id, q.fs]) });
+  check(`${tag}.game-reports-no-label-overlap`, (await attr(page, "[data-testid='home-map']", "data-label-overlaps")) === "");
+}
 async function mapReady(page) {
   await page.waitForSelector("[data-testid='home-map'][data-ready='true']", { timeout: 45000 });
   await page.waitForTimeout(300);
@@ -86,6 +121,7 @@ try {
   check("S.current-place-highlighted", (await page.locator("[data-testid='home-place-office'][data-state='current']").count()) === 1);
   check("S.earlier-places-quiet", (await page.locator("[data-testid='home-place-greenhouse'][data-state='quiet']").count()) === 1);
   check("S.minimal-chrome", (await page.locator("[data-testid='hud-stop']").count()) === 1 && (await page.locator("[data-testid='hud-wordbook'], [data-testid='hud-progress']").count()) === 0);
+  await labelChecks(page, "S.start");
   await shot(page, "santiago-map");
   // keys walk along the paths
   await page.locator("[data-testid='home-map']").focus();
@@ -114,6 +150,7 @@ try {
   const sz2 = await noScroll(page);
   const below = await page.evaluate(() => [...document.querySelectorAll("body *")].filter((e) => e.getBoundingClientRect().bottom > window.innerHeight && e.getBoundingClientRect().height > 0).map((e) => `${e.tagName}#${e.getAttribute("data-testid") ?? ""}.${String(e.className).slice(0, 50)}:${Math.round(e.getBoundingClientRect().top)}-${Math.round(e.getBoundingClientRect().bottom)}`).slice(-8));
   check("S.mission-map-fits-no-scroll", sz2.h <= sz2.vh, { ...sz2, below });
+  await labelChecks(page, "S.mission");
   await shot(page, "santiago-map-after-scene");
   // Nokt on the map: closed until tapped, then the step-1 dock; closes again
   if ((await page.locator("[data-testid='nokt-button']").count()) === 1) {
@@ -179,6 +216,7 @@ try {
   check("I.garden-is-today", (await page.locator("[data-testid='home-place-garden'][data-state='current']").count()) === 1);
   const sz = await noScroll(page);
   check("I.fits-1440x780-no-scroll", sz.h <= sz.vh && sz.w <= sz.vw, sz);
+  await labelChecks(page, "I.start");
   await shot(page, "isabel-map");
   await page.locator("[data-testid='home-place-garden']").click();
   await page.waitForURL(/\/family\/learn\/mission/, { timeout: 15000 });
