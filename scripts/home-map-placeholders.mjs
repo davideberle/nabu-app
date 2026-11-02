@@ -2,7 +2,9 @@
 // Step 2 B (2026-11-02): writes the PLACEHOLDER sprites of the home map (public/family/home-map/) at the exact sizes and
 // anchors of the manifest (src/lib/family-home-map-assets.ts), and the art brief ASSET-MANIFEST.md from the same data.
 // Final art replaces the files one by one with the same names; nothing in the code changes.
-//   node scripts/home-map-placeholders.mjs [--manifest <path/ASSET-MANIFEST.md>]
+//   node scripts/home-map-placeholders.mjs --check                       verify every file (name, pixel size); writes nothing
+//   node scripts/home-map-placeholders.mjs [--manifest <path/ASSET-MANIFEST.md>]   write placeholders ONLY for missing files
+//   node scripts/home-map-placeholders.mjs --force [--manifest …]          regenerate every placeholder (overwrites delivered art!)
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
@@ -13,6 +15,8 @@ const require = createRequire(import.meta.url);
 const sharp = require("sharp");
 const args = process.argv.slice(2);
 const manifestPath = args.includes("--manifest") ? args[args.indexOf("--manifest") + 1] : null;
+const CHECK = args.includes("--check");
+const FORCE = args.includes("--force");
 const out = new URL("../public/family/home-map/", import.meta.url);
 fs.mkdirSync(out, { recursive: true });
 
@@ -108,8 +112,29 @@ function simpleSvg(a) {
   return null;
 }
 
+if (CHECK) {
+  const problems = [];
+  for (const a of ASSETS) {
+    const file = new URL(`${a.id}.${a.format}`, out).pathname;
+    if (!fs.existsSync(file)) {
+      problems.push(`${a.id}.${a.format}: missing`);
+      continue;
+    }
+    const meta = await sharp(file).metadata();
+    if (meta.width !== a.size.w || meta.height !== a.size.h) problems.push(`${a.id}.${a.format}: ${meta.width}×${meta.height}, manifest ${a.size.w}×${a.size.h}`);
+    if (a.id !== "water" && !meta.hasAlpha) problems.push(`${a.id}.${a.format}: no transparency`);
+  }
+  console.log(JSON.stringify({ checked: ASSETS.length, problems }, null, 1));
+  process.exit(problems.length ? 1 : 0);
+}
+
 let written = 0;
+let kept = 0;
 for (const a of ASSETS) {
+  if (!FORCE && fs.existsSync(new URL(`${a.id}.${a.format}`, out).pathname)) {
+    kept += 1;
+    continue;
+  }
   let svg;
   if (a.kind === "piece") svg = pieceSvg(a);
   else if (a.kind === "island") svg = islandSvg(a, a.world);
@@ -125,7 +150,7 @@ for (const a of ASSETS) {
   if (meta.width !== a.size.w || meta.height !== a.size.h) throw new Error(`${a.id}: ${meta.width}×${meta.height} ≠ manifest ${a.size.w}×${a.size.h}`);
   written += 1;
 }
-console.log(JSON.stringify({ placeholders: written, dir: out.pathname }));
+console.log(JSON.stringify({ placeholders: written, kept, dir: out.pathname }));
 
 if (manifestPath) {
   const usedBy = (id) => Object.values(WORLDS).flatMap((w) => w.pieces.filter((p) => id.startsWith(`${p.id}-`)).map((p) => `${w.child} · ${p.label} · built after ${p.builtBy}${p.place ? ` · place «${p.place}»` : ""} · tile c${p.tile.c} r${p.tile.r}`));
