@@ -41,6 +41,8 @@ import type { SupportOutcome } from "@/lib/family-learning-tutor";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
 import { IsabelHub } from "@/components/family/learning/workshop-hub";
 import { HomeMapLazy, useFillViewport } from "@/components/family/learning/home-map/home-map-lazy";
+import { HomeMapLoading } from "@/components/family/learning/home-map/home-map-loading";
+import { homeMapEnabled, type HomeMapFlag } from "@/lib/family-home-map";
 import { VisitReportView } from "@/components/family/learning/visit-report";
 import { focusRing, primaryButton, secondaryButton } from "./mission/styles";
 import { NextInterestQuestion, interestReady, type InterestAnswer } from "@/components/family/learning/next-interest";
@@ -51,11 +53,11 @@ type Load =
   | { kind: "unprepared" }
   | { kind: "trouble"; message: string };
 
-export function FamilyLearnClient() {
+export function FamilyLearnClient({ homeMap = "off" }: { homeMap?: HomeMapFlag } = {}) {
   const { child, restored } = useChildShell();
   if (!restored || !child) return null;
   // Keyed by child: switching profiles discards the other child's view instantly instead of rendering it for a frame.
-  return <World key={child} child={child} />;
+  return <World key={child} child={child} homeMap={homeMap} />;
 }
 
 function formatDate(iso: string): string {
@@ -94,7 +96,7 @@ export function worldMarkers(view: ChildView): WorldMarker[] {
 
 type Panel = { kind: "report"; visit: string } | { kind: "logbook" } | { kind: "progress" } | { kind: "supplies" } | { kind: "wordbook" } | null;
 
-function World({ child }: { child: ChildId }) {
+function World({ child, homeMap }: { child: ChildId; homeMap: HomeMapFlag }) {
   const client = useMemo(() => createLearningClient(), []);
   const speech = useMemo(() => createChildSpeechPlayer(), []);
   const tutorClient = useMemo(() => createChildTurnClient(), []);
@@ -206,6 +208,15 @@ function World({ child }: { child: ChildId }) {
   };
   const closePanel = () => openPanel(null);
 
+  if (load.kind === "loading" && homeMapEnabled(homeMap, child)) {
+    // Step 2 B: the map start screen — the child's own avatar and line from the very first moment (also while a cold server
+    // answers the view request), never the plain loading line.
+    return (
+      <div className="relative w-full" style={{ height: "calc(100dvh - 5rem)", minHeight: 480 }} data-testid="world-loading" data-home-map="true">
+        <HomeMapLoading child={child} />
+      </div>
+    );
+  }
   if (load.kind === "loading") {
     return (
       <div className="mx-auto max-w-3xl px-4 py-10">

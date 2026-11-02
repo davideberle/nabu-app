@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { auth } from "@/auth";
+import { homeMapFlag } from "@/lib/family-home-map";
 import { FamilyLearnClient } from "./client";
 
 export const metadata: Metadata = {
@@ -14,5 +15,7 @@ export const metadata: Metadata = {
 // from the server view under a child-scoped learning credential.
 export default async function FamilyLearnPage() {
   await auth();
-  return <FamilyLearnClient />;
+  // Step 2 B: the home-map flag is known here, before the child's view request, so a child with the map sees their own
+  // loading card from the first moment (no server data needed; the child comes from the shell profile).
+  return <FamilyLearnClient homeMap={homeMapFlag(process.env)} />;
 }

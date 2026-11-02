@@ -104,8 +104,20 @@ try {
     await new Promise((res) => setTimeout(res, 1200));
     await r.continue();
   });
+  // Hold the child's view request back too (a cold server): the card must already be there before the view returns.
+  let viewReturned = false;
+  await page.route("**/api/family/learning/mission*", async (r) => {
+    requests.push(new URL(r.request().url()).pathname);
+    await new Promise((res) => setTimeout(res, 2000));
+    await r.continue();
+    viewReturned = true;
+  });
   const t0 = Date.now();
   await page.goto(`${BASE}/family/learn?child=santiago`);
+  await page.waitForSelector("[data-testid='world-loading'] [data-testid='home-map-loading-card']", { timeout: 20000 });
+  const early = await page.evaluate(() => ({ text: document.querySelector("[data-testid='home-map-loading-text']")?.textContent ?? "", plainLine: document.body.innerText.includes("Expedition wird geladen") }));
+  check("S.card-before-view-returns", !viewReturned && early.text === "Deine Insel lädt …" && !early.plainLine, { viewReturned, ...early });
+  await shot(page, "santiago-card-before-view");
   await page.waitForSelector("[data-testid='home-map-loading-card']", { timeout: 20000 });
   const card = await page.evaluate(() => ({ text: document.querySelector("[data-testid='home-map-loading-text']")?.textContent ?? "", avatar: getComputedStyle(document.querySelector("[data-testid='home-map-loading-avatar']")).backgroundImage }));
   check("S.loading-card-avatar-and-line", card.text === "Deine Insel lädt …" && /santiago-avatar\.png/.test(card.avatar), card);
@@ -259,7 +271,13 @@ try {
 if (OFF) {
   for (const who of ["santiago", "isabel"]) {
     const { c, page, requests } = await ctx(OFF, null);
+    await page.route("**/api/family/learning/mission*", async (r) => {
+      await new Promise((res) => setTimeout(res, 1500));
+      await r.continue();
+    });
     await page.goto(`${OFF}/family/learn?child=${who}`);
+    await page.waitForFunction(() => document.body.innerText.includes("Expedition wird geladen"), null, { timeout: 15000 }).catch(() => null);
+    check(`OFF.${who}-plain-loading-line-unchanged`, (await page.evaluate(() => document.body.innerText.includes("Expedition wird geladen"))) && (await page.locator("[data-testid='home-map-loading-card']").count()) === 0);
     await page.waitForTimeout(2500);
     check(`OFF.${who}-released-start-screen`, (await page.locator("[data-testid='home-map'], [data-home-map='true']").count()) === 0);
     check(`OFF.${who}-no-map-assets`, requests.filter((p) => p.startsWith("/family/home-map/")).length === 0);
