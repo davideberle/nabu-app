@@ -206,3 +206,21 @@ describe("child-device access to the sprites", () => {
     equal(ASSETS.length, 31);
   });
 });
+
+describe("1× ground for windows up to 1440 px", () => {
+  it("the islands and the water have half-size companions (resized, same aspect), and the child device may load exactly those too", async () => {
+    const { createRequire } = await import("node:module");
+    const sharp = createRequire(import.meta.url)("sharp");
+    const { ALL_ASSET_URLS, assetUrl1x } = await import("./family-home-map-assets.ts");
+    const { isTrackerAllowedPath } = await import("./access.ts");
+    const ones = ASSETS.filter((a) => a.oneX);
+    deepStrictEqual(ones.map((a) => a.id).sort(), ["isabel-island", "santiago-island", "water"]);
+    for (const a of ones) {
+      const meta = await sharp(new URL(`../../public/family/home-map/${a.id}@1x.${a.format}`, import.meta.url).pathname).metadata();
+      deepStrictEqual([meta.width, meta.height], [a.size.w / 2, a.size.h / 2], a.id);
+      ok(isTrackerAllowedPath(assetUrl1x(a)), assetUrl1x(a));
+    }
+    equal(ALL_ASSET_URLS.length, 34);
+    ok(!isTrackerAllowedPath("/family/home-map/s-dock-built@1x.png"));
+  });
+});

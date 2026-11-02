@@ -15,6 +15,7 @@ import type { ChildId } from "@/lib/family-assistant-turn";
 import { deriveHomeWorld, seenKey, type HomeWorld, type Tile } from "@/lib/family-home-map";
 import type { HomeMapView } from "@/lib/family-home-map-view";
 import type { GameApi, LabelPlacement } from "./home-map-game";
+import { HomeMapLoading } from "./home-map-loading";
 
 function readSeen(child: ChildId): string[] | null {
   try {
@@ -164,6 +165,8 @@ export function HomeMap({ child, map, at, onArrive, busy, children }: HomeMapPro
       data-label-overlaps={placed ? Object.entries(placed.overlaps).filter(([, o]) => o.length).map(([id, o]) => `${id}:${o.join("+")}`).join(" ") : ""}
     >
       <div ref={hostRef} className="absolute inset-0" data-testid="home-map-canvas" />
+      {/* Until the map has drawn itself and placed its names: the child's avatar and one short line (never a blank sea). */}
+      {!ready ? <HomeMapLoading child={child} /> : null}
       {world.places
         .filter((p) => !p.waypoint)
         .map((p) => {

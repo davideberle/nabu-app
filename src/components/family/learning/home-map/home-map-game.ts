@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 import Phaser from "phaser";
-import { ART_SCALE, ASSETS, assetUrl, TILE_H, TILE_W, type AssetDef } from "@/lib/family-home-map-assets";
+import { ART_SCALE, ASSETS, assetUrl, assetUrl1x, ONE_X_MAX_WIDTH, TILE_H, TILE_W, type AssetDef } from "@/lib/family-home-map-assets";
 import { walkPath, type HomeWorld, type Tile } from "@/lib/family-home-map";
 
 export type GameCallbacks = {
@@ -58,6 +58,9 @@ function assetsFor(world: HomeWorld): AssetDef[] {
 }
 
 export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCallbacks): GameApi {
+  // Islands and water: the half-size companions on windows up to 1440 px (same picture, a quarter of the pixels).
+  const oneX = window.innerWidth <= ONE_X_MAX_WIDTH;
+  const groundScale = oneX ? 1 : ART_SCALE;
   let scene: HomeScene | null = null;
   class HomeScene extends Phaser.Scene {
     avatar!: Phaser.GameObjects.Sprite;
@@ -77,16 +80,16 @@ export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCall
     preload() {
       for (const a of assetsFor(world)) {
         if (a.frames) this.load.spritesheet(a.id, assetUrl(a), { frameWidth: a.frames.w, frameHeight: a.frames.h });
-        else this.load.image(a.id, assetUrl(a));
+        else this.load.image(a.id, a.oneX && oneX ? assetUrl1x(a) : assetUrl(a));
       }
     }
     create() {
       scene = this;
       // The sea lives in world space (a screen-fixed sprite would still be scaled by the camera zoom and leave bare edges);
       // it is far larger than any view the camera fit can show.
-      this.add.tileSprite(FIT.x + FIT.w / 2, FIT.y + FIT.h / 2, FIT.w * 4, FIT.h * 4, "water").setTileScale(1 / ART_SCALE).setDepth(-1000);
+      this.add.tileSprite(FIT.x + FIT.w / 2, FIT.y + FIT.h / 2, FIT.w * 4, FIT.h * 4, "water").setTileScale(1 / groundScale).setDepth(-1000);
       const island = ASSETS.find((a) => a.id === `${world.child}-island`)!;
-      this.add.image(0, 0, island.id).setOrigin(island.anchor.x / island.size.w, island.anchor.y / island.size.h).setScale(1 / ART_SCALE).setDepth(-900);
+      this.add.image(0, 0, island.id).setOrigin(island.anchor.x / island.size.w, island.anchor.y / island.size.h).setScale(1 / groundScale).setDepth(-900);
       const pathTile = ASSETS.find((a) => a.id === "path-tile")!;
       const seen = new Set<string>();
       for (const t of world.paths) {

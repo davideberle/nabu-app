@@ -98,9 +98,21 @@ async function mapReady(page) {
 // ---------------------------------------------------------------- Santiago: arrival, walk, place → scene → back
 try {
   const { c, page, external, requests } = await ctx(BASE, null);
+  // Hold the island back for a moment on this first open: the child must see the loading card (avatar + line), not a blank sea.
+  await page.route("**/family/home-map/santiago-island*", async (r) => {
+    requests.push(new URL(r.request().url()).pathname); // a page route takes the request over from the context recorder
+    await new Promise((res) => setTimeout(res, 1200));
+    await r.continue();
+  });
   const t0 = Date.now();
   await page.goto(`${BASE}/family/learn?child=santiago`);
+  await page.waitForSelector("[data-testid='home-map-loading-card']", { timeout: 20000 });
+  const card = await page.evaluate(() => ({ text: document.querySelector("[data-testid='home-map-loading-text']")?.textContent ?? "", avatar: getComputedStyle(document.querySelector("[data-testid='home-map-loading-avatar']")).backgroundImage }));
+  check("S.loading-card-avatar-and-line", card.text === "Deine Insel lädt …" && /santiago-avatar\.png/.test(card.avatar), card);
+  await shot(page, "santiago-loading");
   await mapReady(page);
+  check("S.loading-card-gone-when-ready", (await page.locator("[data-testid='home-map'] [data-testid='home-map-loading-card']").count()) === 0);
+  check("S.1x-ground-at-1440", requests.includes("/family/home-map/santiago-island@1x.webp") && requests.includes("/family/home-map/water@1x.webp") && !requests.includes("/family/home-map/santiago-island.webp") && !requests.includes("/family/home-map/water.webp"), requests.filter((p) => /island|water/.test(p)));
   const loadMs = Date.now() - t0;
   check("S.map-load-ms", loadMs < 8000, { loadMs });
   check("S.flag-on-start-screen-is-the-map", (await page.locator("[data-testid='world-screen'][data-home-map='true']").count()) === 1);
@@ -206,8 +218,18 @@ try {
 // ---------------------------------------------------------------- Isabel: her own world, garden → workshop scene, Pause → map
 try {
   const { c, page, requests } = await ctx(BASE, null);
+  await page.route("**/family/home-map/isabel-island*", async (r) => {
+    requests.push(new URL(r.request().url()).pathname); // a page route takes the request over from the context recorder
+    await new Promise((res) => setTimeout(res, 1200));
+    await r.continue();
+  });
   await page.goto(`${BASE}/family/learn?child=isabel`);
+  await page.waitForSelector("[data-testid='home-map-loading-card']", { timeout: 20000 });
+  const icard = await page.evaluate(() => ({ text: document.querySelector("[data-testid='home-map-loading-text']")?.textContent ?? "", avatar: getComputedStyle(document.querySelector("[data-testid='home-map-loading-avatar']")).backgroundImage }));
+  check("I.loading-card-avatar-and-line", icard.text === "Dein Garten lädt …" && /isabel-avatar\.png/.test(icard.avatar), icard);
+  await shot(page, "isabel-loading");
   await mapReady(page);
+  check("I.1x-ground-at-1440", requests.includes("/family/home-map/isabel-island@1x.webp") && !requests.includes("/family/home-map/isabel-island.webp"), requests.filter((p) => /island|water/.test(p)));
   await page.keyboard.press("Space");
   await page.waitForTimeout(200);
   const pieces = (await attr(page, "[data-testid='home-map']", "data-pieces")).split(" ");

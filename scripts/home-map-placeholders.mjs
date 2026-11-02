@@ -5,6 +5,8 @@
 //   node scripts/home-map-placeholders.mjs --check                       verify every file (name, pixel size); writes nothing
 //   node scripts/home-map-placeholders.mjs [--manifest <path/ASSET-MANIFEST.md>]   write placeholders ONLY for missing files
 //   node scripts/home-map-placeholders.mjs --force [--manifest …]          regenerate every placeholder (overwrites delivered art!)
+//   node scripts/home-map-placeholders.mjs --derive-1x                    write the half-size companions (<id>@1x) of the islands
+//                                                                          and the water from the 2× files (resize only, no new art)
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
@@ -17,6 +19,7 @@ const args = process.argv.slice(2);
 const manifestPath = args.includes("--manifest") ? args[args.indexOf("--manifest") + 1] : null;
 const CHECK = args.includes("--check");
 const FORCE = args.includes("--force");
+const DERIVE_1X = args.includes("--derive-1x");
 const out = new URL("../public/family/home-map/", import.meta.url);
 fs.mkdirSync(out, { recursive: true });
 
@@ -112,8 +115,30 @@ function simpleSvg(a) {
   return null;
 }
 
+if (DERIVE_1X) {
+  const made = [];
+  for (const a of ASSETS.filter((x) => x.oneX)) {
+    const src = new URL(`${a.id}.${a.format}`, out).pathname;
+    const dst = new URL(`${a.id}@1x.${a.format}`, out).pathname;
+    await sharp(src).resize(a.size.w / 2, a.size.h / 2, { kernel: "lanczos3" }).webp({ quality: 86, alphaQuality: 95, effort: 6 }).toFile(dst);
+    made.push({ file: `${a.id}@1x.${a.format}`, kb2x: Math.round(fs.statSync(src).size / 1024), kb1x: Math.round(fs.statSync(dst).size / 1024) });
+  }
+  console.log(JSON.stringify({ derived: made }, null, 1));
+  process.exit(0);
+}
+
 if (CHECK) {
   const problems = [];
+  for (const a of ASSETS.filter((x) => x.oneX)) {
+    const file = new URL(`${a.id}@1x.${a.format}`, out).pathname;
+    if (!fs.existsSync(file)) {
+      problems.push(`${a.id}@1x.${a.format}: missing (run --derive-1x)`);
+      continue;
+    }
+    const meta = await sharp(file).metadata();
+    if (meta.width !== a.size.w / 2 || meta.height !== a.size.h / 2) problems.push(`${a.id}@1x.${a.format}: ${meta.width}×${meta.height}, expected ${a.size.w / 2}×${a.size.h / 2}`);
+    if (a.id !== "water" && !meta.hasAlpha) problems.push(`${a.id}@1x.${a.format}: no transparency`);
+  }
   for (const a of ASSETS) {
     const file = new URL(`${a.id}.${a.format}`, out).pathname;
     if (!fs.existsSync(file)) {

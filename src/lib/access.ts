@@ -1,4 +1,4 @@
-import { ASSETS, assetUrl } from "./family-home-map-assets.ts";
+import { ALL_ASSET_URLS } from "./family-home-map-assets.ts";
 const ADMIN_EMAIL = "info@davideberle.com";
 const DEFAULT_TRACKER_ONLY_EMAILS = ["assistant@davideberle.com"];
 
@@ -26,7 +26,7 @@ export function isTrackerOnlyEmail(email: string | null | undefined): boolean {
 }
 
 /** Step 2 B: the exact sprite files of the home map (lib/family-home-map-assets.ts); presentation art, no child data. */
-const HOME_MAP_ASSET_PATHS = new Set(ASSETS.map(assetUrl));
+const HOME_MAP_ASSET_PATHS = new Set(ALL_ASSET_URLS);
 
 export function isTrackerAllowedPath(pathname: string): boolean {
   return (

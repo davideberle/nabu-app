@@ -4,11 +4,22 @@
 // fetched only when a child whose FAMILY_HOME_MAP flag is on actually sees the map.
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState, type CSSProperties } from "react";
+import type { HomeMapProps } from "./home-map";
+import { HomeMapLoading } from "./home-map-loading";
 
-export const HomeMapLazy = dynamic(() => import("./home-map").then((m) => m.HomeMap), {
-  ssr: false,
-  loading: () => <div className="h-full w-full" style={{ background: "#3fc1d4" }} data-testid="home-map-loading" />,
-});
+const HomeMapInner = dynamic(() => import("./home-map").then((m) => m.HomeMap), { ssr: false, loading: () => null });
+
+/** The map with its loading card underneath: the card shows at once; the map covers it only once it has drawn itself. */
+export function HomeMapLazy(props: HomeMapProps) {
+  return (
+    <div className="relative h-full w-full" data-testid="home-map-loading">
+      <HomeMapLoading child={props.child} />
+      <div className="absolute inset-0 z-40">
+        <HomeMapInner {...props} />
+      </div>
+    </div>
+  );
+}
 
 /**
  * The map fills exactly the space left below its top edge (the shell bar and any header above it vary), so the page never

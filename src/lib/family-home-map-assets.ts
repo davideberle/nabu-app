@@ -33,6 +33,8 @@ export type AssetDef = {
   /** Spritesheet frames (left to right, then rows). */
   frames?: { w: number; h: number; count: number; layout: string };
   notes?: string;
+  /** A half-size companion `<id>@1x.<format>` exists (resized from the 2× file, no new art): served to windows up to 1440 px. */
+  oneX?: true;
 };
 
 /** A piece sprite: footprint w×h tiles, extra height above the footprint diamond (logical px). */
@@ -47,9 +49,9 @@ const SITE = "Construction site of the same footprint: marked plot (string and w
 export const ASSETS: AssetDef[] = [
   // Islands: the ground of each world, painted once. Grass with the faint tile pattern of the references, cliffs and the
   // foam line; NO paths, NO buildings, NO characters (they are separate sprites). Transparent outside the island.
-  { id: "santiago-island", world: "santiago", kind: "island", shows: "Santiago's expedition island: 12×12 grass tiles on a low cliff (sand-brown earth, grey rocks), a small hill in the top-left quarter (tiles c 0–3, r 0–4) for the water tank, a few trees and rocks ONLY outside the 12×12 grid, gentle foam where the cliffs meet the water.", size: { w: 3328, h: 2048 }, anchor: { x: 1664, y: 256 }, format: "webp", notes: "Anchor = the top corner of tile (c 0, r 0). The grid's left corner is at x 128, right corner at x 3200, bottom corner at y 1792 (file px). Cliffs hang below the grid edge to about y 1920." },
-  { id: "isabel-island", world: "isabel", kind: "island", shows: "Isabel's garden island: 12×12 soft grass tiles on a low cliff, a little terrace in the top-left corner (tiles c 0–3, r 0–3) for the garden house, round trees and flower bushes ONLY outside the grid, gentle foam at the water line.", size: { w: 3328, h: 2048 }, anchor: { x: 1664, y: 256 }, format: "webp", notes: "Same geometry as santiago-island." },
-  { id: "water", world: "shared", kind: "ground", shows: "Seamless tileable turquoise water with soft light ripples (as in both references).", size: { w: 512, h: 512 }, anchor: { x: 0, y: 0 }, format: "webp", notes: "Must tile seamlessly in both directions; it fills the whole 1440×780 view behind the island." },
+  { id: "santiago-island", world: "santiago", kind: "island", shows: "Santiago's expedition island: 12×12 grass tiles on a low cliff (sand-brown earth, grey rocks), a small hill in the top-left quarter (tiles c 0–3, r 0–4) for the water tank, a few trees and rocks ONLY outside the 12×12 grid, gentle foam where the cliffs meet the water.", size: { w: 3328, h: 2048 }, anchor: { x: 1664, y: 256 }, format: "webp", oneX: true, notes: "Anchor = the top corner of tile (c 0, r 0). The grid's left corner is at x 128, right corner at x 3200, bottom corner at y 1792 (file px). Cliffs hang below the grid edge to about y 1920." },
+  { id: "isabel-island", world: "isabel", kind: "island", shows: "Isabel's garden island: 12×12 soft grass tiles on a low cliff, a little terrace in the top-left corner (tiles c 0–3, r 0–3) for the garden house, round trees and flower bushes ONLY outside the grid, gentle foam at the water line.", size: { w: 3328, h: 2048 }, anchor: { x: 1664, y: 256 }, format: "webp", oneX: true, notes: "Same geometry as santiago-island." },
+  { id: "water", world: "shared", kind: "ground", shows: "Seamless tileable turquoise water with soft light ripples (as in both references).", size: { w: 512, h: 512 }, anchor: { x: 0, y: 0 }, format: "webp", oneX: true, notes: "Must tile seamlessly in both directions; it fills the whole 1440×780 view behind the island." },
   { id: "path-tile", world: "shared", kind: "ground", shows: "One diamond of sandy stone path (warm beige, slightly worn edges), flat on the ground.", size: { w: 256, h: 128 }, anchor: { x: 128, y: 0 }, format: "png", notes: "Exactly one tile diamond, transparent outside it; neighbouring tiles must join without a seam. Anchor = top corner." },
 
   // Santiago's pieces (built stage; site stage only where the visit is still to come).
@@ -92,3 +94,9 @@ export const ASSETS: AssetDef[] = [
 
 export const assetById = (id: string) => ASSETS.find((a) => a.id === id) ?? null;
 export const assetUrl = (a: AssetDef) => `/family/home-map/${a.id}.${a.format}`;
+/** The half-size companion of a large ground file (islands, water). */
+export const assetUrl1x = (a: AssetDef) => `/family/home-map/${a.id}@1x.${a.format}`;
+/** Every file the map may request: the 31 manifest files plus the 1× companions. */
+export const ALL_ASSET_URLS: string[] = [...ASSETS.map(assetUrl), ...ASSETS.filter((a) => a.oneX).map(assetUrl1x)];
+/** Windows up to this width get the 1× ground (the canvas draws at CSS pixels; the island is shown at ~1100 px there). */
+export const ONE_X_MAX_WIDTH = 1440;
