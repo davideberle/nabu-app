@@ -167,6 +167,15 @@ describe("status rules", () => {
     ]));
     equal(rowOf(l, "s-share").status, "on-own-new");
   });
+  it("a recorded teaching move without a score (a writing review) resets the clock for «held»", () => {
+    const l = learningLadder(input("santiago", [
+      attempt({ objective: "writing-spacing-transfer", visitId: "v1", taskId: "WRITE-TRANSFER-2", createdAt: at(1) }),
+      attempt({ objective: "writing-review-revision", visitId: "v2", taskId: "WRITE-LOG-HARBOR", createdAt: at(12), correct: null, evidence: "unscored", teachingMove: "writing-review", teachingReason: "spacing,punctuation" }),
+      attempt({ objective: "writing-own-sentence-spacing", visitId: "v4", taskId: "MISSION-B/G8-JOURNAL", createdAt: at(23) }),
+    ]));
+    const held = rowOf(l, "s-de-write-mechanics").attempts.find((a) => a.level === "held");
+    equal(held?.daysLater, 11);
+  });
   it("a warm-up: the stored teachingReason decides — delayed-retention → held, short-check → not held", () => {
     const warm = (reason: string, seconds: number) => attempt({ objective: "quotient-groups-leftover-warmup", visitId: "v10", taskId: "MISSION-WATER-PIPE/P2-PIPES/full", createdAt: at(20), teachingMove: "warmup", teachingReason: `groups-with-leftover:${reason}`, secondsSinceTeaching: seconds });
     let l = learningLadder(input("santiago", [warm("delayed-retention", 8 * 86_400)], ["v10"]));

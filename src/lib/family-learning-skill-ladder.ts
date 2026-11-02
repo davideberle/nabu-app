@@ -206,8 +206,9 @@ function classify(rowAttempts: { a: AttemptLike; role: ObjectiveRole; cefrStep: 
         if (others.length > 0) level = "on-own-new";
       }
       if (role !== "easier") ownContexts.add(ctx);
-    } else if (base !== "observed" || (a.answer as { kind?: string } | null)?.kind === "practice" || effectiveEvidence(a) === "answer_exposed") {
-      // Help, a wrong answer or a shown answer re-teaches: the next «held» is measured from here.
+    } else if (base !== "observed" || (a.answer as { kind?: string } | null)?.kind === "practice" || effectiveEvidence(a) === "answer_exposed" || (!!a.teachingMove && a.teachingMove !== "warmup")) {
+      // Help, a wrong answer, a shown answer or a recorded teaching move (e.g. a writing review) re-teaches: the next «held»
+      // is measured from here.
       lastTeachAt = at;
     }
     if (firstAt === null) firstAt = at;
