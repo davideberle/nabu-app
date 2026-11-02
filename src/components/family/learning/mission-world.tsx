@@ -23,6 +23,7 @@
 // "Überspringen": Stopp (global) saves and leaves at any time.
 // ---------------------------------------------------------------------------
 
+import { HomeMapLazy, useFillViewport } from "./home-map/home-map-lazy";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
 import { cn } from "@/components/ui/nabu";
 import type { ChildView } from "@/lib/family-learning-state";
@@ -369,6 +370,8 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
   const stageRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
   const fit = useStageFit(stageRef);
+  // Step 2 B: the home map fills the space below the header exactly (used only when `view.homeMap` is present).
+  const fill = useFillViewport(20);
   const [panel, setPanel] = useState<"none" | "notes">("none");
   const arrive = useCallback(
     (place: string) => {
@@ -443,6 +446,35 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
   const loaded = mission.world.some((w) => w.prop === "boats");
   for (const w of mission.world) if (!(loaded && (w.prop === "crates" || w.prop === "tool-crates"))) worldByPlace.set(w.place, w.label);
   const avatarPlate = plateFor("child");
+
+  // Step 2 B: with FAMILY_HOME_MAP on for this child, the place picker is the isometric home map. Arriving at a place (tap or
+  // keys) walks in and opens that place's first available step; «back» from a scene returns to the map at that place. The
+  // focused task screens below are unchanged. Off → `view.homeMap` is absent and the island below renders exactly as before.
+  if (view.homeMap) {
+    const enterPlace = async (place: string) => {
+      if (busy || active) return;
+      if (place !== mission.position && !(await act({ a: "arrive", place }))) return;
+      const step = mission.steps.find((s) => s.place === place && (s.status === "available" || s.status === "active"));
+      if (step) await act({ a: "open", step: step.id });
+    };
+    return (
+      <div className="flex w-full flex-col gap-3" data-testid="mission-world" data-home-map="true" data-position={mission.position} data-active={active?.id ?? ""}>
+        {active ? (
+          <ScenePanel child={child} view={view} mission={mission} active={active} busy={busy} act={act} speech={speech} placeLabel={placeOf(mission.position)?.label ?? ""} renderTask={renderTask} />
+        ) : (
+          <div ref={fill.ref} style={fill.style} className="w-full overflow-hidden rounded-3xl" data-testid="mission-map">
+            <HomeMapLazy child={child} map={view.homeMap} at={mission.position} busy={busy} onArrive={(place) => void enterPlace(place)}>
+              {mission.canFinish ? (
+                <button type="button" className={cn(btnPrimary, "absolute bottom-5 left-1/2 z-10 -translate-x-1/2 px-6")} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "finish" })} data-testid="mission-finish">
+                  Zum Rückblick
+                </button>
+              ) : null}
+            </HomeMapLazy>
+          </div>
+        )}
+      </div>
+    );
+  }
   const worldProps = mission.world;
   const launched = worldProps.some((w) => w.prop === "sail");
 

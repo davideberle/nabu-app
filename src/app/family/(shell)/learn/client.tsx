@@ -40,6 +40,7 @@ import type { LearningOp } from "@/lib/family-learning-state";
 import type { SupportOutcome } from "@/lib/family-learning-tutor";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
 import { IsabelHub } from "@/components/family/learning/workshop-hub";
+import { HomeMapLazy, useFillViewport } from "@/components/family/learning/home-map/home-map-lazy";
 import { VisitReportView } from "@/components/family/learning/visit-report";
 import { focusRing, primaryButton, secondaryButton } from "./mission/styles";
 import { NextInterestQuestion, interestReady, type InterestAnswer } from "@/components/family/learning/next-interest";
@@ -229,6 +230,27 @@ function World({ child }: { child: ChildId }) {
   }
 
   const view = load.view;
+  // Step 2 B: with FAMILY_HOME_MAP on for this child, the start screen IS the isometric home map (a pending next-visit question
+  // is asked in the same card over the map). Off → the view has no `homeMap` and nothing here changes.
+  if (view.homeMap) {
+    return (
+      <HomeMapStart child={child} view={view}>
+        {view.interestPrompt && !interestDismissed ? (
+          <div className="absolute bottom-4 left-4 z-20 w-full max-w-md rounded-3xl border border-primary bg-primary/95 p-4 shadow-md backdrop-blur sm:p-5" data-testid="entry-interest">
+            <NextInterestQuestion labels={view.interestPrompt} value={interest} onChange={setInterest} disabled={interestBusy} intro={view.interestPrompt.entryPrompt} />
+            <div className="mt-3 flex flex-wrap gap-2">
+              <button type="button" className={primaryButton} disabled={interestBusy || !interestReady(interest)} onClick={() => void saveInterest()} data-testid="entry-interest-save">
+                Speichern
+              </button>
+              <button type="button" className={secondaryButton} disabled={interestBusy} onClick={() => setInterestDismissed(true)} data-testid="entry-interest-later">
+                Später
+              </button>
+            </div>
+          </div>
+        ) : null}
+      </HomeMapStart>
+    );
+  }
   // Isabel Visit 1: her own workshop hub (her content, her record) — never Santiago's island.
   if (view.child === "isabel") return <IsabelHub child={child} view={view} />;
   const running = view.visit;
@@ -488,6 +510,34 @@ function ProgressPanel({ progress, view, onOpenReport }: { progress: ProgressStr
         <p className="text-xs text-tertiary">Tippe auf einen fertigen Besuch, um seinen Bericht zu öffnen.</p>
       ) : null}
     </section>
+  );
+}
+
+/**
+ * Step 2 B: the start screen as the home map. Minimal chrome: «Pause» back to Family Home, nothing else permanent. Arriving at
+ * one of today's places opens the visit there (the mission page starts it and opens that place's scene).
+ */
+function HomeMapStart({ child, view, children }: { child: ChildId; view: ChildView; children?: React.ReactNode }) {
+  const router = useRouter();
+  const fill = useFillViewport();
+  const map = view.homeMap!;
+  const current = new Set((map.input.current?.places ?? []).map((p) => p.id));
+  return (
+    <div ref={fill.ref} style={fill.style} className="relative min-h-[480px] w-full overflow-hidden" data-testid="world-screen" data-home-map="true" data-world-next={view.next.visit ?? ""} data-world-running={view.visit?.id ?? ""}>
+      <HomeMapLazy
+        child={child}
+        map={map}
+        at={map.position}
+        onArrive={(place) => {
+          if (current.has(place)) router.push(`/family/learn/mission?child=${child}&enter=${encodeURIComponent(place)}`);
+        }}
+      >
+        <Link href={`/family/assistant?child=${child}`} className={cn("absolute left-3 top-3 z-10 inline-flex min-h-12 items-center gap-2 rounded-full border border-primary bg-primary/90 px-4 text-base text-primary shadow-xs", focusRing)} aria-label="Pause — zurück nach Hause" data-testid="hud-stop">
+          <span aria-hidden>⏸</span> Pause
+        </Link>
+        {children}
+      </HomeMapLazy>
+    </div>
   );
 }
 

@@ -154,7 +154,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
     </div>
   ) : null;
   return (
-    <div className={cn("grid items-start gap-4 pb-24", open !== "none" && !focused && "md:grid-cols-[minmax(0,1fr)_360px]")} data-testid="map-mission" data-page={page}>
+    <div className={cn("grid items-start gap-4", !view.homeMap && "pb-24", open !== "none" && !focused && "md:grid-cols-[minmax(0,1fr)_360px]")} data-testid="map-mission" data-page={page}>
       <MissionWorld
         child={child}
         view={view}

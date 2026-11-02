@@ -21,6 +21,8 @@
 // keeps its real clock and anchor provenance.
 // ---------------------------------------------------------------------------
 
+import { homeMapEnabled } from "./family-home-map.ts";
+import { homeMapViewFor } from "./family-home-map-view.ts";
 import type { ChildId } from "./family-assistant-turn.ts";
 import {
   hasLanguageSegment,
@@ -2980,6 +2982,8 @@ export type ChildView = {
   reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; nextInterest: import("./family-learning-mission-spec.ts").NextInterestDef | null; adventure?: import("./family-learning-mission-spec.ts").MissionNextAdventure | null; closing?: ClosingView | null } | null;
   /** Content v5 (Visit 6): the running mission (stage `mission`), answer keys stripped. */
   mission: MissionView | null;
+  /** Step 2 B: the home map (present only when FAMILY_HOME_MAP enables it for this child). */
+  homeMap?: import("./family-home-map-view.ts").HomeMapView;
   /** Content v5 (V6-11): the next-visit question is still unanswered for this visit (asked at the next entry, never inferred). */
   interestPrompt: { visit: VisitId; prompt: string; entryPrompt: string; hint: string; unsureLabel: string; noPreferenceLabel: string; declineLabel: string } | null;
   /** Content v5: the child's latest own answer to "what next?" (shown back in the report). */
@@ -3091,7 +3095,7 @@ function closingView(state: MissionState, content: LearningContent, visit: Visit
   return { success: ending.success, next: ending.next, artifact: world.length ? world.map((w) => w.label).join(" · ") : null, plan: decide ? chosenGrid(def, run, decide.id) : null, feedback };
 }
 
-export type ChildViewOptions = { /** Story voice slots with a selected voice on the server (booleans only). */ storyVoices?: import("./family-voice-registry.ts").VoiceSlot[]; timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null; tutorAvailable?: boolean; noktMode?: import("./family-learning-nokt.ts").NoktMode; noktMic?: boolean };
+export type ChildViewOptions = { /** Story voice slots with a selected voice on the server (booleans only). */ storyVoices?: import("./family-voice-registry.ts").VoiceSlot[]; timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null; tutorAvailable?: boolean; noktMode?: import("./family-learning-nokt.ts").NoktMode; noktMic?: boolean; /** Step 2 B: FAMILY_HOME_MAP (off | santiago | isabel | all). */ homeMap?: import("./family-home-map.ts").HomeMapFlag };
 
 export function buildChildView(state: MissionState, content: LearningContent, settings: ParentSettings, now: Date, erasureGeneration = 0, options: ChildViewOptions = {}): ChildView {
   const stage = currentStage(state, content);
@@ -3357,7 +3361,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     ? { kind: "turtles-in-log" as const, text: "In deinem Logbuch hast du Schildkröten erwähnt — du entscheidest, ob die Station sie beobachten soll. Beides ist ein guter Plan, und ohne Thema geht es auch." }
     : { kind: "none" as const, text: "Du entscheidest, was die Station beobachten soll. Beides ist ein guter Plan, und ohne Thema geht es auch." };
 
-  return {
+  const view: ChildView = {
     child: state.child,
     revision: state.revision,
     erasureGeneration,
@@ -3426,6 +3430,10 @@ export function buildChildView(state: MissionState, content: LearningContent, se
       return { mode, mic: mode !== "unavailable" && !!options.noktMic, ...(mode !== "unavailable" && content.child === state.child && (content.missions ?? []).some((m) => m.presentation === "map") ? { talk: noktTalkView(state, content) } : {}) };
     })(),
   };
+  // Step 2 B: the home map only for the child FAMILY_HOME_MAP enables (and only for the child's own content); off → the
+  // field is absent and the view is exactly as before.
+  if (options.homeMap && homeMapEnabled(options.homeMap, state.child) && content.child === state.child) view.homeMap = homeMapViewFor(state, content, view);
+  return view;
 }
 
 /** The uncertainty tag of the last record on a step, kept on the record for the view. */

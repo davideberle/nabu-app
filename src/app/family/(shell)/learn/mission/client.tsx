@@ -378,6 +378,52 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
 
   const applied = (outcome: LearningMutateOutcome | null) => !!outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed");
 
+  // Step 2 B: the home map hands over with `?enter=<place>`. The tap on the map was the deliberate start: start the visit if it
+  // is not running, then walk into that place's scene (arrive + open its first available step) and drop the parameter. Nokt's
+  // welcome is not opened by this path (Nokt stays closed by default). Without the flag the view has no `homeMap`: no-op.
+  const enterRef = useRef<{ place: string; phase: "start" | "open" | "done" } | null>(null);
+  useEffect(() => {
+    if (load.kind !== "ready" || busy) return;
+    const v = load.view;
+    const place = searchParams.get("enter");
+    if (!v.homeMap || !place) return;
+    if (!enterRef.current || enterRef.current.place !== place) enterRef.current = { place, phase: "start" };
+    const st = enterRef.current;
+    if (st.phase === "done") return;
+    const drop = () => {
+      const q = new URLSearchParams(searchParams.toString());
+      q.delete("enter");
+      router.replace(`${pathname}?${q.toString()}`);
+    };
+    if (!v.visit) {
+      if (st.phase !== "start") return;
+      st.phase = "open";
+      speech.unlock();
+      if (v.child === "isabel") narrator.unlock();
+      void mutate({ op: "start-visit" }).then((o) => {
+        if (o && o.ok) void learning.deviceAudio(child, "visit-start");
+        else {
+          st.phase = "done";
+          drop();
+        }
+      });
+      return;
+    }
+    st.phase = "done";
+    const m = v.mission;
+    if (!m || m.presentation !== "map" || m.active) {
+      drop();
+      return;
+    }
+    void (async () => {
+      if (m.position !== place && !applied(await mutate({ op: "mission", action: { a: "arrive", place } }))) return drop();
+      const step = m.steps.find((x) => x.place === place && (x.status === "available" || x.status === "active"));
+      if (step) await mutate({ op: "mission", action: { a: "open", step: step.id } });
+      drop();
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [load, busy, searchParams]);
+
   if (load.kind === "loading") {
     return (
       <div className="mx-auto max-w-5xl px-4 py-10">
@@ -447,6 +493,17 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
     );
   }
 
+  if (!view.visit && view.homeMap && searchParams.get("enter")) {
+    // Step 2 B: arriving from the home map — the visit is being started; no second start screen.
+    return (
+      <div className="grid min-h-[calc(100dvh-4.25rem)] place-items-center" style={{ background: "#3fc1d4" }} data-testid="home-map-entering">
+        <p className="rounded-full bg-white/85 px-5 py-2 text-lg font-semibold text-stone-800" role="status">
+          Los geht&apos;s …
+        </p>
+      </div>
+    );
+  }
+
   if (!view.visit && view.child === "isabel") {
     // Isabel Visit 1: her own start screen (Old Lila's workshop), never Santiago's island.
     // The deliberate start also unlocks the narration of a narrated visit (nothing is spoken before this tap).
@@ -506,7 +563,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
   const dots = Array.from({ length: view.visit.stageCount }, (_, i) => i);
 
   return (
-    <div ref={rootRef} className="mx-auto flex min-h-[calc(100dvh-4.25rem)] w-full max-w-6xl flex-col px-3 py-3 sm:px-4 sm:py-4" data-testid="mission-screen" data-stage={stage ?? ""} data-lesson-end={lastLesson ? "true" : "false"}>
+    <div ref={rootRef} className={cn("mx-auto flex w-full max-w-6xl flex-col px-3 py-3 sm:px-4 sm:py-4", !view.homeMap && "min-h-[calc(100dvh-4.25rem)]")} data-testid="mission-screen" data-stage={stage ?? ""} data-lesson-end={lastLesson ? "true" : "false"}>
       {/* HUD: Save/Exit · where am I · tutor */}
       <header className="flex items-center justify-between gap-3">
         <Link
@@ -522,7 +579,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
           {/* Step 1 (review): the visit exit is «Pause», distinct from the narration's own stop icon. */}
           <span aria-hidden>⏸</span> Pause
         </Link>
-        <div className="min-w-0 flex-1 text-center">
+        {view.homeMap && view.mission?.presentation === "map" && !view.mission.active ? <span className="flex-1" aria-hidden /> : <><div className="min-w-0 flex-1 text-center">
           <p className="truncate text-sm font-semibold text-primary">{view.visit.title}</p>
           <ol className="mt-1 flex items-center justify-center gap-1" aria-label={`Schritt ${Math.min(view.visit.stageIndex + 1, view.visit.stageCount)} von ${view.visit.stageCount}${stage ? `: ${stageLabel(stage)}` : ""}`} data-testid="hud-steps">
             {dots.map((i) => (
@@ -531,7 +588,8 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
           </ol>
         </div>
         {/* Step 1 (S1-01): no permanent «Wörter» on the focused screens — the request task carries its own word help. */}
-        {view.mission?.active?.produce || view.child === "isabel" || view.mission?.screen === "focused" ? <span className="w-[6.5rem]" aria-hidden /> : <button
+        </>}
+        {view.homeMap && view.mission?.presentation === "map" && !view.mission.active ? null : view.mission?.active?.produce || view.child === "isabel" || view.mission?.screen === "focused" ? <span className="w-[6.5rem]" aria-hidden /> : <button
           type="button"
           onClick={() => {
             // During a recall step the wordbook SHOWS the target word: opening it is recorded as help on the segment first (IV5-11).

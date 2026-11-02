@@ -1,3 +1,4 @@
+import { ASSETS, assetUrl } from "./family-home-map-assets.ts";
 const ADMIN_EMAIL = "info@davideberle.com";
 const DEFAULT_TRACKER_ONLY_EMAILS = ["assistant@davideberle.com"];
 
@@ -24,6 +25,9 @@ export function isTrackerOnlyEmail(email: string | null | undefined): boolean {
   return getTrackerOnlyEmails().includes(email.toLowerCase());
 }
 
+/** Step 2 B: the exact sprite files of the home map (lib/family-home-map-assets.ts); presentation art, no child data. */
+const HOME_MAP_ASSET_PATHS = new Set(ASSETS.map(assetUrl));
+
 export function isTrackerAllowedPath(pathname: string): boolean {
   return (
     // Legacy board/tracker/plan URLs stay allowed so installed shortcuts and old
@@ -32,6 +36,8 @@ export function isTrackerAllowedPath(pathname: string): boolean {
     // Exact approved presentation assets; no broader route or account access.
     pathname === "/family-assistant/avatars/nokt.webp" ||
     pathname === "/family-assistant/avatars/old-lila.webp" ||
+    // Step 2 B: the home map's sprites — exactly the files of the reviewed sprite manifest, nothing else in that folder.
+    HOME_MAP_ASSET_PATHS.has(pathname) ||
     pathname === "/family/dashboard" ||
     pathname.startsWith("/family/dashboard/") ||
     pathname === "/family/assistant" ||
