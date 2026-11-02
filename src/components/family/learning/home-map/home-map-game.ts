@@ -37,7 +37,7 @@ const top = (t: Tile) => ({ x: (t.c - t.r) * HALF_W, y: (t.c + t.r) * HALF_H });
 const centre = (t: Tile) => ({ x: (t.c - t.r) * HALF_W, y: (t.c + t.r) * HALF_H + HALF_H });
 const keyOf = (t: Tile) => `${t.c},${t.r}`;
 /** The world area the camera keeps in view: the 12×12 grid, its cliffs and the tallest pieces. */
-const FIT = { x: -800, y: -170, w: 1600, h: 1030 };
+const FIT = { x: -800, y: -200, w: 1600, h: 1060 };
 const STEP_MS = 170;
 const ARRIVAL_MS = 2000;
 
@@ -69,7 +69,9 @@ export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCall
     }
     create() {
       scene = this;
-      const water = this.add.tileSprite(0, 0, this.scale.width, this.scale.height, "water").setOrigin(0).setScrollFactor(0).setTileScale(1 / ART_SCALE).setDepth(-1000);
+      // The sea lives in world space (a screen-fixed sprite would still be scaled by the camera zoom and leave bare edges);
+      // it is far larger than any view the camera fit can show.
+      this.add.tileSprite(FIT.x + FIT.w / 2, FIT.y + FIT.h / 2, FIT.w * 4, FIT.h * 4, "water").setTileScale(1 / ART_SCALE).setDepth(-1000);
       const island = ASSETS.find((a) => a.id === `${world.child}-island`)!;
       this.add.image(0, 0, island.id).setOrigin(island.anchor.x / island.size.w, island.anchor.y / island.size.h).setScale(1 / ART_SCALE).setDepth(-900);
       const pathTile = ASSETS.find((a) => a.id === "path-tile")!;
@@ -110,7 +112,7 @@ export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCall
       const c0 = centre(this.at);
       this.avatar = this.add.sprite(c0.x, c0.y, av.id, 0).setOrigin(av.anchor.x / av.frames!.w, av.anchor.y / av.frames!.h).setScale(1 / ART_SCALE).setDepth(c0.y + 1);
       const rows = ["se", "sw", "ne", "nw"];
-      rows.forEach((d, i) => this.anims.create({ key: `walk-${d}`, frames: this.anims.generateFrameNumbers(av.id, { start: i * 4, end: i * 4 + 3 }), frameRate: 10, repeat: -1 }));
+      rows.forEach((d, i) => this.anims.create({ key: `walk-${d}`, frames: this.anims.generateFrameNumbers(av.id, { start: i * 4, end: i * 4 + 3 }), frameRate: 6, repeat: -1 }));
       if (this.textures.exists("build-puff")) this.anims.create({ key: "puff", frames: this.anims.generateFrameNumbers("build-puff", { start: 0, end: 7 }), frameRate: 8, repeat: 0 });
 
       this.input.on("pointerdown", (ptr: Phaser.Input.Pointer) => {
@@ -133,7 +135,6 @@ export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCall
         const zoom = Math.min(this.scale.width / FIT.w, this.scale.height / FIT.h);
         cam.setZoom(zoom);
         cam.centerOn(FIT.x + FIT.w / 2, FIT.y + FIT.h / 2);
-        water.setSize(this.scale.width, this.scale.height);
         // worldView is refreshed at render; report positions right after it.
         this.time.delayedCall(0, () => this.reportLayout());
       };

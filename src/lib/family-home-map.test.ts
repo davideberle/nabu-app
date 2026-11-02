@@ -195,3 +195,14 @@ describe("layout", () => {
     }
   });
 });
+
+describe("child-device access to the sprites", () => {
+  it("the shared child account may load exactly the manifest's files, nothing else in that folder", async () => {
+    const { isTrackerAllowedPath } = await import("./access.ts");
+    const { assetUrl } = await import("./family-home-map-assets.ts");
+    for (const a of ASSETS) ok(isTrackerAllowedPath(assetUrl(a)), assetUrl(a));
+    ok(!isTrackerAllowedPath("/family/home-map/other.png"));
+    ok(!isTrackerAllowedPath("/family/home-map/"));
+    equal(ASSETS.length, 31);
+  });
+});
