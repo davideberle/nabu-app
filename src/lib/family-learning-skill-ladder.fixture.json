@@ -1,0 +1,454 @@
+{
+ "note": "Objective ids (and stimulus languages) that occur in the children's real records, read on 2026-11-02 through the owner-only GET evidence route (read-only). Ids, counts and visit ids only — no child text.",
+ "read": "2026-11-02",
+ "santiago": [
+  {
+   "objective": "add-and-group",
+   "languages": [
+    "de"
+   ],
+   "answers": 2,
+   "visits": [
+    "v7"
+   ]
+  },
+  {
+   "objective": "area-count-fields",
+   "languages": [
+    "de"
+   ],
+   "answers": 4,
+   "visits": [
+    "v9"
+   ]
+  },
+  {
+   "objective": "area-subtract-path",
+   "languages": [
+    "de"
+   ],
+   "answers": 2,
+   "visits": [
+    "v9"
+   ]
+  },
+  {
+   "objective": "equal-sharing",
+   "languages": [
+    "de"
+   ],
+   "answers": 3,
+   "visits": [
+    "v1",
+    "v2"
+   ]
+  },
+  {
+   "objective": "equal-sharing-with-remainder",
+   "languages": [
+    "de"
+   ],
+   "answers": 2,
+   "visits": [
+    "v4",
+    "v5"
+   ]
+  },
+  {
+   "objective": "language-en-completion",
+   "languages": [
+    "en"
+   ],
+   "answers": 1,
+   "visits": [
+    "v1"
+   ]
+  },
+  {
+   "objective": "language-en-listen",
+   "languages": [
+    "en"
+   ],
+   "answers": 2,
+   "visits": [
+    "v1",
+    "v5"
+   ]
+  },
+  {
+   "objective": "language-en-production",
+   "languages": [
+    "en"
+   ],
+   "answers": 1,
+   "visits": [
+    "v5"
+   ]
+  },
+  {
+   "objective": "language-en-recognition",
+   "languages": [
+    "en"
+   ],
+   "answers": 4,
+   "visits": [
+    "v1",
+    "v5"
+   ]
+  },
+  {
+   "objective": "language-es-completion",
+   "languages": [
+    "es"
+   ],
+   "answers": 2,
+   "visits": [
+    "v2",
+    "v4"
+   ]
+  },
+  {
+   "objective": "language-es-listen",
+   "languages": [
+    "es"
+   ],
+   "answers": 3,
+   "visits": [
+    "v2",
+    "v4",
+    "v6"
+   ]
+  },
+  {
+   "objective": "language-es-production",
+   "languages": [
+    "es"
+   ],
+   "answers": 4,
+   "visits": [
+    "v6"
+   ]
+  },
+  {
+   "objective": "language-es-recognition",
+   "languages": [
+    "es"
+   ],
+   "answers": 6,
+   "visits": [
+    "v2",
+    "v4",
+    "v6"
+   ]
+  },
+  {
+   "objective": "language-es-request",
+   "languages": [
+    "es"
+   ],
+   "answers": 4,
+   "visits": [
+    "v7",
+    "v8"
+   ]
+  },
+  {
+   "objective": "language-es-request-new-supported",
+   "languages": [
+    "es"
+   ],
+   "answers": 1,
+   "visits": [
+    "v9"
+   ]
+  },
+  {
+   "objective": "language-es-request-retrieval",
+   "languages": [
+    "es"
+   ],
+   "answers": 2,
+   "visits": [
+    "v9"
+   ]
+  },
+  {
+   "objective": "language-es-retrieval",
+   "languages": [
+    "es"
+   ],
+   "answers": 4,
+   "visits": [
+    "v7"
+   ]
+  },
+  {
+   "objective": "language-es-retrieval-practice",
+   "languages": [
+    "es"
+   ],
+   "answers": 1,
+   "visits": [
+    "v7"
+   ]
+  },
+  {
+   "objective": "listening-directions",
+   "languages": [
+    "en"
+   ],
+   "answers": 3,
+   "visits": [
+    "v9"
+   ]
+  },
+  {
+   "objective": "listening-for-information",
+   "languages": [
+    "en",
+    "es"
+   ],
+   "answers": 6,
+   "visits": [
+    "v7",
+    "v8"
+   ]
+  },
+  {
+   "objective": "multiplication-in-context",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v7"
+   ]
+  },
+  {
+   "objective": "multiply-and-compare",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v7"
+   ]
+  },
+  {
+   "objective": "plan-judgment-viable",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v9"
+   ]
+  },
+  {
+   "objective": "plan-under-constraints",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v7"
+   ]
+  },
+  {
+   "objective": "quotient-full-rest-needed",
+   "languages": [
+    "de"
+   ],
+   "answers": 8,
+   "visits": [
+    "v7",
+    "v8"
+   ]
+  },
+  {
+   "objective": "quotient-groups-needed",
+   "languages": [
+    "de"
+   ],
+   "answers": 2,
+   "visits": [
+    "v6"
+   ]
+  },
+  {
+   "objective": "quotient-groups-needed-application",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v8"
+   ]
+  },
+  {
+   "objective": "quotient-groups-needed-retrieval",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v9"
+   ]
+  },
+  {
+   "objective": "quotient-with-remainder",
+   "languages": [
+    "de"
+   ],
+   "answers": 3,
+   "visits": [
+    "v6"
+   ]
+  },
+  {
+   "objective": "reading-for-information",
+   "languages": [
+    "de"
+   ],
+   "answers": 2,
+   "visits": [
+    "v7"
+   ]
+  },
+  {
+   "objective": "writing-own-sentence-revision",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v9"
+   ]
+  },
+  {
+   "objective": "writing-own-sentence-spacing",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v8"
+   ]
+  },
+  {
+   "objective": "writing-review-revision",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v6"
+   ]
+  },
+  {
+   "objective": "writing-spacing-transfer",
+   "languages": [
+    "de"
+   ],
+   "answers": 2,
+   "visits": [
+    "v4",
+    "v5"
+   ]
+  }
+ ],
+ "isabel": [
+  {
+   "objective": "early-reading-word-picture",
+   "languages": [
+    "de"
+   ],
+   "answers": 2,
+   "visits": [
+    "v1",
+    "v2"
+   ]
+  },
+  {
+   "objective": "listening-recognition-german",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v1"
+   ]
+  },
+  {
+   "objective": "listening-recognition-german-two-details",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v2"
+   ]
+  },
+  {
+   "objective": "materials-matching",
+   "languages": [
+    "de"
+   ],
+   "answers": 3,
+   "visits": [
+    "v1"
+   ]
+  },
+  {
+   "objective": "own-choice-not-scored",
+   "languages": [
+    "de"
+   ],
+   "answers": 2,
+   "visits": [
+    "v1",
+    "v2"
+   ]
+  },
+  {
+   "objective": "small-sums-extended-visible-counters",
+   "languages": [
+    "de"
+   ],
+   "answers": 3,
+   "visits": [
+    "v2"
+   ]
+  },
+  {
+   "objective": "small-sums-visible-counters",
+   "languages": [
+    "de"
+   ],
+   "answers": 2,
+   "visits": [
+    "v1"
+   ]
+  },
+  {
+   "objective": "tens-bundles-retrieval-visible",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v2"
+   ]
+  },
+  {
+   "objective": "tens-bundles-visible-supported",
+   "languages": [
+    "de"
+   ],
+   "answers": 1,
+   "visits": [
+    "v1"
+   ]
+  }
+ ]
+}

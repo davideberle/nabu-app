@@ -9,6 +9,7 @@ import type { VocabularyInventory } from "@/lib/family-learning-vocabulary";
 import type { VisitId } from "@/lib/family-learning-content";
 import { missionEvidence, planningInput } from "@/lib/family-learning-mission";
 import { visitReportEn } from "@/lib/family-learning-parent-report-en";
+import { learningLadder } from "@/lib/family-learning-skill-ladder";
 import { noktModeFromEnv } from "@/lib/family-learning-nokt";
 import { noktTalkEvidence } from "@/lib/family-learning-nokt-talk";
 
@@ -86,5 +87,16 @@ export async function GET(request: Request) {
   const reportEn = prepared && content && bundle.state
     ? [...bundle.state.visits].reverse().map((v) => visitReportEn(bundle, content!, v.id, `Visit ${visitOrdinal(bundle.state!, v.id) ?? "?"}`)).filter((r): r is NonNullable<typeof r> => !!r)
     : [];
-  return NextResponse.json({ ...bundle, parentObservations, craftTasks, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env), noktTalks, reportEn }, { headers: NO_STORE });
+  // Step 2 A: the level-based learning report — every stored attempt of THIS child (all visits, all content versions)
+  // through the reviewed objective map; computed on read, never stored.
+  const ladder = learningLadder({
+    child,
+    attempts: bundle.attempts,
+    samples: bundle.samples,
+    visits: [...(bundle.state?.visits ?? [])]
+      .sort((x, y) => (x.startedAt < y.startedAt ? -1 : x.startedAt > y.startedAt ? 1 : 0))
+      .map((v) => ({ id: v.id, label: `Visit ${visitOrdinal(bundle.state!, v.id) ?? "?"}`, startedAt: v.startedAt, finishedAt: v.finishedAt })),
+    typing: bundle.state ? { course: bundle.state.typing.course ?? null, lessonsTotal: content?.typing.course?.lessons.length ?? 0 } : null,
+  });
+  return NextResponse.json({ ...bundle, parentObservations, craftTasks, prepared, contentCounts: counts, owner: parent.adminEmail, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env), noktTalks, reportEn, ladder }, { headers: NO_STORE });
 }

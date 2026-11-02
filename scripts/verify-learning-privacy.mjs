@@ -43,6 +43,7 @@ import path from "node:path";
 import { decode, encode } from "@auth/core/jwt";
 import { chromium } from "/Users/claweberle/.npm-global/lib/node_modules/playwright/index.mjs";
 import { audioSafeChromiumLaunchOptions, installBrowserAudioGuard } from "./lib/browser-audio-guard.mjs";
+import { openParentTab } from "./lib/parent-tabs.mjs";
 
 const args = process.argv.slice(2);
 const opt = (name, fallback) => (args.includes(name) ? args[args.indexOf(name) + 1] : fallback);
@@ -164,7 +165,7 @@ async function openSettings(c) {
   await setSession(c, owner);
   const p = await c.newPage();
   await p.goto(BASE + "/family/learn/parent");
-  await p.getByRole("tab", { name: "Einstellungen", exact: true }).click();
+  await openParentTab(p, "Einstellungen", { exact: true });
   await p.getByLabel("Missions-Titel").waitFor();
   return p;
 }
@@ -270,7 +271,7 @@ try {
     await setSession(c, owner);
     const p = await c.newPage();
     await p.goto(BASE + "/family/learn/parent");
-    await p.getByRole("tab", { name: "Mathe", exact: true }).click();
+    await openParentTab(p, "Mathe", { exact: true });
     await p.getByText("Vorgeschlagener nächster Schritt").waitFor();
     const hold = holdNext(p, "**/api/family/learning/parent/evidence?*");
     await hold.arm();
@@ -280,7 +281,7 @@ try {
     await setSession(c, assistant);
     // No attempt exists in the isolated DB to correct; a 403 is reproduced with the records DELETE
     // confirmation flow instead, which is the other write path in the same view.
-    await p.getByRole("tab", { name: "Einstellungen", exact: true }).click();
+    await openParentTab(p, "Einstellungen", { exact: true });
     await p.getByRole("button", { name: "Löschen …", exact: true }).click();
     const del = p.waitForResponse((r) => r.url().includes("/parent/records") && r.request().method() === "DELETE");
     await p.getByRole("button", { name: "Ja, endgültig löschen", exact: true }).click();
@@ -303,7 +304,7 @@ try {
     const a = await openSettings(c);
     const b = await c.newPage();
     await b.goto(BASE + "/family/learn/parent");
-    await b.getByRole("heading", { name: "Lern-Evidenz" }).waitFor();
+    await b.getByRole("heading", { name: "Learning report" }).waitFor();
     const out = await b.evaluate(async () => {
       const csrf = await fetch("/api/auth/csrf").then((r) => r.json());
       const r = await fetch("/api/auth/signout", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded", "X-Auth-Return-Redirect": "1" }, body: new URLSearchParams({ csrfToken: csrf.csrfToken, callbackUrl: location.origin + "/login" }) });
@@ -459,7 +460,7 @@ try {
     await setSession(c, short);
     const p = await c.newPage();
     await p.goto(BASE + "/family/learn/parent");
-    await p.getByRole("tab", { name: "Einstellungen", exact: true }).click();
+    await openParentTab(p, "Einstellungen", { exact: true });
     await p.getByLabel("Missions-Titel").waitFor();
     let refreshes = 0;
     while (Date.now() - minted < (lifetime - 5) * 1000) {

@@ -48,6 +48,7 @@ import path from "node:path";
 import { encode } from "@auth/core/jwt";
 import { chromium } from "/Users/claweberle/.npm-global/lib/node_modules/playwright/index.mjs";
 import { audioSafeChromiumLaunchOptions, installBrowserAudioGuard } from "./lib/browser-audio-guard.mjs";
+import { openParentTab } from "./lib/parent-tabs.mjs";
 
 const args = process.argv.slice(2);
 const opt = (name, fallback) => (args.includes(name) ? args[args.indexOf(name) + 1] : fallback);
@@ -451,13 +452,13 @@ async function runVisit4(prefix) {
 
 async function parentCockpit(prefix, expectHistorical) {
   await pp.goto(BASE + "/family/learn/parent");
-  await pp.getByRole("tab", { name: "Rückblick" }).waitFor();
-  await pp.getByRole("tab", { name: "Mathe" }).click();
+  await openParentTab(pp, "Rückblick", { waitOnly: true });
+  await openParentTab(pp, "Mathe");
   await tid("delayed-check-parent", pp).waitFor();
   const dcp = await tid("delayed-check-parent", pp).innerText();
   check(`${prefix} parent math tab explains the RETIRED delayed check (retirement date, no opening date)`, /zurückgezogen/.test(dcp) && /30\. September 2026/.test(dcp) && !/öffnet am/.test(dcp), dcp);
   await shot(pp, `${prefix}-parent-math`);
-  await pp.getByRole("tab", { name: "Tippen" }).click();
+  await openParentTab(pp, "Tippen");
   await tid("typing-setup", pp).waitFor();
   const setup = await tid("typing-setup", pp).innerText();
   check(`${prefix} parent typing tab shows the confirmed physical layout, the device check result and the course position`, /Schweizer Tastatur/.test(setup) && /passt \(geprüft/.test(setup) && /Lektion 1/.test(setup) && /4 Runden/.test(setup), setup);
@@ -465,13 +466,13 @@ async function parentCockpit(prefix, expectHistorical) {
   const lines = await pp.locator("[data-testid='burst-lines']").allInnerTexts();
   check(`${prefix} parent typing tab shows per-line aggregates of the course bursts (insertion/omission per line)`, lines.some((l) => /Zeile 1: 7 von 8 richtig, 1 zu viel/.test(l) && /Zeile 2: 7 von 8 richtig, 1 fehlen/.test(l)), lines);
   await shot(pp, `${prefix}-parent-typing`);
-  await pp.getByRole("tab", { name: "Deutsch" }).click();
+  await openParentTab(pp, "Deutsch");
   await tid("log-revisions", pp).waitFor();
   check(`${prefix} parent German tab lists the revision with original, revised text and marked boundaries`, /Original: Ichhabe2Schildkroten/.test(await tid("log-revisions", pp).innerText()) && /alle behoben/.test(await tid("log-revisions", pp).innerText()));
   await tid("transfers", pp).waitFor();
   const transfersText = await tid("transfers", pp).innerText();
   check(`${prefix} parent German tab lists the fresh transfer sentence with assessed count, outcome and exposure`, /WRITE-TRANSFER-1 v1/.test(transfersText) && /Hilfe vorher gezeigt: ja/.test(transfersText) && (prefix === "completed" ? /2 geprüfte Stellen, 2 ohne Leerzeichen/.test(transfersText) : /2 geprüfte Stellen, alle richtig/.test(transfersText)), transfersText);
-  await pp.getByRole("tab", { name: "Rückblick" }).click();
+  await openParentTab(pp, "Rückblick");
   await tid("review-v4", pp).waitFor();
   const cards = await pp.locator("[data-testid^='review-v']").count();
   const hist1 = await pp.locator("[data-testid='review-v1']").getAttribute("data-historical");
@@ -603,7 +604,7 @@ try {
     check("a second read does not duplicate historical completions", ev0b.completions.length === 2);
     check("raw attempts/samples untouched by the upgrade (3 attempts, 5 samples as seeded)", ev0.attempts.length === fixture.attempts && ev0.samples.length === fixture.samples, { attempts: ev0.attempts.length, samples: ev0.samples.length });
     await pp.goto(BASE + "/family/learn/parent");
-    await pp.getByRole("tab", { name: "Rückblick" }).click();
+    await openParentTab(pp, "Rückblick");
     await tid("review-v1", pp).waitFor();
     check("parent review tab labels historical reviews and shows no fabricated experience data", (await tid("review-v1", pp).getAttribute("data-historical")) === "true" && /Rückwirkend/.test(await tid("review-v1", pp).innerText()) && /Keine Bedienungs-Daten/.test(await tid("review-v1", pp).innerText()));
     await shot(pp, "parent-review-historical");
@@ -673,7 +674,7 @@ try {
       check(`feedback matrix: ${m.name} → stored answers/skipped/unanswered and ${m.events} delivered feedback event(s)`, rec?.finishedAt && answersOk && JSON.stringify(rec.feedback.skipped) === JSON.stringify(m.skipped) && JSON.stringify(rec.feedback.unanswered) === JSON.stringify(m.unanswered) && (rec.reflection ?? null) === (m.answers.difficulty ?? null) && eventsOk, { feedback: rec?.feedback, events });
       if (m.name === "all answered") {
         await pp.goto(BASE + "/family/learn/parent");
-        await pp.getByRole("tab", { name: "Rückblick" }).click();
+        await openParentTab(pp, "Rückblick");
         await tid("review-v4", pp).waitFor();
         const fb = await pp.locator("[data-testid='review-v4'] [data-testid='child-feedback']").innerText();
         check("feedback matrix: the parent review shows the three answered values", /Schwierigkeit right/.test(fb) && /Spass yes/.test(fb) && /Klarheit clear/.test(fb), fb);
@@ -681,14 +682,14 @@ try {
       }
       if (m.name === "difficulty skipped, others answered") {
         await pp.goto(BASE + "/family/learn/parent");
-        await pp.getByRole("tab", { name: "Rückblick" }).click();
+        await openParentTab(pp, "Rückblick");
         await tid("review-v4", pp).waitFor();
         const fb = await pp.locator("[data-testid='review-v4'] [data-testid='child-feedback']").innerText();
         check("feedback matrix: the parent review distinguishes 'nicht gesagt' (skipped) from answers", /Schwierigkeit nicht gesagt/.test(fb) && /Spass no/.test(fb) && /Klarheit partly/.test(fb), fb);
       }
       if (m.name === "all left open") {
         await pp.goto(BASE + "/family/learn/parent");
-        await pp.getByRole("tab", { name: "Rückblick" }).click();
+        await openParentTab(pp, "Rückblick");
         await tid("review-v4", pp).waitFor();
         const fb = await pp.locator("[data-testid='review-v4'] [data-testid='child-feedback']").innerText();
         check("feedback matrix: the parent review shows 'offen gelassen' for dimensions left open", /Schwierigkeit offen gelassen/.test(fb) && /Spass offen gelassen/.test(fb) && /Klarheit offen gelassen/.test(fb), fb);
@@ -936,17 +937,17 @@ try {
       await c.execute({ sql: "UPDATE family_learning_completions SET review_json = ? WHERE child_id = 'santiago' AND visit_id = 'v4'", args: [JSON.stringify(review)] });
     });
     await pp.goto(BASE + "/family/learn/parent");
-    await pp.getByRole("tab", { name: "Rückblick" }).click();
+    await openParentTab(pp, "Rückblick");
     await tid("review-v4", pp).waitFor();
     const legacyCard = await tid("review-v4", pp).innerText();
     const refreshedNote = await pp.locator("[data-testid='review-v4'] [data-testid='review-refreshed']").innerText().catch(() => "");
     check("R4-3: the parent Rückblick no longer credits the archived 'Hallo' transfer — it is unscored, the earlier derivation is disclosed, identity kept", /WRITE-TRANSFER-1 v\d+[^\n]*nicht bewertet\s*\n\s*unscored/.test(legacyCard) && /Frühere Fassung/.test(refreshedNote) && /war „correct\/independent“, jetzt „unscored\/unscored“/.test(refreshedNote) && /Ableitung Fassung 4/.test(legacyCard), { refreshedNote });
     await shot(pp, "r4-3-legacy-review-refreshed");
-    await pp.getByRole("tab", { name: "Deutsch" }).click();
+    await openParentTab(pp, "Deutsch");
     await tid("transfers", pp).waitFor();
     check("R4-3: the German tab agrees (nicht bewertet)", /keine geprüfte Stelle im Satz — nicht bewertet/.test(await tid("transfers", pp).innerText()));
     await pp.reload();
-    await pp.getByRole("tab", { name: "Rückblick" }).click();
+    await openParentTab(pp, "Rückblick");
     await tid("review-v4", pp).waitFor();
     check("R4-3: a repeated read is stable (still one earlier derivation, no second refresh)", (await pp.locator("[data-testid='review-v4'] [data-testid='review-refreshed'] li").count()) === 1);
     // ---- R3-4: stable keys on the reflection path (pre-commit failure, post-commit lost ACK, duplicate submit)
@@ -1116,7 +1117,7 @@ try {
     const unAttempt = (await evidence()).attempts.filter((a) => a.taskId === "WRITE-TRANSFER-1").at(-1);
     check("R3-1: 'Hallo' is unassessable → outcome unassessable, attempt unscored, no summary success from it", unRec?.outcome === "unassessable" && unRec?.assessed === 0 && unAttempt?.evidence === "unscored" && unAttempt?.correct === null && !/neuer Satz/i.test((await view()).summary?.success?.text ?? ""), { unRec, evidence: unAttempt?.evidence });
     await pp.goto(BASE + "/family/learn/parent");
-    await pp.getByRole("tab", { name: "Deutsch" }).click();
+    await openParentTab(pp, "Deutsch");
     await tid("transfers", pp).waitFor();
     check("R3-1: the parent German tab says 'nicht bewertet' for the unassessable sentence", /keine geprüfte Stelle im Satz — nicht bewertet/.test(await tid("transfers", pp).innerText()), await tid("transfers", pp).innerText());
     await shot(pp, "transfer-unassessable-parent");
@@ -1379,7 +1380,7 @@ try {
       const t = c4?.review?.experience?.telemetry;
       check("R5-2 API: feedback-only completion → telemetry supported (3 feedback events) but uxObserved=false; active seconds, hidden intervals, pauses, save failures and retries are null, not 0; the review says 'nicht erfasst'", blocked >= 1 && t && t.supported === true && t.uxObserved === false && t.feedbackEvents === 3 && t.uxEvents === 0 && t.foregroundActiveSeconds === null && t.hiddenIntervals === null && t.pauses === null && t.saveFailures === null && t.retries === null && c4.review.experience.hypotheses.length === 0 && c4.review.experience.missing.some((m) => /nicht erfasst/.test(m)) && c4.review.experience.childFeedback.difficulty === "right", { telemetry: t, blocked });
       await pp.goto(BASE + "/family/learn/parent");
-      await pp.getByRole("tab", { name: "Rückblick" }).click();
+      await openParentTab(pp, "Rückblick");
       await tid("review-v4", pp).waitFor();
       const card = await tid("review-v4", pp).innerText();
       check("R5-2 parent Rückblick: 'Bedienungs-Daten: nicht erfasst' is shown; no 'aktive Zeit im Vordergrund 0 s', no '0× Fenster verlassen', no '0 Speicherfehler'; the child's answers are shown", (await pp.locator("[data-testid='review-v4'] [data-testid='ux-missing']").count()) === 1 && !/aktive Zeit im Vordergrund 0 s/.test(card) && !/0× Fenster verlassen/.test(card) && !/0 Speicherfehler/.test(card) && /Schwierigkeit right/.test(card) && /unbekannt, nicht null/.test(card), { excerpt: card.match(/Bedienungs-Daten[^\n]*/)?.[0] });
@@ -1397,7 +1398,7 @@ try {
       const ev2 = await evidence();
       const t2 = ev2.completions.find((c) => c.visitId === "v4")?.review?.experience?.telemetry;
       await pp.reload();
-      await pp.getByRole("tab", { name: "Rückblick" }).click();
+      await openParentTab(pp, "Rückblick");
       await tid("review-v4", pp).waitFor();
       const card2 = await tid("review-v4", pp).innerText();
       check("R5-2 legacy stored review with false zeros: re-derived on read (version 4, earlier derivation kept), the parent shows 'nicht erfasst' and never the stored zeros", t2 && t2.uxObserved === false && t2.foregroundActiveSeconds === null && ev2.completions.find((c) => c.visitId === "v4").review.identity.reviewVersion === 4 && ev2.completions.find((c) => c.visitId === "v4").review.previousReviews?.length === 1 && (await pp.locator("[data-testid='review-v4'] [data-testid='ux-missing']").count()) === 1 && !/aktive Zeit im Vordergrund 0 s/.test(card2) && /Frühere Fassung/.test(card2), { version: ev2.completions.find((c) => c.visitId === "v4").review.identity.reviewVersion });
@@ -1416,7 +1417,7 @@ try {
       const ev = await evidence();
       const t = ev.completions.find((c) => c.visitId === "v4")?.review?.experience?.telemetry;
       await pp.goto(BASE + "/family/learn/parent");
-      await pp.getByRole("tab", { name: "Rückblick" }).click();
+      await openParentTab(pp, "Rückblick");
       await tid("review-v4", pp).waitFor();
       const card = await tid("review-v4", pp).innerText();
       check("R5-2 control: delivered UX telemetry → uxObserved=true with numbers (genuine 0 save failures stays 0), feedback counted separately, unobserved stages listed", t && t.uxObserved === true && t.uxEvents > 0 && t.feedbackEvents === 3 && typeof t.foregroundActiveSeconds === "number" && t.saveFailures === 0 && Array.isArray(t.unobservedStages) && (await pp.locator("[data-testid='review-v4'] [data-testid='ux-observed']").count()) === 1 && /Bedienungs-Ereignisse/.test(card) && /nur übermittelte Pakete/.test(card), { ux: t?.uxEvents, fb: t?.feedbackEvents, active: t?.foregroundActiveSeconds });
@@ -1739,7 +1740,7 @@ try {
     const ev = await evidence();
     check("no EQ-DELAY attempt and no v3 record exist", !ev.attempts.some((a) => a.taskId === "EQ-DELAY") && !ev.state.visits.some((v) => v.id === "v3"));
     await pp.goto(BASE + "/family/learn/parent");
-    await pp.getByRole("tab", { name: "Mathe" }).click();
+    await openParentTab(pp, "Mathe");
     await tid("delayed-check-parent", pp).waitFor();
     check("parent (backdated): retired delayed check explained, no opening date", (await tid("delayed-check-parent", pp).getAttribute("data-status")) === "retired" && !/öffnet am/.test(await tid("delayed-check-parent", pp).innerText()));
     await shot(pp, "parent-math-due");

@@ -21,6 +21,7 @@ import path from "node:path";
 import { spawn } from "node:child_process";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
+import { openParentTab } from "./lib/parent-tabs.mjs";
 
 const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(path.join(app, "package.json"));
@@ -131,13 +132,13 @@ const shot = async (name) => {
 };
 const readParent = async () => {
   await p.goto(BASE + "/family/learn/parent");
-  await p.getByRole("tab", { name: "Rückblick" }).click();
+  await openParentTab(p, "Rückblick");
   await p.getByTestId("review-v4").waitFor();
   const card = p.getByTestId("review-v4");
   const reviewText = await card.innerText();
   const obsolete = await card.locator("[data-testid='review-obsolete']").count();
   const derivation = await card.getAttribute("data-derivation");
-  await p.getByRole("tab", { name: "Deutsch" }).click();
+  await openParentTab(p, "Deutsch");
   await p.getByTestId("transfers").waitFor();
   const germanText = await p.getByTestId("transfers").innerText();
   return { reviewText, obsolete, derivation, germanText };
@@ -152,11 +153,11 @@ try {
   check("capped API: 'independent' appears nowhere in the served v4 completion; completion identity and dates are the archived ones", c4 && !JSON.stringify(c4).includes('"independent"') && c4.completionId === archivedReview.identity.completionId && c4.finishedAt === archived.completions.find((r) => r.visit_id === "v4").finished_at, { id: c4?.completionId });
   check("capped API: the child state still shows the transfer text 'Hallo' as unassessable (read-time derivation), and the served content is version 1", ev.state?.transfers?.at(-1)?.text === "Hallo" && ev.state?.transfers?.at(-1)?.outcome === "unassessable" && ev.contentCounts?.version === 1, { outcome: ev.state?.transfers?.at(-1)?.outcome, version: ev.contentCounts?.version });
   let parent = await readParent();
-  await p.getByRole("tab", { name: "Rückblick" }).click();
+  await openParentTab(p, "Rückblick");
   await shot("capped-review");
   check("capped parent Rückblick: the v4 card is the explicit 'Auswertung nicht verfügbar' presentation — no WRITE-TRANSFER-1 credit, no 'independent', the reason stated, records declared unchanged", parent.derivation === "obsolete" && parent.obsolete === 1 && !/independent/.test(parent.reviewText) && !/WRITE-TRANSFER-1 v1/.test(parent.reviewText) && /Regelfassung 1/.test(parent.reviewText) && /unverändert erhalten/.test(parent.reviewText) && /Vom Kind gesagt/.test(parent.reviewText), { excerpt: parent.reviewText.slice(0, 300) });
   check("capped parent Deutsch: Hallo is 'nicht bewertet'", /Hallo/.test(parent.germanText) && /nicht bewertet/.test(parent.germanText));
-  await p.getByRole("tab", { name: "Deutsch" }).click();
+  await openParentTab(p, "Deutsch");
   await shot("capped-german");
   const c1 = createClient({ url: `file:${dbFile}` });
   check("capped: chapter-4 rows (completion, mission state, attempts, samples) are byte-identical after the reads", (await v4Rows(c1)) === before);
@@ -197,7 +198,7 @@ try {
   ev = await evidence();
   c4 = ev.completions.find((c) => c.visitId === "v4");
   parent = await readParent();
-  await p.getByRole("tab", { name: "Rückblick" }).click();
+  await openParentTab(p, "Rückblick");
   await shot("capped-control-current-rules");
   const c3b = createClient({ url: `file:${dbFile}` });
   check("capped control: a review stored under the current learning rules is served as stored (supported credit visible, 'projected' note), its UX summary re-derived (feedback-only → not observed, no false zero), nothing written", c4?.derivation?.status === "projected" && c4.review?.learning?.objectives?.some((o) => o.taskId === "WRITE-TRANSFER-1" && o.evidence === "supported") && c4.review?.experience?.telemetry?.uxObserved === false && c4.review?.experience?.telemetry?.foregroundActiveSeconds === null && parent.derivation !== "obsolete" && /supported/.test(parent.reviewText) && /review-projected|Regelfassung 3/.test(parent.reviewText + (await p.getByTestId("review-v4").locator("[data-testid='review-projected']").count())) && (await v4Rows(c3b)) === controlRows, { status: c4?.derivation?.status, ux: c4?.review?.experience?.telemetry?.uxObserved });
@@ -213,7 +214,7 @@ try {
   ev = await evidence();
   c4 = ev.completions.find((c) => c.visitId === "v4");
   parent = await readParent();
-  await p.getByRole("tab", { name: "Rückblick" }).click();
+  await openParentTab(p, "Rückblick");
   await shot("uncapped-review");
   check("uncapped: the archived review is re-derived — WRITE-TRANSFER-1 unscored, earlier derivation (independent) disclosed, identity and dates unchanged", c4?.derivation?.status === "current" && c4.review?.identity?.reviewVersion === REVIEW_VERSION && c4.review?.learning?.objectives?.find((o) => o.taskId === "WRITE-TRANSFER-1")?.evidence === "unscored" && c4.review?.previousReviews?.[0]?.objectives?.find((o) => o.taskId === "WRITE-TRANSFER-1")?.evidence === "independent" && c4.completionId === archivedReview.identity.completionId && parent.derivation !== "obsolete" && /nicht bewertet/.test(parent.reviewText) && /Frühere Fassung/.test(parent.reviewText), { evidence: c4?.review?.learning?.objectives?.find((o) => o.taskId === "WRITE-TRANSFER-1")?.evidence });
   const c4db = createClient({ url: `file:${dbFile}` });

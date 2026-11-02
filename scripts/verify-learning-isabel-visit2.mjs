@@ -24,6 +24,7 @@ import { createRequire } from "node:module";
 import { encode } from "@auth/core/jwt";
 import { chromium } from "/Users/claweberle/.npm-global/lib/node_modules/playwright/index.mjs";
 import { audioSafeChromiumLaunchOptions, installBrowserAudioGuard } from "./lib/browser-audio-guard.mjs";
+import { openParentTab } from "./lib/parent-tabs.mjs";
 
 const args = process.argv.slice(2);
 const opt = (name, fallback) => (args.includes(name) ? args[args.indexOf(name) + 1] : fallback);
@@ -300,7 +301,7 @@ if (MODE === "voices-off") {
     op.on("pageerror", (e) => pageErrors.push(String(e)));
     await op.goto(`${BASE}/family/learn/parent?child=santiago`);
     await op.waitForSelector("[role='tab']", { timeout: 30000 });
-    await op.locator("[role='tab']", { hasText: "Einstellungen" }).click();
+    await openParentTab(op, "Einstellungen", { exact: true });
     await op.waitForSelector("[data-testid='narration-audition']", { timeout: 20000 });
     const rosa = r.json.lines.find((l) => l.child === "santiago" && l.slot === "es-female" && !l.personal);
     const group = rosa.where[0];
@@ -530,7 +531,7 @@ if (MODE === "voices-off") {
   await op.goto(`${BASE}/family/learn/parent?child=isabel`);
   await op.waitForSelector("[role='tab']", { timeout: 30000 });
   await op.locator("[role='tab']", { hasText: "Isabel" }).click();
-  await op.locator("[role='tab']", { hasText: "Einstellungen" }).click();
+  await openParentTab(op, "Einstellungen", { exact: true });
   await op.waitForSelector("[data-testid='narration-audition']", { timeout: 20000 });
   const first = ready.json.lines.find((l) => l.where.includes("IG1-HELLO"));
   await op.locator(`[data-testid='audition-group-IG1-HELLO'] summary`).click();
@@ -845,7 +846,7 @@ if (MODE === "voices-off") {
   await pp.locator("[data-testid='observation-v2-build-done']").click();
   await settle(1200);
   await shot(pp, "parent-evidence", true);
-  await pp.locator("[role='tab']", { hasText: "Rückblick" }).click();
+  await openParentTab(pp, "Rückblick", { exact: true });
   await pp.waitForSelector("[data-testid='review-v1']", { timeout: 20000 });
   const note = await text(pp, "[data-testid='review-v1']");
   check("I2-05.parent-sees-correction-note-with-stored-wording", (await pp.locator("[data-testid='review-v1'] [data-testid='review-child-summary-corrected']").count()) === 1 && note.includes("Im Zimmer: eine Wand.") && note.includes("Gespeichert:") && note.includes("Im Zimmer: ein Regal."), note.slice(0, 400));

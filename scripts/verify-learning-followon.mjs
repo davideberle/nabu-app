@@ -11,6 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
+import { openParentTab } from "./lib/parent-tabs.mjs";
 
 const args = process.argv.slice(2);
 const opt = (name, fallback) => (args.includes(name) ? args[args.indexOf(name) + 1] : fallback);
@@ -270,7 +271,7 @@ check("parent: next step names Besuch 4 (v5, EQ-PIER, LANG-EN-PIER) as available
 check("parent: retired delayed-check panel (status retired, retirement date)", (await ppage.getByTestId("delayed-check-parent").getAttribute("data-status")) === "retired" && /30\. September 2026/.test(await ppage.getByTestId("delayed-check-parent").innerText()));
 const mathText = await ppage.locator("body").innerText();
 check("parent (math tab): attempts are labelled 'Besuch 3 — Die Beobachtungsstation (v4)'", /Besuch 3 — Die Beobachtungsstation \(v4\)/.test(mathText) || (await (async () => { await ppage.getByRole("button", { name: /EQ-STATION|Beete|Rest/ }).first().click().catch(() => {}); return /Besuch 3 — Die Beobachtungsstation \(v4\)/.test(await ppage.locator("body").innerText()); })()));
-await ppage.getByRole("tab", { name: "Spanisch" }).click();
+await openParentTab(ppage, "Spanisch");
 await ppage.getByTestId("vocabulary-es").waitFor({ timeout: 20000 });
 check("parent (Spanisch): vocabulary ledger rendered; agua recognition 'selbständig (einzeln)' (new station pick independent, legacy pick supported); lámpara writing 'üben' (accent-less spelling → review), recall 'selbständig (einzeln)'", (await ppage.getByTestId("vocab-dim-ES-AGUA-recognition").getAttribute("data-status")) === "independent" && (await ppage.getByTestId("vocab-dim-ES-LAMPARA-writing").getAttribute("data-status")) === "practice" && (await ppage.getByTestId("vocab-dim-ES-LAMPARA-recall").getAttribute("data-status")) === "independent");
 const eFin = await evidence();
@@ -288,10 +289,10 @@ await ppage.locator('[data-testid="vocab-observation"]').first().waitFor({ timeo
 const obsText = await ppage.locator('[data-testid^="vocab-observations-"]').first().innerText();
 check("parent (Spanisch): an observation row shows task/step/version, context, visit label, modality, stimulus and response", /Aufgabe LANG-ES-/.test(obsText) && /Kontext ES-/.test(obsText) && /Besuch \d/.test(obsText) && /Reiz: „/.test(obsText) && /Antwort: „/.test(obsText), obsText.slice(0, 240));
 await ppage.screenshot({ path: path.join(OUT, "parent-spanish-vocabulary.png"), fullPage: true });
-await ppage.getByRole("tab", { name: "Englisch" }).click();
+await openParentTab(ppage, "Englisch");
 await ppage.getByTestId("vocabulary-en").waitFor({ timeout: 20000 });
 check("parent (Englisch): water recall 'selbständig (einzeln)', recognition 'nur mit Hilfe' (legacy row, matching the raw table), need/garden 'keine Aufgabe dafür'", (await ppage.getByTestId("vocab-dim-EN-WATER-recall").getAttribute("data-status")) === "independent" && (await ppage.getByTestId("vocab-dim-EN-WATER-recognition").getAttribute("data-status")) === "supported-only" && (await ppage.getByTestId("vocab-dim-EN-NEED-recall").getAttribute("data-status")) === "no-opportunity");
-await ppage.getByRole("tab", { name: "Rückblick" }).click();
+await openParentTab(ppage, "Rückblick");
 await ppage.getByTestId("review-v4").waitFor({ timeout: 20000 });
 check("parent (Rückblick): the chapter's review card is titled 'Besuch 3 — Die Beobachtungsstation' and states the internal id v4; v1/v2 keep their numbers", /Besuch 3 — Die Beobachtungsstation/.test(await ppage.getByTestId("review-v4").innerText()) && /intern v4/.test(await ppage.getByTestId("review-v4").innerText()) && /Besuch 2 — /.test(await ppage.getByTestId("review-v2").innerText()));
 await ppage.screenshot({ path: path.join(OUT, "parent-review-visit3.png"), fullPage: true });

@@ -44,6 +44,8 @@ import { createSettingsDraft, editSettingsDraft, reconcileSettingsDraft, setting
 import { beginRequest, clearEvidence, createEvidenceStore, describeTypingMetrics, invalidateAuthorization, isCurrentEpoch, receiveEvidence, renderableEvidence, selectChild, type EvidenceStore } from "@/lib/family-learning-parent-evidence";
 import { NarrationAudition } from "@/components/family/learning/narration-audition";
 import { noktNoReplyLine, PARENT_HELPED_NOTE, type VisitReportEn } from "@/lib/family-learning-parent-report-en";
+import type { LearningLadder } from "@/lib/family-learning-skill-ladder";
+import { LearningLadderView } from "@/components/family/learning/learning-ladder";
 
 const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
 const primaryButton = cn("inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-stone-900 px-5 text-base font-semibold text-white disabled:opacity-50 dark:bg-stone-100 dark:text-stone-900", focusRing);
@@ -59,7 +61,7 @@ type PlanningInput = {
   typing: { planned: number; attempted: number; activeSeconds: number; idleSeconds: number; wallSeconds: number | null; accuracy: number | null; paceCps: number; paceBasis: string } | null;
   note: string;
 };
-type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" | "subscription"; noktTalks?: ReturnType<typeof noktTalkEvidence>; parentObservations?: ParentObservation[]; craftTasks?: CraftTasks[]; reportEn?: VisitReportEn[] };
+type Evidence = EvidenceBundle & { prepared: boolean; contentCounts: Record<string, number> | null; owner: string; delayedCheck?: DelayedCheckInfo | null; visits?: { id: string; ordinal: number | null; label: string; retired: boolean }[]; planningInput?: PlanningInput | null; missionEvidence?: MissionEvidenceView[]; noktMode?: "unavailable" | "fictional-stub" | "subscription"; noktTalks?: ReturnType<typeof noktTalkEvidence>; parentObservations?: ParentObservation[]; craftTasks?: CraftTasks[]; reportEn?: VisitReportEn[]; ladder?: LearningLadder };
 type ParentObservation = { id: string; visitId: string; taskId: string | null; at: string; step?: string; task?: string; status?: string; note?: string | null };
 type CraftTasks = { visit: string; step: string; title: string; tasks: { id: string; text: string }[] };
 
@@ -117,6 +119,8 @@ async function api<T>(input: string, init?: RequestInit): Promise<{ ok: true; st
 
 export function FamilyLearnParentClient() {
   const [tab, setTab] = useState<Tab>("math");
+  // Step 2 A: the earlier per-visit and German views live in the collapsed «Visit details»; open/closed survives a child switch.
+  const [detailsOpen, setDetailsOpen] = useState(false);
   // Evidence orchestration (lib/family-learning-parent-evidence.ts): selecting
   // a child clears the shown bundle at once; a response is adopted only if it
   // is the latest request, names the selected child and does not regress the
@@ -232,10 +236,10 @@ export function FamilyLearnParentClient() {
           <Link href="/family/dashboard" className={cn("text-sm text-tertiary hover:text-primary", focusRing)}>
             ← Familie
           </Link>
-          <h1 className="mt-1 text-3xl font-semibold tracking-[-0.02em] text-primary">Lern-Evidenz</h1>
-          <p className="mt-1 text-base text-tertiary">Was die Kinder in der Expedition gezeigt haben — getrennt nach Hilfe, frischem Check und Wiederholung.</p>
+          <h1 className="mt-1 text-3xl font-semibold tracking-[-0.02em] text-primary">Learning report</h1>
+          <p className="mt-1 text-base text-tertiary">What each child showed, skill by skill, from every visit since September. Visit details and the earlier German views are below.</p>
         </div>
-        {access === "owner" && evidence ? <NabuBadge tone="green">Eltern-Konto {evidence.owner}</NabuBadge> : null}
+        {access === "owner" && evidence ? <NabuBadge tone="green">Parent account {evidence.owner}</NabuBadge> : null}
       </header>
 
       {access === "denied" ? (
@@ -258,28 +262,10 @@ export function FamilyLearnParentClient() {
               </button>
             ))}
           </div>
-          <div className="mt-3 flex flex-wrap gap-2" role="tablist" aria-label="Bereich">
-            {(
-              [
-                ["math", "Mathe"],
-                ["de", "Deutsch"],
-                ["en", "Englisch"],
-                ["es", "Spanisch"],
-                ["typing", "Tippen"],
-                ["review", "Rückblick"],
-                ["settings", "Einstellungen"],
-              ] as [Tab, string][]
-            ).map(([id, label]) => (
-              <button key={id} type="button" role="tab" aria-selected={tab === id} onClick={() => setTab(id)} className={cn(secondaryButton, tab === id && "bg-secondary")}>
-                {label}
-              </button>
-            ))}
-          </div>
-
           {evidence && evidence.child === child ? (
-            <EvidenceView key={evidence.child} evidence={evidence} tab={tab} child={evidence.child} ops={ops} />
+            <EvidenceView key={evidence.child} evidence={evidence} tab={tab} setTab={setTab} detailsOpen={detailsOpen} setDetailsOpen={setDetailsOpen} child={evidence.child} ops={ops} />
           ) : (
-            <p className="mt-6 text-base text-tertiary">Evidenz wird geladen …</p>
+            <p className="mt-6 text-base text-tertiary">Loading the report …</p>
           )}
         </>
       ) : null}
@@ -289,7 +275,7 @@ export function FamilyLearnParentClient() {
 
 // ---------------------------------------------------------------------------
 
-function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: Tab; child: ChildId; ops: ParentOps }) {
+function EvidenceView({ evidence, tab, setTab, detailsOpen, setDetailsOpen, child, ops }: { evidence: Evidence; tab: Tab; setTab: (t: Tab) => void; detailsOpen: boolean; setDetailsOpen: (open: boolean) => void; child: ChildId; ops: ParentOps }) {
   // every canonical math objective (equal sharing, remainder items, both harbor parts) — ID27
   const math = evidence.attempts.filter((a) => isMathObjective(a.objective));
   const lang = (code: string) => evidence.attempts.filter((a) => a.stimulusLanguage === code && a.objective.startsWith("language-"));
@@ -307,7 +293,31 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
 
   return (
     <section className="mt-6 space-y-6">
+      {/* Step 2 A: the level-based report is the main view; everything that was here before moves into «Visit details». */}
+      {evidence.ladder ? <LearningLadderView ladder={evidence.ladder} childName={CHILD_LABEL[child]} /> : null}
+      <details className="rounded-3xl border border-primary bg-primary p-5" open={detailsOpen} onToggle={(e) => setDetailsOpen((e.currentTarget as HTMLDetailsElement).open)} data-testid="visit-details">
+        <summary className={cn("cursor-pointer text-xl font-semibold text-primary", focusRing)} lang="en">
+          Visit details <span className="text-sm font-normal text-tertiary">— latest visits («I helped here», Nokt replies), raw records and the earlier German views</span>
+        </summary>
+        <div className="mt-4 space-y-6">
       {(evidence.reportEn ?? []).length ? <VisitReportsEn reports={evidence.reportEn!.slice(0, 2)} child={child} ops={ops} /> : null}
+      <div className="flex flex-wrap gap-2" role="tablist" aria-label="Bereich">
+        {(
+          [
+            ["math", "Mathe"],
+            ["de", "Deutsch"],
+            ["en", "Englisch"],
+            ["es", "Spanisch"],
+            ["typing", "Tippen"],
+            ["review", "Rückblick"],
+            ["settings", "Einstellungen"],
+          ] as [Tab, string][]
+        ).map(([id, label]) => (
+          <button key={id} type="button" role="tab" aria-selected={tab === id} onClick={() => setTab(id)} className={cn(secondaryButton, tab === id && "bg-secondary")}>
+            {label}
+          </button>
+        ))}
+      </div>
       {tab === "math" ? (
         <>
           <NextStep evidence={evidence} />
@@ -348,6 +358,8 @@ function EvidenceView({ evidence, tab, child, ops }: { evidence: Evidence; tab: 
       {tab === "settings" ? <Settings key={`${evidence.child}:${evidence.erasureGeneration}`} evidence={evidence} child={evidence.child} ops={ops} /> : null}
       {/* Both children: the owner's listening check of the recorded story voices (no visit is started). */}
       {tab === "settings" ? <NarrationAudition /> : null}
+        </div>
+      </details>
       {state ? (
         <p className="text-xs text-tertiary">
           Mission {state.missionId} v{state.contentVersion} · Stand {fmt(state.updatedAt)} · Revision {state.revision} · Besuche abgeschlossen: {state.visits.filter((v) => v.finishedAt).length}
@@ -366,7 +378,7 @@ function VisitReportsEn({ reports, child, ops }: { reports: VisitReportEn[]; chi
   return (
     <section className="rounded-3xl border border-primary bg-primary p-5" lang="en" data-testid="report-en">
       <h2 className="text-xl font-semibold text-primary">Latest visits</h2>
-      <p className="mt-1 text-sm text-tertiary">From the child&apos;s own records. Estimates from a few tasks, not test scores. Earlier details (German) follow below.</p>
+      <p className="mt-1 text-sm text-tertiary">Every answer of the last two visits. «I helped here» marks an answer as helped; the ladder above then counts it as «with help». Earlier details (German) follow below.</p>
       {reports.map((r) => (
         <article key={r.visit} className="mt-4 rounded-2xl bg-secondary p-4" data-testid={`report-en-${r.visit}`}>
           <h3 className="text-lg font-semibold text-primary">
@@ -406,7 +418,7 @@ function VisitReportsEn({ reports, child, ops }: { reports: VisitReportEn[]; chi
                 ) : (
                   <p className="mt-1 text-sm text-tertiary">No answer recorded.</p>
                 )}
-                {t.wayUsed ? <p className="mt-1 text-sm text-primary">Way he said he used: {t.wayUsed}</p> : null}
+                {t.wayUsed ? <p className="mt-1 text-sm text-primary">Way chosen: {t.wayUsed}</p> : null}
               </li>
             ))}
           </ul>

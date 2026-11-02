@@ -59,6 +59,7 @@ import { createHmac, createHash } from "node:crypto";
 /** The reviewed clarification prompt P2 as served (read from the mirrored content, never hardcoded: P2 was revised on 2026-10-11). */
 const BANK_P2 = JSON.parse(fs.readFileSync(new URL("../src/data/family-learning/content/santiago-expedition-v4.json", import.meta.url), "utf8")).reasoning.prompts.find((x) => x.id === "P2").text;
 import { fileURLToPath } from "node:url";
+import { openParentTab } from "./lib/parent-tabs.mjs";
 const APP_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const { createChildTurnClient } = await import(path.join(APP_ROOT, "src/lib/family-assistant-client.ts"));
 const { envelopeRawText } = await import(path.join(APP_ROOT, "src/lib/family-assistant-turn.ts"));
@@ -1006,7 +1007,7 @@ await guarded("S2", async () => {
   await pp.locator("button[role='tab']", { hasText: "Deutsch" }).first().click();
   await settle(400);
   await shot(pp, "parent-de-desktop", { full: true });
-  check("parent render: the Deutsch tab of the parent cockpit is rendered in an owner session (not the child's profile chooser); with the live conversation deferred there is no reasoning transcript block, the writing-review block is present", /Lern-Evidenz/.test(await body(pp)) && !/Choose your profile/.test(await body(pp)) && (await pp.locator("[data-testid='parent-log-reviews']").count()) >= 1 && (await pp.locator("[data-testid='parent-reasoning']").count()) === 0, { reasoningBlocks: await pp.locator("[data-testid='parent-reasoning']").count() });
+  check("parent render: the Deutsch tab of the parent cockpit is rendered in an owner session (not the child's profile chooser); with the live conversation deferred there is no reasoning transcript block, the writing-review block is present", /Learning report/.test(await body(pp)) && !/Choose your profile/.test(await body(pp)) && (await pp.locator("[data-testid='parent-log-reviews']").count()) >= 1 && (await pp.locator("[data-testid='parent-reasoning']").count()) === 0, { reasoningBlocks: await pp.locator("[data-testid='parent-reasoning']").count() });
   // --- ID27 / ID28 (2026-10-11): the Mathe tab lists the CURRENT arithmetic (both harbor parts and the fresh check) from the canonical
   //     objective map, with the part and the help distinction; the support list describes every ordinary reply by origin AND delivery
   //     and agrees with the Deutsch transcript (what the child actually saw).
@@ -1038,7 +1039,7 @@ await guarded("S2", async () => {
   await pp.locator("button[role='tab']", { hasText: "Deutsch" }).first().click();
   await settle(400);
   const deTxt = await body(pp);
-  await pp.locator("button[role='tab']", { hasText: "Rückblick" }).first().click();
+  await openParentTab(pp, "Rückblick", { exact: true });
   await settle(600);
   const rvTxt = await body(pp);
   await shot(pp, "parent-review-deferred-desktop", { full: true });
