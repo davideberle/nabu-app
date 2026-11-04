@@ -321,8 +321,14 @@ function statusFor(produce: string, monthKey: string): SeasonStatus {
   if (!row) return "uncertain";
   if (!row.months.includes(monthKey)) return "out-of-season";
   if (calendar.storageProduce.includes(produce) && STORAGE_WINDOW.has(monthKey)) return "storage";
+  // Planner assumption (David, November 4, 2026): VSGP marks tomatoes into
+  // November because of heated greenhouse cultivation. A fresh-tomato dish
+  // is summer food; from November to March it is not in season.
+  if (GREENHOUSE_ONLY_WINTER.test(produce) && STORAGE_WINDOW.has(monthKey)) return "out-of-season";
   return "fresh";
 }
+
+const GREENHOUSE_ONLY_WINTER = /tomate/i;
 
 /**
  * The defining ingredients of a recipe and their evidence class for `month`.

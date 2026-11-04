@@ -44,6 +44,7 @@ import {
 import { MIN_PLAUSIBLE_TOTAL_MINUTES, MAX_PLAUSIBLE_TOTAL_MINUTES, qaRecipeForShelf, type RecipeQaDiagnostic } from "./recipe-render-qa.ts";
 import { SHELF_TARGET } from "./planner-sources.ts";
 import { classifyPlannerRole } from "./planner-roles.ts";
+import { isOffSeason, notDinnerReason } from "./planner-dinner-fit.ts";
 import { candidateDisplay, deriveShelfDisplay, type ShelfDisplay } from "./planner-display.ts";
 import { diffShelfExposure, type ExposureRecord } from "./planner-exposure.ts";
 import {
@@ -137,6 +138,8 @@ export function toShelfCandidate(recipe: Recipe, origin: CandidateOrigin, now: D
     ...(role.completion ? { completion: role.completion } : {}),
     display: deriveShelfDisplay({ role: role.role, traits, time, completion: role.completion, seasonality }),
     ...(origin.rank !== undefined ? { rank: origin.rank } : {}),
+    ...(notDinnerReason(recipe) ? { notDinner: notDinnerReason(recipe) } : {}),
+    ...(isOffSeason(recipe, month) ? { offSeason: true } : {}),
   };
 }
 
@@ -513,7 +516,10 @@ export async function planContextFor(
   resolveRecipe: (id: string) => Promise<Recipe | undefined | null>,
   now: Date,
 ): Promise<PlanContext> {
-  const assignedIds = assignedRecipeIdsOf(plan);
+  // Sides (naan, a vegetable side) are part of a meal; only dinners count
+  // toward the week's protein, shape and cuisine repetition.
+  const sideOnly = sideOnlyRecipeIdsOf(plan);
+  const assignedIds = [...assignedRecipeIdsOf(plan)].filter((id) => !sideOnly.has(id));
   const assignedTraits: ShelfTraits[] = [];
   const assignedCuisines: string[] = [];
   for (const id of assignedIds) {
@@ -722,6 +728,26 @@ function weekDaysFor(week: string): MealPlan["days"] {
   }));
 }
 
+/**
+ * Recipes the week uses only as a side (naan with a curry, a green-bean side
+ * cooked with the fish). They are part of a meal, never a dinner idea of
+ * their own, so they are kept off the shelf entirely.
+ */
+export function sideOnlyRecipeIdsOf(plan: MealPlan | null): Set<string> {
+  const mains = new Set<string>();
+  const sides = new Set<string>();
+  for (const day of plan?.days ?? []) {
+    if (day.planningState === "open" || day.planningState === "skipped") continue;
+    if (day.recipeId) mains.add(day.recipeId);
+    if (day.meal?.main?.id) mains.add(day.meal.main.id);
+    if (day.brunch?.main?.id) mains.add(day.brunch.main.id);
+    for (const side of day.meal?.sides ?? []) if (side?.id) sides.add(side.id);
+    for (const side of day.brunch?.sides ?? []) if (side?.id) sides.add(side.id);
+  }
+  for (const id of mains) sides.delete(id);
+  return sides;
+}
+
 function assignedRecipeIdsOf(plan: MealPlan | null): Set<string> {
   const ids = new Set<string>();
   for (const day of plan?.days ?? []) {
@@ -873,7 +899,9 @@ export async function prepareWeek(
     const web = reviewedWeb.candidates;
     const catalog = reviewedCatalog.candidates;
     const held = [...reviewedWeb.held, ...reviewedCatalog.held];
+    const sideOnly = sideOnlyRecipeIdsOf(existing);
     const eligible = (c: ShelfCandidate) =>
+      !sideOnly.has(c.recipeId) &&
       (c.role === "main" || c.role === "light-meal") &&
       c.review?.state !== "checked-hold" &&
       (!dismissed.has(c.recipeId) || assigned.has(c.recipeId));

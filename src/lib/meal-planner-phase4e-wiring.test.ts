@@ -40,7 +40,7 @@ describe("Phase 4E visible-candidate wiring", () => {
 
   it("excludes dismissed ids from completion replacements and records safe fixes", () => {
     const source = read("./planner-runtime.ts");
-    match(source, /new Set\(\[\.\.\.onShelf, \.\.\.notThisWeekIds\(plan\.candidateSet\)\]\)/);
+    match(source, /new Set\(\[\.\.\.onShelf, \.\.\.sideOnly, \.\.\.notThisWeekIds\(plan\.candidateSet\)\]\)/);
     match(source, /result\.issues\.length \|\| result\.fixes\.length/);
     match(source, /qaDiagnostics: \(\) => diagnostics\.slice\(\)/);
   });

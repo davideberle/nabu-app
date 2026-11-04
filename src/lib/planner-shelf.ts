@@ -99,6 +99,12 @@ export type ShelfCandidate = {
   review?: CandidateReviewSummary;
   /** Carried over from the previously saved shelf after a source/provider failure. */
   retained?: boolean;
+  /** The household gave this recipe a thumbs up. Ranking signal only. */
+  liked?: boolean;
+  /** The recipe is filed under another season (a "Summer" chapter in November). */
+  offSeason?: boolean;
+  /** Why the recipe is not a dinner (a preserve, a sandwich for one, a condiment). */
+  notDinner?: string | null;
 };
 
 export type ShelfItem = ShelfCandidate & {
@@ -437,6 +443,8 @@ export function measureCoverage(items: readonly ShelfCandidate[]): ShelfCoverage
   for (const item of items) {
     coverage.total += 1;
     bump(coverage.shapes, item.traits.shape);
+    // A salad that is the dinner itself, not a side-ish light salad.
+    if (item.traits.shape === "salad" && item.role === "main") bump(coverage.shapes, "hearty-salad");
     coverage.proteins[item.traits.protein] += 1;
     bump(coverage.starches, item.traits.starch);
     bump(coverage.cuisines, item.cuisine || "Other");
@@ -472,7 +480,8 @@ export function coverageGaps(coverage: ShelfCoverage): string[] {
   if (coverage.proteins.fish === 0) gaps.push("fish");
   if ((coverage.efforts.quick ?? 0) < SHELF_LIMITS.minQuickWeekday) gaps.push("quick-weekday");
   if ((coverage.shapes.soup ?? 0) === 0) gaps.push("soup");
-  if ((coverage.shapes.salad ?? 0) === 0) gaps.push("salad");
+  if ((coverage.shapes["hearty-salad"] ?? 0) === 0) gaps.push("salad");
+  if ((coverage.shapes.bowl ?? 0) === 0) gaps.push("bowl");
   if ((coverage.shapes["stew-curry"] ?? 0) === 0) gaps.push("stew-curry");
   if ((coverage.efforts.project ?? 0) < SHELF_LIMITS.minWeekendProjects) gaps.push("weekend-project");
   if (coverage.seasonalLocal === 0) gaps.push("seasonal-local");
@@ -494,8 +503,10 @@ function closesGap(gap: string, candidate: ShelfCandidate): boolean {
       return candidate.traits.effort === "project" || candidate.traits.weekendFit;
     case "seasonal-local":
       return candidate.traits.seasonalLocal;
-    case "soup":
     case "salad":
+      return candidate.traits.shape === "salad" && candidate.role === "main";
+    case "soup":
+    case "bowl":
     case "stew-curry":
       return candidate.traits.shape === gap;
     default:
@@ -522,7 +533,17 @@ export type AdmissionOptions = {
   relaxCookbookCap?: boolean;
   /** Bound one display lane so the assembler cannot create a shelf its own health check rejects. */
   maxPerDisplayGroup?: number;
+  /**
+   * Protein lanes the week's assigned or cooked dinners already use. One fish
+   * dinner a week is enough: after it, no further fish idea is suggested.
+   */
+  weekProteins?: Partial<Record<ProteinLane, number>>;
 };
+
+/** Fish dinners per week, counting assigned/cooked dinners. */
+export const WEEK_FISH_LIMIT = 1;
+/** Meat dinners per week, counting assigned/cooked dinners. */
+export const WEEK_MEAT_LIMIT = 2;
 
 function displayGroup(item: ShelfCandidate): "easy-light" | "everyday-dinners" | "worth-more-time" {
   if (item.role === "light-meal") return "easy-light";
@@ -544,6 +565,23 @@ export function canAdmit(
   }
   if (current.some((item) => item.recipeId === candidate.recipeId)) {
     return { ok: false, reason: "already on the shelf" };
+  }
+  if (candidate.notDinner) {
+    return { ok: false, reason: `not a dinner: ${candidate.notDinner}` };
+  }
+  if (candidate.review?.state === "uncertain" && candidate.review.role && !["main", "uncertain"].includes(String(candidate.review.role))) {
+    return { ok: false, reason: `content review reads it as a ${candidate.review.role}, not a dinner` };
+  }
+  if (candidate.review?.state === "excluded-private" && /merged recipe/i.test(candidate.review.reason ?? "")) {
+    return { ok: false, reason: "recipe content looks merged or broken" };
+  }
+  const weekFish = options.weekProteins?.fish ?? 0;
+  if (candidate.traits.protein === "fish" && weekFish >= WEEK_FISH_LIMIT) {
+    return { ok: false, reason: "the week already has a fish dinner" };
+  }
+  const weekMeat = options.weekProteins?.meat ?? 0;
+  if (candidate.traits.protein === "meat" && weekMeat >= WEEK_MEAT_LIMIT) {
+    return { ok: false, reason: `the week already has ${weekMeat} meat dinners` };
   }
 
   const coverage = measureCoverage(current);
@@ -631,10 +669,15 @@ export function scoreCandidate(candidate: ShelfCandidate): number {
   if (candidate.discovery === "editorial") score += 4;
   if (candidate.image) score += 2;
 
-  if (t.protein === "vegan") score += 3;
-  else if (t.protein === "vegetarian") score += 2;
-  else if (t.protein === "fish") score += 1;
-  else score -= 1;
+  // Plant-forward is a mild preference, not the main ranking signal: the
+  // shelf-level plant-forward share is enforced by the coverage gaps.
+  if (t.protein === "vegan" || t.protein === "vegetarian") score += 1;
+  else if (t.protein === "meat") score -= 1;
+
+  // What the household actually liked outranks every structural trait.
+  if (candidate.liked) score += 5;
+  // A dish filed under another season ("Summer" in November) reads wrong.
+  if (candidate.offSeason) score -= 4;
 
   if (t.vegetableDense) score += 2;
   // Calendar-backed seasonality: fresh +3, storage +1, out of season −3, the
@@ -676,7 +719,16 @@ export type AssembleShelfInput = {
   target?: { min: number; max: number };
   webTarget?: { min: number; max: number };
   libraryTarget?: { min: number };
+  /** Protein lanes already used by the week's dinners that are not on the shelf. */
+  weekProteins?: Partial<Record<ProteinLane, number>>;
 };
+
+/** Count fish/meat dinners among assigned or cooked traits. */
+export function weekProteinsOf(traits: readonly Pick<ShelfTraits, "protein">[]): Partial<Record<ProteinLane, number>> {
+  const out: Partial<Record<ProteinLane, number>> = {};
+  for (const t of traits) out[t.protein] = (out[t.protein] ?? 0) + 1;
+  return out;
+}
 
 /**
  * Assemble the persisted weekly shelf.
@@ -714,6 +766,10 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
     admit(candidate, "Assigned to a day this week", true);
   }
 
+  const weekProteins: Partial<Record<ProteinLane, number>> = { ...(input.weekProteins ?? {}) };
+  for (const item of selected) weekProteins[item.traits.protein] = (weekProteins[item.traits.protein] ?? 0) + 1;
+  const weekOptions: AdmissionOptions = { weekProteins };
+
   // --- 2. Web first.
   const webPool = input.web
     .filter((c) => !pinnedIds.has(c.recipeId))
@@ -737,7 +793,7 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
   for (const candidate of webPool) {
     if (webSelected >= webTarget.max) break;
     if (selected.length >= target.max) break;
-    const verdict = canAdmit(candidate, selected);
+    const verdict = canAdmit(candidate, selected, weekOptions);
     if (!verdict.ok) {
       rejected.push({ recipeId: candidate.recipeId, reason: verdict.reason });
       continue;
@@ -764,7 +820,7 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
     for (const candidate of catalogPool) {
       if (usedCatalog.has(candidate.recipeId)) continue;
       if (!closesGap(gap, candidate)) continue;
-      const verdict = canAdmit(candidate, selected);
+      const verdict = canAdmit(candidate, selected, weekOptions);
       if (!verdict.ok) continue;
       usedCatalog.add(candidate.recipeId);
       admit(candidate, `From your recipe book to cover the ${gap.replace(/-/g, " ")} gap`, false);
@@ -802,7 +858,7 @@ export function assembleWeeklyShelf(input: AssembleShelfInput): WeeklyShelf {
     for (const candidate of catalogPool) {
       if (selected.length >= ceiling) break;
       if (usedCatalog.has(candidate.recipeId)) continue;
-      const verdict = canAdmit(candidate, selected, { relaxCookbookCap: relax });
+      const verdict = canAdmit(candidate, selected, { ...weekOptions, relaxCookbookCap: relax });
       if (!verdict.ok) {
         if (!relax) rejected.push({ recipeId: candidate.recipeId, reason: verdict.reason });
         continue;
@@ -966,7 +1022,9 @@ export function applyTargetedReplacement(
       unbound.push(candidate.recipeId);
       continue;
     }
-    const verdict = canAdmit(candidate, [...kept, ...added]);
+    const verdict = canAdmit(candidate, [...kept, ...added], {
+      weekProteins: weekProteinsOf(kept.filter((item) => item.assigned).map((item) => item.traits)),
+    });
     if (!verdict.ok) continue;
     const item: ShelfItem = {
       ...candidate,
@@ -1231,13 +1289,14 @@ export function completeShelfAgainstPlan(
   const target = options.target ?? SHELF_TARGET;
   const pinned = shelf.filter((item) => item.assigned);
   const removed: { recipeId: string; reason: string }[] = [];
+  const weekOptions: AdmissionOptions = { weekProteins: weekProteinsOf(context.assignedTraits) };
 
   // Unassigned ideas the assigned days now rule out (a third meat night, a
   // second tofu dish) are dropped; the rest are kept and reranked.
   const kept: ShelfItem[] = [];
   for (const item of shelf) {
     if (item.assigned) continue;
-    const verdict = canAdmit(item, [...pinned, ...kept]);
+    const verdict = canAdmit(item, [...pinned, ...kept], weekOptions);
     if (!verdict.ok && verdict.reason !== "already on the shelf") {
       removed.push({ recipeId: item.recipeId, reason: verdict.reason });
       continue;
@@ -1260,7 +1319,7 @@ export function completeShelfAgainstPlan(
       unbound.push(candidate.recipeId);
       continue;
     }
-    const verdict = canAdmit(candidate, [...pinned, ...kept, ...added]);
+    const verdict = canAdmit(candidate, [...pinned, ...kept, ...added], weekOptions);
     if (!verdict.ok) continue;
     added.push({ ...candidate, assigned: false, reason: "Chosen to fit the rest of the week" });
   }

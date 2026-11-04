@@ -27,6 +27,7 @@ import {
   saveExposureRecords,
   saveExposureWithCountedIds,
   getPlannerReviewRuns,
+  getAllRecipeFeedback,
 } from "@/lib/db";
 import { getAllRecipes, getRecipe } from "@/lib/recipes";
 import { loadMealPlan, saveMealPlan } from "@/lib/meals-persistence";
@@ -39,6 +40,7 @@ import {
   hydrateShelfItems,
   planContextFor,
   reviewBindingsFor,
+  sideOnlyRecipeIdsOf,
   toCandidateItem,
   toShelfCandidate,
 } from "@/lib/planner-preparation";
@@ -139,15 +141,18 @@ export async function loadCatalogCandidatesForWeek(
   quarantine?: RecipeQaDiagnostic[],
 ): Promise<ShelfCandidate[]> {
   const legacyWeeks = getRecentWeekIds(week, plannerPolicy().recentWeeksLookback);
-  const [recipes, exclusions, legacyOffered, exposureExcluded, stagedWeb, plan] = await Promise.all([
+  const [recipes, exclusions, legacyOffered, exposureExcluded, stagedWeb, plan, feedback] = await Promise.all([
     getAllRecipes(),
     getPlannerRecencyExclusions(week),
     getLegacyOfferedRecipeIds(legacyWeeks, SHELF_POLICY_VERSION),
     getExposureExcludedRecipeIds(now),
     getStagedWebRecipes(),
     loadMealPlan(week),
+    getAllRecipeFeedback().catch(() => []),
   ]);
   const dismissed = notThisWeekIds(plan?.candidateSet);
+  const sideOnly = sideOnlyRecipeIdsOf(plan ?? null);
+  const liked = new Set(feedback.filter((entry) => entry.feedback === "up").map((entry) => entry.recipeId));
 
   const excluded = catalogExclusionIds({
     recentlyCooked: exclusions.recentlyCooked,
@@ -160,7 +165,7 @@ export async function loadCatalogCandidatesForWeek(
 
   const candidates: ShelfCandidate[] = [];
   for (const raw of recipes) {
-    if (excluded.has(raw.id) || dismissed.has(raw.id)) continue;
+    if (excluded.has(raw.id) || dismissed.has(raw.id) || sideOnly.has(raw.id)) continue;
     if (isStagedRecipe(raw)) continue;
     // A planner-visible catalog card must have an image; that rule predates
     // this work and is not weakened here.
@@ -169,7 +174,8 @@ export async function loadCatalogCandidatesForWeek(
     if (role.role === "reject") continue;
     const recipe = qaGate(raw, quarantine);
     if (!recipe) continue;
-    candidates.push(toShelfCandidate(recipe, { origin: "catalog", discovery: "catalog", week, contentSource: raw }, now));
+    const candidate = toShelfCandidate(recipe, { origin: "catalog", discovery: "catalog", week, contentSource: raw }, now);
+    candidates.push(liked.has(raw.id) ? { ...candidate, liked: true } : candidate);
   }
   return candidates;
 }
@@ -196,15 +202,18 @@ export async function reviewProviderStatusFor(week: string): Promise<{ kind: "ok
 export async function completePlanShelf(plan: MealPlan, now: Date): Promise<MealPlan | null> {
   if (!plan.candidateSet?.items?.length) return null;
   const assigned = assignedRecipeIdsForPlan(plan);
+  const sideOnly = sideOnlyRecipeIdsOf(plan);
   const providerStatus = await reviewProviderStatusFor(plan.week);
-  const shelf = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now, {
+  const hydrated = await hydrateShelfItems(plan.candidateSet.items, assigned, getRecipe, now, {
     week: plan.week,
     resolveReviews: (bindings) => getCandidateReviews(bindings),
     providerStatus,
   });
+  // A recipe used only as a side this week is part of a meal, not an idea.
+  const shelf = hydrated.filter((item) => !sideOnly.has(item.recipeId));
   const context = await planContextFor(plan, shelf, getRecipe, now);
   const onShelf = new Set(shelf.map((item) => item.recipeId));
-  const excluded = new Set([...onShelf, ...notThisWeekIds(plan.candidateSet)]);
+  const excluded = new Set([...onShelf, ...sideOnly, ...notThisWeekIds(plan.candidateSet)]);
   const replacements = await loadReplacementCandidates(plan.week, now, excluded);
   const result = completeShelfAgainstPlan(shelf, context, replacements, { excludeRecipeIds: excluded });
   return {

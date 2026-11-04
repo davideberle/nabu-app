@@ -1658,6 +1658,13 @@ function MealsPageInner() {
                 : normalizedActualName !== normalizedPlannedName),
             );
             const actualMealLabel = hist?.status === "in-progress" ? "Current meal" : "Actual meal";
+            // A meal without a stored recipe (bought, restaurant, eaten out) is a
+            // log entry for history only: it renders as a quiet gray note, never
+            // as a cookable recipe card.
+            const isLogOnlyId = (id: string | null | undefined) => !id || /^(meal|restaurant)-/.test(id);
+            const actualIsLogOnly = Boolean(actualMealName) && isLogOnlyId(hist?.cookedRecipeId);
+            const plannedIsLogOnly = isFilled && Boolean(slot?.recipeId) && /^(meal|restaurant)-/.test(slot?.recipeId ?? "");
+            const dayIsLogOnly = plannedIsLogOnly || (!isFilled && actualIsLogOnly);
             // An assignment wins over stored skip context (the save boundary
             // applies the same rule); the Week notes editor that could remove
             // a stale skip entry is retired, so it must never lock a day.
@@ -1686,7 +1693,9 @@ function MealsPageInner() {
                     ? "border-secondary bg-secondary opacity-50"
                     : isSelectable
                       ? `cursor-pointer border-amber-300/80 dark:border-amber-700/60 bg-amber-50/30 dark:bg-amber-950/15 hover:bg-amber-50/50 dark:hover:bg-amber-900/20`
-                      : isCooked
+                      : dayIsLogOnly
+                        ? "bg-secondary/40 border-secondary"
+                        : isCooked
                         ? "bg-emerald-50/30 dark:bg-emerald-950/10 border-emerald-200/80 dark:border-emerald-800/30 cursor-pointer"
                         : isFilled
                           ? "bg-primary border-primary shadow-xs dark:shadow-none cursor-pointer"
@@ -1721,7 +1730,10 @@ function MealsPageInner() {
                     {hist?.status === "in-progress" && (
                       <NabuBadge tone="blue" className="px-1.5 py-0.5 text-[9px]">Cooking</NabuBadge>
                     )}
-                    {hist?.status === "cooked-other" && (
+                    {hist?.status === "cooked-other" && actualIsLogOnly && (
+                      <NabuBadge className="px-1.5 py-0.5 text-[9px]">Logged</NabuBadge>
+                    )}
+                    {hist?.status === "cooked-other" && !actualIsLogOnly && (
                       <NabuBadge tone="blue" className="px-1.5 py-0.5 text-[9px]" title={hist.cookedRecipeName ? `Cooked: ${hist.cookedRecipeName}` : undefined}>
                         {hist.plannedRecipeId ? "Changed" : "Cooked"}
                       </NabuBadge>
@@ -1732,7 +1744,10 @@ function MealsPageInner() {
                     {hist?.status === "planned-unlogged" && (
                       <NabuBadge className="px-1.5 py-0.5 text-[9px]">Not logged</NabuBadge>
                     )}
-                    {hist?.status === "planned" && (
+                    {hist?.status === "planned" && plannedIsLogOnly && (
+                      <NabuBadge className="px-1.5 py-0.5 text-[9px]">Eating out</NabuBadge>
+                    )}
+                    {hist?.status === "planned" && !plannedIsLogOnly && (
                       <NabuBadge tone="amber" className="px-1.5 py-0.5 text-[9px]">Planned</NabuBadge>
                     )}
                   </div>
@@ -1835,10 +1850,10 @@ function MealsPageInner() {
                     )}
                     {actualDiffersFromPlan ? (
                       <div className="space-y-1">
-                        <span className="block text-[9px] font-medium uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                          {actualMealLabel}
+                        <span className={`block text-[9px] font-medium uppercase tracking-wider ${actualIsLogOnly ? "text-quaternary" : "text-blue-600 dark:text-blue-400"}`}>
+                          {actualIsLogOnly ? "Logged meal" : actualMealLabel}
                         </span>
-                        <p className="text-[13px] font-serif text-primary line-clamp-2 leading-snug">
+                        <p className={actualIsLogOnly ? "text-[12px] italic text-tertiary line-clamp-2 leading-snug" : "text-[13px] font-serif text-primary line-clamp-2 leading-snug"}>
                           {actualMealName}
                         </p>
                         <p className="text-[10px] text-quaternary line-clamp-2">
@@ -1846,7 +1861,7 @@ function MealsPageInner() {
                         </p>
                       </div>
                     ) : (
-                      <p className="text-[13px] font-serif text-primary line-clamp-2 leading-snug">
+                      <p className={plannedIsLogOnly ? "text-[12px] italic text-tertiary line-clamp-2 leading-snug" : "text-[13px] font-serif text-primary line-clamp-2 leading-snug"}>
                         {slot?.recipeName}
                       </p>
                     )}
@@ -1954,10 +1969,10 @@ function MealsPageInner() {
                     }}
                     className={`flex-1 flex flex-col justify-center ${hasBrunch && isClickable ? "cursor-pointer" : ""}`}
                   >
-                    <span className="mb-0.5 text-[9px] font-medium uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                      {actualMealLabel}
+                    <span className={`mb-0.5 text-[9px] font-medium uppercase tracking-wider ${actualIsLogOnly ? "text-quaternary" : "text-blue-600 dark:text-blue-400"}`}>
+                      {actualIsLogOnly ? "Logged meal" : actualMealLabel}
                     </span>
-                    <p className="text-[13px] font-serif text-primary line-clamp-2 leading-snug">
+                    <p className={actualIsLogOnly ? "text-[12px] italic text-tertiary line-clamp-2 leading-snug" : "text-[13px] font-serif text-primary line-clamp-2 leading-snug"}>
                       {actualMealName}
                     </p>
                   </div>
