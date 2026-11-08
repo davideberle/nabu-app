@@ -225,6 +225,15 @@ export function closingLines(kind: "difficulty" | "enjoyment" | "next", src: Clo
   return [src.adventure?.prompt ?? r.nextInterest?.prompt ?? "", ...(src.adventure?.choices ?? []).map((c) => c.label), NARRATION_UI.ownIdea, r.nextInterest?.unsureLabel ?? "Weiss ich noch nicht", r.nextInterest?.declineLabel ?? "Lieber nicht sagen", NARRATION_UI.thenFinish].filter(Boolean);
 }
 
+/**
+ * What is actually spoken on a closing screen. Nov 8 review: the next-visit choice is pictures with one word each, so only its
+ * question is read, never every option. The catalogue above stays the recorded set of released content (no re-record, no reset).
+ */
+export function spokenClosingLines(kind: "difficulty" | "enjoyment" | "next", src: ClosingSource): string[] {
+  const all = closingLines(kind, src);
+  return kind === "next" ? all.slice(0, 1) : all;
+}
+
 /** The closing questions, one per screen (the same lines the screen shows). */
 export function closingNarration(kind: "difficulty" | "enjoyment" | "next" | "farewell", content: { prompt: string; options: { label: string }[] } | { lines: string[] }, slot: VoiceSlot | null = null): NarrationScript {
   const lines = linesIn(slot);

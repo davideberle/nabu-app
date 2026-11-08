@@ -687,7 +687,7 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     let s = dispatchTurn(atG2(env), env, "turn-a00002", "fünf").state;
     const r = replyTurn(s, env, "turn-a00002", reply("Super, das schaffst du! Was sollst du bei dieser Frage herausfinden?", "clarify"));
     s = r.state;
-    deepStrictEqual(r.result, { shown: true, say: "Super, das schaffst du! Was sollst du bei dieser Frage herausfinden?", intent: "clarify", outcome: null });
+    deepStrictEqual(r.result, { shown: true, say: "Super, das schaffst du! Was sollst du bei dieser Frage herausfinden?", intent: "clarify", outcome: null, ended: false });
     equal(g2(s).parts!.full.status, "open", "no false completion from prose");
     equal(g2(s).status, "active");
     equal((g2(s).parts!.full.inheritedSupport ?? []).length, 0);
@@ -698,7 +698,7 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     const s = dispatchTurn(atG2(env), env, "turn-a00003", "fünf").state;
     for (const origin of ["missing", "invalid"] as const) {
       const r = replyTurn(s, env, "turn-a00003", reply("Was sollst du herausfinden?", "clarify"), origin);
-      deepStrictEqual(r.result, { shown: false, reason: `origin-${origin}`, line: "Nokt hat gerade keine passende Antwort. Probier es oben noch einmal oder öffne den Hinweis." });
+      deepStrictEqual(r.result, { shown: false, reason: `origin-${origin}`, line: "Nokt hat gerade keine passende Antwort. Probier es oben noch einmal oder öffne den Hinweis.", ended: false });
       equal(g2(r.state).tutorTurns!.at(-1)!.shown, false);
     }
   });
@@ -747,8 +747,8 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     equal((third.result as unknown as Turn).request.context.phase, "erklaeren");
     s = third.state;
     equal((replyTurn(s, env, "turn-b00003", reply("Und was denkst du jetzt?", "clarify")).result as { reason: string }).reason, "intent-not-in-phase");
-    s = dispatchTurn(replyTurn(s, env, "turn-b00003", reply("x", "clarify")).state, env, "turn-b00004", "weiss nicht").state;
-    const taught = replyTurn(s, env, "turn-b00004", reply("Schau: In jede Trage kommen 4 Setzlinge. Wie viele sind in 2 vollen Tragen?", "teach", claim("turn-b00004", "understood", "clarification", "retry")));
+    // (Nov 8: his fourth turn is the limit, so teaching now comes on the third.)
+    const taught = replyTurn(s, env, "turn-b00003", reply("Schau: In jede Trage kommen 4 Setzlinge. Wie viele sind in 2 vollen Tragen?", "teach", claim("turn-b00003", "understood", "clarification", "retry")));
     deepStrictEqual((taught.result as { outcome: unknown }).outcome, { refused: "support-understated" });
     s = taught.state;
     deepStrictEqual(g2(s).parts!.full.inheritedSupport, ["tutor:teaching"]);

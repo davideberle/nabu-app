@@ -37,7 +37,7 @@ import { sha256Hex } from "./family-learning-hash.ts";
 import type { MissionPart, MissionSolve } from "./family-learning-mission-spec.ts";
 import { ALLOWED_NEXT, TUTOR_NEXT, TUTOR_OUTCOME_STATUSES, type TutorDispatch, type TutorNext, type TutorOutcomeClaim, type TutorOutcomeStatus } from "./family-learning-tutor-outcome.ts";
 
-export const NOKT_PROMPT_VERSION = "nokt-de-2026-10-23-draft4";
+export const NOKT_PROMPT_VERSION = "nokt-de-2026-11-08-draft5";
 
 /** Draft German instructions for the tutor model (N7-05). Reviewed wording is pending; nothing here is live. */
 export const NOKT_SYSTEM_PROMPT_DE = [
@@ -53,6 +53,8 @@ export const NOKT_SYSTEM_PROMPT_DE = [
   "7. Erzähle nichts über dich, frag nicht nach persönlichen Dingen und bleib bei der Aufgabe.",
   "8. Fragt das Kind direkt, ob etwas stimmt, sag ehrlich, dass ihr es zusammen prüft; bestätige oder verneine kein Ergebnis der offenen Frage.",
   "9. Hilfe zählt: Eine Erklärung (intent teach) ist Hilfe (support \"teaching\"). Eine Nachfrage, die auf etwas Bestimmtes in der Aufgabe zeigt (intent clarify), ist auch Hilfe (support \"clarification\"). Nur die offene Frage, wie das Kind gerechnet hat (intent ask-method), ist keine Hilfe. status \"understood\" heisst: ganz ohne Hilfe — kein Hinweis, keine gezeigte Lösung, keine Erklärung, keine zeigende Nachfrage. context.evidence sagt dir, welche Hilfe es schon gab.",
+  "10. Ist transcript leer, sprichst du zuerst. Stehen Antworten in context.attempts, nimm die letzte davon und frag neugierig, wie das Kind darauf gekommen ist, mit seiner Zahl (zum Beispiel: «Warum hast du 7 m gerechnet?»; intent ask-method). Ist context.attempts leer, frag kurz, was es denkt, was die Frage von ihm will. Frag nie, ob es Hilfe braucht, sag nie, dass seine Antwort falsch war, und nenne nie die Lösung.",
+  "11. Steht context.closeNow auf true, bedanke dich warm in einem Satz, ermutige es, selbst weiterzumachen, und beende (intent close).",
   "Antworte nur mit JSON: {\"v\":1,\"say\":\"…\",\"intent\":\"clarify|ask-method|teach|encourage|close\",\"outcome\":null}.",
   "Ein Ergebnis gibst du nur an, wenn die Belege aus dem Gespräch dafür reichen; sonst bleibt outcome null. Form: \"outcome\":{\"status\":\"…\",\"support\":\"…\",\"next\":\"…\"}. Wähle status, support und next NUR als eine Kombination aus context.allowedOutcomes: Die App hat dort aus ihren Aufzeichnungen (Hinweise, gezeigte Lösung, Gesprächsverlauf, ob die Frage noch offen ist) berechnet, was möglich ist; alles andere lehnt sie ab. Ist allowedOutcomes leer, bleibt outcome null. Die App prüft das Ergebnis und ordnet es zu; es ist eine Einschätzung, keine Note.",
 ].join("\n");
@@ -61,7 +63,7 @@ export const NOKT_INTENTS = ["clarify", "ask-method", "teach", "encourage", "clo
 export type NoktIntent = (typeof NOKT_INTENTS)[number];
 export const NOKT_SAY_MAX_CHARS = 220;
 /** Child turns per dispatch; after this the tutor must close (N7-05: never an endless interrogation). */
-export const NOKT_MAX_CHILD_TURNS = 6;
+export const NOKT_MAX_CHILD_TURNS = 4;
 /** Neutral clarifications (assessment) before the app moves to guided teaching. */
 export const NOKT_MAX_CLARIFICATIONS = 2;
 
@@ -82,6 +84,8 @@ export type NoktTaskContext = {
   attempts: string[];
   /** Hint texts he has already seen (child-visible). */
   hintsShown: string[];
+  /** The app's turn limit is reached: Nokt closes warmly now. */
+  closeNow?: boolean;
   /** Round 15: what the APP's records say about help and evidence so far (never the answer). */
   evidence?: NoktEvidence;
   /** Round 15: the only status/support/next combinations the app would accept now (the validator's own rules). */
@@ -149,7 +153,7 @@ export function noktAllowedOutcomes(e: NoktEvidence): NoktAllowedOutcome[] {
 export type NoktTurnText = { role: "child" | "nokt"; text: string; via: "voice" | "typed"; intent?: NoktIntent };
 
 /** The app builds the context from the reviewed content and his own record — only what is on his screen. */
-export function noktTaskContext(input: { step: string; solve: MissionSolve; part: MissionPart; purpose: NoktTaskContext["purpose"]; attempts: string[]; hintIdsShown: string[]; phase: NoktPhase; resultAllowed: boolean; evidence?: NoktEvidence }): NoktTaskContext {
+export function noktTaskContext(input: { step: string; solve: MissionSolve; part: MissionPart; purpose: NoktTaskContext["purpose"]; attempts: string[]; hintIdsShown: string[]; phase: NoktPhase; resultAllowed: boolean; evidence?: NoktEvidence; closeNow?: boolean }): NoktTaskContext {
   return {
     step: input.step,
     part: input.part.id,
@@ -161,6 +165,7 @@ export function noktTaskContext(input: { step: string; solve: MissionSolve; part
     unit: input.part.unit,
     attempts: input.attempts.map(String),
     hintsShown: input.part.hints.filter((h) => input.hintIdsShown.includes(h.id)).map((h) => h.text),
+    ...(input.closeNow ? { closeNow: true } : {}),
     ...(input.evidence ? { evidence: input.evidence, allowedOutcomes: noktAllowedOutcomes(input.evidence) } : {}),
   };
 }
@@ -314,7 +319,10 @@ export function judgesAnswer(say: string): boolean {
   return /\b(ist|sind|war|wäre|hast du|hattest du)\s+(ja\s+)?(richtig|korrekt|falsch)\b|\b(das|es|dies|so)\s+stimmt\b|\bstimmt\s+(so|genau|schon)\b|\bgenau\s+richtig\b|\brichtig\s+(gerechnet|gezählt|gemacht|gesagt)\b|\bdu\s+hast\s+(recht|richtig)\b/i.test(say);
 }
 
-export type NoktReplyRefusal = "malformed" | "intent-not-in-phase" | "answer-disclosed" | "judges-open-answer" | "several-questions" | "repeated-question" | "must-close";
+export type NoktReplyRefusal = "malformed" | "intent-not-in-phase" | "answer-disclosed" | "judges-open-answer" | "several-questions" | "repeated-question" | "must-close" | "offers-help";
+
+/** Nov 8 (owner): Nokt never asks whether he needs help; it asks about his own thinking. */
+export const OFFERS_HELP_RE = /\b(brauchst|möchtest|willst|soll)\b[^.?!]{0,25}\bhilfe\b|\bsoll ich dir helfen\b|\bkann ich dir helfen\b/i;
 
 /**
  * App-side guard on a parsed reply. `answer` is the server's value for the open question — the model never received it.
@@ -328,6 +336,7 @@ export function checkNoktReply(
   if (!reply) return { ok: false, reason: "malformed" };
   const childTurns = ctx.transcript.filter((t) => t.role === "child");
   if (childTurns.length >= NOKT_MAX_CHILD_TURNS && reply.intent !== "close") return { ok: false, reason: "must-close" };
+  if (OFFERS_HELP_RE.test(reply.say)) return { ok: false, reason: "offers-help" };
   if (ctx.purpose === "diagnostic") {
     const { phase } = noktPhase(ctx.transcript);
     if (phase === "nachfragen" && reply.intent === "teach") return { ok: false, reason: "intent-not-in-phase" };

@@ -13,11 +13,11 @@ import { useMemo, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import type { ChildView } from "@/lib/family-learning-state";
 import type { LearningMutateOutcome } from "@/lib/family-learning-client";
-import { closingLines, closingNarration, type ClosingSource } from "@/lib/family-learning-narration";
+import { closingNarration, spokenClosingLines, type ClosingSource } from "@/lib/family-learning-narration";
 import type { NarrationPlayer } from "@/lib/family-narration-player";
 import type { VoiceSlot } from "@/lib/family-voice-registry";
 import { NarrationControl, useNarration, type NarrationTelemetry } from "./narration";
-import type { InterestAnswer } from "./next-interest";
+import { choiceWord, type InterestAnswer } from "./next-interest";
 import { GardenerPortrait, WorkshopGarden, WorkshopPictureView } from "./workshop-pictures";
 import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
@@ -50,7 +50,7 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
 
   const script = useMemo(() => {
     const src = { reflection, adventure } as unknown as ClosingSource;
-    return closingNarration(step, { lines: closingLines(step, src) }, view.visitText?.voice ?? null);
+    return closingNarration(step, { lines: spokenClosingLines(step, src) }, view.visitText?.voice ?? null);
   }, [step, reflection, adventure, view.visitText?.voice]);
   const narration = useNarration(narrator, script, telemetry);
 
@@ -99,13 +99,13 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
               return (
                 <button key={c.id} type="button" className={card} style={{ borderColor: picked ? "#3f7a3a" : "#d9c6aa" }} aria-pressed={picked} disabled={busy} onClick={() => setInterest(picked ? null : { kind: "choice", choice: c.id })} data-testid={`adventure-${c.id}`}>
                   <WorkshopPictureView id={c.picture} />
-                  {c.label}
+                  <span aria-label={c.label}>{choiceWord(c)}</span>
                 </button>
               );
             })}
             <button type="button" className={cn(card, "border-dashed")} style={{ borderColor: interest?.kind === "text" ? "#3f7a3a" : "#d9c6aa" }} aria-pressed={interest?.kind === "text"} disabled={busy} onClick={() => setInterest(interest?.kind === "text" ? null : { kind: "text", text: "" })} data-testid="adventure-own">
               <span className="text-4xl" aria-hidden>💬</span>
-              {adventure?.ownIdeaLabel ?? "Eigene Idee"}
+              <span aria-label={adventure?.ownIdeaLabel ?? "Eigene Idee"}>Idee</span>
             </button>
           </div>
           {interest?.kind === "text" ? (

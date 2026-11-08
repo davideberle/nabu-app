@@ -53,6 +53,24 @@ export function NextInterestQuestion({ labels, value, onChange, disabled, intro 
   );
 }
 
+/**
+ * Nov 8 review: the next-visit choice is a picture with ONE word. Content may set `word`; released content keeps its full label
+ * in the record and for assistive technology, and takes its word from this presentation table (no content version change).
+ */
+const CHOICE_WORD: Record<string, string> = { furniture: "Möbel", garden: "Garten", animals: "Tiere", birdhouse: "Vogelhaus", harvest: "Ernten", pond: "Teich", greenhouse: "Gewächshaus" };
+export function choiceWord(c: { id: string; label: string; word?: string }): string {
+  return c.word ?? CHOICE_WORD[c.id] ?? c.label.trim().split(/\s+/).pop()!;
+}
+export function ChoicePicture({ picture }: { picture: string }) {
+  return picture === "greenhouse" || picture === "water" ? (
+    <span className="scale-150">
+      <PlacePicture kind={picture} />
+    </span>
+  ) : (
+    <WorkshopPictureView id={picture} />
+  );
+}
+
 export function interestReady(v: InterestAnswer | null): boolean {
   return !!v && (v.kind !== "text" || !!v.text?.trim()) && (v.kind !== "choice" || !!v.choice);
 }
@@ -66,25 +84,19 @@ export function NextAdventureQuestion({ adventure, labels, value, onChange, disa
   return (
     <div className="grid gap-3" data-testid="next-adventure" data-kind={value?.kind ?? ""} data-choice={value?.choice ?? ""}>
       <p className="text-2xl font-semibold text-primary">{adventure.prompt}</p>
-      <p className="text-base text-tertiary">{adventure.hint}</p>
       <div className="flex flex-wrap gap-3" role="group" aria-label={adventure.prompt}>
         {adventure.choices.map((c) => {
           const picked = value?.kind === "choice" && value.choice === c.id;
           return (
             <button key={c.id} type="button" disabled={disabled} aria-pressed={picked} onClick={() => onChange(picked ? null : { kind: "choice", choice: c.id })} className={cn("grid min-h-32 w-44 place-items-center gap-2 rounded-3xl border-2 border-primary bg-primary p-3 text-lg font-semibold text-primary", picked && "ring-4 ring-emerald-600")} data-testid={`adventure-${c.id}`}>
-              {c.picture === "greenhouse" || c.picture === "water" ? (
-                <span className="scale-150">
-                  <PlacePicture kind={c.picture} />
-                </span>
-              ) : (
-                <WorkshopPictureView id={c.picture} />
-              )}
-              {c.label}
+              <ChoicePicture picture={c.picture} />
+              <span aria-label={c.label}>{choiceWord(c)}</span>
             </button>
           );
         })}
         <button type="button" disabled={disabled} aria-pressed={own} onClick={() => onChange(own ? null : { kind: "text", text: "" })} className={cn("grid min-h-32 w-44 place-items-center rounded-3xl border-2 border-dashed border-primary bg-primary p-3 text-lg font-semibold text-primary", own && "ring-4 ring-emerald-600")} data-testid="adventure-own">
-          ✏️ {adventure.ownIdeaLabel}
+          <span aria-hidden className="text-4xl">✏️</span>
+          <span aria-label={adventure.ownIdeaLabel}>Idee</span>
         </button>
       </div>
       {own ? (

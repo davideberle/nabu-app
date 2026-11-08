@@ -33,8 +33,11 @@ export function useNarration(player: NarrationPlayer, script: NarrationScript | 
     setStatus(player.status());
   }, [player]);
   const key = script?.key ?? "";
+  // The key this screen's script was last handed to the player for; until then a new screen is "about to speak".
+  const [startedKey, setStartedKey] = useState<string | null>(null);
   useEffect(() => {
     void run(scriptRef.current);
+    setStartedKey(key);
   }, [key, run]);
   // Leaving the screen (unmount, route change) silences it.
   useEffect(() => () => player.stop(), [player]);
@@ -51,7 +54,9 @@ export function useNarration(player: NarrationPlayer, script: NarrationScript | 
     player.stop();
     setStatus(player.status());
   }, [player, telemetry]);
-  return { status, replay, stop };
+  // Nov 8: «Weiter» waits for the spoken line. True from the first render of a new script (no frame in which a line can be skipped).
+  const speaking = status === "speaking" || (!!key && startedKey !== key && player.isUnlocked());
+  return { status, replay, stop, speaking };
 }
 
 

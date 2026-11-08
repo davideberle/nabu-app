@@ -228,7 +228,8 @@ describe("The eight actual live replies of round 11 (verbatim) — offline regre
     ["A1", "Was sollst du bei dieser Aufgabe herausfinden?", "clarify", [A1], ["5"], { ok: true }],
     ["A2", "Welche Tragen hast du bei deiner Zahl fünf mitgezählt?", "ask-method", [A1, A1n, A2], ["5"], { ok: true }],
     ["A3 (was withheld live — now accepted)", "Wir zählen nur Tragen mit genau vier Setzlingen. Wenn du von den 18 Setzlingen vier in die erste Trage legst, wie viele bleiben übrig?", "teach", [A1, A1n, A2, A2n, A3], ["5"], { ok: true }],
-    ["A4", "Wir zählen nur ganz volle Tragen mit je 4 Setzlingen. Wie viele Setzlinge bleiben von den 18 übrig, wenn du die erste Trage mit 4 füllst?", "teach", [A1, A1n, A2, A2n, A3, child("Dann sind es vier Tragen?", "typed")], ["5"], { ok: true }],
+    // Nov 8: four of his turns is the limit; this reply would have to close now.
+    ["A4", "Wir zählen nur ganz volle Tragen mit je 4 Setzlingen. Wie viele Setzlinge bleiben von den 18 übrig, wenn du die erste Trage mit 4 füllst?", "teach", [A1, A1n, A2, A2n, A3, child("Dann sind es vier Tragen?", "typed")], ["5"], { ok: false, reason: "must-close" }],
     ["B", "Was ist bei deinem Rechenweg mit den übrigen Setzlingen?", "ask-method", [child("Ich habe 4 plus 4 plus 4 gerechnet, das sind 12. Also drei Tragen.", "typed")], ["3"], { ok: true }],
     ["C", "Was sollst du bei dieser Aufgabe herausfinden?", "clarify", [child("Ich habe in Vierern gezählt: 4, 8, 12, 16, 20. Das sind fünf Vierer.", "typed")], ["5"], { ok: true }],
     ["D", "Was meinst du mit „vier Tragen, Rest fünf Bananen“?", "clarify", [child("vier tragen rest fünf bananen hm", "voice")], ["5"], { ok: true }],
@@ -248,7 +249,7 @@ describe("Prompt draft3 — valid method first, honest about direct questions, j
     ok(NOKT_SYSTEM_PROMPT_DE.includes("zeigende Nachfrage") && NOKT_SYSTEM_PROMPT_DE.includes("(intent ask-method), ist keine Hilfe"));
     ok(!/turnId|sessionId|revision/.test(NOKT_SYSTEM_PROMPT_DE), "the model is never asked for binding fields");
     ok(!/\b4 Tragen|vier Tragen|understood_with_support/.test(NOKT_SYSTEM_PROMPT_DE), "no expected answer and no preferred judgement in the prompt");
-    equal(NOKT_PROMPT_VERSION, "nokt-de-2026-10-23-draft4");
+    equal(NOKT_PROMPT_VERSION, "nokt-de-2026-11-08-draft5");
   });
 });
 

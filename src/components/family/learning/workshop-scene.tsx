@@ -488,9 +488,9 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
           ))}
         </h2>
         {active ? (
-          <NarratedTask child={child} mission={mission} active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} onNext={() => void next()} onSeen={setSeenParts} speaking={mission.screen === "focused" && narration.status === "speaking"} />
+          <NarratedTask child={child} mission={mission} active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} onNext={() => void next()} onSeen={setSeenParts} speaking={narration.speaking} />
         ) : (
-          <button type="button" className={btn} style={primary} disabled={busy || (mission.screen === "focused" && narration.status === "speaking")} onClick={() => void next()} data-testid="workshop-next" data-fold="primary">
+          <button type="button" className={btn} style={primary} disabled={busy || narration.speaking} onClick={() => void next()} data-testid="workshop-next" data-fold="primary">
             Weiter
           </button>
         )}
@@ -534,7 +534,7 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
       {active.kind === "solve" && active.solve ? <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} quiet onSeen={seen} /> : null}
       {active.kind === "read" ? <NarratedReadTask active={active} busy={busy} act={act} /> : null}
       {active.kind === "listen" ? <NarratedListen active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} who={mission.characters[0]?.name ?? ""} slot={missionSlot(mission)} /> : null}
-      {active.kind === "craft" && active.craft ? <NarratedCraft active={active} busy={busy} act={act} onDone={onNext} /> : null}
+      {active.kind === "craft" && active.craft ? <NarratedCraft active={active} busy={busy} act={act} onDone={onNext} speaking={speaking} /> : null}
       {finished && active.kind !== "craft" ? <NextButton busy={busy} onNext={onNext} speaking={speaking} /> : null}
     </div>
   );
@@ -656,7 +656,7 @@ function NarratedListen({ active, busy, act, narrator, telemetry, who, slot }: {
 }
 
 /** The real-world activity (narrated, optional): pictured tasks, her own «found» report; no speech buttons, no reading needed. */
-function NarratedCraft({ active, busy, act, onDone }: { active: MissionActiveView; busy: boolean; act: Act; onDone: () => void }) {
+function NarratedCraft({ active, busy, act, onDone, speaking = false }: { active: MissionActiveView; busy: boolean; act: Act; onDone: () => void; speaking?: boolean }) {
   const c = active.craft!;
   const [picked, setPicked] = useState<string[]>(c.found);
   const saved = c.found.length > 0 && c.found.join(",") === picked.join(",");
@@ -688,7 +688,7 @@ function NarratedCraft({ active, busy, act, onDone }: { active: MissionActiveVie
         </div>
       ) : null}
       {/* The parent's note lives on the parent page (observation panel), not on her screen. */}
-      <NextButton busy={busy} onNext={onDone} label="Weiter" />
+      <NextButton busy={busy} onNext={onDone} label="Weiter" speaking={speaking} />
     </div>
   );
 }

@@ -19,6 +19,19 @@ import { slotLanguage, type SlotLanguage } from "./family-voice-registry.ts";
 
 export const NARRATION_CLIP_PATH = "/api/family/learning/narration";
 
+/** Nov 8 review: Ava, Rosa and June were too fast. Applied at playback with the pitch preserved; nothing is re-recorded. */
+export const NARRATION_PLAYBACK_RATE = 0.88;
+const SLOWED_SLOTS: ReadonlySet<string> = new Set(["de-female", "es-female", "en-female"]);
+export const playbackRateFor = (slot: string | null | undefined): number => (slot && SLOWED_SLOTS.has(slot) ? NARRATION_PLAYBACK_RATE : 1);
+
+/** Sets the speed on the element; a media load resets `playbackRate` to the default, so both are set (before and after `src`). */
+function applyRate(el: AudioLike, rate: number) {
+  el.defaultPlaybackRate = rate;
+  el.playbackRate = rate;
+  el.preservesPitch = true;
+  el.webkitPreservesPitch = true;
+}
+
 export type NarrationStatus = "locked" | "idle" | "speaking" | "blocked" | "unavailable" | "missing";
 export type LineOutcome = "recorded" | "device-de" | "no-german-voice" | "missing-recording" | "blocked" | "failed";
 export type PlayResult = "done" | "cancelled" | "locked" | "blocked" | "unavailable" | "missing";
@@ -26,7 +39,7 @@ export type PlayResult = "done" | "cancelled" | "locked" | "blocked" | "unavaila
 export type VoiceLike = { name: string; lang: string; localService?: boolean; default?: boolean };
 type UtteranceLike = { lang: string; rate: number; voice?: unknown; onend: (() => void) | null; onerror: ((e?: { error?: string }) => void) | null };
 type SynthLike = { cancel: () => void; speak: (u: UtteranceLike) => void; getVoices: () => VoiceLike[]; addEventListener?: (t: string, fn: () => void) => void; removeEventListener?: (t: string, fn: () => void) => void };
-type AudioLike = { src: string; play: () => Promise<void> | void; pause: () => void; onended: (() => void) | null; onerror: (() => void) | null };
+type AudioLike = { src: string; play: () => Promise<void> | void; pause: () => void; onended: (() => void) | null; onerror: (() => void) | null; playbackRate?: number; defaultPlaybackRate?: number; preservesPitch?: boolean; webkitPreservesPitch?: boolean };
 
 export type NarrationPlayerDeps = {
   /** Fetch the prerecorded clip of one line, or null when none is recorded (404/503/network). */
@@ -84,7 +97,7 @@ export function pickGermanVoice(voices: readonly VoiceLike[]): VoiceLike | null 
 const defaultFetchClip = async (l: NarrationLine, signal: AbortSignal): Promise<Blob | null> => {
   if (!l.slot) return null;
   try {
-    const r = await fetch(`${NARRATION_CLIP_PATH}/${encodeURIComponent(l.slot)}/${encodeURIComponent(l.id)}`, { cache: "force-cache", signal, credentials: "same-origin" });
+    const r = await fetch(`${NARRATION_CLIP_PATH}/${encodeURIComponent(l.slot)}/${encodeURIComponent(l.id)}`, { cache: "no-cache", signal, credentials: "same-origin" });
     if (!r.ok) return null;
     const type = r.headers.get("content-type") ?? "";
     return type.startsWith("audio/") ? await r.blob() : null;
@@ -170,10 +183,10 @@ export function createNarrationPlayer(deps: NarrationPlayerDeps = {}): Narration
   }
 
   /** Waits for one line's end; a device that never reports it is ended by a bounded timer (never blocks the next screen). */
-  const waitLine = (text: string, start: () => void) =>
+  const waitLine = (text: string, start: () => void, rate = 1) =>
     new Promise<"ended" | "error" | "blocked" | "cancelled">((resolve) => {
       let settled = false;
-      const timer = setTimer(() => settle("ended"), Math.min(30000, 4000 + text.length * 110));
+      const timer = setTimer(() => settle("ended"), Math.min(30000, 4000 + text.length * 110) / rate);
       const settle = (r: "ended" | "error" | "blocked" | "cancelled") => {
         if (settled) return;
         settled = true;
@@ -202,13 +215,16 @@ export function createNarrationPlayer(deps: NarrationPlayerDeps = {}): Narration
         url = null;
       }
       if (url) {
+        const rate = playbackRateFor(l.slot);
         const r = await waitLine(l.text, () => {
           el.onended = () => finishLine?.("ended");
           el.onerror = () => finishLine?.("error");
+          applyRate(el, rate);
           el.src = url!;
+          applyRate(el, rate);
           const p = el.play();
           if (p && typeof (p as Promise<void>).catch === "function") (p as Promise<void>).catch((e: { name?: string }) => finishLine?.(e?.name === "NotAllowedError" ? "blocked" : "error"));
-        });
+        }, rate);
         el.onended = null;
         el.onerror = null;
         release();

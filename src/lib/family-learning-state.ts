@@ -507,6 +507,8 @@ export type ParentSettings = {
   missionHook: string | null;
   languageVarietyEn: string | null;
   languageVarietyEs: string | null;
+  /** The start time of the visit whose Nokt conversations a parent has switched off (parent settings only). */
+  noktSkipVisit: string | null;
 };
 
 export const EMPTY_PARENT_SETTINGS: ParentSettings = {
@@ -515,6 +517,7 @@ export const EMPTY_PARENT_SETTINGS: ParentSettings = {
   missionHook: null,
   languageVarietyEn: null,
   languageVarietyEs: null,
+  noktSkipVisit: null,
 };
 
 const SCORED_IDS: readonly ScoredMathItemId[] = ["EQ-ENTRY", "EQ-FRESH", "EQ-RETURN", "EQ-DELAY", "EQ-STATION", "EQ-PIER", "EQ-HARBOR", "EQ-HARBOR-CHECK"];
@@ -2991,7 +2994,7 @@ export type ChildView = {
   tutor: TutorContext | null;
   retention: string;
   /** Content v6: whether Nokt can talk on this surface (deployed builds: never; `fictional-stub` only on an isolated local DB). */
-  nokt?: { mode: import("./family-learning-nokt.ts").NoktMode; mic?: boolean; talk?: ReturnType<typeof noktTalkView> };
+  nokt?: { mode: import("./family-learning-nokt.ts").NoktMode; mic?: boolean; talk?: ReturnType<typeof noktTalkView> & { /** A parent switched off Nokt's conversations for this visit: nothing opens, nothing waits for Nokt. */ skip: boolean } };
 };
 
 function nextStepText(state: MissionState, content: LearningContent, stage: StageId | null, now: Date): string {
@@ -3427,7 +3430,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     // server's conversation mode is — no Nokt button, no look-back talk, no microphone; Old Lila's lines are reviewed content.
     nokt: (() => {
       const mode = content.child === "santiago" ? options.noktMode ?? "unavailable" : "unavailable";
-      return { mode, mic: mode !== "unavailable" && !!options.noktMic, ...(mode !== "unavailable" && content.child === state.child && (content.missions ?? []).some((m) => m.presentation === "map") ? { talk: noktTalkView(state, content) } : {}) };
+      return { mode, mic: mode !== "unavailable" && !!options.noktMic, ...(mode !== "unavailable" && content.child === state.child && (content.missions ?? []).some((m) => m.presentation === "map") ? { talk: { ...noktTalkView(state, content), skip: !!settings.noktSkipVisit && state.visits.some((v) => !v.finishedAt && v.startedAt === settings.noktSkipVisit) } } : {}) };
     })(),
   };
   // Step 2 B: the home map only for the child FAMILY_HOME_MAP enables (and only for the child's own content); off → the

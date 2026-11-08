@@ -43,7 +43,7 @@ import type { DelayedCheckInfo, ParentReview } from "@/lib/family-learning-summa
 import { createSettingsDraft, editSettingsDraft, reconcileSettingsDraft, settingsSaveBody, type SettingsDraft, type SettingsSource } from "@/lib/family-learning-parent-draft";
 import { beginRequest, clearEvidence, createEvidenceStore, describeTypingMetrics, invalidateAuthorization, isCurrentEpoch, receiveEvidence, renderableEvidence, selectChild, type EvidenceStore } from "@/lib/family-learning-parent-evidence";
 import { NarrationAudition } from "@/components/family/learning/narration-audition";
-import { noktNoReplyLine, PARENT_HELPED_NOTE, type VisitReportEn } from "@/lib/family-learning-parent-report-en";
+import { noktNoReplyLine, PARENT_HELPED_NOTE, PARENT_HELPED_TASK_NOTE, type VisitReportEn } from "@/lib/family-learning-parent-report-en";
 import type { LearningLadder } from "@/lib/family-learning-skill-ladder";
 import { LearningLadderView } from "@/components/family/learning/learning-ladder";
 
@@ -401,6 +401,7 @@ function VisitReportsEn({ reports, child, ops }: { reports: VisitReportEn[]; chi
                   {t.title}
                   {t.version ? <span className="ml-2 rounded-full bg-secondary px-2 text-xs font-normal">{t.version} version</span> : null}
                   {t.warmup ? <span className="ml-2 rounded-full bg-secondary px-2 text-xs font-normal">warm-up · {t.warmup.daysSinceTeaching ?? "?"} days since teaching · {t.warmup.counts}</span> : null}
+                  {t.attempts.some((a) => a.result !== "not scored" && a.result !== "revision") ? <HelpedOnTaskButton attempts={t.attempts} child={child} ops={ops} /> : null}
                 </p>
                 {t.attempts.length ? (
                   <ul className="mt-1 space-y-1">
@@ -426,6 +427,41 @@ function VisitReportsEn({ reports, child, ops }: { reports: VisitReportEn[]; chi
         </article>
       ))}
     </section>
+  );
+}
+
+/** Nov 8: «I helped here» on a whole task. Right answers count as «with help»; a wrong answer only carries the note. */
+function HelpedOnTaskButton({ attempts, child, ops }: { attempts: VisitReportEn["tasks"][number]["attempts"]; child: ChildId; ops: ParentOps }) {
+  const [state, setState] = useState<"idle" | "busy" | "error">("idle");
+  const scored = attempts.filter((a) => a.result !== "not scored" && a.result !== "revision");
+  const open = scored.filter((a) => !a.parentHelped);
+  if (!open.length) return <span className="ml-2 rounded-full px-2 text-xs font-semibold" style={{ background: "#fff3cd" }} data-testid="report-en-task-helped">parent helped (whole task)</span>;
+  return (
+    <button
+      type="button"
+      className={cn("ml-2 min-h-8 rounded-full border border-primary px-3 text-xs font-semibold text-primary", focusRing)}
+      disabled={state === "busy"}
+      data-testid="report-en-task-helped-here"
+      onClick={async () => {
+        setState("busy");
+        const ticket = ops.begin();
+        const items = open.map((a) => ({ attemptId: a.id, evidence: a.result === "not yet" ? null : "supported" }));
+        const result = await api("/api/family/learning/parent/corrections", { method: "POST", body: JSON.stringify({ child, items, note: PARENT_HELPED_TASK_NOTE }) });
+        if (!ticket.current()) return;
+        if (!result.ok) {
+          if (result.status === 401 || result.status === 403) {
+            ops.onLocked();
+            return;
+          }
+          setState("error");
+          return;
+        }
+        setState("idle");
+        ops.onChanged();
+      }}
+    >
+      {state === "error" ? "Not saved — try again" : "I helped on this whole task"}
+    </button>
   );
 }
 
@@ -1375,8 +1411,36 @@ function Settings({ evidence, child, ops }: { evidence: Evidence; child: ChildId
     ops.onChanged();
   };
 
+  // Nov 8: parent-only. Switches Nokt's conversations off for the visit that is running (it does nothing for the next one).
+  const runningVisit = evidence.state?.visits.find((v) => !v.finishedAt) ?? null;
+  const noktSkipped = !!runningVisit && evidence.settings.noktSkipVisit === runningVisit.startedAt;
+  const setNoktSkip = async (value: string | null) => {
+    setBusy(true);
+    setMessage(null);
+    const ticket = ops.begin();
+    const result = await api("/api/family/learning/parent/settings", { method: "PUT", body: JSON.stringify({ child: evidence.child, expectedErasureGeneration: evidence.erasureGeneration, noktSkipVisit: value }) });
+    setBusy(false);
+    if (!ticket.current()) return;
+    if (!result.ok) {
+      if (result.status === 401 || result.status === 403) ops.onLocked();
+      else setMessage("Nicht gespeichert. Bitte noch einmal versuchen.");
+      return;
+    }
+    ops.onChanged();
+  };
   return (
     <div className="space-y-6">
+      {child === "santiago" ? (
+        <div className="rounded-3xl border border-primary bg-primary p-4" data-testid="settings-nokt-skip">
+          <h2 className="text-base font-semibold text-primary">Nokt im laufenden Besuch</h2>
+          <p className="mt-1 text-sm text-tertiary">{runningVisit ? (noktSkipped ? "Nokt spricht in diesem Besuch nicht mehr; der Besuch läuft ohne Gespräch weiter." : "Falls ein Gespräch hängt: Nokt für diesen einen Besuch ausschalten. Das Kind sieht diesen Knopf nicht.") : "Gerade läuft kein Besuch."}</p>
+          {runningVisit ? (
+            <button type="button" className={cn("mt-2 min-h-10 rounded-full border border-primary px-4 text-sm font-semibold text-primary", focusRing)} disabled={busy} onClick={() => void setNoktSkip(noktSkipped ? null : runningVisit.startedAt)} data-testid="settings-nokt-skip-toggle">
+              {noktSkipped ? "Nokt wieder einschalten" : "Nokt für diesen Besuch überspringen"}
+            </button>
+          ) : null}
+        </div>
+      ) : null}
       <div className="rounded-3xl border border-primary bg-primary p-5">
         <h2 className="text-lg font-semibold text-primary">Vor dem ersten Einsatz prüfen</h2>
         {contentLine ? <p className="mt-1 text-sm text-tertiary">{contentLine}</p> : null}

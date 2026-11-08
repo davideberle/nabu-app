@@ -157,7 +157,7 @@ export class StaleErasureGenerationError extends Error {
 // Parent settings
 // ---------------------------------------------------------------------------
 
-const SETTING_KEYS = ["keyboard_layout", "mission_title", "mission_hook", "language_variety_en", "language_variety_es"] as const;
+const SETTING_KEYS = ["keyboard_layout", "mission_title", "mission_hook", "language_variety_en", "language_variety_es", "nokt_skip_visit"] as const;
 export type SettingKey = (typeof SETTING_KEYS)[number];
 
 export async function readParentSettings(db: Db, child: ChildId): Promise<ParentSettings> {
@@ -169,6 +169,7 @@ export async function readParentSettings(db: Db, child: ChildId): Promise<Parent
     if (key === "keyboard_layout" && isKeyboardLayoutId(value)) settings.keyboardLayout = value;
     if (key === "mission_title") settings.missionTitle = value;
     if (key === "mission_hook") settings.missionHook = value;
+    if (key === "nokt_skip_visit") settings.noktSkipVisit = value;
     if (key === "language_variety_en") settings.languageVarietyEn = value;
     if (key === "language_variety_es") settings.languageVarietyEs = value;
   }

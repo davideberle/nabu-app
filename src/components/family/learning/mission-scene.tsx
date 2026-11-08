@@ -123,6 +123,9 @@ export function MissionScene({ child, view, mission, busy, act, speech, noktMode
   const offerPart = active?.tutor?.available ? active.tutor.offerPart : null;
   useEffect(() => {
     if (offerPart) setNoktOpen(true);
+    // Nov 8: no offer text any more; the record of the moment keeps the repeated-error signal.
+    if (offerPart && active) void act({ a: "tutor-offer", step: active.id, part: offerPart, response: "accepted" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offerPart]);
   const lines = active ? (active.status === "active" ? active.intro : active.done) : [];
   const speakerId = lines.find((l) => l.speaker)?.speaker ?? active?.character ?? null;
@@ -179,7 +182,6 @@ export function MissionScene({ child, view, mission, busy, act, speech, noktMode
           speech={speech}
           transcribe={noktTranscribe}
           turn={noktTurn}
-          offer={offerPart && active ? { onAccept: () => void act({ a: "tutor-offer", step: active.id, part: offerPart, response: "accepted" }), onDismiss: () => { telemetry("nokt-offer-dismiss"); void act({ a: "tutor-offer", step: active.id, part: offerPart, response: "dismissed" }); setNoktOpen(false); } } : null}
           onClose={() => { setNoktOpen(false); telemetry("tutor-close"); }}
         />
       ) : (
@@ -619,6 +621,11 @@ export function ListenTask({ child, active, busy, act, speech, telemetry, charac
     await act({ a: "listen-outcome", step: active.id, outcome });
   };
   const canAnswer = listen.completedPlays > 0 || listen.transcriptShown;
+  // Nov 8 (P7H): on the focused screen the next question used to replace a question whose tries ran out at once, so the answer
+  // recorded as shown never was. It now stays until he has seen it and tapped on.
+  const [seenReveals, setSeenReveals] = useState<string[]>([]);
+  const reveal = focused ? active.questions.find((q) => q.status !== "open" && q.status !== "correct" && !seenReveals.includes(q.id)) ?? null : null;
+  const shownQuestions = !focused ? active.questions : reveal ? [reveal] : active.questions.filter((q) => q.status === "open").slice(0, 1);
   return (
     <div className="grid gap-4" data-testid="listen-task" data-voice={last}>
       {last === "missing" ? (
@@ -644,7 +651,7 @@ export function ListenTask({ child, active, busy, act, speech, telemetry, charac
           {listen.script}
         </p>
       ) : null}
-      {(focused ? active.questions.filter((q) => q.status === "open").slice(0, 1) : active.questions).map((q) => (
+      {shownQuestions.map((q) => (
         <div key={q.id} className="grid gap-2" data-testid={`question-${q.id}`} data-status={q.status}>
           <p className="text-xl font-semibold" data-fold={focused ? "question" : undefined}>{q.prompt}</p>
           {q.status === "open" ? (
@@ -657,7 +664,14 @@ export function ListenTask({ child, active, busy, act, speech, telemetry, charac
               ))}
             </div>
           ) : (
-            <Feedback tone={q.status === "correct" ? "success" : "taught"} text={q.status === "correct" ? "Richtig." : `Die Antwort ist: ${q.shownAnswer}.`} />
+            <>
+              <Feedback tone={q.status === "correct" ? "success" : "taught"} text={q.status === "correct" ? "Richtig." : `Die Antwort ist: ${q.shownAnswer}.`} />
+              {reveal?.id === q.id && active.status === "active" ? (
+                <button type="button" className={cn(btn, "justify-self-start")} style={primary} onClick={() => setSeenReveals((ids) => [...ids, q.id])} data-testid="listen-reveal-next" data-fold="primary">
+                  Weiter
+                </button>
+              ) : null}
+            </>
           )}
           {q.hint ? <Feedback tone="retry" text={q.hint} /> : null}
         </div>
@@ -706,7 +720,6 @@ export function PlacePicture({ kind }: { kind: "greenhouse" | "gate" | "boat" | 
 export function RequestTask({ active, busy, act, telemetry }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry }) {
   const p = active.produce!;
   const [text, setText] = useState("");
-  const [usedBank, setUsedBank] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const done = active.status !== "active";
   useEffect(() => {
@@ -715,7 +728,7 @@ export function RequestTask({ active, busy, act, telemetry }: { active: MissionA
   if (done) return null;
   const exhausted = active.phase === "exhausted";
   const say = () => {
-    if (!busy && text.trim()) void act(exhausted ? { a: "practice", step: active.id, response: text } : { a: "produce", step: active.id, response: text, modality: usedBank ? "word-bank" : "typed" }).then((ok) => ok && setText(""));
+    if (!busy && text.trim()) void act(exhausted ? { a: "practice", step: active.id, response: text } : { a: "produce", step: active.id, response: text, modality: "typed" }).then((ok) => ok && setText(""));
   };
   return (
     <div className="grid gap-4" data-testid="request-task" data-language={p.language}>
@@ -766,10 +779,11 @@ export function RequestTask({ active, busy, act, telemetry }: { active: MissionA
             <div className="grid gap-2 rounded-2xl p-4" style={{ background: "#edf4e6" }} data-testid="hint">
               <p className="text-lg">Diese Wörter kannst du verwenden:</p>
               <div className="flex flex-wrap gap-2">
+                {/* Nov 8: words to read and type himself: display only, never clickable or insertable. */}
                 {p.wordBank.map((w) => (
-                  <button key={w} type="button" className="min-h-12 rounded-xl border-2 px-4 text-lg" style={{ borderColor: "#8ba8a4", background: "white" }} lang={p.language} onClick={() => { setUsedBank(true); setText((t) => (t.trim() ? `${t.trim()} ${w}` : w.charAt(0).toUpperCase() + w.slice(1))); }}>
+                  <span key={w} className="inline-flex min-h-12 items-center rounded-xl border-2 px-4 text-lg" style={{ borderColor: "#8ba8a4", background: "white" }} lang={p.language} data-testid="word-bank-word">
                     {w}
-                  </button>
+                  </span>
                 ))}
               </div>
             </div>

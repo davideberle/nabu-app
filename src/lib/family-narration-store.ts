@@ -39,6 +39,13 @@ export function clipPathname(voiceId: string, lineId: string): string {
   return `family-narration/${voiceKey}/${lineId}.mp3`;
 }
 
+/** The validator of one clip: changes when the slot's voice changes, so a device can never replay another voice's recording. */
+export function clipEtag(slot: VoiceSlot, lineId: string, env: Env = process.env): string | null {
+  const voiceId = resolveSlotVoiceId(slot, env);
+  if (!voiceId) return null;
+  return `"${createHash("sha256").update(voiceId).digest("hex").slice(0, 12)}-${lineId}"`;
+}
+
 export type StoreDeps = {
   env?: Env;
   getImpl?: typeof get;

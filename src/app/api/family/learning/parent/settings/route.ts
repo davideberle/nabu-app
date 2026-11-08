@@ -24,6 +24,8 @@ const FIELDS: Record<string, { key: SettingKey; max: number; validate?: (v: stri
   missionHook: { key: "mission_hook", max: 160 },
   languageVarietyEn: { key: "language_variety_en", max: 40 },
   languageVarietyEs: { key: "language_variety_es", max: 40 },
+  // Nov 8: the running visit's start time; while it matches, Nokt's conversations of that visit stay closed (parent-only).
+  noktSkipVisit: { key: "nokt_skip_visit", max: 40 },
 };
 
 export async function GET(request: Request) {

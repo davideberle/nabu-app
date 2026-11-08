@@ -20,6 +20,7 @@ import { retentionClass } from "./family-learning-mission.ts";
 import { talkStateOf } from "./family-learning-nokt-talk.ts";
 
 export const PARENT_HELPED_NOTE = "I helped here";
+export const PARENT_HELPED_TASK_NOTE = `${PARENT_HELPED_NOTE} (whole task)`;
 
 export type ReportAttemptEn = {
   id: string;

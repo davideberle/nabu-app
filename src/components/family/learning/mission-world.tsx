@@ -732,7 +732,46 @@ function SceneHeader({ view, mission, active, placeLabel, onBack }: { view: Chil
   );
 }
 
-function Lines({ lines, mission, act, step, busy, offset }: { lines: MissionActiveView["intro"]; mission: MissionView; act: Act; step: string; busy: boolean; offset: number }) {
+/** The focused scene's top: the character (like Isabel's banner), the one current line, the way back and the progress dots. */
+function SceneBanner({ mission, active, line, saying, onReplay, onBack }: { mission: MissionView; active: MissionActiveView; line: MissionActiveView["intro"][number] | null; saying: boolean; onReplay: (() => void) | null; onBack: (() => void) | null }) {
+  const who = (line?.speaker ? mission.characters.find((c) => c.id === line.speaker) : null) ?? (active.character ? mission.characters.find((c) => c.id === active.character) : null) ?? mission.characters.find((c) => c.plate === "planner") ?? mission.characters[0] ?? null;
+  const plate = who && CHARACTER_PLATE[who.plate ?? ""] ? plateFor(CHARACTER_PLATE[who.plate ?? ""]) : null;
+  const speaker = line?.speaker ? mission.characters.find((c) => c.id === line.speaker)?.name ?? null : null;
+  const { required, resolved } = mission.progress;
+  return (
+    <figure className="flex items-center gap-4 rounded-3xl p-4" style={{ background: "#eef5e4" }} data-testid="scene-banner" data-character={who?.id ?? ""}>
+      <span className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full" style={{ background: "#d6e6f0" }} data-testid="scene-portrait">
+        {plate ? (
+          // eslint-disable-next-line @next/next/no-img-element -- a small static plate cropped to the face
+          <img src={plate.href} alt={who?.name ?? ""} className="absolute left-1/2 top-1 h-[250%] w-auto max-w-none -translate-x-1/2" />
+        ) : null}
+      </span>
+      <div className="grid min-w-0 flex-1 gap-1" role="group" aria-label={speaker ? `${speaker} sagt` : undefined}>
+        {speaker ? <p className="text-sm font-bold uppercase tracking-wide" style={{ color: "#3d5a2a" }}>{speaker}</p> : null}
+        {line ? <p className="text-xl leading-snug sm:text-2xl" lang={line.language} data-testid="scene-line" data-language={line.language} data-fold="question">{line.text}</p> : null}
+        {required > 0 ? (
+          <div className="flex items-center gap-1.5 pt-1" aria-hidden data-testid="scene-dots">
+            {Array.from({ length: required }, (_, i) => (
+              <span key={i} className={i === resolved ? "h-3 w-7 rounded-full" : "h-3 w-3 rounded-full"} style={{ background: i < resolved ? "#6f8f5a" : i === resolved ? "#e0a020" : "#dcd3c2" }} />
+            ))}
+          </div>
+        ) : null}
+      </div>
+      {onReplay ? (
+        <button type="button" onClick={onReplay} disabled={saying} className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full disabled:opacity-50" style={{ background: "#e7efd9", color: "#2f4a1f" }} aria-label="Nochmal hören" data-testid="scene-line-replay" data-state={saying ? "speaking" : "idle"}>
+          <span aria-hidden className="text-2xl leading-none">🔊</span>
+        </button>
+      ) : null}
+      {onBack ? (
+        <button type="button" onClick={onBack} className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 text-xl font-bold" style={{ ...cardStyle }} aria-label="Zurück zur Insel" data-testid="scene-back">
+          ←
+        </button>
+      ) : null}
+    </figure>
+  );
+}
+
+function Lines({ lines, mission }: { lines: MissionActiveView["intro"]; mission: MissionView }) {
   if (!lines.length) return null;
   return (
     <div className="grid gap-2">
@@ -745,17 +784,6 @@ function Lines({ lines, mission, act, step, busy, offset }: { lines: MissionActi
             <p className="text-lg leading-snug" lang={l.language}>
               {l.text}
             </p>
-            {foreign ? (
-              l.translated ? (
-                <p className="mt-1 text-base italic" data-testid="line-translation">
-                  Auf Deutsch: {l.translated}
-                </p>
-              ) : (
-                <button type="button" className="mt-1 text-sm font-semibold underline" disabled={busy} onClick={() => void act({ a: "support", step, kind: "line-translation", line: i + offset })} data-testid="line-translate">
-                  Was heisst das? (zählt als Hilfe)
-                </button>
-              )
-            ) : null}
           </div>
         );
       })}
@@ -793,15 +821,39 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
   }, [active.id, active.kind, mission.screen]);
   // Step 1 (S1-01): picture (with the place in it), one story line, the question, the input, one button.
   const focused = mission.screen === "focused";
+  // Nov 8: one layout for both children. The banner carries the scene's character and its one current line; a character's short
+  // line in English or Spanish is spoken by its own recorded voice (never skipped: the buttons wait for it).
+  const bannerLine = (finished ? active.done[0] : active.intro[0]) ?? null;
+  const spoken = focused && bannerLine && bannerLine.language !== "de" && bannerLine.speaker ? bannerLine : null;
+  const story = useStorySpeech(mission.characters);
+  const [replays, setReplays] = useState(0);
+  const spokenKey = spoken ? `${active.id}|${finished ? "done" : "intro"}|${replays}` : "";
+  const [spokenDone, setSpokenDone] = useState<string | null>(null);
+  const saying = !!spoken && spokenDone !== spokenKey;
+  useEffect(() => {
+    if (!spoken) return;
+    let alive = true;
+    void story(spoken.text, spoken.language, spoken.speaker).finally(() => {
+      if (alive) setSpokenDone(spokenKey);
+    });
+    return () => {
+      alive = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [spokenKey]);
   return (
     <section className={cn(card, "flex min-w-0 flex-col gap-3 p-3 sm:p-4")} style={cardStyle} aria-labelledby="mw-scene-title" data-testid="scene-panel" data-step={active.id} data-kind={active.kind} data-status={active.status} data-phase={active.phase} data-screen={focused ? "focused" : "full"}>
-      {active.kind === "typing-block" ? null : <SceneHeader view={view} mission={mission} active={active} placeLabel={placeLabel} onBack={focused && !finished ? () => void act({ a: "leave" }) : null} />}
+      {active.kind === "typing-block" ? null : focused ? (
+        <SceneBanner mission={mission} active={active} line={bannerLine} saying={saying} onReplay={spoken ? () => setReplays((n) => n + 1) : null} onBack={finished ? null : () => void act({ a: "leave" })} />
+      ) : (
+        <SceneHeader view={view} mission={mission} active={active} placeLabel={placeLabel} />
+      )}
       <h2 id="mw-scene-title" ref={headingRef} tabIndex={-1} className={cn("font-bold outline-none", active.kind === "typing-block" || focused ? "sr-only" : "text-xl")}>
         {active.title}
       </h2>
-      {active.kind !== "typing-block" && !(focused && finished) ? <Lines lines={focused ? active.intro.slice(0, 1) : active.intro} mission={mission} act={act} step={active.id} busy={busy} offset={0} /> : null}
+      {active.kind !== "typing-block" && !focused ? <Lines lines={active.intro} mission={mission} /> : null}
       {custom && storyLike ? custom : null}
-      {storyLike ? <StoryTask active={active} busy={busy} act={act} label={mission.presentation === "map" ? (active.kind === "outcome" ? "Fertig" : "Verstanden") : undefined} /> : null}
+      {storyLike ? <StoryTask active={active} busy={busy || saying} act={act} label={mission.presentation === "map" ? (active.kind === "outcome" ? "Fertig" : "Verstanden") : undefined} /> : null}
       {custom && !storyLike ? custom : null}
       {!custom && (active.kind === "read" || active.kind === "listen") ? <QuestionTask child={child} active={active} busy={busy} act={act} speech={speech} characters={mission.characters} /> : null}
       {!custom && active.kind === "calc" ? <CalcTask active={active} busy={busy} act={act} /> : null}
@@ -810,14 +862,14 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
       {active.kind === "typing-block" && active.typing ? <TypingBlock block={active.typing} stepId={active.id} busy={busy} act={act} /> : null}
       {finished ? (
         <div className="grid gap-2" data-testid="scene-done">
-          <Lines lines={focused ? active.done.slice(0, 1) : active.done} mission={mission} act={act} step={active.id} busy={busy} offset={active.intro.length} />
+          {focused && active.kind !== "typing-block" ? null : <Lines lines={focused ? active.done.slice(0, 1) : active.done} mission={mission} />}
           {active.home ? (
             <div className="rounded-2xl border-2 px-4 py-3" style={{ borderColor: "#6f8f5a", background: "#f2f8ec" }} data-testid="home-task">
               <p className="text-sm font-bold">🏡 Für zuhause</p>
               <p className="text-lg">{active.home.replace(/^Für zuhause:\s*/, "")}</p>
             </div>
           ) : null}
-          <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy} onClick={() => void act({ a: "leave" })} data-testid="scene-continue" data-fold="primary" autoFocus>
+          <button type="button" className={btnPrimary} style={btnPrimaryStyle} disabled={busy || saying} onClick={() => void act({ a: "leave" })} data-testid="scene-continue" data-fold="primary" data-waiting={saying ? "narration" : undefined} autoFocus>
             {focused ? "Weiter →" : "Weiter auf der Insel →"}
           </button>
         </div>

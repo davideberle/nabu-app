@@ -33,7 +33,7 @@ import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 /** Uploads one recorded turn; the signal cancels upload and provider call. Bound to the child by the caller. */
 export type NoktTranscribe = (audio: Blob, fileName: string, signal: AbortSignal) => Promise<NoktTranscribeOutcome>;
 /** One Nokt turn through the server (dispatch → backend → verified reply); the caller adopts the returned view. */
-export type NoktTurnFn = (turn: NoktTurnInput, signal: AbortSignal) => Promise<{ kind: "shown"; say: string } | { kind: "withheld"; line: string } | { kind: "exhausted" } | { kind: "failed" } | { kind: "cancelled" }>;
+export type NoktTurnFn = (turn: NoktTurnInput, signal: AbortSignal) => Promise<{ kind: "shown"; say: string; ended?: boolean } | { kind: "withheld"; line: string; ended?: boolean } | { kind: "exhausted" } | { kind: "failed" } | { kind: "cancelled" }>;
 
 /** Shown when the turn could not be made at all (no connection, refused, unavailable) — reviewed app text. */
 const NOKT_UNREACHABLE_LINE = "Nokt ist gerade nicht erreichbar. Der Hinweis bei der Aufgabe hilft dir weiter.";
@@ -59,7 +59,7 @@ export function NoktButton({ child, onOpen }: { child: ChildId; onOpen: () => vo
   );
 }
 
-export function NoktPanel({ child, mode, step, part, speech, transcribe = null, turn = null, offer = null, onClose }: { child: ChildId; mode: NoktMode; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe?: NoktTranscribe | null; turn?: NoktTurnFn | null; offer?: { onAccept: () => void; onDismiss: () => void } | null; onClose: () => void }) {
+export function NoktPanel({ child, mode, step, part, speech, transcribe = null, turn = null, opener = false, entry = "manual", onClose }: { child: ChildId; mode: NoktMode; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe?: NoktTranscribe | null; turn?: NoktTurnFn | null; /** Nokt starts the conversation itself (Nov 8: it asks about his own answer; it never offers help). */ opener?: boolean; entry?: "manual" | "offer"; onClose: () => void }) {
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: false });
@@ -82,23 +82,13 @@ export function NoktPanel({ child, mode, step, part, speech, transcribe = null, 
           Nokt
         </h2>
       </div>
-      {offer ? (
-        // Shown only when a verified tutor exists (never in this build): a dismissible offer, never a microphone start.
-        <div className="mt-4 grid gap-2" data-testid="nokt-offer">
-          <p className="text-lg">Möchtest du mit mir anschauen, was die Frage meint?</p>
-          <div className="flex flex-wrap gap-2">
-            <button type="button" className={btn} style={{ background: "#215c60", color: "white" }} onClick={offer.onAccept}>Ja</button>
-            <button type="button" className={btn} style={{ background: "#e6eee7", color: "#21484b" }} onClick={offer.onDismiss}>Nein, danke</button>
-          </div>
-        </div>
-      ) : null}
       {mode === "unavailable" ? (
         <div className="mt-4 grid gap-3" data-testid="nokt-unavailable">
           <p className="text-lg leading-relaxed">Nokt kann im Moment nicht mit dir sprechen.</p>
           <p className="text-lg leading-relaxed">Der Hinweis bei der Aufgabe hilft dir Schritt für Schritt. Du kannst auch einen Erwachsenen fragen.</p>
         </div>
       ) : (
-        <Conversation child={child} fictional={mode === "fictional-stub"} step={step} part={part} speech={speech} transcribe={transcribe} turn={turn} />
+        <Conversation child={child} fictional={mode === "fictional-stub"} step={step} part={part} speech={speech} transcribe={transcribe} turn={turn} opener={opener} entry={entry} />
       )}
       <button type="button" className={`${btn} mt-4`} style={{ background: "#e6eee7", color: "#21484b" }} onClick={onClose} data-testid="nokt-close">
         Schliessen
@@ -111,7 +101,7 @@ export function NoktPanel({ child, mode, step, part, speech, transcribe = null, 
  * The conversation: typed (and push-to-talk where transcription is configured). `fictional` = the isolated local stub,
  * labelled «Testmodus» and allowed to fall back to canned replies; the real conversation (`subscription`) never does.
  */
-function Conversation({ child, fictional, step, part, speech, transcribe, turn }: { child: ChildId; fictional: boolean; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe: NoktTranscribe | null; turn: NoktTurnFn | null }) {
+function Conversation({ child, fictional, step, part, speech, transcribe, turn, opener, entry }: { child: ChildId; fictional: boolean; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe: NoktTranscribe | null; turn: NoktTurnFn | null; opener: boolean; entry: "manual" | "offer" }) {
   const transport = useMemo(() => fictionalNoktTransport(), []);
   // One talk per opening of the panel; a pending turn is aborted when the panel closes or the task changes (unmount).
   const sessionId = useMemo(() => newId("s"), []);
@@ -133,15 +123,38 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn }
   const [draft, setDraft] = useState("");
   const [via, setVia] = useState<"voice" | "typed">("typed");
   const [waiting, setWaiting] = useState(false);
+  const [over, setOver] = useState(false);
   const say = async (text: string) => {
     speech.unlock();
     const played = await speech.speak({ childId: child, text, language: "de", speaker: "nokt" });
     // Only the ElevenLabs audio plays on success; the browser voice is the fallback, and never after the panel closed.
     if (played === "fallback" && alive.current) await browserSpeech()(text, "de");
   };
+  const openedRef = useRef(false);
+  useEffect(() => {
+    if (!opener || !turn || !step || !part || openedRef.current) return;
+    openedRef.current = true;
+    const abort = new AbortController();
+    turnAbortRef.current = abort;
+    setWaiting(true);
+    void (async () => {
+      const out = await turn({ step, part, purpose: "diagnostic", entry, sessionId, turnId: newId("t"), opener: true }, abort.signal);
+      if (abort.signal.aborted || out.kind === "cancelled") return;
+      turnAbortRef.current = null;
+      setWaiting(false);
+      if (out.kind === "shown") {
+        setTurns((t) => [...t, { id: `n${t.length}`, role: "nokt", text: out.say, via: "typed", at: Date.now() }]);
+        void say(out.say);
+        if (out.ended) setOver(true);
+        return;
+      }
+      setTurns((t) => [...t, { id: `a${t.length}`, role: "app", text: out.kind === "withheld" ? out.line : out.kind === "exhausted" ? NOKT_EXHAUSTED_LINE : NOKT_UNREACHABLE_LINE, via: "typed", at: Date.now() }]);
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const send = async () => {
     const text = draft.trim();
-    if (!text || waiting) return;
+    if (!text || waiting || over) return;
     const childTurn: NoktTurn = { id: `c${turns.length}`, role: "child", text, via, at: Date.now() };
     setTurns((t) => [...t, childTurn]);
     setDraft("");
@@ -158,8 +171,10 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn }
       if (out.kind === "shown") {
         setTurns((t) => [...t, { id: `n${t.length}`, role: "nokt", text: out.say, via: "typed", at: Date.now() }]);
         void say(out.say);
+        if (out.ended) setOver(true);
         return;
       }
+      if (out.kind === "withheld" && out.ended) setOver(true);
       setTurns((t) => [...t, { id: `a${t.length}`, role: "app", text: out.kind === "withheld" ? out.line : out.kind === "exhausted" ? NOKT_EXHAUSTED_LINE : NOKT_UNREACHABLE_LINE, via: "typed", at: Date.now() }]);
       // No reply from Nokt: his words stay in the box (unless he already typed something new), so nothing he wrote is lost.
       if (out.kind === "exhausted" || out.kind === "failed") setDraft((d) => (d ? d : text));
@@ -186,7 +201,8 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn }
         </p>
       ) : null}
       <ol className="grid gap-2" aria-live="polite" data-testid="nokt-transcript">
-        {turns.length === 0 ? <li className="text-lg">Hallo Santi. Was möchtest du wissen?</li> : null}
+        {turns.length === 0 && !opener ? <li className="text-lg">Hallo Santi. Was möchtest du wissen?</li> : null}
+        {waiting && turns.length === 0 ? <li className="text-lg italic" data-testid="nokt-thinking">Nokt überlegt …</li> : null}
         {turns.map((t) => (
           <li key={t.id} className="rounded-xl px-3 py-2 text-lg" style={{ background: t.role === "nokt" ? "#edf4e6" : "#f3f4f1" }} data-role={t.role}>
             <span className="text-sm font-bold">{t.role === "nokt" ? "Nokt" : t.role === "app" ? "Hinweis der App" : "Du"}{t.role === "child" && t.via === "voice" ? " (gesprochen)" : ""}</span>
@@ -200,7 +216,7 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn }
           </li>
         ))}
       </ol>
-      {transcribe ? (
+      {!over && transcribe ? (
         // Only where the deployment has transcription; otherwise typing is the way to talk to Nokt.
         <NoktMic
           transcribe={transcribe}
@@ -210,7 +226,7 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn }
           }}
         />
       ) : null}
-      <form
+      {over ? null : <form
         className="grid gap-2"
         onSubmit={(e) => {
           e.preventDefault();
@@ -224,7 +240,7 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn }
         <button type="submit" className={btn} style={{ background: "#215c60", color: "white" }} disabled={!draft.trim() || waiting} data-testid="nokt-send">
           Senden
         </button>
-      </form>
+      </form>}
     </div>
   );
 }

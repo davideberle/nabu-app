@@ -492,8 +492,63 @@ function Shape({ id }: { id: WorkshopPicture }) {
           <path d="M54 44q-3-6-6-6M54 44v-8M54 44q3-6 6-6" stroke={LEAF} strokeWidth={2} fill="none" />
         </g>
       );
+    // Isabel Visit 3 — «Ernten und probieren»
+    case "apple":
+      return <Apple x={40} y={46} r={24} color="#d6342c" />;
+    case "nut":
+      return <Nut x={40} y={38} r={26} />;
+    case "corn":
+      return <g transform="translate(-20 -8) scale(1.5)"><Corn x={40} y={8} /></g>;
+    case "nut-and-corn":
+      return (
+        <g>
+          <Nut x={22} y={42} r={17} />
+          <g transform="translate(16 4) scale(1.15)"><Corn x={36} y={6} /></g>
+        </g>
+      );
+    case "harvest-apples":
+      return (
+        <g>
+          <Apple x={22} y={32} r={13} color="#d6342c" />
+          <Apple x={56} y={32} r={13} color="#e05a2a" />
+          <Apple x={39} y={58} r={15} color="#d6342c" />
+        </g>
+      );
+    case "harvest-carrots":
+      return (
+        <g>
+          <g transform="translate(-30 2) scale(1.7)"><Carrot x={30} y={20} /></g>
+          <g transform="translate(-12 2) scale(1.7)"><Carrot x={30} y={20} /></g>
+          <g transform="translate(6 2) scale(1.7)"><Carrot x={30} y={20} /></g>
+        </g>
+      );
+    case "harvest-corn":
+      return (
+        <g>
+          <g transform="translate(-14 -4) scale(1.3)"><Corn x={26} y={6} /></g>
+          <g transform="translate(14 -4) scale(1.3)"><Corn x={36} y={6} /></g>
+        </g>
+      );
+    case "basket-small-red-apple":
+      return <Basket big={false} apple="#d6342c" />;
+    case "basket-small-green-apple":
+      return <Basket big={false} apple="#7fb069" />;
+    case "basket-big-red-apple":
+      return <Basket big apple="#d6342c" />;
+    default: {
+      // Exhaustive on purpose: a picture id in WORKSHOP_PICTURES without a drawing no longer compiles. It used to draw nothing.
+      const missing: never = id;
+      return missing;
+    }
   }
 }
+
+/** The map's own harvest-table art for what she chose to harvest (the same picture she later sees on the island). */
+const HARVEST_TABLE_ART: Record<string, string> = {
+  "harvest-apples": "/family/home-map/i-harvest-table-apples-built.png",
+  "harvest-carrots": "/family/home-map/i-harvest-table-carrots-built.png",
+  "harvest-corn": "/family/home-map/i-harvest-table-corn-built.png",
+};
 
 /** One reviewed picture, 80 × 80, with its spoken-free label left to the caller. */
 export function WorkshopPictureView({ id, className = "h-20 w-20", title }: { id: string; className?: string; title?: string }) {
@@ -681,6 +736,16 @@ function CounterIcon({ icon }: { icon?: string }) {
 
 /** Visit 2: her garden with what she chose to grow (the visible consequence of her own choice). */
 export function WorkshopGarden({ grown, label, compact = false }: { grown: string | null; label: string; /** Step 1 (review): smaller on the focused screen so «Weiter» stays above the fold. */ compact?: boolean }) {
+  const art = grown ? HARVEST_TABLE_ART[grown] : undefined;
+  if (art) {
+    return (
+      <figure className="grid justify-items-start gap-2" data-testid="workshop-garden" data-grown={grown ?? ""} data-art="harvest-table">
+        {/* eslint-disable-next-line @next/next/no-img-element -- a fixed map sprite; next/image would route it through the optimizer the child's device may not reach */}
+        <img src={art} alt={label} className={compact ? "h-auto w-full max-w-[280px]" : "h-auto w-full max-w-[380px]"} data-testid="harvest-table-art" />
+        <figcaption className="text-base font-semibold">{label}</figcaption>
+      </figure>
+    );
+  }
   return (
     <figure className="grid justify-items-start gap-2" data-testid="workshop-garden" data-grown={grown ?? ""}>
       <svg viewBox="0 0 240 150" className={compact ? "h-auto w-full max-w-[240px]" : "h-auto w-full max-w-[360px]"} role="img" aria-label={label}>

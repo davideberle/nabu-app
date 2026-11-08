@@ -166,7 +166,6 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
   /** Content v7: he started the running visit himself in this page session (a reload never sets this). */
   const [entered, setEntered] = useState(false);
   /** Content v7: he finished the map mission himself in this page session — the look back's Nokt may open by itself, once. */
-  const [closedHere, setClosedHere] = useState(false);
   const [overlay, setOverlay] = useState<"wordbook" | "logbook" | "supplies" | null>(null);
   /** The visit whose report is shown (just finished, or reopened through `?report=`). */
   const [reportVisit, setReportVisit] = useState<string | null>(() => searchParams.get("report"));
@@ -333,8 +332,8 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
       if (!aliveRef.current || signal.aborted || (!out.ok && "failure" in out && out.failure === "cancelled")) return { kind: "cancelled" };
       if ("view" in out && out.view) adopt(out.view);
       if (out.ok && out.status !== "stale") {
-        const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string };
-        if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say };
+        const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string; ended?: boolean };
+        if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say, ended: r.ended === true };
         // No reply at all (runtime unreachable, used up, refused): his words go back into the box.
         if (r.shown === false && typeof r.line === "string") return { kind: r.reason?.startsWith("no-reply-") ? "failed" : "app", line: r.line };
       }
@@ -382,6 +381,25 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
   // is not running, then walk into that place's scene (arrive + open its first available step) and drop the parameter. Nokt's
   // welcome is not opened by this path (Nokt stays closed by default). Without the flag the view has no `homeMap`: no-op.
   const enterRef = useRef<{ place: string; phase: "start" | "open" | "done" } | null>(null);
+  const heldPlaceRef = useRef<string | null>(null);
+  const walkInto = async (place: string, m: NonNullable<ChildView["mission"]>) => {
+    if (m.position !== place && !applied(await mutate({ op: "mission", action: { a: "arrive", place } }))) return;
+    const step = m.steps.find((x) => x.place === place && (x.status === "available" || x.status === "active"));
+    if (step) await mutate({ op: "mission", action: { a: "open", step: step.id } });
+  };
+  // Nov 8: a parent can switch Nokt's conversations off from the parent view. While the child's screen is waiting on one (a saved
+  // sentence or the look back), it notices within 20 seconds; nothing is polled otherwise.
+  useEffect(() => {
+    const t = window.setInterval(() => {
+      const v = viewRef.current;
+      if (!v?.nokt?.talk || v.nokt.talk.skip) return;
+      if (v.mission?.active?.kind !== "write" && !v.reflection) return;
+      void learning.read(child, { timeZone: browserTimeZone() }).then((out) => {
+        if (out.ok && out.view.nokt?.talk?.skip) adopt(out.view);
+      });
+    }, 20_000);
+    return () => window.clearInterval(t);
+  }, [child, learning, adopt]);
   useEffect(() => {
     if (load.kind !== "ready" || busy) return;
     const v = load.view;
@@ -409,18 +427,22 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
       });
       return;
     }
+    const startedHere = st.phase === "open";
     st.phase = "done";
     const m = v.mission;
     if (!m || m.presentation !== "map" || m.active) {
       drop();
       return;
     }
-    void (async () => {
-      if (m.position !== place && !applied(await mutate({ op: "mission", action: { a: "arrive", place } }))) return drop();
-      const step = m.steps.find((x) => x.place === place && (x.status === "available" || x.status === "active"));
-      if (step) await mutate({ op: "mission", action: { a: "open", step: step.id } });
+    // Nov 8: he just started this visit from the map: Nokt greets him first (in the sidebar, on the map). Opening a step would
+    // end the welcome before it began (it is refused once anything was opened), so the walk in waits for «Los geht's».
+    if (startedHere && v.nokt?.talk?.welcome === "due" && !v.nokt.talk.skip && v.nokt.mode !== "unavailable") {
+      heldPlaceRef.current = place;
+      setEntered(true);
       drop();
-    })();
+      return;
+    }
+    void walkInto(place, m).then(drop);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [load, busy, searchParams]);
 
@@ -690,15 +712,21 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
                 if (!aliveRef.current || signal.aborted || (!out.ok && "failure" in out && out.failure === "cancelled")) return { kind: "cancelled" };
                 if ("view" in out && out.view) adopt(out.view);
                 if (out.ok && out.status !== "stale") {
-                  const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string };
-                  if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say };
+                  const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string; ended?: boolean };
+                  if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say, ended: r.ended === true };
                   if (r.shown === false && r.reason === "no-reply-daily-allowance") return { kind: "exhausted" };
-                  if (r.shown === false && typeof r.line === "string") return { kind: "withheld", line: r.line };
+                  if (r.shown === false && typeof r.line === "string") return { kind: "withheld", line: r.line, ended: r.ended === true };
                 }
                 return { kind: "failed" };
               },
               talkTurn,
               intentionalEntry: entered,
+              onWelcomeDone: () => {
+                const place = heldPlaceRef.current;
+                heldPlaceRef.current = null;
+                const m = viewRef.current?.mission;
+                if (place && m && !m.active) void walkInto(place, m);
+              },
               onOpen: (reason) => void learning.deviceAudio(child, reason),
             }}
             telemetry={(name) => {
@@ -712,7 +740,6 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
               if (action.a === "finish") speech.unlock();
               const outcome = await mutate({ op: "mission", action }, options?.idempotencyKey ? { idempotencyKey: options.idempotencyKey } : undefined);
               const ok = !!outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed");
-              if (ok && action.a === "finish" && outcome.status === "applied") setClosedHere(true);
               return ok ? ((outcome.result as Record<string, unknown> | undefined) ?? {}) : null;
             }}
           />
@@ -864,7 +891,6 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
                     speech={speech}
                     transcribe={view.nokt?.mic ? (audio, fileName, signal) => learning.transcribeNokt(child, audio, fileName, { signal }) : null}
                     turn={view.nokt && view.nokt.mode !== "unavailable" ? talkTurn : null}
-                    autoOpen={closedHere}
                     onFeedback={(feedback) => mutate({ op: "closing-feedback", feedback } as LearningOp)}
                     onFinish={async (payload, idempotencyKey) => {
                       const identity = visitIdentity();

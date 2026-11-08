@@ -30,7 +30,7 @@ export const DEVICE_AUDIO_MIN_INTERVAL_MS = 60_000;
 
 /** One Nokt turn as the panel sends it; the server builds everything else (context, request, binding). */
 export type NoktTurnInput =
-  | { step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; sessionId: string; turnId: string; text: string; via: "voice" | "typed" }
+  | { step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; sessionId: string; turnId: string; text?: string; via?: "voice" | "typed"; opener?: boolean }
   /** Content v7: a conversation outside the task talk; the page is the server's. No `text` = an opener (welcome, first debrief question, reaction to the saved sentence). */
   | { purpose: "home" | "welcome" | "visit" | "writing" | "debrief"; sessionId: string; turnId: string; text?: string; via?: "voice" | "typed"; choice?: string };
 
@@ -68,6 +68,9 @@ export type LearningMutateOutcome =
 
 /** One Nokt push-to-talk turn: the transcript the child then sees and may correct, or why there is none. */
 export type NoktTranscribeOutcome = { ok: true; transcript: string } | { ok: false; failure: LearningFailure | "cancelled" | "empty"; status?: number };
+
+/** How often a Nokt reply is re-posted when other taps moved the revision meanwhile. */
+export const NOKT_REPLY_STALE_RETRIES = 5;
 
 export type LearningClientDeps = {
   fetchImpl?: typeof fetch;
@@ -271,7 +274,15 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
       // Cancelled (closed, navigated, task changed) after dispatch: nothing more is sent; his line stays without a reply.
       if (options.signal.aborted) return { ok: false, failure: "cancelled" };
       // 3. The reply EXACTLY as received (or none); the server checks the receipt and the engine binds and guards it.
-      return post(LEARNING_NOKT_REPLY_PATH, { ...("step" in turn ? { step: turn.step } : { purpose: turn.purpose }), turnId: turn.turnId, reply: reply ?? null, receipt: reply === null ? null : receipt, ...(reply === null && noReply ? { noReply } : {}) }, dispatched.view.revision);
+      // Nov 8: the child may tap something while the runtime answers (a closing answer, a next step), which moves the revision.
+      // That must never cost the reply: a stale answer is re-posted on the newest revision (the reply route is idempotent by turn).
+      const replyBody = { ...("step" in turn ? { step: turn.step } : { purpose: turn.purpose }), turnId: turn.turnId, reply: reply ?? null, receipt: reply === null ? null : receipt, ...(reply === null && noReply ? { noReply } : {}) };
+      let revision = dispatched.view.revision;
+      for (let attempt = 0; ; attempt += 1) {
+        const posted = await post(LEARNING_NOKT_REPLY_PATH, replyBody, revision);
+        if (!(posted.ok && posted.status === "stale") || attempt >= NOKT_REPLY_STALE_RETRIES) return posted;
+        revision = posted.view.revision;
+      }
     },
 
     async sendTelemetry(childId, batch, options) {

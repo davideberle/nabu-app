@@ -63,7 +63,7 @@ import type { MissionPart, MissionHint, MissionLine, MissionDiagram, MissionGrid
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
 import { receiptOrigin, type ReceiptInput, type ReplyOrigin } from "./family-learning-trust.ts";
 import type { NoktMode } from "./family-learning-nokt.ts";
-import { buildNoktRequest, checkNoktOutcome, checkNoktReply, noktEvidence, noktOutcomeClaim, noktPhase, noktSupportFloor, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
+import { buildNoktRequest, checkNoktOutcome, checkNoktReply, NOKT_MAX_CHILD_TURNS, noktEvidence, noktOutcomeClaim, noktPhase, noktSupportFloor, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
 
 // ---------------------------------------------------------------------------
 // State (MissionState.missions — additive)
@@ -213,6 +213,8 @@ function questionHelped(r: MissionStepRun, pr: NonNullable<MissionStepRun["parts
 }
 
 /** What the child sees instead of a withheld Nokt reply — reviewed app text, never attributed to Nokt. */
+/** The app's own warm ending when Nokt's closing line could not be used (turn limit reached): never attributed to Nokt. */
+export const NOKT_WARM_CLOSE_LINE = "Danke fürs Erzählen! Schau dir die Aufgabe jetzt noch einmal selbst an.";
 export const NOKT_WITHHELD_LINE = "Nokt hat gerade keine passende Antwort. Probier es oben noch einmal oder öffne den Hinweis.";
 
 export type MissionDrill = {
@@ -359,7 +361,7 @@ export type MissionAction =
   /** Content v6: a character line was played aloud (its own text, never an answer; recorded, not help). */
   | { a: "line-audio"; step: string; line: number; outcome: "child-voice" | "browser" | "failed" | "recorded" }
   /** Content v6 (N7-06): record the tutor context BEFORE the tutor is asked; refused while the tutor is unavailable. */
-  | { a: "tutor-dispatch"; step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; turnId: string; sessionId: string; text?: string; via?: "voice" | "typed" }
+  | { a: "tutor-dispatch"; step: string; part: string; purpose: "diagnostic" | "reflection"; entry: "manual" | "offer" | "planned"; turnId: string; sessionId: string; text?: string; via?: "voice" | "typed"; opener?: boolean }
   /** Content v6 (N7-03): the reply to one Nokt turn; its origin was verified by the ROUTE (receipt bound to the dispatch). */
   | { a: "tutor-reply"; step: string; turnId: string; reply: string; noReply?: "attempts_exhausted" | "usage_limit" | "busy" | "bad_request" | "unreachable" | "unavailable" | "timeout" }
   /** Content v6 (N7-06): the tutor's structured result — accepted only when bound, fresh and verified (origin from the server, never the client). */
@@ -545,6 +547,11 @@ function hasAnswerRelevantSupport(r: MissionStepRun) {
 
 function supportKinds(r: MissionStepRun) {
   return [...new Set(r.support.map((s) => s.kind))];
+}
+
+/** The answer revealed on ANOTHER question of the step was never help on this one (Nov 8: June's «pipe» carried «tap»'s reveal). */
+function supportKindsForQuestion(r: MissionStepRun, questionId: string) {
+  return [...new Set(r.support.filter((s) => !(s.kind === "answer-shown" && s.detail && s.detail !== questionId)).map((s) => s.kind))];
 }
 
 // ---------------------------------------------------------------------------
@@ -1045,7 +1052,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       const correct = normalizeAnswer(raw) === normalizeAnswer(q.answer);
       const helped = r.support.some((s) => ["transcript", "translation", "letters"].includes(s.kind)) || (step.kind === "listen" && (r.completedPlays ?? 0) < 1);
       const evidence: EvidenceCategory = !correct ? "incorrect" : tries.length === 0 && !helped ? "independent" : "supported";
-      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: q.id, raw, correct, evidence, support: [...supportKinds(r), ...(tries.length ? ["retry"] : [])], modality: q.kind === "pick" ? "pick" : "typed", kind: "answer" };
+      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: q.id, raw, correct, evidence, support: [...supportKindsForQuestion(r, q.id), ...(tries.length ? ["retry"] : [])], modality: q.kind === "pick" ? "pick" : "typed", kind: "answer" };
       r.attempts.push(attempt);
       attemptRow(records, env, def, step, attempt, step.text?.language ?? "de");
       if (correct) {
@@ -1680,27 +1687,32 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       // The revision a result must bind to: the number of recorded attempts on this step (a new answer makes older results stale).
       const dispatch: TutorDispatch = { turnId: action.turnId, child: env.tutor.child ?? "", missionId: def.id, visit: env.visit, step: step.id, part: part.id, taskVersion: step.version, sessionId: action.sessionId, revision: r.attempts.length, purpose: action.purpose, entry: action.entry, at: env.nowIso, status: "pending" };
       let request: unknown = null;
-      if (action.text !== undefined) {
+      // Nov 8 (owner): Nokt opens the talk itself. An opener has no words of his: the context carries his own submitted answers.
+      const opener = action.text === undefined && action.opener === true;
+      if (action.text !== undefined || opener) {
         // A Nokt turn: his line is recorded first, then the app builds the request from what he can see — never the answer.
-        if (typeof action.text !== "string" || !action.text.trim() || action.text.length > 300 || (action.via !== "voice" && action.via !== "typed")) throw new MissionOpError("invalid", "a turn needs his text (1–300 characters) and how it was entered");
+        if (!opener && (typeof action.text !== "string" || !action.text.trim() || action.text.length > 300 || (action.via !== "voice" && action.via !== "typed"))) throw new MissionOpError("invalid", "a turn needs his text (1–300 characters) and how it was entered");
         const pr = r.parts![part.id];
         const prior = talkOf(r, part.id, action.sessionId);
-        const transcript: NoktTurnText[] = [...prior, { role: "child", text: action.text.trim(), via: action.via }];
+        if (opener && prior.length) throw new MissionOpError("not-allowed", "this talk has already started");
+        const transcript: NoktTurnText[] = opener ? [] : [...prior, { role: "child", text: action.text!.trim(), via: action.via! }];
         // Round 15: the app's own evidence picture (same help rule as the validator's question facts) and, from it, the only
         // status/support/next combinations it would accept — so the model is never asked to guess the app's rules.
         const evidence = noktEvidence(transcript, { purpose: action.purpose, questionStatus: pr.status, helpRecorded: questionHelped(r, pr, part.id), answerExposed: pr.exposed.length > 0 });
         const built = buildNoktRequest(
-          noktTaskContext({ step: step.id, solve: step.solve!, part, purpose: action.purpose, attempts: r.attempts.filter((a) => a.questionId === part.id && a.kind === "answer").map((a) => a.raw), hintIdsShown: pr.hints.map((h) => h.id), phase: noktPhase(prior).phase, resultAllowed: pr.exposed.length > 0, evidence }),
+          noktTaskContext({ step: step.id, solve: step.solve!, part, purpose: action.purpose, attempts: r.attempts.filter((a) => a.questionId === part.id && a.kind === "answer").map((a) => a.raw), hintIdsShown: pr.hints.map((h) => h.id), phase: noktPhase(prior).phase, closeNow: transcript.filter((t) => t.role === "child").length >= NOKT_MAX_CHILD_TURNS, resultAllowed: pr.exposed.length > 0, evidence }),
           transcript,
         );
         dispatch.reqHash = built.reqHash;
         request = built.request;
-        (r.tutorTurns ??= []).push({ turnId: action.turnId, part: part.id, sessionId: action.sessionId, role: "child", text: action.text.trim(), via: action.via, shown: true, at: env.nowIso });
-        if (r.tutorTurns.length > 60) r.tutorTurns = r.tutorTurns.slice(-60);
+        if (!opener) {
+          (r.tutorTurns ??= []).push({ turnId: action.turnId, part: part.id, sessionId: action.sessionId, role: "child", text: action.text!.trim(), via: action.via!, shown: true, at: env.nowIso });
+          if (r.tutorTurns.length > 60) r.tutorTurns = r.tutorTurns.slice(-60);
+        }
       }
       r.tutorDispatches.push(dispatch);
       if (r.tutorDispatches.length > 20) r.tutorDispatches = r.tutorDispatches.slice(-20);
-      support(records, env, def, step, "tutor-dispatch", { part: part.id, purpose: action.purpose, entry: action.entry, turnId: action.turnId, ...(action.text !== undefined ? { text: action.text.trim(), via: action.via } : {}), help: false });
+      support(records, env, def, step, "tutor-dispatch", { part: part.id, purpose: action.purpose, entry: action.entry, turnId: action.turnId, ...(action.text !== undefined ? { text: action.text.trim(), via: action.via } : opener ? { opener: true } : {}), help: false });
       result = { dispatch, ...(request ? { request, reqHash: dispatch.reqHash } : {}) };
       break;
     }
@@ -1774,7 +1786,9 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         const line = r.tutorTurns[r.tutorTurns.length - 1]!;
         line.outcome = { model: { ...parsed!.outcome }, verdict: "refused" in outcome ? `refused: ${String(outcome.refused)}` : `accepted: ${String(outcome.status)} → ${String(outcome.next)}` };
       }
-      result = shown ? { shown: true, say: parsed!.say, intent: parsed!.intent, outcome } : { shown: false, reason, line: NOKT_WITHHELD_LINE };
+      // The talk is over when Nokt closed it or his turns are used up; the limit is the server's, the browser only follows it.
+      const talkLimit = talkOf(r, part.id, dispatch.sessionId).filter((t) => t.role === "child").length >= NOKT_MAX_CHILD_TURNS;
+      result = shown ? { shown: true, say: parsed!.say, intent: parsed!.intent, outcome, ended: parsed!.intent === "close" || talkLimit } : { shown: false, reason, line: reason === "must-close" ? NOKT_WARM_CLOSE_LINE : NOKT_WITHHELD_LINE, ended: reason === "must-close" };
       break;
     }
     case "tutor-outcome": {

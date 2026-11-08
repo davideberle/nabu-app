@@ -37,12 +37,12 @@ import { receiptOrigin, provenanceOf, type ReceiptInput, type ReplyOrigin } from
 
 export const NOKT_TALK_PURPOSES = ["home", "welcome", "visit", "writing", "debrief"] as const;
 export type NoktTalkPurpose = (typeof NOKT_TALK_PURPOSES)[number];
-export const NOKT_TALK_PROMPT_VERSION = "nokt-talk-de-2026-10-26-draft1";
+export const NOKT_TALK_PROMPT_VERSION = "nokt-talk-de-2026-11-08-draft2";
 export const NOKT_TALK_INTENTS = ["ask", "respond", "encourage", "correct", "close"] as const;
 export type NoktTalkIntent = (typeof NOKT_TALK_INTENTS)[number];
 
 /** Child lines per session before Nokt must close (never an endless conversation gate). */
-export const NOKT_TALK_MAX_CHILD_TURNS: Record<NoktTalkPurpose, number> = { home: 8, welcome: 2, visit: 6, writing: 3, debrief: 7 };
+export const NOKT_TALK_MAX_CHILD_TURNS: Record<NoktTalkPurpose, number> = { home: 8, welcome: 2, visit: 4, writing: 5, debrief: 4 };
 /** Debrief: how often Nokt may ask the next-interest question before the reviewed buttons alone remain (no endless gate). */
 export const NOKT_DEBRIEF_MAX_NEXT_QUESTIONS = 3;
 /** Lines of one session sent to the runtime (the runtime accepts at most 14). */
@@ -310,6 +310,9 @@ function debriefFeedback(content: LearningContent, state: MissionState) {
   return out;
 }
 
+/** The conversation is over when Nokt closes it or the app's own phase says so (the turn limit is the server's, not the browser's). */
+export const talkEnded = (intent: string | null | undefined, phase: string | null | undefined) => intent === "close" || phase === "schliessen" || phase === "abschluss";
+
 export type NoktTalkPhase = "zuhause" | "begruessung" | "antwort" | "begleiten" | "satz" | "rueckblick-start" | "rueckblick" | "naechstes" | "abschluss" | "schliessen";
 
 /** The app's phase for the next Nokt line (from the ACCEPTED transcript only). */
@@ -428,15 +431,15 @@ const PURPOSE_DE: Record<NoktTalkPurpose, string[]> = {
   writing: [
     "Ort: das Gartenbuch. context.writing.hisSentence ist der Satz, den Santi selbst geschrieben hat (sein Original).",
     "phase \"satz\": Reagiere auf seinen Satz: zuerst ein kurzer Satz zu dem, was er inhaltlich geschrieben hat (ohne zu übertreiben). Dann EIN nützlicher Hinweis oder EINE Frage: zum Beispiel ein Wort, das man gross schreibt, ein fehlender Punkt, oder eine Frage, die seinen Satz genauer machen könnte. Schreib seinen Satz nicht für ihn neu (intent correct oder ask).",
-    "Wenn er antwortet, antworte kurz. Er überarbeitet seinen Satz selbst im Gartenbuch; erinnere ihn höchstens daran.",
-    "phase \"schliessen\": beende freundlich (intent close).",
+    "Sprich über seinen Satz, bis du zufrieden bist: Wenn er antwortet, antworte kurz und stell höchstens noch EINE Frage. Bist du zufrieden oder geht es nicht weiter, sag ihm warm, dass er seinen Satz jetzt selbst noch einmal anschauen kann, und beende (intent close). Schreib seinen Satz nie für ihn neu.",
+    "phase \"schliessen\": bedanke dich warm und beende (intent close).",
   ],
   debrief: [
     "Ort: kurzer Rückblick am Ende von context.visit. Das dauert ein bis zwei Minuten, kein Test.",
     "phase \"rueckblick-start\": Frag EINE kurze Frage zu seiner Arbeit heute. Nimm eine echte Sache aus context.work oder seine Knopf-Antworten aus context.buttons (zum Beispiel: Was war knifflig?). intent ask.",
     "phase \"rueckblick\": Reagier kurz auf seine Antwort, dann EINE weitere Frage zu heute (was er jemandem zeigen oder erklären würde, oder was leicht war). intent ask.",
-    "phase \"naechstes\": Reagier kurz. Dann nenne die zwei Ideen aus context.nextIdeas als zwei Möglichkeiten für den nächsten Besuch (mit ihren Worten, kurz) und sag, dass auch eine eigene Idee oder «weiss ich noch nicht» gut ist. Frag dann, was er möchte. Wenn context.lastAnswerKind \"nachfrage\" ist, hat er nachgefragt: erklär die zwei Ideen einfacher und frag noch einmal. intent ask.",
-    "phase \"abschluss\": Danke ihm und wiederhole context.hisWish mit seinen Worten, ohne etwas zu versprechen. intent close.",
+    "phase \"naechstes\": Reagier kurz. Dann frag in EINEM kurzen Satz, was er beim nächsten Mal machen möchte. Zähl keine Ideen auf: Die Bilder stehen auf dem Bildschirm. Wenn context.lastAnswerKind \"nachfrage\" ist, sag ihm, dass er ein Bild antippen, eine eigene Idee sagen oder «weiss ich noch nicht» sagen kann. intent ask.",
+    "phase \"abschluss\": Danke ihm warm. Wenn context.hisWish da steht, wiederhole es mit seinen Worten, ohne etwas zu versprechen. intent close.",
     "Wenn er etwas nicht sagen möchte, ist das in Ordnung — dräng ihn nicht.",
   ],
 };
@@ -612,7 +615,8 @@ function debriefNextInterest(state: MissionState, records: Records, env: NoktTal
 
 /** The app's phase for the next Nokt line of the look back. The next-interest question repeats until he answered it (bounded). */
 function debriefPhase(state: MissionState, session: NoktTalkSession, childLinesNow: number, visit: { id: VisitId; startedAt: string }): NoktTalkPhase {
-  if (childLinesNow > NOKT_TALK_MAX_CHILD_TURNS.debrief) return "schliessen";
+  // Nov 8: about four of his turns, then a warm close, whatever else was asked.
+  if (childLinesNow >= NOKT_TALK_MAX_CHILD_TURNS.debrief) return session.dispatches.some((d) => d.phase === "abschluss") ? "schliessen" : "abschluss";
   if (childLinesNow === 0) return "rueckblick-start";
   if (childLinesNow === 1) return "rueckblick";
   if (latestDebriefInterest(state, visit)) return session.dispatches.some((d) => d.phase === "abschluss") ? "schliessen" : "abschluss";
@@ -732,7 +736,7 @@ export function applyNoktTalk(state: MissionState, action: NoktTalkAction, env: 
         if (r && !r.support.some((x) => x.kind === "nokt-writing")) r.support.push({ kind: "nokt-writing", at: env.nowIso, detail: dispatch.turnId });
       }
       supportRow(records, env, session.visit, "talk-reply", { purpose: session.purpose, session: session.id, turnId: dispatch.turnId, origin, shown, ...(shown ? { text: parsed!.say, intent: parsed!.intent } : { reason }), help: shown && session.purpose === "writing" }, where.ok && where.step ? `${where.def!.id}/${where.step.id}` : null);
-      result = shown ? { shown: true, say: parsed!.say, intent: parsed!.intent, phase: dispatch.phase } : { shown: false, reason, line: talkAppLine(session.purpose, dispatch.opener, reason, dispatch.phase) };
+      result = shown ? { shown: true, say: parsed!.say, intent: parsed!.intent, phase: dispatch.phase, ended: talkEnded(parsed!.intent, dispatch.phase) } : { shown: false, reason, line: talkAppLine(session.purpose, dispatch.opener, reason, dispatch.phase) };
       break;
     }
     case "close": {
@@ -774,7 +778,7 @@ export function talkAppLine(purpose: NoktTalkPurpose, opener: boolean, reason: s
 // ---------------------------------------------------------------------------
 
 export type NoktTalkLineView = { role: "child" | "nokt" | "app"; text: string; via?: string; at: string };
-export type NoktTalkSessionView = { id: string; purpose: NoktTalkPurpose; page: string; closed: boolean; lines: NoktTalkLineView[]; phase: string | null };
+export type NoktTalkSessionView = { id: string; purpose: NoktTalkPurpose; page: string; closed: boolean; lines: NoktTalkLineView[]; phase: string | null; /** Nokt has said its last line (or the turn limit is reached): nothing more is awaited from him. */ ended: boolean };
 
 export function talkLines(session: NoktTalkSession): NoktTalkLineView[] {
   const out: NoktTalkLineView[] = [];
@@ -790,6 +794,14 @@ export function talkLines(session: NoktTalkSession): NoktTalkLineView[] {
 }
 
 /** The sessions the client may show now: the latest per purpose for this page (Home, or the running visit instance). */
+function sessionEnded(s: NoktTalkSession): boolean {
+  const lastNokt = [...s.turns].reverse().find((t) => t.role === "nokt" && t.shown);
+  if (lastNokt && talkEnded(lastNokt.intent, lastNokt.phase)) return true;
+  // The last turn had no accepted reply and the limit is reached: nothing more can come.
+  const last = s.turns[s.turns.length - 1];
+  return !!last && last.role === "nokt" && !last.shown && s.turns.filter((t) => t.role === "child").length >= NOKT_TALK_MAX_CHILD_TURNS[s.purpose];
+}
+
 export type NoktDebriefView = { interestRecorded: boolean; wish: { kind: InterestRecord["kind"]; text: string | null } | null; ideas: { id: string; label: string }[]; askingNext: boolean };
 
 export function noktTalkView(state: MissionState, content: LearningContent): { sessions: NoktTalkSessionView[]; welcome: "due" | "done" | "not-applicable"; debrief: NoktDebriefView | null } {
@@ -799,7 +811,7 @@ export function noktTalkView(state: MissionState, content: LearningContent): { s
   const relevant = talks.sessions.filter((s) => (s.purpose === "home" ? true : !!v && s.visit === v.id && s.visitStartedAt === v.startedAt));
   const latest = new Map<string, NoktTalkSession>();
   for (const s of relevant) latest.set(`${s.purpose}|${s.page}`, s);
-  const sessions = [...latest.values()].map((s) => ({ id: s.id, purpose: s.purpose, page: s.page, closed: !!s.closedAt, lines: talkLines(s), phase: [...s.dispatches].pop()?.phase ?? null }));
+  const sessions = [...latest.values()].map((s) => ({ id: s.id, purpose: s.purpose, page: s.page, closed: !!s.closedAt, lines: talkLines(s), phase: [...s.dispatches].pop()?.phase ?? null, ended: !!s.closedAt || sessionEnded(s) }));
   let welcome: "due" | "done" | "not-applicable" = "not-applicable";
   if (v && def?.presentation === "map") {
     const done = talks.welcomes.some((w) => w.visit === v.id && w.visitStartedAt === v.startedAt);

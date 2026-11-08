@@ -559,7 +559,7 @@ describe("debrief — his button answers, one question at a time, his own next-i
     d = dispatch(s, env, "debrief", sess, "mein plan");
     equal(d.result.phase, "naechstes");
     deepStrictEqual(d.result.request.context.nextIdeas, ["Im Gewächshaus ernten", "Eine Wasserleitung zum Gewächshaus bauen"], "the two reviewed ideas are in the briefing");
-    ok(/zwei Ideen aus context\.nextIdeas/.test(d.result.request.system) && !/Mach keinen Vorschlag/.test(d.result.request.system), "Nokt offers the ideas instead of a blank question");
+    ok(/Zähl keine Ideen auf/.test(d.result.request.system), "Nov 8: Nokt asks once; the pictures on the screen carry the ideas (no read-aloud list)");
     return { s: reply(d.s, env, d.turnId, say("Möchtest du im Gewächshaus ernten, eine Wasserleitung bauen oder hast du eine eigene Idee?")).s, d };
   }
   const v9 = (s: MissionState) => (s.interests ?? []).filter((i) => i.visit === "v9");
@@ -639,8 +639,9 @@ describe("debrief — his button answers, one question at a time, his own next-i
       const q = dispatch(b, env, "debrief", "sess-debrief-w002", "Was meinst du?");
       b = reply(q.s, env, q.turnId, say(`Ernten oder Wasser? (${i})`)).s;
     }
+    // Nov 8: his fourth turn is the limit and got the closing line, so anything after it can only close.
     const last = dispatch(b, env, "debrief", "sess-debrief-w002", "Was meinst du?");
-    equal(last.result.phase, "abschluss");
+    equal(last.result.phase, "schliessen");
     equal(v9(last.s).length, 0);
   });
   it("the briefing never turns «no recorded app help» into «without any help»", () => {
