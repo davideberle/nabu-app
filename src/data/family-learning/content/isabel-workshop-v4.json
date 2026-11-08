@@ -3188,7 +3188,7 @@
     "places": [
      {
       "id": "birdhouse",
-      "label": "Vogelhaus · Gärtnerin Ida",
+      "label": "Vogelhaus",
       "x": 800,
       "y": 600,
       "kind": "place",
@@ -3290,7 +3290,15 @@
       "taughtIn": [
        {
         "mission": "MISSION-IDA-HARVEST",
+        "step": "IH3-BUNDLE"
+       },
+       {
+        "mission": "MISSION-IDA-HARVEST",
         "step": "IH4-TENS"
+       },
+       {
+        "mission": "MISSION-IDA-HARVEST",
+        "step": "IH5-TENS-AGAIN"
        }
       ]
      },
@@ -4567,17 +4575,17 @@
        "prompt": "Welches Bild passt?",
        "kind": "pick",
        "options": [
-        "Am grossen Baum, hoch oben, neben dem Fenster",
-        "Am grossen Baum, unten, neben dem Fenster",
-        "Am kleinen Baum, neben dem Fenster",
-        "Am grossen Baum, hoch oben, weit weg vom Fenster"
+        "Grosser Baum, hoch, neben dem Fenster",
+        "Grosser Baum, unten, neben dem Fenster",
+        "Kleiner Baum, neben dem Fenster",
+        "Grosser Baum, hoch, weit vom Fenster"
        ],
-       "answer": "Am grossen Baum, hoch oben, neben dem Fenster",
+       "answer": "Grosser Baum, hoch, neben dem Fenster",
        "pictures": {
-        "Am grossen Baum, hoch oben, neben dem Fenster": "hang-right",
-        "Am grossen Baum, unten, neben dem Fenster": "hang-low",
-        "Am kleinen Baum, neben dem Fenster": "hang-small-tree",
-        "Am grossen Baum, hoch oben, weit weg vom Fenster": "hang-far"
+        "Grosser Baum, hoch, neben dem Fenster": "hang-right",
+        "Grosser Baum, unten, neben dem Fenster": "hang-low",
+        "Kleiner Baum, neben dem Fenster": "hang-small-tree",
+        "Grosser Baum, hoch, weit vom Fenster": "hang-far"
        },
        "retryHint": "Hör noch einmal: Welcher Baum, wie hoch, und wo ist das Fenster?"
       }

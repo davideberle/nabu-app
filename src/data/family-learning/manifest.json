@@ -17,6 +17,10 @@
       "sha256": "b8dbab57e9e318824b9ceef7b856251a69b106a725888eab0c0db90ce2076203",
       "bytes": 77589
     },
+    "content/isabel-workshop-v4.json": {
+      "sha256": "1c8e9c8aaf0ab50871d07c96a640da2fee5e90236b1a97c71990668fb623abc7",
+      "bytes": 116063
+    },
     "content/santiago-expedition-v1.json": {
       "sha256": "eff6118772566c9a9a068a90de955f8c74a437f5462b17927f08b5d7aeb19734",
       "bytes": 19429
@@ -48,6 +52,10 @@
     "content/santiago-expedition-v8.json": {
       "sha256": "7cade6426325825688a5e62c775ce7d12fb630c99ea50a5de9be7fc624d95e6e",
       "bytes": 246168
+    },
+    "content/santiago-expedition-v9.json": {
+      "sha256": "b3ed447fe7c8765ec7d080ba5d57b0ae43430f369d9c190aa45838681315608c",
+      "bytes": 298079
     },
     "content/vocabulary-inventory-v1.json": {
       "sha256": "52db9a44964b435d6b69a599c1527b9abf1f5ec10169f492f56b187f86b18389",

@@ -160,6 +160,7 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
     for (const q of Array.isArray(s.questions) ? s.questions.filter(isRecord) : []) {
       const options = Array.isArray(q.options) ? q.options.map(String) : [];
       if (q.kind !== "pick" || options.length < 2 || !options.includes(String(q.answer))) problems.push(`${sl}/${String(q.id)}: a picture choice with the answer among its options`);
+      if (options.some((o) => o.length > 40)) problems.push(`${sl}/${String(q.id)}: an option is longer than 40 characters (the answer op keeps 40)`);
       const pics = isRecord(q.pictures) ? q.pictures : null;
       if (!pics || options.some((o) => !picture(pics[o]))) problems.push(`${sl}/${String(q.id)}: every option needs its picture`);
       if (q.picture !== undefined && !picture(q.picture)) problems.push(`${sl}/${String(q.id)}: unknown picture`);

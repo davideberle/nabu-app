@@ -298,6 +298,7 @@ async function santiago() {
   await listen();
   await pictures(page, "T7.after-play");
   await shot(page, "T7-june-positions");
+  if (wrong) await pick("crate", "In der Sonne, neben dem Teich");
   await pick("crate", "Im Schatten, neben dem Teich");
   await pick("food", "Hinter die Kiste");
   await leave();
@@ -495,7 +496,7 @@ async function isabel() {
   await page.waitForFunction(() => { const b = document.querySelector("[data-testid='listen-play']"); return b && !b.disabled; }, null, { timeout: 40000 });
   await pictures(page, "IV9.after-play");
   await shot(page, "IV9-listen-four-pictures");
-  await pick("show", "Am grossen Baum, hoch oben, neben dem Fenster");
+  await pick("show", "Grosser Baum, hoch, neben dem Fenster");
   await next("IV10-ROOF");
   await shot(page, "IV10-roof-color");
   { await idle(); const d = saved(page); await page.locator(`[data-testid='make-${wrong ? "blue" : "red"}']`).click(); await d; await settle(350); }
@@ -539,6 +540,26 @@ async function isabel() {
   await c.close();
 }
 
+const labels = async (page, label) => {
+  const r = await page.locator("[data-testid='home-map']").evaluate((e) => ({ overlaps: e.dataset.labelOverlaps, missing: e.dataset.missing, pieces: e.dataset.pieces, unplaced: e.dataset.unplaced }));
+  check(`M.labels.${label}`, !r.overlaps && !r.missing && !r.unplaced, r);
+  return r;
+};
+
+/** After both visits: the built pieces, the child's choice on the map, the labels under their own pieces. */
+async function mapAfter(child, wanted) {
+  const c = await ctx("assistant");
+  const page = await c.newPage();
+  page.on("pageerror", (e) => pageErrors.push(String(e)));
+  await page.goto(`${BASE}/family/learn?child=${child}`);
+  await page.waitForSelector("[data-testid='home-map'][data-ready='true']", { timeout: 40000 });
+  await settle(3000);
+  const r = await labels(page, `${child}.after`);
+  check(`M.${child}.built-pieces`, wanted.every((w) => r.pieces.includes(w)), r.pieces);
+  await shot(page, `map-${child}-after-the-visit`);
+  await c.close();
+}
+
 /** The start from the home map, with the new pieces on it. */
 async function map(child, place, firstStep, pieces) {
   const c = await ctx("assistant");
@@ -549,6 +570,7 @@ async function map(child, place, firstStep, pieces) {
   await page.goto(`${BASE}/family/learn?child=${child}`);
   await page.waitForSelector("[data-testid='home-map'][data-ready='true'], [data-testid='home-map']", { timeout: 40000 });
   await settle(2500);
+  await labels(page, `${child}.offered`);
   await shot(page, `map-${child}-before-the-visit`);
   for (const id of pieces.before) check(`M.${child}.loads-${id}`, await page.evaluate(async (u) => (await fetch(u)).ok, `/family/home-map/${id}.png`));
   await page.goto(`${BASE}/family/learn/mission?child=${child}&enter=${place}`);
@@ -564,7 +586,11 @@ async function map(child, place, firstStep, pieces) {
     check(`M.${child}.opening-scene`, true);
   }
   await settle(500);
-  await page.goto(`${BASE}/family/learn/mission?child=${child}`);
+  await page.goto(`${BASE}/family/learn?child=${child}`);
+  await page.waitForSelector("[data-testid='home-map'][data-ready='true']", { timeout: 40000 });
+  await settle(2500);
+  await labels(page, `${child}.running`);
+  await shot(page, `map-${child}-during-the-visit`);
   check(`M.${child}.no-missing-file`, missing.length === 0, missing.slice(0, 4));
   await c.close();
 }
@@ -573,6 +599,8 @@ try {
   if (WHO === "santiago") await santiago();
   else if (WHO === "isabel") await isabel();
   else if (WHO === "map-s") await map("santiago", "beach", "T1-BEACH", { before: ["s-pond-site", "s-turtle-crate-built", "s-pond-dug-built", "portrait-dr-mateo", "turtle-scene"] });
+  else if (WHO === "after-s") await mapAfter("santiago", ["s-pond:built", "s-turtle-crate:built"]);
+  else if (WHO === "after-i") await mapAfter("isabel", ["i-birdhouse:built"]);
   else if (WHO === "map-i") await map("isabel", "birdhouse", "IV1-HELLO", { before: ["i-birdhouse-site", "i-birdhouse-red-built", "i-robins"] });
 } catch (error) {
   check("harness-completed", false, String(error).slice(0, 500));

@@ -663,6 +663,8 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
             continue;
           }
           if (q.kind === "pick" && (!Array.isArray(q.options) || q.options.length < 2 || !q.options.includes(q.answer))) problems.push(`${sl}/${String(q.id)}: the answer must be one of at least two options`);
+          // The answer op keeps 40 characters: a longer option could never be chosen (Nov 8).
+          if (q.kind === "pick" && Array.isArray(q.options) && q.options.some((o) => String(o).length > 40)) problems.push(`${sl}/${String(q.id)}: an option is longer than 40 characters`);
           if (q.kind === "number" && !/^\d+$/.test(String(q.answer))) problems.push(`${sl}/${String(q.id)}: a number answer must be a whole number`);
         }
         break;

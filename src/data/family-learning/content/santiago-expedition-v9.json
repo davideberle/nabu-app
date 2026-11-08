@@ -9078,6 +9078,14 @@
        {
         "mission": "MISSION-WATER-PIPE",
         "step": "P6-EDGE"
+       },
+       {
+        "mission": "MISSION-WATER-PIPE",
+        "step": "P6E-EDGE-SMALL"
+       },
+       {
+        "mission": "MISSION-WATER-PIPE",
+        "step": "P6N-EDGE-AGAIN"
        }
       ]
      },
@@ -9175,6 +9183,22 @@
        {
         "mission": "MISSION-WATER-PIPE",
         "step": "P3-TANKBED"
+       },
+       {
+        "mission": "MISSION-WATER-PIPE",
+        "step": "P5-BEDS"
+       },
+       {
+        "mission": "MISSION-WATER-PIPE",
+        "step": "P5E-BEDS-SMALL"
+       },
+       {
+        "mission": "MISSION-WATER-PIPE",
+        "step": "P5N-BEDS-AGAIN"
+       },
+       {
+        "mission": "MISSION-WATER-PIPE",
+        "step": "P5H-BEDS-BIG"
        }
       ]
      },

@@ -38,6 +38,14 @@ i.visits = [visit("v1", 20), visit("v2", 14), visit("v4", 7)];
 i.missions = { "MISSION-IDA-GARDEN": { missionId: "MISSION-IDA-GARDEN", version: 1, visit: "v2", startedAt: ago(14), position: "garden", visited: [], active: null, steps: { "IG7-READ": done(ago(14)) }, facts: {}, shownWords: [], typing: null, finishedAt: ago(14) }, "MISSION-IDA-HARVEST": { missionId: "MISSION-IDA-HARVEST", version: 1, visit: "v4", startedAt: ago(7), position: "garden", visited: [], active: null, steps: { "IH4-TENS": done(ago(7)) }, facts: {}, shownWords: [], typing: null, finishedAt: ago(7) } };
 i.interests = [{ id: "fx-b", visit: "v4", source: "closing", kind: "choice", text: "Ein Vogelhaus bauen", choice: "birdhouse", at: ago(7) }];
 
+// --after: both new visits finished, to check the built pieces and their labels on the map.
+if (args.includes("--after")) {
+  s.visits.push(visit("v11", 0.5));
+  s.story = { turtleName: { value: "Kira", optionId: "own", kind: "own", visit: "v11", at: ago(0.5) } };
+  i.visits.push(visit("v5", 0.5));
+  i.story = { roofColor: { value: "Blau", optionId: "blue", kind: "preset", visit: "v5", at: ago(0.5) } };
+  i.missions["MISSION-IDA-BIRDS"] = { missionId: "MISSION-IDA-BIRDS", version: 1, visit: "v5", startedAt: ago(0.5), position: "birdhouse", visited: [], active: null, steps: { "IV10-ROOF": { ...done(ago(0.5)), attempts: [{ no: 1, at: ago(0.5), raw: "Blau", choice: "blue", correct: true, evidence: "independent", support: [], modality: "pick", kind: "answer" }] } }, facts: {}, shownWords: [], typing: null, finishedAt: ago(0.5) };
+}
 const now = new Date().toISOString();
 for (const [child, missionId, version, state] of [["santiago", v9.contentId, 9, s], ["isabel", i4.contentId, 4, i]]) {
   await client.execute({ sql: "INSERT OR REPLACE INTO family_learning_missions (child_id, mission_id, content_version, revision, state_json, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)", args: [child, missionId, version, 1, JSON.stringify(state), now, now] });
