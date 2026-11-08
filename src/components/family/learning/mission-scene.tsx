@@ -459,7 +459,7 @@ function PartTask({ part, step, busy, act, telemetry, quiet = false, focused = f
           </button>
         </div>
       </form>
-      {notice ? <Feedback tone="retry" text={notice} /> : part.feedback ? <Feedback tone={part.feedback.tone} text={noktOpen && part.feedback.tone === "retry" ? "Noch nicht richtig." : part.feedback.text} /> : null}
+      {notice ? <Feedback tone="retry" text={notice} /> : part.feedback ? <Feedback tone={part.feedback.tone} text={noktOpen && (part.feedback.tone === "retry" || part.feedback.tone === "stuck") ? "Noch nicht richtig." : part.feedback.text} /> : null}
       {taught && part.status === "open" && part.practiceLeft === 0 ? (
         <button type="button" className={cn(btn, "justify-self-start")} style={secondary} disabled={busy} onClick={() => void act({ a: "later-part", step, part: part.id })} data-testid="part-later">
           Für später aufheben

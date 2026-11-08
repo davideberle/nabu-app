@@ -643,7 +643,9 @@ async function parentIsabel() {
   check("R4.safe-to-send-twice", second.annotated === 0 && second.observed === 0, second);
   await page.reload();
   await page.waitForSelector("[data-testid='visit-details']", { timeout: 40000 });
-  await page.locator("[data-testid='visit-details'] > summary").click();
+  await page.getByRole("tab", { name: "Isabel", exact: true }).click();
+  await settle(1200);
+  if ((await page.locator("[data-testid='visit-details']").getAttribute("open")) === null) await page.locator("[data-testid='visit-details'] > summary").click();
   await page.waitForSelector("[data-testid='report-en-task-IH7-READ']", { timeout: 20000 });
   check("R4.shown-in-visit-details", (await page.locator("[data-testid='report-en-display-error']").count()) >= 3 && (await page.locator("[data-testid='report-en-parent-observation']").count()) === 3);
   await page.locator("[data-testid='report-en-task-IH7-READ']").scrollIntoViewIfNeeded();
