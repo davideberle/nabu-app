@@ -214,9 +214,9 @@ function questionHelped(r: MissionStepRun, pr: NonNullable<MissionStepRun["parts
 
 /** What the child sees instead of a withheld Nokt reply — reviewed app text, never attributed to Nokt. */
 /** The app's own warm ending when Nokt's closing line could not be used (turn limit reached): never attributed to Nokt. */
-export const NOKT_WARM_CLOSE_LINE = "Danke fürs Erzählen! Schau dir die Aufgabe jetzt noch einmal selbst an.";
+export const NOKT_WARM_CLOSE_LINE = "Danke fürs Erzählen! Probier es jetzt noch einmal selbst.";
 /** No reply at all (runtime down, busy, timed out): one friendly line, the task goes on. */
-export const NOKT_NOT_REACHABLE_LINE = "Nokt ist gerade nicht erreichbar. Der Hinweis bei der Aufgabe hilft dir weiter.";
+export const NOKT_NOT_REACHABLE_LINE = "Nokt ist gerade nicht erreichbar. Der Hinweis hilft dir weiter.";
 export const NOKT_WITHHELD_LINE = "Nokt hat gerade keine passende Antwort. Probier es oben noch einmal oder öffne den Hinweis.";
 
 export type MissionDrill = {
@@ -1965,6 +1965,7 @@ export type MissionActiveView = {
   /** Content v7: a floor plan of a story/outcome step (the child's own chosen plan for the outcome). */
   grid?: MissionGrid | null;
   /** Isabel's workshop (`read`): the switch to supported letter/word learning; its content only after it was recorded. */
+  givenLine?: string;
   letters?: { offered: boolean; afterMiss?: boolean; shown: { letters: { letter: string; sound: string; picture?: string }[]; spoken: string; teach: string } | null } | null;
   /** Isabel's workshop (`craft`): the real-world tasks and her own «found» report. */
   craft?: { tasks: { id: string; text: string; picture: string | null }[]; find: { prompt: string; count: number; options: { id: string; label: string; picture: string }[]; fact: string } | null; found: string[]; parentNote: string } | null;
@@ -2344,6 +2345,7 @@ export function chosenOption(def: MissionDef, run: MissionRun, decideStep: strin
 
 function workshopActive(def: MissionDef, run: MissionRun, step: MissionStep, r: MissionStepRun): Partial<MissionActiveView> {
   const out: Partial<MissionActiveView> = {};
+  if (step.givenLine) out.givenLine = step.givenLine;
   if (step.kind === "read" && step.letters) {
     const shown = r.support.some((x) => x.kind === "letters");
     out.letters = { offered: true, ...(step.letters.afterMiss ? { afterMiss: true } : {}), shown: shown ? { letters: step.letters.letters, spoken: step.letters.spoken, teach: step.letters.teach } : null };

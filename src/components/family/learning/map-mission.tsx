@@ -163,7 +163,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
         <NoktTalk key={`visit:${page}`} child={child} purpose="visit" sessionId={(() => { const s = sessionFor(talk, "visit", page); return s && !s.closed ? s.id : null; })()} initialLines={sessionFor(talk, "visit", page)?.lines ?? []} opener={decideNudge && !sessionFor(talk, "visit", page)} speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn} testId="nokt-visit" />
       ) : (
         <div className="rounded-3xl bg-white p-5 text-lg shadow-sm" style={{ border: "2px solid #dce5df", color: "#203b3d" }} data-testid={enabled ? "nokt-write-first" : "nokt-unavailable"}>
-          {enabled ? "Schreib zuerst deinen eigenen Satz. Danach schaut Nokt ihn mit dir an." : "Nokt kann im Moment nicht mit dir sprechen. Der Hinweis bei der Aufgabe hilft dir weiter."}
+          {enabled ? "Schreib zuerst deinen eigenen Satz. Danach schaut Nokt ihn mit dir an." : "Nokt kann im Moment nicht mit dir sprechen. Der Hinweis hilft dir weiter."}
         </div>
       )}
       {!(solvePart && active) ? (
@@ -351,7 +351,7 @@ function WriteWithNokt({ active, busy, act, nokt, talkRunning, tipEarly }: { act
         <p className="rounded-2xl px-4 py-3 text-xl" style={{ background: "#fff8e1" }}>
           «{w.revision ?? w.original}»
         </p>
-        {w.revision && w.original && w.revision !== w.original ? <p className="text-base">{w.plural ? "Deine ersten Sätze bleiben auch gespeichert" : "Dein erster Satz bleibt auch gespeichert"}: «{w.original}»</p> : null}
+        {w.revision && w.original && w.revision !== w.original ? <p className="text-base">{w.plural ? "Deine ersten Sätze bleiben auch im Gartenbuch" : "Dein erster Satz bleibt auch im Gartenbuch"}: «{w.original}»</p> : null}
         {w.thanks ? <Feedback tone="success" text={w.thanks} /> : null}
       </div>
     );
@@ -361,7 +361,7 @@ function WriteWithNokt({ active, busy, act, nokt, talkRunning, tipEarly }: { act
     return (
       <div className="grid gap-4" data-testid="write-feedback">
         <div>
-          <p className="text-base font-semibold">{w.plural ? "Deine Sätze (so bleiben sie gespeichert):" : "Dein Satz (so bleibt er gespeichert):"}</p>
+          <p className="text-base font-semibold">{w.plural ? "Deine Sätze:" : "Dein Satz:"}</p>
           <p className="rounded-2xl px-4 py-3 text-xl" style={{ background: "#fff8e1" }} data-testid="write-original">
             «{w.original}»
           </p>

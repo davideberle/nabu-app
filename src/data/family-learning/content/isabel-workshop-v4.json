@@ -83,7 +83,7 @@
    "childText": {
     "hub": "Heute baust du mit Gärtnerin Ida ein Vogelhaus.",
     "mission": "Hilf Gärtnerin Ida: Zwei Vögel suchen ein Zuhause.",
-    "done": "Dein Vogelhaus ist gespeichert.",
+    "done": "Dein Vogelhaus steht jetzt im Garten. Bis bald!",
     "start": "Zum Vogelhaus"
    }
   }
@@ -4516,10 +4516,11 @@
         "sound": "s"
        }
       ],
-      "spoken": "E. I. N. Vogel. Haus. Ein Vogelhaus.",
+      "spoken": "Ein. Vogel. Haus. Ein Vogelhaus.",
       "teach": "Zwei Wörter, die du kennst, ergeben ein langes Wort.",
       "afterMiss": true
-     }
+     },
+     "givenLine": "Da steht: Ein Vogelhaus."
     },
     {
      "id": "IV9-LISTEN",
@@ -4589,7 +4590,8 @@
        },
        "retryHint": "Hör noch einmal: Welcher Baum, wie hoch, und wo ist das Fenster?"
       }
-     ]
+     ],
+     "givenLine": "Ida meinte: am grossen Baum, hoch oben, neben dem Fenster."
     },
     {
      "id": "IV10-ROOF",

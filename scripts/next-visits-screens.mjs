@@ -96,7 +96,14 @@ async function pictures(page, label) {
   picturesSeen += r.out.length;
   const bad = r.out.filter((p) => !p.kids || !p.w || !p.h || !p.on);
   const badI = r.imgs.filter((i) => !i.n);
+  await scan(page, label);
   check(`PIC.${label}`, !bad.length && !badI.length, bad.length || badI.length ? { bad, badI } : { n: r.out.length });
+}
+/** No tech word on any child screen (the fictional-mode banner of the test server is not a child line). */
+async function scan(page, label) {
+  const t = await page.evaluate(() => (document.querySelector("[data-testid='mission-screen']") ?? document.body).innerText);
+  const hit = t.replace(/Testmodus[^\n]*/g, "").match(/[^\n]*(gespeichert|Aufgabe|Modus|Version)[^\n]*/i);
+  check(`W.${label}`, !hit, hit ? hit[0].slice(0, 120) : undefined);
 }
 async function fold(page, label) {
   await settle(200);
@@ -394,6 +401,7 @@ async function santiago() {
   await settle(400);
   check("S.no-next-visit-question", (await page.locator("[data-testid='debrief-interest-form'], [data-testid='nokt-talk-choices']").count()) === 0);
   check("S.cliffhanger", (await textOf(page, "[data-testid='debrief-cliffhanger']")).includes("Wie viel") || (await textOf(page, "[data-testid='debrief-cliffhanger']")).includes("wie viel"));
+  await scan(page, "S.end");
   await shot(page, "end-cliffhanger");
   await page.locator("[data-testid='debrief-finish']").click();
   await page.waitForURL(/\/family\/home/, { timeout: 25000 });
@@ -487,7 +495,13 @@ async function isabel() {
   await pick("word", "Haus");
   await next("IV8-PHRASE");
   await shot(page, "IV8-phrase");
-  await pick("word", "Ein Vogelhaus");
+  if (wrong) {
+    await pick("word", "Ein Vogel");
+    await pick("word", "Ein Haus");
+    await idle();
+    check("I.phrase-given-wording", (await textOf(page, "[data-testid='workshop-read']")).includes("Da steht: Ein Vogelhaus."), await textOf(page, "[data-testid='workshop-read']"));
+    await shot(page, "IV8-phrase-given");
+  } else await pick("word", "Ein Vogelhaus");
   await next("IV9-LISTEN");
   await idle();
   await page.locator("[data-testid='listen-play']").first().click();
@@ -496,7 +510,15 @@ async function isabel() {
   await page.waitForFunction(() => { const b = document.querySelector("[data-testid='listen-play']"); return b && !b.disabled; }, null, { timeout: 40000 });
   await pictures(page, "IV9.after-play");
   await shot(page, "IV9-listen-four-pictures");
-  await pick("show", "Grosser Baum, hoch, neben dem Fenster");
+  if (wrong) {
+    await pick("show", "Grosser Baum, unten, neben dem Fenster");
+    await idle();
+    await page.waitForFunction(() => { const b = document.querySelector("[data-testid='listen-play']"); return b && !b.disabled; }, null, { timeout: 40000 });
+    await pick("show", "Kleiner Baum, neben dem Fenster");
+    await idle();
+    check("I.listen-given-wording", (await textOf(page, "[data-testid='workshop-task']")).includes("Ida meinte: am grossen Baum, hoch oben, neben dem Fenster."));
+    await shot(page, "IV9-listen-given");
+  } else await pick("show", "Grosser Baum, hoch, neben dem Fenster");
   await next("IV10-ROOF");
   await shot(page, "IV10-roof-color");
   { await idle(); const d = saved(page); await page.locator(`[data-testid='make-${wrong ? "blue" : "red"}']`).click(); await d; await settle(350); }
@@ -533,6 +555,7 @@ async function isabel() {
   await page.waitForSelector("[data-testid='workshop-farewell']", { timeout: 20000 });
   await page.waitForFunction(() => document.querySelector("[data-testid='workshop-farewell']")?.dataset.narration !== "speaking", null, { timeout: 40000 });
   check("I.cliffhanger", (await textOf(page, "[data-testid='workshop-farewell']")).includes("Ob sie einziehen?"));
+  check("I.farewell-wording", (await textOf(page, "[data-testid='workshop-farewell']")).includes("Dein Vogelhaus steht jetzt im Garten. Bis bald!"));
   await pictures(page, "farewell");
   await shot(page, "farewell-cliffhanger");
   await voiceChecks(page, "I");

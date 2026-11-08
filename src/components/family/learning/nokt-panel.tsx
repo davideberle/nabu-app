@@ -36,9 +36,9 @@ export type NoktTranscribe = (audio: Blob, fileName: string, signal: AbortSignal
 export type NoktTurnFn = (turn: NoktTurnInput, signal: AbortSignal) => Promise<{ kind: "shown"; say: string; ended?: boolean } | { kind: "withheld"; line: string; ended?: boolean } | { kind: "exhausted" } | { kind: "failed" } | { kind: "cancelled" }>;
 
 /** Shown when the turn could not be made at all (no connection, refused, unavailable) — reviewed app text. */
-const NOKT_UNREACHABLE_LINE = "Nokt ist gerade nicht erreichbar. Der Hinweis bei der Aufgabe hilft dir weiter.";
+const NOKT_UNREACHABLE_LINE = "Nokt ist gerade nicht erreichbar. Der Hinweis hilft dir weiter.";
 /** Shown when today's replies are used up (the runtime's daily allowance) — reviewed app text, kind, no blame. */
-export const NOKT_EXHAUSTED_LINE = "Nokt hat heute schon viel geredet und macht jetzt Pause. Morgen ist Nokt wieder da. Der Hinweis bei der Aufgabe hilft dir weiter.";
+export const NOKT_EXHAUSTED_LINE = "Nokt hat heute schon viel geredet und macht jetzt Pause. Morgen ist Nokt wieder da. Der Hinweis hilft dir weiter.";
 const newId = (prefix: string) => `${prefix}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`;
 
 const btn = "inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 text-lg font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:cursor-not-allowed disabled:opacity-50";
@@ -85,7 +85,7 @@ export function NoktPanel({ child, mode, step, part, speech, transcribe = null, 
       {mode === "unavailable" ? (
         <div className="mt-4 grid gap-3" data-testid="nokt-unavailable">
           <p className="text-lg leading-relaxed">Nokt kann im Moment nicht mit dir sprechen.</p>
-          <p className="text-lg leading-relaxed">Der Hinweis bei der Aufgabe hilft dir Schritt für Schritt. Du kannst auch einen Erwachsenen fragen.</p>
+          <p className="text-lg leading-relaxed">Der Hinweis hilft dir Schritt für Schritt. Du kannst auch einen Erwachsenen fragen.</p>
         </div>
       ) : (
         <Conversation child={child} fictional={mode === "fictional-stub"} step={step} part={part} speech={speech} transcribe={transcribe} turn={turn} opener={opener} entry={entry} />

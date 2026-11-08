@@ -185,7 +185,7 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
         if (shown) out = lines([shown.spoken, shown.teach, q.hint]);
         else out = lines(q.tries ? [q.hint] : a.intro.map((l) => l.text));
       } else {
-        out = lines([q.status === "correct" ? (shown ? NARRATION_UI.readCorrectWithLetters : NARRATION_UI.readCorrect) : NARRATION_UI.readGiven(q.shownAnswer ?? ""), ...(finished ? a.done.map((l) => l.text) : [])]);
+        out = lines([q.status === "correct" ? (shown ? NARRATION_UI.readCorrectWithLetters : NARRATION_UI.readCorrect) : a.givenLine ?? NARRATION_UI.readGiven(q.shownAnswer ?? ""), ...(finished ? a.done.map((l) => l.text) : [])]);
       }
       break;
     }
@@ -194,7 +194,7 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
       keyParts.push(q?.status ?? "", q?.tries ?? 0);
       if (!q) break;
       if (q.status === "open") out = lines(q.tries ? [q.hint] : a.intro.map((l) => l.text));
-      else out = lines([q.status === "correct" ? NARRATION_UI.listenCorrect : NARRATION_UI.listenGiven(q.shownAnswer ?? ""), ...(finished ? a.done.map((l) => l.text) : [])]);
+      else out = lines([q.status === "correct" ? NARRATION_UI.listenCorrect : a.givenLine ?? NARRATION_UI.listenGiven(q.shownAnswer ?? ""), ...(finished ? a.done.map((l) => l.text) : [])]);
       break;
     }
     case "craft":
@@ -290,8 +290,8 @@ export function narrationCatalog(content: LearningContent): NarrationLine[] {
       }
       for (const q of s.questions ?? []) {
         add(q.retryHint);
-        if (s.kind === "read") add(NARRATION_UI.readGiven(String(q.answer)));
-        if (s.kind === "listen") add(NARRATION_UI.listenGiven(String(q.answer)));
+        if (s.kind === "read") add(s.givenLine ?? NARRATION_UI.readGiven(String(q.answer)));
+        if (s.kind === "listen") add(s.givenLine ?? NARRATION_UI.listenGiven(String(q.answer)));
       }
       if (s.kind === "read") {
         add(NARRATION_UI.readCorrect);

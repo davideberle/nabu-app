@@ -9,7 +9,8 @@ import { asIsabelContent } from "./family-learning-isabel.ts";
 import { deriveHomeWorld, WORLDS } from "./family-home-map.ts";
 import { ASSETS } from "./family-home-map-assets.ts";
 import { fillStoryTokens, sanitizeStoryName } from "./family-learning-mission.ts";
-import { narrationCatalog, storyCatalog } from "./family-learning-narration.ts";
+import { narrationCatalog, NARRATION_UI, storyCatalog } from "./family-learning-narration.ts";
+import { resolveObjective } from "./family-learning-skill-map.ts";
 
 const rd = (n: string) => JSON.parse(readFileSync(new URL(`../data/family-learning/content/${n}`, import.meta.url), "utf8"));
 const s9 = asLearningContent(rd("santiago-expedition-v9.json"));
@@ -174,5 +175,33 @@ describe("The new map pieces", () => {
   it("every requested file is in the manifest", () => {
     const have = new Set(ASSETS.map((a) => a.id));
     for (const id of ["s-pond-site", "s-pond-dug-built", "s-turtle-crate-built", "i-birdhouse-site", "i-birdhouse-red-built", "i-birdhouse-blue-built", "i-birdhouse-yellow-built", "i-robins", "portrait-dr-mateo", "turtle-scene"]) ok(have.has(id), id);
+  });
+});
+
+describe("Review of the lines and the mapping", () => {
+  const all = [...narrationCatalog(i4), ...storyCatalog(s9, "santiago")].map((l) => l.text);
+  it("the corrected lines are in the catalogue and the old wording is gone", () => {
+    for (const t of ["La tortuga necesita un estanque tranquilo durante unas semanas.", "Da steht: Ein Vogelhaus.", "Ein. Vogel. Haus. Ein Vogelhaus.", "Dein Vogelhaus steht jetzt im Garten. Bis bald!", "Ida meinte: am grossen Baum, hoch oben, neben dem Fenster."]) ok(all.includes(t), t);
+    for (const t of ["Das Wort heisst: Ein Vogelhaus.", "E. I. N. Vogel. Haus. Ein Vogelhaus.", "Dein Vogelhaus ist gespeichert.", "Gemeint war: Grosser Baum, hoch, neben dem Fenster."]) ok(!all.includes(t), t);
+  });
+  it("the default «given» wording still applies to single words", () => ok(all.includes(NARRATION_UI.readGiven("Vogel"))));
+  it("no tech word in anything either visit says or shows", () => {
+    const RX = /gespeichert|version|aufgabe|modus/i;
+    const walk = (v: unknown, key: string): void => {
+      if (typeof v === "string") ok(!RX.test(v) || ["objective", "note", "parentNote", "source"].includes(key), `${key}: ${v}`);
+      else if (Array.isArray(v)) v.forEach((x) => walk(x, key));
+      else if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) { if (k === "theme" || k === "objective") continue; walk(x, k); }
+    };
+    walk(turtle, "");
+    walk(birds, "");
+    walk(s9.visits.find((v) => v.id === "v11"), "");
+    walk(i4.visits.find((v) => v.id === "v5"), "");
+  });
+  it("Isabel's missing-part tasks sit on the agreed rows", () => {
+    const row = (o: string) => { const r = resolveObjective("isabel", o, "de"); return r.kind === "row" ? r.row : r.kind; };
+    equal(st(birds, "IV4-ENOUGH").objective, "complete-to-next-ten");
+    equal(st(birds, "IV4H-ENOUGH-MORE").objective, "complete-to-next-ten");
+    equal(row("complete-to-next-ten"), "i-tens");
+    equal(row(st(birds, "IV4E-ENOUGH-EASY").objective), "i-sums");
   });
 });

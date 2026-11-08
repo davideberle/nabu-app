@@ -9017,9 +9017,9 @@
      "intro": [
       {
        "speaker": "vet",
-       "text": "La tortuga necesita un estanque tranquilo, unas semanas.",
+       "text": "La tortuga necesita un estanque tranquilo durante unas semanas.",
        "language": "es",
-       "de": "Die Schildkröte braucht ein ruhiges Becken, ein paar Wochen."
+       "de": "Die Schildkröte braucht ein paar Wochen lang ein ruhiges Becken."
       }
      ],
      "done": [
@@ -10863,7 +10863,7 @@
       ]
      ]
     },
-    "announce": "Heute gibt es {n} kurze Tippübungen hintereinander, zusammen etwa {minutes} Minuten. Danach geht es auf der Insel weiter. Mit Stopp kannst du jederzeit aufhören. Was du geschafft hast, bleibt gespeichert.",
+    "announce": "Heute gibt es {n} kurze Tippübungen hintereinander, zusammen etwa {minutes} Minuten. Danach geht es auf der Insel weiter. Mit Stopp kannst du jederzeit aufhören. Was du geschafft hast, bleibt da.",
     "note": "Five minutes is a calibration, not a research-proven optimum. Nov 8: new sets for lesson 7 and lesson 8, so no drill repeats what he typed on November 8."
    },
    "estimatedMinutes": {

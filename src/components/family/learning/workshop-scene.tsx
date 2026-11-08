@@ -592,7 +592,7 @@ function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; bu
               ))}
             </div>
           ) : (
-            <Feedback tone={q.status === "correct" ? "success" : "taught"} text={q.status === "correct" ? (letters?.shown ? NARRATION_UI.readCorrectWithLetters : NARRATION_UI.readCorrect) : NARRATION_UI.readGiven(q.shownAnswer ?? "")} />
+            <Feedback tone={q.status === "correct" ? "success" : "taught"} text={q.status === "correct" ? (letters?.shown ? NARRATION_UI.readCorrectWithLetters : NARRATION_UI.readCorrect) : active.givenLine ?? NARRATION_UI.readGiven(q.shownAnswer ?? "")} />
           )}
           {q.hint ? <Feedback tone="retry" text={q.hint} /> : null}
         </div>
@@ -649,7 +649,7 @@ function NarratedListen({ active, busy, act, narrator, telemetry, who, slot }: {
               ))}
             </div>
           ) : (
-            <Feedback tone={q.status === "correct" ? "success" : "taught"} text={q.status === "correct" ? NARRATION_UI.listenCorrect : NARRATION_UI.listenGiven(q.shownAnswer ?? "")} />
+            <Feedback tone={q.status === "correct" ? "success" : "taught"} text={q.status === "correct" ? NARRATION_UI.listenCorrect : active.givenLine ?? NARRATION_UI.listenGiven(q.shownAnswer ?? "")} />
           )}
           {q.hint ? <Feedback tone="retry" text={q.hint} /> : null}
         </div>

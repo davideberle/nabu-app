@@ -135,7 +135,7 @@ export function Debrief({
 
       {difficultyAnswered && over && interestRecorded ? (
         <p className="rounded-2xl px-4 py-3 text-base" style={{ background: "#edf4e6" }} data-testid="debrief-interest">
-          Für das nächste Mal gespeichert{debrief?.wish?.text ? `: «${debrief.wish.text}»` : debrief?.wish?.kind === "unsure" ? ": du weisst es noch nicht" : debrief?.wish?.kind === "declined" ? ": du möchtest es lieber nicht sagen" : "."}
+          Für das nächste Mal gemerkt{debrief?.wish?.text ? `: «${debrief.wish.text}»` : debrief?.wish?.kind === "unsure" ? ": du weisst es noch nicht" : debrief?.wish?.kind === "declined" ? ": du möchtest es lieber nicht sagen" : "."}
         </p>
       ) : difficultyAnswered && over && reflection.nextInterest ? (
         <div className="rounded-3xl border p-4" data-testid="debrief-interest-form">
@@ -161,7 +161,7 @@ export function Debrief({
           <div className="mt-2 grid gap-2">{more.map((d) => row(d.id, d.prompt, d.options, d.skipLabel))}</div>
         </details>
       ) : null}
-      <p className="text-sm">{child === "isabel" ? "Mit «Pause» oben machst du eine Pause; deine Antworten bleiben gespeichert." : "Mit «Pause» oben machst du eine Pause; das Gespräch bleibt gespeichert."}</p>
+      <p className="text-sm">{child === "isabel" ? "Mit «Pause» oben machst du eine Pause. Deine Antworten bleiben da." : "Mit «Pause» oben machst du eine Pause. Das Gespräch bleibt da."}</p>
       </div>
       {talking && turn && !noNokt ? (
         <aside className="order-first grid max-h-[calc(100dvh-2rem)] content-start gap-3 overflow-y-auto md:sticky md:top-4 md:order-none" data-testid="nokt-sidebar" data-dock="debrief">

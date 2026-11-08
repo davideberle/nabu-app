@@ -358,6 +358,8 @@ export type MissionStep = {
   retrieval?: { focus?: string; step?: string; note: string };
   /** Isabel's workshop: supported letter/word learning offered on a `read` step. */
   letters?: MissionLetters;
+  /** Nov 8: what is said and shown when the answer is given, when the default line does not fit (a phrase, a whole instruction). */
+  givenLine?: string;
   /** Isabel's workshop: a real-world task (`craft` steps). */
   craft?: MissionCraft;
   /** Isabel's workshop: a picture shown with a story/outcome step (`fromChoice` shows the picture of the chosen option instead). */

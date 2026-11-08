@@ -147,7 +147,7 @@ const SANTIAGO_ROWS: SkillRow[] = [
 ];
 
 const ISABEL_ROWS: SkillRow[] = [
-  { id: "i-tens", child: "isabel", subject: "math", label: "Tens and ones (place value)", observes: "Count bundles of ten and loose ones with pictures (e.g. 20 + 3, 43); a bundle has 10.", mapRow: "IM1", fit: "partial", lp21: MA_1_A_3_B },
+  { id: "i-tens", child: "isabel", subject: "math", label: "Tens and ones (place value)", observes: "Count bundles of ten and loose ones with pictures (e.g. 20 + 3, 43); a bundle has 10; the missing part up to a full ten.", mapRow: "IM1", fit: "partial", lp21: MA_1_A_3_B },
   { id: "i-sums", child: "isabel", subject: "math", label: "Small sums and differences", observes: "Add and take away small numbers with visible counters (within 10, then within 20, also across ten).", mapRow: "IM2", fit: "partial", lp21: MA_1_A_3_A },
   { id: "i-read", child: "isabel", subject: "german", label: "Early reading: words and a first phrase", observes: "Read one short word with pictures to choose from, later a first two-word phrase.", mapRow: "ID1", fit: "partial", lp21: D_2_A_1_B },
   { id: "i-listen", child: "isabel", subject: "german", label: "Listening: a spoken instruction", observes: "Hear a short German instruction and pick the matching picture (one, then two, then three details).", mapRow: "ID2", fit: "partial", lp21: D_1_B_1_A },
@@ -234,7 +234,7 @@ const ISABEL_MAP: Record<string, ObjectiveMapping> = {
   "tens-ones-warmup": row("i-tens", "warmup"),
   "tens-ones-easier": row("i-tens", "easier"),
   "complete-to-next-ten": row("i-tens", "fresh"),
-  "complete-to-next-ten-easier": row("i-tens", "easier"),
+  "complete-to-next-ten-easier": row("i-sums", "easier"),
   "small-sums-visible-counters": row("i-sums"),
   "small-sums-extended-visible-counters": row("i-sums", "fresh"),
   "small-sums-easier-path": row("i-sums", "easier"),
