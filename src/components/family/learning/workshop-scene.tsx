@@ -505,12 +505,13 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
   const seen = useCallback((ids: string[]) => onSeen(ids), [onSeen]);
   if (active.kind === "story" || active.kind === "outcome") {
     return (
-      <div className="grid gap-4" data-testid="workshop-story">
+      <div className={cn("grid gap-4", active.kind === "outcome" && mission.screen === "focused" && "items-start md:grid-cols-[minmax(0,300px)_minmax(0,1fr)]")} data-testid="workshop-story">
         {active.kind === "outcome" ? (
           <WorkshopGarden grown={active.picture?.id ?? null} label={active.recap ?? active.picture?.label ?? mission.title} compact={mission.screen === "focused"} />
         ) : active.picture ? (
           <WorkshopPictureView id={active.picture.id} className={mission.screen === "focused" ? "h-28 w-28" : "h-40 w-40"} />
         ) : null}
+        <div className="grid gap-4">
         {active.ending ? (
           <div className="grid gap-2" data-testid="workshop-ending">
             {active.ending.success ? <Feedback tone="success" text={active.ending.success} /> : null}
@@ -525,6 +526,7 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
           </div>
         ) : null}
         <NextButton busy={busy} onNext={onNext} label={active.kind === "outcome" ? (finished ? "Weiter" : "Fertig") : "Weiter"} speaking={speaking} />
+        </div>
       </div>
     );
   }

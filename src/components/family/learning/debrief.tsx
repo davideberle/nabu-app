@@ -75,12 +75,12 @@ export function Debrief({
   const pick = (id: string, value: string | null) => {
     const next = { ...answers, [id]: value };
     setAnswers(next);
-    void onFeedback(next);
-    // The tap on the first question is the deliberate gesture Nokt's voice needs.
-    if (id === "difficulty" && !noNokt && !session) {
-      speech.unlock();
-      setTalking(true);
-    }
+    // The tap on the first question is the deliberate gesture Nokt's voice needs; Nokt starts once the answer is saved.
+    const startsTalk = id === "difficulty" && !noNokt && !session;
+    if (startsTalk) speech.unlock();
+    void onFeedback(next).then(() => {
+      if (startsTalk) setTalking(true);
+    });
   };
   const needsInterest = !interestRecorded && !!reflection.nextInterest;
   const finish = () => {

@@ -244,7 +244,17 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
         }
         return readMutation(response, childId);
       };
-      const dispatched = await post(LEARNING_NOKT_DISPATCH_PATH, { ...turn }, expectedRevision);
+      // Nov 8: any tap in the same moment moves the revision. A turn is never lost to that: a stale answer is re-posted on the
+      // newest revision (dispatch and reply are both idempotent by turn id).
+      const fresh = async (path: string, body: Record<string, unknown>, revision: number) => {
+        let current = revision;
+        for (let attempt = 0; ; attempt += 1) {
+          const posted = await post(path, body, current);
+          if (!(posted.ok && posted.status === "stale") || attempt >= NOKT_REPLY_STALE_RETRIES) return posted;
+          current = posted.view.revision;
+        }
+      };
+      const dispatched = await fresh(LEARNING_NOKT_DISPATCH_PATH, { ...turn }, expectedRevision);
       if (!dispatched.ok || dispatched.status !== "applied") return dispatched;
       const r = dispatched.result as { turnId?: unknown; request?: unknown; bridge?: { url?: unknown; token?: unknown } };
       const origin = readBridgeOrigin(r.bridge?.url);
@@ -274,15 +284,9 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
       // Cancelled (closed, navigated, task changed) after dispatch: nothing more is sent; his line stays without a reply.
       if (options.signal.aborted) return { ok: false, failure: "cancelled" };
       // 3. The reply EXACTLY as received (or none); the server checks the receipt and the engine binds and guards it.
-      // Nov 8: the child may tap something while the runtime answers (a closing answer, a next step), which moves the revision.
-      // That must never cost the reply: a stale answer is re-posted on the newest revision (the reply route is idempotent by turn).
+      // The child may tap something while the runtime answers (a closing answer, a next step): that must never cost the reply.
       const replyBody = { ...("step" in turn ? { step: turn.step } : { purpose: turn.purpose }), turnId: turn.turnId, reply: reply ?? null, receipt: reply === null ? null : receipt, ...(reply === null && noReply ? { noReply } : {}) };
-      let revision = dispatched.view.revision;
-      for (let attempt = 0; ; attempt += 1) {
-        const posted = await post(LEARNING_NOKT_REPLY_PATH, replyBody, revision);
-        if (!(posted.ok && posted.status === "stale") || attempt >= NOKT_REPLY_STALE_RETRIES) return posted;
-        revision = posted.view.revision;
-      }
+      return fresh(LEARNING_NOKT_REPLY_PATH, replyBody, dispatched.view.revision);
     },
 
     async sendTelemetry(childId, batch, options) {

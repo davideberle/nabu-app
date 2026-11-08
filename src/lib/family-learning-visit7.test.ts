@@ -746,7 +746,8 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     const third = dispatchTurn(s, env, "turn-b00003", "geraten");
     equal((third.result as unknown as Turn).request.context.phase, "erklaeren");
     s = third.state;
-    equal((replyTurn(s, env, "turn-b00003", reply("Und was denkst du jetzt?", "clarify")).result as { reason: string }).reason, "intent-not-in-phase");
+    const thirdWithheld = replyTurn(s, env, "turn-b00003", reply("Und was denkst du jetzt?", "clarify"));
+    equal((thirdWithheld.result as { reason: string }).reason, "intent-not-in-phase");
     // (Nov 8: his fourth turn is the limit, so teaching now comes on the third.)
     const taught = replyTurn(s, env, "turn-b00003", reply("Schau: In jede Trage kommen 4 Setzlinge. Wie viele sind in 2 vollen Tragen?", "teach", claim("turn-b00003", "understood", "clarification", "retry")));
     deepStrictEqual((taught.result as { outcome: unknown }).outcome, { refused: "support-understated" });
@@ -759,7 +760,7 @@ describe("Nokt turn through the engine — his line first, verified reply, app p
     const talk = missionEvidence(s, v6, "v8")!.steps.find((x) => x.id === "G2-PACK")!.talk;
     ok(talk.some((t) => t.who === "Kind" && t.text === "fünf" && /gesprochen/.test(t.detail)));
     ok(talk.some((t) => t.who === "Nokt" && /geprüft/.test(t.detail)));
-    ok(talk.some((t) => t.who === "zurückgehalten" && t.detail === "passte nicht zur Gesprächsphase"));
+    ok(missionEvidence(thirdWithheld.state, v6, "v8")!.steps.find((x) => x.id === "G2-PACK")!.talk.some((t) => t.who === "zurückgehalten" && t.detail === "passte nicht zur Gesprächsphase"));
   });
 
   it("an accepted reply's judgement is bound by the app and validated: accepted with help, refused as false independence after a hint; recorded for the parent", () => {

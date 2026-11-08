@@ -175,6 +175,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
         onWalk={onWalk}
         act={act}
         renderTask={(a) => MapTask({ child, view, active: a, busy, act, speech, telemetry, nokt, writingLive })}
+        sceneLocked={writingLive}
       />
       {dock}
       {dock || skip ? null : <NoktButton child={child} onOpen={openDock} />}

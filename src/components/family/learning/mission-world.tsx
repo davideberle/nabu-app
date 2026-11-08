@@ -67,6 +67,8 @@ export type MissionWorldProps = {
   act: Act;
   speech: ChildSpeechPlayer;
   onWalk?: () => void;
+  /** Nokt is reading his sentence: the scene has no way back until that talk ends. */
+  sceneLocked?: boolean;
   /**
    * Content v7 (map missions): the body of a scene for the kinds that use the clearer Visit 7/8 task components (solve,
    * decide, listen, request, write) — or extra content above a story/outcome (the chosen plan). null = the Visit 6 body.
@@ -365,7 +367,7 @@ function useStageFit(ref: React.RefObject<HTMLDivElement | null>) {
 
 const CHARACTER_NAME: Record<string, string> = {};
 
-export function MissionWorld({ child, view, mission, markers, busy, act, speech, onWalk, renderTask }: MissionWorldProps) {
+export function MissionWorld({ child, view, mission, markers, busy, act, speech, onWalk, renderTask, sceneLocked = false }: MissionWorldProps) {
   const graph = useMemo(() => buildGraph(mission), [mission]);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -460,7 +462,7 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
     return (
       <div className="flex w-full flex-col gap-3" data-testid="mission-world" data-home-map="true" data-position={mission.position} data-active={active?.id ?? ""}>
         {active ? (
-          <ScenePanel child={child} view={view} mission={mission} active={active} busy={busy} act={act} speech={speech} placeLabel={placeOf(mission.position)?.label ?? ""} renderTask={renderTask} />
+          <ScenePanel child={child} view={view} mission={mission} active={active} busy={busy} act={act} speech={speech} placeLabel={placeOf(mission.position)?.label ?? ""} renderTask={renderTask} locked={sceneLocked} />
         ) : (
           <div ref={fill.ref} style={fill.style} className="w-full overflow-hidden rounded-3xl" data-testid="mission-map">
             <HomeMapLazy child={child} map={view.homeMap} at={mission.position} busy={busy} onArrive={(place) => void enterPlace(place)}>
@@ -583,7 +585,7 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
 
         {/* --- the open scene (same palette, same plates) --- */}
         {active ? (
-          <ScenePanel child={child} view={view} mission={mission} active={active} busy={busy} act={act} speech={speech} placeLabel={placeOf(mission.position)?.label ?? ""} renderTask={renderTask} />
+          <ScenePanel child={child} view={view} mission={mission} active={active} busy={busy} act={act} speech={speech} placeLabel={placeOf(mission.position)?.label ?? ""} renderTask={renderTask} locked={sceneLocked} />
         ) : null}
       </div>
 
@@ -808,7 +810,7 @@ function SceneBar({ placeLabel, title, finished, progress, busy, onBack }: { pla
   );
 }
 
-function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabel, renderTask }: { child: ChildId; view: ChildView; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; placeLabel: string; renderTask?: (active: MissionActiveView) => ReactNode | null }) {
+function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabel, renderTask, locked = false }: { child: ChildId; view: ChildView; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; placeLabel: string; renderTask?: (active: MissionActiveView) => ReactNode | null; /** Nokt is talking about his sentence: no way out of the scene until it ends. */ locked?: boolean }) {
   const finished = active.status !== "active";
   const custom = renderTask ? renderTask(active) : null;
   const storyLike = active.kind === "story" || active.kind === "outcome";
@@ -844,7 +846,7 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
   return (
     <section className={cn(card, "flex min-w-0 flex-col gap-3 p-3 sm:p-4")} style={cardStyle} aria-labelledby="mw-scene-title" data-testid="scene-panel" data-step={active.id} data-kind={active.kind} data-status={active.status} data-phase={active.phase} data-screen={focused ? "focused" : "full"}>
       {active.kind === "typing-block" ? null : focused ? (
-        <SceneBanner mission={mission} active={active} line={bannerLine} saying={saying} onReplay={spoken ? () => setReplays((n) => n + 1) : null} onBack={finished ? null : () => void act({ a: "leave" })} />
+        <SceneBanner mission={mission} active={active} line={bannerLine} saying={saying} onReplay={spoken ? () => setReplays((n) => n + 1) : null} onBack={finished || locked ? null : () => void act({ a: "leave" })} />
       ) : (
         <SceneHeader view={view} mission={mission} active={active} placeLabel={placeLabel} />
       )}

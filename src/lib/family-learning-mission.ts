@@ -215,6 +215,8 @@ function questionHelped(r: MissionStepRun, pr: NonNullable<MissionStepRun["parts
 /** What the child sees instead of a withheld Nokt reply — reviewed app text, never attributed to Nokt. */
 /** The app's own warm ending when Nokt's closing line could not be used (turn limit reached): never attributed to Nokt. */
 export const NOKT_WARM_CLOSE_LINE = "Danke fürs Erzählen! Schau dir die Aufgabe jetzt noch einmal selbst an.";
+/** No reply at all (runtime down, busy, timed out): one friendly line, the task goes on. */
+export const NOKT_NOT_REACHABLE_LINE = "Nokt ist gerade nicht erreichbar. Der Hinweis bei der Aufgabe hilft dir weiter.";
 export const NOKT_WITHHELD_LINE = "Nokt hat gerade keine passende Antwort. Probier es oben noch einmal oder öffne den Hinweis.";
 
 export type MissionDrill = {
@@ -1788,7 +1790,7 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       }
       // The talk is over when Nokt closed it or his turns are used up; the limit is the server's, the browser only follows it.
       const talkLimit = talkOf(r, part.id, dispatch.sessionId).filter((t) => t.role === "child").length >= NOKT_MAX_CHILD_TURNS;
-      result = shown ? { shown: true, say: parsed!.say, intent: parsed!.intent, outcome, ended: parsed!.intent === "close" || talkLimit } : { shown: false, reason, line: reason === "must-close" ? NOKT_WARM_CLOSE_LINE : NOKT_WITHHELD_LINE, ended: reason === "must-close" };
+      result = shown ? { shown: true, say: parsed!.say, intent: parsed!.intent, outcome, ended: parsed!.intent === "close" || talkLimit } : { shown: false, reason, line: reason === "must-close" ? NOKT_WARM_CLOSE_LINE : reason?.startsWith("no-reply-") || (origin === "missing" && action.reply === "") ? NOKT_NOT_REACHABLE_LINE : NOKT_WITHHELD_LINE, ended: reason === "must-close" };
       break;
     }
     case "tutor-outcome": {

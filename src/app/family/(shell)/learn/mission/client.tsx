@@ -766,7 +766,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
       ) : null}
       <div className={cn("mt-3 grid flex-1 gap-4", nabuOpen && "lg:mr-[420px]", stage === "mission" && view.mission && !lastLesson && "hidden")}>
         <main className="min-w-0 rounded-3xl border border-primary bg-primary p-4 shadow-xs dark:shadow-none sm:p-6">
-          <div className="mx-auto w-full max-w-3xl">
+          <div className={cn("mx-auto w-full", view.nokt?.talk && stage === "reflect" ? "max-w-6xl" : "max-w-3xl")}>
             {lastLesson ? (
               <LessonEnd key={lastLesson.id} feedback={lastLesson} actions={lessonEndActions} busy={busy} fingers={fingers} home={home} gate={gate} />
             ) : (
