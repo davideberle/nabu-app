@@ -29,6 +29,7 @@ import { MissionWorld, type Act } from "./mission-world";
 import type { WorldMarker } from "./expedition-world";
 import { Feedback, ListenTask, RequestTask, SolveTask, Trays, type SceneTelemetry } from "./mission-scene";
 import { PlanGrid } from "./plan-grid";
+import { WorkshopPictureView } from "./workshop-pictures";
 import { NoktButton, NoktPanel, type NoktTranscribe, type NoktTurnFn } from "./nokt-panel";
 import { NoktTalk, type NoktTalkTurnFn } from "./nokt-talk";
 import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
@@ -110,6 +111,16 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offerPart, active?.id]);
 
+  // A judgment picked wrongly twice: Nokt asks about his reason (it never says which place fits).
+  const decideNudge = !skip && enabled && !!nokt.talkTurn && active?.kind === "decide" && active.status === "active" && active.decide?.noktAfterWrong != null && active.decide.wrongPicks >= active.decide.noktAfterWrong;
+  const decideKey = decideNudge ? `${active!.id}:${active!.decide!.wrongPicks}` : null;
+  const decideOpened = useRef<string | null>(null);
+  useEffect(() => {
+    if (!decideKey || decideOpened.current) return;
+    decideOpened.current = decideKey;
+    setOpen("page");
+  }, [decideKey]);
+
   // After his sentence is saved: Nokt reads it. Nothing can close this talk; it ends with Nokt's last line, the limit or a failure.
   const writePage = active?.kind === "write" ? `visit:${visitId}:write:${active.id}` : null;
   const writing = !skip && enabled && !!nokt.talkTurn && active?.kind === "write" && active.status === "active" && active.write?.original !== null && !!active.write?.nokt;
@@ -149,7 +160,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
       ) : solvePart && active ? (
         <NoktPanel key={`task:${active.id}:${solvePart}`} child={child} mode={nokt.mode} step={active.id} part={solvePart} speech={speech} transcribe={nokt.transcribe} turn={nokt.taskTurn} opener entry={nudged === `${active.id}:${solvePart}` ? "offer" : "manual"} onClose={closeDock} />
       ) : enabled && nokt.talkTurn && !(active?.kind === "write" && !active.write?.original) ? (
-        <NoktTalk key={`visit:${page}`} child={child} purpose="visit" sessionId={(() => { const s = sessionFor(talk, "visit", page); return s && !s.closed ? s.id : null; })()} initialLines={sessionFor(talk, "visit", page)?.lines ?? []} opener={false} speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn} testId="nokt-visit" />
+        <NoktTalk key={`visit:${page}`} child={child} purpose="visit" sessionId={(() => { const s = sessionFor(talk, "visit", page); return s && !s.closed ? s.id : null; })()} initialLines={sessionFor(talk, "visit", page)?.lines ?? []} opener={decideNudge && !sessionFor(talk, "visit", page)} speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn} testId="nokt-visit" />
       ) : (
         <div className="rounded-3xl bg-white p-5 text-lg shadow-sm" style={{ border: "2px solid #dce5df", color: "#203b3d" }} data-testid={enabled ? "nokt-write-first" : "nokt-unavailable"}>
           {enabled ? "Schreib zuerst deinen eigenen Satz. Danach schaut Nokt ihn mit dir an." : "Nokt kann im Moment nicht mit dir sprechen. Der Hinweis bei der Aufgabe hilft dir weiter."}
@@ -257,28 +268,60 @@ function DecideTask({ active, busy, act }: { active: MissionActiveView; busy: bo
   const d = active.decide!;
   const finished = active.status !== "active";
   const last = d.picked[d.picked.length - 1] ?? null;
+  const [own, setOwn] = useState("");
+  const [ownOpen, setOwnOpen] = useState(false);
+  const [ownRefused, setOwnRefused] = useState(false);
+  const ownOption = d.options.find((o) => o.own) ?? null;
+  const pictured = d.options.some((o) => o.picture);
+  const sendOwn = async () => {
+    if (!ownOption) return;
+    const r = await act({ a: "decide", step: active.id, option: ownOption.id, name: own });
+    setOwnRefused(!r);
+  };
   return (
     <div className="grid gap-4" data-testid="decide-task" data-chosen={d.chosen ?? ""}>
       <p className="text-2xl font-semibold" data-fold="question">{d.prompt}</p>
-      <p className="rounded-xl px-4 py-2 text-lg" style={{ background: "#eef1e8" }} data-testid="decide-rule">
-        Regel: {d.rule}
-      </p>
-      <div className="grid gap-4 sm:grid-cols-3">
-        {d.options.map((o) => {
-          const picked = d.picked.some((p) => p.id === o.id);
-          const chosen = d.chosen === o.id;
-          return (
-            <div key={o.id} className="grid content-start gap-2 rounded-2xl border-2 p-3" style={{ borderColor: chosen ? "#42864f" : picked ? "#c77c14" : "#dce5df", background: "white" }} data-testid={`decide-option-${o.id}`}>
-              {o.grid ? <PlanGrid grid={o.grid} caption={o.label} highlight={chosen} showCounts /> : <p className="text-lg font-semibold">{o.label}</p>}
-              {!finished ? (
-                <button type="button" className={btn} style={primary} disabled={busy} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`decide-pick-${o.id}`} data-fold="input">
-                  Diesen Plan wählen
-                </button>
-              ) : null}
-            </div>
-          );
-        })}
-      </div>
+      {d.rule ? <p className="rounded-xl px-4 py-2 text-lg" style={{ background: "#eef1e8" }} data-testid="decide-rule">Regel: {d.rule}</p> : null}
+      {pictured ? (
+        <div className="flex flex-wrap gap-3" role="group" aria-label={d.prompt}>
+          {d.options.filter((o) => !o.own).map((o) => (
+            <button key={o.id} type="button" className="grid w-40 place-items-center gap-1 rounded-3xl border-4 bg-white p-3 text-xl font-semibold disabled:opacity-50" style={{ borderColor: d.chosen === o.id ? "#42864f" : "#dce5df" }} disabled={busy || finished} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`decide-pick-${o.id}`} data-fold="input">
+              {o.picture ? <WorkshopPictureView id={o.picture} className="h-28 w-28" /> : null}
+              {o.label}
+            </button>
+          ))}
+          {ownOption && !finished ? (
+            <button type="button" className="grid w-40 place-items-center gap-1 rounded-3xl border-4 border-dashed bg-white p-3 text-xl font-semibold" style={{ borderColor: "#dce5df" }} aria-pressed={ownOpen} onClick={() => setOwnOpen(!ownOpen)} data-testid="decide-own-open">
+              {ownOption.picture ? <WorkshopPictureView id={ownOption.picture} className="h-28 w-28" /> : null}
+              {ownOption.label}
+            </button>
+          ) : null}
+        </div>
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-3">
+          {d.options.map((o) => {
+            const picked = d.picked.some((p) => p.id === o.id);
+            const chosen = d.chosen === o.id;
+            return (
+              <div key={o.id} className="grid content-start gap-2 rounded-2xl border-2 p-3" style={{ borderColor: chosen ? "#42864f" : picked ? "#c77c14" : "#dce5df", background: "white" }} data-testid={`decide-option-${o.id}`}>
+                {o.grid ? <PlanGrid grid={o.grid} caption={o.label} highlight={chosen} showCounts /> : <p className="text-lg font-semibold">{o.label}</p>}
+                {!finished ? (
+                  <button type="button" className={btn} style={primary} disabled={busy} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`decide-pick-${o.id}`} data-fold="input">
+                    Diesen wählen
+                  </button>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+      )}
+      {ownOpen && ownOption && !finished ? (
+        <form className="flex flex-wrap items-center gap-3" onSubmit={(e) => { e.preventDefault(); void sendOwn(); }}>
+          <input {...NO_TYPING_HELP} value={own} onChange={(e) => { setOwnRefused(false); setOwn(e.target.value.replace(/[^\p{L}]/gu, "").slice(0, 12)); }} aria-label={ownOption.label} className="h-14 w-56 rounded-xl border-2 px-3 text-2xl font-semibold" style={{ borderColor: "#8ba8a4" }} data-testid="decide-own-input" />
+          <button type="submit" className={btn} style={primary} disabled={busy || own.length < 2} data-testid="decide-own-send">Der Name passt</button>
+          {ownRefused ? <p className="text-base" role="status" data-testid="decide-own-refused">Ein Name hat 2 bis 12 Buchstaben.</p> : null}
+        </form>
+      ) : null}
       {last ? <Feedback tone={last.viable ? "success" : "retry"} text={last.feedback} testId="decide-feedback" /> : null}
       {finished && d.reflect ? <p className="text-lg" data-testid="decide-reflect">Wenn du magst, erzähl Nokt: {d.reflect}</p> : null}
     </div>

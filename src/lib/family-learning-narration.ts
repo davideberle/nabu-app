@@ -219,6 +219,9 @@ export function closingLines(kind: "difficulty" | "enjoyment" | "next", src: Clo
   const r = src.reflection;
   if (kind === "difficulty") return [r.prompt, ...r.options.map((o) => o.label), r.skipLabel ?? "Lieber nicht sagen"];
   if (kind === "enjoyment") {
+    // Nov 8 arcs: a picture choice of what she liked: only its question is spoken.
+    const liked = (r.dimensions ?? []).find((x) => x.id === "liked");
+    if (liked) return [liked.prompt];
     const d = (r.dimensions ?? []).find((x) => x.id === "enjoyment");
     return d ? [d.prompt, ...d.options.map((o) => o.label), d.skipLabel] : [];
   }
@@ -310,10 +313,11 @@ export function narrationCatalog(content: LearningContent): NarrationLine[] {
     for (const w of m.world) add(w.label);
     add(NARRATION_UI.noOpenNext);
     // The closing screens and the goodbye of this mission's visit — the same functions the screens use.
-    const src: ClosingSource = { reflection: content.reflection as ClosingSource["reflection"], adventure: m.nextAdventure ?? null };
+    const src: ClosingSource = { reflection: { ...(content.reflection as ClosingSource["reflection"]), ...(m.closing?.prompt ? { prompt: m.closing.prompt } : {}), ...(m.closing?.liked ? { dimensions: [{ id: "liked", prompt: m.closing.liked.prompt, options: m.closing.liked.options, skipLabel: m.closing.liked.skipLabel }] } : {}) }, adventure: m.nextAdventure ?? null };
     for (const k of ["difficulty", "enjoyment", "next"] as const) {
       where = `closing-${k}`;
-      for (const t of closingLines(k, src)) add(t);
+      // Visits with their own closing record only what is really spoken (the question, not every option).
+      for (const t of m.closing ? spokenClosingLines(k, src) : closingLines(k, src)) add(t);
     }
     where = "farewell";
     for (const t of farewellLines(content, m)) add(t);
@@ -345,7 +349,7 @@ export function storyCatalog(content: LearningContent, child: "isabel" | "santia
     for (const st of m.steps) {
       const where = `${child}:${m.visit}/${st.id}`;
       // Step 1: the foreign-language lines of the Visit 9 map mission (Rosa, June) are story-voice lines too.
-      if (m.presentation === "scene" || (m.presentation === "map" && m.visit === "v10")) for (const l of [...(st.intro ?? []), ...(st.done ?? []), ...Object.values(st.doneBy ?? {}).flat()]) if (l && l.language !== "de") add(l.text, l.speaker, l.language, m, where);
+      if (m.presentation === "scene" || (m.presentation === "map" && (m.visit === "v10" || m.visit === "v11"))) for (const l of [...(st.intro ?? []), ...(st.done ?? []), ...Object.values(st.doneBy ?? {}).flat()]) if (l && l.language !== "de") add(l.text, l.speaker, l.language, m, where);
       if (st.kind === "listen" && st.text) add(st.text.body, st.character, st.text.language, m, where);
     }
   }

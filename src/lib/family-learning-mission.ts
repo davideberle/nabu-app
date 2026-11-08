@@ -342,7 +342,7 @@ export type MissionAction =
   /** Content v6: the child's answer to the small question inside a hint. */
   | { a: "hint-check"; step: string; part: string; hint: string; value: string }
   /** Content v7: a judgment between plans (every viable option is a legitimate choice). */
-  | { a: "decide"; step: string; option: string }
+  | { a: "decide"; step: string; option: string; name?: string }
   /** Content v6: the child's own entry after worked teaching (counts only when it matches). */
   | { a: "practice-part"; step: string; part: string; value: string }
   /** Content v6: keep a question for later — when stuck or after teaching (explicit unresolved item, never credit). */
@@ -545,6 +545,27 @@ function emptyStepRun(nowIso: string): MissionStepRun {
 
 function hasAnswerRelevantSupport(r: MissionStepRun) {
   return r.support.some((s) => ANSWER_RELEVANT.includes(s.kind));
+}
+
+/** Nov 8: a name a child gives a story character: letters only, 2–12 of them, first letter capital. Anything else is refused. */
+export function sanitizeStoryName(input: unknown): string | null {
+  if (typeof input !== "string") return null;
+  const t = input.normalize("NFC").trim();
+  if (!/^\p{L}{2,12}$/u.test(t)) return null;
+  return t.charAt(0).toUpperCase() + t.slice(1).toLowerCase();
+}
+
+/**
+ * Nov 8: where a displayed German line says `{turtle}` / `{Turtle}`, the child's chosen name shows; before there is one, «die
+ * Schildkröte». Display only: recorded lines never carry these tokens (the content validator refuses them), so nothing has to be
+ * recorded for a name a child made up.
+ */
+export function fillStoryTokens<T>(value: T, story: { turtleName?: { value: string } } | undefined): T {
+  if (value === null || value === undefined) return value;
+  const json = JSON.stringify(value);
+  if (!json || !/\{[Tt]urtle\}/.test(json)) return value;
+  const name = story?.turtleName?.value ?? null;
+  return JSON.parse(json.replaceAll("{turtle}", name ?? "die Schildkröte").replaceAll("{Turtle}", name ?? "Die Schildkröte")) as T;
 }
 
 function supportKinds(r: MissionStepRun) {
@@ -997,6 +1018,8 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       } else if (action.kind === "translation") {
         if (step.kind !== "listen" || !step.text?.de) throw new MissionOpError("invalid", "no translation for this step");
         if (r.plays < 1) throw new MissionOpError("not-allowed", "listen first; the translation is a help after listening");
+      } else if (action.kind === "word-bank" && step.produce?.bankAfterAttempt && !r.attempts.some((a) => a.kind === "answer")) {
+        throw new MissionOpError("not-allowed", "the word list comes after a first try");
       } else if (action.kind === "word-bank") {
         if (!step.produce) throw new MissionOpError("invalid", "no word help for this step");
         for (const w of step.produce.wordBank.map((x) => stripAccents(normalizeAnswer(x)))) if (!run.shownWords.includes(w)) run.shownWords.push(w);
@@ -1503,15 +1526,19 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       if (r.status !== "active") throw new MissionOpError("not-allowed", "the plan is chosen");
       const option = step.decide.options.find((o) => o.id === action.option);
       if (!option) throw new MissionOpError("invalid", "unknown option");
+      // Nov 8 arcs: his own word instead of a preset. Sanitized on the server; an unusable name is refused and he can try again.
+      const ownName = option.own ? sanitizeStoryName(action.name) : null;
+      if (option.own && !ownName) throw new MissionOpError("invalid", "a name is 2 to 12 letters");
       const prior = r.attempts.length;
       // A viable plan is a legitimate choice — the preference itself is never scored. What IS observed: whether the chosen plan
       // keeps the stated rule (first pick, without the feedback of an earlier non-viable pick → independent).
       const evidence: EvidenceCategory = !option.viable ? "incorrect" : prior === 0 ? "independent" : "supported";
-      const attempt: MissionAttempt = { no: prior + 1, at: env.nowIso, raw: option.label, choice: option.id, correct: option.viable, evidence, support: prior ? ["feedback"] : [], modality: "pick", kind: "answer" };
+      const attempt: MissionAttempt = { no: prior + 1, at: env.nowIso, raw: ownName ?? option.label, choice: option.id, correct: option.viable, evidence, support: prior ? ["feedback"] : [], modality: ownName ? "typed" : "pick", kind: "answer" };
       r.attempts.push(attempt);
       attemptRow(records, env, def, step, attempt, "de");
       if (option.viable) {
-        run.facts[`${step.id}:choice`] = { value: option.id, label: option.label, source: "answered", at: env.nowIso };
+        run.facts[`${step.id}:choice`] = { value: option.id, label: ownName ?? option.label, source: "answered", at: env.nowIso };
+        if (step.decide.storyKey) state.story = { ...(state.story ?? {}), [step.decide.storyKey]: { value: ownName ?? option.word ?? option.label, optionId: option.id, kind: ownName ? "own" : "preset", visit: env.visit, at: env.nowIso } };
         finishStep(state, run, def, step, r, "done", evidence, env);
       } else r.phase = "clarified";
       result = { viable: option.viable, option: option.id };
@@ -1886,7 +1913,7 @@ export function pendingInterest(state: MissionState, content: LearningContent): 
   if (!content.reflection.nextInterest) return null;
   const capable = state.visits.filter((v) => v.id === "v7" || (content.missions ?? []).some((m) => m.visit === v.id));
   const latest = [...capable].sort((a, b) => a.startedAt.localeCompare(b.startedAt)).pop();
-  if (!latest) return null;
+  if (!latest || missionDefFor(content, latest.id)?.noNextChoice) return null;
   const answered = (state.interests ?? []).some((i) => i.at >= latest.startedAt);
   return answered ? null : latest.id;
 }
@@ -1920,7 +1947,7 @@ export type MissionActiveView = {
   questions: { id: string; prompt: string; kind: "pick" | "number"; options: string[] | null; status: "open" | "correct" | "given"; tries: number; hint: string | null; shownAnswer: string | null; lastWrong: string | null; picture?: string | null; pictures?: Record<string, string> | null }[];
   calc: { prompt: string; fields: { key: string; label: string; correct: boolean | null; last: number | null }[]; clarification: string | null; representation: { text: string; total: number; perGroup: number; unit: string } | null; teach: string | null; tries: number } | null;
   choice: { prompt: string; options: { id: string; label: string }[]; picked: { id: string; feedback: string; best: boolean }[]; teach: string | null } | null;
-  produce: { language: string; frame: string; instruction: string; wordBank: string[] | null; feedback: string | null; repairLine: string | null; askMeaning: { given: string; options: { word: string; meaningDe: string }[] } | null; shownSentence: string | null; tries: number; maxTries: number; lastResponse: string | null; practiceFeedback?: string | null; practiceLeft?: number } | null;
+  produce: { language: string; frame: string; instruction: string; wordBank: string[] | null; bankLocked: boolean; feedback: string | null; repairLine: string | null; askMeaning: { given: string; options: { word: string; meaningDe: string }[] } | null; shownSentence: string | null; tries: number; maxTries: number; lastResponse: string | null; practiceFeedback?: string | null; practiceLeft?: number } | null;
   typing: TypingBlockView | null;
   /** Content v6: the problem answered question by question (answer keys absent until teaching). */
   solve?: SolveView | null;
@@ -1938,7 +1965,7 @@ export type MissionActiveView = {
   /** Content v7: a floor plan of a story/outcome step (the child's own chosen plan for the outcome). */
   grid?: MissionGrid | null;
   /** Isabel's workshop (`read`): the switch to supported letter/word learning; its content only after it was recorded. */
-  letters?: { offered: boolean; shown: { letters: { letter: string; sound: string; picture?: string }[]; spoken: string; teach: string } | null } | null;
+  letters?: { offered: boolean; afterMiss?: boolean; shown: { letters: { letter: string; sound: string; picture?: string }[]; spoken: string; teach: string } | null } | null;
   /** Isabel's workshop (`craft`): the real-world tasks and her own «found» report. */
   craft?: { tasks: { id: string; text: string; picture: string | null }[]; find: { prompt: string; count: number; options: { id: string; label: string; picture: string }[]; fact: string } | null; found: string[]; parentNote: string } | null;
   /** Isabel's workshop: the picture of a story/outcome step (the outcome shows what she chose to make). */
@@ -1951,7 +1978,7 @@ export type MissionActiveView = {
   warmup?: boolean;
 };
 
-export type DecideView = { prompt: string; rule: string; options: { id: string; label: string; grid: MissionGrid | null; picture?: string | null }[]; picked: { id: string; viable: boolean; feedback: string }[]; chosen: string | null; reflect: string | null };
+export type DecideView = { prompt: string; rule: string; options: { id: string; label: string; grid: MissionGrid | null; picture?: string | null; own?: boolean }[]; wrongPicks: number; noktAfterWrong: number | null; picked: { id: string; viable: boolean; feedback: string }[]; chosen: string | null; reflect: string | null };
 
 export type SolvePartView = {
   id: string;
@@ -2034,6 +2061,8 @@ export type MissionView = {
   places: MissionDef["map"]["places"];
   paths: MissionDef["map"]["paths"];
   characters: MissionDef["characters"];
+  /** Nov 8 arcs: the story's other character, shown on every scene. */
+  companion: MissionDef["companion"] | null;
   position: string;
   steps: MissionStepView[];
   /** Steps that can be started at each place right now. */
@@ -2100,7 +2129,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     const feedback = r.status !== "active" || !a ? null : a.kind === "lexical" || a.kind === "noncanonical" ? p.feedback.lexical : a.kind === "distractor" ? p.feedback.distractor : a.kind === "unclear" ? p.feedback.unclear : null;
     const practiceFails = r.practiceFails ?? 0;
     const lastPractice = [...r.attempts].reverse().find((x) => x.kind === "practice");
-    produce = { language: p.language, frame: p.frame, instruction: p.instruction, wordBank: has("word-bank") ? p.wordBank : null, feedback, repairLine: r.repairLine ?? null, askMeaning: r.phase === "ask-meaning" ? r.pendingMeaning ?? null : null, shownSentence: has("answer-shown") ? p.accepted[0] : null, tries: answers.filter((x) => x.correct !== true).length, maxTries: def.rules.maxProduceAttempts, lastResponse: lastAnswer?.raw ?? null, practiceFeedback: r.status === "active" && lastPractice && lastPractice.correct !== true ? (practiceFails >= (def.rules.maxPracticeAttempts ?? 2) ? "Der Satz stimmt noch nicht ganz. Heb ihn fürs nächste Mal auf, dann üben wir ihn wieder." : "Noch nicht ganz gleich. Schau den Satz oben genau an und schreib ihn noch einmal.") : null, practiceLeft: Math.max(0, (def.rules.maxPracticeAttempts ?? 2) - practiceFails) };
+    produce = { language: p.language, frame: p.frame, instruction: p.instruction, wordBank: has("word-bank") ? p.wordBank : null, bankLocked: !!p.bankAfterAttempt && !answers.length, feedback, repairLine: r.repairLine ?? null, askMeaning: r.phase === "ask-meaning" ? r.pendingMeaning ?? null : null, shownSentence: has("answer-shown") ? p.accepted[0] : null, tries: answers.filter((x) => x.correct !== true).length, maxTries: def.rules.maxProduceAttempts, lastResponse: lastAnswer?.raw ?? null, practiceFeedback: r.status === "active" && lastPractice && lastPractice.correct !== true ? (practiceFails >= (def.rules.maxPracticeAttempts ?? 2) ? "Der Satz stimmt noch nicht ganz. Heb ihn fürs nächste Mal auf, dann üben wir ihn wieder." : "Noch nicht ganz gleich. Schau den Satz oben genau an und schreib ihn noch einmal.") : null, practiceLeft: Math.max(0, (def.rules.maxPracticeAttempts ?? 2) - practiceFails) };
   }
   const listen = step.kind === "listen" && step.text
     ? { language: step.text.language, plays: r.plays, completedPlays: r.completedPlays ?? 0, failures: r.playFailures ?? 0, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation"), ...(def.presentation === "map" ? { noPictures: true } : {}) }
@@ -2238,9 +2267,11 @@ function decideView(d: MissionDecide, r: MissionStepRun): DecideView {
   return {
     prompt: d.prompt,
     rule: d.rule,
-    options: d.options.map((o) => ({ id: o.id, label: o.label, grid: o.grid ?? null, ...(o.picture ? { picture: o.picture } : {}) })),
+    options: d.options.map((o) => ({ id: o.id, label: o.label, grid: o.grid ?? null, ...(o.picture ? { picture: o.picture } : {}), ...(o.own ? { own: true } : {}) })),
     picked: picked.map((o) => ({ id: o.id, viable: o.viable, feedback: o.feedback })),
     chosen: chosen?.id ?? null,
+    wrongPicks: picked.filter((o) => !o.viable).length,
+    noktAfterWrong: d.noktAfterWrong ?? null,
     reflect: chosen ? d.reflect?.prompt ?? null : null,
   };
 }
@@ -2315,7 +2346,7 @@ function workshopActive(def: MissionDef, run: MissionRun, step: MissionStep, r: 
   const out: Partial<MissionActiveView> = {};
   if (step.kind === "read" && step.letters) {
     const shown = r.support.some((x) => x.kind === "letters");
-    out.letters = { offered: true, shown: shown ? { letters: step.letters.letters, spoken: step.letters.spoken, teach: step.letters.teach } : null };
+    out.letters = { offered: true, ...(step.letters.afterMiss ? { afterMiss: true } : {}), shown: shown ? { letters: step.letters.letters, spoken: step.letters.spoken, teach: step.letters.teach } : null };
   }
   if (step.kind === "craft" && step.craft) {
     const made = def.steps.find((x) => x.kind === "decide");
@@ -2482,6 +2513,7 @@ export function buildMissionView(state: MissionState, content: LearningContent, 
     paths: def.map.paths,
     // Story voice binding (2026-10-29): each character's gender for the voice slot of a line's language; assistants have none.
     characters: def.characters.map((c) => ({ ...c, gender: characterGender(content.contentId, c) })),
+    companion: def.companion ?? null,
     position: run.position,
     steps,
     here: steps.filter((s) => s.place === run.position && (s.status === "available" || s.status === "active")).map((s) => s.id),

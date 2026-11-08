@@ -138,6 +138,130 @@ function Basket({ big, apple }: { big: boolean; apple: string }) {
   );
 }
 
+const WATER = "#7fc4df";
+/** A flat plan seen from above with its measures written on it (what he has to match to what he heard). */
+function Plan({ w, h, top, side }: { w: number; h: number; top: string; side: string }) {
+  const x = 40 - w / 2;
+  const y = 44 - h / 2;
+  return (
+    <g>
+      <rect x={x} y={y} width={w} height={h} rx={3} fill={WATER} stroke="#4f7f97" strokeWidth={2} />
+      <text x={40} y={y - 4} textAnchor="middle" fontSize={11} fontWeight={700} fill="#333">{top}</text>
+      {side ? <text x={x + w + 3} y={44 + 4} fontSize={11} fontWeight={700} fill="#333">{side}</text> : null}
+    </g>
+  );
+}
+function Strip({ w, label }: { w: number; label: string }) {
+  return (
+    <g>
+      <rect x={40 - w / 2} y={36} width={w} height={14} rx={3} fill={WATER} stroke="#4f7f97" strokeWidth={2} />
+      <text x={40} y={30} textAnchor="middle" fontSize={13} fontWeight={700} fill="#333">{label}</text>
+    </g>
+  );
+}
+/** The pond from the side: the ground line with the hollow as deep as `d`. */
+function SideView({ d, label }: { d: number; label: string }) {
+  return (
+    <g>
+      <rect x={4} y={22} width={72} height={54} fill={SOIL} />
+      <path d={`M14 22h52v${d}h-52z`} fill={WATER} stroke="#4f7f97" strokeWidth={2} />
+      <path d="M6 22h68" stroke={LEAF} strokeWidth={4} />
+      <text x={40} y={16} textAnchor="middle" fontSize={13} fontWeight={700} fill="#333">{label}</text>
+    </g>
+  );
+}
+function PondBit({ x, y }: { x: number; y: number }) {
+  return <ellipse cx={x} cy={y} rx={16} ry={10} fill={WATER} stroke="#4f7f97" strokeWidth={2} />;
+}
+function TreeBit({ x, y }: { x: number; y: number }) {
+  return (
+    <g>
+      <rect x={x - 3} y={y} width={6} height={18} fill={WOOD_DARK} />
+      <circle cx={x} cy={y - 6} r={13} fill={LEAF} />
+    </g>
+  );
+}
+function CrateBit({ x, y }: { x: number; y: number }) {
+  return (
+    <g>
+      <rect x={x - 9} y={y - 7} width={18} height={14} fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} />
+      <path d={`M${x - 9} ${y}h18M${x - 3} ${y - 7}v14M${x + 3} ${y - 7}v14`} stroke={WOOD_DARK} strokeWidth={1} />
+    </g>
+  );
+}
+function FoodBit({ x, y }: { x: number; y: number }) {
+  return (
+    <g>
+      <ellipse cx={x} cy={y} rx={7} ry={4} fill="#d6342c" />
+      <path d={`M${x - 5} ${y - 3}q5-6 10 0`} stroke={LEAF} strokeWidth={2} fill="none" />
+    </g>
+  );
+}
+function ShadePatch({ x, y }: { x: number; y: number }) {
+  return <ellipse cx={x} cy={y} rx={22} ry={13} fill="#3a5a33" fillOpacity={0.35} />;
+}
+function SunBit() {
+  return <circle cx={66} cy={12} r={8} fill="#f7d54a" />;
+}
+/** The sea turtle with a coloured neckerchief: the three name pictures differ only by that. */
+function Turtle({ scarf }: { scarf: string }) {
+  return (
+    <g>
+      <ellipse cx={18} cy={46} rx={10} ry={5} fill="#7fb069" transform="rotate(-28 18 46)" />
+      <ellipse cx={62} cy={46} rx={10} ry={5} fill="#7fb069" transform="rotate(28 62 46)" />
+      <ellipse cx={40} cy={46} rx={22} ry={17} fill="#5f8f45" stroke="#3f6a2e" strokeWidth={2} />
+      <path d="M26 40l14-8 14 8-5 14H31z" fill="#7fae5c" stroke="#3f6a2e" strokeWidth={1.5} />
+      <circle cx={40} cy={22} r={10} fill="#8cc16c" stroke="#3f6a2e" strokeWidth={2} />
+      <circle cx={36} cy={20} r={1.8} fill="#222" />
+      <circle cx={44} cy={20} r={1.8} fill="#222" />
+      <path d="M30 31q10 6 20 0" stroke={scarf} strokeWidth={5} fill="none" strokeLinecap="round" />
+    </g>
+  );
+}
+function Robin({ x, y, r = 1 }: { x: number; y: number; r?: number }) {
+  return (
+    <g transform={`translate(${x} ${y}) scale(${r})`}>
+      <ellipse cx={0} cy={0} rx={13} ry={10} fill="#8a6a45" />
+      <ellipse cx={3} cy={3} rx={7} ry={6} fill="#d9622b" />
+      <circle cx={10} cy={-7} r={6} fill="#8a6a45" />
+      <circle cx={12} cy={-8} r={1.2} fill="#222" />
+      <path d="M16 -7l6 1-6 2z" fill="#e0a020" />
+      <path d="M-12 0l-9 -3 2 7z" fill="#6b4f34" />
+    </g>
+  );
+}
+function BirdHouse({ roof, x = 40, y = 44, s = 1 }: { roof: string; x?: number; y?: number; s?: number }) {
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`}>
+      <rect x={-2} y={14} width={4} height={18} fill={WOOD_DARK} />
+      <rect x={-13} y={-8} width={26} height={22} fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} />
+      <circle cx={0} cy={2} r={5} fill="#4a3420" />
+      <path d="M-19 -6L0 -24 19 -6z" fill={roof} stroke={WOOD_DARK} strokeWidth={2} strokeLinejoin="round" />
+    </g>
+  );
+}
+function BigTree({ small = false }: { small?: boolean }) {
+  return small ? (
+    <g>
+      <rect x={18} y={48} width={6} height={26} fill={WOOD_DARK} />
+      <circle cx={21} cy={40} r={15} fill={LEAF} />
+    </g>
+  ) : (
+    <g>
+      <rect x={16} y={24} width={10} height={50} fill={WOOD_DARK} />
+      <circle cx={21} cy={20} r={19} fill={LEAF} />
+    </g>
+  );
+}
+function HouseWall() {
+  return (
+    <g>
+      <rect x={52} y={8} width={26} height={66} fill={MORTAR} stroke={WOOD_DARK} strokeWidth={2} />
+      <rect x={58} y={18} width={14} height={14} fill={GLASS} stroke={GLASS_EDGE} strokeWidth={2} />
+    </g>
+  );
+}
+
 function Shape({ id }: { id: WorkshopPicture }) {
   switch (id) {
     case "chair-wood":
@@ -535,6 +659,72 @@ function Shape({ id }: { id: WorkshopPicture }) {
       return <Basket big={false} apple="#7fb069" />;
     case "basket-big-red-apple":
       return <Basket big apple="#d6342c" />;
+    case "plan-4x3":
+      return <Plan w={48} h={36} top="4 m" side="3 m" />;
+    case "plan-5x3":
+      return <Plan w={60} h={36} top="5 m" side="3 m" />;
+    case "plan-4x2":
+      return <Plan w={48} h={24} top="4 m" side="2 m" />;
+    case "strip-3m":
+      return <Strip w={36} label="3 m" />;
+    case "strip-4m":
+      return <Strip w={48} label="4 m" />;
+    case "strip-5m":
+      return <Strip w={60} label="5 m" />;
+    case "side-1m":
+      return <SideView d={20} label="1 m tief" />;
+    case "side-2m":
+      return <SideView d={40} label="2 m tief" />;
+    case "side-50cm":
+      return <SideView d={10} label="50 cm tief" />;
+    case "crate-shade-pond":
+      return <g><TreeBit x={18} y={18} /><ShadePatch x={42} y={46} /><PondBit x={60} y={60} /><CrateBit x={40} y={46} /></g>;
+    case "crate-sun-pond":
+      return <g><SunBit /><TreeBit x={14} y={18} /><PondBit x={60} y={60} /><CrateBit x={48} y={40} /></g>;
+    case "crate-shade-tree":
+      return <g><TreeBit x={18} y={18} /><ShadePatch x={22} y={44} /><PondBit x={62} y={62} /><CrateBit x={20} y={44} /></g>;
+    case "crate-between":
+      return <g><TreeBit x={14} y={22} /><PondBit x={62} y={58} /><CrateBit x={36} y={50} /></g>;
+    case "food-behind":
+      return <g><CrateBit x={40} y={50} /><FoodBit x={40} y={32} /></g>;
+    case "food-front":
+      return <g><CrateBit x={40} y={36} /><FoodBit x={40} y={58} /></g>;
+    case "food-pond":
+      return <g><CrateBit x={22} y={44} /><PondBit x={58} y={46} /><FoodBit x={58} y={30} /></g>;
+    case "turtle-tula":
+      return <Turtle scarf="#d6342c" />;
+    case "turtle-pepe":
+      return <Turtle scarf="#3f7fd6" />;
+    case "turtle-flip":
+      return <Turtle scarf="#e0a020" />;
+    case "turtle-own":
+      return <Turtle scarf="#b9a582" />;
+    case "bird":
+      return <Robin x={38} y={44} r={1.7} />;
+    case "roof-red":
+      return <BirdHouse roof="#d6342c" s={1.3} />;
+    case "roof-blue":
+      return <BirdHouse roof="#3f7fd6" s={1.3} />;
+    case "roof-yellow":
+      return <BirdHouse roof="#e9c46a" s={1.3} />;
+    case "hang-right":
+      return <g><BigTree /><HouseWall /><BirdHouse roof="#b98a5b" x={42} y={24} s={0.7} /></g>;
+    case "hang-low":
+      return <g><BigTree /><HouseWall /><BirdHouse roof="#b98a5b" x={42} y={58} s={0.7} /></g>;
+    case "hang-small-tree":
+      return <g><BigTree small /><HouseWall /><BirdHouse roof="#b98a5b" x={42} y={36} s={0.7} /></g>;
+    case "hang-far":
+      return <g><BigTree /><BirdHouse roof="#b98a5b" x={22} y={24} s={0.7} /><HouseWall /></g>;
+    case "next-food":
+      return <g><path d="M16 50h48l-6 20H22z" fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} />{[24, 32, 40, 48, 56].map((x) => <circle key={x} cx={x} cy={46} r={4} fill="#c9a26b" stroke={WOOD_DARK} strokeWidth={1} />)}</g>;
+    case "next-bath":
+      return <g><rect x={36} y={46} width={8} height={26} fill={WOOD_DARK} /><ellipse cx={40} cy={44} rx={28} ry={10} fill={WATER} stroke="#4f7f97" strokeWidth={3} /></g>;
+    case "liked-sticks":
+      return <g>{[20, 28, 36, 44, 52, 60].map((x) => <rect key={x} x={x} y={16} width={5} height={50} fill={WOOD} stroke={WOOD_DARK} strokeWidth={1} />)}<rect x={16} y={38} width={52} height={7} fill="#c0504d" /></g>;
+    case "liked-read":
+      return <g><rect x={36} y={46} width={6} height={28} fill={WOOD_DARK} /><rect x={10} y={16} width={58} height={32} rx={3} fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} /><text x={39} y={38} textAnchor="middle" fontSize={15} fontWeight={700} fill="#3b2a17">ABC</text></g>;
+    case "liked-roof":
+      return <BirdHouse roof="#e0a020" s={1.3} />;
     default: {
       // Exhaustive on purpose: a picture id in WORKSHOP_PICTURES without a drawing no longer compiles. It used to draw nothing.
       const missing: never = id;
@@ -654,6 +844,43 @@ export function Counters({ counters, caption = true }: { counters: MissionCounte
   }
   const total = op === "+" ? a + b : a;
   const who = counters.actor ?? "Old Lila nimmt";
+  if (counters.ask === "missing" && counters.frame && bundles && counters.closed) {
+    // Nov 8: the missing part up to a full ten or more, with closed bundles: what is there, then what is still empty.
+    const tens = Math.floor(a / 10);
+    const loose = a % 10;
+    const emptyLoose = (10 - loose) % 10;
+    const emptyTens = Math.floor((counters.frame - a - emptyLoose) / 10);
+    return (
+      <figure className="grid gap-2" data-testid="counters" data-a={a} data-b={b} data-op={op} data-frame={counters.frame} data-bundles="closed">
+        <div className="flex flex-wrap items-end gap-3" role="img" aria-label={`${tens} Bündel und ${loose} einzelne ${unit}. Es fehlen noch welche bis ${counters.frame}.`}>
+          {Array.from({ length: tens }, (_, i) => (
+            <svg key={`t${i}`} viewBox="0 0 64 80" className="h-20 w-16" aria-hidden data-part="closed-bundle">
+              <path d="M8 6h48v68H8z" fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} />
+              <rect x={6} y={34} width={52} height={8} rx={2} fill="#c0504d" />
+              <text x={32} y={28} textAnchor="middle" fontSize={20} fontWeight={700} fill="#3b2a17">10</text>
+            </svg>
+          ))}
+          {Array.from({ length: loose }, (_, i) => (
+            <svg key={`l${i}`} viewBox="0 0 10 80" className="h-20 w-2.5" aria-hidden data-part="filled">
+              <rect x={3} y={6} width={4} height={68} rx={1.5} fill={WOOD} />
+            </svg>
+          ))}
+          {Array.from({ length: emptyLoose }, (_, i) => (
+            <svg key={`e${i}`} viewBox="0 0 10 80" className="h-20 w-2.5" aria-hidden data-part="empty">
+              <rect x={2} y={6} width={6} height={68} rx={2} fill="none" stroke="#b9a582" strokeWidth={1.5} strokeDasharray="4 3" />
+            </svg>
+          ))}
+          {Array.from({ length: emptyTens }, (_, i) => (
+            <svg key={`et${i}`} viewBox="0 0 64 80" className="h-20 w-16" aria-hidden data-part="empty-bundle">
+              <path d="M8 6h48v68H8z" fill="none" stroke="#b9a582" strokeWidth={2} strokeDasharray="6 4" />
+              <text x={32} y={46} textAnchor="middle" fontSize={20} fontWeight={700} fill="#b9a582">10</text>
+            </svg>
+          ))}
+        </div>
+        <figcaption className={caption ? "text-base" : "sr-only"}>Platz für {counters.frame} {unit}</figcaption>
+      </figure>
+    );
+  }
   if (counters.ask === "missing" && counters.frame) {
     // Visit 2: a full frame of places — `a` filled, `b` empty; the question asks for the empty ones (the missing part).
     return (
@@ -727,6 +954,8 @@ function CounterIcon({ icon }: { icon?: string }) {
       return <Apple x={20} y={22} r={12} color="#d6342c" />;
     case "carrot":
       return <Carrot x={20} y={10} />;
+    case "nail":
+      return <g><rect x={18} y={12} width={4} height={22} fill="#8a8f96" /><rect x={13} y={8} width={14} height={5} rx={1} fill="#6b7077" /></g>;
     case "stick":
       return <rect x={17} y={2} width={6} height={36} rx={2} fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={1} />;
     default:

@@ -165,6 +165,7 @@ for (const a of ASSETS) {
   else if (a.kind === "island") svg = islandSvg(a, a.world);
   else if (a.kind === "avatar") svg = avatarSvg(a);
   else if (a.kind === "effect") svg = puffSvg(a);
+  else if (a.kind === "scene") svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${a.size.w}" height="${a.size.h}"><circle cx="${a.size.w / 2}" cy="${a.size.h / 2}" r="${a.size.w * 0.42}" fill="${a.id.startsWith("turtle") ? "#7fb069" : "#d9b48a"}" stroke="#5b4026" stroke-width="10"/></svg>`;
   else svg = simpleSvg(a);
   if (!svg) throw new Error(`no placeholder for ${a.id}`);
   let img = sharp(Buffer.from(svg)).resize(a.size.w, a.size.h);
@@ -212,7 +213,7 @@ Both worlds are a **12×12 grid**. Tile (c 0, r 0) is the top corner of the isla
 ${section("Ground and islands", (a) => a.kind === "island" || a.kind === "ground")}
 ${section("Santiago's pieces", (a) => a.kind === "piece" && a.world === "santiago")}
 ${section("Isabel's pieces", (a) => a.kind === "piece" && a.world === "isabel")}
-${section("Markers, avatars, effects", (a) => a.kind === "marker" || a.kind === "avatar" || a.kind === "effect")}
+${section("Markers, avatars, effects", (a) => a.kind === "marker" || a.kind === "avatar" || a.kind === "effect" || a.kind === "scene")}
 **Total:** ${ASSETS.length} files (${ASSETS.filter((a) => a.world === "santiago").length} Santiago, ${ASSETS.filter((a) => a.world === "isabel").length} Isabel, ${ASSETS.filter((a) => a.world === "shared").length} shared).
 
 ## Delivery

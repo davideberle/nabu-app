@@ -45,6 +45,14 @@ export type PieceDef = {
   partOf?: string;
   /** A variant chosen by the child in one step of the building visit: step id → option id → asset suffix. */
   variant?: { step: string; options: Record<string, string>; fallback: string };
+  /** Nov 8 arcs: already standing as soon as its visit has started (the turtle arrives in the opening scene). */
+  fromVisitStart?: boolean;
+  /** The built file when it is not `<id>-built` (the pond is first a dug pond; later stages get their own files). */
+  builtAsset?: string;
+  /** The label follows a story choice (the turtle's name). */
+  labelFrom?: "turtleName";
+  /** A small animated effect around this piece once its visit has started (the two robins). */
+  effect?: string;
 };
 
 export type WorldDef = {
@@ -97,8 +105,10 @@ const SANTIAGO: WorldDef = {
     greenhouse: { c: 6, r: 3 },
     tank: { c: 3, r: 3 },
     garden: { c: 3, r: 8 },
+    pond: { c: 7, r: 11 },
+    beach: { c: 9, r: 10 },
   },
-  paths: route({ c: 6, r: 11 }, { c: 6, r: 3 }, { c: 3, r: 3 }).concat(route({ c: 6, r: 5 }, { c: 10, r: 5 }), route({ c: 3, r: 8 }, { c: 8, r: 8 })),
+  paths: route({ c: 6, r: 11 }, { c: 6, r: 3 }, { c: 3, r: 3 }).concat(route({ c: 6, r: 5 }, { c: 10, r: 5 }), route({ c: 3, r: 8 }, { c: 8, r: 8 }), route({ c: 6, r: 11 }, { c: 9, r: 11 }, { c: 9, r: 10 })),
   pieces: [
     { id: "s-dock", label: "Kai und Boot", builtBy: "v6", tile: { c: 4, r: 11 }, footprint: { w: 2, h: 1 }, place: "harbor" },
     { id: "s-shop", label: "Hafenladen", builtBy: "v7", tile: { c: 4, r: 6 }, footprint: { w: 2, h: 2 }, place: "shop" },
@@ -109,6 +119,8 @@ const SANTIAGO: WorldDef = {
     { id: "s-greenhouse-wing", label: "Neuer Flügel", builtBy: "v9", tile: { c: 8, r: 1 }, footprint: { w: 2, h: 2 }, place: null, partOf: "greenhouse" },
     { id: "s-water-tank", label: "Wassertank", builtBy: "v10", tile: { c: 2, r: 1 }, footprint: { w: 2, h: 2 }, place: "tank" },
     { id: "s-pipe", label: "Wasserleitung", builtBy: "v10", tile: { c: 4, r: 1 }, footprint: { w: 1, h: 2 }, place: null, partOf: "tank" },
+    { id: "s-pond", label: "Teich", builtBy: "v11", tile: { c: 7, r: 9 }, footprint: { w: 2, h: 2 }, place: "pond", builtAsset: "s-pond-dug-built" },
+    { id: "s-turtle-crate", label: "Schildkröte", builtBy: "v11", tile: { c: 9, r: 9 }, footprint: { w: 1, h: 1 }, place: "beach", fromVisitStart: true, labelFrom: "turtleName" },
   ],
 };
 
@@ -123,6 +135,7 @@ const ISABEL: WorldDef = {
     garden: { c: 6, r: 2 },
     patch: { c: 8, r: 6 },
     table: { c: 3, r: 8 },
+    birdhouse: { c: 5, r: 4 },
   },
   paths: route({ c: 6, r: 9 }, { c: 6, r: 2 }).concat(route({ c: 6, r: 4 }, { c: 3, r: 4 }), route({ c: 6, r: 6 }, { c: 8, r: 6 }), route({ c: 6, r: 8 }, { c: 3, r: 8 })),
   pieces: [
@@ -131,6 +144,7 @@ const ISABEL: WorldDef = {
     { id: "i-flower-garden", label: "Garten", builtBy: "v2", tile: { c: 9, r: 1 }, footprint: { w: 2, h: 2 }, place: null, partOf: "garden", variant: { step: "IG2-PLANT", options: { flowers: "flowers", vegetables: "vegetables", tree: "tree" }, fallback: "flowers" } },
     { id: "i-vegetable-patch", label: "Gemüsebeet", builtBy: "v4", tile: { c: 8, r: 4 }, footprint: { w: 2, h: 2 }, place: "patch" },
     { id: "i-harvest-table", label: "Erntetisch", builtBy: "v4", tile: { c: 2, r: 7 }, footprint: { w: 2, h: 1 }, place: "table", variant: { step: "IH2-PICK", options: { apples: "apples", carrots: "carrots", corn: "corn" }, fallback: "apples" } },
+    { id: "i-birdhouse", label: "Vogelhaus", builtBy: "v5", tile: { c: 5, r: 3 }, footprint: { w: 1, h: 1 }, place: "birdhouse", variant: { step: "IV10-ROOF", options: { red: "red", blue: "blue", yellow: "yellow" }, fallback: "red" }, effect: "i-robins" },
   ],
 };
 
@@ -150,6 +164,8 @@ export type HomeWorldInput = {
   current: { visit: string; mission: string | null; places: { id: string; label: string; kind?: string }[]; start: string | null } | null;
   /** Built piece ids this device has already shown; null = this device never opened the map. */
   seen: string[] | null;
+  /** Story choices across visits (the turtle's name). */
+  story?: { turtleName?: { value: string } };
   /** Where the child last left the map (a place id), e.g. after «back» from a scene. */
   lastPlace?: string | null;
 };
@@ -167,6 +183,8 @@ export type HomeWorld = {
   arrivals: string[];
   /** Places of the current visit that have no tile in this world (shown nowhere; reported so content and map stay in step). */
   unplaced: string[];
+  /** Small animated effects (asset id) around a piece. */
+  effects: { asset: string; tile: Tile; footprint: { w: number; h: number } }[];
 };
 
 export function deriveHomeWorld(input: HomeWorldInput): HomeWorld {
@@ -176,14 +194,17 @@ export function deriveHomeWorld(input: HomeWorldInput): HomeWorld {
   const lastFinished = finished.length ? finished[finished.length - 1].id : null;
   const currentVisit = input.current?.visit ?? null;
   const pieces: HomePiece[] = [];
+  const effects: HomeWorld["effects"] = [];
   for (const p of def.pieces) {
-    const built = finishedIds.has(p.builtBy);
-    const site = !built && p.builtBy === currentVisit;
+    const started = input.visits.some((v) => v.id === p.builtBy);
+    const built = finishedIds.has(p.builtBy) || (!!p.fromVisitStart && started);
+    const site = !built && !p.fromVisitStart && p.builtBy === currentVisit;
     if (!built && !site) continue;
     const variant = p.variant ? (p.variant.options[input.choices[p.variant.step] ?? ""] ?? p.variant.fallback) : null;
     // A site is the same for every variant (the choice is made during that visit); a built piece shows the child's choice.
-    const asset = built ? `${p.id}${variant ? `-${variant}` : ""}-built` : `${p.id}-site`;
-    pieces.push({ id: p.id, label: p.label, stage: built ? "built" : "site", tile: p.tile, footprint: p.footprint, asset, place: p.place, partOf: p.partOf ?? null, builtBy: p.builtBy, arriving: false });
+    const asset = built ? p.builtAsset ?? `${p.id}${variant ? `-${variant}` : ""}-built` : `${p.id}-site`;
+    if (p.effect && started) effects.push({ asset: p.effect, tile: p.tile, footprint: p.footprint });
+    pieces.push({ id: p.id, label: (p.labelFrom ? input.story?.[p.labelFrom]?.value : null) ?? p.label, stage: built ? "built" : "site", tile: p.tile, footprint: p.footprint, asset, place: p.place, partOf: p.partOf ?? null, builtBy: p.builtBy, arriving: false });
   }
   const builtIds = pieces.filter((p) => p.stage === "built").map((p) => p.id);
   // First time on this device: only the latest finished visit's pieces arrive (not the whole history at once).
@@ -209,7 +230,7 @@ export function deriveHomeWorld(input: HomeWorldInput): HomeWorld {
   }
   const at = (id: string | null | undefined) => (id ? def.places[id] ?? null : null);
   const avatar = at(input.lastPlace) ?? at(input.current?.start) ?? def.spawn;
-  return { child: input.child, grid: def.grid, pieces, places, paths: def.paths, avatar, arrivals, unplaced };
+  return { child: input.child, grid: def.grid, pieces, places, paths: def.paths, avatar, arrivals, unplaced, effects };
 }
 
 /** Shortest walk along path tiles (4-neighbour BFS); null when the target is not reachable. */

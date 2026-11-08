@@ -26,18 +26,21 @@ import { checkAdaptiveBudget, COUNTER_ICONS, WORKSHOP_PICTURES, type MissionDef,
 import { ASSISTANT_IDENTITIES, slotFitsCharacter } from "./family-voice-registry.ts";
 
 export const ISABEL_CONTENT_ID = "isabel-workshop";
-export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2, 3];
+export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4];
 export const ISABEL_MISSION_ID = "MISSION-OLD-LILA-WORKSHOP";
 export const ISABEL_GARDEN_MISSION_ID = "MISSION-IDA-GARDEN";
 /** Step 1 (content v3): Isabel Visit 3 «Ernten und probieren» (internal visit id v4, learner-facing «Besuch 3»). */
 export const ISABEL_HARVEST_MISSION_ID = "MISSION-IDA-HARVEST";
 /** Isabel's assistant identity (approved October 18). In Visit 1 she was also the story character; from Visit 2 on she is not. */
 export const ISABEL_COMPANION = "Old Lila";
+/** Content v4 (Nov 8): Isabel Visit 4 «Ein Zuhause für die Vögel» (internal visit id v5, learner-facing «Besuch 4»). */
+export const ISABEL_BIRDS_MISSION_ID = "MISSION-IDA-BIRDS";
 export const EXPECTED_WORKSHOP_STEPS: readonly string[] = ["W1-HELLO", "W2-MAKE", "W3-MATERIALS", "W4-COUNT", "W5-TENS", "W6-TENS-AGAIN", "W7-EASIER", "W8-READ", "W9-LISTEN", "W10-CRAFT", "W11-ROOM"];
 export const EXPECTED_GARDEN_STEPS: readonly string[] = ["IG1-HELLO", "IG2-PLANT", "IG3-STICKS", "IG4-STICKS-AGAIN", "IG5-PLANTING", "IG6-PLANTING-EASIER", "IG7-READ", "IG8-LISTEN", "IG9-CRAFT", "IG10-GARDEN"];
 export const EXPECTED_HARVEST_STEPS: readonly string[] = ["IH1-HELLO", "IH2-PICK", "IH3-BUNDLE", "IH4-TENS", "IH5-TENS-AGAIN", "IH6-PLUS", "IH6H-BRIDGE", "IH6E-SMALL", "IH7-READ", "IH8-READ", "IH9-PHRASE", "IH10-LISTEN", "IH11-HARVEST"];
 /** Every Isabel mission step id (telemetry vocabulary). */
-export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS, ...EXPECTED_HARVEST_STEPS];
+export const EXPECTED_BIRD_STEPS: readonly string[] = ["IV1-HELLO", "IV2-WARM", "IV2E-WARM-EASY", "IV2N-NEST", "IV3-WALLS", "IV3E-WALLS-EASY", "IV4-ENOUGH", "IV4E-ENOUGH-EASY", "IV4H-ENOUGH-MORE", "IV5-NAILS", "IV5E-NAILS-EASY", "IV5H-NAILS-MORE", "IV6-VOGEL", "IV7-HAUS", "IV8-PHRASE", "IV9-LISTEN", "IV10-ROOF", "IV11-HOME"];
+export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS, ...EXPECTED_HARVEST_STEPS, ...EXPECTED_BIRD_STEPS];
 
 /** What each of Isabel's missions must be (by visit). The generic rules below apply to all of them. */
 type WorkshopSpec = {
@@ -65,6 +68,7 @@ const SPECS: readonly WorkshopSpec[] = [
   { id: ISABEL_MISSION_ID, visit: "v1", steps: EXPECTED_WORKSHOP_STEPS, character: { id: "lila", name: ISABEL_COMPANION }, place: "workshop", decide: "W2-MAKE", tens: "W5-TENS", tensAgain: "W6-TENS-AGAIN", easier: ["W7-EASIER", "W6-TENS-AGAIN"], worldProp: "room", narrated: false },
   { id: ISABEL_GARDEN_MISSION_ID, visit: "v2", steps: EXPECTED_GARDEN_STEPS, character: { id: "ida", name: null }, place: "garden", decide: "IG2-PLANT", tens: "IG3-STICKS", tensAgain: "IG4-STICKS-AGAIN", easier: ["IG6-PLANTING-EASIER", "IG5-PLANTING"], worldProp: "garden", narrated: true },
   { id: ISABEL_HARVEST_MISSION_ID, visit: "v4", steps: EXPECTED_HARVEST_STEPS, character: { id: "ida", name: null }, place: "garden", decide: "IH2-PICK", tens: "IH4-TENS", tensAgain: "IH5-TENS-AGAIN", easier: ["IH6E-SMALL", "IH6-PLUS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
+  { id: ISABEL_BIRDS_MISSION_ID, visit: "v5", steps: EXPECTED_BIRD_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "IV10-ROOF", tens: "IV2-WARM", tensAgain: "IV2E-WARM-EASY", easier: ["IV3E-WALLS-EASY", "IV3-WALLS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
 ];
 
 const FORBIDDEN_KINDS = new Set(["typing-block", "write", "produce", "recall", "calc", "choice"]);
@@ -98,7 +102,8 @@ function countersValue(c: Record<string, unknown>): number {
 /** The answers of every ten-bundle question of a mission (I2-03: a later visit must not re-ask the same quantity as "fresh"). */
 function bundleAnswers(m: Record<string, unknown>): number[] {
   const steps = Array.isArray(m.steps) ? (m.steps as unknown[]).filter(isRecord) : [];
-  return steps.flatMap((s) => (isRecord(s.solve) && Array.isArray(s.solve.parts) ? s.solve.parts.filter(isRecord) : []).filter((p) => isRecord(p.counters) && p.counters.bundles === true && p.compare !== true).map((p) => Number(p.answer)));
+  // An easier fallback is a step down, not a claim of a fresh check, so it may reuse a quantity (Nov 8: 2 bundles + 3 = 23).
+  return steps.filter((s) => !(isRecord(s.adaptive) && s.adaptive.level === "easier")).flatMap((s) => (isRecord(s.solve) && Array.isArray(s.solve.parts) ? s.solve.parts.filter(isRecord) : []).filter((p) => isRecord(p.counters) && p.counters.bundles === true && p.compare !== true && p.counters.ask !== "missing").map((p) => Number(p.answer)));
 }
 const readWord = (m: Record<string, unknown>) => ((Array.isArray(m.steps) ? (m.steps as unknown[]).filter(isRecord) : []).find((s) => s.kind === "read" && isRecord(s.text))?.text as Record<string, unknown> | undefined)?.body;
 
@@ -146,6 +151,7 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
       else if (String(line.text).length > MAX_LINE_CHARS) problems.push(`${sl}: a line is longer than ${MAX_LINE_CHARS} characters (short instructions)`);
       if (spec.narrated && line.speaker !== spec.character.id) problems.push(`${sl}: every line is spoken by ${spec.character.id}`);
       if (spec.narrated && /ß/.test(String(line.text))) problems.push(`${sl}: Swiss standard orthography (ss, never ß)`);
+      if (/[{}]/.test(String(line.text))) problems.push(`${sl}: every line is recorded, so it never carries a placeholder`);
       if (HOME_CLAIM.test(String(line.text))) problems.push(`${sl}: a line asserts what the family's home is built of`);
       if (TREES_NUMBER.test(String(line.text))) problems.push(`${sl}: a line gives a trees-per-house number`);
     }
@@ -166,11 +172,11 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
         const c = isRecord(p.counters) ? p.counters : null;
         if (!c || !Number.isInteger(c.a) || !Number.isInteger(c.b) || (c.op !== "+" && c.op !== "-") || !str(c.unit)) problems.push(`${sl}/${String(p.id)}: every question shows its exact quantities (counters)`);
         else if (countersValue(c) !== p.answer) problems.push(`${sl}/${String(p.id)}: the pictured quantities (${String(c.a)} ${String(c.op)} ${String(c.b)}${c.ask === "missing" ? ", missing part" : ""}) must equal the answer ${String(p.answer)}`);
-        if (c && c.ask !== undefined && (c.ask !== "missing" || c.op !== "+" || !Number.isInteger(c.frame) || Number(c.a) + Number(c.b) !== c.frame || c.bundles)) problems.push(`${sl}/${String(p.id)}: a missing-part question shows a full frame (a + b = frame)`);
+        if (c && c.ask !== undefined && (c.ask !== "missing" || c.op !== "+" || !Number.isInteger(c.frame) || Number(c.a) + Number(c.b) !== c.frame || (c.bundles && !c.closed))) problems.push(`${sl}/${String(p.id)}: a missing-part question shows a full frame (a + b = frame)`);
         if (c && c.frame !== undefined && c.ask !== "missing") problems.push(`${sl}/${String(p.id)}: a frame belongs to a missing-part question`);
         if (c && c.actor !== undefined && (!str(c.actor) || c.op !== "-")) problems.push(`${sl}/${String(p.id)}: an actor names who takes away (subtraction)`);
         if (c && c.icon !== undefined && !(COUNTER_ICONS as readonly string[]).includes(String(c.icon))) problems.push(`${sl}/${String(p.id)}: unknown counter icon`);
-        if (c?.bundles && Number(c.a) % 10 !== 0) problems.push(`${sl}/${String(p.id)}: bundles are full tens`);
+        if (c?.bundles && c.ask !== "missing" && Number(c.a) % 10 !== 0) problems.push(`${sl}/${String(p.id)}: bundles are full tens`);
         if (!str(p.teach) || !str(p.recheck) || !str(p.stuck) || !Array.isArray(p.hints)) problems.push(`${sl}/${String(p.id)}: recheck, stuck line, hints and worked teaching required`);
         if (c?.bundles && p.hintsAfterFirstAttempt !== true) problems.push(`${sl}/${String(p.id)}: bundling is explained after a first try (hintsAfterFirstAttempt)`);
       }
@@ -179,14 +185,16 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
       const body = isRecord(s.text) ? String(s.text.body ?? "") : "";
       const phrase = !!spec.phrases && /^\S+ \S+ \S+$|^\S+ \S+$/.test(body) && body.length <= 14;
       if (!body || (body.length > 8 && !phrase)) problems.push(`${sl}: one short word to read${spec.phrases ? " (or a first short phrase)" : ""}`);
-      if (phrase) for (const w of body.split(" ").filter((x) => x.length > 3)) if (!steps.some((o) => o !== s && o.kind === "read" && isRecord(o.text) && String(o.text.body).toUpperCase() === w.toUpperCase())) problems.push(`${sl}: every longer word of a phrase is read on its own first (${w})`);
+      const readWords = steps.filter((o) => o !== s && o.kind === "read" && isRecord(o.text)).map((o) => String((o.text as Record<string, unknown>).body).toUpperCase());
+      const compoundOfRead = (w: string) => readWords.some((a) => readWords.some((b) => a + b === w.toUpperCase()));
+      if (phrase) for (const w of body.split(" ").filter((x) => x.length > 3 && !compoundOfRead(x))) if (!steps.some((o) => o !== s && o.kind === "read" && isRecord(o.text) && String(o.text.body).toUpperCase() === w.toUpperCase())) problems.push(`${sl}: every longer word of a phrase is read on its own first (${w})`);
       const spoken = linesOf(s).filter((l) => (Array.isArray(s.intro) ? s.intro : []).includes(l));
       if (body && spoken.some((l) => new RegExp(`\\b${body}\\b`, "i").test(String(l.text)))) problems.push(`${sl}: the instruction must not say the word before the reading attempt`);
       const q0 = Array.isArray(s.questions) && isRecord(s.questions[0]) ? s.questions[0] : null;
       if (body && q0 && new RegExp(`\\b${body}\\b`, "i").test(String(q0.prompt ?? ""))) problems.push(`${sl}: the question must not say the word before the reading attempt`);
       const letters = isRecord(s.letters) ? s.letters : null;
       if (!letters || String(letters.word).toUpperCase() !== body.toUpperCase() || !Array.isArray(letters.letters) || letters.letters.length !== body.replace(/ /g, "").length || !str(letters.spoken) || !str(letters.teach)) problems.push(`${sl}: supported letter/word learning for the same word`);
-      for (const e of earlier) if (body && String(readWord(e) ?? "").toUpperCase() === body.toUpperCase()) problems.push(`${sl}: the reading word ${body} was already read in ${String(e.visit)} (a new word is required)`);
+      for (const e of earlier) if (body && !isRecord(s.warmup) && String(readWord(e) ?? "").toUpperCase() === body.toUpperCase()) problems.push(`${sl}: the reading word ${body} was already read in ${String(e.visit)} (a new word is required)`);
     }
     if (s.kind === "listen") {
       const t = isRecord(s.text) ? s.text : null;

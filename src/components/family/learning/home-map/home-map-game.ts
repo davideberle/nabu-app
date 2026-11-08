@@ -54,7 +54,8 @@ const ARRIVAL_MS = 2000;
 
 function assetsFor(world: HomeWorld): AssetDef[] {
   const pieceIds = new Set(world.pieces.map((p) => p.asset));
-  return ASSETS.filter((a) => (a.kind === "piece" ? pieceIds.has(a.id) : a.world === "shared" || a.world === world.child));
+  const effects = new Set(world.effects.map((e) => e.asset));
+  return ASSETS.filter((a) => (a.kind === "scene" ? false : a.kind === "piece" ? pieceIds.has(a.id) : a.kind === "effect" && a.world !== "shared" ? effects.has(a.id) : a.world === "shared" || a.world === world.child));
 }
 
 export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCallbacks): GameApi {
@@ -126,6 +127,21 @@ export function startHomeMap(parent: HTMLElement, world: HomeWorld, cb: GameCall
         }
       }
       cb.onMissing(missing);
+      // Nov 8 arcs: small effects that circle a piece (the two robins). Still for children who ask for reduced motion.
+      for (const e of world.effects) {
+        const a = ASSETS.find((x) => x.id === e.asset);
+        if (!a?.frames || !this.textures.exists(a.id)) continue;
+        const c = top({ c: e.tile.c + e.footprint.w / 2, r: e.tile.r + e.footprint.h / 2 });
+        const sprite = this.add.sprite(c.x + 46, c.y - 70, a.id, 0).setScale(1 / ART_SCALE).setDepth(9_999);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) continue;
+        this.anims.create({ key: `fx-${a.id}`, frames: this.anims.generateFrameNumbers(a.id, { start: 0, end: a.frames.count - 1 }), frameRate: 8, repeat: -1 });
+        sprite.play(`fx-${a.id}`);
+        this.tweens.addCounter({ from: 0, to: 360, duration: 7000, repeat: -1, onUpdate: (t) => {
+          const rad = (t.getValue() ?? 0) * (Math.PI / 180);
+          sprite.setPosition(c.x + Math.cos(rad) * 46, c.y - 70 + Math.sin(rad) * 18);
+          sprite.setFlipX(Math.sin(rad) > 0);
+        } });
+      }
       const av = ASSETS.find((a) => a.id === `${world.child}-avatar`)!;
       const c0 = centre(this.at);
       this.avatar = this.add.sprite(c0.x, c0.y, av.id, 0).setOrigin(av.anchor.x / av.frames!.w, av.anchor.y / av.frames!.h).setScale(1 / ART_SCALE).setDepth(c0.y + 1);

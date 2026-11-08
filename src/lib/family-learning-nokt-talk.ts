@@ -37,7 +37,7 @@ import { receiptOrigin, provenanceOf, type ReceiptInput, type ReplyOrigin } from
 
 export const NOKT_TALK_PURPOSES = ["home", "welcome", "visit", "writing", "debrief"] as const;
 export type NoktTalkPurpose = (typeof NOKT_TALK_PURPOSES)[number];
-export const NOKT_TALK_PROMPT_VERSION = "nokt-talk-de-2026-11-08-draft2";
+export const NOKT_TALK_PROMPT_VERSION = "nokt-talk-de-2026-11-08-draft3";
 export const NOKT_TALK_INTENTS = ["ask", "respond", "encourage", "correct", "close"] as const;
 export type NoktTalkIntent = (typeof NOKT_TALK_INTENTS)[number];
 
@@ -281,6 +281,7 @@ function openStepContext(def: MissionDef, run: MissionRun, step: MissionStep) {
     base.hisTries = r?.attempts.filter((a) => a.kind === "answer").map((a) => a.raw) ?? [];
   }
   if (step.kind === "decide" && step.decide) {
+    if (step.decide.noktAfterWrong) base.askWhy = "Er hat zweimal einen Platz gewählt, der eine Regel nicht erfüllt. Frag ihn neugierig, warum er den letzten gewählt hat. Sag nicht, welcher Platz passt.";
     base.task = step.decide.prompt;
     base.rule = step.decide.rule;
     base.options = step.decide.options.map((o) => o.label);
@@ -376,6 +377,7 @@ export function talkContext(state: MissionState, content: LearningContent, purpo
   if (purpose === "writing") {
     const step = where.step!;
     const w = run.steps[step.id].writing!;
+    if (state.story?.turtleName) ctx.turtleName = state.story.turtleName.value;
     ctx.writing = {
       prompt: step.write!.prompt,
       hisSentence: w.original,
@@ -386,6 +388,7 @@ export function talkContext(state: MissionState, content: LearningContent, purpo
   }
   // debrief
   ctx.buttons = debriefFeedback(content, state);
+  if (state.story?.turtleName) ctx.turtleName = state.story.turtleName.value;
   ctx.workNote = "«ohne aufgezeichnete Hilfe» heisst nur: Die App hat keine Hilfe aufgezeichnet. Sag nie, er habe es ganz allein geschafft.";
   const endingNext = def.nextAdventure;
   ctx.nextIdeas = endingNext ? endingNext.choices.map((c) => c.label) : [];
@@ -425,6 +428,7 @@ const PURPOSE_DE: Record<NoktTalkPurpose, string[]> = {
     "Ort: context.where während des Besuchs. Hilf ihm zu verstehen, was die Seite von ihm will, oder wohin er gehen kann (context.openPlaces).",
     "Du sagst nie die Lösung, kein Wort und keine Zahl, die er selbst finden soll. Wenn er fragt, frag zurück, was er schon weiss, oder zeig auf den Hinweis bei der Aufgabe.",
     "Hat er einen Plan gewählt und context.where.reflectPrompt steht da, darfst du ihn freundlich fragen, warum er so gewählt hat. Bewerte seinen Grund nicht.",
+    "Steht context.where.askWhy da und ist transcript leer, sprichst du zuerst: Frag EINMAL neugierig nach seinem Grund für context.where.hisPicks (die letzte Wahl). Sag nie, welche Möglichkeit passt, und nenne keine Regel als Lösung (intent ask).",
     "Bei Hören-Aufgaben: Lies ihm den englischen Text nicht vor und übersetze ihn nicht, ausser context.where.messageText steht schon da.",
     "phase \"schliessen\": beende freundlich (intent close).",
   ],
@@ -513,6 +517,7 @@ function openAnswers(def: MissionDef | null, run: MissionRun | null, step: Missi
       out.numbers.push({ answer: p.answer, unit: p.unit, visible: [...step.solve.facts, p.question, ...shownHints], childSaid: r.attempts.filter((a) => a.questionId === p.id).map((a) => a.raw) });
     }
   }
+  if (step.decide) for (const o of step.decide.options) if (o.guard && o.viable) out.phrases.push(o.guard);
   for (const q of step.questions ?? []) {
     const qs = r.questions[q.id];
     if (qs && qs.status !== "open") continue;
@@ -614,12 +619,12 @@ function debriefNextInterest(state: MissionState, records: Records, env: NoktTal
 }
 
 /** The app's phase for the next Nokt line of the look back. The next-interest question repeats until he answered it (bounded). */
-function debriefPhase(state: MissionState, session: NoktTalkSession, childLinesNow: number, visit: { id: VisitId; startedAt: string }): NoktTalkPhase {
+function debriefPhase(state: MissionState, session: NoktTalkSession, childLinesNow: number, visit: { id: VisitId; startedAt: string }, noNextChoice = false): NoktTalkPhase {
   // Nov 8: about four of his turns, then a warm close, whatever else was asked.
   if (childLinesNow >= NOKT_TALK_MAX_CHILD_TURNS.debrief) return session.dispatches.some((d) => d.phase === "abschluss") ? "schliessen" : "abschluss";
   if (childLinesNow === 0) return "rueckblick-start";
   if (childLinesNow === 1) return "rueckblick";
-  if (latestDebriefInterest(state, visit)) return session.dispatches.some((d) => d.phase === "abschluss") ? "schliessen" : "abschluss";
+  if (noNextChoice || latestDebriefInterest(state, visit)) return session.dispatches.some((d) => d.phase === "abschluss") ? "schliessen" : "abschluss";
   const asked = session.dispatches.filter((d) => d.phase === "naechstes").length;
   return asked >= NOKT_DEBRIEF_MAX_NEXT_QUESTIONS ? "abschluss" : "naechstes";
 }
@@ -665,6 +670,8 @@ export function applyNoktTalk(state: MissionState, action: NoktTalkAction, env: 
       } else if (action.purpose === "writing" && !session) {
         const w = where.run!.steps[where.step!.id].writing!;
         childLine = { turnId: action.turnId, role: "child", text: w.original, via: "sentence", shown: true, at: env.nowIso };
+      } else if (action.purpose === "visit" && !session && where.step?.decide?.noktAfterWrong && (where.run!.steps[where.step.id]?.attempts ?? []).filter((a) => a.correct === false).length >= where.step.decide.noktAfterWrong) {
+        // Nov 8 arcs: after repeated wrong picks in a judgment Nokt opens, asking about his reason. Nothing of his is invented.
       } else if (!((action.purpose === "welcome" || action.purpose === "debrief") && !session)) {
         throw new MissionOpError("invalid", "only a welcome, the first look-back question or the reaction to a new sentence start without his words");
       }
@@ -685,7 +692,7 @@ export function applyNoktTalk(state: MissionState, action: NoktTalkAction, env: 
         childLine.classified = recorded.kind;
         if (recorded.kind === "clarify") lastAnswerKind = "nachfrage";
       }
-      const phase = action.purpose === "debrief" ? debriefPhase(state, session, childCount, where.visit!) : talkPhase(action.purpose, session, childCount);
+      const phase = action.purpose === "debrief" ? debriefPhase(state, session, childCount, where.visit!, !!where.def?.noNextChoice) : talkPhase(action.purpose, session, childCount);
       if (childLine) session.turns.push(childLine);
       const transcript = acceptedTranscript(session);
       const context = talkContext(state, env.content, action.purpose, where, phase, { lastAnswerKind });

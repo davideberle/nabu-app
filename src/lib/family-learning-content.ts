@@ -23,7 +23,7 @@
 import type { ChildId } from "./family-assistant-turn.ts";
 import { checkMissions, checkNextInterest, type MissionDef, type NextInterestDef } from "./family-learning-mission-spec.ts";
 
-export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | "v8" | "v9" | "v10";
+export type VisitId = "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7" | "v8" | "v9" | "v10" | "v11";
 
 export type StageId =
   | "name-base"
@@ -426,7 +426,13 @@ export const EXPECTED_TYPING_COURSE_IDS_V7: readonly string[] = [...EXPECTED_TYP
 export const EXPECTED_VISIT_IDS_V8: readonly VisitId[] = [...EXPECTED_VISIT_IDS_V7, "v10"];
 export const EXPECTED_V10_STAGES: readonly StageId[] = ["mission", "reflect"];
 export const EXPECTED_TYPING_COURSE_IDS_V8: readonly string[] = [...EXPECTED_TYPING_COURSE_IDS_V7, "TYPE-CH-COURSE-7"];
-export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5, 6, 7, 8];
+/**
+ * Content version 9 (Nov 8, arc «Die Schildkröte»): version 8 plus map mission v11 (learner-visible "Besuch 10 — Die Schildkröte")
+ * and typing lesson TYPE-CH-COURSE-8 (t, z). Rollback: FAMILY_LEARNING_CONTENT_CAP=8.
+ */
+export const EXPECTED_VISIT_IDS_V9: readonly VisitId[] = [...EXPECTED_VISIT_IDS_V8, "v11"];
+export const EXPECTED_TYPING_COURSE_IDS_V9: readonly string[] = [...EXPECTED_TYPING_COURSE_IDS_V8, "TYPE-CH-COURSE-8"];
+export const SUPPORTED_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export type ContentReconciliation = {
   ok: boolean;
@@ -606,7 +612,7 @@ function checkTypingCourse(course: unknown, problems: string[], contentVersion =
   }
   const lessons = Array.isArray(course.lessons) ? course.lessons : [];
   const lessonIds = idsOf(lessons);
-  sameSet(lessonIds, contentVersion >= 8 ? EXPECTED_TYPING_COURSE_IDS_V8 : contentVersion >= 7 ? EXPECTED_TYPING_COURSE_IDS_V7 : EXPECTED_TYPING_COURSE_IDS_V2, "typing course lessons", problems);
+  sameSet(lessonIds, contentVersion >= 9 ? EXPECTED_TYPING_COURSE_IDS_V9 : contentVersion >= 8 ? EXPECTED_TYPING_COURSE_IDS_V8 : contentVersion >= 7 ? EXPECTED_TYPING_COURSE_IDS_V7 : EXPECTED_TYPING_COURSE_IDS_V2, "typing course lessons", problems);
   let cumulative: string[] = [];
   for (const lesson of lessons) {
     if (!isRecord(lesson)) continue;
@@ -776,7 +782,8 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
   const version = typeof raw.contentVersion === "number" && SUPPORTED_CONTENT_VERSIONS.includes(raw.contentVersion) ? raw.contentVersion : null;
   if (version === null) problems.push(`contentVersion must be one of ${SUPPORTED_CONTENT_VERSIONS.join(", ")}, got ${String(raw.contentVersion)}`);
   if (raw.child !== "santiago") problems.push("content.child must be santiago for this build");
-  const c8 = version === 8;
+  const c9 = version === 9;
+  const c8 = version === 8 || c9;
   const c7 = version === 7 || c8; // every version-7 rule also holds for version 8 (its visit list is checked below)
   const v6 = version === 6 || c7; // every version-6 rule also holds for version 7
   const v5 = version === 5 || v6; // every version-5 rule also holds for version 6
@@ -786,7 +793,7 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
 
   const visitIds = idsOf(raw.visits);
   counts.visits = visitIds.length;
-  sameSet(visitIds, c8 ? EXPECTED_VISIT_IDS_V8 : c7 ? EXPECTED_VISIT_IDS_V7 : v6 ? EXPECTED_VISIT_IDS_V6 : v5 ? EXPECTED_VISIT_IDS_V5 : v4 ? EXPECTED_VISIT_IDS_V4 : v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
+  sameSet(visitIds, c9 ? EXPECTED_VISIT_IDS_V9 : c8 ? EXPECTED_VISIT_IDS_V8 : c7 ? EXPECTED_VISIT_IDS_V7 : v6 ? EXPECTED_VISIT_IDS_V6 : v5 ? EXPECTED_VISIT_IDS_V5 : v4 ? EXPECTED_VISIT_IDS_V4 : v3 ? EXPECTED_VISIT_IDS_V3 : v2 ? EXPECTED_VISIT_IDS_V2 : EXPECTED_VISIT_IDS_V1, "visits", problems);
   if (Array.isArray(raw.visits)) {
     for (const [id, expected] of Object.entries(EXPECTED_RETAINED_STAGES)) {
       const visit = raw.visits.find((v) => isRecord(v) && v.id === id);
@@ -830,7 +837,7 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
     if (stages.join(",") !== EXPECTED_V7_STAGES.join(",")) problems.push(`visit v7: stages must be exactly ${EXPECTED_V7_STAGES.join(" → ")}`);
     const intro = isRecord(v7) && isRecord(v7.intro) ? v7.intro : null;
     if (!intro || typeof intro.who !== "string" || typeof intro.make !== "string" || typeof intro.done !== "string") problems.push("visit v7: intro must say who needs help, what is made and what counts as done");
-    checkMissions(raw.missions, problems, c8 ? 8 : c7 ? 7 : v6 ? 6 : 5);
+    checkMissions(raw.missions, problems, c9 ? 9 : c8 ? 8 : c7 ? 7 : v6 ? 6 : 5);
     const missions = Array.isArray(raw.missions) ? raw.missions : [];
     if (!missions.some((m) => isRecord(m) && m.visit === "v7")) problems.push("missions: visit v7 needs its mission");
     if (v6) {
@@ -863,6 +870,13 @@ export function reconcileLearningContent(raw: unknown): ContentReconciliation {
       const pipe = missions.find((m) => isRecord(m) && m.visit === "v10");
       if (!pipe) problems.push("missions: visit v10 needs its mission");
       else if (isRecord(pipe) && pipe.presentation !== "map") problems.push("missions: the v10 mission is a map mission");
+    }
+    if (c9) {
+      const v11 = raw.visits.find((v) => isRecord(v) && v.id === "v11");
+      const stages11 = isRecord(v11) && Array.isArray(v11.stages) ? (v11.stages as unknown[]) : [];
+      if (stages11.join(",") !== EXPECTED_V10_STAGES.join(",")) problems.push(`visit v11: stages must be exactly ${EXPECTED_V10_STAGES.join(" → ")}`);
+      const pond = missions.find((m) => isRecord(m) && m.visit === "v11");
+      if (!pond || !isRecord(pond) || pond.presentation !== "map") problems.push("missions: visit v11 needs its map mission");
     }
     checkNextInterest(isRecord(raw.reflection) ? raw.reflection.nextInterest : null, problems);
   } else {
@@ -998,7 +1012,7 @@ export function isLanguageSegmentId(value: unknown): value is LanguageSegmentId 
 }
 
 export function isVisitId(value: unknown): value is VisitId {
-  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5" || value === "v6" || value === "v7" || value === "v8" || value === "v9" || value === "v10";
+  return value === "v1" || value === "v2" || value === "v3" || value === "v4" || value === "v5" || value === "v6" || value === "v7" || value === "v8" || value === "v9" || value === "v10" || value === "v11";
 }
 
 export function isHarborWorkplaceId(value: unknown): value is HarborWorkplaceId {

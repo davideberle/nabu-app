@@ -143,6 +143,10 @@ export function Debrief({
         </div>
       ) : null}
 
+      {difficultyAnswered && over && closing?.cliffhanger ? (
+        <p className="rounded-2xl px-4 py-3 text-xl font-semibold" style={{ background: "#fff8e1" }} data-testid="debrief-cliffhanger">{closing.cliffhanger}</p>
+      ) : null}
+
       {difficultyAnswered && over ? (
         <div className="flex flex-wrap items-center gap-3">
           <button type="button" className={btn} style={primary} disabled={busy || (needsInterest && !interestReady(interest))} onClick={finish} data-testid="debrief-finish">

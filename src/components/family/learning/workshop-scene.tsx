@@ -27,7 +27,7 @@ import type { ChildId } from "@/lib/family-assistant-turn";
 import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import { browserSpeech, playListening } from "@/lib/family-learning-listening";
 import { AssistantPortrait } from "@/components/family/assistant-portrait";
-import type { Act } from "./mission-world";
+import { SceneCompanion, type Act } from "./mission-world";
 import { Feedback, SolveTask, SpeakerIcon, type SceneTelemetry } from "./mission-scene";
 import { GardenerPortrait, WorkshopGarden, WorkshopPictureView, WorkshopRoom } from "./workshop-pictures";
 import { line, missionNarration, missionSlot, narrated, NARRATION_UI } from "@/lib/family-learning-narration";
@@ -471,6 +471,7 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
     <div className="grid gap-4 pb-16" style={{ color: INK }} data-testid="workshop-scene" data-narrated="true" data-step={active?.id ?? ""} data-kind={active?.kind ?? ""} data-status={active?.status ?? ""} data-narration={narration.status} data-narration-key={script?.key ?? ""}>
       <figure className="flex flex-wrap items-center gap-4 rounded-3xl p-4" style={{ background: "#eef5e4" }} data-testid="workshop-bubble">
         <GardenerPortrait name={who} className="h-20 w-20 shrink-0" />
+        {mission.companion ? <SceneCompanion companion={mission.companion} /> : null}
         <div className="grid min-w-0 flex-1 gap-1" role="group" aria-label={`${who} sagt`}>
           <p className="text-sm font-bold uppercase tracking-wide" style={{ color: "#3d5a2a" }} data-testid="workshop-speaker">{who}</p>
           {/* Visible: the first short line only; every line is spoken (the narration is the instruction, the text is a reminder). */}
@@ -596,7 +597,7 @@ function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; bu
           {q.hint ? <Feedback tone="retry" text={q.hint} /> : null}
         </div>
       ) : null}
-      {open && letters?.offered && !letters.shown ? (
+      {open && letters?.offered && !letters.shown && !(letters.afterMiss && !q?.tries) ? (
         <button type="button" className={cn(btn, "justify-self-start", q?.tries ? "ring-4 ring-amber-400" : "")} style={secondary} disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "letters" })} data-testid="read-letters-open" aria-label="Das ist schwer — Buchstaben zusammen anschauen">
           <span aria-hidden>🔤</span> Buchstaben
         </button>

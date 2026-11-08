@@ -29,7 +29,7 @@ export type MissionPlace = {
 };
 
 /** `voice`: the story voice slot of the six-slot registry (`family-voice-registry.ts`, 2026-10-29); optional — earlier characters keep their routes. */
-export type MissionCharacter = { id: string; name: string; role: string; language: MissionLanguage; plate: string; voice?: import("./family-voice-registry.ts").VoiceSlot };
+export type MissionCharacter = { id: string; name: string; role: string; language: MissionLanguage; plate: string; /** A scene portrait file (public path) when the character has no island plate. */ portrait?: string; voice?: import("./family-voice-registry.ts").VoiceSlot };
 
 /** A line of a story beat or a character; `de` is the reviewed German translation (opening it is recorded as support). */
 export type MissionLine = { speaker: string | null; text: string; language: MissionLanguage; de?: string | null };
@@ -65,6 +65,8 @@ export type MissionRepairWord = {
 };
 
 export type MissionProduce = {
+  /** Nov 8: the word list opens only after a first try (a retrieval or a new word he should try first). */
+  bankAfterAttempt?: boolean;
   language: Exclude<MissionLanguage, "de">;
   frame: string;
   instruction: string;
@@ -163,7 +165,7 @@ export type MissionPart = {
  * place-value mastery.
  */
 /** Isabel Visit 2: what one counter looks like (a garden thing); absent = the plain wooden block of Visit 1. */
-export const COUNTER_ICONS = ["block", "tulip", "strawberry", "pot", "seed", "apple", "carrot", "stick"] as const;
+export const COUNTER_ICONS = ["block", "tulip", "strawberry", "pot", "seed", "apple", "carrot", "stick", "nail"] as const;
 export type CounterIcon = (typeof COUNTER_ICONS)[number];
 /**
  * Exact visible quantities of one question. Visit 2 additions (never used by Visit 1): `icon`; `actor` (who takes away, for a
@@ -218,7 +220,14 @@ export type MissionWrite = {
 export type MissionDecide = {
   prompt: string;
   rule: string;
-  options: { id: string; label: string; viable: boolean; feedback: string; grid?: MissionGrid | null; picture?: string }[];
+  /** `guard`: a short word that gives this right option away; Nokt may not say it while the choice is open. `own`: his own word instead of a preset. */
+  options: { id: string; label: string; viable: boolean; feedback: string; grid?: MissionGrid | null; picture?: string; guard?: string; own?: boolean; word?: string }[];
+  /** Nov 8 arcs: the choice is kept for later visits (`state.story`), e.g. the turtle's name or the roof color. */
+  storyKey?: "turtleName" | "roofColor";
+  /** Exactly one option keeps the rules: a judgment with stated rules, reviewed as such (the default asks for two viable options). */
+  singleViable?: boolean;
+  /** Nokt asks about his reason, but only after this many wrong picks. */
+  noktAfterWrong?: number;
   /** Planned reflection about the reason (with the verified tutor only; never a scored explanation). */
   reflect?: { prompt: string };
 };
@@ -249,6 +258,13 @@ export const WORKSHOP_PICTURES = [
   // Step 1 — Isabel Visit 3 «Ernten und probieren»
   "harvest-apples", "harvest-carrots", "harvest-corn", "corn", "nut", "apple", "nut-and-corn",
   "basket-small-red-apple", "basket-small-green-apple", "basket-big-red-apple",
+  // Nov 8 arcs — Santiago «Die Schildkröte»: the pond plans he hears, June's positions, the name pictures
+  "plan-4x3", "plan-5x3", "plan-4x2", "strip-3m", "strip-4m", "strip-5m", "side-1m", "side-2m", "side-50cm",
+  "crate-shade-pond", "crate-sun-pond", "crate-shade-tree", "crate-between", "food-behind", "food-front", "food-pond",
+  "turtle-tula", "turtle-pepe", "turtle-flip", "turtle-own",
+  // Nov 8 arcs — Isabel «Die Vogelfamilie»
+  "bird", "roof-red", "roof-blue", "roof-yellow", "hang-right", "hang-low", "hang-small-tree", "hang-far",
+  "next-food", "next-bath", "liked-sticks", "liked-read", "liked-roof",
 ] as const;
 export type WorkshopPicture = (typeof WORKSHOP_PICTURES)[number];
 
@@ -259,7 +275,7 @@ export type MissionStepKind = "story" | "read" | "listen" | "calc" | "choice" | 
  * («Buchstaben zusammen anschauen») before or after a reading attempt; opening it is recorded help BEFORE it is shown, and only
  * then is the word spoken. Any later answer is supported, never independent reading.
  */
-export type MissionLetters = { word: string; letters: { letter: string; sound: string; picture?: string }[]; spoken: string; teach: string };
+export type MissionLetters = { word: string; letters: { letter: string; sound: string; picture?: string }[]; spoken: string; teach: string; /** Nov 8: offered only after a miss. */ afterMiss?: boolean };
 
 /**
  * Isabel's workshop — a real-world task away from the screen (build with paper/cardboard, explain a material choice to a
@@ -410,6 +426,12 @@ export type MissionDef = {
   /** Content v6: the painted scene (build-time static asset id) and its description. */
   scene?: { art: string; alt: string };
   nextAdventure?: MissionNextAdventure;
+  /** Nov 8 arcs: a story character shown on every scene beside the speaker (the turtle, the two robins). `frames` = spritesheet frames in a row; frame 0 is shown. */
+  companion?: { id: string; name: string; src: string; frames: number };
+  /** Nov 8 arcs: the next visit is already decided inside the arc, so the closing asks nothing about it. */
+  noNextChoice?: boolean;
+  /** Nov 8 arcs: this visit's closing screens (first question; a picture choice of what she liked instead of the enjoyment question). */
+  closing?: { prompt?: string; /** Read last on the closing screen: what happens next in the story. */ cliffhanger?: string; liked?: { prompt: string; skipLabel: string; options: { id: string; label: string; picture: string }[] } };
   /**
    * Isabel Visit 2 (I2-04): `auto` = after the deliberate start every scene's essential instruction, feedback and ending is
    * spoken by itself, with one replay/stop control (no per-line speech buttons). Absent = the released per-line «Anhören».
@@ -472,12 +494,15 @@ export const EXPECTED_MISSION_STEP_IDS_GARDEN: readonly string[] = ["G1-REQUEST"
 /** Content version 7 (Visit 8): version 6 plus the greenhouse map mission of visit v9, by stable id. */
 export const EXPECTED_MISSION_IDS_V7: readonly string[] = [...EXPECTED_MISSION_IDS_V6, "MISSION-GREENHOUSE-GROW"];
 export const EXPECTED_MISSION_IDS_V8: readonly string[] = [...EXPECTED_MISSION_IDS_V7, "MISSION-WATER-PIPE"];
+export const EXPECTED_MISSION_IDS_V9: readonly string[] = [...EXPECTED_MISSION_IDS_V8, "MISSION-TURTLE-POND"];
 export const EXPECTED_MISSION_STEP_IDS_GREENHOUSE: readonly string[] = ["H1-PLAN", "H2-POTS", "H3-POTS-AGAIN", "H4-FLOOR", "H5-PLANS", "H6-CHOOSE", "H7-JUNE", "H8-TOOLS", "H9-WATERING", "H10-TYPING", "H11-JOURNAL", "H12-DONE"];
 /** Step 1 (content v8, Visit 9): the water pipe — warm-up, adaptive versions (harder/easier/normal-again), home task. */
 export const EXPECTED_MISSION_STEP_IDS_WATER_PIPE: readonly string[] = ["P1-START", "P2-PIPES", "P3-TANKBED", "P4-REGADERA", "P5-BEDS", "P5H-BEDS-BIG", "P5E-BEDS-SMALL", "P5N-BEDS-AGAIN", "P6-EDGE", "P6E-EDGE-SMALL", "P6N-EDGE-AGAIN", "P6H-LITERS", "P6D-ROUTE", "P7-JUNE", "P7H-JUNE-MORE", "P7E-JUNE-SHORT", "P8-ROSA", "P8H-ROSA-MORE", "P8E-ROSA-SHORT", "P9-TUBO", "P10-TYPING", "P11-JOURNAL", "P12-DONE"];
-export const EXPECTED_MISSION_STEPS: Readonly<Record<string, readonly string[]>> = { "MISSION-SHIP-SUPPLY": EXPECTED_MISSION_STEP_IDS_V5, "MISSION-ISLAND-GARDEN": EXPECTED_MISSION_STEP_IDS_GARDEN, "MISSION-GREENHOUSE-GROW": EXPECTED_MISSION_STEP_IDS_GREENHOUSE, "MISSION-WATER-PIPE": EXPECTED_MISSION_STEP_IDS_WATER_PIPE };
+/** Content v9 (Santiago Visit 10): the first visit of the turtle arc. */
+export const EXPECTED_MISSION_STEP_IDS_TURTLE: readonly string[] = ["T1-BEACH", "T1R-RADIO", "T2-AROUND", "T2G-GRID", "T2S-TUBO", "T3-MATEO", "T3E-LENGTH", "T3H-DEPTH", "T4-AREA", "T4E-SMALL", "T4H-BEACH", "T5-STONES", "T5E-SMALL", "T5H-HALF", "T6-SPOT", "T7-JUNE", "T7H-BETWEEN", "T8-PIEDRAS", "T9-TYPING", "T10-JOURNAL", "T11-NAME", "T12-END"];
+export const EXPECTED_MISSION_STEPS: Readonly<Record<string, readonly string[]>> = { "MISSION-TURTLE-POND": EXPECTED_MISSION_STEP_IDS_TURTLE, "MISSION-SHIP-SUPPLY": EXPECTED_MISSION_STEP_IDS_V5, "MISSION-ISLAND-GARDEN": EXPECTED_MISSION_STEP_IDS_GARDEN, "MISSION-GREENHOUSE-GROW": EXPECTED_MISSION_STEP_IDS_GREENHOUSE, "MISSION-WATER-PIPE": EXPECTED_MISSION_STEP_IDS_WATER_PIPE };
 /** Every known mission step id (closed telemetry vocabulary). */
-export const ALL_MISSION_STEP_IDS: readonly string[] = [...EXPECTED_MISSION_STEP_IDS_V5, ...EXPECTED_MISSION_STEP_IDS_GARDEN, ...EXPECTED_MISSION_STEP_IDS_GREENHOUSE, ...EXPECTED_MISSION_STEP_IDS_WATER_PIPE];
+export const ALL_MISSION_STEP_IDS: readonly string[] = [...EXPECTED_MISSION_STEP_IDS_V5, ...EXPECTED_MISSION_STEP_IDS_GARDEN, ...EXPECTED_MISSION_STEP_IDS_GREENHOUSE, ...EXPECTED_MISSION_STEP_IDS_WATER_PIPE, ...EXPECTED_MISSION_STEP_IDS_TURTLE];
 
 function normalize(value: string): string {
   return value.toLowerCase().normalize("NFC").replace(/[.,!?;:¡¿"'’]/g, " ").replace(/\s+/g, " ").trim();
@@ -513,7 +538,7 @@ export function checkMissions(raw: unknown, problems: string[], contentVersion =
     problems.push("missions: list required from content version 5");
     return;
   }
-  const expectedIds = contentVersion >= 8 ? EXPECTED_MISSION_IDS_V8 : contentVersion >= 7 ? EXPECTED_MISSION_IDS_V7 : contentVersion >= 6 ? EXPECTED_MISSION_IDS_V6 : EXPECTED_MISSION_IDS_V5;
+  const expectedIds = contentVersion >= 9 ? EXPECTED_MISSION_IDS_V9 : contentVersion >= 8 ? EXPECTED_MISSION_IDS_V8 : contentVersion >= 7 ? EXPECTED_MISSION_IDS_V7 : contentVersion >= 6 ? EXPECTED_MISSION_IDS_V6 : EXPECTED_MISSION_IDS_V5;
   const ids = raw.map((m) => (isRecord(m) && typeof m.id === "string" ? m.id : "?"));
   const missing = expectedIds.filter((id) => !ids.includes(id));
   const extra = ids.filter((id) => !expectedIds.includes(id));
@@ -590,6 +615,7 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
     for (const line of [...(Array.isArray(s.intro) ? s.intro : []), ...(Array.isArray(s.done) ? s.done : [])]) {
       if (!isRecord(line) || !str(line.text) || !["de", "en", "es"].includes(String(line.language))) problems.push(`${sl}: malformed line`);
       else if (line.language !== "de" && !str(line.de)) problems.push(`${sl}: a ${String(line.language)} line needs its reviewed German translation`);
+      else if (line.language !== "de" && /\{[Tt]urtle\}/.test(String(line.text))) problems.push(`${sl}: a recorded line never names a child's choice (no {turtle} in a foreign-language line)`);
     }
     if (s.doneBy !== undefined) {
       const db = isRecord(s.doneBy) ? s.doneBy : null;
@@ -718,7 +744,9 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
         const opts = Array.isArray(d?.options) ? (d!.options as unknown[]) : [];
         if (!d || !str(d.prompt) || !str(d.rule) || opts.length < 2) problems.push(`${sl}: decide needs a prompt, the rule and at least two options`);
         const viable = opts.filter((o) => isRecord(o) && o.viable === true);
-        if (viable.length < 2) problems.push(`${sl}: a judgment offers at least two viable options (otherwise it is a quiz, use solve)`);
+        if (viable.length < 2 && d?.singleViable !== true) problems.push(`${sl}: a judgment offers at least two viable options (otherwise it is a quiz, use solve)`);
+        if (d?.singleViable === true && viable.length !== 1) problems.push(`${sl}: singleViable means exactly one option keeps the rules`);
+        if (opts.some((o) => isRecord(o) && o.own === true) && !str(d?.storyKey)) problems.push(`${sl}: a child's own word is kept only as a story choice (storyKey)`);
         for (const o of opts) {
           if (!isRecord(o) || !str(o.id) || !str(o.label) || typeof o.viable !== "boolean" || !str(o.feedback)) problems.push(`${sl}: malformed option`);
           else if (o.grid !== undefined && o.grid !== null) checkGrid(o.grid, `${sl}/${String(o.id)}`, problems, true);
@@ -744,7 +772,8 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
     if (!r || !Number.isInteger(r.maxPartAttempts) || (r.maxPartAttempts as number) < 3 || !Number.isInteger(r.maxPracticeAttempts) || (r.maxPracticeAttempts as number) < 1) problems.push(`${label}: rules.maxPartAttempts (≥ 3: recheck, stuck, teach) and maxPracticeAttempts required`);
     const na = isRecord(m.nextAdventure) ? m.nextAdventure : null;
     const choiceList = Array.isArray(na?.choices) ? (na!.choices as unknown[]) : [];
-    if (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choiceList.length < 2 || choiceList.length > 3 || choiceList.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !["greenhouse", "water"].includes(String(c.picture)))) problems.push(`${label}: nextAdventure needs a prompt, a hint, two or three pictured choices and the own-idea label`);
+    if (m.noNextChoice === true && na) problems.push(`${label}: a visit with noNextChoice has no nextAdventure`);
+    if (m.noNextChoice !== true && (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choiceList.length < 2 || choiceList.length > 3 || choiceList.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !["greenhouse", "water"].includes(String(c.picture))))) problems.push(`${label}: nextAdventure needs a prompt, a hint, two or three pictured choices and the own-idea label`);
   } else if (mapMission) {
     // Map missions (content v7): the walkable island between clear task scenes — reviewed problems, a judgment, one own sentence.
     if (solves < 2) problems.push(`${label}: a map mission needs at least two reviewed problems`);
@@ -755,7 +784,8 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
     if (!r || !Number.isInteger(r.maxPartAttempts) || (r.maxPartAttempts as number) < 3 || !Number.isInteger(r.maxPracticeAttempts) || (r.maxPracticeAttempts as number) < 1) problems.push(`${label}: rules.maxPartAttempts (≥ 3) and maxPracticeAttempts required`);
     const na = isRecord(m.nextAdventure) ? m.nextAdventure : null;
     const choiceList = Array.isArray(na?.choices) ? (na!.choices as unknown[]) : [];
-    if (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choiceList.length < 2 || choiceList.length > 3 || choiceList.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !["greenhouse", "water"].includes(String(c.picture)))) problems.push(`${label}: nextAdventure needs a prompt, a hint, two or three pictured choices and the own-idea label`);
+    if (m.noNextChoice === true && na) problems.push(`${label}: a visit with noNextChoice has no nextAdventure`);
+    if (m.noNextChoice !== true && (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choiceList.length < 2 || choiceList.length > 3 || choiceList.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !["greenhouse", "water"].includes(String(c.picture))))) problems.push(`${label}: nextAdventure needs a prompt, a hint, two or three pictured choices and the own-idea label`);
   } else {
     if (calcs < 3 || calcs > 5) problems.push(`${label}: 3–5 connected calculations per mission (got ${calcs}); counts are tunable visit data`);
     if (choices < 1) problems.push(`${label}: at least one planning/logic choice`);

@@ -1105,7 +1105,7 @@ function StartOrWait({ child, view, busy, onStart, notice, markers }: { child: C
           {notice ? <p className="mt-2 text-base text-primary">{notice}</p> : null}
           {nextDef ? (
             <button ref={startRef} type="button" onClick={onStart} disabled={busy} className={cn(primaryButton, "mt-4 min-h-16 px-8 text-xl")} data-testid="start-visit" data-visit={nextDef} data-ordinal={view.next.ordinal ?? ""}>
-              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" || nextDef === "v6" || nextDef === "v7" || nextDef === "v8" || nextDef === "v9" || nextDef === "v10" ? `Besuch ${view.next.ordinal ?? (nextDef === "v10" ? 9 : nextDef === "v9" ? 8 : nextDef === "v8" ? 7 : nextDef === "v7" ? 6 : nextDef === "v6" ? 5 : nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
+              {nextDef === "v1" ? "Los geht's" : nextDef === "v4" || nextDef === "v5" || nextDef === "v6" || nextDef === "v7" || nextDef === "v8" || nextDef === "v9" || nextDef === "v10" || nextDef === "v11" ? `Besuch ${view.next.ordinal ?? (nextDef === "v10" ? 9 : nextDef === "v9" ? 8 : nextDef === "v8" ? 7 : nextDef === "v7" ? 6 : nextDef === "v6" ? 5 : nextDef === "v5" ? 4 : 3)} starten` : nextDef === "v3" ? "Angefangene Aufgabe zu Ende bringen" : "Weiter geht's"}
             </button>
           ) : null}
         </div>

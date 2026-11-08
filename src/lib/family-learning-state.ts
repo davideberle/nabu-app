@@ -62,7 +62,7 @@ import { applyReasoningChoice, applyReasoningReply, applyReasoningTurn, childExp
 import { sha256Hex } from "./family-learning-hash.ts";
 import { liveTutorDeferred } from "./family-learning-deferral.ts";
 import { farewellLines } from "./family-learning-narration.ts";
-import { applyMissionAction, buildMissionView, chosenGrid, chosenOption, mapEnding, narratedWorkshopEnding, narratedWorkshopRecap, workshopEnding, workshopRecap, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, stepStatuses, visibleWorld, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
+import { applyMissionAction, buildMissionView, fillStoryTokens, chosenGrid, chosenOption, mapEnding, narratedWorkshopEnding, narratedWorkshopRecap, workshopEnding, workshopRecap, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, stepStatuses, visibleWorld, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
 import { applyNoktTalk, noktTalkView } from "./family-learning-nokt-talk.ts";
 import { originWithoutBinding, provenanceOf, receiptOrigin as bindReceipt, type InvalidReceipt, type ReceiptInput, type VerifiedReceipt } from "./family-learning-trust.ts";
 import {
@@ -443,6 +443,9 @@ export type LogReviewRecord = {
   at: string;
 };
 
+export type StoryChoice = { value: string; optionId: string; kind: "preset" | "own"; visit: string; at: string };
+export type StoryChoices = { turtleName?: StoryChoice; roofColor?: StoryChoice };
+
 export type MissionState = {
   missionId: string;
   contentVersion: number;
@@ -499,6 +502,8 @@ export type MissionState = {
   missions?: Record<string, MissionRun>;
   /** Content v5: the child's own answers to "what next?" (verbatim, append-only) — additive; absent on earlier rows. */
   interests?: InterestRecord[];
+  /** Nov 8 arcs: story choices that last across visits (the turtle's name, the roof color). */
+  story?: StoryChoices;
 };
 
 export type ParentSettings = {
@@ -814,7 +819,7 @@ export type LearningOp =
   /** Content v7 (Visit 8): one Nokt conversation action outside the task talk (Home, welcome, visit, writing, debrief). Only the Nokt turn routes may apply it. */
   | { op: "nokt-talk"; action: import("./family-learning-nokt-talk.ts").NoktTalkAction }
   /** Content v7: the closing button answers (enjoyment, clarity) recorded BEFORE the spoken look back, so the debrief can use them. */
-  | { op: "closing-feedback"; feedback: { difficulty?: string | null; enjoyment?: string | null; clarity?: string | null } };
+  | { op: "closing-feedback"; feedback: { difficulty?: string | null; enjoyment?: string | null; clarity?: string | null; liked?: string | null } };
 
 export type OpEnv = {
   content: LearningContent;
@@ -976,6 +981,9 @@ export function nextVisitAvailability(
   // is never replayed or reset. Under content version 7 (cap / rollback) nothing further is offered and a running v10 is parked.
   const hasV10 = content.visits.some((v) => v.id === "v10");
   if (hasV10 && !finished.includes("v10")) return { visit: "v10", availableAt: null };
+  // Arc «Die Schildkröte» (content v9, 2026-11-08): the map mission `v11` follows Visit 9. Under the cap a running v11 is parked.
+  const hasV11 = content.visits.some((v) => v.id === "v11");
+  if (hasV11 && !finished.includes("v11")) return { visit: "v11", availableAt: null };
   return { visit: null, availableAt: null, reason: "all-visits-done" };
 }
 
@@ -2502,7 +2510,9 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       // "lieber nicht sagen") is stored verbatim in the child's evidence. Nothing is inferred when no answer is given.
       // Content v7: the spoken look back may already have recorded his own next-interest words (verbatim, server-side).
       const debriefed = (state.interests ?? []).some((i) => i.visit === visit.id && i.at >= visit.startedAt && i.source === "debrief");
-      if (content.reflection.nextInterest && (op.interest || !debriefed)) {
+      // Nov 8 arcs: a visit whose next step is decided inside the story asks nothing about the next visit.
+      const asksNext = !missionDefFor(content, visit.id)?.noNextChoice;
+      if (asksNext && content.reflection.nextInterest && (op.interest || !debriefed)) {
         if (!op.interest) throw new LearningOpError("invalid", "the closing asks what comes next — answer it or choose one of its buttons");
         try {
           recordInterest(state, records, op.interest, visit.id, "closing", nowIso, env.newId, missionDefFor(content, visit.id)?.nextAdventure ?? null);
@@ -2539,12 +2549,13 @@ export function applyLearningOp(input: MissionState, op: LearningOp, env: OpEnv)
       const visit = currentVisit(state);
       const closingPresentation = missionDefFor(content, visit.id)?.presentation;
       if (closingPresentation !== "map" && closingPresentation !== "workshop") throw new LearningOpError("not-available", "this visit closes with the reflection form");
-      const dims = [{ id: "difficulty", options: content.reflection.options }, ...(content.reflection.dimensions ?? [])];
+      const closingDef = missionDefFor(content, visit.id);
+      const dims = [{ id: "difficulty", options: content.reflection.options }, ...closingDimensions(content, closingDef)];
       const answers: Record<string, string> = {};
       const skipped: string[] = [];
       const unanswered: string[] = [];
       for (const dim of dims) {
-        const given = op.feedback?.[dim.id as "enjoyment" | "clarity" | "difficulty"];
+        const given = op.feedback?.[dim.id as "enjoyment" | "clarity" | "difficulty" | "liked"];
         if (given === null || given === "") skipped.push(dim.id);
         else if (given === undefined) unanswered.push(dim.id);
         else if (dim.options.some((o) => o.id === given)) answers[dim.id] = given;
@@ -2904,7 +2915,7 @@ export type LogReviewView = {
 };
 
 /** Content v7: what the look back shows before Nokt speaks — the visible result (his own plan), one evidenced success, one next step, his button answers so far. */
-export type ClosingView = { success: string | null; next: string; artifact: string | null; plan: import("./family-learning-mission-spec.ts").MissionGrid | null; feedback: Record<string, string | null>; made?: { id: string; label: string; picture: string | null; room: string } | null; recap?: string | null; /** Isabel Visit 2+ (narrated): the spoken goodbye after the closing questions (the outcome's reviewed done lines + the visit's saved line). */ farewell?: string[] | null; narrated?: boolean };
+export type ClosingView = { cliffhanger?: string; success: string | null; next: string; artifact: string | null; plan: import("./family-learning-mission-spec.ts").MissionGrid | null; feedback: Record<string, string | null>; made?: { id: string; label: string; picture: string | null; room: string } | null; recap?: string | null; /** Isabel Visit 2+ (narrated): the spoken goodbye after the closing questions (the outcome's reviewed done lines + the visit's saved line). */ farewell?: string[] | null; narrated?: boolean };
 
 /** Isabel Visit 2+: the running (else the next) visit's own reviewed wording and its mission's story character; null for Visit 1. */
 export type VisitText = { visit: string; title: string; hub: string; mission: string; done: string; start: string; character: string | null; narrated: boolean; /** The story character's voice slot (six-slot registry), or null. */ voice: import("./family-voice-registry.ts").VoiceSlot | null };
@@ -2982,7 +2993,7 @@ export type ChildView = {
   reminder: ReminderCue | null;
   /** The reopenable visit reports (finished visits complete, the running one partial), oldest first. */
   reports: VisitReport[];
-  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string }[]; skipLabel: string }[]; nextInterest: import("./family-learning-mission-spec.ts").NextInterestDef | null; adventure?: import("./family-learning-mission-spec.ts").MissionNextAdventure | null; closing?: ClosingView | null } | null;
+  reflection: { prompt: string; options: { id: string; label: string }[]; skipLabel: string | null; dimensions: { id: string; prompt: string; options: { id: string; label: string; picture?: string }[]; skipLabel: string }[]; nextInterest: import("./family-learning-mission-spec.ts").NextInterestDef | null; adventure?: import("./family-learning-mission-spec.ts").MissionNextAdventure | null; closing?: ClosingView | null } | null;
   /** Content v5 (Visit 6): the running mission (stage `mission`), answer keys stripped. */
   mission: MissionView | null;
   /** Step 2 B: the home map (present only when FAMILY_HOME_MAP enables it for this child). */
@@ -2994,6 +3005,8 @@ export type ChildView = {
   tutor: TutorContext | null;
   retention: string;
   /** Content v6: whether Nokt can talk on this surface (deployed builds: never; `fictional-stub` only on an isolated local DB). */
+  /** Nov 8 arcs: choices the story keeps across visits (the turtle's name, the roof color). */
+  story?: StoryChoices;
   nokt?: { mode: import("./family-learning-nokt.ts").NoktMode; mic?: boolean; talk?: ReturnType<typeof noktTalkView> & { /** A parent switched off Nokt's conversations for this visit: nothing opens, nothing waits for Nokt. */ skip: boolean } };
 };
 
@@ -3044,7 +3057,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
       case "log-transfer": return "Schreib einen neuen kurzen Satz.";
       case "summary": return "Das hast du heute geschafft.";
       case "reflect": return "Wie war es heute?";
-      case "mission": return state.currentVisit === "v10" ? "Geh über die Insel: Bau die Wasserleitung zum Gewächshaus." : state.currentVisit === "v9" ? "Geh über die Insel: Plan das neue Gewächshaus." : state.currentVisit === "v8" ? "Hilf Rosa, die Setzlinge in den Inselgarten zu bringen." : "Geh über die Insel: Finde heraus, was das Schiff braucht.";
+      case "mission": return state.currentVisit === "v11" ? "Geh über die Insel: Plan den Teich für die Schildkröte." : state.currentVisit === "v10" ? "Geh über die Insel: Bau die Wasserleitung zum Gewächshaus." : state.currentVisit === "v9" ? "Geh über die Insel: Plan das neue Gewächshaus." : state.currentVisit === "v8" ? "Hilf Rosa, die Setzlinge in den Inselgarten zu bringen." : "Geh über die Insel: Finde heraus, was das Schiff braucht.";
     }
   }
   const availability = nextVisitAvailability(state, content, now);
@@ -3059,6 +3072,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
     if (availability.visit === "v7") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v7") ?? 6}): die Fahrt zum Forschungsschiff.`;
     if (availability.visit === "v8") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v8") ?? 7}): Rosas Inselgarten.`;
     if (availability.visit === "v9") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v9") ?? 8}): das grössere Gewächshaus.`;
+    if (availability.visit === "v11") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v11") ?? 10}): die Schildkröte.`;
     if (availability.visit === "v10") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v10") ?? 9}): die Wasserleitung.`;
     return "Zurück zur Basis — ein neuer Besuch wartet.";
   }
@@ -3067,6 +3081,12 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
 
 /** Optional per-request inputs of the view (follow-on): the learner's time zone, the stored reviews the progress strip may cite and the served vocabulary inventory. */
 /** Content v7 (map missions): the closing card of the look back; null for every earlier mission (their reflection form is unchanged). */
+/** The extra closing questions of a visit: its own picture choice when it has one, else the content's dimensions. */
+function closingDimensions(content: LearningContent, def: import("./family-learning-mission-spec.ts").MissionDef | null | undefined): { id: string; prompt: string; options: { id: string; label: string; picture?: string }[]; skipLabel: string }[] {
+  const liked = def?.closing?.liked;
+  return liked ? [{ id: "liked", prompt: liked.prompt, options: liked.options, skipLabel: liked.skipLabel }] : (content.reflection.dimensions ?? []);
+}
+
 function closingView(state: MissionState, content: LearningContent, visit: VisitId): ClosingView | null {
   const def = missionDefFor(content, visit);
   if (!def || (def.presentation !== "map" && def.presentation !== "workshop")) return null;
@@ -3095,7 +3115,7 @@ function closingView(state: MissionState, content: LearningContent, visit: Visit
   const feedback: Record<string, string | null> = {};
   for (const [k, val] of Object.entries(v?.feedback?.answers ?? {})) feedback[k] = val;
   for (const k of v?.feedback?.skipped ?? []) feedback[k] = null;
-  return { success: ending.success, next: ending.next, artifact: world.length ? world.map((w) => w.label).join(" · ") : null, plan: decide ? chosenGrid(def, run, decide.id) : null, feedback };
+  return { success: ending.success, next: ending.next, artifact: world.length ? world.map((w) => w.label).join(" · ") : null, plan: decide ? chosenGrid(def, run, decide.id) : null, feedback, ...(def.closing?.cliffhanger ? { cliffhanger: def.closing.cliffhanger } : {}) };
 }
 
 export type ChildViewOptions = { /** Story voice slots with a selected voice on the server (booleans only). */ storyVoices?: import("./family-voice-registry.ts").VoiceSlot[]; timeZone?: string | null; progressSources?: ProgressSources | null; vocabulary?: VocabularyInventory | null; tutorAvailable?: boolean; noktMode?: import("./family-learning-nokt.ts").NoktMode; noktMic?: boolean; /** Step 2 B: FAMILY_HOME_MAP (off | santiago | isabel | all). */ homeMap?: import("./family-home-map.ts").HomeMapFlag };
@@ -3411,8 +3431,8 @@ export function buildChildView(state: MissionState, content: LearningContent, se
         }),
     reports: buildVisitReports(state, content),
     transfer,
-    reflection: stage === "reflect" ? { prompt: content.reflection.prompt, options: content.reflection.options, skipLabel: content.reflection.skipLabel ?? null, dimensions: content.reflection.dimensions ?? [], nextInterest: content.reflection.nextInterest ?? null, adventure: running ? missionDefFor(content, running.id)?.nextAdventure ?? null : null, ...(running ? { closing: closingView(state, content, running.id) } : {}) } : null,
-    mission: stage === "mission" && running ? buildMissionView(state, content, running.id, { tutorAvailable: options.tutorAvailable === true }) : null,
+    reflection: stage === "reflect" ? fillStoryTokens({ prompt: (running ? missionDefFor(content, running.id)?.closing?.prompt : null) ?? content.reflection.prompt, options: content.reflection.options, skipLabel: content.reflection.skipLabel ?? null, dimensions: closingDimensions(content, running ? missionDefFor(content, running.id) : null), nextInterest: running && missionDefFor(content, running.id)?.noNextChoice ? null : content.reflection.nextInterest ?? null, adventure: running ? missionDefFor(content, running.id)?.nextAdventure ?? null : null, ...(running ? { closing: closingView(state, content, running.id) } : {}) }, state.story) : null,
+    mission: stage === "mission" && running ? fillStoryTokens(buildMissionView(state, content, running.id, { tutorAvailable: options.tutorAvailable === true }), state.story) : null,
     interestPrompt: (() => {
       const ni = content.reflection.nextInterest;
       const pending = ni && stage !== "reflect" ? pendingInterest(state, content) : null;
@@ -3428,6 +3448,7 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     retention: content.retention.policy,
     // Nokt is Santiago's companion: for any other child's content (Isabel's workshop) the view says «unavailable» whatever the
     // server's conversation mode is — no Nokt button, no look-back talk, no microphone; Old Lila's lines are reviewed content.
+    story: state.story ?? {},
     nokt: (() => {
       const mode = content.child === "santiago" ? options.noktMode ?? "unavailable" : "unavailable";
       return { mode, mic: mode !== "unavailable" && !!options.noktMic, ...(mode !== "unavailable" && content.child === state.child && (content.missions ?? []).some((m) => m.presentation === "map") ? { talk: { ...noktTalkView(state, content), skip: !!settings.noktSkipVisit && state.visits.some((v) => !v.finishedAt && v.startedAt === settings.noktSkipVisit) } } : {}) };

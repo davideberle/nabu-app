@@ -734,20 +734,27 @@ function SceneHeader({ view, mission, active, placeLabel, onBack }: { view: Chil
   );
 }
 
+/** Nov 8 arcs: the story's other character, on every scene (the turtle; Isabel's two robins). */
+export function SceneCompanion({ companion }: { companion: { name: string; src: string; frames: number } }) {
+  return <span role="img" aria-label={companion.name} className="h-16 w-16 shrink-0 bg-no-repeat" style={{ backgroundImage: `url(${companion.src})`, backgroundSize: `${companion.frames * 100}% 100%` }} data-testid="scene-companion" />;
+}
+
 /** The focused scene's top: the character (like Isabel's banner), the one current line, the way back and the progress dots. */
 function SceneBanner({ mission, active, line, saying, onReplay, onBack }: { mission: MissionView; active: MissionActiveView; line: MissionActiveView["intro"][number] | null; saying: boolean; onReplay: (() => void) | null; onBack: (() => void) | null }) {
   const who = (line?.speaker ? mission.characters.find((c) => c.id === line.speaker) : null) ?? (active.character ? mission.characters.find((c) => c.id === active.character) : null) ?? mission.characters.find((c) => c.plate === "planner") ?? mission.characters[0] ?? null;
   const plate = who && CHARACTER_PLATE[who.plate ?? ""] ? plateFor(CHARACTER_PLATE[who.plate ?? ""]) : null;
+  const portrait = who?.portrait ?? plate?.href ?? null;
   const speaker = line?.speaker ? mission.characters.find((c) => c.id === line.speaker)?.name ?? null : null;
   const { required, resolved } = mission.progress;
   return (
     <figure className="flex items-center gap-4 rounded-3xl p-4" style={{ background: "#eef5e4" }} data-testid="scene-banner" data-character={who?.id ?? ""}>
       <span className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full" style={{ background: "#d6e6f0" }} data-testid="scene-portrait">
-        {plate ? (
+        {portrait ? (
           // eslint-disable-next-line @next/next/no-img-element -- a small static plate cropped to the face
-          <img src={plate.href} alt={who?.name ?? ""} className="absolute left-1/2 top-1 h-[250%] w-auto max-w-none -translate-x-1/2" />
+          <img src={portrait} alt={who?.name ?? ""} className={who?.portrait ? "absolute inset-0 h-full w-full object-cover" : "absolute left-1/2 top-1 h-[250%] w-auto max-w-none -translate-x-1/2"} />
         ) : null}
       </span>
+      {mission.companion ? <SceneCompanion companion={mission.companion} /> : null}
       <div className="grid min-w-0 flex-1 gap-1" role="group" aria-label={speaker ? `${speaker} sagt` : undefined}>
         {speaker ? <p className="text-sm font-bold uppercase tracking-wide" style={{ color: "#3d5a2a" }}>{speaker}</p> : null}
         {line ? <p className="text-xl leading-snug sm:text-2xl" lang={line.language} data-testid="scene-line" data-language={line.language} data-fold="question">{line.text}</p> : null}

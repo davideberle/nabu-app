@@ -15,7 +15,7 @@ export const TILE_W = 128; // logical
 export const TILE_H = 64; // logical
 export const ART_SCALE = 2; // files are delivered at 2×
 
-export type AssetKind = "island" | "ground" | "piece" | "marker" | "avatar" | "effect";
+export type AssetKind = "island" | "ground" | "piece" | "marker" | "avatar" | "effect" | "scene";
 
 export type AssetDef = {
   /** File name without extension under public/family/home-map/. */
@@ -80,6 +80,15 @@ export const ASSETS: AssetDef[] = [
   piece("i-harvest-table-corn-built", "isabel", "Wooden harvest table with a checked cloth and a basket of corn cobs.", "built", 2, 1, 110, "Variant for «Mais» (IH2-PICK = corn)."),
   piece("i-harvest-table-site", "isabel", `Harvest table site: ${SITE} An empty table top leaning on two trestles.`, "site", 2, 1, 60),
 
+  // Nov 8 arcs: the turtle's pond (Santiago Visit 10 = v11) and the birdhouse (Isabel Visit 4 = v5).
+  piece("s-pond-site", "santiago", `Pond site: ${SITE} Stakes marking a rectangle and a neat stack of round stones.`, "site", 2, 2, 40),
+  piece("s-pond-dug-built", "santiago", "An empty dug pond with a ring of round stones around the edge (no water yet: the next visit fills it).", "built", 2, 2, 50),
+  piece("s-turtle-crate-built", "santiago", "A low wooden crate in a patch of shade with a young sea turtle resting inside, one flipper bandaged.", "built", 1, 1, 70, "Stands from the start of the visit: the turtle arrives in the opening scene."),
+  piece("i-birdhouse-site", "isabel", `Birdhouse site: ${SITE} A post in the ground with a small pile of sticks and a few nails.`, "site", 1, 1, 60),
+  piece("i-birdhouse-red-built", "isabel", "A small wooden birdhouse with a round hole on a tall post, RED roof.", "built", 1, 1, 150, "Variant for the choice «Rot» (IV10-ROOF = red)."),
+  piece("i-birdhouse-blue-built", "isabel", "A small wooden birdhouse with a round hole on a tall post, BLUE roof.", "built", 1, 1, 150, "Variant for «Blau» (IV10-ROOF = blue)."),
+  piece("i-birdhouse-yellow-built", "isabel", "A small wooden birdhouse with a round hole on a tall post, YELLOW roof.", "built", 1, 1, 150, "Variant for «Gelb» (IV10-ROOF = yellow)."),
+
   // Markers and signs (shared by both worlds).
   { id: "marker-current", world: "shared", kind: "marker", shows: "Soft glowing ring on the ground (warm yellow, translucent) marking a place of today's visit.", size: { w: 256, h: 128 }, anchor: { x: 128, y: 64 }, format: "png", notes: "Diamond-shaped glow lying flat on one tile; anchor = tile centre. The game pulses it." },
   { id: "sign", world: "shared", kind: "marker", shows: "Small wooden signpost (blank board on one post, as in the references).", size: { w: 128, h: 160 }, anchor: { x: 64, y: 152 }, format: "png", notes: "No text on the board: the game writes the place name in its own font." },
@@ -89,6 +98,10 @@ export const ASSETS: AssetDef[] = [
   { id: "isabel-avatar", world: "isabel", kind: "avatar", shows: "Isabel's gardener: chibi girl with ponytail, pink jacket and a purple backpack (as in the reference).", size: { w: 768, h: 1024 }, anchor: { x: 96, y: 244 }, format: "png", frames: { w: 192, h: 256, count: 16, layout: "same as santiago-avatar" }, notes: "Anchor per frame = between the feet." },
 
   // Effects.
+  { id: "i-robins", world: "isabel", kind: "effect", shows: "Two small robins (brown back, orange breast) flying as a pair, 4 flapping frames. The game circles them around the birdhouse.", size: { w: 768, h: 192 }, anchor: { x: 96, y: 96 }, format: "png", frames: { w: 192, h: 192, count: 4, layout: "4 frames in one row" }, notes: "Transparent. Frame 0 is also the pair shown beside Ida on her scenes." },
+  // Scene sprites (HTML screens, not the map; the same style, facing the viewer).
+  { id: "portrait-dr-mateo", world: "santiago", kind: "scene", shows: "Dr. Mateo, a friendly Spanish vet, head and shoulders in a green coat, a radio headset around his neck. Rosa's cousin.", size: { w: 320, h: 320 }, anchor: { x: 0, y: 0 }, format: "png", notes: "Shown in a circle of 80 px: keep the face in the middle." },
+  { id: "turtle-scene", world: "santiago", kind: "scene", shows: "The young sea turtle, whole body, one flipper bandaged, looking at the viewer. Transparent background.", size: { w: 320, h: 320 }, anchor: { x: 0, y: 0 }, format: "png", notes: "Shown 64 px beside the character on every scene of this arc." },
   { id: "build-puff", world: "shared", kind: "effect", shows: "Cartoon dust-and-sparkle puff for a piece appearing (8 frames: grow, burst, fade).", size: { w: 3072, h: 256 }, anchor: { x: 192, y: 224 }, format: "png", frames: { w: 384, h: 256, count: 8, layout: "8 frames left to right" }, notes: "Played over the footprint while the piece rises (about 2 s in total with the rise)." },
 ];
 

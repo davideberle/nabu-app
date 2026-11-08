@@ -41,9 +41,9 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
   const reflection = view.reflection!;
   const closing = reflection.closing ?? null;
   const who = view.visitText?.character ?? "";
-  const enjoyment = reflection.dimensions.find((d) => d.id === "enjoyment") ?? null;
+  const enjoyment = reflection.dimensions.find((d) => d.id === "enjoyment" || d.id === "liked") ?? null;
   const [answers, setAnswers] = useState<Record<string, string | null | undefined>>(() => ({ ...(closing?.feedback ?? {}) }));
-  const [step, setStep] = useState<Step>(() => ("difficulty" in (closing?.feedback ?? {}) ? (enjoyment && !("enjoyment" in (closing?.feedback ?? {})) ? "enjoyment" : "next") : "difficulty"));
+  const [step, setStep] = useState<Step>(() => ("difficulty" in (closing?.feedback ?? {}) ? (enjoyment && !(enjoyment.id in (closing?.feedback ?? {})) ? "enjoyment" : "next") : "difficulty"));
   const [interest, setInterest] = useState<InterestAnswer | null>(null);
   const [key] = useState(newKey);
   const adventure = reflection.adventure ?? null;
@@ -66,11 +66,11 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
     await onFinish({ op: "reflect", interest }, key);
   };
 
-  const row = (id: string, options: { id: string; label: string }[], skip: string) => (
+  const row = (id: string, options: { id: string; label: string; picture?: string }[], skip: string) => (
     <div className="flex flex-wrap gap-3" role="group" data-testid={`closing-${id}`}>
       {options.map((o) => (
         <button key={o.id} type="button" className={card} style={{ borderColor: answers[id] === o.id ? "#3f7a3a" : "#d9c6aa" }} aria-pressed={answers[id] === o.id} disabled={busy} onClick={() => answer(id, o.id)} data-testid={`${id}-${o.id}`}>
-          <span className="text-5xl" aria-hidden>{FACES[o.id] ?? "•"}</span>
+          {o.picture ? <WorkshopPictureView id={o.picture} /> : <span className="text-5xl" aria-hidden>{FACES[o.id] ?? "•"}</span>}
           {o.label}
         </button>
       ))}
@@ -90,7 +90,7 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
         <NarrationControl status={narration.status} onReplay={narration.replay} />
       </figure>
       {step === "difficulty" ? row("difficulty", reflection.options, reflection.skipLabel ?? "Lieber nicht sagen") : null}
-      {step === "enjoyment" && enjoyment ? row("enjoyment", enjoyment.options, enjoyment.skipLabel) : null}
+      {step === "enjoyment" && enjoyment ? row(enjoyment.id, enjoyment.options, enjoyment.skipLabel) : null}
       {step === "next" ? (
         <div className="grid gap-4" data-testid="closing-next" data-kind={interest?.kind ?? ""} data-choice={interest?.choice ?? ""}>
           <div className="flex flex-wrap gap-3" role="group" aria-label={adventure?.prompt}>

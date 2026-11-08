@@ -35,6 +35,7 @@ import { NoktButton, NoktPanel, type NoktTranscribe, type NoktTurnFn } from "./n
 import { PlanGrid } from "./plan-grid";
 import { Counters } from "./workshop-pictures";
 import rosaHarbor from "@/assets/family-learning/visit7/rosa-research-harbor.webp";
+import { WorkshopPictureView } from "./workshop-pictures";
 import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 // The palette of the approved preview: sea-green ink, parchment cards, amber retry, green success.
@@ -660,8 +661,8 @@ export function ListenTask({ child, active, busy, act, speech, telemetry, charac
           {q.status === "open" ? (
             <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
               {(q.options ?? []).map((o) => (
-                <button key={o} type="button" className={focused ? "min-h-14 rounded-2xl border-2 px-5 text-lg font-semibold disabled:opacity-50" : "grid min-h-24 w-36 place-items-center gap-1 rounded-2xl border-2 p-2 text-lg font-semibold disabled:opacity-50"} style={{ borderColor: "#8ba8a4", background: "white" }} disabled={busy || !canAnswer} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`}>
-                  {!focused && (PLACE_PICTURES[o] || !listen.noPictures) ? <PlacePicture kind={PLACE_PICTURES[o] ?? "gate"} /> : null}
+                <button key={o} type="button" className={q.pictures?.[o] ? "grid w-40 place-items-center gap-1 rounded-2xl border-2 p-2 text-base font-semibold disabled:opacity-50" : focused ? "min-h-14 rounded-2xl border-2 px-5 text-lg font-semibold disabled:opacity-50" : "grid min-h-24 w-36 place-items-center gap-1 rounded-2xl border-2 p-2 text-lg font-semibold disabled:opacity-50"} style={{ borderColor: "#8ba8a4", background: "white" }} disabled={busy || !canAnswer} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`}>
+                  {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-28 w-28" /> : !focused && (PLACE_PICTURES[o] || !listen.noPictures) ? <PlacePicture kind={PLACE_PICTURES[o] ?? "gate"} /> : null}
                   {o}
                 </button>
               ))}
@@ -790,7 +791,7 @@ export function RequestTask({ active, busy, act, telemetry }: { active: MissionA
                 ))}
               </div>
             </div>
-          ) : (
+          ) : p.bankLocked ? null : (
             <button type="button" className={cn(btn, "justify-self-start")} style={secondary} disabled={busy} onClick={() => { telemetry("hint-open"); void act({ a: "support", step: active.id, kind: "word-bank" }); }} data-testid="hint-open">
               💡 Hinweis: Wörter zeigen
             </button>

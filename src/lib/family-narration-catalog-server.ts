@@ -3,8 +3,8 @@
 // parked. Isabel: her narrated Visits 2 and 3 (every screen line; step 1 adds Visit 3, content v3). Santiago: the story lines his released scenes speak today (foreign
 // bubble lines and listening messages), each in the slot of the line's language × the character's gender. Fixed reviewed scripts
 // only; no child record.
-import isabelWorkshopV3 from "@/data/family-learning/content/isabel-workshop-v3.json";
-import santiagoExpeditionV8 from "@/data/family-learning/content/santiago-expedition-v8.json";
+import isabelWorkshopV4 from "@/data/family-learning/content/isabel-workshop-v4.json";
+import santiagoExpeditionV9 from "@/data/family-learning/content/santiago-expedition-v9.json";
 import { asLearningContent } from "./family-learning-content";
 import { asIsabelContent } from "./family-learning-isabel";
 import { narrationCatalog, storyCatalog, type NarrationLine } from "./family-learning-narration";
@@ -12,8 +12,8 @@ import { narrationCatalog, storyCatalog, type NarrationLine } from "./family-lea
 let cached: NarrationLine[] | null = null;
 export function servedNarrationCatalog(): NarrationLine[] {
   if (!cached) {
-    const isabel = narrationCatalog(asIsabelContent(isabelWorkshopV3)).map((l) => ({ ...l, child: "isabel" as const }));
-    const santiago = storyCatalog(asLearningContent(santiagoExpeditionV8), "santiago");
+    const isabel = narrationCatalog(asIsabelContent(isabelWorkshopV4)).map((l) => ({ ...l, child: "isabel" as const }));
+    const santiago = storyCatalog(asLearningContent(santiagoExpeditionV9), "santiago");
     cached = [...isabel, ...santiago];
   }
   return cached;

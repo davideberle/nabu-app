@@ -145,7 +145,7 @@ describe("sprite manifest", () => {
     const missing: string[] = [];
     for (const w of Object.values(WORLDS)) for (const p of w.pieces) {
       const vars = p.variant ? Object.values(p.variant.options) : [null];
-      for (const v of vars) if (!have.has(`${p.id}${v ? `-${v}` : ""}-built`)) missing.push(`${p.id}${v ? `-${v}` : ""}-built`);
+      for (const v of vars) if (!have.has(p.builtAsset ?? `${p.id}${v ? `-${v}` : ""}-built`)) missing.push(`${p.id}${v ? `-${v}` : ""}-built`);
     }
     deepStrictEqual(missing, []);
     // Sites exist for the visits still to come (Santiago v10, Isabel v4).
@@ -203,7 +203,7 @@ describe("child-device access to the sprites", () => {
     for (const a of ASSETS) ok(isTrackerAllowedPath(assetUrl(a)), assetUrl(a));
     ok(!isTrackerAllowedPath("/family/home-map/other.png"));
     ok(!isTrackerAllowedPath("/family/home-map/"));
-    equal(ASSETS.length, 31);
+    equal(ASSETS.length, 41);
   });
 });
 
@@ -220,7 +220,7 @@ describe("1× ground for windows up to 1440 px", () => {
       deepStrictEqual([meta.width, meta.height], [a.size.w / 2, a.size.h / 2], a.id);
       ok(isTrackerAllowedPath(assetUrl1x(a)), assetUrl1x(a));
     }
-    equal(ALL_ASSET_URLS.length, 34);
+    equal(ALL_ASSET_URLS.length, 44);
     ok(!isTrackerAllowedPath("/family/home-map/s-dock-built@1x.png"));
   });
 });

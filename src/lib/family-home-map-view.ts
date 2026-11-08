@@ -54,5 +54,5 @@ export function homeMapViewFor(state: MissionState, content: LearningContent, vi
       current = { visit: visitId, mission: def.id, places: start ? [{ id: start.id, label: start.label, kind: start.kind }] : [], start: null };
     }
   }
-  return { input: { child: state.child, visits, choices, current }, position: running && view.mission ? view.mission.position : null, canFinish: !!(running && view.mission?.canFinish), presentation: def?.presentation ?? null };
+  return { input: { child: state.child, visits, choices, current, story: state.story }, position: running && view.mission ? view.mission.position : null, canFinish: !!(running && view.mission?.canFinish), presentation: def?.presentation ?? null };
 }
