@@ -160,6 +160,9 @@ try {
   await page.waitForTimeout(250);
   await shot(page, "santiago-walking");
   await page.waitForURL(/\/family\/learn\/mission/, { timeout: 15000 });
+  // Nov 8: a visit started from the map opens with Nokt's welcome in the sidebar; the walk in waits for «Los geht's».
+  await page.waitForSelector("[data-testid='nokt-dock-close'], [data-testid='story-done']", { timeout: 30000 });
+  if (await page.locator("[data-testid='nokt-dock-close']").count()) await page.locator("[data-testid='nokt-dock-close']").click();
   await page.waitForSelector("[data-testid='story-done'], [data-testid='scene-continue']", { timeout: 30000 });
   check("S.tap-place-starts-scene", (await attr(page, "[data-testid='mission-world']", "data-active")) === "P1-START", await attr(page, "[data-testid='mission-world']", "data-active"));
   check("S.nokt-closed-by-default", (await page.locator("[data-testid='nokt-modal'], [data-testid='nokt-panel']").count()) === 0);
@@ -180,7 +183,7 @@ try {
   if ((await page.locator("[data-testid='nokt-button']").count()) === 1) {
     await page.locator("[data-testid='nokt-button']").click();
     await page.waitForTimeout(400);
-    const open = await page.locator("[data-testid='nokt-modal'], [data-testid='nokt-panel'], [data-testid='nokt-dock']").count();
+    const open = await page.locator("[data-testid='nokt-sidebar'], [data-testid='nokt-panel']").count();
     check("S.nokt-opens-on-tap", open >= 1, { open });
     await shot(page, "santiago-nokt-open");
     const close = page.locator("[data-testid='nokt-close'], [data-testid='nokt-dock-close'], [aria-label='Nokt schliessen'], [aria-label='Schliessen']").first();
