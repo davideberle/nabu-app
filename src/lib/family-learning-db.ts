@@ -522,7 +522,7 @@ export type EvidenceAttempt = {
   teachingReason: string | null;
   secondsSinceTeaching: number | null;
   createdAt: string;
-  parentCorrection: { evidence?: string; note?: string; by: string; at: string } | null;
+  parentCorrection: { evidence?: string; note?: string; by: string; at: string; /** The screen was broken: the row stays, it is not evidence. */ annotation?: "display-error" } | null;
 };
 
 /**
@@ -1089,6 +1089,84 @@ export async function recordParentObservation(client: Client, input: ParentObser
   });
   await audit(client, input.adminEmail, "parent-observation", input.child, id, { visit: input.visitId, ...payload });
   return { id, at };
+}
+
+export const DISPLAY_ERROR_NOTE = "Display error, not evidence";
+
+export type DisplayErrorInput = {
+  child: ChildId;
+  /** The content id stored with the child's records. */
+  contentId: string;
+  /** The mission id that prefixes this visit's task ids. */
+  missionId: string;
+  visitId: string;
+  /** Each task with its objective (from the reviewed content): the observation counts toward that objective's skill row. */
+  steps: { step: string; objective: string }[];
+  /** The parent's own words about what the child really did. */
+  observation: string;
+  adminEmail: string;
+};
+
+/**
+ * Nov 8: a task whose screen was broken (Isabel's reading pictures drew nothing). The child's answers are never rewritten: each
+ * attempt row keeps its stored answer, category and correctness; the parent annotation beside it takes it out of the ladder. In
+ * the same transaction, one parent observation per task records what the parent really saw, counted as supported (parent-
+ * observed), never independent. All of it, with its audit rows, commits together or not at all. Safe to send twice.
+ */
+export async function annotateDisplayError(client: Client, input: DisplayErrorInput): Promise<{ annotated: number; observed: number; attempts: number }> {
+  await ensureLearningTables(client);
+  const tx = await beginWrite(client);
+  try {
+    let annotated = 0;
+    let observed = 0;
+    let attempts = 0;
+    for (const { step, objective } of input.steps) {
+      const rows = await tx.execute({
+        sql: "SELECT id, parent_correction_json FROM family_learning_attempts WHERE child_id = ? AND visit_id = ? AND (task_id = ? OR task_id LIKE ?)",
+        args: [input.child, input.visitId, `${input.missionId}/${step}`, `${input.missionId}/${step}/%`],
+      });
+      if (rows.rows.length === 0) throw new Error(`No recorded answers for ${step}`);
+      attempts += rows.rows.length;
+      for (const row of rows.rows) {
+        const existing = parseJson(row.parent_correction_json) as { evidence?: string; note?: string; annotation?: string } | null;
+        if (existing?.annotation === "display-error") continue;
+        const at = nowIso();
+        const correction = { ...(existing ?? {}), note: existing?.note ?? DISPLAY_ERROR_NOTE, annotation: "display-error" as const, by: input.adminEmail, at };
+        const result = await tx.execute({
+          sql: "UPDATE family_learning_attempts SET parent_correction_json = ?, parent_corrected_at = ? WHERE id = ? AND child_id = ?",
+          args: [JSON.stringify(correction), at, String(row.id), input.child],
+        });
+        if (result.rowsAffected !== 1) throw new Error("A recorded answer changed while it was being annotated");
+        await tx.execute({
+          sql: "INSERT INTO family_learning_parent_audit (id, admin_email, action, child_id, target_id, payload_json, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
+          args: [randomUUID(), input.adminEmail, "correction", input.child, String(row.id), JSON.stringify(correction), at],
+        });
+        annotated += 1;
+      }
+      const taskId = `${step}/parent-reading-check`;
+      const seen = await tx.execute({ sql: "SELECT id FROM family_learning_support_events WHERE child_id = ? AND visit_id = ? AND task_id = ? AND kind = 'parent_observation'", args: [input.child, input.visitId, taskId] });
+      if (seen.rows.length === 0) {
+        const id = randomUUID();
+        const at = nowIso();
+        const payload = { step, task: "parent-reading-check", status: "with-help", note: input.observation, recordedBy: "parent", source: "parent-cockpit", countsAs: "supported", objective };
+        await tx.execute({
+          sql: "INSERT INTO family_learning_support_events (id, child_id, mission_id, visit_id, task_id, kind, payload_json, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+          args: [id, input.child, input.contentId, input.visitId, taskId, "parent_observation", JSON.stringify(payload), at],
+        });
+        await tx.execute({
+          sql: "INSERT INTO family_learning_parent_audit (id, admin_email, action, child_id, target_id, payload_json, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
+          args: [randomUUID(), input.adminEmail, "parent-observation", input.child, id, JSON.stringify({ visit: input.visitId, ...payload }), at],
+        });
+        observed += 1;
+      }
+    }
+    await tx.commit();
+    release(tx);
+    return { annotated, observed, attempts };
+  } catch (error) {
+    await abandon(tx);
+    throw error;
+  }
 }
 
 export type { InValue };

@@ -63,6 +63,8 @@ export type LadderInput = {
   child: ChildId;
   attempts: AttemptLike[];
   samples: Pick<EvidenceBundle["samples"][number], "visitId" | "kind" | "createdAt">[];
+  /** Nov 8: what a parent saw by hand on a task whose screen was broken: counts as supported (parent-observed), never on own. */
+  parentObserved?: { id: string; visitId: string; taskId: string; objective: string; at: string }[];
   /** The child's started visits, oldest first, with the parent-facing label («Visit 3»). */
   visits: { id: string; label: string; startedAt: string | null; finishedAt: string | null }[];
   typing: { course: TypingCourseState | null; lessonsTotal: number } | null;
@@ -300,7 +302,10 @@ export function learningLadder(input: LadderInput): LearningLadder {
   const unmapped = new Map<string, number>();
   const mappedIds = new Set<string>();
 
-  for (const a of [...input.attempts].sort(byTime)) {
+  // Nov 8: a row annotated «Display error, not evidence» stays in the records and in Visit details, but says nothing about the skill.
+  const evidenceAttempts = input.attempts.filter((a) => a.parentCorrection?.annotation !== "display-error");
+  const parentObserved: AttemptLike[] = (input.parentObserved ?? []).map((o) => ({ id: o.id, visitId: o.visitId, taskId: o.taskId, objective: o.objective, answer: { kind: "parent-observation" }, correct: true, evidence: "supported", stimulusLanguage: "de", teachingMove: null, teachingReason: null, secondsSinceTeaching: null, createdAt: o.at, parentCorrection: { evidence: "supported", note: `${PARENT_HELPED_NOTE} (parent observation)`, by: "parent", at: o.at } }));
+  for (const a of [...evidenceAttempts, ...parentObserved].sort(byTime)) {
     found.set(a.objective, (found.get(a.objective) ?? 0) + 1);
     const r = resolveObjective(child, a.objective, a.stimulusLanguage);
     if (r.kind === "unmapped") {

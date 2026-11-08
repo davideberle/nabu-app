@@ -1,9 +1,16 @@
 // Nov 8 round: the defects that reached production and the rules around Nokt. Fictional and offline: fake fetch, fake audio,
 // no provider, no bridge, no child data.
 
-import { deepEqual, equal, ok } from "node:assert/strict";
+import { deepEqual, equal, ok, rejects } from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { describe, it } from "node:test";
+import { createClient, type Client } from "@libsql/client";
+import { annotateDisplayError, DISPLAY_ERROR_NOTE, ensureLearningTables } from "./family-learning-db.ts";
+import { learningLadder } from "./family-learning-skill-ladder.ts";
+import { noktModeFromEnv } from "./family-learning-nokt.ts";
 import { createLearningClient, LEARNING_NOKT_DISPATCH_PATH, LEARNING_NOKT_REPLY_PATH, LEARNING_SESSION_PATH, BRIDGE_NOKT_PATH } from "./family-learning-client.ts";
 import { checkNoktReply, NOKT_MAX_CHILD_TURNS, NOKT_SYSTEM_PROMPT_DE, noktTaskContext, parseNoktReply, type NoktTurnText } from "./family-learning-nokt-contract.ts";
 import { NOKT_TALK_MAX_CHILD_TURNS, talkEnded } from "./family-learning-nokt-talk.ts";
@@ -179,3 +186,70 @@ describe("C — Nokt's rules", () => {
   });
 });
 
+
+describe("Review round — display errors never rewrite, and never count", () => {
+  const tmp = mkdtempSync(join(tmpdir(), "visit10-"));
+  const attempt = (id: string, task: string, correct: number, evidence: string, at: string) =>
+    ({ sql: "INSERT INTO family_learning_attempts (id, child_id, mission_id, visit_id, task_id, task_version, objective, attempt_no, answer_json, correct, evidence, support_json, exposure_before, stimulus_language, response_language, modality, created_at) VALUES (?, 'isabel', 'content-x', 'v4', ?, 1, 'early-reading-word-picture', 1, '{\"raw\":\"Mais\"}', ?, ?, '[]', 0, 'de', 'de', 'pick', ?)", args: [id, task, correct, evidence, at] });
+  const owner = "owner@fixture.invalid";
+  const setup = async () => {
+    const client = createClient({ url: `file:${join(tmp, `d-${Math.random().toString(36).slice(2)}.sqlite`)}` });
+    await ensureLearningTables(client);
+    await client.execute(attempt("a-ih7-0001", "M/IH7-READ/word", 1, "independent", "2026-11-08T12:40:00.000Z"));
+    await client.execute(attempt("a-ih8-0001", "M/IH8-READ/word", 1, "independent", "2026-11-08T12:41:00.000Z"));
+    return client;
+  };
+  const input = { child: "isabel" as const, contentId: "content-x", missionId: "M", visitId: "v4", steps: [{ step: "IH7-READ", objective: "early-reading-word-picture" }, { step: "IH8-READ", objective: "early-reading-word-picture" }], observation: "Checked by hand: read slowly.", adminEmail: owner };
+  const row = async (client: Client, id: string) => (await client.execute({ sql: "SELECT answer_json, correct, evidence, parent_correction_json FROM family_learning_attempts WHERE id = ?", args: [id] })).rows[0];
+
+  it("keeps the answer, adds the annotation and one supported observation per task, with audit rows", async () => {
+    const client = await setup();
+    deepEqual(await annotateDisplayError(client, input), { annotated: 2, observed: 2, attempts: 2 });
+    const r = await row(client, "a-ih7-0001");
+    equal(r.answer_json, '{"raw":"Mais"}');
+    equal(Number(r.correct), 1);
+    equal(r.evidence, "independent");
+    equal(JSON.parse(String(r.parent_correction_json)).annotation, "display-error");
+    equal(JSON.parse(String(r.parent_correction_json)).note, DISPLAY_ERROR_NOTE);
+    const obs = await client.execute("SELECT payload_json FROM family_learning_support_events WHERE kind = 'parent_observation'");
+    equal(obs.rows.length, 2);
+    equal(JSON.parse(String(obs.rows[0].payload_json)).countsAs, "supported");
+    equal((await client.execute("SELECT id FROM family_learning_parent_audit")).rows.length, 4);
+  });
+  it("is safe to send twice", async () => {
+    const client = await setup();
+    await annotateDisplayError(client, input);
+    deepEqual(await annotateDisplayError(client, input), { annotated: 0, observed: 0, attempts: 2 });
+    equal((await client.execute("SELECT id FROM family_learning_parent_audit")).rows.length, 4);
+  });
+  it("one transaction: a task without answers leaves nothing behind", async () => {
+    const client = await setup();
+    await rejects(() => annotateDisplayError(client, { ...input, steps: [...input.steps, { step: "IH9-PHRASE", objective: "early-reading-first-phrase-picture" }] }));
+    equal((await row(client, "a-ih7-0001")).parent_correction_json, null);
+    equal((await client.execute("SELECT id FROM family_learning_parent_audit")).rows.length, 0);
+    equal((await client.execute("SELECT id FROM family_learning_support_events")).rows.length, 0);
+  });
+  const ladderFor = (attempts: unknown[], parentObserved: unknown[]) => learningLadder({ child: "isabel", attempts: attempts as never, parentObserved: parentObserved as never, samples: [], visits: [{ id: "v4", label: "Visit 3", startedAt: "2026-11-08T12:00:00.000Z", finishedAt: null }], typing: null });
+  const a = { id: "a1", visitId: "v4", taskId: "M/IH7-READ/word", objective: "early-reading-word-picture", answer: { raw: "Mais" }, correct: true, evidence: "independent", stimulusLanguage: "de", teachingMove: null, teachingReason: null, secondsSinceTeaching: null, createdAt: "2026-11-08T12:40:00.000Z", parentCorrection: null };
+  const read = (l: ReturnType<typeof learningLadder>) => l.rows.find((r) => r.id === "i-read")!;
+  it("the ladder leaves an annotated answer out and counts the observation as with help, never on own", () => {
+    equal(read(ladderFor([a], [])).status, "on-own-once");
+    const annotated = { ...a, parentCorrection: { note: DISPLAY_ERROR_NOTE, annotation: "display-error", by: "x", at: a.createdAt } };
+    equal(read(ladderFor([annotated], [])).status, "not-seen");
+    equal(read(ladderFor([annotated], [{ id: "o1", visitId: "v4", taskId: "IH7-READ/parent-reading-check", objective: "early-reading-word-picture", at: "2026-11-08T14:00:00.000Z" }])).status, "with-help");
+  });
+});
+
+describe("Review round — the fictional-mode banner", () => {
+  const prod = { VERCEL: "1", TURSO_DATABASE_URL: "libsql://x", FAMILY_NOKT_CONVERSATION: "subscription", FAMILY_ASSISTANT_BRIDGE_URL: "https://bridge.example", FAMILY_BRIDGE_TOKEN_SECRET: "x".repeat(40) };
+  it("production can never be in the fictional mode, whatever the flags say", () => {
+    equal(noktModeFromEnv({ ...prod, FAMILY_NOKT_FICTIONAL_STUB: "1" }), "subscription");
+    equal(noktModeFromEnv({ VERCEL: "1", NABU_DB_DIR: "/tmp/x", FAMILY_NOKT_FICTIONAL_STUB: "1" }), "unavailable");
+  });
+  it("the banner is only rendered for that mode", () => {
+    const panel = readFileSync(here("../components/family/learning/nokt-panel.tsx"), "utf8");
+    ok(panel.includes('fictional={mode === "fictional-stub"}'));
+    ok(/\{fictional \? \(\s*<p[^>]*>\s*Testmodus: erfundene Antworten/.test(panel));
+    equal((panel.match(/Testmodus:/g) ?? []).length, 1);
+  });
+});

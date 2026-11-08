@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------------------------------------------------------------
 // Visit narration in the UI (Isabel Visit 2, 2026-10-29; I2-04): ONE control per screen.
 //  - After the deliberate start the current screen's script plays by itself, once per new state (`script.key`).
-//  - While speaking the control is «Stopp»; afterwards «Nochmal hören»; before any tap (reload) or when the browser refused to
+//  - While speaking the control only shows that it plays (no stop, Nov 8); afterwards «Nochmal hören»; before any tap (reload) or when the browser refused to
 //    play, one big «Vorlesen» — the tap unlocks audio and reads the current screen. Nothing here advances the visit.
 //  - A new screen supersedes the old speech at once (the player drops late audio); leaving the page stops it.
 // ---------------------------------------------------------------------------------------------------------------------
@@ -49,26 +49,21 @@ export function useNarration(player: NarrationPlayer, script: NarrationScript | 
     } else telemetry?.("narration-replay");
     void run(scriptRef.current);
   }, [player, run, telemetry]);
-  const stop = useCallback(() => {
-    telemetry?.("narration-stop");
-    player.stop();
-    setStatus(player.status());
-  }, [player, telemetry]);
   // Nov 8: «Weiter» waits for the spoken line. True from the first render of a new script (no frame in which a line can be skipped).
   const speaking = status === "speaking" || (!!key && startedKey !== key && player.isUnlocked());
-  return { status, replay, stop, speaking };
+  return { status, replay, speaking };
 }
 
 
 /** The one narration control of a screen. `big` = the prominent «Vorlesen» before audio is unlocked. */
-export function NarrationControl({ status, onReplay, onStop, className }: { status: NarrationStatus; onReplay: () => void; onStop: () => void; className?: string }) {
+export function NarrationControl({ status, onReplay, className }: { status: NarrationStatus; onReplay: () => void; className?: string }) {
   const base = "inline-flex min-h-14 items-center justify-center gap-2 rounded-full px-5 text-lg font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500";
   const icon = "inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-500";
   if (status === "speaking")
     return (
-      // Step 1 (review): an icon button (■ stop / 🔊 replay), never a second «Stopp» next to the visit's «Pause».
-      <button type="button" className={cn(icon, className)} style={{ background: "#3d5a2a", color: "white" }} onClick={onStop} data-testid="narration-control" data-state="speaking" aria-label="Vorlesen stoppen" title="Vorlesen stoppen">
-        <span aria-hidden className="text-2xl leading-none">■</span>
+      // Nov 8 (decision): children get replay only, never a stop. While a line plays the control just shows that it is playing.
+      <button type="button" disabled className={cn(icon, className)} style={{ background: "#3d5a2a", color: "white" }} data-testid="narration-control" data-state="speaking" aria-label="Wird vorgelesen">
+        <span aria-hidden className="text-2xl leading-none">🔊</span>
       </button>
     );
   if (status === "locked" || status === "blocked")

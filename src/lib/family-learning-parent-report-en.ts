@@ -29,6 +29,8 @@ export type ReportAttemptEn = {
   result: "right first time" | "right after help" | "right after the answer was shown" | "not yet" | "not scored" | "revision";
   help: string[];
   parentHelped: boolean;
+  /** The screen was broken when this was answered: kept, but not evidence (excluded from the ladder). */
+  displayError: boolean;
 };
 
 export type ReportTaskEn = {
@@ -38,6 +40,8 @@ export type ReportTaskEn = {
   skill: string | null;
   warmup: { skill: string; daysSinceTeaching: number | null; counts: "delayed retention" | "short check" | "no teaching record" } | null;
   attempts: ReportAttemptEn[];
+  /** What a parent recorded seeing on this task (Nov 8: a check by hand where the screen failed). */
+  parentObservation: string | null;
   wayUsed: string | null;
 };
 
@@ -129,8 +133,9 @@ export function visitReportEn(bundle: Pick<EvidenceBundle, "state" | "attempts" 
         .map((a) => {
           const answer = a.answer as { raw?: unknown; question?: unknown } | null;
           const helped = !!a.parentCorrection && (a.parentCorrection.note ?? "").startsWith(PARENT_HELPED_NOTE);
-          return { id: a.id, part: typeof answer?.question === "string" ? answer.question : null, answer: typeof answer?.raw === "string" ? answer.raw : "", result: resultEn(a), help: a.support.map(helpEn), parentHelped: helped };
+          return { id: a.id, part: typeof answer?.question === "string" ? answer.question : null, answer: typeof answer?.raw === "string" ? answer.raw : "", result: resultEn(a), help: a.support.map(helpEn), parentHelped: helped, displayError: a.parentCorrection?.annotation === "display-error" };
         }),
+      parentObservation: ((bundle.supports.filter((x) => x.kind === "parent_observation" && x.visitId === visit && (x.taskId ?? "").startsWith(`${step.id}/`)).at(-1)?.payload ?? null) as { note?: string | null } | null)?.note ?? null,
       wayUsed: (() => {
         const chosen = sr?.support.find((x) => x.kind === "method-used")?.detail ?? null;
         return chosen ? step.solve?.methods?.options.find((o) => o.id === chosen)?.label ?? chosen : null;

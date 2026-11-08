@@ -92,6 +92,7 @@ export async function GET(request: Request) {
   const ladder = learningLadder({
     child,
     attempts: bundle.attempts,
+    parentObserved: bundle.supports.filter((x) => x.kind === "parent_observation" && (x.payload as { countsAs?: string } | null)?.countsAs === "supported" && typeof (x.payload as { objective?: unknown }).objective === "string" && !!x.visitId && !!x.taskId).map((x) => ({ id: x.id, visitId: x.visitId as string, taskId: x.taskId as string, objective: (x.payload as { objective: string }).objective, at: x.createdAt })),
     samples: bundle.samples,
     visits: [...(bundle.state?.visits ?? [])]
       .sort((x, y) => (x.startedAt < y.startedAt ? -1 : x.startedAt > y.startedAt ? 1 : 0))

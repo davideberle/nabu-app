@@ -87,7 +87,7 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
         <p className="min-w-0 flex-1 text-2xl font-semibold" data-testid="closing-question">
           {step === "difficulty" ? reflection.prompt : step === "enjoyment" ? enjoyment?.prompt : adventure?.prompt ?? reflection.nextInterest?.prompt}
         </p>
-        <NarrationControl status={narration.status} onReplay={narration.replay} onStop={narration.stop} />
+        <NarrationControl status={narration.status} onReplay={narration.replay} />
       </figure>
       {step === "difficulty" ? row("difficulty", reflection.options, reflection.skipLabel ?? "Lieber nicht sagen") : null}
       {step === "enjoyment" && enjoyment ? row("enjoyment", enjoyment.options, enjoyment.skipLabel) : null}
@@ -121,7 +121,7 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
               </button>
             ))}
           </div>
-          <button type="button" className={cn(btn, "justify-self-start")} style={primary} disabled={busy || !interest || (interest.kind === "text" && !interest.text?.trim())} onClick={() => void finish()} data-testid="closing-finish">
+          <button type="button" className={cn(btn, "justify-self-start")} style={primary} disabled={busy || narration.speaking || !interest || (interest.kind === "text" && !interest.text?.trim())} onClick={() => void finish()} data-testid="closing-finish">
             Fertig <span aria-hidden>✓</span>
           </button>
         </div>
@@ -143,10 +143,10 @@ export function WorkshopFarewell({ who, lines, grown, label, voice, narrator, te
             <p key={l} className="text-2xl font-semibold">{l}</p>
           ))}
         </div>
-        <NarrationControl status={narration.status} onReplay={narration.replay} onStop={narration.stop} />
+        <NarrationControl status={narration.status} onReplay={narration.replay} />
       </figure>
       <WorkshopGarden grown={grown} label={label} />
-      <button type="button" className={cn(btn, "justify-self-start")} style={primary} onClick={() => { narrator.stop(); onHome(); }} data-testid="farewell-home">
+      <button type="button" className={cn(btn, "justify-self-start")} style={primary} disabled={narration.speaking} onClick={() => { narrator.stop(); onHome(); }} data-testid="farewell-home">
         <span aria-hidden>🏠</span> Nach Hause
       </button>
     </div>

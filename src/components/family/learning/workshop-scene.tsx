@@ -478,7 +478,7 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
             <p key={`${active?.id}-${i}`} className="text-xl leading-snug sm:text-2xl" data-testid="workshop-line" data-fold="question">{l.text}</p>
           ))}
         </div>
-        <NarrationControl status={narration.status} onReplay={narration.replay} onStop={narration.stop} />
+        <NarrationControl status={narration.status} onReplay={narration.replay} />
       </figure>
       <section className="rounded-3xl p-5 shadow-sm sm:p-7" style={{ background: CARD }} aria-labelledby="workshop-title" data-testid="workshop-task">
         {/* Progress as dots, not words; the title stays for assistive technology. */}

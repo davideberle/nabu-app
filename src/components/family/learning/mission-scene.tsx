@@ -322,7 +322,7 @@ export function Feedback({ tone, text, testId = "scene-feedback" }: { tone: "ret
 
 // --- a problem, one question at a time ------------------------------------------------
 
-export function SolveTask({ active, busy, act, telemetry, applicationNote = "Eine neue Lieferung, neue Zahlen.", quiet = false, focused = false, onSeen }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry; applicationNote?: string; /** Isabel Visit 2 (narrated): less reading — no application note, no «try first» line (the narration says what to do). */ quiet?: boolean; /** Step 1 (S1-01): the focused screen — no list of earlier answers, no application note. */ focused?: boolean; /** Isabel Visit 2: the questions whose success she has moved past (for the narration script). */ onSeen?: (ids: string[]) => void }) {
+export function SolveTask({ active, busy, act, telemetry, applicationNote = "Eine neue Lieferung, neue Zahlen.", quiet = false, focused = false, onSeen, noktOpen = false }: { active: MissionActiveView; busy: boolean; act: Act; telemetry: SceneTelemetry; /** Nov 8: Nokt is talking in the sidebar: one helper per moment (no hint, only the plain line after a miss). */ noktOpen?: boolean; applicationNote?: string; /** Isabel Visit 2 (narrated): less reading — no application note, no «try first» line (the narration says what to do). */ quiet?: boolean; /** Step 1 (S1-01): the focused screen — no list of earlier answers, no application note. */ focused?: boolean; /** Isabel Visit 2: the questions whose success she has moved past (for the narration script). */ onSeen?: (ids: string[]) => void }) {
   const sv = active.solve!;
   const finished = active.status !== "active";
   // After a correct answer the success stays on screen with its own "next question" action; the next question follows on tap.
@@ -360,7 +360,7 @@ export function SolveTask({ active, busy, act, telemetry, applicationNote = "Ein
           </button>
         </div>
       ) : null}
-      {current ? <PartTask key={current.id} part={current} step={active.id} busy={busy} act={act} telemetry={telemetry} quiet={quiet} focused={focused} /> : null}
+      {current ? <PartTask key={current.id} part={current} step={active.id} busy={busy} act={act} telemetry={telemetry} quiet={quiet} focused={focused} noktOpen={noktOpen} /> : null}
       {finished ? (
         <>
           {lastResolved?.feedback ? <Feedback tone={lastResolved.feedback.tone} text={lastResolved.feedback.text} /> : null}
@@ -390,7 +390,7 @@ function MethodsChoice({ methods, step, busy, act, lastFeedback }: { methods: No
 
 const CALC_RE = /^\s*\d{1,4}\s*[xX×*·]\s*\d{1,4}\s*(=\s*\d{1,5})?\s*$/;
 
-function PartTask({ part, step, busy, act, telemetry, quiet = false, focused = false }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry; quiet?: boolean; focused?: boolean }) {
+function PartTask({ part, step, busy, act, telemetry, quiet = false, focused = false, noktOpen = false }: { part: SolvePartView; step: string; busy: boolean; act: Act; telemetry: SceneTelemetry; quiet?: boolean; focused?: boolean; noktOpen?: boolean }) {
   const calc = !!part.calculation;
   const [value, setValue] = useState("");
   const [notice, setNotice] = useState<string | null>(null);
@@ -459,14 +459,14 @@ function PartTask({ part, step, busy, act, telemetry, quiet = false, focused = f
           </button>
         </div>
       </form>
-      {notice ? <Feedback tone="retry" text={notice} /> : part.feedback ? <Feedback tone={part.feedback.tone} text={part.feedback.text} /> : null}
+      {notice ? <Feedback tone="retry" text={notice} /> : part.feedback ? <Feedback tone={part.feedback.tone} text={noktOpen && part.feedback.tone === "retry" ? "Noch nicht richtig." : part.feedback.text} /> : null}
       {taught && part.status === "open" && part.practiceLeft === 0 ? (
         <button type="button" className={cn(btn, "justify-self-start")} style={secondary} disabled={busy} onClick={() => void act({ a: "later-part", step, part: part.id })} data-testid="part-later">
           Für später aufheben
         </button>
       ) : null}
       {/* Narrated (quiet): once the worked solution is shown, the earlier hint steps are no longer on screen. */}
-      {quiet && taught ? null : <HintArea part={part} step={step} busy={busy} act={act} telemetry={telemetry} emphasize={false} quiet={quiet} />}
+      {(quiet && taught) || noktOpen ? null : <HintArea part={part} step={step} busy={busy} act={act} telemetry={telemetry} emphasize={false} quiet={quiet} />}
     </div>
   );
 }
@@ -625,6 +625,9 @@ export function ListenTask({ child, active, busy, act, speech, telemetry, charac
   // recorded as shown never was. It now stays until he has seen it and tapped on.
   const [seenReveals, setSeenReveals] = useState<string[]>([]);
   const reveal = focused ? active.questions.find((q) => q.status !== "open" && q.status !== "correct" && !seenReveals.includes(q.id)) ?? null : null;
+  // Nov 8: fewer text elements. On the focused screen the text appears only after a miss on an open question, or when the sound
+  // failed (the honest way to go on); never on a spoken «Thank you!» screen.
+  const textOffered = listen.plays > 0 && !listen.transcriptShown && active.status === "active" && (!focused || listen.failures > 0 || active.questions.some((q) => q.status === "open" && q.tries > 0));
   const shownQuestions = !focused ? active.questions : reveal ? [reveal] : active.questions.filter((q) => q.status === "open").slice(0, 1);
   return (
     <div className="grid gap-4" data-testid="listen-task" data-voice={last}>
@@ -637,7 +640,7 @@ export function ListenTask({ child, active, busy, act, speech, telemetry, charac
         <button type="button" className={btn} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" data-fold="primary" autoFocus>
           <SpeakerIcon /> {playing ? "… spielt" : listen.plays ? "Nochmal anhören" : "Nachricht anhören"}
         </button>
-        {listen.plays > 0 && !listen.transcriptShown ? (
+        {textOffered ? (
           <button type="button" className={btn} style={secondary} disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "transcript" })} data-testid="listen-transcript">
             Text lesen (Hilfe)
           </button>

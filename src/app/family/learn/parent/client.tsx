@@ -408,7 +408,9 @@ function VisitReportsEn({ reports, child, ops }: { reports: VisitReportEn[]; chi
                     {t.attempts.map((a) => (
                       <li key={a.id} className="flex flex-wrap items-center gap-2 text-sm text-primary">
                         <span>{a.part ? `${a.part}: ` : ""}«{a.answer}» — {a.result}{a.help.length ? ` (help before: ${a.help.join(", ")})` : ""}</span>
-                        {a.parentHelped ? (
+                        {a.displayError ? (
+                          <span className="rounded-full px-2 text-xs font-semibold" style={{ background: "#fdecea", color: "#7a1f1a" }} data-testid="report-en-display-error">Display error, not evidence</span>
+                        ) : a.parentHelped ? (
                           <span className="rounded-full px-2 text-xs font-semibold" style={{ background: "#fff3cd" }} data-testid="report-en-helped">parent helped</span>
                         ) : a.result !== "not scored" && a.result !== "revision" ? (
                           <HelpedHereButton attemptId={a.id} child={child} ops={ops} />
@@ -419,6 +421,7 @@ function VisitReportsEn({ reports, child, ops }: { reports: VisitReportEn[]; chi
                 ) : (
                   <p className="mt-1 text-sm text-tertiary">No answer recorded.</p>
                 )}
+                {t.parentObservation ? <p className="mt-1 text-sm text-primary" data-testid="report-en-parent-observation">Parent observation (counts as with help): {t.parentObservation}</p> : null}
                 {t.wayUsed ? <p className="mt-1 text-sm text-primary">Way chosen: {t.wayUsed}</p> : null}
               </li>
             ))}
@@ -433,8 +436,9 @@ function VisitReportsEn({ reports, child, ops }: { reports: VisitReportEn[]; chi
 /** Nov 8: «I helped here» on a whole task. Right answers count as «with help»; a wrong answer only carries the note. */
 function HelpedOnTaskButton({ attempts, child, ops }: { attempts: VisitReportEn["tasks"][number]["attempts"]; child: ChildId; ops: ParentOps }) {
   const [state, setState] = useState<"idle" | "busy" | "error">("idle");
-  const scored = attempts.filter((a) => a.result !== "not scored" && a.result !== "revision");
+  const scored = attempts.filter((a) => a.result !== "not scored" && a.result !== "revision" && !a.displayError);
   const open = scored.filter((a) => !a.parentHelped);
+  if (!scored.length) return null;
   if (!open.length) return <span className="ml-2 rounded-full px-2 text-xs font-semibold" style={{ background: "#fff3cd" }} data-testid="report-en-task-helped">parent helped (whole task)</span>;
   return (
     <button

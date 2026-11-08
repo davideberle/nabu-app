@@ -174,7 +174,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
         speech={speech}
         onWalk={onWalk}
         act={act}
-        renderTask={(a) => MapTask({ child, view, active: a, busy, act, speech, telemetry, nokt, writingLive })}
+        renderTask={(a) => MapTask({ child, view, active: a, busy, act, speech, telemetry, nokt, writingLive, noktOnTask: open === "page" && !!solvePart })}
         sceneLocked={writingLive}
       />
       {dock}
@@ -184,7 +184,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
 }
 
 /** The body of a Visit 8 scene for the kinds that use the clearer task components; null = MissionWorld's own body. */
-export function MapTask({ child, view, active, busy, act, speech, telemetry, nokt, writingLive = false }: { child: ChildId; view: ChildView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; nokt: MapNokt; writingLive?: boolean }): ReactNode | null {
+export function MapTask({ child, view, active, busy, act, speech, telemetry, nokt, writingLive = false, noktOnTask = false }: { child: ChildId; view: ChildView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; nokt: MapNokt; writingLive?: boolean; noktOnTask?: boolean }): ReactNode | null {
   switch (active.kind) {
     case "solve": {
       // Step 1 (S1-01): on the focused screen a fact already said by the story line or the question is not repeated in a box.
@@ -194,7 +194,8 @@ export function MapTask({ child, view, active, busy, act, speech, telemetry, nok
       // question (or with the worked solution), never before the first attempt.
       const open = active.solve?.parts.find((p) => p.status === "open") ?? null;
       const afterMiss = !!open && (open.tries > 0 || open.phase !== "answer");
-      const facts = (active.solve?.facts ?? []).filter((f) => !focused || (afterMiss && !said.includes(f.toLowerCase().replace(/[.]$/, ""))));
+      // Nov 8: one helper per moment. While Nokt talks about this task there is no formula chip and no hint; they return when it closes.
+      const facts = noktOnTask ? [] : (active.solve?.facts ?? []).filter((f) => !focused || (afterMiss && !said.includes(f.toLowerCase().replace(/[.]$/, ""))));
       return (
         <div className="grid gap-4" data-testid="map-solve">
           {facts.length ? (
@@ -214,7 +215,7 @@ export function MapTask({ child, view, active, busy, act, speech, telemetry, nok
                   <PlanGrid key={g.label} grid={g} focused />
                 ))}
               </div>
-              <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} focused />
+              <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} noktOpen={noktOnTask} focused />
             </div>
           ) : (
             <>
@@ -225,7 +226,7 @@ export function MapTask({ child, view, active, busy, act, speech, telemetry, nok
                   ))}
                 </div>
               ) : null}
-              <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} focused={focused} />
+              <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} noktOpen={noktOnTask} focused={focused} />
             </>
           )}
         </div>

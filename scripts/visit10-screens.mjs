@@ -139,12 +139,14 @@ async function isabel() {
   await page.waitForSelector("[data-testid='start-visit']", { timeout: 15000 });
   await page.locator("[data-testid='start-visit']").click();
   let gateSeen = false;
+  let stopSeen = false;
   const idle = () => page.waitForFunction(() => document.querySelector("[data-testid='workshop-scene']")?.dataset.narration !== "speaking", null, { timeout: 60000 });
   const onStep = async (s) => {
     await page.waitForSelector(`[data-testid='workshop-scene'][data-step='${s}']`, { timeout: 30000 });
     await settle(250);
     const w = page.locator("[data-testid='workshop-next']");
     if ((await w.count()) && (await page.locator("[data-testid='workshop-scene'][data-narration='speaking']").count())) gateSeen = (await w.first().isDisabled()) || gateSeen;
+    if ((await page.locator("[data-testid='narration-control'][data-state='speaking']").count()) && !(await page.locator("[data-testid='narration-control'][data-state='speaking']").first().isDisabled())) stopSeen = true;
     await pictures(page, `${s}.open`);
   };
   const clickNext = async () => {
@@ -235,6 +237,7 @@ async function isabel() {
   await shot(page, "IH11-harvest-table");
   await fold(page, "IH11");
   check("I.weiter-disabled-while-speaking", gateSeen);
+  check("R3.no-stop-control", !stopSeen && (await page.locator("[aria-label='Vorlesen stoppen']").count()) === 0);
   await clickNext();
   if (await page.locator("[data-testid='workshop-next']").count()) await clickNext();
   await page.waitForSelector("[data-testid='workshop-closing']", { timeout: 30000 });
@@ -411,11 +414,14 @@ async function santiago(fail) {
       check("C.never-offers-help", !/Brauchst du Hilfe|Möchtest du mit mir anschauen/.test(t));
       check("C.opener-spoken", ttsLog.some((x) => /Warum hast du 7/.test(x)));
     }
+    const panel = await textOf(page, "[data-testid='scene-panel']");
+    check("R1.one-helper-while-nokt-open", panel.includes("Noch nicht richtig.") && !/Hinweis/.test(panel) && (await page.locator("[data-testid='scene-facts'], [data-testid='hint-area']").count()) === 0, panel.slice(-200));
   }
   await shot(page, "P6-two-misses-nokt");
   check("C.task-stays-usable", await page.locator("[data-testid='part-input']").isVisible());
   await page.locator("[data-testid='nokt-close']").click();
   await settle(300);
+  check("R1.hint-returns-after-nokt", (await page.locator("[data-testid='hint-area']").count()) === 1);
   await part(14);
   await part("3 x 4");
   await leave();
@@ -436,6 +442,7 @@ async function santiago(fail) {
   await banner("P7");
   await shot(page, "P7-june");
   await listen();
+  check("R2.no-text-help-by-default", (await page.locator("[data-testid='listen-transcript']").count()) === 0);
   await pick("can", "Neben den Tank");
   await pick("hose", "Hinter die Bank");
   await pick("bucket", "Zwischen die Beete");
@@ -446,12 +453,14 @@ async function santiago(fail) {
     await shot(page, "P7-thank-you");
     check("B.june-says-thank-you", clipLog.served.includes(`en-female/${THANK_YOU}`), { THANK_YOU });
     check("A4.weiter-waits-for-spoken-line", waiting);
+    check("R2.no-text-help-on-spoken-reply", (await page.locator("[data-testid='listen-transcript']").count()) === 0);
   }
   await leave();
 
   await goTo("P7H-JUNE-MORE");
   await listen();
   await pick("tap", "Hinter dem Schuppen");
+  check("R2.text-help-after-a-miss", (await page.locator("[data-testid='listen-transcript']").count()) === 1);
   await pick("tap", "Rechts neben der Tür");
   await page.waitForSelector("[data-testid='listen-reveal-next']", { timeout: 15000 });
   {
@@ -620,6 +629,35 @@ async function mapWelcome() {
   await c.close();
 }
 
+/** The «Display error, not evidence» annotation on Isabel's reading tasks: synthetic records of the Isabel run. */
+async function parentIsabel() {
+  const c = await ctx(await mint("owner"));
+  const page = await c.newPage();
+  page.on("pageerror", (e) => pageErrors.push(String(e)));
+  await page.goto(`${BASE}/family/learn/parent?child=isabel`);
+  await page.waitForSelector("[data-testid='visit-details']", { timeout: 40000 });
+  const post = () => page.evaluate(async () => (await fetch("/api/family/learning/parent/corrections", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ child: "isabel", displayError: { visit: "v4", steps: ["IH7-READ", "IH8-READ", "IH9-PHRASE"], observation: "Synthetic check by hand." } }) })).json());
+  const first = await post();
+  check("R4.applied-once", first.annotated >= 3 && first.observed === 3, first);
+  const second = await post();
+  check("R4.safe-to-send-twice", second.annotated === 0 && second.observed === 0, second);
+  await page.reload();
+  await page.waitForSelector("[data-testid='visit-details']", { timeout: 40000 });
+  await page.locator("[data-testid='visit-details'] > summary").click();
+  await page.waitForSelector("[data-testid='report-en-task-IH7-READ']", { timeout: 20000 });
+  check("R4.shown-in-visit-details", (await page.locator("[data-testid='report-en-display-error']").count()) >= 3 && (await page.locator("[data-testid='report-en-parent-observation']").count()) === 3);
+  await page.locator("[data-testid='report-en-task-IH7-READ']").scrollIntoViewIfNeeded();
+  await shot(page, "report-display-error");
+  const ev = await page.evaluate(async () => (await fetch("/api/family/learning/parent/evidence?child=isabel")).json());
+  const row = ev.ladder.rows.find((r) => r.id === "i-read");
+  const v4 = row.attempts.filter((a) => a.visit === "v4");
+  check("R4.ladder-excludes-the-answers", v4.length === 3 && v4.every((a) => a.task.includes("parent-reading-check")), v4.map((a) => a.task));
+  check("R4.ladder-counts-with-help-not-own", v4.every((a) => a.level === "with-help"), v4.map((a) => a.level));
+  const rows = ev.attempts.filter((a) => /IH[789]-/.test(a.taskId));
+  check("R4.original-answers-untouched", rows.length >= 3 && rows.every((a) => typeof a.evidence === "string" && a.answer?.raw));
+  await c.close();
+}
+
 async function parent() {
   const c = await ctx(await mint("owner"));
   const page = await c.newPage();
@@ -659,6 +697,7 @@ try {
   else if (WHO === "santiago-fail") await santiago(true);
   else if (WHO === "parent") await parent();
   else if (WHO === "map") await mapWelcome();
+  else if (WHO === "parent-isabel") await parentIsabel();
 } catch (error) {
   check("harness-completed", false, String(error).slice(0, 500));
   const p = browser.contexts()[0]?.pages()[0];
