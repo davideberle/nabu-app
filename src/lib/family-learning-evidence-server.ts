@@ -1,0 +1,91 @@
+import { getDb } from "@/lib/db";
+import type { ChildId } from "@/lib/family-assistant-turn";
+import { contentIdFor, loadLearningContentFor, loadVocabularyInventoryFor } from "@/lib/family-learning-content-server";
+import { readEvidence, readTelemetryEvents } from "@/lib/family-learning-db";
+import { delayedCheckInfo, summariseTelemetry, visitLabel, visitOrdinal } from "@/lib/family-learning-summary";
+import type { VocabularyInventory } from "@/lib/family-learning-vocabulary";
+import type { VisitId } from "@/lib/family-learning-content";
+import { missionEvidence, planningInput } from "@/lib/family-learning-mission";
+import { visitReportEn } from "@/lib/family-learning-parent-report-en";
+import { learningLadder } from "@/lib/family-learning-skill-ladder";
+import { noktModeFromEnv } from "@/lib/family-learning-nokt";
+import { noktTalkEvidence } from "@/lib/family-learning-nokt-talk";
+
+/**
+ * The parent evidence bundle of one child, shared by the evidence route and the release snapshot. Callers guard it.
+ * `noDerivedWrites`: the additive upkeep a normal read does (historical completions, refreshed reviews) is skipped, so the read writes nothing.
+ */
+export async function readParentEvidence(child: ChildId, options: { noDerivedWrites?: boolean } = {}) {
+  // Child-bound (Isabel Visit 1): the records of the child's OWN content line are read — Isabel's workshop never defaults to
+  // Santiago's expedition id, and a switched-off content still shows its stored records under its own id.
+  let contentId = contentIdFor(child);
+  let prepared = false;
+  let counts: Record<string, number> | null = null;
+  let content: NonNullable<ReturnType<typeof loadLearningContentFor>> | undefined;
+  try {
+    content = loadLearningContentFor(child) ?? undefined;
+    if (content) contentId = content.contentId;
+    prepared = !!content && content.child === child;
+    if (content) counts = { version: content.contentVersion, math: content.math.items.length, language: content.language.segments.length, typingLessons: content.typing.lessons.length, typingCourse: content.typing.course?.lessons.length ?? 0, typingLabels: content.typing.labelTasks.length };
+  } catch {
+    /* evidence remains readable even if content fails to load */
+  }
+  let inventory: VocabularyInventory | null = null;
+  try {
+    inventory = prepared ? loadVocabularyInventoryFor(child) : null;
+  } catch {
+    /* the ledger is derived; evidence stays readable without it (the bundle says vocabulary: null) */
+  }
+  const bundle = await readEvidence(await getDb(), child, contentId, undefined, prepared ? content : undefined, inventory, options);
+  // The delayed-check date is explained from the stored anchor with the server
+  // clock; the client never computes or simulates it.
+  const delayedCheck = prepared && content && bundle.state ? delayedCheckInfo(bundle.state, content, new Date()) : null;
+  // Learner-facing visit labels (follow-on M1): computed here from the state + served content so the parent
+  // cockpit shows "Besuch 3" for the observation chapter exactly like the child sees it; ids stay stable.
+  const visits = prepared && content && bundle.state
+    ? content.visits.map((v) => ({ id: v.id as VisitId, ordinal: visitOrdinal(bundle.state!, v.id), label: visitLabel(bundle.state!, content!, v.id), retired: v.id === "v3" && !bundle.state!.visits.some((r) => r.id === "v3") }))
+    : [];
+  // Visit 6 (content v5): the next-visit planning input — the child's verbatim interest answers, open retrieval items and the
+  // typing calibration, derived from the same state (nothing stored separately).
+  const planning = prepared && content && bundle.state && content.reflection.nextInterest ? planningInput(bundle.state, content) : null;
+  // Visit 7 (content v6, V7-D14): per scene mission, observed answers, help, tutor judgments, missing evidence and later checks — apart.
+  const missions = [];
+  if (prepared && content && bundle.state) {
+    // Content v7: the map mission (Visit 8) has the same parent view.
+    for (const m of (content.missions ?? []).filter((x) => x.presentation === "scene" || x.presentation === "map" || x.presentation === "workshop")) {
+      const ev = missionEvidence(bundle.state, content, m.visit as VisitId, noktModeFromEnv(process.env));
+      if (!ev) continue;
+      // Per-step foreground activity from the EXISTING telemetry batches (no extra collection): what was on screen while input happened.
+      const events = await readTelemetryEvents(await getDb(), child, m.visit);
+      const t = summariseTelemetry(events, 0, null);
+      missions.push({ ...ev, time: { observed: t.uxObserved, byStep: t.byStep ?? {}, idleRuleSeconds: t.idleRuleSeconds, hiddenIntervals: t.hiddenIntervals } });
+    }
+  }
+  // Content v7: Nokt's conversations outside the task talk (Home, welcome, visit, writing, look back) with provenance — never an assessment.
+  const noktTalks = prepared && content && bundle.state ? noktTalkEvidence(bundle.state, content) : [];
+  // Isabel Visit 1 (I1-07): the parent's own observations of real-world tasks — apart from every child attempt and assessment.
+  const parentObservations = bundle.supports
+    .filter((x) => x.kind === "parent_observation")
+    .map((x) => ({ id: x.id, visitId: x.visitId, taskId: x.taskId, at: x.createdAt, ...((x.payload ?? {}) as { step?: string; task?: string; status?: string; note?: string | null }) }));
+  // The real-world tasks a parent may record (the child's own served content only).
+  // Isabel Visit 2: only visits she has started can have a real-world task to observe (Visit 1 is always listed, as released).
+  const started = new Set((bundle.state?.visits ?? []).map((v) => v.id));
+  const craftTasks = prepared && content ? (content.missions ?? []).filter((m) => m.visit === "v1" || started.has(m.visit as never)).flatMap((m) => m.steps.filter((st) => st.kind === "craft" && st.craft).map((st) => ({ visit: m.visit, step: st.id, title: st.title, tasks: st.craft!.tasks.map((t) => ({ id: t.id, text: t.text })) }))) : [];
+  // Step 1 (S1-13e, S1-06, S1-13c): the English visit report of every started mission visit, newest first (derived, never stored).
+  const reportEn = prepared && content && bundle.state
+    ? [...bundle.state.visits].reverse().map((v) => visitReportEn(bundle, content!, v.id, `Visit ${visitOrdinal(bundle.state!, v.id) ?? "?"}`)).filter((r): r is NonNullable<typeof r> => !!r)
+    : [];
+  // Step 2 A: the level-based learning report — every stored attempt of THIS child (all visits, all content versions)
+  // through the reviewed objective map; computed on read, never stored.
+  const ladder = learningLadder({
+    child,
+    attempts: bundle.attempts,
+    parentObserved: bundle.supports.filter((x) => x.kind === "parent_observation" && (x.payload as { countsAs?: string } | null)?.countsAs === "supported" && typeof (x.payload as { objective?: unknown }).objective === "string" && !!x.visitId && !!x.taskId).map((x) => ({ id: x.id, visitId: x.visitId as string, taskId: x.taskId as string, objective: (x.payload as { objective: string }).objective, at: x.createdAt })),
+    samples: bundle.samples,
+    visits: [...(bundle.state?.visits ?? [])]
+      .sort((x, y) => (x.startedAt < y.startedAt ? -1 : x.startedAt > y.startedAt ? 1 : 0))
+      .map((v) => ({ id: v.id, label: `Visit ${visitOrdinal(bundle.state!, v.id) ?? "?"}`, startedAt: v.startedAt, finishedAt: v.finishedAt })),
+    typing: bundle.state ? { course: bundle.state.typing.course ?? null, lessonsTotal: content?.typing.course?.lessons.length ?? 0 } : null,
+  });
+  return { ...bundle, parentObservations, craftTasks, prepared, contentCounts: counts, delayedCheck, visits, planningInput: planning, missionEvidence: missions, noktMode: noktModeFromEnv(process.env), noktTalks, reportEn, ladder };
+}

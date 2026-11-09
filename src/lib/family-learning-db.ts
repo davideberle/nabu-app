@@ -363,12 +363,21 @@ async function viewOf(db: Db, child: ChildId, state: MissionState, content: Lear
 }
 
 export async function readChildView(client: Client, child: ChildId, content: LearningContent, now = new Date(), options: ViewOptions = {}): Promise<ChildView> {
+  return childViewWith(client, child, content, now, options, () => settleShown(client, child, content, now, null));
+}
+
+/** The same view with nothing written: the active item is NOT marked as shown. For the release snapshot, never for a child's screen. */
+export async function readChildViewNoWrite(client: Client, child: ChildId, content: LearningContent, now = new Date(), options: ViewOptions = {}): Promise<ChildView> {
+  return childViewWith(client, child, content, now, options, async () => (await loadMissionState(client, child, content.contentId, content)) ?? newMissionState(content, child, now.toISOString()));
+}
+
+async function childViewWith(client: Client, child: ChildId, content: LearningContent, now: Date, options: ViewOptions, loadState: () => Promise<MissionState>): Promise<ChildView> {
   await ensureLearningTables(client);
   // The generation the view reports is the one the state was read under
   // (coherent snapshot); the client echoes it with every telemetry batch.
   const { erasureGeneration, value } = await readWithErasureSnapshot(client, child, async () => {
     const settings = await readParentSettings(client, child);
-    const state = await settleShown(client, child, content, now, null);
+    const state = await loadState();
     const progressSources = await readProgressSources(client, child, content.contentId);
     return { settings, state, progressSources };
   });
@@ -582,13 +591,13 @@ function parseJson(value: unknown): unknown {
   }
 }
 
-export async function readEvidence(client: Client, child: ChildId, missionId: string, afterFirstRead?: () => Promise<void>, content?: LearningContent, vocabulary?: VocabularyInventory | null): Promise<EvidenceBundle> {
+export async function readEvidence(client: Client, child: ChildId, missionId: string, afterFirstRead?: () => Promise<void>, content?: LearningContent, vocabulary?: VocabularyInventory | null, options: { noDerivedWrites?: boolean } = {}): Promise<EvidenceBundle> {
   await ensureLearningTables(client);
   // Visits completed before the completion table existed get one clearly
   // marked historical review each (additive, idempotent, no telemetry).
-  if (content) await ensureHistoricalCompletions(client, child, content);
+  if (content && !options.noDerivedWrites) await ensureHistoricalCompletions(client, child, content);
   // Reviews derived under older rules are re-derived from the preserved records (R4-3).
-  if (content) await refreshStaleReviews(client, child, content);
+  if (content && !options.noDerivedWrites) await refreshStaleReviews(client, child, content);
   // Every child row and the generation come from one coherent snapshot, so the
   // bundle can never label pre-deletion content with a post-deletion generation.
   const { erasureGeneration, value } = await readWithErasureSnapshot(

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { NO_STORE, refuse, requireParentOwner } from "@/lib/family-learning-auth";
+import { NO_STORE, refuse, requireOwnerOrReleaseKey, requireParentOwner } from "@/lib/family-learning-auth";
 import { servedNarrationCatalog } from "@/lib/family-narration-catalog-server";
 import { budgetSpent, isPublicSafeScript, MAX_PREPARE_CHARACTERS, narrationBudget, narrationReadiness, prepareNarration } from "@/lib/family-narration-store";
 
@@ -30,8 +30,8 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const parent = await requireParentOwner();
-  if (!parent.ok) return parent.response;
+  const access = await requireOwnerOrReleaseKey(request, "narration-recording");
+  if (!access.ok) return access.response;
   let body: unknown;
   try {
     body = await request.json();
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
   if (typeof maxCharacters !== "number" || !Number.isInteger(maxCharacters) || maxCharacters < 1 || maxCharacters > MAX_PREPARE_CHARACTERS) return refuse(400, `maxCharacters must be an integer between 1 and ${MAX_PREPARE_CHARACTERS}`);
   const result = await prepareNarration(servedNarrationCatalog(), maxCharacters);
   // Counts only: no text, key or voice id in the log or the response.
-  console.info(`[family/learning/parent/narration] prepare by owner: ${result.status}, recorded ${result.recorded}, characters ${result.charactersSent}, remaining ${result.remaining}, personal lines skipped ${result.personalSkipped}, budget ${result.budget ? `${result.budget.spent}/${result.budget.limit} (${result.budget.requests} requests)` : "none"}`);
+  console.info(`[family/learning/parent/narration] prepare by ${access.via}: ${result.status}, recorded ${result.recorded}, characters ${result.charactersSent}, remaining ${result.remaining}, personal lines skipped ${result.personalSkipped}, budget ${result.budget ? `${result.budget.spent}/${result.budget.limit} (${result.budget.requests} requests)` : "none"}`);
   const status = { "not-configured": 503, "no-budget": 503, "budget-unavailable": 503, "upstream-failed": 502, "store-failed": 502, busy: 409 } as Record<string, number>;
   return NextResponse.json({ result }, { status: status[result.status] ?? 200, headers: NO_STORE });
 }

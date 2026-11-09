@@ -26,6 +26,7 @@ import { auth } from "@/auth";
 import { evaluateParentLearningAccess } from "./access";
 import type { ChildId } from "./family-assistant-turn";
 import { deriveLearningKey, readBearer, verifyChildLearningToken } from "./family-learning-token";
+import { guardWithReleaseKey, type ReleaseKeyRoute } from "./family-learning-release-key";
 
 /** Every learning response carries child or family data; never cache it. */
 export const NO_STORE = {
@@ -81,4 +82,26 @@ export async function requireParentOwner(): Promise<ParentAuth> {
     };
   }
   return { ok: true, adminEmail: decision.adminEmail };
+}
+
+export type OwnerOrReleaseKey = { ok: true; via: "owner" | "release-key" } | { ok: false; response: NextResponse };
+
+/**
+ * ONLY for the routes listed in `RELEASE_KEY_ROUTES` (a test keeps it that way): the owner session as above, or the release key.
+ * Every other parent route stays on `requireParentOwner` and never reads the header.
+ */
+export async function requireOwnerOrReleaseKey(request: Request, route: ReleaseKeyRoute): Promise<OwnerOrReleaseKey> {
+  let refused: NextResponse | null = null;
+  const outcome = await guardWithReleaseKey({
+    authorization: request.headers.get("authorization"),
+    route,
+    owner: async () => {
+      const parent = await requireParentOwner();
+      if (parent.ok) return { ok: true };
+      refused = parent.response;
+      return { ok: false, status: parent.response.status, error: "Refused" };
+    },
+  });
+  if (outcome.ok) return outcome;
+  return { ok: false, response: refused ?? refuse(outcome.status, outcome.error) };
 }

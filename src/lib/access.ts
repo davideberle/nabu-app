@@ -203,6 +203,8 @@ export const PARENT_LEARNING_API_INVENTORY: readonly { method: string; path: str
   // Isabel Visit 2 (2026-10-29): prerecorded narration readiness (read-only) and the owner's explicit, capped preparation.
   { method: "GET", path: "/api/family/learning/parent/narration" },
   { method: "POST", path: "/api/family/learning/parent/narration" },
+  // Release key (2026-11-09): read-only snapshot of both children's records.
+  { method: "GET", path: "/api/family/learning/parent/release-snapshot" },
 ];
 
 /** Parent learning page(s); never in the tracker allow-list. */
