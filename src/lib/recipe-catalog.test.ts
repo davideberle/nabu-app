@@ -6,6 +6,7 @@ import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 import {
   HIDDEN_COOKBOOKS,
+  HIDDEN_RECIPE_IDS,
   NO_PHOTO_SEARCH_PENALTY,
   hasRecipeImage,
   isBrowsableStaticRecipe,
@@ -56,6 +57,37 @@ describe("C — hidden cookbooks", () => {
     ok(visible.every((r) => !HIDDEN_COOKBOOKS.has(r.source?.cookbook ?? "")));
   });
 
+  it("hides the 25 Raw Food / Real Thai records whose content is another dish, keeping their files", () => {
+    equal(HIDDEN_RECIPE_IDS.size, 25);
+    for (const id of HIDDEN_RECIPE_IDS) {
+      const hit = byId.get(id);
+      ok(hit, `${id} must stay in the bundle`);
+      ok(["Raw Food", "Real Thai Cooking"].includes(hit.source?.cookbook ?? ""), id);
+      equal(isBrowsableStaticRecipe(hit), false, id);
+    }
+    const khaoThom = byId.get("khao-thom-rice-porridge");
+    ok(khaoThom && hasRecipeImage(khaoThom), "fixture: hidden despite having a photo");
+  });
+
+  it("referenced ids that are no longer browsable still resolve (November 10 read-only production scan)", () => {
+    // A sample across every referencing table: meal plans, cooking sessions,
+    // cook history, planner reviews and My Recipes overrides.
+    for (const id of [
+      "chard-and-saffron-omelettes", // plan + session + cook event, no photo
+      "spicy-shaved-brussels-sprouts", // plan + session + cook event, no photo
+      "tomato-salad-with-pomegranate-molasses", // plan + cook event, no photo
+      "hungarian-goulash", // plan + session, no photo
+      "fava-bean-burgers", // W46 shelf + planner review, photo removed
+      "hokkien-fried-noodles", // plan, misaligned record
+      "sushi", // plan, misaligned record
+      "weisse-bohnen-suppe-mit-basilikum-und-mandeln", // cook event + My Recipes override, no photo
+    ]) {
+      const hit = byId.get(id);
+      ok(hit, `${id} must keep resolving`);
+      equal(isBrowsableStaticRecipe(hit), false, id);
+    }
+  });
+
   it("ids referenced in production (plans, sessions, My Recipes overrides) are still in the bundle", () => {
     // Read-only Turso scan, November 10, 2026: the only hidden-book ids referenced
     // by meal plans, cooking sessions, cook history or My Recipes overrides.
@@ -74,7 +106,25 @@ describe("C — hidden cookbooks", () => {
   });
 });
 
-describe("D — recipes without a photo rank lower", () => {
+describe("D — static recipes without a photo are excluded (November 10 follow-up)", () => {
+  it("no browsable static recipe lacks a photo, and the files are kept", () => {
+    const visible = bundle.filter(isBrowsableStaticRecipe);
+    deepStrictEqual(visible.filter((r) => !hasRecipeImage(r)).map((r) => r.id), []);
+    equal(bundle.length, 3493);
+    equal(visible.length, 1695);
+    equal(isBrowsableStaticRecipe({ id: "x", source: { cookbook: "Plenty", author: "Y" }, image: null }), false);
+    equal(isBrowsableStaticRecipe({ id: "x", source: { cookbook: "Plenty", author: "Y" }, image: "https://x/y.jpg" }), true);
+  });
+
+  it("search for “soup” returns only photo recipes", () => {
+    const results = searchRecipes("soup", bundle.filter(isBrowsableStaticRecipe));
+    ok(results.length > 20);
+    deepStrictEqual(results.filter((r) => !hasRecipeImage(r)).map((r) => r.id), []);
+    ok(!results.some((r) => r.id === "tom-kha-gai-chicken-coconut-soup"), "a hidden misaligned record must not appear");
+  });
+});
+
+describe("D — My Recipes rows without a photo still rank lower (they are never excluded)", () => {
   it("search: among equal title matches, the photo recipe comes first", () => {
     const results = searchRecipes("lentil soup", [
       recipe("a-no-photo", "Lentil Soup", null),
@@ -117,20 +167,6 @@ describe("D — recipes without a photo rank lower", () => {
     ];
     deepStrictEqual(photoFirst(list).map((r) => r.id), ["b", "d", "a", "c"]);
     equal(hasRecipeImage(recipe("e", "E", "   ")), false);
-  });
-
-  it("soups search on the live catalog lists every photo soup before the first soup without one", () => {
-    const visible = bundle.filter(isBrowsableStaticRecipe);
-    const results = searchRecipes("soup", visible);
-    ok(results.length > 20);
-    const firstNoPhoto = results.findIndex((r) => !hasRecipeImage(r));
-    const titleTier = (r: Recipe) => /\bsoups?\b/i.test(r.name);
-    // Within the title-match tier (the soups), photos come first.
-    const soups = results.filter(titleTier);
-    const lastPhotoSoup = soups.map(hasRecipeImage).lastIndexOf(true);
-    const firstNoPhotoSoup = soups.findIndex((r) => !hasRecipeImage(r));
-    ok(firstNoPhotoSoup === -1 || lastPhotoSoup < firstNoPhotoSoup, "a photo soup ranked below a no-photo soup");
-    ok(firstNoPhoto === -1 || firstNoPhoto > 0);
   });
 
   it("planner suggestions keep their stricter existing rule: no photo, no shelf", () => {

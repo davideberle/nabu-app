@@ -73,6 +73,7 @@ export { getCuisine, getDietary, COOKBOOK_CUISINES } from "./meals-core.ts";
 import { isBrowsableStaticRecipe, photoFirst } from "./recipe-catalog.ts";
 export {
   HIDDEN_COOKBOOKS,
+  HIDDEN_RECIPE_IDS,
   NO_PHOTO_SEARCH_PENALTY,
   getCourseTags,
   hasRecipeImage,

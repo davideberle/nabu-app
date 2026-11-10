@@ -1,5 +1,5 @@
 // Pure catalog rules shared by the recipe pages and their tests: which static
-// cookbooks are hidden, photo-first ordering, and search ranking. No database,
+// recipes are browsable, photo-first ordering, and search ranking. No database,
 // no bundle import — `recipes.ts` applies these to the data.
 
 import type { Recipe } from "./recipes.ts";
@@ -29,11 +29,40 @@ export const HIDDEN_COOKBOOKS: ReadonlySet<string> = new Set([
   "Falastin",
 ]);
 
-/** True when a static recipe may appear in browsing, search and suggestions. */
-export function isBrowsableStaticRecipe(recipe: Pick<Recipe, "source">): boolean {
-  const cookbook = recipe.source?.cookbook ?? "";
-  return cookbook !== "My Recipes" && !HIDDEN_COOKBOOKS.has(cookbook);
-}
+// Single static records hidden the same way (files kept, ids still resolve).
+// November 10, 2026 follow-up (David, 21:03): these Raw Food and Real Thai
+// records carry a different dish than their title — e.g. khao-thom-rice-porridge
+// holds pickled cabbage and salted eggs — and a faithful repair would mean
+// changing ingredients. Evidence: Kitchen plan note, workstream A "Not repaired".
+export const HIDDEN_RECIPE_IDS: ReadonlySet<string> = new Set([
+  // Raw Food (DK)
+  "arugula-and-pear-salad",
+  "asian-kelp-noodles",
+  "basil-pesto",
+  "decadent-strawberries",
+  "kale-chips",
+  "nori-rolls",
+  "ravioli",
+  "rocher-torte",
+  "spicy-mango-salad",
+  "sushi",
+  "sweet-potato-curry",
+  "tahini-date-paste",
+  "tiger-nut-cocoa",
+  // Real Thai Cooking
+  "hearty-beef-tongue-stew",
+  "hokkien-fried-noodles",
+  "jaew-chili-sauce",
+  "khao-thom-rice-porridge",
+  "mieng-pla-pow-baked-fish",
+  "pad-krapao-basil-stir-fry",
+  "pon-pla-tu-mackerel-salad",
+  "sai-oua-chiang-mai-sausage",
+  "thai-iced-tea",
+  "thai-style-chicken-biryani",
+  "thai-sweet-rolls",
+  "tom-kha-gai-chicken-coconut-soup",
+]);
 
 /** A recipe card can show a photo. */
 export function hasRecipeImage(recipe: Pick<Recipe, "image">): boolean {
@@ -41,9 +70,29 @@ export function hasRecipeImage(recipe: Pick<Recipe, "image">): boolean {
 }
 
 /**
- * Photo recipes first, otherwise the incoming order (a stable sort): recipes
- * without a photo are demoted in browse lists, never removed (November 10,
- * 2026 catalog cleanup, workstream D).
+ * True when a static cookbook recipe may appear in browsing, search, the
+ * cookbook/chapter/cuisine/dietary lists and suggestions. Excluded: hidden
+ * books, hidden single records, and — since the November 10, 2026 follow-up
+ * (David, 21:03) — every static recipe without a photo. Excluded records keep
+ * their files and `getRecipe` still resolves them, so meal plans, cooking
+ * sessions, cook history and My Recipes overrides that reference one keep
+ * opening at /recipes/<id>. My Recipes rows (Turso) are not static and are
+ * never filtered here.
+ */
+export function isBrowsableStaticRecipe(recipe: Pick<Recipe, "id" | "source" | "image">): boolean {
+  const cookbook = recipe.source?.cookbook ?? "";
+  return (
+    cookbook !== "My Recipes" &&
+    !HIDDEN_COOKBOOKS.has(cookbook) &&
+    !HIDDEN_RECIPE_IDS.has(recipe.id) &&
+    hasRecipeImage(recipe)
+  );
+}
+
+/**
+ * Photo recipes first, otherwise the incoming order (a stable sort). Static
+ * recipes without a photo are no longer browsable at all; this ordering now
+ * only affects My Recipes rows without a photo.
  */
 export function photoFirst<T extends Pick<Recipe, "image">>(recipes: readonly T[]): T[] {
   return [...recipes].sort((a, b) => Number(!hasRecipeImage(a)) - Number(!hasRecipeImage(b)));
@@ -75,7 +124,9 @@ export type RecipeSearchResult = Recipe & {
 };
 
 /**
- * Ranking demotion for a search result without a photo. It is larger than
+ * Ranking demotion for a search result without a photo (since the November 10
+ * follow-up this only reaches My Recipes rows: static recipes without a photo
+ * are not browsable at all). It is larger than
  * every non-title bonus a result can collect for a query of up to four words
  * (cookbook/cuisine/tag 800 + 120 per word, ingredients 350 + 50 per word), so
  * among results that match the title equally a photo recipe always comes
