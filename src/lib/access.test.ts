@@ -218,6 +218,7 @@ describe("isTrustedRuntimeApiRoute", () => {
     // scheduled/non-browser calls, so they carry a bearer rather than a cookie.
     equal(isTrustedRuntimeApiRoute("POST", "/api/meals/prepare"), true);
     equal(isTrustedRuntimeApiRoute("POST", "/api/meals/replace"), true);
+    equal(isTrustedRuntimeApiRoute("POST", "/api/meals/plan"), true);
   });
 
   it("matches the method case-insensitively and ignores a trailing slash", () => {
@@ -231,11 +232,11 @@ describe("isTrustedRuntimeApiRoute", () => {
     equal(isTrustedRuntimeApiRoute("PATCH", "/api/cooking/session/from-plan"), false);
     equal(isTrustedRuntimeApiRoute("GET", "/api/meals/prepare"), false);
     equal(isTrustedRuntimeApiRoute("GET", "/api/meals/replace"), false);
+    equal(isTrustedRuntimeApiRoute("GET", "/api/meals/plan"), false);
   });
 
   it("does not cover any other planner or family surface", () => {
     for (const [method, path] of [
-      ["POST", "/api/meals/plan"],
       ["POST", "/api/shopping"],
       ["POST", "/api/cook-events"],
       ["POST", "/api/recipes"],

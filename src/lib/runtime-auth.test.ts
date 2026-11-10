@@ -207,6 +207,7 @@ const RUNTIME_ROUTES: [string, string][] = [
   // replacement: scheduled non-browser calls on the same policy.
   ["POST", "/api/meals/prepare"],
   ["POST", "/api/meals/replace"],
+  ["POST", "/api/meals/plan"],
 ];
 
 describe("middleware + guard: authorized session OR valid runtime token", () => {
@@ -257,7 +258,6 @@ describe("middleware + guard: authorized session OR valid runtime token", () => 
 
   it("keeps refusing a tracker cookie on every other API surface, at middleware", () => {
     for (const [method, path] of [
-      ["POST", "/api/meals/plan"],
       ["POST", "/api/shopping"],
       ["POST", "/api/cook-events"],
       ["GET", "/api/cooking/session"],

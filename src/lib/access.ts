@@ -144,6 +144,10 @@ const TRUSTED_RUNTIME_API_ROUTES: { methods: readonly string[]; pattern: RegExp 
   { methods: ["POST"], pattern: /^\/api\/meals\/prepare$/ },
   // Chat-driven targeted replacement of unassigned recommendations.
   { methods: ["POST"], pattern: /^\/api\/meals\/replace$/ },
+  // Saving a week's plan (day assignments and day notes) from Nabu's chat.
+  // November 10, 2026: David approved runtime access so planner updates no
+  // longer need a browser login.
+  { methods: ["POST"], pattern: /^\/api\/meals\/plan$/ },
   // Music "New plays" mirror + action outbox. `projects/sonos-music`
   // (`new-plays-sync.js`) pushes the read-only projection with PUT, pulls the
   // queued typed actions with GET, and reports outcomes to /ack. The browser

@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { auth } from "@/auth";
-import { isTrackerOnlyEmail } from "@/lib/access";
+import { guardRuntimeWrite } from "@/lib/api-guards";
 import { saveMealPlan, loadMealPlan } from "@/lib/meals-persistence";
 import type { MealPlan } from "@/lib/meals";
 import { assignedRecipeIdsForPlan, hydrateShelfItems, toCandidateItem } from "@/lib/planner-preparation";
@@ -97,13 +96,10 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const session = await auth();
-  if (!session?.user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-  if (isTrackerOnlyEmail(session.user.email)) {
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  }
+  // Authorized household session or the trusted runtime token; tracker-only
+  // accounts without a valid token stay read-only.
+  const guard = await guardRuntimeWrite(request);
+  if (guard.response) return guard.response;
 
   try {
     const plan = (await request.json()) as MealPlan;
