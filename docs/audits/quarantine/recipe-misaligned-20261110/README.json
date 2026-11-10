@@ -1,0 +1,245 @@
+{
+  "description": "17 static recipe records removed from the app on 2026-11-10 (David, follow-up 2): Raw Food and Real Thai Cooking records whose content is a different dish than their title. None is referenced in production (read-only Turso scan of meal plans, cooking sessions, cook history, planner reviews, exposure and My Recipes). The record files are kept here; their photos stay in Vercel Blob. To restore one, git mv it back to src/data/recipes/ and re-add its manifest entry below.",
+  "removed": [
+    {
+      "id": "basil-pesto",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/basil-pesto.jpg"
+    },
+    {
+      "id": "decadent-strawberries",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/decadent-strawberries.jpg"
+    },
+    {
+      "id": "kale-chips",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/kale-chips.jpg"
+    },
+    {
+      "id": "ravioli",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ravioli.jpg"
+    },
+    {
+      "id": "rocher-torte",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/rocher-torte.jpg"
+    },
+    {
+      "id": "tahini-date-paste",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tahini-date-paste.jpg"
+    },
+    {
+      "id": "tiger-nut-cocoa",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tiger-nut-cocoa.jpg"
+    },
+    {
+      "id": "hearty-beef-tongue-stew",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/hearty-beef-tongue-stew.jpg"
+    },
+    {
+      "id": "jaew-chili-sauce",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/jaew-chili-sauce.jpg"
+    },
+    {
+      "id": "khao-thom-rice-porridge",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/khao-thom-rice-porridge.jpg"
+    },
+    {
+      "id": "mieng-pla-pow-baked-fish",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/mieng-pla-pow-baked-fish.jpg"
+    },
+    {
+      "id": "pad-krapao-basil-stir-fry",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pad-krapao-basil-stir-fry.jpg"
+    },
+    {
+      "id": "sai-oua-chiang-mai-sausage",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sai-oua-chiang-mai-sausage.jpg"
+    },
+    {
+      "id": "thai-iced-tea",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/thai-iced-tea.jpg"
+    },
+    {
+      "id": "thai-style-chicken-biryani",
+      "previousImage": null
+    },
+    {
+      "id": "thai-sweet-rolls",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/thai-sweet-rolls.jpg"
+    },
+    {
+      "id": "tom-kha-gai-chicken-coconut-soup",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tom-kha-gai-chicken-coconut-soup.jpg"
+    }
+  ],
+  "unreferencedManifestEntries": [
+    {
+      "sourceRef": "/recipes/basil-pesto.jpg",
+      "sourcePath": "recipes/basil-pesto.jpg",
+      "pathname": "cookbook/recipes/basil-pesto.jpg",
+      "size": 1004679,
+      "sha256": "5f3b24b87f4bb8ba118a776c0da080f20d2f66e58ccccd36ae93a055e1e73072",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/basil-pesto.jpg",
+      "etag": "\"9de85f2bc81eac0dc0d8ed62c95d1f0b\""
+    },
+    {
+      "sourceRef": "/recipes/decadent-strawberries.jpg",
+      "sourcePath": "recipes/decadent-strawberries.jpg",
+      "pathname": "cookbook/recipes/decadent-strawberries.jpg",
+      "size": 627115,
+      "sha256": "90db42ef5a25f33aa48aed538433909412bcb3fe126a99c67f8c6422b0cf180b",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/decadent-strawberries.jpg",
+      "etag": "\"efa8b831fece923dd9c6d5e5c1e5ee63\""
+    },
+    {
+      "sourceRef": "/recipes/hearty-beef-tongue-stew.jpg",
+      "sourcePath": "recipes/hearty-beef-tongue-stew.jpg",
+      "pathname": "cookbook/recipes/hearty-beef-tongue-stew.jpg",
+      "size": 165705,
+      "sha256": "9424bfc6bb288bb6f02f72b781af51636c70cfc265cd6027c922b2f5b0a95d18",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/hearty-beef-tongue-stew.jpg",
+      "etag": "\"b07d4f7616fefc690a9988da4292a9c0\""
+    },
+    {
+      "sourceRef": "/recipes/jaew-chili-sauce.jpg",
+      "sourcePath": "recipes/jaew-chili-sauce.jpg",
+      "pathname": "cookbook/recipes/jaew-chili-sauce.jpg",
+      "size": 145636,
+      "sha256": "b4bccdfa21e365b6162a16bba2ba17ab3fa1c25387706ecd42f4638d758d4a44",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/jaew-chili-sauce.jpg",
+      "etag": "\"16fbc98f8cfccd26b5e2c452d54510ad\""
+    },
+    {
+      "sourceRef": "/recipes/kale-chips.jpg",
+      "sourcePath": "recipes/kale-chips.jpg",
+      "pathname": "cookbook/recipes/kale-chips.jpg",
+      "size": 376022,
+      "sha256": "c0fb0b9488bfca19e286504dee4fc2e8237e4d62bf2d1ad282b7e38ffee07f33",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/kale-chips.jpg",
+      "etag": "\"cecd0cf65119ec7df7a70b3c839d434c\""
+    },
+    {
+      "sourceRef": "/recipes/khao-thom-rice-porridge.jpg",
+      "sourcePath": "recipes/khao-thom-rice-porridge.jpg",
+      "pathname": "cookbook/recipes/khao-thom-rice-porridge.jpg",
+      "size": 95493,
+      "sha256": "2f458f3e93430ba32f926a1ce6c41269c9380797ef48c817ac907187de5a0011",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/khao-thom-rice-porridge.jpg",
+      "etag": "\"31b31c2bbbbc541713bbeee26eac9a05\""
+    },
+    {
+      "sourceRef": "/recipes/mieng-pla-pow-baked-fish.jpg",
+      "sourcePath": "recipes/mieng-pla-pow-baked-fish.jpg",
+      "pathname": "cookbook/recipes/mieng-pla-pow-baked-fish.jpg",
+      "size": 116284,
+      "sha256": "626fc173c032657c8d4adedb6143003ae09944f91d629753c74766c4b4d449e7",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/mieng-pla-pow-baked-fish.jpg",
+      "etag": "\"034a44ff12cbbef0d6592c6b5a307a70\""
+    },
+    {
+      "sourceRef": "/recipes/pad-krapao-basil-stir-fry.jpg",
+      "sourcePath": "recipes/pad-krapao-basil-stir-fry.jpg",
+      "pathname": "cookbook/recipes/pad-krapao-basil-stir-fry.jpg",
+      "size": 101036,
+      "sha256": "b0a59c77db817242ec7ecb48d5d5e2c0588d2846257a3d1b6507d8f0ab7530c8",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pad-krapao-basil-stir-fry.jpg",
+      "etag": "\"a9e145e32be07907894b61fcb065720e\""
+    },
+    {
+      "sourceRef": "/recipes/ravioli.jpg",
+      "sourcePath": "recipes/ravioli.jpg",
+      "pathname": "cookbook/recipes/ravioli.jpg",
+      "size": 1052993,
+      "sha256": "207c8b026d4fceefd69c2c10afac505a3363018c4a4cd6642452fd4f0e6db048",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/ravioli.jpg",
+      "etag": "\"4207d2c432a04745affb1c8194541c15\""
+    },
+    {
+      "sourceRef": "/recipes/rocher-torte.jpg",
+      "sourcePath": "recipes/rocher-torte.jpg",
+      "pathname": "cookbook/recipes/rocher-torte.jpg",
+      "size": 645121,
+      "sha256": "ec6e1d3174839f4381f49d9db01836ea668a9eb49574442701128f611cd60c17",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/rocher-torte.jpg",
+      "etag": "\"1aba12c2e999b2f381b43f46fb9ab155\""
+    },
+    {
+      "sourceRef": "/recipes/sai-oua-chiang-mai-sausage.jpg",
+      "sourcePath": "recipes/sai-oua-chiang-mai-sausage.jpg",
+      "pathname": "cookbook/recipes/sai-oua-chiang-mai-sausage.jpg",
+      "size": 128797,
+      "sha256": "9042ef0ccb79118c80352b0b02d1a2fbf497f6445835ba67daa2f8b04f738b3f",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sai-oua-chiang-mai-sausage.jpg",
+      "etag": "\"9863fd82b058b8387cfafe36e99fe8ff\""
+    },
+    {
+      "sourceRef": "/recipes/tahini-date-paste.jpg",
+      "sourcePath": "recipes/tahini-date-paste.jpg",
+      "pathname": "cookbook/recipes/tahini-date-paste.jpg",
+      "size": 587276,
+      "sha256": "cafa2ae99006ca45e5d4af39532c1d5d8b13e2f0cb03203deed6a658ed7bdbb1",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tahini-date-paste.jpg",
+      "etag": "\"99160c31ffff08310bee8fd4851b934d\""
+    },
+    {
+      "sourceRef": "/recipes/thai-iced-tea.jpg",
+      "sourcePath": "recipes/thai-iced-tea.jpg",
+      "pathname": "cookbook/recipes/thai-iced-tea.jpg",
+      "size": 63082,
+      "sha256": "6d8a5e7bd09a9ab87241b274ac60342b34616d78f3dbbc69d17116316c8dfd8d",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/thai-iced-tea.jpg",
+      "etag": "\"d27862a7adbe3f7edefb438d2912494d\""
+    },
+    {
+      "sourceRef": "/recipes/thai-sweet-rolls.jpg",
+      "sourcePath": "recipes/thai-sweet-rolls.jpg",
+      "pathname": "cookbook/recipes/thai-sweet-rolls.jpg",
+      "size": 122901,
+      "sha256": "5bebd49181be4e6f47c6af746d9f982418cdbc35eaa511087a1c3aefb6ce1e10",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/thai-sweet-rolls.jpg",
+      "etag": "\"fc918a1f66c8a180a36f8e0ef24d8c47\""
+    },
+    {
+      "sourceRef": "/recipes/tiger-nut-cocoa.jpg",
+      "sourcePath": "recipes/tiger-nut-cocoa.jpg",
+      "pathname": "cookbook/recipes/tiger-nut-cocoa.jpg",
+      "size": 761719,
+      "sha256": "eaf707a5da434973547d689847e694995456d785cef5e0bbad3f5f100620c51d",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tiger-nut-cocoa.jpg",
+      "etag": "\"090d92fed0717dcb981d894aa7c5013d\""
+    },
+    {
+      "sourceRef": "/recipes/tom-kha-gai-chicken-coconut-soup.jpg",
+      "sourcePath": "recipes/tom-kha-gai-chicken-coconut-soup.jpg",
+      "pathname": "cookbook/recipes/tom-kha-gai-chicken-coconut-soup.jpg",
+      "size": 164196,
+      "sha256": "9f2b8a890ad2ab5fd6fd642771e7a019fa040572ece439993e41310e80b65901",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tom-kha-gai-chicken-coconut-soup.jpg",
+      "etag": "\"9517ca608d598ef2dc94875e6a82e0de\""
+    }
+  ],
+  "keptHiddenBecauseReferenced": [
+    "arugula-and-pear-salad",
+    "asian-kelp-noodles",
+    "nori-rolls",
+    "spicy-mango-salad",
+    "sushi",
+    "sweet-potato-curry",
+    "hokkien-fried-noodles",
+    "pon-pla-tu-mackerel-salad"
+  ]
+}

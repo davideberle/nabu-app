@@ -2,7 +2,7 @@
 // (recipes without a photo rank lower). Run with: npm test
 
 import { deepStrictEqual, equal, ok } from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 import {
   HIDDEN_COOKBOOKS,
@@ -57,16 +57,23 @@ describe("C — hidden cookbooks", () => {
     ok(visible.every((r) => !HIDDEN_COOKBOOKS.has(r.source?.cookbook ?? "")));
   });
 
-  it("hides the 25 Raw Food / Real Thai records whose content is another dish, keeping their files", () => {
-    equal(HIDDEN_RECIPE_IDS.size, 25);
+  it("removes the 17 unreferenced misaligned Raw Food / Real Thai records and keeps the 8 referenced ones hidden", () => {
+    const removed = [
+      "basil-pesto", "decadent-strawberries", "kale-chips", "ravioli", "rocher-torte", "tahini-date-paste", "tiger-nut-cocoa",
+      "hearty-beef-tongue-stew", "jaew-chili-sauce", "khao-thom-rice-porridge", "mieng-pla-pow-baked-fish", "pad-krapao-basil-stir-fry",
+      "sai-oua-chiang-mai-sausage", "thai-iced-tea", "thai-style-chicken-biryani", "thai-sweet-rolls", "tom-kha-gai-chicken-coconut-soup",
+    ];
+    for (const id of removed) {
+      equal(byId.has(id), false, `${id} must be gone from the bundle (getRecipe → not found)`);
+      ok(existsSync(new URL(`../../docs/audits/quarantine/recipe-misaligned-20261110/${id}.json`, import.meta.url)), `${id} archived`);
+    }
+    equal(HIDDEN_RECIPE_IDS.size, 8);
     for (const id of HIDDEN_RECIPE_IDS) {
       const hit = byId.get(id);
-      ok(hit, `${id} must stay in the bundle`);
+      ok(hit, `${id} is referenced in production and must keep resolving`);
       ok(["Raw Food", "Real Thai Cooking"].includes(hit.source?.cookbook ?? ""), id);
       equal(isBrowsableStaticRecipe(hit), false, id);
     }
-    const khaoThom = byId.get("khao-thom-rice-porridge");
-    ok(khaoThom && hasRecipeImage(khaoThom), "fixture: hidden despite having a photo");
   });
 
   it("referenced ids that are no longer browsable still resolve (November 10 read-only production scan)", () => {
@@ -110,7 +117,7 @@ describe("D — static recipes without a photo are excluded (November 10 follow-
   it("no browsable static recipe lacks a photo, and the files are kept", () => {
     const visible = bundle.filter(isBrowsableStaticRecipe);
     deepStrictEqual(visible.filter((r) => !hasRecipeImage(r)).map((r) => r.id), []);
-    equal(bundle.length, 3493);
+    equal(bundle.length, 3476);
     equal(visible.length, 1695);
     equal(isBrowsableStaticRecipe({ id: "x", source: { cookbook: "Plenty", author: "Y" }, image: null }), false);
     equal(isBrowsableStaticRecipe({ id: "x", source: { cookbook: "Plenty", author: "Y" }, image: "https://x/y.jpg" }), true);
@@ -120,7 +127,7 @@ describe("D — static recipes without a photo are excluded (November 10 follow-
     const results = searchRecipes("soup", bundle.filter(isBrowsableStaticRecipe));
     ok(results.length > 20);
     deepStrictEqual(results.filter((r) => !hasRecipeImage(r)).map((r) => r.id), []);
-    ok(!results.some((r) => r.id === "tom-kha-gai-chicken-coconut-soup"), "a hidden misaligned record must not appear");
+    ok(!results.some((r) => HIDDEN_RECIPE_IDS.has(r.id)), "a hidden misaligned record must not appear");
   });
 });
 

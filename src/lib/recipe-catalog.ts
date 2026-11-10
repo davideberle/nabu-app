@@ -30,38 +30,24 @@ export const HIDDEN_COOKBOOKS: ReadonlySet<string> = new Set([
 ]);
 
 // Single static records hidden the same way (files kept, ids still resolve).
-// November 10, 2026 follow-up (David, 21:03): these Raw Food and Real Thai
-// records carry a different dish than their title — e.g. khao-thom-rice-porridge
-// holds pickled cabbage and salted eggs — and a faithful repair would mean
-// changing ingredients. Evidence: Kitchen plan note, workstream A "Not repaired".
+// November 10, 2026: 25 Raw Food and Real Thai records carry a different dish
+// than their title (e.g. khao-thom-rice-porridge held pickled cabbage and
+// salted eggs). David asked to remove them: 17 were removed from the app
+// (archived in docs/audits/quarantine/recipe-misaligned-20261110/, Kitchen
+// copies in kitchen/archive/). These 8 stay in the bundle, hidden, because
+// stored meal-plan data references them (candidate reserves W33–W37 and
+// quality-gate diagnostics W38–W46), so old links keep resolving.
 export const HIDDEN_RECIPE_IDS: ReadonlySet<string> = new Set([
   // Raw Food (DK)
   "arugula-and-pear-salad",
   "asian-kelp-noodles",
-  "basil-pesto",
-  "decadent-strawberries",
-  "kale-chips",
   "nori-rolls",
-  "ravioli",
-  "rocher-torte",
   "spicy-mango-salad",
   "sushi",
   "sweet-potato-curry",
-  "tahini-date-paste",
-  "tiger-nut-cocoa",
   // Real Thai Cooking
-  "hearty-beef-tongue-stew",
   "hokkien-fried-noodles",
-  "jaew-chili-sauce",
-  "khao-thom-rice-porridge",
-  "mieng-pla-pow-baked-fish",
-  "pad-krapao-basil-stir-fry",
   "pon-pla-tu-mackerel-salad",
-  "sai-oua-chiang-mai-sausage",
-  "thai-iced-tea",
-  "thai-style-chicken-biryani",
-  "thai-sweet-rolls",
-  "tom-kha-gai-chicken-coconut-soup",
 ]);
 
 /** A recipe card can show a photo. */
