@@ -57,23 +57,20 @@ describe("C — hidden cookbooks", () => {
     ok(visible.every((r) => !HIDDEN_COOKBOOKS.has(r.source?.cookbook ?? "")));
   });
 
-  it("removes the 17 unreferenced misaligned Raw Food / Real Thai records and keeps the 8 referenced ones hidden", () => {
+  it("removes all 25 misaligned Raw Food / Real Thai records from the bundle and archives them", () => {
     const removed = [
       "basil-pesto", "decadent-strawberries", "kale-chips", "ravioli", "rocher-torte", "tahini-date-paste", "tiger-nut-cocoa",
+      "arugula-and-pear-salad", "asian-kelp-noodles", "nori-rolls", "spicy-mango-salad", "sushi", "sweet-potato-curry",
       "hearty-beef-tongue-stew", "jaew-chili-sauce", "khao-thom-rice-porridge", "mieng-pla-pow-baked-fish", "pad-krapao-basil-stir-fry",
       "sai-oua-chiang-mai-sausage", "thai-iced-tea", "thai-style-chicken-biryani", "thai-sweet-rolls", "tom-kha-gai-chicken-coconut-soup",
+      "hokkien-fried-noodles", "pon-pla-tu-mackerel-salad",
     ];
+    equal(removed.length, 25);
     for (const id of removed) {
       equal(byId.has(id), false, `${id} must be gone from the bundle (getRecipe → not found)`);
       ok(existsSync(new URL(`../../docs/audits/quarantine/recipe-misaligned-20261110/${id}.json`, import.meta.url)), `${id} archived`);
     }
-    equal(HIDDEN_RECIPE_IDS.size, 8);
-    for (const id of HIDDEN_RECIPE_IDS) {
-      const hit = byId.get(id);
-      ok(hit, `${id} is referenced in production and must keep resolving`);
-      ok(["Raw Food", "Real Thai Cooking"].includes(hit.source?.cookbook ?? ""), id);
-      equal(isBrowsableStaticRecipe(hit), false, id);
-    }
+    equal(HIDDEN_RECIPE_IDS.size, 0);
   });
 
   it("referenced ids that are no longer browsable still resolve (November 10 read-only production scan)", () => {
@@ -85,8 +82,6 @@ describe("C — hidden cookbooks", () => {
       "tomato-salad-with-pomegranate-molasses", // plan + cook event, no photo
       "hungarian-goulash", // plan + session, no photo
       "fava-bean-burgers", // W46 shelf + planner review, photo removed
-      "hokkien-fried-noodles", // plan, misaligned record
-      "sushi", // plan, misaligned record
       "weisse-bohnen-suppe-mit-basilikum-und-mandeln", // cook event + My Recipes override, no photo
     ]) {
       const hit = byId.get(id);
@@ -117,7 +112,7 @@ describe("D — static recipes without a photo are excluded (November 10 follow-
   it("no browsable static recipe lacks a photo, and the files are kept", () => {
     const visible = bundle.filter(isBrowsableStaticRecipe);
     deepStrictEqual(visible.filter((r) => !hasRecipeImage(r)).map((r) => r.id), []);
-    equal(bundle.length, 3476);
+    equal(bundle.length, 3468);
     equal(visible.length, 1695);
     equal(isBrowsableStaticRecipe({ id: "x", source: { cookbook: "Plenty", author: "Y" }, image: null }), false);
     equal(isBrowsableStaticRecipe({ id: "x", source: { cookbook: "Plenty", author: "Y" }, image: "https://x/y.jpg" }), true);

@@ -30,25 +30,12 @@ export const HIDDEN_COOKBOOKS: ReadonlySet<string> = new Set([
 ]);
 
 // Single static records hidden the same way (files kept, ids still resolve).
-// November 10, 2026: 25 Raw Food and Real Thai records carry a different dish
-// than their title (e.g. khao-thom-rice-porridge held pickled cabbage and
-// salted eggs). David asked to remove them: 17 were removed from the app
-// (archived in docs/audits/quarantine/recipe-misaligned-20261110/, Kitchen
-// copies in kitchen/archive/). These 8 stay in the bundle, hidden, because
-// stored meal-plan data references them (candidate reserves W33–W37 and
-// quality-gate diagnostics W38–W46), so old links keep resolving.
-export const HIDDEN_RECIPE_IDS: ReadonlySet<string> = new Set([
-  // Raw Food (DK)
-  "arugula-and-pear-salad",
-  "asian-kelp-noodles",
-  "nori-rolls",
-  "spicy-mango-salad",
-  "sushi",
-  "sweet-potato-curry",
-  // Real Thai Cooking
-  "hokkien-fried-noodles",
-  "pon-pla-tu-mackerel-salad",
-]);
+// Empty since November 10, 2026: the 25 misaligned Raw Food / Real Thai
+// records that were listed here were removed from the bundle at David's
+// request (archived in docs/audits/quarantine/recipe-misaligned-20261110/,
+// Kitchen copies in kitchen/archive/removed-recipes-2026-11-10/). Kept as the
+// mechanism for hiding a single record without removing it.
+export const HIDDEN_RECIPE_IDS: ReadonlySet<string> = new Set<string>([]);
 
 /** A recipe card can show a photo. */
 export function hasRecipeImage(recipe: Pick<Recipe, "image">): boolean {

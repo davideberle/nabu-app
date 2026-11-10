@@ -1,5 +1,5 @@
 {
-  "description": "17 static recipe records removed from the app on 2026-11-10 (David, follow-up 2): Raw Food and Real Thai Cooking records whose content is a different dish than their title. None is referenced in production (read-only Turso scan of meal plans, cooking sessions, cook history, planner reviews, exposure and My Recipes). The record files are kept here; their photos stay in Vercel Blob. To restore one, git mv it back to src/data/recipes/ and re-add its manifest entry below.",
+  "description": "All 25 static recipe records whose content is a different dish than their title (Raw Food, Real Thai Cooking) were removed from the app on 2026-11-10 at David's request: 17 at 21:33, the last 8 at 22:00 after a test confirmed that missing ids in stored meal-plan reserve/rejected-idea lists break neither plan loading nor suggestion selection. Stored plan rows were not edited. The record files are kept here; their photos stay in Vercel Blob. To restore one, git mv it back to src/data/recipes/ and re-add its manifest entry below.",
   "removed": [
     {
       "id": "basil-pesto",
@@ -68,6 +68,46 @@
     {
       "id": "tom-kha-gai-chicken-coconut-soup",
       "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tom-kha-gai-chicken-coconut-soup.jpg"
+    },
+    {
+      "id": "arugula-and-pear-salad",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/arugula-and-pear-salad.jpg",
+      "note": "was referenced only in stored meal-plan candidate reserves (W33–W37) and/or quality-gate diagnostics (W38–W46)"
+    },
+    {
+      "id": "asian-kelp-noodles",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/asian-kelp-noodles.jpg",
+      "note": "was referenced only in stored meal-plan candidate reserves (W33–W37) and/or quality-gate diagnostics (W38–W46)"
+    },
+    {
+      "id": "nori-rolls",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/nori-rolls.jpg",
+      "note": "was referenced only in stored meal-plan candidate reserves (W33–W37) and/or quality-gate diagnostics (W38–W46)"
+    },
+    {
+      "id": "spicy-mango-salad",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/spicy-mango-salad.jpg",
+      "note": "was referenced only in stored meal-plan candidate reserves (W33–W37) and/or quality-gate diagnostics (W38–W46)"
+    },
+    {
+      "id": "sushi",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sushi.jpg",
+      "note": "was referenced only in stored meal-plan candidate reserves (W33–W37) and/or quality-gate diagnostics (W38–W46)"
+    },
+    {
+      "id": "sweet-potato-curry",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sweet-potato-curry.jpg",
+      "note": "was referenced only in stored meal-plan candidate reserves (W33–W37) and/or quality-gate diagnostics (W38–W46)"
+    },
+    {
+      "id": "hokkien-fried-noodles",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/hokkien-fried-noodles.jpg",
+      "note": "was referenced only in stored meal-plan candidate reserves (W33–W37) and/or quality-gate diagnostics (W38–W46)"
+    },
+    {
+      "id": "pon-pla-tu-mackerel-salad",
+      "previousImage": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pon-pla-tu-mackerel-salad.jpg",
+      "note": "was referenced only in stored meal-plan candidate reserves (W33–W37) and/or quality-gate diagnostics (W38–W46)"
     }
   ],
   "unreferencedManifestEntries": [
@@ -230,16 +270,86 @@
       "contentType": "image/jpeg",
       "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/tom-kha-gai-chicken-coconut-soup.jpg",
       "etag": "\"9517ca608d598ef2dc94875e6a82e0de\""
+    },
+    {
+      "sourceRef": "/recipes/arugula-and-pear-salad.jpg",
+      "sourcePath": "recipes/arugula-and-pear-salad.jpg",
+      "pathname": "cookbook/recipes/arugula-and-pear-salad.jpg",
+      "size": 751043,
+      "sha256": "b09aef8183a89b70301e0d76f1bb9b0687a8e54886e114edae3ba0b60c8e12ce",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/arugula-and-pear-salad.jpg",
+      "etag": "\"5d0ba4f2c8f660e99c164366ff2af305\""
+    },
+    {
+      "sourceRef": "/recipes/asian-kelp-noodles.jpg",
+      "sourcePath": "recipes/asian-kelp-noodles.jpg",
+      "pathname": "cookbook/recipes/asian-kelp-noodles.jpg",
+      "size": 635684,
+      "sha256": "9cf5e9024af885f3ae6e4e640d5aa3bceb46d02883112ec7ef453b40ba8622a2",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/asian-kelp-noodles.jpg",
+      "etag": "\"9c1f7017d8af7f400bc2412e5525d73a\""
+    },
+    {
+      "sourceRef": "/recipes/hokkien-fried-noodles.jpg",
+      "sourcePath": "recipes/hokkien-fried-noodles.jpg",
+      "pathname": "cookbook/recipes/hokkien-fried-noodles.jpg",
+      "size": 73114,
+      "sha256": "7dcc43068a4964cbc40421fc5acfd2276c261a02fcaed9cee2ba2b9146889fda",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/hokkien-fried-noodles.jpg",
+      "etag": "\"a4abbce50fa278a1805a74048a168f3d\""
+    },
+    {
+      "sourceRef": "/recipes/nori-rolls.jpg",
+      "sourcePath": "recipes/nori-rolls.jpg",
+      "pathname": "cookbook/recipes/nori-rolls.jpg",
+      "size": 1248202,
+      "sha256": "d2e20afd51c560d57594de187f9e3f9e052e6f86aa5223982f44fba12aa962de",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/nori-rolls.jpg",
+      "etag": "\"0b6668452278208b03e66b12ae3ef35a\""
+    },
+    {
+      "sourceRef": "/recipes/pon-pla-tu-mackerel-salad.jpg",
+      "sourcePath": "recipes/pon-pla-tu-mackerel-salad.jpg",
+      "pathname": "cookbook/recipes/pon-pla-tu-mackerel-salad.jpg",
+      "size": 136038,
+      "sha256": "ea7f8911c67fcbb1700701d0642de4fa9ee441a8a85f69540f623ea4eb3bc6db",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pon-pla-tu-mackerel-salad.jpg",
+      "etag": "\"1ff1bd16e65a96bb7504a47fa05b4d3c\""
+    },
+    {
+      "sourceRef": "/recipes/spicy-mango-salad.jpg",
+      "sourcePath": "recipes/spicy-mango-salad.jpg",
+      "pathname": "cookbook/recipes/spicy-mango-salad.jpg",
+      "size": 1274246,
+      "sha256": "9eae77235ce3dda8869454ca1265b6ed38ba2e7dc7d059e6a0452eec8476fca6",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/spicy-mango-salad.jpg",
+      "etag": "\"d36666cbf17c763967771aa0f7cf3a77\""
+    },
+    {
+      "sourceRef": "/recipes/sushi.jpg",
+      "sourcePath": "recipes/sushi.jpg",
+      "pathname": "cookbook/recipes/sushi.jpg",
+      "size": 1192593,
+      "sha256": "f5a41dbc36fd3c4ad6ec034c8b89d61dbc111b91c17c00e464df91a3533c445c",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sushi.jpg",
+      "etag": "\"6cccef1707b92152f0c2245806439770\""
+    },
+    {
+      "sourceRef": "/recipes/sweet-potato-curry.jpg",
+      "sourcePath": "recipes/sweet-potato-curry.jpg",
+      "pathname": "cookbook/recipes/sweet-potato-curry.jpg",
+      "size": 924418,
+      "sha256": "4711ebc6daa33ea80b0231099937fa8d6fdc2e7826b8a8fe964cd4350cb509fa",
+      "contentType": "image/jpeg",
+      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sweet-potato-curry.jpg",
+      "etag": "\"e605d30acde703a0c43c257ad7512401\""
     }
-  ],
-  "keptHiddenBecauseReferenced": [
-    "arugula-and-pear-salad",
-    "asian-kelp-noodles",
-    "nori-rolls",
-    "spicy-mango-salad",
-    "sushi",
-    "sweet-potato-curry",
-    "hokkien-fried-noodles",
-    "pon-pla-tu-mackerel-salad"
   ]
 }

@@ -3,8 +3,8 @@
   "generatedAt": "2026-11-10T17:33:50.786848Z",
   "sourceCommit": "8dda9d9a865094efc74b564d20cda21b51d634b7",
   "recipeCount": 3493,
-  "referencedImageCount": 1921,
-  "totalBytes": 1148244561,
+  "referencedImageCount": 1913,
+  "totalBytes": 1142009223,
   "blobPrefix": "cookbook/recipes/",
   "entries": [
     {
@@ -408,16 +408,6 @@
       "etag": "\"ae9e2c1c268266eaf797bea920de53a8\""
     },
     {
-      "sourceRef": "/recipes/arugula-and-pear-salad.jpg",
-      "sourcePath": "recipes/arugula-and-pear-salad.jpg",
-      "pathname": "cookbook/recipes/arugula-and-pear-salad.jpg",
-      "size": 751043,
-      "sha256": "b09aef8183a89b70301e0d76f1bb9b0687a8e54886e114edae3ba0b60c8e12ce",
-      "contentType": "image/jpeg",
-      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/arugula-and-pear-salad.jpg",
-      "etag": "\"5d0ba4f2c8f660e99c164366ff2af305\""
-    },
-    {
       "sourceRef": "/recipes/arugula-lemon-pizza.jpg",
       "sourcePath": "recipes/arugula-lemon-pizza.jpg",
       "pathname": "cookbook/recipes/arugula-lemon-pizza.jpg",
@@ -436,16 +426,6 @@
       "contentType": "image/jpeg",
       "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/asian-inspired-sweet-chili-tofu-and-pineapple-rice.jpg",
       "etag": "\"da41290cd6aeab7ce7d5c9768e901973\""
-    },
-    {
-      "sourceRef": "/recipes/asian-kelp-noodles.jpg",
-      "sourcePath": "recipes/asian-kelp-noodles.jpg",
-      "pathname": "cookbook/recipes/asian-kelp-noodles.jpg",
-      "size": 635684,
-      "sha256": "9cf5e9024af885f3ae6e4e640d5aa3bceb46d02883112ec7ef453b40ba8622a2",
-      "contentType": "image/jpeg",
-      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/asian-kelp-noodles.jpg",
-      "etag": "\"9c1f7017d8af7f400bc2412e5525d73a\""
     },
     {
       "sourceRef": "/recipes/asian-style-vegetables-with-cauliflower-rice.jpg",
@@ -7438,16 +7418,6 @@
       "etag": "\"6ad3c1aed044944190cd7a87e968d2e3\""
     },
     {
-      "sourceRef": "/recipes/hokkien-fried-noodles.jpg",
-      "sourcePath": "recipes/hokkien-fried-noodles.jpg",
-      "pathname": "cookbook/recipes/hokkien-fried-noodles.jpg",
-      "size": 73114,
-      "sha256": "7dcc43068a4964cbc40421fc5acfd2276c261a02fcaed9cee2ba2b9146889fda",
-      "contentType": "image/jpeg",
-      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/hokkien-fried-noodles.jpg",
-      "etag": "\"a4abbce50fa278a1805a74048a168f3d\""
-    },
-    {
       "sourceRef": "/recipes/holiday-meat-pie.jpg",
       "sourcePath": "recipes/holiday-meat-pie.jpg",
       "pathname": "cookbook/recipes/holiday-meat-pie.jpg",
@@ -10838,16 +10808,6 @@
       "etag": "\"567ef7eeda29d29530f7ea83d26b822e\""
     },
     {
-      "sourceRef": "/recipes/nori-rolls.jpg",
-      "sourcePath": "recipes/nori-rolls.jpg",
-      "pathname": "cookbook/recipes/nori-rolls.jpg",
-      "size": 1248202,
-      "sha256": "d2e20afd51c560d57594de187f9e3f9e052e6f86aa5223982f44fba12aa962de",
-      "contentType": "image/jpeg",
-      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/nori-rolls.jpg",
-      "etag": "\"0b6668452278208b03e66b12ae3ef35a\""
-    },
-    {
       "sourceRef": "/recipes/not-so-crabby-cake.jpg",
       "sourcePath": "recipes/not-so-crabby-cake.jpg",
       "pathname": "cookbook/recipes/not-so-crabby-cake.jpg",
@@ -12566,16 +12526,6 @@
       "contentType": "image/jpeg",
       "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pomelo-salad.jpg",
       "etag": "\"6089c2303a148db6b057353375b2e624\""
-    },
-    {
-      "sourceRef": "/recipes/pon-pla-tu-mackerel-salad.jpg",
-      "sourcePath": "recipes/pon-pla-tu-mackerel-salad.jpg",
-      "pathname": "cookbook/recipes/pon-pla-tu-mackerel-salad.jpg",
-      "size": 136038,
-      "sha256": "ea7f8911c67fcbb1700701d0642de4fa9ee441a8a85f69540f623ea4eb3bc6db",
-      "contentType": "image/jpeg",
-      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/pon-pla-tu-mackerel-salad.jpg",
-      "etag": "\"1ff1bd16e65a96bb7504a47fa05b4d3c\""
     },
     {
       "sourceRef": "/recipes/por-pia-tod-spring-rolls.jpg",
@@ -15858,16 +15808,6 @@
       "etag": "\"4d4d8224d1096fd80ed83c426f952738\""
     },
     {
-      "sourceRef": "/recipes/spicy-mango-salad.jpg",
-      "sourcePath": "recipes/spicy-mango-salad.jpg",
-      "pathname": "cookbook/recipes/spicy-mango-salad.jpg",
-      "size": 1274246,
-      "sha256": "9eae77235ce3dda8869454ca1265b6ed38ba2e7dc7d059e6a0452eec8476fca6",
-      "contentType": "image/jpeg",
-      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/spicy-mango-salad.jpg",
-      "etag": "\"d36666cbf17c763967771aa0f7cf3a77\""
-    },
-    {
       "sourceRef": "/recipes/spicy-noodle-soup.jpg",
       "sourcePath": "recipes/spicy-noodle-soup.jpg",
       "pathname": "cookbook/recipes/spicy-noodle-soup.jpg",
@@ -16808,16 +16748,6 @@
       "etag": "\"3e9c3514a77d15c0a64410902e98b4e4\""
     },
     {
-      "sourceRef": "/recipes/sushi.jpg",
-      "sourcePath": "recipes/sushi.jpg",
-      "pathname": "cookbook/recipes/sushi.jpg",
-      "size": 1192593,
-      "sha256": "f5a41dbc36fd3c4ad6ec034c8b89d61dbc111b91c17c00e464df91a3533c445c",
-      "contentType": "image/jpeg",
-      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sushi.jpg",
-      "etag": "\"6cccef1707b92152f0c2245806439770\""
-    },
-    {
       "sourceRef": "/recipes/sweet-and-salty-cheesecake-with-cherries.jpg",
       "sourcePath": "recipes/sweet-and-salty-cheesecake-with-cherries.jpg",
       "pathname": "cookbook/recipes/sweet-and-salty-cheesecake-with-cherries.jpg",
@@ -16946,16 +16876,6 @@
       "contentType": "image/jpeg",
       "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sweet-potato-cakes.jpg",
       "etag": "\"eaab2547e8be91735ac626439bd7b5d1\""
-    },
-    {
-      "sourceRef": "/recipes/sweet-potato-curry.jpg",
-      "sourcePath": "recipes/sweet-potato-curry.jpg",
-      "pathname": "cookbook/recipes/sweet-potato-curry.jpg",
-      "size": 924418,
-      "sha256": "4711ebc6daa33ea80b0231099937fa8d6fdc2e7826b8a8fe964cd4350cb509fa",
-      "contentType": "image/jpeg",
-      "url": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sweet-potato-curry.jpg",
-      "etag": "\"e605d30acde703a0c43c257ad7512401\""
     },
     {
       "sourceRef": "/recipes/sweet-potato-fries.jpg",
