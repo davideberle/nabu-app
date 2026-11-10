@@ -1002,14 +1002,71 @@ export async function getMyRecipe(id: string): Promise<Recipe | undefined> {
 // Image validation is handled by assertRecipeImageValid from recipe-images.ts.
 // It accepts both Vercel Blob URLs (https://...) and local public/ paths.
 
+// Production Turso has a newer `recipes` shape than the local migration:
+// `name` (NOT NULL) and `updated_at` sit next to the JSON `data` column, added
+// by earlier direct-import scripts. Writes read the real columns first and fill
+// the extra ones only when present, so the same code works on the live table
+// and on the local `(id, data, created_at)` table — the pattern
+// `scripts/weekly-inspirations.mjs` already uses.
+export type RecipeWriteStatement = { sql: string; args: (string | null)[] };
+
+export function buildMyRecipeInsert(
+  columns: ReadonlySet<string>,
+  recipe: Pick<Recipe, "id" | "name">,
+  data: string,
+  now: string,
+): RecipeWriteStatement {
+  const cols = ["id", "data", "created_at"];
+  const args: (string | null)[] = [recipe.id, data, now];
+  if (columns.has("name")) {
+    cols.push("name");
+    args.push(recipe.name ?? recipe.id);
+  }
+  if (columns.has("updated_at")) {
+    cols.push("updated_at");
+    args.push(now);
+  }
+  return {
+    sql: `INSERT INTO recipes (${cols.join(", ")}) VALUES (${cols.map(() => "?").join(", ")})`,
+    args,
+  };
+}
+
+export function buildMyRecipeUpdate(
+  columns: ReadonlySet<string>,
+  id: string,
+  recipe: Partial<Pick<Recipe, "name">>,
+  data: string,
+  now: string,
+): RecipeWriteStatement {
+  const sets = ["data = ?"];
+  const args: (string | null)[] = [data];
+  if (columns.has("name")) {
+    // A PUT may omit the name; keep the stored one rather than nulling it.
+    sets.push("name = COALESCE(?, name)");
+    args.push(typeof recipe.name === "string" && recipe.name ? recipe.name : null);
+  }
+  if (columns.has("updated_at")) {
+    sets.push("updated_at = ?");
+    args.push(now);
+  }
+  args.push(id);
+  return { sql: `UPDATE recipes SET ${sets.join(", ")} WHERE id = ?`, args };
+}
+
+async function recipeTableColumns(client: Client): Promise<Set<string>> {
+  const info = await client.execute("PRAGMA table_info(recipes)");
+  return new Set(info.rows.map((row) => String(row.name)));
+}
+
 export async function createMyRecipe(recipe: Recipe): Promise<void> {
   assertRecipeImageValid(recipe);
 
   const client = await getDb();
-  await client.execute({
-    sql: "INSERT INTO recipes (id, data, created_at) VALUES (?, ?, ?)",
-    args: [recipe.id, JSON.stringify(recipe), new Date().toISOString()],
-  });
+  const columns = await recipeTableColumns(client);
+  await client.execute(
+    buildMyRecipeInsert(columns, recipe, JSON.stringify(recipe), new Date().toISOString()),
+  );
 }
 
 export async function updateMyRecipe(
@@ -1019,10 +1076,10 @@ export async function updateMyRecipe(
   assertRecipeImageValid(recipe);
 
   const client = await getDb();
-  const result = await client.execute({
-    sql: "UPDATE recipes SET data = ? WHERE id = ?",
-    args: [JSON.stringify(recipe), id],
-  });
+  const columns = await recipeTableColumns(client);
+  const result = await client.execute(
+    buildMyRecipeUpdate(columns, id, recipe, JSON.stringify(recipe), new Date().toISOString()),
+  );
   if (result.rowsAffected === 0) {
     throw new Error(`My Recipe "${id}" not found in database.`);
   }
