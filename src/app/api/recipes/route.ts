@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { evaluatePlannerWriteAccess } from "@/lib/access";
+import { guardRuntimeWrite } from "@/lib/api-guards";
 import {
   createMyRecipe,
   updateMyRecipe,
@@ -16,13 +17,13 @@ export async function GET() {
 }
 
 // My Recipes rows are planner candidate inputs (dish_type/meal_role drive the
-// main gate), so every mutation needs the canonical authorized session. The
-// add-recipe runtime writes Turso directly and does not use this route.
+// main gate), so create/update needs the canonical authorized session or the
+// trusted runtime token. Nabu's recipe import uses this route with the token
+// (November 10, 2026) instead of writing Turso directly; tracker-only accounts
+// without a valid token stay read-only. DELETE remains session-only.
 export async function POST(request: NextRequest) {
-  const access = evaluatePlannerWriteAccess(await auth());
-  if (!access.allowed) {
-    return NextResponse.json({ error: access.error }, { status: access.status });
-  }
+  const guard = await guardRuntimeWrite(request);
+  if (guard.response) return guard.response;
 
   const recipe = await request.json();
 
@@ -41,10 +42,8 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  const access = evaluatePlannerWriteAccess(await auth());
-  if (!access.allowed) {
-    return NextResponse.json({ error: access.error }, { status: access.status });
-  }
+  const guard = await guardRuntimeWrite(request);
+  if (guard.response) return guard.response;
 
   const recipe = await request.json();
 

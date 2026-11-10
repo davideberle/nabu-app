@@ -208,6 +208,10 @@ const RUNTIME_ROUTES: [string, string][] = [
   ["POST", "/api/meals/prepare"],
   ["POST", "/api/meals/replace"],
   ["POST", "/api/meals/plan"],
+  // Recipe import (create/update My Recipes) and cook logging from chat.
+  ["POST", "/api/recipes"],
+  ["PUT", "/api/recipes"],
+  ["POST", "/api/cook-events"],
 ];
 
 describe("middleware + guard: authorized session OR valid runtime token", () => {
@@ -259,7 +263,7 @@ describe("middleware + guard: authorized session OR valid runtime token", () => 
   it("keeps refusing a tracker cookie on every other API surface, at middleware", () => {
     for (const [method, path] of [
       ["POST", "/api/shopping"],
-      ["POST", "/api/cook-events"],
+      ["DELETE", "/api/recipes"],
       ["GET", "/api/cooking/session"],
       ["POST", "/api/recipes/image"],
       ["POST", "/api/shopping/outbox"],

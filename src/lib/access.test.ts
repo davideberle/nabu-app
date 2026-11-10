@@ -219,6 +219,10 @@ describe("isTrustedRuntimeApiRoute", () => {
     equal(isTrustedRuntimeApiRoute("POST", "/api/meals/prepare"), true);
     equal(isTrustedRuntimeApiRoute("POST", "/api/meals/replace"), true);
     equal(isTrustedRuntimeApiRoute("POST", "/api/meals/plan"), true);
+    // Recipe import and cook logging from Nabu's chat (November 10, 2026).
+    equal(isTrustedRuntimeApiRoute("POST", "/api/recipes"), true);
+    equal(isTrustedRuntimeApiRoute("PUT", "/api/recipes"), true);
+    equal(isTrustedRuntimeApiRoute("POST", "/api/cook-events"), true);
   });
 
   it("matches the method case-insensitively and ignores a trailing slash", () => {
@@ -233,14 +237,18 @@ describe("isTrustedRuntimeApiRoute", () => {
     equal(isTrustedRuntimeApiRoute("GET", "/api/meals/prepare"), false);
     equal(isTrustedRuntimeApiRoute("GET", "/api/meals/replace"), false);
     equal(isTrustedRuntimeApiRoute("GET", "/api/meals/plan"), false);
+    equal(isTrustedRuntimeApiRoute("DELETE", "/api/recipes"), false);
+    equal(isTrustedRuntimeApiRoute("GET", "/api/recipes"), false);
+    equal(isTrustedRuntimeApiRoute("GET", "/api/cook-events"), false);
+    equal(isTrustedRuntimeApiRoute("DELETE", "/api/cook-events"), false);
   });
 
   it("does not cover any other planner or family surface", () => {
     for (const [method, path] of [
       ["POST", "/api/shopping"],
-      ["POST", "/api/cook-events"],
-      ["POST", "/api/recipes"],
       ["POST", "/api/recipes/image"],
+      ["PUT", "/api/recipes/some-id"],
+      ["POST", "/api/cook-events/extra"],
       ["DELETE", "/api/recipes/image"],
       ["GET", "/api/shopping/outbox"],
       ["POST", "/api/shopping/outbox"],

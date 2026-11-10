@@ -148,6 +148,12 @@ const TRUSTED_RUNTIME_API_ROUTES: { methods: readonly string[]; pattern: RegExp 
   // November 10, 2026: David approved runtime access so planner updates no
   // longer need a browser login.
   { methods: ["POST"], pattern: /^\/api\/meals\/plan$/ },
+  // Creating/updating My Recipes (recipe import) and logging cook events from
+  // Nabu's chat. November 10, 2026: David approved runtime access so imports
+  // no longer depend on direct Turso writes or a browser login. Deleting a
+  // recipe stays session-only.
+  { methods: ["POST", "PUT"], pattern: /^\/api\/recipes$/ },
+  { methods: ["POST"], pattern: /^\/api\/cook-events$/ },
   // Music "New plays" mirror + action outbox. `projects/sonos-music`
   // (`new-plays-sync.js`) pushes the read-only projection with PUT, pulls the
   // queued typed actions with GET, and reports outcomes to /ack. The browser

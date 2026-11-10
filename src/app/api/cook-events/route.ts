@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { auth } from "@/auth";
-import { evaluatePlannerWriteAccess } from "@/lib/access";
+import { guardRuntimeWrite } from "@/lib/api-guards";
 import {
   getCookEventsForRecipe,
   getRecentCookEvents,
@@ -29,14 +28,13 @@ export async function GET(request: NextRequest) {
  * Body: { recipeId, cookedOn, note?, source? } or { recipeIds: [], cookedOn, note?, source? }
  *
  * Cook events feed the planner's recently-cooked exclusions, so writes need
- * the canonical authorized session. Reads stay open like the other planner
- * GET surfaces.
+ * the canonical authorized session or the trusted runtime token (Nabu logs
+ * cooked meals from chat). Tracker-only accounts without a valid token stay
+ * read-only. Reads stay open like the other planner GET surfaces.
  */
 export async function POST(request: NextRequest) {
-  const access = evaluatePlannerWriteAccess(await auth());
-  if (!access.allowed) {
-    return NextResponse.json({ error: access.error }, { status: access.status });
-  }
+  const guard = await guardRuntimeWrite(request);
+  if (guard.response) return guard.response;
 
   const body = (await request.json()) as {
     recipeId?: unknown;
