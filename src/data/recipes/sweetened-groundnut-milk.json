@@ -41,7 +41,7 @@
     "chapter": "Main Dishes",
     "meal_role": "main"
   },
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sweetened-groundnut-milk.jpg",
+  "image": null,
   "time": {
     "prep": 20,
     "cook": 35,

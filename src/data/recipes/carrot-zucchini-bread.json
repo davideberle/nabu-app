@@ -82,37 +82,15 @@
     }
   ],
   "method": [
-    "Preheat the oven to 350 degrees Fahrenheit. Set aside one 9-inch",
-    "loaf pan sprayed with floured cooking spray or greased and",
-    "dusted. Note: The loaf isn't particularly tall when cooked in a 9-",
-    "inch pan, but I'm afraid an 8-inch pan will be too little.",
-    "Whisk together the egg, brown sugar, oil, sugar, sour cream,",
-    "vanilla, and cinnamon in a large mixing basin.",
-    "Fold or whisk in the flour, baking powder, baking soda, and",
-    "optional salt using a spatula or a spoon until just mixed; don't",
-    "overmix.",
-    "Gently mix in the carrots, zucchini, and walnuts or raisins, if",
-    "using.",
-    "Pour the batter into the prepared pan, smoothing the surface",
-    "lightly with a spatula (it will be relatively thick, which is what",
-    "you want).",
-    "Bake for 52 to 58 minutes (I baked for 54 minutes), or until",
-    "golden brown on top, the center is set, and a toothpick inserted",
-    "in the middle comes out clean, or with a few wet crumbs but no",
-    "batter. Tip – At the 35-minute mark, tent the pan with a sheet of",
-    "foil put loosely over it to avoid the top and edges from being",
-    "excessively browned before the middle is cooked through. The",
-    "quantity of time it takes to bake depends on the moisture level",
-    "of the carrots and zucchini, the weather, and the oven. Bake",
-    "until done; keep an eye on your bread rather than the clock, and",
-    "don't be concerned if it takes longer to bake than the baking",
-    "times suggested.",
-    "Place it to cool in the pan for approximately 15 minutes before",
-    "transferring to a wire rack to cool completely before slicing and",
-    "serving. If desired, serve with Honey Butter, Cinnamon-Sugar",
+    "Preheat the oven to 350 degrees Fahrenheit. Set aside one 9-inch loaf pan sprayed with floured cooking spray or greased and dusted. Note: The loaf isn't particularly tall when cooked in a 9- inch pan, but I'm afraid an 8-inch pan will be too little.",
+    "Whisk together the egg, brown sugar, oil, sugar, sour cream, vanilla, and cinnamon in a large mixing basin.",
+    "Fold or whisk in the flour, baking powder, baking soda, and optional salt using a spatula or a spoon until just mixed; don't overmix.",
+    "Gently mix in the carrots, zucchini, and walnuts or raisins, if using.",
+    "Pour the batter into the prepared pan, smoothing the surface lightly with a spatula (it will be relatively thick, which is what you want).",
+    "Bake for 52 to 58 minutes (I baked for 54 minutes), or until golden brown on top, the center is set, and a toothpick inserted in the middle comes out clean, or with a few wet crumbs but no batter. Tip – At the 35-minute mark, tent the pan with a sheet of foil put loosely over it to avoid the top and edges from being excessively browned before the middle is cooked through. The quantity of time it takes to bake depends on the moisture level of the carrots and zucchini, the weather, and the oven. Bake until done; keep an eye on your bread rather than the clock, and don't be concerned if it takes longer to bake than the baking times suggested.",
+    "Place it to cool in the pan for approximately 15 minutes before transferring to a wire rack to cool completely before slicing and serving. If desired, serve with Honey Butter, Cinnamon-Sugar",
     "Butter, Vanilla Bean Browned Butter Glaze, or Cream Cheese",
-    "Glaze. Bread may be stored sealed for up to a week at room",
-    "temperature or for up to 6 months in the freezer."
+    "Glaze. Bread may be stored sealed for up to a week at room temperature or for up to 6 months in the freezer."
   ],
   "time": {
     "total": 40
@@ -125,5 +103,5 @@
     "meal_role": "main"
   },
   "cuisine": "Other",
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/carrot-zucchini-bread.jpg"
+  "image": null
 }

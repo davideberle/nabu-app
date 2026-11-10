@@ -70,20 +70,17 @@ export type Recipe = {
 // re-exported here unchanged for all existing importers.
 import { getCuisine, getDietary } from "./meals-core.ts";
 export { getCuisine, getDietary, COOKBOOK_CUISINES } from "./meals-core.ts";
-
-// Cookbooks hidden from all browse surfaces (data preserved for future recovery).
-const HIDDEN_COOKBOOKS = new Set([
-  "Pasta for All Seasons",
-  "Mexican Home Cooking",
-  "Italian And Lebanese Cookbook",
-  "The Complete Greek Cookbook",
-  "Brunch Cookbook",
-  "The Curry Guy Bible",
-  "The Curry Guy",
-  "The Authentic Greek Kitchen",
-  "Vegan Nigerian Kitchen",
-  "Falastin",
-]);
+import { isBrowsableStaticRecipe, photoFirst } from "./recipe-catalog.ts";
+export {
+  HIDDEN_COOKBOOKS,
+  NO_PHOTO_SEARCH_PENALTY,
+  getCourseTags,
+  hasRecipeImage,
+  isBrowsableStaticRecipe,
+  photoFirst,
+  searchRecipes,
+  type RecipeSearchResult,
+} from "./recipe-catalog.ts";
 
 // Static cookbook recipes loaded from the pre-built bundle (see scripts/bundle-recipes.mjs).
 // Using a static import instead of fs.readdirSync avoids Turbopack bundling thousands
@@ -91,7 +88,7 @@ const HIDDEN_COOKBOOKS = new Set([
 const allStaticRecipes: Recipe[] = recipesBundle as Recipe[];
 
 const staticRecipes: Recipe[] = allStaticRecipes
-  .filter((r) => r.source?.cookbook !== "My Recipes" && !HIDDEN_COOKBOOKS.has(r.source?.cookbook ?? ""))
+  .filter(isBrowsableStaticRecipe)
   .sort((a, b) => a.name.localeCompare(b.name));
 
 // On Vercel builds without Turso configured, the local SQLite fallback doesn't
@@ -128,116 +125,14 @@ export async function getRecipesByChapter(
   chapter: string
 ): Promise<Recipe[]> {
   const all = await getAllRecipes();
-  return all.filter(
+  return photoFirst(all.filter(
     (r) => r.source?.chapter === chapter || r.category?.chapter === chapter
-  );
+  ));
 }
 
 export async function getRecipesWithImages(): Promise<Recipe[]> {
   const all = await getAllRecipes();
   return all.filter((r) => r.image !== null);
-}
-
-export type RecipeSearchResult = Recipe & {
-  searchScore: number;
-};
-
-function normalizeSearchText(value: string): string {
-  return value
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
-}
-
-function searchTerms(query: string): string[] {
-  return Array.from(
-    new Set(tokenizeSearchText(query)),
-  );
-}
-
-function tokenizeSearchText(value: string): string[] {
-  return normalizeSearchText(value)
-    .split(/[^a-z0-9]+/)
-    .filter(Boolean);
-}
-
-function recipeCuisineTerms(recipe: Recipe): string[] {
-  const cuisine = recipe.cuisine;
-  return [
-    ...(Array.isArray(cuisine) ? cuisine : cuisine ? [cuisine] : []),
-    getCuisine(recipe),
-  ];
-}
-
-function hasSearchPhrase(text: string, phrase: string): boolean {
-  return new RegExp(`(^|[^a-z0-9])${phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^a-z0-9]|$)`).test(text);
-}
-
-function scoreText(text: string, tokens: Set<string>, phrase: string, terms: string[], phraseScore: number, termScore: number): number {
-  if (!text) return 0;
-
-  let score = hasSearchPhrase(text, phrase) ? phraseScore : 0;
-  for (const term of terms) {
-    if (tokens.has(term)) score += termScore;
-  }
-  return score;
-}
-
-export function searchRecipes(query: string, recipes: Recipe[]): RecipeSearchResult[] {
-  const trimmedQuery = query.trim();
-  if (!trimmedQuery) return [];
-
-  const phrase = normalizeSearchText(trimmedQuery);
-  const terms = searchTerms(trimmedQuery);
-  if (terms.length === 0) return [];
-
-  const scored = recipes
-    .map((recipe) => {
-      const nameText = normalizeSearchText(recipe.name);
-      const metadataText = normalizeSearchText(
-        [
-          recipe.source?.cookbook,
-          recipe.source?.author,
-          recipe.source?.chapter,
-          recipe.source?.publication,
-          ...recipeCuisineTerms(recipe),
-          ...getCourseTags(recipe),
-          ...getDietary(recipe),
-          recipe.category?.meal_role,
-          recipe.mealRole,
-        ]
-          .filter(Boolean)
-          .join(" "),
-      );
-      const ingredientText = normalizeSearchText(
-        recipe.ingredients
-          .map((ingredient) => [ingredient.item, ingredient.group].filter(Boolean).join(" "))
-          .join(" "),
-      );
-      const nameTokens = new Set(tokenizeSearchText(recipe.name));
-      const metadataTokens = new Set(tokenizeSearchText(metadataText));
-      const ingredientTokens = new Set(tokenizeSearchText(ingredientText));
-      const searchableTokens = new Set([...nameTokens, ...metadataTokens, ...ingredientTokens]);
-
-      if (!terms.every((term) => searchableTokens.has(term))) {
-        return null;
-      }
-
-      let searchScore = 0;
-      if (nameText === phrase) searchScore += 10000;
-      if (hasSearchPhrase(nameText, phrase)) searchScore += 5000;
-      searchScore += scoreText(nameText, nameTokens, phrase, terms, 3000, 500);
-      searchScore += scoreText(metadataText, metadataTokens, phrase, terms, 800, 120);
-      searchScore += scoreText(ingredientText, ingredientTokens, phrase, terms, 350, 50);
-
-      return { ...recipe, searchScore };
-    })
-    .filter((recipe): recipe is RecipeSearchResult => recipe !== null);
-
-  return scored.sort((a, b) => {
-    if (b.searchScore !== a.searchScore) return b.searchScore - a.searchScore;
-    return a.name.localeCompare(b.name);
-  });
 }
 
 // Derive low-calorie flag from name/dish_type heuristics.
@@ -252,27 +147,6 @@ export function isLowCalorie(recipe: Recipe): boolean {
   const dishTypes = (recipe.category?.dish_type ?? []).map((t) => t.toLowerCase());
   if (dishTypes.some((d) => LOW_CAL_WORDS.some((w) => d.includes(w)))) return true;
   return false;
-}
-
-// Generic occasion/meal-time strings that are not meaningful course labels.
-const OCCASION_TAGS = new Set(["dinner", "lunch", "supper", "brunch"]);
-
-// Get course/category tags for a recipe (e.g. "Main", "Bread", "Salad").
-// Cookbook recipes use category.dish_type (string[]), while My Recipes store
-// category as a plain string and optionally mealRole.
-export function getCourseTags(recipe: Recipe): string[] {
-  if (recipe.category && typeof recipe.category === "object" && recipe.category.dish_type) {
-    return recipe.category.dish_type;
-  }
-  const tags: string[] = [];
-  const cat = recipe.category as unknown;
-  if (typeof cat === "string" && cat && !OCCASION_TAGS.has(cat.toLowerCase())) {
-    tags.push(cat);
-  }
-  if (recipe.mealRole && !tags.some((t) => t.toLowerCase() === recipe.mealRole!.toLowerCase())) {
-    tags.push(recipe.mealRole);
-  }
-  return tags;
 }
 
 // Format servings for display. Normalizes inconsistent patterns like
@@ -388,27 +262,27 @@ export async function getRecipesByCookbook(
   cookbookSlug: string
 ): Promise<Recipe[]> {
   const allRecipes = await getAllRecipes();
-  return allRecipes.filter((r) => {
+  return photoFirst(allRecipes.filter((r) => {
     const cookbook = r.source?.cookbook;
     return cookbook && slugify(cookbook) === cookbookSlug;
-  });
+  }));
 }
 
 export async function getRecipesByCuisine(
   cuisineSlug: string
 ): Promise<Recipe[]> {
   const allRecipes = await getAllRecipes();
-  return allRecipes.filter((r) => slugify(getCuisine(r)) === cuisineSlug);
+  return photoFirst(allRecipes.filter((r) => slugify(getCuisine(r)) === cuisineSlug));
 }
 
 export async function getRecipesByDietary(
   dietary: string
 ): Promise<Recipe[]> {
   const allRecipes = await getAllRecipes();
-  return allRecipes.filter((r) => {
+  return photoFirst(allRecipes.filter((r) => {
     const tags = getDietary(r);
     return tags.includes(dietary.toLowerCase());
-  });
+  }));
 }
 
 // Helper to create URL-safe slugs

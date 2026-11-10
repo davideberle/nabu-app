@@ -55,18 +55,15 @@
   ],
   "method": [
     "Preheat an oven to a heat of 175°C/350°F.",
-    "In a big bowl, mix mustard powder, curry powder, milk and cream of celery",
-    "soup. Mix onion, tuna and rice into the soup mixture. Put into a casserole",
-    "In a bowl, mix parsley, melted butter and breadcrumbs. Sprinkle on tuna",
-    "mixture.",
-    "In preheated oven, bake casserole for about 25 minutes till breadcrumb",
-    "mixture is golden brown. Put sliced eggs on top. Put it back into the oven.",
+    "In a big bowl, mix mustard powder, curry powder, milk and cream of celery soup. Mix onion, tuna and rice into the soup mixture. Put into a casserole",
+    "In a bowl, mix parsley, melted butter and breadcrumbs. Sprinkle on tuna mixture.",
+    "In preheated oven, bake casserole for about 25 minutes till breadcrumb mixture is golden brown. Put sliced eggs on top. Put it back into the oven.",
     "Bake for 5 more minutes. Before serving, cool casserole for 5 minutes."
   ],
   "time": {
     "total": 50
   },
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curry-tuna-and-rice-casserole.jpg",
+  "image": null,
   "category": {
     "dish_type": [
       "main"

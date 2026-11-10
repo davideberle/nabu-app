@@ -34,15 +34,14 @@
     }
   ],
   "method": [
-    "Mix lemon juice, raisins, curry powder, apple, and cream cheese to",
-    "smoothness.",
+    "Mix lemon juice, raisins, curry powder, apple, and cream cheese to smoothness.",
     "Spread the mixture onto celery.",
     "Serve and enjoy."
   ],
   "time": {
     "total": 10
   },
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curried-celery.jpg",
+  "image": null,
   "category": {
     "dish_type": [
       "side"

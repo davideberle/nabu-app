@@ -58,23 +58,13 @@
     }
   ],
   "method": [
-    "Heat the oven degrees Fahrenheit (180 degrees Celsius). Using",
-    "cooking spray, coat a 9x5 loaf pan (or small loaf pans). Remove",
-    "from the equation.",
-    "Mash sweet potatoes in a large mixing basin with 2 tablespoons",
-    "of liquid.",
-    "Combine the mashed sweet potatoes, sugar, water, oil, and eggs",
-    "in a large mixing bowl.",
-    "Combine flour, baking soda, salt, nutmeg, cinnamon, and",
-    "allspice, as well as baking powder, in a mixing bowl. Mix",
-    "thoroughly.",
+    "Heat the oven degrees Fahrenheit (180 degrees Celsius). Using cooking spray, coat a 9x5 loaf pan (or small loaf pans). Remove from the equation.",
+    "Mash sweet potatoes in a large mixing basin with 2 tablespoons of liquid.",
+    "Combine the mashed sweet potatoes, sugar, water, oil, and eggs in a large mixing bowl.",
+    "Combine flour, baking soda, salt, nutmeg, cinnamon, and allspice, as well as baking powder, in a mixing bowl. Mix thoroughly.",
     "Add the pecans, chopped.",
-    "Evenly pour into prepared pan (s). Bake for 60-70 minutes in",
-    "the 9x5 pan, or until a toothpick inserted in the middle comes",
-    "out clean. ** It will take around 45 minutes to bake the smaller",
-    "loaves.",
-    "Allow it to cool in the pan for 15 minutes. After that, allow",
-    "cooling entirely on a wire rack.",
+    "Evenly pour into prepared pan (s). Bake for 60-70 minutes in the 9x5 pan, or until a toothpick inserted in the middle comes out clean. ** It will take around 45 minutes to bake the smaller loaves.",
+    "Allow it to cool in the pan for 15 minutes. After that, allow cooling entirely on a wire rack.",
     "Place in an airtight jar to keep fresh."
   ],
   "time": {
@@ -88,5 +78,5 @@
     "meal_role": "main"
   },
   "cuisine": "Other",
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/sweet-potato-bread.jpg"
+  "image": null
 }

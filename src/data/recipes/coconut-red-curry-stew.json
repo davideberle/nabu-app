@@ -83,8 +83,7 @@
     "Stir in the garlic.",
     "Cook while stirring for 1 minute.",
     "Add the sugar and curry paste.",
-    "Stir in the sweet red pepper, green pepper, chickpeas, butternut squash and",
-    "eggplant.",
+    "Stir in the sweet red pepper, green pepper, chickpeas, butternut squash and eggplant.",
     "Pour in 3 cups of the broth, coconut milk and tomatoes.",
     "Bring to a boil.",
     "Reduce heat and simmer for 40 minutes.",
@@ -96,7 +95,7 @@
   "time": {
     "total": 60
   },
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/coconut-red-curry-stew.jpg",
+  "image": null,
   "category": {
     "dish_type": [
       "main"

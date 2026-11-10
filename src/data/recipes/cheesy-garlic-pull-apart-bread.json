@@ -62,17 +62,12 @@
     }
   ],
   "method": [
-    "Preheat the oven to 350 degrees Fahrenheit. Crosshatch bread",
-    "using a serrated knife, cutting slices every inch in both",
-    "directions but not through the bottom of the baguette.",
+    "Preheat the oven to 350 degrees Fahrenheit. Crosshatch bread using a serrated knife, cutting slices every inch in both directions but not through the bottom of the baguette.",
     "Combine melted butter, garlic, and parsley in a small bowl—",
     "Salt & pepper to taste.",
-    "Brush the melted butter mixture within the crosshatches of the",
-    "baguette.",
-    "Stuff mozzarella and fontina into each crosshatch and wrap the",
-    "bread in foil thoroughly.",
-    "Baked for 20 minutes, or until the butter cheese has melted and",
-    "the bread is toasty warm.",
+    "Brush the melted butter mixture within the crosshatches of the baguette.",
+    "Stuff mozzarella and fontina into each crosshatch and wrap the bread in foil thoroughly.",
+    "Baked for 20 minutes, or until the butter cheese has melted and the bread is toasty warm.",
     "Allow cooling for 5 minutes before serving."
   ],
   "time": {
@@ -86,5 +81,5 @@
     "meal_role": "main"
   },
   "cuisine": "Other",
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/cheesy-garlic-pull-apart-bread.jpg"
+  "image": null
 }

@@ -49,8 +49,7 @@
     }
   ],
   "method": [
-    "Heat the olive oil in a saucepan. Add salt and onions. Cook for 5-8",
-    "minutes.",
+    "Heat the olive oil in a saucepan. Add salt and onions. Cook for 5-8 minutes.",
     "Then add cumin, chili powder, and garlic. Stir constantly.",
     "Add water and beans. Stir, and cook for about 5 minutes.",
     "Lower the heat a little bit and use a masher to mash up beans.",
@@ -69,5 +68,5 @@
     "meal_role": "main"
   },
   "cuisine": "Mexican",
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/refried-beans.jpg"
+  "image": null
 }

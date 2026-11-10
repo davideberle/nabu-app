@@ -10,8 +10,8 @@
   "intro": "This dish was created by my grandfather, Ettore Biaggi, who was a well-known restaurateur and chef in Lugano. During the war the border with Italy was closed and it was difficult to buy rice in Switzerland. He loved risotto, so his idea was to try pasta instead. He used shell-shaped pasta as each piece contained a little of the delicious risotto broth. It became a big hit in his restaurant.",
   "ingredients": [
     {
-      "item": "arge Spanish onion",
-      "amount": "1 l"
+      "item": "large Spanish onion",
+      "amount": "1"
     },
     {
       "item": "good-quality virgin olive oil",
@@ -30,8 +30,8 @@
       "amount": "200 ml"
     },
     {
-      "item": "itres fresh, strong chicken stock",
-      "amount": "2 l"
+      "item": "litres fresh, strong chicken stock",
+      "amount": "2"
     },
     {
       "item": "tablespoons freshly grated parmigiano, plus extra for serving",

@@ -10,12 +10,12 @@
   "intro": "This is one of the classics of Italian cooking. There are many variations but this is the basic recipe that inspired the others.",
   "ingredients": [
     {
-      "item": "itres well-flavoured fresh chicken or veal stock",
-      "amount": "2 l"
+      "item": "litres well-flavoured fresh chicken or veal stock",
+      "amount": "2"
     },
     {
-      "item": "arge onion, chopped",
-      "amount": "1 l"
+      "item": "large onion, chopped",
+      "amount": "1"
     },
     {
       "item": "unsalted butter",

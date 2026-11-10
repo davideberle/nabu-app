@@ -1,0 +1,941 @@
+{
+  "description": "Method rebuilds from the original book text (November 10, 2026 catalog cleanup). Each method is the book's numbered steps, line breaks joined; no step added, removed or reworded. Applied by scripts/repair-recipe-text.mjs before the deterministic pass.",
+  "source": "Ottolenghi Simple (Ebury/Ten Speed) PDF in nabu-share/Cookbooks, extracted with PyMuPDF",
+  "recipes": {
+    "anchovy-and-samphire-spaghetti": {
+      "method": [
+        "Put the oil into a large sauté pan and place over medium heat. Once hot, add the anchovies, chile flakes, garlic, lemon zest, ½ cup of the parsley, and a good grind of pepper. Fry gently for 5 minutes, stirring frequently, until the anchovies have melted into the oil. Pour in the wine and cook for 4–5 minutes, until the sauce has thickened and reduced, then remove from the heat and set aside while you cook the pasta.",
+        "Bring a large pot of salted water to a boil and cook the spaghetti until al dente. Thirty seconds before the spaghetti is ready, add the samphire (to the same pot the pasta is cooking in). Reserve a couple of ladles of the pasta water, then drain the pasta and samphire. Return the sauté pan of sauce to medium-high heat. Add the cooked spaghetti and samphire and toss to combine. If you need to loosen the sauce, add a little of the reserved pasta water. Stir in the remaining ½ cup of parsley and another good grind of pepper, then divide among 4 plates.",
+        "Finish with a sprinkling of chile flakes and serve, with a lemon wedge on the side."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5013, numbered steps 1–3"
+    },
+    "arnold-s-roast-chicken-with-caraway-and-cranberry-stuffing": {
+      "method": [
+        "To make the marinade, melt 2 tbsp/30g of butter and stir in 3 tsp of the caraway seeds, 2 of the garlic cloves, the sugar, and ½ tsp salt. Place the chicken in a large bowl, rub the marinade all over it, and set aside.",
+        "Preheat the oven to 400°F.",
+        "To make the stuffing, put the remaining 3 tbsp/40g butter into a large nonstick pan and place over medium-high heat. Add the remaining 2 tsp of caraway seeds and fry for 2 minutes, until fragrant. Add the remaining 5 garlic cloves, the celery, onion, cranberries, chestnuts, and 1 tsp salt. Fry for 12–13 minutes, stirring often, until golden and softened. Tip into a medium bowl and stir in the bread, parsley, and stock.",
+        "Transfer the chicken to a small roasting pan. Sprinkle with a generous pinch of salt and a grind of pepper and fill the cavity with the stuffing. Place any leftover stuffing in an ovenproof dish and put it into the oven 30–35 minutes after the chicken goes into the oven.",
+        "Roast the chicken for 70–75 minutes, basting every 20 minutes, until the skin is golden brown and crisp and the juices run clear when a knife is inserted into the thickest part of the thigh. Remove from the oven and set aside to rest for 10 minutes before serving."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5669, numbered steps 1–5"
+    },
+    "aromatic-olive-oil-mash": {
+      "method": [
+        "Put the potatoes, thyme sprigs, mint sprigs, garlic, lemon strips, and 2 tsp of salt into a large saucepan. Cover with enough boiling water to rise ¾ inch/2cm above the potatoes. Simmer gently for about 25 minutes, or until the potatoes are soft enough to mash.",
+        "While the potatoes are boiling, make the topping. Put the oil, garlic, thyme leaves, mint leaves, lemon zest, and lemon juice into a small bowl with ⅛ tsp of salt, and a good grind of pepper. Stir to combine, and set aside.",
+        "Drain the potatoes into a colander set over a large bowl (you’ll use some of the cooking water later, so don’t throw it all away). Pick out and discard the thyme and mint sprigs, then return the potatoes to the saucepan (along with the garlic and lemon strips). Use a masher to mash the potatoes, adding the oil and about 10 tbsp/140ml of the cooking water slowly as you go, until you get a smooth mash.",
+        "Transfer the mash to a platter and use the back of a spoon to create divots in the surface. Drizzle the herb and garlic oil topping evenly over it, finish with a good grind of black pepper, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3461, numbered steps 1–4"
+    },
+    "avocado-and-fava-bean-mash": {
+      "method": [
+        "Fill a small saucepan with salted water and bring to a boil. Blanch the beans for 2 minutes, then drain, refresh, and drain again. Peel off and discard the skins of the beans, then set aside ⅓ cup/50g. Put the rest of the beans into a food processor with the avocado, lemon juice, 2 tbsp of oil, and ¼ tsp salt and blitz until almost smooth.",
+        "Heat the remaining 2 tbsp of oil in a small frying pan over medium-high heat, then gently fry the green onions and lemon strip for 1 minute. Remove from the heat and stir in the reserved fava beans and a pinch of salt.",
+        "Spread the avocado and fava bean mash over a plate creating a natural rim around the edge. Spoon the green onion mix into the middle just before serving. The lemon strip does not normally get eaten, but it looks nice as a garnish."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2919, numbered steps 1–3"
+    },
+    "avocado-butter-on-toast-with-tomato-salsa": {
+      "method": [
+        "Put the avocado and butter into the bowl of a small food processor with half the lime zest, half the lime juice, and ½ tsp salt. Blitz until smooth, scraping down the sides of the bowl a couple of times if you need to. Transfer to a small bowl along with two-thirds of the tarragon and dill. Fold in the herbs, then refrigerate for 10 minutes.",
+        "To make the salsa, mix together the tomatoes, capers, remaining lime zest, remaining lime juice and the oil with a good grind of pepper. Set aside until ready to serve.",
+        "Grill or toast the bread, then rub one side of each piece with the cut side of the garlic clove. Leave the bread to cool down just a little, then spread each slice with the avocado butter and top with the tomato salsa. Sprinkle with the cumin seeds and the remaining herbs. Finish with a grind of pepper and a drizzle of oil, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 623, numbered steps 1–3"
+    },
+    "baked-mint-rice-with-pomegranate-and-olive-salsa": {
+      "method": [
+        "Preheat the oven to 475°F, or as high as your oven will go.",
+        "Place the rice in a high-sided ovenproof dish, measuring 8 x 12 inches/20 x 30cm. Season with ¾ tsp of salt and plenty of pepper, then pour in the butter and boiling water. Top with the sprigs of mint and cover the dish tightly with foil so that the rice is well sealed. Bake for 25 minutes, until the rice is light and fluffy and all the liquid has been absorbed.",
+        "Meanwhile, make the salsa: place the olives, pomegranate, walnuts, olive oil, pomegranate molasses, garlic, mint, and salt in a medium bowl. Mix well and set aside.",
+        "Take the rice out of the oven and remove and discard the foil. Pull the leaves off the mint sprigs—the stalks can be discarded—then place these back on the rice and sprinkle with the feta. Just before serving, spoon the salsa evenly over the rice. Serve hot."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4389, numbered steps 1–4"
+    },
+    "baked-potatoes-with-egg-and-tonnato-sauce": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Place the potatoes on a baking sheet, drizzle with the oil, sprinkle with ½ tsp salt, and bake for 50–55 minutes, or until the skin is crisp and the middle is soft. Remove from the oven and set aside.",
+        "While the potatoes are in the oven, make the sauce. Place the egg yolks in the bowl of a food processor with the lemon juice, 1 cup/20g of parsley, the tuna, half the capers, all the anchovies, and the garlic. Blitz for 1 minute to form a rough paste, scraping down the sides of the bowl with a spatula to help the machine. With the machine still running, slowly add the oil in a steady stream, until the consistency is that of a thin mayonnaise. Set aside.",
+        "When ready to serve, slice the hot potatoes almost (but not completely) in half; leave the base of the skin intact. Squeeze the outside of the potatoes a little—this helps to loosen their flesh—and sprinkle the insides with a pinch of flaked salt. Spoon the sauce over the potatoes and top with an egg, torn in half just before serving so that the yolk runs into the sauce. Add the remaining ¼ cup/5g of parsley and capers, drizzle with some oil, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3605, numbered steps 1–4"
+    },
+    "baked-rice-with-confit-tomatoes-and-garlic": {
+      "method": [
+        "Preheat the oven to 350°F.",
+        "Arrange the tomatoes, garlic, shallots, cilantro stems, thyme, and cinnamon sticks in a large high-sided casserole dish, about 8 x 12 inches/20 x 30cm. Pour in the olive oil, add ½ tsp of salt and a good grind of black pepper, and place in the oven for 1 hour, until the vegetables are soft. Remove from the oven, sprinkle the rice evenly over the vegetables, without stirring them together, and set aside.",
+        "Increase the oven temperature to 450°F.",
+        "Sprinkle ½ tsp of salt and plenty of black pepper over the rice and then carefully pour the boiling water over the rice. Seal the dish tightly with foil and place in the oven for 25 minutes, until the rice is cooked. Remove from the oven and set aside for 10 minutes, still covered. Remove the foil, sprinkle with the cilantro leaves, stir these very gently into the rice, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4492, numbered steps 1–4"
+    },
+    "beefsteak-tomato-carpaccio-with-green-onion-and-ginger-salsa": {
+      "method": [
+        "Put the ginger and ½ tsp flaked salt into a pestle and mortar and crush to a fine paste. Transfer to a bowl with the green onions and stir to combine.",
+        "Put the oil in a small pan and place over low heat until just warm (you don’t want it to heat too much). Pour over the green onions and add 1 tsp of the vinegar. Stir and set aside.",
+        "Lay the tomatoes on a large platter, with the slices slightly overlapping. Season with ¼ tsp of flaked salt and drizzle with the remaining 1 tsp of vinegar. Spoon the green onion and ginger salsa evenly over the tomatoes (or use your hands to better effect), scatter the chile and cilantro on top and finish with the olive oil."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 980, numbered steps 1–3"
+    },
+    "beet-caraway-and-goat-cheese-bread": {
+      "method": [
+        "Preheat the oven to 400°F. Grease an 8 x 4-inch/20 x 10cm loaf pan and line with parchment paper.",
+        "Mix the oats, thyme, pumpkin, caraway, and nigella seeds in a small bowl. Put both flours into a separate bowl with the baking powder, baking soda, and ¾ tsp of salt. Whisk to combine and aerate, then add the grated beet and all but 1 tbsp of the oat and seed mix. Don’t stir the mixture; just set it aside.",
+        "In a separate bowl, whisk the eggs, oil, sour cream, honey, and Parmesan. Pour over the flour and beet mixture, then, using a spatula, mix to combine. Add the goat cheese and carefully fold through, trying not to break the pieces as you go.",
+        "Spread the mixture evenly into the prepared loaf pan and sprinkle with the remaining 1 tbsp of the oat and seed mix. Bake for 40 minutes, then cover tightly with foil and bake for another 40 minutes. A skewer inserted into the middle will not come out completely clean, but it should not be too wet. Remove from the oven and let stand for 5 minutes, then turn out onto a wire rack and invert the bread so it is resting seed side up. The exterior will be quite crisp and dark. Cool for at least 20 minutes before slicing."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 677, numbered steps 1–4"
+    },
+    "blueberry-almond-and-lemon-cake": {
+      "method": [
+        "Preheat the oven to 400°F. Grease an 8½ x 4½-inch/21 x 11cm loaf pan, and line the base with parchment paper.",
+        "Place the butter, granulated sugar, lemon zest, 1 tbsp of the lemon juice, and vanilla in the bowl of a stand mixer fitted with the paddle attachment. Beat on high speed for 3–4 minutes, until light, then lower the speed to medium. Add the eggs, in small additions, scraping down the sides of the bowl. The mix may separate a little, but don’t worry; it’ll come back together. Add the flour, salt, and almond meal in three additions. Finally, fold in three-quarters of the blueberries, scrape into the prepared loaf pan, and smooth it out evenly.",
+        "Bake for 15 minutes, then sprinkle the remaining blueberries over the top of the cake. Return to the oven for another 15 minutes, until the cake is golden brown but still uncooked. Cover loosely with foil and continue to bake for 25–30 minutes, until risen and cooked. Test by inserting a knife into the middle; it’s ready if it comes out clean. Remove from the oven and set aside, in its pan, to cool for 10 minutes, then remove from the pan and place on a wire rack to cool completely.",
+        "Meanwhile, make the icing. Put the remaining 1 tbsp of lemon juice into a bowl with the confectioners’ sugar and whisk until smooth. Pour over the cake and gently spread out—the blueberries on the top of the cake will bleed into the icing a little, but don’t worry; this will add to the finished look."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7190, numbered steps 1–4"
+    },
+    "braised-eggs-with-leek-and-za-atar": {
+      "method": [
+        "Put the butter and 1 tbsp of the oil into a large sauté pan with a lid and place over medium-high heat. Once the butter starts to foam, add the leeks, ½ tsp of salt, and plenty of pepper. Fry for 3 minutes, stirring frequently, until the leeks are soft. Add the cumin, lemon, and vegetable stock and boil rapidly for 4–5 minutes, until most of the stock has evaporated. Fold in the spinach and cook for 1 minute, until wilted, then decrease the heat to medium.",
+        "Use a large spoon to make 6 indentations in the mixture and break 1 egg into each space. Sprinkle the eggs with a pinch of salt, dot the feta around the eggs, then cover the pan. Simmer for 4–5 minutes, until the egg whites are cooked but the yolks are still runny.",
+        "Mix the za’atar with the remaining 1 tbsp of oil and brush over the eggs. Serve at once, straight from the pan."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 365, numbered steps 1–3"
+    },
+    "bridget-jones-s-pan-fried-salmon-with-pine-nut-salsa": {
+      "method": [
+        "Cover the currants with boiling water and set aside to soak for 20 minutes while you prep the salmon and make the salsa.",
+        "Mix the salmon with 1 tbsp of the oil, a rounded ¼ tsp salt, and a good grind of pepper. Set aside while you make the salsa.",
+        "Put 5 tbsp/75ml of the olive oil into a large sauté pan and place on a high heat. Add the celery and pine nuts and fry for 4–5 minutes, stirring frequently, until the nuts begin to brown (don’t take your eyes off them, as they can easily burn). Remove the pan from the heat and stir in the capers and their brine, the olives, saffron and its water, and a pinch of salt. Drain the currants and add these, along with the parsley, lemon zest, and lemon juice. Set aside.",
+        "Put the remaining 1 tbsp of oil into a large frying pan and place over medium-high heat. Once hot, add the salmon fillets, skin side down, and fry for 3 minutes, until the skin is crisp. Decrease the heat to medium, then flip the fillets over and continue to fry for 2–4 minutes (depending on how much you like the salmon cooked). Remove from the pan and set aside.",
+        "Arrange the salmon on four plates and spoon on the salsa. Scatter the celery leaves on top."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6357, numbered steps 1–5"
+    },
+    "broccolini-with-soy-sauce-garlic-and-peanuts": {
+      "method": [
+        "Heat the oil in a small saucepan over medium-high heat. Add the garlic, ginger, orange strips, and peanuts and fry for 2–3 minutes, stirring frequently, until the garlic and nuts are light golden brown. Transfer to a small bowl (along with all of the oil) to stop them cooking and set aside.",
+        "Place a steamer insert in a stockpot and fill with just enough water so it doesn’t touch the steaming basket. Place over high heat and, once boiling, add the broccolini. Cover and steam for 4–5 minutes, until cooked. Remove from the heat, transfer to a serving plate, and set aside.",
+        "Return the saucepan you cooked the peanuts in to high heat—don’t worry about wiping it clean—and add the soy sauce, honey, and ⅛tsp of salt. Heat for about 1 minute; it should reduce to about 1½ tbsp of sauce. Spoon 2 tbsp of the infused oil over the broccolini, along with the peanuts and aromatics. Add the reduced soy sauce mixture, give everything a gentle mix, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2234, numbered steps 1–3"
+    },
+    "brown-rice-with-caramelized-onions-and-black-garlic": {
+      "method": [
+        "Pour 3 tbsp/50ml of oil into a large sauté pan with a lid, and place over medium-high heat. Once hot, add the onions, along with ¼ tsp salt, and fry for 12 minutes, stirring occasionally to make sure they don’t burn. Add the lemon peel and cook for another 12 minutes, continuing to stir from time to time, until the onions are dark and caramelized. Transfer to a plate and set aside.",
+        "Add the remaining 1 tbsp plus 1 tsp of oil to the pan, then add the rice and ½ tsp of salt. Fry for 1 minute, stirring continuously, then pour in the water. Bring to a boil, then decrease the heat to medium-low. Cover the pan and simmer for about 45 minutes, until cooked through. Remove from the heat and stir in the onions, lemon juice, and black garlic. Serve at once, topping each serving with a generous spoonful of the yogurt and a sprinkle of parsley; alternatively, you can serve the yogurt in a bowl on the side."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4342, numbered steps 1–2"
+    },
+    "brunsli-chocolate-cookies": {
+      "method": [
+        "Preheat the oven to 375°F.",
+        "Place the almond meal, granulated sugar, confectioners’ sugar, cocoa powder, orange zest, 5-spice powder, and salt in the bowl of a standing mixer fitted with the dough hook. Mix on medium speed, until combined. With the mixer running, add the egg whites and vanilla and continue to mix for 1–2 minutes, until the dough comes together into a ball. Tip the dough out on a clean surface, shape into a flat disk about 1¼ inches/3cm thick, and wrap in plastic wrap. Place in the fridge for about 1 hour, to rest.",
+        "Cut out two pieces of parchment paper, each 16 inches/40cm square. Unwrap the dough from its plastic wrap, place in the middle of the two sheets of parchment paper, and roll out to form a circle about 9 inches/22cm wide and ½ inch/1½ cm thick. Using a 2¾-inch/7cm star- shaped cookie cutter (or whichever cookie cutter you are using), cut out the stars and place on a parchment-lined baking sheet. Press together the scraps of dough and roll out again, cutting out more stars. Continue until all the dough has been used, then sprinkle the tops with the 1 tbsp of granulated sugar.",
+        "Bake for 12 minutes, until the bottoms are slightly crisp and the middles are soft and gooey. Remove from the oven and set aside to cool."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7589, numbered steps 1–4"
+    },
+    "brussels-sprouts-with-browned-butter-and-black-garlic": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Mix the sprouts with the oil and ¼ tsp of salt, then spread out on a parchment-lined baking sheet. Roast for 10 minutes, until the sprouts are golden brown but still crunchy.",
+        "Meanwhile, lightly crush the caraway seeds with a pestle and mortar. Add the black garlic and thyme and crush them to form a rough paste.",
+        "Put the butter into a large sauté pan and place over medium-high heat. Cook for 3 minutes, until melted and dark brown. Add the crushed garlic paste, sprouts, pumpkin seeds, and ⅛ tsp salt. Stir for 30 seconds, then remove from the heat. Stir in the lemon juice and transfer to a large bowl or individual plates. Drizzle with the tahini and serve at once."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3122, numbered steps 1–4"
+    },
+    "buckwheat-and-haricots-verts-salad": {
+      "method": [
+        "Preheat the oven to 425°F.",
+        "Mix the onions in a large bowl with 1 tbsp of oil and ⅛ tsp of salt. Spread out on a large parchment-lined baking sheet and roast for 18–20 minutes, until cooked through and golden. Remove from the oven and set aside to cool.",
+        "Bring a medium saucepan with slightly salted water to a boil. Add the buckwheat and cook for 8 minutes. Add the green beans and cook for 5 minutes, until both the green beans and buckwheat are al dente. Drain, refresh under cold water, and then set aside to dry well.",
+        "Mix together all the ingredients for the sauce with ⅛ tsp of salt in a bowl and set aside.",
+        "When ready to serve, mix the onions, buckwheat, green beans, mint, and tarragon with the remaining 1 tbsp of oil and ½ tsp of salt. Transfer the salad to a serving bowl and serve the sauce on the side or swirl the sauce through the salad before transferring it to the serving bowl. Sprinkle with the chile flakes and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4008, numbered steps 1–5"
+    },
+    "bulgur-with-mushrooms-and-feta": {
+      "method": [
+        "Rinse the bulgur and place in a large bowl. Stir in ¼ tsp of salt and a good grind of pepper, then pour in the boiling water. Cover the bowl with plastic wrap and set aside for 20 minutes, until the liquid has been absorbed and the bulgur is soft. Drain, if there is any liquid left, and set aside.",
+        "Meanwhile, put 2 tbsp of oil into a large sauté pan and place over medium- high heat. Add the onion and fry for 7–8 minutes, until soft and caramelized. Add ½ tsp of the cumin and continue to fry for 1–2 minutes, until dark golden brown. Remove from the pan and set aside.",
+        "Add the remaining 2 tbsp plus 1 tsp of oil to the same pan and increase the heat to high. Mix in the mushrooms and ½ tsp of salt and fry for 6–7 minutes, stirring frequently, until the mushrooms have browned and softened. Add the remaining ½ tsp of cumin and the thyme and continue to cook for 1 minute, stirring continuously. Pour in the balsamic vinegar and continue to cook for about 30 seconds—it should reduce to practically nothing. Stir in the bulgur, onion, dill, feta, and chile flakes, until warmed through, then remove from the heat.",
+        "Spoon the bulgur and mushrooms onto a large platter or two individual plates. Sprinkle some extra dill over the top, drizzle with oil, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4236, numbered steps 1–4"
+    },
+    "bulgur-with-tomato-eggplant-and-lemon-yogurt": {
+      "method": [
+        "Preheat the oven to 425°F.",
+        "Place the eggplant in a large bowl with 4 tbsp of the oil, ½ tsp salt, and a good grind of pepper. Mix well and then spread out on a large parchment- lined baking sheet. Roast for 35–40 minutes, stirring halfway through, until the eggplant is caramelized and soft. Remove from the oven and set aside.",
+        "Add the remaining 3 tbsp plus 1 tsp of oil to a large sauté pan with a lid and place over medium-high heat. Once hot, add the onions and fry for 8 minutes, stirring a few times, until caramelized and soft. Add the garlic and allspice and fry for 1 minute, stirring continuously, until the garlic is aromatic and starting to brown. Add the cherry tomatoes, mashing them with a potato masher to break them up. Stir in the tomato paste, water, and 1 tsp salt. Bring to a boil, decrease the heat to medium-low, cover, and cook for 12 minutes. Add the bulgur, stir so that it is completely coated, and then remove from the heat. Set aside for 20 minutes, for the bulgur to absorb all the liquid.",
+        "In a medium bowl, mix together the yogurt with the preserved lemon, half the mint, and ⅛ tsp salt.",
+        "Divide the bulgur among four plates. Serve with the yogurt and eggplant on top and a sprinkle of the remaining mint."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4177, numbered steps 1–5"
+    },
+    "burrata-with-grilled-grapes-and-basil": {
+      "method": [
+        "Put the grapes in a medium bowl with the vinegar, oil, garlic, sugar, 1 tsp of the fennel seeds, ¼ tsp of flaked salt, and plenty of pepper. Mix well and marinate for at least 1 hour and up to 1 day. Thread 5 or 6 grapes onto each skewer. Don’t throw away the marinade; you’ll need it when serving.",
+        "Place a grill pan over high heat and ventilate your kitchen well. Once hot, add the grape skewers in batches and grill for 2–3 minutes, turning after 1½ minutes. Remove from the heat.",
+        "When ready to serve, tear the balls of burrata in half and place one-half on each plate. Arrange the grape skewers to lean against them—2 per portion —and spoon 1½ tsp of the marinade over the cheese. Alternatively, arrange on a platter to serve a crowd. Sprinkle with the remaining ½ tsp of fennel seeds, garnish with a sprig of basil, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1416, numbered steps 1–3"
+    },
+    "butternut-squash-with-corn-salsa-feta-and-pumpkin-seeds": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Mix the butternut squash with 2 tbsp of oil, ½ tsp of salt, and plenty of pepper. Spread out on a large parchment-lined baking sheet, skin side down and spaced well apart. Roast for 25 minutes, until the squash is cooked through and golden brown. Remove from the oven and set aside to cool.",
+        "Place a grill pan over high heat and ventilate your kitchen well. Add the corn and grill for about 8 minutes, turning over throughout so that they are charred all over. Remove from the heat and, once cool enough to handle, place the corn perpendicular to a chopping board and use a sharp knife to shave the corn kernels off the cob. Place the kernels in a bowl with the chile, lime zest, lime juice, the remaining 3 tbsp of oil, ¼ tsp of salt, and the cilantro and mint. Mix well and set aside.",
+        "Arrange the squash on separate plates or on one large platter. Spoon the salsa on top, sprinkle the pumpkin seeds, dot with the feta, and serve, drizzled with a little extra oil."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3317, numbered steps 1–4"
+    },
+    "carrot-salad-with-yogurt-and-cinnamon": {
+      "method": [
+        "Place the carrots in a steamer and steam for 8–12 minutes (depending on thickness), until they are cooked through but still retain a bite.",
+        "Meanwhile, whisk together the olive oil, vinegar, honey, garlic, cinnamon, ½ tsp salt, and lots of pepper in a large bowl. Once combined, add the carrots as soon as they are cooked. Mix well and set aside to cool.",
+        "Mix together the yogurt and crème fraîche in a medium bowl with ¼ tsp of salt. Add this to the carrots, along with the dill and cilantro. Stir through gently—you don’t want to overmix. Transfer carefully to a serving bowl and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3217, numbered steps 1–3"
+    },
+    "cauliflower-tabbouleh": {
+      "method": [
+        "Hold the cauliflower by its stalk and grate the florets and smaller stalks coarsely, on the large holes of a box grater. (Alternatively, you can use a food processor with its largest grating attachment in place, which is quicker.) Once grated, the cauliflower looks like cooked bulgur wheat and should weigh about 1½ lb/700g. The cauliflower stalk can be sliced thinly and added to salads.",
+        "Place the grated cauliflower in a large bowl along with the lemon juice and 1¼ tsp salt. Set aside to marinate for 20 minutes, then add the green onions, parsley, dill, mint, allspice, oil, and a generous grind of black pepper. Gently mix to combine, transfer to a serving plate or bowl, sprinkle with the pomegranate seeds, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1471, numbered steps 1–2"
+    },
+    "cavolo-nero-with-chorizo-and-preserved-lemon": {
+      "method": [
+        "Put the oil into a large sauté pan with a lid and place over medium-high heat. Once hot, add the chorizo and fry for 3–4 minutes, until golden brown. Add the garlic and cook for 1 minute longer, until starting to brown. Stir in the paprika, then, using a slotted spoon, lift the chorizo and garlic out of the oil and place in a small bowl.",
+        "Add the cavolo nero to the pan, in three or four additions, stirring it into the oil. Once all the leaves have been added, add the water, ¼ tsp of salt, and plenty of pepper. Cook for 3 minutes, covered, stirring once or twice to help the leaves wilt. Remove the lid and continue to fry for 5–6 minutes, stirring frequently, until the liquid has evaporated and the leaves are cooked but still retain a slight bite and are starting to brown.",
+        "Return the chorizo and garlic to the pan, along with the preserved lemon and lemon juice. Stir through, then remove from the heat and add the sour cream. Fold through, to combine, then divide among four bowls or place on one large platter."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2412, numbered steps 1–3"
+    },
+    "chicken-marbella": {
+      "method": [
+        "Place the chicken in a large nonreactive bowl and add the garlic, oregano, vinegar, oil, olives, capers, dates, and bay leaves, along with 1 tsp salt and a good grind of black pepper. Gently mix everything together, cover the bowl, and leave in the fridge to marinate for 1–2 days, stirring the ingredients a few times during the process.",
+        "Preheat the oven to 400°F.",
+        "Spread out the chicken legs on a medium high-sided baking pan, along with all the marinade ingredients. Whisk together the wine and molasses and pour over the meat. Place in the oven and cook for 50 minutes, basting two or three times, until the meat is golden brown on top and cooked through.",
+        "Remove from the oven, transfer everything to a large platter, sprinkle with some oregano, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5945, numbered steps 1–4"
+    },
+    "chile-fish-with-tahini": {
+      "method": [
+        "Lightly season the fish with a rounded ¼ tsp of salt. Set aside.",
+        "Put the oil into a large sauté pan with a lid and place over medium-high heat. Once hot, add the red chiles and fry for 2 minutes, stirring frequently. Add the garlic, caraway seeds, and ancho, and continue to fry for 1 minute, until the garlic is starting to turn golden brown. Add the tomatoes, tomato paste, sugar, and ½ tsp salt, then, once boiling, decrease the heat to medium and let simmer for 15 minutes, stirring from time to time, until the sauce is thick. Add the fish, cover the pan, and continue to cook for 10 minutes.",
+        "To make the tahini sauce, mix the tahini and lemon juice with the water and ⅛ tsp salt.",
+        "When ready to serve, gently lift the fish out of the pan and set aside somewhere warm. If the fish has released a lot of liquid during the cooking and the sauce is runny, increase the heat and let it bubble away quickly until thick. Taste and add salt if needed.",
+        "Transfer the fish to a serving dish. Spoon on the sauce, sprinkle with the cilantro, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6466, numbered steps 1–5"
+    },
+    "chilled-cucumber-cauliflower-and-ginger-soup": {
+      "method": [
+        "Pour 3⅓ cups/800ml of water into a medium saucepan and add the fresh mint sprigs, the thinly sliced ginger, and 2 tsp salt. Bring to a boil, then add the cauliflower and blanch for 2–3 minutes, until just cooked but still al dente. Drain and set aside. Discard the mint and ginger.",
+        "Place the cucumbers in an upright blender or food processor with the grated ginger, garlic, yogurt, lemon juice, 1 tsp salt, and ½ tsp white pepper. Blitz until smooth, then chill in the fridge for at least 1 hour.",
+        "Heat the oil in a small skillet over medium heat and add the almonds. Cook for 3–4 minutes, stirring often, until the almonds are a light golden brown. Transfer to a separate bowl and stir in the dried mint. Add a pinch of salt and set aside to cool.",
+        "When ready to serve, divide the cauliflower florets among four bowls and pour the chilled soup over them. Spoon the almond mix on top and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 924, numbered steps 1–4"
+    },
+    "coconut-crusted-fish-fingers": {
+      "method": [
+        "Place the fish in a bowl with the lime juice, coconut cream, and ¼ tsp salt. Mix, then leave in the fridge for about 1 hour, to marinate (don’t leave it for much longer than that, as the fish will start to disintegrate). Scrape off and discard as much of the cream as you can from the fish, then set aside.",
+        "Place a large frying pan over medium-high heat and, once hot, add the coconut. Dry-fry for 6–7 minutes (or just 2–3 minutes, if using dried), stirring from time to time, until golden. Transfer to a medium shallow bowl and set aside to cool, then mix in the panko, pepper flakes, and ½ tsp salt.",
+        "When ready to cook, preheat your broiler to high.",
+        "Coating one at a time, dip a piece of fish into the melted butter, followed by the coconut mix. Toss until it is coated on all sides and transfer to a wire rack placed on top of a large parchment-lined baking sheet. Continue with the remaining fish pieces.",
+        "Place under the broiler on the center oven rack—otherwise it will burn!— and cook for 5–6 minutes, turning the pieces carefully after 2–3 minutes, until cooked through and golden brown. If the fish is not cooked but the coating is brown and ready, just turn off the broiler and leave in the oven for 2–3 minutes; the fish will cook in the residual heat. Serve with the lime wedges."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6531, numbered steps 1–5"
+    },
+    "cornbread-with-cheddar-feta-and-jalape-o": {
+      "method": [
+        "Heat the oven to 375°F.",
+        "Put a large (10-inch/25cm) ovenproof cast-iron pan over high heat. Once hot, add the corn and dry-fry for 4–5 minutes, stirring from time to time, until slightly blackened. Remove from the pan and set aside to cool.",
+        "Sift the flour, baking powder, baking soda, cumin, and cayenne into a large bowl. Add the sugar, along with 1½ tsp salt and a good grind of pepper. Stir and set aside.",
+        "Put the polenta, sour cream, eggs, and ½ cup/120ml of the oil into a separate bowl and whisk lightly. Add to the dry ingredients, then fold in the green onions, cilantro, jalapeño, and toasted corn until just combined.",
+        "Use the remaining 1 tbsp of oil to lightly grease the base and sides of the pan used to toast the corn, then pour in the cornbread mixture and scatter all the topping ingredients over it. Bake for 40–45 minutes, until a skewer comes out clean. Serve the cornbread hot, straight from the oven, or let cool for 30 minutes and serve warm or at room temperature the same day. If serving it the next day, warm it through in the oven just before you need it."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 738, numbered steps 1–5"
+    },
+    "couscous-cherry-tomato-and-herb-salad": {
+      "method": [
+        "Place the couscous in a medium bowl. Drizzle with 2 tbsp of oil, sprinkle with 1 tsp of ras el hanout, ¾ tsp of salt, and plenty of pepper, then pour in the boiling water. Stir, cover the bowl tightly with foil and set aside for 20 minutes. Remove the foil, fluff the couscous with a fork, and set aside to cool.",
+        "Put 1 tbsp of oil into a large frying pan and place over high heat. Once hot, add the tomatoes and fry for 3–4 minutes, stirring a few times, until they start to brown and split open. Remove from the pan, sprinkle with a pinch of salt, and set aside with any juices.",
+        "Wipe the pan clean, then add the remaining 3 tbsp of oil and return to medium-high heat. Add the onions, the remaining 1 tsp of ras el hanout, and ⅛ tsp salt and fry for 10–12 minutes, stirring, until dark golden brown and soft. Remove from the heat, stir in the raisins, and set aside to cool.",
+        "Once the couscous has cooled slightly, transfer it to a large bowl. Add the onion and raisin mix and stir. Add the cumin, almonds, cilantro, mint, lemon zest, lemon juice, ¼ tsp salt, and a generous grind of pepper and mix gently.",
+        "Transfer to a serving platter, top with the tomatoes, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4065, numbered steps 1–5"
+    },
+    "cucumber-and-lamb-s-lettuce-salad": {
+      "method": [
+        "For the dressing, whisk lemon juice, garlic, ginger, and yogurt with a rounded ¼ tsp flaked salt and set aside.",
+        "Take each cucumber and quarter lengthwise. Then cut each long quarter diagonally into ¼-inch/½ cm slices and place in a large bowl with the lamb’s lettuce, mint, and cilantro. Gently mix the cucumber and leaves with the dressing and spread in a large shallow bowl. Sprinkle with the nigella seeds and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1299, numbered steps 1–2"
+    },
+    "curried-egg-and-cauliflower-salad": {
+      "method": [
+        "Preheat the oven to 475°F.",
+        "Mix the cauliflower florets (with any young leaves attached) in a large bowl with the onion, oil, 2 tsp of the curry powder, ¾ tsp of salt, and plenty of pepper. Once combined, spread out on a large parchment-lined baking sheet and roast for 15 minutes, until soft and golden brown but still retaining a bite. Remove from the oven and set aside to cool.",
+        "Fill a medium pan with plenty of water and bring to a boil over high heat. Decrease the heat to medium-high, then carefully lower in the eggs and boil gently for 10 minutes, until hard-boiled. Drain the eggs, then return them to the same pan and fill with cold water to stop them cooking. Once cool, peel the eggs, place them in a large bowl, and break them roughly with the back of a fork to form large chunks.",
+        "In a separate small bowl, mix together the yogurt, mayonnaise, the remaining 1 tsp of curry powder, half the chile flakes, the cumin, lemon juice, and ¼ tsp salt. Add the sauce to the eggs, along with the cauliflower and onion and the tarragon. Mix together well, spoon the mixture onto a large plate, then sprinkle with the remaining chile flakes and serve, along with the lemon wedges."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2716, numbered steps 1–4"
+    },
+    "fettuccine-with-spiced-cherry-tomato-sauce": {
+      "method": [
+        "Put the oil into a large sauté pan and place over medium-high heat. Once hot, add the garlic and fry for up to 1 minute, stirring a few times, until starting to caramelize. Add the tomatoes—carefully, so that the oil doesn’t spit—along with the sugar, chile, and ½ tsp of salt. Pour in the water and stir for 4 minutes, until the tomatoes are starting to break down and the liquid is bubbling. Decrease the heat to medium-low and cook for about 1 hour, stirring every once in a while, until the tomatoes and ancho have broken down and the sauce has thickened. Stir in the basil and set aside somewhere warm.",
+        "Fill a large pot with plenty of salted water and place over high heat. Bring to a boil, then add the pasta. Cook for 10–12 minutes, or according to the package instructions, until al dente. Drain the pasta and stir it into the sauce. Divide among 4 bowls, sprinkle with Parmesan, and serve. Pappardelle with rose harissa, black olives, and capers Pictured with Gigli with chickpeas and za’atar (this page) Pappare means “to gobble up,” in Italian, which is the destiny of this dish (particularly in Tara’s house, where her husband, Chris, makes it most Sunday nights). I like it spicy, but the quantity of harissa can easily be reduced. Make the sauce 3 days ahead if you like and keep in the fridge until needed. Serves four 2 tbsp olive oil 1 large onion, thinly sliced (mounded 2 cups/220g) 3 tbsp rose harissa (or 50 percent more or less, depending on variety; see this page) 14 oz/400g cherry tomatoes, halved ½ cup/55g pitted kalamata olives, torn in half 2 tbsp baby capers salt ¾ cup plus 2 tbsp/200ml water ¾ cup/15g parsley, roughly chopped 1 lb 2 oz/500g dried pappardelle pasta (or other wide flat pasta) ½ cup/120g Greek-style yogurt"
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4753, numbered steps 1–2"
+    },
+    "fig-and-thyme-clafoutis": {
+      "method": [
+        "Preheat the oven to 375°F.",
+        "Put 4 tbsp/50g of the sugar into a small ovenproof high-sided sauté pan (about 7 inches/18cm), along with the water. (If you don’t have an ovenproof pan this size, cook the figs in a regular frying pan and transfer them to a 9-inch/22cm baking dish.) Place over medium-high heat for 3–4 minutes, swirling the pan a few times, until the sugar has completely melted and is bubbling rapidly. Carefully add the wine and thyme and stir continuously for about 1 minute, keeping the pan on the heat, until combined and thick. Remove from the heat, stir in the lemon juice and figs, and set aside to cool for 20 minutes (or longer)—you just don’t want them to be piping hot when the topping gets poured on. If you need to transfer the figs to a baking dish, do this now.",
+        "Place the egg yolks in a bowl with the remaining 3 tbsp/40g of sugar, the flour, vanilla, cream, lemon zest, and salt. Whisk until pale and thickened: 2– 3 minutes by hand, or 1 minute with a handheld mixer. Whisk the egg whites separately by hand for 1–2 minutes, to form stiff peaks, and fold gently into the batter until just combined.",
+        "Spread out the figs in the sauté pan (or baking dish) and pour in the batter. Bake for 30 minutes, until the batter has risen and is golden brown and cooked through. Remove from the oven, divide among four bowls, and serve hot with the ice cream or crème fraîche."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7242, numbered steps 1–4"
+    },
+    "fish-cake-tacos-with-mango-lime-and-cumin-yogurt": {
+      "method": [
+        "Place the fish, garlic, and egg in the large bowl of a food processor with 1 tsp of the cumin seeds, 1 tsp of the lime zest, and ¾ tsp salt. Blitz briefly, just until the fish forms a coarse paste, then transfer to a medium bowl. Add ½ cup of the cilantro, mix, then form into 12 round fish cakes, each weighing about 1½ oz/45g. Refrigerate for at least 15 minutes (and up to 1 day ahead), to firm up.",
+        "Put the yogurt, the remaining ½ tsp of the cumin seeds, the remaining lime zest, and ⅛ tsp salt into a small bowl. Mix together and set aside.",
+        "In a separate small bowl, combine the onion, mango, and chile and set aside.",
+        "Heat the oil in a large nonstick frying pan and place over medium-high heat. Once the oil is hot, add the fish cakes in batches and fry for 2–3 minutes on each side, until golden brown and cooked through. Transfer to a paper towel–lined plate.",
+        "Serve each taco warm, with 1 fish cake, cut in half, a spoonful of yogurt, and the mango mix. Finish with a sprinkle of the remaining ½ cup of cilantro and a squeeze of lime."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6581, numbered steps 1–5"
+    },
+    "gem-lettuce-with-fridge-raid-dressing": {
+      "method": [
+        "Put the avocado, ginger, garlic, lemon zest, lemon juice, chile, and tahini into the bowl of a food processor with 5 tbsp/75ml of the oil and a rounded ¼ tsp salt. Blitz to a smooth paste, then add the basil, tarragon, dill, parsley, and cilantro. Blitz again, then, with the machine still running, slowly pour in the water until smooth and combined.",
+        "Mix the gem lettuce with the remaining 2 tsp of oil and ⅛ tsp salt until combined. Transfer to a platter, spoon the dressing on top, and sprinkle with the sesame seeds."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1248, numbered steps 1–2"
+    },
+    "gnocchi-alla-romana": {
+      "method": [
+        "Preheat the oven to 400°F.",
+        "Put the butter and milk into a medium saucepan with 1 tsp of salt and a good grind of black pepper. Place over medium-high heat. Once the butter has melted and the milk is simmering, remove from the heat and whisk in the semolina, nutmeg, Parmesan, and egg yolks until smooth and combined. Return to the heat and whisk continuously until thickened. Continue to cook and stir for 3–4 minutes, until the mixture comes away from the sides of the pan. Set aside to cool for 15 minutes; don’t leave it for longer, or else it’ll set too much and break when rolled.",
+        "Lay two large pieces of plastic wrap—about 12 x 16 inches/30 x 40cm—on your work surface and spoon half the mixture onto each piece. Roll to form 2 sausages—each about 1½ inches/4cm wide and 15 inches/38cm long— and keep in the fridge for at least 2 hours, until set. Remove and discard the plastic, and then cut each sausage into ½-inch/1½ cm rounds. Arrange the rounds in a shallow baking sheet, about 9 x 13 inches/23 x 33cm, in rows that slightly overlap. Sprinkle with Cheddar and bake for 15 minutes, until the cheese has melted.",
+        "Turn the oven to its highest broil setting and place the gnocchi about 4 inches/10cm beneath the heat. Broil for 2–3 minutes, until the top is golden brown. Let cool for 5 minutes before serving."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5059, numbered steps 1–4"
+    },
+    "green-onion-and-herb-salad": {
+      "method": [
+        "To make the dressing, place the ginger in a pestle and mortar and crush to form a rough paste. Mix with the lemon juice, oil, and salt and set aside.",
+        "Place the green onions, cucumbers, bell pepper, mint, and cilantro in a large bowl. Add the dressing, and toss well. Add the nigella seeds and salt to taste, toss again, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1510, numbered steps 1–2"
+    },
+    "grilled-lamb-fillet-with-almonds-and-orange-blossom": {
+      "method": [
+        "Put the garlic into a large bowl with 2 tsp of the lemon zest, 6 tbsp/90ml of the lemon juice, the thyme, 6 tbsp/90ml of the oil, 1½ tsp salt, and a really good grind of pepper. Add the lamb, mix very well, then leave in the fridge for at least 2 hours (or overnight) to marinate.",
+        "Heat 2 tbsp of the oil in a small pan or frying pan and add the almonds. Cook for 3–4 minutes, stirring continuously, until the nuts are golden brown and evenly cooked. Remove from the heat and set aside to cool a little. Using a slotted spoon, remove the nuts. Roughly chop the nuts and put them into a bowl. Discard the cooking oil. Add the remaining 1 tsp of lemon zest to the nuts along with the remaining ¼ cup/60ml of lemon juice, the honey, orange blossom water, ½ tsp salt, a good grind of black pepper, and 3 tbsp of the oil. Mix well and set aside until ready to serve.",
+        "Preheat the oven to 450°F.",
+        "Place a large ridged griddle pan over high heat and ventilate your kitchen well. Drizzle the peppers with the remaining 1 tablespoon of olive oil and ¼ tsp salt and place on the griddle. Cook for about 10 minutes, turning once after 5 minutes, until charred on both sides.",
+        "Put the lamb pieces on the piping hot griddle (reserve the marinade) and cook for about 4 minutes, turning after 2 minutes, until both sides are charred and starting to caramelize. If you are serving straightaway, transfer the lamb to a roasting pan, along with the peppers, and roast for 3–4 minutes for medium-rare (145°F on a meat thermometer) or a few minutes longer if you like it well cooked. If you are cooking the lamb from room temperature (having kept it in the fridge after searing), it will need 15 minutes in the oven at this stage. Either way, timings will depend on the thickness of the meat. Once the lamb is cooked, remove it from the oven, cover the pan with foil and let the lamb rest for 5–10 minutes.",
+        "Meanwhile, place the marinade in a small saucepan and bring to a boil over medium–high heat. Remove from the heat and set aside.",
+        "When you are ready to serve, carve the lamb into ½-inch/1cm slices and arrange on a platter with the red peppers. Spoon on the marinade, add the mint to the almond sauce, and spoon some on top. Serve any remaining sauce on the side."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5291, numbered steps 1–7"
+    },
+    "grilled-prawn-corn-and-tomato-salad": {
+      "method": [
+        "To make the dressing, mix together the ginger, sriracha, olive oil, lime, sugar, and ⅛ tsp salt. Set aside.",
+        "Place a grill pan over high heat and ventilate your kitchen well. While the grill pan is heating up, mix the shrimp with the oil and ⅛ tsp salt and set aside. Place the onion on the grill pan for 5 minutes, turning over every so often until charred and cooked but still retaining a bite. Transfer to a large bowl, then add the corn to the grill pan. Cook for 2 minutes, until charred, then add to the onion.",
+        "Continue with the tomatoes, adding them to the grill pan for 3 minutes, turning throughout so that they are charred on all sides. Add to the bowl of onion and corn. Add the shrimp to the grill pan and grill for 4 minutes, turning after 2 minutes, until the shrimp are charred and cooked through. Add to the vegetables, along with the marjoram and the dressing. Gently stir to combine and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6696, numbered steps 1–3"
+    },
+    "harissa-and-confit-garlic-roasted-potatoes": {
+      "method": [
+        "Preheat the oven to 350°F.",
+        "Place the garlic cloves in a small ovenproof pan or saucepan with a lid, with the goose fat, rosemary, and thyme. Cover and bake for 40 minutes, until the garlic cloves are soft and caramelized. Remove from the oven, then strain the fat into a large heatproof bowl and keep it. Set the garlic and herbs aside.",
+        "Increase the oven to 425°F.",
+        "Meanwhile, bring a large pot of salted water to a boil over high heat. Once boiling, add the potatoes and boil for 10 minutes, until the potatoes are half- cooked. Drain well, shaking the potatoes about a bit to fluff up the edges, and set aside in a colander to dry out for about 10 minutes.",
+        "Add the potatoes to the bowl of goose fat along with the semolina, caraway, harissa, and 2 tsp of salt. Mix together well, then spread out on a large parchment-lined baking sheet. Bake for 45 minutes, until golden brown, turning the potatoes over once or twice throughout. Stir in the confit garlic and herbs and continue to roast for 10–15 minutes, until the potatoes are dark golden brown and crispy. Sprinkle with extra salt, if you like, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3738, numbered steps 1–5"
+    },
+    "harissa-and-manchego-omeletes": {
+      "method": [
+        "Preheat the broiler to high.",
+        "Put 3 tbsp of the oil into a medium (8-inch/20cm) ovenproof frying pan and place over medium heat. Add the onion and cook for 15 minutes, stirring from time to time, until the onion has caramelized and is a deep golden brown. Tip into a large bowl and add the eggs, milk, harissa, nigella seeds, half the cilantro, ½ tsp of salt, and a good grind of black pepper. Whisk to combine and set aside.",
+        "Wipe clean the pan you cooked the onions in, increase the heat to medium- high, and add 2 tsp of the oil. Pour in one-quarter of the egg mixture, swirling it around so that the mixture is evenly spread. After 1 minute, sprinkle with one-quarter of the Manchego and place under the broiler for 1 minute for the cheese to melt and the eggs to puff up and finish cooking. Using a spatula, ease around the edges of the omelete to slide it out of the pan and onto a plate. Keep warm while you continue with the remaining egg mix in the same way, adding more oil with each batch, to get 4 omeletes.",
+        "Serve at once, with the remaining cilantro sprinkled on top and a lime half alongside."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 415, numbered steps 1–4"
+    },
+    "harissa-beef-sirloin-with-pepper-and-lemon-sauce": {
+      "method": [
+        "Place the beef in a bowl and add the harissa, ½ tsp salt, and some black pepper. Brush or rub the harissa into the meat, then leave to marinate for at least 1 hour (or in the fridge if you are marinating overnight). If leaving in the fridge, be sure to bring the meat back to room temperature before cooking.",
+        "To make the sauce, preheat the broiler and cook the peppers for 20–25 minutes, turning twice, until charred all over. Place in a bowl, cover with plastic wrap, then, once cool enough to handle, remove the pepper skins and cut the flesh into long, thin strips. Discard the skin and seeds.",
+        "Put the oil into a medium frying pan and place over medium heat. Add the garlic, cook for 1 minute or so, then add the tomatoes and their juice, pepper flakes, paprika, ½ tsp salt, and some black pepper. Bring to a gentle simmer, cook for 7 minutes, then add the bell pepper, preserved lemon, and parsley. Cook for another 7 minutes, or until the sauce thickens but is still easy to pour. Set aside to come to room temperature.",
+        "Place a frying pan over high heat. Once smoking hot, add the steaks and cook for 4–5 minutes, turning after 2 minutes, until caramelized on both sides. Remove from the pan, sprinkle with a good pinch of salt, and rest for 10 minutes.",
+        "Serve the meat warm or at room temperature, sliced into ½-inch/1cm strips, with the sauce spooned on top or alongside. Sprinkle with parsley and serve with a wedge of lemon alongside."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5836, numbered steps 1–5"
+    },
+    "hazelnut-peach-and-raspberry-cake": {
+      "method": [
+        "Preheat the oven to 375°F. Line a 9-inch/24cm round springform cake pan with parchment paper and brush with the oil.",
+        "Place the peaches in a medium bowl with 1½ cups/150g of the raspberries and 1 tbsp of the sugar. Mix and set aside.",
+        "Put the hazelnuts into a food processor and blitz for under 1 minute, until roughly ground. Set aside.",
+        "Put the remaining 1½ cups plus 1 tbsp/310g sugar and the butter into the bowl of a standing mixer fitted with the paddle attachment. Beat until smooth and well combined, then gradually add the eggs, mixing until incorporated. Add the ground hazelnuts, flour, baking powder, and salt and continue to mix until smooth. Spread the batter evenly in the cake pan and arrange the peach slices and raspberries randomly on top. Bake for 70–80 minutes, covering the cake with foil after 30 minutes so that it does not take on too much color.",
+        "Remove from the oven and set aside to cool slightly before releasing the cake from its pan. Place the remaining ½ cup/50g of raspberries on top of the cake, in the middle, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7362, numbered steps 1–5"
+    },
+    "herby-zucchini-and-peas-with-semolina-porridge": {
+      "method": [
+        "Put the butter into a large sauté pan with a lid and place over medium-high heat. Once the butter has melted, add the garlic and fry for 1–2 minutes, until starting to brown. Add the zucchini, ¾ tsp salt, and a good grind of pepper and cook for 5 minutes, stirring frequently, until the zucchini start to soften. Decrease the heat to medium-low, cover, and continue to cook for 5 minutes. Stir in the peas and warm through for 1 minute. Remove from the heat, stir in the basil, tarragon, and lemon zest, and set aside while you make the porridge.",
+        "To make the porridge, put the milk and water into a medium saucepan along with ¾ tsp salt and plenty of pepper. Bring to a boil over medium-high heat and add the semolina. Whisk continuously for 3–4 minutes, until smooth and thick, like porridge. Remove from the heat and stir in 3 oz/80g of the pecorino.",
+        "Divide the porridge among four (or six) shallow bowls and top with the zucchini and peas. Finish with the pine nuts, a sprinkle of the remaining pecorino, and drizzle with the oil."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1870, numbered steps 1–3"
+    },
+    "honey-and-yogurt-set-cheesecake": {
+      "method": [
+        "Line a 9-inch/23cm springform cake pan with parchment paper and set aside.",
+        "Line a sieve with a clean kitchen towel and set above a bowl. Spoon in the yogurt, then draw up the sides of the kitchen towel. Squeeze the yogurt into a ball, pressing out as much liquid as you can. You want to end up with about 1⅔ cups/340g of thickened yogurt. Set aside until required. Discard the liquid.",
+        "Place the Hobnobs in a clean plastic bag and crush them finely with a rolling pin. Mix with the butter and 1 tbsp of the thyme and spoon into the cake pan, pressing it down to form an even layer. Set aside in the fridge.",
+        "Whisk together the cream cheese, strained yogurt, confectioners’ sugar, and lemon zest until smooth and combined; this can be done in a stand mixer or using a handheld mixer.",
+        "Next melt the chocolate. This needs to be done in a heatproof bowl set over a pan of barely simmering water (taking care that the base of the bowl is not touching the water). Stir the chocolate frequently for 2–3 minutes, taking care not to get any moisture into the chocolate as this will cause it to seize. Spoon the melted chocolate into the cream cheese mixture and whisk until combined.",
+        "Spread the cream cheese mixture over the cookie base evenly, then refrigerate for at least 2 hours, until set.",
+        "When ready to serve, warm the honey in a small saucepan with the remaining 1½ tsp of thyme leaves until thin and runny. Remove from the heat and drizzle over the cheesecake.",
+        "Release the cheesecake from the pan, divide into 8 slices, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7299, numbered steps 1–8"
+    },
+    "hot-charred-cherry-tomatoes-with-cold-yogurt": {
+      "method": [
+        "Preheat the oven to 425°F.",
+        "Place the tomatoes in a mixing bowl with the olive oil, cumin, sugar, garlic, thyme, oregano sprigs, lemon strips, ½ tsp of flaked salt, and a good grind of pepper. Mix to combine, then transfer to a baking sheet just large enough— about 6 x 8 inches/15 x 20cm—to fit all the tomatoes together snugly. Place the sheet about 2 inches/5cm beneath the broiler and roast for 20 minutes, until the tomatoes are beginning to blister and the liquid is bubbling. Turn the oven to the broil setting and broil for 6–8 minutes, until the tomatoes start to blacken on top.",
+        "While the tomatoes are roasting, combine the yogurt with the grated lemon zest and ¼ tsp of flaked salt. Keep in the fridge until ready to serve.",
+        "Once the tomatoes are ready, spread the chilled yogurt on a platter (with a lip) or in a wide, shallow bowl, creating a dip in it with the back of a spoon. Spoon the hot tomatoes on top, along with their juices, lemon strips, garlic, and herbs, and finish with the oregano leaves and chile flakes. Serve at once."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2084, numbered steps 1–4"
+    },
+    "lamb-arayes-with-tahini-and-sumac": {
+      "method": [
+        "Mix together all the ingredients for the filling in a large bowl with 1 tsp salt. Taking one tortilla at a time, spoon about 1 cup/100g of filling over half the tortilla, leaving a border of ¼ inch/½ cm around the edges. Sprinkle the meat lightly with cheese and then fold the tortilla over, to make a semi-circle. Press down gently so that the meat is evenly spread and ½ inch/1cm thick. Continue with the remaining tortillas, meat, and cheese in the same way.",
+        "Put 1 tbsp oil into a large nonstick frying pan and place over medium-low heat. Once hot, add 2 of the folded tortillas and fry gently for 2–3 minutes. Turn over and cook for another 2–3 minutes, until the tortilla is golden brown on both sides and the meat is cooked through. Transfer to a plate, sprinkle with a pinch of salt, and set aside. Using a paper towel, wipe the pan clean of all the lamb juices and continue in the same way with the remaining oil and tortillas.",
+        "Mix the remaining 2 tsp oil with the sumac. Brush lightly over the tops of the arayes, and serve warm or at room temperature."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5443, numbered steps 1–3"
+    },
+    "lamb-meatloaf-with-tahini-sauce-and-tomatoes": {
+      "method": [
+        "Preheat the oven to 400°F and grease a 8 x 4-inch/20 x 10cm loaf pan with a little oil.",
+        "Place the zucchini, carrot, onion, and chopped tomato in the bowl of a food processor and blitz to combine; you want the consistency to be similar to that of the ground lamb. Transfer the vegetables to a sieve set over a bowl and squeeze them to get rid of as much liquid as possible. Put the vegetables into a large bowl with the ground lamb, 2 of the garlic cloves, the pecorino, breadcrumbs, eggs, tomato paste, cumin, allspice, and 1 tsp salt. Bring the mixture together until well combined, then transfer to the loaf pan.",
+        "Place the loaf pan inside a high-sided baking dish. Carefully fill the baking dish with enough boiling water to rise halfway up the sides of the loaf pan. Transfer to the oven and bake for 1 hour and 10 minutes, until golden brown.",
+        "While the meatloaf is cooking, prepare the tahini sauce. Put the tahini, the remaining 2 garlic cloves, lemon juice, and ¼ tsp salt into a medium bowl. Slowly whisk in the water until you get a smooth, thick sauce. Set aside until ready to serve.",
+        "Once the meatloaf has cooked, remove the pan from the water bath and leave to cool for 10 minutes. Drain away and discard the liquid and fat from the loaf pan, then, using a wide spatula, transfer the meatloaf to a platter. Pour one-third of the tahini sauce over the meatloaf, followed by one-third of the grated tomato.",
+        "Serve warm, with the remaining tahini and tomato alongside, or leave to cool and cut into slices to serve in sandwiches."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5375, numbered steps 1–6"
+    },
+    "lamb-siniyah": {
+      "method": [
+        "Put 2 tbsp of the oil into a 8-inch/20cm casserole pan and place over medium heat. Add the onions and celery and cook for 10–12 minutes, stirring from time to time, until soft. Add the tomato paste and baharat, cook for another 2 minutes, then tip into a large bowl. Keep the pan as it is; you don’t need to rinse or wipe it.",
+        "Season the lamb with ¾ tsp salt and a good grind of black pepper. Add 1½ tsp of the oil to the same pan and place over medium-high heat. Add a quarter of the lamb and fry for 3 minutes, turning throughout so that all sides get browned. Transfer to the bowl of onions and repeat with the remaining lamb, adding 1½ tsp of the oil to the pan with each batch. Return all the lamb and vegetables to the pan and stir in two-thirds of the tomatoes, the paprika, ½ tsp salt, and plenty of black pepper. Bring to a boil, then turn the heat to medium-low and simmer gently for about 70 minutes, covered, until the meat is very tender and the sauce is thick. You might need to remove the lid for the last 5 or 10 minutes, for the sauce to thicken up. Stir in the pine nuts, parsley, and remaining tomatoes and set aside.",
+        "About 10 minutes before the meat is ready, preheat the oven to 400°F.",
+        "To make the tahini sauce, whisk the tahini, lemon juice, garlic, the water, and ¼ tsp salt in a medium bowl. The consistency should be pourable—thick like heavy cream—so add a bit more water if you need to. Pour this evenly over the lamb and bake, covered, for 20 minutes, until the tahini sauce has thickened. Uncover the pan and bake for another 20 minutes, uncovered, for the tahini crust to turn golden brown.",
+        "Remove from the oven, let rest for 5 minutes, and then serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5221, numbered steps 1–5"
+    },
+    "lima-bean-mash-with-muhammara": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Mix the peppers and oil and spread out on a large parchment-lined baking sheet. Roast for 15 minutes, and then add the garlic. Continue to roast for 15 minutes, until the skin of the peppers is soft and starting to blacken and the garlic is golden brown.",
+        "Place the peppers in a food processor, along with the garlic, thyme, paprika, pepper flakes, vinegar, all but 2 tbsp of the walnuts, and ½ tsp of salt. Blitz to form a rough paste and set aside.",
+        "To make the mash, put the oil into a small saucepan and place over medium heat. Once hot, add the garlic and thyme sprigs and fry very gently for 2–3 minutes, until the garlic starts to caramelize. Discard the garlic and set the sprigs of thyme aside, along with 2 tsp of the oil. Pour the remaining oil into a food processor with the lima beans, water, and ½ tsp of salt. Blitz until completely smooth, adding a little more water if you need to. Spread out on a large platter or a few plates, creating a natural rim around the edge, and spoon the muhammara into the center. Top with the crispy thyme springs, their reserved oil, and the remaining 2 tbsp of the walnuts and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2964, numbered steps 1–4"
+    },
+    "mackerel-with-pistachio-and-cardamom-salsa": {
+      "method": [
+        "Using the flat side of a large knife, crush the cardamom pods to release the seeds. Transfer the seeds to a pestle and mortar and crush them finely; you should have about ½ tsp. Discard the pods. If starting with ground cardamom you don’t need to do this.",
+        "Mix a pinch of cardamom (about ⅛ tsp) with a pinch of salt. Rub this on both sides of the fish and set aside until ready to fry.",
+        "Finely grate the ginger, then press the pulp through a sieve (with a bowl underneath); you should get 1 tsp of juice. Discard the pulp and set the liquid aside.",
+        "Using a fork (or a small whisk, if you have one), whip the cream until stiff. Switch to using a spatula and fold in the sour cream, ginger juice, and a small pinch of salt, so you have a soft cream. Keep in the fridge until needed.",
+        "Combine the cilantro and basil with the pistachios, the remaining ⅛ tsp of cardamom, the lime zest, lime juice, chile, 4 tsp/20ml of the oil, and ⅛ tsp salt. Set aside.",
+        "When ready to serve, put the remaining 1 tbsp plus 2 tsp of oil into a large frying pan and place over high heat. Once very hot, add the mackerel fillets, skin side down (the skin should sizzle), and fry for 2 minutes. Press the fillets with a fish spatula as they cook, to prevent the skin from curling up. Once the skin is crisp and golden brown, turn over and fry for 1 minute, until golden brown.",
+        "Transfer the mackerel to four individual plates. Spoon one-quarter of the ginger cream and the pistachio and cardamom salsa next to each fillet. Serve hot, with a wedge of lime."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6295, numbered steps 1–7"
+    },
+    "mint-and-pistachio-chocolate-fridge-cake": {
+      "method": [
+        "Line a 8 x 10-inch/18 x 28cm baking pan or glass baking dish with parchment paper and set aside.",
+        "Put both chocolates, the butter, corn syrup, and ⅛ tsp salt in a large heatproof bowl set over a saucepan of barely simmering water (taking care that the base of the bowl is not touching the water). Heat for 2–3 minutes, stirring often, until completely melted and combined.",
+        "Add the raisins and rum, the graham crackers, and three-quarters of the pistachios (try adding the larger bits here, reserving the more powdery bits to finish) to the chocolate. Using a spatula, combine everything until the graham crackers and nuts are completely coated in chocolate. Transfer to the prepared pan, smoothing the top with the spatula so that it’s flat and even, then sprinkle the remaining pistachios on top. Set aside for 10 minutes to cool, then wrap tightly with plastic wrap. Refrigerate for 2–3 hours, until completely set.",
+        "Cut into 24 bars. If not serving straightaway, store them in an airtight container and serve fridge-cold."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7536, numbered steps 1–4"
+    },
+    "mushrooms-and-chestnuts-with-za-atar": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "In a large bowl, mix the mushrooms, shallots, chestnuts, sage, oil, and garlic with ¾ tsp salt and lots of pepper. Spread on a large parchment-lined baking sheet and roast for 25 minutes, until the mushrooms and shallots are caramelized and soft. Remove from the oven and set aside to cool for 5 minutes.",
+        "Tip the warm mushrooms and chestnuts into a large bowl and mix in the tarragon, za’atar, lemon juice, and the 2 tsp of oil. Spoon into a large shallow bowl and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3070, numbered steps 1–3"
+    },
+    "mustard-marinated-kale-with-asparagus": {
+      "method": [
+        "Preheat the oven to 350°F.",
+        "Mix the sunflower and pumpkin seeds with ½ tsp of maple syrup, ⅛ tsp of salt, and a good grind of pepper. Spread out on a small parchment-lined baking sheet and bake for 12 minutes, until the seeds are golden brown. Set aside for about 30 minutes; the seeds will stick together as they cool and crisp up, but can then be broken into 1-inch/2½cm pieces.",
+        "Put the kale into a large bowl with the remaining 1 tsp of maple syrup, 2 tbsp of the oil, the vinegar, mustard, and ¼ tsp of salt. Mix together well, using your hands to massage the kale for about 1 minute, until it softens and takes on the flavors of the marinade. Set aside for at least 30 minutes (or up to 4 hours, if you want to get ahead).",
+        "Put the remaining 1 tbsp of oil into a large frying pan and place over medium-high heat. Add the asparagus and ⅛ tsp of salt and fry for 6 minutes, turning over throughout so that all sides start to brown and soften. Set aside to cool, then slice on an angle into 1½-inch/4cm pieces.",
+        "When ready to serve, add the asparagus, edamame, tarragon, and dill to the kale and mix well. Spread out on a large platter, sprinkle with the seeds, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2318, numbered steps 1–5"
+    },
+    "mustardy-cauliflower-cheese": {
+      "method": [
+        "Preheat the oven to 400°F.",
+        "Steam the cauliflower over boiling water for 5 minutes, until just softening. Remove and set aside to cool slightly.",
+        "Put the butter into a 9-inch/24cm round casserole pan or ovenproof dish of a similar size and place over medium heat. Add the onion and sauté for 8 minutes, until soft and golden. Add the cumin, curry powder, mustard powder, and chiles and cook for 4 minutes, stirring occasionally. Add the mustard seeds, cook for 1 minute, then pour in the cream. Add 1¼ cups/100g of Cheddar and ½ tsp of salt and simmer for 2–3 minutes, until the sauce slightly thickens. Add the cauliflower, stir gently, and simmer for 1 minute before removing from the heat.",
+        "Place the remaining ¼ cup/20g of Cheddar in a bowl and add the breadcrumbs and parsley. Mix, then sprinkle over the cauliflower. Wipe the top inside edge of the pan clean (with a spatula or cloth)—any cream there will burn—and place in the oven. Bake for 8 minutes, until the sauce is bubbling and the cauliflower is hot. Turn the broiler to high and keep the pan underneath for 4 minutes, or until the top is golden and crisp. Keep an eye on it so that it does not burn. Remove from the oven and allow to cool a little—just for 5 minutes or so—before serving."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2588, numbered steps 1–4"
+    },
+    "nutella-sesame-and-hazelnut-rolls": {
+      "method": [
+        "Put the flour, yeast, sugar, 2 tbsp of the oil, and the salt into a large bowl and mix to combine. Gently pour in the water, then, using a spatula, bring the mixture together until combined. Transfer to a lightly oiled surface and, with lightly oiled hands, knead the dough for 3 minutes until soft and elastic. You may need to add a little more oil if the dough starts to stick to the surface or your hands. Transfer to a lightly oiled bowl and cover with a clean, damp kitchen towel. Let rise in a warm place for 40 minutes, until nearly doubled in size.",
+        "Preheat the oven to 425°F.",
+        "Combine the hazelnuts and sesame seeds in a small bowl and set aside 1 tbsp.",
+        "On a lightly floured surface, roll the dough out into a 12 x 16-inch/30 x 40cm rectangle, so that the longest side is toward you, parallel to the work surface. Using a spatula, spread the dough with Nutella, leaving a ¾- inch/2cm border on the top edge. Sprinkle the orange zest evenly over the Nutella, then scatter the sesame seed and hazelnut mix on top. With the longest side still toward you, roll the dough into a long log. Brush with the remaining 1 tbsp of oil, then sprinkle on the remaining 1 tbsp of sesame seed and hazelnut mix (press them into the dough gently, so they stick). Trim the ends and cut the roll into 10 segments, each 1¼ inches/3cm long, and transfer to a parchment-lined baking sheet, seam side down.",
+        "Bake for about 10 minutes, until golden brown. Dust with the confectioners’ sugar and let cool slightly. Serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7468, numbered steps 1–5"
+    },
+    "orzo-with-shrimp-tomato-and-marinated-feta": {
+      "method": [
+        "In a medium bowl, mix the feta with ¼ tsp of the chile flakes, 2 tsp of the fennel seeds, and 1 tbsp of the oil. Set aside while you cook the orzo.",
+        "Place a large sauté pan with a lid over medium-high heat. Add 2 tbsp of oil, the orzo, ⅛ tsp salt, and a good grind of pepper. Fry for 3–4 minutes, stirring frequently, until golden brown, then remove from the pan and set aside.",
+        "Return the pan to the medium-high heat and add the remaining 2 tbsp of oil, ¼ tsp of chile flakes, 2 tsp of fennel seeds, the garlic, and the orange peel. Fry for 1 minute, until the garlic starts to lightly brown, then add the tomatoes and their juice, stock, water, ¾ tsp salt, and plenty of pepper. Cook for 2–3 minutes, or until boiling, then stir in the fried orzo. Cover, then decrease the heat to medium-low and simmer for 15 minutes, stirring once or twice throughout so the orzo cooks evenly. Remove the lid and cook for 1–2 minutes, until the consistency is like risotto. Stir in the shrimp and cook for 2–3 minutes, until they are pink. Stir in the basil and serve at once, with the marinated feta sprinkled on top."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4914, numbered steps 1–3"
+    },
+    "oven-fries-with-oregano-and-feta": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Place a large pot filled with plenty of salted water over high heat. Once boiling, add the potatoes and cook for 7–8 minutes, until starting to soften at the edges but still holding their shape. Drain and set aside to dry out for 5 minutes, then transfer to a large bowl. Add the sunflower oil along with 1 tbsp salt and mix well.",
+        "Tip the potatoes and sunflower oil onto two large parchment-lined baking sheets (so that they are not overcrowded) and bake for 40–50 minutes, stirring a few times, until golden brown and crisp.",
+        "About 5 minutes before the fries are ready, heat the olive oil and garlic in a small saucepan over medium-high heat. Fry gently for 3–4 minutes, until the garlic is pale golden brown. Take the cooked fries out of the oven and pour the olive oil and garlic over them, then return to the oven for a further 4 minutes. Remove from the oven and, while piping hot, sprinkle with the oregano and feta. Serve at once."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3657, numbered steps 1–4"
+    },
+    "pasta-alla-norma": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Using a peeler and working from top to bottom of each eggplant, shave off long alternating strips of peel so that they look striped, like zebras. Cut crosswise into ½-inch/1cm slices and place in a bowl with 5 tbsp/75ml of oil, ¾ tsp salt, and a generous grind of pepper. Mix well, then spread out on two large parchment-lined baking sheets. Roast for 30–35 minutes, until dark golden brown. Remove from the oven and set aside to cool.",
+        "Put 2 tbsp of oil into a sauté pan and place over medium-high heat. Add the garlic and chiles and fry for 1–2 minutes, stirring constantly, until the garlic is golden brown. Add the tomatoes and their juice, oregano, sugar, ½ tsp salt, and a grind of pepper. Decrease the heat to medium-low and cook for 10 minutes, until the sauce is thick. Remove the oregano sprigs and stir in the eggplant. Set aside.",
+        "Bring a large pot of salted water to a boil and add the spaghetti. Cook until al dente, then strain, reserving some cooking water. Add the spaghetti to the sauce and mix well, adding two-thirds of the pecorino and basil, and a few tbsp of the cooking water if the sauce has become too thick.",
+        "Divide the spaghetti among four shallow bowls, then top with the remaining pecorino, basil, and 1 tbsp of oil, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4696, numbered steps 1–5"
+    },
+    "pasta-with-pecorino-and-pistachios": {
+      "method": [
+        "Place 1½ cups/30g of the basil in the bowl of a food processor with the garlic, anchovies, and olive oil. Blitz to form a rough paste and set aside.",
+        "Fill a large saucepan halfway with salted water and place over high heat. Once boiling, add the pasta and cook for about 7 minutes, until nearly al dente. Add the snow peas and cook together for another 2 minutes, until the pasta is just cooked and the snow peas are soft.",
+        "Reserving 2 tbsp of water, drain the pasta and snow peas and place in a large bowl. Add the basil paste and stir well. Add the pecorino, pistachios, lemon zest, the remaining 1 cup/20g of basil, ⅛ tsp salt, and a generous grind of pepper. Toss gently to combine and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4967, numbered steps 1–3"
+    },
+    "pea-za-atar-and-feta-fritters": {
+      "method": [
+        "Put the peas into a food processor and pulse a few times until roughly crushed, then transfer to a large bowl. Add the ricotta, eggs, lemon zest, ¾ tsp salt, and a good grind of pepper. Mix well, then add the za’atar, flour, and baking powder. Mix until just combined, then gently fold in the mint and feta; you don’t want the chunks of feta to break up.",
+        "Pour the oil in a medium saucepan and place over medium-high heat. Once hot, use 2 small spoons to scoop up balls or quenelles of the mixture. Don’t worry about making them uniform in shape, but they should be about 1½ inches/4cm wide. Carefully lower them into the oil—you should be able to do 4 at a time—and fry for 3–4 minutes, turning once, until cooked through and golden brown. If they are cooking too quickly and taking on too much color, just decrease the temperature so that the middle also cooks through. Using a slotted spoon, transfer to a paper towel–lined plate while you continue with the remaining fritters. Serve warm, with a wedge of lemon alongside."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 802, numbered steps 1–2"
+    },
+    "pizza-bianca-with-potato-anchovy-and-sage": {
+      "method": [
+        "Put the flour and yeast in a large bowl with the oil and ½ tsp salt. Stir to combine, then pour in the water, using a spatula to bring together. Transfer to a lightly oiled surface, then, with lightly oiled hands, knead the dough for 5 minutes until soft and elastic. Add more oil if it starts to stick. Divide the dough in half and transfer to a large parchment-lined baking sheet, spaced well apart. Cover with a slightly damp kitchen towel and let rise in a warm place for 60–90 minutes, to double in size.",
+        "Preheat the oven to 475°F or as high as it goes.",
+        "While the dough is rising, make the topping. In a small bowl, combine the potatoes with 1 tbsp of oil, ⅛ tsp of salt, and a good grind of pepper. Transfer the potato slices to a parchment-lined baking sheet, big enough that the slices can lie flat and be spaced apart. Roast for 7 minutes, until golden brown, then set aside.",
+        "In a small bowl, combine the mascarpone, pecorino, anchovies, sage, and lemon zest with a good grind of pepper and set aside.",
+        "Grease two large baking sheets with olive oil. Lightly flour your work surface. Working with one piece at a time, roll the dough into a rectangle that’s 12 x 8 inches/30 x 20cm. Carefully transfer to the baking sheet and repeat with the second ball of dough. Spread the mascarpone mixture evenly over both dough bases, leaving a ¾ inch/2cm uncovered border around the edge. Sprinkle the green onions on top, then layer on the potatoes. Drizzle each pizza with about 1 tbsp of oil and bake for 9 minutes, until the edges are crisp and golden. Serve warm with a good grind of black pepper."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3934, numbered steps 1–5"
+    },
+    "plum-blackberry-and-bay-friand": {
+      "method": [
+        "Place the blackberries and plums in a bowl with the vanilla, granulated sugar, bay leaves, and ½ tsp of the cinnamon. Set aside for 30 minutes. Don’t be tempted to leave them sitting around for longer than this, as the fruit will become too juicy.",
+        "Preheat the oven to 400°F.",
+        "Mix the flour, confectioners’ sugar, almond meal, the remaining ½ tsp of cinnamon, and salt in a separate large bowl. Set aside.",
+        "Lightly whisk the egg whites by hand for 30 seconds, so they just start to froth. Stir into the flour mixture, along with the melted butter, until combined.",
+        "Tip the batter into a 9 x 13-inch/23 x 33cm parchment-lined baking dish and top evenly with the fruit and juices. Bake for 60 minutes, covering the dish with foil for the final 10 minutes, until the cake is golden brown and the fruit is bubbling. Set aside for 10 minutes before serving."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7138, numbered steps 1–5"
+    },
+    "portobello-mushrooms-with-brioche-and-poached-eggs": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Mix the mushrooms with 3 tbsp of the oil, 1 garlic clove, ¼ tsp of the cinnamon, ½ tsp flaked salt, and a good grind of pepper. Spread out on a large parchment-lined baking sheet and roast for 15 minutes, stirring after 7 minutes, until soft and starting to brown. Toss with the basil and set aside.",
+        "While the mushrooms are in the oven, mix the remaining 2 tbsp of oil with the remaining ¼ tsp of cinnamon, 1 garlic clove, the pepper flakes, and ¼ tsp of flaked salt. Brush the oil and spices on one side of the brioche slices and place on a separate parchment-lined baking sheet, brushed side up. With about 6 or 7 minutes left for the mushrooms, put the bread into the oven alongside the mushrooms and toast until the bread is golden brown and crisp.",
+        "Meanwhile, fill a medium saucepan with plenty of water and bring to a boil over high heat. Once boiling, decrease the heat to medium-high and carefully break in the eggs. Poach for 1½ minutes for a runny yolk (or a little longer for a firmer set).",
+        "Divide the brioche among four plates and top each slice with the mushrooms so that they are all ready. Using a slotted spoon, remove the eggs from the water and spoon them on top of the mushrooms. Sprinkle each egg with a pinch of salt and a pinch of pepper flakes and serve warm, with a spoonful of sour cream alongside."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 519, numbered steps 1–5"
+    },
+    "puy-lentil-and-eggplant-stew": {
+      "method": [
+        "Put 2 tbsp of oil into a large high-sided sauté pan and place over medium- high heat. Add the garlic, onion, thyme, and ¼ tsp salt and fry for 8 minutes, stirring often, until soft and golden. Tip into a bowl, leaving the oil behind. Set aside.",
+        "Place the eggplant and tomatoes in a bowl and season with ¼ tsp of salt and plenty of pepper. Add the remaining 1 tbsp of oil to the same pan (don’t worry about wiping it clean) and, once very hot, add the eggplant and tomatoes. Fry for 10 minutes, over medium-high, turning them often until the eggplant is soft and golden brown and the tomatoes are beginning to blacken. Return the garlic and onion to the pan, then add the lentils, stock, wine, water, and ¾ tsp salt. Bring to a boil. Decrease the heat to medium and simmer gently for about 40 minutes, until the lentils are soft but still retain a bite.",
+        "Serve warm or at room temperature, with dollops of crème fraîche, a drizzle of oil, and chile flakes and oregano on top."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4117, numbered steps 1–3"
+    },
+    "puy-lentils-with-eggplant-tomatoes-and-yogurt": {
+      "method": [
+        "Preheat the oven to 475°F or as high as your oven will go.",
+        "Place the eggplants on a baking sheet and roast for 1 hour, turning them over halfway through, until the flesh is completely soft and slightly smoky. Remove from the oven and, once cool enough handle, scoop the flesh out into a colander. Set aside, in the sink or over a bowl, for 30 minutes, for any liquid to drain away. The skin can be discarded.",
+        "Place the cherry tomatoes on the same baking sheet and roast for 12 minutes, until slightly blackened, split, and soft. Remove from the oven and set aside.",
+        "Meanwhile, if starting with uncooked lentils, fill a medium saucepan with plenty of water and place over high heat. Once boiling, add the lentils, decrease the heat to medium, and cook for 20 minutes, until soft but still retaining a bite. Drain, then set aside to dry out slightly. If starting with ready-cooked lentils, just tip them into a large bowl and add the eggplant flesh, tomatoes, oil, lemon juice, garlic, 2 tbsp of oregano, ¾ tsp salt, and a good grind of pepper. Mix well, then spoon into a large shallow bowl. Top with the yogurt, swirling it through slightly so there are obvious streaks. Sprinkle the remaining 1 tbsp of oregano over the top, drizzle with a little oil, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4286, numbered steps 1–4"
+    },
+    "rice-noodle-salad-with-cucumber-and-poppy-seeds": {
+      "method": [
+        "Whisk together the vinegar and sugar in a medium bowl until the sugar has dissolved. Add the onion and ginger and stir to coat. Set aside for about 30 minutes, stirring a few times, to soften.",
+        "Place the noodles in a large bowl and pour over enough boiling water to cover them. Set aside for 15–20 minutes, until the noodles are soft, then drain well. Mix with 1 tbsp of oil and set aside in a large bowl to cool down.",
+        "Add the apple, cucumber, chiles, mint, tarragon, and poppy seeds to the noodles, plus the pickled onion, ginger and juices, the remaining 2 tbsp of oil, and 1½ tsp salt. Mix together well and serve at once."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4550, numbered steps 1–3"
+    },
+    "roasted-asparagus-with-almonds-capers-and-dill": {
+      "method": [
+        "Preheat the oven to 425°F.",
+        "Mix the asparagus with 1 tbsp of oil, a generous pinch of salt, and a good grind of pepper. Arrange on a large parchment-lined baking sheet, spaced well apart, and roast for 8–12 minutes (timing will vary depending on the thickness of the stalks), until the asparagus is soft and starting to brown in places. Transfer to a large serving plate and set aside.",
+        "Put the butter into a small saucepan and place over medium-high heat. Once melted, add the almonds and fry for 1–2 minutes, stirring frequently, until the almonds are golden brown. Pour the almonds and butter evenly over the asparagus.",
+        "Add the remaining 2 tbsp of oil to the saucepan and place over high heat. Once hot, add the capers and fry for 1–2 minutes, stirring continuously, until they have opened up and become crisp. Using a slotted spoon, remove the capers from the oil and sprinkle them over the asparagus, along with the dill. Discard the oil and serve warm."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2368, numbered steps 1–4"
+    },
+    "roasted-baby-carrots-with-harissa-and-pomegranate": {
+      "method": [
+        "Preheat the oven to 475°F.",
+        "In a large bowl, mix the cumin, honey, harissa, butter, oil, and ¾ tsp salt. Add the carrots, mix well, then spread out on a large parchment-lined baking sheet. You don’t want to overcrowd the carrots, so use two sheets if you need to.",
+        "Roast for 12–14 minutes, until the carrots are beginning to brown but still retain a bite, then remove from the oven and set aside to cool.",
+        "When ready to serve, mix the carrots with the cilantro, pomegranate seeds, and lemon juice and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3167, numbered steps 1–4"
+    },
+    "roasted-beets-with-yogurt-and-preserved-lemon": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Wrap the beets individually in foil, place on a baking sheet and roast for 30– 60 minutes, depending on size, until a knife inserted goes through smoothly. When cool enough to handle, peel off the skin and cut each beet into ¼- inch/½ cm slices. Place in a large mixing bowl and set aside to cool.",
+        "Put the olive oil into a small frying pan and place over medium heat. Add the cumin seeds and cook for about 3 minutes, until they start to pop. Pour the seeds and oil over the beets along with the onion, preserved lemon, lemon juice, ½ cup/10g of the dill, 1 tsp of salt, and a grind of black pepper. Mix everything together well, then transfer the salad to a large serving plate.",
+        "Stir the tahini into the yogurt and dot this over the beets in four or five places. Stir minimally—you want the yogurt and beets to mix only slightly— then sprinkle with the remaining ¼ cup/5g of dill."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3369, numbered steps 1–4"
+    },
+    "roasted-butternut-squash-with-lentils-and-dolcelatte": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Place the squash and onions in a large bowl with 2 tbsp of oil, the sage leaves, ¾ tsp of salt, and plenty of pepper. Mix well, then spread out on a large parchment-lined baking sheet. Roast for 25–30 minutes, until cooked and golden brown. Remove from the oven and set aside to cool for 10 minutes.",
+        "While the squash is in the oven, fill a medium saucepan halfway with water (if starting with dried lentils rather than ready-cooked) and place over high heat. Once boiling, add the lentils, decrease the heat to medium, and simmer for 20 minutes, until cooked. Drain, set aside to cool slightly, then place in a large bowl. Stir in the lemon zest, lemon juice, garlic, parsley, mint, tarragon, remaining 1 tbsp of oil, and ¼ tsp of salt.",
+        "Add the squash and onion to the lentils and stir gently. Transfer to a serving bowl, dot with dolcelatte, drizzle with oil, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3263, numbered steps 1–4"
+    },
+    "roasted-eggplant-with-anchovies-and-oregano": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Mix the eggplant in a large bowl with ½ tsp of salt. Transfer to 2 large parchment-lined baking sheets and then brush with 5 tbsp/70ml of oil—you want it on both sides of the discs. Bake for 35 minutes, until dark golden brown and cooked through. Remove from the oven and set aside to cool.",
+        "In a small bowl, whisk together the anchovies, vinegar, garlic, ⅛ tsp of salt, and ¼ tsp of pepper. Slowly pour in the remaining 2 tbsp of oil, whisking continuously, until combined.",
+        "When ready to serve, finely chop the oregano and place in a large bowl along with the eggplant and parsley. Pour in the anchovy dressing, gently mix, and transfer to a platter or bowl."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1924, numbered steps 1–4"
+    },
+    "roasted-eggplant-with-curried-yogurt": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Use a vegetable peeler to peel away strips of eggplant skin from top to bottom, leaving the eggplants with alternating strips of black skin and white flesh, like a zebra. Cut widthwise into rounds, ¾ inch/2cm thick, and place in a large bowl. Mix well with 5 tbsp/70ml of the oil, ½ tsp of salt, and plenty of pepper, and spread out on a large parchment-lined baking sheet. Roast for 40–45 minutes, until dark golden brown, then set aside to cool.",
+        "Mix the yogurt with 1 tsp of curry powder, the turmeric, lime juice, a generous pinch of salt, and a good grind of pepper. Keep in the fridge, until required.",
+        "Put the remaining 2 tbsp of oil into a large frying pan and place over medium-high heat. Once hot, add the onion and fry for 8 minutes, stirring frequently, until soft and dark golden brown. Add the remaining 1 tsp of curry powder, the almonds, and a pinch of salt, and continue to fry for 2 minutes, until the almonds have lightly browned.",
+        "When you are ready to serve, arrange the eggplant slices on a large platter or individual plates, slightly overlapping. Spoon on the yogurt sauce and top with the fried onion mix. Sprinkle with the cumin seeds, coriander seeds, pomegranate seeds, and lime zest, and serve. Grilled beefsteak tomatoes with chile, garlic, and ginger These are delicious as they are, eaten with some bread alongside to mop up the oil. They can also be bulked into a punchy starter, with some burrata or mozzarella, or served for brunch with scrambled eggs. If your tomatoes are not perfectly ripe, just sprinkle them with a tiny pinch of sugar before broiling. These can be made up to 6 hours in advance and served at room temperature. Serves four 5 tbsp/75ml olive oil 3–4 mild red chiles, sliced into ¼-inch/½cm rounds, seeded (mounded ½ cup/50g) 1½-inch/4cm piece of ginger, finely cut into thin strips (¼ cup/30g) 6-8 garlic cloves, thinly sliced (3 tbsp) 1 cup/20g cilantro stems (cut 1½ inches/4cm long), plus ¼ cup/5g cilantro leaves to garnish 2 lb 2 oz lbs/1kg beefsteak tomatoes (4 tomatoes), sliced crosswise into ½-inch/1cm-thick rounds flaked sea salt and black pepper 1½ tsp black mustard seeds, lightly toasted"
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1969, numbered steps 1–5"
+    },
+    "roasted-trout-with-tomato-orange-and-barberry-salsa": {
+      "method": [
+        "Preheat the oven to 475°F.",
+        "Put the tomatoes in a medium bowl with the orange zest, orange juice, lime juice, maple syrup, barberries, fennel seeds, oil, ⅛ tsp salt, and a good grind of pepper. Mix, then set aside.",
+        "In a small pan, gently warm the butter with the garlic over medium heat until just melted. Arrange the trout on a medium baking sheet, spaced apart. Sprinkle the top, bottom, and cavity of each fish with ¼ tsp salt. Pour the butter mixture all over the trout, making sure it covers both sides as well as the cavity. Roast in the oven for 18–20 minutes, basting once, until the fish is just cooked.",
+        "Serve the fish on the baking sheet or arrange on plates, spooning on some of the cooking juices. Stir the cilantro into the salsa and spoon over the fish. Serve with the lime wedges alongside."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6415, numbered steps 1–4"
+    },
+    "scrambled-harissa-tofu": {
+      "method": [
+        "Place a large frying pan over medium-high heat and add the oil. Add the onions and fry for 9–10 minutes, stirring frequently, until caramelized and soft.",
+        "While the onions are frying, mix the cucumber, chiles, avocado, cilantro, oil, lime juice, and nigella seeds with a rounded ¼ tsp salt and set aside.",
+        "Add the harissa to the onions and continue to stir for 1 minute, then add the tofu and ¾ tsp salt. Use a potato masher to break up the tofu so it looks like scrambled egg and continue to heat for 2 minutes, until it’s hot. Serve the scrambled tofu on the toast with the salad alongside."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 575, numbered steps 1–3"
+    },
+    "seaweed-spaghetti-and-sesame-salad-with-tahini-dressing": {
+      "method": [
+        "To make the dressing, put the honey, vinegar, mirin, mustard, soy sauce, tahini, and peanut oil in a small bowl, whisk well to combine, then set aside.",
+        "Put the seaweed spaghetti into a medium saucepan and cover with cold water. Bring to a boil, then decrease to a simmer and cook for 15 minutes, until al dente. Drain, refresh under cold running water, pat dry, and set aside. Place in a large bowl, along with the cucumber, sesame seeds, cilantro, dressing, and ½ tsp of salt. Mix together, then divide among the bowls (or arrange in a large serving bowl), sprinkle with chile flakes and serve at once."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4647, numbered steps 1–2"
+    },
+    "seeded-chicken-schnitzel": {
+      "method": [
+        "Place the meat between two bits of plastic wrap, then, one at a time, gently flatten them with a rolling pin; they should end up about ½ inch/1cm thick.",
+        "In a medium bowl, mix the flour with ¼ tsp salt and some black pepper.",
+        "Put the eggs into a second bowl.",
+        "In a third bowl, mix the panko, both sesame seeds, sunflower seeds, coriander, turmeric, cayenne, and ¾ tsp salt.",
+        "Dip each bit of chicken into the flour and gently shake off the excess. Now dip it into the egg, then into the seed mix, to coat well. Repeat with the remaining chicken.",
+        "Put enough oil into a large frying pan to rise ¼ inch/½ cm up the sides and place over medium heat. Once hot, add the chicken in batches and fry for 5– 6 minutes, turning after 2½ minutes, until cooked through and golden brown on both sides. Transfer to a paper towel–lined plate while you continue with the remaining batch and serve hot, with the wedges of lemon alongside."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6110, numbered steps 1–6"
+    },
+    "shallow-fried-potatoes-with-rosemary-and-sumac": {
+      "method": [
+        "Put the oil into a large sauté pan and place over medium heat. Once hot, add the potatoes, garlic and ¾ tsp of salt. Fry gently for 30 minutes, stirring frequently, until the potatoes are golden brown and soft. Add the rosemary and thyme and fry for another 5 minutes, until the herbs are crisp and aromatic.",
+        "Use a slotted spoon—you want most of the oil to be drained off—to transfer the potatoes and rosemary and thyme to a serving bowl. Stir in the sumac and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3704, numbered steps 1–2"
+    },
+    "slow-cooked-chicken-with-a-crisp-corn-crust": {
+      "method": [
+        "Heat the oil in a large sauté pan with a lid over medium-high heat. Add the onions and fry for 8–9 minutes, stirring a few times, until caramelized and soft. Decrease the heat to medium and add the garlic, harissa, paprika, chicken, 1 tsp salt, and a good grind of black pepper. Cook for 5 minutes longer, stirring frequently, then add the tomato puree and tomatoes. Add the water, bring to a boil, then simmer over medium heat, covered, for 30 minutes, stirring every once in a while.",
+        "Add the peppers and chocolate and continue to simmer for 35–40 minutes, with the pan now uncovered, stirring frequently, until the sauce thickens and the chicken is falling apart. Remove from the heat and stir in the cilantro. If you are serving the chicken as it is (as a stew without the batter), it’s ready to serve (or freeze, once it has come to room temperature) at this stage. If you are making the corn crust, spoon the chicken into a ceramic baking dish —one with high sides that measures about 8 x 12 inches/20 x 30cm—and set aside.",
+        "Preheat the oven to 400°F.",
+        "To make the batter, pour the butter into a blender with the corn, milk, egg yolks, and ¾ tsp salt. Blitz for a few seconds, to form a rough paste, then spoon into a large bowl. Place the egg whites in a separate clean bowl and whisk to form firm peaks. Fold these gently into the runny corn mixture until just combined, then pour the mix evenly over the chicken.",
+        "Bake for 35 minutes, until the top is golden brown. Keep an eye on it after 25 minutes to make sure the top is not taking on too much color; you might need to cover it with foil for the final 10 minutes. Remove from the oven and set aside for 10 minutes before serving."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6160, numbered steps 1–5"
+    },
+    "slow-cooked-lamb-shoulder-with-mint-and-cumin": {
+      "method": [
+        "Place the lemon zest, lemon juice, garlic, spices, herbs, and oil in the bowl of a food processor with 1½ tsp salt and plenty of pepper. Blitz to form a rough paste and set aside.",
+        "Place the lamb in a large bowl and poke the meat all over about 30 times with a small sharp knife. Rub the spice paste all over the meat, massaging it into the incisions. Cover with plastic wrap and refrigerate for at least 4 hours (or overnight, ideally) for the flavors to develop.",
+        "Preheat the oven to 375°F.",
+        "Transfer the lamb, along with all the marinade, into a large high-sided baking dish, about 12 x 16 inches/30 x 40cm. Cover the dish tightly with foil and roast for 1 hour. Reduce the temperature to 350°F and add the celery root, carrots, and garlic (cut side up) to the dish. Continue to roast for 4 hours, basting the meat and vegetables three or four times during cooking (and resealing the tray with the foil each time). Remove the foil and return to the oven for a final 1½ hours, until the lamb is browned all over, the meat is falling apart, and the vegetables are caramelized."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5497, numbered steps 1–4"
+    },
+    "smoked-fish-and-parsnip-cakes": {
+      "method": [
+        "Preheat the oven to 400°F.",
+        "Toss the parsnips with 3 tbsp of the oil and ¼ tsp of salt. Transfer to a large parchment-lined baking pan and roast for 30 minutes, until golden brown and soft. Tip into a food processor and blitz to form a coarse mash. If the mix is very dry, then add the water and blitz again to combine. Transfer to a large bowl and set aside.",
+        "Place the fish in the food processor (don’t worry about wiping it clean) and pulse a few times—you want it to be roughly chopped rather than completely minced—then add to the bowl of parsnips, along with the dill, chives, garlic, lemon zest, eggs, 1 tsp salt, and plenty of pepper. Mix well, then form into 12 patties; they should be about 3¼ inch/8cm wide and ¾– 1¼ inches/2–3cm thick. At this stage you can cover the patties and keep them in the fridge until ready to cook (up to 24 hours).",
+        "Put 1½ tbsp of the butter and 2½ tbsp of the remaining oil into a large frying pan and place over medium-high heat. Once the butter starts to foam, add half the patties and fry for 8 minutes, turning them after 4 minutes, until crisp and golden brown. Keep warm while you cook the rest, adding the remaining 1½ tbsp of butter and 2½ tbsp of oil to the pan. Serve with wedges of lemon."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6638, numbered steps 1–4"
+    },
+    "spiced-apple-cake": {
+      "method": [
+        "Preheat the oven to 350°F. Grease a high-sided 9-inch/23cm cake pan and line the base and sides with parchment paper.",
+        "Place the butter and granulated sugar in the bowl of a stand mixer fitted with the paddle attachment. Beat on medium speed, until light and fluffy. Add the eggs and vanilla, a little at a time, mixing until incorporated. Sift together the flour, baking powder, and salt and add this in a couple of batches to the batter, alternating with the sour cream. Turn the machine off as soon as everything is incorporated. Spoon the batter into the cake pan and set aside.",
+        "Place all the apple slices in a large bowl. Mix the demerara sugar and apple pie spice and sprinkle over the apples. Toss to coat, then spoon over the cake batter. Bake for 60–65 minutes, until the mixture has risen up around the apple and the top is crisp, firm, and golden brown. A knife inserted into the cake will not come out clean, as the apples are wet, but you can tell the cake is done when you give the pan a little shake and the top doesn’t wobble.",
+        "Remove from the oven and set aside for about 30 minutes before removing from the pan.",
+        "Serve either slightly warm or at room temperature. When slicing, use a serrated knife to prevent the apples from tearing."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7413, numbered steps 1–5"
+    },
+    "spiced-shepherd-s-pie-with-lima-bean-crust": {
+      "method": [
+        "Put 3 tbsp of oil into a large heavy-bottom pan with a lid and place over medium-high heat. Add the garlic and shallots and sauté for 5 minutes, stirring frequently, until soft and golden. Increase the heat to high and add the lamb, cumin, allspice, half the lemon zest, and ½ tsp salt. Fry for 5 minutes, until browned, stirring every now and then, then add the tomato paste, harissa, and apricots. Fry for another 2 minutes, then pour in the stock and wine. Decrease the heat to medium and simmer, covered, for 30 minutes. Once cooked, set aside to cool, then add the olives. Spoon into a 8 x 10-inch/20 x 25cm ovenproof high-sided dish and refrigerate for at least 30 minutes. This will firm up the meat, making it easier to spread the mash on top.",
+        "Preheat the oven to 400°F.",
+        "To make the mash, mix the lima beans in a bowl with the remaining lemon zest, 2 tbsp of the olive oil, the tahini, water, ¾ tsp salt, and a grind of black pepper. Use a potato masher to mash the beans; they don’t need to be completely smooth, just spreadable. Spread the mash over the lamb, then use a spoon to make a few shallow divots. Drizzle with the remaining 1 tbsp of oil and bake for 30 minutes, until nicely colored and bubbly. Rest for 10 minutes before serving."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5610, numbered steps 1–3"
+    },
+    "spinach-and-gorgonzola-stuffed-baked-potatoes": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Poke the potatoes a few times with a fork and then place them on a parchment-lined baking sheet. Bake for 1 hour or just over, until the flesh is soft all the way through. Remove from the oven and slice the potatoes in half, lengthwise. Scoop the flesh out into a medium bowl, setting the skins aside on the sheet for later. Roughly mash the potato with 1 tbsp/20g of the butter, the cream, Gorgonzola, ½ tsp of salt, and a generous grind of pepper and set aside.",
+        "Take the remaining ½ tbsp of butter and divide it among the potato cavities. Sprinkle with a generous pinch of salt and return to the oven for 8 minutes, for the skin to become crisp. Remove from the oven and set aside.",
+        "Place a medium saucepan, halfway filled with salted water, over high heat. Once boiling, add the spinach for about 10–15 seconds, just to wilt. Drain the spinach, squeezing out as much of the water as possible. Stir into the potato flesh, to combine, then spoon the mash back inside the empty skins, piled high. Bake for 15 minutes, until the top of the mash is crisp and browned. Remove from the oven, sprinkle with the walnuts, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3557, numbered steps 1–4"
+    },
+    "spring-roast-chicken-with-preserved-lemon": {
+      "method": [
+        "Preheat the oven to 400°F.",
+        "Place the butter, thyme, garlic, preserved lemon, lemon zest, ¼ tsp salt, and a generous grind of pepper in a food processor. Blitz to combine.",
+        "With the chicken’s legs pointing toward you, use your hands to loosen the skin away from the breasts and spread most of the butter mixture evenly under the skin and over the breasts. Spread the remaining butter over the legs.",
+        "Place the chicken in a medium high-sided baking pan, drizzle with the lemon juice, and sprinkle with ½ tsp salt and plenty of pepper. Roast for roughly 70 minutes, basting every 20 minutes or so, until the skin is golden brown and crisp and the juices run clear when the meat is pierced with a small knife.",
+        "Remove from the oven and set aside to rest for 10 minutes before serving."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 5900, numbered steps 1–5"
+    },
+    "squid-and-red-bell-pepper-stew": {
+      "method": [
+        "Put the oil into a large sauté pan with a lid and place over medium-high heat. Add the onion and bell pepper, along with a rounded ¼ tsp salt, and cook for 5 minutes, stirring from time to time. Add the garlic, caraway seeds, allspice, and a really good grind of black pepper. Continue to sauté for another 5 minutes, until everything is nice and soft.",
+        "Add the squid, cook for 5 minutes, then stir in the tomato paste, bay leaves, and thyme. Cook for another 2–3 minutes, then pour in the wine. Decrease the heat to low and allow everything to simmer away, covered, for about 30 minutes, stirring a few times, until the squid is cooked and soft. If the sauce is turning dry toward the end of cooking, you might need to add 1–2 tbsp of water. Add the orange zest just before serving and give everything a final gentle stir."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6743, numbered steps 1–2"
+    },
+    "stuffed-zucchini-with-pine-nut-salsa": {
+      "method": [
+        "Preheat the oven to 475°F.",
+        "Use a small spoon to hollow out the flesh of the zucchini and make them into the shape of canoes. Don’t scrape them out completely, though—you want the sides to be about ½ inch/1cm thick and the zucchini should still hold their shape. Transfer the flesh to a sieve and squeeze and discard as much liquid as you can—you should be left with about 1 cup/100g of drained zucchini flesh. Put this into a medium bowl and stir in the garlic, egg, Parmesan, breadcrumbs, and ¼ tsp of salt. Use your hands to crush the tomatoes well, then add these to the bowl of zucchini mixture. Stir to combine and set aside.",
+        "In a separate bowl, mix the lemon zest, oregano, and pine nuts. Stir half of this into the zucchini mixture and set the rest aside for the salsa.",
+        "Place the hollowed zucchini on a medium baking sheet or ovenproof dish, hollowed side facing up. Drizzle 1 tbsp of oil (in total) over the zucchini and season with ⅛ tsp of salt (in total). Spoon the zucchini mixture back into the hollows and bake for 15 minutes, until the filling is set and golden brown.",
+        "While the zucchini are baking, make the salsa. Add the lemon juice, remaining 2 tbsp of oil, and ⅛ tsp of salt to the bowl of oregano and pine nuts. Let the zucchini cool a little. Spoon the salsa on top, sprinkle with oregano leaves, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1809, numbered steps 1–5"
+    },
+    "sumac-roasted-strawberries-with-yogurt-cream": {
+      "method": [
+        "Put the yogurt in a bowl with ½ cup plus 4½ tsp confectioners’ sugar and ¼ tsp salt. Mix, then transfer to a sieve lined with cheesecloth and set over a bowl. Tie the cheesecloth into a bundle with string, weight it down with a heavy bowl, and refrigerate for 30 minutes. Extract as much liquid as possible, until you are left with about 2 cups plus 5 tbsp/550g of thickened yogurt. Remove from the cheesecloth—discarding any liquid—and transfer to a bowl. Stir in the cream and lemon zest and refrigerate until ready to use.",
+        "Preheat the oven to 425°F.",
+        "Meanwhile, roast the strawberries. Toss the strawberries with the sumac, mint sprigs, vanilla pod and seeds, lemon juice, the remaining confectioners’ sugar, and the water. Transfer to an ovenproof dish measuring about 8 x 12 inches/20 x 30cm. Roast for 20 minutes, tossing after 10 minutes, until soft and bubbling. Let cool to room temperature, then lift out and discard the mint and vanilla pod. Strain the roasting juices into a jug. Pour 3 tbsp of the juices into the yogurt cream and gently fold it through so the cream is rippled. Set aside 3 tbsp of juices to serve. (Keep the remaining juices to drizzle over your morning granola.)",
+        "To serve, spoon the rippled cream into bowls and top with the strawberries. Pour the juices over the top and garnish with the shredded mint."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7080, numbered steps 1–4"
+    },
+    "sweet-and-salty-cheesecake-with-cherries": {
+      "method": [
+        "Using a spatula, break the feta down in a large bowl to make it as smooth as possible. Add the cream cheese, sugar, and lemon zest and whisk to combine. Pour in the cream and gently whisk until the mixture has thickened enough to hold its shape. Leave to set in the fridge until ready to use.",
+        "Preheat the oven to 400°F.",
+        "To make the crumble, place the hazelnuts, butter, almond meal, and sugar in a bowl. Use the tips of your fingers to rub the butter into everything else until the consistency of breadcrumbs is formed. Stir in the sesame seeds and salt, then spread out on a baking sheet. Bake for about 12 minutes, until golden brown.",
+        "To make the compote, put the cherries, sugar, star anise, and orange peel into a medium saucepan and place over medium-high heat. Bring to a boil, then simmer for 10–15 minutes, until the sauce has thickened (but it will continue to thicken as it cools down). Set aside to come to room temperature. Discard star anise and orange peel.",
+        "When ready to serve, spoon a large scoop of the cheesecake into each bowl and top with some crumble. Spoon the compote on top and finish with the remaining crumble. Drizzle with the olive oil and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6964, numbered steps 1–5"
+    },
+    "sweet-potato-fries": {
+      "method": [
+        "Preheat the oven to 450°F.",
+        "Mix the sweet potatoes in a large bowl with the paprika, cayenne, garlic, polenta, oil, and 1 tsp flaked salt. Once combined, tip the sweet potatoes (and all the oil) onto two large parchment-lined baking sheets and roast for 25–30 minutes, stirring gently once or twice, until the potatoes are cooked, crisp and golden brown.",
+        "Remove from the oven, sprinkle with the sumac and 1 tsp flaked salt, and serve at once."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3791, numbered steps 1–3"
+    },
+    "sweet-potato-mash-with-lime-salsa": {
+      "method": [
+        "Preheat the oven to 425°F.",
+        "Rub the sweet potatoes with 1 tbsp of oil and season with ¼ tsp of salt. Place on a parchment-lined baking sheet, cut side down, and roast for 30–35 minutes, until very soft.",
+        "While the sweet potatoes are roasting, make the salsa. Put the remaining 3 tbsp of oil into a small bowl with the basil, cilantro, garlic, lime zest, lime juice, and a good pinch of salt and stir to combine.",
+        "Once cool enough to handle, remove the skins from the sweet potatoes. They should slide off easily, but you can scoop the flesh out with a spoon if you prefer. Mash the flesh together with ⅛ tsp of salt and plenty of black pepper until smooth.",
+        "Transfer to a platter, create divots in the surface, and spoon the salsa evenly over it. Serve hot."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3516, numbered steps 1–5"
+    },
+    "thai-sticky-rice-with-crispy-ginger-chile-and-peanuts": {
+      "method": [
+        "Put the rice into a medium saucepan with a well-fitting lid, along with ½ tsp salt and the water. Bring to a boil, then decrease the heat to medium-low and simmer gently, covered, for 15 minutes. Remove from the heat and set aside, still covered, for 5 minutes.",
+        "While the rice is cooking, put the oil into a medium frying pan and place over medium-high heat. Once hot, add the ginger, garlic and chiles and fry for 3–4 minutes, stirring frequently, until just starting to brown. Add the cilantro, peanuts, sesame seeds, and a generous pinch of salt and continue to fry for 1–2 minutes, until golden brown. Spoon over the rice and serve, with the wedges of lime alongside."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 4447, numbered steps 1–2"
+    },
+    "tofu-and-haricots-verts-with-chraimeh-sauce": {
+      "method": [
+        "Fill a medium saucepan halfway with water and place over high heat. Once boiling, add the green beans and boil for 5–6 minutes, until they are cooked but still retain a slight bite. Drain, refresh with cold water, drain again, and set aside.",
+        "Put the oil into a large sauté pan and place over medium-high heat. Once hot, add the tofu and a rounded ¼ tsp of salt and fry for 4–5 minutes, turning throughout so that all sides are golden brown. Remove from the pan and set aside.",
+        "To make the chraimeh sauce, mix the garlic, paprika, caraway, cumin, cinnamon, and oil in a small bowl. Return the large sauté pan to medium- high heat and, once hot, add the garlic and spice mix. Fry for about 1 minute, then add the tomato paste, sugar, lime juice, and ¾ tsp of salt. Stir to combine, then pour in the water to make a thin sauce. Once bubbling, stir frequently for about 2 minutes, until the sauce begins to thicken. Return the green beans to the pan and continue to cook for another 1 minute, until the sauce is thick and the beans are hot.",
+        "Remove from the heat and gently stir in the tofu and cilantro. Divide among four shallow bowls and serve, with a wedge of lime alongside."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2864, numbered steps 1–4"
+    },
+    "tomato-and-cucumber-raita": {
+      "method": [
+        "Place all the ingredients for the chile paste in the bowl of a food processor, with ¼ tsp of salt. Blitz to form a rough paste and set aside.",
+        "Put the yogurt in a bowl and whisk with the mint, lemon juice, 1½ tsp of the cumin seeds, and rounded ¼ tsp salt. Add the cucumber, onion, and tomatoes and stir gently. Transfer to a shallow bowl and top with chile paste. Swirl lightly, sprinkle with the remaining ½ tsp of cumin seeds and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1030, numbered steps 1–2"
+    },
+    "tomato-chard-and-spinach-with-toasted-almonds": {
+      "method": [
+        "Place a large sauté pan with a lid, over medium heat with 2 tbsp of the oil, the almonds, and paprika. Fry for 2–3 minutes, until the almonds are golden brown, then transfer to a bowl, discarding the oil once cooled.",
+        "Return the pan to medium-high heat with the remaining 2 tbsp of oil. Once hot, add the caraway and garlic and fry for 1 minute, until they start to sizzle and brown. Add the tomatoes with their juice, chard, and ¾ tsp of salt and stir through, crushing the tomatoes as you go. Cover the pan and continue to cook for 20 minutes, stirring every once in a while, until the chard wilts and the tomatoes break down. Remove from the heat, stir in the spinach, lime zest, lime juice, the mint, dill, and green onions. Serve with the almonds sprinkled on top."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 2137, numbered steps 1–2"
+    },
+    "tomatoes-with-sumac-shallots-and-pine-nuts": {
+      "method": [
+        "Place the shallot in a small bowl with the sumac, vinegar, and ⅛ tsp salt. Use your hands to mix them—you want the sumac to really be massaged into the shallots—then set aside for 30 minutes to soften.",
+        "Slice the large tomatoes in half lengthwise and then into ½-inch/1cm wedges and place in a large bowl. Slice the cherry tomatoes in half lengthwise and add to the bowl. Pour in the olive oil and mix gently with the basil leaves, a rounded ¼ tsp salt, and a generous grind of pepper.",
+        "Arrange the tomatoes on a large platter. Spread the shallot slices over them, lifting some of the tomatoes and basil from under the shallots to rest on top. Sprinkle with the pine nuts and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1162, numbered steps 1–3"
+    },
+    "trout-tartare-with-browned-butter-and-pistachios": {
+      "method": [
+        "Place the shallot in a small bowl with 2 tbsp of the lemon juice, the sugar, ½ tsp flaked salt, and a generous grind of pepper. Using your fingers, massage the sugar and salt into the shallot and set aside.",
+        "Put the trout in a separate small bowl along with the oil, lemon zest, the remaining 2 tsp of lemon juice, 1½ tsp flaked salt, and a generous grind of pepper. Stir and set aside for 30 minutes—not longer, or the fish will overcook.",
+        "Before serving, put the butter and cumin seeds into a small pan and place over medium heat. Melt the butter gently for about 5 minutes, swirling the pan from time to time, until the butter begins to foam, turn brown, smell nutty, and is caramelized.",
+        "Divide the trout among four dishes and top with the shallot (discarding any liquid). Sprinkle with the pistachios and tarragon and drizzle with the cumin seed–browned butter. Finish with a little sprinkle of flaked salt and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6246, numbered steps 1–4"
+    },
+    "two-bean-and-two-lime-salad": {
+      "method": [
+        "Roll up all the kaffir leaves into a thick cigar shape. Slice as thinly as possible, then finely chop the strips. Place in the bowl of a food processor with the lime zest, 1 cup/20g of cilantro, the mint, garlic, olive oil, chile, and ½ tsp of salt. Blitz until smooth, then set aside.",
+        "Bring a large pan of salted water to a boil and add the green beans. Blanch for 3 minutes, then add the edamame and cook for 1 minute. Drain all together, refresh under cold water, and set aside to dry.",
+        "Spoon the lime paste over the beans, add the lime juice, and stir to combine. Sprinkle with the sesame seeds, along with the remaining ½ cup/5g of cilantro, and serve at once."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3025, numbered steps 1–3"
+    },
+    "vanilla-custard-with-roasted-strawberries-and-rhubarb": {
+      "method": [
+        "Preheat the oven to 425°F.",
+        "Mix the rhubarb and strawberries with the sugar and arrange in a medium ovenproof dish; you want the fruit to fit snugly. Bake for 12–13 minutes, until the fruit has softened but still retains its shape and the sugar has melted. Don’t worry if there is a tiny amount of sugar that hasn’t melted; just give the fruit a gentle stir and the sugar will dissolve. Set aside to cool.",
+        "Decrease the oven temperature to 375°F.",
+        "For the custard, place the egg yolks, cornstarch, sugar, and vanilla in a large bowl and whisk until smooth. Gradually pour in the cream and whisk until combined. Pour the custard into a 10-inch/25cm high-sided ovenproof dish. Place the dish inside a larger ovenproof dish and fill the larger dish with boiling water so it rises about ½-inch/1cm up the sides. Bake for 25 minutes, until the custard has set and is starting to brown on top. Remove from the oven, set aside to cool, then transfer to the fridge to chill.",
+        "Once chilled, spoon half of the fruit and juice on top and serve with the remaining fruit and juice alongside."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 7029, numbered steps 1–5"
+    },
+    "watermelon-green-apple-and-lime-salad": {
+      "method": [
+        "Mix the salad just before you’re ready to serve, otherwise it will get too soggy. In a large bowl, combine the watermelon, apples, lime zest, lime juice, olive oil, and lemongrass with three-quarters of the herbs and ¾ tsp of flaked salt. Using your hands as a natural sieve, arrange the salad on a platter. There will be quite a bit of juice at the bottom of the bowl; you don’t need it. Scatter with the remaining herbs, sprinkle with the mustard seeds and ¼ tsp of flaked salt, and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 1345, numbered steps 1–1"
+    },
+    "whole-roasted-celery-root-with-coriander-seed-oil": {
+      "method": [
+        "Preheat the oven to 375°F.",
+        "Pierce the celery root with a small sharp knife all over, about 20 times. Place the celery root in a baking dish and rub generously with the oil, coriander seeds, and 2 tsp flaked salt. Roast for 2½–3 hours, basting every 30 minutes until the celery root is soft all the way through and golden brown on the outside.",
+        "Cut into wedges and serve with a lemon wedge, a sprinkle of salt, and a drizzle of oil."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 3419, numbered steps 1–3"
+    },
+    "whole-roasted-sea-bass-with-soy-sauce-and-ginger": {
+      "method": [
+        "Preheat the oven to 425°F.",
+        "Put all the ingredients for the sauce in a small pan and place over high heat. Once boiling, cook for 1 minute, swirling the pan slightly so that the sugar dissolves. Remove from the heat and set aside.",
+        "Make 5 diagonal slits on both sides of the fish, ¼ inch/½ cm deep and about 3¼ inches/8cm long. Sprinkle 1 tsp of flaked salt evenly over one side of the fish and rub in. Repeat with another tsp on the other side, then sprinkle the inside with another ½ tsp. Cut 8 of the green onions into 2-inch/5cm lengths and set aside. Thinly slice the remaining 2 green onions and set aside, keeping them separate.",
+        "Spread the cabbage and larger pieces of green onions out into a large baking dish or pan. Place the fish diagonally on top and sprinkle with the ginger. Pour the sauce over the fish, then cover the pan tightly with foil and place in the oven for 40 minutes, basting twice during the process, until it is cooked through. To check that it is ready, gently insert a knife into one of the slits and check that the flesh comes away from the bones and is opaque. Sprinkle with the thinly sliced green onion, along with the chile, and set aside.",
+        "Pour the peanut oil into a small pan and place over high heat for about 2 minutes, until it starts to smoke. Very carefully pour it evenly over the fish so that the skin and vegetables start to crisp. Top with the cilantro and serve, either straight from the baking dish or on a platter. If on a platter, arrange the cabbage leaves and green onion on the platter—pull them out from under the fish—then carefully lift the fish to sit on top. Pour the cooking sauce on top and serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 6795, numbered steps 1–5"
+    },
+    "zucchini-and-ciabatta-frittata": {
+      "method": [
+        "Preheat the oven to 400°F.",
+        "Put the ciabatta, milk, and cream into a medium bowl and mix well. Cover and set aside for 30 minutes, for the bread to absorb most of the liquid.",
+        "Put the garlic, eggs, cumin and ¼ cup/50g of Parmesan into a separate large bowl with ¾ tsp salt and ¼ tsp pepper. Mix well, then add the bread and any remaining liquid, followed by the zucchini and basil. Stir gently.",
+        "Place an 8 x 10-inch/20 x 25cm baking dish in the oven for 5 minutes, until hot. Remove from the oven, brush with the oil, and pour in the zucchini mix. Even out the top and bake for 20 minutes. Sprinkle the last of the Parmesan evenly on top of the frittata, then bake for another 20–25 minutes, until the frittata is cooked through—a knife inserted into the center should come out clean—and the top is golden brown. Set aside for 5 minutes, then serve."
+      ],
+      "evidence": "Ottolenghi Simple (PDF) text block starting line 470, numbered steps 1–4"
+    }
+  }
+}

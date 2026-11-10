@@ -57,12 +57,9 @@
     "Insert the onion; continue cooking until tender, about 6 minutes.",
     "Insert the garlic and spices and simmer for two minutes.",
     "Stir in the tomatoes and wine if necessary. Just get it to a boil.",
-    "Reduce the heat; boil, uncovered, 7 minutes or until mildly thickened",
-    "with sauce.",
-    "Add the shrimp and parsley; simmer for 5-6 minutes or until yellow,",
-    "stirring periodically.",
-    "Remove from the heat; insert cheese and scatter. Let rest, wrapped",
-    "until softened with cheese."
+    "Reduce the heat; boil, uncovered, 7 minutes or until mildly thickened with sauce.",
+    "Add the shrimp and parsley; simmer for 5-6 minutes or until yellow, stirring periodically.",
+    "Remove from the heat; insert cheese and scatter. Let rest, wrapped until softened with cheese."
   ],
   "time": {
     "total": 30
@@ -75,5 +72,5 @@
     "meal_role": "main"
   },
   "cuisine": "Greek",
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/feta-shrimp-skillet.jpg"
+  "image": null
 }

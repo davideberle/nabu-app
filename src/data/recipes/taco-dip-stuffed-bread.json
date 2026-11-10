@@ -82,25 +82,12 @@
     }
   ],
   "method": [
-    "Preheat the oven to 400 degrees Fahrenheit. Cut a 1\" deep slit",
-    "on the top of the bread. Bread should be ripped into big pieces",
-    "after hollowing out the middle. Place the bread that has been",
-    "hollowed out on a large baking pan. Drizzle 1 tablespoon oil",
-    "over it and scatter bread bits over it.",
-    "Heat the remaining tablespoon of oil in a large pan over medium",
-    "heat. Cook for 6 minutes, breaking up the ground beef with a",
-    "wooden spoon until it is no longer pink. Fat should be drained.",
-    "Bring the pan to the flame and set it to medium. Cook for 1",
-    "minute or until garlic is aromatic. Taco seasoning, salt, and",
-    "pepper to taste. Refried beans and green chilies should be added",
-    "at this point. Stir in the cream cheese and pepper jack until",
-    "completely melted.",
+    "Preheat the oven to 400 degrees Fahrenheit. Cut a 1\" deep slit on the top of the bread. Bread should be ripped into big pieces after hollowing out the middle. Place the bread that has been hollowed out on a large baking pan. Drizzle 1 tablespoon oil over it and scatter bread bits over it.",
+    "Heat the remaining tablespoon of oil in a large pan over medium heat. Cook for 6 minutes, breaking up the ground beef with a wooden spoon until it is no longer pink. Fat should be drained.",
+    "Bring the pan to the flame and set it to medium. Cook for 1 minute or until garlic is aromatic. Taco seasoning, salt, and pepper to taste. Refried beans and green chilies should be added at this point. Stir in the cream cheese and pepper jack until completely melted.",
     "Spoon the mixture into the bread that has been hollowed out.",
-    "Cheddar should be sprinkled on top—Bake for 20 minutes, or",
-    "until the bread is toasted and the cheese has melted.",
-    "Serve with toasted bread and chips and top with tomatoes and",
-    "cilantro.",
-    "Easy, Energizing Breakfast Bread Recipes"
+    "Cheddar should be sprinkled on top—Bake for 20 minutes, or until the bread is toasted and the cheese has melted.",
+    "Serve with toasted bread and chips and top with tomatoes and cilantro."
   ],
   "time": {
     "total": 40
@@ -113,5 +100,5 @@
     "meal_role": "main"
   },
   "cuisine": "Other",
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/taco-dip-stuffed-bread.jpg"
+  "image": null
 }

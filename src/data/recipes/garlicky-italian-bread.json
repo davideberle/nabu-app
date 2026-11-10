@@ -74,19 +74,11 @@
     }
   ],
   "method": [
-    "Heat the oven at 300 Fahrenheit (180 degrees Celsius). Grease",
-    "and line an 8\" x 4\" loaf pan with parchment paper.",
-    "In a large dish for mix, combine flour, baking powder, baking",
-    "soda, salt, and oregano. Whisk together the egg, olive oil, and",
-    "milk in a separate large mixing basin.",
-    "Combine the dry and wet ingredients, then fold in the garlic,",
-    "mozzarella, tomatoes, and basil until thoroughly mixed. The",
-    "batter will be very thick.",
-    "Pour batter into loaf pan, top with Parmesan, and bake for 50 to",
-    "55 minutes, or until brown and toothpick inserted in center",
-    "comes out clean.",
-    "Cool for 10 minutes in the pan before transferring to a cooling",
-    "rack to cool completely."
+    "Heat the oven at 300 Fahrenheit (180 degrees Celsius). Grease and line an 8\" x 4\" loaf pan with parchment paper.",
+    "In a large dish for mix, combine flour, baking powder, baking soda, salt, and oregano. Whisk together the egg, olive oil, and milk in a separate large mixing basin.",
+    "Combine the dry and wet ingredients, then fold in the garlic, mozzarella, tomatoes, and basil until thoroughly mixed. The batter will be very thick.",
+    "Pour batter into loaf pan, top with Parmesan, and bake for 50 to 55 minutes, or until brown and toothpick inserted in center comes out clean.",
+    "Cool for 10 minutes in the pan before transferring to a cooling rack to cool completely."
   ],
   "time": {
     "total": 40
@@ -99,5 +91,5 @@
     "meal_role": "main"
   },
   "cuisine": "Other",
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/garlicky-italian-bread.jpg"
+  "image": null
 }

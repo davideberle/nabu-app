@@ -137,29 +137,19 @@
     }
   ],
   "method": [
-    "Put a reasonable quantity of water in a jar with the chickpeas and",
-    "continue cooking.",
+    "Put a reasonable quantity of water in a jar with the chickpeas and continue cooking.",
     "Wash them before they break for twelve hours or overnight.",
     "Dump, washed off when prepared.",
-    "Move and pulse a bit to a mixing bowl, ensuring you do not produce a",
-    "paste.",
-    "Put the olive oil, baking soda, cilantro, lime zest, lime juice, diced",
-    "onion, grated cloves, coarsely chopped mint, salt, and black pepper in",
-    "a bowl transfer to the mixture. Rigorously blend.",
-    "Form the combination into oval-shaped meatballs and excavate in the",
-    "starch.",
-    "Over moderate to low heat, put a large pan and heat the oil let it get",
-    "heated. Insert the meatballs cautiously in quantities and cook until",
-    "they become golden.",
+    "Move and pulse a bit to a mixing bowl, ensuring you do not produce a paste.",
+    "Put the olive oil, baking soda, cilantro, lime zest, lime juice, diced onion, grated cloves, coarsely chopped mint, salt, and black pepper in a bowl transfer to the mixture. Rigorously blend.",
+    "Form the combination into oval-shaped meatballs and excavate in the starch.",
+    "Over moderate to low heat, put a large pan and heat the oil let it get heated. Insert the meatballs cautiously in quantities and cook until they become golden.",
     "To drain, switch to a cooking pan filled with paper towels.",
-    "Put the olive oil, the finely diced onion, the bay leaf, the spices, the",
-    "dried oregano, the mustard, the hot pepper, the crushed garlic cloves,",
-    "the granulated sugar, and the tomato sauce in a shallow bowl.",
+    "Put the olive oil, the finely diced onion, the bay leaf, the spices, the dried oregano, the mustard, the hot pepper, the crushed garlic cloves, the granulated sugar, and the tomato sauce in a shallow bowl.",
     "Garnish with the grated onion, salt, and black pepper.",
     "Reduce the heat and add the crispy meatballs to the dish.",
     "Cover and cook with a cap for ten minutes.",
-    "Present with boiling basmati rice, rosemary, canola oil, and",
-    "clean oregano."
+    "Present with boiling basmati rice, rosemary, canola oil, and clean oregano."
   ],
   "time": {
     "total": 600
@@ -172,5 +162,5 @@
     "meal_role": "main"
   },
   "cuisine": "Greek",
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/greek-vegetarian-soutzoukakia.jpg"
+  "image": null
 }

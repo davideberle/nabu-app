@@ -14,7 +14,7 @@
       "amount": "1 lb (approx 500 g)"
     },
     {
-      "item": "bird’s eye chilies, fi nely sliced",
+      "item": "bird’s eye chilies, finely sliced",
       "amount": "5–10"
     },
     {
@@ -26,7 +26,7 @@
       "amount": "1 teaspoon"
     },
     {
-      "item": "fi sh sauce",
+      "item": "fish sauce",
       "amount": "2 tablespoons"
     },
     {
@@ -42,7 +42,7 @@
       "amount": "1"
     },
     {
-      "item": "Thai garlic, peeled, cloves fi nely sliced. If using regular garlic, use less and add to taste",
+      "item": "Thai garlic, peeled, cloves finely sliced. If using regular garlic, use less and add to taste",
       "amount": "1 head"
     },
     {
@@ -51,12 +51,12 @@
     }
   ],
   "method": [
-    "If you cannot fi nd ready-sliced fi sh, you slice it against the grain in half-inch-wide pieces or, if using lobster tail, slice it cross-wise (make sure your knife is very sharp)."
+    "If you cannot find ready-sliced fish, you slice it against the grain in half-inch-wide pieces or, if using lobster tail, slice it cross-wise (make sure your knife is very sharp)."
   ],
   "time": {
     "total": 30
   },
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/khao-soy-curried-egg-noodles-with-chicken.jpg",
+  "image": null,
   "category": {
     "dish_type": [
       "main"

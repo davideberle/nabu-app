@@ -62,8 +62,7 @@
     }
   ],
   "method": [
-    "Add the Greek yogurt, lemon juice, garlic, curry paste and mango chutney",
-    "to a bowl.",
+    "Add the Greek yogurt, lemon juice, garlic, curry paste and mango chutney to a bowl.",
     "Stir well.",
     "Add the chicken and turn to coat evenly.",
     "Cover and refrigerate for 4 hours.",
@@ -77,7 +76,7 @@
   "time": {
     "total": 300
   },
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curry-chicken-wings-with-mango-chutney.jpg",
+  "image": null,
   "category": {
     "dish_type": [
       "starter"

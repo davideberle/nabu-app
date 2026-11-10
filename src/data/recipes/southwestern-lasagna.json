@@ -52,8 +52,6 @@
     }
   ],
   "method": [
-    "Cook Time: 45 minutes",
-    "Servings Size: 6",
     "Preheat your oven to 350 degrees F.",
     "Heat the olive oil in a large skillet.",
     "Sauté the garlic, jalapeno pepper, and onion for 5 minutes.",
@@ -67,7 +65,7 @@
     "Top the third layer with the cheddar cheese.",
     "Bake for 45 minutes."
   ],
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/southwestern-lasagna.jpg",
+  "image": null,
   "time": {
     "total": 30
   },

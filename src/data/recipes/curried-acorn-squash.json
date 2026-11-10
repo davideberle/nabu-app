@@ -26,14 +26,13 @@
     }
   ],
   "method": [
-    "Preheat the water bath to 185°F. Combine squash, butter, spice mix, and salt",
-    "in a bag.",
+    "Preheat the water bath to 185°F. Combine squash, butter, spice mix, and salt in a bag.",
     "Seal and place in water bath. Cook 1 ½ to 2 hours."
   ],
   "time": {
     "total": 120
   },
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/curried-acorn-squash.jpg",
+  "image": null,
   "category": {
     "dish_type": [
       "side"

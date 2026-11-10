@@ -10,7 +10,7 @@
   "intro": "This is a great dish for a party or large family gathering.",
   "ingredients": [
     {
-      "item": "package spring roll wrappers (frozen is fi ne). If using a whole package of 50 wrappers consider doubling the Chicken Larb recipe",
+      "item": "package spring roll wrappers (frozen is fine). If using a whole package of 50 wrappers consider doubling the Chicken Larb recipe",
       "amount": "1"
     },
     {
@@ -58,7 +58,7 @@
       "amount": "1 teaspoon"
     },
     {
-      "item": "fi sh sauce",
+      "item": "fish sauce",
       "amount": "1 tablespoon"
     },
     {
@@ -67,15 +67,15 @@
     }
   ],
   "method": [
-    "To make the Chicken Larb, heat a saucepan until a drop of water siz- zles on it, then add the water. Add the chicken immediately. After the juices come out of the meat, the bits of chicken will stop sticking to the pan. Cook through until the pink is all gone.",
+    "To make the Chicken Larb, heat a saucepan until a drop of water sizzles on it, then add the water. Add the chicken immediately. After the juices come out of the meat, the bits of chicken will stop sticking to the pan. Cook through until the pink is all gone.",
     "Transfer the chicken and it’s juices to a mixing bowl and add the shallots, coriander leaves, sawtooth coriander, kaffi r lime leaves and roasted rice powder. Mix every- thing well together well.",
-    "Add the salt and fi sh sauce. Taste for seasoning. Add the chili powder.",
+    "Add the salt and fish sauce. Taste for seasoning. Add the chili powder.",
     "Taste and adjust as needed.",
     "If you wish, add the lime juice, mix well and taste. You can now eat your Chicken Larb if you don’t want to make your spring rolls.",
     "Just garnish with mint leaves and enjoy with Sticky Rice (page 90), young cabbage leaves, fresh cu- cumber and long beans!",
-    "Otherwise, set the Chicken Larb aside as fi lling for the spring rolls.",
-    "Thaw the spring roll wrappers (if frozen) and keep under a damp kitchen towel. Peel the top one off to start. With the smooth side down, place the wrapper in a dia- mond shape and place a spoonful of the Larb at the bottom of the diamond. Roll up halfway, fold both sides in towards the center, then continue rolling up to the top.",
-    "Seal with the cornstarch mix. Re- peat until the Larb is used up.",
+    "Otherwise, set the Chicken Larb aside as filling for the spring rolls.",
+    "Thaw the spring roll wrappers (if frozen) and keep under a damp kitchen towel. Peel the top one off to start. With the smooth side down, place the wrapper in a diamond shape and place a spoonful of the Larb at the bottom of the diamond. Roll up halfway, fold both sides in towards the center, then continue rolling up to the top.",
+    "Seal with the cornstarch mix. Repeat until the Larb is used up.",
     "Heat the oil in a wok until very hot, then put in a layer of the rolls, making sure the oil is double the depth of the rolls. Fry them in batches, turning occasionally until golden brown, around 1 minute.",
     "Drain each batch on paper towels when done. Serve with Jaew Chili",
     "Sauce or Thai Sweet Chili Sauce."
@@ -83,7 +83,7 @@
   "time": {
     "total": 30
   },
-  "image": "https://urojrh970lh6rial.public.blob.vercel-storage.com/cookbook/recipes/nam-ngiew-pork-and-tomato-sauce-noodles.jpg",
+  "image": null,
   "category": {
     "dish_type": [
       "main"
