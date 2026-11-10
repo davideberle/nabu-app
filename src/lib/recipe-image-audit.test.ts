@@ -106,6 +106,12 @@ test("applied repairs are reflected in app recipe data", () => {
   }
 });
 
+const reassignedIds = new Set<string>(
+  existsSync(join(process.cwd(), "scripts", "data", "recipe-photo-removals-20261110.json"))
+    ? JSON.parse(readFileSync(join(process.cwd(), "scripts", "data", "recipe-photo-removals-20261110.json"), "utf8")).reassigned.map((r: { id: string }) => r.id)
+    : [],
+);
+
 test("round-2 reviewed cleanup stays applied", () => {
   const manifestPath = join(process.cwd(), "docs", "audits", "recipe-image-cleanup-round2.json");
   if (!existsSync(manifestPath)) return;
@@ -113,7 +119,15 @@ test("round-2 reviewed cleanup stays applied", () => {
   assert.equal(manifest.reviewStatus, "visually-reviewed");
   for (const repair of manifest.imageRepairs) {
     const recipe = JSON.parse(readFileSync(join(process.cwd(), "src", "data", "recipes", `${repair.recipeId}.json`), "utf8"));
-    assert.equal(recipe.image, null, `${repair.recipeId} should not retain a proven-wrong image`);
+    // November 10, 2026: seven Persiana recipes received a *different* book
+    // photo whose printed caption names them (catalog cleanup, scripts/data/
+    // recipe-photo-removals-20261110.json "reassigned"). The proven-wrong
+    // file itself must still never come back.
+    const fileName = (image: string | null) => (image ? image.split("/").pop() : null);
+    if (recipe.image !== null) {
+      assert.notEqual(fileName(recipe.image), fileName(repair.image), `${repair.recipeId} should not retain a proven-wrong image`);
+      assert.ok(reassignedIds.has(repair.recipeId), `${repair.recipeId} has an image that was not an evidence-backed reassignment`);
+    }
   }
   for (const pair of manifest.duplicateRecipes) {
     assert.equal(existsSync(join(process.cwd(), "src", "data", "recipes", `${pair.quarantineId}.json`)), false);
