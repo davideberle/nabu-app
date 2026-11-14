@@ -22,7 +22,9 @@ export const NARRATION_CLIP_PATH = "/api/family/learning/narration";
 /** Nov 8 review: Ava, Rosa and June were too fast. Applied at playback with the pitch preserved; nothing is re-recorded. */
 export const NARRATION_PLAYBACK_RATE = 0.88;
 const SLOWED_SLOTS: ReadonlySet<string> = new Set(["de-female", "es-female", "en-female"]);
-export const playbackRateFor = (slot: string | null | undefined): number => (slot && SLOWED_SLOTS.has(slot) ? NARRATION_PLAYBACK_RATE : 1);
+/** Nov 14 review (Visit 10): Spanish was still a bit fast for him — both Spanish voices (Rosa, Dr. Mateo) play slower. */
+export const SPANISH_PLAYBACK_RATE = 0.8;
+export const playbackRateFor = (slot: string | null | undefined): number => (slot === "es-female" || slot === "es-male" ? SPANISH_PLAYBACK_RATE : slot && SLOWED_SLOTS.has(slot) ? NARRATION_PLAYBACK_RATE : 1);
 
 /** Sets the speed on the element; a media load resets `playbackRate` to the default, so both are set (before and after `src`). */
 function applyRate(el: AudioLike, rate: number) {

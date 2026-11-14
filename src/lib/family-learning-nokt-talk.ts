@@ -37,12 +37,12 @@ import { receiptOrigin, provenanceOf, type ReceiptInput, type ReplyOrigin } from
 
 export const NOKT_TALK_PURPOSES = ["home", "welcome", "visit", "writing", "debrief"] as const;
 export type NoktTalkPurpose = (typeof NOKT_TALK_PURPOSES)[number];
-export const NOKT_TALK_PROMPT_VERSION = "nokt-talk-de-2026-11-08-draft3";
+export const NOKT_TALK_PROMPT_VERSION = "nokt-talk-de-2026-11-14-v4";
 export const NOKT_TALK_INTENTS = ["ask", "respond", "encourage", "correct", "close"] as const;
 export type NoktTalkIntent = (typeof NOKT_TALK_INTENTS)[number];
 
 /** Child lines per session before Nokt must close (never an endless conversation gate). */
-export const NOKT_TALK_MAX_CHILD_TURNS: Record<NoktTalkPurpose, number> = { home: 8, welcome: 2, visit: 4, writing: 5, debrief: 4 };
+export const NOKT_TALK_MAX_CHILD_TURNS: Record<NoktTalkPurpose, number> = { home: 8, welcome: 2, visit: 8, writing: 5, debrief: 4 };
 /** Debrief: how often Nokt may ask the next-interest question before the reviewed buttons alone remain (no endless gate). */
 export const NOKT_DEBRIEF_MAX_NEXT_QUESTIONS = 3;
 /** Lines of one session sent to the runtime (the runtime accepts at most 14). */
@@ -262,7 +262,7 @@ function workSummary(def: MissionDef, run: MissionRun) {
 }
 
 /** What is visibly on the open step — the same text the child can read, never the answer of anything open. */
-function openStepContext(def: MissionDef, run: MissionRun, step: MissionStep) {
+function openStepContext(def: MissionDef, run: MissionRun, step: MissionStep, content?: LearningContent) {
   const r = run.steps[step.id];
   const has = (k: string) => !!r?.support.some((x) => x.kind === k);
   const lines = (r && r.status !== "active" ? [] : step.intro).filter((l) => l.language === "de" || has("line-translation")).map((l) => (l.language === "de" ? l.text : l.de ?? ""));
@@ -274,11 +274,28 @@ function openStepContext(def: MissionDef, run: MissionRun, step: MissionStep) {
     if (has("translation")) base.messageGerman = step.text?.de;
   }
   if ((step.kind === "recall" || step.kind === "produce") && step.produce) {
-    base.task = `Auf ${step.produce.language === "es" ? "Spanisch" : "Englisch"} etwas sagen`;
+    const lang = step.produce.language === "es" ? "Spanisch" : "Englisch";
+    base.task = `Auf ${lang} etwas sagen`;
     base.instruction = step.produce.instruction;
     base.frame = step.produce.frame;
-    if (has("word-bank")) base.wordBankShown = step.produce.wordBank;
-    base.hisTries = r?.attempts.filter((a) => a.kind === "answer").map((a) => a.raw) ?? [];
+    // Nov 14: what the character asked, in German (the question is not the answer; the word he must find never is here).
+    const asked = step.intro.filter((l) => l.language !== "de" && l.de).map((l) => l.de as string);
+    if (asked.length) base.questionGerman = asked;
+    const tries = r?.attempts.filter((a) => a.kind === "answer").map((a) => a.raw) ?? [];
+    base.hisTries = tries;
+    // The help that is really on this page right now — Nokt may only point to this, never to a hint that is not there.
+    if (has("word-bank")) {
+      base.wordBankShown = step.produce.wordBank;
+      base.helpOnPage = "Die Wörter-Hilfe ist offen: Er kann unten Wörter antippen.";
+    } else if (step.produce.bankAfterAttempt && tries.length === 0) {
+      base.helpOnPage = "Noch kein Hinweis zu sehen. Nach seinem ersten Versuch erscheint der Knopf «Wörter-Hilfe zeigen». Er darf einfach etwas probieren.";
+    } else {
+      base.helpOnPage = "Unter dem Eingabefeld gibt es den Knopf «Wörter-Hilfe zeigen».";
+    }
+    if (step.warmup?.taughtIn?.length) {
+      const taught = step.warmup.taughtIn.map((t) => (content?.missions ?? []).find((m) => m.id === t.mission)?.title).filter(Boolean);
+      if (taught.length) base.learnedBefore = `Das spanische Wort dafür hat er schon einmal geübt: beim Besuch «${taught.join("», «")}». Du darfst ihn daran erinnern, ohne das Wort zu sagen.`;
+    }
   }
   if (step.kind === "decide" && step.decide) {
     if (step.decide.noktAfterWrong) base.askWhy = "Er hat zweimal einen Platz gewählt, der eine Regel nicht erfüllt. Frag ihn neugierig, warum er den letzten gewählt hat. Sag nicht, welcher Platz passt.";
@@ -370,7 +387,7 @@ export function talkContext(state: MissionState, content: LearningContent, purpo
   const run = where.run!;
   ctx.work = workSummary(def, run);
   if (purpose === "visit") {
-    ctx.where = where.step ? openStepContext(def, run, where.step) : { title: "Karte der Insel", note: "Er steht auf der Karte und kann zu einem Ort gehen." };
+    ctx.where = where.step ? openStepContext(def, run, where.step, content) : { title: "Karte der Insel", note: "Er steht auf der Karte und kann zu einem Ort gehen." };
     ctx.openPlaces = def.steps.filter((s) => ["available", "active"].includes(stepStatuses(def, run)[s.id])).map((s) => ({ task: s.title, place: def.map.places.find((p) => p.id === s.place)?.label ?? s.place }));
     return ctx;
   }
@@ -426,11 +443,14 @@ const PURPOSE_DE: Record<NoktTalkPurpose, string[]> = {
   ],
   visit: [
     "Ort: context.where während des Besuchs. Hilf ihm zu verstehen, was die Seite von ihm will, oder wohin er gehen kann (context.openPlaces).",
-    "Du sagst nie die Lösung, kein Wort und keine Zahl, die er selbst finden soll. Wenn er fragt, frag zurück, was er schon weiss, oder zeig auf den Hinweis bei der Aufgabe.",
+    "Du sagst nie die Lösung, kein Wort und keine Zahl, die er selbst finden soll.",
+    "Zeig nur auf Hilfe, die in context.where.helpOnPage steht. Erfinde keinen Hinweis, keinen Knopf und keine Stelle, die dort nicht steht.",
+    "Wenn er sagt, dass er es nicht weiss: Frag nicht dasselbe nochmal. Gib ihm eine echte Denkhilfe, ohne die Lösung: erklär auf Deutsch, was die Figur gefragt hat (context.where.questionGerman), beschreib, wozu man das Ding braucht, oder erinnere ihn an context.where.learnedBefore. Beim zweiten «weiss nicht» sag ihm genau, welche Hilfe er auf der Seite nutzen kann (context.where.helpOnPage) oder dass er einfach etwas probieren darf (intent respond).",
+    "Schick ihn nie zu einer anderen Aufgabe oder einem anderen Ort, solange er an dieser arbeiten will. Sagt er, dass er weitermachen oder fertig machen will, hilf ihm bei DIESER Aufgabe weiter und verabschiede dich nicht.",
     "Hat er einen Plan gewählt und context.where.reflectPrompt steht da, darfst du ihn freundlich fragen, warum er so gewählt hat. Bewerte seinen Grund nicht.",
     "Steht context.where.askWhy da und ist transcript leer, sprichst du zuerst: Frag EINMAL neugierig nach seinem Grund für context.where.hisPicks (die letzte Wahl). Sag nie, welche Möglichkeit passt, und nenne keine Regel als Lösung (intent ask).",
     "Bei Hören-Aufgaben: Lies ihm den englischen Text nicht vor und übersetze ihn nicht, ausser context.where.messageText steht schon da.",
-    "phase \"schliessen\": beende freundlich (intent close).",
+    "phase \"schliessen\": Sag ihm in einem Satz, was er jetzt selbst machen kann (zum Beispiel die Hilfe aus context.where.helpOnPage nutzen oder einfach probieren), und dass du da bist, wenn er wieder auf dich tippt (intent close). Sag nicht Tschüss.",
   ],
   writing: [
     "Ort: das Gartenbuch. context.writing.hisSentence ist der Satz, den Santi selbst geschrieben hat (sein Original).",
@@ -773,7 +793,7 @@ export function talkAppLine(purpose: NoktTalkPurpose, opener: boolean, reason: s
   // The look back's next-interest question, when Nokt's line is missing: the app asks it with the reviewed taps below.
   if (purpose === "debrief" && phase === "naechstes") return "Was möchtest du beim nächsten Besuch machen? Tipp unten eine Idee an, oder sag oder schreib deine eigene.";
   if (reason?.startsWith("no-reply-") && !opener) return "Nokt ist gerade nicht erreichbar. Was du geschrieben hast, ist noch da — du kannst es gleich nochmal schicken.";
-  if (opener && purpose === "welcome") return "Willkommen! Heute geht es um das grössere Gewächshaus. Auf der Karte siehst du, wo jemand auf dich wartet.";
+  if (opener && purpose === "welcome") return "Willkommen zu deinem Besuch! Auf der Karte siehst du, wo jemand auf dich wartet.";
   if (opener && purpose === "debrief") return "Nokt kann gerade nicht mit dir zurückschauen. Unten kannst du sagen, wie es war und was du als Nächstes machen möchtest.";
   if (purpose === "writing") return "Nokt kann gerade nichts zu deinem Satz sagen. Du kannst ihn selbst noch einmal anschauen oder so lassen.";
   if (reason?.startsWith("stale")) return "Das war zu einer anderen Stelle. Frag Nokt hier noch einmal.";

@@ -135,6 +135,12 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [writePage, active?.id, active?.write?.tipHeld]);
   const writingLive = writing && !writingOver;
+  // Nov 14: once Nokt (or the app's stand-in line) has reacted to his sentence, the second try is open beside the talk.
+  const [writingAnsweredFor, setWritingAnsweredFor] = useState<string | null>(null);
+  const writingAnswered = writingAnsweredFor === writePage || !!writingSession?.lines.some((l) => l.role !== "child");
+  const writingWaits = writingLive && !writingAnswered;
+  // Nov 14: the welcome comes first — nothing on the map can be started until Nokt's (or the app's) first line is there.
+  const [welcomeReady, setWelcomeReady] = useState(false);
 
   const openDock = () => {
     setOpen("page");
@@ -147,15 +153,17 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
     telemetry("tutor-close");
   };
   const welcomeSession = sessionFor(talk, "welcome", `visit:${visitId}:welcome`);
+  const welcomeGateOpen = welcomeReady || !(enabled && nokt.talkTurn) || !!welcomeSession?.lines.some((l) => l.role !== "child");
+  const welcomeGate = open === "welcome";
   const dock: ReactNode = writingLive && writePage ? (
     <aside className="order-first grid max-h-[calc(100dvh-2rem)] content-start gap-3 overflow-y-auto md:sticky md:top-4 md:order-none" data-testid="nokt-sidebar" data-dock="writing">
-      <NoktTalk key={writePage} child={child} purpose="writing" sessionId={writingSession && !writingSession.closed ? writingSession.id : null} initialLines={writingSession?.lines ?? []} opener={!writingSession} ended={!!writingSession?.ended} blocking waitingLine="Gib mir ein paar Sekunden …" speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn!} title={active?.write?.plural ? "Nokt liest deine Sätze" : "Nokt liest deinen Satz"} testId="nokt-writing" onEnded={endWriting} />
+      <NoktTalk key={writePage} child={child} purpose="writing" sessionId={writingSession && !writingSession.closed ? writingSession.id : null} initialLines={writingSession?.lines ?? []} opener={!writingSession} ended={!!writingSession?.ended} blocking waitingLine="Gib mir ein paar Sekunden …" speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn!} title={active?.write?.plural ? "Nokt liest deine Sätze" : "Nokt liest deinen Satz"} testId="nokt-writing" onEnded={endWriting} onLine={(l) => { if (l.role !== "child") setWritingAnsweredFor(writePage); }} />
     </aside>
   ) : open === "none" ? null : (
     <aside className="order-first grid max-h-[calc(100dvh-2rem)] content-start gap-3 overflow-y-auto md:sticky md:top-4 md:order-none" data-testid="nokt-sidebar" data-dock={open === "welcome" ? "welcome" : solvePart ? "task" : "visit"}>
       {open === "welcome" ? (
         enabled && nokt.talkTurn ? (
-          <NoktTalk key="welcome" child={child} purpose="welcome" sessionId={welcomeSession?.id ?? null} initialLines={welcomeSession?.lines ?? []} opener={!welcomeSession} ended={!!welcomeSession?.ended} blocking speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn} title="Nokt begrüsst dich" testId="nokt-welcome" />
+          <NoktTalk key="welcome" child={child} purpose="welcome" sessionId={welcomeSession?.id ?? null} initialLines={welcomeSession?.lines ?? []} opener={!welcomeSession} ended={!!welcomeSession?.ended} blocking speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn} title="Nokt begrüsst dich" testId="nokt-welcome" onLine={(l) => { if (l.role !== "child") setWelcomeReady(true); }} onEnded={() => setWelcomeReady(true)} />
         ) : null
       ) : solvePart && active ? (
         <NoktPanel key={`task:${active.id}:${solvePart}`} child={child} mode={nokt.mode} step={active.id} part={solvePart} speech={speech} transcribe={nokt.transcribe} turn={nokt.taskTurn} opener entry={nudged === `${active.id}:${solvePart}` ? "offer" : "manual"} onClose={closeDock} />
@@ -167,8 +175,8 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
         </div>
       )}
       {!(solvePart && active) ? (
-        <button type="button" className={btn} style={secondary} onClick={open === "welcome" ? endWelcome : closeDock} data-testid="nokt-dock-close">
-          {open === "welcome" ? "Los geht's" : "Schliessen"}
+        <button type="button" className={btn} style={open === "welcome" ? primary : secondary} disabled={open === "welcome" && !welcomeGateOpen} onClick={open === "welcome" ? endWelcome : closeDock} data-testid="nokt-dock-close">
+          {open === "welcome" ? (welcomeGateOpen ? "Los geht's" : "Nokt sagt Hallo …") : "Schliessen"}
         </button>
       ) : null}
     </aside>
@@ -176,6 +184,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
 
   return (
     <div className={cn("grid items-start gap-4", !view.homeMap && "pb-24", dock && "md:grid-cols-[minmax(0,1fr)_380px]")} data-testid="map-mission" data-page={page}>
+      <div className="relative min-w-0">
       <MissionWorld
         child={child}
         view={view}
@@ -185,9 +194,17 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
         speech={speech}
         onWalk={onWalk}
         act={act}
-        renderTask={(a) => MapTask({ child, view, active: a, busy, act, speech, telemetry, nokt, writingLive, noktOnTask: open === "page" && !!solvePart })}
+        renderTask={(a) => MapTask({ child, view, active: a, busy, act, speech, telemetry, nokt, writingLive: writingWaits, noktOnTask: open === "page" && !!solvePart })}
         sceneLocked={writingLive}
       />
+      {welcomeGate ? (
+        <div className="absolute inset-0 z-30 grid place-items-center rounded-3xl bg-white/60 p-6 backdrop-blur-[2px]" data-testid="welcome-gate" aria-hidden>
+          <p className="rounded-2xl bg-white px-5 py-3 text-xl font-semibold shadow-sm" style={{ color: "#203b3d" }}>
+            {welcomeGateOpen ? "Hör Nokt zu und tipp dann auf «Los geht's»." : "Nokt sagt gleich Hallo …"}
+          </p>
+        </div>
+      ) : null}
+      </div>
       {dock}
       {dock || skip ? null : <NoktButton child={child} onOpen={openDock} />}
     </div>

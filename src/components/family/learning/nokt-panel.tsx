@@ -236,13 +236,20 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn, 
         <label htmlFor="nokt-input" className="text-base font-semibold">
           {via === "voice" ? "Das habe ich verstanden — du kannst es korrigieren:" : transcribe ? "Oder schreib es hier:" : "Schreib es hier:"}
         </label>
-        <textarea {...NO_TYPING_HELP} id="nokt-input" rows={2} value={draft} onChange={(e) => setDraft(e.target.value.slice(0, 300))} className="w-full rounded-xl border-2 px-3 py-2 text-lg" style={{ borderColor: "#8ba8a4" }} data-testid="nokt-input" />
+        <textarea {...NO_TYPING_HELP} id="nokt-input" rows={2} value={draft} onChange={(e) => setDraft(e.target.value.slice(0, 300))} className="w-full rounded-xl border-2 px-3 py-2 text-lg" style={{ borderColor: "#8ba8a4" }} data-testid="nokt-input" onKeyDown={submitOnEnter} />
         <button type="submit" className={btn} style={{ background: "#215c60", color: "white" }} disabled={!draft.trim() || waiting} data-testid="nokt-send">
           Senden
         </button>
       </form>}
     </div>
   );
+}
+
+/** Nov 14: Enter sends (like a chat); Shift+Enter still makes a new line. Never while an IME composes. */
+export function submitOnEnter(e: { key: string; shiftKey: boolean; nativeEvent: { isComposing?: boolean }; preventDefault: () => void; currentTarget: { form: HTMLFormElement | null } }) {
+  if (e.key !== "Enter" || e.shiftKey || e.nativeEvent.isComposing) return;
+  e.preventDefault();
+  e.currentTarget.form?.requestSubmit();
 }
 
 type MicState = "idle" | "starting" | "live" | "transcribing" | "trouble";
@@ -328,6 +335,20 @@ export function NoktMic({ transcribe, onTranscript }: { transcribe: NoktTranscri
           </button>
         ) : null}
       </div>
+      {mic === "starting" ? (
+        <p className="flex items-center gap-2 text-lg font-semibold" style={{ color: "#6b5a2e" }} role="status" data-testid="nokt-mic-wait">
+          <span aria-hidden className="inline-block h-4 w-4 rounded-full" style={{ background: "#c9b98f" }} />
+          Warte kurz …
+        </p>
+      ) : mic === "live" ? (
+        <p className="flex items-center gap-2 rounded-xl px-3 py-2 text-xl font-bold" style={{ background: "#fde8e4", color: "#a34431" }} role="status" data-testid="nokt-mic-live">
+          <span aria-hidden className="relative inline-flex h-5 w-5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 motion-reduce:animate-none" style={{ background: "#e0614a" }} />
+            <span className="relative inline-flex h-5 w-5 rounded-full" style={{ background: "#c8402b" }} />
+          </span>
+          Jetzt sprechen!
+        </p>
+      ) : null}
       {mic === "trouble" ? (
         <p className="text-base" role="status" data-testid="nokt-mic-trouble">
           Das hat gerade nicht geklappt. Du kannst es nochmal versuchen oder unten schreiben.

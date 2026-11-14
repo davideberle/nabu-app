@@ -147,7 +147,8 @@ function Plan({ w, h, top, side }: { w: number; h: number; top: string; side: st
     <g>
       <rect x={x} y={y} width={w} height={h} rx={3} fill={WATER} stroke="#4f7f97" strokeWidth={2} />
       <text x={40} y={y - 4} textAnchor="middle" fontSize={11} fontWeight={700} fill="#333">{top}</text>
-      {side ? <text x={x + w + 3} y={44 + 4} fontSize={11} fontWeight={700} fill="#333">{side}</text> : null}
+      {/* Nov 14: the side label stands upright beside the plan, so «m» is never cut off at the picture's edge. */}
+      {side ? <text x={x + w + 9} y={44} textAnchor="middle" fontSize={11} fontWeight={700} fill="#333" transform={`rotate(-90 ${x + w + 9} 44)`}>{side}</text> : null}
     </g>
   );
 }

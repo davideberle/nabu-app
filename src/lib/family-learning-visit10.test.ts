@@ -13,11 +13,11 @@ import { learningLadder } from "./family-learning-skill-ladder.ts";
 import { noktModeFromEnv } from "./family-learning-nokt.ts";
 import { createLearningClient, LEARNING_NOKT_DISPATCH_PATH, LEARNING_NOKT_REPLY_PATH, LEARNING_SESSION_PATH, BRIDGE_NOKT_PATH } from "./family-learning-client.ts";
 import { checkNoktReply, NOKT_MAX_CHILD_TURNS, NOKT_SYSTEM_PROMPT_DE, noktTaskContext, parseNoktReply, type NoktTurnText } from "./family-learning-nokt-contract.ts";
-import { NOKT_TALK_MAX_CHILD_TURNS, talkEnded } from "./family-learning-nokt-talk.ts";
+import { NOKT_TALK_MAX_CHILD_TURNS, talkAppLine, talkEnded, talkSystemPrompt } from "./family-learning-nokt-talk.ts";
 import { WORKSHOP_PICTURES } from "./family-learning-mission-spec.ts";
 import { asLearningContent } from "./family-learning-content.ts";
 import { buildChildView, EMPTY_PARENT_SETTINGS, newMissionState } from "./family-learning-state.ts";
-import { createNarrationPlayer, NARRATION_PLAYBACK_RATE, playbackRateFor } from "./family-narration-player.ts";
+import { createNarrationPlayer, NARRATION_PLAYBACK_RATE, playbackRateFor, SPANISH_PLAYBACK_RATE } from "./family-narration-player.ts";
 import { clipEtag } from "./family-narration-store.ts";
 import { closingLines, spokenClosingLines, type ClosingSource } from "./family-learning-narration.ts";
 
@@ -65,7 +65,8 @@ describe("A3 — slower narration, pitch preserved, nothing cut off", () => {
   });
   it("the rate applies to those three voices only", () => {
     equal(playbackRateFor("de-female"), NARRATION_PLAYBACK_RATE);
-    equal(playbackRateFor("es-female"), NARRATION_PLAYBACK_RATE);
+    equal(playbackRateFor("es-female"), SPANISH_PLAYBACK_RATE);
+    equal(playbackRateFor("es-male"), SPANISH_PLAYBACK_RATE);
     equal(playbackRateFor("en-female"), NARRATION_PLAYBACK_RATE);
     equal(playbackRateFor("de-male"), 1);
     equal(playbackRateFor(null), 1);
@@ -172,11 +173,20 @@ describe("C — Nokt's rules", () => {
     equal(c.closeNow, true);
     ok(!JSON.stringify(c).includes('"answer"'));
   });
-  it("a conversation in the visit is capped at about four of his turns", () => {
-    equal(NOKT_TALK_MAX_CHILD_TURNS.visit, 4);
+  it("a conversation in the visit is capped at about eight of his turns (Nov 14: four ended it while he still wanted help)", () => {
+    equal(NOKT_TALK_MAX_CHILD_TURNS.visit, 8);
     equal(NOKT_TALK_MAX_CHILD_TURNS.debrief, 4);
     equal(NOKT_TALK_MAX_CHILD_TURNS.writing, 5, "his sentence counts as the first line, then four replies");
     equal(NOKT_TALK_MAX_CHILD_TURNS.welcome, 2);
+  });
+  it("Nov 14: the visit prompt forbids invented hints and sending him away, and the closing line is not a goodbye", () => {
+    const sys = talkSystemPrompt("visit");
+    ok(sys.includes("context.where.helpOnPage"));
+    ok(sys.includes("Erfinde keinen Hinweis"));
+    ok(sys.includes("verabschiede dich nicht"));
+    ok(sys.includes("Sag nicht Tschüss"));
+    ok(sys.length < 6000, "fits the runtime's system limit");
+    ok(!talkAppLine("welcome", true, "stale-page").includes("Gewächshaus"), "the welcome stand-in names no old visit");
   });
   it("the talk is over when Nokt closes it or the app's phase ends it", () => {
     ok(talkEnded("close", "satz"));
