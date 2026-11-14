@@ -60,11 +60,16 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
 
   // FH-05: the label comes from THIS child's saved state, read under this
   // child's own learning credential — Isabel never receives Santiago's tasks.
+  // Nov 14: a Home tab left open for days showed last week's «nothing new» although a new visit was released since.
+  // The label is read again whenever Home comes back into view (tab shown, window focused) and every few minutes.
   useEffect(() => {
-    const abort = new AbortController();
-    (async () => {
-      const outcome = await client.read(child, { signal: abort.signal, timeZone: browserTimeZone() });
-      if (abort.signal.aborted) return;
+    let abort = new AbortController();
+    const load = async () => {
+      abort.abort();
+      abort = new AbortController();
+      const signal = abort.signal;
+      const outcome = await client.read(child, { signal, timeZone: browserTimeZone() });
+      if (signal.aborted) return;
       if (!outcome.ok) {
         setLearn(outcome.status === 404 || outcome.failure === "unprepared" ? { kind: "unprepared" } : { kind: "trouble" });
         return;
@@ -74,8 +79,20 @@ function Home({ child, canSeeFamilyOverview }: { child: ChildId; canSeeFamilyOve
       if (view.visit) setLearn({ kind: "continue", title: view.visit.title, ordinal: view.visit.ordinal });
       else if (view.next.visit) setLearn({ kind: "start", ordinal: view.next.ordinal, label: view.progress.next.label ?? null });
       else setLearn({ kind: "waiting", reason: view.next.reason });
-    })();
-    return () => abort.abort();
+    };
+    void load();
+    const onShow = () => {
+      if (document.visibilityState === "visible") void load();
+    };
+    document.addEventListener("visibilitychange", onShow);
+    window.addEventListener("focus", onShow);
+    const timer = window.setInterval(onShow, 5 * 60_000);
+    return () => {
+      abort.abort();
+      document.removeEventListener("visibilitychange", onShow);
+      window.removeEventListener("focus", onShow);
+      window.clearInterval(timer);
+    };
   }, [child, client]);
 
   const href = (destination: Parameters<typeof childShellDestinationHref>[0]) => childShellDestinationHref(destination, child);
