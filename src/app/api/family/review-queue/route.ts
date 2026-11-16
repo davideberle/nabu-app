@@ -1,3 +1,4 @@
+import { directApprovalHash } from "@/lib/family-direct-approval";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { isAdminEmail } from "@/lib/access";
@@ -22,7 +23,7 @@ import { familyMembers, dayLabels } from "@/data/family-routines";
  * Read-only, and deliberately narrow about who may read it:
  *  - the admin household session (parent controls in the app), or
  *  - the fail-closed trusted-runtime bearer token (the local briefing/Nabu
- *    runtime — read-only here; review mutations remain session-admin-only).
+ *    runtime — reads here; only POST /api/family/review-approvals allows bound direct approvals).
  * A signed-in non-admin session (the shared-iPad child account) is refused:
  * the queue spans both children and exists for parents.
  *
@@ -79,6 +80,7 @@ export async function GET(request: Request) {
     const person = familyMembers.find((p) => p.id === item.personId);
     return {
       ...item,
+      ...(routine ? { approvalHash: directApprovalHash(item, routine.points), pointsPerUnit: routine.points } : {}),
       childName: person?.displayName ?? item.personId,
       activity: routine?.title ?? item.routineId,
       icon: routine?.icon ?? "",

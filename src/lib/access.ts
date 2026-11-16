@@ -133,6 +133,8 @@ export function evaluateHealthAccess(session: PlannerWriteSession): PlannerWrite
  * Edge runtime and must not pull in `node:crypto`. Pure string matching only.
  */
 const TRUSTED_RUNTIME_API_ROUTES: { methods: readonly string[]; pattern: RegExp }[] = [
+  // Explicit chat approval of an existing, fingerprint-bound Family submission only.
+  { methods: ["POST"], pattern: /^\/api\/family\/review-approvals$/ },
   { methods: ["POST"], pattern: /^\/api\/cooking\/session$/ },
   { methods: ["POST"], pattern: /^\/api\/cooking\/session\/from-plan$/ },
   // PATCH /api/cooking/session/:id — one path segment, and never `from-plan`,
