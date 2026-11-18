@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Nov 8: render checks of the first arc visits (Santiago Visit 10, Isabel Visit 4) at 1440 × 780 on `next build` + `next start` with
 // SYNTHETIC records, both paths (right first time / wrong first). The same standard as the last round:
-//  - every `svg[data-picture]` on every screen has drawn children and a non-zero box;
+//  - every `svg[data-picture]` on every screen has drawn children and a non-zero box, and a painted one (`data-raster`) or an
+//    `img[data-art]` must really load (Nov 18);
 //  - every narrated line must be a real recorded production clip or a line of the NEW catalogue (not recorded yet: a stand-in plays,
 //    counted separately). Anything else, or any device voice on a narrated screen, is a failure.
 // Audio really plays, muted (Audio muted, Chromium --mute-audio).
@@ -91,13 +92,25 @@ let picturesSeen = 0;
 async function pictures(page, label) {
   const r = await page.evaluate(() => ({
     out: [...document.querySelectorAll("svg[data-picture]")].map((e) => { const b = e.getBBox(); const c = e.getBoundingClientRect(); return { id: e.dataset.picture, kids: e.querySelectorAll("*").length, w: Math.round(b.width), h: Math.round(b.height), on: c.width > 0 && c.height > 0 }; }),
-    imgs: [...document.querySelectorAll("[data-testid='harvest-table-art'], [data-testid='scene-portrait'] img")].map((i) => ({ s: i.getAttribute("src"), n: i.naturalWidth })),
+    imgs: [...document.querySelectorAll("[data-testid='harvest-table-art'], [data-testid='scene-portrait'] img, img[data-art]")].map((i) => ({ s: i.getAttribute("src"), n: i.complete ? i.naturalWidth : 0 })),
   }));
+  // Nov 18: a painted picture is an `svg[data-picture]` with one `<image>`; its box exists even when the file is missing, so the
+  // file itself must load and decode (same session, same URL) or the picture counts as empty.
+  r.imgs.push(...(await rasterPictures(page)));
   picturesSeen += r.out.length;
   const bad = r.out.filter((p) => !p.kids || !p.w || !p.h || !p.on);
   const badI = r.imgs.filter((i) => !i.n);
   await scan(page, label);
   check(`PIC.${label}`, !bad.length && !badI.length, bad.length || badI.length ? { bad, badI } : { n: r.out.length });
+}
+async function rasterPictures(page) {
+  return page.evaluate(() => Promise.all([...document.querySelectorAll("svg[data-picture][data-raster]")].map((e) => new Promise((done) => {
+    const src = e.dataset.raster;
+    const img = new Image();
+    img.onload = () => done({ s: src, n: img.naturalWidth, id: e.dataset.picture });
+    img.onerror = () => done({ s: src, n: 0, id: e.dataset.picture });
+    img.src = src;
+  }))));
 }
 /** No tech word on any child screen (the fictional-mode banner of the test server is not a child line). */
 async function scan(page, label) {

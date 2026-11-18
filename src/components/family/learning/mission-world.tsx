@@ -34,6 +34,9 @@ import { nextExpectedChar } from "@/lib/family-learning-typing-metrics";
 import { browserSpeech, playListening } from "@/lib/family-learning-listening";
 import { HarborIsland } from "./harbor-island";
 import { plateFor, type PlateId } from "./harbor-island-plates";
+import cozyRosa from "@/assets/family-learning/cozy/portrait-rosa.webp";
+import cozyBaumann from "@/assets/family-learning/cozy/portrait-baumann.webp";
+import cozyJune from "@/assets/family-learning/cozy/portrait-june.webp";
 import { HandsKeyboard } from "./hands-keyboard";
 import { MissionWorldChanges } from "./mission-world-changes";
 import type { WorldMarker } from "./expedition-world";
@@ -672,6 +675,9 @@ export function MissionWorld({ child, view, mission, markers, busy, act, speech,
 // ---------------------------------------------------------------------------
 
 const CHARACTER_PLATE: Record<string, PlateId> = { keeper: "keeper", planner: "planner", supplier: "supplier" };
+/** Nov 18 (one art style): the scene portraits of the island's people in the map's cozy 3D style (like Dr. Mateo's), used in
+ *  the scene banner instead of the painted island plate. The plates stay on the painted island itself. */
+const CHARACTER_PORTRAIT: Record<string, string> = { supplier: cozyRosa.src, planner: cozyBaumann.src, keeper: cozyJune.src };
 const PLACE_PLATE: Record<string, PlateId> = { workshop: "workshop", office: "office", shop: "shop", harbormaster: "harbormaster" };
 
 /** Where the scene camera looks for each place (stage units): the building or the stretch of shore that makes the place recognisable. */
@@ -743,7 +749,8 @@ export function SceneCompanion({ companion }: { companion: { name: string; src: 
 function SceneBanner({ mission, active, line, saying, onReplay, onBack }: { mission: MissionView; active: MissionActiveView; line: MissionActiveView["intro"][number] | null; saying: boolean; onReplay: (() => void) | null; onBack: (() => void) | null }) {
   const who = (line?.speaker ? mission.characters.find((c) => c.id === line.speaker) : null) ?? (active.character ? mission.characters.find((c) => c.id === active.character) : null) ?? mission.characters.find((c) => c.plate === "planner") ?? mission.characters[0] ?? null;
   const plate = who && CHARACTER_PLATE[who.plate ?? ""] ? plateFor(CHARACTER_PLATE[who.plate ?? ""]) : null;
-  const portrait = who?.portrait ?? plate?.href ?? null;
+  const painted = who?.portrait ?? CHARACTER_PORTRAIT[who?.plate ?? ""] ?? null;
+  const portrait = painted ?? plate?.href ?? null;
   const speaker = line?.speaker ? mission.characters.find((c) => c.id === line.speaker)?.name ?? null : null;
   const { required, resolved } = mission.progress;
   return (
@@ -751,7 +758,7 @@ function SceneBanner({ mission, active, line, saying, onReplay, onBack }: { miss
       <span className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full" style={{ background: "#d6e6f0" }} data-testid="scene-portrait">
         {portrait ? (
           // eslint-disable-next-line @next/next/no-img-element -- a small static plate cropped to the face
-          <img src={portrait} alt={who?.name ?? ""} className={who?.portrait ? "absolute inset-0 h-full w-full object-cover" : "absolute left-1/2 top-1 h-[250%] w-auto max-w-none -translate-x-1/2"} />
+          <img src={portrait} alt={who?.name ?? ""} className={painted ? "absolute inset-0 h-full w-full object-cover" : "absolute left-1/2 top-1 h-[250%] w-auto max-w-none -translate-x-1/2"} />
         ) : null}
       </span>
       {mission.companion ? <SceneCompanion companion={mission.companion} /> : null}
