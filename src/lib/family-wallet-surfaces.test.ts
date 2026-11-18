@@ -10,6 +10,7 @@ describe("family wallet consumer contract (October 8, 2026)", () => {
   const assistant = source("../app/family/(shell)/assistant/client.tsx");
   const parent = source("../app/family/parent/client.tsx");
   const games = source("../app/family/(shell)/games/client.tsx");
+  const redeem = source("../components/family/coin-redeem.tsx");
 
   it("the shell provider is the one reader of the authenticated permanent-wallet projection for every child surface", () => {
     match(provider, /fetch\("\/api\/family\/wallet"/);
@@ -24,12 +25,28 @@ describe("family wallet consumer contract (October 8, 2026)", () => {
   it("no child surface posts a catalog redemption any more; the only purchases are the Studio block and (November 1, 2026) the chess block, each confirmed with an idempotency key", () => {
     doesNotMatch(coins, /\/api\/family\/redemptions/);
     doesNotMatch(games, /\/api\/family\/redemptions/);
-    match(games, /client\.purchase\(child, keyRef\.current, undefined, kind\)/);
-    match(games, /Yes, buy for 🪙 \$\{price\.coins\}/);
-    match(games, /Yes, buy for 🪙 \$\{chessPrice\.coins\}/);
-    match(games, /onClick=\{\(\) => buy\("chess"\)\}/);
-    match(games, /onClick=\{\(\) => buy\("paid"\)\}/);
-    match(games, /if \(buying\) return/);
+    doesNotMatch(redeem, /\/api\/family\/redemptions/);
+    // November 18, 2026: the one purchase flow lives in the shared redeem rows, used by Games and Coins.
+    match(redeem, /client\.purchase\(child, keyRef\.current, undefined, kind\)/);
+    match(redeem, /Ja, kaufen für 🪙 \$\{row\.coins\}/);
+    match(redeem, /onClick=\{\(\) => buy\(row\.kind\)\} disabled=\{buying\}/);
+    match(redeem, /onClick=\{\(\) => openConfirm\(row\.kind\)\}/);
+    match(redeem, /if \(buying\) return/);
+    match(redeem, /if \(inFlight\.current\) return/);
+    match(redeem, /disabled=\{!affordable\}/);
+    for (const surface of [games, coins]) {
+      match(surface, /useCoinPurchase\(child, client, onSettled\)/);
+      match(surface, /<CoinRedeemRows state=\{state\.state\} purchase=\{purchase\}( playHref=\{playHref\})? \/>/);
+      doesNotMatch(surface, /client\.purchase\(/);
+    }
+  });
+
+  it("the shared purchase flow keeps the key on a network failure and drops it on success, refusal and cancel", () => {
+    const buy = redeem.slice(redeem.indexOf("const buy = useCallback"), redeem.indexOf("return { confirming"));
+    match(buy, /if \(!keyRef\.current\) keyRef\.current = newIdempotencyKey\(\)/);
+    const tail = buy.slice(buy.lastIndexOf('failure === "insufficient"'));
+    doesNotMatch(tail.slice(tail.indexOf("return;\n    }")), /keyRef\.current = null/);
+    match(redeem, /const cancel = useCallback\(\(\) => \{\n    setConfirming\(null\);\n    keyRef\.current = null;/);
   });
 
   it("the parent tools undo spending by redemption id (play purchases refund exactly once through the same route)", () => {
