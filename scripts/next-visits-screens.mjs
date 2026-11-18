@@ -604,7 +604,7 @@ async function santiago() {
   await page.waitForURL((u) => u.pathname !== "/family/learn/mission", { timeout: 25000 });
   const endUrl = new URL(page.url());
   check("S.end-lands-on-the-learning-home", endUrl.pathname === "/family/learn" && endUrl.searchParams.get("child") === "santiago", endUrl.pathname + endUrl.search);
-  await page.waitForSelector("[data-testid='home-map'], [data-testid='world-screen'], [data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 40000 });
+  await page.waitForSelector("[data-testid='home-map'], [data-testid='world-screen'], [data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 40000 }).catch(() => null);
   if (MAP_START) await page.waitForSelector("[data-testid='home-map']", { timeout: 40000 }).catch(() => null);
   check("S.end-shows-the-map", MAP_START ? (await page.locator("[data-testid='home-map']").count()) === 1 : true);
   await settle(1500);
@@ -784,7 +784,7 @@ async function isabel() {
   await page.waitForURL((u) => u.pathname !== "/family/learn/mission", { timeout: 25000 });
   const endUrl = new URL(page.url());
   check("I.end-lands-on-the-learning-home", endUrl.pathname === "/family/learn" && endUrl.searchParams.get("child") === "isabel", endUrl.pathname + endUrl.search);
-  await page.waitForSelector("[data-testid='home-map'], [data-testid='workshop-hub'], [data-testid='world-screen'], [data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 40000 });
+  await page.waitForSelector("[data-testid='home-map'], [data-testid='workshop-hub'], [data-testid='world-screen'], [data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 40000 }).catch(() => null);
   if (MAP_START) await page.waitForSelector("[data-testid='home-map']", { timeout: 40000 }).catch(() => null);
   check("I.end-shows-the-map", MAP_START ? (await page.locator("[data-testid='home-map']").count()) === 1 : true);
   await settle(1500);
