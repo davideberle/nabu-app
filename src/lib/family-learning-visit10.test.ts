@@ -17,7 +17,7 @@ import { NOKT_TALK_MAX_CHILD_TURNS, talkAppLine, talkEnded, talkSystemPrompt } f
 import { WORKSHOP_PICTURES } from "./family-learning-mission-spec.ts";
 import { asLearningContent } from "./family-learning-content.ts";
 import { buildChildView, EMPTY_PARENT_SETTINGS, newMissionState } from "./family-learning-state.ts";
-import { createNarrationPlayer, NARRATION_PLAYBACK_RATE, playbackRateFor, SPANISH_PLAYBACK_RATE } from "./family-narration-player.ts";
+import { createNarrationPlayer, GERMAN_PLAYBACK_RATE, lineSafetyMs, NARRATION_PLAYBACK_RATE, playbackRateFor, SPANISH_PLAYBACK_RATE } from "./family-narration-player.ts";
 import { clipEtag } from "./family-narration-store.ts";
 import { closingLines, spokenClosingLines, type ClosingSource } from "./family-learning-narration.ts";
 
@@ -55,28 +55,27 @@ function fakePlayer(slot: "de-female" | "de-male") {
 }
 
 describe("A3 — slower narration, pitch preserved, nothing cut off", () => {
-  it("Ava, Rosa and June play at 0.88 with the pitch kept", async () => {
+  it("Ava plays slower (Nov 18: German at 0.85) with the pitch kept", async () => {
     const { audio, player, line } = fakePlayer("de-female");
     await player.play({ key: "k", lines: [line] });
-    equal(audio.playbackRate, 0.88);
-    equal(audio.defaultPlaybackRate, 0.88);
+    equal(audio.playbackRate, GERMAN_PLAYBACK_RATE);
+    equal(audio.defaultPlaybackRate, GERMAN_PLAYBACK_RATE);
     equal(audio.preservesPitch, true);
     equal(audio.webkitPreservesPitch, true);
   });
-  it("the rate applies to those three voices only", () => {
-    equal(playbackRateFor("de-female"), NARRATION_PLAYBACK_RATE);
+  it("the rates by voice: German 0.85, Spanish 0.8, June 0.88, others normal", () => {
+    equal(playbackRateFor("de-female"), GERMAN_PLAYBACK_RATE);
+    equal(playbackRateFor("de-male"), GERMAN_PLAYBACK_RATE);
     equal(playbackRateFor("es-female"), SPANISH_PLAYBACK_RATE);
     equal(playbackRateFor("es-male"), SPANISH_PLAYBACK_RATE);
     equal(playbackRateFor("en-female"), NARRATION_PLAYBACK_RATE);
-    equal(playbackRateFor("de-male"), 1);
+    equal(playbackRateFor("en-male"), 1);
     equal(playbackRateFor(null), 1);
   });
   it("the safety timer grows with the slower speed, so it cannot end a line early", async () => {
     const slow = fakePlayer("de-female");
     await slow.player.play({ key: "a", lines: [slow.line] });
-    const normal = fakePlayer("de-male");
-    await normal.player.play({ key: "b", lines: [normal.line] });
-    ok(Math.abs(slow.timer() - normal.timer() / 0.88) < 1);
+    ok(Math.abs(slow.timer() - lineSafetyMs(slow.line.text, 1) / GERMAN_PLAYBACK_RATE) < 1);
   });
 });
 

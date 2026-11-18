@@ -366,6 +366,19 @@ export function farewellLines(content: LearningContent, m: MissionDef): string[]
   return [...(outcome?.done ?? []).map((l) => l.text), ...(done ? [done] : [])];
 }
 
+/**
+ * What the goodbye screen after the closing questions SHOWS AND SPEAKS (Nov 18): only the visit's own goodbye line. The outcome's
+ * done lines (Visit 4's cliffhanger «Schau! Die zwei Vögel landen auf dem Dach. … Ob sie einziehen?») were already spoken on the
+ * outcome beat — repeating them here made the cliffhanger play twice. Falls back to the outcome's done lines only when the visit
+ * has no goodbye line of its own (so the screen is never empty). Every line returned is in `farewellLines` (recorded).
+ */
+export function farewellScreenLines(content: LearningContent, m: MissionDef): string[] {
+  const all = farewellLines(content, m);
+  const outcome = new Set((m.steps.find((x) => x.kind === "outcome")?.done ?? []).map((l) => normaliseNarration(l.text)));
+  const own = all.filter((t) => !outcome.has(normaliseNarration(t)));
+  return own.length ? own : all;
+}
+
 /** Total characters of a catalogue (the unit a TTS provider bills; cost = characters × the provider's current rate). */
 export function catalogCharacters(c: NarrationLine[]): number {
   return c.reduce((n, l) => n + l.text.length, 0);

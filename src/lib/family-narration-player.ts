@@ -6,8 +6,10 @@
 //  - `play(script)` supersedes whatever was playing (sequence number): late audio of an old screen is dropped, never spoken
 //    over the new one; `stop()` silences everything and leaves the screen as it is; nothing ever advances the visit;
 //  - each line: the PRERECORDED clip of the reviewed text in its character's voice slot (authenticated clip route, catalogued
-//    lines only) → else the device's own speech with an explicitly chosen NATIVE voice of the slot's language → else nothing
-//    («unavailable»). Never the device's default voice: an English voice reading German is not a fallback (I2-06);
+//    lines only). Nov 18: a line WITH a voice slot (every catalogued line) plays only its recording — a missing or broken clip
+//    is reported («missing», visible, telemetry «narration-missing-recording») and never replaced by a device voice. Only a
+//    line without a slot (not catalogued; no current narrated content has one) may use a NATIVE device voice of its language,
+//    else nothing («unavailable»). Never the device's default voice (I2-06);
 //  - a refused play() (autoplay policy after a reload) is reported as «blocked» so the UI can offer one big «Vorlesen» tap;
 //  - every exit path revokes object URLs; a bounded timer ends a line whose device never reports its end.
 // A played line proves only that the device reported playback, not that it was audible or understood.
@@ -21,10 +23,21 @@ export const NARRATION_CLIP_PATH = "/api/family/learning/narration";
 
 /** Nov 8 review: Ava, Rosa and June were too fast. Applied at playback with the pitch preserved; nothing is re-recorded. */
 export const NARRATION_PLAYBACK_RATE = 0.88;
-const SLOWED_SLOTS: ReadonlySet<string> = new Set(["de-female", "es-female", "en-female"]);
+/** Nov 18 review (Isabel Visit 4): the German story narration was still too fast — both German voices play at 0.85. */
+export const GERMAN_PLAYBACK_RATE = 0.85;
+const SLOWED_SLOTS: ReadonlySet<string> = new Set(["en-female"]);
 /** Nov 14 review (Visit 10): Spanish was still a bit fast for him — both Spanish voices (Rosa, Dr. Mateo) play slower. */
 export const SPANISH_PLAYBACK_RATE = 0.8;
-export const playbackRateFor = (slot: string | null | undefined): number => (slot === "es-female" || slot === "es-male" ? SPANISH_PLAYBACK_RATE : slot && SLOWED_SLOTS.has(slot) ? NARRATION_PLAYBACK_RATE : 1);
+export const playbackRateFor = (slot: string | null | undefined): number =>
+  slot === "es-female" || slot === "es-male" ? SPANISH_PLAYBACK_RATE : slot === "de-female" || slot === "de-male" ? GERMAN_PLAYBACK_RATE : slot && SLOWED_SLOTS.has(slot) ? NARRATION_PLAYBACK_RATE : 1;
+
+/**
+ * The safety timer of one line at `rate`: a device that never reports the end must not hold the screen forever, but a playing
+ * clip must never be cut off. The estimate is generous (110 ms per character at normal speed, ≈ 9 characters/s) and scales with
+ * the rate; when it fires while the clip is still playing it is re-armed (up to `LINE_HARD_CAP_MS`).
+ */
+export const lineSafetyMs = (text: string, rate = 1): number => Math.min(30000, 4000 + text.length * 110) / Math.min(1, Math.max(0.5, rate));
+export const LINE_HARD_CAP_MS = 120_000;
 
 /** Sets the speed on the element; a media load resets `playbackRate` to the default, so both are set (before and after `src`). */
 function applyRate(el: AudioLike, rate: number) {
@@ -41,7 +54,7 @@ export type PlayResult = "done" | "cancelled" | "locked" | "blocked" | "unavaila
 export type VoiceLike = { name: string; lang: string; localService?: boolean; default?: boolean };
 type UtteranceLike = { lang: string; rate: number; voice?: unknown; onend: (() => void) | null; onerror: ((e?: { error?: string }) => void) | null };
 type SynthLike = { cancel: () => void; speak: (u: UtteranceLike) => void; getVoices: () => VoiceLike[]; addEventListener?: (t: string, fn: () => void) => void; removeEventListener?: (t: string, fn: () => void) => void };
-type AudioLike = { src: string; play: () => Promise<void> | void; pause: () => void; onended: (() => void) | null; onerror: (() => void) | null; playbackRate?: number; defaultPlaybackRate?: number; preservesPitch?: boolean; webkitPreservesPitch?: boolean };
+type AudioLike = { src: string; play: () => Promise<void> | void; pause: () => void; onended: (() => void) | null; onerror: (() => void) | null; playbackRate?: number; defaultPlaybackRate?: number; preservesPitch?: boolean; webkitPreservesPitch?: boolean; paused?: boolean; ended?: boolean };
 
 export type NarrationPlayerDeps = {
   /** Fetch the prerecorded clip of one line, or null when none is recorded (404/503/network). */
@@ -56,9 +69,9 @@ export type NarrationPlayerDeps = {
   onStatus?: (s: NarrationStatus) => void;
   onLine?: (line: NarrationLine, outcome: LineOutcome, voice: string | null) => void;
   /**
-   * The slots whose selected ElevenLabs voice is configured on the server. For such a slot ONLY its recording may play: a missing
-   * recording is reported («missing-recording», status «missing») and nothing else is spoken — no device or default voice silently
-   * stands in for the selected voice. Slots without a selected voice keep the native-device-voice fallback.
+   * The slots whose selected ElevenLabs voice is configured on the server. Kept for callers; since Nov 18 EVERY slotted line plays
+   * only its recording (a missing recording is reported, «missing-recording» / status «missing», and nothing else is spoken),
+   * whether or not its slot is configured.
    */
   configuredSlots?: () => ReadonlySet<string>;
 };
@@ -184,11 +197,25 @@ export function createNarrationPlayer(deps: NarrationPlayerDeps = {}): Narration
     return list;
   }
 
-  /** Waits for one line's end; a device that never reports it is ended by a bounded timer (never blocks the next screen). */
-  const waitLine = (text: string, start: () => void, rate = 1) =>
+  /**
+   * Waits for one line's end; a device that never reports it is ended by a bounded timer (never blocks the next screen). The
+   * timer scales with the rate, and while `stillPlaying()` says the clip is audibly running it waits on (bounded by the hard cap),
+   * so the timer can never cut a playing line off.
+   */
+  const waitLine = (text: string, start: () => void, rate = 1, stillPlaying: () => boolean = () => false) =>
     new Promise<"ended" | "error" | "blocked" | "cancelled">((resolve) => {
       let settled = false;
-      const timer = setTimer(() => settle("ended"), Math.min(30000, 4000 + text.length * 110) / rate);
+      const step = lineSafetyMs(text, rate);
+      let waited = 0;
+      let timer: unknown;
+      const arm = () => {
+        timer = setTimer(() => {
+          waited += step;
+          if (!settled && stillPlaying() && waited < LINE_HARD_CAP_MS) arm();
+          else settle("ended");
+        }, step);
+      };
+      arm();
       const settle = (r: "ended" | "error" | "blocked" | "cancelled") => {
         if (settled) return;
         settled = true;
@@ -226,7 +253,7 @@ export function createNarrationPlayer(deps: NarrationPlayerDeps = {}): Narration
           applyRate(el, rate);
           const p = el.play();
           if (p && typeof (p as Promise<void>).catch === "function") (p as Promise<void>).catch((e: { name?: string }) => finishLine?.(e?.name === "NotAllowedError" ? "blocked" : "error"));
-        }, rate);
+        }, rate, () => el.paused === false && el.ended !== true);
         el.onended = null;
         el.onerror = null;
         release();
@@ -239,7 +266,8 @@ export function createNarrationPlayer(deps: NarrationPlayerDeps = {}): Narration
         // A broken clip: this line falls through to the German device voice.
       }
     }
-    if (l.slot && deps.configuredSlots?.().has(l.slot)) {
+    // Nov 18: a line with a voice slot is a catalogued recording — only that recording may speak it, never a device voice.
+    if (l.slot) {
       deps.onLine?.(l, "missing-recording", null);
       return "missing-recording";
     }

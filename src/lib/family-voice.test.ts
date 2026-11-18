@@ -7,6 +7,8 @@ import { describe, it } from "node:test";
 import { MAX_CHILD_TURN_CHARS } from "./family-assistant-turn.ts";
 import {
   FINAL_CHUNK_GRACE_MS,
+  LIVE_PROBE_TIMEOUT_MS,
+  LIVE_PROBE_TIMESLICE_MS,
   MAX_RECORDING_MS,
   MIN_LIVE_CAPTURE_MS,
   RECORDER_MIME_PREFERENCES,
@@ -184,7 +186,7 @@ const flush = () => new Promise<void>((resolve) => setImmediate(resolve));
 type FakeRecorder = ReturnType<typeof makeRecorder>;
 
 function makeRecorder(mimeType: string | null, onStart?: (self: FakeRecorder) => void) {
-  const log = { starts: 0, stops: 0, detaches: 0 };
+  const log = { starts: 0, stops: 0, detaches: 0, timeslices: [] as (number | undefined)[] };
   let handlers: RecorderHandlers | null = null;
   const self = {
     log,
@@ -201,9 +203,14 @@ function makeRecorder(mimeType: string | null, onStart?: (self: FakeRecorder) =>
     errorEvent() {
       handlers?.onError();
     },
+    /** The recorder's own `start` event (fires after `start()` returned, as in browsers). */
+    startEvent() {
+      handlers?.onStart?.();
+    },
     control: {
-      start: () => {
+      start: (timesliceMs?: number) => {
         log.starts += 1;
+        log.timeslices.push(timesliceMs);
         onStart?.(self);
       },
       stop: () => {
@@ -229,12 +236,14 @@ type HarnessOptions = {
   onStart?: (recorder: FakeRecorder) => void;
   /** Fail blob assembly, the last thing that can go wrong. */
   blobThrows?: boolean;
+  liveWhen?: "start-returned" | "audio-flowing";
 };
 
 function harness(options: HarnessOptions = {}) {
   const clock = makeClock();
   const events: string[] = [];
   const outcomes: PushToTalkOutcome[] = [];
+  const marks: string[] = [];
   const requestedMimes: (string | null)[] = [];
   const tracks = { stopped: 0 };
   const mediaStream = {
@@ -264,6 +273,7 @@ function harness(options: HarnessOptions = {}) {
       return recorder.control;
     },
     onLive: () => events.push("live"),
+    ...(options.liveWhen ? { liveWhen: options.liveWhen, onMark: (m: string, at: number) => marks.push(`${m}@${at}`) } : {}),
     onSettle: (outcome) => {
       events.push(`settle:${outcome.kind}`);
       outcomes.push(outcome);
@@ -287,6 +297,7 @@ function harness(options: HarnessOptions = {}) {
     clock,
     recorder,
     events,
+    marks,
     outcomes,
     requestedMimes,
     tracksStopped: () => tracks.stopped,
@@ -366,6 +377,94 @@ describe("startPushToTalk — startup vs. live", () => {
     equal(h.tracksStopped(), 2, "the late stream is handed straight back");
     equal(h.recorder.log.starts, 0, "no recorder is built for a cancelled session");
     equal(h.outcomes.length, 1);
+  });
+});
+
+// Nov 18 (Santiago): «Jetzt sprechen!» came about a second before the microphone was recording. Nokt's mic now waits for the
+// recorder's own `start` event AND the first non-empty chunk of captured audio. States: starting → live (that event) → stopping.
+describe("startPushToTalk — liveWhen: audio-flowing (Nokt's microphone)", () => {
+  it("stays starting after start() returns and after the start event; goes live on the first captured audio", async () => {
+    const h = harness({ liveWhen: "audio-flowing" });
+    await h.grant();
+    equal(h.recorder.log.starts, 1);
+    deepEqual(h.recorder.log.timeslices, [LIVE_PROBE_TIMESLICE_MS], "records in slices so the first audio is seen");
+    deepEqual(h.events, [], "start() returned: not live yet");
+    equal(h.session.isLive(), false);
+    h.clock.advance(300);
+    h.recorder.startEvent();
+    deepEqual(h.events, [], "the recorder started, but no audio has arrived yet");
+    h.recorder.data(0);
+    deepEqual(h.events, [], "an empty chunk is not audio");
+    h.clock.advance(200);
+    h.recorder.data(512);
+    deepEqual(h.events, ["live"]);
+    equal(h.session.isLive(), true);
+    deepEqual(h.marks.map((m) => m.split("@")[0]), ["media", "start-called", "start-event", "first-audio", "live"]);
+    const at = (name: string) => Number(h.marks.find((m) => m.startsWith(`${name}@`))!.split("@")[1]);
+    ok(at("live") >= at("first-audio") && at("first-audio") >= at("start-event"), "live never precedes the recorder start or the first audio");
+  });
+
+  it("needs both: audio before the start event does not count until the start event", async () => {
+    const h = harness({ liveWhen: "audio-flowing" });
+    await h.grant();
+    h.recorder.data(256);
+    deepEqual(h.events, []);
+    h.recorder.startEvent();
+    deepEqual(h.events, ["live"]);
+  });
+
+  it("the audio captured before «live» stays part of the turn", async () => {
+    const h = harness({ liveWhen: "audio-flowing" });
+    await h.grant();
+    h.recorder.startEvent();
+    h.recorder.data(100);
+    h.clock.advance(MIN_LIVE_CAPTURE_MS);
+    h.session.stop();
+    h.recorder.data(300);
+    h.recorder.stopEvent();
+    const outcome = h.only();
+    ok(outcome.kind === "recorded" && outcome.blob.size === 400);
+  });
+
+  it("a Stop tapped while the microphone starts is kept and applied once live (after the floor)", async () => {
+    const h = harness({ liveWhen: "audio-flowing" });
+    await h.grant();
+    h.session.stop();
+    h.recorder.startEvent();
+    h.recorder.data(64);
+    deepEqual(h.events, ["live"]);
+    equal(h.recorder.log.stops, 0);
+    h.clock.advance(MIN_LIVE_CAPTURE_MS);
+    equal(h.recorder.log.stops, 1);
+  });
+
+  it("never hangs on «Mikrofon startet …»: without a first chunk it goes live on a bounded timer after the start event", async () => {
+    const h = harness({ liveWhen: "audio-flowing" });
+    await h.grant();
+    h.recorder.startEvent();
+    h.clock.advance(LIVE_PROBE_TIMEOUT_MS - 1);
+    deepEqual(h.events, []);
+    h.clock.advance(1);
+    deepEqual(h.events, ["live"]);
+    ok(h.marks.some((m) => m.startsWith("live-by-timeout@")));
+  });
+
+  it("is cancelled cleanly while waiting for audio (one outcome, microphone released)", async () => {
+    const h = harness({ liveWhen: "audio-flowing" });
+    await h.grant();
+    h.recorder.startEvent();
+    h.session.cancel();
+    h.recorder.data(64);
+    h.clock.advance(LIVE_PROBE_TIMEOUT_MS * 2);
+    deepEqual(h.events, ["settle:cancelled"]);
+    equal(h.tracksStopped(), 2);
+  });
+
+  it("the default (other microphones) is unchanged: live as soon as start() returned, no timeslice", async () => {
+    const h = harness();
+    await h.grant();
+    deepEqual(h.events, ["live"]);
+    deepEqual(h.recorder.log.timeslices, [undefined]);
   });
 });
 

@@ -61,7 +61,7 @@ import { buildWritingReviewDispatch, evaluateLogRevision, parseWritingReviewRepl
 import { applyReasoningChoice, applyReasoningReply, applyReasoningTurn, childExplanationText, closeReasoningUnresolved, effectiveLevel, levelLabel, MAX_REPLY_CHARS, methodLabel, newReasoningState, pendingDispatch, turnsLeft, type AssessmentLevel, type ReasoningDispatchContext, type ReasoningState, type ReplyOrigin } from "./family-learning-reasoning.ts";
 import { sha256Hex } from "./family-learning-hash.ts";
 import { liveTutorDeferred } from "./family-learning-deferral.ts";
-import { farewellLines } from "./family-learning-narration.ts";
+import { farewellScreenLines } from "./family-learning-narration.ts";
 import { applyMissionAction, buildMissionView, fillStoryTokens, chosenGrid, chosenOption, mapEnding, narratedWorkshopEnding, narratedWorkshopRecap, workshopEnding, workshopRecap, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, stepStatuses, visibleWorld, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
 import { applyNoktTalk, noktTalkView } from "./family-learning-nokt-talk.ts";
 import { originWithoutBinding, provenanceOf, receiptOrigin as bindReceipt, type InvalidReceipt, type ReceiptInput, type VerifiedReceipt } from "./family-learning-trust.ts";
@@ -3104,7 +3104,7 @@ function closingView(state: MissionState, content: LearningContent, visit: Visit
       // Isabel Visit 2 (narrated): the result was already shown and spoken on the outcome beat; the closing asks one question per
       // screen and ends with the spoken goodbye.
       const nEnding = narratedWorkshopEnding(def, run);
-      return { success: nEnding.success, next: nEnding.next, artifact: null, plan: null, feedback: fb, made: decideStep ? chosenOption(def, run, decideStep.id) : null, recap: narratedWorkshopRecap(def, run), farewell: farewellLines(content, def), narrated: true };
+      return { success: nEnding.success, next: nEnding.next, artifact: null, plan: null, feedback: fb, made: decideStep ? chosenOption(def, run, decideStep.id) : null, recap: narratedWorkshopRecap(def, run), farewell: farewellScreenLines(content, def), narrated: true };
     }
     return { success: ending.success, next: ending.next, artifact: null, plan: null, feedback: fb, made: decideStep ? chosenOption(def, run, decideStep.id) : null, recap: workshopRecap(def, run) };
   }

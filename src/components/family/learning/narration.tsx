@@ -93,9 +93,9 @@ export function NarrationControl({ status, onReplay, className }: { status: Narr
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Story voices for scenes that keep their own per-line controls (Santiago's scenes; 2026-10-29). The page provides the player
-// and the slots that have a selected voice. A line is spoken in the slot of its own language × its character's gender ONLY when
-// that slot has a selected voice — then only its recording plays (a missing one is reported, never replaced). Otherwise the
-// caller keeps its earlier route unchanged (so nothing changes for him until the voices are configured).
+// and the slots that have a selected voice. A line is spoken in the slot of its own language × its character's gender; only its
+// recording plays (a missing one is reported, never replaced — Nov 18: also when the slot's voice is not configured). A line with
+// no slot (a character without a known gender) keeps the caller's earlier route.
 // ---------------------------------------------------------------------------------------------------------------------
 
 export type StoryVoices = { narrator: NarrationPlayer; isConfigured: (slot: string) => boolean };
@@ -109,7 +109,9 @@ export function useStorySpeech(characters: readonly { id: string; gender?: Story
     async (text: string, language: string, speaker: string | null): Promise<StorySpeechResult | null> => {
       if (!ctx) return null;
       const slot = slotFor(characters.find((c) => c.id === speaker)?.gender ?? null, language);
-      if (!slot || !ctx.isConfigured(slot)) return null;
+      // Nov 18: a line with a slot is catalogued — only its recording may speak it (a missing one is reported, never a device
+      // voice), even when the slot's voice is not configured. Only a line without a slot keeps the earlier route.
+      if (!slot) return null;
       ctx.narrator.unlock();
       const r = await ctx.narrator.play({ key: `story|${slot}|${text}|${Date.now()}`, lines: [storyLine(text, slot)] });
       if (r === "cancelled") return "cancelled";
