@@ -6,7 +6,7 @@
 //  - every narrated line must be a real recorded production clip or a line of the NEW catalogue (not recorded yet: a stand-in plays,
 //    counted separately). Anything else, or any device voice on a narrated screen, is a failure.
 // Audio really plays, muted (Audio muted, Chromium --mute-audio).
-//   node scripts/next-visits-screens.mjs --base http://127.0.0.1:3611 --out <dir> --who santiago|isabel|map-s|map-i|fail [--path main|wrong] [--clips <dir>] [--index <json>] [--fresh <json>] [--standin <audio>] [--map]
+//   node scripts/next-visits-screens.mjs --base http://127.0.0.1:3611 --out <dir> --who santiago|isabel|map-s|map-i|fail [--path main|wrong] [--clips <dir>] [--index <json>] [--fresh <json>] [--standin <audio>] [--map] [--roof red|blue|yellow]
 //
 // Nov 18 additions (visit flow):
 //  - `--standin <file>`: the stand-in clip for catalogue lines without a real recording. Use a LONG one (4–6 s) so an early
@@ -21,6 +21,15 @@
 //  - The end of each visit must land on the learning Home screen (/family/learn, the map with FAMILY_HOME_MAP), never /family/home.
 //  - `--map` (Isabel): start the visit from the home map (`?enter=<place>`), as on the children's device, and end on the map.
 //    Santiago's map-mode mission is walked on the island (no quest buttons), which this walk does not drive: use `--who map-s`.
+//
+// Nov 18 integration (t10-verify), after Nokt v5 (t8) met this harness (t6):
+//  - Santiago's journal (T10) is the STRICT writing step when Nokt is planned: no «So lassen». The walk waits for Nokt's
+//    answer, then rewrites the sentence correctly and expects `write-done` (no stale-revision notice). The mic check runs
+//    in this writing panel; the v5 look-back of this visit is thanks + close (no talk), so it no longer hosts the mic.
+//    Run Santiago with the v5 stub: `scripts/nokt-v5-stub-bridge.mjs <port> <app-origin>` (visit10-nokt-bridge.mjs is not
+//    v5-aware: with it the journal talk ends on the app's «Nokt kann gerade nichts …» line).
+//  - `--roof red|blue|yellow` (Isabel): the roof colour to pick (default: red on main, blue on wrong). The end picture on
+//    IV11 and on the goodbye must be the painted birdhouse-on-the-tree scene in THAT colour (`birdhouse-tree-<colour>`).
 import fs from "node:fs";
 import path from "node:path";
 import { encode } from "@auth/core/jwt";
@@ -37,6 +46,9 @@ const FRESH_LINES = JSON.parse(fs.readFileSync(opt("--fresh", "/tmp/visit10/new-
 const FRESH = new Set(FRESH_LINES.map((l) => `${l.slot}/${l.id}`));
 const TEXT_OF = new Map(FRESH_LINES.map((l) => [`${l.slot}/${l.id}`, l.text]));
 const MAP_START = args.includes("--map");
+// --roof: roof colour override + end-picture colour check (t10-verify).
+const ROOF_OPT = opt("--roof", null);
+const endArt = async (page, where) => { const ROOF = globalThis.ROOF; const r = await page.evaluate(() => [...document.querySelectorAll("img[data-testid='birdhouse-tree-art']")].map((i) => ({ src: i.getAttribute("src"), ok: i.complete && i.naturalWidth > 0 }))); check(`I.end-picture-${where}-is-tree-${ROOF}`, r.length >= 1 && r.every((x) => x.ok && x.src.includes(`birdhouse-tree-${ROOF}`)), r); };
 // The loopback STUB bridge (scripts/visit10-nokt-bridge.mjs) — never the real one.
 const BRIDGE = opt("--bridge", "http://127.0.0.1:3299");
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(BRIDGE)) throw new Error("loopback bridge only");
@@ -530,7 +542,23 @@ async function santiago() {
   await shot(page, "T10-nokt-reads");
   await page.locator("[data-testid='nokt-talk-input']").fill("Das Wort Teich");
   await page.locator("[data-testid='nokt-talk-send']").click();
-  await page.waitForSelector("[data-testid='write-keep']", { timeout: 40000 });
+  // Nov 18 integration (Nokt v5 strict writing, t8): with Nokt planned there is no «So lassen»; he rewrites the sentence until
+  // it is right (the app's check + Nokt's close), then the step is done. Without the strict step the Nov 14 path below runs.
+  await page.waitForSelector("[data-testid='write-keep'], [data-testid='write-strict']", { timeout: 40000 });
+  if (await page.locator("[data-testid='write-strict']").count()) {
+    check("S.strict-writing-has-no-keep", (await page.locator("[data-testid='write-keep']").count()) === 0);
+    await micCheck(page, "nokt-writing");
+    // Wait for Nokt's answer to his chat line (as nokt-v5-writing-screens.mjs does) before he rewrites.
+    await page.waitForFunction(() => document.querySelector("[data-testid='nokt-writing']")?.dataset.waiting === "false" && document.querySelectorAll("[data-testid='nokt-writing'] li[data-role='nokt']").length >= 3, null, { timeout: 40000 });
+    await page.waitForSelector("[data-testid='write-strict'][data-pending='false']", { timeout: 40000 });
+    await settle(600);
+    await page.locator("[data-testid='write-revise']").fill("Heute haben wir eine Schildkröte gefunden. Sie bekommt einen Teich.");
+    { const d = saved(page).catch(() => null); await page.locator("[data-testid='write-revise-send']").click(); await d; }
+    await page.waitForSelector("[data-testid='write-done']", { timeout: 40000 });
+    check("S.strict-writing-done-after-the-right-version", true);
+    check("S.strict-writing-no-stale-notice", !(await page.locator("body").innerText()).includes("neuerer Stand"));
+    await settle(800);
+  }
   // Nov 14 journal flow: the second-try field shows beside the talk; «So lassen» may need the talk's last reply first. Tap it
   // until the scene accepts it (bounded), then leave.
   for (let i = 0; i < 4 && (await page.locator("[data-testid='write-keep']").count()); i += 1) {
@@ -581,31 +609,11 @@ async function santiago() {
     await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-talk-send']").click();
     await settle(300);
   };
-  // Nov 18: the microphone once (fake media stream + fake recognizer): «Jetzt sprechen!» only after the recorder really records.
-  {
-    await page.waitForFunction(() => { const d = document.querySelector("[data-testid='nokt-debrief']"); return d?.dataset.waiting === "false" && d.querySelector("[data-testid='nokt-mic-start']") && d.querySelectorAll("[data-role='nokt']").length >= 1; }, null, { timeout: 40000 });
-    await settle(400);
-    await page.evaluate(() => globalThis.__mic.splice(0));
-    const t0 = await page.evaluate(() => performance.now());
-    await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-mic-start']").click();
-    await page.waitForSelector("[data-testid='nokt-mic-live']", { timeout: 15000 });
-    await settle(1200);
-    await shot(page, "mic-jetzt-sprechen");
-    await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-mic-stop']").click();
-    await page.waitForFunction(() => (document.querySelector("[data-testid='nokt-debrief'] [data-testid='nokt-talk-input']")?.value ?? "").trim().length > 0 || document.querySelector("[data-testid='nokt-mic-trouble']"), null, { timeout: 20000 });
-    const mic = await page.evaluate(() => globalThis.__mic.slice());
-    const at = (e) => mic.find((x) => x.e === e)?.t ?? null;
-    const r = { tap: Math.round(t0), startCalled: at("start-called"), startEvent: at("start-event"), firstData: at("first-data"), uiWait: at("ui-wait"), uiLive: at("ui-live"), waitText: mic.find((x) => x.e === "ui-wait")?.text ?? null, liveText: mic.find((x) => x.e === "ui-live")?.text ?? null, slice: mic.find((x) => x.e === "start-called")?.slice ?? null };
-    for (const k of ["startCalled", "startEvent", "firstData", "uiWait", "uiLive"]) if (r[k] !== null) r[k] = Math.round(r[k] - t0);
-    micTimings.push(r);
-    check("S.MIC.wait-text-before-live", r.uiWait !== null && (r.waitText ?? "").includes("Mikrofon startet") && r.uiWait <= (r.uiLive ?? Infinity), r);
-    check("S.MIC.jetzt-sprechen-only-after-the-recorder-start-event", r.uiLive !== null && r.startEvent !== null && r.uiLive >= r.startEvent, r);
-    check("S.MIC.jetzt-sprechen-only-after-the-first-captured-audio", r.uiLive !== null && r.firstData !== null && r.uiLive >= r.firstData, r);
-    check("S.MIC.transcript-from-the-fake-recognizer", (await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-talk-input']").inputValue()).trim().length > 0);
-    await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-talk-send']").click();
-    await settle(300);
-  }
-  await answer("Die Steine");
+  // v5 (t8): the look-back may have no talk at all (thanks + close); the mic check then ran in the writing panel.
+  await page.waitForFunction(() => { const d = document.querySelector("[data-testid='nokt-debrief']"); return d?.dataset.waiting === "false" && d.querySelectorAll("[data-role='nokt']").length >= 1; }, null, { timeout: 40000 });
+  await settle(1500);
+  if (await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-mic-start']").count()) await micCheck(page, "nokt-debrief");
+  if (await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-talk-input']").count()) await answer("Die Steine");
   await page.waitForSelector("[data-testid='debrief-finish']", { timeout: 45000 });
   await settle(400);
   check("S.no-next-visit-question", (await page.locator("[data-testid='debrief-interest-form'], [data-testid='nokt-talk-choices']").count()) === 0);
@@ -616,6 +624,7 @@ async function santiago() {
   // Nov 18: the end of the visit lands on the learning Home screen (the map), never on Family Home.
   await page.waitForURL((u) => u.pathname !== "/family/learn/mission", { timeout: 25000 });
   const endUrl = new URL(page.url());
+  check("S.MIC.checked-once-at-least", micTimings.length >= 1, micTimings.length);
   check("S.end-lands-on-the-learning-home", endUrl.pathname === "/family/learn" && endUrl.searchParams.get("child") === "santiago", endUrl.pathname + endUrl.search);
   await page.waitForSelector("[data-testid='home-map'], [data-testid='world-screen'], [data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 40000 }).catch(() => null);
   if (MAP_START) await page.waitForSelector("[data-testid='home-map']", { timeout: 40000 }).catch(() => null);
@@ -629,8 +638,38 @@ async function santiago() {
   await c.close();
 }
 
+// Nov 18: the microphone once (fake media stream + fake recognizer): «Jetzt sprechen!» only after the recorder really records.
+// t10 integration: callable on any Nokt panel (the look-back has no talk in v5 for this visit; the writing panel has the mic).
+async function micCheck(page, SCOPE) {
+
+    await page.waitForFunction((SCOPE) => { const d = document.querySelector(`[data-testid='${SCOPE}']`); return d?.dataset.waiting === "false" && d.querySelector("[data-testid='nokt-mic-start']") && d.querySelectorAll("[data-role='nokt']").length >= 1; }, SCOPE, { timeout: 40000 });
+    await settle(400);
+    await page.evaluate(() => globalThis.__mic.splice(0));
+    const t0 = await page.evaluate(() => performance.now());
+    await page.locator(`[data-testid='${SCOPE}'] [data-testid='nokt-mic-start']`).click();
+    await page.waitForSelector("[data-testid='nokt-mic-live']", { timeout: 15000 });
+    await settle(1200);
+    await shot(page, "mic-jetzt-sprechen");
+    await page.locator(`[data-testid='${SCOPE}'] [data-testid='nokt-mic-stop']`).click();
+    await page.waitForFunction((SCOPE) => (document.querySelector(`[data-testid='${SCOPE}'] [data-testid='nokt-talk-input']`)?.value ?? "").trim().length > 0 || document.querySelector("[data-testid='nokt-mic-trouble']"), SCOPE, { timeout: 20000 });
+    const mic = await page.evaluate(() => globalThis.__mic.slice());
+    const at = (e) => mic.find((x) => x.e === e)?.t ?? null;
+    const r = { tap: Math.round(t0), startCalled: at("start-called"), startEvent: at("start-event"), firstData: at("first-data"), uiWait: at("ui-wait"), uiLive: at("ui-live"), waitText: mic.find((x) => x.e === "ui-wait")?.text ?? null, liveText: mic.find((x) => x.e === "ui-live")?.text ?? null, slice: mic.find((x) => x.e === "start-called")?.slice ?? null };
+    for (const k of ["startCalled", "startEvent", "firstData", "uiWait", "uiLive"]) if (r[k] !== null) r[k] = Math.round(r[k] - t0);
+    micTimings.push(r);
+    check("S.MIC.wait-text-before-live", r.uiWait !== null && (r.waitText ?? "").includes("Mikrofon startet") && r.uiWait <= (r.uiLive ?? Infinity), r);
+    check("S.MIC.jetzt-sprechen-only-after-the-recorder-start-event", r.uiLive !== null && r.startEvent !== null && r.uiLive >= r.startEvent, r);
+    check("S.MIC.jetzt-sprechen-only-after-the-first-captured-audio", r.uiLive !== null && r.firstData !== null && r.uiLive >= r.firstData, r);
+    check("S.MIC.transcript-from-the-fake-recognizer", (await page.locator(`[data-testid='${SCOPE}'] [data-testid='nokt-talk-input']`).inputValue()).trim().length > 0);
+    await page.locator(`[data-testid='${SCOPE}'] [data-testid='nokt-talk-send']`).click();
+    await settle(300);
+  
+}
+
 async function isabel() {
   const wrong = PATH === "wrong";
+  const ROOF = ROOF_OPT ?? (wrong ? "blue" : "red");
+  globalThis.ROOF = ROOF;
   const c = await ctx("assistant");
   const page = await c.newPage();
   page.on("pageerror", (e) => pageErrors.push(String(e)));
@@ -754,11 +793,12 @@ async function isabel() {
   } else await pick("show", "Grosser Baum, hoch, neben dem Fenster");
   await next("IV10-ROOF");
   await shot(page, "IV10-roof-color");
-  { await idle(); const d = saved(page); await page.locator(`[data-testid='make-${wrong ? "blue" : "red"}']`).click(); await d; await settle(350); }
+  { await idle(); const d = saved(page); await page.locator(`[data-testid='make-${ROOF}']`).click(); await d; await settle(350); }
   await next("IV11-HOME");
   await idle();
   check("I.home-task", (await textOf(page, "[data-testid='home-task']")).includes("Fenster"));
   await shot(page, "IV11-birdhouse");
+  await endArt(page, "IV11");
   await fold(page, "IV11");
   check("I.weiter-waits-for-the-line", gateSeen);
   check("I.replay-only", !stopSeen && (await page.locator("[aria-label='Vorlesen stoppen']").count()) === 0);
@@ -791,6 +831,7 @@ async function isabel() {
   check("I.farewell-without-a-second-cliffhanger", !(await textOf(page, "[data-testid='workshop-farewell']")).includes("Ob sie einziehen?"));
   check("I.farewell-wording", (await textOf(page, "[data-testid='workshop-farewell']")).includes("Dein Vogelhaus steht jetzt im Garten. Bis bald!"));
   await pictures(page, "farewell");
+  await endArt(page, "farewell");
   await shot(page, "farewell");
   await page.waitForFunction(() => { const b = document.querySelector("[data-testid='farewell-home']"); return b && !b.disabled; }, null, { timeout: 30000 });
   await page.locator("[data-testid='farewell-home']").click();
