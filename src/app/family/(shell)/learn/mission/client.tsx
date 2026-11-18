@@ -49,6 +49,7 @@ import { WorkshopScene } from "@/components/family/learning/workshop-scene";
 import { IsabelStart } from "@/components/family/learning/workshop-hub";
 import { WorkshopClosing, WorkshopFarewell } from "@/components/family/learning/workshop-closing";
 import { createNarrationPlayer, type NarrationPlayer } from "@/lib/family-narration-player";
+import { learningHomeHref } from "@/lib/family-learning-exit";
 import { StoryVoiceContext } from "@/components/family/learning/narration";
 import type { NoktTalkTurnFn } from "@/components/family/learning/nokt-talk";
 import { Debrief } from "@/components/family/learning/debrief";
@@ -470,7 +471,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
   }
 
   const view = load.view;
-  const worldHref = `/family/learn?child=${child}`;
+  const worldHref = learningHomeHref(child);
   const markers = worldMarkers(view);
   const fingers = view.typingCourse?.fingers ?? (view.typing && view.typing.available ? view.typing.lesson.fingers : {});
   const home = view.typingCourse?.homePosition ?? (view.typing && view.typing.available ? { left: view.typing.lesson.homeRow.slice(0, 4), right: view.typing.lesson.homeRow.slice(4, 8), anchors: ["f", "j"], thumb: " " } : HOME_FALLBACK);
@@ -488,7 +489,8 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
         telemetry={(name) => {
           telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
         }}
-        onHome={() => router.push(`/family/home?child=${child}`)}
+        // Nov 18: the visit ends on the learning Home screen (the map), never outside the learning app.
+        onHome={() => router.push(learningHomeHref(child))}
       />
     );
   }
@@ -897,8 +899,9 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
                       const outcome = await mutate(payload as LearningOp, { idempotencyKey });
                       if (outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed")) {
                         flushTelemetry(true, identity, `ui-${idempotencyKey}`);
-                        // The journey ends where it began: Family Home (the visit report stays reopenable from the hub).
-                        router.push(`/family/home?child=${child}`);
+                        // Nov 18: the journey ends where it began — the learning Home screen (the map), not Family Home: Santiago
+                        // was thrown out of the learning app here. The visit report stays reopenable from the map.
+                        router.push(learningHomeHref(child));
                       }
                       return outcome;
                     }}

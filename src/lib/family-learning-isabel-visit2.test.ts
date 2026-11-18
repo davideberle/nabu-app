@@ -203,7 +203,8 @@ describe("Visit 2 journey — first tries (fictional)", () => {
     equal(currentStage(s, v2), "reflect");
     const closing = buildChildView(s, v2, EMPTY_PARENT_SETTINGS, new Date(), 0, { noktMode: "unavailable" }).reflection!.closing!;
     equal(closing.narrated, true);
-    deepStrictEqual(closing.farewell, ["Danke! Bis bald im Garten!", "Dein Garten ist gespeichert."]);
+    // Nov 18: the outcome's done line was already spoken on the outcome beat; the goodbye screen says only the visit's own line.
+    deepStrictEqual(closing.farewell, ["Dein Garten ist gespeichert."]);
   });
   it("every spoken line is a catalogued, reviewed line (prerecordable); none says a reading word or an option before her attempt", () => {
     const { heard } = gardenFirstTry();
@@ -929,7 +930,11 @@ describe("story voices for both children", () => {
     equal(player.status(), "missing");
     equal(player.lastLineOutcome(), "missing-recording");
     deepStrictEqual(spoken, []);
-    equal(await player.play({ key: "b", lines: [line("Hallo!", "de-female")] }), "done", "an unconfigured slot keeps the native device fallback");
+    // Nov 18: a slotted (catalogued) line never falls back to a device voice, even when its slot is not configured.
+    equal(await player.play({ key: "b", lines: [line("Hallo!", "de-female")] }), "missing", "an unconfigured slot is reported missing too");
+    deepStrictEqual(spoken, []);
+    // Only a line without a slot (not catalogued) keeps the native device voice of its language.
+    equal(await player.play({ key: "c", lines: [line("Hallo!")] }), "done");
     deepStrictEqual(spoken, ["Hallo!"]);
   });
   it("the engine accepts a recorded play for non-narrated missions; the play stays a device report, never help", () => {

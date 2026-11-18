@@ -27,7 +27,7 @@ import { fictionalNoktTransport, type NoktMode, type NoktTurn } from "@/lib/fami
 import type { NoktTranscribeOutcome, NoktTurnInput } from "@/lib/family-learning-client";
 import { browserSpeech, cancelBrowserSpeech } from "@/lib/family-learning-listening";
 import { startPushToTalk } from "@/lib/family-voice";
-import { adaptMediaRecorder } from "./nabu-sidebar";
+import type { RecorderControl, RecorderHandlers } from "@/lib/family-voice";
 import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
 /** Uploads one recorded turn; the signal cancels upload and provider call. Bound to the child by the caller. */
@@ -255,6 +255,29 @@ export function submitOnEnter(e: { key: string; shiftKey: boolean; nativeEvent: 
 type MicState = "idle" | "starting" | "live" | "transcribing" | "trouble";
 
 /**
+ * Nokt's own MediaRecorder adapter (Nov 18): unlike the shared one it also reports the recorder's `start` event and passes the
+ * timeslice, so the session can wait until audio is really being captured (`liveWhen: "audio-flowing"`) before the child sees
+ * «Jetzt sprechen!».
+ */
+export function adaptNoktRecorder(recorder: MediaRecorder, handlers: RecorderHandlers): RecorderControl {
+  recorder.ondataavailable = (event) => handlers.onData(event.data);
+  recorder.onstop = () => handlers.onStop();
+  recorder.onerror = () => handlers.onError();
+  recorder.onstart = () => handlers.onStart?.();
+  return {
+    start: (timesliceMs) => (timesliceMs ? recorder.start(timesliceMs) : recorder.start()),
+    stop: () => recorder.stop(),
+    mimeType: () => recorder.mimeType || null,
+    detach: () => {
+      recorder.ondataavailable = null;
+      recorder.onstop = null;
+      recorder.onerror = null;
+      recorder.onstart = null;
+    },
+  };
+}
+
+/**
  * Explicit push-to-talk for Nokt: nothing starts on its own, the child sees
  * when the microphone is live, and every exit (Fertig, Abbrechen, closing Nokt,
  * a task change unmounting the panel) releases the microphone and aborts a
@@ -284,7 +307,9 @@ export function NoktMic({ transcribe, onTranscript }: { transcribe: NoktTranscri
     sessionRef.current = startPushToTalk({
       getUserMedia: () => navigator.mediaDevices.getUserMedia({ audio: true }),
       isTypeSupported: (type) => MediaRecorder.isTypeSupported(type),
-      createRecorder: (stream, mimeType, handlers) => adaptMediaRecorder(mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream), handlers),
+      createRecorder: (stream, mimeType, handlers) => adaptNoktRecorder(mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream), handlers),
+      // Nov 18: «Jetzt sprechen!» only once the recorder has started AND the first captured audio has arrived.
+      liveWhen: "audio-flowing",
       onLive: () => {
         if (seqRef.current === seq) setMic("live");
       },
@@ -338,7 +363,7 @@ export function NoktMic({ transcribe, onTranscript }: { transcribe: NoktTranscri
       {mic === "starting" ? (
         <p className="flex items-center gap-2 text-lg font-semibold" style={{ color: "#6b5a2e" }} role="status" data-testid="nokt-mic-wait">
           <span aria-hidden className="inline-block h-4 w-4 rounded-full" style={{ background: "#c9b98f" }} />
-          Warte kurz …
+          Mikrofon startet …
         </p>
       ) : mic === "live" ? (
         <p className="flex items-center gap-2 rounded-xl px-3 py-2 text-xl font-bold" style={{ background: "#fde8e4", color: "#a34431" }} role="status" data-testid="nokt-mic-live">

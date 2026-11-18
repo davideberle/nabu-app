@@ -55,6 +55,21 @@ export const FINAL_CHUNK_GRACE_MS = 250;
  */
 export const STOP_EVENT_TIMEOUT_MS = 1_500;
 
+/**
+ * Nov 18 (Santiago, Nokt's microphone): «Jetzt sprechen!» appeared about a second before anything was recorded, because
+ * `MediaRecorder.start()` returns at once while the recorder only starts later (its `start` event) and the first audio frames
+ * arrive later still. With `liveWhen: "audio-flowing"` the session records in slices of this length and calls itself live only
+ * once the recorder's `start` event has fired AND the first non-empty chunk of encoded audio has arrived — proof that sound
+ * from the microphone is really being captured.
+ */
+export const LIVE_PROBE_TIMESLICE_MS = 200;
+
+/**
+ * Bounded wait for that first chunk after the `start` event. A browser that ignores the timeslice would otherwise leave the
+ * child on «Mikrofon startet …» forever; past this bound the session goes live on the `start` event alone.
+ */
+export const LIVE_PROBE_TIMEOUT_MS = 2_500;
+
 export function pickRecorderMimeType(
   isTypeSupported: (type: string) => boolean,
 ): string | null {
@@ -169,6 +184,8 @@ export type RecorderHandlers = {
   onData: (chunk: Blob) => void;
   onStop: () => void;
   onError: () => void;
+  /** The recorder's own `start` event (recording has begun). Optional: adapters that do not wire it keep the old behaviour. */
+  onStart?: () => void;
 };
 
 /**
@@ -177,7 +194,8 @@ export type RecorderHandlers = {
  * no DOM handler types leak in here.
  */
 export type RecorderControl = {
-  start: () => void;
+  /** `timesliceMs`: deliver `dataavailable` every so often (used to see the first captured audio). */
+  start: (timesliceMs?: number) => void;
   stop: () => void;
   /** The MIME actually being recorded, which may differ from the request. */
   mimeType: () => string | null;
@@ -217,6 +235,13 @@ export type PushToTalkDeps<S extends RecorderStream = RecorderStream> = {
   isTypeSupported?: (type: string) => boolean;
   /** Fires once, when capture is genuinely live. Never before. */
   onLive?: () => void;
+  /**
+   * What counts as live. `"start-returned"` (default, unchanged): `recorder.start()` returned. `"audio-flowing"` (Nov 18): the
+   * recorder's `start` event fired and the first non-empty chunk of audio arrived (bounded by `LIVE_PROBE_TIMEOUT_MS`).
+   */
+  liveWhen?: "start-returned" | "audio-flowing";
+  /** Diagnostics (tests, harness): each lifecycle mark with its time from `now()`. */
+  onMark?: (mark: "media" | "start-called" | "start-event" | "first-audio" | "live" | "live-by-timeout", at: number) => void;
   /** Fires exactly once, with the single outcome of this session. */
   onSettle: (outcome: PushToTalkOutcome) => void;
   now?: () => number;
@@ -260,7 +285,18 @@ export function startPushToTalk<S extends RecorderStream = RecorderStream>(
   let stream: RecorderStream | null = null;
   let recorder: RecorderControl | null = null;
   let liveAt = 0;
+  const waitForAudio = deps.liveWhen === "audio-flowing";
+  let sawStartEvent = false;
+  let sawAudio = false;
+  let startReturned = false;
   const chunks: Blob[] = [];
+  const mark = (m: Parameters<NonNullable<PushToTalkDeps["onMark"]>>[0]) => {
+    try {
+      deps.onMark?.(m, now());
+    } catch {
+      /* diagnostics only */
+    }
+  };
   const timers = new Set<{ handle?: TimerHandle }>();
 
   /** Read through a call so the startup task sees settles from its callbacks. */
@@ -353,10 +389,42 @@ export function startPushToTalk<S extends RecorderStream = RecorderStream>(
     settle({ kind: "recorded", blob, mimeType: mime, fileName: recordingFileName(mime) });
   }
 
+  /** `starting` → `live`, exactly once, when the configured live condition holds. */
+  function goLive(byTimeout = false): void {
+    if (phase !== "starting" || !startReturned) return;
+    if (waitForAudio && !byTimeout && !(sawStartEvent && sawAudio)) return;
+    phase = "live";
+    liveAt = now();
+    if (byTimeout) mark("live-by-timeout");
+    mark("live");
+    try {
+      deps.onLive?.();
+    } catch {
+      /* presentation only; the recording carries on */
+    }
+    // Recordings are bounded; a forgotten open mic stops itself.
+    arm(() => beginStop(), maxRecordingMs);
+    if (stopRequested) beginStop();
+  }
+
   const handlers: RecorderHandlers = {
+    onStart: () => {
+      if (phase === "done" || sawStartEvent) return;
+      sawStartEvent = true;
+      mark("start-event");
+      if (waitForAudio && !sawAudio) arm(() => goLive(true), LIVE_PROBE_TIMEOUT_MS);
+      goLive();
+    },
     onData: (chunk) => {
       if (phase === "done") return;
-      if ((chunk?.size ?? 0) > 0) chunks.push(chunk);
+      if ((chunk?.size ?? 0) > 0) {
+        chunks.push(chunk);
+        if (!sawAudio) {
+          sawAudio = true;
+          mark("first-audio");
+          goLive();
+        }
+      }
       // The chunk the stop event was waiting for: assemble now instead of
       // sitting out the rest of the grace window.
       if (sawStopEvent) finalize();
@@ -402,6 +470,7 @@ export function startPushToTalk<S extends RecorderStream = RecorderStream>(
 
   function stop(): void {
     if (phase === "starting") {
+      // (With "audio-flowing" the recorder is already running while starting; the stop is applied the moment it goes live.)
       // The child tapped Stop while the microphone was still opening. Remember
       // it — this is the tap that used to vanish.
       stopRequested = true;
@@ -429,10 +498,13 @@ export function startPushToTalk<S extends RecorderStream = RecorderStream>(
       return;
     }
     stream = acquired;
+    mark("media");
     try {
       const mime = pickRecorderMimeType(isTypeSupported);
       recorder = deps.createRecorder(acquired, mime, handlers);
-      recorder.start();
+      mark("start-called");
+      if (waitForAudio) recorder.start(LIVE_PROBE_TIMESLICE_MS);
+      else recorder.start();
     } catch {
       settle({ kind: "failed" });
       return;
@@ -440,16 +512,12 @@ export function startPushToTalk<S extends RecorderStream = RecorderStream>(
     // A recorder that errored (or was cancelled) synchronously inside
     // `start()` has already settled; it must not be resurrected as live.
     if (settled()) return;
-    phase = "live";
-    liveAt = now();
-    try {
-      deps.onLive?.();
-    } catch {
-      /* presentation only; the recording carries on */
+    startReturned = true;
+    if (waitForAudio && !sawStartEvent) {
+      // An adapter that never reports the `start` event: bounded, like the first chunk.
+      arm(() => goLive(true), LIVE_PROBE_TIMEOUT_MS);
     }
-    // Recordings are bounded; a forgotten open mic stops itself.
-    arm(() => beginStop(), maxRecordingMs);
-    if (stopRequested) beginStop();
+    goLive();
   })();
 
   return { stop, cancel, isLive: () => phase === "live" || phase === "stopping" };

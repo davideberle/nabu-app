@@ -9,8 +9,8 @@
 //
 //  - reading: the word is SHOWN, never spoken, before her attempt; «Buchstaben zusammen anschauen» is an explicit switch to
 //    supported letter/word learning (recorded help first, then the word may be heard) — never called independent reading;
-//  - listening: Old Lila's instruction is HEARD (the text stays hidden) and answered by picture; without sound an adult may
-//    read it aloud — clearly labelled and recorded as help;
+//  - listening: Old Lila's instruction is HEARD (the text stays hidden) and answered by picture; only when the sound failed
+//    (Nov 18: no «Kein Ton?» link otherwise) an adult may read it aloud — clearly labelled and recorded as help;
 //  - the real-world craft happens away from the screen: she may tap what she found; the parent records the rest.
 // No Nokt, no microphone, no model: Old Lila's lines are the reviewed content.
 //
@@ -34,6 +34,7 @@ import { line, missionNarration, missionSlot, narrated, NARRATION_UI } from "@/l
 import type { VoiceSlot } from "@/lib/family-voice-registry";
 import type { NarrationPlayer } from "@/lib/family-narration-player";
 import { NarrationControl, useNarration } from "./narration";
+import { narratedBeatTap } from "@/lib/family-learning-visit-flow";
 
 const INK = "#2f2a24";
 const ACTION = "#7a4a22";
@@ -343,9 +344,11 @@ function ListenPictures({ child, active, busy, act, speech, telemetry }: { child
         <p className="rounded-2xl px-4 py-3 text-lg" style={{ background: "#fff8e1" }} data-testid="listen-adult-read">
           <span className="block text-sm font-semibold uppercase tracking-wide">Für Erwachsene zum Vorlesen (zählt als Hilfe)</span>«{listen.script}»
         </p>
-      ) : listen.plays > 0 || listen.failures > 0 ? (
-        <button type="button" className="justify-self-start text-base underline underline-offset-4" disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "transcript" })} data-testid="listen-adult-open">
-          Kein Ton? Ein Erwachsener kann vorlesen (zählt als Hilfe)
+      ) : listen.failures > 0 && listen.completedPlays === 0 ? (
+        // Nov 18: no «Kein Ton?» link after a normal play. Only when the sound really failed (nothing ever played) does a
+        // parent-facing notice offer the adult read-aloud, still recorded as help — so she is never stuck on a broken clip.
+        <button type="button" className="justify-self-start rounded-2xl border-2 px-4 py-2 text-base font-semibold" style={{ borderColor: "#d9826b", background: "#fde8e4", color: "#8a2c1d" }} disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "transcript" })} data-testid="listen-adult-open">
+          ⚠ Ton fehlt. Für Erwachsene: vorlesen (zählt als Hilfe)
         </button>
       ) : null}
       {active.questions.map((q) => (
@@ -448,11 +451,15 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
   const next = async () => {
     telemetry("beat-next");
     narrator.stop();
-    if (active) {
-      if (active.status === "active" && (active.kind === "story" || active.kind === "outcome" || active.kind === "craft")) {
-        const done = await act({ a: "story-done", step: active.id });
-        if (!done || active.kind === "outcome") return;
-      }
+    // Nov 18 (Isabel Visit 4, «Bauen wir ihnen ein Haus?»): finishing a story, craft or outcome beat brings its done line(s) —
+    // they are shown and spoken on the finished beat, and «Weiter» waits for them. Leaving in the same tap superseded the line
+    // before it was heard. The next tap leaves; nothing advances by itself (`narratedBeatTap`).
+    const tap = narratedBeatTap(active);
+    if (active && tap === "finish-beat") {
+      await act({ a: "story-done", step: active.id });
+      return;
+    }
+    if (active && tap === "leave") {
       const left = await act({ a: "leave" });
       if (!left) return;
     }
@@ -633,9 +640,11 @@ function NarratedListen({ active, busy, act, narrator, telemetry, who, slot }: {
         <p className="rounded-2xl px-4 py-3 text-lg" style={{ background: "#fff8e1" }} data-testid="listen-adult-read">
           <span className="block text-sm font-semibold uppercase tracking-wide">Für Erwachsene zum Vorlesen (zählt als Hilfe)</span>«{listen.script}»
         </p>
-      ) : listen.plays > 0 || listen.failures > 0 ? (
-        <button type="button" className="justify-self-start text-base underline underline-offset-4" disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "transcript" })} data-testid="listen-adult-open">
-          Kein Ton? Ein Erwachsener kann vorlesen (zählt als Hilfe)
+      ) : listen.failures > 0 && listen.completedPlays === 0 ? (
+        // Nov 18: no «Kein Ton?» link after a normal play. Only when the sound really failed (nothing ever played) does a
+        // parent-facing notice offer the adult read-aloud, still recorded as help — so she is never stuck on a broken clip.
+        <button type="button" className="justify-self-start rounded-2xl border-2 px-4 py-2 text-base font-semibold" style={{ borderColor: "#d9826b", background: "#fde8e4", color: "#8a2c1d" }} disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "transcript" })} data-testid="listen-adult-open">
+          ⚠ Ton fehlt. Für Erwachsene: vorlesen (zählt als Hilfe)
         </button>
       ) : null}
       {active.questions.map((q) => (

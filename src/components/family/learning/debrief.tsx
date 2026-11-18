@@ -150,7 +150,7 @@ export function Debrief({
       {difficultyAnswered && over ? (
         <div className="flex flex-wrap items-center gap-3">
           <button type="button" className={btn} style={primary} disabled={busy || (needsInterest && !interestReady(interest))} onClick={finish} data-testid="debrief-finish">
-            Fertig — zurück nach Hause
+            Fertig — zurück zur Karte
           </button>
         </div>
       ) : null}
