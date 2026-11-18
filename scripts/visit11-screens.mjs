@@ -500,7 +500,8 @@ async function santiago() {
   await leave();
 
   await goTo("F11-JOURNAL");
-  await sel(page, "[data-testid='write-input']").fill("Heute haben wir den Teich mit Meerwasser gefuellt. Die Pumpe hat 12 Minuten gebraucht.");
+  // A sentence the app's check flags (no full stop at the end), so the strict rewrite runs.
+  await sel(page, "[data-testid='write-input']").fill("Heute haben wir den Teich mit Meerwasser gefüllt. Die Pumpe hat 12 Minuten gebraucht");
   { const d = saved(page); await sel(page, "[data-testid='write-send']").click(); await d; }
   // Nokt's writing talk is the Nokt tracks' area (strict writing step, merged separately); here only: the step completes.
   const noktWriting = await page.waitForSelector("[data-testid='nokt-sidebar'][data-dock='writing']", { timeout: 10000 }).then(() => true).catch(() => false);
@@ -816,7 +817,7 @@ try {
   if (WHO === "santiago") await santiago();
   else if (WHO === "isabel") await isabel();
   else if (WHO === "map-s") await map("santiago", ["s-pond:built", "s-turtle-crate:built"], opt("--label", "before"), { files: ["s-pond-dug-built", "s-turtle-crate-built"], absent: ["s-pump-built", "s-pond-water-built"], label: { "s-turtle-crate": T } });
-  else if (WHO === "map-i") await map("isabel", ["i-birdhouse:built"], opt("--label", "before"), { files: [`i-birdhouse-tree-${ROOF}-built`, "i-robins"], absent: [`i-birdhouse-${ROOF}-built`, "i-feeder-site"] });
+  else if (WHO === "map-i") await map("isabel", ["i-birdhouse:built"], opt("--label", "before"), { files: [`i-birdhouse-tree-${ROOF}-built`, "i-robins", "i-feeder-site"], absent: [`i-birdhouse-${ROOF}-built`, `i-birdhouse-tree-${ROOF}-birds-built`] });
   else if (WHO === "after-s") await map("santiago", ["s-pond:built", "s-pump:built"], "after", { files: ["s-pond-water-built", "s-pump-built"], absent: ["s-turtle-crate-built", "s-pond-dug-built"], label: { "s-pond": `Teich · ${T}` }, gone: ["s-turtle-crate"] });
   else if (WHO === "after-i") await map("isabel", ["i-birdhouse:built", "i-feeder:built"], "after", { files: [`i-birdhouse-tree-${ROOF}-birds-built`, `i-feeder-${opt("--food", "worms")}-built`], absent: ["i-robins", `i-birdhouse-tree-${ROOF}-built`] });
 } catch (error) {

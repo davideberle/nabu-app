@@ -594,7 +594,7 @@ function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; bu
             <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
               {(q.options ?? []).map((o) => (
                 <button key={o} type="button" className={pictureButton} style={{ borderColor: q.lastWrong === o ? "#c77c14" : "#d9c6aa" }} disabled={busy} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`} aria-label={`Bild ${(q.options ?? []).indexOf(o) + 1}`}>
-                  {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} /> : null}
+                  {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-28 w-28" /> : null}
                 </button>
               ))}
             </div>
