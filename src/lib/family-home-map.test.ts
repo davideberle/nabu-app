@@ -194,7 +194,10 @@ describe("layout", () => {
       for (const a of w.pieces) for (const b of w.pieces) {
         if (a === b) continue;
         const overlap = a.tile.c < b.tile.c + b.footprint.w && b.tile.c < a.tile.c + a.footprint.w && a.tile.r < b.tile.r + b.footprint.h && b.tile.r < a.tile.r + a.footprint.h;
-        ok(!overlap, `${w.child}: ${a.id} overlaps ${b.id}`);
+        // Nov 18 (David): a piece may take the tile of one that is gone by then — never both on the map: `a` disappears with the
+        // visit that builds `b`, and `b` has no site stage before that (e.g. the pump on the turtle crate's tile after Visit 11).
+        const succession = (x: typeof a, y: typeof a) => !!x.removedBy && x.removedBy === y.builtBy && !!y.noSite;
+        ok(!overlap || succession(a, b) || succession(b, a), `${w.child}: ${a.id} overlaps ${b.id}`);
       }
     }
   });

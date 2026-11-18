@@ -131,7 +131,7 @@ const SANTIAGO: WorldDef = {
     { id: "s-pipe", label: "Wasserleitung", builtBy: "v10", tile: { c: 4, r: 1 }, footprint: { w: 1, h: 2 }, place: null, partOf: "tank" },
     { id: "s-pond", label: "Teich", builtBy: "v11", tile: { c: 7, r: 9 }, footprint: { w: 2, h: 2 }, place: "pond", builtAsset: "s-pond-dug-built", later: { visit: "v12", asset: "s-pond-water-built", labelFrom: "turtleName" } },
     { id: "s-turtle-crate", label: "Schildkröte", builtBy: "v11", tile: { c: 9, r: 9 }, footprint: { w: 1, h: 1 }, place: "beach", fromVisitStart: true, labelFrom: "turtleName", removedBy: "v12" },
-    { id: "s-pump", label: "Pumpe", builtBy: "v12", tile: { c: 10, r: 10 }, footprint: { w: 1, h: 1 }, place: null, partOf: "pond", noSite: true },
+    { id: "s-pump", label: "Pumpe", builtBy: "v12", tile: { c: 9, r: 9 }, footprint: { w: 1, h: 1 }, place: null, partOf: "pond", noSite: true },
   ],
 };
 
