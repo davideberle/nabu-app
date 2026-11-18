@@ -38,6 +38,9 @@ import { childShellDestinationHref, guardedPlayHref } from "@/lib/family-child-s
 import { createGamesClient, deviceLabel, newIdempotencyKey, type LeaseGrant, type StudioAccess, type TickView } from "@/lib/family-games-client";
 import { CHESS_BLOCK_COINS, CHESS_BLOCK_SECONDS, PLAY_BLOCK_COINS, PLAY_BLOCK_SECONDS, formatPlayClock, isDailyChessGame } from "@/lib/family-play";
 import { createHeartbeat, type HeartbeatInput } from "@/lib/family-play-heartbeat";
+import { createLearningClient } from "@/lib/family-learning-client";
+import { currentNativeSupport } from "@/lib/family-native-games";
+import { fireStudioStartAudio } from "@/lib/family-studio-audio";
 
 const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -76,6 +79,10 @@ type Phase =
 export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: string }) {
   const profile = assistantProfileById(child)!;
   const client = useMemo(() => createGamesClient(), []);
+  /** Nov 18 (item 16): only for the fire-and-forget unmute at the Studio volume when a game starts. */
+  const audio = useMemo(() => createLearningClient(), []);
+  /** Set by a successful rollover: the re-acquired lease continues the same game, so the volume is not set again. */
+  const rolloverReacquireRef = useRef(false);
   const [phase, setPhase] = useState<Phase>({ kind: "starting" });
   const [attempt, setAttempt] = useState(0);
   const [takeover, setTakeover] = useState(false);
@@ -126,9 +133,14 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
         return;
       }
       setPhase({ kind: "playing", grant: grant.value, studio: grant.value.studio, tick: null, paused: false, hidden: typeof document !== "undefined" && document.visibilityState === "hidden", offline: false, handover: false, lapsed: false, armed: false });
+      // Nov 18 (item 16): a Studio game (chess included) just started on this lease → Mac mini at the Studio volume.
+      // Only from a desktop-Mac browser (the bridge sets the Mac mini's volume); never awaited, never blocks the game.
+      const continuing = rolloverReacquireRef.current;
+      rolloverReacquireRef.current = false;
+      if (!continuing && currentNativeSupport().supported) fireStudioStartAudio(audio, child);
     })();
     return () => controller.abort();
-  }, [child, gameId, client, attempt, takeover, chess]);
+  }, [child, gameId, client, attempt, takeover, chess, audio]);
 
   /**
    * Stop the game frame with evidence: post the terminal message and wait for the guard's acknowledgment that it
@@ -202,6 +214,7 @@ export function GuardedPlayClient({ child, gameId }: { child: ChildId; gameId: s
     const releaseConfirmed = releaseOutcome.ok;
     if (endConfirmed && releaseConfirmed) {
       rolloverRef.current = null;
+      rolloverReacquireRef.current = true;
       setAttempt((n) => n + 1);
       return;
     }

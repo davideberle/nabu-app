@@ -27,6 +27,16 @@ export const LEARNING_DEVICE_AUDIO_PATH = "/api/family/learning/device-audio";
 export const BRIDGE_DEVICE_AUDIO_PATH = "/v1/device/audio";
 /** Step 1 (S1-07): at most one unmute request per reason within this window (the bridge rate-limits too). */
 export const DEVICE_AUDIO_MIN_INTERVAL_MS = 60_000;
+/**
+ * The closed set of device-audio reasons the bridge knows. Visits and Nokt unmute at the learning volume (70); a Game
+ * Studio game start (every game started through the Studio play flow, chess included — Nov 18, 2026) at the lower
+ * Studio volume (40). The bridge maps the reason to its fixed volume; a request never carries a volume.
+ */
+export const DEVICE_AUDIO_REASONS = Object.freeze(["visit-start", "nokt-open", "studio-start"] as const);
+export type DeviceAudioReason = (typeof DEVICE_AUDIO_REASONS)[number];
+export function isDeviceAudioReason(value: unknown): value is DeviceAudioReason {
+  return typeof value === "string" && (DEVICE_AUDIO_REASONS as readonly string[]).includes(value);
+}
 
 /** One Nokt turn as the panel sends it; the server builds everything else (context, request, binding). */
 export type NoktTurnInput =
@@ -90,7 +100,7 @@ export type LearningClient = {
    * Step 1 (S1-07): ask the Mac mini to be audible (visit start, Nokt opens). Off unless the server enables it; failures are
    * silent and never block the visit. Returns what happened, for telemetry only.
    */
-  deviceAudio: (childId: ChildId, reason: "visit-start" | "nokt-open") => Promise<"sent" | "off" | "throttled" | "failed">;
+  deviceAudio: (childId: ChildId, reason: DeviceAudioReason) => Promise<"sent" | "off" | "throttled" | "failed">;
   /** Upload one recorded turn for Nokt; aborting `signal` cancels the upload and the server's provider call. */
   transcribeNokt: (childId: ChildId, audio: Blob, fileName: string, options: { signal: AbortSignal }) => Promise<NoktTranscribeOutcome>;
   reset: () => void;
@@ -301,6 +311,7 @@ export function createLearningClient(deps: LearningClientDeps = {}): LearningCli
     },
 
     async deviceAudio(childId, reason) {
+      if (!isDeviceAudioReason(reason)) return "failed";
       const key = `${childId}:${reason}`;
       const last = lastAudio.get(key);
       if (last !== undefined && now() - last < DEVICE_AUDIO_MIN_INTERVAL_MS) return "throttled";

@@ -34,6 +34,8 @@ import type { ChildId } from "@/lib/family-assistant-turn";
 import { childShellDestinationHref } from "@/lib/family-child-shell";
 import { createGamesClient, deviceLabel, type LeaseGrant, type NativeStatus, type StudioAccess } from "@/lib/family-games-client";
 import { currentNativeSupport, isLaunchUrl } from "@/lib/family-native-games";
+import { createLearningClient } from "@/lib/family-learning-client";
+import { fireStudioStartAudio } from "@/lib/family-studio-audio";
 import { formatPlayClock } from "@/lib/family-play";
 
 const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
@@ -61,6 +63,8 @@ type Phase =
 export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; gameId: string; title: string }) {
   const profile = assistantProfileById(child)!;
   const client = useMemo(() => createGamesClient(), []);
+  /** Nov 18 (item 16): only for the fire-and-forget unmute at the Studio volume when the child opens the game. */
+  const audio = useMemo(() => createLearningClient(), []);
   const [phase, setPhase] = useState<Phase>({ kind: "checking" });
   const [attempt, setAttempt] = useState(0);
   const [takeover, setTakeover] = useState(false);
@@ -198,7 +202,10 @@ export function NativeLaunchClient({ child, gameId, title }: { child: ChildId; g
     clickedRef.current = true;
     setClickedAt(Date.now());
     setClickedExpiresAt(launchExpiresAtRef.current);
-  }, []);
+    // Nov 18 (item 16): the child starts the game on this Mac → Mac mini at the Studio volume. Never awaited; the
+    // link's own navigation is untouched.
+    fireStudioStartAudio(audio, child);
+  }, [audio, child]);
   // The meter's clock once it runs this lease; until then the time Family granted the lease with.
   const clockSeconds = status?.remainingSeconds ?? (phase.kind === "ready" ? phase.grant.remainingSeconds : null);
   // The clicked link ran out before the app took it (e.g. the browser's "Open …?" question stayed open): say so — the

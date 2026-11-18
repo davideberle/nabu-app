@@ -5,7 +5,7 @@
 import { deepStrictEqual, equal, ok } from "node:assert/strict";
 import { describe, it } from "node:test";
 import { readFileSync } from "node:fs";
-import { createLearningClient, LEARNING_MISSION_PATH, LEARNING_SESSION_PATH } from "./family-learning-client.ts";
+import { createLearningClient, DEVICE_AUDIO_REASONS, LEARNING_MISSION_PATH, LEARNING_SESSION_PATH } from "./family-learning-client.ts";
 import { asLearningContent } from "./family-learning-content.ts";
 import { buildChildView, EMPTY_PARENT_SETTINGS, newMissionState } from "./family-learning-state.ts";
 
@@ -222,5 +222,34 @@ describe("Step 1 (S1-07): device audio — off by default, throttled, never bloc
     const f = fake(true, false);
     const c = createLearningClient({ fetchImpl: f.fetchImpl, now: () => 5 });
     equal(await c.deviceAudio("isabel", "visit-start"), "failed");
+  });
+  it("Nov 18: studio-start goes the same way (same app route, same bridge route, body = the reason only)", async () => {
+    const f = fake(true);
+    const c = createLearningClient({ fetchImpl: f.fetchImpl, now: () => 1000 });
+    equal(await c.deviceAudio("santiago", "studio-start"), "sent");
+    const bridge = f.calls.filter((x) => x.url.includes("bridge.invalid"));
+    equal(bridge.length, 1);
+    equal(bridge[0]!.url, "https://bridge.invalid:8787/v1/device/audio");
+    equal(bridge[0]!.body, JSON.stringify({ reason: "studio-start" }));
+    equal(bridge[0]!.auth, "Bearer bridge-learn-token");
+    ok(f.calls.some((x) => x.url.endsWith("/api/family/learning/device-audio") && x.auth !== null), "the app route sees the learning credential");
+  });
+  it("Nov 18: studio-start has its own one-per-minute window; the learning reasons are unaffected", async () => {
+    const f = fake(true);
+    let t = 1000;
+    const c = createLearningClient({ fetchImpl: f.fetchImpl, now: () => t });
+    equal(await c.deviceAudio("santiago", "studio-start"), "sent");
+    equal(await c.deviceAudio("santiago", "studio-start"), "throttled");
+    equal(await c.deviceAudio("santiago", "visit-start"), "sent");
+    t += 61_000;
+    equal(await c.deviceAudio("santiago", "studio-start"), "sent");
+  });
+  it("Nov 18: an unknown reason is refused before any request", async () => {
+    const f = fake(true);
+    const c = createLearningClient({ fetchImpl: f.fetchImpl, now: () => 1000 });
+    equal(await c.deviceAudio("santiago", "party" as never), "failed");
+    equal(await c.deviceAudio("santiago", "studio-start " as never), "failed");
+    equal(f.calls.length, 0);
+    deepStrictEqual([...DEVICE_AUDIO_REASONS], ["visit-start", "nokt-open", "studio-start"]);
   });
 });
