@@ -137,6 +137,12 @@ describe("Santiago Visit 11 — every number recomputed from what he sees", () =
     const l9 = s10.typing.course!.lessons.find((l) => l.id === "TYPE-CH-COURSE-9")!;
     deepEqual(l9.keys, ["w", "o"]);
     ok((fill.typingBlock!.material?.["TYPE-CH-COURSE-9"] ?? []).length >= 4);
+    // He is on lesson 8 (Nov 14 record), so the block has lesson 8 and its lesson-7 review; no drill line from an earlier visit.
+    for (const l of ["TYPE-CH-COURSE-7", "TYPE-CH-COURSE-8"]) ok((fill.typingBlock!.material?.[l] ?? []).length >= 4, l);
+    const earlier = new Set(s9.missions!.flatMap((m) => Object.values(m.typingBlock?.material ?? {}).flat(2)));
+    const mine = Object.values(fill.typingBlock!.material ?? {}).flat(2);
+    deepEqual(mine.filter((x) => earlier.has(x)), []);
+    equal(new Set(mine).size, mine.length);
   });
 });
 

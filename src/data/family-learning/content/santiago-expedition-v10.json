@@ -13278,6 +13278,32 @@
     ],
     "progressOnStart": true,
     "material": {
+     "TYPE-CH-COURSE-7": [
+      [
+       "die reise",
+       "lauf ihr",
+       "alle reiher",
+       "sie lief rauf"
+      ],
+      [
+       "sauer",
+       "ihr seid da",
+       "lies die idee",
+       "fass es"
+      ],
+      [
+       "die eule rief",
+       "drei eier",
+       "heidi lief",
+       "er half ihr"
+      ],
+      [
+       "der kiesel",
+       "die ader",
+       "geh rauf",
+       "sei ruhig"
+      ]
+     ],
      "TYPE-CH-COURSE-8": [
       [
        "die zeit ist da",
@@ -13288,7 +13314,7 @@
       [
        "setz es",
        "zeig es her",
-       "tee ist heiss",
+       "tee ist da",
        "heiz die kugel"
       ],
       [
@@ -13344,7 +13370,7 @@
      ]
     },
     "announce": "Heute gibt es {n} kurze Tippübungen hintereinander, zusammen etwa {minutes} Minuten. Danach geht es auf der Insel weiter. Mit Stopp kannst du jederzeit aufhören. Was du geschafft hast, bleibt da.",
-    "note": "Five minutes is a calibration, not a research-proven optimum. Nov 18: new review sets for lesson 8 (none repeats what he typed on November 14) and new sets for lesson 9."
+    "note": "Five minutes is a calibration, not a research-proven optimum. Nov 18: he is on lesson 8, so new sets for lesson 8 and its lesson-7 review, plus lesson 9 in case he advances during the block; none repeats what he typed on November 8 or 14."
    }
   }
  ]

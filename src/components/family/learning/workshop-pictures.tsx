@@ -910,7 +910,7 @@ export function Counters({ counters, caption = true }: { counters: MissionCounte
       </figure>
     );
   }
-  if (bundles) {
+  if (bundles && !(counters.ask === "missing" && counters.frame && counters.closed)) {
     const tens = Math.floor(a / 10);
     const loose = a % 10;
     return (
