@@ -142,7 +142,7 @@ describe("destination load failures are recoverable", () => {
   // must surface a visible retry control instead of a dead end (Rewards) or
   // an endless spinner (the Plan person board).
   it("Coins offers a retry after a failed wallet load", () => {
-    ok(rewardsSource.includes("Try again"));
+    ok(rewardsSource.includes("Nochmal"));
     ok(rewardsSource.includes("refreshWallet"));
   });
 
@@ -249,9 +249,10 @@ describe("destinations render the real family model", () => {
     doesNotMatch(rewardsSource, /initialCompletions|initialRewards/);
   });
 
-  it("Coins points game spending at the one Studio purchase flow on Games", () => {
+  it("Coins spends through the one shared purchase flow (also on Games) and still links to Games", () => {
     ok(rewardsSource.includes('childShellDestinationHref("games", child)'));
     ok(rewardsSource.includes("PLAY_BLOCK_COINS"));
+    ok(rewardsSource.includes("useCoinPurchase(child, client, onSettled)"));
   });
 
   it("guarded play hosts chess itself — no bounce back to the legacy launch page (a loop the self-check caught)", () => {
