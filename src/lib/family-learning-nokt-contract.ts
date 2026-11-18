@@ -374,3 +374,106 @@ export function checkNoktOutcome(claim: NoktModelOutcome, transcript: NoktTurnTe
 export function noktReceiptBinding(input: { child: string; turnId: string; reqHash: string; replyJson: string }): { child: string; turnId: string; reqHash: string; text: string } {
   return { child: input.child, turnId: input.turnId, reqHash: input.reqHash, text: input.replyJson };
 }
+
+// ---------------------------------------------------------------------------
+// Nov 18 (prompt v5): Nokt as a helper on a task, a strict teacher on his sentence. Deterministic text checks shared by the
+// talk guards (family-learning-nokt-talk.ts) and the strict writing loop (family-learning-mission.ts).
+// ---------------------------------------------------------------------------
+
+/**
+ * He is stuck or asks for help: «weiss nicht» in its common forms (with or without «ich», «es», «noch», Swiss «ss» or «ß»),
+ * «keine Ahnung», «k.A.», «hilf mir», «Hilfe», «ich brauche Hilfe», «was muss ich (hier) machen/tun», «ich verstehe (das)
+ * nicht», «ich checke es nicht». Conservative: a whole line that is mostly such a phrase, or a line containing an explicit
+ * help request.
+ */
+const STUCK_RE = new RegExp(
+  [
+    String.raw`\b(ich\s+)?(weiss|weiß|weis|wais)\s+(es\s+|das\s+)?(noch\s+)?(echt\s+)?nicht\b`,
+    String.raw`\b(weiss|weiß|weis)\s+ich\s+(noch\s+)?nicht\b`,
+    String.raw`\bkeine\s+ahnung\b`,
+    String.raw`(^|\s)k\.?\s?a\.?(\s|$|[!?.,])`,
+    String.raw`\bhilf\s+mir\b`,
+    String.raw`^\s*hilfe\b`,
+    String.raw`\b(ich\s+)?brauch(e)?\s+(deine\s+|eine\s+|etwas\s+|ein\s+bisschen\s+)?hilfe\b`,
+    String.raw`\bkannst\s+du\s+mir\s+helfen\b`,
+    String.raw`\bwas\s+(muss|soll)\s+ich\s+(hier\s+|da\s+|jetzt\s+)?(machen|tun|schreiben|sagen)\b`,
+    String.raw`\b(ich\s+)?versteh(e)?\s+(das\s+|es\s+)?(gar\s+)?nicht\b`,
+    String.raw`\bich\s+check(e)?\s+(das\s+|es\s+)?nicht\b`,
+    String.raw`^\s*(hä|hm+|äh+)\s*[?!.]*\s*$`,
+  ].join("|"),
+  "iu",
+);
+
+/** His line says he doesn't know or asks for help (see STUCK_RE). */
+export function isStuckOrHelp(text: string): boolean {
+  return STUCK_RE.test(text.normalize("NFC").trim());
+}
+
+/** A Nokt line that asks something: a question mark (the reply contract allows one sentence-final «?» per line at most). */
+export function asksQuestion(text: string): boolean {
+  return text.includes("?");
+}
+
+const wordsOf = (s: string) => (s.normalize("NFC").match(/[\p{L}\p{N}]+/gu) ?? []);
+
+/** A sentence in the strict writing step: at least three words with letters, and not a «weiss nicht»/help line. */
+export function isSentenceText(text: string): boolean {
+  const words = wordsOf(text).filter((w) => /\p{L}/u.test(w));
+  return words.length >= 3 && !isStuckOrHelp(text);
+}
+
+function editDistance<T>(a: T[], b: T[]): number {
+  const dp = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)] as number[]);
+  for (let j = 1; j <= b.length; j += 1) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i += 1) for (let j = 1; j <= b.length; j += 1) dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return dp[a.length][b.length];
+}
+
+/**
+ * Nokt wrote his sentence FOR him (the writing step's answer leak): somewhere in the reply is a run of words that is his
+ * sentence with at most one word changed, added or dropped (n ≥ 4 words; n = 3 needs the same three words), and that run is
+ * NOT exactly his sentence as he typed it (a different word, a capital, or an end mark he did not write). Quoting his own
+ * sentence back unchanged is allowed; so is pointing at one word.
+ */
+export function rewritesSentence(say: string, sentence: string): boolean {
+  const his = wordsOf(sentence);
+  if (his.length < 3) return false;
+  const reply = wordsOf(say);
+  const hisLower = his.map((w) => w.toLowerCase());
+  const tolerance = his.length >= 4 ? 1 : 0;
+  const hisEndMark = /[.!?]["»“”']?\s*$/u.test(sentence.trim());
+  for (let len = Math.max(1, his.length - tolerance); len <= his.length + tolerance; len += 1) {
+    for (let start = 0; start + len <= reply.length; start += 1) {
+      const window = reply.slice(start, start + len);
+      if (editDistance(window.map((w) => w.toLowerCase()), hisLower) > tolerance) continue;
+      // Same words with the same capitals: a correction only if it adds the end mark he left out.
+      if (window.length === his.length && window.every((w, i) => w === his[i])) {
+        if (hisEndMark) continue;
+        const lastWord = window[window.length - 1];
+        const at = say.indexOf(lastWord, say.indexOf(window[0]));
+        const after = at >= 0 ? say.slice(at + lastWord.length, at + lastWord.length + 2) : "";
+        if (/^[.!]/.test(after) && !/^\.\.\./.test(after)) return true;
+        continue;
+      }
+      return true;
+    }
+  }
+  return false;
+}
+
+/** The sentence Nokt shows at the safety limit: the first «…» (or "…" / „…“) quote of three words or more, or null. */
+export function quotedSentence(say: string): string | null {
+  const re = /«([^»]+)»|„([^“”]+)[“”]|"([^"]+)"/gu;
+  for (const m of say.matchAll(re)) {
+    const q = (m[1] ?? m[2] ?? m[3] ?? "").trim();
+    if (wordsOf(q).length >= 3) return q;
+  }
+  return null;
+}
+
+/** Same words in the same order (case-insensitive, punctuation and spaces ignored) — his copy of a shown sentence. */
+export function sameWords(a: string, b: string): boolean {
+  const x = wordsOf(a).map((w) => w.toLowerCase());
+  const y = wordsOf(b).map((w) => w.toLowerCase());
+  return x.length === y.length && x.every((w, i) => w === y[i]);
+}

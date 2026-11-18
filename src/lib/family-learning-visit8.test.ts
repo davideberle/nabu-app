@@ -257,7 +257,10 @@ describe("writing — the original is immutable; one reviewed tip; one typed rev
     const waiting = m(on.s, { a: "write", step: "H11-JOURNAL", text: "Heute haben wir Beete geplant." }, on.e);
     equal(run(waiting).steps["H11-JOURNAL"].status, "active");
     equal(view(waiting).active!.write!.correction, null);
-    const kept = m(waiting, { a: "revise", step: "H11-JOURNAL", text: null }, on.e);
+    // Nov 18: the strict step has no «So lassen»; Nokt's close on a sentence the app finds right finishes it (first attempt).
+    refused(() => m(waiting, { a: "revise", step: "H11-JOURNAL", text: null }, on.e), "not-allowed", /not finished/);
+    const d = dispatch(waiting, on.e, "writing", "sess-writing-clean1");
+    const kept = reply(d.s, on.e, d.turnId, say("Du hast Beete geplant. Dein Satz ist richtig!", "close")).s;
     equal(run(kept).steps["H11-JOURNAL"].status, "done");
     equal(run(kept).steps["H11-JOURNAL"].outcome, "independent");
   });
@@ -274,8 +277,13 @@ describe("writing — the original is immutable; one reviewed tip; one typed rev
     equal(r.result.shown, true);
     s = r.s;
     ok(run(s).steps["H11-JOURNAL"].support.some((x) => x.kind === "nokt-writing"));
-    s = m(s, { a: "revise", step: "H11-JOURNAL", text: "Heute haben wir 2 pläne gemacht" }, e);
+    s = m(s, { a: "revise", step: "H11-JOURNAL", text: "Heute haben wir 2 Pläne gemacht." }, e);
+    // Nov 18 (strict step): the new version goes to Nokt as his next line (server copy); Nokt's close + the app's check finish it.
+    const d2 = dispatch(s, e, "writing", "sess-writing-0001");
+    equal(d2.result.request.transcript.at(-1)!.text, "Heute haben wir 2 Pläne gemacht.");
+    s = reply(d2.s, e, d2.turnId, say("Jetzt beginnt dein Satz gross und hat einen Punkt. Super!", "close")).s;
     ok(run(s).steps["H11-JOURNAL"].attempts[1].support.includes("nokt-writing"));
+    equal(run(s).steps["H11-JOURNAL"].outcome, "supported");
     equal(run(s).steps["H11-JOURNAL"].writing!.original, "heute haben wir 2 pläne gemacht");
   });
 });
@@ -508,16 +516,11 @@ describe("debrief — his button answers, one question at a time, his own next-i
     const sess = "sess-debrief-0001";
     let d = dispatch(s, env, "debrief", sess);
     deepStrictEqual(d.result.request.transcript, []);
-    equal(d.result.phase, "rueckblick-start");
+    // Nov 18 (prompt v5): ONE optional question — the thank-you about his work and «what next time?» open the look back.
+    equal(d.result.phase, "naechstes");
     const buttons = d.result.request.context.buttons as Record<string, string>;
     ok(Object.values(buttons).includes("Ja") && Object.values(buttons).includes("lieber nicht gesagt"));
-    s = reply(d.s, env, d.turnId, say("Was war heute knifflig?")).s;
-    d = dispatch(s, env, "debrief", sess, "die pläne", "voice");
-    equal(d.result.phase, "rueckblick");
-    s = reply(d.s, env, d.turnId, say("Pläne vergleichen braucht Geduld. Was würdest du jemandem zeigen?")).s;
-    d = dispatch(s, env, "debrief", sess, "das gewächshaus");
-    equal(d.result.phase, "naechstes");
-    s = reply(d.s, env, d.turnId, say("Schön. Was möchtest du beim nächsten Besuch machen?")).s;
+    s = reply(d.s, env, d.turnId, say("Danke für deinen Plan mit dem schmalen Weg! Was möchtest du beim nächsten Besuch machen?")).s;
     const before = (s.interests ?? []).length;
     d = dispatch(s, env, "debrief", sess, "tomaten ernten und einen markt machen");
     equal(d.result.phase, "abschluss");
@@ -538,10 +541,6 @@ describe("debrief — his button answers, one question at a time, his own next-i
     let s = finishedMission(env);
     const sess = "sess-debrief-0002";
     let d = dispatch(s, env, "debrief", sess);
-    s = reply(d.s, env, d.turnId, say("Was war heute schön?")).s;
-    d = dispatch(s, env, "debrief", sess, "alles");
-    s = reply(d.s, env, d.turnId, say("Was würdest du zeigen?")).s;
-    d = dispatch(s, env, "debrief", sess, "den plan");
     s = reply(d.s, env, d.turnId, "", null, "timeout").s;
     d = dispatch(s, env, "debrief", sess, "wasser");
     equal((d.s.interests ?? []).filter((i) => i.visit === "v9").length, 0);
@@ -551,12 +550,8 @@ describe("debrief — his button answers, one question at a time, his own next-i
   });
   /** Opener → two look-back answers → the shown next-interest question; returns the state and session. */
   function toNextQuestion(env: Env, sess: string) {
-    let s = finishedMission(env);
-    let d = dispatch(s, env, "debrief", sess);
-    s = reply(d.s, env, d.turnId, say("Was war heute knifflig?")).s;
-    d = dispatch(s, env, "debrief", sess, "die pläne");
-    s = reply(d.s, env, d.turnId, say("Was würdest du jemandem zeigen?")).s;
-    d = dispatch(s, env, "debrief", sess, "mein plan");
+    const s = finishedMission(env);
+    const d = dispatch(s, env, "debrief", sess);
     equal(d.result.phase, "naechstes");
     deepStrictEqual(d.result.request.context.nextIdeas, ["Im Gewächshaus ernten", "Eine Wasserleitung zum Gewächshaus bauen"], "the two reviewed ideas are in the briefing");
     ok(/Zähl keine Ideen auf/.test(d.result.request.system), "Nov 8: Nokt asks once; the pictures on the screen carry the ideas (no read-aloud list)");
@@ -604,9 +599,8 @@ describe("debrief — his button answers, one question at a time, his own next-i
   it("a tapped reviewed idea is recorded as that choice (its label, its id); a tap before the question is not", () => {
     const env = makeEnv();
     const early = finishedMission(env);
-    const e1 = dispatch(early, env, "debrief", "sess-debrief-t000");
-    const e2 = reply(e1.s, env, e1.turnId, say("Was war heute knifflig?")).s;
-    const tap = op(e2, { op: "nokt-talk", action: { a: "dispatch", purpose: "debrief", sessionId: "sess-debrief-t000", turnId: tid(), text: "Im Gewächshaus ernten", via: "typed", choice: "harvest" } }, { ...env, tutorAvailable: true });
+    // Nov 18: the question is the opener — a tap before Nokt's first dispatch is too early.
+    const tap = op(early, { op: "nokt-talk", action: { a: "dispatch", purpose: "debrief", sessionId: "sess-debrief-t000", turnId: tid(), text: "Im Gewächshaus ernten", via: "typed", choice: "harvest" } }, { ...env, tutorAvailable: true });
     equal(v9(tap.state).length, 0, "too early: Nokt has not asked about the next visit yet");
     const { s } = toNextQuestion(env, "sess-debrief-t001");
     const out = op(s, { op: "nokt-talk", action: { a: "dispatch", purpose: "debrief", sessionId: "sess-debrief-t001", turnId: tid(), text: "anything the client claims", via: "typed", choice: "water-pipe" } }, { ...env, tutorAvailable: true });
@@ -621,10 +615,6 @@ describe("debrief — his button answers, one question at a time, his own next-i
     let s = finishedMission(env);
     const sess = "sess-debrief-w001";
     let d = dispatch(s, env, "debrief", sess);
-    s = reply(d.s, env, d.turnId, say("Was war heute knifflig?")).s;
-    d = dispatch(s, env, "debrief", sess, "nichts");
-    s = reply(d.s, env, d.turnId, say("Was würdest du zeigen?")).s;
-    d = dispatch(s, env, "debrief", sess, "den plan");
     const withheld = reply(d.s, env, d.turnId, "", null, "timeout");
     ok(/Tipp unten eine Idee an/.test(withheld.result.line!), "the app asks the reviewed question with the taps");
     d = dispatch(withheld.s, env, "debrief", sess, "wasser");
@@ -639,9 +629,9 @@ describe("debrief — his button answers, one question at a time, his own next-i
       const q = dispatch(b, env, "debrief", "sess-debrief-w002", "Was meinst du?");
       b = reply(q.s, env, q.turnId, say(`Ernten oder Wasser? (${i})`)).s;
     }
-    // Nov 8: his fourth turn is the limit and got the closing line, so anything after it can only close.
+    // Nov 18: the opener plus two repeats are the three questions; after that Nokt thanks him and closes.
     const last = dispatch(b, env, "debrief", "sess-debrief-w002", "Was meinst du?");
-    equal(last.result.phase, "schliessen");
+    equal(last.result.phase, "abschluss");
     equal(v9(last.s).length, 0);
   });
   it("the briefing never turns «no recorded app help» into «without any help»", () => {
