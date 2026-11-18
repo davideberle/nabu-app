@@ -263,6 +263,50 @@ function HouseWall() {
   );
 }
 
+/** Nov 18 (Visit 11 / Visit 5): the pump, rocks, hose and net; a red bowl; a seed. Plain vector stand-ins for the art pass. */
+function Rocks({ x, y }: { x: number; y: number }) {
+  return (
+    <g>
+      <ellipse cx={x - 6} cy={y} rx={11} ry={8} fill="#8a8f96" stroke="#5c6066" strokeWidth={1.5} />
+      <ellipse cx={x + 8} cy={y + 2} rx={9} ry={6} fill="#9aa0a6" stroke="#5c6066" strokeWidth={1.5} />
+    </g>
+  );
+}
+function Pump({ x, y }: { x: number; y: number }) {
+  return (
+    <g>
+      <rect x={x - 7} y={y - 10} width={14} height={14} rx={3} fill="#3f9a4f" stroke="#245c2e" strokeWidth={1.5} />
+      <rect x={x - 3} y={y - 15} width={6} height={5} fill="#245c2e" />
+    </g>
+  );
+}
+function Sea() {
+  return <path d="M0 0h80v20q-10 6-20 0t-20 0-20 0-20 0z" fill={WATER} />;
+}
+function Sand() {
+  return <rect x={0} y={20} width={80} height={60} fill="#ecd9a8" />;
+}
+function Bowl({ x, y, color = "#d6342c" }: { x: number; y: number; color?: string }) {
+  return <path d={`M${x - 12} ${y}h24q-2 9-12 9t-12-9z`} fill={color} stroke="#7a2a22" strokeWidth={1.5} />;
+}
+function Board({ x, y, ground = false }: { x: number; y: number; ground?: boolean }) {
+  return ground ? <path d={`M${x - 30} ${y}h60`} stroke={LEAF} strokeWidth={4} /> : (
+    <g>
+      <rect x={x - 2} y={y} width={4} height={24} fill={WOOD_DARK} />
+      <rect x={x - 18} y={y - 3} width={36} height={5} fill={WOOD} stroke={WOOD_DARK} strokeWidth={1} />
+    </g>
+  );
+}
+function SeedDot({ x, y }: { x: number; y: number }) {
+  return <ellipse cx={x} cy={y} rx={3} ry={2} fill="#c9a26b" stroke="#7a4a22" strokeWidth={0.8} />;
+}
+function Worm({ x, y }: { x: number; y: number }) {
+  return <path d={`M${x - 8} ${y}q4-6 8 0t8 0`} stroke="#d98a8a" strokeWidth={4} fill="none" strokeLinecap="round" />;
+}
+function Berry({ x, y }: { x: number; y: number }) {
+  return <circle cx={x} cy={y} r={3.5} fill="#b3203a" stroke="#6e1222" strokeWidth={0.8} />;
+}
+
 function Shape({ id }: { id: WorkshopPicture }) {
   switch (id) {
     case "chair-wood":
@@ -726,6 +770,62 @@ function Shape({ id }: { id: WorkshopPicture }) {
       return <g><rect x={36} y={46} width={6} height={28} fill={WOOD_DARK} /><rect x={10} y={16} width={58} height={32} rx={3} fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} /><text x={39} y={38} textAnchor="middle" fontSize={15} fontWeight={700} fill="#3b2a17">ABC</text></g>;
     case "liked-roof":
       return <BirdHouse roof="#e0a020" s={1.3} />;
+    // Nov 18 — Santiago Visit 11 «Den Teich füllen»
+    case "side-10cm":
+      return <SideView d={4} label="10 cm tief" />;
+    case "side-20cm":
+      return <SideView d={8} label="20 cm tief" />;
+    case "pump-behind":
+      return <g><Sand /><Sea /><Pump x={40} y={22} /><Rocks x={40} y={40} /></g>;
+    case "pump-front":
+      return <g><Sand /><Sea /><Rocks x={40} y={28} /><Pump x={40} y={56} /></g>;
+    case "pump-on":
+      return <g><Sand /><Sea /><Rocks x={40} y={44} /><Pump x={40} y={36} /></g>;
+    case "hose-over":
+      return <g><Sand /><Sea /><PondBit x={62} y={64} /><Pump x={16} y={22} /><path d="M16 26q20 6 46 30" stroke="#3f7fd6" strokeWidth={4} fill="none" /></g>;
+    case "hose-under":
+      return <g><Sand /><Sea /><PondBit x={62} y={64} /><Pump x={16} y={22} /><path d="M16 26q20 6 46 30" stroke="#3f7fd6" strokeWidth={4} strokeDasharray="4 4" strokeOpacity={0.5} fill="none" /><path d="M8 36h64" stroke="#d8c08a" strokeWidth={6} /></g>;
+    case "hose-around":
+      return <g><Sand /><Sea /><PondBit x={50} y={56} /><Pump x={16} y={22} /><path d="M16 26q-6 44 34 46q30-2 22-26" stroke="#3f7fd6" strokeWidth={4} fill="none" /></g>;
+    case "net-front":
+      return <g><Sea /><Sand /><Pump x={40} y={40} /><path d="M24 56h32" stroke="#555" strokeWidth={3} strokeDasharray="3 2" /></g>;
+    case "net-behind":
+      return <g><Sea /><Sand /><path d="M24 24h32" stroke="#555" strokeWidth={3} strokeDasharray="3 2" /><Pump x={40} y={44} /></g>;
+    case "net-next":
+      return <g><Sea /><Sand /><Pump x={30} y={44} /><path d="M50 30v24" stroke="#555" strokeWidth={3} strokeDasharray="3 2" /></g>;
+    case "food-seagrass":
+      return <g><rect x={0} y={60} width={80} height={20} fill="#ecd9a8" />{[20, 32, 44, 56].map((x) => <path key={x} d={`M${x} 62q-6-20 4-44`} stroke="#3e8a52" strokeWidth={4} fill="none" strokeLinecap="round" />)}</g>;
+    case "food-crabs":
+      return <g><ellipse cx={40} cy={46} rx={18} ry={12} fill="#e0603a" stroke="#8a2f1a" strokeWidth={2} /><path d="M22 44l-10-8M58 44l10-8M26 54l-8 8M54 54l8 8" stroke="#8a2f1a" strokeWidth={3} strokeLinecap="round" /><circle cx={34} cy={34} r={3} fill="#222" /><circle cx={46} cy={34} r={3} fill="#222" /></g>;
+    case "food-jellyfish":
+      return <g><path d="M20 40q20-34 40 0z" fill="#c9a7e8" stroke="#7a5aa8" strokeWidth={2} />{[26, 34, 42, 50, 56].map((x) => <path key={x} d={`M${x} 40q-4 10 0 20t0 14`} stroke="#9a7ac8" strokeWidth={2} fill="none" />)}</g>;
+    // Nov 18 — Isabel Visit 5 «Die Vögel ziehen ein»
+    case "bird-food":
+      return <g><Bowl x={40} y={46} />{[30, 36, 42, 48, 34, 44].map((x, i) => <SeedDot key={i} x={x} y={i < 4 ? 44 : 40} />)}</g>;
+    case "egg":
+      return <ellipse cx={40} cy={42} rx={15} ry={20} fill="#f4f1e6" stroke="#b9ad8f" strokeWidth={2} />;
+    case "ice-cream":
+      return <g><path d="M28 36h24l-12 34z" fill="#e3b26b" stroke="#a8743a" strokeWidth={2} /><circle cx={40} cy={30} r={13} fill="#f4c2d0" stroke="#c97a92" strokeWidth={2} /></g>;
+    case "bowl-right":
+      return <g><BigTree /><BirdHouse roof="#3f7fd6" x={42} y={22} s={0.6} /><Board x={60} y={44} /><Bowl x={60} y={40} /></g>;
+    case "bowl-blue":
+      return <g><BigTree /><BirdHouse roof="#3f7fd6" x={42} y={22} s={0.6} /><Board x={60} y={44} /><Bowl x={60} y={40} color="#3f7fd6" /></g>;
+    case "bowl-ground":
+      return <g><BigTree /><BirdHouse roof="#3f7fd6" x={42} y={22} s={0.6} /><Board x={60} y={72} ground /><Bowl x={60} y={66} /></g>;
+    case "bowl-far":
+      return <g><BigTree /><BirdHouse roof="#3f7fd6" x={36} y={22} s={0.6} /><Board x={68} y={52} /><Bowl x={68} y={48} /></g>;
+    case "food-seeds":
+      return <g><Bowl x={40} y={44} />{[30, 35, 40, 45, 50, 37, 43].map((x, i) => <SeedDot key={i} x={x} y={i < 5 ? 42 : 38} />)}</g>;
+    case "food-berries":
+      return <g><Bowl x={40} y={44} />{[31, 37, 43, 49, 34, 40, 46].map((x, i) => <Berry key={i} x={x} y={i < 4 ? 41 : 36} />)}</g>;
+    case "food-worms":
+      return <g><Bowl x={40} y={46} /><Worm x={34} y={40} /><Worm x={46} y={38} /></g>;
+    case "liked-seeds":
+      return <g>{[0, 1, 2].map((i) => <g key={i}><path d={`M${16 + i * 18} 30h14v30h-14z`} fill="#e9d8b0" stroke={WOOD_DARK} strokeWidth={1.5} /><path d={`M${16 + i * 18} 30l7-6 7 6`} fill="none" stroke="#c0504d" strokeWidth={2} /></g>)}</g>;
+    case "next-wool":
+      return <g><circle cx={40} cy={44} r={18} fill="#e8a0b4" stroke="#a85a72" strokeWidth={2} /><path d="M26 36q14 10 28 0M24 46q16 10 32 0M28 56q12 6 24 0" stroke="#a85a72" strokeWidth={1.5} fill="none" /></g>;
+    case "next-bush":
+      return <g><circle cx={28} cy={50} r={16} fill={LEAF} /><circle cx={50} cy={46} r={18} fill="#5ea24a" /><circle cx={40} cy={36} r={14} fill={LEAF} />{[[30, 44], [48, 40], [42, 54]].map(([x, y]) => <Berry key={`${x}-${y}`} x={x} y={y} />)}</g>;
     default: {
       // Exhaustive on purpose: a picture id in WORKSHOP_PICTURES without a drawing no longer compiles. It used to draw nothing.
       const missing: never = id;
@@ -774,11 +874,13 @@ export function WorkshopRoom({ made, label }: { made: string | null; label: stri
  */
 export function Counters({ counters, caption = true }: { counters: MissionCounters; /** Isabel Visit 2 (narrated): the question says it — no caption to read. */ caption?: boolean }) {
   const { a, b, op, unit, bundles } = counters;
-  if (bundles && counters.closed) {
+  // Nov 18: a missing-part question with closed bundles has its own picture below (what is there, then the empty places).
+  if (bundles && counters.closed && !(counters.ask === "missing" && counters.frame)) {
     // Step 1 (S1-15): after counting one bundle, a bundle is drawn closed with its «10» — not every stick (or apple) again.
     const tens = Math.floor(a / 10);
     const loose = a % 10;
-    const bag = counters.icon === "apple";
+    // Nov 18: seeds come in small bags of ten, like the apples (Isabel Visit 5).
+    const bag = counters.icon === "apple" || counters.icon === "seed";
     return (
       <figure className="grid gap-2" data-testid="counters" data-a={a} data-b={b} data-op={op} data-bundles="closed">
         <div className="flex flex-wrap items-end gap-3" role="img" aria-label={`${tens} ${bag ? "Säcke" : "Bündel"} mit je 10 ${unit}${loose ? ` und ${loose} einzelne` : ""} und ${b} einzelne`}>
@@ -793,7 +895,7 @@ export function Counters({ counters, caption = true }: { counters: MissionCounte
           {Array.from({ length: loose + (op === "+" ? b : 0) }, (_, i) =>
             bag ? (
               <svg key={`l${i}`} viewBox="0 0 40 40" className="h-12 w-12" aria-hidden data-part="loose">
-                <CounterIcon icon="apple" />
+                <CounterIcon icon={counters.icon === "seed" ? "seed" : "apple"} />
               </svg>
             ) : (
               <svg key={`l${i}`} viewBox="0 0 10 80" className="h-20 w-2.5" aria-hidden data-part="loose">
@@ -851,29 +953,44 @@ export function Counters({ counters, caption = true }: { counters: MissionCounte
     const loose = a % 10;
     const emptyLoose = (10 - loose) % 10;
     const emptyTens = Math.floor((counters.frame - a - emptyLoose) / 10);
+    // Nov 18: seeds (and apples) come in bags of ten, not stick bundles.
+    const bag = counters.icon === "apple" || counters.icon === "seed";
+    const looseIcon = counters.icon === "seed" ? "seed" : "apple";
     return (
       <figure className="grid gap-2" data-testid="counters" data-a={a} data-b={b} data-op={op} data-frame={counters.frame} data-bundles="closed">
-        <div className="flex flex-wrap items-end gap-3" role="img" aria-label={`${tens} Bündel und ${loose} einzelne ${unit}. Es fehlen noch welche bis ${counters.frame}.`}>
+        <div className="flex flex-wrap items-end gap-3" role="img" aria-label={`${tens} ${bag ? "Säckchen" : "Bündel"} und ${loose} einzelne ${unit}. Es fehlen noch welche bis ${counters.frame}.`}>
           {Array.from({ length: tens }, (_, i) => (
             <svg key={`t${i}`} viewBox="0 0 64 80" className="h-20 w-16" aria-hidden data-part="closed-bundle">
-              <path d="M8 6h48v68H8z" fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} />
-              <rect x={6} y={34} width={52} height={8} rx={2} fill="#c0504d" />
-              <text x={32} y={28} textAnchor="middle" fontSize={20} fontWeight={700} fill="#3b2a17">10</text>
+              {bag ? <path d="M10 22q22-14 44 0l6 50H4z" fill="#c9a26b" stroke={WOOD_DARK} strokeWidth={2} /> : <path d="M8 6h48v68H8z" fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} />}
+              {bag ? null : <rect x={6} y={34} width={52} height={8} rx={2} fill="#c0504d" />}
+              <text x={32} y={bag ? 56 : 28} textAnchor="middle" fontSize={20} fontWeight={700} fill="#3b2a17">10</text>
             </svg>
           ))}
-          {Array.from({ length: loose }, (_, i) => (
-            <svg key={`l${i}`} viewBox="0 0 10 80" className="h-20 w-2.5" aria-hidden data-part="filled">
-              <rect x={3} y={6} width={4} height={68} rx={1.5} fill={WOOD} />
-            </svg>
-          ))}
-          {Array.from({ length: emptyLoose }, (_, i) => (
-            <svg key={`e${i}`} viewBox="0 0 10 80" className="h-20 w-2.5" aria-hidden data-part="empty">
-              <rect x={2} y={6} width={6} height={68} rx={2} fill="none" stroke="#b9a582" strokeWidth={1.5} strokeDasharray="4 3" />
-            </svg>
-          ))}
+          {Array.from({ length: loose }, (_, i) =>
+            bag ? (
+              <svg key={`l${i}`} viewBox="0 0 40 40" className="h-12 w-12" aria-hidden data-part="filled">
+                <CounterIcon icon={looseIcon} />
+              </svg>
+            ) : (
+              <svg key={`l${i}`} viewBox="0 0 10 80" className="h-20 w-2.5" aria-hidden data-part="filled">
+                <rect x={3} y={6} width={4} height={68} rx={1.5} fill={WOOD} />
+              </svg>
+            ),
+          )}
+          {Array.from({ length: emptyLoose }, (_, i) =>
+            bag ? (
+              <svg key={`e${i}`} viewBox="0 0 40 40" className="h-12 w-12" aria-hidden data-part="empty">
+                <rect x={5} y={5} width={30} height={30} rx={6} fill="none" stroke="#b9a582" strokeWidth={2} strokeDasharray="4 4" />
+              </svg>
+            ) : (
+              <svg key={`e${i}`} viewBox="0 0 10 80" className="h-20 w-2.5" aria-hidden data-part="empty">
+                <rect x={2} y={6} width={6} height={68} rx={2} fill="none" stroke="#b9a582" strokeWidth={1.5} strokeDasharray="4 3" />
+              </svg>
+            ),
+          )}
           {Array.from({ length: emptyTens }, (_, i) => (
             <svg key={`et${i}`} viewBox="0 0 64 80" className="h-20 w-16" aria-hidden data-part="empty-bundle">
-              <path d="M8 6h48v68H8z" fill="none" stroke="#b9a582" strokeWidth={2} strokeDasharray="6 4" />
+              {bag ? <path d="M10 22q22-14 44 0l6 50H4z" fill="none" stroke="#b9a582" strokeWidth={2} strokeDasharray="6 4" /> : <path d="M8 6h48v68H8z" fill="none" stroke="#b9a582" strokeWidth={2} strokeDasharray="6 4" />}
               <text x={32} y={46} textAnchor="middle" fontSize={20} fontWeight={700} fill="#b9a582">10</text>
             </svg>
           ))}

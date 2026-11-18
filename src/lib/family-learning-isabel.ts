@@ -26,7 +26,7 @@ import { checkAdaptiveBudget, COUNTER_ICONS, WORKSHOP_PICTURES, type MissionDef,
 import { ASSISTANT_IDENTITIES, slotFitsCharacter } from "./family-voice-registry.ts";
 
 export const ISABEL_CONTENT_ID = "isabel-workshop";
-export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4];
+export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5];
 export const ISABEL_MISSION_ID = "MISSION-OLD-LILA-WORKSHOP";
 export const ISABEL_GARDEN_MISSION_ID = "MISSION-IDA-GARDEN";
 /** Step 1 (content v3): Isabel Visit 3 «Ernten und probieren» (internal visit id v4, learner-facing «Besuch 3»). */
@@ -35,12 +35,15 @@ export const ISABEL_HARVEST_MISSION_ID = "MISSION-IDA-HARVEST";
 export const ISABEL_COMPANION = "Old Lila";
 /** Content v4 (Nov 8): Isabel Visit 4 «Ein Zuhause für die Vögel» (internal visit id v5, learner-facing «Besuch 4»). */
 export const ISABEL_BIRDS_MISSION_ID = "MISSION-IDA-BIRDS";
+/** Content v5 (Nov 18): Isabel Visit 5 «Die Vögel ziehen ein» (internal visit id v6, learner-facing «Besuch 5»). */
+export const ISABEL_FOOD_MISSION_ID = "MISSION-IDA-FOOD";
 export const EXPECTED_WORKSHOP_STEPS: readonly string[] = ["W1-HELLO", "W2-MAKE", "W3-MATERIALS", "W4-COUNT", "W5-TENS", "W6-TENS-AGAIN", "W7-EASIER", "W8-READ", "W9-LISTEN", "W10-CRAFT", "W11-ROOM"];
 export const EXPECTED_GARDEN_STEPS: readonly string[] = ["IG1-HELLO", "IG2-PLANT", "IG3-STICKS", "IG4-STICKS-AGAIN", "IG5-PLANTING", "IG6-PLANTING-EASIER", "IG7-READ", "IG8-LISTEN", "IG9-CRAFT", "IG10-GARDEN"];
 export const EXPECTED_HARVEST_STEPS: readonly string[] = ["IH1-HELLO", "IH2-PICK", "IH3-BUNDLE", "IH4-TENS", "IH5-TENS-AGAIN", "IH6-PLUS", "IH6H-BRIDGE", "IH6E-SMALL", "IH7-READ", "IH8-READ", "IH9-PHRASE", "IH10-LISTEN", "IH11-HARVEST"];
 /** Every Isabel mission step id (telemetry vocabulary). */
 export const EXPECTED_BIRD_STEPS: readonly string[] = ["IV1-HELLO", "IV2-WARM", "IV2E-WARM-EASY", "IV2N-NEST", "IV3-WALLS", "IV3E-WALLS-EASY", "IV4-ENOUGH", "IV4E-ENOUGH-EASY", "IV4H-ENOUGH-MORE", "IV5-NAILS", "IV5E-NAILS-EASY", "IV5H-NAILS-MORE", "IV6-VOGEL", "IV7-HAUS", "IV8-PHRASE", "IV9-LISTEN", "IV10-ROOF", "IV11-HOME"];
-export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS, ...EXPECTED_HARVEST_STEPS, ...EXPECTED_BIRD_STEPS];
+export const EXPECTED_FOOD_STEPS: readonly string[] = ["IF1-HELLO", "IF2-WARM", "IF2E-WARM-EASY", "IF2N-NEST", "IF3-SEEDS", "IF3E-SEEDS-EASY", "IF4-MORE", "IF4E-MORE-EASY", "IF4H-MORE-HARD", "IF5-AWAY", "IF5E-AWAY-EASY", "IF5H-AWAY-MORE", "IF6-FUTTER", "IF7-LISTEN", "IF8-FOOD", "IF9-EI", "IF10-HOME"];
+export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS, ...EXPECTED_HARVEST_STEPS, ...EXPECTED_BIRD_STEPS, ...EXPECTED_FOOD_STEPS];
 
 /** What each of Isabel's missions must be (by visit). The generic rules below apply to all of them. */
 type WorkshopSpec = {
@@ -69,6 +72,7 @@ const SPECS: readonly WorkshopSpec[] = [
   { id: ISABEL_GARDEN_MISSION_ID, visit: "v2", steps: EXPECTED_GARDEN_STEPS, character: { id: "ida", name: null }, place: "garden", decide: "IG2-PLANT", tens: "IG3-STICKS", tensAgain: "IG4-STICKS-AGAIN", easier: ["IG6-PLANTING-EASIER", "IG5-PLANTING"], worldProp: "garden", narrated: true },
   { id: ISABEL_HARVEST_MISSION_ID, visit: "v4", steps: EXPECTED_HARVEST_STEPS, character: { id: "ida", name: null }, place: "garden", decide: "IH2-PICK", tens: "IH4-TENS", tensAgain: "IH5-TENS-AGAIN", easier: ["IH6E-SMALL", "IH6-PLUS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
   { id: ISABEL_BIRDS_MISSION_ID, visit: "v5", steps: EXPECTED_BIRD_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "IV10-ROOF", tens: "IV2-WARM", tensAgain: "IV2E-WARM-EASY", easier: ["IV3E-WALLS-EASY", "IV3-WALLS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
+  { id: ISABEL_FOOD_MISSION_ID, visit: "v6", steps: EXPECTED_FOOD_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "IF8-FOOD", tens: "IF2-WARM", tensAgain: "IF2E-WARM-EASY", easier: ["IF3E-SEEDS-EASY", "IF3-SEEDS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
 ];
 
 const FORBIDDEN_KINDS = new Set(["typing-block", "write", "produce", "recall", "calc", "choice"]);
