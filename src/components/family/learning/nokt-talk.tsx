@@ -19,10 +19,11 @@ import type { ChildId } from "@/lib/family-assistant-turn";
 import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import type { NoktTalkLineView, NoktTalkPurpose } from "@/lib/family-learning-nokt-talk";
 import { browserSpeech, cancelBrowserSpeech } from "@/lib/family-learning-listening";
-import { NoktMic, submitOnEnter, type NoktTranscribe } from "./nokt-panel";
+import { NoktMic, submitOnEnter, type NoktActivityRef, type NoktTranscribe } from "./nokt-panel";
+import type { NoktPanelTelemetry, NoktTelemetryPurpose, NoktTelemetryState } from "@/lib/family-learning-telemetry-schema";
 import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
-export type NoktTalkTurnOutcome = { kind: "shown"; say: string; ended?: boolean } | { kind: "app"; line: string } | { kind: "failed"; line: string } | { kind: "cancelled" };
+export type NoktTalkTurnOutcome = { kind: "shown"; say: string; ended?: boolean } | { kind: "app"; line: string; ended?: boolean } | { kind: "failed"; line: string } | { kind: "cancelled" };
 /** One talk turn through the server (dispatch → family runtime → reply). `text` absent = an opener. */
 export type NoktTalkTurnFn = (turn: { purpose: NoktTalkPurpose; sessionId: string; turnId: string; text?: string; via?: "voice" | "typed"; choice?: string }, signal: AbortSignal) => Promise<NoktTalkTurnOutcome>;
 
@@ -64,6 +65,9 @@ export function NoktTalk({
   ended = false,
   waitingLine = null,
   onEnded,
+  telemetry = null,
+  activity = null,
+  sentenceKey = null,
 }: {
   child: ChildId;
   purpose: NoktTalkPurpose;
@@ -92,8 +96,21 @@ export function NoktTalk({
   waitingLine?: string | null;
   /** The talk is over (Nokt's last line has finished, or it failed). */
   onEnded?: (why: "closed" | "failed") => void;
+  /** Nov 18: closed panel telemetry (no text). */
+  telemetry?: NoktPanelTelemetry | null;
+  /** Nov 18: speaking / waiting / idle and the session id, for the dock's close. */
+  activity?: NoktActivityRef | null;
+  /**
+   * Nov 18 (strict writing): a new version of his sentence is saved and not yet read by Nokt — its key (e.g. the version
+   * number). When it changes, Nokt reads it (the server takes the text from its own copy). Null = nothing waiting.
+   */
+  sentenceKey?: string | null;
 }) {
   const sessionId = useMemo(() => persistedSession ?? newId("s"), [persistedSession]);
+  const tPurpose: NoktTelemetryPurpose | undefined = purpose === "home" ? undefined : purpose;
+  const mark = (state: NoktTelemetryState) => {
+    if (activity) activity.current = { ...activity.current, state, sessionId };
+  };
   const [lines, setLines] = useState<Line[]>(() => initialLines.map((l, i) => ({ ...l, key: `p${i}` })));
   const [draft, setDraft] = useState("");
   const [via, setVia] = useState<"voice" | "typed">("typed");
@@ -126,9 +143,14 @@ export function NoktTalk({
 
   const say = async (text: string) => {
     speech.unlock();
-    const played = await speech.speak({ childId: child, text, language: "de", speaker: "nokt" });
-    // Only the ElevenLabs audio plays on success; the browser voice is the fallback, and never after the panel closed.
-    if (played === "fallback" && alive.current) await browserSpeech()(text, "de");
+    mark("speaking");
+    try {
+      const played = await speech.speak({ childId: child, text, language: "de", speaker: "nokt" });
+      // Only the ElevenLabs audio plays on success; the browser voice is the fallback, and never after the panel closed.
+      if (played === "fallback" && alive.current) await browserSpeech()(text, "de");
+    } finally {
+      if (alive.current && activity?.current.state === "speaking") mark("idle");
+    }
   };
 
   const appLine = (text: string) => {
@@ -140,6 +162,13 @@ export function NoktTalk({
     const abort = new AbortController();
     abortRef.current = abort;
     setWaiting(true);
+    mark("waiting");
+    if (body.text !== undefined || body.choice !== undefined) {
+      telemetry?.({ event: body.choice !== undefined || body.via !== "voice" ? "sent-typed" : "sent-spoken", purpose: tPurpose });
+      if (activity) activity.current = { ...activity.current, sent: true };
+    }
+    const since = Date.now();
+    const report = (event: "reply-shown" | "reply-app" | "reply-failed") => telemetry?.({ event, purpose: tPurpose, ms: Date.now() - since });
     let timedOut = false;
     const timer = window.setTimeout(() => {
       timedOut = true;
@@ -152,15 +181,19 @@ export function NoktTalk({
     if (timedOut) {
       abortRef.current = null;
       setWaiting(false);
+      mark("idle");
+      report("reply-failed");
       appLine(NOKT_FRIENDLY_FAILURE_LINE);
       finish("failed");
       return;
     }
     if (abort.signal.aborted || out.kind === "cancelled") return;
     abortRef.current = null;
+    report(out.kind === "shown" ? "reply-shown" : out.kind === "app" ? "reply-app" : "reply-failed");
     if (spoken) await spoken; // «Gib mir ein paar Sekunden …» is never cut off by the reply
     if (!alive.current) return;
     setWaiting(false);
+    mark("idle");
     if (out.kind === "shown") {
       setLines((l) => [...l, { role: "nokt", text: out.say, at: new Date().toISOString(), key: newId("n") }]);
       onLine?.({ role: "nokt", text: out.say });
@@ -170,9 +203,11 @@ export function NoktTalk({
       });
       return;
     }
-    if (blocking) {
+    // Nov 18: in the strict writing talk a withheld line (guard refusal) is one app line and the talk goes on; only a real
+    // failure (no reply) ends it — the app's own check then carries the sentence step.
+    if (blocking && !(purpose === "writing" && out.kind === "app" && !out.ended)) {
       appLine(out.kind === "app" ? out.line : NOKT_FRIENDLY_FAILURE_LINE);
-      finish("failed");
+      finish(out.kind === "app" && out.ended ? "closed" : "failed");
       return;
     }
     appLine(out.line);
@@ -187,6 +222,15 @@ export function NoktTalk({
     void run(undefined, "typed");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [opener, closed]);
+
+  // Nov 18 (strict writing): a new version of his sentence waits for Nokt — read it (once per key), when nothing is pending.
+  const sentRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!sentenceKey || sentRef.current === sentenceKey || waiting || closed || over || !openedRef.current && opener) return;
+    sentRef.current = sentenceKey;
+    void exchange({}, false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sentenceKey, waiting, closed, over]);
 
   const send = () => {
     const text = draft.trim();
@@ -266,6 +310,7 @@ export function NoktTalk({
                 setDraft(text.slice(0, 300));
                 setVia("voice");
               }}
+              onEvent={telemetry ? (event, ms) => telemetry({ event, purpose: tPurpose, ...(ms !== undefined ? { ms } : {}) }) : undefined}
             />
           ) : null}
           <form

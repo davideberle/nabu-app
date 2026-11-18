@@ -29,6 +29,14 @@ import { browserSpeech, cancelBrowserSpeech } from "@/lib/family-learning-listen
 import { startPushToTalk } from "@/lib/family-voice";
 import type { RecorderControl, RecorderHandlers } from "@/lib/family-voice";
 import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
+import type { NoktPanelTelemetry, NoktTelemetryState } from "@/lib/family-learning-telemetry-schema";
+
+/**
+ * Nov 18: what the dock needs to know when the panel closes — whether Nokt was speaking, he was waiting for Nokt's reply, or
+ * neither — and the conversation's server session (to store the close). Written by the conversation, read by the dock.
+ */
+export type NoktActivity = { state: NoktTelemetryState; sessionId: string | null; sent: boolean };
+export type NoktActivityRef = { current: NoktActivity };
 
 /** Uploads one recorded turn; the signal cancels upload and provider call. Bound to the child by the caller. */
 export type NoktTranscribe = (audio: Blob, fileName: string, signal: AbortSignal) => Promise<NoktTranscribeOutcome>;
@@ -59,7 +67,7 @@ export function NoktButton({ child, onOpen }: { child: ChildId; onOpen: () => vo
   );
 }
 
-export function NoktPanel({ child, mode, step, part, speech, transcribe = null, turn = null, opener = false, entry = "manual", onClose }: { child: ChildId; mode: NoktMode; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe?: NoktTranscribe | null; turn?: NoktTurnFn | null; /** Nokt starts the conversation itself (Nov 8: it asks about his own answer; it never offers help). */ opener?: boolean; entry?: "manual" | "offer"; onClose: () => void }) {
+export function NoktPanel({ child, mode, step, part, speech, transcribe = null, turn = null, opener = false, entry = "manual", onClose, telemetry = null, activity = null }: { child: ChildId; mode: NoktMode; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe?: NoktTranscribe | null; turn?: NoktTurnFn | null; /** Nokt starts the conversation itself (Nov 8: it asks about his own answer; it never offers help). */ opener?: boolean; entry?: "manual" | "offer"; onClose: () => void; /** Nov 18: closed panel telemetry (no text). */ telemetry?: NoktPanelTelemetry | null; activity?: NoktActivityRef | null }) {
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: false });
@@ -88,7 +96,7 @@ export function NoktPanel({ child, mode, step, part, speech, transcribe = null, 
           <p className="text-lg leading-relaxed">Der Hinweis hilft dir Schritt für Schritt. Du kannst auch einen Erwachsenen fragen.</p>
         </div>
       ) : (
-        <Conversation child={child} fictional={mode === "fictional-stub"} step={step} part={part} speech={speech} transcribe={transcribe} turn={turn} opener={opener} entry={entry} />
+        <Conversation child={child} fictional={mode === "fictional-stub"} step={step} part={part} speech={speech} transcribe={transcribe} turn={turn} opener={opener} entry={entry} telemetry={telemetry} activity={activity} />
       )}
       <button type="button" className={`${btn} mt-4`} style={{ background: "#e6eee7", color: "#21484b" }} onClick={onClose} data-testid="nokt-close">
         Schliessen
@@ -101,7 +109,7 @@ export function NoktPanel({ child, mode, step, part, speech, transcribe = null, 
  * The conversation: typed (and push-to-talk where transcription is configured). `fictional` = the isolated local stub,
  * labelled «Testmodus» and allowed to fall back to canned replies; the real conversation (`subscription`) never does.
  */
-function Conversation({ child, fictional, step, part, speech, transcribe, turn, opener, entry }: { child: ChildId; fictional: boolean; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe: NoktTranscribe | null; turn: NoktTurnFn | null; opener: boolean; entry: "manual" | "offer" }) {
+function Conversation({ child, fictional, step, part, speech, transcribe, turn, opener, entry, telemetry, activity }: { child: ChildId; fictional: boolean; step: string | null; part: string | null; speech: ChildSpeechPlayer; transcribe: NoktTranscribe | null; turn: NoktTurnFn | null; opener: boolean; entry: "manual" | "offer"; telemetry: NoktPanelTelemetry | null; activity: NoktActivityRef | null }) {
   const transport = useMemo(() => fictionalNoktTransport(), []);
   // One talk per opening of the panel; a pending turn is aborted when the panel closes or the task changes (unmount).
   const sessionId = useMemo(() => newId("s"), []);
@@ -124,11 +132,24 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn, 
   const [via, setVia] = useState<"voice" | "typed">("typed");
   const [waiting, setWaiting] = useState(false);
   const [over, setOver] = useState(false);
+  const mark = (state: NoktTelemetryState) => {
+    if (activity) activity.current = { ...activity.current, state };
+  };
   const say = async (text: string) => {
     speech.unlock();
-    const played = await speech.speak({ childId: child, text, language: "de", speaker: "nokt" });
-    // Only the ElevenLabs audio plays on success; the browser voice is the fallback, and never after the panel closed.
-    if (played === "fallback" && alive.current) await browserSpeech()(text, "de");
+    mark("speaking");
+    try {
+      const played = await speech.speak({ childId: child, text, language: "de", speaker: "nokt" });
+      // Only the ElevenLabs audio plays on success; the browser voice is the fallback, and never after the panel closed.
+      if (played === "fallback" && alive.current) await browserSpeech()(text, "de");
+    } finally {
+      if (alive.current && activity?.current.state === "speaking") mark("idle");
+    }
+  };
+  /** Nov 18: the reply arrived (shown, app line or failed), with the time since he sent (or since the opener started). */
+  const replied = (kind: "shown" | "withheld" | "exhausted" | "failed", since: number) => {
+    mark("idle");
+    telemetry?.({ event: kind === "shown" ? "reply-shown" : kind === "withheld" ? "reply-app" : "reply-failed", purpose: "task", ms: Date.now() - since });
   };
   const openedRef = useRef(false);
   useEffect(() => {
@@ -137,11 +158,14 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn, 
     const abort = new AbortController();
     turnAbortRef.current = abort;
     setWaiting(true);
+    mark("waiting");
+    const since = Date.now();
     void (async () => {
       const out = await turn({ step, part, purpose: "diagnostic", entry, sessionId, turnId: newId("t"), opener: true }, abort.signal);
       if (abort.signal.aborted || out.kind === "cancelled") return;
       turnAbortRef.current = null;
       setWaiting(false);
+      replied(out.kind, since);
       if (out.kind === "shown") {
         setTurns((t) => [...t, { id: `n${t.length}`, role: "nokt", text: out.say, via: "typed", at: Date.now() }]);
         void say(out.say);
@@ -160,6 +184,10 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn, 
     setDraft("");
     setVia("typed");
     setWaiting(true);
+    telemetry?.({ event: childTurn.via === "voice" ? "sent-spoken" : "sent-typed", purpose: "task" });
+    if (activity) activity.current = { ...activity.current, sent: true };
+    mark("waiting");
+    const since = Date.now();
     if (turn && step && part) {
       // Through the server: his line is recorded, the reply is verified and checked before it is shown as Nokt.
       const abort = new AbortController();
@@ -168,6 +196,7 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn, 
       if (abort.signal.aborted || out.kind === "cancelled") return;
       turnAbortRef.current = null;
       setWaiting(false);
+      replied(out.kind, since);
       if (out.kind === "shown") {
         setTurns((t) => [...t, { id: `n${t.length}`, role: "nokt", text: out.say, via: "typed", at: Date.now() }]);
         void say(out.say);
@@ -183,12 +212,14 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn, 
     if (!fictional) {
       // The real conversation has no canned fallback: without the server turn it is simply unreachable.
       setWaiting(false);
+      replied("failed", since);
       setTurns((t) => [...t, { id: `a${t.length}`, role: "app", text: NOKT_UNREACHABLE_LINE, via: "typed", at: Date.now() }]);
       setDraft((d) => (d ? d : text));
       return;
     }
     const reply = await transport.reply({ text, step: step ?? "", part, turns: turns.filter((t) => t.role === "child").length });
     setWaiting(false);
+    replied(reply.ok ? "shown" : "failed", since);
     if (!reply.ok) return;
     setTurns((t) => [...t, { id: `n${t.length}`, role: "nokt", text: reply.text, via: "typed", at: Date.now() }]);
     void say(reply.text);
@@ -224,6 +255,7 @@ function Conversation({ child, fictional, step, part, speech, transcribe, turn, 
             setDraft(text.slice(0, 300));
             setVia("voice");
           }}
+          onEvent={telemetry ? (event, ms) => telemetry({ event, purpose: "task", ...(ms !== undefined ? { ms } : {}) }) : undefined}
         />
       ) : null}
       {over ? null : <form
@@ -284,7 +316,9 @@ export function adaptNoktRecorder(recorder: MediaRecorder, handlers: RecorderHan
  * pending upload. The recording lives only in memory until the upload; the
  * transcript only lands in the editable field — never sent without the child.
  */
-export function NoktMic({ transcribe, onTranscript }: { transcribe: NoktTranscribe | null; onTranscript: (text: string) => void }) {
+export type NoktMicEvent = "mic-start" | "mic-live" | "mic-failed" | "stt-ok" | "stt-empty" | "stt-failed";
+
+export function NoktMic({ transcribe, onTranscript, onEvent }: { transcribe: NoktTranscribe | null; onTranscript: (text: string) => void; /** Nov 18: closed telemetry moments of the mic (no audio, no text); `ms` = mic start → live. */ onEvent?: (event: NoktMicEvent, ms?: number) => void }) {
   const [mic, setMic] = useState<MicState>("idle");
   const sessionRef = useRef<ReturnType<typeof startPushToTalk> | null>(null);
   const uploadRef = useRef<AbortController | null>(null);
@@ -298,11 +332,14 @@ export function NoktMic({ transcribe, onTranscript }: { transcribe: NoktTranscri
     [],
   );
   const start = () => {
+    onEvent?.("mic-start");
     if (!transcribe || typeof navigator === "undefined" || !navigator.mediaDevices || typeof MediaRecorder === "undefined") {
       setMic("trouble");
+      onEvent?.("mic-failed");
       return;
     }
     const seq = (seqRef.current += 1);
+    const startedAt = Date.now();
     setMic("starting");
     sessionRef.current = startPushToTalk({
       getUserMedia: () => navigator.mediaDevices.getUserMedia({ audio: true }),
@@ -311,13 +348,16 @@ export function NoktMic({ transcribe, onTranscript }: { transcribe: NoktTranscri
       // Nov 18: «Jetzt sprechen!» only once the recorder has started AND the first captured audio has arrived.
       liveWhen: "audio-flowing",
       onLive: () => {
-        if (seqRef.current === seq) setMic("live");
+        if (seqRef.current !== seq) return;
+        setMic("live");
+        onEvent?.("mic-live", Date.now() - startedAt);
       },
       onSettle: async (outcome) => {
         if (seqRef.current !== seq) return;
         sessionRef.current = null;
         if (outcome.kind !== "recorded") {
           setMic(outcome.kind === "cancelled" ? "idle" : "trouble");
+          if (outcome.kind !== "cancelled") onEvent?.(outcome.kind === "empty" ? "stt-empty" : "mic-failed");
           return;
         }
         setMic("transcribing");
@@ -328,8 +368,12 @@ export function NoktMic({ transcribe, onTranscript }: { transcribe: NoktTranscri
         uploadRef.current = null;
         if (heard.ok) {
           setMic("idle");
+          onEvent?.("stt-ok");
           onTranscript(heard.transcript);
-        } else setMic(heard.failure === "cancelled" ? "idle" : "trouble");
+        } else {
+          setMic(heard.failure === "cancelled" ? "idle" : "trouble");
+          if (heard.failure !== "cancelled") onEvent?.(heard.failure === "empty" ? "stt-empty" : "stt-failed");
+        }
       },
     });
   };

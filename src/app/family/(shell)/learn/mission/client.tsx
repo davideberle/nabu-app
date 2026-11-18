@@ -70,7 +70,8 @@ import type { RetryItem } from "@/lib/family-learning-feedback";
 import type { RetryOutcome, RetryPayload } from "@/components/family/learning/lesson-end";
 import { stageLabel, type ChildView, type LearningOp, type SupportKind } from "@/lib/family-learning-state";
 import { createReadAloudController } from "@/lib/family-learning-audio";
-import { createTelemetryBuffer, enterStage, noteActivity, noteControl, noteInput, noteOp, noteSubmit, pause as pauseTelemetry, setHidden, takeBatch } from "@/lib/family-learning-telemetry";
+import { createTelemetryBuffer, enterStage, noteActivity, noteControl, noteInput, noteNokt, noteOp, noteSubmit, pause as pauseTelemetry, setHidden, takeBatch } from "@/lib/family-learning-telemetry";
+import type { NoktPanelTelemetry } from "@/lib/family-learning-telemetry-schema";
 import { LogRevise, LogTransfer, PierBuild, ReflectFeedback, StationBuild, StationChoice, Summary, TypingCourse, type DraftContext } from "./redesign-stages";
 import { clearChildDrafts, retireAllDrafts, retireMismatched, type DraftIdentity } from "@/lib/family-learning-draft-store";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
@@ -336,11 +337,23 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
         const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string; ended?: boolean };
         if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say, ended: r.ended === true };
         // No reply at all (runtime unreachable, used up, refused): his words go back into the box.
-        if (r.shown === false && typeof r.line === "string") return { kind: r.reason?.startsWith("no-reply-") ? "failed" : "app", line: r.line };
+        if (r.shown === false && typeof r.line === "string") return r.reason?.startsWith("no-reply-") ? { kind: "failed", line: r.line } : { kind: "app", line: r.line, ended: r.ended === true };
       }
       return { kind: "failed", line: "Nokt ist gerade nicht erreichbar. Du kannst es gleich nochmal versuchen." };
     },
     [child, learning, adopt],
+  );
+
+  /** Nov 18: the Nokt panel's closed telemetry moments (no text) go into the same buffer as the other task telemetry. */
+  const noktTelemetry: NoktPanelTelemetry = useCallback((e) => {
+    telemetryRef.current = noteNokt(telemetryRef.current, Date.now(), e);
+  }, []);
+  /** Nov 18: the panel close is the conversation's close (server; idempotent; unknown session = no-op; a late reply stays withheld). */
+  const closeTalk = useCallback(
+    (sessionId: string, nokt: "speaking" | "waiting" | "idle") => {
+      void mutate({ op: "nokt-talk", action: { a: "close", sessionId, reason: "panel", nokt } } as LearningOp);
+    },
+    [mutate],
   );
 
   /** Support op → confirmed/not, retrying once on a stale revision. */
@@ -730,6 +743,8 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
                 if (place && m && !m.active) void walkInto(place, m);
               },
               onOpen: (reason) => void learning.deviceAudio(child, reason),
+              telemetry: noktTelemetry,
+              closeTalk,
             }}
             telemetry={(name) => {
               telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
@@ -893,6 +908,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
                     speech={speech}
                     transcribe={view.nokt?.mic ? (audio, fileName, signal) => learning.transcribeNokt(child, audio, fileName, { signal }) : null}
                     turn={view.nokt && view.nokt.mode !== "unavailable" ? talkTurn : null}
+                    noktTelemetry={noktTelemetry}
                     onFeedback={(feedback) => mutate({ op: "closing-feedback", feedback } as LearningOp)}
                     onFinish={async (payload, idempotencyKey) => {
                       const identity = visitIdentity();

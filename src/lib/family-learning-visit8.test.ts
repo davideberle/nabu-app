@@ -280,7 +280,7 @@ describe("writing — the original is immutable; one reviewed tip; one typed rev
     s = m(s, { a: "revise", step: "H11-JOURNAL", text: "Heute haben wir 2 Pläne gemacht." }, e);
     // Nov 18 (strict step): the new version goes to Nokt as his next line (server copy); Nokt's close + the app's check finish it.
     const d2 = dispatch(s, e, "writing", "sess-writing-0001");
-    equal(d2.result.request.transcript.at(-1)!.text, "Heute haben wir 2 Pläne gemacht.");
+    equal((d2.result.request.transcript as { text: string }[]).at(-1)!.text, "Heute haben wir 2 Pläne gemacht.");
     s = reply(d2.s, e, d2.turnId, say("Jetzt beginnt dein Satz gross und hat einen Punkt. Super!", "close")).s;
     ok(run(s).steps["H11-JOURNAL"].attempts[1].support.includes("nokt-writing"));
     equal(run(s).steps["H11-JOURNAL"].outcome, "supported");
@@ -708,5 +708,210 @@ describe("Nokt plumbing for the new purposes (fake fetch, fake env)", () => {
     const v = buildChildView(started(makeEnv()), v7, EMPTY_PARENT_SETTINGS, new Date(), 0, { noktMode: "subscription" });
     ok(isChildView(v));
     ok(!isChildView({ ...v, nokt: { ...v.nokt, talk: { sessions: [{ id: "x", purpose: "home", page: "home", closed: false, lines: [{ role: "model", text: "x" }] }], welcome: "due" } } }));
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Nov 18 — the strict writing step (prompt v5), the panel close, and the v5 guards in the real engine path.
+// ---------------------------------------------------------------------------
+function journalFor(env: Env, nokt = true) {
+  const e = { ...env, noktEnabled: nokt };
+  let s = started(e);
+  for (const id of ["H1-PLAN", "H2-POTS", "H4-FLOOR", "H5-PLANS", "H6-CHOOSE", "H7-JUNE"]) {
+    s = openAt(s, id, e);
+    if (id === "H1-PLAN") s = m(s, { a: "story-done", step: id }, e);
+    if (id === "H2-POTS") s = answer(s, id, { total: 4 }, e);
+    if (id === "H4-FLOOR") s = answer(s, id, { row: 6, rows: 5, all: 30 }, e);
+    if (id === "H5-PLANS") s = answer(s, id, { bedsA: 24, bedsB: 18 }, e);
+    if (id === "H6-CHOOSE") s = m(s, { a: "decide", step: id, option: "A" }, e);
+    if (id === "H7-JUNE") {
+      s = m(s, { a: "support", step: id, kind: "play" }, e);
+      s = m(s, { a: "listen-outcome", step: id, outcome: "browser" }, e);
+      s = m(s, { a: "answer-question", step: id, question: "tomatoes", value: "Neben die Tür" }, e);
+      s = m(s, { a: "answer-question", step: id, question: "beans", value: "Hinten links" }, e);
+    }
+    s = m(s, { a: "leave" }, e);
+  }
+  return { s: openAt(s, "H11-JOURNAL", e), e };
+}
+const J = "H11-JOURNAL";
+const jr = (s: MissionState) => run(s).steps[J];
+
+describe("Nov 18 — the strict writing step: he rewrites until it is right", () => {
+  it("a missing full stop: guided questions (also two in a row), no «So lassen», then his own fix is supported", () => {
+    const { s: s0, e } = journalFor(makeEnv());
+    let s = m(s0, { a: "write", step: J, text: "Heute haben wir Beete geplant" }, e);
+    ok(jr(s).writing!.strict, "strict with Nokt planned");
+    let d = dispatch(s, e, "writing", "sess-strict-00001");
+    deepStrictEqual(d.result.request.context.writing && (d.result.request.context.writing as { appFound: string[] }).appFound, ["Am Ende fehlt der Punkt (oder ein anderes Satzzeichen)."]);
+    let out = reply(d.s, e, d.turnId, say("Du hast Beete geplant. Was kommt am Ende eines Satzes?", "ask"));
+    equal(out.result.shown, true);
+    s = out.s;
+    equal(jr(s).status, "active");
+    equal(view(s).active!.write!.strict!.lastWrong, true);
+    refused(() => m(s, { a: "revise", step: J, text: null }, e), "not-allowed", /not finished/);
+    d = dispatch(s, e, "writing", "sess-strict-00001", "ein Punkt");
+    out = reply(d.s, e, d.turnId, say("Genau. Warum fehlt er bei dir?", "ask"));
+    equal(out.result.shown, true, "a second question in a row is a teacher's guided question here");
+    s = out.s;
+    s = m(s, { a: "revise", step: J, text: "Heute haben wir Beete geplant." }, e);
+    equal(view(s).active!.write!.strict!.unsent, true);
+    refused(() => m(s, { a: "revise", step: J, text: "noch einer." }, e), "not-allowed", /still reading/);
+    d = dispatch(s, e, "writing", "sess-strict-00001");
+    equal(d.result.phase, "satz");
+    out = reply(d.s, e, d.turnId, say("Jetzt hat dein Satz einen Punkt. Super gemacht!", "close"));
+    equal(out.result.shown, true);
+    s = out.s;
+    equal(jr(s).status, "done");
+    equal(jr(s).outcome, "supported");
+    equal(jr(s).writing!.revision!.outcome, "revised");
+    equal(jr(s).writing!.original, "Heute haben wir Beete geplant", "the original never changes");
+    ok(talkStateOf(s).sessions.find((x) => x.id === "sess-strict-00001")!.closedAt, "the writing talk is closed with the step");
+  });
+  it("a spelling error the app cannot see: Nokt holds it back; after three wrong rewrites Nokt shows the sentence and he copies it (supported, said so)", () => {
+    const { s: s0, e } = journalFor(makeEnv());
+    let s = m(s0, { a: "write", step: J, text: "Die Schildkröte hat den Fuss ferstaucht." }, e);
+    let d = dispatch(s, e, "writing", "sess-strict-00002");
+    s = reply(d.s, e, d.turnId, say("Schau dir das Wort «ferstaucht» an. Mit welchem Buchstaben beginnt es?", "correct")).s;
+    equal(jr(s).status, "active", "Nokt's doubt holds back a sentence the app's check passes");
+    for (const [i, text] of ["Die Schildkröte hat den Fuss ferstaucht.", "Die Schildkröte hat den Fus ferstaucht.", "Die Schildkröte hat den Fuss verstauht."].entries()) {
+      s = m(s, { a: "revise", step: J, text }, e);
+      d = dispatch(s, e, "writing", "sess-strict-00002");
+      equal(d.result.phase, i === 2 ? "vorzeigen" : "satz");
+      const line = i === 2 ? say("Wir machen es zusammen: «Die Schildkröte hat den Fuss verstaucht.» Tipp ihn unten selbst ab.", "correct") : say("Fast. Schau noch einmal auf den ersten Buchstaben.", "correct");
+      const out = reply(d.s, e, d.turnId, line);
+      equal(out.result.shown, true, `version ${i + 2}`);
+      s = out.s;
+    }
+    deepStrictEqual(view(s).active!.write!.strict!.shown, { text: "Die Schildkröte hat den Fuss verstaucht.", by: "nokt" });
+    ok(jr(s).support.some((x) => x.kind === "nokt-shown-sentence"));
+    s = m(s, { a: "revise", step: J, text: "Die Schildkröte hat den Fuss verstaut." }, e);
+    equal(jr(s).status, "active", "a wrong copy is not accepted");
+    s = m(s, { a: "revise", step: J, text: "Die Schildkröte hat den Fuss verstaucht." }, e);
+    equal(jr(s).status, "done");
+    equal(jr(s).outcome, "supported");
+    equal(jr(s).writing!.revision!.outcome, "copied");
+    ok(jr(s).attempts.at(-1)!.support.includes("nokt-shown-sentence"));
+    const ev = missionEvidence(s, v7, "v9")!.steps.find((x) => x.id === J)!;
+    ok(ev.observed.some((l) => /Nokt den richtigen Satz gezeigt/.test(l) && /selbst abgetippt/.test(l) && /mit Hilfe/.test(l)), ev.observed.join(" | "));
+  });
+  it("no sentence at all: Nokt cannot close it; a refused close falls back to one app line and the talk goes on", () => {
+    const { s: s0, e } = journalFor(makeEnv());
+    let s = m(s0, { a: "write", step: J, text: "weiss nicht" }, e);
+    equal(jr(s).writing!.strict!.rounds[0].sentence, false);
+    const d = dispatch(s, e, "writing", "sess-strict-00003");
+    equal((d.result.request.context.writing as { isSentence: boolean }).isSentence, false);
+    const out = reply(d.s, e, d.turnId, say("Das ist ok. Bis später!", "close"));
+    equal(out.result.shown, false);
+    equal(out.result.reason, "closes-unfinished");
+    ok(/schreib ihn unten neu/.test(out.result.line!));
+    s = out.s;
+    equal(jr(s).status, "active");
+    equal(jr(s).writing!.strict!.rounds[0].verdict, "needs-work");
+    const d2 = dispatch(s, e, "writing", "sess-strict-00003", "ich weiss nicht was ich schreiben soll");
+    const out2 = reply(d2.s, e, d2.turnId, say("Wer ist in deinem Satz, die Schildkröte?", "ask"));
+    equal(out2.result.shown, true, "after «weiss nicht» a smaller guiding question is right in the writing step");
+  });
+  it("Nokt never writes his sentence for him before the limit (the reply is withheld; the app's check decides that version)", () => {
+    const { s: s0, e } = journalFor(makeEnv());
+    const s = m(s0, { a: "write", step: J, text: "heute haben wir beete geplant." }, e);
+    const d = dispatch(s, e, "writing", "sess-strict-00004");
+    const out = reply(d.s, e, d.turnId, say("Richtig ist: «Heute haben wir Beete geplant.»", "correct"));
+    equal(out.result.reason, "writes-sentence");
+    equal(jr(out.s).status, "active");
+    equal(jr(out.s).writing!.strict!.rounds[0].by, "app");
+  });
+  it("without Nokt the app's check alone decides; at the limit the app shows its mechanical fix, or puts a non-sentence aside", () => {
+    const { s: s0, e } = journalFor(makeEnv());
+    let s = m(s0, { a: "write", step: J, text: "heute haben wir beete geplant" }, e);
+    for (const t of ["heute haben wir beete geplant", "heute haben wir beete geplant", "heute haben wir beete geplant"]) s = m(s, { a: "revise", step: J, text: t, nokt: false }, e);
+    deepStrictEqual(view(s).active!.write!.strict!.shown, { text: "Heute haben wir beete geplant.", by: "app" });
+    s = m(s, { a: "revise", step: J, text: "Heute haben wir beete geplant.", nokt: false }, e);
+    equal(jr(s).outcome, "supported");
+    ok(jr(s).support.some((x) => x.kind === "app-shown-sentence"));
+    const b = journalFor(makeEnv());
+    let t = m(b.s, { a: "write", step: J, text: "nein" }, b.e);
+    for (let i = 0; i < 3; i += 1) t = m(t, { a: "revise", step: J, text: "nein", nokt: false }, b.e);
+    equal(jr(t).status, "unresolved", "never stuck: put aside for next time");
+  });
+  it("Nokt's own right sentence passes only with the app's check: a close on a wrong version is refused", () => {
+    const { s: s0, e } = journalFor(makeEnv());
+    const s = m(s0, { a: "write", step: J, text: "heute haben wir beete geplant." }, e);
+    const d = dispatch(s, e, "writing", "sess-strict-00005");
+    const out = reply(d.s, e, d.turnId, say("Toll geschrieben!", "close"));
+    equal(out.result.reason, "closes-unfinished");
+    equal(jr(out.s).status, "active");
+  });
+  it("the writing talk has a hard ceiling of model turns", () => {
+    const { s: s0, e } = journalFor(makeEnv());
+    let s = m(s0, { a: "write", step: J, text: "heute haben wir beete geplant" }, e);
+    let d = dispatch(s, e, "writing", "sess-strict-00006");
+    s = reply(d.s, e, d.turnId, say("Wie beginnt ein Satz?", "ask")).s;
+    let phase = "";
+    for (let i = 2; i <= 15; i += 1) {
+      d = dispatch(s, e, "writing", "sess-strict-00006", `antwort ${i}`);
+      phase = d.result.phase;
+      s = reply(d.s, e, d.turnId, phase === "vorzeigen" ? say("Zusammen: «Heute haben wir Beete geplant.» Tipp ihn ab.", "correct") : phase === "schliessen" ? say("Danke für deine Arbeit!", "close") : say(`Schau genau hin (${i}).`, "respond")).s;
+    }
+    equal(phase, "schliessen");
+    refused(() => dispatch(s, e, "writing", "sess-strict-00006", "noch was"), "not-allowed");
+    equal(view(s).active!.write!.strict!.shown!.text, "Heute haben wir Beete geplant.");
+  });
+  it("the strict step needs Nokt planned; without Nokt the Visit 8 rule (one revision or «So lassen») is unchanged", () => {
+    const { s: s0, e } = journalFor(makeEnv(), false);
+    const s = m(s0, { a: "write", step: J, text: "heute haben wir beete geplant" }, e);
+    equal(jr(s).writing!.strict, undefined);
+    equal(jr(m(s, { a: "revise", step: J, text: null }, e)).status, "done");
+  });
+});
+
+describe("Nov 18 — panel close is the conversation's close; v5 guards in the engine path", () => {
+  it("closes once (idempotent) with Nokt's state; an unknown session is a no-op; a late reply stays withheld", () => {
+    const env = makeEnv();
+    const s = started(env);
+    const d = dispatch(s, env, "visit", "sess-close-00001", "weiss nicht");
+    let c = op(d.s, { op: "nokt-talk", action: { a: "close", sessionId: "sess-close-00001", reason: "panel", nokt: "waiting" } }, env);
+    deepStrictEqual(c.result, { closed: "sess-close-00001" });
+    c = op(c.state, { op: "nokt-talk", action: { a: "close", sessionId: "sess-close-00001", reason: "panel", nokt: "idle" } }, env);
+    const sess = talkStateOf(c.state).sessions.find((x) => x.id === "sess-close-00001")!;
+    deepStrictEqual([sess.closeReason, sess.closeNokt], ["panel", "waiting"], "the first close counts");
+    deepStrictEqual(op(c.state, { op: "nokt-talk", action: { a: "close", sessionId: "sess-never-sent1", reason: "panel", nokt: "idle" } }, env).result, { closed: null });
+    refused(() => op(c.state, { op: "nokt-talk", action: { a: "close", sessionId: "sess-close-00001", reason: "panel", nokt: "laughing" as never } }, env), "invalid");
+    const late = reply(c.state, env, d.turnId, say("Rosa fragt: «Was brauchen wir?» Probier es einfach.", "respond"));
+    equal(late.result.reason, "stale-closed");
+    const ev = noktTalkEvidence(late.s, v7).find((x) => x.id === "sess-close-00001")!;
+    ok(/^Panel geschlossen \(während er auf Nokt wartete\)/.test(ev.closed), ev.closed);
+  });
+  it("the open writing talk cannot be closed: the close is refused and recorded", () => {
+    const { s: s0, e } = journalFor(makeEnv());
+    const s = m(s0, { a: "write", step: J, text: "heute haben wir beete geplant" }, e);
+    const d = dispatch(s, e, "writing", "sess-strict-close1");
+    const c = op(d.s, { op: "nokt-talk", action: { a: "close", sessionId: "sess-strict-close1", reason: "panel", nokt: "waiting" } }, e);
+    deepStrictEqual(c.result, { closed: null, refused: true });
+    equal(talkStateOf(c.state).sessions.find((x) => x.id === "sess-strict-close1")!.closedAt, null);
+    ok(c.records.supports.some((x) => String(x.kind) === "nokt_talk_close_refused"));
+  });
+  it("task help: a question after «weiss nicht» is withheld behind the app line; a real hint without a question is shown", () => {
+    const env = makeEnv();
+    const s = started(env);
+    let d = dispatch(s, env, "visit", "sess-v5-visit001", "ich weiss nicht was ich machen muss");
+    let out = reply(d.s, env, d.turnId, say("Was denkst du, wohin du gehen sollst?", "ask"));
+    deepStrictEqual([out.result.shown, out.result.reason], [false, "question-when-stuck"]);
+    d = dispatch(out.s, env, "visit", "sess-v5-visit001", "weiss nicht");
+    out = reply(d.s, env, d.turnId, say("Auf der Karte wartet jemand beim Planungstisch. Geh einfach dorthin.", "respond"));
+    equal(out.result.shown, true);
+    const ev = noktTalkEvidence(out.s, v7).find((x) => x.id === "sess-v5-visit001")!;
+    ok(ev.lines.some((l) => /weiss nicht/.test(l.detail) || /Frage, obwohl er/.test(l.detail)));
+  });
+  it("the provenance guards still fire first and exactly as before", () => {
+    const env = makeEnv();
+    const s = started(env);
+    const d = dispatch(s, env, "visit", "sess-v5-prov0001", "weiss nicht");
+    equal(reply(d.s, env, d.turnId, say("Was meinst du?", "ask"), null).result.reason, "origin-missing");
+    const d2 = dispatch(s, env, "visit", "sess-v5-prov0002", "weiss nicht");
+    equal(reply(d2.s, env, d2.turnId, say("Was meinst du?", "ask"), { invalid: "bad-signature" }).result.reason, "origin-invalid");
+    const d3 = dispatch(s, env, "visit", "sess-v5-prov0003", "weiss nicht");
+    const wrongChild = receiptFor(d3.s, d3.turnId, say("Was meinst du?", "ask"), "isabel");
+    ok(/^origin-/.test(reply(d3.s, env, d3.turnId, say("Was meinst du?", "ask"), wrongChild).result.reason!));
   });
 });

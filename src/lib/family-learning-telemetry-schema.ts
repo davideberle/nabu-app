@@ -44,7 +44,26 @@ export const TELEMETRY_FEEDBACK_DIMENSIONS = { difficulty: ["easy", "right", "tr
 export type TelemetryFeedbackDimension = keyof typeof TELEMETRY_FEEDBACK_DIMENSIONS;
 export const TELEMETRY_FEEDBACK = ["easy", "right", "tricky", "yes", "partly", "no", "clear", "unclear"] as const;
 
-export const TELEMETRY_KINDS = ["stage-enter", "stage-exit", "submit", "correction", "hint", "retry", "save-failure", "control", "pause", "resume", "hidden", "visible", "active-interval", "feedback"] as const;
+export const TELEMETRY_KINDS = ["stage-enter", "stage-exit", "submit", "correction", "hint", "retry", "save-failure", "control", "pause", "resume", "hidden", "visible", "active-interval", "feedback", "nokt"] as const;
+
+/**
+ * Nov 18 (Nokt diagnosis, proposal 3): the Nokt panel's closed event names. No transcript, no audio, no text of any kind —
+ * only which moment happened, for which kind of conversation, whether Nokt was speaking/awaited at a close, and two bounded
+ * durations (mic start → «Jetzt sprechen!», send → Nokt's reply).
+ */
+export const NOKT_TELEMETRY_EVENTS = ["panel-open", "panel-close", "mic-start", "mic-live", "mic-failed", "stt-ok", "stt-empty", "stt-failed", "sent-typed", "sent-spoken", "reply-shown", "reply-app", "reply-failed"] as const;
+export type NoktTelemetryEvent = (typeof NOKT_TELEMETRY_EVENTS)[number];
+/** Which conversation the panel held: the task talk (a solve question) or one of the talk purposes. */
+export const NOKT_TELEMETRY_PURPOSES = ["task", "welcome", "visit", "writing", "debrief"] as const;
+export type NoktTelemetryPurpose = (typeof NOKT_TELEMETRY_PURPOSES)[number];
+/** At a panel close: Nokt was speaking, he was waiting for Nokt's reply, or neither. */
+export const NOKT_TELEMETRY_STATES = ["speaking", "waiting", "idle"] as const;
+export type NoktTelemetryState = (typeof NOKT_TELEMETRY_STATES)[number];
+/** Durations are bounded integers (ms), only on the two events that measure one. */
+export const NOKT_TELEMETRY_MAX_MS = 600_000;
+/** What a Nokt component reports (the mission client turns it into a `nokt` event of the closed schema). */
+export type NoktPanelTelemetry = (e: { event: NoktTelemetryEvent; purpose?: NoktTelemetryPurpose; nokt?: NoktTelemetryState; ms?: number }) => void;
+const NOKT_TIMED: readonly string[] = ["mic-live", "reply-shown", "reply-app", "reply-failed"];
 export type TelemetryKind = (typeof TELEMETRY_KINDS)[number];
 
 export const TELEMETRY_MAX_INTERVAL_SECONDS = 3600;
@@ -55,7 +74,8 @@ export type TelemetryDetail =
   | { op: TelemetryOp; ok: boolean; retry?: boolean }
   | { op: TelemetryOp }
   | { name: TelemetryControl }
-  | { dimension: TelemetryFeedbackDimension; option: (typeof TELEMETRY_FEEDBACK)[number] };
+  | { dimension: TelemetryFeedbackDimension; option: (typeof TELEMETRY_FEEDBACK)[number] }
+  | { event: NoktTelemetryEvent; purpose?: NoktTelemetryPurpose; nokt?: NoktTelemetryState; ms?: number };
 
 export type TelemetryEvent = { t: number; kind: TelemetryKind; stage: StageId | null; step?: string; detail?: TelemetryDetail };
 
@@ -119,6 +139,24 @@ export function sanitizeTelemetryEvent(raw: unknown): TelemetryEvent | null {
       const dimension = d.dimension as TelemetryFeedbackDimension;
       if (typeof d.option !== "string" || !(TELEMETRY_FEEDBACK_DIMENSIONS[dimension] as readonly string[]).includes(d.option)) return null;
       return withStep({ t: raw.t, kind, stage, detail: { dimension, option: d.option as (typeof TELEMETRY_FEEDBACK)[number] } });
+    }
+    case "nokt": {
+      // Closed names only: an unknown event, purpose or state drops the event; any other key is never copied.
+      if (typeof d.event !== "string" || !(NOKT_TELEMETRY_EVENTS as readonly string[]).includes(d.event)) return null;
+      const detail: { event: NoktTelemetryEvent; purpose?: NoktTelemetryPurpose; nokt?: NoktTelemetryState; ms?: number } = { event: d.event as NoktTelemetryEvent };
+      if (d.purpose !== undefined) {
+        if (typeof d.purpose !== "string" || !(NOKT_TELEMETRY_PURPOSES as readonly string[]).includes(d.purpose)) return null;
+        detail.purpose = d.purpose as NoktTelemetryPurpose;
+      }
+      if (d.event === "panel-close") {
+        if (typeof d.nokt !== "string" || !(NOKT_TELEMETRY_STATES as readonly string[]).includes(d.nokt)) return null;
+        detail.nokt = d.nokt as NoktTelemetryState;
+      } else if (d.nokt !== undefined) return null;
+      if (d.ms !== undefined) {
+        if (!NOKT_TIMED.includes(d.event) || !boundedInt(d.ms, NOKT_TELEMETRY_MAX_MS)) return null;
+        detail.ms = d.ms;
+      }
+      return withStep({ t: raw.t, kind, stage, detail });
     }
     default:
       // stage-enter, stage-exit, pause, resume, hidden, visible: no detail at all.

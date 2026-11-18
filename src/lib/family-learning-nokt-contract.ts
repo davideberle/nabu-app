@@ -389,7 +389,7 @@ export function noktReceiptBinding(input: { child: string; turnId: string; reqHa
 const STUCK_RE = new RegExp(
   [
     String.raw`\b(ich\s+)?(weiss|weiß|weis|wais)\s+(es\s+|das\s+)?(noch\s+)?(echt\s+)?nicht\b`,
-    String.raw`\b(weiss|weiß|weis)\s+ich\s+(noch\s+)?nicht\b`,
+    String.raw`\b(weiss|weiß|weis)\s+ich\s+(noch\s+|echt\s+|wirklich\s+)?nicht\b`,
     String.raw`\bkeine\s+ahnung\b`,
     String.raw`(^|\s)k\.?\s?a\.?(\s|$|[!?.,])`,
     String.raw`\bhilf\s+mir\b`,
@@ -409,9 +409,15 @@ export function isStuckOrHelp(text: string): boolean {
   return STUCK_RE.test(text.normalize("NFC").trim());
 }
 
-/** A Nokt line that asks something: a question mark (the reply contract allows one sentence-final «?» per line at most). */
+/**
+ * A Nokt line that asks HIM something: a question mark outside a quote. What a character asked, reported as a hint («Rosa
+ * fragt: «Was brauchen wir?»» or «Rosa fragt, was wir brauchen?»), is not Nokt's question.
+ */
 export function asksQuestion(text: string): boolean {
-  return text.includes("?");
+  const own = text
+    .replace(/«[^»]*»|„[^“”]*[“”]|"[^"]*"/gu, " ")
+    .replace(/\b(fragt|fragte|will wissen|möchte wissen)\b[^.!?]*\?/giu, " ");
+  return own.includes("?");
 }
 
 const wordsOf = (s: string) => (s.normalize("NFC").match(/[\p{L}\p{N}]+/gu) ?? []);
@@ -428,6 +434,11 @@ function editDistance<T>(a: T[], b: T[]): number {
   for (let i = 1; i <= a.length; i += 1) for (let j = 1; j <= b.length; j += 1) dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
   return dp[a.length][b.length];
 }
+
+const containsRun = (outer: string[], inner: string[]) => {
+  for (let i = 0; i + inner.length <= outer.length; i += 1) if (inner.every((w, k) => outer[i + k] === w)) return true;
+  return false;
+};
 
 /**
  * Nokt wrote his sentence FOR him (the writing step's answer leak): somewhere in the reply is a run of words that is his
@@ -446,6 +457,8 @@ export function rewritesSentence(say: string, sentence: string): boolean {
     for (let start = 0; start + len <= reply.length; start += 1) {
       const window = reply.slice(start, start + len);
       if (editDistance(window.map((w) => w.toLowerCase()), hisLower) > tolerance) continue;
+      // A part of his exact words, or his exact words with a word of Nokt's around them, is a quote — not a correction.
+      if (window.length !== his.length && (containsRun(his, window) || containsRun(window, his))) continue;
       // Same words with the same capitals: a correction only if it adds the end mark he left out.
       if (window.length === his.length && window.every((w, i) => w === his[i])) {
         if (hisEndMark) continue;

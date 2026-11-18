@@ -2176,7 +2176,7 @@ export type WriteView = {
    * Nov 18: the strict step (no «So lassen»): how many versions, whether one waits for Nokt (and whether its Nokt turn was
    * not sent yet, e.g. after a reload), the sentence shown at the safety limit, and the app's findings in his latest version.
    */
-  strict?: { versions: number; pending: boolean; unsent: boolean; shown: { text: string; by: "nokt" | "app" } | null; lastWrong: boolean; lastFound: WritingMechanic[]; lastSentence: boolean };
+  strict?: { versions: number; lastText: string; pending: boolean; unsent: boolean; shown: { text: string; by: "nokt" | "app" } | null; lastWrong: boolean; lastFound: WritingMechanic[]; lastSentence: boolean };
 };
 
 export type TypingBlockView = {
@@ -2410,7 +2410,7 @@ function writeView(step: MissionStep, r: MissionStepRun): WriteView {
     // Step 1 (S1-05): the app's tip is held while Nokt is expected; the page asks for it only when Nokt did not react.
     ...(open && wr?.pendingCorrection ? { tipHeld: true } : {}),
     ...(w.sentences && w.sentences > 1 ? { plural: true } : {}),
-    ...(st && last ? { strict: { versions: st.rounds.length, pending: last.verdict === "pending", unsent: last.verdict === "pending" && !last.turnId, shown: st.shown ? { text: st.shown.text, by: st.shown.by } : null, lastWrong: last.verdict === "needs-work", lastFound: last.found, lastSentence: last.sentence } } : {}),
+    ...(st && last ? { strict: { versions: st.rounds.length, lastText: last.text, pending: last.verdict === "pending", unsent: last.verdict === "pending" && !last.turnId, shown: st.shown ? { text: st.shown.text, by: st.shown.by } : null, lastWrong: last.verdict === "needs-work", lastFound: last.found, lastSentence: last.sentence } } : {}),
   };
 }
 
