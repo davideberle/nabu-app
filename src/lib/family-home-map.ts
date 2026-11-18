@@ -53,6 +53,15 @@ export type PieceDef = {
   labelFrom?: "turtleName";
   /** A small animated effect around this piece once its visit has started (the two robins). */
   effect?: string;
+  /** Nov 18: the effect stops once this visit has started (the robins sit on their house instead of circling). */
+  effectUntil?: string;
+  /** Nov 18: a later stage of the same piece once this visit is finished (or started, with `fromVisitStart`). `{variant}` in the
+   *  asset is the child's earlier choice (the roof color). `labelFrom`: the label then also names the story choice. */
+  later?: { visit: string; asset: string; fromVisitStart?: boolean; labelFrom?: "turtleName" };
+  /** Nov 18: gone once this visit is finished (the turtle's crate, once she swims in the pond). */
+  removedBy?: string;
+  /** Nov 18: no site stage; the piece appears only when built (the pump arrives finished). */
+  noSite?: boolean;
 };
 
 export type WorldDef = {
@@ -119,8 +128,9 @@ const SANTIAGO: WorldDef = {
     { id: "s-greenhouse-wing", label: "Neuer Flügel", builtBy: "v9", tile: { c: 8, r: 1 }, footprint: { w: 2, h: 2 }, place: null, partOf: "greenhouse" },
     { id: "s-water-tank", label: "Wassertank", builtBy: "v10", tile: { c: 2, r: 1 }, footprint: { w: 2, h: 2 }, place: "tank" },
     { id: "s-pipe", label: "Wasserleitung", builtBy: "v10", tile: { c: 4, r: 1 }, footprint: { w: 1, h: 2 }, place: null, partOf: "tank" },
-    { id: "s-pond", label: "Teich", builtBy: "v11", tile: { c: 7, r: 9 }, footprint: { w: 2, h: 2 }, place: "pond", builtAsset: "s-pond-dug-built" },
-    { id: "s-turtle-crate", label: "Schildkröte", builtBy: "v11", tile: { c: 9, r: 9 }, footprint: { w: 1, h: 1 }, place: "beach", fromVisitStart: true, labelFrom: "turtleName" },
+    { id: "s-pond", label: "Teich", builtBy: "v11", tile: { c: 7, r: 9 }, footprint: { w: 2, h: 2 }, place: "pond", builtAsset: "s-pond-dug-built", later: { visit: "v12", asset: "s-pond-water-built", labelFrom: "turtleName" } },
+    { id: "s-turtle-crate", label: "Schildkröte", builtBy: "v11", tile: { c: 9, r: 9 }, footprint: { w: 1, h: 1 }, place: "beach", fromVisitStart: true, labelFrom: "turtleName", removedBy: "v12" },
+    { id: "s-pump", label: "Pumpe", builtBy: "v12", tile: { c: 10, r: 10 }, footprint: { w: 1, h: 1 }, place: null, partOf: "pond", noSite: true },
   ],
 };
 
@@ -144,7 +154,8 @@ const ISABEL: WorldDef = {
     { id: "i-flower-garden", label: "Garten", builtBy: "v2", tile: { c: 9, r: 1 }, footprint: { w: 2, h: 2 }, place: null, partOf: "garden", variant: { step: "IG2-PLANT", options: { flowers: "flowers", vegetables: "vegetables", tree: "tree" }, fallback: "flowers" } },
     { id: "i-vegetable-patch", label: "Gemüsebeet", builtBy: "v4", tile: { c: 8, r: 4 }, footprint: { w: 2, h: 2 }, place: "patch" },
     { id: "i-harvest-table", label: "Erntetisch", builtBy: "v4", tile: { c: 2, r: 7 }, footprint: { w: 2, h: 1 }, place: "table", variant: { step: "IH2-PICK", options: { apples: "apples", carrots: "carrots", corn: "corn" }, fallback: "apples" } },
-    { id: "i-birdhouse", label: "Vogelhaus", builtBy: "v5", tile: { c: 5, r: 3 }, footprint: { w: 1, h: 1 }, place: "birdhouse", variant: { step: "IV10-ROOF", options: { red: "red", blue: "blue", yellow: "yellow" }, fallback: "red" }, effect: "i-robins" },
+    { id: "i-birdhouse", label: "Vogelhaus", builtBy: "v5", tile: { c: 5, r: 3 }, footprint: { w: 1, h: 1 }, place: "birdhouse", variant: { step: "IV10-ROOF", options: { red: "red", blue: "blue", yellow: "yellow" }, fallback: "red" }, effect: "i-robins", effectUntil: "v6", later: { visit: "v6", asset: "i-birdhouse-{variant}-birds-built", fromVisitStart: true } },
+    { id: "i-feeder", label: "Futterbrett", builtBy: "v6", tile: { c: 4, r: 3 }, footprint: { w: 1, h: 1 }, place: null, partOf: "birdhouse", variant: { step: "IF8-FOOD", options: { seeds: "seeds", berries: "berries", worms: "worms" }, fallback: "seeds" } },
   ],
 };
 
@@ -198,13 +209,16 @@ export function deriveHomeWorld(input: HomeWorldInput): HomeWorld {
   for (const p of def.pieces) {
     const started = input.visits.some((v) => v.id === p.builtBy);
     const built = finishedIds.has(p.builtBy) || (!!p.fromVisitStart && started);
-    const site = !built && !p.fromVisitStart && p.builtBy === currentVisit;
+    const site = !built && !p.fromVisitStart && !p.noSite && p.builtBy === currentVisit;
     if (!built && !site) continue;
+    if (p.removedBy && finishedIds.has(p.removedBy)) continue;
     const variant = p.variant ? (p.variant.options[input.choices[p.variant.step] ?? ""] ?? p.variant.fallback) : null;
     // A site is the same for every variant (the choice is made during that visit); a built piece shows the child's choice.
-    const asset = built ? p.builtAsset ?? `${p.id}${variant ? `-${variant}` : ""}-built` : `${p.id}-site`;
-    if (p.effect && started) effects.push({ asset: p.effect, tile: p.tile, footprint: p.footprint });
-    pieces.push({ id: p.id, label: (p.labelFrom ? input.story?.[p.labelFrom]?.value : null) ?? p.label, stage: built ? "built" : "site", tile: p.tile, footprint: p.footprint, asset, place: p.place, partOf: p.partOf ?? null, builtBy: p.builtBy, arriving: false });
+    const later = p.later && built && (finishedIds.has(p.later.visit) || (!!p.later.fromVisitStart && input.visits.some((v) => v.id === p.later!.visit))) ? p.later : null;
+    const asset = later ? later.asset.replace("{variant}", variant ?? "") : built ? p.builtAsset ?? `${p.id}${variant ? `-${variant}` : ""}-built` : `${p.id}-site`;
+    if (p.effect && started && !(p.effectUntil && input.visits.some((v) => v.id === p.effectUntil))) effects.push({ asset: p.effect, tile: p.tile, footprint: p.footprint });
+    const laterName = later?.labelFrom ? input.story?.[later.labelFrom]?.value ?? null : null;
+    pieces.push({ id: p.id, label: laterName ? `${p.label} · ${laterName}` : (p.labelFrom ? input.story?.[p.labelFrom]?.value : null) ?? p.label, stage: built ? "built" : "site", tile: p.tile, footprint: p.footprint, asset, place: p.place, partOf: p.partOf ?? null, builtBy: p.builtBy, arriving: false });
   }
   const builtIds = pieces.filter((p) => p.stage === "built").map((p) => p.id);
   // First time on this device: only the latest finished visit's pieces arrive (not the whole history at once).

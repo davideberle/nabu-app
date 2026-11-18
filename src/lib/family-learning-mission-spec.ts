@@ -223,7 +223,7 @@ export type MissionDecide = {
   /** `guard`: a short word that gives this right option away; Nokt may not say it while the choice is open. `own`: his own word instead of a preset. */
   options: { id: string; label: string; viable: boolean; feedback: string; grid?: MissionGrid | null; picture?: string; guard?: string; own?: boolean; word?: string }[];
   /** Nov 8 arcs: the choice is kept for later visits (`state.story`), e.g. the turtle's name or the roof color. */
-  storyKey?: "turtleName" | "roofColor";
+  storyKey?: "turtleName" | "roofColor" | "birdFood";
   /** Exactly one option keeps the rules: a judgment with stated rules, reviewed as such (the default asks for two viable options). */
   singleViable?: boolean;
   /** Nokt asks about his reason, but only after this many wrong picks. */
@@ -265,6 +265,12 @@ export const WORKSHOP_PICTURES = [
   // Nov 8 arcs — Isabel «Die Vogelfamilie»
   "bird", "roof-red", "roof-blue", "roof-yellow", "hang-right", "hang-low", "hang-small-tree", "hang-far",
   "next-food", "next-bath", "liked-sticks", "liked-read", "liked-roof",
+  // Nov 18 — Isabel Visit 5 «Die Vögel ziehen ein»
+  "bird-food", "egg", "ice-cream", "bowl-right", "bowl-blue", "bowl-ground", "bowl-far", "food-seeds", "food-berries", "food-worms",
+  "liked-seeds", "next-wool", "next-bush",
+  // Nov 18 — Santiago Visit 11 «Den Teich füllen»
+  "side-10cm", "side-20cm", "pump-behind", "pump-front", "pump-on", "hose-over", "hose-under", "hose-around", "net-front", "net-behind", "net-next",
+  "food-seagrass", "food-crabs", "food-jellyfish",
 ] as const;
 export type WorkshopPicture = (typeof WORKSHOP_PICTURES)[number];
 
@@ -502,9 +508,12 @@ export const EXPECTED_MISSION_STEP_IDS_GREENHOUSE: readonly string[] = ["H1-PLAN
 export const EXPECTED_MISSION_STEP_IDS_WATER_PIPE: readonly string[] = ["P1-START", "P2-PIPES", "P3-TANKBED", "P4-REGADERA", "P5-BEDS", "P5H-BEDS-BIG", "P5E-BEDS-SMALL", "P5N-BEDS-AGAIN", "P6-EDGE", "P6E-EDGE-SMALL", "P6N-EDGE-AGAIN", "P6H-LITERS", "P6D-ROUTE", "P7-JUNE", "P7H-JUNE-MORE", "P7E-JUNE-SHORT", "P8-ROSA", "P8H-ROSA-MORE", "P8E-ROSA-SHORT", "P9-TUBO", "P10-TYPING", "P11-JOURNAL", "P12-DONE"];
 /** Content v9 (Santiago Visit 10): the first visit of the turtle arc. */
 export const EXPECTED_MISSION_STEP_IDS_TURTLE: readonly string[] = ["T1-BEACH", "T1R-RADIO", "T2-AROUND", "T2G-GRID", "T2S-TUBO", "T3-MATEO", "T3E-LENGTH", "T3H-DEPTH", "T4-AREA", "T4E-SMALL", "T4H-BEACH", "T5-STONES", "T5E-SMALL", "T5H-HALF", "T6-SPOT", "T7-JUNE", "T7H-BETWEEN", "T8-PIEDRAS", "T9-TYPING", "T10-JOURNAL", "T11-NAME", "T12-END"];
-export const EXPECTED_MISSION_STEPS: Readonly<Record<string, readonly string[]>> = { "MISSION-TURTLE-POND": EXPECTED_MISSION_STEP_IDS_TURTLE, "MISSION-SHIP-SUPPLY": EXPECTED_MISSION_STEP_IDS_V5, "MISSION-ISLAND-GARDEN": EXPECTED_MISSION_STEP_IDS_GARDEN, "MISSION-GREENHOUSE-GROW": EXPECTED_MISSION_STEP_IDS_GREENHOUSE, "MISSION-WATER-PIPE": EXPECTED_MISSION_STEP_IDS_WATER_PIPE };
+/** Content v10 (Santiago Visit 11): fill the pond. */
+export const EXPECTED_MISSION_IDS_V10: readonly string[] = [...EXPECTED_MISSION_IDS_V9, "MISSION-TURTLE-FILL"];
+export const EXPECTED_MISSION_STEP_IDS_FILL: readonly string[] = ["F1-POND", "F1R-RADIO", "F2-AROUND", "F2C-STONES", "F2S-PIEDRAS", "F3-TANK", "F3E-BARREL", "F3H-SUMMER", "F4-MATEO", "F4E-DIEZ", "F4H-LATER", "F5-LITERS", "F5E-TWO", "F5H-LATER", "F6-BUCKETS", "F6E-BUCKETS-SMALL", "F6H-BIG-BUCKET", "F7-BOMBA", "F7J-SPOT", "F8-PUMP", "F8E-PUMP-SHORT", "F8H-PUMP-LATER", "F9-JUNE", "F9H-NET", "F10-TYPING", "F11-JOURNAL", "F12-END"];
+export const EXPECTED_MISSION_STEPS: Readonly<Record<string, readonly string[]>> = { "MISSION-TURTLE-FILL": EXPECTED_MISSION_STEP_IDS_FILL, "MISSION-TURTLE-POND": EXPECTED_MISSION_STEP_IDS_TURTLE, "MISSION-SHIP-SUPPLY": EXPECTED_MISSION_STEP_IDS_V5, "MISSION-ISLAND-GARDEN": EXPECTED_MISSION_STEP_IDS_GARDEN, "MISSION-GREENHOUSE-GROW": EXPECTED_MISSION_STEP_IDS_GREENHOUSE, "MISSION-WATER-PIPE": EXPECTED_MISSION_STEP_IDS_WATER_PIPE };
 /** Every known mission step id (closed telemetry vocabulary). */
-export const ALL_MISSION_STEP_IDS: readonly string[] = [...EXPECTED_MISSION_STEP_IDS_V5, ...EXPECTED_MISSION_STEP_IDS_GARDEN, ...EXPECTED_MISSION_STEP_IDS_GREENHOUSE, ...EXPECTED_MISSION_STEP_IDS_WATER_PIPE, ...EXPECTED_MISSION_STEP_IDS_TURTLE];
+export const ALL_MISSION_STEP_IDS: readonly string[] = [...EXPECTED_MISSION_STEP_IDS_V5, ...EXPECTED_MISSION_STEP_IDS_GARDEN, ...EXPECTED_MISSION_STEP_IDS_GREENHOUSE, ...EXPECTED_MISSION_STEP_IDS_WATER_PIPE, ...EXPECTED_MISSION_STEP_IDS_TURTLE, ...EXPECTED_MISSION_STEP_IDS_FILL];
 
 function normalize(value: string): string {
   return value.toLowerCase().normalize("NFC").replace(/[.,!?;:¡¿"'’]/g, " ").replace(/\s+/g, " ").trim();
@@ -540,7 +549,7 @@ export function checkMissions(raw: unknown, problems: string[], contentVersion =
     problems.push("missions: list required from content version 5");
     return;
   }
-  const expectedIds = contentVersion >= 9 ? EXPECTED_MISSION_IDS_V9 : contentVersion >= 8 ? EXPECTED_MISSION_IDS_V8 : contentVersion >= 7 ? EXPECTED_MISSION_IDS_V7 : contentVersion >= 6 ? EXPECTED_MISSION_IDS_V6 : EXPECTED_MISSION_IDS_V5;
+  const expectedIds = contentVersion >= 10 ? EXPECTED_MISSION_IDS_V10 : contentVersion >= 9 ? EXPECTED_MISSION_IDS_V9 : contentVersion >= 8 ? EXPECTED_MISSION_IDS_V8 : contentVersion >= 7 ? EXPECTED_MISSION_IDS_V7 : contentVersion >= 6 ? EXPECTED_MISSION_IDS_V6 : EXPECTED_MISSION_IDS_V5;
   const ids = raw.map((m) => (isRecord(m) && typeof m.id === "string" ? m.id : "?"));
   const missing = expectedIds.filter((id) => !ids.includes(id));
   const extra = ids.filter((id) => !expectedIds.includes(id));
@@ -777,7 +786,7 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
     const na = isRecord(m.nextAdventure) ? m.nextAdventure : null;
     const choiceList = Array.isArray(na?.choices) ? (na!.choices as unknown[]) : [];
     if (m.noNextChoice === true && na) problems.push(`${label}: a visit with noNextChoice has no nextAdventure`);
-    if (m.noNextChoice !== true && (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choiceList.length < 2 || choiceList.length > 3 || choiceList.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !["greenhouse", "water"].includes(String(c.picture))))) problems.push(`${label}: nextAdventure needs a prompt, a hint, two or three pictured choices and the own-idea label`);
+    if (m.noNextChoice !== true && (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choiceList.length < 2 || choiceList.length > 3 || choiceList.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !(["greenhouse", "water"].includes(String(c.picture)) || (WORKSHOP_PICTURES as readonly string[]).includes(String(c.picture)))))) problems.push(`${label}: nextAdventure needs a prompt, a hint, two or three pictured choices and the own-idea label`);
   } else if (mapMission) {
     // Map missions (content v7): the walkable island between clear task scenes — reviewed problems, a judgment, one own sentence.
     if (solves < 2) problems.push(`${label}: a map mission needs at least two reviewed problems`);
@@ -789,7 +798,7 @@ function checkMission(m: Record<string, unknown>, problems: string[]) {
     const na = isRecord(m.nextAdventure) ? m.nextAdventure : null;
     const choiceList = Array.isArray(na?.choices) ? (na!.choices as unknown[]) : [];
     if (m.noNextChoice === true && na) problems.push(`${label}: a visit with noNextChoice has no nextAdventure`);
-    if (m.noNextChoice !== true && (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choiceList.length < 2 || choiceList.length > 3 || choiceList.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !["greenhouse", "water"].includes(String(c.picture))))) problems.push(`${label}: nextAdventure needs a prompt, a hint, two or three pictured choices and the own-idea label`);
+    if (m.noNextChoice !== true && (!na || !str(na.prompt) || !str(na.hint) || !str(na.ownIdeaLabel) || choiceList.length < 2 || choiceList.length > 3 || choiceList.some((c) => !isRecord(c) || !str(c.id) || !str(c.label) || !(["greenhouse", "water"].includes(String(c.picture)) || (WORKSHOP_PICTURES as readonly string[]).includes(String(c.picture)))))) problems.push(`${label}: nextAdventure needs a prompt, a hint, two or three pictured choices and the own-idea label`);
   } else {
     if (calcs < 3 || calcs > 5) problems.push(`${label}: 3–5 connected calculations per mission (got ${calcs}); counts are tunable visit data`);
     if (choices < 1) problems.push(`${label}: at least one planning/logic choice`);

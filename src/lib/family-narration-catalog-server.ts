@@ -5,8 +5,8 @@
 // only; no child record.
 // Nov 18, 2026: the chess coach's closed German line set (de-female, `where: ["chess", …]`) is appended after both children's
 // lines — the learning lines and their ids are unchanged (family-chess-narration.test.ts pins them).
-import isabelWorkshopV4 from "@/data/family-learning/content/isabel-workshop-v4.json";
-import santiagoExpeditionV9 from "@/data/family-learning/content/santiago-expedition-v9.json";
+import isabelWorkshopV5 from "@/data/family-learning/content/isabel-workshop-v5.json";
+import santiagoExpeditionV10 from "@/data/family-learning/content/santiago-expedition-v10.json";
 import { ADAPTIVE_CHESS_COACH_LINES_DE } from "@/data/adaptive-chess-coach/bundle.generated";
 import { withChessLines } from "./family-chess-narration";
 import { asLearningContent } from "./family-learning-content";
@@ -16,8 +16,8 @@ import { narrationCatalog, storyCatalog, type NarrationLine } from "./family-lea
 let cached: NarrationLine[] | null = null;
 export function servedNarrationCatalog(): NarrationLine[] {
   if (!cached) {
-    const isabel = narrationCatalog(asIsabelContent(isabelWorkshopV4)).map((l) => ({ ...l, child: "isabel" as const }));
-    const santiago = storyCatalog(asLearningContent(santiagoExpeditionV9), "santiago");
+    const isabel = narrationCatalog(asIsabelContent(isabelWorkshopV5)).map((l) => ({ ...l, child: "isabel" as const }));
+    const santiago = storyCatalog(asLearningContent(santiagoExpeditionV10), "santiago");
     cached = withChessLines([...isabel, ...santiago], ADAPTIVE_CHESS_COACH_LINES_DE);
   }
   return cached;

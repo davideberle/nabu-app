@@ -444,7 +444,7 @@ export type LogReviewRecord = {
 };
 
 export type StoryChoice = { value: string; optionId: string; kind: "preset" | "own"; visit: string; at: string };
-export type StoryChoices = { turtleName?: StoryChoice; roofColor?: StoryChoice };
+export type StoryChoices = { turtleName?: StoryChoice; roofColor?: StoryChoice; birdFood?: StoryChoice };
 
 export type MissionState = {
   missionId: string;
@@ -984,6 +984,9 @@ export function nextVisitAvailability(
   // Arc «Die Schildkröte» (content v9, 2026-11-08): the map mission `v11` follows Visit 9. Under the cap a running v11 is parked.
   const hasV11 = content.visits.some((v) => v.id === "v11");
   if (hasV11 && !finished.includes("v11")) return { visit: "v11", availableAt: null };
+  // Content v10 (2026-11-18): the map mission `v12` («Den Teich füllen») follows Visit 10. Under the cap a running v12 is parked.
+  const hasV12 = content.visits.some((v) => v.id === "v12");
+  if (hasV12 && !finished.includes("v12")) return { visit: "v12", availableAt: null };
   return { visit: null, availableAt: null, reason: "all-visits-done" };
 }
 
@@ -3057,7 +3060,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
       case "log-transfer": return "Schreib einen neuen kurzen Satz.";
       case "summary": return "Das hast du heute geschafft.";
       case "reflect": return "Wie war es heute?";
-      case "mission": return state.currentVisit === "v11" ? "Geh über die Insel: Plan den Teich für die Schildkröte." : state.currentVisit === "v10" ? "Geh über die Insel: Bau die Wasserleitung zum Gewächshaus." : state.currentVisit === "v9" ? "Geh über die Insel: Plan das neue Gewächshaus." : state.currentVisit === "v8" ? "Hilf Rosa, die Setzlinge in den Inselgarten zu bringen." : "Geh über die Insel: Finde heraus, was das Schiff braucht.";
+      case "mission": return state.currentVisit === "v12" ? "Geh über die Insel: Füll den Teich für die Schildkröte." : state.currentVisit === "v11" ? "Geh über die Insel: Plan den Teich für die Schildkröte." : state.currentVisit === "v10" ? "Geh über die Insel: Bau die Wasserleitung zum Gewächshaus." : state.currentVisit === "v9" ? "Geh über die Insel: Plan das neue Gewächshaus." : state.currentVisit === "v8" ? "Hilf Rosa, die Setzlinge in den Inselgarten zu bringen." : "Geh über die Insel: Finde heraus, was das Schiff braucht.";
     }
   }
   const availability = nextVisitAvailability(state, content, now);
@@ -3073,6 +3076,7 @@ function nextStepText(state: MissionState, content: LearningContent, stage: Stag
     if (availability.visit === "v8") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v8") ?? 7}): Rosas Inselgarten.`;
     if (availability.visit === "v9") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v9") ?? 8}): das grössere Gewächshaus.`;
     if (availability.visit === "v11") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v11") ?? 10}): die Schildkröte.`;
+    if (availability.visit === "v12") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v12") ?? 11}): den Teich füllen.`;
     if (availability.visit === "v10") return `Ein neues Kapitel (Besuch ${visitOrdinal(state, "v10") ?? 9}): die Wasserleitung.`;
     return "Zurück zur Basis — ein neuer Besuch wartet.";
   }

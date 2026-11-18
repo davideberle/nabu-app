@@ -35,6 +35,7 @@
 // lesson TYPE-CH-COURSE-6. Rollback to the released chapter set is this build with FAMILY_LEARNING_CONTENT_CAP=6 (a started
 // v9 is parked untouched, its mission state, Nokt talks and every record stay readable; removing the cap resumes exactly).
 // The vocabulary inventory is unchanged (v3).
+import contentV10 from "@/data/family-learning/content/santiago-expedition-v10.json";
 import contentV9 from "@/data/family-learning/content/santiago-expedition-v9.json";
 import contentV8 from "@/data/family-learning/content/santiago-expedition-v8.json";
 import contentV7 from "@/data/family-learning/content/santiago-expedition-v7.json";
@@ -50,6 +51,7 @@ import isabelWorkshopV1 from "@/data/family-learning/content/isabel-workshop-v1.
 import isabelWorkshopV2 from "@/data/family-learning/content/isabel-workshop-v2.json";
 import isabelWorkshopV3 from "@/data/family-learning/content/isabel-workshop-v3.json";
 import isabelWorkshopV4 from "@/data/family-learning/content/isabel-workshop-v4.json";
+import isabelWorkshopV5 from "@/data/family-learning/content/isabel-workshop-v5.json";
 import { asIsabelContent } from "./family-learning-isabel";
 import type { ChildId } from "./family-assistant-turn";
 import { asLearningContent, type LearningContent } from "./family-learning-content";
@@ -84,10 +86,12 @@ export function loadVocabularyInventory(): VocabularyInventory {
 // started v10 is parked untouched, its mission state and every record stay readable; removing the cap resumes exactly).
 // Content version 9 (arc «Die Schildkröte», 2026-11-08): version 8 plus the map mission `v11` and typing lesson TYPE-CH-COURSE-8.
 // Rollback: FAMILY_LEARNING_CONTENT_CAP=8 (a started v11 is parked untouched, every record readable; removing the cap resumes it).
-/** The content version this server instance serves (9; 8, 7, 6, 5, 4, 3, 2 or 1 under the rollback cap). */
-export function servedContentVersion(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 {
+// Content version 10 (Nov 18, «Den Teich füllen»): version 9 plus the map mission `v12` and typing lesson TYPE-CH-COURSE-9.
+// Rollback: FAMILY_LEARNING_CONTENT_CAP=9 (a started v12 is parked untouched, every record readable; removing the cap resumes it).
+/** The content version this server instance serves (10; 9, 8, 7, 6, 5, 4, 3, 2 or 1 under the rollback cap). */
+export function servedContentVersion(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 {
   const cap = process.env.FAMILY_LEARNING_CONTENT_CAP;
-  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : cap === "4" ? 4 : cap === "5" ? 5 : cap === "6" ? 6 : cap === "7" ? 7 : cap === "8" ? 8 : 9;
+  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : cap === "4" ? 4 : cap === "5" ? 5 : cap === "6" ? 6 : cap === "7" ? 7 : cap === "8" ? 8 : cap === "9" ? 9 : 10;
 }
 
 export function loadLearningContent(): LearningContent {
@@ -95,7 +99,7 @@ export function loadLearningContent(): LearningContent {
   if (failure) throw failure;
   try {
     const served = servedContentVersion();
-    cached = asLearningContent(served === 1 ? contentV1 : served === 2 ? contentV2 : served === 3 ? contentV3 : served === 4 ? contentV4 : served === 5 ? contentV5 : served === 6 ? contentV6 : served === 7 ? contentV7 : served === 8 ? contentV8 : contentV9);
+    cached = asLearningContent(served === 1 ? contentV1 : served === 2 ? contentV2 : served === 3 ? contentV3 : served === 4 ? contentV4 : served === 5 ? contentV5 : served === 6 ? contentV6 : served === 7 ? contentV7 : served === 8 ? contentV8 : served === 9 ? contentV9 : contentV10);
     return cached;
   } catch (error) {
     failure = error instanceof Error ? error : new Error(String(error));
@@ -128,10 +132,11 @@ export function isabelContentServed(): boolean {
 // probieren»). Rollback to her released visit set is this build with FAMILY_LEARNING_ISABEL_CONTENT_CAP=2 (a started v4 is parked
 // untouched, every record readable; removing the cap resumes it exactly). CAP=1 keeps the earlier behaviour.
 // Her content version 4 (arc «Die Vogelfamilie», 2026-11-08): version 3 unchanged + visit `v5`. Rollback: FAMILY_LEARNING_ISABEL_CONTENT_CAP=3.
-/** Isabel's served content version (4; 3, 2 or 1 under FAMILY_LEARNING_ISABEL_CONTENT_CAP). */
-export function servedIsabelContentVersion(): 1 | 2 | 3 | 4 {
+// Her content version 5 (Nov 18, «Die Vögel ziehen ein»): version 4 unchanged + visit `v6`. Rollback: FAMILY_LEARNING_ISABEL_CONTENT_CAP=4.
+/** Isabel's served content version (5; 4, 3, 2 or 1 under FAMILY_LEARNING_ISABEL_CONTENT_CAP). */
+export function servedIsabelContentVersion(): 1 | 2 | 3 | 4 | 5 {
   const cap = process.env.FAMILY_LEARNING_ISABEL_CONTENT_CAP;
-  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : 4;
+  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : cap === "4" ? 4 : 5;
 }
 
 export function loadIsabelContent(): LearningContent {
@@ -139,7 +144,7 @@ export function loadIsabelContent(): LearningContent {
   if (isabelFailure) throw isabelFailure;
   try {
     const v = servedIsabelContentVersion();
-    cachedIsabel = asIsabelContent(v === 1 ? isabelWorkshopV1 : v === 2 ? isabelWorkshopV2 : v === 3 ? isabelWorkshopV3 : isabelWorkshopV4);
+    cachedIsabel = asIsabelContent(v === 1 ? isabelWorkshopV1 : v === 2 ? isabelWorkshopV2 : v === 3 ? isabelWorkshopV3 : v === 4 ? isabelWorkshopV4 : isabelWorkshopV5);
     return cachedIsabel;
   } catch (error) {
     isabelFailure = error instanceof Error ? error : new Error(String(error));

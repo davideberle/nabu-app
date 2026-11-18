@@ -83,10 +83,19 @@ export const ASSETS: AssetDef[] = [
   // Nov 8 arcs: the turtle's pond (Santiago Visit 10 = v11) and the birdhouse (Isabel Visit 4 = v5).
   piece("s-pond-site", "santiago", `Pond site: ${SITE} Stakes marking a rectangle and a neat stack of round stones.`, "site", 2, 2, 40),
   piece("s-pond-dug-built", "santiago", "An empty dug pond with a ring of round stones around the edge (no water yet: the next visit fills it).", "built", 2, 2, 50),
+  piece("s-pond-water-built", "santiago", "The same dug pond with its ring of round stones, now filled with clear blue-green sea water; the young sea turtle (one flipper bandaged) swims in it, a flat stone in the middle.", "built", 2, 2, 50, "Later stage of s-pond once Visit 11 (v12) is finished; same footprint and anchor as s-pond-dug-built."),
+  piece("s-pump-built", "santiago", "A small green water pump behind two rocks on the sand, a blue hose running from it toward the pond (upper left).", "built", 1, 1, 70, "Appears finished after Visit 11 (no site); beside the beach."),
   piece("s-turtle-crate-built", "santiago", "A low wooden crate in a patch of shade with a young sea turtle resting inside, one flipper bandaged.", "built", 1, 1, 70, "Stands from the start of the visit: the turtle arrives in the opening scene."),
   piece("i-birdhouse-site", "isabel", `Birdhouse site: ${SITE} A post in the ground with a small pile of sticks and a few nails.`, "site", 1, 1, 60),
   piece("i-birdhouse-red-built", "isabel", "A small wooden birdhouse with a round hole on a tall post, RED roof.", "built", 1, 1, 150, "Variant for the choice «Rot» (IV10-ROOF = red)."),
   piece("i-birdhouse-blue-built", "isabel", "A small wooden birdhouse with a round hole on a tall post, BLUE roof.", "built", 1, 1, 150, "Variant for «Blau» (IV10-ROOF = blue)."),
+  piece("i-birdhouse-red-birds-built", "isabel", "The same birdhouse with RED roof on its tall post, two robins (brown back, orange breast) sitting on the roof, a bit of moss in the round hole.", "built", 1, 1, 150, "Later stage from the start of Visit 5 (v6), variant «Rot» (IV10-ROOF = red)."),
+  piece("i-birdhouse-blue-birds-built", "isabel", "Same, BLUE roof, two robins sitting on it.", "built", 1, 1, 150, "Later stage, variant «Blau» (IV10-ROOF = blue)."),
+  piece("i-birdhouse-yellow-birds-built", "isabel", "Same, YELLOW roof, two robins sitting on it.", "built", 1, 1, 150, "Later stage, variant «Gelb» (IV10-ROOF = yellow)."),
+  piece("i-feeder-site", "isabel", `Feeding board site: ${SITE} A short post with an empty wooden board leaning against it.`, "site", 1, 1, 60),
+  piece("i-feeder-seeds-built", "isabel", "A small wooden feeding board on a post with a RED bowl full of seeds.", "built", 1, 1, 86, "Variant for «Körner» (IF8-FOOD = seeds)."),
+  piece("i-feeder-berries-built", "isabel", "Same feeding board, the red bowl full of red berries.", "built", 1, 1, 86, "Variant for «Beeren» (IF8-FOOD = berries)."),
+  piece("i-feeder-worms-built", "isabel", "Same feeding board, a few friendly cartoon worms in the red bowl.", "built", 1, 1, 86, "Variant for «Würmer» (IF8-FOOD = worms)."),
   piece("i-birdhouse-yellow-built", "isabel", "A small wooden birdhouse with a round hole on a tall post, YELLOW roof.", "built", 1, 1, 150, "Variant for «Gelb» (IV10-ROOF = yellow)."),
 
   // Markers and signs (shared by both worlds).
