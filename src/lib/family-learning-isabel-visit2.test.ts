@@ -532,6 +532,29 @@ describe("prerecorded narration — readiness and the owner's capped preparation
     ok(!JSON.stringify(r).includes(catalog[1].text), "the result carries counts, not texts");
     ok(!st.stored.has(st.lockAt("VoiceAbc12345")), "the lock is released");
   });
+  it("Nov 18: a hung provider request ends the run by its own timeout (counted, lock released); a long run stops on time", async () => {
+    const st = fakeStore();
+    let n = 0;
+    const hang = (async (_u: string, init: RequestInit) => {
+      n += 1;
+      if (n <= 2) return new Response(new Uint8Array([1, 2, 3]));
+      return new Promise<Response>((_ok, fail) => init.signal?.addEventListener("abort", () => fail(new Error("timeout"))));
+    }) as unknown as typeof fetch;
+    const r = await prepareNarration(catalog, 99999, { ...st.deps(ENV), fetchImpl: hang, requestTimeoutMs: 30 });
+    equal(r.status, "upstream-failed");
+    equal(r.failedStatus, 0);
+    equal(r.recorded, 2);
+    equal(r.budget?.requests, 3, "the hung request stays reserved");
+    ok(!st.stored.has(st.lockAt()), "the lock is released after a hang");
+    let t = 0;
+    const slow = fakeStore();
+    const r2 = await prepareNarration(catalog, 99999, { ...slow.deps(ENV), now: () => (t += 1000), runBudgetMs: 4500 });
+    equal(r2.status, "time-limit");
+    ok(r2.recorded > 0 && r2.recorded < catalog.length, `${r2.recorded}`);
+    ok(!slow.stored.has(slow.lockAt()), "the lock is released at the time limit");
+    const rest = await prepareNarration(catalog, 99999, slow.deps(ENV));
+    equal(rest.recorded, catalog.length - r2.recorded, "the next run records exactly the rest");
+  });
   it("a failure stops at once (no retry); the next run resumes with exactly the missing lines — nothing is paid twice", async () => {
     const st = fakeStore();
     const first = await prepareNarration(catalog, 99999, st.deps(ENV, (n) => n <= 5));

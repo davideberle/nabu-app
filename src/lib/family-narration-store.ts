@@ -116,6 +116,8 @@ export type StoreDeps = {
   listImpl?: typeof list;
   fetchImpl?: typeof fetch;
   now?: () => number;
+  requestTimeoutMs?: number;
+  runBudgetMs?: number;
 };
 
 /** The public store may hold only fixed, non-private scripts: no child's name (or anything that looks like a record) is ever recorded. */
@@ -124,6 +126,9 @@ export const isPublicSafeScript = (text: string) => !PRIVATE_TEXT.test(text) && 
 /** A preparation run holds this lock; a second run (double click, retry, two tabs) is refused instead of paying twice. */
 const LOCK_STALE_MS = 15 * 60_000;
 export const MAX_PREPARE_CHARACTERS = 20_000;
+/** Nov 18: one provider or store request may take at most this long; a run starts no new line after RUN_BUDGET_MS. */
+export const REQUEST_TIMEOUT_MS = 45_000;
+export const RUN_BUDGET_MS = 200_000;
 /** One lock for all slots: preparation runs one at a time whatever voices it records. */
 export const PREPARE_LOCK = "family-narration/prepare.lock";
 
@@ -292,7 +297,7 @@ export async function planNarration(fullCatalog: NarrationLine[], deps: StoreDep
 }
 
 export type PrepareResult = {
-  status: "prepared" | "not-configured" | "no-budget" | "budget-unavailable" | "budget-reached" | "busy" | "cap-reached" | "upstream-failed" | "store-failed";
+  status: "prepared" | "not-configured" | "no-budget" | "budget-unavailable" | "budget-reached" | "busy" | "cap-reached" | "time-limit" | "upstream-failed" | "store-failed";
   recorded: number;
   charactersSent: number;
   remaining: number;
@@ -358,9 +363,14 @@ export async function prepareNarration(fullCatalog: NarrationLine[], maxCharacte
     let recorded = 0;
     let sent = 0;
     const settings = new Map<string, Record<string, unknown>>();
+    // Nov 18 (evening): a run must end well inside the platform's 300 s limit, or the lock stays for 15 min. Stop starting new
+    // lines after RUN_BUDGET_MS, and give every provider/store request its own timeout (a hung request ends the run cleanly).
+    const started = (deps.now ?? Date.now)();
+    const timeoutMs = deps.requestTimeoutMs ?? REQUEST_TIMEOUT_MS;
     for (const l of ready.missingLines) {
       const voice = resolveLineVoice(l, env);
       if (!voice) continue;
+      if ((deps.now ?? Date.now)() - started > (deps.runBudgetMs ?? RUN_BUDGET_MS)) return { status: "time-limit", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
       if (sent + l.text.length > cap) return { status: "cap-reached", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
       if (spent + l.text.length > budget.characters) return { status: "budget-reached", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
       if (await exists(lineClipPathname(voice, l.id), token, deps.headImpl ?? head)) continue;
@@ -387,6 +397,7 @@ export async function prepareNarration(fullCatalog: NarrationLine[], maxCharacte
         }
         res = await (deps.fetchImpl ?? fetch)(`https://api.elevenlabs.io/v1/text-to-speech/${voice.voiceId}?output_format=${NARRATION_OUTPUT_FORMAT}`, {
           method: "POST",
+          signal: AbortSignal.timeout(timeoutMs),
           headers: { "xi-api-key": key, "Content-Type": "application/json", Accept: "audio/mpeg" },
           body: JSON.stringify({ text: l.text, model_id: NARRATION_TTS_MODEL_ID, ...(voiceSettings ? { voice_settings: voiceSettings } : {}) }),
         });
@@ -395,9 +406,15 @@ export async function prepareNarration(fullCatalog: NarrationLine[], maxCharacte
         return { status: "upstream-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, failedStatus: 0, personalSkipped, budget: report() };
       }
       if (!res.ok) return { status: "upstream-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, failedStatus: res.status, personalSkipped, budget: report() };
+      let bytes: ArrayBuffer;
       try {
-        const bytes = await res.arrayBuffer();
-        await (deps.putImpl ?? put)(lineClipPathname(voice, l.id), Buffer.from(bytes), { access: "public", contentType: "audio/mpeg", allowOverwrite: true, addRandomSuffix: false, token });
+        bytes = await res.arrayBuffer();
+      } catch {
+        // The provider's answer stalled mid-body (the request timeout covers the body too): billed, stays reserved, run stops.
+        return { status: "upstream-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, failedStatus: 0, personalSkipped, budget: report() };
+      }
+      try {
+        await (deps.putImpl ?? put)(lineClipPathname(voice, l.id), Buffer.from(bytes), { access: "public", contentType: "audio/mpeg", allowOverwrite: true, addRandomSuffix: false, token, abortSignal: AbortSignal.timeout(timeoutMs) });
       } catch {
         return { status: "store-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
       }
