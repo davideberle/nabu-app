@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
-import { ADAPTIVE_CHESS_COACH_BUNDLE } from "@/data/adaptive-chess-coach/bundle.generated";
+import { ADAPTIVE_CHESS_COACH_BUNDLE, ADAPTIVE_CHESS_COACH_LINES_DE } from "@/data/adaptive-chess-coach/bundle.generated";
+import { chessVoiceScript } from "@/lib/family-chess-narration";
 import { normalizeChildId } from "@/lib/family-child-shell";
 import { appOrigin, renderChessDocument } from "@/lib/family-chess-content";
 import { derivePlayKey, resolveStudioConfig, verifyPlayCredential } from "@/lib/family-games-token";
@@ -32,6 +33,10 @@ function page(status: number, message: string, origin: string): Response {
  * The guard the adapter injects into every served game is injected here too
  * (mirror), pointed at the adapter origin for its beacons. Every other asset
  * name answers 404: there is no raw JS at any URL.
+ *
+ * Nov 18, 2026: after the guard, the document gets `window.__CHESS_VOICE__` — the coach's spoken line keys mapped to the
+ * prerecorded clip route (/api/family/learning/narration/de-female/<line id>; same origin, so this frame's household session
+ * cookie authenticates it; the CSP here sets only frame-ancestors, so same-origin media is allowed). Not recorded → 404 → silence.
  */
 export async function GET(request: Request, context: { params: Promise<{ asset: string }> }) {
   const { asset } = await context.params;
@@ -54,6 +59,6 @@ export async function GET(request: Request, context: { params: Promise<{ asset: 
   if (!lease || lease.personId !== child || lease.gameId !== DAILY_CHESS_GAME_ID || lease.budgetKind !== "chess") return page(403, "This chess link does not match your play session.", origin);
   if (lease.state !== "active") return page(410, "This chess session has ended. Go back to your Games page.", origin);
   if (lease.budgetDate !== PURCHASED_CHESS_BUDGET_DATE) return page(410, "Free daily chess has ended. Chess is now 1 coin for 15 minutes — go back to your Games page.", origin);
-  const html = renderChessDocument(ADAPTIVE_CHESS_COACH_BUNDLE, guardScript({ allowedOrigin: origin, leaseId: lease.id, beaconBase: studio.studioUrl }));
+  const html = renderChessDocument(ADAPTIVE_CHESS_COACH_BUNDLE, guardScript({ allowedOrigin: origin, leaseId: lease.id, beaconBase: studio.studioUrl }) + chessVoiceScript(ADAPTIVE_CHESS_COACH_LINES_DE));
   return new Response(html, { status: 200, headers: { ...NO_STORE, "Content-Type": "text/html; charset=utf-8", "Content-Security-Policy": `frame-ancestors ${origin}` } });
 }

@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
     />
-    <title>Chess Coach</title>
+    <title>Schach-Coach</title>
     <style>
       :root {
         --bg: #1b1f2a;
@@ -23,6 +23,9 @@
         --last: rgba(246, 211, 101, 0.35);
         --check: #ff6b6b;
         --good: #57c98b;
+        --threat: #ff4d4d;
+        --attacker: #ff9f1c;
+        --hint: #3ddc84;
       }
       * {
         box-sizing: border-box;
@@ -123,6 +126,45 @@
         border-radius: 50%;
         box-shadow: 0 0 0 4px var(--check) inset;
       }
+      /* Nudge highlights (Nov 18): the piece in danger, its attacker, and after
+         «bessere Idee» the suggested piece and its target square. */
+      .sq.intended::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(246, 211, 101, 0.28);
+      }
+      .sq.threat::before,
+      .sq.attacker::before,
+      .sq.hint-from::before,
+      .sq.hint-to::before {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        border-radius: 10px;
+        z-index: 4;
+        pointer-events: none;
+      }
+      .sq.threat::before {
+        box-shadow: 0 0 0 5px var(--threat) inset, 0 0 14px 2px var(--threat);
+        animation: pulse 1.1s ease-in-out infinite;
+      }
+      .sq.attacker::before {
+        box-shadow: 0 0 0 5px var(--attacker) inset;
+      }
+      .sq.hint-from::before {
+        box-shadow: 0 0 0 5px var(--hint) inset, 0 0 14px 2px var(--hint);
+        animation: pulse 1.1s ease-in-out infinite;
+      }
+      .sq.hint-to::before {
+        background: rgba(61, 220, 132, 0.45);
+        box-shadow: 0 0 0 5px var(--hint) inset;
+      }
+      @keyframes pulse {
+        50% {
+          opacity: 0.55;
+        }
+      }
       .piece {
         position: relative;
         z-index: 2;
@@ -156,6 +198,20 @@
         background: transparent;
         border: 5px solid var(--target);
         box-sizing: border-box;
+      }
+
+      /* Portrait: while a nudge shows, the board shrinks so the coach card
+         below it stays on screen (the card never covers the board). */
+      @media (orientation: portrait) {
+        .nudging .board-wrap {
+          width: min(96vw, calc(100vh - 330px));
+        }
+        .panel {
+          display: flex;
+        }
+        .panel .coach-card {
+          order: -1;
+        }
       }
 
       /* ---- Side / info panel ---- */
@@ -303,6 +359,51 @@
         min-width: 60px;
         min-height: 60px;
       }
+      .coach-card {
+        display: none;
+        border: 2px solid var(--sel);
+      }
+      .coach-card.show {
+        display: block;
+      }
+      .coach-card h3 {
+        margin: 0 0 6px;
+        font-size: 17px;
+        padding-right: 46px;
+      }
+      .coach-card .risk {
+        clear: both;
+      }
+      .coach-card .btn-row {
+        flex-direction: column;
+      }
+      .legend {
+        display: flex;
+        gap: 14px;
+        font-size: 13px;
+        color: var(--ink-dim);
+        margin: 4px 0 10px;
+      }
+      .swatch {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        vertical-align: -2px;
+        margin-right: 5px;
+      }
+      .replay {
+        appearance: none;
+        border: none;
+        background: var(--panel-2);
+        color: var(--ink);
+        border-radius: 999px;
+        font-size: 18px;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        float: right;
+      }
       .risk {
         background: var(--panel-2);
         border-left: 4px solid var(--sel);
@@ -346,22 +447,39 @@
           <div class="board" id="board" aria-label="Chess board"></div>
         </div>
         <div class="panel">
+          <!-- The nudge: beside the board (landscape) / above the info (portrait), never over the board. -->
+          <div class="card coach-card" id="coach-card" aria-live="polite">
+            <button class="replay" data-replay aria-label="Nochmal hören">🔊</button>
+            <h3 id="coach-title">Halt, schau mal!</h3>
+            <div class="risk" id="coach-text"></div>
+            <div class="legend" id="coach-legend">
+              <span><span class="swatch" style="background: var(--threat)"></span>deine Figur</span>
+              <span><span class="swatch" style="background: var(--attacker)"></span>kann fressen</span>
+            </div>
+            <div class="btn-row" id="coach-choices">
+              <button class="btn" id="cp-better-btn">Zeig mir eine bessere Idee</button>
+              <button class="btn secondary" id="cp-keep-btn">Ich bleibe bei meinem Zug</button>
+            </div>
+            <div class="center" id="coach-continue" style="display: none; margin-top: 12px">
+              <button class="btn" id="cp-continue-btn">Weiter</button>
+            </div>
+          </div>
           <div class="card opponent" id="opponent-card">
             <div class="emoji" id="opp-emoji">🐧</div>
             <div>
-              <h2 id="opp-name">Pip the Penguin</h2>
+              <h2 id="opp-name">Pip der Pinguin</h2>
               <p id="opp-blurb"></p>
             </div>
           </div>
           <div class="card">
-            <div class="status-line" id="status-line" aria-live="polite">Your move</div>
+            <div class="status-line" id="status-line" aria-live="polite">Du bist dran</div>
             <div class="meta">
               <span id="meta-level"></span>
               <span id="meta-checkpoints"></span>
             </div>
           </div>
           <div class="btn-row">
-            <button class="btn secondary" id="new-game-btn">New game</button>
+            <button class="btn secondary" id="new-game-btn">Neues Spiel</button>
           </div>
         </div>
       </div>
@@ -370,7 +488,9 @@
     <!-- Start overlay -->
     <div class="overlay" id="start-overlay">
       <div class="sheet center">
-        <h1 id="start-title">Chess Coach</h1>
+        <button class="replay" data-replay aria-label="Nochmal hören">🔊</button>
+        <h1 id="start-title">Schach</h1>
+        <p id="start-intro"></p>
         <p class="muted" id="start-sub"></p>
         <div class="card opponent" style="text-align: left; margin: 14px 0">
           <div class="emoji" id="start-opp-emoji">🐧</div>
@@ -379,9 +499,9 @@
             <p id="start-opp-blurb"></p>
           </div>
         </div>
-        <button class="btn" id="start-play-btn">Play ▶</button>
+        <button class="btn" id="start-play-btn">Spielen ▶</button>
         <div id="resume-wrap" style="margin-top: 10px; display: none">
-          <button class="btn secondary" id="resume-btn">Resume last game</button>
+          <button class="btn secondary" id="resume-btn">Weiterspielen</button>
         </div>
       </div>
     </div>
@@ -389,67 +509,54 @@
     <!-- Concept overlay -->
     <div class="overlay" id="concept-overlay">
       <div class="sheet">
-        <span class="concept-badge">Today&rsquo;s idea</span>
+        <button class="replay" data-replay aria-label="Nochmal hören">🔊</button>
+        <span class="concept-badge">Die Idee von heute</span>
         <h3 id="concept-title"></h3>
         <p id="concept-text"></p>
-        <button class="btn" id="concept-go-btn">Let&rsquo;s play!</button>
+        <button class="btn" id="concept-go-btn">Los geht&rsquo;s!</button>
       </div>
     </div>
 
     <!-- Promotion overlay -->
     <div class="overlay" id="promo-overlay">
       <div class="sheet center">
-        <h3>Your pawn made it! Pick a piece:</h3>
+        <h3>Dein Bauer ist angekommen! Wähle eine Figur:</h3>
         <div class="promo-row" id="promo-row"></div>
-        <button class="link" id="promo-cancel-btn">Never mind, pick a different move</button>
-      </div>
-    </div>
-
-    <!-- Checkpoint overlay -->
-    <div class="overlay" id="checkpoint-overlay">
-      <div class="sheet">
-        <h3 id="checkpoint-title">Are you sure?</h3>
-        <div class="risk" id="checkpoint-risk"></div>
-        <div class="btn-row">
-          <button class="btn secondary" id="cp-keep-btn">Keep my move</button>
-          <button class="btn" id="cp-better-btn">Show me a better idea</button>
-        </div>
-        <div class="compare" id="checkpoint-compare"></div>
-        <div class="center" id="checkpoint-continue" style="display: none; margin-top: 12px">
-          <button class="btn" id="cp-continue-btn">Continue</button>
-        </div>
+        <button class="link" id="promo-cancel-btn">Doch nicht, anderer Zug</button>
       </div>
     </div>
 
     <!-- Recap overlay -->
     <div class="overlay" id="recap-overlay">
       <div class="sheet">
-        <h1 id="recap-title">Good game!</h1>
+        <button class="replay" data-replay aria-label="Nochmal hören">🔊</button>
+        <h1 id="recap-title">Gut gespielt!</h1>
         <div class="recap-item">
           <div class="ic">⭐</div>
           <div>
-            <strong>What went well</strong>
+            <strong>Das war gut</strong>
             <p id="recap-strength" style="margin: 4px 0"></p>
           </div>
         </div>
         <div class="recap-item">
           <div class="ic">💡</div>
           <div>
-            <strong>Next idea</strong>
+            <strong>Nächstes Mal</strong>
             <p id="recap-next" style="margin: 4px 0"></p>
           </div>
         </div>
         <p class="muted" id="recap-level"></p>
         <p class="muted good" id="recap-unlock" style="display: none"></p>
-        <button class="btn" id="recap-again-btn">Play again</button>
+        <button class="btn" id="recap-again-btn">Nochmal spielen</button>
         <div class="center">
-          <button class="link" id="recap-skip-btn">Skip</button>
+          <button class="link" id="recap-skip-btn">Überspringen</button>
         </div>
       </div>
     </div>
 
     <script src="chess-engine.js"></script>
     <script src="chess-ai.js"></script>
+    <script src="chess-lines-de.js"></script>
     <script src="chess-coach.js"></script>
     <script src="chess-ui.js"></script>
   </body>

@@ -5,6 +5,16 @@
 // recap overlays. Persists the live game and the per-child profile in
 // localStorage so a refresh resumes.
 //
+// Nov 18, 2026: all coach text is German and comes from the closed line set
+// (chess-lines-de.js). The nudge is a card in the side panel BESIDE the board
+// (never over it) while the board highlights the piece in danger and its
+// attacker. «Zeig mir eine bessere Idee» takes the intended move back and
+// highlights the suggested piece and its target; the child then moves herself.
+// Spoken lines: when the Companion App injects `window.__CHESS_VOICE__`
+// ({ clips: { key: url }, rate }), each line plays its PRERECORDED clip with
+// HTMLAudio (slowed, pitch preserved), one clip at a time. No map → silent
+// text. A missing clip → silence. Never the device's speech synthesis.
+//
 // The child plays White at the bottom. A small window.__chess hook is exposed
 // for automated verification (drive taps, read state, load positions); it does
 // nothing on its own.
@@ -22,18 +32,143 @@
     p: "♟", n: "♞", b: "♝", r: "♜", q: "♛", k: "♚",
   };
 
-  const PIECE_NAME = { p: "pawn", n: "knight", b: "bishop", r: "rook", q: "queen", k: "king" };
+  const PIECE_NAME = { p: "Bauer", n: "Pferd", b: "Läufer", r: "Turm", q: "Dame", k: "König" };
   function describeSquare(sq, piece, isTarget) {
     let label = Engine.squareName(sq);
     if (piece !== null) {
-      const side = Engine.colorOf(piece) === Engine.WHITE ? "your" : "their";
-      label += `, ${side} ${PIECE_NAME[Engine.typeOf(piece)]}`;
+      const side = Engine.colorOf(piece) === Engine.WHITE ? "Weiss" : "Schwarz";
+      label += `, ${side}: ${PIECE_NAME[Engine.typeOf(piece)]}`;
     } else {
-      label += ", empty";
+      label += ", leer";
     }
-    if (isTarget) label += ", possible move";
+    if (isTarget) label += ", möglicher Zug";
     return label;
   }
+
+  // ---- Spoken lines (prerecorded clips only) ----------------------------
+  // The app injects { clips: { key: sameOriginUrl }, rate } before this script.
+  const VOICE = (() => {
+    try {
+      const v = window.__CHESS_VOICE__;
+      if (v && typeof v === "object" && v.clips && typeof v.clips === "object") return v;
+    } catch {
+      /* ignore */
+    }
+    return null;
+  })();
+  const VOICE_RATE = VOICE && typeof VOICE.rate === "number" && VOICE.rate > 0.5 && VOICE.rate <= 1 ? VOICE.rate : 0.85;
+  let audioEl = null;
+  let speakSeq = 0;
+  let lastSpoken = [];
+  let pendingSpeak = null; // keys asked for while the play guard is frozen
+  const spokenLog = []; // keys the coach asked to say (verification aid)
+
+  function guardFrozen() {
+    try {
+      const g = window.__familyPlayGuard;
+      return !!(g && typeof g.isFrozen === "function" && g.isFrozen());
+    } catch {
+      return false;
+    }
+  }
+
+  function applyRate(a) {
+    a.defaultPlaybackRate = VOICE_RATE;
+    a.playbackRate = VOICE_RATE;
+    a.preservesPitch = true;
+    a.webkitPreservesPitch = true;
+    a.mozPreservesPitch = true;
+  }
+
+  function stopSpeaking() {
+    speakSeq += 1;
+    pendingSpeak = null;
+    const a = audioEl;
+    audioEl = null;
+    if (a) {
+      a.onended = null;
+      a.onerror = null;
+      try {
+        a.pause();
+      } catch {
+        /* ignore */
+      }
+      try {
+        a.removeAttribute("src");
+        a.load();
+      } catch {
+        /* ignore */
+      }
+    }
+  }
+
+  // Say these line keys, in order, superseding whatever was playing. Only
+  // catalogued keys with an injected clip URL can sound; anything else is
+  // silence (the text is on screen anyway).
+  function speak(keys) {
+    const list = (keys || []).filter((k) => typeof k === "string" && Object.prototype.hasOwnProperty.call(Coach.LINES, k));
+    lastSpoken = list;
+    spokenLog.push(...list);
+    stopSpeaking();
+    if (!VOICE || !list.length) return;
+    if (guardFrozen()) {
+      pendingSpeak = list; // spoken when the guard lets the game run
+      return;
+    }
+    const seq = speakSeq;
+    const queue = list.filter((k) => typeof VOICE.clips[k] === "string" && VOICE.clips[k].startsWith("/"));
+    const next = () => {
+      if (seq !== speakSeq) return;
+      const key = queue.shift();
+      if (!key) {
+        audioEl = null;
+        return;
+      }
+      const a = new Audio();
+      audioEl = a;
+      a.preload = "auto";
+      applyRate(a);
+      a.onended = next;
+      a.onerror = next; // not recorded (404) or failed: silence for this line
+      a.src = VOICE.clips[key];
+      applyRate(a);
+      let p;
+      try {
+        p = a.play();
+      } catch {
+        p = null;
+      }
+      if (p && typeof p.catch === "function") {
+        p.catch(() => {
+          // Autoplay refused or load failed: stay silent; «🔊» replays on a tap.
+          if (seq === speakSeq && audioEl === a) audioEl = null;
+        });
+      }
+    };
+    next();
+  }
+
+  function replaySpoken() {
+    speak(lastSpoken.slice());
+  }
+
+  // The play guard freezes the page by dispatching `blur` and thaws with
+  // `focus`: a clip never keeps talking over a frozen game.
+  window.addEventListener("blur", () => {
+    if (guardFrozen()) {
+      const keys = audioEl ? lastSpoken.slice() : null;
+      stopSpeaking();
+      pendingSpeak = keys;
+    }
+  });
+  window.addEventListener("focus", () => {
+    if (pendingSpeak && !guardFrozen()) {
+      const keys = pendingSpeak;
+      pendingSpeak = null;
+      speak(keys);
+    }
+  });
+  window.addEventListener("pagehide", stopSpeaking);
 
   // ---- Child identity from the launch URL (validated) -------------------
   const ALLOWED_CHILDREN = ["santiago", "isabel"];
@@ -47,7 +182,7 @@
     return "guest";
   }
   const childId = readChildId();
-  const displayName = childId === "guest" ? "Player" : childId[0].toUpperCase() + childId.slice(1);
+  const displayName = childId === "guest" ? null : childId[0].toUpperCase() + childId.slice(1);
 
   const storage = (() => {
     try {
@@ -68,8 +203,16 @@
   let lastMove = null;
   let inputLocked = true; // locked until a game begins
   let pendingCheckpoint = null;
+  // While a nudge shows: the board previews the intended move (not applied to
+  // the game) with the piece in danger and its attacker highlighted.
+  let preview = null; // { state, move, threatSquare, attackerSquare }
+  // After «bessere Idee»: the suggested piece and its target, until she moves.
+  let hint = null; // { from, to }
   let pendingPromotion = null; // { from, to, resolve }
   let opponentRng = Math.random;
+  // Bumped whenever the board is replaced (new game, resume, start screen): a
+  // pending opponent reply from the previous board must never play on the new one.
+  let boardEpoch = 0;
 
   // ---- DOM refs ---------------------------------------------------------
   const boardEl = document.getElementById("board");
@@ -93,20 +236,27 @@
   }
 
   function render() {
+    const view = preview ? preview.state : state;
     const kingInCheckSq =
-      Engine.inCheck(state, state.turn) ? Engine.findKing(state.board, state.turn) : -1;
+      Engine.inCheck(view, view.turn) ? Engine.findKing(view.board, view.turn) : -1;
     const targetSquares = new Set(legalFromSelected.map((m) => m.to));
+    const shownMove = preview ? null : lastMove;
     for (let sq = 0; sq < 64; sq++) {
       const d = sqEls[sq];
       const base = "sq " + ((Engine.fileOf(sq) + Engine.rankOf(sq)) % 2 === 0 ? "dark" : "light");
       let cls = base;
       if (sq === selected) cls += " sel";
-      if (lastMove && (sq === lastMove.from || sq === lastMove.to)) cls += " last";
+      if (shownMove && (sq === shownMove.from || sq === shownMove.to)) cls += " last";
+      if (preview && (sq === preview.move.from || sq === preview.move.to)) cls += " intended";
+      if (preview && sq === preview.threatSquare) cls += " threat";
+      if (preview && sq === preview.attackerSquare) cls += " attacker";
+      if (hint && sq === hint.from) cls += " hint-from";
+      if (hint && sq === hint.to) cls += " hint-to";
       if (sq === kingInCheckSq) cls += " check";
       d.className = cls;
 
       let html = "";
-      const p = state.board[sq];
+      const p = view.board[sq];
       if (p !== null) {
         const color = Engine.colorOf(p) === Engine.WHITE ? "w" : "b";
         html += `<span class="piece ${color}">${GLYPH[p]}</span>`;
@@ -125,10 +275,10 @@
     el("opp-emoji").textContent = opponent.emoji;
     el("opp-name").textContent = opponent.name;
     el("opp-blurb").textContent = opponent.blurb;
-    el("meta-level").textContent = "Level: " + profile.level + " · " + profile.estimatedLevelLabel;
+    el("meta-level").textContent = "Stufe " + profile.level + " · " + Coach.levelLabelDe(profile.level);
     if (session) {
       const left = Coach.MAX_CHECKPOINTS_PER_GAME - session.checkpointsUsed;
-      el("meta-checkpoints").textContent = "Coach nudges left: " + left;
+      el("meta-checkpoints").textContent = "Tipps übrig: " + left;
     } else {
       el("meta-checkpoints").textContent = "";
     }
@@ -226,33 +376,84 @@
     }
   }
 
+  // The nudge: a card in the side panel; the board previews the intended move
+  // and highlights the piece in danger (red) and its attacker (orange).
   function showCheckpoint(cp) {
-    el("checkpoint-title").textContent = "Are you sure? (nudge " + cp.checkpointNumber + ")";
-    el("checkpoint-risk").textContent = cp.riskText;
-    el("checkpoint-compare").textContent = "";
-    el("checkpoint-continue").style.display = "none";
-    el("cp-keep-btn").style.display = "";
-    el("cp-better-btn").style.display = "";
-    show("checkpoint-overlay");
+    const previewState = Engine.parseFEN(Engine.toFEN(state));
+    Engine.applyMove(previewState, cp.playedMove);
+    preview = {
+      state: previewState,
+      move: cp.playedMove,
+      threatSquare: cp.threatSquare,
+      attackerSquare: cp.attackerSquare,
+    };
+    hint = null;
+    inputLocked = true;
+    el("coach-title").textContent = "Halt, schau mal! (Tipp " + cp.checkpointNumber + " von " + Coach.MAX_CHECKPOINTS_PER_GAME + ")";
+    el("coach-text").textContent = cp.riskText;
+    el("coach-legend").style.display = cp.threatSquare !== null ? "" : "none";
+    el("coach-choices").style.display = "";
+    el("coach-continue").style.display = "none";
+    showCoachCard();
+    setStatus("Was möchtest du tun?");
+    render();
+    speak([cp.riskKey]);
   }
 
   function resolveCheckpoint(choice) {
     const cp = pendingCheckpoint;
     if (!cp) return;
     const result = Coach.resolveCheckpoint(session, cp, choice);
-    el("checkpoint-compare").textContent = result.comparison;
-    el("cp-keep-btn").style.display = "none";
-    el("cp-better-btn").style.display = "none";
-    el("checkpoint-continue").style.display = "";
     pendingCheckpoint = null;
-    // Stash the move to play on Continue (single, final — no re-guessing).
+    el("coach-choices").style.display = "none";
+    el("coach-legend").style.display = "none";
+    el("coach-text").textContent = result.comparison;
+    speak([result.lineKey]);
+    if (result.takeback) {
+      // Take the intended move back: the board shows the real position again,
+      // with the suggested piece and its target highlighted. Nothing is played;
+      // the child moves herself and that move is accepted as it is.
+      preview = null;
+      hint = result.hint;
+      el("coach-title").textContent = "Eine bessere Idee";
+      el("coach-continue").style.display = "none";
+      inputLocked = false;
+      setStatus("Du bist dran");
+      persistGame();
+      render();
+      return;
+    }
+    // «Ich bleibe bei meinem Zug»: as before — Continue plays her move.
+    el("coach-title").textContent = "Dein Zug";
+    el("coach-continue").style.display = "";
     el("cp-continue-btn").onclick = () => {
-      hide("checkpoint-overlay");
+      preview = null;
+      hideCoachCard();
       commitChildMove(result.move);
     };
+    persistGame();
+    render();
+  }
+
+  function showCoachCard() {
+    el("coach-card").classList.add("show");
+    el("app").classList.add("nudging");
+    try {
+      el("coach-card").scrollIntoView({ block: "nearest" });
+    } catch {
+      /* ignore */
+    }
+  }
+  function hideCoachCard() {
+    el("coach-card").classList.remove("show");
+    el("app").classList.remove("nudging");
   }
 
   function commitChildMove(move) {
+    if (hint) {
+      hint = null;
+      hideCoachCard();
+    }
     if (move.captured || move.flag === "ep") session.capturesByChild += 1;
     Engine.applyMove(state, move);
     lastMove = move;
@@ -269,8 +470,10 @@
   }
 
   function opponentTurn() {
-    setStatus(opponent.name + " is thinking…");
+    setStatus(opponent.name + " denkt nach …");
+    const epoch = boardEpoch;
     setTimeout(() => {
+      if (epoch !== boardEpoch || state.turn === Coach.CHILD_COLOR) return;
       const move = AI.pickMove(state, opponent.difficulty, opponentRng);
       if (!move) {
         const st = Engine.status(state);
@@ -287,8 +490,8 @@
         return;
       }
       inputLocked = false;
-      if (st.check) setStatus("Check! Protect your king.");
-      else setStatus("Your move");
+      if (st.check) setStatus("Schach! Schütze deinen König.");
+      else setStatus("Du bist dran");
     }, 420);
   }
 
@@ -316,7 +519,7 @@
 
   function showRecap(result, recap) {
     el("recap-title").textContent =
-      result === "win" ? "You won! 🎉" : result === "loss" ? "Good game!" : "A draw — well played!";
+      result === "win" ? "Gewonnen! 🎉" : result === "loss" ? "Gut gespielt!" : "Unentschieden!";
     el("recap-strength").textContent = recap.strength;
     el("recap-next").textContent = recap.nextIdea;
     el("recap-level").textContent = recap.levelReason;
@@ -328,6 +531,7 @@
       unlock.style.display = "none";
     }
     show("recap-overlay");
+    speak([recap.strengthKey, recap.nextKey]);
   }
 
   // ---- Persistence of the live game -------------------------------------
@@ -411,11 +615,12 @@
         : null;
     selected = -1;
     legalFromSelected = [];
+    clearCoachState();
     hideAllOverlays();
     inputLocked = state.turn !== Coach.CHILD_COLOR;
     render();
     if (state.turn === Coach.CHILD_COLOR) {
-      setStatus(Engine.inCheck(state, state.turn) ? "Check! Protect your king." : "Your move");
+      setStatus(Engine.inCheck(state, state.turn) ? "Schach! Schütze deinen König." : "Du bist dran");
     } else {
       opponentTurn();
     }
@@ -425,15 +630,28 @@
   function openStart() {
     profile = Coach.loadProfile(storage, childId);
     opponent = Coach.opponentForLevel(profile.level);
-    el("start-title").textContent = "Hi " + displayName + "!";
-    el("start-sub").textContent = "Ready for a game of chess? Level " + profile.level + " · " + profile.estimatedLevelLabel;
+    clearCoachState();
+    inputLocked = true;
+    el("start-title").textContent = "Schach ♟";
+    el("start-intro").textContent = Coach.introScreenText(opponent, displayName);
+    el("start-sub").textContent = "Stufe " + profile.level + " · " + Coach.levelLabelDe(profile.level);
     el("start-opp-emoji").textContent = opponent.emoji;
-    el("start-opp-name").textContent = "Today: " + opponent.name;
+    el("start-opp-name").textContent = opponent.name;
     el("start-opp-blurb").textContent = opponent.blurb;
     const g = readPersistedGame();
     el("resume-wrap").style.display = g ? "" : "none";
     render();
     show("start-overlay");
+    speak([opponent.introKey]);
+  }
+
+  // Leave no nudge, preview or hint behind (new game, resume, start screen).
+  function clearCoachState() {
+    boardEpoch += 1;
+    pendingCheckpoint = null;
+    preview = null;
+    hint = null;
+    hideCoachCard();
   }
 
   function beginNewGame() {
@@ -445,18 +663,21 @@
     selected = -1;
     legalFromSelected = [];
     lastMove = null;
+    clearCoachState();
     clearPersistedGame();
     // Show the one pre-game concept.
     el("concept-title").textContent = session.concept.title;
     el("concept-text").textContent = session.concept.text;
     render();
     show("concept-overlay");
+    speak([session.concept.lineKey]);
   }
 
   function startPlaying() {
     hideAllOverlays();
+    stopSpeaking();
     inputLocked = false;
-    setStatus("Your move");
+    setStatus("Du bist dran");
     render();
   }
 
@@ -472,7 +693,6 @@
       "start-overlay",
       "concept-overlay",
       "promo-overlay",
-      "checkpoint-overlay",
       "recap-overlay",
     ]) {
       hide(id);
@@ -508,6 +728,11 @@
       hide("recap-overlay");
       openStart();
     };
+    // «🔊» replays the last spoken line(s); hidden when no clips are available.
+    for (const b of document.querySelectorAll("[data-replay]")) {
+      if (!VOICE) b.style.display = "none";
+      b.onclick = replaySpoken;
+    }
   }
 
   // ---- Boot -------------------------------------------------------------
@@ -531,9 +756,29 @@
     tap: (nameOrIdx) =>
       onSquareTap(typeof nameOrIdx === "number" ? nameOrIdx : Engine.squareFromName(nameOrIdx)),
     overlayShown: () =>
-      ["start-overlay", "concept-overlay", "promo-overlay", "checkpoint-overlay", "recap-overlay"].filter(
+      ["start-overlay", "concept-overlay", "promo-overlay", "recap-overlay"].filter(
         (id) => el(id).classList.contains("show"),
       ),
+    // The nudge card beside the board and the board highlights.
+    coachCard: () => ({
+      shown: el("coach-card").classList.contains("show"),
+      title: el("coach-title").textContent,
+      text: el("coach-text").textContent,
+      choices: el("coach-choices").style.display !== "none",
+    }),
+    highlights: () => {
+      const out = {};
+      for (const c of ["threat", "attacker", "intended", "hint-from", "hint-to"]) {
+        out[c] = sqEls.filter((d) => d.classList.contains(c)).map((d) => Engine.squareName(Number(d.dataset.sq)));
+      }
+      return out;
+    },
+    pendingCheckpoint: () => pendingCheckpoint,
+    keep: () => resolveCheckpoint("keep"),
+    better: () => resolveCheckpoint("better"),
+    spoken: () => spokenLog.slice(),
+    voice: () => (VOICE ? { rate: VOICE_RATE, keys: Object.keys(VOICE.clips).length } : null),
+    playing: () => (audioEl ? { src: audioEl.getAttribute("src"), rate: audioEl.playbackRate, preservesPitch: audioEl.preservesPitch } : null),
     startNewGame: beginNewGame,
     play: startPlaying,
     // Testing aids: seed the opponent RNG, force its difficulty, or set up a
@@ -550,6 +795,7 @@
       selected = -1;
       legalFromSelected = [];
       lastMove = null;
+      clearCoachState();
       inputLocked = state.turn !== Coach.CHILD_COLOR;
       if (!session) session = Coach.startGame(profile, { opponent, rng: Math.random });
       render();

@@ -8,14 +8,22 @@
 //   - funny named opponents unlocked over time;
 //   - one small concept before a game;
 //   - at most 3 meaningful blunder checkpoints per game, each a single concrete
-//     sentence with "Keep my move" / "Show me a better idea" — no unlimited
-//     "wrong, try again" loops;
+//     sentence with «Ich bleibe bei meinem Zug» / «Zeig mir eine bessere Idee» —
+//     no unlimited "wrong, try again" loops. Since Nov 18, 2026 the better idea is
+//     NOT played for the child: her move is taken back, the suggested piece and
+//     target are highlighted, and whatever she plays next is accepted (no
+//     second nudge on that turn);
+//   - all child-facing text is simple German from the closed spoken line set in
+//     chess-lines-de.js (each spoken sentence is a fixed key → text);
 //   - one strength + one next idea at the end, always skippable;
 //   - isolated Santiago/Isabel profiles (namespaced storage; a profile is only
 //     ever loaded back for the child it was written for).
 //
 // Pure: storage is injected (Web Storage-shaped), so Node tests drive it with a
-// fake store. Depends on chess-engine.js and chess-ai.js.
+// fake store. Depends on chess-engine.js, chess-ai.js and chess-lines-de.js.
+// The stored profile (keys and shape) is unchanged by the German texts: the
+// profile keeps its English level label / progression reasons (parent-facing);
+// only what the child sees and hears is German.
 // ===========================================================================
 
 (function (root) {
@@ -24,6 +32,14 @@
   const isNode = typeof module !== "undefined" && module.exports;
   const Engine = isNode ? require("./chess-engine.js") : root.ChessEngine;
   const AI = isNode ? require("./chess-ai.js") : root.ChessAI;
+  const LINES = (isNode ? require("./chess-lines-de.js") : root.ChessLinesDE).LINES;
+
+  // The fixed German text of a spoken line key (throws on an unknown key, so a
+  // typo can never silently produce an unspoken/unrecorded sentence).
+  function lineText(key) {
+    if (!Object.prototype.hasOwnProperty.call(LINES, key)) throw new Error("unknown coach line: " + key);
+    return LINES[key];
+  }
 
   const PROFILE_VERSION = 1;
   const STORAGE_PREFIX = "chess-coach:v1:";
@@ -46,49 +62,55 @@
   const OPPONENTS = [
     {
       id: "pip",
-      name: "Pip the Penguin",
+      name: "Pip der Pinguin",
       emoji: "🐧",
-      blurb: "Just learned how the pieces move. Slides around a lot.",
+      blurb: "Er lernt gerade die Züge. Ein leichter Gegner.",
+      introKey: "intro.pip",
       minLevel: 0,
       difficulty: { depth: 1, randomness: 1, blunder: 0.6 },
     },
     {
       id: "waffles",
-      name: "Sir Waffles",
+      name: "Sir Waffel",
       emoji: "🧇",
-      blurb: "A friendly knight who often forgets his plan halfway through.",
+      blurb: "Ein netter Ritter. Er ist oft vergesslich.",
+      introKey: "intro.waffles",
       minLevel: 1,
       difficulty: { depth: 1, randomness: 0.8, blunder: 0.4 },
     },
     {
       id: "bongo",
-      name: "Bongo the Sloth",
+      name: "Bongo das Faultier",
       emoji: "🦥",
-      blurb: "Slow and steady. Grabs a free piece if you leave one hanging.",
+      blurb: "Langsam. Aber er frisst gern freie Figuren.",
+      introKey: "intro.bongo",
       minLevel: 2,
       difficulty: { depth: 1, randomness: 0.5, blunder: 0.2 },
     },
     {
       id: "gizmo",
-      name: "Gizmo the Robot",
+      name: "Gizmo der Roboter",
       emoji: "🤖",
-      blurb: "Calculates one move ahead and rarely gives anything away.",
+      blurb: "Er denkt einen Zug voraus.",
+      introKey: "intro.gizmo",
       minLevel: 3,
       difficulty: { depth: 2, randomness: 0.4, blunder: 0.05 },
     },
     {
       id: "luna",
-      name: "Captain Luna",
+      name: "Kapitänin Luna",
       emoji: "🚀",
-      blurb: "A sharp explorer who looks for little traps.",
+      blurb: "Sie stellt kleine Fallen.",
+      introKey: "intro.luna",
       minLevel: 4,
       difficulty: { depth: 2, randomness: 0.15, blunder: 0 },
     },
     {
       id: "hoot",
-      name: "Professor Hoot",
+      name: "Professor Uhu",
       emoji: "🦉",
-      blurb: "The wise old owl. Plays a careful, thoughtful game.",
+      blurb: "Die kluge alte Eule. Er spielt sehr genau.",
+      introKey: "intro.hoot",
       minLevel: 5,
       difficulty: { depth: 3, randomness: 0.1, blunder: 0 },
     },
@@ -112,16 +134,20 @@
   }
 
   // ---- Pre-game concepts (one small idea) -------------------------------
-  const CONCEPTS = [
-    { id: "center", title: "Own the middle", text: "Try to put a pawn in the four middle squares. The center is the best place to start." },
-    { id: "develop", title: "Wake up your pieces", text: "Bring your knights and bishops out early so they can help. Sleepy pieces can't do much!" },
-    { id: "castle", title: "Keep your king cozy", text: "Castling tucks your king safely in the corner behind its pawns. Do it early." },
-    { id: "queen-late", title: "Queen takes her time", text: "Don't rush your queen out. If she comes out too early she can get chased around." },
-    { id: "look-captures", title: "Spot the captures", text: "Before you move, look for pieces you can take — and pieces of yours that could be taken." },
-    { id: "protect", title: "Guard your pieces", text: "A piece is safe if a friendly piece is watching the square it stands on." },
-    { id: "knight-rim", title: "Knights love the middle", text: "A knight in the center reaches more squares than one stuck on the edge." },
-    { id: "trade-up", title: "Trade wisely", text: "It's a good deal to win a big piece for a small one, and a bad deal to do the opposite." },
+  // Titles are shown; the sentence is the spoken line `idea.<id>`.
+  const CONCEPT_TITLES = [
+    ["center", "Die Mitte"],
+    ["develop", "Weck deine Figuren"],
+    ["castle", "Ein sicherer König"],
+    ["queen-late", "Die Dame wartet"],
+    ["look-captures", "Wer kann fressen?"],
+    ["protect", "Pass auf deine Figuren auf"],
+    ["knight-rim", "Pferde lieben die Mitte"],
+    ["trade-up", "Klug tauschen"],
   ];
+  const CONCEPTS = CONCEPT_TITLES.map(([id, title]) =>
+    Object.freeze({ id, title, lineKey: "idea." + id, text: lineText("idea." + id) }),
+  );
 
   function conceptById(id) {
     return CONCEPTS.find((c) => c.id === id) || null;
@@ -162,6 +188,21 @@
     if (level <= 3) return "Getting the hang of it";
     if (level <= 5) return "Playing real games";
     return "Sharp player";
+  }
+
+  // German label for the screen only (the stored profile keeps `levelLabel`).
+  function levelLabelDe(level) {
+    if (level <= 1) return "Anfängerin oder Anfänger";
+    if (level <= 3) return "Es klappt schon gut";
+    if (level <= 5) return "Richtige Spiele";
+    return "Schach-Profi";
+  }
+
+  // The screen text of the start greeting: the spoken intro line, with the
+  // child's name added after «Hallo» ON SCREEN only (the clip is name-free).
+  function introScreenText(opponent, displayName) {
+    const text = lineText(opponent.introKey);
+    return displayName ? text.replace(/^Hallo!/, "Hallo " + displayName + "!") : text;
   }
 
   function storageKey(childId) {
@@ -224,6 +265,9 @@
       startLevel: profile.level,
       // Squares already checkpointed so we never re-nag the identical move.
       _checkpointedMoves: new Set(),
+      // Set by a «bessere Idee» takeback: the child's NEXT move is accepted
+      // whatever it is (no second nudge on the same turn — no try-again loop).
+      _acceptNextMove: false,
     };
   }
 
@@ -233,6 +277,10 @@
   // the single gate that guarantees "at most three" and "no unlimited guessing"
   // (each move is checkpointed at most once).
   function reviewChildMove(session, state, move) {
+    if (session._acceptNextMove) {
+      session._acceptNextMove = false;
+      return null;
+    }
     if (session.checkpointsUsed >= MAX_CHECKPOINTS_PER_GAME) return null;
     const moveKey = move.from + "-" + move.to + "-" + (move.promotion || "");
     if (session._checkpointedMoves.has(moveKey)) return null;
@@ -256,10 +304,18 @@
     session.blundersDetected += 1;
     session._checkpointedMoves.add(moveKey);
 
+    const riskKey = riskKeyFor(analysis);
+    const t = analysis.threat;
+    const showThreat = riskKey !== "nudge.mate" && riskKey !== "nudge.other" && t;
     return {
       playedMove: move,
       betterMove: analysis.betterMove,
-      riskText: explainRisk(analysis),
+      riskKey,
+      riskText: lineText(riskKey),
+      // Squares to highlight on the board AFTER the intended move: the piece in
+      // danger and the piece that can take it (null when there is no capture).
+      threatSquare: showThreat ? t.capturedSquare : null,
+      attackerSquare: showThreat && typeof t.bySquare === "number" ? t.bySquare : null,
       playedLabel: describeMove(state, move),
       betterLabel: describeMove(state, analysis.betterMove),
       checkpointNumber: session.checkpointsUsed,
@@ -268,60 +324,63 @@
   }
 
   // Record the child's decision at a checkpoint. `chosen` is "keep" or "better".
-  // Returns the move to actually play. No re-guessing: the decision is final and
-  // play continues from whichever move is returned.
+  //   keep   → `move` is the child's own move, to be played as before.
+  //   better → NOTHING is played: `move` is null, `takeback` is true and `hint`
+  //            names the suggested piece's square and its target to highlight.
+  //            The child then moves herself, and that next move is accepted
+  //            without review (session._acceptNextMove).
+  // No re-guessing either way: the decision is final.
   function resolveCheckpoint(session, checkpoint, chosen) {
     if (chosen === "better") {
       session.hintsTaken += 1;
+      session._acceptNextMove = true;
       return {
-        move: checkpoint.betterMove,
-        comparison: `You picked the safer idea: ${checkpoint.betterLabel} instead of ${checkpoint.playedLabel}. Nice adjusting!`,
+        move: null,
+        takeback: true,
+        hint: { from: checkpoint.betterMove.from, to: checkpoint.betterMove.to },
+        lineKey: "choice.better",
+        comparison: lineText("choice.better"),
       };
     }
     return {
       move: checkpoint.playedMove,
-      comparison: `Okay, playing your move: ${checkpoint.playedLabel}. ${checkpoint.betterLabel} was a little safer, but let's see how it goes!`,
+      takeback: false,
+      hint: null,
+      lineKey: "choice.keep",
+      comparison: lineText("choice.keep"),
     };
   }
 
-  // One concrete sentence naming the real risk. Built from engine analysis, not
-  // free text, so it is always true of the position.
-  function explainRisk(analysis) {
+  // The spoken nudge key: which of the child's pieces is in danger (picture-
+  // first: the board highlights it and its attacker), or the mate / generic
+  // line. Built from engine analysis, so it is always true of the position.
+  function riskKeyFor(analysis) {
     const t = analysis.threat;
-    if (t) {
-      const mine = pieceWord(t.capturedType);
-      const theirs = pieceWord(t.byType);
-      if (!t.defended) {
-        return `That leaves your ${mine} where their ${theirs} can take it for free.`;
-      }
-      return `That trades your ${mine} for only their ${theirs} — not a fair swap.`;
-    }
-    if (analysis.walksIntoMate) {
-      return "That move lets your opponent build a checkmate against your king.";
-    }
-    return "There's a stronger move here that keeps your pieces safer.";
+    if (t && ["p", "n", "b", "r", "q"].includes(t.capturedType)) return "nudge." + t.capturedType;
+    if (analysis.walksIntoMate) return "nudge.mate";
+    return "nudge.other";
   }
 
-  const PIECE_WORDS = { p: "pawn", n: "knight", b: "bishop", r: "rook", q: "queen", k: "king" };
+  function explainRisk(analysis) {
+    return lineText(riskKeyFor(analysis));
+  }
+
+  const PIECE_WORDS = { p: "Bauer", n: "Pferd", b: "Läufer", r: "Turm", q: "Dame", k: "König" };
   function pieceWord(t) {
-    return PIECE_WORDS[t] || "piece";
+    return PIECE_WORDS[t] || "Figur";
   }
 
   // Human, non-notation move description for kids.
   function describeMove(state, move) {
-    if (move.flag === "castleK") return "castle kingside (keep the king safe)";
-    if (move.flag === "castleQ") return "castle queenside (keep the king safe)";
+    if (move.flag === "castleK" || move.flag === "castleQ") return "Rochade";
     const piece = pieceWord(Engine.typeOf(move.piece));
     const dest = Engine.squareName(move.to);
     const takes = move.captured || move.flag === "ep";
-    let text = takes ? `${cap(piece)} takes ${dest}` : `${cap(piece)} to ${dest}`;
+    let text = takes ? `${piece} frisst auf ${dest}` : `${piece} nach ${dest}`;
     if (move.flag === "promo") {
-      text += ` and becomes a ${pieceWord(Engine.typeOf(move.promotion))}`;
+      text += ` und wird ${pieceWord(Engine.typeOf(move.promotion))}`;
     }
     return text;
-  }
-  function cap(s) {
-    return s.charAt(0).toUpperCase() + s.slice(1);
   }
 
   // ---- Finishing a game: adapt difficulty, build the recap ---------------
@@ -385,46 +444,58 @@
   function computeLevelChange(result, blunders) {
     if (result === "win") {
       if (blunders >= 3) {
-        return { delta: 0, reason: "You won! You had a few wobbles, so let's stay here and lock it in." };
+        return { delta: 0, reason: "You won! You had a few wobbles, so let's stay here and lock it in.", key: "win-wobbly" };
       }
-      return { delta: 1, reason: "You won and played well — moving up to a slightly tougher friend." };
+      return { delta: 1, reason: "You won and played well — moving up to a slightly tougher friend.", key: "win-up" };
     }
     if (result === "loss") {
       if (blunders === 0) {
-        return { delta: 0, reason: "A close game with no big mistakes — staying at the same level." };
+        return { delta: 0, reason: "A close game with no big mistakes — staying at the same level.", key: "loss-clean" };
       }
-      return { delta: -1, reason: "That was a tricky one — easing back a step so the next game is more fun." };
+      return { delta: -1, reason: "That was a tricky one — easing back a step so the next game is more fun.", key: "loss-down" };
     }
-    return { delta: 0, reason: "A draw — staying right where you are." };
+    return { delta: 0, reason: "A draw — staying right where you are.", key: "draw" };
   }
 
   function clampLevel(level) {
     return Math.max(0, Math.min(MAX_LEVEL, level));
   }
 
-  // One strength + one next idea. Always skippable in the UI.
+  // Screen-only German reason for the level change (the stored progression log
+  // keeps the English `reason` for the parent).
+  const LEVEL_REASON_DE = {
+    "win-wobbly": "Gewonnen! Wir bleiben noch auf dieser Stufe.",
+    "win-up": "Gewonnen! Nächstes Mal wird es ein bisschen schwerer.",
+    "loss-clean": "Knapp! Wir bleiben auf dieser Stufe.",
+    "loss-down": "Das war schwer. Nächstes Mal wird es etwas leichter.",
+    draw: "Unentschieden. Wir bleiben auf dieser Stufe.",
+  };
+
+  // One strength + one next idea (spoken lines). Always skippable in the UI.
   function buildRecap(session, result, change, newlyUnlocked) {
-    let strength;
-    if (result === "win") strength = "You found a way to win — great focus!";
-    else if (session.blundersDetected === 0) strength = "You kept your pieces safe the whole game.";
-    else if (session.capturesByChild > 0) strength = "You spotted captures and grabbed material.";
-    else strength = "You kept going and finished the whole game — that's how you get better.";
+    let strengthKey;
+    if (result === "win") strengthKey = "recap.win";
+    else if (session.blundersDetected === 0) strengthKey = "recap.safe";
+    else if (session.capturesByChild > 0) strengthKey = "recap.captures";
+    else strengthKey = "recap.finished";
 
-    let nextIdea;
-    if (session.blundersDetected > 0) {
-      nextIdea = "Next time, before each move, check if the square you land on is safe.";
-    } else if (session.concept) {
-      nextIdea = `Keep practising today's idea: ${session.concept.title.toLowerCase()}.`;
-    } else {
-      nextIdea = "Try to bring out a new piece every move at the start.";
-    }
+    let nextKey;
+    if (session.blundersDetected > 0) nextKey = "next.safe-square";
+    else if (session.concept) nextKey = "next.idea";
+    else nextKey = "next.develop";
 
-    const unlockNote =
-      newlyUnlocked && newlyUnlocked.length
-        ? `You unlocked a new opponent: ${opponentById(newlyUnlocked[newlyUnlocked.length - 1]).name}!`
-        : null;
+    const unlocked =
+      newlyUnlocked && newlyUnlocked.length ? opponentById(newlyUnlocked[newlyUnlocked.length - 1]) : null;
+    const unlockNote = unlocked ? `Neuer Gegner freigeschaltet: ${unlocked.name}!` : null;
 
-    return { strength, nextIdea, unlockNote, levelReason: change.reason };
+    return {
+      strengthKey,
+      nextKey,
+      strength: lineText(strengthKey),
+      nextIdea: lineText(nextKey),
+      unlockNote,
+      levelReason: LEVEL_REASON_DE[change.key] || "",
+    };
   }
 
   // ---- Parent-facing helpers (explainable & reversible) -----------------
@@ -444,6 +515,11 @@
   }
 
   const ChessCoach = {
+    LINES,
+    lineText,
+    levelLabelDe,
+    introScreenText,
+    riskKeyFor,
     PROFILE_VERSION,
     STORAGE_PREFIX,
     MAX_CHECKPOINTS_PER_GAME,

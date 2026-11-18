@@ -269,6 +269,7 @@
           capturedType: typeOf(em.captured),
           capturedSquare: em.to,
           byType: typeOf(em.piece),
+          bySquare: em.from,
           defended,
           net,
         };
