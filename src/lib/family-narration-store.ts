@@ -85,7 +85,7 @@ export function narrationBudget(env: Env): { approval: string; characters: numbe
   const m = BUDGET_PATTERN.exec((env[BUDGET_SWITCH] ?? "").trim());
   return m ? { approval: m[1], characters: Number(m[2]) } : null;
 }
-const ledgerPrefix = (approval: string) => `family-narration/budget/${approval}/`;
+export const ledgerPrefix = (approval: string) => `family-narration/budget/${approval}/`;
 
 /** Characters already reserved under this approval (every request ever sent or attempted), or null when the ledger is unreadable. */
 export async function budgetSpent(approval: string, token: string, deps: StoreDeps = {}): Promise<{ characters: number; requests: number } | null> {
@@ -141,7 +141,7 @@ export type NarrationReadiness = {
   missingCharacters: number;
 };
 
-async function exists(pathname: string, token: string, headImpl: typeof head): Promise<boolean> {
+export async function exists(pathname: string, token: string, headImpl: typeof head): Promise<boolean> {
   try {
     await headImpl(pathname, { token });
     return true;
@@ -188,7 +188,7 @@ export type PrepareResult = {
   budget?: { approval: string; limit: number; spent: number; requests: number };
 };
 
-async function acquireLock(token: string, deps: StoreDeps): Promise<boolean> {
+export async function acquireLock(token: string, deps: StoreDeps): Promise<boolean> {
   const path = PREPARE_LOCK;
   const now = (deps.now ?? Date.now)();
   const take = async () => {
