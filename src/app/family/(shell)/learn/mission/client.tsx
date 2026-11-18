@@ -65,7 +65,7 @@ import { StoryBeat } from "@/components/family/learning/story-beat";
 import { VisitReportView } from "@/components/family/learning/visit-report";
 import { createChildTurnClient } from "@/lib/family-assistant-client";
 import { envelopeRawText, envelopeSpokenText, type ChildId } from "@/lib/family-assistant-turn";
-import { browserTimeZone, createLearningClient, type LearningMutateOutcome, type MutationContext } from "@/lib/family-learning-client";
+import { browserTimeZone, createLearningClient, NOKT_REPLY_STALE_RETRIES, type LearningMutateOutcome, type MutationContext } from "@/lib/family-learning-client";
 import type { RetryItem } from "@/lib/family-learning-feedback";
 import type { RetryOutcome, RetryPayload } from "@/components/family/learning/lesson-end";
 import { stageLabel, type ChildView, type LearningOp, type SupportKind } from "@/lib/family-learning-state";
@@ -348,12 +348,42 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
   const noktTelemetry: NoktPanelTelemetry = useCallback((e) => {
     telemetryRef.current = noteNokt(telemetryRef.current, Date.now(), e);
   }, []);
-  /** Nov 18: the panel close is the conversation's close (server; idempotent; unknown session = no-op; a late reply stays withheld). */
+  /**
+   * Nov 18: the panel close is the conversation's close (server; idempotent; unknown session = no-op; a late reply stays
+   * withheld). It is queued and sent only when the page is idle (nothing saving, no walk waiting), never with a notice or the
+   * busy state, and re-sent on a stale revision — so it never makes his own next tap (or the walk after «Los geht's») stale.
+   */
+  const busyRef = useRef(false);
+  busyRef.current = busy;
+  const closeQueue = useRef<{ sessionId: string; nokt: "speaking" | "waiting" | "idle" }[]>([]);
+  const closeTimer = useRef<number | null>(null);
+  const runCloses = useCallback(async () => {
+    closeTimer.current = null;
+    const again = () => {
+      if (closeTimer.current === null) closeTimer.current = window.setTimeout(() => void runCloses(), 1500);
+    };
+    if (busyRef.current || heldPlaceRef.current) return again();
+    const item = closeQueue.current.shift();
+    if (!item) return;
+    let current = viewRef.current;
+    for (let attempt = 0; current && attempt <= NOKT_REPLY_STALE_RETRIES; attempt += 1) {
+      const out = await learning.mutate(child, { op: "nokt-talk", action: { a: "close", sessionId: item.sessionId, reason: "panel", nokt: item.nokt } } as LearningOp, current.revision, { idempotencyKey: `close-${item.sessionId}`, context: contextOfView(current), timeZone: browserTimeZone() });
+      if (!aliveRef.current) return;
+      if (out.ok && out.status === "stale") {
+        current = out.view;
+        continue;
+      }
+      if (out.ok && (viewRef.current?.revision ?? -1) < out.view.revision) adopt(out.view);
+      break;
+    }
+    if (closeQueue.current.length) again();
+  }, [child, learning, adopt]);
   const closeTalk = useCallback(
     (sessionId: string, nokt: "speaking" | "waiting" | "idle") => {
-      void mutate({ op: "nokt-talk", action: { a: "close", sessionId, reason: "panel", nokt } } as LearningOp);
+      closeQueue.current.push({ sessionId, nokt });
+      if (closeTimer.current === null) closeTimer.current = window.setTimeout(() => void runCloses(), 1500);
     },
-    [mutate],
+    [runCloses],
   );
 
   /** Support op → confirmed/not, retrying once on a stale revision. */
