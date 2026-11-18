@@ -65,12 +65,13 @@ import { StoryBeat } from "@/components/family/learning/story-beat";
 import { VisitReportView } from "@/components/family/learning/visit-report";
 import { createChildTurnClient } from "@/lib/family-assistant-client";
 import { envelopeRawText, envelopeSpokenText, type ChildId } from "@/lib/family-assistant-turn";
-import { browserTimeZone, createLearningClient, type LearningMutateOutcome, type MutationContext } from "@/lib/family-learning-client";
+import { browserTimeZone, createLearningClient, NOKT_REPLY_STALE_RETRIES, type LearningMutateOutcome, type MutationContext } from "@/lib/family-learning-client";
 import type { RetryItem } from "@/lib/family-learning-feedback";
 import type { RetryOutcome, RetryPayload } from "@/components/family/learning/lesson-end";
 import { stageLabel, type ChildView, type LearningOp, type SupportKind } from "@/lib/family-learning-state";
 import { createReadAloudController } from "@/lib/family-learning-audio";
-import { createTelemetryBuffer, enterStage, noteActivity, noteControl, noteInput, noteOp, noteSubmit, pause as pauseTelemetry, setHidden, takeBatch } from "@/lib/family-learning-telemetry";
+import { createTelemetryBuffer, enterStage, noteActivity, noteControl, noteInput, noteNokt, noteOp, noteSubmit, pause as pauseTelemetry, setHidden, takeBatch } from "@/lib/family-learning-telemetry";
+import type { NoktPanelTelemetry } from "@/lib/family-learning-telemetry-schema";
 import { LogRevise, LogTransfer, PierBuild, ReflectFeedback, StationBuild, StationChoice, Summary, TypingCourse, type DraftContext } from "./redesign-stages";
 import { clearChildDrafts, retireAllDrafts, retireMismatched, type DraftIdentity } from "@/lib/family-learning-draft-store";
 import { ExpeditionNotPrepared } from "@/components/family/learning/not-prepared";
@@ -336,11 +337,53 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
         const r = out.result as { shown?: boolean; say?: string; line?: string; reason?: string; ended?: boolean };
         if (r.shown === true && typeof r.say === "string") return { kind: "shown", say: r.say, ended: r.ended === true };
         // No reply at all (runtime unreachable, used up, refused): his words go back into the box.
-        if (r.shown === false && typeof r.line === "string") return { kind: r.reason?.startsWith("no-reply-") ? "failed" : "app", line: r.line };
+        if (r.shown === false && typeof r.line === "string") return r.reason?.startsWith("no-reply-") ? { kind: "failed", line: r.line } : { kind: "app", line: r.line, ended: r.ended === true };
       }
       return { kind: "failed", line: "Nokt ist gerade nicht erreichbar. Du kannst es gleich nochmal versuchen." };
     },
     [child, learning, adopt],
+  );
+
+  /** Nov 18: the Nokt panel's closed telemetry moments (no text) go into the same buffer as the other task telemetry. */
+  const noktTelemetry: NoktPanelTelemetry = useCallback((e) => {
+    telemetryRef.current = noteNokt(telemetryRef.current, Date.now(), e);
+  }, []);
+  /**
+   * Nov 18: the panel close is the conversation's close (server; idempotent; unknown session = no-op; a late reply stays
+   * withheld). It is queued and sent only when the page is idle (nothing saving, no walk waiting), never with a notice or the
+   * busy state, and re-sent on a stale revision — so it never makes his own next tap (or the walk after «Los geht's») stale.
+   */
+  const busyRef = useRef(false);
+  busyRef.current = busy;
+  const closeQueue = useRef<{ sessionId: string; nokt: "speaking" | "waiting" | "idle" }[]>([]);
+  const closeTimer = useRef<number | null>(null);
+  const runCloses = useCallback(async () => {
+    closeTimer.current = null;
+    const again = () => {
+      if (closeTimer.current === null) closeTimer.current = window.setTimeout(() => void runCloses(), 1500);
+    };
+    if (busyRef.current || heldPlaceRef.current) return again();
+    const item = closeQueue.current.shift();
+    if (!item) return;
+    let current = viewRef.current;
+    for (let attempt = 0; current && attempt <= NOKT_REPLY_STALE_RETRIES; attempt += 1) {
+      const out = await learning.mutate(child, { op: "nokt-talk", action: { a: "close", sessionId: item.sessionId, reason: "panel", nokt: item.nokt } } as LearningOp, current.revision, { idempotencyKey: `close-${item.sessionId}`, context: contextOfView(current), timeZone: browserTimeZone() });
+      if (!aliveRef.current) return;
+      if (out.ok && out.status === "stale") {
+        current = out.view;
+        continue;
+      }
+      if (out.ok && (viewRef.current?.revision ?? -1) < out.view.revision) adopt(out.view);
+      break;
+    }
+    if (closeQueue.current.length) again();
+  }, [child, learning, adopt]);
+  const closeTalk = useCallback(
+    (sessionId: string, nokt: "speaking" | "waiting" | "idle") => {
+      closeQueue.current.push({ sessionId, nokt });
+      if (closeTimer.current === null) closeTimer.current = window.setTimeout(() => void runCloses(), 1500);
+    },
+    [runCloses],
   );
 
   /** Support op → confirmed/not, retrying once on a stale revision. */
@@ -730,6 +773,8 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
                 if (place && m && !m.active) void walkInto(place, m);
               },
               onOpen: (reason) => void learning.deviceAudio(child, reason),
+              telemetry: noktTelemetry,
+              closeTalk,
             }}
             telemetry={(name) => {
               telemetryRef.current = noteControl(telemetryRef.current, Date.now(), name);
@@ -893,6 +938,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
                     speech={speech}
                     transcribe={view.nokt?.mic ? (audio, fileName, signal) => learning.transcribeNokt(child, audio, fileName, { signal }) : null}
                     turn={view.nokt && view.nokt.mode !== "unavailable" ? talkTurn : null}
+                    noktTelemetry={noktTelemetry}
                     onFeedback={(feedback) => mutate({ op: "closing-feedback", feedback } as LearningOp)}
                     onFinish={async (payload, idempotencyKey) => {
                       const identity = visitIdentity();

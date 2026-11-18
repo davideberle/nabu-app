@@ -10,7 +10,7 @@
 // A reload shows the saved conversation without speaking; the microphone never starts by itself. Nothing here is an assessment.
 // ---------------------------------------------------------------------------
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import type { ChildView } from "@/lib/family-learning-state";
 import type { ChildId } from "@/lib/family-assistant-turn";
@@ -19,6 +19,7 @@ import type { LearningMutateOutcome } from "@/lib/family-learning-client";
 import { PlanGrid, planCountsText } from "./plan-grid";
 import { WorkshopRoom } from "./workshop-pictures";
 import { NoktTalk, type NoktTalkTurnFn } from "./nokt-talk";
+import type { NoktPanelTelemetry } from "@/lib/family-learning-telemetry-schema";
 import { ChoicePicture, NextAdventureQuestion, NextInterestQuestion, choiceWord, interestReady, type InterestAnswer } from "./next-interest";
 import type { NoktTranscribe } from "./nokt-panel";
 
@@ -37,6 +38,7 @@ export function Debrief({
   turn,
   onFeedback,
   onFinish,
+  noktTelemetry = null,
 }: {
   child: ChildId;
   view: ChildView;
@@ -46,6 +48,8 @@ export function Debrief({
   turn: NoktTalkTurnFn | null;
   onFeedback: (feedback: Record<string, string | null | undefined>) => Promise<LearningMutateOutcome | null>;
   onFinish: (payload: Record<string, unknown>, idempotencyKey: string) => Promise<LearningMutateOutcome | null>;
+  /** Nov 18: closed Nokt panel telemetry (no text). */
+  noktTelemetry?: NoktPanelTelemetry | null;
 }) {
   const reflection = view.reflection!;
   const closing = reflection.closing ?? null;
@@ -101,8 +105,15 @@ export function Debrief({
     </div>
   );
   const ideas = debrief?.askingNext
-    ? [...(reflection.adventure?.choices.map((c) => ({ id: c.id, label: choiceWord(c), picture: <ChoicePicture picture={c.picture} /> })) ?? debrief.ideas), { id: "unsure", label: "Weiss ich noch nicht" }]
+    ? [...(reflection.adventure?.choices.map((c) => ({ id: c.id, label: choiceWord(c), picture: <ChoicePicture picture={c.picture} /> })) ?? debrief.ideas), { id: "unsure", label: "Weiss ich noch nicht" }, { id: "skip", label: "Überspringen" }]
     : null;
+  // Nov 18: the look back's Nokt panel opening (it has no close: it ends by itself).
+  const openedRef = useRef(false);
+  useEffect(() => {
+    if (!talking || noNokt || openedRef.current) return;
+    openedRef.current = true;
+    noktTelemetry?.({ event: "panel-open", purpose: "debrief" });
+  }, [talking, noNokt, noktTelemetry]);
 
   return (
     <div className={cn("grid items-start gap-4", talking && !noNokt && "md:grid-cols-[minmax(0,1fr)_380px]")} data-testid="debrief" data-talking={talking ? "true" : "false"} data-over={over ? "true" : "false"} data-interest={interestRecorded ? "recorded" : "open"}>
@@ -165,7 +176,7 @@ export function Debrief({
       </div>
       {talking && turn && !noNokt ? (
         <aside className="order-first grid max-h-[calc(100dvh-2rem)] content-start gap-3 overflow-y-auto md:sticky md:top-4 md:order-none" data-testid="nokt-sidebar" data-dock="debrief">
-          <NoktTalk key={page} child={child} purpose="debrief" sessionId={session && !session.closed ? session.id : null} initialLines={session?.lines ?? []} opener={!session} ended={!!session?.ended} blocking speech={speech} transcribe={transcribe} turn={turn} title="Nokt schaut mit dir zurück" testId="nokt-debrief" layout="focus" choices={ideas} onEnded={() => setTalkOver(true)} />
+          <NoktTalk key={page} child={child} purpose="debrief" sessionId={session && !session.closed ? session.id : null} initialLines={session?.lines ?? []} opener={!session} ended={!!session?.ended} blocking speech={speech} transcribe={transcribe} turn={turn} title="Nokt schaut mit dir zurück" testId="nokt-debrief" layout="focus" choices={ideas} onEnded={() => setTalkOver(true)} telemetry={noktTelemetry} />
         </aside>
       ) : null}
     </div>

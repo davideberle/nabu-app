@@ -30,7 +30,8 @@ import type { WorldMarker } from "./expedition-world";
 import { Feedback, ListenTask, RequestTask, SolveTask, Trays, type SceneTelemetry } from "./mission-scene";
 import { PlanGrid } from "./plan-grid";
 import { WorkshopPictureView } from "./workshop-pictures";
-import { NoktButton, NoktPanel, type NoktTranscribe, type NoktTurnFn } from "./nokt-panel";
+import { NoktButton, NoktPanel, type NoktActivity, type NoktTranscribe, type NoktTurnFn } from "./nokt-panel";
+import type { NoktPanelTelemetry, NoktTelemetryPurpose, NoktTelemetryState } from "@/lib/family-learning-telemetry-schema";
 import { NoktTalk, type NoktTalkTurnFn } from "./nokt-talk";
 import { NO_TYPING_HELP } from "@/lib/family-input-hygiene";
 
@@ -49,6 +50,10 @@ export type MapNokt = {
   onWelcomeDone?: () => void;
   /** Step 1 (S1-07): ask the Mac mini to be audible (bridge, candidate) when Nokt opens; absent = nothing is sent. */
   onOpen?: (reason: "visit-start" | "nokt-open") => void;
+  /** Nov 18: closed Nokt panel telemetry (no text). */
+  telemetry?: NoktPanelTelemetry;
+  /** Nov 18: store the panel close as the conversation's close (server; idempotent; a late reply stays withheld). */
+  closeTalk?: (sessionId: string, nokt: NoktTelemetryState) => void;
 };
 
 type TalkView = NonNullable<NonNullable<ChildView["nokt"]>["talk"]>;
@@ -57,6 +62,8 @@ function sessionFor(talk: TalkView | undefined, purpose: string, page: string) {
   const s = talk?.sessions.find((x) => x.purpose === purpose && x.page === page) ?? null;
   return s;
 }
+
+const writePageOf = (visitId: string, step: string) => `visit:${visitId}:write:${step}`;
 
 export function MapMission({ child, view, mission, markers, busy, act, speech, nokt, telemetry, onWalk }: { child: ChildId; view: ChildView; mission: MissionView; markers: WorldMarker[]; busy: boolean; act: Act; speech: ChildSpeechPlayer; nokt: MapNokt; telemetry: SceneTelemetry; onWalk: () => void }) {
   const active = mission.active;
@@ -67,6 +74,24 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
   const skip = !!talk?.skip;
   const welcomeDue = enabled && !skip && talk?.welcome === "due" && nokt.intentionalEntry;
   const [open, setOpen] = useState<"none" | "welcome" | "page">(welcomeDue ? "welcome" : "none");
+  // Nov 18: what the open conversation is doing (speaking / waiting / idle) and its session, for the close telemetry.
+  const activity = useRef<NoktActivity>({ state: "idle", sessionId: null, sent: false });
+  const openPurpose = useRef<NoktTelemetryPurpose | null>(null);
+  const panelOpened = (purpose: NoktTelemetryPurpose) => {
+    activity.current = { state: "idle", sessionId: null, sent: false };
+    openPurpose.current = purpose;
+    nokt.telemetry?.({ event: "panel-open", purpose });
+  };
+  /** The panel closes (his tap, «Los geht's», or a page change): one close event with Nokt's state; the talk's session closes too. */
+  const panelClosed = () => {
+    const purpose = openPurpose.current;
+    if (!purpose) return;
+    const a = activity.current;
+    nokt.telemetry?.({ event: "panel-close", purpose, nokt: a.state });
+    if (purpose !== "task" && a.sessionId) nokt.closeTalk?.(a.sessionId, a.state);
+    openPurpose.current = null;
+    activity.current = { state: "idle", sessionId: null, sent: false };
+  };
   // The deliberate start is confirmed a moment after the mission first renders: open the welcome then — once, never again.
   const welcomed = useRef(welcomeDue);
   useEffect(() => {
@@ -76,6 +101,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
     }
   }, [welcomeDue]);
   const endWelcome = useCallback(() => {
+    panelClosed();
     setOpen("none");
     speech.cancel();
     nokt.onWelcomeDone?.();
@@ -83,7 +109,10 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
   }, [speech]);
   // A different page closes the dock (stale conversation and its audio end with it); the welcome never reopens.
   useEffect(() => {
-    if (open === "page") setOpen("none");
+    if (open === "page") {
+      panelClosed();
+      setOpen("none");
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
   // Welcome no longer possible, or a parent switched Nokt off: the visit simply goes on (the door opens now).
@@ -92,6 +121,9 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
   }, [open, skip, talk?.welcome, endWelcome]);
   useEffect(() => {
     if (open !== "none") nokt.onOpen?.("nokt-open");
+    // Nov 18: every opening of the dock (his tap, the welcome, Nokt opening by itself after two misses) is one panel-open.
+    if (open === "welcome") panelOpened("welcome");
+    else if (open === "page") panelOpened(active?.kind === "solve" && active.status === "active" && active.solve?.current ? "task" : "visit");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
@@ -123,13 +155,17 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
 
   // After his sentence is saved: Nokt reads it. Nothing can close this talk; it ends with Nokt's last line, the limit or a failure.
   const writePage = active?.kind === "write" ? `visit:${visitId}:write:${active.id}` : null;
-  const writing = !skip && enabled && !!nokt.talkTurn && active?.kind === "write" && active.status === "active" && active.write?.original !== null && !!active.write?.nokt;
+  // Nov 18: after the strict sentence is right, the dock stays until Nokt's last line has finished (then it goes by itself).
+  const [writingHold, setWritingHold] = useState<string | null>(null);
+  const strict = active?.kind === "write" ? active.write?.strict ?? null : null;
+  const writing = !skip && enabled && !!nokt.talkTurn && active?.kind === "write" && (active.status === "active" || (!!writePageOf(visitId, active.id) && writingHold === writePageOf(visitId, active.id))) && active.write?.original !== null && !!active.write?.nokt;
   const writingSession = writePage ? sessionFor(talk, "writing", writePage) : null;
   const [writingOverFor, setWritingOverFor] = useState<string | null>(null);
   const writingOver = !writing || writingOverFor === writePage || !!writingSession?.ended;
   const endWriting = useCallback((why: "closed" | "failed") => {
     if (!writePage) return;
     setWritingOverFor(writePage);
+    setWritingHold(null);
     // Only when Nokt's reaction did not arrive: the app's held tip stands in (one helper per sentence, never both).
     if (why === "failed" && active?.write?.tipHeld) void act({ a: "writing-tip", step: active.id });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -138,16 +174,27 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
   // Nov 14: once Nokt (or the app's stand-in line) has reacted to his sentence, the second try is open beside the talk.
   const [writingAnsweredFor, setWritingAnsweredFor] = useState<string | null>(null);
   const writingAnswered = writingAnsweredFor === writePage || !!writingSession?.lines.some((l) => l.role !== "child");
-  const writingWaits = writingLive && !writingAnswered;
+  // Nov 18 (strict): the revision field waits only while Nokt reads his latest version.
+  const writingWaits = strict ? writingLive && strict.pending : writingLive && !writingAnswered;
+  const writingOpened = useRef<string | null>(null);
+  useEffect(() => {
+    if (writingLive && writePage && writingOpened.current !== writePage) {
+      writingOpened.current = writePage;
+      nokt.telemetry?.({ event: "panel-open", purpose: "writing" });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [writingLive, writePage]);
   // Nov 14: the welcome comes first — nothing on the map can be started until Nokt's (or the app's) first line is there.
   const [welcomeReady, setWelcomeReady] = useState(false);
 
   const openDock = () => {
+    if (open === "page") return;
     setOpen("page");
     telemetry("tutor-open");
     if (active) void act({ a: "tutor-open", step: active.id, entry: "manual", part: solvePart });
   };
   const closeDock = () => {
+    panelClosed();
     setOpen("none");
     speech.cancel();
     telemetry("tutor-close");
@@ -157,18 +204,18 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
   const welcomeGate = open === "welcome";
   const dock: ReactNode = writingLive && writePage ? (
     <aside className="order-first grid max-h-[calc(100dvh-2rem)] content-start gap-3 overflow-y-auto md:sticky md:top-4 md:order-none" data-testid="nokt-sidebar" data-dock="writing">
-      <NoktTalk key={writePage} child={child} purpose="writing" sessionId={writingSession && !writingSession.closed ? writingSession.id : null} initialLines={writingSession?.lines ?? []} opener={!writingSession} ended={!!writingSession?.ended} blocking waitingLine="Gib mir ein paar Sekunden …" speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn!} title={active?.write?.plural ? "Nokt liest deine Sätze" : "Nokt liest deinen Satz"} testId="nokt-writing" onEnded={endWriting} onLine={(l) => { if (l.role !== "child") setWritingAnsweredFor(writePage); }} />
+      <NoktTalk key={writePage} child={child} purpose="writing" sessionId={writingSession && !writingSession.closed ? writingSession.id : null} initialLines={writingSession?.lines ?? []} opener={!writingSession} ended={!!writingSession?.ended} blocking waitingLine="Gib mir ein paar Sekunden …" speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn!} title={active?.write?.plural ? "Nokt liest deine Sätze" : "Nokt liest deinen Satz"} testId="nokt-writing" onEnded={endWriting} onLine={(l) => { if (l.role !== "child") { setWritingAnsweredFor(writePage); if (strict) setWritingHold(writePage); } }} telemetry={nokt.telemetry ?? null} sentenceKey={strict?.unsent && (strict.versions > 1 || !!writingSession) ? `v${strict.versions}` : null} />
     </aside>
   ) : open === "none" ? null : (
     <aside className="order-first grid max-h-[calc(100dvh-2rem)] content-start gap-3 overflow-y-auto md:sticky md:top-4 md:order-none" data-testid="nokt-sidebar" data-dock={open === "welcome" ? "welcome" : solvePart ? "task" : "visit"}>
       {open === "welcome" ? (
         enabled && nokt.talkTurn ? (
-          <NoktTalk key="welcome" child={child} purpose="welcome" sessionId={welcomeSession?.id ?? null} initialLines={welcomeSession?.lines ?? []} opener={!welcomeSession} ended={!!welcomeSession?.ended} blocking speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn} title="Nokt begrüsst dich" testId="nokt-welcome" onLine={(l) => { if (l.role !== "child") setWelcomeReady(true); }} onEnded={() => setWelcomeReady(true)} />
+          <NoktTalk key="welcome" child={child} purpose="welcome" sessionId={welcomeSession?.id ?? null} initialLines={welcomeSession?.lines ?? []} opener={!welcomeSession} ended={!!welcomeSession?.ended} blocking speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn} title="Nokt begrüsst dich" testId="nokt-welcome" onLine={(l) => { if (l.role !== "child") setWelcomeReady(true); }} onEnded={() => setWelcomeReady(true)} telemetry={nokt.telemetry ?? null} activity={activity} />
         ) : null
       ) : solvePart && active ? (
-        <NoktPanel key={`task:${active.id}:${solvePart}`} child={child} mode={nokt.mode} step={active.id} part={solvePart} speech={speech} transcribe={nokt.transcribe} turn={nokt.taskTurn} opener entry={nudged === `${active.id}:${solvePart}` ? "offer" : "manual"} onClose={closeDock} />
+        <NoktPanel key={`task:${active.id}:${solvePart}`} child={child} mode={nokt.mode} step={active.id} part={solvePart} speech={speech} transcribe={nokt.transcribe} turn={nokt.taskTurn} opener entry={nudged === `${active.id}:${solvePart}` ? "offer" : "manual"} onClose={closeDock} telemetry={nokt.telemetry ?? null} activity={activity} />
       ) : enabled && nokt.talkTurn && !(active?.kind === "write" && !active.write?.original) ? (
-        <NoktTalk key={`visit:${page}`} child={child} purpose="visit" sessionId={(() => { const s = sessionFor(talk, "visit", page); return s && !s.closed ? s.id : null; })()} initialLines={sessionFor(talk, "visit", page)?.lines ?? []} opener={decideNudge && !sessionFor(talk, "visit", page)} speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn} testId="nokt-visit" />
+        <NoktTalk key={`visit:${page}`} child={child} purpose="visit" sessionId={(() => { const s = sessionFor(talk, "visit", page); return s && !s.closed ? s.id : null; })()} initialLines={sessionFor(talk, "visit", page)?.lines ?? []} opener={decideNudge && !sessionFor(talk, "visit", page)} speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn} testId="nokt-visit" telemetry={nokt.telemetry ?? null} activity={activity} />
       ) : (
         <div className="rounded-3xl bg-white p-5 text-lg shadow-sm" style={{ border: "2px solid #dce5df", color: "#203b3d" }} data-testid={enabled ? "nokt-write-first" : "nokt-unavailable"}>
           {enabled ? "Schreib zuerst deinen eigenen Satz. Danach schaut Nokt ihn mit dir an." : "Nokt kann im Moment nicht mit dir sprechen. Der Hinweis hilft dir weiter."}
@@ -194,8 +241,8 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
         speech={speech}
         onWalk={onWalk}
         act={act}
-        renderTask={(a) => MapTask({ child, view, active: a, busy, act, speech, telemetry, nokt, writingLive: writingWaits, noktOnTask: open === "page" && !!solvePart })}
-        sceneLocked={writingLive}
+        renderTask={(a) => MapTask({ child, view, active: a, busy, act, speech, telemetry, nokt, writingLive: writingWaits, noktOnTask: open === "page" && !!solvePart, noktReads: writingLive })}
+        sceneLocked={writingLive || (!!strict && active?.status === "active")}
       />
       {welcomeGate ? (
         <div className="absolute inset-0 z-30 grid place-items-center rounded-3xl bg-white/60 p-6 backdrop-blur-[2px]" data-testid="welcome-gate" aria-hidden>
@@ -212,7 +259,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
 }
 
 /** The body of a Visit 8 scene for the kinds that use the clearer task components; null = MissionWorld's own body. */
-export function MapTask({ child, view, active, busy, act, speech, telemetry, nokt, writingLive = false, noktOnTask = false }: { child: ChildId; view: ChildView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; nokt: MapNokt; writingLive?: boolean; noktOnTask?: boolean }): ReactNode | null {
+export function MapTask({ child, view, active, busy, act, speech, telemetry, nokt, writingLive = false, noktOnTask = false, noktReads = false }: { child: ChildId; view: ChildView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; nokt: MapNokt; writingLive?: boolean; noktOnTask?: boolean; /** Nov 18: Nokt's writing talk is live (it reads each new version). */ noktReads?: boolean }): ReactNode | null {
   switch (active.kind) {
     case "solve": {
       // Step 1 (S1-01): on the focused screen a fact already said by the story line or the question is not repeated in a box.
@@ -268,7 +315,11 @@ export function MapTask({ child, view, active, busy, act, speech, telemetry, nok
     case "produce":
       return <RequestTask active={active} busy={busy} act={act} telemetry={telemetry} />;
     case "write":
-      return <WriteWithNokt active={active} busy={busy} act={act} nokt={nokt} talkRunning={writingLive} tipEarly={view.mission?.screen === "focused"} />;
+      return active.write?.strict && active.status === "active" && active.write.original !== null ? (
+        <StrictWrite key={`${active.id}:${active.write.strict.versions}:${active.write.strict.shown ? "shown" : "own"}`} active={active} busy={busy} act={act} reading={writingLive} noktReads={noktReads} />
+      ) : (
+        <WriteWithNokt active={active} busy={busy} act={act} nokt={nokt} talkRunning={writingLive} tipEarly={view.mission?.screen === "focused"} />
+      );
     case "outcome":
       return active.grid ? (
         <div className="grid gap-3" data-testid="outcome-plan">
@@ -341,6 +392,63 @@ function DecideTask({ active, busy, act }: { active: MissionActiveView; busy: bo
       ) : null}
       {last ? <Feedback tone={last.viable ? "success" : "retry"} text={last.feedback} testId="decide-feedback" /> : null}
       {finished && d.reflect ? <p className="text-lg" data-testid="decide-reflect">Wenn du magst, erzähl Nokt: {d.reflect}</p> : null}
+    </div>
+  );
+}
+
+const FOUND_DE: Record<string, string> = { spacing: "Zwischen zwei Wörtern fehlt ein Abstand.", "capital-start": "Ein Satz beginnt mit einem grossen Buchstaben.", "end-mark": "Am Ende eines Satzes steht ein Punkt." };
+
+/**
+ * Nov 18 (David): the strict sentence with Nokt. He rewrites until it is right — no «So lassen», no close. While Nokt reads a
+ * version the field waits; after Nokt's reaction he writes again (his last version is in the field to edit). At the safety
+ * limit the right sentence is shown and he types it himself (empty field — he copies, it is not filled in for him). When Nokt
+ * cannot react, the app's own findings are shown and the app's check alone decides (`nokt: false`).
+ */
+function StrictWrite({ active, busy, act, reading, noktReads }: { active: MissionActiveView; busy: boolean; act: Act; reading: boolean; noktReads: boolean }) {
+  const w = active.write!;
+  const st = w.strict!;
+  const [text, setText] = useState(st.shown ? "" : st.lastText);
+  const found = [...st.lastFound.map((f) => FOUND_DE[f]).filter(Boolean), ...(st.lastSentence ? [] : ["Schreib einen ganzen Satz: Wer macht was?"])];
+  return (
+    <div className="grid gap-4" data-testid="write-strict" data-versions={st.versions} data-shown={st.shown ? "true" : "false"} data-pending={st.pending ? "true" : "false"}>
+      <div>
+        <p className="text-base font-semibold">{w.plural ? "Deine Sätze:" : "Dein Satz:"}</p>
+        <p className="rounded-2xl px-4 py-3 text-xl" style={{ background: "#fff8e1" }} data-testid="write-original">
+          «{st.lastText}»
+        </p>
+      </div>
+      {w.correction && st.versions === 1 ? (
+        <div className="rounded-2xl px-4 py-3 text-lg" style={{ background: "#eef1e8", borderLeft: "5px solid #215c60" }} data-testid="write-tip" data-rule={w.correction.rule ?? "spacing"}>
+          <p className="font-semibold">{w.correction.intro}</p>
+          <p>{w.correction.rule && w.correction.rule !== "spacing" ? w.correction.line : w.correction.marked.replace(/\|/g, " ␣ ")}</p>
+        </div>
+      ) : null}
+      {st.lastWrong && !noktReads && !st.shown && found.length ? (
+        <ul className="grid gap-1 rounded-2xl px-4 py-3 text-lg" style={{ background: "#eef1e8", borderLeft: "5px solid #215c60" }} data-testid="write-strict-found">
+          {found.map((f) => <li key={f}>{f}</li>)}
+        </ul>
+      ) : null}
+      {reading ? (
+        <p className="text-lg font-semibold" data-testid="write-nokt-reading">Nokt schaut sich das an …</p>
+      ) : (
+        <>
+          {st.shown ? (
+            <div className="rounded-2xl px-4 py-3" style={{ background: "#edf4e6" }} data-testid="write-shown">
+              <p className="text-base font-semibold">{w.plural ? "So sind die Sätze richtig:" : "So ist der Satz richtig:"}</p>
+              <p className="text-xl">«{st.shown.text}»</p>
+            </div>
+          ) : null}
+          <label htmlFor="map-revise" className="text-lg font-semibold">
+            {st.shown ? (w.plural ? "Tipp die Sätze jetzt selbst ab:" : "Tipp den Satz jetzt selbst ab:") : w.plural ? "Schreib deine Sätze noch einmal:" : "Schreib deinen Satz noch einmal:"}
+          </label>
+          <textarea {...NO_TYPING_HELP} id="map-revise" value={text} onChange={(e) => setText(e.target.value.slice(0, 300))} rows={2} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-revise" data-fold="input" />
+          <div className="flex flex-wrap gap-3">
+            <button type="button" className={btn} style={primary} disabled={busy || !text.trim()} onClick={() => void act({ a: "revise", step: active.id, text, nokt: noktReads })} data-testid="write-revise-send" data-fold="primary">
+              Neu ins Gartenbuch
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

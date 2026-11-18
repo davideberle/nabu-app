@@ -40,6 +40,7 @@ import { LIVE_TUTOR_DEFERRED_PARENT_NOTE, liveTutorDeferred } from "@/lib/family
 import type { EvidenceAttempt, EvidenceBundle } from "@/lib/family-learning-db";
 import { MATH_OBJECTIVES, isMathObjective, type KeyboardLayoutId } from "@/lib/family-learning-content";
 import type { DelayedCheckInfo, ParentReview } from "@/lib/family-learning-summary";
+import { noktPanelLine } from "@/lib/family-learning-nokt-telemetry";
 import { createSettingsDraft, editSettingsDraft, reconcileSettingsDraft, settingsSaveBody, type SettingsDraft, type SettingsSource } from "@/lib/family-learning-parent-draft";
 import { beginRequest, clearEvidence, createEvidenceStore, describeTypingMetrics, invalidateAuthorization, isCurrentEpoch, receiveEvidence, renderableEvidence, selectChild, type EvidenceStore } from "@/lib/family-learning-parent-evidence";
 import { NarrationAudition } from "@/components/family/learning/narration-audition";
@@ -885,6 +886,7 @@ function TelemetryLine({ t }: { t: ParentReview["experience"]["telemetry"] }) {
       {t.batches} Pakete, {t.uxEvents} Bedienungs-Ereignisse{t.feedbackEvents ? ` + ${t.feedbackEvents} Angaben des Kindes` : ""} · aktive Zeit im Vordergrund {t.foregroundActiveSeconds ?? "—"} s (Leerlauf-Regel {t.idleRuleSeconds} s; ein Schätzwert für Eingabe-Aktivität, kein Aufmerksamkeits-Mass) · {t.hiddenIntervals ?? "—"}× Fenster verlassen · {t.pauses ?? "—"}× Stopp/Pause (Pausenzeit zählt nicht als aktiv) · {t.saveFailures ?? "—"} Speicherfehler · {t.retries ?? "—"} Wiederholungen
       {t.unobservedStages?.length ? <span className="text-tertiary"> · ohne Beobachtung: {t.unobservedStages.join(", ")} (übersprungen oder nicht übermittelt)</span> : null}
       <span className="text-tertiary"> · nur übermittelte Pakete; nicht angekommene fehlen ohne Hinweis</span>
+      {t.nokt ? <span className="mt-1 block" data-testid="ux-nokt">{noktPanelLine(t.nokt)}</span> : null}
     </p>
   );
 }

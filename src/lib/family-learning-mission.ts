@@ -63,7 +63,8 @@ import type { MissionPart, MissionHint, MissionLine, MissionDiagram, MissionGrid
 import { validateTutorOutcome, type TutorDispatch, type TutorOutcomeRecord } from "./family-learning-tutor-outcome.ts";
 import { receiptOrigin, type ReceiptInput, type ReplyOrigin } from "./family-learning-trust.ts";
 import type { NoktMode } from "./family-learning-nokt.ts";
-import { buildNoktRequest, checkNoktOutcome, checkNoktReply, NOKT_MAX_CHILD_TURNS, noktEvidence, noktOutcomeClaim, noktPhase, noktSupportFloor, noktTaskContext, parseNoktReplyText, type NoktTurnText } from "./family-learning-nokt-contract.ts";
+import { buildNoktRequest, checkNoktOutcome, checkNoktReply, NOKT_MAX_CHILD_TURNS, noktEvidence, noktOutcomeClaim, noktPhase, noktSupportFloor, noktTaskContext, parseNoktReplyText, isSentenceText, sameWords, type NoktTurnText } from "./family-learning-nokt-contract.ts";
+import { suggestSpacing } from "./family-learning-writing.ts";
 
 // ---------------------------------------------------------------------------
 // State (MissionState.missions — additive)
@@ -145,7 +146,37 @@ export type MissionWriteRun = {
   pendingCorrection?: { index: number; marked: string; rule?: "spacing" | "capital-start" | "end-mark"; line?: string } | null;
   /** Step 1 (S1-13a): the only finding was the missing end mark — a revision prompt, never «incorrect». */
   endMarkOnly?: boolean;
+  /**
+   * Nov 18 (David): the STRICT writing step with Nokt — he rewrites until the sentence is right; no «So lassen», no close.
+   * Every version he writes is a round (round 0 = the original). A round is right only when the app's deterministic check
+   * passes (the reviewed mechanics + «a sentence»: three words, not «weiss nicht») AND Nokt did not point at a remaining
+   * mistake in its reply to that round (intent ask/correct). Nokt can veto, never pass a sentence the app finds wrong; without
+   * Nokt's reply the app's check alone decides. After `WRITING_REWRITES_BEFORE_SHOW` wrong rewrites Nokt (or, when Nokt is
+   * not there, the app with its mechanical fix) shows the right sentence; he types it himself and it counts as SUPPORTED.
+   */
+  strict?: WritingStrict;
 };
+
+export type WritingMechanic = "spacing" | "capital-start" | "end-mark";
+export type WritingRound = {
+  text: string;
+  at: string;
+  /** The reviewed mechanical findings of this version. */
+  found: WritingMechanic[];
+  /** At least three words and not a «weiss nicht»/help line. */
+  sentence: boolean;
+  verdict: "pending" | "ok" | "needs-work";
+  /** The Nokt turn that carried this version (its reply decides together with the app's check). */
+  turnId?: string;
+  /** Who decided: Nokt's reply plus the app's check, or the app's check alone (Nokt unreachable/withheld). */
+  by?: "nokt" | "app";
+  /** He typed the sentence that was shown to him. */
+  copy?: boolean;
+};
+export type WritingStrict = { rounds: WritingRound[]; shown: { text: string; at: string; by: "nokt" | "app" } | null };
+
+/** Nov 18: wrong rewrites (after the original) before the right sentence is shown to him. */
+export const WRITING_REWRITES_BEFORE_SHOW = 3;
 
 export type MissionStepRun = {
   status: "active" | "done" | "practiced" | "taught" | "unresolved";
@@ -353,7 +384,8 @@ export type MissionAction =
   | { a: "stuck-choice"; step: string; part: string; choice: "retry" | "guided" | "nokt" | "solution" | "later" }
   /** Content v6: one own sentence; `revise` = the one revision after the correction, or keep (`text: null`). */
   | { a: "write"; step: string; text: string }
-  | { a: "revise"; step: string; text: string | null }
+  /** `nokt: false` (strict writing): Nokt cannot react (failed/unreachable) — the app's check alone decides this version. */
+  | { a: "revise"; step: string; text: string | null; nokt?: boolean }
   | { a: "writing-tip"; step: string }
   /** Step 1 (S1-09): which of the shown ways the child used (unscored self-report). */
   | { a: "method"; step: string; choice: string }
@@ -679,6 +711,87 @@ const END_MARK_RE = /[.!?]["»“”']?$/u;
 function lowerStart(text: string): boolean {
   const first = Array.from(text.trim())[0] ?? "";
   return /\p{Ll}/u.test(first);
+}
+
+/** The reviewed mechanical findings of a text, in the step's priority order (spacing, capital at the start, end mark). */
+export function mechanicsFound(step: MissionStep, text: string, content: LearningContent): WritingMechanic[] {
+  const mech = step.write?.mechanics ?? [];
+  const flags = flagSpacing(text, content.writing?.spacing.joins ?? []);
+  return mech.filter((m) => (m === "spacing" ? flags.length > 0 : m === "capital-start" ? lowerStart(text) : !END_MARK_RE.test(text.trim())));
+}
+
+/** The app's own fix (mechanics only — never spelling or words): spaces, the capital at the start, an end mark. */
+export function mechanicalFix(text: string, content: LearningContent): string {
+  let t = suggestSpacing(text.trim(), flagSpacing(text.trim(), content.writing?.spacing.joins ?? []));
+  const chars = Array.from(t);
+  if (chars.length && /\p{Ll}/u.test(chars[0])) t = chars[0].toUpperCase() + chars.slice(1).join("");
+  if (!END_MARK_RE.test(t)) t = `${t}.`;
+  return t;
+}
+
+/** Nov 18: the strict writing step applies where Nokt reacts to the sentence (content v7 mechanics, Nokt planned). */
+function strictWriting(def: MissionDef, step: MissionStep, env: MissionEnv): boolean {
+  return !!step.write?.nokt && !!step.write.mechanics && noktPlanned(def, env);
+}
+
+const roundOk = (r: WritingRound) => r.found.length === 0 && r.sentence;
+
+/** Wrong rewrites so far (round 0, the original, is not a rewrite). */
+export function wrongRewrites(s: WritingStrict): number {
+  return s.rounds.slice(1).filter((r) => r.verdict === "needs-work" && !r.copy).length;
+}
+
+type SettleEnv = Pick<MissionEnv, "nowIso" | "newId" | "visit" | "content"> & Partial<MissionEnv>;
+
+/**
+ * Settle one round of the strict writing step: right → the step is finished (the original right → its own first-attempt
+ * evidence; a later version → supported); wrong → the round is recorded and he writes again. At the safety limit, when Nokt
+ * cannot show the sentence (`by: "app"`), the app shows its mechanical fix — or, when there is no sentence it could fix,
+ * the step is put aside for next time (never stuck, never skipped by him).
+ */
+export function settleWritingRound(state: MissionState, def: MissionDef, step: MissionStep, r: MissionStepRun, round: WritingRound, input: { noktVeto: boolean; by: "nokt" | "app" }, env: SettleEnv, records: Records): { settled: "ok" | "needs-work"; shown?: boolean; putAside?: boolean } {
+  const w = r.writing!;
+  const s = w.strict!;
+  const run = missionRunOf(state, def)!;
+  const ok = roundOk(round) && !input.noktVeto && (!round.copy || (!!s.shown && sameWords(round.text, s.shown.text)));
+  round.verdict = ok ? "ok" : "needs-work";
+  round.by = input.by;
+  const index = s.rounds.indexOf(round);
+  const menv = env as MissionEnv;
+  if (index > 0) {
+    const helps = [...new Set([...(r.support.some((x) => x.kind === "nokt-writing") ? ["nokt-writing"] : []), ...(w.correction ? [w.correction.rule && w.correction.rule !== "spacing" ? `${w.correction.rule}-correction` : "spacing-correction"] : []), ...(round.copy ? [s.shown?.by === "app" ? "app-shown-sentence" : "nokt-shown-sentence"] : [])])];
+    // A version the app finds wrong is «incorrect»; one only Nokt doubted stays unscored (the model's finding is uncertain).
+    const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, raw: round.text, correct: ok ? true : roundOk(round) ? null : false, evidence: ok ? "supported" : roundOk(round) ? "unscored" : "incorrect", support: helps, modality: "typed", kind: "practice" };
+    r.attempts.push(attempt);
+    attemptRow(records, menv, def, step, attempt, "de", `${step.objective}-revision`);
+    records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "writing_retry" as const, language: "de", modality: "typed", text: round.text, metrics: { mission: def.id, step: step.id, original: w.original, outcome: ok ? (round.copy ? "copied" : "revised") : "needs-work", round: index, mechanics: round.found, sentence: round.sentence, decidedBy: input.by, noktVeto: input.noktVeto, ...(round.copy ? { copiedFrom: s.shown?.by ?? null } : {}), help: helps, meaningJudged: false }, at: env.nowIso });
+  }
+  if (ok) {
+    if (index > 0) w.revision = { text: round.text, at: env.nowIso, outcome: round.copy ? "copied" : "revised" };
+    finishStep(state, run, def, step, r, "done", index === 0 ? r.attempts[0]?.evidence ?? "independent" : "supported", menv);
+    return { settled: "ok" };
+  }
+  // Safety limit without Nokt: the app shows its mechanical fix (a sentence it can fix), or puts the step aside.
+  if (input.by === "app" && !s.shown && wrongRewrites(s) >= WRITING_REWRITES_BEFORE_SHOW) {
+    if (round.sentence) {
+      s.shown = { text: mechanicalFix(round.text, env.content), at: env.nowIso, by: "app" };
+      r.support.push({ kind: "app-shown-sentence", at: env.nowIso, detail: String(index) });
+      support(records, menv, def, step, "app-shown-sentence", { round: index, help: true });
+      return { settled: "needs-work", shown: true };
+    }
+    finishStep(state, run, def, step, r, "unresolved", "unresolved", menv);
+    return { settled: "needs-work", putAside: true };
+  }
+  return { settled: "needs-work" };
+}
+
+/** Nokt showed the right sentence at the safety limit (recorded as help before he copies it). */
+export function noteWritingShown(def: MissionDef, step: MissionStep, r: MissionStepRun, text: string, turnId: string, env: SettleEnv, records: Records) {
+  const s = r.writing?.strict;
+  if (!s || s.shown) return;
+  s.shown = { text, at: env.nowIso, by: "nokt" };
+  r.support.push({ kind: "nokt-shown-sentence", at: env.nowIso, detail: turnId });
+  support(records, env as MissionEnv, def, step, "nokt-shown-sentence", { turnId, help: true });
 }
 
 // ---------------------------------------------------------------------------
@@ -1569,6 +1682,8 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       // Step 1 (S1-05): with `noktFirst`, Nokt gives the writing feedback; the app's tip waits and appears only if Nokt fails.
       const holdTip = !!step.write.noktFirst && !!step.write.nokt && noktPlanned(def, env) && correction !== null;
       r.writing = { original: text, at: env.nowIso, assessable: assessment.assessable, flags, correction: holdTip ? null : correction, ...(mech ? { mechanics: found } : {}), revision: null, kept: false, ...(holdTip ? { pendingCorrection: correction } : {}), ...(endMarkOnly ? { endMarkOnly: true } : {}) };
+      // Nov 18: the strict step — the original is round 0, awaiting Nokt's reaction (or the app's check when Nokt fails).
+      if (strictWriting(def, step, env)) r.writing.strict = { rounds: [{ text, at: env.nowIso, found, sentence: isSentenceText(text), verdict: "pending" }], shown: null };
       const outcome = mech ? (endMarkOnly ? "end-mark-prompt" : found.length ? "flagged" : "clean") : !assessment.assessable ? "unassessable" : flags.length ? "flagged" : "clean";
       // Mechanics only — meaning and grammar are never judged by the app. Content v7 judges the reviewed mechanical rules
       // (spacing where a boundary is reviewed, the capital at the start, the end mark); earlier content the spacing alone.
@@ -1629,6 +1744,35 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       // Content v7: a revision may also follow Nokt's reaction alone (the step stays open for it); earlier content needs the correction.
       const v7Write = !!step.write?.mechanics;
       if (step.kind !== "write" || !r.writing || (!r.writing.correction && !v7Write) || r.status !== "active") throw new MissionOpError("not-allowed", "nothing to revise");
+      if (r.writing.strict) {
+        // Nov 18: the strict step — no «So lassen»; every version is a round, decided as in `settleWritingRound`.
+        const s = r.writing.strict;
+        if (action.text === null) throw new MissionOpError("not-allowed", "the sentence is not finished yet");
+        const text = String(action.text ?? "").replace(/\r/g, "").replace(/\n+/g, " ").slice(0, 300);
+        if (!text.trim() || !/\p{L}/u.test(text)) throw new MissionOpError("invalid", "write the sentence");
+        const noktReacts = action.nokt !== false;
+        // A version still waiting for Nokt: with Nokt there, wait; without Nokt, the app's check decides it now.
+        for (const pending of s.rounds.filter((x) => x.verdict === "pending")) {
+          if (noktReacts) throw new MissionOpError("not-allowed", "Nokt is still reading your sentence");
+          settleWritingRound(state, def, step, r, pending, { noktVeto: false, by: "app" }, env, records);
+          if (r.status !== "active") break;
+        }
+        if (r.status !== "active") {
+          result = { strict: true, settled: r.status === "done" ? "ok" : "put-aside" };
+          break;
+        }
+        const round: WritingRound = { text, at: env.nowIso, found: mechanicsFound(step, text, env.content), sentence: isSentenceText(text), verdict: "pending", ...(s.shown ? { copy: true } : {}) };
+        s.rounds.push(round);
+        if (s.rounds.length > 40) throw new MissionOpError("not-allowed", "too many versions");
+        // His copy of the shown sentence is checked by the app alone (same words + the reviewed mechanics); without Nokt, every version is.
+        if (round.copy || !noktReacts) {
+          const out = settleWritingRound(state, def, step, r, round, { noktVeto: false, by: "app" }, env, records);
+          result = { strict: true, settled: out.settled, ...(out.shown ? { shown: true } : {}), ...(out.putAside ? { putAside: true } : {}) };
+          break;
+        }
+        result = { strict: true, settled: "pending" };
+        break;
+      }
       if (action.text === null) {
         r.writing.kept = true;
         finishStep(state, run, def, step, r, "done", r.attempts[0]?.evidence ?? "unscored", env);
@@ -2028,6 +2172,11 @@ export type WriteView = {
   awaitingRevision?: boolean;
   /** Content v7: Nokt is planned to react to the original (only after the original exists — never before the first attempt). */
   nokt?: boolean;
+  /**
+   * Nov 18: the strict step (no «So lassen»): how many versions, whether one waits for Nokt (and whether its Nokt turn was
+   * not sent yet, e.g. after a reload), the sentence shown at the safety limit, and the app's findings in his latest version.
+   */
+  strict?: { versions: number; lastText: string; pending: boolean; unsent: boolean; shown: { text: string; by: "nokt" | "app" } | null; lastWrong: boolean; lastFound: WritingMechanic[]; lastSentence: boolean };
 };
 
 export type TypingBlockView = {
@@ -2245,7 +2394,9 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun, tutorA
 function writeView(step: MissionStep, r: MissionStepRun): WriteView {
   const w = step.write!;
   const wr = r.writing ?? null;
-  const open = !!wr && !wr.revision && !wr.kept && r.status === "active";
+  const st = wr?.strict ?? null;
+  const open = !!wr && (st ? true : !wr.revision && !wr.kept) && r.status === "active";
+  const last = st ? st.rounds[st.rounds.length - 1] : null;
   return {
     prompt: w.prompt,
     instruction: w.instruction,
@@ -2259,6 +2410,7 @@ function writeView(step: MissionStep, r: MissionStepRun): WriteView {
     // Step 1 (S1-05): the app's tip is held while Nokt is expected; the page asks for it only when Nokt did not react.
     ...(open && wr?.pendingCorrection ? { tipHeld: true } : {}),
     ...(w.sentences && w.sentences > 1 ? { plural: true } : {}),
+    ...(st && last ? { strict: { versions: st.rounds.length, lastText: last.text, pending: last.verdict === "pending", unsent: last.verdict === "pending" && !last.turnId, shown: st.shown ? { text: st.shown.text, by: st.shown.by } : null, lastWrong: last.verdict === "needs-work", lastFound: last.found, lastSentence: last.sentence } } : {}),
   };
 }
 
@@ -2734,6 +2886,8 @@ export type MissionEvidenceStep = {
 const SUPPORT_DE: Record<string, string> = {
   letters: "Buchstabenhilfe (Wechsel zum unterstützten Lernen von Buchstaben und Wort)",
   hint: "Hinweis",
+  "nokt-shown-sentence": "Nokt hat den richtigen Satz gezeigt (Sicherheitsgrenze); danach selbst abgetippt = mit Hilfe",
+  "app-shown-sentence": "die App hat den Satz mit Satzanfang, Abständen und Punkt gezeigt (Nokt nicht erreichbar); danach selbst abgetippt = mit Hilfe",
   representation: "anderes Bild nach falscher Antwort im Hinweis",
   "direct-teaching": "Lösung gezeigt (selbst gewählt)",
   transcript: "Text der Nachricht gelesen",
@@ -2887,7 +3041,14 @@ export function missionEvidence(state: MissionState, content: LearningContent, v
           0,
           observed.length,
           `Original (unverändert gespeichert): «${r.writing.original}»`,
-          ...(r.writing.revision ? [`Überarbeitung: «${r.writing.revision.text}» (${r.writing.revision.outcome})`] : r.writing.kept ? ["Nicht überarbeitet («So lassen»)."] : []),
+          ...(r.writing.strict
+            ? [
+                ...r.writing.strict.rounds.slice(1).map((x, i) => `Fassung ${i + 2}${x.copy ? " (abgeschrieben)" : ""}: «${x.text}» — ${x.verdict === "ok" ? "richtig" : x.verdict === "pending" ? "wartet auf Nokt" : x.found.length || !x.sentence ? `noch nicht richtig (${[...x.found.map((m) => MECH_DE[m] ?? m), ...(x.sentence ? [] : ["kein ganzer Satz"])].join(", ")})` : "Nokt hat noch einen Fehler gezeigt (nicht von der App geprüft)"}${x.by === "app" ? "; nur die App hat geprüft" : ""}`),
+                ...(r.writing.strict.rounds[0] && !r.writing.strict.rounds[0].sentence ? ["Das Original war noch kein ganzer Satz (weniger als drei Wörter oder «weiss nicht»)."] : []),
+                ...(r.writing.strict.shown ? [`Nach ${WRITING_REWRITES_BEFORE_SHOW} Versuchen hat ${r.writing.strict.shown.by === "nokt" ? "Nokt" : "die App"} den richtigen Satz gezeigt: «${r.writing.strict.shown.text}». ${r.writing.revision?.outcome === "copied" ? "Er hat ihn selbst abgetippt — zählt als mit Hilfe, nicht als selbst gefunden." : "Abgetippt hat er ihn noch nicht."}`] : []),
+                r.status === "unresolved" ? "Fürs nächste Mal aufgehoben: Nokt war nicht erreichbar und die App konnte keinen Satz zeigen." : r.writing.revision ? `Richtig ab Fassung ${r.writing.strict.rounds.findIndex((x) => x.verdict === "ok") + 1}.` : r.status === "done" ? "Das Original war schon richtig." : "Noch nicht fertig.",
+              ]
+            : r.writing.revision ? [`Überarbeitung: «${r.writing.revision.text}» (${r.writing.revision.outcome})`] : r.writing.kept ? ["Nicht überarbeitet («So lassen»)."] : []),
           mech
             ? `Geprüfte Regeln: ${mech.length ? `${mech.map((x) => MECH_DE[x] ?? x).join(", ")} auffällig` : "keine Auffälligkeit"}; gezeigt: ${r.writing.correction ? MECH_DE[r.writing.correction.rule ?? "spacing"] ?? "Korrektur" : "keine App-Korrektur"}${r.support.some((x) => x.kind === "nokt-writing") ? "; Nokt hat auf den Satz reagiert (siehe Gespräch)" : ""}.`
             : `Abstände: ${!r.writing.assessable ? "nicht prüfbar (keine geprüfte Wortgrenze)" : r.writing.flags.length ? `${r.writing.flags.length} Stelle(n) markiert, 1 Korrektur gezeigt` : "keine Auffälligkeit"}`,

@@ -1,4 +1,5 @@
 import { effectiveLevel } from "./family-learning-reasoning.ts";
+import { summariseNoktPanel, type NoktPanelSummary } from "./family-learning-nokt-telemetry.ts";
 import { LIVE_TUTOR_DEFERRED_PARENT_NOTE } from "./family-learning-deferral.ts";
 // ---------------------------------------------------------------------------
 // Evidence-bound visit summary, scene model, delayed-check explanation and
@@ -410,7 +411,11 @@ export type TelemetrySummary = {
   byStep?: Record<string, { enters: number; activeSeconds: number }>;
   /** Stages of the visit with no UX observation at all (skipped or not delivered); null when nothing was observed. */
   unobservedStages: string[] | null;
+  /** Nov 18: the Nokt panel's closed events of this visit (absent when none were delivered — unknown, never zero). */
+  nokt?: NoktPanelSummary;
 };
+
+
 
 export const IDLE_RULE_SECONDS = 60;
 
@@ -458,6 +463,8 @@ export function summariseTelemetry(events: TelemetryEvent[] | null, batches = 0,
   }
   summary.foregroundActiveSeconds = active;
   if (visitStages) summary.unobservedStages = visitStages.filter((s) => !summary.byStage[s]);
+  const nokt = summariseNoktPanel(events);
+  if (nokt) summary.nokt = nokt;
   return summary;
 }
 

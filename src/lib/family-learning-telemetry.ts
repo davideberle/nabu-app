@@ -22,7 +22,7 @@
 // Narration playing counts as activity too (`noteActivity`).
 // ---------------------------------------------------------------------------
 
-import { sanitizeTelemetryEvent, type TelemetryControl, type TelemetryDetail, type TelemetryEvent, type TelemetryKind, type TelemetryOp } from "./family-learning-telemetry-schema.ts";
+import { NOKT_TELEMETRY_MAX_MS, sanitizeTelemetryEvent, type NoktTelemetryEvent, type NoktTelemetryPurpose, type NoktTelemetryState, type TelemetryControl, type TelemetryDetail, type TelemetryEvent, type TelemetryKind, type TelemetryOp } from "./family-learning-telemetry-schema.ts";
 import type { StageId } from "./family-learning-content.ts";
 
 export type { TelemetryEvent } from "./family-learning-telemetry-schema.ts";
@@ -128,6 +128,15 @@ export function noteOp(buffer: TelemetryBuffer, kind: "save-failure" | "retry" |
 
 export function noteControl(buffer: TelemetryBuffer, nowMs: number, name: TelemetryControl): TelemetryBuffer {
   return push(buffer, { t: nowMs, kind: "control", stage: buffer.stage, detail: { name } });
+}
+
+/** Nov 18: one Nokt panel moment (closed names; no text). Counts as activity on the visible screen, like a control. */
+export function noteNokt(buffer: TelemetryBuffer, nowMs: number, detail: { event: NoktTelemetryEvent; purpose?: NoktTelemetryPurpose; nokt?: NoktTelemetryState; ms?: number }): TelemetryBuffer {
+  const d: Record<string, unknown> = { event: detail.event };
+  if (detail.purpose) d.purpose = detail.purpose;
+  if (detail.nokt) d.nokt = detail.nokt;
+  if (typeof detail.ms === "number" && Number.isFinite(detail.ms)) d.ms = Math.min(NOKT_TELEMETRY_MAX_MS, Math.max(0, Math.round(detail.ms)));
+  return push(noteActivity(buffer, nowMs), { t: nowMs, kind: "nokt", stage: buffer.stage, detail: d as TelemetryDetail });
 }
 
 export function noteFeedback(buffer: TelemetryBuffer, nowMs: number, dimension: string, option: string): TelemetryBuffer {

@@ -175,14 +175,14 @@ describe("C — Nokt's rules", () => {
   it("a conversation in the visit is capped at about eight of his turns (Nov 14: four ended it while he still wanted help)", () => {
     equal(NOKT_TALK_MAX_CHILD_TURNS.visit, 8);
     equal(NOKT_TALK_MAX_CHILD_TURNS.debrief, 4);
-    equal(NOKT_TALK_MAX_CHILD_TURNS.writing, 5, "his sentence counts as the first line, then four replies");
+    equal(NOKT_TALK_MAX_CHILD_TURNS.writing, 14, "Nov 18: the strict writing talk's hard ceiling (versions and answers together)");
     equal(NOKT_TALK_MAX_CHILD_TURNS.welcome, 2);
   });
   it("Nov 14: the visit prompt forbids invented hints and sending him away, and the closing line is not a goodbye", () => {
     const sys = talkSystemPrompt("visit");
     ok(sys.includes("context.where.helpOnPage"));
     ok(sys.includes("Erfinde keinen Hinweis"));
-    ok(sys.includes("verabschiede dich nicht"));
+    ok(sys.includes("sag nicht Tschüss"));
     ok(sys.includes("Sag nicht Tschüss"));
     ok(sys.length < 6000, "fits the runtime's system limit");
     ok(!talkAppLine("welcome", true, "stale-page").includes("Gewächshaus"), "the welcome stand-in names no old visit");
