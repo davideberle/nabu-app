@@ -2,24 +2,28 @@
   "generatedBy": "scripts/bundle-chess-pilot.mjs",
   "files": {
     "index.html": {
-      "sha256": "fc685e894e617554d0f5a4da52a93ef7b3c92532d36df5052b644cf16e0337ef",
-      "bytes": 12097
+      "sha256": "b8866e8128a56db63d96422a96482e3e9ed675fc8f7774c83cedb6bbe89b62c3",
+      "bytes": 15562
     },
     "chess-engine.js": {
       "sha256": "a4cd1c24833368102f293900f9f191d66037dfe6a3175e786cb851343187bfb9",
       "bytes": 20891
     },
     "chess-ai.js": {
-      "sha256": "f736a38232425be9a58f79272a63086d0a490674dfb6665588d68e6d8972cf36",
-      "bytes": 10843
+      "sha256": "0bebeabc49f064d583063ccb622e2cfa6d9dab39a00bbab01aaa1de99a3599c4",
+      "bytes": 10872
     },
     "chess-coach.js": {
-      "sha256": "bebbde334ff2c94e996c2de22f1fb965b42dd8986c4ef21679dc82a179fb0601",
-      "bytes": 18092
+      "sha256": "693608b462ca23e94689696e6e78a1a68120e7d79393706c1b527936dfe8e368",
+      "bytes": 20527
     },
     "chess-ui.js": {
-      "sha256": "21deec09f0fb7dbdfa37a5d27e184b297f8a94ead80a007eb021c4f0a58d4fb8",
-      "bytes": 18050
+      "sha256": "113d6a30b86b610dae7068431b65820336d24c5951c7ca3f06e70e19517fa15b",
+      "bytes": 26701
+    },
+    "chess-lines-de.js": {
+      "sha256": "7577ec5f93a6d036a75af3ff296ff4969fa2e3d25a6e90b1f382711d3aa617be",
+      "bytes": 3752
     }
   }
 }
